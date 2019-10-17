@@ -1,91 +1,98 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7360365wrm;
-        Wed, 16 Oct 2019 09:16:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyRVXnUPXJOgeepSBhWlT2JtpV3P2zCJw5r975i8JL9EF70zXdgowtvbq1t6efOM/e9gWCt
-X-Received: by 2002:aa7:d04b:: with SMTP id n11mr40484205edo.104.1571242618063;
-        Wed, 16 Oct 2019 09:16:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571242618; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp435082wrm;
+        Wed, 16 Oct 2019 21:42:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyV+gbIwu8f4qvMMLn5178LZ8WvOqgOK0PSefELCGnhnnoGbw374IvTfkzmqBiOWyeuAc+7
+X-Received: by 2002:ac8:738f:: with SMTP id t15mr1888262qtp.219.1571287373445;
+        Wed, 16 Oct 2019 21:42:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571287373; cv=none;
         d=google.com; s=arc-20160816;
-        b=QXLndJX/qxE1HyQHmjdUVbf4qgo/Vy3wBmdS6udM2yA7KLfeao1tEzMZGCrKzfQqFL
-         P1uvAsiiB7Q1FBLy1Hp2SYoTg4luOg8oZl2L4tm7tGvPUA+c84yAjQcRF/23MmXWTt4Q
-         h6UOwNHd9CyUsf3e3sFTYRqIX2Kmsz6y75AZEcLokiH8C1MwAot9HEpz6pkqKZpan6Rq
-         CFOqO68ZH6mYJ+VxxJSERaVxXXBhi5LRVWHR6M5vuxzf8jUPfvj3ngrHiSPFEZpVeDvi
-         LXRxrFmbLyPgMK9zx1PvBiQO4J0RZ2MNM9dIIYAhcnip/vt6Fb/PVAZ97QcnWOvp7uX3
-         UJow==
+        b=QFEfmMlWI3yb4maXU/0ozFQov5d/erkbAeJGXBAXx2mpHHbH7x6cq+BbMiEnDZR1xi
+         CEMk7b3PI0kI5ry4vXtZTY8WsQ8nr2ppmiHKkkjsANFN1vMgO+eDYDgPGzr9fbPKMKZi
+         PxZBPF7akiY2eo51NkvScu2Mi6ATY7MmxLVGI8IurRSBGVQdgUcYpwUwWfkQKnXj3Deb
+         cHJE5+kemImWdtOfqoAyoadZO8Ma7lK//UTJJ+UvNOJ7u5Kg4PjKZE0fimD0VH3mZHMr
+         m3BjF5yM0x5RdDAqDMhKjZPdtA/tVD5KhJ3zDNin29PCaXRZ5/vgjIDXcAXLmeY2HwrU
+         vlRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date;
-        bh=C9Bq9n6IXw1qW0rWk21AkacfV0EbP6UlHGzVzeINO8g=;
-        b=J5rtmPb89TUe6l2cI+bqH0yvktV2zZn0lZHqHoJE+7KC/ynOa0uwBjN8Xfvl9E4NIH
-         h6WqX7v9yg/3bpAlbv93nYMU7YlAN9GDJn1qKUofHwsCGUxa6LUuiFQUE6j1uk0XFp8q
-         9FEFl59DLwqdDiaXPd7e08rxbe2dF453g2qHLtW+vXZLct7wR7ICkWb+3+0xb/cX2fcf
-         3GWfG+xGVibEzM/9Ll4s5g7Xrb2nAyjCDZ2svbUWLeINQ6ovBY6g+RkLkyV+b676lQwa
-         txhHL+xW1f45WpFtW4nRB25JgzJPeeMVfmayZZ/pzC6G6RvZTEG1osvTAE83dKSOFSn2
-         7Xew==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=VGGT3zBbzVc/cTftpyLP217c9MkvFdIixs9regxae10=;
+        b=0+xjBrifPaJ73eUITxcOf9RROQMmcVStkE1Yg+G5gGFkCmasmCK+BDoyBfRIeLLkA2
+         D4+Np13krEiqJZkt5g3ApRJT12iw3EFWoIpz31vYjuqFnQXZa1+B5bNPf9/JpR6POPny
+         5Sq/yBeOA+XuV6C+UgVef+3Bgv/lI70KHmGIfane+UwntagZaf10q7wQ1MGG/S0rx9h5
+         FSJa5oh3PV6/oJulJ6oQMYaSwiuvaSvPg6/vK3VLlGNvgz7WSjXIn9VSH76AA1gDB+PU
+         KbDbxCR4GD6rYHdF4auKdYhZBMogeUTHcuupi6odOwXTKHXhtzAnI3941qwUGAY4eCvB
+         QsyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZrUh6pSW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v6si15169245edw.51.2019.10.16.09.16.57
+        by mx.google.com with ESMTPS id n36si944851qtf.309.2019.10.16.21.42.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 09:16:58 -0700 (PDT)
+        Wed, 16 Oct 2019 21:42:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZrUh6pSW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45278 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33112 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKlyq-0007aO-Vv
-	for alex.bennee@linaro.org; Wed, 16 Oct 2019 12:16:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60423)
+	id 1iKxci-00076h-CE
+	for alex.bennee@linaro.org; Thu, 17 Oct 2019 00:42:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53370)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iKlyi-0007Zk-RV
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 12:16:50 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iKxcU-00074i-Nz
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 00:42:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iKlyd-0007aj-MO
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 12:16:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54220)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>)
- id 1iKlyb-0007X1-UA; Wed, 16 Oct 2019 12:16:43 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 8720010CC1FF;
- Wed, 16 Oct 2019 16:16:38 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 191BD5D9CD;
- Wed, 16 Oct 2019 16:16:30 +0000 (UTC)
-Date: Wed, 16 Oct 2019 18:16:28 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Beata Michalska <beata.michalska@linaro.org>
-Subject: Re: [PATCH v5 1/9] target/arm/monitor: Introduce
- qmp_query_cpu_model_expansion
-Message-ID: <20191016161628.rf752xuu6fzkihun@kamzik.brq.redhat.com>
-References: <20191001125845.8793-1-drjones@redhat.com>
- <20191001125845.8793-2-drjones@redhat.com>
- <CADSWDztJDUEd+_7XnBPWL1bk5Xh=V_aLc1+VrP97_Ycbe3489A@mail.gmail.com>
- <20191015105628.7ln6ph5s3vpsyfuw@kamzik.brq.redhat.com>
- <CADSWDzsKx7+4mR4pmsqi0+rddUv47q=UKwVt509B8g68UoRiMA@mail.gmail.com>
- <CADSWDzs9sdjE+-1AedPnU6o7U5XjTk=dcHf-BXQXQQkrp2O=Bw@mail.gmail.com>
- <20191016135025.k4szpqwgkhfnd6dl@kamzik.brq.redhat.com>
- <CADSWDzuXpTHDtRmTL41CXbk9GmDHO5iEgpiRgnD=buQU+nnXcg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CADSWDzuXpTHDtRmTL41CXbk9GmDHO5iEgpiRgnD=buQU+nnXcg@mail.gmail.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.65]); Wed, 16 Oct 2019 16:16:38 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+ (envelope-from <richard.henderson@linaro.org>) id 1iKxcS-00024C-Kd
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 00:42:38 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:45253)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iKxcS-00023v-Eg
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 00:42:36 -0400
+Received: by mail-pg1-x532.google.com with SMTP id r1so546471pgj.12
+ for <qemu-arm@nongnu.org>; Wed, 16 Oct 2019 21:42:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=VGGT3zBbzVc/cTftpyLP217c9MkvFdIixs9regxae10=;
+ b=ZrUh6pSWLktkvMbmRVVzxc8zMZFJfq0BgGhuGdGCzwN/hKtq68o0/ljkdRStxOuq6z
+ IUjMU3FcxVTMnO6F3wxxPH+PPGvJOaXnTQOAKg7+FNrdfibPAxEZdQgIbO1FT4WGjj7h
+ /BZeuZmXNSOr7zXiKTVD9gGnVfpEo+GET7dyU+olHUk0+ZjraIvcZ6hZvpZSVHjeK6Mk
+ IejJ1NfVaHqdNTakupY979pp7abpWdWW1facPRGS36gWE2cx2m7yLSOkpRGVwyP0BYvb
+ cfIdLOvVqcPz+fJEMCNuVGgnzwjU3GXdZpk2iocqX34zncc/MOaa1e8S7QLt9m7KtoE0
+ Y7LQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=VGGT3zBbzVc/cTftpyLP217c9MkvFdIixs9regxae10=;
+ b=OFT6ocu+dUwAVtgi7M6VN0V1xd6aR/GmbMGIkTUmLv5OeHEdrWCVehWNlHWLQ4qVDo
+ /ibhOvVxtjTdzpy3ErVutPPlFfPvOlrBAjUQXLIit6RHIbyZd9oNIf5O4GOzHeZQgYRB
+ c3bvC5K8ohEvDTed/PxJnUClxTNXvrA1emNUaoqBCS7fEoBV996qNUm9LEQOzFlJ/Rhg
+ 8AjkopiYmsp3LZmtKM+kKmJFbMqww/AmrSHehjbfGJqyU2MBmyEYsUecRHesCRs/P76p
+ qS8Fm772NR+c96GXhtql+YkqfA96eaxodGny2xpWMgBW0GEz3C5R9Afb0aPnbSll1bXs
+ NBww==
+X-Gm-Message-State: APjAAAXXFRfq354oZ0Rm3Znt03yYeScZVR273/aafMMrknMBl9e5f8PW
+ LBVYsd/P4jfK9TBVGzSX9y20vQ==
+X-Received: by 2002:a63:5a03:: with SMTP id o3mr1846145pgb.381.1571287354897; 
+ Wed, 16 Oct 2019 21:42:34 -0700 (PDT)
+Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
+ [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id n15sm718923pjt.13.2019.10.16.21.42.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Oct 2019 21:42:33 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/4] target/arm vector improvements
+Date: Wed, 16 Oct 2019 21:42:28 -0700
+Message-Id: <20191017044232.27601-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::532
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,462 +104,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- armbru@redhat.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
- imammedo@redhat.com, Dave.Martin@arm.com
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GYHdagUMfwCq
+X-TUID: /Q1CDp1FTqcu
 
-On Wed, Oct 16, 2019 at 04:16:57PM +0100, Beata Michalska wrote:
-> On Wed, 16 Oct 2019 at 14:50, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > On Wed, Oct 16, 2019 at 02:24:50PM +0100, Beata Michalska wrote:
-> > > On Tue, 15 Oct 2019 at 12:56, Beata Michalska
-> > > <beata.michalska@linaro.org> wrote:
-> > > >
-> > > > On Tue, 15 Oct 2019 at 11:56, Andrew Jones <drjones@redhat.com> wrote:
-> > > > >
-> > > > > On Tue, Oct 15, 2019 at 10:59:16AM +0100, Beata Michalska wrote:
-> > > > > > On Tue, 1 Oct 2019 at 14:04, Andrew Jones <drjones@redhat.com> wrote:
-> > > > > > > +
-> > > > > > > +    obj = object_new(object_class_get_name(oc));
-> > > > > > > +
-> > > > > > > +    if (qdict_in) {
-> > > > > > > +        Visitor *visitor;
-> > > > > > > +        Error *err = NULL;
-> > > > > > > +
-> > > > > > > +        visitor = qobject_input_visitor_new(model->props);
-> > > > > > > +        visit_start_struct(visitor, NULL, NULL, 0, &err);
-> > > > > > > +        if (err) {
-> > > > > > > +            object_unref(obj);
-> > > > > >
-> > > > > > Shouldn't we free the 'visitor' here as well ?
-> > > > >
-> > > > > Yes. Good catch. So we also need to fix
-> > > > > target/s390x/cpu_models.c:cpu_model_from_info(), which has the same
-> > > > > construction (the construction from which I derived this)
-> > > > >
-> > > > > >
-> > > > > > > +            error_propagate(errp, err);
-> > > > > > > +            return NULL;
-> > > > > > > +        }
-> > > > > > > +
-> > > > >
-> > > > > What about the rest of the patch? With that fixed for v6 can I
-> > > > > add your r-b?
-> > > > >
-> > > >
-> > > > I still got this feeling that we could optimize that a bit - which I'm
-> > > > currently on, so hopefully I'll be able to add more comments soon if
-> > > > that proves to be the case.
-> > > >
-> > > > BR
-> > > > Beata
-> > >
-> > > I think there are few options that might be considered though the gain
-> > > is not huge .. but it's always smth:
-> > >
-> > > > +CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
-> > > > +                                                     CpuModelInfo *model,
-> > > > +                                                     Error **errp)
-> > > > +{
-> > > > +    CpuModelExpansionInfo *expansion_info;
-> > > > +    const QDict *qdict_in = NULL;
-> > > > +    QDict *qdict_out;
-> > > > +    ObjectClass *oc;
-> > > > +    Object *obj;
-> > > > +    const char *name;
-> > > > +    int i;
-> > > > +
-> > > > +    if (type != CPU_MODEL_EXPANSION_TYPE_FULL) {
-> > > > +        error_setg(errp, "The requested expansion type is not supported");
-> > > > +        return NULL;
-> > > > +    }
-> > > > +
-> > > > +    if (!kvm_enabled() && !strcmp(model->name, "host")) {
-> > > > +        error_setg(errp, "The CPU type '%s' requires KVM", model->name);
-> > > > +        return NULL;
-> > > > +    }
-> > > > +
-> > > > +    oc = cpu_class_by_name(TYPE_ARM_CPU, model->name);
-> > > > +    if (!oc) {
-> > > > +        error_setg(errp, "The CPU type '%s' is not a recognized ARM CPU type",
-> > > > +                   model->name);
-> > > > +        return NULL;
-> > > > +    }
-> > > > +
-> > > > +    if (kvm_enabled()) {
-> > > > +        const char *cpu_type = current_machine->cpu_type;
-> > > > +        int len = strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
-> > > > +        bool supported = false;
-> > > > +
-> > > > +        if (!strcmp(model->name, "host") || !strcmp(model->name, "max")) {
-> > > > +            /* These are kvmarm's recommended cpu types */
-> > > > +            supported = true;
-> > > > +        } else if (strlen(model->name) == len &&
-> > > > +                   !strncmp(model->name, cpu_type, len)) {
-> > > > +            /* KVM is enabled and we're using this type, so it works. */
-> > > > +            supported = true;
-> > > > +        }
-> > > > +        if (!supported) {
-> > > > +            error_setg(errp, "We cannot guarantee the CPU type '%s' works "
-> > > > +                             "with KVM on this host", model->name);
-> > > > +            return NULL;
-> > > > +        }
-> > > > +    }
-> > > > +
-> > >
-> > > The above section can be slightly reduced and rearranged - preferably
-> > > moved to a separate function
-> > > -> get_cpu_model (...) ?
-> > >
-> > > * You can check the 'host' model first and then validate the accelerator ->
-> > >     if ( !strcmp(model->name, "host")
-> > >         if (!kvm_enabled())
-> > >             log_error & leave
-> > >        else
-> > >           goto cpu_class_by_name /*cpu_class_by_name moved after the
-> > > final model check @see below */
-> > >
-> > > * the kvm_enabled section can be than slightly improved (dropping the
-> > > second compare against 'host')
-> > >
-> > >       if (kvm_enabled() && strcmp(model->name, "max") {
-> > >            /*Validate the current_machine->cpu_type against the
-> > > model->name and report error case mismatch
-> > >           /* otherwise just fall through */
-> > >       }
-> > >  * cpu_class_by_name moved here ...
-> > > > +    if (model->props) {
-> > > MInor: the CPUModelInfo seems to have dedicated field for that
-> > > verification -> has_props
-> > >
-> > > > +        qdict_in = qobject_to(QDict, model->props);
-> > > > +        if (!qdict_in) {
-> > > > +            error_setg(errp, QERR_INVALID_PARAMETER_TYPE, "props", "dict");
-> > > > +            return NULL;
-> > > > +        }
-> > > > +    }
-> > > > +
-> > > > +    obj = object_new(object_class_get_name(oc));
-> > > > +
-> > > > +    if (qdict_in) {
-> > > > +        Visitor *visitor;
-> > > > +        Error *err = NULL;
-> > > > +
-> > > > +        visitor = qobject_input_visitor_new(model->props);
-> > > > +        visit_start_struct(visitor, NULL, NULL, 0, &err);
-> > > > +        if (err) {
-> > > > +            object_unref(obj);
-> > > > +            error_propagate(errp, err);
-> > > > +            return NULL;
-> > > > +        }
-> > > > +
-> > > > +        i = 0;
-> > > > +        while ((name = cpu_model_advertised_features[i++]) != NULL) {
-> > > > +            if (qdict_get(qdict_in, name)) {
-> > > > +                object_property_set(obj, visitor, name, &err);
-> > > > +                if (err) {
-> > > > +                    break;
-> > > > +                }
-> > > > +            }
-> > > > +        }
-> > > > +
-> > > > +        if (!err) {
-> > > > +            visit_check_struct(visitor, &err);
-> > > > +        }
-> > > > +        visit_end_struct(visitor, NULL);
-> > > > +        visit_free(visitor);
-> > > > +        if (err) {
-> > > > +            object_unref(obj);
-> > > > +            error_propagate(errp, err);
-> > > > +            return NULL;
-> > > > +        }
-> > > > +    }
-> > >
-> > > The both >> if (err) << blocks could be extracted and moved at the end
-> > > of the function
-> > > to mark a 'cleanup section'  and both here and few lines before
-> > > (with the visit_start_struct failure) could use goto.
-> > > Easier to maintain and to make sure we make the proper cleanup in any case.
-> > >
-> > > > +
-> > > > +    expansion_info = g_new0(CpuModelExpansionInfo, 1);
-> > > > +    expansion_info->model = g_malloc0(sizeof(*expansion_info->model));
-> > > > +    expansion_info->model->name = g_strdup(model->name);
-> > > > +
-> > > > +    qdict_out = qdict_new();
-> > > > +
-> > > > +    i = 0;
-> > > > +    while ((name = cpu_model_advertised_features[i++]) != NULL) {
-> > > > +        ObjectProperty *prop = object_property_find(obj, name, NULL);
-> > > > +        if (prop) {
-> > > > +            Error *err = NULL;
-> > > > +            QObject *value;
-> > > > +
-> > > > +            assert(prop->get);
-> > > > +            value = object_property_get_qobject(obj, name, &err);
-> > > > +            assert(!err);
-> > > > +
-> > > > +            qdict_put_obj(qdict_out, name, value);
-> > > > +        }
-> > > > +    }
-> > > > +
-> > >
-> > > This could be merged with the first iteration over the features,
-> > > smth like:
-> > >
-> > >     while () {
-> > >         if ((value = qdict_get(qdict_in, name))) {
-> > >             object_property_set ...
-> > >            if (!err)
-> > >                qobject_ref(value) /* we have the weak reference */
-> > >             else
-> > >                 break;
-> > >         } else {
-> > >              value = object_property_get_qobject()
-> > >         }
-> > >         if (value) qdict_put_object(qdict_out, name, value)
-> > >     }
-> > >
-> > > This way you iterate over the table once and you do not query
-> > > for the same property twice by getting the value from the qdict_in.
-> > > If the value is not acceptable we will fail either way so should be all good.
-> > >
-> > >
-> > > > +    if (!qdict_size(qdict_out)) {
-> > > > +        qobject_unref(qdict_out);
-> > > > +    } else {
-> > > > +        expansion_info->model->props = QOBJECT(qdict_out);
-> > > > +        expansion_info->model->has_props = true;
-> > > > +    }
-> > > > +
-> > > > +    object_unref(obj);
-> > > > +
-> > > > +    return expansion_info;
-> > >
-> > > Mentioned earlier cleanup section:
-> > > cleanup:
-> > >    object_unref(obj);
-> > >    qobject_unref(qdict_out) ; /* if single loop is used */
-> > >    error_propagate(errp,err);
-> > >    return NULL;
-> > >
-> > > > +}
-> > > > --
-> > > > 2.20.1
-> > > >
-> > >
-> > > Hope I haven't missed anything.
-> > > What do you think ?
-> > >
-> >
-> > I think you need to post an entire function that incorporates all the
-> > proposed changes, or at least a diff that I can apply in order to get
-> > the entirely changed function. I also think that it's fine the way
-> > it is, so it would take a justification stronger than a potential
-> > micro optimization to get me to change it.
-> >
-> 
-> The numbers I can pull out of it are not thrilling and this is not
-> on a fast path so I will not be pushing for changes.
-> Though extracting the clean-up might be worth considering -
-> for improved maintenance.
-> 
-> For a reference though:
+The first patch has been seen before.
 
-It doesn't apply for me - even after fixing up the damager your mailer did
-to it. I'd be surprised if it worked though. Merging the two loops over
-features makes the output generation depend on the caller providing input.
-Did you try the arm-cpu-features test with these changes?
+  https://patchwork.ozlabs.org/patch/1115039/
 
-drew
+It had a bug and I didn't fix it right away and then forgot.
+Fixed now; I had mixed up the operand ordering for aarch32.
 
-> 
-> _______________________________________________________
-> 
-> ---
->  target/arm/monitor.c | 100 +++++++++++++++++++++++++--------------------------
->  1 file changed, 50 insertions(+), 50 deletions(-)
-> 
-> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-> index edca8aa..0d6bd42 100644
-> --- a/target/arm/monitor.c
-> +++ b/target/arm/monitor.c
-> @@ -112,17 +112,40 @@ CpuModelExpansionInfo
-> *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->      Object *obj;
->      const char *name;
->      int i;
-> +    Error *err = NULL;
-> 
->      if (type != CPU_MODEL_EXPANSION_TYPE_FULL) {
->          error_setg(errp, "The requested expansion type is not supported");
->          return NULL;
->      }
-> 
-> -    if (!kvm_enabled() && !strcmp(model->name, "host")) {
-> -        error_setg(errp, "The CPU type '%s' requires KVM", model->name);
-> -        return NULL;
-> +    /* CPU type => 'host' */
-> +    if (!strcmp(model->name, "host")) {
-> +        if (!kvm_enabled()) {
-> +            error_setg(errp, "The CPU type '%s' requires KVM", model->name);
-> +            return NULL;
-> +        } else {
-> +            goto valid;
-> +        }
-> +    }
-> +
-> +
-> +    /* Case when KVM is enabled and the model is a specific cpu model ... */
-> +    if (kvm_enabled() && strcmp(model->name, "max")) {
-> +            const char *cpu_type = current_machine->cpu_type;
-> +            int len = strlen(cpu_type) - strlen("-" TYPE_ARM_CPU);
-> +
-> +            if (strlen(model->name) == len
-> +             && !strncmp(cpu_type, model->name, len)) {
-> +                error_setg(errp, "We cannot guarantee the CPU type '%s' works "
-> +                        "with KVM on this host", model->name);
-> +                return NULL;
-> +            }
-> +
->      }
-> 
-> +valid:
-> +
->      oc = cpu_class_by_name(TYPE_ARM_CPU, model->name);
->      if (!oc) {
->          error_setg(errp, "The CPU type '%s' is not a recognized ARM CPU type",
-> @@ -130,25 +153,6 @@ CpuModelExpansionInfo
-> *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->          return NULL;
->      }
-> 
-> -    if (kvm_enabled()) {
-> -        const char *cpu_type = current_machine->cpu_type;
-> -        int len = strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
-> -        bool supported = false;
-> -
-> -        if (!strcmp(model->name, "host") || !strcmp(model->name, "max")) {
-> -            /* These are kvmarm's recommended cpu types */
-> -            supported = true;
-> -        } else if (strlen(model->name) == len &&
-> -                   !strncmp(model->name, cpu_type, len)) {
-> -            /* KVM is enabled and we're using this type, so it works. */
-> -            supported = true;
-> -        }
-> -        if (!supported) {
-> -            error_setg(errp, "We cannot guarantee the CPU type '%s' works "
-> -                             "with KVM on this host", model->name);
-> -            return NULL;
-> -        }
-> -    }
-> 
->      if (model->props) {
->          qdict_in = qobject_to(QDict, model->props);
-> @@ -159,62 +163,52 @@ CpuModelExpansionInfo
-> *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->      }
-> 
->      obj = object_new(object_class_get_name(oc));
-> +    qdict_out = qdict_new();
-> 
->      if (qdict_in) {
->          Visitor *visitor;
-> -        Error *err = NULL;
-> +        QObject *value;
-> 
->          visitor = qobject_input_visitor_new(model->props);
->          visit_start_struct(visitor, NULL, NULL, 0, &err);
->          if (err) {
-> -            object_unref(obj);
-> -            error_propagate(errp, err);
-> -            return NULL;
-> +            visit_free(visitor);
-> +            goto cleanup;
->          }
-> -
->          i = 0;
->          while ((name = cpu_model_advertised_features[i++]) != NULL) {
-> -            if (qdict_get(qdict_in, name)) {
-> +            value = qdict_get(qdict_in, name);
-> +            if (value) {
->                  object_property_set(obj, visitor, name, &err);
-> -                if (err) {
-> +                if (!err) {
-> +                    qobject_ref(value);
-> +                } else {
->                      break;
->                  }
-> +
-> +            } else {
-> +               value = object_property_get_qobject(obj, name, &err);
->              }
-> -        }
-> 
-> +            if (value) {
-> +                qdict_put_obj(qdict_out, name, value);
-> +            }
-> +        }
->          if (!err) {
->              visit_check_struct(visitor, &err);
->          }
->          visit_end_struct(visitor, NULL);
->          visit_free(visitor);
->          if (err) {
-> -            object_unref(obj);
-> -            error_propagate(errp, err);
-> -            return NULL;
-> +            goto cleanup;
->          }
-> +
->      }
-> 
->      expansion_info = g_new0(CpuModelExpansionInfo, 1);
->      expansion_info->model = g_malloc0(sizeof(*expansion_info->model));
->      expansion_info->model->name = g_strdup(model->name);
-> 
-> -    qdict_out = qdict_new();
-> -
-> -    i = 0;
-> -    while ((name = cpu_model_advertised_features[i++]) != NULL) {
-> -        ObjectProperty *prop = object_property_find(obj, name, NULL);
-> -        if (prop) {
-> -            Error *err = NULL;
-> -            QObject *value;
-> -
-> -            assert(prop->get);
-> -            value = object_property_get_qobject(obj, name, &err);
-> -            assert(!err);
-> -
-> -            qdict_put_obj(qdict_out, name, value);
-> -        }
-> -    }
-> -
->      if (!qdict_size(qdict_out)) {
->          qobject_unref(qdict_out);
->      } else {
-> @@ -225,4 +219,10 @@ CpuModelExpansionInfo
-> *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->      object_unref(obj);
-> 
->      return expansion_info;
-> +
-> +cleanup:
-> +    object_unref(obj);
-> +    qobject_unref(qdict_out);
-> +    error_propagate(errp, err);
-> +    return NULL;
->  }
-> -- 
-> 2.7.4
-> 
-> BR
-> Beata
-> 
-> > Thanks,
-> > drew
-> 
+The next 3 are something that I noticed while doing other stuff.
+
+In particular, pmull is used heavily during https transfers.
+While cloning a repository, the old code peaks at 27% of the
+total runtime, as measured by perf top.  The new code does
+not quite reach 3% repeating the same clone.
+
+In addition, the new helper functions are in the form that
+will be required for the implementation of SVE2.
+
+The comment in patch 2 about ARMv8.4-DIT is perhaps a stretch,
+but re-reading the pmull instruction description in the current
+ARM ARM brought it to mind.
+
+Since TCG is officially not in the security domain, it's
+probably not a bug to just claim to support DIT without
+actually doing anything to ensure the algorithms used are in
+fact timing independent of the data.
+
+On the other hand, I expect the bit distribution of stuff
+going through these sort of hashing algorithms to approach
+50% 1's and 0's, so I also don't think we gain anything on
+average to terminate the loop early.
+
+Thoughts on DIT specifically?
+
+
+r~
+
+
+Richard Henderson (4):
+  target/arm: Vectorize USHL and SSHL
+  target/arm: Convert PMUL.8 to gvec
+  target/arm: Convert PMULL.64 to gvec
+  target/arm: Convert PMULL.8 to gvec
+
+ target/arm/helper-sve.h    |   2 +
+ target/arm/helper.h        |  21 ++-
+ target/arm/translate.h     |   6 +
+ target/arm/neon_helper.c   | 117 -------------
+ target/arm/translate-a64.c |  83 ++++-----
+ target/arm/translate.c     | 350 ++++++++++++++++++++++++++++++++-----
+ target/arm/vec_helper.c    | 211 ++++++++++++++++++++++
+ 7 files changed, 562 insertions(+), 228 deletions(-)
+
+-- 
+2.17.1
+

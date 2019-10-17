@@ -1,111 +1,119 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1066884wrm;
-        Thu, 17 Oct 2019 08:00:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwNSCy8kK4/de9869wkaKORmvzQesiq+CCV24HrA+rTz3FuxJjyPOlUfdkMN6f0OAzpTMyQ
-X-Received: by 2002:ac8:53cb:: with SMTP id c11mr854832qtq.162.1571324453517;
-        Thu, 17 Oct 2019 08:00:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571324453; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1100802wrm;
+        Thu, 17 Oct 2019 08:25:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyronpVcNpCSAS7awA6dFNZbS22xFD58uqfE7Gi4zpRaZ+a069UIBTbzwt5qD1hZ58VI+q9
+X-Received: by 2002:a17:906:46c3:: with SMTP id k3mr4062388ejs.70.1571325924297;
+        Thu, 17 Oct 2019 08:25:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571325924; cv=none;
         d=google.com; s=arc-20160816;
-        b=FHDTm5aurNRuQiahVTT84r2bTpJdrUILLRaqu+yCIPh1x80LcAIgMyQvN7h99dWkU4
-         hKyIU5ukI5Q1zZyigYRDd3nqjxW8aYBX7wsN+aAN/GeK9sahqM/8OBPlwMqMbnlVUv1r
-         sSiiQRFQrKnmE5yzht9sVSq3eOIJf2qSdE1hZFNyQeAZ/jS8PtLdANbey6n1Yz4Jc36V
-         D5WVOp1JNzJ1qyWsve8LZAvRSHdK1HTB2Qr2nbjAhuYg02NTs9fJCyCdxonovoTmYVFD
-         V39tJt2P6shZgp289p4DN53uwjieJuLw5ZsS3Xe1HunlqXd+xgOK2uxjfQAOp/+7qo7A
-         YnJQ==
+        b=iTjchuIxmZeq2Jn6ZB5MIjH74Y1/f8ETnzPohh29082NLSvqMmlT3fFfCGVRsvFkFJ
+         ONtKMbG2ZJgsZRNWnqS+OU/JTLI/f8jfv/E8wMbARyOa5WuaqnVr229PdxJsGgXoET92
+         BIiazX1Fth6OLrnhFPxp+sP92/kV6ytoLh/JR50K//okVIjpoUrY2OO8M78S5uUviKdr
+         f5us8gZapiB3F+DwNb5DvcQSlOcXzLFJumDdf7jEdE4oQnoe/slt0aLmFNwu3AsWdIBP
+         XrzwJy77yyEgVK+vc+RZfbJwf6quIvGb1QTqYPpzH5rQwUeam0cc3/xDu0FWko9XGOZK
+         +Org==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=9yQ/BR5AE5KRDQdD7zvq4OVNk5mn+Sha2hM/Ld11IEQ=;
-        b=dtRWAdoRrk5WCsoePafiI0Zkf4mVMz3p3GLm+6WqdC7knjT2furC4H6E3FoTmM/tU7
-         qif3V5VkzHyCyeAaTEd4jmPgFbK8wxs1dNXPXDLTOMH0ffuhgIX/BSKGwDjDxaiH5nQN
-         2ati+/+g8rRteKUiXyf8syHHrpz0Q6/a10PPfb9mKDWpAG+M2yDj4fjUWGvG/7+mmzA+
-         ZbLCoXudjqwyd0f1kfeq+QW2sNHx/JNwJ7E2G3wB5bg5Rsb8M+gOzcKbUyH7DO3Vy91W
-         jaxGR2xvg3m9LTJj5RbilCuKBLabLNL7oreQHeNZ62HPzWG13TK6InKzQCLnae4JxCUG
-         800g==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=0DN0b5UKbUanEX/TRvsJ4e4lLM4dURX19s46UiOAC/s=;
+        b=ErOg4q7+wl3qYlQLx8Xn3OojYTplgetW0uv0tdPPigKHjp9RdCM4m/LO6Q4HHrHzGH
+         DUSvSxjMgSbxfpXZ7kttKqdcZtLFiT3Kcf+dAaCcg1kGVVT0RUkKa/Cg//x34q8NdY/6
+         txc05zjHTM8lqdP4VG8BY6MPnHOo9l+GKKO8vD0Y3HrR3+7Ng9r47OpgsFh/fGzMV7qP
+         +AWt3XxL23cZ8ccLgGMgC1sZvtE8BPCN+ArWkhL7gXbbJNbyVhYZE/y4CrHYlk5d7ZYh
+         P1bZ6hlrcQrlFyE3QZJErt6pjs5A9i1dryHx0pCDKH7jue5fQg1ziTiULBSduvKxwZii
+         3+Sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jeITxR16;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P1cEHYG5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t51si2561626qvt.186.2019.10.17.08.00.53
+        by mx.google.com with ESMTPS id oz20si1490403ejb.436.2019.10.17.08.25.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2019 08:00:53 -0700 (PDT)
+        Thu, 17 Oct 2019 08:25:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jeITxR16;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P1cEHYG5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50078 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iL7Gm-0000PE-Jy
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 11:00:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45450)
+	id 1iL7eU-0006bp-SH
+	for alex.bennee@linaro.org; Thu, 17 Oct 2019 11:25:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47993)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iL6au-0005SI-R5
- for qemu-devel@nongnu.org; Thu, 17 Oct 2019 10:17:37 -0400
+ (envelope-from <philmd@redhat.com>) id 1iL6qS-0000yb-GH
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 10:33:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iL6at-0003ns-SJ
- for qemu-devel@nongnu.org; Thu, 17 Oct 2019 10:17:36 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:39859)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iL6at-0003nI-NR
- for qemu-devel@nongnu.org; Thu, 17 Oct 2019 10:17:35 -0400
-Received: by mail-pf1-x443.google.com with SMTP id v4so1754260pff.6
- for <qemu-devel@nongnu.org>; Thu, 17 Oct 2019 07:17:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=9yQ/BR5AE5KRDQdD7zvq4OVNk5mn+Sha2hM/Ld11IEQ=;
- b=jeITxR165kEiv1EC13+7t2DXybNHzq/I18N2PH3vo18ewiNr0tI4+tKOqHa0/0K2n/
- WtvLCHAb1ZjwwgdtQKH1F5FUWq2xplUQqW9/E8BRK7BxwacBb72Pps83rpbpM0jfHJlE
- B9koNwI/s/cvqi/+1JqTMw75P+B6HaH7EflXybkVvPDHiS6ezmL6s4NE+yQCdntJZ/j4
- hAKQpC8kCNq7p2PHtSiG97DQacbAOFy+55+ZUWugOJGYrctqmGU5x4+9V4p5USgHrzFw
- VdUYGerPpjlVqhJl59XXkKjZ4q/vbKRlQ3SCra18UpVTw8XjWKgSGhZ9n5DJU6WvLrwu
- kVow==
+ (envelope-from <philmd@redhat.com>) id 1iL6qR-0005gr-1x
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 10:33:40 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:20863
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iL6qQ-0005gO-R3
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 10:33:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1571322817;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0DN0b5UKbUanEX/TRvsJ4e4lLM4dURX19s46UiOAC/s=;
+ b=P1cEHYG5/cNqFDyFo+GYpQNtwiqx9C1Gd8HIDvop65MP5Xz3qf2/6NhtmPXQ2uskQJBrXD
+ u7fDtCsY7QN+ODaVh9hjSkScnZfmLi8sKu0pCd2MGcErJ8QWKSSTBZV3xyPeHG21h+Zp+a
+ BKbz8O9/WUe/uKvcw0pTe36m0AI75r8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-183--58yd14sN_qooLXVsA5yAQ-1; Thu, 17 Oct 2019 10:33:36 -0400
+Received: by mail-wr1-f72.google.com with SMTP id k4so1066593wru.1
+ for <qemu-devel@nongnu.org>; Thu, 17 Oct 2019 07:33:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=9yQ/BR5AE5KRDQdD7zvq4OVNk5mn+Sha2hM/Ld11IEQ=;
- b=iNf+bZzQ+gkqXUbSuMuvO80GEGm2jNdu3qDENpOXS5f0Rw7vhSteNnlTwo5VlI/o5x
- /Ir6+Ti2qDnLv3wTG8PYXEZVEcjrBsQyelAtC1NpNvkWk76hdDwXPH90KAAyclPze4EC
- q80PqQMp45OJbmzHLoPRIBYAJ/j1iCan9o3lUE5ogqvKLosMhV8f7k+5LJh0ZA6kp8X9
- Ju76Iph5TXRPVNeafONk6kuV7G2soVYKAG5CK9spSN9G1ogpYOWAw5p+bnPapvluxLjw
- BX2IL4te3yxxy9LbEnVDRnLQHECbRGixZjubrraosb7HCdBX7dqcjxQJerk1NEq/8cAI
- 5W9A==
-X-Gm-Message-State: APjAAAXUu8TjxHtBWHn2LqHigOxQB8XGAZlXY5eIXY5i4Lj7GxdYBQR4
- Aojzh0DWlktT8H61dylzVfyGrHYF7/8=
-X-Received: by 2002:a17:90a:bf09:: with SMTP id c9mr4765148pjs.9.1571321854439; 
- Thu, 17 Oct 2019 07:17:34 -0700 (PDT)
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id s191sm2543454pgc.94.2019.10.17.07.17.33
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 17 Oct 2019 07:17:33 -0700 (PDT)
+ bh=brJm6Hpaai1XMyXMQedvlncKTY5kxTaja0y7tcfRAeE=;
+ b=cgxPpPLN6mOgqJyykIRAmpaxeLAMjVs4YyhxHeWYF/jBZGjFfWUbHJFoQYW17rsNPO
+ NhfV9JE5Cj0yTKyGP4gNHDD5MhTAlBh47dOjnxs2otLyDZSHi8XvAHB2fBEmYgjIgFLk
+ ozjIcKFaykfW8RQiN7+51GD/lG+VUVUI8xwt0N15UznsqJaJMVKU6yNPrI/5fmkbYGSb
+ svLWLEmEIj3LMoYP41YyLhzHpW7LR2cya0WWTub7nDJKz0M9ZUpi3vKICha/PV+ayVgF
+ bWXXhXovFDuLTto7D+oKk2NBZsbP0PVTRH7un1+XQG9WmbgJ5xhJnxYe7DlE8oisMOG8
+ U6KA==
+X-Gm-Message-State: APjAAAUpBd2oMsdhE1NeJhtRivOythE/n3zN2coICPqu2ttghA5qD7Hp
+ hjpqCoFnLvyeS7Il68eLfjq4aM2tgILvAhT5nNrYFiA5OUiUy/1vuM0GVLkj1/fYP85aqjRX9KQ
+ EPqdeCb2uPf0ZWTk=
+X-Received: by 2002:a5d:4a8d:: with SMTP id o13mr3485973wrq.227.1571322815109; 
+ Thu, 17 Oct 2019 07:33:35 -0700 (PDT)
+X-Received: by 2002:a5d:4a8d:: with SMTP id o13mr3485940wrq.227.1571322814596; 
+ Thu, 17 Oct 2019 07:33:34 -0700 (PDT)
+Received: from [192.168.50.32] (243.red-88-26-246.staticip.rima-tde.net.
+ [88.26.246.243])
+ by smtp.gmail.com with ESMTPSA id f18sm2386846wrv.38.2019.10.17.07.33.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 17 Oct 2019 07:33:34 -0700 (PDT)
 Subject: Re: [PATCH] hw/timer/arm_mptimer.c: Undo accidental rename of
  arm_mptimer_init()
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20191017133331.5901-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <6491b350-7fa3-4877-c8e3-d0e633d1bf2f@linaro.org>
-Date: Thu, 17 Oct 2019 07:17:32 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <b9263235-7786-2e24-943c-32626f00dd75@redhat.com>
+Date: Thu, 17 Oct 2019 16:33:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
 In-Reply-To: <20191017133331.5901-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::443
+X-MC-Unique: -58yd14sN_qooLXVsA5yAQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -119,21 +127,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KpLL28BBSpKU
+X-TUID: yEgvahdgxO0W
 
-On 10/17/19 6:33 AM, Peter Maydell wrote:
+On 10/17/19 3:33 PM, Peter Maydell wrote:
 > In commit b01422622b we did an automated rename of the ptimer_init()
 > function to ptimer_init_with_bh().  Unfortunately this caught the
 > unrelated arm_mptimer_init() function.  Undo that accidental
 > renaming.
-> 
+>=20
 > Fixes: b01422622b7c7293196fdaf1dbb4f495af44ecf9
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
 > ---
->  hw/timer/arm_mptimer.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>   hw/timer/arm_mptimer.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
+> index fdf97d1800f..2bf11f788c3 100644
+> --- a/hw/timer/arm_mptimer.c
+> +++ b/hw/timer/arm_mptimer.c
+> @@ -237,7 +237,7 @@ static void arm_mptimer_reset(DeviceState *dev)
+>       }
+>   }
+>  =20
+> -static void arm_mptimer_init_with_bh(Object *obj)
+> +static void arm_mptimer_init(Object *obj)
+>   {
+>       ARMMPTimerState *s =3D ARM_MPTIMER(obj);
+>  =20
+> @@ -319,7 +319,7 @@ static const TypeInfo arm_mptimer_info =3D {
+>       .name          =3D TYPE_ARM_MPTIMER,
+>       .parent        =3D TYPE_SYS_BUS_DEVICE,
+>       .instance_size =3D sizeof(ARMMPTimerState),
+> -    .instance_init =3D arm_mptimer_init_with_bh,
+> +    .instance_init =3D arm_mptimer_init,
+>       .class_init    =3D arm_mptimer_class_init,
+>   };
+>  =20
+>=20
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~

@@ -1,108 +1,86 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp739977wrm;
-        Thu, 17 Oct 2019 03:22:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy7Ky2WdvL4w7wX+qABqp8kn8hdYiCkwl2jb6JKVi1GOCzphZ5qaLydHMipjf8AszP7G1u9
-X-Received: by 2002:a05:620a:14b9:: with SMTP id x25mr2582391qkj.9.1571307741188;
-        Thu, 17 Oct 2019 03:22:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571307741; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp837039wrm;
+        Thu, 17 Oct 2019 04:53:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqztWI5EZ7mbSCvZFMJMzVuqbEmohN8CpY/4xjXjloI53OJXOFOwaLp1PhJMTzC79Vy/6n3r
+X-Received: by 2002:a50:e409:: with SMTP id d9mr3228919edm.254.1571313190304;
+        Thu, 17 Oct 2019 04:53:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571313190; cv=none;
         d=google.com; s=arc-20160816;
-        b=d+tUhVGgSrBRWcg+75ZYYjWvkvuy7rG2HRGqXNPn+fKZLcuBnPLIteT28ZE+xMtC/f
-         U5CqisJNe/jm1RGYBbgQEkS2OkWq9e9PZTFcoJVeMsny/TeN54hCRalGI2Derhd5tP6o
-         dmvn5puObblgqe5nV4B/EGq5x3/OX8sYtT0qrjPnrVj/TcvPwXyNqNy7z9ZmvsjEelfL
-         G5oFulJA1pT8UUHoGMl3M8uTGeunva9K2RrCET9e+2bZiF1gMubzj7dwbwALQB2aMINX
-         zJPO3MH+XMFYzNAyb9vJMzbnGL/IZhcScO3vU+EPpF62JotO4bMZ53N1YVF9b4Sq0VMU
-         hi5A==
+        b=sRxtWkOjMfCyDCUZAx5RsqYNyO2YO2eUmFd/yiIhI9JJPHuNW12MuiXk+X1cP8BsyO
+         id2TLVGb6lq8fayXbQd1RYPKLkdE2Fjuab/oJIPjnegJleGQU59J+cuB8FrOtciNFck/
+         CMMowlWNpEzWluakBXE2x6ofThBeqnDbuWOH+eLjcXTHcePsICb1v9AK9IaPyogol9dl
+         /CWViwn0z6ymIVv4gWXuablf9nZ9IeBMJR1ov/AbA8IxHSY2G/75miKiCX0jCct80MHM
+         56hlHcRws7c+V/XbQiyRQcF/zxq8tE/mdvmHtZnNx0y7PPOMyII7d0rEhzzZWIGajglH
+         XWAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=t+eIDWCltQpOLnREZqr/9qimNZYVLZj3DTMpEmXrRXk=;
-        b=JRqXT0ypIMRIQmmzYwtxcmGS9K4JwvpkGTOOoarquF/jwrJsrICO+DCbxDolTjWPkK
-         y7DiX5jNlIUtt+C3vPCun28UVp+LjISHlSPaiM2UUt167upTWt1G9eEq19+Gt8Kqw6zV
-         4rTXhAkq3bAL/BP+GGijZYe2KxVPTUtJw2DVSTDU/x2DCfoKtgm818aj+7eQ9+g/w7Si
-         VQ4Z0fMsVmvAxYoyVK8FIaE9pQNpoff5XOkOhSjO4wJCrWUbdMtCVzdpcq4BL2EMDmNk
-         nkP66D5bXDlOyFNdZrLYKAtaJtTaW+miTY/6Q30VqN6kptcl3RNLksvNtWxdgHGKEgW1
-         A6Wg==
+        bh=KisE1pEbFm/c4Vds3BfEZeauB0HTz62ytXgdEdLx0Uc=;
+        b=nLU5/hxObYRwK6b3IYpYhPWTSMl3erf8T1dDCvLq6u/7Nj85oKNziPvo1wrH7rGOMe
+         2yvWdMCGiMBcdT+bd4kBPL/3rIrCh4f1shDkwoh5ij2IWDeEIT8ufE9JhsF/ltlfWHaf
+         RIC0sMTyVuT/RE+8LKTCcgX1rMAthXjdfwfKP72Kab/g7Aj7MX30P76MZkHOfZPBujQa
+         hutdbWh7j2VpLHoddShbuqZWM1rHQZwDT0KYtrs7YPPuMAcBEiQtOK0Qdd708O43hw6v
+         0EAUz8swKrkSApticzeXfSzn3RqhWIC2fMFHlbTky5XCDH+V77tnI0PTM2qdRP7GPLY3
+         qHeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 141si1620425qkf.183.2019.10.17.03.22.21
+        by mx.google.com with ESMTPS id w8si1304767edq.391.2019.10.17.04.53.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2019 03:22:21 -0700 (PDT)
+        Thu, 17 Oct 2019 04:53:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41656 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44784 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iL2vE-0002DQ-GT
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 06:22:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60477)
+	id 1iL4L7-0006uC-4I
+	for alex.bennee@linaro.org; Thu, 17 Oct 2019 07:53:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49930)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iL2v5-0002AA-94
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 06:22:14 -0400
+ (envelope-from <clg@kaod.org>) id 1iL4Kq-0006rK-G1
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 07:52:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iL2v2-00006o-6n
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 06:22:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52092)
+ (envelope-from <clg@kaod.org>) id 1iL4Ko-000548-Av
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 07:52:52 -0400
+Received: from 8.mo68.mail-out.ovh.net ([46.105.74.219]:43429)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iL2v1-00006F-Vp
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 06:22:08 -0400
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id EC6A6C05AA56
- for <qemu-arm@nongnu.org>; Thu, 17 Oct 2019 10:22:06 +0000 (UTC)
-Received: by mail-wm1-f72.google.com with SMTP id o128so3440086wmo.1
- for <qemu-arm@nongnu.org>; Thu, 17 Oct 2019 03:22:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=9zYRSMLnnbJ8ZnnpJ56K0ySwTNpSPZDolsr4LmqlR94=;
- b=OM+JxiA+lRdvUqJJRsyp/Hm+NE62fAmHK9lY1tE4M5DH5LFZFQa+7K8AeZrcvvcshb
- iSaskjevB+mIG6YqhmlccfRHZed2XMDSAdiISxUBqL55gvokSm2SE+hqaw+1uIHd5UpK
- N4gbmZY1MxvHc1HytK258vXmJSWK6J0pXtTqpgSMk0GDIWkPxiBvaVsshaiEIPtF3Iuy
- BEeHe7ljDYRlzAu3ugwJlao7qsC3K+9oDEJVW5dMnCRzM77dnR8i7kwWY9/9gQ3gL2tv
- ODPsZst9L7GPVl45NPP3geRRB3BvrLfCYOcltZUhHCVEoS9u/3+a4dw8g9r2uOQrsJjj
- dPJw==
-X-Gm-Message-State: APjAAAUz1RvyAs3KTpGYc3qeAAOmE7JknONQtAy5ETk+spEC1ecc+uvo
- avqHamLs7bk0bQyUmKEASFsmKIrM49d8qa38Tl8+FE6AKSaCABiLH7xQU9VG7YlKNDU/jzlk16l
- xXY+frkM6guxs
-X-Received: by 2002:adf:ab5b:: with SMTP id r27mr2397511wrc.13.1571307725640; 
- Thu, 17 Oct 2019 03:22:05 -0700 (PDT)
-X-Received: by 2002:adf:ab5b:: with SMTP id r27mr2397483wrc.13.1571307725324; 
- Thu, 17 Oct 2019 03:22:05 -0700 (PDT)
-Received: from [192.168.1.36] (14.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.14])
- by smtp.gmail.com with ESMTPSA id l18sm2493759wrn.48.2019.10.17.03.22.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Oct 2019 03:22:04 -0700 (PDT)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iL4Ko-00053g-1W
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 07:52:50 -0400
+Received: from player735.ha.ovh.net (unknown [10.109.160.12])
+ by mo68.mail-out.ovh.net (Postfix) with ESMTP id 9564314742E
+ for <qemu-arm@nongnu.org>; Thu, 17 Oct 2019 13:52:47 +0200 (CEST)
+Received: from kaod.org (deibp9eh1--blueice1n4.emea.ibm.com [195.212.29.166])
+ (Authenticated sender: clg@kaod.org)
+ by player735.ha.ovh.net (Postfix) with ESMTPSA id 5801BB17DA5A;
+ Thu, 17 Oct 2019 11:52:35 +0000 (UTC)
 Subject: Re: [PATCH 5/5] aspeed/i2c: Add trace events
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Stefan Hajnoczi <stefanha@redhat.com>
 References: <20191016085035.12136-1-clg@kaod.org>
  <20191016085035.12136-6-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <1e79a3e1-1531-11f8-9306-edfecad9896e@redhat.com>
-Date: Thu, 17 Oct 2019 12:22:03 +0200
+ <1e79a3e1-1531-11f8-9306-edfecad9896e@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <ed9652d8-a72b-e2ff-37d7-1e004fa2b3ce@kaod.org>
+Date: Thu, 17 Oct 2019 13:52:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20191016085035.12136-6-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <1e79a3e1-1531-11f8-9306-edfecad9896e@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
+X-Ovh-Tracer-Id: 6201175212401920979
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrjeejgdeghecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 46.105.74.219
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -119,280 +97,371 @@ Cc: Jae Hyun Yoo <jae.hyun.yoo@linux.intel.com>,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9wdTVE8O/Kwk
+X-TUID: QxrfdgRK5tKs
 
-Hi C=C3=A9dric,
+Hello Philippe,
 
-On 10/16/19 10:50 AM, C=C3=A9dric Le Goater wrote:
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->   hw/i2c/aspeed_i2c.c | 93 ++++++++++++++++++++++++++++++++++++++------=
--
->   hw/i2c/trace-events |  9 +++++
->   2 files changed, 89 insertions(+), 13 deletions(-)
+On 17/10/2019 12:22, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi C=C3=A9dric,
 >=20
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 030d9c56be65..2da04a4bff30 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -28,6 +28,7 @@
->   #include "hw/i2c/aspeed_i2c.h"
->   #include "hw/irq.h"
->   #include "hw/qdev-properties.h"
-> +#include "trace.h"
->  =20
->   /* I2C Global Register */
->  =20
-> @@ -158,6 +159,13 @@ static inline void aspeed_i2c_bus_raise_interrupt(=
-AspeedI2CBus *bus)
->   {
->       AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
->  =20
-> +    trace_aspeed_i2c_bus_raise_interrupt(bus->intr_status,
-> +          bus->intr_status & I2CD_INTR_TX_NAK ? "nak|" : "",
-> +          bus->intr_status & I2CD_INTR_TX_ACK ? "ack|" : "",
-> +          bus->intr_status & I2CD_INTR_RX_DONE ? "done|" : "",
-> +          bus->intr_status & I2CD_INTR_NORMAL_STOP ? "normal|" : "",
-> +          bus->intr_status & I2CD_INTR_ABNORMAL ? "abnormal" : "");
-> +
->       bus->intr_status &=3D bus->intr_ctrl;
->       if (bus->intr_status) {
->           bus->controller->intr_status |=3D 1 << bus->id;
-> @@ -170,41 +178,57 @@ static uint64_t aspeed_i2c_bus_read(void *opaque,=
- hwaddr offset,
->   {
->       AspeedI2CBus *bus =3D opaque;
->       AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
-> +    uint64_t value =3D -1;
->  =20
->       switch (offset) {
->       case I2CD_FUN_CTRL_REG:
-> -        return bus->ctrl;
-> +        value =3D bus->ctrl;
-> +        break;
->       case I2CD_AC_TIMING_REG1:
-> -        return bus->timing[0];
-> +        value =3D bus->timing[0];
-> +        break;
->       case I2CD_AC_TIMING_REG2:
-> -        return bus->timing[1];
-> +        value =3D bus->timing[1];
-> +        break;
->       case I2CD_INTR_CTRL_REG:
-> -        return bus->intr_ctrl;
-> +        value =3D bus->intr_ctrl;
-> +        break;
->       case I2CD_INTR_STS_REG:
-> -        return bus->intr_status;
-> +        value =3D bus->intr_status;
-> +        break;
->       case I2CD_POOL_CTRL_REG:
-> -        return bus->pool_ctrl;
-> +        value =3D bus->pool_ctrl;
-> +        break;
->       case I2CD_BYTE_BUF_REG:
-> -        return bus->buf;
-> +        value =3D bus->buf;
-> +        break;
->       case I2CD_CMD_REG:
-> -        return bus->cmd | (i2c_bus_busy(bus->bus) << 16);
-> +        value =3D bus->cmd | (i2c_bus_busy(bus->bus) << 16);
-> +        break;
->       case I2CD_DMA_ADDR:
->           if (!aic->has_dma) {
->               qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  _=
-_func__);
-> -            return -1;
-> +            break;
->           }
-> -        return bus->dma_addr;
-> +        value =3D bus->dma_addr;
-> +        break;
->       case I2CD_DMA_LEN:
->           if (!aic->has_dma) {
->               qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  _=
-_func__);
-> -            return -1;
-> +            break;
->           }
-> -        return bus->dma_len;
-> +        value =3D bus->dma_len;
-> +        break;
-> +
->       default:
->           qemu_log_mask(LOG_GUEST_ERROR,
->                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__=
-, offset);
-> -        return -1;
-> +        value =3D -1;
-> +        break;
->       }
-> +
-> +    trace_aspeed_i2c_bus_read(bus->id, offset, size, value);
-> +    return value;
->   }
->  =20
->   static void aspeed_i2c_set_state(AspeedI2CBus *bus, uint8_t state)
-> @@ -246,6 +270,9 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, u=
-int8_t pool_start)
->           for (i =3D pool_start; i < I2CD_POOL_TX_COUNT(bus->pool_ctrl)=
-; i++) {
->               uint8_t *pool_base =3D aic->bus_pool_base(bus);
->  =20
-> +            trace_aspeed_i2c_bus_send("BUF", i + 1,
-> +                                      I2CD_POOL_TX_COUNT(bus->pool_ctr=
-l),
-> +                                      pool_base[i]);
->               ret =3D i2c_send(bus->bus, pool_base[i]);
->               if (ret) {
->                   break;
-> @@ -256,6 +283,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, u=
-int8_t pool_start)
->           while (bus->dma_len) {
->               uint8_t data;
->               aspeed_i2c_dma_read(bus, &data);
-> +            trace_aspeed_i2c_bus_send("DMA", bus->dma_len, bus->dma_le=
-n, data);
->               ret =3D i2c_send(bus->bus, data);
->               if (ret) {
->                   break;
-> @@ -263,6 +291,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, u=
-int8_t pool_start)
->           }
->           bus->cmd &=3D ~I2CD_TX_DMA_ENABLE;
->       } else {
-> +        trace_aspeed_i2c_bus_send("BYTE", pool_start, 1, bus->buf);
->           ret =3D i2c_send(bus->bus, bus->buf);
->       }
->  =20
-> @@ -281,6 +310,9 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
->  =20
->           for (i =3D 0; i < I2CD_POOL_RX_SIZE(bus->pool_ctrl); i++) {
->               pool_base[i] =3D i2c_recv(bus->bus);
-> +            trace_aspeed_i2c_bus_recv("BUF", i + 1,
-> +                                      I2CD_POOL_RX_SIZE(bus->pool_ctrl=
-),
-> +                                      pool_base[i]);
->           }
->  =20
->           /* Update RX count */
-> @@ -294,6 +326,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
->               MemTxResult result;
->  =20
->               data =3D i2c_recv(bus->bus);
-> +            trace_aspeed_i2c_bus_recv("DMA", bus->dma_len, bus->dma_le=
-n, data);
->               result =3D address_space_write(&s->dram_as, bus->dma_addr=
+> On 10/16/19 10:50 AM, C=C3=A9dric Le Goater wrote:
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>> ---
+>> =C2=A0 hw/i2c/aspeed_i2c.c | 93 ++++++++++++++++++++++++++++++++++++++=
+-------
+>> =C2=A0 hw/i2c/trace-events |=C2=A0 9 +++++
+>> =C2=A0 2 files changed, 89 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+>> index 030d9c56be65..2da04a4bff30 100644
+>> --- a/hw/i2c/aspeed_i2c.c
+>> +++ b/hw/i2c/aspeed_i2c.c
+>> @@ -28,6 +28,7 @@
+>> =C2=A0 #include "hw/i2c/aspeed_i2c.h"
+>> =C2=A0 #include "hw/irq.h"
+>> =C2=A0 #include "hw/qdev-properties.h"
+>> +#include "trace.h"
+>> =C2=A0 =C2=A0 /* I2C Global Register */
+>> =C2=A0 @@ -158,6 +159,13 @@ static inline void aspeed_i2c_bus_raise_in=
+terrupt(AspeedI2CBus *bus)
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedI2CClass *aic =3D ASPEED_I2C_GET_=
+CLASS(bus->controller);
+>> =C2=A0 +=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_raise_interrupt(bus->i=
+ntr_status,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_stat=
+us & I2CD_INTR_TX_NAK ? "nak|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_stat=
+us & I2CD_INTR_TX_ACK ? "ack|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_stat=
+us & I2CD_INTR_RX_DONE ? "done|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_stat=
+us & I2CD_INTR_NORMAL_STOP ? "normal|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_stat=
+us & I2CD_INTR_ABNORMAL ? "abnormal" : "");
+>> +
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_status &=3D bus->intr_ctrl;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (bus->intr_status) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->controller=
+->intr_status |=3D 1 << bus->id;
+>> @@ -170,41 +178,57 @@ static uint64_t aspeed_i2c_bus_read(void *opaque=
+, hwaddr offset,
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedI2CBus *bus =3D opaque;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedI2CClass *aic =3D ASPEED_I2C_GET_=
+CLASS(bus->controller);
+>> +=C2=A0=C2=A0=C2=A0 uint64_t value =3D -1;
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 switch (offset) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_FUN_CTRL_REG:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->ctrl;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->ctrl;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_AC_TIMING_REG1:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->timing[0];
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->timing[0];
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_AC_TIMING_REG2:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->timing[1];
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->timing[1];
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_INTR_CTRL_REG:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->intr_ctrl;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->intr_ctrl;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_INTR_STS_REG:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->intr_status;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->intr_status=
+;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_POOL_CTRL_REG:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->pool_ctrl;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->pool_ctrl;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_BYTE_BUF_REG:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->buf;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->buf;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_CMD_REG:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->cmd | (i2c_bus=
+_busy(bus->bus) << 16);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->cmd | (i2c_=
+bus_busy(bus->bus) << 16);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_DMA_ADDR:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!aic->has_d=
+ma) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",=C2=A0 __fun=
+c__);
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 re=
+turn -1;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 br=
+eak;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->dma_addr;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->dma_addr;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_DMA_LEN:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!aic->has_d=
+ma) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",=C2=A0 __fun=
+c__);
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 re=
+turn -1;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 br=
+eak;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->dma_len;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->dma_len;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> +
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 default:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_log_mask(L=
+OG_GUEST_ERROR,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "%s: B=
+ad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -1;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D -1;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> +
+>> +=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_read(bus->id, offset, size, v=
+alue);
+>> +=C2=A0=C2=A0=C2=A0 return value;
+>> =C2=A0 }
+>> =C2=A0 =C2=A0 static void aspeed_i2c_set_state(AspeedI2CBus *bus, uint=
+8_t state)
+>> @@ -246,6 +270,9 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, =
+uint8_t pool_start)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for (i =3D pool=
+_start; i < I2CD_POOL_TX_COUNT(bus->pool_ctrl); i++) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 uint8_t *pool_base =3D aic->bus_pool_base(bus);
+>> =C2=A0 +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 trace_aspeed_i2c_bus_send("BUF", i + 1,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 I2CD_POOL_TX_COUNT(bus->pool_ctrl),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 pool_base[i]);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 ret =3D i2c_send(bus->bus, pool_base[i]);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 if (ret) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> @@ -256,6 +283,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, =
+uint8_t pool_start)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 while (bus->dma=
+_len) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 uint8_t data;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 aspeed_i2c_dma_read(bus, &data);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tr=
+ace_aspeed_i2c_bus_send("DMA", bus->dma_len, bus->dma_len, data);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 ret =3D i2c_send(bus->bus, data);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 if (ret) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> @@ -263,6 +291,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, =
+uint8_t pool_start)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd &=3D ~=
+I2CD_TX_DMA_ENABLE;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_send(=
+"BYTE", pool_start, 1, bus->buf);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D i2c_sen=
+d(bus->bus, bus->buf);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 @@ -281,6 +310,9 @@ static void aspeed_i2c_bus_recv(AspeedI2CBu=
+s *bus)
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for (i =3D=
+ 0; i < I2CD_POOL_RX_SIZE(bus->pool_ctrl); i++) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 pool_base[i] =3D i2c_recv(bus->bus);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tr=
+ace_aspeed_i2c_bus_recv("BUF", i + 1,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 I2CD_POOL_RX_SIZE(bus->pool_ctrl),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 pool_base[i]);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Updat=
+e RX count */
+>> @@ -294,6 +326,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 MemTxResult result;
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 data =3D i2c_recv(bus->bus);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tr=
+ace_aspeed_i2c_bus_recv("DMA", bus->dma_len, bus->dma_len, data);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 result =3D address_space_write(&s->dram_as, bus->dma_addr,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MEMTXATTRS_UNSPECIFIED, &data, 1);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 if (result !=3D MEMTX_OK) {
+>> @@ -307,6 +340,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd &=3D ~=
+I2CD_RX_DMA_ENABLE;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data =3D i2c_re=
+cv(bus->bus);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_recv(=
+"BYTE", 1, 1, bus->buf);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->buf =3D (d=
+ata & I2CD_BYTE_BUF_RX_MASK) << I2CD_BYTE_BUF_RX_SHIFT;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 }
+>> @@ -364,6 +398,33 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *b=
+us)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return true;
+>> =C2=A0 }
+>> =C2=A0 +static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 g_autofree char *cmd_flags;
+>> +=C2=A0=C2=A0=C2=A0 uint32_t count;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF=
+_ENABLE)) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 count =3D I2CD_POOL_TX_COU=
+NT(bus->pool_ctrl);
+>> +=C2=A0=C2=A0=C2=A0 } else if (bus->cmd & (I2CD_RX_DMA_ENABLE | I2CD_R=
+X_DMA_ENABLE)) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 count =3D bus->dma_len;
+>> +=C2=A0=C2=A0=C2=A0 } else { /* BYTE mode */
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 count =3D 1;
+>> +=C2=A0=C2=A0=C2=A0 }
+>> +
+>> +=C2=A0=C2=A0=C2=A0 cmd_flags =3D g_strdup_printf("%s%s%s%s%s%s%s%s%s"=
 ,
->                                            MEMTXATTRS_UNSPECIFIED, &dat=
-a, 1);
->               if (result !=3D MEMTX_OK) {
-> @@ -307,6 +340,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
->           bus->cmd &=3D ~I2CD_RX_DMA_ENABLE;
->       } else {
->           data =3D i2c_recv(bus->bus);
-> +        trace_aspeed_i2c_bus_recv("BYTE", 1, 1, bus->buf);
->           bus->buf =3D (data & I2CD_BYTE_BUF_RX_MASK) << I2CD_BYTE_BUF_=
-RX_SHIFT;
->       }
->   }
-> @@ -364,6 +398,33 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bu=
-s)
->       return true;
->   }
->  =20
-> +static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
-> +{
-> +    g_autofree char *cmd_flags;
-> +    uint32_t count;
-> +
-> +    if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
-> +        count =3D I2CD_POOL_TX_COUNT(bus->pool_ctrl);
-> +    } else if (bus->cmd & (I2CD_RX_DMA_ENABLE | I2CD_RX_DMA_ENABLE)) {
-> +        count =3D bus->dma_len;
-> +    } else { /* BYTE mode */
-> +        count =3D 1;
-> +    }
-> +
-> +    cmd_flags =3D g_strdup_printf("%s%s%s%s%s%s%s%s%s",
-> +                                bus->cmd & I2CD_M_START_CMD ? "start|"=
- : "",
-> +                                bus->cmd & I2CD_RX_DMA_ENABLE ? "rxdma=
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_START_CMD ? =
+"start|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_RX_DMA_ENABLE =
+? "rxdma|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_TX_DMA_ENABLE =
+? "txdma|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_RX_BUFF_ENABLE=
+ ? "rxbuf|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_TX_BUFF_ENABLE=
+ ? "txbuf|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_TX_CMD ? "tx=
 |" : "",
-> +                                bus->cmd & I2CD_TX_DMA_ENABLE ? "txdma=
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_RX_CMD ? "rx=
 |" : "",
-> +                                bus->cmd & I2CD_RX_BUFF_ENABLE ? "rxbu=
-f|" : "",
-> +                                bus->cmd & I2CD_TX_BUFF_ENABLE ? "txbu=
-f|" : "",
-> +                                bus->cmd & I2CD_M_TX_CMD ? "tx|" : "",
-> +                                bus->cmd & I2CD_M_RX_CMD ? "rx|" : "",
-> +                                bus->cmd & I2CD_M_S_RX_CMD_LAST ? "las=
-t|" : "",
-> +                                bus->cmd & I2CD_M_STOP_CMD ? "stop" : =
-"");
-> +
-> +    trace_aspeed_i2c_bus_cmd(bus->cmd, cmd_flags, count, bus->intr_sta=
-tus);
-> +}
-> +
->   /*
->    * The state machine needs some refinement. It is only used to track
->    * invalid STOP commands for the moment.
-> @@ -379,6 +440,10 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus=
- *bus, uint64_t value)
->           return;
->       }
->  =20
-> +    if (trace_event_get_state_backends(TRACE_ASPEED_I2C_BUS_CMD)) {
-> +        aspeed_i2c_bus_cmd_dump(bus);
-> +    }
-> +
->       if (bus->cmd & I2CD_M_START_CMD) {
->           uint8_t state =3D aspeed_i2c_get_state(bus) & I2CD_MACTIVE ?
->               I2CD_MSTARTR : I2CD_MSTART;
-> @@ -465,6 +530,8 @@ static void aspeed_i2c_bus_write(void *opaque, hwad=
-dr offset,
->       AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
->       bool handle_rx;
->  =20
-> +    trace_aspeed_i2c_bus_write(bus->id, offset, size, value);
-> +
->       switch (offset) {
->       case I2CD_FUN_CTRL_REG:
->           if (value & I2CD_SLAVE_EN) {
-> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-> index e1c810d5bd08..08db8fa68924 100644
-> --- a/hw/i2c/trace-events
-> +++ b/hw/i2c/trace-events
-> @@ -5,3 +5,12 @@
->   i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
->   i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02=
-x"
->   i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02=
-x"
-> +
-> +# aspeed_i2c.c
-> +
-> +aspeed_i2c_bus_cmd(uint32_t cmd, const char *cmd_flags, uint32_t count=
-, uint32_t intr_status) "handling cmd=3D0x%x %s count=3D%d intr=3D0x%x"
-> +aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str1,=
- const char *str2, const char *str3, const char *str4, const char *str5) =
-"handled intr=3D0x%x %s%s%s%s%s"
-
-There are various trace backends, your output seems designed only for=20
-the "log" backend.
-
-Using 'unsigned is_nak, unsigned is_ack, ...' "nak:%u ack:%u ..." would=20
-make your event compatible with the other backends (and ease their parsin=
-g).
-
-> +aspeed_i2c_bus_read(uint32_t busid, uint64_t offset, unsigned size, ui=
-nt64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
-> +aspeed_i2c_bus_write(uint32_t busid, uint64_t offset, unsigned size, u=
-int64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
-> +aspeed_i2c_bus_send(const char *mode, int i, int count, uint8_t byte) =
-"%s send %d/%d 0x%02x"
-> +aspeed_i2c_bus_recv(const char *mode, int i, int count, uint8_t byte) =
-"%s recv %d/%d 0x%02x"
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_S_RX_CMD_LAS=
+T ? "last|" : "",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_STOP_CMD ? "=
+stop" : "");
+>> +
+>> +=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_cmd(bus->cmd, cmd_flags, coun=
+t, bus->intr_status);
+>> +}
+>> +
+>> =C2=A0 /*
+>> =C2=A0=C2=A0 * The state machine needs some refinement. It is only use=
+d to track
+>> =C2=A0=C2=A0 * invalid STOP commands for the moment.
+>> @@ -379,6 +440,10 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBu=
+s *bus, uint64_t value)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 +=C2=A0=C2=A0=C2=A0 if (trace_event_get_state_backends(TRACE_AS=
+PEED_I2C_BUS_CMD)) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aspeed_i2c_bus_cmd_dump(bu=
+s);
+>> +=C2=A0=C2=A0=C2=A0 }
+>> +
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (bus->cmd & I2CD_M_START_CMD) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint8_t state =3D=
+ aspeed_i2c_get_state(bus) & I2CD_MACTIVE ?
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 I2CD_MSTARTR : I2CD_MSTART;
+>> @@ -465,6 +530,8 @@ static void aspeed_i2c_bus_write(void *opaque, hwa=
+ddr offset,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedI2CClass *aic =3D ASPEED_I2C_GET_=
+CLASS(bus->controller);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool handle_rx;
+>> =C2=A0 +=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_write(bus->id, offset,=
+ size, value);
+>> +
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 switch (offset) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_FUN_CTRL_REG:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (value & I2C=
+D_SLAVE_EN) {
+>> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+>> index e1c810d5bd08..08db8fa68924 100644
+>> --- a/hw/i2c/trace-events
+>> +++ b/hw/i2c/trace-events
+>> @@ -5,3 +5,12 @@
+>> =C2=A0 i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
+>> =C2=A0 i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data=
+:0x%02x"
+>> =C2=A0 i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data=
+:0x%02x"
+>> +
+>> +# aspeed_i2c.c
+>> +
+>> +aspeed_i2c_bus_cmd(uint32_t cmd, const char *cmd_flags, uint32_t coun=
+t, uint32_t intr_status) "handling cmd=3D0x%x %s count=3D%d intr=3D0x%x"
+>> +aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str1=
+, const char *str2, const char *str3, const char *str4, const char *str5)=
+ "handled intr=3D0x%x %s%s%s%s%s"
 >=20
+> There are various trace backends, your output seems designed only for t=
+he "log" backend.
+>=20
+> Using 'unsigned is_nak, unsigned is_ack, ...' "nak:%u ack:%u ..." would=
+ make your event compatible with the other backends (and ease their parsi=
+ng).
+
+I am not sure to understand where the incompatibility is.=20
+Could you explain more please ?=20
+
+Thanks,
+
+C.=20
+
+>> +aspeed_i2c_bus_read(uint32_t busid, uint64_t offset, unsigned size, u=
+int64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
+>> +aspeed_i2c_bus_write(uint32_t busid, uint64_t offset, unsigned size, =
+uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
+>> +aspeed_i2c_bus_send(const char *mode, int i, int count, uint8_t byte)=
+ "%s send %d/%d 0x%02x"
+>> +aspeed_i2c_bus_recv(const char *mode, int i, int count, uint8_t byte)=
+ "%s recv %d/%d 0x%02x"
+>>
+

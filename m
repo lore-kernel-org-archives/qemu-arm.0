@@ -1,166 +1,290 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp435082wrm;
-        Wed, 16 Oct 2019 21:42:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyV+gbIwu8f4qvMMLn5178LZ8WvOqgOK0PSefELCGnhnnoGbw374IvTfkzmqBiOWyeuAc+7
-X-Received: by 2002:ac8:738f:: with SMTP id t15mr1888262qtp.219.1571287373445;
-        Wed, 16 Oct 2019 21:42:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571287373; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp435800wrm;
+        Wed, 16 Oct 2019 21:44:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxC58te3dSD6zmBOOreMisba4/PNUca0zomN/G32kWg/+wEmVG6nuzM4QsSCK9k84Yxis4O
+X-Received: by 2002:a05:6214:686:: with SMTP id r6mr1926192qvz.84.1571287442346;
+        Wed, 16 Oct 2019 21:44:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571287442; cv=none;
         d=google.com; s=arc-20160816;
-        b=QFEfmMlWI3yb4maXU/0ozFQov5d/erkbAeJGXBAXx2mpHHbH7x6cq+BbMiEnDZR1xi
-         CEMk7b3PI0kI5ry4vXtZTY8WsQ8nr2ppmiHKkkjsANFN1vMgO+eDYDgPGzr9fbPKMKZi
-         PxZBPF7akiY2eo51NkvScu2Mi6ATY7MmxLVGI8IurRSBGVQdgUcYpwUwWfkQKnXj3Deb
-         cHJE5+kemImWdtOfqoAyoadZO8Ma7lK//UTJJ+UvNOJ7u5Kg4PjKZE0fimD0VH3mZHMr
-         m3BjF5yM0x5RdDAqDMhKjZPdtA/tVD5KhJ3zDNin29PCaXRZ5/vgjIDXcAXLmeY2HwrU
-         vlRQ==
+        b=W+e3hfSBlyjriwmIx5Ruvwuh63ZhxcgHBBrJ9k0msYb/02SAYopdO4sbnkMI3+KxvV
+         GTkAq73li0BB+ynQODL5CDrzWtnSJbaH/ZbnC3wE+fC7HMaHyw0+5b+duKgM+xWyX02K
+         HVtJV6udEFPUuTMyYBSElox7yK8TGe6SzSHcVLid/QH8vFefvgVn0fStqyVN/Y269CRT
+         Q+TlRT8UxzWcBxlx9ouT6iUopgLXgerHCip4e13lptrDvX/SfbEn2eP/rPgHZym0nem0
+         vQwdt/G8vKhj/5D08BDdm8scikIGq53XdrYddK3hOhRxmhzDT2SoevHDCCS5GzwbWNx7
+         +Qtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=VGGT3zBbzVc/cTftpyLP217c9MkvFdIixs9regxae10=;
-        b=0+xjBrifPaJ73eUITxcOf9RROQMmcVStkE1Yg+G5gGFkCmasmCK+BDoyBfRIeLLkA2
-         D4+Np13krEiqJZkt5g3ApRJT12iw3EFWoIpz31vYjuqFnQXZa1+B5bNPf9/JpR6POPny
-         5Sq/yBeOA+XuV6C+UgVef+3Bgv/lI70KHmGIfane+UwntagZaf10q7wQ1MGG/S0rx9h5
-         FSJa5oh3PV6/oJulJ6oQMYaSwiuvaSvPg6/vK3VLlGNvgz7WSjXIn9VSH76AA1gDB+PU
-         KbDbxCR4GD6rYHdF4auKdYhZBMogeUTHcuupi6odOwXTKHXhtzAnI3941qwUGAY4eCvB
-         QsyQ==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=PZpnzCTp4TAl1mRs0mTpxpQvQZ85cY78nrzStIrtedc=;
+        b=RHKLYkxAxpTNBNJzBp/UeI02NPWAK9b/c5g4oiJnx4ZwPglsTL8FNXdGAs1HCEI7xO
+         yDWuzsKb3AYUWcGyGbDe5nHCb77V81QRcOPo959NP8O3k8jvfBhmehYv8A71myIrjWzr
+         CVrfbPU8prcG4C0SdvaKJEzV6h3cyxMeA6CLgBTWggK60eVy8pBg4TI3EbTmz5V18+Ke
+         Aax38so83Q3gC8VWivgG6MuwRs5x5+uF6xkmvQjkwVhippmnmNyJhMwjyvS7ogefCUv+
+         8fMI82Q/ieOwOXgo0p+wQCxIV5K1Mv0ttBm/Udtb84eAJ1I06S2uhpWWzNSqnXAefbNv
+         IXMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZrUh6pSW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=JfzAzPUF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n36si944851qtf.309.2019.10.16.21.42.53
+        by mx.google.com with ESMTPS id h12si1125752qkh.188.2019.10.16.21.44.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 21:42:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Oct 2019 21:44:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZrUh6pSW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=JfzAzPUF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33112 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33198 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKxci-00076h-CE
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 00:42:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53370)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iKxdp-0008OU-OM
+	for alex.bennee@linaro.org; Thu, 17 Oct 2019 00:44:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53414)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iKxcU-00074i-Nz
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 00:42:39 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iKxcX-00077P-2L
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 00:42:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iKxcS-00024C-Kd
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 00:42:38 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:45253)
+ (envelope-from <richard.henderson@linaro.org>) id 1iKxcV-00025d-Lv
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 00:42:40 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:39529)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iKxcS-00023v-Eg
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 00:42:36 -0400
-Received: by mail-pg1-x532.google.com with SMTP id r1so546471pgj.12
- for <qemu-arm@nongnu.org>; Wed, 16 Oct 2019 21:42:36 -0700 (PDT)
+ id 1iKxcV-00025A-Fy
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 00:42:39 -0400
+Received: by mail-pl1-x642.google.com with SMTP id s17so499464plp.6
+ for <qemu-devel@nongnu.org>; Wed, 16 Oct 2019 21:42:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=VGGT3zBbzVc/cTftpyLP217c9MkvFdIixs9regxae10=;
- b=ZrUh6pSWLktkvMbmRVVzxc8zMZFJfq0BgGhuGdGCzwN/hKtq68o0/ljkdRStxOuq6z
- IUjMU3FcxVTMnO6F3wxxPH+PPGvJOaXnTQOAKg7+FNrdfibPAxEZdQgIbO1FT4WGjj7h
- /BZeuZmXNSOr7zXiKTVD9gGnVfpEo+GET7dyU+olHUk0+ZjraIvcZ6hZvpZSVHjeK6Mk
- IejJ1NfVaHqdNTakupY979pp7abpWdWW1facPRGS36gWE2cx2m7yLSOkpRGVwyP0BYvb
- cfIdLOvVqcPz+fJEMCNuVGgnzwjU3GXdZpk2iocqX34zncc/MOaa1e8S7QLt9m7KtoE0
- Y7LQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=PZpnzCTp4TAl1mRs0mTpxpQvQZ85cY78nrzStIrtedc=;
+ b=JfzAzPUF2/99Y/+DBBydjMifYJAY57nm3672k93VYO/eY3zjqys2cRNrLVii9SgnO2
+ pM2u3chbNOBYnAS9wYSOqv8oqDMMiaynAQhFCF63Gc+nMr/omG7NfbjJJp8AVCd6EDIi
+ FgnAgHSfcd+Dc6oeisrWp2ZcaCnMQE5KBzRmqk7oAGC+eHoljg8DfqS2BK7H/aLvpYP1
+ s8PPTwrEjaM/fDrUv/HYHbs3ODwjyvawTFsCnmn82zcocAbS0WHtDZq2v7O97HW3JeWs
+ PoD5e0hto/HiNNEq1TgO+oZGpF7gxeLZsYLUGepHTfwM5S3ygNR6ud/FeQlUqX4vwlyg
+ 4n0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=VGGT3zBbzVc/cTftpyLP217c9MkvFdIixs9regxae10=;
- b=OFT6ocu+dUwAVtgi7M6VN0V1xd6aR/GmbMGIkTUmLv5OeHEdrWCVehWNlHWLQ4qVDo
- /ibhOvVxtjTdzpy3ErVutPPlFfPvOlrBAjUQXLIit6RHIbyZd9oNIf5O4GOzHeZQgYRB
- c3bvC5K8ohEvDTed/PxJnUClxTNXvrA1emNUaoqBCS7fEoBV996qNUm9LEQOzFlJ/Rhg
- 8AjkopiYmsp3LZmtKM+kKmJFbMqww/AmrSHehjbfGJqyU2MBmyEYsUecRHesCRs/P76p
- qS8Fm772NR+c96GXhtql+YkqfA96eaxodGny2xpWMgBW0GEz3C5R9Afb0aPnbSll1bXs
- NBww==
-X-Gm-Message-State: APjAAAXXFRfq354oZ0Rm3Znt03yYeScZVR273/aafMMrknMBl9e5f8PW
- LBVYsd/P4jfK9TBVGzSX9y20vQ==
-X-Received: by 2002:a63:5a03:: with SMTP id o3mr1846145pgb.381.1571287354897; 
- Wed, 16 Oct 2019 21:42:34 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=PZpnzCTp4TAl1mRs0mTpxpQvQZ85cY78nrzStIrtedc=;
+ b=aIwjWlEiyLthqZ87qNilNINvK9Lp1PeXfj/WPmLb7EuDXC8wvZPZqdUZTzETUVJOAt
+ 96WgQqh4h+HedBGPTCtSWb9BUxrPrJ/NcF5TWW4jMae0WI8lDX2LEepRh/qsLXk6kA8M
+ ZtdrYKXx7BCz9ZaU3F9h+y26WYQZV9YcwrBHKW/NtpztEgUpZjX9fw1QC/x1qHiHvZBj
+ eOuciyJX/OOkEEgb+LBGt1/WhlGaSJ72xHkGVrd7+KKku1KEllE1VIkiCRBeQ8W17H7x
+ DZC6eHJsMMP8AaReZOyQCu0iQZ+D2IbDPcVjcT3FD5O5z2OftFOtau3WbqfNpFQfZEUZ
+ yNZg==
+X-Gm-Message-State: APjAAAXx5xwt/LeCASaxyQCcZmViNHnWYNazjxqKxCgjE6ErRrw3ubtO
+ H7HS/xlrYwtEaW76dfpqoR+2HrPCGdY=
+X-Received: by 2002:a17:902:900c:: with SMTP id
+ a12mr1994684plp.30.1571287357948; 
+ Wed, 16 Oct 2019 21:42:37 -0700 (PDT)
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
  [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id n15sm718923pjt.13.2019.10.16.21.42.32
+ by smtp.gmail.com with ESMTPSA id n15sm718923pjt.13.2019.10.16.21.42.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Oct 2019 21:42:33 -0700 (PDT)
+ Wed, 16 Oct 2019 21:42:37 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/4] target/arm vector improvements
-Date: Wed, 16 Oct 2019 21:42:28 -0700
-Message-Id: <20191017044232.27601-1-richard.henderson@linaro.org>
+Subject: [PATCH 2/4] target/arm: Convert PMUL.8 to gvec
+Date: Wed, 16 Oct 2019 21:42:30 -0700
+Message-Id: <20191017044232.27601-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20191017044232.27601-1-richard.henderson@linaro.org>
+References: <20191017044232.27601-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::532
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::642
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /Q1CDp1FTqcu
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qFtJHnmsJeLH
 
-The first patch has been seen before.
+The gvec form will be needed for implementing SVE2.
 
-  https://patchwork.ozlabs.org/patch/1115039/
+Extend the implementation to operate on uint64_t instead of uint32_t.
+Use a counted inner loop instead of terminating when op1 goes to zero,
+looking toward the required implementation for ARMv8.4-DIT.
 
-It had a bug and I didn't fix it right away and then forgot.
-Fixed now; I had mixed up the operand ordering for aarch32.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/helper.h        |  3 ++-
+ target/arm/neon_helper.c   | 22 ----------------------
+ target/arm/translate-a64.c | 10 +++-------
+ target/arm/translate.c     | 11 ++++-------
+ target/arm/vec_helper.c    | 30 ++++++++++++++++++++++++++++++
+ 5 files changed, 39 insertions(+), 37 deletions(-)
 
-The next 3 are something that I noticed while doing other stuff.
-
-In particular, pmull is used heavily during https transfers.
-While cloning a repository, the old code peaks at 27% of the
-total runtime, as measured by perf top.  The new code does
-not quite reach 3% repeating the same clone.
-
-In addition, the new helper functions are in the form that
-will be required for the implementation of SVE2.
-
-The comment in patch 2 about ARMv8.4-DIT is perhaps a stretch,
-but re-reading the pmull instruction description in the current
-ARM ARM brought it to mind.
-
-Since TCG is officially not in the security domain, it's
-probably not a bug to just claim to support DIT without
-actually doing anything to ensure the algorithms used are in
-fact timing independent of the data.
-
-On the other hand, I expect the bit distribution of stuff
-going through these sort of hashing algorithms to approach
-50% 1's and 0's, so I also don't think we gain anything on
-average to terminate the loop early.
-
-Thoughts on DIT specifically?
-
-
-r~
-
-
-Richard Henderson (4):
-  target/arm: Vectorize USHL and SSHL
-  target/arm: Convert PMUL.8 to gvec
-  target/arm: Convert PMULL.64 to gvec
-  target/arm: Convert PMULL.8 to gvec
-
- target/arm/helper-sve.h    |   2 +
- target/arm/helper.h        |  21 ++-
- target/arm/translate.h     |   6 +
- target/arm/neon_helper.c   | 117 -------------
- target/arm/translate-a64.c |  83 ++++-----
- target/arm/translate.c     | 350 ++++++++++++++++++++++++++++++++-----
- target/arm/vec_helper.c    | 211 ++++++++++++++++++++++
- 7 files changed, 562 insertions(+), 228 deletions(-)
-
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index fc0d594a14..800446e537 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -335,7 +335,6 @@ DEF_HELPER_2(neon_sub_u8, i32, i32, i32)
+ DEF_HELPER_2(neon_sub_u16, i32, i32, i32)
+ DEF_HELPER_2(neon_mul_u8, i32, i32, i32)
+ DEF_HELPER_2(neon_mul_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_mul_p8, i32, i32, i32)
+ DEF_HELPER_2(neon_mull_p8, i64, i32, i32)
+ 
+ DEF_HELPER_2(neon_tst_u8, i32, i32, i32)
+@@ -689,6 +688,8 @@ DEF_HELPER_FLAGS_4(gvec_sshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(gvec_ushl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(gvec_ushl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ 
++DEF_HELPER_FLAGS_4(gvec_pmul_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
+ #ifdef TARGET_AARCH64
+ #include "helper-a64.h"
+ #include "helper-sve.h"
+diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
+index c581ffb7d3..9e7a9a1ac5 100644
+--- a/target/arm/neon_helper.c
++++ b/target/arm/neon_helper.c
+@@ -1131,28 +1131,6 @@ NEON_VOP(mul_u16, neon_u16, 2)
+ 
+ /* Polynomial multiplication is like integer multiplication except the
+    partial products are XORed, not added.  */
+-uint32_t HELPER(neon_mul_p8)(uint32_t op1, uint32_t op2)
+-{
+-    uint32_t mask;
+-    uint32_t result;
+-    result = 0;
+-    while (op1) {
+-        mask = 0;
+-        if (op1 & 1)
+-            mask |= 0xff;
+-        if (op1 & (1 << 8))
+-            mask |= (0xff << 8);
+-        if (op1 & (1 << 16))
+-            mask |= (0xff << 16);
+-        if (op1 & (1 << 24))
+-            mask |= (0xff << 24);
+-        result ^= op2 & mask;
+-        op1 = (op1 >> 1) & 0x7f7f7f7f;
+-        op2 = (op2 << 1) & 0xfefefefe;
+-    }
+-    return result;
+-}
+-
+ uint64_t HELPER(neon_mull_p8)(uint32_t op1, uint32_t op2)
+ {
+     uint64_t result = 0;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 255a168df6..04e25cfe06 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -11110,9 +11110,10 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+     case 0x13: /* MUL, PMUL */
+         if (!u) { /* MUL */
+             gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_mul, size);
+-            return;
++        } else {  /* PMUL */
++            gen_gvec_op3_ool(s, is_q, rd, rn, rm, 0, gen_helper_gvec_pmul_b);
+         }
+-        break;
++        return;
+     case 0x12: /* MLA, MLS */
+         if (u) {
+             gen_gvec_op3(s, is_q, rd, rn, rm, &mls_op[size]);
+@@ -11242,11 +11243,6 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+                 genfn = fns[size][u];
+                 break;
+             }
+-            case 0x13: /* MUL, PMUL */
+-                assert(u); /* PMUL */
+-                assert(size == 0);
+-                genfn = gen_helper_neon_mul_p8;
+-                break;
+             case 0x16: /* SQDMULH, SQRDMULH */
+             {
+                 static NeonGenTwoOpEnvFn * const fns[2][2] = {
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 598bb1cc00..b66a2f6b71 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -5014,16 +5014,17 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+ 
+         case NEON_3R_VMUL: /* VMUL */
+             if (u) {
+-                /* Polynomial case allows only P8 and is handled below.  */
++                /* Polynomial case allows only P8.  */
+                 if (size != 0) {
+                     return 1;
+                 }
++                tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, vec_size, vec_size,
++                                   0, gen_helper_gvec_pmul_b);
+             } else {
+                 tcg_gen_gvec_mul(size, rd_ofs, rn_ofs, rm_ofs,
+                                  vec_size, vec_size);
+-                return 0;
+             }
+-            break;
++            return 0;
+ 
+         case NEON_3R_VML: /* VMLA, VMLS */
+             tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, vec_size, vec_size,
+@@ -5213,10 +5214,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+             tmp2 = neon_load_reg(rd, pass);
+             gen_neon_add(size, tmp, tmp2);
+             break;
+-        case NEON_3R_VMUL:
+-            /* VMUL.P8; other cases already eliminated.  */
+-            gen_helper_neon_mul_p8(tmp, tmp, tmp2);
+-            break;
+         case NEON_3R_VPMAX:
+             GEN_NEON_INTEGER_OP(pmax);
+             break;
+diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
+index fcb3663903..d401282c6f 100644
+--- a/target/arm/vec_helper.c
++++ b/target/arm/vec_helper.c
+@@ -1134,3 +1134,33 @@ void HELPER(gvec_ushl_h)(void *vd, void *vn, void *vm, uint32_t desc)
+     }
+     clear_tail(d, opr_sz, simd_maxsz(desc));
+ }
++
++/*
++ * 8x8->8 polynomial multiply.
++ *
++ * Polynomial multiplication is like integer multiplication except the
++ * partial products are XORed, not added.
++ *
++ * TODO: expose this as a generic vector operation, as it is a common
++ * crypto building block.
++ */
++void HELPER(gvec_pmul_b)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    intptr_t i, j, opr_sz = simd_oprsz(desc);
++    uint64_t *d = vd, *n = vn, *m = vm;
++
++    for (i = 0; i < opr_sz / 8; ++i) {
++        uint64_t nn = n[i];
++        uint64_t mm = m[i];
++        uint64_t rr = 0;
++
++        for (j = 0; j < 8; ++j) {
++            uint64_t mask = (nn & 0x0101010101010101ull) * 0xff;
++            rr ^= mm & mask;
++            mm = (mm << 1) & 0xfefefefefefefefeull;
++            nn = (nn >> 1) & 0x7f7f7f7f7f7f7f7full;
++        }
++        d[i] = rr;
++    }
++    clear_tail(d, opr_sz, simd_maxsz(desc));
++}
 -- 
 2.17.1
 

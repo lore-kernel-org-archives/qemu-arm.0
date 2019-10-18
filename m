@@ -1,101 +1,76 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1027193wrm;
-        Fri, 18 Oct 2019 07:57:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy3ee2fIWNqxJCxdPLrpZ/ht4g9Cdqw6KX5XE/pXojHBPVF+F182n2kTLKwnYgKp8NZFVI4
-X-Received: by 2002:a37:9202:: with SMTP id u2mr9171066qkd.8.1571410627024;
-        Fri, 18 Oct 2019 07:57:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571410627; cv=none;
-        d=google.com; s=arc-20160816;
-        b=sYc+If77wAEwylRq/il5NP6uIaQ8//Nem06Rjqnhv+VDmWV9Un4Xn9FUidh7w5WC8z
-         6F3GPNthQ/RBgp9lBrfHkfHnHpJm0a4cPQn0f+zJ6qLY5qzCshpTwWQxv/gX+AtmCuBS
-         YgcCdHDpMvVnsDPso9t6ajBn8YMqpQbo736+kJQcFJ93sejhMouyJi43NeiaoyvKiLre
-         9cdvk66yOzf+G2HXAsjWx4sL13cl8hYl8MkbH0ok4K7keGvek4T+3eShcQ6hRoCYr/LY
-         kFwbBHje1zbQX+xv5rjF3DQYVjK+mtnfjVwCJzIfVm9MX8ds5OGlYFLw2Bx3HRw8riLo
-         q+Gw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=jf0iD0Uy01XhbMi090dz1RGh1Cj6ASQdG9bTgwlfeCA=;
-        b=CERhAijBWjGyGNqcFYzjF2z+RXYzMHMGZGU/Xhn3lp4+tw/4/hiF0a7EhZgfDB0b9i
-         F3k7+7SjfcFehf1OzmbNifYnFdH0lNyki1x9eAl682rXsoocujMrKIgwDTpKUso9wlcZ
-         6Sjc1Ru9afnj6wquGdmWI8C9A2oBql6nf7lBt8wyl4SaAl25JbmOkNatMsz7/J85rcPI
-         DJD6cTFOsTLKyXlyNaWoX3gfVqcjvGgkWrQvT01MyuAOEYkIB3T1YlDvi1gDUnHUoMwi
-         /PadViQ9afwFTvAWYbg6+gd4lTkYwb9NyZmH6toO2vWZKLNKQdBFM0Q7hUZIyUrV4A09
-         3OQA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uyap7VId;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1043281wrm;
+        Fri, 18 Oct 2019 08:08:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx9H2Pfg7T/0ffEIK3T5ct3PSej1BvnM9MLED+d+1BOWv51+2FSLW6FuuUgUkQyY3GRlXR7
+X-Received: by 2002:a05:6402:120c:: with SMTP id c12mr10125022edw.119.1571411307001;
+        Fri, 18 Oct 2019 08:08:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f57si6454076qvh.44.2019.10.18.07.57.06
+        by mx.google.com with ESMTPS id n19si3349334ejk.264.2019.10.18.08.08.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 07:57:07 -0700 (PDT)
+        Fri, 18 Oct 2019 08:08:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uyap7VId;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41434 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=eUopk+AS;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41562 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLTgf-0007Rg-NR
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 10:57:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37392)
+	id 1iLTrd-0006hz-JR
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:08:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38948)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iLTfO-0005xe-Le
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 10:55:47 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1iLTr6-0006hV-TC
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:07:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iLTfN-00050R-G6
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 10:55:46 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35689)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iLTfN-0004zl-9a
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 10:55:45 -0400
-Received: by mail-ot1-x343.google.com with SMTP id z6so5214174otb.2
- for <qemu-arm@nongnu.org>; Fri, 18 Oct 2019 07:55:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jf0iD0Uy01XhbMi090dz1RGh1Cj6ASQdG9bTgwlfeCA=;
- b=uyap7VIdyhvAbA1h0uyEzHfgED7ZBsAqhh+Tv5gAU9Jfzo7t+DaJ9A5TeoPrxtw0eN
- QDG2FBpLgsEZS9/flyLmG7VXz0CNIxDkOMPhdzRyNREvDri/9RJyzm9K3qfwvKzYzsuD
- ewKhQNX/aoTXQ7DwwxXd3ae/z6ilPUV8V6a7nbQ6pr4eem3FwwOC3hJ55S9dE6E4DH95
- 6gsyhBPuYSkpVf6k8ygi4XZlrGTssJzROe7Egle5dkvAt8wFaoKT65vOXz/+DJA69CUx
- BzpcgvQ/DgkIrByxNTKBLEwt7r2oGyGy7UIi9n6zySCGL58JOHfC3u2mjoqfH31xH/nx
- PkoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=jf0iD0Uy01XhbMi090dz1RGh1Cj6ASQdG9bTgwlfeCA=;
- b=CTM7tmbW1czC9c+KmvyxZlyt4p+is9/GLNUisCzsZWexKA4pGf9qTUHo/082/PItwz
- +kmSqdvzR5mp9SKjzlBu7+tr0eZ40cZglRcgi36zTyrvWHztz/m6sAK0BwcgYcXsmaPk
- g2K2a66dxLigN8KLxN6eQNnjwO7OeERAnnP/mOP7PL00cxOtXQzBEKCEKK5wRpSLRaZa
- OEn90ZPRpePq2FEmWwjkg+d0Ss9fz5h2fGctZQRvXyZUnsjUrBpqpzJOKhLRUBpjL32x
- 1lcIOo8BamMSUJKp2S0ohJFbGSsr8wWvs4LnlYiezGt4xC1bgdUcvYg9I3n6ISQZn0QP
- Tdeg==
-X-Gm-Message-State: APjAAAWEFrl/vNDoYEajGSFH6bt+2GYjwxQK20iGPojGuL0/lUYqUIm4
- 0nDi+TC4VmIHelN+7i5G1vCRjsocQWje5BU1Mtvmyw==
-X-Received: by 2002:a9d:30c1:: with SMTP id r1mr8183098otg.91.1571410544166;
- Fri, 18 Oct 2019 07:55:44 -0700 (PDT)
+ (envelope-from <damien.hedde@greensocs.com>) id 1iLTr5-0000C9-3p
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:07:52 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:38582)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1iLTr4-0000B3-HI; Fri, 18 Oct 2019 11:07:51 -0400
+Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
+ [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPS id 704BE96EF0;
+ Fri, 18 Oct 2019 15:07:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1571411267;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=uVZEjVjf5RkbOzKuBwII7TJZpvbTBPo7Ayc+WX9Uv0Q=;
+ b=eUopk+ASRZQmQL+cpP1uSfZChRMXiUIxX8Qkm348DJGLe8K4raBgX9q/g7iM7ZqjTzPd4i
+ JWMkrf/h96/cDLie0UUhzmKf4Os1IVr2ZF24VirTBVDvRtYTCP0Xysjb9+Do+D48hxEKQI
+ /UM6YBeIZglNk59Rim7HYiT+hG4pDyw=
+From: Damien Hedde <damien.hedde@greensocs.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v5 00/13] Multi-phase reset mechanism
+Date: Fri, 18 Oct 2019 17:06:17 +0200
+Message-Id: <20191018150630.31099-1-damien.hedde@greensocs.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-References: <20191017185110.539-1-richard.henderson@linaro.org>
- <20191017185110.539-20-richard.henderson@linaro.org>
- <CAFEAcA9oJ0P-g87caLKyT1mS2k7YhtNXAOhSgXuMy0bCGwX0WA@mail.gmail.com>
- <aa753ee9-40ce-d6c8-801f-eda74d76fd3d@linaro.org>
- <CAFEAcA--tmMXeFauHRAFeeLr+MXmQq4qcsoxpx1vOVM7ZuLoAQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA--tmMXeFauHRAFeeLr+MXmQq4qcsoxpx1vOVM7ZuLoAQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 18 Oct 2019 15:55:33 +0100
-Message-ID: <CAFEAcA9hzEvmvopeY=nLhFNObxVx4ZVOXjGPs8_u8ySO45Hzpg@mail.gmail.com>
-Subject: Re: [PATCH v7 19/20] target/arm: Rebuild hflags for M-profile.
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+Content-Type: text/plain; charset=UTF-8
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1571411267;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=uVZEjVjf5RkbOzKuBwII7TJZpvbTBPo7Ayc+WX9Uv0Q=;
+ b=Mav+uUqQnveDlUlxVrQvCBj+Kw0Sk0VladuSyY/ifSVNjj4RWUThPSszOZJP9BWuNYpMp8
+ aR43yXl19rnQX0jGdtwswFSNdvUY/t31ptjQunm/N1R1Z+cB4nonGX794UOwhZ4ecFozGk
+ KJZkMY/PoYuDzPz4xmHDfUpoda9PkME=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1571411267; a=rsa-sha256; cv=none;
+ b=EGYlgA1M/i+/169sG32BFdflGqKn0bvVxz70TyTjDjWc+X5Emelr7LlESlnWLkTpJSHPS1
+ OvjbjXZtz3HcvNIcg0e2khBiKpR24tYxJloEt2yFHxmmvTsRwu6Y3LwxHfJ0AbxgjlTexb
+ mUfaXnowI5y6DZeKoydtqb342Q8XkUU=
+ARC-Authentication-Results: i=1;
+	beetle.greensocs.com;
+	none
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,33 +82,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
+ berrange@redhat.com, ehabkost@redhat.com, cohuck@redhat.com,
+ mark.burton@greensocs.com, qemu-s390x@nongnu.org, edgari@xilinx.com,
+ qemu-arm@nongnu.org, pbonzini@redhat.com, philmd@redhat.com,
+ david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GfVYGOkpO5/j
+X-TUID: txD7gZfkLbiL
 
-On Fri, 18 Oct 2019 at 15:52, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Fri, 18 Oct 2019 at 15:31, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
-> >
-> > On 10/18/19 5:25 AM, Peter Maydell wrote:
-> > > This seems fragile -- we have to remember to add in
-> > > a call to arm_rebuild_hflags() for every individual
-> > > case of a memory-mapped system register that we choose
-> > > to cache in tb flags. It doesn't seem consistent with
-> > > the choice for A-profile to rebuild hflags for pretty
-> > > much any sysreg write. Maybe it would be better to just
-> > > always rebuild hflags at the end of nvic_sysreg_write() ?
-> >
-> > I thought about that, but there were too many returns out of the middle.  I
-> > suppose a wrapper function would take care of that.
->
-> I hadn't noticed the early returns from nvic_sysreg_write().
-> You could just turn all the 'return MEMTX_OK's into a
-> goto exit_ok and have that do the update.
+Hi all,
 
-PS: just for clarity, nvic_sysreg_write(), not nvic_writel().
+The purpose of this series is to split the current reset procedure
+into multiple phases. This will help to solve some ordering
+difficulties we have during reset. Previous version can be found here:
+https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg04359.html
 
-thanks
--- PMM
+This series adds resettable interface and transitions base Device and
+Bus classes (sysbus subclasses are ok too). It provides new reset
+functions but does not switch anymore the old functions
+(device_reset() and qdev/qbus_reset_all()) to resettable interface.
+These functions keep the exact same behavior as before.
+
+The series also transition the main reset handlers registration which
+has no impact until devices and buses are transitioned.
+
+I think this version is way better regarding the transition from the
+legacy to the resettable interface than the previous one.
+After this series, the plan is then to transition devices, buses and
+legacy reset call sites. Devices and buses have to be transitioned
+from mother class to daughter classes order but until the final
+(daughter) class is transitioned, old monolitic reset behavior will
+be kept for this class.
+
+Changes v4 -> v5:
+  + various improvement in the resettable interface (regarding
+    transition, robustness and several reset types)
+  + better handling of transition from legacy reset to resettable
+  + device hotplug and parent bus 'hot' change support
+  + improved doc with examples and converted to rst format
+
+Regarding the Resettable interface changes and how to handle more
+reset types, please read patch 3 message.
+
+The series is organized as follows:
+Patch 1 is unmodified. Patch 2 adds some utility trace events.
+Patches 3 to 8 adds resettable api in devices and buses. Patch 9 adds
+some documentation. Patches 10 and 11 transition the call sites of
+qemu_register_reset(qdev/qbus_reset_all_fn, ...).
+
+Apart from patch 7 about hotplug which is really a rfc. I think other
+patches are in pretty good shape.
+Patch 3 and 4 are quite big but I don't think it make much sense to
+split them. I could give it a try if you think it will ease reviews.
+Note that depending on what name we choose for device/bus reset
+functions (see patch 8), we may finally don't need patch 1.
+
+I've also added patches 12 and 13 which handle the raspi sd card
+reparenting. I'm not sure they fit well in this series but at some
+point in this development I thought they had to be before patch 9
+(finally it is not the case). Since I had to develop some specific
+resettable support just for this case , I kept them as an example
+of what transition a device is. Note that patch 13 handle the only
+reset parent change (tricky) case I found (apart from hotplug).
+
+Thanks for your feedback,
+Damien
+
+Damien Hedde (13):
+  add device_legacy_reset function to prepare for reset api change
+  hw/core/qdev: add trace events to help with resettable transition
+  hw/core: create Resettable QOM interface
+  hw/core: add Resettable support to BusClass and DeviceClass
+  hw/core/resettable: add support for changing parent
+  hw/core/qdev: handle parent bus change regarding resettable
+  hw/core/qdev: update hotplug reset regarding resettable
+  hw/core: deprecate old reset functions and introduce new ones
+  docs/devel/reset.txt: add doc about Resettable interface
+  vl: replace deprecated qbus_reset_all registration
+  hw/s390x/ipl: replace deprecated qdev_reset_all registration
+  hw/gpio/bcm2835_gpio: Isolate sdbus reparenting
+  hw/gpio/bcm2835_gpio: Update to resettable
+
+ Makefile.objs            |   1 +
+ docs/devel/reset.rst     | 282 ++++++++++++++++++++++++++++++++++++++
+ hw/audio/intel-hda.c     |   2 +-
+ hw/core/Makefile.objs    |   1 +
+ hw/core/bus.c            | 102 ++++++++++++++
+ hw/core/qdev.c           | 156 +++++++++++++++++++--
+ hw/core/resettable.c     | 289 +++++++++++++++++++++++++++++++++++++++
+ hw/core/trace-events     |  27 ++++
+ hw/gpio/bcm2835_gpio.c   |  31 +++--
+ hw/hyperv/hyperv.c       |   2 +-
+ hw/i386/pc.c             |   2 +-
+ hw/ide/microdrive.c      |   8 +-
+ hw/intc/spapr_xive.c     |   2 +-
+ hw/ppc/pnv_psi.c         |   2 +-
+ hw/ppc/spapr_pci.c       |   2 +-
+ hw/ppc/spapr_vio.c       |   2 +-
+ hw/s390x/ipl.c           |  10 +-
+ hw/s390x/s390-pci-inst.c |   2 +-
+ hw/scsi/vmw_pvscsi.c     |   2 +-
+ hw/sd/omap_mmc.c         |   2 +-
+ hw/sd/pl181.c            |   2 +-
+ include/hw/qdev-core.h   |  58 +++++++-
+ include/hw/resettable.h  | 224 ++++++++++++++++++++++++++++++
+ tests/Makefile.include   |   1 +
+ vl.c                     |  10 +-
+ 25 files changed, 1185 insertions(+), 37 deletions(-)
+ create mode 100644 docs/devel/reset.rst
+ create mode 100644 hw/core/resettable.c
+ create mode 100644 include/hw/resettable.h
+
+--=20
+2.23.0
+

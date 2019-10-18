@@ -1,77 +1,77 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1098277wrm;
-        Fri, 18 Oct 2019 08:53:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwio492qFqc3ONIYC/o94Me0+WGZX7/sTb+J7d9Hwkexw2TnhT1wsKKR7QJOUvQ4LsuDjE4
-X-Received: by 2002:a17:906:8317:: with SMTP id j23mr9159856ejx.314.1571414010131;
-        Fri, 18 Oct 2019 08:53:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571414010; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1099076wrm;
+        Fri, 18 Oct 2019 08:54:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx8FwV6Ta90JRCZAbx/i6gBdfDsdz+KMihQc8lNdnT6fukLso3ctxwzRFQdtsRe4dKF+bYX
+X-Received: by 2002:ac8:6686:: with SMTP id d6mr10099546qtp.332.1571414060630;
+        Fri, 18 Oct 2019 08:54:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571414060; cv=none;
         d=google.com; s=arc-20160816;
-        b=keciyOgndc5a03zRIVIyNwumnXICCtbuFJ3cykQlBtDxPvUJBLZBHkDTa56SjIAM8W
-         8Vb/ZIDGzrr9bQBylStE9lItGEKhenwqzBVVjFZO4ret78f+xT8lk7NY3DRP/48jPmq6
-         4kCWh9ERFqU4+BSBD8EutPtSmUm5Fq/em9wAMzhpjjaIodVmq0WFRamqrE1gsSlvaNul
-         JhXOQ+P5a/kV+a44krZ1HaVMqzELoZ8ge7SPDtgHbsTkI6SrUC0UI5gfTT12zvkB9BWn
-         496yTQnBCkQRW67forD2zGC1yobnnDpeSCdpqcIj6FxbRWDiSfh6MPuv/3rw+q6K190E
-         L+sg==
+        b=sJxB7tg2KiHA+RbfTiPdpW00qrQn/Dlpiu9POkGofO8mR3EfsBayDyg0TsMIBlMVHb
+         xsw91tbIkjZxLXVe+mJXfjmZ5IrCMe8yEeYaI++Oa/Kr9NRRObW2dMuCJkhmnycIz42i
+         h8WFmHluU4RElvNpRpn1McjFwIydiUlMOu8ATrE/KUpE5LRwRgb4WUG1sv8Q2EIhsVYa
+         ++zFoOVc2SNDpa+Hv64djIfPpZEl47uWJ/5G3xZlASuaLd37NBY5VDO1yidwwYuVA27k
+         YVLZJfv8X2wtMB2C1R1OUYoW/0OOdGgD3kIKw1SVeeCSrgZBqvIjGbbWQC2ZTSTxH8vq
+         gwRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=cxgSnVlxD7sCrghNHAVIsxKI7FgLqxbxJQHFwrSKLrE=;
-        b=Vi6NKIjQ9DjyMc633PyACSEVSn/vjLE4mEfdDPlWF0DyQSqMa5tb0PG8ZK0odIG6fR
-         ZZk2qBgLPCegHPSGmhaiV4/PawwDR4Ou2DzjtcjthMM95/1o2zP8u86SFFgeThydtijJ
-         L0T3FXg6H5dv4osEL31BoAfkTTgotOj4qeGkZc/mZYW+SXmT9RWC8xhKAVbV7qRy2D32
-         V/ikoWlx8pkxj5cMWnsfHtY5QzC8d4xPqvPPSsAV31Am1NpwCNHAkXp/M3NzHqgHRFNV
-         7LbSGSKjFgOBfxLW2HuW9ng+3gXgVl27oDRAtKCtZwRkUi3yDKqFSI63wxW+XbpLoHSx
-         sotg==
+        bh=CTiG1KaZfjDaygHMNC6FC+JNEMyLebW0Olscx6Md7TQ=;
+        b=ROyxmX+n2n8lYXDsEHmx/VhPkwknGRowJ9rYvQCLDgXgQaY97dYnb+WACI13fYpLz4
+         rxYhNv7bnZX2SeFRHJFxq2s/LQhg6bzaZAHc4oVDhTsIdn4Wis/LY7UlxCGeXFa2B2V4
+         F+u8x7rlwMIQNbrlAswtD9SYO8sf6Rs0k/AowJ7iai2Ix1JkwYNyWzf4k4g/A07EVbl9
+         ehQ3qpSGZLmn613TLzsj1brhgajk4ro1GNRI8AqOWQl+5SFe2qUzmy22eyTrV55NldPu
+         bZDy/coakbzvnoV3p2ypewo1KZcqruChomGRgLtOmq93aA+b1lhDZNZrCfx6zNRev7Sa
+         5rCA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z33si4548204edz.314.2019.10.18.08.53.30
+        by mx.google.com with ESMTPS id a5si6245790qtm.220.2019.10.18.08.54.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 08:53:30 -0700 (PDT)
+        Fri, 18 Oct 2019 08:54:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42240 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42262 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLUZE-0003iI-Ok
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:53:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44383)
+	id 1iLUa3-00054v-Kk
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:54:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44722)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iLUPO-0000fZ-A2
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:43:19 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUQ6-0001sf-CF
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:44:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iLUPN-0006zR-3C
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:43:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:2801)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUQ5-0007kn-Bl
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:44:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47740)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iLUPM-0006yr-Tq; Fri, 18 Oct 2019 11:43:17 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ id 1iLUQ5-0007kJ-6I; Fri, 18 Oct 2019 11:44:01 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 06BEC88FFF7;
- Fri, 18 Oct 2019 15:43:16 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 395AE3071D9E;
+ Fri, 18 Oct 2019 15:44:00 +0000 (UTC)
 Received: from localhost (ovpn-112-40.ams2.redhat.com [10.36.112.40])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E349F600C4;
- Fri, 18 Oct 2019 15:43:09 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BDF7160BF4;
+ Fri, 18 Oct 2019 15:43:54 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 07/14] RFC: mips/cps: fix setting saar property
-Date: Fri, 18 Oct 2019 17:42:05 +0200
-Message-Id: <20191018154212.13458-8-marcandre.lureau@redhat.com>
+Subject: [PATCH 13/14] qdev: remove PROP_MEMORY_REGION
+Date: Fri, 18 Oct 2019 17:42:11 +0200
+Message-Id: <20191018154212.13458-14-marcandre.lureau@redhat.com>
 In-Reply-To: <20191018154212.13458-1-marcandre.lureau@redhat.com>
 References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.68]); Fri, 18 Oct 2019 15:43:16 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.47]); Fri, 18 Oct 2019 15:44:00 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -105,36 +105,33 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wxXX/rXyWcD8
+X-TUID: K19eF+wjpMKG
 
-There is no "saar" property. Note: I haven't been able to test this
-code. Help welcome.
-
-May fix commit 043715d1e0fbb3e3411be3f898c5b77b7f90327a ("target/mips:
-Update ITU to utilize SAARI and SAAR CP0 registers")
+PROP_MEMORY_REGION was a derivative of PROP_PTR, added in commit
+ed03d749f3f513b8fb0287757cfda2cb6825f063 (qdev: add MemoryRegion
+property) and thankfully no longer needed since commit
+3eff40dbf44896a8180c86c84dbdefb2eb173fbe (hw/misc: Remove
+mmio_interface device).
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/mips/cps.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/qdev-properties.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/hw/mips/cps.c b/hw/mips/cps.c
-index 1660f86908..c49868d5da 100644
---- a/hw/mips/cps.c
-+++ b/hw/mips/cps.c
-@@ -106,7 +106,7 @@ static void mips_cps_realize(DeviceState *dev, Error =
-**errp)
-         object_property_set_bool(OBJECT(&s->itu), saar_present, "saar-pr=
-esent",
-                                  &err);
-         if (saar_present) {
--            qdev_prop_set_ptr(DEVICE(&s->itu), "saar", (void *)&env->CP0=
-_SAAR);
-+            s->itu.saar =3D &env->CP0_SAAR;
-         }
-         object_property_set_bool(OBJECT(&s->itu), true, "realized", &err=
-);
-         if (err !=3D NULL) {
+diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+index c6a8cb5516..16837ab5dd 100644
+--- a/include/hw/qdev-properties.h
++++ b/include/hw/qdev-properties.h
+@@ -216,8 +216,6 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
+     DEFINE_PROP_UNSIGNED(_n, _s, _f, 0, qdev_prop_blocksize, uint16_t)
+ #define DEFINE_PROP_PCI_HOST_DEVADDR(_n, _s, _f) \
+     DEFINE_PROP(_n, _s, _f, qdev_prop_pci_host_devaddr, PCIHostDeviceAdd=
+ress)
+-#define DEFINE_PROP_MEMORY_REGION(_n, _s, _f)             \
+-    DEFINE_PROP(_n, _s, _f, qdev_prop_ptr, MemoryRegion *)
+ #define DEFINE_PROP_OFF_AUTO_PCIBAR(_n, _s, _f, _d) \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_off_auto_pcibar, \
+                         OffAutoPCIBAR)
 --=20
 2.23.0.606.g08da6496b6
 

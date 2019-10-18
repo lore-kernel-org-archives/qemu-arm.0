@@ -1,77 +1,77 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1096045wrm;
-        Fri, 18 Oct 2019 08:51:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzOVTgu/Fq/RXZX9WcRhvtCtAJsnyyM7mdoN2moMJtMFAPFcos9hHL8vs9KS320H7GargQo
-X-Received: by 2002:a37:4e44:: with SMTP id c65mr9452210qkb.357.1571413877874;
-        Fri, 18 Oct 2019 08:51:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571413877; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1096463wrm;
+        Fri, 18 Oct 2019 08:51:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwrzHof9Y+bc+6FXCkCSbabTXUdjk0KUXnnY9pMwjDmg/Vk+hO4DRI+MRKH8QBi1fNQoPeL
+X-Received: by 2002:aa7:df0b:: with SMTP id c11mr10399954edy.101.1571413901603;
+        Fri, 18 Oct 2019 08:51:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571413901; cv=none;
         d=google.com; s=arc-20160816;
-        b=vbrP80Wc2Rzj5H4glCzZvIJv8ohyanvsYF9ex01HhZAz77xi20PEYLVe0Pm/KLr5Ra
-         SN71KPoGfIrx4np6oO1FabltgZmVXL+TxscTFC6HUUxB/qGhLpIxYNYxcAwiLiXUXydb
-         EUXxpOIi1LLlwaEomPCF55fi+UHKeCpvvbVyD+3MJ10OutkIwJH/n8PBqUzlrGyNwnfI
-         zYwIVCOCZBSJp72nIs5n5p0O/Z4ZjuZ6PuSZICvCE9dwhXRsQuJrmQu0bMgrcjnYY2sr
-         1ynp5UUGp2Ra1Vr4kB4zQ+1ejTE0fxl4HWN/pPN1Rly66F9xSYTpLTT111WbfYvY3rbF
-         uVDw==
+        b=tdc/yiS4FoLEqjrRYhjBws7+U+TCUCcHYA+4XKCDCddsysudwym76LGqoyIjLKpO8E
+         1ygG7pMidRi0Zp86cCiI8PBETGx2VPBuJZIFYGFHSWIG0Qr6UYjb22fV9kEvDU/Ax7cu
+         sLPLSBu5o40AqOQM+SpnRQAYPyFB8B3aPxGR6k9iZ2fK60ud7VH+sTn8stW8+d/eJZjQ
+         C38e/W8GRtXknm0UXgbyPLOKc4/hYLOZjz1YXJOJwty8LgXvHzOIFDnG2/vEttAFSybN
+         4i2drIwvVTw05t8FneFPNjOFv9PdZDBM2CLdHeMOGOavVJ2K95zjMl/4Zg8Nwgp/tR4h
+         /RwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Xgjtn7b8lLOxTGwCODuvzTVQt8/BMNSJHwgRzLOdqNY=;
-        b=lrdtV9nrYHQY8LXY9dlqlqZ84ShAeLYAPCRjEn/bLHou8LQLgfdcaH1f24UlacGOQz
-         aWt8Z1oSKe/cvu8bS14PQEXDl9oxqymY0IjTcHfxQNTtJ5TZAo7J3ybMP4ebgDkkSoSk
-         TSeD9NtIYilpjUCIY2gmILp5Wve5XqChj9d+zpg2zegU6H9+rZ4JgESjktwqWAoi/RL1
-         9vgxFKMUqAsvKJQm/rO3+/p8+W1BKsJysA+/sVUA/YQGN3ugM42UAE5RRvLlbnLOw+yT
-         J8e2Q7J5ETYsyNRVHDi25tkqwaJZcGEKpxgpWHVx7jAd+JiVbQenk26AtTGikr0Aemlq
-         3j2Q==
+        bh=AUbN2H8W+PVR/5E4thsx0hmiuePRLyRt84CW0bCYuLQ=;
+        b=vsN1JG3qqFykO/IIIgMEPU0MH+1qwPAywYN+3oIF/k15dybODVMzxr5uKgbcLFYdBH
+         7bTd+VofnOR/R78jhpi0ufv5s0SLO421N1ZWfweBVc2CjQeqdfsDA3WRiPYAjV/3io71
+         XUzrVPyEFoT3H1p39RgSdoeJztSR0o+x9GHhwXGqI4kiV6Q/ILJ6d2e/YTnUnqCOW9Nt
+         FcjBvMSDE+gn4xlgt28/3t69P4NrJkTksMaQ3EVqG0QcLJEOkAOIcdEHAZ/TStbbdp5Q
+         9J0wUVW+eOnZby9fue2mk66VvKN2q1TH54DZk9T55WLiyH1QzCU7pb7pDXusNmzYsPtt
+         WSPA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z10si640504qkl.237.2019.10.18.08.51.17
+        by mx.google.com with ESMTPS id w30si4248128edd.137.2019.10.18.08.51.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 08:51:17 -0700 (PDT)
+        Fri, 18 Oct 2019 08:51:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42196 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42204 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLUX6-0007ut-RL
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:51:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44512)
+	id 1iLUXU-000070-6n
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:51:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44789)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iLUPk-0001J1-Dd
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 11:43:41 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUQH-0002AY-A4
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 11:44:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iLUPj-0007IH-AL
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 11:43:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45614)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUQF-0007tH-Vf
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 11:44:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47404)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iLUPg-0007Eo-NI; Fri, 18 Oct 2019 11:43:36 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ id 1iLUQD-0007qX-7B; Fri, 18 Oct 2019 11:44:09 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id BC8E4300BEB1;
- Fri, 18 Oct 2019 15:43:35 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 407B810DCC9F;
+ Fri, 18 Oct 2019 15:44:08 +0000 (UTC)
 Received: from localhost (ovpn-112-40.ams2.redhat.com [10.36.112.40])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 050065C21E;
- Fri, 18 Oct 2019 15:43:20 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 27CBF5D9CA;
+ Fri, 18 Oct 2019 15:44:01 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 09/14] smbus-eeprom: remove PROP_PTR
-Date: Fri, 18 Oct 2019 17:42:07 +0200
-Message-Id: <20191018154212.13458-10-marcandre.lureau@redhat.com>
+Subject: [PATCH 14/14] Remove QDEV_PROP_PTR
+Date: Fri, 18 Oct 2019 17:42:12 +0200
+Message-Id: <20191018154212.13458-15-marcandre.lureau@redhat.com>
 In-Reply-To: <20191018154212.13458-1-marcandre.lureau@redhat.com>
 References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.40]); Fri, 18 Oct 2019 15:43:35 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.64]); Fri, 18 Oct 2019 15:44:08 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -104,71 +104,102 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CKuKVryYFVl7
+X-TUID: nFfUTKpOxFwJ
 
-Instead, set the initial data field directly. Since it is only 256
-bytes, let's simply copy it to avoid invalid pointers issues.
+No longer used in the tree. The comment about user_creatable is still
+quite relevant, but there is already a similar comment in qdev-core.h.
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/i2c/smbus_eeprom.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+ hw/core/qdev-properties.c    | 18 ------------------
+ include/hw/qdev-properties.h | 22 ----------------------
+ 2 files changed, 40 deletions(-)
 
-diff --git a/hw/i2c/smbus_eeprom.c b/hw/i2c/smbus_eeprom.c
-index 54c86a0112..533c728b3b 100644
---- a/hw/i2c/smbus_eeprom.c
-+++ b/hw/i2c/smbus_eeprom.c
-@@ -44,7 +44,7 @@
- typedef struct SMBusEEPROMDevice {
-     SMBusDevice smbusdev;
-     uint8_t data[SMBUS_EEPROM_SIZE];
--    void *init_data;
-+    uint8_t *init_data;
-     uint8_t offset;
-     bool accessed;
- } SMBusEEPROMDevice;
-@@ -129,14 +129,14 @@ static void smbus_eeprom_reset(DeviceState *dev)
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index ac28890e5a..6ca7697599 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -501,13 +501,6 @@ const PropertyInfo qdev_prop_string =3D {
+     .set   =3D set_string,
+ };
 =20
- static void smbus_eeprom_realize(DeviceState *dev, Error **errp)
- {
-+    SMBusEEPROMDevice *eeprom =3D SMBUS_EEPROM(dev);
-+
-     smbus_eeprom_reset(dev);
-+    if (eeprom->init_data =3D=3D NULL) {
-+        error_setg(errp, "init_data cannot be NULL");
-+    }
- }
-=20
--static Property smbus_eeprom_properties[] =3D {
--    DEFINE_PROP_PTR("data", SMBusEEPROMDevice, init_data),
--    DEFINE_PROP_END_OF_LIST(),
+-/* --- pointer --- */
+-
+-/* Not a proper property, just for dirty hacks.  TODO Remove it!  */
+-const PropertyInfo qdev_prop_ptr =3D {
+-    .name  =3D "ptr",
 -};
 -
- static void smbus_eeprom_class_initfn(ObjectClass *klass, void *data)
+ /* --- mac address --- */
+=20
+ /*
+@@ -1165,17 +1158,6 @@ void qdev_prop_set_enum(DeviceState *dev, const ch=
+ar *name, int value)
+                             name, &error_abort);
+ }
+=20
+-void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value)
+-{
+-    Property *prop;
+-    void **ptr;
+-
+-    prop =3D qdev_prop_find(dev, name);
+-    assert(prop && prop->info =3D=3D &qdev_prop_ptr);
+-    ptr =3D qdev_get_prop_ptr(dev, prop);
+-    *ptr =3D value;
+-}
+-
+ static GPtrArray *global_props(void)
  {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-@@ -146,9 +146,8 @@ static void smbus_eeprom_class_initfn(ObjectClass *kl=
-ass, void *data)
-     dc->reset =3D smbus_eeprom_reset;
-     sc->receive_byte =3D eeprom_receive_byte;
-     sc->write_data =3D eeprom_write_data;
--    dc->props =3D smbus_eeprom_properties;
-     dc->vmsd =3D &vmstate_smbus_eeprom;
--    /* Reason: pointer property "data" */
-+    /* Reason: init_data */
-     dc->user_creatable =3D false;
- }
+     static GPtrArray *gp;
+diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+index 16837ab5dd..a90a9cec80 100644
+--- a/include/hw/qdev-properties.h
++++ b/include/hw/qdev-properties.h
+@@ -18,7 +18,6 @@ extern const PropertyInfo qdev_prop_size;
+ extern const PropertyInfo qdev_prop_string;
+ extern const PropertyInfo qdev_prop_chr;
+ extern const PropertyInfo qdev_prop_tpm;
+-extern const PropertyInfo qdev_prop_ptr;
+ extern const PropertyInfo qdev_prop_macaddr;
+ extern const PropertyInfo qdev_prop_on_off_auto;
+ extern const PropertyInfo qdev_prop_losttickpolicy;
+@@ -171,25 +170,6 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
+ #define DEFINE_PROP_PCI_DEVFN(_n, _s, _f, _d)                   \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_pci_devfn, int32_t)
 =20
-@@ -172,7 +171,7 @@ void smbus_eeprom_init_one(I2CBus *smbus, uint8_t add=
-ress, uint8_t *eeprom_buf)
+-/*
+- * Please avoid pointer properties.  If you must use them, you must
+- * cover them in their device's class init function as follows:
+- *
+- * - If the property must be set, the device cannot be used with
+- *   device_add, so add code like this:
+- *   |* Reason: pointer property "NAME-OF-YOUR-PROP" *|
+- *   DeviceClass *dc =3D DEVICE_CLASS(class);
+- *   dc->user_creatable =3D false;
+- *
+- * - If the property may safely remain null, document it like this:
+- *   |*
+- *    * Note: pointer property "interrupt_vector" may remain null, thus
+- *    * no need for dc->user_creatable =3D false;
+- *    *|
+- */
+-#define DEFINE_PROP_PTR(_n, _s, _f)             \
+-    DEFINE_PROP(_n, _s, _f, qdev_prop_ptr, void*)
+-
+ #define DEFINE_PROP_CHR(_n, _s, _f)             \
+     DEFINE_PROP(_n, _s, _f, qdev_prop_chr, CharBackend)
+ #define DEFINE_PROP_STRING(_n, _s, _f)             \
+@@ -262,8 +242,6 @@ void qdev_prop_set_drive(DeviceState *dev, const char=
+ *name,
+ void qdev_prop_set_macaddr(DeviceState *dev, const char *name,
+                            const uint8_t *value);
+ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
+-/* FIXME: Remove opaque pointer properties.  */
+-void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value);
 =20
-     dev =3D qdev_create((BusState *) smbus, TYPE_SMBUS_EEPROM);
-     qdev_prop_set_uint8(dev, "address", address);
--    qdev_prop_set_ptr(dev, "data", eeprom_buf);
-+    SMBUS_EEPROM(dev)->init_data =3D eeprom_buf;
-     qdev_init_nofail(dev);
- }
-=20
+ void qdev_prop_register_global(GlobalProperty *prop);
+ int qdev_prop_check_globals(void);
 --=20
 2.23.0.606.g08da6496b6
 

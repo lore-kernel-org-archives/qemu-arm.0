@@ -1,100 +1,111 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp144364wrm;
-        Thu, 17 Oct 2019 17:05:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz3xs50xTe1uhLemmx2ceAzTCmZCrd98IZ0M4ym8+0se3jDVJTMEABdZXFsx4sqfxb1Jb6Q
-X-Received: by 2002:ac8:7152:: with SMTP id h18mr6999336qtp.377.1571357144422;
-        Thu, 17 Oct 2019 17:05:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571357144; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp720118wrm;
+        Fri, 18 Oct 2019 03:36:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxgXjYegErqvPwV5xtfARfR+b4/CN6CeNTp/vrVtHGvQvcMZXBhMLgG5lq8ANfTFiWO0tu+
+X-Received: by 2002:a17:906:b24c:: with SMTP id ce12mr7911996ejb.327.1571394963237;
+        Fri, 18 Oct 2019 03:36:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571394963; cv=none;
         d=google.com; s=arc-20160816;
-        b=QYPo87Vax+4gepwhhdPFlQpU+s2PKdLhBLXlKIgF5ifirm7zP+My/nXiqXD8H1siIk
-         /KBILd6g+PhQ59ekw14egDn6BQOAcjDRTthAEFloujWiyuMaE7ort7XKNhd/q3E9SJMa
-         GAv8CfZelIp7/VUi4lFT7/ZqQGVPplrfKNPyjTgdp96ZKD1csC5oCs/iO0OjO/8TyVjK
-         13JD1eZewz0CIskJKyOpxqZ4aLcYuPz0xNkCHXzy/nuQONoyoZY+nzyZWJL164rI9S9V
-         Xd9mvFDCTE9kAiamGJT9DOBVq3tz1U/CIwMsSZpM6B+c0srnxZrXW60ZdMkxXsXUNEJ+
-         9qRw==
+        b=WuCwo3FG2jyqWHWRSO/F8jm6+k8wNqVf9Xc3yblz9oJM3gdx8Y/TDz7PLxVAejUgQW
+         +fYInthB9q3URnEgmEGImhO4Acn4bakCIkQkrOtdzPFGyBEyq33iobhU3UKOMJbL/dc0
+         ijlB/COusu6rVerMaQ+sX5FCxSmOMfDwDRYzoap2CFtcSK9DfrtJn/SYwHcnEQBkjkbX
+         I5VhCE9cF2nTEodpKQ1uyimYR/6LGP4NeedlR1jmiVTgeq2kZWr0rEK3xRsWmXR7EEvP
+         QtWIiVreAsH3DCzjhnbcru2gt/qvihenCovkaxSbhhG9qtDU2bxvVsA5bJbvbw8OHxQ/
+         iDCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=jfsReMyQtklLgqDiJUlJtwJEYrv42gE31qbx0Xhhz4Q=;
-        b=k1dhJupkFZsVhyfddSbPgxKayUPMU7IjfjLOuIgqVXl4ZwNE4aMIaBQrnS7gnB2Kfs
-         sVkvSlvpNw66sVUhZCua5CySsNVq4lZyzN2Jn2JuCfJmKczKgLhWgzjoYrX7pk7y4/By
-         nEIE2AeE2sVQfsluezASj3VKcV5rEasVgOGZ2gpv+B0zrXGKKpxGgYV1VaizvqIDklfO
-         cdGmQSc46Dpzql2+shQEWlGkRLl9HfITPGEhgNQ8EN9R6jpnODwGZ0dIq4Ff9rwnGbWQ
-         icP0gyUDvDWDeuheQw4ccj70CLNOezPAmCsvMh5pMdZn8/gGwA+BwyLiE4O3YoL+blEe
-         NsWA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=wsEsUuJ28LH5Z78/5meTkGA88IgGhlWbsaDxLQxOako=;
+        b=XeHzXMtqID03UUBlKikVQ0guSX3AR6t52em2VC7AjRZQffYGX8znOd2RVhYM6HKWdg
+         eDO0ouc617Nu8Yo2CeiUC9UIXpGPt58j6KlUw+blyBC6wFsidc2/wUq10wGFNn61JIWB
+         vHhLSMYy0KeP6bhv/Y8r2EMUz05wz6lSD/cbP7Rs0o/w6sl+XtHc3itU0UNrEi4T74uw
+         pYozFE/DC5DOPCWjD4z1U7RYcBLu02NC7uAVYaLZz69YcS3oSkVrd3wzSlD24AXTIr4g
+         nRNZvilkXLqycss8Wkd3zQTsROaQdMO1GdpAm8po3j4azYZHDgDzcaUkGdVQ2KWDpQgc
+         X3Hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=agVF6TNr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ify2u26Y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r26si3754968qtj.387.2019.10.17.17.05.44
+        by mx.google.com with ESMTPS id gh12si3002271ejb.191.2019.10.18.03.36.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2019 17:05:44 -0700 (PDT)
+        Fri, 18 Oct 2019 03:36:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=agVF6TNr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34244 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ify2u26Y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37704 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLFm3-0004GX-Pn
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 20:05:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46051)
+	id 1iLPc2-0006Wh-9K
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 06:36:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55768)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iLFlZ-00048s-Qg
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 20:05:14 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iLPbt-0006WC-Tk
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 06:35:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iLFlW-0007dK-5D
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 20:05:13 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:35465)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iLPbs-0000hu-FE
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 06:35:53 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44665)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iLFlN-0007Yc-N7; Thu, 17 Oct 2019 20:05:01 -0400
-Received: by mail-lj1-x241.google.com with SMTP id m7so4363883lji.2;
- Thu, 17 Oct 2019 17:05:01 -0700 (PDT)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iLPbs-0000gl-8o; Fri, 18 Oct 2019 06:35:52 -0400
+Received: by mail-wr1-x444.google.com with SMTP id z9so5667483wrl.11;
+ Fri, 18 Oct 2019 03:35:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=jfsReMyQtklLgqDiJUlJtwJEYrv42gE31qbx0Xhhz4Q=;
- b=agVF6TNrcN1AwHJ65Gz//fhlqgUu7RxMoFiLchi/pHh104XWbbbGzg8Gp6nclWfn1m
- yj37uoXdxGFVTrg8/exQLoiBHADsRXxPyvSYcMS9T0+hZqnk8mN/QkF5QW2VcyNF8wIJ
- gmMIZIqvkS/oweWZdfWqk77cPJlcFAjCwAjZySzdGSh+F/ZKq9FATMJThmyk0ydD0fJg
- GzfHW0CLCYUaL2+8wzKbaJMSTgfkQAE9JKNUdwiBiPFu0i8ah4Kku/NjEc9T6CxVSG4I
- lhrB2IjUYyk4D++nqR0+pYXNUzgQHXOopThJQYzXCIz295a2NjJgjtXuw3yq8yeYyzB5
- 1jQw==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=wsEsUuJ28LH5Z78/5meTkGA88IgGhlWbsaDxLQxOako=;
+ b=ify2u26YuBai5tHIi1Y6u7qBVzMYMcvQ0D7vv5OqJ2D6Eek7CvjK5CAxC0aqrsBp4C
+ Z4/6v39vSZWw7jT+WxtzmlUAGYl/jwtYrmSbg5IzacizCtq1sclWxEuV1Owry58yN/Rv
+ 2nhsgzFLeJZwjb8YppEHQ3XXJYT8ZlWtrwHYKmvdg+J10qyISSSkwffwRSjAm6lxq/Z0
+ W/GjzhGiAyzcNzDxyEa1MxNzRgduniSIj48aQRWLruOtkvVR4kAbv42ODm3osIoGYITx
+ nOKB2tQXHzAmfdY+ZtHJRqf04IudZ6abxMhubvaDZ+LAY4LT2cJeoXZZMtS3W2d+81P5
+ F2GQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=jfsReMyQtklLgqDiJUlJtwJEYrv42gE31qbx0Xhhz4Q=;
- b=IobSLeCM9nMIkoFlRGvK3CO+h1HDo5kugG5uTf+6/TLK4DgxJplARI9CcbV45af7Aw
- aoMN8gF9Hg5pOtnXvzLcriZIP0kuzxE//atOs0vrYA6qA5pyfHPslk+VZvWhdcs/Ritz
- s5vR122C+dP5He3eGz50WHOPgu+4UdQ3FsINfH1uVOCPDh1kq3J9CeT05lKEc3vIDbef
- SQuaC+RWTvBaZ6vTbxLKqFfbkw30ErG0mVaLDuYnPaLwvxZbOQAMHRfnvwM31+tjzU6x
- skjvvyAeay7VkLILTEXC6HghSAXjQsGp1ZZn9acrUkWHdqs9wBkGpzhVztNF1PiusoEU
- JsVw==
-X-Gm-Message-State: APjAAAXh1SpyJd/GqKn5BoS3Ipj7LLV6SiHiEC66X/6xjSGxDxIFY0IX
- uHjnfqZkjbeUuoLnNyZynjTzkIkZ6UmaLUxKGwI=
-X-Received: by 2002:a2e:9890:: with SMTP id b16mr4274220ljj.4.1571357100012;
- Thu, 17 Oct 2019 17:05:00 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wsEsUuJ28LH5Z78/5meTkGA88IgGhlWbsaDxLQxOako=;
+ b=j789XpNnSXIy263fzpm47Lj+BgY3Wbl6iEKF9Sgg+wzIc73c/Yj6V9qEB/ucni/Dg3
+ ZCWcfu9bwT6ysQvDZ5XcAqJYioAZQIFxUfPjw+YZALkgMWM2nZYJbk3TiciSB05PVmEX
+ GZMRmalAHwR+pNKhPWUzMRIst8EYT7/ULEAFyDZSNmiyn61naM3lqd/us0Ul22QAj+L1
+ 1lMYyVeJ3Ui/RTWeQ7rOjVu9OD/AktROGKBMPJP3gBJgNmBNcheF9tbT5pGUch8qcNc3
+ 6Pf+zhbd/tWsphdNvUdeEL+gYxr0huD4bCqy9JBHweBx3+UZQlsDlkAX/1Y9cqnr5r4P
+ mmyQ==
+X-Gm-Message-State: APjAAAWvni9cRDyXzYqDQq/GYrbekSM4cA9m7KeiFVVVzq0mwP7m1mfz
+ T+29GtXjhuFG2FVbP5NSeQ8=
+X-Received: by 2002:a05:6000:11cd:: with SMTP id
+ i13mr6923218wrx.197.1571394950544; 
+ Fri, 18 Oct 2019 03:35:50 -0700 (PDT)
+Received: from [192.168.1.36] (14.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.14])
+ by smtp.gmail.com with ESMTPSA id p85sm5245772wme.23.2019.10.18.03.35.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 18 Oct 2019 03:35:49 -0700 (PDT)
+Subject: Re: [PATCH v2 06/10] hw/arm/bcm2836: Create VideoCore address space
+ in the SoC
+To: qemu-devel@nongnu.org
 References: <20191017225800.6946-1-f4bug@amsat.org>
- <20191017225800.6946-5-f4bug@amsat.org>
-In-Reply-To: <20191017225800.6946-5-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 17 Oct 2019 16:59:50 -0700
-Message-ID: <CAKmqyKM=W_9aT3=HRbxbX0rjrisc0bcTFKA1XVuJOX+b5ziBfw@mail.gmail.com>
-Subject: Re: [PATCH v2 04/10] hw/arm/bcm2835_peripherals: Use the SYS_timer
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ <20191017225800.6946-7-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <8dfcc577-ebfb-53a1-5338-3f6166757540@amsat.org>
+Date: Fri, 18 Oct 2019 12:35:47 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
+MIME-Version: 1.0
+In-Reply-To: <20191017225800.6946-7-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::241
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,113 +118,88 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Rob Herring <robh@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
  Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, Pekka Enberg <penberg@iki.fi>,
+ Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
  Pete Batard <pete@akeo.ie>, Cleber Rosa <crosa@redhat.com>,
  Laurent Bonnans <laurent.bonnans@here.com>,
  Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Clement Deschamps <clement.deschamps@antfield.fr>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vp7IpoBFMcs9
+X-TUID: /yvQrrTF0DjX
 
-On Thu, Oct 17, 2019 at 4:05 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> Connect the recently added SYS_timer.
-> Now U-Boot does not hang anymore polling a free running counter
-> stuck at 0.
-> This timer is also used by the Linux kernel thermal subsystem.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
-> ---
-> v2: Remove spurious error check (Alex)
-> ---
->  hw/arm/bcm2835_peripherals.c         | 17 ++++++++++++++++-
->  include/hw/arm/bcm2835_peripherals.h |  3 ++-
->  2 files changed, 18 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> index 70bf927a02..17207ae07e 100644
-> --- a/hw/arm/bcm2835_peripherals.c
-> +++ b/hw/arm/bcm2835_peripherals.c
-> @@ -58,6 +58,10 @@ static void bcm2835_peripherals_init(Object *obj)
->      /* Interrupt Controller */
->      sysbus_init_child_obj(obj, "ic", &s->ic, sizeof(s->ic), TYPE_BCM2835=
-_IC);
->
-> +    /* SYS Timer */
-> +    sysbus_init_child_obj(obj, "systimer", &s->systmr, sizeof(s->systmr)=
-,
-> +                          TYPE_BCM2835_SYSTIMER);
+On 10/18/19 12:57 AM, Philippe Mathieu-Daudé wrote:
+> Currently the VideoCore is created in the Peripheral container
+> as the 'GPU bus'. It is created there because the peripherals
+> using DMA use physical addresses from the VideoCore bus.
+> However the VideoCore is a GPU core placed at the same
+> hierarchical level than the ARM cores.
+> 
+> To match the datasheet design, create the VideoCore container
+> in the SoC, and link it to the peripheral container.
+> 
+> The VideoCore bus is 1GiB wide, accessible at 4 regions in
+> different cache configurations. Add the full mapping.
+[...]
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index 019e67b906..d712f36052 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -9,6 +9,7 @@
+>    */
+>   
+>   #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>   #include "qapi/error.h"
+>   #include "qemu/module.h"
+>   #include "cpu.h"
+> @@ -16,6 +17,9 @@
+>   #include "hw/arm/raspi_platform.h"
+>   #include "hw/sysbus.h"
+>   
+> +/* Peripheral base address on the VC (GPU) system bus */
+> +#define BCM2835_VC_PERI_BASE    0x3e000000
 > +
->      /* UART0 */
->      sysbus_init_child_obj(obj, "uart0", &s->uart0, sizeof(s->uart0),
->                            TYPE_PL011);
-> @@ -171,6 +175,18 @@ static void bcm2835_peripherals_realize(DeviceState =
-*dev, Error **errp)
->                  sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ic), 0));
->      sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
->
-> +    /* Sys Timer */
-> +    object_property_set_bool(OBJECT(&s->systmr), true, "realized", &err)=
-;
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
+>   struct BCM283XInfo {
+>       const char *name;
+>       const char *cpu_type;
+> @@ -50,6 +54,21 @@ static void bcm2836_init(Object *obj)
+>       const BCM283XInfo *info = bc->info;
+>       int n;
+>   
+> +    /* VideoCore memory region */
+> +    memory_region_init(&s->videocore.mr[0], obj, "videocore-bus", 1 * GiB);
+> +    object_property_add_child(obj, "videocore",
+> +                              OBJECT(&s->videocore.mr[0]), NULL);
+> +    for (n = 1; n < BCM283X_NCPUS; n++) {
+> +        static const char *alias_name[] = {
+> +            NULL, "cached-coherent", "cached", "uncached"
+> +        };
+> +        memory_region_init_alias(&s->videocore.mr[n], obj,
+> +                                 alias_name[n], &s->videocore.mr[0],
+> +                                 0, 1 * GiB);
+
+Please disregard this patch, something is incorrect here and I'll respin.
+
+> +        memory_region_add_subregion_overlap(&s->videocore.mr[0], n * GiB,
+> +                                            &s->videocore.mr[n], 0);
 > +    }
-> +    memory_region_add_subregion(&s->peri_mr, ST_OFFSET,
-> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systmr), 0));
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->systmr), 0,
-> +        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
-> +                               INTERRUPT_ARM_TIMER));
 > +
->      /* UART0 */
->      qdev_prop_set_chr(DEVICE(&s->uart0), "chardev", serial_hd(0));
->      object_property_set_bool(OBJECT(&s->uart0), true, "realized", &err);
-> @@ -352,7 +368,6 @@ static void bcm2835_peripherals_realize(DeviceState *=
-dev, Error **errp)
->      }
->
->      create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET=
-, 0x40);
-> -    create_unimp(s, &s->systmr, "bcm2835-systimer", ST_OFFSET, 0x20);
->      create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x1000)=
-;
->      create_unimp(s, &s->a2w, "bcm2835-a2w", A2W_OFFSET, 0x1000);
->      create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
-> diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm283=
-5_peripherals.h
-> index be7ad9b499..7859281e11 100644
-> --- a/include/hw/arm/bcm2835_peripherals.h
-> +++ b/include/hw/arm/bcm2835_peripherals.h
-> @@ -24,6 +24,7 @@
->  #include "hw/sd/sdhci.h"
->  #include "hw/sd/bcm2835_sdhost.h"
->  #include "hw/gpio/bcm2835_gpio.h"
-> +#include "hw/timer/bcm2835_systmr.h"
->  #include "hw/misc/unimp.h"
->
->  #define TYPE_BCM2835_PERIPHERALS "bcm2835-peripherals"
-> @@ -39,7 +40,7 @@ typedef struct BCM2835PeripheralState {
->      MemoryRegion ram_alias[4];
->      qemu_irq irq, fiq;
->
-> -    UnimplementedDeviceState systmr;
-> +    BCM2835SystemTimerState systmr;
->      UnimplementedDeviceState armtmr;
->      UnimplementedDeviceState cprman;
->      UnimplementedDeviceState a2w;
-> --
-> 2.21.0
->
->
+>       for (n = 0; n < BCM283X_NCPUS; n++) {
+>           object_initialize_child(obj, "cpu[*]", &s->cpus[n], sizeof(s->cpus[n]),
+>                                   info->cpu_type, &error_abort, NULL);
+> @@ -71,6 +90,7 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+>       BCM283XState *s = BCM283X(dev);
+>       BCM283XClass *bc = BCM283X_GET_CLASS(dev);
+>       const BCM283XInfo *info = bc->info;
+> +    MemoryRegion *ram_mr, *peri_mr;
+>       Object *obj;
+>       Error *err = NULL;
+>       int n;
+> @@ -83,26 +103,45 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+>                      __func__, error_get_pretty(err));
+>           return;
+>       }
+[...]

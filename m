@@ -1,101 +1,101 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1236126wrm;
-        Fri, 18 Oct 2019 10:58:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw+sDP96CYWSn8BIOwcFuT0pRhR4BDIhQCLue4qmhEBsuc0u/kMkbNZUptPp6GAiHUjaD/q
-X-Received: by 2002:a17:906:3488:: with SMTP id g8mr9788007ejb.162.1571421483790;
-        Fri, 18 Oct 2019 10:58:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571421483; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1239750wrm;
+        Fri, 18 Oct 2019 11:01:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx0utO4glv1Bdaz+6G2vwyH2QBneRBelD1Rq9Ta8WlsUmzKOHG9QiMqAe1qOaOyFm2pIP/W
+X-Received: by 2002:a37:88c4:: with SMTP id k187mr10253455qkd.408.1571421698769;
+        Fri, 18 Oct 2019 11:01:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571421698; cv=none;
         d=google.com; s=arc-20160816;
-        b=kIWOGd+Y0859v4kGVTYxs1hOjKbdSOenbpcP1ZdeUoi1JgozKrLdOT3V1nYjJ67NjV
-         mP5jqBLsS4AbH42Rzsudxsh0V6+Nag0XvgEd9OOL/++dZXZeMFlu9KCDc9djyjF0bMN7
-         xUz3Bh2OiP0go8Rg3aRvxQgOzqMNtpep3fwfPIawJ7hwpn/MGG56Ap8zMz2HOEMmAaZC
-         tQvuL7XueSQTk4KWzpY8jYHt5LH+nqvkz8EADX6Pyd5zcX09/JiR9E/jMKlCw4jsCNU3
-         CrFCZaUres8g8q7w9zpH43bCq+vSn2H1yLdfvXK2LhHWLflHGeiHlEdr4k30nt7aFzR4
-         vfTw==
+        b=feVQ6mUZtOOSrOL0Qp/yuHferseIZKEx+22LaKNxFa2Zi0MbN3LIjHfZ6R5iI/3luI
+         sLGrgyoevXrPDCMWri9NcqIGObQXTqinLXbda4fCprnmjEtYYdClZD+fpEoxkCMdSO5S
+         Orf4886S9UwhPZyn6i9U4bH5ElpGDi9R2pzvys82+t16Q0c0WLhmnCyml/EGG8oB9vWC
+         ZnntzQXD5B+DcFiBr60sctdXNkJKHQa2A6sSzdfQdoYW3izKF0vRqYXbPUsx2haGhDzT
+         OfpSQCV5tdiGNcYAZabaFL4fcDqDewwcuuBWX32E+M+oZiy/zwXGgXgWPmgVCMcNQQtu
+         WbhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=JlLGVu1MR8+UuiAegXarHtWa4HEkEy/RYhkYzFlbvXY=;
-        b=obtKsrBqCwSP9K71X2uPv1mO/DW1YXX1eLTMUabLKRizdbLe7ThiODB8eyXOCX5ReZ
-         PvYvlZ9uOOf3xkMOz6rYWIwApBC83ai4SU80uLS7Jhn25oPh0H1yVbWRTWpv6+GLIqKG
-         294X+zUtVO1knVyja8T6nC17ri2boXbr0TPsdM9IM+0HESWiPqi0R9ZvKaDTXToqkmV3
-         uidePMGywubDIUqMSrpUlnFT9j331EgXOWHIP6rxhpLDbEe0Mz+3rKRjMuGmFmUq6NqY
-         ezmZBcGAfA38E8OSZSO5EMXhr6JAmWDr2ZUwnvUT0AgSGKp7i5AQ4iOjLrS8Fag5RDce
-         kT5w==
+        bh=t9JSSZ7mwTT1oJwnIM2VnYSftc3uh2yp3vWCQW+otEU=;
+        b=eefhyjDHnCHs2Kfnw+w3l+0osDl6hLoAJMrwfsk6kxr6eLZgmJWD7dLoAtoZIqNc9P
+         Sdej7hClbzJowAQEuwn/Ra/iF65DQyT0tkZYXnXagAKMXE1MII0vmd920NBPURWMgS6z
+         T3xAAfvXhefQKybNIhR5kfjb08JkqNgOq6+J1GlBWwnuZxo9cFahV5RT0gzMFCXHAyLa
+         fjwnHc4gdYZuvqVb+Af9Sde6o/2tGBjdQKFmgmgxRyPtLXxuBUCP5LDCHhGNjQaF7Ng5
+         78zKBC09nqg6ohNGPUzoa91ndahAD16RvP/g1dl6PTIfItksvwTYXYmchgVEnCnj9Hc1
+         5znA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=d6+xbfA4;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ksh5nXr5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kt5si3990860ejb.283.2019.10.18.10.58.03
+        by mx.google.com with ESMTPS id q94si6016006qtd.169.2019.10.18.11.01.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 10:58:03 -0700 (PDT)
+        Fri, 18 Oct 2019 11:01:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=d6+xbfA4;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ksh5nXr5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44444 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLWVl-0003G9-Ea
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 13:58:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59667)
+	id 1iLWZF-00077X-Px
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 14:01:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59934)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iLWJx-0007oo-BY
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 13:45:50 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iLWNx-0003C1-Jk
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 13:49:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iLWJw-0006BE-0j
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 13:45:49 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:33049)
+ (envelope-from <peter.maydell@linaro.org>) id 1iLWNv-0008Lb-O0
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 13:49:57 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:39352)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iLWJv-0006Ai-RF
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 13:45:47 -0400
-Received: by mail-oi1-x241.google.com with SMTP id a15so5946004oic.0
- for <qemu-devel@nongnu.org>; Fri, 18 Oct 2019 10:45:47 -0700 (PDT)
+ id 1iLWNv-0008L9-J5
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 13:49:55 -0400
+Received: by mail-oi1-x244.google.com with SMTP id w144so5930110oia.6
+ for <qemu-devel@nongnu.org>; Fri, 18 Oct 2019 10:49:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=JlLGVu1MR8+UuiAegXarHtWa4HEkEy/RYhkYzFlbvXY=;
- b=d6+xbfA4BTcsTB+G9upJ0mng5T7huBF/hE4ymA12v3gaiRriGX38SbImNuGQA8vv7a
- N6dB42JtJdad9uA0lJ+xZP2vh2AKxcL7VoeNQmkX9rZHGfA7uZl9gZBhw70wWGEPTx3v
- rt7Zp13UkrEwYjZHyuwe24GmPWK+d62u5x7wlTT93ovwvNhAXC80YXe6YmBryJ09lGeM
- YkJxPGOpNtVHr1Nl/22zDbcRjVokhulN75DiWexSabVUgfE4mTC2/uPrZ+b84Y7GibiI
- Q5Yn5Kw76MNATA8Xbk/P8k2TyzVWwdWMItlLR5N5qWW1ss4Z90xTRrSrglPxmp94trjF
- fHTg==
+ bh=t9JSSZ7mwTT1oJwnIM2VnYSftc3uh2yp3vWCQW+otEU=;
+ b=ksh5nXr5KIJwWCMOaTGnQX6dpDR6/F3hwjB8zeNgUG6GY7KMwaHU0vnrUoe1dqTlNl
+ RYSiK3mOys6DlgBT4SFdgoUyY7J8ZG1/BxqWlq4KrP4rLKNQ2xxV8ktAsDw6Pi4QMIUu
+ xDnWTR/jjhf18Z5rJM5juClezN3a3e0A2ugGcWUu/yfXt0TjyUip2HYXEFdeJp+XzT7U
+ ebcK0PjJfxBO8ji2wzfAjtojZaKlfWw8JsUXenJVxE3QKvgl4b6Q2DS9s31JO+oM/Z4A
+ GAe9ZD+bzJyBpcjgvrLdhZu0ypWstH1DS5s+tK9rprAimHgrvghSomVpsvbGul7EAXP5
+ oFGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=JlLGVu1MR8+UuiAegXarHtWa4HEkEy/RYhkYzFlbvXY=;
- b=M8Jdo7iJ2VcLfE/Ma88+VH0yG31sAm2LAo7I3JpAMEt5+U7QBvm4CeCeMOU2iqBgcd
- wtpZO3NnvGnLrbeTbhjM75RsrZzA9xsEUZY50/mqOVGavK7A59/0kKJzIk0K7Ch7iLzF
- wumnVrCudUvcfIeioNjzTepnyP24HsiLMIz7X3jgxtm3Kvfk9Avx74AdRwPsNNELOL5b
- IxdICQ6XPtvH3RNzEyuCD8gY7ZfP+0E7gtx3gCbTkqaqkjjJv2attsPK4HtNWbgTBCBW
- Ph5LikxjsigzD2zE5nNZrnCqo5sk6MhuZZSEtdlxjgLQAZ3r1X1Od1JB610iW88NLnjN
- 39SQ==
-X-Gm-Message-State: APjAAAWlpvEJMSTzjGHvGFH65Sy2SXrHXcSFN2fCxzmsQ5ZtD1rrZjDt
- 5TxJwZyBvIttJNDX/OaxBJudWf9hRMHKoHrEuearvw==
-X-Received: by 2002:aca:49c2:: with SMTP id w185mr9199116oia.163.1571420746929; 
- Fri, 18 Oct 2019 10:45:46 -0700 (PDT)
+ bh=t9JSSZ7mwTT1oJwnIM2VnYSftc3uh2yp3vWCQW+otEU=;
+ b=WhpKBhLqKpd0nEIqvCAmN0GJvLbZQiYZvwmnBxD+51FymqxPpMUZLCkg8sItr6A2O2
+ t2soVgLRXE5sqG5Ftk5h8xRcWnBRSleFJ2D/PNkZ8CIssmiO7QRrzHAxO3xkg7s5/1Wy
+ kvgtugXKoWJLyIjzh1Jx1CFxc3QRzg3VofzdvmBzPX0Ca0irZoBeBNnwN6FiEjiGv6L+
+ TLK7S1VmSmQhJCESSxue2Zbv7V6aVDufkYcud/Egp/9DLxjQIRPfwN8lcRpNryBXbZO6
+ TapJufqHHAmh93YgYkURBUCPJR0YgTVyIJueEXwH0NFWD4Oou40esrUIFUt1X11YWGz5
+ ECSA==
+X-Gm-Message-State: APjAAAW2n7YN9LWXonwxYSpKCwwsrcYHY1yGISFVjS+D/kVJUTNDzwds
+ BgP088vreIWZpiX3urLjYS7OG1wIIGRrnlqYIog7/g==
+X-Received: by 2002:aca:2b08:: with SMTP id i8mr8652601oik.146.1571420994719; 
+ Fri, 18 Oct 2019 10:49:54 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
- <20191018154212.13458-7-marcandre.lureau@redhat.com>
-In-Reply-To: <20191018154212.13458-7-marcandre.lureau@redhat.com>
+ <20191018154212.13458-6-marcandre.lureau@redhat.com>
+In-Reply-To: <20191018154212.13458-6-marcandre.lureau@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 18 Oct 2019 18:45:35 +0100
-Message-ID: <CAFEAcA-6Qes3_aiDF7a+GJQssDSJyiJeyjO9Y96=i9z+bmtipA@mail.gmail.com>
-Subject: Re: [PATCH 06/14] leon3: replace PROP_PTR with PROP_LINK
+Date: Fri, 18 Oct 2019 18:49:43 +0100
+Message-ID: <CAFEAcA9dqtx8P1K3+ZiVYeM1i-UOeJmYRb2Yq91GNnj-QHe7rQ@mail.gmail.com>
+Subject: Re: [PATCH 05/14] dp8393x: replace PROP_PTR with PROP_LINK
 To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+X-Received-From: 2607:f8b0:4864:20::244
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,98 +123,72 @@ Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qCLnfLRPo7U8
+X-TUID: gGSkChgfWx8v
 
-On Fri, 18 Oct 2019 at 16:43, Marc-Andr=C3=A9 Lureau
+On Fri, 18 Oct 2019 at 16:42, Marc-Andr=C3=A9 Lureau
 <marcandre.lureau@redhat.com> wrote:
->
-> "set_pil_in" and "set_pil_in" are used to set a callback, but have a
-> single user and cannot be modified by the user.
->
-> Simplify the code by calling directly into leon3_set_pil_in(), and use
-> a "cpu" link property.
 >
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->  hw/intc/grlib_irqmp.c | 20 ++++++--------------
->  hw/sparc/leon3.c      |  7 +++----
->  target/sparc/cpu.h    |  1 +
->  3 files changed, 10 insertions(+), 18 deletions(-)
+>  hw/mips/mips_jazz.c | 3 ++-
+>  hw/net/dp8393x.c    | 7 +++----
+>  2 files changed, 5 insertions(+), 5 deletions(-)
 >
-> diff --git a/hw/intc/grlib_irqmp.c b/hw/intc/grlib_irqmp.c
-> index bc78e1a14f..34b7e1b4e1 100644
-> --- a/hw/intc/grlib_irqmp.c
-> +++ b/hw/intc/grlib_irqmp.c
-> @@ -58,10 +58,8 @@ typedef struct IRQMP {
+> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
+> index 8d010a0b6e..878925a963 100644
+> --- a/hw/mips/mips_jazz.c
+> +++ b/hw/mips/mips_jazz.c
+> @@ -284,7 +284,8 @@ static void mips_jazz_init(MachineState *machine,
+>              dev =3D qdev_create(NULL, "dp8393x");
+>              qdev_set_nic_properties(dev, nd);
+>              qdev_prop_set_uint8(dev, "it_shift", 2);
+> -            qdev_prop_set_ptr(dev, "dma_mr", rc4030_dma_mr);
+> +            object_property_set_link(OBJECT(dev), OBJECT(rc4030_dma_mr),
+> +                                     "dma_mr", &error_abort);
+>              qdev_init_nofail(dev);
+>              sysbus =3D SYS_BUS_DEVICE(dev);
+>              sysbus_mmio_map(sysbus, 0, 0x80001000);
+> diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
+> index a5678e11fa..946c7a8f64 100644
+> --- a/hw/net/dp8393x.c
+> +++ b/hw/net/dp8393x.c
+> @@ -173,7 +173,7 @@ typedef struct dp8393xState {
+>      int loopback_packet;
 >
->      MemoryRegion iomem;
+>      /* Memory access */
+> -    void *dma_mr;
+> +    MemoryRegion *dma_mr;
+>      AddressSpace as;
+>  } dp8393xState;
 >
-> -    void *set_pil_in;
-> -    void *set_pil_in_opaque;
-> -
->      IRQMPState *state;
-> +    SPARCCPU *cpu;
->  } IRQMP;
+> @@ -922,7 +922,8 @@ static const VMStateDescription vmstate_dp8393x =3D {
 >
->  struct IRQMPState {
-> @@ -82,7 +80,6 @@ static void grlib_irqmp_check_irqs(IRQMPState *state)
->      uint32_t      pend   =3D 0;
->      uint32_t      level0 =3D 0;
->      uint32_t      level1 =3D 0;
-> -    set_pil_in_fn set_pil_in;
->
->      assert(state !=3D NULL);
->      assert(state->parent !=3D NULL);
-> @@ -97,13 +94,11 @@ static void grlib_irqmp_check_irqs(IRQMPState *state)
->      trace_grlib_irqmp_check_irqs(state->pending, state->force[0],
->                                   state->mask[0], level1, level0);
->
-> -    set_pil_in =3D (set_pil_in_fn)state->parent->set_pil_in;
-> -
->      /* Trigger level1 interrupt first and level0 if there is no level1 *=
-/
->      if (level1 !=3D 0) {
-> -        set_pil_in(state->parent->set_pil_in_opaque, level1);
-> +        leon3_set_pil_in(state->parent->cpu, level1);
->      } else {
-> -        set_pil_in(state->parent->set_pil_in_opaque, level0);
-> +        leon3_set_pil_in(state->parent->cpu, level0);
->      }
->  }
->
-> @@ -348,14 +343,13 @@ static void grlib_irqmp_realize(DeviceState *dev, E=
-rror **errp)
->      IRQMP *irqmp =3D GRLIB_IRQMP(dev);
->
->          /* Check parameters */
-> -    if (irqmp->set_pil_in =3D=3D NULL) {
-> -        error_setg(errp, "set_pil_in cannot be NULL.");
-> +    if (irqmp->cpu =3D=3D NULL) {
-> +        error_setg(errp, "cpu cannot be NULL.");
->      }
->  }
-
->  static Property grlib_irqmp_properties[] =3D {
-> -    DEFINE_PROP_PTR("set_pil_in", IRQMP, set_pil_in),
-> -    DEFINE_PROP_PTR("set_pil_in_opaque", IRQMP, set_pil_in_opaque),
-> +    DEFINE_PROP_LINK("cpu", IRQMP, cpu, TYPE_SPARC_CPU, SPARCCPU *),
+>  static Property dp8393x_properties[] =3D {
+>      DEFINE_NIC_PROPERTIES(dp8393xState, conf),
+> -    DEFINE_PROP_PTR("dma_mr", dp8393xState, dma_mr),
+> +    DEFINE_PROP_LINK("dma_mr", dp8393xState, dma_mr,
+> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+>      DEFINE_PROP_UINT8("it_shift", dp8393xState, it_shift, 0),
 >      DEFINE_PROP_END_OF_LIST(),
 >  };
 
-This is using ptr properties to define a callback
-mechanism where the device says "call the callback
-function, passing it an opaque cookie and a
-32-bit value". We already have a generic mechanism
-for doing that, which is the qemu_irq. So we should
-just use that instead of adding a link property between
-the interrupt controller and the CPU.
+Link property is the correct way to pass a MemoryRegion to
+a device for DMA purposes, so this is a good cleanup.
 
-(Bonus further cleanup: the code currently in
-leon3_set_pil_in() should probably be part of the
-SPARC CPU object itself, as a handler for an inbound
-gpio line, as then you could just wire the qemu_irq
-from the interrupt controller to the CPU. But you
-can leave it as ad-hoc code in leon3.c for now.)
+> @@ -936,8 +937,6 @@ static void dp8393x_class_init(ObjectClass *klass, vo=
+id *data)
+>      dc->reset =3D dp8393x_reset;
+>      dc->vmsd =3D &vmstate_dp8393x;
+>      dc->props =3D dp8393x_properties;
+> -    /* Reason: dma_mr property can't be set */
+> -    dc->user_creatable =3D false;
+>  }
+
+Sidenote: as a sysbus device, this remains non-usercreatable
+even though we can drop the specific flag here.
+
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

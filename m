@@ -1,211 +1,156 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1020020wrm;
-        Fri, 18 Oct 2019 07:50:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyx/P5IcxYOrvVjtcn1SbQW3W9GXyMkXkj6VHI67UG5ImRFm+QTxjJZaEMHbkUavMXQ15i2
-X-Received: by 2002:a17:906:5e49:: with SMTP id b9mr9031172eju.255.1571410246846;
-        Fri, 18 Oct 2019 07:50:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571410246; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1085727wrm;
+        Fri, 18 Oct 2019 08:42:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzr74OrAt1t+Hf67yw51HeypYF3cimYVylNTgstpwzqjgsa0P4oO+mL7n/p4aDriwqbryRd
+X-Received: by 2002:a37:6353:: with SMTP id x80mr4414447qkb.52.1571413358220;
+        Fri, 18 Oct 2019 08:42:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571413358; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qcb3c7tfM3amzwtjhC/UmIdZExhalUpo9mpXoflHyn1rrbm/0UqqNewgReHVXugRjG
-         GkYsumT/3DxoCU7F/74H2b6izonQFro9vRyg2THRpO6MzOFBbTXV+kFoSt1MRz5+MmW0
-         5q8t6xECUJastFTQsgiHNc4mJnaGSYVr+nhTVfH6MgmeoRYlu/KCpMdAw1wi0eZqZZTu
-         klB4Ys4DHQmzpjufGn/CrWV+t3WyFikCLNRbVy8rq6moNJKMz7RCSzcdrASPlVTyKi8R
-         MBBabFiO7vZO6hIRzXcNPR8TxaMx/lTOTaeOmXHo0PJxaLfBvvpTzFyxc/MPVvmUBvJV
-         jerg==
+        b=N0BbB4E39FOq/RCiz7vV0kOy6Hk2XQlZoHnzUCKXEF8bfbp5fem1LkFjlXg+T3uSyi
+         G14WX6UEBp/OhaYS1W8HKZBD8orrmb4MDnBfwVkpOp8VfW2Cm9dKumlKF2vTxAc+3bL7
+         q05J9L1YRDXekKZkXmF9ljWffWsXqVMjwISc4NudgoVqqDPY98fDD2mvzDbY7gNFFpLC
+         i1XP/xG+36yn4bXwvCw95YwRvPoRS7AAij3gBGWxSIWyqJKogqjEh3/eBF6DcFwe3qSm
+         ybMlVBCZ5dZRit4femwbxMP+UoHy6/HNdha85ntY63i8WhvrCg8UWGjoeqFzNHW5DSC1
+         dAXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=zau2/h3zRhKrYJ9bnSH7gZvYD8kk5npsaFp5z1/vCjQ=;
-        b=eyqWboCfzU3zfGGXe33Y4SX5Ljbqgj9pMwEPfEI6kOI0HXkfOGvjJNftKNZEoZjbar
-         gVTPFyaGP47/Zw0wPgVwecmN9U2ntEATSS0Ra+sqUAu45YEYvM8a/CRhSOMeTIz9N2gI
-         D8pqAGlgZtsa7Q+9YntA9XntdpWM6Zk/Gxwic+pu4JdYI31WJOKWkX2Di9zu0LvxQYes
-         ODJ+zc0PuevfoPwWBLiGpB59jBqgMYyg5R9MpDzuDlYQruywYVAt7qAHi5STdZIi2Tlk
-         ZC8p68fEO1AygovpVDbOrQcBzzLxdYXR9h+8uFPXt1/KXW7Dd5bQ+WZtRFi6Cc2Pagqg
-         r0Yw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=r1pAGWK7Yvosax5uLkqYWEK/T8ZjyRO7Bglk9jACw5k=;
+        b=lE/j1KbcaOOoSJED8zfikV0krhlJLd8RKvvnS4MpKYqMsMBqPEN0cyDf8JZaZ/eRSk
+         Z70jhLBDZ9apZcxVGEqCAD2N4pWX3ZOODqrYVDg2oOE1dkWx5WWwVAoj4nK7J2xDTlQW
+         i1Kvgfe1a9nOiIxqITkTIMWfgef2ws2rQ+rOygzoAjoc9Rcc2km98SoybpRDtAKSKxTz
+         QQvSByGprREyzDDjFPyyGZbWoHAsDncSNqiI6Wukoz9lVkO+RBZ8uNByuwjYlLigqcqe
+         gk7C12d0K0+bDS5oetft0UNU19rEeqLYdkBo/Ko17X6QNGn6RVzQkUrJFSyVlPDXuHqj
+         4F+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b42si3934414eda.367.2019.10.18.07.50.46
+        by mx.google.com with ESMTPS id q7si5956628qvf.39.2019.10.18.08.42.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 07:50:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Oct 2019 08:42:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41278 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42024 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLTaX-00006O-VF
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 10:50:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36407)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iLUOj-0008C4-72
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:42:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44086)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iLTYa-0007AS-R4
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 10:48:46 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUOa-0008Bt-JG
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:42:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iLTYY-00025i-GZ
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 10:48:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:7201)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUOZ-00068p-LW
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:42:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46236)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iLTYX-00024u-OD
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 10:48:42 -0400
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1iLUOZ-00068A-GQ; Fri, 18 Oct 2019 11:42:27 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id BA1C17EBBD
- for <qemu-devel@nongnu.org>; Fri, 18 Oct 2019 14:48:40 +0000 (UTC)
-Received: by mail-wm1-f72.google.com with SMTP id o128so5063764wmo.1
- for <qemu-devel@nongnu.org>; Fri, 18 Oct 2019 07:48:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=cZN9s9L8r9niF23MrvL5IG8jaedcfH9gMuNiubfVR8Q=;
- b=NxCmPiu7Dbf2DjdLku0250WVenV81BJgLx1yqV6ZR1fCvbf9BHQtGW7ctKw+v72J5M
- 4JMES1k9oPSWAPz42W0i/rpdd2JeXeb5cBZufotUmf0mDBR4pw3fqsCR4QsSDvoVruRH
- 05sKw4H9ERP77L0ZLpVFcABmcEYrsp+nd9Ddxc32SAaOhySu3NbpAe6G1wunHULuV+os
- pmoMV9xrUWxeghMQJIKGNXDHGMu0RtMT3gNMWmxJ/yMeC7MnEqo1TDkuuDeFWsBBF9lk
- StEHNXfJ0h1KBcVw8uv5RqsNKTFsBJO26hlao0/IhOXuRUfOpZLIeDtH63ZXsUTI7J+J
- 5yGw==
-X-Gm-Message-State: APjAAAWwimTzxtp+9flXETl41AFPF0leLdTtXTg+07GyN7vKMCp2K/Yc
- ZrXhnIATCGtPE4OPlPFX/ujWR/qfsQ/BPxv2RbOL/zO5ZJAnzkYxA5ZTXP15eLQ+BKiZi5q6hpa
- +4CF+Nz4jsOnxzVo=
-X-Received: by 2002:adf:e40c:: with SMTP id g12mr8617930wrm.216.1571410119461; 
- Fri, 18 Oct 2019 07:48:39 -0700 (PDT)
-X-Received: by 2002:adf:e40c:: with SMTP id g12mr8617903wrm.216.1571410119254; 
- Fri, 18 Oct 2019 07:48:39 -0700 (PDT)
-Received: from [192.168.1.36] (14.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.14])
- by smtp.gmail.com with ESMTPSA id u83sm12703335wme.0.2019.10.18.07.48.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Oct 2019 07:48:38 -0700 (PDT)
-Subject: Re: [PATCH 0/5] hw/arm/exynos4210: Add acceptance tests to the
- SMDKC210 board
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20191005154748.21718-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6ac9df42-a928-0d45-4aa5-3155a1a3ceaa@redhat.com>
-Date: Fri, 18 Oct 2019 16:48:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ by mx1.redhat.com (Postfix) with ESMTPS id 9C39C10DCC9F;
+ Fri, 18 Oct 2019 15:42:26 +0000 (UTC)
+Received: from localhost (ovpn-112-40.ams2.redhat.com [10.36.112.40])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 95F7D7987;
+ Fri, 18 Oct 2019 15:42:22 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 01/14] sm501: replace PROP_PTR with PROP_LINK
+Date: Fri, 18 Oct 2019 17:41:59 +0200
+Message-Id: <20191018154212.13458-2-marcandre.lureau@redhat.com>
+In-Reply-To: <20191018154212.13458-1-marcandre.lureau@redhat.com>
+References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20191005154748.21718-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.64]); Fri, 18 Oct 2019 15:42:26 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Fr=c3=a9d=c3=a9ric_Basse?= <contact@fredericb.info>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Evgeny Voevodin <e.voevodin@samsung.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Dmitry Solodkiy <d.solodkiy@samsung.com>, Cleber Rosa <crosa@redhat.com>,
- Maksim Kozlov <m.kozlov@samsung.com>, Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1lYu74c1Very
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Uvxa/3pIrrC9
 
-Hi Peter,
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ hw/display/sm501.c | 5 +++--
+ hw/sh4/r2d.c       | 3 ++-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
 
-On 10/5/19 5:47 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi all,
->=20
-> Yesterday Peter Maydell asked on IRC if I had any working Exynos4
-> image. I looked at some old backuped notes and could boot Guenter
-> initrd with BusyBox.
-> I'll use this cover letter to share my notes, they might help to
-> have this board fully usable again.
->=20
-> This board is listed as "Odd Fixes". Since we have it covered, I
-> thought it was worthwhile to have it covered by tests to avoid
-> more regressions.
->=20
-> Fr=C3=A9d=C3=A9ric Basse used this board last year:
-> https://fredericb.info/2018/03/emulating-exynos-4210-bootrom-in-qemu.ht=
-ml
->=20
-> I'll have a look a these particular commits he added:
->=20
-> - https://github.com/frederic/qemu-exynos-bootrom/commit/9be5c9f2253dbc=
-04ee
->=20
->     sd: add sd clock support to SDHC_CLKCON
->=20
-> - https://github.com/frederic/qemu-exynos-bootrom/commit/6f045949ee2fde=
-c624
->=20
->     sd: always reply to ACMD41 (SD_APP_OP_COND)
->=20
-> Guenter also carries on this patch:
->=20
-> - https://github.com/groeck/qemu/commit/0a80543cc910d
->=20
->    hw/timer/exynos4210_mct: Initialize timer before starting it
->=20
->    When booting a recent Linux kernel, the qemu message "Timer with per=
-iod
->    zero, disabling" is seen, apparently because a timer is started befo=
-re
->    being initialized.  Fix the problem by initializing the offending ti=
-mer
->    before starting it.
->=20
-> It might also be interesting to use Krzysztof's initramfs image:
-> https://github.com/krzk/tools/blob/master/run-qemu.sh#L29
->=20
-> The 1st test added works fine, however the 2nd (SD card) is not
-> reliable so it is disabled. We might need to adapt the ADMA patch
-> Igor sent once:
-> https://patchwork.ozlabs.org/patch/181854/
->=20
-> If you want to run the Avocado tests, you need these other patches
-> pending review:
->=20
-> - https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg06439.html
->    "tests/boot_linux_console: Extract the gunzip() helper"
->=20
-> - https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg06438.html
->    "python/qemu/machine: Allow to use other serial consoles than defaul=
-t"
->    (only for the 2nd disabled test)
->=20
-> Regards,
->=20
-> Phil.
->=20
-> Based-on: 20190926173428.10713-16-f4bug@amsat.org
->=20
-> Philippe Mathieu-Daud=C3=A9 (5):
->    tests/boot_linux_console: Add initrd test for the Exynos4210
->    hw/sd/sdhci: Add a comment to distinct the i.MX eSDHC functions
->    hw/sd/sdhci: Add dummy Samsung SDHCI controller
->    hw/arm/exynos4210: Use the Samsung s3c SDHCI controller
->    tests/boot_linux_console: Add sdcard test for the Exynos4210
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index 1f33c87e65..a87d18efab 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -1930,7 +1930,7 @@ typedef struct {
+     SM501State state;
+     uint32_t vram_size;
+     uint32_t base;
+-    void *chr_state;
++    Chardev *chr_state;
+ } SM501SysBusState;
+=20
+ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+@@ -1968,7 +1968,8 @@ static void sm501_realize_sysbus(DeviceState *dev, =
+Error **errp)
+ static Property sm501_sysbus_properties[] =3D {
+     DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
+     DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
+-    DEFINE_PROP_PTR("chr-state", SM501SysBusState, chr_state),
++    DEFINE_PROP_LINK("chr-state", SM501SysBusState, chr_state,
++                     TYPE_CHARDEV, Chardev *),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+=20
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index ee0840f380..5780ee85d9 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -272,7 +272,8 @@ static void r2d_init(MachineState *machine)
+     busdev =3D SYS_BUS_DEVICE(dev);
+     qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
+     qdev_prop_set_uint32(dev, "base", 0x10000000);
+-    qdev_prop_set_ptr(dev, "chr-state", serial_hd(2));
++    object_property_set_link(OBJECT(dev), OBJECT(serial_hd(2)),
++                             "chr-state", &error_abort);
+     qdev_init_nofail(dev);
+     sysbus_mmio_map(busdev, 0, 0x10000000);
+     sysbus_mmio_map(busdev, 1, 0x13e00000);
+--=20
+2.23.0.606.g08da6496b6
 
-Can you take patches 2-4 from this series? (C part, not Python).
-All these patches have been reviewed.
-
-Thanks,
-
-Phil.

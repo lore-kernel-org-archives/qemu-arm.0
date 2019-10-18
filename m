@@ -1,73 +1,73 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1065519wrm;
-        Fri, 18 Oct 2019 08:26:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzdsClJDVnUQ3vaGniHOsZJjZmKi0OsmoTJ+DGON/XvHJmU3KxTayY2B11S1UsstoFomgoh
-X-Received: by 2002:a17:906:1c87:: with SMTP id g7mr1564106ejh.189.1571412368599;
-        Fri, 18 Oct 2019 08:26:08 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1065658wrm;
+        Fri, 18 Oct 2019 08:26:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqylxt3t6Ll/f+e8pt8Pn/iHAJxQl7NiPYfRIFp+86T9ZjQzIJBrw67Mo+6ZB8p56OwKTwOD
+X-Received: by 2002:a17:906:688:: with SMTP id u8mr9416116ejb.208.1571412375759;
+        Fri, 18 Oct 2019 08:26:15 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f2si3578130ejw.335.2019.10.18.08.26.08
+        by mx.google.com with ESMTPS id q22si3487666eja.178.2019.10.18.08.26.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 08:26:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Oct 2019 08:26:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=QOw6bxRN;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=jt6EpsvI;
        arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41736 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41756 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLU8l-0002zd-FF
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:26:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39404)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iLU8s-00041O-LG
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:26:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39389)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1iLTrk-0007LN-RD
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 11:08:34 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1iLTrj-0007Ky-AG
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:08:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1iLTrj-0000V4-9c
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 11:08:32 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:38760)
+ (envelope-from <damien.hedde@greensocs.com>) id 1iLTrh-0000US-65
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:08:30 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:38788)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1iLTrf-0000Hl-7c; Fri, 18 Oct 2019 11:08:27 -0400
+ id 1iLTrg-0000J2-Sp; Fri, 18 Oct 2019 11:08:29 -0400
 Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
  [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPS id 9AB0396F5A;
- Fri, 18 Oct 2019 15:07:55 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPS id 3C82596F5C;
+ Fri, 18 Oct 2019 15:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1571411276;
+ s=mail; t=1571411277;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zmmm1sUv204rKQzphLaIVatMJToXUpbV+y87KEeCwso=;
- b=QOw6bxRN8WI12bqXgliMPPlfmn26R3JrDL9RTU1SIRdB3FTo6YOxe93AgOE1c5Nyieur49
- +6+uljuJ84lc5LhOawwXYCkW2MLK9ZNX3lcXKz2ZvKDgiCHGBYXNq3lX4WOnLQ2MIhoF09
- d6loWpNe1JuBAETWydAkYawxDxtSQkg=
+ bh=csiJwmDDJ1X+h08zqd88vO2yIGi07AvaeJFvRK/uExA=;
+ b=jt6EpsvItqPtYrND3cd2USeJTJWV4JJPUsOPBPDmu9PkmB2nAUuYxNwh+jJMJ9q1stQ8K4
+ gh2ShTgwIZeL2x3n2x4Vkn69ul/1t9wFGjWIJCAGbQyWjY+8b0k4FdI5Q4dhTsxrcg6x/W
+ mQX65ZHl2CuBYl5nCa6vlSn+8peUZnU=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 11/13] hw/s390x/ipl: replace deprecated qdev_reset_all
- registration
-Date: Fri, 18 Oct 2019 17:06:28 +0200
-Message-Id: <20191018150630.31099-12-damien.hedde@greensocs.com>
+Subject: [PATCH v5 13/13] hw/gpio/bcm2835_gpio: Update to resettable
+Date: Fri, 18 Oct 2019 17:06:30 +0200
+Message-Id: <20191018150630.31099-14-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20191018150630.31099-1-damien.hedde@greensocs.com>
 References: <20191018150630.31099-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1571411276;
+ s=mail; t=1571411277;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zmmm1sUv204rKQzphLaIVatMJToXUpbV+y87KEeCwso=;
- b=GVBuEHQay4s75OutKcgwxDgIhk+XvNA39cJBgynayIl0iiEZ9RdwtGNSuatwEoCd670sDe
- jM2xcQslqEms1W6LlAj0Z8BBGuwa3AvffxvKLWvGJ5dOouEJKLWdfmgj4b6xM3wbCnaP7a
- 63ZkoIASkOTa6o1Q5dbpMSB8LJ75wgE=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1571411276; a=rsa-sha256; cv=none;
- b=3JVYI4h0l3T/eTtkZSoGnyKM8tHH3COEUwQsNHjrCHXz5XNiwrzo18KX+A4gn6e4uFfujs
- +gz4M+0FGI3H6Abr6MKi4P959VkV8hyqMrmFEZG7pZfTzCULqSPP9bt+1t8rS4IqSiwX3W
- is3IVsChNayyXjuAdcTj4p3RAoRI/qo=
+ bh=csiJwmDDJ1X+h08zqd88vO2yIGi07AvaeJFvRK/uExA=;
+ b=bzg6srUUN146O1kBjWNa+dQxm2BTQ4HkIFB8ji4n0FkC1f6l1aCV1adG5STLSYD/9g+74K
+ 515cUHzsQdJX/XSPQOoA1bhTOa4pZm7/KbgcJyCx+iGiiEg6Nr93QTWxwzlVzP8wJjcAsq
+ 3V2XvVSb6ID7/ZeTFGClqzBS87PV5Qw=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1571411277; a=rsa-sha256; cv=none;
+ b=RNRVpJU3OFVN3KcsIrG7xkzeJd+qIG8iBGF+8vHZBHrEeibMwNFyj0DfkuJN+4WXF7ltsm
+ RUVF6NPH7cgXiIxO01N/T4SYCpD2XYYxupBT/zDQX7hVrQ/I4sba/EAPnYvBVrGnBefxTi
+ iapbvFnDNY8QAOx4FPy15L7jqMc+Y48=
 ARC-Authentication-Results: i=1;
 	beetle.greensocs.com;
 	none
@@ -75,71 +75,96 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 5.135.226.135
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
- Thomas Huth <thuth@redhat.com>, berrange@redhat.com, ehabkost@redhat.com,
- cohuck@redhat.com, mark.burton@greensocs.com, qemu-s390x@nongnu.org,
- Christian Borntraeger <borntraeger@de.ibm.com>, edgari@xilinx.com,
+ berrange@redhat.com, ehabkost@redhat.com, cohuck@redhat.com,
+ mark.burton@greensocs.com, qemu-s390x@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, edgari@xilinx.com,
  qemu-arm@nongnu.org, pbonzini@redhat.com, philmd@redhat.com,
  david@gibson.dropbear.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uB86C66Zud3M
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fs7K0e3371af
 
-Replace deprecated qdev_reset_all by resettable_cold_reset_fn for
-the ipl registration in the main reset handlers.
-
-This does not impact the behavior for the following reasons:
-+ at this point resettable just call the old reset methods of devices
-  and buses in the same order than qdev/qbus.
-+ resettable handlers registered with qemu_register_reset are
-  serialized; there is no interleaving.
-+ eventual explicit calls to legacy reset API (device_reset or
-  qdev/qbus_reset) inside this reset handler will not be masked out
-  by resettable mechanism; they do not go through resettable api.
+Transition the bcm2835_gpio device class to Resettable.
+The sdbus reparenting is delayed in hold phase to respect
+resettable side-effect rules.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
-Cc: Cornelia Huck <cohuck@redhat.com>
-Cc: qemu-s390x@nongnu.org
-Cc: Christian Borntraeger <borntraeger@de.ibm.com>
-Cc: Thomas Huth <thuth@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Cc: qemu-arm@nongnu.org
 ---
- hw/s390x/ipl.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ hw/gpio/bcm2835_gpio.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
 
-diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
-index ca544d64c5..2689f7a017 100644
---- a/hw/s390x/ipl.c
-+++ b/hw/s390x/ipl.c
-@@ -237,7 +237,15 @@ static void s390_ipl_realize(DeviceState *dev, Error=
- **errp)
-      */
-     ipl->compat_start_addr =3D ipl->start_addr;
-     ipl->compat_bios_start_addr =3D ipl->bios_start_addr;
--    qemu_register_reset(qdev_reset_all_fn, dev);
-+    /*
-+     * Because this Device is not on any bus in the qbus tree (it is
-+     * not a sysbus device and it's not on some other bus like a PCI
-+     * bus) it will not be automatically reset by the 'reset the
-+     * sysbus' hook registered by vl.c like most devices. So we must
-+     * manually register a reset hook for it.
-+     * TODO: there should be a better way to do this.
-+     */
-+    qemu_register_reset(resettable_cold_reset_fn, dev);
- error:
-     error_propagate(errp, err);
+diff --git a/hw/gpio/bcm2835_gpio.c b/hw/gpio/bcm2835_gpio.c
+index 81fe07132f..24e39eac5e 100644
+--- a/hw/gpio/bcm2835_gpio.c
++++ b/hw/gpio/bcm2835_gpio.c
+@@ -262,24 +262,29 @@ err_out:
+             __func__, offset);
  }
+=20
+-static void bcm2835_gpio_reset(DeviceState *dev)
++static void bcm2835_gpio_reset_enter(Object *obj, ResetType type)
+ {
+-    BCM2835GpioState *s =3D BCM2835_GPIO(dev);
++    BCM2835GpioState *s =3D BCM2835_GPIO(obj);
+=20
+     int i;
+     for (i =3D 0; i < 6; i++) {
+         gpfsel_set(s, i, 0);
+     }
+=20
++    s->lev0 =3D 0;
++    s->lev1 =3D 0;
++}
++
++static void bcm2835_gpio_reset_hold(Object *obj)
++{
++    BCM2835GpioState *s =3D BCM2835_GPIO(obj);
+     /*
+      * Setup the right sdbus (put 1 in sd_fsel to force reparenting
+-     * the sd). It will be SDHCI because of the gpfsel_set() above.
++     * the sd). It will be SDHCI because of the gpfsel_set() done
++     * in bcm2835_gpio_reset_enter().
+      */
+     s->sd_fsel =3D 1;
+     gpfsel_update_sdbus(s);
+-
+-    s->lev0 =3D 0;
+-    s->lev1 =3D 0;
+ }
+=20
+ static const MemoryRegionOps bcm2835_gpio_ops =3D {
+@@ -342,10 +347,12 @@ static void bcm2835_gpio_realize(DeviceState *dev, =
+Error **errp)
+ static void bcm2835_gpio_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+=20
+     dc->vmsd =3D &vmstate_bcm2835_gpio;
+     dc->realize =3D &bcm2835_gpio_realize;
+-    dc->reset =3D &bcm2835_gpio_reset;
++    rc->phases.enter =3D &bcm2835_gpio_reset_enter;
++    rc->phases.hold  =3D &bcm2835_gpio_reset_hold;
+ }
+=20
+ static const TypeInfo bcm2835_gpio_info =3D {
 --=20
 2.23.0
 

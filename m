@@ -1,77 +1,77 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1088150wrm;
-        Fri, 18 Oct 2019 08:44:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzAHr0sEWyCBSdKOfwtONcNCLLCV6bPiWbJVYL9C2yrqxyPvxxiNZqWI5ERzmQMSyY3w5fo
-X-Received: by 2002:a05:6214:3ce:: with SMTP id ce14mr9976405qvb.174.1571413467614;
-        Fri, 18 Oct 2019 08:44:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571413467; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1090272wrm;
+        Fri, 18 Oct 2019 08:46:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxvkAONxXhjpo01eZ3TkA0SJDaP1uF3V4VbBI3YRxxMor+B9zFZ8r5EAGFoCGUymECh1YuH
+X-Received: by 2002:a17:906:5e19:: with SMTP id n25mr9471561eju.131.1571413579448;
+        Fri, 18 Oct 2019 08:46:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571413579; cv=none;
         d=google.com; s=arc-20160816;
-        b=D8CcZTm+HMC1u6vJEg4Cm2vmErk0WpD380jrDYPLiu3ig8LZdbaeJZEDKtSXUUb8SJ
-         GuUl+0sYkSOUiEHuQWuUo7zjLMh2q17zGQxq+LmNBsI64RRdlbpKh6zyrbP5kReiITGh
-         uLi4V+wRtiYyQ2xfIsgw1Xh+UEe7r+OufOkEoTiwldaMQZk5DCdM+IiEeQHrpyWnrjlG
-         oDJYNX7LEeR14/3l+SPTHkIvNxFI31Nb5I0JBn2KC76MRnZv/CoHIFPse1oCZlkl2dm+
-         qVkXlXZbFrzS1atGb6ZvcGab83cukASt193GZRSTB+Q0od0BzC1Z4uzwzu/C8N1elbhZ
-         BHTw==
+        b=ZvMTl9VJQAnOU37A+zX1AdzI0uthXu9iqZBdRy69OorxNAlpOMAOPDcbtGTHiDxNuV
+         zt82E1ZncuU9Qv6gkFSDf5Keykh+NkH/hOSaV++TDT5iG4aaK5BKUvYh8wady9MpjMJ+
+         Ihec6xdTgM5jG+DclQgYdPEIvxrBVmWzfxOFuVeon+u7hPVsyX5yO9PC6L3ADexrXZQz
+         kqqAH3aCJQbAin5OVcy8j+jNQZOykDyV3csDmsqYdCSt8h53UvnI8s4CS+8cMaqCa+6L
+         gArzMB2fAbjGbBNXirJSPSkw6RL/anm1Vt1PXTVwXOIkgmBUvIxmROoYpyLI9sXsxmd8
+         f4PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=YNFdMAR61BX+6hfxSC7+KHztAkLe/nd2eQw1Wopx4Qc=;
-        b=FIMu+8gEg++mev8W9dR/KXZRIaIh5yNAnfkSXm6tLgJQt6+oRcZ8i2cHCCZKaz6fZ/
-         drp2Gt4mPiPRoTqHj/CPniPGrvuPlcsXzLkwM0MWjz9wL86zAnFebg573gkRI0SHsy6i
-         tcyZrzxHHxYOe6XK7dngRypE7OIXI/qI6kkJEPYYedla49udhdcwZbpHoxL+PvqLA/zI
-         BWjr0QNSiaGpVDezg8trTaOR0tXmsBU0Lx1CDVkS6yLeCklMH+HosxOKi4nGj/ux8GdQ
-         i/8FfOy0rmVhlAVl7JdHkCk8qsLg4i+7O2c83CQtK9RrMBvRsorqEhCCZQJt7V2kAFTJ
-         fCFw==
+        bh=iWtzfXU4Je42O6q0njGO4F2GIKTyXDxCrzgSKseIRh8=;
+        b=T9kZmKEnqAtW29YaxA0BL2yE5j4BNYlsbQIbXM2BOTM2632UZf1Ys4KXNKVTsdtJhv
+         uXC+F9NVn/G39MLbeg+CejMjnfm7djYrcj6J2+Whv/1q7SDZOKX7vPhy65FsW7CTAVCd
+         LI/Wp6HDiHmvw5fdwsMZRN56zr8z9zvQqZK6kmAATGPRKVHnP9FnugwfEzfQjyfSRHAd
+         PM/1z+gR3fFY/AGMrVAiL6m7LfE9+uOJc94Bd30Opq2lTrLKAJI0NXBYK/RwTfUU4V7z
+         rwClxwTvSgdlmyO8FISSkSiAMrXpc3D4MO1Fk/sGAr3PCDd0UAy/7eJqFdjkgN+1jgBg
+         vTpg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n10si6348879qtl.331.2019.10.18.08.44.27
+        by mx.google.com with ESMTPS id b15si4152699edm.395.2019.10.18.08.46.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 08:44:27 -0700 (PDT)
+        Fri, 18 Oct 2019 08:46:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42146 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42168 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLUQU-00027B-MK
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:44:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44603)
+	id 1iLUSH-0003uX-St
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:46:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44129)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iLUPv-0001aa-4l
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:43:52 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUOd-0008DL-ET
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:42:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iLUPt-0007Y8-KE
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:43:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47180)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUOc-0006B4-7t
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:42:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:9868)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iLUPt-0007WW-CM; Fri, 18 Oct 2019 11:43:49 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ id 1iLUOb-0006AN-WB; Fri, 18 Oct 2019 11:42:30 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 6DC5410DCC99;
- Fri, 18 Oct 2019 15:43:48 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 0832281F19;
+ Fri, 18 Oct 2019 15:42:29 +0000 (UTC)
 Received: from localhost (ovpn-112-40.ams2.redhat.com [10.36.112.40])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7785F100EA05;
- Fri, 18 Oct 2019 15:43:42 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5E33658BE;
+ Fri, 18 Oct 2019 15:42:28 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 11/14] omap-i2c: remove PROP_PTR
-Date: Fri, 18 Oct 2019 17:42:09 +0200
-Message-Id: <20191018154212.13458-12-marcandre.lureau@redhat.com>
+Subject: [PATCH 02/14] vmmouse: replace PROP_PTR with PROP_LINK
+Date: Fri, 18 Oct 2019 17:42:00 +0200
+Message-Id: <20191018154212.13458-3-marcandre.lureau@redhat.com>
 In-Reply-To: <20191018154212.13458-1-marcandre.lureau@redhat.com>
 References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.64]); Fri, 18 Oct 2019 15:43:48 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.27]); Fri, 18 Oct 2019 15:42:29 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -105,134 +105,124 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xNteuaaezTEQ
+X-TUID: wMkz2N/ZtmC5
 
-Since clock are not QOM objects, replace PROP_PTR of clocks with
-setters methods.
+While at it, use the expected type.
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/arm/omap1.c        |  2 +-
- hw/arm/omap2.c        |  8 ++++----
- hw/i2c/omap_i2c.c     | 19 ++++++++++++-------
- include/hw/arm/omap.h |  9 +++++++++
- 4 files changed, 26 insertions(+), 12 deletions(-)
+ hw/i386/pc.c             | 6 +++---
+ hw/i386/vmmouse.c        | 8 +++-----
+ hw/input/pckbd.c         | 8 +++-----
+ include/hw/input/i8042.h | 4 +++-
+ 4 files changed, 12 insertions(+), 14 deletions(-)
 
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index c5583b10e0..fe55c44c7e 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -4032,7 +4032,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryReg=
-ion *system_memory,
-=20
-     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
-     qdev_prop_set_uint8(s->i2c[0], "revision", 0x11);
--    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "mpuper_ck"));
-+    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "mpuper_ck"))=
-;
-     qdev_init_nofail(s->i2c[0]);
-     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
-     sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(s->ih[1], OMAP_INT_I2=
-C));
-diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-index 726a628e64..046fb6ffb5 100644
---- a/hw/arm/omap2.c
-+++ b/hw/arm/omap2.c
-@@ -2428,8 +2428,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRe=
-gion *sysmem,
-=20
-     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
-     qdev_prop_set_uint8(s->i2c[0], "revision", 0x34);
--    qdev_prop_set_ptr(s->i2c[0], "iclk", omap_findclk(s, "i2c1.iclk"));
--    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "i2c1.fclk"));
-+    omap_i2c_set_iclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.iclk"))=
-;
-+    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.fclk"))=
-;
-     qdev_init_nofail(s->i2c[0]);
-     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
-     sysbus_connect_irq(busdev, 0,
-@@ -2440,8 +2440,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRe=
-gion *sysmem,
-=20
-     s->i2c[1] =3D qdev_create(NULL, "omap_i2c");
-     qdev_prop_set_uint8(s->i2c[1], "revision", 0x34);
--    qdev_prop_set_ptr(s->i2c[1], "iclk", omap_findclk(s, "i2c2.iclk"));
--    qdev_prop_set_ptr(s->i2c[1], "fclk", omap_findclk(s, "i2c2.fclk"));
-+    omap_i2c_set_iclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.iclk"))=
-;
-+    omap_i2c_set_fclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.fclk"))=
-;
-     qdev_init_nofail(s->i2c[1]);
-     busdev =3D SYS_BUS_DEVICE(s->i2c[1]);
-     sysbus_connect_irq(busdev, 0,
-diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
-index 3ba965a58f..3ccbd5cc2c 100644
---- a/hw/i2c/omap_i2c.c
-+++ b/hw/i2c/omap_i2c.c
-@@ -28,10 +28,7 @@
- #include "qemu/error-report.h"
- #include "qapi/error.h"
-=20
--#define TYPE_OMAP_I2C "omap_i2c"
--#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
--
--typedef struct OMAPI2CState {
-+struct OMAPI2CState {
-     SysBusDevice parent_obj;
-=20
-     MemoryRegion iomem;
-@@ -56,7 +53,7 @@ typedef struct OMAPI2CState {
-     uint8_t divider;
-     uint8_t times[2];
-     uint16_t test;
--} OMAPI2CState;
-+};
-=20
- #define OMAP2_INTR_REV	0x34
- #define OMAP2_GC_REV	0x34
-@@ -504,10 +501,18 @@ static void omap_i2c_realize(DeviceState *dev, Erro=
-r **errp)
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 4b1904237e..ada1ea8802 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1861,9 +1861,9 @@ static void pc_superio_init(ISABus *isa_bus, bool c=
+reate_fdctrl, bool no_vmport)
+         vmmouse =3D NULL;
      }
+     if (vmmouse) {
+-        DeviceState *dev =3D DEVICE(vmmouse);
+-        qdev_prop_set_ptr(dev, "ps2_mouse", i8042);
+-        qdev_init_nofail(dev);
++        object_property_set_link(OBJECT(vmmouse), OBJECT(i8042),
++                                 "i8042", &error_abort);
++        qdev_init_nofail(DEVICE(vmmouse));
+     }
+     port92 =3D isa_create_simple(isa_bus, "port92");
+=20
+diff --git a/hw/i386/vmmouse.c b/hw/i386/vmmouse.c
+index 41ad91ad53..c0c329f817 100644
+--- a/hw/i386/vmmouse.c
++++ b/hw/i386/vmmouse.c
+@@ -66,7 +66,7 @@ typedef struct VMMouseState
+     uint16_t status;
+     uint8_t absolute;
+     QEMUPutMouseEntry *entry;
+-    void *ps2_mouse;
++    ISAKBDState *i8042;
+ } VMMouseState;
+=20
+ static uint32_t vmmouse_get_status(VMMouseState *s)
+@@ -105,7 +105,7 @@ static void vmmouse_mouse_event(void *opaque, int x, =
+int y, int dz, int buttons_
+=20
+     /* need to still generate PS2 events to notify driver to
+        read from queue */
+-    i8042_isa_mouse_fake_event(s->ps2_mouse);
++    i8042_isa_mouse_fake_event(s->i8042);
  }
 =20
-+void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk)
-+{
-+    i2c->iclk =3D clk;
-+}
-+
-+void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk)
-+{
-+    i2c->fclk =3D clk;
-+}
-+
- static Property omap_i2c_properties[] =3D {
-     DEFINE_PROP_UINT8("revision", OMAPI2CState, revision, 0),
--    DEFINE_PROP_PTR("iclk", OMAPI2CState, iclk),
--    DEFINE_PROP_PTR("fclk", OMAPI2CState, fclk),
+ static void vmmouse_remove_handler(VMMouseState *s)
+@@ -275,7 +275,7 @@ static void vmmouse_realizefn(DeviceState *dev, Error=
+ **errp)
+ }
+=20
+ static Property vmmouse_properties[] =3D {
+-    DEFINE_PROP_PTR("ps2_mouse", VMMouseState, ps2_mouse),
++    DEFINE_PROP_LINK("i8042", VMMouseState, i8042, TYPE_I8042, ISAKBDSta=
+te *),
      DEFINE_PROP_END_OF_LIST(),
  };
 =20
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 6b7897ba27..08ee0c7702 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -77,6 +77,15 @@ typedef struct omap_intr_handler_s omap_intr_handler;
- void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
- void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
+@@ -287,8 +287,6 @@ static void vmmouse_class_initfn(ObjectClass *klass, =
+void *data)
+     dc->reset =3D vmmouse_reset;
+     dc->vmsd =3D &vmstate_vmmouse;
+     dc->props =3D vmmouse_properties;
+-    /* Reason: pointer property "ps2_mouse" */
+-    dc->user_creatable =3D false;
+ }
 =20
-+/* omap_i2c.c */
-+#define TYPE_OMAP_I2C "omap_i2c"
-+#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
+ static const TypeInfo vmmouse_info =3D {
+diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+index f0acfd86f7..9b641021c9 100644
+--- a/hw/input/pckbd.c
++++ b/hw/input/pckbd.c
+@@ -483,17 +483,15 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse=
+_irq,
+=20
+ #define I8042(obj) OBJECT_CHECK(ISAKBDState, (obj), TYPE_I8042)
+=20
+-typedef struct ISAKBDState {
++struct ISAKBDState {
+     ISADevice parent_obj;
+=20
+     KBDState kbd;
+     MemoryRegion io[2];
+-} ISAKBDState;
++};
+=20
+-void i8042_isa_mouse_fake_event(void *opaque)
++void i8042_isa_mouse_fake_event(ISAKBDState *isa)
+ {
+-    ISADevice *dev =3D opaque;
+-    ISAKBDState *isa =3D I8042(dev);
+     KBDState *s =3D &isa->kbd;
+=20
+     ps2_mouse_fake_event(s->mouse);
+diff --git a/include/hw/input/i8042.h b/include/hw/input/i8042.h
+index 246e6f3335..8eaebf50ce 100644
+--- a/include/hw/input/i8042.h
++++ b/include/hw/input/i8042.h
+@@ -14,10 +14,12 @@
+=20
+ #define I8042_A20_LINE "a20"
+=20
++typedef struct ISAKBDState ISAKBDState;
 +
-+typedef struct OMAPI2CState OMAPI2CState;
-+
-+void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk);
-+void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk);
-+
- /* OMAP2 l4 Interconnect */
- struct omap_l4_s;
- struct omap_l4_region_s {
+ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
+                    MemoryRegion *region, ram_addr_t size,
+                    hwaddr mask);
+-void i8042_isa_mouse_fake_event(void *opaque);
++void i8042_isa_mouse_fake_event(ISAKBDState *isa);
+ void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out);
+=20
+ #endif /* HW_INPUT_I8042_H */
 --=20
 2.23.0.606.g08da6496b6
 

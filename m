@@ -1,224 +1,234 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1216964wrm;
-        Fri, 18 Oct 2019 10:37:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxB4+8Uuv1fffV2KfyNO9KD6e4MFmab0hGPPKJ2Y8KKBEv88TK6DLbc/t3l4KUfh6ikksXM
-X-Received: by 2002:a05:6402:21c7:: with SMTP id bi7mr10978352edb.205.1571420266386;
-        Fri, 18 Oct 2019 10:37:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571420266; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1222782wrm;
+        Fri, 18 Oct 2019 10:43:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwQ0h/xKjS3K1F5GuP02ZT7vB3QFJW9AWzYZj4rFm5fPWtYPnqBgOYZyLxl049PvSrX5cpD
+X-Received: by 2002:a37:7e05:: with SMTP id z5mr10134081qkc.296.1571420590409;
+        Fri, 18 Oct 2019 10:43:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571420590; cv=none;
         d=google.com; s=arc-20160816;
-        b=fbOPwJ74Z23fiHB1HJp3QtZqYZxl39T1EPiEsiJhVaKfWfwCLk79b1Z8HR3bw8QO8C
-         pIH4YYNeSR/m/fTXdTxinB/6DMJkZAK4GBLkWRb/Pcebrd+555eG6uJfG+ikeDkf3bX0
-         zCdTpGCKefoCHm6c7PFyYH6cgXnluWavtBVQX7dntEBEXCkk37ldCPholfU07VvVngeY
-         yQY87kQZ9/kuv3s5ptb6L9Ku4VdAJpleY8xap4IHdQC2WECjyaX1uJPM2FwlnvlZqSCi
-         cpSMN+aiqortIkOnrZZNVa6Y2mIrjopxOxFKx65oN2+Hgv03lL8eZmKg+tb5hL6EfD88
-         PM1Q==
+        b=dN9KYda+F57pvhvScOvX2uWWKKPe8V3OULuxhRayJx8b/YLYYaEWfZ7ICBHHmJtIYo
+         xtj0+Q5VXGr9jl2yFQzToJrBjErjGTyy1OrVMMHmw3ghLdR9hRq3Lu6r3+Y3cmUGdqg/
+         bfD6HgSmnDNSnoV0lXsJu+tcRxIrHPD0QKcwMU3tZ5f+gucSIzCbQ81UiD+Ly5yb0LV6
+         HD+fCFQkU4R5rj8rgnu3/ZyIACXLDQME8OzfH8qzqVj1rNil2ga7TzygDouOLsvU0Pb8
+         itWmIZxz9RHGpxB1fzHOvNGS25l2le9yN/KGA25mrfAobWkBmE7HfCaGnte0Spzxyqe0
+         5pMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=q3Dgggzvmh33bgxoFL75y/5zguo8PaVi4JqFgwckaVI=;
-        b=GZ9ejlXKPohiHdfhr273kHO30SWqH1BdiirjnFph//WCpVM6eRApS0UF9pyKbE3ISC
-         vwEaGqybXOlt/EKYxDq86wB7X+Eio/qvUYLMKQVMT7TxENNrgjXbWWP9kEutYmnIjg4G
-         Hm2ZU8xZ0ed2ow26bZa5sRPzfuLYOu2DQrVOuZI28PyDQM91fSMIsLc77i05QpyL5kpj
-         cO7w3yMx6v6Eiy0nKQsfpYSXPG3iJCew+CYpPc7LxWdjhdf5WtZ/5VHo1yKXiqerycJt
-         OIhodpbjzHcvLddR10lKViMWy8fhG1X+CGcwZBNGBom/tyzrtuNnSOAx+5WnAuY0YB1I
-         GHFg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=lXCV0xNTYB6B5XQMcPxs3OMaTd1jVfOpj5nbEwV/4QI=;
+        b=FY4lBvpqKmK1bagSL4A4iQoK3nB7O4+hui6T1g6sD0EEMMDjvnOEVhS4sLSgBay9Rs
+         F0ndyzXTV1CY63gXtPNE/+ohuqOAaPbxeR153FHrBIRSmKgd+9Gi8oJKFOoSHZFaBHYJ
+         0xMc7RWeXdLbLTi9lCrsszT4bONCqHjRjq9Ahq3WJQwm/F+XWIsBJKkvofLsBBZTziBl
+         Q7ZkljbFYk2Za16dGDogQhWQb/aroVoOk0Q2wZs/0RkcKb/JfKMciQgaOVUOT680ZeoG
+         Dab33P1w8w6VGZCMrPDwms6qvKpRusJgyPOXLWIUL3ctOlb9wwxTbfb1svSpswW5X3rd
+         /kZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mDonSJbM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="X/J28ZQZ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i17si3795248ejy.374.2019.10.18.10.37.46
+        by mx.google.com with ESMTPS id y17si6239075qvu.105.2019.10.18.10.43.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 10:37:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Oct 2019 10:43:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mDonSJbM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43842 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="X/J28ZQZ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:43875 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLWC9-0001W7-6q
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 13:37:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58365)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iLWHN-0004To-Q2
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 13:43:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58856)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iLWBz-0001Vd-QU
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 13:37:37 -0400
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iLWGu-0004Mo-Gq
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 13:42:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iLWBy-0007ao-CZ
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 13:37:35 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:33197)
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iLWGs-0004A6-Cp
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 13:42:40 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:42657)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iLWBy-0007Zu-6Y
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 13:37:34 -0400
-Received: by mail-ot1-x344.google.com with SMTP id 60so5664324otu.0
- for <qemu-arm@nongnu.org>; Fri, 18 Oct 2019 10:37:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=q3Dgggzvmh33bgxoFL75y/5zguo8PaVi4JqFgwckaVI=;
- b=mDonSJbMtU2D/Iix8aA8+u2Ov059+VZg/xRm9n6lgXLIrqvdGqoeVE1cQKGHl2C4ad
- Pvrc0pdhqMIgBvNhNIynyG0k58IO8JEHeK/RgfYgQshFjtLUj1KhuOkSu33dQaG5PYfD
- vRmOXUNUtAYkpywon/HYXU3sA8oSeK+SWkO8rNxunXmLGU5LBKCLcgI1lhO4tt0kBhyJ
- XNiMayyzk1jvqq4G6hX2IaL6CW0JdpsTDhqp7sb/lY7UVbGMDatWn1pdEW18TiEfeox0
- 5vofXHKQbixW+oZdKNFNwmleQkk/aJtzH6nnkWd3EoisCJ6YK1PxDnWSgwW2DDf2ejVE
- mkoQ==
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1iLWGs-00049V-7s; Fri, 18 Oct 2019 13:42:38 -0400
+Received: by mail-oi1-x242.google.com with SMTP id i185so5886569oif.9;
+ Fri, 18 Oct 2019 10:42:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=lXCV0xNTYB6B5XQMcPxs3OMaTd1jVfOpj5nbEwV/4QI=;
+ b=X/J28ZQZfn6fcRP9KsBGgRZIeSYd6F5I1nDAERKDTZY01IbM+O+tMC5m9NsQrZFX1+
+ hDW9Q03IecBpOLV/upE4sGEOKe82+SQrFRCb2TSGjVT9ptq5g6W45MhNyYLHMiStxzJy
+ gyoURwxs+a5qGrXqxA8+dwBei3kN/F/jdcDE+IASpla7PiNdlTyY0CLF4+PxmYip29+w
+ MofUiZQBeiTd/30gsDnxTsbax/9geUYRz6EWNgkiVed7TlILXA2Rf0a437OsedFAPQYc
+ 09mNtEaE/8tSVz628R79YOiG6Yf+VkDMx+2YDR6icRtG8F2IfRtb/ng+d1cYnqrhcObh
+ ebuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=q3Dgggzvmh33bgxoFL75y/5zguo8PaVi4JqFgwckaVI=;
- b=D9WplgbbQINHTW6QBYf3QAwtMrntMtCPTOumZ52V0RFOvUqnvaNeTCyrAO929ugCVJ
- oFn8Vdhigb866veTofRFEHphE5jAacPowqWxU/nY7DM7PUb5RBXrJlKoD7oH3I3qlrsq
- +sUYfN09hsQKCgb46/1ybaWEx0EBG4JQFZ0+N4gupWiW1ohiudcktqRdir0U2L3Fk/Jq
- v0jO32ozT+Eo8wK6DeyE3QczhRRpb4AdXchowsn5J6gyIeKrMTjI2u5jghiyE0kgzbMn
- ZQKIXXUNMaoKbXFb1BfNdlfAu2I1nZb8uBhJN+kuhxGX2J8SqLEDCwQK3yP6ZO3jVzFl
- VSnA==
-X-Gm-Message-State: APjAAAVQYHYy2I1e7P24lC7rZ3m1PuUlAk0/znXdgWpqLsQ7Y0uYWYkc
- RBxDcHU3Ym3yByXA2epUybX5ieIGiIPKgdz0hyOD3g==
-X-Received: by 2002:a05:6830:ca:: with SMTP id
- x10mr8154761oto.221.1571420253150; 
- Fri, 18 Oct 2019 10:37:33 -0700 (PDT)
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=lXCV0xNTYB6B5XQMcPxs3OMaTd1jVfOpj5nbEwV/4QI=;
+ b=Nny1lS5A6bCdOM+nMKr9tUIXyWlCCVseLNBWaWLSlWRf+CWXLvUiNEVuaYeBxcIZ/F
+ svoFlOombg+wSBnXo2dVz1uueo34//pa98OMgK3Ttshg+JkSAmVGSo9qvP0SVxCmsKJa
+ DmPasnezCdkahCF29sk59LeyN9Esajw9LCoj+Ad+Fg4wN+ldOP4wzt4V41sYKjcaDV34
+ TFGLbDgiz1uzbp9xxImBCBnVGRJZeUY/TloLQ4TG+zIXa+XrHRIdhIgOGXPJZc4jsVIM
+ p2lOgtQR67lFa5O72NT1QFFNX1F7fwIJVNrjci8kDwCxhmidFYBwuOpoooBdS84EY1fd
+ T6ww==
+X-Gm-Message-State: APjAAAWYBb6eXEpACXyuogwjD0bDuwaU2o8JAWeWRha56uHKcJUIww/9
+ TbkmLDK/VdzI75Gy92UPZ13zQZNAV2APZiRgZSk=
+X-Received: by 2002:aca:4e56:: with SMTP id c83mr9091616oib.53.1571420557370; 
+ Fri, 18 Oct 2019 10:42:37 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Fri, 18 Oct 2019 10:42:36
+ -0700 (PDT)
+In-Reply-To: <20191018154212.13458-8-marcandre.lureau@redhat.com>
 References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
- <20191018154212.13458-9-marcandre.lureau@redhat.com>
-In-Reply-To: <20191018154212.13458-9-marcandre.lureau@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 18 Oct 2019 18:37:22 +0100
-Message-ID: <CAFEAcA_vpmUn4+GZEmUpYw4rQyE2irwgBs9oSQvTrDcv-7Buog@mail.gmail.com>
-Subject: Re: [PATCH 08/14] cris: replace PROP_PTR with PROP_LINK for interrupt
- vector
+ <20191018154212.13458-8-marcandre.lureau@redhat.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Fri, 18 Oct 2019 19:42:36 +0200
+Message-ID: <CAL1e-=iTPwYTa1CVfxuJ9Q6J21DKVO6x3F1Uw_-g3UTh=VdboQ@mail.gmail.com>
+Subject: Re: [PATCH 07/14] RFC: mips/cps: fix setting saar property
 To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/alternative; boundary="0000000000001d6b98059532dcf4"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::242
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Corey Minyard <cminyard@mvista.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Magnus Damm <magnus.damm@gmail.com>, Jason Wang <jasowang@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Magnus Damm <magnus.damm@gmail.com>,
+ Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Fabien Chouteau <chouteau@adacore.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, Aurelien Jarno <aurelien@aurel32.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SycIBrzPuU1B
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YKLN6sbq1NtV
 
-On Fri, 18 Oct 2019 at 16:43, Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@redhat.com> wrote:
+--0000000000001d6b98059532dcf4
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Friday, October 18, 2019, Marc-Andr=C3=A9 Lureau <marcandre.lureau@redha=
+t.com>
+wrote:
+
+> There is no "saar" property. Note: I haven't been able to test this
+> code. Help welcome.
 >
-> Instead of using raw interrupt vector pointer, store the associated
-> CPU with a link property.
+> May fix commit 043715d1e0fbb3e3411be3f898c5b77b7f90327a ("target/mips:
+> Update ITU to utilize SAARI and SAAR CP0 registers")
 >
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
-A link property is reasonable for a tightly coupled CPU and
-interrupt-controller. But in this case the binding is not
-actually very tight, and we can avoid it.
-
-> @@ -298,7 +296,7 @@ void axisdev88_init(MachineState *machine)
+> ---
+>  hw/mips/cps.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
->      dev =3D qdev_create(NULL, "etraxfs,pic");
->      /* FIXME: Is there a proper way to signal vectors to the CPU core?  =
-*/
-> -    qdev_prop_set_ptr(dev, "interrupt_vector", &env->interrupt_vector);
-> +    object_property_set_link(OBJECT(dev), OBJECT(cpu), "cpu", &error_abo=
-rt);
+>
+This was a part of larger body code that is still in process of upstreaming
+(and testing). I'll try to take a closer look in next few days. But, for
+4.2, only minor changes are acceptable (like this patch). I'll get back to
+you when I get more info on all options. Thank you anyway!
 
-Rather than using a link property like this, we could
-instead make use of the fact that a qemu_irq line is
-actually capable of passing an arbitrary "int" value,
-not merely a bool. To do this we would:
+Aleksandar
 
- * remove the FIXME comment and the ptr prop/link prop code here
- * remove the definition of the property from the PIC device
 
-> @@ -79,9 +78,10 @@ static void pic_update(struct etrax_pic *fs)
+
+> diff --git a/hw/mips/cps.c b/hw/mips/cps.c
+> index 1660f86908..c49868d5da 100644
+> --- a/hw/mips/cps.c
+> +++ b/hw/mips/cps.c
+> @@ -106,7 +106,7 @@ static void mips_cps_realize(DeviceState *dev, Error
+> **errp)
+>          object_property_set_bool(OBJECT(&s->itu), saar_present,
+> "saar-present",
+>                                   &err);
+>          if (saar_present) {
+> -            qdev_prop_set_ptr(DEVICE(&s->itu), "saar", (void
+> *)&env->CP0_SAAR);
+> +            s->itu.saar =3D &env->CP0_SAAR;
 >          }
->      }
+>          object_property_set_bool(OBJECT(&s->itu), true, "realized",
+> &err);
+>          if (err !=3D NULL) {
+> --
+> 2.23.0.606.g08da6496b6
 >
-> -    if (fs->interrupt_vector) {
-> -        /* hack alert: ptr property */
-> -        *(uint32_t*)(fs->interrupt_vector) =3D vector;
-> +    if (fs->cpu) {
-> +        /* hack alert: cpu link property */
-> +        int32_t *int_vec =3D &fs->cpu->env.interrupt_vector;
-> +        *int_vec =3D (uint32_t)vector;
->      }
->      qemu_set_irq(fs->parent_irq, !!vector);
-
- * here, instead of setting the CPU interrupt_vector field
-   and passing !!vector to qemu_set_irq, we just pass "vector",
-   so the other end gets the whole integer
-
- * in target/cris/cpu.c:cris_cpu_set_irq(), we add something like
-   if (irq =3D=3D CRIS_CPU_IRQ) {
-       /*
-        * The PIC passes us the vector for the IRQ as the value it sends
-        * over the qemu_irq line
-        */
-       cpu->interrupt_vector =3D value;
-   }
-   at the top of the function.
-
-It would also be nice somewhere to have a comment documenting
-that this is the semantics the CPU expects for its incoming
-IRQ line. Unless anybody has a better place, then perhaps
-in the part of target/cris/cpu.h that defines CRIS_CPU_IRQ.
-(If the PIC followed the just-recently-invented qdev convention
-of having a .h file with a comment defining the "QEMU interface"
-to the device, as eg include/hw/misc/armsse-mhu.h, then that
-comment would be a good place to note that its sysbus IRQ 0
-has these value-is-the-vector semantics. But it doesn't.)
-
->  }
-> @@ -164,7 +164,7 @@ static void etraxfs_pic_init(Object *obj)
->  }
 >
->  static Property etraxfs_pic_properties[] =3D {
-> -    DEFINE_PROP_PTR("interrupt_vector", struct etrax_pic, interrupt_vect=
-or),
-> +    DEFINE_PROP_LINK("cpu", struct etrax_pic, cpu, TYPE_CRIS_CPU, CRISCP=
-U *),
->      DEFINE_PROP_END_OF_LIST(),
->  };
 >
-> @@ -173,10 +173,6 @@ static void etraxfs_pic_class_init(ObjectClass *klas=
-s, void *data)
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
->
->      dc->props =3D etraxfs_pic_properties;
-> -    /*
-> -     * Note: pointer property "interrupt_vector" may remain null, thus
-> -     * no need for dc->user_creatable =3D false;
-> -     */
->  }
 
-Incidentally this is a sysbus device, so it's not user
-creatable anyway.
+--0000000000001d6b98059532dcf4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-thanks
--- PMM
+<br><br>On Friday, October 18, 2019, Marc-Andr=C3=A9 Lureau &lt;<a href=3D"=
+mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt; wro=
+te:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-=
+left:1px #ccc solid;padding-left:1ex">There is no &quot;saar&quot; property=
+. Note: I haven&#39;t been able to test this<br>
+code. Help welcome.<br>
+<br>
+May fix commit 043715d1e0fbb3e3411be3f898c5b7<wbr>7b7f90327a (&quot;target/=
+mips:<br>
+Update ITU to utilize SAARI and SAAR CP0 registers&quot;)<br>
+<br>
+Signed-off-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lurea=
+u@redhat.com">marcandre.lureau@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0hw/mips/cps.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br></blockquote><div><br></div><div>This was a part of larger body code th=
+at is still in process of upstreaming (and testing). I&#39;ll try to take a=
+ closer look in next few days. But, for 4.2, only minor changes are accepta=
+ble (like this patch). I&#39;ll get back to you when I get more info on all=
+ options. Thank you anyway!</div><div><br></div><div>Aleksandar</div><div><=
+br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+diff --git a/hw/mips/cps.c b/hw/mips/cps.c<br>
+index 1660f86908..c49868d5da 100644<br>
+--- a/hw/mips/cps.c<br>
++++ b/hw/mips/cps.c<br>
+@@ -106,7 +106,7 @@ static void mips_cps_realize(DeviceState *dev, Error **=
+errp)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0object_property_set_bool(<wbr>OBJECT(&amp=
+;s-&gt;itu), saar_present, &quot;saar-present&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;err);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (saar_present) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_ptr(DEVICE(&amp;s-=
+&gt;<wbr>itu), &quot;saar&quot;, (void *)&amp;env-&gt;CP0_SAAR);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;itu.saar =3D &amp;env-&gt;=
+CP0_SAAR;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0object_property_set_bool(<wbr>OBJECT(&amp=
+;s-&gt;itu), true, &quot;realized&quot;, &amp;err);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (err !=3D NULL) {<br>
+-- <br>
+2.23.0.606.g08da6496b6<br>
+<br>
+<br>
+</blockquote>
+
+--0000000000001d6b98059532dcf4--

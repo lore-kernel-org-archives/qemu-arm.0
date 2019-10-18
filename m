@@ -1,297 +1,193 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1254642wrm;
-        Fri, 18 Oct 2019 11:14:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz6pnlrrGaA2gh/whc3PdhnR9Dte/XNZhysjaQxFj5wNcrscM4b+XAn+yMoRpgaq+eXm/3F
-X-Received: by 2002:a37:684c:: with SMTP id d73mr10182490qkc.176.1571422485096;
-        Fri, 18 Oct 2019 11:14:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571422485; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1259466wrm;
+        Fri, 18 Oct 2019 11:19:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxBAyyA1qvriTA5zkFlzBy1HSXn+XdrcamQbg+pbiJSxJ/CrTR1CuheJX7UGlazQVLzwCVD
+X-Received: by 2002:a17:906:f75a:: with SMTP id jp26mr10013211ejb.191.1571422751511;
+        Fri, 18 Oct 2019 11:19:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571422751; cv=none;
         d=google.com; s=arc-20160816;
-        b=p856X/fkc8zJiJ4e5kfwY8yr4Ep6OnBLAWPpBUPeFfrk611jZYHuBL6P8AUsQ+95Hd
-         TgXzXudWFjScsb6P2/7wMy6+ecLVnrSIBkMNOtsuAspEF4GRX/xewG72LbCZVtdY+Qw2
-         nmSg7barhjL+iVtT07gFVXf4k8rra1ZPYIF++e/d10Wu7Sq0QXC72CTCcEHqSMdjeqO1
-         jNydLFR4lJZtTAXkPtxhIFZ/40nQJ7svdyiuwMg40tCDbkR5bt7CEFCEXn+JcVNmIU/0
-         JHod77mVbooeYXbrSMZxP5jnXeP78CYWSdpXLmeUKSWSiLpLub2yJ7cDrF/toK45STOx
-         3/Mg==
+        b=qcgt2DKOSfvV/mcg6sEMAUHIc427F2y7A0x0VhbU79VGoD5jBa97a+jjvYpjOFMKL5
+         x95TV1bljmKaBDBr0d1UnRqCrD5YeBhFJPr2Qx3m3YAPiN3jgmI1H60xkNdKLukmSm/W
+         fibsVCK7SVojGw2J5TCbNwyiYHWb7Z3QmNjokYDdgobI4ziu8K9RyHvZgNfIiwBL7HPQ
+         zo6RLrthdENWMBjDgHK7g9gCLiICrdfVAJ0fjdsKOUjUVjTFUPS2QMJUyahDdtknuG6H
+         3icFLdwaBJvKTEX604gD3gqeuFXjzc2LlCqE37j4BKHTJaCi9+mFh14knIvTX0V0c6lF
+         5H9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=icoFkt0UC+KIgzku9VUJekeCwCj/k6mNAJCSvYVByt0=;
-        b=ZrLfcy0YkkIAWVaG+NT8hehbhu72swNIdydSwWJXbFHbklo0PMm1+vrCt0MkarCUNC
-         0lWBcCqfI7tl320EnfGqgGJGu8e8xNBu4o/8a8VWYIZc4wjrHBFXVZ/B6GIA6Cev5O2v
-         5pelRTZLLlXNpGl875iXe4wstxXZrKpiDLuZIdCBFQaUtQjRBSoOH+nWRq/vi7qvTHq+
-         yzbLp2ENkKnObHQxTmAYTMASg1s25zyd52/zGzoUM4rJOwRbrGGdVa7oIc4MHHoTYC35
-         7QIh+ATNEA9DIUQAoTb5KckTVBBMNGJO4CApysz8N5qRAJUZoJSHY9AM28h+3iALbOvG
-         0Fmg==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=h+ePRCwOeiDPPJVeh/ZGICTBIB7KHXv/C5hT8+LC3Vw=;
+        b=glkrAI+xNXO1rco15QH7S5iaEaBqdTNeVuEYVOqpb8/E6Sp1urEf2GqTFJYkjAzYst
+         /uvBcD1wgOlX/GviTsJHzudSct+iGcuAu4iL/+rtG6sDCdMUqmyCECV2kUyi/MVrHwBA
+         yaf1T4acgpgLiO9m8nQPwx6LagtLqFe85XE7HkmsORiNAY9lPxOJYT4xrtOkW1BsvqJv
+         pMc0IDxhVeQYGQNc6ikn6N6FBG5mJk1xAe/QLp6BsG8QvW5wIXl1BGmJxXAth1wtUzWj
+         E1RvdEb0hEP9zCeeoaV77AzoBm39zp0C5LIfntVKztXVv8IB/gG2cBmWPWPVBzA7PGe6
+         cJHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Clf0rETA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ryj+Wck6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k2si5664115qvo.7.2019.10.18.11.14.44
+        by mx.google.com with ESMTPS id u3si4268495edy.48.2019.10.18.11.19.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 11:14:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Oct 2019 11:19:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Clf0rETA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44770 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ryj+Wck6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLWlw-0004nw-7M
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 14:14:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34108)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iLWqE-0008GT-3J
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 14:19:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34940)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1iLWlU-0004l9-5D
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 14:14:18 -0400
+ (envelope-from <groeck7@gmail.com>) id 1iLWpJ-00088r-AC
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 14:18:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1iLWlS-0007vw-TY
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 14:14:16 -0400
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331]:39090)
+ (envelope-from <groeck7@gmail.com>) id 1iLWpI-0001yl-3F
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 14:18:13 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:38799)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1iLWlM-0007rG-BY; Fri, 18 Oct 2019 14:14:08 -0400
-Received: by mail-ot1-x331.google.com with SMTP id s22so5731810otr.6;
- Fri, 18 Oct 2019 11:14:08 -0700 (PDT)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1iLWpF-0001vV-BQ; Fri, 18 Oct 2019 14:18:09 -0400
+Received: by mail-pg1-x544.google.com with SMTP id w3so3801971pgt.5;
+ Fri, 18 Oct 2019 11:18:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=icoFkt0UC+KIgzku9VUJekeCwCj/k6mNAJCSvYVByt0=;
- b=Clf0rETAp6QK8hhJf+DLjn4SOkeLO2cIhxJBklcZum6C+WhhUqL+rWcFagSDimzDzh
- gjG7BjPMgk+k7/7xTjm0LTHg/RI9dMWZ22zgmK2ixeK5/XAnm4sTtBWNZ6+vWlP0oAge
- zjd/pfMsZ1dLyEK9YxlK78AQZPdliW1/Ym636iVhgwl1Kdi8JAnrZOyplnM5aRplfQ3R
- SO4BdMhH1gGJPjz1HP/oyylxVL+VctOr8BMjqhlZSXYqepkR/zktJLAxuOZnjPrG7niu
- eWs30Y94T/PNXhs/OdJHzwEig6nvBUKvy2jSzlbXjPE996R34PvxYahT1qx4t3ZEJxu0
- pihQ==
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=h+ePRCwOeiDPPJVeh/ZGICTBIB7KHXv/C5hT8+LC3Vw=;
+ b=ryj+Wck6Vm38zaZUuMiOmMaA7otw33+UC1sfy1W7rlO3EpzS/OeaVf1Mpb8XpYLD9R
+ zUf3alKS/W8SgDJ6U4/W9yyrgyGA8NPSPqcIxpx/8nsJD8y7jjl2N+45yGvg4FmQldNu
+ Xtf4QqZWz2X4PvLZ4VpHAI2HyNsGLMjlO8uSqi//9r8jxmAybYtPmmk++FAtHgvl/vO7
+ SFN0yqn8xHlWeONyRPm3D0o3S9UBN6PR9VDZyo4A9i6hFBNTm36xmyGntopVv6Q5+2di
+ HRBuMqFF67Fz1VURIIWtyPG7Ultq/2NRKV2NgP6OJbgS8xQjuWfzaKvNpBvKUAJvktrl
+ W9Aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=icoFkt0UC+KIgzku9VUJekeCwCj/k6mNAJCSvYVByt0=;
- b=Qs/g4elyz77rld56Q4r2pAb8RsS1+1UVChy6TCTyHfDOCCl8ioGZ9l6DNv338tmGb6
- srTDa+GFhbzRuIWktWifX3L61hhNVhSYKdeEViTqjESof1rVuyB3yvTrj2uAJFBVwQUg
- /Wc/pBsQTPQTjla3D4kU3FS+ifMA2YNj0AV30ARzbWF0SZ52bh++jp7i/6iVIJAAtbzh
- 8jRG8ZwoieNoJwC2mHwC1hHgN3NDsIS6DEDxQAcTx0FV5rd+38PY67fvz23QVqgQx6Nm
- A5o2pe2jSkWanaDcCctJ0/fNwO/UaPGJaCOUfrfxyQ8W+wZbo/3eqXM1fagyJQPsn01E
- 1ldQ==
-X-Gm-Message-State: APjAAAWIRAiCB+tSSEw/xY8slubc+7kIks2geihcICHTpPuMvv5oxfQE
- id8teaZx9LPSIEatbqATDu5RH70eo/wUHxKN1pM=
-X-Received: by 2002:a9d:684c:: with SMTP id c12mr9001484oto.341.1571422447563; 
- Fri, 18 Oct 2019 11:14:07 -0700 (PDT)
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to:user-agent;
+ bh=h+ePRCwOeiDPPJVeh/ZGICTBIB7KHXv/C5hT8+LC3Vw=;
+ b=KLIWXFuSFvGHnGj5nH4NVBoGQZE8nHiaGVAtDYBJZ/UcxtluQSbmWjjsB3gxi4e19v
+ E/A8d9Vr9WfjcL8ZCecuLqVJxtYspQeW9sPU5jZ1PiBCYwXy+bJJ0o1kkevCDZqs//Ev
+ W2dxroLdQlri7zlY+kCW4TLxdROjE1ggjlTMEpR5wONE7V6iZ6RA1K6E2D2vOVqOSCIJ
+ 2jegu6MIQQ95AB3AEDHxdEyxq9BteaxQ3QOsepHDky6uWm/BrTlZbs26ggYGm5iPJb+p
+ HjIoNnEq0yT5EUjhOz9onJo2qvqMOt0CEy28eSZOimm0+0o4VBSw8JVKPCA0iRdTKBLA
+ 74GA==
+X-Gm-Message-State: APjAAAVkyv1bsqTqzXWrP0bmR7gD7qQscemw1x9excRfD1LEjG2XDuEG
+ 66OfPEFNzJ3SnR9Slo+bBrU=
+X-Received: by 2002:a63:eb52:: with SMTP id b18mr11149577pgk.205.1571422687887; 
+ Fri, 18 Oct 2019 11:18:07 -0700 (PDT)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id f185sm9122431pfb.183.2019.10.18.11.18.05
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 18 Oct 2019 11:18:06 -0700 (PDT)
+Date: Fri, 18 Oct 2019 11:18:04 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/timer/exynos4210_mct: Initialize ptimer before
+ starting it
+Message-ID: <20191018181804.GA29037@roeck-us.net>
+References: <20191018143149.9216-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Fri, 18 Oct 2019 11:14:07
- -0700 (PDT)
-In-Reply-To: <20191018154212.13458-6-marcandre.lureau@redhat.com>
-References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
- <20191018154212.13458-6-marcandre.lureau@redhat.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Fri, 18 Oct 2019 20:14:07 +0200
-Message-ID: <CAL1e-=hh-OgA-0Ugz=LsQ_cA2hs9aVEf-ZpSmPN4vd4hit_Qww@mail.gmail.com>
-Subject: Re: [PATCH 05/14] dp8393x: replace PROP_PTR with PROP_LINK
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000c7791c0595334c91"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191018143149.9216-1-peter.maydell@linaro.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::331
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::544
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Magnus Damm <magnus.damm@gmail.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Fabien Chouteau <chouteau@adacore.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W9+oBH2VjDHt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SpKZy0vsOaMP
 
---000000000000c7791c0595334c91
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Friday, October 18, 2019, Marc-Andr=C3=A9 Lureau <marcandre.lureau@redha=
-t.com>
-wrote:
-
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+On Fri, Oct 18, 2019 at 03:31:49PM +0100, Peter Maydell wrote:
+> From: Guenter Roeck <linux@roeck-us.net>
+> 
+> When booting a recent Linux kernel, the qemu message "Timer with delta
+> zero, disabling" is seen, apparently because a ptimer is started before
+> being initialized.  Fix the problem by initializing the offending ptimer
+> before starting it.
+> 
+> The bug is effectively harmless in the old QEMUBH setup
+> because the sequence of events is:
+>  * the delta zero means the timer expires immediately
+>  * ptimer_reload() arranges for exynos4210_gfrc_event() to be called
+>  * ptimer_reload() notices the zero delta and disables the timer
+>  * later, the QEMUBH runs, and exynos4210_gfrc_event() correctly
+>    configures the timer and restarts it
+> 
+> In the new transaction based API the bug is still harmless,
+> but differences of when the callback function runs mean the
+> message is not printed any more:
+>  * ptimer_run() does nothing as it's inside a transaction block
+>  * ptimer_transaction_commit() sees it has work to do and
+>    calls ptimer_reload()
+>  * the zero delta means the timer expires immediately
+>  * ptimer_reload() calls exynos4210_gfrc_event() directly
+>  * exynos4210_gfrc_event() configures the timer
+>  * the delta is no longer zero so ptimer_reload() doesn't complain
+>    (the zero-delta test is after the trigger-callback in
+>    the ptimer_reload() function)
+> 
+> Regardless, the behaviour here was not intentional, and we should
+> just program the ptimer correctly to start with.
+> 
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> [PMM: Expansion/clarification of the commit message:
+>  the message is about a zero delta, not a zero period;
+>  added detail to the commit message of the analysis of what
+>  is happening and why the kernel boots even with the message;
+>  added note that the message goes away with the new ptimer API]
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/mips/mips_jazz.c | 3 ++-
->  hw/net/dp8393x.c    | 7 +++----
->  2 files changed, 5 insertions(+), 5 deletions(-)
->
->
-Marc-Andre,
+> Philippe pointed me at this bugfix from Guenter. At one point
+> in my working on the ptimer API changes I thought this bugfix
+> would be necessary as a prerequisite, but in fact the issue
+> was in my ptimer changes, and it just happened that fixing
+> the MCT bug was a workaround for my bug. Even though the
+> ptimer API changes actually coincidentally now suppress the
+> annoying message about a zero delta, the behaviour is definitely
+> not intentional, and since I spent the time working through the
+> analysis of what was actually going on here I don't want
+> to waste it :-)
+> ---
 
-Can you put together a paragraph on why we need this patch, and place it in
-the commit message?
+Thanks a lot for picking this up, and for the great analysis!
 
-Thanks,
+Guenter
 
-Aleksandar
-
-
-
-
-
-> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-> index 8d010a0b6e..878925a963 100644
-> --- a/hw/mips/mips_jazz.c
-> +++ b/hw/mips/mips_jazz.c
-> @@ -284,7 +284,8 @@ static void mips_jazz_init(MachineState *machine,
->              dev =3D qdev_create(NULL, "dp8393x");
->              qdev_set_nic_properties(dev, nd);
->              qdev_prop_set_uint8(dev, "it_shift", 2);
-> -            qdev_prop_set_ptr(dev, "dma_mr", rc4030_dma_mr);
-> +            object_property_set_link(OBJECT(dev), OBJECT(rc4030_dma_mr),
-> +                                     "dma_mr", &error_abort);
->              qdev_init_nofail(dev);
->              sysbus =3D SYS_BUS_DEVICE(dev);
->              sysbus_mmio_map(sysbus, 0, 0x80001000);
-> diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
-> index a5678e11fa..946c7a8f64 100644
-> --- a/hw/net/dp8393x.c
-> +++ b/hw/net/dp8393x.c
-> @@ -173,7 +173,7 @@ typedef struct dp8393xState {
->      int loopback_packet;
->
->      /* Memory access */
-> -    void *dma_mr;
-> +    MemoryRegion *dma_mr;
->      AddressSpace as;
->  } dp8393xState;
->
-> @@ -922,7 +922,8 @@ static const VMStateDescription vmstate_dp8393x =3D {
->
->  static Property dp8393x_properties[] =3D {
->      DEFINE_NIC_PROPERTIES(dp8393xState, conf),
-> -    DEFINE_PROP_PTR("dma_mr", dp8393xState, dma_mr),
-> +    DEFINE_PROP_LINK("dma_mr", dp8393xState, dma_mr,
-> +                     TYPE_MEMORY_REGION, MemoryRegion *),
->      DEFINE_PROP_UINT8("it_shift", dp8393xState, it_shift, 0),
->      DEFINE_PROP_END_OF_LIST(),
->  };
-> @@ -936,8 +937,6 @@ static void dp8393x_class_init(ObjectClass *klass,
-> void *data)
->      dc->reset =3D dp8393x_reset;
->      dc->vmsd =3D &vmstate_dp8393x;
->      dc->props =3D dp8393x_properties;
-> -    /* Reason: dma_mr property can't be set */
-> -    dc->user_creatable =3D false;
->  }
->
->  static const TypeInfo dp8393x_info =3D {
-> --
-> 2.23.0.606.g08da6496b6
->
->
->
-
---000000000000c7791c0595334c91
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<br><br>On Friday, October 18, 2019, Marc-Andr=C3=A9 Lureau &lt;<a href=3D"=
-mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt; wro=
-te:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-=
-left:1px #ccc solid;padding-left:1ex">Signed-off-by: Marc-Andr=C3=A9 Lureau=
- &lt;<a href=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat=
-.com</a>&gt;<br>
----<br>
-=C2=A0hw/mips/mips_jazz.c | 3 ++-<br>
-=C2=A0hw/net/dp8393x.c=C2=A0 =C2=A0 | 7 +++----<br>
-=C2=A02 files changed, 5 insertions(+), 5 deletions(-)<br>
-<br></blockquote><div><br></div><div>Marc-Andre,</div><div><br></div><div>C=
-an you put together a paragraph on why we need this patch, and place it in =
-the commit message?</div><div><br></div><div>Thanks,</div><div><br></div><d=
-iv>Aleksandar</div><div><br></div><div><br></div><div><br></div><div>=C2=A0=
-</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-l=
-eft:1px #ccc solid;padding-left:1ex">
-diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c<br>
-index 8d010a0b6e..878925a963 100644<br>
---- a/hw/mips/mips_jazz.c<br>
-+++ b/hw/mips/mips_jazz.c<br>
-@@ -284,7 +284,8 @@ static void mips_jazz_init(MachineState *machine,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0dev =3D qdev_create(NULL, &=
-quot;dp8393x&quot;);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_set_nic_properties(dev=
-, nd);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_prop_set_uint8(dev, &q=
-uot;it_shift&quot;, 2);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_ptr(dev, &quot;dma=
-_mr&quot;, rc4030_dma_mr);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 object_property_set_link(<wbr>OB=
-JECT(dev), OBJECT(rc4030_dma_mr),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;dma_mr&quo=
-t;, &amp;error_abort);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_init_nofail(dev);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus =3D SYS_BUS_DEVICE(d=
-ev);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(sysbus, 0, =
-0x80001000);<br>
-diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c<br>
-index a5678e11fa..946c7a8f64 100644<br>
---- a/hw/net/dp8393x.c<br>
-+++ b/hw/net/dp8393x.c<br>
-@@ -173,7 +173,7 @@ typedef struct dp8393xState {<br>
-=C2=A0 =C2=A0 =C2=A0int loopback_packet;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0/* Memory access */<br>
--=C2=A0 =C2=A0 void *dma_mr;<br>
-+=C2=A0 =C2=A0 MemoryRegion *dma_mr;<br>
-=C2=A0 =C2=A0 =C2=A0AddressSpace as;<br>
-=C2=A0} dp8393xState;<br>
-<br>
-@@ -922,7 +922,8 @@ static const VMStateDescription vmstate_dp8393x =3D {<b=
-r>
-<br>
-=C2=A0static Property dp8393x_properties[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0DEFINE_NIC_PROPERTIES(<wbr>dp8393xState, conf),<br>
--=C2=A0 =C2=A0 DEFINE_PROP_PTR(&quot;dma_mr&quot;, dp8393xState, dma_mr),<b=
-r>
-+=C2=A0 =C2=A0 DEFINE_PROP_LINK(&quot;dma_mr&quot;, dp8393xState, dma_mr,<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0TYPE_MEMORY_REGION, MemoryRegion *),<br>
-=C2=A0 =C2=A0 =C2=A0DEFINE_PROP_UINT8(&quot;it_shift&quot;, dp8393xState, i=
-t_shift, 0),<br>
-=C2=A0 =C2=A0 =C2=A0DEFINE_PROP_END_OF_LIST(),<br>
-=C2=A0};<br>
-@@ -936,8 +937,6 @@ static void dp8393x_class_init(ObjectClass *klass, void=
- *data)<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;reset =3D dp8393x_reset;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_dp8393x;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;props =3D dp8393x_properties;<br>
--=C2=A0 =C2=A0 /* Reason: dma_mr property can&#39;t be set */<br>
--=C2=A0 =C2=A0 dc-&gt;user_creatable =3D false;<br>
-=C2=A0}<br>
-<br>
-=C2=A0static const TypeInfo dp8393x_info =3D {<br>
--- <br>
-2.23.0.606.g08da6496b6<br>
-<br>
-<br>
-</blockquote>
-
---000000000000c7791c0595334c91--
+>  hw/timer/exynos4210_mct.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
+> index 72257584145..944120aea59 100644
+> --- a/hw/timer/exynos4210_mct.c
+> +++ b/hw/timer/exynos4210_mct.c
+> @@ -1254,7 +1254,7 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+>          /* Start FRC if transition from disabled to enabled */
+>          if ((value & G_TCON_TIMER_ENABLE) > (old_val &
+>                  G_TCON_TIMER_ENABLE)) {
+> -            exynos4210_gfrc_start(&s->g_timer);
+> +            exynos4210_gfrc_restart(s);
+>          }
+>          if ((value & G_TCON_TIMER_ENABLE) < (old_val &
+>                  G_TCON_TIMER_ENABLE)) {
+> -- 
+> 2.20.1
+> 

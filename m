@@ -1,101 +1,101 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1129088wrm;
-        Fri, 18 Oct 2019 09:18:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw5L442oX/qdKbPm50QSm80x6Ii32CIvFf6+OwipGzAYe/yU8FG6/tlmtvgec3BxXUiCkNJ
-X-Received: by 2002:ac8:6bc5:: with SMTP id b5mr10762109qtt.144.1571415517310;
-        Fri, 18 Oct 2019 09:18:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571415517; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1134464wrm;
+        Fri, 18 Oct 2019 09:23:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxElBostly89Qnv3L78zb5+BIF+fYIgKpd1W20iZyDerhHNM5cJAsmXD0bcbZf6bYTt+ofy
+X-Received: by 2002:a17:906:5007:: with SMTP id s7mr9571214ejj.181.1571415790567;
+        Fri, 18 Oct 2019 09:23:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571415790; cv=none;
         d=google.com; s=arc-20160816;
-        b=gEADuWZwl2Cjm5l+rVYeYMRSA1O4wlJD9sO0skkO13WnvCUoxzZGUU6sUJxxtQXVu3
-         bl8EDR+ASDOy0MIjZk1HKKMdNsY8jfenJliFDT8v+GKd2xsCLQhcyyCWhHjGyGDYa8Mw
-         qAcB/Q+JwnjNcU1f4nhnx81UowYMFGz/pDV3ji9jn60v5ZmYpgMnIi+w57bIqVMIPlkJ
-         P+/qIwMrD27MU5agLx7G9YkNkXdtQoJLJrRI4CgoLQxH2v4QMJPmeigDrx1Iqoo/xQkV
-         AZfFU5rMSEt7zisNtAuFPg/IMIY5nWjStOmo/g1qTbTGmdVrGj7g+D9Plv9TimXAAmIm
-         H2xQ==
+        b=gG8roK2zRwC3yKTUPmsaj3qYs44U64c0XFs8SesvcEcz2oXOT4wOdwwQdglGPjgrez
+         1miIiUf7r80g/ZY9v68mHxAIk9G3hYiPyICUF7udI96D9BP6924dn6SmfxznyjdZn8AQ
+         OiST7NHAUrOXryeSf9+Brjpj7iCs+NI40Mpiwjiqa1VIGz6X1XqL7x6mgcxQvKGSrH6R
+         lb3ZfZ9M5BkiGCsUOn65dbjRxv5rxacJw7JaoYrAFR23+38N0Ng6h5SHLAdgCruDqjaP
+         5A5WoKAXNfnV4fKnllUTUnG0vWO4DpTivnOVK2TCfHABzOnYaLt2UJd2HNZaffH1M0yo
+         Q1CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=Y5PULPuT9aUOc2jHLrc3v6r7EulnXS/eTA+A22k80Fk=;
-        b=pe5DCyN5Ek7JIOF62RZ8jzl4AeohTIOGMC6T2F+1s3DLe9eP0S3EaeDCNnIS9vhvmF
-         /+3B1KYmkU8zEeBhaIW8T5GdA05rkQm289/DAhHLreZx7ZEC8dk/vELKNb4DZTSVq3uJ
-         CTeZHPqEzWUjsqGYtXtBX+mWF2cifoPExy/qXLE+ipzJjK296LRD+5NwhkCHZx5GMED4
-         cUSJNb9r8PYb1gpjyPEkkiMq+1ABdV9n2RVmeQRQricoGtytGg3T5/bFj5tEArsOaMks
-         DOnB5ht9sRdcp3VvSf8q4SiR9LnOn6WndIJmKnWGHdsMavTDTuBhXFgHRnyxwLB8Hg7j
-         YgNg==
+        bh=Z3J8zBG/x0gGvw/4SLO7Xf14rp5jikY8twc4FguRhQw=;
+        b=w63eA6udXGUM8Xy1dWUn7SbLTrvwIuGV/K1WUTgc3DlYbq/1puBbVFDN3pFfSIKWFY
+         7a/lPqwV5EH8tVLu8aSbrbOOpdasQBewC6E4bVG2D0nIK3ZM6m7SqvnnvjFO34oJlZYS
+         QwcwILh3J40booZgQpXlkD73jTup/LJk2Kolq8fseHcZlKNdTZG6ZYm3TLP/6WHZ9Mg9
+         b+BhLJ/gyzoM6aEZlRws1f8zuOrqB1NyTzhy7TFu2m8lL5SDE9Y/t4v5SHmdI9yO0hS0
+         SfuxxnRSfGsAngoxQKDM5T3vHvRCu9Z8x9pwjWUvBLC2ZuAAJkQ8tOfscR2COqmbhW8W
+         NZ3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="fs7+3/n2";
+       dkim=fail header.i=@linaro.org header.s=google header.b=aSEf11Fu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16si5584572qkj.301.2019.10.18.09.18.37
+        by mx.google.com with ESMTPS id g31si4204186eda.399.2019.10.18.09.23.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 09:18:37 -0700 (PDT)
+        Fri, 18 Oct 2019 09:23:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="fs7+3/n2";
+       dkim=fail header.i=@linaro.org header.s=google header.b=aSEf11Fu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42814 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42904 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLUxY-00067o-Lc
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 12:18:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49220)
+	id 1iLV1x-0002xy-7t
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 12:23:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50543)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@gmail.com>) id 1iLUqi-0007pR-HB
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 12:11:33 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iLV17-0002ro-ED
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 12:22:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@gmail.com>) id 1iLUqh-0007o6-1A
- for qemu-devel@nongnu.org; Fri, 18 Oct 2019 12:11:32 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:38703)
+ (envelope-from <peter.maydell@linaro.org>) id 1iLV15-0005D3-Vr
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 12:22:17 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:42817)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
- id 1iLUqg-0007nC-Of; Fri, 18 Oct 2019 12:11:30 -0400
-Received: by mail-wr1-x441.google.com with SMTP id o15so6439145wru.5;
- Fri, 18 Oct 2019 09:11:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iLV15-0005CW-Nt
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 12:22:15 -0400
+Received: by mail-oi1-x243.google.com with SMTP id i185so5673747oif.9
+ for <qemu-devel@nongnu.org>; Fri, 18 Oct 2019 09:22:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=Y5PULPuT9aUOc2jHLrc3v6r7EulnXS/eTA+A22k80Fk=;
- b=fs7+3/n2Z+d8Z/P4MmRV/HVv2oKJkmO/XOdB3WxHAv0O29gw5XB8/U8Dr9rIDqnQaQ
- XF3wmON0LnILLr4E9oKLIn0wwoBb4IZW813+abfqVlGDDzy/KaYnCZjSo9jys7KN90Nm
- 01DGXoAOneQyd0+RdwKWtNU1wMSGU8ECB/sOgeOc/lNeAd6RMweW6t0tYcyQsqoqM2hz
- 399DKKGFWbx/VjnhQi9G6fc9gtE34d5wUnesYKpgdx6ejqLjEaJBDVnAlZWsxqqLc3ND
- 5+xFtJlCRB+khNCShy5V/rp3W4bojNXg2uiDijEn1zrR27FscFWa/78EBYvB97emLQR0
- zkCA==
+ bh=Z3J8zBG/x0gGvw/4SLO7Xf14rp5jikY8twc4FguRhQw=;
+ b=aSEf11FuU18DhALqeJuiPbLB0yKfBi1x+j9vRF/peZuvV27hc/rRgM/Qa7ymRqZv0y
+ yDWqK2S6HGT/jLQTKvaEk398IHBhxoViCQiJVm/knM9jThay+QQEhlG8CIXPw3SLvoiK
+ GkTkDeXJhLXPn4fRP+7Tbf9+lt+5D+l6pOkqe/woo1+3XB2bOJQBgvpgCZLTfhCQj6mv
+ hu1ZtOYwVoY+i02K8gJvqP60tg7APv4VzPYq2vOCElY3nWbrd3UXc0VgU5sRlT76PL3z
+ 1N5ael3jRv7jzJZljkmrvliMGiCI9SozI4RCQMh1ueSXD+NSmTNUOj5FddpJ0NyY/HNX
+ RrFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=Y5PULPuT9aUOc2jHLrc3v6r7EulnXS/eTA+A22k80Fk=;
- b=jxJEV/RsBBR4FHGlZ8YBoBA/SvNjyWJIMSgb35Q1HYfb+Gilu+tJR9tNZ/NkmoVBxC
- O4Ckt7hhIUcKsxng8cw9YdsqNec+wmmDE3lKdYk50u32zjNmqdpRRrIG6IPVSEexzCMU
- +sSH64x38zyAib+m+Fby3ZIo9MaesoZL+0kGM3e8UVfcwmB0WNkTxVlnPRyFM3KSX7NQ
- GOD71pkkBtdoICv06xCCyzabefhghQRiO7SkRRJdVgwmxPIEv7sbt8syTYqiuI6EKS9j
- RRed65GYJHZhhhx4r9aGTXlqfuWVba4TIWOuW6lBS0UXrm+L/n+of6IRUzR136A47UfP
- OcqA==
-X-Gm-Message-State: APjAAAVjMW8uWOIPtIHijnDBcU81mlMLFd5RxCeMQN7piOaOv57dzxt+
- Yf07pnesgQNrzOfJZd7Qb0tp8beMCbOzsj8SdcE=
-X-Received: by 2002:adf:ef0f:: with SMTP id e15mr8884200wro.312.1571415088907; 
- Fri, 18 Oct 2019 09:11:28 -0700 (PDT)
+ bh=Z3J8zBG/x0gGvw/4SLO7Xf14rp5jikY8twc4FguRhQw=;
+ b=L3Iu1tDecHnv/NeOFN6LB6uPLjYRKizSn9T/zSY9+u/Monl5zU9JMuh6dHjTifvdAt
+ kJj/ZhGB9LCOk9Dw0ROcXwggOjm6LQRJjJ1AU8G2f06l91ZIYX5kH6nynx0+0k+vekRO
+ X/VyeSWkRgNKzTN2vaSOHLnQrV933DU0lbBAiy8SNYkeeC+udhP1OWDZqQpGm7rG1e6Y
+ hQe0vKxIcBmFP4BqjkOnjmTyHmGRYn9/WktC31VVgaTLh0Uwx9ZFXfINZaEV+ysj/4Sw
+ 01cdQA5EmMxGdZkI1LPe8s2JQou+EiOSsy5wp8fHVRib+TRy2QrOH0WPyyF9ixDzipys
+ L+rA==
+X-Gm-Message-State: APjAAAVmFIy9Qd13HNNovToObtq0h4PmtvrCm9JctyBJTwLQAvKVGtRj
+ X/l7tzZ6Y7iSqjotPZB/HyrgKQ1NrdZrKEh0NmSCzNr7hiQ=
+X-Received: by 2002:aca:3b41:: with SMTP id i62mr8371759oia.48.1571415734844; 
+ Fri, 18 Oct 2019 09:22:14 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
- <20191018154212.13458-5-marcandre.lureau@redhat.com>
- <CAFEAcA-Qaq0W-4kpRGSQTxzH1LZ3znoxZo6Fnd4NmnnE4O_G9w@mail.gmail.com>
-In-Reply-To: <CAFEAcA-Qaq0W-4kpRGSQTxzH1LZ3znoxZo6Fnd4NmnnE4O_G9w@mail.gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Fri, 18 Oct 2019 18:11:16 +0200
-Message-ID: <CAJ+F1CL8AdRv8ktb8V0Ox7XZEO7GOXqPjVd=_CsZ=oSmHxtP_Q@mail.gmail.com>
-Subject: Re: [PATCH 04/14] etraxfs: remove PROP_PTR usage
-To: Peter Maydell <peter.maydell@linaro.org>
+ <20191018154212.13458-2-marcandre.lureau@redhat.com>
+In-Reply-To: <20191018154212.13458-2-marcandre.lureau@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 18 Oct 2019 17:22:03 +0100
+Message-ID: <CAFEAcA_7zxe6YfM6c8v_SQ+qh2L7Q5RS_xEPvy01q9aPZ6YyiQ@mail.gmail.com>
+Subject: Re: [PATCH 01/14] sm501: replace PROP_PTR with PROP_LINK
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
+X-Received-From: 2607:f8b0:4864:20::243
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,135 +107,99 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Magnus Damm <magnus.damm@gmail.com>,
+Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  QEMU Developers <qemu-devel@nongnu.org>,
- Fabien Chouteau <chouteau@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Magnus Damm <magnus.damm@gmail.com>,
  =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z3l4mbc3MXQC
+X-TUID: mC9pqb8QZdEQ
 
-Hi
-
-On Fri, Oct 18, 2019 at 5:59 PM Peter Maydell <peter.maydell@linaro.org> wr=
-ote:
+On Fri, 18 Oct 2019 at 16:42, Marc-Andr=C3=A9 Lureau
+<marcandre.lureau@redhat.com> wrote:
 >
-> On Fri, 18 Oct 2019 at 16:42, Marc-Andr=C3=A9 Lureau
-> <marcandre.lureau@redhat.com> wrote:
-> >
-> > etraxfs_dma_client are not Object, so can't be exposed to user with
-> > QOM path. Let's remove property usage and move the constructor to the
-> > .c unit, simplifying some code on the way.
-> >
-> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  hw/display/sm501.c | 5 +++--
+>  hw/sh4/r2d.c       | 3 ++-
+>  2 files changed, 5 insertions(+), 3 deletions(-)
 >
-> > +
-> > +/* Instantiate an ETRAXFS Ethernet MAC.  */
-> > +DeviceState *
-> > +etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
-> > +                 struct etraxfs_dma_client *dma_out,
-> > +                 struct etraxfs_dma_client *dma_in)
-> > +{
-> > +    DeviceState *dev;
-> > +    qemu_check_nic_model(nd, "fseth");
-> > +
-> > +    dev =3D qdev_create(NULL, "etraxfs-eth");
-> > +    qdev_set_nic_properties(dev, nd);
-> > +    qdev_prop_set_uint32(dev, "phyaddr", phyaddr);
-> > +    ETRAX_FS_ETH(dev)->dma_out =3D dma_out;
-> > +    ETRAX_FS_ETH(dev)->dma_in =3D dma_in;
-> > +    qdev_init_nofail(dev);
-> > +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-> > +
-> > +    return dev;
-> > +}
-> > +
-> >  static const TypeInfo etraxfs_eth_info =3D {
-> >      .name          =3D TYPE_ETRAX_FS_ETH,
-> >      .parent        =3D TYPE_SYS_BUS_DEVICE,
-> > diff --git a/include/hw/cris/etraxfs.h b/include/hw/cris/etraxfs.h
-> > index aa146a2cd8..403e7f95e6 100644
-> > --- a/include/hw/cris/etraxfs.h
-> > +++ b/include/hw/cris/etraxfs.h
-> > @@ -30,23 +30,9 @@
-> >  #include "hw/qdev-properties.h"
-> >  #include "hw/sysbus.h"
-> >
-> > -/* Instantiate an ETRAXFS Ethernet MAC.  */
-> > -static inline DeviceState *
-> > -etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
-> > -                 void *dma_out, void *dma_in)
-> > -{
-> > -    DeviceState *dev;
-> > -    qemu_check_nic_model(nd, "fseth");
-> > -
-> > -    dev =3D qdev_create(NULL, "etraxfs-eth");
-> > -    qdev_set_nic_properties(dev, nd);
-> > -    qdev_prop_set_uint32(dev, "phyaddr", phyaddr);
-> > -    qdev_prop_set_ptr(dev, "dma_out", dma_out);
-> > -    qdev_prop_set_ptr(dev, "dma_in", dma_in);
-> > -    qdev_init_nofail(dev);
-> > -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-> > -    return dev;
-> > -}
-> > +DeviceState *etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
-> > +                              struct etraxfs_dma_client *dma_out,
-> > +                              struct etraxfs_dma_client *dma_in);
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index 1f33c87e65..a87d18efab 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -1930,7 +1930,7 @@ typedef struct {
+>      SM501State state;
+>      uint32_t vram_size;
+>      uint32_t base;
+> -    void *chr_state;
+> +    Chardev *chr_state;
+>  } SM501SysBusState;
 >
+>  static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+> @@ -1968,7 +1968,8 @@ static void sm501_realize_sysbus(DeviceState *dev, =
+Error **errp)
+>  static Property sm501_sysbus_properties[] =3D {
+>      DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
+>      DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
+> -    DEFINE_PROP_PTR("chr-state", SM501SysBusState, chr_state),
+> +    DEFINE_PROP_LINK("chr-state", SM501SysBusState, chr_state,
+> +                     TYPE_CHARDEV, Chardev *),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
 >
-> I don't think this is an improvement -- it's taking a step
-> back in the direction of "you need to call a funny _init
-> function to initialize a device". You should be able to
-> create devices using generic qdev functions.
->
+> diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+> index ee0840f380..5780ee85d9 100644
+> --- a/hw/sh4/r2d.c
+> +++ b/hw/sh4/r2d.c
+> @@ -272,7 +272,8 @@ static void r2d_init(MachineState *machine)
+>      busdev =3D SYS_BUS_DEVICE(dev);
+>      qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
+>      qdev_prop_set_uint32(dev, "base", 0x10000000);
+> -    qdev_prop_set_ptr(dev, "chr-state", serial_hd(2));
+> +    object_property_set_link(OBJECT(dev), OBJECT(serial_hd(2)),
+> +                             "chr-state", &error_abort);
+>      qdev_init_nofail(dev);
+>      sysbus_mmio_map(busdev, 0, 0x10000000);
+>      sysbus_mmio_map(busdev, 1, 0x13e00000);
 
-Is there really much difference between:
+We have a typed way of passing a Chardev to devices:
+use qdev_prop_set_chr(). Unfortunately it's not trivially
+easy to drop in here, because it sets a property defined
+with DEFINE_PROP_CHR to set a field of type CharBackend
+(note, not Chardev, and not a pointer) in the device struct.
+But serial_mm_init() wants a Chardev*, because it is a
+non-QOM interface to the serial device and is manually
+doing the qemu_chr_fe_init() that connects the Chardev
+to its own CharBackend. The QOM CHR property setter wants
+to do that qemu_chr_fe_init() itself.
 
-dev =3D qdev_create()
-qdev_prop_set_ptr(dev, "prop", ptr);
-qdev_init_nofail()
+So I think the right fix here is to properly QOMify the
+code which is not QOMified, ie hw/char/serial.c, in a
+way that means that the various "memory mapped 16650-ish
+devices" we have can use it and can define a
+TYPE_CHARDEV property.
 
-and
+In general I think our uses of PROP_PTR are code smells
+that indicate places where we have not properly converted
+code over to the general approach that the QOM/qdev
+design desires; but we should be getting rid of PROP_PTR
+by actually doing all those (difficult) conversions.
+Merely removing PROP_PTR itself by rephrasing the dubious
+inter-device connections in a way that makes them harder
+to grep for doesn't seem to me to be necessarily worth
+doing. Is the existence of PROP_PTR getting in your way
+for a change you want to make ?
 
-dev =3D qdev_create(MYDEV)
-MYDEV(dev)->prop =3D ptr;
-qdev_init_nofail()
-
-
-As "prop" can only be set from code, and those objects are usually
-very tightly coupled with the parent/owner.
-
-I don't think it's worth to keep PROP_PTR for this, it just adds complexity=
-.
-
-> What we're actually connecting here is 'etraxfs_dma_client'
-> struct pointers between the devices like this ethernet
-> device and the DMA controller. The connection is currently
-> done via a pointer property because we don't have a more
-> QOM-like way to do it, but if we want to get rid of the
-> pointer property we need to actually implement the more
-> QOM-like mechanism, not go backwards from having devices
-> connected via properties.
->
-> (Similar comments apply for the omap clock connections.
-> In that case the answer might be Damien's clock framework
-> API, eventually.)
->
-> thanks
-> -- PMM
->
-
-
---=20
-Marc-Andr=C3=A9 Lureau
+thanks
+-- PMM

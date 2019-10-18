@@ -1,544 +1,166 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp249785wrq;
-        Tue, 22 Oct 2019 11:11:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy0wPLBp4BTIlscSr1PKEk2ioYzmSDUwwrNJuQ4KB2sMf8JKu6b1hhS/E2XrqjAjMtYtMy5
-X-Received: by 2002:ac8:28a1:: with SMTP id i30mr4969217qti.245.1571767875567;
-        Tue, 22 Oct 2019 11:11:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571767875; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp814715wrm;
+        Fri, 18 Oct 2019 05:03:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwMN70VaI1xVYjnBSK5uD7eJlBkji7H76OSJuDWPVnKA5iWzUZ/hvwHPtBzDZ1S4xiSRgRA
+X-Received: by 2002:aa7:d316:: with SMTP id p22mr9232238edq.77.1571400217391;
+        Fri, 18 Oct 2019 05:03:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571400217; cv=none;
         d=google.com; s=arc-20160816;
-        b=fFIxkJTBJjpHwJQsqALJFqGV3N8ne1zjDUMw0tjNOGK3oClUc+3KT5p7CZjlCuPoyg
-         nND0cxSI9ZVq3tONqQmk4Iw7DT0a1q+VufdxvnRNdfGRwWQCTb29QRKgry/zu4zhWyw4
-         BSMC6sKYYAsdeG3dR1YWvKOUTObuBDEKZyjLJkcHYnRGMtGPdttrlWPsdwIU61I3Ajke
-         c/DARV9K2EIBf6bsRhSwlntGU8XelbTVzmVNQmIkEr9ro6VFw9L0oVvFcKdn86p6bUZ2
-         VBzjUUx2rHAOQ2VhWNCtM1TTH1b93lhQD0byxdCU7B36tnAyAY4DaZ0UqZNLk5I4O5Vl
-         JCfA==
+        b=Mz28S3AHkIveMUXSdCymh2xTJqjwfWKFD54JqpPGzJwyLFX8dvVAVZXfNeHr7jmK9G
+         vZrAsYKuFJfUlSI9lGmr4zs0DEv/6GT0DuB3ZRsbb3ZtLVbFVQ44R3Nvb+njlND3Rcde
+         v7ef8ORM9keuDbrq+pmNJ3ApAv2hTlZKJdRRu6YEV5+MzmTiOLIl1gHFHRfqkKHH+4lg
+         d/z3fySdCPL80bgUmOBOxXp3oQk/QStQq3wZWR6Me0SBdgTtL88A3dRBu3eACj3pZKLF
+         GVYmwY1YYAJ2urSHW/A9WfGguihAhsQ/68AHKR7192bht/ond3XoV8nb75KSEipAfmiH
+         ZSjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=HGvx6/inskhCnOm6BsAE3DPaXZ7uQLSuLupDi8FgtoQ=;
-        b=Qpw3RBJP/wzgowqI/Kkb0nDWXT6GimQ5J2dRpS17fE57FilHET01ccynfDCclVBbRc
-         xOeCHScSCocAkrIaVbzGTcD4v5xXpgl6Mj1KoXiY1YUKdf1kiFBXE4AcMVEHLNRxfp4G
-         Tf+S10iQBMs7K8CpHHE68J4j+EaSldrtkRVegV23zU4FWu9DYgvzDHEJMfdLWavzI+5J
-         XnLaOk5u9YutfwW7hQySsrBiK4BddUS3FSVQqE0i0mJpCSa50rO9b53/DxuoAHSNAb2b
-         PGEqb4CctBtCpGr+Fk0f6bfYIXWW/VzBNdIG8GYV9lI9Ap6XcUDFs18MMtr14gE4BqRe
-         CbvQ==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date;
+        bh=cJKdXJ2X2Sg7s5AbZbZ/GgPRxvg5m5vlAvJCLw49wXQ=;
+        b=0wKO+2i2Z0oAC4S/foNP5pXsdSdVRngJKCB7bAnFIlUHHfWNZeWcw8phBzvrBFodBH
+         HofrAdSsqEY8GDNHHf7BUR53YmxfD29iPLSwogeYdZE4QXdb4erFrTNqYpxFPHtkEKax
+         FCqYrE8XBqj42Zb4SfLkrhdV1GfR0zDPDmvq2zgHDs9uW0UZpKzaIA05oN3DP+1Pmgdd
+         gZGZMNmX2V5013tzJoJOfXP4GffZqVaV4KuLRqNFrPtkoFvDMq7X1U2AR2uEmZ+R+cZu
+         1mBYHJJ0DtlrVoWe9itleaW611Iz3FVD8mHh3BA32kTj6ZggI/4kVzoo146/ddJpjBn4
+         rmGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10si17151583qtt.302.2019.10.22.11.11.15
+        by mx.google.com with ESMTPS id y28si3880201edb.162.2019.10.18.05.03.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2019 11:11:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Oct 2019 05:03:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39522 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMyck-0002sf-Nx
-	for alex.bennee@linaro.org; Tue, 22 Oct 2019 14:11:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56065)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iLQym-0000gR-Dc
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 08:03:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38181)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMycb-0002s9-EE
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 14:11:07 -0400
+ (envelope-from <drjones@redhat.com>) id 1iLQyH-0000eD-Co
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 08:03:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMycY-0003XI-Pz
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 14:11:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54130)
+ (envelope-from <drjones@redhat.com>) id 1iLQyG-0006vX-3S
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2019 08:03:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35798)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMycY-0003Wn-HM
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 14:11:02 -0400
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <drjones@redhat.com>)
+ id 1iLQy9-0006pt-Ef; Fri, 18 Oct 2019 08:02:57 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id EAB465AFDE
- for <qemu-arm@nongnu.org>; Tue, 22 Oct 2019 18:11:00 +0000 (UTC)
-Received: by mail-wr1-f72.google.com with SMTP id r8so2289071wrx.8
- for <qemu-arm@nongnu.org>; Tue, 22 Oct 2019 11:11:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=qGV4nomXEVktouvB2CzDIkKo6CoN4xU05UrLijF67yw=;
- b=rogmJeqTahOqgUYAEL4s+t+XmZpRC3d23XBpT5Q5cmey3Mx4bPwdlJg1/cFWE6TgR1
- rkxW7MmpfiP8pgsz10wnzW5a1uVitSCTvmjZIlBNzOvaAh/YaODeOY1iLnqCYNYEBZ9g
- ArgCh0psRfq6CPdJszWFM2qj2GTib8FqhhbTFw/+6DS2zlIEPjf5gLK7V2+D3DWidkIz
- 3DI48BGp72WaWSMIzzDizIo9f70KcgRTXgkchh4PwvlgMeax6dQGxqjATO7BbwxLGP2f
- //CfUEg5RMi0H8VTVXLiouMQ8sLW1fneRBjWppcLjMwr5V/zncEn0VNTAqMcdgCsM3Sd
- fYIg==
-X-Gm-Message-State: APjAAAUpQ2a+pNd9JBzRZrXwb9Ra/VqxMwDbqqroKFwnN5DTGpEYP5pw
- UBvK8QEsaHG9017IKQ3qfp6Lt/Lxt+uJcGdqvwfzYqsg1N3PjhfjrfLyhfj4t/xvh8tWIk1yCnH
- tPtSaMFv3QSC4
-X-Received: by 2002:a7b:cd99:: with SMTP id y25mr4432619wmj.76.1571767859471; 
- Tue, 22 Oct 2019 11:10:59 -0700 (PDT)
-X-Received: by 2002:a7b:cd99:: with SMTP id y25mr4432597wmj.76.1571767859134; 
- Tue, 22 Oct 2019 11:10:59 -0700 (PDT)
-Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
- [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id l6sm22903117wmg.2.2019.10.22.11.10.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 22 Oct 2019 11:10:58 -0700 (PDT)
-Subject: Re: [PATCH 5/5] aspeed/i2c: Add trace events
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>
-References: <20191016085035.12136-1-clg@kaod.org>
- <20191016085035.12136-6-clg@kaod.org>
- <1e79a3e1-1531-11f8-9306-edfecad9896e@redhat.com>
- <ed9652d8-a72b-e2ff-37d7-1e004fa2b3ce@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <b01c82fa-54cc-9d20-16ee-dd7acc67d32d@redhat.com>
-Date: Tue, 22 Oct 2019 20:10:57 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ by mx1.redhat.com (Postfix) with ESMTPS id 0156F4FCCE;
+ Fri, 18 Oct 2019 12:02:56 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 853E9196B2;
+ Fri, 18 Oct 2019 12:02:54 +0000 (UTC)
+Date: Fri, 18 Oct 2019 14:02:52 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Masayoshi Mizuma <msys.mizuma@gmail.com>
+Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
+ virtual time
+Message-ID: <20191018120252.sdpi4t7jlectnspu@kamzik.brq.redhat.com>
+References: <20191016143410.5023-1-drjones@redhat.com>
+ <20191017211758.ownflk2c7mzv3poh@gabell>
 MIME-Version: 1.0
-In-Reply-To: <ed9652d8-a72b-e2ff-37d7-1e004fa2b3ce@kaod.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191017211758.ownflk2c7mzv3poh@gabell>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.30]); Fri, 18 Oct 2019 12:02:56 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jae Hyun Yoo <jae.hyun.yoo@linux.intel.com>,
- Andrew Jeffery <andrew@aj.id.au>, Eddie James <eajames@linux.vnet.ibm.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Veb98ZYStlba
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zrGHAe937ErS
 
-Hi C=C3=A9dric,
+On Thu, Oct 17, 2019 at 05:17:59PM -0400, Masayoshi Mizuma wrote:
+> Hi Drew,
+> 
+> Thank you for posting the patches, they seems to work well
+> because the softlockup is gone and the timestamp jump of
+> dmesg and ftrace record also disappeared after the guest
+> is virsh resume'ed.
+> 
+> Let me add comments.
+> I think the kvm-adjvtime behavior should be the default.
+> How about introducing 'kvm-noadjvtime' parameter instead?
+> kvm-noadjvtime is to provide the old behavior.
+> 
+> That is because the time jump occurs timeout for timers even though
+> the timer doesn't reach the timeout in the guest time.
+> 
+> For example, below flow shows that user and/or kernel sets timer A
+> for +10 sec and B for +20 sec in Guest, then Guest is suspended and
+> it passes 60 sec, then Guest is resumed. Timer A and B go off because
+> the Guest timestamp (TS) is jumped to 63. That is unexpected timer
+> behavior for Guest.
+> 
+>  Host TS(sec) Guest TS(sec) Event
+>  ============ ============= =============================
+>  00           00            Guest: Set timer A for +10 sec
+>  01           01            Guest: Set timer B for +20 sec
+>  03           03            Host: virsh suspend Guest
+>  63           63            Host: virsh resume Guest
+>                             Guest: Timer A and B go off
+> 
+> I believe kvm-adjvtime behavior is as following. So Time A
+> and B go off as expected time. So, kvm-adjvtime behavior should
+> be the default.
+> 
+>  Host TS(sec) Guest TS(sec) Event
+>  ============ ============= =============================
+>  00           00            Guest: Set timer A for +10 sec
+>  01           01            Guest: Set timer B for +20 sec
+>  03           03            Host: virsh suspend guest
+>  63           03            Host: virsh resume guest
+>  70           10            Guest: Timer A goes off
+>  81           21            Guest: Timer B goes off
+> 
 
-Sorry for the late reply.
+Thanks for the testing Masa. Your timer test is another good example of
+what can happen when a guest is paused. I'm sure there are many other ways
+a pause could be problematic as well, especially if the guest has devices
+passed through to it that it's actively using. I also don't expect
+kvm-adjvtime to solve all those problems (like, for example, potential
+problems with passthrough devices, networks, etc.)  This means that guest
+pausing should only be done by host admins that are intimately familiar
+with the guest OS, workload, and network connections. They should be sure
+that it can tolerate and recover from the pauses. Since the admins need to
+make the decision to pause at all, then I think it's fair for them to also
+decide if they want to try and mitigate some of the issues with
+kvm-adjvtime, i.e. require them to enable it, rather than have it on by
+default. Also, if we choose to enable it by default, then we'll need to
+deal with the compatibility issues that come with changing a behavior.
+That's not impossible, as this feature could be disabled for older
+machine types, but it's messy.
 
-On 10/17/19 1:52 PM, C=C3=A9dric Le Goater wrote:
-> Hello Philippe,
->=20
-> On 17/10/2019 12:22, Philippe Mathieu-Daud=C3=A9 wrote:
->> Hi C=C3=A9dric,
->>
->> On 10/16/19 10:50 AM, C=C3=A9dric Le Goater wrote:
->>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->>> ---
->>>  =C2=A0 hw/i2c/aspeed_i2c.c | 93 ++++++++++++++++++++++++++++++++++++=
-++-------
->>>  =C2=A0 hw/i2c/trace-events |=C2=A0 9 +++++
->>>  =C2=A0 2 files changed, 89 insertions(+), 13 deletions(-)
->>>
->>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
->>> index 030d9c56be65..2da04a4bff30 100644
->>> --- a/hw/i2c/aspeed_i2c.c
->>> +++ b/hw/i2c/aspeed_i2c.c
->>> @@ -28,6 +28,7 @@
->>>  =C2=A0 #include "hw/i2c/aspeed_i2c.h"
->>>  =C2=A0 #include "hw/irq.h"
->>>  =C2=A0 #include "hw/qdev-properties.h"
->>> +#include "trace.h"
->>>  =C2=A0 =C2=A0 /* I2C Global Register */
->>>  =C2=A0 @@ -158,6 +159,13 @@ static inline void aspeed_i2c_bus_raise_=
-interrupt(AspeedI2CBus *bus)
->>>  =C2=A0 {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedI2CClass *aic =3D ASPEED_I2C_GE=
-T_CLASS(bus->controller);
->>>  =C2=A0 +=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_raise_interrupt(bus-=
->intr_status,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_sta=
-tus & I2CD_INTR_TX_NAK ? "nak|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_sta=
-tus & I2CD_INTR_TX_ACK ? "ack|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_sta=
-tus & I2CD_INTR_RX_DONE ? "done|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_sta=
-tus & I2CD_INTR_NORMAL_STOP ? "normal|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_sta=
-tus & I2CD_INTR_ABNORMAL ? "abnormal" : "");
->>> +
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->intr_status &=3D bus->intr_ctrl;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (bus->intr_status) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->controll=
-er->intr_status |=3D 1 << bus->id;
->>> @@ -170,41 +178,57 @@ static uint64_t aspeed_i2c_bus_read(void *opaqu=
-e, hwaddr offset,
->>>  =C2=A0 {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedI2CBus *bus =3D opaque;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedI2CClass *aic =3D ASPEED_I2C_GE=
-T_CLASS(bus->controller);
->>> +=C2=A0=C2=A0=C2=A0 uint64_t value =3D -1;
->>>  =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 switch (offset) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_FUN_CTRL_REG:
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->ctrl;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->ctrl;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_AC_TIMING_REG1:
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->timing[0];
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->timing[0];
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_AC_TIMING_REG2:
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->timing[1];
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->timing[1];
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_INTR_CTRL_REG:
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->intr_ctrl;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->intr_ctrl;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_INTR_STS_REG:
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->intr_status;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->intr_statu=
-s;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_POOL_CTRL_REG:
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->pool_ctrl;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->pool_ctrl;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_BYTE_BUF_REG:
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->buf;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->buf;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_CMD_REG:
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->cmd | (i2c_bu=
-s_busy(bus->bus) << 16);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->cmd | (i2c=
-_bus_busy(bus->bus) << 16);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_DMA_ADDR:
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!aic->has=
-_dma) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",=C2=A0 __=
-func__);
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 r=
-eturn -1;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 b=
-reak;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->dma_addr;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->dma_addr;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_DMA_LEN:
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!aic->has=
-_dma) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",=C2=A0 __=
-func__);
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 r=
-eturn -1;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 b=
-reak;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return bus->dma_len;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D bus->dma_len;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>> +
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 default:
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_log_mask=
-(LOG_GUEST_ERROR,
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "%s=
-: Bad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -1;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value =3D -1;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> +
->>> +=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_read(bus->id, offset, size, =
-value);
->>> +=C2=A0=C2=A0=C2=A0 return value;
->>>  =C2=A0 }
->>>  =C2=A0 =C2=A0 static void aspeed_i2c_set_state(AspeedI2CBus *bus, ui=
-nt8_t state)
->>> @@ -246,6 +270,9 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus,=
- uint8_t pool_start)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for (i =3D po=
-ol_start; i < I2CD_POOL_TX_COUNT(bus->pool_ctrl); i++) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 uint8_t *pool_base =3D aic->bus_pool_base(bus);
->>>  =C2=A0 +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 trace_aspeed_i2c_bus_send("BUF", i + 1,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 I2CD_POOL_TX_COUNT(bus->pool_ctrl),
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 pool_base[i]);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 ret =3D i2c_send(bus->bus, pool_base[i]);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 if (ret) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>> @@ -256,6 +283,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus,=
- uint8_t pool_start)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 while (bus->d=
-ma_len) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 uint8_t data;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 aspeed_i2c_dma_read(bus, &data);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 t=
-race_aspeed_i2c_bus_send("DMA", bus->dma_len, bus->dma_len, data);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 ret =3D i2c_send(bus->bus, data);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 if (ret) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>> @@ -263,6 +291,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus,=
- uint8_t pool_start)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd &=3D=
- ~I2CD_TX_DMA_ENABLE;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_send=
-("BYTE", pool_start, 1, bus->buf);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D i2c_s=
-end(bus->bus, bus->buf);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>  =C2=A0 @@ -281,6 +310,9 @@ static void aspeed_i2c_bus_recv(AspeedI2C=
-Bus *bus)
->>>  =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for (i=
- =3D 0; i < I2CD_POOL_RX_SIZE(bus->pool_ctrl); i++) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 pool_base[i] =3D i2c_recv(bus->bus);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 t=
-race_aspeed_i2c_bus_recv("BUF", i + 1,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 I2CD_POOL_RX_SIZE(bus->pool_ctrl),
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 pool_base[i]);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>  =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Upd=
-ate RX count */
->>> @@ -294,6 +326,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus=
-)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 MemTxResult result;
->>>  =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 data =3D i2c_recv(bus->bus);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 t=
-race_aspeed_i2c_bus_recv("DMA", bus->dma_len, bus->dma_len, data);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 result =3D address_space_write(&s->dram_as, bus->dma_addr,
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MEMTXATTRS_UNSPECIFIED, &data, 1);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 if (result !=3D MEMTX_OK) {
->>> @@ -307,6 +340,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus=
-)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd &=3D=
- ~I2CD_RX_DMA_ENABLE;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 data =3D i2c_=
-recv(bus->bus);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_recv=
-("BYTE", 1, 1, bus->buf);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->buf =3D =
-(data & I2CD_BYTE_BUF_RX_MASK) << I2CD_BYTE_BUF_RX_SHIFT;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>  =C2=A0 }
->>> @@ -364,6 +398,33 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *=
-bus)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return true;
->>>  =C2=A0 }
->>>  =C2=A0 +static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
->>> +{
->>> +=C2=A0=C2=A0=C2=A0 g_autofree char *cmd_flags;
->>> +=C2=A0=C2=A0=C2=A0 uint32_t count;
->>> +
->>> +=C2=A0=C2=A0=C2=A0 if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUF=
-F_ENABLE)) {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 count =3D I2CD_POOL_TX_CO=
-UNT(bus->pool_ctrl);
->>> +=C2=A0=C2=A0=C2=A0 } else if (bus->cmd & (I2CD_RX_DMA_ENABLE | I2CD_=
-RX_DMA_ENABLE)) {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 count =3D bus->dma_len;
->>> +=C2=A0=C2=A0=C2=A0 } else { /* BYTE mode */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 count =3D 1;
->>> +=C2=A0=C2=A0=C2=A0 }
->>> +
->>> +=C2=A0=C2=A0=C2=A0 cmd_flags =3D g_strdup_printf("%s%s%s%s%s%s%s%s%s=
-",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_START_CMD ? =
-"start|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_RX_DMA_ENABLE =
-? "rxdma|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_TX_DMA_ENABLE =
-? "txdma|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_RX_BUFF_ENABLE=
- ? "rxbuf|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_TX_BUFF_ENABLE=
- ? "txbuf|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_TX_CMD ? "tx=
-|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_RX_CMD ? "rx=
-|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_S_RX_CMD_LAS=
-T ? "last|" : "",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bus->cmd & I2CD_M_STOP_CMD ? "=
-stop" : "");
->>> +
->>> +=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_cmd(bus->cmd, cmd_flags, cou=
-nt, bus->intr_status);
+All that said, I won't argue too hard against kvm-adjvtime being on by
+default, but let's see if others like Peter or Marc want to chime in on
+it too.
 
-Hard to switch habits and review code using g_autofree :/
-
->>> +}
->>> +
->>>  =C2=A0 /*
->>>  =C2=A0=C2=A0 * The state machine needs some refinement. It is only u=
-sed to track
->>>  =C2=A0=C2=A0 * invalid STOP commands for the moment.
->>> @@ -379,6 +440,10 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CB=
-us *bus, uint64_t value)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>  =C2=A0 +=C2=A0=C2=A0=C2=A0 if (trace_event_get_state_backends(TRACE_=
-ASPEED_I2C_BUS_CMD)) {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aspeed_i2c_bus_cmd_dump(b=
-us);
->>> +=C2=A0=C2=A0=C2=A0 }
->>> +
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (bus->cmd & I2CD_M_START_CMD) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint8_t state=
- =3D aspeed_i2c_get_state(bus) & I2CD_MACTIVE ?
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 I2CD_MSTARTR : I2CD_MSTART;
->>> @@ -465,6 +530,8 @@ static void aspeed_i2c_bus_write(void *opaque, hw=
-addr offset,
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedI2CClass *aic =3D ASPEED_I2C_GE=
-T_CLASS(bus->controller);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool handle_rx;
->>>  =C2=A0 +=C2=A0=C2=A0=C2=A0 trace_aspeed_i2c_bus_write(bus->id, offse=
-t, size, value);
->>> +
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 switch (offset) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case I2CD_FUN_CTRL_REG:
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (value & I=
-2CD_SLAVE_EN) {
->>> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
->>> index e1c810d5bd08..08db8fa68924 100644
->>> --- a/hw/i2c/trace-events
->>> +++ b/hw/i2c/trace-events
->>> @@ -5,3 +5,12 @@
->>>  =C2=A0 i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x=
-)"
->>>  =C2=A0 i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) da=
-ta:0x%02x"
->>>  =C2=A0 i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) da=
-ta:0x%02x"
->>> +
->>> +# aspeed_i2c.c
->>> +
->>> +aspeed_i2c_bus_cmd(uint32_t cmd, const char *cmd_flags, uint32_t cou=
-nt, uint32_t intr_status) "handling cmd=3D0x%x %s count=3D%d intr=3D0x%x"
->>> +aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str=
-1, const char *str2, const char *str3, const char *str4, const char *str5=
-) "handled intr=3D0x%x %s%s%s%s%s"
->>
->> There are various trace backends, your output seems designed only for =
-the "log" backend.
->>
->> Using 'unsigned is_nak, unsigned is_ack, ...' "nak:%u ack:%u ..." woul=
-d make your event compatible with the other backends (and ease their pars=
-ing).
->=20
-> I am not sure to understand where the incompatibility is.
-> Could you explain more please ?
-
-Well, the format you used is not *incompatible*, but it is not optimal.
-
-The aspeed_i2c_bus_raise_interrupt() trace event might be OK,
-although the arguments could be better named.
-
-The DTrace generated script is:
-
-probe qemu.system.arm.log.aspeed_i2c_bus_raise_interrupt =3D=20
-qemu.system.arm.aspeed_i2c_bus_raise_interrupt ?
-{
-     try {
-         argstr1_str =3D str1 ? user_string_n(str1, 512) : "<null>"
-     } catch {}
-     try {
-         argstr2_str =3D str2 ? user_string_n(str2, 512) : "<null>"
-     } catch {}
-     try {
-         argstr3_str =3D str3 ? user_string_n(str3, 512) : "<null>"
-     } catch {}
-     try {
-         argstr4_str =3D str4 ? user_string_n(str4, 512) : "<null>"
-     } catch {}
-     try {
-         argstr5_str =3D str5 ? user_string_n(str5, 512) : "<null>"
-     } catch {}
-     printf("%d@%d aspeed_i2c_bus_raise_interrupt handled intr=3D0x%x=20
-%s%s%s%s%s\n", pid(), gettimeofday_ns(), intr_status, argstr1_str,=20
-argstr2_str, argstr3_str, argstr4_str, argstr5_str)
-}
-
-Acceptable.
-
-The aspeed_i2c_bus_cmd() event is the one that bugged me, because
-thinking about tracing a particular set of commands (like: "all
-the commands with the rxdma bit set") I thought we'd need to parse
-the 'const char *cmd_flags'. But now I realize you also pass the
-bus->cmd value, so we can filter there, and ignore the description
-string. Same occurs with the other event, we can parse intr_status.
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
->=20
-> Thanks,
->=20
-> C.
->=20
->>> +aspeed_i2c_bus_read(uint32_t busid, uint64_t offset, unsigned size, =
-uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
->>> +aspeed_i2c_bus_write(uint32_t busid, uint64_t offset, unsigned size,=
- uint64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
->>> +aspeed_i2c_bus_send(const char *mode, int i, int count, uint8_t byte=
-) "%s send %d/%d 0x%02x"
->>> +aspeed_i2c_bus_recv(const char *mode, int i, int count, uint8_t byte=
-) "%s recv %d/%d 0x%02x"
->>>
->=20
+Thanks,
+drew

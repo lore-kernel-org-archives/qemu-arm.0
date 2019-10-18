@@ -1,184 +1,319 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1232552wrm;
-        Fri, 18 Oct 2019 10:54:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxGQFUTWKeBd/wIahHpt3Eo+kcsn+oeUUWC4TOwTAPmPdFYdC/crRXJeu3nk8tWD3mBBxGN
-X-Received: by 2002:a05:620a:78e:: with SMTP id 14mr9907810qka.483.1571421244615;
-        Fri, 18 Oct 2019 10:54:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571421244; cv=none;
-        d=google.com; s=arc-20160816;
-        b=nolsc+cF5xJlpnzTqHEk9T+WVPLMi5gAx+4c5KmhCRXtH7WFKyNjhlskIHQ+ADgFGr
-         o9Zfxp1YAR/7cHg9kx2L4hnX3YCmHhPPjW0B1Wb2eKRk12OSY4nBrZ/oJMUGY+9kDBkl
-         o1ceDtvI7yQ+gprkin6+D3XjMTuGyYQ/Ip8lMQ7Suy3GNnugMZokfGNS04Qs9vBeos4X
-         nT42SnIpNa2l4ayhVU/q9WjnVOQvCEkiaYF4iO+J1b90rqkuHrDUf2VjAGJDOFS0MuWi
-         DBTxhOUCqVB74F/tJHtiHhmJ0QaU2o4Lo0b5NSi98tRYXske9f5D9tgPK0UBn++Nw1pB
-         TxzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=ksJ29EsO4EC0RqRT/ptTGb/nh233vty3hFHL48/i7gI=;
-        b=h+tkH/iZIDWTaGBOFqu0CV1vUOUO+hVp9yANX2wl0ozSFriT2ilAHz+2y6+aaAX0TQ
-         EocDaUU6DlrtfRy5UQAAorAXXPfDhM214nQ7q/QTeMcJ5S2rkfDq+UbPPf/C7yiAe1VW
-         PYSjJ9rsEhRQKajLKAd+rhTwN6l5BHqiSxlGLdVir8j5WbLkROFDAUvfAywlGTcR67df
-         zPUBKPaFlIE/sTtIvRJTptsyrjPK3rLLsngB4FVTNOIpjmHCv5r57gfm26N4fu9gBPDA
-         5/6JVzZ+9tvGb+4OR7RYlnZjuBuukn0Ymeu0zRWxDGr5R2hoEz4CSCQj2wRe5ljkp/Ei
-         mtUw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hZHwdPeE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y8si6485116qve.213.2019.10.18.10.54.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 10:54:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hZHwdPeE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44360 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLWRv-0007vz-OO
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 13:54:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59370)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iLWJ4-0006le-4E
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 13:44:56 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iLWJ2-0005Y4-9U
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 13:44:54 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:36784)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iLWJ1-0005XU-U9
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 13:44:52 -0400
-Received: by mail-pf1-x443.google.com with SMTP id y22so4327327pfr.3
- for <qemu-arm@nongnu.org>; Fri, 18 Oct 2019 10:44:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=ksJ29EsO4EC0RqRT/ptTGb/nh233vty3hFHL48/i7gI=;
- b=hZHwdPeEBA2AK5wNx1xD+5hnv39LM/tC0jfD0A5B9JMZUCZTWzkFMUPZNiEzngiD00
- DykvZK+XCp5mXLSW/kIvFMiPG/+Z/qcVp2MTHBboWNgE0kWVw10akFp1WFWyw7a8ektb
- i2GDDDv9z8nSyFOt/H/xBAajBs/pSb0rGnuuL/kFq1zRi0h1T22qz17cBDxKonMsTX5W
- hhIu4giEickQYIXnUhG6qR2HwVSl6HsdNTq8/a3+UtCdnqiiD1rXHhMK9cpQsnsiOzW0
- p7BBEw4hppAnlx4NXa9vwJx2ayxuot/3Y3sm1gtgzHHDRTxDmap79oEzLBXjcU5Y+aVI
- fiUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=ksJ29EsO4EC0RqRT/ptTGb/nh233vty3hFHL48/i7gI=;
- b=q7daIjf4mv0kWbNELn0g5wm6t8D4BjcFZtC7mkX8WsuUz7dXrwRVKyuszSO5zwQQ16
- 3O7thPSLd9/XMcZQRNU5eILD8QDHBtimCijnCXVBbW9Bh5lLgKqjN63G8RwKrs7jglKq
- P/zKpAdjFhkLtfEb+oYRwMPz7eGrtQrIMXGtVo9818vrkZzSq6UAPP5t6eLO6mVtDprP
- EHTiUeaYnqf1X0Iq4aaD8UGraXT545jk3BBYvQdRUsiwI2x4dEOKKTaDdhDVJl7IVdZJ
- ZzScpEty7uEOwYFn0AS8a3C1hZReuPDYSV+GC8MunNrvKWq8b6GI91CXHQAetVVDowo7
- fJIw==
-X-Gm-Message-State: APjAAAXODxxPCiOulwhfBF5dzSrvml1GzGKqGMs7VgXp4GSHFDBGcYWN
- +Ff4/YLNqUzJnSqsZ8xZmo7XMg==
-X-Received: by 2002:a17:90a:b908:: with SMTP id
- p8mr12857107pjr.62.1571420690907; 
- Fri, 18 Oct 2019 10:44:50 -0700 (PDT)
-Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
- [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id d20sm7857534pfq.88.2019.10.18.10.44.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Oct 2019 10:44:49 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v8 15/22] target/arm: Add HELPER(rebuild_hflags_{a32, a64,
- m32})
-Date: Fri, 18 Oct 2019 10:44:24 -0700
-Message-Id: <20191018174431.1784-16-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20191018174431.1784-1-richard.henderson@linaro.org>
-References: <20191018174431.1784-1-richard.henderson@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id r13sm7876069wra.74.2019.10.18.10.54.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Oct 2019 10:54:35 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 91C011FF87;
+	Fri, 18 Oct 2019 18:54:34 +0100 (BST)
+References: <20191017044232.27601-1-richard.henderson@linaro.org>
+ <20191017044232.27601-5-richard.henderson@linaro.org>
+User-agent: mu4e 1.3.5; emacs 27.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org
+Subject: Re: [PATCH 4/4] target/arm: Convert PMULL.8 to gvec
+In-reply-to: <20191017044232.27601-5-richard.henderson@linaro.org>
+Date: Fri, 18 Oct 2019 18:54:34 +0100
+Message-ID: <87tv86ndlx.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::443
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gg/i68DCDa8A
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: CIS9mz+UjyWf
 
-This functions are given the mode and el state of the cpu
-and writes the computed value to env->hflags.
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper.h |  4 ++++
- target/arm/helper.c | 24 ++++++++++++++++++++++++
- 2 files changed, 28 insertions(+)
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 1fb2cb5a77..3d4ec267a2 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -90,6 +90,10 @@ DEF_HELPER_4(msr_banked, void, env, i32, i32, i32)
- DEF_HELPER_2(get_user_reg, i32, env, i32)
- DEF_HELPER_3(set_user_reg, void, env, i32, i32)
- 
-+DEF_HELPER_FLAGS_2(rebuild_hflags_m32, TCG_CALL_NO_RWG, void, env, int)
-+DEF_HELPER_FLAGS_2(rebuild_hflags_a32, TCG_CALL_NO_RWG, void, env, int)
-+DEF_HELPER_FLAGS_2(rebuild_hflags_a64, TCG_CALL_NO_RWG, void, env, int)
-+
- DEF_HELPER_1(vfp_get_fpscr, i32, env)
- DEF_HELPER_2(vfp_set_fpscr, void, env, i32)
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 37424e3d4d..b2d701cf00 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -11220,6 +11220,30 @@ void arm_rebuild_hflags(CPUARMState *env)
-     env->hflags = rebuild_hflags_internal(env);
- }
- 
-+void HELPER(rebuild_hflags_m32)(CPUARMState *env, int el)
-+{
-+    int fp_el = fp_exception_el(env, el);
-+    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
-+
-+    env->hflags = rebuild_hflags_m32(env, fp_el, mmu_idx);
-+}
-+
-+void HELPER(rebuild_hflags_a32)(CPUARMState *env, int el)
-+{
-+    int fp_el = fp_exception_el(env, el);
-+    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
-+
-+    env->hflags = rebuild_hflags_a32(env, fp_el, mmu_idx);
-+}
-+
-+void HELPER(rebuild_hflags_a64)(CPUARMState *env, int el)
-+{
-+    int fp_el = fp_exception_el(env, el);
-+    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
-+
-+    env->hflags = rebuild_hflags_a64(env, el, fp_el, mmu_idx);
-+}
-+
- void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-                           target_ulong *cs_base, uint32_t *pflags)
- {
--- 
-2.17.1
+> We still need two different helpers, since NEON and SVE2 get the
+> inputs from different locations within the source vector.  However,
+> we can convert both to the same internal form for computation.
+>
+> The sve2 helper is not used yet, but adding it with this patch
+> helps illustrate why the neon changes are helpful.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+> ---
+>  target/arm/helper-sve.h    |  2 ++
+>  target/arm/helper.h        |  3 +-
+>  target/arm/neon_helper.c   | 32 --------------------
+>  target/arm/translate-a64.c | 27 +++++++++++------
+>  target/arm/translate.c     | 26 ++++++++---------
+>  target/arm/vec_helper.c    | 60 ++++++++++++++++++++++++++++++++++++++
+>  6 files changed, 95 insertions(+), 55 deletions(-)
+>
+> diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+> index 9e79182ab4..2f47279155 100644
+> --- a/target/arm/helper-sve.h
+> +++ b/target/arm/helper-sve.h
+> @@ -1574,3 +1574,5 @@ DEF_HELPER_FLAGS_6(sve_stdd_le_zd, TCG_CALL_NO_WG,
+>                     void, env, ptr, ptr, ptr, tl, i32)
+>  DEF_HELPER_FLAGS_6(sve_stdd_be_zd, TCG_CALL_NO_WG,
+>                     void, env, ptr, ptr, ptr, tl, i32)
+> +
+> +DEF_HELPER_FLAGS_4(sve2_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i=
+32)
+> diff --git a/target/arm/helper.h b/target/arm/helper.h
+> index d954399b7e..8a8517cf34 100644
+> --- a/target/arm/helper.h
+> +++ b/target/arm/helper.h
+> @@ -335,7 +335,6 @@ DEF_HELPER_2(neon_sub_u8, i32, i32, i32)
+>  DEF_HELPER_2(neon_sub_u16, i32, i32, i32)
+>  DEF_HELPER_2(neon_mul_u8, i32, i32, i32)
+>  DEF_HELPER_2(neon_mul_u16, i32, i32, i32)
+> -DEF_HELPER_2(neon_mull_p8, i64, i32, i32)
+>
+>  DEF_HELPER_2(neon_tst_u8, i32, i32, i32)
+>  DEF_HELPER_2(neon_tst_u16, i32, i32, i32)
+> @@ -688,6 +687,8 @@ DEF_HELPER_FLAGS_4(gvec_ushl_h, TCG_CALL_NO_RWG, void=
+, ptr, ptr, ptr, i32)
+>  DEF_HELPER_FLAGS_4(gvec_pmul_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i3=
+2)
+>  DEF_HELPER_FLAGS_4(gvec_pmull_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i=
+32)
+>
+> +DEF_HELPER_FLAGS_4(neon_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i=
+32)
+> +
+>  #ifdef TARGET_AARCH64
+>  #include "helper-a64.h"
+>  #include "helper-sve.h"
+> diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
+> index 6a107da0e1..c7a8438b42 100644
+> --- a/target/arm/neon_helper.c
+> +++ b/target/arm/neon_helper.c
+> @@ -1129,38 +1129,6 @@ NEON_VOP(mul_u8, neon_u8, 4)
+>  NEON_VOP(mul_u16, neon_u16, 2)
+>  #undef NEON_FN
+>
+> -/* Polynomial multiplication is like integer multiplication except the
+> -   partial products are XORed, not added.  */
+> -uint64_t HELPER(neon_mull_p8)(uint32_t op1, uint32_t op2)
+> -{
+> -    uint64_t result =3D 0;
+> -    uint64_t mask;
+> -    uint64_t op2ex =3D op2;
+> -    op2ex =3D (op2ex & 0xff) |
+> -        ((op2ex & 0xff00) << 8) |
+> -        ((op2ex & 0xff0000) << 16) |
+> -        ((op2ex & 0xff000000) << 24);
+> -    while (op1) {
+> -        mask =3D 0;
+> -        if (op1 & 1) {
+> -            mask |=3D 0xffff;
+> -        }
+> -        if (op1 & (1 << 8)) {
+> -            mask |=3D (0xffffU << 16);
+> -        }
+> -        if (op1 & (1 << 16)) {
+> -            mask |=3D (0xffffULL << 32);
+> -        }
+> -        if (op1 & (1 << 24)) {
+> -            mask |=3D (0xffffULL << 48);
+> -        }
+> -        result ^=3D op2ex & mask;
+> -        op1 =3D (op1 >> 1) & 0x7f7f7f7f;
+> -        op2ex <<=3D 1;
+> -    }
+> -    return result;
+> -}
+> -
+>  #define NEON_FN(dest, src1, src2) dest =3D (src1 & src2) ? -1 : 0
+>  NEON_VOP(tst_u8, neon_u8, 4)
+>  NEON_VOP(tst_u16, neon_u16, 2)
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 12588d18df..2934e4fc16 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -10483,10 +10483,6 @@ static void handle_3rd_widening(DisasContext *s,=
+ int is_q, int is_u, int size,
+>                  gen_helper_neon_addl_saturate_s32(tcg_passres, cpu_env,
+>                                                    tcg_passres, tcg_passr=
+es);
+>                  break;
+> -            case 14: /* PMULL */
+> -                assert(size =3D=3D 0);
+> -                gen_helper_neon_mull_p8(tcg_passres, tcg_op1, tcg_op2);
+> -                break;
+>              default:
+>                  g_assert_not_reached();
+>              }
+> @@ -10650,11 +10646,21 @@ static void disas_simd_three_reg_diff(DisasCont=
+ext *s, uint32_t insn)
+>          handle_3rd_narrowing(s, is_q, is_u, size, opcode, rd, rn, rm);
+>          break;
+>      case 14: /* PMULL, PMULL2 */
+> -        if (is_u || size =3D=3D 1 || size =3D=3D 2) {
+> +        if (is_u) {
+>              unallocated_encoding(s);
+>              return;
+>          }
+> -        if (size =3D=3D 3) {
+> +        switch (size) {
+> +        case 0: /* PMULL.P8 */
+> +            if (!fp_access_check(s)) {
+> +                return;
+> +            }
+> +            /* The Q field specifies lo/hi half input for this insn.  */
+> +            gen_gvec_op3_ool(s, true, rd, rn, rm, is_q,
+> +                             gen_helper_neon_pmull_h);
+> +            break;
+> +
+> +        case 3: /* PMULL.P64 */
+>              if (!dc_isar_feature(aa64_pmull, s)) {
+>                  unallocated_encoding(s);
+>                  return;
+> @@ -10665,9 +10671,13 @@ static void disas_simd_three_reg_diff(DisasConte=
+xt *s, uint32_t insn)
+>              /* The Q field specifies lo/hi half input for this insn.  */
+>              gen_gvec_op3_ool(s, true, rd, rn, rm, is_q,
+>                               gen_helper_gvec_pmull_q);
+> -            return;
+> +            break;
+> +
+> +        default:
+> +            unallocated_encoding(s);
+> +            break;
+>          }
+> -        goto is_widening;
+> +        return;
+>      case 9: /* SQDMLAL, SQDMLAL2 */
+>      case 11: /* SQDMLSL, SQDMLSL2 */
+>      case 13: /* SQDMULL, SQDMULL2 */
+> @@ -10688,7 +10698,6 @@ static void disas_simd_three_reg_diff(DisasContex=
+t *s, uint32_t insn)
+>              unallocated_encoding(s);
+>              return;
+>          }
+> -    is_widening:
+>          if (!fp_access_check(s)) {
+>              return;
+>          }
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 4e34249672..c3abf130cc 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -5873,15 +5873,20 @@ static int disas_neon_data_insn(DisasContext *s, =
+uint32_t insn)
+>                      return 1;
+>                  }
+>
+> -                /* Handle VMULL.P64 (Polynomial 64x64 to 128 bit multipl=
+y)
+> -                 * outside the loop below as it only performs a single p=
+ass.
+> -                 */
+> -                if (op =3D=3D 14 && size =3D=3D 2) {
+> -                    if (!dc_isar_feature(aa32_pmull, s)) {
+> -                        return 1;
+> +                /* Handle polynomial VMULL in a single pass.  */
+> +                if (op =3D=3D 14) {
+> +                    if (size =3D=3D 0) {
+> +                        /* VMULL.P8 */
+> +                        tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 1=
+6,
+> +                                           0, gen_helper_neon_pmull_h);
+> +                    } else {
+> +                        /* VMULL.P64 */
+> +                        if (!dc_isar_feature(aa32_pmull, s)) {
+> +                            return 1;
+> +                        }
+> +                        tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 1=
+6,
+> +                                           0, gen_helper_gvec_pmull_q);
+>                      }
+> -                    tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 16,
+> -                                       0, gen_helper_gvec_pmull_q);
+>                      return 0;
+>                  }
+>
+> @@ -5959,11 +5964,6 @@ static int disas_neon_data_insn(DisasContext *s, u=
+int32_t insn)
+>                          /* VMLAL, VQDMLAL, VMLSL, VQDMLSL, VMULL, VQDMUL=
+L */
+>                          gen_neon_mull(cpu_V0, tmp, tmp2, size, u);
+>                          break;
+> -                    case 14: /* Polynomial VMULL */
+> -                        gen_helper_neon_mull_p8(cpu_V0, tmp, tmp2);
+> -                        tcg_temp_free_i32(tmp2);
+> -                        tcg_temp_free_i32(tmp);
+> -                        break;
+>                      default: /* 15 is RESERVED: caught earlier  */
+>                          abort();
+>                      }
+> diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
+> index 5c1074374e..04b4d7402d 100644
+> --- a/target/arm/vec_helper.c
+> +++ b/target/arm/vec_helper.c
+> @@ -1197,3 +1197,63 @@ void HELPER(gvec_pmull_q)(void *vd, void *vn, void=
+ *vm, uint32_t desc)
+>      }
+>      clear_tail(d, opr_sz, simd_maxsz(desc));
+>  }
+> +
+> +/*
+> + * 8x8->16 polynomial multiply.
+> + *
+> + * The byte inputs are expanded to (or extracted from) half-words.
+> + * Note that neon and sve2 get the inputs from different positions.
+> + * This allows 4 bytes to be processed in parallel with uint64_t.
+> + */
+> +
+> +static uint64_t expand_byte_to_half(uint64_t x)
+> +{
+> +    return  (x & 0x000000ff)
+> +         | ((x & 0x0000ff00) << 8)
+> +         | ((x & 0x00ff0000) << 16)
+> +         | ((x & 0xff000000) << 24);
+> +}
+> +
+> +static uint64_t pmull_h(uint64_t op1, uint64_t op2)
+> +{
+> +    uint64_t result =3D 0;
+> +    int i;
+> +
+> +    for (i =3D 0; i < 8; ++i) {
+> +        uint64_t mask =3D (op1 & 0x0001000100010001ull) * 0xffff;
+> +        result ^=3D op2 & mask;
+> +        op1 >>=3D 1;
+> +        op2 <<=3D 1;
+> +    }
+> +    return result;
+> +}
+> +
+> +void HELPER(neon_pmull_h)(void *vd, void *vn, void *vm, uint32_t desc)
+> +{
+> +    int hi =3D simd_data(desc);
+> +    uint64_t *d =3D vd, *n =3D vn, *m =3D vm;
+> +    uint64_t nn =3D n[hi], mm =3D m[hi];
+> +
+> +    d[0] =3D pmull_h(expand_byte_to_half(nn), expand_byte_to_half(mm));
+> +    nn >>=3D 32;
+> +    mm >>=3D 32;
+> +    d[1] =3D pmull_h(expand_byte_to_half(nn), expand_byte_to_half(mm));
+> +
+> +    clear_tail(d, 16, simd_maxsz(desc));
+> +}
+> +
+> +#ifdef TARGET_AARCH64
+> +void HELPER(sve2_pmull_h)(void *vd, void *vn, void *vm, uint32_t desc)
+> +{
+> +    int shift =3D simd_data(desc) * 8;
+> +    intptr_t i, opr_sz =3D simd_oprsz(desc);
+> +    uint64_t *d =3D vd, *n =3D vn, *m =3D vm;
+> +
+> +    for (i =3D 0; i < opr_sz / 8; ++i) {
+> +        uint64_t nn =3D (n[i] >> shift) & 0x00ff00ff00ff00ffull;
+> +        uint64_t mm =3D (m[i] >> shift) & 0x00ff00ff00ff00ffull;
+> +
+> +        d[i] =3D pmull_h(nn, mm);
+> +    }
+> +}
+> +#endif
+
+
+--
+Alex Benn=C3=A9e

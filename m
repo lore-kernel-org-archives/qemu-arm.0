@@ -1,77 +1,77 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1087597wrm;
-        Fri, 18 Oct 2019 08:44:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzwC+Swy3t4zsejNU8VrQ4y6rw4mcmwWa60Vcjl6n2WCbmKG+h/1NaIZGQLWHstawp7V72u
-X-Received: by 2002:ac8:4a86:: with SMTP id l6mr4494060qtq.371.1571413441276;
-        Fri, 18 Oct 2019 08:44:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571413441; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1088150wrm;
+        Fri, 18 Oct 2019 08:44:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzAHr0sEWyCBSdKOfwtONcNCLLCV6bPiWbJVYL9C2yrqxyPvxxiNZqWI5ERzmQMSyY3w5fo
+X-Received: by 2002:a05:6214:3ce:: with SMTP id ce14mr9976405qvb.174.1571413467614;
+        Fri, 18 Oct 2019 08:44:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571413467; cv=none;
         d=google.com; s=arc-20160816;
-        b=K7TIaxmoskU3URGwFrwlvSjk8hDaswjJS0Q3kOvQLn3PEjarNiySKCCkpUyUpiPG5x
-         J9W+1N4d9lIjJdQiwye9sgzr8YErxVVyhtQxVbw6R+8rDJz3ZA1/UJB1KcfXqyDM7b5O
-         g5/jhL88gPxGCdzIgx/+keggguD9XnXLJBALjvst4kXtZYCxcQdTGCl9O7guo345v/BT
-         HkhJZwDGiR1u6C3OOYCKUEFY1USRVGdxZtQP4V3C1D9A0cdreai20BuKkHhJlYabkl7a
-         q8MisBZ07V/QfgVaEV5UAyu03WN9hpniCNyxC85dnVHm+IkxNNdePUh+D/Fq5UjreK/i
-         tmRg==
+        b=D8CcZTm+HMC1u6vJEg4Cm2vmErk0WpD380jrDYPLiu3ig8LZdbaeJZEDKtSXUUb8SJ
+         GuUl+0sYkSOUiEHuQWuUo7zjLMh2q17zGQxq+LmNBsI64RRdlbpKh6zyrbP5kReiITGh
+         uLi4V+wRtiYyQ2xfIsgw1Xh+UEe7r+OufOkEoTiwldaMQZk5DCdM+IiEeQHrpyWnrjlG
+         oDJYNX7LEeR14/3l+SPTHkIvNxFI31Nb5I0JBn2KC76MRnZv/CoHIFPse1oCZlkl2dm+
+         qVkXlXZbFrzS1atGb6ZvcGab83cukASt193GZRSTB+Q0od0BzC1Z4uzwzu/C8N1elbhZ
+         BHTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=p8an83UARN+K4Ysq/N/thW+866GxnWftTzSEg/PhWLU=;
-        b=abKZAvNUDqu8JV7IjfS6s9/WFnsYF2QC3Fd7Axc6ig1fXsqfj3r6XMFZj0lAIn1EXf
-         oLXrFqCNXq8eiFRq8KpQa1d3TEoXpgWejFM8VxxYD6cQdK1itOE9l2w56TZ0nToOTtFL
-         vdugKcF0ABRY6YEDexwaggaXQRJK2dvyDlncKXKTz1ysisC4UD9fYytaCbqABf6BeCS0
-         HeeiHl4Y3q2xApvrmhMVlqhnIWTSM16oQ6uGstq6KLhZci/uOtYE/xmqm4ZmAJB5Wd3p
-         dGjdYFX44W1f3llhf5UmTimCQ+I17jAComCi78EErXiBBZPLGGLuDuXHVyrRgT+gpKbG
-         PYcQ==
+        bh=YNFdMAR61BX+6hfxSC7+KHztAkLe/nd2eQw1Wopx4Qc=;
+        b=FIMu+8gEg++mev8W9dR/KXZRIaIh5yNAnfkSXm6tLgJQt6+oRcZ8i2cHCCZKaz6fZ/
+         drp2Gt4mPiPRoTqHj/CPniPGrvuPlcsXzLkwM0MWjz9wL86zAnFebg573gkRI0SHsy6i
+         tcyZrzxHHxYOe6XK7dngRypE7OIXI/qI6kkJEPYYedla49udhdcwZbpHoxL+PvqLA/zI
+         BWjr0QNSiaGpVDezg8trTaOR0tXmsBU0Lx1CDVkS6yLeCklMH+HosxOKi4nGj/ux8GdQ
+         i/8FfOy0rmVhlAVl7JdHkCk8qsLg4i+7O2c83CQtK9RrMBvRsorqEhCCZQJt7V2kAFTJ
+         fCFw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u12si6079529qkj.340.2019.10.18.08.44.01
+        by mx.google.com with ESMTPS id n10si6348879qtl.331.2019.10.18.08.44.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2019 08:44:01 -0700 (PDT)
+        Fri, 18 Oct 2019 08:44:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42108 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLUQ4-0001Rd-5a
-	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:44:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44234)
+	id 1iLUQU-00027B-MK
+	for alex.bennee@linaro.org; Fri, 18 Oct 2019 11:44:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44603)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iLUOq-00009k-W2
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:42:46 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUPv-0001aa-4l
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:43:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iLUOp-0006O2-Pf
- for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:42:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59308)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iLUPt-0007Y8-KE
+ for qemu-arm@nongnu.org; Fri, 18 Oct 2019 11:43:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47180)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iLUOp-0006Mv-Em; Fri, 18 Oct 2019 11:42:43 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ id 1iLUPt-0007WW-CM; Fri, 18 Oct 2019 11:43:49 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 8F8B27EBBD;
- Fri, 18 Oct 2019 15:42:42 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6DC5410DCC99;
+ Fri, 18 Oct 2019 15:43:48 +0000 (UTC)
 Received: from localhost (ovpn-112-40.ams2.redhat.com [10.36.112.40])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 40731600C4;
- Fri, 18 Oct 2019 15:42:33 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7785F100EA05;
+ Fri, 18 Oct 2019 15:43:42 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 04/14] etraxfs: remove PROP_PTR usage
-Date: Fri, 18 Oct 2019 17:42:02 +0200
-Message-Id: <20191018154212.13458-5-marcandre.lureau@redhat.com>
+Subject: [PATCH 11/14] omap-i2c: remove PROP_PTR
+Date: Fri, 18 Oct 2019 17:42:09 +0200
+Message-Id: <20191018154212.13458-12-marcandre.lureau@redhat.com>
 In-Reply-To: <20191018154212.13458-1-marcandre.lureau@redhat.com>
 References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.27]); Fri, 18 Oct 2019 15:42:42 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.64]); Fri, 18 Oct 2019 15:43:48 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -105,114 +105,134 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KuKWzHeI7iG4
+X-TUID: xNteuaaezTEQ
 
-etraxfs_dma_client are not Object, so can't be exposed to user with
-QOM path. Let's remove property usage and move the constructor to the
-.c unit, simplifying some code on the way.
+Since clock are not QOM objects, replace PROP_PTR of clocks with
+setters methods.
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/net/etraxfs_eth.c      | 35 ++++++++++++++++++++++++-----------
- include/hw/cris/etraxfs.h | 20 +++-----------------
- 2 files changed, 27 insertions(+), 28 deletions(-)
+ hw/arm/omap1.c        |  2 +-
+ hw/arm/omap2.c        |  8 ++++----
+ hw/i2c/omap_i2c.c     | 19 ++++++++++++-------
+ include/hw/arm/omap.h |  9 +++++++++
+ 4 files changed, 26 insertions(+), 12 deletions(-)
 
-diff --git a/hw/net/etraxfs_eth.c b/hw/net/etraxfs_eth.c
-index 4cfbf1135a..4726ad5298 100644
---- a/hw/net/etraxfs_eth.c
-+++ b/hw/net/etraxfs_eth.c
-@@ -338,14 +338,8 @@ typedef struct ETRAXFSEthState
-     uint8_t macaddr[2][6];
-     uint32_t regs[FS_ETH_MAX_REGS];
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index c5583b10e0..fe55c44c7e 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -4032,7 +4032,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryReg=
+ion *system_memory,
 =20
--    union {
--        void *vdma_out;
--        struct etraxfs_dma_client *dma_out;
--    };
--    union {
--        void *vdma_in;
--        struct etraxfs_dma_client *dma_in;
--    };
-+    struct etraxfs_dma_client *dma_out;
-+    struct etraxfs_dma_client *dma_in;
+     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
+     qdev_prop_set_uint8(s->i2c[0], "revision", 0x11);
+-    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "mpuper_ck"));
++    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "mpuper_ck"))=
+;
+     qdev_init_nofail(s->i2c[0]);
+     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
+     sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(s->ih[1], OMAP_INT_I2=
+C));
+diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+index 726a628e64..046fb6ffb5 100644
+--- a/hw/arm/omap2.c
++++ b/hw/arm/omap2.c
+@@ -2428,8 +2428,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRe=
+gion *sysmem,
 =20
-     /* MDIO bus.  */
-     struct qemu_mdio mdio_bus;
-@@ -635,8 +629,6 @@ static void etraxfs_eth_realize(DeviceState *dev, Err=
-or **errp)
+     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
+     qdev_prop_set_uint8(s->i2c[0], "revision", 0x34);
+-    qdev_prop_set_ptr(s->i2c[0], "iclk", omap_findclk(s, "i2c1.iclk"));
+-    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "i2c1.fclk"));
++    omap_i2c_set_iclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.iclk"))=
+;
++    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.fclk"))=
+;
+     qdev_init_nofail(s->i2c[0]);
+     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
+     sysbus_connect_irq(busdev, 0,
+@@ -2440,8 +2440,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRe=
+gion *sysmem,
 =20
- static Property etraxfs_eth_properties[] =3D {
-     DEFINE_PROP_UINT32("phyaddr", ETRAXFSEthState, phyaddr, 1),
--    DEFINE_PROP_PTR("dma_out", ETRAXFSEthState, vdma_out),
--    DEFINE_PROP_PTR("dma_in", ETRAXFSEthState, vdma_in),
-     DEFINE_NIC_PROPERTIES(ETRAXFSEthState, conf),
-     DEFINE_PROP_END_OF_LIST(),
- };
-@@ -648,10 +640,31 @@ static void etraxfs_eth_class_init(ObjectClass *kla=
-ss, void *data)
-     dc->realize =3D etraxfs_eth_realize;
-     dc->reset =3D etraxfs_eth_reset;
-     dc->props =3D etraxfs_eth_properties;
--    /* Reason: pointer properties "dma_out", "dma_in" */
-+    /* Reason: dma_out, dma_in are not user settable */
-     dc->user_creatable =3D false;
+     s->i2c[1] =3D qdev_create(NULL, "omap_i2c");
+     qdev_prop_set_uint8(s->i2c[1], "revision", 0x34);
+-    qdev_prop_set_ptr(s->i2c[1], "iclk", omap_findclk(s, "i2c2.iclk"));
+-    qdev_prop_set_ptr(s->i2c[1], "fclk", omap_findclk(s, "i2c2.fclk"));
++    omap_i2c_set_iclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.iclk"))=
+;
++    omap_i2c_set_fclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.fclk"))=
+;
+     qdev_init_nofail(s->i2c[1]);
+     busdev =3D SYS_BUS_DEVICE(s->i2c[1]);
+     sysbus_connect_irq(busdev, 0,
+diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+index 3ba965a58f..3ccbd5cc2c 100644
+--- a/hw/i2c/omap_i2c.c
++++ b/hw/i2c/omap_i2c.c
+@@ -28,10 +28,7 @@
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+=20
+-#define TYPE_OMAP_I2C "omap_i2c"
+-#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
+-
+-typedef struct OMAPI2CState {
++struct OMAPI2CState {
+     SysBusDevice parent_obj;
+=20
+     MemoryRegion iomem;
+@@ -56,7 +53,7 @@ typedef struct OMAPI2CState {
+     uint8_t divider;
+     uint8_t times[2];
+     uint16_t test;
+-} OMAPI2CState;
++};
+=20
+ #define OMAP2_INTR_REV	0x34
+ #define OMAP2_GC_REV	0x34
+@@ -504,10 +501,18 @@ static void omap_i2c_realize(DeviceState *dev, Erro=
+r **errp)
+     }
  }
 =20
-+
-+/* Instantiate an ETRAXFS Ethernet MAC.  */
-+DeviceState *
-+etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
-+                 struct etraxfs_dma_client *dma_out,
-+                 struct etraxfs_dma_client *dma_in)
++void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk)
 +{
-+    DeviceState *dev;
-+    qemu_check_nic_model(nd, "fseth");
-+
-+    dev =3D qdev_create(NULL, "etraxfs-eth");
-+    qdev_set_nic_properties(dev, nd);
-+    qdev_prop_set_uint32(dev, "phyaddr", phyaddr);
-+    ETRAX_FS_ETH(dev)->dma_out =3D dma_out;
-+    ETRAX_FS_ETH(dev)->dma_in =3D dma_in;
-+    qdev_init_nofail(dev);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-+
-+    return dev;
++    i2c->iclk =3D clk;
 +}
 +
- static const TypeInfo etraxfs_eth_info =3D {
-     .name          =3D TYPE_ETRAX_FS_ETH,
-     .parent        =3D TYPE_SYS_BUS_DEVICE,
-diff --git a/include/hw/cris/etraxfs.h b/include/hw/cris/etraxfs.h
-index aa146a2cd8..403e7f95e6 100644
---- a/include/hw/cris/etraxfs.h
-+++ b/include/hw/cris/etraxfs.h
-@@ -30,23 +30,9 @@
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
++void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk)
++{
++    i2c->fclk =3D clk;
++}
++
+ static Property omap_i2c_properties[] =3D {
+     DEFINE_PROP_UINT8("revision", OMAPI2CState, revision, 0),
+-    DEFINE_PROP_PTR("iclk", OMAPI2CState, iclk),
+-    DEFINE_PROP_PTR("fclk", OMAPI2CState, fclk),
+     DEFINE_PROP_END_OF_LIST(),
+ };
 =20
--/* Instantiate an ETRAXFS Ethernet MAC.  */
--static inline DeviceState *
--etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
--                 void *dma_out, void *dma_in)
--{
--    DeviceState *dev;
--    qemu_check_nic_model(nd, "fseth");
--
--    dev =3D qdev_create(NULL, "etraxfs-eth");
--    qdev_set_nic_properties(dev, nd);
--    qdev_prop_set_uint32(dev, "phyaddr", phyaddr);
--    qdev_prop_set_ptr(dev, "dma_out", dma_out);
--    qdev_prop_set_ptr(dev, "dma_in", dma_in);
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
--    return dev;
--}
-+DeviceState *etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
-+                              struct etraxfs_dma_client *dma_out,
-+                              struct etraxfs_dma_client *dma_in);
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index 6b7897ba27..08ee0c7702 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -77,6 +77,15 @@ typedef struct omap_intr_handler_s omap_intr_handler;
+ void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
+ void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
 =20
- static inline DeviceState *etraxfs_ser_create(hwaddr addr,
-                                               qemu_irq irq,
++/* omap_i2c.c */
++#define TYPE_OMAP_I2C "omap_i2c"
++#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
++
++typedef struct OMAPI2CState OMAPI2CState;
++
++void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk);
++void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk);
++
+ /* OMAP2 l4 Interconnect */
+ struct omap_l4_s;
+ struct omap_l4_region_s {
 --=20
 2.23.0.606.g08da6496b6
 

@@ -1,112 +1,107 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2399453wrm;
-        Sat, 19 Oct 2019 09:51:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyAHPo/HGCJqeczTDxi/xbB7V8QO/TxJ+AJiBQUhykPuVvelRSAadd8Ic0sQEztlP6iAwMU
-X-Received: by 2002:ad4:53c1:: with SMTP id k1mr15657899qvv.223.1571503873546;
-        Sat, 19 Oct 2019 09:51:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571503873; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2717573wrm;
+        Sat, 19 Oct 2019 16:48:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz4v9xZ/04nmNeOBeNgUYWSUXsOe+MaWQdSXKamozmubTaJTjZF5jl2B+hCu8aBSes2oluv
+X-Received: by 2002:a37:b587:: with SMTP id e129mr6149257qkf.26.1571528924911;
+        Sat, 19 Oct 2019 16:48:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571528924; cv=none;
         d=google.com; s=arc-20160816;
-        b=UzgxN3nebATIKncpGhHu0SPDoj9bC+1+xnOVZ58WeR3miT6cwUfDPCVT8eQHOXVElj
-         AHbmFj+NW+yMmWEmcdZcZfNNXDV/RZREu+/P9lV7R5ULyTqUAFQvJ16WweazFjNK3rfu
-         CTNCU3VpURuL5Z8W1j8+JFfR/dE7b9YZuh0TKEdVSpD69bJVdK680lF1VD4yeO8uvrdz
-         9WjB9QH4VNqfJf+zAIlgSmDkUq22gbe0XgDV14k/i9q8RugzOgSaJFZUGwZ8m47u1TMV
-         +7YZBzEMcWFySHJSgwZoQK+zij06b8V6ZJ8FARRW3u0M3y1tZ8IfOXf2w27ZoIfBkieb
-         T9SQ==
+        b=MhD01kpWlii3EFJKnFj9f2ZFU9EEmVNybNU8DFk6cJwRwEp0Jm/DehxjPvQYHdxbxJ
+         Kbb9v90Qz1feTW9AS0cSLr3p9iXgkhNg2q1TX//uPzCJx3TEknZNQAylCQlYYwG4rUrq
+         ynf8Tyf3lZLpQShvTsRDXEvoE8dutVhTLtNTRLf+QmNQKtOjSVLnJsmlxwKju/dEEr/W
+         bkabNkMZXn3B+zxZSZdeRMYEN7PJV+r7w5IdTAuIWBv06Ge7xX8EFh11hKVT83OCWpK9
+         sgE4CTdC9BjU4XNrEkBKJ4HgQpOCFoOtIQkNJ3L+gna+sAaAEczAQsaEr82qbUWCwVii
+         wwXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=FxDFqE3eG+O7GtEVvkolZdOkFCN/7fVr/VO3XBoBZn8=;
-        b=BwgGyMJpa2ZtgLN2cGKvRZZW3FelV1LGDbPNsbrmMk7wCdjFxy2861WJ7HhkH7qubp
-         Pb5B4I04cpUAYkx3qSGKe9qqG7vCjzb3ZT1Qj7iskS+guPoHFJqXXlaGT3G5L7Av7PL7
-         oFQzNrJppE6p8Py6crktNlWVv6oR1XI2ykXQOf2XZFr1iT7EYro15a0AG63mtaZ5ORHt
-         xtbpTPNSgPI1st664MQN5Vw5oEZ4WIY+ZCbejhOoXT/Z9gf+uj7yqXKug6WAHNV5cUCZ
-         dtr1pb3YyKo/6n6Dac7CeW7G1DU498uELFLU8GX8J+2BH4f6WjEYN7t0Di5anIPcPzHd
-         fCtg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=nOKNgWomZ9lXuw/D4odL98GxIJfJYjVtBJTZV5RcceI=;
+        b=jKzBmH1OTnWID4Pqxbyk/GvQphzK3PUuBmGh3xzO9dAvbUBqXNbc/XhA4SvRWM6p+u
+         Y0ALm1gDNwTotJIaAvSqK5JjmmdoIUWB3+bWqHAZB79yZ1TaDNsVFmeVc3NQEtibsdiv
+         uVeEflvvekiVp1mtgVTB6qXOHfGZFeFjhdDUZ3ihiFKW26Ly8PXFmfEPKiPYkRpnkqrb
+         FJle8IH2iqedRDy/3EMmXA+IJFXkkWrNM66JEp8yanaL3RMue52c2U2XBqeAlhW8vvkF
+         ZAy7tGVzzgyFElfir0MG9CtVSs64Tuj6+fqVjemwzJOp66iZCShBAnj8Rdh0GnKtkexZ
+         unEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YyirwtuB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VNkiDQlK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u13si3357493qtc.204.2019.10.19.09.51.13
+        by mx.google.com with ESMTPS id o36si11441922qvc.157.2019.10.19.16.48.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 19 Oct 2019 09:51:13 -0700 (PDT)
+        Sat, 19 Oct 2019 16:48:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YyirwtuB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59334 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VNkiDQlK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLrwe-0000Hb-Su
-	for alex.bennee@linaro.org; Sat, 19 Oct 2019 12:51:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53969)
+	id 1iLySf-0001Qo-TD
+	for alex.bennee@linaro.org; Sat, 19 Oct 2019 19:48:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34466)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iLrwW-0000Gy-If
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 12:51:05 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iLyRS-0008Uw-Aq
+ for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iLrwV-0003d0-Cp
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 12:51:04 -0400
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d]:36141)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iLyRQ-0005VR-Nq
+ for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:26 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:41605)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iLrwU-0003cQ-VG
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 12:51:03 -0400
-Received: by mail-pf1-x42d.google.com with SMTP id y22so5742562pfr.3
- for <qemu-arm@nongnu.org>; Sat, 19 Oct 2019 09:51:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=FxDFqE3eG+O7GtEVvkolZdOkFCN/7fVr/VO3XBoBZn8=;
- b=YyirwtuBPyg1e/y/hKcNhqPBF8c9c+joPHINpZFv0kmE1fV8HxCONY5EZBlMo14UPv
- G/oxcawuON8meLk7MsLJUu9JWj06N+tB8Dk+aQHdtjhQIzCjkP6FOsvVKqE5aRgkEHjg
- 7xOuj7wjmobVjrb2jtDbuMO5jg+ThiZB68pS29NOQbX80sqDCiqketw2CqC2TXAQHLST
- dlkxpEIFTydA+eJF98At0yttTh3PD2rlyg3+N2as9NB66kjYgjz13FH/yEFch9nFFd2U
- 9WrDmwJ6UFrxpwZJexH9E0j+iKFwXVAtSurlKfgInnSInYa3J0nd7L501JcOf+nBDmOS
- Rydw==
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iLyRN-0005TC-B8; Sat, 19 Oct 2019 19:47:21 -0400
+Received: by mail-wr1-x442.google.com with SMTP id p4so9863026wrm.8;
+ Sat, 19 Oct 2019 16:47:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=nOKNgWomZ9lXuw/D4odL98GxIJfJYjVtBJTZV5RcceI=;
+ b=VNkiDQlKDwkYqAIQOJN1QERDdWHXI9l2RRngztlUPvL+ZknRouJ6JBWN7eO/wTYdRH
+ gtUjVJ3ln+StsqnrTIPv1rvxkNGmyc6SaqWE91Y2Vi96cklbjlU0ndSu2mBWJ5kP8LTn
+ hrJCfnYpEozuDt6CPVatfgBmLOSJGofLREqMsDl0Qilz50on0VL6uwgvuOJTT6V4yUa/
+ xhdqVP9HKYRl/NEpVH4jXzZ+o7D6hWkHQw+T2NsHuS42oAfEUI+ctlubJtg2C0S0D5I4
+ FDuUg95EsTkL6GRLlCcR130y8vC8tIEh9hTRydZweUkZ3WSERnJgu8W4CwgZ623/JI+D
+ JX1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=FxDFqE3eG+O7GtEVvkolZdOkFCN/7fVr/VO3XBoBZn8=;
- b=TFPMwRne8rseaC8M99hICeFGQDkLEs6x00udn51jYLttse5Ci1ydHpR3Fi460kW1bx
- 6MhhB30CsYbvbkQuyUzF2gC5xXQhHEl4cZYWuOfm6E7bIeppMF6QURHkbs7OcA8ZZxks
- Zev38te+2PKOJYVP1AWq8d58F3Zv34hNn2ckwARwpLE3lFlnwWqo62hgvsS1tbMFT/vy
- aGLBMVayX28a5LFV4q0vOBUO2L6e6t5zvseGpC14x3SAW76oqtgZSHMl/6jhvZlvcfzk
- rOi8FAB+bU9RY5IiaROGOBVJLrZ27JeK/0eDJ+uK1OYYEnzk5FbameJfl4cvgxhMyKrn
- +NtA==
-X-Gm-Message-State: APjAAAVu4EFfaMTa8fs8QgdE6wAsAaf8nbbGdI2AbzdeLlCjneljRLCM
- xn+dDV0LMwDqCKo0BHIWmpksOQ==
-X-Received: by 2002:a63:ef57:: with SMTP id c23mr16181401pgk.436.1571503861406; 
- Sat, 19 Oct 2019 09:51:01 -0700 (PDT)
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id f128sm10494778pfg.143.2019.10.19.09.50.59
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 19 Oct 2019 09:51:00 -0700 (PDT)
-Subject: Re: [PATCH v2 06/10] hw/arm/bcm2836: Create VideoCore address space
- in the SoC
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20191017225800.6946-1-f4bug@amsat.org>
- <20191017225800.6946-7-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <09a2fc8b-9ea2-84a2-bb88-39cf72334c4e@linaro.org>
-Date: Sat, 19 Oct 2019 09:50:57 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=nOKNgWomZ9lXuw/D4odL98GxIJfJYjVtBJTZV5RcceI=;
+ b=TN3t5KDtP7nSAXuNwhxYDFktkL6Lq6evBa+Wr0Qq7TbIw1BXS5xLEuG0dH0+MBUyrj
+ JCX51s9Bd9YusbpB4g0VPOcdYBg7urtHnS8QeIZctk9gurkhbqEKJ2G3A4iV4igg82Kw
+ ZRJTgPYRUeCTwTPnL9dery7lf+v1nVgHl/Rd21IHgHuj0bPeGV7vM35s/TYcegvoH5nU
+ fSeqa5fOt9nl3nsCuUGrqhE/3i8FaCKZvWdZvceakSflacdo3Sryem9hxiP2T3s1v9+4
+ dnjSrstZ/pjA3kMVaTgjDZKqNeqr3Z8dp0vqpW3WUy6wunjgIcHllYDFwq7V5ex8asuw
+ y5RA==
+X-Gm-Message-State: APjAAAVAKvRXaKA5nj8q7UrDorE+cjwXa4WVwWAU35+ud4tyFt+fvxgj
+ hgZ1K1mWqGqlOIgd+VIXjQosniFL
+X-Received: by 2002:adf:a4ce:: with SMTP id h14mr1411068wrb.263.1571528840035; 
+ Sat, 19 Oct 2019 16:47:20 -0700 (PDT)
+Received: from x1w.redhat.com (14.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.14])
+ by smtp.gmail.com with ESMTPSA id u1sm10433763wrp.56.2019.10.19.16.47.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 19 Oct 2019 16:47:19 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 01/16] hw/misc/bcm2835_thermal: Add a dummy BCM2835 thermal
+ sensor
+Date: Sun, 20 Oct 2019 01:47:00 +0200
+Message-Id: <20191019234715.25750-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20191019234715.25750-1-f4bug@amsat.org>
+References: <20191019234715.25750-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20191017225800.6946-7-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::42d
+X-Received-From: 2a00:1450:4864:20::442
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,27 +113,236 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Matthias Brugger <mbrugger@suse.com>, Rob Herring <robh@kernel.org>,
  Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
- Pete Batard <pete@akeo.ie>, Cleber Rosa <crosa@redhat.com>,
- Laurent Bonnans <laurent.bonnans@here.com>,
+ Esteban Bosse <estebanbosse@gmail.com>, "Emilio G . Cota" <cota@braap.org>,
+ Clement Deschamps <clement.deschamps@antfield.fr>, qemu-arm@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Laurent Bonnans <laurent.bonnans@here.com>,
  Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Pekka Enberg <penberg@iki.fi>, Pete Batard <pete@akeo.ie>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m8AL8VRLoxxB
+X-TUID: 0R1ztiecBgAK
 
-On 10/17/19 3:57 PM, Philippe Mathieu-Daudé wrote:
-> +        static const char *alias_name[] = {
-> +            NULL, "cached-coherent", "cached", "uncached"
-> +        };
+We will soon implement the SYS_timer. This timer is used by Linux
+in the thermal subsystem, so once available, the subsystem will be
+enabled and poll the temperature sensors. We need to provide the
+minimum required to keep Linux booting.
 
-While respinning,
+Add a dummy thermal sensor returning ~25°C based on:
+https://github.com/raspberrypi/linux/blob/rpi-5.3.y/drivers/thermal/broadcom/bcm2835_thermal.c
 
-  static const char * const alias_name[]
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+v2:
+- Explicit g_assert_not_reached() with comment (Alex)
+- Add vmstate and reset handler (Peter)
 
-r~
+checkpatch warning:
+WARNING: added, moved or deleted file(s), does MAINTAINERS need updating?
+This is OK because the regex are:
+
+  F: hw/*/bcm283*
+  F: include/hw/*/bcm283*
+---
+ hw/misc/Makefile.objs             |   1 +
+ hw/misc/bcm2835_thermal.c         | 135 ++++++++++++++++++++++++++++++
+ include/hw/misc/bcm2835_thermal.h |  27 ++++++
+ 3 files changed, 163 insertions(+)
+ create mode 100644 hw/misc/bcm2835_thermal.c
+ create mode 100644 include/hw/misc/bcm2835_thermal.h
+
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index a150680966..c89f3816a5 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -53,6 +53,7 @@ common-obj-$(CONFIG_OMAP) += omap_tap.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_mbox.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_property.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_rng.o
++common-obj-$(CONFIG_RASPI) += bcm2835_thermal.o
+ common-obj-$(CONFIG_SLAVIO) += slavio_misc.o
+ common-obj-$(CONFIG_ZYNQ) += zynq_slcr.o
+ common-obj-$(CONFIG_ZYNQ) += zynq-xadc.o
+diff --git a/hw/misc/bcm2835_thermal.c b/hw/misc/bcm2835_thermal.c
+new file mode 100644
+index 0000000000..c6f3b1ad60
+--- /dev/null
++++ b/hw/misc/bcm2835_thermal.c
+@@ -0,0 +1,135 @@
++/*
++ * BCM2835 dummy thermal sensor
++ *
++ * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "hw/misc/bcm2835_thermal.h"
++#include "hw/registerfields.h"
++#include "migration/vmstate.h"
++
++REG32(CTL, 0)
++FIELD(CTL, POWER_DOWN, 0, 1)
++FIELD(CTL, RESET, 1, 1)
++FIELD(CTL, BANDGAP_CTRL, 2, 3)
++FIELD(CTL, INTERRUPT_ENABLE, 5, 1)
++FIELD(CTL, DIRECT, 6, 1)
++FIELD(CTL, INTERRUPT_CLEAR, 7, 1)
++FIELD(CTL, HOLD, 8, 10)
++FIELD(CTL, RESET_DELAY, 18, 8)
++FIELD(CTL, REGULATOR_ENABLE, 26, 1)
++
++REG32(STAT, 4)
++FIELD(STAT, DATA, 0, 10)
++FIELD(STAT, VALID, 10, 1)
++FIELD(STAT, INTERRUPT, 11, 1)
++
++#define THERMAL_OFFSET_C 412
++#define THERMAL_COEFF  (-0.538f)
++
++static uint16_t bcm2835_thermal_temp2adc(int temp_C)
++{
++    return (temp_C - THERMAL_OFFSET_C) / THERMAL_COEFF;
++}
++
++static uint64_t bcm2835_thermal_read(void *opaque, hwaddr addr, unsigned size)
++{
++    Bcm2835ThermalState *s = BCM2835_THERMAL(opaque);
++    uint32_t val = 0;
++
++    switch (addr) {
++    case A_CTL:
++        val = s->ctl;
++        break;
++    case A_STAT:
++        /* Temperature is constantly 25°C. */
++        val = FIELD_DP32(bcm2835_thermal_temp2adc(25), STAT, VALID, true);
++        break;
++    default:
++        /* MemoryRegionOps are aligned, so this can not happen. */
++        g_assert_not_reached();
++    }
++    return val;
++}
++
++static void bcm2835_thermal_write(void *opaque, hwaddr addr,
++                                  uint64_t value, unsigned size)
++{
++    Bcm2835ThermalState *s = BCM2835_THERMAL(opaque);
++
++    switch (addr) {
++    case A_CTL:
++        s->ctl = value;
++        break;
++    case A_STAT:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: write 0x%" PRIx64
++                                       " to 0x%" HWADDR_PRIx "\n",
++                       __func__, value, addr);
++        break;
++    default:
++        /* MemoryRegionOps are aligned, so this can not happen. */
++        g_assert_not_reached();
++    }
++}
++
++static const MemoryRegionOps bcm2835_thermal_ops = {
++    .read = bcm2835_thermal_read,
++    .write = bcm2835_thermal_write,
++    .impl.max_access_size = 4,
++    .valid.min_access_size = 4,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static void bcm2835_thermal_reset(DeviceState *dev)
++{
++    Bcm2835ThermalState *s = BCM2835_THERMAL(dev);
++
++    s->ctl = 0;
++}
++
++static void bcm2835_thermal_realize(DeviceState *dev, Error **errp)
++{
++    Bcm2835ThermalState *s = BCM2835_THERMAL(dev);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &bcm2835_thermal_ops,
++                          s, TYPE_BCM2835_THERMAL, 8);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++}
++
++static const VMStateDescription bcm2835_thermal_vmstate = {
++    .name = "bcm2835_thermal",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(ctl, Bcm2835ThermalState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_thermal_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = bcm2835_thermal_realize;
++    dc->reset = bcm2835_thermal_reset;
++    dc->vmsd = &bcm2835_thermal_vmstate;
++}
++
++static const TypeInfo bcm2835_thermal_info = {
++    .name = TYPE_BCM2835_THERMAL,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(Bcm2835ThermalState),
++    .class_init = bcm2835_thermal_class_init,
++};
++
++static void bcm2835_thermal_register_types(void)
++{
++    type_register_static(&bcm2835_thermal_info);
++}
++
++type_init(bcm2835_thermal_register_types)
+diff --git a/include/hw/misc/bcm2835_thermal.h b/include/hw/misc/bcm2835_thermal.h
+new file mode 100644
+index 0000000000..c3651b27ec
+--- /dev/null
++++ b/include/hw/misc/bcm2835_thermal.h
+@@ -0,0 +1,27 @@
++/*
++ * BCM2835 dummy thermal sensor
++ *
++ * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_MISC_BCM2835_THERMAL_H
++#define HW_MISC_BCM2835_THERMAL_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_BCM2835_THERMAL "bcm2835-thermal"
++
++#define BCM2835_THERMAL(obj) \
++    OBJECT_CHECK(Bcm2835ThermalState, (obj), TYPE_BCM2835_THERMAL)
++
++typedef struct {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
++    MemoryRegion iomem;
++    uint32_t ctl;
++} Bcm2835ThermalState;
++
++#endif
+-- 
+2.21.0
+

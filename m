@@ -1,96 +1,97 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2717727wrm;
-        Sat, 19 Oct 2019 16:48:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyWtHgBM4TdB6bw6uPFs9ivaqObXghhiVTXv0xOEKqhNRI7HKSPPKHJ6HETPt2e/kDIup03
-X-Received: by 2002:a05:620a:63a:: with SMTP id 26mr14894887qkv.429.1571528938797;
-        Sat, 19 Oct 2019 16:48:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571528938; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2718691wrm;
+        Sat, 19 Oct 2019 16:50:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwb1fEBqwCD2buHevEmnhONleT09HBvV/0lb0PGn4ZG1gHoIT3FyhKFOWr1YgkTvFZGvZ3x
+X-Received: by 2002:ac8:1670:: with SMTP id x45mr18146075qtk.258.1571529036111;
+        Sat, 19 Oct 2019 16:50:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571529036; cv=none;
         d=google.com; s=arc-20160816;
-        b=rxQgM2emXJPkatGnjXkm2WqWuuBPlYFCm2B6/Gk0OD1huZA/IJWGkW5AN5JvzDN4j8
-         pf/q9e5FknC5XE9LhdRrnTs5r02BdvmYcpBeWVAVpMFHKFOvCqwBrg7mlOey8E3Yg90J
-         X+zhdFJZ0NsXaSdHjcubOF5zFM43ZF2oYkQz+xyhZV3e0yhRfwLfZy05GwBjDtVO0jZ4
-         P6lMWicQG6DtpnkcdUbM0o0bIIaj7/3PhzfuU6ZBQU9tAavsLtsZvZdXWtdOufZKztXA
-         yoAjxfmD9IdwVFlv09RIoazJf4UVAUd47RzdZEhP7C3ix5T7yn0d7kTphKnQALrbBR8D
-         pFHg==
+        b=m72OKNLsLHbC3kSEX4QMAqWSfAxA0nTTTb5NrYXw7wNvNj2qqm3i4sV5DqPGGHQt7X
+         zQIM3pg6+cdqPq48MUQBA3zjVboumc24NC5tPk/kKu5axm+NyzvMrTlXl+d1aKfruaag
+         lh5Y2KymlEPZcS3WuyCfTErYKLQZdfUttyG7VLVzPpbpyxA0NIEobs+oTmMtXvsCWL++
+         kqqy/9BTwRco6hcK6nVAQb87nN+QqqzIQmhYc2toWyYx6XHOHqj52GiEVMQ0+5cSRnf7
+         xy2puvKOpFrmgjZoOa62a4jcIQgQynJZ5OhkiWmii/rwcM95WcTy0ps8mt6uz+TZt8s+
+         dW4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=iEJkJA7iDsU1hNDUpdiwUKdaD5rbV1BDDy6YF2uxyVE=;
-        b=GaPJDO+J9zQB0VEPdF0cEyF25yyI6inS+cnwzF3uo+Vrd7BD/G/fW9o3gFFSbwqvbA
-         GzpFSs18OoX03zNSko2rXQXY8Ee5D3demiDLVaK7ymKIkx+S5v8YlRvYXwY6yBz33qOT
-         7xZTgIiInjR86zX3gPH6LHxXPU7YoE6itHEpBJi7QTRSMIxjj/+lAq1+nHqz/WuImHqJ
-         VaRyRuPHbwhCQXjxtOYuPhWlLvvYUix2q6b02wpgi6eZqquuo4lJewrKejo140tVCUhq
-         OjbLk2LufnR8adL/RmxZJ47L2ZVZgFY6DvzHFniintZO6jh6AK/0NZQLOET0DoAXKfxc
-         KB3w==
+        bh=wn44savEe+flJq53w0kELlQpNWIaC5iY2joSfr7hWdU=;
+        b=VTLnDRWNnS60nfENuzBnDIwYILSJpzAgXzzfGzLLitstemUiRnfE0AuljZALwF7vB2
+         uJnoayqyC3OK+PcSdFG8g1dBOR6ArP/4hTDEPL2jCVB1yotZlK0sdFZ52gPmrJXgzcaT
+         QFJUiHJ1VO3a+FtoYtD5HW+pz0KgL5J6Mzl4LQ/v3l7zIZSYzfuklVG1g0f8KPhJtIrH
+         qmdyC/3R0FfT6GEoNUpmtKUG/opnLJJMxucbiEH8zkFr+8OtiafEe8MMEwNoiuL4S3k4
+         uWIut52KnhFhx4P61rtY7a7SM56SjayzWqIWgLFw1szjz2NRprKUlCyOIBGMjAYmi22C
+         8Qow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Und+4WiD;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vq0ehNod;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m4si10131616qtn.25.2019.10.19.16.48.58
+        by mx.google.com with ESMTPS id t139si10048475qke.16.2019.10.19.16.50.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 19 Oct 2019 16:48:58 -0700 (PDT)
+        Sat, 19 Oct 2019 16:50:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Und+4WiD;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vq0ehNod;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42118 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42140 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLySv-0001lK-Ej
-	for alex.bennee@linaro.org; Sat, 19 Oct 2019 19:48:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34531)
+	id 1iLyUV-00041D-1z
+	for alex.bennee@linaro.org; Sat, 19 Oct 2019 19:50:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34478)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRX-0000Bi-5H
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:32 -0400
+ id 1iLyRT-0008WL-6h
+ for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRV-0005YE-5k
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:31 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52194)
+ id 1iLyRS-0005WA-0L
+ for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:27 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43269)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRR-0005Vc-H8; Sat, 19 Oct 2019 19:47:25 -0400
-Received: by mail-wm1-x341.google.com with SMTP id q70so2381037wme.1;
- Sat, 19 Oct 2019 16:47:25 -0700 (PDT)
+ id 1iLyRP-0005UP-A5; Sat, 19 Oct 2019 19:47:23 -0400
+Received: by mail-wr1-x442.google.com with SMTP id c2so4631759wrr.10;
+ Sat, 19 Oct 2019 16:47:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=iEJkJA7iDsU1hNDUpdiwUKdaD5rbV1BDDy6YF2uxyVE=;
- b=Und+4WiDj0qzAL0YXYLPOkTDGyS1MAiN0OUfOTzZ6YDghmwckk4bI7niqSLQJYSD/J
- pNwDy1mYqVlktUeg/LmYO426+mvUHe155YRFf25FzSgRXaxs76qQQj1gnH04mdlfGQgI
- Q3INgdZEmcW0k41IzJGp1+HJ8ZqyMGI5Xi0ZGtrJviSslIqYgZ8rdVRxizDX/8EuXGBZ
- ddMC+MJyKIvqrGKV/DFsEFagRQ5NKfDUdPTdynvHs8n/5HWSSQEiKVNd1Km4VyehxSCh
- 98F73l+xnDQHYoGMWn7Z0518c9tkIVw9elPIRnDcEx8wmgIVkj1H3ebYHe6TiHhcq6+2
- z4xw==
+ bh=wn44savEe+flJq53w0kELlQpNWIaC5iY2joSfr7hWdU=;
+ b=Vq0ehNodVoXsgEM/spizDirdXvdkrXdrYCzSjFnr4uOcFaeoi4UsQklaiYWw/kUKgl
+ oaHBg6WmbbN80oKW/i2a/K6vZbRQ5C6PQ5sgiHeJwdwyY8JyrBorcLqrTw0Cj1dnhnGS
+ 0s7sQVPsLxdjUWHJkNWe3W56ENSPFYi9VwhGWstWAeYxQuk7GEyonHBCWyZ/24okr/z0
+ sTUKDzk7QJzh6/jBthvTiz3YoIiqppS3bAAIb/migbxvEYGpKYG/LSLMMs8r513KiWwN
+ zMYcZfoqn5Prt3PhSIrreim/UcdnQmA1PtMT3Q8tuC+u+4Lr4esNa9QgiR56wwzBHvzl
+ /CRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=iEJkJA7iDsU1hNDUpdiwUKdaD5rbV1BDDy6YF2uxyVE=;
- b=rPUb1M5oQePI0AuDJxu46bSa+faBTanmNI0vcXqvrMwaMz/xSpFOTOdnGtEU3qrU41
- +D5ESsRm4937ftUR3h+Ddi/h50GIBmUGnk/+8asW2Zas7Irwq17M7x5uY+Egf++Fxozf
- WsslKY86qr0NUDD48PKuNji9ui4MH7pWCMqRX4GjmnbQV99SaGX7e70EyzTt7L4EdZ5J
- gQYQ5qEdcUVOIfPALLN9F97qPh89ADfDjRI833GYNmiEU3zwDkdcNj26MeCN4v3BBSXP
- wm4rPQ6iAqpW6VHf1OK4Kcb2VeHPtRCqP8XSvNnt/4rNDnvqsilshCK9tq0wI0L8hzb3
- ycyw==
-X-Gm-Message-State: APjAAAWWwMKz/D8YRGi//awQScalmFprhYS2T2Fv6UsGP00EmR+zdAwQ
- qAlGEDIIaSo4TqCHD8JjIxLwlboi
-X-Received: by 2002:a1c:6a07:: with SMTP id f7mr187167wmc.124.1571528844070;
- Sat, 19 Oct 2019 16:47:24 -0700 (PDT)
+ bh=wn44savEe+flJq53w0kELlQpNWIaC5iY2joSfr7hWdU=;
+ b=rnrkdn3hXdZ5oxq47iWpyHLOpci4FsE9A9tH707QoqmpvOwlv63GNf3GH9s5cB9LBk
+ XwtWAhL1yGqnv8f+UflWVa6pwx71nC2ju80bP4Gah+jhFNsh9mb1UB7cciJVE+4a4lLd
+ +0rkJrR56NAE2ioQjWOGiK/7jXafgueArNNByVLzQyYUuKtCSGp3gRhhRb1+RBzPIcLS
+ pfE6j7e6seqiicTVGLWKS6ebgpUXejRVuIzIJ7tZGPmqyJXodYlRagG7P3kwY7SQarlK
+ 2Rnk6BGfoCwmB//pHd0xKGvcJ6spTy5WQvI6W0bzZpAlHHDhdL9jDG8SD6nd2iqrgaPI
+ K9bg==
+X-Gm-Message-State: APjAAAVS/sN6/khPK3NOgQtfhqN2Lu4yZiUCJFBdGaCjCUswkf3p5BGH
+ ZYTn4Ga7MO9ZyQ2e4YmukzTe46Gm
+X-Received: by 2002:adf:e488:: with SMTP id i8mr13368169wrm.302.1571528842174; 
+ Sat, 19 Oct 2019 16:47:22 -0700 (PDT)
 Received: from x1w.redhat.com (14.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.14])
- by smtp.gmail.com with ESMTPSA id u1sm10433763wrp.56.2019.10.19.16.47.22
+ by smtp.gmail.com with ESMTPSA id u1sm10433763wrp.56.2019.10.19.16.47.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Oct 2019 16:47:23 -0700 (PDT)
+ Sat, 19 Oct 2019 16:47:21 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 03/16] hw/timer/bcm2835: Add the BCM2835 SYS_timer
-Date: Sun, 20 Oct 2019 01:47:02 +0200
-Message-Id: <20191019234715.25750-4-f4bug@amsat.org>
+Subject: [PATCH v3 02/16] hw/arm/bcm2835_peripherals: Use the thermal sensor
+ block
+Date: Sun, 20 Oct 2019 01:47:01 +0200
+Message-Id: <20191019234715.25750-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191019234715.25750-1-f4bug@amsat.org>
 References: <20191019234715.25750-1-f4bug@amsat.org>
@@ -100,7 +101,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
+X-Received-From: 2a00:1450:4864:20::442
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,6 +114,7 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
  Matthias Brugger <mbrugger@suse.com>, Rob Herring <robh@kernel.org>,
  Alistair Francis <alistair@alistair23.me>,
  Richard Henderson <richard.henderson@linaro.org>,
@@ -126,271 +128,81 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pekka Enberg <penberg@iki.fi>, Pete Batard <pete@akeo.ie>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hbafRF5pK/8h
+X-TUID: CgGMKKwL1sgS
 
-Add the 64-bit free running timer. Do not model the COMPARE register
-(no IRQ generated).
-This timer is used by Linux kernel and recently U-Boot:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clocksource/bcm2835_timer.c?h=v3.7
-https://github.com/u-boot/u-boot/blob/v2019.07/include/configs/rpi.h#L19
+Map the thermal sensor in the BCM2835 block.
 
-Datasheet used:
-https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
-
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v2:
-- Add status/compare* registers
-- Add vmstate and reset handler
+ hw/arm/bcm2835_peripherals.c         | 13 +++++++++++++
+ include/hw/arm/bcm2835_peripherals.h |  2 ++
+ include/hw/arm/raspi_platform.h      |  1 +
+ 3 files changed, 16 insertions(+)
 
-checkpatch warning:
-WARNING: added, moved or deleted file(s), does MAINTAINERS need updating?
-This is OK because the regex are:
-
-  F: hw/*/bcm283*
-  F: include/hw/*/bcm283*
----
- hw/timer/Makefile.objs            |   1 +
- hw/timer/bcm2835_systmr.c         | 166 ++++++++++++++++++++++++++++++
- hw/timer/trace-events             |   5 +
- include/hw/timer/bcm2835_systmr.h |  33 ++++++
- 4 files changed, 205 insertions(+)
- create mode 100644 hw/timer/bcm2835_systmr.c
- create mode 100644 include/hw/timer/bcm2835_systmr.h
-
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 123d92c969..696cda5905 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -47,3 +47,4 @@ common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
- common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
- common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) += cmsdk-apb-dualtimer.o
- common-obj-$(CONFIG_MSF2) += mss-timer.o
-+common-obj-$(CONFIG_RASPI) += bcm2835_systmr.o
-diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
-new file mode 100644
-index 0000000000..49b40b55f9
---- /dev/null
-+++ b/hw/timer/bcm2835_systmr.c
-@@ -0,0 +1,166 @@
-+/*
-+ * BCM2835 SYS timer emulation
-+ *
-+ * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Datasheet: BCM2835 ARM Peripherals (C6357-M-1398)
-+ * https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
-+ *
-+ * Only the free running 64-bit counter is implemented.
-+ * The 4 COMPARE registers and the interruption are not implemented.
-+ */
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index fdcf616c56..70bf927a02 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -111,6 +111,10 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_const_link(OBJECT(&s->dma), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr), &error_abort);
+ 
++    /* Thermal */
++    sysbus_init_child_obj(obj, "thermal", &s->thermal, sizeof(s->thermal),
++                          TYPE_BCM2835_THERMAL);
 +
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/timer.h"
-+#include "hw/timer/bcm2835_systmr.h"
-+#include "hw/registerfields.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
-+
-+REG32(CTRL_STATUS,  0x00)
-+REG32(COUNTER_LOW,  0x04)
-+REG32(COUNTER_HIGH, 0x08)
-+REG32(COMPARE0,     0x0c)
-+REG32(COMPARE1,     0x10)
-+REG32(COMPARE2,     0x14)
-+REG32(COMPARE3,     0x18)
-+
-+static void bcm2835_systmr_update_irq(BCM2835SystemTimerState *s)
-+{
-+    bool enable = !!s->reg.status;
-+
-+    trace_bcm2835_systmr_irq(enable);
-+    qemu_set_irq(s->irq, enable);
-+}
-+
-+static void bcm2835_systmr_update_compare(BCM2835SystemTimerState *s,
-+                                          unsigned timer_index)
-+{
-+    /* TODO fow now, since neither Linux nor U-boot use these timers. */
-+    qemu_log_mask(LOG_UNIMP, "COMPARE register %u not implemented\n",
-+                  timer_index);
-+}
-+
-+static uint64_t bcm2835_systmr_read(void *opaque, hwaddr offset,
-+                                    unsigned size)
-+{
-+    BCM2835SystemTimerState *s = BCM2835_SYSTIMER(opaque);
-+    uint64_t r = 0;
-+
-+    switch (offset) {
-+    case A_CTRL_STATUS:
-+        r = s->reg.status;
-+        break;
-+    case A_COMPARE0 ... A_COMPARE3:
-+        r = s->reg.compare[(offset - A_COMPARE0) >> 2];
-+        break;
-+    case A_COUNTER_LOW:
-+    case A_COUNTER_HIGH:
-+        /* Free running counter at 1MHz */
-+        r = qemu_clock_get_us(QEMU_CLOCK_VIRTUAL);
-+        r >>= 8 * (offset - A_COUNTER_LOW);
-+        r &= UINT32_MAX;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        break;
+     /* GPIO */
+     sysbus_init_child_obj(obj, "gpio", &s->gpio, sizeof(s->gpio),
+                           TYPE_BCM2835_GPIO);
+@@ -321,6 +325,15 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+                                                   INTERRUPT_DMA0 + n));
+     }
+ 
++    /* THERMAL */
++    object_property_set_bool(OBJECT(&s->thermal), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
 +    }
-+    trace_bcm2835_systmr_read(offset, r);
++    memory_region_add_subregion(&s->peri_mr, THERMAL_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0));
 +
-+    return r;
-+}
-+
-+static void bcm2835_systmr_write(void *opaque, hwaddr offset,
-+                                 uint64_t value, unsigned size)
-+{
-+    BCM2835SystemTimerState *s = BCM2835_SYSTIMER(opaque);
-+
-+    trace_bcm2835_systmr_write(offset, value);
-+    switch (offset) {
-+    case A_CTRL_STATUS:
-+        s->reg.status &= ~value; /* Ack */
-+        bcm2835_systmr_update_irq(s);
-+        break;
-+    case A_COMPARE0 ... A_COMPARE3:
-+        s->reg.compare[(offset - A_COMPARE0) >> 2] = value;
-+        bcm2835_systmr_update_compare(s, (offset - A_COMPARE0) >> 2);
-+        break;
-+    case A_COUNTER_LOW:
-+    case A_COUNTER_HIGH:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: read-only ofs 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps bcm2835_systmr_ops = {
-+    .read = bcm2835_systmr_read,
-+    .write = bcm2835_systmr_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void bcm2835_systmr_reset(DeviceState *dev)
-+{
-+    BCM2835SystemTimerState *s = BCM2835_SYSTIMER(dev);
-+
-+    s->reg.status = 0;
-+    for (size_t i = 0; i < ARRAY_SIZE(s->reg.compare); i++) {
-+        s->reg.compare[i] = 0;
-+    }
-+}
-+
-+static void bcm2835_systmr_realize(DeviceState *dev, Error **errp)
-+{
-+    BCM2835SystemTimerState *s = BCM2835_SYSTIMER(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(dev), &bcm2835_systmr_ops,
-+                          s, "bcm2835-sys-timer", 0x20);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
-+    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
-+}
-+
-+static const VMStateDescription bcm2835_systmr_vmstate = {
-+    .name = "bcm2835_sys_timer",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(reg.status, BCM2835SystemTimerState),
-+        VMSTATE_UINT32_ARRAY(reg.compare, BCM2835SystemTimerState, 4),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void bcm2835_systmr_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = bcm2835_systmr_realize;
-+    dc->reset = bcm2835_systmr_reset;
-+    dc->vmsd = &bcm2835_systmr_vmstate;
-+}
-+
-+static const TypeInfo bcm2835_systmr_info = {
-+    .name = TYPE_BCM2835_SYSTIMER,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2835SystemTimerState),
-+    .class_init = bcm2835_systmr_class_init,
-+};
-+
-+static void bcm2835_systmr_register_types(void)
-+{
-+    type_register_static(&bcm2835_systmr_info);
-+}
-+
-+type_init(bcm2835_systmr_register_types);
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index db02a9142c..0aa399ac69 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -87,3 +87,8 @@ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
- pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
- pl031_alarm_raised(void) "alarm raised"
- pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
-+
-+# bcm2835_systmr.c
-+bcm2835_systmr_irq(bool enable) "timer irq state %u"
-+bcm2835_systmr_read(uint64_t offset, uint64_t data) "timer read: offset 0x%" PRIx64 " data 0x%" PRIx64
-+bcm2835_systmr_write(uint64_t offset, uint64_t data) "timer write: offset 0x%" PRIx64 " data 0x%" PRIx64
-diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
-new file mode 100644
-index 0000000000..c0bc5c8127
---- /dev/null
-+++ b/include/hw/timer/bcm2835_systmr.h
-@@ -0,0 +1,33 @@
-+/*
-+ * BCM2835 SYS timer emulation
-+ *
-+ * Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef BCM2835_SYSTIMER_H
-+#define BCM2835_SYSTIMER_H
-+
-+#include "hw/sysbus.h"
-+#include "hw/irq.h"
-+
-+#define TYPE_BCM2835_SYSTIMER "bcm2835-sys-timer"
-+#define BCM2835_SYSTIMER(obj) \
-+    OBJECT_CHECK(BCM2835SystemTimerState, (obj), TYPE_BCM2835_SYSTIMER)
-+
-+typedef struct {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    struct {
-+        uint32_t status;
-+        uint32_t compare[4];
-+    } reg;
-+} BCM2835SystemTimerState;
-+
-+#endif
+     /* GPIO */
+     object_property_set_bool(OBJECT(&s->gpio), true, "realized", &err);
+     if (err) {
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index 62a4c7b559..be7ad9b499 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -20,6 +20,7 @@
+ #include "hw/misc/bcm2835_property.h"
+ #include "hw/misc/bcm2835_rng.h"
+ #include "hw/misc/bcm2835_mbox.h"
++#include "hw/misc/bcm2835_thermal.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/sd/bcm2835_sdhost.h"
+ #include "hw/gpio/bcm2835_gpio.h"
+@@ -53,6 +54,7 @@ typedef struct BCM2835PeripheralState {
+     SDHCIState sdhci;
+     BCM2835SDHostState sdhost;
+     BCM2835GpioState gpio;
++    Bcm2835ThermalState thermal;
+     UnimplementedDeviceState i2s;
+     UnimplementedDeviceState spi[1];
+     UnimplementedDeviceState i2c[3];
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index cdcbca943f..61b04a1bd4 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -48,6 +48,7 @@
+ #define SPI0_OFFSET             0x204000
+ #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
+ #define OTP_OFFSET              0x20f000
++#define THERMAL_OFFSET          0x212000
+ #define BSC_SL_OFFSET           0x214000 /* SPI slave */
+ #define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
+ #define EMMC1_OFFSET            0x300000
 -- 
 2.21.0
 

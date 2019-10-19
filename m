@@ -1,66 +1,111 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1961531wrm;
-        Sat, 19 Oct 2019 02:02:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyR8YZn9SJjwsEfGtJWAnkMtTTcNOnRciIwNhmdr9n2E3FPLLJANWK4viPMIs45PFIDn+Dv
-X-Received: by 2002:ad4:524b:: with SMTP id s11mr13705913qvq.112.1571475752106;
-        Sat, 19 Oct 2019 02:02:32 -0700 (PDT)
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2437837wrm;
+        Sat, 19 Oct 2019 10:35:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzulfmRo3PVWGi4b6b2wHCF3aeQdM2Gec2/jAQeVVWZvCJKsd8xBlWNlZ0A9p9UfijKEbeE
+X-Received: by 2002:aa7:da4a:: with SMTP id w10mr15772684eds.209.1571506538666;
+        Sat, 19 Oct 2019 10:35:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571506538; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CTTbSJIvuKOk2TOEfXxUGa8ccNYSaw7IBTb9s9D3RZwgbnjos6RkozOD31dSybXknf
+         c/A2kxF2BhWnDhAPxZwHAoygH3lb/oYZKBZUctc/dJyCsSg6xvk6xpwSXGp4efz+so6P
+         U8/uqOHqth3IV1AyPack8NHANDFtmNnrb0B9XyJdowuAjW0uSfvDKt4Kvht37UyS8PUr
+         tFmL9JF3WNE2xfljTg5nDJIJhrMmmbjcGRMolQJt3MQyZvmvgqKYLVWiv1i0IxJXIDkJ
+         Qzpd/zUt+vR+zoZ3INscOZO+UUMwVzJnB8uYiWql74yVi6uLW6ZkHiCGSk70o0JprZlM
+         CqhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=P4IA42ejsixRMBgMIMOh6M/+n81HIaQ/gu3TCojfckY=;
+        b=V/awKLScOzKSYgIjQXa1AQjACsL2gTe6gpqGocv7DgP1/jdrUahfLx1Sv5xkCfZqAs
+         yxaOhQ8Z/3D2w7YGnzZACV6x2OCvhValRWqLYEGsQWVb3PgWwnXwVW9VCZiXZeS8dX2E
+         D3IydBYjPkkoz7VQKjWLJcD0s5dLOwpk/8CjYxgzgwh5tVA8z0Sh849lD0u48+rCBvMe
+         sCXlmYT002NwyITDSxGFfiWOniNrn1heMMpn3Q8GwVypXD0lwm4l1MlrCVBlmTXO9oKz
+         TYpu2JVmwdb59LxgYL+ryQiCV/yeOWb0oICpep6jPJv7nRuhaiEVn3vTZTPKMewu/U1F
+         LrTA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ata0KIvO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p202si8562835qke.31.2019.10.19.02.02.31
+        by mx.google.com with ESMTPS id t16si6046001edd.269.2019.10.19.10.35.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 19 Oct 2019 02:02:32 -0700 (PDT)
+        Sat, 19 Oct 2019 10:35:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51432 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ata0KIvO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60590 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLkd5-0007Cd-HN
-	for alex.bennee@linaro.org; Sat, 19 Oct 2019 05:02:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41849)
+	id 1iLsdd-0005AO-Jt
+	for alex.bennee@linaro.org; Sat, 19 Oct 2019 13:35:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58743)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iLkct-00072e-Df
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 05:02:20 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iLsdU-00059a-9J
+ for qemu-arm@nongnu.org; Sat, 19 Oct 2019 13:35:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iLkcr-0005ZJ-Cn
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 05:02:19 -0400
-Resent-Date: Sat, 19 Oct 2019 05:02:18 -0400
-Resent-Message-Id: <E1iLkcr-0005ZJ-Cn@eggs.gnu.org>
-Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21489)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iLkck-0005QY-1D; Sat, 19 Oct 2019 05:02:10 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1571475701; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=aN4+8qeXT97KPqUKLCaBQHtvOJNKNXWaHtHPEn3TD7/w/jgW3e0+JzRhjXSu34cvgVm+j8EUtJQ4ntmEMOR5ldg6AiwW/yBEK9E3bR+MEX5fmE7U5row9pU7u/0uHVFU73AILHAUzS3Mm5xz1tQIpVKbtXjNthasiALDCvpV6T0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1571475701;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=hRIcVZIEvWDn2fYENHObfrF0v5OD4n9uHLFvjrEYVTc=; 
- b=OtWlvNa+Ds9TQCClI7AGmH1SVsykD0ITgATZAV4HlaiegGRaymthNrSHxchQVBKo1wlQd4OxanzsOhIuUBw1qt8RNcSsw3Fuc6hTnpd02dEf0DWmapMJtA+WN4hYH3o4s8XGTMdqbavPkEHno+aAxBPSu1eitvrnZC/Gl4+V/MU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1571475699351546.2778899745565;
- Sat, 19 Oct 2019 02:01:39 -0700 (PDT)
-In-Reply-To: <20191018150630.31099-1-damien.hedde@greensocs.com>
-Subject: Re: [PATCH v5 00/13] Multi-phase reset mechanism
-Message-ID: <157147569728.24734.4597793654597373097@37313f22b938>
+ (envelope-from <richard.henderson@linaro.org>) id 1iLsdT-0001zz-2v
+ for qemu-arm@nongnu.org; Sat, 19 Oct 2019 13:35:27 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:40925)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iLsdS-0001yt-Rg
+ for qemu-arm@nongnu.org; Sat, 19 Oct 2019 13:35:27 -0400
+Received: by mail-pg1-x542.google.com with SMTP id e13so5132613pga.7
+ for <qemu-arm@nongnu.org>; Sat, 19 Oct 2019 10:35:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=P4IA42ejsixRMBgMIMOh6M/+n81HIaQ/gu3TCojfckY=;
+ b=Ata0KIvOf4KMGAqAu2qXuKFQhjqIue5/X0bFyWDeMH2/VOICdOyqQup/UOrPIjBrcs
+ l20lhhiYGVWaI3rrBFL2/W00yunjZf70jWcuPvJpvxnrDTZOPAut2demP1UKdV4LuI4i
+ J/RY6POMACdCS8dD/ZKenO2fdhR+P+kbp2c8UEeRpRNy9p00TjBhedCT7LsOFMsElHVS
+ qC2HmhybMlRg726ADnnHbmk+XvztyRMwlT3lHk3R0EbJKHWVxi30xfVxotgt1oltS35L
+ G9LHsPSgB2PlHDZZWofRhmGAc2sAWBUm6etIo7RLX7RGWjagDn68QW3JHqtQzkO+gAo0
+ gb3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=P4IA42ejsixRMBgMIMOh6M/+n81HIaQ/gu3TCojfckY=;
+ b=b2IxmoH0pivqJhuY1mvxrcuTkhhQ+qDpNf9bQwfqFwz2YKbdF2qUEmHO+JPTzqYd+G
+ P0GwrvOD2jQVLx599UWVDjsGSAagHbFgy2AbngOppRbuuiQJq6YSSZCqgnX0nkIV4Akq
+ /rxUIhrq51JjX32StgUgLOJ4DpvgsccFD+/nrOJgqLOh3eo0R7kLgT3UnPAhWWodYBq6
+ jZNGsiCz/wEbWugKMaek5Z4BXjXWXWIt2V4OedJMzs74sUQnG15aNmRCBSEhNz5YKs2I
+ HdWiQvQFFStqwPoLTzT1sNNhDen6l0d5jP96X7rojXHiYEcDKDMyceVM5xzHrBDeb0Cq
+ HWJA==
+X-Gm-Message-State: APjAAAUE1Ef/dF2ngfLZXB7zWFyV7S+l8wbRzrZyY0r3SZKMh2r/2Yi8
+ 81f8DAhpg9RpCm9vV0OKcZsung==
+X-Received: by 2002:a62:1454:: with SMTP id 81mr13610721pfu.188.1571506525230; 
+ Sat, 19 Oct 2019 10:35:25 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id 127sm10044929pfy.56.2019.10.19.10.35.22
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 19 Oct 2019 10:35:23 -0700 (PDT)
+Subject: Re: [PATCH v5 01/13] add device_legacy_reset function to prepare for
+ reset api change
+To: Damien Hedde <damien.hedde@greensocs.com>, qemu-devel@nongnu.org
+References: <20191018150630.31099-1-damien.hedde@greensocs.com>
+ <20191018150630.31099-2-damien.hedde@greensocs.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <a6c43bd5-9119-f8d3-5046-eeece7d842d7@linaro.org>
+Date: Sat, 19 Oct 2019 10:35:21 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: damien.hedde@greensocs.com
-Date: Sat, 19 Oct 2019 02:01:39 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.54
+In-Reply-To: <20191018150630.31099-2-damien.hedde@greensocs.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::542
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,52 +117,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: damien.hedde@greensocs.com, peter.maydell@linaro.org, berrange@redhat.com,
- ehabkost@redhat.com, cohuck@redhat.com, mark.burton@greensocs.com,
- qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- pbonzini@redhat.com, philmd@redhat.com, edgari@xilinx.com,
- david@gibson.dropbear.id.au
+Cc: Fam Zheng <fam@euphon.net>, peter.maydell@linaro.org,
+ Collin Walling <walling@linux.ibm.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, david@gibson.dropbear.id.au,
+ philmd@redhat.com, ehabkost@redhat.com, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ berrange@redhat.com, cohuck@redhat.com, mark.burton@greensocs.com,
+ edgari@xilinx.com, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5VFDRPTFghla
+X-TUID: xmG96I+VpFbe
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTAxODE1MDYzMC4zMTA5
-OS0xLWRhbWllbi5oZWRkZUBncmVlbnNvY3MuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxl
-ZCB0aGUgZG9ja2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVz
-dGluZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIg
-aW5zdGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRF
-U1QgU0NSSVBUIEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2Ug
-ZG9ja2VyLWltYWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1t
-aW5nd0BmZWRvcmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgQ0Mg
-ICAgICBody92aXJ0aW8vdHJhY2UubwogIENDICAgICAgaHcvd2F0Y2hkb2cvdHJhY2UubwoKV2Fy
-bmluZywgdHJlYXRlZCBhcyBlcnJvcjoKL3RtcC9xZW11LXRlc3Qvc3JjL2RvY3MvZGV2ZWwvcmVz
-ZXQucnN0OmRvY3VtZW50IGlzbid0IGluY2x1ZGVkIGluIGFueSB0b2N0cmVlCiAgQ0MgICAgICBo
-dy94ZW4vdHJhY2UubwogIENDICAgICAgaHcvZ3Bpby90cmFjZS5vCi0tLQogIENDICAgICAgc3R1
-YnMvYmRydi1uZXh0LW1vbml0b3Itb3duZWQubwogIENDICAgICAgc3R1YnMvYmxrLWNvbW1pdC1h
-bGwubwogIENDICAgICAgc3R1YnMvYmxvY2tkZXYtY2xvc2UtYWxsLWJkcnYtc3RhdGVzLm8KbWFr
-ZTogKioqIFtNYWtlZmlsZTo5OTQ6IGRvY3MvZGV2ZWwvaW5kZXguaHRtbF0gRXJyb3IgMgptYWtl
-OiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgogIENDICAgICAgc3R1YnMvY2xv
-Y2std2FycC5vClRyYWNlYmFjayAobW9zdCByZWNlbnQgY2FsbCBsYXN0KToKLS0tCiAgICByYWlz
-ZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nl
-c3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJl
-bCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPWQwMjYxMzhlMTk2NTRlM2M4MGQxNjUwZDY4MzE2
-YmQwJywgJy11JywgJzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVk
-JywgJy0tcm0nLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9P
-UFRTPScsICctZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdT
-SE9XX0VOVj0nLCAnLWUnLCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAnLXYnLCAnL2hv
-bWUvcGF0Y2hldzIvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eics
-ICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtaWY3dnJ2eGQvc3JjL2RvY2tlci1z
-cmMuMjAxOS0xMC0xOS0wNC41OS41Mi4xMTExMTovdmFyL3RtcC9xZW11Onoscm8nLCAncWVtdTpm
-ZWRvcmEnLCAnL3Zhci90bXAvcWVtdS9ydW4nLCAndGVzdC1taW5ndyddJyByZXR1cm5lZCBub24t
-emVybyBleGl0IHN0YXR1cyAyLgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29tLnFlbXUuaW5zdGFu
-Y2UudXVpZD1kMDI2MTM4ZTE5NjU0ZTNjODBkMTY1MGQ2ODMxNmJkMAptYWtlWzFdOiAqKiogW2Rv
-Y2tlci1ydW5dIEVycm9yIDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgYC92YXIvdG1wL3Bh
-dGNoZXctdGVzdGVyLXRtcC1pZjd2cnZ4ZC9zcmMnCm1ha2U6ICoqKiBbZG9ja2VyLXJ1bi10ZXN0
-LW1pbmd3QGZlZG9yYV0gRXJyb3IgMgoKcmVhbCAgICAxbTQ0LjQyMnMKdXNlciAgICAwbTcuNjY0
-cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3Mv
-MjAxOTEwMTgxNTA2MzAuMzEwOTktMS1kYW1pZW4uaGVkZGVAZ3JlZW5zb2NzLmNvbS90ZXN0aW5n
-LmRvY2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBh
-dXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNl
-bmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+On 10/18/19 8:06 AM, Damien Hedde wrote:
+> Provide a temporary device_legacy_reset function doing what
+> device_reset does to prepare for the transition with Resettable
+> API.
+> 
+> All occurrence of device_reset in the code tree are also replaced
+> by device_legacy_reset.
+> 
+> The new resettable API has different prototype and semantics
+> (resetting child buses as well as the specified device). Subsequent
+> commits will make the changeover for each call site individually; once
+> that is complete device_legacy_reset() will be removed.
+> 
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Acked-by: David Gibson <david@gibson.dropbear.id.au>
+> ---
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

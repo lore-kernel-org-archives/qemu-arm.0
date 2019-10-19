@@ -1,97 +1,97 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2723448wrm;
-        Sat, 19 Oct 2019 16:57:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwu7E5QweJjXSirgb/E6Bz1ZOE+PCS7dgxdMAfwQDe1f3NgyQFsb33L1Kwr03X6XxJN8rPM
-X-Received: by 2002:a37:4f88:: with SMTP id d130mr16318970qkb.168.1571529475357;
-        Sat, 19 Oct 2019 16:57:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571529475; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2724032wrm;
+        Sat, 19 Oct 2019 16:58:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx8SzAzYtXAlmnrY9SISci5D8Jttj8xr415XM5xZL0KoHDL+NYwK5d53L85dT/rPVZFA6Bx
+X-Received: by 2002:aed:3c67:: with SMTP id u36mr17476245qte.142.1571529536658;
+        Sat, 19 Oct 2019 16:58:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571529536; cv=none;
         d=google.com; s=arc-20160816;
-        b=BzK42GArQAbSf/n6njLTAuSAXUskO8v2lJVTeOyXyL59Qz6Hz8rqCh7hTumFNXGxxJ
-         93FibsOioJ84j9TiJd+Q9NEJBFpQXLptdqjrY5HlK3s/E9Zl3aoxcon0wPmObeThvQFG
-         EfGlDER80v1YTYdD9JoqMGwgz5SAYlS1Eio9HdbrXy/1VKkYFM9i5l7C6pY1HGWklgZ7
-         R8yDIZhmdbpU8Van4sqPeVFSv3rUU9lAl/NrFxYPEQQ2Xazh2fo8p+TaQCN3GaMJ2yXC
-         vz5JrMQ+nzFxBUxZxVMweFSLOLmzPPJUs7oK1G7MENO76BXxYai3DXeYjGEDi6cCIewc
-         Jrxg==
+        b=LE/FpDnQoX5+eaP8I6Ew1fW0y9kAgiFXYxQ31HSBm82c0VEuHVeSPViOCIqaQzVGYw
+         WGNNzx9Ntf+D5iTAvpVYLMCCiZodvqgL9xTaXZs6N/b08eeWd2w3RQaGGbgWLkjotJVm
+         yMn7PaL67lumNRH6x9G50QuhiF4/8LVaVc5lv8CM1qrhnA4y1idB3zhFADRvbblJy9QZ
+         4xz0qDcymtu/2074h4CuTKK6WcTlUAVQu0uwY0Hb1Ly20/aBgasuj7Sz2rSUAn03dGyF
+         T0DxKLWv4OLI7aYcqT5biEgiQ4s3Ktnt1kUiNFctuHZ86eZ1kdq7Sbxui81s3F7ow7C9
+         mDfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=sDpiMGEUPQUF/TV44CGVPcZd/e7Sj4qme0DvnCotwpc=;
-        b=JOz0ScgYUmoWnMp3RYaLOXtOzf3SwY4dG0QcR0rzshdAH0PWYnwwGnGiKpo1pRIehU
-         szT4W/kOPbu9p424Y/cBFby1ScFzf3EOcI6mm3Y9N5uFJRspps1dZVbr0hYWDVTRlCyS
-         TY9nim8SelY4w5uN3rlp3hzJCoL1vNh/4vbQe3LmQJaYiT+KuC9L4BRjQKwhUj8YLGmS
-         Es2KJSX4YNmE2ZV3QUl4PwxUf6ovtlo1Iz3tkSubwZN+B7fjXFC2T5TYpcTBhlR+ZKgp
-         HZI4Mn7U8ggazEBSFexy1bybUapKPmjL9h0rBkHjmfFOOWNeGobPMhFtaqQlIHhdqYA7
-         cQkg==
+        bh=O5oiXx5QsqcxjGrnz0sfvOqjkOSxCB/5RAZrFYtWlbA=;
+        b=t8yEYfnHVLaViy7mPd8GdmETUYyrwsygcbCQznwyH0I2HY7am/kkT68jRttsD7zfRd
+         TT4fWIrli6fudC2ZDCgnmKKeCdWmZxVkvy3ERKPlQmLCU0ltxA+4AoJW4oKLFrM3EQDP
+         u8ZkKr4cb/8rr4dwCxryJOr+6P57p1SZyluayemrBb9AlxGgJ20vfE1d6vXBho3iE3ZT
+         XItXXNfUv7PaxnQEVVMty7C4ADvw5vz64qM2IEWUfsUznsu+df5iN43aKHvhQftr49Bz
+         zLkxHDhCQzSQt6L5Mp6wnbkXAxkcT2anyWe3Q94lfuuOCrWupcO60YZw+4Y3vrweQnxt
+         +bPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bHIT9ZPO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hSEyfflr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x26si9810896qkx.106.2019.10.19.16.57.55
+        by mx.google.com with ESMTPS id d9si9946663qka.189.2019.10.19.16.58.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 19 Oct 2019 16:57:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 19 Oct 2019 16:58:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bHIT9ZPO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42292 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hSEyfflr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLyba-00066F-QY
-	for alex.bennee@linaro.org; Sat, 19 Oct 2019 19:57:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34765)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iLycZ-0006Kp-Pn
+	for alex.bennee@linaro.org; Sat, 19 Oct 2019 19:58:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34670)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRo-0000ef-Pj
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:49 -0400
+ id 1iLyRh-0000SH-6L
+ for qemu-devel@nongnu.org; Sat, 19 Oct 2019 19:47:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRn-0005jR-HO
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:48 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:56110)
+ id 1iLyRg-0005f1-1T
+ for qemu-devel@nongnu.org; Sat, 19 Oct 2019 19:47:41 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53231)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRl-0005hf-1O; Sat, 19 Oct 2019 19:47:45 -0400
-Received: by mail-wm1-x341.google.com with SMTP id g24so376098wmh.5;
- Sat, 19 Oct 2019 16:47:44 -0700 (PDT)
+ id 1iLyRf-0005ef-PY; Sat, 19 Oct 2019 19:47:39 -0400
+Received: by mail-wm1-x343.google.com with SMTP id r19so9572273wmh.2;
+ Sat, 19 Oct 2019 16:47:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=sDpiMGEUPQUF/TV44CGVPcZd/e7Sj4qme0DvnCotwpc=;
- b=bHIT9ZPOmznRUfoWaH671prkuZ3TyavtCuD+zujvrT3wUiMjdvalUWu8kMv5szr7T3
- fL4Hn0gBiDKjRyYoqGR58yvT9C8ekSLKxOLF4NuX1ixATEDq0qPnY+4xLMzMpNZLcN1h
- Vo++HuZCdBaOTQ3Q9s974+73NWFpz4KcMY3xlFeyglAnrV0+EdCQn9wcGSZWmMiyfVeH
- EbTXbqWcfMGZ1Z4RNhhZoWOsPGOzlDsom+FXq2JhI1E0X0QZ5lc16KHXV+/HAizh5W+h
- 9jaGJD7V+mo69tATxfSHq4EMewuxi4I23RbwlwYknt0XRME/+tIW6JTmbKboO4tYp2OW
- wCHw==
+ bh=O5oiXx5QsqcxjGrnz0sfvOqjkOSxCB/5RAZrFYtWlbA=;
+ b=hSEyfflrQ3eukOQaelqiuw7eyOdcySc7vTMK2pnmAvEE7J1zsr9JlhoMrJoMDunNbM
+ 5GDZNNr15LpFVXKt+vJJDjWu7wT42+PZJqSyeoBPEdsAgTEUQRUrUOi/3EXNgwdO5Jcb
+ w40OPmiaSfd7NJrYoxTbfBvk48iL/mU5Q9+qeOCGjskdY7fxmPCfMsTANaPmoLbFW5Xh
+ xonxBvtxotLD5L/CXpfgQ/nlNUpt927sZFnnykOTAn3/1Owpf8rbWwiXbkXqq/cEl41H
+ 3M8ZEAQAZcxouQfiS7S3zox0l7m/rUQUZFkts13pOI37QJvOYVx8X1JbFHkuiFET875N
+ /aCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=sDpiMGEUPQUF/TV44CGVPcZd/e7Sj4qme0DvnCotwpc=;
- b=YsnG+aJD42aLA01mDDKjgi7AEgEtX2S9u3ZaFWqZEuvE9mBoYJ9czMFGbJilfv97EV
- vdHQPh05vfWnqy9ta+fAfCqJQpVoGzP261TVpsnos6f4YjifYotMgofTtz7YaRSytVsG
- oZSV4vjx4Z87RIBAG2wDRnwYviWIIvkBwRUHfMf0YsF2r+JsTpbdxb4r06Cq3BZCyirP
- pMaFCX4cKgS1FJJemCYfYU13ZGZKvWO6j5oge0IdCmovQIpQA97Hvz/faW+J+HGgzLWr
- WocdePhccWwuVDQbAlQvf3eFz6Zq/MYaPXd8sfAzmpZjBksKlpLiRnY6NvCafy5QBnpH
- ojKw==
-X-Gm-Message-State: APjAAAU25XzbmjZHg+IHNmT24N4opMK23OCyH7xKWPa4XBe/KkIVmtVo
- WRXLO9W8CdNmI38FS8+39duqDIhj
-X-Received: by 2002:a7b:ce89:: with SMTP id q9mr13124748wmj.2.1571528863895;
- Sat, 19 Oct 2019 16:47:43 -0700 (PDT)
+ bh=O5oiXx5QsqcxjGrnz0sfvOqjkOSxCB/5RAZrFYtWlbA=;
+ b=D94CEFB/WuzNm2mP3dW2RniE5O1GPNQlNfn7BxjdmS6BnH8l28ZEizpW+b7waOrsk5
+ btfOsHNAKT6iNoF85w6/8wyg29e/ShAjuZjgYTjTxWy0JJrlPFSfHxP7AOCqveEYWKT9
+ cP7AgbNwB4thG/EKHt2pGvntJ/fbnEmPwbhwC9TI9jRuEzZNbqWIoKgN6x9UTOAcLinW
+ BtTWrquKedwyYkvEteiCLRyI5ke3M+m3ZtJpC7QbaN4emnX4xZZbUdPKf1/V1L9LaL8S
+ +dAFJIniNs7avhuA0MvuVn72H/S1Q3seAapiENBoF7FEmtQY2nHknpBgHsNPqS+FKMSg
+ 5s1g==
+X-Gm-Message-State: APjAAAVSkTeQE37C4ZfdAf+ZLU/5+Vfi63M1zfwvx/L3Nyjak9uwjsQ1
+ 7qnK7UE+VQT0voMysAPMPbtry0M0
+X-Received: by 2002:a05:600c:2908:: with SMTP id
+ i8mr12735560wmd.20.1571528858686; 
+ Sat, 19 Oct 2019 16:47:38 -0700 (PDT)
 Received: from x1w.redhat.com (14.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.14])
- by smtp.gmail.com with ESMTPSA id u1sm10433763wrp.56.2019.10.19.16.47.42
+ by smtp.gmail.com with ESMTPSA id u1sm10433763wrp.56.2019.10.19.16.47.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Oct 2019 16:47:43 -0700 (PDT)
+ Sat, 19 Oct 2019 16:47:38 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 15/16] python/qemu/machine: Allow to use other serial
- consoles than default
-Date: Sun, 20 Oct 2019 01:47:14 +0200
-Message-Id: <20191019234715.25750-16-f4bug@amsat.org>
+Subject: [PATCH v3 12/16] hw/arm/bcm2836: Rename enabled_cpus -> enabled_cores
+Date: Sun, 20 Oct 2019 01:47:11 +0200
+Message-Id: <20191019234715.25750-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191019234715.25750-1-f4bug@amsat.org>
 References: <20191019234715.25750-1-f4bug@amsat.org>
@@ -101,18 +101,18 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::343
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Matthias Brugger <mbrugger@suse.com>, Rob Herring <robh@kernel.org>,
  Alistair Francis <alistair@alistair23.me>,
@@ -125,69 +125,69 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Cheng Xiang <ext-cheng.xiang@here.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Pekka Enberg <penberg@iki.fi>, Pete Batard <pete@akeo.ie>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cX8GBA12v4Hd
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V59f4cAp85xJ
 
-Currently the QEMU Python module limits the QEMUMachine class to
-use the first serial console.
-
-Some machines/guest might use another console than the first one as
-the 'boot console'. For example the Raspberry Pi uses the second
-(AUX) console.
-
-To be able to use the Nth console as default, we simply need to
-connect all the N - 1 consoles to the null chardev.
-
-Add an index argument, so we can use a specific serial console as
-default.
+We now use -smp cores=<n> to limit the number of cores powered
+on reset. Rename the 'enabled_cpus' variable as 'enabled_cores'
+to better match the new use. No functional changes.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v2:
-- renamed 'console_index', added docstring (Cleber)
-- reworded description (pm215)
----
- python/qemu/machine.py | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ hw/arm/bcm2836.c         | 4 ++--
+ hw/arm/raspi.c           | 2 +-
+ include/hw/arm/bcm2836.h | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/python/qemu/machine.py b/python/qemu/machine.py
-index 128a3d1dc2..6fa68fa35a 100644
---- a/python/qemu/machine.py
-+++ b/python/qemu/machine.py
-@@ -235,6 +235,8 @@ class QEMUMachine(object):
-                 '-display', 'none', '-vga', 'none']
-         if self._machine is not None:
-             args.extend(['-machine', self._machine])
-+        for i in range(self._console_index):
-+            args.extend(['-serial', 'null'])
-         if self._console_set:
-             self._console_address = os.path.join(self._temp_dir,
-                                                  self._name + "-console.sock")
-@@ -495,7 +497,7 @@ class QEMUMachine(object):
-         """
-         self._machine = machine_type
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index ada35e5620..e3cef69687 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -202,7 +202,7 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+         }
  
--    def set_console(self, device_type=None):
-+    def set_console(self, device_type=None, console_index=0):
-         """
-         Sets the device type for a console device
+         /* start powered off if not enabled */
+-        object_property_set_bool(OBJECT(&s->cpu[n].core), n >= s->enabled_cpus,
++        object_property_set_bool(OBJECT(&s->cpu[n].core), n >= s->enabled_cores,
+                                  "start-powered-off", &err);
+         if (err) {
+             error_propagate(errp, err);
+@@ -235,7 +235,7 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+ }
  
-@@ -516,9 +518,14 @@ class QEMUMachine(object):
-                             chardev:console" command line argument will
-                             be used instead, resorting to the machine's
-                             default device type.
-+        @param console_index: the index of the console device to use.
-+                              If not zero, the command line will create
-+                              'index - 1' consoles and connect them to
-+                              the 'null' backing character device.
-         """
-         self._console_set = True
-         self._console_device_type = device_type
-+        self._console_index = console_index
+ static Property bcm2836_props[] = {
+-    DEFINE_PROP_UINT32("enabled-cpus", BCM283XState, enabled_cpus,
++    DEFINE_PROP_UINT32("enabled-cores", BCM283XState, enabled_cores,
+                        BCM283X_NCPUS),
+     DEFINE_PROP_END_OF_LIST()
+ };
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 45d3f91f95..b1b488ca53 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -191,7 +191,7 @@ static void raspi_init(MachineState *machine, int version)
+     object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
+                                    &error_abort);
+     object_property_set_int(OBJECT(&s->soc), machine->smp.cores,
+-                            "enabled-cpus", &error_abort);
++                            "enabled-cores", &error_abort);
+     int board_rev = version == 3 ? 0xa02082 : 0xa21041;
+     object_property_set_int(OBJECT(&s->soc), board_rev, "board-rev",
+                             &error_abort);
+diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
+index 787ab76738..2c3f1e6c6a 100644
+--- a/include/hw/arm/bcm2836.h
++++ b/include/hw/arm/bcm2836.h
+@@ -33,7 +33,7 @@ typedef struct BCM283XState {
+     /*< public >*/
  
-     @property
-     def console_socket(self):
+     char *cpu_type;
+-    uint32_t enabled_cpus;
++    uint32_t enabled_cores;
+ 
+     struct {
+         MemoryRegion bus;
 -- 
 2.21.0
 

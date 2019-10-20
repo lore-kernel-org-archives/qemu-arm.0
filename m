@@ -1,386 +1,171 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2724671wrm;
-        Sat, 19 Oct 2019 16:59:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwABoZmVQ7vlxw+YjBecRC9Oq088mMWqk5SjIElE/RgcxApcePpa0G13HhUGEhsU9tShHY5
-X-Received: by 2002:a37:50b:: with SMTP id 11mr3674906qkf.60.1571529595593;
-        Sat, 19 Oct 2019 16:59:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571529595; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3786240wrm;
+        Sun, 20 Oct 2019 15:58:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwkuOxrvFw8B9vcBTFhU+Dnqa7D3ABuiQsg8fjt/REdFJSgZ+GM97uJnPjVsH1Uh2W3kvKw
+X-Received: by 2002:ac8:82e:: with SMTP id u43mr21929219qth.176.1571612301841;
+        Sun, 20 Oct 2019 15:58:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571612301; cv=none;
         d=google.com; s=arc-20160816;
-        b=FloaZoKM+Wa8sLre+IyfjqBNfOwzw+H4VcuzcVVU64wjSlDzPM+GzoXZfFhRmu8nUN
-         K1HoyAfOaAqHHPwuZsMU6usrgOeMwmRhlOikzXAaLuLedRu+seY+8nATKARqAeSnSkba
-         6U6+gS60ubyAoSGCdALAopcY5g0CiSOmFxYzRmQ1sJfErOrVmd9hrTzMbSKehHQC1Wu5
-         2qvv4dqARqCT1F/I2mgfTGEzmSgS/NI8JoVP/1PhTleOTq4m5Qg3nmsQ9P00zSsAJoQ3
-         2Zu5H0eNtTerXiu5ntmuOAC3pWpodRpixWpkJbwZWLgw9tKJTDH1Ou4Am2JoqzHTTqRE
-         +O3Q==
+        b=Vrnb9mpWzMeZSFK9XovFp59J6KS3ZzbXx5OiBmtHKS7AgwwQ9hndxiUsfEtBQYOe+f
+         VtPnmkqfb9NY4L10cQT6qavieS4cleIgkCSwlVI3iZ0lHwHLoHrb+vwm5cYZGJXdDy1b
+         qqvEr59/2/nLAnkIT+Q/uU1rmhLO7VkWCEShUpu3g2zWknHgI0FPjC1eF+ytw8dGMyjH
+         9hgNVf5Ag1Dk65IoL+e+MbF3YrPESe4mfaOSoOQlBx19nhjAuv6cVQpmnp6wqZuAVE22
+         IsJC4yTunGYsdeaVjaGPMx1nG8sN0uuJRBD+GRf2ovpYa1KtVM6KTEM/okFLWbRAtTAV
+         Gy2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=EI6K9oT3hpsstwewvOzbn77tHuEsYIJbCS9Y33MFZ8I=;
-        b=ZfjdtXdbL0CHxMoI39uJENGJA5yxgmShJ0scSsr7S8YzB8E/IVIEm/oCop7y4xk8A2
-         94sqgKrvLsD6wPEC/iFLSvM4IrU0LeEwcXOmls3+RuFDEsdTzPAPlIb66jed8wJxqwBF
-         Uot8rWWiYAhvay/6tUPRnnZ8JG4vbHd/XFK+2jsGZqWe0BmxLJb3otHDTVLWuZjKt5Wy
-         zmlB9s7vHnYzAVj30IqdmyssLw3VwgmFw2syFzPgivGPvjz5bF4RwEYAX7kNZGhomM6r
-         9w5TADK9CHWVkxxitqH4T1PJvXzfNkXksZEL5HH5RcT/iAf/TZrUCO8DOj/hJ38OrwXy
-         kilg==
+        bh=ZiO2C5es1NYJxD/UQgZc/eWnlcXJHpGVMpR68/XdhKU=;
+        b=d1zucDNN0bmPttaLt2qRzg0OqD+rzYNfaTDOcmISVSpXNVE2Z1cLZ3bk5KxbQaNrFW
+         4d7z+aqavVwlNI6Dnpl4JkorcqklCe1GvRY+CEI/zJsrpPIRed0zwj3kV8hLm/1TZBPo
+         +nFgTZg2+7Lw0EI3r8w6Q/q5f2Qms0PL0YxH8SY26+Dq6dsBoM3k442Wma8WuT2KMs80
+         6ijgkZsxUBHmzUy8S8496xPqJc8/qCl9KaAj0QDj8V9mg06y2NA8jpT2oJJPHsBe30pF
+         oGrTtxrXgSK0OnvWPqb+JWc6lW0+qhyQNeFh2tEbaoD3iBpa++n6S8GiDec0uAP/txfv
+         T1QQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uYKglG0a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gUw4eJLu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x39si9748640qvf.48.2019.10.19.16.59.55
+        by mx.google.com with ESMTPS id n55si12958893qvc.19.2019.10.20.15.58.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 19 Oct 2019 16:59:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 20 Oct 2019 15:58:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uYKglG0a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42364 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gUw4eJLu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50882 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLydV-0007rt-7D
-	for alex.bennee@linaro.org; Sat, 19 Oct 2019 19:59:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34770)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMK9U-00073f-Ro
+	for alex.bennee@linaro.org; Sun, 20 Oct 2019 18:58:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34369)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRp-0000ff-BF
- for qemu-devel@nongnu.org; Sat, 19 Oct 2019 19:47:51 -0400
+ (envelope-from <philmd@redhat.com>) id 1iMK93-00071y-JX
+ for qemu-arm@nongnu.org; Sun, 20 Oct 2019 18:57:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRn-0005jM-G4
- for qemu-devel@nongnu.org; Sat, 19 Oct 2019 19:47:49 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:50798)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRn-0005io-8n; Sat, 19 Oct 2019 19:47:47 -0400
-Received: by mail-wm1-x342.google.com with SMTP id 5so9584411wmg.0;
- Sat, 19 Oct 2019 16:47:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=EI6K9oT3hpsstwewvOzbn77tHuEsYIJbCS9Y33MFZ8I=;
- b=uYKglG0azp0uuhalHTR45gcFS9OtazFhm6G8J4rvdBAX7vWwjF11vPjFt4QNea71Uz
- ErrEgb0cMCmvdvWxQKDCFEK8v1GzHo+fd0tWmGj86bDxN+lr911Je6rycTQ5CJ1a+okV
- t0c4EjtrKO7Mc1Kb/XcwkLLfTxmtRizaRliciFPtGECW8DxXdmy5besrOY0EEJzt/E/R
- mIGN6+stFQy+HAw0pLoq0wFwX96XDgrfSWvPfdxYOxpZtCSLN5hFoahBsCvF3Sg8fw93
- Not97ZgsOj/4JAGPJp0I2WbXG1+F+S6VpyixRsLO2nAffmTXxejMx3YjnGsu76JKtWjb
- CkGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=EI6K9oT3hpsstwewvOzbn77tHuEsYIJbCS9Y33MFZ8I=;
- b=sQKCssmrUUUQ0xfMQiARQfT6+S8Kqqx3Pp5ZS2KBpL94MxSKhIqnuPG3fEbYeqxYZq
- vUoOU0hdRkhn5gFUJhFPaYBtcUtKgWhSw3FUflD0HPJuYVOev4jY6eCJ87ieZhCSowIg
- IxsYUExSpQVbPy0B87EMklQBxvVRgJter5mMkyRVsG7mpZ4xilDHWj+CuhozM+c1NVwI
- ccgpQ1d8kl6NDSWM7RRBXTBNWcX0/HkbBQw716qrclPaifiZJg6dbfI2+A5txBsP0fXe
- 5pbAlVdNm6U6szYtUXnNfEijdqk0GLoB5SGJ/t9/Ut/8jp04YbW0wszRAKnGWfq04hHP
- /snQ==
-X-Gm-Message-State: APjAAAXLTeS8DSeKdzbxvZKQ3p4vr/pp1sGjWvd9RqK0vldqFltedGBG
- A99WusYKgxOQupW9FVHdeFBYQqUt
-X-Received: by 2002:a1c:99cd:: with SMTP id
- b196mr13213429wme.105.1571528865976; 
- Sat, 19 Oct 2019 16:47:45 -0700 (PDT)
-Received: from x1w.redhat.com (14.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.14])
- by smtp.gmail.com with ESMTPSA id u1sm10433763wrp.56.2019.10.19.16.47.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Oct 2019 16:47:44 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH NOTFORMERGE v3 16/16] tests/acceptance: Test U-boot on the
- Raspberry Pi 3
-Date: Sun, 20 Oct 2019 01:47:15 +0200
-Message-Id: <20191019234715.25750-17-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191019234715.25750-1-f4bug@amsat.org>
-References: <20191019234715.25750-1-f4bug@amsat.org>
+ (envelope-from <philmd@redhat.com>) id 1iMK91-0000UM-KW
+ for qemu-arm@nongnu.org; Sun, 20 Oct 2019 18:57:53 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32665
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMK8z-0000Sw-Mx
+ for qemu-arm@nongnu.org; Sun, 20 Oct 2019 18:57:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1571612268;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ZiO2C5es1NYJxD/UQgZc/eWnlcXJHpGVMpR68/XdhKU=;
+ b=gUw4eJLurWPl6MEnxBDI+CGrPbnpqrXwXE0JV4KQJktsaXuS/hgyEStmEB6q8aMtDYsVjo
+ t2w/41hJD5gqDOGmAcfmi8MvpQXM8P5v1TNc+OY6EyQXW9Qm1+2PBSej+Xkmu0IBKnAivv
+ WCPCqMdBfgnQlxR+zy/nl7I94luR+Hs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-237-uy8zh8NwOQ2uo6L-XeNDjw-1; Sun, 20 Oct 2019 18:57:44 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BCF285EC;
+ Sun, 20 Oct 2019 22:57:34 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-40.brq.redhat.com [10.40.204.40])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7FFF360F88;
+ Sun, 20 Oct 2019 22:57:15 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Subject: [PATCH 01/21] hw/arm/xilinx_zynq: Use the IEC binary prefix
+ definitions
+Date: Mon, 21 Oct 2019 00:56:30 +0200
+Message-Id: <20191020225650.3671-2-philmd@redhat.com>
+In-Reply-To: <20191020225650.3671-1-philmd@redhat.com>
+References: <20191020225650.3671-1-philmd@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: uy8zh8NwOQ2uo6L-XeNDjw-1
+X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::342
-X-BeenThere: qemu-devel@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Matthias Brugger <mbrugger@suse.com>, Rob Herring <robh@kernel.org>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paul Burton <pburton@wavecomp.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Leif Lindholm <leif.lindholm@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, Rob Herring <robh@kernel.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
  Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, "Emilio G . Cota" <cota@braap.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>, qemu-arm@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Laurent Bonnans <laurent.bonnans@here.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Thomas Huth <huth@tuxfamily.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Pete Batard <pete@akeo.ie>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NFbGW01oF0Sw
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Andrew Jeffery <andrew@aj.id.au>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vpWG4irYa6Kh
 
-This is a proof-of-concept for the '-smp cores=1' feature which
-restricts the cores brought online on reset.
+IEC binary prefixes ease code review: the unit is explicit.
 
-The u-boot binary is old and from an untrusted source, but I
-don't want to add the build machinery in QEMU, so it is enough
-to demonstrate the feature works reliably.
-
-By default this test is not run:
-
-  $ avocado run -t machine:raspi3 tests/acceptance/
-   (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_raspi3_uboot: SKIP: untrusted code
-  RESULTS    : PASS 0 | ERROR 0 | FAIL 0 | SKIP 1 | WARN 0 | INTERRUPT 0 | CANCEL 0
-  JOB TIME   : 0.23 s
-
-We can run it setting the AVOCADO_ALLOW_UNTRUSTED_CODE variable:
-
-  $ AVOCADO_ALLOW_UNTRUSTED_CODE=1 ./tests/venv/bin/avocado --show=app,console run -t machine:raspi3 tests/acceptance/
-   (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_raspi3_uboot:  console: U-Boot 2016.05-rc1-gd36dcaf (Apr 28 2016 - 23:29:29 +0200)
-  console: DRAM:  960 MiB
-  console: RPI 3 Model B (0xa02082)
-  console: boot regs: 0x00000000 0x00000000 0x00000000 0x00000000
-  console: MMC:   bcm2835_sdhci: 0
-  console: Card did not respond to voltage select!
-  console: ** Bad device mmc 0 **
-  console: Using default environment
-  console: In:    serial
-  console: Out:   lcd
-  console: Err:   lcd
-  console: Net:   Net Initialization Skipped
-  console: No ethernet found.
-  PASS (0.30 s)
-
-Then test QEMU:
-
-  $ qemu-system-aarch64 \
-      -M raspi3 -smp 4,cores=1 \
-      -kernel u-boot.bin \
-      -serial null -serial stdio
-
-  U-Boot 2016.05-rc1-gd36dcaf (Apr 28 2016 - 23:29:29 +0200)
-
-  DRAM:  960 MiB
-  RPI 3 Model B (0xa02082)
-  boot regs: 0x00000000 0x00000000 0x00000000 0x00000000
-  MMC:   bcm2835_sdhci: 0
-  Card did not respond to voltage select!
-  ** Bad device mmc 0 **
-  Using default environment
-
-  In:    serial
-  Out:   lcd
-  Err:   lcd
-  Net:   Net Initialization Skipped
-  No ethernet found.
-  starting USB...
-  USB0:   Core Release: 0.000
-  SNPSID invalid (not DWC2 OTG device): 00000000
-  Port not available.
-  Autoboot in 2 seconds
-  Card did not respond to voltage select!
-  starting USB...
-  USB0:   Core Release: 0.000
-  SNPSID invalid (not DWC2 OTG device): 00000000
-  Port not available.
-  USB is stopped. Please issue 'usb start' first.
-  starting USB...
-  USB0:   Core Release: 0.000
-  SNPSID invalid (not DWC2 OTG device): 00000000
-  Port not available.
-  No ethernet found.
-  missing environment variable: pxeuuid
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/00000000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/0000000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/000000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/00000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/0000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/00
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/0
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/default-arm-bcm283x
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/default-arm
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/default
-  No ethernet found.
-  Config file not found
-  starting USB...
-  USB0:   Core Release: 0.000
-  SNPSID invalid (not DWC2 OTG device): 00000000
-  Port not available.
-  No ethernet found.
-  U-Boot> version
-
-  U-Boot 2016.05-rc1-gd36dcaf (Apr 28 2016 - 23:29:29 +0200)
-  aarch64-unknown-linux-gnu-gcc (Gentoo 5.3.0 p1.0, pie-0.6.5) 5.3.0
-  GNU ld (Gentoo 2.25.1 p1.1) 2.25.1
-  U-Boot> ^C
-  qemu-system-aarch64: terminating on signal 2
-
-We can also build a recent U-boot with:
-
-  u-boot$ export CROSS_COMPILE=aarch64-linux-gnu-
-  u-boot$ make rpi_3_defconfig
-  u-boot$ make -j8
-
-And test it:
-
-  $ qemu-system-aarch64 \
-      -M raspi3 -smp 4,cores=1 \
-      -kernel u-boot.bin \
-      -serial null -serial stdio
-
-  MMC:   mmc@7e202000: 0, sdhci@7e300000: 1
-  Loading Environment from FAT... WARNING at drivers/mmc/bcm2835_sdhost.c:410/bcm2835_send_command()!
-  WARNING at drivers/mmc/bcm2835_sdhost.c:410/bcm2835_send_command()!
-  Card did not respond to voltage select!
-  In:    serial
-  Out:   vidconsole
-  Err:   vidconsole
-  Net:   No ethernet found.
-  starting USB...
-  Bus usb@7e980000: Port not available.
-  Hit any key to stop autoboot:  0
-  WARNING at drivers/mmc/bcm2835_sdhost.c:410/bcm2835_send_command()!
-  WARNING at drivers/mmc/bcm2835_sdhost.c:410/bcm2835_send_command()!
-  WARNING at drivers/mmc/bcm2835_sdhost.c:410/bcm2835_send_command()!
-  Card did not respond to voltage select!
-  MMC: no card present
-  starting USB...
-  Bus usb@7e980000: Port not available.
-  USB is stopped. Please issue 'usb start' first.
-  starting USB...
-  Bus usb@7e980000: Port not available.
-  No ethernet found.
-  missing environment variable: pxeuuid
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/00000000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/0000000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/000000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/00000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/0000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/000
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/00
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/0
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/default-arm-bcm283x-rpi
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/default-arm-bcm283x
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/default-arm
-  No ethernet found.
-  missing environment variable: bootfile
-  Retrieving file: pxelinux.cfg/default
-  No ethernet found.
-  Config file not found
-  starting USB...
-  Bus usb@7e980000: Port not available.
-  No ethernet found.
-  No ethernet found.
-  U-Boot> version
-  U-Boot 2019.10-rc4-dirty (Oct 19 2019 - 22:02:10 +0000)
-
-  aarch64-linux-gnu-gcc (Debian 8.3.0-2) 8.3.0
-  GNU ld (GNU Binutils for Debian) 2.31.1
-  U-Boot> reset
-  resetting ...
-  U-Boot> ^C
-  qemu-system-aarch64: terminating on signal 2
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- tests/acceptance/boot_linux_console.py | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ hw/arm/xilinx_zynq.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 8a9a314ab4..7c73051a9a 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -14,6 +14,7 @@ import lzma
- import gzip
- import shutil
- 
-+from avocado import skipUnless
- from avocado_qemu import Test
- from avocado.utils import process
- from avocado.utils import archive
-@@ -316,6 +317,28 @@ class BootLinuxConsole(Test):
-         self.vm.launch()
-         self.wait_for_console_pattern('init started: BusyBox')
- 
-+    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code')
-+    def test_arm_raspi3_uboot(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=machine:raspi3
-+        :avocado: tags=endian:little
-+        """
-+        uboot_url = ('https://github.com/poinck/piii64/raw/bf3e070d/'
-+                     'boot/u-boot.bin')
-+        uboot_hash = 'cd2ab2a24589a5b9d177af172af8b39998e5f93f'
-+        uboot_path = self.fetch_asset(uboot_url, asset_hash=uboot_hash)
-+
-+        self.vm.set_machine('raspi3')
-+        self.vm.set_console(console_index=1)
-+        kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE
-+        self.vm.add_args('-kernel', uboot_path,
-+                         '-smp', '4,cores=1', # start 3 cores disabled
-+                         '-no-reboot')
-+        self.vm.launch()
-+        self.wait_for_console_pattern('RPI 3 Model B')
-+        self.wait_for_console_pattern('No ethernet found.')
-+
-     def test_s390x_s390_ccw_virtio(self):
-         """
-         :avocado: tags=arch:s390x
--- 
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index c14774e542..3a0fa5b23f 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -16,6 +16,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
+ #include "hw/sysbus.h"
+@@ -194,7 +195,7 @@ static void zynq_init(MachineState *machine)
+     memory_region_add_subregion(address_space_mem, 0, ext_ram);
+=20
+     /* 256K of on-chip memory */
+-    memory_region_init_ram(ocm_ram, NULL, "zynq.ocm_ram", 256 << 10,
++    memory_region_init_ram(ocm_ram, NULL, "zynq.ocm_ram", 256 * KiB,
+                            &error_fatal);
+     memory_region_add_subregion(address_space_mem, 0xFFFC0000, ocm_ram);
+=20
+--=20
 2.21.0
 

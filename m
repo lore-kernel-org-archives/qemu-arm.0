@@ -1,101 +1,101 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3799083wrm;
-        Sun, 20 Oct 2019 16:14:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyQCOGL3uOAzy2dUqwBInHWOIO2G6UF5WvGWvmL/ELLDDIh/ZmQvRn7iaD+hJfTDxsTMynt
-X-Received: by 2002:aa7:d304:: with SMTP id p4mr21805453edq.224.1571613297930;
-        Sun, 20 Oct 2019 16:14:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571613297; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3799574wrm;
+        Sun, 20 Oct 2019 16:15:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyXqjzs7Dw+NLtBEbkH+wzxHGD0kRTHJdTMmJ0uHHaDDvWmGcfl0AoZrsgf9xpHXkomt1Dj
+X-Received: by 2002:a05:620a:a8b:: with SMTP id v11mr7560913qkg.146.1571613335250;
+        Sun, 20 Oct 2019 16:15:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571613335; cv=none;
         d=google.com; s=arc-20160816;
-        b=LZYmz+YioiU+9mwWgIb7uI8qz9wN7zOK4Uft+PAWA0vlW8eL71aSoTs0dpuVgfBbqv
-         BflSt8bcurLQ5/GYUJUFRgkJIjKhcAczP4EK6j+oJJ06gDaonmZlaJN/vsIn6MVf0lTj
-         ZKZvZlXVJ1BlcgfvyzJPVz78r0hVggWdot9bV+hfyJ2I1YCfY5i9n5hYbAnQ3kNzwMK2
-         PYpIVGKyoRrGmU70Xrh7r2/RkGfCC6FZk2knSGY6Nx1CVO+axh7+sInaoFIOpNPsbfLO
-         oyRMpHeT0VCnqiM59+KzOCpHrMqkTE6uOqn9GhTVQ4TFHLR1shv/PIarPyYkHs4hDSgF
-         /LjQ==
+        b=ae+t+vcoFNwKlt3oD+Ok12k5xkJLTO0nF6Xs2EclFiZVpgyf5p+pP6c2Iz2pZWU2vJ
+         PgCJ9mRI3m8ISbedZBbfY8Nik4CcypFQVLuHtwisYclYiBL03GDg7tQfih1RBIvAKV6q
+         8Kd0FxT0EG8UQh1ve26JowbRspOtzTS32oRSOjPcq3Y/1hicsyHbTuI0adKujsChKgXW
+         9MZ828oec7HY5/tQRJucISpc1V/Sd8ZZQjG4g/FmxaGFyPH5+FbBh3l9kDsumvTK2wcT
+         EFUurtWSugp5/IKiWffdYq7ATwRvNfujYsE102nBsSK0ZpJi1cIS2BCWe43aA64kPFDe
+         eyTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=GYrjwKUtmGWNVT9jpBDGXDGVAk9jA0k5Lxt2r1TTs2k=;
-        b=H3/Um1hk1/RZeuxQnWAt9SrQgmkyWzOVU9b0H3OTNAPSQ38IF5lhMMTN4N+gtRlQFk
-         fbpI+/C4ADuwNSY1IcUdutOW8hf5o5jLhmED/g2bOCe+pQ3X8ekmuVHdnuvjX9MO7Zjf
-         iIx4cgj5sfZvTUseVvYOoKXFdA1fxLizVgeo9ZtTaiR11oxt+QdYn9eyoYX9/cJFawC+
-         HBbpcZTc8Eer6xEDm6oAii+nIMRhOW+Qq63jYPqlw8rgP95WXvVjbyrKjaBVoYo3pCRb
-         wqDXhJWu5yZRj0sxHDYF6ylGZmgClhb0vr++nywvWH3Y2hrKkpfcWSR9HJWoYabsVux3
-         ukOQ==
+        bh=EZOXsBkXNLN37T5Bu+Njxs6LEcBgnAgrnlrLO8iJTNM=;
+        b=PTO2fXDN0eA4PB7IdOfspk7wOjhAHXPvQA6aGp8K1W2UxXHl7J/Rb29NGG7NgviRam
+         W0az8WrU8qepQRZG918A6EUp3Fe5vIM/8PRjoXsE3qcpxgFbp0WYO2MNl8eQZtTQoEy4
+         paAmwsZVuvjVoB3fWd4Urujc5AInnF+j8n2SDncqvS0Y86Vt9cXemRJuRWY/A3tRNaOS
+         Nhm4ge0C+J3PFznHrZQ2E6sNAEVsF6W+Npgw8MNDyE5sm5MkRtasDE8KfQEeKniKE1C1
+         tDMbDrVYjmqRaGWt5JNs8EYs9SWBMYWZWZdpHblryWXMLqSrr73/UfgiawTWrzUyseNs
+         fP+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Y8aD9Qef;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="CG/A4biG";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a10si1553548eda.201.2019.10.20.16.14.57
+        by mx.google.com with ESMTPS id s29si5176185qta.190.2019.10.20.16.15.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Oct 2019 16:14:57 -0700 (PDT)
+        Sun, 20 Oct 2019 16:15:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Y8aD9Qef;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="CG/A4biG";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51304 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51316 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMKPY-00065h-Ny
-	for alex.bennee@linaro.org; Sun, 20 Oct 2019 19:14:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35591)
+	id 1iMKQA-0006uc-6x
+	for alex.bennee@linaro.org; Sun, 20 Oct 2019 19:15:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35130)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMKES-00046q-V1
- for qemu-devel@nongnu.org; Sun, 20 Oct 2019 19:03:30 -0400
+ (envelope-from <philmd@redhat.com>) id 1iMKCh-0002Ea-FC
+ for qemu-devel@nongnu.org; Sun, 20 Oct 2019 19:01:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMKER-0002k8-JQ
- for qemu-devel@nongnu.org; Sun, 20 Oct 2019 19:03:28 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:43941
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1iMKCf-00021W-OS
+ for qemu-devel@nongnu.org; Sun, 20 Oct 2019 19:01:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27122
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMKER-0002jn-FB
- for qemu-devel@nongnu.org; Sun, 20 Oct 2019 19:03:27 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMKCf-000219-GP
+ for qemu-devel@nongnu.org; Sun, 20 Oct 2019 19:01:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571612607;
+ s=mimecast20190719; t=1571612497;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GYrjwKUtmGWNVT9jpBDGXDGVAk9jA0k5Lxt2r1TTs2k=;
- b=Y8aD9QefUh5qSgs4H4/1sxJZFo8BJ01i+TQ+NXfpllFngmFSwbNP6IPDzYiGExorBwRzHm
- iZwmK0mlTKfAsLCO0P8h3xlcpxbaL9FgjYBQZGCEBxmsLZu2lQeVzxxJRlWTyJen5Djook
- qAPh+NHPXJxVLd6qyjTd8On0KLSYoE4=
+ bh=EZOXsBkXNLN37T5Bu+Njxs6LEcBgnAgrnlrLO8iJTNM=;
+ b=CG/A4biGRMYuEn4TADS0L4X77KQLXYL4QVvT8Pmv8L+YVeXm4ab7zF9zMs25sgqpr4XsQL
+ Tymhp10b4k53yof5QH7naE+GN4xm4GN0ZEg72Xja+PTpFZ5JHHuuayYEGOsjXWxPGoF2Er
+ qHGCaWPtA0CCA39L+KeV9OH0WXeULoM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-335-PfmdNgNiNvSjFWCeEovMUw-1; Sun, 20 Oct 2019 19:03:23 -0400
+ us-mta-228-AAkSPIZANs2LarwPq2jSQA-1; Sun, 20 Oct 2019 19:01:33 -0400
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C3D4A476;
- Sun, 20 Oct 2019 23:03:19 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 640521800D9B;
+ Sun, 20 Oct 2019 23:01:29 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-40.brq.redhat.com [10.40.204.40])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0694E60C18;
- Sun, 20 Oct 2019 23:03:00 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1143A60C18;
+ Sun, 20 Oct 2019 23:01:11 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH 19/21] hw/ppc: Let the machine be the owner of the system
+Subject: [PATCH 13/21] hw/cris: Let the machine be the owner of the system
  memory
-Date: Mon, 21 Oct 2019 00:56:48 +0200
-Message-Id: <20191020225650.3671-20-philmd@redhat.com>
+Date: Mon, 21 Oct 2019 00:56:42 +0200
+Message-Id: <20191020225650.3671-14-philmd@redhat.com>
 In-Reply-To: <20191020225650.3671-1-philmd@redhat.com>
 References: <20191020225650.3671-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: PfmdNgNiNvSjFWCeEovMUw-1
+X-MC-Unique: AAkSPIZANs2LarwPq2jSQA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -135,143 +135,27 @@ Cc: Paul Burton <pburton@wavecomp.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B7gaRxrHZb9E
+X-TUID: nvDYwJF5tait
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/ppc/e500.c          | 3 ++-
- hw/ppc/mac_newworld.c  | 3 ++-
- hw/ppc/mac_oldworld.c  | 2 +-
- hw/ppc/pnv.c           | 2 +-
- hw/ppc/ppc405_boards.c | 6 +++---
- hw/ppc/prep.c          | 3 ++-
- hw/ppc/spapr.c         | 2 +-
- hw/ppc/virtex_ml507.c  | 2 +-
- 8 files changed, 13 insertions(+), 10 deletions(-)
+ hw/cris/axis_dev88.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 91cd4c26f9..9c7be26248 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -912,7 +912,8 @@ void ppce500_init(MachineState *machine)
-     machine->ram_size =3D ram_size;
-=20
-     /* Register Memory */
--    memory_region_allocate_system_memory(ram, NULL, "mpc8544ds.ram", ram_s=
-ize);
-+    memory_region_allocate_system_memory(ram, machine, "mpc8544ds.ram",
-+                                         ram_size);
-     memory_region_add_subregion(address_space_mem, 0, ram);
-=20
-     dev =3D qdev_create(NULL, "e500-ccsr");
-diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-index c5bbcc7433..8409114eed 100644
---- a/hw/ppc/mac_newworld.c
-+++ b/hw/ppc/mac_newworld.c
-@@ -152,7 +152,8 @@ static void ppc_core99_init(MachineState *machine)
-     }
+diff --git a/hw/cris/axis_dev88.c b/hw/cris/axis_dev88.c
+index 940c7dd122..faa7058733 100644
+--- a/hw/cris/axis_dev88.c
++++ b/hw/cris/axis_dev88.c
+@@ -270,7 +270,7 @@ void axisdev88_init(MachineState *machine)
+     env =3D &cpu->env;
 =20
      /* allocate RAM */
--    memory_region_allocate_system_memory(ram, NULL, "ppc_core99.ram", ram_=
-size);
-+    memory_region_allocate_system_memory(ram, machine, "ppc_core99.ram",
-+                                         ram_size);
-     memory_region_add_subregion(get_system_memory(), 0, ram);
-=20
-     /* allocate and load BIOS */
-diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-index 0fa680b749..9dd645476a 100644
---- a/hw/ppc/mac_oldworld.c
-+++ b/hw/ppc/mac_oldworld.c
-@@ -127,7 +127,7 @@ static void ppc_heathrow_init(MachineState *machine)
-         exit(1);
-     }
-=20
--    memory_region_allocate_system_memory(ram, NULL, "ppc_heathrow.ram",
-+    memory_region_allocate_system_memory(ram, machine, "ppc_heathrow.ram",
+-    memory_region_allocate_system_memory(phys_ram, NULL, "axisdev88.ram",
++    memory_region_allocate_system_memory(phys_ram, machine, "axisdev88.ram=
+",
                                           ram_size);
-     memory_region_add_subregion(sysmem, 0, ram);
+     memory_region_add_subregion(address_space_mem, 0x40000000, phys_ram);
 =20
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index 7cf64b6d25..ac731c4f88 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -640,7 +640,7 @@ static void pnv_init(MachineState *machine)
-     }
-=20
-     ram =3D g_new(MemoryRegion, 1);
--    memory_region_allocate_system_memory(ram, NULL, "pnv.ram",
-+    memory_region_allocate_system_memory(ram, machine, "pnv.ram",
-                                          machine->ram_size);
-     memory_region_add_subregion(get_system_memory(), 0, ram);
-=20
-diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-index 388cae0b43..8a2d2f4511 100644
---- a/hw/ppc/ppc405_boards.c
-+++ b/hw/ppc/ppc405_boards.c
-@@ -162,8 +162,8 @@ static void ref405ep_init(MachineState *machine)
-     MemoryRegion *sysmem =3D get_system_memory();
-=20
-     /* XXX: fix this */
--    memory_region_allocate_system_memory(&ram_memories[0], NULL, "ef405ep.=
-ram",
--                                         0x08000000);
-+    memory_region_allocate_system_memory(&ram_memories[0], machine,
-+                                         "ef405ep.ram", 128 * MiB);
-     ram_bases[0] =3D 0;
-     ram_sizes[0] =3D 0x08000000;
-     memory_region_init(&ram_memories[1], NULL, "ef405ep.ram1", 0);
-@@ -427,7 +427,7 @@ static void taihu_405ep_init(MachineState *machine)
-=20
-     /* RAM is soldered to the board so the size cannot be changed */
-     ram_size =3D 0x08000000;
--    memory_region_allocate_system_memory(ram, NULL, "taihu_405ep.ram",
-+    memory_region_allocate_system_memory(ram, machine, "taihu_405ep.ram",
-                                          ram_size);
-=20
-     ram_bases[0] =3D 0;
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 4f3c6bf190..54b00805e0 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -445,7 +445,8 @@ static void ppc_prep_init(MachineState *machine)
-     }
-=20
-     /* allocate RAM */
--    memory_region_allocate_system_memory(ram, NULL, "ppc_prep.ram", ram_si=
-ze);
-+    memory_region_allocate_system_memory(ram, machine, "ppc_prep.ram",
-+                                         ram_size);
-     memory_region_add_subregion(sysmem, 0, ram);
-=20
-     if (linux_boot) {
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 4eb97d3a9b..1f168edd43 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -2840,7 +2840,7 @@ static void spapr_machine_init(MachineState *machine)
-     }
-=20
-     /* allocate RAM */
--    memory_region_allocate_system_memory(ram, NULL, "ppc_spapr.ram",
-+    memory_region_allocate_system_memory(ram, machine, "ppc_spapr.ram",
-                                          machine->ram_size);
-     memory_region_add_subregion(sysmem, 0, ram);
-=20
-diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-index 68625522d8..86c9273dc0 100644
---- a/hw/ppc/virtex_ml507.c
-+++ b/hw/ppc/virtex_ml507.c
-@@ -224,7 +224,7 @@ static void virtex_init(MachineState *machine)
-=20
-     qemu_register_reset(main_cpu_reset, cpu);
-=20
--    memory_region_allocate_system_memory(phys_ram, NULL, "ram", ram_size);
-+    memory_region_allocate_system_memory(phys_ram, machine, "ram", ram_siz=
-e);
-     memory_region_add_subregion(address_space_mem, ram_base, phys_ram);
-=20
-     dinfo =3D drive_get(IF_PFLASH, 0, 0);
 --=20
 2.21.0
 

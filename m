@@ -1,124 +1,122 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3790420wrm;
-        Sun, 20 Oct 2019 16:03:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwujhQEaBXMYMJhZL89KNoJLg+zYXsKRShFVD3SZSlI+61jVfGonREpmJOSrMUvoIGn7Jgt
-X-Received: by 2002:a0c:8b5b:: with SMTP id d27mr7791833qvc.29.1571612607914;
-        Sun, 20 Oct 2019 16:03:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571612607; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3790988wrm;
+        Sun, 20 Oct 2019 16:04:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzDuczwTAFQczMUQEjL57PkR5RhKv4KqxJKIl4P3Ix4VpN2LYeGYDaiqsaIXqVzS1hbnhF7
+X-Received: by 2002:aed:22c8:: with SMTP id q8mr22830257qtc.0.1571612645592;
+        Sun, 20 Oct 2019 16:04:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571612645; cv=none;
         d=google.com; s=arc-20160816;
-        b=H58/1Ogoa0uYXwWJ6PwJcLsC3oeGdquv/YN05By1dYAkmFIzQuxl5orNLPizV1dQ2E
-         qfJs+cn+y3+8kHVqpD28iAygTLwwPoDLqC9PGzTglGYNd4uMSDic0KEdmBmY2wZhHUnh
-         yN9alHYrpWylaDFvBv3ju385ckAEzYbToKpHHNXCiPQf/wU5J2Vl9EA8lf4UeQORX0kS
-         SJLEmsk4/uxbTBFa+ptdD9waxfxlqayAFpLOEhatHUKrQHC5EivjcuXwnrIVa4A+kSaH
-         CWJ7xVCaCIb1mWN2JTVTMNEeSURBdAkd0vw9q/0hdUAbHG3etZQsPWBnvA2gjWd7ir9S
-         BaUg==
+        b=oNksadxUzhHFAZhj8xVBisvfoS7DmwCn93xNYQzhoRs16Mvcep3w1pQRB/2kQl6Jkd
+         X31oqE561dpFuISKiw7S8YTY2zCaL6I2FVWnzXfpl1nYD9Vl2Wk7C0NEZMgHs4Of/SwR
+         aJLiEMzxTsPN+4GlVrx2kljLSVIz2QXHS+aC5skYse4Nf6nPX206NlfLYhDNHDVLZ40V
+         AreC7/NrX8t/xwBUU0Tz2wkKSRfe8VMmToiOTdXLOp+8T2GFoa+fnXdZEn11stondZcT
+         ehqQpNxtLeb1FCV0mdtChKHOdAwCYLAacS6MURScWAURSG3jOS8G0D3RdT5axzZudXuK
+         7OlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8nN+Go+RSeTcnebYfeK3H4Ap4eDouNzPwOB+9HqRbY8=;
-        b=PDLsPKWf4ha7UvEVEYpTwNH3Y0FHNaGGPFN3LEJrzKS8pL6bvq3sMMh+GPo1Zs+LqI
-         ZMO3x3lyvMi/MfyGttf0YeGXpbAQK8Qf1eguCjFvK2k/e2idhyczbnu16lZQL/9SOI/Y
-         47/kXMBOBcKz76eBZJFW8CMjYYW+vZHibC/DOaj6cyd5iXjHSUJLCq0pOXakOY3NWDvM
-         D68d04go6UfCOmMn5LYGZSlrml+qtmgWDExAnDAuM9OiImDkPnlrh1/xyJVrFjDEqgi0
-         g0EEiCEwJ9UFdv8z7SD7N/lX7LNyCwz5Agb1zexC7jdjbF8ONRcePcMsctvyElI9DkVC
-         zrWw==
+        bh=00y7jQpSxo9MyQHgBlj8zdJXUgyhGSSLykacNJ1ow64=;
+        b=G12R/Wi/u5mFZvlfvbV/w+8He8YFEzKYpHx399863d4iYGXO0zYI3cg6cWukMPSfY+
+         Dsadma4As2Y/c2g0bh0Dp+L2f2E525WcA1knrR2jxL+Czq6zXHcy4wRfJb4eTHgXz5w5
+         t9BY5j1n3+1wkzIsYFp2YaWRnhN0dCiMhPyexkezair9O1+neNeJ60eQLfQFVn0aYc6n
+         uw4Vg8uOqTp+rY7FXS72Hb2NvQ8NtlGIphFbcSJ6dugf9pzrRk/U8M+Irj7jUXw5ux08
+         vzsdBXcaXpAUoMocFIQNNQWNLQhQf2tqJ9zG4WKt9+LOtPEaRxE6PCsHqteAeDa2GCq4
+         RZrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IWx8b6tu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J+m8cIMQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s12si12144061qtq.258.2019.10.20.16.03.27
+        by mx.google.com with ESMTPS id l8si12219458qkj.114.2019.10.20.16.04.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Oct 2019 16:03:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 20 Oct 2019 16:04:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IWx8b6tu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J+m8cIMQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51092 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51078 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMKEQ-0003iv-LI
-	for alex.bennee@linaro.org; Sun, 20 Oct 2019 19:03:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35377)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMKF2-0003MT-RO
+	for alex.bennee@linaro.org; Sun, 20 Oct 2019 19:04:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34529)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMKDb-0003CI-Nr
- for qemu-arm@nongnu.org; Sun, 20 Oct 2019 19:02:36 -0400
+ (envelope-from <philmd@redhat.com>) id 1iMK9n-0007rt-BU
+ for qemu-devel@nongnu.org; Sun, 20 Oct 2019 18:58:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMKDZ-0002Q0-5s
- for qemu-arm@nongnu.org; Sun, 20 Oct 2019 19:02:34 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20933
+ (envelope-from <philmd@redhat.com>) id 1iMK9l-0000mf-Sy
+ for qemu-devel@nongnu.org; Sun, 20 Oct 2019 18:58:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:53726
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMKDZ-0002Pn-24
- for qemu-arm@nongnu.org; Sun, 20 Oct 2019 19:02:33 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMK9l-0000mM-Ow
+ for qemu-devel@nongnu.org; Sun, 20 Oct 2019 18:58:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571612552;
+ s=mimecast20190719; t=1571612317;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8nN+Go+RSeTcnebYfeK3H4Ap4eDouNzPwOB+9HqRbY8=;
- b=IWx8b6tuoij9LUnhsKLxnS8RgsmdTvqvNjpgxnzlXcxpMH6L2BRfCqYmwGODnbNYVmduNU
- tHAkoTRzP583MUmj0uDCHgPo7CURg7HidEmGdRXBBrOGJw2pEB6RJaTbbVYE3NbTZaeeq4
- WF9jTlE3GhPaybXFND4A9pYHbXnoYVM=
+ bh=00y7jQpSxo9MyQHgBlj8zdJXUgyhGSSLykacNJ1ow64=;
+ b=J+m8cIMQnuC4eRQrdUHOIis1Qpaqz/pgWtXkBVKgQ56mx1zZ1hMPY0ZgwXNj8MlWeCTuze
+ wOvfSndkRGWUHVtaQ19IVjYLjdtoIoQN+NQxXRE2fWR9LNoHBfX/93agx4tDS7bEjTdJVF
+ 11IyPTQ45xyHt+G3x9HDIjd7l0sgz9A=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-242-FaWxuisfM2eB3mh1V5C4NQ-1; Sun, 20 Oct 2019 19:02:31 -0400
+ us-mta-17-v505K273OgOtL1nkGe2Q9Q-1; Sun, 20 Oct 2019 18:58:33 -0400
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 84688107AD31;
- Sun, 20 Oct 2019 23:02:27 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 15AC91005509;
+ Sun, 20 Oct 2019 22:58:30 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-40.brq.redhat.com [10.40.204.40])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 97A5060C18;
- Sun, 20 Oct 2019 23:02:09 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9A79D60C18;
+ Sun, 20 Oct 2019 22:58:15 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH 16/21] hw/lm32: Let the machine be the owner of the system
- memory
-Date: Mon, 21 Oct 2019 00:56:45 +0200
-Message-Id: <20191020225650.3671-17-philmd@redhat.com>
+Subject: [PATCH 04/21] hw/arm/omap2: Create the RAM in the board
+Date: Mon, 21 Oct 2019 00:56:33 +0200
+Message-Id: <20191020225650.3671-5-philmd@redhat.com>
 In-Reply-To: <20191020225650.3671-1-philmd@redhat.com>
 References: <20191020225650.3671-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: FaWxuisfM2eB3mh1V5C4NQ-1
+X-MC-Unique: v505K273OgOtL1nkGe2Q9Q-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Paul Burton <pburton@wavecomp.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Leif Lindholm <leif.lindholm@linaro.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- KONRAD Frederic <frederic.konrad@adacore.com>, Rob Herring <robh@kernel.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring <robh@kernel.org>,
  Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Andrzej Zaborowski <balrogg@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Antony Pavlov <antonynpavlov@gmail.com>,
  Alistair Francis <alistair@alistair23.me>,
  Fabien Chouteau <chouteau@adacore.com>,
@@ -134,55 +132,129 @@ Cc: Paul Burton <pburton@wavecomp.com>,
  Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
  Aleksandar Markovic <amarkovic@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wEUHgvmg0+KO
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Fs9a5bAPWn9M
+
+The SDRAM is incorrectly created in the OMAP2420 SoC.
+Move its creation in the board code, this will later allow the
+board to have the QOM ownership of the RAM.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/lm32/lm32_boards.c | 4 ++--
- hw/lm32/milkymist.c   | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ hw/arm/nseries.c      | 10 +++++++---
+ hw/arm/omap2.c        | 13 +++++--------
+ include/hw/arm/omap.h |  4 +---
+ 3 files changed, 13 insertions(+), 14 deletions(-)
 
-diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
-index 5ae308bfcf..50b607e0cc 100644
---- a/hw/lm32/lm32_boards.c
-+++ b/hw/lm32/lm32_boards.c
-@@ -107,7 +107,7 @@ static void lm32_evr_init(MachineState *machine)
+diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
+index a36971d39a..11f2c193f3 100644
+--- a/hw/arm/nseries.c
++++ b/hw/arm/nseries.c
+@@ -1311,11 +1311,15 @@ static int n810_atag_setup(const struct arm_boot_in=
+fo *info, void *p)
+ static void n8x0_init(MachineState *machine,
+                       struct arm_boot_info *binfo, int model)
+ {
+-    MemoryRegion *sysmem =3D get_system_memory();
++    MemoryRegion *sdram =3D g_new(MemoryRegion, 1);
+     struct n800_s *s =3D (struct n800_s *) g_malloc0(sizeof(*s));
+-    int sdram_size =3D binfo->ram_size;
++    uint64_t sdram_size =3D binfo->ram_size;
 =20
-     reset_info->flash_base =3D flash_base;
-=20
--    memory_region_allocate_system_memory(phys_ram, NULL, "lm32_evr.sdram",
-+    memory_region_allocate_system_memory(phys_ram, machine, "lm32_evr.sdra=
-m",
-                                          ram_size);
-     memory_region_add_subregion(address_space_mem, ram_base, phys_ram);
-=20
-@@ -200,7 +200,7 @@ static void lm32_uclinux_init(MachineState *machine)
-=20
-     reset_info->flash_base =3D flash_base;
-=20
--    memory_region_allocate_system_memory(phys_ram, NULL,
-+    memory_region_allocate_system_memory(phys_ram, machine,
-                                          "lm32_uclinux.sdram", ram_size);
-     memory_region_add_subregion(address_space_mem, ram_base, phys_ram);
-=20
-diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
-index 460d322de5..ee2eb1877e 100644
---- a/hw/lm32/milkymist.c
-+++ b/hw/lm32/milkymist.c
-@@ -116,7 +116,7 @@ milkymist_init(MachineState *machine)
-=20
-     cpu_lm32_set_phys_msb_ignore(env, 1);
-=20
--    memory_region_allocate_system_memory(phys_sdram, NULL, "milkymist.sdra=
-m",
-+    memory_region_allocate_system_memory(phys_sdram, machine, "milkymist.s=
-dram",
-                                          sdram_size);
-     memory_region_add_subregion(address_space_mem, sdram_base, phys_sdram)=
+-    s->mpu =3D omap2420_mpu_init(sysmem, sdram_size, machine->cpu_type);
++    memory_region_allocate_system_memory(sdram, NULL, "omap2.dram",
++                                         sdram_size);
++    memory_region_add_subregion(get_system_memory(), OMAP2_Q2_BASE, sdram)=
 ;
++
++    s->mpu =3D omap2420_mpu_init(sdram, machine->cpu_type);
 =20
+     /* Setup peripherals
+      *
+diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+index bd7ddff983..457f152bac 100644
+--- a/hw/arm/omap2.c
++++ b/hw/arm/omap2.c
+@@ -22,6 +22,7 @@
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
++#include "exec/address-spaces.h"
+ #include "sysemu/blockdev.h"
+ #include "sysemu/qtest.h"
+ #include "sysemu/reset.h"
+@@ -2276,8 +2277,7 @@ static const struct dma_irq_map omap2_dma_irq_map[] =
+=3D {
+     { 0, OMAP_INT_24XX_SDMA_IRQ3 },
+ };
+=20
+-struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegion *sysmem,
+-                unsigned long sdram_size,
++struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegion *sdram,
+                 const char *cpu_type)
+ {
+     struct omap_mpu_state_s *s =3D g_new0(struct omap_mpu_state_s, 1);
+@@ -2286,11 +2286,11 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRe=
+gion *sysmem,
+     int i;
+     SysBusDevice *busdev;
+     struct omap_target_agent_s *ta;
++    MemoryRegion *sysmem =3D get_system_memory();
+=20
+     /* Core */
+     s->mpu_model =3D omap2420;
+     s->cpu =3D ARM_CPU(cpu_create(cpu_type));
+-    s->sdram_size =3D sdram_size;
+     s->sram_size =3D OMAP242X_SRAM_SIZE;
+=20
+     s->wakeup =3D qemu_allocate_irq(omap_mpu_wakeup, s, 0);
+@@ -2299,9 +2299,6 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
+on *sysmem,
+     omap_clk_init(s);
+=20
+     /* Memory-mapped stuff */
+-    memory_region_allocate_system_memory(&s->sdram, NULL, "omap2.dram",
+-                                         s->sdram_size);
+-    memory_region_add_subregion(sysmem, OMAP2_Q2_BASE, &s->sdram);
+     memory_region_init_ram(&s->sram, NULL, "omap2.sram", s->sram_size,
+                            &error_fatal);
+     memory_region_add_subregion(sysmem, OMAP2_SRAM_BASE, &s->sram);
+@@ -2338,8 +2335,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
+on *sysmem,
+     s->port->addr_valid =3D omap2_validate_addr;
+=20
+     /* Register SDRAM and SRAM ports for fast DMA transfers.  */
+-    soc_dma_port_add_mem(s->dma, memory_region_get_ram_ptr(&s->sdram),
+-                         OMAP2_Q2_BASE, s->sdram_size);
++    soc_dma_port_add_mem(s->dma, memory_region_get_ram_ptr(sdram),
++                         OMAP2_Q2_BASE, memory_region_size(sdram));
+     soc_dma_port_add_mem(s->dma, memory_region_get_ram_ptr(&s->sram),
+                          OMAP2_SRAM_BASE, s->sram_size);
+=20
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index 2fda996648..763d8eab4f 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -824,7 +824,6 @@ struct omap_mpu_state_s {
+     MemoryRegion tap_iomem;
+     MemoryRegion imif_ram;
+     MemoryRegion emiff_ram;
+-    MemoryRegion sdram;
+     MemoryRegion sram;
+=20
+     struct omap_dma_port_if_s {
+@@ -938,8 +937,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion =
+*system_memory,
+                 const char *core);
+=20
+ /* omap2.c */
+-struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegion *sysmem,
+-                unsigned long sdram_size,
++struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegion *sdram,
+                 const char *core);
+=20
+ uint32_t omap_badwidth_read8(void *opaque, hwaddr addr);
 --=20
 2.21.0
 

@@ -1,112 +1,113 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4863581wrm;
-        Mon, 21 Oct 2019 10:26:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxdZP1rtezUyUsZPVxbz3VKjeFp7MEPP6G5qOhssloeQp59e7owNWDmmxuMysZv9rXv1F+I
-X-Received: by 2002:a05:6402:1548:: with SMTP id p8mr26247030edx.43.1571678781728;
-        Mon, 21 Oct 2019 10:26:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571678781; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4865554wrm;
+        Mon, 21 Oct 2019 10:28:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxqwxx0JJ4cLwZslryLO6TWGgU9c8+kATLvHG2Vz2OaCKOQWeFvlTLm8jIhK/om9Cg6idv6
+X-Received: by 2002:ac8:5147:: with SMTP id h7mr24840828qtn.119.1571678880305;
+        Mon, 21 Oct 2019 10:28:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571678880; cv=none;
         d=google.com; s=arc-20160816;
-        b=DgxO6w8bdRwkLaqyqTSe8009FI94yOkXVEaryJnsB6CGcechSy2QSPHBh22LJSMol1
-         kIRLeN73DdciKYhmcTwEh8IW28cXNYfdTWfQYAEi8vbOF34ZrpmqOYONLXSnF7zAYhE9
-         L3yaHkjEa/6MNPVSGduINPvUnSOKO7N8Jp5wvw61tmwbjPg9B1MVTdEiDBhVJghhACgp
-         Roano9CTHXnde8n3t0xwPgo1SZREUMy32smfbWOKFyuASMnzMHTlhrRvkjW0TfDzShWN
-         4QUG6DsdzZ98f1g7NrkOqkVmwsDNfyifuyd1VMWEtP6L/SnOuveyvO7dXd6sH+ApRi4c
-         /JQg==
+        b=Y5ar7XMlvBOfbqObTJFB4f38/5EBpaZD88Q0nK55eQI6ml3S12ScpvUHOA/Z/+8tf0
+         MZhRzh51ZXDQVw0iCK9ZlSDrRjXHzAvbAQDUVbO/glGf7JfuR2KO49Uj7g7EFZE3AUqs
+         eoCPR8fuvhpxw36ECz85Y+qbe8kbNgysjqo3m1OguPn0R3CAmXkwvRs6qh6pReil9Ham
+         ND5YKufzRaMGnErcwu6YtO5O2YadrfBCG/G1sCVlCloflogyp+sRLfHZvuh9zKj4Y6ZC
+         uHY6hFHt2JaeCeKRzk8Ep7PO9lwnHTRhigh9i/gx8tNZPUyQZR54/L/dbwVu//mlWeGO
+         mjdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=wAqSWPJXFSHVj74PPS/yCHGiSw9ywGGfUoC9F5U5r2Y=;
-        b=OEav+V1YBcx/yYcdzhqZOs5k0GIMiUCGpGHTeFL5arhmk8TvnA3M2GhJT2qqdHSPxp
-         Lkys0r2YmzwjvSN0jx9gnkcbbrEjf32xSZA1haBV0PBQ3hyaA6G+E96XDTdGcO5BUi/A
-         ikpMQG2GlqMaIGXuBKA4NDpbJW09X7HVjuCH5iPcUi+9aTyk2o0RRfMkPyKmupYUEnAh
-         zd/6/ZE+9rkIVVxpVy1K7Q/Sgbn9/ug/wCvwoSbmCQNx6aWlozD7SQT+PVs2V/t/VaI4
-         BSm56IvTpBHN7yPq7mJnqiop+ImioHoU3+fQmtG+I2E5IthbbPfvVvNygouar6D8BUpd
-         xrzg==
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=uHOeIskfuKSRRfkvxylgp3thln5uOHC3zxwjYo9bmPI=;
+        b=zoYDqDlFV02wcqIFYh3nBH0KU9D5EOFX7ynDxfWunc4XjjqzY6wwfHC/OoIjScdPI3
+         IR/v12jLOPqf9nqAkiLPwpav8/9PDNPyaujlBstiVNqlreGwzZ1c8hhwXbVPz/1YgxAf
+         aLuoRbV9GRYCEZ16qTTwwl2ZEtUIi7F+0noZ08uvUgA0FQWHw+ASqjeC8Cl4RYQ4p5dT
+         rS4QkXDNAgf/v131M9dEdgmq9ytX8m2Dl+27GbTGW2DbfkrArYaZvNzdUDi4PUf1a7Ud
+         bl4gwyT5zqyspdEk4E4sscm8nwghJJrEBzWjKnQbkbgT7eOE2wC4wown9BZ85hdRaMVs
+         T4BA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=mHzpFrby;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6si5659612eda.258.2019.10.21.10.26.21
+        by mx.google.com with ESMTPS id m23si13836780qtp.225.2019.10.21.10.28.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 10:26:21 -0700 (PDT)
+        Mon, 21 Oct 2019 10:28:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=mHzpFrby;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46028 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46073 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMbRk-0003XF-Bf
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 13:26:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45466)
+	id 1iMbTL-0005EE-7X
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 13:27:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45613)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMbRZ-0003WY-DL
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:26:10 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iMbSx-0005C7-Fz
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:27:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMbRY-0004SC-3F
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:26:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41218)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMbRX-0004Ro-Qx
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:26:08 -0400
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B0EB5C057F23
- for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 17:26:06 +0000 (UTC)
-Received: by mail-wr1-f69.google.com with SMTP id a6so4828026wru.1
- for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 10:26:06 -0700 (PDT)
+ (envelope-from <richard.henderson@linaro.org>) id 1iMbSw-0004yj-9b
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:27:35 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:45804)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iMbSv-0004ww-Mj
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:27:34 -0400
+Received: by mail-pf1-x442.google.com with SMTP id y72so8820468pfb.12
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 10:27:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=uHOeIskfuKSRRfkvxylgp3thln5uOHC3zxwjYo9bmPI=;
+ b=mHzpFrbyhHbJLwsRuaaSJY1pvpzNxeAdqASeE6qHENBxinMyXWk81UMUlLKVzuh8jD
+ QmCyXc1uujTPkY58o05NGghyCZSjz+dmZQGB0rN3aN2h2a77dl+600TKlmUtWMXOHfUV
+ PnQF4y4Uq8d/0qLAcqavOZgwhdZKnIuk9w/WiADNUGRW/3zZFPX0BeXrl8rwP3IrB7ZO
+ kgXvcoV52Y5ybVpMdIU4OfIKX2iBtjgTIiaSgcOsdOXyKyBN7Gl3JmFiRCUH4WGlKJoN
+ xMZuJmj3mMGAdMzoo02YqsWLTNYs7kLzAimvWTGsXaEdj5ylR4iH64EXQu2zMHaD59FV
+ xXBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=K79IArKLYvUwT0kQsS1BKAuATMqgP22/3r5AFtTT7IM=;
- b=KKmFjFKgFgSJuFd8Wzm2o3KjbePuqGk8SjTeImWnSt9Sg9Cm+zFjmLUvHmu2blisYC
- bjjLr+ZXaMMvsWXdYpg2jlbfavopOADQu0qGBWegKvIeDx0pcc6YH5xv5OZZZLMcPhVG
- aKeiCnrSalQyBdUT3E72DQSaGDqcLdY77GaikK8acLKeHylGuLPgPFN70hhKKNp7SVSp
- nRkOjLetGPCNhnL3iRcUPrT6frpoa06Vbddyu87XYUgw1ZDkZfVQ6sRny3fqcY5xNUmP
- o3x3FLW7D9OstV6nk4/wF1Sc7U9y2oEZpx7e0j06jSLcJhgd0RZZ233IGlpXmNsBUFXr
- zjjg==
-X-Gm-Message-State: APjAAAWJhrXE5yqdeGmVGK0AJsAve4MJChsNokO/DDfNazXVf6SL1S36
- 6SwPSLAr+Ro4br9heZXj1Avl8KT0LV/UIU+dMyQ6ipoJacJIVCxq0xy7ZbrCRPKquupRUMoOA6t
- delbGh59ZwAaY
-X-Received: by 2002:adf:ea86:: with SMTP id s6mr19882450wrm.397.1571678765290; 
- Mon, 21 Oct 2019 10:26:05 -0700 (PDT)
-X-Received: by 2002:adf:ea86:: with SMTP id s6mr19882402wrm.397.1571678765015; 
- Mon, 21 Oct 2019 10:26:05 -0700 (PDT)
-Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
- [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id t13sm21914746wra.70.2019.10.21.10.26.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Oct 2019 10:26:04 -0700 (PDT)
-Subject: Re: [PATCH 11/21] hw/alpha: Let the machine be the owner of the
- system memory
-To: Richard Henderson <richard.henderson@linaro.org>,
+ bh=uHOeIskfuKSRRfkvxylgp3thln5uOHC3zxwjYo9bmPI=;
+ b=cKlDmFIP2vXMEw4Y5C8/eLgX8tk0oJIlyf1S7kdfNLi0V5vM8/QK1Ll2XHTi2nj50q
+ RTGNjjxWtx/mgJwccGfipljqbptkI/fAXeswicjnGlfO+TvFwhvIQ9ky8yFdvVXMpKvW
+ unmYja0g8xI2OpcG9ktc3GUfLs/vNGrTjohnHI21Ra26fGklV0WRpPKRvShBgvDbEyEE
+ /SFe5Wle7Zv+y1UaAvJoN9ECFMaKsAffGeFzv1IJAC2JiGUtniGyFyidjPCzuWYDuKW0
+ rJ4MCitNc5jkQfzIeq0gDpbiAy3Sb0EMATxx3R1RBCbHIS4KhlPSPDQwLOqJlxr1RMYm
+ By1g==
+X-Gm-Message-State: APjAAAUwnJEQpvJykuBlhJN9oMapLGwsHQZYYebOOZ9udEFudo2xKdh2
+ iXuIrQRS8p9YS7gGvmzJPO8zxQ==
+X-Received: by 2002:aa7:9295:: with SMTP id j21mr23892413pfa.87.1571678848073; 
+ Mon, 21 Oct 2019 10:27:28 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id v8sm27124002pje.6.2019.10.21.10.27.26
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 21 Oct 2019 10:27:27 -0700 (PDT)
+Subject: Re: [PATCH 08/21] hw/alpha/dp264: Create the RAM in the board
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>
 References: <20191020225650.3671-1-philmd@redhat.com>
- <20191020225650.3671-12-philmd@redhat.com>
- <ed804be1-8516-3dbc-d738-20c2b03e5309@linaro.org>
- <ad652874-452b-2c8e-b80f-b6b8b5b8a751@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <3c845791-2c46-5fcb-430d-e0ec5d2b2999@redhat.com>
-Date: Mon, 21 Oct 2019 19:26:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ <20191020225650.3671-9-philmd@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <708cda0d-4e05-4f15-5131-288567e91a4d@linaro.org>
+Date: Mon, 21 Oct 2019 10:27:24 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <ad652874-452b-2c8e-b80f-b6b8b5b8a751@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20191020225650.3671-9-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::442
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -143,124 +144,45 @@ Cc: Paul Burton <pburton@wavecomp.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /MldECsoARJL
+X-TUID: oWnZXlJwzYhq
 
-On 10/21/19 7:19 PM, Richard Henderson wrote:
-> On 10/21/19 10:14 AM, Richard Henderson wrote:
->> On 10/20/19 3:56 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>> ---
->>>   hw/alpha/dp264.c | 2 +-
->>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
->>> index ddc249261c..5696b1e79b 100644
->>> --- a/hw/alpha/dp264.c
->>> +++ b/hw/alpha/dp264.c
->>> @@ -78,7 +78,7 @@ static void clipper_init(MachineState *machine)
->>>        * Main memory region, 0x00.0000.0000.  Real hardware supports =
-32GB,
->>>        * but the address space hole reserved at this point is 8TB.
->>>        */
->>> -    memory_region_allocate_system_memory(&ram_region, NULL, "ram",
->>> +    memory_region_allocate_system_memory(&ram_region, machine, "ram"=
-,
->>>                                            ram_size);
->>>       memory_region_add_subregion(get_system_memory(), 0, &ram_region=
-);
->>>  =20
->>>
->>
->> I take it this squishes into the squish of patches 7+9?
->=20
-> Ah, no, it was the TyphoonState that had owned the ram prior to patch 7=
-.
+On 10/20/19 3:56 PM, Philippe Mathieu-Daudé wrote:
+> @@ -73,8 +74,16 @@ static void clipper_init(MachineState *machine)
+>      cpus[0]->env.trap_arg1 = 0;
+>      cpus[0]->env.trap_arg2 = smp_cpus;
+>  
+> +    /*
+> +     * Main memory region, 0x00.0000.0000.  Real hardware supports 32GB,
+> +     * but the address space hole reserved at this point is 8TB.
+> +     */
+> +    memory_region_allocate_system_memory(&ram_region, NULL, "ram",
+> +                                         ram_size);
+> +    memory_region_add_subregion(get_system_memory(), 0, &ram_region);
 
-Indeed, I'll squash them and document in the commit description that I=20
-dropped Typhoon ownership. I'm not sure what's best here, keep it=20
-unassigned until patch #11 (this), or reassign to OBJECT(machine).
+The thing that I don't like about this is that ...
 
-New squashed patch is:
+> @@ -849,12 +848,6 @@ PCIBus *typhoon_init(ram_addr_t ram_size, ISABus **isa_bus,
+>  
+>      *p_rtc_irq = qemu_allocate_irq(typhoon_set_timer_irq, s, 0);
+>  
+> -    /* Main memory region, 0x00.0000.0000.  Real hardware supports 32GB,
+> -       but the address space hole reserved at this point is 8TB.  */
+> -    memory_region_allocate_system_memory(&s->ram_region, NULL, "ram",
+> -                                         ram_size);
+> -    memory_region_add_subregion(addr_space, 0, &s->ram_region);
+> -
+>      /* TIGbus, 0x801.0000.0000, 1GB.  */
+>      /* ??? The TIGbus is used for delivering interrupts, and access to
+>         the flash ROM.  I'm not sure that we need to implement it at all.  */
 
--- 8< --
-diff --git a/hw/alpha/alpha_sys.h b/hw/alpha/alpha_sys.h
-index 4e127a6de8..17f97e1bfe 100644
---- a/hw/alpha/alpha_sys.h
-+++ b/hw/alpha/alpha_sys.h
-@@ -10,7 +10,7 @@
-  #include "hw/i386/pc.h"
+... previously, it was clear that Typhoon owns the entire address space layout.
+ With this moved to dp264.c, the "address space hole" comment is out of context
+and makes no sense.
+
+Would it be too weird to pass in a MemoryRegion* to typhoon_init and leave the
+memory_region_add_subregion() call where it is?
 
 
--PCIBus *typhoon_init(ram_addr_t, ISABus **, qemu_irq *, AlphaCPU *[4],
-+PCIBus *typhoon_init(ISABus **, qemu_irq *, AlphaCPU *[4],
-                       pci_map_irq_fn);
+r~
 
-  /* alpha_pci.c.  */
-diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-index 51feee8558..a93a476531 100644
---- a/hw/alpha/dp264.c
-+++ b/hw/alpha/dp264.c
-@@ -62,6 +62,7 @@ static void clipper_init(MachineState *machine)
-      uint64_t palcode_entry, palcode_low, palcode_high;
-      uint64_t kernel_entry, kernel_low, kernel_high;
-      unsigned int smp_cpus =3D machine->smp.cpus;
-+    MemoryRegion *ram =3D g_new(MemoryRegion, 1);
 
-      /* Create up to 4 cpus.  */
-      memset(cpus, 0, sizeof(cpus));
-@@ -73,8 +74,15 @@ static void clipper_init(MachineState *machine)
-      cpus[0]->env.trap_arg1 =3D 0;
-      cpus[0]->env.trap_arg2 =3D smp_cpus;
-
-+    /*
-+     * Main memory region, 0x00.0000.0000.  Real hardware supports 32GB,
-+     * but the address space hole reserved at this point is 8TB.
-+     */
-+    memory_region_allocate_system_memory(ram, OBJECT(machine), "ram",=20
-ram_size);
-+    memory_region_add_subregion(get_system_memory(), 0, ram);
-+
-      /* Init the chipset.  */
--    pci_bus =3D typhoon_init(ram_size, &isa_bus, &rtc_irq, cpus,
-+    pci_bus =3D typhoon_init(&isa_bus, &rtc_irq, cpus,
-                             clipper_pci_map_irq);
-
-      /* Since we have an SRM-compatible PALcode, use the SRM epoch.  */
-diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
-index 179e1f7658..12589ef331 100644
---- a/hw/alpha/typhoon.c
-+++ b/hw/alpha/typhoon.c
-@@ -58,7 +58,6 @@ typedef struct TyphoonState {
-      TyphoonCchip cchip;
-      TyphoonPchip pchip;
-      MemoryRegion dchip_region;
--    MemoryRegion ram_region;
-  } TyphoonState;
-
-  /* Called when one of DRIR or DIM changes.  */
-@@ -817,7 +816,7 @@ static void typhoon_alarm_timer(void *opaque)
-      cpu_interrupt(CPU(s->cchip.cpu[cpu]), CPU_INTERRUPT_TIMER);
-  }
-
--PCIBus *typhoon_init(ram_addr_t ram_size, ISABus **isa_bus,
-+PCIBus *typhoon_init(ISABus **isa_bus,
-                       qemu_irq *p_rtc_irq,
-                       AlphaCPU *cpus[4], pci_map_irq_fn sys_map_irq)
-  {
-@@ -849,12 +848,6 @@ PCIBus *typhoon_init(ram_addr_t ram_size, ISABus=20
-**isa_bus,
-
-      *p_rtc_irq =3D qemu_allocate_irq(typhoon_set_timer_irq, s, 0);
-
--    /* Main memory region, 0x00.0000.0000.  Real hardware supports 32GB,
--       but the address space hole reserved at this point is 8TB.  */
--    memory_region_allocate_system_memory(&s->ram_region, OBJECT(s), "ram=
-",
--                                         ram_size);
--    memory_region_add_subregion(addr_space, 0, &s->ram_region);
--
-      /* TIGbus, 0x801.0000.0000, 1GB.  */
-      /* ??? The TIGbus is used for delivering interrupts, and access to
-         the flash ROM.  I'm not sure that we need to implement it at=20
-all.  */
----

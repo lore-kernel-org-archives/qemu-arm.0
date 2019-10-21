@@ -1,125 +1,129 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4428394wrm;
-        Mon, 21 Oct 2019 04:18:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxjDCcjirsHj8NDAo6LjNwWkEOgEAL7ts/57wLs/nQbpyfYrjY0ngVjP/eZDz7Zz1Eo5WTI
-X-Received: by 2002:a17:906:6087:: with SMTP id t7mr21651213ejj.58.1571656681783;
-        Mon, 21 Oct 2019 04:18:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571656681; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4442027wrm;
+        Mon, 21 Oct 2019 04:30:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwx1OfBajtOq9gcIRksSz5uSOy3hD9PLY87qanQbHzDeJcNPNT+a04MlIqbpaszMGZ11GUQ
+X-Received: by 2002:aa7:c890:: with SMTP id p16mr24281248eds.296.1571657443064;
+        Mon, 21 Oct 2019 04:30:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571657443; cv=none;
         d=google.com; s=arc-20160816;
-        b=zv/7TNWZZW/U3RvxilRbrR0KZnSCWR0rYOxAODAqnvKv1nZw/r0KmuKTLb6MAldeQw
-         ubt4NlcCNlIUyQV+MgaRhKXfWh7lUiQS6PKnap1z5qku2DyRDtokr0WjrkfiiPf5J/EC
-         gzHrGztu0reUuGx98Cug8Kj0VtrPQ2mpVbGTrMJpNyCCJhj2m28eyCtEU5Z4Hg5NrLog
-         EXBwZ3K6ooNF3OjgvUZpIPQRoB6BDWelX0uD/6GcbmUSgqzVKjyV0IDE1R/GiOe0/3b9
-         ArSTuykcE9hS+ZcQ+9hWICorZyDWcCLrK9nMySgnZaKviAK5JtwrP2Dga0OgOk5iFHDz
-         Aqpw==
+        b=nYkN5sSSVhtsS3kriU4xlk5IxLp0K94U3m8iRog9FyWQ6WhRuak6mqXkGi/dUEYif+
+         xDst+i7zpDPeYhAkPGKN18D4ZU+yOQqzzN3zVbT4BnG2q32HZTLTXsABrO5VoS0t/rkt
+         CwbPLRVHn5XFKmaZ3CeAXjLxh9cRO9wZF58Ygs9Rln5m4n6OKqOHcZBFiPOq9Bqs1ykW
+         70RnuEF2UbGWlWIKQRas6VnqHcIg5C73XrrmV0pSt/TBtFYf2evxTKP2XDfqQuMIIlRE
+         ZWoAXeFOfTLQk+eJYtWrIa7DD5auhYr/bvqWdvHoz35Q6gMahN+wb9cRhUZUSJz2osFB
+         7SXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=KPD4PToOkGHtHt9KFXbFTI5K/N8HBlEFaxJhkrndnl8=;
-        b=UHCix9sLJOPA12B7z4kR3w55w+Cm8ViboshW/yl8XCqyzspsR84MWNiatZiYWtU098
-         lz8Pnu6ru4A0W7UqxQuFQQnM7jOiloUpPBTm+KamQXd1i32x8cCH0PIpRIHk762nVc5r
-         T4dysa8ZeH9UBAY8InjV/dbAzxxq6NGXrVP3oLg/aTCgZ12N6ZhJPsx1pQAPo6zTUtZi
-         rbusX/vj1ZCt0yXx1hgJwK88h8CSUWXNwpbzLA8oHqn2PBR6tzRjZnHJg/DbyLRGIJDj
-         JG/43R3BJNuU9mU5yLGoog8xFppDSGfR9dSwiuT1Xi7Q9jHFiTOunwhTaKKVLPYTgvz0
-         YKNA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=ppXuOcGrR6dhxs1km/uPH1BuntjFITkvO0D4Am7r1mA=;
+        b=NQFESb1lOiem6xuXB9Ye56Pt74B4NU2gpYbf2G1y8arQf/5FpKh2VHWqMb/hefTHSy
+         QUwsOeXZ0jlSljgo6JlSd7N14lnppPtLILZ8SjxZ97idq/fc9ZYfh9ijkOUNZT97UUF1
+         I1iGcsN2MgJqKHyY/gKatUn3qF70yGA2lrI9tWiXu3oiLhkeEra4uQRlU7xD12qWDTnc
+         WQs48O9BiLuuweEdV98NRUPk/TfQXN+uHI1waEU6CkRJngqOiB03GXHWvR78JFfuSNaK
+         CZXXZeWk2crjwkQSReNv19WPqAkw4LaMtmg0l48Z9r+DlgQYhCVOvzWjmzipkQMPwq2G
+         lxzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bvIFRd03;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v42si835134edc.378.2019.10.21.04.18.01
+        by mx.google.com with ESMTPS id m1si4287873ejx.188.2019.10.21.04.30.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 04:18:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Oct 2019 04:30:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bvIFRd03;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38074 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38372 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMVhI-00044q-8D
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 07:18:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47592)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMVtZ-0004c1-3c
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 07:30:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47097)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1iMVa4-0006JG-3q
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 07:10:34 -0400
+ (envelope-from <philmd@redhat.com>) id 1iMVVM-0008Jp-6d
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 07:05:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1iMVa2-0006Sw-1b
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 07:10:31 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:44351)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1iMVa1-0006Ri-RR; Mon, 21 Oct 2019 07:10:29 -0400
-Received: by mail-oi1-x241.google.com with SMTP id w6so10634284oie.11;
- Mon, 21 Oct 2019 04:10:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=KPD4PToOkGHtHt9KFXbFTI5K/N8HBlEFaxJhkrndnl8=;
- b=bvIFRd03nc/3wzMEeHDWU4HTjNz0POMy+4ESNwZ8RL5hjUm3lQJtAO/wdfUBnabSST
- Y9Mnr9jjA8Cn3y/UPeww0tY/CI9zpeyPUMwboupOCrulqXnwUlKA4V630QugV7BRPqO3
- nUvui4Ck/6v/865KvCn+O62KCWvNf+MhPWYITXNrtEu7gCQtSWnrEOdOuxbD2sKlPF5q
- HpvO+92knlH4OcJEhKvd1ZzhAM856HqzXlppdMdknexswJmx4Npylg8dDZD8mXH3AVjH
- Gs1U0IOgZLvIpuaeztUlzOmX6rhFUUyE6v+xa/HOr0QmKYaJNXNgtubnm9Qm0nlRVBWb
- iT6A==
+ (envelope-from <philmd@redhat.com>) id 1iMVVK-0005bo-Ip
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 07:05:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60550)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMVVK-0005bO-B5
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 07:05:38 -0400
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 4B55B83F40
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 11:05:37 +0000 (UTC)
+Received: by mail-wm1-f69.google.com with SMTP id z5so2942813wma.5
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 04:05:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=KPD4PToOkGHtHt9KFXbFTI5K/N8HBlEFaxJhkrndnl8=;
- b=I7WGvvBTCoQZoD+awfLtfU5RYfyZUbCC25VHKl10N6vAZnen041vdUNlhlIUki6gtM
- tf1za3ldOwlCKeNkX1PTVMIWnOjze2bm8RfpLzO6DidAqq9sKxasNQ475l1Vf96Bc+Uw
- swer9pk/PVD6e1rPh545KgxYmhrI2XHgfCDIIRsFfwFupaXz8ityJku6x8Ur/1tmP5bR
- 5BqNlEefd53YJU7Ed8ex7FJlNVgbpBvMssgmZJDAj5UMm+8qWxbVcFI639WZYz6hBOY+
- 7PaCfQwjLuMb7z/Ew/pm7Q6C7mZ7qhA2qISgcmMghCXlt598R0zjmLAVc9UwXEZZy2+q
- AHLQ==
-X-Gm-Message-State: APjAAAX3v2Rwv4yJdjOpzg2h/hwT+IfvBJsW6aLgTxHG7A8WjSh3uaEj
- JvG1B+dPI6l+Uo3+MryREfE+Y82F1xG/AlVtowE=
-X-Received: by 2002:aca:62d5:: with SMTP id
- w204mr18742250oib.136.1571656228848; 
- Mon, 21 Oct 2019 04:10:28 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Mon, 21 Oct 2019 04:10:28
- -0700 (PDT)
-In-Reply-To: <d92fc466-9327-04ef-22b9-857d4f18b976@redhat.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=TfVh/d5GiSjwzt/LegRCzSs1DQWqSfawQcFyoiFPFpQ=;
+ b=ELrJXV+SeJHKcPAUKcaOh7aI8SDF3XJFVYU8qO6IjMVYZAppLQp8EGl76KmK06Urll
+ oLKdwzHfcXeJQinLCe4sEEh/eE/qV73AsMvqwgd4HN2rwcmqyN3mlxbXEph2UKCYKQmH
+ mvwSTPbNusSLme5lOejDDieg62/Vq0WgC2MyXrxt83JSsc/1XcIQ2FJ7ugXK35zeJb61
+ J5XNoYFBHTp7+1LLscOy6GhHkWGT/2Gbja3Hq+R86GF4R65SK2W1cCmidpu+Te+vPtSJ
+ Np3JSsECenfzW5Aei8URHNxX0LH/VrjuSXWavqHS47tpNRrZj9/y0XISRiWolzLy8vQN
+ wSkw==
+X-Gm-Message-State: APjAAAV2bqGvsQoXzq1Ypn5HzHRBw0fXcOB/jK6l4zClWsrJbRK8a2TC
+ Qm8lCBdjGkuDoCqQMTxbeSpsDtZA4jgjU79ULGALtuJIQkdHY1gW3UnDPkXmEj10UtxCdrPWIWo
+ stngbDCeKyz3q
+X-Received: by 2002:a1c:a385:: with SMTP id m127mr19859566wme.50.1571655935506; 
+ Mon, 21 Oct 2019 04:05:35 -0700 (PDT)
+X-Received: by 2002:a1c:a385:: with SMTP id m127mr19859517wme.50.1571655935244; 
+ Mon, 21 Oct 2019 04:05:35 -0700 (PDT)
+Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
+ [83.57.174.129])
+ by smtp.gmail.com with ESMTPSA id p7sm13279871wma.34.2019.10.21.04.05.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 21 Oct 2019 04:05:34 -0700 (PDT)
+Subject: Re: [PATCH 18/21] hw/mips: Let the machine be the owner of the system
+ memory
+To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
 References: <20191020225650.3671-1-philmd@redhat.com>
  <20191020225650.3671-19-philmd@redhat.com>
  <CAL1e-=ivk8phw5SOd=a6SO8RJ4E=9kN8hN0tocQYcb7AEKeyEA@mail.gmail.com>
  <698bde03-02a9-be5e-2aff-4e8d50508222@redhat.com>
  <CAL1e-=jtavWvWaajrdTmapFgLfXXhfH8nuWCxY-z8+oMGsOAGA@mail.gmail.com>
- <d92fc466-9327-04ef-22b9-857d4f18b976@redhat.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Mon, 21 Oct 2019 13:10:28 +0200
-Message-ID: <CAL1e-=gbwabWNm1GyzG2K4Y+7dseUMpsj8+cpzNgJ5NT1P+SLQ@mail.gmail.com>
-Subject: Re: [PATCH 18/21] hw/mips: Let the machine be the owner of the system
- memory
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000003ac816059569bb09"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
-X-BeenThere: qemu-devel@nongnu.org
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <d92fc466-9327-04ef-22b9-857d4f18b976@redhat.com>
+Date: Mon, 21 Oct 2019 13:05:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
+MIME-Version: 1.0
+In-Reply-To: <CAL1e-=jtavWvWaajrdTmapFgLfXXhfH8nuWCxY-z8+oMGsOAGA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Paul Burton <pburton@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
  Peter Maydell <peter.maydell@linaro.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring <robh@kernel.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, Rob Herring <robh@kernel.org>,
  Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
  "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
  Antony Pavlov <antonynpavlov@gmail.com>,
  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
  David Gibson <david@gibson.dropbear.id.au>,
@@ -138,390 +142,234 @@ Cc: Paul Burton <pburton@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
  Michael Walle <michael@walle.cc>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JBhQaAP3E9a4
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Cnhz7S7SZMN9
 
---0000000000003ac816059569bb09
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 10/21/19 12:56 PM, Aleksandar Markovic wrote:
+>=20
+>=20
+> On Monday, October 21, 2019, Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
+.com=20
+> <mailto:philmd@redhat.com>> wrote:
+>=20
+>     Hi Aleksandar,
+>=20
+>     On 10/21/19 8:25 AM, Aleksandar Markovic wrote:
+>=20
+>=20
+>=20
+>         On Monday, October 21, 2019, Philippe Mathieu-Daud=C3=A9
+>         <philmd@redhat.com <mailto:philmd@redhat.com>
+>         <mailto:philmd@redhat.com <mailto:philmd@redhat.com>>> wrote:
+>=20
+>          =C2=A0 =C2=A0 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <phil=
+md@redhat.com
+>         <mailto:philmd@redhat.com>
+>          =C2=A0 =C2=A0 <mailto:philmd@redhat.com <mailto:philmd@redhat.=
+com>>>
+>          =C2=A0 =C2=A0 ---
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0hw/mips/boston.c=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 | 2 +-
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0hw/mips/mips_fulong2e.c | 3 ++-
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0hw/mips/mips_jazz.c=C2=A0 =C2=A0 =C2=
+=A0| 2 +-
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0hw/mips/mips_malta.c=C2=A0 =C2=A0 | =
+2 +-
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0hw/mips/mips_mipssim.c=C2=A0 | 2 +-
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0hw/mips/mips_r4k.c=C2=A0 =C2=A0 =C2=A0=
+ | 3 ++-
+>          =C2=A0 =C2=A0 =C2=A0=C2=A06 files changed, 8 insertions(+), 6 =
+deletions(-)
+>=20
+>=20
+>         Philippe, can this patch be applied independently (on other
+>         patches of this series)?
+>=20
+>=20
+>     Unfortunately not because patch #9 changed the prototype of
+>     memory_region_allocate_system_memory() so this patch alone
+>     won't build.
+>=20
+>     I rather expect this series goes as a whole via the machine-next
+>     tree.
+>=20
+>     Do you mind giving your Acked-by tag to this patch?
+>=20
+>=20
+> I can't, sorry, for MIPS target, we don't accept patches with empty=20
+> commit messages.
 
-On Monday, October 21, 2019, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
->
-wrote:
+I see, I'v been wondering what to do, if simply repeating the patch=20
+subject or the cover, but since the series applies to all targets, this=20
+seems overkill. I think I'll simply repeat the subject then.
 
-> On 10/21/19 12:56 PM, Aleksandar Markovic wrote:
->
->>
->>
->> On Monday, October 21, 2019, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com
->> <mailto:philmd@redhat.com>> wrote:
->>
->>     Hi Aleksandar,
->>
->>     On 10/21/19 8:25 AM, Aleksandar Markovic wrote:
->>
->>
->>
->>         On Monday, October 21, 2019, Philippe Mathieu-Daud=C3=A9
->>         <philmd@redhat.com <mailto:philmd@redhat.com>
->>         <mailto:philmd@redhat.com <mailto:philmd@redhat.com>>> wrote:
->>
->>              Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om
->>         <mailto:philmd@redhat.com>
->>              <mailto:philmd@redhat.com <mailto:philmd@redhat.com>>>
->>              ---
->>                hw/mips/boston.c        | 2 +-
->>                hw/mips/mips_fulong2e.c | 3 ++-
->>                hw/mips/mips_jazz.c     | 2 +-
->>                hw/mips/mips_malta.c    | 2 +-
->>                hw/mips/mips_mipssim.c  | 2 +-
->>                hw/mips/mips_r4k.c      | 3 ++-
->>                6 files changed, 8 insertions(+), 6 deletions(-)
->>
->>
->>         Philippe, can this patch be applied independently (on other
->>         patches of this series)?
->>
->>
->>     Unfortunately not because patch #9 changed the prototype of
->>     memory_region_allocate_system_memory() so this patch alone
->>     won't build.
->>
->>     I rather expect this series goes as a whole via the machine-next
->>     tree.
->>
->>     Do you mind giving your Acked-by tag to this patch?
->>
->>
->> I can't, sorry, for MIPS target, we don't accept patches with empty
->> commit messages.
->>
->
-> I see, I'v been wondering what to do, if simply repeating the patch
-> subject or the cover, but since the series applies to all targets, this
-> seems overkill. I think I'll simply repeat the subject then.
->
->
-Can't you at least add a sentence on why is this needed, or what is
-achieved?
-
-Thanks,
-
-A.
-
-
-
->
->> A.
->>
->>
->>     Thanks,
->>
->>     Phil.
->>
->>
->>
->>              diff --git a/hw/mips/boston.c b/hw/mips/boston.c
->>              index ca7d813a52..8445fee0f1 100644
->>              --- a/hw/mips/boston.c
->>              +++ b/hw/mips/boston.c
->>              @@ -474,7 +474,7 @@ static void
->>         boston_mach_init(MachineState *machine)
->>                    memory_region_add_subregion_overlap(sys_mem,
->> 0x18000000,
->>              flash, 0);
->>
->>                    ddr =3D g_new(MemoryRegion, 1);
->>              -    memory_region_allocate_system_memory(ddr, NULL,
->>         "boston.ddr",
->>              +    memory_region_allocate_system_memory(ddr, machine,
->>         "boston.ddr",
->>
->> machine->ram_size);
->>                    memory_region_add_subregion_overlap(sys_mem,
->>         0x80000000, ddr, 0);
->>
->>              diff --git a/hw/mips/mips_fulong2e.c
->> b/hw/mips/mips_fulong2e.c
->>              index cf537dd7e6..d5a5cef619 100644
->>              --- a/hw/mips/mips_fulong2e.c
->>              +++ b/hw/mips/mips_fulong2e.c
->>              @@ -318,7 +318,8 @@ static void
->> mips_fulong2e_init(MachineState
->>              *machine)
->>                    ram_size =3D 256 * MiB;
->>
->>                    /* allocate RAM */
->>              -    memory_region_allocate_system_memory(ram, NULL,
->>         "fulong2e.ram",
->>              ram_size);
->>              +    memory_region_allocate_system_memory(ram, machine,
->>              +                                         "fulong2e.ram",
->>         ram_size);
->>                    memory_region_init_ram(bios, NULL, "fulong2e.bios",
->>         BIOS_SIZE,
->>                                           &error_fatal);
->>                    memory_region_set_readonly(bios, true);
->>              diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
->>              index 8d010a0b6e..88b125855f 100644
->>              --- a/hw/mips/mips_jazz.c
->>              +++ b/hw/mips/mips_jazz.c
->>              @@ -188,7 +188,7 @@ static void mips_jazz_init(MachineState
->>         *machine,
->>                    cc->do_transaction_failed =3D
->>         mips_jazz_do_transaction_failed;
->>
->>                    /* allocate RAM */
->>              -    memory_region_allocate_system_memory(ram, NULL,
->>         "mips_jazz.ram",
->>              +    memory_region_allocate_system_memory(ram, machine,
->>         "mips_jazz.ram",
->>
->> machine->ram_size);
->>                    memory_region_add_subregion(address_space, 0, ram);
->>
->>              diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
->>              index 4d9c64b36a..af56a29ccb 100644
->>              --- a/hw/mips/mips_malta.c
->>              +++ b/hw/mips/mips_malta.c
->>              @@ -1267,7 +1267,7 @@ void mips_malta_init(MachineState
->>         *machine)
->>                    }
->>
->>                    /* register RAM at high address where it is
->>         undisturbed by IO */
->>              -    memory_region_allocate_system_memory(ram_high, NULL,
->>              "mips_malta.ram",
->>              +    memory_region_allocate_system_memory(ram_high, machine=
-,
->>              "mips_malta.ram",
->>                                                         ram_size);
->>                    memory_region_add_subregion(system_memory,
->>         0x80000000, ram_high);
->>
->>              diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.=
-c
->>              index 282bbecb24..c1933231e2 100644
->>              --- a/hw/mips/mips_mipssim.c
->>              +++ b/hw/mips/mips_mipssim.c
->>              @@ -166,7 +166,7 @@ mips_mipssim_init(MachineState *machine=
-)
->>                    qemu_register_reset(main_cpu_reset, reset_info);
->>
->>                    /* Allocate RAM. */
->>              -    memory_region_allocate_system_memory(ram, NULL,
->>         "mips_mipssim.ram",
->>              +    memory_region_allocate_system_memory(ram, machine,
->>              "mips_mipssim.ram",
->>                                                         ram_size);
->>                    memory_region_init_ram(bios, NULL,
->>         "mips_mipssim.bios", BIOS_SIZE,
->>                                           &error_fatal);
->>              diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
->>              index bc0be26544..59f8cacfb6 100644
->>              --- a/hw/mips/mips_r4k.c
->>              +++ b/hw/mips/mips_r4k.c
->>              @@ -203,7 +203,8 @@ void mips_r4k_init(MachineState *machin=
-e)
->>                                     " maximum 256MB", ram_size / MiB);
->>                        exit(1);
->>                    }
->>              -    memory_region_allocate_system_memory(ram, NULL,
->>         "mips_r4k.ram",
->>              ram_size);
->>              +    memory_region_allocate_system_memory(ram, machine,
->>         "mips_r4k.ram",
->>              +                                         ram_size);
->>
->>                    memory_region_add_subregion(address_space_mem, 0,
->> ram);
->>
->>              --     2.21.0
->>
->>
->>
-
---0000000000003ac816059569bb09
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: base64
-
-PGJyPjxicj5PbiBNb25kYXksIE9jdG9iZXIgMjEsIDIwMTksIFBoaWxpcHBlIE1hdGhpZXUtRGF1
-ZMOpICZsdDs8YSBocmVmPSJtYWlsdG86cGhpbG1kQHJlZGhhdC5jb20iPnBoaWxtZEByZWRoYXQu
-Y29tPC9hPiZndDsgd3JvdGU6PGJyPjxibG9ja3F1b3RlIGNsYXNzPSJnbWFpbF9xdW90ZSIgc3R5
-bGU9Im1hcmdpbjowIDAgMCAuOGV4O2JvcmRlci1sZWZ0OjFweCAjY2NjIHNvbGlkO3BhZGRpbmct
-bGVmdDoxZXgiPk9uIDEwLzIxLzE5IDEyOjU2IFBNLCBBbGVrc2FuZGFyIE1hcmtvdmljIHdyb3Rl
-Ojxicj4NCjxibG9ja3F1b3RlIGNsYXNzPSJnbWFpbF9xdW90ZSIgc3R5bGU9Im1hcmdpbjowIDAg
-MCAuOGV4O2JvcmRlci1sZWZ0OjFweCAjY2NjIHNvbGlkO3BhZGRpbmctbGVmdDoxZXgiPg0KPGJy
-Pg0KPGJyPg0KT24gTW9uZGF5LCBPY3RvYmVyIDIxLCAyMDE5LCBQaGlsaXBwZSBNYXRoaWV1LURh
-dWTDqSAmbHQ7PGEgaHJlZj0ibWFpbHRvOnBoaWxtZEByZWRoYXQuY29tIiB0YXJnZXQ9Il9ibGFu
-ayI+cGhpbG1kQHJlZGhhdC5jb208L2E+ICZsdDttYWlsdG86PGEgaHJlZj0ibWFpbHRvOnBoaWxt
-ZEByZWRoYXQuY29tIiB0YXJnZXQ9Il9ibGFuayI+cGhpbG1kQHJlZGhhdC5jb208L2E+Jmd0OyZn
-dDsgd3JvdGU6PGJyPg0KPGJyPg0KwqAgwqAgSGkgQWxla3NhbmRhciw8YnI+DQo8YnI+DQrCoCDC
-oCBPbiAxMC8yMS8xOSA4OjI1IEFNLCBBbGVrc2FuZGFyIE1hcmtvdmljIHdyb3RlOjxicj4NCjxi
-cj4NCjxicj4NCjxicj4NCsKgIMKgIMKgIMKgIE9uIE1vbmRheSwgT2N0b2JlciAyMSwgMjAxOSwg
-UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k8YnI+DQrCoCDCoCDCoCDCoCAmbHQ7PGEgaHJlZj0ibWFp
-bHRvOnBoaWxtZEByZWRoYXQuY29tIiB0YXJnZXQ9Il9ibGFuayI+cGhpbG1kQHJlZGhhdC5jb208
-L2E+ICZsdDttYWlsdG86PGEgaHJlZj0ibWFpbHRvOnBoaWxtZEByZWRoYXQuY29tIiB0YXJnZXQ9
-Il9ibGFuayI+cGhpbG1kQHJlZGhhdC5jb208L2E+Jmd0Ozxicj4NCsKgIMKgIMKgIMKgICZsdDtt
-YWlsdG86PGEgaHJlZj0ibWFpbHRvOnBoaWxtZEByZWRoYXQuY29tIiB0YXJnZXQ9Il9ibGFuayI+
-cGhpbG1kQHJlZGhhdC5jb208L2E+ICZsdDttYWlsdG86PGEgaHJlZj0ibWFpbHRvOnBoaWxtZEBy
-ZWRoYXQuY29tIiB0YXJnZXQ9Il9ibGFuayI+cGhpbG1kQHJlZGhhdC5jb208L2E+Jmd0OyZndDsm
-Z3Q7IHdyb3RlOjxicj4NCjxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgU2lnbmVkLW9mZi1ieTog
-UGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgJmx0OzxhIGhyZWY9Im1haWx0bzpwaGlsbWRAcmVkaGF0
-LmNvbSIgdGFyZ2V0PSJfYmxhbmsiPnBoaWxtZEByZWRoYXQuY29tPC9hPjxicj4NCsKgIMKgIMKg
-IMKgICZsdDttYWlsdG86PGEgaHJlZj0ibWFpbHRvOnBoaWxtZEByZWRoYXQuY29tIiB0YXJnZXQ9
-Il9ibGFuayI+cGhpbG1kQHJlZGhhdC5jb208L2E+Jmd0Ozxicj4NCsKgIMKgIMKgIMKgIMKgwqAg
-wqAgJmx0O21haWx0bzo8YSBocmVmPSJtYWlsdG86cGhpbG1kQHJlZGhhdC5jb20iIHRhcmdldD0i
-X2JsYW5rIj5waGlsbWRAcmVkaGF0LmNvbTwvYT4gJmx0O21haWx0bzo8YSBocmVmPSJtYWlsdG86
-cGhpbG1kQHJlZGhhdC5jb20iIHRhcmdldD0iX2JsYW5rIj5waGlsbWRAcmVkaGF0LmNvbTwvYT4m
-Z3Q7Jmd0OyZndDs8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIC0tLTxicj4NCsKgIMKgIMKgIMKg
-IMKgwqAgwqAgwqDCoGh3L21pcHMvYm9zdG9uLmPCoCDCoCDCoCDCoCB8IDIgKy08YnI+DQrCoCDC
-oCDCoCDCoCDCoMKgIMKgIMKgwqBody9taXBzL21pcHNfZnVsb25nMmUuYyB8IDMgKystPGJyPg0K
-wqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgaHcvbWlwcy9taXBzX2phenouY8KgIMKgIMKgfCAyICst
-PGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgaHcvbWlwcy9taXBzX21hbHRhLmPCoCDCoCB8
-IDIgKy08YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIMKgwqBody9taXBzL21pcHNfbWlwc3NpbS5j
-wqAgfCAyICstPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgaHcvbWlwcy9taXBzX3I0ay5j
-wqAgwqAgwqAgfCAzICsrLTxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgwqDCoDYgZmlsZXMgY2hh
-bmdlZCwgOCBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKTxicj4NCjxicj4NCjxicj4NCsKg
-IMKgIMKgIMKgIFBoaWxpcHBlLCBjYW4gdGhpcyBwYXRjaCBiZSBhcHBsaWVkIGluZGVwZW5kZW50
-bHkgKG9uIG90aGVyPGJyPg0KwqAgwqAgwqAgwqAgcGF0Y2hlcyBvZiB0aGlzIHNlcmllcyk/PGJy
-Pg0KPGJyPg0KPGJyPg0KwqAgwqAgVW5mb3J0dW5hdGVseSBub3QgYmVjYXVzZSBwYXRjaCAjOSBj
-aGFuZ2VkIHRoZSBwcm90b3R5cGUgb2Y8YnI+DQrCoCDCoCBtZW1vcnlfcmVnaW9uX2FsbG9jYXRl
-X3N5c3RlbV88d2JyPm1lbW9yeSgpIHNvIHRoaXMgcGF0Y2ggYWxvbmU8YnI+DQrCoCDCoCB3b24m
-IzM5O3QgYnVpbGQuPGJyPg0KPGJyPg0KwqAgwqAgSSByYXRoZXIgZXhwZWN0IHRoaXMgc2VyaWVz
-IGdvZXMgYXMgYSB3aG9sZSB2aWEgdGhlIG1hY2hpbmUtbmV4dDxicj4NCsKgIMKgIHRyZWUuPGJy
-Pg0KPGJyPg0KwqAgwqAgRG8geW91IG1pbmQgZ2l2aW5nIHlvdXIgQWNrZWQtYnkgdGFnIHRvIHRo
-aXMgcGF0Y2g/PGJyPg0KPGJyPg0KPGJyPg0KSSBjYW4mIzM5O3QsIHNvcnJ5LCBmb3IgTUlQUyB0
-YXJnZXQsIHdlIGRvbiYjMzk7dCBhY2NlcHQgcGF0Y2hlcyB3aXRoIGVtcHR5IGNvbW1pdCBtZXNz
-YWdlcy48YnI+DQo8L2Jsb2NrcXVvdGU+DQo8YnI+DQpJIHNlZSwgSSYjMzk7diBiZWVuIHdvbmRl
-cmluZyB3aGF0IHRvIGRvLCBpZiBzaW1wbHkgcmVwZWF0aW5nIHRoZSBwYXRjaCBzdWJqZWN0IG9y
-IHRoZSBjb3ZlciwgYnV0IHNpbmNlIHRoZSBzZXJpZXMgYXBwbGllcyB0byBhbGwgdGFyZ2V0cywg
-dGhpcyBzZWVtcyBvdmVya2lsbC4gSSB0aGluayBJJiMzOTtsbCBzaW1wbHkgcmVwZWF0IHRoZSBz
-dWJqZWN0IHRoZW4uPGJyPg0KPGJyPjwvYmxvY2txdW90ZT48ZGl2Pjxicj48L2Rpdj48ZGl2PkNh
-biYjMzk7dCB5b3UgYXQgbGVhc3QgYWRkIGEgc2VudGVuY2Ugb24gd2h5IGlzIHRoaXMgbmVlZGVk
-LCBvciB3aGF0IGlzIGFjaGlldmVkPzwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+VGhhbmtzLDwv
-ZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+QS48L2Rpdj48ZGl2Pjxicj48L2Rpdj48ZGl2PsKgPC9k
-aXY+PGJsb2NrcXVvdGUgY2xhc3M9ImdtYWlsX3F1b3RlIiBzdHlsZT0ibWFyZ2luOjAgMCAwIC44
-ZXg7Ym9yZGVyLWxlZnQ6MXB4ICNjY2Mgc29saWQ7cGFkZGluZy1sZWZ0OjFleCI+DQo8YmxvY2tx
-dW90ZSBjbGFzcz0iZ21haWxfcXVvdGUiIHN0eWxlPSJtYXJnaW46MCAwIDAgLjhleDtib3JkZXIt
-bGVmdDoxcHggI2NjYyBzb2xpZDtwYWRkaW5nLWxlZnQ6MWV4Ij4NCjxicj4NCkEuPGJyPg0KPGJy
-Pg0KPGJyPg0KwqAgwqAgVGhhbmtzLDxicj4NCjxicj4NCsKgIMKgIFBoaWwuPGJyPg0KPGJyPg0K
-PGJyPg0KPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCBkaWZmIC0tZ2l0IGEvaHcvbWlwcy9ib3N0
-b24uYyBiL2h3L21pcHMvYm9zdG9uLmM8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIGluZGV4IGNh
-N2Q4MTNhNTIuLjg0NDVmZWUwZjEgMTAwNjQ0PGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCAtLS0g
-YS9ody9taXBzL2Jvc3Rvbi5jPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCArKysgYi9ody9taXBz
-L2Jvc3Rvbi5jPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCBAQCAtNDc0LDcgKzQ3NCw3IEBAIHN0
-YXRpYyB2b2lkPGJyPg0KwqAgwqAgwqAgwqAgYm9zdG9uX21hY2hfaW5pdChNYWNoaW5lU3RhdGUg
-Km1hY2hpbmUpPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgIMKgIMKgbWVtb3J5X3JlZ2lv
-bl9hZGRfc3VicmVnaW9uX288d2JyPnZlcmxhcChzeXNfbWVtLCAweDE4MDAwMDAwLDxicj4NCsKg
-IMKgIMKgIMKgIMKgwqAgwqAgZmxhc2gsIDApOzxicj4NCjxicj4NCsKgIMKgIMKgIMKgIMKgwqAg
-wqAgwqDCoCDCoCDCoGRkciA9IGdfbmV3KE1lbW9yeVJlZ2lvbiwgMSk7PGJyPg0KwqAgwqAgwqAg
-wqAgwqDCoCDCoCAtwqAgwqAgbWVtb3J5X3JlZ2lvbl9hbGxvY2F0ZV9zeXN0ZW1fPHdicj5tZW1v
-cnkoZGRyLCBOVUxMLDxicj4NCsKgIMKgIMKgIMKgICZxdW90O2Jvc3Rvbi5kZHImcXVvdDssPGJy
-Pg0KwqAgwqAgwqAgwqAgwqDCoCDCoCArwqAgwqAgbWVtb3J5X3JlZ2lvbl9hbGxvY2F0ZV9zeXN0
-ZW1fPHdicj5tZW1vcnkoZGRyLCBtYWNoaW5lLDxicj4NCsKgIMKgIMKgIMKgICZxdW90O2Jvc3Rv
-bi5kZHImcXVvdDssPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgIMKgIMKgIMKgIMKgIMKg
-IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIG1hY2hpbmUtJmd0
-O3JhbV9zaXplKTs8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIMKgwqAgwqAgwqBtZW1vcnlfcmVn
-aW9uX2FkZF9zdWJyZWdpb25fbzx3YnI+dmVybGFwKHN5c19tZW0sPGJyPg0KwqAgwqAgwqAgwqAg
-MHg4MDAwMDAwMCwgZGRyLCAwKTs8YnI+DQo8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIGRpZmYg
-LS1naXQgYS9ody9taXBzL21pcHNfZnVsb25nMmUuYyBiL2h3L21pcHMvbWlwc19mdWxvbmcyZS5j
-PGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCBpbmRleCBjZjUzN2RkN2U2Li5kNWE1Y2VmNjE5IDEw
-MDY0NDxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgLS0tIGEvaHcvbWlwcy9taXBzX2Z1bG9uZzJl
-LmM8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgICsrKyBiL2h3L21pcHMvbWlwc19mdWxvbmcyZS5j
-PGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCBAQCAtMzE4LDcgKzMxOCw4IEBAIHN0YXRpYyB2b2lk
-IG1pcHNfZnVsb25nMmVfaW5pdChNYWNoaW5lU3RhdDx3YnI+ZTxicj4NCsKgIMKgIMKgIMKgIMKg
-wqAgwqAgKm1hY2hpbmUpPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgIMKgIMKgcmFtX3Np
-emUgPSAyNTYgKiBNaUI7PGJyPg0KPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgIMKgIMKg
-LyogYWxsb2NhdGUgUkFNICovPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCAtwqAgwqAgbWVtb3J5
-X3JlZ2lvbl9hbGxvY2F0ZV9zeXN0ZW1fPHdicj5tZW1vcnkocmFtLCBOVUxMLDxicj4NCsKgIMKg
-IMKgIMKgICZxdW90O2Z1bG9uZzJlLnJhbSZxdW90Oyw8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKg
-IHJhbV9zaXplKTs8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgICvCoCDCoCBtZW1vcnlfcmVnaW9u
-X2FsbG9jYXRlX3N5c3RlbV88d2JyPm1lbW9yeShyYW0sIG1hY2hpbmUsPGJyPg0KwqAgwqAgwqAg
-wqAgwqDCoCDCoCArwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAg
-wqAgwqAgwqAgwqAgwqAgwqAmcXVvdDtmdWxvbmcyZS5yYW0mcXVvdDssPGJyPg0KwqAgwqAgwqAg
-wqAgcmFtX3NpemUpOzxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgwqDCoCDCoCDCoG1lbW9yeV9y
-ZWdpb25faW5pdF9yYW0oYmlvcywgTlVMTCwgJnF1b3Q7ZnVsb25nMmUuYmlvcyZxdW90Oyw8YnI+
-DQrCoCDCoCDCoCDCoCBCSU9TX1NJWkUsPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgIMKg
-IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgICZhbXA7ZXJyb3JfZmF0YWwpOzxi
-cj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgwqDCoCDCoCDCoG1lbW9yeV9yZWdpb25fc2V0X3JlYWRv
-bmx5KGJpPHdicj5vcywgdHJ1ZSk7PGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCBkaWZmIC0tZ2l0
-IGEvaHcvbWlwcy9taXBzX2phenouYyBiL2h3L21pcHMvbWlwc19qYXp6LmM8YnI+DQrCoCDCoCDC
-oCDCoCDCoMKgIMKgIGluZGV4IDhkMDEwYTBiNmUuLjg4YjEyNTg1NWYgMTAwNjQ0PGJyPg0KwqAg
-wqAgwqAgwqAgwqDCoCDCoCAtLS0gYS9ody9taXBzL21pcHNfamF6ei5jPGJyPg0KwqAgwqAgwqAg
-wqAgwqDCoCDCoCArKysgYi9ody9taXBzL21pcHNfamF6ei5jPGJyPg0KwqAgwqAgwqAgwqAgwqDC
-oCDCoCBAQCAtMTg4LDcgKzE4OCw3IEBAIHN0YXRpYyB2b2lkIG1pcHNfamF6el9pbml0KE1hY2hp
-bmVTdGF0ZTxicj4NCsKgIMKgIMKgIMKgICptYWNoaW5lLDxicj4NCsKgIMKgIMKgIMKgIMKgwqAg
-wqAgwqDCoCDCoCDCoGNjLSZndDtkb190cmFuc2FjdGlvbl9mYWlsZWQgPTxicj4NCsKgIMKgIMKg
-IMKgIG1pcHNfamF6el9kb190cmFuc2FjdGlvbl9mYWlsZTx3YnI+ZDs8YnI+DQo8YnI+DQrCoCDC
-oCDCoCDCoCDCoMKgIMKgIMKgwqAgwqAgwqAvKiBhbGxvY2F0ZSBSQU0gKi88YnI+DQrCoCDCoCDC
-oCDCoCDCoMKgIMKgIC3CoCDCoCBtZW1vcnlfcmVnaW9uX2FsbG9jYXRlX3N5c3RlbV88d2JyPm1l
-bW9yeShyYW0sIE5VTEwsPGJyPg0KwqAgwqAgwqAgwqAgJnF1b3Q7bWlwc19qYXp6LnJhbSZxdW90
-Oyw8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgICvCoCDCoCBtZW1vcnlfcmVnaW9uX2FsbG9jYXRl
-X3N5c3RlbV88d2JyPm1lbW9yeShyYW0sIG1hY2hpbmUsPGJyPg0KwqAgwqAgwqAgwqAgJnF1b3Q7
-bWlwc19qYXp6LnJhbSZxdW90Oyw8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIMKgwqAgwqAgwqAg
-wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgbWFj
-aGluZS0mZ3Q7cmFtX3NpemUpOzxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgwqDCoCDCoCDCoG1l
-bW9yeV9yZWdpb25fYWRkX3N1YnJlZ2lvbihhPHdicj5kZHJlc3Nfc3BhY2UsIDAsIHJhbSk7PGJy
-Pg0KPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCBkaWZmIC0tZ2l0IGEvaHcvbWlwcy9taXBzX21h
-bHRhLmMgYi9ody9taXBzL21pcHNfbWFsdGEuYzxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgaW5k
-ZXggNGQ5YzY0YjM2YS4uYWY1NmEyOWNjYiAxMDA2NDQ8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKg
-IC0tLSBhL2h3L21pcHMvbWlwc19tYWx0YS5jPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCArKysg
-Yi9ody9taXBzL21pcHNfbWFsdGEuYzxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgQEAgLTEyNjcs
-NyArMTI2Nyw3IEBAIHZvaWQgbWlwc19tYWx0YV9pbml0KE1hY2hpbmVTdGF0ZTxicj4NCsKgIMKg
-IMKgIMKgICptYWNoaW5lKTxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgwqDCoCDCoCDCoH08YnI+
-DQo8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIMKgwqAgwqAgwqAvKiByZWdpc3RlciBSQU0gYXQg
-aGlnaCBhZGRyZXNzIHdoZXJlIGl0IGlzPGJyPg0KwqAgwqAgwqAgwqAgdW5kaXN0dXJiZWQgYnkg
-SU8gKi88YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIC3CoCDCoCBtZW1vcnlfcmVnaW9uX2FsbG9j
-YXRlX3N5c3RlbV88d2JyPm1lbW9yeShyYW1faGlnaCwgTlVMTCw8YnI+DQrCoCDCoCDCoCDCoCDC
-oMKgIMKgICZxdW90O21pcHNfbWFsdGEucmFtJnF1b3Q7LDxicj4NCsKgIMKgIMKgIMKgIMKgwqAg
-wqAgK8KgIMKgIG1lbW9yeV9yZWdpb25fYWxsb2NhdGVfc3lzdGVtXzx3YnI+bWVtb3J5KHJhbV9o
-aWdoLCBtYWNoaW5lLDxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgJnF1b3Q7bWlwc19tYWx0YS5y
-YW0mcXVvdDssPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgIMKgIMKgIMKgIMKgIMKgIMKg
-IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIHJhbV9zaXplKTs8YnI+
-DQrCoCDCoCDCoCDCoCDCoMKgIMKgIMKgwqAgwqAgwqBtZW1vcnlfcmVnaW9uX2FkZF9zdWJyZWdp
-b24oczx3YnI+eXN0ZW1fbWVtb3J5LDxicj4NCsKgIMKgIMKgIMKgIDB4ODAwMDAwMDAsIHJhbV9o
-aWdoKTs8YnI+DQo8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIGRpZmYgLS1naXQgYS9ody9taXBz
-L21pcHNfbWlwc3NpbS5jIGIvaHcvbWlwcy9taXBzX21pcHNzaW0uYzxicj4NCsKgIMKgIMKgIMKg
-IMKgwqAgwqAgaW5kZXggMjgyYmJlY2IyNC4uYzE5MzMyMzFlMiAxMDA2NDQ8YnI+DQrCoCDCoCDC
-oCDCoCDCoMKgIMKgIC0tLSBhL2h3L21pcHMvbWlwc19taXBzc2ltLmM8YnI+DQrCoCDCoCDCoCDC
-oCDCoMKgIMKgICsrKyBiL2h3L21pcHMvbWlwc19taXBzc2ltLmM8YnI+DQrCoCDCoCDCoCDCoCDC
-oMKgIMKgIEBAIC0xNjYsNyArMTY2LDcgQEAgbWlwc19taXBzc2ltX2luaXQoTWFjaGluZVN0YXRl
-ICptYWNoaW5lKTxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgwqDCoCDCoCDCoHFlbXVfcmVnaXN0
-ZXJfcmVzZXQobWFpbl9jcHVfPHdicj5yZXNldCwgcmVzZXRfaW5mbyk7PGJyPg0KPGJyPg0KwqAg
-wqAgwqAgwqAgwqDCoCDCoCDCoMKgIMKgIMKgLyogQWxsb2NhdGUgUkFNLiAqLzxicj4NCsKgIMKg
-IMKgIMKgIMKgwqAgwqAgLcKgIMKgIG1lbW9yeV9yZWdpb25fYWxsb2NhdGVfc3lzdGVtXzx3YnI+
-bWVtb3J5KHJhbSwgTlVMTCw8YnI+DQrCoCDCoCDCoCDCoCAmcXVvdDttaXBzX21pcHNzaW0ucmFt
-JnF1b3Q7LDxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgK8KgIMKgIG1lbW9yeV9yZWdpb25fYWxs
-b2NhdGVfc3lzdGVtXzx3YnI+bWVtb3J5KHJhbSwgbWFjaGluZSw8YnI+DQrCoCDCoCDCoCDCoCDC
-oMKgIMKgICZxdW90O21pcHNfbWlwc3NpbS5yYW0mcXVvdDssPGJyPg0KwqAgwqAgwqAgwqAgwqDC
-oCDCoCDCoMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
-IMKgIMKgIMKgIMKgIHJhbV9zaXplKTs8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIMKgwqAgwqAg
-wqBtZW1vcnlfcmVnaW9uX2luaXRfcmFtKGJpb3MsIE5VTEwsPGJyPg0KwqAgwqAgwqAgwqAgJnF1
-b3Q7bWlwc19taXBzc2ltLmJpb3MmcXVvdDssIEJJT1NfU0laRSw8YnI+DQrCoCDCoCDCoCDCoCDC
-oMKgIMKgIMKgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgJmFtcDtl
-cnJvcl9mYXRhbCk7PGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCBkaWZmIC0tZ2l0IGEvaHcvbWlw
-cy9taXBzX3I0ay5jIGIvaHcvbWlwcy9taXBzX3I0ay5jPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDC
-oCBpbmRleCBiYzBiZTI2NTQ0Li41OWY4Y2FjZmI2IDEwMDY0NDxicj4NCsKgIMKgIMKgIMKgIMKg
-wqAgwqAgLS0tIGEvaHcvbWlwcy9taXBzX3I0ay5jPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCAr
-KysgYi9ody9taXBzL21pcHNfcjRrLmM8YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIEBAIC0yMDMs
-NyArMjAzLDggQEAgdm9pZCBtaXBzX3I0a19pbml0KE1hY2hpbmVTdGF0ZSAqbWFjaGluZSk8YnI+
-DQrCoCDCoCDCoCDCoCDCoMKgIMKgIMKgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAg
-JnF1b3Q7IG1heGltdW0gMjU2TUImcXVvdDssIHJhbV9zaXplIC8gTWlCKTs8YnI+DQrCoCDCoCDC
-oCDCoCDCoMKgIMKgIMKgwqAgwqAgwqAgwqAgwqBleGl0KDEpOzxicj4NCsKgIMKgIMKgIMKgIMKg
-wqAgwqAgwqDCoCDCoCDCoH08YnI+DQrCoCDCoCDCoCDCoCDCoMKgIMKgIC3CoCDCoCBtZW1vcnlf
-cmVnaW9uX2FsbG9jYXRlX3N5c3RlbV88d2JyPm1lbW9yeShyYW0sIE5VTEwsPGJyPg0KwqAgwqAg
-wqAgwqAgJnF1b3Q7bWlwc19yNGsucmFtJnF1b3Q7LDxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAg
-cmFtX3NpemUpOzxicj4NCsKgIMKgIMKgIMKgIMKgwqAgwqAgK8KgIMKgIG1lbW9yeV9yZWdpb25f
-YWxsb2NhdGVfc3lzdGVtXzx3YnI+bWVtb3J5KHJhbSwgbWFjaGluZSw8YnI+DQrCoCDCoCDCoCDC
-oCAmcXVvdDttaXBzX3I0ay5yYW0mcXVvdDssPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCArwqAg
-wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAg
-wqByYW1fc2l6ZSk7PGJyPg0KPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCDCoMKgIMKgIMKgbWVt
-b3J5X3JlZ2lvbl9hZGRfc3VicmVnaW9uKGE8d2JyPmRkcmVzc19zcGFjZV9tZW0sIDAsIHJhbSk7
-PGJyPg0KPGJyPg0KwqAgwqAgwqAgwqAgwqDCoCDCoCAtLcKgIMKgIMKgMi4yMS4wPGJyPg0KPGJy
-Pg0KPGJyPg0KPC9ibG9ja3F1b3RlPg0KPC9ibG9ja3F1b3RlPg0K
---0000000000003ac816059569bb09--
+>=20
+> A.
+>=20
+>=20
+>     Thanks,
+>=20
+>     Phil.
+>=20
+>=20
+>=20
+>          =C2=A0 =C2=A0 diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+>          =C2=A0 =C2=A0 index ca7d813a52..8445fee0f1 100644
+>          =C2=A0 =C2=A0 --- a/hw/mips/boston.c
+>          =C2=A0 =C2=A0 +++ b/hw/mips/boston.c
+>          =C2=A0 =C2=A0 @@ -474,7 +474,7 @@ static void
+>         boston_mach_init(MachineState *machine)
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0memory_region_add_subr=
+egion_overlap(sys_mem, 0x18000000,
+>          =C2=A0 =C2=A0 flash, 0);
+>=20
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0ddr =3D g_new(MemoryRe=
+gion, 1);
+>          =C2=A0 =C2=A0 -=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ddr, NULL,
+>         "boston.ddr",
+>          =C2=A0 =C2=A0 +=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ddr, machine,
+>         "boston.ddr",
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 machine->ram_size);
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0memory_region_add_subr=
+egion_overlap(sys_mem,
+>         0x80000000, ddr, 0);
+>=20
+>          =C2=A0 =C2=A0 diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/m=
+ips_fulong2e.c
+>          =C2=A0 =C2=A0 index cf537dd7e6..d5a5cef619 100644
+>          =C2=A0 =C2=A0 --- a/hw/mips/mips_fulong2e.c
+>          =C2=A0 =C2=A0 +++ b/hw/mips/mips_fulong2e.c
+>          =C2=A0 =C2=A0 @@ -318,7 +318,8 @@ static void mips_fulong2e_in=
+it(MachineState
+>          =C2=A0 =C2=A0 *machine)
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0ram_size =3D 256 * MiB=
+;
+>=20
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0/* allocate RAM */
+>          =C2=A0 =C2=A0 -=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram, NULL,
+>         "fulong2e.ram",
+>          =C2=A0 =C2=A0 ram_size);
+>          =C2=A0 =C2=A0 +=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram, machine,
+>          =C2=A0 =C2=A0 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0"fulong2e.ram",
+>         ram_size);
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0memory_region_init_ram=
+(bios, NULL, "fulong2e.bios",
+>         BIOS_SIZE,
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &error_fatal);
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0memory_region_set_read=
+only(bios, true);
+>          =C2=A0 =C2=A0 diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_=
+jazz.c
+>          =C2=A0 =C2=A0 index 8d010a0b6e..88b125855f 100644
+>          =C2=A0 =C2=A0 --- a/hw/mips/mips_jazz.c
+>          =C2=A0 =C2=A0 +++ b/hw/mips/mips_jazz.c
+>          =C2=A0 =C2=A0 @@ -188,7 +188,7 @@ static void mips_jazz_init(M=
+achineState
+>         *machine,
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0cc->do_transaction_fai=
+led =3D
+>         mips_jazz_do_transaction_failed;
+>=20
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0/* allocate RAM */
+>          =C2=A0 =C2=A0 -=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram, NULL,
+>         "mips_jazz.ram",
+>          =C2=A0 =C2=A0 +=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram, machine,
+>         "mips_jazz.ram",
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 machine->ram_size);
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0memory_region_add_subr=
+egion(address_space, 0, ram);
+>=20
+>          =C2=A0 =C2=A0 diff --git a/hw/mips/mips_malta.c b/hw/mips/mips=
+_malta.c
+>          =C2=A0 =C2=A0 index 4d9c64b36a..af56a29ccb 100644
+>          =C2=A0 =C2=A0 --- a/hw/mips/mips_malta.c
+>          =C2=A0 =C2=A0 +++ b/hw/mips/mips_malta.c
+>          =C2=A0 =C2=A0 @@ -1267,7 +1267,7 @@ void mips_malta_init(Machi=
+neState
+>         *machine)
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0}
+>=20
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0/* register RAM at hig=
+h address where it is
+>         undisturbed by IO */
+>          =C2=A0 =C2=A0 -=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram_high, NULL,
+>          =C2=A0 =C2=A0 "mips_malta.ram",
+>          =C2=A0 =C2=A0 +=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram_high, machine,
+>          =C2=A0 =C2=A0 "mips_malta.ram",
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ram_size);
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0memory_region_add_subr=
+egion(system_memory,
+>         0x80000000, ram_high);
+>=20
+>          =C2=A0 =C2=A0 diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mi=
+ps_mipssim.c
+>          =C2=A0 =C2=A0 index 282bbecb24..c1933231e2 100644
+>          =C2=A0 =C2=A0 --- a/hw/mips/mips_mipssim.c
+>          =C2=A0 =C2=A0 +++ b/hw/mips/mips_mipssim.c
+>          =C2=A0 =C2=A0 @@ -166,7 +166,7 @@ mips_mipssim_init(MachineSta=
+te *machine)
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0qemu_register_reset(ma=
+in_cpu_reset, reset_info);
+>=20
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0/* Allocate RAM. */
+>          =C2=A0 =C2=A0 -=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram, NULL,
+>         "mips_mipssim.ram",
+>          =C2=A0 =C2=A0 +=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram, machine,
+>          =C2=A0 =C2=A0 "mips_mipssim.ram",
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ram_size);
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0memory_region_init_ram=
+(bios, NULL,
+>         "mips_mipssim.bios", BIOS_SIZE,
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &error_fatal);
+>          =C2=A0 =C2=A0 diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r=
+4k.c
+>          =C2=A0 =C2=A0 index bc0be26544..59f8cacfb6 100644
+>          =C2=A0 =C2=A0 --- a/hw/mips/mips_r4k.c
+>          =C2=A0 =C2=A0 +++ b/hw/mips/mips_r4k.c
+>          =C2=A0 =C2=A0 @@ -203,7 +203,8 @@ void mips_r4k_init(MachineSt=
+ate *machine)
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 " maximum 256MB", ram_size / MiB);
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0}
+>          =C2=A0 =C2=A0 -=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram, NULL,
+>         "mips_r4k.ram",
+>          =C2=A0 =C2=A0 ram_size);
+>          =C2=A0 =C2=A0 +=C2=A0 =C2=A0 memory_region_allocate_system_mem=
+ory(ram, machine,
+>         "mips_r4k.ram",
+>          =C2=A0 =C2=A0 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0ram_size);
+>=20
+>          =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0memory_region_add_subr=
+egion(address_space_mem, 0, ram);
+>=20
+>          =C2=A0 =C2=A0 --=C2=A0 =C2=A0 =C2=A02.21.0
+>=20
+>=20

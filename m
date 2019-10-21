@@ -1,117 +1,117 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5085529wrm;
-        Mon, 21 Oct 2019 13:56:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzGbFjIJ6B24Xxof+gi03qTdw0Z6KmVAr/PIlHAqMbGyUvfqoDVX9fdl5scmRixQ98EGk/N
-X-Received: by 2002:a37:8806:: with SMTP id k6mr24065918qkd.106.1571691365924;
-        Mon, 21 Oct 2019 13:56:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571691365; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5086248wrm;
+        Mon, 21 Oct 2019 13:56:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzairf4HxLFr6ZYXDm+ddmowGAY9oTCsui+BSCcVeSTDk9NF9rURjnF76PHRpbBGtP9gAJj
+X-Received: by 2002:a0c:ee8f:: with SMTP id u15mr26046063qvr.0.1571691419737;
+        Mon, 21 Oct 2019 13:56:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571691419; cv=none;
         d=google.com; s=arc-20160816;
-        b=rJPCPf9/yDf5FowGjzHpt5J5dIe8daDi1m3S6CClAN1maBcCgcpEb/VADqr/8jajuB
-         eoEfgWmO5oBNkQlIRTTHfOKz9Q0F+ic7pySCQ6BfvfzZfTzkr9rc5YtwB9d9mOmWbwgr
-         Sn+GLUEE2E9Exn6oSztm+BqW75whKcKG9Hkmmb2VgvaAdQQ04r2Bghgvd7Ke+tCa+c8X
-         MFK67j91DCMbDwBiknI0+OU5M2C/+PXpadsNik3yBT5nDJncan5NxfY0d1cPQZFqJYlO
-         BXNDUXcwyCpnLZQwFrNB1abOqjG1C4bTxBxMr4NWypWfAzrlqnuJYFz9Wam5O2V8lel8
-         5Y/A==
+        b=Tqcnk7C7/H79DJJVnvEfHGkqS/f/4SJx6kPXxwxtggDqFVfGz+l5JeKgE4z/56kPC8
+         FH8fufq1z1SWYtTvZHrP6fL2LkJ0S+VpKi8eZJqAVK4wUEh2FhvrB905BhsQwOI0zuC6
+         a8xeT+avbfU1ulWBaKRvwL9J5rAypF63Xkk6SyVdBR0g7cXl7QXWxBsoHXwgZpM4n2/5
+         0s4hPoQkuSqVpxveMTppVl5SN4oEkp6s0EPYxABiSnaBl7C1dt4kQQ42UUePVvtBqq0d
+         h4NAZ8d0CjDK1RoQ9Fdy9OCn7RtDHprxl+/9ULL49vaSs9hOMKT7SyjlUQmhhuSUhzWy
+         ACww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=y6PVkJluZrdtoJOj1jT41eZt37CmWiN7V3jyZ1GlLCw=;
-        b=zOuNDrb3cmO+a1pzkpjDspw52fnm61cztGiEyStf7am9XeX2klgDSQCGHNEm06OQ9q
-         gDis967NgD90SZ2vLDcKUIhJIQzyaYzeqMUAkvenbq8rL2YCbIwVsenNr5SgkOv+0LNP
-         6ai3Q+Z/nK6c0gZV+ecm9P3IDsm6wDYVfckzCbj0uy3KDnPU7f1NeIUlbZtbUZaK31g8
-         7EaiLFJ0nJPtQahRADwb6GxGa9ELYO1AC4IU+y/apvAtezyjlNGkTymdqv0KjfNzLJCt
-         FneL6FqdDo50+RvXPmAq7BG8i2K3TOzQXVTg2SlfO/E8kmsN/8Avrb8S8aRJnFIUKKWE
-         9fWg==
+        bh=3Tk342f2DcStfjZLw2ZHCFQBn5YgGbRBBcgwXLtH6i8=;
+        b=f222qF3oMwQq5uPSDP06aY8JwaJJjfg+9iU6isOtZ8W6x+kifcmkIN5AZipXABn1dn
+         HkR/cjlD/M1XIqEh4uaZTHK9f7TD8eSV1I3I3RDn9k4d/3gN7bezFs+JqRcJr9Yw7Ki1
+         YuviyV8q6YBkcTfNaczl7E8vYzU4AypSWRk/NVaMmlWmC5XuF1yyJ2Azl+vMqZcauOxL
+         8ABscT7VQRRvzMYOX+B0Sltq2ywaZsSYfxyj/RjUzb6w9LmElD2MPuEJLP4oZ1xYKnKl
+         KuyplbzFVDonoFn4zh5zLOX/4mjSIXBsqg4A1uQ5Jt41atqf+D2On69ycznXuQ8JQAsp
+         29pQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=odAYjHeq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DGHXapOf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u127si14310334qkb.18.2019.10.21.13.56.05
+        by mx.google.com with ESMTPS id j68si13672940qkc.379.2019.10.21.13.56.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 13:56:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Oct 2019 13:56:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=odAYjHeq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DGHXapOf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47804 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47826 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMeij-0001QN-CR
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 16:56:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41850)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMejb-0002TQ-4U
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 16:56:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42231)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iMehJ-0000J1-Uv
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 16:54:39 -0400
+ (envelope-from <alistair23@gmail.com>) id 1iMejS-0002QM-JX
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 16:56:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iMehI-0002r7-SA
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 16:54:37 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:44397)
+ (envelope-from <alistair23@gmail.com>) id 1iMejR-0004xF-Ie
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 16:56:50 -0400
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:42782)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iMehI-0002py-Js; Mon, 21 Oct 2019 16:54:36 -0400
-Received: by mail-lj1-x241.google.com with SMTP id m13so14795727ljj.11;
- Mon, 21 Oct 2019 13:54:36 -0700 (PDT)
+ id 1iMejP-0004sZ-D0; Mon, 21 Oct 2019 16:56:47 -0400
+Received: by mail-lf1-x144.google.com with SMTP id z12so11234738lfj.9;
+ Mon, 21 Oct 2019 13:56:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=y6PVkJluZrdtoJOj1jT41eZt37CmWiN7V3jyZ1GlLCw=;
- b=odAYjHeqwVexzxm/u+uSQ5ftyJsVAQzQ/hST9cvQxy1vwt8VgzQj3liADO0WbAGnLy
- XmjodAo1vn/NZttgA/l5WxZs0gkh637DamTNBjcHFYOSa9KUmjI+RAnGRQ7k9OBm+eRf
- fXdNoorlWFngZU/wUzHvZJ98GUD7ZuuJ9J+4f3SY6+QVN2eiXfJzmiPHRjQvyI6fXJw8
- uMZkbiF06xj63KJvZZJAHjVsfIO01atpjzuyDAJE/I9B+qFrkiDnFnG1gM/6O6WPJc8k
- pK/SbeGf7qFhqtabZzpxTMCnBOncSJ0SXaF+n4Xg3E/F05xL8Z+pLyvA7YkEhTHnpETo
- Xk1Q==
+ bh=3Tk342f2DcStfjZLw2ZHCFQBn5YgGbRBBcgwXLtH6i8=;
+ b=DGHXapOfedWnXux0qmsHTjTBFeaHjRaU3O3dHuhcArSbFG9/UMoPbtV8fJIZ4vXduw
+ Dyx8ecx36HMCkZSDYVxCpS8Y2T54fxRa+B968h1DiWd8ZNdieuq+lTioc8GBBshadQ1I
+ y5brwFbqXwh7ZaXYTwBWX6W2mhlCiW22HHBcCQhkXzOPQAhw4LKKi1ASQ86bN6LxRaFd
+ 5QP4r1ps0rbaY0FF/QMQV2nDDCRIjLUAZyMML7KyQGprSNWmEisYHxuCO5wW/vDQKY57
+ x4tWgvoSmz1T6JZP+mTnGpo18xE4/ISxRwtwyw4TMyrRbih97+PX+6DMbSbPHFWDrCgu
+ vjWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=y6PVkJluZrdtoJOj1jT41eZt37CmWiN7V3jyZ1GlLCw=;
- b=XnqP6GGdgdtX8kKimMeA+mr0qw/IhVT/XFmbQJ0L5VsItOmNis1mI/Z/S9GQHrSVmm
- lC5ACQyYg4/q9dRxH41aLOm/wrweVRL5J2PLXIRlrqjolcMHJFrd2Qhv4Jvux4eZdyRo
- 9JZ8Yf28nI7gCkQaYwnIoI/GBT2KKDUZxDLdPYfaGNP3bo8DXIcUuU3W6Fb241N4h9GK
- x/70RPbN50qarxy6TpM+L2FLJATnDAtECSlw3zxE8lpyKGcX26/n5AekLB26GErn3kk4
- 9SLGovdIh/BRxToDBxRSuZKOu02XHYchqjON+JAgalsFLqWLpOLqbcFV+iPJj4BjmkK/
- jBrA==
-X-Gm-Message-State: APjAAAWhGFvO9lp6YLKHFs/6Ot2kzJ6PulAwLB6qHRearzxvxxPPhRb9
- 3kQ4k5Ykrplyxj7O0wpWD+KGwrbvej2yusbAQck=
-X-Received: by 2002:a2e:9890:: with SMTP id b16mr16586980ljj.4.1571691275252; 
- Mon, 21 Oct 2019 13:54:35 -0700 (PDT)
+ bh=3Tk342f2DcStfjZLw2ZHCFQBn5YgGbRBBcgwXLtH6i8=;
+ b=haCsEmzYGEHEQyXzAugkFd7IpwyOlNFFTMlOk1Bh8UvyKeeCcKNlTxT/0miXBtSYQU
+ 1mmWooHEQLPCtCXTKlfn8jIsJ46H4XF1mvHS1/dbK5OsY0V4TpO8+pbFvB46XtzIg14u
+ UIzVI7fVBX/4U27MvMNKZhO7lTAwvFPnu6HTp7fcnlkIqXB0y5qpenFYIM8EpWyuYqVo
+ mM/W7w/r6E5HE2IYZ0fDd9rbwitcFDV6v14Ks8W5y81+BBpbAWdWqFDNpo2/QOGA4WW5
+ rjSJwXrj0JxDZMgmcqBG0uX3pTJnV3RCVZajPIE0ngmdSIxWjpmx8bhCEXC2se3qvxr3
+ qvGQ==
+X-Gm-Message-State: APjAAAUxjvRz1kI1z7AnZgsRJzKvhQ8aC85GW6krDWpUzNC0nXzX0dnK
+ n0i+rnaBoVnaz3Uos/Z0Xh39HE4mjmA0QfB7ge4=
+X-Received: by 2002:a19:f018:: with SMTP id p24mr5613247lfc.93.1571691406146; 
+ Mon, 21 Oct 2019 13:56:46 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191020225650.3671-1-philmd@redhat.com>
- <20191020225650.3671-4-philmd@redhat.com>
-In-Reply-To: <20191020225650.3671-4-philmd@redhat.com>
+ <20191020225650.3671-7-philmd@redhat.com>
+In-Reply-To: <20191020225650.3671-7-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 21 Oct 2019 13:49:16 -0700
-Message-ID: <CAKmqyKNAcJjcF+8A4tN3gGYsjD3DUPbOzXOcm49wvXWgVq6bFA@mail.gmail.com>
-Subject: Re: [PATCH 03/21] hw/arm/collie: Create the RAM in the board
+Date: Mon, 21 Oct 2019 13:51:27 -0700
+Message-ID: <CAKmqyKN=RpR=8JB7E7sEUwr=_sJwfhJuimvR9dv9ZqxLCrSLqg@mail.gmail.com>
+Subject: Re: [PATCH 06/21] hw/arm/digic4: Inline digic4_board_setup_ram()
+ function
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::241
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::144
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Paul Burton <pburton@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
  Peter Maydell <peter.maydell@linaro.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring <robh@kernel.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, Rob Herring <robh@kernel.org>,
  Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
  "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
@@ -133,16 +133,17 @@ Cc: Paul Burton <pburton@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qWahAnA+Df5m
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8VVNdD4DJ3fy
 
-On Sun, Oct 20, 2019 at 3:59 PM Philippe Mathieu-Daud=C3=A9
+On Sun, Oct 20, 2019 at 4:07 PM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
-> The SDRAM is incorrectly created in the SA1110 SoC.
-> Move its creation in the board code, this will later allow the
-> board to have the QOM ownership of the RAM.
+> Having the RAM creation code in a separate function is not
+> very helpful. Move this code directly inside the board_init()
+> function, this will later allow the board to have the QOM
+> ownership of the RAM.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
@@ -151,79 +152,38 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/collie.c    | 8 ++++++--
->  hw/arm/strongarm.c | 7 +------
->  hw/arm/strongarm.h | 4 +---
->  3 files changed, 8 insertions(+), 11 deletions(-)
+>  hw/arm/digic_boards.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
 >
-> diff --git a/hw/arm/collie.c b/hw/arm/collie.c
-> index b1288ccea8..970a4405cc 100644
-> --- a/hw/arm/collie.c
-> +++ b/hw/arm/collie.c
-> @@ -27,9 +27,13 @@ static void collie_init(MachineState *machine)
->  {
->      StrongARMState *s;
->      DriveInfo *dinfo;
-> -    MemoryRegion *sysmem =3D get_system_memory();
-> +    MemoryRegion *sdram =3D g_new(MemoryRegion, 1);
+> diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
+> index 304e4d1a29..ef3fc2b6a5 100644
+> --- a/hw/arm/digic_boards.c
+> +++ b/hw/arm/digic_boards.c
+> @@ -53,12 +53,6 @@ typedef struct DigicBoard {
+>      const char *rom1_def_filename;
+>  } DigicBoard;
 >
-> -    s =3D sa1110_init(sysmem, collie_binfo.ram_size, machine->cpu_type);
-> +    s =3D sa1110_init(machine->cpu_type);
-> +
-> +    memory_region_allocate_system_memory(sdram, NULL, "strongarm.sdram",
-> +                                         collie_binfo.ram_size);
-> +    memory_region_add_subregion(get_system_memory(), SA_SDCS0, sdram);
->
->      dinfo =3D drive_get(IF_PFLASH, 0, 0);
->      pflash_cfi01_register(SA_CS0, "collie.fl1", 0x02000000,
-> diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
-> index dc65d88a65..6bee034914 100644
-> --- a/hw/arm/strongarm.c
-> +++ b/hw/arm/strongarm.c
-> @@ -1586,8 +1586,7 @@ static const TypeInfo strongarm_ssp_info =3D {
->  };
->
->  /* Main CPU functions */
-> -StrongARMState *sa1110_init(MemoryRegion *sysmem,
-> -                            unsigned int sdram_size, const char *cpu_typ=
-e)
-> +StrongARMState *sa1110_init(const char *cpu_type)
->  {
->      StrongARMState *s;
->      int i;
-> @@ -1601,10 +1600,6 @@ StrongARMState *sa1110_init(MemoryRegion *sysmem,
->
->      s->cpu =3D ARM_CPU(cpu_create(cpu_type));
->
-> -    memory_region_allocate_system_memory(&s->sdram, NULL, "strongarm.sdr=
-am",
-> -                                         sdram_size);
-> -    memory_region_add_subregion(sysmem, SA_SDCS0, &s->sdram);
+> -static void digic4_board_setup_ram(DigicBoardState *s, hwaddr ram_size)
+> -{
+> -    memory_region_allocate_system_memory(&s->ram, NULL, "ram", ram_size)=
+;
+> -    memory_region_add_subregion(get_system_memory(), 0, &s->ram);
+> -}
 > -
->      s->pic =3D sysbus_create_varargs("strongarm_pic", 0x90050000,
->                      qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ),
->                      qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_FIQ),
-> diff --git a/hw/arm/strongarm.h b/hw/arm/strongarm.h
-> index e98840b461..192821f6aa 100644
-> --- a/hw/arm/strongarm.h
-> +++ b/hw/arm/strongarm.h
-> @@ -55,7 +55,6 @@ enum {
+>  static void digic4_board_init(DigicBoard *board)
+>  {
+>      Error *err =3D NULL;
+> @@ -72,7 +66,8 @@ static void digic4_board_init(DigicBoard *board)
+>          exit(1);
+>      }
 >
->  typedef struct {
->      ARMCPU *cpu;
-> -    MemoryRegion sdram;
->      DeviceState *pic;
->      DeviceState *gpio;
->      DeviceState *ppc;
-> @@ -63,7 +62,6 @@ typedef struct {
->      SSIBus *ssp_bus;
->  } StrongARMState;
+> -    digic4_board_setup_ram(s, board->ram_size);
+> +    memory_region_allocate_system_memory(&s->ram, NULL, "ram", board->ra=
+m_size);
+> +    memory_region_add_subregion(get_system_memory(), 0, &s->ram);
 >
-> -StrongARMState *sa1110_init(MemoryRegion *sysmem,
-> -                            unsigned int sdram_size, const char *rev);
-> +StrongARMState *sa1110_init(const char *cpu_type);
->
->  #endif
+>      if (board->add_rom0) {
+>          board->add_rom0(s, DIGIC4_ROM0_BASE, board->rom0_def_filename);
 > --
 > 2.21.0
 >

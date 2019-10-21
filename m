@@ -1,101 +1,101 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5223712wrm;
-        Mon, 21 Oct 2019 16:26:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqybMri98IK+JemwNXo9wbZQTQbPzqJSL3TZEa3XrJM5AUjFSjrCeGeuUo34KLxTv7Nei564
-X-Received: by 2002:aed:3b3b:: with SMTP id p56mr400838qte.200.1571700395494;
-        Mon, 21 Oct 2019 16:26:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571700395; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5224573wrm;
+        Mon, 21 Oct 2019 16:27:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxSjd2rQfKGERBxB1TSdLfuLo20NF0Aru5gMh0Z0zQmc3BAkKzFxcGvZOrl05tGwjJ/OWbB
+X-Received: by 2002:ad4:5345:: with SMTP id v5mr230300qvs.217.1571700470086;
+        Mon, 21 Oct 2019 16:27:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571700470; cv=none;
         d=google.com; s=arc-20160816;
-        b=JC7OvzkygWoZjWb1GjN5ziJMzl3lx43tgXxdheAxiehCDdHIO2ktuuIJv5lZfpcuzK
-         Hp8+NZ8TDiNFFvmnXGE5RUkqEclAuLYrXxWQs2ViJv0AY83jITClMLgTHPFhQvPN6zda
-         azhW8Nla8rZr8AISuYlxyq1cN/11Uw5BATk8kMYVStDJdE2qDI3jDAZYfuJur4yHv4ps
-         AuVSSnRuioYNqUpdl93rYugjdwCQuHN5dX+rdbabR+ILerZxqDnz34v6f0vPEdDau1by
-         zUGadfnwfi7ytHQWLudGZcRIHqrrosAgaho36ZKKf52k09fI3cQuCqZbR7nnhdSrfGpB
-         3gCg==
+        b=Sra2wPB+s9UoHMG+ZvFA6b2zFk3+YyILJTV99Dfm8AhBKtH52/fD62zX6HcbAq68r9
+         RNOmr0IfZxiHnmuUsvMuv9Ec3CsO9kzafGntJiOkYKiEV2K+O6bl/AP0oFOsWHGZyBp4
+         IMAdJ4WyMPEHhl3i+RzEfSb9CCN2mV88hCbyyUK7jtCH/P6tuhLynzZgwY/7CYVHU8It
+         DIEC6B2YjzzG2n1qhb8PHkLZTRt7ywnpizxcD9C+iSVhxdxOeCbkJGwIbKzz52CNvzSm
+         /HMGdSHzenLhYSg42rnJm//qvZ9dnPIfkMAL6YJo1zWnIfrHK4lY2mvgB0uOB07X2GB1
+         ycaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=GaEgKiOTRPFRJ37OiN1hvkJxw/u1/Kb5MqxlT0C/VMI=;
-        b=nU97T4OIEic/A1uMnM19nZqHepDUnphSVwqmV5qt8QDwKAjP9MMw4Qwd2ylNuJwK/D
-         rND5sIUZFVLctBozjHotyD++WhY83rbmM8UpwH9PgH3iK0XKKFzvX+dMu47Z9BsEDPlZ
-         kjeK/H+ljRUxrBhcKj58B0yYpnXLdZRTTXfNzUvSfvQKZJ/YGmYoN3y/X6WzMIV+71xN
-         SqrowJbzTy0zQ0ZqOQvEL0TEZN6N9dfJzGlwKaIJHGIQs340b+fuVLamMhSjKU/q3neI
-         10a2Fjz9d3oB6m4jJ5UpeW/WZ1EbBiXnlAf9AxoQcPePeAzY84GiU6qeCwqc27HBzkoD
-         SZkA==
+        bh=xDVnpCw12NPl8Yg69y0FQgbfDnbxu2t1uwrVMr+Nmo0=;
+        b=xJ46iD+sJJWOqrK1nXksGDkTlpz2QdgjLy9UMh1/Pt9n8eAmeP+fIWA27SpHB1Bfr2
+         qZbXK5L3AaA+nV9wY7PcfVrWa6TpZGPZzqGjNPTLtVCGAIRV7SpHj6GLq1evD+K/VMNe
+         +uegeMNB7xUbpjk0njXsoHbB2TMoqjvQNhH8f4u35DlxyonZHJ/fY0zAaEuFLzgL6PnG
+         MI1U4Rc3+rUgVFyuxtyN4q/3bUTTLYXdsmis6rbusEehQjkPjGehcOL0ElVgMDCCyRZd
+         98FR0lwNAsVMBn0HDBXU+hrhKz3Zq/XwfywQ7rpDDXIiRzcm1Gl/6zCY4wrtX54r8YTb
+         STxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZSSKKzPs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MXthO5+l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v25si14094423qkv.110.2019.10.21.16.26.35
+        by mx.google.com with ESMTPS id w42si15437687qvc.132.2019.10.21.16.27.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 16:26:35 -0700 (PDT)
+        Mon, 21 Oct 2019 16:27:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZSSKKzPs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MXthO5+l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48730 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48760 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMh4M-0000Jb-TH
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 19:26:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56169)
+	id 1iMh5Z-000185-FW
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 19:27:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56442)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iMh3b-0007nE-U0
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 19:25:48 -0400
+ (envelope-from <alistair23@gmail.com>) id 1iMh5N-000176-15
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 19:27:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iMh3a-0001IA-TT
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 19:25:47 -0400
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:42536)
+ (envelope-from <alistair23@gmail.com>) id 1iMh5K-0001jx-1t
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 19:27:36 -0400
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:35265)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iMh3Y-0001HM-Ij; Mon, 21 Oct 2019 19:25:44 -0400
-Received: by mail-lj1-x242.google.com with SMTP id u4so1003197ljj.9;
- Mon, 21 Oct 2019 16:25:44 -0700 (PDT)
+ id 1iMh5G-0001j2-Vh; Mon, 21 Oct 2019 19:27:31 -0400
+Received: by mail-lj1-x244.google.com with SMTP id m7so15156980lji.2;
+ Mon, 21 Oct 2019 16:27:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=GaEgKiOTRPFRJ37OiN1hvkJxw/u1/Kb5MqxlT0C/VMI=;
- b=ZSSKKzPsxHR5c2WGJH1+TUWql6nPtQkxaideGD7J/Lw5Dl2+Srg+c3xiHuTO70agfY
- rbcP/Faa55qYgs2+uOoPdf5A+SY7JQNOxYfHv87D97ng8PnldR2qUmQ9/oJ6ym4RukYS
- P0csxAmOPMSG2Rv561ymDDuTvW6wdst+Gs1x2pT9Lt1y6UDQUOHEegSjYRT0aQEcpRdo
- isdJcORSw3kg5ms6qCj9A4JCUuFzmE/sqaAi9YH1JCMwWzSUjJrqYc4GpGsUXr5ztHKe
- uBX3wcGj4VlaqWpnH6lj2qfimH5PCoF0w7eiQB/auJPz9YvroNORqcvzDUoc6ViMcbza
- xhjg==
+ bh=xDVnpCw12NPl8Yg69y0FQgbfDnbxu2t1uwrVMr+Nmo0=;
+ b=MXthO5+lFbbSJmbn7ZiO4pw8oDBeqj0u8hujz85p4mTVe10FdhHvlKsAY788YDN4lp
+ iQjXVtwabgsD4CPX+EAcTBQJ4tHWT+4B6y+rk0rpJyppI5WieVKFCtozrB5bv3RrK4Fe
+ muLI8Lm35jikokmXTjzGFCsIBMu35Kf75fj/M6yycuysEfpPg4YxivQ+5tFPPjYvRELi
+ 6yvl1GnVy8sfLWy1eVLlRF+G9SjgV+OHvM/gpHonMTQrBvaKDTMffYhl086Xmt/Q1ykK
+ g6wU9lChgLuoO3U1dqnxvbiqmL9Bjz8NK4Oq03wAmmn/3U5g83Q7QBGkf2Hf7qs6ET24
+ vp0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=GaEgKiOTRPFRJ37OiN1hvkJxw/u1/Kb5MqxlT0C/VMI=;
- b=PN/FDBD2RKsIwo6UltgtS4uN5/1esj8cgL5f/ueJIcRXpIzBgYmQYCBAMT6QPRBnQN
- 50147cTHxlKoStHIumtqp/2c/sdEGEXkwY/BaIAanVIrK5I7QL/1bQW1js3lB1Gth6NY
- QxoNiUJwRk+CmrmjNmTfBUCxf7O26yxsbkrC1jQf+yg9SXph0AScc/pO8rKzMudtN6Tn
- cq/ZzV/WZ7SU61DnxrSPuBu8q8bQSldOSbzHqT1c9D9sjfwla+2JjjtVBx3Jhj1tqk0K
- KVl35wLzL1IC9a2N4JmjsvOt4PtgLe4Y/bBiW4hYZJI9r4DqR1r4woTIi/xrriZA5v2f
- MqHQ==
-X-Gm-Message-State: APjAAAW1wZfwFeJK+4qHm1W/wDO1Gd4eEWiPD2q8qQTYdYL+yCNFSEZw
- Eog53mZJ5bllDdAXX3w8WfX77xKrxBr/IkGPbxQ=
-X-Received: by 2002:a2e:894b:: with SMTP id b11mr16472078ljk.152.1571700343037; 
- Mon, 21 Oct 2019 16:25:43 -0700 (PDT)
+ bh=xDVnpCw12NPl8Yg69y0FQgbfDnbxu2t1uwrVMr+Nmo0=;
+ b=dssblM1MKivgAgDEAQPtWwgELqvCf1YoUIZ9TjwVwKwXljhCBepXiTWJFZpaOpBW3J
+ kmf5AMKRwGAsOATBtj5HZvwD5V3pxhFPtngYLPrL5n1yurgree65YKzCK2bZ624MM2ZD
+ j5rjb4pIQHY3MQba1Dv4+sEtVg57FQ13PKCWt5B9XaEds3gEU+2YTmAx0TsrkJwsdC7g
+ 1/4HfwpGq5OFIKFzDC63uGwV9N46ZuF3Fp41aDH0Vm8aQlx6gQhTKL2lZKqOZwgo+FMK
+ EEjhPAQGVkaKeiXLDxW1EfTvIUOV1BgDUpdsQNPoXYVV0KCCNvoVZ1erdnX4H/Qet9vx
+ //jA==
+X-Gm-Message-State: APjAAAUiQarvIDYAP0mRG89SuFCFTw2q5smv68bZuvblDuUDqw8Iuz4D
+ jGiTRVvaOFbJYd4i62elM0TQkmsVGASc2wBB/5Y=
+X-Received: by 2002:a2e:9604:: with SMTP id v4mr17035928ljh.101.1571700449336; 
+ Mon, 21 Oct 2019 16:27:29 -0700 (PDT)
 MIME-Version: 1.0
-References: <20191020225650.3671-1-philmd@redhat.com>
- <20191020225650.3671-11-philmd@redhat.com>
-In-Reply-To: <20191020225650.3671-11-philmd@redhat.com>
+References: <20191019234715.25750-1-f4bug@amsat.org>
+ <20191019234715.25750-11-f4bug@amsat.org>
+In-Reply-To: <20191019234715.25750-11-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 21 Oct 2019 16:20:27 -0700
-Message-ID: <CAKmqyKNhMo5jBh=y_F+-M+J+AHp+k=AtYsVMCFZbhfrCR0dqCQ@mail.gmail.com>
-Subject: Re: [PATCH 10/21] hw/core: Let the machine be the owner of the system
- memory
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Mon, 21 Oct 2019 16:22:13 -0700
+Message-ID: <CAKmqyKPAv+QQEr-pbmThDEmXXwwOaF4E7TeovOWhNW5ok2J_uQ@mail.gmail.com>
+Subject: Re: [PATCH v3 10/16] hw/arm/raspi: Use AddressSpace when using
+ arm_boot::write_secondary_boot
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::242
+X-Received-From: 2a00:1450:4864:20::244
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,64 +107,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paul Burton <pburton@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
- Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>, Rob Herring <robh@kernel.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
- "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>,
- Eduardo Habkost <ehabkost@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Matthias Brugger <mbrugger@suse.com>, Rob Herring <robh@kernel.org>,
  Alistair Francis <alistair@alistair23.me>,
- Leif Lindholm <leif.lindholm@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>, Fabien Chouteau <chouteau@adacore.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Thomas Huth <huth@tuxfamily.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, Andrew Jeffery <andrew@aj.id.au>,
- Michael Walle <michael@walle.cc>, "open list:New World" <qemu-ppc@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+ Esteban Bosse <estebanbosse@gmail.com>, "Emilio G . Cota" <cota@braap.org>,
+ Clement Deschamps <clement.deschamps@antfield.fr>,
+ qemu-arm <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>,
+ Laurent Bonnans <laurent.bonnans@here.com>,
+ Cheng Xiang <ext-cheng.xiang@here.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Pekka Enberg <penberg@iki.fi>, Pete Batard <pete@akeo.ie>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L5/h0+RZUQVB
+X-TUID: P1SS4oEaOLCx
 
-On Sun, Oct 20, 2019 at 4:07 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
+On Sat, Oct 19, 2019 at 4:56 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> write_secondary_boot() is used in SMP configurations where the
+> CPU address space might not be the main System Bus.
+> The rom_add_blob_fixed_as() function allow us to specify an
+> address space. Use it to write each boot blob in the corresponding
+> CPU address space.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
->  hw/core/null-machine.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/arm/raspi.c | 14 ++++++++------
+>  1 file changed, 8 insertions(+), 6 deletions(-)
 >
-> diff --git a/hw/core/null-machine.c b/hw/core/null-machine.c
-> index 1aa0a9a01a..16546c8140 100644
-> --- a/hw/core/null-machine.c
-> +++ b/hw/core/null-machine.c
-> @@ -35,7 +35,7 @@ static void machine_none_init(MachineState *mch)
->      if (mch->ram_size) {
->          MemoryRegion *ram =3D g_new(MemoryRegion, 1);
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index a12459bc41..569d85c11a 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -60,12 +60,14 @@ static void write_smpboot(ARMCPU *cpu, const struct a=
+rm_boot_info *info)
+>      QEMU_BUILD_BUG_ON((BOARDSETUP_ADDR & 0xf) !=3D 0
+>                        || (BOARDSETUP_ADDR >> 4) >=3D 0x100);
 >
-> -        memory_region_allocate_system_memory(ram, NULL, "ram", mch->ram_=
-size);
-> +        memory_region_allocate_system_memory(ram, mch, "ram", mch->ram_s=
-ize);
->          memory_region_add_subregion(get_system_memory(), 0, ram);
->      }
+> -    rom_add_blob_fixed("raspi_smpboot", smpboot, sizeof(smpboot),
+> -                       info->smp_loader_start);
+> +    rom_add_blob_fixed_as("raspi_smpboot", smpboot, sizeof(smpboot),
+> +                          info->smp_loader_start,
+> +                          arm_boot_address_space(cpu, info));
+>  }
 >
+>  static void write_smpboot64(ARMCPU *cpu, const struct arm_boot_info *inf=
+o)
+>  {
+> +    AddressSpace *as =3D arm_boot_address_space(cpu, info);
+>      /* Unlike the AArch32 version we don't need to call the board setup =
+hook.
+>       * The mechanism for doing the spin-table is also entirely different=
+.
+>       * We must have four 64-bit fields at absolute addresses
+> @@ -92,10 +94,10 @@ static void write_smpboot64(ARMCPU *cpu, const struct=
+ arm_boot_info *info)
+>          0, 0, 0, 0
+>      };
+>
+> -    rom_add_blob_fixed("raspi_smpboot", smpboot, sizeof(smpboot),
+> -                       info->smp_loader_start);
+> -    rom_add_blob_fixed("raspi_spintables", spintables, sizeof(spintables=
+),
+> -                       SPINTABLE_ADDR);
+> +    rom_add_blob_fixed_as("raspi_smpboot", smpboot, sizeof(smpboot),
+> +                          info->smp_loader_start, as);
+> +    rom_add_blob_fixed_as("raspi_spintables", spintables, sizeof(spintab=
+les),
+> +                          SPINTABLE_ADDR, as);
+>  }
+>
+>  static void write_board_setup(ARMCPU *cpu, const struct arm_boot_info *i=
+nfo)
 > --
 > 2.21.0
 >

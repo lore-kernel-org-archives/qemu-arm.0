@@ -1,94 +1,94 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5091343wrm;
-        Mon, 21 Oct 2019 14:02:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyYP68sJxqNdvliD1bmFUMuyaztxIDoL010/ySXyg+vBaG4PkRi8xOghDvY9aWg4E4ReKd0
-X-Received: by 2002:a37:bf02:: with SMTP id p2mr14331850qkf.42.1571691750464;
-        Mon, 21 Oct 2019 14:02:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571691750; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5091776wrm;
+        Mon, 21 Oct 2019 14:02:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxAyATIMkUrVO8G6CQdQZgvWbcNr8rycEZ7IEiQgywmCt9isa5PSGw7c1dSYtLs1jpqoCVR
+X-Received: by 2002:ac8:610e:: with SMTP id a14mr26504807qtm.187.1571691775675;
+        Mon, 21 Oct 2019 14:02:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571691775; cv=none;
         d=google.com; s=arc-20160816;
-        b=DnUv4Hbwf3y3zUnkpRDYBta8Mf/5iCrXfTHbiL0KQSzzQEuZMBeD3Sd2XVRpWfEe4J
-         qOFjodYPs0Mb4YBFkaICIjeHCkX9UPjxUjwHOF2GxALEiyI32Iznblc7uEheXDC+k4KY
-         ET+dZB/okQBsyPeJWeRMFt2ZaiimBOQ0v0sijBGWqLydWokJol2/uc6l5VHp6V0kh13S
-         8FHdcgOz9lrs8/iAxx2nN6mHIHF1nbHHfs19hlgg0z5OYVRShBtHJr8lWHE+QkS7CPnB
-         ZUtZiWVJzYXbIKa00LsoQJFE/9dbMDo4nqLOaubeW2sxXbAJJadsU3vV1uL9TykLeuo6
-         ynxw==
+        b=PNvWeF+wWlLgCRvd12HysL4Mqm1axye8QFcHDp2K0CmoqIq9ON1mUsrEaUCOPFoDXF
+         j4E7FrFe6/+zXkeB8JKqRw5mDmDEhytgoNn92L3O7P8Bs5h2chEjwVpMV5omX+y9Hfjk
+         0omGiq4kip+z2oVcv5kICgurvFeI5/1mKJqzRPsfviw7ssY47Gv8Ybg/ORtriW3pOXvQ
+         elrEgSMMMyhNFvHu4/pnGxB3D7AyN6dVM2igssRmdMJ1dpPnh4cVa+B8mErnXdyOUtDW
+         jqmMD8ZnroYXONhQvddWdGoT28i/6GZC5Jiz6Dxgx09VOJbEXw3mYQzLe5GtKhjSh3c7
+         PBag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=ooguhNRX2r9YbvJtC1Q7wtQv8RPkIuUAM30NOTdaMDo=;
-        b=jsvAd2fBQyXUpKdfCw/tO8EaMT0XTHKFOQUes5RuXU6z9B0XNJhPKGXxHAqnfwjgUh
-         NeEPySaVCirSur5/0JUvM61fJHKBuoo+Dy9vh00QbxAF4PNdSCyQiDGFisu5umLaBy/r
-         XIFEUykf/ZskpCWCdgMtNbqAKL6FwrMxXWkAij6f55jF6u4kcEcWuQ9ImYwQcpTYEcfR
-         4cB0YdLXimYv21AyBfitqmI7cV97ftw8zQBusKhok2E3kx0WEWoIftlz9oH5aPV2UU5h
-         a7QBrO4m3B0v3rLOUqL03XPmwgoKtT833RXF1A1uwag9TlzaEdB/Zqh8P9T/VomyBML0
-         jDkw==
+        bh=/4GYEEZxPx2EoffTa5gB5GuX2Y2RuIDNsIu83WJIHSs=;
+        b=ub2kFWOC+eBTS/q+Y8C6NBk4fPdJCiKCf06ahOBYSPDuW4AtEzIYyOQgrMvakKxXkh
+         oo1Et0l1CxajfHUbms/QdwCDlC0KRFyZGYJq9Kg581PVo0ZbhesWgH4Xxarvv3ND3qjs
+         /u25yiog+YuGKzQCI1JZLVyleGNQ3hY2kC5KWF1a22NVspwSVP6FL/bXVH3JQybx1cOv
+         3fTSCUWXFZPuseuXI/pNHm2V3OpvEzMA8NTGuz+GKqIhiJPBxSxjX/oUjjLGg882sYUd
+         TMwrf4C1dJQwJGTGWp888XfmcLwQvWcM3654UPvhWvIoF77dJGT0q1iAEQ83rpDz8eHi
+         hWEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SWEvK1J9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=avK+l72v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k1si14900124qvf.145.2019.10.21.14.02.30
+        by mx.google.com with ESMTPS id f36si15473049qtc.206.2019.10.21.14.02.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 14:02:30 -0700 (PDT)
+        Mon, 21 Oct 2019 14:02:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SWEvK1J9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=avK+l72v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47878 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47892 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMeov-0006gX-KH
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 17:02:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42983)
+	id 1iMepL-0007I2-2H
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 17:02:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43089)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iMeoM-0006cL-DG
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 17:01:55 -0400
+ (envelope-from <alistair23@gmail.com>) id 1iMepA-0007Dp-B7
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 17:02:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iMeoL-00081E-DR
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 17:01:54 -0400
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:39906)
+ (envelope-from <alistair23@gmail.com>) id 1iMep9-0008OL-6l
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 17:02:44 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:41261)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iMeoJ-0007zk-0b; Mon, 21 Oct 2019 17:01:51 -0400
-Received: by mail-lf1-x143.google.com with SMTP id 195so11247356lfj.6;
- Mon, 21 Oct 2019 14:01:50 -0700 (PDT)
+ id 1iMep6-0008N0-P6; Mon, 21 Oct 2019 17:02:40 -0400
+Received: by mail-lf1-x143.google.com with SMTP id x4so4951397lfn.8;
+ Mon, 21 Oct 2019 14:02:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=ooguhNRX2r9YbvJtC1Q7wtQv8RPkIuUAM30NOTdaMDo=;
- b=SWEvK1J930fJUVflAZS8jonqNaGxGogybqkrT0rrxvc3vJAAanCrVsuo7VpSzACpC1
- Iy8rlLmJ87pQtGKZYWzFasPL9HX8A6rvT7+/4FvTqqocUt7YlBfrmo3bS/DLAFacsmxb
- r+NpPoNX/1skQ8KvFxw5hvYReYJpqtUObvhEsah436C/zEacRE/GS+hbVPS3jvmnH44+
- mqfLkwQQHO84bOseu8UqaES0b0XupLHoxIxRY1Ne1fafbOe55iwbF7XUn4p+21MmAGl6
- 3Odi9yQV31F4VxQPgPmE2IZ7t3Nh5yQScRqupUk8JKeGxNWrulYiTjPAo8d8toe5CZHf
- CAvg==
+ bh=/4GYEEZxPx2EoffTa5gB5GuX2Y2RuIDNsIu83WJIHSs=;
+ b=avK+l72vFf0cK4Rb/qZDKD64x6px5QGuyrqSm6Jj1tKlPMyZh9tA8t3aLS0yUx/2dK
+ YRQF6eCjEUERU7qfI8ZoOeQb1zaN+lpQaYgB4qD4pDgoXR5MjPFtF4sOWanA8Llg8gt5
+ h9Wrc6PEfjjxg+nbtoihbJCfQGa9E3THG9Bc8q4PN4Qvd3KebBlQGav9co4o6l2H4beO
+ 5I6ln8a2H7zzqJUHe/tZIe8woJ4c7W7WKwiFX8VKQ/6rw2k6BRka+idggGKg6sHk7FCF
+ Fc+glqMOEYL/7/RyrvzbRTiy161re3LHePmT9SCU0JexSYmNpOtclHonbta7etrF3XQj
+ vVEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=ooguhNRX2r9YbvJtC1Q7wtQv8RPkIuUAM30NOTdaMDo=;
- b=TP+Rn3O07Ozj6pN5etoil+h+bcWBFsqQ5NjfyKHzMWKUMfV8JN0IVHtEvjhfNuEXAN
- P5Ep8XaV7HnPJH55PC9PrSL2+tkQN6TIST3NQot91lbzsNhRPWrC9akQFJQPa0wDefhg
- WkoXXTP9dSOQiZBxh5Ce0dW4rGD4uJu8fDkZdwhC92MMOYcBmSjO/wwnJaGuOvVVyquE
- RGluUso6YsCAPzOMVuQCXfNlgpyYLp7D08Xn+uyAq4mPUpS7LTfe3ui39e+9QoPOP314
- 6Kg+p7XHsunNGOUSqc8na9Jp2p+pMgLN6e/WdC3eQcjxzCC/Y/IJ4VuN1ifKpXKOmUeP
- bVhg==
-X-Gm-Message-State: APjAAAXo5fyL+bn09FDG8k8wxx9IJ2bmTm/dRnmZGeeBVuh/9v7cfXAO
- oNESQJzwsA40yiZDBRKy2Vz5dgHSS4YdiXgMwcQ=
-X-Received: by 2002:a19:ac01:: with SMTP id g1mr16437498lfc.141.1571691709644; 
- Mon, 21 Oct 2019 14:01:49 -0700 (PDT)
+ bh=/4GYEEZxPx2EoffTa5gB5GuX2Y2RuIDNsIu83WJIHSs=;
+ b=nA4U0m4d8JFgkXw386bJapS5pNM8s80JNo9T0V5ctdqp8IqUeAamoBRDNRfGahF3fw
+ bB1ewZ0fEj8756JpRBuT7a3TM85sxmTiMJXNbwxFeTOo33T/rvFF8uhPEqMEksV6+Veo
+ Ik+4cX5oUm4zJYGAQ3V0Dw5mpxyfyZ/mxAU/nMBeJRS1+5mXWfxhvUZOqvcetSHjaV9l
+ tFTJf6QrZFJeG+6iho7vUz0M2iQfU93TWa8UEb35cjRyHDY22Q+n6usBl3aj+T0HnsZL
+ 7H5olq/i+Io2GlpkqunSRo14mKmX44MxTy/YCtnw1/LGbYn/6VelDa3WVxCxwYNM2khV
+ nFFA==
+X-Gm-Message-State: APjAAAVbDl7hqwcBG/5yC0Lv8HigGPxA/pHW/lQfaTtMwHKyaWg2cQEI
+ pzswq2o4ipq8voapGbLuk1AYGAo3B7NZP1Hr3UE=
+X-Received: by 2002:a19:855:: with SMTP id 82mr16116361lfi.44.1571691759285;
+ Mon, 21 Oct 2019 14:02:39 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191020225650.3671-1-philmd@redhat.com>
- <20191020225650.3671-15-philmd@redhat.com>
-In-Reply-To: <20191020225650.3671-15-philmd@redhat.com>
+ <20191020225650.3671-17-philmd@redhat.com>
+In-Reply-To: <20191020225650.3671-17-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 21 Oct 2019 13:56:34 -0700
-Message-ID: <CAKmqyKMZQevuhDrbq72uSA589HMoae_Jm9HeGt-EOY--M6wfFw@mail.gmail.com>
-Subject: Re: [PATCH 14/21] hw/hppa: Let the machine be the owner of the system
+Date: Mon, 21 Oct 2019 13:57:23 -0700
+Message-ID: <CAKmqyKN9pc+wLV0wUZYgCm9-35dZKdJAM-Yu6zMc0bwY5v8FVw@mail.gmail.com>
+Subject: Re: [PATCH 16/21] hw/lm32: Let the machine be the owner of the system
  memory
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
@@ -135,9 +135,9 @@ Cc: Paul Burton <pburton@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rB7FKzfWIi8B
+X-TUID: NzUd0XuvrEMn
 
-On Sun, Oct 20, 2019 at 4:17 PM Philippe Mathieu-Daud=C3=A9
+On Sun, Oct 20, 2019 at 4:10 PM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
@@ -147,21 +147,50 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/hppa/machine.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/lm32/lm32_boards.c | 4 ++--
+>  hw/lm32/milkymist.c   | 2 +-
+>  2 files changed, 3 insertions(+), 3 deletions(-)
 >
-> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-> index dbe1ff0fe5..6703bfd351 100644
-> --- a/hw/hppa/machine.c
-> +++ b/hw/hppa/machine.c
-> @@ -96,7 +96,7 @@ static void machine_hppa_init(MachineState *machine)
+> diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
+> index 5ae308bfcf..50b607e0cc 100644
+> --- a/hw/lm32/lm32_boards.c
+> +++ b/hw/lm32/lm32_boards.c
+> @@ -107,7 +107,7 @@ static void lm32_evr_init(MachineState *machine)
 >
->      /* Main memory region. */
->      ram_region =3D g_new(MemoryRegion, 1);
-> -    memory_region_allocate_system_memory(ram_region, NULL,
-> +    memory_region_allocate_system_memory(ram_region, machine,
->                                           "ram", ram_size);
->      memory_region_add_subregion(addr_space, 0, ram_region);
+>      reset_info->flash_base =3D flash_base;
+>
+> -    memory_region_allocate_system_memory(phys_ram, NULL, "lm32_evr.sdram=
+",
+> +    memory_region_allocate_system_memory(phys_ram, machine, "lm32_evr.sd=
+ram",
+>                                           ram_size);
+>      memory_region_add_subregion(address_space_mem, ram_base, phys_ram);
+>
+> @@ -200,7 +200,7 @@ static void lm32_uclinux_init(MachineState *machine)
+>
+>      reset_info->flash_base =3D flash_base;
+>
+> -    memory_region_allocate_system_memory(phys_ram, NULL,
+> +    memory_region_allocate_system_memory(phys_ram, machine,
+>                                           "lm32_uclinux.sdram", ram_size)=
+;
+>      memory_region_add_subregion(address_space_mem, ram_base, phys_ram);
+>
+> diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
+> index 460d322de5..ee2eb1877e 100644
+> --- a/hw/lm32/milkymist.c
+> +++ b/hw/lm32/milkymist.c
+> @@ -116,7 +116,7 @@ milkymist_init(MachineState *machine)
+>
+>      cpu_lm32_set_phys_msb_ignore(env, 1);
+>
+> -    memory_region_allocate_system_memory(phys_sdram, NULL, "milkymist.sd=
+ram",
+> +    memory_region_allocate_system_memory(phys_sdram, machine, "milkymist=
+.sdram",
+>                                           sdram_size);
+>      memory_region_add_subregion(address_space_mem, sdram_base, phys_sdra=
+m);
 >
 > --
 > 2.21.0

@@ -1,129 +1,169 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4785871wrm;
-        Mon, 21 Oct 2019 09:18:51 -0700 (PDT)
-X-Received: by 2002:a05:6830:1e6a:: with SMTP id m10mr18674179otr.236.1571674731031;
-        Mon, 21 Oct 2019 09:18:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571674731; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4881699wrm;
+        Mon, 21 Oct 2019 10:42:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxZPiQnP53zgHNB9T4Iq4KmhNM7boDMlfi7UMbLjjM5mBo3FmO6+DKg0UH5Vz03akjO/IwS
+X-Received: by 2002:aa7:cb5a:: with SMTP id w26mr26527768edt.188.1571679727637;
+        Mon, 21 Oct 2019 10:42:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571679727; cv=none;
         d=google.com; s=arc-20160816;
-        b=F2N29ShPGzmHvpfLrvvDoENJYLaejZGDkBh140cNlfJLmgd5GJAQqD2FIvs14+ni0S
-         jrtld917Y9zA8MoSkJIfAkLl6yzHQjvIXgzuWMGPBLuCHhUERtNW2/zTLof6E+FW2iu+
-         0TmyDs6RRol7GH8sWasmF1gBDo2wDpO7agCtqndeVn15x0MQ49LoWNGc2xvje0PBrxcM
-         xtJhy9ju0pDZqK4lRzV7WmaeqD/PHycSBJtGCwDFf5LGjZAPISkaxZF7b43lgOnCJunz
-         zTQ3Tp9UZZm9+SDzuUINWP+jv1ET7/BhUAuOrfLHgknVFp2TrVBwBEo0md59uRrzn1pJ
-         DaUA==
+        b=ZS6mGhn8y5JKVDbVXcfVdZE3wWk3aUeL7jdS5dUKbl5wCW9hJwf1se2E175bw2FFXt
+         SC5SJx0Uco3Q347TUBsADK1xht4tNinNdv+g8CiXL+ekQDpnxFjQWrW+zGFBGB8MJ22r
+         JaTyURXKcLKX9OqldCmE9Lu067bXLATqxNfw0rTNzeYbpaoDwrW1xbWgt7d3gqwu3iFf
+         Ts7MkI7Mno4YfX4fBEQkG3KEQ0GFglmRCCQLZvYWv+Exn5ofZQtKn4/WY8jRcsC0Vb85
+         P3E08ZPa6jWd91ORMgHQeI7gabs/JlGFHXhlICwXgG5iRrP0io1wdWtHS7KcdnA3v/cj
+         zEHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=cEXmLrLOTGKJDPnqAGoAgVNhvpHJPDHl4lxsEKXEJLE=;
-        b=WqpB76RA7VTi54Iy2nQSn90aJ3303HgGoXwGK8C4Wsrvya0mKRwlE33ovBwKJaj/Cz
-         SCFQvc0C5JPsrpnkcRBR8pwu+5yOTOtloTXSQ9KPlXw2FMd6UlDk0bcnAJEvEcpzLsQ+
-         6V0Td1KWFbX3WNL3OjtlCOrz3JAne6/CFUVxZJhDoV3G9cUG69iSgqYy4I9fXgoVT7aS
-         DXbOtIriuhxQsK54vmmm7irG+REPGQxCiOlOvAhxAR1YjHk6Nt0UQA7G2ibZ+MpwoQuT
-         VZdlPVZCH8iOt0DYy/1Wg1390D8kRpxlIIO9DLMmbsU61R0CXmaFfcAMDkUPhs9OrQgU
-         Esgg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=7o2dss3VOzyE7jxjHvktXmTvl4FbMO3NZUv6ex5lRyk=;
+        b=xXM0LXofELtdgHMDsSzpIxlVvN/wiP0yCRTFZvyPSwUFuCSUlYvF1cTXuva/rk3Z6H
+         T1R1Td218ibII8mgjItWBP+Jdxyr7j+WZZWaVXspjpYF19YBqCTI/PtVCjzCOGw1mTsA
+         L26Gu8cd9ZGLv//3jW3+NVzqbYwdfb5TcuJd5152lwaVMRy8QeLxu/C9obqxf96LyTwT
+         1nxeeMzN/n0hj8CoFguz7EbgJ2R26wfVXjoYauVeou8C07hpFFOpwIBHTDwNg24xFrzj
+         yBhazrZ4k411YNgj48K1d1RNGStL5f7cuM317gAbJtO0Ihup3AW6a2aQKC7gp/xmRQLj
+         MFJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bsk8kXkK;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m24sor7439328oih.146.2019.10.21.09.18.50
+       dkim=fail header.i=@linaro.org header.s=google header.b=QvAc5S7m;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 96si10543267edq.24.2019.10.21.10.42.07
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 21 Oct 2019 09:18:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 21 Oct 2019 10:42:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bsk8kXkK;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=cEXmLrLOTGKJDPnqAGoAgVNhvpHJPDHl4lxsEKXEJLE=;
-        b=Bsk8kXkKD4IWxdJhd29rL+XGIAPaw7KmHu9IHgic1EKEXeNoYrbZeQeUytZM3A9XXb
-         gfGG/kY8/GkZwKfXh6UbHhKtym8A9CxJbPCHwESeP05iaT4b4TVNw+nmgEsI6KooBc5N
-         c9Qer6aLZ7U4IRpLBrqRVNrUINt2By0REwOg3P8SlnBu4x7O300MaE7yu3Id/iwM8xTS
-         xKVAA10yQ+pKNk5GU8UwpX0oSkZediduwGEIfxFzeiStD9UO3dVY6ByREuIM2rOhcmsL
-         2wYXbFhnO3gx7IIaOpG7QuwnZgi4jw0OMLoEaNfEwG8FhqC+4lWofMv5iJd3YPdYKpBZ
-         Vl5A==
+       dkim=fail header.i=@linaro.org header.s=google header.b=QvAc5S7m;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46468 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMbh0-00039D-Ix
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 13:42:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48023)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <richard.henderson@linaro.org>) id 1iMbgC-0002Zc-A0
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:41:17 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1iMbgB-0003D3-4v
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:41:16 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:45234)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iMbgA-0003CB-V6
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:41:15 -0400
+Received: by mail-pg1-x543.google.com with SMTP id r1so8214892pgj.12
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 10:41:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=7o2dss3VOzyE7jxjHvktXmTvl4FbMO3NZUv6ex5lRyk=;
+ b=QvAc5S7mwtKOdwKwEm9Dvwgd5KhOnqKTFU6+ZysDTHAZFvmbEz8pqP0BcOPZDvpGz8
+ CVUYexQ5CiCh5sqomoD368JKgOrc8eTn0c8rTpchucqwe61Ilu0B73JGxWFGMRY1YIQ+
+ 1xeGF8ph8JOPjGG1vtuXwi0krTJ1vpiw14HElyRyQ2BGnrw7i6iQbd3jWA/Q/Rc7JYOx
+ aybzaxz28k4iRjUtzDuc3rEkkjR9NKdp5sobQ63njLUUx4JN8kkaqKEx04hWwCGwNS9d
+ 1rwVLlWfsjGzdSMAzTLyT+tm188GpN6xaTXEEMzk8DNP7ohkQFMi+S5CQ600pYIsBOOQ
+ +yXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=cEXmLrLOTGKJDPnqAGoAgVNhvpHJPDHl4lxsEKXEJLE=;
-        b=QMQoJ43Sfcmpj/pLZj5PY9q5hHtNpNwDZhhJopbmkv9XDNqLtm6bKkt/6hxt3HgmHN
-         xyGRD2QAr0K4tk40YWSf6bu2Nwb2W/LsaeVvBKgMUVMTdmZz8KrUlBJMPkgdtM/zHwY8
-         fmdgpsktGik5507+sK/VxeE1juCkaOh8PyFuIKjrDlJZvI0dXa5yq9jmDBzAcB6tS/lr
-         HejUeX4jd9VBrFoCtJUbBCvbR0FLeXLpUU6d5xIStW0NrWouSHch8/38c7oyKt9JwVXK
-         MLrkmYGRrrwQA8gySMQfTr5vRUmDqIK0n4AHG/nnFICzuPVNRaKbUc72Fzco0s2iK8l4
-         +S3Q==
-X-Gm-Message-State: APjAAAVb9X6/uhOikewThTRYkjVtme/mIOJZLsKB9OI0d+MH54/0R17f
-	7osc2Jjd/Mp1rX3sDsgJmKsD7v0/1QQ2RvI6knzhq+JN
-X-Google-Smtp-Source: APXvYqwGTIaXASwydD//8FEXj2ivwVIWKNwFgB2xb5SNHrS5DvAB1udzm3EGH4hz4cPoyGxGN/KM0PYsa1xpepuXOFQ=
-X-Received: by 2002:aca:2b08:: with SMTP id i8mr19041250oik.146.1571674730634;
- Mon, 21 Oct 2019 09:18:50 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=7o2dss3VOzyE7jxjHvktXmTvl4FbMO3NZUv6ex5lRyk=;
+ b=MA/iY8eQcCL5PZXBzhV02Q1RRlRuExcFUxYmNhURRVzvS/lcrj+6o4Uj8rhngaRSPG
+ lq+Aw6P05omEEu8twNUcoaq1Ru5dB8EQcGJHww9eW4b1ek9uB9EoDpJF/dtr/LUlAAM7
+ dhQ5+HyYD8BvySk6d+pAz5q9ynE1tjn+0fUA+zDxqCZqUkSoYvdp/zlBuihYd75n3tJt
+ J7DJZhqcLx8ddjLQiuqJ0R95DWWeolZFS4su5twkPKkBrT1SoMbDnRrgbcIAynolYHGm
+ BSysjkS3IPEwk1kH9fkTdafKqh5YazJL6PAc5MQctU0iDzuEF9YrDHgtAGaZcWxV0ZCh
+ 83YA==
+X-Gm-Message-State: APjAAAWVaFKcdoyWffUN+EZaQs+d4wFQwjPvMylezqSyyO6Lfb5N0m7H
+ iM3DJ4cum9kkpA61A5ErGrpthg==
+X-Received: by 2002:a62:ac02:: with SMTP id v2mr23443419pfe.200.1571679673053; 
+ Mon, 21 Oct 2019 10:41:13 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id x125sm18599307pfb.93.2019.10.21.10.41.11
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 21 Oct 2019 10:41:12 -0700 (PDT)
+Subject: Re: [PATCH 21/21] hw/core: Assert
+ memory_region_allocate_system_memory has machine owner
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+References: <20191020225650.3671-1-philmd@redhat.com>
+ <20191020225650.3671-22-philmd@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <a9b24bbe-8186-c50c-fe84-c9dc9c0448ce@linaro.org>
+Date: Mon, 21 Oct 2019 10:41:09 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-References: <20191016085408.24360-1-drjones@redhat.com> <CAFEAcA8pV5batrPk+J6RLU2rv9SNAmL8JS9Kd9tWP3pD-m29eA@mail.gmail.com>
- <3f54f759-9d6d-bf04-85aa-59c1cac31044@redhat.com> <20191021142336.e4xekqlmqv5txu5w@kamzik.brq.redhat.com>
- <CAFEAcA-bezS5tSVB+N223+N+xoYYYHuSJmDTaRCJgO+4Y=VjdQ@mail.gmail.com> <20191021161226.mnm6eomghb37xlby@kamzik.brq.redhat.com>
-In-Reply-To: <20191021161226.mnm6eomghb37xlby@kamzik.brq.redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Oct 2019 17:18:38 +0100
-Message-ID: <CAFEAcA-vHmtCi3HGqpu34sAaNxGeQwS_+0yZ5Hr4SbnGm+rjYA@mail.gmail.com>
-Subject: Re: [PATCH v6 0/9] target/arm/kvm: enable SVE in guests
-To: Andrew Jones <drjones@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Markus Armbruster <armbru@redhat.com>, Eric Auger <eric.auger@redhat.com>, 
-	qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Dave P Martin <Dave.Martin@arm.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: unzWILn1Rj/4
+In-Reply-To: <20191020225650.3671-22-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::543
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paul Burton <pburton@wavecomp.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Leif Lindholm <leif.lindholm@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, Rob Herring <robh@kernel.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Richard Henderson <rth@twiddle.net>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Thomas Huth <huth@tuxfamily.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Michael Walle <michael@walle.cc>,
+ qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DfpT31aTBZ0x
 
-On Mon, 21 Oct 2019 at 17:12, Andrew Jones <drjones@redhat.com> wrote:
->
-> On Mon, Oct 21, 2019 at 04:43:22PM +0100, Peter Maydell wrote:
-> > On Mon, 21 Oct 2019 at 15:23, Andrew Jones <drjones@redhat.com> wrote:
-> > > Peter, would you mind running your test on the kvm32 machine with this
-> > > change before I send a v7?
-> >
-> > Still fails:
-> >
-> > pm215@pm-ct:~/qemu/build/arm$
-> > QTEST_QEMU_BINARY=arm-softmmu/qemu-system-arm tests/arm-cpu-features
-> > /arm/arm/query-cpu-model-expansion: OK
-> > /arm/arm/kvm/query-cpu-model-expansion: **
-> > ERROR:/home/pm215/qemu/tests/arm-cpu-features.c:498:test_query_cpu_model_expansion_kvm:
-> > assertion failed: (resp_has_props(_resp))
-> > Aborted
-> >
-> > This is asserting on the line:
-> > 498             assert_has_not_feature(qts, "host", "sve");
-> >
->
-> Oh, I see. It's not failing the specific absence of 'sve', but the test
-> code (assert_has_not_feature()) is assuming at least one property is
-> present. This isn't the case for kvm32 'host' cpus. They apparently
-> have none. We need this patch too, then
->
-> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-> index 14100ebd8521..9aa728ed8469 100644
-> --- a/tests/arm-cpu-features.c
-> +++ b/tests/arm-cpu-features.c
-> @@ -136,8 +136,8 @@ static bool resp_get_feature(QDict *resp, const char *feature)
->  ({                                                                     \
->      QDict *_resp = do_query_no_props(qts, cpu_type);                   \
->      g_assert(_resp);                                                   \
-> -    g_assert(resp_has_props(_resp));                                   \
-> -    g_assert(!qdict_get(resp_get_props(_resp), feature));              \
-> +    g_assert(!resp_has_props(_resp) ||                                 \
-> +             !qdict_get(resp_get_props(_resp), feature));              \
->      qobject_unref(_resp);                                              \
->  })
+On 10/20/19 3:56 PM, Philippe Mathieu-Daudé wrote:
+> All the memory_region_allocate_system_memory() pass a MachineState
+> argument. Add an assertion to ensure the new boards/machines added
+> set this argument, so all system memory object have the machine as
+> its QOM owner.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/core/numa.c      | 4 +---
+>  include/hw/boards.h | 2 +-
+>  2 files changed, 2 insertions(+), 4 deletions(-)
 
-Yep, with that extra the test passes. I'm just rerunning the
-full 'make check'...
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-thanks
--- PMM
+It would be a good idea to add __attribute__((nonnull(x,y,z))) as well, but
+since we don't currently have any markup for that in qemu, that can go in a
+separate patch set.
+
+
+r~

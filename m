@@ -1,110 +1,136 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4876072wrm;
-        Mon, 21 Oct 2019 10:36:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzMRQdEPg0S2IKzcmZiup3VsE+4qYFsFirISk/adTHEZhDYHkRMgpm+paYXWt7gBRlQB1ds
-X-Received: by 2002:a37:2f42:: with SMTP id v63mr16936484qkh.277.1571679414525;
-        Mon, 21 Oct 2019 10:36:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571679414; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4999767wrm;
+        Mon, 21 Oct 2019 12:25:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwp2eN95bX9ueJlBTftvzADRXZo5ZGsp2IzCU3bOlajN8KWdrfWXadNg/TjcbnS3A7rGUzf
+X-Received: by 2002:ae9:f714:: with SMTP id s20mr1580688qkg.262.1571685922033;
+        Mon, 21 Oct 2019 12:25:22 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1571685922; cv=pass;
         d=google.com; s=arc-20160816;
-        b=GNGli30qBKVQrSXkzdx9lThSXTrvdkcvzmSTtHui9DDdNDxeKRL7d2NjiMo0duRDJD
-         2ZRXmauH0p2gPHB/VHiRuj62DnVslHc8YE8mysNAyS00StABwlApkBfvpkfdeZiJv4tF
-         EqcN26mU1Ig2h7X00Ow+VrRVnFQgm5zQO4CqpgOmhoON8WODFCbDulaeZ3OCsPmtigS7
-         httTbi1Q3ca761SZNMqRnaN2fNGe9RZH7WQu/iBRQBRjwH+y3kv3kg4x6RLrcqdbaVXT
-         0b08Ob92Oa3uZUkTwlLCgcNwE7NVfDV8ZtQS8JXZRCi+M7VxyO2ZTF/Wpyf8VzBesidl
-         foug==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=yz310Yg7z5OwZs5kDVrVjgeTWj0a3rD8UZxo9LjRgbMRlugyIBWE3UIkCyeoX0/d8h
+         kxN+RED8o6MLqP0/YI2lRo0cUChBuAjKnxv6ZhjzYJ/aMBcs40VcJraYup8ZddteGFE7
+         2VZ7BBC7G4YVu1l++KoTl8imBaBJILQWbxxV33jtjfhYA/TzPO/+fQHFBNXhbUSzUT5V
+         bMZ4fDBPQdMQu4/UOd3BlA0BhXzhqDwhlKZIYFrVwoQAtyoojUmnP4T0dDKx6nDvi+kq
+         oPQs5sTC6FE3ACNp+Tp7U2ygSkzW3CR5x6HQqCdPOwQojeS6fH5/uVfOUWsfuqIhHjy6
+         KUwg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=ZNkWA1mEvfkMGCvugy3mhzXvOLgtYy0TYVI8zaTQBRU=;
-        b=rEuzyaCpIZMWD6AtP4j/zuxpqvL6be5Zu9fAi3stC9d6iGnH6BjtFkf7L8DEhNyrhT
-         XkMSqDe8iv8M+3qMlYmeCy8Zt1Y4uBEtl9Dhmsyp7Nn7vN9yZXEhpraxioeci3juXPft
-         rmRjsQKrX7wK+/e2NcmpBuJva/Bc3p7fu3ecgHH0vDWxXH//32U3qQ/QU75BmzQp4201
-         vcuw+vb/s00mGGh94MKk88dipkw5FmY8/z4/+6OfeqcIQVtDNDfUYipbfZmKtJfBzTp6
-         O07bqwdlwJ31QMf0v4OYuXby8OIvVzB8BtyvaxA1E44clZ8Unj/hUF1yqhkbh71IwD/l
-         2TKg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature;
+        bh=73H29hOaq20Z0USTOfWYxLEfqab4x4mR7l1SWJ7ADtA=;
+        b=awRtjIko/8JEkCRQxtxzQwRmgZmB+KWaMYatkXfEvyxlKeN81qgeMa7XATlpr/tKrz
+         N9bSd/lgAbX+C4tDaK8lVAW1r7OvmWK5ShVGBaMXEDY9CKu+H17DHQZ72Nr9EupzekXu
+         3AqQpvYvgQa1ctxX1QqkTFrV0iH32DZrgQdmjEi05UAdbHk1SQfZuu2fHLl+XUD5YjpM
+         /+ZfshY1HG+VjG1U7vz0HAl9UkJao+xrnXqXcGCxsJ0pt1TODnsUKaZvBU7b2L3P2ZlU
+         3mxU+fxs9safU6JgVK+hUyZtO47yGdBvK8GrfPtpluXXVcqmuezanN/ZWGx1EcNsJ9x9
+         WrYA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@wavecomp.com header.s=selector2 header.b=vm9HarLw;
+       arc=pass (i=1 spf=pass spfdomain=wavecomp.com dkim=pass dkdomain=wavecomp.com dmarc=pass fromdomain=wavecomp.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z4si4476579qta.404.2019.10.21.10.36.54
+        by mx.google.com with ESMTPS id q11si15082360qti.6.2019.10.21.12.25.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 10:36:54 -0700 (PDT)
+        Mon, 21 Oct 2019 12:25:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46354 helo=lists1p.gnu.org)
+       dkim=pass header.i=@wavecomp.com header.s=selector2 header.b=vm9HarLw;
+       arc=pass (i=1 spf=pass spfdomain=wavecomp.com dkim=pass dkdomain=wavecomp.com dmarc=pass fromdomain=wavecomp.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMbbx-0005Vr-Qm
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 13:36:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46748)
+	id 1iMdIv-0005IJ-7n
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 15:25:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60843)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMbZi-0003My-KL
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 13:34:35 -0400
+ (envelope-from <amarkovic@wavecomp.com>) id 1iMdI1-0004rV-8U
+ for qemu-devel@nongnu.org; Mon, 21 Oct 2019 15:24:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMbZh-0007zf-0M
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 13:34:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44834)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMbZg-0007ys-OB
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 13:34:32 -0400
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 3F643C057F2E
- for <qemu-devel@nongnu.org>; Mon, 21 Oct 2019 17:34:31 +0000 (UTC)
-Received: by mail-wr1-f70.google.com with SMTP id 7so7727824wrl.2
- for <qemu-devel@nongnu.org>; Mon, 21 Oct 2019 10:34:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7lse3x6VVCkZ89VC6I/ZT2DFeIUQ17kfqYdXAgVb6M4=;
- b=caKh3YWimCdc8WZqREnF5TnsMQveDWPhMXdWLJIgU4MG/37+gRWv9b4IPG6LR5PoJX
- 5Wi/Jg60nBrdnrmQrRNat5YiDqLvAXzAIBgtD7xDWhOcn/4l0y6RudboZSTSBcMCSw/t
- EOfbduTjwYRdCikegolF9S+jJBKIvJUcXwSHAahL5DoSteomJbv3je3TDfymxlTAh3E2
- occduwaiLUKvmQSjCfWanyK3wtQ1QYV1yj9rt+p1TVhxH2P63A7MKZZiUXnuw6quKebu
- f14GTx4ayHcKP7EeooxMrOxEQg4cn6XGtnvOKT43dKSwH0D+xQT9ZDB4tgNp99ZIag65
- FQWQ==
-X-Gm-Message-State: APjAAAVHRThK9isv6aGFRPrfKLLrS7M04XGX05DRdbZaxOrAx0VeLmyu
- g/jMrUE4YkWa2C4WdI00xaZ4DB3AcZL+AczNVR/sLmvZt/WyB18ZUFnSJ5oFSmlRH9AhTEJZyVX
- EWqkkU87BXlcS+Kk=
-X-Received: by 2002:adf:e446:: with SMTP id t6mr1290758wrm.7.1571679269880;
- Mon, 21 Oct 2019 10:34:29 -0700 (PDT)
-X-Received: by 2002:adf:e446:: with SMTP id t6mr1290703wrm.7.1571679269629;
- Mon, 21 Oct 2019 10:34:29 -0700 (PDT)
-Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
- [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id p12sm2168306wrt.7.2019.10.21.10.34.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Oct 2019 10:34:28 -0700 (PDT)
-Subject: Re: [PATCH 08/21] hw/alpha/dp264: Create the RAM in the board
-To: Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-References: <20191020225650.3671-1-philmd@redhat.com>
- <20191020225650.3671-9-philmd@redhat.com>
- <708cda0d-4e05-4f15-5131-288567e91a4d@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d46d1607-eec1-814d-1a02-2100429e198f@redhat.com>
-Date: Mon, 21 Oct 2019 19:34:25 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
-MIME-Version: 1.0
-In-Reply-To: <708cda0d-4e05-4f15-5131-288567e91a4d@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+ (envelope-from <amarkovic@wavecomp.com>) id 1iMdHz-0001ec-Sc
+ for qemu-devel@nongnu.org; Mon, 21 Oct 2019 15:24:25 -0400
+Received: from mail-eopbgr790129.outbound.protection.outlook.com
+ ([40.107.79.129]:51055 helo=NAM03-CO1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <amarkovic@wavecomp.com>)
+ id 1iMdHz-0001dy-FZ; Mon, 21 Oct 2019 15:24:23 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=i3WsG0hXi5IHWWtXmhr+La3bme+guKPu6nHewO5tU/1DVPDvWlgjeIsF63YOdp6KaE/SDZhapdQeRulVAPVfWvw2GtELXke2/yyl5JF1f8eiSUIQGoegubQr2oMM9cS9NtDiqnVUISWYCF3R/t1C19f+iPL1X/QpJhia+D4hp0BmKXVlP/+7nkcMVQia0s+Ihc5SxOHS5/8+8LisR02h8j6mYFjRYx7wARzvVkIpek1KW9mx118elbauz6SkSZDdIxwe7FBxV8DGUH17+tZxAhcxRFq01YDUcAGR9O0UM5kzkt57aOJIY88zOIpzBw4kUKdWGlsCWQWeULl64vw97w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=73H29hOaq20Z0USTOfWYxLEfqab4x4mR7l1SWJ7ADtA=;
+ b=hViqvG0DdKEGJXk5JKgdob4rCtx644T2otbOT3WV4DJSs75Ilk9Sn1f77BG6ksbNrqAE5cKHB/3hhP6+cMsRw6OVi7Z14NaUT4o3GpTt9IwSoRS2jr+J42FZcT/gYL3IgazSsSVoS8IrFOA9oTRDHxqsBqWCtAhFJrKPMg32bTwV8RkujfK5BRp4CznH9niLkZ0uk6jY3nvaEnB3SK+sqJE/ZYioLCu1gAqZqjgDoGL2NWCiR2JUUj/Rgy33KJ4ODCp88ORPKWoS/mpaYLMXiJDoYjxntUXtUB8e0CsToZQgw7XaWkg5oML7RyLjnzhAwsk0llKUkPeLc9zGy9pZhA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wavecomp.com; dmarc=pass action=none header.from=wavecomp.com;
+ dkim=pass header.d=wavecomp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wavecomp.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=73H29hOaq20Z0USTOfWYxLEfqab4x4mR7l1SWJ7ADtA=;
+ b=vm9HarLw4KI6XmGqMOp7rwglOZ80pVjmGnSYoXfPhxGHvT8qXaR1rAWt2sSRcCCC6DKMxU1SRoVk0/vwBcCoSbflTju7O9WFo8sy38Ibfwl/dCwB+vuIsaH6fHU06E/YhonJ8BlRwTRqBfBDFAkN9Jz7+jOLmEFdZNoXDKR4wdc=
+Received: from BN6PR2201MB1251.namprd22.prod.outlook.com (10.174.81.139) by
+ BN6PR2201MB1442.namprd22.prod.outlook.com (10.174.91.11) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2347.17; Mon, 21 Oct 2019 19:24:11 +0000
+Received: from BN6PR2201MB1251.namprd22.prod.outlook.com
+ ([fe80::850f:a4cc:f2f8:364a]) by BN6PR2201MB1251.namprd22.prod.outlook.com
+ ([fe80::850f:a4cc:f2f8:364a%11]) with mapi id 15.20.2347.029; Mon, 21 Oct
+ 2019 19:24:11 +0000
+From: Aleksandar Markovic <amarkovic@wavecomp.com>
+To: =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>, Paolo
+ Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Markus Armbruster
+ <armbru@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: [EXTERNAL][PATCH 18/21] hw/mips: Let the machine be the owner of
+ the system memory
+Thread-Topic: [EXTERNAL][PATCH 18/21] hw/mips: Let the machine be the owner of
+ the system memory
+Thread-Index: AQHVh5qMTYYCsmPPxUOCxUGGTGsiZ6dleo5T
+Date: Mon, 21 Oct 2019 19:24:11 +0000
+Message-ID: <BN6PR2201MB12510A0641A2D00A823312B8C6690@BN6PR2201MB1251.namprd22.prod.outlook.com>
+References: <20191020225650.3671-1-philmd@redhat.com>,
+ <20191020225650.3671-19-philmd@redhat.com>
+In-Reply-To: <20191020225650.3671-19-philmd@redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=amarkovic@wavecomp.com; 
+x-originating-ip: [82.117.201.26]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 994070a8-3dcf-47ab-d111-08d7565c407a
+x-ms-traffictypediagnostic: BN6PR2201MB1442:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BN6PR2201MB144262DEC457862B9E0DA909C6690@BN6PR2201MB1442.namprd22.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:113;
+x-forefront-prvs: 0197AFBD92
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(396003)(136003)(366004)(39840400004)(376002)(346002)(189003)(199004)(7736002)(305945005)(6246003)(2906002)(6436002)(86362001)(4326008)(7406005)(7416002)(74316002)(229853002)(478600001)(256004)(14454004)(53546011)(64756008)(66556008)(66476007)(66446008)(91956017)(186003)(476003)(71200400001)(54906003)(66946007)(71190400001)(486006)(99286004)(11346002)(52536014)(33656002)(446003)(316002)(102836004)(2501003)(76116006)(81156014)(55016002)(66066001)(81166006)(9686003)(25786009)(3846002)(6116002)(8936002)(110136005)(55236004)(76176011)(7696005)(8676002)(5660300002)(6506007)(26005);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BN6PR2201MB1442;
+ H:BN6PR2201MB1251.namprd22.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: wavecomp.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: fHmP45t8iJ/Z2hWAHdaiQG0fw7/wQJHUtt3KCbKy1sYhfCpYPaVXuCxVMl31l3RQBUUIFpd99byQUp/eyFAf7uIlR66VA7pqOaJbhdWQOw91f0Dliw3QEDZLrTEYHd7xuT/WGj+k27JC9p03joddkGJoErrw03h2UgxLrsQqzJTdtjg5iSoHNOWznlaTUzuJcUpre8c+FVF3t1VqmvcbnmI9p6PMIV6QLe/TAfR22ayuSsGvr3jbYLBl7y1BMPPDaPtVqY56yAgkSig7zb+HMqPy04ZVOgzGloFrNLZqTZh7cGi1RwgO2GLNaGaL0FVVohU2Kfnxrr5ssl50nYhJ1Mf0hZWw61RYZTMlcFhFa7RCGPMKyD4JOxhnWmOZMAdkwEnC9amoEpy1rkzoqFHEr7ky1hqeIMi2AJwuJrDH891YsyOg6U0XDJala0HahH4l
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+MIME-Version: 1.0
+X-OriginatorOrg: wavecomp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 994070a8-3dcf-47ab-d111-08d7565c407a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Oct 2019 19:24:11.0807 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 463607d3-1db3-40a0-8a29-970c56230104
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: SiY4zIta3YoXAYsj+AF0/bGakAC2uBWSbKXm0637OZxcdI2ZYKQwCF3UH9NkQYyFasvQlgRMxdN9qqzcFNGBoQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR2201MB1442
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.79.129
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,80 +142,159 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paul Burton <pburton@wavecomp.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Leif Lindholm <leif.lindholm@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+Cc: Paul Burton <pburton@wavecomp.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Leif Lindholm <leif.lindholm@linaro.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring <robh@kernel.org>,
- Peter Maydell <peter.maydell@linaro.org>, Helge Deller <deller@gmx.de>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
+ =?iso-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Antony Pavlov <antonynpavlov@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>,
  Alistair Francis <alistair@alistair23.me>,
  Fabien Chouteau <chouteau@adacore.com>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
  Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Richard Henderson <rth@twiddle.net>,
+ =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
  Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
  Thomas Huth <huth@tuxfamily.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Michael Walle <michael@walle.cc>,
- qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Andrew Jeffery <andrew@aj.id.au>,
+ Michael Walle <michael@walle.cc>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
  Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cA/r6ZY0do05
+X-TUID: aljTRV19pDlN
 
-On 10/21/19 7:27 PM, Richard Henderson wrote:
-> On 10/20/19 3:56 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->> @@ -73,8 +74,16 @@ static void clipper_init(MachineState *machine)
->>       cpus[0]->env.trap_arg1 =3D 0;
->>       cpus[0]->env.trap_arg2 =3D smp_cpus;
->>  =20
->> +    /*
->> +     * Main memory region, 0x00.0000.0000.  Real hardware supports 32=
-GB,
->> +     * but the address space hole reserved at this point is 8TB.
->> +     */
->> +    memory_region_allocate_system_memory(&ram_region, NULL, "ram",
->> +                                         ram_size);
->> +    memory_region_add_subregion(get_system_memory(), 0, &ram_region);
->=20
-> The thing that I don't like about this is that ...
->=20
->> @@ -849,12 +848,6 @@ PCIBus *typhoon_init(ram_addr_t ram_size, ISABus =
-**isa_bus,
->>  =20
->>       *p_rtc_irq =3D qemu_allocate_irq(typhoon_set_timer_irq, s, 0);
->>  =20
->> -    /* Main memory region, 0x00.0000.0000.  Real hardware supports 32=
-GB,
->> -       but the address space hole reserved at this point is 8TB.  */
->> -    memory_region_allocate_system_memory(&s->ram_region, NULL, "ram",
->> -                                         ram_size);
->> -    memory_region_add_subregion(addr_space, 0, &s->ram_region);
->> -
->>       /* TIGbus, 0x801.0000.0000, 1GB.  */
->>       /* ??? The TIGbus is used for delivering interrupts, and access =
-to
->>          the flash ROM.  I'm not sure that we need to implement it at =
-all.  */
->=20
-> ... previously, it was clear that Typhoon owns the entire address space=
- layout.
->   With this moved to dp264.c, the "address space hole" comment is out o=
-f context
-> and makes no sense.
->=20
-> Would it be too weird to pass in a MemoryRegion* to typhoon_init and le=
-ave the
-> memory_region_add_subregion() call where it is?
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> ---
+>  hw/mips/boston.c        | 2 +-
+>  hw/mips/mips_fulong2e.c | 3 ++-
+>  hw/mips/mips_jazz.c     | 2 +-
+>  hw/mips/mips_malta.c    | 2 +-
+>  hw/mips/mips_mipssim.c  | 2 +-
+>  hw/mips/mips_r4k.c      | 3 ++-
+>  6 files changed, 8 insertions(+), 6 deletions(-)
 
-Yes, this will also better match the hardware.
-I have a WiP series that first QOM'ify the CY82C693UB southbridge then=20
-the Typhoon northbridge and pass the DRAM MemoryRegion* as a link, so in=20
-the non-QOM form your suggestion is the same. I'll do your change.
+When the commit message is completed:
+
+Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
+
+________________________________________
+From: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+Sent: Monday, October 21, 2019 12:56 AM
+To: Paolo Bonzini; Igor Mammedov; qemu-devel@nongnu.org; Markus Armbruster;=
+ Eduardo Habkost
+Cc: Thomas Huth; Antony Pavlov; Michael Walle; David Gibson; qemu-arm@nongn=
+u.org; KONRAD Frederic; C=E9dric Le Goater; Fabien Chouteau; Andrey Smirnov=
+; Joel Stanley; Peter Chubb; Andrew Jeffery; Helge Deller; Aurelien Jarno; =
+Jean-Christophe Dubois; Jan Kiszka; Paul Burton; qemu-ppc@nongnu.org; Herv=
+=E9 Poussineau; Andrew Baumann; Mark Cave-Ayland; Beniamino Galvani; Artyom=
+ Tarasenko; Edgar E. Iglesias; Leif Lindholm; Aleksandar Markovic; Michael =
+S. Tsirkin; Radoslaw Biernacki; Rob Herring; Richard Henderson; Alistair Fr=
+ancis; Andrzej Zaborowski; Marcel Apfelbaum; Philippe Mathieu-Daud=E9; Alek=
+sandar Rikalo; Peter Maydell
+Subject: [EXTERNAL][PATCH 18/21] hw/mips: Let the machine be the owner of t=
+he system memory
+
+Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+---
+ hw/mips/boston.c        | 2 +-
+ hw/mips/mips_fulong2e.c | 3 ++-
+ hw/mips/mips_jazz.c     | 2 +-
+ hw/mips/mips_malta.c    | 2 +-
+ hw/mips/mips_mipssim.c  | 2 +-
+ hw/mips/mips_r4k.c      | 3 ++-
+ 6 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+index ca7d813a52..8445fee0f1 100644
+--- a/hw/mips/boston.c
++++ b/hw/mips/boston.c
+@@ -474,7 +474,7 @@ static void boston_mach_init(MachineState *machine)
+     memory_region_add_subregion_overlap(sys_mem, 0x18000000, flash, 0);
+
+     ddr =3D g_new(MemoryRegion, 1);
+-    memory_region_allocate_system_memory(ddr, NULL, "boston.ddr",
++    memory_region_allocate_system_memory(ddr, machine, "boston.ddr",
+                                          machine->ram_size);
+     memory_region_add_subregion_overlap(sys_mem, 0x80000000, ddr, 0);
+
+diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
+index cf537dd7e6..d5a5cef619 100644
+--- a/hw/mips/mips_fulong2e.c
++++ b/hw/mips/mips_fulong2e.c
+@@ -318,7 +318,8 @@ static void mips_fulong2e_init(MachineState *machine)
+     ram_size =3D 256 * MiB;
+
+     /* allocate RAM */
+-    memory_region_allocate_system_memory(ram, NULL, "fulong2e.ram", ram_si=
+ze);
++    memory_region_allocate_system_memory(ram, machine,
++                                         "fulong2e.ram", ram_size);
+     memory_region_init_ram(bios, NULL, "fulong2e.bios", BIOS_SIZE,
+                            &error_fatal);
+     memory_region_set_readonly(bios, true);
+diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
+index 8d010a0b6e..88b125855f 100644
+--- a/hw/mips/mips_jazz.c
++++ b/hw/mips/mips_jazz.c
+@@ -188,7 +188,7 @@ static void mips_jazz_init(MachineState *machine,
+     cc->do_transaction_failed =3D mips_jazz_do_transaction_failed;
+
+     /* allocate RAM */
+-    memory_region_allocate_system_memory(ram, NULL, "mips_jazz.ram",
++    memory_region_allocate_system_memory(ram, machine, "mips_jazz.ram",
+                                          machine->ram_size);
+     memory_region_add_subregion(address_space, 0, ram);
+
+diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
+index 4d9c64b36a..af56a29ccb 100644
+--- a/hw/mips/mips_malta.c
++++ b/hw/mips/mips_malta.c
+@@ -1267,7 +1267,7 @@ void mips_malta_init(MachineState *machine)
+     }
+
+     /* register RAM at high address where it is undisturbed by IO */
+-    memory_region_allocate_system_memory(ram_high, NULL, "mips_malta.ram",
++    memory_region_allocate_system_memory(ram_high, machine, "mips_malta.ra=
+m",
+                                          ram_size);
+     memory_region_add_subregion(system_memory, 0x80000000, ram_high);
+
+diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c
+index 282bbecb24..c1933231e2 100644
+--- a/hw/mips/mips_mipssim.c
++++ b/hw/mips/mips_mipssim.c
+@@ -166,7 +166,7 @@ mips_mipssim_init(MachineState *machine)
+     qemu_register_reset(main_cpu_reset, reset_info);
+
+     /* Allocate RAM. */
+-    memory_region_allocate_system_memory(ram, NULL, "mips_mipssim.ram",
++    memory_region_allocate_system_memory(ram, machine, "mips_mipssim.ram",
+                                          ram_size);
+     memory_region_init_ram(bios, NULL, "mips_mipssim.bios", BIOS_SIZE,
+                            &error_fatal);
+diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
+index bc0be26544..59f8cacfb6 100644
+--- a/hw/mips/mips_r4k.c
++++ b/hw/mips/mips_r4k.c
+@@ -203,7 +203,8 @@ void mips_r4k_init(MachineState *machine)
+                      " maximum 256MB", ram_size / MiB);
+         exit(1);
+     }
+-    memory_region_allocate_system_memory(ram, NULL, "mips_r4k.ram", ram_si=
+ze);
++    memory_region_allocate_system_memory(ram, machine, "mips_r4k.ram",
++                                         ram_size);
+
+     memory_region_add_subregion(address_space_mem, 0, ram);
+
+--
+2.21.0
+

@@ -1,101 +1,101 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5086248wrm;
-        Mon, 21 Oct 2019 13:56:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzairf4HxLFr6ZYXDm+ddmowGAY9oTCsui+BSCcVeSTDk9NF9rURjnF76PHRpbBGtP9gAJj
-X-Received: by 2002:a0c:ee8f:: with SMTP id u15mr26046063qvr.0.1571691419737;
-        Mon, 21 Oct 2019 13:56:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571691419; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5091343wrm;
+        Mon, 21 Oct 2019 14:02:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyYP68sJxqNdvliD1bmFUMuyaztxIDoL010/ySXyg+vBaG4PkRi8xOghDvY9aWg4E4ReKd0
+X-Received: by 2002:a37:bf02:: with SMTP id p2mr14331850qkf.42.1571691750464;
+        Mon, 21 Oct 2019 14:02:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571691750; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tqcnk7C7/H79DJJVnvEfHGkqS/f/4SJx6kPXxwxtggDqFVfGz+l5JeKgE4z/56kPC8
-         FH8fufq1z1SWYtTvZHrP6fL2LkJ0S+VpKi8eZJqAVK4wUEh2FhvrB905BhsQwOI0zuC6
-         a8xeT+avbfU1ulWBaKRvwL9J5rAypF63Xkk6SyVdBR0g7cXl7QXWxBsoHXwgZpM4n2/5
-         0s4hPoQkuSqVpxveMTppVl5SN4oEkp6s0EPYxABiSnaBl7C1dt4kQQ42UUePVvtBqq0d
-         h4NAZ8d0CjDK1RoQ9Fdy9OCn7RtDHprxl+/9ULL49vaSs9hOMKT7SyjlUQmhhuSUhzWy
-         ACww==
+        b=DnUv4Hbwf3y3zUnkpRDYBta8Mf/5iCrXfTHbiL0KQSzzQEuZMBeD3Sd2XVRpWfEe4J
+         qOFjodYPs0Mb4YBFkaICIjeHCkX9UPjxUjwHOF2GxALEiyI32Iznblc7uEheXDC+k4KY
+         ET+dZB/okQBsyPeJWeRMFt2ZaiimBOQ0v0sijBGWqLydWokJol2/uc6l5VHp6V0kh13S
+         8FHdcgOz9lrs8/iAxx2nN6mHIHF1nbHHfs19hlgg0z5OYVRShBtHJr8lWHE+QkS7CPnB
+         ZUtZiWVJzYXbIKa00LsoQJFE/9dbMDo4nqLOaubeW2sxXbAJJadsU3vV1uL9TykLeuo6
+         ynxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=3Tk342f2DcStfjZLw2ZHCFQBn5YgGbRBBcgwXLtH6i8=;
-        b=f222qF3oMwQq5uPSDP06aY8JwaJJjfg+9iU6isOtZ8W6x+kifcmkIN5AZipXABn1dn
-         HkR/cjlD/M1XIqEh4uaZTHK9f7TD8eSV1I3I3RDn9k4d/3gN7bezFs+JqRcJr9Yw7Ki1
-         YuviyV8q6YBkcTfNaczl7E8vYzU4AypSWRk/NVaMmlWmC5XuF1yyJ2Azl+vMqZcauOxL
-         8ABscT7VQRRvzMYOX+B0Sltq2ywaZsSYfxyj/RjUzb6w9LmElD2MPuEJLP4oZ1xYKnKl
-         KuyplbzFVDonoFn4zh5zLOX/4mjSIXBsqg4A1uQ5Jt41atqf+D2On69ycznXuQ8JQAsp
-         29pQ==
+        bh=ooguhNRX2r9YbvJtC1Q7wtQv8RPkIuUAM30NOTdaMDo=;
+        b=jsvAd2fBQyXUpKdfCw/tO8EaMT0XTHKFOQUes5RuXU6z9B0XNJhPKGXxHAqnfwjgUh
+         NeEPySaVCirSur5/0JUvM61fJHKBuoo+Dy9vh00QbxAF4PNdSCyQiDGFisu5umLaBy/r
+         XIFEUykf/ZskpCWCdgMtNbqAKL6FwrMxXWkAij6f55jF6u4kcEcWuQ9ImYwQcpTYEcfR
+         4cB0YdLXimYv21AyBfitqmI7cV97ftw8zQBusKhok2E3kx0WEWoIftlz9oH5aPV2UU5h
+         a7QBrO4m3B0v3rLOUqL03XPmwgoKtT833RXF1A1uwag9TlzaEdB/Zqh8P9T/VomyBML0
+         jDkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DGHXapOf;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SWEvK1J9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j68si13672940qkc.379.2019.10.21.13.56.59
+        by mx.google.com with ESMTPS id k1si14900124qvf.145.2019.10.21.14.02.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 13:56:59 -0700 (PDT)
+        Mon, 21 Oct 2019 14:02:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DGHXapOf;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SWEvK1J9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47826 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47878 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMejb-0002TQ-4U
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 16:56:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42231)
+	id 1iMeov-0006gX-KH
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 17:02:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42983)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iMejS-0002QM-JX
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 16:56:51 -0400
+ (envelope-from <alistair23@gmail.com>) id 1iMeoM-0006cL-DG
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 17:01:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iMejR-0004xF-Ie
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 16:56:50 -0400
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:42782)
+ (envelope-from <alistair23@gmail.com>) id 1iMeoL-00081E-DR
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 17:01:54 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:39906)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iMejP-0004sZ-D0; Mon, 21 Oct 2019 16:56:47 -0400
-Received: by mail-lf1-x144.google.com with SMTP id z12so11234738lfj.9;
- Mon, 21 Oct 2019 13:56:47 -0700 (PDT)
+ id 1iMeoJ-0007zk-0b; Mon, 21 Oct 2019 17:01:51 -0400
+Received: by mail-lf1-x143.google.com with SMTP id 195so11247356lfj.6;
+ Mon, 21 Oct 2019 14:01:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=3Tk342f2DcStfjZLw2ZHCFQBn5YgGbRBBcgwXLtH6i8=;
- b=DGHXapOfedWnXux0qmsHTjTBFeaHjRaU3O3dHuhcArSbFG9/UMoPbtV8fJIZ4vXduw
- Dyx8ecx36HMCkZSDYVxCpS8Y2T54fxRa+B968h1DiWd8ZNdieuq+lTioc8GBBshadQ1I
- y5brwFbqXwh7ZaXYTwBWX6W2mhlCiW22HHBcCQhkXzOPQAhw4LKKi1ASQ86bN6LxRaFd
- 5QP4r1ps0rbaY0FF/QMQV2nDDCRIjLUAZyMML7KyQGprSNWmEisYHxuCO5wW/vDQKY57
- x4tWgvoSmz1T6JZP+mTnGpo18xE4/ISxRwtwyw4TMyrRbih97+PX+6DMbSbPHFWDrCgu
- vjWg==
+ bh=ooguhNRX2r9YbvJtC1Q7wtQv8RPkIuUAM30NOTdaMDo=;
+ b=SWEvK1J930fJUVflAZS8jonqNaGxGogybqkrT0rrxvc3vJAAanCrVsuo7VpSzACpC1
+ Iy8rlLmJ87pQtGKZYWzFasPL9HX8A6rvT7+/4FvTqqocUt7YlBfrmo3bS/DLAFacsmxb
+ r+NpPoNX/1skQ8KvFxw5hvYReYJpqtUObvhEsah436C/zEacRE/GS+hbVPS3jvmnH44+
+ mqfLkwQQHO84bOseu8UqaES0b0XupLHoxIxRY1Ne1fafbOe55iwbF7XUn4p+21MmAGl6
+ 3Odi9yQV31F4VxQPgPmE2IZ7t3Nh5yQScRqupUk8JKeGxNWrulYiTjPAo8d8toe5CZHf
+ CAvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=3Tk342f2DcStfjZLw2ZHCFQBn5YgGbRBBcgwXLtH6i8=;
- b=haCsEmzYGEHEQyXzAugkFd7IpwyOlNFFTMlOk1Bh8UvyKeeCcKNlTxT/0miXBtSYQU
- 1mmWooHEQLPCtCXTKlfn8jIsJ46H4XF1mvHS1/dbK5OsY0V4TpO8+pbFvB46XtzIg14u
- UIzVI7fVBX/4U27MvMNKZhO7lTAwvFPnu6HTp7fcnlkIqXB0y5qpenFYIM8EpWyuYqVo
- mM/W7w/r6E5HE2IYZ0fDd9rbwitcFDV6v14Ks8W5y81+BBpbAWdWqFDNpo2/QOGA4WW5
- rjSJwXrj0JxDZMgmcqBG0uX3pTJnV3RCVZajPIE0ngmdSIxWjpmx8bhCEXC2se3qvxr3
- qvGQ==
-X-Gm-Message-State: APjAAAUxjvRz1kI1z7AnZgsRJzKvhQ8aC85GW6krDWpUzNC0nXzX0dnK
- n0i+rnaBoVnaz3Uos/Z0Xh39HE4mjmA0QfB7ge4=
-X-Received: by 2002:a19:f018:: with SMTP id p24mr5613247lfc.93.1571691406146; 
- Mon, 21 Oct 2019 13:56:46 -0700 (PDT)
+ bh=ooguhNRX2r9YbvJtC1Q7wtQv8RPkIuUAM30NOTdaMDo=;
+ b=TP+Rn3O07Ozj6pN5etoil+h+bcWBFsqQ5NjfyKHzMWKUMfV8JN0IVHtEvjhfNuEXAN
+ P5Ep8XaV7HnPJH55PC9PrSL2+tkQN6TIST3NQot91lbzsNhRPWrC9akQFJQPa0wDefhg
+ WkoXXTP9dSOQiZBxh5Ce0dW4rGD4uJu8fDkZdwhC92MMOYcBmSjO/wwnJaGuOvVVyquE
+ RGluUso6YsCAPzOMVuQCXfNlgpyYLp7D08Xn+uyAq4mPUpS7LTfe3ui39e+9QoPOP314
+ 6Kg+p7XHsunNGOUSqc8na9Jp2p+pMgLN6e/WdC3eQcjxzCC/Y/IJ4VuN1ifKpXKOmUeP
+ bVhg==
+X-Gm-Message-State: APjAAAXo5fyL+bn09FDG8k8wxx9IJ2bmTm/dRnmZGeeBVuh/9v7cfXAO
+ oNESQJzwsA40yiZDBRKy2Vz5dgHSS4YdiXgMwcQ=
+X-Received: by 2002:a19:ac01:: with SMTP id g1mr16437498lfc.141.1571691709644; 
+ Mon, 21 Oct 2019 14:01:49 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191020225650.3671-1-philmd@redhat.com>
- <20191020225650.3671-7-philmd@redhat.com>
-In-Reply-To: <20191020225650.3671-7-philmd@redhat.com>
+ <20191020225650.3671-15-philmd@redhat.com>
+In-Reply-To: <20191020225650.3671-15-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 21 Oct 2019 13:51:27 -0700
-Message-ID: <CAKmqyKN=RpR=8JB7E7sEUwr=_sJwfhJuimvR9dv9ZqxLCrSLqg@mail.gmail.com>
-Subject: Re: [PATCH 06/21] hw/arm/digic4: Inline digic4_board_setup_ram()
- function
+Date: Mon, 21 Oct 2019 13:56:34 -0700
+Message-ID: <CAKmqyKMZQevuhDrbq72uSA589HMoae_Jm9HeGt-EOY--M6wfFw@mail.gmail.com>
+Subject: Re: [PATCH 14/21] hw/hppa: Let the machine be the owner of the system
+ memory
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::144
+X-Received-From: 2a00:1450:4864:20::143
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -135,15 +135,10 @@ Cc: Paul Burton <pburton@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8VVNdD4DJ3fy
+X-TUID: rB7FKzfWIi8B
 
-On Sun, Oct 20, 2019 at 4:07 PM Philippe Mathieu-Daud=C3=A9
+On Sun, Oct 20, 2019 at 4:17 PM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
->
-> Having the RAM creation code in a separate function is not
-> very helpful. Move this code directly inside the board_init()
-> function, this will later allow the board to have the QOM
-> ownership of the RAM.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
@@ -152,38 +147,22 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/digic_boards.c | 9 ++-------
->  1 file changed, 2 insertions(+), 7 deletions(-)
+>  hw/hppa/machine.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
-> index 304e4d1a29..ef3fc2b6a5 100644
-> --- a/hw/arm/digic_boards.c
-> +++ b/hw/arm/digic_boards.c
-> @@ -53,12 +53,6 @@ typedef struct DigicBoard {
->      const char *rom1_def_filename;
->  } DigicBoard;
+> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+> index dbe1ff0fe5..6703bfd351 100644
+> --- a/hw/hppa/machine.c
+> +++ b/hw/hppa/machine.c
+> @@ -96,7 +96,7 @@ static void machine_hppa_init(MachineState *machine)
 >
-> -static void digic4_board_setup_ram(DigicBoardState *s, hwaddr ram_size)
-> -{
-> -    memory_region_allocate_system_memory(&s->ram, NULL, "ram", ram_size)=
-;
-> -    memory_region_add_subregion(get_system_memory(), 0, &s->ram);
-> -}
-> -
->  static void digic4_board_init(DigicBoard *board)
->  {
->      Error *err =3D NULL;
-> @@ -72,7 +66,8 @@ static void digic4_board_init(DigicBoard *board)
->          exit(1);
->      }
+>      /* Main memory region. */
+>      ram_region =3D g_new(MemoryRegion, 1);
+> -    memory_region_allocate_system_memory(ram_region, NULL,
+> +    memory_region_allocate_system_memory(ram_region, machine,
+>                                           "ram", ram_size);
+>      memory_region_add_subregion(addr_space, 0, ram_region);
 >
-> -    digic4_board_setup_ram(s, board->ram_size);
-> +    memory_region_allocate_system_memory(&s->ram, NULL, "ram", board->ra=
-m_size);
-> +    memory_region_add_subregion(get_system_memory(), 0, &s->ram);
->
->      if (board->add_rom0) {
->          board->add_rom0(s, DIGIC4_ROM0_BASE, board->rom0_def_filename);
 > --
 > 2.21.0
 >

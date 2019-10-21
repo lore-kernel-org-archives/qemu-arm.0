@@ -1,102 +1,102 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4274663wrm;
-        Mon, 21 Oct 2019 01:52:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzDxhFz1agjYBFxydoVCC4STYZ2zzahC63h2T6jhMp8qszC2unW0zjm0aoKWJm+Enjqz0mm
-X-Received: by 2002:a50:9713:: with SMTP id c19mr10109446edb.206.1571647962081;
-        Mon, 21 Oct 2019 01:52:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571647962; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4275489wrm;
+        Mon, 21 Oct 2019 01:53:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy36B6gjHt5mT4+oOKr412xqUOgubYkp3Y+ndpthvW126BylEOGcER6glscVhvQnaN9etpO
+X-Received: by 2002:a05:6402:19b4:: with SMTP id o20mr23407948edz.10.1571648024220;
+        Mon, 21 Oct 2019 01:53:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571648024; cv=none;
         d=google.com; s=arc-20160816;
-        b=XmjVmck4Yu7RCJ38myyGhC+lSYV6m15UEqf6Iv7yF30pDLCNnnkjvvmx5Y13IlEBZZ
-         cyfSf5/LvASMd7FLiCLDklwbgX9d8dmBuOpE/9zvNVkuvfg9l92EnKPAiHL2fTmFsDSA
-         VLyloL1rfqsRToVBHY1P2bPlKjdaXCWxvTq1Wo1kC1i0WJ87/JsgZWV5BU35oVrQoyZB
-         L0O9VZprITwN0+NIDMlj6aE2z+KNH9JZ3vPAID2H8LzOD6D7bESa1z2UGtaOlUNzLBhg
-         ZVO3jDTkkg0oYCNqBln2FfO25LbHyG/dpu0bMgRCdDcdbJ/VG9oVO8dm1YIiACQh6ed7
-         AfmA==
+        b=T9WhTWx3sSmYqOtWlOjCRwQFfSdzczFvVxAjb6Rksy10Tuuj3KN61gssM5si40jRsq
+         ZdMtOhJNv/2M/mifTtxqPcZ3msKO7dodN4EHG403Iw1yBb9isRIikHslH5vZN3zcRbds
+         Z7qaO1ycnhkjD3aLgWmzCMKBeQVYV1S7zhY91w77Ywdg/K54i2HWC8ZVCDp6DP6zdUeW
+         KpPdHGlnXoWYdvpBo2xdgIMVU9cr3Zbju5xGgg3DQORErb6ZhDHwZ1orGVv0lXf6t4uS
+         mXn1VBv/A30Qe+K0MjJg0hIAflLSsXz+QGK0k5Z+XNscc297FaINJlEntCGTtuU9oc5G
+         vGsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=gBOZuPvJAc3pBc6uGClNcpZ8r0EOVSeWs78IT0XcVvw=;
-        b=gLqHdKWqWVqjbCieTIB69sUhheENELxt2hLcjtvHyhJpgKLuACdZAvi7/j9Vw5E7Nk
-         iM5r4RU+iKsHYk6BKI+x8vCyTPB8DXUJh62TZY0i5K+l/lMotzowRG3B2e2gSaK/BaVY
-         CzxV7KAWeVhjra63vBCM0nL45gjFbtxgGeJeW/jtdotn+i1LE3uZnS4sVCzPeyqyW7jv
-         9cLiRgGwf10K4jxph/D4W3ggr/8QHdWCzI8AdTdp2mKC9Kq3ZlzsFxUD+XRkjgyzBC1/
-         KaxekfBf3ue6UvNsu1CyGw7/Iwjh5Qtfd6aWLSxjQaqDhJtfQSQbo8T+0uCiPQNDm4gb
-         AjEw==
+        bh=6hREK95/AZWYKkz/P+Jy8EgqyWBcPTiA2ZYA8mNBxug=;
+        b=d+6kWKbz0/m7eSO92oLVBcPFAiEUBRM6jsjTll3IsjAqsKnf8qyor7UNcnceREMK6q
+         YCHaTfHe3sknu0APGCqR9HVIKMv1bEv0aA+X0mh0BEsa98pcBy3rVM6osoyNJqVLdHwm
+         8F+53KxZq6HFT0vcPx38IbXqMdD/+4xJWK/NhhDLYs35mdvmM9r180aSx6Ut0cATS2tz
+         idpkVeBZ9laDTzaxZM2mKGkg+sIs0N1yLlBPSiRd1o7533DOYXiko4kyI4nehFU80mfM
+         4h2U/lMJ4nzdrEnlCV80fK9bwXcEIxSQ3228waVX6L8KLIzLq3eKcSxxqw4dqsHiGvgl
+         h85g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v18si7685646ejd.115.2019.10.21.01.52.41
+        by mx.google.com with ESMTPS id jt18si3723233ejb.19.2019.10.21.01.53.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 01:52:42 -0700 (PDT)
+        Mon, 21 Oct 2019 01:53:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35962 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMTQe-0003SJ-Pg
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 04:52:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58359)
+	id 1iMTRe-0004qE-Nx
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 04:53:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58677)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMTQR-0003PU-IU
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 04:52:28 -0400
+ (envelope-from <philmd@redhat.com>) id 1iMTRU-0004nE-1r
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 04:53:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMTQQ-0005ly-5s
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 04:52:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33098)
+ (envelope-from <philmd@redhat.com>) id 1iMTRS-00069Q-LQ
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 04:53:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49042)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMTQP-0005lb-U5
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 04:52:26 -0400
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMTRS-00068y-DR
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 04:53:30 -0400
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id D5399859FE
- for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 08:52:24 +0000 (UTC)
-Received: by mail-wm1-f72.google.com with SMTP id k9so5605976wmb.0
- for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 01:52:24 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6123C5945E
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 08:53:29 +0000 (UTC)
+Received: by mail-wm1-f70.google.com with SMTP id b10so265750wmh.6
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 01:53:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=oV4ge5qxJiVtfmz8+Jt95uPQU/0vGeF4cLF7Tfjen+Q=;
- b=awU3VNmWai7vSSqtaLrrTqpubyyp3qkCWsqHnG3UHeCwQOVunI4pURXyjQVQ+3VMYV
- wzG4uFTbONnThWNNVEO1k3jnpa2NBEvUl0bTR8PowhUv2HEtEGUNUhyikP+wMAt8Zs9c
- vBDiXPOdclYcNnSkGVbBfXdxwJ7ZPKjBJ45DmcIi/hWgnwxeeLXbmZICN1KgZodmWjgP
- naaugMWHLIsfVjabu8bq9Cf5ih5TKuzwQqmEGtfQW3y8JupLze8I8PUJa6jx6mhJI+lk
- pwSWrYMA696/wHBOOXHnvI/p7jXStKE9i8mH+uGo0wPU0pvYgV+uV+bXK8Qm8fGF9x1y
- x92g==
-X-Gm-Message-State: APjAAAU39Jx853bxWfRaCOTj8Pe0wgKzid2SGreBJDLo4Kn+lrzoR3OP
- g80vs5x181H92fpfsoaKgbvxMygzXhXjJ4nt16AAaJL/e2/ncO7NRlXP7QSfuKG+NugJODDZaRo
- OaG8yILxnZhO5
-X-Received: by 2002:adf:e512:: with SMTP id j18mr8443531wrm.291.1571647943622; 
- Mon, 21 Oct 2019 01:52:23 -0700 (PDT)
-X-Received: by 2002:adf:e512:: with SMTP id j18mr8443496wrm.291.1571647943407; 
- Mon, 21 Oct 2019 01:52:23 -0700 (PDT)
+ bh=HivAmxqA2j3HXuc//40uMNnGkk+nuXZXKO8fWW22gsk=;
+ b=djbt81wxKe25cgW6qZH4+uk+trheWCvKc4Ym+KidTmvkiTqhp03vzytLC/qKyqlR1J
+ FRb0fI8954GKLrgodbZ5I59FKJfiRNuTQ3nhdduH0iGtK90sMBiUKLp6Mwx4yJE+Thvz
+ XtRo71YzzQDqRWTEiDX8aRD8WVdAPNkIaKHw2QaLjEn/UWKMB27MWpi43O20JsEVJw3L
+ mFHuXW7FzGFsu4MgLbYh8o4XIrwoaxIXqRihMWjkPEiKakZPIWo5ecSpciHrlwzKsFip
+ KSs1IEfMHeaI2oy8hmp5Q5YAXRa58a+FsxIvGNhwfSGjxeBS0kkkLTsa5zGGX7xyksUF
+ 8kNg==
+X-Gm-Message-State: APjAAAVpikZkUVWB8hAOgkRSR6pyTFA9GfgQB1f3VKgAdNIFaaB2tqmU
+ Lb8gS6mQYkTMZNgQ0Fh2YqYb5dHjMyDXULFpx60Ew4JHscrCmQ7Fxr2UAw6JVVB6bQxRjIBk6bF
+ J6aheOwzi6IJ1
+X-Received: by 2002:a7b:cb0a:: with SMTP id u10mr18831618wmj.48.1571648007801; 
+ Mon, 21 Oct 2019 01:53:27 -0700 (PDT)
+X-Received: by 2002:a7b:cb0a:: with SMTP id u10mr18831574wmj.48.1571648007531; 
+ Mon, 21 Oct 2019 01:53:27 -0700 (PDT)
 Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
  [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id z125sm20278358wme.37.2019.10.21.01.52.20
+ by smtp.gmail.com with ESMTPSA id x5sm16649919wrt.75.2019.10.21.01.53.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Oct 2019 01:52:22 -0700 (PDT)
-Subject: Re: [PATCH 00/21] hw: Let the machine be the owner of the system
- memory
+ Mon, 21 Oct 2019 01:53:26 -0700 (PDT)
+Subject: Re: [PATCH 08/21] hw/alpha/dp264: Create the RAM in the board
 To: Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
  qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>
 References: <20191020225650.3671-1-philmd@redhat.com>
+ <20191020225650.3671-9-philmd@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <aad956d5-986c-bb9f-7735-cf18796b986e@redhat.com>
-Date: Mon, 21 Oct 2019 10:52:19 +0200
+Message-ID: <0f9f9f84-bc62-2612-0f5e-d173c09ecb02@redhat.com>
+Date: Mon, 21 Oct 2019 10:53:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191020225650.3671-1-philmd@redhat.com>
+In-Reply-To: <20191020225650.3671-9-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
@@ -142,77 +142,111 @@ Cc: Paul Burton <pburton@wavecomp.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rTkApgMAMbz7
+X-TUID: TF3AQX9LGxFc
 
 On 10/21/19 12:56 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi,
+> The SDRAM is incorrectly created in the Tyohoon northbridge ASIC.
+> Move its creation in the board code, this will later allow the
+> board to have the QOM ownership of the RAM.
 >=20
-> This series is based on Igor's "eliminate remaining places that
-> abuse memory_region_allocate_system_memory()":
-> https://lists.gnu.org/archive/html/qemu-devel/2019-10/msg01601.html
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> checkpatch complains:
 >=20
-> It is quite simple, we enforce all machines to be the QOM owner
-> of the system memory.
+>   ERROR: spaces required around that '*' (ctx:WxV)
+>   #10: FILE: hw/alpha/alpha_sys.h:13:
+>   +PCIBus *typhoon_init(ISABus **, qemu_irq *, AlphaCPU *[4],
+>                                                         ^
+> ---
+>   hw/alpha/alpha_sys.h |  2 +-
+>   hw/alpha/dp264.c     | 11 ++++++++++-
+>   hw/alpha/typhoon.c   |  9 +--------
+>   3 files changed, 12 insertions(+), 10 deletions(-)
 >=20
-> This changes the memory tree from:
->=20
->    (qemu) info mtree -o
->    memory-region: pc.ram
->      0000000000000000-0000000007ffffff (prio 0, ram): pc.ram parent:{ob=
-j path=3D/machine/unattached}
->=20
-> to:
->=20
->    (qemu) info mtree -o
->    memory-region: pc.ram
->      0000000000000000-0000000007ffffff (prio 0, ram): pc.ram owner:{obj=
- path=3D/machine}
->=20
-> Few patches are required to clean the codebase first, to unify the
-> creation of the system memory in the board/machine code. Mostly some
-> old ARM machines (pre-QOM) were affected.
->=20
-> Please review (as a generic codebase cleanup).
->=20
-> Regards,
->=20
-> Phil.
->=20
-> Based-on: <20191008113318.7012-1-imammedo@redhat.com>
->=20
-> Philippe Mathieu-Daud=C3=A9 (21):
->    hw/arm/xilinx_zynq: Use the IEC binary prefix definitions
->    hw/arm/mps2: Use the IEC binary prefix definitions
->    hw/arm/collie: Create the RAM in the board
->    hw/arm/omap2: Create the RAM in the board
->    hw/arm/omap1: Create the RAM in the board
->    hw/arm/digic4: Inline digic4_board_setup_ram() function
->    hw: Drop QOM ownership on memory_region_allocate_system_memory() cal=
-ls
->    hw/alpha/dp264: Create the RAM in the board
->    hw: Let memory_region_allocate_system_memory take MachineState
->      argument
->    hw/core: Let the machine be the owner of the system memory
->    hw/alpha: Let the machine be the owner of the system memory
->    hw/arm: Let the machine be the owner of the system memory
->    hw/cris: Let the machine be the owner of the system memory
->    hw/hppa: Let the machine be the owner of the system memory
->    hw/i386: Let the machine be the owner of the system memory
->    hw/lm32: Let the machine be the owner of the system memory
->    hw/m68k: Let the machine be the owner of the system memory
->    hw/mips: Let the machine be the owner of the system memory
->    hw/ppc: Let the machine be the owner of the system memory
->    hw/sparc: Let the machine be the owner of the system memory
->    hw/core: Assert memory_region_allocate_system_memory has machine own=
-er
+> diff --git a/hw/alpha/alpha_sys.h b/hw/alpha/alpha_sys.h
+> index 4e127a6de8..17f97e1bfe 100644
+> --- a/hw/alpha/alpha_sys.h
+> +++ b/hw/alpha/alpha_sys.h
+> @@ -10,7 +10,7 @@
+>   #include "hw/i386/pc.h"
+>  =20
+>  =20
+> -PCIBus *typhoon_init(ram_addr_t, ISABus **, qemu_irq *, AlphaCPU *[4],
+> +PCIBus *typhoon_init(ISABus **, qemu_irq *, AlphaCPU *[4],
+>                        pci_map_irq_fn);
+>  =20
+>   /* alpha_pci.c.  */
+> diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+> index 51feee8558..ddc249261c 100644
+> --- a/hw/alpha/dp264.c
+> +++ b/hw/alpha/dp264.c
+> @@ -62,6 +62,7 @@ static void clipper_init(MachineState *machine)
+>       uint64_t palcode_entry, palcode_low, palcode_high;
+>       uint64_t kernel_entry, kernel_low, kernel_high;
+>       unsigned int smp_cpus =3D machine->smp.cpus;
+> +    MemoryRegion ram_region;
 
-I forgot 4 other calls:
+This is incorrect, this variable should be in .heap, not stack.
 
-hw/ppc/ppc4xx_devs.c:708:    memory_region_allocate_system_memory(ram,=20
-NULL, "ppc4xx.sdram", ram_size);
-hw/s390x/s390-virtio-ccw.c:164:=20
-memory_region_allocate_system_memory(ram, NULL, "s390.ram", mem_size);
-hw/sparc/sun4m.c:791:    memory_region_allocate_system_memory(&d->ram,=20
-NULL, "sun4m.ram",
-hw/sparc64/niagara.c:114:=20
-memory_region_allocate_system_memory(&s->partition_ram, NULL,
+>  =20
+>       /* Create up to 4 cpus.  */
+>       memset(cpus, 0, sizeof(cpus));
+> @@ -73,8 +74,16 @@ static void clipper_init(MachineState *machine)
+>       cpus[0]->env.trap_arg1 =3D 0;
+>       cpus[0]->env.trap_arg2 =3D smp_cpus;
+>  =20
+> +    /*
+> +     * Main memory region, 0x00.0000.0000.  Real hardware supports 32G=
+B,
+> +     * but the address space hole reserved at this point is 8TB.
+> +     */
+> +    memory_region_allocate_system_memory(&ram_region, NULL, "ram",
+> +                                         ram_size);
+> +    memory_region_add_subregion(get_system_memory(), 0, &ram_region);
+> +
+>       /* Init the chipset.  */
+> -    pci_bus =3D typhoon_init(ram_size, &isa_bus, &rtc_irq, cpus,
+> +    pci_bus =3D typhoon_init(&isa_bus, &rtc_irq, cpus,
+>                              clipper_pci_map_irq);
+>  =20
+>       /* Since we have an SRM-compatible PALcode, use the SRM epoch.  *=
+/
+> diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
+> index 8489ec335c..12589ef331 100644
+> --- a/hw/alpha/typhoon.c
+> +++ b/hw/alpha/typhoon.c
+> @@ -58,7 +58,6 @@ typedef struct TyphoonState {
+>       TyphoonCchip cchip;
+>       TyphoonPchip pchip;
+>       MemoryRegion dchip_region;
+> -    MemoryRegion ram_region;
+>   } TyphoonState;
+>  =20
+>   /* Called when one of DRIR or DIM changes.  */
+> @@ -817,7 +816,7 @@ static void typhoon_alarm_timer(void *opaque)
+>       cpu_interrupt(CPU(s->cchip.cpu[cpu]), CPU_INTERRUPT_TIMER);
+>   }
+>  =20
+> -PCIBus *typhoon_init(ram_addr_t ram_size, ISABus **isa_bus,
+> +PCIBus *typhoon_init(ISABus **isa_bus,
+>                        qemu_irq *p_rtc_irq,
+>                        AlphaCPU *cpus[4], pci_map_irq_fn sys_map_irq)
+>   {
+> @@ -849,12 +848,6 @@ PCIBus *typhoon_init(ram_addr_t ram_size, ISABus *=
+*isa_bus,
+>  =20
+>       *p_rtc_irq =3D qemu_allocate_irq(typhoon_set_timer_irq, s, 0);
+>  =20
+> -    /* Main memory region, 0x00.0000.0000.  Real hardware supports 32G=
+B,
+> -       but the address space hole reserved at this point is 8TB.  */
+> -    memory_region_allocate_system_memory(&s->ram_region, NULL, "ram",
+> -                                         ram_size);
+> -    memory_region_add_subregion(addr_space, 0, &s->ram_region);
+> -
+>       /* TIGbus, 0x801.0000.0000, 1GB.  */
+>       /* ??? The TIGbus is used for delivering interrupts, and access t=
+o
+>          the flash ROM.  I'm not sure that we need to implement it at a=
+ll.  */
+>=20

@@ -1,67 +1,83 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3834370wrm;
-        Sun, 20 Oct 2019 17:06:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwwT6U4hxM5vhSQsxGHgjoqeITwj59pZC6L/WLVZ0A4avx5fedqAPfRXNh0qBUK09Ngyjpr
-X-Received: by 2002:a37:9c44:: with SMTP id f65mr19657745qke.33.1571616360024;
-        Sun, 20 Oct 2019 17:06:00 -0700 (PDT)
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3884779wrm;
+        Sun, 20 Oct 2019 18:09:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxHx2TuToCiw4PtNi5oaSP2GJb5wPt7N9grKYb01Nb0Ha26xyC1qM50ab7BiyRfMTcyrYo/
+X-Received: by 2002:a50:b901:: with SMTP id m1mr22422158ede.203.1571620161698;
+        Sun, 20 Oct 2019 18:09:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571620161; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lV0ex0zVixY+kMIbu/XemDhogVLxlhsgEWZaZThj3GSpdl9AYhO2zU5nVlG5PfA7im
+         2tL8tMYJBhDl5vigoMjrF2wTinX3Gg20Gbje4iqHiNsoEgdZAPWlJHpMT0xGkfa8cHce
+         yFIvJcSqk/oQXhbn2iHMsf72eVI0j2x9vDgjvf8W+Quz5F26mw5/zUgF7BvNvlOqWIDC
+         +OIqLouwSpCfcvGQTHqGXaz45eXjqbFrS82UZ7/W7XBuXh0gcMtEDwyo9pDuToIpblu3
+         HFpGPegwEFwVishZgyRQNY7z6qxYLZO1Zg/rZOVrcFx1NkNKBfWnpSv4U3yrKm12gW/l
+         8rZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=gt3Es3dMvWgbT4pkKcD1QjIfauNxCuaUDQx0fE7frp8=;
+        b=0Nw26NpflVY3Ce86PZ3qOizo9kDvjESWwXeCSV23PVnw6UUKQDB+A78rNE6XTkwMuW
+         vVdjS0bVCEx0ddmlfOwL68CiHm58sDZ/jWb+ZGoCpGdMoXxPM+mld+vYRLvTDVIbmT/A
+         nFZ7JykXt88v04uwQAcosQyqpavUBsgKPWcQd4BhAlCm+OewYdmaIt3q0oH8P6RpSsZj
+         KwyOUuL6lL2Lis94DBSxjtbfXNvwrSQUcx1FIIJ3WLq+8Bnk65ii8hE5RtaisTE0u5og
+         5itmg/86XfGPA/xs2Y+a9ZbUu/5iLHty9gMMLKL1KORfXuKXslz9FahNh3K+weP54TSu
+         a+uA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=lG+NNymc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 32si2210440qvh.195.2019.10.20.17.05.59
+        by mx.google.com with ESMTPS id d17si8078975edv.76.2019.10.20.18.09.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Oct 2019 17:06:00 -0700 (PDT)
+        Sun, 20 Oct 2019 18:09:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=lG+NNymc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52736 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54520 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMLCx-0000Yf-DQ
-	for alex.bennee@linaro.org; Sun, 20 Oct 2019 20:05:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40487)
+	id 1iMMCG-0001ka-IU
+	for alex.bennee@linaro.org; Sun, 20 Oct 2019 21:09:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45521)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iMLCn-0000WJ-3H
- for qemu-arm@nongnu.org; Sun, 20 Oct 2019 20:05:50 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1iMMBF-0000wC-Hh
+ for qemu-arm@nongnu.org; Sun, 20 Oct 2019 21:08:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iMLCl-0004Gc-Lz
- for qemu-arm@nongnu.org; Sun, 20 Oct 2019 20:05:49 -0400
-Resent-Date: Sun, 20 Oct 2019 20:05:49 -0400
-Resent-Message-Id: <E1iMLCl-0004Gc-Lz@eggs.gnu.org>
-Received: from sender4-of-o56.zoho.com ([136.143.188.56]:21652)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iMLCi-0004Bl-9E; Sun, 20 Oct 2019 20:05:44 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1571616217; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=c0hdCroMceelOhNHGjbW3Nkhv968urpaa3LBqAfZ57/M1W86uGl8hbReYRcro9P4C3/H+MNZCYaHk+ORKfLK+kQ+HewE0sGRTxdvRgtLzEeRMIfXb6ToYU7tlhOP+YxI3Q81UfFJgLxOkXkfXDnc5t1vK/5RrL8dlut9Kh2t/D0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1571616217;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=fn7GmEww2gpSYqsaWCHP9MpM9RYXjoGDEsfbpreh0T0=; 
- b=mTCY0LbX2aMXeV8fXUOmwyfIJCS9yHe0PYeo7kGpihoZ4RiznlZgR17hwggE1/vkxC9RtCQVMLpLWxTDFzDXTuk8nSveWctZYQ1fmbmk4R1i6ewGq0O9lnlH2l4y1BVxWQCGsvFePcnL7MZIczQriWCwqLbXBavoSv0NW0ZAUC0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1571616216340740.5402175982862;
- Sun, 20 Oct 2019 17:03:36 -0700 (PDT)
-In-Reply-To: <20191020225650.3671-1-philmd@redhat.com>
-Subject: Re: [PATCH 00/21] hw: Let the machine be the owner of the system
+ (envelope-from <dgibson@ozlabs.org>) id 1iMMB9-0001tN-Ab
+ for qemu-arm@nongnu.org; Sun, 20 Oct 2019 21:08:14 -0400
+Received: from ozlabs.org ([203.11.71.1]:60927)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1iMMB1-0001mG-Qm; Sun, 20 Oct 2019 21:08:06 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 46xJR01sX4z9sPT; Mon, 21 Oct 2019 12:07:56 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1571620076;
+ bh=M8UGZOaAiVqj2gy82UKp0dM4181PwyoTZGOXb2DUnBs=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=lG+NNymcXAuVo0+Rziv5z+nkQrO9eQy+Zfx1k1E1E4TT703iEUkFemWIMG7ww2ujJ
+ Y///ohTHMFtLh4t68r/kMpG8/CS6CM8JH7wylxN+YdQRsA2m3UFDuWCed00hzNrQCF
+ t5Nzb0F2flDd4au6EvrV/iWo/WuLpJRqw1/Wv7Ys=
+Date: Mon, 21 Oct 2019 11:44:14 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH 19/21] hw/ppc: Let the machine be the owner of the system
  memory
-Message-ID: <157161621211.24734.2944105976047321291@37313f22b938>
+Message-ID: <20191021004414.GO1960@umbus.fritz.box>
+References: <20191020225650.3671-1-philmd@redhat.com>
+ <20191020225650.3671-20-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: philmd@redhat.com
-Date: Sun, 20 Oct 2019 17:03:36 -0700 (PDT)
-X-ZohoMailClient: External
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="rZHzn+A9B7nBTGyj"
+Content-Disposition: inline
+In-Reply-To: <20191020225650.3671-20-philmd@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 136.143.188.56
+X-Received-From: 203.11.71.1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,105 +89,210 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: pburton@wavecomp.com, jan.kiszka@web.de, peter.maydell@linaro.org,
- mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
- frederic.konrad@adacore.com, robh@kernel.org, andrew.smirnov@gmail.com,
- deller@gmx.de, mst@redhat.com, armbru@redhat.com, hpoussin@reactos.org,
- antonynpavlov@gmail.com, aleksandar.rikalo@rt-rk.com,
- david@gibson.dropbear.id.au, philmd@redhat.com, atar4qemu@gmail.com,
- joel@jms.id.au, ehabkost@redhat.com, alistair@alistair23.me,
- leif.lindholm@linaro.org, b.galvani@gmail.com, qemu-arm@nongnu.org,
- peter.chubb@nicta.com.au, chouteau@adacore.com, pbonzini@redhat.com,
- rth@twiddle.net, radoslaw.biernacki@linaro.org, huth@tuxfamily.org,
- Andrew.Baumann@microsoft.com, jcd@tribudubois.net, andrew@aj.id.au,
- michael@walle.cc, qemu-ppc@nongnu.org, amarkovic@wavecomp.com,
- imammedo@redhat.com, aurelien@aurel32.net, clg@kaod.org
+Cc: Paul Burton <pburton@wavecomp.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Leif Lindholm <leif.lindholm@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Rob Herring <robh@kernel.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Thomas Huth <huth@tuxfamily.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Andrew Jeffery <andrew@aj.id.au>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Peter Chubb <peter.chubb@nicta.com.au>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7yyISNjJCwFQ
+X-TUID: C7gjHOaKbpeb
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTAyMDIyNTY1MC4zNjcx
-LTEtcGhpbG1kQHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2ZSBz
-b21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBpbmZv
-cm1hdGlvbjoKClN1YmplY3Q6IFtQQVRDSCAwMC8yMV0gaHc6IExldCB0aGUgbWFjaGluZSBiZSB0
-aGUgb3duZXIgb2YgdGhlIHN5c3RlbSBtZW1vcnkKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIw
-MTkxMDIwMjI1NjUwLjM2NzEtMS1waGlsbWRAcmVkaGF0LmNvbQoKPT09IFRFU1QgU0NSSVBUIEJF
-R0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhp
-dCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxv
-Y2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBo
-aXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRF
-U1QgU0NSSVBUIEVORCA9PT0KClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKMjNiNGU5
-YSBody9jb3JlOiBBc3NlcnQgbWVtb3J5X3JlZ2lvbl9hbGxvY2F0ZV9zeXN0ZW1fbWVtb3J5IGhh
-cyBtYWNoaW5lIG93bmVyCjY3Y2FhZjAgaHcvc3BhcmM6IExldCB0aGUgbWFjaGluZSBiZSB0aGUg
-b3duZXIgb2YgdGhlIHN5c3RlbSBtZW1vcnkKOTYxMGQ2OSBody9wcGM6IExldCB0aGUgbWFjaGlu
-ZSBiZSB0aGUgb3duZXIgb2YgdGhlIHN5c3RlbSBtZW1vcnkKM2NmMGM1NSBody9taXBzOiBMZXQg
-dGhlIG1hY2hpbmUgYmUgdGhlIG93bmVyIG9mIHRoZSBzeXN0ZW0gbWVtb3J5CmM2Y2Q0ODYgaHcv
-bTY4azogTGV0IHRoZSBtYWNoaW5lIGJlIHRoZSBvd25lciBvZiB0aGUgc3lzdGVtIG1lbW9yeQpk
-ZDhlOWE2IGh3L2xtMzI6IExldCB0aGUgbWFjaGluZSBiZSB0aGUgb3duZXIgb2YgdGhlIHN5c3Rl
-bSBtZW1vcnkKYzdiOWNjZCBody9pMzg2OiBMZXQgdGhlIG1hY2hpbmUgYmUgdGhlIG93bmVyIG9m
-IHRoZSBzeXN0ZW0gbWVtb3J5CjY1NTE4MmYgaHcvaHBwYTogTGV0IHRoZSBtYWNoaW5lIGJlIHRo
-ZSBvd25lciBvZiB0aGUgc3lzdGVtIG1lbW9yeQoyMGRjNjIyIGh3L2NyaXM6IExldCB0aGUgbWFj
-aGluZSBiZSB0aGUgb3duZXIgb2YgdGhlIHN5c3RlbSBtZW1vcnkKZmMzYzZkMiBody9hcm06IExl
-dCB0aGUgbWFjaGluZSBiZSB0aGUgb3duZXIgb2YgdGhlIHN5c3RlbSBtZW1vcnkKZTlmMWViYyBo
-dy9hbHBoYTogTGV0IHRoZSBtYWNoaW5lIGJlIHRoZSBvd25lciBvZiB0aGUgc3lzdGVtIG1lbW9y
-eQozZWYxMTFiIGh3L2NvcmU6IExldCB0aGUgbWFjaGluZSBiZSB0aGUgb3duZXIgb2YgdGhlIHN5
-c3RlbSBtZW1vcnkKMzFiZDgzOCBodzogTGV0IG1lbW9yeV9yZWdpb25fYWxsb2NhdGVfc3lzdGVt
-X21lbW9yeSB0YWtlIE1hY2hpbmVTdGF0ZSBhcmd1bWVudApkYWU5ZDExIGh3L2FscGhhL2RwMjY0
-OiBDcmVhdGUgdGhlIFJBTSBpbiB0aGUgYm9hcmQKYzMxZWJhMCBodzogRHJvcCBRT00gb3duZXJz
-aGlwIG9uIG1lbW9yeV9yZWdpb25fYWxsb2NhdGVfc3lzdGVtX21lbW9yeSgpIGNhbGxzCjcyOGFh
-NjUgaHcvYXJtL2RpZ2ljNDogSW5saW5lIGRpZ2ljNF9ib2FyZF9zZXR1cF9yYW0oKSBmdW5jdGlv
-bgpjMmE5MDUyIGh3L2FybS9vbWFwMTogQ3JlYXRlIHRoZSBSQU0gaW4gdGhlIGJvYXJkCjRmNDk3
-N2YgaHcvYXJtL29tYXAyOiBDcmVhdGUgdGhlIFJBTSBpbiB0aGUgYm9hcmQKZDE5NTliMiBody9h
-cm0vY29sbGllOiBDcmVhdGUgdGhlIFJBTSBpbiB0aGUgYm9hcmQKODE1ZjVjMSBody9hcm0vbXBz
-MjogVXNlIHRoZSBJRUMgYmluYXJ5IHByZWZpeCBkZWZpbml0aW9ucwoxMDMxOTBmIGh3L2FybS94
-aWxpbnhfenlucTogVXNlIHRoZSBJRUMgYmluYXJ5IHByZWZpeCBkZWZpbml0aW9ucwoKPT09IE9V
-VFBVVCBCRUdJTiA9PT0KMS8yMSBDaGVja2luZyBjb21taXQgMTAzMTkwZmQ5YjI4IChody9hcm0v
-eGlsaW54X3p5bnE6IFVzZSB0aGUgSUVDIGJpbmFyeSBwcmVmaXggZGVmaW5pdGlvbnMpCjIvMjEg
-Q2hlY2tpbmcgY29tbWl0IDgxNWY1YzE2NjkyNCAoaHcvYXJtL21wczI6IFVzZSB0aGUgSUVDIGJp
-bmFyeSBwcmVmaXggZGVmaW5pdGlvbnMpCjMvMjEgQ2hlY2tpbmcgY29tbWl0IGQxOTU5YjJkM2U0
-OSAoaHcvYXJtL2NvbGxpZTogQ3JlYXRlIHRoZSBSQU0gaW4gdGhlIGJvYXJkKQo0LzIxIENoZWNr
-aW5nIGNvbW1pdCA0ZjQ5NzdmYTgyMDUgKGh3L2FybS9vbWFwMjogQ3JlYXRlIHRoZSBSQU0gaW4g
-dGhlIGJvYXJkKQo1LzIxIENoZWNraW5nIGNvbW1pdCBjMmE5MDUyNGJkMzMgKGh3L2FybS9vbWFw
-MTogQ3JlYXRlIHRoZSBSQU0gaW4gdGhlIGJvYXJkKQo2LzIxIENoZWNraW5nIGNvbW1pdCA3Mjhh
-YTY1NjcyZjQgKGh3L2FybS9kaWdpYzQ6IElubGluZSBkaWdpYzRfYm9hcmRfc2V0dXBfcmFtKCkg
-ZnVuY3Rpb24pCjcvMjEgQ2hlY2tpbmcgY29tbWl0IGMzMWViYTBkMDI1YiAoaHc6IERyb3AgUU9N
-IG93bmVyc2hpcCBvbiBtZW1vcnlfcmVnaW9uX2FsbG9jYXRlX3N5c3RlbV9tZW1vcnkoKSBjYWxs
-cykKOC8yMSBDaGVja2luZyBjb21taXQgZGFlOWQxMTFhY2IxIChody9hbHBoYS9kcDI2NDogQ3Jl
-YXRlIHRoZSBSQU0gaW4gdGhlIGJvYXJkKQpFUlJPUjogc3BhY2VzIHJlcXVpcmVkIGFyb3VuZCB0
-aGF0ICcqJyAoY3R4Old4VikKIzI0OiBGSUxFOiBody9hbHBoYS9hbHBoYV9zeXMuaDoxMzoKK1BD
-SUJ1cyAqdHlwaG9vbl9pbml0KElTQUJ1cyAqKiwgcWVtdV9pcnEgKiwgQWxwaGFDUFUgKls0XSwK
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoK
-dG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCA1OSBsaW5lcyBjaGVja2VkCgpQYXRjaCA4LzIx
-IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJv
-cnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2Vl
-CkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo5LzIxIENoZWNraW5nIGNvbW1pdCAzMWJkODM4
-ZDJkNzkgKGh3OiBMZXQgbWVtb3J5X3JlZ2lvbl9hbGxvY2F0ZV9zeXN0ZW1fbWVtb3J5IHRha2Ug
-TWFjaGluZVN0YXRlIGFyZ3VtZW50KQoxMC8yMSBDaGVja2luZyBjb21taXQgM2VmMTExYjZhNjJh
-IChody9jb3JlOiBMZXQgdGhlIG1hY2hpbmUgYmUgdGhlIG93bmVyIG9mIHRoZSBzeXN0ZW0gbWVt
-b3J5KQoxMS8yMSBDaGVja2luZyBjb21taXQgZTlmMWViY2IxNjI0IChody9hbHBoYTogTGV0IHRo
-ZSBtYWNoaW5lIGJlIHRoZSBvd25lciBvZiB0aGUgc3lzdGVtIG1lbW9yeSkKMTIvMjEgQ2hlY2tp
-bmcgY29tbWl0IGZjM2M2ZDIzYjYzZiAoaHcvYXJtOiBMZXQgdGhlIG1hY2hpbmUgYmUgdGhlIG93
-bmVyIG9mIHRoZSBzeXN0ZW0gbWVtb3J5KQoxMy8yMSBDaGVja2luZyBjb21taXQgMjBkYzYyMmMx
-ZGYzIChody9jcmlzOiBMZXQgdGhlIG1hY2hpbmUgYmUgdGhlIG93bmVyIG9mIHRoZSBzeXN0ZW0g
-bWVtb3J5KQoxNC8yMSBDaGVja2luZyBjb21taXQgNjU1MTgyZjZlNzRhIChody9ocHBhOiBMZXQg
-dGhlIG1hY2hpbmUgYmUgdGhlIG93bmVyIG9mIHRoZSBzeXN0ZW0gbWVtb3J5KQoxNS8yMSBDaGVj
-a2luZyBjb21taXQgYzdiOWNjZGE3NDQyIChody9pMzg2OiBMZXQgdGhlIG1hY2hpbmUgYmUgdGhl
-IG93bmVyIG9mIHRoZSBzeXN0ZW0gbWVtb3J5KQoxNi8yMSBDaGVja2luZyBjb21taXQgZGQ4ZTlh
-NjZjMWYwIChody9sbTMyOiBMZXQgdGhlIG1hY2hpbmUgYmUgdGhlIG93bmVyIG9mIHRoZSBzeXN0
-ZW0gbWVtb3J5KQoxNy8yMSBDaGVja2luZyBjb21taXQgYzZjZDQ4NjZkNmEwIChody9tNjhrOiBM
-ZXQgdGhlIG1hY2hpbmUgYmUgdGhlIG93bmVyIG9mIHRoZSBzeXN0ZW0gbWVtb3J5KQoxOC8yMSBD
-aGVja2luZyBjb21taXQgM2NmMGM1NWZjYzFiIChody9taXBzOiBMZXQgdGhlIG1hY2hpbmUgYmUg
-dGhlIG93bmVyIG9mIHRoZSBzeXN0ZW0gbWVtb3J5KQoxOS8yMSBDaGVja2luZyBjb21taXQgOTYx
-MGQ2OTA4Y2JjIChody9wcGM6IExldCB0aGUgbWFjaGluZSBiZSB0aGUgb3duZXIgb2YgdGhlIHN5
-c3RlbSBtZW1vcnkpCjIwLzIxIENoZWNraW5nIGNvbW1pdCA2N2NhYWYwNTAxOWIgKGh3L3NwYXJj
-OiBMZXQgdGhlIG1hY2hpbmUgYmUgdGhlIG93bmVyIG9mIHRoZSBzeXN0ZW0gbWVtb3J5KQoyMS8y
-MSBDaGVja2luZyBjb21taXQgMjNiNGU5YTUyMzE4IChody9jb3JlOiBBc3NlcnQgbWVtb3J5X3Jl
-Z2lvbl9hbGxvY2F0ZV9zeXN0ZW1fbWVtb3J5IGhhcyBtYWNoaW5lIG93bmVyKQo9PT0gT1VUUFVU
-IEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9n
-IGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MTAyMDIyNTY1MC4z
-NjcxLTEtcGhpbG1kQHJlZGhhdC5jb20vdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2Uu
-Ci0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3Bh
-dGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBy
-ZWRoYXQuY29t
 
+--rZHzn+A9B7nBTGyj
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Oct 21, 2019 at 12:56:48AM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
+> ---
+>  hw/ppc/e500.c          | 3 ++-
+>  hw/ppc/mac_newworld.c  | 3 ++-
+>  hw/ppc/mac_oldworld.c  | 2 +-
+>  hw/ppc/pnv.c           | 2 +-
+>  hw/ppc/ppc405_boards.c | 6 +++---
+>  hw/ppc/prep.c          | 3 ++-
+>  hw/ppc/spapr.c         | 2 +-
+>  hw/ppc/virtex_ml507.c  | 2 +-
+>  8 files changed, 13 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+> index 91cd4c26f9..9c7be26248 100644
+> --- a/hw/ppc/e500.c
+> +++ b/hw/ppc/e500.c
+> @@ -912,7 +912,8 @@ void ppce500_init(MachineState *machine)
+>      machine->ram_size =3D ram_size;
+> =20
+>      /* Register Memory */
+> -    memory_region_allocate_system_memory(ram, NULL, "mpc8544ds.ram", ram=
+_size);
+> +    memory_region_allocate_system_memory(ram, machine, "mpc8544ds.ram",
+> +                                         ram_size);
+>      memory_region_add_subregion(address_space_mem, 0, ram);
+> =20
+>      dev =3D qdev_create(NULL, "e500-ccsr");
+> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+> index c5bbcc7433..8409114eed 100644
+> --- a/hw/ppc/mac_newworld.c
+> +++ b/hw/ppc/mac_newworld.c
+> @@ -152,7 +152,8 @@ static void ppc_core99_init(MachineState *machine)
+>      }
+> =20
+>      /* allocate RAM */
+> -    memory_region_allocate_system_memory(ram, NULL, "ppc_core99.ram", ra=
+m_size);
+> +    memory_region_allocate_system_memory(ram, machine, "ppc_core99.ram",
+> +                                         ram_size);
+>      memory_region_add_subregion(get_system_memory(), 0, ram);
+> =20
+>      /* allocate and load BIOS */
+> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+> index 0fa680b749..9dd645476a 100644
+> --- a/hw/ppc/mac_oldworld.c
+> +++ b/hw/ppc/mac_oldworld.c
+> @@ -127,7 +127,7 @@ static void ppc_heathrow_init(MachineState *machine)
+>          exit(1);
+>      }
+> =20
+> -    memory_region_allocate_system_memory(ram, NULL, "ppc_heathrow.ram",
+> +    memory_region_allocate_system_memory(ram, machine, "ppc_heathrow.ram=
+",
+>                                           ram_size);
+>      memory_region_add_subregion(sysmem, 0, ram);
+> =20
+> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+> index 7cf64b6d25..ac731c4f88 100644
+> --- a/hw/ppc/pnv.c
+> +++ b/hw/ppc/pnv.c
+> @@ -640,7 +640,7 @@ static void pnv_init(MachineState *machine)
+>      }
+> =20
+>      ram =3D g_new(MemoryRegion, 1);
+> -    memory_region_allocate_system_memory(ram, NULL, "pnv.ram",
+> +    memory_region_allocate_system_memory(ram, machine, "pnv.ram",
+>                                           machine->ram_size);
+>      memory_region_add_subregion(get_system_memory(), 0, ram);
+> =20
+> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+> index 388cae0b43..8a2d2f4511 100644
+> --- a/hw/ppc/ppc405_boards.c
+> +++ b/hw/ppc/ppc405_boards.c
+> @@ -162,8 +162,8 @@ static void ref405ep_init(MachineState *machine)
+>      MemoryRegion *sysmem =3D get_system_memory();
+> =20
+>      /* XXX: fix this */
+> -    memory_region_allocate_system_memory(&ram_memories[0], NULL, "ef405e=
+p.ram",
+> -                                         0x08000000);
+> +    memory_region_allocate_system_memory(&ram_memories[0], machine,
+> +                                         "ef405ep.ram", 128 * MiB);
+>      ram_bases[0] =3D 0;
+>      ram_sizes[0] =3D 0x08000000;
+>      memory_region_init(&ram_memories[1], NULL, "ef405ep.ram1", 0);
+> @@ -427,7 +427,7 @@ static void taihu_405ep_init(MachineState *machine)
+> =20
+>      /* RAM is soldered to the board so the size cannot be changed */
+>      ram_size =3D 0x08000000;
+> -    memory_region_allocate_system_memory(ram, NULL, "taihu_405ep.ram",
+> +    memory_region_allocate_system_memory(ram, machine, "taihu_405ep.ram",
+>                                           ram_size);
+> =20
+>      ram_bases[0] =3D 0;
+> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+> index 4f3c6bf190..54b00805e0 100644
+> --- a/hw/ppc/prep.c
+> +++ b/hw/ppc/prep.c
+> @@ -445,7 +445,8 @@ static void ppc_prep_init(MachineState *machine)
+>      }
+> =20
+>      /* allocate RAM */
+> -    memory_region_allocate_system_memory(ram, NULL, "ppc_prep.ram", ram_=
+size);
+> +    memory_region_allocate_system_memory(ram, machine, "ppc_prep.ram",
+> +                                         ram_size);
+>      memory_region_add_subregion(sysmem, 0, ram);
+> =20
+>      if (linux_boot) {
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 4eb97d3a9b..1f168edd43 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -2840,7 +2840,7 @@ static void spapr_machine_init(MachineState *machin=
+e)
+>      }
+> =20
+>      /* allocate RAM */
+> -    memory_region_allocate_system_memory(ram, NULL, "ppc_spapr.ram",
+> +    memory_region_allocate_system_memory(ram, machine, "ppc_spapr.ram",
+>                                           machine->ram_size);
+>      memory_region_add_subregion(sysmem, 0, ram);
+> =20
+> diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
+> index 68625522d8..86c9273dc0 100644
+> --- a/hw/ppc/virtex_ml507.c
+> +++ b/hw/ppc/virtex_ml507.c
+> @@ -224,7 +224,7 @@ static void virtex_init(MachineState *machine)
+> =20
+>      qemu_register_reset(main_cpu_reset, cpu);
+> =20
+> -    memory_region_allocate_system_memory(phys_ram, NULL, "ram", ram_size=
+);
+> +    memory_region_allocate_system_memory(phys_ram, machine, "ram", ram_s=
+ize);
+>      memory_region_add_subregion(address_space_mem, ram_base, phys_ram);
+> =20
+>      dinfo =3D drive_get(IF_PFLASH, 0, 0);
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--rZHzn+A9B7nBTGyj
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl2s/1sACgkQbDjKyiDZ
+s5IXEBAA3UFr55JtIvkD0rAlvWpp03so7MHbpF/SrjSKiRtWkZWnDdsxEYajiGdM
+EplD21UorhCGPxWKqQ4ryz+4t9Dmbygdmn760IWG/95fky29wH0/V2A6bddHhTdh
+BUVrmKe0QAwXcA6mEDUHs9RhvKZVL3HCCdIHUQPLx0n/OaHnIZFeVI+g06gzQQEV
++5B+CS6XUVkE+u8W/8KzXIU3GgTc/5rx84IW6/sOZzhOqqS+F8Eu5a8rrHxhlKek
+MCeU7Mz2Z8eaWvtHgw5tqvfIm8RcdBplJzE5EiNRW/E1pAUTngxAxGMS2F0yFhwN
+Hx/NUzvVqXgjl4pX8eFaNHDZfEikEx8tjh3YyyYmSYg+/sOuqgVHiSTmsl2tiQA5
+j1XdpSqZSgGXPP3wyOmRGYyIGarbqt721eULeVekCdjGnD7Ntc+/jZlyUta7fysz
+9tbzYskMf9zzIPqzanIwqG9gSVKYJLG7WJ8lGHzXI5aKmKs1nVCyNj+fRVj7gcWs
+hZlOOdiS4jj8S1jp8BnBkwXbOnCGtHv+TEwlYLIRhKOE7XqISrp1jJX4112EYWzI
+UfQj9OLviqKirKDsFaGxto4J7Ufi10r6mTFENbXFqYLxAHXkUgwroowrglsmUaUz
+z4/rCWslxo7TK+XXJ8YBZ3Ke1gOtX9beVxvyzSfdlEPaWod/+Qc=
+=nXPs
+-----END PGP SIGNATURE-----
+
+--rZHzn+A9B7nBTGyj--

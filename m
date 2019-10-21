@@ -1,111 +1,111 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5070452wrm;
-        Mon, 21 Oct 2019 13:37:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqydwpv8NjA6FvLc3fqsFHjYsoveSo7h3d+gs+j1L275mzVLqu+04zu8EjvP8FPH9gOsJogN
-X-Received: by 2002:a0c:814d:: with SMTP id 71mr25054430qvc.226.1571690249878;
-        Mon, 21 Oct 2019 13:37:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571690249; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5073120wrm;
+        Mon, 21 Oct 2019 13:40:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwLkCU+nl1EUloLt4+RMFed9bsxXGj/TJPQwH0iW4ceAXsLYHGIcBerezAm5+97G2IGSvAp
+X-Received: by 2002:a0c:c70a:: with SMTP id w10mr25739298qvi.222.1571690438044;
+        Mon, 21 Oct 2019 13:40:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571690438; cv=none;
         d=google.com; s=arc-20160816;
-        b=hvylPoNnURBBQzQRitkqYNKOOynsYG4BjUEhuYpJY7pekl/aXrk/2+T/3BSR841XmQ
-         DOwCXaZIDqMcjYKeL02zho31SYsUpqK+FzvS6G5keDvUEjjRrEWLgR12CyVQaBij1N/L
-         45SX8324WztYQNAllUlWk3jf3Kf0jSRyh7e99wWsQT0tP/Oe93+c0g+V5dJvMpeLdl6E
-         /wefmmL9VSwerPCPE6fwdYH76mpgttErhh/9sgPslll+KMvDADwPk4mGWtdW11Yoh4es
-         oDktWrZWLtQC1WMTdrUb9sEjgamQ9R/BWePom6O/q+PN3KL3IJaimoVpXQfud6zf8pw3
-         hYww==
+        b=lyIwszJ8Sv/G8eFz+rDLl8ClR2d2jNsXZYI1LNalSCBXtEV6l/FvAKFBCKAIO3ZCr/
+         PM1+A6MurBpxta8/0dWhqWbM1tb4mKDSC+dOQfpyQPkL3MHOW009Xfad9RTJ3iX5T/tF
+         MQJc/w6ptaVqV7NLo47rCYErPCrCZcPpdDCBaaN0rCGhOZsC8iQCrZ38ROn9CNDrL3JY
+         qaLgP3QmKR11Qu5s8bZt9wExld9hFG+wYPucPmBkM0Iof9TxdEi6JmRFJtNYvkYID2rC
+         Fkaq4Yc4N+eWWwN8+drI2HLuWqGffLm2USeL4cjExiwH0tHIUr+MO0/aRUfBmMiDXChf
+         M8OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=y0imO85UQUZUpBMSCf/VPCjnJwKMkzt/zQlbfwT/TW4=;
-        b=znzwiFPBid+1cXlDwpBU3gXYYg5YTLL7E3mVknYwk2HAnc9tTYfm2UKfpXLGjkHXJu
-         WunQ9duGHe/joYfAUYkx5uSbyOSccqaB1UZxkCb+QLCf7eUGXPDbMvb2tXSlvqWb+/TS
-         OljzYONcISRwxbp60Pv0RR5J2lGXKOd56UZcDmZi1rYowFuVf/cWmjxSHBxxOgpsvsct
-         PHyhb4q80NIWvD0dQRSl+MtyXTMBy1X71SEcKHJQyRMwRkbjcM1g130XsvqhLLvdEnlw
-         5RCZ6VjEFYDByfFiTuObZ9PkAQ9oXVTbbiqW7SWmKgk+1oiygDdaabL11oJOyV5kbr/t
-         NMEg==
+        bh=ntm1D5h5OfUL8y8PGWbfe0PVJvym9MJEG4JfLC0dxaU=;
+        b=EdO+jAMh6wcY0PDochZvm4+y2dns9jIrW1FlZRP4Gm4e0y/Nw06L+zfRrOakPNkFLa
+         fJJx7xrdFMcUJDH612E6iyLHFHDCi5Ks5dJR9IdQlTCzx81xIm7B0Aj72I61zIhoHP8M
+         YFmkwsdNDm3sEI5OZFlJ29SlUQKY2RshWYHHvMKV7DUP9J4YSoZTLecT78GSJ7i8tm8E
+         LlFmPnxU6IUm6dNlpqHrERhGsgd79jrZxk94MTao5G9VZpufms3PI4CuPIpozKFMm7Fj
+         o8DUkcZFCPhik2aHN0f1hc9WDJJLoQcW5rYTl8RtLcajAOm9/9nZqWGETRAnsuexvpv2
+         xTsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k2E9lJeL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GqjTxfQT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n27si2764757qta.87.2019.10.21.13.37.29
+        by mx.google.com with ESMTPS id n1si14647917qvc.123.2019.10.21.13.40.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 13:37:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Oct 2019 13:40:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k2E9lJeL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GqjTxfQT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47672 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMeQj-0000Fh-8R
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 16:37:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40231)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMeTl-0001sD-I2
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 16:40:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40374)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iMeQa-0000Ao-UM
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 16:37:22 -0400
+ (envelope-from <alistair23@gmail.com>) id 1iMeSo-0001SO-5D
+ for qemu-devel@nongnu.org; Mon, 21 Oct 2019 16:39:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iMeQZ-0003Hu-7x
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 16:37:20 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:43888)
+ (envelope-from <alistair23@gmail.com>) id 1iMeSm-00041n-TJ
+ for qemu-devel@nongnu.org; Mon, 21 Oct 2019 16:39:38 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:45401)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iMeQV-0003Gb-Fr; Mon, 21 Oct 2019 16:37:15 -0400
-Received: by mail-lj1-x243.google.com with SMTP id n14so14764296ljj.10;
- Mon, 21 Oct 2019 13:37:15 -0700 (PDT)
+ id 1iMeSm-00041U-LC; Mon, 21 Oct 2019 16:39:36 -0400
+Received: by mail-lf1-x143.google.com with SMTP id v8so10624304lfa.12;
+ Mon, 21 Oct 2019 13:39:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=y0imO85UQUZUpBMSCf/VPCjnJwKMkzt/zQlbfwT/TW4=;
- b=k2E9lJeLXA996WM9WuZwTU8G5LSQyTqEZjdkyptlo7YKjcxVfPnlWhsqfb64YxgcK3
- z6M2xqmJ0o902de80sC+1GwxIegnPWtqYFPj2gGTjj+xPU5IQBZekIgSANL0MbH3vEMC
- +QRJNyTTY1YkuIBSCDvsQ0/mFzs8Xr7/GVGpJ1rb1pnU7Zt3AsGuZt8XyeUtvQT1yaTX
- 20tq+Wi5JjERwoEN9vQFeUej2ptiNzSoUJ0Zbvt1NjOcKKeqJEUmQGfKNtQ00rEvDYUb
- SSQVDR3QCtv4AAYhdQ34TsTB+OPPqfcBe5pc/vz9mV3nfjE58HMwJHSS62zOpE4dCMmM
- uxGg==
+ bh=ntm1D5h5OfUL8y8PGWbfe0PVJvym9MJEG4JfLC0dxaU=;
+ b=GqjTxfQTuRLPQSQnw9O9qZ8xU54QBXnbf16M/Rbf8cbWfaQuMM/s8OnRqOEAxyh6gR
+ V1ara2uwGoO15oyGK4Ng0N1YPMDjzNlN/rCTwincftiJ9RHJkTxzSoeuOVFlo0pOtkmP
+ t6s6ZIkr5L6SOewQ8ccxDk6tEoAMmaw2tpWuBIp8BY53T2azrHmMxRoS+ZLTQyg8CYK/
+ jUfNlUsY2P7Uy93G/D3fBhForQnO+LXqvM0qf9ZrDM4aGjPb2t0yi+bbMPywlGHGzoM+
+ Vro6O4dveifhy+FiMpuf5Z/l+L/gXrHMSsN1CeGMp+uoaEc5DgDDduKLEXI82u6OqxKw
+ 4AAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=y0imO85UQUZUpBMSCf/VPCjnJwKMkzt/zQlbfwT/TW4=;
- b=k6HSeDXgq2U854GQurgjHeEx0wTr5DKC/x49hN6xvj9q1SWNenM0P4QUHCmzU4zGgx
- iA3dxvRcvXIglHXQqbtLHfrCrA7Z2XBwAf9u4Z34UlL94y312wmVYt1gOTqtZowoL1py
- +/FbrQVkwhxYS2lTFqP7EPUTweCHnfSofZq6cfH2mLJG8duuIcjjFy1yM3d5dxjIQ+dY
- eELoJkfOgs/GEbW6VdNcVuCrFLCnJ2G6haOy/o3zSyFYiONz3RaAD2H7wLbsLZYg+gOu
- tuEJkjCN2D7K96U8Au0tE7TNK0wYhrVujFzBewKDNsz0WejFRBHfCJNqjomw8+GslFkI
- ggtQ==
-X-Gm-Message-State: APjAAAWhzIcOCxNzVXcPHnXl+qyTlfajSn4V3ZrwZe42FHGkAmxoAMhO
- GAITZNvPPaZSqK1INkQ5HHap4stgaNJlYWXh6pk=
-X-Received: by 2002:a2e:9604:: with SMTP id v4mr16735467ljh.101.1571690233855; 
- Mon, 21 Oct 2019 13:37:13 -0700 (PDT)
+ bh=ntm1D5h5OfUL8y8PGWbfe0PVJvym9MJEG4JfLC0dxaU=;
+ b=MWQUlDoMbt4Y552LOhBeVJ9t+uNgyOII9aQIC8yUNE//CYFsTdOry5StukDq0WF+V1
+ QDNcokFSlmjo9V89Pf6l6XzjrSxMyLTahw6yyMY3dQzsRXLnyBJXCU1QwHSVyYgklqZj
+ Lm5qFmAyIOgiyoZKVTvk4rYC1nih+TMlQCtpyQ9JVqaZhTmlWUKAk977F9/Thkoox4Gs
+ iMKtBuCdIll7oR8Vk0wwo7kDzUIGQteeCA9TN4DFnjm8ayAe2fCanwQ/U6TuL6U1LxHj
+ UiGbC/vQQq7ejjER375TgNtR52JM7Xjetrp/oMAWA/ob9VsGzETyQfTY7I2JiUsTHPVO
+ 81IQ==
+X-Gm-Message-State: APjAAAXigdXhPAqoUN0W2jyYL9z188RTj4ZFsY86Ab9ahA3i2CChtERY
+ 7yrBeWgvf5qytxQnu9ab2wrFkJqDjIwOY2ZLo6A=
+X-Received: by 2002:a19:ac01:: with SMTP id g1mr16394192lfc.141.1571690375241; 
+ Mon, 21 Oct 2019 13:39:35 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191019234715.25750-1-f4bug@amsat.org>
- <20191019234715.25750-4-f4bug@amsat.org>
-In-Reply-To: <20191019234715.25750-4-f4bug@amsat.org>
+ <20191019234715.25750-6-f4bug@amsat.org>
+In-Reply-To: <20191019234715.25750-6-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 21 Oct 2019 13:31:48 -0700
-Message-ID: <CAKmqyKNHTrOWfyuzG+s=iZ-AifD_OzDrTgvXGCXqXa2bsZiPOg@mail.gmail.com>
-Subject: Re: [PATCH v3 03/16] hw/timer/bcm2835: Add the BCM2835 SYS_timer
+Date: Mon, 21 Oct 2019 13:34:10 -0700
+Message-ID: <CAKmqyKPrjtKomoRuE-Cd7=mK3TuPnFmVyCdg2scvvZNZs8ru-Q@mail.gmail.com>
+Subject: Re: [PATCH v3 05/16] hw/arm/bcm2836: Make the SoC code modular
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::243
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::143
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Matthias Brugger <mbrugger@suse.com>, Rob Herring <robh@kernel.org>,
  Alistair Francis <alistair@alistair23.me>,
@@ -119,295 +119,102 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Cheng Xiang <ext-cheng.xiang@here.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
  Pekka Enberg <penberg@iki.fi>, Pete Batard <pete@akeo.ie>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B7dzyGWyVb9e
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DEZhgPYpVdxO
 
-On Sat, Oct 19, 2019 at 4:47 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Sat, Oct 19, 2019 at 4:50 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g> wrote:
 >
-> Add the 64-bit free running timer. Do not model the COMPARE register
-> (no IRQ generated).
-> This timer is used by Linux kernel and recently U-Boot:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/d=
-rivers/clocksource/bcm2835_timer.c?h=3Dv3.7
-> https://github.com/u-boot/u-boot/blob/v2019.07/include/configs/rpi.h#L19
+> This file creates the BCM2836/BCM2837 blocks.
+> The biggest differences with the BCM2838 we are going to add, are
+> the base addresses of the interrupt controller and the peripherals.
+> Add these addresses in the BCM283XInfo structure to make this
+> block more modular. Remove the MCORE_OFFSET offset as it is
+> not useful and rather confusing.
 >
-> Datasheet used:
-> https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.p=
-df
->
+> Reviewed-by: Esteban Bosse <estebanbosse@gmail.com>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> v2:
-> - Add status/compare* registers
-> - Add vmstate and reset handler
->
-> checkpatch warning:
-> WARNING: added, moved or deleted file(s), does MAINTAINERS need updating?
-> This is OK because the regex are:
->
->   F: hw/*/bcm283*
->   F: include/hw/*/bcm283*
-> ---
->  hw/timer/Makefile.objs            |   1 +
->  hw/timer/bcm2835_systmr.c         | 166 ++++++++++++++++++++++++++++++
->  hw/timer/trace-events             |   5 +
->  include/hw/timer/bcm2835_systmr.h |  33 ++++++
->  4 files changed, 205 insertions(+)
->  create mode 100644 hw/timer/bcm2835_systmr.c
->  create mode 100644 include/hw/timer/bcm2835_systmr.h
->
-> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-> index 123d92c969..696cda5905 100644
-> --- a/hw/timer/Makefile.objs
-> +++ b/hw/timer/Makefile.objs
-> @@ -47,3 +47,4 @@ common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
->  common-obj-$(CONFIG_CMSDK_APB_TIMER) +=3D cmsdk-apb-timer.o
->  common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) +=3D cmsdk-apb-dualtimer.o
->  common-obj-$(CONFIG_MSF2) +=3D mss-timer.o
-> +common-obj-$(CONFIG_RASPI) +=3D bcm2835_systmr.o
-> diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
-> new file mode 100644
-> index 0000000000..49b40b55f9
-> --- /dev/null
-> +++ b/hw/timer/bcm2835_systmr.c
-> @@ -0,0 +1,166 @@
-> +/*
-> + * BCM2835 SYS timer emulation
-> + *
-> + * Copyright (C) 2019 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * Datasheet: BCM2835 ARM Peripherals (C6357-M-1398)
-> + * https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Periphera=
-ls.pdf
-> + *
-> + * Only the free running 64-bit counter is implemented.
-> + * The 4 COMPARE registers and the interruption are not implemented.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "qemu/timer.h"
-> +#include "hw/timer/bcm2835_systmr.h"
-> +#include "hw/registerfields.h"
-> +#include "migration/vmstate.h"
-> +#include "trace.h"
-> +
-> +REG32(CTRL_STATUS,  0x00)
-> +REG32(COUNTER_LOW,  0x04)
-> +REG32(COUNTER_HIGH, 0x08)
-> +REG32(COMPARE0,     0x0c)
-> +REG32(COMPARE1,     0x10)
-> +REG32(COMPARE2,     0x14)
-> +REG32(COMPARE3,     0x18)
-> +
-> +static void bcm2835_systmr_update_irq(BCM2835SystemTimerState *s)
-> +{
-> +    bool enable =3D !!s->reg.status;
-> +
-> +    trace_bcm2835_systmr_irq(enable);
-> +    qemu_set_irq(s->irq, enable);
-> +}
-> +
-> +static void bcm2835_systmr_update_compare(BCM2835SystemTimerState *s,
-> +                                          unsigned timer_index)
-> +{
-> +    /* TODO fow now, since neither Linux nor U-boot use these timers. */
-> +    qemu_log_mask(LOG_UNIMP, "COMPARE register %u not implemented\n",
-> +                  timer_index);
-> +}
-> +
-> +static uint64_t bcm2835_systmr_read(void *opaque, hwaddr offset,
-> +                                    unsigned size)
-> +{
-> +    BCM2835SystemTimerState *s =3D BCM2835_SYSTIMER(opaque);
-> +    uint64_t r =3D 0;
-> +
-> +    switch (offset) {
-> +    case A_CTRL_STATUS:
-> +        r =3D s->reg.status;
-> +        break;
-> +    case A_COMPARE0 ... A_COMPARE3:
-> +        r =3D s->reg.compare[(offset - A_COMPARE0) >> 2];
-> +        break;
-> +    case A_COUNTER_LOW:
-> +    case A_COUNTER_HIGH:
-> +        /* Free running counter at 1MHz */
-> +        r =3D qemu_clock_get_us(QEMU_CLOCK_VIRTUAL);
-> +        r >>=3D 8 * (offset - A_COUNTER_LOW);
-> +        r &=3D UINT32_MAX;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad offset 0x%" HWADDR_PRIx =
-"\n",
-> +                      __func__, offset);
-> +        break;
-> +    }
-> +    trace_bcm2835_systmr_read(offset, r);
-> +
-> +    return r;
-> +}
-> +
-> +static void bcm2835_systmr_write(void *opaque, hwaddr offset,
-> +                                 uint64_t value, unsigned size)
-> +{
-> +    BCM2835SystemTimerState *s =3D BCM2835_SYSTIMER(opaque);
-> +
-> +    trace_bcm2835_systmr_write(offset, value);
-> +    switch (offset) {
-> +    case A_CTRL_STATUS:
-> +        s->reg.status &=3D ~value; /* Ack */
-> +        bcm2835_systmr_update_irq(s);
-> +        break;
-> +    case A_COMPARE0 ... A_COMPARE3:
-> +        s->reg.compare[(offset - A_COMPARE0) >> 2] =3D value;
-> +        bcm2835_systmr_update_compare(s, (offset - A_COMPARE0) >> 2);
-> +        break;
-> +    case A_COUNTER_LOW:
-> +    case A_COUNTER_HIGH:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: read-only ofs 0x%" HWADDR_PR=
-Ix "\n",
-> +                      __func__, offset);
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad offset 0x%" HWADDR_PRIx =
-"\n",
-> +                      __func__, offset);
-> +        break;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps bcm2835_systmr_ops =3D {
-> +    .read =3D bcm2835_systmr_read,
-> +    .write =3D bcm2835_systmr_write,
-> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
-> +    .impl =3D {
-> +        .min_access_size =3D 4,
-> +        .max_access_size =3D 4,
-> +    },
-> +};
-> +
-> +static void bcm2835_systmr_reset(DeviceState *dev)
-> +{
-> +    BCM2835SystemTimerState *s =3D BCM2835_SYSTIMER(dev);
-> +
-> +    s->reg.status =3D 0;
-> +    for (size_t i =3D 0; i < ARRAY_SIZE(s->reg.compare); i++) {
-> +        s->reg.compare[i] =3D 0;
-> +    }
-
-Can we use meset (or the glib version) here instead?
-
-Otherwise:
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
-> +}
-> +
-> +static void bcm2835_systmr_realize(DeviceState *dev, Error **errp)
-> +{
-> +    BCM2835SystemTimerState *s =3D BCM2835_SYSTIMER(dev);
-> +
-> +    memory_region_init_io(&s->iomem, OBJECT(dev), &bcm2835_systmr_ops,
-> +                          s, "bcm2835-sys-timer", 0x20);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
-> +    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
-> +}
-> +
-> +static const VMStateDescription bcm2835_systmr_vmstate =3D {
-> +    .name =3D "bcm2835_sys_timer",
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_UINT32(reg.status, BCM2835SystemTimerState),
-> +        VMSTATE_UINT32_ARRAY(reg.compare, BCM2835SystemTimerState, 4),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void bcm2835_systmr_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +
-> +    dc->realize =3D bcm2835_systmr_realize;
-> +    dc->reset =3D bcm2835_systmr_reset;
-> +    dc->vmsd =3D &bcm2835_systmr_vmstate;
-> +}
-> +
-> +static const TypeInfo bcm2835_systmr_info =3D {
-> +    .name =3D TYPE_BCM2835_SYSTIMER,
-> +    .parent =3D TYPE_SYS_BUS_DEVICE,
-> +    .instance_size =3D sizeof(BCM2835SystemTimerState),
-> +    .class_init =3D bcm2835_systmr_class_init,
-> +};
-> +
-> +static void bcm2835_systmr_register_types(void)
-> +{
-> +    type_register_static(&bcm2835_systmr_info);
-> +}
-> +
-> +type_init(bcm2835_systmr_register_types);
-> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-> index db02a9142c..0aa399ac69 100644
-> --- a/hw/timer/trace-events
-> +++ b/hw/timer/trace-events
-> @@ -87,3 +87,8 @@ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x =
-value 0x%08x"
->  pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
->  pl031_alarm_raised(void) "alarm raised"
->  pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
-> +
-> +# bcm2835_systmr.c
-> +bcm2835_systmr_irq(bool enable) "timer irq state %u"
-> +bcm2835_systmr_read(uint64_t offset, uint64_t data) "timer read: offset =
-0x%" PRIx64 " data 0x%" PRIx64
-> +bcm2835_systmr_write(uint64_t offset, uint64_t data) "timer write: offse=
-t 0x%" PRIx64 " data 0x%" PRIx64
-> diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835=
-_systmr.h
-> new file mode 100644
-> index 0000000000..c0bc5c8127
-> --- /dev/null
-> +++ b/include/hw/timer/bcm2835_systmr.h
-> @@ -0,0 +1,33 @@
-> +/*
-> + * BCM2835 SYS timer emulation
-> + *
-> + * Copyright (c) 2019 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef BCM2835_SYSTIMER_H
-> +#define BCM2835_SYSTIMER_H
-> +
-> +#include "hw/sysbus.h"
-> +#include "hw/irq.h"
-> +
-> +#define TYPE_BCM2835_SYSTIMER "bcm2835-sys-timer"
-> +#define BCM2835_SYSTIMER(obj) \
-> +    OBJECT_CHECK(BCM2835SystemTimerState, (obj), TYPE_BCM2835_SYSTIMER)
-> +
-> +typedef struct {
-> +    /*< private >*/
-> +    SysBusDevice parent_obj;
-> +
-> +    /*< public >*/
-> +    MemoryRegion iomem;
-> +    qemu_irq irq;
-> +
-> +    struct {
-> +        uint32_t status;
-> +        uint32_t compare[4];
-> +    } reg;
-> +} BCM2835SystemTimerState;
-> +
-> +#endif
+> ---
+>  hw/arm/bcm2836.c | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
+>
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index 723aef6bf5..019e67b906 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -16,15 +16,11 @@
+>  #include "hw/arm/raspi_platform.h"
+>  #include "hw/sysbus.h"
+>
+> -/* Peripheral base address seen by the CPU */
+> -#define BCM2836_PERI_BASE       0x3F000000
+> -
+> -/* "QA7" (Pi2) interrupt controller and mailboxes etc. */
+> -#define BCM2836_CONTROL_BASE    0x40000000
+> -
+>  struct BCM283XInfo {
+>      const char *name;
+>      const char *cpu_type;
+> +    hwaddr peri_base; /* Peripheral base address seen by the CPU */
+> +    hwaddr ctrl_base; /* Interrupt controller and mailboxes etc. */
+>      int clusterid;
+>  };
+>
+> @@ -32,12 +28,16 @@ static const BCM283XInfo bcm283x_socs[] =3D {
+>      {
+>          .name =3D TYPE_BCM2836,
+>          .cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a7"),
+> +        .peri_base =3D 0x3f000000,
+> +        .ctrl_base =3D 0x40000000,
+>          .clusterid =3D 0xf,
+>      },
+>  #ifdef TARGET_AARCH64
+>      {
+>          .name =3D TYPE_BCM2837,
+>          .cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a53"),
+> +        .peri_base =3D 0x3f000000,
+> +        .ctrl_base =3D 0x40000000,
+>          .clusterid =3D 0x0,
+>      },
+>  #endif
+> @@ -104,7 +104,7 @@ static void bcm2836_realize(DeviceState *dev, Error *=
+*errp)
+>      }
+>
+>      sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 0,
+> -                            BCM2836_PERI_BASE, 1);
+> +                            info->peri_base, 1);
+>
+>      /* bcm2836 interrupt controller (and mailboxes, etc.) */
+>      object_property_set_bool(OBJECT(&s->control), true, "realized", &err=
+);
+> @@ -113,7 +113,7 @@ static void bcm2836_realize(DeviceState *dev, Error *=
+*errp)
+>          return;
+>      }
+>
+> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->control), 0, BCM2836_CONTROL_BASE=
+);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->control), 0, info->ctrl_base);
+>
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
+>          qdev_get_gpio_in_named(DEVICE(&s->control), "gpu-irq", 0));
+> @@ -126,7 +126,7 @@ static void bcm2836_realize(DeviceState *dev, Error *=
+*errp)
+>
+>          /* set periphbase/CBAR value for CPU-local registers */
+>          object_property_set_int(OBJECT(&s->cpus[n]),
+> -                                BCM2836_PERI_BASE + MSYNC_OFFSET,
+> +                                info->peri_base,
+>                                  "reset-cbar", &err);
+>          if (err) {
+>              error_propagate(errp, err);
 > --
 > 2.21.0
 >

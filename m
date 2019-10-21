@@ -1,46 +1,47 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4612668wrm;
-        Mon, 21 Oct 2019 06:56:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwZjXHyK2eG37gj5u9gzUlRSuIzSwEuR9BYJcySUlU7ksvygplB/fPNTGAm6aruR2vvNY8i
-X-Received: by 2002:a1c:67d7:: with SMTP id b206mr8436096wmc.68.1571666197364;
-        Mon, 21 Oct 2019 06:56:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571666197; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4621113wrm;
+        Mon, 21 Oct 2019 07:03:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwzzPxKWClD8H6Pb0m754FxuQVTRuAsobKioL7h7Shzc7iv434R7yQBTMIn4Z4ey2DEt26V
+X-Received: by 2002:a7b:c4d4:: with SMTP id g20mr17823861wmk.123.1571666590455;
+        Mon, 21 Oct 2019 07:03:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571666590; cv=none;
         d=google.com; s=arc-20160816;
-        b=l0enLK3yd1NpYB1JxbDBegJZys82DF84xlHrxyX4kucyA5vnr5viOtrYm072oZUhVt
-         UvTtqVa+eCWYS3ApBJ1U3Sx/o4Nr/V5REmxB9UyoHVzZFB5eSenozPkCCs9FNTc7OlBW
-         bJ3TYwupUpSeanrnnzLQL/XBwugbQ4kLEq5jDYQQSZ8Ex2DLf6WLs35WgbOg8Tvz8xlP
-         2Ued261KMTXihElvIi2vXO8b6ros2aZ+IdIhFtDVVIj3aATEEah+RsvfWPyfwg9BCsiy
-         Byz7DnH8khhcjWdhp50tD5jF6IM9N8Q4EVTB/lQfh06rc5Jw+T/IWjqK/Z86nnsre5jX
-         HvWg==
+        b=0HjyElHJNi/CJpLPVYbIv8lqVxhZ0CqcQkM/jiudRli2FqfHyS4cybKSQ3YkAV+wt3
+         +/Xae/1zOgtSW2A/l2yfVxmQ1I6cOEkQXMAOt4Yl2O/BDfC4iyxFoYdzrCfgj0FhS2Op
+         e7vs7HnKa6nL0a4ln7PySZyQAve2onkepC75rXr60/K+sTkgd59jQRO3U/mg5IFyEs95
+         TxIiPIAkIgBUQyhepVD08u6ptUXy+l5RfV0FT+IQ18KsD8Bd+FzUpGTptB1kOf5VDnmF
+         8s7xptX7VXvf+AJ+62hf1bRV+Nz+A5GYqe0Ji6noYWJN1tSBLHYaNljniOUiFwvioeqv
+         421A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:from:references:cc:to:subject;
-        bh=Bcltku+HZfBGxekz3l2+9YmIWVykiawAdyOnjW4yBg4=;
-        b=D9plztpccyM0nug8hPciKGdYTrvuhSZJZuco4MvBI5mxbQ/RYZnlLhF5TVkWJpoKqT
-         I40FXlCeBX7He0KbTuf+QeU1ofPt6b4FUqQv1Av+xd03Bx43+YzhPQstJb1iRi6wZhTH
-         /wBY9XP0e9rD00RBHWcqIseQq0X8fslx3jqnVOmqZrTExxNeW9C1nEnTgBaiDYHgK6Os
-         Q1Do0XG1HhJubBXA0NU2Mj3gBzFs2x1X1KhbT/9+L7fuasZPNfJvBW8CuPgvtxiNNtTC
-         EU5/xrkm0OuzooCqAcIwvKdFMMZ+v3nsmTEfraBqe9e/CBbqIOPMjhrMCPaK0lx1Fpgz
-         iMIQ==
+        bh=mP5oL5g+c0P4FW0u7FHYvkZRZqB9uP9QPvUMFpNqohM=;
+        b=LzACpYnhchbzo9oHVXNluWg1CYXecwtsuyl031FbETtl3FNDXsCb/RAg4M0PUPHKMB
+         GVkrr+wpQKEl1YB3M7/bvZ9oNawKh1KPU00pReECebRMY36b9PUaxpS20oyjUGNyjynO
+         Av/bcUYcvzhpBo/4qNLdYMjzVUX0PDJjnemkiMOTD1U/FraZVGbUpEVBdziFgxWjd4fF
+         1KJLxFbNRAM0gxSh7VIJwnFb5ZYArGhA8N2kBAx3YpxYltUSkxItvdOwhcqw9yh2EgVa
+         DeogNx4AegH5Hbr9bmbzr5fyOBeOP8BEOKgfAmJmEGq6Y1VVGTtcFTuK4msAC8Nf99QZ
+         pOgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
-        by mx.google.com with ESMTPS id a1si12642456wra.270.2019.10.21.06.56.37
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.133])
+        by mx.google.com with ESMTPS id t125si12560378wmb.78.2019.10.21.07.03.10
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 21 Oct 2019 06:56:37 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.187;
+        Mon, 21 Oct 2019 07:03:10 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.133;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MK3eI-1ibSxh25gU-00LZhb; Mon, 21 Oct 2019 15:56:35 +0200
-Subject: Re: [Qemu-devel] [PATCH v1 3/4] elf: move elf_ops.h into include/elf/
- and rename
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MOzCW-1ifIXY261M-00PQ4b; Mon, 21 Oct 2019 16:03:08 +0200
+Subject: Re: [Qemu-devel] [PATCH v1 4/4] elf: move ELF_ARCH definition to
+ elf-arch.h
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20190910193408.28917-1-alex.bennee@linaro.org>
- <20190910193408.28917-4-alex.bennee@linaro.org>
+ <20190910193408.28917-5-alex.bennee@linaro.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -84,48 +85,47 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <504e63b8-da0a-ff2b-d768-e268f016afb4@vivier.eu>
-Date: Mon, 21 Oct 2019 15:56:32 +0200
+Message-ID: <1b03edeb-6290-d792-5c91-b37726e18a2d@vivier.eu>
+Date: Mon, 21 Oct 2019 16:03:05 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20190910193408.28917-4-alex.bennee@linaro.org>
+In-Reply-To: <20190910193408.28917-5-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:PLOCpTZlJ8SG9/8bc+7OMb0pwx3IndN2+fy5xyPNIBDU76AN0QF
- UkHyC6+tReFR0ZhHrtB3E/nCqq6boAczrJKWERmCM2iPhd5kLIMiypPJgj3+4xrY+bkTh+5
- F+X2+c3IqMCc+3dB/FFJJ+EkUOwqsVn8NKEYkY2yoRFRKYbzgrFfFI4guN1LUYeuzGpLLdQ
- hKNP3k7nMh2ZhW7x8UJyQ==
+X-Provags-ID: V03:K1:zJ+nKdSdQcUCS/Gr1zXTn/4Emt3ltwAD3jDjqVxeVU03O6kPtf0
+ fOCAuRHkDyZ0vlx7nXeM3qFux8+vsArKnWMQu6EWRxE8W/m0Dovg0Y+EoBdqg/dRDDT6v+r
+ YAl+mu6RfDPAsNu5yIA3Gr/8n41UKpaMP1eCtJdXJJj/Rf8xKS/z2b05DT453cLQr7A8v1d
+ q+JWo/KrECvVIQ0hnkTzQ==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ggnkFmVbEsU=:FwoRN64t7Lfc3CwTdvfPpW
- xQJYHVQTCBeLnugp3QiXnhy8HP+99PC7uoLE4BxQU5njNbmUjkPjynHGPAPX1ISClcjpyUJGo
- YbFb2V22VTDLrPQn23ejDkRZ3P8p4llETAR+eCxuLYJeLPztHgE2qSCOoMsUVU2OkIvedhDeO
- zIHCztnhfVuUmACfTKMMQFfty2KMGYkASjbTJE57+OKr7ELpQCPh2vMAHnfjuzOROibqfhCl4
- l3kAy+dnrb3D/s5FJYWMypb7j/TRzOttO0Eq0XkP1mEHjFQDg9OJW0FbQg5NDifWsQflEU1/8
- aqXIaMdefriyjMRtbcvKyYzcOeDlxxiSHgGwTNwkJXXGWLcHsb+Y6muDXL13Jm0+xpz1/2Tlm
- 2AXLR3y+mLtSZqCu5h9PpKSGmlIJzANDG/ZcSchB26G/B/b6/o+WTcmRYBnvZAuG2xzqL7O6P
- QEz9Z6+0nM5Vht09qIqfax0ynIAyXoDtvOc/yD5jAIHphyczGf9HGmMAJKQBDQEfkJ8nfc0Xz
- G2Pq/x0JUaGoQ2bwHLPeuF4PUE5HJqscME3CiQ1nwNVJASIVI5WKjAxlaYrf2KHv7UBoIaHQi
- GwBYH8Lv5AVnmg7/xQ8qaZQO/3yqAsMo0cOj1rSjVgNFNPBJkYU6X4+df2/492Tz22t5yOYQG
- qjLESzmUpFGl6s8CUA/HIZuwZBzDtzBjSLw/XumO7uLr66XQ1uK5mM06+1HS9XInuo6uRFJMG
- UKYG05iN57LLpMeX4ZrV8cHa9vnkkjAllTXDqPHM3/nu0zsjZoYOEN2RjKU40p94ZHbM69mPT
- F1JTCEyq3Ob4vMnmRpOReWy0Y/nPLrneJ8wSOB89hvzZpOgQ3/6AYIoRt4W+e07A7STUw5LaT
- Tf14jbjv+oHuGp2/Uc2MRy5+nJfU5rRWd2j71gPaM=
-X-TUID: IT3FYasQjVOp
+X-UI-Out-Filterresults: notjunk:1;V03:K0:q2bovp6D+KE=:r2AyfRsO3WcbDhd0uQ8ehM
+ hVaK6l2557POmIf7/QfNfMz+AaIpjKw9oDTLfC0Nd4mtnEz9Lp8PRtz9g6nLZExgNz972bgZX
+ /8kD3buP7SItHRpyBIYp29/4t7DJUqYfxbNp2YnvVwME3C1GJwdDkEUp14Y+O6SyiU2GQVPwO
+ m6ExttcWZPj/FG5zExMbUCvegJ/th/DlzhcRDUy/EuUSJeN+BUsGKc3LRxVX8Y1edY7atN1mm
+ 9Nc/lu5nXrp+1L5Blki09K4qjHDPdHabKiaUZDf7AckicdPEK3GUzlz/ORazymQK5DKhZpW/L
+ z24fr/HZVJFfBDc7AXeua6tX7X3kjV/7+to650bXqQXOG0YxGU/b6C7iSq94BtkmKXmiY+Zwx
+ Axq7hi8EbujtWDGWrYLc3+Q9yC4yMSgUtfOlvFKKXs83UH/w/sCDeVRFfPcIiq/MGSmlewEnm
+ xezEnSIl08xKRCKLLGHiFS0RMo5o+RwessKjVdwn1++iMcvtQ/yiFWa81QHx2B8Os8PfOapP8
+ KzYjAYLXxtbqwq22b0+vr+W1o/EsVLby7BuT01y5QQzNgo6EmdLSCmEHCut191aRp2q6cK9Xx
+ SKRoH7PKO9AVMFWfAc2XVP2z/dAktobqjvgB2pCyKREYNU4R+0zOuNjI7lRx68/W4jXnEpf0z
+ OEg/YaOiUWJV5vrkqDknsrnvoGdt/ig7RkBmENSjZJ8MU+M2zlYb7Tu7YCcR9xpoJ/cB0goH7
+ NPRsWBj6ERIVt6qTNlAEJ9LDAXFo3p6xEEdS5JxvMR7zhfP3+JcFOJOrIAu9KI59yng2oqxKA
+ rsd4Z7sdxuGbm6aX24u7aOlHjeQ4oc4UDHsuTn+MpOpDQA2QIUa47B+BnlAuToJ3iD+o3kwWn
+ EhxbQqbLLOKmiHe3xdJjbe7NN3jvzL+KfSa21fmm8=
+X-TUID: +Y7Cv1RZ73+C
 
 Le 10/09/2019 à 21:34, Alex Bennée a écrit :
-> Lets keep all the Elf manipulation bits together. Also rename the file
-> to better reflect how it is used and add a little header to the file.
+> This is preparatory for plugins which will want to report the
+> architecture to plugins. Move the ELF_ARCH definition out of the
+> loader and into its own header.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->  hw/core/loader.c                            | 4 ++--
->  include/{hw/elf_ops.h => elf/elf_ops.inc.h} | 9 +++++++++
->  2 files changed, 11 insertions(+), 2 deletions(-)
->  rename include/{hw/elf_ops.h => elf/elf_ops.inc.h} (98%)
+>  bsd-user/elfload.c     |  13 +----
+>  include/elf/elf-arch.h | 109 +++++++++++++++++++++++++++++++++++++++++
 
-So the question is: what the ".inc" reflects for a ".h" file?
+Your file should be split across "linux-user/$(TARGET_ABI_DIR)/elf-arch.h"
 
 Thanks,
 Laurent

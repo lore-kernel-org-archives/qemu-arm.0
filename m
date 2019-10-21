@@ -1,110 +1,115 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4855607wrm;
-        Mon, 21 Oct 2019 10:19:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzS6+aCiQWPF0u2yU8RW7WnG6PyxZJYZy7+oHOgHhL4ZgNUf1cvF3tPfNOeurvYD+7WOcUJ
-X-Received: by 2002:a05:6402:1b91:: with SMTP id cc17mr25897464edb.180.1571678363183;
-        Mon, 21 Oct 2019 10:19:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571678363; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4856830wrm;
+        Mon, 21 Oct 2019 10:20:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwVboymjt0RZuHKsFMtJQNKrH4oxNY6oEtLKRf5tHz8fRTInfnnoHzQSo8IprlxiHZhS9V4
+X-Received: by 2002:aa7:c48c:: with SMTP id m12mr26125244edq.280.1571678421252;
+        Mon, 21 Oct 2019 10:20:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571678421; cv=none;
         d=google.com; s=arc-20160816;
-        b=xrOogOJHD4lyn2g/URX04EAldk1hHFrDoyYa7bPJT5kfpp7U3DtPVlkmwsXQ+gdEOi
-         JVq0PQF2qu7vDw8BNucRiDICNXqhXEA6+QomfC+cFLsTkSxn3kwcdv9t4kA4v6SmR2gg
-         tOHyAJ/df+T6OOmAd4ZNJGReQfY22w8YsztVa15ybS2L5CiWAomSCv695N0J7wr1ac6K
-         zyxo5k5ntClK+5pQI0pL9fclWDoLp+0paKxmKDpzCTQ+q9XF3kGaiBePc+r8T/Ugs0Bq
-         9FKGcfHBH3HBym9tDD61BntihoaN76piN8/2Qysn2RDpjhXsjAOZ+M3IESF6r8jfxTR9
-         xI3A==
+        b=vqI21CRu+/loVvCt/mNejBxUhkZ15TiGzPaaijLvy/8eUAUgt459Hf1bf5eM7sWUTo
+         DA5ItdEkQs/5pmBrReopHOsVpEZ+6iAHmsGqacGdYGpMJsPikMsX8bgdiRowbtRBTvyV
+         uSXrSRu4U1q8zUZjvwA50/J1N61Wnyd0qSjvCFfd9uLjshTSRwZ64MjJfmh1/hbnFqT2
+         sSIvpIfS+Enk02qpzFItHathd2B7kzuwDjJovxS4Ri5QBYy892KHOgFrve52fF9AN1CV
+         JZUZceMgb8DYtv0y/nAoFa+m/VT7bOrqtdH9eKmlnOVxyhJl8b8rP8mpKLRQLdUPwKtz
+         QsWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=H22Y49rpyXiV/0s7o5/REI7ZzvJXDELGFM/r4tV3nJ4=;
-        b=v1bsKoLDKeoE0Idin4PMe1zSXWTv1q9/ylZpWYi+WpKJfQPlUjUAbM71BjvhsiEDl1
-         6QjFYabYubTkbjk7YqZigJD7TKdDitvM4pnJh+Xs7KqfltIs1jl8mJJEhPRsYRVUk62i
-         hIOfvPUFrTPVzx0JexmimIFT9JwHPX9AfRhZ/t4VUXxby+XDzNcNJwVOSK/3DX+bIS+d
-         zDPyWfmq1aIUVDTdaKPtWOAY7cgRwDlWE8KvnShQqHWsGmz2fI/Nwg+veaYNPgFIlUBy
-         vm5xbXi11Wh5qKtJkk1dIwxWtnJaWjcVJOlAv29S5Ei1ZPMROah6M5NSEPEjM0AjrKMa
-         6vLA==
+         :message-id:openpgp:references:to:from:subject:dkim-signature;
+        bh=Wb+3zAUn+l4NlM6wLvO4abhyBQJMMb1MgopA5691n+Q=;
+        b=OunPIXlM20+9LNfSNTJmC24Rz1IHRUNpTDzyLt0twZHE0crkOTXZpnXPMcomXOXNRq
+         GZBp8dIOfFMaYp/fx63t0+fXjtVXAWhPfiZdpoQq6dMT5ylzlx1OAKJgGwQtX9cZAWJ7
+         hG3t1Nd0Botq1RNdSnoepZeXh1q0xIslxgRqu6Iw6VSXJv4bGGwIZUp5dmxlWoFeJ+iu
+         fBNYZKdWqCbSjYSvTNorfA++j0EMinM6HGoiwC3BomaJGmAcsNhIiHwvZK770mf17pjC
+         27zkGoRKQEKb8iCnE9Cg3UIdhRdUlJz4qf+wl32GDh6xx1YhsCDcpMvOeDWw6C4cqyGd
+         Ekfg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=yqTdf+Tx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l15si9516534eja.290.2019.10.21.10.19.23
+        by mx.google.com with ESMTPS id ck7si8762280ejb.250.2019.10.21.10.20.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 10:19:23 -0700 (PDT)
+        Mon, 21 Oct 2019 10:20:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=yqTdf+Tx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45922 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45960 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMbKz-0006o9-KT
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 13:19:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44320)
+	id 1iMbLv-0007iI-Fd
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 13:20:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44454)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMbKf-0006lF-77
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:19:03 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iMbLe-0007gB-9p
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:20:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMbKd-0001hh-PS
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:19:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44388)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMbKb-0001fb-Nj
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:18:57 -0400
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id F2A47859FF
- for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 17:18:54 +0000 (UTC)
-Received: by mail-wr1-f70.google.com with SMTP id f4so7637414wrj.12
- for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 10:18:54 -0700 (PDT)
+ (envelope-from <richard.henderson@linaro.org>) id 1iMbLd-00021c-46
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:20:02 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:42463)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iMbLc-00020u-TR
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 13:20:01 -0400
+Received: by mail-pg1-x543.google.com with SMTP id f14so8184565pgi.9
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 10:20:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:from:to:cc:references:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Wb+3zAUn+l4NlM6wLvO4abhyBQJMMb1MgopA5691n+Q=;
+ b=yqTdf+TxNAiUx1/GgPX8DlGrfLQTjHLR0uKWkAfXWXuPT1P6w8QPZnvYePY3aiGQ8I
+ 8UtNZQOy09v0ukghctQMw87BQ8wMMwkPr/jMv0FN9ucinuEfFNv3g51hAgG5LbxFhEBg
+ qWvCBuYGrIweGWvi7PNQbSEYnno0TH3X8laHvRhDrP3dPJTFPbBNjbBAORdnuku4VLfz
+ f4H2BZS2x9TR15RfWb3MghYGWsuTJILQs0TP60h0TV/a92lXfmkvYzKFup3xrCMTOLZ3
+ EqzXo0ErKFllbhnlo1BafpnmrjLW52N7XBocynLg/ocH0+YLbEyOoDNoNWtFqyInQrRK
+ X/Qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:from:to:cc:references:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=h75/ng50FSR/T8wvfc6IKPX40001NghQ17j+Osu46yc=;
- b=L1A/lQ81zaCCjkuaIZWyr5ANqa3vQH2y/2V+CqGyt/hLbI25pAOmoadJ0hCMZHJq7g
- UNIcuuolpr1an0wcukF4tzGu3y0i7OV0rM/GkiNaMraw0Hf10f0hOyp6XngfHzzAAbve
- 5znOG+x6YlxCwWaK+jV109wLsbTrmjjoUCyEjk7hylGR5KSO4gKIh6kzTEnCj+nVtsle
- Bjg3+rd6iJSu121VA4WYAeYdhRVmmeBehXhrx2iFrUsISnBjO00N7vZNA7PwSt0ttR1T
- aN3bvYhmV5sD5brlvd6DR/KXJE2qYqBwrqRnoWtWiQ+XXZ3lR1sBQvZ5EO9MCOTwGDCI
- Qsjw==
-X-Gm-Message-State: APjAAAUZe8X7UB9iH32zqdQmomOQLma4aR+d/TSSvpy1hl7oTmX713JA
- 6pV6tyziSK35Jtu5vt1sbzUG4K97dVXjJxaWKGecRD1xALYDKRWt4C7Gva7bFyn9HPD2ShpP5Af
- 3dGjUuwk5WB9k
-X-Received: by 2002:a7b:ce88:: with SMTP id q8mr18920818wmj.160.1571678333740; 
- Mon, 21 Oct 2019 10:18:53 -0700 (PDT)
-X-Received: by 2002:a7b:ce88:: with SMTP id q8mr18920788wmj.160.1571678333546; 
- Mon, 21 Oct 2019 10:18:53 -0700 (PDT)
-Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
- [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id d202sm9196251wmd.47.2019.10.21.10.18.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Oct 2019 10:18:52 -0700 (PDT)
-Subject: Re: [PATCH 04/21] hw/arm/omap2: Create the RAM in the board
-To: Richard Henderson <richard.henderson@linaro.org>,
+ bh=Wb+3zAUn+l4NlM6wLvO4abhyBQJMMb1MgopA5691n+Q=;
+ b=qUV2u8WRyNa7stv8O3K2Q7haVxFnHF8Zu08ZIo2jeF0bDYfY1x2VBICDBElfgzDIeG
+ fZGGIyBKCqtyKaqYWJyN24FXgg7bleJt9LYemJ00R0nd7R8i4Tatxzz2o2RQjW+Np8UW
+ BLIpQECjCjXOnhu/X80l9M69fQFI5m9NblWnjIn3EfoEr3gOKgp+IK6YgwKtie69umvN
+ vH5Ykp9wn1/Y/TgVPgEHscmfefoBjE7zhuC0kd64XvjpChCrE/xZ/ftI8bbIoUQwpyz2
+ KbcfNQo5rkA8jzJJG/6XmIv2SYTSnjHo0dw6CASY7izMwogVNfh1MkRsFydAYkTdqc9A
+ DD/g==
+X-Gm-Message-State: APjAAAUXF5+ZsweEXaxTpur98Ohp30arxnb8jemjIcmU4qhtWvVqAx9b
+ fGXmX9/9ft2nHwGvPg+Ur51FCQ==
+X-Received: by 2002:a63:cc4a:: with SMTP id q10mr12951838pgi.221.1571678399127; 
+ Mon, 21 Oct 2019 10:19:59 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id g4sm15567991pfo.33.2019.10.21.10.19.57
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 21 Oct 2019 10:19:58 -0700 (PDT)
+Subject: Re: [PATCH 11/21] hw/alpha: Let the machine be the owner of the
+ system memory
+From: Richard Henderson <richard.henderson@linaro.org>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>
 References: <20191020225650.3671-1-philmd@redhat.com>
- <20191020225650.3671-5-philmd@redhat.com>
- <ee89a853-46c7-e306-1e49-cd75136428c8@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <b9a35ec0-e713-54fd-eb5c-64ae0363a2d2@redhat.com>
-Date: Mon, 21 Oct 2019 19:18:49 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ <20191020225650.3671-12-philmd@redhat.com>
+ <ed804be1-8516-3dbc-d738-20c2b03e5309@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <ad652874-452b-2c8e-b80f-b6b8b5b8a751@linaro.org>
+Date: Mon, 21 Oct 2019 10:19:55 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <ee89a853-46c7-e306-1e49-cd75136428c8@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <ed804be1-8516-3dbc-d738-20c2b03e5309@linaro.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::543
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -141,34 +146,33 @@ Cc: Paul Burton <pburton@wavecomp.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 42I+ADqapuuN
+X-TUID: 5ercSezn0b0D
 
-On 10/21/19 6:59 PM, Richard Henderson wrote:
-> On 10/20/19 3:56 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->>   static void n8x0_init(MachineState *machine,
->>                         struct arm_boot_info *binfo, int model)
->>   {
->> -    MemoryRegion *sysmem =3D get_system_memory();
->> +    MemoryRegion *sdram =3D g_new(MemoryRegion, 1);
->>       struct n800_s *s =3D (struct n800_s *) g_malloc0(sizeof(*s));
->> -    int sdram_size =3D binfo->ram_size;
->> +    uint64_t sdram_size =3D binfo->ram_size;
->>  =20
->> -    s->mpu =3D omap2420_mpu_init(sysmem, sdram_size, machine->cpu_typ=
-e);
->> +    memory_region_allocate_system_memory(sdram, NULL, "omap2.dram",
->> +                                         sdram_size);
->> +    memory_region_add_subregion(get_system_memory(), OMAP2_Q2_BASE, s=
-dram);
->> +
->> +    s->mpu =3D omap2420_mpu_init(sdram, machine->cpu_type);
->=20
-> Any reason not to put the MemoryRegion in to the n800_s structure?
+On 10/21/19 10:14 AM, Richard Henderson wrote:
+> On 10/20/19 3:56 PM, Philippe Mathieu-Daudé wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  hw/alpha/dp264.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+>> index ddc249261c..5696b1e79b 100644
+>> --- a/hw/alpha/dp264.c
+>> +++ b/hw/alpha/dp264.c
+>> @@ -78,7 +78,7 @@ static void clipper_init(MachineState *machine)
+>>       * Main memory region, 0x00.0000.0000.  Real hardware supports 32GB,
+>>       * but the address space hole reserved at this point is 8TB.
+>>       */
+>> -    memory_region_allocate_system_memory(&ram_region, NULL, "ram",
+>> +    memory_region_allocate_system_memory(&ram_region, machine, "ram",
+>>                                           ram_size);
+>>      memory_region_add_subregion(get_system_memory(), 0, &ram_region);
+>>  
+>>
+> 
+> I take it this squishes into the squish of patches 7+9?
 
-Ah yes, better to keep it in n800_s in case we ever QOM'ify this SoC.
-I'll do.
+Ah, no, it was the TyphoonState that had owned the ram prior to patch 7.
 
-> Otherwise,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Thanks :)
+r~

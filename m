@@ -1,322 +1,248 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2722896wrm;
-        Sat, 19 Oct 2019 16:57:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwYcnOJH9IWVS9LBNuhY2AI98yK+l61JY/ArwSqBoPceHK1foTel9wi1CgeFDjJXEbf0j1o
-X-Received: by 2002:a0c:eb11:: with SMTP id j17mr17124933qvp.73.1571529423771;
-        Sat, 19 Oct 2019 16:57:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571529423; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4814805wrm;
+        Mon, 21 Oct 2019 09:43:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwfMlm6APSmX9j9MsOFQvnEUAmdqYkFb7mD1oAoxabii3oH4O+QREBSW6+4qKkbFzGEzqbT
+X-Received: by 2002:a17:902:6bc9:: with SMTP id m9mr25085149plt.227.1571676197174;
+        Mon, 21 Oct 2019 09:43:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571676197; cv=none;
         d=google.com; s=arc-20160816;
-        b=NKyCOngTt0F1odiSiiiDCUB2bzKOD+X2LQO+sra1ojJiIlO1zwL4E7+xxAafx2gC5v
-         /F1SmXC7LIl3I1Z3FLeZQiKfqvdbvc5Ls8eP3IFV0BCsl6KsHhT9JHOQ6XwtMvGdrPT6
-         5YTZEtlavNPIzmaZkcQsMlT4eWYMuyyHCM3X9JNrNvXkx9qiJMtNIRG5uY/Pw3NPNzKS
-         blAJgidCAdpa/5mVbZD14a0ctwuUSYs/X+M6HgWoWltqw2gtF6V+gl6mcN4PtYaoZuA2
-         9KaXL9SaLmIAzsEHEhKgzPP1Gs7Ak5xnlvqixmMNcvzbeuP7RYznqpp+AxF7Rh2pteL/
-         D+ag==
+        b=KeR05Xpx6jR5Ty2DueR93++14yhR51o2pqWAv3u0nU7n5Ro24e5zYIufwMf5hxT3JE
+         KZ3DNWXXuppCFP5khrx4NycHu0Z5wA8wXYpDfE9EY01U+hsu7ojMp5oMk8mDIHa5np9S
+         Q/UpPf5K0skNN2zLJNfo3bqo6q9c3a2RICdD0f5Hk/ctw5k2gg0x9J1oPozKzFEr1MX9
+         h2V0TF+5435FpsyWOg6dU1FQyk/r3wFHy9DmmlXgIJYrmA+ZZD+vq+fHVAH9/B7BCKkB
+         RtAukTcL95wX+UrwP8laONxt7XQoxFeOVtb1iY1B+KvrBcHGvtYgXtLIyK2cEmErm4Nc
+         Zbzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=/zFVPjuAiYGtT3eOPkbE1HDbnoPdHl9DaAfhFHqH+Qw=;
-        b=M/xJIoSlHgAKIfoBXNyGKjPj/pG0Mx7COWo9gJw40j2U86xNVhOLbt6IgweWpP39ch
-         B4RcXNmVApmIGmSfUyxaucB0vWDlwGA6zgxB61TwWFx8bWlKvxPgNItl5wigBK1VPrW/
-         ksSXwI0Dt3ZBL7V7fMGstbdLOzuhO82GU7AS5Xk8kos4l1QcwJNW8adAuOUejJS4jIBC
-         G/xgp0Lc9s1ZeOYjH+VHR81Ei8Id3RJDX7IaFhOP4tMKmk+qsB+QTzDIX0eU9s9DSdUE
-         iIrGmWo300AwYrTxjoGtCU8BfMMSHsM6CcSYSSQdYRDCdnH6gWM3Nqvr5Af7bSpBXQPw
-         FX0A==
+        h=errors-to:sender:content-transfer-encoding:cc:list-subscribe
+         :list-help:list-post:list-archive:list-unsubscribe:list-id
+         :precedence:content-language:in-reply-to:mime-version:user-agent
+         :date:message-id:from:references:to:subject:dkim-signature;
+        bh=WxExWUQj1LY2l1UsPz9aVcyQOYabtRdP/ZRS2+VIVjc=;
+        b=c2Df8zQlk7AkuqC22r9sE5F7eHu44GEaFePTAUOCwrcI5FKtSRGDajw74vU+89OBjm
+         2ZLVEfWBozIezkRihc94jGFppL+OuWEPak2LdS8z8H1RlvEB1zv+l8JNPH83Oenho8Y1
+         WnJo/pnD39d7JOJCMWvQ/szf0aTuVQ/X04WE7Rx6N1Yxt3VV/5jQOZQtykSUiD8FXtgw
+         poCXypfQ+y2HDB0zoa8uJo+67GSg9rYYH5O8Skb+Z/wsx4z6G/+YpiANtbhG053jRBWm
+         PAle6eTCzokFWNp7Ccq4axyfqkXB83gGCqRVS/fhqgC83QFrd0Wb7GFkYb810f/PB1mS
+         KJ+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="t/pEgVtG";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 13si10008663qtt.174.2019.10.19.16.57.03
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=hDN2A2Lv;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+Return-Path: <linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org>
+Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
+        by mx.google.com with ESMTPS id ay11si14446703plb.46.2019.10.21.09.43.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 19 Oct 2019 16:57:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 21 Oct 2019 09:43:17 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="t/pEgVtG";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42236 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLyak-00056N-M0
-	for alex.bennee@linaro.org; Sat, 19 Oct 2019 19:57:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34740)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRm-0000b1-FP
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:47 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRl-0005hp-04
- for qemu-arm@nongnu.org; Sat, 19 Oct 2019 19:47:46 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:33755)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLyRh-0005fo-L8; Sat, 19 Oct 2019 19:47:41 -0400
-Received: by mail-wm1-x341.google.com with SMTP id r17so11892155wme.0;
- Sat, 19 Oct 2019 16:47:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/zFVPjuAiYGtT3eOPkbE1HDbnoPdHl9DaAfhFHqH+Qw=;
- b=t/pEgVtGZdKrTtAtQtarzSMXmo07HjtOI3GpSUmw6fKHOQ6M0V0ZS/NuBb23I6RTsu
- BfI7OL9QxVhnfVVceeGfNLwxk3JuvSj801MPMPbHKc6qH2XSoGuM8Zn67SIWc7Z5vX72
- Q7gKlMkFzCS91c5eeKlPjOrlqjAMrR5tOR28zosWLAksg/TSa6e+09H1ucJapFUMQ6Wg
- bOBoSMjdR24Q7pZLgTB3dWVGpHfOMAKd7qecBLoT3Bxvh+XE/ioNtmDwsu87CH5AswvI
- De6y+n9x12uMaJAykdwag+WuVa+mw+aCtrLiEEyrWU3Sxe/WIqma55B8OLvcvl4QE4vG
- Rvig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=/zFVPjuAiYGtT3eOPkbE1HDbnoPdHl9DaAfhFHqH+Qw=;
- b=nONkAclewCtjLGBlPTT4vOMNDpJhBP3ChD3dc73CYjdVOYYmTeyb+6BdJpkztasB30
- Ry0PwRFCD7vpuaVluvNIdLl4wvWIWMhYJ8sU80/goIsbzBfjU2gXiuSU+KJh2q3iJ0AQ
- SzuApAKpviVb655JnC6MSZ8jsw5gB3QaEw2V3YUO6gZAlWhJPsKhjHKOqJk5QhWk1w4x
- i1tLeWZE/YIsaL3xrOWr+WSoOOQKwe8GdXVx8PX6rDfV/aDwEBHo360xEgcR3CPst4uQ
- VmMMGQx0eo1fGAU2KsD9B/7yGDTflZq/PqOlTpWzZMapEkqqUBaZkcsjLFrLwCuq3sOW
- h7/g==
-X-Gm-Message-State: APjAAAUyo4nt18h3zXGwWhyBegvKTWSKP5VE8Awt8NIKD3tTucZ4URaZ
- y8lqeLIwIynd1i1EemujGEkTNbDr
-X-Received: by 2002:a1c:1bd8:: with SMTP id b207mr12774993wmb.62.1571528860433; 
- Sat, 19 Oct 2019 16:47:40 -0700 (PDT)
-Received: from x1w.redhat.com (14.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.14])
- by smtp.gmail.com with ESMTPSA id u1sm10433763wrp.56.2019.10.19.16.47.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Oct 2019 16:47:39 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 13/16] hw/arm/raspi: Make the board code modular
-Date: Sun, 20 Oct 2019 01:47:12 +0200
-Message-Id: <20191019234715.25750-14-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191019234715.25750-1-f4bug@amsat.org>
-References: <20191019234715.25750-1-f4bug@amsat.org>
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=hDN2A2Lv;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WxExWUQj1LY2l1UsPz9aVcyQOYabtRdP/ZRS2+VIVjc=; b=hDN2A2Lvq1FyjB
+	1VdLc/v8tA3Zm+bLM0RO7V+udMd+48Ct+lNVYW1rrvX/lIkRKKY6CZbQUmja2/kXEGTRgp8sqGrJB
+	hxROjXVVuO0OWMTbHqGDixfC/scC8ZvjVLiHBhlDLRnXe3zxRNZaZEXksD3+Mm5PaJozBs0JA9p9a
+	odW3mW1pUtPQq9bOP9egdczpB7yPTV+o1K4VCrwsU8BrkaES2wwThIVqBnKPe3fhysstODF0uYjer
+	Wz9qEc5vpS9fionGJvTkdLu4+aF1LtC24OfBT6PScv4ogmDorda98TqUg7HsYUjbwCO+HpRToA1sM
+	s2toLtNIl3g+3y5B5ZYw==;
+Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+	id 1iMam0-0000gc-BC; Mon, 21 Oct 2019 16:43:12 +0000
+Received: from [217.140.110.172] (helo=foss.arm.com)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iMalx-0000fL-JH
+ for linux-arm-kernel@lists.infradead.org; Mon, 21 Oct 2019 16:43:11 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 73E8E1715;
+ Mon, 21 Oct 2019 09:42:57 -0700 (PDT)
+Received: from [10.1.196.105] (unknown [10.1.196.105])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8640C3F71F;
+ Mon, 21 Oct 2019 09:42:55 -0700 (PDT)
+Subject: Re: [RFC PATCH 1/2] kvm/arm: add capability to forward hypercall to
+ user space
+To: Guoheyi <guoheyi@huawei.com>
+References: <1569338454-26202-1-git-send-email-guoheyi@huawei.com>
+ <1569338454-26202-2-git-send-email-guoheyi@huawei.com>
+ <e097fb69-1e68-4082-d310-e7666e30b5d6@arm.com>
+ <d62b84ac-1a7e-de05-a1c1-c52dfb463462@huawei.com>
+From: James Morse <james.morse@arm.com>
+Message-ID: <22aa23e0-cd4e-3692-ee94-e110ace49adb@arm.com>
+Date: Mon, 21 Oct 2019 17:42:53 +0100
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::341
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+In-Reply-To: <d62b84ac-1a7e-de05-a1c1-c52dfb463462@huawei.com>
+Content-Language: en-GB
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20191021_094309_724032_DEEAA198 
+X-CRM114-Status: GOOD (  35.23  )
+X-Spam-Score: 1.3 (+)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (1.3 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
+X-BeenThere: linux-arm-kernel@lists.infradead.org
+X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Matthias Brugger <mbrugger@suse.com>, Rob Herring <robh@kernel.org>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, "Emilio G . Cota" <cota@braap.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>, qemu-arm@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Laurent Bonnans <laurent.bonnans@here.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Pete Batard <pete@akeo.ie>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HLS0+2VMLGEc
+List-Id: <linux-arm-kernel.lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+ Suzuki K Poulose <suzuki.poulose@arm.com>, Marc Zyngier <marc.zyngier@arm.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, linux-kernel@vger.kernel.org,
+ Russell King <linux@armlinux.org.uk>, qemu-arm@nongnu.org,
+ kvmarm@lists.cs.columbia.edu, Julien Thierry <julien.thierry.kdev@gmail.com>,
+ wanghaibin.wang@huawei.com, Will Deacon <will@kernel.org>,
+ Dave Martin <Dave.Martin@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org
+X-TUID: ceoo8uVmGLUC
 
-Our code currently create the raspi2 (based on the BCM2836)
-and the raspi3 (on the BCM2837). Similarly, the raspi4 is
-based on the BCM2838. To be able to add the new board,
-make the current code more modular:
-
-- Dynamically fills the 'board-rev' value
-- Allow DRAM sizes different than 1 GiB
-
-Rename the board model name as 'B' since this is the one
-encoded in the 'board-rev' tag.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/raspi.c | 107 +++++++++++++++++++++++++++++++++++++++++++------
- 1 file changed, 94 insertions(+), 13 deletions(-)
-
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index b1b488ca53..004804bdb3 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -13,6 +13,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/units.h"
-+#include "qemu/cutils.h"
- #include "qapi/error.h"
- #include "cpu.h"
- #include "hw/arm/bcm2836.h"
-@@ -29,8 +30,67 @@
- #define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default */
- #define SPINTABLE_ADDR  0xd8 /* Pi 3 bootloader spintable */
- 
--/* Table of Linux board IDs for different Pi versions */
--static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43, [3] = 0xc44};
-+enum BoardIdManufacturer {
-+    M_SONY_UK = 0,
-+    M_EMBEST = 2,
-+};
-+
-+enum BoardIdChip {
-+    C_BCM2835 = 0,
-+    C_BCM2836 = 1,
-+    C_BCM2837 = 2,
-+};
-+
-+enum BoardIdType {
-+    T_2B = 0x04,
-+    T_3B = 0x08,
-+};
-+
-+enum BoardIdRevision {
-+    R_1_0 = 0,
-+    R_1_1 = 1,
-+    R_1_2 = 2,
-+    R_1_3 = 3,
-+};
-+
-+static const char *processor_typename[] = {
-+    [C_BCM2836] = TYPE_BCM2836,
-+    [C_BCM2837] = TYPE_BCM2837,
-+};
-+
-+typedef struct BoardInfo BoardInfo;
-+
-+struct BoardInfo {
-+    /* Table of Linux board IDs for different Pi versions */
-+    int board_id;
-+    /*
-+     * Board revision codes:
-+     * www.raspberrypi.org/documentation/hardware/raspberrypi/revision-codes/
-+     */
-+    struct {
-+        enum BoardIdType type;
-+        enum BoardIdRevision revision;
-+        enum BoardIdChip chip;
-+        enum BoardIdManufacturer manufacturer;
-+    } board_rev;
-+    uint64_t ram_size_min;
-+    uint64_t ram_size_max;
-+};
-+
-+static const BoardInfo bcm283x_boards[] = {
-+    [2] = {
-+        .board_id = 0xc43,
-+        .board_rev = { T_2B, R_1_1, C_BCM2836, M_EMBEST },
-+        .ram_size_min = 1 * GiB,
-+        .ram_size_max = 1 * GiB,
-+    },
-+    [3] = {
-+        .board_id = 0xc44,
-+        .board_rev = { T_3B, R_1_2, C_BCM2837, M_SONY_UK },
-+        .ram_size_min = 1 * GiB,
-+        .ram_size_max = 1 * GiB,
-+    },
-+};
- 
- typedef struct RasPiState {
-     BCM283XState soc;
-@@ -116,7 +176,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
-     static struct arm_boot_info binfo;
-     int r;
- 
--    binfo.board_id = raspi_boardid[version];
-+    binfo.board_id = bcm283x_boards[version].board_id;
-     binfo.ram_size = ram_size;
-     binfo.nb_cpus = machine->smp.cpus;
- 
-@@ -148,7 +208,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
-      * the normal Linux boot process
-      */
-     if (machine->firmware) {
--        hwaddr firmware_addr = version == 3 ? FIRMWARE_ADDR_3 : FIRMWARE_ADDR_2;
-+        hwaddr firmware_addr = version >= 3 ? FIRMWARE_ADDR_3 : FIRMWARE_ADDR_2;
-         /* load the firmware image (typically kernel.img) */
-         r = load_image_targphys(machine->firmware, firmware_addr,
-                                 ram_size - firmware_addr);
-@@ -172,16 +232,32 @@ static void raspi_init(MachineState *machine, int version)
-     BlockBackend *blk;
-     BusState *bus;
-     DeviceState *carddev;
-+    char *size_str;
-+    int board_rev;
-+    const char *soc_type;
- 
--    if (machine->ram_size > 1 * GiB) {
-+    if (machine->ram_size < bcm283x_boards[version].ram_size_min) {
-+        size_str = size_to_str(bcm283x_boards[version].ram_size_min);
-+        error_report("Requested ram size is too small for this machine: "
-+                     "minimum is %s", size_str);
-+        g_free(size_str);
-+        exit(1);
-+    }
-+    if (machine->ram_size > bcm283x_boards[version].ram_size_max) {
-+        size_str = size_to_str(bcm283x_boards[version].ram_size_max);
-         error_report("Requested ram size is too large for this machine: "
--                     "maximum is 1GB");
-+                     "maximum is %s", size_str);
-+        g_free(size_str);
-+        exit(1);
-+    }
-+    if (!is_power_of_2(machine->ram_size)) {
-+        error_report("Requested ram size is not a power of 2");
-         exit(1);
-     }
- 
-+    soc_type = processor_typename[bcm283x_boards[version].board_rev.chip];
-     object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
--                            version == 3 ? TYPE_BCM2837 : TYPE_BCM2836,
--                            &error_abort, NULL);
-+                            soc_type, &error_abort, NULL);
- 
-     /* Allocate and map RAM */
-     memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram",
-@@ -192,9 +268,14 @@ static void raspi_init(MachineState *machine, int version)
-                                    &error_abort);
-     object_property_set_int(OBJECT(&s->soc), machine->smp.cores,
-                             "enabled-cores", &error_abort);
--    int board_rev = version == 3 ? 0xa02082 : 0xa21041;
--    object_property_set_int(OBJECT(&s->soc), board_rev, "board-rev",
--                            &error_abort);
-+
-+    board_rev = ((63 - clz64(machine->ram_size / MiB)) << 20)
-+                | (bcm283x_boards[version].board_rev.manufacturer << 16)
-+                | (bcm283x_boards[version].board_rev.chip << 12)
-+                | (bcm283x_boards[version].board_rev.type << 4)
-+                | (bcm283x_boards[version].board_rev.revision << 0);
-+    object_property_set_int(OBJECT(&s->soc), board_rev,
-+                            "board-rev", &error_abort);
-     object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_abort);
- 
-     /* Create and plug in the SD cards */
-@@ -221,7 +302,7 @@ static void raspi2_init(MachineState *machine)
- 
- static void raspi2_machine_init(MachineClass *mc)
- {
--    mc->desc = "Raspberry Pi 2";
-+    mc->desc = "Raspberry Pi 2B";
-     mc->init = raspi2_init;
-     mc->block_default_type = IF_SD;
-     mc->no_parallel = 1;
-@@ -243,7 +324,7 @@ static void raspi3_init(MachineState *machine)
- 
- static void raspi3_machine_init(MachineClass *mc)
- {
--    mc->desc = "Raspberry Pi 3";
-+    mc->desc = "Raspberry Pi 3B";
-     mc->init = raspi3_init;
-     mc->block_default_type = IF_SD;
-     mc->no_parallel = 1;
--- 
-2.21.0
-
+SGkgSGV5aSwKCk9uIDA5LzEwLzIwMTkgMTM6MzMsIEd1b2hleWkgd3JvdGU6Cj4gT24gMjAxOS8x
+MC8yIDE6MTksIEphbWVzIE1vcnNlIHdyb3RlOgo+PiBPbiAyNC8wOS8yMDE5IDE2OjIwLCBIZXlp
+IEd1byB3cm90ZToKPj4+IEFzIG1vcmUgU01DL0hWQyB1c2FnZXMgZW1lcmdlIG9uIGFybTY0IHBs
+YXRmb3JtcywgbGlrZSBTREVJLCBpdCBtYWtlcwo+Pj4gc2Vuc2UgZm9yIGt2bSB0byBoYXZlIHRo
+ZSBjYXBhYmlsaXR5IG9mIGZvcndhcmRpbmcgc3VjaCBjYWxscyB0byB1c2VyCj4+PiBzcGFjZSBm
+b3IgZnVydGhlciBlbXVsYXRpb24uCj4+ICh3aGF0IGRvIHlvdSBtZWFuIGJ5IGZ1cnRoZXI/IERv
+ZXNuJ3QgdXNlci1zcGFjZSBoYXZlIHRvIGRvIGFsbCBvZiBpdD8pCj4gRm9yIGt2bSB3aWxsIGFs
+d2F5cyBoYW5kbGUgaHZjL3NtYyBndWVzdCBleGl0IGZvciB0aGUgZmlyc3Qgc3RlcCwgZXZlbiBp
+ZiBpdCBpcyBvbmx5IGEKPiBzaW1wbGUgZm9yd2FyZGluZywgSSBjYWxsZWQgdGhlIHVzZXItc3Bh
+Y2UgcHJvY2Vzc2luZyBhcyAiZnVydGhlciBlbXVsYXRpb24iLgo+IAo+Pj4gV2UgcmV1c2UgdGhl
+IGV4aXN0aW5nIHRlcm0gImh5cGVyY2FsbCIgZm9yIFNNQy9IVkMsIGFzIHdlbGwgYXMgdGhlCj4+
+PiBoeXBlcmNhbGwgc3RydWN0dXJlIGluIGt2bV9ydW4gdG8gZXhjaGFuZ2UgYXJndW1lbnRzIGFu
+ZCByZXR1cm4KPj4+IHZhbHVlcy4gVGhlIGRlZmluaXRpb24gb24gYXJtNjQgaXMgYXMgYmVsb3c6
+Cj4+Pgo+Pj4gZXhpdF9yZWFzb246IEtWTV9FWElUX0hZUEVSQ0FMTAo+Pj4KPj4+IElucHV0Ogo+
+Pj4gwqDCoCBucjogdGhlIGltbWVkaWF0ZSB2YWx1ZSBvZiBTTUMvSFZDIGNhbGxzOyBub3QgcmVh
+bGx5IHVzZWQgdG9kYXkuCj4+PiDCoMKgIGFyZ3NbNl06IHgwLi54NSAoVGhpcyBpcyBub3QgZnVs
+bHkgY29uZm9ybSB3aXRoIFNNQ0NDIHdoaWNoIHJlcXVpcmVzCj4+PiDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIHg2IGFzIGFyZ3VtZW50IGFzIHdlbGwsIGJ1dCB1c2Ugc3BhY2UgY2FuIHVzZSBHRVRf
+T05FX1JFRwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpb2N0bCBmb3Igc3VjaCByYXJlIGNh
+c2UpLgoKPj4gSWYgdGhpcyBzdHJ1Y3R1cmUgaXNuJ3QgcmlnaHQgZm9yIHVzLCB3ZSBjb3VsZCBk
+ZWZpbmUgYSBkaWZmZXJlbnQgb25lIGZvciBhcm0vYXJtNjQuCj4+ICh3ZSBkaWQgdGhpcyBmb3Ig
+a3ZtX3ZjcHVfZXZlbnRzKQoKPiBEbyB5b3UgbWVhbiB0aGF0IHdlIGNhbiBtb3ZlIHRoZSBoeXBl
+cmNhbGwgc3RydWN0IGRlZmluaXRpb24gdG8gYXJjaCBzcGVjaWZpYyBrdm1faG9zdC5oPwo+IEZv
+ciBpdCBpcyBpbiB0aGUgY29tbW9uIGt2bV9ydW4gc3RydWN0dXJlLCB3ZSdsbCBuZWVkIHRvIGNo
+YW5nZSBldmVyeSBrdm0gc3VwcG9ydGVkCj4gYXJjaGl0ZWN0dXJlcywgaW5jbHVkaW5nIHg4Niwg
+bWlwcywgcG93ZXJwYywgczM5MC4gSXMgaXQgYWNjZXB0YWJsZT8KCkFoISBTb3JyeSwgSSdkIG1p
+c3NlZCB0aGlzIHdhcyBpbiB0aGUga3ZtX3J1biBzdHJ1Y3R1cmUuIFRoZSBnZXQtZXZlbnRzIGV4
+YW1wbGUgZG9lc24ndAphcHBseSBoZXJlIGFzIHRoYXQgd2FzIGEgc2VwYXJhdGUgaW9jdGwoKS4K
+Cgo+Pj4gUmV0dXJuOgo+Pj4gwqDCoCBhcmdzWzAuLjNdOiB4MC4ueDMgYXMgZGVmaW5lZCBpbiBT
+TUNDQy4gV2UgbmVlZCB0byBleHRyYWN0Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IGFyZ3NbMC4uM10gYW5kIHdyaXRlIHRoZW0gdG8geDAuLngzIHdoZW4gaHlwZXJjYWxsIGV4aXQK
+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJucy4KCj4+IEFyZSB3ZSBzYXlp
+bmcgdGhhdCBLVk1fRVhJVF9IWVBFUkNBTEwgZXhwZWN0cyB0byBiZSB1c2VkIHdpdGggU01DLUND
+Pwo+PiAoaWYgc28sIHdlIHNob3VsZCBzdGF0ZSB0aGF0KS4KCj4gWWVzIEkgZm9sbG93ZWQgU01D
+LUNDIHdoZW4gd3JpdGluZyB0aGlzLgoKPj4KPj4gSSdtIG5vdCBjZXJ0YWluIHdlIHNob3VsZCB0
+aWUgdGhpcyB0byBTTUMtQ0MuCj4+Cj4+IElmIHdlIGRvbid0IHRpZSBpdCB0byBTTUMtQ0MgdGhp
+cyBzZWxlY3Rpb24gb2YgaW4vb3V0IHJlZ2lzdGVycyBsb29rcyBvZGQsIHRoZXJlIGlzCj4+IG5v
+dGhpbmcgYWJvdXQgSFZDL1NNQyB0aGF0IHVzZXMgdGhlc2UgcmVnaXN0ZXJzLCBpdHMganVzdCB0
+aGUgU01DIGNvbnZlbnRpb24uCgo+IE1heWJlIHdlIGRvbid0IG5lZWQgdG8gdGllIGl0IHRvIFNN
+Qy1DQywgYW5kIHNpbXBseSBsb2FkIGFsbCB2YWx1ZXMgaW4gYXJnc1s2XSB0byBHUAo+IHJlZ2lz
+dGVycy4uLgo+IEFuZCB0aGVuIHRoZXJlIGlzIGVpdGhlciBubyBzdHJvbmcgcmVhc29uIHRvIGV4
+dGVuZCBoeXBlcmNhbGwgc3RydWN0dXJlIGZvciBBUk0uCgoKPj4+IEZsYWcgaHlwZXJjYWxsX2Zv
+cndhcmQgaXMgYWRkZWQgdG8gdHVybiBvbi9vZmYgaHlwZXJjYWxsIGZvcndhcmRpbmcKPj4+IGFu
+ZCB0aGUgZGVmYXVsdCBpcyBmYWxzZS4gQW5vdGhlciBmbGFnIGh5cGVyY2FsbF9leGNsX3BzY2kg
+aXMgdG8KPj4+IGV4Y2x1ZGUgUFNDSSBmcm9tIGZvcndhcmRpbmcgZm9yIGJhY2t3YXJkIGNvbXBh
+dGlibGUsIGFuZCBpdCBvbmx5Cj4+PiBtYWtlcyBzZW5zZSB0byBjaGVjayBpdHMgdmFsdWUgd2hl
+biBoeXBlcmNhbGxfZm9yd2FyZCBpcyBlbmFibGVkLgoKPj4gQ2FsbGluZyBvdXQgUFNDSSBsaWtl
+IHRoaXMgaXMgc29tZXRoaW5nIHdlIHNob3VsZG4ndCBkby4gVGhlcmUgd2lsbCBiZSwgKGFyZSEp
+IG90aGVyCj4+IFNNQy1DQyBjYWxscyB0aGF0IHRoZSBrZXJuZWwgcHJvdmlkZXMgZW11bGF0aW9u
+IGZvciwgd2UgY2FuJ3QgZWFzaWx5IGFkZCB0byB0aGlzIGxpc3QuCgo+IFllczsgSSBkaWRuJ3Qg
+ZmlndXJlIG91dCBnb29kIHdheSB0byBrZWVwIGNvbXBhdGliaWxpdHkgYW5kIGZ1dHVyZSBleHRl
+bnNpb24uLi4KCkkgdGhpbmsgdGhlIGJlc3QgdHJpY2sgaXMgbm90IHRvIGludGVycHJldCB0aGUg
+U01DL0hWQyBjYWxscyBmcm9tIHRoZSBndWVzdC4gVGhlIGtlcm5lbApvYnZpb3VzbHkgZG9lcywg
+YnV0IHRoZSBBUEkgc2hvdWxkbid0IGZvcmNlIHVzIHRvLgoKCj4+IEkgdGhpbmsgdGhlIGJlc3Qg
+d2F5IHRvIGF2b2lkIHRoaXMsIGlzIHRvIHNheSB0aGUgaHlwZXJjYWxsIG1lY2hhbmlzbSBmb3J3
+YXJkcyAndW5oYW5kbGVkCj4+IFNNQy9IVkMnIHRvIHVzZXItc3BhY2UuIFdoaWNoIHRoaW5ncyB0
+aGUga2VybmVsIGNob29zZXMgdG8gaGFuZGxlIGNhbiBjaGFuZ2UuCj4+Cj4+IFdlIG5lZWQgYSB3
+YXkgZm9yIHVzZXItc3BhY2UgdG8ga25vdyB3aGljaCBTTUMvSFZDIGNhbGxzIHRoZSBrZXJuZWwg
+d2lsbCBoYW5kbGUsIGFuZCB3aWxsCj4+IG5vdCBmb3J3YXJkLiBBIHN1Z2dlc3Rpb24gaXMgdG8g
+YWRkIGEgY28tcHJvY2Vzc29yIHRoYXQgbGlzdHMgdGhlc2UgYnkgI2ltbSBhbmQgcjAveDAKPj4g
+dmFsdWUuIFVzZXItc3BhY2UgY2FuIHRoZW4gcXVlcnkgYW55IGNhbGwgdG8gZmluZCBvdXQgaWYg
+aXQgd291bGQgYmUgZXhwb3J0ZWQgaWYgdGhlIGd1ZXN0Cj4+IG1hZGUgdGhhdCBjYWxsLiBTb21l
+dGhpbmcgbGlrZSBrdm1fYXJtX2dldF9md19yZWcoKS4KCj4gRG8geW91IG1lYW4gd2UgYWRkIG9u
+bHkgb25lIGNvLXByb2Nlc3NvciB0byBsaXN0IGFsbCBTTUMvSFZDIGNhbGxzIGtlcm5lbCB3aWxs
+IGhhbmRsZT8KClllcywgc29tZSB3YXkgb2YgbGlzdGluZyB0aGVtLgplLmcuIHVzZXItc3BhY2Ug
+d2FudHMgdG8gaGFuZGxlIEhWQydzIHdpdGggI2ltbT09MCBhbmQgdzA9PTB4ODQwMDAwMDAsIHRo
+aXMgY28tcHJvY2Vzc29yCndvdWxkIGxpc3QgdGhhdCBhcyBvbmUgb2YgdGhlIHRoaW5ncyB0aGF0
+IHRoZSBrZXJuZWwgd2lsbCBoYW5kbGUuCgpJZiB3ZSBjYW4gZmluZCBhIHdheSBvZiBkZXNjcmli
+aW5nIDY0Yml0IHJlZ2lzdGVyIHZhbHVlcyB0aGF0IHdvdWxkIHNhdmUgdGhlbSBmcm9tIGJlaW5n
+IGEKcHJvYmxlbSBpbiB0aGUgZnV0dXJlLCBidXQgaXQgbWF5IGJlIHRvbyBjb21wbGljYXRlZCB0
+byBkZXNjcmliZSBhIDY0Yml0IHJlZ2lzdGVyIHNwYWNlCmFuZCAxNiBiaXRzIG9mIGltbWVkaWF0
+ZS4KCkkgdGhpbmsgaXRzIG9rYXkgZm9yIHRoaXMgY28tcHJvY2Vzc29yIHRvIGJlIFNNQy1DQyBz
+cGVjaWZpYywgYXMgaXRzIGRlc2NyaWJpbmcgd2hhdCB0aGUKa2VybmVsIHN1cHBvcnRzLiBUaGUg
+S1ZNLWFwaSBpbiBjb250cmFzdCBzaG91bGQgYmUgZmxleGlibGUgZW5vdWdoIHRvIGRlc2NyaWJl
+IGFueXRoaW5nCmFueSBndWVzdCBtYXkgd2lzaCB0byBkby4KCgo+IFNvCj4gdGhlIHJlZyBzaXpl
+IHNob3VsZCBiZSBsYXJnZSBlbm91Z2ggdG8gaG9sZCB0aGUgbGlzdCwgZWFjaCBlbnRyeSBvZiB3
+aGljaCBjb250YWlucyBhICNpbW0KPiBhbmQgcjAveDAgcGFpcj8gSXMgdGhlIHJlZyBzaXplIGZp
+eGVkIGJ5IGRlZmluaXRpb24gb3IgaXQgY2FuIGJlIHF1ZXJpZWQgYnkgdXNlci1zcGFjZT8gSWYK
+PiBpdCBpcyBmaXhlZCwgd2hhdCdzIHRoZSBzaXplIHNob3VsZCB3ZSBjaG9vc2U/CgooZml4ZWQv
+bm90LWZpeGVkIC0gaXRzIGEgdHJhZGUtb2ZmIGZvciBjb21wbGV4aXR5IG5vdywgYnV0IG5vLW9u
+ZSBtYXkgZXZlciB1c2UgdGhlIGZ1bGwKZmxleGliaWxpdHkpLgoKSSB0aGluayB3ZSBjYW4gYXNz
+dW1lIHRoZSBrZXJuZWwgd2lsbCBvbmx5IG9mZmVyIHRoaW5ncyB0aGF0IGxvb2sgbGlrZSBTTUMt
+Q0MgdG8gdGhlCmd1ZXN0LiBJZiB0aGUgZ3Vlc3QgZG9lcyBzb21ldGhpbmcgb3V0c2lkZSB0aGlz
+IHNwYWNlLCBpdHMgdXAgdG8gdXNlci1zcGFjZSB0byBoYW5kbGUuIChzbwp0aGUgS1ZNLUFQSSBt
+dXN0IHN1cHBvcnQgbm9uLVNNQy1DQyBzdHVmZikuIEkgdGhpbmsgd2Ugc2hvdWxkIGRlZmluZSBh
+IGNvLXByb2Nlc3NvciBmb3IKU01DL0hWQyB3aGVyZSB0aGUgI2ltbSBpcyAwLiBUaGlzIHRoZW4g
+Z2l2ZXMgdXMgMzJiaXRzIG9mIHNwYWNlIHdlIGNhbiBtYXAgZGlyZWN0bHkgb250bwp0aGUgdzAg
+dmFsdWVzLgoKCj4gRG9lcyBpdCBtYWtlIHNlbnNlIHRvIGV4dGVuZCB0aGUgZW50cnkgdG8gaG9s
+ZCB0aGUgZnVuY3Rpb24gSUQgYmFzZSBhbmQgbGltaXQsIHNvIHRoYXQgaXQKPiBjYW4gZGVzY3Jp
+YmUgdGhlIHdob2xlIHJhbmdlIGZvciBlYWNoIGZ1bmN0aW9uIGdyb3VwLCBsaWtlIFBTQ0ksIFNE
+RUksIGV0Yz8KClRoaXMgbWF5IGJlIG92ZXItY29tcGxleCwgdXNlci1zcGFjZSB3b3VsZCBhbHdh
+eXMgbmVlZCB0byBlbnVtZXJhdGUgdGhlIHdob2xlIHRoaW5nLiBJCnRoaW5rIGNvbW1vbmx5IHVz
+ZXItc3BhY2Ugd291bGQgb25seSB3YW50IHRvIGtub3cgYWJvdXQgb25lIGVudHJ5OiBGb3IgY2Fz
+ZXMgd2hlcmUgd2Uga25vdwp0aGUgc3RydWN0dXJlLCB1c2VyLXNwYWNlIGNhbiBqdXN0IHF1ZXJ5
+IHRoZSAnX1ZFUlNJT04nIGNhbGwuIElmIHRoYXQgaXNuJ3Qgc3VwcG9ydGVkLAp1c2VyLXNwYWNl
+IGNhbiBhc3N1bWUgdGhlIHJlc3Qgb2YgdGhhdCBzcGFjZSBpcyB1bmltcGxlbWVudGVkLiAodGhl
+IGtlcm5lbCBzaG91bGRuJ3QKcHJvdmlkZSBhbiBpbmNvbXBsZXRlIGVtdWxhdGlvbiBvZiB0aGVz
+ZSBBUElzKQoKCj4+IEZvciAzMmJpdCwgYXJlIHdlIGdvaW5nIHRvIGV4cG9ydCBTTUMvSFZDIGNh
+bGxzIHRoYXQgZmFpbGVkIHRoZWlyIGNvbmRpdGlvbi1jb2RlIGNoZWNrcz8KCj4gSSdtIG5vdCBm
+YW1pbGlhciB3aXRoIDMyYml0LCBlaXRoZXIgd2UgZG9uJ3QgaGF2ZSAzMmJpdCBwbGF0Zm9ybXMg
+dG8gdGVzdCB0aGUgY29kZS4gU28gbXkKPiBwcmVmZXJlbmNlIGlzIG5vdCB0byBtYWtlIG1hbnkg
+Y2hhbmdlcyB0byAzMmJpdC4uLgoKSSdtIG5vdCB0aGF0IGZhbWlsaWFyIHdpdGggaXQgZWl0aGVy
+IC4uLiBZb3UgZG9uJ3QgaGF2ZSBhbnl0aGluZyB3aXRoIGFhcmNoMzIgc3VwcG9ydCBhdApFTDE/
+IEkgZG9uJ3QgdGhpbmsgd2Ugc2hvdWxkIGFkZCBhbiBBUEkgdGhhdCBvbmx5IHdvcmtzIHdpdGgg
+QWFyY2g2NCBndWVzdHMuCgpGb3IgMzJiaXQsIHdlIGVpdGhlciBuZWVkIHRvIGV4cG9zZSB0aGVz
+ZSBjb25kaXRpb24tY29kZSBiaXRzLCBhbmQgc2F5IHVzZXItc3BhY2Ugc2hvdWxkCndvcmsgb3V0
+IGlmIGl0IG5lZWRzIHRvIGRvIGFueXRoaW5nLiBPciwgaGFuZGxlIHRoaXMgaW4gdGhlIGtlcm5l
+bCwgaW4gd2hpY2ggY2FzZSB3ZSBkb24ndApuZWVkIHRvIGV4cG9zZSB0aGUgY29uZGl0aW9uLWNv
+ZGUgYml0cywgYnV0IHdlIHNob3VsZCBkb2N1bWVudCB0aGF0IHRoZSBrZXJuZWwgd2lsbCBkbyB0
+aGUKY2hlY2suCgoKTmVzdGVkLXZpcnQgbWF5IGNhdXNlIHNvbWUgJ2Z1bicgaGVyZS4gSWYgdXNl
+ci1zcGFjZSBzdGFydHMgYW4gYWFyY2g2NCBndWVzdCBhdCBFTDIsIGl0Cm1heSBzdGFydCBpdHMg
+b3duIGFhcmNoMzIgZ3Vlc3QgYXQgRUwxLiBJZiB0aGUgYWFyY2gzMiBndWVzdCBtYWtlcyBhbiBT
+TUMsIHdobyBoYW5kbGVzIGl0PwpJZiB1c2VyLXNwYWNlJ3MgYWFyY2g2NCBndWVzdCBkaWRuJ3Qg
+c2V0IHRoZSB0cmFwcyBmb3IgU01DLCBJIHRoaW5rIHRoaXMgc2hvdWxkIGJlCmRlbGl2ZXJlZCB0
+byB1c2VyLXNwYWNlLCB3aGljaCBtYXkgYmUgc3VycHJpc2VkIGJ5IHRoZSByZXF1ZXN0IGZyb20g
+YW4gYWFyY2gzMiBndWVzdC4KCihpdHMgYWxzbyBwb3NzaWJsZSBuZXN0ZWQtdmlydCBoYXMgbWUg
+Y29uZnVzZWQsIGl0IGlzIHByZXR0eSBtaW5kIGJlbmRpbmchKQoKCj4+IFRoZSBoeXBlcmNhbGwg
+c3RydWN0dXJlIHNob3VsZCBwcm9iYWJseSBpbmRpY2F0ZSB3aGV0aGVyIHRoZSBTTUMvSFZDIGNh
+bGwgY2FtZSBmcm9tCj4+IGFhcmNoMzIgb3IgYWFyY2g2NCwgYXMgdGhlIGJlaGF2aW91ciBtYXkg
+YmUgZGlmZmVyZW50LgoKPiBIb3cgYWJvdXQgdG8gdXNlIHRoZSBsb25nbW9kZSBmaWVsZCBpbiBo
+eXBlcmNhbGwgc3RydWN0dXJlPyBTdGFuZGFyZCBzZXJ2aWNlIGNhbGxzIHdpbGwKPiBpbmRpY2F0
+ZSB0aGlzIGluIGZ1bmN0aW9uIElELCBidXQgd2UgbWF5IG5lZWQgdG8ga25vdyBiZWZvcmUgcGFy
+c2luZyB0aGUgZnVuY3Rpb24gSUQsCj4gaXNuJ3QgaXQ/CgpTdXJlLCBhcyBpdHMgYSBfX3UzMiwg
+d2UgY291bGQgZHVtcCB0aGUgZ3Vlc3QgUFNUQVRFIGZyb20gU1BTUiBpbiB0aGVyZS4KCgpJIHRo
+aW5rIHRoZSBsYXN0IHRoaW5nIGlzICdyZXQnLCBhbmQgd2hldGhlciB3ZSBzaG91bGQgcHJvdmlk
+ZSBhIHdheSBvZiBwYXNzaW5nICd4MCcgYmFjawp0byB0aGUgZ3Vlc3QsIG9yIGV4cGVjdCB1c2Vy
+LXNwYWNlIHRvIHVzZSBzZXQtb25lLXJlZy4gTW9zdCBvZiB0aGUgdGltZSB1c2VyLXNwYWNlIHdp
+bGwKb25seSB3YW50IHRvIHNldCB4MCwgYW5kIGRvaW5nIHRoaXMgd291bGQgbGV0IHVzIGluaXRp
+YWxpc2UgaXQgdG8gYWxsLW9uZXMgaW4gdGhlIGtlcm5lbCwKd2hpY2ggbWVhbnMgdGhlIGd1ZXN0
+IGdldHMgdGhlIHVua25vd24tc21jIHZhbHVlIGJhY2sgaWYgdXNlci1zcGFjZSBpZ25vcmVzIHRo
+ZSBleGl0LgoKClRoYW5rcywKCkphbWVzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0t
+a2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==

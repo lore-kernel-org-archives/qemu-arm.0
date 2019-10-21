@@ -1,258 +1,123 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3786377wrm;
-        Sun, 20 Oct 2019 15:58:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz+3wflN/wjpUvH6gfzGgZGK2PHZamqNcH0EX1Hm9WgecUiW6h6ONJo/N+mcK0luUyxUEIJ
-X-Received: by 2002:ac8:534a:: with SMTP id d10mr11109042qto.349.1571612310401;
-        Sun, 20 Oct 2019 15:58:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571612310; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4518694wrm;
+        Mon, 21 Oct 2019 05:37:10 -0700 (PDT)
+X-Received: by 2002:aca:7543:: with SMTP id q64mr19321228oic.95.1571661430556;
+        Mon, 21 Oct 2019 05:37:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571661430; cv=none;
         d=google.com; s=arc-20160816;
-        b=sSXugxxhX9cp1MQXgxZl6ein4UohxihJHqUug8k0YBDJ0hmD1g6tbdT4WoPHmIDSsJ
-         V1pj6m7p6b6k81c8XwGrpu7qcGgeJofFcnyxVgexVZ8kcSVi/XBtbuz0FUcc2zz/YwpX
-         0qupvdkE7nnujb0l9nCThuVw1zbLZmLh9pVQHj+kl21EObRIpRf5qkdyJrqLaEB3hKbN
-         lmR6QuZEUNR15GD+Dsp5h2Ug8b+IQ6ME5rwcelL51ze1dM6yAsZCpz5ESoH6Ad7pyU/4
-         OD7ubmIQ22zitlDZVxmmVbBian3Hq0kPs7oAITmzLDlaIpSuE9rXj12TvTxcAXOtkUW3
-         EA4g==
+        b=nwga9C4RNMFy/3cOaG9TjqmJVKmstIOe1uB2p7jFND8brkB+o9YEpBkg2ZsoOHgghp
+         x8Lp2M/vfa4E/rNSlD1nNnXcO1VaWqPAhUnn6TgXQvIryXpbGr8jcnoGLv1SAoHTPAFu
+         PAF2D54TZMbPn7BudivXol6AZeNRGEYa/ObmEVtBRZSq26kzQ55ieDb6rd7LuGv0Qgx5
+         GfYGGq2mEez7KnxZUj8l4VQodX58KTGo+yPc42dBpnX3bV9AKGsSnMv5OhkxkYwjU7L6
+         1dBN01Gl07S53m2xBQ93xXpQpGubtFrp9MIfHsUFNOaIfyC917UEMI3eHPORKqz85uzc
+         drmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Llb/8OALtJXI9mwJaYEIRinlAzAxVy4qKKagrFZsSKA=;
-        b=R0Y4FGm7+VcUTbVWk4GYB/gxqwWnfuCA0JHcG537X4nu5kCqwR5uocccXBc/t/yy/J
-         dkOo8c5DkAEHiN6rlllBsTHBvkLkIwLO+uRCtJjtIucToJnMlEcrlY73zZK9RE+2XBR+
-         PPWujTIAmpil47cMJwz9NWrc7iwweVYf1Njg4u36ffhN9wCDHjwWVOZAKusrEWIbZ03U
-         V5l2B+1aK9aSBhEqLsZ0NB4gHJN/npzOw5JwQGMPaQFl+/xki83bztrbJ4tKL3fRWoOf
-         J9dusy0elVXkLX0FnmPvYioYn8PHkC9BK0mw7sRx2f6QJzxX3wfpmj/NsXXF3IUuSp4v
-         Syxg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=mm5TGvUKEhtuKejBNL05RY4Uqnb5TiQAHsOfYFLXK2U=;
+        b=UYLPA/z2QfoIpU5LNu6/cdzd4ux2vISWg2R9TnUi/Can3KrGH8Sz8+T+pset7Tl8VI
+         7zVFByjg4R0IbsV2WC+Tzk6/omJMdgGNXFoZhLd3ndG9IX4gplqQaW2RwkKZd4iFC3zK
+         HsRGeyDWC6Dkb/kMDJ0j02hRmw0xMzS0zRbRx4YFZ22h370YacrrumpmXWvFcpPzf6FK
+         Ja3I2z+mawqxPw5fFjKIxGpRdUxBqcjGym1aTJoxQzFJopcaIJvejHZM+FS3Usp7+x51
+         5GW1KkIzl/pS7aBCsHeiyVj0kuAq91R/ZQhoSyYd81DfMJCFFXk9KW8GqWgnW9X1c2cF
+         2ykQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZMwH+yYJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x23si4029332qkb.291.2019.10.20.15.58.30
+       dkim=pass header.i=@linaro.org header.s=google header.b=nUYyULkr;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id m5sor7233410otp.33.2019.10.21.05.37.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Oct 2019 15:58:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 21 Oct 2019 05:37:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZMwH+yYJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50864 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMK9d-0006jx-FZ
-	for alex.bennee@linaro.org; Sun, 20 Oct 2019 18:58:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34285)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMK8d-0006iu-GW
- for qemu-devel@nongnu.org; Sun, 20 Oct 2019 18:57:29 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMK8a-0000H6-NX
- for qemu-devel@nongnu.org; Sun, 20 Oct 2019 18:57:26 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:58141
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMK8a-0000GA-CY
- for qemu-devel@nongnu.org; Sun, 20 Oct 2019 18:57:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571612243;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Llb/8OALtJXI9mwJaYEIRinlAzAxVy4qKKagrFZsSKA=;
- b=ZMwH+yYJK9txjBS4rvSgxW6FUYM3YDIpGlkSwJLca7/08eg5wrdkgepiaeHxXUVe9F3XL1
- L+5t38RgiYc1XneEe7kx5/e0xtDZNzgsNGMt6wNgmHnlsq8CafXKu+PULAupb561c79N2u
- si+PZybUV/BXgHKQzS6tFuGxoDbgeao=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-288-Xgkgy1oBMsa9BZnuFG_tHA-1; Sun, 20 Oct 2019 18:57:19 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E710C80183E;
- Sun, 20 Oct 2019 22:57:14 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-40.brq.redhat.com [10.40.204.40])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4214D60C18;
- Sun, 20 Oct 2019 22:56:54 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH 00/21] hw: Let the machine be the owner of the system memory
-Date: Mon, 21 Oct 2019 00:56:29 +0200
-Message-Id: <20191020225650.3671-1-philmd@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=nUYyULkr;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=mm5TGvUKEhtuKejBNL05RY4Uqnb5TiQAHsOfYFLXK2U=;
+        b=nUYyULkrXAPihD8Q+0e47s3J+HadPwbcIBqxTAwtEThHUPtGhcxPqBRiUrrEC2CsYc
+         MEf8XlgvWmxtgBH3jC3evESx3/93CqT73q6I9fQtEPWrOx+RRttOrymPsLZNKncgIVmD
+         oARUaANgkwYcCa18XEh9fDIvsUU8LnJId/58LP843k6CR2x/NyRnVhGPexE2oXK60pA4
+         CP+5pHUR/cnChMPnurHOfO8ncKjXbkRlbd0VUaocYCn7qMxuUYn281lw+XWBK1zh2B7G
+         lpkqz/zQdUR3/Gc58GSvRbCVfkGi/678B/YaCczAwLadJTxBfG+Ll4X22BJ+tCBGcS6Q
+         wMQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=mm5TGvUKEhtuKejBNL05RY4Uqnb5TiQAHsOfYFLXK2U=;
+        b=TfYVkrXczgjuBWdpPPt5zQiIeahpbdPn3GneECwrOP7i8SG3Alcvq6DJxiHPS/2z3Q
+         m89tANWhhm0FEQNLEajDD7evM4+fFKChOHmv8Sq0ruQZE0oKoA6mXjfPekHlMP+ZvBa5
+         UXfQHSgbSJmhFMt/au4p0/wEILoNLnCNPK0L+23XyluZ0on1Y1eITKfqpu8g1IJyuyUD
+         9HOCco0KBiJr1wA2NxlaQURz1zYufDHY8zGxfh55OysWehanekjRSWLyqrAjcp/MvwaG
+         Msf1baFlUT9mx+hMoNvKMZyK2hPXlpX1PHEasrHoxZ7X0V8a2NvXia592pdQuvjR5Wqg
+         zTJg==
+X-Gm-Message-State: APjAAAVfoGy8FGrP59Y2R6dpErEjxOAZ6ehNReaaiKAze0fP0BPoVQK1
+	UcPYkaHg/wZNOcQUaj/tu20v70VL5n0SKRnSZJ8h4Z6x
+X-Google-Smtp-Source: APXvYqzmRgilBJ2MK2CBZgcGYx+z/mLsUolk1WCKxIcgUOhpz1zhsJ9f+ynBAsyE65y+a0ZlWBKJS1YstnDb9Ik6RS0=
+X-Received: by 2002:a9d:708e:: with SMTP id l14mr8079621otj.135.1571661430117;
+ Mon, 21 Oct 2019 05:37:10 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: Xgkgy1oBMsa9BZnuFG_tHA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paul Burton <pburton@wavecomp.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Leif Lindholm <leif.lindholm@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring <robh@kernel.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Fabien Chouteau <chouteau@adacore.com>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Thomas Huth <huth@tuxfamily.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, Andrew Jeffery <andrew@aj.id.au>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>, Jan Kiszka <jan.kiszka@web.de>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: udb/xMaF+WTd
+References: <20191016085408.24360-1-drjones@redhat.com>
+In-Reply-To: <20191016085408.24360-1-drjones@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 21 Oct 2019 13:36:58 +0100
+Message-ID: <CAFEAcA8pV5batrPk+J6RLU2rv9SNAmL8JS9Kd9tWP3pD-m29eA@mail.gmail.com>
+Subject: Re: [PATCH v6 0/9] target/arm/kvm: enable SVE in guests
+To: Andrew Jones <drjones@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
+	Dave P Martin <Dave.Martin@arm.com>, Eric Auger <eric.auger@redhat.com>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: EqPYCgJ3Ichz
 
-Hi,
+On Wed, 16 Oct 2019 at 09:54, Andrew Jones <drjones@redhat.com> wrote:
+>
+> Since Linux kernel v5.2-rc1 KVM has support for enabling SVE in guests.
+> This series provides the QEMU bits for that enablement. First, we
+> select existing CPU properties representing features we want to
+> advertise in addition to the SVE vector lengths and prepare
+> them for a qmp query. Then we introduce the qmp query, applying
+> it immediately to those selected features. We also document ARM CPU
+> features at this time. We next add a qtest for the selected CPU
+> features that uses the qmp query for its tests - and we continue to
+> add tests as we add CPU features with the following patches. So then,
+> once we have the support we need for CPU feature querying and testing,
+> we add our first SVE CPU feature property, 'sve', which just allows
+> SVE to be completely enabled/disabled. Following that feature property,
+> we add all 16 vector length properties along with the input validation
+> they need and tests to prove the validation works. At this point the
+> SVE features are still only for TCG, so we provide some patches to
+> prepare for KVM and then a patch that allows the 'max' CPU type to
+> enable SVE with KVM, but at first without vector length properties.
+> After a bit more preparation we add the SVE vector length properties
+> to the KVM-enabled 'max' CPU type along with the additional input
+> validation and tests that that needs.  Finally we allow the 'host'
+> CPU type to also enjoy these properties by simply sharing them with it.
 
-This series is based on Igor's "eliminate remaining places that
-abuse memory_region_allocate_system_memory()":
-https://lists.gnu.org/archive/html/qemu-devel/2019-10/msg01601.html
+This fails 'make check' on an aarch32 box with KVM support:
 
-It is quite simple, we enforce all machines to be the QOM owner
-of the system memory.
+MALLOC_PERTURB_=${MALLOC_PERTURB_:-$(( ${RANDOM:-0} % 255 + 1))}
+QTEST_QEMU_BINARY=arm-softmmu/qemu-system-arm QTEST_QEMU_IMG=qemu-img
+tests/arm-cpu-features -m=quick -k --tap < /dev/null |
+./scripts/tap-driver.pl --test-name="arm-cpu-features"
+PASS 1 arm-cpu-features /arm/arm/query-cpu-model-expansion
+**
+ERROR:/home/pm215/qemu/tests/arm-cpu-features.c:420:test_query_cpu_model_expansion_kvm:
+assertion failed: (resp_has_props(_resp))
+Aborted
+ERROR - too few tests run (expected 2, got 1)
+/home/pm215/qemu/tests/Makefile.include:902: recipe for target
+'check-qtest-arm' failed
+make: *** [check-qtest-arm] Error 1
+make: Leaving directory '/home/pm215/qemu/build/arm'
 
-This changes the memory tree from:
-
-  (qemu) info mtree -o
-  memory-region: pc.ram
-    0000000000000000-0000000007ffffff (prio 0, ram): pc.ram parent:{obj pat=
-h=3D/machine/unattached}
-
-to:
-
-  (qemu) info mtree -o
-  memory-region: pc.ram
-    0000000000000000-0000000007ffffff (prio 0, ram): pc.ram owner:{obj path=
-=3D/machine}
-
-Few patches are required to clean the codebase first, to unify the
-creation of the system memory in the board/machine code. Mostly some
-old ARM machines (pre-QOM) were affected.
-
-Please review (as a generic codebase cleanup).
-
-Regards,
-
-Phil.
-
-Based-on: <20191008113318.7012-1-imammedo@redhat.com>
-
-Philippe Mathieu-Daud=C3=A9 (21):
-  hw/arm/xilinx_zynq: Use the IEC binary prefix definitions
-  hw/arm/mps2: Use the IEC binary prefix definitions
-  hw/arm/collie: Create the RAM in the board
-  hw/arm/omap2: Create the RAM in the board
-  hw/arm/omap1: Create the RAM in the board
-  hw/arm/digic4: Inline digic4_board_setup_ram() function
-  hw: Drop QOM ownership on memory_region_allocate_system_memory() calls
-  hw/alpha/dp264: Create the RAM in the board
-  hw: Let memory_region_allocate_system_memory take MachineState
-    argument
-  hw/core: Let the machine be the owner of the system memory
-  hw/alpha: Let the machine be the owner of the system memory
-  hw/arm: Let the machine be the owner of the system memory
-  hw/cris: Let the machine be the owner of the system memory
-  hw/hppa: Let the machine be the owner of the system memory
-  hw/i386: Let the machine be the owner of the system memory
-  hw/lm32: Let the machine be the owner of the system memory
-  hw/m68k: Let the machine be the owner of the system memory
-  hw/mips: Let the machine be the owner of the system memory
-  hw/ppc: Let the machine be the owner of the system memory
-  hw/sparc: Let the machine be the owner of the system memory
-  hw/core: Assert memory_region_allocate_system_memory has machine owner
-
- hw/alpha/alpha_sys.h      |  2 +-
- hw/alpha/dp264.c          | 11 ++++++++++-
- hw/alpha/typhoon.c        |  9 +--------
- hw/arm/aspeed.c           |  2 +-
- hw/arm/collie.c           |  8 ++++++--
- hw/arm/cubieboard.c       |  2 +-
- hw/arm/digic_boards.c     | 14 +++++---------
- hw/arm/highbank.c         |  3 ++-
- hw/arm/imx25_pdk.c        |  2 +-
- hw/arm/integratorcp.c     |  2 +-
- hw/arm/kzm.c              |  2 +-
- hw/arm/mcimx6ul-evk.c     |  2 +-
- hw/arm/mcimx7d-sabre.c    |  2 +-
- hw/arm/mps2-tz.c          |  5 +++--
- hw/arm/mps2.c             |  5 +++--
- hw/arm/musicpal.c         |  2 +-
- hw/arm/nseries.c          | 10 +++++++---
- hw/arm/omap1.c            | 12 +++++-------
- hw/arm/omap2.c            | 13 +++++--------
- hw/arm/omap_sx1.c         |  8 ++++++--
- hw/arm/palm.c             |  8 ++++++--
- hw/arm/raspi.c            |  2 +-
- hw/arm/sabrelite.c        |  2 +-
- hw/arm/sbsa-ref.c         |  2 +-
- hw/arm/strongarm.c        |  7 +------
- hw/arm/strongarm.h        |  4 +---
- hw/arm/versatilepb.c      |  2 +-
- hw/arm/vexpress.c         |  4 ++--
- hw/arm/virt.c             |  2 +-
- hw/arm/xilinx_zynq.c      |  5 +++--
- hw/arm/xlnx-versal-virt.c |  2 +-
- hw/arm/xlnx-zcu102.c      |  2 +-
- hw/core/null-machine.c    |  2 +-
- hw/core/numa.c            |  9 +++++----
- hw/cris/axis_dev88.c      |  2 +-
- hw/hppa/machine.c         |  2 +-
- hw/i386/pc.c              |  2 +-
- hw/lm32/lm32_boards.c     |  4 ++--
- hw/lm32/milkymist.c       |  2 +-
- hw/m68k/an5206.c          |  2 +-
- hw/m68k/mcf5208.c         |  2 +-
- hw/m68k/next-cube.c       |  2 +-
- hw/mips/boston.c          |  2 +-
- hw/mips/mips_fulong2e.c   |  3 ++-
- hw/mips/mips_jazz.c       |  2 +-
- hw/mips/mips_malta.c      |  2 +-
- hw/mips/mips_mipssim.c    |  2 +-
- hw/mips/mips_r4k.c        |  3 ++-
- hw/ppc/e500.c             |  3 ++-
- hw/ppc/mac_newworld.c     |  3 ++-
- hw/ppc/mac_oldworld.c     |  2 +-
- hw/ppc/pnv.c              |  2 +-
- hw/ppc/ppc405_boards.c    |  6 +++---
- hw/ppc/prep.c             |  3 ++-
- hw/ppc/spapr.c            |  2 +-
- hw/ppc/virtex_ml507.c     |  2 +-
- hw/sparc/leon3.c          |  2 +-
- hw/sparc/sun4m.c          |  2 +-
- include/hw/arm/omap.h     | 10 +++-------
- include/hw/boards.h       |  6 ++++--
- 60 files changed, 127 insertions(+), 117 deletions(-)
-
---=20
-2.21.0
-
+thanks
+-- PMM

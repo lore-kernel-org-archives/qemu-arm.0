@@ -1,215 +1,262 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4688171wrm;
-        Mon, 21 Oct 2019 07:58:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxcrKjwZ51egqKTVq6HjjePu2BGsVVW4MilEFg2hLc8iDXJ5pyttSfgB4hksHWzrrfvQlib
-X-Received: by 2002:ac8:117:: with SMTP id e23mr6737423qtg.82.1571669924642;
-        Mon, 21 Oct 2019 07:58:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571669924; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4699277wrm;
+        Mon, 21 Oct 2019 08:07:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxobBRqzz4Wga7TYpN74lSopeCOtVwaRiFk1I/Ce6biowK+BANb4KV6wJftkUU0+voIUbMi
+X-Received: by 2002:a50:e40c:: with SMTP id d12mr24952870edm.256.1571670420367;
+        Mon, 21 Oct 2019 08:07:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571670420; cv=none;
         d=google.com; s=arc-20160816;
-        b=qVsik0lad2rGbsWMVYHg/dIWICGaMfdGKgF62yG/anbbdVLhv+aE6IM79ymlxICgrd
-         Rd6taunbRdvABAhAB51s1pWdzSr+ijIObgWHl3GP4Kkb1xgc5ARAbefjApyucmZY4nbq
-         Mp6ipvpfcwsPhalGhMoWrJRGMTMoRjHXFW8VPdtRp2mTIhobMyoTuWS1JaLlGD79KTtl
-         CZQv6KLFxX+Oglz6V/QZUNYAJrQn5wpIp2HIFxraqt4kRLsuX4ZndjQI9d+a++20wokz
-         vyYg9SxmuD3Ix0malVPzryA8mMeMvJCqLuRFEa3pSFCR/TyPFLx1HEryuBIgcLGb3Mnp
-         uqJw==
+        b=CMUxleOOvx7k5fh8co5Sxfwsf84cTLqC7vAGc/8Vi/VnTVMQtKZyfTrIp/XivwnPbz
+         OoWnzTqbyzi6IX0Ss7UEVvMyUHSP7avLO4QU+ioAqG51ywuZgxTRPWRHD1eyC7ftLAYh
+         D1JPmlnqPERSQYOD4XkIACnvOVXVaOzvvtCmQ6VG4zgXW10BIg0grNcfkZSuW2qtcHRH
+         vIqqidJup4b+B2szi4x3O0/Bib0hbQux9T4x/bJ5PUCJQrzltWKs5DTi/mSHLPV026ss
+         ATO6DqRF5pjQLTlzJXFRfc6jqXUawr5eELmbSoBuiR83h9vzX2iq0Q/yDYCFl4WTk6oS
+         qccQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=6abUmKP/NmKNmjhVzPa7Sp7wiDwQ32hBBylFGoOY8wk=;
-        b=j1lglK0QOO28jdai9UDw+9iw4uWYfRxMRYkmxTz6VtTg8qvS0hwJrAmRBK/Em4Jd8v
-         VAELwtoLdgweYvOmMd+ByhbXsIfP0SL1HKwhuNs7p7wr2Ke07W/9A6ACwktvvUULvQk7
-         utoTF3Kav+pkAENJpb0liIPZYc7I+KzAyaRz79XF7q9vwSVrfay3iUCew9FrS5dW8OkH
-         TobYqeEYeGp73zW6K0eISYbTjksdB8kMIy1Px1L5LGxR7rBmZxaKruA43Z7jopOp2LQa
-         Vu7n+tR48JA45DOZpN7VnoqJq6bU5ucxV1OkNAWJbVofKLMDbPEW29Hxbhsa15jSGtmt
-         meaA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=ygXBxJFwhSCxk9IebzEG5Q2RRK+LMZU+c13O0BSfDG0=;
+        b=YVNPVcnViV5UHQkYWYxR1y6GxTrjMxezXYq61quK5k4P1TnA9meyzEOArA5GaKqcjy
+         t8vbJIP2bPodIaz5wnVbfUBiaq53HZ0bjtYuKrUtSV3yU3errXt2kI6gf8+sLFZba0Xi
+         LOse+Ef3Z+kYFWrB5U5iWTdDKxJibs2YzmqgX+YHJSge1Xf30Rl1qf4/zGvqRtifBNaE
+         hmKk8c1EaE3vTqJie+739ivj6R68qd8vdFAo7ZsH6/xj1D6LWoSTux/Eqa+1JYrNcziJ
+         ccY3W3ljLMHMksMebUvb+9nvK/ZDlK9Wl/2yaQsOY2rzywXAqrvSUzPc27pOtIyDgFUh
+         NPjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LAWMQQ10;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=APt9yhY5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y128si13158211qke.369.2019.10.21.07.58.44
+        by mx.google.com with ESMTPS id y15si1249394ejq.159.2019.10.21.08.07.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 07:58:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Oct 2019 08:07:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LAWMQQ10;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43596 helo=lists1p.gnu.org)
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=APt9yhY5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43766 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMZ8t-0005uo-Vn
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 10:58:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53345)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMZGt-0006s3-7g
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 11:06:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54455)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1iMZ8i-0005qD-6A
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 10:58:33 -0400
+ (envelope-from <cminyard@mvista.com>) id 1iMZE1-00042K-R1
+ for qemu-devel@nongnu.org; Mon, 21 Oct 2019 11:04:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1iMZ8g-0004pN-Fe
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 10:58:31 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:47688
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1iMZ8g-0004pA-Ay
- for qemu-arm@nongnu.org; Mon, 21 Oct 2019 10:58:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571669909;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6abUmKP/NmKNmjhVzPa7Sp7wiDwQ32hBBylFGoOY8wk=;
- b=LAWMQQ10FejlKicVZ8ltaO2SY45Yi/caa5U1SO7+Icot0jKYIlaC2iQ2PclQsroz4qdAks
- cfM+d3IJy/U87+ib854vDqqpfrgX8/46053Bgf7evwtQNKuwGkVqkdFHCMmB14uqGyRO+c
- Pw+85Ps6kp4mgKqnYnn8vXVgWSWpjl4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-269-kfAcDzWyOuik_j-T6uwnuw-1; Mon, 21 Oct 2019 10:58:26 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1943F107AD31;
- Mon, 21 Oct 2019 14:57:56 +0000 (UTC)
-Received: from work-vm (ovpn-117-232.ams2.redhat.com [10.36.117.232])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7C4184B5;
- Mon, 21 Oct 2019 14:57:31 +0000 (UTC)
-Date: Mon, 21 Oct 2019 15:57:29 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH 12/21] hw/arm: Let the machine be the owner of the system
- memory
-Message-ID: <20191021145729.GC5837@work-vm>
-References: <20191020225650.3671-1-philmd@redhat.com>
- <20191020225650.3671-13-philmd@redhat.com>
- <CAFEAcA8bhP9X-2AaTus9=GtEAqmnNA9me6hv8U=vXYwjQp_CnA@mail.gmail.com>
- <42944bea-4b15-7bdf-61a7-f1c73f5f7c2b@redhat.com>
- <CAFEAcA8hJ7bQeQNdWB6Rg4P7RzYmcXZmQKm7pnDAOutADHe9jA@mail.gmail.com>
- <20804096-7b34-9d79-1d93-fa9a31bbfd66@redhat.com>
+ (envelope-from <cminyard@mvista.com>) id 1iMZDw-0007ZB-LD
+ for qemu-devel@nongnu.org; Mon, 21 Oct 2019 11:04:01 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:33482)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <cminyard@mvista.com>) id 1iMZDw-0007X7-6U
+ for qemu-devel@nongnu.org; Mon, 21 Oct 2019 11:03:56 -0400
+Received: by mail-ot1-x344.google.com with SMTP id 60so11274919otu.0
+ for <qemu-devel@nongnu.org>; Mon, 21 Oct 2019 08:03:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mvista-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=ygXBxJFwhSCxk9IebzEG5Q2RRK+LMZU+c13O0BSfDG0=;
+ b=APt9yhY5RsSbQyAiKUQPD0WINpbf21OXRBtMH43QBEQAjJzCASWwfM0DpNMCzR/XRV
+ 1dWalq5m4O13lS2jHvh1PgzKONYZepg1IwPOKyNBKwis6rI4NbdoQwW6Rm2oCKs0V/pv
+ i+v4Eja6WGJZ1VEv452L54K6GyXUtYuPfSrWLmvirsaOKgfDIjvRIqqRXh39fY8C4cFT
+ ybeVJDmH/dyAiYBCWivBAyge67Cm1Y40XXCU6kVaXKcJqrACFZQqjyOhJpKLO/4mio6d
+ czLC2CE2bTn8rrbTMnWaBesjG6ley3+PXxr5H2roFUzghD2TRc0o6xwQI+Qk+aGYMRf6
+ YqMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding:in-reply-to:user-agent;
+ bh=ygXBxJFwhSCxk9IebzEG5Q2RRK+LMZU+c13O0BSfDG0=;
+ b=HS+9Jb1HZLDymJQ9FaCkd+LOGJOTEfp4qrdoRVStPca2pY1dUU14A0unOlVMdhuTZr
+ jgm3MZvanKWWNmKz0r6JG39AquW1zZd3wFwAzY8CcAcgBY/0wogItLLmGPetiPFhjff4
+ olmPbjlSdN09dMHetcTOFWXMKtEs0FD7QazfEu6VITf4Z0zsI4yP2uNKrl3ZqXOuFF1T
+ 6agrLr3qE6Cy0h5s2Kuf4HAbb4rGP3M3WYfwYtuGTORoVgEXKMv+ltREiERbWG1TSV66
+ 9G2Mgk4GoknHTlNbq9FkAEhE1K2aWrEUeWosGl16NmsRH1gbZO/8xGvHvEyGOsaWga2k
+ 56EQ==
+X-Gm-Message-State: APjAAAVMYeLM9ELyMrMrhcTK65bnhTCAJh3Lplmzwm36CG/Y0Oj4E9Nz
+ 9WGu4XqohygHLwwvn4SEWqXs9Q==
+X-Received: by 2002:a05:6830:10cc:: with SMTP id
+ z12mr18261594oto.20.1571670233588; 
+ Mon, 21 Oct 2019 08:03:53 -0700 (PDT)
+Received: from t560 ([47.184.136.59])
+ by smtp.gmail.com with ESMTPSA id h5sm4241093oth.29.2019.10.21.08.03.52
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 21 Oct 2019 08:03:52 -0700 (PDT)
+Date: Mon, 21 Oct 2019 10:03:51 -0500
+From: Corey Minyard <cminyard@mvista.com>
+To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+Subject: Re: [PATCH 11/14] omap-i2c: remove PROP_PTR
+Message-ID: <20191021150351.GJ25427@t560>
+References: <20191018154212.13458-1-marcandre.lureau@redhat.com>
+ <20191018154212.13458-12-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20804096-7b34-9d79-1d93-fa9a31bbfd66@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: kfAcDzWyOuik_j-T6uwnuw-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20191018154212.13458-12-marcandre.lureau@redhat.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: cminyard@mvista.com
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, Leif Lindholm <leif.lindholm@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
  KONRAD Frederic <frederic.konrad@adacore.com>,
- Paul Burton <pburton@wavecomp.com>, Rob Herring <robh@kernel.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
- "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Andrzej Zaborowski <balrogg@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Antony Pavlov <antonynpavlov@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Fabien Chouteau <chouteau@adacore.com>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Jan Kiszka <jan.kiszka@web.de>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, patchew-devel@redhat.com,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Thomas Huth <huth@tuxfamily.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, Andrew Jeffery <andrew@aj.id.au>,
- Michael Walle <michael@walle.cc>, qemu-ppc <qemu-ppc@nongnu.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Magnus Damm <magnus.damm@gmail.com>,
+ =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
+ Richard Henderson <rth@twiddle.net>,
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>, qemu-ppc@nongnu.org,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
- Peter Chubb <peter.chubb@nicta.com.au>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KKnQmu4AT3pN
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SNhILwCdyqdk
 
-* Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
-> Cc'ing Paolo/David.
->=20
-> On 10/21/19 11:39 AM, Peter Maydell wrote:
-> > On Mon, 21 Oct 2019 at 10:34, Philippe Mathieu-Daud=E9 <philmd@redhat.c=
-om> wrote:
-> > >=20
-> > > On 10/21/19 11:22 AM, Peter Maydell wrote:
-> > > > On Mon, 21 Oct 2019 at 00:01, Philippe Mathieu-Daud=E9 <philmd@redh=
-at.com> wrote:
-> > > > >=20
-> > > > > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> > > > > ---
-> > > >=20
-> > > > >    hw/arm/virt.c             | 2 +-
-> > > >=20
-> > > > I think from a quick code scan that this is ok, but did
-> > > > you test that migration compat from old to new still works?
-> > > > I vaguely recall that there are some cases when adding an
-> > > > owner to a memory region changes the name string used for
-> > > > identifying the ramblock in migration.
-> > >=20
-> > > It seems to still works:
-> > >=20
-> > > $ make check-qtest-aarch64 V=3D1
-> >=20
-> > > This test migrate the virt machine.
-> > >=20
-> > > Is this enough?
-> >=20
-> > No, you need to test migration from a QEMU binary without
-> > this patchset to a QEMU binary that has it. Otherwise you're
-> > only checking that the new version can migrate from itself
-> > to itself. I find the easiest way to test this is just to
-> > use the 'savevm' command to save a state snapshot to a
-> > qcow2 disk image while running the old binary, and then run
-> > 'loadvm' with the new binary and check it restored OK.
->=20
-> I did not think if this case.
->=20
-> I followed your blog post [*] and tested the migration works OK.
->=20
-> Paolo, now thinking about regular testing, we should add this testing to
-> patchew too. Something like:
->=20
-> - when mainstream/master is updated, patchew build QEMU (it should be
-> already mostly ccached) and generate some vm dumps with 'savevm'.
->=20
-> - build/test the series
->=20
-> - if series succeeded testing, run 'loadvm' tests
->=20
-> [*] https://translatedcode.wordpress.com/2015/07/06/tricks-for-debugging-=
-qemu-savevm-snapshots/
+On Fri, Oct 18, 2019 at 05:42:09PM +0200, Marc-André Lureau wrote:
+> Since clock are not QOM objects, replace PROP_PTR of clocks with
+> setters methods.
 
-Avocado certainly already has an option for specifying source and
-destination qemu separately; I've used that for testing
-cross version in the past.
+I agree with Peter's comment, a clock framework might be something
+useful someday (not sure), a comment might be nice.
 
-The challenge is finding a command line/set of devices for each
-architecture that's expected to be stable.
-You want a command line with as big a set of devices as possible (for
-coverage) yet really is tied to machine type.
+Other than that, looks good to me.
 
-Dave
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>  hw/arm/omap1.c        |  2 +-
+>  hw/arm/omap2.c        |  8 ++++----
+>  hw/i2c/omap_i2c.c     | 19 ++++++++++++-------
+>  include/hw/arm/omap.h |  9 +++++++++
+>  4 files changed, 26 insertions(+), 12 deletions(-)
+> 
+> diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+> index c5583b10e0..fe55c44c7e 100644
+> --- a/hw/arm/omap1.c
+> +++ b/hw/arm/omap1.c
+> @@ -4032,7 +4032,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *system_memory,
+>  
+>      s->i2c[0] = qdev_create(NULL, "omap_i2c");
+>      qdev_prop_set_uint8(s->i2c[0], "revision", 0x11);
+> -    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "mpuper_ck"));
+> +    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "mpuper_ck"));
+>      qdev_init_nofail(s->i2c[0]);
+>      busdev = SYS_BUS_DEVICE(s->i2c[0]);
+>      sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(s->ih[1], OMAP_INT_I2C));
+> diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+> index 726a628e64..046fb6ffb5 100644
+> --- a/hw/arm/omap2.c
+> +++ b/hw/arm/omap2.c
+> @@ -2428,8 +2428,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegion *sysmem,
+>  
+>      s->i2c[0] = qdev_create(NULL, "omap_i2c");
+>      qdev_prop_set_uint8(s->i2c[0], "revision", 0x34);
+> -    qdev_prop_set_ptr(s->i2c[0], "iclk", omap_findclk(s, "i2c1.iclk"));
+> -    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "i2c1.fclk"));
+> +    omap_i2c_set_iclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.iclk"));
+> +    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.fclk"));
+>      qdev_init_nofail(s->i2c[0]);
+>      busdev = SYS_BUS_DEVICE(s->i2c[0]);
+>      sysbus_connect_irq(busdev, 0,
+> @@ -2440,8 +2440,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegion *sysmem,
+>  
+>      s->i2c[1] = qdev_create(NULL, "omap_i2c");
+>      qdev_prop_set_uint8(s->i2c[1], "revision", 0x34);
+> -    qdev_prop_set_ptr(s->i2c[1], "iclk", omap_findclk(s, "i2c2.iclk"));
+> -    qdev_prop_set_ptr(s->i2c[1], "fclk", omap_findclk(s, "i2c2.fclk"));
+> +    omap_i2c_set_iclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.iclk"));
+> +    omap_i2c_set_fclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.fclk"));
+>      qdev_init_nofail(s->i2c[1]);
+>      busdev = SYS_BUS_DEVICE(s->i2c[1]);
+>      sysbus_connect_irq(busdev, 0,
+> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+> index 3ba965a58f..3ccbd5cc2c 100644
+> --- a/hw/i2c/omap_i2c.c
+> +++ b/hw/i2c/omap_i2c.c
+> @@ -28,10 +28,7 @@
+>  #include "qemu/error-report.h"
+>  #include "qapi/error.h"
+>  
+> -#define TYPE_OMAP_I2C "omap_i2c"
+> -#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
+> -
+> -typedef struct OMAPI2CState {
+> +struct OMAPI2CState {
+>      SysBusDevice parent_obj;
+>  
+>      MemoryRegion iomem;
+> @@ -56,7 +53,7 @@ typedef struct OMAPI2CState {
+>      uint8_t divider;
+>      uint8_t times[2];
+>      uint16_t test;
+> -} OMAPI2CState;
+> +};
+>  
+>  #define OMAP2_INTR_REV	0x34
+>  #define OMAP2_GC_REV	0x34
+> @@ -504,10 +501,18 @@ static void omap_i2c_realize(DeviceState *dev, Error **errp)
+>      }
+>  }
+>  
+> +void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk)
+> +{
+> +    i2c->iclk = clk;
+> +}
+> +
+> +void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk)
+> +{
+> +    i2c->fclk = clk;
+> +}
+> +
+>  static Property omap_i2c_properties[] = {
+>      DEFINE_PROP_UINT8("revision", OMAPI2CState, revision, 0),
+> -    DEFINE_PROP_PTR("iclk", OMAPI2CState, iclk),
+> -    DEFINE_PROP_PTR("fclk", OMAPI2CState, fclk),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>  
+> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+> index 6b7897ba27..08ee0c7702 100644
+> --- a/include/hw/arm/omap.h
+> +++ b/include/hw/arm/omap.h
+> @@ -77,6 +77,15 @@ typedef struct omap_intr_handler_s omap_intr_handler;
+>  void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
+>  void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
+>  
+> +/* omap_i2c.c */
+> +#define TYPE_OMAP_I2C "omap_i2c"
+> +#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
+> +
+> +typedef struct OMAPI2CState OMAPI2CState;
+> +
+> +void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk);
+> +void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk);
+> +
+>  /* OMAP2 l4 Interconnect */
+>  struct omap_l4_s;
+>  struct omap_l4_region_s {
+> -- 
+> 2.23.0.606.g08da6496b6
+> 

@@ -1,249 +1,256 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4491993wrm;
-        Mon, 21 Oct 2019 05:13:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxtfI1O+no+L5TgcUvSpAN80Z+W9mLOAhrJxNnpB6/X8+rov8WbyY/I9OiS25JcO4EnNJQu
-X-Received: by 2002:a17:906:184e:: with SMTP id w14mr21699421eje.10.1571659994577;
-        Mon, 21 Oct 2019 05:13:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571659994; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4662811wrm;
+        Mon, 21 Oct 2019 07:36:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy9abPYUEz5wVhvbH87j8cTQTFPe3+ycEm636+RfFcRpwmojxWy8ENRtGFEfjWgWcMan+5M
+X-Received: by 2002:ae9:f108:: with SMTP id k8mr20421266qkg.78.1571668588678;
+        Mon, 21 Oct 2019 07:36:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571668588; cv=none;
         d=google.com; s=arc-20160816;
-        b=rx9ZeqW3CuSRHGhkzqPJ3uXf34I/m1PqD7G844QUyrh9/rZ7hrfZEdp/+3HYFNMtzp
-         o0UA6crWcXhh+PRbn+6XnlurnPfHoOXNQCB9U5/wFXXXZB1OO89MnKAYp4iuM0qeDiKr
-         4SHWr37Xr0Oy5DM0Ggbs+iZdRyocL3YsqpZJdGMhOlZuI2u3K3yU86sIiHfnwHu0lWah
-         fm29K8RA4g+5Jjg7ma58wz7fAKbIyp4Qguwpux1utH0aBTkKvLH8OpnPq2ypIN0O+EOu
-         jekupy9+hJS0Y66zz8DlZjRejih9NvMu5S0ap2WqBdEG1KEffJcbztJli6D5NA2XBmxg
-         MSNA==
+        b=m4bARVRFSARCYgq7swIHa79TXWcsKXbPe7yc5mSbkhdVQB3B/i4IEIU2YrZOuoX90q
+         sKtaWKfu8x+/J77FgrTwi0l9mhtLAbJSdcNonEnPLRjaE0tJpbM3lVdAvtiCqWVHHejj
+         7CTqDCY5duuxyDL+DKC2hUuQ3DWZYnGvm0EK6r6InurifcGTQK4XXyU3USZ2UQ3U2sum
+         IN133jJkuv77Qw1cBa+Hy97M+WqwR95CFVlzm8zj+GzEhuH7QR/oTu+W8rjAJr2px1M0
+         D5AWJoeGL3wLu9B5BygMxF52/mEiNOP/9j0Z5Oe/54IHGeCuo0GSi09PQ6eUgx+0JWL+
+         G0XQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:references:to:from:subject;
-        bh=7WbZakrNNom2SwZSU4sk7xvitx199pTr/fwTUW4yYcU=;
-        b=tChG4j20qEMiIbNJ51K96vaaRf+BSQ4oRAPpEZqwBKvI706zLZDMx+TOIkHuIOt3UU
-         Al9MsEp1oPyWG32704TcukqRpt7SpO2QsIg2k4MIuzEVvNmhUcdKdXXyhyFCPncUBAwi
-         Y9+H5t0YdF/ZKk47eXXxCt2+JaGz5HRqlIWgG3eBHsHBgapw/eJ97Q+jzV2SahTPgFSD
-         TrCN9mPnHKy1DEYg9MQlXmBjrnbYzN2p9ZZnd9yw7iNY5ZAVYYiirZnx1lLw5wv4uNbm
-         NQs7jyqcaU61RuXSPdyNMA5VX9FYjEjCzJF7iGinhyjlwqoy/pYj/nj6W50PbX6nVsCN
-         l9YQ==
+        bh=Ac2PD/vyr+jECzCXrNnsNct5Rs+6nZ+ZnQS+RSkESDE=;
+        b=0Qiwe8AA9qbGZ6Fwcy4PbKSlXHc6g0EB4kcGjYzBMOQMJZsovcgKXqRK4GcKJvYAY/
+         RGhLRkdr+GLKjUffdFcESKEOoPNeyoLclGiWSzlm1gMnxF/YKUniE+ozMWNQ0m7mfqP/
+         bk+Jcvb1r5SAlZpz9q8q+xEo2a5LS2LhDVB0WZJS66o42P0U7TjJLzrURRw6Z8ROb2cw
+         MDepH/6RHMYEpQAZhQs2+INP1yGvT9rFqisJFAAAEQxpqIxMrMAhRwY2EREQ/feIx+t7
+         m6ND1gwBR8B9Vu6LUrbAuhkEm+/6UagOlump7j2Maa6VjsYmxQ3xJkm6POlexn1e4+uq
+         Sdew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d28si690026edb.10.2019.10.21.05.13.14
+        by mx.google.com with ESMTPS id z12si4527736qvg.212.2019.10.21.07.36.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2019 05:13:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Oct 2019 07:36:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39808 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43256 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMWYj-0005N7-JM
-	for alex.bennee@linaro.org; Mon, 21 Oct 2019 08:13:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55830)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMYnL-00060y-IT
+	for alex.bennee@linaro.org; Mon, 21 Oct 2019 10:36:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48575)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMWXN-00048F-WC
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 08:11:51 -0400
+ (envelope-from <philmd@redhat.com>) id 1iMYiM-0001ly-TU
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 10:31:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMWXM-0004sc-Ge
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 08:11:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55786)
+ (envelope-from <philmd@redhat.com>) id 1iMYiK-0002aK-Kj
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 10:31:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60694)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMWXM-0004s2-87
- for qemu-devel@nongnu.org; Mon, 21 Oct 2019 08:11:48 -0400
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMYiK-0002Z3-C7
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2019 10:31:16 -0400
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 0CB084628B
- for <qemu-devel@nongnu.org>; Mon, 21 Oct 2019 12:11:47 +0000 (UTC)
-Received: by mail-wm1-f70.google.com with SMTP id l184so3332799wmf.6
- for <qemu-devel@nongnu.org>; Mon, 21 Oct 2019 05:11:46 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id 0398F2D1CE
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 14:31:15 +0000 (UTC)
+Received: by mail-wm1-f71.google.com with SMTP id b10so731670wmh.6
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2019 07:31:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:from:to:cc:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=M5SpeuuCQINsLA9WQGd4DtSNXQxXQZycAl7A+RJ2VbU=;
- b=LcsP+XckUAoZQmwc0CgHA/9xsxPnrb/aOIpBuuhwch5HfTPIFlu1S3atKN0UPk8z/x
- pGGuyqfzNp3ouCQcSjyjH0gGJz/PKQydK7KXB0U/YW6WQstlgZ8IwJtzc+XQ3kHkcCT0
- lAQMAO6wD4+6+fletGUxuMedPzTgF9/X7MWXTHvmuXyOFuaepbGCYU6h4WRMAUwiWGA/
- T6ae9fSrjybcjQG0/VijnZPKMQ9Wc+PvmBpPP61gqJoSmBlLpYypGKuplHp9eQ0od6DD
- UkQWTO1IGLu9NmkE9SrJuIPavr/FP2PIlgEeT34F20H3D5AtQaaWsNYYTLudfKrUgGhR
- 3qww==
-X-Gm-Message-State: APjAAAXiIo+iFyP/pRNQsxOu8+8k9WBz/00CEeAjOBikPThQj6fXayWD
- 8g2d5FfFEzGMU4IQa+YUtkSrYa/IMjMuj4w2fhT9kNAVEMMqulF6KachuNGi/+F6PVZJSW3hjYr
- niQHzlbViFyh3yEE=
-X-Received: by 2002:a1c:7305:: with SMTP id d5mr18615877wmb.84.1571659905636; 
- Mon, 21 Oct 2019 05:11:45 -0700 (PDT)
-X-Received: by 2002:a1c:7305:: with SMTP id d5mr18615830wmb.84.1571659905273; 
- Mon, 21 Oct 2019 05:11:45 -0700 (PDT)
+ bh=WW+ZO5Bq/diu4cy8HdXGyuu6WJWD0p3+enACBKkcKJE=;
+ b=X/1lgrmjDoNqsSwu8Xx+GKVoXMJn1S1pU42I/Uj1B9587mj2nS9WLDTiLA6tGu+ZiL
+ 0duYBg58cHXVVZyzXsXHg8ZBGLC3lXqoL69gpta3QXbu78bXgVHyziOqloyjIGOgNMx3
+ N1vsZ9ovCEUxkLP/9j30mrPTpOUfcBRs0W9ZXwFf/2phGoXJ+SwGms9Lh3HVCWom9mZR
+ 0XDurP0lF9VqMnvQcNybZ7t37W7fZE0WLk65FHWf9s0LqcFZNfnNSH4FeTVqioil5aM/
+ 29M3OEdKX8IebW4Uix4fiVWryKNWiBADrnKRZ9jRvioxXusCZxiZAvOgNWMZ+3RNyvDF
+ CucA==
+X-Gm-Message-State: APjAAAU3/OeAmKd4LPpfGfvZLZTMFIlWA9B0BHnWEjyWZx01bfjUy+D5
+ K+dkj0+AiUYNCkAppZRcP4rWKw9lkqfIrQLu4zgLj/rvOIH862fwtb+fbpNGeqQEVFudANKAGY8
+ t1kPNOp5t3/Pb
+X-Received: by 2002:a1c:a90f:: with SMTP id s15mr5268592wme.100.1571668273655; 
+ Mon, 21 Oct 2019 07:31:13 -0700 (PDT)
+X-Received: by 2002:a1c:a90f:: with SMTP id s15mr5268531wme.100.1571668273345; 
+ Mon, 21 Oct 2019 07:31:13 -0700 (PDT)
 Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
  [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id 36sm17412745wrp.30.2019.10.21.05.11.42
+ by smtp.gmail.com with ESMTPSA id r19sm7926770wrr.47.2019.10.21.07.31.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Oct 2019 05:11:44 -0700 (PDT)
-Subject: Re: [PATCH 1/5] tests/boot_linux_console: Add initrd test for the
- Exynos4210
+ Mon, 21 Oct 2019 07:31:12 -0700 (PDT)
+Subject: Re: [PATCH 00/21] hw: Let the machine be the owner of the system
+ memory
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-To: Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
- Eduardo Habkost <ehabkost@redhat.com>
-References: <20191005154748.21718-1-f4bug@amsat.org>
- <20191005154748.21718-2-f4bug@amsat.org>
- <CAFEAcA8ME5U5=rNLRSvNx7LmanqHhn_KWj6qtgym_=W1M9WDoA@mail.gmail.com>
- <20191008214907.GA28137@localhost.localdomain>
- <CAFEAcA9DzeObmtsc2VJmw=1yruANZ6ajY2SG0cAPdehkeRN3wA@mail.gmail.com>
- <20191009190743.GA6019@localhost.localdomain>
- <d2011e56-8c5f-9f57-04eb-16581866fd48@redhat.com>
-Message-ID: <54e2ef65-2c7f-3d2b-be1d-15d47c807443@redhat.com>
-Date: Mon, 21 Oct 2019 14:11:42 +0200
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, Eduardo Habkost
+ <ehabkost@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <20191020225650.3671-1-philmd@redhat.com>
+ <aad956d5-986c-bb9f-7735-cf18796b986e@redhat.com>
+Message-ID: <eca291f8-67ce-14eb-bcb6-e743a44327f4@redhat.com>
+Date: Mon, 21 Oct 2019 16:31:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <d2011e56-8c5f-9f57-04eb-16581866fd48@redhat.com>
+In-Reply-To: <aad956d5-986c-bb9f-7735-cf18796b986e@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Fr=c3=a9d=c3=a9ric_Basse?= <contact@fredericb.info>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Maksim Kozlov <m.kozlov@samsung.com>, Evgeny Voevodin <e.voevodin@samsung.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Markus Armbruster <armbru@redhat.com>,
- Helge Deller <deller@gmx.de>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm <qemu-arm@nongnu.org>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paul Burton <pburton@wavecomp.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Leif Lindholm <leif.lindholm@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, Rob Herring <robh@kernel.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Helge Deller <deller@gmx.de>,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Dmitry Solodkiy <d.solodkiy@samsung.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Sven Schnelle <svens@stackframe.org>, Guenter Roeck <linux@roeck-us.net>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 46A424p+43u7
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Thomas Huth <huth@tuxfamily.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Andrew Jeffery <andrew@aj.id.au>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Peter Chubb <peter.chubb@nicta.com.au>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wrMHfLHN1Q9Y
 
-On 10/10/19 3:43 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 10/9/19 9:07 PM, Cleber Rosa wrote:
->> On Wed, Oct 09, 2019 at 02:38:02PM +0100, Peter Maydell wrote:
->>> On Tue, 8 Oct 2019 at 22:49, Cleber Rosa <crosa@redhat.com> wrote:
->>>> On Mon, Oct 07, 2019 at 05:28:49PM +0100, Peter Maydell wrote:
->  >>>
->  >>>> Do our other acceptance tests download random third-party
->  >>>> (ie "not a well-known distro") binaries for the tests ?
->  >>>> It seems a bit hazardous for reproducability and trustability
->  >>>> reasons...
-> [...]
->>>> I find it hard to judge precisely how much of a third-party some of
->>>> these are.=C2=A0 I remember Philippe mentioning that one of them, I =
-guess
->>>> the images used on linux_ssh_mips_malta.py, were "as official as it
->>>> gets" (my words, from my often misleading memory).
->>>>
->>>> Reproducibility is definitely an issue, in the sense given that some
->>>> of these can indeed go away, but as long as they're available the ha=
-sh
->>>> recorded in the test should guarantee that we're running the same
->>>> images.
->=20
-> So this thread is a follow up on:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg546430.html
->=20
-> For Open Source software I can understand we want to be able to rebuild=
-=20
-> them, and should provide a link about how to rebuild.
->=20
-> I don't want to rebuild images myself, I want to focus on testing QEMU.=
-=20
-> I tried once to build a MIPSsim kernel and it was a total nightmare:
-> https://lists.nongnu.org/archive/html/qemu-devel/2018-04/msg04071.html
-> (Thomas Huth eventually succeeded using buildroot).
->=20
->>>> Do you think we should do something different here?
->>>
->>> I'm not sure, which is why I asked whether this new test
->>> was in line with what we've done previously. Since these
->>> are just test cases and we don't redistribute them to
->>> other people there's less of a traceability/reproducibility
->>> worry, and if we check hashes on download that cuts off
->>> a lot of "fail to notice if the image changes for some
->>> reason" possible problems.
+Hi Peter,
+
+On 10/21/19 10:52 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 10/21/19 12:56 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Hi,
 >>
->> Yep, because I have no clue how to do improve on this (redistributing
->> the binaries is definitely not on the improvement side, and neither
->> is not testing some machine types), the current approach seems good.
+>> This series is based on Igor's "eliminate remaining places that
+>> abuse memory_region_allocate_system_memory()":
+>> https://lists.gnu.org/archive/html/qemu-devel/2019-10/msg01601.html
+>>
+>> It is quite simple, we enforce all machines to be the QOM owner
+>> of the system memory.
+>>
+>> This changes the memory tree from:
+>>
+>> =C2=A0=C2=A0 (qemu) info mtree -o
+>> =C2=A0=C2=A0 memory-region: pc.ram
+>> =C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-0000000007ffffff (prio 0, ra=
+m): pc.ram=20
+>> parent:{obj path=3D/machine/unattached}
+>>
+>> to:
+>>
+>> =C2=A0=C2=A0 (qemu) info mtree -o
+>> =C2=A0=C2=A0 memory-region: pc.ram
+>> =C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-0000000007ffffff (prio 0, ra=
+m): pc.ram=20
+>> owner:{obj path=3D/machine}
+>>
+>> Few patches are required to clean the codebase first, to unify the
+>> creation of the system memory in the board/machine code. Mostly some
+>> old ARM machines (pre-QOM) were affected.
+>>
+>> Please review (as a generic codebase cleanup).
+>>
+>> Regards,
+>>
+>> Phil.
+>>
+>> Based-on: <20191008113318.7012-1-imammedo@redhat.com>
+>>
+>> Philippe Mathieu-Daud=C3=A9 (21):
+>> =C2=A0=C2=A0 hw/arm/xilinx_zynq: Use the IEC binary prefix definitions
+>> =C2=A0=C2=A0 hw/arm/mps2: Use the IEC binary prefix definitions
+>> =C2=A0=C2=A0 hw/arm/collie: Create the RAM in the board
+>> =C2=A0=C2=A0 hw/arm/omap2: Create the RAM in the board
+>> =C2=A0=C2=A0 hw/arm/omap1: Create the RAM in the board
+>> =C2=A0=C2=A0 hw/arm/digic4: Inline digic4_board_setup_ram() function
+>> =C2=A0=C2=A0 hw: Drop QOM ownership on memory_region_allocate_system_m=
+emory() calls
+>> =C2=A0=C2=A0 hw/alpha/dp264: Create the RAM in the board
+>> =C2=A0=C2=A0 hw: Let memory_region_allocate_system_memory take Machine=
+State
+>> =C2=A0=C2=A0=C2=A0=C2=A0 argument
+>> =C2=A0=C2=A0 hw/core: Let the machine be the owner of the system memor=
+y
+>> =C2=A0=C2=A0 hw/alpha: Let the machine be the owner of the system memo=
+ry
+>> =C2=A0=C2=A0 hw/arm: Let the machine be the owner of the system memory
+>> =C2=A0=C2=A0 hw/cris: Let the machine be the owner of the system memor=
+y
+>> =C2=A0=C2=A0 hw/hppa: Let the machine be the owner of the system memor=
+y
+>> =C2=A0=C2=A0 hw/i386: Let the machine be the owner of the system memor=
+y
+>> =C2=A0=C2=A0 hw/lm32: Let the machine be the owner of the system memor=
+y
+>> =C2=A0=C2=A0 hw/m68k: Let the machine be the owner of the system memor=
+y
+>> =C2=A0=C2=A0 hw/mips: Let the machine be the owner of the system memor=
+y
+>> =C2=A0=C2=A0 hw/ppc: Let the machine be the owner of the system memory
+>> =C2=A0=C2=A0 hw/sparc: Let the machine be the owner of the system memo=
+ry
+>> =C2=A0=C2=A0 hw/core: Assert memory_region_allocate_system_memory has =
+machine owner
 >=20
-> QEMU machines are not restricted to running Linux or other Open Source=20
-> software. It seems important to be able to test for regressions with=20
-> closed-source code too, because it usually has been well tested on real=
-=20
-> hardware.
+> I forgot 4 other calls:
 >=20
-> I just posted a firmware test:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg651012.html
->=20
-> I could find it stored compressed and uuencoded on the Wayback Machine.
-> Since I don't want to abuse from this amazing service, and other script=
-=20
-> to decode/uncompress it, I stored it on a new repository with its SHA-1
-> (the default hash used by Avocado):
-> https://github.com/philmd/qemu-testing-blob/tree/master/hppa/hp9000/712
->=20
-> Is this acceptable? Incorrect?
+> hw/ppc/ppc4xx_devs.c:708:=C2=A0=C2=A0=C2=A0 memory_region_allocate_syst=
+em_memory(ram,=20
+> NULL, "ppc4xx.sdram", ram_size);
+> hw/s390x/s390-virtio-ccw.c:164:=20
+> memory_region_allocate_system_memory(ram, NULL, "s390.ram", mem_size);
+> hw/sparc/sun4m.c:791:=C2=A0=C2=A0=C2=A0 memory_region_allocate_system_m=
+emory(&d->ram,=20
+> NULL, "sun4m.ram",
+> hw/sparc64/niagara.c:114:=20
+> memory_region_allocate_system_memory(&s->partition_ram, NULL,
 
-I'v been wondering about this during the week-end. If this is=20
-problematic to add the tests in the QEMU repository, we can add the=20
-tests in another repository. The problem will be to keep it sync with=20
-QEMU. If we add it as a QEMU submodule, it is the same as continuing=20
-adding the tests in the main tree.
+I'll need to respin this series because of this omission, but
+- hw/ppc requires more cleanup patches as ARM has,
+- hw/sparc is blocked until Igor sent his "convert
+   memory_region_allocate_system_memory() to memdev" series.
 
-Avocado don't have problem browsing tests in various directories, the=20
-problem is we need to import avocado_qemu=20
-(tests/acceptance/avocado_qemu) which imports QEMUMachine from qemu.machi=
-ne.
+I don't plan to rework on the ARM cleanups patches (1-6):
 
-Cleber, we once talked about having the main repository producing=20
-python-qemu and python-qemu-acceptance-testing packages. How do you want=20
-to proceed? Extract theses files from the main repo and have it consumes=20
-the packages? I'm afraid that doesn't scale properly with distributions.
-Also, updating them to improve the testing will be slow/painful.
+   hw/arm/xilinx_zynq: Use the IEC binary prefix definitions
+   hw/arm/mps2: Use the IEC binary prefix definitions
+   hw/arm/collie: Create the RAM in the board
+   hw/arm/omap2: Create the RAM in the board
+   hw/arm/omap1: Create the RAM in the board
+   hw/arm/digic4: Inline digic4_board_setup_ram() function
 
-I now realize this is probably not the clever path to continue, but I'm=20
-currently out of ideas to unblock the testing process.
-
-Peter what do you think, do you think of other alternatives we can=20
-investigate?
+Maybe you can take them directly in arm-next once they are reviewed,
+then the rest can go via machine-next.
 
 Thanks,
 
 Phil.
-
-> Regarding Avocado tests, maybe we can simply add a "untrusted" or=20
-> "closedsource" tag, so people willing to test untrusted binaries could=20
-> still run the tests using 'avocado --tag untrusted_software', and we=20
-> could skip these tests by default.
->=20
-> I am very interested because I already experimented with:
->=20
-> - AIX on PReP/40p
-> - some RTOS on Canon PowerShot A1100
-> - VxWorks on MIPS and SPARC
-> - closed-source bootloader for Raspi3/4
->=20
-> Regards,
->=20
-> Phil.

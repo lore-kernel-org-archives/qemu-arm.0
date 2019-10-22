@@ -1,183 +1,149 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5805180wrm;
-        Tue, 22 Oct 2019 03:29:17 -0700 (PDT)
-X-Received: by 2002:aca:f545:: with SMTP id t66mr2222054oih.124.1571740157707;
-        Tue, 22 Oct 2019 03:29:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571740157; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5956959wrm;
+        Tue, 22 Oct 2019 05:47:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxahYbCNO+0+PmWbscPusyU827uSbrwMETDZwmSf3bJ2OfF5B6QhFbTt6KPtcXg+pCSaV6F
+X-Received: by 2002:a0c:e70b:: with SMTP id d11mr2897250qvn.51.1571748472302;
+        Tue, 22 Oct 2019 05:47:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571748472; cv=none;
         d=google.com; s=arc-20160816;
-        b=kuMW6akBAamKTT3qe3AJt4933l/60KSO3oGRegCsBFuuayxc27jLc7U9UBzu0JghxN
-         5sRUXDuTrghxRB4LneLny/QG7gsXIsHucjcaUENskI0rbscNoxfZ9N00bGtR8rR7WwbL
-         PBXC13m7rhfsKRkond88uYw1z/O66crL99oxm+PvkQMddAwPjltXBEBnkC/A2NBjuZWe
-         qI8zE13IOD2JCyEu8O7Dd7pR4M3n/kazk4NOsD7w17Q2Lqi+AjYzGukGMjEjuoodIBnr
-         hO3w5y6UiBO8yEuISfwN45ZuYCBeGAgi1tgp+aOCedrjPOkuoGy98EDdi0FvyJyhweeL
-         jg/Q==
+        b=qKsIJFd0g9Pt2pKnOTb8qFFlPeKDdL2nKA93SWtv6RYhhp0IoOdjcyJIfFlBFkN8Ix
+         JOrhQldaQpmxK6+XSz1HnCE3sqr4BMMJZMVaazHhXnHv3EyXbHSxRvNFoQgWqnQUgCtg
+         P8//qRrkp0w2We8qg8rUW6AG7vOkZFcWIMwFC7U+I1eGCoiLE5ZRalzkqaroFnkKv0ia
+         j67ynIQRpyIApNu4AtEeJmT3Km0OaqFCCl29Cr+cVXjbUG61PgdPQsGlHUKJqCOCLJuK
+         pjUJ+IiBjQ0yMeKAIW+F6uHHIJoOrHKx3YKsfMmXmuihEpMIUd1FIK42e9RPZA64Dm34
+         kKvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=f9SpE5RTTZ9ZFtnVBG8aQnaKHU7QG2XbFcYcpWytK8s=;
-        b=WB4Ri8cWVkZj4RrRlVXJEqjMXiyu5ATtebeVZ9431DpuaZ7D46D+QJ6fOvG2KLkZwp
-         s+0MqX4DOdmvTPfO4dsTEXmwWfQSAyaRFegICMPvjgFARReCBTY/Y5GnGhTECHG97Gco
-         pQv1OF078hDnU6jdbDeipsVZVkHplg4xNZF5FAVf3Z8jJNjHklJ5VjMozhhyUNxX7fl3
-         NVCqMr5ZbLcnO/77sHpo5jFB6Nq1ZH8lnEWH6RO69JBlJe2hDH3q/QKMqLnaQZEFHz8M
-         b9OafkdTVTk9zrVKra2oLx0qFnAVfaetlhFpg16iQbKyqW8ueCwEpIiCKctoru0uH/v7
-         Jf7g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=1OweYMXpkSlcHwkbtejrWkUiib29y0AOj+d1bjILcpo=;
+        b=iiUCmXQ1kQrzNOzIzzQRirwQK26Oq1sDNhlgf+gOJTYSRHx0upeJKnFJn2hLd2cqq7
+         yVteYVWq7/p2QPYB3Jcoh7jDUCSUnM7ps06H5xTN9TzKaRvR1UBg2vznnWnhmGujD0/Z
+         7nGmPuHHxbY829ti0r7QNPikX9Hzg5mZC3+EXf4TAg2XMU6SjS1f/eYTxoDpb21Ff/St
+         4SOz0MiRtWb9bhL+7CJo5fT1zUM2wScmrIuB5dwymc3ty1IAHBf1cYCx1G4Pj/DBIrH9
+         OxqDPsdaCdrVhJbKsMprZT+GHqzJBNoQsQKg0uwpJhSFiJ9nMM9pRGTpwsm7I5HYf9xO
+         7shQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Y9155m/v";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m12sor628537oic.108.2019.10.22.03.29.17
+       dkim=fail header.i=@linaro.org header.s=google header.b=mdkCE2+r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h65si15721326qkc.347.2019.10.22.05.47.52
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 22 Oct 2019 03:29:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 22 Oct 2019 05:47:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Y9155m/v";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=f9SpE5RTTZ9ZFtnVBG8aQnaKHU7QG2XbFcYcpWytK8s=;
-        b=Y9155m/vcXFPXIMF+Bpf1+RO1U45HDCFyjok1dDav+gTgGhT0AcDOsMJcZEo8SpvdF
-         I60Vi5ALZ3w5dJ9s50osXofurJVtTLV3/H94ouYzIW0Zwk5blEEFW9XhXzIHYcjLLL4a
-         bLbmZ0A64mGP1HC6HfPXQvCrxhHDeb2Ae6BJdYF1wC9Ba34Cj1Z8GDDE82EKGsvcJ3iV
-         DoaFWbuhDoBBHumFjsu/PVLz1X7616jeiVIYPf6OxvFaPWrVhqyr9m6Ec2FCZTAF5Mgk
-         XLfxxOcCS0Rf4ZwcM25rT1IVUHr4AR/YK4xF6AGgnF8yg9+dDI0y1pdHux0C9yIK+Jrx
-         TciQ==
+       dkim=fail header.i=@linaro.org header.s=google header.b=mdkCE2+r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55566 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMtZn-0000WL-CX
+	for alex.bennee@linaro.org; Tue, 22 Oct 2019 08:47:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56068)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1iMtZX-0000V1-KI
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 08:47:36 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1iMtZW-0001dV-Hr
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 08:47:35 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:43541)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iMtZW-0001dG-BD
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 08:47:34 -0400
+Received: by mail-oi1-x244.google.com with SMTP id t84so13992299oih.10
+ for <qemu-arm@nongnu.org>; Tue, 22 Oct 2019 05:47:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=1OweYMXpkSlcHwkbtejrWkUiib29y0AOj+d1bjILcpo=;
+ b=mdkCE2+rejlb6OkJOL64fc7ajE61s+m1Ki9M/WNHbVizLExNifmarOirN80KiF2MgV
+ GK+L8cWf8e7I7K3KoH4lPLh2uXuxmT/Xsj3UQiUPgGnwWvXkqrI46eI0XS+k6wPz8f6O
+ Rqwr0VcTmV3Jw1GVLUky8P1qAskY/BOHfe7ePzM9kwgNuh0Akx85IiS7cz4bCvOIwvMn
+ VxZtsnaSfZFITWX1HxBQtMWk/uttnPv88U/2sBVbelVltrTuFQ0lIE0bxI9SGqgZz00H
+ J7SmdPlxp/l+8sx8aZDRfU+562LbU4zAi+8AKHaYYI5xHkVxyudlLPG8vfCai3erUoa/
+ mbuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=f9SpE5RTTZ9ZFtnVBG8aQnaKHU7QG2XbFcYcpWytK8s=;
-        b=imncTc0x4yQeAVIpsZFrogXYKbMUjnOQcBBGVQFmrRTvxNors3uhkwBqWODecch4Ih
-         h+FfgduMzxMU9/RsLM7FOB3j73dCISXvTVPxJmhrhlYEy4LK9GgGs06mi3l01GFAMfjc
-         40Uj/ismAHaR8sDR6cPTBCDJuWI120DQrjsiwKqSabbvednMFva8DS5/LjTkJURmXrqn
-         LKztGUBHtYgFZnPK9y+6BD6AfoebBEPRpKOA6cDUgK+i5aKN44ouccFA9NW7n8YtfxeQ
-         Xwvr3Os/ywRh0g1PT4sc26c563LiOrsoSzwbfuwM3uOxJ1y8f0U3a9jRHkzOCE+hf3Kg
-         fuKg==
-X-Gm-Message-State: APjAAAUyfyld0MQHK1zDHqkFDIbCQw1jNM9Mw2pxJLGsYHP+LzgIY6iu
-	yfTyrikua3xXBi/wvyaJY5UNUVxL4gZK1BNZB8PpWTto
-X-Google-Smtp-Source: APXvYqyVvBpryFNHl2V2uDrohuAXnWC9ZE3495cppPYaUgJ+hfuqsDdi1143t+oqAtc4dbplC23m7ANLgG3LXjIWt/M=
-X-Received: by 2002:a05:6808:9:: with SMTP id u9mr2339378oic.98.1571740157184;
- Tue, 22 Oct 2019 03:29:17 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=1OweYMXpkSlcHwkbtejrWkUiib29y0AOj+d1bjILcpo=;
+ b=p4FOOu+et8Ud+C8ijaSqGhcQDgaKuOeB1NMzBB1azCJxGbsisUQDhleVyG9vMyig9G
+ hitjFlvb7UTGoAlND8ia7FbS1h5ESb2Q0QRRksT4XYFfKxILTOTvlMEfKfKBkaL9j2oT
+ OxbBENUEDJ2rTWgMDPca//GiT+3hpPycscT6WTgtuOBXp+C/Y2/VtMZ8KeuSx2kbi9Bi
+ PJomflvajBCiqXc6hHtx1rwGy/Lnt82TT+rvs24hhJEJvGoeog+oQD31wkI5LoI/3HjY
+ ww7OsTODNnfMoOW9+gmGZLiqejVa6S5Z1gD3b+9MTLan9XMz9sOYYKStO6Vy8TyO4cFw
+ Xe3w==
+X-Gm-Message-State: APjAAAWZWDgmh9buxfiCGOp/LXxQI4/amPtsCiuicwHPzj7DbQyQ8Mhx
+ bEkkCv4kVMNcgkNHAWtq6KwU2jL0y91sTfhhYEld3Q==
+X-Received: by 2002:a05:6808:9:: with SMTP id u9mr2849839oic.98.1571748453478; 
+ Tue, 22 Oct 2019 05:47:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20191016085408.24360-1-drjones@redhat.com> <CAFEAcA8pV5batrPk+J6RLU2rv9SNAmL8JS9Kd9tWP3pD-m29eA@mail.gmail.com>
- <3f54f759-9d6d-bf04-85aa-59c1cac31044@redhat.com> <20191021142336.e4xekqlmqv5txu5w@kamzik.brq.redhat.com>
- <CAFEAcA-bezS5tSVB+N223+N+xoYYYHuSJmDTaRCJgO+4Y=VjdQ@mail.gmail.com>
- <20191021161226.mnm6eomghb37xlby@kamzik.brq.redhat.com> <CAFEAcA-vHmtCi3HGqpu34sAaNxGeQwS_+0yZ5Hr4SbnGm+rjYA@mail.gmail.com>
-In-Reply-To: <CAFEAcA-vHmtCi3HGqpu34sAaNxGeQwS_+0yZ5Hr4SbnGm+rjYA@mail.gmail.com>
+References: <20191018174431.1784-1-richard.henderson@linaro.org>
+In-Reply-To: <20191018174431.1784-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Oct 2019 11:29:05 +0100
-Message-ID: <CAFEAcA9o4G5yn0GzgdwvUnT_fEwRA7DChuV=miZaEvgavoU5xg@mail.gmail.com>
-Subject: Re: [PATCH v6 0/9] target/arm/kvm: enable SVE in guests
-To: Andrew Jones <drjones@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Markus Armbruster <armbru@redhat.com>, Eric Auger <eric.auger@redhat.com>, 
-	qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Dave P Martin <Dave.Martin@arm.com>
+Date: Tue, 22 Oct 2019 13:47:22 +0100
+Message-ID: <CAFEAcA-MyKoA63UF6DYQ6J-dKihYn9iyG09eFCgWT8j4OqsQnw@mail.gmail.com>
+Subject: Re: [PATCH v8 00/22] target/arm: Reduce overhead of
+ cpu_get_tb_cpu_state
+To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: qU0JMxcNRx+x
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 34vu1buTXquh
 
-On Mon, 21 Oct 2019 at 17:18, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Fri, 18 Oct 2019 at 18:44, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> On Mon, 21 Oct 2019 at 17:12, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > On Mon, Oct 21, 2019 at 04:43:22PM +0100, Peter Maydell wrote:
-> > > On Mon, 21 Oct 2019 at 15:23, Andrew Jones <drjones@redhat.com> wrote:
-> > > > Peter, would you mind running your test on the kvm32 machine with this
-> > > > change before I send a v7?
-> > >
-> > > Still fails:
-> > >
-> > > pm215@pm-ct:~/qemu/build/arm$
-> > > QTEST_QEMU_BINARY=arm-softmmu/qemu-system-arm tests/arm-cpu-features
-> > > /arm/arm/query-cpu-model-expansion: OK
-> > > /arm/arm/kvm/query-cpu-model-expansion: **
-> > > ERROR:/home/pm215/qemu/tests/arm-cpu-features.c:498:test_query_cpu_model_expansion_kvm:
-> > > assertion failed: (resp_has_props(_resp))
-> > > Aborted
-> > >
-> > > This is asserting on the line:
-> > > 498             assert_has_not_feature(qts, "host", "sve");
-> > >
-> >
-> > Oh, I see. It's not failing the specific absence of 'sve', but the test
-> > code (assert_has_not_feature()) is assuming at least one property is
-> > present. This isn't the case for kvm32 'host' cpus. They apparently
-> > have none. We need this patch too, then
-> >
-> > diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-> > index 14100ebd8521..9aa728ed8469 100644
-> > --- a/tests/arm-cpu-features.c
-> > +++ b/tests/arm-cpu-features.c
-> > @@ -136,8 +136,8 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-> >  ({                                                                     \
-> >      QDict *_resp = do_query_no_props(qts, cpu_type);                   \
-> >      g_assert(_resp);                                                   \
-> > -    g_assert(resp_has_props(_resp));                                   \
-> > -    g_assert(!qdict_get(resp_get_props(_resp), feature));              \
-> > +    g_assert(!resp_has_props(_resp) ||                                 \
-> > +             !qdict_get(resp_get_props(_resp), feature));              \
-> >      qobject_unref(_resp);                                              \
-> >  })
+> Changes since v7:
+>   * Rebuild hflags for all successful nvic writes (Peter).
+>   * Rebuild hflags for Xscale sctlr writes (Peter).
 >
-> Yep, with that extra the test passes. I'm just rerunning the
-> full 'make check'...
-
-...which passed OK. For the record, the changes on top of the
-patchset were:
-
-diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-index 92668efb8f5..9aa728ed846 100644
---- a/tests/arm-cpu-features.c
-+++ b/tests/arm-cpu-features.c
-@@ -136,8 +136,8 @@ static bool resp_get_feature(QDict *resp, const
-char *feature)
- ({                                                                     \
-     QDict *_resp = do_query_no_props(qts, cpu_type);                   \
-     g_assert(_resp);                                                   \
--    g_assert(resp_has_props(_resp));                                   \
--    g_assert(!qdict_get(resp_get_props(_resp), feature));              \
-+    g_assert(!resp_has_props(_resp) ||                                 \
-+             !qdict_get(resp_get_props(_resp), feature));              \
-     qobject_unref(_resp);                                              \
- })
-
-@@ -417,8 +417,6 @@ static void
-test_query_cpu_model_expansion_kvm(const void *data)
-
-     qts = qtest_init(MACHINE "-accel kvm -cpu host");
-
--    assert_has_feature(qts, "host", "pmu");
--
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         bool kvm_supports_sve;
-         char max_name[8], name[8];
-@@ -428,6 +426,7 @@ static void
-test_query_cpu_model_expansion_kvm(const void *data)
-         char *error;
-
-         assert_has_feature(qts, "host", "aarch64");
-+        assert_has_feature(qts, "host", "pmu");
-
-         assert_error(qts, "cortex-a15",
-             "We cannot guarantee the CPU type 'cortex-a15' works "
-@@ -497,9 +496,6 @@ static void
-test_query_cpu_model_expansion_kvm(const void *data)
-         }
-     } else {
-         assert_has_not_feature(qts, "host", "sve");
--        assert_error(qts, "host",
--                     "'pmu' feature not supported by KVM on this host",
--                     "{ 'pmu': true }");
-     }
-
-     qtest_quit(qts);
+> Changes since v6:
+>   * Regen hflags in two more places for m-profile (patch 19).
+>
+> Changes since v5:
+>   * Fix the debug assertion ifdef in the final patch.
+>   * Add more calls to arm_rebuild_hflags: CPSR and M-profile
+>     These become two new patches, 18 & 19.
+>   * Update some comments per review. (Alex)
+>
+> Changes since v4:
+>   * Split patch 1 into 15 smaller patches.
+>   * Cache the new DEBUG_TARGET_EL field.
+>   * Split out m-profile hflags separately from a-profile 32-bit.
+>   * Move around non-cached tb flags as well, avoiding repetitive
+>     checks for m-profile or other mutually exclusive conditions.
+>
+>   I haven't officially re-run the performance test quoted in the
+>   last patch, but I have eyeballed "perf top", and have dug into
+>   the compiled code a bit, which resulted in a few of the new
+>   cleanup patches (e.g. cs_base, arm_mmu_idx_el, and
+>   arm_cpu_data_is_big_endian).
+> ...
+>
+>
+> r~
 
 
-thanks
+
+Applied to target-arm.next, thanks.
+
 -- PMM

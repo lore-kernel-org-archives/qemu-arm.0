@@ -1,234 +1,174 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp86366wrq;
-        Tue, 22 Oct 2019 08:46:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqySsFVDQI8dZJuQnIbMs0QFzuskbS7sZTLMo9pgxzWkzRN8JsXKzSfDRgY4fXChFidNbiMK
-X-Received: by 2002:ac8:28b0:: with SMTP id i45mr4125474qti.179.1571759195130;
-        Tue, 22 Oct 2019 08:46:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571759195; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp91703wrq;
+        Tue, 22 Oct 2019 08:51:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzHUhrg8yGT6u3u1ibpm6XiqLVKsp5UZVeRLr8+v4xYHBSshQ3AZ4V9UksHgQ2S2cjZOKgJ
+X-Received: by 2002:aa7:c890:: with SMTP id p16mr4169043eds.296.1571759484082;
+        Tue, 22 Oct 2019 08:51:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571759484; cv=none;
         d=google.com; s=arc-20160816;
-        b=pKpvJKE+DNscnegXAXVacn88IaObNY8z2+4DX1CWU2cCpa4NROQ3/bbw8w1w+6eMF9
-         0DTUjuFEGhMlHp7fyxEzmvR5YizaA+8/duwz3ljUeIIP/gpm773wTOr8iqz9PA+b1cPv
-         pht5bQd2LocDDSFtkwVpHg17NO+dFkiO5IGqkNgumRIkkQs8bofKrxu6InTjJAxqUC0u
-         E8Km1J/ZlEzg89vG22K8NYHLcZfxMZIn6VJBpUKAtTbrXlPqxlEToAIOs/aIi2LrK2Na
-         zgUYBz9TUcxvlITQIb1LddRmFVRxKRfyiFOp0osXkBpabUFijA1cWTDa6h6kGYb4aOYA
-         /EnQ==
+        b=t21Np1jMMpVKz/UoVEFjhcq8KL1I7cUTtlHnqV2PFwRKejpOshhLEpyKZlHwlRCLOE
+         PhyxPHmy+qfq+MpNzxrADbqR5b3VPE/VjsqPS2iajl/FS/Xw7skLiOKoWJnvGlFtamIj
+         WtRGmvyBMeo32k7SvGGMwGH13J5y1VlzgrXP+c8nK6ZnFS5FObR5wHUZwAmO/uRRnxSV
+         99YnodtIG5m4sTfeoqw4bHJ4KDIzjB4GSfvqke2YEAK/CMtRxhJ+/OiYqHNMKbmW2f1p
+         r3cmuyRPVXPmuE9VomAS3i5ek5TNOqfn5XLPC+IuHJi0PUmIuh9lrVgtIpVm4iwA/hEC
+         P4Nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=R1/1+7Md91Hq7JIEadkFQbLhX++CiuasU+Gk0+oBnZw=;
-        b=bPMIArfb9enk8usfF5tPQAXsU0E+V4Bmf0Eml16hfAUaHbdmSRdhahMkRGMzdAapmQ
-         pm4nAUyXYj6KXgAUCsAuDIdNHgUHqWZgjtT2/zbfWLmriH11dhJnF4Fhb6Xpx0/8LNlC
-         H7Gf+7jbm1ZFEVSlsATMmM95NiIip7nxHKH7RrU4yjLkzl5yzgnM9Pw+RVFCQAulw4g0
-         KJhoJCYFHc3HVXwrP7KOo4mWmrPeYL8mxFRIpKzr6QTex1WH/ndtjTQ9lO6gmKFRqMGy
-         +oiEirj3haG7C8yoCvpwA2T7jBT2X8+AaW3elZzEJ4iKO1dbivjaWXABTyV52kNlVYrm
-         WHjA==
+        bh=T55s415trqTTXHVR7Eh8cnhPb29V43raCaAi11hatio=;
+        b=h3jExAjcLI03ZjVEfaZ3o0JHnsI85BhloxWLNh6MDI5uhRXI405nUEcYIlURT+FZ5t
+         l0lMWCmfY3rSQGCMcfKrYZl3DOJAFN4QpUySo+FmAgGd087NS9Hzo/VzHBPYMCYALXrS
+         a4nNkvl2wiQe89MqZC3RrBJ26rB107lD2J6HP0jjLDHXfaaUZPjf6Zbtk+yMZQcQDEFE
+         LhWqdqQZqx/GhyxQTLNGMe9FO66DyjDWbY0MXR1OKuDaquXnh68uWclOwBfa/jdUJS10
+         FJWsMZXDv6ZP4T4DOcAygeqerZGjfH/tRQEAVsFORwGj85jJbfYuSmhrKGG+CTOgd1Vz
+         06yA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ISMA6S0B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=El8zSdyT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o187si12967819qkd.251.2019.10.22.08.46.34
+        by mx.google.com with ESMTPS id j21si10941127ejn.392.2019.10.22.08.51.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2019 08:46:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Oct 2019 08:51:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ISMA6S0B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33724 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=El8zSdyT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMwMj-0002qI-Bn
-	for alex.bennee@linaro.org; Tue, 22 Oct 2019 11:46:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59909)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMwRO-0006Mx-JF
+	for alex.bennee@linaro.org; Tue, 22 Oct 2019 11:51:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32806)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <beata.michalska@linaro.org>) id 1iMwMN-0002pT-Nn
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 11:46:13 -0400
+ (envelope-from <beata.michalska@linaro.org>) id 1iMwPZ-0005nG-Fb
+ for qemu-devel@nongnu.org; Tue, 22 Oct 2019 11:49:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <beata.michalska@linaro.org>) id 1iMwML-00021O-PQ
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 11:46:11 -0400
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:34242)
+ (envelope-from <beata.michalska@linaro.org>) id 1iMwPY-0004bX-9L
+ for qemu-devel@nongnu.org; Tue, 22 Oct 2019 11:49:29 -0400
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:46595)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <beata.michalska@linaro.org>)
- id 1iMwML-00020Y-Ix
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 11:46:09 -0400
-Received: by mail-il1-x142.google.com with SMTP id a13so1543228ilp.1
- for <qemu-arm@nongnu.org>; Tue, 22 Oct 2019 08:46:09 -0700 (PDT)
+ id 1iMwPY-0004aw-3m
+ for qemu-devel@nongnu.org; Tue, 22 Oct 2019 11:49:28 -0400
+Received: by mail-io1-xd43.google.com with SMTP id c6so20951395ioo.13
+ for <qemu-devel@nongnu.org>; Tue, 22 Oct 2019 08:49:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=R1/1+7Md91Hq7JIEadkFQbLhX++CiuasU+Gk0+oBnZw=;
- b=ISMA6S0BVgaHS1z9CzfMidhqweschHi0F8RqCgg17TjEW6Y56k2X/2TQp6LNkrCQP0
- lQpLyXVIYof2TX5Tkzwq08vHrb/2plPLsCqrpiRTKse1u0z2Eq5yohHxh3prfEMan56e
- nYfhW5wJs1pcnmDWxT3/Xmzz6gT6Dh3eJ8Pz2ec3ZzRC50r9JwoGm02Tk5azHQZivpo7
- U7XXTEsIyDgxBxcj7KMc4uEndeEQCphV4d90bVdaJnp6esLnpjj+qEPtWq8QVfsI2LOz
- 1pLd7RISm77JmMIpRbWRiJ/1Du4sWAkM2bFJfg03OdcbTA4ZSD3oqbfGxxHPcTxrWEJo
- ADXg==
+ :cc; bh=T55s415trqTTXHVR7Eh8cnhPb29V43raCaAi11hatio=;
+ b=El8zSdyTzmjyW0a8c85l4uW/VM+hCvIccqjqdPkQYO4FEHuBWgmULW5j/KOWz9tPM2
+ h6iif2MXiEJIaiIDRPXP93gvyAGC1+m1nHVS/x7hmV9K74046H8wRextGvyFrG+M1LXe
+ BJlf58wDx+W3qnYVfX7VGTgQla2joenhFgmsZ/TsKjtKMcRU30RUHZ0o0Pc0FjhenIZZ
+ xAUHahySPNoike4oaX5OhRKQwQB7rgIkFnYZkET2eMQAjzEyuDzfAZOgG4/9LJxRcORN
+ xjIH6ngt83WOyIDl0Wf/9oy4NTyjyZKce/U3Ny2H1Q9/cAE9a88ncZoU5HFIzusRp9fZ
+ eMcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=R1/1+7Md91Hq7JIEadkFQbLhX++CiuasU+Gk0+oBnZw=;
- b=J11jWJIwJYcaS8GIFCPGh+bi9zkROeWIoMOneJCp4H9M4czwLW3xMDNPGS6f4bloBg
- +X8XBmt9hnl2rfzO4refiFMK2ou/8dVIakoQRguVMOt5gblo5laDtlzefNu/qSo8/u6L
- H4844U7dfD+vBKOBIULvabtqJiJTlAHuOz0dDGsBDGUhZBhR2kdPFrYE+j/YfKhjQoef
- 89IU4ft7DM/qihqFvLrHO/mf1H/z4TUlPgKoSDlm/F6E6ifVKnZcXVqozZuFEE8xSWIG
- /SIVrvUcniHbISX/A4Kk4b10HQSUtX4qzr5BIYBJqM+yRV4HQSOA4Lh4Dce9iuZoHddt
- a9zg==
-X-Gm-Message-State: APjAAAVHWl9KDUmg0bdD16YN1W0erMv2RNDUuc5yzRN2ZZCQAuooIz/z
- 1NfUzQ6BxOySjkfzV91GEBcRIjfFkT9/r3Y2ZwDWjQ==
-X-Received: by 2002:a92:2406:: with SMTP id k6mr34342536ilk.260.1571759168185; 
- Tue, 22 Oct 2019 08:46:08 -0700 (PDT)
+ bh=T55s415trqTTXHVR7Eh8cnhPb29V43raCaAi11hatio=;
+ b=VZ1rzREu1cyrzrFVx1TeaWnFknNzKLRJ7ff+55eoxzdIzsYhRjs1fa4RQRs3Ou9nOH
+ Jdbk0m+p2TH99gP5AmIX9+AaCDxt48p5C0Sv+lp9S9LVmunCTIYC7n/vBeWAyDCk9HbB
+ KFTmRjF+JFA9wpDAMIYDBRr90lbWTfOdeocrKF/zzxE2NC2pVJu8eGTKWvkK4nJmtB+w
+ 0hXNwjXHI66Og0lagxa3xJ80+sR1srBIGbqyeNbnHMfj2g6IE8rSh3gdwFlN764TuEDY
+ jlFBvgJ3BwZB6nyt77DYA+VSFtk4sCbkget0/CAY2q8x6ovXhhh1xqS933XNlmRjpzFH
+ rAzw==
+X-Gm-Message-State: APjAAAX6SXr9PpbDwbcVVenymZ8DiCOPab0c40Mcn4zDlHBD5uZnjV7B
+ HgoLRw22Q69RqQo2LynZEZc799XtH4oNkRIJlEUBBQ==
+X-Received: by 2002:a02:c90a:: with SMTP id t10mr4259911jao.89.1571759367052; 
+ Tue, 22 Oct 2019 08:49:27 -0700 (PDT)
 MIME-Version: 1.0
-References: <20191016085408.24360-1-drjones@redhat.com>
- <20191016085408.24360-8-drjones@redhat.com>
-In-Reply-To: <20191016085408.24360-8-drjones@redhat.com>
+References: <20191001125845.8793-1-drjones@redhat.com>
+ <20191001125845.8793-2-drjones@redhat.com>
+ <CADSWDztJDUEd+_7XnBPWL1bk5Xh=V_aLc1+VrP97_Ycbe3489A@mail.gmail.com>
+ <20191015105628.7ln6ph5s3vpsyfuw@kamzik.brq.redhat.com>
+ <CADSWDzsKx7+4mR4pmsqi0+rddUv47q=UKwVt509B8g68UoRiMA@mail.gmail.com>
+ <CADSWDzs9sdjE+-1AedPnU6o7U5XjTk=dcHf-BXQXQQkrp2O=Bw@mail.gmail.com>
+ <20191016135025.k4szpqwgkhfnd6dl@kamzik.brq.redhat.com>
+ <CADSWDzuXpTHDtRmTL41CXbk9GmDHO5iEgpiRgnD=buQU+nnXcg@mail.gmail.com>
+ <20191016161628.rf752xuu6fzkihun@kamzik.brq.redhat.com>
+ <CADSWDzvT7E9P3uEJDV9z+L=HEBuDRwQ904-GG0M9T-NUz+OsoQ@mail.gmail.com>
+ <20191022134315.fuz6dou5f3pxtfte@kamzik.brq.redhat.com>
+In-Reply-To: <20191022134315.fuz6dou5f3pxtfte@kamzik.brq.redhat.com>
 From: Beata Michalska <beata.michalska@linaro.org>
-Date: Tue, 22 Oct 2019 16:45:57 +0100
-Message-ID: <CADSWDztWryn0uPwEo+Kd6JvF-NOGomt1CYu7N-+VYva-v817nw@mail.gmail.com>
-Subject: Re: [PATCH v6 7/9] target/arm/kvm: scratch vcpu: Preserve input
- kvm_vcpu_init features
+Date: Tue, 22 Oct 2019 16:49:15 +0100
+Message-ID: <CADSWDzsiB5-jgHfv+JfnPzqCbkMUKshQgJaJTqaZ0fK0EX3jzQ@mail.gmail.com>
+Subject: Re: [PATCH v5 1/9] target/arm/monitor: Introduce
+ qmp_query_cpu_model_expansion
 To: Andrew Jones <drjones@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::142
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::d43
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
  armbru@redhat.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
- imammedo@redhat.com, eblake@redhat.com, Dave.Martin@arm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gdoIzyHleL1h
+ imammedo@redhat.com, Dave.Martin@arm.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9DXgiTDbwEgK
 
-HI Andrew
+Hi Andrew,
 
-On Wed, 16 Oct 2019 at 09:57, Andrew Jones <drjones@redhat.com> wrote:
+On Tue, 22 Oct 2019 at 14:43, Andrew Jones <drjones@redhat.com> wrote:
 >
-> kvm_arm_create_scratch_host_vcpu() takes a struct kvm_vcpu_init
-> parameter. Rather than just using it as an output parameter to
-> pass back the preferred target, use it also as an input parameter,
-> allowing a caller to pass a selected target if they wish and to
-> also pass cpu features. If the caller doesn't want to select a
-> target they can pass -1 for the target which indicates they want
-> to use the preferred target and have it passed back like before.
+> On Mon, Oct 21, 2019 at 04:07:14PM +0100, Beata Michalska wrote:
+> > Indeed, the patch got bit messed-up. Apologies for that as well.
+> > I have been testing manually but I did try the test you have provided
+> > and yes it fails - there is a slight problem with the case when qdict_in
+> > is empty,but this can be easily solved still keeping the single loop.
+> > Otherwise I have seen you have posted a new patchest so I guess we  are
+> > dropping the idea of refactoring ?
 >
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Well, without a patch that applies, I couldn't really evaluate your
+> proposal. And, TBH, I'd rather not hold this series up on a refactoring
+> that doesn't provide measurable performance improvements, especially when
+> it's not in a performance critical path. Indeed, I'd like to get this
+> series merged as soon as possible, which is why I posted v6 with your
+> visit_free() fix already.
+>
+> >
+> > One more question: in case of querying a property which is not supported
+> > by given cpu model - we are returning properties that are actually valid
+> > (the test case for cortex-a15 and aarch64 prop).
+> > Shouldn't we return an error there? I honestly must admit I do not know
+> > what is the expected behaviour for the qmp query in such cases.
+>
+> We do generate an error for that case:
+>
+> (QEMU) query-cpu-model-expansion type=full model={"name":"cortex-a15"}
+> {"return": {"model": {"name": "cortex-a15", "props": {"pmu": true}}}}
+>
+> (QEMU) query-cpu-model-expansion type=full model={"name":"cortex-a15","props":{"aarch64":false}}
+> {"error": {"class": "GenericError", "desc": "Property '.aarch64' not found"}}
+>
+>
+> If you have any more comments on the series, please send them right away.
+> I'd like Peter to be able to merge this soon, and I understand that he's
+> waiting on your review.
+>
 
-Reviewed-by: Beata Michalska <beata.michalska@linaro.org>
+I think we can proceed with the v6 as it is.
 
-Thanks
+Thanks a lot.
 
 BR
 Beata
-> ---
->  target/arm/kvm.c   | 20 +++++++++++++++-----
->  target/arm/kvm32.c |  6 +++++-
->  target/arm/kvm64.c |  6 +++++-
->  3 files changed, 25 insertions(+), 7 deletions(-)
->
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index f07332bbda30..5b82cefef608 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -66,7 +66,7 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
->                                        int *fdarray,
->                                        struct kvm_vcpu_init *init)
->  {
-> -    int ret, kvmfd = -1, vmfd = -1, cpufd = -1;
-> +    int ret = 0, kvmfd = -1, vmfd = -1, cpufd = -1;
->
->      kvmfd = qemu_open("/dev/kvm", O_RDWR);
->      if (kvmfd < 0) {
-> @@ -86,7 +86,14 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
->          goto finish;
->      }
->
-> -    ret = ioctl(vmfd, KVM_ARM_PREFERRED_TARGET, init);
-> +    if (init->target == -1) {
-> +        struct kvm_vcpu_init preferred;
-> +
-> +        ret = ioctl(vmfd, KVM_ARM_PREFERRED_TARGET, &preferred);
-> +        if (!ret) {
-> +            init->target = preferred.target;
-> +        }
-> +    }
->      if (ret >= 0) {
->          ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
->          if (ret < 0) {
-> @@ -98,10 +105,12 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
->           * creating one kind of guest CPU which is its preferred
->           * CPU type.
->           */
-> +        struct kvm_vcpu_init try;
-> +
->          while (*cpus_to_try != QEMU_KVM_ARM_TARGET_NONE) {
-> -            init->target = *cpus_to_try++;
-> -            memset(init->features, 0, sizeof(init->features));
-> -            ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
-> +            try.target = *cpus_to_try++;
-> +            memcpy(try.features, init->features, sizeof(init->features));
-> +            ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, &try);
->              if (ret >= 0) {
->                  break;
->              }
-> @@ -109,6 +118,7 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
->          if (ret < 0) {
->              goto err;
->          }
-> +        init->target = try.target;
->      } else {
->          /* Treat a NULL cpus_to_try argument the same as an empty
->           * list, which means we will fail the call since this must
-> diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-> index 2451a2d4bbef..32bf8d6757c4 100644
-> --- a/target/arm/kvm32.c
-> +++ b/target/arm/kvm32.c
-> @@ -53,7 +53,11 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->          QEMU_KVM_ARM_TARGET_CORTEX_A15,
->          QEMU_KVM_ARM_TARGET_NONE
->      };
-> -    struct kvm_vcpu_init init;
-> +    /*
-> +     * target = -1 informs kvm_arm_create_scratch_host_vcpu()
-> +     * to use the preferred target
-> +     */
-> +    struct kvm_vcpu_init init = { .target = -1, };
->
->      if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
->          return false;
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 850da1b5e6aa..c7ecefbed720 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -502,7 +502,11 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->          KVM_ARM_TARGET_CORTEX_A57,
->          QEMU_KVM_ARM_TARGET_NONE
->      };
-> -    struct kvm_vcpu_init init;
-> +    /*
-> +     * target = -1 informs kvm_arm_create_scratch_host_vcpu()
-> +     * to use the preferred target
-> +     */
-> +    struct kvm_vcpu_init init = { .target = -1, };
->
->      if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
->          return false;
-> --
-> 2.21.0
->
+
+> Thanks,
+> drew
 >

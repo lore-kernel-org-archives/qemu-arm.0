@@ -1,331 +1,131 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp95380wrq;
-        Tue, 22 Oct 2019 08:54:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxXgONPZJV/906VTWXi8FG1o0JlNpoY9FYgIE1nHKsYYFZGLva2JFQrDUSUSPVnqfYMLZvp
-X-Received: by 2002:aa7:d888:: with SMTP id u8mr31110166edq.144.1571759677117;
-        Tue, 22 Oct 2019 08:54:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571759677; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp250981wrq;
+        Tue, 22 Oct 2019 11:12:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqydQ/yGYXVONk4rHibeYheELOzWVrvH36wDhXS++LXnFudaNiv1AvjI/684qyWGuDHkmqh/
+X-Received: by 2002:a63:1f4e:: with SMTP id q14mr5262830pgm.144.1571767933345;
+        Tue, 22 Oct 2019 11:12:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571767933; cv=none;
         d=google.com; s=arc-20160816;
-        b=khfaoFcyDOvxTIHgmHSBz0GXzVqUL/4K1SPOCvfRA1tDaC3UH4ZGgLmsGPf8tCIpHS
-         wNUm6gpyIWls6fX5NA9K3Tohfpb4Q6y8TKNTg9MjcRKbcVXYmj/C0b3zWScNscMx957D
-         x00BixRemmJ1bqyRjbsFzWwRPqclM09JcGWHmCuDKgZ9GLlWP7Rcb1X+U6c78ZRflTT/
-         mAkwnceP5oEzq1HHs7/dXZQIG2XBXbDn3ulI9L3ui/Qfb0YTaLZtZHcPyiVlRPPvof2S
-         pQiiPgLTePKg71aMl/OCJihiuZRqCIjwu/g+glgVBp7cG8voTEQwgii8sshSs8Ij9/sX
-         DRgA==
+        b=eJRixf2CY/7MpYNg56eVlqQ8AZxb5u3Mqm//0U4epLKxML7A4FU5g9RVH7PGGqy2MJ
+         rJuCL01+Sn4s0s5mclrwyh1ZnJ5DpXFKQp7tUvwT8XOa9HLbzG5xnmJ9nrH8xvtqLCo4
+         IOeWGnJsb0AheCxP1wshSbFQtCRWVq5a6kli9NKmxlcJX4/lFXx4lryV0slI3Xn2NYrB
+         Ww4tIZdNMLsQuSpWD2CTVyDptnQWDDIogDXYS+w8VQB9I4+XwYb88X89rputbiR2iG+z
+         PfM7YWVp0OZPi7WiqjbGZFR7WzD1dAcE9829+nS4U/6N9XS0NrwBMdDQ4HmwFqBhHA82
+         45JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=nGKvUdAZepYPnQXNUUyRDAWv88QdMwl4dDgOOd130Do=;
-        b=pgIItapPTjzPN5lLPNOCHlqMNla8NAzBzDwY5DJeKM95FGjTkbSAy3hZkOnKr5i4j6
-         UNHyhbPS1FDvbNblem5sZEblWB016ZFFga0/3wA4a9xuNjeXhko6VD0JAztp6hmyuPgD
-         t6EYdIJMUleB8ApsnGMy0F88QMRQYCEmh9cj6ZJHu29+Fz+rkjZcnU45RwW3okRh6lBQ
-         wwPZRiFBWTF727WUSGLzNdcz3wluwuWGgIILwn2MLiV9q2/cG87nsEMB/uEhAopYVxIU
-         mCJOCCL7TVqeMUucccJ5qADj8MfpWzMEMx5agGyap+bg/TdCI00ddKs0LXmKUOIFEvIC
-         4c5A==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from;
+        bh=Hnnr8tyhRaDcgWNL41p0LrMcGeMAQgQP37PiTjOjUes=;
+        b=wmpYlTnUNqf+MKnuISLCA0yZsvXeYxTyQ0mCB+dy+uDAwCPjzuWaIomGdS0kqLTwIQ
+         nt3w0C2IGCbISd19Ykh5rmnytTK0dO35XKqjQhfYKlDKv4IUgK1GPgHlvjermrZVyYFK
+         c3sFh5sKJAyj4dw/2UbLTtVZ2Z2yGhdJvIhvmz1KkAd2eGH3FTAMkyV/X+qEmM5qrvVl
+         Xn3QEe9+jcLd2F3jn+lTTvIeH6a66eneFN9jnxc5LVsN6cEpgaruRtuzd9NF2Bz2RQ19
+         xjA2Ptc9688+R+Gl5bmJ/UBNJ8GaccvmnoZYfxTXGZBfK+/0AzAhyy5TYZSgSZS8Cb/E
+         PPEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tZ+DJ5kp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x45si12827831edd.388.2019.10.22.08.54.36
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2019 08:54:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com
+Return-Path: <keithp@keithp.com>
+Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
+        by mx.google.com with ESMTPS id o23si18376570pjp.57.2019.10.22.11.12.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 22 Oct 2019 11:12:13 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tZ+DJ5kp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34080 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMwUW-0002Ae-3T
-	for alex.bennee@linaro.org; Tue, 22 Oct 2019 11:54:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59655)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <beata.michalska@linaro.org>) id 1iMwL4-00024W-Es
- for qemu-devel@nongnu.org; Tue, 22 Oct 2019 11:44:51 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <beata.michalska@linaro.org>) id 1iMwL2-0000xI-Bh
- for qemu-devel@nongnu.org; Tue, 22 Oct 2019 11:44:50 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:39379)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <beata.michalska@linaro.org>)
- id 1iMwL1-0000wI-2k
- for qemu-devel@nongnu.org; Tue, 22 Oct 2019 11:44:48 -0400
-Received: by mail-il1-x144.google.com with SMTP id i12so5354313ils.6
- for <qemu-devel@nongnu.org>; Tue, 22 Oct 2019 08:44:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nGKvUdAZepYPnQXNUUyRDAWv88QdMwl4dDgOOd130Do=;
- b=tZ+DJ5kpq5egWH/asfjzvqjx0ls/YDDpyvu95OSVmtbkNbEIyMecRA5k3lj5EQDppT
- HcuVLRlenUAHFGpm5F73hzkZX4ryr6a/xTiY47uXyLWgbSBZpEyoT6jCgcIRDMNBKX/M
- hPyV4kF225Mi+SYH2cz0OZzxfjtQENIPzlfc3OogGxJGNLWqH8g4euIyNijhTzLHyAFj
- MkuqnMKo2+apaI42RO3TwJtGlF3s3iV0LtzOtBfzWhc5uvCxX6XJZs2z4klkCvjnrlXn
- RUWWhT2UW8vt8L9stb9gAjl7lXWNf2vvix4nUX6JmeqAhDtOVEMd8NarpIOvIZTgbv0c
- dnQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nGKvUdAZepYPnQXNUUyRDAWv88QdMwl4dDgOOd130Do=;
- b=N0KiFAHO/r+OgG7IBFQLdFrkR81vktHZkNOxzWvU0ppu4VCIL5VWL7zi3xlmBNJIrb
- cVpM23rVaZ4pFHVUv3Ujk+NzCezILP3iuSunzhsBVfRMkola2bKe+MWO1xyaiJo1G5L/
- HxSZsydUR+Y3gCKLYavoQ082QfVbVbpMrONCX3VWFkIR6+KR8tJEBhNRbHqTux0nguk5
- AS7XkdRLLjX+kEG1V6W3r3hlBOjX9lKWzpEv6umMvyMyo6+ojDEQFvZOEXaTKQZRiNJO
- t7KqlMACTAS3Gxb71O/HcGDeGPoLAunRhY5q36N+cXmxFyOyyIWbRe/gT/bos4jHMt8C
- MYVA==
-X-Gm-Message-State: APjAAAWOYacttxc/A11TpqTNy01nhIGsj8byTrl1SmWZDKQhBSHmm6ZI
- TtDO3xw6u/KdQtolHRqQEHND1cN7+wy3qE66IKJjJw==
-X-Received: by 2002:a92:360b:: with SMTP id d11mr32079069ila.143.1571759086376; 
- Tue, 22 Oct 2019 08:44:46 -0700 (PDT)
+       spf=pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com
+Received: from localhost (localhost [127.0.0.1])
+	by elaine.keithp.com (Postfix) with ESMTP id 30C373F230CE;
+	Tue, 22 Oct 2019 11:12:12 -0700 (PDT)
+X-Virus-Scanned: Debian amavisd-new at keithp.com
+Received: from elaine.keithp.com ([127.0.0.1])
+	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id Y7HqjLvEgwMl; Tue, 22 Oct 2019 11:12:12 -0700 (PDT)
+Received: from keithp.com (keithp-172.keithp.com [10.0.0.172])
+	by elaine.keithp.com (Postfix) with ESMTPSA id E3B6E3F22EBE;
+	Tue, 22 Oct 2019 11:12:11 -0700 (PDT)
+Received: by keithp.com (Postfix, from userid 1000)
+	id B896B1582187; Tue, 22 Oct 2019 11:12:11 -0700 (PDT)
+From: "Keith Packard" <keithp@keithp.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: Re: [PATCH] Semihost SYS_READC implementation
+In-Reply-To: <d7470bfa-ba4e-3287-326f-ee63c5d76407@redhat.com>
+References: <20191022031335.9880-1-keithp@keithp.com> <d7470bfa-ba4e-3287-326f-ee63c5d76407@redhat.com>
+Date: Tue, 22 Oct 2019 11:12:11 -0700
+Message-ID: <87sgnk3b0k.fsf@keithp.com>
 MIME-Version: 1.0
-References: <20191016085408.24360-1-drjones@redhat.com>
- <20191016085408.24360-7-drjones@redhat.com>
-In-Reply-To: <20191016085408.24360-7-drjones@redhat.com>
-From: Beata Michalska <beata.michalska@linaro.org>
-Date: Tue, 22 Oct 2019 16:44:35 +0100
-Message-ID: <CADSWDztTRjEaj2QNpHmDO1ON=ZW6uU3qXfZ6kECx88q0su-6hw@mail.gmail.com>
-Subject: Re: [PATCH v6 6/9] target/arm/kvm64: max cpu: Enable SVE when
- available
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::144
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- armbru@redhat.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
- imammedo@redhat.com, Dave.Martin@arm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jeREmXSFuHhw
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+X-TUID: yx8ddLZG/16h
 
-Hi Andrew
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-On Wed, 16 Oct 2019 at 10:03, Andrew Jones <drjones@redhat.com> wrote:
->
-> Enable SVE in the KVM guest when the 'max' cpu type is configured
-> and KVM supports it. KVM SVE requires use of the new finalize
-> vcpu ioctl, so we add that now too. For starters SVE can only be
-> turned on or off, getting all vector lengths the host CPU supports
-> when on. We'll add the other SVE CPU properties in later patches.
->
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-Reviewed-by: Beata Michalska <beata.michalska@linaro.org>
+Thanks so much for looking at this patch.
 
-Thanks,
+> I'm a bit confused, why is it not using semihosting_get_chardev?  That
+> would be
+>
+> 	-chardev stdio,id=3Dsemihost
+> 	-semihosting-config on,chardev=3Dsemihost
 
-BR
-Beata
-> ---
->  target/arm/cpu64.c       | 17 ++++++++++++++---
->  target/arm/kvm.c         |  5 +++++
->  target/arm/kvm64.c       | 20 +++++++++++++++++++-
->  target/arm/kvm_arm.h     | 27 +++++++++++++++++++++++++++
->  tests/arm-cpu-features.c |  1 +
->  5 files changed, 66 insertions(+), 4 deletions(-)
->
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 34b0ba2cf6f7..a771a28daa56 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -493,6 +493,11 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
->          return;
->      }
->
-> +    if (value && kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
-> +        error_setg(errp, "'sve' feature not supported by KVM on this host");
-> +        return;
-> +    }
-> +
->      t = cpu->isar.id_aa64pfr0;
->      t = FIELD_DP64(t, ID_AA64PFR0, SVE, value);
->      cpu->isar.id_aa64pfr0 = t;
-> @@ -507,11 +512,16 @@ static void aarch64_max_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
->      uint32_t vq;
-> +    uint64_t t;
->
->      if (kvm_enabled()) {
->          kvm_arm_set_cpu_features_from_host(cpu);
-> +        if (kvm_arm_sve_supported(CPU(cpu))) {
-> +            t = cpu->isar.id_aa64pfr0;
-> +            t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
-> +            cpu->isar.id_aa64pfr0 = t;
-> +        }
->      } else {
-> -        uint64_t t;
->          uint32_t u;
->          aarch64_a57_initfn(obj);
->
-> @@ -612,8 +622,6 @@ static void aarch64_max_initfn(Object *obj)
->
->          object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
->                              cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
-> -        object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-> -                            cpu_arm_set_sve, NULL, NULL, &error_fatal);
->
->          for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
->              char name[8];
-> @@ -622,6 +630,9 @@ static void aarch64_max_initfn(Object *obj)
->                                  cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
->          }
->      }
-> +
-> +    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-> +                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
->  }
->
->  struct ARMCPUInfo {
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index b473c63edb1c..f07332bbda30 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -51,6 +51,11 @@ int kvm_arm_vcpu_init(CPUState *cs)
->      return kvm_vcpu_ioctl(cs, KVM_ARM_VCPU_INIT, &init);
->  }
->
-> +int kvm_arm_vcpu_finalize(CPUState *cs, int feature)
-> +{
-> +    return kvm_vcpu_ioctl(cs, KVM_ARM_VCPU_FINALIZE, &feature);
-> +}
-> +
->  void kvm_arm_init_serror_injection(CPUState *cs)
->  {
->      cap_has_inject_serror_esr = kvm_check_extension(cs->kvm_state,
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 4c0b11d105a4..850da1b5e6aa 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -602,6 +602,13 @@ bool kvm_arm_aarch32_supported(CPUState *cpu)
->      return kvm_check_extension(s, KVM_CAP_ARM_EL1_32BIT);
->  }
->
-> +bool kvm_arm_sve_supported(CPUState *cpu)
-> +{
-> +    KVMState *s = KVM_STATE(current_machine->accelerator);
-> +
-> +    return kvm_check_extension(s, KVM_CAP_ARM_SVE);
-> +}
-> +
->  #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
->
->  int kvm_arch_init_vcpu(CPUState *cs)
-> @@ -630,13 +637,17 @@ int kvm_arch_init_vcpu(CPUState *cs)
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
->      }
->      if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
-> -            cpu->has_pmu = false;
-> +        cpu->has_pmu = false;
->      }
->      if (cpu->has_pmu) {
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->      } else {
->          unset_feature(&env->features, ARM_FEATURE_PMU);
->      }
-> +    if (cpu_isar_feature(aa64_sve, cpu)) {
-> +        assert(kvm_arm_sve_supported(cs));
-> +        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
-> +    }
->
->      /* Do KVM_ARM_VCPU_INIT ioctl */
->      ret = kvm_arm_vcpu_init(cs);
-> @@ -644,6 +655,13 @@ int kvm_arch_init_vcpu(CPUState *cs)
->          return ret;
->      }
->
-> +    if (cpu_isar_feature(aa64_sve, cpu)) {
-> +        ret = kvm_arm_vcpu_finalize(cs, KVM_ARM_VCPU_SVE);
-> +        if (ret) {
-> +            return ret;
-> +        }
-> +    }
-> +
->      /*
->       * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
->       * Currently KVM has its own idea about MPIDR assignment, so we
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index b4e19457a094..7c12f1501a8b 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -27,6 +27,20 @@
->   */
->  int kvm_arm_vcpu_init(CPUState *cs);
->
-> +/**
-> + * kvm_arm_vcpu_finalize
-> + * @cs: CPUState
-> + * @feature: int
-> + *
-> + * Finalizes the configuration of the specified VCPU feature by
-> + * invoking the KVM_ARM_VCPU_FINALIZE ioctl. Features requiring
-> + * this are documented in the "KVM_ARM_VCPU_FINALIZE" section of
-> + * KVM's API documentation.
-> + *
-> + * Returns: 0 if success else < 0 error code
-> + */
-> +int kvm_arm_vcpu_finalize(CPUState *cs, int feature);
-> +
->  /**
->   * kvm_arm_register_device:
->   * @mr: memory region for this device
-> @@ -225,6 +239,14 @@ bool kvm_arm_aarch32_supported(CPUState *cs);
->   */
->  bool kvm_arm_pmu_supported(CPUState *cs);
->
-> +/**
-> + * bool kvm_arm_sve_supported:
-> + * @cs: CPUState
-> + *
-> + * Returns true if the KVM VCPU can enable SVE and false otherwise.
-> + */
-> +bool kvm_arm_sve_supported(CPUState *cs);
-> +
->  /**
->   * kvm_arm_get_max_vm_ipa_size - Returns the number of bits in the
->   * IPA address space supported by KVM
-> @@ -276,6 +298,11 @@ static inline bool kvm_arm_pmu_supported(CPUState *cs)
->      return false;
->  }
->
-> +static inline bool kvm_arm_sve_supported(CPUState *cs)
-> +{
-> +    return false;
-> +}
-> +
->  static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
->  {
->      return -ENOENT;
-> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-> index 0190148260dc..3c8ed85b5adb 100644
-> --- a/tests/arm-cpu-features.c
-> +++ b/tests/arm-cpu-features.c
-> @@ -391,6 +391,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->
->      if (g_str_equal(qtest_get_arch(), "aarch64")) {
->          assert_has_feature(qts, "host", "aarch64");
-> +        assert_has_feature(qts, "max", "sve");
->
->          assert_error(qts, "cortex-a15",
->              "We cannot guarantee the CPU type 'cortex-a15' works "
-> --
-> 2.21.0
->
->
+Because I didn't realize the semihosting code already had a Chardev
+option.  Thanks much for pointing it out. I've changed the code to use
+the semihosting chardev instead of serial_hd(0). That change was quite
+simple:
+
+ void qemu_semihosting_console_init(void)
+ {
+=2D    if (semihosting_enabled()) {
+=2D        qemu_chr_fe_init(&console.backend, serial_hd(0), &error_abort);
++    Chardev *chr =3D semihosting_get_chardev();
++
++    if  (chr) {
++        qemu_chr_fe_init(&console.backend, chr, &error_abort);
+         qemu_chr_fe_set_handlers(&console.backend,
+                                  console_can_read,
+                                  console_read,
+
+(I left the call to qemu_semihosting_console_init() late in the
+initialization process so that the semihosting I/O ended up with the
+stdio mux focus instead of the monitor)
+
+Your example command line was really helpful in figuring out how to get
+this to work. Here's the full command line I ended up using so that
+semihost, serial and monitor are all muxed to stdio:
+
+$ qemu-system-arm -chardev stdio,mux=3Don,id=3Dstdio0 -serial chardev:stdio=
+0 -semihosting-config enable=3Don,chardev=3Dstdio0 -mon chardev=3Dstdio0,mo=
+de=3Dreadline=20
+
+It might be nice if this could be shortened, but it certainly provides
+the necessary options to make it all work.
+
+I'll post an updated version of the patch in a while, after waiting to
+see if there are any additional comments.
+
+=2D-=20
+=2Dkeith
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl2vRnsACgkQ2yIaaQAA
+ABHuuA/+LkJ6ZfdfZ+wCjEtpm9M63MQblGwO1TZAwHDeoRAWtfZeeCni/D3PzJIQ
+O2fUsRrCYfFrJxoMK7xyAswQMpv7e4Fn4q9WCPzQ6gjs0SvoC1YUeahXeO5gHj41
+db6P86RcQQ4Hg/uJXKWskVxGEZGZT/VKMH90YC4j5PuylCP2r6iGwznbl48bEqa7
+hUkZxedMDZEl8wAHYJSCIAhzC4Lk58PMsK82jninKoE93r5xBPKpVqBuChlGEV1J
+rABmwZjf+Nuj1idIUvylkGSY8sO/GvkjaoZDuz19V9yEUMhfgsN6DG59tDLDmG/I
+PLMtSgVR+JmnksZIof0X+BLerS6zIouI1yj7/ZfobnycZqcULTMAmpEcr+BWAyX9
+r83S3Oj8IxvecCm4TuQsKlAfoWJ2a2A7g92ytdCCu1/1z29ScZ2GsfJMwyBzoBRK
+rnc9ULexi0V9OgY8WIziHhEUSUGZzRu7QjmJeSdvq9xgyTQRGVX4rp9UPcT/uo76
+QEYCUGGJJQtnNxnldaLoeA1fDp6OOogwr+ysw6hILkCAP/fwH5sEZxz7UVjuzAUp
+BTXPAbgkUF7eyOTXUEyM0n+D387ibaJi2X+VInRQJ09GwoYu7siHFm25MV/AHcEh
+x5sTBS9FZ52tFqjbhfuwyLLcKpzZKur8NX8TAn9UmRQNGj2ZIrk=
+=I6jL
+-----END PGP SIGNATURE-----
+--=-=-=--

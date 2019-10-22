@@ -1,165 +1,267 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp81523wrq;
-        Tue, 22 Oct 2019 08:42:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwcMVQ2/07sBTO8NzlVzBvcC2WN0J3E3vLV6x7nj42rOjfyN/6rh6Vw/5jKtS6qUmyuOK/K
-X-Received: by 2002:aa7:c612:: with SMTP id h18mr32085855edq.245.1571758953955;
-        Tue, 22 Oct 2019 08:42:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571758953; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp83515wrq;
+        Tue, 22 Oct 2019 08:44:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyOcXdyQ4xATXV4YSuuVwQ2yB6EowhQAyGs1do+3eh4kqsX0xRBkWdfPd8Y6dtiICq+KeWB
+X-Received: by 2002:a05:620a:89d:: with SMTP id b29mr3716448qka.266.1571759058717;
+        Tue, 22 Oct 2019 08:44:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571759058; cv=none;
         d=google.com; s=arc-20160816;
-        b=OQ45rd5zv0tI/Z8JtBxX3l/CSFrEMsl0YmST9shZ9JD0//lMPRnukw3PJqes2wi5m8
-         3zW9FMM6d7u55v99zeptpv+h5ia16ZAVxkQBNgM5/RSGp1YzNBlJ6ahJ6/a4pGTiFFcK
-         JjFvSKjzKUtIfePp/Lzi6BlJS1YpK70gb73Or790K9WOb9ttnqnooFxOjjkSqhLeRAue
-         ZCytDBqYsM0B4nP2klOciYr7Gy11XxjisSx3kPIJ+c7gOFJjh9Tc28M9dBifAhA4mVH4
-         B5kuOOCK1UaKDKDAyU3bqJc94IzvKZ0vilT9TqGTv4mZ45yX/t5XUGZXPyPx8/TVNxcR
-         KbTw==
+        b=FVUKK0XAiF+AL7FW9DPjliBFOW1a68t6grM+1i7nlMhngjg5BO94FvfRTfU1m2UZ7j
+         xM5nqE3eAX/bXdYG59RZt8VcJsRACHZUtwOVSclcmbIH6p365XzhXMN7KLbb9L6KZRw+
+         8e0Yj0X+Sdki+tyVrT/5bwjuJFg+Ga/abBTZJ4adrvliiwlaF8Joejnypw7Ln5RsLTMe
+         0HWkrp8WLjxXdsho+c3mmrwPW+HPr3cvnVsOIIBk4F7oW0OiT29ATYy+VqRXUklyvi7R
+         EFEpqxQXBg0tRvPI25Hz6bFAOMckEB+pXuQA521eVRwhJAx/2tfopoualtrJ4xwdD5qJ
+         7/JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=ADF4pNLKPcIQra141jeDBu7JM40/h0QZVL+PkKIQ7Bk=;
-        b=cKbtpvx0MZoRmJhiCgifI2i2h+UW6jOf6WGIfX2fI4LTEMa9zV9qw3yyeW0JL7j8QQ
-         38rmDVAjamKFqJhws1apjvSmXiupAegjbwZmMNAOOj8M4MAIxul7QVXd8mpissPuRRe1
-         +93KHg2P74JCwzAM8ufwSRCEuOqOqTEFsHlPYGudZMseA+6Jx2s/VqptsoFxdAn/Iv2W
-         2IkoRXZalqs3cU8iumRdyf2i3sxp63F6Ih+p1mjSvLEIrqUiVpCJBc5oEfEyBaHQWLGc
-         gcPuq0/PS9DAhyYG3AYYA90C1hQz6qZWVcxDWNqxaPRkiftegjpIH2djdXQ58jRLOtYP
-         noCg==
+        bh=3UvwCURAdhSeJtnX3N66EUsZ6znlKuIw+tRWhdxOI8Q=;
+        b=XHpnVirZDBJZ0M/mwseG88Z18ewQkrAaJOSHP2BTmrZBxiWBVTjlIsnnvWebjI044+
+         YwjPwdIAgZaXjqXIRM28vG3K/YAGTZTPhauex8jUjWZu8YnD9OxWU/pcZfBqdRfi8P9m
+         1cyu3vxeyTk5qeohU0mcdOmrPZwT14akivDhPeKMqgq6fVIwqkTF06Zduxu+BujxmPle
+         mV6LgJPf6/VkGklU4g/EniNMupHm273NQoNUDZSyGhE1FMh1ut3/rTsfBgIEDZVfaDfM
+         RES7tV/XraJVUM1rvBtVyeIDqMiuiNGTT0naDsIw1liF+JBzJUKSPO7BU4WnU54V+DrE
+         b1WA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xzUOGSCM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=hYvmolYh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e4si10908003ejd.32.2019.10.22.08.42.33
+        by mx.google.com with ESMTPS id a7si9968021qvy.136.2019.10.22.08.44.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2019 08:42:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Oct 2019 08:44:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xzUOGSCM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=hYvmolYh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33458 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33568 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMwIq-0006x3-CW
-	for alex.bennee@linaro.org; Tue, 22 Oct 2019 11:42:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58041)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMwKX-0001HQ-Ml
+	for alex.bennee@linaro.org; Tue, 22 Oct 2019 11:44:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59038)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iMwEv-00051I-Ky
- for qemu-devel@nongnu.org; Tue, 22 Oct 2019 11:38:30 -0400
+ (envelope-from <beata.michalska@linaro.org>) id 1iMwIR-00089F-0c
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 11:42:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iMwEu-000541-A9
- for qemu-devel@nongnu.org; Tue, 22 Oct 2019 11:38:29 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:47026)
+ (envelope-from <beata.michalska@linaro.org>) id 1iMwIO-0007pa-D8
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 11:42:06 -0400
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:34206)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iMwEu-00053Z-0y
- for qemu-devel@nongnu.org; Tue, 22 Oct 2019 11:38:28 -0400
-Received: by mail-oi1-x242.google.com with SMTP id k25so14523877oiw.13
- for <qemu-devel@nongnu.org>; Tue, 22 Oct 2019 08:38:27 -0700 (PDT)
+ (Exim 4.71) (envelope-from <beata.michalska@linaro.org>)
+ id 1iMwIM-0007mE-Qy
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 11:42:04 -0400
+Received: by mail-il1-x144.google.com with SMTP id a13so1529412ilp.1
+ for <qemu-arm@nongnu.org>; Tue, 22 Oct 2019 08:42:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ADF4pNLKPcIQra141jeDBu7JM40/h0QZVL+PkKIQ7Bk=;
- b=xzUOGSCM01+NSKp0nRWfikesFotJPXXijVD9E4n7ljXvfw1d9HYAoaSjXd2nxkPznu
- RT89/uJfGrDnfcGsbPErDrDr+WA30HZ8zyQwCTgO1OFIhkDag4NDVUna58Pemaq8faU2
- Arxx2pPbOPMRLSLfOGJxxY3+y15LbQ5thZp98yKViAyreK4YMuEX8Z/j1TlQCYpWNiUI
- ZCCYBh4XSd5Y3gSZvONnj4UZtVJlfxibPbClM8t9JXRn/4OJcLmk1sdEPW01WVDTr+3E
- jxx9bWE7mYdhvqqWFYR1OnR1h33tnREytQaLn+nQCHHquEb4yNY0AkTEOXqzDzkrFvZJ
- KFVQ==
+ :cc; bh=3UvwCURAdhSeJtnX3N66EUsZ6znlKuIw+tRWhdxOI8Q=;
+ b=hYvmolYh13GgwlSe1swT0cQZZYOwlO9px0SdW/Zjxtu3PmYQmdBWN9HI0nE3yEg5wd
+ mnBC/43jUmUsHUL1GYLIfP4k7fxIReCl/IZ9FVxH8RZJnK9llcgi7HE327Zbl1GIk1XN
+ nlqDZtimWwkca20MkiZ2jUR/o2FNF3uXbvhqfpBA2jLU4q5frU0MJ90jLC6yUHDC2n2R
+ qXD0lAuJwg/VhZYm2R8Lmy62Tq0GLuMHqtGTmgjDLdb62aSVWtTFGBnfaPiHK0i7dCKz
+ omjMCB3sI9zEEgR22xfMnFArA21/NP/ihlDEQHbmS7O0jLx78APkYCSpQ4PgdQFCB7Hp
+ 5v/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ADF4pNLKPcIQra141jeDBu7JM40/h0QZVL+PkKIQ7Bk=;
- b=NXVtF4ME3tALJ7xiOlPCcXuehq6kSTNX4RAD9+r6pTQZ21uRbIGV9FS/ixz6f0ch86
- TtpbZ0hDDnyaQRdiroQ6w++5X+VvXzMdQTzxsSqf6S9GwGKGfRgaqbFCJy1NhwyxZ2WU
- JfHO6eH5I0p2C3Vr7ueLbD3crx8tcuMk4zJ2YhlfCfpXN9itH36764dWNhfT/9X0cbkj
- obYCm2hTrXsMcHAAWLTt3tDdGlPxwcpYe0kfgkyk0gH5ORUiJFwU27TTzk/CRqXhu9MW
- m783Gd3tHPJqr5QD8JdsQ6lLyAxSN1BuR3L0AWDx6Lnw/ljATvCw0mdo7KNRTEv/OJ/L
- xLWA==
-X-Gm-Message-State: APjAAAVVqyQC/db91LT51qiYdKSNh7G3c/yKdprAYvgx9K2MCk7UVb2L
- 6ib+apcAWSZguhJaGY7xtjvHQ1RUOwjMyHQpuHbJAfuyXek=
-X-Received: by 2002:a05:6808:9:: with SMTP id u9mr3599215oic.98.1571758706887; 
- Tue, 22 Oct 2019 08:38:26 -0700 (PDT)
+ bh=3UvwCURAdhSeJtnX3N66EUsZ6znlKuIw+tRWhdxOI8Q=;
+ b=WIeCA778DRI4EIEc8KJv4wB94WVl+6g5I8L67WdHGkiDBKSPth4lEUk9MEIQhatuBU
+ M8ugDfqhTJqyAgQuHjRMvMfBcedc6WmuD1WnwtNQPV0i2PvcytnDIXfW68zvVM3XdVcf
+ aAYEIJEyNdkWs8SaoBWNAA2aif4MmrfZsLIsjFoOS3uM3NzVsQevr6UAjOqmuhmsjnA+
+ vCq0vNftw/dx058cxDYLRNQOmkxjDynfqh/PN0xdGtRnkixXSz9GDm21bnkK+QgEU1gI
+ M8c6rXLlQPCQHxA0p8TJFZnOb0TxUQtBTsLe5DynsX8DJHSY0TBzLOtXWbo3JOKXvaeW
+ N6VQ==
+X-Gm-Message-State: APjAAAW4v9FPTQDyhFyOOZvPofpRtjCcz5OjhnZtDuOD4tU4GkX00UF6
+ z0xx29OLzOpLhN0qQOW54xDhGp/KEApg6eQkJs04oA==
+X-Received: by 2002:a92:2406:: with SMTP id k6mr34315753ilk.260.1571758920300; 
+ Tue, 22 Oct 2019 08:42:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20191018174431.1784-1-richard.henderson@linaro.org>
- <CAFEAcA-MyKoA63UF6DYQ6J-dKihYn9iyG09eFCgWT8j4OqsQnw@mail.gmail.com>
-In-Reply-To: <CAFEAcA-MyKoA63UF6DYQ6J-dKihYn9iyG09eFCgWT8j4OqsQnw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Oct 2019 16:38:15 +0100
-Message-ID: <CAFEAcA-Xj-6CdVzgfcVONipApD5b5PZ84nPnvbbOQjQkqQLnqA@mail.gmail.com>
-Subject: Re: [PATCH v8 00/22] target/arm: Reduce overhead of
- cpu_get_tb_cpu_state
-To: Richard Henderson <richard.henderson@linaro.org>
+References: <20191016085408.24360-1-drjones@redhat.com>
+ <20191016085408.24360-4-drjones@redhat.com>
+In-Reply-To: <20191016085408.24360-4-drjones@redhat.com>
+From: Beata Michalska <beata.michalska@linaro.org>
+Date: Tue, 22 Oct 2019 16:41:47 +0100
+Message-ID: <CADSWDzu_QvnmSg1RMBsxQ0Hj81TuaeZqg7NsvHnagemtTnWHow@mail.gmail.com>
+Subject: Re: [PATCH v6 3/9] target/arm: Allow SVE to be disabled via a CPU
+ property
+To: Andrew Jones <drjones@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::144
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sl0Ib6vwm+bo
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ armbru@redhat.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ imammedo@redhat.com, eblake@redhat.com, Dave.Martin@arm.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jANYnym6/gHt
 
-On Tue, 22 Oct 2019 at 13:47, Peter Maydell <peter.maydell@linaro.org> wrote:
+Hi Andrew
+
+On Wed, 16 Oct 2019 at 09:57, Andrew Jones <drjones@redhat.com> wrote:
 >
-> On Fri, 18 Oct 2019 at 18:44, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
-> >
-> > Changes since v7:
-> >   * Rebuild hflags for all successful nvic writes (Peter).
-> >   * Rebuild hflags for Xscale sctlr writes (Peter).
-> >
-> > Changes since v6:
-> >   * Regen hflags in two more places for m-profile (patch 19).
-> >
-> > Changes since v5:
-> >   * Fix the debug assertion ifdef in the final patch.
-> >   * Add more calls to arm_rebuild_hflags: CPSR and M-profile
-> >     These become two new patches, 18 & 19.
-> >   * Update some comments per review. (Alex)
-> >
-> > Changes since v4:
-> >   * Split patch 1 into 15 smaller patches.
-> >   * Cache the new DEBUG_TARGET_EL field.
-> >   * Split out m-profile hflags separately from a-profile 32-bit.
-> >   * Move around non-cached tb flags as well, avoiding repetitive
-> >     checks for m-profile or other mutually exclusive conditions.
-> >
-> >   I haven't officially re-run the performance test quoted in the
-> >   last patch, but I have eyeballed "perf top", and have dug into
-> >   the compiled code a bit, which resulted in a few of the new
-> >   cleanup patches (e.g. cs_base, arm_mmu_idx_el, and
-> >   arm_cpu_data_is_big_endian).
-> > ...
-> >
-> >
-> > r~
+> Since 97a28b0eeac14 ("target/arm: Allow VFP and Neon to be disabled via
+> a CPU property") we can disable the 'max' cpu model's VFP and neon
+> features, but there's no way to disable SVE. Add the 'sve=on|off'
+> property to give it that flexibility. We also rename
+> cpu_max_get/set_sve_vq to cpu_max_get/set_sve_max_vq in order for them
+> to follow the typical *_get/set_<property-name> pattern.
+>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Reviewed-by: Beata Michalska <beata.michalska@linaro.org>
+
+Thanks.
+
+BR
+Beata
+> ---
+>  target/arm/cpu.c         |  3 ++-
+>  target/arm/cpu64.c       | 52 ++++++++++++++++++++++++++++++++++------
+>  target/arm/monitor.c     |  2 +-
+>  tests/arm-cpu-features.c |  1 +
+>  4 files changed, 49 insertions(+), 9 deletions(-)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 13813fb21354..2a1e95e90df3 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -200,7 +200,8 @@ static void arm_cpu_reset(CPUState *s)
+>          env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 16, 2, 3);
+>          env->cp15.cptr_el[3] |= CPTR_EZ;
+>          /* with maximum vector length */
+> -        env->vfp.zcr_el[1] = cpu->sve_max_vq - 1;
+> +        env->vfp.zcr_el[1] = cpu_isar_feature(aa64_sve, cpu) ?
+> +                             cpu->sve_max_vq - 1 : 0;
+>          env->vfp.zcr_el[2] = env->vfp.zcr_el[1];
+>          env->vfp.zcr_el[3] = env->vfp.zcr_el[1];
+>          /*
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index d7f5bf610a7d..89a8ae77fe84 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -256,15 +256,23 @@ static void aarch64_a72_initfn(Object *obj)
+>      define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+>  }
+>
+> -static void cpu_max_get_sve_vq(Object *obj, Visitor *v, const char *name,
+> -                               void *opaque, Error **errp)
+> +static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> +                                   void *opaque, Error **errp)
+>  {
+>      ARMCPU *cpu = ARM_CPU(obj);
+> -    visit_type_uint32(v, name, &cpu->sve_max_vq, errp);
+> +    uint32_t value;
+> +
+> +    /* All vector lengths are disabled when SVE is off. */
+> +    if (!cpu_isar_feature(aa64_sve, cpu)) {
+> +        value = 0;
+> +    } else {
+> +        value = cpu->sve_max_vq;
+> +    }
+> +    visit_type_uint32(v, name, &value, errp);
+>  }
+>
+> -static void cpu_max_set_sve_vq(Object *obj, Visitor *v, const char *name,
+> -                               void *opaque, Error **errp)
+> +static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> +                                   void *opaque, Error **errp)
+>  {
+>      ARMCPU *cpu = ARM_CPU(obj);
+>      Error *err = NULL;
+> @@ -279,6 +287,34 @@ static void cpu_max_set_sve_vq(Object *obj, Visitor *v, const char *name,
+>      error_propagate(errp, err);
+>  }
+>
+> +static void cpu_arm_get_sve(Object *obj, Visitor *v, const char *name,
+> +                            void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    bool value = cpu_isar_feature(aa64_sve, cpu);
+> +
+> +    visit_type_bool(v, name, &value, errp);
+> +}
+> +
+> +static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
+> +                            void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    Error *err = NULL;
+> +    bool value;
+> +    uint64_t t;
+> +
+> +    visit_type_bool(v, name, &value, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    t = cpu->isar.id_aa64pfr0;
+> +    t = FIELD_DP64(t, ID_AA64PFR0, SVE, value);
+> +    cpu->isar.id_aa64pfr0 = t;
+> +}
+> +
+>  /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
+>   * otherwise, a CPU with as many features enabled as our emulation supports.
+>   * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
+> @@ -391,8 +427,10 @@ static void aarch64_max_initfn(Object *obj)
+>  #endif
+>
+>          cpu->sve_max_vq = ARM_MAX_VQ;
+> -        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
+> -                            cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
+> +        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
+> +                            cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
+> +        object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
+> +                            cpu_arm_set_sve, NULL, NULL, &error_fatal);
+>      }
+>  }
+>
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index 560970de7f5c..2209b27b9a08 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+> @@ -97,7 +97,7 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+>   * then the order that considers those dependencies must be used.
+>   */
+>  static const char *cpu_model_advertised_features[] = {
+> -    "aarch64", "pmu",
+> +    "aarch64", "pmu", "sve",
+>      NULL
+>  };
+>
+> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
+> index 198ff6d6b495..202bc0e3e823 100644
+> --- a/tests/arm-cpu-features.c
+> +++ b/tests/arm-cpu-features.c
+> @@ -179,6 +179,7 @@ static void test_query_cpu_model_expansion(const void *data)
+>
+>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+>          assert_has_feature(qts, "max", "aarch64");
+> +        assert_has_feature(qts, "max", "sve");
+>          assert_has_feature(qts, "cortex-a57", "pmu");
+>          assert_has_feature(qts, "cortex-a57", "aarch64");
+>
+> --
+> 2.21.0
 >
 >
->
-> Applied to target-arm.next, thanks.
-
-Turns out this asserts in qemu-armeb :-(
-
-/home/petmay01/linaro/qemu-for-merges/build/all-linux-static/armeb-linux-user/qemu-armeb
--L ./gnemul/qemu-armeb armeb/ls -l dummyfile
-qemu-armeb: /home/petmay01/linaro/qemu-for-merges/target/arm/helper.c:11267:
-cpu_get_tb_cpu_state: Assertion `flags ==
-rebuild_hflags_internal(env)' failed.
-qemu: uncaught target signal 11 (Segmentation fault) - core dumped
-Segmentation fault (core dumped)
-
-Dropping this series again for the moment.
-
-thanks
--- PMM

@@ -1,101 +1,101 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp155755wrq;
-        Tue, 22 Oct 2019 09:46:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyg0PqLUFR7Jm+DfKRl+jO4fsX6gWkUuUzaFr9DElJfo//S+/Bb1cz0T/90lfGWrTL7Pb2h
-X-Received: by 2002:a17:906:e290:: with SMTP id gg16mr9246874ejb.280.1571762809829;
-        Tue, 22 Oct 2019 09:46:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571762809; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp157658wrq;
+        Tue, 22 Oct 2019 09:48:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzm3bi38jEd1zIpINzcsVy2lxUnqdrsEoZHfeeZO6+JaeWLJF7x4YxKURSgjJuyR4X8NQDF
+X-Received: by 2002:a17:906:6848:: with SMTP id a8mr13554299ejs.306.1571762908977;
+        Tue, 22 Oct 2019 09:48:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571762908; cv=none;
         d=google.com; s=arc-20160816;
-        b=NsM337HOIa0+4ykkwwOA0B5tYcarSCX7+qbUSWLlCjROn0iLOS9hpLEGRer3m1OJRb
-         5UjtB2iWSKTkQgH8t96dSqtWc3o9mgT+LWKfUQNHD1k90CYeXmdSnQaezZS5QSwcS9l5
-         dDcjH5q1QDsBWPO322EP3p3ePLwfnwEK3xTQPHWP7RCrYOZsrhR+WbMiPy90uIL7z0KZ
-         QwUUx/K2boICCmUDolDRWdH8WServ6jsdQIsAM/Ut9WBZhLsXVftIdebpSPigMS3Z0kR
-         KenH8ivInmlrd8JtlhaDEoauJ2aOj/d6NdAMoScJNVfJF9hpMxme4q6Np+6Cg5WUqNAt
-         5J5A==
+        b=0b91JldAVUzAohBpK4PBXyC1sHvQwvLh3LltzmSxcGo9WchstrwNXBTvIAP3qMvMN4
+         e0Cg/2RyZ1HVLiVNo+7I/GcvIquajDIlwcMIiaDtfUEosGCssTpmsPzy7fEe6lqhyL16
+         kBkPdA0Xth6UyiLFyie0J0bVX3rcr5JS/e4AI4wDjNYYJidfzPC8gM/qVjZ9vU5QgHqX
+         nwCsPpzWdfBVlEJSrVOq7MmfCE52wiCHuTWyISCI1vhZmvkh+4xVQYfRJB/mYHrSuHTj
+         pQjUc4b0MQRQzfCIBQsrYR9DtDMWWyE0cvc8XFUDTRTtQhyzlkxiMgwwj3o2GqVjE208
+         UUMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=S7GLYTWYwKDPqMMyl5E+zvOg9SPh+U8P5YdjfmkwQj8=;
-        b=hPwmke22jeTJsvr37Cytoc96jlKx05lOxSa4UQJ7PVnn8Eu7XDID1R/Ftb0bgc6puS
-         jGoW/GfDzdnkkPDVjrPGNFNnR7yhXy9U1WTdrMfaVBUvm0ufRw4AASzQR/EXSz5+RkBS
-         YtGQKjoMrDbamWz6kS262uVPvp6KboPXnwy3mpZO5m4GJPH0d60JZnMIZKIW1d4bE0kh
-         zAaAu9pGbKfZXIdl9GzJ385tgH7Tq7/0QEm0ZR7bTqQ9Zr0hfp5T4AVvyzUqpQ4OyHv+
-         Qas23Uq8hxl82giDo8w+zg1wf+3psR6OrnivME2GG1CJ82VnUi23St/XgdoH3CrvdM5F
-         d0cg==
+        bh=RXMHFBShVmiszzOvNW17FM5H8iVamBoj76040flZLAo=;
+        b=LjATcY03mOFnI0Whzm9OxGIaR7qwFGhPUiB23kRBJJGiEKci2ncVT89qSUgGqwagMP
+         zgS8CJDCPUDlfB+sG7GlVldybt9+663Ot4ULhI6J+gg+RJLhf7r93EQFFSfpHSwQhqNm
+         n4Cgz7jY/MsCiOKr4/oxrTMadhlK3mqIA4ro8TFJgDLTb9Ob6QCDfM+NMUfLKjnTpyza
+         yPi5p0vh/7x4iscZCx2k1JxmxmIjmEsxlnaVXNbMzAgdsjsOyESZtYGBYgwkXhqYw/2H
+         xPh9BnPGDPGaKyMTS72FNXnEcceMnN+1SMb+DSDH7sJ4I2a+OwEMfOeKUnmhB92QUoD4
+         9C2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mWSfDd1r;
+       dkim=fail header.i=@linaro.org header.s=google header.b=oMctjm9S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qw15si3759934ejb.137.2019.10.22.09.46.49
+        by mx.google.com with ESMTPS id v27si10779887ejb.182.2019.10.22.09.48.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2019 09:46:49 -0700 (PDT)
+        Tue, 22 Oct 2019 09:48:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mWSfDd1r;
+       dkim=fail header.i=@linaro.org header.s=google header.b=oMctjm9S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36122 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMxJ2-0001Vh-LQ
-	for alex.bennee@linaro.org; Tue, 22 Oct 2019 12:46:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40577)
+	id 1iMxKd-00035F-EV
+	for alex.bennee@linaro.org; Tue, 22 Oct 2019 12:48:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40200)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iMx76-0003F5-IC
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:34:29 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iMx4o-0001NO-Jj
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:32:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iMx75-0004Pf-BH
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:34:28 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:42358)
+ (envelope-from <peter.maydell@linaro.org>) id 1iMx4n-00039x-8k
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:32:06 -0400
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:41726)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iMx75-0004Oz-0v
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:34:27 -0400
-Received: by mail-io1-xd44.google.com with SMTP id i26so11885819iog.9
- for <qemu-arm@nongnu.org>; Tue, 22 Oct 2019 09:34:26 -0700 (PDT)
+ id 1iMx4n-00039i-3g
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:32:05 -0400
+Received: by mail-il1-x142.google.com with SMTP id z10so16028239ilo.8
+ for <qemu-arm@nongnu.org>; Tue, 22 Oct 2019 09:32:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=S7GLYTWYwKDPqMMyl5E+zvOg9SPh+U8P5YdjfmkwQj8=;
- b=mWSfDd1rr5Red/bw5zq3ut4i5XC3u+rCoQii8nz0HvyGNBf4TyWiSHqxBqUMMTXH8L
- 9rRUBUHKlecIOD6Psm9Y+11k+Afxv0JZaMblfQSHSD249mBbjQpVkI56NMA35ieOPL+K
- yvNYbI4q92DqYJWGkp83B/+lAKD3sLuwc0gxuWffK2mzLjwYgRnL6oJml1lvl/HoOUji
- QGHGqjLwPcyB4UH23q+GkMMl+CDYGzsPTQRSW0S7yvLfefIXgUI3BbV7hsEkyg6E4mVz
- +ReBPcIOaJnPzW0bCaoOd83SFFrJ3JIwJG+N0Ny34ZZihaXIzNIkBiFz2Dnm/7Z6TdKG
- m5dA==
+ bh=RXMHFBShVmiszzOvNW17FM5H8iVamBoj76040flZLAo=;
+ b=oMctjm9SIIbHaWX55nm4tLFuSOKeqkHVaA54WQWXrI/vaVBeFyzHudjnV0IwNGFCUa
+ EG9sTJ5877Qnw8xFrJjTp6bY810f2cyAP1gLKCzoBpyKZulbye31KRKcbEenNRh0loWI
+ cKXFdxRpeIdhZAWAspB+tRJhkYu9FOhZXs61nMJS7S0ePH0Us/RLggmlaTvPIQONKZBk
+ lJNx04Su8OtYbdBwnLB72V5TzvNPPSc1+V907fbuAScShyoh1UV+M7nuOoRkYj0JBGxP
+ 9a7bnZvS4F65KxPCGLy7/jC1DvPoRwwEutMusYZcZiOePJYOS19vbPJTq3XVeXaxCHB8
+ K0MQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=S7GLYTWYwKDPqMMyl5E+zvOg9SPh+U8P5YdjfmkwQj8=;
- b=FN0riKiQzdZiSUrteeolWLEAWdIGA5hoM4wqhM6Zc6xAkxWGCkDdf+W/W2rPiLl3ZT
- VmUbwv3wl7Bo0ipQq674r0z8J/cfgKjHvBQ2k5ABPDWgr3LYCs2jGY4g2Wgn5P15wcH5
- 7Z6n6yDMx3oeI43fIaCi6kTsEpBmM0xPUyBmZe5uc07opnjFEE0ShZHD7nrY++EqFcar
- sBSANCLOV2LYry17BpywpAGTGV4HRxRNgJxPnd7L1ZSPXKFhnRJAaVdDE2YFOyZWFxOu
- VzM39fMubev94X2FXKTJj2WUaxBpRd3wWVEpg1QFy3DC/iP6o6QbIE4o7r3pxj/PfMLw
- 3aJw==
-X-Gm-Message-State: APjAAAV1sq7TvnHFJ7RBm+jQ5skzM4fJ62Zr59W264FA72gNhMXqI4LH
- B1wI+EXuwGRcKUFJWo3z+Xyjoe1zpvaYA0LDqLkXNQ==
-X-Received: by 2002:a5e:8219:: with SMTP id l25mr4712782iom.292.1571762066131; 
- Tue, 22 Oct 2019 09:34:26 -0700 (PDT)
+ bh=RXMHFBShVmiszzOvNW17FM5H8iVamBoj76040flZLAo=;
+ b=idmE/uS1SOCXBG8zkIzA7wg0IO7zlTXZEufcAntkHm3syX4iijs9r8j7bnoQdp12UQ
+ cLPuf18bzaYyHBrmZgRRkT5EWUuk8BOftT4KluzsKxTPSA7bZ16jE++P6KHssKNfI27l
+ zvUUppzmQZXxM2Pv8lQ6q09uy0Jx5fcvmqkmgHr71rEVXuHQRdNCeBYFt5fcZ/YT4/ei
+ jcDM4nTXjGHHdsfZNq2CwNpPHfPIGUh5zhL5rUdlPrQMtJnUtpsNFGkINBwjt1vjrMs4
+ wgDosXmyCwKP8INxuMjPPZRPPN64f54uq3bTtoTPHZ0eL628YafL8V9OaszCI+PQ+xg7
+ z05g==
+X-Gm-Message-State: APjAAAWSO3rSiGkcdlEwmMcBwQBwscls8sPWNgjMpWNExGNdH+hHgaB4
+ Zqu4MBq5z9/fxqoMqcJVIT/iK4eJA7SGqCdeot10Tw==
+X-Received: by 2002:a92:dac4:: with SMTP id o4mr34780227ilq.137.1571761924033; 
+ Tue, 22 Oct 2019 09:32:04 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191022162137.27161-1-marcandre.lureau@redhat.com>
- <20191022162137.27161-14-marcandre.lureau@redhat.com>
-In-Reply-To: <20191022162137.27161-14-marcandre.lureau@redhat.com>
+ <20191022162137.27161-11-marcandre.lureau@redhat.com>
+In-Reply-To: <20191022162137.27161-11-marcandre.lureau@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Oct 2019 17:34:14 +0100
-Message-ID: <CAFEAcA8B9x0nWk38bOSH_7NmD8FU+pRd22OTN2NFdvNVhCAktg@mail.gmail.com>
-Subject: Re: [PATCH v2 13/28] serial: factor out serial_mm_connect
+Date: Tue, 22 Oct 2019 17:31:51 +0100
+Message-ID: <CAFEAcA-5DkdB-iUHBRONB0SHO6rYmU7ZzdojJd5iZbQdLHswTQ@mail.gmail.com>
+Subject: Re: [PATCH v2 10/28] serial: add "base" property
 To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d44
+X-Received-From: 2607:f8b0:4864:20::142
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,60 +107,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Magnus Damm <magnus.damm@gmail.com>, Jason Wang <jasowang@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Fabien Chouteau <chouteau@adacore.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Richard Henderson <rth@twiddle.net>
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aTViT9BvBZmU
+X-TUID: pWeOxWRsb81i
 
 On Tue, 22 Oct 2019 at 17:23, Marc-Andr=C3=A9 Lureau
 <marcandre.lureau@redhat.com> wrote:
 >
-> Split IRQ and memory region initialization in a different function to
-> be reused by callers that realize the serial device themself, and
-> connect irq/mem after.
->
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->  hw/char/serial.c         | 20 +++++++++++++-------
->  include/hw/char/serial.h |  3 +++
->  2 files changed, 16 insertions(+), 7 deletions(-)
+>  hw/char/serial.c         | 3 +++
+>  include/hw/char/serial.h | 1 +
+>  2 files changed, 4 insertions(+)
 >
 > diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index 72d48b5cd8..41548e159c 100644
+> index 0ae52ec60c..4748a2b023 100644
 > --- a/hw/char/serial.c
 > +++ b/hw/char/serial.c
-> @@ -1078,27 +1078,33 @@ static const MemoryRegionOps serial_mm_ops[3] =3D=
- {
->      },
+> @@ -990,6 +990,7 @@ SerialState *serial_init(int base, qemu_irq irq, int =
+baudbase,
+>      qdev_connect_gpio_out_named(dev, "serial-irq", 0, irq);
+>      qdev_prop_set_uint32(dev, "baudbase", baudbase);
+>      qdev_prop_set_chr(dev, "chardev", chr);
+> +    qdev_prop_set_uint64(dev, "base", base);
+>      serial_realize_core(s, &error_fatal);
+>      qdev_set_legacy_instance_id(dev, base, 2);
+>      qdev_init_nofail(dev);
+> @@ -1003,6 +1004,7 @@ SerialState *serial_init(int base, qemu_irq irq, in=
+t baudbase,
+>  static Property serial_properties[] =3D {
+>      DEFINE_PROP_CHR("chardev", SerialState, chr),
+>      DEFINE_PROP_UINT32("baudbase", SerialState, baudbase, 115200),
+> +    DEFINE_PROP_UINT64("base", SerialState, base, 0),
+>      DEFINE_PROP_END_OF_LIST(),
 >  };
 >
-> +void serial_mm_connect(SerialMMState *self, enum device_endian end,
-> +                       MemoryRegion *address_space, qemu_irq irq)
-> +{
-> +    SerialState *s =3D SERIAL(self);
-> +
-> +    qdev_connect_gpio_out_named(DEVICE(self), "serial-irq", 0, irq);
-> +    memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], self,
-> +                          "serial", 8 << self->regshift);
-> +    memory_region_add_subregion(address_space, s->base, &s->io);
-> +}
+> @@ -1083,6 +1085,7 @@ SerialState *serial_mm_init(MemoryRegion *address_s=
+pace,
+>      qdev_prop_set_uint32(dev, "baudbase", baudbase);
+>      qdev_prop_set_chr(dev, "chardev", chr);
+>      qdev_prop_set_uint8(dev, "regshift", regshift);
+> +    qdev_prop_set_uint64(dev, "base", base);
+>
+>      serial_realize_core(s, &error_fatal);
+>      qdev_set_legacy_instance_id(DEVICE(s), base, 2);
+> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+> index ecbd3f1b40..6e9c9768ed 100644
+> --- a/include/hw/char/serial.h
+> +++ b/include/hw/char/serial.h
+> @@ -77,6 +77,7 @@ typedef struct SerialState {
+>
+>      QEMUTimer *modem_status_poll;
+>      MemoryRegion io;
+> +    uint64_t base;
+>  } SerialState;
 
-This function isn't needed if you make SerialMMState a sysbus
-device which provides the MMIO region and the IRQ in the
-usual way.
+Devices shouldn't have properties to set their MMIO base
+address -- instead the memory-mapped serial device should
+be a child of TYPE_SYSBUS_DEVICE, and should provide
+a sysbus mmio region, which users of the device can
+map at the address they want to map the registers.
 
 thanks
 -- PMM

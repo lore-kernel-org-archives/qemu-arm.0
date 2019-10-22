@@ -1,99 +1,99 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp137244wrq;
-        Tue, 22 Oct 2019 09:30:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyLOwEcmZcW82NgIOjuWwBBVtDDIvFpzAbF/ZCFOGeJMKn/Iww+B4wfXpw5egZlo8/AXnoL
-X-Received: by 2002:a50:890c:: with SMTP id e12mr14133867ede.277.1571761814722;
-        Tue, 22 Oct 2019 09:30:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571761814; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp139664wrq;
+        Tue, 22 Oct 2019 09:32:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzh/yuvoiOFy8d6AvxLEq483vJaEOVa9ZUXtz5sdhb4FUyjI+f+bSlKhvcxkn8OSpbnWnI0
+X-Received: by 2002:a05:6402:1492:: with SMTP id e18mr31720742edv.140.1571761935437;
+        Tue, 22 Oct 2019 09:32:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571761935; cv=none;
         d=google.com; s=arc-20160816;
-        b=EPW4dy/y8PoNDqPLRchm1OulITdShVC9oDWpaKCX/Eoos/azeYFFt8MlC17GPUFCtK
-         YE7SLbgUZwQQMyrmRe6bVgthkCIUgGNs8f1DLqmbDE5oj2T+gKRDbHsrzuSLjF3W2+nj
-         KTRyz/13JZZMPofjOb4P/ZS03sPTMQmJGjRh85ylGlqfQ8tw6FiicrrsFnn24JfYdTp6
-         ehw1wEfA6sFCd5UPYfm2lkAd5JmIh2n1wwOnFlx67Fx3CK+4l8UoIyRFhSCRDfFOCHxZ
-         OKZ65DENJI/cPjIlwO24UD6nk4q111VPumkLUrIfTSlfRdGxsd9M0dxHz8uWKgmL9bJ7
-         ifeQ==
+        b=IXd60coe4p0lqexY/u47FpOSNTgis4eUwTqnH8YKMsq1xf5Yh2ENGBB0A76k3H2dZp
+         Xtccf65n/lixCnZqq/jDWqaWScBCFKe1MuFVvz3MWss0ayH/IdCdF5HeHpHmGtMzGGiA
+         4V5V76q91CJcBNztbWMWR/2YGnn5zWYLvuKPVBp6P6YUqtjazCxhST2JvzTY1jEuZKSb
+         D1Gd6HTsxq4dzk5v/6MnfDRCNfHK7cJ/3BachWg0bx7N69jR3/DLsiqMn/c/Ui/vOd10
+         bE6kzO9IDMK0kHVfzIS5q4TUAdWD3n9CGh5Ulvv0S5TppEa2YmNeOc4FhOp+crUKSJQx
+         PlJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZeeaRqzIa0oxfVxKQeUZwy/VQ2+Sov4amNBrdq9hGnU=;
-        b=NxTfu5tkv2sEs0QWYTIb2RRGOhoDXPpHpHKSkfvtR/fhkkSUwsaFyvrhpPldEyx92P
-         7Eh6/e7XP/7nhJ3IxrkGusN5JAHaywG7aZWdtb2XRXARqY4Q6FoY5+xdf/zu1j/HZOu8
-         daVCGmd+yuM4gZGmbcZ2QJ9B8Snz+T7odYLi4l3fYgg6uqIl8kYeniOOGly5Y/VrAsTC
-         ZCRXBpO0kr8ixBCkUTorGzLMrSkFhJ+DhOI2fUHhZ26KO14wKG9mvSCgNEhX0waEMby2
-         89R+NSa8ecx3K0FB6Ioqv3hpv8dN46Hu49zG6c274o4uqWqsbq2DWUrBXeveFkYYjUBg
-         9HaQ==
+        bh=vNKikGBgZ6nGFsKZ9PDarJpXzXz/Um+xb2CYFyOHYus=;
+        b=ZYinavFAtqMDtwK2ao5lLZEmcu811MD8ZsBuwUWDjrGJDEWtSwSO+ulU+hfL0Y2ebX
+         qiRWt1GC+ynyoKXpYdi+SNoE4vDF1cyYyCZW29md32YLU+eH7jDHSGBpUDckzNXRdkYy
+         TFr4F+PNwCaGJjlz6onOoqti2FLcW9W6emxyKDfzmyzTDEJxSdRqUXVegiyHLWJY1SEG
+         7Op4l5EzUANT7TK5NTvnfli6fWBBHy2BpxtRfHczYRCxLQf75AI7fxkfoPJ+lsadAvJI
+         qjwg83yLjfAB0nugI2ryP/1LR9IJNMU2M7zYDNHO1go/TMjTGxYZgOzyWJdiwKRQ7rj7
+         XbeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=K15q4WjM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ok9Vj4L4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k43si1895294edb.150.2019.10.22.09.30.14
+        by mx.google.com with ESMTPS id f12si3623249edc.1.2019.10.22.09.32.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2019 09:30:14 -0700 (PDT)
+        Tue, 22 Oct 2019 09:32:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=K15q4WjM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ok9Vj4L4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35744 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35762 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMx2y-00085u-Sg
-	for alex.bennee@linaro.org; Tue, 22 Oct 2019 12:30:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38288)
+	id 1iMx4w-0001Ah-1O
+	for alex.bennee@linaro.org; Tue, 22 Oct 2019 12:32:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38425)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iMwwK-0007Nm-IS
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:23:21 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iMwwc-0007mD-0S
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:23:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iMwwJ-0007Rw-7X
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:23:20 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:52205
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iMwwa-0007YL-Kb
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:23:37 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:32850
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iMwwJ-0007Rd-3N
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:23:19 -0400
+ id 1iMwwa-0007Y7-HF
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:23:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571761398;
+ s=mimecast20190719; t=1571761416;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZeeaRqzIa0oxfVxKQeUZwy/VQ2+Sov4amNBrdq9hGnU=;
- b=K15q4WjMgvOciWwVTAZKQuiqqGVOLCeHRehB1leWLVBn8oGoOH/yavy+NP+gCgNzY1miZn
- hIgXmIsO44Cl8qTgCjZlKDaIaB4pYZS7ly7SpNJyjpGtraZwM7pztSNq2i6rQAdxspLiiE
- IAY9vk/NakIkZBXZWAjJst48zC3sJ64=
+ bh=vNKikGBgZ6nGFsKZ9PDarJpXzXz/Um+xb2CYFyOHYus=;
+ b=Ok9Vj4L4orzwv2MjqprDP5zeFnqTmTrED0337ubI7+xE8+e/GFpxgC8vUIWQ8Mtyi9QAeL
+ 1kJ/t4F9nx8plQMXaXZ+qcDuxG/6fowN4GZnLRA6y/EHO5RBsdy76AciS/Y6Io9FCDE63g
+ tJNCnuYn/4sJ+iuMX05ZoJfFUD9jlYE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-168-7JK5H_TCO16kvg5MMfhw2g-1; Tue, 22 Oct 2019 12:23:15 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-113-suFCn2pGO-CQY2f-WQbbYA-1; Tue, 22 Oct 2019 12:23:29 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AEB271800D6A;
- Tue, 22 Oct 2019 16:23:12 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 73E57107AD31;
+ Tue, 22 Oct 2019 16:23:25 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1E81460497;
- Tue, 22 Oct 2019 16:23:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6FC3B10027B8;
+ Tue, 22 Oct 2019 16:23:20 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 11/28] serial: realize the serial device
-Date: Tue, 22 Oct 2019 18:21:20 +0200
-Message-Id: <20191022162137.27161-12-marcandre.lureau@redhat.com>
+Subject: [PATCH v2 14/28] sm501: embed the serial device
+Date: Tue, 22 Oct 2019 18:21:23 +0200
+Message-Id: <20191022162137.27161-15-marcandre.lureau@redhat.com>
 In-Reply-To: <20191022162137.27161-1-marcandre.lureau@redhat.com>
 References: <20191022162137.27161-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: 7JK5H_TCO16kvg5MMfhw2g-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: suFCn2pGO-CQY2f-WQbbYA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,132 +123,97 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jRwq/P/RPqkh
+X-TUID: WnaWUMYyWI9O
 
-Instead of calling serial_realize_core(), use the QDev realize
-callback. Move qdev_set_legacy_instance_id() there.
+Embedding the serial device allows to expose a property for the
+associated chardev backend.
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/char/serial-isa.c       |  2 +-
- hw/char/serial-pci-multi.c |  2 +-
- hw/char/serial-pci.c       |  2 +-
- hw/char/serial.c           | 12 ++++++------
- include/hw/char/serial.h   |  1 -
- 5 files changed, 9 insertions(+), 10 deletions(-)
+ hw/display/sm501.c | 27 ++++++++++++++++++---------
+ hw/sh4/r2d.c       |  2 +-
+ 2 files changed, 19 insertions(+), 10 deletions(-)
 
-diff --git a/hw/char/serial-isa.c b/hw/char/serial-isa.c
-index 9a5928b3ee..33e093f1e6 100644
---- a/hw/char/serial-isa.c
-+++ b/hw/char/serial-isa.c
-@@ -75,7 +75,7 @@ static void serial_isa_realizefn(DeviceState *dev, Error =
-**errp)
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index 1f33c87e65..a17ff82db8 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -1930,7 +1930,7 @@ typedef struct {
+     SM501State state;
+     uint32_t vram_size;
+     uint32_t base;
+-    void *chr_state;
++    SerialMMState serial;
+ } SM501SysBusState;
 =20
-     s->baudbase =3D 115200;
-     isa_init_irq(isadev, &s->irq, isa->isairq);
--    serial_realize_core(s, errp);
-+    object_property_set_bool(OBJECT(s), true, "realized", errp);
-     qdev_set_legacy_instance_id(dev, isa->iobase, 3);
+ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+@@ -1958,17 +1958,20 @@ static void sm501_realize_sysbus(DeviceState *dev, =
+Error **errp)
+     sysbus_pass_irq(sbd, SYS_BUS_DEVICE(usb_dev));
 =20
-     memory_region_init_io(&s->io, OBJECT(isa), &serial_io_ops, s, "serial"=
-, 8);
-diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
-index 3485bdad87..60c1c948b8 100644
---- a/hw/char/serial-pci-multi.c
-+++ b/hw/char/serial-pci-multi.c
-@@ -108,7 +108,7 @@ static void multi_serial_pci_realize(PCIDevice *dev, Er=
-ror **errp)
-     for (i =3D 0; i < nr_ports; i++) {
-         s =3D pci->state + i;
-         s->baudbase =3D 115200;
--        serial_realize_core(s, &err);
-+        object_property_set_bool(OBJECT(s), true, "realized", &err);
-         if (err !=3D NULL) {
-             error_propagate(errp, err);
-             multi_serial_pci_exit(dev);
-diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
-index a33264a1fb..35a8552674 100644
---- a/hw/char/serial-pci.c
-+++ b/hw/char/serial-pci.c
-@@ -50,7 +50,7 @@ static void serial_pci_realize(PCIDevice *dev, Error **er=
-rp)
-     Error *err =3D NULL;
-=20
-     s->baudbase =3D 115200;
--    serial_realize_core(s, &err);
-+    object_property_set_bool(OBJECT(s), true, "realized", &err);
-     if (err !=3D NULL) {
-         error_propagate(errp, err);
-         return;
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 4748a2b023..1500216c69 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -934,8 +934,10 @@ static int serial_be_change(void *opaque)
-     return 0;
+     /* bridge to serial emulation module */
+-    if (s->chr_state) {
+-        serial_mm_init(&s->state.mmio_region, SM501_UART0, 2,
+-                       NULL, /* TODO : chain irq to IRL */
+-                       115200, s->chr_state, DEVICE_LITTLE_ENDIAN);
++    if (qemu_chr_fe_backend_connected(&SERIAL(&s->serial)->chr)) {
++        qdev_prop_set_uint64(DEVICE(&s->serial), "base", SM501_UART0);
++        qdev_prop_set_uint8(DEVICE(&s->serial), "regshift", 2);
++        qdev_init_nofail(DEVICE(&s->serial));
++        serial_mm_connect(&s->serial, DEVICE_LITTLE_ENDIAN,
++                          &s->state.mmio_region,
++                          NULL /* TODO : chain irq to IRL */);
+     }
  }
 =20
--void serial_realize_core(SerialState *s, Error **errp)
-+static void serial_realize(DeviceState *dev, Error **errp)
- {
-+    SerialState *s =3D SERIAL(dev);
-+
-     s->modem_status_poll =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, (QEMUTimerCB=
- *) serial_update_msl, s);
+ static Property sm501_sysbus_properties[] =3D {
+     DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
+     DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
+-    DEFINE_PROP_PTR("chr-state", SM501SysBusState, chr_state),
++    DEFINE_PROP_CHR("chardev", SM501SysBusState, serial.parent.chr),
+     DEFINE_PROP_END_OF_LIST(),
+ };
 =20
-     s->fifo_timeout_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, (QEMUTimerC=
-B *) fifo_timeout_int, s);
-@@ -946,6 +948,8 @@ void serial_realize_core(SerialState *s, Error **errp)
-     fifo8_create(&s->recv_fifo, UART_FIFO_LENGTH);
-     fifo8_create(&s->xmit_fifo, UART_FIFO_LENGTH);
-     serial_reset(s);
+@@ -1999,15 +2002,21 @@ static void sm501_sysbus_class_init(ObjectClass *kl=
+ass, void *data)
+     dc->props =3D sm501_sysbus_properties;
+     dc->reset =3D sm501_reset_sysbus;
+     dc->vmsd =3D &vmstate_sm501_sysbus;
+-    /* Note: pointer property "chr-state" may remain null, thus
+-     * no need for dc->user_creatable =3D false;
+-     */
++}
 +
-+    qdev_set_legacy_instance_id(dev, s->base, 2);
++static void sm501_sysbus_init(Object *o)
++{
++    SM501SysBusState *self =3D SYSBUS_SM501(o);
++
++    object_initialize_child(o, "serial", &self->serial, sizeof(self->seria=
+l),
++                            TYPE_SERIAL_MM, &error_abort, NULL);
  }
 =20
- void serial_exit_core(SerialState *s)
-@@ -991,8 +995,6 @@ SerialState *serial_init(int base, qemu_irq irq, int ba=
-udbase,
-     qdev_prop_set_uint32(dev, "baudbase", baudbase);
-     qdev_prop_set_chr(dev, "chardev", chr);
-     qdev_prop_set_uint64(dev, "base", base);
--    serial_realize_core(s, &error_fatal);
--    qdev_set_legacy_instance_id(dev, base, 2);
+ static const TypeInfo sm501_sysbus_info =3D {
+     .name          =3D TYPE_SYSBUS_SM501,
+     .parent        =3D TYPE_SYS_BUS_DEVICE,
+     .instance_size =3D sizeof(SM501SysBusState),
++    .instance_init =3D sm501_sysbus_init,
+     .class_init    =3D sm501_sysbus_class_init,
+ };
+=20
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index ee0840f380..72bb5285cc 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -272,7 +272,7 @@ static void r2d_init(MachineState *machine)
+     busdev =3D SYS_BUS_DEVICE(dev);
+     qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
+     qdev_prop_set_uint32(dev, "base", 0x10000000);
+-    qdev_prop_set_ptr(dev, "chr-state", serial_hd(2));
++    qdev_prop_set_chr(dev, "chardev", serial_hd(2));
      qdev_init_nofail(dev);
-=20
-     memory_region_init_io(&s->io, NULL, &serial_io_ops, s, "serial", 8);
-@@ -1012,6 +1014,7 @@ static void serial_class_init(ObjectClass *klass, voi=
-d* data)
- {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-=20
-+    dc->realize =3D serial_realize;
-     dc->user_creatable =3D false;
-     dc->vmsd =3D &vmstate_serial;
-     dc->props =3D serial_properties;
-@@ -1086,9 +1089,6 @@ SerialState *serial_mm_init(MemoryRegion *address_spa=
-ce,
-     qdev_prop_set_chr(dev, "chardev", chr);
-     qdev_prop_set_uint8(dev, "regshift", regshift);
-     qdev_prop_set_uint64(dev, "base", base);
--
--    serial_realize_core(s, &error_fatal);
--    qdev_set_legacy_instance_id(DEVICE(s), base, 2);
-     qdev_init_nofail(dev);
-=20
-     memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], s,
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index 6e9c9768ed..28bce0a791 100644
---- a/include/hw/char/serial.h
-+++ b/include/hw/char/serial.h
-@@ -89,7 +89,6 @@ typedef struct SerialMMState {
- extern const VMStateDescription vmstate_serial;
- extern const MemoryRegionOps serial_io_ops;
-=20
--void serial_realize_core(SerialState *s, Error **errp);
- void serial_exit_core(SerialState *s);
- void serial_set_frequency(SerialState *s, uint32_t frequency);
-=20
+     sysbus_mmio_map(busdev, 0, 0x10000000);
+     sysbus_mmio_map(busdev, 1, 0x13e00000);
 --=20
 2.23.0.606.g08da6496b6
 

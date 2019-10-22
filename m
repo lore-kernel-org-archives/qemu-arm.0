@@ -1,129 +1,153 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp196759wrq;
-        Tue, 22 Oct 2019 10:21:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzJKelwnlXlfTByfPZ7jzUBcS/Pc4hNLnotEDaO04j+jkiQFC3CgPcx4cqCvbbrQCMVg7e9
-X-Received: by 2002:ad4:480e:: with SMTP id g14mr4264274qvy.39.1571764881206;
-        Tue, 22 Oct 2019 10:21:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571764881; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp203414wrq;
+        Tue, 22 Oct 2019 10:27:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqybkt24iYzYeZIo/WHC+keeTs/ge7VCiMM+srupHSVgsbwSTjFx56dLVWNmHBsd21qmkxHF
+X-Received: by 2002:ad4:51cc:: with SMTP id p12mr4260295qvq.243.1571765233160;
+        Tue, 22 Oct 2019 10:27:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571765233; cv=none;
         d=google.com; s=arc-20160816;
-        b=zeqkXilOMuMG8w8o6IbwfeBFNjFDyVmXg+6d0JRDlTjm9zR+q3tF+bsTnb0q1oPP1w
-         bpABKKm6Z/jiaIE73LQ5Z/1+cLJt2Y4jrRjE/D5Rb6VYsc2IXSXwA5Dgi4WGJiRwwpps
-         2c690zidDMup5ciJmyE0YwizgsH+pEVlQRRAucsL+OH3vzKcxlv3zOC4fo1HKbeO1xJK
-         Slo3a4aHRHLhicVda/1vycy8shashQjZlDXH38NdmIONvJn5UakhasONGBpwbHgMyYBK
-         QuQFL05QT3G++lxXbT2QtZuMTwevaZwbd/mPQtTT/R914pA/4Pda4f/pBeF7RZ8QUVHA
-         z0SQ==
+        b=KA6T3ZTX5LfMhWXIGsJkJ5E/zZN4sisl5OhWgM53WRB2oZADg0FovmzcCJ8mAHbHsL
+         d7NYGw5K+oHF8a3+awF1A+f55774XoGz30D9W1qDm9lE6TdLEhkgaEQDul06ZweU9itK
+         gd9KpYyVdUEbR1FzN1pCNLInSzNjcZ6/UqzZwP+yhcGVVysfz8nsqTPeu78LOZ46KODE
+         m+q/6PZFfjitnD5qcPcN6RB2frTYgKlGa0P58T2eIVpLMsAKxOrhBkQS8lMfAJzucgkr
+         Sb0VQm0Py0hdZToniOfC0v/yHHgJp0RdwpXP24rpd6RgMm8NQZlyRh9Pvi/jYQzye7CS
+         7g3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=0La5A2pXgYdYZprUXZS7B3dH09V7aLZ8RTJlRKFlNoY=;
-        b=DElH/Y8kHEhtaQWcD4T4JDdtnvAjeDnOv+F9pHzLLgXe1Y74kvYRjumriqjxN3oMzV
-         m7ZW9Sn3YRLR7q7X395BHHq9UoxJGXdVrmk3hbMPWWzcs2mLJmPhfiBrMJqwupFlcxSn
-         cX1UDgAcSZczYGygeQdr4jUQrIPwbxG0Im05Xw66Z4kkXw7HTTaIZNb4C1ubrUT7ERqN
-         Ag6FGJyUmw2/LA0HObrd2zDurOsJ//crb823vrVZwsS7Kcy832ZbNkCtnXqF8AQ+Ueba
-         3u1jo1JxJi5LwG+pv7wXFwrqc4RJRCf0bBUGeZGCnkOtRCA7Qor0/8UPeAzgurBrbIy1
-         6mZw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=+Mxs7rjMMY7J84kK2X+ZSADrev/+TfY2iDPeg6vVQz0=;
+        b=M4D3dK/Gw5X2qv8zHYs0Fmsxgcv9DkWPzW6Rii2QVbvEPf+FmybVclswU84VmZsobD
+         SaWVg74c1/AcHC8DiXPINGCpFL5EafTUQazfaT3WQvDFH3wpPi5RkSyHQRvSRtVJbdVW
+         m8gw0toQVqKT/xTMF6Jc6laaq+wE1ZNJht6kClvLLPKD2HZTYZwQtP0ipkIpXk/Wss6k
+         Aay0J1yrllUvRqXpaneG3UQkC15BDajyvD5UjG7RbfHbJAAr5bI82+c9egyK1yD8Ul49
+         tb8FhEhU/kEpiZKvC2QzlefffsUa3ynXA4wYZJqYniTZVkswzPpQ4x8oY4H1WvS2P+IV
+         0fcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Yhk6ETxr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j202si595148qke.175.2019.10.22.10.21.21
+        by mx.google.com with ESMTPS id u35si8406437qtb.390.2019.10.22.10.27.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2019 10:21:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Oct 2019 10:27:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Yhk6ETxr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37412 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37784 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMxqS-0006b6-JG
-	for alex.bennee@linaro.org; Tue, 22 Oct 2019 13:21:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48120)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iMxw8-0003Q7-Kp
+	for alex.bennee@linaro.org; Tue, 22 Oct 2019 13:27:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47568)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iMxpq-0005mV-3I
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 13:20:43 -0400
+ (envelope-from <clg@kaod.org>) id 1iMxls-0001Lt-Qo
+ for qemu-devel@nongnu.org; Tue, 22 Oct 2019 13:16:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iMxpp-0002Up-3u
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 13:20:42 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:38051)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iMxpo-0002U7-W1
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 13:20:41 -0400
-Received: by mail-oi1-x243.google.com with SMTP id v186so2072402oie.5
- for <qemu-arm@nongnu.org>; Tue, 22 Oct 2019 10:20:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=0La5A2pXgYdYZprUXZS7B3dH09V7aLZ8RTJlRKFlNoY=;
- b=Yhk6ETxrdaUM2oJ+DtchYQZhE3pWS71TXPp0pu4KdJQzXxHLxt47qxXFNobSG/XOZn
- lDV/bRQ0ZIUYyfZ/OSjc43OxtvlkOnYr6WAjrI6z5nD8+iHJsekiiHkxeKxBhC8Bbo8x
- augR3pitXD3WmUaFREDO9mVHDn5jlo4vjQRenR7t1ut+KmrWQSrWo4r9Qd+R7YhpF2Mg
- Fh3rgVFX2tMuYxOQ4w5kqb9vN60t5F50EP1/XmEnprbILtk9qTCJFMv+ybLQ16/SC07U
- Bq3eOxQTc0ya9boSk75NZjv05W7vqYWP85UiMwlow0Flhvx6KxZPR6Y+gBzEMPTMGyUk
- tJXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=0La5A2pXgYdYZprUXZS7B3dH09V7aLZ8RTJlRKFlNoY=;
- b=J+wscjZpEYJt07LsFXVCfVCrW7+pX/nQ2+fYxy+4cgHhaFpx9ymCbGpzCNOwF5A+C9
- S1MGbi0laQ5k5jhr0cJPaFyt3QlE5e71QQoeSNHYDMqo/Qh7Cbr9K5SMnWx9GmykTiTn
- FfvUWtCoGJRdJXUn1PQfr0jTajZ2enr7K6lZRAyFv3jkNCODip7oUfSdyHOWXY3jGE5h
- CzqEnWZQZcL9zDIFY56fxDuTtwRsAfU6Q01+xs2TGfSS+JnvkGtYV1tcsOLVZ9U885EE
- g4k/wsiHItB1k0/E9NdHzalGd3WPe3RosnA7VhLtOaZ+RRqyLESSaugquIk37MMe/1x9
- BuhQ==
-X-Gm-Message-State: APjAAAXgsbui0mbEp/XZ9761hxxpvj9ZrJRUaL8RXYtKf37eu4nUP4tP
- 4yfGguojGxSsTErhpBPx35AkceTXE2nKZc3reGQPkQ==
-X-Received: by 2002:aca:49c2:: with SMTP id w185mr3959708oia.163.1571764839900; 
- Tue, 22 Oct 2019 10:20:39 -0700 (PDT)
-MIME-Version: 1.0
+ (envelope-from <clg@kaod.org>) id 1iMxlq-0000GP-Sx
+ for qemu-devel@nongnu.org; Tue, 22 Oct 2019 13:16:36 -0400
+Received: from 8.mo69.mail-out.ovh.net ([46.105.56.233]:52975)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iMxlp-0000Ez-Ew
+ for qemu-devel@nongnu.org; Tue, 22 Oct 2019 13:16:34 -0400
+Received: from player738.ha.ovh.net (unknown [10.108.57.140])
+ by mo69.mail-out.ovh.net (Postfix) with ESMTP id 0C8026CFDC
+ for <qemu-devel@nongnu.org>; Tue, 22 Oct 2019 19:16:28 +0200 (CEST)
+Received: from kaod.org (lfbn-1-2229-223.w90-76.abo.wanadoo.fr [90.76.50.223])
+ (Authenticated sender: clg@kaod.org)
+ by player738.ha.ovh.net (Postfix) with ESMTPSA id 0E711B65F0EB;
+ Tue, 22 Oct 2019 17:16:17 +0000 (UTC)
+Subject: Re: [PATCH] aspeed: Add an AST2600 eval board
+To: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
 References: <20191016090745.15334-1-clg@kaod.org>
  <CACPK8XdT0_JCxzfxd4dCafK0Ae9+18ZWcusuXV+d4eEmwwBnkA@mail.gmail.com>
  <CAFEAcA_6yxaanT2N6Twos_FxjJNgvVKShwgq=pR4fqmcZUsQFA@mail.gmail.com>
  <CAFEAcA8py1obBXc1o02wTRkXms9NwCnCT6Q9ZZ-4W=NzNocLrQ@mail.gmail.com>
- <a0b2779c-bcd5-0fe9-ff3f-d4254aba8805@kaod.org>
-In-Reply-To: <a0b2779c-bcd5-0fe9-ff3f-d4254aba8805@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Oct 2019 18:20:28 +0100
-Message-ID: <CAFEAcA9nymSxBkEm8GcJm9p4Y_obmK-fbojFEi+Et52H-mPFdA@mail.gmail.com>
-Subject: Re: [PATCH] aspeed: Add an AST2600 eval board
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <a0b2779c-bcd5-0fe9-ff3f-d4254aba8805@kaod.org>
+Date: Tue, 22 Oct 2019 19:16:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8py1obBXc1o02wTRkXms9NwCnCT6Q9ZZ-4W=NzNocLrQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 4137682159691664192
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrkeejgdduudduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 46.105.56.233
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p7i0urTg+XgE
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: o/G4NE5UN/+s
 
-On Tue, 22 Oct 2019 at 18:16, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> Is it time for me to install an OSX system for dev and tests or is there
-> a way to reproduce the issue ? no errors spotted in valgrind.
+On 22/10/2019 18:43, Peter Maydell wrote:
+> On Thu, 17 Oct 2019 at 14:54, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>>
+>> On Thu, 17 Oct 2019 at 07:33, Joel Stanley <joel@jms.id.au> wrote:
+>>>
+>>> On Wed, 16 Oct 2019 at 09:08, C=C3=A9dric Le Goater <clg@kaod.org> wr=
+ote:
+>>>>
+>>>> Define the board with 1 GiB of RAM but some boards can have up to 2
+>>>> GiB.
+>>>>
+>>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>>>> ---
+>>>>
+>>>>  Changes since AST2600 patchset:
+>>>>
+>>>>  - lowered the RAM size to 1 GiB as it was breaking the tests on som=
+e
+>>>>    hosts.
+>>>
+>>> Peter,
+>>>
+>>> After chatting with C=C3=A9dric I agree we should merge this patch.
+>>>
+>>> As it turns out the EVBs have differing amounts of RAM; his has 1GB
+>>> while mine has 2GB. So we are not being inaccurate by setting 1GB as
+>>> the default here.
+>>
+>> That's convenient, means we don't have to figure out how to
+>> special-case the test infrastructure for it :-)
+>=20
+> This is now OK on the 32-bit boxes, but still fails 'make check'
+> on my OSX system:
+>=20
+> manooth$ QTEST_QEMU_BINARY=3Daarch64-softmmu/qemu-system-aarch64
+> tests/qom-test -p /aarch64/qom/ast2600-evb
+> /aarch64/qom/ast2600-evb: Broken pipe
+> /Users/pm215/src/qemu-for-merges/tests/libqtest.c:149: kill_qemu()
+> detected QEMU death from signal 6 (Abort trap: 6)
+> Abort trap: 6
+>=20
+> Dropping from the pullreq again :-(
 
-I dunno. You could have a look to see if you can repro
-it with the travis builds. I would investigate but I
-don't have time this week given impending softfreeze
-and KVM Forum next week.
+It will be back !
 
-thanks
--- PMM
+
+Is it time for me to install an OSX system for dev and tests or is there=20
+a way to reproduce the issue ? no errors spotted in valgrind.
+
+Thanks,
+
+C.

@@ -1,93 +1,93 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp153215wrq;
-        Tue, 22 Oct 2019 09:44:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw6YIy8uZtUOnalNbQU+rPSj07bHAwFWNERO39lOy++BM1wsd3HnwVVjT+jncNvAV2s9u7m
-X-Received: by 2002:a17:906:e290:: with SMTP id gg16mr9236959ejb.280.1571762665033;
-        Tue, 22 Oct 2019 09:44:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571762665; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp154269wrq;
+        Tue, 22 Oct 2019 09:45:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwlQL/JZoxmvGJ2A1lDExhno4OQLnLmQpzsu9Wlcp0rtbRy9N6lHj/1F46+wsqlXQHNTyxy
+X-Received: by 2002:a50:8f03:: with SMTP id 3mr32971211edy.195.1571762724155;
+        Tue, 22 Oct 2019 09:45:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571762724; cv=none;
         d=google.com; s=arc-20160816;
-        b=dhip/E0tvHR3Y9yvjnMQzwm4EiiyFrjHua4CtDOFoJFTuee59XQ+jTtHUt7axcp21E
-         Ona2bRP/g2jRBNnosdDBpKuMmlti5PD+iYIG940NYiSH6mNDs3AU8Nxm2Z0Rl0gaFyS5
-         LQKgzXGWz/3UzRXkM9IquxJ0OjSwRSw+Bz3XEQEyoRX6M1LtCayZI9VGPJSb8wxBqPqr
-         8cxJdgGE+Tf37dMnf2/mCN/E6jX56LVMr/P/ijq/Tlb8NPQwaJnvhqEOK431Ph1WBxOS
-         vmEAD3KK22Rt7QlBk+XzBJG5QlsMiv8/jnDphhG5WWmoGpc/4ALRcnT5wEYqx8onGzsp
-         ZDrw==
+        b=s+qkkzdQm1PD7f71oDyfmMJPzFdVd57RKnL0fTrT7pSWQmCGOVSIfDXpEwNQcck8aY
+         yY5ON4tLE1CUj3fuZuTTpKpynQcVUfi7vJzUg/TzhY5a/SE3J8CI/Crye3FDZFehxYnz
+         9no+jAwl3o/xsmYpAFgB4lD9sCstGJXFoSXzvXVeIyzdBQQpqkY6SNdBXI8p7E+eSPC2
+         9mSi0LtWWNgWHxfeRT/HVMCCWp80In3yQrKZ7sAN0ih5EGjMlEW2szoDNUg2lowzdz4V
+         GjgEIp64eoHdnG2izHMjEaC01yS87RQVaTlpy+PvkGEk3mtu8WZwNEMAYPNEqmY5uxi7
+         zSVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8NzEtjwnhe2BYF4rwjcOGx2CyDChFXojd2oFlJoSMi4=;
-        b=EFRifsVn1oNhdcymIj4yA8xBnhF4wxpCiZcbjc1ly3+YYTBtc2yvMwOGV0XDDNGZsG
-         d/lN2+ALkxElSb+LlTA4Gjb4JAWQv9xki7gHORxcUng9dl6lrsixTv7rMULsl99YK98u
-         j4xdS/uMEUteq3/dOOIUAE92EqC1ALgYKNoX9gsrdXCXZy6vsnJfCEgckYB9jehuKI47
-         lrl5qSQhMWLK/nhgBnz41CqyK2rvmB5fFtTWkcvIyKByxqW2tz74dgP++o2Eyjlv2a9O
-         kRHEzrKwe+PYlKArg1/4Qn8jgHzYIkLRiUeeevHstk2XMHR730EbFn1iYmxLY6uqbQj4
-         5gXQ==
+        bh=iXTj0c9mnsZUNU3c6vAQwWlOMZGkI+hF1/jsq9eDS60=;
+        b=toybJA4ZCjbeQfbGbQgDhMy5v9i3Kv5U9Pe9AuB5YldVVvOe255/5OoBtoGN78VdvB
+         fyVw2QLFmWbiNFZrWLhHIDBQmnQnseUaeQs74DnycFh3i/x0JHSAskpcLdMBlO9fO9jl
+         pTgCd/PZr4gJ94or2EvP2XK1xVtvm8hJRhyCCIPgvWEuU+v+t7tPX9ykVcAoehp58m4J
+         qKQjfx0+9I2sWnFasnEhkgTwFSUh/dQ7A9lM8vaCdd3JNcmaR+SG1VPH4CSJgR1cZsqL
+         1MmUHQ0BZ36jaFNgXIsqttmQ9Cz/sIgcLzQuuBNfsHenEzidlowV10WO5XNjdGaRcBG/
+         UFxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aquVswSh;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YBhP0d56;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 31si8179478edq.208.2019.10.22.09.44.24
+        by mx.google.com with ESMTPS id v35si4669080edm.213.2019.10.22.09.45.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2019 09:44:25 -0700 (PDT)
+        Tue, 22 Oct 2019 09:45:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aquVswSh;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YBhP0d56;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36010 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMxGh-0007Jh-IT
-	for alex.bennee@linaro.org; Tue, 22 Oct 2019 12:44:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39069)
+	id 1iMxHe-0008RV-5k
+	for alex.bennee@linaro.org; Tue, 22 Oct 2019 12:45:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39115)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iMwyD-0001Hh-Or
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:25:23 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iMwyM-0001PS-Kw
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:25:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iMwyB-0008I8-Ns
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:25:17 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:43382
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iMwyL-0008Ke-8H
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:25:26 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:52217
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iMwyB-0008Hg-J7
- for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:25:15 -0400
+ id 1iMwyL-0008KR-44
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2019 12:25:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571761515;
+ s=mimecast20190719; t=1571761524;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8NzEtjwnhe2BYF4rwjcOGx2CyDChFXojd2oFlJoSMi4=;
- b=aquVswShOugbv9CFTd5AwlI9AH2AnH42QDgyNNGFO5azUkU9zUkccGvpGn9LqTCOKenBsv
- iAxh9FqPXSfqTLWrqNKhFf1xH52AADW3Ygcb3kR8wW1NUJ22jBKbniZ4+DEhyfvIVbReI9
- xfbJ2/O5/YeA1+J9HCNFs3YgEDOo4+o=
+ bh=iXTj0c9mnsZUNU3c6vAQwWlOMZGkI+hF1/jsq9eDS60=;
+ b=YBhP0d564QFDIc65HH/gSNgQppjL0u3SNL5R4xKwNay0r8B91cKfPmgAE+o4fMrT9uzG26
+ ZMBVTUFi3YLLQMWFRAy5INvuqq9DYaZGimdMutbf0M++4bfC2/nmO81VTmrx4fVY5L4uZu
+ tbmjhRxCE2lBZbukFoYg8RQY3ZxJIDU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-226-82smKns0MwGdCOOX09-ROw-1; Tue, 22 Oct 2019 12:25:11 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-214-8_Rnom3WPXSisZa7y5iblw-1; Tue, 22 Oct 2019 12:25:18 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ED9381800D6A;
- Tue, 22 Oct 2019 16:25:08 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 99F9E80183D;
+ Tue, 22 Oct 2019 16:25:16 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CDC7F5D6A9;
- Tue, 22 Oct 2019 16:24:58 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4C52419C4F;
+ Tue, 22 Oct 2019 16:25:10 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 27/28] qdev: remove PROP_MEMORY_REGION
-Date: Tue, 22 Oct 2019 18:21:36 +0200
-Message-Id: <20191022162137.27161-28-marcandre.lureau@redhat.com>
+Subject: [PATCH v2 28/28] Remove QDEV_PROP_PTR
+Date: Tue, 22 Oct 2019 18:21:37 +0200
+Message-Id: <20191022162137.27161-29-marcandre.lureau@redhat.com>
 In-Reply-To: <20191022162137.27161-1-marcandre.lureau@redhat.com>
 References: <20191022162137.27161-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: 82smKns0MwGdCOOX09-ROw-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: 8_Rnom3WPXSisZa7y5iblw-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
@@ -123,34 +123,103 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8LkAx2aACKWX
+X-TUID: 6wOd/jYUxAgA
 
-PROP_MEMORY_REGION was a derivative of PROP_PTR, added in commit
-ed03d749f3f513b8fb0287757cfda2cb6825f063 (qdev: add MemoryRegion
-property) and thankfully no longer needed since commit
-3eff40dbf44896a8180c86c84dbdefb2eb173fbe (hw/misc: Remove
-mmio_interface device).
+No longer used in the tree. The comment about user_creatable is still
+quite relevant, but there is already a similar comment in qdev-core.h.
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- include/hw/qdev-properties.h | 2 --
- 1 file changed, 2 deletions(-)
+ hw/core/qdev-properties.c    | 18 ------------------
+ include/hw/qdev-properties.h | 22 ----------------------
+ 2 files changed, 40 deletions(-)
 
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index ac28890e5a..6ca7697599 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -501,13 +501,6 @@ const PropertyInfo qdev_prop_string =3D {
+     .set   =3D set_string,
+ };
+=20
+-/* --- pointer --- */
+-
+-/* Not a proper property, just for dirty hacks.  TODO Remove it!  */
+-const PropertyInfo qdev_prop_ptr =3D {
+-    .name  =3D "ptr",
+-};
+-
+ /* --- mac address --- */
+=20
+ /*
+@@ -1165,17 +1158,6 @@ void qdev_prop_set_enum(DeviceState *dev, const char=
+ *name, int value)
+                             name, &error_abort);
+ }
+=20
+-void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value)
+-{
+-    Property *prop;
+-    void **ptr;
+-
+-    prop =3D qdev_prop_find(dev, name);
+-    assert(prop && prop->info =3D=3D &qdev_prop_ptr);
+-    ptr =3D qdev_get_prop_ptr(dev, prop);
+-    *ptr =3D value;
+-}
+-
+ static GPtrArray *global_props(void)
+ {
+     static GPtrArray *gp;
 diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-index c6a8cb5516..16837ab5dd 100644
+index 16837ab5dd..a90a9cec80 100644
 --- a/include/hw/qdev-properties.h
 +++ b/include/hw/qdev-properties.h
-@@ -216,8 +216,6 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
-     DEFINE_PROP_UNSIGNED(_n, _s, _f, 0, qdev_prop_blocksize, uint16_t)
- #define DEFINE_PROP_PCI_HOST_DEVADDR(_n, _s, _f) \
-     DEFINE_PROP(_n, _s, _f, qdev_prop_pci_host_devaddr, PCIHostDeviceAddre=
-ss)
--#define DEFINE_PROP_MEMORY_REGION(_n, _s, _f)             \
--    DEFINE_PROP(_n, _s, _f, qdev_prop_ptr, MemoryRegion *)
- #define DEFINE_PROP_OFF_AUTO_PCIBAR(_n, _s, _f, _d) \
-     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_off_auto_pcibar, \
-                         OffAutoPCIBAR)
+@@ -18,7 +18,6 @@ extern const PropertyInfo qdev_prop_size;
+ extern const PropertyInfo qdev_prop_string;
+ extern const PropertyInfo qdev_prop_chr;
+ extern const PropertyInfo qdev_prop_tpm;
+-extern const PropertyInfo qdev_prop_ptr;
+ extern const PropertyInfo qdev_prop_macaddr;
+ extern const PropertyInfo qdev_prop_on_off_auto;
+ extern const PropertyInfo qdev_prop_losttickpolicy;
+@@ -171,25 +170,6 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
+ #define DEFINE_PROP_PCI_DEVFN(_n, _s, _f, _d)                   \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_pci_devfn, int32_t)
+=20
+-/*
+- * Please avoid pointer properties.  If you must use them, you must
+- * cover them in their device's class init function as follows:
+- *
+- * - If the property must be set, the device cannot be used with
+- *   device_add, so add code like this:
+- *   |* Reason: pointer property "NAME-OF-YOUR-PROP" *|
+- *   DeviceClass *dc =3D DEVICE_CLASS(class);
+- *   dc->user_creatable =3D false;
+- *
+- * - If the property may safely remain null, document it like this:
+- *   |*
+- *    * Note: pointer property "interrupt_vector" may remain null, thus
+- *    * no need for dc->user_creatable =3D false;
+- *    *|
+- */
+-#define DEFINE_PROP_PTR(_n, _s, _f)             \
+-    DEFINE_PROP(_n, _s, _f, qdev_prop_ptr, void*)
+-
+ #define DEFINE_PROP_CHR(_n, _s, _f)             \
+     DEFINE_PROP(_n, _s, _f, qdev_prop_chr, CharBackend)
+ #define DEFINE_PROP_STRING(_n, _s, _f)             \
+@@ -262,8 +242,6 @@ void qdev_prop_set_drive(DeviceState *dev, const char *=
+name,
+ void qdev_prop_set_macaddr(DeviceState *dev, const char *name,
+                            const uint8_t *value);
+ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
+-/* FIXME: Remove opaque pointer properties.  */
+-void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value);
+=20
+ void qdev_prop_register_global(GlobalProperty *prop);
+ int qdev_prop_check_globals(void);
 --=20
 2.23.0.606.g08da6496b6
 

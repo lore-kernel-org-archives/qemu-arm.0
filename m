@@ -1,150 +1,228 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5991088wrm;
-        Tue, 22 Oct 2019 06:14:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzHwIgi/3IAFChp/Lg5jUGQbzJpiD/dq43FoC5HoTcR4mQRrh0ACa8E8dkXOgnTSrnIeKS8
-X-Received: by 2002:a50:97af:: with SMTP id e44mr18146149edb.3.1571750078722;
-        Tue, 22 Oct 2019 06:14:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571750078; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp6034143wrm;
+        Tue, 22 Oct 2019 06:50:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzQ/Yuki9BGL4n5PHWVFFdz7I10O51rJL/uaXeaN7O+CaM7d6+IdZb/XaYNXS7a9UVAEKrE
+X-Received: by 2002:a17:906:5388:: with SMTP id g8mr27298506ejo.278.1571752204717;
+        Tue, 22 Oct 2019 06:50:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571752204; cv=none;
         d=google.com; s=arc-20160816;
-        b=jfhkL0zsRAaeN54J3aM41SNW7KvGSXu6pGkaCc3KC2cZfSIZvCobj7VEduFVeLo6pt
-         DbypsdaMJKI1r+eMvdtp/uZ55SBfJOoYX+YBwjJKTFX4I56juJxwyW77vo8M1UmZluFh
-         0njuCaVPxl8RG4++iwBG8zPaG1j/7m6PILMC9nRJYakENRZumBEzent4QLjvZC00vGCt
-         wac86lW7yjlYDCSDO0DsapbF940uKL8LaITEF9qnp347IGzajLysPXU5Z+Idpcy5goG4
-         8gegKIAQ+ZA06NklyUALNxKRA0405mtLHgtule+s0haYU0pY6YZHUpKgRsu9sB1FB6Vq
-         +HVg==
+        b=pGv6BAoo1kcgcLwp1ilMjK22iQYWoR89w6WpZYcowh+VBcLtY6j8zAY7LT7T44J+mp
+         ArHpd/1ySG5UIb6FvKiu9g0quI2CMfSExoQ5hnlB6M7/t1TzuOH+Sd7ppfAdA3cKSnon
+         wUE6DVaZSiYn91bxbF5gQIApQYhm+DhlLxudFdL2aNiDn1dGUQiJZ1P6XoTwsueE/oRh
+         rFaHQK51vsGuW2DBuBKDK08O8oMQj3PmgIkLRncSblf1YWXodN1dLWtb09AnTiaWHIHo
+         OuaM6D9oN22FC1ET/vrlWm+gPGQBlu3DA13u+Zy534FfnEZnyA7tfufsi7a5uqfEjr33
+         A8rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=a1wBe3lyQqhBm3Tp9rzRkxx4ysHQSccZ1HHlopvQIzk=;
-        b=qnkcGgV26JTwvxu5Q0I6C8AQ/7PpAft/BJrgSgG/t6b4l7WPjUK5CztXXxTA/eAOMb
-         zhlxwfguQ06drAEYFlSWymmJsz/YcilcHDf1lULZkPBDZiLd8vzoKu63FSi7XTYFYhGr
-         BLhMo2K94MpvFdsQ4o4sV1AUqTkHXs5VWJkj2EHBxNvRgmyxtWCEZE2kCvjEDDeLM6Dg
-         KCd7batGakVXpZOu7S4Opyh+b+swvQRtGsUER4vih9HVqaChlJhSfqm1p5G9o5M9tluX
-         3Hv12mKtSIyQGwhjMnY2UYuJNdpyghyOliD6CpkRFFW1qJzyb3AEP7v/li1P81wq1cOW
-         5ncg==
+        h=content-disposition:content-transfer-encoding:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=X8qYxAI0WgSx6/CqYTtmZjD3iL28I4NbYPq9pRIVPNU=;
+        b=DhErumJ8bCJLyzofhfRMu62RxsR2QQrmHWFih+TIArtzPIAhdIViJiHmRFUTCyPx58
+         rCNb8182rkyAgX4KDNVVJadYn+BpUt3MPAsdbEzdGx6r6OKl/4G3k91hIzXw/E1a1IKn
+         xOP3sQeFjKBnbTD2ahCgrmYlfft0LsVrd2qUlS72/FrK9q1S61q+HtVL+aU9hEvofUBy
+         k1adRO7euejIplG94ej3BLJdQDWEKklQSSioiIdKKZhXC9doVdllzJuL6HeiHYo9Vnva
+         +yKHD783vAHMeoij682OgcT28MF1ECgVO6bQ/dypQvgf0o2Ff8HkWRAeyqQ0JjBp4gpm
+         o/NA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D9L6aHsp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kt5si10848730ejb.283.2019.10.22.06.14.38
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V69ymUDW;
+       spf=pass (google.com: domain of drjones@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id q45si3551890eda.202.2019.10.22.06.50.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2019 06:14:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 Oct 2019 06:50:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D9L6aHsp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56308 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iMtzh-0006W3-OV
-	for alex.bennee@linaro.org; Tue, 22 Oct 2019 09:14:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59880)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iMtrr-0005l8-8C
- for qemu-devel@nongnu.org; Tue, 22 Oct 2019 09:06:36 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iMtrq-00012r-24
- for qemu-devel@nongnu.org; Tue, 22 Oct 2019 09:06:31 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:33924)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iMtro-0000zh-QL
- for qemu-devel@nongnu.org; Tue, 22 Oct 2019 09:06:29 -0400
-Received: by mail-io1-xd42.google.com with SMTP id q1so20324524ion.1
- for <qemu-devel@nongnu.org>; Tue, 22 Oct 2019 06:06:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=a1wBe3lyQqhBm3Tp9rzRkxx4ysHQSccZ1HHlopvQIzk=;
- b=D9L6aHspB6jWau/6264gkuHedDFsFVTJSw9C6UY1K4MeZl0fBET3ZFZr/+wDbfOTuV
- qCzmoP4bHYV3wyrnu4GcmqsYQF8hkC6eIF7X0NVQ9JKcGPSdGEgECQx3rdV430oNONh6
- wIxmDzVqFdNeJghLhadQFpnh39C9pm2SWd6QrWidhmAiQXFTuA3jpaXDOQs4xD4h6U69
- XDAqOrFCPUnPUo5b/tSxHD2nyhA+ryBIlBF/WXfQZM8jsuJCPNXxn2Vy2u/44k8a4H/F
- hmf56XeyIIW8MZbDjrjF3x4nW8m3IvVFG6eUNvWufz+l9FN7LfeziQNDPkx7D1jaYe+O
- CmAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=a1wBe3lyQqhBm3Tp9rzRkxx4ysHQSccZ1HHlopvQIzk=;
- b=hJtfe8aPa+ZyPfKBBGaPbMf3i/WoH9j9aY3zluLBCviEoefWr2FaBk7DitxG6lMVGi
- ZEssWiwnVzR0EdXAJGghO3M4tHs9smJVTq+1tdaN0DmDFIqeDz48babIb/qki6zNETNv
- lfopawY71/AwjvcNwCjTip3+5+Ftlh098ge9QaT02R20NkDQVaNs7wyITmHOkzQNf3D3
- HBMNpzft9sfP3dlHGlRvfehys/J4xTAL1DyuNbSfE5sBhdcAX+4W0flAqJAsAMTbW7q3
- SREnZEtjX+Q9U08RKPQvULMhhrSiOewjrILuHErXrANTxstZvo7P/3q89AUbBxgMRbBX
- eybA==
-X-Gm-Message-State: APjAAAWqZ0yqjyAGUad72yRxyW8qva8nXZyhU57XdiorxTOFqwXJVn2Z
- ArnOuyIxPcZTFb2XtTmiF9xfDodYmo9NeRh8l6dmeg==
-X-Received: by 2002:a02:7f57:: with SMTP id r84mr3723672jac.69.1571749574568; 
- Tue, 22 Oct 2019 06:06:14 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V69ymUDW;
+       spf=pass (google.com: domain of drjones@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1571752203;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=X8qYxAI0WgSx6/CqYTtmZjD3iL28I4NbYPq9pRIVPNU=;
+	b=V69ymUDWcmYKRcUwSj3mDn9IHjBOf+nKTBQ9UhIvWxH7DfU+ShqZaylchiDVVmfawfdQJ6
+	bptP41o5PI2bZfZZVtVl+GPQQIGn3mYgeeNBI13v56S7j2MleYmgKqwjKaKAoM3tb/AtFV
+	GsK3KayhXgOjKPJ3eIhOkmLK5+PNXg0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-17-T-zk6OqVOVC4BXtf4backQ-1; Tue, 22 Oct 2019 09:50:00 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0275D800D4E;
+	Tue, 22 Oct 2019 13:49:59 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2EAAB4503;
+	Tue, 22 Oct 2019 13:49:54 +0000 (UTC)
+Date: Tue, 22 Oct 2019 15:49:51 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Dave P Martin <Dave.Martin@arm.com>
+Subject: Re: [PATCH v6 0/9] target/arm/kvm: enable SVE in guests
+Message-ID: <20191022134951.znjbk4piuiqwbveb@kamzik.brq.redhat.com>
+References: <20191016085408.24360-1-drjones@redhat.com>
+ <CAFEAcA8pV5batrPk+J6RLU2rv9SNAmL8JS9Kd9tWP3pD-m29eA@mail.gmail.com>
+ <3f54f759-9d6d-bf04-85aa-59c1cac31044@redhat.com>
+ <20191021142336.e4xekqlmqv5txu5w@kamzik.brq.redhat.com>
+ <CAFEAcA-bezS5tSVB+N223+N+xoYYYHuSJmDTaRCJgO+4Y=VjdQ@mail.gmail.com>
+ <20191021161226.mnm6eomghb37xlby@kamzik.brq.redhat.com>
+ <CAFEAcA-vHmtCi3HGqpu34sAaNxGeQwS_+0yZ5Hr4SbnGm+rjYA@mail.gmail.com>
+ <CAFEAcA9o4G5yn0GzgdwvUnT_fEwRA7DChuV=miZaEvgavoU5xg@mail.gmail.com>
 MIME-Version: 1.0
-References: <20191021190653.9511-1-philmd@redhat.com>
-In-Reply-To: <20191021190653.9511-1-philmd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Oct 2019 14:06:02 +0100
-Message-ID: <CAFEAcA-85Yd+qCFa8CoWayYsd9F9C+NmZksMnhx=dAsjt+BUjg@mail.gmail.com>
-Subject: Re: [PATCH v2 0/6] hw/arm: Create the RAM in the board
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAFEAcA9o4G5yn0GzgdwvUnT_fEwRA7DChuV=miZaEvgavoU5xg@mail.gmail.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: T-zk6OqVOVC4BXtf4backQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d42
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gHFs2SfE2Q2s
+Content-Disposition: inline
+X-TUID: csc4hU7sTybt
 
-On Mon, 21 Oct 2019 at 20:07, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
+On Tue, Oct 22, 2019 at 11:29:05AM +0100, Peter Maydell wrote:
+> On Mon, 21 Oct 2019 at 17:18, Peter Maydell <peter.maydell@linaro.org> wr=
+ote:
+> >
+> > On Mon, 21 Oct 2019 at 17:12, Andrew Jones <drjones@redhat.com> wrote:
+> > >
+> > > On Mon, Oct 21, 2019 at 04:43:22PM +0100, Peter Maydell wrote:
+> > > > On Mon, 21 Oct 2019 at 15:23, Andrew Jones <drjones@redhat.com> wro=
+te:
+> > > > > Peter, would you mind running your test on the kvm32 machine with=
+ this
+> > > > > change before I send a v7?
+> > > >
+> > > > Still fails:
+> > > >
+> > > > pm215@pm-ct:~/qemu/build/arm$
+> > > > QTEST_QEMU_BINARY=3Darm-softmmu/qemu-system-arm tests/arm-cpu-featu=
+res
+> > > > /arm/arm/query-cpu-model-expansion: OK
+> > > > /arm/arm/kvm/query-cpu-model-expansion: **
+> > > > ERROR:/home/pm215/qemu/tests/arm-cpu-features.c:498:test_query_cpu_=
+model_expansion_kvm:
+> > > > assertion failed: (resp_has_props(_resp))
+> > > > Aborted
+> > > >
+> > > > This is asserting on the line:
+> > > > 498             assert_has_not_feature(qts, "host", "sve");
+> > > >
+> > >
+> > > Oh, I see. It's not failing the specific absence of 'sve', but the te=
+st
+> > > code (assert_has_not_feature()) is assuming at least one property is
+> > > present. This isn't the case for kvm32 'host' cpus. They apparently
+> > > have none. We need this patch too, then
+> > >
+> > > diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
+> > > index 14100ebd8521..9aa728ed8469 100644
+> > > --- a/tests/arm-cpu-features.c
+> > > +++ b/tests/arm-cpu-features.c
+> > > @@ -136,8 +136,8 @@ static bool resp_get_feature(QDict *resp, const c=
+har *feature)
+> > >  ({                                                                  =
+   \
+> > >      QDict *_resp =3D do_query_no_props(qts, cpu_type);              =
+     \
+> > >      g_assert(_resp);                                                =
+   \
+> > > -    g_assert(resp_has_props(_resp));                                =
+   \
+> > > -    g_assert(!qdict_get(resp_get_props(_resp), feature));           =
+   \
+> > > +    g_assert(!resp_has_props(_resp) ||                              =
+   \
+> > > +             !qdict_get(resp_get_props(_resp), feature));           =
+   \
+> > >      qobject_unref(_resp);                                           =
+   \
+> > >  })
+> >
+> > Yep, with that extra the test passes. I'm just rerunning the
+> > full 'make check'...
+>=20
+> ...which passed OK. For the record, the changes on top of the
+> patchset were:
+>=20
+> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
+> index 92668efb8f5..9aa728ed846 100644
+> --- a/tests/arm-cpu-features.c
+> +++ b/tests/arm-cpu-features.c
+> @@ -136,8 +136,8 @@ static bool resp_get_feature(QDict *resp, const
+> char *feature)
+>  ({                                                                     \
+>      QDict *_resp =3D do_query_no_props(qts, cpu_type);                  =
+ \
+>      g_assert(_resp);                                                   \
+> -    g_assert(resp_has_props(_resp));                                   \
+> -    g_assert(!qdict_get(resp_get_props(_resp), feature));              \
+> +    g_assert(!resp_has_props(_resp) ||                                 \
+> +             !qdict_get(resp_get_props(_resp), feature));              \
+>      qobject_unref(_resp);                                              \
+>  })
+>=20
+> @@ -417,8 +417,6 @@ static void
+> test_query_cpu_model_expansion_kvm(const void *data)
+>=20
+>      qts =3D qtest_init(MACHINE "-accel kvm -cpu host");
+>=20
+> -    assert_has_feature(qts, "host", "pmu");
+> -
+>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+>          bool kvm_supports_sve;
+>          char max_name[8], name[8];
+> @@ -428,6 +426,7 @@ static void
+> test_query_cpu_model_expansion_kvm(const void *data)
+>          char *error;
+>=20
+>          assert_has_feature(qts, "host", "aarch64");
+> +        assert_has_feature(qts, "host", "pmu");
+>=20
+>          assert_error(qts, "cortex-a15",
+>              "We cannot guarantee the CPU type 'cortex-a15' works "
+> @@ -497,9 +496,6 @@ static void
+> test_query_cpu_model_expansion_kvm(const void *data)
+>          }
+>      } else {
+>          assert_has_not_feature(qts, "host", "sve");
+> -        assert_error(qts, "host",
+> -                     "'pmu' feature not supported by KVM on this host",
+> -                     "{ 'pmu': true }");
+>      }
+>=20
+>      qtest_quit(qts);
 >
-> Hi Peter,
->
-> This series contains the ARM patches extracted from the
-> "Let the machine be the owner of the system memory" series [1]
-> reviewed by Richard.
->
-> These are cleanups moving the creation of the system ram at
-> the board level. The other series will enforce
-> memory_region_allocate_system_memory() get called with a
-> MachineState argument, this preliminary cleanup is required.
->
-> Regard,
->
-> Phil.
->
-> [1] https://lists.gnu.org/archive/html/qemu-devel/2019-10/msg05085.html
->
-> Philippe Mathieu-Daud=C3=A9 (6):
->   hw/arm/xilinx_zynq: Use the IEC binary prefix definitions
->   hw/arm/mps2: Use the IEC binary prefix definitions
->   hw/arm/collie: Create the RAM in the board
->   hw/arm/omap2: Create the RAM in the board
->   hw/arm/omap1: Create the RAM in the board
->   hw/arm/digic4: Inline digic4_board_setup_ram() function
 
+Thanks Peter!
 
+The changes look good to me. If we wanted to, we could also add
 
-Applied to target-arm.next, thanks.
+ assert_has_not_feature(qts, "host", "pmu");
 
--- PMM
+in that kvm32 block where we have the
+
+ assert_has_not_feature(qts, "host", "sve");
+
+and we could even add
+
+ assert_has_not_feature(qts, "host", "aarch64");
+
+there as well.
+
+If I need to spin a v7, then I'll do that. I could also submit just those
+additions as another patch, though, or even just not worry too much about
+those cases and not add the tests...
+
+Thanks,
+drew

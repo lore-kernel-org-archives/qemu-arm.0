@@ -1,93 +1,93 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1233576wrq;
-        Wed, 23 Oct 2019 11:14:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzJHTaN95Mkq9INzvDcI+1ZclpJzE66d8jwvFuXNegysMLmmaiJRaWpfDh0WW3D1aks7Vlp
-X-Received: by 2002:a05:6402:7cc:: with SMTP id u12mr39195115edy.63.1571854471953;
-        Wed, 23 Oct 2019 11:14:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571854471; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1235480wrq;
+        Wed, 23 Oct 2019 11:16:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwxezhERYtR4+V0+x6CmM1QiO0gtlfDk4hPxhAvc2fQjm6qPogWtdNG+/6vqNByM/PQ4+Wa
+X-Received: by 2002:aa7:df0b:: with SMTP id c11mr39068509edy.101.1571854565815;
+        Wed, 23 Oct 2019 11:16:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571854565; cv=none;
         d=google.com; s=arc-20160816;
-        b=qSi4AXLudLj4pUBP8UxuXA3jltO54WZgqiVguzSQbVc2ldebasH4SlN5SqwYgpwfK1
-         8Chh/5EJAPhP2J7Nr1XFktpV2LqHChhBhzmm0ai6Qj1RPfvbp0QVT1vqSjAF8S0MK/YH
-         NKkhH6J0O+b9mfecv9M8jPtGq6vemykpkwG/8/RvMD5n6qNj/stgA5qGUW/wDuFQOPrw
-         InEh4X2T+b/gZycoKvSIEyLe9MpnGUQOjZXJ+xCJaWL1pC8hYr0imDCDg1HJAQ0n6QJ+
-         oSfc+K1gpM6OrNuHKbEKhPqrA4ODEoLdDLRk7/ve8zlAHRvbClruyztO+lpxUO2DO16R
-         I33g==
+        b=vBNzDkBmrjJ2DwXZL4qXprcznuh/j+K1UdnJpYIe8lQ/5eQmiuTKLvWEG/OsgkpD6D
+         DY0x1uoQTqyrCtgTNWBxzQzYqxzZikbLdfnemN0SJzjwdzEjCdxzhmn2U9tOXyONmkuL
+         8z8XVwKFviy+yizXonnjw1gMDmcF06shqfxFzm7P7neuJVFjJpzjX+nGFS15oo32p7no
+         CN6kksukHhvxkVkFyWAbg+iJJ/PP5bs+i1b7VE0aqF1uWNrTNtdwGP9Urlw7PeN0XMvJ
+         lbaosjg6vb6mDtFpcrZ2CiaROLOFIzmZn1MHFpZUUUL++EsvRl/FYRY1OE4iH0VF6oQF
+         MaMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Q0NcN9La6mtlCg8u7COd46bpf07XvGZW0dbEVjDzVPU=;
-        b=Aq8A/xoa7sZNeUux3YBkjHwTzuXI8vAWUEjI7kcQVr+fAoEJzBqgEkDrNWfio77Xdt
-         +fZfLe2kCyHUs9m2LSuOzS7b3wbfeJrUjwFQRFRE7u+7drZlHI/GhvRQb4Zgs8TrkuEu
-         7pLMLCAjKpg/1jtP5S6NFTpCbI+fl4dDY17i32wxatyYyioYBE/+I0ry12YlHck2pPwd
-         5Ds3/XEG9EsNu7VObY9UGzHL6CWvB8qy2c0cH5hEqpSmpT609bjOWwrTn1D7RCZqCcnj
-         N5bhyEs+zahfeqddEaYorlN1Vy2UGUt9vFgsg8I0x4JEo1shlVFOmPG7NtaRXFSlcO3y
-         kPjA==
+        bh=p7r68AuXsMfU77fU2UE8Y3Y09All7chVKxAfJMcbRE0=;
+        b=ehsBI4NyB7MRmH7W24kSNhonhXwocZIU5R84Y01DDU83T5H3SxRNZLjJaSJvcRfHU8
+         RVcrthDeocSt2CFnmxDfqFUGhX2FWnxFg9Ww4uu/GTXMMhuiB8Dc0MvssnO0DTPbjvC0
+         HKFAGkbIBpVDsurkGmJ97pfdjo3xqf8RYky8d5nqHXyu9q3BJlb6SMrzy4/phFnT0Dv1
+         GXWABNfhwxwrth0RN7e1Ip0EX2PVXXB2wFKD4QD/XDUbJMHvicux2Jg1lsAdWgmhob3l
+         UPf3cdXUqWNy9uo6fA9gE8nkbUSvnm5XE6N6q2yjCpufyrJBkeV4XCdF1z82kpt5gpfc
+         hUsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OlVf7yCg;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ddD8JVRu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k15si13629563ejs.401.2019.10.23.11.14.31
+        by mx.google.com with ESMTPS id hb23si3949910ejb.377.2019.10.23.11.16.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 11:14:31 -0700 (PDT)
+        Wed, 23 Oct 2019 11:16:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OlVf7yCg;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ddD8JVRu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43312 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43334 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNL9S-0003Bq-8X
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 14:14:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59551)
+	id 1iNLAy-00046B-NS
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 14:16:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60036)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKWh-0004yx-Vs
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:34:29 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXm-00061T-33
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:35:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKWg-00028B-L7
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:34:27 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46724
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXj-0002iE-KT
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:35:33 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52919
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKWg-00027t-HM
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:34:26 -0400
+ id 1iNKXj-0002gz-Gx
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:35:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571852066;
+ s=mimecast20190719; t=1571852131;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Q0NcN9La6mtlCg8u7COd46bpf07XvGZW0dbEVjDzVPU=;
- b=OlVf7yCgTBdO+hRWcA/CSNYvvBDTwPBmeK2UDcyUlMi4BpHdaP6icV8WZeQYZ1GLVkMiiM
- 7IBnrzN6iz29cClBOjEAe8D/3UVjJGwl2bxjOGExc5054+Px8txFE1iZ0B0dGKYnUzhUxP
- g6WW5DXWQw5M7X0KhOO8F3fI1oAA+AA=
+ bh=p7r68AuXsMfU77fU2UE8Y3Y09All7chVKxAfJMcbRE0=;
+ b=ddD8JVRu/QfI3seOB79rCihnYzseNFToIcnDO0kkD/e6AL1aFSofdWFDJTHOsGtHQ2PlJi
+ Kl6SZVFi2CxA/MUnitTW8m03UvfIb1+PUlFat2ERGTjCpmneCmq00MlRr+JEpNpf9Dto9a
+ n6ENuJd/53/SIgcls3b08vDfUXkmaLg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-194-v-RhcreSM0qQs1Bx5neQGA-1; Wed, 23 Oct 2019 13:34:22 -0400
+ us-mta-72-N1RHAHmgN2GIlc349EJVYQ-1; Wed, 23 Oct 2019 13:35:24 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F24695E9;
- Wed, 23 Oct 2019 17:34:17 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3D2C51005512;
+ Wed, 23 Oct 2019 17:35:22 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 063225DAAF;
- Wed, 23 Oct 2019 17:34:11 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 691775DAAF;
+ Wed, 23 Oct 2019 17:35:16 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 18/33] mips: inline serial_init
-Date: Wed, 23 Oct 2019 19:31:39 +0200
-Message-Id: <20191023173154.30051-19-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 29/33] omap-intc: remove PROP_PTR
+Date: Wed, 23 Oct 2019 19:31:50 +0200
+Message-Id: <20191023173154.30051-30-marcandre.lureau@redhat.com>
 In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: v-RhcreSM0qQs1Bx5neQGA-1
+X-MC-Unique: N1RHAHmgN2GIlc349EJVYQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
@@ -124,90 +124,140 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: thUrVGEMBdTO
+X-TUID: wunzwmorWv6o
 
-The function is specific to mipssim, let's inline it.
+Since clocks are not QOM objects, replace PROP_PTR of clocks with
+setters methods.
 
+(in theory there should probably be different methods for omap1 &
+omap2 intc, but this is left as a future improvement)
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/char/serial.c         | 16 ----------------
- hw/mips/mips_mipssim.c   | 13 ++++++++++---
- include/hw/char/serial.h |  2 --
- 3 files changed, 10 insertions(+), 21 deletions(-)
+ hw/arm/omap1.c        |  4 ++--
+ hw/arm/omap2.c        |  4 ++--
+ hw/intc/omap_intc.c   | 17 ++++++++++-------
+ include/hw/arm/omap.h | 14 ++++++++++++++
+ 4 files changed, 28 insertions(+), 11 deletions(-)
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 84de2740a7..ca95e09ec9 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -1023,22 +1023,6 @@ static const TypeInfo serial_io_info =3D {
-     .class_init =3D serial_io_class_init,
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 6ce038a453..1afd1d3d7f 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -3889,7 +3889,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
+n *dram,
+=20
+     s->ih[0] =3D qdev_create(NULL, "omap-intc");
+     qdev_prop_set_uint32(s->ih[0], "size", 0x100);
+-    qdev_prop_set_ptr(s->ih[0], "clk", omap_findclk(s, "arminth_ck"));
++    omap_intc_set_iclk(OMAP_INTC(s->ih[0]), omap_findclk(s, "arminth_ck"))=
+;
+     qdev_init_nofail(s->ih[0]);
+     busdev =3D SYS_BUS_DEVICE(s->ih[0]);
+     sysbus_connect_irq(busdev, 0,
+@@ -3899,7 +3899,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
+n *dram,
+     sysbus_mmio_map(busdev, 0, 0xfffecb00);
+     s->ih[1] =3D qdev_create(NULL, "omap-intc");
+     qdev_prop_set_uint32(s->ih[1], "size", 0x800);
+-    qdev_prop_set_ptr(s->ih[1], "clk", omap_findclk(s, "arminth_ck"));
++    omap_intc_set_iclk(OMAP_INTC(s->ih[1]), omap_findclk(s, "arminth_ck"))=
+;
+     qdev_init_nofail(s->ih[1]);
+     busdev =3D SYS_BUS_DEVICE(s->ih[1]);
+     sysbus_connect_irq(busdev, 0,
+diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+index 457f152bac..1d7cc435ef 100644
+--- a/hw/arm/omap2.c
++++ b/hw/arm/omap2.c
+@@ -2308,8 +2308,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
+on *sdram,
+     /* Actually mapped at any 2K boundary in the ARM11 private-peripheral =
+if */
+     s->ih[0] =3D qdev_create(NULL, "omap2-intc");
+     qdev_prop_set_uint8(s->ih[0], "revision", 0x21);
+-    qdev_prop_set_ptr(s->ih[0], "fclk", omap_findclk(s, "mpu_intc_fclk"));
+-    qdev_prop_set_ptr(s->ih[0], "iclk", omap_findclk(s, "mpu_intc_iclk"));
++    omap_intc_set_fclk(OMAP_INTC(s->ih[0]), omap_findclk(s, "mpu_intc_fclk=
+"));
++    omap_intc_set_iclk(OMAP_INTC(s->ih[0]), omap_findclk(s, "mpu_intc_iclk=
+"));
+     qdev_init_nofail(s->ih[0]);
+     busdev =3D SYS_BUS_DEVICE(s->ih[0]);
+     sysbus_connect_irq(busdev, 0,
+diff --git a/hw/intc/omap_intc.c b/hw/intc/omap_intc.c
+index 854b709ca0..73bb1c2af4 100644
+--- a/hw/intc/omap_intc.c
++++ b/hw/intc/omap_intc.c
+@@ -38,10 +38,6 @@ struct omap_intr_handler_bank_s {
+     unsigned char priority[32];
  };
 =20
--SerialIO *serial_init(int base, qemu_irq irq, int baudbase,
--                         Chardev *chr, MemoryRegion *system_io)
--{
--    SerialIO *self =3D SERIAL_IO(qdev_create(NULL, TYPE_SERIAL_IO));
+-#define TYPE_OMAP_INTC "common-omap-intc"
+-#define OMAP_INTC(obj) \
+-    OBJECT_CHECK(struct omap_intr_handler_s, (obj), TYPE_OMAP_INTC)
 -
--    qdev_prop_set_uint32(DEVICE(self), "baudbase", baudbase);
--    qdev_prop_set_chr(DEVICE(self), "chardev", chr);
--    qdev_prop_set_int32(DEVICE(self), "instance-id", base);
--    qdev_init_nofail(DEVICE(self));
--
--    sysbus_connect_irq(SYS_BUS_DEVICE(self), 0, irq);
--    memory_region_add_subregion(system_io, base, &self->serial.io);
--
--    return self;
--}
--
- static Property serial_properties[] =3D {
-     DEFINE_PROP_CHR("chardev", SerialState, chr),
-     DEFINE_PROP_UINT32("baudbase", SerialState, baudbase, 115200),
-diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c
-index 282bbecb24..26fb8fa4de 100644
---- a/hw/mips/mips_mipssim.c
-+++ b/hw/mips/mips_mipssim.c
-@@ -40,6 +40,7 @@
- #include "hw/loader.h"
- #include "elf.h"
- #include "hw/sysbus.h"
-+#include "hw/qdev-properties.h"
- #include "exec/address-spaces.h"
- #include "qemu/error-report.h"
- #include "sysemu/qtest.h"
-@@ -219,9 +220,15 @@ mips_mipssim_init(MachineState *machine)
-      * A single 16450 sits at offset 0x3f8. It is attached to
-      * MIPS CPU INT2, which is interrupt 4.
-      */
--    if (serial_hd(0))
--        serial_init(0x3f8, env->irq[4], 115200, serial_hd(0),
--                    get_system_io());
-+    if (serial_hd(0)) {
-+        DeviceState *dev =3D qdev_create(NULL, TYPE_SERIAL_IO);
+ struct omap_intr_handler_s {
+     SysBusDevice parent_obj;
+=20
+@@ -391,9 +387,18 @@ static void omap_intc_realize(DeviceState *dev, Error =
+**errp)
+     }
+ }
+=20
++void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk)
++{
++    intc->iclk =3D clk;
++}
 +
-+        qdev_prop_set_chr(dev, "chardev", serial_hd(0));
-+        qdev_prop_set_int32(dev, "instance-id", 0x3f8);
-+        qdev_init_nofail(dev);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, env->irq[4]);
-+        sysbus_add_io(SYS_BUS_DEVICE(dev), 0x3f8, &SERIAL_IO(dev)->serial.=
-io);
-+    }
++void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk)
++{
++    intc->fclk =3D clk;
++}
++
+ static Property omap_intc_properties[] =3D {
+     DEFINE_PROP_UINT32("size", struct omap_intr_handler_s, size, 0x100),
+-    DEFINE_PROP_PTR("clk", struct omap_intr_handler_s, iclk),
+     DEFINE_PROP_END_OF_LIST(),
+ };
 =20
-     if (nd_table[0].used)
-         /* MIPSnet uses the MIPS CPU INT0, which is interrupt 2. */
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index cf9cdafaee..40e35e6fff 100644
---- a/include/hw/char/serial.h
-+++ b/include/hw/char/serial.h
-@@ -109,8 +109,6 @@ void serial_set_frequency(SerialState *s, uint32_t freq=
-uency);
- #define TYPE_SERIAL_IO "serial-io"
- #define SERIAL_IO(s) OBJECT_CHECK(SerialIO, (s), TYPE_SERIAL_IO)
+@@ -647,8 +652,6 @@ static void omap2_intc_realize(DeviceState *dev, Error =
+**errp)
+ static Property omap2_intc_properties[] =3D {
+     DEFINE_PROP_UINT8("revision", struct omap_intr_handler_s,
+     revision, 0x21),
+-    DEFINE_PROP_PTR("iclk", struct omap_intr_handler_s, iclk),
+-    DEFINE_PROP_PTR("fclk", struct omap_intr_handler_s, fclk),
+     DEFINE_PROP_END_OF_LIST(),
+ };
 =20
--SerialIO *serial_init(int base, qemu_irq irq, int baudbase,
--                      Chardev *chr, MemoryRegion *system_io);
- SerialMM *serial_mm_init(MemoryRegion *address_space,
-                          hwaddr base, int regshift,
-                          qemu_irq irq, int baudbase,
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index f3aa670036..bcecf19f89 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -67,6 +67,20 @@ void omap_clk_setrate(omap_clk clk, int divide, int mult=
+iply);
+ int64_t omap_clk_getrate(omap_clk clk);
+ void omap_clk_reparent(omap_clk clk, omap_clk parent);
+=20
++/* omap_intc.c */
++#define TYPE_OMAP_INTC "common-omap-intc"
++#define OMAP_INTC(obj)                                              \
++    OBJECT_CHECK(omap_intr_handler, (obj), TYPE_OMAP_INTC)
++
++typedef struct omap_intr_handler_s omap_intr_handler;
++
++/*
++ * TODO: Ideally we should have a clock framework that
++ * let us wire these clocks up with QOM properties or links.
++ */
++void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
++void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
++
+ /* OMAP2 l4 Interconnect */
+ struct omap_l4_s;
+ struct omap_l4_region_s {
 --=20
 2.23.0.606.g08da6496b6
 

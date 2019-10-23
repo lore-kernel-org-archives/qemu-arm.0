@@ -1,99 +1,99 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1232251wrq;
-        Wed, 23 Oct 2019 11:13:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw7hX7q0V8t5ySZ+OoPKTXqf/RyKYrKv+Bvla6tyO3GdDVV3LaDKKUe9gtCPbujzsQc/uA7
-X-Received: by 2002:a37:74f:: with SMTP id 76mr9794143qkh.80.1571854403542;
-        Wed, 23 Oct 2019 11:13:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571854403; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1233184wrq;
+        Wed, 23 Oct 2019 11:14:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyzfSf+6z/EwvsELQCmWMCOsPgCYYkxJ92EeVIMZY6TJa3DdmHpd8TEH9blN4GjmCc93MGq
+X-Received: by 2002:a50:9a46:: with SMTP id o64mr39560112edb.191.1571854451920;
+        Wed, 23 Oct 2019 11:14:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571854451; cv=none;
         d=google.com; s=arc-20160816;
-        b=vMJ+UR39F4tbzBmeBe58sA4IhlfpqCdR0FwECMAn8OI12f2+9Du64zEwrRCyHpMfyT
-         /WdbrHU9KRU89C1zr0P6Nk1lnU1NQwPOOaWAtXDMP510HkFXX/61yoAHVdlpamkx0ZTm
-         /VLZ5QV7l9ZdYpHtzCgyqi6JT2OQ5UaUKS0bf/8bgtQpGLzcoqEFsMIRimzjnDnuoIK2
-         oJMpG7RqNfT4nhr1AxkH10DTufyJARI5OTQnmlUeXCduu6QX//GnNYAvWCvNgkOUcLyX
-         dbY2IlEmaTjGhRecQjhEHgTi6RrMCaNlkKrh+5qBO7A1GpWX6vBfX/j9CS/aZLKbKzpA
-         nhIw==
+        b=GIREr7hf+nUrypcs3Tc9UVe7+jzIRMKtfZVoLX9/7CSZ3MBbo2E/6AmS3Dh5XoRExU
+         1LCPnI3B/oyF4USK97KONx6vfgDuQHfl2s3WRQvTydcJRTtJMzUDmBa+0Mc+pGLK5e+Y
+         F4Pl+GKiRnRoYGctwAHyd/SJjeIQlRFTCC9M81ca1bMzuaFoy+e5QVFamE7xCriJcKlk
+         TniuI2YZZHo8UqYimCZZo8kfwvAxqL5RulZB5aQLjZd5jpj0WlZKzr91tdD+0ws9PLkb
+         5DiICQP1MCIImvCAGDPmZqEIy+3GITtjjkUyghnDld1zuM5yyDSfMkAGaihajHulEHMR
+         PIkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=RLin/gMURkv6SWnRw7pKzxO/OTySf/usbRwej+gNRbs=;
-        b=z2IP0N29akG5MHHtSMpJCwIiws5lUBhyo+sBJ/QFAQfyuNMitQW8QUQmEV+9LVl9VI
-         m9gtj8KNOX3a47JaexhlJmeU32I9JMnnZZMfMkBFJzgso8LXymSWa7NgPbn3bkgeQdnB
-         d9K5VcDl2T1/Jd70I45GL9GRTAIjzaYf3Z/sZ8aLl8iMcQ6ht6p8RgNM/GsSTxHltJZ3
-         CtDpMrPeS/lPjY6ORCwxXVlGceK4QfZSMTsMDYpkyb+hEHdOc/Dua3dALEvLWlDWOwl2
-         eDy2b4xcflWx97wYD/pWlBI4/IVz2OSLTqax3SHeV9P25cyderXDnHI2GBbxIifHv+A6
-         tAzg==
+        bh=QmFFdvh8lLCYoMRknFLWTBCMhIo3Fn3Z3qJbSbzkpNo=;
+        b=iB6KyHxNa2dKN1rtzvun+R+Qq2Qb+nTCa1KXthFmbJOPuXfXWJFEdriGrMXJ44QjII
+         pVX6b6nChnHzW3iI/naT1fkotSgciNZ/BVAqOj0XYkJQxb1gdunzv4Lc9ZU/YZU0QrB8
+         WMXyPIHtDAC8PbOlImmQokSXAJ0PoJ0htQQVaGCmny3jbnhshzZQggKrlBnyqa7kZlfr
+         6uGT9MoajWD3Mqmqdk6sLX9zICMXWubhBH2oWqHGWHq6b1Rt/QeHqQgjDN+17Y1WfzmV
+         bMzRfi3f5mjvwdwhnwn3PEza8t9qXBUcHC/h2m7FWBdDYNgSCmdD3Zpsc7rqAcxdsqX7
+         +aKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QNIZlCJy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CNFUBfea;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q18si20900981qvf.154.2019.10.23.11.13.23
+        by mx.google.com with ESMTPS id x50si10325367eda.155.2019.10.23.11.14.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 11:13:23 -0700 (PDT)
+        Wed, 23 Oct 2019 11:14:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QNIZlCJy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CNFUBfea;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43292 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNL8K-00027q-SI
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 14:13:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59746)
+	id 1iNL98-0002mK-3B
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 14:14:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59789)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKX8-0005Ms-Cd
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:34:55 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKX9-0005PM-IV
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:34:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKX6-0002KG-4P
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:34:54 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38377
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKX8-0002Lx-8d
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:34:55 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:23758
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKX2-0002Gv-Ck
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:34:49 -0400
+ id 1iNKX6-0002Fw-76
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:34:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571852085;
+ s=mimecast20190719; t=1571852081;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RLin/gMURkv6SWnRw7pKzxO/OTySf/usbRwej+gNRbs=;
- b=QNIZlCJyi+1z+GQ6lsF7gsYRges/xtEfTwAjRepJs6uIIR6MFJToiS5OSDbwqaSQgTdWqZ
- P3+nh3WTmfnETowyFLAPlGpco0/53Q657tRwNxI+pSAiIKUvmK5PEzQnq02AJD/hNr4Yrd
- CoSP0raCTnCX194U/BNIRCcxQVi+Txk=
+ bh=QmFFdvh8lLCYoMRknFLWTBCMhIo3Fn3Z3qJbSbzkpNo=;
+ b=CNFUBfeaQqJsO8dcv33KDw8p5V8NKCb30VddM4SQbiE0t7JRKQgFeLt24HAxE21WVVW+Pl
+ UzwQkAImgkr/oy1WXi+S+JeG//7HwRE5kNkpfcmagfQCdn+aiPgvlTA9lACiVuL4GB1VnN
+ P4gOQmKz8SHJJXhhNb4DBQjuqXusTjc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-81-jMqYSDZYN2WIEXtmvCk1VQ-1; Wed, 23 Oct 2019 13:34:27 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-361-p4x3Qlo_MS6XbmYlbZtcUQ-1; Wed, 23 Oct 2019 13:34:36 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 57E3B800D62;
- Wed, 23 Oct 2019 17:34:25 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF68E107AD34;
+ Wed, 23 Oct 2019 17:34:33 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9269C5C1D4;
- Wed, 23 Oct 2019 17:34:19 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 115FD19C78;
+ Wed, 23 Oct 2019 17:34:30 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 19/33] sm501: make SerialMM a child, export chardev property
-Date: Wed, 23 Oct 2019 19:31:40 +0200
-Message-Id: <20191023173154.30051-20-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 22/33] etraxfs: remove PROP_PTR usage
+Date: Wed, 23 Oct 2019 19:31:43 +0200
+Message-Id: <20191023173154.30051-23-marcandre.lureau@redhat.com>
 In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: jMqYSDZYN2WIEXtmvCk1VQ-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: p4x3Qlo_MS6XbmYlbZtcUQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,111 +124,123 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xbMzGmJBcEgo
+X-TUID: QqCgv1V0vwqb
 
-Embed the SerialMM sybus device, and re-export its "chardev" property.
-That way, we can get rid of PROP_PTR "chr-state" and better track
-devices relationship.
+etraxfs_dma_client are not Object, so can't be exposed to user with
+QOM path. Let's remove property usage and move the constructor to the
+.c unit, simplifying some code on the way.
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/display/sm501.c | 31 ++++++++++++++++++++++---------
- hw/sh4/r2d.c       |  2 +-
- 2 files changed, 23 insertions(+), 10 deletions(-)
+ hw/net/etraxfs_eth.c      | 44 +++++++++++++++++++++++++++++----------
+ include/hw/cris/etraxfs.h | 20 +++---------------
+ 2 files changed, 36 insertions(+), 28 deletions(-)
 
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 1f33c87e65..6efdf764c1 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -1930,13 +1930,14 @@ typedef struct {
-     SM501State state;
-     uint32_t vram_size;
-     uint32_t base;
--    void *chr_state;
-+    SerialMM serial;
- } SM501SysBusState;
+diff --git a/hw/net/etraxfs_eth.c b/hw/net/etraxfs_eth.c
+index 4cfbf1135a..f30d963487 100644
+--- a/hw/net/etraxfs_eth.c
++++ b/hw/net/etraxfs_eth.c
+@@ -338,14 +338,8 @@ typedef struct ETRAXFSEthState
+     uint8_t macaddr[2][6];
+     uint32_t regs[FS_ETH_MAX_REGS];
 =20
- static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
- {
-     SM501SysBusState *s =3D SYSBUS_SM501(dev);
-     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-+    SerialState *ss =3D &s->serial.serial;
-     DeviceState *usb_dev;
+-    union {
+-        void *vdma_out;
+-        struct etraxfs_dma_client *dma_out;
+-    };
+-    union {
+-        void *vdma_in;
+-        struct etraxfs_dma_client *dma_in;
+-    };
++    struct etraxfs_dma_client *dma_out;
++    struct etraxfs_dma_client *dma_in;
 =20
-     sm501_init(&s->state, dev, s->vram_size);
-@@ -1958,17 +1959,18 @@ static void sm501_realize_sysbus(DeviceState *dev, =
-Error **errp)
-     sysbus_pass_irq(sbd, SYS_BUS_DEVICE(usb_dev));
+     /* MDIO bus.  */
+     struct qemu_mdio mdio_bus;
+@@ -635,8 +629,6 @@ static void etraxfs_eth_realize(DeviceState *dev, Error=
+ **errp)
 =20
-     /* bridge to serial emulation module */
--    if (s->chr_state) {
--        serial_mm_init(&s->state.mmio_region, SM501_UART0, 2,
--                       NULL, /* TODO : chain irq to IRL */
--                       115200, s->chr_state, DEVICE_LITTLE_ENDIAN);
-+    if (qemu_chr_fe_backend_connected(&ss->chr)) {
-+        MemoryRegion *mr;
-+        qdev_init_nofail(DEVICE(&s->serial));
-+        mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->serial), 0);
-+        memory_region_add_subregion(&s->state.mmio_region, SM501_UART0, mr=
-);
-+        /* TODO : chain irq to IRL */
-     }
- }
-=20
- static Property sm501_sysbus_properties[] =3D {
-     DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
-     DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
--    DEFINE_PROP_PTR("chr-state", SM501SysBusState, chr_state),
+ static Property etraxfs_eth_properties[] =3D {
+     DEFINE_PROP_UINT32("phyaddr", ETRAXFSEthState, phyaddr, 1),
+-    DEFINE_PROP_PTR("dma_out", ETRAXFSEthState, vdma_out),
+-    DEFINE_PROP_PTR("dma_in", ETRAXFSEthState, vdma_in),
+     DEFINE_NIC_PROPERTIES(ETRAXFSEthState, conf),
      DEFINE_PROP_END_OF_LIST(),
  };
-=20
-@@ -1999,9 +2001,19 @@ static void sm501_sysbus_class_init(ObjectClass *kla=
-ss, void *data)
-     dc->props =3D sm501_sysbus_properties;
-     dc->reset =3D sm501_reset_sysbus;
-     dc->vmsd =3D &vmstate_sm501_sysbus;
--    /* Note: pointer property "chr-state" may remain null, thus
--     * no need for dc->user_creatable =3D false;
--     */
-+}
-+
-+static void sm501_sysbus_init(Object *o)
-+{
-+    SM501SysBusState *self =3D SYSBUS_SM501(o);
-+    SerialMM *s =3D &self->serial;
-+
-+    sysbus_init_child_obj(o, "serial", s, sizeof(SerialMM), TYPE_SERIAL_MM=
-);
-+    qdev_prop_set_int32(DEVICE(s), "instance-id", SM501_UART0);
-+    qdev_prop_set_uint8(DEVICE(s), "regshift", 2);
-+    qdev_prop_set_uint8(DEVICE(s), "endianness", DEVICE_LITTLE_ENDIAN);
-+
-+    object_property_add_alias(o, "chardev", OBJECT(s), "chardev", &error_a=
-bort);
+@@ -648,10 +640,40 @@ static void etraxfs_eth_class_init(ObjectClass *klass=
+, void *data)
+     dc->realize =3D etraxfs_eth_realize;
+     dc->reset =3D etraxfs_eth_reset;
+     dc->props =3D etraxfs_eth_properties;
+-    /* Reason: pointer properties "dma_out", "dma_in" */
++    /* Reason: dma_out, dma_in are not user settable */
+     dc->user_creatable =3D false;
  }
 =20
- static const TypeInfo sm501_sysbus_info =3D {
-@@ -2009,6 +2021,7 @@ static const TypeInfo sm501_sysbus_info =3D {
++
++/* Instantiate an ETRAXFS Ethernet MAC.  */
++DeviceState *
++etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
++                 struct etraxfs_dma_client *dma_out,
++                 struct etraxfs_dma_client *dma_in)
++{
++    DeviceState *dev;
++    qemu_check_nic_model(nd, "fseth");
++
++    dev =3D qdev_create(NULL, "etraxfs-eth");
++    qdev_set_nic_properties(dev, nd);
++    qdev_prop_set_uint32(dev, "phyaddr", phyaddr);
++
++    /*
++     * TODO: QOM design, define a QOM interface for "I am an etraxfs
++     * DMA client" (which replaces the current 'struct
++     * etraxfs_dma_client' ad-hoc interface), implement it on the
++     * ethernet device, and then have QOM link properties on the DMA
++     * controller device so that you can pass the interface
++     * implementations to it.
++     */
++    ETRAX_FS_ETH(dev)->dma_out =3D dma_out;
++    ETRAX_FS_ETH(dev)->dma_in =3D dma_in;
++    qdev_init_nofail(dev);
++    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
++
++    return dev;
++}
++
+ static const TypeInfo etraxfs_eth_info =3D {
+     .name          =3D TYPE_ETRAX_FS_ETH,
      .parent        =3D TYPE_SYS_BUS_DEVICE,
-     .instance_size =3D sizeof(SM501SysBusState),
-     .class_init    =3D sm501_sysbus_class_init,
-+    .instance_init =3D sm501_sysbus_init,
- };
+diff --git a/include/hw/cris/etraxfs.h b/include/hw/cris/etraxfs.h
+index aa146a2cd8..403e7f95e6 100644
+--- a/include/hw/cris/etraxfs.h
++++ b/include/hw/cris/etraxfs.h
+@@ -30,23 +30,9 @@
+ #include "hw/qdev-properties.h"
+ #include "hw/sysbus.h"
 =20
- #define TYPE_PCI_SM501 "sm501"
-diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
-index ee0840f380..72bb5285cc 100644
---- a/hw/sh4/r2d.c
-+++ b/hw/sh4/r2d.c
-@@ -272,7 +272,7 @@ static void r2d_init(MachineState *machine)
-     busdev =3D SYS_BUS_DEVICE(dev);
-     qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
-     qdev_prop_set_uint32(dev, "base", 0x10000000);
--    qdev_prop_set_ptr(dev, "chr-state", serial_hd(2));
-+    qdev_prop_set_chr(dev, "chardev", serial_hd(2));
-     qdev_init_nofail(dev);
-     sysbus_mmio_map(busdev, 0, 0x10000000);
-     sysbus_mmio_map(busdev, 1, 0x13e00000);
+-/* Instantiate an ETRAXFS Ethernet MAC.  */
+-static inline DeviceState *
+-etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
+-                 void *dma_out, void *dma_in)
+-{
+-    DeviceState *dev;
+-    qemu_check_nic_model(nd, "fseth");
+-
+-    dev =3D qdev_create(NULL, "etraxfs-eth");
+-    qdev_set_nic_properties(dev, nd);
+-    qdev_prop_set_uint32(dev, "phyaddr", phyaddr);
+-    qdev_prop_set_ptr(dev, "dma_out", dma_out);
+-    qdev_prop_set_ptr(dev, "dma_in", dma_in);
+-    qdev_init_nofail(dev);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+-    return dev;
+-}
++DeviceState *etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
++                              struct etraxfs_dma_client *dma_out,
++                              struct etraxfs_dma_client *dma_in);
+=20
+ static inline DeviceState *etraxfs_ser_create(hwaddr addr,
+                                               qemu_irq irq,
 --=20
 2.23.0.606.g08da6496b6
 

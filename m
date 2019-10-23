@@ -1,99 +1,99 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1274734wrq;
-        Wed, 23 Oct 2019 11:55:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzORiahwL/CNHcGEi5lhXDnTq0mVykOvisL7hwjwKBE7cgCgr6R89L2w3sv6LgJe4P3ejow
-X-Received: by 2002:a50:a227:: with SMTP id 36mr26841064edl.262.1571856906953;
-        Wed, 23 Oct 2019 11:55:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571856906; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1277254wrq;
+        Wed, 23 Oct 2019 11:57:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyGraZicUfPYvvwNjpVgkT4n+E7i3PhnmDJYrGZoWIsjS+DrpGDS2fUsX/0GBkKVr19zofz
+X-Received: by 2002:a37:684c:: with SMTP id d73mr10140721qkc.176.1571857067633;
+        Wed, 23 Oct 2019 11:57:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571857067; cv=none;
         d=google.com; s=arc-20160816;
-        b=zvqtZd7pf2TYbRVvIlinhbHwuEYmRzXJElHCp8GcI7PqBcr6RnylGzxWBJJ2GOmapi
-         +7qyVbeu/qQZifQGagbpXITjvGXsSa/vQYpCaneUHRogfxONGQk5PPYXXEDaE5c3kVgW
-         WAHZKKeXrUsjGMkH1Myr7mcSFtUvSUpwKOA702GCLjbGLEM+0ucQVNmo7Kp4+/9ScINR
-         BxLQYI814uTPuuN6zbddamNIbYkFMxaPMtynUcyFgJeuaYFgqmOf0I/iFUkx7/bjaehw
-         kEr0mxuALVXomB+hmPmkDc/ja+grR2uWyLvQ2JjSJ+HkiVgOOgKfjzRnniBh4Nt8P4hx
-         /pPQ==
+        b=IubWjgDi4WTSw9D/S6c+IsR/mNtMVE9kuyFlneX2f+xcf+pCjLSCHbmKcj9VakWCnN
+         W95/YulgnbibvOhhg8vrrVXUoVV2k1VAClOUikg7da85LoAJ6X1ZEsATdxD0D0kiziwD
+         aoDd/SR1yo+aMXaUHGuyMqb0UBA0ivzDAfHaNUNLKEeR5cURwgZfg/YXgnChNVtQfcnZ
+         ucEWb6CGynZijd1R090bXWR/Lt6EpdSdBIH9YNGZxbNNvhr6P0wgDjv37NHqFnVQYj5m
+         8Bh5POLokdCoTA51/ihYvZlr/nfPtJSEoEcSGwNa801vUW9ZYNJkx1BCwQKyD8sBUsNN
+         ySDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=SyUZ4JsJycVqOSKTWD2PuRrZH/UM5sDUfeCR0AwZmPE=;
-        b=onc/iDp9EOq99UdzN7KHo4tKhJG1reSUbGk+dHIPzxhroiRXzOrwCBe7esGe6N24ln
-         Y86xx+H4AwQ3j4krDtfDsvK4CY5sK+DCEFj9SAppTN8nWLg2MguaR24se7uLW7CKWRyU
-         z988X1j8fGtACV1RCBBsA+ZjgBKe3Ak+fmOxS6mFwT/RkLPv+nMf6Icz0WdkN1WeGssW
-         cGDHMvsUXiKGTPJDIkVNraRBG06xXf+V7RIJsJuxRQ3zPPdCH373imdSxRjE7OuaSe/j
-         ATTl71GOHwHjMxQljuVjsZj4XlKLqFzGmuaGtnIJTjoPZfEovhNUKv0HrxsoXSH9lYE4
-         gYNA==
+        bh=UfiNxxYjH3sYEO1mfbxHgayQzvy7QgMJpTON/ahYwLE=;
+        b=b0G8TZJrr8n7LjSaQqgif+wfzId9HDZOIzpibA7BjQDRwRcmkd3umEpuJOJjStXzSE
+         wE3+kvxu6RoamPJN3m96SwG1fbB1CCwbgtrTkIlZ+wSBugX9WPxeWipFBETCCN/54gpJ
+         17QmCaeih/HcW0/OELlT5DeQ68NnxrgPRTplpomr3OHX1NnH6dho61YJB6mOvQb1qr2T
+         iA3gOBZC5r6RqeTgk3wXQX8SSLko9bM2k9qcKLuyMBMcyvVdl/dtNjlSRoZsAkn5/xqz
+         75e52gSr53qTtW2rb7FXYXBNMFqROkeB4P/rcHfyqLgXWHK4U7KVZzH/0pMbqT/mVfsc
+         qUFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Wo7G/Y2g";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Kp5cFQ+8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v1si9883777edm.285.2019.10.23.11.55.06
+        by mx.google.com with ESMTPS id h74si2890258qke.305.2019.10.23.11.57.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 11:55:06 -0700 (PDT)
+        Wed, 23 Oct 2019 11:57:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Wo7G/Y2g";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Kp5cFQ+8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44036 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44068 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNLmi-000437-Kg
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 14:55:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60123)
+	id 1iNLpK-0006Z0-Ug
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 14:57:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60265)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXt-0006DI-4r
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:46 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKYK-0006W7-23
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:36:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXn-0002ma-LB
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:40 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:29418
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKYE-0002yz-3w
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:36:05 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:46701
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKXn-0002ly-Gj
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:35 -0400
+ id 1iNKY8-0002wm-D6
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571852135;
+ s=mimecast20190719; t=1571852153;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SyUZ4JsJycVqOSKTWD2PuRrZH/UM5sDUfeCR0AwZmPE=;
- b=Wo7G/Y2gxDDq4DTjKnEM4wW1WfZheB2KPh909qt9eggoUqaL5nzjx00LOScUSpegRKTlHW
- BrddYWo5NI6iRkvat2PcjGPr0wJjFS2QPnZbJaL1qI0PDKDHwMVaHMnZnRcGA/yapZy/mt
- 3ilvTETz2GAHF/sET3COsJ1E17qLnis=
+ bh=UfiNxxYjH3sYEO1mfbxHgayQzvy7QgMJpTON/ahYwLE=;
+ b=Kp5cFQ+8UdaWQFq4Hark5xFVRSuvIaEGfU35C8XBs28O+xrrYSvdKk0UMKMFju7RznBNeK
+ zr/zjaXrk9LHQK6MP4D7tmhSWr8D6YMM63+FkkLLrQrZ8JNkf8fue9clYrrSOIW6HUlc8m
+ OE8tIaXP3py9emBaQ3FkpogTKDq+F3Q=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-215-eGptjdXAMc-Me0wY99FoZw-1; Wed, 23 Oct 2019 13:35:31 -0400
+ us-mta-274-CBcB3M0VN4G3EIEOra0ZtQ-1; Wed, 23 Oct 2019 13:35:50 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4CBDF47B;
- Wed, 23 Oct 2019 17:35:29 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E200F1800E01;
+ Wed, 23 Oct 2019 17:35:47 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C3EF7196B2;
- Wed, 23 Oct 2019 17:35:23 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 47FD2196B2;
+ Wed, 23 Oct 2019 17:35:42 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 30/33] omap-i2c: remove PROP_PTR
-Date: Wed, 23 Oct 2019 19:31:51 +0200
-Message-Id: <20191023173154.30051-31-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 33/33] qdev: remove QDEV_PROP_PTR
+Date: Wed, 23 Oct 2019 19:31:54 +0200
+Message-Id: <20191023173154.30051-34-marcandre.lureau@redhat.com>
 In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: eGptjdXAMc-Me0wY99FoZw-1
+X-MC-Unique: CBcB3M0VN4G3EIEOra0ZtQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,135 +123,103 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gJpuaVOFM0UK
+X-TUID: R/1YfD2lb4oc
 
-Since clocks are not QOM objects, replace PROP_PTR of clocks with
-setters methods.
+No longer used in the tree. The comment about user_creatable is still
+quite relevant, but there is already a similar comment in qdev-core.h.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Corey Minyard <cminyard@mvista.com>
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/arm/omap1.c        |  2 +-
- hw/arm/omap2.c        |  8 ++++----
- hw/i2c/omap_i2c.c     | 19 ++++++++++++-------
- include/hw/arm/omap.h | 13 +++++++++++++
- 4 files changed, 30 insertions(+), 12 deletions(-)
+ hw/core/qdev-properties.c    | 18 ------------------
+ include/hw/qdev-properties.h | 22 ----------------------
+ 2 files changed, 40 deletions(-)
 
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 1afd1d3d7f..807e5f70d1 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -4030,7 +4030,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
-n *dram,
-=20
-     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
-     qdev_prop_set_uint8(s->i2c[0], "revision", 0x11);
--    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "mpuper_ck"));
-+    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "mpuper_ck"));
-     qdev_init_nofail(s->i2c[0]);
-     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
-     sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(s->ih[1], OMAP_INT_I2C)=
-);
-diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-index 1d7cc435ef..171e2d0472 100644
---- a/hw/arm/omap2.c
-+++ b/hw/arm/omap2.c
-@@ -2425,8 +2425,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
-on *sdram,
-=20
-     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
-     qdev_prop_set_uint8(s->i2c[0], "revision", 0x34);
--    qdev_prop_set_ptr(s->i2c[0], "iclk", omap_findclk(s, "i2c1.iclk"));
--    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "i2c1.fclk"));
-+    omap_i2c_set_iclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.iclk"));
-+    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.fclk"));
-     qdev_init_nofail(s->i2c[0]);
-     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
-     sysbus_connect_irq(busdev, 0,
-@@ -2437,8 +2437,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
-on *sdram,
-=20
-     s->i2c[1] =3D qdev_create(NULL, "omap_i2c");
-     qdev_prop_set_uint8(s->i2c[1], "revision", 0x34);
--    qdev_prop_set_ptr(s->i2c[1], "iclk", omap_findclk(s, "i2c2.iclk"));
--    qdev_prop_set_ptr(s->i2c[1], "fclk", omap_findclk(s, "i2c2.fclk"));
-+    omap_i2c_set_iclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.iclk"));
-+    omap_i2c_set_fclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.fclk"));
-     qdev_init_nofail(s->i2c[1]);
-     busdev =3D SYS_BUS_DEVICE(s->i2c[1]);
-     sysbus_connect_irq(busdev, 0,
-diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
-index 3ba965a58f..3ccbd5cc2c 100644
---- a/hw/i2c/omap_i2c.c
-+++ b/hw/i2c/omap_i2c.c
-@@ -28,10 +28,7 @@
- #include "qemu/error-report.h"
- #include "qapi/error.h"
-=20
--#define TYPE_OMAP_I2C "omap_i2c"
--#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
--
--typedef struct OMAPI2CState {
-+struct OMAPI2CState {
-     SysBusDevice parent_obj;
-=20
-     MemoryRegion iomem;
-@@ -56,7 +53,7 @@ typedef struct OMAPI2CState {
-     uint8_t divider;
-     uint8_t times[2];
-     uint16_t test;
--} OMAPI2CState;
-+};
-=20
- #define OMAP2_INTR_REV=090x34
- #define OMAP2_GC_REV=090x34
-@@ -504,10 +501,18 @@ static void omap_i2c_realize(DeviceState *dev, Error =
-**errp)
-     }
- }
-=20
-+void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk)
-+{
-+    i2c->iclk =3D clk;
-+}
-+
-+void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk)
-+{
-+    i2c->fclk =3D clk;
-+}
-+
- static Property omap_i2c_properties[] =3D {
-     DEFINE_PROP_UINT8("revision", OMAPI2CState, revision, 0),
--    DEFINE_PROP_PTR("iclk", OMAPI2CState, iclk),
--    DEFINE_PROP_PTR("fclk", OMAPI2CState, fclk),
-     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index be4cb01f0b..6271169d7d 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -469,13 +469,6 @@ const PropertyInfo qdev_prop_string =3D {
+     .set   =3D set_string,
  };
 =20
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index bcecf19f89..39a295ba20 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -81,6 +81,19 @@ typedef struct omap_intr_handler_s omap_intr_handler;
- void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
- void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
+-/* --- pointer --- */
+-
+-/* Not a proper property, just for dirty hacks.  TODO Remove it!  */
+-const PropertyInfo qdev_prop_ptr =3D {
+-    .name  =3D "ptr",
+-};
+-
+ /* --- mac address --- */
 =20
-+/* omap_i2c.c */
-+#define TYPE_OMAP_I2C "omap_i2c"
-+#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
-+
-+typedef struct OMAPI2CState OMAPI2CState;
-+
-+/*
-+ * TODO: Ideally we should have a clock framework that
-+ * let us wire these clocks up with QOM properties or links.
-+ */
-+void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk);
-+void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk);
-+
- /* OMAP2 l4 Interconnect */
- struct omap_l4_s;
- struct omap_l4_region_s {
+ /*
+@@ -1133,17 +1126,6 @@ void qdev_prop_set_enum(DeviceState *dev, const char=
+ *name, int value)
+                             name, &error_abort);
+ }
+=20
+-void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value)
+-{
+-    Property *prop;
+-    void **ptr;
+-
+-    prop =3D qdev_prop_find(dev, name);
+-    assert(prop && prop->info =3D=3D &qdev_prop_ptr);
+-    ptr =3D qdev_get_prop_ptr(dev, prop);
+-    *ptr =3D value;
+-}
+-
+ static GPtrArray *global_props(void)
+ {
+     static GPtrArray *gp;
+diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+index 5bba033b7b..a708c3870b 100644
+--- a/include/hw/qdev-properties.h
++++ b/include/hw/qdev-properties.h
+@@ -17,7 +17,6 @@ extern const PropertyInfo qdev_prop_size;
+ extern const PropertyInfo qdev_prop_string;
+ extern const PropertyInfo qdev_prop_chr;
+ extern const PropertyInfo qdev_prop_tpm;
+-extern const PropertyInfo qdev_prop_ptr;
+ extern const PropertyInfo qdev_prop_macaddr;
+ extern const PropertyInfo qdev_prop_on_off_auto;
+ extern const PropertyInfo qdev_prop_losttickpolicy;
+@@ -168,25 +167,6 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
+ #define DEFINE_PROP_PCI_DEVFN(_n, _s, _f, _d)                   \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_pci_devfn, int32_t)
+=20
+-/*
+- * Please avoid pointer properties.  If you must use them, you must
+- * cover them in their device's class init function as follows:
+- *
+- * - If the property must be set, the device cannot be used with
+- *   device_add, so add code like this:
+- *   |* Reason: pointer property "NAME-OF-YOUR-PROP" *|
+- *   DeviceClass *dc =3D DEVICE_CLASS(class);
+- *   dc->user_creatable =3D false;
+- *
+- * - If the property may safely remain null, document it like this:
+- *   |*
+- *    * Note: pointer property "interrupt_vector" may remain null, thus
+- *    * no need for dc->user_creatable =3D false;
+- *    *|
+- */
+-#define DEFINE_PROP_PTR(_n, _s, _f)             \
+-    DEFINE_PROP(_n, _s, _f, qdev_prop_ptr, void*)
+-
+ #define DEFINE_PROP_CHR(_n, _s, _f)             \
+     DEFINE_PROP(_n, _s, _f, qdev_prop_chr, CharBackend)
+ #define DEFINE_PROP_STRING(_n, _s, _f)             \
+@@ -259,8 +239,6 @@ void qdev_prop_set_drive(DeviceState *dev, const char *=
+name,
+ void qdev_prop_set_macaddr(DeviceState *dev, const char *name,
+                            const uint8_t *value);
+ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
+-/* FIXME: Remove opaque pointer properties.  */
+-void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value);
+=20
+ void qdev_prop_register_global(GlobalProperty *prop);
+ int qdev_prop_check_globals(void);
 --=20
 2.23.0.606.g08da6496b6
 

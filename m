@@ -1,99 +1,99 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1312470wrq;
-        Wed, 23 Oct 2019 12:29:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzgJ3MPQkJSoTVq+Ok5LT7keibZBcVPeOhEX8aST6tDeN57pAkxSkxvfVR1MubQkRhrI5j4
-X-Received: by 2002:a37:383:: with SMTP id 125mr5529085qkd.482.1571858989419;
-        Wed, 23 Oct 2019 12:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571858989; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1372732wrq;
+        Wed, 23 Oct 2019 13:23:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw22DXTbUGTAFJlV8xkNVIp6ocpIje+Co6ReFQ4LB0TkPibDDJR6eGLmXn6P9klHMDBch0D
+X-Received: by 2002:a17:906:6a14:: with SMTP id o20mr33867350ejr.230.1571862199687;
+        Wed, 23 Oct 2019 13:23:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571862199; cv=none;
         d=google.com; s=arc-20160816;
-        b=R2xXEswniAaQ1TVm8UEtKQmQ0N+HsrvMLXwxW57GbNcps2wwOQdtYWt8YzzE16EcqL
-         +ZBy127ZPPn0ZzszzKYqZoFXHX+l4iBTqV7OqflCl+mSrYCCyLRCqFW8RQP1uw/Z/nPx
-         YPBYvkVcNqdhdzHh9qSP8DFlvCznB2IaJqbvZlA5wRpEXWWaaebYGjPCwONJIaduXuxw
-         db4K0zkub1MxL8xGI7u+UW8qHGqG/I9dx/AWEKakreDtZjXrcY92Eo30ZjIPMAndX5do
-         cNrz8nr2hUWAPaREhHEBjtiZ0/GoCj3IBmT1JaGqFoka5G6oe1npI/tvr0mLi5jaTsX3
-         A3YQ==
+        b=VjHTGJg2MYqghrsjtSLhNYGRCDIeNanENF7a9GSwvULAiKudbSPtMqbIyuGhJbGxaL
+         4HhAy/eOYZ9AEdAVuuhUSoa3IyI25uz43efbi6lmMG0YIHCmcB2z3GkUzD2PYgnrLKSD
+         iPzl1KCN5fnBvhTEENtJ2Wy/TU9BhOFp8kJNVKG8MnG4E4whuVjz0zuxJSLOB/IVL9Rc
+         WjUwitsJ0+JT5PAFdiqJloEN9Gz2xMoLMc9Gn7yuyXyLPAT0enqmBY8FA2rB8oGh9Ht9
+         m+wzPQPA93B+tVlVooW3YBWqDMIVymfKb/vVAaNl6bLBdXlHIgGh1iXNHgxSB9EVMFg1
+         GjLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=DEY8UleqA5PQOALRPQqD4BmpCvVBevCMtrHIZbidCFI=;
-        b=j+JdarxYaJLOjCf2/7KXIXpbCk0CKLUI5g9rsRKhxb1czqMvhxzQi1z2SHkmFEWrBW
-         odscF7StQUNjZI5Er3uBgtV6PTzXDA7hIL9zFwccO3q2TNw9qeNK2j4FU4gUdvsBGGaH
-         Pp4Dbkf1EZ9Ylss+nHlAowLBJptv46OmtKr9rBAZDd9++XH8h9ZhZgKSZT8wFF3oXEOv
-         xqjvPdym8fedOKXjOvKnSjYF2ukjAJuXE6rUc+kq87GU+AHcCQimGAGsTGXe8LNEQRmD
-         +vGGgygPbMqGSvFHmPi0d2ZN6q4VWdHSKjPfSuPwLne76XS692N5+PBhjWjVhTUY8+uT
-         w2NQ==
+        bh=/qSKp+Dha50wwfkLLlipKox8Za+pAS4L71giPOhThTA=;
+        b=b8EmID3LR+R23g0WZEBbpIF6VXTq8v1PyekXPD4hu8I2o8zAsme8En5YhRwKhy6nNb
+         spli5oJ7oE5vjCYPY2DbFGQBNyTxW4wqEjp5Fs6RHCCeinTXiH1Z4ScFE+nKNzv7v9bO
+         SrCW/IGjn6UrtNzC2JPtWQqvQmJYknbsLwNEnvzAIYOg/vbQ70RrUnw/sMHqkfjCetN8
+         x+FIiQTO5DoGZWqq2XUt1dW2YUx3eoX2N3T706CkMPYyAZzIjnJ1zVkZDOOwVGKJKFNk
+         kMcPQaSUdzOnoICE/n6Ppc5W8zxVxFSUxUJ+KeNCOoht9UGHqtfkww/J8fit6heYW0tv
+         iVqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P5SiAOk5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OI1hExT9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d27si19969608qta.195.2019.10.23.12.29.49
+        by mx.google.com with ESMTPS id g38si15853168edg.127.2019.10.23.13.23.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 12:29:49 -0700 (PDT)
+        Wed, 23 Oct 2019 13:23:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P5SiAOk5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OI1hExT9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45140 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46988 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNMKK-000858-Ex
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 15:29:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60169)
+	id 1iNNA6-0007TJ-Kc
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 16:23:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58899)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXx-0006KA-R6
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:35:47 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVQ-0003iJ-J4
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXw-0002qW-14
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:35:45 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:44042
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVP-0001fn-4K
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:08 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:24120
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKXv-0002qE-Sc
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:35:43 -0400
+ id 1iNKVO-0001fZ-W7
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571852143;
+ s=mimecast20190719; t=1571851986;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DEY8UleqA5PQOALRPQqD4BmpCvVBevCMtrHIZbidCFI=;
- b=P5SiAOk5MpmB96M0f93VpxMj9ohhDbRXYmXBy0Nwr2bjRg6npYLrkNQkSLgkBxfd26Vdfx
- Y/q040Z0O2b0LMZzB+QflyCJC08sG2LF4j39iTc4EPZHxfowzNdVFPzLyoeS5EaSrOINiR
- 1cb35u4aLtijBYV24EoMwxqpowIfXMM=
+ bh=/qSKp+Dha50wwfkLLlipKox8Za+pAS4L71giPOhThTA=;
+ b=OI1hExT9Ksru1Xq+uONE8aIHaMAt86OsgpvdIDN4OP0OgQi29fFaV0nn5F8MZqchb3lj3u
+ oD45jmqzU42+BN4/Hf65zFt3OhRamest++Hnc0+5mJep6ckcZZ6HDtlNQLicxWEVNgV/QH
+ 3d58y4uU1rV6vwhOCfkUYnhUB661kPw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-66-9RWPr3oZNpKsnY90OZRbIQ-1; Wed, 23 Oct 2019 13:35:38 -0400
+ us-mta-262-mZ58rmSeMD2w1fKqUt37PA-1; Wed, 23 Oct 2019 13:33:02 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 605131800E01;
- Wed, 23 Oct 2019 17:35:36 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 44222107AD34;
+ Wed, 23 Oct 2019 17:33:00 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 93DDF54560;
- Wed, 23 Oct 2019 17:35:30 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 93D685D6D0;
+ Wed, 23 Oct 2019 17:32:54 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 31/33] omap-gpio: remove PROP_PTR
-Date: Wed, 23 Oct 2019 19:31:52 +0200
-Message-Id: <20191023173154.30051-32-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 04/33] chardev: generate an internal id when none given
+Date: Wed, 23 Oct 2019 19:31:25 +0200
+Message-Id: <20191023173154.30051-5-marcandre.lureau@redhat.com>
 In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: 9RWPr3oZNpKsnY90OZRbIQ-1
+X-MC-Unique: mZ58rmSeMD2w1fKqUt37PA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,204 +124,119 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kO5TN8hfOG04
+X-TUID: Rj1RGiLvYWsn
 
-Since clocks are not QOM objects, replace PROP_PTR of clocks with
-setters methods.
+Internally, qemu may create chardev without ID. Those will not be
+looked up with qemu_chr_find(), which prevents using qdev_prop_set_chr().
 
-Move/adapt the existing TODO comment about a clock framework.
+Use id_generate(), to generate an internal name (prefixed with #), so
+no conflict exist with user-named chardev.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/arm/omap1.c        |  2 +-
- hw/arm/omap2.c        | 13 +++++++------
- hw/gpio/omap_gpio.c   | 42 +++++++++++++++---------------------------
- include/hw/arm/omap.h | 33 +++++++++++++++++++++++++++++----
- 4 files changed, 52 insertions(+), 38 deletions(-)
+ chardev/char.c    | 32 ++++++++++++++++++++++++--------
+ include/qemu/id.h |  1 +
+ util/id.c         |  1 +
+ 3 files changed, 26 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 807e5f70d1..761cc17ea9 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -4012,7 +4012,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
-n *dram,
+diff --git a/chardev/char.c b/chardev/char.c
+index 7b6b2cb123..e7e7492b0e 100644
+--- a/chardev/char.c
++++ b/chardev/char.c
+@@ -37,6 +37,7 @@
+ #include "qemu/help_option.h"
+ #include "qemu/module.h"
+ #include "qemu/option.h"
++#include "qemu/id.h"
 =20
-     s->gpio =3D qdev_create(NULL, "omap-gpio");
-     qdev_prop_set_int32(s->gpio, "mpu_model", s->mpu_model);
--    qdev_prop_set_ptr(s->gpio, "clk", omap_findclk(s, "arm_gpio_ck"));
-+    omap_gpio_set_clk(OMAP1_GPIO(s->gpio), omap_findclk(s, "arm_gpio_ck"))=
-;
-     qdev_init_nofail(s->gpio);
-     sysbus_connect_irq(SYS_BUS_DEVICE(s->gpio), 0,
-                        qdev_get_gpio_in(s->ih[0], OMAP_INT_GPIO_BANK1));
-diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-index 171e2d0472..e1c11de5ce 100644
---- a/hw/arm/omap2.c
-+++ b/hw/arm/omap2.c
-@@ -2449,13 +2449,14 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRe=
-gion *sdram,
+ #include "chardev/char-mux.h"
 =20
-     s->gpio =3D qdev_create(NULL, "omap2-gpio");
-     qdev_prop_set_int32(s->gpio, "mpu_model", s->mpu_model);
--    qdev_prop_set_ptr(s->gpio, "iclk", omap_findclk(s, "gpio_iclk"));
--    qdev_prop_set_ptr(s->gpio, "fclk0", omap_findclk(s, "gpio1_dbclk"));
--    qdev_prop_set_ptr(s->gpio, "fclk1", omap_findclk(s, "gpio2_dbclk"));
--    qdev_prop_set_ptr(s->gpio, "fclk2", omap_findclk(s, "gpio3_dbclk"));
--    qdev_prop_set_ptr(s->gpio, "fclk3", omap_findclk(s, "gpio4_dbclk"));
-+    omap2_gpio_set_iclk(OMAP2_GPIO(s->gpio), omap_findclk(s, "gpio_iclk"))=
-;
-+    omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 0, omap_findclk(s, "gpio1_dbc=
-lk"));
-+    omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 1, omap_findclk(s, "gpio2_dbc=
-lk"));
-+    omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 2, omap_findclk(s, "gpio3_dbc=
-lk"));
-+    omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 3, omap_findclk(s, "gpio4_dbc=
-lk"));
-     if (s->mpu_model =3D=3D omap2430) {
--        qdev_prop_set_ptr(s->gpio, "fclk4", omap_findclk(s, "gpio5_dbclk")=
-);
-+        omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 4,
-+                            omap_findclk(s, "gpio5_dbclk"));
-     }
-     qdev_init_nofail(s->gpio);
-     busdev =3D SYS_BUS_DEVICE(s->gpio);
-diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-index 41e1aa798c..85c16897ae 100644
---- a/hw/gpio/omap_gpio.c
-+++ b/hw/gpio/omap_gpio.c
-@@ -40,10 +40,6 @@ struct omap_gpio_s {
-     uint16_t pins;
- };
-=20
--#define TYPE_OMAP1_GPIO "omap-gpio"
--#define OMAP1_GPIO(obj) \
--    OBJECT_CHECK(struct omap_gpif_s, (obj), TYPE_OMAP1_GPIO)
--
- struct omap_gpif_s {
-     SysBusDevice parent_obj;
-=20
-@@ -212,10 +208,6 @@ struct omap2_gpio_s {
-     uint8_t delay;
- };
-=20
--#define TYPE_OMAP2_GPIO "omap2-gpio"
--#define OMAP2_GPIO(obj) \
--    OBJECT_CHECK(struct omap2_gpif_s, (obj), TYPE_OMAP2_GPIO)
--
- struct omap2_gpif_s {
-     SysBusDevice parent_obj;
-=20
-@@ -747,21 +739,13 @@ static void omap2_gpio_realize(DeviceState *dev, Erro=
-r **errp)
-     }
+@@ -944,10 +945,10 @@ void qemu_chr_set_feature(Chardev *chr,
+     return set_bit(feature, chr->features);
  }
 =20
--/* Using qdev pointer properties for the clocks is not ideal.
-- * qdev should support a generic means of defining a 'port' with
-- * an arbitrary interface for connecting two devices. Then we
-- * could reframe the omap clock API in terms of clock ports,
-- * and get some type safety. For now the best qdev provides is
-- * passing an arbitrary pointer.
-- * (It's not possible to pass in the string which is the clock
-- * name, because this device does not have the necessary information
-- * (ie the struct omap_mpu_state_s*) to do the clockname to pointer
-- * translation.)
-- */
-+void omap_gpio_set_clk(omap_gpif *gpio, omap_clk clk)
+-Chardev *qemu_chardev_new(const char *id, const char *typename,
+-                          ChardevBackend *backend,
+-                          GMainContext *gcontext,
+-                          Error **errp)
++static Chardev *chardev_new(const char *id, const char *typename,
++                            ChardevBackend *backend,
++                            GMainContext *gcontext,
++                            Error **errp)
+ {
+     Object *obj;
+     Chardev *chr =3D NULL;
+@@ -991,6 +992,21 @@ end:
+     return chr;
+ }
+=20
++Chardev *qemu_chardev_new(const char *id, const char *typename,
++                          ChardevBackend *backend,
++                          GMainContext *gcontext,
++                          Error **errp)
 +{
-+    gpio->clk =3D clk;
-+}
-=20
- static Property omap_gpio_properties[] =3D {
-     DEFINE_PROP_INT32("mpu_model", struct omap_gpif_s, mpu_model, 0),
--    DEFINE_PROP_PTR("clk", struct omap_gpif_s, clk),
-     DEFINE_PROP_END_OF_LIST(),
- };
-=20
-@@ -784,15 +768,19 @@ static const TypeInfo omap_gpio_info =3D {
-     .class_init    =3D omap_gpio_class_init,
- };
-=20
-+void omap2_gpio_set_iclk(omap2_gpif *gpio, omap_clk clk)
-+{
-+    gpio->iclk =3D clk;
++    g_autofree char *genid =3D NULL;
++
++    if (!id) {
++        genid =3D id_generate(ID_CHR);
++        id =3D genid;
++    }
++
++    return chardev_new(id, typename, backend, gcontext, errp);
 +}
 +
-+void omap2_gpio_set_fclk(omap2_gpif *gpio, uint8_t i, omap_clk clk)
-+{
-+    assert(i <=3D 5);
-+    gpio->fclk[i] =3D clk;
-+}
-+
- static Property omap2_gpio_properties[] =3D {
-     DEFINE_PROP_INT32("mpu_model", struct omap2_gpif_s, mpu_model, 0),
--    DEFINE_PROP_PTR("iclk", struct omap2_gpif_s, iclk),
--    DEFINE_PROP_PTR("fclk0", struct omap2_gpif_s, fclk[0]),
--    DEFINE_PROP_PTR("fclk1", struct omap2_gpif_s, fclk[1]),
--    DEFINE_PROP_PTR("fclk2", struct omap2_gpif_s, fclk[2]),
--    DEFINE_PROP_PTR("fclk3", struct omap2_gpif_s, fclk[3]),
--    DEFINE_PROP_PTR("fclk4", struct omap2_gpif_s, fclk[4]),
--    DEFINE_PROP_PTR("fclk5", struct omap2_gpif_s, fclk[5]),
-     DEFINE_PROP_END_OF_LIST(),
+ ChardevReturn *qmp_chardev_add(const char *id, ChardevBackend *backend,
+                                Error **errp)
+ {
+@@ -1003,8 +1019,8 @@ ChardevReturn *qmp_chardev_add(const char *id, Charde=
+vBackend *backend,
+         return NULL;
+     }
+=20
+-    chr =3D qemu_chardev_new(id, object_class_get_name(OBJECT_CLASS(cc)),
+-                           backend, NULL, errp);
++    chr =3D chardev_new(id, object_class_get_name(OBJECT_CLASS(cc)),
++                      backend, NULL, errp);
+     if (!chr) {
+         return NULL;
+     }
+@@ -1061,8 +1077,8 @@ ChardevReturn *qmp_chardev_change(const char *id, Cha=
+rdevBackend *backend,
+         return NULL;
+     }
+=20
+-    chr_new =3D qemu_chardev_new(NULL, object_class_get_name(OBJECT_CLASS(=
+cc)),
+-                               backend, chr->gcontext, errp);
++    chr_new =3D chardev_new(NULL, object_class_get_name(OBJECT_CLASS(cc)),
++                          backend, chr->gcontext, errp);
+     if (!chr_new) {
+         return NULL;
+     }
+diff --git a/include/qemu/id.h b/include/qemu/id.h
+index 40c70103e4..b55c406e69 100644
+--- a/include/qemu/id.h
++++ b/include/qemu/id.h
+@@ -4,6 +4,7 @@
+ typedef enum IdSubSystems {
+     ID_QDEV,
+     ID_BLOCK,
++    ID_CHR,
+     ID_MAX      /* last element, used as array size */
+ } IdSubSystems;
+=20
+diff --git a/util/id.c b/util/id.c
+index af1c5f1b81..5addb4460e 100644
+--- a/util/id.c
++++ b/util/id.c
+@@ -34,6 +34,7 @@ bool id_wellformed(const char *id)
+ static const char *const id_subsys_str[ID_MAX] =3D {
+     [ID_QDEV]  =3D "qdev",
+     [ID_BLOCK] =3D "block",
++    [ID_CHR] =3D "chr",
  };
 =20
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 39a295ba20..6be386d0e2 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -77,6 +77,16 @@ typedef struct omap_intr_handler_s omap_intr_handler;
  /*
-  * TODO: Ideally we should have a clock framework that
-  * let us wire these clocks up with QOM properties or links.
-+ *
-+ * qdev should support a generic means of defining a 'port' with
-+ * an arbitrary interface for connecting two devices. Then we
-+ * could reframe the omap clock API in terms of clock ports,
-+ * and get some type safety. For now the best qdev provides is
-+ * passing an arbitrary pointer.
-+ * (It's not possible to pass in the string which is the clock
-+ * name, because this device does not have the necessary information
-+ * (ie the struct omap_mpu_state_s*) to do the clockname to pointer
-+ * translation.)
-  */
- void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
- void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
-@@ -87,13 +97,28 @@ void omap_intc_set_fclk(omap_intr_handler *intc, omap_c=
-lk clk);
-=20
- typedef struct OMAPI2CState OMAPI2CState;
-=20
--/*
-- * TODO: Ideally we should have a clock framework that
-- * let us wire these clocks up with QOM properties or links.
-- */
-+/* TODO: clock framework (see above) */
- void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk);
- void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk);
-=20
-+/* omap_gpio.c */
-+#define TYPE_OMAP1_GPIO "omap-gpio"
-+#define OMAP1_GPIO(obj)                                         \
-+    OBJECT_CHECK(struct omap_gpif_s, (obj), TYPE_OMAP1_GPIO)
-+
-+#define TYPE_OMAP2_GPIO "omap2-gpio"
-+#define OMAP2_GPIO(obj)                                         \
-+    OBJECT_CHECK(struct omap2_gpif_s, (obj), TYPE_OMAP2_GPIO)
-+
-+typedef struct omap_gpif_s omap_gpif;
-+typedef struct omap2_gpif_s omap2_gpif;
-+
-+/* TODO: clock framework (see above) */
-+void omap_gpio_set_clk(omap_gpif *gpio, omap_clk clk);
-+
-+void omap2_gpio_set_iclk(omap2_gpif *gpio, omap_clk clk);
-+void omap2_gpio_set_fclk(omap2_gpif *gpio, uint8_t i, omap_clk clk);
-+
- /* OMAP2 l4 Interconnect */
- struct omap_l4_s;
- struct omap_l4_region_s {
 --=20
 2.23.0.606.g08da6496b6
 

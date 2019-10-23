@@ -1,102 +1,102 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1511799wrq;
-        Wed, 23 Oct 2019 15:41:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzMrjIg7aL2RPvRneaj+8uvWdx/NZXKFDEFClb3JYefd2zp4ZUb27l7zjKbzkV29xCwBwyZ
-X-Received: by 2002:a37:ba46:: with SMTP id k67mr10880388qkf.175.1571870509887;
-        Wed, 23 Oct 2019 15:41:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571870509; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1527822wrq;
+        Wed, 23 Oct 2019 15:58:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzFNIKL8GUVbKvMKczVo2oMWdbhU55/gpMHjdjlJ/vJ3Fi2qGkG2tteLqRiq8RFw5r0kBOe
+X-Received: by 2002:a17:906:80c1:: with SMTP id a1mr35603502ejx.37.1571871500201;
+        Wed, 23 Oct 2019 15:58:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571871500; cv=none;
         d=google.com; s=arc-20160816;
-        b=wUi4fNef6N4zA7GoZqKf+K3cmZ2JGp9W17arl8f6B0JdNkNptLFrajUYfrl9JBaAj6
-         vEKG7jS5xUNHF86/NuPa7l9Iv6kU1KxeIMim05wMlKid1Ibyk8aq9YW4AY6CK8feXQfT
-         yZB4eG1hwwO/mkfQcIIV4EpZxqHyREDk+c43jTr0T7mWcJ5Pl7eCE/mrp9+04+vwz79M
-         y4DKJknx+L76hlYRdNZJy9DJV12+JY2bV4P8gdaUt2LZ8Lze/VVIE95D7nlbiBYD3TKI
-         /DySQuwSa8l32ciyZGgvN5+NI0bQIbuTwCkdz6wItg5BHOIfatMpcSIwHJDM5CLxYXvT
-         t8xA==
+        b=jxf8C80c9dI5oe4W3UJaNxynkhRWeZezjBcYVEROYbnFV7ckSKANGVIL9MLwYf1YqD
+         NTfwjor0wfuWhWhKYPGPeciL5RE9pgE/acXrENaykycVgyU2KpMyebs9DgfRNFuVzOyX
+         eXtaypE6BpOuECpN/BrLtNotbdotPYxcBrGG+wIN4dhHwn4OKSEupffPP+A1iCRDZpV8
+         ZbNCKma3DJ3Bv1AbrePrH4eyH7duusWqyeX1yb5X+eSHNl3qMHH9Klv8cYHRZnfCFkRP
+         xL02z/3Xc9GOka0bHwETwLAoTJWO4qkgfqKujwLX7BxopIPN8uE4rIneCA+pyiAZDab6
+         a8sA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=jkd5chVb9yzaH/X6NVH+2sx7cV2ha4PGVu7Mhnk+Nhc=;
-        b=huqtvkNYi02c6eS7OFBAiEGNUKC2J9TrTbYWPA/r1DG+7KQHCLipYg2Ztm/FFTEWO5
-         GHyUlWzMpCLtuwLGYEoqrMB08i4yJBwMxonRDGz7x5V+ViYdC7Wjj3GIxo9kEhbfZiKW
-         5h5BfjQbXTy6J1e2Jozt9s9l1sxlA0xdlxb2jJZEvn9Zl+jW8Nkdj2fy26w4e0Lw+fuy
-         sW6/vyDmAUoCBVegBD2LXiAklVJmh2vuW0eAy4hx6yK77qH6XX/dn/9JWN79eZkcUQhs
-         jfKXRsJhs5+k3ox0YaiElUFbNflU7CZb/xHI+KV4Qi9MIxjb73B3C4fD4/3MkG5zeP4s
-         8uqg==
+        bh=k6JUVaUWM4qS1cCgXr22Ex0L1oTDMaoieJAqQKyoFVk=;
+        b=t5HWvHEgTL31hnkAMvKMo73heCxXVdCJUwxfoOUCabm/xvTkLCCkh37PbLVrfy4uXe
+         ykij0Tx/fG8uGlmXIzaKO2bq3rXbmqCO61RNqIFBT+5X/Wn0x08YLQGGYSxs1MHBb7vY
+         wNvWlWCwOPi1dTeSI3aK0rFomCN8n2sfHchve8xNHj2wLGgJkmBp3W/6C56zvot6d2oQ
+         owMzC9p5lwEXBApz7xi7pK8NRPgfMTMrqbAQpPIAMW/iFCwepg3h7Quvn2QOXKbYSSUX
+         YH9KmbHXqs5u9tXTtd0n8UA76tWg5SS1UMfQkLbMyj3/gv1cPLuc7s9PZYAxXoYe/Q3s
+         YmrA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y123si6235645qke.32.2019.10.23.15.41.49
+        by mx.google.com with ESMTPS id dk11si6472912ejb.97.2019.10.23.15.58.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 15:41:49 -0700 (PDT)
+        Wed, 23 Oct 2019 15:58:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51694 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52036 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNPK8-0004IF-Ol
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 18:41:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57886)
+	id 1iNPa6-0002qN-1t
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 18:58:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60027)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iNPJt-0004B2-5r
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 18:41:34 -0400
+ (envelope-from <philmd@redhat.com>) id 1iNPZq-0002kP-8y
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 18:58:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iNPJr-0000ys-42
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 18:41:32 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47332)
+ (envelope-from <philmd@redhat.com>) id 1iNPZo-0006s6-Om
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 18:58:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60052)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNPJq-0000yQ-RC
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 18:41:31 -0400
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNPZm-0006rb-QB
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 18:58:00 -0400
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id C95E081F11
- for <qemu-arm@nongnu.org>; Wed, 23 Oct 2019 22:41:29 +0000 (UTC)
-Received: by mail-wr1-f69.google.com with SMTP id z9so2617098wrq.11
- for <qemu-arm@nongnu.org>; Wed, 23 Oct 2019 15:41:29 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id 422224E924
+ for <qemu-arm@nongnu.org>; Wed, 23 Oct 2019 22:57:57 +0000 (UTC)
+Received: by mail-wr1-f72.google.com with SMTP id a15so11865705wrr.0
+ for <qemu-arm@nongnu.org>; Wed, 23 Oct 2019 15:57:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Pzf+7boHjCKGGmfqlognfYQS8TO2/QfBt1nq6ZNBjTo=;
- b=lPiqiRaejyr2MI5Ebzdzmm824F95JoqT2bMp2SWYwsOPgFN6TH1tlZk+ROJaYfGM6s
- 0ZVFH6NcnIl8KENEiRcKVQAtLRxWPKFRITYFxX19N5oI5tYBQUCd3gLvXGnyH4Xi8y8v
- IGkqdhIiHsdCGB4Gg6dtKuhlWdV8FTXsej7JvfttvY9DT8vOLcPpoHPuOEtEiiq0wYN/
- vxzeBOZi9z85QHdaqIgl9vG4CswooeiQkUlOWpLbc1WsOuyBY0fDNPJ1CxsMRv3PTWbt
- +0cMJruxSR5M7A+TXlKSeDyXAaY+Dp95h0FLu+ooTod+pewnPnu0/cD8iH9k7dvLF8ne
- k3vA==
-X-Gm-Message-State: APjAAAWd7UDt0uSWeXzSaP0m8SB0PjTPoZfx86qB/MBjR1pqE1UtKvHY
- xhbc1cMTSDWNAHV9Kk1vN2id8GtUuYF4nQbrTiZkLRhGYvVRarPYyu+0yn3FiNSGSW8KztDqIZ+
- my5m2hsU9BM11
-X-Received: by 2002:adf:c409:: with SMTP id v9mr870464wrf.41.1571870488517;
- Wed, 23 Oct 2019 15:41:28 -0700 (PDT)
-X-Received: by 2002:adf:c409:: with SMTP id v9mr870450wrf.41.1571870488340;
- Wed, 23 Oct 2019 15:41:28 -0700 (PDT)
+ bh=BazpvHYq6PyK/dknt5pLp0NK1GqFux09Ox3JHGYqZFs=;
+ b=U6b5nhfyO7ORXb/yf4sBo9dkSV8yH1s6/0kWwJbFzRdfnSB8AVIwBnk5ifgi3xMp19
+ yeSkm/S15ZD2hTWqA7JpmQ3NBLAoRMoIDR6j8xKriC5TzqJQWbbIWuH8AceHucCYFHsf
+ anWK960iLrHp4HcP53KMzsHZZ0GGPTHMbTG6Wp28AZ5sVTVAmSdbHSFiiGtQyE0/+s5g
+ mjtN6KC4enDxami7SMm001BrNgNcKNn7aXjlnUVwbB72aDDA0SLg5IRElQDdgjmFpkfY
+ 9pzB0HZtOpS7SoaOEEOro29QfCeZHuSsTg3WFejG9rXO7v7PPwRc1sXNXG1UXlHoaCkk
+ 7wcg==
+X-Gm-Message-State: APjAAAX1jUru7cITNr/JrVvR60Jkjm9aS64OImCHn953oH+Oi3tXNvnU
+ RslSgVuX3wfKI1lTST7KOGUW5i/mnTHWKWp38tSTyB1eDYnrqgYudVxM2194K2cVFXedwNVptMM
+ 5ke7DDHdLKDJH
+X-Received: by 2002:adf:ea07:: with SMTP id q7mr950963wrm.78.1571871475969;
+ Wed, 23 Oct 2019 15:57:55 -0700 (PDT)
+X-Received: by 2002:adf:ea07:: with SMTP id q7mr950924wrm.78.1571871475607;
+ Wed, 23 Oct 2019 15:57:55 -0700 (PDT)
 Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
  [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id s10sm28433136wrr.5.2019.10.23.15.41.26
+ by smtp.gmail.com with ESMTPSA id p5sm553253wmi.4.2019.10.23.15.57.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Oct 2019 15:41:27 -0700 (PDT)
-Subject: Re: [PATCH v3 05/33] serial-pci-multi: factor out
- multi_serial_get_nr_ports
+ Wed, 23 Oct 2019 15:57:55 -0700 (PDT)
+Subject: Re: [PATCH v3 19/33] sm501: make SerialMM a child, export chardev
+ property
 To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  qemu-devel@nongnu.org
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-6-marcandre.lureau@redhat.com>
+ <20191023173154.30051-20-marcandre.lureau@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6918ee75-31e8-7816-b196-5654cda451e0@redhat.com>
-Date: Thu, 24 Oct 2019 00:41:26 +0200
+Message-ID: <0033fd98-f191-c3f5-4726-ba052254808a@redhat.com>
+Date: Thu, 24 Oct 2019 00:57:53 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191023173154.30051-6-marcandre.lureau@redhat.com>
+In-Reply-To: <20191023173154.30051-20-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
@@ -130,64 +130,119 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PStxDb7zlWou
+X-TUID: V/1bFg/OSJdy
 
 On 10/23/19 7:31 PM, Marc-Andr=C3=A9 Lureau wrote:
-> Reused in following patch.
+> Embed the SerialMM sybus device, and re-export its "chardev" property.
+> That way, we can get rid of PROP_PTR "chr-state" and better track
+> devices relationship.
 >=20
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->   hw/char/serial-pci-multi.c | 26 ++++++++++++++------------
->   1 file changed, 14 insertions(+), 12 deletions(-)
+>   hw/display/sm501.c | 31 ++++++++++++++++++++++---------
+>   hw/sh4/r2d.c       |  2 +-
+>   2 files changed, 23 insertions(+), 10 deletions(-)
 >=20
-> diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
-> index 5f13b5663b..6fa1cc6225 100644
-> --- a/hw/char/serial-pci-multi.c
-> +++ b/hw/char/serial-pci-multi.c
-> @@ -77,24 +77,26 @@ static void multi_serial_irq_mux(void *opaque, int =
-n, int level)
->       pci_set_irq(&pci->dev, pending);
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index 1f33c87e65..6efdf764c1 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -1930,13 +1930,14 @@ typedef struct {
+>       SM501State state;
+>       uint32_t vram_size;
+>       uint32_t base;
+> -    void *chr_state;
+> +    SerialMM serial;
+>   } SM501SysBusState;
+>  =20
+>   static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+>   {
+>       SM501SysBusState *s =3D SYSBUS_SM501(dev);
+>       SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+> +    SerialState *ss =3D &s->serial.serial;
+>       DeviceState *usb_dev;
+>  =20
+>       sm501_init(&s->state, dev, s->vram_size);
+> @@ -1958,17 +1959,18 @@ static void sm501_realize_sysbus(DeviceState *d=
+ev, Error **errp)
+>       sysbus_pass_irq(sbd, SYS_BUS_DEVICE(usb_dev));
+>  =20
+>       /* bridge to serial emulation module */
+> -    if (s->chr_state) {
+> -        serial_mm_init(&s->state.mmio_region, SM501_UART0, 2,
+> -                       NULL, /* TODO : chain irq to IRL */
+> -                       115200, s->chr_state, DEVICE_LITTLE_ENDIAN);
+> +    if (qemu_chr_fe_backend_connected(&ss->chr)) {
+
+Oh, this is a Companion Chip (Northbridge + Southbridge), mostly=20
+implementing the display part, that's why it is in hw/display/.
+
+The SM501_UART0 is always mapped here, no need to check for the backend.
+(Not related to your series goal, but cleaning this might simplify this=20
+patch).
+
+> +        MemoryRegion *mr;
+> +        qdev_init_nofail(DEVICE(&s->serial));
+> +        mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->serial), 0);
+> +        memory_region_add_subregion(&s->state.mmio_region, SM501_UART0=
+, mr);
+> +        /* TODO : chain irq to IRL */
+>       }
 >   }
 >  =20
-> +static int multi_serial_get_nr_ports(PCIDeviceClass *pc)
-
-static size_t multi_serial_get_port_count()?
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-> +{
-> +    switch (pc->device_id) {
-> +    case 0x0003:
-> +        return 2;
-> +    case 0x0004:
-> +        return 4;
-> +    }
-> +
-> +    g_assert_not_reached();
+>   static Property sm501_sysbus_properties[] =3D {
+>       DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
+>       DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
+> -    DEFINE_PROP_PTR("chr-state", SM501SysBusState, chr_state),
+>       DEFINE_PROP_END_OF_LIST(),
+>   };
+>  =20
+> @@ -1999,9 +2001,19 @@ static void sm501_sysbus_class_init(ObjectClass =
+*klass, void *data)
+>       dc->props =3D sm501_sysbus_properties;
+>       dc->reset =3D sm501_reset_sysbus;
+>       dc->vmsd =3D &vmstate_sm501_sysbus;
+> -    /* Note: pointer property "chr-state" may remain null, thus
+> -     * no need for dc->user_creatable =3D false;
+> -     */
 > +}
 > +
+> +static void sm501_sysbus_init(Object *o)
+> +{
+> +    SM501SysBusState *self =3D SYSBUS_SM501(o);
+> +    SerialMM *s =3D &self->serial;
 > +
->   static void multi_serial_pci_realize(PCIDevice *dev, Error **errp)
->   {
->       PCIDeviceClass *pc =3D PCI_DEVICE_GET_CLASS(dev);
->       PCIMultiSerialState *pci =3D DO_UPCAST(PCIMultiSerialState, dev, =
-dev);
->       SerialState *s;
->       Error *err =3D NULL;
-> -    int i, nr_ports =3D 0;
-> -
-> -    switch (pc->device_id) {
-> -    case 0x0003:
-> -        nr_ports =3D 2;
-> -        break;
-> -    case 0x0004:
-> -        nr_ports =3D 4;
-> -        break;
-> -    }
-> -    assert(nr_ports > 0);
-> -    assert(nr_ports <=3D PCI_SERIAL_MAX_PORTS);
-> +    int i, nr_ports =3D multi_serial_get_nr_ports(pc);
+> +    sysbus_init_child_obj(o, "serial", s, sizeof(SerialMM), TYPE_SERIA=
+L_MM);
+> +    qdev_prop_set_int32(DEVICE(s), "instance-id", SM501_UART0);
+> +    qdev_prop_set_uint8(DEVICE(s), "regshift", 2);
+> +    qdev_prop_set_uint8(DEVICE(s), "endianness", DEVICE_LITTLE_ENDIAN)=
+;
+> +
+> +    object_property_add_alias(o, "chardev", OBJECT(s), "chardev", &err=
+or_abort);
+>   }
 >  =20
->       pci->dev.config[PCI_CLASS_PROG] =3D pci->prog_if;
->       pci->dev.config[PCI_INTERRUPT_PIN] =3D 0x01;
+>   static const TypeInfo sm501_sysbus_info =3D {
+> @@ -2009,6 +2021,7 @@ static const TypeInfo sm501_sysbus_info =3D {
+>       .parent        =3D TYPE_SYS_BUS_DEVICE,
+>       .instance_size =3D sizeof(SM501SysBusState),
+>       .class_init    =3D sm501_sysbus_class_init,
+> +    .instance_init =3D sm501_sysbus_init,
+>   };
+>  =20
+>   #define TYPE_PCI_SM501 "sm501"
+> diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+> index ee0840f380..72bb5285cc 100644
+> --- a/hw/sh4/r2d.c
+> +++ b/hw/sh4/r2d.c
+> @@ -272,7 +272,7 @@ static void r2d_init(MachineState *machine)
+>       busdev =3D SYS_BUS_DEVICE(dev);
+>       qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
+>       qdev_prop_set_uint32(dev, "base", 0x10000000);
+> -    qdev_prop_set_ptr(dev, "chr-state", serial_hd(2));
+> +    qdev_prop_set_chr(dev, "chardev", serial_hd(2));
+>       qdev_init_nofail(dev);
+>       sysbus_mmio_map(busdev, 0, 0x10000000);
+>       sysbus_mmio_map(busdev, 1, 0x13e00000);
 >=20

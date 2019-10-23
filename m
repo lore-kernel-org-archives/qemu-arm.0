@@ -1,99 +1,99 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1187421wrq;
-        Wed, 23 Oct 2019 10:33:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz4VUs6zQbdVcE7fmCyHiUyXx40aBIc1Xmtv9yepCUlZDFUzAp0BiVKDflIwbcsbn5QUaMn
-X-Received: by 2002:a17:906:6bcd:: with SMTP id t13mr23000810ejs.231.1571852017898;
-        Wed, 23 Oct 2019 10:33:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571852017; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1187761wrq;
+        Wed, 23 Oct 2019 10:33:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxk19kML93ALggOqcpzZcwCHOW8bcnz5Tm40njxDPgPB8wI2U/g2Ab8HNAZ83iZa6dJbtLk
+X-Received: by 2002:a17:906:3010:: with SMTP id 16mr34334575ejz.74.1571852033951;
+        Wed, 23 Oct 2019 10:33:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571852033; cv=none;
         d=google.com; s=arc-20160816;
-        b=fA4KH8gnIChPPB4/QfZ4S99QaZ2azBJZWwK2g1giZ46FG506It8I75kPRTbCY12wIP
-         Lj+aYyxucd3ThNA/0j6TgwRbbQ2iQ6jZZQwskl5w00/pjzeq3gR+M+StGm6limcIUKJ6
-         gQpeYSBhEvR/EBLhdGwFG9AjzOX289VhVJlDmvP3W6yhQ/9LKdBwA+Xbja97iImKHCZL
-         DA60E0z4eU3ZSNGODoTGMDLRLK6XsarTHCtTAmP21HvxxJj1nsVqufb4bKeXbVY3cCK6
-         S3BcF0KTK4V0Qu+VPHbQ2kEPjAW1vFFrzaw6lRj7WnBqZXE9cxdH0BqshQHbIsGXGsWO
-         xkyQ==
+        b=dw1hv3k6yOdWtJaZhB9YRNhUeqkOir+CdIS7LjGpK9BLPtCGDuMfpqvn3JxamZN3Jo
+         L1rDl+FTc+aFJyoN9WnBK6oqpuLDuMhQhWycIwUHRZbkaR/XFbQSb6khYc7QFWhcboS2
+         1KSx9wRCxzCci4ijjTvHpKm15CGocdLoI5WpAaUCiydE5fiUyCAbFvcCvFt/K5JQ51d8
+         kLiQJfYUYQ9B7jFIJqzxjDYEco91Ie47r7ZMGGZkFRJI2WNh6E8FXNi0XszXgDgtu+z2
+         6tFvsCG6uclXE7W8HxYZOym1yEaJp/KJ7bHFi0sIdS6wGdHG4NPG7bwADKCW0mzcHz0Q
+         WMdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=6RTteADGfpM4YBMydoONN1yiclwUwAxdyyctis1vQqE=;
-        b=Eeurw66vSUJ1Yd19oT9ZgoStxVVqGtM3XuedeSpiEA/MeRx1nsZ5C0zB4QlNxavTez
-         LBs1Q3kEH5ICnie6n6oURuMvEtZvnPaeQK4ABaXzo6rWfTLvR138lMmSweUqq2HkGzPt
-         f2DoVV3mx9ivQtVsq4y7IaHSEiAS1KE+h5BHDvWbrfAfN3PDXSlaqMBwi13SJNsnrU6F
-         3fBxhzNaK0WL9vvLjmePdDKD+i21NriwuZ8jVxQiBQqS/zUKBO/3GpThzJV5m1HPq5iT
-         JA39Ou1RH/4dMcpqFrv9iCFC7nkv7Jx9q0PUabzEUtICVurx7dde6DATmX9J4rA83bs/
-         sUdg==
+        bh=erhtuldwyK3E+RzzrVrDprCGejZBAHO61QUqKFkdfAk=;
+        b=ufkpc98fbfe17xTw6Lm/1XDxBlHWOzaH3B+uWqiY3Kgj9dYO/RHvtFGmC7PKwNGA1Z
+         kyUI4K6bLaXnL8F0nDmz4BxV85kZHAJMmKILVaoj8egh+T3sTZx7zt2M4zNkOiCjHHvi
+         3mDj3eeNhTF+MN6V+NSnp3I4np6BLMO7POchuzxE59WChL0/18EWVlCKVHJGoO85ncCM
+         jLD8dkt/rmSo9/gSjx+1L4Ff2E0ELbCMDAbOYf28+u2kOL43iZ8VZm+bS10l71+G80ga
+         /PI5dEAw6aAd7kYVGJihcAc87Z0QvCQTXIxIw3bgzwjTXY9R2w3KjGjW+L55qiQKQXZj
+         6WSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h+J3ytDX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dG22qFIc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g3si16418952edj.220.2019.10.23.10.33.37
+        by mx.google.com with ESMTPS id 17si12371448ejx.213.2019.10.23.10.33.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 10:33:37 -0700 (PDT)
+        Wed, 23 Oct 2019 10:33:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h+J3ytDX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dG22qFIc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42644 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42676 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNKVs-0003fF-6J
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 13:33:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58867)
+	id 1iNKW6-000456-U5
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 13:33:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58830)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVK-0003ad-MC
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:03 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVC-0003YG-R1
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:32:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVI-0001eK-HS
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:02 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:23223
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVB-0001cj-1R
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:32:54 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:49741
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKVI-0001eA-E9
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:00 -0400
+ id 1iNKVA-0001cO-UG
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:32:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571851979;
+ s=mimecast20190719; t=1571851971;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6RTteADGfpM4YBMydoONN1yiclwUwAxdyyctis1vQqE=;
- b=h+J3ytDXOmKY0rm+Rg7nuU7prMLfK/NBsBlWX2IxuA5/1XrTFoiNGSJAOEXY+kGYUi2q8O
- SR4NxaiAPk0N+M/tmezUzQZisSZqFA1KyYs1q+TbcuWv7TewTINTYuP2FyEiFFScM2xcCN
- DK9qJjdJrw5SiF+70myy4WRUckWVw2k=
+ bh=erhtuldwyK3E+RzzrVrDprCGejZBAHO61QUqKFkdfAk=;
+ b=dG22qFIcLj67y7xp+me9hIDc/Bb12Wz771k0Vl0c2Ye8+Ddfb3yNQdC1VxAhaE7z9OpYPk
+ 8EabNW9zdLV/Ib3mdMPGA8+lrIYckceoyQtJUK872VA6DVtlmV1E7BK2PJi0wGf3byCb0R
+ h/WbVs8FcPzZxJ+GkTHUf1Dtpu5Gnis=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-204-Dna11Fl4OdaSv9tgO5c6Iw-1; Wed, 23 Oct 2019 13:32:55 -0400
+ us-mta-319-AG7nAZJIM1C5TrTsB32LxA-1; Wed, 23 Oct 2019 13:32:43 -0400
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 31F031800E01;
- Wed, 23 Oct 2019 17:32:53 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F31DA801E72;
+ Wed, 23 Oct 2019 17:32:39 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4956D6CE40;
- Wed, 23 Oct 2019 17:32:41 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EF47D60C63;
+ Wed, 23 Oct 2019 17:32:14 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 03/33] sysbus: remove outdated comment
-Date: Wed, 23 Oct 2019 19:31:24 +0200
-Message-Id: <20191023173154.30051-4-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 02/33] sysbus: remove unused sysbus_try_create*
+Date: Wed, 23 Oct 2019 19:31:23 +0200
+Message-Id: <20191023173154.30051-3-marcandre.lureau@redhat.com>
 In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: Dna11Fl4OdaSv9tgO5c6Iw-1
+X-MC-Unique: AG7nAZJIM1C5TrTsB32LxA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,33 +124,101 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5I1sSbhn/WfA
-
-The init callback is no more since commit
-817a17fc60f44e29a1944b60d32f45ea127f0cf9 ("core/sysbus: remove the
-SysBusDeviceClass::init path")
+X-TUID: KA7HBy3ok17A
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- include/hw/sysbus.h | 4 ----
- 1 file changed, 4 deletions(-)
+ hw/core/sysbus.c    | 32 --------------------------------
+ hw/i386/pc.c        |  1 -
+ include/hw/sysbus.h |  9 +--------
+ 3 files changed, 1 insertion(+), 41 deletions(-)
 
+diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+index 9e69c83aed..08b0311c5f 100644
+--- a/hw/core/sysbus.c
++++ b/hw/core/sysbus.c
+@@ -250,38 +250,6 @@ DeviceState *sysbus_create_varargs(const char *name,
+     return dev;
+ }
+=20
+-DeviceState *sysbus_try_create_varargs(const char *name,
+-                                       hwaddr addr, ...)
+-{
+-    DeviceState *dev;
+-    SysBusDevice *s;
+-    va_list va;
+-    qemu_irq irq;
+-    int n;
+-
+-    dev =3D qdev_try_create(NULL, name);
+-    if (!dev) {
+-        return NULL;
+-    }
+-    s =3D SYS_BUS_DEVICE(dev);
+-    qdev_init_nofail(dev);
+-    if (addr !=3D (hwaddr)-1) {
+-        sysbus_mmio_map(s, 0, addr);
+-    }
+-    va_start(va, addr);
+-    n =3D 0;
+-    while (1) {
+-        irq =3D va_arg(va, qemu_irq);
+-        if (!irq) {
+-            break;
+-        }
+-        sysbus_connect_irq(s, n, irq);
+-        n++;
+-    }
+-    va_end(va);
+-    return dev;
+-}
+-
+ static void sysbus_dev_print(Monitor *mon, DeviceState *dev, int indent)
+ {
+     SysBusDevice *s =3D SYS_BUS_DEVICE(dev);
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 4b1904237e..00ee16ccab 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1902,7 +1902,6 @@ void pc_basic_device_init(ISABus *isa_bus, qemu_irq *=
+gsi,
+      * when the HPET wants to take over. Thus we have to disable the latte=
+r.
+      */
+     if (!no_hpet && (!kvm_irqchip_in_kernel() || kvm_has_pit_state2())) {
+-        /* In order to set property, here not using sysbus_try_create_simp=
+le */
+         hpet =3D qdev_try_create(NULL, TYPE_HPET);
+         if (hpet) {
+             /* For pc-piix-*, hpet's intcap is always IRQ2. For pc-q35-1.7
 diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
-index 2eb0484388..c4a1c0adfa 100644
+index 27e80881da..2eb0484388 100644
 --- a/include/hw/sysbus.h
 +++ b/include/hw/sysbus.h
-@@ -24,10 +24,6 @@ typedef struct SysBusDevice SysBusDevice;
+@@ -117,8 +117,7 @@ void foreach_dynamic_sysbus_device(FindSysbusDeviceFunc=
+ *func, void *opaque);
+ /* Legacy helper function for creating devices.  */
+ DeviceState *sysbus_create_varargs(const char *name,
+                                  hwaddr addr, ...);
+-DeviceState *sysbus_try_create_varargs(const char *name,
+-                                       hwaddr addr, ...);
++
+ static inline DeviceState *sysbus_create_simple(const char *name,
+                                               hwaddr addr,
+                                               qemu_irq irq)
+@@ -126,11 +125,5 @@ static inline DeviceState *sysbus_create_simple(const =
+char *name,
+     return sysbus_create_varargs(name, addr, irq, NULL);
+ }
 =20
- /**
-  * SysBusDeviceClass:
-- * @init: Callback function invoked when the #DeviceState.realized propert=
-y
-- * is changed to %true. Deprecated, new types inheriting directly from
-- * TYPE_SYS_BUS_DEVICE should use #DeviceClass.realize instead, new leaf
-- * types should consult their respective parent type.
-  *
-  * SysBusDeviceClass is not overriding #DeviceClass.realize, so derived
-  * classes overriding it are not required to invoke its implementation.
+-static inline DeviceState *sysbus_try_create_simple(const char *name,
+-                                                    hwaddr addr,
+-                                                    qemu_irq irq)
+-{
+-    return sysbus_try_create_varargs(name, addr, irq, NULL);
+-}
+=20
+ #endif /* HW_SYSBUS_H */
 --=20
 2.23.0.606.g08da6496b6
 

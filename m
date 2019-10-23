@@ -1,183 +1,106 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1293666wrq;
-        Wed, 23 Oct 2019 12:10:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzfKmdxpXJ57dwFqQIOGtySAWY/6gMqBKz2PyLHEaTksuRvGEXZJGUHOwhBPNfpqaiG1Thj
-X-Received: by 2002:a0c:fa8a:: with SMTP id o10mr10431319qvn.7.1571857852756;
-        Wed, 23 Oct 2019 12:10:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571857852; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1299065wrq;
+        Wed, 23 Oct 2019 12:15:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzftxT5KxaVpPRMjfvUmKxAu8hD+DQy+LXpYz4TjhpirpjB0xNZQV+EAUFlfrMOccY6usH5
+X-Received: by 2002:a63:1c06:: with SMTP id c6mr11969163pgc.417.1571858148932;
+        Wed, 23 Oct 2019 12:15:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571858148; cv=none;
         d=google.com; s=arc-20160816;
-        b=orApEDFn3noeSDK6XXmTGENjtS4wn1oyyCKXhE3bFx7QCrsSYYju64t/NIxRoieMpc
-         +ufUVsA82kZkPROHRHVGyt3sKVi2LUvxVmlqNXDBS2JNrxlu6ptNm43kcrPJ11IObWDB
-         bphNCubUMCSOApzaN7QsbR3oYeKdO0UKMnZPOdCZm5Wms7O210A8Hxc2cw4OmpoZGdJ4
-         vZd0lagY021immJ/0VwA7fpgYfRs/77M6T5S9MEtf3SJ8gcQXx7pd+vWI7Mx9auCUiC9
-         GeXRcWDM4qDyGcBGLjRYnNozuhTUiITsEAKEyhtiDtFxIQeMg6fY0Ll7FvdpQEQAWr6Z
-         I66A==
+        b=mdPQPbzFRQX+3szh3ojgV/PpdfbwLlKurUbmiwWlCOxfJrZenvhgKa812XsZQjp/gM
+         sgFRknQRsU9nqSlzN0dNRoo/FWoIQnQV0/wQ48Q7O/0vz20ie/fF8F/xf/A8ncCc6RDV
+         S0ExXAlzV7juWZZqkLOjJZBlpUs42C3IY7WKOrYZKAd166SHmK1YIGPALQncEaYQY8/S
+         BYj40RG3XgBpuu9ftmjjcvH9FL7L6EdOmG7SqDueRcs7l0B+Cp6ErhR8JaaK0+sSCBWZ
+         lVgBvEiNENm24m9hx5vl8rI+VbtwvM/03HpIc8EBfhd6FBJRklbA76h4kw6saAS4zE2v
+         Gw4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=YSTDB3NWoROI1vU6xHiF/rde0k4aF86IF2QLR7maaoc=;
-        b=F+MUNWTkR3tuU32tGOP+4YqEWSvOA5nPcI0qRL709iMfUxu5MtE5X5fvBVMXQWL7C6
-         /tAKNnOw0zq7hm7A+Mn8U6mKNyd4SQZMZ6GMb8AFS7zTWWrkzTQeXrGv4a0AkLFSc1GQ
-         vZDCaZ62E572qi43WWvs5vRE3LY8jijXYTF8i817XkMDP+xDnGTM7DDiGLR3KITkB/dL
-         kWIs8aOzZF+Lo2OgrMil6t4R9NmNHxcP29mkASlrH+qgNHJ7QEW6Qg02pUDJb2nun1Tk
-         rh7IWq3MYc0Ku3Bs/iz5pnY96h5ATCSBLEQioZO0kvP/wAzpgL7+Gn1rjN85bSGuUCkb
-         czEg==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from;
+        bh=T4CpNmYxnAgTcg0YZ0Rs6V051QY/bFgiYeQOXKApoOI=;
+        b=WrmmhUwWtJSPzXBnpoVxOmUaBbvO9ARCjcdTdvjVpwbaKH1RlRN4BfX1f7oPBZhmc7
+         +AHEhKRbFyZZHADZ9EFhwwU4+ROBxHknJICPvmMEGzJ4X79Sl/KM1Q9yvGjnLt3KA++A
+         n5TrZDdDQE2yR+45KoDOPQSHrQPZL9Hp77v5vmJu/UCjt8Ygmq1Aa/9+vVlu75gMN4yK
+         CjmWanld1FMs5426AkPfJopiGX7h9IhJ9Ig+vz30Wy0eIs+Or3jzTavFOxm25w7JnUN4
+         9QCPV+ydt4/YMrA8VpYC+fQ+bl3oDx+1g3O/8fEff9nCmS8/XSE3aq6WBAuUAMye9Dv9
+         npSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JjWqE+bV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q187si18913535qkb.299.2019.10.23.12.10.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 12:10:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com
+Return-Path: <keithp@keithp.com>
+Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
+        by mx.google.com with ESMTPS id b190si25214557pfg.227.2019.10.23.12.15.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Oct 2019 12:15:48 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JjWqE+bV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44520 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNM1z-00017h-R3
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 15:10:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59132)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVw-0004EK-5F
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:41 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVv-0001sC-1s
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:39 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52773
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKVu-0001s0-U2
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571852018;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YSTDB3NWoROI1vU6xHiF/rde0k4aF86IF2QLR7maaoc=;
- b=JjWqE+bVaSmuNA+DEm90FLx3Jz6L/Q4m2BW4LFPBQXwtSAmiUVwVx3f2VaiLoBek33jBRq
- sxXmyv4teiSMU1Hn05xKXWsGmCT+HnJd78plA1KUvg3unDQdmAONFZu2aaMlWBAQcX+JmJ
- zK7RsLVQmoheEaRy/c4BnGSTB00Dr4c=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-86-XB3TaoAPOgi1rVkR-neq_w-1; Wed, 23 Oct 2019 13:33:35 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 802195E9;
- Wed, 23 Oct 2019 17:33:32 +0000 (UTC)
-Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C0DB15DC18;
- Wed, 23 Oct 2019 17:33:23 +0000 (UTC)
-From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 09/33] serial: add "baudbase" property
-Date: Wed, 23 Oct 2019 19:31:30 +0200
-Message-Id: <20191023173154.30051-10-marcandre.lureau@redhat.com>
-In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
-References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
+       spf=pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com
+Received: from localhost (localhost [127.0.0.1])
+	by elaine.keithp.com (Postfix) with ESMTP id B1FE03F23ED3;
+	Wed, 23 Oct 2019 12:15:47 -0700 (PDT)
+X-Virus-Scanned: Debian amavisd-new at keithp.com
+Received: from elaine.keithp.com ([127.0.0.1])
+	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id VKIcKvzv9SZ9; Wed, 23 Oct 2019 12:15:47 -0700 (PDT)
+Received: from keithp.com (keithp-172.keithp.com [10.0.0.172])
+	by elaine.keithp.com (Postfix) with ESMTPSA id 7655C3F23EB1;
+	Wed, 23 Oct 2019 12:15:47 -0700 (PDT)
+Received: by keithp.com (Postfix, from userid 1000)
+	id CD50E1582118; Wed, 23 Oct 2019 12:15:46 -0700 (PDT)
+From: "Keith Packard" <keithp@keithp.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: Re: [PATCH] Semihost SYS_READC implementation
+In-Reply-To: <5e8913f8-558d-6a2e-c7d0-787ec533e4a9@redhat.com>
+References: <20191022031335.9880-1-keithp@keithp.com> <d7470bfa-ba4e-3287-326f-ee63c5d76407@redhat.com> <87sgnk3b0k.fsf@keithp.com> <5e8913f8-558d-6a2e-c7d0-787ec533e4a9@redhat.com>
+Date: Wed, 23 Oct 2019 12:15:46 -0700
+Message-ID: <87eez31del.fsf@keithp.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: XB3TaoAPOgi1rVkR-neq_w-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+X-TUID: ZISRiTp5xhtM
+
+--=-=-=
+Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
- Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bL8+wc4DY/7/
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
----
- hw/char/serial.c         | 5 +++--
- include/hw/char/serial.h | 2 +-
- 2 files changed, 4 insertions(+), 3 deletions(-)
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 09e89727a6..069d8715d0 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -988,7 +988,7 @@ SerialState *serial_init(int base, qemu_irq irq, int ba=
-udbase,
-     SerialState *s =3D SERIAL(dev);
-=20
-     s->irq =3D irq;
--    s->baudbase =3D baudbase;
-+    qdev_prop_set_uint32(dev, "baudbase", baudbase);
-     qdev_prop_set_chr(dev, "chardev", chr);
-     serial_realize_core(s, &error_fatal);
-     qdev_set_legacy_instance_id(dev, base, 2);
-@@ -1002,6 +1002,7 @@ SerialState *serial_init(int base, qemu_irq irq, int =
-baudbase,
-=20
- static Property serial_properties[] =3D {
-     DEFINE_PROP_CHR("chardev", SerialState, chr),
-+    DEFINE_PROP_UINT32("baudbase", SerialState, baudbase, 115200),
-     DEFINE_PROP_END_OF_LIST(),
- };
-=20
-@@ -1070,7 +1071,7 @@ SerialState *serial_mm_init(MemoryRegion *address_spa=
-ce,
-=20
-     s->it_shift =3D it_shift;
-     s->irq =3D irq;
--    s->baudbase =3D baudbase;
-+    qdev_prop_set_uint32(dev, "baudbase", baudbase);
-     qdev_prop_set_chr(dev, "chardev", chr);
-=20
-     serial_realize_core(s, &error_fatal);
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index 180cc7c24e..3dc618598e 100644
---- a/include/hw/char/serial.h
-+++ b/include/hw/char/serial.h
-@@ -58,7 +58,7 @@ typedef struct SerialState {
-     CharBackend chr;
-     int last_break_enable;
-     int it_shift;
--    int baudbase;
-+    uint32_t baudbase;
-     uint32_t tsr_retry;
-     guint watch_tag;
-     uint32_t wakeup;
---=20
-2.23.0.606.g08da6496b6
+> Please take a look at include/qemu/fifo8.h instead of rolling your own
+> ring buffer.  Note that it is not thread-safe so you'll have to keep
+> that part.
 
+Sorry for not looking around sooner, and thanks for the pointer.
+I've also cleaned up the other issues.
+
+> Kudos for the unlock/lock_iothread; I am not really familiar with the
+> semihosting code and I would have naively assumed that it runs without
+> that lock taken.
+
+I discovered by testing that the semihosting functions were entered with
+the lock taken :-)
+
+I'll post an updated version of this patch to the list shortly. Thanks
+again for your review; I really appreciate the time you've taken to look
+at my patch.
+
+=2D-=20
+=2Dkeith
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl2wpuIACgkQ2yIaaQAA
+ABHAOQ//V73ZQhAgWfci8AUC0QDOrOsGQ/ysuGomZ6O56MKNsYUmXrVYzD+eXxRc
+Uh8bYM68rPn4JCeDwVJiBKKkGrhN138cieEb2if/cZ0hn71xZc9wiGn0bu33pU9e
+d7rY3SWqBwUI3Km24o3qwNBD36mAmeiZHm1Htmv8hg8dBsH+kkBvVUGr/SkxcXhL
+/yEKaqsqYIG3+sCetyXlv4iOmdxZjc0ljELhhPfrrM+7z7Czb+jK+syBj7u2SdqY
+R04VyvmMjWEfm7xD5ON4A+sWT7GIXKzwSe88zJ8AO3w/0LFTR+m5ZinKeSOIgsdA
+MBIKXT3sJkRy8F4kPI3kzsET6pwU5GhrUF2hMJ9Zlt6LWYl3gm77etw53Q6fZrsc
+ZsLLckRHoQ7Ocot7pulXyFQMfDmY+NkolngPR7rPUkN/RsM1v0lHeAAvJBAxWR5k
+lrr59wbn8dfE0/SoQHihhISu3oSTOTOHi3jP5LK3ekg83Pa/V2U20wNYW514qs2b
+JcQYiW+l047MIGOO8qKRnmrApSD8xnq6ZWk6cA6rVsh3BmTjW9u5RMk4tQH9ouCc
+OBUb3tVeUD2C4I4CU+a8CMSv1fIbisUg0batn3nnCpZG3jeIGX/ctIdqhnZZNd/a
+ZbbiSSiWa5u6QJnUGOInZWRfPJVUcQ2Z+FyOEUWhkU8rgnYOjIw=
+=Gk4J
+-----END PGP SIGNATURE-----
+--=-=-=--

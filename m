@@ -1,106 +1,237 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1299065wrq;
-        Wed, 23 Oct 2019 12:15:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzftxT5KxaVpPRMjfvUmKxAu8hD+DQy+LXpYz4TjhpirpjB0xNZQV+EAUFlfrMOccY6usH5
-X-Received: by 2002:a63:1c06:: with SMTP id c6mr11969163pgc.417.1571858148932;
-        Wed, 23 Oct 2019 12:15:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571858148; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1300843wrq;
+        Wed, 23 Oct 2019 12:17:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy7+9P5N4WpQ8UTJj7vtbiaJL2Kj5+0JPsQDAJvA6lXJzFxZcepNg2s6IdU0b57jCYKsTUv
+X-Received: by 2002:a0c:ecc5:: with SMTP id o5mr10962143qvq.19.1571858244650;
+        Wed, 23 Oct 2019 12:17:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571858244; cv=none;
         d=google.com; s=arc-20160816;
-        b=mdPQPbzFRQX+3szh3ojgV/PpdfbwLlKurUbmiwWlCOxfJrZenvhgKa812XsZQjp/gM
-         sgFRknQRsU9nqSlzN0dNRoo/FWoIQnQV0/wQ48Q7O/0vz20ie/fF8F/xf/A8ncCc6RDV
-         S0ExXAlzV7juWZZqkLOjJZBlpUs42C3IY7WKOrYZKAd166SHmK1YIGPALQncEaYQY8/S
-         BYj40RG3XgBpuu9ftmjjcvH9FL7L6EdOmG7SqDueRcs7l0B+Cp6ErhR8JaaK0+sSCBWZ
-         lVgBvEiNENm24m9hx5vl8rI+VbtwvM/03HpIc8EBfhd6FBJRklbA76h4kw6saAS4zE2v
-         Gw4A==
+        b=C2fW7YoURuwpm6JgTp4cBk21MVSX6L9nMlfOBbqYTKnjEqpIGyA8Ahh1vvJQNzuWVB
+         BQQyt+uMV67kfvnBqKAPRX1g/dKGYcH0clsrvxACT9Oev59Gb7rS8GWGG4QFfB0TNLBO
+         ngBuaV4bsd+SrREKwUtfpF4/H/ovFYuuSUYp9sTcz18yKtLfEq8Vj1k6bYCb5GWFEgNq
+         C5WCRaZEd/galmHbaLachTmFQmbmchPmXdLZ6QZR0GfnhnzCCsezY8CFuIlXMRTYix93
+         XTiB6qXiRRbCvqDKoTBgD7yMFB+6a3H1rBnHzKvjG++MgzCbhSTIC5ioYaGp50UaeW1O
+         5fzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from;
-        bh=T4CpNmYxnAgTcg0YZ0Rs6V051QY/bFgiYeQOXKApoOI=;
-        b=WrmmhUwWtJSPzXBnpoVxOmUaBbvO9ARCjcdTdvjVpwbaKH1RlRN4BfX1f7oPBZhmc7
-         +AHEhKRbFyZZHADZ9EFhwwU4+ROBxHknJICPvmMEGzJ4X79Sl/KM1Q9yvGjnLt3KA++A
-         n5TrZDdDQE2yR+45KoDOPQSHrQPZL9Hp77v5vmJu/UCjt8Ygmq1Aa/9+vVlu75gMN4yK
-         CjmWanld1FMs5426AkPfJopiGX7h9IhJ9Ig+vz30Wy0eIs+Or3jzTavFOxm25w7JnUN4
-         9QCPV+ydt4/YMrA8VpYC+fQ+bl3oDx+1g3O/8fEff9nCmS8/XSE3aq6WBAuUAMye9Dv9
-         npSQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=IePSxhFaXvcTXd9uZyRiYxkYI/3893jzovLyjvT01ew=;
+        b=nLNHRZ3pJQ1ARnN5NE9Wb5aV8wuMw3n+DbEZgDUEqyivtOAWNxUMn03yQ9OAIkuHFn
+         AZOcfQnjRPfH1b81sk/zT+iDVfvvlul5DEUQx13czJMq+m5NM25ZzP4Mxy/aq60kCGMH
+         82sghpjLLeIkRC6m0fYQBBIsIMFwIwYdU9RspKRNZOhzM/Ajm4EmaLYAEjuDbYXRes5j
+         QLnBLM0gN80rgm31fszRHy7gyZnoCfHxVi+t8dEgaycVUcdRbOOFlX8qXAkv8jd+fT5r
+         KoUPF7Skuvdyf3WO6O2fKnz04h4U2OpA/nh4a3hwGgcTR8duCjP9bTVakYf0b0Nz8gre
+         5qdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com
-Return-Path: <keithp@keithp.com>
-Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id b190si25214557pfg.227.2019.10.23.12.15.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2019 12:15:48 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SdoJ4pl7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z128si20167170qkd.143.2019.10.23.12.17.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 23 Oct 2019 12:17:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com
-Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id B1FE03F23ED3;
-	Wed, 23 Oct 2019 12:15:47 -0700 (PDT)
-X-Virus-Scanned: Debian amavisd-new at keithp.com
-Received: from elaine.keithp.com ([127.0.0.1])
-	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id VKIcKvzv9SZ9; Wed, 23 Oct 2019 12:15:47 -0700 (PDT)
-Received: from keithp.com (keithp-172.keithp.com [10.0.0.172])
-	by elaine.keithp.com (Postfix) with ESMTPSA id 7655C3F23EB1;
-	Wed, 23 Oct 2019 12:15:47 -0700 (PDT)
-Received: by keithp.com (Postfix, from userid 1000)
-	id CD50E1582118; Wed, 23 Oct 2019 12:15:46 -0700 (PDT)
-From: "Keith Packard" <keithp@keithp.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH] Semihost SYS_READC implementation
-In-Reply-To: <5e8913f8-558d-6a2e-c7d0-787ec533e4a9@redhat.com>
-References: <20191022031335.9880-1-keithp@keithp.com> <d7470bfa-ba4e-3287-326f-ee63c5d76407@redhat.com> <87sgnk3b0k.fsf@keithp.com> <5e8913f8-558d-6a2e-c7d0-787ec533e4a9@redhat.com>
-Date: Wed, 23 Oct 2019 12:15:46 -0700
-Message-ID: <87eez31del.fsf@keithp.com>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SdoJ4pl7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44660 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNM8J-0005za-A0
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 15:17:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59366)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKWN-0004c2-S0
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:34:09 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKWM-00020x-Dz
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:34:07 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40799
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1iNKWM-0001zT-8o
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:34:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1571852040;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IePSxhFaXvcTXd9uZyRiYxkYI/3893jzovLyjvT01ew=;
+ b=SdoJ4pl74iq+Tn71pxxQ6ahxQAOOuC2mgWGHjYg5ZdLnlwOFBM2WFQURW1bc5flCCqdbZH
+ NM/ENCIwUteDUY7e51NQaPaPR7QRWZ7q6KCU9KbEoMwI+jN44ocer0ePWso9XX8WzeA9Mu
+ TSySYcImw8eMlPDlNSlK6n/oSwcu9kQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-213-vHVna7eBMM-_R9SZDHrYpA-1; Wed, 23 Oct 2019 13:33:56 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 18BE51800E04;
+ Wed, 23 Oct 2019 17:33:50 +0000 (UTC)
+Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 916E060BE1;
+ Wed, 23 Oct 2019 17:33:49 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 14/33] serial-mm: add "regshift" property
+Date: Wed, 23 Oct 2019 19:31:35 +0200
+Message-Id: <20191023173154.30051-15-marcandre.lureau@redhat.com>
+In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
+References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
-X-TUID: ZISRiTp5xhtM
-
---=-=-=
-Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: vHVna7eBMM-_R9SZDHrYpA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PCt3mfkwWTMh
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
+And a property and rename "it_shift" field to "regshift", as it seems
+to be more popular (and I don't know what "it" stands for).
 
-> Please take a look at include/qemu/fifo8.h instead of rolling your own
-> ring buffer.  Note that it is not thread-safe so you'll have to keep
-> that part.
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ hw/char/serial.c         | 23 ++++++++++++++++++-----
+ include/hw/char/serial.h |  4 ++--
+ 2 files changed, 20 insertions(+), 7 deletions(-)
 
-Sorry for not looking around sooner, and thanks for the pointer.
-I've also cleaned up the other issues.
+diff --git a/hw/char/serial.c b/hw/char/serial.c
+index 0290b3c633..c28cfc94fd 100644
+--- a/hw/char/serial.c
++++ b/hw/char/serial.c
+@@ -1033,7 +1033,7 @@ static uint64_t serial_mm_read(void *opaque, hwaddr a=
+ddr,
+                                unsigned size)
+ {
+     SerialMM *s =3D SERIAL_MM(opaque);
+-    return serial_ioport_read(&s->serial, addr >> s->it_shift, 1);
++    return serial_ioport_read(&s->serial, addr >> s->regshift, 1);
+ }
+=20
+ static void serial_mm_write(void *opaque, hwaddr addr,
+@@ -1041,7 +1041,7 @@ static void serial_mm_write(void *opaque, hwaddr addr=
+,
+ {
+     SerialMM *s =3D SERIAL_MM(opaque);
+     value &=3D 255;
+-    serial_ioport_write(&s->serial, addr >> s->it_shift, value, 1);
++    serial_ioport_write(&s->serial, addr >> s->regshift, value, 1);
+ }
+=20
+ static const MemoryRegionOps serial_mm_ops[3] =3D {
+@@ -1069,14 +1069,14 @@ static const MemoryRegionOps serial_mm_ops[3] =3D {
+ };
+=20
+ SerialMM *serial_mm_init(MemoryRegion *address_space,
+-                            hwaddr base, int it_shift,
++                            hwaddr base, int regshift,
+                             qemu_irq irq, int baudbase,
+                             Chardev *chr, enum device_endian end)
+ {
+     SerialMM *self =3D SERIAL_MM(qdev_create(NULL, TYPE_SERIAL_MM));
+     SerialState *s =3D &self->serial;
+=20
+-    self->it_shift =3D it_shift;
++    qdev_prop_set_uint8(DEVICE(self), "regshift", regshift);
+     s->irq =3D irq;
+     qdev_prop_set_uint32(DEVICE(s), "baudbase", baudbase);
+     qdev_prop_set_chr(DEVICE(s), "chardev", chr);
+@@ -1086,7 +1086,7 @@ SerialMM *serial_mm_init(MemoryRegion *address_space,
+     qdev_init_nofail(DEVICE(self));
+=20
+     memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], self,
+-                          "serial", 8 << it_shift);
++                          "serial", 8 << regshift);
+     memory_region_add_subregion(address_space, base, &s->io);
+=20
+     return self;
+@@ -1100,11 +1100,24 @@ static void serial_mm_instance_init(Object *o)
+                             TYPE_SERIAL, &error_abort, NULL);
+ }
+=20
++static Property serial_mm_properties[] =3D {
++    DEFINE_PROP_UINT8("regshift", SerialMM, regshift, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void serial_mm_class_init(ObjectClass *klass, void* data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->props =3D serial_mm_properties;
++}
++
+ static const TypeInfo serial_mm_info =3D {
+     .name =3D TYPE_SERIAL_MM,
+     .parent =3D TYPE_SYS_BUS_DEVICE,
+     .instance_init =3D serial_mm_instance_init,
+     .instance_size =3D sizeof(SerialMM),
++    .class_init =3D serial_mm_class_init,
+ };
+=20
+ static void serial_register_types(void)
+diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+index f146d426c2..759c85976d 100644
+--- a/include/hw/char/serial.h
++++ b/include/hw/char/serial.h
+@@ -85,7 +85,7 @@ typedef struct SerialMM {
+=20
+     SerialState serial;
+=20
+-    int it_shift;
++    uint8_t regshift;
+ } SerialMM;
+=20
+ extern const VMStateDescription vmstate_serial;
+@@ -102,7 +102,7 @@ void serial_set_frequency(SerialState *s, uint32_t freq=
+uency);
+ SerialState *serial_init(int base, qemu_irq irq, int baudbase,
+                          Chardev *chr, MemoryRegion *system_io);
+ SerialMM *serial_mm_init(MemoryRegion *address_space,
+-                         hwaddr base, int it_shift,
++                         hwaddr base, int regshift,
+                          qemu_irq irq, int baudbase,
+                          Chardev *chr, enum device_endian end);
+=20
+--=20
+2.23.0.606.g08da6496b6
 
-> Kudos for the unlock/lock_iothread; I am not really familiar with the
-> semihosting code and I would have naively assumed that it runs without
-> that lock taken.
-
-I discovered by testing that the semihosting functions were entered with
-the lock taken :-)
-
-I'll post an updated version of this patch to the list shortly. Thanks
-again for your review; I really appreciate the time you've taken to look
-at my patch.
-
-=2D-=20
-=2Dkeith
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl2wpuIACgkQ2yIaaQAA
-ABHAOQ//V73ZQhAgWfci8AUC0QDOrOsGQ/ysuGomZ6O56MKNsYUmXrVYzD+eXxRc
-Uh8bYM68rPn4JCeDwVJiBKKkGrhN138cieEb2if/cZ0hn71xZc9wiGn0bu33pU9e
-d7rY3SWqBwUI3Km24o3qwNBD36mAmeiZHm1Htmv8hg8dBsH+kkBvVUGr/SkxcXhL
-/yEKaqsqYIG3+sCetyXlv4iOmdxZjc0ljELhhPfrrM+7z7Czb+jK+syBj7u2SdqY
-R04VyvmMjWEfm7xD5ON4A+sWT7GIXKzwSe88zJ8AO3w/0LFTR+m5ZinKeSOIgsdA
-MBIKXT3sJkRy8F4kPI3kzsET6pwU5GhrUF2hMJ9Zlt6LWYl3gm77etw53Q6fZrsc
-ZsLLckRHoQ7Ocot7pulXyFQMfDmY+NkolngPR7rPUkN/RsM1v0lHeAAvJBAxWR5k
-lrr59wbn8dfE0/SoQHihhISu3oSTOTOHi3jP5LK3ekg83Pa/V2U20wNYW514qs2b
-JcQYiW+l047MIGOO8qKRnmrApSD8xnq6ZWk6cA6rVsh3BmTjW9u5RMk4tQH9ouCc
-OBUb3tVeUD2C4I4CU+a8CMSv1fIbisUg0batn3nnCpZG3jeIGX/ctIdqhnZZNd/a
-ZbbiSSiWa5u6QJnUGOInZWRfPJVUcQ2Z+FyOEUWhkU8rgnYOjIw=
-=Gk4J
------END PGP SIGNATURE-----
---=-=-=--

@@ -1,99 +1,99 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1205572wrq;
-        Wed, 23 Oct 2019 10:49:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx4sBmy6JsEXG+99sRnmdjId8LxV84278BPtlfHbYVaPFAPeUidue+maFhLYIGAMX9UtMRA
-X-Received: by 2002:a37:ad19:: with SMTP id f25mr422720qkm.361.1571852945798;
-        Wed, 23 Oct 2019 10:49:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571852945; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1213265wrq;
+        Wed, 23 Oct 2019 10:57:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy4NUtYHL8hbAfJaj0VPLyqSUO5yKFbbE3G/9swGnajupsKq5MmJ0k9W/qc5AD2Um85Fv7m
+X-Received: by 2002:a0c:e6e5:: with SMTP id m5mr10050042qvn.170.1571853424039;
+        Wed, 23 Oct 2019 10:57:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571853424; cv=none;
         d=google.com; s=arc-20160816;
-        b=RD7KoFK7AqZTO5B0FCDtR+TTTwWFiAWWD4GmLmr9ErBldFDWw9f2L+n8JM8TsKDXLP
-         000pV2E8LhMN0HPu06RVGbpk0Bsf3bIPrYUJGTnJlO/Ywf/7vJsfkxQLolI7UixV9ipI
-         ZjOgORQS455d8N1sMM/t3JUnBms8JkhK+u4FjR1UKBr74n58fojfTXTltLTQaeJu05Oc
-         pCoTDUMAy0tcWnZZ3a1BJCiMgzUCCGYe/ByLVgZpxkVf2jgSaukYZfUI11s3e3CKC9zA
-         WiDPxVylkskynNmhePF5ejZJrLQ502qG9GoeglXywRt+cDY4IajS1ifxXR/Yks9XWglP
-         yLLQ==
+        b=Qg1Wj4wVk4WCpbatsho8oazqvv/053VxfbefUocs3I9t92j7bxGb8C5LyiqgJCajmi
+         EIVTEXnfaq8OSuYhmN+b/sxhl24quaPKWWRvfyGLy3SdoboDjHKgmymhTfHy3m2eqRyU
+         oDJLHtiLfLcesizuW8zPbLVdM2IgdgHenFIHTBTx+HYjvLQl5LJ5GCo4+LZeX43aURT/
+         Kij9goEVyRJqyyVGNFwDnio8A5/emSb9B6doBainZddxS1+yU4km5mdA5cekdIaURYkR
+         ZnV1mU64RSO3HayEtRPz4bS01bxxvNgX9qIlpHvRcDrASQUJZ1muaYc2R8gEGmvx5cr1
+         a70A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=/D1J2UJzAyc6e7JxXWFA+jl9eJCtu5Stu1K8cmuV8Ew=;
-        b=EtJ+xUI4MSR1e86OE0QmDJKkDUXHSEaesTMOC3b90Mhu1MbIKarXQVT6Kavx2G1fMI
-         P8Ivu5PnLPYF714F1M+WrzsF9YDqb3qhdn+1RusyM6JhaCXQgreUUW75BfhCDdsk4kPk
-         9hB1zPCGg07IrJjp3U7PQBdb2EFOsgewTs3Nu9sRoElQ9HWxCS2dO0aBiTSg8raR1iqZ
-         UC1TYg2u8kcp58QDmWL5B5gFQa9nQZnrYOZwZ9U/8Nt3hR4AZPPnPEwJPXewobWYgjoA
-         9+VRlBFwwiANCSXqh/cRUw/hwTWd+V+lEpCorBj8PJHhAhr7BHvkMHUXyC1B1TMceUTa
-         EmMA==
+        bh=BRite+vl5jz2FF+8XoR6bPNhYMKeLGlosqF+gjrYS7s=;
+        b=kgMqylWtL/1Ude+Rh9BrAj4P05jo+07eRszblzw0+suaYg1uCAGtE9pWWi+CLQazVf
+         0/GWehIC+cOnLtr+hU5AZhoBGLdOglxqggYCkzGIUt8iw9DYL+f+xvePsS0GGPQ80gfV
+         w3d8y2biJ+DEg9umdayOZy6D8L5UfXHTz5POLhLcDFaqR4wSNHOMaPb0BNAV5TOPpQjD
+         5rpRun4T+WWgxUdPXXessdQKzQsW4RIviJv50wva/ryhdL8pCfuF6aQJBJ7f3Gg1jyfl
+         ZADiVUhRsvZdGSAu/kcqPVZex0JZVdtpexcy5tW+4/cMmGyt8+LalZGWKSSUEcgiQ9lt
+         h82Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T3EjU4JO;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VY8FvmcC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i4si7696478qvj.41.2019.10.23.10.49.05
+        by mx.google.com with ESMTPS id y30si20265342qvf.98.2019.10.23.10.57.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 10:49:05 -0700 (PDT)
+        Wed, 23 Oct 2019 10:57:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T3EjU4JO;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VY8FvmcC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43016 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43076 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNKkq-0006cA-Ej
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 13:49:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59237)
+	id 1iNKsZ-0004Rc-4J
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 13:57:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59287)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKWC-0004XH-QI
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:33:58 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKWG-0004ZL-Qd
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:34:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKWA-0001xd-Fm
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:33:56 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:31689
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKWE-0001yi-Ji
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:34:00 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:54035
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKWA-0001xX-Bd
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:33:54 -0400
+ id 1iNKWC-0001xl-PU
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:33:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571852033;
+ s=mimecast20190719; t=1571852034;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/D1J2UJzAyc6e7JxXWFA+jl9eJCtu5Stu1K8cmuV8Ew=;
- b=T3EjU4JOLaZG6Rlwn3ZQh6sCr6PjL8fDfJVwqTm5xr761AFiftbEsXJJtRvksCrglpMyh3
- qvvi89cD+RRcDE62m9cqeiOShJNvH4BSJ6gMg8pxBzNfHjpWE9cauMMc7uRlgCNiwIX4DK
- KlVKEKgc5EQm2cSdsAvITQVJo3C4e2M=
+ bh=BRite+vl5jz2FF+8XoR6bPNhYMKeLGlosqF+gjrYS7s=;
+ b=VY8FvmcCjphRLyxhvo2FxX+5Uj7kxmjWaZOMIBRPXM7l118yVygJvdA9JPwXvXJHLAQ9vu
+ Er1uVFBCd/QRNCWPPCFvAnJnYvcgVyrVuSh4xXhB8dq69dIEVMlRGzkmLmN94igmbTp1Zj
+ 07iHcUX1KLHCky4gYIs4IdF6rL8cZy8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-167-ds4_ypJXNrOU9Skouh5BJg-1; Wed, 23 Oct 2019 13:33:50 -0400
+ us-mta-136-hQxgoaiWMu2fUIbUkdakJA-1; Wed, 23 Oct 2019 13:33:48 -0400
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B4BD801E70;
- Wed, 23 Oct 2019 17:33:48 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 55885800D5B;
+ Wed, 23 Oct 2019 17:33:46 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A9F7360BE1;
- Wed, 23 Oct 2019 17:33:47 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6E9ED60BE1;
+ Wed, 23 Oct 2019 17:33:43 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 13/33] serial: start making SerialMM a sysbus device
-Date: Wed, 23 Oct 2019 19:31:34 +0200
-Message-Id: <20191023173154.30051-14-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 12/33] serial: replace serial_exit_core() with unrealize
+Date: Wed, 23 Oct 2019 19:31:33 +0200
+Message-Id: <20191023173154.30051-13-marcandre.lureau@redhat.com>
 In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: ds4_ypJXNrOU9Skouh5BJg-1
+X-MC-Unique: hQxgoaiWMu2fUIbUkdakJA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,194 +123,83 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QhsGlMzFtOsn
+X-TUID: g/iN1EY9i3l5
 
-Memory mapped serial device is in fact a sysbus device. The following
-patches will make use of sysbus facilities for resource and
-registration.
+Instead of calling serial_exit_core() directly, use the QDev unrealize
+callback.
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/char/omap_uart.c      |  2 +-
- hw/char/serial.c         | 47 ++++++++++++++++++++++++++++------------
- hw/mips/boston.c         |  2 +-
- hw/mips/mips_malta.c     |  2 +-
- include/hw/char/serial.h | 20 ++++++++++++-----
- 5 files changed, 51 insertions(+), 22 deletions(-)
+ hw/char/serial-pci-multi.c | 2 +-
+ hw/char/serial-pci.c       | 2 +-
+ hw/char/serial.c           | 5 ++++-
+ include/hw/char/serial.h   | 1 -
+ 4 files changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/hw/char/omap_uart.c b/hw/char/omap_uart.c
-index 13e4f43c4c..e8da933378 100644
---- a/hw/char/omap_uart.c
-+++ b/hw/char/omap_uart.c
-@@ -27,7 +27,7 @@
- struct omap_uart_s {
-     MemoryRegion iomem;
-     hwaddr base;
--    SerialState *serial; /* TODO */
-+    SerialMM *serial; /* TODO */
-     struct omap_target_agent_s *ta;
-     omap_clk fclk;
-     qemu_irq irq;
+diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
+index 60c1c948b8..a3200555aa 100644
+--- a/hw/char/serial-pci-multi.c
++++ b/hw/char/serial-pci-multi.c
+@@ -56,7 +56,7 @@ static void multi_serial_pci_exit(PCIDevice *dev)
+=20
+     for (i =3D 0; i < pci->ports; i++) {
+         s =3D pci->state + i;
+-        serial_exit_core(s);
++        object_property_set_bool(OBJECT(s), false, "realized", NULL);
+         memory_region_del_subregion(&pci->iobar, &s->io);
+         g_free(pci->name[i]);
+     }
+diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
+index 35a8552674..54bdd98325 100644
+--- a/hw/char/serial-pci.c
++++ b/hw/char/serial-pci.c
+@@ -69,7 +69,7 @@ static void serial_pci_exit(PCIDevice *dev)
+     PCISerialState *pci =3D DO_UPCAST(PCISerialState, dev, dev);
+     SerialState *s =3D &pci->state;
+=20
+-    serial_exit_core(s);
++    object_property_set_bool(OBJECT(s), false, "realized", NULL);
+     qemu_free_irq(s->irq);
+ }
+=20
 diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 667570e310..0290b3c633 100644
+index bf34d9594e..667570e310 100644
 --- a/hw/char/serial.c
 +++ b/hw/char/serial.c
-@@ -1032,16 +1032,16 @@ static const TypeInfo serial_info =3D {
- static uint64_t serial_mm_read(void *opaque, hwaddr addr,
-                                unsigned size)
- {
--    SerialState *s =3D opaque;
--    return serial_ioport_read(s, addr >> s->it_shift, 1);
-+    SerialMM *s =3D SERIAL_MM(opaque);
-+    return serial_ioport_read(&s->serial, addr >> s->it_shift, 1);
+@@ -951,8 +951,10 @@ static void serial_realize(DeviceState *dev, Error **e=
+rrp)
+     qdev_set_legacy_instance_id(dev, s->instance_id, 2);
  }
 =20
- static void serial_mm_write(void *opaque, hwaddr addr,
-                             uint64_t value, unsigned size)
+-void serial_exit_core(SerialState *s)
++static void serial_unrealize(DeviceState *dev, Error **errp)
  {
--    SerialState *s =3D opaque;
-+    SerialMM *s =3D SERIAL_MM(opaque);
-     value &=3D 255;
--    serial_ioport_write(s, addr >> s->it_shift, value, 1);
-+    serial_ioport_write(&s->serial, addr >> s->it_shift, value, 1);
++    SerialState *s =3D SERIAL(dev);
++
+     qemu_chr_fe_deinit(&s->chr, false);
+=20
+     timer_del(s->modem_status_poll);
+@@ -1014,6 +1016,7 @@ static void serial_class_init(ObjectClass *klass, voi=
+d* data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+=20
+     dc->realize =3D serial_realize;
++    dc->unrealize =3D serial_unrealize;
+     dc->vmsd =3D &vmstate_serial;
+     dc->props =3D serial_properties;
  }
-=20
- static const MemoryRegionOps serial_mm_ops[3] =3D {
-@@ -1068,30 +1068,49 @@ static const MemoryRegionOps serial_mm_ops[3] =3D {
-     },
- };
-=20
--SerialState *serial_mm_init(MemoryRegion *address_space,
-+SerialMM *serial_mm_init(MemoryRegion *address_space,
-                             hwaddr base, int it_shift,
-                             qemu_irq irq, int baudbase,
-                             Chardev *chr, enum device_endian end)
- {
--    DeviceState *dev =3D DEVICE(object_new(TYPE_SERIAL));
--    SerialState *s =3D SERIAL(dev);
-+    SerialMM *self =3D SERIAL_MM(qdev_create(NULL, TYPE_SERIAL_MM));
-+    SerialState *s =3D &self->serial;
-=20
--    s->it_shift =3D it_shift;
-+    self->it_shift =3D it_shift;
-     s->irq =3D irq;
--    qdev_prop_set_uint32(dev, "baudbase", baudbase);
--    qdev_prop_set_chr(dev, "chardev", chr);
--    qdev_prop_set_int32(dev, "instance-id", base);
--    qdev_init_nofail(dev);
-+    qdev_prop_set_uint32(DEVICE(s), "baudbase", baudbase);
-+    qdev_prop_set_chr(DEVICE(s), "chardev", chr);
-+    qdev_prop_set_int32(DEVICE(s), "instance-id", base);
-+
-+    qdev_init_nofail(DEVICE(s));
-+    qdev_init_nofail(DEVICE(self));
-=20
--    memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], s,
-+    memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], self,
-                           "serial", 8 << it_shift);
-     memory_region_add_subregion(address_space, base, &s->io);
--    return s;
-+
-+    return self;
-+}
-+
-+static void serial_mm_instance_init(Object *o)
-+{
-+    SerialMM *self =3D SERIAL_MM(o);
-+
-+    object_initialize_child(o, "serial", &self->serial, sizeof(self->seria=
-l),
-+                            TYPE_SERIAL, &error_abort, NULL);
- }
-=20
-+static const TypeInfo serial_mm_info =3D {
-+    .name =3D TYPE_SERIAL_MM,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_init =3D serial_mm_instance_init,
-+    .instance_size =3D sizeof(SerialMM),
-+};
-+
- static void serial_register_types(void)
- {
-     type_register_static(&serial_info);
-+    type_register_static(&serial_mm_info);
- }
-=20
- type_init(serial_register_types)
-diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index ca7d813a52..23fdd5ec6a 100644
---- a/hw/mips/boston.c
-+++ b/hw/mips/boston.c
-@@ -50,7 +50,7 @@ typedef struct {
-=20
-     MachineState *mach;
-     MIPSCPSState cps;
--    SerialState *uart;
-+    SerialMM *uart;
-=20
-     CharBackend lcd_display;
-     char lcd_content[8];
-diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-index 4d9c64b36a..efc3307973 100644
---- a/hw/mips/mips_malta.c
-+++ b/hw/mips/mips_malta.c
-@@ -86,7 +86,7 @@ typedef struct {
-     uint32_t i2csel;
-     CharBackend display;
-     char display_text[9];
--    SerialState *uart;
-+    SerialMM *uart;
-     bool display_inited;
- } MaltaFPGAState;
-=20
 diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index 7cc6304f1d..f146d426c2 100644
+index b445df5951..7cc6304f1d 100644
 --- a/include/hw/char/serial.h
 +++ b/include/hw/char/serial.h
-@@ -57,7 +57,6 @@ typedef struct SerialState {
-     qemu_irq irq;
-     CharBackend chr;
-     int last_break_enable;
--    int it_shift;
-     uint32_t baudbase;
-     uint32_t tsr_retry;
-     guint watch_tag;
-@@ -81,6 +80,14 @@ typedef struct SerialState {
-     int instance_id;
- } SerialState;
-=20
-+typedef struct SerialMM {
-+    SysBusDevice parent;
-+
-+    SerialState serial;
-+
-+    int it_shift;
-+} SerialMM;
-+
+@@ -84,7 +84,6 @@ typedef struct SerialState {
  extern const VMStateDescription vmstate_serial;
  extern const MemoryRegionOps serial_io_ops;
 =20
-@@ -89,12 +96,15 @@ void serial_set_frequency(SerialState *s, uint32_t freq=
-uency);
+-void serial_exit_core(SerialState *s);
+ void serial_set_frequency(SerialState *s, uint32_t frequency);
+=20
  #define TYPE_SERIAL "serial"
- #define SERIAL(s) OBJECT_CHECK(SerialState, (s), TYPE_SERIAL)
-=20
-+#define TYPE_SERIAL_MM "serial-mm"
-+#define SERIAL_MM(s) OBJECT_CHECK(SerialMM, (s), TYPE_SERIAL_MM)
-+
- SerialState *serial_init(int base, qemu_irq irq, int baudbase,
-                          Chardev *chr, MemoryRegion *system_io);
--SerialState *serial_mm_init(MemoryRegion *address_space,
--                            hwaddr base, int it_shift,
--                            qemu_irq irq, int baudbase,
--                            Chardev *chr, enum device_endian end);
-+SerialMM *serial_mm_init(MemoryRegion *address_space,
-+                         hwaddr base, int it_shift,
-+                         qemu_irq irq, int baudbase,
-+                         Chardev *chr, enum device_endian end);
-=20
- /* serial-isa.c */
-=20
 --=20
 2.23.0.606.g08da6496b6
 

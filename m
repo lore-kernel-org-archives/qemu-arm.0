@@ -1,120 +1,119 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1200242wrq;
-        Wed, 23 Oct 2019 10:44:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzK4HH9qpeWSKWbLO7Uu+AZ50B4+ULrzEBMAms1mrQq/ia4jv4v5No7xzBhzWf9eXRY4dvG
-X-Received: by 2002:a05:6402:1255:: with SMTP id l21mr25557798edw.41.1571852640059;
-        Wed, 23 Oct 2019 10:44:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571852640; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1203399wrq;
+        Wed, 23 Oct 2019 10:46:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzXt0A6dHFRuIuJ04S9KCCd7GJKl11ZaRmV97iRCDStuQ7GrEAXJ/xBzYQbN/W2RrWH9aU2
+X-Received: by 2002:a05:6402:1acd:: with SMTP id ba13mr21287340edb.141.1571852819363;
+        Wed, 23 Oct 2019 10:46:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571852819; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dy7LWBSSCC/Oq1wAnZw8hwk76dWl5GWUZACAL+8tnWM0apYBK1ffD2ZI/u8QhKz8G6
-         1R7zBLcgIZUczuguox0T+ozcoE+ahYy0PyO/KNUr3oHQtMukiIUsjByORXXS0nuCMQ2R
-         ubVIRDnrwBfUHebI8Pwn4wduV3AB5gSADweH+O87Vqb33EI0PXVhCLTdHCSXc9pSiea0
-         VSFcHfaBdLG1tIUHK5R6/BS+qBbz5nJsTBjjLlB2WYLNLP6Zu5bkxH9rR65Rtl45VPMj
-         c2CwNC3dtptfyn7p202cg40GW4cC7VgRJtlelP2sE1wQ+6JcyqgQDSf5sQ3qIfaC14xl
-         K51A==
+        b=qf/OqkygLdagB8nsmhJLMDUI7/H8ZxyuFyZDoJ+niv/ChDQNkQORxTXrTR1EOrNc7A
+         WJNFtr8K1hf6D41j7L1CH+DpbHxY9eCfY5TW3PnInCAUsFl5j0Zro667G5UvaNioQVYe
+         PR/uC00W3VrnW1UEO0rWXAJehFe+cfgaOgpKj1jRapAI2hET5aS+GCXkiGJ/AqK4bUDw
+         v3J+LxeKWQGOhZ3B+Q/hAYJX7FxoeGciEDzwRgfQ/xlIeSNk7+WMgUXH2WrzyhwqDi7m
+         Hs5DsYJsQP0MEtKz656ZrL7annbk8GLCAUzYQUje4OsQnoXw9JjDJiPGTtGu8vBXZfZk
+         /lMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=6G1W/gcTdSdJBPvC06njrUzLllHI1z0Td5dkT4z2N08=;
-        b=vcM+NBc5pg37WZdJGSCB+GaCuNQMvGizMNL3BPB5j8948pRLxp0fYsN40eRL+plA5g
-         IUgctW/NGdKdGxQ56BzivwVPJ/MreVsPMGrOqkN5IOllOr2IP+OzSKfrNn88bAASpHrY
-         y0hv2AXvTrLR0n6HnOoxMRgqWmUNaw85nSgfaoEqLr00B5lRWGdUxnsgpAJ3sOYYECtO
-         XZ05pPEGgGCyE4fIRhg0z4+TPhlnHeV0l2NDcS7IKga9GZC4hmlNDtmhOiKOxPYQAgBj
-         1eEUmD70hvkBIoNvmqLaL2tPJeQz11h+p3ZIN9FqhRPXGZxTJIF3XemGlsp7aTMV5py4
-         IePQ==
+        bh=LU937jUM4xTYnxevSguqjhIZuQ0N7Ks/n2k0JkO4NWc=;
+        b=z5OJcyEwQYzfOXmQVXX62xmvfJIKU/R2msEeeFGA2vNcWU+AfMoM8i4aHy0gtnWGwI
+         lJKHuEf2OdwTMsS50if7n7IF2nWaEAysn0Vpw3oHf0sHzHRFxkEWyj9eFnnlAlgdvNBF
+         pFcid7BtMlBJZ8TMbdJ4aJDVC8YH2Joq1TOPGagvMfQa3hdvmNtzErd3MG6uJBiXHwYU
+         963jTAdDOFGhbMvBNCKuqn0+A9K4xwIud3wG46XtfbFMqOiuBGc4ws/aM/bYEw3Vz6CD
+         /GbtSQEerR5t1iRvA/38wNC7mEyF2/S4mxQorVI2F0JD4PcOlAM4j/zc+9QUV5GEvVP+
+         JWjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RVibu684;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E09VQdQK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20si13868652edm.365.2019.10.23.10.44.00
+        by mx.google.com with ESMTPS id h4si16073926edd.189.2019.10.23.10.46.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 10:44:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Oct 2019 10:46:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RVibu684;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E09VQdQK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42986 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNKfu-0004yn-IE
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 13:43:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59175)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNKin-0005Qb-Dv
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 13:46:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59208)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKW3-0004RC-Rz
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:49 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKW6-0004Un-Iw
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:33:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKW2-0001vZ-Mb
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:47 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:55397
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKW5-0001wQ-59
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:33:50 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:50075
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKW2-0001vJ-JA
- for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:46 -0400
+ id 1iNKW4-0001w3-Sf
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:33:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571852026;
+ s=mimecast20190719; t=1571852028;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6G1W/gcTdSdJBPvC06njrUzLllHI1z0Td5dkT4z2N08=;
- b=RVibu684CSGOFZk1Rc/JCdxD49VYdFPdm2UJUdbmOiwYWWLgFHK4uyPc2kaeuXKQoMPvt2
- 7424C3+sP5CGf0/eKPRUQvjUJBXaVW8GFhx5usi4fq2Qm2nj9SCU5/HDmibjwDKl8PDD4+
- vUekbVpn9GORAucDkkl90mbz8aZcsXA=
+ bh=LU937jUM4xTYnxevSguqjhIZuQ0N7Ks/n2k0JkO4NWc=;
+ b=E09VQdQKTjefiYrv5OFIQoEPUMTfR0Vy6YaCwQCfi1cV8OAyVVMCAq1GZV8dBQjNGlfncj
+ hxqhWyywcl8rUa4rhRqcQoWpR69GGgUBFD0VIpiiUvsF9BP6+9p8Y86mm9gtjkjvqbaEd9
+ tgP84AemCiicGdQbZVKDYBUAd5yJ9+k=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-357-_wYXFdBBPxuytS25F1J4TQ-1; Wed, 23 Oct 2019 13:33:42 -0400
+ us-mta-298-EAsj01G3P8eZdbsaZbtTfA-1; Wed, 23 Oct 2019 13:33:44 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 143D6801E70;
- Wed, 23 Oct 2019 17:33:40 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 153C4801E72;
+ Wed, 23 Oct 2019 17:33:42 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EA73460629;
- Wed, 23 Oct 2019 17:33:33 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 946FC6061E;
+ Wed, 23 Oct 2019 17:33:41 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 10/33] serial: add "instance-id" property
-Date: Wed, 23 Oct 2019 19:31:31 +0200
-Message-Id: <20191023173154.30051-11-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 11/33] serial: realize the serial device
+Date: Wed, 23 Oct 2019 19:31:32 +0200
+Message-Id: <20191023173154.30051-12-marcandre.lureau@redhat.com>
 In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: _wYXFdBBPxuytS25F1J4TQ-1
+X-MC-Unique: EAsj01G3P8eZdbsaZbtTfA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Corey Minyard <cminyard@mvista.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- BALATON Zoltan <balaton@eik.bme.hu>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
  Magnus Damm <magnus.damm@gmail.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
@@ -122,62 +121,133 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9BiPynMi25w7
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lV7pVtdIr2vy
 
-This property will be used to move common vmstate registration to
-device realize in following patch.
+Instead of calling serial_realize_core(), use the QDev realize
+callback. Move qdev_set_legacy_instance_id() there.
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/char/serial.c         | 3 +++
- include/hw/char/serial.h | 1 +
- 2 files changed, 4 insertions(+)
+ hw/char/serial-isa.c       |  2 +-
+ hw/char/serial-pci-multi.c |  2 +-
+ hw/char/serial-pci.c       |  2 +-
+ hw/char/serial.c           | 11 +++++------
+ include/hw/char/serial.h   |  1 -
+ 5 files changed, 8 insertions(+), 10 deletions(-)
 
+diff --git a/hw/char/serial-isa.c b/hw/char/serial-isa.c
+index 9a5928b3ee..33e093f1e6 100644
+--- a/hw/char/serial-isa.c
++++ b/hw/char/serial-isa.c
+@@ -75,7 +75,7 @@ static void serial_isa_realizefn(DeviceState *dev, Error =
+**errp)
+=20
+     s->baudbase =3D 115200;
+     isa_init_irq(isadev, &s->irq, isa->isairq);
+-    serial_realize_core(s, errp);
++    object_property_set_bool(OBJECT(s), true, "realized", errp);
+     qdev_set_legacy_instance_id(dev, isa->iobase, 3);
+=20
+     memory_region_init_io(&s->io, OBJECT(isa), &serial_io_ops, s, "serial"=
+, 8);
+diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
+index 3485bdad87..60c1c948b8 100644
+--- a/hw/char/serial-pci-multi.c
++++ b/hw/char/serial-pci-multi.c
+@@ -108,7 +108,7 @@ static void multi_serial_pci_realize(PCIDevice *dev, Er=
+ror **errp)
+     for (i =3D 0; i < nr_ports; i++) {
+         s =3D pci->state + i;
+         s->baudbase =3D 115200;
+-        serial_realize_core(s, &err);
++        object_property_set_bool(OBJECT(s), true, "realized", &err);
+         if (err !=3D NULL) {
+             error_propagate(errp, err);
+             multi_serial_pci_exit(dev);
+diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
+index a33264a1fb..35a8552674 100644
+--- a/hw/char/serial-pci.c
++++ b/hw/char/serial-pci.c
+@@ -50,7 +50,7 @@ static void serial_pci_realize(PCIDevice *dev, Error **er=
+rp)
+     Error *err =3D NULL;
+=20
+     s->baudbase =3D 115200;
+-    serial_realize_core(s, &err);
++    object_property_set_bool(OBJECT(s), true, "realized", &err);
+     if (err !=3D NULL) {
+         error_propagate(errp, err);
+         return;
 diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 069d8715d0..0b61a71e4e 100644
+index 0b61a71e4e..bf34d9594e 100644
 --- a/hw/char/serial.c
 +++ b/hw/char/serial.c
-@@ -990,6 +990,7 @@ SerialState *serial_init(int base, qemu_irq irq, int ba=
+@@ -934,8 +934,10 @@ static int serial_be_change(void *opaque)
+     return 0;
+ }
+=20
+-void serial_realize_core(SerialState *s, Error **errp)
++static void serial_realize(DeviceState *dev, Error **errp)
+ {
++    SerialState *s =3D SERIAL(dev);
++
+     s->modem_status_poll =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, (QEMUTimerCB=
+ *) serial_update_msl, s);
+=20
+     s->fifo_timeout_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, (QEMUTimerC=
+B *) fifo_timeout_int, s);
+@@ -946,6 +948,7 @@ void serial_realize_core(SerialState *s, Error **errp)
+     fifo8_create(&s->recv_fifo, UART_FIFO_LENGTH);
+     fifo8_create(&s->xmit_fifo, UART_FIFO_LENGTH);
+     serial_reset(s);
++    qdev_set_legacy_instance_id(dev, s->instance_id, 2);
+ }
+=20
+ void serial_exit_core(SerialState *s)
+@@ -991,8 +994,6 @@ SerialState *serial_init(int base, qemu_irq irq, int ba=
 udbase,
-     s->irq =3D irq;
      qdev_prop_set_uint32(dev, "baudbase", baudbase);
      qdev_prop_set_chr(dev, "chardev", chr);
-+    qdev_prop_set_int32(dev, "instance-id", base);
-     serial_realize_core(s, &error_fatal);
-     qdev_set_legacy_instance_id(dev, base, 2);
+     qdev_prop_set_int32(dev, "instance-id", base);
+-    serial_realize_core(s, &error_fatal);
+-    qdev_set_legacy_instance_id(dev, base, 2);
      qdev_init_nofail(dev);
-@@ -1003,6 +1004,7 @@ SerialState *serial_init(int base, qemu_irq irq, int =
-baudbase,
- static Property serial_properties[] =3D {
-     DEFINE_PROP_CHR("chardev", SerialState, chr),
-     DEFINE_PROP_UINT32("baudbase", SerialState, baudbase, 115200),
-+    DEFINE_PROP_INT32("instance-id", SerialState, instance_id, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
 =20
-@@ -1073,6 +1075,7 @@ SerialState *serial_mm_init(MemoryRegion *address_spa=
+     memory_region_init_io(&s->io, NULL, &serial_io_ops, s, "serial", 8);
+@@ -1012,6 +1013,7 @@ static void serial_class_init(ObjectClass *klass, voi=
+d* data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+=20
++    dc->realize =3D serial_realize;
+     dc->vmsd =3D &vmstate_serial;
+     dc->props =3D serial_properties;
+ }
+@@ -1076,9 +1078,6 @@ SerialState *serial_mm_init(MemoryRegion *address_spa=
 ce,
-     s->irq =3D irq;
      qdev_prop_set_uint32(dev, "baudbase", baudbase);
      qdev_prop_set_chr(dev, "chardev", chr);
-+    qdev_prop_set_int32(dev, "instance-id", base);
+     qdev_prop_set_int32(dev, "instance-id", base);
+-
+-    serial_realize_core(s, &error_fatal);
+-    qdev_set_legacy_instance_id(dev, base, 2);
+     qdev_init_nofail(dev);
 =20
-     serial_realize_core(s, &error_fatal);
-     qdev_set_legacy_instance_id(dev, base, 2);
+     memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], s,
 diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index 3dc618598e..b472c7cd57 100644
+index b472c7cd57..b445df5951 100644
 --- a/include/hw/char/serial.h
 +++ b/include/hw/char/serial.h
-@@ -78,6 +78,7 @@ typedef struct SerialState {
-=20
-     QEMUTimer *modem_status_poll;
-     MemoryRegion io;
-+    int instance_id;
- } SerialState;
-=20
+@@ -84,7 +84,6 @@ typedef struct SerialState {
  extern const VMStateDescription vmstate_serial;
+ extern const MemoryRegionOps serial_io_ops;
+=20
+-void serial_realize_core(SerialState *s, Error **errp);
+ void serial_exit_core(SerialState *s);
+ void serial_set_frequency(SerialState *s, uint32_t frequency);
+=20
 --=20
 2.23.0.606.g08da6496b6
 

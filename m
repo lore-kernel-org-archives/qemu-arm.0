@@ -1,99 +1,99 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1258637wrq;
-        Wed, 23 Oct 2019 11:37:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxRavWvRaoLX+zUaZA+bnNcHIHc2ZsbCVTYUIBQu6upwldGFHSm6Ni3ggMmCHd9nHiptFNA
-X-Received: by 2002:a17:906:6a09:: with SMTP id o9mr33789194ejr.289.1571855868173;
-        Wed, 23 Oct 2019 11:37:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571855868; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1268742wrq;
+        Wed, 23 Oct 2019 11:48:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy0rzjd6uUw21ay6W2tEyh/y9zXXviohg8iPrbOFvqSQTEG1pK7/Z55UMv6vvs15afHWwPs
+X-Received: by 2002:a17:906:3946:: with SMTP id g6mr34063986eje.49.1571856510472;
+        Wed, 23 Oct 2019 11:48:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571856510; cv=none;
         d=google.com; s=arc-20160816;
-        b=JJO4vQj+wFAWlCcQZ84skBkibqPlFnyDDTHfN+GrHN2bGW1uDG0rjSRHhsDFFOcHV2
-         g51enLf4HQCozoOmbHqX9pY8Rn5F96Zf8bXLiLMQ4YauvV9nclNgmZ3dws7D1gPaXDF5
-         qVZlbkN+Rg3HhZfHz+EKfwgxVzEgXsN9H8ytdQYbtb8Kdud0MMDH24pGaMFtgaYugcxv
-         q8JdGY/FGooAjc1pg2yXL0ZOaevzrnPu6ckknhCn4dtN8aHi3UEF+ZPI9pkIK2bFHeaP
-         d8kbovAHeubjznorBx1N1DMbtrd8F8jvOULwbBmGkfuuoz9qxwmJ8HnpQ9TAhdKxeHT0
-         i1bA==
+        b=CP/ZETBUupZuTsG8ILqqfEiaFMlrD876jM+ccw+El4a5g2O7aDdrHGv0p4Ba/F9uWs
+         wZzifDqmaQpc5ePGyW2dOfWPE2d4G5DsIIdgJdp/8gkRCfNv8iBILhJEwlcnGlxtBiVj
+         u8jjm3yYDu8rVnvjcS9wtAr1+Z0TM7MsH3pZqliTcHQIPZVXlipwwjZ9Jz9UhaIkmssS
+         yt5EkfI2d7NhIzKzkKWbTprDXJmEcGQWQUA16565GMMqRW4JXukOiZWci5Dd9bTbb38G
+         GKi0F0EI6+JmM+1mfCaLMuvTRfyf1uu7WkOELDI/lH3c8DNUwWib228s3mgTiWx92KHv
+         CAZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Eybeycl+Mdd0uyU/fVDKSh323lQWcR1DmZZ34tMwi+A=;
-        b=RGa87ge3sicqyPU+pIBK/ytySkaEnLaANsN8Tlht7FR6R5r2KH9FIhi0h7f2pJP1oo
-         7pKTUbbuGFnn+5+4RNBQlpGS8rCgw2GbTMsKbbXqOvBMFhkRvAdtuBHhJstB/AxOl67j
-         GJ4MzZoOkHIERxn3luAq/1gL7RYnnrfmWUZ803mVNhDt0FFM2cCFvt5fNOMBXcOmLjNt
-         qgrvJe6rvyCMIgeWFuwN9k5VxHQW0rL7jrwXibO+xfBsJjQQPGTEuuTfSuwBCYHbVySk
-         X5xxIAvmvFh/jA3t6t1ZF4zhxYwYVymQfZs1THC7SeqPuu2Lo1MiVXimUQbTUX3/YlxG
-         U8xQ==
+        bh=9r30TFYWwWXP6UsNuJpEoLyIN45bJ0sm/8D+1psh3Ds=;
+        b=D6X74y57HN5uly5eHzmc748NNh4qZeKzWmr5GVX8990tlNUUyIylYo750akPHi/4Sw
+         48bpZcR7Xf4AFnyqkAg67bFuS+J7e5k7Q/Oy88gHkT/Te6Sfb9nEocxcqI2LKAWpG2s5
+         hZFFmy8K1MXAr5hOyNqpvpsjryHYBjyX1saumRvRpLjtxmL6zdbmSyGeuxSbXbhAkxCa
+         dT57XZIKENcMNlpodyW22V1dXP5St6eQCTzWWp2+r1906+Zb3Kz7qfiGkgl7KWJrAxIo
+         zU60xu0AvZZA9QWHxfGNPbaqnV/r4rKNozIOG+OPdH3JH++rBt5bLCnITXdOf19kaKBY
+         dj8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mf5fRUoX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PVdX5HMH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g21si15359104edq.289.2019.10.23.11.37.48
+        by mx.google.com with ESMTPS id qh2si7364147ejb.372.2019.10.23.11.48.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 11:37:48 -0700 (PDT)
+        Wed, 23 Oct 2019 11:48:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mf5fRUoX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PVdX5HMH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43552 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43902 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNLVy-0003zb-Hk
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 14:37:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59949)
+	id 1iNLgL-0006Yb-Ao
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 14:48:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60090)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXM-0005jl-MP
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:09 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXo-00066Q-P3
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXL-0002U4-D5
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:08 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:28624
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKXn-0002mM-HD
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:36 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:37464
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKXL-0002Ts-8B
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:07 -0400
+ id 1iNKXn-0002lu-Bm
+ for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571852106;
+ s=mimecast20190719; t=1571852134;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Eybeycl+Mdd0uyU/fVDKSh323lQWcR1DmZZ34tMwi+A=;
- b=Mf5fRUoXAeQ+9j793NXPMJHtwGu+cDJNX7dYwOtxw5qv2KBYvWcw07ya+DW1ObeVDgjqv7
- a+yAq8oVrevRFJXEaqVebIs0dKGe1LOv05F2zwYUGZD21SnKqDPiG1B3wzCSxWrT8veNMV
- fw8xw3dAVc9dzGX1WjSAsDeEELtnAS8=
+ bh=9r30TFYWwWXP6UsNuJpEoLyIN45bJ0sm/8D+1psh3Ds=;
+ b=PVdX5HMHFgDYkPKJ+mz2R6LI90N5sIr/eLTPajLz+fLJ6hb2KBu5431saRI8HhY/Eh165/
+ HiY8lpIlBW28tGypkQoHgeMB+CuUz2s4Ri+7kh3qlF9xYfQkBxOXauYR8Q9YY6hSltwN2R
+ 0hhtgA/G0LycRx0Fazp3adyQ1pf7A7w=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-354-cm98ngysNjO3AXe0jT2EwQ-1; Wed, 23 Oct 2019 13:35:05 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-370-jJnOoQ9AOZGMIorWMJAh2g-1; Wed, 23 Oct 2019 13:35:17 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33ADC800D62;
- Wed, 23 Oct 2019 17:35:03 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 24BFC800D62;
+ Wed, 23 Oct 2019 17:35:15 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9CD516061E;
- Wed, 23 Oct 2019 17:34:55 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BC8A3100EA05;
+ Wed, 23 Oct 2019 17:35:04 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 27/33] cris: improve passing PIC interrupt vector to the CPU
-Date: Wed, 23 Oct 2019 19:31:48 +0200
-Message-Id: <20191023173154.30051-28-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 28/33] smbus-eeprom: remove PROP_PTR
+Date: Wed, 23 Oct 2019 19:31:49 +0200
+Message-Id: <20191023173154.30051-29-marcandre.lureau@redhat.com>
 In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: cm98ngysNjO3AXe0jT2EwQ-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: jJnOoQ9AOZGMIorWMJAh2g-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,146 +123,73 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jyGIaOai+9er
+X-TUID: lpIoGRwbdMPb
 
-Instead of accessing cpu interrupt vector directly from PIC, send the
-vector value over the qemu_irq.
+Instead, set the initial data field directly.
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+(the initial data is an array of 256 bytes. As I don't know if it may
+change over time, I keep the pointer to original buffer as is, but it
+might be worth to consider to copy it instead)
+
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- hw/cris/axis_dev88.c  |  4 ----
- hw/intc/etraxfs_pic.c | 26 +-------------------------
- target/cris/cpu.c     |  8 ++++++++
- target/cris/cpu.h     |  1 +
- 4 files changed, 10 insertions(+), 29 deletions(-)
+ hw/i2c/smbus_eeprom.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
 
-diff --git a/hw/cris/axis_dev88.c b/hw/cris/axis_dev88.c
-index 940c7dd122..be7760476a 100644
---- a/hw/cris/axis_dev88.c
-+++ b/hw/cris/axis_dev88.c
-@@ -253,7 +253,6 @@ void axisdev88_init(MachineState *machine)
-     const char *kernel_filename =3D machine->kernel_filename;
-     const char *kernel_cmdline =3D machine->kernel_cmdline;
-     CRISCPU *cpu;
--    CPUCRISState *env;
-     DeviceState *dev;
-     SysBusDevice *s;
-     DriveInfo *nand;
-@@ -267,7 +266,6 @@ void axisdev88_init(MachineState *machine)
+diff --git a/hw/i2c/smbus_eeprom.c b/hw/i2c/smbus_eeprom.c
+index 54c86a0112..533c728b3b 100644
+--- a/hw/i2c/smbus_eeprom.c
++++ b/hw/i2c/smbus_eeprom.c
+@@ -44,7 +44,7 @@
+ typedef struct SMBusEEPROMDevice {
+     SMBusDevice smbusdev;
+     uint8_t data[SMBUS_EEPROM_SIZE];
+-    void *init_data;
++    uint8_t *init_data;
+     uint8_t offset;
+     bool accessed;
+ } SMBusEEPROMDevice;
+@@ -129,14 +129,14 @@ static void smbus_eeprom_reset(DeviceState *dev)
 =20
-     /* init CPUs */
-     cpu =3D CRIS_CPU(cpu_create(machine->cpu_type));
--    env =3D &cpu->env;
-=20
-     /* allocate RAM */
-     memory_region_allocate_system_memory(phys_ram, NULL, "axisdev88.ram",
-@@ -297,8 +295,6 @@ void axisdev88_init(MachineState *machine)
-=20
-=20
-     dev =3D qdev_create(NULL, "etraxfs,pic");
--    /* FIXME: Is there a proper way to signal vectors to the CPU core?  */
--    qdev_prop_set_ptr(dev, "interrupt_vector", &env->interrupt_vector);
-     qdev_init_nofail(dev);
-     s =3D SYS_BUS_DEVICE(dev);
-     sysbus_mmio_map(s, 0, 0x3001c000);
-diff --git a/hw/intc/etraxfs_pic.c b/hw/intc/etraxfs_pic.c
-index 77f652acec..12988c7aa9 100644
---- a/hw/intc/etraxfs_pic.c
-+++ b/hw/intc/etraxfs_pic.c
-@@ -27,8 +27,6 @@
- #include "qemu/module.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
--//#include "pc.h"
--//#include "etraxfs.h"
-=20
- #define D(x)
-=20
-@@ -48,7 +46,6 @@ struct etrax_pic
-     SysBusDevice parent_obj;
-=20
-     MemoryRegion mmio;
--    void *interrupt_vector;
-     qemu_irq parent_irq;
-     qemu_irq parent_nmi;
-     uint32_t regs[R_MAX];
-@@ -79,11 +76,7 @@ static void pic_update(struct etrax_pic *fs)
-         }
-     }
-=20
--    if (fs->interrupt_vector) {
--        /* hack alert: ptr property */
--        *(uint32_t*)(fs->interrupt_vector) =3D vector;
--    }
--    qemu_set_irq(fs->parent_irq, !!vector);
-+    qemu_set_irq(fs->parent_irq, vector);
+ static void smbus_eeprom_realize(DeviceState *dev, Error **errp)
+ {
++    SMBusEEPROMDevice *eeprom =3D SMBUS_EEPROM(dev);
++
+     smbus_eeprom_reset(dev);
++    if (eeprom->init_data =3D=3D NULL) {
++        error_setg(errp, "init_data cannot be NULL");
++    }
  }
 =20
- static uint64_t
-@@ -163,28 +156,11 @@ static void etraxfs_pic_init(Object *obj)
-     sysbus_init_mmio(sbd, &s->mmio);
- }
-=20
--static Property etraxfs_pic_properties[] =3D {
--    DEFINE_PROP_PTR("interrupt_vector", struct etrax_pic, interrupt_vector=
-),
+-static Property smbus_eeprom_properties[] =3D {
+-    DEFINE_PROP_PTR("data", SMBusEEPROMDevice, init_data),
 -    DEFINE_PROP_END_OF_LIST(),
 -};
 -
--static void etraxfs_pic_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc =3D DEVICE_CLASS(klass);
--
--    dc->props =3D etraxfs_pic_properties;
--    /*
--     * Note: pointer property "interrupt_vector" may remain null, thus
--     * no need for dc->user_creatable =3D false;
--     */
--}
--
- static const TypeInfo etraxfs_pic_info =3D {
-     .name          =3D TYPE_ETRAX_FS_PIC,
-     .parent        =3D TYPE_SYS_BUS_DEVICE,
-     .instance_size =3D sizeof(struct etrax_pic),
-     .instance_init =3D etraxfs_pic_init,
--    .class_init    =3D etraxfs_pic_class_init,
- };
+ static void smbus_eeprom_class_initfn(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+@@ -146,9 +146,8 @@ static void smbus_eeprom_class_initfn(ObjectClass *klas=
+s, void *data)
+     dc->reset =3D smbus_eeprom_reset;
+     sc->receive_byte =3D eeprom_receive_byte;
+     sc->write_data =3D eeprom_write_data;
+-    dc->props =3D smbus_eeprom_properties;
+     dc->vmsd =3D &vmstate_smbus_eeprom;
+-    /* Reason: pointer property "data" */
++    /* Reason: init_data */
+     dc->user_creatable =3D false;
+ }
 =20
- static void etraxfs_pic_register_types(void)
-diff --git a/target/cris/cpu.c b/target/cris/cpu.c
-index 7adfd6caf4..6a857f548d 100644
---- a/target/cris/cpu.c
-+++ b/target/cris/cpu.c
-@@ -147,6 +147,14 @@ static void cris_cpu_set_irq(void *opaque, int irq, in=
-t level)
-     CPUState *cs =3D CPU(cpu);
-     int type =3D irq =3D=3D CRIS_CPU_IRQ ? CPU_INTERRUPT_HARD : CPU_INTERR=
-UPT_NMI;
+@@ -172,7 +171,7 @@ void smbus_eeprom_init_one(I2CBus *smbus, uint8_t addre=
+ss, uint8_t *eeprom_buf)
 =20
-+    if (irq =3D=3D CRIS_CPU_IRQ) {
-+        /*
-+         * The PIC passes us the vector for the IRQ as the value it sends
-+         * over the qemu_irq line
-+         */
-+        cpu->env.interrupt_vector =3D level;
-+    }
-+
-     if (level) {
-         cpu_interrupt(cs, type);
-     } else {
-diff --git a/target/cris/cpu.h b/target/cris/cpu.h
-index aba0a66474..a7c2a8e15b 100644
---- a/target/cris/cpu.h
-+++ b/target/cris/cpu.h
-@@ -34,6 +34,7 @@
- #define CPU_INTERRUPT_NMI       CPU_INTERRUPT_TGT_EXT_3
-=20
- /* CRUS CPU device objects interrupt lines.  */
-+/* PIC passes the vector for the IRQ as the value of it sends over qemu_ir=
-q */
- #define CRIS_CPU_IRQ 0
- #define CRIS_CPU_NMI 1
+     dev =3D qdev_create((BusState *) smbus, TYPE_SMBUS_EEPROM);
+     qdev_prop_set_uint8(dev, "address", address);
+-    qdev_prop_set_ptr(dev, "data", eeprom_buf);
++    SMBUS_EEPROM(dev)->init_data =3D eeprom_buf;
+     qdev_init_nofail(dev);
+ }
 =20
 --=20
 2.23.0.606.g08da6496b6

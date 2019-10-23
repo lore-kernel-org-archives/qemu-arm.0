@@ -1,119 +1,115 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1277254wrq;
-        Wed, 23 Oct 2019 11:57:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyGraZicUfPYvvwNjpVgkT4n+E7i3PhnmDJYrGZoWIsjS+DrpGDS2fUsX/0GBkKVr19zofz
-X-Received: by 2002:a37:684c:: with SMTP id d73mr10140721qkc.176.1571857067633;
-        Wed, 23 Oct 2019 11:57:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571857067; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1287155wrq;
+        Wed, 23 Oct 2019 12:05:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzIeE9CKb8lOTe1XAdq/iExbU/umPKnrjCUbNv6FKgUg7gT0M0Gq0oMI/AZi1Ia80pDYG6g
+X-Received: by 2002:a17:906:15da:: with SMTP id l26mr14072710ejd.326.1571857529205;
+        Wed, 23 Oct 2019 12:05:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571857529; cv=none;
         d=google.com; s=arc-20160816;
-        b=IubWjgDi4WTSw9D/S6c+IsR/mNtMVE9kuyFlneX2f+xcf+pCjLSCHbmKcj9VakWCnN
-         W95/YulgnbibvOhhg8vrrVXUoVV2k1VAClOUikg7da85LoAJ6X1ZEsATdxD0D0kiziwD
-         aoDd/SR1yo+aMXaUHGuyMqb0UBA0ivzDAfHaNUNLKEeR5cURwgZfg/YXgnChNVtQfcnZ
-         ucEWb6CGynZijd1R090bXWR/Lt6EpdSdBIH9YNGZxbNNvhr6P0wgDjv37NHqFnVQYj5m
-         8Bh5POLokdCoTA51/ihYvZlr/nfPtJSEoEcSGwNa801vUW9ZYNJkx1BCwQKyD8sBUsNN
-         ySDQ==
+        b=XhvOVVMxCHkyS75mMxzL83t+syKzr2FeEQRmnatUGf2FuFfRz8oviArH+QwWPUj6KU
+         3dcO28CotangtwKPQH7uiVMnn51pADMmZcwxOaoR18ynemR0aZi481S2NtcGkUcet+D4
+         InzSKk/VHdyG7vpSp2Iyv4fThEZYVtAseFNa/IlveQq6lAenNvAIOIn30gqYkdR7hLTd
+         AB3mI2b8h2X36jSDfwSkcmBccHeTG8dESLA9xkNkL+cJOECU5S7Oc8g6uoMq+gaamIAA
+         R6qAsEqHZrl7VELUuyMvWCVjXDmYbpSauMetPQA0w43/e8753Oo7fdjViFyb36zMZZa8
+         pIcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=UfiNxxYjH3sYEO1mfbxHgayQzvy7QgMJpTON/ahYwLE=;
-        b=b0G8TZJrr8n7LjSaQqgif+wfzId9HDZOIzpibA7BjQDRwRcmkd3umEpuJOJjStXzSE
-         wE3+kvxu6RoamPJN3m96SwG1fbB1CCwbgtrTkIlZ+wSBugX9WPxeWipFBETCCN/54gpJ
-         17QmCaeih/HcW0/OELlT5DeQ68NnxrgPRTplpomr3OHX1NnH6dho61YJB6mOvQb1qr2T
-         iA3gOBZC5r6RqeTgk3wXQX8SSLko9bM2k9qcKLuyMBMcyvVdl/dtNjlSRoZsAkn5/xqz
-         75e52gSr53qTtW2rb7FXYXBNMFqROkeB4P/rcHfyqLgXWHK4U7KVZzH/0pMbqT/mVfsc
-         qUFg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=pmXQHe+rWCvel74Q+ujxEdZVMUQNzVj52uZOOpW0iGg=;
+        b=hsmhcRcfi+WI+xuBUB2pVy1Ncz4Hbhk43s/eW62PFvR9o1c8ex+dCmfD5mcTfH11JY
+         2fFfX6VxboJHEtYhE63/EzEPsJMzlJMpwTkygq1qmZG1Y/p6p8e6h5gYzv+Ek4tAyJa/
+         YHXZ1DLfJpDUkRrwJHb+hlAuelHPA4QMzwPhPZ81HqYVOcnyE6jp60a/d6ZTSnvE3/xC
+         cAWDvXkrk9g9tJ94YSqWmM/PhZyK0BC7XosFUWT1kJJ6OVL1BLWL3UBfIA5juOIU2c3q
+         i60moqQ8+qQ7pyqx8Av0rG92Yg8nspXmN9HOWRbLr2GPBGFmSjJwBHyQDIN+9FByxNLP
+         Vlhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Kp5cFQ+8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ev2MUb0p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h74si2890258qke.305.2019.10.23.11.57.47
+        by mx.google.com with ESMTPS id h56si2974537edh.363.2019.10.23.12.05.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 11:57:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Oct 2019 12:05:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Kp5cFQ+8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ev2MUb0p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44068 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44396 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNLpK-0006Z0-Ug
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 14:57:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60265)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNLwl-0003qi-FG
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 15:05:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60940)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKYK-0006W7-23
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:36:09 -0400
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKbV-0001bv-Vn
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:39:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iNKYE-0002yz-3w
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:36:05 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:46701
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKbT-0005gx-Pe
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:39:25 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:39421
  helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iNKY8-0002wm-D6
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 13:35:58 -0400
+ by eggs.gnu.org with esmtp (Exim 4.71)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKbR-0005fj-TY
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:39:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571852153;
+ s=mimecast20190719; t=1571851934;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UfiNxxYjH3sYEO1mfbxHgayQzvy7QgMJpTON/ahYwLE=;
- b=Kp5cFQ+8UdaWQFq4Hark5xFVRSuvIaEGfU35C8XBs28O+xrrYSvdKk0UMKMFju7RznBNeK
- zr/zjaXrk9LHQK6MP4D7tmhSWr8D6YMM63+FkkLLrQrZ8JNkf8fue9clYrrSOIW6HUlc8m
- OE8tIaXP3py9emBaQ3FkpogTKDq+F3Q=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=pmXQHe+rWCvel74Q+ujxEdZVMUQNzVj52uZOOpW0iGg=;
+ b=Ev2MUb0p9Rd6og7FkRwzTSOgaHT4l2qk8duXq2I5FLR1mmgbc+1CcSx12gnRzsTceWcW6i
+ t1UBzuedOFdRfSA1yTrEx+PDNDDOuOGzu65GIdKwadaqIQftPQRxOQb9dB2Wou/NGCrq9u
+ aYZfxAuNDTQZBfcg0SbvYC5LhDf68Zw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-274-CBcB3M0VN4G3EIEOra0ZtQ-1; Wed, 23 Oct 2019 13:35:50 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-103-OwsQ3D6iPUq19Zj2ib_NBA-1; Wed, 23 Oct 2019 13:32:10 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E200F1800E01;
- Wed, 23 Oct 2019 17:35:47 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2FDA3100550E;
+ Wed, 23 Oct 2019 17:32:04 +0000 (UTC)
 Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 47FD2196B2;
- Wed, 23 Oct 2019 17:35:42 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6433C5C1D4;
+ Wed, 23 Oct 2019 17:31:55 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 33/33] qdev: remove QDEV_PROP_PTR
-Date: Wed, 23 Oct 2019 19:31:54 +0200
-Message-Id: <20191023173154.30051-34-marcandre.lureau@redhat.com>
-In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
-References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 00/33] Clean-ups: qom-ify serial and remove QDEV_PROP_PTR
+Date: Wed, 23 Oct 2019 19:31:21 +0200
+Message-Id: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: CBcB3M0VN4G3EIEOra0ZtQ-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: OwsQ3D6iPUq19Zj2ib_NBA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Corey Minyard <cminyard@mvista.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
  Magnus Damm <magnus.damm@gmail.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
@@ -121,105 +117,125 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R/1YfD2lb4oc
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TK4e49uncdkM
 
-No longer used in the tree. The comment about user_creatable is still
-quite relevant, but there is already a similar comment in qdev-core.h.
+Hi,
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
----
- hw/core/qdev-properties.c    | 18 ------------------
- include/hw/qdev-properties.h | 22 ----------------------
- 2 files changed, 40 deletions(-)
+QDEV_PROP_PTR is marked in multiple places as "FIXME/TODO/remove
+me". In most cases, it can be easily replaced with QDEV_PROP_LINK when
+the pointer points to an Object.
 
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index be4cb01f0b..6271169d7d 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -469,13 +469,6 @@ const PropertyInfo qdev_prop_string =3D {
-     .set   =3D set_string,
- };
-=20
--/* --- pointer --- */
--
--/* Not a proper property, just for dirty hacks.  TODO Remove it!  */
--const PropertyInfo qdev_prop_ptr =3D {
--    .name  =3D "ptr",
--};
--
- /* --- mac address --- */
-=20
- /*
-@@ -1133,17 +1126,6 @@ void qdev_prop_set_enum(DeviceState *dev, const char=
- *name, int value)
-                             name, &error_abort);
- }
-=20
--void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value)
--{
--    Property *prop;
--    void **ptr;
--
--    prop =3D qdev_prop_find(dev, name);
--    assert(prop && prop->info =3D=3D &qdev_prop_ptr);
--    ptr =3D qdev_get_prop_ptr(dev, prop);
--    *ptr =3D value;
--}
--
- static GPtrArray *global_props(void)
- {
-     static GPtrArray *gp;
-diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-index 5bba033b7b..a708c3870b 100644
---- a/include/hw/qdev-properties.h
-+++ b/include/hw/qdev-properties.h
-@@ -17,7 +17,6 @@ extern const PropertyInfo qdev_prop_size;
- extern const PropertyInfo qdev_prop_string;
- extern const PropertyInfo qdev_prop_chr;
- extern const PropertyInfo qdev_prop_tpm;
--extern const PropertyInfo qdev_prop_ptr;
- extern const PropertyInfo qdev_prop_macaddr;
- extern const PropertyInfo qdev_prop_on_off_auto;
- extern const PropertyInfo qdev_prop_losttickpolicy;
-@@ -168,25 +167,6 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
- #define DEFINE_PROP_PCI_DEVFN(_n, _s, _f, _d)                   \
-     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_pci_devfn, int32_t)
-=20
--/*
-- * Please avoid pointer properties.  If you must use them, you must
-- * cover them in their device's class init function as follows:
-- *
-- * - If the property must be set, the device cannot be used with
-- *   device_add, so add code like this:
-- *   |* Reason: pointer property "NAME-OF-YOUR-PROP" *|
-- *   DeviceClass *dc =3D DEVICE_CLASS(class);
-- *   dc->user_creatable =3D false;
-- *
-- * - If the property may safely remain null, document it like this:
-- *   |*
-- *    * Note: pointer property "interrupt_vector" may remain null, thus
-- *    * no need for dc->user_creatable =3D false;
-- *    *|
-- */
--#define DEFINE_PROP_PTR(_n, _s, _f)             \
--    DEFINE_PROP(_n, _s, _f, qdev_prop_ptr, void*)
--
- #define DEFINE_PROP_CHR(_n, _s, _f)             \
-     DEFINE_PROP(_n, _s, _f, qdev_prop_chr, CharBackend)
- #define DEFINE_PROP_STRING(_n, _s, _f)             \
-@@ -259,8 +239,6 @@ void qdev_prop_set_drive(DeviceState *dev, const char *=
-name,
- void qdev_prop_set_macaddr(DeviceState *dev, const char *name,
-                            const uint8_t *value);
- void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
--/* FIXME: Remove opaque pointer properties.  */
--void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value);
-=20
- void qdev_prop_register_global(GlobalProperty *prop);
- int qdev_prop_check_globals(void);
+There are a few places where such substitution isn't possible. For
+those places, it seems reasonable to use a specific setter method
+instead, and keep the user_creatable =3D false. In other places,
+proper usage of qemu_irq is the solution.
+
+The serial code wasn't converted to qdev, which makes it a bit more
+archaic to deal with. Let's convert it first, so we can more easily
+embed it from other devices, and re-export some properties.
+
+v3:
+ - introduce SerialMM and SerialIO sysbus devices
+ - remove serial_mm_connect introduced in v2
+ - replace "base" property introduced in v2, use "instance-id" for
+   vmstate purpose only
+ - add a few preliminary clean-ups
+
+v2:
+ - qom-ify serial
+ - embed the serial from sm501, and expose a "chardev" property
+ - add "leon3: use qemu_irq framework instead of callback as property"
+ - add "sparc: move PIL irq handling to cpu.c"
+ - add "cris: improve passing PIC interrupt vector to the CPU"
+ - misc comment/todo changes, add r-b tags
+
+Marc-Andr=C3=A9 Lureau (33):
+  qdev: remove unused qdev_prop_int64
+  sysbus: remove unused sysbus_try_create*
+  sysbus: remove outdated comment
+  chardev: generate an internal id when none given
+  serial-pci-multi: factor out multi_serial_get_nr_ports
+  serial: initial qom-ification
+  serial: register vmsd with DeviceClass
+  serial: add "chardev" property
+  serial: add "baudbase" property
+  serial: add "instance-id" property
+  serial: realize the serial device
+  serial: replace serial_exit_core() with unrealize
+  serial: start making SerialMM a sysbus device
+  serial-mm: add "regshift" property
+  serial-mm: add endianness property
+  serial-mm: use sysbus facilities
+  serial: make SerialIO a sysbus device
+  mips: inline serial_init
+  sm501: make SerialMM a child, export chardev property
+  vmmouse: replace PROP_PTR with PROP_LINK
+  lance: replace PROP_PTR with PROP_LINK
+  etraxfs: remove PROP_PTR usage
+  dp8393x: replace PROP_PTR with PROP_LINK
+  leon3: use qemu_irq framework instead of callback as property
+  sparc: move PIL irq handling to cpu.c
+  RFC: mips/cps: fix setting saar property
+  cris: improve passing PIC interrupt vector to the CPU
+  smbus-eeprom: remove PROP_PTR
+  omap-intc: remove PROP_PTR
+  omap-i2c: remove PROP_PTR
+  omap-gpio: remove PROP_PTR
+  qdev: remove PROP_MEMORY_REGION
+  qdev: remove QDEV_PROP_PTR
+
+ chardev/char.c               |  32 +++++--
+ hw/arm/omap1.c               |   8 +-
+ hw/arm/omap2.c               |  25 +++---
+ hw/char/omap_uart.c          |   2 +-
+ hw/char/serial-isa.c         |  11 ++-
+ hw/char/serial-pci-multi.c   |  45 +++++++---
+ hw/char/serial-pci.c         |  17 +++-
+ hw/char/serial.c             | 164 ++++++++++++++++++++++++++++-------
+ hw/core/qdev-properties.c    |  50 -----------
+ hw/core/sysbus.c             |  32 -------
+ hw/cris/axis_dev88.c         |   4 -
+ hw/display/sm501.c           |  31 +++++--
+ hw/dma/sparc32_dma.c         |   2 +-
+ hw/gpio/omap_gpio.c          |  42 ++++-----
+ hw/i2c/omap_i2c.c            |  19 ++--
+ hw/i2c/smbus_eeprom.c        |  17 ++--
+ hw/i386/pc.c                 |   7 +-
+ hw/i386/vmmouse.c            |   8 +-
+ hw/input/pckbd.c             |   8 +-
+ hw/intc/etraxfs_pic.c        |  26 +-----
+ hw/intc/grlib_irqmp.c        |  35 +-------
+ hw/intc/omap_intc.c          |  17 ++--
+ hw/mips/boston.c             |   2 +-
+ hw/mips/cps.c                |   2 +-
+ hw/mips/mips_jazz.c          |   3 +-
+ hw/mips/mips_malta.c         |   2 +-
+ hw/mips/mips_mipssim.c       |  13 ++-
+ hw/net/dp8393x.c             |   7 +-
+ hw/net/etraxfs_eth.c         |  44 +++++++---
+ hw/net/lance.c               |   5 +-
+ hw/net/pcnet-pci.c           |   2 +-
+ hw/net/pcnet.h               |   2 +-
+ hw/sh4/r2d.c                 |   2 +-
+ hw/sparc/leon3.c             |  38 +-------
+ hw/sparc/trace-events        |   4 -
+ include/hw/arm/omap.h        |  52 +++++++++++
+ include/hw/char/serial.h     |  44 +++++++---
+ include/hw/cris/etraxfs.h    |  20 +----
+ include/hw/input/i8042.h     |   4 +-
+ include/hw/qdev-properties.h |  27 ------
+ include/hw/sysbus.h          |  13 +--
+ include/qemu/id.h            |   1 +
+ target/cris/cpu.c            |   8 ++
+ target/cris/cpu.h            |   1 +
+ target/sparc/cpu.c           |  39 +++++++++
+ target/sparc/cpu.h           |   1 +
+ target/sparc/trace-events    |   4 +
+ util/id.c                    |   1 +
+ 48 files changed, 515 insertions(+), 428 deletions(-)
+
 --=20
 2.23.0.606.g08da6496b6
 

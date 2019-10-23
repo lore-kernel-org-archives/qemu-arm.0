@@ -1,104 +1,156 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1093763wrq;
-        Wed, 23 Oct 2019 09:13:19 -0700 (PDT)
-X-Received: by 2002:a0c:b929:: with SMTP id u41mr9639124qvf.37.1571847199159;
-        Wed, 23 Oct 2019 09:13:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571847199; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp1187421wrq;
+        Wed, 23 Oct 2019 10:33:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz4VUs6zQbdVcE7fmCyHiUyXx40aBIc1Xmtv9yepCUlZDFUzAp0BiVKDflIwbcsbn5QUaMn
+X-Received: by 2002:a17:906:6bcd:: with SMTP id t13mr23000810ejs.231.1571852017898;
+        Wed, 23 Oct 2019 10:33:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571852017; cv=none;
         d=google.com; s=arc-20160816;
-        b=nkfuW2+ouGS95Eds+IDRYhN4lXlaHNAJGl7XEkSLY1qhYWoO7OgObp+t9EcJXeerac
-         yjMrnbBb08sHLI8c32zFUb1EJZuioHA4E1a2g6gRG6rnqQDwKqYsVX6zKTdpeC//d+3u
-         BX0pXdW0rigIlgC5eguTKsmTH6vIvUhojqu40t4DUAx6tVDREDtr/zIZuqBkTYzj/nLf
-         CKDJaA7xSa+Cr3zhPaKl7K1+8xX6xkUK0+aZSROlbFuYnjc18v3Ak0JwEHRB32xGIYEX
-         /FZPQOxRWHF1X9qmrls0q6hNF440v6a3vThVKfkNVsHb16ZCEo/ZS+ydCtWpptu9u3yk
-         kPIQ==
+        b=fA4KH8gnIChPPB4/QfZ4S99QaZ2azBJZWwK2g1giZ46FG506It8I75kPRTbCY12wIP
+         Lj+aYyxucd3ThNA/0j6TgwRbbQ2iQ6jZZQwskl5w00/pjzeq3gR+M+StGm6limcIUKJ6
+         gQpeYSBhEvR/EBLhdGwFG9AjzOX289VhVJlDmvP3W6yhQ/9LKdBwA+Xbja97iImKHCZL
+         DA60E0z4eU3ZSNGODoTGMDLRLK6XsarTHCtTAmP21HvxxJj1nsVqufb4bKeXbVY3cCK6
+         S3BcF0KTK4V0Qu+VPHbQ2kEPjAW1vFFrzaw6lRj7WnBqZXE9cxdH0BqshQHbIsGXGsWO
+         xkyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=nrvAJTS/jezBLWvO+M8F8gQv267wMLuwRBhFnSGEFeM=;
-        b=LXJOK1f+R46h94TjNeImSIA3diH733lfTECHEAW6J4FUh6tUjL3yvFdCmyQ/RNwtIE
-         kAguB27Hvtyf1agnJ4G+X0sosqD9fGFXNJ1JFHTmNJRygX9voHzEJ/cqvNz403OREIoV
-         swHZ3DodaNZxvwmFA5e7bj0Qvy8RX+KbktCYjsg9W0B+Q2JlhP9c+8U2KzxhyIJ+IEwp
-         zmBJip8CsTN84VBZIz3fg1reC7F9rrjsrLnY+L28ojGcL8/L7wTqRCa5s2GANbgoiXHb
-         7H7X6/2QVh4PUS8+w1074kYinZ58JCq7ksyUjPZ81tX4FCdCloXH3VQyIewnse+VZTUU
-         YlcA==
+        bh=6RTteADGfpM4YBMydoONN1yiclwUwAxdyyctis1vQqE=;
+        b=Eeurw66vSUJ1Yd19oT9ZgoStxVVqGtM3XuedeSpiEA/MeRx1nsZ5C0zB4QlNxavTez
+         LBs1Q3kEH5ICnie6n6oURuMvEtZvnPaeQK4ABaXzo6rWfTLvR138lMmSweUqq2HkGzPt
+         f2DoVV3mx9ivQtVsq4y7IaHSEiAS1KE+h5BHDvWbrfAfN3PDXSlaqMBwi13SJNsnrU6F
+         3fBxhzNaK0WL9vvLjmePdDKD+i21NriwuZ8jVxQiBQqS/zUKBO/3GpThzJV5m1HPq5iT
+         JA39Ou1RH/4dMcpqFrv9iCFC7nkv7Jx9q0PUabzEUtICVurx7dde6DATmX9J4rA83bs/
+         sUdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H6kM1rbh;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id a38sor9525292qta.4.2019.10.23.09.13.18
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h+J3ytDX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g3si16418952edj.220.2019.10.23.10.33.37
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 23 Oct 2019 09:13:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 23 Oct 2019 10:33:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H6kM1rbh;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=nrvAJTS/jezBLWvO+M8F8gQv267wMLuwRBhFnSGEFeM=;
-        b=H6kM1rbhivP4l30+902GgNfOQQV06aLx3rfEcQUrn8aEcH0hmVUgMEPS8e9V+pipyg
-         j/3aAddl/1EyoYMEJNfSBwXbuLgPI131z2nFXc8lolP4gHEFKNynJsJCg723iAi+GKPX
-         o+3s5fT9PrJ+hyD6sS5ODt2IFxARWkaqluWGZniURp3tBMhY+HzuxrioSX6BpaOxrWn3
-         T1JDHv26QH0FQg2tGnYvJVP/SEGDYQMC4dOkISUjDRZqy+/0FdiCWvyZzr3h3VcngkZo
-         3kXu5Jq299aUm94grA6mcO/REahpsNudQKhKTdRkE/ThW9LlN1h2PlFqa9jpd2lgWFrk
-         NuZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=nrvAJTS/jezBLWvO+M8F8gQv267wMLuwRBhFnSGEFeM=;
-        b=oEwh7Z9mn3w6EGWN5CiTHno1IrwO9Ss7PFSubUtf16EAgViLGCLKewEIpptZpNcg3n
-         n3/2TfRLKwUOVlFR0vxVTJ4PrFkyAGL0EzwWYVMXM3Jc6t8rMMpFZeZLIH5SPZqg0U8B
-         d2rCpG/GL1LUbdDgc7hXodD9+RRwnD0+Ji8zWSRwFzEkZ7A+SbKTbMtf32WDY5dajUfx
-         HPVcoqem9Yxa4Q533X/kRBeK2Z43mTOEoFM5JS4uJl3Y86RyzMIKN2Xu+Kqq4FkS6kbf
-         CPpczpniqb38uLa6g4qjLZtGq1zrG5vVGnwJHcQy1FP8MNb/b9vHqSqARfHbpEBhzAdb
-         8ArA==
-X-Gm-Message-State: APjAAAXPOtc/l1kzhdp3dTPfPKJ2RF5Iqz+TokUrl8cAzvrMr/og9sI0
-	N+dKt18aODAF8s5DGzzgezNPctgb
-X-Google-Smtp-Source: APXvYqy394SF9xkkWaG3lftyOqPnhFJh4yEDe9NZamGJd+2yUihx/Yt7DUAVisMG1ApRAR7mLgjMwA==
-X-Received: by 2002:ac8:1408:: with SMTP id k8mr9854763qtj.327.1571847198500;
-        Wed, 23 Oct 2019 09:13:18 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [172.20.87.163] (rrcs-172-254-253-50.nyc.biz.rr.com. [172.254.253.50])
-        by smtp.gmail.com with ESMTPSA id c126sm12954799qkd.13.2019.10.23.09.13.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 23 Oct 2019 09:13:17 -0700 (PDT)
-Subject: Re: [PATCH v8 00/22] target/arm: Reduce overhead of
- cpu_get_tb_cpu_state
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-References: <20191018174431.1784-1-richard.henderson@linaro.org>
- <CAFEAcA-MyKoA63UF6DYQ6J-dKihYn9iyG09eFCgWT8j4OqsQnw@mail.gmail.com>
- <CAFEAcA-Xj-6CdVzgfcVONipApD5b5PZ84nPnvbbOQjQkqQLnqA@mail.gmail.com>
- <6e06dede-2470-92e1-eba9-40646ed56af0@linaro.org> <87zhhrmqyh.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <3e366a5d-0de6-ff1d-7a0c-a40ef8a2bf98@linaro.org>
-Date: Wed, 23 Oct 2019 12:13:15 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h+J3ytDX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42644 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNKVs-0003fF-6J
+	for alex.bennee@linaro.org; Wed, 23 Oct 2019 13:33:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58867)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVK-0003ad-MC
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:03 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iNKVI-0001eK-HS
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:02 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:23223
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1iNKVI-0001eA-E9
+ for qemu-arm@nongnu.org; Wed, 23 Oct 2019 13:33:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1571851979;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6RTteADGfpM4YBMydoONN1yiclwUwAxdyyctis1vQqE=;
+ b=h+J3ytDXOmKY0rm+Rg7nuU7prMLfK/NBsBlWX2IxuA5/1XrTFoiNGSJAOEXY+kGYUi2q8O
+ SR4NxaiAPk0N+M/tmezUzQZisSZqFA1KyYs1q+TbcuWv7TewTINTYuP2FyEiFFScM2xcCN
+ DK9qJjdJrw5SiF+70myy4WRUckWVw2k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-204-Dna11Fl4OdaSv9tgO5c6Iw-1; Wed, 23 Oct 2019 13:32:55 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 31F031800E01;
+ Wed, 23 Oct 2019 17:32:53 +0000 (UTC)
+Received: from localhost (ovpn-112-21.ams2.redhat.com [10.36.112.21])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4956D6CE40;
+ Wed, 23 Oct 2019 17:32:41 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 03/33] sysbus: remove outdated comment
+Date: Wed, 23 Oct 2019 19:31:24 +0200
+Message-Id: <20191023173154.30051-4-marcandre.lureau@redhat.com>
+In-Reply-To: <20191023173154.30051-1-marcandre.lureau@redhat.com>
+References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87zhhrmqyh.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: eK8rB6HqRlD6
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: Dna11Fl4OdaSv9tgO5c6Iw-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5I1sSbhn/WfA
 
-On 10/23/19 11:17 AM, Alex Bennée wrote:
->>> Dropping this series again for the moment.
->> Argh!  I had forgotten that we have no testing of armeb in check-tcg.
-> 
-> Does it need it's own toolchain or can it be done with flags?
+The init callback is no more since commit
+817a17fc60f44e29a1944b60d32f45ea127f0cf9 ("core/sysbus: remove the
+SysBusDeviceClass::init path")
 
-I think the compiler only needs flags, so we might be able to gin something up
-for {aarch64_eb,armeb}-linux-user from __start.
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ include/hw/sysbus.h | 4 ----
+ 1 file changed, 4 deletions(-)
 
+diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
+index 2eb0484388..c4a1c0adfa 100644
+--- a/include/hw/sysbus.h
++++ b/include/hw/sysbus.h
+@@ -24,10 +24,6 @@ typedef struct SysBusDevice SysBusDevice;
+=20
+ /**
+  * SysBusDeviceClass:
+- * @init: Callback function invoked when the #DeviceState.realized propert=
+y
+- * is changed to %true. Deprecated, new types inheriting directly from
+- * TYPE_SYS_BUS_DEVICE should use #DeviceClass.realize instead, new leaf
+- * types should consult their respective parent type.
+  *
+  * SysBusDeviceClass is not overriding #DeviceClass.realize, so derived
+  * classes overriding it are not required to invoke its implementation.
+--=20
+2.23.0.606.g08da6496b6
 
-r~

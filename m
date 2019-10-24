@@ -1,100 +1,100 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2049991wrq;
-        Thu, 24 Oct 2019 01:54:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwIYTmlsp3SpoCBE+i9n9fPvcm6O3P4VYnoibXUoL3LjWh+0oX9DwhJBgbATBkl9s2Aoszf
-X-Received: by 2002:a05:620a:1659:: with SMTP id c25mr172273qko.297.1571907297527;
-        Thu, 24 Oct 2019 01:54:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571907297; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2131993wrq;
+        Thu, 24 Oct 2019 03:15:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx1CBmuH0DW5LHVxxF0QRJBA/8OW541EU1fAmZRyD4Tsh+2UVVdfj1DZi0W5FeQPU2/cysx
+X-Received: by 2002:a17:906:5ac3:: with SMTP id x3mr25170240ejs.145.1571912157232;
+        Thu, 24 Oct 2019 03:15:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571912157; cv=none;
         d=google.com; s=arc-20160816;
-        b=GeZh2I7ZNyOQVskXVgJ4fjAlkZXW+0ynLLeFtRgATWRu9lrENj/2qWsjW+mo8wqrEa
-         t4C0d/geQWP+Mzl3M8CBL/H3C9TOnnu5smpmCaPFmYgKCUTM6rgOnf3B/GbOp+0zSJ1V
-         jIfs5IpOjqDh3dnzCYFRHXMmg+UAZdbc+Y8AHr39l6bddjN6GCXavTQSBCTfZz9/nj08
-         uTjae3M6/nG48VrgpARcjNgWVRti9T6kRukvYx+yq5QX99OzAXsQX7YfBpV22+Uu1SCH
-         kSBhEzRxCmD863pqIAuL4Vojim6psU+vn8jkJv1XTbWVH/rjtWfd8Fjmn2eJwD+RymQ0
-         9Tag==
+        b=r6dQO9KAcaTB/tb2exxaMowdFIxXz6VgF7GyFuFQPqeZmyTF11QXoL7LCWHd5lvwQG
+         jODxVoa3LnuC5jQFX520x0UAf3WVaON0JN1Q4oX5HK9drGej6RpdqscuTIWr8CAZunGo
+         L4fqH2Usmcv9fzXg4yDsdEGs1c6OPG+b7ZMztTuinaKt3aFt1D+2OxAyQLMUCCOu/Mnb
+         hi+6fEx3ChmFAOZRpXwduIqyfTmrb++KUPO0NPM5OyHuZ8Ac1IaXZf1e/BG4z2A7JSsO
+         T/uE++HZYld4izrQKb3OuSOjGXtLcq2sy9QNwk9cHqR9lvG9aMJJVqwLy4FjX/+cJ1vh
+         Ba3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=EjHSgh2TbyrYHlVMIgQ6SppN8Xp/3S6Ywx5We+kui3w=;
-        b=lu7BulYKqujOToShTqnHLstdif9fTKa6lO6NgtGB6XAm2tFdczFONavpRiOptj02rx
-         SV58bZWvCoiRGTTAYMH/8AbF0SYf8+7bEebbrayMXyJi07uIM1lgRm5ZNzuZ06DfBBe/
-         RPFaABI6fnfH/Njs4qPju7N7Bua6Rig4lPkVW0eCPeB7ZSY3nj/zMXNwo+qxAgYexx5T
-         7sa/u6iakuxufk9Fy2M7OTi4kJ/GzF7cS8rIOkgM3CCv8TH5+KXyKrUc+5+cPURK/sOv
-         x8sci699dswdzFTjt2K7mPcmsLLyQn5zqYyX2UMn4qj7r6ZzCaIgbecJ3zP2MDrygXpa
-         Ug3w==
+         :subject:message-id:date:from:in-reply-to:references:mime-version;
+        bh=FJB5eNMUoMSyJPvrt8Sm0IHAjPcwYY2MdO0zgEnLntk=;
+        b=E8uVtd70ClNV8+VsdOu90QRH7vHGHbvGEfGJv1QTkonOuHwcMDwpeucw3xyX3QA9yp
+         uj+RtSCsumOQ0DLt3BlR8QWg0cLl4L8H2xm+e8bjodMcA7fjwY1lxxRT4t/uMWmxz1pF
+         sCZQ/UNzv64ie/cXnmJ8WnjWuEvZK6MePd5U6Ed32IJ/PoSrFODc/RTjoJxgncsb+pPw
+         rBRlHhbJolCKDLO3V7D2YWJR96gbClryKz2xc7vbNnZCXt6gekLlm0tUwnmcuwdbr59E
+         HXGGyNKVsc8EA17zI2/A5vjDW+l7+iilaYv7NeiKSJp2QXGkT0k0iMJBCxglLnkWSfVr
+         fMVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fopC4DtQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e62si5331782qtd.192.2019.10.24.01.54.57
+        by mx.google.com with ESMTPS id rh23si13796462ejb.75.2019.10.24.03.15.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 01:54:57 -0700 (PDT)
+        Thu, 24 Oct 2019 03:15:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fopC4DtQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35452 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNYtU-00029G-Oh
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 04:54:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40981)
+	id 1iNa9s-0008Lu-42
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 06:15:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50647)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@gmail.com>) id 1iNYnK-000673-EM
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 04:48:36 -0400
+ (envelope-from <mlureau@redhat.com>) id 1iNZuS-0004tj-Dn
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 06:00:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@gmail.com>) id 1iNYnI-0005cG-Sb
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 04:48:34 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:39371)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
- id 1iNYnI-0005bu-Ii; Thu, 24 Oct 2019 04:48:32 -0400
-Received: by mail-wm1-x343.google.com with SMTP id r141so1703180wme.4;
- Thu, 24 Oct 2019 01:48:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=EjHSgh2TbyrYHlVMIgQ6SppN8Xp/3S6Ywx5We+kui3w=;
- b=fopC4DtQs5Zp4wG3qMNsySNSkEssjB9CVzEmNzAFM2NF8GUiK/4eGRIC8/K4pLbsNe
- KAy7P3WjywE0sm+EsHPLTfgvyadqQPYHyeN8AFp5vIOUxF37bVU4jQhbKoj6wZc8Vrex
- Cr6H46k9i0XBF+jOuwozexhba3NGAF96OTJrRMMO7qdTc8QsfD0T2FGA2IntnzRs+4wr
- G89aLjA2NqOfs9187FMsKhfEVIsZOyAd8IPwLPECA37AbHA915+0AsN8MEqnGlxG2C86
- 4lgC18Xqv/9nNVTHDiw7rpEpFIi16RHO4iIIZrGE8Nx8fWCkOAGukaH4nsY0HWTL7gsc
- XnNA==
+ (envelope-from <mlureau@redhat.com>) id 1iNZuR-0001oS-6m
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 06:00:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35320)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1iNZuQ-0001mM-Tn
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 05:59:59 -0400
+Received: from mail-ot1-f71.google.com (mail-ot1-f71.google.com
+ [209.85.210.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 2B7ED4E4E6
+ for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 09:59:57 +0000 (UTC)
+Received: by mail-ot1-f71.google.com with SMTP id r5so12927209otn.22
+ for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 02:59:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=EjHSgh2TbyrYHlVMIgQ6SppN8Xp/3S6Ywx5We+kui3w=;
- b=kCDtbz5AOWX9I9KtypAZL5eVeHVLPGicmT7w/HqdyR23vMDGr9YD/MjfSuBVE7H+Xm
- xCnkFoRYevWvNJiD2WF+++9fDj/F9x/CR/eiYWHr2ccNDZzBaVspAj7NDznnjoiYEwao
- Y3M+7bDN6YxXVZUZuEV2TWuYnVxn2B52PzzNUoBsW4XTv+ycvSqlzCTF70vU/RjQWpRG
- +vp2dIIC8UGsn30pabLy4rkgk2O+qF0RlGVt/CBytjIFSHAMSLPByRTFgS/76ccVxT6Z
- nwv/+N+msM2+AmpOqdVN8uJEuTbHFOTOu8Gel+nkZFpkFSbTFP1+tpya0xR6+vn//u7U
- cs+w==
-X-Gm-Message-State: APjAAAV9Xegygfaiv3/3mWA68XKvpEYrAj1x7ASDjcT1LUMCkDIwKVD2
- oCalEEjtbbiI3UJ1mq02XLOSXepdxRid6YKAVyBy6GBx
-X-Received: by 2002:a7b:cd04:: with SMTP id f4mr3756595wmj.91.1571906909646;
- Thu, 24 Oct 2019 01:48:29 -0700 (PDT)
+ bh=FJB5eNMUoMSyJPvrt8Sm0IHAjPcwYY2MdO0zgEnLntk=;
+ b=oaCxQFGphzVKmEq5nOIPMCoFdNwZfdauTZXo1MMPecAN+DkJwbmNsZW7cNS/PCyNER
+ MXLT43coDJchH8pirGmTq54W38PwdPaWZ+IDSAMyR8or7Irq9RUVN2543xPAdfZ5TEUh
+ lusgkDr1QU94SSqc9MEzan0w1617Fj3/G4uDovVv7B5I3pZ6mKFhtE/VotLkHVM+pLL7
+ ylURIu+Jbf7QJAgGAg4RrTI210uH4h/9ctiHIWI5DSEAZwqGN5wrjAjfAPhhm6elceK6
+ G5SjsKwH/ZyIr0a6fVr/cFungVRG3O8kd/9SF+cTBrMYMmuvJRg04epGboQD5uxDiKPo
+ Ke5Q==
+X-Gm-Message-State: APjAAAU4UhorbNIm2Y+EYITDjIykfkCidZHp20GjYPxl1Ep9EgRIkfN0
+ D02wOK+F/OhjpzkF99GCzRUmfOZY9mI44U8cMQpYGUmidNGIqYC1jjz/MvvnqbMuPTsRBwxSpD6
+ B6HRlIZsjicz43XbQZRvcmQhkUO8zkRY=
+X-Received: by 2002:a05:6830:1617:: with SMTP id
+ g23mr10496113otr.368.1571911196650; 
+ Thu, 24 Oct 2019 02:59:56 -0700 (PDT)
+X-Received: by 2002:a05:6830:1617:: with SMTP id
+ g23mr10496094otr.368.1571911196347; 
+ Thu, 24 Oct 2019 02:59:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-7-marcandre.lureau@redhat.com>
-In-Reply-To: <20191023173154.30051-7-marcandre.lureau@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Thu, 24 Oct 2019 10:48:17 +0200
-Message-ID: <CAJ+F1C+N-fJXTPHREK_-gFAwUnaVECvWgsEzzJsAbG5LedZOjQ@mail.gmail.com>
-Subject: Re: [PATCH v3 06/33] serial: initial qom-ification
-To: QEMU <qemu-devel@nongnu.org>
+ <20191023173154.30051-6-marcandre.lureau@redhat.com>
+ <6918ee75-31e8-7816-b196-5654cda451e0@redhat.com>
+In-Reply-To: <6918ee75-31e8-7816-b196-5654cda451e0@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Thu, 24 Oct 2019 11:59:45 +0200
+Message-ID: <CAMxuvaxoaFTpoDb8NT7D68697td4Wck5wkJYx9zufFu38RBE8w@mail.gmail.com>
+Subject: Re: [PATCH v3 05/33] serial-pci-multi: factor out
+ multi_serial_get_nr_ports
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::343
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,261 +106,88 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Magnus Damm <magnus.damm@gmail.com>,
+Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Jason Wang <jasowang@redhat.com>,
- "open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Fabien Chouteau <chouteau@adacore.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
+ qemu-devel <qemu-devel@nongnu.org>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
- "open list:ARM" <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paul Burton <pburton@wavecomp.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Richard Henderson <rth@twiddle.net>
+ Paul Burton <pburton@wavecomp.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ohfZRrEWAwZW
+X-TUID: /RginwRMaBZT
 
-On Wed, Oct 23, 2019 at 9:06 PM Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@redhat.com> wrote:
+On Thu, Oct 24, 2019 at 12:41 AM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
 >
-> Make SerialState a device (the following patches will introduce IO/MM
-> sysbus serial devices)
+> On 10/23/19 7:31 PM, Marc-Andr=C3=A9 Lureau wrote:
+> > Reused in following patch.
+> >
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > ---
+> >   hw/char/serial-pci-multi.c | 26 ++++++++++++++------------
+> >   1 file changed, 14 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
+> > index 5f13b5663b..6fa1cc6225 100644
+> > --- a/hw/char/serial-pci-multi.c
+> > +++ b/hw/char/serial-pci-multi.c
+> > @@ -77,24 +77,26 @@ static void multi_serial_irq_mux(void *opaque, int =
+n, int level)
+> >       pci_set_irq(&pci->dev, pending);
+> >   }
+> >
+> > +static int multi_serial_get_nr_ports(PCIDeviceClass *pc)
 >
-> None of the serial_{,mm}_init() callers actually free the returned
-> value (even if they did, it would be quite harmless), so we can change
-> the object allocation at will.
+> static size_t multi_serial_get_port_count()?
 >
-> However, the devices that embed SerialState must now have their field
-> QOM-initialized manually (isa, pci, pci-multi).
->
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  hw/char/serial-isa.c       |  9 +++++++++
->  hw/char/serial-pci-multi.c | 15 +++++++++++++++
->  hw/char/serial-pci.c       | 13 ++++++++++++-
->  hw/char/serial.c           | 25 +++++++++++++++++++------
->  include/hw/char/serial.h   |  7 ++++++-
->  5 files changed, 61 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/char/serial-isa.c b/hw/char/serial-isa.c
-> index 9e31c51bb6..9a5928b3ee 100644
-> --- a/hw/char/serial-isa.c
-> +++ b/hw/char/serial-isa.c
-> @@ -111,10 +111,19 @@ static void serial_isa_class_initfn(ObjectClass *kl=
-ass, void *data)
->      set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
->  }
->
-> +static void serial_isa_initfn(Object *o)
-> +{
-> +    ISASerialState *self =3D ISA_SERIAL(o);
-> +
-> +    object_initialize_child(o, "serial", &self->state, sizeof(self->stat=
-e),
-> +                            TYPE_SERIAL, &error_abort, NULL);
-> +}
-> +
->  static const TypeInfo serial_isa_info =3D {
->      .name          =3D TYPE_ISA_SERIAL,
->      .parent        =3D TYPE_ISA_DEVICE,
->      .instance_size =3D sizeof(ISASerialState),
-> +    .instance_init =3D serial_isa_initfn,
->      .class_init    =3D serial_isa_class_initfn,
->  };
->
-> diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
-> index 6fa1cc6225..3485bdad87 100644
-> --- a/hw/char/serial-pci-multi.c
-> +++ b/hw/char/serial-pci-multi.c
-> @@ -182,10 +182,24 @@ static void multi_4x_serial_pci_class_initfn(Object=
-Class *klass, void *data)
->      set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
->  }
->
-> +static void multi_serial_init(Object *o)
-> +{
-> +    PCIDevice *dev =3D PCI_DEVICE(o);
-> +    PCIMultiSerialState *self =3D DO_UPCAST(PCIMultiSerialState, dev, de=
-v);
-> +    int i, nr_ports =3D multi_serial_get_nr_ports(PCI_DEVICE_GET_CLASS(d=
-ev));
-> +
-> +    for (i =3D 0; i < nr_ports; i++) {
-> +        object_initialize_child(o, "serial[*]", &self->state[i],
-> +                                sizeof(self->state[i]),
-> +                                TYPE_SERIAL, &error_abort, NULL);
-> +    }
-> +}
-> +
->  static const TypeInfo multi_2x_serial_pci_info =3D {
->      .name          =3D "pci-serial-2x",
->      .parent        =3D TYPE_PCI_DEVICE,
->      .instance_size =3D sizeof(PCIMultiSerialState),
-> +    .instance_init =3D multi_serial_init,
->      .class_init    =3D multi_2x_serial_pci_class_initfn,
->      .interfaces =3D (InterfaceInfo[]) {
->          { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-> @@ -197,6 +211,7 @@ static const TypeInfo multi_4x_serial_pci_info =3D {
->      .name          =3D "pci-serial-4x",
->      .parent        =3D TYPE_PCI_DEVICE,
->      .instance_size =3D sizeof(PCIMultiSerialState),
-> +    .instance_init =3D multi_serial_init,
->      .class_init    =3D multi_4x_serial_pci_class_initfn,
->      .interfaces =3D (InterfaceInfo[]) {
->          { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-> diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
-> index cb9b76e22b..a33264a1fb 100644
-> --- a/hw/char/serial-pci.c
-> +++ b/hw/char/serial-pci.c
-> @@ -40,6 +40,8 @@ typedef struct PCISerialState {
->      uint8_t prog_if;
->  } PCISerialState;
->
-> +#define TYPE_PCI_SERIAL "pci-serial"
-> +#define PCI_SERIAL(s) OBJECT_CHECK(PCISerialState, (s), TYPE_PCI_SERIAL)
->
->  static void serial_pci_realize(PCIDevice *dev, Error **errp)
->  {
-> @@ -103,10 +105,19 @@ static void serial_pci_class_initfn(ObjectClass *kl=
-ass, void *data)
->      set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
->  }
->
-> +static void serial_pci_init(Object *o)
-> +{
-> +    PCISerialState *self =3D PCI_SERIAL(o);
-> +
-> +    object_initialize_child(o, "serial", &self->state, sizeof(self->stat=
-e),
-> +                            TYPE_SERIAL, &error_abort, NULL);
-> +}
-> +
->  static const TypeInfo serial_pci_info =3D {
-> -    .name          =3D "pci-serial",
-> +    .name          =3D TYPE_PCI_SERIAL,
->      .parent        =3D TYPE_PCI_DEVICE,
->      .instance_size =3D sizeof(PCISerialState),
-> +    .instance_init =3D serial_pci_init,
->      .class_init    =3D serial_pci_class_initfn,
->      .interfaces =3D (InterfaceInfo[]) {
->          { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-> diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index b4aa250950..c839035fdd 100644
-> --- a/hw/char/serial.c
-> +++ b/hw/char/serial.c
-> @@ -983,9 +983,8 @@ const MemoryRegionOps serial_io_ops =3D {
->  SerialState *serial_init(int base, qemu_irq irq, int baudbase,
->                           Chardev *chr, MemoryRegion *system_io)
->  {
-> -    SerialState *s;
-> -
-> -    s =3D g_malloc0(sizeof(SerialState));
-> +    DeviceState *dev =3D DEVICE(object_new(TYPE_SERIAL));
-> +    SerialState *s =3D SERIAL(dev);
->
->      s->irq =3D irq;
->      s->baudbase =3D baudbase;
-> @@ -993,6 +992,7 @@ SerialState *serial_init(int base, qemu_irq irq, int =
-baudbase,
->      serial_realize_core(s, &error_fatal);
->
->      vmstate_register(NULL, base, &vmstate_serial, s);
-> +    qdev_init_nofail(dev);
->
->      memory_region_init_io(&s->io, NULL, &serial_io_ops, s, "serial", 8);
->      memory_region_add_subregion(system_io, base, &s->io);
-> @@ -1000,6 +1000,12 @@ SerialState *serial_init(int base, qemu_irq irq, i=
-nt baudbase,
->      return s;
->  }
->
-> +static const TypeInfo serial_info =3D {
-> +    .name =3D TYPE_SERIAL,
-> +    .parent =3D TYPE_DEVICE,
-> +    .instance_size =3D sizeof(SerialState),
-> +};
-> +
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-I added a class_init to set user_creatable=3Dfalse: the base device is
-useless when created from command line.
+works for me, thanks
 
->  /* Memory mapped interface */
->  static uint64_t serial_mm_read(void *opaque, hwaddr addr,
->                                 unsigned size)
-> @@ -1045,9 +1051,8 @@ SerialState *serial_mm_init(MemoryRegion *address_s=
-pace,
->                              qemu_irq irq, int baudbase,
->                              Chardev *chr, enum device_endian end)
->  {
-> -    SerialState *s;
-> -
-> -    s =3D g_malloc0(sizeof(SerialState));
-> +    DeviceState *dev =3D DEVICE(object_new(TYPE_SERIAL));
-> +    SerialState *s =3D SERIAL(dev);
 >
->      s->it_shift =3D it_shift;
->      s->irq =3D irq;
-> @@ -1056,9 +1061,17 @@ SerialState *serial_mm_init(MemoryRegion *address_=
-space,
->
->      serial_realize_core(s, &error_fatal);
->      vmstate_register(NULL, base, &vmstate_serial, s);
-> +    qdev_init_nofail(dev);
->
->      memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], s,
->                            "serial", 8 << it_shift);
->      memory_region_add_subregion(address_space, base, &s->io);
->      return s;
->  }
-> +
-> +static void serial_register_types(void)
-> +{
-> +    type_register_static(&serial_info);
-> +}
-> +
-> +type_init(serial_register_types)
-> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-> index 8be3d8a4f9..180cc7c24e 100644
-> --- a/include/hw/char/serial.h
-> +++ b/include/hw/char/serial.h
-> @@ -30,10 +30,13 @@
->  #include "exec/memory.h"
->  #include "qemu/fifo8.h"
->  #include "chardev/char.h"
-> +#include "hw/sysbus.h"
->
->  #define UART_FIFO_LENGTH    16      /* 16550A Fifo Length */
->
->  typedef struct SerialState {
-> +    DeviceState parent;
-> +
->      uint16_t divider;
->      uint8_t rbr; /* receive register */
->      uint8_t thr; /* transmit holding register */
-> @@ -84,7 +87,9 @@ void serial_realize_core(SerialState *s, Error **errp);
->  void serial_exit_core(SerialState *s);
->  void serial_set_frequency(SerialState *s, uint32_t frequency);
->
-> -/* legacy pre qom */
-> +#define TYPE_SERIAL "serial"
-> +#define SERIAL(s) OBJECT_CHECK(SerialState, (s), TYPE_SERIAL)
-> +
->  SerialState *serial_init(int base, qemu_irq irq, int baudbase,
->                           Chardev *chr, MemoryRegion *system_io);
->  SerialState *serial_mm_init(MemoryRegion *address_space,
-> --
-> 2.23.0.606.g08da6496b6
->
->
-
-
---=20
-Marc-Andr=C3=A9 Lureau
+> > +{
+> > +    switch (pc->device_id) {
+> > +    case 0x0003:
+> > +        return 2;
+> > +    case 0x0004:
+> > +        return 4;
+> > +    }
+> > +
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +
+> >   static void multi_serial_pci_realize(PCIDevice *dev, Error **errp)
+> >   {
+> >       PCIDeviceClass *pc =3D PCI_DEVICE_GET_CLASS(dev);
+> >       PCIMultiSerialState *pci =3D DO_UPCAST(PCIMultiSerialState, dev, =
+dev);
+> >       SerialState *s;
+> >       Error *err =3D NULL;
+> > -    int i, nr_ports =3D 0;
+> > -
+> > -    switch (pc->device_id) {
+> > -    case 0x0003:
+> > -        nr_ports =3D 2;
+> > -        break;
+> > -    case 0x0004:
+> > -        nr_ports =3D 4;
+> > -        break;
+> > -    }
+> > -    assert(nr_ports > 0);
+> > -    assert(nr_ports <=3D PCI_SERIAL_MAX_PORTS);
+> > +    int i, nr_ports =3D multi_serial_get_nr_ports(pc);
+> >
+> >       pci->dev.config[PCI_CLASS_PROG] =3D pci->prog_if;
+> >       pci->dev.config[PCI_INTERRUPT_PIN] =3D 0x01;
+> >

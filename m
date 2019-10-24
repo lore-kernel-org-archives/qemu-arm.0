@@ -1,125 +1,126 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2272857wrq;
-        Thu, 24 Oct 2019 05:19:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyvEKaKgQTo6/Blod77EnwLaef1vxLKnjBIKwUNeNT00X5POi26DFiCAxMzuuk0I3x3x3TC
-X-Received: by 2002:a05:620a:140c:: with SMTP id d12mr13175357qkj.419.1571919599064;
-        Thu, 24 Oct 2019 05:19:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571919599; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2274044wrq;
+        Thu, 24 Oct 2019 05:20:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzL0ZiAvdWvmxX3AnxWHJjX8+Wu40hXr+OPSyC/ZomtH6OYbbsVVpP8HNJ73vTQbonq0B/u
+X-Received: by 2002:a50:b558:: with SMTP id z24mr29779604edd.67.1571919656773;
+        Thu, 24 Oct 2019 05:20:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571919656; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z1pCz5Df7bZsxFXrGmt8yoG4rJ3YdaOFBLcA9HcZX4DlKdPZf+qHzZs8ODTlUNfK0w
-         F9yhFo7CFCSOhBOiYALQwhV5S4kd6DdfrEliTQoeJJQuKoNX5WFGgBXg/Ng8GUdmOQ3p
-         B4TePG2D+BsK3COb3ZkCnlLtiYWVZxDVtTrIWTdG6YqiC85HHJeSJOMzmBwCUWcsmOLG
-         uQ7ndEdBBZYT9KdFlqBnXLqaZIoFwU3IGaLf13KHHomm6dTnsgErVwsPPZNNVcv+ltj6
-         B5PipFBHifS+PbGxI7Goiev5dF1ZgErAHv3RlqiI0Z23WsQFLaRqt62TWb+oO0sXjJDj
-         1xxw==
+        b=Q47HJb4Re/kEYbAdM9s/H4rB5NxsRHqHbgVNBneoB+q3vkVzJZidfSXnUwGLnmXbdZ
+         VypD6lPAcwD9BQT+aHYMK0DFgSO3j2cCcNWA8Em9yP3Zeq1XrPXAz68hY8T9kSHGH+6Y
+         Ff0nmk2fokKgVSDUF6wZANnQ2H2gLqn/tlGDYU8ZRhVvm1tpkBxNfZFSJVvbKxLAQyxg
+         CW/XNXDi1IM4K5bHmYq23jFt62hBglZOYf8ONVIHwUm4doEIEvxS6fyTO+O345J/tb2W
+         gF+K3oNvjr2I0XfU3pV24vmdQUG5cdxhHmkQnA/Ww8ihuOZieVA7isr0UNJ8SbmmoM/4
+         z3tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=nyUrBjNZL0unXLJHOgF9Gl+vekVNrl35sqdNhNXXh+A=;
-        b=wQVBLR3JLTFq4t6bYzv+a66K1z4qMEQWLiNJaeyFM4ZMsu0i+puYVvptWdpOZ8YrCr
-         Dq5zQ6WlKeA7uxh1pcKAMwEVWMjDeRrzSEuX/hF7Nha6+rP+ZOvs0EDa8Xg6aD54IstR
-         YRFykkbW3j38Y6Oq87QJVPEwdjXkjXedPeFA8BPjFL4GizvyJbRAr/7pKR2hhajL4Ho3
-         j6D3NSQa0jDvheTdoU8wHEFkKvy1IcgF4fDQ7zpYS94JGL6vBmoCh+SaHTsc1vHmpz1M
-         xZjnGnA01rocqWQqM5/G1rAeqZ+JmagX61hFYETFm4Ku3zj/kNXU5gdHudZEMEKPWkQL
-         wROQ==
+        bh=m6VEKeFoBc+AppoLi2hfrgmxK9Y9W+LfT5fBq/2xbdU=;
+        b=d7O9hlme0XdPdi+XecY8QwMht0i90oQ8VmGHrWUCx2L7LwEcNc5F0tzNQpLIdlWHxV
+         jEHlNPqlvKvFVF+e/nbS6BEjPsm5A4acGf7wJl0uNKuI5IByPsgNyuI8M3qFFYTWwluf
+         bo2mNxijnVVQntqGgSPycVG16nND1trtRzULjTjnyltILH1MAZMArs1hMQkhJEL3/lGI
+         lOhtN7uk0/28ypQ0vYoqNBFVa0J28wDTYtz9hSUzx/LYYK+y8VsDe5pNcxf7eopv2NNb
+         HULSu4l8hdu7zSw/QRy9fHdxBJik6x1um7mb8VVot4rtJGwtK0urVbpgh7mX4qY6inNG
+         q+pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u3si9843032qvo.92.2019.10.24.05.19.58
+        by mx.google.com with ESMTPS id jr15si6723695ejb.274.2019.10.24.05.20.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 05:19:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Oct 2019 05:20:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40786 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40854 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNc5t-0000T2-Jb
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 08:19:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41622)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNc6o-0003Ko-S5
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 08:20:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41694)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iNbb3-00030i-OD
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 07:48:07 -0400
+ (envelope-from <philmd@redhat.com>) id 1iNbbQ-0003Ve-By
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 07:48:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iNbb2-0007hC-FC
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 07:48:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54010)
+ (envelope-from <philmd@redhat.com>) id 1iNbbN-0007tH-W6
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 07:48:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54090)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNbb1-0007gb-TI
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 07:48:04 -0400
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNbbN-0007mp-Ob
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 07:48:25 -0400
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id CE3A459451
- for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 11:48:02 +0000 (UTC)
-Received: by mail-wm1-f69.google.com with SMTP id k9so874036wmb.0
- for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 04:48:02 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id 469EB59455
+ for <qemu-arm@nongnu.org>; Thu, 24 Oct 2019 11:48:16 +0000 (UTC)
+Received: by mail-wr1-f72.google.com with SMTP id f4so12710724wrj.12
+ for <qemu-arm@nongnu.org>; Thu, 24 Oct 2019 04:48:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=RodsIxNVedoLZrS91xhgv1KPAkM9KvsVpg2mvRylzXQ=;
- b=PQngWDzB+p3Wa+bCuUb+jMe7tVjinQvWNZRfJSoWNLMOzat8TRWW/VkVBbDbG8+KBz
- 80v5ateYIeI7+/k80cm7aKRA+9tU/mlg0i0z5hRMe9MV9oRDD/CK4yguvhSQ918a8k91
- qD/kUzG4eZpAhQxzBrFcK1UUbC2xO9eMOAQa2ZyIyCk7sn9HMJt+GaQQNctKx4rUlFcX
- wAfxI5rniNQ8y9byeSOMT6J+kgIYspb56/UFd+gIWMF5xrw8MafHfi255gz56tvwbot8
- zoveAlt8zqpplDn9ORcvgX+z5P8FnEJ28gw3so7Vr0naVQP7MJcgVsqwlmDAfdVzGpwO
- 229g==
-X-Gm-Message-State: APjAAAVRvPIZRGA6W4bPne+FsowJA9Nil2fXX1I6KPk7nkRsQVbSd8Kx
- UiNyBY+22vTQSUZCVPpY5ZVfVbJh7UPMA2rRTKSaVA8ZLdRd2F3RRWAIurgcIiOEfYCbDZWvReS
- tPyp0Fyvs13aoVY4=
-X-Received: by 2002:a1c:610b:: with SMTP id v11mr4484150wmb.156.1571917678624; 
- Thu, 24 Oct 2019 04:47:58 -0700 (PDT)
-X-Received: by 2002:a1c:610b:: with SMTP id v11mr4484105wmb.156.1571917678380; 
- Thu, 24 Oct 2019 04:47:58 -0700 (PDT)
+ bh=6ltgiqHhNHaXdrzNuL6lkoiWjNGQwyyjMPT5XIbOJzU=;
+ b=FcA2HVN8OMCMvS7EI+onmQnsZbJFTxjNd3n5htXekeGABfVvgakmrYkqZBnU0+xUUx
+ L1SRUMvPhNkDR8surN5bMDft13KUMY1VrnkulpbtuyNObdB1XokYO+GMT3fJRaXjvrxw
+ UwPQ6EzIcvRQ8/Ng6C6pSpO0ukCrS7SRIo7bbPDUn7senNilaLk7uJE7ZPUhbYS3wfQf
+ 5Bd1QL0dcsnV4ZCLec2h+X6eEqDTB+4yM41wqYU0vIeeqphusQxK0SC+jsC3PAwWBz72
+ XMZgWlkQ/wW//wHG/luXxbn+4vXbmTfnwGtOyW8nLXvudy73pz5kCy18n/w7RtTkcnaa
+ Rj+g==
+X-Gm-Message-State: APjAAAXrUJZNIK7mc+qKRRl9mbmsI8Uo2m/SOkpVmOczrUSIcukGa8Cn
+ i2nDVQ3sPpZ+jPTlrXwi3qhzBZXpMkRF2EtBuYVVODqd9c0+kZXC/G921Khrf+hQzo2AwD6K23/
+ E1JJxsj6yfnow
+X-Received: by 2002:a05:600c:28d:: with SMTP id
+ 13mr4839669wmk.100.1571917694947; 
+ Thu, 24 Oct 2019 04:48:14 -0700 (PDT)
+X-Received: by 2002:a05:600c:28d:: with SMTP id
+ 13mr4839587wmk.100.1571917693909; 
+ Thu, 24 Oct 2019 04:48:13 -0700 (PDT)
 Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
  [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id e3sm2084103wme.36.2019.10.24.04.47.56
+ by smtp.gmail.com with ESMTPSA id d8sm11646908wrr.71.2019.10.24.04.48.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 24 Oct 2019 04:47:57 -0700 (PDT)
-Subject: Re: [PATCH v3 21/33] lance: replace PROP_PTR with PROP_LINK
+ Thu, 24 Oct 2019 04:48:12 -0700 (PDT)
+Subject: Re: [PATCH v3 23/33] dp8393x: replace PROP_PTR with PROP_LINK
 To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-22-marcandre.lureau@redhat.com>
- <2d027692-e178-c1c8-8384-ad70ed345f29@redhat.com>
- <CAMxuvay9kroZUo7ZbdhJqKAdp52rMmLGv0LBvktb68B2CKg+Mw@mail.gmail.com>
+ <20191023173154.30051-24-marcandre.lureau@redhat.com>
+ <06288994-a5d3-038d-794e-ed63acdadd95@redhat.com>
+ <CAMxuvawLDSsNkoSXNprXAWVZ13FZT_WZ5V3AXyN0euT9SKa1DQ@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <2b9352d7-f4de-bd5c-62c5-cebec79e1c48@redhat.com>
-Date: Thu, 24 Oct 2019 13:47:56 +0200
+Message-ID: <c4d77b9a-1eac-a05f-a26b-bed097667a1f@redhat.com>
+Date: Thu, 24 Oct 2019 13:48:11 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <CAMxuvay9kroZUo7ZbdhJqKAdp52rMmLGv0LBvktb68B2CKg+Mw@mail.gmail.com>
+In-Reply-To: <CAMxuvawLDSsNkoSXNprXAWVZ13FZT_WZ5V3AXyN0euT9SKa1DQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  qemu-devel <qemu-devel@nongnu.org>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Paul Burton <pburton@wavecomp.com>, Peter Maydell <peter.maydell@linaro.org>,
  Magnus Damm <magnus.damm@gmail.com>,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
@@ -130,111 +131,86 @@ Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Aleksandar Rikalo <arikalo@wavecomp.com>, qemu-ppc <qemu-ppc@nongnu.org>,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CMkQ3ycARQ24
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: m3m+dut90pDq
 
-On 10/24/19 1:09 PM, Marc-Andr=C3=A9 Lureau wrote:
-> Hi
->=20
->=20
-> On Thu, Oct 24, 2019 at 1:01 AM Philippe Mathieu-Daud=C3=A9
+On 10/24/19 1:12 PM, Marc-Andr=C3=A9 Lureau wrote:
+> On Thu, Oct 24, 2019 at 1:02 AM Philippe Mathieu-Daud=C3=A9
 > <philmd@redhat.com> wrote:
 >>
 >> On 10/23/19 7:31 PM, Marc-Andr=C3=A9 Lureau wrote:
+>>> Link property is the correct way to pass a MemoryRegion to a device
+>>> for DMA purposes.
+>>>
+>>> Sidenote: as a sysbus device, this remains non-usercreatable
+>>> even though we can drop the specific flag here.
+>>>
 >>> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 >>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 >>> ---
->>>    hw/dma/sparc32_dma.c | 2 +-
->>>    hw/net/lance.c       | 5 ++---
->>>    hw/net/pcnet-pci.c   | 2 +-
->>>    hw/net/pcnet.h       | 2 +-
->>>    4 files changed, 5 insertions(+), 6 deletions(-)
+>>>    hw/mips/mips_jazz.c | 3 ++-
+>>>    hw/net/dp8393x.c    | 7 +++----
+>>>    2 files changed, 5 insertions(+), 5 deletions(-)
 >>>
->>> diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
->>> index 0e5bbcdc7f..3e4da0c47f 100644
->>> --- a/hw/dma/sparc32_dma.c
->>> +++ b/hw/dma/sparc32_dma.c
->>> @@ -346,7 +346,7 @@ static void sparc32_ledma_device_realize(DeviceSt=
-ate *dev, Error **errp)
->>>        d =3D qdev_create(NULL, TYPE_LANCE);
->>>        object_property_add_child(OBJECT(dev), "lance", OBJECT(d), err=
-p);
->>>        qdev_set_nic_properties(d, nd);
->>> -    qdev_prop_set_ptr(d, "dma", dev);
->>> +    object_property_set_link(OBJECT(d), OBJECT(dev), "dma", errp);
->>>        qdev_init_nofail(d);
->>>    }
+>>> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
+>>> index 8d010a0b6e..878925a963 100644
+>>> --- a/hw/mips/mips_jazz.c
+>>> +++ b/hw/mips/mips_jazz.c
+>>> @@ -284,7 +284,8 @@ static void mips_jazz_init(MachineState *machine,
+>>>                dev =3D qdev_create(NULL, "dp8393x");
+>>>                qdev_set_nic_properties(dev, nd);
+>>>                qdev_prop_set_uint8(dev, "it_shift", 2);
+>>> -            qdev_prop_set_ptr(dev, "dma_mr", rc4030_dma_mr);
+>>> +            object_property_set_link(OBJECT(dev), OBJECT(rc4030_dma_=
+mr),
+>>> +                                     "dma_mr", &error_abort);
+>>>                qdev_init_nofail(dev);
+>>>                sysbus =3D SYS_BUS_DEVICE(dev);
+>>>                sysbus_mmio_map(sysbus, 0, 0x80001000);
+>>> diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
+>>> index a5678e11fa..946c7a8f64 100644
+>>> --- a/hw/net/dp8393x.c
+>>> +++ b/hw/net/dp8393x.c
+>>> @@ -173,7 +173,7 @@ typedef struct dp8393xState {
+>>>        int loopback_packet;
 >>>
->>> diff --git a/hw/net/lance.c b/hw/net/lance.c
->>> index 6631e2a4e0..4d96299041 100644
->>> --- a/hw/net/lance.c
->>> +++ b/hw/net/lance.c
->>> @@ -138,7 +138,8 @@ static void lance_instance_init(Object *obj)
->>>    }
+>>>        /* Memory access */
+>>> -    void *dma_mr;
+>>> +    MemoryRegion *dma_mr;
+>>>        AddressSpace as;
+>>>    } dp8393xState;
 >>>
->>>    static Property lance_properties[] =3D {
->>> -    DEFINE_PROP_PTR("dma", SysBusPCNetState, state.dma_opaque),
->>> +    DEFINE_PROP_LINK("dma", SysBusPCNetState, state.dma_opaque,
->>> +                     TYPE_DEVICE, DeviceState *),
->>>        DEFINE_NIC_PROPERTIES(SysBusPCNetState, state.conf),
+>>> @@ -922,7 +922,8 @@ static const VMStateDescription vmstate_dp8393x =3D=
+ {
+>>>
+>>>    static Property dp8393x_properties[] =3D {
+>>>        DEFINE_NIC_PROPERTIES(dp8393xState, conf),
+>>> -    DEFINE_PROP_PTR("dma_mr", dp8393xState, dma_mr),
+>>> +    DEFINE_PROP_LINK("dma_mr", dp8393xState, dma_mr,
+>>> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+>>>        DEFINE_PROP_UINT8("it_shift", dp8393xState, it_shift, 0),
 >>>        DEFINE_PROP_END_OF_LIST(),
 >>>    };
->>> @@ -153,8 +154,6 @@ static void lance_class_init(ObjectClass *klass, =
-void *data)
->>>        dc->reset =3D lance_reset;
->>>        dc->vmsd =3D &vmstate_lance;
->>>        dc->props =3D lance_properties;
->>> -    /* Reason: pointer property "dma" */
+>>> @@ -936,8 +937,6 @@ static void dp8393x_class_init(ObjectClass *klass=
+, void *data)
+>>>        dc->reset =3D dp8393x_reset;
+>>>        dc->vmsd =3D &vmstate_dp8393x;
+>>>        dc->props =3D dp8393x_properties;
+>>> -    /* Reason: dma_mr property can't be set */
 >>> -    dc->user_creatable =3D false;
 >>
->> But we still can not start it with the -device option and set the dma,
->> can we?
+>> Patch is OK except this user_creatable change I don't understand.
 >=20
-> This is a sysbus device, so you can't. I'll add a commit comment.
-
-Ah OK, understood now.
+> It's a sysbus device, so it's not user-creatable anyway. I'll add a
+> commit comment.
 
 With comment:
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
 >=20
-> In theory, link property allows you to pass a QOM path to reference a
-> QOM instance from -device.
-
-Just wondering, if we had a "bus_address" property to the abstract=20
-SysBus class (and eventually "bus_name" for later) we could create/map
-sysbus devices from command line?
-
 >>
 >>>    }
 >>>
->>>    static const TypeInfo lance_info =3D {
->>> diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
->>> index 4723c30c79..d067d21e2c 100644
->>> --- a/hw/net/pcnet-pci.c
->>> +++ b/hw/net/pcnet-pci.c
->>> @@ -231,7 +231,7 @@ static void pci_pcnet_realize(PCIDevice *pci_dev,=
- Error **errp)
->>>        s->irq =3D pci_allocate_irq(pci_dev);
->>>        s->phys_mem_read =3D pci_physical_memory_read;
->>>        s->phys_mem_write =3D pci_physical_memory_write;
->>> -    s->dma_opaque =3D pci_dev;
->>> +    s->dma_opaque =3D DEVICE(pci_dev);
->>>
->>>        pcnet_common_init(DEVICE(pci_dev), s, &net_pci_pcnet_info);
->>>    }
->>> diff --git a/hw/net/pcnet.h b/hw/net/pcnet.h
->>> index 28d19a5c6f..f49b213c57 100644
->>> --- a/hw/net/pcnet.h
->>> +++ b/hw/net/pcnet.h
->>> @@ -50,7 +50,7 @@ struct PCNetState_st {
->>>                             uint8_t *buf, int len, int do_bswap);
->>>        void (*phys_mem_write)(void *dma_opaque, hwaddr addr,
->>>                              uint8_t *buf, int len, int do_bswap);
->>> -    void *dma_opaque;
->>> +    DeviceState *dma_opaque;
->>>        int tx_busy;
->>>        int looptest;
->>>    };
+>>>    static const TypeInfo dp8393x_info =3D {
 >>>

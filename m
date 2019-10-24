@@ -1,169 +1,151 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2732957wrq;
-        Thu, 24 Oct 2019 11:37:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxRUlDk/mX7iN5yWONV9PORV2S5cmw0dGMyKQhFoHxumcihYzc2WZwz1gqNTd3S31G6m4gm
-X-Received: by 2002:aa7:c1cb:: with SMTP id d11mr11934093edp.40.1571942221101;
-        Thu, 24 Oct 2019 11:37:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571942221; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2751120wrq;
+        Thu, 24 Oct 2019 11:54:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxFXeoUMQjTLMXSc2VD9VbxTJT15fJKWgfDWUxTJrEyUFak0KSw1zWq6Qqle2IgvFdCEHmE
+X-Received: by 2002:a05:6402:304c:: with SMTP id bu12mr28288192edb.230.1571943282261;
+        Thu, 24 Oct 2019 11:54:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571943282; cv=none;
         d=google.com; s=arc-20160816;
-        b=iFxtaRRZOGaoMXS5F9hqflA9yPOmzm19+ZHGs3rYOcUQQ2dHvG2SUsKQS/tNQmcOLR
-         SL14FIhYuHaHmDYx9n9FajOe3L8lByB97+AQ7UWmq0KoaKc7hzT9LhNct0gYK0chibs0
-         BV3zV8KKTh5YCJ0BD7DnMHS/+VZzg7cjJbLCU128kxCqyBbqqexLXe/1+NtBICjG3xMt
-         449ppr3tDyfDMazrFJuVASb8g7E2x85fQ+OKNAjqLs7s/SvGK9LW5xp9+C8Qi0atQ1gr
-         ZywaZwBX5ZzUkRaXiGcyuW9OQXj9cO6SZnWduE0DwoAISENEIQ+MufXEwzUVd6CJgK/1
-         v+CQ==
+        b=WoxsIoLYM+EbDhrfGxMkB/YeOjoJO24ZERDKQCudW8B5L5Z1dvVsRAnYC83jc5t7sa
+         NOc2kcdvTomeMyReWf0lhkQ8hip61PxAMVgz9Uo6aYFsZ3WGjKvQZ8LXSCwze7YQiADl
+         tSbarRiJlmD9jLbPFERwoEmafySNtNVVdg1bgaZqHkdj05Go2xOjFeHjti2KlqbDMw6d
+         PbSVaoe0Q5LOHPtZG7ASBrB2xXx96FzxImQSSrXvSdXfyWJ5SWhu7oqgQbAWxhQqjMhh
+         LzZ3PwEZix2QZPeRgAmCxGtP/FQqZyDe+nP3HLvNVdcIgXMRqfz77J0PgnTzTfIxMwCR
+         y8aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=K2PPNX5o6DQx8MjKGNnV43vBz7WlAxsKDOo/3ug5My0=;
-        b=cUmXwIx9+gc7/aG0CZR1c7YWdXJV1GcZ4vKKw7GdzfrBZ4dEf6DWMwZVoXicR56GRC
-         rP6JtrpiRZUeqVMEkjbBseD6DxNxcFHFlyn4B9dryTfsj2Txa0mTyjGKWO7OTwKR5QV6
-         8y5ljDsP757A24+gBYu1ynZpb5BcX46KOwBsKk9H31AaSDpUydwLrgsKrknOIaAoc6r+
-         XIXlHf1Od7k1g7wduuOLKOIsB/9300Pe3HyU+iZk+2DTxxRpvZwjtqPMpa4ac6S9gpdW
-         P9hjN7sIBidAtnXpgUo9q4e1edOYHMbSb/I+Hr58QT4gfe4GHwte32D1//UQMcknJjgC
-         lGmw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=jynmMqpKNeKV3JzTsUW9BhidE9cMOiYp+FOxh2lHLeY=;
+        b=OMET0oMRUlVZj+ON4eD20NcaV/QeFq0YxVXI4hnHuMRsjNczBy7/BpF5XhRDVc0i1m
+         /4fLJBFS0jGayan19vNhG0c41nA5rf0/a6saEwm1ISx3LffvMgbvWST3zjr7OSWlO0vI
+         isUn+x54EhgL3i2R7v9utBpneXBLRraYA5OCeCa8NWAaf7pWFVPl7i8SlksiacJCPpZU
+         356AseVTX9O96BV6bpa1sUGWwkmjzD/AAI4Qvl3ksXIO09kScrNwNfeXaoN3QEF98q2t
+         rSlMZI7AX+7Nmo53Un0kzJVVMPc3Y9e7YBjJHEVJBLAXP/QV8Pa4F99QEIxsQpUxZ03A
+         yLTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JGuTgAV1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i3si3980740ejs.154.2019.10.24.11.37.01
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L1GdIyiy;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id cb5si9774803ejb.270.2019.10.24.11.54.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 11:37:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 24 Oct 2019 11:54:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JGuTgAV1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50390 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNhyl-0003Ug-Sw
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 14:36:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46846)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <ehabkost@redhat.com>) id 1iNhWJ-0000sv-HP
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 14:07:36 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <ehabkost@redhat.com>) id 1iNhWI-0007UE-74
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 14:07:35 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:21580
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <ehabkost@redhat.com>) id 1iNhWI-0007Tt-0G
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 14:07:34 -0400
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L1GdIyiy;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571940453;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=K2PPNX5o6DQx8MjKGNnV43vBz7WlAxsKDOo/3ug5My0=;
- b=JGuTgAV1E+B7FRcpMrjbxnEdF5uf2pmBV5gXxqOSAhU/LbZCHVQA6O1tILPKIGOUrKjJHZ
- i69VIss31ktTJ0oEJclq045GK3A4KyZ9TsmuGs0pzQVwaX3SpPg0TTJSCv9XtjUR/wp797
- xdhmWLU2CHbD1ljXnn4ZnaKTzVGwJQQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-45-ITKloSrzNOmZN23P_rHAtQ-1; Thu, 24 Oct 2019 14:07:29 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47855100550E;
- Thu, 24 Oct 2019 18:07:26 +0000 (UTC)
-Received: from localhost (ovpn-116-62.gru2.redhat.com [10.97.116.62])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6AC3D4128;
- Thu, 24 Oct 2019 18:07:15 +0000 (UTC)
-Date: Thu, 24 Oct 2019 15:07:14 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v3 21/33] lance: replace PROP_PTR with PROP_LINK
-Message-ID: <20191024180714.GY6744@habkost.net>
-References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-22-marcandre.lureau@redhat.com>
- <2d027692-e178-c1c8-8384-ad70ed345f29@redhat.com>
- <CAMxuvay9kroZUo7ZbdhJqKAdp52rMmLGv0LBvktb68B2CKg+Mw@mail.gmail.com>
- <2b9352d7-f4de-bd5c-62c5-cebec79e1c48@redhat.com>
- <CAFEAcA_A4edo3fQBJux6QBxkCf_r_EdrmYgv5OPidWDdn4aD8g@mail.gmail.com>
+	s=mimecast20190719; t=1571943281;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+	bh=jynmMqpKNeKV3JzTsUW9BhidE9cMOiYp+FOxh2lHLeY=;
+	b=L1GdIyiy2DpIhfpNy9fb3Ls0T/8qg6MFleU861vyLGkYCdgO53NmlbMpdn6L63fZRwX/72
+	/vGcVLDiP00IIsGqqYsZxhGn/L1wYqXfTyehOzBL40yzpk7pSbLzyT8Z2w9q83BZvLQWz0
+	LjqUY7JpG8lp6PU+VoXj18GYH7iMJG8=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-55-iqbsVB4tO7uMyUn9xZZy4A-1; Thu, 24 Oct 2019 14:54:37 -0400
+Received: by mail-wr1-f69.google.com with SMTP id 67so13270730wrm.18
+        for <alex.bennee@linaro.org>; Thu, 24 Oct 2019 11:54:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=6yJjsMKTKIQ8186Ut9F69hXzw2UPrl7hcIMPBBbZhCY=;
+        b=HdEq9PiTfrBlu+Q+qLNxESMMLRpo8RKVPLnNcVK+4wnZe8dRa9/6wHOJ5Md3tejN38
+         4VArifATW1iOrdqyB9wXFeY19F+4q7LGIvkj70yKLF71rXDon9BL/TSj/zqWe3V7Ni+x
+         0DlNpPibmxzBOey/vris3SgB70SeqAbgz2ABrGV4gfcxt8lFIKosSP/o97iTli89WTX2
+         uHEk11SM9jHcksqMpuC/WdRBfuaad1MtlrH3GMDBqutcpPQiXc2UOfYYrWe8FvHIAZID
+         5syXENcxnSjz1imxvm2Emnk478YfdyM2YftGsbzGqvpGo0QPepxld8IWjrkJPxADm+fy
+         C5aA==
+X-Gm-Message-State: APjAAAWMfckFH+E9OvenyWDZ1VSAHuIkQO0L+Q7BxOfrS30+TzxXxKiv
+	SubXgDTz1/yQrQNnoRTIUhrkTQyYELTEihDQRhe0S3KmUHARy+0A9NOEjmtF/zWdSxZc/YYEyCl
+	ZPNVoCCS7S0tXkOjk
+X-Received: by 2002:a05:600c:2383:: with SMTP id m3mr4011044wma.176.1571943276052;
+        Thu, 24 Oct 2019 11:54:36 -0700 (PDT)
+X-Received: by 2002:a05:600c:2383:: with SMTP id m3mr4011020wma.176.1571943275670;
+        Thu, 24 Oct 2019 11:54:35 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from ?IPv6:2001:b07:6468:f312:302c:998e:a769:c583? ([2001:b07:6468:f312:302c:998e:a769:c583])
+        by smtp.gmail.com with ESMTPSA id d11sm29279675wrf.80.2019.10.24.11.54.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 24 Oct 2019 11:54:35 -0700 (PDT)
+Subject: Re: [PATCH] Semihost SYS_READC implementation (v3)
+To: qemu-devel@nongnu.org, keithp@keithp.com
+Cc: peter.maydell@linaro.org, riku.voipio@iki.fi, laurent@vivier.eu,
+ qemu-arm@nongnu.org, alex.bennee@linaro.org
+References: <157193841432.8331.7323182040062540268@37313f22b938>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <89ada4b1-ee3d-a512-07c2-9bc1ba5806da@redhat.com>
+Date: Thu, 24 Oct 2019 20:54:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_A4edo3fQBJux6QBxkCf_r_EdrmYgv5OPidWDdn4aD8g@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: ITKloSrzNOmZN23P_rHAtQ-1
+In-Reply-To: <157193841432.8331.7323182040062540268@37313f22b938>
+Content-Language: en-US
+X-MC-Unique: iqbsVB4tO7uMyUn9xZZy4A-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, Paul Burton <pburton@wavecomp.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- qemu-devel <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Fabien Chouteau <chouteau@adacore.com>,
- qemu-arm <qemu-arm@nongnu.org>, Richard Henderson <rth@twiddle.net>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3WOjJSyXTN7P
+X-TUID: 0xvo48v2V1F+
 
-On Thu, Oct 24, 2019 at 12:52:28PM +0100, Peter Maydell wrote:
-> On Thu, 24 Oct 2019 at 12:48, Philippe Mathieu-Daud=E9 <philmd@redhat.com=
-> wrote:
-> > Just wondering, if we had a "bus_address" property to the abstract
-> > SysBus class (and eventually "bus_name" for later) we could create/map
-> > sysbus devices from command line?
+On 24/10/19 19:33, no-reply@patchew.org wrote:
+> Patchew URL: https://patchew.org/QEMU/20191023192640.13125-1-keithp@keith=
+p.com/
 >=20
-> I don't think this is a good plan -- users shouldn't have to know
-> about the memory map of their boards. Plus it doesn't deal with
-> the complications of multiple address spaces, DMA, wiring up
-> irq lines to an interrupt controller, SoC reset handling,
-> clocks, power-managment...  Command line -device was designed
-> for pluggable devices, where in the world of real hardware
-> the device can be physically plugged and unplugged and there's
-> a clear interface that can be modelled. You can't add an
-> extra UART to an embedded board in real hardware either.
 >=20
-> The only plausible argument I've seen for command-line
-> plugging of embedded devices is as a sort of side-effect
-> of having a configuration language syntax for them for
-> the purpose of being able to write board models as
-> data-driven config files rather than in C code. But
-> that would be a lot of design and engineering work, and
-> if we want that I think we should approach it forwards,
-> not arrive at it backwards by adding gradual tweaks like
-> 'address' properties to devices.
+>=20
+> Hi,
+>=20
+> This series failed the docker-quick@centos7 build test. Please find the t=
+esting commands and
+> their output below. If you have Docker installed, you can probably reprod=
+uce it
+> locally.
+>=20
+> =3D=3D=3D TEST SCRIPT BEGIN =3D=3D=3D
+> #!/bin/bash
+> make docker-image-centos7 V=3D1 NETWORK=3D1
+> time make docker-test-quick@centos7 SHOW_ENV=3D1 J=3D14 NETWORK=3D1
+> =3D=3D=3D TEST SCRIPT END =3D=3D=3D
+>=20
+>   CC      aarch64-softmmu/target/arm/translate-sve.o
+> ../vl.o: In function `main':
+> /tmp/qemu-test/src/vl.c:4385: undefined reference to `qemu_semihosting_co=
+nsole_init'
+> collect2: error: ld returned 1 exit status
+> make[1]: *** [qemu-system-x86_64] Error 1
+> make: *** [x86_64-softmmu/all] Error 2
+> make: *** Waiting for unfinished jobs....
+>   LINK    aarch64-softmmu/qemu-system-aarch64
+> Traceback (most recent call last):
+> ---
+>     raise CalledProcessError(retcode, cmd)
+> subprocess.CalledProcessError: Command '['sudo', '-n', 'docker', 'run', '=
+--label', 'com.qemu.instance.uuid=3D3c82d370996f429bb4be7fef56e7247b', '-u'=
+, '1001', '--security-opt', 'seccomp=3Dunconfined', '--rm', '-e', 'TARGET_L=
+IST=3D', '-e', 'EXTRA_CONFIGURE_OPTS=3D', '-e', 'V=3D', '-e', 'J=3D14', '-e=
+', 'DEBUG=3D', '-e', 'SHOW_ENV=3D1', '-e', 'CCACHE_DIR=3D/var/tmp/ccache', =
+'-v', '/home/patchew/.cache/qemu-docker-ccache:/var/tmp/ccache:z', '-v', '/=
+var/tmp/patchew-tester-tmp-nju6kwxi/src/docker-src.2019-10-24-13.29.33.2420=
+5:/var/tmp/qemu:z,ro', 'qemu:centos7', '/var/tmp/qemu/run', 'test-quick']' =
+returned non-zero exit status 2.
+> filter=3D--filter=3Dlabel=3Dcom.qemu.instance.uuid=3D3c82d370996f429bb4be=
+7fef56e7247b
+> make[1]: *** [docker-run] Error 1
+> make[1]: Leaving directory `/var/tmp/patchew-tester-tmp-nju6kwxi/src'
+> make: *** [docker-run-test-quick@centos7] Error 2
 
-The QEMU community spent years designing QOM and QMP with that
-goal.  Which other pieces to you consider to be missing, to
-make you reject making gradual changes towards it?
+Looks like you need to add a dummy implementation of the new function to
+stubs/semihost.c, for use in targets that don't support semihosting.
 
-I agree we shouldn't be introducing new external interfaces
-without careful thought.  But I welcome gradual internal API
-changes that are helpful for our long term goals.
+Thanks,
 
---=20
-Eduardo
-
+Paolo

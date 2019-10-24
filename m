@@ -1,86 +1,87 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2300962wrq;
-        Thu, 24 Oct 2019 05:46:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyv4tJU3dlA31TGnw0iArzsvS51IlKcQRMMfCpUHkJ+HQIDma7KXadI1PStTCx2Jk6cxy5d
-X-Received: by 2002:a17:906:2cd2:: with SMTP id r18mr37510963ejr.282.1571921168923;
-        Thu, 24 Oct 2019 05:46:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571921168; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2305129wrq;
+        Thu, 24 Oct 2019 05:50:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzB3Btfs+Urgc3YuRr7u5BM82uWITFpLPaPtIy3iEIVOcif3YIEmOMl9DYOIhM19BgYt6Le
+X-Received: by 2002:a37:f90e:: with SMTP id l14mr13410288qkj.68.1571921411141;
+        Thu, 24 Oct 2019 05:50:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571921411; cv=none;
         d=google.com; s=arc-20160816;
-        b=aAcxlz5d/+hzLCND0MTWizXMXBWWLtXLlIRpuVHFMT0e9ofmVOeJGlQjaIXzdQAMnG
-         D7jzYtTejOoSOdzQXGU2Zz7k58ine308d3RznTvhz1pFSUtWOQBYUyjVC60U2HFVTrvj
-         hZhqwDOX6BLOXkQjZi5zoShHj5TVTAsxydzEPvLK2Cf+GoMLuk8/a+0eQ+e/rwIhwSxK
-         cgf540tEAy34uyNZutBi2w3OntHcYstQo9QWWEQCZFBTSMqOY3vbvcPtCKQFFpJsrL1L
-         CxsBeCIdhgUsCu5mwFR3AHuk3CWbyygYSV49qA++1D14Pf8RE5wrDS1TDvH/8aZ1lRPz
-         v7MA==
+        b=QKogNdrPzm/moEebJw0p3AJLXWPwc9J1OTFFCpP5gprVi44eBfvjMba9xQMVvV9/S9
+         SvfapPMZgi5EbIkBFodxq1GIn0J3DjvPSEvperMEym85rY4a8tb7me8T0lWTqvCvsVrj
+         vpF7jCUkYHX1Crv13YBTrosix1Khe6MeHERmqlEu7vTfOa3eEV3nyy2x4eI96PTJswvP
+         ZdyH6dpIzvZ7PiEBXshd9XgDPJp5UOsWbHusbnSi06xVACZMvaFt6Vf8Qw9K4ZJNDhJx
+         3MjDHWYUZ7JMBed+UNSm10/Gs45tpwrxkidDllgm38WZVzz/rW6XpVgdPMFEZdxGXCeV
+         EBzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=zl8Qp6dJTRdyRz7AMr5NQJesKBKJIZvL1RF+5cEB3nQ=;
-        b=V5ahCO66fXPNPHt+dfSyFlEboXEV2IxzcTqYPBJMDKIQrjbrYpQR5YxtgDrP2mXp0D
-         I4p7s3qmtXgZrLwukyj3BHQD/TyDBEFH4CsSv3ToTwmKBgiP6rU7F1hKMp7nKvKVKxay
-         UcvOoPvFAxkrVQtiegRRZj792i5M/uc2fXMxb4U9KQsLTrsF9Afb/YsnaGM3ZeuJOLWE
-         kAOrYarzIvfvPK33atY798h5GYtmkr+O5z+rNEoDCbLcWZzkWCAMdalHr38DV104hL4w
-         ciaegwvUBe/N6DKZKHltKB5tVS2u8qgWeGFurw4M6UwvF4AC1NYfRDpxeKzVAVAN1HP9
-         fL5g==
+        bh=Yc2rcnVA2Lk9wwG5059ptOPuD0SUyeMds9j2vZiOKLc=;
+        b=L1NDAfRtyObtv2+45QsjrbiwqNhtlxU3D23pNK8YXsSCmb7Pr4wMpoEODlmpjK/iy6
+         bkDqe9BygL+zKvuq32OZpqgu5P84GuRMFnyo0bn0GRMcJimgxc8L3D79YJwGpoXvJ0/p
+         1KFhtq0SD9zjnTh7/jsxwkzbgR7sEg3pdys6R0zJEhdd5qp9C1i5ShUNpcCOxXfWiKMD
+         6Yh0O79BoflWycxCQobc7BUxygV5FipRxfZmoI98PoPE3dgRyghv0cYUEAB1jwo1HsxQ
+         OMqkyouuOcdAryxMaQwBZBuxFsdC+crsAOOHO5k1PMwtESCrpFD+sbQujIUW5UHsw3Eh
+         PF/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Armzvw1J;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=n7LBe6S0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gu8si14782538ejb.107.2019.10.24.05.46.08
+        by mx.google.com with ESMTPS id j20si1736337qtr.248.2019.10.24.05.50.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 05:46:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Oct 2019 05:50:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Armzvw1J;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41390 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=n7LBe6S0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41554 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNcVD-0007wu-7p
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 08:46:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46363)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNcZ8-0001s8-Cg
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 08:50:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42130)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@gmail.com>) id 1iNcBq-00016P-2e
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 08:26:07 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iNbfW-0006e8-1C
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 07:52:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@gmail.com>) id 1iNcBo-00082L-99
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 08:26:05 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:33094)
+ (envelope-from <peter.maydell@linaro.org>) id 1iNbfU-0002HE-FY
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 07:52:41 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:40975)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
- id 1iNcBo-00081T-0G; Thu, 24 Oct 2019 08:26:04 -0400
-Received: by mail-wr1-x444.google.com with SMTP id s1so17089431wro.0;
- Thu, 24 Oct 2019 05:26:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iNbfT-0002GM-SK
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 07:52:40 -0400
+Received: by mail-ot1-x341.google.com with SMTP id 94so455846oty.8
+ for <qemu-arm@nongnu.org>; Thu, 24 Oct 2019 04:52:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=zl8Qp6dJTRdyRz7AMr5NQJesKBKJIZvL1RF+5cEB3nQ=;
- b=Armzvw1Je9EZEKkLuOUnElojigAoGIS4yYdB9N4JmyLAvZZsbQoleGEMnQ3+XZ6GPL
- 6NIc2aJGHzcSJTh52leEM0rePP+/kfoCQ/68dE3nlXgdxRgyonYqMuXCQX2TH6j5xWd0
- xnH141O768oJUQG7vxN3RG62O1PQPlcLdSEYpRb4clGnsnDT/y4BPQ+UabsOOnGsmCkK
- qezHTtRJwPKzD9i9xMIY4r1+kb+QIRRCp8iQFzecveGJaKdNaSLeTwVUIBOkX0wlA985
- S5SPHA5QdptPv5n3ErVLKUln52BJH9wBkYZbTsD/4W23KwKgeqX6b7QkNgURrszzVuVd
- eWOQ==
+ bh=Yc2rcnVA2Lk9wwG5059ptOPuD0SUyeMds9j2vZiOKLc=;
+ b=n7LBe6S0xgI9UQr1nzYKxNUZioAcah8IYI0SKUFwbmNKSDtwMSRsRMSaXt3d7gDT1e
+ qPwnPp7UQvI92ca6jqsEqsi0avZM2vTvW8pEOdZNC646vSrly5dlyhE1eUZ1vLAC4R9O
+ 4KdPxuz3PsYoYrZbCfA7TKiBuVD+dV36cI3p+7BaMnH6UjLcbrO+P6lyhzBekLdixsdI
+ ACzgaEPeYh2CxtZbaPWWDtxXmWR5Fgtc6TP24Q7PRp+2P7XccSPqP1gl9STVNFz/wxCC
+ zknGrHDXdz1gaDR+MKP+H5DEqRK6D5sECNZx8SJABELAsm50d8v0SxoQ4wHTjom2vWiD
+ 8gTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=zl8Qp6dJTRdyRz7AMr5NQJesKBKJIZvL1RF+5cEB3nQ=;
- b=arN74MHwnuegmRiM0EOrUa+CVLRVyt7m+30qanTTNtoWsjSxrDWLiXh8NyKDLrpdag
- IH/g0gwW/HaFKxHzWJi2XkaXQH6UBz+boBVOWlWQY1q+dxExYDCSspjG+RELZdZr73Wh
- B6S0Pcf5gVAegfICs0Vhqc+xI++9/8WGPp12DbqYXcLCC6J1M2pBuG0FeFnd6NE8QUTX
- MdRJkaINeg+b6v3wpQKtHymHwLv3uqlL5rxKA9H0+GeSdW6V/YIhMPTLkBg30DEuHKQb
- lQl/q6puMl6RmWVhyqwjPSHpvNWZwmfrMClaiZYOGH7GSBF7vVDqqcrxZyROfKOE8av2
- hDuQ==
-X-Gm-Message-State: APjAAAXiTrWvKowhc0vKrq3p2+HbN8J83OOG4najx/85NLCJ+2NPV+o9
- 7jMKFq4G+4yxFzML19PaUbW6s2KPUXMyCpFehBw=
-X-Received: by 2002:a5d:6892:: with SMTP id h18mr3432048wru.370.1571919961831; 
- Thu, 24 Oct 2019 05:26:01 -0700 (PDT)
+ bh=Yc2rcnVA2Lk9wwG5059ptOPuD0SUyeMds9j2vZiOKLc=;
+ b=LLPaCyl626wKCbyxsGTpCN3f+dto/HERtfQOO6W+4QYEsQCsJFS3+mPp+d/z1gcsxD
+ M3TtBjFfOIW1O7XzoBedWK1gy3RvvirMQVgDIL6la2BQsJiFm3Z4V+9267HOxkvs9V4e
+ LzEif5z4ytsELA/6xE0yX9PRz/1sk3hCOnGbwY/mlKF0gMlcf7Mq/vucpo2QWcgtOpop
+ THKLR3b5bjkhO8OlsD9loneKzBl7qshdwiByjGJbKGf37YusuI2CJvPUDvGwJTkOijc5
+ +1EOCSW9cJHYXmHF7yagiAmiiEuK0xIbJJMQDz9+LVZOWFh3a7O+Bq8Os4oBGb7LO5E1
+ k5Aw==
+X-Gm-Message-State: APjAAAXNSdypoov3gdr9f5mZEaqr1G3PFGwIjQmSPKHexw8nXllU6cYe
+ 3/qBUaesn6ktaH+oLh3M/9GWzaEiw74rV5GdZfTNeA==
+X-Received: by 2002:a9d:398a:: with SMTP id y10mr10728093otb.97.1571917958865; 
+ Thu, 24 Oct 2019 04:52:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
  <20191023173154.30051-22-marcandre.lureau@redhat.com>
@@ -88,163 +89,71 @@ References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
  <CAMxuvay9kroZUo7ZbdhJqKAdp52rMmLGv0LBvktb68B2CKg+Mw@mail.gmail.com>
  <2b9352d7-f4de-bd5c-62c5-cebec79e1c48@redhat.com>
 In-Reply-To: <2b9352d7-f4de-bd5c-62c5-cebec79e1c48@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Thu, 24 Oct 2019 14:25:49 +0200
-Message-ID: <CAJ+F1CLnJwpNovT7XyVuNJw6tVyGZEdPfovjTZG_=mQo6Y=hHw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 24 Oct 2019 12:52:28 +0100
+Message-ID: <CAFEAcA_A4edo3fQBJux6QBxkCf_r_EdrmYgv5OPidWDdn4aD8g@mail.gmail.com>
 Subject: Re: [PATCH v3 21/33] lance: replace PROP_PTR with PROP_LINK
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::444
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::341
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  qemu-devel <qemu-devel@nongnu.org>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paul Burton <pburton@wavecomp.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
  Magnus Damm <magnus.damm@gmail.com>,
  =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
  Richard Henderson <rth@twiddle.net>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QTrx4kGctUkr
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6UCdu4dNktjx
 
-On Thu, Oct 24, 2019 at 2:17 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> On 10/24/19 1:09 PM, Marc-Andr=C3=A9 Lureau wrote:
-> > Hi
-> >
-> >
-> > On Thu, Oct 24, 2019 at 1:01 AM Philippe Mathieu-Daud=C3=A9
-> > <philmd@redhat.com> wrote:
-> >>
-> >> On 10/23/19 7:31 PM, Marc-Andr=C3=A9 Lureau wrote:
-> >>> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> >>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> >>> ---
-> >>>    hw/dma/sparc32_dma.c | 2 +-
-> >>>    hw/net/lance.c       | 5 ++---
-> >>>    hw/net/pcnet-pci.c   | 2 +-
-> >>>    hw/net/pcnet.h       | 2 +-
-> >>>    4 files changed, 5 insertions(+), 6 deletions(-)
-> >>>
-> >>> diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
-> >>> index 0e5bbcdc7f..3e4da0c47f 100644
-> >>> --- a/hw/dma/sparc32_dma.c
-> >>> +++ b/hw/dma/sparc32_dma.c
-> >>> @@ -346,7 +346,7 @@ static void sparc32_ledma_device_realize(DeviceSt=
-ate *dev, Error **errp)
-> >>>        d =3D qdev_create(NULL, TYPE_LANCE);
-> >>>        object_property_add_child(OBJECT(dev), "lance", OBJECT(d), err=
-p);
-> >>>        qdev_set_nic_properties(d, nd);
-> >>> -    qdev_prop_set_ptr(d, "dma", dev);
-> >>> +    object_property_set_link(OBJECT(d), OBJECT(dev), "dma", errp);
-> >>>        qdev_init_nofail(d);
-> >>>    }
-> >>>
-> >>> diff --git a/hw/net/lance.c b/hw/net/lance.c
-> >>> index 6631e2a4e0..4d96299041 100644
-> >>> --- a/hw/net/lance.c
-> >>> +++ b/hw/net/lance.c
-> >>> @@ -138,7 +138,8 @@ static void lance_instance_init(Object *obj)
-> >>>    }
-> >>>
-> >>>    static Property lance_properties[] =3D {
-> >>> -    DEFINE_PROP_PTR("dma", SysBusPCNetState, state.dma_opaque),
-> >>> +    DEFINE_PROP_LINK("dma", SysBusPCNetState, state.dma_opaque,
-> >>> +                     TYPE_DEVICE, DeviceState *),
-> >>>        DEFINE_NIC_PROPERTIES(SysBusPCNetState, state.conf),
-> >>>        DEFINE_PROP_END_OF_LIST(),
-> >>>    };
-> >>> @@ -153,8 +154,6 @@ static void lance_class_init(ObjectClass *klass, =
-void *data)
-> >>>        dc->reset =3D lance_reset;
-> >>>        dc->vmsd =3D &vmstate_lance;
-> >>>        dc->props =3D lance_properties;
-> >>> -    /* Reason: pointer property "dma" */
-> >>> -    dc->user_creatable =3D false;
-> >>
-> >> But we still can not start it with the -device option and set the dma,
-> >> can we?
-> >
-> > This is a sysbus device, so you can't. I'll add a commit comment.
->
-> Ah OK, understood now.
->
-> With comment:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
-> >
-> > In theory, link property allows you to pass a QOM path to reference a
-> > QOM instance from -device.
->
+On Thu, 24 Oct 2019 at 12:48, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
 > Just wondering, if we had a "bus_address" property to the abstract
 > SysBus class (and eventually "bus_name" for later) we could create/map
 > sysbus devices from command line?
 
-I can't tell much, as I am not very familiar with the various sysbus
-devices. I think you'll have troubles to specify the various io/mmio &
-irq to map to. In theory though, we could probably go in that
-direction, even perhaps make "machine" from command line or
-description file... I am not sure it's worth though.
+I don't think this is a good plan -- users shouldn't have to know
+about the memory map of their boards. Plus it doesn't deal with
+the complications of multiple address spaces, DMA, wiring up
+irq lines to an interrupt controller, SoC reset handling,
+clocks, power-managment...  Command line -device was designed
+for pluggable devices, where in the world of real hardware
+the device can be physically plugged and unplugged and there's
+a clear interface that can be modelled. You can't add an
+extra UART to an embedded board in real hardware either.
 
->
-> >>
-> >>>    }
-> >>>
-> >>>    static const TypeInfo lance_info =3D {
-> >>> diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
-> >>> index 4723c30c79..d067d21e2c 100644
-> >>> --- a/hw/net/pcnet-pci.c
-> >>> +++ b/hw/net/pcnet-pci.c
-> >>> @@ -231,7 +231,7 @@ static void pci_pcnet_realize(PCIDevice *pci_dev,=
- Error **errp)
-> >>>        s->irq =3D pci_allocate_irq(pci_dev);
-> >>>        s->phys_mem_read =3D pci_physical_memory_read;
-> >>>        s->phys_mem_write =3D pci_physical_memory_write;
-> >>> -    s->dma_opaque =3D pci_dev;
-> >>> +    s->dma_opaque =3D DEVICE(pci_dev);
-> >>>
-> >>>        pcnet_common_init(DEVICE(pci_dev), s, &net_pci_pcnet_info);
-> >>>    }
-> >>> diff --git a/hw/net/pcnet.h b/hw/net/pcnet.h
-> >>> index 28d19a5c6f..f49b213c57 100644
-> >>> --- a/hw/net/pcnet.h
-> >>> +++ b/hw/net/pcnet.h
-> >>> @@ -50,7 +50,7 @@ struct PCNetState_st {
-> >>>                             uint8_t *buf, int len, int do_bswap);
-> >>>        void (*phys_mem_write)(void *dma_opaque, hwaddr addr,
-> >>>                              uint8_t *buf, int len, int do_bswap);
-> >>> -    void *dma_opaque;
-> >>> +    DeviceState *dma_opaque;
-> >>>        int tx_busy;
-> >>>        int looptest;
-> >>>    };
-> >>>
->
+The only plausible argument I've seen for command-line
+plugging of embedded devices is as a sort of side-effect
+of having a configuration language syntax for them for
+the purpose of being able to write board models as
+data-driven config files rather than in C code. But
+that would be a lot of design and engineering work, and
+if we want that I think we should approach it forwards,
+not arrive at it backwards by adding gradual tweaks like
+'address' properties to devices.
 
-
---=20
-Marc-Andr=C3=A9 Lureau
+thanks
+-- PMM

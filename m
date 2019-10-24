@@ -1,92 +1,93 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2162309wrq;
-        Thu, 24 Oct 2019 03:43:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyb63dWAQAxrVga7Iyf2iKOAj5MCRm9seWrVr5fl4KOvR3crA0gEAIeicg4o2K9EVyJU92i
-X-Received: by 2002:aa7:c301:: with SMTP id l1mr42369764edq.281.1571913810105;
-        Thu, 24 Oct 2019 03:43:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571913810; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2214791wrq;
+        Thu, 24 Oct 2019 04:28:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzM4S+PvzNeb4t5lTOSU4P9a0AH+V3NXM4DbTJVnrmP9tsMJSk6oIe6pca3tno/T6Q7DY2+
+X-Received: by 2002:a37:9c9:: with SMTP id 192mr481494qkj.358.1571916530408;
+        Thu, 24 Oct 2019 04:28:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571916530; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q4FP4tvyaY2KIq7wgT2FQLzWxams508KvngavFlctZR6bt9nNBAi/bfyw+P7qPMoD4
-         cFZrC3/fanIOVuAEfn6mn+y+aOlR0T1VP2UneQYEJeBDnsfTbbRdci4paxLb/17wNeKH
-         wwHM0nrfF1Vcn0Ls0pjuhy9cMs+I/cd3rXMAt993nYOMbkyYVp2hmAQs3dvQyDeE5d1r
-         9r09/rp2pNtahPYNhbO6kbVIMdJckxp810niPClWmMIfKqvgKExI9o+cVkODggakK9GG
-         Kz5mxprFZb35ooIIVP1OP5VVskAv2ugp7foEhdMHK4vOeSS0xkCj979bR2WkbV2XGRmr
-         ln/A==
+        b=d/vIqPLsC7H60hkkEAaxfJiewi2AX9KSLcaDJ49kbSwlBXrLHlA6kXHVHOR9HiyD4u
+         b3L9WhxkvbOSoDW2zJTQ+aqgB8qXx55dMjycg7dnxCnLRJ4W60/kASm7ImL/6jIaGg14
+         xvRLgbu9XpvXdQi6z2rWFTHcNBVrHPQj48vj+uWNzxpcLplNSJhIUTtxpaJSE4YhirXl
+         qQRi8uzi93WXuBkI6LqoimJXuwXgZSxbesYmPgcOiz6L+aZ8/5BdJhhUqBH13/eG1gTP
+         Gf0wENs7LBIKKflS7B5fYMqJocdkqY0S1XJUBC5DAAyJVMQgZ8aUTPtcsIhuXQGq5eEt
+         FqbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version;
-        bh=d7Wp61BGCGzkAAW7NSNW4W65oL+oV43yXlrfwYxbZWA=;
-        b=Quc+90wORccYGuM8rIsSkowrxAlB/XcwLG5a2DgxqzN7LN+g87IUibg02VKt59J5u1
-         GFQS99PNDAAtQFrzTQSenntwPu8SbK5gm4RCcig+hK7SuBmIWivC0xMvYcNP6xKqtYGy
-         oRrnFeavIGcs9OsfBIyQRvLFavZtBWsv0xz8uC5qmOiqdZtsZMKk6BkcEi75a8sdB3W+
-         S3rVoSN87LAq49+qXoOk6aQtErIotq3oJXUmQkSs02GxossgJpbINKc5g31tBfKZqSSI
-         W5MFJhQM0WN75m+mBDPSVc4WvzGQ9nAH/Y8vM24qLTUX5BlMg8eBxiJZP0JmUAShF6tR
-         AfNA==
+        bh=Rpd4JWd7D9PJPkDkZ9ciXvbQnSeIpR/ey7a2SgA/3pA=;
+        b=oGQZNsHaS5LeZDKzbQV4aNP0S8SMeqxlZwR08NiuPog5vq6oqgn1H0+zstNJ8rWWXB
+         qV7dwYSQFqAD65oGxGUly9ya+XeUpcbmeF2qfeu01divBC52FQZgNKSOTj7uQDXv+35K
+         /ZL/lh6Si8by4lN33BwE5advs9scVcAG3s4BckjhomSe5n2qhrnD3FoSp16olwL6vGuZ
+         E8aAkVK+4Eggp/TC6FjyXRdw8LeZ99aJDfMzGtM/7HEzLz3hS9tbCBF4PCdThTxFqB4T
+         qhrx+udtacR0xgD2zc0zZ9kOFOwXuuSCJoSQVRpS/RPmCtM1rCtiQRatetwRNmC37edb
+         LcbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s46si9801139edd.336.2019.10.24.03.43.29
+        by mx.google.com with ESMTPS id w185si20552325qka.122.2019.10.24.04.28.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 03:43:30 -0700 (PDT)
+        Thu, 24 Oct 2019 04:28:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38412 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNaaW-0006DH-Lv
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 06:43:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55051)
+	id 1iNbIP-00018l-6m
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 07:28:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60453)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mlureau@redhat.com>) id 1iNaMh-0006Dt-CD
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 06:29:13 -0400
+ (envelope-from <mlureau@redhat.com>) id 1iNazb-0003f2-9G
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 07:09:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mlureau@redhat.com>) id 1iNaMd-0006uI-6m
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 06:29:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58936)
+ (envelope-from <mlureau@redhat.com>) id 1iNazZ-0008EA-Rx
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 07:09:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55728)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1iNaMb-0006qi-Fo
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 06:29:07 -0400
+ (Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1iNazZ-0008Cx-Jn
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 07:09:21 -0400
 Received: from mail-oi1-f198.google.com (mail-oi1-f198.google.com
  [209.85.167.198])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 50B80C049E12
- for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 10:29:04 +0000 (UTC)
-Received: by mail-oi1-f198.google.com with SMTP id g25so13953840oiy.12
- for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 03:29:04 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id CA2774E4E6
+ for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 11:09:20 +0000 (UTC)
+Received: by mail-oi1-f198.google.com with SMTP id 6so805285oij.1
+ for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 04:09:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=d7Wp61BGCGzkAAW7NSNW4W65oL+oV43yXlrfwYxbZWA=;
- b=kjpNHNh5oUTsLYNPgQa4Ucu2H1ak9TPvsQVlBPGcn8B89uZeQf2cokT440DWtWYpTY
- AN2p/NZouc5F5IdGq5aheKhemaSHwgasojnQzWHMdnzmWwZSLKtsoj2rWWAo1yIP3chi
- vxJ7tqJc8QeMUi47Sq8tmQ4xseyoFYtMBUYuLWvdBKn0y3k4Z2odg5GWz2x3WQLtXXQ1
- BdSGTin1B8EGEaoVFkegC+xNvwN74V5muDux9DdVV/kqMWYHF5og48tLxdcVzhnkoZnD
- TFSLNEghLCZdubQoGswSMMRltZPgVhdGKoR1D6DpXPQ+Kc7cyYjDD+Hoaw3RHKJa19TP
- JTjA==
-X-Gm-Message-State: APjAAAUdHqq+b1VnIb5zhdiAMmk8WD00wRaSx9NZlh7GnxcU5DwUJBgN
- cAh+qxGtg/hYWVI9uUWXYgao0QgVvaoL5Z91FsLqFEjOp3VKExGr21FRqfoONnRQ4xkimfVzn07
- awNhigS0/5l+Q/1fBcO7R/6b3XEImYd0=
-X-Received: by 2002:aca:4fd8:: with SMTP id d207mr4093816oib.33.1571912943708; 
- Thu, 24 Oct 2019 03:29:03 -0700 (PDT)
-X-Received: by 2002:aca:4fd8:: with SMTP id d207mr4093783oib.33.1571912943430; 
- Thu, 24 Oct 2019 03:29:03 -0700 (PDT)
+ bh=Rpd4JWd7D9PJPkDkZ9ciXvbQnSeIpR/ey7a2SgA/3pA=;
+ b=uBlJbA3t1rS7Q4nOsGm84Ju771sVmqhHWAgQZaKHVEgm9aQFqeVLLGSo728O5351wJ
+ 0ebNEVA9L4jDLR2qKkI4mdIWrg9McTinDd0B+t9pjg/LJzB0ujyZu/J1EfYyDSszir9V
+ V/taR39GxycLCmPzWMIMb6tCyj/zOrFmDduu9covjgcC6pRUnpLdmitXyVn4kFREHqxD
+ 1fv6Mau8+dNQkC1jHA2M7XyBRp4xya/Fhl69BUGRIPkIe1LhPd1DCPHdBhBcXNr4wAlc
+ LmOZl7/qwgBoLN+hfMm2K/pxGiL5Riq2PUcnInNOetgGMj6RoIoc/xXNxtIbnHbJAAv+
+ Ha6g==
+X-Gm-Message-State: APjAAAXmHpyJWuoryCU6QsrYL1Q7gH/PHRosZK3G2tp4rPsLdqRQDuZF
+ xLTY5Ns/2qnNTZXCsl4jQBVCCxaMJnKdVpNhMfxSRxf2V9eBz8lUwoEVINz+/Q2Fl7hLUh7Sqph
+ /4cgrMo7gW2qENtE/HSlAO+jQWpSaboM=
+X-Received: by 2002:a05:6808:5c1:: with SMTP id
+ d1mr4181323oij.76.1571915358862; 
+ Thu, 24 Oct 2019 04:09:18 -0700 (PDT)
+X-Received: by 2002:a05:6808:5c1:: with SMTP id
+ d1mr4181298oij.76.1571915358579; 
+ Thu, 24 Oct 2019 04:09:18 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-20-marcandre.lureau@redhat.com>
- <0033fd98-f191-c3f5-4726-ba052254808a@redhat.com>
-In-Reply-To: <0033fd98-f191-c3f5-4726-ba052254808a@redhat.com>
+ <20191023173154.30051-22-marcandre.lureau@redhat.com>
+ <2d027692-e178-c1c8-8384-ad70ed345f29@redhat.com>
+In-Reply-To: <2d027692-e178-c1c8-8384-ad70ed345f29@redhat.com>
 From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Thu, 24 Oct 2019 12:28:52 +0200
-Message-ID: <CAMxuvawtzdWkyuZRoEs9Zmv9EsxeD6H_d+9-aEM0PetKjf1hbQ@mail.gmail.com>
-Subject: Re: [PATCH v3 19/33] sm501: make SerialMM a child,
- export chardev property
+Date: Thu, 24 Oct 2019 13:09:06 +0200
+Message-ID: <CAMxuvay9kroZUo7ZbdhJqKAdp52rMmLGv0LBvktb68B2CKg+Mw@mail.gmail.com>
+Subject: Re: [PATCH v3 21/33] lance: replace PROP_PTR with PROP_LINK
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
@@ -122,128 +123,97 @@ Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ELdGso54mUW/
+X-TUID: FG0QRIhc7/Pl
 
 Hi
 
-On Thu, Oct 24, 2019 at 12:58 AM Philippe Mathieu-Daud=C3=A9
+
+On Thu, Oct 24, 2019 at 1:01 AM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
 > On 10/23/19 7:31 PM, Marc-Andr=C3=A9 Lureau wrote:
-> > Embed the SerialMM sybus device, and re-export its "chardev" property.
-> > That way, we can get rid of PROP_PTR "chr-state" and better track
-> > devices relationship.
-> >
 > > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > > ---
-> >   hw/display/sm501.c | 31 ++++++++++++++++++++++---------
-> >   hw/sh4/r2d.c       |  2 +-
-> >   2 files changed, 23 insertions(+), 10 deletions(-)
+> >   hw/dma/sparc32_dma.c | 2 +-
+> >   hw/net/lance.c       | 5 ++---
+> >   hw/net/pcnet-pci.c   | 2 +-
+> >   hw/net/pcnet.h       | 2 +-
+> >   4 files changed, 5 insertions(+), 6 deletions(-)
 > >
-> > diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> > index 1f33c87e65..6efdf764c1 100644
-> > --- a/hw/display/sm501.c
-> > +++ b/hw/display/sm501.c
-> > @@ -1930,13 +1930,14 @@ typedef struct {
-> >       SM501State state;
-> >       uint32_t vram_size;
-> >       uint32_t base;
-> > -    void *chr_state;
-> > +    SerialMM serial;
-> >   } SM501SysBusState;
-> >
-> >   static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
-> >   {
-> >       SM501SysBusState *s =3D SYSBUS_SM501(dev);
-> >       SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-> > +    SerialState *ss =3D &s->serial.serial;
-> >       DeviceState *usb_dev;
-> >
-> >       sm501_init(&s->state, dev, s->vram_size);
-> > @@ -1958,17 +1959,18 @@ static void sm501_realize_sysbus(DeviceState *d=
-ev, Error **errp)
-> >       sysbus_pass_irq(sbd, SYS_BUS_DEVICE(usb_dev));
-> >
-> >       /* bridge to serial emulation module */
-> > -    if (s->chr_state) {
-> > -        serial_mm_init(&s->state.mmio_region, SM501_UART0, 2,
-> > -                       NULL, /* TODO : chain irq to IRL */
-> > -                       115200, s->chr_state, DEVICE_LITTLE_ENDIAN);
-> > +    if (qemu_chr_fe_backend_connected(&ss->chr)) {
->
-> Oh, this is a Companion Chip (Northbridge + Southbridge), mostly
-> implementing the display part, that's why it is in hw/display/.
->
-> The SM501_UART0 is always mapped here, no need to check for the backend.
-> (Not related to your series goal, but cleaning this might simplify this
-> patch).
-
-I see, I will drop a FIXME. Otherwise, it looks ok?
-
-
->
-> > +        MemoryRegion *mr;
-> > +        qdev_init_nofail(DEVICE(&s->serial));
-> > +        mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->serial), 0);
-> > +        memory_region_add_subregion(&s->state.mmio_region, SM501_UART0=
-, mr);
-> > +        /* TODO : chain irq to IRL */
-> >       }
+> > diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
+> > index 0e5bbcdc7f..3e4da0c47f 100644
+> > --- a/hw/dma/sparc32_dma.c
+> > +++ b/hw/dma/sparc32_dma.c
+> > @@ -346,7 +346,7 @@ static void sparc32_ledma_device_realize(DeviceStat=
+e *dev, Error **errp)
+> >       d =3D qdev_create(NULL, TYPE_LANCE);
+> >       object_property_add_child(OBJECT(dev), "lance", OBJECT(d), errp);
+> >       qdev_set_nic_properties(d, nd);
+> > -    qdev_prop_set_ptr(d, "dma", dev);
+> > +    object_property_set_link(OBJECT(d), OBJECT(dev), "dma", errp);
+> >       qdev_init_nofail(d);
 > >   }
 > >
-> >   static Property sm501_sysbus_properties[] =3D {
-> >       DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
-> >       DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
-> > -    DEFINE_PROP_PTR("chr-state", SM501SysBusState, chr_state),
+> > diff --git a/hw/net/lance.c b/hw/net/lance.c
+> > index 6631e2a4e0..4d96299041 100644
+> > --- a/hw/net/lance.c
+> > +++ b/hw/net/lance.c
+> > @@ -138,7 +138,8 @@ static void lance_instance_init(Object *obj)
+> >   }
+> >
+> >   static Property lance_properties[] =3D {
+> > -    DEFINE_PROP_PTR("dma", SysBusPCNetState, state.dma_opaque),
+> > +    DEFINE_PROP_LINK("dma", SysBusPCNetState, state.dma_opaque,
+> > +                     TYPE_DEVICE, DeviceState *),
+> >       DEFINE_NIC_PROPERTIES(SysBusPCNetState, state.conf),
 > >       DEFINE_PROP_END_OF_LIST(),
 > >   };
-> >
-> > @@ -1999,9 +2001,19 @@ static void sm501_sysbus_class_init(ObjectClass =
-*klass, void *data)
-> >       dc->props =3D sm501_sysbus_properties;
-> >       dc->reset =3D sm501_reset_sysbus;
-> >       dc->vmsd =3D &vmstate_sm501_sysbus;
-> > -    /* Note: pointer property "chr-state" may remain null, thus
-> > -     * no need for dc->user_creatable =3D false;
-> > -     */
-> > +}
-> > +
-> > +static void sm501_sysbus_init(Object *o)
-> > +{
-> > +    SM501SysBusState *self =3D SYSBUS_SM501(o);
-> > +    SerialMM *s =3D &self->serial;
-> > +
-> > +    sysbus_init_child_obj(o, "serial", s, sizeof(SerialMM), TYPE_SERIA=
-L_MM);
-> > +    qdev_prop_set_int32(DEVICE(s), "instance-id", SM501_UART0);
-> > +    qdev_prop_set_uint8(DEVICE(s), "regshift", 2);
-> > +    qdev_prop_set_uint8(DEVICE(s), "endianness", DEVICE_LITTLE_ENDIAN)=
-;
-> > +
-> > +    object_property_add_alias(o, "chardev", OBJECT(s), "chardev", &err=
-or_abort);
+> > @@ -153,8 +154,6 @@ static void lance_class_init(ObjectClass *klass, vo=
+id *data)
+> >       dc->reset =3D lance_reset;
+> >       dc->vmsd =3D &vmstate_lance;
+> >       dc->props =3D lance_properties;
+> > -    /* Reason: pointer property "dma" */
+> > -    dc->user_creatable =3D false;
+>
+> But we still can not start it with the -device option and set the dma,
+> can we?
+
+This is a sysbus device, so you can't. I'll add a commit comment.
+
+In theory, link property allows you to pass a QOM path to reference a
+QOM instance from -device.
+
+>
 > >   }
 > >
-> >   static const TypeInfo sm501_sysbus_info =3D {
-> > @@ -2009,6 +2021,7 @@ static const TypeInfo sm501_sysbus_info =3D {
-> >       .parent        =3D TYPE_SYS_BUS_DEVICE,
-> >       .instance_size =3D sizeof(SM501SysBusState),
-> >       .class_init    =3D sm501_sysbus_class_init,
-> > +    .instance_init =3D sm501_sysbus_init,
-> >   };
+> >   static const TypeInfo lance_info =3D {
+> > diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
+> > index 4723c30c79..d067d21e2c 100644
+> > --- a/hw/net/pcnet-pci.c
+> > +++ b/hw/net/pcnet-pci.c
+> > @@ -231,7 +231,7 @@ static void pci_pcnet_realize(PCIDevice *pci_dev, E=
+rror **errp)
+> >       s->irq =3D pci_allocate_irq(pci_dev);
+> >       s->phys_mem_read =3D pci_physical_memory_read;
+> >       s->phys_mem_write =3D pci_physical_memory_write;
+> > -    s->dma_opaque =3D pci_dev;
+> > +    s->dma_opaque =3D DEVICE(pci_dev);
 > >
-> >   #define TYPE_PCI_SM501 "sm501"
-> > diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
-> > index ee0840f380..72bb5285cc 100644
-> > --- a/hw/sh4/r2d.c
-> > +++ b/hw/sh4/r2d.c
-> > @@ -272,7 +272,7 @@ static void r2d_init(MachineState *machine)
-> >       busdev =3D SYS_BUS_DEVICE(dev);
-> >       qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
-> >       qdev_prop_set_uint32(dev, "base", 0x10000000);
-> > -    qdev_prop_set_ptr(dev, "chr-state", serial_hd(2));
-> > +    qdev_prop_set_chr(dev, "chardev", serial_hd(2));
-> >       qdev_init_nofail(dev);
-> >       sysbus_mmio_map(busdev, 0, 0x10000000);
-> >       sysbus_mmio_map(busdev, 1, 0x13e00000);
+> >       pcnet_common_init(DEVICE(pci_dev), s, &net_pci_pcnet_info);
+> >   }
+> > diff --git a/hw/net/pcnet.h b/hw/net/pcnet.h
+> > index 28d19a5c6f..f49b213c57 100644
+> > --- a/hw/net/pcnet.h
+> > +++ b/hw/net/pcnet.h
+> > @@ -50,7 +50,7 @@ struct PCNetState_st {
+> >                            uint8_t *buf, int len, int do_bswap);
+> >       void (*phys_mem_write)(void *dma_opaque, hwaddr addr,
+> >                             uint8_t *buf, int len, int do_bswap);
+> > -    void *dma_opaque;
+> > +    DeviceState *dma_opaque;
+> >       int tx_busy;
+> >       int looptest;
+> >   };
 > >

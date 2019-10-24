@@ -1,104 +1,112 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2062484wrq;
-        Thu, 24 Oct 2019 02:07:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy+jSvCiD55P0eI2ghWSpDm839jUDGaqRjSzD6OIXfYWsETmMUuRsEOJHMB+3cPTxfPszox
-X-Received: by 2002:ac8:498b:: with SMTP id f11mr2970174qtq.150.1571908056079;
-        Thu, 24 Oct 2019 02:07:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571908056; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2110970wrq;
+        Thu, 24 Oct 2019 02:57:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxsFVgxiExwd2QSfqEJduifkLPnF+kfyH30G+Zw2J8+yUGEEXfC0inBZjr37ud/X2v4ZTEY
+X-Received: by 2002:a37:4703:: with SMTP id u3mr13026205qka.140.1571911051566;
+        Thu, 24 Oct 2019 02:57:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571911051; cv=none;
         d=google.com; s=arc-20160816;
-        b=d4fxHjgG/s19PRA1pL69J5eBTWwEYwKpFJU1BeHbmTYqd+qRmN0F7Ukr0NenB510wY
-         /99DN2B9p8apq61whT4+WnDd3i8lDQSA8VtHzEncoceWpWIvGhOPa+m7cNLaB6SnuDV1
-         FiG9RVSBJP7Le1eyFC+/6Q8SNp7uksRXbWoH2g2g2AJd+7sTa7XvTjV+5QSHfnmI9pA7
-         +0TQVKgoaYIK7hurxhU70yaPrBYF6bokxDmkozFv4AkZ9eCg8AcMD/tpTlTru0kUhhxc
-         /XD/G26EP4VwYNdMs9aIkprfwnlPRSSL6VAD3eayVRnjKks02rHzli7TZgSGED50ZTll
-         UGmw==
+        b=gKxx1usGxFKjlNlM0BqQZUMwmTebZqmh9x5iWmfWR3u6w89SIPgkADDxivAncQAzpx
+         nZiu3suh+iQf/Fw08fdv6nkii2xvZGaqHognB2W61PO++Lq20F/763vefiEiD9Vlh41c
+         SZ3l0WPtL46MqaiwMJovc2QbrvxSxWUdBDqI2rqi/26nL/P9c9pYD57ifZ1gKCSUl1WR
+         18YhZjNi87S1UIsFIqgbc116Fd+rdZZG45jgl73dpwYTA/2+X0xVi13bmJZa9NrqyKbA
+         JRQHShBzCZKBdQk8bcx/GusWq18hq1fNdF7QdL8XTa9Yv/WZ0aFUmCnt4KqGLLLGnx3L
+         p2aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=UDo616BZ+C1phhRsTqOfhdcBGtgd8QLcUd2Xek8QHqo=;
-        b=Pu1ivOxkxZD1j7+bYZWdhZg3BSnWc+9zsp98E0XXENdKkZSjWvNKypqJJTEjSpp5HT
-         soIfiXY7w8XXKaVIAlHkMtL4ZFsci8ioHd4dwtXdDuds6ScpWny+mbtkBl8K7B45moDB
-         qSEGDiz4mzSTia80JUXUWGuab9BSkn8dGkVuWIVaiWVyGn6Ng5wpg2AhLRJymmTGvC2k
-         LLH2uxlh6sCjpR/uhXScWKqskjZsKx00xa9FtFpiySyFAQ8azHSzYaTkwlzP8JDoo7Vw
-         0sCFnI9rXRVOOn9e9nKGK3FGkNdEuLYKZ9aGZRDxtszNXjcr74RTnUSFCPJXlSVKaotU
-         C4pg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:references:in-reply-to:date:to:from:subject
+         :message-id:dkim-signature;
+        bh=MtRiJQgfJ9ZnkixG1KDBOu+rrd/k/A5pzUFTb4qm5p0=;
+        b=SL0cZE1jdt8KRXq4DBRaVnsOFwhWvtq7MdytEEpZOCAmwvdRDO5Ex7B311NEjMohdw
+         vvsK0XgV+FdX4ZTK0lA6zJ9hfBAJM9ERHDZrKOA1JCwRI6iqS1JOBQUMEz97w2cJLrz6
+         5fSrkg4YvrBhpPdXQ2p+ImnbY51FRc85HMmdut/Yz8IjDJpPNF6AMv9rX2Ag2rIU6WLK
+         Osyg2W3xhyQHlWtV2QxQH2bPbaB4szQ3TLhe9rYfELbpiyi6GIMsuLSJOp5bKshEs1+3
+         IBRsc4UIUACJ2GObeWQ/O+9kZ2BkKl3/6iDdOhBNMQcDMKb/3gMhbCSmGw7wyeAipfkE
+         pALA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kReDDaf0;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HWgkSaHL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k23si20892404qkg.118.2019.10.24.02.07.35
+        by mx.google.com with ESMTPS id h65si21060752qkc.347.2019.10.24.02.57.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 02:07:36 -0700 (PDT)
+        Thu, 24 Oct 2019 02:57:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kReDDaf0;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HWgkSaHL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35882 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNZ5j-0002nJ-H7
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 05:07:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43202)
+	id 1iNZs2-0005Fp-Cu
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 05:57:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45527)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iNZ5b-0002lc-Ez
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 05:07:28 -0400
+ (envelope-from <estebanbosse@gmail.com>) id 1iNZHb-0005MA-Fb
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 05:19:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iNZ5a-00028j-CP
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 05:07:27 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:37158)
+ (envelope-from <estebanbosse@gmail.com>) id 1iNZHZ-0000Jl-Sj
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 05:19:51 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51872)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iNZ5a-00027w-6w
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 05:07:26 -0400
-Received: by mail-oi1-x243.google.com with SMTP id i16so19965169oie.4
- for <qemu-arm@nongnu.org>; Thu, 24 Oct 2019 02:07:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=UDo616BZ+C1phhRsTqOfhdcBGtgd8QLcUd2Xek8QHqo=;
- b=kReDDaf0y6EAJa5FqNEcgkdptw+m/Uty4JV9EKzwtnABgCo1HOUR3FkaC7pVX+56wn
- QBry+RRozeLeLM3X1mFVeoUs4XDVruSIeOjYyLsqP0kkYKGXc22O1gGRN+dK2RtUN62l
- lh//sw4hm325SoDB4uFRk+X0kiEsuC3UR2WTzNy9fleariWHQUMMBKuxva1YLzMYZt23
- iHViOHSSbKKZSc9avZaLO/Mvy1R0VQmQv4Mb29dh6EBvz3tzQc68XdJBwhRUyBXgvWl7
- bZEsJzO+NAW7lgJhX7yZPiUU8ZVpdxg+uzsa0CPVe9cBsWjytT+edJXCZnWcT9wsrZJ+
- aJig==
+ (Exim 4.71) (envelope-from <estebanbosse@gmail.com>)
+ id 1iNZHW-0000Gx-Uc; Thu, 24 Oct 2019 05:19:47 -0400
+Received: by mail-wm1-x344.google.com with SMTP id q70so1952739wme.1;
+ Thu, 24 Oct 2019 02:19:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=MtRiJQgfJ9ZnkixG1KDBOu+rrd/k/A5pzUFTb4qm5p0=;
+ b=HWgkSaHLaM4KT2a0iNnpJVNdZUAKQxKNvzIj5Z9o+o53prOV01jRgmPf1DMzsVo4iv
+ kxckSCehtsshUTI1VKlHo7W/EtaINb/4TyEztSvKLzO+lMDA6jMk/d09NeK5e0m+BBHJ
+ l8ywn6JAXGUx4sHRgwMe3s0CAJV+xtur1DJGCURfqkTXBypl5uxu8Vs7BNYmTOM5jOI8
+ LxNBGEBL9pJvr+q8ZLOPgAtAFf9eYo5UytM9mXOENCSrrxoBFQFzJvz8ZQvLuHYUuMbq
+ Z2frsHjlvPJsSB1FhH5cms6zfJK0ES26NlzLLf058x6B9Y2kkXVRd0QsqvevZG+1shb7
+ MwLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=UDo616BZ+C1phhRsTqOfhdcBGtgd8QLcUd2Xek8QHqo=;
- b=ZVuIb2PFbaEZ7aRDELSWUkk0H7D6+oD5oJovxWW3yzdIQyJil3kd2dufCDbDwqGcjo
- 8mMouJItNWCzEqX/sZDpQJWjZSqut2eMt9q/oECopBybi8RWB0OYpA8ssICjkijSanmn
- pFmuC8NAAUrEqf9ZqSmUIbUnoR7up0m7vVsvF3utWe2RNncYn0FNyVv502c0yGmF2kls
- OSNaAUU6+UQTc0J2cK2K+cgXkrN0qnZg37HG6bevCfGLN2VOpMJNLCYfqQIS0xZKPLmN
- 2nDtkdVY2jGVZzvkFjE0ljh9EyQhXsgVbZdAu3ussDN4mF/1aMUPrVh+FEp9LzrlEiBq
- 9P2Q==
-X-Gm-Message-State: APjAAAVTBKV8yUAB6mhQhzdkCcmAnSvXjiL8it121BXUhRa3UcnMvZhY
- iXlXDdP8QbRzITXWV+w05t4LcmdB/QS33HZjOGKgMA==
-X-Received: by 2002:a05:6808:608:: with SMTP id
- y8mr3548069oih.146.1571908045162; 
- Thu, 24 Oct 2019 02:07:25 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=MtRiJQgfJ9ZnkixG1KDBOu+rrd/k/A5pzUFTb4qm5p0=;
+ b=iYYnaXDNBSQBZEs6RYHiRCUSeue5qel61liM05BItbDsTaO/xwQOx/DqemBVITjwuc
+ 0ZpYP5xiLSsmAvhYnjRUDa1t+9VFkcMlo3uH+7n2zF7A2Mnk+XVeDZZCkKXGfKIi96b/
+ VjqiN+TTyecxebKbSmAJCHdVS4ZPPgMQdjNj+pRxswoTfSntc8u2bliEeiONqWiJBRmV
+ dhoOOUNFKq1RXOaE6Gyar1H/i4ejoZs5O5p8YMvyi2Igt2rkBpMIiqG5SOJlOEnwMwvS
+ UFBWHsFjEZJHYdSfkBWHBIn91DW4IGfU1km7pEogxLIpyBxEJRCmY49aDSkekyPZhaH0
+ mCBw==
+X-Gm-Message-State: APjAAAVXW3tz099tkB682NjTAYpK1Rj9YuhH7LZRxbe1b/WRYURHcI5y
+ VpyFDgOp/wVStbYSenYnKrA=
+X-Received: by 2002:a1c:64d4:: with SMTP id y203mr3976343wmb.27.1571908784275; 
+ Thu, 24 Oct 2019 02:19:44 -0700 (PDT)
+Received: from ?IPv6:2a01:c22:b04f:9c00:d5b4:db5f:bfb4:fdb?
+ ([2a01:c22:b04f:9c00:d5b4:db5f:bfb4:fdb])
+ by smtp.gmail.com with ESMTPSA id f8sm1926360wmb.37.2019.10.24.02.19.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Oct 2019 02:19:43 -0700 (PDT)
+Message-ID: <f623a5e67cec8934b136cf8ae68ba70dd58a6f84.camel@gmail.com>
+Subject: Re: [RFC PATCH 03/14] hw/misc/bcm2835_property: Handle the 'domain
+ state' property
+From: Esteban Bosse <estebanbosse@gmail.com>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>, Peter
+ Maydell <peter.maydell@linaro.org>, Andrew Baumann
+ <Andrew.Baumann@microsoft.com>,  qemu-devel@nongnu.org, Pekka Enberg
+ <penberg@iki.fi>,  =?ISO-8859-1?Q?Zolt=E1n?= Baldaszti <bztemail@gmail.com>
+Date: Thu, 24 Oct 2019 11:15:33 +0200
+In-Reply-To: <7023ba2c-edfa-8313-8138-0556f4a03023@amsat.org>
 References: <20190904171315.8354-1-f4bug@amsat.org>
- <20190904171315.8354-15-f4bug@amsat.org>
- <c8a8c7758104a1a5fe052743b5a22d3a1353de91.camel@gmail.com>
- <5f1dd044-2909-767d-5a79-8a40d330e129@amsat.org>
-In-Reply-To: <5f1dd044-2909-767d-5a79-8a40d330e129@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 24 Oct 2019 10:07:13 +0100
-Message-ID: <CAFEAcA9JXbqnKKK+m-7=FThXTa_x_kxRsvtwONWA69C2nb0=FA@mail.gmail.com>
-Subject: Re: [RFC PATCH 14/14] hw/arm/raspi: Add the Raspberry Pi 4B board
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+ <20190904171315.8354-4-f4bug@amsat.org>
+ <d02a29663183b8963bc34a0d1b031442d997ab62.camel@gmail.com>
+ <7023ba2c-edfa-8313-8138-0556f4a03023@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.30.5-1.1 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::243
+X-Received-From: 2a00:1450:4864:20::344
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,47 +118,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Zolt=C3=A1n_Baldaszti?= <bztemail@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+Cc: qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
+ =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Luc Michel <luc.michel@greensocs.com>
+ Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C/AnhPOP0nrC
+X-TUID: /gV3A95+8Yhd
 
-On Tue, 8 Oct 2019 at 10:04, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> Hi Esteban,
->
-> On 9/29/19 5:53 PM, Esteban Bosse wrote:
-> >> +static void raspi4_machine_init(MachineClass *mc)
-> >> +{
-> >> +    mc->desc =3D "Raspberry Pi 4B";
-> >> +    mc->init =3D raspi4_init;
-> >> +    mc->block_default_type =3D IF_SD;
-> >> +    mc->no_parallel =3D 1;
-> >> +    mc->no_floppy =3D 1;
-> >> +    mc->no_cdrom =3D 1;
-> >> +    mc->max_cpus =3D BCM283X_NCPUS;
-> >> +    mc->min_cpus =3D BCM283X_NCPUS;
-> >> +    mc->default_cpus =3D BCM283X_NCPUS;
-> >> +    mc->default_ram_size =3D 1 * GiB;
-> > The comercial models are: 1, 2 and 4 GiB. Why do you choose 1 GiB as
-> > default?
->
-> Well need one default, and 1GiB is the least beefy :)
-> You can start a VM with more using the '-m' switch.
+El mar, 08-10-2019 a las 11:32 +0200, Philippe Mathieu-Daudé escribió:
+> On 9/29/19 9:01 AM, Esteban Bosse wrote:
+> > El mié, 04-09-2019 a las 19:13 +0200, Philippe Mathieu-Daudé
+> > escribió:
+> > > The kernel is happy with this change, so we don't need
+> > > to do anything more sophisticated.
+> > > 
+> > > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> > > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> > > ---
+> > >   hw/misc/bcm2835_property.c | 8 ++++++++
+> > >   1 file changed, 8 insertions(+)
+> > > 
+> > > diff --git a/hw/misc/bcm2835_property.c
+> > > b/hw/misc/bcm2835_property.c
+> > > index 399f0d9dd5..d8eb28f267 100644
+> > > --- a/hw/misc/bcm2835_property.c
+> > > +++ b/hw/misc/bcm2835_property.c
+> > > @@ -127,6 +127,14 @@ static void
+> > > bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t
+> > > value)
+> > >               resplen = 8;
+> > >               break;
+> > >   
+> > > +        case 0x00030030: /* Get domain state */
+> > > +            qemu_log_mask(LOG_UNIMP,
+> > > +                          "bcm2835_property: 0x%08x get domain
+> > > state
+> > > NYI\n",
+> > > +                          tag);
+> > > +            /* FIXME returning uninitialized memory */
+> > > +            resplen = 8;
+> > > +            break;
+> > > +
+> > >           case 0x00038002: /* Set clock rate */
+> > >           case 0x00038004: /* Set max clock rate */
+> > >           case 0x00038007: /* Set min clock rate */
+> > 
+> > Searching this property in the kernel, I found a lot of properties
+> > not
+> > implemented.
+> > https://github.com/raspberrypi/linux/blob/rpi-4.19.y/include/soc/bcm2835/raspberrypi-firmware.h#L41
+> > Are the properties only added when they are necessaries for the
+> > standard kernel use?
+> 
+> Yes, the idea is to emulate the bare minimum required to run your
+> guest 
+> code. To test this series I used the closed source kernel provided
+> by 
+> the Raspberry Pi foundation [1] which the one that does the most of 
+> UNIMP accesses, the Debian trunk one and I build one from [2].
+> 
+> The problem is old kernels don't support the raspi4, and recent
+> kernels 
+> do a lot of property calls to use recent features.
+> 
+> A "property call" is a call from the ARM core to the VideoCore
+> firmware, 
+> like a Remote Procedure Call. The ARM core write some 
+> arguments/structure to a memory space shared with the VideoCore, use
+> a 
+> MailBox to send a 'property' key to the VideoCore and wait/poll for
+> a 
+> response from the VC. The VC handles the 'property' call, if
+> required 
+> fills the structure in the same memory space the ARM used, then
+> reply 
+> via another MailBox channel to notify the ARM core.
+> 
+> QEMU does not model the VideoCore. Instead we directly fill the
+> memory 
+> from the ARM property call. We fake the VC firmware.
+> 
+> [1] 
+> https://github.com/raspberrypi/firmware/blob/master/boot/kernel8.img
+> [2] https://github.com/raspberrypi/linux/tree/rpi-5.3.y
+Thank you very much for all the data Phil.
 
-Among other things, a 2GB or more board will fail
-'make check' on a 32-bit host, because 'make check' tries
-to start all board models, and 32-bit hosts can only
-handle up to 2047MB of guest RAM.
+Now I understood "the idea is to support the bare minimum for the
+guest", I thought that the idea was a full HW support, but make sense
+it's a lot of work to give full HW support.
 
-thanks
--- PMM

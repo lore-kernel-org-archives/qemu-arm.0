@@ -1,248 +1,216 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4814805wrm;
-        Mon, 21 Oct 2019 09:43:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwfMlm6APSmX9j9MsOFQvnEUAmdqYkFb7mD1oAoxabii3oH4O+QREBSW6+4qKkbFzGEzqbT
-X-Received: by 2002:a17:902:6bc9:: with SMTP id m9mr25085149plt.227.1571676197174;
-        Mon, 21 Oct 2019 09:43:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571676197; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2374483wrq;
+        Thu, 24 Oct 2019 06:47:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxkEf1/KwY6WXCiSrGOpRNW6MUjZOnuZXRtxjGc/z7ECQ5iWD953X1wSDvqkanDlKN9lBfu
+X-Received: by 2002:aed:22c1:: with SMTP id q1mr1695484qtc.337.1571924850031;
+        Thu, 24 Oct 2019 06:47:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571924850; cv=none;
         d=google.com; s=arc-20160816;
-        b=KeR05Xpx6jR5Ty2DueR93++14yhR51o2pqWAv3u0nU7n5Ro24e5zYIufwMf5hxT3JE
-         KZ3DNWXXuppCFP5khrx4NycHu0Z5wA8wXYpDfE9EY01U+hsu7ojMp5oMk8mDIHa5np9S
-         Q/UpPf5K0skNN2zLJNfo3bqo6q9c3a2RICdD0f5Hk/ctw5k2gg0x9J1oPozKzFEr1MX9
-         h2V0TF+5435FpsyWOg6dU1FQyk/r3wFHy9DmmlXgIJYrmA+ZZD+vq+fHVAH9/B7BCKkB
-         RtAukTcL95wX+UrwP8laONxt7XQoxFeOVtb1iY1B+KvrBcHGvtYgXtLIyK2cEmErm4Nc
-         Zbzw==
+        b=G2O7YzKwhH8n7K4S6nnQRIj2NfM41Cj7MT4AyRfygWGVvN0s13W/FvT3KmLljsU6Ei
+         gemyi/WLI9S0Kbt1GtRiZcvd+xqqbXrSJGB6sR+xiAxf2Q/v9Xj+tu81BVnukoW0IEA9
+         A3ogb2MkDL6nlMvJeWXWCURxozeYt/K2fHffltlVDtLWA3QU88ZUuUZGE1grqDAjpSb2
+         wmJPShOFch6iwOOGy3sEXpYAz69SYkHYFy46w5IUr33kZmgDWOZpp1qaDpY9iYxdsq/1
+         fpew/rbEV5kAzilDKkSFRWrFGleYC5q8EeV/xKxZyzXXaayvKBws1v92psA8c/E+dDjK
+         P5kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:content-transfer-encoding:cc:list-subscribe
-         :list-help:list-post:list-archive:list-unsubscribe:list-id
-         :precedence:content-language:in-reply-to:mime-version:user-agent
-         :date:message-id:from:references:to:subject:dkim-signature;
-        bh=WxExWUQj1LY2l1UsPz9aVcyQOYabtRdP/ZRS2+VIVjc=;
-        b=c2Df8zQlk7AkuqC22r9sE5F7eHu44GEaFePTAUOCwrcI5FKtSRGDajw74vU+89OBjm
-         2ZLVEfWBozIezkRihc94jGFppL+OuWEPak2LdS8z8H1RlvEB1zv+l8JNPH83Oenho8Y1
-         WnJo/pnD39d7JOJCMWvQ/szf0aTuVQ/X04WE7Rx6N1Yxt3VV/5jQOZQtykSUiD8FXtgw
-         poCXypfQ+y2HDB0zoa8uJo+67GSg9rYYH5O8Skb+Z/wsx4z6G/+YpiANtbhG053jRBWm
-         PAle6eTCzokFWNp7Ccq4axyfqkXB83gGCqRVS/fhqgC83QFrd0Wb7GFkYb810f/PB1mS
-         KJ+w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=e0UbnJ+yzB1G3ORMCib7xkuHeRJ1ILE6xP/Kp8yAg0c=;
+        b=L++w0eWGE541YVU/NrWUrc98g/FIZ/eAhc9Jc4Hm9+OGpDiwd+MiJhKZEHHYGy4bNZ
+         yf30YZ349QjU0r0fKzBmvw5s10yhkcrqAuRdwBxVTO0ei/ZsSkhy8qSR8tSsHOTGxpxG
+         HrL8hrgOn6raV4hx2raHhtkgIGo0ufOm0y7ZH/pAC7+CkgWpm3zLZlJ0eMh0MroBUhir
+         5aK9cnmC2LPvoKejbeixhLz7jyiebB33jysrBKFVuZ9eX+0uEPuEji5WxMD0UnUI9h6K
+         9HSPaaNuCSL9SZfH/MvdhxG4QN3uIP8ZkURhPSjTDDFm9WZ9eBWU7iy2PHqpN6edWtjg
+         PLpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=hDN2A2Lv;
-       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
-Return-Path: <linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org>
-Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
-        by mx.google.com with ESMTPS id ay11si14446703plb.46.2019.10.21.09.43.16
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dudvNZjP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 55si17155319qts.279.2019.10.24.06.47.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Oct 2019 09:43:17 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 24 Oct 2019 06:47:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=hDN2A2Lv;
-       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WxExWUQj1LY2l1UsPz9aVcyQOYabtRdP/ZRS2+VIVjc=; b=hDN2A2Lvq1FyjB
-	1VdLc/v8tA3Zm+bLM0RO7V+udMd+48Ct+lNVYW1rrvX/lIkRKKY6CZbQUmja2/kXEGTRgp8sqGrJB
-	hxROjXVVuO0OWMTbHqGDixfC/scC8ZvjVLiHBhlDLRnXe3zxRNZaZEXksD3+Mm5PaJozBs0JA9p9a
-	odW3mW1pUtPQq9bOP9egdczpB7yPTV+o1K4VCrwsU8BrkaES2wwThIVqBnKPe3fhysstODF0uYjer
-	Wz9qEc5vpS9fionGJvTkdLu4+aF1LtC24OfBT6PScv4ogmDorda98TqUg7HsYUjbwCO+HpRToA1sM
-	s2toLtNIl3g+3y5B5ZYw==;
-Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMam0-0000gc-BC; Mon, 21 Oct 2019 16:43:12 +0000
-Received: from [217.140.110.172] (helo=foss.arm.com)
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMalx-0000fL-JH
- for linux-arm-kernel@lists.infradead.org; Mon, 21 Oct 2019 16:43:11 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 73E8E1715;
- Mon, 21 Oct 2019 09:42:57 -0700 (PDT)
-Received: from [10.1.196.105] (unknown [10.1.196.105])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8640C3F71F;
- Mon, 21 Oct 2019 09:42:55 -0700 (PDT)
-Subject: Re: [RFC PATCH 1/2] kvm/arm: add capability to forward hypercall to
- user space
-To: Guoheyi <guoheyi@huawei.com>
-References: <1569338454-26202-1-git-send-email-guoheyi@huawei.com>
- <1569338454-26202-2-git-send-email-guoheyi@huawei.com>
- <e097fb69-1e68-4082-d310-e7666e30b5d6@arm.com>
- <d62b84ac-1a7e-de05-a1c1-c52dfb463462@huawei.com>
-From: James Morse <james.morse@arm.com>
-Message-ID: <22aa23e0-cd4e-3692-ee94-e110ace49adb@arm.com>
-Date: Mon, 21 Oct 2019 17:42:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dudvNZjP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43052 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNdSa-0008Bf-JP
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 09:47:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58467)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iNdIe-00080P-8U
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 09:37:13 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iNdIb-0004ND-MY
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 09:37:11 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:39107)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iNdIb-0004Md-Dk; Thu, 24 Oct 2019 09:37:09 -0400
+Received: by mail-wr1-x442.google.com with SMTP id a11so10043063wra.6;
+ Thu, 24 Oct 2019 06:37:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=e0UbnJ+yzB1G3ORMCib7xkuHeRJ1ILE6xP/Kp8yAg0c=;
+ b=dudvNZjP6toM3VR0VGvj7/ZLBmQ/eHnnfy8Q3lLo623rT+cW5EI2TW5VJc01nAKLoa
+ SqK6JAxxrt/xKhn2MnH5kkZdfCLntllzC8zyqmYvgGkXMV6axg7N8cof+3XQ7p/q3j/K
+ bQWOCqtqpYJBC32fvWmZfun6DlPo2c3jlmqAWNPT7Ys2aiZO9oCvBfDL7VslSC3gv7jz
+ maTzs6MGLUUBYNy6rkO6z4cUhuEzlMaA962F8bqc8wReW01VqQmmDrRvndLN6OtUIUuf
+ qDbOT6fZ6bK7DELkWK4a196QxXzXc0/bROBUhQfcAiJ6TOqS9/HI8CPmUGEjdoeXNy+B
+ Bbvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=e0UbnJ+yzB1G3ORMCib7xkuHeRJ1ILE6xP/Kp8yAg0c=;
+ b=PxO/CqUSsSHmnQP0TvcYh5jk2ysPJ3sEkFGcy4kc5lwJDYeulCm9OfwDDi8qbR6VEi
+ gV4j7+37ntbhbKEsfDgyI1T+Lv92HTUuJ8u9FADdgUg4K2lqEbDLQ8asKsWmAELHF5f0
+ kr3EFH9Ai2tI9FCori18ogmKDkcI5QBIKtCJ6CBy65h74Ygd40H5JZqwMLyOmEYfcbhA
+ 4CvmCwcwpwSwuJZlkdANjLchMNLypnfimwAxFK/5VTcXHvZ3Tro4KzLz+G5vhYzUcUN8
+ leZsiO7vwgqdXasw1LQKucaGWDXkz+cI+MDda0CszffSv3i/J2wtmQ/uUFbV83EUVApi
+ v8Nw==
+X-Gm-Message-State: APjAAAWu4KbLr1qoHyo+ZyxPd5RM9fHkvaY09cdh53xh1v5EV5LWPrbA
+ 1+jHbukAnCJQ6sEPTlvlnfc=
+X-Received: by 2002:a5d:6585:: with SMTP id q5mr4252448wru.74.1571924227985;
+ Thu, 24 Oct 2019 06:37:07 -0700 (PDT)
+Received: from [192.168.1.115] (129.red-83-57-174.dynamicip.rima-tde.net.
+ [83.57.174.129])
+ by smtp.gmail.com with ESMTPSA id s26sm2687945wmh.23.2019.10.24.06.37.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 24 Oct 2019 06:37:07 -0700 (PDT)
+Subject: Re: [PATCH v3 11/16] hw/arm/raspi: Use -smp cores=<N> option to
+ restrict enabled cores
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20191019234715.25750-1-f4bug@amsat.org>
+ <20191019234715.25750-12-f4bug@amsat.org>
+ <CAFEAcA_w1zW4ewY-ts=yJbKFNRVhOjXuAtj9_0rt4EvD3qkm3Q@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <cc387b5c-e7a9-9340-2cc7-130f36eb6773@amsat.org>
+Date: Thu, 24 Oct 2019 15:37:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <d62b84ac-1a7e-de05-a1c1-c52dfb463462@huawei.com>
-Content-Language: en-GB
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_094309_724032_DEEAA198 
-X-CRM114-Status: GOOD (  35.23  )
-X-Spam-Score: 1.3 (+)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.3 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
-X-BeenThere: linux-arm-kernel@lists.infradead.org
-X-Mailman-Version: 2.1.29
+In-Reply-To: <CAFEAcA_w1zW4ewY-ts=yJbKFNRVhOjXuAtj9_0rt4EvD3qkm3Q@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::442
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <linux-arm-kernel.lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>, 
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>, 
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- Suzuki K Poulose <suzuki.poulose@arm.com>, Marc Zyngier <marc.zyngier@arm.com>,
- Catalin Marinas <catalin.marinas@arm.com>, linux-kernel@vger.kernel.org,
- Russell King <linux@armlinux.org.uk>, qemu-arm@nongnu.org,
- kvmarm@lists.cs.columbia.edu, Julien Thierry <julien.thierry.kdev@gmail.com>,
- wanghaibin.wang@huawei.com, Will Deacon <will@kernel.org>,
- Dave Martin <Dave.Martin@arm.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org
-X-TUID: ceoo8uVmGLUC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Matthias Brugger <mbrugger@suse.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Esteban Bosse <estebanbosse@gmail.com>, "Emilio G . Cota" <cota@braap.org>,
+ Clement Deschamps <clement.deschamps@antfield.fr>,
+ qemu-arm <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>,
+ Laurent Bonnans <laurent.bonnans@here.com>,
+ Cheng Xiang <ext-cheng.xiang@here.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Pekka Enberg <penberg@iki.fi>, Pete Batard <pete@akeo.ie>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: F06mtX2w1A4l
 
-SGkgSGV5aSwKCk9uIDA5LzEwLzIwMTkgMTM6MzMsIEd1b2hleWkgd3JvdGU6Cj4gT24gMjAxOS8x
-MC8yIDE6MTksIEphbWVzIE1vcnNlIHdyb3RlOgo+PiBPbiAyNC8wOS8yMDE5IDE2OjIwLCBIZXlp
-IEd1byB3cm90ZToKPj4+IEFzIG1vcmUgU01DL0hWQyB1c2FnZXMgZW1lcmdlIG9uIGFybTY0IHBs
-YXRmb3JtcywgbGlrZSBTREVJLCBpdCBtYWtlcwo+Pj4gc2Vuc2UgZm9yIGt2bSB0byBoYXZlIHRo
-ZSBjYXBhYmlsaXR5IG9mIGZvcndhcmRpbmcgc3VjaCBjYWxscyB0byB1c2VyCj4+PiBzcGFjZSBm
-b3IgZnVydGhlciBlbXVsYXRpb24uCj4+ICh3aGF0IGRvIHlvdSBtZWFuIGJ5IGZ1cnRoZXI/IERv
-ZXNuJ3QgdXNlci1zcGFjZSBoYXZlIHRvIGRvIGFsbCBvZiBpdD8pCj4gRm9yIGt2bSB3aWxsIGFs
-d2F5cyBoYW5kbGUgaHZjL3NtYyBndWVzdCBleGl0IGZvciB0aGUgZmlyc3Qgc3RlcCwgZXZlbiBp
-ZiBpdCBpcyBvbmx5IGEKPiBzaW1wbGUgZm9yd2FyZGluZywgSSBjYWxsZWQgdGhlIHVzZXItc3Bh
-Y2UgcHJvY2Vzc2luZyBhcyAiZnVydGhlciBlbXVsYXRpb24iLgo+IAo+Pj4gV2UgcmV1c2UgdGhl
-IGV4aXN0aW5nIHRlcm0gImh5cGVyY2FsbCIgZm9yIFNNQy9IVkMsIGFzIHdlbGwgYXMgdGhlCj4+
-PiBoeXBlcmNhbGwgc3RydWN0dXJlIGluIGt2bV9ydW4gdG8gZXhjaGFuZ2UgYXJndW1lbnRzIGFu
-ZCByZXR1cm4KPj4+IHZhbHVlcy4gVGhlIGRlZmluaXRpb24gb24gYXJtNjQgaXMgYXMgYmVsb3c6
-Cj4+Pgo+Pj4gZXhpdF9yZWFzb246IEtWTV9FWElUX0hZUEVSQ0FMTAo+Pj4KPj4+IElucHV0Ogo+
-Pj4gwqDCoCBucjogdGhlIGltbWVkaWF0ZSB2YWx1ZSBvZiBTTUMvSFZDIGNhbGxzOyBub3QgcmVh
-bGx5IHVzZWQgdG9kYXkuCj4+PiDCoMKgIGFyZ3NbNl06IHgwLi54NSAoVGhpcyBpcyBub3QgZnVs
-bHkgY29uZm9ybSB3aXRoIFNNQ0NDIHdoaWNoIHJlcXVpcmVzCj4+PiDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIHg2IGFzIGFyZ3VtZW50IGFzIHdlbGwsIGJ1dCB1c2Ugc3BhY2UgY2FuIHVzZSBHRVRf
-T05FX1JFRwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpb2N0bCBmb3Igc3VjaCByYXJlIGNh
-c2UpLgoKPj4gSWYgdGhpcyBzdHJ1Y3R1cmUgaXNuJ3QgcmlnaHQgZm9yIHVzLCB3ZSBjb3VsZCBk
-ZWZpbmUgYSBkaWZmZXJlbnQgb25lIGZvciBhcm0vYXJtNjQuCj4+ICh3ZSBkaWQgdGhpcyBmb3Ig
-a3ZtX3ZjcHVfZXZlbnRzKQoKPiBEbyB5b3UgbWVhbiB0aGF0IHdlIGNhbiBtb3ZlIHRoZSBoeXBl
-cmNhbGwgc3RydWN0IGRlZmluaXRpb24gdG8gYXJjaCBzcGVjaWZpYyBrdm1faG9zdC5oPwo+IEZv
-ciBpdCBpcyBpbiB0aGUgY29tbW9uIGt2bV9ydW4gc3RydWN0dXJlLCB3ZSdsbCBuZWVkIHRvIGNo
-YW5nZSBldmVyeSBrdm0gc3VwcG9ydGVkCj4gYXJjaGl0ZWN0dXJlcywgaW5jbHVkaW5nIHg4Niwg
-bWlwcywgcG93ZXJwYywgczM5MC4gSXMgaXQgYWNjZXB0YWJsZT8KCkFoISBTb3JyeSwgSSdkIG1p
-c3NlZCB0aGlzIHdhcyBpbiB0aGUga3ZtX3J1biBzdHJ1Y3R1cmUuIFRoZSBnZXQtZXZlbnRzIGV4
-YW1wbGUgZG9lc24ndAphcHBseSBoZXJlIGFzIHRoYXQgd2FzIGEgc2VwYXJhdGUgaW9jdGwoKS4K
-Cgo+Pj4gUmV0dXJuOgo+Pj4gwqDCoCBhcmdzWzAuLjNdOiB4MC4ueDMgYXMgZGVmaW5lZCBpbiBT
-TUNDQy4gV2UgbmVlZCB0byBleHRyYWN0Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IGFyZ3NbMC4uM10gYW5kIHdyaXRlIHRoZW0gdG8geDAuLngzIHdoZW4gaHlwZXJjYWxsIGV4aXQK
-Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJucy4KCj4+IEFyZSB3ZSBzYXlp
-bmcgdGhhdCBLVk1fRVhJVF9IWVBFUkNBTEwgZXhwZWN0cyB0byBiZSB1c2VkIHdpdGggU01DLUND
-Pwo+PiAoaWYgc28sIHdlIHNob3VsZCBzdGF0ZSB0aGF0KS4KCj4gWWVzIEkgZm9sbG93ZWQgU01D
-LUNDIHdoZW4gd3JpdGluZyB0aGlzLgoKPj4KPj4gSSdtIG5vdCBjZXJ0YWluIHdlIHNob3VsZCB0
-aWUgdGhpcyB0byBTTUMtQ0MuCj4+Cj4+IElmIHdlIGRvbid0IHRpZSBpdCB0byBTTUMtQ0MgdGhp
-cyBzZWxlY3Rpb24gb2YgaW4vb3V0IHJlZ2lzdGVycyBsb29rcyBvZGQsIHRoZXJlIGlzCj4+IG5v
-dGhpbmcgYWJvdXQgSFZDL1NNQyB0aGF0IHVzZXMgdGhlc2UgcmVnaXN0ZXJzLCBpdHMganVzdCB0
-aGUgU01DIGNvbnZlbnRpb24uCgo+IE1heWJlIHdlIGRvbid0IG5lZWQgdG8gdGllIGl0IHRvIFNN
-Qy1DQywgYW5kIHNpbXBseSBsb2FkIGFsbCB2YWx1ZXMgaW4gYXJnc1s2XSB0byBHUAo+IHJlZ2lz
-dGVycy4uLgo+IEFuZCB0aGVuIHRoZXJlIGlzIGVpdGhlciBubyBzdHJvbmcgcmVhc29uIHRvIGV4
-dGVuZCBoeXBlcmNhbGwgc3RydWN0dXJlIGZvciBBUk0uCgoKPj4+IEZsYWcgaHlwZXJjYWxsX2Zv
-cndhcmQgaXMgYWRkZWQgdG8gdHVybiBvbi9vZmYgaHlwZXJjYWxsIGZvcndhcmRpbmcKPj4+IGFu
-ZCB0aGUgZGVmYXVsdCBpcyBmYWxzZS4gQW5vdGhlciBmbGFnIGh5cGVyY2FsbF9leGNsX3BzY2kg
-aXMgdG8KPj4+IGV4Y2x1ZGUgUFNDSSBmcm9tIGZvcndhcmRpbmcgZm9yIGJhY2t3YXJkIGNvbXBh
-dGlibGUsIGFuZCBpdCBvbmx5Cj4+PiBtYWtlcyBzZW5zZSB0byBjaGVjayBpdHMgdmFsdWUgd2hl
-biBoeXBlcmNhbGxfZm9yd2FyZCBpcyBlbmFibGVkLgoKPj4gQ2FsbGluZyBvdXQgUFNDSSBsaWtl
-IHRoaXMgaXMgc29tZXRoaW5nIHdlIHNob3VsZG4ndCBkby4gVGhlcmUgd2lsbCBiZSwgKGFyZSEp
-IG90aGVyCj4+IFNNQy1DQyBjYWxscyB0aGF0IHRoZSBrZXJuZWwgcHJvdmlkZXMgZW11bGF0aW9u
-IGZvciwgd2UgY2FuJ3QgZWFzaWx5IGFkZCB0byB0aGlzIGxpc3QuCgo+IFllczsgSSBkaWRuJ3Qg
-ZmlndXJlIG91dCBnb29kIHdheSB0byBrZWVwIGNvbXBhdGliaWxpdHkgYW5kIGZ1dHVyZSBleHRl
-bnNpb24uLi4KCkkgdGhpbmsgdGhlIGJlc3QgdHJpY2sgaXMgbm90IHRvIGludGVycHJldCB0aGUg
-U01DL0hWQyBjYWxscyBmcm9tIHRoZSBndWVzdC4gVGhlIGtlcm5lbApvYnZpb3VzbHkgZG9lcywg
-YnV0IHRoZSBBUEkgc2hvdWxkbid0IGZvcmNlIHVzIHRvLgoKCj4+IEkgdGhpbmsgdGhlIGJlc3Qg
-d2F5IHRvIGF2b2lkIHRoaXMsIGlzIHRvIHNheSB0aGUgaHlwZXJjYWxsIG1lY2hhbmlzbSBmb3J3
-YXJkcyAndW5oYW5kbGVkCj4+IFNNQy9IVkMnIHRvIHVzZXItc3BhY2UuIFdoaWNoIHRoaW5ncyB0
-aGUga2VybmVsIGNob29zZXMgdG8gaGFuZGxlIGNhbiBjaGFuZ2UuCj4+Cj4+IFdlIG5lZWQgYSB3
-YXkgZm9yIHVzZXItc3BhY2UgdG8ga25vdyB3aGljaCBTTUMvSFZDIGNhbGxzIHRoZSBrZXJuZWwg
-d2lsbCBoYW5kbGUsIGFuZCB3aWxsCj4+IG5vdCBmb3J3YXJkLiBBIHN1Z2dlc3Rpb24gaXMgdG8g
-YWRkIGEgY28tcHJvY2Vzc29yIHRoYXQgbGlzdHMgdGhlc2UgYnkgI2ltbSBhbmQgcjAveDAKPj4g
-dmFsdWUuIFVzZXItc3BhY2UgY2FuIHRoZW4gcXVlcnkgYW55IGNhbGwgdG8gZmluZCBvdXQgaWYg
-aXQgd291bGQgYmUgZXhwb3J0ZWQgaWYgdGhlIGd1ZXN0Cj4+IG1hZGUgdGhhdCBjYWxsLiBTb21l
-dGhpbmcgbGlrZSBrdm1fYXJtX2dldF9md19yZWcoKS4KCj4gRG8geW91IG1lYW4gd2UgYWRkIG9u
-bHkgb25lIGNvLXByb2Nlc3NvciB0byBsaXN0IGFsbCBTTUMvSFZDIGNhbGxzIGtlcm5lbCB3aWxs
-IGhhbmRsZT8KClllcywgc29tZSB3YXkgb2YgbGlzdGluZyB0aGVtLgplLmcuIHVzZXItc3BhY2Ug
-d2FudHMgdG8gaGFuZGxlIEhWQydzIHdpdGggI2ltbT09MCBhbmQgdzA9PTB4ODQwMDAwMDAsIHRo
-aXMgY28tcHJvY2Vzc29yCndvdWxkIGxpc3QgdGhhdCBhcyBvbmUgb2YgdGhlIHRoaW5ncyB0aGF0
-IHRoZSBrZXJuZWwgd2lsbCBoYW5kbGUuCgpJZiB3ZSBjYW4gZmluZCBhIHdheSBvZiBkZXNjcmli
-aW5nIDY0Yml0IHJlZ2lzdGVyIHZhbHVlcyB0aGF0IHdvdWxkIHNhdmUgdGhlbSBmcm9tIGJlaW5n
-IGEKcHJvYmxlbSBpbiB0aGUgZnV0dXJlLCBidXQgaXQgbWF5IGJlIHRvbyBjb21wbGljYXRlZCB0
-byBkZXNjcmliZSBhIDY0Yml0IHJlZ2lzdGVyIHNwYWNlCmFuZCAxNiBiaXRzIG9mIGltbWVkaWF0
-ZS4KCkkgdGhpbmsgaXRzIG9rYXkgZm9yIHRoaXMgY28tcHJvY2Vzc29yIHRvIGJlIFNNQy1DQyBz
-cGVjaWZpYywgYXMgaXRzIGRlc2NyaWJpbmcgd2hhdCB0aGUKa2VybmVsIHN1cHBvcnRzLiBUaGUg
-S1ZNLWFwaSBpbiBjb250cmFzdCBzaG91bGQgYmUgZmxleGlibGUgZW5vdWdoIHRvIGRlc2NyaWJl
-IGFueXRoaW5nCmFueSBndWVzdCBtYXkgd2lzaCB0byBkby4KCgo+IFNvCj4gdGhlIHJlZyBzaXpl
-IHNob3VsZCBiZSBsYXJnZSBlbm91Z2ggdG8gaG9sZCB0aGUgbGlzdCwgZWFjaCBlbnRyeSBvZiB3
-aGljaCBjb250YWlucyBhICNpbW0KPiBhbmQgcjAveDAgcGFpcj8gSXMgdGhlIHJlZyBzaXplIGZp
-eGVkIGJ5IGRlZmluaXRpb24gb3IgaXQgY2FuIGJlIHF1ZXJpZWQgYnkgdXNlci1zcGFjZT8gSWYK
-PiBpdCBpcyBmaXhlZCwgd2hhdCdzIHRoZSBzaXplIHNob3VsZCB3ZSBjaG9vc2U/CgooZml4ZWQv
-bm90LWZpeGVkIC0gaXRzIGEgdHJhZGUtb2ZmIGZvciBjb21wbGV4aXR5IG5vdywgYnV0IG5vLW9u
-ZSBtYXkgZXZlciB1c2UgdGhlIGZ1bGwKZmxleGliaWxpdHkpLgoKSSB0aGluayB3ZSBjYW4gYXNz
-dW1lIHRoZSBrZXJuZWwgd2lsbCBvbmx5IG9mZmVyIHRoaW5ncyB0aGF0IGxvb2sgbGlrZSBTTUMt
-Q0MgdG8gdGhlCmd1ZXN0LiBJZiB0aGUgZ3Vlc3QgZG9lcyBzb21ldGhpbmcgb3V0c2lkZSB0aGlz
-IHNwYWNlLCBpdHMgdXAgdG8gdXNlci1zcGFjZSB0byBoYW5kbGUuIChzbwp0aGUgS1ZNLUFQSSBt
-dXN0IHN1cHBvcnQgbm9uLVNNQy1DQyBzdHVmZikuIEkgdGhpbmsgd2Ugc2hvdWxkIGRlZmluZSBh
-IGNvLXByb2Nlc3NvciBmb3IKU01DL0hWQyB3aGVyZSB0aGUgI2ltbSBpcyAwLiBUaGlzIHRoZW4g
-Z2l2ZXMgdXMgMzJiaXRzIG9mIHNwYWNlIHdlIGNhbiBtYXAgZGlyZWN0bHkgb250bwp0aGUgdzAg
-dmFsdWVzLgoKCj4gRG9lcyBpdCBtYWtlIHNlbnNlIHRvIGV4dGVuZCB0aGUgZW50cnkgdG8gaG9s
-ZCB0aGUgZnVuY3Rpb24gSUQgYmFzZSBhbmQgbGltaXQsIHNvIHRoYXQgaXQKPiBjYW4gZGVzY3Jp
-YmUgdGhlIHdob2xlIHJhbmdlIGZvciBlYWNoIGZ1bmN0aW9uIGdyb3VwLCBsaWtlIFBTQ0ksIFNE
-RUksIGV0Yz8KClRoaXMgbWF5IGJlIG92ZXItY29tcGxleCwgdXNlci1zcGFjZSB3b3VsZCBhbHdh
-eXMgbmVlZCB0byBlbnVtZXJhdGUgdGhlIHdob2xlIHRoaW5nLiBJCnRoaW5rIGNvbW1vbmx5IHVz
-ZXItc3BhY2Ugd291bGQgb25seSB3YW50IHRvIGtub3cgYWJvdXQgb25lIGVudHJ5OiBGb3IgY2Fz
-ZXMgd2hlcmUgd2Uga25vdwp0aGUgc3RydWN0dXJlLCB1c2VyLXNwYWNlIGNhbiBqdXN0IHF1ZXJ5
-IHRoZSAnX1ZFUlNJT04nIGNhbGwuIElmIHRoYXQgaXNuJ3Qgc3VwcG9ydGVkLAp1c2VyLXNwYWNl
-IGNhbiBhc3N1bWUgdGhlIHJlc3Qgb2YgdGhhdCBzcGFjZSBpcyB1bmltcGxlbWVudGVkLiAodGhl
-IGtlcm5lbCBzaG91bGRuJ3QKcHJvdmlkZSBhbiBpbmNvbXBsZXRlIGVtdWxhdGlvbiBvZiB0aGVz
-ZSBBUElzKQoKCj4+IEZvciAzMmJpdCwgYXJlIHdlIGdvaW5nIHRvIGV4cG9ydCBTTUMvSFZDIGNh
-bGxzIHRoYXQgZmFpbGVkIHRoZWlyIGNvbmRpdGlvbi1jb2RlIGNoZWNrcz8KCj4gSSdtIG5vdCBm
-YW1pbGlhciB3aXRoIDMyYml0LCBlaXRoZXIgd2UgZG9uJ3QgaGF2ZSAzMmJpdCBwbGF0Zm9ybXMg
-dG8gdGVzdCB0aGUgY29kZS4gU28gbXkKPiBwcmVmZXJlbmNlIGlzIG5vdCB0byBtYWtlIG1hbnkg
-Y2hhbmdlcyB0byAzMmJpdC4uLgoKSSdtIG5vdCB0aGF0IGZhbWlsaWFyIHdpdGggaXQgZWl0aGVy
-IC4uLiBZb3UgZG9uJ3QgaGF2ZSBhbnl0aGluZyB3aXRoIGFhcmNoMzIgc3VwcG9ydCBhdApFTDE/
-IEkgZG9uJ3QgdGhpbmsgd2Ugc2hvdWxkIGFkZCBhbiBBUEkgdGhhdCBvbmx5IHdvcmtzIHdpdGgg
-QWFyY2g2NCBndWVzdHMuCgpGb3IgMzJiaXQsIHdlIGVpdGhlciBuZWVkIHRvIGV4cG9zZSB0aGVz
-ZSBjb25kaXRpb24tY29kZSBiaXRzLCBhbmQgc2F5IHVzZXItc3BhY2Ugc2hvdWxkCndvcmsgb3V0
-IGlmIGl0IG5lZWRzIHRvIGRvIGFueXRoaW5nLiBPciwgaGFuZGxlIHRoaXMgaW4gdGhlIGtlcm5l
-bCwgaW4gd2hpY2ggY2FzZSB3ZSBkb24ndApuZWVkIHRvIGV4cG9zZSB0aGUgY29uZGl0aW9uLWNv
-ZGUgYml0cywgYnV0IHdlIHNob3VsZCBkb2N1bWVudCB0aGF0IHRoZSBrZXJuZWwgd2lsbCBkbyB0
-aGUKY2hlY2suCgoKTmVzdGVkLXZpcnQgbWF5IGNhdXNlIHNvbWUgJ2Z1bicgaGVyZS4gSWYgdXNl
-ci1zcGFjZSBzdGFydHMgYW4gYWFyY2g2NCBndWVzdCBhdCBFTDIsIGl0Cm1heSBzdGFydCBpdHMg
-b3duIGFhcmNoMzIgZ3Vlc3QgYXQgRUwxLiBJZiB0aGUgYWFyY2gzMiBndWVzdCBtYWtlcyBhbiBT
-TUMsIHdobyBoYW5kbGVzIGl0PwpJZiB1c2VyLXNwYWNlJ3MgYWFyY2g2NCBndWVzdCBkaWRuJ3Qg
-c2V0IHRoZSB0cmFwcyBmb3IgU01DLCBJIHRoaW5rIHRoaXMgc2hvdWxkIGJlCmRlbGl2ZXJlZCB0
-byB1c2VyLXNwYWNlLCB3aGljaCBtYXkgYmUgc3VycHJpc2VkIGJ5IHRoZSByZXF1ZXN0IGZyb20g
-YW4gYWFyY2gzMiBndWVzdC4KCihpdHMgYWxzbyBwb3NzaWJsZSBuZXN0ZWQtdmlydCBoYXMgbWUg
-Y29uZnVzZWQsIGl0IGlzIHByZXR0eSBtaW5kIGJlbmRpbmchKQoKCj4+IFRoZSBoeXBlcmNhbGwg
-c3RydWN0dXJlIHNob3VsZCBwcm9iYWJseSBpbmRpY2F0ZSB3aGV0aGVyIHRoZSBTTUMvSFZDIGNh
-bGwgY2FtZSBmcm9tCj4+IGFhcmNoMzIgb3IgYWFyY2g2NCwgYXMgdGhlIGJlaGF2aW91ciBtYXkg
-YmUgZGlmZmVyZW50LgoKPiBIb3cgYWJvdXQgdG8gdXNlIHRoZSBsb25nbW9kZSBmaWVsZCBpbiBo
-eXBlcmNhbGwgc3RydWN0dXJlPyBTdGFuZGFyZCBzZXJ2aWNlIGNhbGxzIHdpbGwKPiBpbmRpY2F0
-ZSB0aGlzIGluIGZ1bmN0aW9uIElELCBidXQgd2UgbWF5IG5lZWQgdG8ga25vdyBiZWZvcmUgcGFy
-c2luZyB0aGUgZnVuY3Rpb24gSUQsCj4gaXNuJ3QgaXQ/CgpTdXJlLCBhcyBpdHMgYSBfX3UzMiwg
-d2UgY291bGQgZHVtcCB0aGUgZ3Vlc3QgUFNUQVRFIGZyb20gU1BTUiBpbiB0aGVyZS4KCgpJIHRo
-aW5rIHRoZSBsYXN0IHRoaW5nIGlzICdyZXQnLCBhbmQgd2hldGhlciB3ZSBzaG91bGQgcHJvdmlk
-ZSBhIHdheSBvZiBwYXNzaW5nICd4MCcgYmFjawp0byB0aGUgZ3Vlc3QsIG9yIGV4cGVjdCB1c2Vy
-LXNwYWNlIHRvIHVzZSBzZXQtb25lLXJlZy4gTW9zdCBvZiB0aGUgdGltZSB1c2VyLXNwYWNlIHdp
-bGwKb25seSB3YW50IHRvIHNldCB4MCwgYW5kIGRvaW5nIHRoaXMgd291bGQgbGV0IHVzIGluaXRp
-YWxpc2UgaXQgdG8gYWxsLW9uZXMgaW4gdGhlIGtlcm5lbCwKd2hpY2ggbWVhbnMgdGhlIGd1ZXN0
-IGdldHMgdGhlIHVua25vd24tc21jIHZhbHVlIGJhY2sgaWYgdXNlci1zcGFjZSBpZ25vcmVzIHRo
-ZSBleGl0LgoKClRoYW5rcywKCkphbWVzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0t
-a2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+On 10/24/19 3:23 PM, Peter Maydell wrote:
+> On Sun, 20 Oct 2019 at 00:47, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> The abstract TYPE_BCM283X device provides a 'enabled-cpus' property
+>> to restrict the number of cores powered on reset. This because on
+>> real hardware the GPU is responsible of starting the cores and keep
+>> them spinning until the Linux kernel is ready to use them.
+>> When using the -kernel paramenter, QEMU does this by installing the
+>> 'raspi_smpboot' code when arm_boot_info::write_board_setup() is
+>> called. This is a special feature to help the Linux kernel, and can
+>> only be used with a Linux kernel.
+>>
+>> Even if loaded with the -kernel option, U-boot is not Linux, thus
+>> is not recognized as it and the raspi_smpboot code is not installed.
+>>
+>> Upon introduction of this machine in commit 1df7d1f9303, the -smp <N>
+>> option allowd to limit the number of cores powered on reset.
+>> Unfortunately later commit 72649619341 added a check which made this
+>> feature unusable:
+>>
+>>    $ qemu-system-aarch64 -M raspi3 -smp 1
+>>    qemu-system-aarch64: Invalid SMP CPUs 1. The min CPUs supported by machine 'raspi3' is 4
+>>
+>> Fortunately, the -smp option allow various kind of CPU topology:
+>>
+>>    -smp [cpus=]n[,maxcpus=cpus][,cores=cores][,threads=threads][,dies=dies][,sockets=sockets]
+>>             set the number of CPUs to 'n' [default=1]
+>>             maxcpus= maximum number of total cpus, including
+>>             offline CPUs for hotplug, etc
+>>             cores= number of CPU cores on one socket (for PC, it's on one die)
+>>             threads= number of threads on one CPU core
+>>             dies= number of CPU dies on one socket (for PC only)
+>>             sockets= number of discrete sockets in the system
+>>
+>> Let's use the 'cores' argument to specify the number of cores powered
+>> at reset to restore this feature, and allow to boot U-boot.
+> 
+>  From the help message quoted, 'cores' is about NUMA topology,
+> it's nothing to do with "how many cores do we have powerd on
+> on reset". We should definitely not be borrowing it for
+> an unrelated purpose.
+
+Yes, I was not sure. Is -smp only about NUMA topology?
+
+Should I try adding another argument, such 'online_cpus_mask'?
+
+>> We can now run U-boot using:
+>>
+>>    $ qemu-system-aarch64 -M raspi3 -smp 4,cores=1 ...
+> 
+> Either:
+>   (a) we need to support "act like the firmware/GPU" for
+> booting guest binaries on this board, in the same way that our PSCI
+> support is effectively emulating firmware-level facilities
+>   (b) the u-boot binary should be provided to QEMU in the
+> right image format to use the kernel boot ABI
+
+Well, u-boot is in the same format than the /boot/bootcode.bin 
+closed-source firmware provided by the Raspberry Pi foundation. This is 
+the format the GPU firmware understand when loading it on the 1st ARM core.
+
+I'll see what I can do (ab)using the -bios parameter.
+
+>   (c) u-boot could be wrapped in a small guest binary that
+> deals with handling all the secondary cores
+> 
+> I'm not really a huge fan of (a) because we already have a
+> huge pile of random weird ways of loading guest images
+> that are undocumented, behave differently from board to
+> board or architecture to architecture, etc. I'm not too
+> keen on making that swamp worse, even though there's an
+> argument that the right UI for a raspi board model is to
+> provide the same "load an ELF file" handling that the real
+> hardware does for ELF files via the GPU/firmware combo.
+
+This patch doesn't modify hw/arm/boot.c and reuse -smp features,
+it didn't seemed too invasive. Anyway I'll look for another path.
+
+Thanks,
+
+Phil.

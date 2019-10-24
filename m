@@ -1,215 +1,203 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp862856wrq;
-        Wed, 23 Oct 2019 06:06:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyRwIW+qswhDI7ybGK/MPu/hEtfalnz8PuyckarLe3k8MgeL3fDwMzknTG1qJQJSMs4sJkx
-X-Received: by 2002:a17:906:b318:: with SMTP id n24mr31971906ejz.248.1571835992230;
-        Wed, 23 Oct 2019 06:06:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571835992; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2060634wrq;
+        Thu, 24 Oct 2019 02:05:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx4paCgGZfYeqzT38N2HOVPH2sFrLzqxe/rXO9bu6cHj9UQEYBUw9HB+AcWJtgSxSjx1lPW
+X-Received: by 2002:a50:b634:: with SMTP id b49mr25665190ede.77.1571907951045;
+        Thu, 24 Oct 2019 02:05:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571907951; cv=none;
         d=google.com; s=arc-20160816;
-        b=Le4RZ0wCmJ8gGPFFrBWfLDegQg8ArqPe2/sUCVeYfpqNBQSxbu4q4D6uhHquaSzmSR
-         LvHaCNyOVtcNvNrHdnDyNLQfPieDFKX/DlstEpAwfYBBVwHihnHP5Whm0wUsbZZFVuik
-         Q/OEqwOoHakWdd7VH1ls+Gzw2vnVmDBDS7nvWLez+04JqafkRJZ1JB9KHI+32UIyvAwZ
-         G92k02pJNyxG/1egT9+qK8IMPEuA78Qk3BS7GpB/TSKmokWLsH+gufeE9LfpU/bMeI1G
-         2AOsoI1etFqsdX+fcDr6f+L+3cylJCdO9eLtOZJRitdKPI03vNDtBn97F48nfnmzNEMA
-         m3EA==
+        b=kvxwnDkKsO3Y/tN3eG/KIY/bjRp+Tsr4sMjXH3S5e8ZOdyB9UR+IJBV9Xo2O3R8TvI
+         nV/CIzV2lrAaOdhUoi2H6/LaFHM0Fc9IevMs6dfS7dPSIbUqgEkrf23FGH0MBWpRz4wF
+         JxLu3F++xLMg4F5xMZXbXNOZwJ4TJiF0tU0PQxFFO679NqzZVfcu5At3ksi9zDnnSDt5
+         1B/YoGNUlS6qgwnjHFRO7z+BVEmq7A0+T3iE38BetT2Vf+gZ+T0iyFQTyTBHrRJ3LRDU
+         WgbtbGtBhIRCZaDh2Az1zwPCWX7ACHppVgT+SZIkxlo0KnHp6VD+EO/H5Oj15v2si5XX
+         EuTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :message-id:mime-version:references:in-reply-to:date:subject:to:from;
-        bh=DlzbIdA/THlrxtBOWu6gUr37X9E0q8re7E0VKo1C4JQ=;
-        b=lNC19kcMkSAWRfNtiaXkY0vy9aNy/Ct+FSVqQyGjo7dgU/qJH4JJIJgLx2b2RgHu+q
-         Z92sCRJCGP7sBe9lj/roTBhgBq8eyCFct3/UArqlEic65xMoTD9/TzCt+HhMYTOzrydQ
-         /yagv69psfBzMXixPU8BdWJ451OQeDA9X+X6nuiWWF0dP7mXhSfh/tgYpOTxtZQLmCGU
-         UW4tcnaiLXA68rkR3sXEl1T41hPZxp1xsdWCBBXrwOaixB2Z/o1zkqq44yQmfqewR+Pl
-         cVqnJRkYvDG8ata1DA0GoTy69/drx81WrVLydGqVGeh7aaI3Zsmm/ATtIYCpG2npdtB9
-         OalQ==
+         :mime-version:user-agent:references:in-reply-to:date:to:from:subject
+         :message-id:dkim-signature;
+        bh=VAqQalthoG+xbrZURmZhEGl6mSw37NtdImucMDrxq9c=;
+        b=nUAP4NBhN3Lc0chOUBeDelFTiQQmGpeTeB/w4RML6JcbfUOvq8eRIrv3xCEI4SiSs5
+         SKctbBvdYroTkrb0TJJc5gG75TzrOS8jZ/iuPbuZ7xGzUDQWe8wSBQyJEM61A4T/1DSM
+         S5BZ+lr73Hf3l4UhH9i582DTuuq2mbmaaphhniTJO0MSltAiEzrZNCilPLuhU0zb23Ts
+         N4xUhrfIMg2lz+C6DojBB6a+/sIQC1NvqLdm7007UUGG7ADqfdSssCaLCaNi7qXQQaGP
+         kOCMvsbv/qPxH7O3NfRNQFXdVgwoYidYwV65RVOMW+XID+PS6FBkFHxPQt02OiBeK470
+         WgFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PDWJcV+P;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f54si7345412edb.255.2019.10.23.06.06.32
+        by mx.google.com with ESMTPS id u8si14429804ejt.219.2019.10.24.02.05.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2019 06:06:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Oct 2019 02:05:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35504 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PDWJcV+P;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNGLO-0001SX-N4
-	for alex.bennee@linaro.org; Wed, 23 Oct 2019 09:06:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42169)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNZ42-00011F-0T
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 05:05:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43009)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iNGKK-0001O9-8E
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 09:05:25 -0400
+ (envelope-from <estebanbosse@gmail.com>) id 1iNZ3p-0000xN-Es
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 05:05:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iNGKE-0000Jj-UN
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 09:05:24 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:29678)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iNGKE-0000EP-Ki
- for qemu-devel@nongnu.org; Wed, 23 Oct 2019 09:05:18 -0400
-Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x9ND42LH009874
- for <qemu-devel@nongnu.org>; Wed, 23 Oct 2019 09:05:09 -0400
-Received: from e06smtp03.uk.ibm.com (e06smtp03.uk.ibm.com [195.75.94.99])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2vtpvx1gn6-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-devel@nongnu.org>; Wed, 23 Oct 2019 09:05:09 -0400
-Received: from localhost
- by e06smtp03.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <qemu-devel@nongnu.org> from <clg@kaod.org>;
- Wed, 23 Oct 2019 14:05:06 +0100
-Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
- by e06smtp03.uk.ibm.com (192.168.101.133) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Wed, 23 Oct 2019 14:05:03 +0100
-Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
- [9.149.105.58])
- by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x9ND52Uv60162192
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 23 Oct 2019 13:05:02 GMT
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 80D504C04A;
- Wed, 23 Oct 2019 13:05:02 +0000 (GMT)
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6B0074C046;
- Wed, 23 Oct 2019 13:05:02 +0000 (GMT)
-Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Wed, 23 Oct 2019 13:05:02 +0000 (GMT)
-Received: from yukon.kaod.org.com (sig-9-145-76-221.uk.ibm.com [9.145.76.221])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id BBF42220170;
- Wed, 23 Oct 2019 15:05:01 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 2/2] aspeed: Add an AST2600 eval board
-Date: Wed, 23 Oct 2019 15:04:55 +0200
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191023130455.1347-1-clg@kaod.org>
-References: <20191023130455.1347-1-clg@kaod.org>
+ (envelope-from <estebanbosse@gmail.com>) id 1iNZ3n-0000fo-Be
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2019 05:05:37 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44432)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <estebanbosse@gmail.com>)
+ id 1iNZ3k-0000cO-RW; Thu, 24 Oct 2019 05:05:32 -0400
+Received: by mail-wr1-x444.google.com with SMTP id z11so1776898wro.11;
+ Thu, 24 Oct 2019 02:05:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=VAqQalthoG+xbrZURmZhEGl6mSw37NtdImucMDrxq9c=;
+ b=PDWJcV+P+qfaTI4Uk9WRKGz1XZ203NYg01OliYBmrrFXFRzkVXtznWDoTWEZy37umI
+ wL3rKi/e1/qDbBC54UrxrKRT8gjMZn/N7ADbJ2V3AT5TECH/0/w6z7u11xg9muSuZ8WX
+ PB5fSuKU+vW6kPhAp5f4RjQFHdSZ2ni6YCvIqqZnBUmEfsgyLGDg2bY7xnLc4IfNXR1H
+ hIf8aJrKkRo+kWvhAYPlHVXkAvNz3DxdAg1h0n0+2QgxNBFGu2WzK+jolf9aW9VDKBqJ
+ HlXvHSArd2zq4v3xIlLlhv/wyZMemCXS4Jjwy4QhHMZkiHlUp5mhXuuWOfGdOjCLISNR
+ hWJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=VAqQalthoG+xbrZURmZhEGl6mSw37NtdImucMDrxq9c=;
+ b=teDp0nZ4kYqQmbZesGjGEJjJd/pK3zxmCVK9kqLz933BahVuQ11alchYMyrZ1ijHQs
+ 13INZd4uW6w7ghBBD49w/xRaya59tKEd0ve4tkfalv3RUcGIkPrJvfgLOdUV1nDSuyG8
+ ROX5n+KA8oaQk1390Kbva56lf0pMVaQgg5Iv3Uflj7YDYZjaj0FstK7mO5Z6pAnlVHdq
+ 4G7R0dPk2P0A06yi5ZNisug+KgaQ0gOIckSC9tdPt6KXQTSoECY4n5wo3WlpOcKpuoRr
+ 0Ni0ZpGOce/q/bV1MfQwG54tWqjxzZNvl1NhTNbvvNBKDKwzIhF6nukramQ4kZzULvX4
+ 9gPQ==
+X-Gm-Message-State: APjAAAWg8ea4r/gmR2hvpA/46PvBZJRnb07SW2W6xVhDrCwv6Oj4nPTh
+ rrmBUX34rUfOyQrLt1r41pT87CCTtnrQEQ==
+X-Received: by 2002:adf:aacc:: with SMTP id i12mr2796325wrc.15.1571907930926; 
+ Thu, 24 Oct 2019 02:05:30 -0700 (PDT)
+Received: from Icho (x590ef5e8.dyn.telefonica.de. [89.14.245.232])
+ by smtp.gmail.com with ESMTPSA id w9sm17839792wrt.85.2019.10.24.02.05.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Oct 2019 02:05:30 -0700 (PDT)
+Message-ID: <ff4e0bbb9bfdadace1e0442fee0fdcf7fc34ca4f.camel@gmail.com>
+Subject: Re: [RFC PATCH 14/14] hw/arm/raspi: Add the Raspberry Pi 4B board
+From: Esteban Bosse <estebanbosse@gmail.com>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>, Peter
+ Maydell <peter.maydell@linaro.org>, Andrew Baumann
+ <Andrew.Baumann@microsoft.com>,  qemu-devel@nongnu.org, Pekka Enberg
+ <penberg@iki.fi>,  =?ISO-8859-1?Q?Zolt=E1n?= Baldaszti <bztemail@gmail.com>
+Date: Thu, 24 Oct 2019 11:01:29 +0200
+In-Reply-To: <20190904171315.8354-15-f4bug@amsat.org>
+References: <20190904171315.8354-1-f4bug@amsat.org>
+ <20190904171315.8354-15-f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-TM-AS-GCONF: 00
-x-cbid: 19102313-0012-0000-0000-0000035C2063
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19102313-0013-0000-0000-000021974F19
-Message-Id: <20191023130455.1347-3-clg@kaod.org>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-10-23_03:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=2 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1908290000 definitions=main-1910230134
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by
- mx0a-001b2d01.pphosted.com id x9ND42LH009874
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.156.1
-X-BeenThere: qemu-devel@nongnu.org
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::444
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, rashmica.g@gmail.com,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KeJKgnxYyaFU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
+ =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tfrxtK0VvNJ+
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
----
- include/hw/arm/aspeed.h |  1 +
- hw/arm/aspeed.c         | 23 +++++++++++++++++++++++
- 2 files changed, 24 insertions(+)
-
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index 02073a6b4d61..f49bc7081e4d 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -18,6 +18,7 @@ typedef struct AspeedBoardConfig {
-     const char *desc;
-     const char *soc_name;
-     uint32_t hw_strap1;
-+    uint32_t hw_strap2;
-     const char *fmc_model;
-     const char *spi_model;
-     uint32_t num_cs;
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 52993f84b461..028191ff36fc 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -88,6 +88,10 @@ struct AspeedBoardState {
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) *=
-/
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
-=20
-+/* AST2600 evb hardware value */
-+#define AST2600_EVB_HW_STRAP1 0x000000C0
-+#define AST2600_EVB_HW_STRAP2 0x00000003
-+
- /*
-  * The max ram region is for firmwares that scan the address space
-  * with load/store to guess how much RAM the SoC has.
-@@ -187,6 +191,8 @@ static void aspeed_board_init(MachineState *machine,
-                              &error_abort);
-     object_property_set_int(OBJECT(&bmc->soc), cfg->hw_strap1, "hw-strap=
-1",
-                             &error_abort);
-+    object_property_set_int(OBJECT(&bmc->soc), cfg->hw_strap2, "hw-strap=
-2",
-+                            &error_abort);
-     object_property_set_int(OBJECT(&bmc->soc), cfg->num_cs, "num-cs",
-                             &error_abort);
-     object_property_set_int(OBJECT(&bmc->soc), machine->smp.cpus, "num-c=
-pus",
-@@ -308,6 +314,12 @@ static void ast2500_evb_i2c_init(AspeedBoardState *b=
-mc)
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338"=
-, 0x32);
- }
-=20
-+static void ast2600_evb_i2c_init(AspeedBoardState *bmc)
-+{
-+    /* Start with some devices on our I2C busses */
-+    ast2500_evb_i2c_init(bmc);
-+}
-+
- static void romulus_bmc_i2c_init(AspeedBoardState *bmc)
- {
-     AspeedSoCState *soc =3D &bmc->soc;
-@@ -455,6 +467,17 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
-         .num_cs    =3D 2,
-         .i2c_init  =3D witherspoon_bmc_i2c_init,
-         .ram       =3D 512 * MiB,
-+    }, {
-+        .name      =3D MACHINE_TYPE_NAME("ast2600-evb"),
-+        .desc      =3D "Aspeed AST2600 EVB (Cortex A7)",
-+        .soc_name  =3D "ast2600-a0",
-+        .hw_strap1 =3D AST2600_EVB_HW_STRAP1,
-+        .hw_strap2 =3D AST2600_EVB_HW_STRAP2,
-+        .fmc_model =3D "w25q512jv",
-+        .spi_model =3D "mx66u51235f",
-+        .num_cs    =3D 1,
-+        .i2c_init  =3D ast2600_evb_i2c_init,
-+        .ram       =3D 1 * GiB,
-     },
- };
-=20
---=20
-2.21.0
+El mié, 04-09-2019 a las 19:13 +0200, Philippe Mathieu-Daudé escribió:
+> The Raspberry Pi 4 uses a BCM2711 SoC (based on a BCM2838).
+> The SoC can handle up to 8GiB of SDRAM, but we limit it to 4GiB
+> (no 8GiB models in the market yet).
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/arm/raspi.c | 31 ++++++++++++++++++++++++++++++-
+>  1 file changed, 30 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index b4db39661f..59ee2f82b4 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -39,11 +39,13 @@ enum BoardIdChip {
+>      C_BCM2835 = 0,
+>      C_BCM2836 = 1,
+>      C_BCM2837 = 2,
+> +    C_BCM2711 = 3,
+>  };
+>  
+>  enum BoardIdType {
+>      T_2B = 0x04,
+>      T_3B = 0x08,
+> +    T_4B = 0x11,
+>  };
+>  
+>  enum BoardIdRevision {
+> @@ -56,6 +58,7 @@ enum BoardIdRevision {
+>  static const char *processor_typename[] = {
+>      [C_BCM2836] = TYPE_BCM2836,
+>      [C_BCM2837] = TYPE_BCM2837,
+> +    [C_BCM2711] = TYPE_BCM2838,
+>  };
+>  
+>  typedef struct BoardInfo BoardInfo;
+> @@ -90,6 +93,12 @@ static const BoardInfo bcm283x_boards[] = {
+>          .ram_size_min = 1 * GiB,
+>          .ram_size_max = 1 * GiB,
+>      },
+> +    [4] = {
+> +        .board_id = 0xc42,
+> +        .board_rev = { T_4B, R_1_1, C_BCM2711, M_SONY_UK },
+> +        .ram_size_min = 1 * GiB,
+> +        .ram_size_max = 4 * GiB,
+> +    },
+>  };
+>  
+>  typedef struct RasPiState {
+> @@ -336,4 +345,24 @@ static void raspi3_machine_init(MachineClass
+> *mc)
+>      mc->default_ram_size = 1 * GiB;
+>  }
+>  DEFINE_MACHINE("raspi3", raspi3_machine_init)
+> -#endif
+> +
+> +static void raspi4_init(MachineState *machine)
+> +{
+> +    raspi_init(machine, 4);
+> +}
+> +
+> +static void raspi4_machine_init(MachineClass *mc)
+> +{
+> +    mc->desc = "Raspberry Pi 4B";
+> +    mc->init = raspi4_init;
+> +    mc->block_default_type = IF_SD;
+> +    mc->no_parallel = 1;
+> +    mc->no_floppy = 1;
+> +    mc->no_cdrom = 1;
+> +    mc->max_cpus = BCM283X_NCPUS;
+> +    mc->min_cpus = BCM283X_NCPUS;
+> +    mc->default_cpus = BCM283X_NCPUS;
+> +    mc->default_ram_size = 1 * GiB;
+> +}
+> +DEFINE_MACHINE("raspi4", raspi4_machine_init)
+> +#endif /* TARGET_AARCH64 */
+Reviewed-by: Esteban Bosse <estebanbosse@gmail.com>
 

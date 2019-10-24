@@ -1,102 +1,157 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2673114wrq;
-        Thu, 24 Oct 2019 10:46:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwt1zOxZUNCBqZ7qdvc501a1XC4un4re183zibQQgduwjVJ69AVhQmARGAFgbkqcK5wTlvY
-X-Received: by 2002:aa7:c595:: with SMTP id g21mr44084970edq.79.1571939211874;
-        Thu, 24 Oct 2019 10:46:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571939211; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2698619wrq;
+        Thu, 24 Oct 2019 11:08:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxUoDNbCPHsJ+3iC+rUstxF9j3u3ToKTpqDuWwmAviS/2k1vaRBAicj4XVcdgH1VaoVLuWA
+X-Received: by 2002:ae9:eb17:: with SMTP id b23mr15074698qkg.260.1571940482557;
+        Thu, 24 Oct 2019 11:08:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571940482; cv=none;
         d=google.com; s=arc-20160816;
-        b=DjvZm1L53R9TtfIrS+oHfBl1qq6UeIDunxtryAEjBCfFkHKaIzGzBmEJhWJTmh1RYE
-         7widc5TSPDkdgtfA+SoPco5KPVQa/Ro3BwUS7K5r5e/g6hnvIP/UThbkeRK1IPmHErDs
-         Aw/lkRZ1UztsB41jQijkb4a9AIiixsyWXzpgjydMU3N+ud7QMmO1jDexiEBxT4l+WWM9
-         S7wrQY94Tgav5cZwGKjHqh1zuemgECTJTmPuQtaI/HuFop0nxXk/8ccHxlEoglG98jKp
-         bbASDqq50mcu+n/xP3o5ONJTcXx6nwyNv3Q2YV5f9wyY3wW1AE6NUr9cdEqJChVW7syF
-         TCfg==
+        b=ihqm/7AhCXtObl02AOX0377/xGL9Q9gi9/DfigdK2TMb00Bk6ihtPbZS5V1ATmUnp/
+         LGhjtCB+JUI1cwuIwpD9a6CRYdw2c81krqdkrxnvKOAuB4WqyVWa2y3PsQaIZ716pw9b
+         fX5xt+AUybiXV+o9Gacfb3SjB78ADZKNHPWqNafwg4m7Jzj1T7iyyrQ03sLKz7gksrFZ
+         5O7GxJpNGgICOClgMYwPTeNaeulIenitM6IpGezLKknJLctVlF+PDcnFDuaBh24/rogA
+         /h75uVE0kpCdnmEOjTKI4dewlVwDA4UNtIJmEiUgHuDxmvUSbtP7nRMOy1VOKvN8DbDR
+         Wjnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=hiXL+/soybWGri/7EPs9zL/lpCAg9l5tF8Rc0DYMON4=;
-        b=dZMVEPRLhQg+17yZ+AbU+sStWGDvXJJdsqiRQ0AoKXzFPHeZISzEseOtPyS5sz+sgv
-         j3nl7doYgZb4GRfo64mVcYv3ggvMYPc/h72Qd84esaFzAr86/5fGoIw2WlYI3SvxGxAv
-         va7aaCoXqjQuNGtMYBEjHi2KS4oljQ+f7aZB+piZolZ9e3TpBOV71Wh6GDKpuSvO63TN
-         kZx4BHdzT+UXHbVKA28O4bbP09u/xey1kcc3HtgRcewvWxNSUrKnxUsqYGvj9MDJuomf
-         D1s84PhDO5Wn2md3Fd3Y/57zhouVHDtWb6oI7HliT6GzLHvc0VePuIg1ypVN6KToo+IN
-         JOZQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=SBbFv4GC1zNstf9GFggafol48hR74cDb71bYZNLg40c=;
+        b=BMFM3veeaVO0JpqxiKoTJiBsZGLeky13g1l0ULJt5dcTn4f3sJACF5wJOre4PWx3IG
+         nOO6fk9O5ix6g9NtgFHp0HMbrfXTXU2Kq6TCU3E0mtY5hFZdSepX/nV1iIwpu6ae6FUe
+         zQFmkTyky1ETD6eMIJloEJMvTLHc0ty9xhPXUFrAlXTM0QPf8AkpdnJRv90VYCVLgcrP
+         HBj6w8IQYliDvAH3FdKd6NknRirqRloyxCef2GNz3gFmu7mO24q7wNo/qBevckXL3jlk
+         Zv+kYNbeilYaX3nZAV6hCWiwFaDlDztAwnLLpRQXDMZrW3LPvGs0D9z+V6sjsvml05Ze
+         nKpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eJCZ3r2A;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F3g1dL6o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ox3si10495795ejb.170.2019.10.24.10.46.51
+        by mx.google.com with ESMTPS id z26si23081172qkj.171.2019.10.24.11.08.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 10:46:51 -0700 (PDT)
+        Thu, 24 Oct 2019 11:08:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eJCZ3r2A;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F3g1dL6o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49246 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49756 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNhCD-0005Cr-Km
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 13:46:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60956)
+	id 1iNhWj-0008Lq-AU
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 14:08:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41404)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <atar4qemu@gmail.com>) id 1iNgBM-0007lX-2y
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 12:41:53 -0400
+ (envelope-from <lvivier@redhat.com>) id 1iNh2J-0004FK-JZ
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 13:36:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <atar4qemu@gmail.com>) id 1iNgBK-0006G5-BB
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 12:41:51 -0400
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:44906)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <atar4qemu@gmail.com>)
- id 1iNgBK-0006G1-6U; Thu, 24 Oct 2019 12:41:50 -0400
-Received: by mail-il1-x143.google.com with SMTP id f13so22993137ils.11;
- Thu, 24 Oct 2019 09:41:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=hiXL+/soybWGri/7EPs9zL/lpCAg9l5tF8Rc0DYMON4=;
- b=eJCZ3r2AzuVDtK5IoUajpkUvWoHciQCIB/3rDD/hxj8mXqNKryjbbiZSK8rnYOZ5Lm
- oK7CVUUDFW9IGb3ROLoeNalhDQ7AwuY8A7HkxxaTglp2Rf9SrhjMS4whtrEGIVPuxbN1
- Oct1n2jyVW+FzjO9bR6bry2UpbauMck0la/Kcw2AB5CC9j1qHpsdBEyi2up9TqxibqUE
- /XFVGQ+nW85wJRZQQOOuijSzedU/gdb9tn4u1iJRXJz2jTE0aj8nsVPAD8OfvTzWBb3T
- V6nSMnCazkMZ74EFo98cugOTrOAO0/xMlA2cyo1X2IJmD5uV+bKuQZ4Mgc6CZe4q6n3u
- mXpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=hiXL+/soybWGri/7EPs9zL/lpCAg9l5tF8Rc0DYMON4=;
- b=PS33VAgNQT8KDdSz8F92n/8gfk0freIjYzxlG7JTFe0ACWv2G4SSfc+oZVXy/yrf9Y
- h2Uh0tuyFB42mnnnwqbj1eRoMc4AGwiAeZo/CFQhY1zyHWIDcUKEIf4F9XaL+8V31uax
- 9fB7JQ+UqgS+48lonxyS8Q4PNkzlZ1SYjd7Ag8aD8YvyqvW4KZ3z8spG9QmjPD1vkXbd
- 6Vlw+yJqZtj2tq5ByW4mgH22ofy90984aVNKVZBggyV9wjAVGcPbmlzZkS30btdPRCM9
- dXQLxyzkwaq//DHU+WSDqi6qWkiBbQOPwNTuqG//KDww88Zms2cPnXv2A5LMeTSgkz27
- tV5Q==
-X-Gm-Message-State: APjAAAUKLJmBKfJsBEUvpTI+gox8nD3yyzwRUXOtpS3vc1mh4Hk5x7ba
- 76FS14dYuL+juu6eHuHCiKTThRDixBlSsrgJog4=
-X-Received: by 2002:a92:1907:: with SMTP id 7mr32472402ilz.72.1571935309302;
- Thu, 24 Oct 2019 09:41:49 -0700 (PDT)
-MIME-Version: 1.0
+ (envelope-from <lvivier@redhat.com>) id 1iNh2I-0000LA-7N
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 13:36:35 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:57307
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <lvivier@redhat.com>) id 1iNh2I-0000JZ-2a
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 13:36:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1571938592;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=SBbFv4GC1zNstf9GFggafol48hR74cDb71bYZNLg40c=;
+ b=F3g1dL6osraQG7tPU6hQdYfCwBDVp2JfmCikh8DwUcuXDGOWDjk+b7a/Axdl7dUG3Uaz+Z
+ 0OCKEO8tLQ4dpWe/PPw8DxF+hmh+cA5qVV10sS5vTvQccufmYoW6kDU+OLzmK6huxaahBe
+ ZXNmpnDRPTBfsL64BJGOnhJ0Zwr/pks=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-90-rXV5GHbRPvu4prA38JsQCA-1; Thu, 24 Oct 2019 13:36:28 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9BCF1800D49;
+ Thu, 24 Oct 2019 17:36:25 +0000 (UTC)
+Received: from [10.36.118.133] (unknown [10.36.118.133])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 14BE84128;
+ Thu, 24 Oct 2019 17:36:05 +0000 (UTC)
+Subject: Re: [PATCH v2 00/14] hw: Split RTC devices from hw/timer/ to hw/rtc/
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 References: <20191003230404.19384-1-philmd@redhat.com>
- <20191003230404.19384-7-philmd@redhat.com>
- <b1131c3d-d421-6130-b113-faa5e19c42a8@redhat.com>
-In-Reply-To: <b1131c3d-d421-6130-b113-faa5e19c42a8@redhat.com>
-From: Artyom Tarasenko <atar4qemu@gmail.com>
-Date: Thu, 24 Oct 2019 18:41:37 +0200
-Message-ID: <CACXAS8AF=SBvXnvUtLKo2Q+=79fMWctwJhevYez2paOGJxY=4Q@mail.gmail.com>
-Subject: Re: [PATCH v2 06/14] hw: Move sun4v hypervisor RTC from hw/timer/ to
- hw/rtc/ subdirectory
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+ <CAFEAcA-rmPuKQyv8d-u-1UAMhy6yGAcF3csVDcvYVXMosZysYw@mail.gmail.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Autocrypt: addr=lvivier@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+ D+Ofp0T3KOr1RUHvCZoLURfFhSQ=
+Message-ID: <839e9cb5-6fc2-a2b2-df12-abf9dbf6dcdd@redhat.com>
+Date: Thu, 24 Oct 2019 19:36:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-rmPuKQyv8d-u-1UAMhy6yGAcF3csVDcvYVXMosZysYw@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: rXV5GHbRPvu4prA38JsQCA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::143
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,232 +163,43 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- qemu-devel <qemu-devel@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
  Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:ARM" <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goat?= =?UTF-8?Q?er?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
- "open list:PReP" <qemu-ppc@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Andrew Jeffery <andrew@aj.id.au>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CTz1pjWkIAcU
+X-TUID: vVXAeDt9xiZ5
 
-On Thu, Oct 24, 2019 at 4:10 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Hi Artyom,
->
-> Do you mind Acking this patch?
+On 24/10/2019 17:51, Peter Maydell wrote:
+> On Fri, 4 Oct 2019 at 00:04, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>>
+>> Since v1: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg03334=
+.html
+>> - addressed review comments (described in patches 3 and 4)
+>> - added R-b/A-b tags
+>>
+>> Whole series now reviewed.
+>=20
+> for the arm parts:
+> Acked-by: Peter Maydell <peter.maydell@linaro.org>
+>=20
 
-Sorry for the late reply:
+I'm going to queue this series in qemu-trivial queue, so I guess your
+Acked-by is for patches 2, 10 and 11?
 
-Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
+Thanks,
+Laurent
 
->
-> On 10/4/19 1:03 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Move RTC devices under the hw/rtc/ subdirectory.
-> >
-> > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> > ---
-> >   MAINTAINERS                   |  4 ++--
-> >   hw/rtc/Kconfig                |  3 +++
-> >   hw/rtc/Makefile.objs          |  1 +
-> >   hw/{timer =3D> rtc}/sun4v-rtc.c |  2 +-
-> >   hw/rtc/trace-events           |  4 ++++
-> >   hw/sparc64/niagara.c          |  2 +-
-> >   hw/timer/Kconfig              |  3 ---
-> >   hw/timer/Makefile.objs        |  1 -
-> >   hw/timer/trace-events         |  4 ----
-> >   include/hw/rtc/sun4v-rtc.h    | 19 +++++++++++++++++++
-> >   include/hw/timer/sun4v-rtc.h  |  1 -
-> >   11 files changed, 31 insertions(+), 13 deletions(-)
-> >   rename hw/{timer =3D> rtc}/sun4v-rtc.c (98%)
-> >   create mode 100644 include/hw/rtc/sun4v-rtc.h
-> >   delete mode 100644 include/hw/timer/sun4v-rtc.h
-> >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 0dfaa05d17..31e4fbf579 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -1165,8 +1165,8 @@ Sun4v
-> >   M: Artyom Tarasenko <atar4qemu@gmail.com>
-> >   S: Maintained
-> >   F: hw/sparc64/niagara.c
-> > -F: hw/timer/sun4v-rtc.c
-> > -F: include/hw/timer/sun4v-rtc.h
-> > +F: hw/rtc/sun4v-rtc.c
-> > +F: include/hw/rtc/sun4v-rtc.h
-> >
-> >   Leon3
-> >   M: Fabien Chouteau <chouteau@adacore.com>
-> > diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-> > index 434b20b2b1..cc7fead764 100644
-> > --- a/hw/rtc/Kconfig
-> > +++ b/hw/rtc/Kconfig
-> > @@ -10,3 +10,6 @@ config PL031
-> >
-> >   config MC146818RTC
-> >       bool
-> > +
-> > +config SUN4V_RTC
-> > +    bool
-> > diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-> > index 89e8e48c64..4621b37bc2 100644
-> > --- a/hw/rtc/Makefile.objs
-> > +++ b/hw/rtc/Makefile.objs
-> > @@ -5,3 +5,4 @@ common-obj-$(CONFIG_M48T59) +=3D m48t59-isa.o
-> >   endif
-> >   common-obj-$(CONFIG_PL031) +=3D pl031.o
-> >   obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
-> > +common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
-> > diff --git a/hw/timer/sun4v-rtc.c b/hw/rtc/sun4v-rtc.c
-> > similarity index 98%
-> > rename from hw/timer/sun4v-rtc.c
-> > rename to hw/rtc/sun4v-rtc.c
-> > index 54272a822f..ada01b5774 100644
-> > --- a/hw/timer/sun4v-rtc.c
-> > +++ b/hw/rtc/sun4v-rtc.c
-> > @@ -13,7 +13,7 @@
-> >   #include "hw/sysbus.h"
-> >   #include "qemu/module.h"
-> >   #include "qemu/timer.h"
-> > -#include "hw/timer/sun4v-rtc.h"
-> > +#include "hw/rtc/sun4v-rtc.h"
-> >   #include "trace.h"
-> >
-> >
-> > diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-> > index 54c94ac557..ac9e0e0fba 100644
-> > --- a/hw/rtc/trace-events
-> > +++ b/hw/rtc/trace-events
-> > @@ -1,5 +1,9 @@
-> >   # See docs/devel/tracing.txt for syntax documentation.
-> >
-> > +# sun4v-rtc.c
-> > +sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 =
-" value 0x%" PRIx64
-> > +sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx6=
-4 " value 0x%" PRIx64
-> > +
-> >   # pl031.c
-> >   pl031_irq_state(int level) "irq state %d"
-> >   pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> > diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
-> > index 167143bffe..dfa0817eae 100644
-> > --- a/hw/sparc64/niagara.c
-> > +++ b/hw/sparc64/niagara.c
-> > @@ -30,7 +30,7 @@
-> >   #include "hw/misc/unimp.h"
-> >   #include "hw/loader.h"
-> >   #include "hw/sparc/sparc64.h"
-> > -#include "hw/timer/sun4v-rtc.h"
-> > +#include "hw/rtc/sun4v-rtc.h"
-> >   #include "exec/address-spaces.h"
-> >   #include "sysemu/block-backend.h"
-> >   #include "qemu/error-report.h"
-> > diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-> > index a6b668b255..b04c928136 100644
-> > --- a/hw/timer/Kconfig
-> > +++ b/hw/timer/Kconfig
-> > @@ -35,9 +35,6 @@ config ALLWINNER_A10_PIT
-> >   config STM32F2XX_TIMER
-> >       bool
-> >
-> > -config SUN4V_RTC
-> > -    bool
-> > -
-> >   config CMSDK_APB_TIMER
-> >       bool
-> >       select PTIMER
-> > diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-> > index 2fb12162a6..034bd30255 100644
-> > --- a/hw/timer/Makefile.objs
-> > +++ b/hw/timer/Makefile.objs
-> > @@ -35,7 +35,6 @@ common-obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner=
--a10-pit.o
-> >   common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D stm32f2xx_timer.o
-> >   common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o aspeed_rtc.o
-> >
-> > -common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
-> >   common-obj-$(CONFIG_CMSDK_APB_TIMER) +=3D cmsdk-apb-timer.o
-> >   common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) +=3D cmsdk-apb-dualtimer.o
-> >   common-obj-$(CONFIG_MSF2) +=3D mss-timer.o
-> > diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-> > index 6936fe8573..ce34b967db 100644
-> > --- a/hw/timer/trace-events
-> > +++ b/hw/timer/trace-events
-> > @@ -70,10 +70,6 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer=
-: reset"
-> >   aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " =
-value 0x%08" PRIx64
-> >   aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 "=
- value 0x%08" PRIx64
-> >
-> > -# sun4v-rtc.c
-> > -sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 =
-" value 0x%" PRIx64
-> > -sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx6=
-4 " value 0x%" PRIx64
-> > -
-> >   # xlnx-zynqmp-rtc.c
-> >   xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int m=
-in, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
-> >
-> > diff --git a/include/hw/rtc/sun4v-rtc.h b/include/hw/rtc/sun4v-rtc.h
-> > new file mode 100644
-> > index 0000000000..fd868f6ed2
-> > --- /dev/null
-> > +++ b/include/hw/rtc/sun4v-rtc.h
-> > @@ -0,0 +1,19 @@
-> > +/*
-> > + * QEMU sun4v Real Time Clock device
-> > + *
-> > + * The sun4v_rtc device (sun4v tod clock)
-> > + *
-> > + * Copyright (c) 2016 Artyom Tarasenko
-> > + *
-> > + * This code is licensed under the GNU GPL v3 or (at your option) any =
-later
-> > + * version.
-> > + */
-> > +
-> > +#ifndef HW_RTC_SUN4V
-> > +#define HW_RTC_SUN4V
-> > +
-> > +#include "exec/hwaddr.h"
-> > +
-> > +void sun4v_rtc_init(hwaddr addr);
-> > +
-> > +#endif
-> > diff --git a/include/hw/timer/sun4v-rtc.h b/include/hw/timer/sun4v-rtc.=
-h
-> > deleted file mode 100644
-> > index 407278f918..0000000000
-> > --- a/include/hw/timer/sun4v-rtc.h
-> > +++ /dev/null
-> > @@ -1 +0,0 @@
-> > -void sun4v_rtc_init(hwaddr addr);
-> >
-
-
-
---=20
-Regards,
-Artyom Tarasenko
-
-SPARC and PPC PReP under qemu blog: http://tyom.blogspot.com/search/label/q=
-emu

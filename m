@@ -1,146 +1,324 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2309554wrq;
-        Thu, 24 Oct 2019 05:54:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwKMjIrFElIJGSWpn0Qc07wX0KEjFYd57XwRPblFJLTp9gJo2S6yI5CO3pre07+BMlG+QFe
-X-Received: by 2002:a05:6402:b38:: with SMTP id bo24mr44285352edb.103.1571921673096;
-        Thu, 24 Oct 2019 05:54:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571921673; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2433172wrq;
+        Thu, 24 Oct 2019 07:33:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzSkXIJXMx3a6D9eMwvbRHoeF0swhtnkwp15I2EKbcMO8V6DRWC8kMMgEVfZyenWrVf6qQ1
+X-Received: by 2002:ac8:75cb:: with SMTP id z11mr4388087qtq.64.1571927606580;
+        Thu, 24 Oct 2019 07:33:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571927606; cv=none;
         d=google.com; s=arc-20160816;
-        b=tOTR+dPBwyu7SWL77Ne+KtQ3OHQOsSqkccwEpJv6QK1mo/I7hcB6K2DgwoBtQ5opae
-         HqevRqa4+okeVQ0hFuOIoAZrV6VyW/argc9TsRkFuwBIfVYTudhTbSjWzGsoEu9YRh7p
-         ERG70/4fSSYTMkpt21gwHYQz9kc0zm0pydisTNSW5o/lw0y7IUhE/hfg8MyB0JGz3LJW
-         uoU5NCE2jhXRLaT+p/EVcsO5jhSIXALz09h3kvjRzb0ao05vaEOdar4Iu2xzhn2PXjLy
-         ycwuzogWAuOKip2CEspKljydi++s4rIDMn0AlrODNQSqbTJoAgHtA8EdmRjLknP4MUJV
-         SKAg==
+        b=ni69hD1vKOqmORoCwNBJJRoUr8+6y169uSt5K/qUg5wEcFVb05+95AMoVAYvW3VEdv
+         k4xD1uzKskWMSSsWaxn/u9SLbFz3zcwCxfTcEF+mqtS/UGfEkp7k81I3rnVbZ1dvfhm4
+         jVyjxMVE9D+RcFznm9NtMsVuuOLBkor1KO7ijv1oDOpVLiboKnvHtzFNS9zJtj+j51lN
+         9QkO4d4pKGuOV8fjmR/492DfCSx1AxttK81eEL5YKPShh5K5ku58QIJrP8tHZftpxn4c
+         agITb4G250KXV8DY6JVVB1L7aDWsVpm+nB0qBgOiFlp71gkonornZCZA4H9kGQ/axSNY
+         u5eQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=bkRtwDTjVI3MLPVrtGeXczRUegD3guGhnNoJAE5WxCU=;
-        b=hZy3W4w5YWao7OTa8IYU0qGIm4XpDy+t9LYP4qnpgbRtJNI5xsshBfz2JUEmyOLaO7
-         AuWAn9ired6jwq9qk3wlkZy3EoHx4PPV/rgj0CN/Zed/+xgdolegVVmS4FxYXBRCskpn
-         Smpmfu+zgZ/eiQsIu7XAJJi2yTB1hKVM4Oj5Z10LZfH77XQkjJjNqNDisgcDmTqIlAC4
-         vIyJl9FUn+GdbUM3XptpCuRmrIxvn3uTsvF/29hjDhx/9JP+13T15PMzun9/c7dCNG+n
-         VuePPZeRmNjsMpfiSUyrFK1DsQJtLrcb0ZhUkuWW3vrIbnz15k+gsWdEi+PWh5CQlv26
-         3AXQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=sB38RAt1oa767PRisC8fGUk1w3V9/9S3rtpvWpPQkXQ=;
+        b=J6VhRZdC3w5Z0wjVB/aTUQg4Re79UCgV2WorXIT3wbTWcjP+oH4v1IH9RfpZXdR+Nf
+         tpp255MKISswDh4iTY0aFj1zzAHsImUj2zLcWAS5RsncaJpzDWeh08FyPAJ3HYe3Q0g/
+         7RNCeTRJE5Lk+Nml1ToEHHR9+0/ROnQjkfvwE84QikYub1uf8RRtFnZUeWN8o+umvZAC
+         ok6pZNNzNjtb04FwDvm6mjwQCz9+iCDmBwKsrkDH2P8JfZ47PbM2E+NU24s1u6Oxibvp
+         HkD8VESnFUGG3YXjF0lij2jNOQ0PBcZZATYrxjFuLCas1un4bn3Gj9mtu7tzhcB0MyJd
+         4r4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KZzFTPWJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b26si14319477eju.87.2019.10.24.05.54.33
+        by mx.google.com with ESMTPS id s32si14575243qtd.158.2019.10.24.07.33.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 05:54:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Oct 2019 07:33:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KZzFTPWJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41704 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44318 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNcdL-0003zs-E8
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 08:54:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45175)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNeB3-00043n-Ag
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 10:33:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36061)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iNc39-0006rR-M6
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 08:17:09 -0400
+ (envelope-from <philmd@redhat.com>) id 1iNdop-00020u-9h
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 10:10:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iNc34-00033n-Ig
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 08:17:07 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:32971)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iNc34-00033K-Ce
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 08:17:02 -0400
-Received: by mail-ot1-x341.google.com with SMTP id u13so1676611ote.0
- for <qemu-arm@nongnu.org>; Thu, 24 Oct 2019 05:17:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bkRtwDTjVI3MLPVrtGeXczRUegD3guGhnNoJAE5WxCU=;
- b=KZzFTPWJOqN/6KlWG2H83ofpUsrR+SjsVlufm+ReByDY29pZypcuJ2FbCgkzFBTlY/
- hhT8rVLO2w+MKrOZJZHDSBbXpJxo0qh8ahAW/Jm2XfXUqwqVyXosqsL/hgK+Mm6mRCAw
- E4+9C1Mo2bDoyxtRBKvpfxm9V3mJ5LR3R1HRxwfJCEuTjDP9AuchrHiqK73SG7UG4zs7
- 1NPHMFz+oW3h3+mane1rXoWkhvrFhUPvxmf0rEu56lEzPyUnmcwklJcqflBWIpbOogbX
- 8R4sETggxR2CW0aS6jyQlQP/Pw+wm7OwUz3JjOqqdi8ayR+f1pXEnT2CMy3kYVFcUrQ8
- Sbdw==
+ (envelope-from <philmd@redhat.com>) id 1iNdon-0001v7-1I
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 10:10:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60712)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNdom-0001tI-Or
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 10:10:24 -0400
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id AE0E8356CE
+ for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 14:10:23 +0000 (UTC)
+Received: by mail-wm1-f71.google.com with SMTP id l184so1336889wmf.6
+ for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 07:10:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bkRtwDTjVI3MLPVrtGeXczRUegD3guGhnNoJAE5WxCU=;
- b=NqXikzV6BV7q33bC48mRGiBeCgtM8r9DU2SvAbZmuRIzAs1RfmOhR5jIxUR6w8Tz37
- dHAvzWza1bTG+QOmmacp5zDeEW2cubnr9q1ZvVACP+kZFqig94mY78kDWZvhnNyRKsXJ
- AlpStXB4IUoBmxPuZvtcLWlVAedG63ycEEfvEUbotUUkrrIAdfBvxUaboL9yIz6u0vOg
- 4Au3SHFxrmstqKm4oYR4ipWGzE2GKNzBLNowtaL3lT8mK2LZZRzd5DUuRZrp72bdj8Ar
- oSJGNBqH9Ky5DCH8R8kHR0CamV3ddR2CwuhDrFKvraYYzusM+vzgkbJFOCOteooUB/XH
- fwog==
-X-Gm-Message-State: APjAAAU4WUdxHOErtHzkp+hKmT28KBWutoSoB70U+n/MTrA/GcOS1h91
- IXSC4WnS0DVmMs8hPaD2bUg02MgTvbX9QXNiej+A4g==
-X-Received: by 2002:a05:6830:4c1:: with SMTP id
- s1mr11816095otd.232.1571919421371; 
- Thu, 24 Oct 2019 05:17:01 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=IUvC0Te2uHehT4TVThYtj2pAOWd4YcJNRS5YDphkgtE=;
+ b=q3Ykw7Vz8Sc0ogjfjds8Jp2YojqawdzbkbxCQAgWe01H1Ahyy0CJ/6QFYJGOi3ymkT
+ f1NF1XXk+2lrYbmWpDq+A4YXNeAnKKNUYgLinfIKwjTkKwDC48rIFGmn6Dx9SO/0ohJG
+ XTFOmsA/GES8jdK8E0IdfWbZFyTpS/x7I3py4lux0zqRhGNPGCESuttqY53VkD6bXhV7
+ NINVtUDp/rewNVkyq1FLXFMS7ZXdbXyc85R7fd30UDP47RTFK6I6bcdAQe1XBF83QsZf
+ RR9a87H11osLA9u9cZRQZ75ptQhBKw2H23WBHlhkeP4A1UwEq5e7HxwkJaU+WrYCaNTx
+ 5s+g==
+X-Gm-Message-State: APjAAAWYWw4MroNNQZt33r3IBS34ZkJsMTCedb8ZqvioWBc/hX6YH63D
+ 4EwK9TQiclaNFZOEAZjZf1iVd3zf9pI+OJYXIYpZCK+NFawbPdlJIPGShtGiUnwuclbYRTMPnN3
+ k/6cYyZ94KwfJM+c=
+X-Received: by 2002:a1c:8055:: with SMTP id b82mr2162469wmd.176.1571926222152; 
+ Thu, 24 Oct 2019 07:10:22 -0700 (PDT)
+X-Received: by 2002:a1c:8055:: with SMTP id b82mr2162406wmd.176.1571926221787; 
+ Thu, 24 Oct 2019 07:10:21 -0700 (PDT)
+Received: from [192.168.1.115] (129.red-83-57-174.dynamicip.rima-tde.net.
+ [83.57.174.129])
+ by smtp.gmail.com with ESMTPSA id v10sm3904524wmg.48.2019.10.24.07.10.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 24 Oct 2019 07:10:20 -0700 (PDT)
+Subject: Re: [PATCH v2 06/14] hw: Move sun4v hypervisor RTC from hw/timer/ to
+ hw/rtc/ subdirectory
+To: Artyom Tarasenko <atar4qemu@gmail.com>
+References: <20191003230404.19384-1-philmd@redhat.com>
+ <20191003230404.19384-7-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <b1131c3d-d421-6130-b113-faa5e19c42a8@redhat.com>
+Date: Thu, 24 Oct 2019 16:10:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-References: <20191017132122.4402-1-peter.maydell@linaro.org>
-In-Reply-To: <20191017132122.4402-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 24 Oct 2019 13:16:50 +0100
-Message-ID: <CAFEAcA84xJPWjF0h=4e1g049e=4ZD2Kg0Y6aPG5K-97_e1Y4SQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] Convert ppc and microblaze devices to new ptimer API
-To: QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20191003230404.19384-7-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iu8mFn3A40a0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goat?= =?UTF-8?Q?er?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1mziTMpWmfFh
 
-On Thu, 17 Oct 2019 at 14:21, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> This patchset converts the devices used by ppc and microblaze
-> machines to the new ptimer API. (xilinx_timer is used by both,
-> hence putting both archs in the same patchset).
->
-> Currently the ptimer design uses a QEMU bottom-half as its mechanism
-> for calling back into the device model using the ptimer when the
-> timer has expired.  Unfortunately this design is fatally flawed,
-> because it means that there is a lag between the ptimer updating its
-> own state and the device callback function updating device state, and
-> guest accesses to device registers between the two can return
-> inconsistent device state. This was reported as a bug in a specific
-> timer device but it's a problem with the generic ptimer code:
-> https://bugs.launchpad.net/qemu/+bug/1777777
->
-> The updates to the individual ptimer devices are straightforward:
-> we need to add begin/commit calls around the various places that
-> modify the ptimer state, and use the new ptimer_init() function
-> to create the timer.
->
-> Testing has been 'make check' only, which obviously doesn't
-> exercise the devices very much, so more specific testing would
-> be appreciated. I'm happy for these patches to go in via the
-> ppc tree if you want, or I can collect them up with the other
-> ptimer-related changes I'm sending for other archs.
+Hi Artyom,
 
-I'll put these in via target-arm.next, since they've all
-been reviewed now and nobody's suggested a preference
-for some other route.
+Do you mind Acking this patch?
 
-thanks
--- PMM
+On 10/4/19 1:03 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Move RTC devices under the hw/rtc/ subdirectory.
+>=20
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>   MAINTAINERS                   |  4 ++--
+>   hw/rtc/Kconfig                |  3 +++
+>   hw/rtc/Makefile.objs          |  1 +
+>   hw/{timer =3D> rtc}/sun4v-rtc.c |  2 +-
+>   hw/rtc/trace-events           |  4 ++++
+>   hw/sparc64/niagara.c          |  2 +-
+>   hw/timer/Kconfig              |  3 ---
+>   hw/timer/Makefile.objs        |  1 -
+>   hw/timer/trace-events         |  4 ----
+>   include/hw/rtc/sun4v-rtc.h    | 19 +++++++++++++++++++
+>   include/hw/timer/sun4v-rtc.h  |  1 -
+>   11 files changed, 31 insertions(+), 13 deletions(-)
+>   rename hw/{timer =3D> rtc}/sun4v-rtc.c (98%)
+>   create mode 100644 include/hw/rtc/sun4v-rtc.h
+>   delete mode 100644 include/hw/timer/sun4v-rtc.h
+>=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 0dfaa05d17..31e4fbf579 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1165,8 +1165,8 @@ Sun4v
+>   M: Artyom Tarasenko <atar4qemu@gmail.com>
+>   S: Maintained
+>   F: hw/sparc64/niagara.c
+> -F: hw/timer/sun4v-rtc.c
+> -F: include/hw/timer/sun4v-rtc.h
+> +F: hw/rtc/sun4v-rtc.c
+> +F: include/hw/rtc/sun4v-rtc.h
+>  =20
+>   Leon3
+>   M: Fabien Chouteau <chouteau@adacore.com>
+> diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
+> index 434b20b2b1..cc7fead764 100644
+> --- a/hw/rtc/Kconfig
+> +++ b/hw/rtc/Kconfig
+> @@ -10,3 +10,6 @@ config PL031
+>  =20
+>   config MC146818RTC
+>       bool
+> +
+> +config SUN4V_RTC
+> +    bool
+> diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
+> index 89e8e48c64..4621b37bc2 100644
+> --- a/hw/rtc/Makefile.objs
+> +++ b/hw/rtc/Makefile.objs
+> @@ -5,3 +5,4 @@ common-obj-$(CONFIG_M48T59) +=3D m48t59-isa.o
+>   endif
+>   common-obj-$(CONFIG_PL031) +=3D pl031.o
+>   obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
+> +common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
+> diff --git a/hw/timer/sun4v-rtc.c b/hw/rtc/sun4v-rtc.c
+> similarity index 98%
+> rename from hw/timer/sun4v-rtc.c
+> rename to hw/rtc/sun4v-rtc.c
+> index 54272a822f..ada01b5774 100644
+> --- a/hw/timer/sun4v-rtc.c
+> +++ b/hw/rtc/sun4v-rtc.c
+> @@ -13,7 +13,7 @@
+>   #include "hw/sysbus.h"
+>   #include "qemu/module.h"
+>   #include "qemu/timer.h"
+> -#include "hw/timer/sun4v-rtc.h"
+> +#include "hw/rtc/sun4v-rtc.h"
+>   #include "trace.h"
+>  =20
+>  =20
+> diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
+> index 54c94ac557..ac9e0e0fba 100644
+> --- a/hw/rtc/trace-events
+> +++ b/hw/rtc/trace-events
+> @@ -1,5 +1,9 @@
+>   # See docs/devel/tracing.txt for syntax documentation.
+>  =20
+> +# sun4v-rtc.c
+> +sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 =
+" value 0x%" PRIx64
+> +sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx6=
+4 " value 0x%" PRIx64
+> +
+>   # pl031.c
+>   pl031_irq_state(int level) "irq state %d"
+>   pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+> diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
+> index 167143bffe..dfa0817eae 100644
+> --- a/hw/sparc64/niagara.c
+> +++ b/hw/sparc64/niagara.c
+> @@ -30,7 +30,7 @@
+>   #include "hw/misc/unimp.h"
+>   #include "hw/loader.h"
+>   #include "hw/sparc/sparc64.h"
+> -#include "hw/timer/sun4v-rtc.h"
+> +#include "hw/rtc/sun4v-rtc.h"
+>   #include "exec/address-spaces.h"
+>   #include "sysemu/block-backend.h"
+>   #include "qemu/error-report.h"
+> diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+> index a6b668b255..b04c928136 100644
+> --- a/hw/timer/Kconfig
+> +++ b/hw/timer/Kconfig
+> @@ -35,9 +35,6 @@ config ALLWINNER_A10_PIT
+>   config STM32F2XX_TIMER
+>       bool
+>  =20
+> -config SUN4V_RTC
+> -    bool
+> -
+>   config CMSDK_APB_TIMER
+>       bool
+>       select PTIMER
+> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+> index 2fb12162a6..034bd30255 100644
+> --- a/hw/timer/Makefile.objs
+> +++ b/hw/timer/Makefile.objs
+> @@ -35,7 +35,6 @@ common-obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner=
+-a10-pit.o
+>   common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D stm32f2xx_timer.o
+>   common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o aspeed_rtc.o
+>  =20
+> -common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
+>   common-obj-$(CONFIG_CMSDK_APB_TIMER) +=3D cmsdk-apb-timer.o
+>   common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) +=3D cmsdk-apb-dualtimer.o
+>   common-obj-$(CONFIG_MSF2) +=3D mss-timer.o
+> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+> index 6936fe8573..ce34b967db 100644
+> --- a/hw/timer/trace-events
+> +++ b/hw/timer/trace-events
+> @@ -70,10 +70,6 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer=
+: reset"
+>   aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " =
+value 0x%08" PRIx64
+>   aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 "=
+ value 0x%08" PRIx64
+>  =20
+> -# sun4v-rtc.c
+> -sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 =
+" value 0x%" PRIx64
+> -sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx6=
+4 " value 0x%" PRIx64
+> -
+>   # xlnx-zynqmp-rtc.c
+>   xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int m=
+in, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
+>  =20
+> diff --git a/include/hw/rtc/sun4v-rtc.h b/include/hw/rtc/sun4v-rtc.h
+> new file mode 100644
+> index 0000000000..fd868f6ed2
+> --- /dev/null
+> +++ b/include/hw/rtc/sun4v-rtc.h
+> @@ -0,0 +1,19 @@
+> +/*
+> + * QEMU sun4v Real Time Clock device
+> + *
+> + * The sun4v_rtc device (sun4v tod clock)
+> + *
+> + * Copyright (c) 2016 Artyom Tarasenko
+> + *
+> + * This code is licensed under the GNU GPL v3 or (at your option) any =
+later
+> + * version.
+> + */
+> +
+> +#ifndef HW_RTC_SUN4V
+> +#define HW_RTC_SUN4V
+> +
+> +#include "exec/hwaddr.h"
+> +
+> +void sun4v_rtc_init(hwaddr addr);
+> +
+> +#endif
+> diff --git a/include/hw/timer/sun4v-rtc.h b/include/hw/timer/sun4v-rtc.=
+h
+> deleted file mode 100644
+> index 407278f918..0000000000
+> --- a/include/hw/timer/sun4v-rtc.h
+> +++ /dev/null
+> @@ -1 +0,0 @@
+> -void sun4v_rtc_init(hwaddr addr);
+>=20

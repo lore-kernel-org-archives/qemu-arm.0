@@ -1,63 +1,64 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2747702wrq;
-        Thu, 24 Oct 2019 11:51:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwNeClNA29nwd1sa8eaIrc/ewRdmQHBks/c48b0MnHDFtoavz/DjpAPFab5yqX0fxSjNriE
-X-Received: by 2002:a50:ed05:: with SMTP id j5mr44949133eds.251.1571943092080;
-        Thu, 24 Oct 2019 11:51:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571943092; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2751890wrq;
+        Thu, 24 Oct 2019 11:55:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzWytM0Srwn34jxp4Iucvzuxl1adZhtzSD71IEL/PkOE+27H9deY14H0gcm1nXKnumVQMIg
+X-Received: by 2002:a37:ad19:: with SMTP id f25mr6085078qkm.361.1571943331037;
+        Thu, 24 Oct 2019 11:55:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571943331; cv=none;
         d=google.com; s=arc-20160816;
-        b=ikb8zxpxn4VJmV9xigylPNWZuLdnWzuY23WCsf/RiUP2kbo92KkS165P2miJUr2ifg
-         3Z9K5i83n1XQIGiZMOjd0bQoSh/8K26B9Nmu8uZKlBlb/coIWQ47rtJjvMDzB+6vdZ8l
-         SLs1Is1skrZYokEzb20uUPvaDjtnqujuqrb8KgGjSi4Gb3r58C5Bi72oVX58kndQLdci
-         nR/SvEKGtJ8Y67em85NdcFhiAQx6ia/MIthHHM6ndNmLl1ahzNNUhQM4cqmSjHFv/n07
-         QAoL+H7QEbQ0W/WF1nYe4X0iO7fLt0COGLcFcdJZPXYXM3lO9bzBhxjcb07XW60pX/Tc
-         XsYQ==
+        b=nzBZvLSDz4K36kIYO+Xt0tqMsUPb+lbxgesRAON7sVGp5mskevrrZ4RH4HDCyVgEWp
+         OHbpIepoQqE6S48/J0cSaNrs5Amr6s/+x4iv9DEMqLY/ExQNeWPYWEPADpuWr4/j62rU
+         KK/jG2AVn1w2g5PtHnSZG6NAxB38MCPI3PgmbEyrvYnlbByu0SqJQ5Pg+ZxYEqiRwCOm
+         RDwxC5LGKxey5tX2ScilR+c/mLtHWwMZZ+bNSzwv2xr8Fa6SGxdxhWgyYpuyWnI6oeQb
+         mIkKKxGBR+i1xh6E43yc2aNt3f5pxB93qwIp7ENUTONSzr09XkNHLzQ+1MBmakJlL4LW
+         2TsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject;
-        bh=lGhwJR3ZBoHc9k9OPja4SFFaz4Hec4F+Mhgns/dgLgc=;
-        b=NQ7zIJb9AxITCLqMW9bv5AdB6Qj623zbOPAknq8xC5Iw2GRHMklsmkJs3yHfMxaN/P
-         r4LUJn1W4ZDKodjwSB9k2wEImawXYRqVDWOatCiHm7YB6WyJ2Nj2keiDCetN7YeptlgP
-         jlinaA6Q1jRPiWVFe8yOsoPufHiRXHjD4JlU2dvVI7ggaJlnpdRIp6+B5iGEH+XhOGVQ
-         VfnHBD9FXpIZ/SIITFJhoVejthgeZRGcYCgSBZeYh4wCQxcW3V2KuDK/UvuCIC0udC54
-         iSlRTsn+d2vSFQ75yWDz+xh8hJjEkPJA4YttX6M/6+PnkUY2LLObs2SQAbw5gumxuC/J
-         bWcA==
+        bh=YAzEMmT5bANo2ux2+KynijFYzAZ2sAQkYzGd9bFK30M=;
+        b=cWwmD/4KC3xBAAadBDIcm3YQr3iIwIFLRLHPn64INVWQEOzKwd4Bk1eMgtUgsClWLj
+         2xvG1/2XL5c46NP9gzVIS26iV/L0GkWG1nt9R+gcI7pe3cM/H6kxH0a+90ESXze0o6Z0
+         jTMpP8o60A40Ggwu7e172ly1qFd+PAUBYIWdvPLwSts95iOWppNAE6j/SzD8i/jqNE9r
+         h7pjijLKGZ0Umqas0a9ktDO2HoqW1pVzoiWhQWj3UJRfzfCvX8L3dWs03l9ZDQvyMPdz
+         KdbkDrfHc9w/ZXGz/R1a1246YqWBUEMnOzB6M1R7aXCdM9JyUXumdZzCaj+5J3UpLFtg
+         KPMg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z44si9152143edb.418.2019.10.24.11.51.31
+        by mx.google.com with ESMTPS id o24si23437498qto.255.2019.10.24.11.55.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 11:51:32 -0700 (PDT)
+        Thu, 24 Oct 2019 11:55:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50784 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNiCn-0000X9-Lx
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 14:51:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50903)
+	id 1iNiGg-00079C-8z
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 14:55:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49980)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNhyC-0002ff-Lq
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 14:36:27 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNhsq-00012v-6J
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 14:30:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNhyA-0007zr-Hd
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 14:36:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:33809)
+ (envelope-from <laurent@vivier.eu>) id 1iNhso-0005qX-08
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 14:30:52 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:36905)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNhy1-0007tb-JT; Thu, 24 Oct 2019 14:36:13 -0400
+ id 1iNhsg-0005nq-FB; Thu, 24 Oct 2019 14:30:43 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
  (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1McH1Q-1hrezo0Xvw-00chCU; Thu, 24 Oct 2019 20:35:56 +0200
-Subject: Re: [PATCH v2 14/14] hw/rtc/aspeed_rtc: Remove unused includes
+ 1MBUuV-1iIR4b3pQl-00Cx5L; Thu, 24 Oct 2019 20:30:15 +0200
+Subject: Re: [PATCH v2 10/14] hw: Move Exynos4210 RTC from hw/timer/ to
+ hw/rtc/ subdirectory
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20191003230404.19384-1-philmd@redhat.com>
- <20191003230404.19384-15-philmd@redhat.com>
+ <20191003230404.19384-11-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -101,33 +102,33 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <a7021845-b79d-3d0d-3ea7-dd71835d7bda@vivier.eu>
-Date: Thu, 24 Oct 2019 20:35:52 +0200
+Message-ID: <424896d7-6e1f-2221-259d-9e550a292928@vivier.eu>
+Date: Thu, 24 Oct 2019 20:30:11 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191003230404.19384-15-philmd@redhat.com>
+In-Reply-To: <20191003230404.19384-11-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nAH21MJHPh7V8FPM+nfnRQV7aru0J7+sR40bLRVOn9lxeADLszR
- 46fdNONTaxkFYX+dY8nl2EhvjUy3eHXeKtG2f68GnDHLtNgCI4wGFSnZjaIhq5cfzVdEV3I
- Wz6BP4OBqRSXW5FSr+i0/pRTNWFxozKlTguD5jJ2uLH1VWyQ6TCsl7LRha6Wp1QHEvcJbPm
- lLC7V354Kk4OSKD8ZtWqA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zc9iOTM8Aps=:wDdb/DZ1n1Xa7/CPaO4gz/
- W5dXvv2bUqcvcCMpnxQ+ftvTeRYmaGjv9uA7GG/9Xj/aZZdJ/ZQnoBJ5olj4YD9PLpz/DMSyY
- dQqNSDhmzkRXrMFO4rtliuI0u1ki/jklf5UZtQqYcQg28B3V2Na4bue98mm93iqTpqeK/xioX
- qI8sbXz6Nv0fEEG8S2Ycjlj9WbcZmS3WlCdYdv95IuG8duH4d+OWZMHiPg+aj7oZX7q8me8RA
- elip8MvK00S9S3QOkvi59HMXKE8TIBz3NpxUzuS9wAHKlYl48UYIdSwwjt/E5T5/9wUrEWs2R
- i/cAkEaFBacv//S/+lvyNHNc6YpFbAS5AivnR9LJWy/vXkEnk55SikIz10QQFWaIHiw7kaGrk
- eIxJLey7xA3pEGZNfzrgix2xLzpePInW4hzIDpOvimNpbrUNvIbuWoMvX0d2CKWdWaiaRxCgx
- yHz/S5bmmwFL1PyQ2fVzBEgi7iX9oKJn6V+4aSW3/DWA06f/TxH2hfadH8Z5al2I5zvSBnCgP
- 3r9kRVZlki69Kvjm1x7RFO/hJc3Fx/ej2S+tTUAq0PAkWrILTLT39mBytZ+8ja1fxRz6rQckZ
- Hj21WZ1uW0Xc4e8tW2IXmi8MqweLeGrl4ETozmJqsxA+1f+6nZxJWmoM4b8vTqdet5KmOmCuu
- +TrqCCLWGWWD1e40XLq2rK5SzWRGGqrRGsMCujMo7TL8N/KEVi11QGsH+ofE7gGmFUKwUyj3T
- xV/xE6AhyoIQIRdr2EAfbY4hSFUKbvZfihyWsOdwALduTBzVD0g4JQ7ZVqXxxHdq6E4nwkn5U
- v7JR69IiygTMoEDIztdfoc00Xm1UFTAaHDDsFsHgCE3vR7/nng5qQpZ2wUvFNpSbDMgK+uj/W
- PsRtjLqTkFMsEA0PiGc1MA2XbdO93SwaMT7lcOC18=
+X-Provags-ID: V03:K1:ISyk3a5C7CG97cvpHJ9zvy+kN+fdRsy/E0DE2GEHX3HyuZTiNVl
+ Rgz0peOtBvBtevsUq1yzkxBi+CgemIvYfPtfhkTZwbFLkZ++CiPASvNvsFO8SQpvnol99sV
+ bWlcOW7/lrLigpylX4Hx4RYbrnV6Xe5jwNROwPIxa0fyXe6Wf1bYLJlEM5RALvSWFh6vVkk
+ vqk/Iyfy8tjpe9tcpVKbA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jGqec37q+6I=:9xGBMEC+cNVAtO53tUnJs0
+ 9waESkeEyMKO1dyAQC2pdRoDAHy9/Mq4GQclPKdxW2f/j4ufm2g8NUqzHVT8gSmvf/4/3NWvK
+ z/lTC9yKddHO/z/GoZyMTx7FtsCqrzx0nC8sDwnQJDkELQ7lA4SSc0RvBeRGpiiBQlybtJchM
+ cjBM4OTiTaB9OhzYWTz3kbqOFYxMMDz60Bfsr5vV4gqdbTV3NzLTPxzTjtPE421LlfjkeV+2t
+ ER6Nm12yRDOE/8QIGYhI1lwqcEDR9GQapOxkwRLzwq84u6fxKzNEd1HlogB491fCS+XbdKeuG
+ WDqKTvCJa92EmA9BPQgE+h8o7taPVcuhGzmPPhiAsRcfQilj+CKofSMCq7mltebaagGnWOR3B
+ uN0I5VpgGoc7L6P/tD/WNAkBGgnwNZNSlNad6cykcYCtxi+EfSWjRm3KRtrSp9bc5b7BGeVsH
+ /MKkeYEx5RWYK9492BA8EZzeuPyVZAKPUD5/QhBWV2CwsW5aRns7+0JggSkxBDLM7kwh6NySn
+ Th5vHiwik4vipCjuGuS6cts2RmKlxoRTU9UEEfD0vrXfDO3YY6UoQOUI/VTXwves0x2u2gLA8
+ +UJIlucCXANeIuYZbjSudVHb1HgckzBXmNJk4MeMxFPXWqvbmvgoFYQ9ekqFOyFgiq7r7AA/z
+ 6XswaKVe96J/jsI6g1E4r6HKJB8CeCs0pyUf96sbsnYnN3RMd4GO/3keAuCMMzNn1BvUJn1Ch
+ i93VbvFLVfBjHzJn0yVHYOoE+wCMMWGl6JL5l4KDc9hxdQCBssQJlCnos9eu3jGOnZAyvRdcd
+ MaFNoX8fq3UuQYQ7rugA9y698Gy8593wuYXrO+fAmik0yZpx92kyvqbNYoZo6k8y3JIKs43/b
+ 0wK/ysuJ4O6pobcs9bupK/9TNzsUXGE2jLSRmBjQQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 212.227.126.133
@@ -161,39 +162,47 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KXrO1IhZgQQU
+X-TUID: rAXykZgp821y
 
 Le 04/10/2019 à 01:04, Philippe Mathieu-Daudé a écrit :
-> The system <stdint.h> include is already provided by "osdep.h"
-> (the scripts/clean-includes file clean such headers).
+> Move RTC devices under the hw/rtc/ subdirectory.
 > 
-> Commit 64552b6be47 suggests we don't need to include "hw/irq.h":
-> 
->     Move the qemu_irq and qemu_irq_handler typedefs from hw/irq.h to
->     qemu/typedefs.h, and then include hw/irq.h only where it's still
->     needed.
-> 
-> Reviewed-by: Cédric Le Goater <clg@kaod.org>
 > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  include/hw/rtc/aspeed_rtc.h | 3 ---
->  1 file changed, 3 deletions(-)
+>  hw/rtc/Makefile.objs               | 1 +
+>  hw/{timer => rtc}/exynos4210_rtc.c | 0
+>  hw/timer/Makefile.objs             | 1 -
+>  3 files changed, 1 insertion(+), 1 deletion(-)
+>  rename hw/{timer => rtc}/exynos4210_rtc.c (100%)
 > 
-> diff --git a/include/hw/rtc/aspeed_rtc.h b/include/hw/rtc/aspeed_rtc.h
-> index 3fde854ad9..b94a710268 100644
-> --- a/include/hw/rtc/aspeed_rtc.h
-> +++ b/include/hw/rtc/aspeed_rtc.h
-> @@ -8,9 +8,6 @@
->  #ifndef HW_RTC_ASPEED_RTC_H
->  #define HW_RTC_ASPEED_RTC_H
->  
-> -#include <stdint.h>
-> -
-> -#include "hw/irq.h"
->  #include "hw/sysbus.h"
->  
->  typedef struct AspeedRtcState {
+> diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
+> index 543a550a0f..3d4763fc26 100644
+> --- a/hw/rtc/Makefile.objs
+> +++ b/hw/rtc/Makefile.objs
+> @@ -7,5 +7,6 @@ endif
+>  common-obj-$(CONFIG_PL031) += pl031.o
+>  common-obj-$(CONFIG_TWL92230) += twl92230.o
+>  common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
+> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
+>  obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+>  common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
+> diff --git a/hw/timer/exynos4210_rtc.c b/hw/rtc/exynos4210_rtc.c
+> similarity index 100%
+> rename from hw/timer/exynos4210_rtc.c
+> rename to hw/rtc/exynos4210_rtc.c
+> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+> index 294465ef47..33191d74cb 100644
+> --- a/hw/timer/Makefile.objs
+> +++ b/hw/timer/Makefile.objs
+> @@ -19,7 +19,6 @@ common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
+>  common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+>  common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+>  common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+> -common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
+>  common-obj-$(CONFIG_OMAP) += omap_gptimer.o
+>  common-obj-$(CONFIG_OMAP) += omap_synctimer.o
+>  common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
 > 
 
 Applied to my trivial-patches branch.

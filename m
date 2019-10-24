@@ -1,89 +1,66 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2698619wrq;
-        Thu, 24 Oct 2019 11:08:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxUoDNbCPHsJ+3iC+rUstxF9j3u3ToKTpqDuWwmAviS/2k1vaRBAicj4XVcdgH1VaoVLuWA
-X-Received: by 2002:ae9:eb17:: with SMTP id b23mr15074698qkg.260.1571940482557;
-        Thu, 24 Oct 2019 11:08:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571940482; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2704195wrq;
+        Thu, 24 Oct 2019 11:12:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyad82JTiYk3tFjL6A/hlHDhLKFEU3zo1dXO2SRBRqBR+AXgNSNvAkcoxJQbAtQ/woSO7R2
+X-Received: by 2002:a05:6402:213:: with SMTP id t19mr33335863edv.7.1571940733182;
+        Thu, 24 Oct 2019 11:12:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571940733; cv=none;
         d=google.com; s=arc-20160816;
-        b=ihqm/7AhCXtObl02AOX0377/xGL9Q9gi9/DfigdK2TMb00Bk6ihtPbZS5V1ATmUnp/
-         LGhjtCB+JUI1cwuIwpD9a6CRYdw2c81krqdkrxnvKOAuB4WqyVWa2y3PsQaIZ716pw9b
-         fX5xt+AUybiXV+o9Gacfb3SjB78ADZKNHPWqNafwg4m7Jzj1T7iyyrQ03sLKz7gksrFZ
-         5O7GxJpNGgICOClgMYwPTeNaeulIenitM6IpGezLKknJLctVlF+PDcnFDuaBh24/rogA
-         /h75uVE0kpCdnmEOjTKI4dewlVwDA4UNtIJmEiUgHuDxmvUSbtP7nRMOy1VOKvN8DbDR
-         Wjnw==
+        b=TvFMXFXwpOF+pRY7nHHnBaRyPUfSLz7m/wLFq8nBLB/SiQvsb3mL2f6RQsFT4vZ+bY
+         Lh/OEsAZUt2H6IWrtNg/I7OUG2nirwEgPmuxz571/DdOLrEA99XeYenZTUcV6g3a9jBe
+         X4fdfg51NIBrnXMuYM7PCyENfjJb0xBoa/LMItV+SGK/6KmRK1m7HS1j2P4chmu7nDwQ
+         W8zyOSRgZIwn8l215hrWo3FRdSd6LKo9V8a3PKSZUvtJETFDWcr6T49ayOVn6kDi3/ac
+         2XXxQtjpDQO5E096VFj22zuQY/WLSbUoW/ZtzlJJ9Mc7YJg8XeNoeZvjkHk1xFozpaW+
+         gFtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=SBbFv4GC1zNstf9GFggafol48hR74cDb71bYZNLg40c=;
-        b=BMFM3veeaVO0JpqxiKoTJiBsZGLeky13g1l0ULJt5dcTn4f3sJACF5wJOre4PWx3IG
-         nOO6fk9O5ix6g9NtgFHp0HMbrfXTXU2Kq6TCU3E0mtY5hFZdSepX/nV1iIwpu6ae6FUe
-         zQFmkTyky1ETD6eMIJloEJMvTLHc0ty9xhPXUFrAlXTM0QPf8AkpdnJRv90VYCVLgcrP
-         HBj6w8IQYliDvAH3FdKd6NknRirqRloyxCef2GNz3gFmu7mO24q7wNo/qBevckXL3jlk
-         Zv+kYNbeilYaX3nZAV6hCWiwFaDlDztAwnLLpRQXDMZrW3LPvGs0D9z+V6sjsvml05Ze
-         nKpg==
+         :message-id:autocrypt:from:references:to:subject;
+        bh=6tC+9Il3dH0htimsYWCtaEQMvF0s/9G1aHcNRriTE38=;
+        b=FaArJYNVL0HdL0dMHDWoG+2LVtBrqFxg7/qQDNNNUPsNEbVe9uoIm/H8PLmYU9z6Mj
+         Zc2MfTP79fTj59dpSGKbknn98obrRrlvxpXSF8nxroo8cUib1Ye8JRmCyCyMCRR9xWmr
+         VovDPAX29nhdA7/BWkI6YT2GbzBSddSUWwAwo2/lRB9a2ZRpE8V5XiaXk7+hz/KObxSW
+         Kq4eKIAaE0G2QQRhC9X88vWCdVUpbxlvUla6V9qy3cySnemdcPjI19hV8SY1UEiUEccO
+         s6q/+4uL496+vE3Ups/B41bWkNGT8U9PhGvEApVBqNmrxi14tWxcJVxtpAAsRKUD/Imy
+         BCUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F3g1dL6o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z26si23081172qkj.171.2019.10.24.11.08.02
+        by mx.google.com with ESMTPS id l12si20835559edk.444.2019.10.24.11.12.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 11:08:02 -0700 (PDT)
+        Thu, 24 Oct 2019 11:12:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F3g1dL6o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49756 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNhWj-0008Lq-AU
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 14:08:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41404)
+	id 1iNhal-0005jL-PI
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 14:12:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46299)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <lvivier@redhat.com>) id 1iNh2J-0004FK-JZ
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 13:36:36 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNhRu-000781-HC
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 14:03:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <lvivier@redhat.com>) id 1iNh2I-0000LA-7N
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 13:36:35 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:57307
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <lvivier@redhat.com>) id 1iNh2I-0000JZ-2a
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 13:36:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571938592;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=SBbFv4GC1zNstf9GFggafol48hR74cDb71bYZNLg40c=;
- b=F3g1dL6osraQG7tPU6hQdYfCwBDVp2JfmCikh8DwUcuXDGOWDjk+b7a/Axdl7dUG3Uaz+Z
- 0OCKEO8tLQ4dpWe/PPw8DxF+hmh+cA5qVV10sS5vTvQccufmYoW6kDU+OLzmK6huxaahBe
- ZXNmpnDRPTBfsL64BJGOnhJ0Zwr/pks=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-90-rXV5GHbRPvu4prA38JsQCA-1; Thu, 24 Oct 2019 13:36:28 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9BCF1800D49;
- Thu, 24 Oct 2019 17:36:25 +0000 (UTC)
-Received: from [10.36.118.133] (unknown [10.36.118.133])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 14BE84128;
- Thu, 24 Oct 2019 17:36:05 +0000 (UTC)
-Subject: Re: [PATCH v2 00/14] hw: Split RTC devices from hw/timer/ to hw/rtc/
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+ (envelope-from <laurent@vivier.eu>) id 1iNhRs-0004nQ-Vk
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 14:03:02 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:52119)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1iNhRs-0004hv-LT; Thu, 24 Oct 2019 14:03:00 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MoNMu-1hdMBn0gP2-00ooUK; Thu, 24 Oct 2019 20:02:27 +0200
+Subject: Re: [PATCH v2 01/14] hw/timer: Compile devices not target-dependent
+ as common object
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20191003230404.19384-1-philmd@redhat.com>
- <CAFEAcA-rmPuKQyv8d-u-1UAMhy6yGAcF3csVDcvYVXMosZysYw@mail.gmail.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Autocrypt: addr=lvivier@redhat.com; prefer-encrypt=mutual; keydata=
+ <20191003230404.19384-2-philmd@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
  WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
  SUVTEQwbGQN62guOKnJJJfphbbv82glIC/Ei4Ky8BwZkUuXd7d5NFJKC9/GDrbWdj75cDNQx
@@ -93,65 +70,68 @@ Autocrypt: addr=lvivier@redhat.com; prefer-encrypt=mutual; keydata=
  q9/FbuTDwgVGVLYthYSfTtN0Y60OgNkWCMtFwKxRaXt1WFA5ceqinN/XkgA+vf2Ch72zBkJL
  RBIhfOPFv5f2Hkkj0MvsUXpOWaOjatiu0fpPo6Hw14UEpywke1zN4NKubApQOlNKZZC4hu6/
  8pv2t4HRi7s0K88jQYBRPObjrN5+owtI51xMaYzvPitHQ2053LmgsOdN9EKOqZeHAYG2SmRW
- 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
- D+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <839e9cb5-6fc2-a2b2-df12-abf9dbf6dcdd@redhat.com>
-Date: Thu, 24 Oct 2019 19:36:05 +0200
+ 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
+Message-ID: <9f57c1e8-5a2b-7caa-6461-139ad60b57de@vivier.eu>
+Date: Thu, 24 Oct 2019 20:02:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-rmPuKQyv8d-u-1UAMhy6yGAcF3csVDcvYVXMosZysYw@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: rXV5GHbRPvu4prA38JsQCA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20191003230404.19384-2-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:z80SXNsCVhYNz63rVP2KGCGWwdR8wt/pnIvrQ3jqtGavyV//WPJ
+ bQagSEvEd3l8nC8U5jLJFC0nIi2IuBVsUfYSHIAzoQNbYUAGyjU5sDsbDj5c9ZYluZjFKMc
+ D3to3HuDEPii1H78ZgAh/EjqxCzG3xH+9Mn9c/8BfCmbDiYBVhM79w5w7EqbXN1U8hNELG8
+ 8BUlxXH2nklanQsAw9LXg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZKwRa20/Rpw=:x0uD0v+dRzkj/yurXCNZbR
+ QpX9Ur+x/SubNAA8qMxVyvjN1WgjgVv+uGZoWxUismyy4VCN3F+lQDYDAMQZZIHqQ9ekRb/FR
+ ynfOaAXGBawAGKNLLa6rJUUZkercygk8RO5rSQ7ZnMNrr57w0wak3izPXTDGAIK1t4y7mN4zU
+ NMbZes7s2As0CRgAAQVfyVNKxBbHP0vszQW5yd97cQNq7Elqe7qjrPt5xKtOcmUkyleNDdLFS
+ x229sUecBhdfhu6jv82gERtHgZX3WYP2lRUGbc4dmhnh3i5y5vzSzV6T2ZAF07RlbfB54KIer
+ uO7Uw29XYTdkZBQ1Ee5ytihWzXNOyBQTvYtRJvAe1DhOT+51vYgTq/RMtMY6W1GnIvP9HBINj
+ 9ZMaT5TovI6myKbyJJ52QxKl303ZTjdvYrBDUCOrP0rGfk2abN3NMmaJuGQU6ceVUcmsJKtkL
+ MbKXL7VUiSUTSqyuMJYGVZGWkRcGhcfwuZ6X/4VTuKBZCRH5OgWOBdzFJUgr6+AfAbbuIiHyn
+ a+x/aYeeAjb0qXij5nkZz9uPJTNJ5J9Nxta6C0Ufk/s/Vb+VLjMuUmhvpOZaPSzzxZM4MGkuN
+ i+2xUNCPk0KqzeX/vuJ//XontKvUWGWtbB+hNtLMAtCUzStmFvBHNx2YYcPLIDLXNHGJdgOfL
+ Iy/FZnZ25hC2WCivWtv/6G0HCq3aDj+gTVoSF9dOaPsYNRWAu2czoX5CTZZLsTn5yQcnkPkJX
+ d0zGNGi+5m7vu0FU51dkVmFIPJXdJlOLzNPIqT2S/zPN11CZijsU5Av0YOqxDFE81SH9PZT5T
+ y8kGc+7QRqdOoGKmiXurNkAKW5GqZFy1nchOgL++CtK1agltUSr6svSAJpbAv2ZqHOKDti/Si
+ DxBMVi/HMmbuscvxmTw5b7+aeTLnlvTVKtm3iz8IQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 212.227.126.130
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -163,43 +143,80 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org,
+ Helge Deller <deller@gmx.de>,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goat?= =?UTF-8?Q?er?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Andrew Jeffery <andrew@aj.id.au>, QEMU Trivial <qemu-trivial@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+ Joel Stanley <joel@jms.id.au>, Richard Henderson <rth@twiddle.net>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Igor Mammedov <imammedo@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vVXAeDt9xiZ5
+X-TUID: KR0idyQpwegW
 
-On 24/10/2019 17:51, Peter Maydell wrote:
-> On Fri, 4 Oct 2019 at 00:04, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
->>
->> Since v1: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg03334=
-.html
->> - addressed review comments (described in patches 3 and 4)
->> - added R-b/A-b tags
->>
->> Whole series now reviewed.
->=20
-> for the arm parts:
-> Acked-by: Peter Maydell <peter.maydell@linaro.org>
->=20
+Le 04/10/2019 à 01:03, Philippe Mathieu-Daudé a écrit :
+> All these devices do not contain any target-specific. While most
+> of them are arch-specific, they are shared between different
+> targets of the same arch family (ARM and AArch64, MIPS32/MIPS64,
+> endianess, ...).
+> Put them into common-obj-y to compile them once for all targets.
+> 
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/timer/Makefile.objs | 22 +++++++++++-----------
+>  1 file changed, 11 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+> index 123d92c969..f407523aa4 100644
+> --- a/hw/timer/Makefile.objs
+> +++ b/hw/timer/Makefile.objs
+> @@ -25,20 +25,20 @@ common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
+>  common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
+>  common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
+>  
+> -obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+> -obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+> -obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+> -obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
+> -obj-$(CONFIG_OMAP) += omap_gptimer.o
+> -obj-$(CONFIG_OMAP) += omap_synctimer.o
+> -obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
+> -obj-$(CONFIG_SH4) += sh_timer.o
+> -obj-$(CONFIG_DIGIC) += digic-timer.o
+> -obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
+> +common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
+> +common-obj-$(CONFIG_OMAP) += omap_gptimer.o
+> +common-obj-$(CONFIG_OMAP) += omap_synctimer.o
+> +common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
+> +common-obj-$(CONFIG_SH4) += sh_timer.o
+> +common-obj-$(CONFIG_DIGIC) += digic-timer.o
+> +common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
+>  
+>  obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+>  
+> -obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+> +common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+>  
+>  common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
+>  common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
+> 
 
-I'm going to queue this series in qemu-trivial queue, so I guess your
-Acked-by is for patches 2, 10 and 11?
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-

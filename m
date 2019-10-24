@@ -1,412 +1,240 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2272107wrq;
-        Thu, 24 Oct 2019 05:19:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwK3Jmoy0s6JjZZKiPtM2jDPpdGeBgM07xNwQc+EWsEw5buvjlAKacIIdIQ6y+PqAXxCwRj
-X-Received: by 2002:aa7:d852:: with SMTP id f18mr16537135eds.110.1571919560512;
-        Thu, 24 Oct 2019 05:19:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571919560; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2272857wrq;
+        Thu, 24 Oct 2019 05:19:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyvEKaKgQTo6/Blod77EnwLaef1vxLKnjBIKwUNeNT00X5POi26DFiCAxMzuuk0I3x3x3TC
+X-Received: by 2002:a05:620a:140c:: with SMTP id d12mr13175357qkj.419.1571919599064;
+        Thu, 24 Oct 2019 05:19:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571919599; cv=none;
         d=google.com; s=arc-20160816;
-        b=epiZ3aBtsJDPEAVwQDo/XAcTYXjuoxTMnLSeT+iC50NWtt3/hDYC7bU3PwpdRCPiJC
-         5pgZyP62rq6nQLVEuEffwdRX09CrJh/ABMVXImsMkNE+aOpWPJfnMNRzdea13CpUt+d9
-         9cb/mOhG7j4kU7RANa0fAM5IzV2v5I8appElikX9P7SB5mIjunuTaJTQKLrj9J011bCw
-         dcTv0kKn2MvYII7sH4dj9OLU08TQCKSnBdDNwoX2lcr0Hf/ytKA8w15IPo0vlzmY+DmL
-         J0iHsEZRtBaGFCrdwHaR/zVOYH+FTGCCyT1vjZofnwM/MsjQZOAHOY41pZ16Rde9/1ej
-         6enw==
+        b=Z1pCz5Df7bZsxFXrGmt8yoG4rJ3YdaOFBLcA9HcZX4DlKdPZf+qHzZs8ODTlUNfK0w
+         F9yhFo7CFCSOhBOiYALQwhV5S4kd6DdfrEliTQoeJJQuKoNX5WFGgBXg/Ng8GUdmOQ3p
+         B4TePG2D+BsK3COb3ZkCnlLtiYWVZxDVtTrIWTdG6YqiC85HHJeSJOMzmBwCUWcsmOLG
+         uQ7ndEdBBZYT9KdFlqBnXLqaZIoFwU3IGaLf13KHHomm6dTnsgErVwsPPZNNVcv+ltj6
+         B5PipFBHifS+PbGxI7Goiev5dF1ZgErAHv3RlqiI0Z23WsQFLaRqt62TWb+oO0sXjJDj
+         1xxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dvKtZiXb1wOgDLs2UmUJZtGwed89qpNJCH0wIB7h53c=;
-        b=UGY9zHdfIb8tY2h7RIR6ZaVCSCyHms10rUT8QDWdvTPieaXl+aOIG+saHfnF9pSEoz
-         vzv7R5PWXuUFwuL1EA5ElqbOR+ru83SPBuQnCyFama5DyHQ2/d/BmH92iY1y5e1j5ODa
-         4fJD1NNfvA+Vqgup0+RFFa9BSFcuqVY8vul5ZKBPKww76hhc2cj2cXw0LQe1iNmJV0+Z
-         TLHPo2A2PbojWOwerfjBAOdYlrldQhUqRPp4ydFnGMukdCAtMLqTYVH+51kN1JWbS9Gm
-         8QFg51AVsiR1glF7G5Mo/QCtDboDuFVGJsZy2X3uopRGte03+mTiTKI+JVRfs5lfElvB
-         HKmg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=nyUrBjNZL0unXLJHOgF9Gl+vekVNrl35sqdNhNXXh+A=;
+        b=wQVBLR3JLTFq4t6bYzv+a66K1z4qMEQWLiNJaeyFM4ZMsu0i+puYVvptWdpOZ8YrCr
+         Dq5zQ6WlKeA7uxh1pcKAMwEVWMjDeRrzSEuX/hF7Nha6+rP+ZOvs0EDa8Xg6aD54IstR
+         YRFykkbW3j38Y6Oq87QJVPEwdjXkjXedPeFA8BPjFL4GizvyJbRAr/7pKR2hhajL4Ho3
+         j6D3NSQa0jDvheTdoU8wHEFkKvy1IcgF4fDQ7zpYS94JGL6vBmoCh+SaHTsc1vHmpz1M
+         xZjnGnA01rocqWQqM5/G1rAeqZ+JmagX61hFYETFm4Ku3zj/kNXU5gdHudZEMEKPWkQL
+         wROQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SSoxjqdl;
-       spf=pass (google.com: domain of drjones@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
-        by mx.google.com with ESMTPS id p5si10733391eja.141.2019.10.24.05.19.20
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u3si9843032qvo.92.2019.10.24.05.19.58
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 24 Oct 2019 05:19:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 24 Oct 2019 05:19:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SSoxjqdl;
-       spf=pass (google.com: domain of drjones@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1571919559;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=dvKtZiXb1wOgDLs2UmUJZtGwed89qpNJCH0wIB7h53c=;
-	b=SSoxjqdltnOuydP99Asyv7g+FjxYs2/C1aeD7mGoxuoT/cxcwnxF9gPkg2EDZk2f6PahWe
-	4HHVXf82n/xlmI9J8TZhWWqv7yBIH8mdebOy6WXFnUetlweDjrqtVChVFAQ+OFbEtniDVN
-	7VK5RfAUl6HnL4hpGu2ZsDOq6W762Tg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-146-1xpu-PzaOlCGLMKfnLy6fw-1; Thu, 24 Oct 2019 08:19:15 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 56CD51800D6B;
-	Thu, 24 Oct 2019 12:19:14 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0F18B60BF3;
-	Thu, 24 Oct 2019 12:19:06 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	peter.maydell@linaro.org
-Cc: richard.henderson@linaro.org,
-	eric.auger@redhat.com,
-	beata.michalska@linaro.org,
-	m.mizuma@jp.fujitsu.com,
-	alex.bennee@linaro.org,
-	Dave.Martin@arm.com,
-	armbru@redhat.com,
-	eblake@redhat.com,
-	imammedo@redhat.com
-Subject: [PATCH v7 9/9] target/arm/kvm: host cpu: Add support for sve<N> properties
-Date: Thu, 24 Oct 2019 14:18:08 +0200
-Message-Id: <20191024121808.9612-10-drjones@redhat.com>
-In-Reply-To: <20191024121808.9612-1-drjones@redhat.com>
-References: <20191024121808.9612-1-drjones@redhat.com>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40786 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNc5t-0000T2-Jb
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 08:19:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41622)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1iNbb3-00030i-OD
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 07:48:07 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1iNbb2-0007hC-FC
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 07:48:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54010)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNbb1-0007gb-TI
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 07:48:04 -0400
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id CE3A459451
+ for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 11:48:02 +0000 (UTC)
+Received: by mail-wm1-f69.google.com with SMTP id k9so874036wmb.0
+ for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 04:48:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=RodsIxNVedoLZrS91xhgv1KPAkM9KvsVpg2mvRylzXQ=;
+ b=PQngWDzB+p3Wa+bCuUb+jMe7tVjinQvWNZRfJSoWNLMOzat8TRWW/VkVBbDbG8+KBz
+ 80v5ateYIeI7+/k80cm7aKRA+9tU/mlg0i0z5hRMe9MV9oRDD/CK4yguvhSQ918a8k91
+ qD/kUzG4eZpAhQxzBrFcK1UUbC2xO9eMOAQa2ZyIyCk7sn9HMJt+GaQQNctKx4rUlFcX
+ wAfxI5rniNQ8y9byeSOMT6J+kgIYspb56/UFd+gIWMF5xrw8MafHfi255gz56tvwbot8
+ zoveAlt8zqpplDn9ORcvgX+z5P8FnEJ28gw3so7Vr0naVQP7MJcgVsqwlmDAfdVzGpwO
+ 229g==
+X-Gm-Message-State: APjAAAVRvPIZRGA6W4bPne+FsowJA9Nil2fXX1I6KPk7nkRsQVbSd8Kx
+ UiNyBY+22vTQSUZCVPpY5ZVfVbJh7UPMA2rRTKSaVA8ZLdRd2F3RRWAIurgcIiOEfYCbDZWvReS
+ tPyp0Fyvs13aoVY4=
+X-Received: by 2002:a1c:610b:: with SMTP id v11mr4484150wmb.156.1571917678624; 
+ Thu, 24 Oct 2019 04:47:58 -0700 (PDT)
+X-Received: by 2002:a1c:610b:: with SMTP id v11mr4484105wmb.156.1571917678380; 
+ Thu, 24 Oct 2019 04:47:58 -0700 (PDT)
+Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
+ [83.57.174.129])
+ by smtp.gmail.com with ESMTPSA id e3sm2084103wme.36.2019.10.24.04.47.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 24 Oct 2019 04:47:57 -0700 (PDT)
+Subject: Re: [PATCH v3 21/33] lance: replace PROP_PTR with PROP_LINK
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
+ <20191023173154.30051-22-marcandre.lureau@redhat.com>
+ <2d027692-e178-c1c8-8384-ad70ed345f29@redhat.com>
+ <CAMxuvay9kroZUo7ZbdhJqKAdp52rMmLGv0LBvktb68B2CKg+Mw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <2b9352d7-f4de-bd5c-62c5-cebec79e1c48@redhat.com>
+Date: Thu, 24 Oct 2019 13:47:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: 1xpu-PzaOlCGLMKfnLy6fw-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
+In-Reply-To: <CAMxuvay9kroZUo7ZbdhJqKAdp52rMmLGv0LBvktb68B2CKg+Mw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
-X-TUID: AwraSpakgxSp
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ qemu-devel <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paul Burton <pburton@wavecomp.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CMkQ3ycARQ24
 
-Allow cpu 'host' to enable SVE when it's available, unless the
-user chooses to disable it with the added 'sve=3Doff' cpu property.
-Also give the user the ability to select vector lengths with the
-sve<N> properties. We don't adopt 'max' cpu's other sve property,
-sve-max-vq, because that property is difficult to use with KVM.
-That property assumes all vector lengths in the range from 1 up
-to and including the specified maximum length are supported, but
-there may be optional lengths not supported by the host in that
-range. With KVM one must be more specific when enabling vector
-lengths.
+On 10/24/19 1:09 PM, Marc-Andr=C3=A9 Lureau wrote:
+> Hi
+>=20
+>=20
+> On Thu, Oct 24, 2019 at 1:01 AM Philippe Mathieu-Daud=C3=A9
+> <philmd@redhat.com> wrote:
+>>
+>> On 10/23/19 7:31 PM, Marc-Andr=C3=A9 Lureau wrote:
+>>> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+>>>    hw/dma/sparc32_dma.c | 2 +-
+>>>    hw/net/lance.c       | 5 ++---
+>>>    hw/net/pcnet-pci.c   | 2 +-
+>>>    hw/net/pcnet.h       | 2 +-
+>>>    4 files changed, 5 insertions(+), 6 deletions(-)
+>>>
+>>> diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
+>>> index 0e5bbcdc7f..3e4da0c47f 100644
+>>> --- a/hw/dma/sparc32_dma.c
+>>> +++ b/hw/dma/sparc32_dma.c
+>>> @@ -346,7 +346,7 @@ static void sparc32_ledma_device_realize(DeviceSt=
+ate *dev, Error **errp)
+>>>        d =3D qdev_create(NULL, TYPE_LANCE);
+>>>        object_property_add_child(OBJECT(dev), "lance", OBJECT(d), err=
+p);
+>>>        qdev_set_nic_properties(d, nd);
+>>> -    qdev_prop_set_ptr(d, "dma", dev);
+>>> +    object_property_set_link(OBJECT(d), OBJECT(dev), "dma", errp);
+>>>        qdev_init_nofail(d);
+>>>    }
+>>>
+>>> diff --git a/hw/net/lance.c b/hw/net/lance.c
+>>> index 6631e2a4e0..4d96299041 100644
+>>> --- a/hw/net/lance.c
+>>> +++ b/hw/net/lance.c
+>>> @@ -138,7 +138,8 @@ static void lance_instance_init(Object *obj)
+>>>    }
+>>>
+>>>    static Property lance_properties[] =3D {
+>>> -    DEFINE_PROP_PTR("dma", SysBusPCNetState, state.dma_opaque),
+>>> +    DEFINE_PROP_LINK("dma", SysBusPCNetState, state.dma_opaque,
+>>> +                     TYPE_DEVICE, DeviceState *),
+>>>        DEFINE_NIC_PROPERTIES(SysBusPCNetState, state.conf),
+>>>        DEFINE_PROP_END_OF_LIST(),
+>>>    };
+>>> @@ -153,8 +154,6 @@ static void lance_class_init(ObjectClass *klass, =
+void *data)
+>>>        dc->reset =3D lance_reset;
+>>>        dc->vmsd =3D &vmstate_lance;
+>>>        dc->props =3D lance_properties;
+>>> -    /* Reason: pointer property "dma" */
+>>> -    dc->user_creatable =3D false;
+>>
+>> But we still can not start it with the -device option and set the dma,
+>> can we?
+>=20
+> This is a sysbus device, so you can't. I'll add a commit comment.
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Tested-by: Masayoshi Mizuma <m.mizuma@jp.fujitsu.com>
----
- docs/arm-cpu-features.rst | 19 ++++++++++++-------
- target/arm/cpu.c          |  3 +++
- target/arm/cpu.h          |  2 ++
- target/arm/cpu64.c        | 33 +++++++++++++++++----------------
- target/arm/kvm64.c        | 14 +++++++++++++-
- tests/arm-cpu-features.c  | 23 +++++++++++------------
- 6 files changed, 58 insertions(+), 36 deletions(-)
+Ah OK, understood now.
 
-diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
-index bed218d44619..1b367e22e16e 100644
---- a/docs/arm-cpu-features.rst
-+++ b/docs/arm-cpu-features.rst
-@@ -272,31 +272,36 @@ SVE CPU Property Examples
-=20
-      $ qemu-system-aarch64 -M virt -cpu max
-=20
--  3) Only enable the 128-bit vector length::
-+  3) When KVM is enabled, implicitly enable all host CPU supported vector
-+     lengths with the `host` CPU type::
-+
-+     $ qemu-system-aarch64 -M virt,accel=3Dkvm -cpu host
-+
-+  4) Only enable the 128-bit vector length::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve128=3Don
-=20
--  4) Disable the 512-bit vector length and all larger vector lengths,
-+  5) Disable the 512-bit vector length and all larger vector lengths,
-      since 512 is a power-of-two.  This results in all the smaller,
-      uninitialized lengths (128, 256, and 384) defaulting to enabled::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve512=3Doff
-=20
--  5) Enable the 128-bit, 256-bit, and 512-bit vector lengths::
-+  6) Enable the 128-bit, 256-bit, and 512-bit vector lengths::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve128=3Don,sve256=3Don,sve512=
-=3Don
-=20
--  6) The same as (5), but since the 128-bit and 256-bit vector
-+  7) The same as (6), but since the 128-bit and 256-bit vector
-      lengths are required for the 512-bit vector length to be enabled,
-      then allow them to be auto-enabled::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve512=3Don
-=20
--  7) Do the same as (6), but by first disabling SVE and then re-enabling i=
-t::
-+  8) Do the same as (7), but by first disabling SVE and then re-enabling i=
-t::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve=3Doff,sve512=3Don,sve=3Don
-=20
--  8) Force errors regarding the last vector length::
-+  9) Force errors regarding the last vector length::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve128=3Doff
-      $ qemu-system-aarch64 -M virt -cpu max,sve=3Doff,sve128=3Doff,sve=3Do=
-n
-@@ -308,5 +313,5 @@ The examples in "SVE CPU Property Examples" exhibit man=
-y ways to select
- vector lengths which developers may find useful in order to avoid overly
- verbose command lines.  However, the recommended way to select vector
- lengths is to explicitly enable each desired length.  Therefore only
--example's (1), (3), and (5) exhibit recommended uses of the properties.
-+example's (1), (4), and (6) exhibit recommended uses of the properties.
-=20
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 48c18871f6ea..0c4465880ddd 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2669,6 +2669,9 @@ static void arm_host_initfn(Object *obj)
-     ARMCPU *cpu =3D ARM_CPU(obj);
-=20
-     kvm_arm_set_cpu_features_from_host(cpu);
-+    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        aarch64_add_sve_properties(obj);
-+    }
-     arm_cpu_post_init(obj);
- }
-=20
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 11162484465a..5b9c3e4cd73d 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -974,11 +974,13 @@ int aarch64_cpu_gdb_write_register(CPUState *cpu, uin=
-t8_t *buf, int reg);
- void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
- void aarch64_sve_change_el(CPUARMState *env, int old_el,
-                            int new_el, bool el0_a64);
-+void aarch64_add_sve_properties(Object *obj);
- #else
- static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { =
-}
- static inline void aarch64_sve_change_el(CPUARMState *env, int o,
-                                          int n, bool a)
- { }
-+static inline void aarch64_add_sve_properties(Object *obj) { }
- #endif
-=20
- #if !defined(CONFIG_TCG)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index c161a146ff0d..68baf0482ffa 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -594,6 +594,21 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, c=
-onst char *name,
-     cpu->isar.id_aa64pfr0 =3D t;
- }
-=20
-+void aarch64_add_sve_properties(Object *obj)
-+{
-+    uint32_t vq;
-+
-+    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-+                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
-+
-+    for (vq =3D 1; vq <=3D ARM_MAX_VQ; ++vq) {
-+        char name[8];
-+        sprintf(name, "sve%d", vq * 128);
-+        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
-+                            cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
-+    }
-+}
-+
- /* -cpu max: if KVM is enabled, like -cpu host (best possible with this ho=
-st);
-  * otherwise, a CPU with as many features enabled as our emulation support=
-s.
-  * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
-@@ -602,17 +617,11 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, =
-const char *name,
- static void aarch64_max_initfn(Object *obj)
- {
-     ARMCPU *cpu =3D ARM_CPU(obj);
--    uint32_t vq;
--    uint64_t t;
-=20
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
--        if (kvm_arm_sve_supported(CPU(cpu))) {
--            t =3D cpu->isar.id_aa64pfr0;
--            t =3D FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
--            cpu->isar.id_aa64pfr0 =3D t;
--        }
-     } else {
-+        uint64_t t;
-         uint32_t u;
-         aarch64_a57_initfn(obj);
-=20
-@@ -712,17 +721,9 @@ static void aarch64_max_initfn(Object *obj)
- #endif
-     }
-=20
--    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
--                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
-+    aarch64_add_sve_properties(obj);
-     object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_v=
-q,
-                         cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
--
--    for (vq =3D 1; vq <=3D ARM_MAX_VQ; ++vq) {
--        char name[8];
--        sprintf(name, "sve%d", vq * 128);
--        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
--                            cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
--    }
- }
-=20
- struct ARMCPUInfo {
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index c93bbee425ae..876184b8fe4d 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -488,7 +488,9 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *=
-ahcf)
-      * and then query that CPU for the relevant ID registers.
-      */
-     int fdarray[3];
-+    bool sve_supported;
-     uint64_t features =3D 0;
-+    uint64_t t;
-     int err;
-=20
-     /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
-@@ -578,13 +580,23 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures=
- *ahcf)
-                               ARM64_SYS_REG(3, 0, 0, 3, 2));
-     }
-=20
-+    sve_supported =3D ioctl(fdarray[0], KVM_CHECK_EXTENSION, KVM_CAP_ARM_S=
-VE) > 0;
-+
-     kvm_arm_destroy_scratch_host_vcpu(fdarray);
-=20
-     if (err < 0) {
-         return false;
-     }
-=20
--   /* We can assume any KVM supporting CPU is at least a v8
-+    /* Add feature bits that can't appear until after VCPU init. */
-+    if (sve_supported) {
-+        t =3D ahcf->isar.id_aa64pfr0;
-+        t =3D FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
-+        ahcf->isar.id_aa64pfr0 =3D t;
-+    }
-+
-+    /*
-+     * We can assume any KVM supporting CPU is at least a v8
-      * with VFPv4+Neon; this in turn implies most of the other
-      * feature bits.
-      */
-diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-index 597c1cd78db2..6b8c48de8aa8 100644
---- a/tests/arm-cpu-features.c
-+++ b/tests/arm-cpu-features.c
-@@ -356,7 +356,7 @@ static void sve_tests_sve_off_kvm(const void *data)
- {
-     QTestState *qts;
-=20
--    qts =3D qtest_init(MACHINE "-accel kvm -cpu max,sve=3Doff");
-+    qts =3D qtest_init(MACHINE "-accel kvm -cpu host,sve=3Doff");
-=20
-     /*
-      * We don't know if this host supports SVE so we don't
-@@ -365,8 +365,8 @@ static void sve_tests_sve_off_kvm(const void *data)
-      * and that using sve<N>=3Doff to explicitly disable vector
-      * lengths is OK too.
-      */
--    assert_sve_vls(qts, "max", 0, NULL);
--    assert_sve_vls(qts, "max", 0, "{ 'sve128': false }");
-+    assert_sve_vls(qts, "host", 0, NULL);
-+    assert_sve_vls(qts, "host", 0, "{ 'sve128': false }");
-=20
-     qtest_quit(qts);
- }
-@@ -432,8 +432,8 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-             "We cannot guarantee the CPU type 'cortex-a15' works "
-             "with KVM on this host", NULL);
-=20
--        assert_has_feature(qts, "max", "sve");
--        resp =3D do_query_no_props(qts, "max");
-+        assert_has_feature(qts, "host", "sve");
-+        resp =3D do_query_no_props(qts, "host");
-         kvm_supports_sve =3D resp_get_feature(resp, "sve");
-         vls =3D resp_get_sve_vls(resp);
-         qobject_unref(resp);
-@@ -444,7 +444,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-             sprintf(max_name, "sve%d", max_vq * 128);
-=20
-             /* Enabling a supported length is of course fine. */
--            assert_sve_vls(qts, "max", vls, "{ %s: true }", max_name);
-+            assert_sve_vls(qts, "host", vls, "{ %s: true }", max_name);
-=20
-             /* Get the next supported length smaller than max-vq. */
-             vq =3D 64 - __builtin_clzll(vls & ~BIT_ULL(max_vq - 1));
-@@ -453,7 +453,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-                  * We have at least one length smaller than max-vq,
-                  * so we can disable max-vq.
-                  */
--                assert_sve_vls(qts, "max", (vls & ~BIT_ULL(max_vq - 1)),
-+                assert_sve_vls(qts, "host", (vls & ~BIT_ULL(max_vq - 1)),
-                                "{ %s: false }", max_name);
-=20
-                 /*
-@@ -463,7 +463,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-                  */
-                 sprintf(name, "sve%d", vq * 128);
-                 error =3D g_strdup_printf("cannot disable %s", name);
--                assert_error(qts, "max", error,
-+                assert_error(qts, "host", error,
-                              "{ %s: true, %s: false }",
-                              max_name, name);
-                 g_free(error);
-@@ -476,7 +476,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-             vq =3D __builtin_ffsll(vls);
-             sprintf(name, "sve%d", vq * 128);
-             error =3D g_strdup_printf("cannot disable %s", name);
--            assert_error(qts, "max", error, "{ %s: false }", name);
-+            assert_error(qts, "host", error, "{ %s: false }", name);
-             g_free(error);
-=20
-             /* Get an unsupported length. */
-@@ -488,7 +488,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-             if (vq <=3D SVE_MAX_VQ) {
-                 sprintf(name, "sve%d", vq * 128);
-                 error =3D g_strdup_printf("cannot enable %s", name);
--                assert_error(qts, "max", error, "{ %s: true }", name);
-+                assert_error(qts, "host", error, "{ %s: true }", name);
-                 g_free(error);
-             }
-         } else {
-@@ -497,8 +497,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-     } else {
-         assert_has_not_feature(qts, "host", "aarch64");
-         assert_has_not_feature(qts, "host", "pmu");
--
--        assert_has_not_feature(qts, "max", "sve");
-+        assert_has_not_feature(qts, "host", "sve");
-     }
-=20
-     qtest_quit(qts);
---=20
-2.21.0
+With comment:
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+>=20
+> In theory, link property allows you to pass a QOM path to reference a
+> QOM instance from -device.
+
+Just wondering, if we had a "bus_address" property to the abstract=20
+SysBus class (and eventually "bus_name" for later) we could create/map
+sysbus devices from command line?
+
+>>
+>>>    }
+>>>
+>>>    static const TypeInfo lance_info =3D {
+>>> diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
+>>> index 4723c30c79..d067d21e2c 100644
+>>> --- a/hw/net/pcnet-pci.c
+>>> +++ b/hw/net/pcnet-pci.c
+>>> @@ -231,7 +231,7 @@ static void pci_pcnet_realize(PCIDevice *pci_dev,=
+ Error **errp)
+>>>        s->irq =3D pci_allocate_irq(pci_dev);
+>>>        s->phys_mem_read =3D pci_physical_memory_read;
+>>>        s->phys_mem_write =3D pci_physical_memory_write;
+>>> -    s->dma_opaque =3D pci_dev;
+>>> +    s->dma_opaque =3D DEVICE(pci_dev);
+>>>
+>>>        pcnet_common_init(DEVICE(pci_dev), s, &net_pci_pcnet_info);
+>>>    }
+>>> diff --git a/hw/net/pcnet.h b/hw/net/pcnet.h
+>>> index 28d19a5c6f..f49b213c57 100644
+>>> --- a/hw/net/pcnet.h
+>>> +++ b/hw/net/pcnet.h
+>>> @@ -50,7 +50,7 @@ struct PCNetState_st {
+>>>                             uint8_t *buf, int len, int do_bswap);
+>>>        void (*phys_mem_write)(void *dma_opaque, hwaddr addr,
+>>>                              uint8_t *buf, int len, int do_bswap);
+>>> -    void *dma_opaque;
+>>> +    DeviceState *dma_opaque;
+>>>        int tx_busy;
+>>>        int looptest;
+>>>    };
+>>>

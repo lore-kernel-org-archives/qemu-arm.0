@@ -1,211 +1,174 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2110970wrq;
-        Thu, 24 Oct 2019 02:57:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxsFVgxiExwd2QSfqEJduifkLPnF+kfyH30G+Zw2J8+yUGEEXfC0inBZjr37ud/X2v4ZTEY
-X-Received: by 2002:a37:4703:: with SMTP id u3mr13026205qka.140.1571911051566;
-        Thu, 24 Oct 2019 02:57:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571911051; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2112530wrq;
+        Thu, 24 Oct 2019 02:59:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxw3YeFXRWJ7CVGkWafLNna+zhm93RmFCx5Wmz6aIMRVTqW4L6TkcJ8tJOI+n5o6dM4BWBE
+X-Received: by 2002:ae9:ee06:: with SMTP id i6mr12456757qkg.362.1571911155502;
+        Thu, 24 Oct 2019 02:59:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571911155; cv=none;
         d=google.com; s=arc-20160816;
-        b=gKxx1usGxFKjlNlM0BqQZUMwmTebZqmh9x5iWmfWR3u6w89SIPgkADDxivAncQAzpx
-         nZiu3suh+iQf/Fw08fdv6nkii2xvZGaqHognB2W61PO++Lq20F/763vefiEiD9Vlh41c
-         SZ3l0WPtL46MqaiwMJovc2QbrvxSxWUdBDqI2rqi/26nL/P9c9pYD57ifZ1gKCSUl1WR
-         18YhZjNi87S1UIsFIqgbc116Fd+rdZZG45jgl73dpwYTA/2+X0xVi13bmJZa9NrqyKbA
-         JRQHShBzCZKBdQk8bcx/GusWq18hq1fNdF7QdL8XTa9Yv/WZ0aFUmCnt4KqGLLLGnx3L
-         p2aA==
+        b=kfi3RnI5H7OMwErLcksxcXeVmxEcMYGIQv5DY0LVfrCHUtHzji+uoAbyBtGVqnMwQ0
+         yKuiSg8Lmqcc9nPEhQadL4EH9sp7r9SFQKEnjrjf57kp8tGRl5moP9z8ONnwOJfZA4HU
+         Uu8N1ItbMfyCh5tvhaRbzMqO26/TxHViUM/K/mocPc2sL0DIiFwQmXUk9BnkChXCe4wO
+         Xr77A/041n5HkPyDbEauwB0QvKT3lVugi/5duWNVmF3R1zM8Z71Sh0zcFwL71L1mnyfn
+         BuEGYy2yCcCsrmt9wxhizLuyqvGjPf/GaNGHhQvozEFAnut9uyz3xgO2N0NuHZbU5UzT
+         uUbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:user-agent:references:in-reply-to:date:to:from:subject
          :message-id:dkim-signature;
-        bh=MtRiJQgfJ9ZnkixG1KDBOu+rrd/k/A5pzUFTb4qm5p0=;
-        b=SL0cZE1jdt8KRXq4DBRaVnsOFwhWvtq7MdytEEpZOCAmwvdRDO5Ex7B311NEjMohdw
-         vvsK0XgV+FdX4ZTK0lA6zJ9hfBAJM9ERHDZrKOA1JCwRI6iqS1JOBQUMEz97w2cJLrz6
-         5fSrkg4YvrBhpPdXQ2p+ImnbY51FRc85HMmdut/Yz8IjDJpPNF6AMv9rX2Ag2rIU6WLK
-         Osyg2W3xhyQHlWtV2QxQH2bPbaB4szQ3TLhe9rYfELbpiyi6GIMsuLSJOp5bKshEs1+3
-         IBRsc4UIUACJ2GObeWQ/O+9kZ2BkKl3/6iDdOhBNMQcDMKb/3gMhbCSmGw7wyeAipfkE
-         pALA==
+        bh=xJZGkKh8fZ9kCKCk45SiDZFkdbshXyCaxMtp65tdQig=;
+        b=kr6vRLML0ePPCGX+uYnFYqDDVI96pDGw8t6tUSJDbY1cseS7YYmQm58AIrz6hw2Pe4
+         FZcwYa0b6HMJjN2zm67dz5RUC2SGSutzHfoaK1urnE/31qDV/YInKT7jSAiVNp/nNFbT
+         dN3rKcRuaa0RwCpYpHn6zyfGdY3h0kCLX/8ZJNZfMNsh3i80HebHly2XZPQC9wNoEvXf
+         Kq3MyurFLT02fzbhJXrnI/At+khPT/a/J+Z1OIuzDpuW3RTyMHlPMU1ASQdtg8+5v34g
+         fIP1fzj2NaNiUUY5RjsjiSCFnuRaGJLXak9FMSc/noYLhCbbiVhekD4v0yA1gwNUMP85
+         BeHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HWgkSaHL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i8Vs+o2M;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h65si21060752qkc.347.2019.10.24.02.57.31
+        by mx.google.com with ESMTPS id e62si5437642qtd.192.2019.10.24.02.59.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 02:57:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Oct 2019 02:59:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HWgkSaHL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i8Vs+o2M;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37114 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNZs2-0005Fp-Cu
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 05:57:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45527)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNZti-0007wC-Gv
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 05:59:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46592)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <estebanbosse@gmail.com>) id 1iNZHb-0005MA-Fb
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 05:19:52 -0400
+ (envelope-from <estebanbosse@gmail.com>) id 1iNZPD-0007bs-2D
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 05:27:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <estebanbosse@gmail.com>) id 1iNZHZ-0000Jl-Sj
- for qemu-arm@nongnu.org; Thu, 24 Oct 2019 05:19:51 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51872)
+ (envelope-from <estebanbosse@gmail.com>) id 1iNZPC-0003q9-0Y
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 05:27:42 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:35021)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <estebanbosse@gmail.com>)
- id 1iNZHW-0000Gx-Uc; Thu, 24 Oct 2019 05:19:47 -0400
-Received: by mail-wm1-x344.google.com with SMTP id q70so1952739wme.1;
- Thu, 24 Oct 2019 02:19:45 -0700 (PDT)
+ id 1iNZPA-0003pt-W9; Thu, 24 Oct 2019 05:27:41 -0400
+Received: by mail-wm1-x342.google.com with SMTP id v6so1862187wmj.0;
+ Thu, 24 Oct 2019 02:27:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=message-id:subject:from:to:cc:date:in-reply-to:references
  :user-agent:mime-version:content-transfer-encoding;
- bh=MtRiJQgfJ9ZnkixG1KDBOu+rrd/k/A5pzUFTb4qm5p0=;
- b=HWgkSaHLaM4KT2a0iNnpJVNdZUAKQxKNvzIj5Z9o+o53prOV01jRgmPf1DMzsVo4iv
- kxckSCehtsshUTI1VKlHo7W/EtaINb/4TyEztSvKLzO+lMDA6jMk/d09NeK5e0m+BBHJ
- l8ywn6JAXGUx4sHRgwMe3s0CAJV+xtur1DJGCURfqkTXBypl5uxu8Vs7BNYmTOM5jOI8
- LxNBGEBL9pJvr+q8ZLOPgAtAFf9eYo5UytM9mXOENCSrrxoBFQFzJvz8ZQvLuHYUuMbq
- Z2frsHjlvPJsSB1FhH5cms6zfJK0ES26NlzLLf058x6B9Y2kkXVRd0QsqvevZG+1shb7
- MwLQ==
+ bh=xJZGkKh8fZ9kCKCk45SiDZFkdbshXyCaxMtp65tdQig=;
+ b=i8Vs+o2MncpWwXW9pGHNXaGee3eJpV+p7x5qDVvjUKpn+nV3oSkkkiBU5Gd9rgv6Rl
+ KAciwuw2d6oZT08ozqHF7D1ByoB2zyjA9iaeyhd8URh0OaB447MVturdrPWxXg2ySoty
+ jQhh2yrA5ll2DOx/pwFCbMnXC1F4BgzbkXUqHJsD4uu8oHUNAwI/O7lOqddTBWq2uoYZ
+ GSpG4BI4OPKb8YlPFM+mtRTCOsSQKLWDsBsRHZVv1cOcv1KjloUTluADeKoPeeotfcGT
+ 5/z2Gop1fUzyVMYPOFcgjfWHn7kw00XE98Q7gMpmAkLWY3r8Mgq200+qzjTFgSWJihXR
+ Vi5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
  :references:user-agent:mime-version:content-transfer-encoding;
- bh=MtRiJQgfJ9ZnkixG1KDBOu+rrd/k/A5pzUFTb4qm5p0=;
- b=iYYnaXDNBSQBZEs6RYHiRCUSeue5qel61liM05BItbDsTaO/xwQOx/DqemBVITjwuc
- 0ZpYP5xiLSsmAvhYnjRUDa1t+9VFkcMlo3uH+7n2zF7A2Mnk+XVeDZZCkKXGfKIi96b/
- VjqiN+TTyecxebKbSmAJCHdVS4ZPPgMQdjNj+pRxswoTfSntc8u2bliEeiONqWiJBRmV
- dhoOOUNFKq1RXOaE6Gyar1H/i4ejoZs5O5p8YMvyi2Igt2rkBpMIiqG5SOJlOEnwMwvS
- UFBWHsFjEZJHYdSfkBWHBIn91DW4IGfU1km7pEogxLIpyBxEJRCmY49aDSkekyPZhaH0
- mCBw==
-X-Gm-Message-State: APjAAAVXW3tz099tkB682NjTAYpK1Rj9YuhH7LZRxbe1b/WRYURHcI5y
- VpyFDgOp/wVStbYSenYnKrA=
-X-Received: by 2002:a1c:64d4:: with SMTP id y203mr3976343wmb.27.1571908784275; 
- Thu, 24 Oct 2019 02:19:44 -0700 (PDT)
+ bh=xJZGkKh8fZ9kCKCk45SiDZFkdbshXyCaxMtp65tdQig=;
+ b=fKx5ivCbbkNdukdvxyJMFE4+PbX8rTBxkvJUXgO5IluInkEae6M2FPOb2Ff9KoxPEd
+ t5QW+hkE5kXM5xjrviam7MA5l1pmralrh5rTqeT2erR1TkiAUz/j6riXFxUvBLU5yE5o
+ 7BwrBhmmzCaCFRHDqSMS8B7Qyq/1sR9Bjfr7D3WB+nL4uog8uL18FlPYW2vkD9+OOiyp
+ RXdYNjoF6gGclhKoXg7zTHw6J3XhXtCdT4zFAEUMCXHPLMt32g1iLfAlM5SzKDEtqfVv
+ yHAyZBAa13avcJwK0zpo4OoPid7H2lGG3QmfnRN5MlGqdURjhWpYKtjiNW3dCckWKIlL
+ YACA==
+X-Gm-Message-State: APjAAAUJTJbqJUEnhkq3dt6d1yY+xChsITWycAe7mVf/Jd/bp6a7uePj
+ 9Ocs27oM6SKc9HEVsnFzTcU=
+X-Received: by 2002:a1c:a551:: with SMTP id o78mr3734821wme.4.1571909259765;
+ Thu, 24 Oct 2019 02:27:39 -0700 (PDT)
 Received: from ?IPv6:2a01:c22:b04f:9c00:d5b4:db5f:bfb4:fdb?
  ([2a01:c22:b04f:9c00:d5b4:db5f:bfb4:fdb])
- by smtp.gmail.com with ESMTPSA id f8sm1926360wmb.37.2019.10.24.02.19.43
+ by smtp.gmail.com with ESMTPSA id l14sm9632811wrr.37.2019.10.24.02.27.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Oct 2019 02:19:43 -0700 (PDT)
-Message-ID: <f623a5e67cec8934b136cf8ae68ba70dd58a6f84.camel@gmail.com>
-Subject: Re: [RFC PATCH 03/14] hw/misc/bcm2835_property: Handle the 'domain
- state' property
+ Thu, 24 Oct 2019 02:27:39 -0700 (PDT)
+Message-ID: <c88659d6aa590f1ea20bfd86636e14710e8813fb.camel@gmail.com>
+Subject: Re: [PATCH 15/19] tests/boot_linux_console: Extract the gunzip()
+ helper
 From: Esteban Bosse <estebanbosse@gmail.com>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>, Peter
- Maydell <peter.maydell@linaro.org>, Andrew Baumann
- <Andrew.Baumann@microsoft.com>,  qemu-devel@nongnu.org, Pekka Enberg
- <penberg@iki.fi>,  =?ISO-8859-1?Q?Zolt=E1n?= Baldaszti <bztemail@gmail.com>
-Date: Thu, 24 Oct 2019 11:15:33 +0200
-In-Reply-To: <7023ba2c-edfa-8313-8138-0556f4a03023@amsat.org>
-References: <20190904171315.8354-1-f4bug@amsat.org>
- <20190904171315.8354-4-f4bug@amsat.org>
- <d02a29663183b8963bc34a0d1b031442d997ab62.camel@gmail.com>
- <7023ba2c-edfa-8313-8138-0556f4a03023@amsat.org>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>, 
+ qemu-devel@nongnu.org
+Date: Thu, 24 Oct 2019 11:23:29 +0200
+In-Reply-To: <20190926173428.10713-16-f4bug@amsat.org>
+References: <20190926173428.10713-1-f4bug@amsat.org>
+ <20190926173428.10713-16-f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::344
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::342
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?ISO-8859-1?Q?Zolt=E1n?= Baldaszti <bztemail@gmail.com>,
+ Laurent Bonnans <laurent.bonnans@here.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
  =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
+ Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Cheng Xiang <ext-cheng.xiang@here.com>,
  Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /gV3A95+8Yhd
+ Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2WeJXWvFSsEO
 
-El mar, 08-10-2019 a las 11:32 +0200, Philippe Mathieu-Daudé escribió:
-> On 9/29/19 9:01 AM, Esteban Bosse wrote:
-> > El mié, 04-09-2019 a las 19:13 +0200, Philippe Mathieu-Daudé
-> > escribió:
-> > > The kernel is happy with this change, so we don't need
-> > > to do anything more sophisticated.
-> > > 
-> > > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> > > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> > > ---
-> > >   hw/misc/bcm2835_property.c | 8 ++++++++
-> > >   1 file changed, 8 insertions(+)
-> > > 
-> > > diff --git a/hw/misc/bcm2835_property.c
-> > > b/hw/misc/bcm2835_property.c
-> > > index 399f0d9dd5..d8eb28f267 100644
-> > > --- a/hw/misc/bcm2835_property.c
-> > > +++ b/hw/misc/bcm2835_property.c
-> > > @@ -127,6 +127,14 @@ static void
-> > > bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t
-> > > value)
-> > >               resplen = 8;
-> > >               break;
-> > >   
-> > > +        case 0x00030030: /* Get domain state */
-> > > +            qemu_log_mask(LOG_UNIMP,
-> > > +                          "bcm2835_property: 0x%08x get domain
-> > > state
-> > > NYI\n",
-> > > +                          tag);
-> > > +            /* FIXME returning uninitialized memory */
-> > > +            resplen = 8;
-> > > +            break;
-> > > +
-> > >           case 0x00038002: /* Set clock rate */
-> > >           case 0x00038004: /* Set max clock rate */
-> > >           case 0x00038007: /* Set min clock rate */
-> > 
-> > Searching this property in the kernel, I found a lot of properties
-> > not
-> > implemented.
-> > https://github.com/raspberrypi/linux/blob/rpi-4.19.y/include/soc/bcm2835/raspberrypi-firmware.h#L41
-> > Are the properties only added when they are necessaries for the
-> > standard kernel use?
+El jue, 26-09-2019 a las 19:34 +0200, Philippe Mathieu-Daudé escribió:
+> We are going to use the same pattern. Instead of keeping
+> copy/pasting this code, extract as a local function.
 > 
-> Yes, the idea is to emulate the bare minimum required to run your
-> guest 
-> code. To test this series I used the closed source kernel provided
-> by 
-> the Raspberry Pi foundation [1] which the one that does the most of 
-> UNIMP accesses, the Debian trunk one and I build one from [2].
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  tests/acceptance/boot_linux_console.py | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
 > 
-> The problem is old kernels don't support the raspi4, and recent
-> kernels 
-> do a lot of property calls to use recent features.
-> 
-> A "property call" is a call from the ARM core to the VideoCore
-> firmware, 
-> like a Remote Procedure Call. The ARM core write some 
-> arguments/structure to a memory space shared with the VideoCore, use
-> a 
-> MailBox to send a 'property' key to the VideoCore and wait/poll for
-> a 
-> response from the VC. The VC handles the 'property' call, if
-> required 
-> fills the structure in the same memory space the ARM used, then
-> reply 
-> via another MailBox channel to notify the ARM core.
-> 
-> QEMU does not model the VideoCore. Instead we directly fill the
-> memory 
-> from the ARM property call. We fake the VC firmware.
-> 
-> [1] 
-> https://github.com/raspberrypi/firmware/blob/master/boot/kernel8.img
-> [2] https://github.com/raspberrypi/linux/tree/rpi-5.3.y
-Thank you very much for all the data Phil.
-
-Now I understood "the idea is to support the bare minimum for the
-guest", I thought that the idea was a full HW support, but make sense
-it's a lot of work to give full HW support.
+> diff --git a/tests/acceptance/boot_linux_console.py
+> b/tests/acceptance/boot_linux_console.py
+> index 8a9a314ab4..079590f0c8 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -19,6 +19,11 @@ from avocado.utils import process
+>  from avocado.utils import archive
+>  
+>  
+> +def gunzip(in_pathname_gz, out_pathname):
+> +    with gzip.open(in_pathname_gz, 'rb') as f_in:
+> +        with open(out_pathname, 'wb') as f_out:
+> +            shutil.copyfileobj(f_in, f_out)
+> +
+>  class BootLinuxConsole(Test):
+>      """
+>      Boots a Linux kernel and checks that the console is operational
+> and the
+> @@ -166,10 +171,7 @@ class BootLinuxConsole(Test):
+>          initrd_hash = 'bf806e17009360a866bf537f6de66590de349a99'
+>          initrd_path_gz = self.fetch_asset(initrd_url,
+> asset_hash=initrd_hash)
+>          initrd_path = self.workdir + "rootfs.cpio"
+> -
+> -        with gzip.open(initrd_path_gz, 'rb') as f_in:
+> -            with open(initrd_path, 'wb') as f_out:
+> -                shutil.copyfileobj(f_in, f_out)
+> +        gunzip(initrd_path_gz, initrd_path)
+>  
+>          self.vm.set_machine('malta')
+>          self.vm.set_console()
+Reviewed-by: Esteban Bosse <estebanbosse@gmail.com>
 

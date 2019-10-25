@@ -1,194 +1,129 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3501187wrq;
-        Fri, 25 Oct 2019 02:02:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxqSe5xs19d5Wblwzx00NIjzp0kuq03aChUJqZ/TPXN0LuI6O67GMO8HRHchb/KJGXSJFNU
-X-Received: by 2002:a0c:b91e:: with SMTP id u30mr1547568qvf.31.1571994176840;
-        Fri, 25 Oct 2019 02:02:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571994176; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3707158wrq;
+        Fri, 25 Oct 2019 05:06:38 -0700 (PDT)
+X-Received: by 2002:aca:682:: with SMTP id 124mr2730127oig.83.1572005198728;
+        Fri, 25 Oct 2019 05:06:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572005198; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fg+1Qkcd9x4OUAZfxXbYFPIxUFI94BOqNaxk76TdjMh7oi+vrYle+T9o8HY9Q8P4uP
-         XFXnY2TIsn/VUjJYlWBG7WzZ1z/2+u2wLyHObAjyFFnmpKgTSn4WzO+r7mQ56BbF2l8h
-         3YZpyzlsKufPoy2AFgLwuEwPZWFTd/YYCxO2cBwQPv68DGAaV5DX1XMIyJ3fkwZ1f68y
-         h7LdmDHyumZuEiFtYhO4qyI0pzLXT4gspCENnxgqjavnLgj9j0AhBsrbonPGzbZIRO+f
-         lmrjaoVKo95dYM5itChqhqCufTVaaIAK61WsgFDNSqWzDZRtmvH5DMbqNCS0Y8ENqf7u
-         +SIQ==
+        b=bQsHnhqBWsMR7WiDKtn8l3O5cDaSBppcXSp3nB2X3GmE9RWY/XYQOC1MV93N7SyUrL
+         Uk76APmpKks/CCzdyHyOkNHOao8jRahHzrH/aWZomDQCOgmI4l3gv8Zx1NCxaSq7v9bH
+         lS9ZhyijreGJaCSsGfyJMzEImX3sDexr0PCbcXp9lkmcEANxGDNHzIkBcBk93qaxR+X/
+         sHUeKCqbdRKLK5hizu9BWwlaN6qTpuT0pGYGpaCrRqASFcy1FZwm9aOp2Vg350tjzdh3
+         gh5lU/+6xky9IokEFCWg7fAuZcxHTtA8sMMWCIXB4PjHeIX2pjBu8reFTgtGwb3HRJks
+         o/eA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=PDBZn05p7LXl+mQCdowhqhRm3M6hYZymzRkm9GPz/2E=;
-        b=AeOAl1VIRjGATVWjfG9O58Id582482qoCtEGUFVrMVYOgTpFYrdliANGbnQcf856h+
-         owvLe8UYwUt3YPbWDW1aNNyHoy5sIQ6dtmzHSRvRvxR+hlbmRXbqGI/RdA/VGBCkS/R5
-         wVpsQL/N43MmDPBV8N1jPhz39jQPM9ve4MbhJsIGu/NA6Ir5F2zQrJuCTIFYh7TAYukF
-         40tSyuKIPed9ch1ml/HzX1zBxGqgF0RGMWK9mE0myMx79N8WFwtZquZR7lXz8Pds/V9u
-         M9onTWFxJl9vRkWggzu9tQgc3YC94StG2C7vLouyTPV3+r3/eIBwqaCWhnhcxcVLw38U
-         dTOg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=XrJZ5Upat20NnQrE3c+6xlKbmz6+F99IqJyeX/iGlpo=;
+        b=V2zIDnUlzcM15ptcrQx610jhUJFSRfZ/+t0fEcY2hQxNHlqjhNVsxhEwXVsCluOu81
+         IXcB95w3G2doN0HsaVrJ9ER6G87k8CCzDJxxK3EhN1wmUoyEnBusSkr5pKces6Hp097o
+         7shppErpJMZfV70a8X4+AJlOzs7LYJeHH+dvUvu0LfNbjhvu8ZbN+E1+Oa0aPFNLMaO5
+         3UgLWx7ObObMYrGLpEEK8LoSx/rMMypKq0/GuUgZF9LetIJ0CrKVYV3ZmHMjKpHnp8PO
+         jQnCQc/tlbljM3L0PH+grI/7ZOqLHxIIdSV8gcJMqqVqdnHOsD1SIYmMK/+S+o2HH86/
+         LMgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k1si1010738qkc.292.2019.10.25.02.02.56
+       dkim=pass header.i=@linaro.org header.s=google header.b="Xv/S7XCp";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id w199sor994178oia.15.2019.10.25.05.06.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Oct 2019 02:02:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 25 Oct 2019 05:06:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57848 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNvUl-0003pK-Vi
-	for alex.bennee@linaro.org; Fri, 25 Oct 2019 05:02:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50648)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv5W-0001ec-7D
- for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:51 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv5V-0008Il-09
- for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:50 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:41995)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv5P-0008CZ-KG; Fri, 25 Oct 2019 04:36:43 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mn2Jj-1hgZlK1kvf-00k8uZ; Fri, 25 Oct 2019 10:35:49 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Subject: [PULL 13/19] hw: Move DS1338 device from hw/timer/ to hw/rtc/
- subdirectory
-Date: Fri, 25 Oct 2019 10:35:05 +0200
-Message-Id: <20191025083511.11463-14-laurent@vivier.eu>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
-References: <20191025083511.11463-1-laurent@vivier.eu>
+       dkim=pass header.i=@linaro.org header.s=google header.b="Xv/S7XCp";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=XrJZ5Upat20NnQrE3c+6xlKbmz6+F99IqJyeX/iGlpo=;
+        b=Xv/S7XCp5IYCu/bj1oeYZFcWfOfCr2u6tZEL0S3sojegoQ2vZi4EJWaqdS6v2akBRu
+         qMkE1LNVQduee8FIF7frI7B1u8YeWayEFyy/mrUNhEKOsfuqgQ2yBCat0jIkTqYOBjF3
+         yvXrLtIOAYp5oYZyOLn4g87Z9ePgydxofGgfg2dPyEc6lsaNoFhoxiH88lwPGpUYgBcL
+         i0NJDzPDA/JNCDAcR3bO2pAUU4u5141vKLTl9am7G0r9tqNRk7kyCqGv2AU4D5hVzBdQ
+         V6ji+jktEhUXVjzh9lx3l+Je+Fx6u1EpZgB20aX5pbF7Kq0UyrWgAbJk4Il18flPuzHS
+         JXvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=XrJZ5Upat20NnQrE3c+6xlKbmz6+F99IqJyeX/iGlpo=;
+        b=o9FDQYP/rkfhytmkykE2N2vL5Ywl8ya9MS8w2zbQoENVD1V2bEdig/oiCalHRX9M8Y
+         1dZxQOiPA9q2+ruwxlPyty4jpVqUAiunJD3qABaOkeOymKVCCpTpYDYKV40l1goR/noK
+         A4Wa7BoJTvMvAzEaKw/GnzFvWKA/bo/+KUHc//yI/162oiGKvxHGoeA/kBEr875UtD4A
+         D+8RL0nEVC9EJeJ2eAxgO8iZAUz3nOTLl7KplQeA+EoBjJei9psuaHzl0OIJxHu8XuDC
+         0NIHxyL0kVmuAzlK7GxX0B9zNYkId2hTX9XWiYfHw1ZouuOovk5wHtvwwre7BhVJA8X6
+         aMhg==
+X-Gm-Message-State: APjAAAUoQx2E9OH0HPSOMKymh88YHqAxFurwX6cIMXz/wuBQzkTGclw1
+	Gqx5CI2UD/J6NkYH0LkFoeMzAFbhRPDldax3Qqd2DzOO
+X-Google-Smtp-Source: APXvYqx14+9iGIOuDNbFI0CEcx1ayIbAwq43UODovKcay0aj8tmI+9BvMGRcYtry7TvYCQDPd1XZeuHc0iBCKoId8R0=
+X-Received: by 2002:aca:451:: with SMTP id 78mr2771712oie.170.1572005198127;
+ Fri, 25 Oct 2019 05:06:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:rJpG7AFrJa5zxrJnEIXmaC/LXkpNWpKRKxi0bZbrkc9VUN2g1k8
- DXHNeKMyAVUlGUGkjaHVuQVS008mcDT2PxJr2db/xHm3FVKPAMvC6YLxMRNx/y6JmFXrF59
- Ft2lhi6+UyEYigpFA0rztXUlaM8fKeO7A7TZtf3mimGUO9J3izpXVp8G8YFOci4jyAOesAK
- 2KiVUNcL+ksRH+BQoOCGg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0ukzWR3gjvI=:3PrK2L5ZBDozNBKmcHZ0M7
- 5egoKg40fSD3DUXckVpDF2QdDXmBzc4DzQIKSGVcaDexevcg4JxgrKaUgMWPjK/g98DrPX38k
- OXas1TSHrdZpZVzNKIFrD9mYsJ6V7f1+DTGEyfihJrbcpjB4FxrgcvdpT9rmqvNLO6gzfZtSp
- TN2cPMcTgcaDifcrgNOKpAT+B3bKNKysjHYxsqqLPsGomyrus6sjFO0hItdw6NEjJ7LRvD4fW
- LcjteXijWhncjxB9O0qvplzE4KMyU/2s6a0Dj4SPuOj2Pe2U/FjOpiAEOu9ZhnKWL/KTtArD4
- 2+uVYh1iMi32ebt5zjNbiuwDXr12duNV3vxx2sf6HfqNbgmg+1UbV1JyF4lUjyfcVKlxNIwdH
- UBiE9GJ3RuyWV34aNM0xOeCTMbjtR/0EJiEFD0/2rMSeNB083Q7SQPu6HIAV4nKROR1jkLccX
- mjwjWpnq+SRzZCtGRwgNrU3K0VsY4bm7ywdVBLJEc76wpfXP/Fg4su6kYdgPGraZUrrq5Et4h
- z28HAAOtXoCUJ/sxkFIc9vE9cInYebPrdsKmIDdQFXORNLoLKAvQdHXA3FmaE8SDtLIRm78cU
- his2uYCSPcKU0jBePrlmNWPPt0b2xbnoo8QFwhELKspKK4oONrNS+xq49hYXbr1dmpMiJYbF6
- nvAh00Wo8UVhg10y5xPODlcrvkz7CnJbaJ4GjuMa6DS5VKMbMd+e6kVWA0iY2U4t02W/EKJ8L
- bGPiRDhAuBBjJ1I/0Dga/x25ew5oivw/kvh0CCSLRIwYRDyr8EIGEnBDaX2VoowAxDVQBH+xQ
- 62hMvRY9bqANKDCOG6rEGfyrwLXhGzEGvRHSbQ6sgrppHN4QKYTS2t/hnRb2+IsbnFVX2kdYU
- YzylShGK6taQVcAkc5H1L0sxiDsscHV0tFT8XDhNM=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 212.227.126.187
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
- Laurent Vivier <laurent@vivier.eu>, Aleksandar Rikalo <arikalo@wavecomp.com>,
- qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EHntZuoJ4HkS
+References: <20191024121808.9612-1-drjones@redhat.com> <CAFEAcA9ehcuktCTGR0xpTvZegUkr99H62F_fiT7RY_L_dqgN4g@mail.gmail.com>
+In-Reply-To: <CAFEAcA9ehcuktCTGR0xpTvZegUkr99H62F_fiT7RY_L_dqgN4g@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 25 Oct 2019 13:06:26 +0100
+Message-ID: <CAFEAcA981jAU6F9RRWBuzg+_5JDrd-ip-L_awtzdZFqKmewMvA@mail.gmail.com>
+Subject: Re: [PATCH v7 0/9] target/arm/kvm: enable SVE in guests
+To: Andrew Jones <drjones@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, Eric Auger <eric.auger@redhat.com>, 
+	Beata Michalska <beata.michalska@linaro.org>, m.mizuma@jp.fujitsu.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Dave P Martin <Dave.Martin@arm.com>, Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: GZLDgoeaaGOo
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+On Thu, 24 Oct 2019 at 14:42, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Thu, 24 Oct 2019 at 13:18, Andrew Jones <drjones@redhat.com> wrote:
+> >
+> > Since Linux kernel v5.2-rc1 KVM has support for enabling SVE in guests.
+> > This series provides the QEMU bits for that enablement. First, we
+> > select existing CPU properties representing features we want to
+> > advertise in addition to the SVE vector lengths and prepare
+> > them for a qmp query. Then we introduce the qmp query, applying
+> > it immediately to those selected features. We also document ARM CPU
+> > features at this time. We next add a qtest for the selected CPU
+> > features that uses the qmp query for its tests - and we continue to
+> > add tests as we add CPU features with the following patches. So then,
+> > once we have the support we need for CPU feature querying and testing,
+> > we add our first SVE CPU feature property, 'sve', which just allows
+> > SVE to be completely enabled/disabled. Following that feature property,
+> > we add all 16 vector length properties along with the input validation
+> > they need and tests to prove the validation works. At this point the
+> > SVE features are still only for TCG, so we provide some patches to
+> > prepare for KVM and then a patch that allows the 'max' CPU type to
+> > enable SVE with KVM, but at first without vector length properties.
+> > After a bit more preparation we add the SVE vector length properties
+> > to the KVM-enabled 'max' CPU type along with the additional input
+> > validation and tests that that needs.  Finally we allow the 'host'
+> > CPU type to also enjoy these properties by simply sharing them with it.
+> >
+>
+>
+>
+> Applied to target-arm.next, thanks.
 
-The DS1338 is a Real Time Clock, not a timer.
-Move it under the hw/rtc/ subdirectory.
+Fails 'make check' on my aarch32-compile-in-chroot-on-aarch64
+machine:
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20191003230404.19384-9-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/rtc/Kconfig             | 4 ++++
- hw/rtc/Makefile.objs       | 1 +
- hw/{timer => rtc}/ds1338.c | 0
- hw/timer/Kconfig           | 4 ----
- hw/timer/Makefile.objs     | 1 -
- 5 files changed, 5 insertions(+), 5 deletions(-)
- rename hw/{timer => rtc}/ds1338.c (100%)
+(armhf)pmaydell@mustang-maydell:~/qemu/build/all-a32$
+QTEST_QEMU_BINARY=arm-softmmu/qemu-system-arm tests/arm-cpu-features
+/arm/arm/query-cpu-model-expansion: OK
+/arm/arm/kvm/query-cpu-model-expansion: qemu-system-arm: Failed to
+retrieve host CPU features
+Broken pipe
+/home/peter.maydell/qemu/tests/libqtest.c:140: kill_qemu() tried to
+terminate QEMU process but encountered exit status 1 (expected 0)
+Aborted
 
-diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-index dff9d60946af..45daa8d655c9 100644
---- a/hw/rtc/Kconfig
-+++ b/hw/rtc/Kconfig
-@@ -1,3 +1,7 @@
-+config DS1338
-+    bool
-+    depends on I2C
-+
- config M41T80
-     bool
-     depends on I2C
-diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index 810a38ee7b3d..b195863291d1 100644
---- a/hw/rtc/Makefile.objs
-+++ b/hw/rtc/Makefile.objs
-@@ -1,3 +1,4 @@
-+common-obj-$(CONFIG_DS1338) += ds1338.o
- common-obj-$(CONFIG_M41T80) += m41t80.o
- common-obj-$(CONFIG_M48T59) += m48t59.o
- ifeq ($(CONFIG_ISA_BUS),y)
-diff --git a/hw/timer/ds1338.c b/hw/rtc/ds1338.c
-similarity index 100%
-rename from hw/timer/ds1338.c
-rename to hw/rtc/ds1338.c
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index 9357875f285d..a990f9fe35fc 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -9,10 +9,6 @@ config ARM_MPTIMER
- config A9_GTIMER
-     bool
- 
--config DS1338
--    bool
--    depends on I2C
--
- config HPET
-     bool
-     default y if PC
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 23be70b71d32..70b61b69c7a4 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -3,7 +3,6 @@ common-obj-$(CONFIG_ARM_MPTIMER) += arm_mptimer.o
- common-obj-$(CONFIG_ARM_V7M) += armv7m_systick.o
- common-obj-$(CONFIG_A9_GTIMER) += a9gtimer.o
- common-obj-$(CONFIG_CADENCE) += cadence_ttc.o
--common-obj-$(CONFIG_DS1338) += ds1338.o
- common-obj-$(CONFIG_HPET) += hpet.o
- common-obj-$(CONFIG_I8254) += i8254_common.o i8254.o
- common-obj-$(CONFIG_PUV3) += puv3_ost.o
--- 
-2.21.0
+Dropping again :-(
 
+thanks
+-- PMM

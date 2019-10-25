@@ -1,107 +1,108 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3491714wrq;
-        Fri, 25 Oct 2019 01:52:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyH98u1pqMCnKpuIqH2QDO35UWRZS1wgXq0IY0o45J8frC2KulsuUwYU3j0/nJZwlR0xnPm
-X-Received: by 2002:a50:b5e3:: with SMTP id a90mr2509323ede.201.1571993570658;
-        Fri, 25 Oct 2019 01:52:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571993570; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3492547wrq;
+        Fri, 25 Oct 2019 01:53:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwOHr2zIPqoytPqSwk7siXaAMe9h05R20ajjf//R8rI0jhM24+F9Tg1jCHuwdsvlnWluAeN
+X-Received: by 2002:aed:34c6:: with SMTP id x64mr1919763qtd.324.1571993628141;
+        Fri, 25 Oct 2019 01:53:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571993628; cv=none;
         d=google.com; s=arc-20160816;
-        b=XVYnPWhwg9Q3kueDSJvB9xQvpUXpKtI0SRMbcNUmc6wzEY+b2lVKnFdNPj/rvViSvo
-         f3A+zOCbjlPQ/twYHhmWkHqMDKZFkj2Z8U1BHC1MqQjtpBnpF3+HBEY0vMq5R6fm0FXy
-         7p/tvbLjY56PVqgjB4JBbpI7TKcktqCP8P+eQiVBOVP0IohRd7teZuwaorSM63xAQ9OD
-         I10lm0gF6Kosf1VnRH2SKQAz/Qe119xK8Gpp0+PoGlV1JJ75jgmf9J6/SuAoChIG0rOr
-         CNQ9ZQLBeZzvLbCrqgOdNWD9TIDSO/g1Y368em7nObuK+AWa+wYmnfM7qP91UzIT+Gwj
-         usBQ==
+        b=TLo7nChZemziNgbpA0QUe5HCTdAaEt5jZh+HH4NKO4b3A2Q9Ufe51jPiHk1jw9/4Dn
+         l/DXeHS3h43OLU/gqz3hCo39RKXepIyPcpuyXeRmTF42ZCypoYQxFPC/fLf/yYBRArOM
+         7cxdY/Kylzi/hZTV7mXUEz3qZW3yitki/CY08splypsw8rs0P4irmpj23jrGvrMdbOLa
+         Zv/VxrEJCqbpSVdDlW5lSU304lZwdKx/NwOfLUZMCjuv1H8pAIgz6nmlwcSnnUPKmK2H
+         +NnM1hd+j4jZqrkGhFMPc0od8vpMkK3bWBL33hQPSpj02UXIJ5NslNVyTntnzfR960fi
+         eAHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Gb5npTdJyZDSp0w020GsvHVx3i93dCcPsU8onSeE7p0=;
-        b=uEoevPFxXYjn5HQWgimFT8Lt76UVrBrdK8oB4DRvLVtMKZYNcNvuywV08t4Z/jTa4i
-         8dXKCIIiJK39rZD1EvJ+YMhSMVA+M+8nBrnXlCm/CsSMXox2y/XvK/tkLnObOHDrPT9T
-         A6GzWUbGHftIqCOnh5Uc2IBv+KPgsnNjtLyYZInZPhTh2YdTAitf7Zm5Qy561dDj9ksR
-         jninYMVXh7HNZKqCAexs0Geug8XcKmlWK9WK9qsObZ8sQdMKBaLC/+epYzJg2RGauYw8
-         4Bda/zgzo1Wrj0dcBzMAiG6xxe01MMIkicOtMWFayUFzc7e0lotzykTwYOeVY4jFOAaj
-         dvCw==
+        bh=c8CgYFYR/DlPlIS3/3pI138uM8Wzt5qnP2r0HyDP9Dg=;
+        b=PdDot2FyvLqwSLDv0UcEkfeqQ7B710d9KP7yLlBK51eVhR9gQE3Q8EURyS9iKA8n3+
+         EVRWIP+6JV83af+C53FjZ4AQcTy4P2mLaM+HjOEyQnWGTXTWf43bCApW8mMD6X1A7N24
+         JkN9VdSIbQoAYZvnJMLZp5JXMXmxYF97xhijfMwz28uLWYgRTxUZWPbyQkCrbtfq5E2c
+         o1km42/ytorLonrlXXtByJykwNGfk887kh4BnxtcsYLQiBLatzo3ZL+HYwZqW2kFwbIo
+         nWi3mmQlAmc7p6Dc4vHNXMuPrNJJkNlxnL0vB+8WY2TYR67UIIDtfF3CAPnNlGv+fGxN
+         NbRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id nr22si830744ejb.16.2019.10.25.01.52.50
+        by mx.google.com with ESMTPS id o2si892985qtk.351.2019.10.25.01.53.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Oct 2019 01:52:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Oct 2019 01:53:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57730 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57748 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNvKz-00048j-FK
-	for alex.bennee@linaro.org; Fri, 25 Oct 2019 04:52:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50711)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNvLu-0007aK-VC
+	for alex.bennee@linaro.org; Fri, 25 Oct 2019 04:53:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50870)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv5Y-0001hf-5L
- for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:53 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv5c-0001p7-D9
+ for qemu-arm@nongnu.org; Fri, 25 Oct 2019 04:36:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv5W-0008KZ-Ul
- for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:51 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:34557)
+ (envelope-from <laurent@vivier.eu>) id 1iNv5a-0008OO-Pj
+ for qemu-arm@nongnu.org; Fri, 25 Oct 2019 04:36:56 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:60005)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv5P-0008CN-FA; Fri, 25 Oct 2019 04:36:43 -0400
+ id 1iNv5N-0008BJ-5y; Fri, 25 Oct 2019 04:36:41 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M4K6z-1iOC3d1MB7-000O1d; Fri, 25 Oct 2019 10:36:00 +0200
+ id 1MEVFi-1iCKDd2bFK-00G2Qg; Fri, 25 Oct 2019 10:35:51 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 18/19] hw/rtc/xlnx-zynqmp-rtc: Remove unused "ptimer.h" include
-Date: Fri, 25 Oct 2019 10:35:10 +0200
-Message-Id: <20191025083511.11463-19-laurent@vivier.eu>
+Subject: [PULL 14/19] hw: Move Xilinx ZynqMP RTC from hw/timer/ to hw/rtc/
+ subdirectory
+Date: Fri, 25 Oct 2019 10:35:06 +0200
+Message-Id: <20191025083511.11463-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bIVh4Atdz8bHUNgDKytO4sxywaGZPxNGPkscIkQ59ZOiIyIm/xq
- c8nPdAO8wITFiXU10dVK67Q/hD/eeRjyt7FlwozDNzVNUSu7N5VWqK4n9MHIEupT16Crppp
- +0UYhJlob30MSu6hlUpt/rYmmSIknby3svJtfkCbqClmTP2DvE77O6Cr/Vjh0/9KYswm32T
- w1Ix0+hjxjmif4ar3mGhg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ra8smSEyvIs=:JTCe2FY0XoUYysYNNN89O1
- Aro3pi6I4fhHm4AXqjsGea1WxQ8lDqO8HwQEFWwhrLOhITnHTI5eUXJvhIt0GMXwm/DeFkNdR
- hwoS5iC4RNrZKP67fcCvcGfzLiSA9UTG4C9iXv22bVb8VvQXUkSA9dYfqd/dsLiRs45QUnad9
- zA/nUqmX8FuHrTAG0tIu/nU54+5tcZ4yzruXEVO3gmKT3Y57Vg3TgEMP6m5a1YD0dYifPr4Pd
- sXmSE/JT4TCZVAdDieQlFOlQvbKJRPIsceaIAmRxPqwBGs0HASYSfi+lfAwHw0U7Y0x5wsm3/
- 9WJxT8d+CzM8spnitrE5LWibeOCMgXQIs1OHPLTGpeUzjDeN2VwO0T+Er2WnAJsor16ProFgS
- wAEVxOrsFTiWUV3lmudp0OACmpXsVweblTah713IRaExbhR/8dh0Mt13VZ0e/cQ6MHC38TaE0
- 9kaFSItY77DwttlKpPO9H++p5pz30/gi+/218zR38dNd3kQhD8xRp1sM+9hU0WASgdwMJ8r4n
- TdVGDxjqw4EuezAQ8Oj8c/CLg1pXmsBW5K2db5k3aXxr6ZejRx7CrFXlLe8UJJaE7NIfd+9lA
- 0QzMMrM8UMUV+e0eDDj6N9EqBfWifrQTW0K6cqBviaI0NY41Jkdz1Nrb8Tsa1eOJbmIEpnEou
- i90n4oLape0x7p56MhqJU6a3/17VV2xLf/+iQoZHWaulz5scPM0C+YT1BBp9XWHhZCJ0P6m/l
- m/ZN9K3mlbjRLF4NFqnVPHbc4j8RkIPBYHBFLZVbL+N8LlTHkUBasWh479xXMrKjxUT3dYn1w
- Y1NtT6Ae5egJGyc+vSkA61Alkz492aB6TBA+1GkOGAVQvyn9Wwp8KmcJQomuV6rs7nr+2U36q
- c7X5oYlwsc6k8qGcSOZEzK/5ySzyhlnCIxPACRGrk=
+X-Provags-ID: V03:K1:etCUXD52RarWTMMWx6gvRrbz0qPxz/OK/mTowevKvf7KrVhR6fH
+ R3gTkOx1/tY26LybSCfVMzae+/OMpo3pvEZGy5J2LcHeyR1ts4U+5ylkMWaJvW9ju5u1a6e
+ k2JzO95VmMtpiwOZ2Jadc6g/m/IgHG8pvzsgHzPJ8ydm29LrE2hcocBnHeBtfhYlj1GQlBJ
+ 2lX6oQkmb7pZgW2aV0x5A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:KKa+C83ziFE=:bnyn3MqhkPUrazDEuUJSXF
+ TI/+EBeASIWyWUG3ZUYihiD0zfIxfIx1gnv4+GMbWxfP4wrwGGZSFlCT4li+vKr64xBaWD9Ae
+ r2HbVpnehIaveXClzVqXAVNcFYBp0T/JUZ3jfRIZCXWl3F26jbHKdvXsQSdirY02cmhd0ByNS
+ UIQWEL2GPdKODaH+meRclnpJHAEjI89a/GUhCirneMqtnGlj+c+9L7WHvMla3hc6Z7DMbQvwc
+ E154eu4Io0haAj/jAzBwlCAppD9lPxBg1N6tnJBMI81IYim+QDRBFQ8HgqhG3+1o1mZzJrdN0
+ 1rCgfF0kzTaACDSDelPlO7iNznTRvCJ93Msz4h1C3RjgdV0JRao7MGnMNOiQKaDgMQfSIXT6u
+ fTgDoAYtV7fsnWkeygz24g3WyxHSwDnmWsQVJVqqW4Yy/OCv2JGruDj1tg9aLtyAHU3ijm2l/
+ n/c8AM9yCuewCUR68Hk064qQ7vsy28aFFDyrmiHYIfItf8wtbmgRkAHJs/JwtkLJUjYFpGvPH
+ KXxUChJt4N44d/MNgXqgTp62j81Qa4PzZFBtmoYpvJdB7SdyvxrqK86LPBKDIEFFLttsqqR+a
+ OikkJSD6sV4QkU6a1LSraCpKJpiQGwL54SWY80zZsixg8bhBcqVF4wDPQ3WPYMNG580imIpow
+ mBF4pYA8OrYupnbZiHwChtR4G85lDxIxJyZURcFEmIbVR5TCTza2AgfM6ncTluEZ0Ftncal4j
+ I6SqxMGOjsjao9yFOud8N62NGWMmJe5bFM2Bj1g7dEVpKdTaa/pVwPHimbmT4dzB7atfezciY
+ astSBhwQ3zEZ+eAhI7CoWSahp963/BTPvb/dgFuLXeCgMnJfys91oFivVVPomWWp8qG819Aby
+ mp/opAat3zopAFVhKoBmCjKOCGo+OX95uepMIeVE0=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.131
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 212.227.126.134
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
@@ -113,35 +114,140 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>, Aleksandar Rikalo <arikalo@wavecomp.com>,
  qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: szrmpYn86ucE
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LdXtjnzliOfF
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The "hw/ptimer.h" header is not used, remove it.
+Move RTC devices under the hw/rtc/ subdirectory.
+
+Remove Alistair outdated email address (see commit c22e580c2ad).
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Acked-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20191003230404.19384-14-philmd@redhat.com>
+Message-Id: <20191003230404.19384-10-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/rtc/xlnx-zynqmp-rtc.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/rtc/Makefile.objs                        | 1 +
+ hw/rtc/trace-events                         | 3 +++
+ hw/{timer => rtc}/xlnx-zynqmp-rtc.c         | 2 +-
+ hw/timer/Makefile.objs                      | 1 -
+ hw/timer/trace-events                       | 3 ---
+ include/hw/arm/xlnx-zynqmp.h                | 2 +-
+ include/hw/{timer => rtc}/xlnx-zynqmp-rtc.h | 6 +++---
+ 7 files changed, 9 insertions(+), 9 deletions(-)
+ rename hw/{timer => rtc}/xlnx-zynqmp-rtc.c (99%)
+ rename include/hw/{timer => rtc}/xlnx-zynqmp-rtc.h (95%)
 
-diff --git a/hw/rtc/xlnx-zynqmp-rtc.c b/hw/rtc/xlnx-zynqmp-rtc.c
-index f9f09b72965a..2bcd14d7795d 100644
---- a/hw/rtc/xlnx-zynqmp-rtc.c
+diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
+index b195863291d1..543a550a0f11 100644
+--- a/hw/rtc/Makefile.objs
++++ b/hw/rtc/Makefile.objs
+@@ -6,5 +6,6 @@ common-obj-$(CONFIG_M48T59) += m48t59-isa.o
+ endif
+ common-obj-$(CONFIG_PL031) += pl031.o
+ common-obj-$(CONFIG_TWL92230) += twl92230.o
++common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
+ obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+ common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
+diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
+index ac9e0e0fba32..7f1945ad4cc6 100644
+--- a/hw/rtc/trace-events
++++ b/hw/rtc/trace-events
+@@ -4,6 +4,9 @@
+ sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " value 0x%" PRIx64
+ sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 " value 0x%" PRIx64
+ 
++# xlnx-zynqmp-rtc.c
++xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
++
+ # pl031.c
+ pl031_irq_state(int level) "irq state %d"
+ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+diff --git a/hw/timer/xlnx-zynqmp-rtc.c b/hw/rtc/xlnx-zynqmp-rtc.c
+similarity index 99%
+rename from hw/timer/xlnx-zynqmp-rtc.c
+rename to hw/rtc/xlnx-zynqmp-rtc.c
+index 5692db98c2db..f9f09b72965a 100644
+--- a/hw/timer/xlnx-zynqmp-rtc.c
 +++ b/hw/rtc/xlnx-zynqmp-rtc.c
-@@ -32,7 +32,6 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "hw/irq.h"
--#include "hw/ptimer.h"
+@@ -36,7 +36,7 @@
  #include "qemu/cutils.h"
  #include "sysemu/sysemu.h"
  #include "trace.h"
+-#include "hw/timer/xlnx-zynqmp-rtc.h"
++#include "hw/rtc/xlnx-zynqmp-rtc.h"
+ #include "migration/vmstate.h"
+ 
+ #ifndef XLNX_ZYNQMP_RTC_ERR_DEBUG
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+index 70b61b69c7a4..294465ef47ad 100644
+--- a/hw/timer/Makefile.objs
++++ b/hw/timer/Makefile.objs
+@@ -14,7 +14,6 @@ common-obj-$(CONFIG_IMX) += imx_epit.o
+ common-obj-$(CONFIG_IMX) += imx_gpt.o
+ common-obj-$(CONFIG_LM32) += lm32_timer.o
+ common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
+-common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
+ common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
+ 
+ common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index ce34b967db9f..1459d07237b9 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -70,9 +70,6 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
+ aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
+ aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
+ 
+-# xlnx-zynqmp-rtc.c
+-xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
+-
+ # nrf51_timer.c
+ nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+ nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index d7483c3b4285..53076fa29a75 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -29,7 +29,7 @@
+ #include "hw/dma/xlnx-zdma.h"
+ #include "hw/display/xlnx_dp.h"
+ #include "hw/intc/xlnx-zynqmp-ipi.h"
+-#include "hw/timer/xlnx-zynqmp-rtc.h"
++#include "hw/rtc/xlnx-zynqmp-rtc.h"
+ #include "hw/cpu/cluster.h"
+ #include "target/arm/cpu.h"
+ 
+diff --git a/include/hw/timer/xlnx-zynqmp-rtc.h b/include/hw/rtc/xlnx-zynqmp-rtc.h
+similarity index 95%
+rename from include/hw/timer/xlnx-zynqmp-rtc.h
+rename to include/hw/rtc/xlnx-zynqmp-rtc.h
+index 97e32322ed70..6fa1cb2f43f8 100644
+--- a/include/hw/timer/xlnx-zynqmp-rtc.h
++++ b/include/hw/rtc/xlnx-zynqmp-rtc.h
+@@ -3,7 +3,7 @@
+  *
+  * Copyright (c) 2017 Xilinx Inc.
+  *
+- * Written-by: Alistair Francis <alistair.francis@xilinx.com>
++ * Written-by: Alistair Francis
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+  * of this software and associated documentation files (the "Software"), to deal
+@@ -24,8 +24,8 @@
+  * THE SOFTWARE.
+  */
+ 
+-#ifndef HW_TIMER_XLNX_ZYNQMP_RTC_H
+-#define HW_TIMER_XLNX_ZYNQMP_RTC_H
++#ifndef HW_RTC_XLNX_ZYNQMP_H
++#define HW_RTC_XLNX_ZYNQMP_H
+ 
+ #include "hw/register.h"
+ #include "hw/sysbus.h"
 -- 
 2.21.0
 

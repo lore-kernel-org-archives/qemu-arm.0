@@ -1,108 +1,107 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3492873wrq;
-        Fri, 25 Oct 2019 01:54:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxNcGn71wPMJA+a+SvjEy1HP7FLFThjw0Jb/zPLpAEs37qWBeR4j3Xq/SINFTJbzWkQVJFK
-X-Received: by 2002:a37:b4c:: with SMTP id 73mr1792754qkl.37.1571993649923;
-        Fri, 25 Oct 2019 01:54:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571993649; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3493307wrq;
+        Fri, 25 Oct 2019 01:54:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxmYd4z0Zp+HarOY+eKd2nEXDJc/gNlZPLbkmK6RhXX65KVN00WsiHHrqCdFmj6P0cvXhK0
+X-Received: by 2002:a37:6353:: with SMTP id x80mr1909997qkb.52.1571993683020;
+        Fri, 25 Oct 2019 01:54:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571993683; cv=none;
         d=google.com; s=arc-20160816;
-        b=fsq64QY8s5H//sO6QndtZbLymQxufR3xkKwzZNJCbGpHtTOT7GTJFziZoxnZDKPI2/
-         TlQrStdzWlLBOOi52gdfjA9qK9gx9Ry5LR8/PtNEfma3YX4dtV3LRQtTX8v1BQJT1ets
-         Rchl2JuNLbn8oz6x6uJjXb4C7YugnDkPU08oXaLcqsqnutO6lLPDsLBeRW8BuPHCuK3B
-         YRzBzDDR+JPUIw5SfMXiZVAerk0s2fzsixE/ijPiVI5jc3m0PFpsRVoX3me/2y08jy7M
-         U84r2SbfrXcpfdgZ0WyqUuFfEwIs/FBUsfpizncijncAhhTQ42ZwhY2HXrv46qI57duT
-         2X/g==
+        b=DtMBUsTM5pBlXZO/12GaVWxNelIJS9xPgRzAgFupwFMGNzhsh5TgEejT8Mu/hvaqn3
+         ToMFS616e2xVOMrlTA5U6zGT1ZaYjnkgOMaNcbjeSqAOt8aPKNKDAVp1kXueF8nWtKJ1
+         +vol1CZXeEF4dHLIPEW91kOzU/037B9s8r7R55zdcxwOSkDztXMebmej/uOX9XYtHijU
+         WDZH7rAsi4ovPukCfRuqPwCAq3v0jj1STQdAvsDLxfVQSYJmitK1kGPoAenOk7xRWqxO
+         XyIv0LxxYEjdV3BxQR8jm6Yoecpc6zg5ZOPLU+TAiuK3MAvfg9P3sJ/z1adDo4jqrc3x
+         fXyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=81SzHzc9PJuQANG798UUj0dUs4cDxSqUWQg0h+Rzn40=;
-        b=L2YbEFE0Cf+dAHH41TIFDHlnbSqoAiG3iITrnOz9gPHZl65v2uBWsKjkakuRziftvZ
-         uSomNZuKL8C/Ozw+4n8Yds/VSH/Zaww5gK055Gl6O0GzS86t9A2XbqhVyLZxBrU0NkGt
-         vr+wSHGu7of1JjIrnZoAoqmkjZFX77r4oKMXhRqxhSEkZmElIeftry82RaEUhNetJTbc
-         7o86zzwF4gnPt5Rpnbxq078AmBuB+wBHiQA/7ty9iiT54muK8eb035ktCMpd6KgaryrO
-         jM/4j80FEXMzAUQ4TNiKFYIrEJjEfXwravieFVWoUCpEvRPB/wJ5kIiJgoDk+iG3d6rR
-         cY5A==
+        bh=sqweg4Fo7IFCZOW9vsJaNSgl5SzmzPgyHIEGpDCAKSM=;
+        b=nTCvAClXD5+kzBhkCYCnEYrKtWmYDwSct1tWfJbLuTA0h3kVfP5SlQhilf5iFyvci+
+         cxz9bXejelmZnCp45Ls5J/CbcBFjgaBhhDXkW/8Vh8DGvE7g4oayhVcXNsWkIn3PPiZd
+         /z6zKCKCN6KKXduNqQS/clvvQ+X9lfry6SHUY51ZYhmSUZea6Cf//B6e1ZgVn0aTk2BP
+         mLJYKVykAiFnEfUW9cDx9GFMZ1v+c29rhL8LBiSZ1FGBGksUu7oR04iYoNAIUY1hggkR
+         17k6DACGR5XoyxKnEvQVtFYk7duqd1gcwm2B3KCbsoLz98LVMlTGNp3DHOCERvsjQXBz
+         7yaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q4si911081qti.68.2019.10.25.01.54.09
+        by mx.google.com with ESMTPS id g15si885613qto.218.2019.10.25.01.54.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Oct 2019 01:54:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Oct 2019 01:54:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57758 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57754 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNvMG-0008Ly-Ok
-	for alex.bennee@linaro.org; Fri, 25 Oct 2019 04:54:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50907)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNvMo-0007yb-09
+	for alex.bennee@linaro.org; Fri, 25 Oct 2019 04:54:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50354)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv5e-0001qv-0b
- for qemu-arm@nongnu.org; Fri, 25 Oct 2019 04:37:00 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv5N-0001PP-1I
+ for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv5c-0008Qa-IY
- for qemu-arm@nongnu.org; Fri, 25 Oct 2019 04:36:57 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:59145)
+ (envelope-from <laurent@vivier.eu>) id 1iNv5L-0008B7-P8
+ for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:40 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:46229)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv5V-0008IY-FV; Fri, 25 Oct 2019 04:36:49 -0400
+ id 1iNv5H-00087p-Q8; Fri, 25 Oct 2019 04:36:36 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N6bPS-1hvlEj3y4k-0180Uc; Fri, 25 Oct 2019 10:35:56 +0200
+ id 1M6DnM-1iLi9W0W2S-006iku; Fri, 25 Oct 2019 10:35:58 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 16/19] hw: Move Aspeed RTC from hw/timer/ to hw/rtc/
- subdirectory
-Date: Fri, 25 Oct 2019 10:35:08 +0200
-Message-Id: <20191025083511.11463-17-laurent@vivier.eu>
+Subject: [PULL 17/19] hw/rtc/mc146818: Include mc146818rtc_regs.h a bit less
+Date: Fri, 25 Oct 2019 10:35:09 +0200
+Message-Id: <20191025083511.11463-18-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:FD7oPnPLZhZc1tfLUvguP2u15R++7O+LcoF30+tScyz09W6XQtU
- qFXwUNfxBQzuHeSNlTNwDz04CTSC1QmpAGQxt+nNnCfmTj7V4TtCKwUEFR9K4OLKIm8s5Oz
- e1qz9rQ4QLkc9tBOBf+NrGDRzPcEDZbKpNAc8yFCl+ARpQNOSvhtF5+e/7gD2ZmF4A47fEr
- UvVleoDSGGmElI8yNmgdw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:dcIUn0Jg9sA=:meOzGgMDZU67P+Fzp0AqEx
- L5pE8FE4WEkE9KS6GQ2W3z4Ih6922mEfve/81AR2GPPH9ZrLamFQpUfb7DdFLJMpE92D6xlQE
- 0qFpOYm/cC/tpUIQyuLlBk01ssggOpabQ8Ywa2Yu18FfxXcPmVIbyqoqbKLOTp32/QL81KRU1
- CldbtTMGhn3X9id3tKbNUQrsWwQOK7thY4f1ppPWaWVzgT3JRd7x+GeaiUqUuLHXBAHmAcYh6
- 6v1eIYbe7XJTJRKd3QzTzw6CSfSCBxvOTeZiDBMUy3hYJ3amQk+6aIj6xwDK8mD2TDaVFvuHt
- qE68odBVr2Jrvx2e2BV7bOdsQgxJyVV9yxP6lBvoCf3C/bEWTgUv4VR2rLgHiPIbDSbcTOy0U
- fw793pEKYxH7WesujAou9VYFwtuYaoR8w4wdFTL+lGpRcRQrytfL1xWepkzQycNmbBK4vz/NI
- itPzVi8YbjNoJ0V0RVMLjejz7fz4f0Ip3oObtIAQtO2tcDDEAaOOwN1sBFLqcO7n+AKCtNdXS
- L0eZlTcdnW6xuD7U9ZzqjqyAlE4oROM55J79TuODL8Vi4iY5m3t4CBqUJrP4JAistbji66BSN
- 7nE+coHltXd6gQVIKkCk2esMUvq1k23rlNQI85J/DIBqg+V4B10Lec8Bv6zBtf83k7jn+ycBz
- dw/EEbM7apouDFRMNLCMZKzPjanQibiGvf5D2SVSX6URRnS7aZFyeq1tUqFQQ/lFg9n8C4Qw6
- uLealnaoJaeQqn9T1oMq8SqE5xN2DAQ4pRJDA9DmvjDVvJO3eoOe12Pv6gxx7xRVXYwTXEhpo
- XtKCQhslYN38VBXzRvNWQf6qat2Cz8nGYguXh69dbn6xN51wbobc488ZwQD5Xyj+hUH3NzVE4
- 05IRwrdmHWkfnPjBV+zycRXUhJYfbXS42rjwjBbHE=
+X-Provags-ID: V03:K1:fo2sC3oBx2jPfCQrBxU70SXruu633246+ExBKU/D1kXsJeNwjU1
+ KGlpKsDt/yD75ZoHmLJa2QkafdPSh1tg4ganhk/ql+nAX4rFsM0ITal+Dpn3xQi5yGSX2m8
+ r42SjKHR50g2K6NplUIHbhIONu9cNLeMLQF/7zobNvxifyD7g9pXOBxZgdxQph2T5uvJfqW
+ FgD4vOsO7cQBgO6ye4C3A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:uqFFU+R/qyU=:7NGivjYrUMNBsUkQhEZnTC
+ Bz8XFSK2xIFoUbLGzIQ4tYfkZmkARsWvxG0U5GkhD2jQc7F4RarVAo0PYMsympI+bLIyZoeMY
+ LZkGTEdKcCSZBcbp9wEfiue5IVvuqGU4m8agSxf5zVIk83/gefhDLFvU6YgdKXOxclLRswq+n
+ 1wHyZoLHFxPvqS0vBlFeyH3lQ86gtDQMLCqFSHKNIz0If8FaC6qjL3EPmk71hyTr010qmUNO/
+ lwpNLf6qAUIVHvHlos8BJXXmc/sVlPnJekaV6lbMgGi4rfKp2VmViwCCoQ3Ym0y4dMd0vtrYT
+ lK5gekFz1M0bc61wWMB45rMztnRXs5m4GEN/qWoARZqDhDGAt3y2MPk3N5FWZksZX/huoOB0P
+ yUUjB6LegLBYq5HyNuu4paf0f6jLmgES88n1aD6FSzlI0EMGRODT8QPXiI/P0OQ5k0oW1w4Sh
+ H4nqf8BL2wYy/wyGBC3tG201UPAQ2ChOnzM/cn8hf9SbCevFTxs2zzKuK1zlj91JZf2KreNJG
+ cqq/B7Miftl2i1zUxEluyS2CyKUVszXt48xECr2cBQbG6/5oHhKUEiH0NniqZWwQa2JaQvMfT
+ kusdP9/mh/7e+E/0UM/OKysPzSx+4GrCTxJF4LSZwYN9Jj9rEs9jmx1Kv/Ftrgjxx8uRxx40P
+ cRK9XzvtprSO738VZX9UpIvZlH+cCPGAd20si7mFB8QGBDWyt2TPL9IlYIgoiIQjmgpmb2/ZF
+ OMTFHbJZu4GMDnXkd5MNUt0X55epUJL1wKccrgqkpmd+gzMuvKjHvCePnGizyyqH1EOVMGB3C
+ k0Bub3cyWxFIeVSbJSCFi07onPe4kLMdXfBMFugMe4KRmRTUXEoFgGsViTOKByygFkbxcI4pa
+ 90n4bvXNmhFl4nRTSjgijuc/vdMwqo5iHH/11FzT8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.133
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 212.227.126.187
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-block@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
+ Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
@@ -114,134 +113,62 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>, Aleksandar Rikalo <arikalo@wavecomp.com>,
  qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qEmFfTcCstEh
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fg2XMz4GJ26f
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Move RTC devices under the hw/rtc/ subdirectory.
+Only 2 source files require the "mc146818rtc_regs.h" header.
+Instead of having it processed 12 times, by all objects
+using "mc146818rtc.h", include it directly where used.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20191003230404.19384-12-philmd@redhat.com>
+Message-Id: <20191003230404.19384-13-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/rtc/Makefile.objs                   | 1 +
- hw/{timer => rtc}/aspeed_rtc.c         | 2 +-
- hw/rtc/trace-events                    | 4 ++++
- hw/timer/Makefile.objs                 | 2 +-
- hw/timer/trace-events                  | 4 ----
- include/hw/arm/aspeed_soc.h            | 2 +-
- include/hw/{timer => rtc}/aspeed_rtc.h | 6 +++---
- 7 files changed, 11 insertions(+), 10 deletions(-)
- rename hw/{timer => rtc}/aspeed_rtc.c (99%)
- rename include/hw/{timer => rtc}/aspeed_rtc.h (84%)
+ hw/rtc/mc146818rtc.c         | 1 +
+ hw/timer/hpet.c              | 1 +
+ include/hw/rtc/mc146818rtc.h | 1 -
+ 3 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index 3d4763fc269e..8dc9fcd3a983 100644
---- a/hw/rtc/Makefile.objs
-+++ b/hw/rtc/Makefile.objs
-@@ -10,3 +10,4 @@ common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
- common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
- obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
- common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
-+common-obj-$(CONFIG_ASPEED_SOC) += aspeed_rtc.o
-diff --git a/hw/timer/aspeed_rtc.c b/hw/rtc/aspeed_rtc.c
-similarity index 99%
-rename from hw/timer/aspeed_rtc.c
-rename to hw/rtc/aspeed_rtc.c
-index 531301735334..3ca1183558b7 100644
---- a/hw/timer/aspeed_rtc.c
-+++ b/hw/rtc/aspeed_rtc.c
-@@ -8,7 +8,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu-common.h"
--#include "hw/timer/aspeed_rtc.h"
-+#include "hw/rtc/aspeed_rtc.h"
+diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+index ced15f764fc1..9d4ed54f65e2 100644
+--- a/hw/rtc/mc146818rtc.c
++++ b/hw/rtc/mc146818rtc.c
+@@ -35,6 +35,7 @@
+ #include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
+ #include "hw/rtc/mc146818rtc.h"
++#include "hw/rtc/mc146818rtc_regs.h"
  #include "migration/vmstate.h"
- #include "qemu/log.h"
- #include "qemu/timer.h"
-diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-index 7f1945ad4cc6..d6749f4616a0 100644
---- a/hw/rtc/trace-events
-+++ b/hw/rtc/trace-events
-@@ -13,3 +13,7 @@ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
- pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
- pl031_alarm_raised(void) "alarm raised"
- pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
-+
-+# aspeed-rtc.c
-+aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
-+aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 33191d74cb98..83091770df3a 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -29,7 +29,7 @@ common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
- common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-misc-target.h"
+diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+index 02bf8a8ce8fc..9f17aaa278e2 100644
+--- a/hw/timer/hpet.c
++++ b/hw/timer/hpet.c
+@@ -34,6 +34,7 @@
+ #include "hw/timer/hpet.h"
+ #include "hw/sysbus.h"
+ #include "hw/rtc/mc146818rtc.h"
++#include "hw/rtc/mc146818rtc_regs.h"
+ #include "migration/vmstate.h"
+ #include "hw/timer/i8254.h"
  
- common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
--common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
-+common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
+diff --git a/include/hw/rtc/mc146818rtc.h b/include/hw/rtc/mc146818rtc.h
+index 2e9331637a6d..7fa59d4279c5 100644
+--- a/include/hw/rtc/mc146818rtc.h
++++ b/include/hw/rtc/mc146818rtc.h
+@@ -10,7 +10,6 @@
+ #define HW_RTC_MC146818RTC_H
  
- common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
- common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) += cmsdk-apb-dualtimer.o
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index 1459d07237b9..e18b87fc96dd 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -66,10 +66,6 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK A
- cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
+ #include "hw/isa/isa.h"
+-#include "hw/rtc/mc146818rtc_regs.h"
  
--# hw/timer/aspeed-rtc.c
--aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
--aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
--
- # nrf51_timer.c
- nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
- nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index cccb684a19bb..495c08be1b84 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -18,7 +18,7 @@
- #include "hw/misc/aspeed_sdmc.h"
- #include "hw/misc/aspeed_xdma.h"
- #include "hw/timer/aspeed_timer.h"
--#include "hw/timer/aspeed_rtc.h"
-+#include "hw/rtc/aspeed_rtc.h"
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/ssi/aspeed_smc.h"
- #include "hw/watchdog/wdt_aspeed.h"
-diff --git a/include/hw/timer/aspeed_rtc.h b/include/hw/rtc/aspeed_rtc.h
-similarity index 84%
-rename from include/hw/timer/aspeed_rtc.h
-rename to include/hw/rtc/aspeed_rtc.h
-index 15ba42912b7f..3fde854ad99c 100644
---- a/include/hw/timer/aspeed_rtc.h
-+++ b/include/hw/rtc/aspeed_rtc.h
-@@ -5,8 +5,8 @@
-  * Copyright 2019 IBM Corp
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
--#ifndef ASPEED_RTC_H
--#define ASPEED_RTC_H
-+#ifndef HW_RTC_ASPEED_RTC_H
-+#define HW_RTC_ASPEED_RTC_H
+ #define TYPE_MC146818_RTC "mc146818rtc"
  
- #include <stdint.h>
- 
-@@ -27,4 +27,4 @@ typedef struct AspeedRtcState {
- #define TYPE_ASPEED_RTC "aspeed.rtc"
- #define ASPEED_RTC(obj) OBJECT_CHECK(AspeedRtcState, (obj), TYPE_ASPEED_RTC)
- 
--#endif /* ASPEED_RTC_H */
-+#endif /* HW_RTC_ASPEED_RTC_H */
 -- 
 2.21.0
 

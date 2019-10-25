@@ -1,115 +1,113 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3365384wrq;
-        Thu, 24 Oct 2019 23:37:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw1yVfwFr8xBF+j8ltd8z3q3o9V1DHHmIGi2bc//9quV2WFEU8yX0K+79AOMNbOmN5nUR/H
-X-Received: by 2002:a0c:887a:: with SMTP id 55mr1726291qvm.137.1571985467775;
-        Thu, 24 Oct 2019 23:37:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571985467; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3809927wrq;
+        Fri, 25 Oct 2019 06:29:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx1X/whmJ6EcuILmhDKxXOB2U61YD6ZyRm2L1A0Kk8i6gHQ0Iacc/Q7wW6kYZoz5Xllp5LQ
+X-Received: by 2002:a0c:a8ea:: with SMTP id h42mr3158555qvc.130.1572010196650;
+        Fri, 25 Oct 2019 06:29:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572010196; cv=none;
         d=google.com; s=arc-20160816;
-        b=hMLTw+t2I1nlPu198BdDr4yRhsHT/hnp2BDfDVsqpTcu99OZmEutL9xUiAG7Y+E4W5
-         VoAA4qki9oZU5/r0L7uSdwm5yq8t664lI9ROWAgde0+chDc6mAL/bqawD7cuvO/upVeo
-         a415qET1CAa3KeNtZvf57ocAsg44xVk9oUcfFYIP407FsNDaahkNs452KpyVAUQYw/0Z
-         fCwu+QFLwREiQJuDrDWrHvbv7gxd7kJ2ioEe14DEKkvqywHLELmwaRvoClmbBDwBvkDc
-         flXeW0e7h3Kx/gJnAjKFReQtOHkCz394iOr1bAjL8lBrUXuw1TdcpxPQ/a6RjDpOs1Gv
-         tKIQ==
+        b=HPcuE5eYAwkYMqeHOELyWecyk1IaIai86OoGG1Wv0kG5q41BhGTCg3StCbVvqpBCVj
+         eGnQs41yRsAtE3y7JxPvFjULQ/Z3XaOgXTJR7Pj3N19aDHfhaixM0/hI8ToF0uwlYFbZ
+         kL8tOUr9V3H0+D/ouL7lxAJe0g1rwBRufkt+7GVvAd2H8oYgwqPNLAbjsmsDnlLAJWss
+         Qz0SbrHJglZQk77XA5gT2CLqSDuKpacEADLFgXibFSdpi3DyuhSzVBoNtk4Y3Ym+FyN+
+         AlRVHA3KJnZO1/ENZxvfugeSzj5bO+zMPRFFgWGLC0d8BPtcaweT9T7dcKNr6bSGzvwO
+         L2PQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=XBwtRIVAG4I8F4JAzIQFF0TzaeX9/82MfwukBU0ZXQA=;
-        b=d+FCtDcMp/BNJe8ILg+CyYgmmqcs4V7LJysqDyxvIRYhjmPbQPDozxRzQM0Jt+QSF4
-         YSjjNcYkiwLBc+YFykqhoPBvD1Xme0gHEZ7qZj2gwhnmOJ2K/k+aghjeux/hX+pQeJ3c
-         5cWCtxRB+GmTrP4ernZazITCApV+Lqcfkx8+IczdGAjKd5W4vmKDhEW42YkJh+ofWojZ
-         VNKcgqC3zo32+E07p+N5r7ltDjQ5y7R/5EfRx8fVWGS/M37SL4KVGL/bbTgl7qMgvsoU
-         R7yMC0QPQHCRY/gQSArLrEm5x1nJmJo4fG+0T41noZaEUunFHA0q8WrHUDjxlrvOjC1S
-         Q2Bg==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=TXoeupEoqztpAAd5CgTj1cBSD9Wcv3BgFKcqST9xO2c=;
+        b=EDyJsGbxEDRYuYkznArom0Oaa77R755x/XKp6c3y+RugBfINczqK5oD3/IAG4SQCCl
+         qDMh8XlWVImJLo9A433cOwiPvLeA99uTvpAs5Lh8hQkfC23h70UQbgsu2om3VjlDPrKe
+         oW90RYxFyU3obRWhsNG6aFd96+xeXZzYFMI68JEBLAgrd+RCYhW0o4DI7iFRdmsV9y16
+         PdmDON1fcMn2HMz4YBnWeB7MkITtsZmxzXEe+2Gvrx+2aWEhNJHIPG2YK15YR3ZDcUlO
+         SVz2iEXPXnZjU1GFs1U75uNnCmcOrwQ/HTpE34YP1BGcWb6DpRc5b68w1J+DQsBKrHQS
+         XXBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fPumel9u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i4TEQpw5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a54si692284qtb.278.2019.10.24.23.37.47
+        by mx.google.com with ESMTPS id q6si1295885qtj.4.2019.10.25.06.29.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 23:37:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Oct 2019 06:29:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fPumel9u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i4TEQpw5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55634 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59964 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNtEI-0002sr-JH
-	for alex.bennee@linaro.org; Fri, 25 Oct 2019 02:37:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35298)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNzf9-0001Tx-DH
+	for alex.bennee@linaro.org; Fri, 25 Oct 2019 09:29:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33465)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1iNtDn-0002mF-B2
- for qemu-arm@nongnu.org; Fri, 25 Oct 2019 02:37:16 -0400
+ (envelope-from <ehabkost@redhat.com>) id 1iNzY4-0007U0-6y
+ for qemu-devel@nongnu.org; Fri, 25 Oct 2019 09:22:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1iNtDj-0008Jz-Ku
- for qemu-arm@nongnu.org; Fri, 25 Oct 2019 02:37:13 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:40714
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <ehabkost@redhat.com>) id 1iNzY0-00059p-5H
+ for qemu-devel@nongnu.org; Fri, 25 Oct 2019 09:22:33 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:42185
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1iNtDj-0008JP-Ak
- for qemu-arm@nongnu.org; Fri, 25 Oct 2019 02:37:11 -0400
+ (Exim 4.71) (envelope-from <ehabkost@redhat.com>) id 1iNzXy-00058X-BW
+ for qemu-devel@nongnu.org; Fri, 25 Oct 2019 09:22:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571985430;
+ s=mimecast20190719; t=1572009747;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XBwtRIVAG4I8F4JAzIQFF0TzaeX9/82MfwukBU0ZXQA=;
- b=fPumel9uWTqDKSSPCRuUP8oC89kWKsG7NJY7G3LVrr/BQlB5uD3w9sLbecKH0njD9s5gjg
- ugInFRqyZ3rfV8MNy5894EHUqv/LGWdU0iINzxCuEg7d5QU/ucnYRd+RHbAZQnrJCG9qyq
- C8E8m+DnBlCsjQfEYNQBVLJI/RGSoXI=
+ bh=TXoeupEoqztpAAd5CgTj1cBSD9Wcv3BgFKcqST9xO2c=;
+ b=i4TEQpw5C4+lbVzdAOUrkK4Tt3SZS0ceMMogQpK1mNpb6lgi8QEyyWt5kRp/2W5w5Kp+6w
+ Wyn9J5f0S/ttsgRv3ohdN8KJAhfIYtsBXkL6SSstdRJ6KWIKWRyLTkmlF80Um678i7FuvV
+ ZCLF9f35LklqQGBliVrR29Tq3i0665c=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-28-4ZO2EVZDNn6mDU_a0Cp7EQ-1; Fri, 25 Oct 2019 02:37:06 -0400
+ us-mta-240-GczJZsPlMUmnpCLSWxkQUA-1; Fri, 25 Oct 2019 09:22:24 -0400
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F2CDF107AD31;
- Fri, 25 Oct 2019 06:37:04 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.36.118.123])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A7CA560BE0;
- Fri, 25 Oct 2019 06:37:01 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id EA8921138619; Fri, 25 Oct 2019 08:36:59 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 567FD1800DCA;
+ Fri, 25 Oct 2019 13:22:22 +0000 (UTC)
+Received: from localhost (ovpn-116-62.gru2.redhat.com [10.97.116.62])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D053760BFB;
+ Fri, 25 Oct 2019 13:22:16 +0000 (UTC)
+Date: Fri, 25 Oct 2019 10:22:15 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>, Jiri Denemark <jdenemar@redhat.com>
 Subject: Re: [PATCH 7/7] cpu: Add `machine` parameter to query-cpu-definitions
+Message-ID: <20191025132215.GC6744@habkost.net>
 References: <20191025022553.25298-1-ehabkost@redhat.com>
  <20191025022553.25298-8-ehabkost@redhat.com>
-Date: Fri, 25 Oct 2019 08:36:59 +0200
-In-Reply-To: <20191025022553.25298-8-ehabkost@redhat.com> (Eduardo Habkost's
- message of "Thu, 24 Oct 2019 23:25:53 -0300")
-Message-ID: <8736fhmius.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
+ <8736fhmius.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
+In-Reply-To: <8736fhmius.fsf@dusky.pond.sub.org>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: 4ZO2EVZDNn6mDU_a0Cp7EQ-1
+X-MC-Unique: GczJZsPlMUmnpCLSWxkQUA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=WINDOWS-1252
 Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, libvir-list@redhat.com,
  David Hildenbrand <david@redhat.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
  Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
  Halil Pasic <pasic@linux.ibm.com>,
@@ -117,255 +115,64 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Jiri Denemark <jdenemar@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Aurelien Jarno <aurelien@aurel32.net>,
+ Richard Henderson <rth@twiddle.net>, Aurelien Jarno <aurelien@aurel32.net>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GnWV3tKxmO7G
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WcP8gtFwKH9X
 
-Eduardo Habkost <ehabkost@redhat.com> writes:
+CCing libvir-list.
 
-> The new parameter can be used by management software to query for
-> CPU model alias information for multiple machines without
-> restarting QEMU.
->
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> ---
->  qapi/machine-target.json                   | 14 +++++++-
->  target/arm/helper.c                        |  4 ++-
->  target/i386/cpu.c                          | 16 +++++++--
->  target/mips/helper.c                       |  4 ++-
->  target/ppc/translate_init.inc.c            |  4 ++-
->  target/s390x/cpu_models.c                  |  4 ++-
->  tests/acceptance/x86_cpu_model_versions.py | 42 ++++++++++++++++++++++
->  7 files changed, 81 insertions(+), 7 deletions(-)
->
-> diff --git a/qapi/machine-target.json b/qapi/machine-target.json
-> index 55310a6aa2..7bff3811fe 100644
-> --- a/qapi/machine-target.json
-> +++ b/qapi/machine-target.json
-> @@ -281,6 +281,10 @@
+On Fri, Oct 25, 2019 at 08:36:59AM +0200, Markus Armbruster wrote:
+> Eduardo Habkost <ehabkost@redhat.com> writes:
+> > The new parameter can be used by management software to query for
+> > CPU model alias information for multiple machines without
+> > restarting QEMU.
+[...]
+> > @@ -317,9 +321,17 @@
+>    ##
+>    # @query-cpu-definitions:
+> >  #
+> >  # Return a list of supported virtual CPU definitions
+> >  #
+> > +# @machine: Name of machine type.  The command returns some data
+> > +#           that machine-specific.  This overrides the machine type
+>=20
+> "that is machine-specific"
+>=20
+> > +#           used to look up that information.  This can be used,
+> > +#           for example, to query machine-specific CPU model aliases
+> > +#           without restarting QEMU (since 4.2)
+> > +#
+> >  # Returns: a list of CpuDefInfo
+> >  #
+> >  # Since: 1.2.0
+> >  ##
+> > -{ 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo']=
+,
+> > +{ 'command': 'query-cpu-definitions',
+> > +  'data': { '*machine': 'str' },
+> > +  'returns': ['CpuDefinitionInfo'],
+> >    'if': 'defined(TARGET_PPC) || defined(TARGET_ARM) || defined(TARGET_=
+I386) || defined(TARGET_S390X) || defined(TARGET_MIPS)' }
+>=20
+> I'm afraid the doc comment is less than clear.  Before I can suggest
+> improvements, I have questions.
+>=20
+> Looks like @alias-of is the only part of the return value that changes
+> when I re-run query-cpu-definitions with another @machine argument.
+> Correct?
 
-This is CpuDefinitionInfo.
+Yes.
 
->  #
->  # @alias-of: Name of CPU model this model is an alias for.  The target o=
-f the
->  #            CPU model alias may change depending on the machine type.
-> +#            If the @machine argument was provided to query-cpu-definiti=
-ons,
-> +#            alias information that machine type will be returned.
+>=20
+> How is this going to be used?  Will management software run
+> query-cpu-definitions for each machine type returned by query-machines?
+> Or just for a few of them?
 
-"for that machine type"
+I don't know.  I'll let Jiri and other libvirt developers answer
+that.
 
-> +#            If @machine is not provided, alias information for
-> +#            the current machine will be returned.
->  #            Management software is supposed to translate CPU model alia=
-ses
->  #            in the VM configuration, because aliases may stop being
->  #            migration-safe in the future (since 4.1)
-> @@ -317,9 +321,17 @@
-   ##
-   # @query-cpu-definitions:
->  #
->  # Return a list of supported virtual CPU definitions
->  #
-> +# @machine: Name of machine type.  The command returns some data
-> +#           that machine-specific.  This overrides the machine type
-
-"that is machine-specific"
-
-> +#           used to look up that information.  This can be used,
-> +#           for example, to query machine-specific CPU model aliases
-> +#           without restarting QEMU (since 4.2)
-> +#
->  # Returns: a list of CpuDefInfo
->  #
->  # Since: 1.2.0
->  ##
-> -{ 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'],
-> +{ 'command': 'query-cpu-definitions',
-> +  'data': { '*machine': 'str' },
-> +  'returns': ['CpuDefinitionInfo'],
->    'if': 'defined(TARGET_PPC) || defined(TARGET_ARM) || defined(TARGET_I3=
-86) || defined(TARGET_S390X) || defined(TARGET_MIPS)' }
-
-I'm afraid the doc comment is less than clear.  Before I can suggest
-improvements, I have questions.
-
-Looks like @alias-of is the only part of the return value that changes
-when I re-run query-cpu-definitions with another @machine argument.
-Correct?
-
-How is this going to be used?  Will management software run
-query-cpu-definitions for each machine type returned by query-machines?
-Or just for a few of them?
-
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 0d9a2d2ab7..96f9fe7fff 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -6965,7 +6965,9 @@ static void arm_cpu_add_definition(gpointer data, g=
-pointer user_data)
->      *cpu_list =3D entry;
->  }
-> =20
-> -CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-> +CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
-> +                                                 const char *machine,
-> +                                                 Error **errp)
->  {
->      CpuDefinitionInfoList *cpu_list =3D NULL;
->      GSList *list;
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index 67d1eca4ed..ae633793ed 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -4078,11 +4078,23 @@ static void x86_cpu_definition_entry(gpointer dat=
-a, gpointer user_data)
->      args->cpu_list =3D entry;
->  }
-> =20
-> -CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-> +CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
-> +                                                 const char *machine,
-> +                                                 Error **errp)
->  {
->      X86CPUDefinitionArgs args =3D { .cpu_list =3D NULL };
->      GSList *list;
-> -    MachineClass *mc =3D MACHINE_GET_CLASS(qdev_get_machine());
-> +    MachineClass *mc;
-> +
-> +    if (!has_machine) {
-> +        mc =3D MACHINE_GET_CLASS(qdev_get_machine());
-> +    } else {
-> +        mc =3D machine_find_class(machine);
-> +        if (!mc) {
-> +            error_setg(errp, "Machine type '%s' not found", machine);
-> +            return NULL;
-> +        }
-> +    }
-> =20
->      args.default_version =3D default_cpu_version_for_machine(mc);
->      list =3D get_sorted_cpu_model_list();
-> diff --git a/target/mips/helper.c b/target/mips/helper.c
-> index a2b6459b05..a73c767462 100644
-> --- a/target/mips/helper.c
-> +++ b/target/mips/helper.c
-> @@ -1481,7 +1481,9 @@ static void mips_cpu_add_definition(gpointer data, =
-gpointer user_data)
->      *cpu_list =3D entry;
->  }
-> =20
-> -CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-> +CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
-> +                                                 const char *machine,
-> +                                                 Error **errp)
->  {
->      CpuDefinitionInfoList *cpu_list =3D NULL;
->      GSList *list;
-> diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.=
-inc.c
-> index ba726dec4d..4493309c4c 100644
-> --- a/target/ppc/translate_init.inc.c
-> +++ b/target/ppc/translate_init.inc.c
-> @@ -10350,7 +10350,9 @@ static void ppc_cpu_defs_entry(gpointer data, gpo=
-inter user_data)
->      *first =3D entry;
->  }
-> =20
-> -CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-> +CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
-> +                                                 const char *machine,
-> +                                                 Error **errp)
->  {
->      CpuDefinitionInfoList *cpu_list =3D NULL;
->      GSList *list;
-> diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
-> index 7e92fb2e15..e40f1f6bec 100644
-> --- a/target/s390x/cpu_models.c
-> +++ b/target/s390x/cpu_models.c
-> @@ -456,7 +456,9 @@ static void create_cpu_model_list(ObjectClass *klass,=
- void *opaque)
->      *cpu_list =3D entry;
->  }
-> =20
-> -CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-> +CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
-> +                                                 const char *machine,
-> +                                                 Error **errp)
->  {
->      struct CpuDefinitionInfoListData list_data =3D {
->          .list =3D NULL,
-
-Should the commit message explain why all implementations but one ignore
-@machine?
-
-> diff --git a/tests/acceptance/x86_cpu_model_versions.py b/tests/acceptanc=
-e/x86_cpu_model_versions.py
-> index 5fc9ca4bc6..79c5250243 100644
-> --- a/tests/acceptance/x86_cpu_model_versions.py
-> +++ b/tests/acceptance/x86_cpu_model_versions.py
-> @@ -234,6 +234,48 @@ class X86CPUModelAliases(avocado_qemu.Test):
-> =20
->          self.validate_aliases(cpus)
-> =20
-> +    def test_machine_arg_none(self):
-> +        """Check if unversioned CPU model is an alias pointing to right =
-version"""
-> +        vm1 =3D self.get_vm()
-> +        vm1.add_args('-S')
-> +        vm1.set_machine('pc-i440fx-4.0')
-> +        vm1.launch()
-> +        cpus1 =3D dict((m['name'], m.get('alias-of')) for m in vm1.comma=
-nd('query-cpu-definitions', machine=3D'none'))
-> +        vm1.shutdown()
-> +
-> +        vm2 =3D self.get_vm()
-> +        vm2.add_args('-S')
-> +        vm2.set_machine('none')
-> +        vm2.launch()
-> +        cpus2 =3D dict((m['name'], m.get('alias-of')) for m in vm2.comma=
-nd('query-cpu-definitions'))
-> +        vm1.shutdown()
-> +
-> +        self.assertEquals(cpus1, cpus2)
-> +
-> +    def test_machine_arg_4_1(self):
-> +        """Check if unversioned CPU model is an alias pointing to right =
-version"""
-> +        vm1 =3D self.get_vm()
-> +        vm1.add_args('-S')
-> +        vm1.set_machine('pc-i440fx-4.0')
-> +        vm1.launch()
-> +        cpus1 =3D dict((m['name'], m.get('alias-of')) for m in vm1.comma=
-nd('query-cpu-definitions', machine=3D'pc-i440fx-4.1'))
-> +        vm1.shutdown()
-> +
-> +        vm2 =3D self.get_vm()
-> +        vm2.add_args('-S')
-> +        vm2.set_machine('pc-i440fx-4.1')
-> +        vm2.launch()
-> +        cpus2 =3D dict((m['name'], m.get('alias-of')) for m in vm2.comma=
-nd('query-cpu-definitions'))
-> +        vm1.shutdown()
-> +
-> +        self.assertEquals(cpus1, cpus2)
-> +
-> +    def test_invalid_machine(self):
-> +        self.vm.add_args('-S')
-> +        self.vm.launch()
-> +        r =3D self.vm.qmp('query-cpu-definitions', machine=3D'invalid-ma=
-chine-123')
-> +        self.assertIn('error', r)
-> +
-> =20
->  class CascadelakeArchCapabilities(avocado_qemu.Test):
->      """
-
-Tests look good to me.
-
-I admit to being confused on when to use the tests/acceptance/ framework
-and when to use qtest.
+--=20
+Eduardo
 

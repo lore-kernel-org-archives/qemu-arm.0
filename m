@@ -1,199 +1,333 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp3413228wri;
-        Mon, 28 Oct 2019 12:12:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxjOPJiH3LdmqHGUieF+OUFmAohaDYN+0c3X3eWiz+QmG0HZcze/yNvFmvnqbbDt6rkYS2n
-X-Received: by 2002:a37:8405:: with SMTP id g5mr5226719qkd.387.1572289973606;
-        Mon, 28 Oct 2019 12:12:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572289973; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3164366wrq;
+        Thu, 24 Oct 2019 19:27:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyfUr324kpJbAaeNJiwSg+bcMgLFh/xSzfFZA3KR/taNGWdMQCxzFZTaTAFJhS13mDdQiVv
+X-Received: by 2002:a17:906:4d11:: with SMTP id r17mr1145798eju.99.1571970438831;
+        Thu, 24 Oct 2019 19:27:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571970438; cv=none;
         d=google.com; s=arc-20160816;
-        b=edGSzvIgohEmAdLCZe/3yJ3k5iUG0hLRNxj8VmO/BM4SdoMt71mVASQuvRPUkn8HZx
-         epxphzsQU+baO4D+F68jYUF1L3CrUXwUd7aEdxVYnJQzwOL2No4p0MxJkPfzi5SEvg+M
-         XyZ+htga3xNpeoMx2U/dyi38Q/H7Ew6Oz/K+3dxz8CiOaO3wiuJWlbALUsTqOvWzVPyi
-         3TD2IffCI2mu31b7vZExvMF+EFTjP1Uha6mPa7cOXTACjPHHpecARgKw+zkdMsYb4Ht8
-         8NOS+D5lcTRiHXOI4Vuj2ICo5JwAg8ebNWxyfvf+5RSNGmwY0S+ELj+bch/Oau0F/xIF
-         xraA==
+        b=wlg9U5+i82nstQN+1KF5of8n8l0i2WIzzQDFIhLK0BwiFI4J0vHYhRq2NtxiGJmCVQ
+         uZmPfFu9pQZuUVmPekt6myr7mAKgAC40Xgh2zOXIgFlHtFO9EGCg5+XObELA/T+enLyC
+         MgEzn0g9JhJsawNyx688OwWfGosNkm6Xrl2Qji50exmV/8X3gIkunCDCQxN4UWdXi3gd
+         IMbJWcP+0vJytcIXwWufoxR7+Jm5PHIp1j4yITglGY4l9Kar4LyKdoIsybYHUAw7jlAd
+         nZESqBnez9QHVoT5/4gQmPBszgZOsdRacD6lDgzAK/t9r9p0FcLw56KYwljoNssRaAj3
+         eq5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=2hmznyP4ZTFQYt5FY266nVXWD/zh57MpnSzDaNjhhgI=;
-        b=LVZuobhsXpnUcmT7HleTNRsU9FyfrUStxfJYIHvA1TShqlwjGsDmMZ05UP7E4mhqs9
-         sri8VxTjStO24+uKqY4DWxqugbaEGm86ERLClDhhT7MuI72pDFVFcNUZVf+cyk79ghcj
-         SmDHfod9AcZqXTVNtGGw1ABsES3tah/8qPW8od4EAhDj/c635gzhW5yUH1DsR8JX9yrr
-         9itnSpgaHeDAaMdhCqIvYLx5OG8nEuOET39oCyf0rcJUBkrNXfGnXPiL7gXWrU3DeR7H
-         hIQJjXO2ELwfO54FpxgU+6vJLGsVvZN46xHUtR1vWKdj+schrPZu6Hhwe+AbzaqzfBA2
-         NLyA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=s4Vx6o5A+aCOtwYxTcn/YHkF+JyMjbufP9FhFqhT+cc=;
+        b=p7f7izkBrTXHXVHIzp9E5SPB4pObpOMuzdDNQ3aIkYMymGb3J8gLq98D/TDGJ0xiYe
+         ljuEH17AlW5otoW/sNSochMDIur/QzdjVnw9zlqETF6WcCBnfyIMTVwsCpxbARh539tt
+         Aar/S+XsbGhd6rs8++bSaTkP8LI2vuPgNrSzKPtWtPv6oyAS8NekilPOYpDGrKswwQL3
+         nfqI8ySSaPetJHfl5r7QD099wmV2guQGKCRYbMxnSo6OxDCHYYWhiV6jPiaStDF3RTr9
+         ZLkLnOfUP2dgx7wvINfJMGCblAMCweA0foktk3hZInafuABJBYnhtyGtrtCbnTvS01Tj
+         TcIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aD4Fy6XS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cctgRqoK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7si10305516qtk.223.2019.10.28.12.12.53
+        by mx.google.com with ESMTPS id b7si254692edb.439.2019.10.24.19.27.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Oct 2019 12:12:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Oct 2019 19:27:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aD4Fy6XS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53840 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cctgRqoK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iPARf-0007Ft-Ph
-	for alex.bennee@linaro.org; Mon, 28 Oct 2019 15:12:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60845)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iNpJt-0002iq-7m
+	for alex.bennee@linaro.org; Thu, 24 Oct 2019 22:27:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39589)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <msys.mizuma@gmail.com>) id 1iP9vI-0000Go-Gq
- for qemu-arm@nongnu.org; Mon, 28 Oct 2019 14:39:25 -0400
+ (envelope-from <ehabkost@redhat.com>) id 1iNpIz-0002VQ-D3
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 22:26:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <msys.mizuma@gmail.com>) id 1iP9vH-0006Sc-CO
- for qemu-arm@nongnu.org; Mon, 28 Oct 2019 14:39:24 -0400
-Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841]:33607)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <msys.mizuma@gmail.com>)
- id 1iP9vE-0006Q5-HT; Mon, 28 Oct 2019 14:39:20 -0400
-Received: by mail-qt1-x841.google.com with SMTP id y39so10717596qty.0;
- Mon, 28 Oct 2019 11:39:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=2hmznyP4ZTFQYt5FY266nVXWD/zh57MpnSzDaNjhhgI=;
- b=aD4Fy6XSaoNV4t6Jewmceuo4gDhsfye4Fx0/F/r+0K3hSZApF2OOckgZ/t9CWl99I4
- 0dYbVlYTU8tY/Rh4uYaZSJJ2ydmgnngFGfMMobRxzf/z9UJmSNcgpiWJkLmmU+l1wjZH
- si7UplMflcB+EPG/qJ5RT4yiQLe9cYd6i86411ieBYGHGDPbtMPzOYC53SguatBrdcLm
- Lry5E3UyOQL55uQBMZcpcmuZJAxex0NaG86l3nRyVmINcuwp4QBb1n+vpCQ23KhtL1sr
- b7yz+5pNfu9TiSjbIknMhB/EB+LseYhPWpzTZ3Ne21mcd3mjAYYy6rcNxBDokKnd6QbS
- Qcgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=2hmznyP4ZTFQYt5FY266nVXWD/zh57MpnSzDaNjhhgI=;
- b=bt4bFBeKziuHz3DebSBPpIl/g1emuDEsVedu9dFl/h8zX5698GkDhp68V4EUwdc4aK
- aLKIdiUdDtfI3kUjkFkvDS6c0NWak1NuzniRmCZLNjykBnKJXzeAGICljkn5SXCMTgR7
- ZtBJMPOIVMTrEPBNlNQa5AkBEDKHMyShhtErLpbZvNKl5QEliG6lJtx74O6tsAqgPqgj
- yzSHJjsHXOJE2mCVJQ+oX5BDczUxPzm7cKenr1M83hwCxp+JcM5RiaYaptFQ1lTS7dyo
- xWqDOng+91w/T3BM/PQbZgw6gcAksVlXK/19q9TqW1jYlAd43VEu1IENiPbJpTIuP/HS
- MSiw==
-X-Gm-Message-State: APjAAAVfrgQXUL6WfKqqsJNFdnEmc3/nds4yyMIZU95K0xM5Pl31TvI7
- VeazkkLiIZlVEpExLM7xcA==
-X-Received: by 2002:aed:24af:: with SMTP id t44mr18314531qtc.57.1572287957239; 
- Mon, 28 Oct 2019 11:39:17 -0700 (PDT)
-Received: from gabell (nat-pool-bos-t.redhat.com. [66.187.233.206])
- by smtp.gmail.com with ESMTPSA id s21sm8376130qtc.12.2019.10.28.11.39.16
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 28 Oct 2019 11:39:16 -0700 (PDT)
-Date: Mon, 28 Oct 2019 14:39:11 -0400
-From: Masayoshi Mizuma <msys.mizuma@gmail.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
- virtual time
-Message-ID: <20191028183908.7ss3o4guvfff6lxv@gabell>
-References: <20191016143410.5023-1-drjones@redhat.com>
- <20191017211758.ownflk2c7mzv3poh@gabell>
- <20191018120252.sdpi4t7jlectnspu@kamzik.brq.redhat.com>
+ (envelope-from <ehabkost@redhat.com>) id 1iNpIx-0007dY-NJ
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 22:26:21 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:28152
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <ehabkost@redhat.com>) id 1iNpIx-0007dJ-Ie
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2019 22:26:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1571970379;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=s4Vx6o5A+aCOtwYxTcn/YHkF+JyMjbufP9FhFqhT+cc=;
+ b=cctgRqoK88+5fWwNFwbx3TFQDTTzEZeTRh5M9nHCP+72A/6kDF7GVmxS0OLiyjlS8WhGWu
+ ILAt90oESVn743WtTKiQTFNjY+P4Fu8PGslRkxF5dBKRHSsyKFbnv6XyXZ6njhbXaxl5MW
+ QPfiXwTdtMrd0eLl/J5KKoYtb2PVTgw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-174-pWuI0ASOPj-Jm0Zxy2bIvg-1; Thu, 24 Oct 2019 22:26:15 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 50CDF1800DC7;
+ Fri, 25 Oct 2019 02:26:13 +0000 (UTC)
+Received: from localhost (ovpn-116-62.gru2.redhat.com [10.97.116.62])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EC4C64129;
+ Fri, 25 Oct 2019 02:26:09 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 7/7] cpu: Add `machine` parameter to query-cpu-definitions
+Date: Thu, 24 Oct 2019 23:25:53 -0300
+Message-Id: <20191025022553.25298-8-ehabkost@redhat.com>
+In-Reply-To: <20191025022553.25298-1-ehabkost@redhat.com>
+References: <20191025022553.25298-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20191018120252.sdpi4t7jlectnspu@kamzik.brq.redhat.com>
-User-Agent: NeoMutt/20180716
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::841
-X-BeenThere: qemu-arm@nongnu.org
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: pWuI0ASOPj-Jm0Zxy2bIvg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZcKnyE7RPVdo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ David Hildenbrand <david@redhat.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
+ Cornelia Huck <cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jiri Denemark <jdenemar@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fX57jrdBxjmq
 
-On Fri, Oct 18, 2019 at 02:02:52PM +0200, Andrew Jones wrote:
-> On Thu, Oct 17, 2019 at 05:17:59PM -0400, Masayoshi Mizuma wrote:
-> > Hi Drew,
-> > 
-> > Thank you for posting the patches, they seems to work well
-> > because the softlockup is gone and the timestamp jump of
-> > dmesg and ftrace record also disappeared after the guest
-> > is virsh resume'ed.
-> > 
-> > Let me add comments.
-> > I think the kvm-adjvtime behavior should be the default.
-> > How about introducing 'kvm-noadjvtime' parameter instead?
-> > kvm-noadjvtime is to provide the old behavior.
-> > 
-> > That is because the time jump occurs timeout for timers even though
-> > the timer doesn't reach the timeout in the guest time.
-> > 
-> > For example, below flow shows that user and/or kernel sets timer A
-> > for +10 sec and B for +20 sec in Guest, then Guest is suspended and
-> > it passes 60 sec, then Guest is resumed. Timer A and B go off because
-> > the Guest timestamp (TS) is jumped to 63. That is unexpected timer
-> > behavior for Guest.
-> > 
-> >  Host TS(sec) Guest TS(sec) Event
-> >  ============ ============= =============================
-> >  00           00            Guest: Set timer A for +10 sec
-> >  01           01            Guest: Set timer B for +20 sec
-> >  03           03            Host: virsh suspend Guest
-> >  63           63            Host: virsh resume Guest
-> >                             Guest: Timer A and B go off
-> > 
-> > I believe kvm-adjvtime behavior is as following. So Time A
-> > and B go off as expected time. So, kvm-adjvtime behavior should
-> > be the default.
-> > 
-> >  Host TS(sec) Guest TS(sec) Event
-> >  ============ ============= =============================
-> >  00           00            Guest: Set timer A for +10 sec
-> >  01           01            Guest: Set timer B for +20 sec
-> >  03           03            Host: virsh suspend guest
-> >  63           03            Host: virsh resume guest
-> >  70           10            Guest: Timer A goes off
-> >  81           21            Guest: Timer B goes off
-> > 
-> 
-> Thanks for the testing Masa. Your timer test is another good example of
-> what can happen when a guest is paused. I'm sure there are many other ways
-> a pause could be problematic as well, especially if the guest has devices
-> passed through to it that it's actively using. I also don't expect
-> kvm-adjvtime to solve all those problems (like, for example, potential
-> problems with passthrough devices, networks, etc.)  This means that guest
-> pausing should only be done by host admins that are intimately familiar
-> with the guest OS, workload, and network connections. They should be sure
-> that it can tolerate and recover from the pauses. Since the admins need to
-> make the decision to pause at all, then I think it's fair for them to also
-> decide if they want to try and mitigate some of the issues with
-> kvm-adjvtime, i.e. require them to enable it, rather than have it on by
-> default. 
+The new parameter can be used by management software to query for
+CPU model alias information for multiple machines without
+restarting QEMU.
 
-make sense to me, thanks.
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+ qapi/machine-target.json                   | 14 +++++++-
+ target/arm/helper.c                        |  4 ++-
+ target/i386/cpu.c                          | 16 +++++++--
+ target/mips/helper.c                       |  4 ++-
+ target/ppc/translate_init.inc.c            |  4 ++-
+ target/s390x/cpu_models.c                  |  4 ++-
+ tests/acceptance/x86_cpu_model_versions.py | 42 ++++++++++++++++++++++
+ 7 files changed, 81 insertions(+), 7 deletions(-)
 
->          Also, if we choose to enable it by default, then we'll need to
-> deal with the compatibility issues that come with changing a behavior.
-> That's not impossible, as this feature could be disabled for older
-> machine types, but it's messy.
+diff --git a/qapi/machine-target.json b/qapi/machine-target.json
+index 55310a6aa2..7bff3811fe 100644
+--- a/qapi/machine-target.json
++++ b/qapi/machine-target.json
+@@ -281,6 +281,10 @@
+ #
+ # @alias-of: Name of CPU model this model is an alias for.  The target of =
+the
+ #            CPU model alias may change depending on the machine type.
++#            If the @machine argument was provided to query-cpu-definition=
+s,
++#            alias information that machine type will be returned.
++#            If @machine is not provided, alias information for
++#            the current machine will be returned.
+ #            Management software is supposed to translate CPU model aliase=
+s
+ #            in the VM configuration, because aliases may stop being
+ #            migration-safe in the future (since 4.1)
+@@ -317,9 +321,17 @@
+ #
+ # Return a list of supported virtual CPU definitions
+ #
++# @machine: Name of machine type.  The command returns some data
++#           that machine-specific.  This overrides the machine type
++#           used to look up that information.  This can be used,
++#           for example, to query machine-specific CPU model aliases
++#           without restarting QEMU (since 4.2)
++#
+ # Returns: a list of CpuDefInfo
+ #
+ # Since: 1.2.0
+ ##
+-{ 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'],
++{ 'command': 'query-cpu-definitions',
++  'data': { '*machine': 'str' },
++  'returns': ['CpuDefinitionInfo'],
+   'if': 'defined(TARGET_PPC) || defined(TARGET_ARM) || defined(TARGET_I386=
+) || defined(TARGET_S390X) || defined(TARGET_MIPS)' }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0d9a2d2ab7..96f9fe7fff 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6965,7 +6965,9 @@ static void arm_cpu_add_definition(gpointer data, gpo=
+inter user_data)
+     *cpu_list =3D entry;
+ }
+=20
+-CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
++CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
++                                                 const char *machine,
++                                                 Error **errp)
+ {
+     CpuDefinitionInfoList *cpu_list =3D NULL;
+     GSList *list;
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 67d1eca4ed..ae633793ed 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -4078,11 +4078,23 @@ static void x86_cpu_definition_entry(gpointer data,=
+ gpointer user_data)
+     args->cpu_list =3D entry;
+ }
+=20
+-CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
++CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
++                                                 const char *machine,
++                                                 Error **errp)
+ {
+     X86CPUDefinitionArgs args =3D { .cpu_list =3D NULL };
+     GSList *list;
+-    MachineClass *mc =3D MACHINE_GET_CLASS(qdev_get_machine());
++    MachineClass *mc;
++
++    if (!has_machine) {
++        mc =3D MACHINE_GET_CLASS(qdev_get_machine());
++    } else {
++        mc =3D machine_find_class(machine);
++        if (!mc) {
++            error_setg(errp, "Machine type '%s' not found", machine);
++            return NULL;
++        }
++    }
+=20
+     args.default_version =3D default_cpu_version_for_machine(mc);
+     list =3D get_sorted_cpu_model_list();
+diff --git a/target/mips/helper.c b/target/mips/helper.c
+index a2b6459b05..a73c767462 100644
+--- a/target/mips/helper.c
++++ b/target/mips/helper.c
+@@ -1481,7 +1481,9 @@ static void mips_cpu_add_definition(gpointer data, gp=
+ointer user_data)
+     *cpu_list =3D entry;
+ }
+=20
+-CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
++CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
++                                                 const char *machine,
++                                                 Error **errp)
+ {
+     CpuDefinitionInfoList *cpu_list =3D NULL;
+     GSList *list;
+diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.in=
+c.c
+index ba726dec4d..4493309c4c 100644
+--- a/target/ppc/translate_init.inc.c
++++ b/target/ppc/translate_init.inc.c
+@@ -10350,7 +10350,9 @@ static void ppc_cpu_defs_entry(gpointer data, gpoin=
+ter user_data)
+     *first =3D entry;
+ }
+=20
+-CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
++CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
++                                                 const char *machine,
++                                                 Error **errp)
+ {
+     CpuDefinitionInfoList *cpu_list =3D NULL;
+     GSList *list;
+diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
+index 7e92fb2e15..e40f1f6bec 100644
+--- a/target/s390x/cpu_models.c
++++ b/target/s390x/cpu_models.c
+@@ -456,7 +456,9 @@ static void create_cpu_model_list(ObjectClass *klass, v=
+oid *opaque)
+     *cpu_list =3D entry;
+ }
+=20
+-CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
++CpuDefinitionInfoList *qmp_query_cpu_definitions(bool has_machine,
++                                                 const char *machine,
++                                                 Error **errp)
+ {
+     struct CpuDefinitionInfoListData list_data =3D {
+         .list =3D NULL,
+diff --git a/tests/acceptance/x86_cpu_model_versions.py b/tests/acceptance/=
+x86_cpu_model_versions.py
+index 5fc9ca4bc6..79c5250243 100644
+--- a/tests/acceptance/x86_cpu_model_versions.py
++++ b/tests/acceptance/x86_cpu_model_versions.py
+@@ -234,6 +234,48 @@ class X86CPUModelAliases(avocado_qemu.Test):
+=20
+         self.validate_aliases(cpus)
+=20
++    def test_machine_arg_none(self):
++        """Check if unversioned CPU model is an alias pointing to right ve=
+rsion"""
++        vm1 =3D self.get_vm()
++        vm1.add_args('-S')
++        vm1.set_machine('pc-i440fx-4.0')
++        vm1.launch()
++        cpus1 =3D dict((m['name'], m.get('alias-of')) for m in vm1.command=
+('query-cpu-definitions', machine=3D'none'))
++        vm1.shutdown()
++
++        vm2 =3D self.get_vm()
++        vm2.add_args('-S')
++        vm2.set_machine('none')
++        vm2.launch()
++        cpus2 =3D dict((m['name'], m.get('alias-of')) for m in vm2.command=
+('query-cpu-definitions'))
++        vm1.shutdown()
++
++        self.assertEquals(cpus1, cpus2)
++
++    def test_machine_arg_4_1(self):
++        """Check if unversioned CPU model is an alias pointing to right ve=
+rsion"""
++        vm1 =3D self.get_vm()
++        vm1.add_args('-S')
++        vm1.set_machine('pc-i440fx-4.0')
++        vm1.launch()
++        cpus1 =3D dict((m['name'], m.get('alias-of')) for m in vm1.command=
+('query-cpu-definitions', machine=3D'pc-i440fx-4.1'))
++        vm1.shutdown()
++
++        vm2 =3D self.get_vm()
++        vm2.add_args('-S')
++        vm2.set_machine('pc-i440fx-4.1')
++        vm2.launch()
++        cpus2 =3D dict((m['name'], m.get('alias-of')) for m in vm2.command=
+('query-cpu-definitions'))
++        vm1.shutdown()
++
++        self.assertEquals(cpus1, cpus2)
++
++    def test_invalid_machine(self):
++        self.vm.add_args('-S')
++        self.vm.launch()
++        r =3D self.vm.qmp('query-cpu-definitions', machine=3D'invalid-mach=
+ine-123')
++        self.assertIn('error', r)
++
+=20
+ class CascadelakeArchCapabilities(avocado_qemu.Test):
+     """
+--=20
+2.21.0
 
-I agree with you, we shouldn't add such messy codes to resolve
-the compatibility issues...
-
-> 
-> All that said, I won't argue too hard against kvm-adjvtime being on by
-> default, but let's see if others like Peter or Marc want to chime in on
-> it too.
-
-Yeah, I look forward to their comments.
-
-Thanks,
-Masa

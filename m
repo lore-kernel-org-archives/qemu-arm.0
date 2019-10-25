@@ -1,89 +1,89 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3484071wrq;
-        Fri, 25 Oct 2019 01:43:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxmf48dS7dPUI/wvutPeSNbHmnHKLyTomiQ0wK+fRwAN8Arf4ssWXxojItmIMyVYNp5C/yu
-X-Received: by 2002:ac8:2a38:: with SMTP id k53mr1908551qtk.387.1571993035877;
-        Fri, 25 Oct 2019 01:43:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571993035; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3484107wrq;
+        Fri, 25 Oct 2019 01:43:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzM8xq+kCW8ClCUO7/FMFLt7LmoavjgTmULplhOOpYYNCWDdNg4668DJmTYBWaHdhdLKE7o
+X-Received: by 2002:a05:620a:6da:: with SMTP id 26mr1965134qky.184.1571993039174;
+        Fri, 25 Oct 2019 01:43:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571993039; cv=none;
         d=google.com; s=arc-20160816;
-        b=Woq9LN6DTra1vJoyxan2KvORl7dhhMRoPbb9uKdGLgK16IYbwX2QqLfT4zsNUyvNAV
-         mSjh6MhND34gQT6p6OCmx9Q5ZdumgNanYemytUm5TolXVVxOIcnNe1Jgbg/VtqD+8rpT
-         s2x5czYQvv0OjbwLKeSn9kIVhQEL2ERqH7B80/A6Vjp6BIVYmWfhH0hmZfzsq2gxIuIM
-         vOFoQgpLOKj4kIN0FuoRH4y93fPk1fdBvBPf87V1mKuhFYAjbw/WLMPr3hT83+r/B++c
-         kGXP98kUxsHJWKsKLouDjdtXOFD4d+Kr6+YIWKY1TDTQxx5FZt0O8Nn9LMFLnTk3ThLj
-         OFdw==
+        b=fS3RKEKKbELC3p5i0+6q3AqPAi4LhvjJVrDzXzeyGFCVaoJO+UFs80OBnH354W0p6A
+         DIl2pxUFZA6Kxo+6CrqCiv7KAsr/6/aJ/axtwrnmuFrbsIAdasX37gHibRssFilw8pNH
+         BMcGgcGQhPv0MRtm1u+kr3CKsUD4AWpLJ4pSTx204Q36QvJC7uOxgn6qsrYDSddXn779
+         i7AQxRqjSOrJMhstSQ6MNlwem/Z/O6kQ6jbYOqLA1IAvwek41ZbptclZxMRw3wLEOcI5
+         oBoDhbBDdghAif2Do+OIsh7IPH13ZN4RW372Hs21mpxM7eyMgzxHPS1oVS54UpEqi66/
+         a3Jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=GKkw8gAKYPi6qQW88eyXvcur0eULwFDKSZik3xKAtBc=;
-        b=yxLgsvRdMzhDpCd7oVbDZZqkaS2lclkxNGeWluXiUrbAe839s5pwqDZ2VCnKSBsdeD
-         ydycWXM0b+NtyGf62WccZ0X5nS/BQ62WCQvqmkFXBzexvflXcRQsGmWqJccISyhpFw+Q
-         FkdLk/ABS7FdQZ+nyn65ar7y+gRhBadQkwtvPhiGlkGh/UDilQiKQXfniXVhHSNh6inM
-         BrzeQSqg6asE/Hj5Z7pGUr0J3TSp9O5C49vZyuNvzWjEtWaMSFVuc6wX6GQkWfMyMGDh
-         XADRd1rn5Z5qmfpjMpEw1YmCYtjgESRGdHJIBtWVsRYYO0ZnTkoOd2usttXmw/NmCqyB
-         u8VQ==
+        bh=b+dVr8LtdTzy9/gSqR9/Vu4NTmYZsJyCHD31Ms6Z5SM=;
+        b=l53HSxoYVCQuSz71qoQwz+W8wrN8HJP4T28gV/XGV4b3AXycAsYf+jpN1kyrXYd2H1
+         VVMG0ZxWlmAL3lJaO7YBOETdQwmpIfZUO5SMfLuvP5NpI1jlqLSDrC9dEcqr9cEeP6Z4
+         yV2oxlmgkNeC37LBSNUPVYholaBBKI15qvUga958XwHWlqAwZ59PDS9iuZ6vrl73/c13
+         t0NOPr0JxevmqjTVVNPcvVqzmmWmpRIUCdoJg8HouPZJHfU9eFUU1QDSDYjAm9I66krL
+         vLqCXgpBHiEf/ULK1NGLSvQjTK7302huw+YevAad4pTb3vVl0fCyVGhkQODnkA7Jv/3y
+         62Mw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 128si982328qkh.73.2019.10.25.01.43.55
+        by mx.google.com with ESMTPS id g20si1054864qka.301.2019.10.25.01.43.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Oct 2019 01:43:55 -0700 (PDT)
+        Fri, 25 Oct 2019 01:43:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57612 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNvCM-0003pv-RW
-	for alex.bennee@linaro.org; Fri, 25 Oct 2019 04:43:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49732)
+	id 1iNvCQ-0003vE-BK
+	for alex.bennee@linaro.org; Fri, 25 Oct 2019 04:43:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49790)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv4u-0000bP-M6
- for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:13 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv4w-0000eG-7a
+ for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv4p-0007ij-L5
- for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:12 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58789)
+ (envelope-from <laurent@vivier.eu>) id 1iNv4v-0007oE-78
+ for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:14 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:39421)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv4h-0007bq-Rl; Fri, 25 Oct 2019 04:36:01 -0400
+ id 1iNv4l-0007fP-Jw; Fri, 25 Oct 2019 04:36:05 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M42zo-1iNv450zGi-00072i; Fri, 25 Oct 2019 10:35:21 +0200
+ id 1MGzI3-1iAOHL1E8J-00E7YF; Fri, 25 Oct 2019 10:35:28 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 01/19] qemu-options.hx: Update for reboot-timeout parameter
-Date: Fri, 25 Oct 2019 10:34:53 +0200
-Message-Id: <20191025083511.11463-2-laurent@vivier.eu>
+Subject: [PULL 04/19] event_notifier: avoid dandling file descriptor in
+ event_notifier_cleanup
+Date: Fri, 25 Oct 2019 10:34:56 +0200
+Message-Id: <20191025083511.11463-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:c/zMktz+3JjDH+N71EHAEvM5mmPJFDBf9jhIDyxk7TxzV9fd6VF
- REjLhdpVtuT+qJJnkSVRY8ew+4aN3YxXoxXTeY8UycOnzgJS8DHvTvEseeCpOQFDy6OSCR8
- aOiLgpYlSLipBEF0WEqUxXkw8hfoJSbOxR8uKNmO7BMxTAyJ+SDfj7eiV7ERp40lT+h2UbQ
- nf6VK2l31V84+k9iosYqA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9u9gYdmRFEM=:IHDA2tZj9/PN/GSiW8JqI9
- 3ui4rUZFYZTm+TAtJxWQ+8XTasyD/3lGBWFFqzkVoBXKAJhk93dh8FpDaTE2GGLK5PbbRSEBm
- /xLbvcGjUBldmt5vtvZhNZNTqat711fn/8QhfwHpYdCsYK8nuxmuDNirNRaMTSCRX0ixofiip
- /OpNz7oVvqcWcnj1J0PlRWspCPoupOznVS6bFaZtyp+6u+mtxmB7Np15ecx2nHe1ia3O0ohX+
- 2xALIeofdbNe6dv5/z8gPEjul/cv5/6Mq4D4eg0WUz4Sf1C0X8+Br9NZpQFjGwfXjDd5AD084
- eoMF1uG8aNL6ptNoHXPb6zHf6KKK7JLgv4nUzCiDLO/ULYHdNU+mYykxch67BabWWv9fjBMlg
- hCZAnZCwFm3qgsvstOlr1QZp+278O0WkiNwXvbgO3I9VnFOTFh6kY1HKbh4dcHBinQT8w/A4I
- 573cTrMiUc2vfSvTH+W0M1GhqnRnEBb2azODXUZtFtu+K/PuHWReTa6EC9bS0ey5pk8aIf7gV
- u5wHEUBSCpPtCOYfM1PwXYc5XeFW+flTHHRQYsejTit+9YhWK7F0d530FrzXIOv5O70hvCB2J
- ZqUUP2PWnlVlwf6uwRq3bq8Pvk98sQ1FvxQlV4QAXurdqUFuPZecAZ0MMJ/BUpW/K3QAa5LUj
- iEkqZiwPLexcdpfEg+M2sjkEuLxQiyTOPrFvlIib/59myXyPHE8d0236VrNgGmM1qrTROuy2U
- klz1OyeMnz8wlbjPibWqWQOX3q4FnldOZF5xboT09ly4anmWhKSbp5Yim4cuWCxzyQ02jK4vd
- ta8ms9UC4T4SwDq8fcr0aF6+dQQJsEqR8nuY4sGbWXMzZIZmB2AlVaIVOClG0nsE5aFx9pU3M
- NIzwbvNDxl9ZWFn0OcbjfHgalfCFN2rBmrbw4Q55s=
+X-Provags-ID: V03:K1:/ygMbVZUdrFShG2v+IwnlPx6NIe+igwbNnW32CPAFZuGdtiUZh9
+ 0Ag7mN+G3qOA/JlMXTSSzZMY2YZxxMu+jxcdUV3RBC7q7YF4hZCrD2ewOCsG35HyemMQOH0
+ s0OumAT5NnUORhCIcj+oZsgEWy/CdihNGmfwGmsa+EE/XjFUElfWapjzoTvtvcHW/qPABLp
+ 6f9lJd4xJqi8TuaIrEc1w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5TrCoAdjS+w=:JrwOcPzSsGryCaoDQey2WN
+ BPSyYWdhIqoa2zPIH+8m0tRxMWYzgJeURfgN80r3PI55IGpPXSaQVKckmk2aw2FakezM1KNvR
+ iaL4KW4/ESiWbew9xuUkGWBIlNsDtXFo1rUm5ETB2o+zwg2WJS5Y7fpnBvNBof5p2ntYqYcYH
+ 2oUdz0ZC08JmvE0Uorr9MKPnAgyVhOe51awoiAx69gQ+jZtduR2RARiNL3+WAdA6TvFPlmtEE
+ zScXw3SnBZcSq2yngSGSz5CojOq+DjWNSYx64PoY2OaZxilz77wwNxaLbWQITVscS8ij2I0zO
+ RZV4+/fft28sCQ0g7echHzRsio77eFLJ21ZcAungNlpoiRYe665tM9yi/0IsEbBY7+R3qCLAl
+ hBOHSDzhpnzItNTYSUrE00CK6sMb5XJfSKZAOCifukifEcQpXnsMYP0fZeT42VtLFAHeThLEf
+ biJTxCnF43gHscNjwlkVZCGtQ5ZXXEHX8gJGsIHQZckdS9cHZYUKXBgSgmKAkJ4eiDd6yLpsY
+ O6ozRs2rtdX6ZZoJe/4W0Zk2VbSCErwPOtzKMvu5NcfgBIozzzwftvChf54tfL5Be98lH5RNJ
+ U/kcZNIO4iD+lUokltU4qnXR+TuC5jgAc9mz3j+vZ5uHKvCbYsqFIIWBeSIEOI5q4dyciz7Av
+ rUG1DPiITW5Z6SsUwNyr75tW7wiRQj/vTZEybtmCWRQB1RfT0+FkHheGDOwvSuZuytzHOGbwy
+ V/iRz6zkE/7JTv/WY4IUYXcBnzqVPXcWPyCs5siSV/9yjkTqtiFzSOUht7EmqvES4tkATwg7T
+ pSyk4iZJtGvt1Hx0rJOXL4UeBAOJKlbnvXC65JhX+VkTjHJ/4wIn7N9+IdfU/KeRGF1l7wTlQ
+ dQvEq5Ok5NvynbHdU6tw==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.187
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,12 +97,10 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Han Han <hhan@redhat.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
- Markus Armbruster <armbru@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
@@ -112,40 +110,42 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
  Laurent Vivier <laurent@vivier.eu>, Aleksandar Rikalo <arikalo@wavecomp.com>,
  qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Frediano Ziglio <fziglio@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hbPDWMlImdqJ
+X-TUID: oP1Z/dIDpy0b
 
-From: Han Han <hhan@redhat.com>
+From: Frediano Ziglio <fziglio@redhat.com>
 
-Since ee5d0f89d, -1 is not valid for the value of reboot-timeout. Update
-that in qemu-options doc.
+If rfd is equal to wfd the file descriptor is closed but
+rfd will still have the closed value.
+The EventNotifier structure should not be used again after calling
+event_notifier_cleanup or should be initialized again but make
+sure to not have dandling file descriptors around.
 
-Signed-off-by: Han Han <hhan@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20191015151451.727323-1-hhan@redhat.com>
+Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20191023122652.2999-2-fziglio@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qemu-options.hx | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ util/event_notifier-posix.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 996b6fba7461..88b05599b1cd 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -327,8 +327,8 @@ format(true color). The resolution should be supported by the SVGA mode, so
- the recommended is 320x240, 640x480, 800x640.
- 
- A timeout could be passed to bios, guest will pause for @var{rb_timeout} ms
--when boot failed, then reboot. If @var{rb_timeout} is '-1', guest will not
--reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
-+when boot failed, then reboot. If @option{reboot-timeout} is not set,
-+guest will not reboot by default. Currently Seabios for X86
- system support it.
- 
- Do strict boot via @option{strict=on} as far as firmware/BIOS
+diff --git a/util/event_notifier-posix.c b/util/event_notifier-posix.c
+index 73c4046b5871..00d93204f988 100644
+--- a/util/event_notifier-posix.c
++++ b/util/event_notifier-posix.c
+@@ -80,8 +80,8 @@ void event_notifier_cleanup(EventNotifier *e)
+ {
+     if (e->rfd != e->wfd) {
+         close(e->rfd);
+-        e->rfd = -1;
+     }
++    e->rfd = -1;
+     close(e->wfd);
+     e->wfd = -1;
+ }
 -- 
 2.21.0
 

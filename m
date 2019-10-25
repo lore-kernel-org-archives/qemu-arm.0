@@ -1,90 +1,90 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3482403wrq;
-        Fri, 25 Oct 2019 01:41:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqziGSuMNrLs4Zfih/XUu08mr0HH0x8U+ned7Hkn7Cs/dtEhuPNV+TSU67yExqW2AX0YJet7
-X-Received: by 2002:a37:bbc5:: with SMTP id l188mr1830478qkf.118.1571992908810;
-        Fri, 25 Oct 2019 01:41:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571992908; cv=none;
+Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp3483899wrq;
+        Fri, 25 Oct 2019 01:43:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw1hvDhNoDCcusrXBakoNJSeVTTo173/6hej7VeQ5zOJ0Tk1jBCnR5UupPT6yaijLYOloQZ
+X-Received: by 2002:a37:9c44:: with SMTP id f65mr1796747qke.33.1571993024034;
+        Fri, 25 Oct 2019 01:43:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571993024; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZVg0Qg8DToKhTjvfg0CmNWkwhMnOou4STHaOeBsNT0CXptU7/rS+X6z8MWcoVIcV2z
-         zgS7bPqXBYPG+SFV92+LPh30ASuQNg0l/cNVI9tI8L4DiAI7Co86SfaH6ymc9pT/VTXB
-         tbXwCRkM/2Cm3W0Q45iB1R2Rd1pjONeQ0eLFnLuc3kQ1jfx2D57TGWgoD2RP4I+0laxD
-         OCSaTKj8/sueqzE08r4jyIFAHOqoQFN/0SpXm6QnMNJLWh+9iphBtiJxDjPQTiEgP8fX
-         x2gUm6kkxUgnPv+Mo5RpjhRhwpYBwGxP4R2sLtbipcihR9D8qkoI4sBapV5K0I4XHD+q
-         KDhQ==
+        b=Efn711Z9B7BDpJgHfytaXZ83iiXmH9O06YCzzeyr0qgFq8wgPrfEBWqPq5BWYdah58
+         X3NCCefXMobPir19muzYSN1fwK3N+KGHsagKk0fyUSgncvTwoid0HofF/3rN/1ZfZiOQ
+         D0BsOiEZ78c85+ViPzO8rIhUBpI8vNJJyzLmDBNTHm7TPOUoRoJdKVocMjQ1kCuMJH8c
+         VkQ5Mj75vtinN2/4E2vz5sgG/8kmhByjOZT5GpOvbxhNZCcIFhA2sf59u+suGqe+sSVj
+         96jnx7Xf4Fj+JcfVP8w5PEyaM3G2KfuqNow6XuS6l8NxuoZUtWtVaLvSiJYXM+immRsn
+         4TsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=ggJPVPlg3MUdypDYoJNr41DfE6UIdhP2qe6eHT3WqPU=;
-        b=sjr7qAlU1vgm3xsyDiPtaOk80YGeVKr5hJRQUHu7/ysJuKodSzln+EpAEvKsA/LYpM
-         flEmFbjMpfv4eEXhkijmNPTq/V/YbfLKi0pFSkNrcXJ9iFeMiX2TwPc1i/HuXsjzanIR
-         iwae2EEzAoh6Z+yF6He+rWvmzWNXNydA2dOr8aZ5Vt4HzdcShhjpaeXU1khH6C37u7pB
-         Bn0AFU+MuJa+J5MxCXgEbnV8TSO9jXkDpHo4q5hv/zQ/EUY18U4SJRmVFgXSvpcDUZqm
-         nZOCo7LTLnRdqHOF1fJV+BSFPGU/EHSr3SYULN90sKKaszQmqx4xl1nJy1uyk7Zqo7z4
-         EaGQ==
+        bh=FtzfAzlY0VrGsF3Gq3LctSHNZcX7QjP5eLQIfKcfyLM=;
+        b=bCqXPyda1Gqan820aBHEQnGGsj0yXpI2ZjSAJNwntPo2PqnWqswP4bteAD3p0mZu3C
+         j3LWDLh9wY/cYFLgCn21aZ1TlSdrXo3rcXmXWF8zkaxM9Hv4UNhmpNtqX+ejRS6Muva8
+         C/HBLHEmZx3+yzXBJsUO/x9F3WrxJqxWzFSbbcwLlmrce2bQVrAVdeM+SFm6fbSVdju8
+         +cYgDD1RGqQBoxN/yUl2L8GkCHP476mvgbIrngeis3xkGk9QiyMBLX46Pk/ZUZHbXGBo
+         e54PnFJ0CreBr2CKHC/n+Agb9tC9gtv1ZBjvvfvzFSJO2LjhcGgHDhG3O7FQfg3I6Ah3
+         OotA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x20si855293qtk.79.2019.10.25.01.41.48
+        by mx.google.com with ESMTPS id q134si1014611qke.339.2019.10.25.01.43.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Oct 2019 01:41:48 -0700 (PDT)
+        Fri, 25 Oct 2019 01:43:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57574 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57608 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNvAJ-0007cv-QA
-	for alex.bennee@linaro.org; Fri, 25 Oct 2019 04:41:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50096)
+	id 1iNvCB-0002xv-05
+	for alex.bennee@linaro.org; Fri, 25 Oct 2019 04:43:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50090)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv5A-00012e-58
+ (envelope-from <laurent@vivier.eu>) id 1iNv59-00012C-UA
  for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv58-000826-U3
- for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:28 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:38597)
+ (envelope-from <laurent@vivier.eu>) id 1iNv58-00081O-47
+ for qemu-devel@nongnu.org; Fri, 25 Oct 2019 04:36:27 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:33137)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv58-000812-Kh; Fri, 25 Oct 2019 04:36:26 -0400
+ id 1iNv4x-0007qC-MG; Fri, 25 Oct 2019 04:36:15 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mtf7H-1i9HlJ04mV-00v6BH; Fri, 25 Oct 2019 10:35:42 +0200
+ id 1MNKyQ-1icpHo3yV0-00Onq2; Fri, 25 Oct 2019 10:35:35 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 10/19] hw: Move M41T80 device from hw/timer/ to hw/rtc/
+Subject: [PULL 07/19] hw: Move PL031 device from hw/timer/ to hw/rtc/
  subdirectory
-Date: Fri, 25 Oct 2019 10:35:02 +0200
-Message-Id: <20191025083511.11463-11-laurent@vivier.eu>
+Date: Fri, 25 Oct 2019 10:34:59 +0200
+Message-Id: <20191025083511.11463-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:K108If5qegdxqtLY28ckEaAROz9TzMIgHjuzWirAeKvjB1s//jF
- yI7eGDdb1l2U7+8j4xKDz8Vk+KBqwDQgdZ+9r8rUf8cPOHjgIxh1faZu0zjHf5MtOFKT9E7
- yhHmhOJsqYLvyIS0Z2jfCLO5ZZo7ShImbP8OCjmlj1FR7ndiR3VCS6g7aOdDbFwKiniZkA1
- sP9kSmYGvXlxqISjEbmeA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RUpsU3/Gu3s=:X+VJFz7P7jUzGq6x5bPpw0
- oDtLaEReji5sO7r99qRzygZ2YuDR4yDQWl9ctIEqBZqnCas5oiaQp2imr521WmJ73CrQl7DZH
- 3E45cxLjP3fEjriwjwXkcCiaPByxutU/8+QNt5gdqRWWE04ZYWc9+OgaOcpqDAODz7CBkpa6F
- UbmZzMw9qsSKyADjrfloDXfyp6o7fpnPFNqEzSjSXODTsxtIklZMHU1+ys0TGBnEQ7eCefYjZ
- vPND0og2eG2mXclG31IOgMDauaumk+5cZz7DWSNBYCDjY2t9xv+wLGqOL9DTyamoXdz6vdyHE
- MdEB+/gRTnboZHgh5xQSbKCns1VJwfic+3Dy4W/pN3XQyc9/4MNpYoe1DcKbdvTE09xpQbc4L
- rfvnkrlUhEk1hq3H+s8wko9kDiPe3rUsucVx44j3xyFk8wfjlMqG/cJ3xEncRiKBKJitFM267
- iPYBv2H4+tIGbWoLimCRO5pZlZJfCVLZMTV82ks7OHeDyHsTKqwXdyWVlb9ZpbzayiYsOQPs1
- imeTOw48PboqcKdJF2Oddx9d3LPATHw6kdsYBGwcCaDjnTfMxfVw9LZSIf/M3mXHUa9EpKrvQ
- CzN6lpOBVpBIjGuGfv9oa2ASZenmoO7qtnmv8ZdaEAWMIkF1uRwnq367sxqRCGd3nEpQ/fbwI
- vCjIJWsKj1Q/kjRLkusccN6V6O7pxpISBpO8Id8GWKJB9K/q2jWALnRS291aC9GdAUMMlW7JO
- llhnwRWgdF40A383fwZ1jHWuf060/q8aeqzc1mT+gRr9OPShAN4LyKPfslWxJVKoyl+JAeKQT
- oZAn0yPH5fL79YeQlWXOT1oe5J4MyBtah077jxAoDqGdHH3/4SzeompNgTgVY/a22AFyG0RNu
- hMdGtPMx3JX+ZqLmfSbbSRqLM2S7kER2WvmI6lW1g=
+X-Provags-ID: V03:K1:1Yj9pNygKerZ5iUZcCSAJRHrTy0Uv2L1BFRvnfzRNKo4FevvEjc
+ kFxWxa+3puenFGupfG/VWdTOiOtYcNGRRBJvTQzpOYPuUEEDd0WL75K031oyNOC+8yZQ77u
+ 5MSL3evxPNj34gsi0bFXZykBDdlnsEKl4EBS87kJ6kOX6S3b7IzHLrUFwmQjY+X0pulKDbW
+ isnQLafa7Dgpq4y8LVqfA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ctNIOKHoaj8=:1HmFOGi2RYebz0cuHxwh72
+ +3LSN65CFKOW76aX63T0JkF9xEeeDl3sr7jFr6NijIyC10SmvKbTb7NuwQMp27B+D0KyMQ/3z
+ s08GEU06AgaFXkS2RLBnHwMKi2rXgnni+1/yZRnhQYU/CTGQsoN3yx8QEQWS0FimxYdwUWjkz
+ 3VD1+NUq2QQ0WC1hq39ulfpmw7mT/9HeByTviAHkhxTBhwx8P8XkAB2D/XeXtRw3Aqye5CINt
+ syh6vim+WTdSN42ot94RdXVCaIqo40w8g4MsKGoY8Ky7hMIh6uz3LpM6VCBtIEe6mV7Sk3hwi
+ gYCa4tM6f5et+owITxVTF+WbZ7BB+gahlfTTPda4/e2VmPvy5+Q7sOvJcNGB51Bv/M1+2yIZD
+ waLveaW9QBksDOuyqxTGa+qDc/Tjgaf24NY9jLfdGvCwXvah6oKMsYzJm0REFA9X+lYx6BEqn
+ RPLmGKPbUlUH+tMdGe7iiCU/J0xoqhqdFjU9Np92y2QjMfR5BLM1Sl7MiOD7C3CMM5/c/96Rr
+ RaWhXAUQ94z6e1hmwl7WCQ9BFZLdtM39Zwc8igJDbxRnhfRgNpALwPthLoiCmigFEhOmw8c1o
+ uSWLo9YrHXeirEHRl1Afoy5tOp1F+b/usnyXREnKi8zhP29CkvcWZ4GvjdfaZmxBW1HaKVcn/
+ 6W5Fcx6rfZivYSf20R5w5hhCISSYHQQnP/ff2WVKSJeJkTcnhwGaZHBq4ncuYSYysuNfPSQ2o
+ QZONpgT4V3KlU6xMn2sVdBYsQWAmzYwnNVBMnQrQE2aDzDB0wKoiP44I3l0ulOrzUfqesMIgr
+ lF0CD659Yu6kgOq/LKAFBE+iTvEw8o5Vn+rNNo95zLWXzcR/R2htPDVorJk6rRPW62JNzWL1o
+ 9hnJn1JqEJm185uEH1kdZRg4fTQUiXJOsmmVG6epw=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.131
+X-Received-From: 212.227.126.130
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,92 +116,210 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CR72QJBGhBNX
+X-TUID: NGhuH+XIN9kp
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The M41T80 is a Real Time Clock, not a timer.
+The PL031 is a Real Time Clock, not a timer.
 Move it under the hw/rtc/ subdirectory.
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20191003230404.19384-6-philmd@redhat.com>
+Acked-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20191003230404.19384-3-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS                | 2 +-
- hw/rtc/Kconfig             | 4 ++++
- hw/rtc/Makefile.objs       | 1 +
- hw/{timer => rtc}/m41t80.c | 0
- hw/timer/Kconfig           | 4 ----
- hw/timer/Makefile.objs     | 1 -
- 6 files changed, 6 insertions(+), 6 deletions(-)
- rename hw/{timer => rtc}/m41t80.c (100%)
+ MAINTAINERS                       | 4 ++--
+ Makefile.objs                     | 1 +
+ hw/Kconfig                        | 1 +
+ hw/Makefile.objs                  | 1 +
+ hw/arm/musca.c                    | 2 +-
+ hw/rtc/Kconfig                    | 2 ++
+ hw/rtc/Makefile.objs              | 1 +
+ hw/{timer => rtc}/pl031.c         | 2 +-
+ hw/rtc/trace-events               | 8 ++++++++
+ hw/timer/Kconfig                  | 3 ---
+ hw/timer/Makefile.objs            | 1 -
+ hw/timer/trace-events             | 7 -------
+ include/hw/{timer => rtc}/pl031.h | 5 +++--
+ 13 files changed, 21 insertions(+), 17 deletions(-)
+ create mode 100644 hw/rtc/Kconfig
+ create mode 100644 hw/rtc/Makefile.objs
+ rename hw/{timer => rtc}/pl031.c (99%)
+ create mode 100644 hw/rtc/trace-events
+ rename include/hw/{timer => rtc}/pl031.h (93%)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 4e65f062f29c..ba0d1906aae9 100644
+index ed41d7d1b6cc..2e13ba46282d 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -1111,7 +1111,7 @@ F: hw/ppc/sam460ex.c
- F: hw/ppc/ppc440_pcix.c
- F: hw/display/sm501*
- F: hw/ide/sii3112.c
--F: hw/timer/m41t80.c
-+F: hw/rtc/m41t80.c
- F: pc-bios/canyonlands.dt[sb]
- F: pc-bios/u-boot-sam460ex-20100605.bin
- F: roms/u-boot-sam460ex
+@@ -495,8 +495,8 @@ F: hw/intc/pl190.c
+ F: hw/sd/pl181.c
+ F: hw/ssi/pl022.c
+ F: include/hw/ssi/pl022.h
+-F: hw/timer/pl031.c
+-F: include/hw/timer/pl031.h
++F: hw/rtc/pl031.c
++F: include/hw/rtc/pl031.h
+ F: include/hw/arm/primecell.h
+ F: hw/timer/cmsdk-apb-timer.c
+ F: include/hw/timer/cmsdk-apb-timer.h
+diff --git a/Makefile.objs b/Makefile.objs
+index abcbd89654ac..11ba1a36bd39 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -173,6 +173,7 @@ trace-events-subdirs += hw/pci-host
+ trace-events-subdirs += hw/ppc
+ trace-events-subdirs += hw/rdma
+ trace-events-subdirs += hw/rdma/vmw
++trace-events-subdirs += hw/rtc
+ trace-events-subdirs += hw/s390x
+ trace-events-subdirs += hw/scsi
+ trace-events-subdirs += hw/sd
+diff --git a/hw/Kconfig b/hw/Kconfig
+index b45db3c813ff..4b53fee4d0ce 100644
+--- a/hw/Kconfig
++++ b/hw/Kconfig
+@@ -27,6 +27,7 @@ source pci-host/Kconfig
+ source pcmcia/Kconfig
+ source pci/Kconfig
+ source rdma/Kconfig
++source rtc/Kconfig
+ source scsi/Kconfig
+ source sd/Kconfig
+ source semihosting/Kconfig
+diff --git a/hw/Makefile.objs b/hw/Makefile.objs
+index ece6cc37550f..fd9750e5f273 100644
+--- a/hw/Makefile.objs
++++ b/hw/Makefile.objs
+@@ -26,6 +26,7 @@ devices-dirs-y += nvram/
+ devices-dirs-y += pci/
+ devices-dirs-$(CONFIG_PCI) += pci-bridge/ pci-host/
+ devices-dirs-y += pcmcia/
++devices-dirs-y += rtc/
+ devices-dirs-$(CONFIG_SCSI) += scsi/
+ devices-dirs-y += sd/
+ devices-dirs-y += ssi/
+diff --git a/hw/arm/musca.c b/hw/arm/musca.c
+index 68db4b5b3878..ba99dd19413d 100644
+--- a/hw/arm/musca.c
++++ b/hw/arm/musca.c
+@@ -32,7 +32,7 @@
+ #include "hw/misc/tz-mpc.h"
+ #include "hw/misc/tz-ppc.h"
+ #include "hw/misc/unimp.h"
+-#include "hw/timer/pl031.h"
++#include "hw/rtc/pl031.h"
+ 
+ #define MUSCA_NUMIRQ_MAX 96
+ #define MUSCA_PPC_MAX 3
 diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-index 159c2335171a..434b20b2b1bd 100644
---- a/hw/rtc/Kconfig
+new file mode 100644
+index 000000000000..8a4383bca9b2
+--- /dev/null
 +++ b/hw/rtc/Kconfig
-@@ -1,3 +1,7 @@
-+config M41T80
+@@ -0,0 +1,2 @@
++config PL031
 +    bool
-+    depends on I2C
+diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
+new file mode 100644
+index 000000000000..3e1eb4256388
+--- /dev/null
++++ b/hw/rtc/Makefile.objs
+@@ -0,0 +1 @@
++common-obj-$(CONFIG_PL031) += pl031.o
+diff --git a/hw/timer/pl031.c b/hw/rtc/pl031.c
+similarity index 99%
+rename from hw/timer/pl031.c
+rename to hw/rtc/pl031.c
+index 2b3e26100699..3a982752a2ad 100644
+--- a/hw/timer/pl031.c
++++ b/hw/rtc/pl031.c
+@@ -13,7 +13,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
+-#include "hw/timer/pl031.h"
++#include "hw/rtc/pl031.h"
+ #include "migration/vmstate.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
+new file mode 100644
+index 000000000000..54c94ac557b2
+--- /dev/null
++++ b/hw/rtc/trace-events
+@@ -0,0 +1,8 @@
++# See docs/devel/tracing.txt for syntax documentation.
 +
++# pl031.c
++pl031_irq_state(int level) "irq state %d"
++pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
++pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
++pl031_alarm_raised(void) "alarm raised"
++pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
+diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+index eefc95f35ecc..27c5dce09e43 100644
+--- a/hw/timer/Kconfig
++++ b/hw/timer/Kconfig
+@@ -27,9 +27,6 @@ config M41T80
  config M48T59
      bool
  
-diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index c87f81405e9d..89e8e48c6409 100644
---- a/hw/rtc/Makefile.objs
-+++ b/hw/rtc/Makefile.objs
-@@ -1,3 +1,4 @@
-+common-obj-$(CONFIG_M41T80) += m41t80.o
- common-obj-$(CONFIG_M48T59) += m48t59.o
- ifeq ($(CONFIG_ISA_BUS),y)
- common-obj-$(CONFIG_M48T59) += m48t59-isa.o
-diff --git a/hw/timer/m41t80.c b/hw/rtc/m41t80.c
-similarity index 100%
-rename from hw/timer/m41t80.c
-rename to hw/rtc/m41t80.c
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index a57e9b59fca8..a6b668b2559b 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -20,10 +20,6 @@ config HPET
- config I8254
-     bool
- 
--config M41T80
+-config PL031
 -    bool
--    depends on I2C
 -
  config TWL92230
      bool
      depends on I2C
 diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index fe2d1fbc4040..2fb12162a623 100644
+index f407523aa49d..9f64f6e11e78 100644
 --- a/hw/timer/Makefile.objs
 +++ b/hw/timer/Makefile.objs
-@@ -6,7 +6,6 @@ common-obj-$(CONFIG_CADENCE) += cadence_ttc.o
- common-obj-$(CONFIG_DS1338) += ds1338.o
- common-obj-$(CONFIG_HPET) += hpet.o
- common-obj-$(CONFIG_I8254) += i8254_common.o i8254.o
--common-obj-$(CONFIG_M41T80) += m41t80.o
+@@ -11,7 +11,6 @@ common-obj-$(CONFIG_M48T59) += m48t59.o
+ ifeq ($(CONFIG_ISA_BUS),y)
+ common-obj-$(CONFIG_M48T59) += m48t59-isa.o
+ endif
+-common-obj-$(CONFIG_PL031) += pl031.o
  common-obj-$(CONFIG_PUV3) += puv3_ost.o
  common-obj-$(CONFIG_TWL92230) += twl92230.o
  common-obj-$(CONFIG_XILINX) += xilinx_timer.o
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index db02a9142cda..6936fe8573e9 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -80,10 +80,3 @@ xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min, int sec
+ # nrf51_timer.c
+ nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+ nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+-
+-# pl031.c
+-pl031_irq_state(int level) "irq state %d"
+-pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+-pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+-pl031_alarm_raised(void) "alarm raised"
+-pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
+diff --git a/include/hw/timer/pl031.h b/include/hw/rtc/pl031.h
+similarity index 93%
+rename from include/hw/timer/pl031.h
+rename to include/hw/rtc/pl031.h
+index 8c3f555ee288..e3cb1d646fc4 100644
+--- a/include/hw/timer/pl031.h
++++ b/include/hw/rtc/pl031.h
+@@ -11,10 +11,11 @@
+  * GNU GPL, version 2 or (at your option) any later version.
+  */
+ 
+-#ifndef HW_TIMER_PL031_H
+-#define HW_TIMER_PL031_H
++#ifndef HW_RTC_PL031_H
++#define HW_RTC_PL031_H
+ 
+ #include "hw/sysbus.h"
++#include "qemu/timer.h"
+ 
+ #define TYPE_PL031 "pl031"
+ #define PL031(obj) OBJECT_CHECK(PL031State, (obj), TYPE_PL031)
 -- 
 2.21.0
 

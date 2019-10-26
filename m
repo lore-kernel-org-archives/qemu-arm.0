@@ -1,48 +1,48 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp150429wri;
-        Fri, 25 Oct 2019 20:25:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxspeGkFaG8M3Ep2iPohm7dJAz/eUmML1KSbFb6wZi1J7ZB4G6w9vq+YgGdEE9aWIswz3Fg
-X-Received: by 2002:a50:eb42:: with SMTP id z2mr7531139edp.291.1572060327340;
-        Fri, 25 Oct 2019 20:25:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572060327; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp150456wri;
+        Fri, 25 Oct 2019 20:25:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzklEQqzbY6GV7NPNNqDPjvB/3KPSoui/1Zvq72L8kbVxmyf0/74ElhNzgmrJH30dRX0Icb
+X-Received: by 2002:a17:906:1a13:: with SMTP id i19mr4823753ejf.46.1572060328298;
+        Fri, 25 Oct 2019 20:25:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572060328; cv=none;
         d=google.com; s=arc-20160816;
-        b=NvH8UcWTrw3FmiLcBSyb/YKZIDrdBvXzA64muk9BdrkKXQZcLj15aqGDx4XFDNy2tV
-         SN84Tzy0uZFa6zkiQ+FUXbCJTcULPwPHEX2i3sNQaQB6pb8UpkJ/TEg39PviuEguvo3m
-         jc9tc/vBiPcW4+7IPqkK93QXPVP9F4Z8D3pfKcYszwiX19nzW77W6xvbAJaPZ5HF6T7L
-         gWEtKrHslCsxvUT3uy7y9cGN4bM477oGKRITGqomMjosBvBq8cd80qcYckcyeIvFs7PG
-         rGaYQ26IUkgQMwzxOCodW4WVjl10wvfxIiDIxKIr/KgWIUyolBQA7BDW0PcKabQCO9pP
-         2N/A==
+        b=yTGGjhieUZT7Gpm+33Tk+9tzrEtmtLiuFw0QGfsyHrxt2Jwmh49+MUHz2j48w1/Dvx
+         R8wJXSVOtkRvqFiE5xkrD/GJsDHLf8JtsttSwk/vIBFzmvji2LZ8JbIzSBTc11hFvtjk
+         69VyBfdXebiGxTdzKn7kUGgK+WaFmxpEeORTtVn8veBJwDN0+/mI2MNNzHhJgRiFLhcC
+         VC709NjBRfxtoXemn4fYmF6gVdXSZ5bz32eTXgwikcPcJPa6OmkBzCGfw5F/DxX9bEwF
+         2p7wW6vewt2sV80BhIYDanu5swvRnVM9kzGxjVnNgwIgdkkQKsBNR7t8aZvSdkwt9lpB
+         jABg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=Ks3HWIe8xz7ijvoqpHkhyI9/DuX+yK3YKeJK0lMLa2U=;
-        b=K9e7RL/DYyZEA2zx7YyR4jppwN1wg5y/higzHRj27txk3wjwHeX2gYQAYH+fd/gfyh
-         Wk7UHDRdR7+99s7O7C/EO3TOr6YmB3VIfbMK6/2yqqq2JMMem4ce66T7rJw1k5RnfBHS
-         OHWsZ523XFujeUwm2JQiP+AeCcdGWtGheOy0zu04ABPWZidhWjbbXyYCnkuxFu33ILTO
-         g6s3I2e8NU/rEeTlYlCjG5ZnrBQ/RY4s+JgxENg/PXbu74/2EnRIb4P3H4eVQGZ3xtkg
-         gZQy6l71wO60swHf+LIQWaZJPRppApYadHCnDyUFpl2JMXMc8SoQOo3eQUhRgTU7BEAh
-         y+Mg==
+        bh=fZWaCooYqULeG3P3ViAW0WT1PBqZAKMcEEEDexhqfsg=;
+        b=oDL3aznCSU4aei3R++TrrsIzGfWQ19en6jmCtNKJMipzQmgdRoFlDHyQy88C9ew8gb
+         oV811rEXBjxHf4Vzo3fKj6SPQYefZRo+ruXJiCsUB+Z26htB+XSqLxKHiqRRomZLpxv1
+         6LkO4yNVxu4anhs5YK159B5HKHAsXc4AfwU+rwsgLDxmaGsgVn0c+WHKe9kzvkyyNI8l
+         OAKPF9IsVv7wWYbPWOSD06CTkCn7lPGgx5gw15OD+BcgdNpt/uf54K8lK5XhUh/jW/1l
+         hurlar/Z9PJce9cMtjGYvzt9dNp1DlZPp31/IYeJtp3dw+JGBVwfyUqNfz26CkYBG2rx
+         5Vnw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a24si2708554eda.446.2019.10.25.20.25.27;
-        Fri, 25 Oct 2019 20:25:27 -0700 (PDT)
+        by mx.google.com with ESMTP id a24si2708554eda.446.2019.10.25.20.25.28;
+        Fri, 25 Oct 2019 20:25:28 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726395AbfJZDZZ (ORCPT <rfc822;daniel.diaz@linaro.org>
+        id S1726392AbfJZDZZ (ORCPT <rfc822;daniel.diaz@linaro.org>
         + 4 others); Fri, 25 Oct 2019 23:25:25 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:56828 "EHLO huawei.com"
+Received: from szxga06-in.huawei.com ([45.249.212.32]:56800 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726377AbfJZDZY (ORCPT <rfc822;kvm@vger.kernel.org>);
+        id S1726366AbfJZDZY (ORCPT <rfc822;kvm@vger.kernel.org>);
         Fri, 25 Oct 2019 23:25:24 -0400
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 80C2564017CC619D17D1;
+        by Forcepoint Email with ESMTP id 6E7ECAA8A3404B96ADC1;
         Sat, 26 Oct 2019 11:25:22 +0800 (CST)
 Received: from HGHY4Z004218071.china.huawei.com (10.133.224.57) by
  DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
- 14.3.439.0; Sat, 26 Oct 2019 11:25:15 +0800
+ 14.3.439.0; Sat, 26 Oct 2019 11:25:12 +0800
 From:   Xiang Zheng <zhengxiang9@huawei.com>
 To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
@@ -53,9 +53,9 @@ To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
         <linuxarm@huawei.com>
 CC:     <zhengxiang9@huawei.com>, <wanghaibin.wang@huawei.com>
-Subject: [PATCH v20 4/5] KVM: Move hwpoison page related functions into kvm-all.c
-Date:   Sat, 26 Oct 2019 11:24:46 +0800
-Message-ID: <20191026032447.20088-5-zhengxiang9@huawei.com>
+Subject: [PATCH v20 2/5] docs: APEI GHES generation and CPER record description
+Date:   Sat, 26 Oct 2019 11:24:44 +0800
+Message-ID: <20191026032447.20088-3-zhengxiang9@huawei.com>
 X-Mailer: git-send-email 2.15.1.windows.2
 In-Reply-To: <20191026032447.20088-1-zhengxiang9@huawei.com>
 References: <20191026032447.20088-1-zhengxiang9@huawei.com>
@@ -67,169 +67,130 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: LUsXn1a6P+W1
+X-TUID: 7QEbFSXGKfwb
 
 From: Dongjiu Geng <gengdongjiu@huawei.com>
 
-kvm_hwpoison_page_add() and kvm_unpoison_all() will both be used by X86
-and ARM platforms, so moving them into "accel/kvm/kvm-all.c" to avoid
-duplicate code.
-
-For architectures that don't use the poison-list functionality the
-reset handler will harmlessly do nothing, so let's register the
-kvm_unpoison_all() function in the generic kvm_init() function.
+Add APEI/GHES detailed design document
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 ---
- accel/kvm/kvm-all.c      | 36 ++++++++++++++++++++++++++++++++++++
- include/sysemu/kvm_int.h | 12 ++++++++++++
- target/i386/kvm.c        | 36 ------------------------------------
- 3 files changed, 48 insertions(+), 36 deletions(-)
+ docs/specs/acpi_hest_ghes.rst | 95 +++++++++++++++++++++++++++++++++++
+ docs/specs/index.rst          |  1 +
+ 2 files changed, 96 insertions(+)
+ create mode 100644 docs/specs/acpi_hest_ghes.rst
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index d2d96d73e8..6af7ac7ef5 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -41,6 +41,7 @@
- #include "hw/irq.h"
- #include "sysemu/sev.h"
- #include "sysemu/balloon.h"
-+#include "sysemu/reset.h"
- 
- #include "hw/boards.h"
- 
-@@ -856,6 +857,39 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
-     return ret;
- }
- 
-+typedef struct HWPoisonPage {
-+    ram_addr_t ram_addr;
-+    QLIST_ENTRY(HWPoisonPage) list;
-+} HWPoisonPage;
+diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
+new file mode 100644
+index 0000000000..348825f9d3
+--- /dev/null
++++ b/docs/specs/acpi_hest_ghes.rst
+@@ -0,0 +1,95 @@
++APEI tables generating and CPER record
++======================================
 +
-+static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
-+    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
++..
++   Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
 +
-+static void kvm_unpoison_all(void *param)
-+{
-+    HWPoisonPage *page, *next_page;
++   This work is licensed under the terms of the GNU GPL, version 2 or later.
++   See the COPYING file in the top-level directory.
 +
-+    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
-+        QLIST_REMOVE(page, list);
-+        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
-+        g_free(page);
-+    }
-+}
++Design Details
++--------------
 +
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr)
-+{
-+    HWPoisonPage *page;
++::
 +
-+    QLIST_FOREACH(page, &hwpoison_page_list, list) {
-+        if (page->ram_addr == ram_addr) {
-+            return;
-+        }
-+    }
-+    page = g_new(HWPoisonPage, 1);
-+    page->ram_addr = ram_addr;
-+    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
-+}
++         etc/acpi/tables                                 etc/hardware_errors
++      ====================                      ==========================================
++  + +--------------------------+            +-----------------------+
++  | | HEST                     |            |    address            |            +--------------+
++  | +--------------------------+            |    registers          |            | Error Status |
++  | | GHES1                    |            | +---------------------+            | Data Block 1 |
++  | +--------------------------+ +--------->| |error_block_address1 |----------->| +------------+
++  | | .................        | |          | +---------------------+            | |  CPER      |
++  | | error_status_address-----+-+ +------->| |error_block_address2 |--------+   | |  CPER      |
++  | | .................        |   |        | +---------------------+        |   | |  ....      |
++  | | read_ack_register--------+-+ |        | |    ..............   |        |   | |  CPER      |
++  | | read_ack_preserve        | | |        +-----------------------+        |   | +------------+
++  | | read_ack_write           | | | +----->| |error_block_addressN |------+ |   | Error Status |
++  + +--------------------------+ | | |      | +---------------------+      | |   | Data Block 2 |
++  | | GHES2                    | +-+-+----->| |read_ack_register1   |      | +-->| +------------+
++  + +--------------------------+   | |      | +---------------------+      |     | |  CPER      |
++  | | .................        |   | | +--->| |read_ack_register2   |      |     | |  CPER      |
++  | | error_status_address-----+---+ | |    | +---------------------+      |     | |  ....      |
++  | | .................        |     | |    | |  .............      |      |     | |  CPER      |
++  | | read_ack_register--------+-----+-+    | +---------------------+      |     +-+------------+
++  | | read_ack_preserve        |     |   +->| |read_ack_registerN   |      |     | |..........  |
++  | | read_ack_write           |     |   |  | +---------------------+      |     | +------------+
++  + +--------------------------|     |   |                                 |     | Error Status |
++  | | ...............          |     |   |                                 |     | Data Block N |
++  + +--------------------------+     |   |                                 +---->| +------------+
++  | | GHESN                    |     |   |                                       | |  CPER      |
++  + +--------------------------+     |   |                                       | |  CPER      |
++  | | .................        |     |   |                                       | |  ....      |
++  | | error_status_address-----+-----+   |                                       | |  CPER      |
++  | | .................        |         |                                       +-+------------+
++  | | read_ack_register--------+---------+
++  | | read_ack_preserve        |
++  | | read_ack_write           |
++  + +--------------------------+
 +
- static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
- {
- #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
-@@ -2031,6 +2065,8 @@ static int kvm_init(MachineState *ms)
-         goto err;
-     }
- 
-+    qemu_register_reset(kvm_unpoison_all, NULL);
++(1) QEMU generates the ACPI HEST table. This table goes in the current
++    "etc/acpi/tables" fw_cfg blob. Each error source has different
++    notification types.
 +
-     if (machine_kernel_irqchip_allowed(ms)) {
-         kvm_irqchip_create(ms, s);
-     }
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index ac2d1f8b56..c660a70c51 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -42,4 +42,16 @@ void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
-                                   AddressSpace *as, int as_id);
- 
- void kvm_set_max_memslot_size(hwaddr max_slot_size);
++(2) A new fw_cfg blob called "etc/hardware_errors" is introduced. QEMU
++    also needs to populate this blob. The "etc/hardware_errors" fw_cfg blob
++    contains an address registers table and an Error Status Data Block table.
 +
-+/**
-+ * kvm_hwpoison_page_add:
-+ *
-+ * Parameters:
-+ *  @ram_addr: the address in the RAM for the poisoned page
-+ *
-+ * Add a poisoned page to the list
-+ *
-+ * Return: None.
-+ */
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr);
- #endif
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 8c73438c67..6100135364 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -24,7 +24,6 @@
- #include "sysemu/sysemu.h"
- #include "sysemu/hw_accel.h"
- #include "sysemu/kvm_int.h"
--#include "sysemu/reset.h"
- #include "sysemu/runstate.h"
- #include "kvm_i386.h"
- #include "hyperv.h"
-@@ -514,40 +513,6 @@ uint64_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
-     }
- }
- 
--
--typedef struct HWPoisonPage {
--    ram_addr_t ram_addr;
--    QLIST_ENTRY(HWPoisonPage) list;
--} HWPoisonPage;
--
--static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
--    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
--
--static void kvm_unpoison_all(void *param)
--{
--    HWPoisonPage *page, *next_page;
--
--    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
--        QLIST_REMOVE(page, list);
--        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
--        g_free(page);
--    }
--}
--
--static void kvm_hwpoison_page_add(ram_addr_t ram_addr)
--{
--    HWPoisonPage *page;
--
--    QLIST_FOREACH(page, &hwpoison_page_list, list) {
--        if (page->ram_addr == ram_addr) {
--            return;
--        }
--    }
--    page = g_new(HWPoisonPage, 1);
--    page->ram_addr = ram_addr;
--    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
--}
--
- static int kvm_get_mce_cap_supported(KVMState *s, uint64_t *mce_cap,
-                                      int *max_banks)
- {
-@@ -2102,7 +2067,6 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         fprintf(stderr, "e820_add_entry() table is full\n");
-         return ret;
-     }
--    qemu_register_reset(kvm_unpoison_all, NULL);
- 
-     shadow_mem = machine_kvm_shadow_mem(ms);
-     if (shadow_mem != -1) {
++(3) The address registers table contains N Error Block Address entries
++    and N Read Ack Register entries. The size for each entry is 8-byte.
++    The Error Status Data Block table contains N Error Status Data Block
++    entries. The size for each entry is 4096(0x1000) bytes. The total size
++    for the "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
++    N is the number of the kinds of hardware error sources.
++
++(4) QEMU generates the ACPI linker/loader script for the firmware. The
++    firmware pre-allocates memory for "etc/acpi/tables", "etc/hardware_errors"
++    and copies blob contents there.
++
++(5) QEMU generates N ADD_POINTER commands, which patch addresses in the
++    "error_status_address" fields of the HEST table with a pointer to the
++    corresponding "address registers" in the "etc/hardware_errors" blob.
++
++(6) QEMU generates N ADD_POINTER commands, which patch addresses in the
++    "read_ack_register" fields of the HEST table with a pointer to the
++    corresponding "address registers" in the "etc/hardware_errors" blob.
++
++(7) QEMU generates N ADD_POINTER commands for the firmware, which patch
++    addresses in the "error_block_address" fields with a pointer to the
++    respective "Error Status Data Block" in the "etc/hardware_errors" blob.
++
++(8) QEMU defines a third and write-only fw_cfg blob which is called
++    "etc/hardware_errors_addr". Through that blob, the firmware can send back
++    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
++    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER command
++    for the firmware. The firmware will write back the start address of
++    "etc/hardware_errors" blob to the fw_cfg file "etc/hardware_errors_addr".
++
++(9) When QEMU gets a SIGBUS from the kernel, QEMU formats the CPER right into
++    guest memory, and then injects platform specific interrupt (in case of
++    arm/virt machine it's Synchronous External Abort) as a notification which
++    is necessary for notifying the guest.
++
++(10) This notification (in virtual hardware) will be handled by the guest
++     kernel, guest APEI driver will read the CPER which is recorded by QEMU and
++     do the recovery.
+diff --git a/docs/specs/index.rst b/docs/specs/index.rst
+index 984ba44029..3019b9c976 100644
+--- a/docs/specs/index.rst
++++ b/docs/specs/index.rst
+@@ -13,3 +13,4 @@ Contents:
+    ppc-xive
+    ppc-spapr-xive
+    acpi_hw_reduced_hotplug
++   acpi_hest_ghes
 -- 
 2.19.1
 

@@ -1,320 +1,178 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp4235664wrq;
-        Fri, 25 Oct 2019 12:01:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx0F1x++3+5o6HHHWa9fusNOivPqqOBMWzhHgneQHkj1LZGioIQfP36twIjz54u8L+mACuS
-X-Received: by 2002:aa7:8dd4:: with SMTP id j20mr6157811pfr.36.1572030086189;
-        Fri, 25 Oct 2019 12:01:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572030086; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp600173wri;
+        Sat, 26 Oct 2019 05:21:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxChRs5TOf6hJFGo8V8dKeDy4KNEp/SGxYkxGfRa5USnlI5MLcXrMzhmG3ETuMrXMz+NstC
+X-Received: by 2002:a50:e409:: with SMTP id d9mr9178142edm.254.1572092464014;
+        Sat, 26 Oct 2019 05:21:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572092464; cv=none;
         d=google.com; s=arc-20160816;
-        b=bFQZTRz04reMJU4HgH3FJ9tB8GzVk47BxAqCtru9Dx2hSC9FBMWSnHplLBZO4Fo6Ng
-         8hKJ+1qhk1XgjaIJF0pxV7rRDaknrM9NuavhE5sKLGAV7Z/s8LIv13A5zM4UrzRiVlvB
-         chWIopxtw0BRu5utdX4leHFofmxingwOR9KZH2jolkXMXVoDw7b1MGEvU0qwqayzWMFQ
-         J8R6Dzx7kuZG3uzYMjzakRzRkw0JinYca8+kuDUjYTyThIautKjqCSTW0mz3Z7lY7nkN
-         poo+01oREN0BM08kPiyibsNyhEln3Oa9PpDATsaLHEoygPGW8q7w7MmBDK19WdYGuUyL
-         JTcw==
+        b=NqflD+VsF83xTh026DxxXdW3AENhKSh/aOCa7ck0RTRtQf3OkYK6TypJigiceWJmaB
+         0FXwTf3bite6vli9Ye5ektSTBaxRmijeomwf6SwIJBsCv1NvvYEZ5BtLu2kGHg1Z6QXz
+         Z9NO2igR5e5x7K2uBfV78i5r2Hk2my+wm+yGnY24cGMGHBqaxoR6CRkzpFFKJx8OnQfV
+         CRt9PyTpkKIq46XuMebSMps8vJaBSSPKdMn3dFNEh2SD7MV81Asnc1dtC+vyl01N/Qux
+         TVJPe9AzOrSAAroduW/exhBcdhYrRx5Yu5bYFo7SMWyZO1/nB7bE3pLcGFJXgpPbNkUF
+         lOfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=ZlF/2XbQnCM4vtVEmWqkDZEb7kuc8jPbR7WfdsBPAvU=;
-        b=fqWNCidGmDKLPJQO/4wQ72XEzePpuC72owTEBRZZzU2KUCgVGMZaPkyaSAWVuvCmch
-         JkmhkQXqmYns6jTugz2YjD4LHVgBlmfSFNGWRRXYk2rGri41tzo4VeEldkvhjFjmgqHx
-         WjYup1WcfZKuWaBc74gGzOmcUTJPYawbxG+6y8bG07OfMZANG2IREdYb/n/NqVglhOgY
-         twn0naGH0V/e1zWUehqZPIRnYQ9TrrLUJ67n0HwUAEyEtLApKlfCXIJ1Cc3lA6FRY9r2
-         AUkU1DvJtC3G9gHMQk5SoVHsuTFF9wjHB/7eF341OmvdDx/OMLY5Hjtqp76Ci1ZMad/o
-         D8jw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=Byi4bAe4o60OtVyJiuQiz5jF6cj1ynSz2aNNjYGM2w0=;
+        b=USlIZoAxxSyN4psMj0wSCbDQuQbVA++GLg8+jhGnX/pszzLVm7v6NoLVBagQXVHXF6
+         yoCD3YsTtQfLT8xVD/ZkEnmmpPbUlmlur/3KO/Uk6/stuLX6MmjJBHKx0KGDm2MKgtAk
+         +Y9sH4Yn122WL8cBHZFHMHyNw3ieOWtilDh+snQDM1QW/7AkfIXqc6VgKDbqwTC6dEbx
+         Loqm6pFoPieUp/KGULChnCIxYWveFT4JaYEfdP+/sMrD95KiI7VIL5pGQQ6LLTbzaPWe
+         ygjk3a+E7JRyD0fV0ETxvUpIfmgiETVhhETHTC6OtVEGf8sCH9APeDF8izO/+IFqSddR
+         9n3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com
-Return-Path: <keithp@keithp.com>
-Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id e17si3471787pgn.394.2019.10.25.12.01.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Oct 2019 12:01:26 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d24si3485037eda.162.2019.10.26.05.21.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 26 Oct 2019 05:21:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com
-Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id 885BA3F22EBE;
-	Fri, 25 Oct 2019 12:01:24 -0700 (PDT)
-X-Virus-Scanned: Debian amavisd-new at keithp.com
-Received: from elaine.keithp.com ([127.0.0.1])
-	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id Me5PJJzQicVQ; Fri, 25 Oct 2019 12:01:24 -0700 (PDT)
-Received: from keithp.com (c-73-35-169-234.hsd1.wa.comcast.net [73.35.169.234])
-	by elaine.keithp.com (Postfix) with ESMTPSA id 1DF323F22EAC;
-	Fri, 25 Oct 2019 12:01:24 -0700 (PDT)
-Received: by keithp.com (Postfix, from userid 1000)
-	id 32DD9158212D; Fri, 25 Oct 2019 12:01:21 -0700 (PDT)
-From: Keith Packard <keithp@keithp.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org,
-	Keith Packard <keithp@keithp.com>
-Subject: [PATCH] Semihost SYS_READC implementation (v5)
-Date: Fri, 25 Oct 2019 12:01:10 -0700
-Message-Id: <20191025190110.4570-1-keithp@keithp.com>
-X-Mailer: git-send-email 2.24.0.rc0
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39910 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iOL42-000432-Qy
+	for alex.bennee@linaro.org; Sat, 26 Oct 2019 08:21:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38749)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1iOL3L-0003gg-Gp
+ for qemu-devel@nongnu.org; Sat, 26 Oct 2019 08:20:20 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1iOL3J-0000N4-9P
+ for qemu-devel@nongnu.org; Sat, 26 Oct 2019 08:20:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33182)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iOL3J-0000MA-0l
+ for qemu-devel@nongnu.org; Sat, 26 Oct 2019 08:20:17 -0400
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 9E50181F0D
+ for <qemu-devel@nongnu.org>; Sat, 26 Oct 2019 12:20:15 +0000 (UTC)
+Received: by mail-wr1-f72.google.com with SMTP id i10so2816745wrp.7
+ for <qemu-devel@nongnu.org>; Sat, 26 Oct 2019 05:20:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=P79WRKrO53iDbT1Yf/VUXLVKWsDQGmKDqtRB4o0iXfg=;
+ b=oiHos26UoTv7TqJVN3g/SkQLhgkEVvQQj9KhQ+9FB6wbzVez08dhQa7xzaNxRkSZl0
+ MJ8f2PK2cUzXOQUr/sDi58QStaAFUJBlDEqTd8u0ryQ5wF0qvvdd5T0bCqFyKqnjYdJ9
+ LeIRTLNk53MN8Ky6jgZBk9EiukCdRys+4DjZdoko8HrHPAXfS/Ncq++InPM9NB3ShU8w
+ xSL7zv9+KzGfflqK5Z+unvoL+bxdOBGBoSGw+6C9nzVBJIWCI8k83Fb1bkzs6baepTOO
+ nFvsnDGqR1eG6mc+dnj8WqQtMTOVcOo3Oa/QVaEXTZJozzgewC0sRwvDe3bFU10HMFsK
+ Ga2A==
+X-Gm-Message-State: APjAAAVEH8nY5H5UBWt6VzE6aNhmebtSCMDe2hcZrLFtkYPf/SzGLZ54
+ DJnQ3bNZOKmOzavgtdzTJk9tb02vnkKWVG0mQDElho97Ng1OQ4IpJMph0qUuKZExyx0+sXxbh3w
+ ZNTkNrv2dy1xTNag=
+X-Received: by 2002:a7b:c5c9:: with SMTP id n9mr7153950wmk.123.1572092414375; 
+ Sat, 26 Oct 2019 05:20:14 -0700 (PDT)
+X-Received: by 2002:a7b:c5c9:: with SMTP id n9mr7153907wmk.123.1572092414091; 
+ Sat, 26 Oct 2019 05:20:14 -0700 (PDT)
+Received: from [192.168.1.33] (62.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.62])
+ by smtp.gmail.com with ESMTPSA id y3sm9322335wro.36.2019.10.26.05.20.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 26 Oct 2019 05:20:13 -0700 (PDT)
+Subject: Re: [PATCH 00/20] hw: Clean up hw/i386 headers (and few alpha/hppa)
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20191014142246.4538-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <dacba192-0a1e-9801-3e6f-02583bd8b994@redhat.com>
+Date: Sat, 26 Oct 2019 14:20:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: k5srypxHlcYL
+In-Reply-To: <20191014142246.4538-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Paul Durrant <paul@xen.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ qemu-block@nongnu.org, Helge Deller <deller@gmx.de>,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Wen Congyang <wencongyang2@huawei.com>, Cornelia Huck <cohuck@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y51kW3UzCDin
 
-Provides a blocking call to read a character from the console using
-semihosting.chardev, if specified. This takes some careful command
-line options to use stdio successfully as the serial ports, monitor
-and semihost all want to use stdio. Here's a sample set of command
-line options which share stdio betwen semihost, monitor and serial
-ports:
+Hi,
 
-	qemu \
-	-chardev stdio,mux=on,id=stdio0 \
-	-serial chardev:stdio0 \
-	-semihosting-config enable=on,chardev=stdio0 \
-	-mon chardev=stdio0,mode=readline
+On 10/14/19 4:22 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> This is a follow-up of Markus's cleanup series:
+> Tame a few "touch this, recompile the world"
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg635748.html
+>=20
+> This part is mostly restricted to X86, but since some file from the
+> Alpha/PA-RISC machines include "hw/i386/pc.h" I had to fix them
+> too.
+>=20
+> Eventually I'll succeed at removing hw/i386/ dependency on non-X86
+> platforms (Quest I started 2 years ago...).
+>=20
+> Regards,
+>=20
+> Phil.
+>=20
+> Philippe Mathieu-Daud=C3=A9 (20):
+>    vl: Add missing "hw/boards.h" include
+>    hw/southbridge/ich9: Removed unused headers
+>    hw/input/pckbd: Remove unused "hw/i386/pc.h" header
+>    hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
+>    hw/timer: Remove unused "ui/console.h" header
+>    hw/usb/dev-storage: Remove unused "ui/console.h" header
+>    hw/i386/intel_iommu: Remove unused includes
+>    hw/xen/xen_pt_load_rom: Remove unused includes
+>    hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
+>    hw/alpha/dp264: Include "net/net.h"
+>    hw/hppa/machine: Include "net/net.h"
+>    hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
+>    hw/timer/hpet: Include "exec/address-spaces.h"
+>    hw/pci-host/q35: Include "qemu/range.h"
+>    hw/i2c/smbus_ich9: Include "qemu/range.h"
+>    hw/pci-host/piix: Include "qemu/range.h"
+>    hw/acpi: Include "hw/mem/nvdimm.h"
+>    hw/i386: Include "hw/mem/nvdimm.h"
+>    hw/pci-host/q35: Remove unused includes
+>    hw/i386/pc: Clean up includes
+Laurent, since this series is fully reviewed, can it go via
+your qemu-trivial tree?
 
-This creates a chardev hooked to stdio and then connects all of the
-subsystems to it. A shorter mechanism would be good to hear about.
+Thanks,
 
-Signed-off-by: Keith Packard <keithp@keithp.com>
----
-
-v2:
-	Add implementation in linux-user/arm/semihost.c
-
-v3:  (thanks to Paolo Bonzini <pbonzini@redhat.com>)
-	Replace hand-rolled fifo with fifo8
-	Avoid mixing code and declarations
-	Remove spurious (void) cast of function parameters
-	Define qemu_semihosting_console_init when CONFIG_USER_ONLY
-
-v4:
-	Add qemu_semihosting_console_init to stubs/semihost.c for
-	hosts that don't support semihosting
-
-v5:
-	Move #include statements to the top of the file.
-	Actually include the stubs/semihost.c patch that was
-	supposed to be in v4
-
- hw/semihosting/console.c          | 72 +++++++++++++++++++++++++++++++
- include/hw/semihosting/console.h  | 12 ++++++
- include/hw/semihosting/semihost.h |  4 ++
- linux-user/arm/semihost.c         | 23 ++++++++++
- stubs/semihost.c                  |  4 ++
- target/arm/arm-semi.c             |  3 +-
- vl.c                              |  3 ++
- 7 files changed, 119 insertions(+), 2 deletions(-)
-
-diff --git a/hw/semihosting/console.c b/hw/semihosting/console.c
-index b4b17c8afb..4db68d6227 100644
---- a/hw/semihosting/console.c
-+++ b/hw/semihosting/console.c
-@@ -22,6 +22,12 @@
- #include "exec/gdbstub.h"
- #include "qemu/log.h"
- #include "chardev/char.h"
-+#include <pthread.h>
-+#include "chardev/char-fe.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/main-loop.h"
-+#include "qapi/error.h"
-+#include "qemu/fifo8.h"
- 
- int qemu_semihosting_log_out(const char *s, int len)
- {
-@@ -98,3 +104,69 @@ void qemu_semihosting_console_outc(CPUArchState *env, target_ulong addr)
-                       __func__, addr);
-     }
- }
-+
-+#define FIFO_SIZE   1024
-+
-+typedef struct SemihostingConsole {
-+    CharBackend         backend;
-+    pthread_mutex_t     mutex;
-+    pthread_cond_t      cond;
-+    bool                got;
-+    Fifo8               fifo;
-+} SemihostingConsole;
-+
-+static SemihostingConsole console = {
-+    .mutex = PTHREAD_MUTEX_INITIALIZER,
-+    .cond = PTHREAD_COND_INITIALIZER
-+};
-+
-+static int console_can_read(void *opaque)
-+{
-+    SemihostingConsole *c = opaque;
-+    int ret;
-+    pthread_mutex_lock(&c->mutex);
-+    ret = (int) fifo8_num_free(&c->fifo);
-+    pthread_mutex_unlock(&c->mutex);
-+    return ret;
-+}
-+
-+static void console_read(void *opaque, const uint8_t *buf, int size)
-+{
-+    SemihostingConsole *c = opaque;
-+    pthread_mutex_lock(&c->mutex);
-+    while (size-- && !fifo8_is_full(&c->fifo)) {
-+        fifo8_push(&c->fifo, *buf++);
-+    }
-+    pthread_cond_broadcast(&c->cond);
-+    pthread_mutex_unlock(&c->mutex);
-+}
-+
-+target_ulong qemu_semihosting_console_inc(CPUArchState *env)
-+{
-+    uint8_t ch;
-+    SemihostingConsole *c = &console;
-+    qemu_mutex_unlock_iothread();
-+    pthread_mutex_lock(&c->mutex);
-+    while (fifo8_is_empty(&c->fifo)) {
-+        pthread_cond_wait(&c->cond, &c->mutex);
-+    }
-+    ch = fifo8_pop(&c->fifo);
-+    pthread_mutex_unlock(&c->mutex);
-+    qemu_mutex_lock_iothread();
-+    return (target_ulong) ch;
-+}
-+
-+void qemu_semihosting_console_init(void)
-+{
-+    Chardev *chr = semihosting_get_chardev();
-+
-+    if  (chr) {
-+        fifo8_create(&console.fifo, FIFO_SIZE);
-+        qemu_chr_fe_init(&console.backend, chr, &error_abort);
-+        qemu_chr_fe_set_handlers(&console.backend,
-+                                 console_can_read,
-+                                 console_read,
-+                                 NULL, NULL, &console,
-+                                 NULL, true);
-+    }
-+}
-diff --git a/include/hw/semihosting/console.h b/include/hw/semihosting/console.h
-index 9be9754bcd..f7d5905b41 100644
---- a/include/hw/semihosting/console.h
-+++ b/include/hw/semihosting/console.h
-@@ -37,6 +37,18 @@ int qemu_semihosting_console_outs(CPUArchState *env, target_ulong s);
-  */
- void qemu_semihosting_console_outc(CPUArchState *env, target_ulong c);
- 
-+/**
-+ * qemu_semihosting_console_inc:
-+ * @env: CPUArchState
-+ *
-+ * Receive single character from debug console. This
-+ * may be the remote gdb session if a softmmu guest is currently being
-+ * debugged.
-+ *
-+ * Returns: character read or -1 on error
-+ */
-+target_ulong qemu_semihosting_console_inc(CPUArchState *env);
-+
- /**
-  * qemu_semihosting_log_out:
-  * @s: pointer to string
-diff --git a/include/hw/semihosting/semihost.h b/include/hw/semihosting/semihost.h
-index 60fc42d851..b8ce5117ae 100644
---- a/include/hw/semihosting/semihost.h
-+++ b/include/hw/semihosting/semihost.h
-@@ -56,6 +56,9 @@ static inline Chardev *semihosting_get_chardev(void)
- {
-     return NULL;
- }
-+static inline void qemu_semihosting_console_init(void)
-+{
-+}
- #else /* !CONFIG_USER_ONLY */
- bool semihosting_enabled(void);
- SemihostingTarget semihosting_get_target(void);
-@@ -68,6 +71,7 @@ Chardev *semihosting_get_chardev(void);
- void qemu_semihosting_enable(void);
- int qemu_semihosting_config_options(const char *opt);
- void qemu_semihosting_connect_chardevs(void);
-+void qemu_semihosting_console_init(void);
- #endif /* CONFIG_USER_ONLY */
- 
- #endif /* SEMIHOST_H */
-diff --git a/linux-user/arm/semihost.c b/linux-user/arm/semihost.c
-index a16b525eec..4f998d6220 100644
---- a/linux-user/arm/semihost.c
-+++ b/linux-user/arm/semihost.c
-@@ -14,6 +14,7 @@
- #include "cpu.h"
- #include "hw/semihosting/console.h"
- #include "qemu.h"
-+#include <poll.h>
- 
- int qemu_semihosting_console_outs(CPUArchState *env, target_ulong addr)
- {
-@@ -47,3 +48,25 @@ void qemu_semihosting_console_outc(CPUArchState *env, target_ulong addr)
-         }
-     }
- }
-+
-+target_ulong qemu_semihosting_console_inc(CPUArchState *env)
-+{
-+    uint8_t c;
-+    struct pollfd pollfd = {
-+        .fd = STDIN_FILENO,
-+        .events = POLLIN
-+    };
-+
-+    if (poll(&pollfd, 1, -1) != 1) {
-+        qemu_log_mask(LOG_UNIMP, "%s: unexpected read from stdin failure",
-+                      __func__);
-+        return (target_ulong) -1;
-+    }
-+
-+    if (read(STDIN_FILENO, &c, 1) != 1) {
-+        qemu_log_mask(LOG_UNIMP, "%s: unexpected read from stdin failure",
-+                      __func__);
-+        return (target_ulong) -1;
-+    }
-+    return (target_ulong) c;
-+}
-diff --git a/stubs/semihost.c b/stubs/semihost.c
-index f90589259c..1d8b37f7b2 100644
---- a/stubs/semihost.c
-+++ b/stubs/semihost.c
-@@ -69,3 +69,7 @@ void semihosting_arg_fallback(const char *file, const char *cmd)
- void qemu_semihosting_connect_chardevs(void)
- {
- }
-+
-+void qemu_semihosting_console_init(void)
-+{
-+}
-diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index 6f7b6d801b..47d61f6fe1 100644
---- a/target/arm/arm-semi.c
-+++ b/target/arm/arm-semi.c
-@@ -802,8 +802,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
- 
-         return guestfd_fns[gf->type].readfn(cpu, gf, arg1, len);
-     case TARGET_SYS_READC:
--        qemu_log_mask(LOG_UNIMP, "%s: SYS_READC not implemented", __func__);
--        return 0;
-+        return qemu_semihosting_console_inc(env);
-     case TARGET_SYS_ISTTY:
-         GET_ARG(0);
- 
-diff --git a/vl.c b/vl.c
-index 4489cfb2bb..ac584d97ea 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4381,6 +4381,9 @@ int main(int argc, char **argv, char **envp)
-     ds = init_displaystate();
-     qemu_display_init(ds, &dpy);
- 
-+    /* connect semihosting console input if requested */
-+    qemu_semihosting_console_init();
-+
-     /* must be after terminal init, SDL library changes signal handlers */
-     os_setup_signal_handling();
- 
--- 
-2.24.0.rc0
+Phil.

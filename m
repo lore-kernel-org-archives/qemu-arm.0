@@ -1,48 +1,48 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp150425wri;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp150429wri;
         Fri, 25 Oct 2019 20:25:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwH6O63gOGXubJ/PelvIrznJD2Goo8zjIC8J9bZciNSPuve3QY/lZpo3s4vij9WMRkesBED
-X-Received: by 2002:a50:ac1c:: with SMTP id v28mr7774922edc.156.1572060327009;
+X-Google-Smtp-Source: APXvYqxspeGkFaG8M3Ep2iPohm7dJAz/eUmML1KSbFb6wZi1J7ZB4G6w9vq+YgGdEE9aWIswz3Fg
+X-Received: by 2002:a50:eb42:: with SMTP id z2mr7531139edp.291.1572060327340;
         Fri, 25 Oct 2019 20:25:27 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1572060327; cv=none;
         d=google.com; s=arc-20160816;
-        b=FI6NOHfku721dV+kgTdy7TTjEs5m0Oq84KpbsdyvpBiJncJUeiAkQO0nFmOHh5tdKG
-         JQGq8/PW8u3dS+NrCOEtenjaBg/Tny3DME6aCw1VGO4SEpE7GJ/I7xkRNoBAbsFlslrg
-         PMcdRIPG3xDc0Jg4sbVhrAxR70/zZ8007FPEERZO2gbZeaq60gBo2upJ+rFfdlPiZ9q/
-         FaPs97ca0iPCZBk9wiRiy2t6iUwMUqSMetn6pnN0y0xF+BQkFwXENXtOopm632bT1pjO
-         veqYrKxfj+9H6FbeTEUp8lt+PVR3TMKFXIRBZWjoJyqs6ko4h+R3xX5xql7fFDCgQoqr
-         t/lg==
+        b=NvH8UcWTrw3FmiLcBSyb/YKZIDrdBvXzA64muk9BdrkKXQZcLj15aqGDx4XFDNy2tV
+         SN84Tzy0uZFa6zkiQ+FUXbCJTcULPwPHEX2i3sNQaQB6pb8UpkJ/TEg39PviuEguvo3m
+         jc9tc/vBiPcW4+7IPqkK93QXPVP9F4Z8D3pfKcYszwiX19nzW77W6xvbAJaPZ5HF6T7L
+         gWEtKrHslCsxvUT3uy7y9cGN4bM477oGKRITGqomMjosBvBq8cd80qcYckcyeIvFs7PG
+         rGaYQ26IUkgQMwzxOCodW4WVjl10wvfxIiDIxKIr/KgWIUyolBQA7BDW0PcKabQCO9pP
+         2N/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=IbvMJLUbvwvGiIbDxq+d/EcgnnusId+H/M+XpHkZyt0=;
-        b=X6t4GATuieLK0wlfiX1EnizRGWUhEiTuGs0SQ54n1uOKhDAbab9d/Xl6PEtVGlmati
-         lDdjtvtZLCCvMw3495IuYADxGZgaeuyABSqSIUZpSTEtA47S6iJFbPGunwBmmjBHjJ6F
-         ma/WLaskx68fiCHkP5KMFAlNPWq81nDmSGtfA29+BIhK/aKP9sIqEgaFr2PT8necKPZd
-         DPJuNTtjIKwEEVs3u+W27b7+Xa6HKf3LdTyWdZ13j3Y5Rr3/ZLDzTWGWBRN6GJ2Zc9Ms
-         DSDg+PzrSdC5s8Qa4iXQ0G3k2BFYJyuLoAqv11hVw3nqPOTAWf4aM6ssJ2XZq/rdaToq
-         5JuA==
+        bh=Ks3HWIe8xz7ijvoqpHkhyI9/DuX+yK3YKeJK0lMLa2U=;
+        b=K9e7RL/DYyZEA2zx7YyR4jppwN1wg5y/higzHRj27txk3wjwHeX2gYQAYH+fd/gfyh
+         Wk7UHDRdR7+99s7O7C/EO3TOr6YmB3VIfbMK6/2yqqq2JMMem4ce66T7rJw1k5RnfBHS
+         OHWsZ523XFujeUwm2JQiP+AeCcdGWtGheOy0zu04ABPWZidhWjbbXyYCnkuxFu33ILTO
+         g6s3I2e8NU/rEeTlYlCjG5ZnrBQ/RY4s+JgxENg/PXbu74/2EnRIb4P3H4eVQGZ3xtkg
+         gZQy6l71wO60swHf+LIQWaZJPRppApYadHCnDyUFpl2JMXMc8SoQOo3eQUhRgTU7BEAh
+         y+Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a24si2708554eda.446.2019.10.25.20.25.26;
+        by mx.google.com with ESMTP id a24si2708554eda.446.2019.10.25.20.25.27;
         Fri, 25 Oct 2019 20:25:27 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726386AbfJZDZY (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 25 Oct 2019 23:25:24 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:56786 "EHLO huawei.com"
+        id S1726395AbfJZDZZ (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 25 Oct 2019 23:25:25 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:56828 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726365AbfJZDZY (ORCPT <rfc822;kvm@vger.kernel.org>);
+        id S1726377AbfJZDZY (ORCPT <rfc822;kvm@vger.kernel.org>);
         Fri, 25 Oct 2019 23:25:24 -0400
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 65B8137A655395890911;
+        by Forcepoint Email with ESMTP id 80C2564017CC619D17D1;
         Sat, 26 Oct 2019 11:25:22 +0800 (CST)
 Received: from HGHY4Z004218071.china.huawei.com (10.133.224.57) by
  DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
- 14.3.439.0; Sat, 26 Oct 2019 11:25:11 +0800
+ 14.3.439.0; Sat, 26 Oct 2019 11:25:15 +0800
 From:   Xiang Zheng <zhengxiang9@huawei.com>
 To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
@@ -53,9 +53,9 @@ To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
         <linuxarm@huawei.com>
 CC:     <zhengxiang9@huawei.com>, <wanghaibin.wang@huawei.com>
-Subject: [PATCH v20 1/5] hw/arm/virt: Introduce a RAS machine option
-Date:   Sat, 26 Oct 2019 11:24:43 +0800
-Message-ID: <20191026032447.20088-2-zhengxiang9@huawei.com>
+Subject: [PATCH v20 4/5] KVM: Move hwpoison page related functions into kvm-all.c
+Date:   Sat, 26 Oct 2019 11:24:46 +0800
+Message-ID: <20191026032447.20088-5-zhengxiang9@huawei.com>
 X-Mailer: git-send-email 2.15.1.windows.2
 In-Reply-To: <20191026032447.20088-1-zhengxiang9@huawei.com>
 References: <20191026032447.20088-1-zhengxiang9@huawei.com>
@@ -67,73 +67,169 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: anLqpdQDZxHX
+X-TUID: LUsXn1a6P+W1
 
 From: Dongjiu Geng <gengdongjiu@huawei.com>
 
-RAS Virtualization feature is not supported now, so add a RAS machine
-option and disable it by default.
+kvm_hwpoison_page_add() and kvm_unpoison_all() will both be used by X86
+and ARM platforms, so moving them into "accel/kvm/kvm-all.c" to avoid
+duplicate code.
+
+For architectures that don't use the poison-list functionality the
+reset handler will harmlessly do nothing, so let's register the
+kvm_unpoison_all() function in the generic kvm_init() function.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 ---
- hw/arm/virt.c         | 23 +++++++++++++++++++++++
- include/hw/arm/virt.h |  1 +
- 2 files changed, 24 insertions(+)
+ accel/kvm/kvm-all.c      | 36 ++++++++++++++++++++++++++++++++++++
+ include/sysemu/kvm_int.h | 12 ++++++++++++
+ target/i386/kvm.c        | 36 ------------------------------------
+ 3 files changed, 48 insertions(+), 36 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d4bedc2607..ea0fbf82be 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1819,6 +1819,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
-     vms->its = value;
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index d2d96d73e8..6af7ac7ef5 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -41,6 +41,7 @@
+ #include "hw/irq.h"
+ #include "sysemu/sev.h"
+ #include "sysemu/balloon.h"
++#include "sysemu/reset.h"
+ 
+ #include "hw/boards.h"
+ 
+@@ -856,6 +857,39 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
+     return ret;
  }
  
-+static bool virt_get_ras(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
++typedef struct HWPoisonPage {
++    ram_addr_t ram_addr;
++    QLIST_ENTRY(HWPoisonPage) list;
++} HWPoisonPage;
 +
-+    return vms->ras;
++static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
++    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
++
++static void kvm_unpoison_all(void *param)
++{
++    HWPoisonPage *page, *next_page;
++
++    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
++        QLIST_REMOVE(page, list);
++        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
++        g_free(page);
++    }
 +}
 +
-+static void virt_set_ras(Object *obj, bool value, Error **errp)
++void kvm_hwpoison_page_add(ram_addr_t ram_addr)
 +{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
++    HWPoisonPage *page;
 +
-+    vms->ras = value;
++    QLIST_FOREACH(page, &hwpoison_page_list, list) {
++        if (page->ram_addr == ram_addr) {
++            return;
++        }
++    }
++    page = g_new(HWPoisonPage, 1);
++    page->ram_addr = ram_addr;
++    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
 +}
 +
- static char *virt_get_gic_version(Object *obj, Error **errp)
+ static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
  {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -2122,6 +2136,15 @@ static void virt_instance_init(Object *obj)
-                                     "Valid values are none and smmuv3",
-                                     NULL);
+ #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
+@@ -2031,6 +2065,8 @@ static int kvm_init(MachineState *ms)
+         goto err;
+     }
  
-+    /* Default disallows RAS instantiation */
-+    vms->ras = false;
-+    object_property_add_bool(obj, "ras", virt_get_ras,
-+                             virt_set_ras, NULL);
-+    object_property_set_description(obj, "ras",
-+                                    "Set on/off to enable/disable "
-+                                    "RAS instantiation",
-+                                    NULL);
++    qemu_register_reset(kvm_unpoison_all, NULL);
 +
-     vms->irqmap = a15irqmap;
+     if (machine_kernel_irqchip_allowed(ms)) {
+         kvm_irqchip_create(ms, s);
+     }
+diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
+index ac2d1f8b56..c660a70c51 100644
+--- a/include/sysemu/kvm_int.h
++++ b/include/sysemu/kvm_int.h
+@@ -42,4 +42,16 @@ void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
+                                   AddressSpace *as, int as_id);
  
-     virt_flash_create(vms);
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 0b41083e9d..989785f2f7 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -122,6 +122,7 @@ typedef struct {
-     bool highmem_ecam;
-     bool its;
-     bool virt;
-+    bool ras;
-     int32_t gic_version;
-     VirtIOMMUType iommu;
-     struct arm_boot_info bootinfo;
+ void kvm_set_max_memslot_size(hwaddr max_slot_size);
++
++/**
++ * kvm_hwpoison_page_add:
++ *
++ * Parameters:
++ *  @ram_addr: the address in the RAM for the poisoned page
++ *
++ * Add a poisoned page to the list
++ *
++ * Return: None.
++ */
++void kvm_hwpoison_page_add(ram_addr_t ram_addr);
+ #endif
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 8c73438c67..6100135364 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -24,7 +24,6 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/hw_accel.h"
+ #include "sysemu/kvm_int.h"
+-#include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
+ #include "kvm_i386.h"
+ #include "hyperv.h"
+@@ -514,40 +513,6 @@ uint64_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
+     }
+ }
+ 
+-
+-typedef struct HWPoisonPage {
+-    ram_addr_t ram_addr;
+-    QLIST_ENTRY(HWPoisonPage) list;
+-} HWPoisonPage;
+-
+-static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
+-    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
+-
+-static void kvm_unpoison_all(void *param)
+-{
+-    HWPoisonPage *page, *next_page;
+-
+-    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
+-        QLIST_REMOVE(page, list);
+-        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
+-        g_free(page);
+-    }
+-}
+-
+-static void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+-{
+-    HWPoisonPage *page;
+-
+-    QLIST_FOREACH(page, &hwpoison_page_list, list) {
+-        if (page->ram_addr == ram_addr) {
+-            return;
+-        }
+-    }
+-    page = g_new(HWPoisonPage, 1);
+-    page->ram_addr = ram_addr;
+-    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
+-}
+-
+ static int kvm_get_mce_cap_supported(KVMState *s, uint64_t *mce_cap,
+                                      int *max_banks)
+ {
+@@ -2102,7 +2067,6 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         fprintf(stderr, "e820_add_entry() table is full\n");
+         return ret;
+     }
+-    qemu_register_reset(kvm_unpoison_all, NULL);
+ 
+     shadow_mem = machine_kvm_shadow_mem(ms);
+     if (shadow_mem != -1) {
 -- 
 2.19.1
 

@@ -1,213 +1,368 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp673986wri;
-        Sat, 26 Oct 2019 06:35:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx3t80RN96oj5tNu40xQgusPCdWYX2vskN9RIUQ3lBbv7m/BIA4QdDPfvV8ue3kGb6cybeN
-X-Received: by 2002:ac8:18eb:: with SMTP id o40mr8485716qtk.304.1572096950721;
-        Sat, 26 Oct 2019 06:35:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572096950; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1646249wri;
+        Sun, 27 Oct 2019 03:17:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzqI4QyJkWB5KSqPcnugC38QLlIujd+efnxi9lFtu+tLF3W+xMiAnks6SL3hBRNNXJduMyf
+X-Received: by 2002:a05:6402:304c:: with SMTP id bu12mr13209190edb.230.1572171438792;
+        Sun, 27 Oct 2019 03:17:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572171438; cv=none;
         d=google.com; s=arc-20160816;
-        b=tzw55yf6CT3X0ly2KSR+IDgKvsJxAFeN5SLKE2qAbtB8cQryaMFgop1lLpyHLbOaG2
-         Mj+HHmihosrOn+PizFSD1mumIn1NUlshMSIFxngG3ThhgNT7PCVDvJVfC9lNFyv5O5IP
-         brB0iRD890p9lBUDDS3+FvLLbBnKiypfRpjiDbFu0hRZbRydvBLnCPDyQ/GRq4wxtKQP
-         mz37KWi2wzVB13stRIe6ISR6snd6WimuukbIc4etq2oGhHikabj6P06j9tfMB8NM8wM9
-         AbwzTrjkWHy4OPhIk9Q4yvapSLo3bHKeKbjafx3HG++k2txbttYv7uJDc84Aw5HTvKZC
-         oENQ==
+        b=CGJW2D1cAD47psHx2hJxeBVKFQkx3Ou6ugekNk46fYJ1N3tn6cOafhFsSENSr+Yt5t
+         48C2cue4E5tWlhlIxXdZYBOjF9unuuBeQgUjWXWb/tkY6RF9VGRoIxApIyqx3RfvzRgI
+         xG9+rH44Ahaz7vr76DJdL+uS3zP83hbIY4/kRwWaEQYcjLeJFXYSONYR1fycdp1lMDZc
+         ZZZinwYhEEbVevvGu6VtRt7znoWVyxFbhxysPa/nfpUmoD/eKLHsiSumEHMdLskQxG+Q
+         VjAQuKrJF+/FktOq44PVENvYrJKDJG1Es8ov6fn7qRBfABTDEr9o9oi/WP1/7u4r9Ulm
+         ZaBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject;
-        bh=em0XQmuNakVJfuSxRh7uBfE4k7z6cF+CozCMT+R45dM=;
-        b=lTaQ9GEzH1QQYwh5j68N/j3j0K3PDLlD1ELr7+vrB88Mfnhw9X9uVGLSWsuslXSjZ+
-         k/IRCcvOuiN8vEiEja+hII1Ayuf5dvg5RttjsZZnvDyth4P5ov42pfoUysZCt507OGm1
-         LNkc2Hfyy+FJVrY1PW083SmWMgHSRr0fezI5IfEolyIcF8N76Ee9tBUEf7uUZjv2LicV
-         Hzs2ZuN3rjIrEtE5CWqLHAufuAhQayN2IP48wlxm1Tc5l2vJErGX7j6anTYQrHF8fXsh
-         aL8EqMa0C3h2pSN+Tj18smEONTWOW+fxOsOdM7kPUaZssmjDFX8BWZq/UNFHRDePyGrA
-         ZmKw==
+        h=list-id:precedence:sender:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date;
+        bh=uONJXjgvNvjYSUNW0PvTpmvXbc4zToxXmvIIlm6FhZA=;
+        b=cidUncCxTsZA4dbDZJ6GTm3DdJut9+0oizWSo/m7j9rT1ZUbh0Op3Jfzq7hC35WVZe
+         rZN7+OAN4tMo0RRb2KGMgSbmEMjByLG//X0dOKHqWed+8hCTi+lpIQqViSyzu8F/dTew
+         SPYPLVamN452FdJWPpIXgIif14MmW/qrJ0RSpsHKQOcv234U903s/xMbGp83LYfIksen
+         XZyDxClSkIiyVoAOPulXu4dpesm7OSI2STQ6hUSXRMNy1Vas8oSp1cun6FeotmTJ5LmX
+         aHzqR+iMgc8F362EYEC+Sb6ZwePU2DiG2WUP8UpXdcq6sbucvwW03KCsThB8Pib+C3ie
+         aOiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g39si4141800qtb.140.2019.10.26.06.35.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 26 Oct 2019 06:35:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id z58si5402746edz.141.2019.10.27.03.17.18;
+        Sun, 27 Oct 2019 03:17:18 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40164 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iOMEQ-0001sL-5a
-	for alex.bennee@linaro.org; Sat, 26 Oct 2019 09:35:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44056)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iOMCh-0007o6-Lw
- for qemu-arm@nongnu.org; Sat, 26 Oct 2019 09:34:04 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iOMCg-0002Z7-Av
- for qemu-arm@nongnu.org; Sat, 26 Oct 2019 09:34:03 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:56349)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iOMCZ-0002RX-Fd; Sat, 26 Oct 2019 09:33:55 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MKKd7-1ihnwh12sx-00LjPm; Sat, 26 Oct 2019 15:33:00 +0200
-Subject: Re: [PATCH 00/20] hw: Clean up hw/i386 headers (and few alpha/hppa)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20191014142246.4538-1-philmd@redhat.com>
- <dacba192-0a1e-9801-3e6f-02583bd8b994@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <fe8ef9e8-d8d2-e92c-cde3-13a11fa1a5bf@vivier.eu>
-Date: Sat, 26 Oct 2019 15:32:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726744AbfJ0KRM (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Sun, 27 Oct 2019 06:17:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34618 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1726682AbfJ0KRM (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sun, 27 Oct 2019 06:17:12 -0400
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+        (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id 8C7A4368FF
+        for <kvm@vger.kernel.org>; Sun, 27 Oct 2019 10:17:11 +0000 (UTC)
+Received: by mail-qk1-f197.google.com with SMTP id o13so1426640qkm.15
+        for <kvm@vger.kernel.org>; Sun, 27 Oct 2019 03:17:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=uONJXjgvNvjYSUNW0PvTpmvXbc4zToxXmvIIlm6FhZA=;
+        b=G+h7PqHqqlT3YoniMxPwVY2pELaaqHScq+gUaSXctyYlY1Bfv6ALmbZ4z2juuCyQ9j
+         FX4zY6mR7sfGRfnI0QMVG9qpHWRonqdnMWryCOb/BoN7DvMN5fQq7AjdJmHytlFCDuut
+         LEfYInZPy4xCZ1J2A+J2rY/JWvKdCZZAik8zyWqPN4ZwZnvwKrfQ3kLhKpOcIVzF/eMB
+         zPBdqC+WeMPfHXQ7o/P1KrWpWSos0X08faH4/Qz613284r4P+Ehn1wZV61lFQyb2zymJ
+         XuQxrfUatgyOYvOfSo95i1gH5X2KC2A1EmWGULWcpJKK9jRbr9WWKbi0FrutW9kCmt63
+         6pLQ==
+X-Gm-Message-State: APjAAAX82wcIxpO9xNW0oWA5KrAjiwZAoUv66+Qe9u/55EjFrGvZt3kf
+        0gifcp1bHYa/yYRlaYk7XIEr4MPrWXkOtAnElEe21upscF0cuVw/HX5XH/1osxhdvmOWUWHRM5O
+        N6eB9SGM12ifF
+X-Received: by 2002:ac8:2a5d:: with SMTP id l29mr12584611qtl.36.1572171429070;
+        Sun, 27 Oct 2019 03:17:09 -0700 (PDT)
+X-Received: by 2002:ac8:2a5d:: with SMTP id l29mr12584581qtl.36.1572171428665;
+        Sun, 27 Oct 2019 03:17:08 -0700 (PDT)
+Received: from redhat.com (bzq-79-176-10-77.red.bezeqint.net. [79.176.10.77])
+        by smtp.gmail.com with ESMTPSA id g8sm5319138qta.67.2019.10.27.03.17.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 27 Oct 2019 03:17:07 -0700 (PDT)
+Date:   Sun, 27 Oct 2019 06:17:00 -0400
+From:   "Michael S. Tsirkin" <mst@redhat.com>
+To:     Xiang Zheng <zhengxiang9@huawei.com>
+Cc:     pbonzini@redhat.com, imammedo@redhat.com, shannon.zhaosl@gmail.com,
+        peter.maydell@linaro.org, lersek@redhat.com, james.morse@arm.com,
+        gengdongjiu@huawei.com, mtosatti@redhat.com, rth@twiddle.net,
+        ehabkost@redhat.com, jonathan.cameron@huawei.com,
+        xuwei5@huawei.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org, linuxarm@huawei.com,
+        wanghaibin.wang@huawei.com
+Subject: Re: [PATCH v20 0/5] Add ARMv8 RAS virtualization support in QEMU
+Message-ID: <20191027061450-mutt-send-email-mst@kernel.org>
+References: <20191026032447.20088-1-zhengxiang9@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <dacba192-0a1e-9801-3e6f-02583bd8b994@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:AfH0JSrsQ7+6IREPNux+I86yleQstGdiOfFgdWcmW2iM6kTzKqX
- yN7J5lA/ATJjarOqxxXxi5jhpSy/ZYVjR2d/86Q+vY2ucFsLNVIzm3nygeLzru3JcOLmCSu
- TxqJgkXFuCSDjZ6HcaxdbTnf7n9yPzF9KCt3taj5KO6OI0FjZCXLnebanyi56/0K7LVE5VX
- cYSjjTQfVEevHZPjrtcxA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JB65cC2/0K4=:zubs51sgA7OgkzO1EQAX7T
- nwKJdGsUQE8/ZQJssjE84YDLY2EdPT8+y9bflYl/9fENMmt5wFFk3OEAPzDQDxfI9HZzK0cIe
- 50WgreLUlatCyr0g27LwipmFSN5b+8D6sWt7DrTk3/KL7rkCGXDWb0sTeKbQccBQLucylT+3A
- zntPsfQS+RM8GErVuLUN/35mvag1Hcgk6C2rORlgdSL3LZXMaiPNlAkYo4lfnutYgAF3dB1xZ
- jEZt0UJqD595c9Ib08ZiKLnRqeOlikBQ7aZAr8O698nomuak811qEe/XlaAX+I5yN/oESkh9S
- BpcCztTKdBn524aoiRvwC5y2tZScdA9ya2zWR05wjBg6kv9GLQxR/FAfm+paNhBYTZ+tCWMom
- TzxDCgAbzrrwljLDhfTMfi9dbdPkRqFRbHYLHjHBp/lIWHZPIjAAUHS6O8vWbQFw+o9XgtV7x
- ILg/9rZ0IGEoc8PzdHYit50O2vFnD8LVRjcdAviB22G+2JyvlXjY9EgDwH+P7EmJuq01bUYC1
- B2bP1gq0wLThi/PK84NdPGpWG60i1NmGLIArxPpTMU7mx7LuYvci5BBGLP29vxbMZL3Vq7MQ5
- 06RVgkyEvB0/xtiWeA5eOJRL/ssUiVv7NLdN5vwjLzRlgkWg2ac6136IURxQby/6BIFTekg3P
- ADrPZFD9JMmn/xvzHvIrPeU47ffrW50wzFT1TqFAltQ9P6o8At5GHrb976U1UcRZtdS+Z1vqN
- rSI9NNhLuFWBqbYZy/3yTkio9YSFIk19v6oXAJtURYPxPJnio5Ttr9wiydhrdM4fdubNneBd9
- 1ClwCgTcxrz6HACpHqrySPSgC225f8iJysJSGNNXydoImJ8+EvhZQBrZ2TjOjAm87O+cOl8kb
- cuH21ROTQq4/0qUSrhJiqHJdjtHuEGIfvQEvDynNk=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 212.227.17.10
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Paul Durrant <paul@xen.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Eric Blake <eblake@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- Helge Deller <deller@gmx.de>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Xie Changlong <xiechanglong.d@gmail.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Wen Congyang <wencongyang2@huawei.com>, Cornelia Huck <cohuck@redhat.com>,
- Max Reitz <mreitz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SNucvMkd6sth
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191026032447.20088-1-zhengxiang9@huawei.com>
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: FOZgeQc24pJH
 
-Le 26/10/2019 à 14:20, Philippe Mathieu-Daudé a écrit :
-> Hi,
+On Sat, Oct 26, 2019 at 11:24:42AM +0800, Xiang Zheng wrote:
+> In the ARMv8 platform, the CPU error types are synchronous external abort(SEA)
+> and SError Interrupt (SEI). If exception happens in guest, sometimes it's better
+> for guest to perform the recovery, because host does not know the detailed
+> information of guest. For example, if an exception happens in a user-space
+> application within guest, host does not know which application encounters
+> errors.
 > 
-> On 10/14/19 4:22 PM, Philippe Mathieu-Daudé wrote:
->> This is a follow-up of Markus's cleanup series:
->> Tame a few "touch this, recompile the world"
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg635748.html
->>
->> This part is mostly restricted to X86, but since some file from the
->> Alpha/PA-RISC machines include "hw/i386/pc.h" I had to fix them
->> too.
->>
->> Eventually I'll succeed at removing hw/i386/ dependency on non-X86
->> platforms (Quest I started 2 years ago...).
->>
->> Regards,
->>
->> Phil.
->>
->> Philippe Mathieu-Daudé (20):
->>    vl: Add missing "hw/boards.h" include
->>    hw/southbridge/ich9: Removed unused headers
->>    hw/input/pckbd: Remove unused "hw/i386/pc.h" header
->>    hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
->>    hw/timer: Remove unused "ui/console.h" header
->>    hw/usb/dev-storage: Remove unused "ui/console.h" header
->>    hw/i386/intel_iommu: Remove unused includes
->>    hw/xen/xen_pt_load_rom: Remove unused includes
->>    hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
->>    hw/alpha/dp264: Include "net/net.h"
->>    hw/hppa/machine: Include "net/net.h"
->>    hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
->>    hw/timer/hpet: Include "exec/address-spaces.h"
->>    hw/pci-host/q35: Include "qemu/range.h"
->>    hw/i2c/smbus_ich9: Include "qemu/range.h"
->>    hw/pci-host/piix: Include "qemu/range.h"
->>    hw/acpi: Include "hw/mem/nvdimm.h"
->>    hw/i386: Include "hw/mem/nvdimm.h"
->>    hw/pci-host/q35: Remove unused includes
->>    hw/i386/pc: Clean up includes
-> Laurent, since this series is fully reviewed, can it go via
-> your qemu-trivial tree?
+> For the ARMv8 SEA/SEI, KVM or host kernel delivers SIGBUS to notify userspace.
+> After user space gets the notification, it will record the CPER into guest GHES
+> buffer and inject an exception or IRQ into guest.
+> 
+> In the current implementation, if the type of SIGBUS is BUS_MCEERR_AR, we will
+> treat it as a synchronous exception, and notify guest with ARMv8 SEA
+> notification type after recording CPER into guest.
+> 
+> This series of patches are based on Qemu 4.1, which include two parts:
+> 1. Generate APEI/GHES table.
+> 2. Handle the SIGBUS signal, record the CPER in runtime and fill it into guest
+>    memory, then notify guest according to the type of SIGBUS.
+> 
+> The whole solution was suggested by James(james.morse@arm.com); The solution of
+> APEI section was suggested by Laszlo(lersek@redhat.com).
+> Show some discussions in [1].
+> 
+> This series of patches have already been tested on ARM64 platform with RAS
+> feature enabled:
+> Show the APEI part verification result in [2].
+> Show the BUS_MCEERR_AR SIGBUS handling verification result in [3].
 
-I'll try but I'm not sure to have the time to do that before the softfreeze.
 
-Thanks,
-Laurent
+This looks mostly OK to me.  I sent some minor style comments but they
+can be addressed by follow up patches.
+
+Maybe it's a good idea to merge this before soft freeze to make sure it
+gets some testing.  I'll leave this decision to the ARM maintainer.  For
+ACPI parts:
+
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+
+> ---
+> Change since v19:
+> 1. Fix clang compile error
+> 2. Fix sphinx build error
+> 
+> Change since v18:
+> 1. Fix some code-style and typo/grammar problems.
+> 2. Remove no_ras in the VirtMachineClass struct.
+> 3. Convert documentation to rst format.
+> 4. Simplize the code and add comments for some magic value.
+> 5. Move kvm_inject_arm_sea() function into the patch where it's used.
+> 6. Register the reset handler(kvm_unpoison_all()) in the kvm_init() function.
+> 
+> Change since v17:
+> 1. Improve some commit messages and comments.
+> 2. Fix some code-style problems.
+> 3. Add a *ras* machine option.
+> 4. Move HEST/GHES related structures and macros into "hw/acpi/acpi_ghes.*".
+> 5. Move HWPoison page functions into "include/sysemu/kvm_int.h".
+> 6. Fix some bugs.
+> 7. Improve the design document.
+> 
+> Change since v16:
+> 1. check whether ACPI table is enabled when handling the memory error in the SIGBUS handler.
+> 
+> Change since v15:
+> 1. Add a doc-comment in the proper format for 'include/exec/ram_addr.h'
+> 2. Remove write_part_cpustate_to_list() because there is another bug fix patch
+>    has been merged "arm: Allow system registers for KVM guests to be changed by QEMU code"
+> 3. Add some comments for kvm_inject_arm_sea() in 'target/arm/kvm64.c'
+> 4. Compare the arm_current_el() return value to 0,1,2,3, not to PSTATE_MODE_* constants.
+> 5. Change the RAS support wasn't introduced before 4.1 QEMU version.
+> 6. Move the no_ras flag  patch to begin in this series
+> 
+> Change since v14:
+> 1. Remove the BUS_MCEERR_AO handling logic because this asynchronous signal was masked by main thread
+> 2. Address some Igor Mammedov's comments(ACPI part)
+>    1) change the comments for the enum AcpiHestNotifyType definition and remove ditto in patch 1
+>    2) change some patch commit messages and separate "APEI GHES table generation" patch to more patches.
+> 3. Address some peter's comments(arm64 Synchronous External Abort injection)
+>    1) change some code notes
+>    2) using arm_current_el() for current EL
+>    2) use the helper functions for those (syn_data_abort_*).
+> 
+> Change since v13:
+> 1. Move the patches that set guest ESR and inject virtual SError out of this series
+> 2. Clean and optimize the APEI part patches
+> 3. Update the commit messages and add some comments for the code
+> 
+> Change since v12:
+> 1. Address Paolo's comments to move HWPoisonPage definition to accel/kvm/kvm-all.c
+> 2. Only call kvm_cpu_synchronize_state() when get the BUS_MCEERR_AR signal
+> 3. Only add and enable GPIO-Signal and ARMv8 SEA two hardware error sources
+> 4. Address Michael's comments to not sync SPDX from Linux kernel header file
+> 
+> Change since v11:
+> Address James's comments(james.morse@arm.com)
+> 1. Check whether KVM has the capability to to set ESR instead of detecting host CPU RAS capability
+> 2. For SIGBUS_MCEERR_AR SIGBUS, use Synchronous-External-Abort(SEA) notification type
+>    for SIGBUS_MCEERR_AO SIGBUS, use GPIO-Signal notification
+> 
+> 
+> Address Shannon's comments(for ACPI part):
+> 1. Unify hest_ghes.c and hest_ghes.h license declaration
+> 2. Remove unnecessary including "qmp-commands.h" in hest_ghes.c
+> 3. Unconditionally add guest APEI table based on James's comments(james.morse@arm.com)
+> 4. Add a option to virt machine for migration compatibility. On new virt machine it's on
+>    by default while off for old ones, we enabled it since 2.12
+> 5. Refer to the ACPI spec version which introduces Hardware Error Notification first time
+> 6. Add ACPI_HEST_NOTIFY_RESERVED notification type
+> 
+> Address Igor's comments(for ACPI part):
+> 1. Add doc patch first which will describe how it's supposed to work between QEMU/firmware/guest
+>    OS with expected flows.
+> 2. Move APEI diagrams into doc/spec patch
+> 3. Remove redundant g_malloc in ghes_record_cper()
+> 4. Use build_append_int_noprefix() API to compose whole error status block and whole APEI table,
+>    and try to get rid of most structures in patch 1, as they will be left unused after that
+> 5. Reuse something like https://github.com/imammedo/qemu/commit/3d2fd6d13a3ea298d2ee814835495ce6241d085c
+>    to build GAS
+> 6. Remove much offsetof() in the function
+> 7. Build independent tables first and only then build dependent tables passing to it pointers
+>    to previously build table if necessary.
+> 8. Redefine macro GHES_ACPI_HEST_NOTIFY_RESERVED to ACPI_HEST_ERROR_SOURCE_COUNT to avoid confusion
+> 
+> 
+> Address Peter Maydell's comments
+> 1. linux-headers is done as a patch of their own created using scripts/update-linux-headers.sh run against a
+>    mainline kernel tree
+> 2. Tested whether this patchset builds OK on aarch32
+> 3. Abstract Hwpoison page adding code  out properly into a cpu-independent source file from target/i386/kvm.c,
+>    such as kvm-all.c
+> 4. Add doc-comment formatted documentation comment for new globally-visible function prototype in a header
+> 
+> ---
+> [1]:
+> https://lkml.org/lkml/2017/2/27/246
+> https://patchwork.kernel.org/patch/9633105/
+> https://patchwork.kernel.org/patch/9925227/
+> 
+> [2]:
+> Note: the UEFI(QEMU_EFI.fd) is needed if guest want to use ACPI table.
+> 
+> After guest boot up, dump the APEI table, then can see the initialized table
+> (1) # iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST
+> (2) # cat HEST.dsl
+>     /*
+>      * Intel ACPI Component Architecture
+>      * AML/ASL+ Disassembler version 20170728 (64-bit version)
+>      * Copyright (c) 2000 - 2017 Intel Corporation
+>      *
+>      * Disassembly of /sys/firmware/acpi/tables/HEST, Mon Sep  5 07:59:17 2016
+>      *
+>      * ACPI Data Table [HEST]
+>      *
+>      * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
+>      */
+> 
+>     ..................................................................................
+>     [308h 0776   2]                Subtable Type : 000A [Generic Hardware Error Source V2]
+>     [30Ah 0778   2]                    Source Id : 0001
+>     [30Ch 0780   2]            Related Source Id : FFFF
+>     [30Eh 0782   1]                     Reserved : 00
+>     [30Fh 0783   1]                      Enabled : 01
+>     [310h 0784   4]       Records To Preallocate : 00000001
+>     [314h 0788   4]      Max Sections Per Record : 00000001
+>     [318h 0792   4]          Max Raw Data Length : 00001000
+> 
+>     [31Ch 0796  12]         Error Status Address : [Generic Address Structure]
+>     [31Ch 0796   1]                     Space ID : 00 [SystemMemory]
+>     [31Dh 0797   1]                    Bit Width : 40
+>     [31Eh 0798   1]                   Bit Offset : 00
+>     [31Fh 0799   1]         Encoded Access Width : 04 [QWord Access:64]
+>     [320h 0800   8]                      Address : 00000000785D0040
+> 
+>     [328h 0808  28]                       Notify : [Hardware Error Notification Structure]
+>     [328h 0808   1]                  Notify Type : 08 [SEA]
+>     [329h 0809   1]                Notify Length : 1C
+>     [32Ah 0810   2]   Configuration Write Enable : 0000
+>     [32Ch 0812   4]                 PollInterval : 00000000
+>     [330h 0816   4]                       Vector : 00000000
+>     [334h 0820   4]      Polling Threshold Value : 00000000
+>     [338h 0824   4]     Polling Threshold Window : 00000000
+>     [33Ch 0828   4]        Error Threshold Value : 00000000
+>     [340h 0832   4]       Error Threshold Window : 00000000
+> 
+>     [344h 0836   4]    Error Status Block Length : 00001000
+>     [348h 0840  12]            Read Ack Register : [Generic Address Structure]
+>     [348h 0840   1]                     Space ID : 00 [SystemMemory]
+>     [349h 0841   1]                    Bit Width : 40
+>     [34Ah 0842   1]                   Bit Offset : 00
+>     [34Bh 0843   1]         Encoded Access Width : 04 [QWord Access:64]
+>     [34Ch 0844   8]                      Address : 00000000785D0098
+> 
+>     [354h 0852   8]            Read Ack Preserve : 00000000FFFFFFFE
+>     [35Ch 0860   8]               Read Ack Write : 0000000000000001
+> 
+>     .....................................................................................
+> 
+> (3) After a synchronous external abort(SEA) happen, Qemu receive a SIGBUS and 
+>     filled the CPER into guest GHES memory.  For example, according to above table,
+>     the address that contains the physical address of a block of memory that holds
+>     the error status data for this abort is 0x00000000785D0040
+> (4) the address for SEA notification error source is 0x785d80b0
+>     (qemu) xp /1 0x00000000785D0040
+>     00000000785d0040: 0x785d80b0
+> 
+> (5) check the content of generic error status block and generic error data entry
+>     (qemu) xp /100x 0x785d80b0
+>     00000000785d80b0: 0x00000001 0x00000000 0x00000000 0x00000098
+>     00000000785d80c0: 0x00000000 0xa5bc1114 0x4ede6f64 0x833e63b8
+>     00000000785d80d0: 0xb1837ced 0x00000000 0x00000300 0x00000050
+>     00000000785d80e0: 0x00000000 0x00000000 0x00000000 0x00000000
+>     00000000785d80f0: 0x00000000 0x00000000 0x00000000 0x00000000
+>     00000000785d8100: 0x00000000 0x00000000 0x00000000 0x00004002
+> (6) check the OSPM's ACK value(for example SEA)
+>     /* Before OSPM acknowledges the error, check the ACK value */
+>     (qemu) xp /1 0x00000000785D0098
+>     00000000785d00f0: 0x00000000
+> 
+>     /* After OSPM acknowledges the error, check the ACK value, it change to 1 from 0 */
+>     (qemu) xp /1 0x00000000785D0098
+>     00000000785d00f0: 0x00000001
+> 
+> [3]: KVM deliver "BUS_MCEERR_AR" to Qemu, Qemu record the guest CPER and inject
+>     synchronous external abort to notify guest, then guest do the recovery.
+> 
+> [ 1552.516170] Synchronous External Abort: synchronous external abort (0x92000410) at 0x000000003751c6b4
+> [ 1553.074073] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 8
+> [ 1553.081654] {1}[Hardware Error]: event severity: recoverable
+> [ 1554.034191] {1}[Hardware Error]:  Error 0, type: recoverable
+> [ 1554.037934] {1}[Hardware Error]:   section_type: memory error
+> [ 1554.513261] {1}[Hardware Error]:   physical_address: 0x0000000040fa6000
+> [ 1554.513944] {1}[Hardware Error]:   error_type: 0, unknown
+> [ 1555.041451] Memory failure: 0x40fa6: Killing mca-recover:1296 due to hardware memory corruption
+> [ 1555.373116] Memory failure: 0x40fa6: recovery action for dirty LRU page: Recovered
+> 
+> Dongjiu Geng (5):
+>   hw/arm/virt: Introduce a RAS machine option
+>   docs: APEI GHES generation and CPER record description
+>   ACPI: Add APEI GHES table generation support
+>   KVM: Move hwpoison page related functions into kvm-all.c
+>   target-arm: kvm64: handle SIGBUS signal from kernel or KVM
+> 
+>  accel/kvm/kvm-all.c             |  36 +++
+>  default-configs/arm-softmmu.mak |   1 +
+>  docs/specs/acpi_hest_ghes.rst   |  95 +++++++
+>  docs/specs/index.rst            |   1 +
+>  hw/acpi/Kconfig                 |   4 +
+>  hw/acpi/Makefile.objs           |   1 +
+>  hw/acpi/acpi_ghes.c             | 476 ++++++++++++++++++++++++++++++++
+>  hw/acpi/aml-build.c             |   2 +
+>  hw/arm/virt-acpi-build.c        |  12 +
+>  hw/arm/virt.c                   |  23 ++
+>  include/hw/acpi/acpi_ghes.h     | 148 ++++++++++
+>  include/hw/acpi/aml-build.h     |   1 +
+>  include/hw/arm/virt.h           |   1 +
+>  include/sysemu/kvm.h            |   3 +-
+>  include/sysemu/kvm_int.h        |  12 +
+>  target/arm/cpu.h                |   4 +
+>  target/arm/helper.c             |   2 +-
+>  target/arm/internals.h          |   5 +-
+>  target/arm/kvm64.c              |  64 +++++
+>  target/arm/tlb_helper.c         |   2 +-
+>  target/i386/cpu.h               |   2 +
+>  target/i386/kvm.c               |  36 ---
+>  22 files changed, 889 insertions(+), 42 deletions(-)
+>  create mode 100644 docs/specs/acpi_hest_ghes.rst
+>  create mode 100644 hw/acpi/acpi_ghes.c
+>  create mode 100644 include/hw/acpi/acpi_ghes.h
+> 
+> -- 
+> 2.19.1
+> 

@@ -1,140 +1,168 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2500992wri;
-        Sun, 27 Oct 2019 21:01:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwzuUVN+UXHDXzIUlvSyEN+YKXZ0wAQgu3p29ou2WA2bMA5E6avDaNa6NJdxO8Hm5csE/L0
-X-Received: by 2002:a50:ec0e:: with SMTP id g14mr17467595edr.274.1572235318708;
-        Sun, 27 Oct 2019 21:01:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572235318; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2872415wri;
+        Mon, 28 Oct 2019 04:10:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx2HCGak68IaBasB9LaeVAOUVkMv20g4UQT+D+gkvF0RIfoyATqoFTdlWDs3v5l0vimlSES
+X-Received: by 2002:ae9:c20d:: with SMTP id j13mr14432740qkg.461.1572261031175;
+        Mon, 28 Oct 2019 04:10:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572261031; cv=none;
         d=google.com; s=arc-20160816;
-        b=AZFJBSU1PRT95EfUK8N1s6sqdHENyASwFwPT5pBvtFuIeqQdF2sgxk5RgN1gLKJkMw
-         8iNvV8CT/8gVQNZobM6fZWW2ZewALIq/tqlB0Ho13Xnk4i4UrzJnT7rNepn2ErFux9l/
-         eW6KqDbSLz+B95QAMKNdzi3g8t3MRUDNBvZ2UssmZfcKAjwjngFliDBC93B5ogl9BTWr
-         fpl4/wzxP9Jalc90ZwPfllP9Zq1ueX3DafJuM9JOv7P7A0EEi0GwWVBCZ3eFJrRoGOmp
-         6oMSy9hZRLFAvMjnNPJz9WHgC+/NgjhH0zlHHAWJrAyjVf9PRX+2QjWNZlyty90Xgc1/
-         6QEg==
+        b=r6AS/kbFLpeZyvjv6z1+r+beijV+mmixe9L7wi9XWeRnrwQ5Vf0jTPd+pHBF7aAQ+V
+         /jOW9NvR3JhucUvr7ytrOMLEZRvSIhPurVndOa5uLHuJVE6a83prCkymn0ADto74lvmC
+         UtIEbuyJ6IJoVnkyb43bLJLcflSWkhEXjqIjrcb57esf6AG/IOJGM1/EQhOHtLVXE6pg
+         oKd65j3EpC6XmV0XTRvRfcDxYdioAOdHvLkTlWDT/3rGgfjbkLAdGTa1tkHWr6cV9Yv/
+         t8Vz+CK73Xq9JF6fs4tkZ7FLPa8Av4nlT/iVQFGVhdpqypqoydexx/KMQFxNws6FZPRm
+         b4sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=F1C/WzUz5kuxYgTdPsk7XSugHwTvXMzLg9+gXhjJi0c=;
-        b=Yhn/ry+Z6h0saTFm+VYk5oooa4iqNwVt9nWQlYTjycLKcBTlR0OZhcwewlZEe+u4lf
-         AXwuJRRmLYmzidqO2w3Vb84DlcyZxwYglGtvdgfjRXrKGB74J2xOGGv0BH/adItupK5S
-         GrGxDO2W9+nPMAxCfuU7Ejr5K2uqp0+qSZDVh0TTyBzdjEVC4GmXlocpjoE04s4AgSTU
-         AV1SJYSnXWDBWOeo6BzJoRMvvZkXA8dgTh9JBgN5Z9N0y0u63csvkZ+K7YsccOq8K/Jm
-         +mHNVpHcyzhsR+LYHGmh1lb6DAlLmxV6rW4iEKFnsGEZ9Bv0y1ijVzia1XjGkdGJ4YUU
-         gtjg==
+        h=content-transfer-encoding:thread-index:thread-topic:mime-version
+         :subject:references:in-reply-to:message-id:cc:to:from:date
+         :dkim-signature;
+        bh=zohqijfxF5D9YM71qCzB9euIglsluQox3t0/XjbXgTE=;
+        b=fQ7fF9P+vJx0AQ3ZG3u3lObRwV6VYJnmQtJwFQm+yCdoJvIxYlvBggmJRqmgqRsNiX
+         mqgl9BDUlwfF+QLLI0YSIXNRXC96p8Ta4B+p7rBO1NrzNG26DGSu32Fdn828/BWVIMQc
+         YlylChAXYqF4nfpHAf3/yGMDLkmaZhbFy/q28KjyzeTxIHkevkz8ibXms60vJLrI2fsO
+         HJJ8XtxCYbzRBmQHdOOCDgi2SnNsurzoV7d6U5yZM0CkC4gJ+YgmeUcSWkqPYZMRFALS
+         7pDrhk5cuQX+qd718ZzvY6hmG+pe41NDV4ZiQTOo0NHovpmsrd5EcaTYAywqKsEFa4Ry
+         Ka3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 91si7150152edy.188.2019.10.27.21.01.58;
-        Sun, 27 Oct 2019 21:01:58 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fDe/AnFp";
+       spf=pass (google.com: domain of drjones@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [205.139.110.61])
+        by mx.google.com with ESMTPS id i7si2700388qtm.394.2019.10.28.04.10.30
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 28 Oct 2019 04:10:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1725822AbfJ1EB5 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 28 Oct 2019 00:01:57 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:37664 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1725601AbfJ1EB5 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 28 Oct 2019 00:01:57 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 738F6C0E751972DE4A66;
-        Mon, 28 Oct 2019 12:01:54 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Mon, 28 Oct 2019
- 12:01:42 +0800
-Subject: Re: [PATCH v20 0/5] Add ARMv8 RAS virtualization support in QEMU
-To:     "Michael S. Tsirkin" <mst@redhat.com>,
-        Xiang Zheng <zhengxiang9@huawei.com>
-CC:     <pbonzini@redhat.com>, <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>,
-        <wanghaibin.wang@huawei.com>
-References: <20191026032447.20088-1-zhengxiang9@huawei.com>
- <20191027061450-mutt-send-email-mst@kernel.org>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <6c44268a-2676-3fa1-226d-29877b21dbea@huawei.com>
-Date:   Mon, 28 Oct 2019 12:01:34 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fDe/AnFp";
+       spf=pass (google.com: domain of drjones@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1572261030;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zohqijfxF5D9YM71qCzB9euIglsluQox3t0/XjbXgTE=;
+	b=fDe/AnFp3yp1FUYOO77yf4QVD18w5N9cZBqq5r2vlkyk0IRcVj1/ljV76CTwGCQXIq7JPT
+	5AHnlnvtfMhuYzGEBfISQ78+Xqd3HSYmaUic/aGTI20MS3Pl5nX9Q5ZPNmSgL4QRyV7K5y
+	9pNM2uuRbmOLlDg1fNnTf/LjDkZMJxI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-24-L_tPP8M3NpqZxkRUTSAoGg-1; Mon, 28 Oct 2019 07:10:29 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BC76A107AD28;
+	Mon, 28 Oct 2019 11:10:27 +0000 (UTC)
+Received: from colo-mx.corp.redhat.com (colo-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.20])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AFF4C5DA5B;
+	Mon, 28 Oct 2019 11:10:27 +0000 (UTC)
+Received: from zmail22.collab.prod.int.phx2.redhat.com (zmail22.collab.prod.int.phx2.redhat.com [10.5.83.26])
+	by colo-mx.corp.redhat.com (Postfix) with ESMTP id 5C8DE18089DC;
+	Mon, 28 Oct 2019 11:10:27 +0000 (UTC)
+Date: Mon, 28 Oct 2019 07:10:27 -0400 (EDT)
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: m mizuma <m.mizuma@jp.fujitsu.com>, 
+	Beata Michalska <beata.michalska@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, 
+	Markus Armbruster <armbru@redhat.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
+	Igor Mammedov <imammedo@redhat.com>, 
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+	Dave P Martin <Dave.Martin@arm.com>
+Message-ID: <557725864.14167224.1572261027082.JavaMail.zimbra@redhat.com>
+In-Reply-To: <CAFEAcA9ZdrAgMhdfUxz0OJnM-dF9XGwR-+FeqnyJAsrntGgL_A@mail.gmail.com>
+References: <20191024121808.9612-1-drjones@redhat.com> <CAFEAcA9ehcuktCTGR0xpTvZegUkr99H62F_fiT7RY_L_dqgN4g@mail.gmail.com> <CAFEAcA981jAU6F9RRWBuzg+_5JDrd-ip-L_awtzdZFqKmewMvA@mail.gmail.com> <20191025135159.44siz7g3szpz23og@kamzik.brq.redhat.com> <CAFEAcA9ZdrAgMhdfUxz0OJnM-dF9XGwR-+FeqnyJAsrntGgL_A@mail.gmail.com>
+Subject: Re: [PATCH v7 0/9] target/arm/kvm: enable SVE in guests
 MIME-Version: 1.0
-In-Reply-To: <20191027061450-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: fpMqtJp9peYd
-
-Hi Michael/All
-
-On 2019/10/27 18:17, Michael S. Tsirkin wrote:
-> On Sat, Oct 26, 2019 at 11:24:42AM +0800, Xiang Zheng wrote:
->> In the ARMv8 platform, the CPU error types are synchronous external abort(SEA)
->> and SError Interrupt (SEI). If exception happens in guest, sometimes it's better
->> for guest to perform the recovery, because host does not know the detailed
->> information of guest. For example, if an exception happens in a user-space
->> application within guest, host does not know which application encounters
->> errors.
->>
->> For the ARMv8 SEA/SEI, KVM or host kernel delivers SIGBUS to notify userspace.
->> After user space gets the notification, it will record the CPER into guest GHES
->> buffer and inject an exception or IRQ into guest.
->>
->> In the current implementation, if the type of SIGBUS is BUS_MCEERR_AR, we will
->> treat it as a synchronous exception, and notify guest with ARMv8 SEA
->> notification type after recording CPER into guest.
->>
->> This series of patches are based on Qemu 4.1, which include two parts:
->> 1. Generate APEI/GHES table.
->> 2. Handle the SIGBUS signal, record the CPER in runtime and fill it into guest
->>    memory, then notify guest according to the type of SIGBUS.
->>
->> The whole solution was suggested by James(james.morse@arm.com); The solution of
->> APEI section was suggested by Laszlo(lersek@redhat.com).
->> Show some discussions in [1].
->>
->> This series of patches have already been tested on ARM64 platform with RAS
->> feature enabled:
->> Show the APEI part verification result in [2].
->> Show the BUS_MCEERR_AR SIGBUS handling verification result in [3].
-> 
-> This looks mostly OK to me.  I sent some minor style comments but they
-> can be addressed by follow up patches.
-> 
-> Maybe it's a good idea to merge this before soft freeze to make sure it
-> gets some testing.  I'll leave this decision to the ARM maintainer.  For
-> ACPI parts:
-> 
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-
-Got it, Thanks for the Reviewed-by from Michael.
-
-Hi Michael,
-  According to discussion with QEMU community, I finished and developed the whole ARM RAS virtualization solution, and introduce the ARM APEI table in the first time.
-For the newly created files, which are mainly about ARM APEI/GHES part,I would like to maintain them. If you agree it, whether I can add new maintainers[1]? thanks a lot.
+X-Originating-IP: [10.33.36.124, 10.4.196.23, 10.5.101.130, 10.4.195.29]
+Thread-Topic: target/arm/kvm: enable SVE in guests
+Thread-Index: 6FyxgKxkmPsj++mnzc7OD2PU83owkg==
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: L_tPP8M3NpqZxkRUTSAoGg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: achFPVv0DBwU
 
 
-[1]:
-+ARM APEI Subsystem
-+M: Dongjiu Geng <gengdongjiu@huawei.com>
-+M: Xiang zheng <zhengxiang9@huawei.com>
-+L: qemu-arm@nongnu.org
-+S: Maintained
-+F: hw/acpi/acpi_ghes.c
-+F: include/hw/acpi/acpi_ghes.h
-+F: docs/specs/acpi_hest_ghes.rst
+Apologies if this mail is messed up. I'm having trouble with a hotel's netw=
+ork and am forced to use a webui.
 
+----- Original Message -----
+> On Fri, 25 Oct 2019 at 14:52, Andrew Jones <drjones@redhat.com> wrote:
+> >
+> > On Fri, Oct 25, 2019 at 01:06:26PM +0100, Peter Maydell wrote:
+> > > Fails 'make check' on my aarch32-compile-in-chroot-on-aarch64
+> > > machine:
+> >
+> > Are there easy-to-follow instructions for setting this environment up
+> > somewhere?
+>=20
+> It's an ancient setup, so not really. But it's just an
+> Ubuntu 32-bit chroot inside an Ubuntu 64-bit host. I use
+> schroot to manage it.
+>=20
+>=20
+>=20
+> > I guess the problem is how we're determining if KVM is available, which
+> > is like this
+> >
+> > int main(int argc, char **argv)
+> > {
+> >     bool kvm_available =3D false;
+> >
+> >     if (!access("/dev/kvm",  R_OK | W_OK)) {
+> > #if defined(HOST_AARCH64)
+> >         kvm_available =3D g_str_equal(qtest_get_arch(), "aarch64");
+> > #elif defined(HOST_ARM)
+> >         kvm_available =3D g_str_equal(qtest_get_arch(), "arm");
+> > #endif
+> >     }
+>=20
+> > So we need /dev/kvm and the QEMU binary arch type (qemu-system-arm in
+> > this case) needs to match the host arch type. The problem is that
+> > HOST_<type> doesn't imply anything about the actual host arch type.
+> > <type> comes from the configure $ARCH variable, which for 'arm'
+> > comes from the $cpu variable, which for 'arm' comes from whether or
+> > not the compiler defines __arm__, and cross compilers certainly do.
+> > I guess we'd have the same problem in an aarch32-compile-in-chroot-on-
+> > <any-other-type> environment, if a cross compiler is used for the
+> > compiling. I should change the KVM available check to something that
+> > uses the actual host arch type. I assume the following works, but
+> > I don't know if I'm allowed to use uname() in these tests, and, if
+> > not, then I don't know what the right way to get the actual host
+> > type is.
+>=20
+> This all feels like it's trying to do the wrong thing, ie
+> replicate the logic within QEMU that decides whether to use
+> KVM or not. Some possible other approaches:
+>=20
+>  * If you want to know whether you can run the qemu binary
+>    with -accel kvm, then just try that and see if it succeeds.
 
-> 
-> 
->> ---
+That's what's happening here, but the failure happens in qtest_init(), so
+there's no way to avoid the assert.
+
+>  * Or use '-accel kvm:tcg' and make the test work so that it
+>    will pass for both KVM and TCG
+
+For the KVM tests, I'd prefer we specifically test the 'host' cpu type,
+which requires we specifically test with KVM. That said, we can use
+the fallback along with an additional query to make sure 'host' is
+ok to use.
+
+>  * Or use QMP to query what accelerators are available, assuming
+>    there's a QMP command for that
+
+Looks like we can check for kvm with query-kvm.=20
+
+I'll rework patch 2/9 using the fallback and kvm query to ensure
+kvm can be used. I can even add a test or two that ensure 'host'
+is ok to use.
+
+Thanks,
+drew

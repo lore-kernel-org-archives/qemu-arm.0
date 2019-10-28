@@ -1,632 +1,199 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp150470wri;
-        Fri, 25 Oct 2019 20:25:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyyewlCnK02GAO+8JSbXLMx0eO0vmnVbHNhcZN4BZaI/q6fd0XJlrKH0EyTBHbdvsVr3keH
-X-Received: by 2002:a50:ac1c:: with SMTP id v28mr7775000edc.156.1572060328769;
-        Fri, 25 Oct 2019 20:25:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572060328; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp3413228wri;
+        Mon, 28 Oct 2019 12:12:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxjOPJiH3LdmqHGUieF+OUFmAohaDYN+0c3X3eWiz+QmG0HZcze/yNvFmvnqbbDt6rkYS2n
+X-Received: by 2002:a37:8405:: with SMTP id g5mr5226719qkd.387.1572289973606;
+        Mon, 28 Oct 2019 12:12:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572289973; cv=none;
         d=google.com; s=arc-20160816;
-        b=rJ6ukETMI3cCweLpp5GmCpArI84XDHVF0eJvy1q6ftnKzLprWUsa214cYHQVf36/F+
-         JThb7obq2uu1Fy6wjPZUxPPv4kgRxlSa5jRjW8mnd5A/KOdlWEXYDjG6x5hcyGB1Wclx
-         UzPRLR5w2t5zdy1EQ1LQP6RSYySO7hpGfGKLSIBMFn+XdnRP8URTgkP3rXpPwwDTQXas
-         Ayel37cn2PH3JxuoxVC7NVP0aP3fIc5UQgCwBxIv1pz5zO2KCvk8/L8fZl57jTmybsxk
-         WDIJPqsSY25Xh4h0r+y9lLi2CvkGl9R+9auRkW4naFpF4LUcKurFfI1TnJmZ99cNe7he
-         3bJg==
+        b=edGSzvIgohEmAdLCZe/3yJ3k5iUG0hLRNxj8VmO/BM4SdoMt71mVASQuvRPUkn8HZx
+         epxphzsQU+baO4D+F68jYUF1L3CrUXwUd7aEdxVYnJQzwOL2No4p0MxJkPfzi5SEvg+M
+         XyZ+htga3xNpeoMx2U/dyi38Q/H7Ew6Oz/K+3dxz8CiOaO3wiuJWlbALUsTqOvWzVPyi
+         3TD2IffCI2mu31b7vZExvMF+EFTjP1Uha6mPa7cOXTACjPHHpecARgKw+zkdMsYb4Ht8
+         8NOS+D5lcTRiHXOI4Vuj2ICo5JwAg8ebNWxyfvf+5RSNGmwY0S+ELj+bch/Oau0F/xIF
+         xraA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=zGbnyf6jrXfKtaP3mo7zsxKN2K3cY8ouFZiGThx2TNI=;
-        b=xL/Wb49Kh1HJMqi32Ub9ld+hQvSuFr4GGXZmWfOrM/NlaY8bcJjP5tWLueRnkQFG2p
-         ai/xYth7I9svke1VClG90yAKaCvuv2Iq/6jIIj4x3OJKrIqVTYtR7IBKowCwIqtWdwdx
-         VfbwngJWK80HfXRDjDHfQjHvEZuEgeXBL1nZ9UgPTjdsPPJ7sr+WLEk6MShK4rNqMhUK
-         ajlCBKBSu9WhOmea1i13S6pmfrLOQ1G3x06T7Ft0KxjsqTP7LO8obBWYgHlOByXvBHjA
-         B3ZC4KQDw40mEb45ezdsoMUsDHVOd+REj6WDIK4h9YaUf5QusMqIXWpPF5vmf4hwjM9v
-         zmsA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=2hmznyP4ZTFQYt5FY266nVXWD/zh57MpnSzDaNjhhgI=;
+        b=LVZuobhsXpnUcmT7HleTNRsU9FyfrUStxfJYIHvA1TShqlwjGsDmMZ05UP7E4mhqs9
+         sri8VxTjStO24+uKqY4DWxqugbaEGm86ERLClDhhT7MuI72pDFVFcNUZVf+cyk79ghcj
+         SmDHfod9AcZqXTVNtGGw1ABsES3tah/8qPW8od4EAhDj/c635gzhW5yUH1DsR8JX9yrr
+         9itnSpgaHeDAaMdhCqIvYLx5OG8nEuOET39oCyf0rcJUBkrNXfGnXPiL7gXWrU3DeR7H
+         hIQJjXO2ELwfO54FpxgU+6vJLGsVvZN46xHUtR1vWKdj+schrPZu6Hhwe+AbzaqzfBA2
+         NLyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a24si2708554eda.446.2019.10.25.20.25.28;
-        Fri, 25 Oct 2019 20:25:28 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aD4Fy6XS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n7si10305516qtk.223.2019.10.28.12.12.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 28 Oct 2019 12:12:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726410AbfJZDZ1 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 25 Oct 2019 23:25:27 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:56816 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726369AbfJZDZ0 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 25 Oct 2019 23:25:26 -0400
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 77493BBD2197FAB4E4E4;
-        Sat, 26 Oct 2019 11:25:22 +0800 (CST)
-Received: from HGHY4Z004218071.china.huawei.com (10.133.224.57) by
- DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
- 14.3.439.0; Sat, 26 Oct 2019 11:25:16 +0800
-From:   Xiang Zheng <zhengxiang9@huawei.com>
-To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>,
-        <gengdongjiu@huawei.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
-        <ehabkost@redhat.com>, <jonathan.cameron@huawei.com>,
-        <xuwei5@huawei.com>, <kvm@vger.kernel.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <linuxarm@huawei.com>
-CC:     <zhengxiang9@huawei.com>, <wanghaibin.wang@huawei.com>
-Subject: [PATCH v20 5/5] target-arm: kvm64: handle SIGBUS signal from kernel or KVM
-Date:   Sat, 26 Oct 2019 11:24:47 +0800
-Message-ID: <20191026032447.20088-6-zhengxiang9@huawei.com>
-X-Mailer: git-send-email 2.15.1.windows.2
-In-Reply-To: <20191026032447.20088-1-zhengxiang9@huawei.com>
-References: <20191026032447.20088-1-zhengxiang9@huawei.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aD4Fy6XS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53840 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iPARf-0007Ft-Ph
+	for alex.bennee@linaro.org; Mon, 28 Oct 2019 15:12:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60845)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <msys.mizuma@gmail.com>) id 1iP9vI-0000Go-Gq
+ for qemu-arm@nongnu.org; Mon, 28 Oct 2019 14:39:25 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <msys.mizuma@gmail.com>) id 1iP9vH-0006Sc-CO
+ for qemu-arm@nongnu.org; Mon, 28 Oct 2019 14:39:24 -0400
+Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841]:33607)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <msys.mizuma@gmail.com>)
+ id 1iP9vE-0006Q5-HT; Mon, 28 Oct 2019 14:39:20 -0400
+Received: by mail-qt1-x841.google.com with SMTP id y39so10717596qty.0;
+ Mon, 28 Oct 2019 11:39:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=2hmznyP4ZTFQYt5FY266nVXWD/zh57MpnSzDaNjhhgI=;
+ b=aD4Fy6XSaoNV4t6Jewmceuo4gDhsfye4Fx0/F/r+0K3hSZApF2OOckgZ/t9CWl99I4
+ 0dYbVlYTU8tY/Rh4uYaZSJJ2ydmgnngFGfMMobRxzf/z9UJmSNcgpiWJkLmmU+l1wjZH
+ si7UplMflcB+EPG/qJ5RT4yiQLe9cYd6i86411ieBYGHGDPbtMPzOYC53SguatBrdcLm
+ Lry5E3UyOQL55uQBMZcpcmuZJAxex0NaG86l3nRyVmINcuwp4QBb1n+vpCQ23KhtL1sr
+ b7yz+5pNfu9TiSjbIknMhB/EB+LseYhPWpzTZ3Ne21mcd3mjAYYy6rcNxBDokKnd6QbS
+ Qcgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=2hmznyP4ZTFQYt5FY266nVXWD/zh57MpnSzDaNjhhgI=;
+ b=bt4bFBeKziuHz3DebSBPpIl/g1emuDEsVedu9dFl/h8zX5698GkDhp68V4EUwdc4aK
+ aLKIdiUdDtfI3kUjkFkvDS6c0NWak1NuzniRmCZLNjykBnKJXzeAGICljkn5SXCMTgR7
+ ZtBJMPOIVMTrEPBNlNQa5AkBEDKHMyShhtErLpbZvNKl5QEliG6lJtx74O6tsAqgPqgj
+ yzSHJjsHXOJE2mCVJQ+oX5BDczUxPzm7cKenr1M83hwCxp+JcM5RiaYaptFQ1lTS7dyo
+ xWqDOng+91w/T3BM/PQbZgw6gcAksVlXK/19q9TqW1jYlAd43VEu1IENiPbJpTIuP/HS
+ MSiw==
+X-Gm-Message-State: APjAAAVfrgQXUL6WfKqqsJNFdnEmc3/nds4yyMIZU95K0xM5Pl31TvI7
+ VeazkkLiIZlVEpExLM7xcA==
+X-Received: by 2002:aed:24af:: with SMTP id t44mr18314531qtc.57.1572287957239; 
+ Mon, 28 Oct 2019 11:39:17 -0700 (PDT)
+Received: from gabell (nat-pool-bos-t.redhat.com. [66.187.233.206])
+ by smtp.gmail.com with ESMTPSA id s21sm8376130qtc.12.2019.10.28.11.39.16
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 28 Oct 2019 11:39:16 -0700 (PDT)
+Date: Mon, 28 Oct 2019 14:39:11 -0400
+From: Masayoshi Mizuma <msys.mizuma@gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
+ virtual time
+Message-ID: <20191028183908.7ss3o4guvfff6lxv@gabell>
+References: <20191016143410.5023-1-drjones@redhat.com>
+ <20191017211758.ownflk2c7mzv3poh@gabell>
+ <20191018120252.sdpi4t7jlectnspu@kamzik.brq.redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.133.224.57]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Fiu3PDeaL42S
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191018120252.sdpi4t7jlectnspu@kamzik.brq.redhat.com>
+User-Agent: NeoMutt/20180716
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::841
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZcKnyE7RPVdo
 
-From: Dongjiu Geng <gengdongjiu@huawei.com>
+On Fri, Oct 18, 2019 at 02:02:52PM +0200, Andrew Jones wrote:
+> On Thu, Oct 17, 2019 at 05:17:59PM -0400, Masayoshi Mizuma wrote:
+> > Hi Drew,
+> > 
+> > Thank you for posting the patches, they seems to work well
+> > because the softlockup is gone and the timestamp jump of
+> > dmesg and ftrace record also disappeared after the guest
+> > is virsh resume'ed.
+> > 
+> > Let me add comments.
+> > I think the kvm-adjvtime behavior should be the default.
+> > How about introducing 'kvm-noadjvtime' parameter instead?
+> > kvm-noadjvtime is to provide the old behavior.
+> > 
+> > That is because the time jump occurs timeout for timers even though
+> > the timer doesn't reach the timeout in the guest time.
+> > 
+> > For example, below flow shows that user and/or kernel sets timer A
+> > for +10 sec and B for +20 sec in Guest, then Guest is suspended and
+> > it passes 60 sec, then Guest is resumed. Timer A and B go off because
+> > the Guest timestamp (TS) is jumped to 63. That is unexpected timer
+> > behavior for Guest.
+> > 
+> >  Host TS(sec) Guest TS(sec) Event
+> >  ============ ============= =============================
+> >  00           00            Guest: Set timer A for +10 sec
+> >  01           01            Guest: Set timer B for +20 sec
+> >  03           03            Host: virsh suspend Guest
+> >  63           63            Host: virsh resume Guest
+> >                             Guest: Timer A and B go off
+> > 
+> > I believe kvm-adjvtime behavior is as following. So Time A
+> > and B go off as expected time. So, kvm-adjvtime behavior should
+> > be the default.
+> > 
+> >  Host TS(sec) Guest TS(sec) Event
+> >  ============ ============= =============================
+> >  00           00            Guest: Set timer A for +10 sec
+> >  01           01            Guest: Set timer B for +20 sec
+> >  03           03            Host: virsh suspend guest
+> >  63           03            Host: virsh resume guest
+> >  70           10            Guest: Timer A goes off
+> >  81           21            Guest: Timer B goes off
+> > 
+> 
+> Thanks for the testing Masa. Your timer test is another good example of
+> what can happen when a guest is paused. I'm sure there are many other ways
+> a pause could be problematic as well, especially if the guest has devices
+> passed through to it that it's actively using. I also don't expect
+> kvm-adjvtime to solve all those problems (like, for example, potential
+> problems with passthrough devices, networks, etc.)  This means that guest
+> pausing should only be done by host admins that are intimately familiar
+> with the guest OS, workload, and network connections. They should be sure
+> that it can tolerate and recover from the pauses. Since the admins need to
+> make the decision to pause at all, then I think it's fair for them to also
+> decide if they want to try and mitigate some of the issues with
+> kvm-adjvtime, i.e. require them to enable it, rather than have it on by
+> default. 
 
-Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-translates the host VA delivered by host to guest PA, then fills this PA
-to guest APEI GHES memory, then notifies guest according to the SIGBUS
-type.
+make sense to me, thanks.
 
-When guest accesses the poisoned memory, it will generate a Synchronous
-External Abort(SEA). Then host kernel gets an APEI notification and calls
-memory_failure() to unmapped the affected page in stage 2, finally
-returns to guest.
+>          Also, if we choose to enable it by default, then we'll need to
+> deal with the compatibility issues that come with changing a behavior.
+> That's not impossible, as this feature could be disabled for older
+> machine types, but it's messy.
 
-Guest continues to access the PG_hwpoison page, it will trap to KVM as
-stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
-Qemu, Qemu records this error address into guest APEI GHES memory and
-notifes guest using Synchronous-External-Abort(SEA).
+I agree with you, we shouldn't add such messy codes to resolve
+the compatibility issues...
 
-In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
-in which we can setup the type of exception and the syndrome information.
-When switching to guest, the target vcpu will jump to the synchronous
-external abort vector table entry.
+> 
+> All that said, I won't argue too hard against kvm-adjvtime being on by
+> default, but let's see if others like Peter or Marc want to chime in on
+> it too.
 
-The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
-ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
-not valid and hold an UNKNOWN value. These values will be set to KVM
-register structures through KVM_SET_ONE_REG IOCTL.
+Yeah, I look forward to their comments.
 
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
----
- hw/acpi/acpi_ghes.c         | 259 ++++++++++++++++++++++++++++++++++++
- include/hw/acpi/acpi_ghes.h |  42 ++++++
- include/sysemu/kvm.h        |   3 +-
- target/arm/cpu.h            |   4 +
- target/arm/helper.c         |   2 +-
- target/arm/internals.h      |   5 +-
- target/arm/kvm64.c          |  64 +++++++++
- target/arm/tlb_helper.c     |   2 +-
- target/i386/cpu.h           |   2 +
- 9 files changed, 377 insertions(+), 6 deletions(-)
-
-diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
-index 23f8a9928c..00e5410c37 100644
---- a/hw/acpi/acpi_ghes.c
-+++ b/hw/acpi/acpi_ghes.c
-@@ -27,6 +27,174 @@
- #include "sysemu/sysemu.h"
- #include "qemu/error-report.h"
- 
-+/*
-+ * Total size for Generic Error Status Block
-+ * ACPI 6.2: 18.3.2.7.1 Generic Error Data,
-+ * Table 18-380 Generic Error Status Block
-+ */
-+#define ACPI_GHES_GESB_SIZE                 20
-+/* The offset of Data Length in Generic Error Status Block */
-+#define ACPI_GHES_GESB_DATA_LENGTH_OFFSET   12
-+
-+/*
-+ * Record the value of data length for each error status block to avoid getting
-+ * this value from guest.
-+ */
-+static uint32_t acpi_ghes_data_length[ACPI_GHES_ERROR_SOURCE_COUNT];
-+
-+/*
-+ * Generic Error Data Entry
-+ * ACPI 6.1: 18.3.2.7.1 Generic Error Data
-+ */
-+static void acpi_ghes_generic_error_data(GArray *table, QemuUUID section_type,
-+                uint32_t error_severity, uint16_t revision,
-+                uint8_t validation_bits, uint8_t flags,
-+                uint32_t error_data_length, QemuUUID fru_id,
-+                uint8_t *fru_text, uint64_t time_stamp)
-+{
-+    QemuUUID uuid_le;
-+
-+    /* Section Type */
-+    uuid_le = qemu_uuid_bswap(section_type);
-+    g_array_append_vals(table, uuid_le.data, ARRAY_SIZE(uuid_le.data));
-+
-+    /* Error Severity */
-+    build_append_int_noprefix(table, error_severity, 4);
-+    /* Revision */
-+    build_append_int_noprefix(table, revision, 2);
-+    /* Validation Bits */
-+    build_append_int_noprefix(table, validation_bits, 1);
-+    /* Flags */
-+    build_append_int_noprefix(table, flags, 1);
-+    /* Error Data Length */
-+    build_append_int_noprefix(table, error_data_length, 4);
-+
-+    /* FRU Id */
-+    uuid_le = qemu_uuid_bswap(fru_id);
-+    g_array_append_vals(table, uuid_le.data, ARRAY_SIZE(uuid_le.data));
-+
-+    /* FRU Text */
-+    g_array_append_vals(table, fru_text, 20);
-+    /* Timestamp */
-+    build_append_int_noprefix(table, time_stamp, 8);
-+}
-+
-+/*
-+ * Generic Error Status Block
-+ * ACPI 6.1: 18.3.2.7.1 Generic Error Data
-+ */
-+static void acpi_ghes_generic_error_status(GArray *table, uint32_t block_status,
-+                uint32_t raw_data_offset, uint32_t raw_data_length,
-+                uint32_t data_length, uint32_t error_severity)
-+{
-+    /* Block Status */
-+    build_append_int_noprefix(table, block_status, 4);
-+    /* Raw Data Offset */
-+    build_append_int_noprefix(table, raw_data_offset, 4);
-+    /* Raw Data Length */
-+    build_append_int_noprefix(table, raw_data_length, 4);
-+    /* Data Length */
-+    build_append_int_noprefix(table, data_length, 4);
-+    /* Error Severity */
-+    build_append_int_noprefix(table, error_severity, 4);
-+}
-+
-+/* UEFI 2.6: N.2.5 Memory Error Section */
-+static void acpi_ghes_build_append_mem_cper(GArray *table,
-+                                            uint64_t error_physical_addr)
-+{
-+    /*
-+     * Memory Error Record
-+     */
-+
-+    /* Validation Bits */
-+    build_append_int_noprefix(table,
-+                              (1UL << 14) | /* Type Valid */
-+                              (1UL << 1) /* Physical Address Valid */,
-+                              8);
-+    /* Error Status */
-+    build_append_int_noprefix(table, 0, 8);
-+    /* Physical Address */
-+    build_append_int_noprefix(table, error_physical_addr, 8);
-+    /* Skip all the detailed information normally found in such a record */
-+    build_append_int_noprefix(table, 0, 48);
-+    /* Memory Error Type */
-+    build_append_int_noprefix(table, 0 /* Unknown error */, 1);
-+    /* Skip all the detailed information normally found in such a record */
-+    build_append_int_noprefix(table, 0, 7);
-+}
-+
-+static int acpi_ghes_record_mem_error(uint64_t error_block_address,
-+                                      uint64_t error_physical_addr,
-+                                      uint32_t data_length)
-+{
-+    GArray *block;
-+    uint64_t current_block_length;
-+    /* Memory Error Section Type */
-+    QemuUUID mem_section_id_le = UEFI_CPER_SEC_PLATFORM_MEM;
-+    QemuUUID fru_id = {};
-+    uint8_t fru_text[20] = {};
-+
-+    /*
-+     * Generic Error Status Block
-+     * | +---------------------+
-+     * | |     block_status    |
-+     * | +---------------------+
-+     * | |    raw_data_offset  |
-+     * | +---------------------+
-+     * | |    raw_data_length  |
-+     * | +---------------------+
-+     * | |     data_length     |
-+     * | +---------------------+
-+     * | |   error_severity    |
-+     * | +---------------------+
-+     */
-+    block = g_array_new(false, true /* clear */, 1);
-+
-+    /* The current whole length of the generic error status block */
-+    current_block_length = ACPI_GHES_GESB_SIZE + data_length;
-+
-+    /* This is the length if adding a new generic error data entry*/
-+    data_length += ACPI_GHES_DATA_LENGTH;
-+    data_length += ACPI_GHES_MEM_CPER_LENGTH;
-+
-+    /*
-+     * Check whether it will run out of the preallocated memory if adding a new
-+     * generic error data entry
-+     */
-+    if ((data_length + ACPI_GHES_GESB_SIZE) > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
-+        error_report("Record CPER out of boundary!!!");
-+        return ACPI_GHES_CPER_FAIL;
-+    }
-+
-+    /* Build the new generic error status block header */
-+    acpi_ghes_generic_error_status(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE),
-+        0, 0, cpu_to_le32(data_length), cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
-+
-+    /* Write back above generic error status block header to guest memory */
-+    cpu_physical_memory_write(error_block_address, block->data,
-+                              block->len);
-+
-+    /* Add a new generic error data entry */
-+
-+    data_length = block->len;
-+    /* Build this new generic error data entry header */
-+    acpi_ghes_generic_error_data(block, mem_section_id_le,
-+        cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300), 0, 0,
-+        cpu_to_le32(ACPI_GHES_MEM_CPER_LENGTH), fru_id, fru_text, 0);
-+
-+    /* Build the memory section CPER for above new generic error data entry */
-+    acpi_ghes_build_append_mem_cper(block, error_physical_addr);
-+
-+    /* Write back above this new generic error data entry to guest memory */
-+    cpu_physical_memory_write(error_block_address + current_block_length,
-+        block->data + data_length, block->len - data_length);
-+
-+    g_array_free(block, true);
-+
-+    return ACPI_GHES_CPER_OK;
-+}
-+
- /*
-  * Hardware Error Notification
-  * ACPI 4.0: 17.3.2.7 Hardware Error Notification
-@@ -215,3 +383,94 @@ void acpi_ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
-     fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
-         NULL, &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
- }
-+
-+bool acpi_ghes_record_errors(uint32_t notify, uint64_t physical_address)
-+{
-+    uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
-+    int loop = 0;
-+    uint64_t start_addr = le64_to_cpu(ges.ghes_addr_le);
-+    bool ret = ACPI_GHES_CPER_FAIL;
-+    uint8_t source_id;
-+    const uint8_t error_source_id[] = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+                                        0xff, 0xff,    0, 0xff, 0xff, 0xff};
-+
-+    /*
-+     * | +---------------------+ ges.ghes_addr_le
-+     * | |error_block_address0 |
-+     * | +---------------------+ --+--
-+     * | |    .............    | ACPI_GHES_ADDRESS_SIZE
-+     * | +---------------------+ --+--
-+     * | |error_block_addressN |
-+     * | +---------------------+
-+     * | | read_ack_register0  |
-+     * | +---------------------+ --+--
-+     * | |   .............     | ACPI_GHES_ADDRESS_SIZE
-+     * | +---------------------+ --+--
-+     * | | read_ack_registerN  |
-+     * | +---------------------+ --+--
-+     * | |      CPER           |   |
-+     * | |      ....           | ACPI_GHES_MAX_RAW_DATA_LENGT
-+     * | |      CPER           |   |
-+     * | +---------------------+ --+--
-+     * | |    ..........       |
-+     * | +---------------------+
-+     * | |      CPER           |
-+     * | |      ....           |
-+     * | |      CPER           |
-+     * | +---------------------+
-+     */
-+    if (physical_address && notify < ACPI_GHES_NOTIFY_RESERVED) {
-+        /* Find and check the source id for this new CPER */
-+        source_id = error_source_id[notify];
-+        if (source_id != 0xff) {
-+            start_addr += source_id * ACPI_GHES_ADDRESS_SIZE;
-+        } else {
-+            goto out;
-+        }
-+
-+        cpu_physical_memory_read(start_addr, &error_block_addr,
-+                                 ACPI_GHES_ADDRESS_SIZE);
-+
-+        read_ack_register_addr = start_addr +
-+            ACPI_GHES_ERROR_SOURCE_COUNT * ACPI_GHES_ADDRESS_SIZE;
-+retry:
-+        cpu_physical_memory_read(read_ack_register_addr,
-+                                 &read_ack_register, ACPI_GHES_ADDRESS_SIZE);
-+
-+        /* zero means OSPM does not acknowledge the error */
-+        if (!read_ack_register) {
-+            if (loop < 3) {
-+                usleep(100 * 1000);
-+                loop++;
-+                goto retry;
-+            } else {
-+                error_report("OSPM does not acknowledge previous error,"
-+                    " so can not record CPER for current error, forcibly"
-+                    " acknowledge previous error to avoid blocking next time"
-+                    " CPER record! Exit");
-+                read_ack_register = 1;
-+                cpu_physical_memory_write(read_ack_register_addr,
-+                    &read_ack_register, ACPI_GHES_ADDRESS_SIZE);
-+            }
-+        } else {
-+            if (error_block_addr) {
-+                read_ack_register = 0;
-+                /*
-+                 * Clear the Read Ack Register, OSPM will write it to 1 when
-+                 * acknowledge this error.
-+                 */
-+                cpu_physical_memory_write(read_ack_register_addr,
-+                    &read_ack_register, ACPI_GHES_ADDRESS_SIZE);
-+                ret = acpi_ghes_record_mem_error(error_block_addr,
-+                          physical_address, acpi_ghes_data_length[source_id]);
-+                if (ret == ACPI_GHES_CPER_OK) {
-+                    acpi_ghes_data_length[source_id] +=
-+                        (ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH);
-+                }
-+            }
-+        }
-+    }
-+
-+out:
-+    return ret;
-+}
-diff --git a/include/hw/acpi/acpi_ghes.h b/include/hw/acpi/acpi_ghes.h
-index 219568a29b..9e503a4326 100644
---- a/include/hw/acpi/acpi_ghes.h
-+++ b/include/hw/acpi/acpi_ghes.h
-@@ -36,6 +36,37 @@
- /* The max size in bytes for one error block */
- #define ACPI_GHES_MAX_RAW_DATA_LENGTH       0x1000
- 
-+/*
-+ * The total size of Generic Error Data Entry
-+ * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
-+ * Table 18-343 Generic Error Data Entry
-+ */
-+#define ACPI_GHES_DATA_LENGTH               72
-+
-+/*
-+ * The memory section CPER size,
-+ * UEFI 2.6: N.2.5 Memory Error Section
-+ */
-+#define ACPI_GHES_MEM_CPER_LENGTH           80
-+
-+#define ACPI_GHES_CPER_OK                   1
-+#define ACPI_GHES_CPER_FAIL                 0
-+
-+/*
-+ * Masks for block_status flags
-+ */
-+#define ACPI_GEBS_UNCORRECTABLE         1
-+
-+/*
-+ * Values for error_severity field
-+ */
-+enum AcpiGenericErrorSeverity {
-+    ACPI_CPER_SEV_RECOVERABLE,
-+    ACPI_CPER_SEV_FATAL,
-+    ACPI_CPER_SEV_CORRECTED,
-+    ACPI_CPER_SEV_NONE,
-+};
-+
- /*
-  * Now only support ARMv8 SEA notification type error source
-  */
-@@ -70,6 +101,16 @@ enum AcpiGhesNotifyType {
-     ACPI_GHES_NOTIFY_RESERVED = 12 /* 12 and greater are reserved */
- };
- 
-+#define UUID_BE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)        \
-+    {{{ ((a) >> 24) & 0xff, ((a) >> 16) & 0xff, ((a) >> 8) & 0xff, (a) & 0xff, \
-+    ((b) >> 8) & 0xff, (b) & 0xff,                   \
-+    ((c) >> 8) & 0xff, (c) & 0xff,                    \
-+    (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) } } }
-+
-+#define UEFI_CPER_SEC_PLATFORM_MEM                   \
-+    UUID_BE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
-+    0xED, 0x7C, 0x83, 0xB1)
-+
- /*
-  * | +--------------------------+ 0
-  * | |        Header            |
-@@ -103,4 +144,5 @@ void acpi_ghes_build_hest(GArray *table_data, GArray *hardware_error,
- 
- void acpi_ghes_build_error_table(GArray *hardware_errors, BIOSLinker *linker);
- void acpi_ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
-+bool acpi_ghes_record_errors(uint32_t notify, uint64_t error_physical_addr);
- #endif
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 9d143282bc..321ead8115 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -378,8 +378,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
- /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
- unsigned long kvm_arch_vcpu_id(CPUState *cpu);
- 
--#ifdef TARGET_I386
--#define KVM_HAVE_MCE_INJECTION 1
-+#ifdef KVM_HAVE_MCE_INJECTION
- void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
- #endif
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 297ad5e47a..6653855200 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -28,6 +28,10 @@
- /* ARM processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
- 
-+#ifdef TARGET_AARCH64
-+#define KVM_HAVE_MCE_INJECTION 1
-+#endif
-+
- #define EXCP_UDEF            1   /* undefined instruction */
- #define EXCP_SWI             2   /* software interrupt */
- #define EXCP_PREFETCH_ABORT  3
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0d9a2d2ab7..ed76ba8bc1 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3005,7 +3005,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-              * Report exception with ESR indicating a fault due to a
-              * translation table walk for a cache maintenance instruction.
-              */
--            syn = syn_data_abort_no_iss(current_el == target_el,
-+            syn = syn_data_abort_no_iss(current_el == target_el, 0,
-                                         fi.ea, 1, fi.s1ptw, 1, fsc);
-             env->exception.vaddress = value;
-             env->exception.fsr = fsr;
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 232d963875..98cde702ad 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -451,13 +451,14 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
-         | ARM_EL_IL | (ea << 9) | (s1ptw << 7) | fsc;
- }
- 
--static inline uint32_t syn_data_abort_no_iss(int same_el,
-+static inline uint32_t syn_data_abort_no_iss(int same_el, int fnv,
-                                              int ea, int cm, int s1ptw,
-                                              int wnr, int fsc)
- {
-     return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
-            | ARM_EL_IL
--           | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
-+           | (fnv << 10) | (ea << 9) | (cm << 8) | (s1ptw << 7)
-+           | (wnr << 6) | fsc;
- }
- 
- static inline uint32_t syn_data_abort_with_iss(int same_el,
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 28f6db57d5..c7b7653d3f 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -28,6 +28,8 @@
- #include "kvm_arm.h"
- #include "hw/boards.h"
- #include "internals.h"
-+#include "hw/acpi/acpi.h"
-+#include "hw/acpi/acpi_ghes.h"
- 
- static bool have_guest_debug;
- 
-@@ -710,6 +712,30 @@ int kvm_arm_cpreg_level(uint64_t regidx)
-     return KVM_PUT_RUNTIME_STATE;
- }
- 
-+/* Callers must hold the iothread mutex lock */
-+static void kvm_inject_arm_sea(CPUState *c)
-+{
-+    ARMCPU *cpu = ARM_CPU(c);
-+    CPUARMState *env = &cpu->env;
-+    CPUClass *cc = CPU_GET_CLASS(c);
-+    uint32_t esr;
-+    bool same_el;
-+
-+    c->exception_index = EXCP_DATA_ABORT;
-+    env->exception.target_el = 1;
-+
-+    /*
-+     * Set the DFSC to synchronous external abort and set FnV to not valid,
-+     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
-+     */
-+    same_el = arm_current_el(env) == env->exception.target_el;
-+    esr = syn_data_abort_no_iss(same_el, 1, 0, 0, 0, 0, 0x10);
-+
-+    env->exception.syndrome = esr;
-+
-+    cc->do_interrupt(c);
-+}
-+
- #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
-                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
- 
-@@ -1036,6 +1062,44 @@ int kvm_arch_get_registers(CPUState *cs)
-     return ret;
- }
- 
-+void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-+{
-+    ram_addr_t ram_addr;
-+    hwaddr paddr;
-+
-+    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
-+
-+    if (acpi_enabled && addr &&
-+            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
-+        ram_addr = qemu_ram_addr_from_host(addr);
-+        if (ram_addr != RAM_ADDR_INVALID &&
-+            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-+            kvm_hwpoison_page_add(ram_addr);
-+            /*
-+             * Asynchronous signal will be masked by main thread, so
-+             * only handle synchronous signal.
-+             */
-+            if (code == BUS_MCEERR_AR) {
-+                kvm_cpu_synchronize_state(c);
-+                if (ACPI_GHES_CPER_FAIL !=
-+                    acpi_ghes_record_errors(ACPI_GHES_NOTIFY_SEA, paddr)) {
-+                    kvm_inject_arm_sea(c);
-+                } else {
-+                    fprintf(stderr, "failed to record the error\n");
-+                }
-+            }
-+            return;
-+        }
-+        fprintf(stderr, "Hardware memory error for memory used by "
-+                "QEMU itself instead of guest system!\n");
-+    }
-+
-+    if (code == BUS_MCEERR_AR) {
-+        fprintf(stderr, "Hardware memory error!\n");
-+        exit(1);
-+    }
-+}
-+
- /* C6.6.29 BRK instruction */
- static const uint32_t brk_insn = 0xd4200000;
- 
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index 5feb312941..499672ebbc 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -33,7 +33,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-      * ISV field.
-      */
-     if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
--        syn = syn_data_abort_no_iss(same_el,
-+        syn = syn_data_abort_no_iss(same_el, 0,
-                                     ea, 0, s1ptw, is_write, fsc);
-     } else {
-         /*
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index cedb5bc205..0cf069d88e 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -28,6 +28,8 @@
- /* The x86 has a strong memory model with some store-after-load re-ordering */
- #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
- 
-+#define KVM_HAVE_MCE_INJECTION 1
-+
- /* Maximum instruction code size */
- #define TARGET_MAX_INSN_SIZE 16
- 
--- 
-2.19.1
-
+Thanks,
+Masa

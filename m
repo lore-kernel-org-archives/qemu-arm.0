@@ -1,130 +1,162 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2467963wri;
-        Sun, 27 Oct 2019 20:17:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzcGNhba3t0TnDQu5tgDCaRsNioJGRKqLKFZT4Y70NlKPGC3/E6Ru5QulSSQkHToiZsnxPL
-X-Received: by 2002:a17:906:7e50:: with SMTP id z16mr15061839ejr.130.1572232624566;
-        Sun, 27 Oct 2019 20:17:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572232624; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2714284wri;
+        Mon, 28 Oct 2019 01:28:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzsg9XZU51VzR9UXrvV6IH67YwaaQ0em+MiA29/LpMBwgcr7fclCFtsRCN2Z9+NEo44386c
+X-Received: by 2002:a17:906:4554:: with SMTP id s20mr15731909ejq.283.1572251327877;
+        Mon, 28 Oct 2019 01:28:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572251327; cv=none;
         d=google.com; s=arc-20160816;
-        b=meArO7OWpLOW/8D680f9KP6qgQKQcwy5nVuG/XBmfqoD6XE6OggMPYMFPBTeJdcP2k
-         WHrKoQafui17y2NEE+lXS+me6gwKtypwmulaWC++UX8NaXhq3qA9D4G0sKAP62xM2psh
-         oFlDQLfslYNr6McO+ILQX8Y1TWFa090Y7zWq6sa5rtBnWJPVMCFtZyqcQsHsC0H3B37+
-         k9NflspSu6jBlikuN/8T8TMvd9RlRetkX5nyqlpG4mN2WzBnUsnUUQDsdqrTMA4YPDaW
-         1ff3qFLNtpKDO9OE7Flf8YoVFZC9Yoj70EW2+SpPdnU5RN413FFVrO1UIgtS9I4KYrjJ
-         ppgA==
+        b=rufusigRjrLHeglO8dXnwbc2FdhYfyEg/473b71M0/x2l43X0FZDOiSkDdvsbkG+VT
+         mZPbAVKySeMhNoCoJcCdQYSX5SFyFS6MRwLQ6X1gZoKQKo4AvujFVBB/F9NNvqS0UQte
+         rgjtk9yWBZI46F5D1/cnEnkQWlwBt8kSmEMMZTnfF/bWEKzndK8xFZp0lhkUIkdMwZE+
+         eKVrMuDMyT7u7SglMe2+K0r+2/ZIeHRrQUr1MBrKmrp6LRdWxzlYDPNXwca3hJp5IFpu
+         8/snWb0ZO6l8tS1UumssIYongzJjChbZMMLPl2zaWYrvD/Ocj+fyJ8J/e7VMWsZGKRli
+         x/AA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=15rnH4cCNrzjA2B7q2hD40TFWaB0GN86Uc7JUZTf5z8=;
-        b=Osa8RNQvjP3crL/75hUuMoe3rKVeiilfaxwdkpDVlXJCHrDbYXXpKaspRKA5HqYV08
-         iUBwc5f21PEP2+99XCiPDOFDXPSaeEfmUSoKLjqNHJ3hOffMTs49ZdanSRgpKhycQVJx
-         YCzeuQ8yguqZGZp7fDXCAU/kddbrtbJuQd3poOkrwnPzzo6YekZfY+OIpNbneSp9u7xd
-         Kpzw6n1H4zCgvlRKaOW4qbhfv49csiyqiAdg7ehhEu5cmDpireu+cO6sWQ5oTpMJ+9GC
-         2/ZU8PER88cn4uYVqJv7pb5xIHGGvGucjJknCBiMAeFPCCMmD8gIIlk5Y7qbMxfTbeK6
-         PMlA==
+        h=list-id:precedence:sender:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date;
+        bh=0d6tHsZ6xj7MncVChi2UMTdxKJ1Dhsfr4PdJX86n9PE=;
+        b=S8TQI7oV7ccMMgJDi2i65JhWRlvbriE6HrszQFclCT3/wCBudQLHrEtGCoMOofadQ5
+         Nw9LqfFzmqQEKMvHSeo2dHol9Sw2H+VSLU06HY0pWj9pkMgvJQrtB1p5nXBvp+lEIA2U
+         7TuKal/y4hhoJQi8nMfckBniqD8Dt5cEMgc71TCQkYAcLf4U24GYAfNRU4qOId8nwG2W
+         b3B6mdqv1unZPo9jpNr8h8kTS+1jLqJecEBBUfo8CKBBOtvOlVJ8aX8PFK7+i5EBuvjd
+         twWzjoBr4Vbg5FXy7hy5zjeJWagT8Jik+P8NBZOOp0Ja98o+TZxqxjYjLl5TQh+iHlyf
+         jm4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id o1si1363994eji.134.2019.10.27.20.17.04;
-        Sun, 27 Oct 2019 20:17:04 -0700 (PDT)
+        by mx.google.com with ESMTP id t16si5595777ejd.435.2019.10.28.01.28.47;
+        Mon, 28 Oct 2019 01:28:47 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728255AbfJ1DRD (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Sun, 27 Oct 2019 23:17:03 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:44018 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726711AbfJ1DRD (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sun, 27 Oct 2019 23:17:03 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 732D27EEE96640117F5;
-        Mon, 28 Oct 2019 11:17:00 +0800 (CST)
-Received: from [127.0.0.1] (10.133.224.57) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Mon, 28 Oct 2019
- 11:16:53 +0800
+        id S2387452AbfJ1I2q (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Mon, 28 Oct 2019 04:28:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59004 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S2387412AbfJ1I2o (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 28 Oct 2019 04:28:44 -0400
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
+        (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id B87BC85360
+        for <kvm@vger.kernel.org>; Mon, 28 Oct 2019 08:28:43 +0000 (UTC)
+Received: by mail-qt1-f197.google.com with SMTP id k9so5010647qtg.2
+        for <kvm@vger.kernel.org>; Mon, 28 Oct 2019 01:28:43 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=0d6tHsZ6xj7MncVChi2UMTdxKJ1Dhsfr4PdJX86n9PE=;
+        b=gQqTvs4KRHpGD+nwu02ozyrGd+73pamdv2OuPmP0S/7jsE/S0xo+ESIoQhq03IoxzG
+         7GJR3Ilaq1ZW/NkWXrUocyYndxURcZs6CmOU0Njc2r6wyMv3pZWRCihXw9yYVyZq/1d5
+         VCSlYKpbd/RNGzCFLovxgZ0Y/OkZmLo4TPP5ci+wggKDqmThdM5QtdukKQVhejC+nkob
+         K6dBkB5z6ybjkn5nueHdMGweUxRQdH2iPgCevkXQw9opY1hLZlIKUwoPSGu/ykCqOc/I
+         ex3hhcF2OS/HbKrRrfwVs1f3698oaD314hmgz8gQDKA5ZCOI4rYwHmDMGgXm4aydI68l
+         3BFg==
+X-Gm-Message-State: APjAAAXm8PCbFUYmAzPVT+dodcB/dpfAkcm6KKr0v2q/FeAnZjdCuAyn
+        1yvpXsCjjuOO60Z1ubIwFfNd9WiBat2FZKrZT2ndL4CzcCh1u8lG5/NPCkOkvI55bUTz9ceuePJ
+        HVAXhaJ2Yn/Ls
+X-Received: by 2002:a0c:eda9:: with SMTP id h9mr1914664qvr.41.1572251322985;
+        Mon, 28 Oct 2019 01:28:42 -0700 (PDT)
+X-Received: by 2002:a0c:eda9:: with SMTP id h9mr1914644qvr.41.1572251322701;
+        Mon, 28 Oct 2019 01:28:42 -0700 (PDT)
+Received: from redhat.com (bzq-79-176-10-77.red.bezeqint.net. [79.176.10.77])
+        by smtp.gmail.com with ESMTPSA id x26sm5104286qto.21.2019.10.28.01.28.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Oct 2019 01:28:41 -0700 (PDT)
+Date:   Mon, 28 Oct 2019 04:28:34 -0400
+From:   "Michael S. Tsirkin" <mst@redhat.com>
+To:     gengdongjiu <gengdongjiu@huawei.com>
+Cc:     Xiang Zheng <zhengxiang9@huawei.com>, pbonzini@redhat.com,
+        imammedo@redhat.com, shannon.zhaosl@gmail.com,
+        peter.maydell@linaro.org, lersek@redhat.com, james.morse@arm.com,
+        mtosatti@redhat.com, rth@twiddle.net, ehabkost@redhat.com,
+        jonathan.cameron@huawei.com, xuwei5@huawei.com,
+        kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+        linuxarm@huawei.com, wanghaibin.wang@huawei.com
 Subject: Re: [PATCH v20 0/5] Add ARMv8 RAS virtualization support in QEMU
-To:     "Michael S. Tsirkin" <mst@redhat.com>, <peter.maydell@linaro.org>
-CC:     <pbonzini@redhat.com>, <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <lersek@redhat.com>,
-        <james.morse@arm.com>, <gengdongjiu@huawei.com>,
-        <mtosatti@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>,
-        <wanghaibin.wang@huawei.com>
+Message-ID: <20191028042645-mutt-send-email-mst@kernel.org>
 References: <20191026032447.20088-1-zhengxiang9@huawei.com>
  <20191027061450-mutt-send-email-mst@kernel.org>
-From:   Xiang Zheng <zhengxiang9@huawei.com>
-Message-ID: <b4cba864-6689-a425-af8e-4fb4a95d4482@huawei.com>
-Date:   Mon, 28 Oct 2019 11:16:51 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+ <6c44268a-2676-3fa1-226d-29877b21dbea@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20191027061450-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.133.224.57]
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <6c44268a-2676-3fa1-226d-29877b21dbea@huawei.com>
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: kX9qENp6gnms
+X-TUID: BotQrL4nrW4U
 
-
-
-On 2019/10/27 18:17, Michael S. Tsirkin wrote:
-> On Sat, Oct 26, 2019 at 11:24:42AM +0800, Xiang Zheng wrote:
->> In the ARMv8 platform, the CPU error types are synchronous external abort(SEA)
->> and SError Interrupt (SEI). If exception happens in guest, sometimes it's better
->> for guest to perform the recovery, because host does not know the detailed
->> information of guest. For example, if an exception happens in a user-space
->> application within guest, host does not know which application encounters
->> errors.
->>
->> For the ARMv8 SEA/SEI, KVM or host kernel delivers SIGBUS to notify userspace.
->> After user space gets the notification, it will record the CPER into guest GHES
->> buffer and inject an exception or IRQ into guest.
->>
->> In the current implementation, if the type of SIGBUS is BUS_MCEERR_AR, we will
->> treat it as a synchronous exception, and notify guest with ARMv8 SEA
->> notification type after recording CPER into guest.
->>
->> This series of patches are based on Qemu 4.1, which include two parts:
->> 1. Generate APEI/GHES table.
->> 2. Handle the SIGBUS signal, record the CPER in runtime and fill it into guest
->>    memory, then notify guest according to the type of SIGBUS.
->>
->> The whole solution was suggested by James(james.morse@arm.com); The solution of
->> APEI section was suggested by Laszlo(lersek@redhat.com).
->> Show some discussions in [1].
->>
->> This series of patches have already been tested on ARM64 platform with RAS
->> feature enabled:
->> Show the APEI part verification result in [2].
->> Show the BUS_MCEERR_AR SIGBUS handling verification result in [3].
+On Mon, Oct 28, 2019 at 12:01:34PM +0800, gengdongjiu wrote:
+> Hi Michael/All
+> 
+> On 2019/10/27 18:17, Michael S. Tsirkin wrote:
+> > On Sat, Oct 26, 2019 at 11:24:42AM +0800, Xiang Zheng wrote:
+> >> In the ARMv8 platform, the CPU error types are synchronous external abort(SEA)
+> >> and SError Interrupt (SEI). If exception happens in guest, sometimes it's better
+> >> for guest to perform the recovery, because host does not know the detailed
+> >> information of guest. For example, if an exception happens in a user-space
+> >> application within guest, host does not know which application encounters
+> >> errors.
+> >>
+> >> For the ARMv8 SEA/SEI, KVM or host kernel delivers SIGBUS to notify userspace.
+> >> After user space gets the notification, it will record the CPER into guest GHES
+> >> buffer and inject an exception or IRQ into guest.
+> >>
+> >> In the current implementation, if the type of SIGBUS is BUS_MCEERR_AR, we will
+> >> treat it as a synchronous exception, and notify guest with ARMv8 SEA
+> >> notification type after recording CPER into guest.
+> >>
+> >> This series of patches are based on Qemu 4.1, which include two parts:
+> >> 1. Generate APEI/GHES table.
+> >> 2. Handle the SIGBUS signal, record the CPER in runtime and fill it into guest
+> >>    memory, then notify guest according to the type of SIGBUS.
+> >>
+> >> The whole solution was suggested by James(james.morse@arm.com); The solution of
+> >> APEI section was suggested by Laszlo(lersek@redhat.com).
+> >> Show some discussions in [1].
+> >>
+> >> This series of patches have already been tested on ARM64 platform with RAS
+> >> feature enabled:
+> >> Show the APEI part verification result in [2].
+> >> Show the BUS_MCEERR_AR SIGBUS handling verification result in [3].
+> > 
+> > This looks mostly OK to me.  I sent some minor style comments but they
+> > can be addressed by follow up patches.
+> > 
+> > Maybe it's a good idea to merge this before soft freeze to make sure it
+> > gets some testing.  I'll leave this decision to the ARM maintainer.  For
+> > ACPI parts:
+> > 
+> > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> 
+> Got it, Thanks for the Reviewed-by from Michael.
+> 
+> Hi Michael,
+>   According to discussion with QEMU community, I finished and developed the whole ARM RAS virtualization solution, and introduce the ARM APEI table in the first time.
+> For the newly created files, which are mainly about ARM APEI/GHES part,I would like to maintain them. If you agree it, whether I can add new maintainers[1]? thanks a lot.
 > 
 > 
-> This looks mostly OK to me.  I sent some minor style comments but they
-> can be addressed by follow up patches.
+> [1]:
+> +ARM APEI Subsystem
+> +M: Dongjiu Geng <gengdongjiu@huawei.com>
+> +M: Xiang zheng <zhengxiang9@huawei.com>
+> +L: qemu-arm@nongnu.org
+> +S: Maintained
+> +F: hw/acpi/acpi_ghes.c
+> +F: include/hw/acpi/acpi_ghes.h
+> +F: docs/specs/acpi_hest_ghes.rst
 > 
-> Maybe it's a good idea to merge this before soft freeze to make sure it
-> gets some testing.  I'll leave this decision to the ARM maintainer.  For
-> ACPI parts:
-> 
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> 
 
-Hi Peter,
+I think for now you want to be a designated reviewer.  So I'd use an R:
+tag.
 
-I can address the style comments and send the series of patches before soft
-freeze if needed. And if there is no window before soft freeze, I can also
-address them by follow up patches. :)
-
--- 
-
-Thanks,
-Xiang
+> > 
+> > 
+> >> ---

@@ -1,162 +1,208 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2714284wri;
-        Mon, 28 Oct 2019 01:28:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzsg9XZU51VzR9UXrvV6IH67YwaaQ0em+MiA29/LpMBwgcr7fclCFtsRCN2Z9+NEo44386c
-X-Received: by 2002:a17:906:4554:: with SMTP id s20mr15731909ejq.283.1572251327877;
-        Mon, 28 Oct 2019 01:28:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572251327; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rufusigRjrLHeglO8dXnwbc2FdhYfyEg/473b71M0/x2l43X0FZDOiSkDdvsbkG+VT
-         mZPbAVKySeMhNoCoJcCdQYSX5SFyFS6MRwLQ6X1gZoKQKo4AvujFVBB/F9NNvqS0UQte
-         rgjtk9yWBZI46F5D1/cnEnkQWlwBt8kSmEMMZTnfF/bWEKzndK8xFZp0lhkUIkdMwZE+
-         eKVrMuDMyT7u7SglMe2+K0r+2/ZIeHRrQUr1MBrKmrp6LRdWxzlYDPNXwca3hJp5IFpu
-         8/snWb0ZO6l8tS1UumssIYongzJjChbZMMLPl2zaWYrvD/Ocj+fyJ8J/e7VMWsZGKRli
-         x/AA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date;
-        bh=0d6tHsZ6xj7MncVChi2UMTdxKJ1Dhsfr4PdJX86n9PE=;
-        b=S8TQI7oV7ccMMgJDi2i65JhWRlvbriE6HrszQFclCT3/wCBudQLHrEtGCoMOofadQ5
-         Nw9LqfFzmqQEKMvHSeo2dHol9Sw2H+VSLU06HY0pWj9pkMgvJQrtB1p5nXBvp+lEIA2U
-         7TuKal/y4hhoJQi8nMfckBniqD8Dt5cEMgc71TCQkYAcLf4U24GYAfNRU4qOId8nwG2W
-         b3B6mdqv1unZPo9jpNr8h8kTS+1jLqJecEBBUfo8CKBBOtvOlVJ8aX8PFK7+i5EBuvjd
-         twWzjoBr4Vbg5FXy7hy5zjeJWagT8Jik+P8NBZOOp0Ja98o+TZxqxjYjLl5TQh+iHlyf
-         jm4Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id t16si5595777ejd.435.2019.10.28.01.28.47;
-        Mon, 28 Oct 2019 01:28:47 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp4609695wri;
+        Tue, 29 Oct 2019 08:54:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyExgekW6WfXIEzpMZVMJIJMFoC540hJ2OdfTgJzRmm7InvpHfmoFYJ8UlJ6PKTd73CiTYr
+X-Received: by 2002:aed:31c7:: with SMTP id 65mr4970516qth.379.1572364466046;
+        Tue, 29 Oct 2019 08:54:26 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d19si11911682qto.284.2019.10.29.08.54.25
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 29 Oct 2019 08:54:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2387452AbfJ1I2q (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 28 Oct 2019 04:28:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59004 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S2387412AbfJ1I2o (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 28 Oct 2019 04:28:44 -0400
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
-        (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id B87BC85360
-        for <kvm@vger.kernel.org>; Mon, 28 Oct 2019 08:28:43 +0000 (UTC)
-Received: by mail-qt1-f197.google.com with SMTP id k9so5010647qtg.2
-        for <kvm@vger.kernel.org>; Mon, 28 Oct 2019 01:28:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=0d6tHsZ6xj7MncVChi2UMTdxKJ1Dhsfr4PdJX86n9PE=;
-        b=gQqTvs4KRHpGD+nwu02ozyrGd+73pamdv2OuPmP0S/7jsE/S0xo+ESIoQhq03IoxzG
-         7GJR3Ilaq1ZW/NkWXrUocyYndxURcZs6CmOU0Njc2r6wyMv3pZWRCihXw9yYVyZq/1d5
-         VCSlYKpbd/RNGzCFLovxgZ0Y/OkZmLo4TPP5ci+wggKDqmThdM5QtdukKQVhejC+nkob
-         K6dBkB5z6ybjkn5nueHdMGweUxRQdH2iPgCevkXQw9opY1hLZlIKUwoPSGu/ykCqOc/I
-         ex3hhcF2OS/HbKrRrfwVs1f3698oaD314hmgz8gQDKA5ZCOI4rYwHmDMGgXm4aydI68l
-         3BFg==
-X-Gm-Message-State: APjAAAXm8PCbFUYmAzPVT+dodcB/dpfAkcm6KKr0v2q/FeAnZjdCuAyn
-        1yvpXsCjjuOO60Z1ubIwFfNd9WiBat2FZKrZT2ndL4CzcCh1u8lG5/NPCkOkvI55bUTz9ceuePJ
-        HVAXhaJ2Yn/Ls
-X-Received: by 2002:a0c:eda9:: with SMTP id h9mr1914664qvr.41.1572251322985;
-        Mon, 28 Oct 2019 01:28:42 -0700 (PDT)
-X-Received: by 2002:a0c:eda9:: with SMTP id h9mr1914644qvr.41.1572251322701;
-        Mon, 28 Oct 2019 01:28:42 -0700 (PDT)
-Received: from redhat.com (bzq-79-176-10-77.red.bezeqint.net. [79.176.10.77])
-        by smtp.gmail.com with ESMTPSA id x26sm5104286qto.21.2019.10.28.01.28.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2019 01:28:41 -0700 (PDT)
-Date:   Mon, 28 Oct 2019 04:28:34 -0400
-From:   "Michael S. Tsirkin" <mst@redhat.com>
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     Xiang Zheng <zhengxiang9@huawei.com>, pbonzini@redhat.com,
-        imammedo@redhat.com, shannon.zhaosl@gmail.com,
-        peter.maydell@linaro.org, lersek@redhat.com, james.morse@arm.com,
-        mtosatti@redhat.com, rth@twiddle.net, ehabkost@redhat.com,
-        jonathan.cameron@huawei.com, xuwei5@huawei.com,
-        kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-        linuxarm@huawei.com, wanghaibin.wang@huawei.com
-Subject: Re: [PATCH v20 0/5] Add ARMv8 RAS virtualization support in QEMU
-Message-ID: <20191028042645-mutt-send-email-mst@kernel.org>
-References: <20191026032447.20088-1-zhengxiang9@huawei.com>
- <20191027061450-mutt-send-email-mst@kernel.org>
- <6c44268a-2676-3fa1-226d-29877b21dbea@huawei.com>
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=ENW0tbTm;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58996 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iPTpB-0001TF-Am
+	for alex.bennee@linaro.org; Tue, 29 Oct 2019 11:54:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46246)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <damien.hedde@greensocs.com>) id 1iPToQ-0000wW-7f
+ for qemu-arm@nongnu.org; Tue, 29 Oct 2019 11:53:39 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <damien.hedde@greensocs.com>) id 1iPToO-0003cB-DF
+ for qemu-arm@nongnu.org; Tue, 29 Oct 2019 11:53:37 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:51646)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1iPToN-0003QA-QW; Tue, 29 Oct 2019 11:53:36 -0400
+Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id F34F196EF0;
+ Tue, 29 Oct 2019 15:53:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1572364412;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hqYpBlQ+UJk/As859C5hEMl6cmn01c4p9ov5XUh86og=;
+ b=ENW0tbTmm9meiaO5aRnU0Y1xQRt6cv+WO5oPONDSe+lsnR0sBrl1PPk5WhefCyU1En/g5H
+ uGajJhAAjAHcHO3fbdPpQnCli0LQlGXckIz1UC03DiM0Dt8A/pofDwmardaWCtVM92BF1E
+ bUwqHEZmTRsPzkrLvGtzBAeJqgWxsZY=
+Subject: Re: [PATCH v5 00/13] Multi-phase reset mechanism
+To: qemu-devel@nongnu.org
+References: <20191018150630.31099-1-damien.hedde@greensocs.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <efef625a-8162-5454-128f-489d636563a1@greensocs.com>
+Date: Tue, 29 Oct 2019 16:53:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6c44268a-2676-3fa1-226d-29877b21dbea@huawei.com>
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: BotQrL4nrW4U
+In-Reply-To: <20191018150630.31099-1-damien.hedde@greensocs.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1572364412;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hqYpBlQ+UJk/As859C5hEMl6cmn01c4p9ov5XUh86og=;
+ b=tzeIYgYJTJP8HLcorleQ4nsHOlN4YE+4qMtP1bQS5s/vTnK8tNca0n8q9oBZgw4M+OVZip
+ 86zduxrP+F0L2R54KtEAXdUFS1Y1VyBDkDbcGv3u9qq619S8bED++0PJkDoFqnd2Bzwpt2
+ IHyWnrZG0p5AoZcY3LA5gKqfg51GxqY=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1572364412; a=rsa-sha256; cv=none;
+ b=tYr7Cytk79AypKCLKkok71kSJVHhrlgOyqxI/qTY3O6dmr6mDns4U43WfQZNI307V13Joe
+ +xDVpYUxy2LMS1q1qQNkG9mruDI/Zxj/woHcnZXwqcwp0i2B91fe5vYAC2LMl+KnMo2/Bm
+ Sd5hASXKyiJV3iAch0Cfsq8AWu97dsI=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 5.135.226.135
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
+ cohuck@redhat.com, mark.burton@greensocs.com, qemu-s390x@nongnu.org,
+ edgari@xilinx.com, qemu-arm@nongnu.org, pbonzini@redhat.com, philmd@redhat.com,
+ david@gibson.dropbear.id.au
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zbrqxk4NRmmh
 
-On Mon, Oct 28, 2019 at 12:01:34PM +0800, gengdongjiu wrote:
-> Hi Michael/All
-> 
-> On 2019/10/27 18:17, Michael S. Tsirkin wrote:
-> > On Sat, Oct 26, 2019 at 11:24:42AM +0800, Xiang Zheng wrote:
-> >> In the ARMv8 platform, the CPU error types are synchronous external abort(SEA)
-> >> and SError Interrupt (SEI). If exception happens in guest, sometimes it's better
-> >> for guest to perform the recovery, because host does not know the detailed
-> >> information of guest. For example, if an exception happens in a user-space
-> >> application within guest, host does not know which application encounters
-> >> errors.
-> >>
-> >> For the ARMv8 SEA/SEI, KVM or host kernel delivers SIGBUS to notify userspace.
-> >> After user space gets the notification, it will record the CPER into guest GHES
-> >> buffer and inject an exception or IRQ into guest.
-> >>
-> >> In the current implementation, if the type of SIGBUS is BUS_MCEERR_AR, we will
-> >> treat it as a synchronous exception, and notify guest with ARMv8 SEA
-> >> notification type after recording CPER into guest.
-> >>
-> >> This series of patches are based on Qemu 4.1, which include two parts:
-> >> 1. Generate APEI/GHES table.
-> >> 2. Handle the SIGBUS signal, record the CPER in runtime and fill it into guest
-> >>    memory, then notify guest according to the type of SIGBUS.
-> >>
-> >> The whole solution was suggested by James(james.morse@arm.com); The solution of
-> >> APEI section was suggested by Laszlo(lersek@redhat.com).
-> >> Show some discussions in [1].
-> >>
-> >> This series of patches have already been tested on ARM64 platform with RAS
-> >> feature enabled:
-> >> Show the APEI part verification result in [2].
-> >> Show the BUS_MCEERR_AR SIGBUS handling verification result in [3].
-> > 
-> > This looks mostly OK to me.  I sent some minor style comments but they
-> > can be addressed by follow up patches.
-> > 
-> > Maybe it's a good idea to merge this before soft freeze to make sure it
-> > gets some testing.  I'll leave this decision to the ARM maintainer.  For
-> > ACPI parts:
-> > 
-> > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> Got it, Thanks for the Reviewed-by from Michael.
-> 
-> Hi Michael,
->   According to discussion with QEMU community, I finished and developed the whole ARM RAS virtualization solution, and introduce the ARM APEI table in the first time.
-> For the newly created files, which are mainly about ARM APEI/GHES part,I would like to maintain them. If you agree it, whether I can add new maintainers[1]? thanks a lot.
-> 
-> 
-> [1]:
-> +ARM APEI Subsystem
-> +M: Dongjiu Geng <gengdongjiu@huawei.com>
-> +M: Xiang zheng <zhengxiang9@huawei.com>
-> +L: qemu-arm@nongnu.org
-> +S: Maintained
-> +F: hw/acpi/acpi_ghes.c
-> +F: include/hw/acpi/acpi_ghes.h
-> +F: docs/specs/acpi_hest_ghes.rst
-> 
+Hi,
 
-I think for now you want to be a designated reviewer.  So I'd use an R:
-tag.
+Does anyone has comment about the interface / patch 3 ?
+Should I try to split it ?
 
-> > 
-> > 
-> >> ---
+Thanks,
+Damien
+
+On 10/18/19 5:06 PM, Damien Hedde wrote:
+> Hi all,
+> 
+> The purpose of this series is to split the current reset procedure
+> into multiple phases. This will help to solve some ordering
+> difficulties we have during reset. Previous version can be found here:
+> https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg04359.html
+> 
+> This series adds resettable interface and transitions base Device and
+> Bus classes (sysbus subclasses are ok too). It provides new reset
+> functions but does not switch anymore the old functions
+> (device_reset() and qdev/qbus_reset_all()) to resettable interface.
+> These functions keep the exact same behavior as before.
+> 
+> The series also transition the main reset handlers registration which
+> has no impact until devices and buses are transitioned.
+> 
+> I think this version is way better regarding the transition from the
+> legacy to the resettable interface than the previous one.
+> After this series, the plan is then to transition devices, buses and
+> legacy reset call sites. Devices and buses have to be transitioned
+> from mother class to daughter classes order but until the final
+> (daughter) class is transitioned, old monolitic reset behavior will
+> be kept for this class.
+> 
+> Changes v4 -> v5:
+>   + various improvement in the resettable interface (regarding
+>     transition, robustness and several reset types)
+>   + better handling of transition from legacy reset to resettable
+>   + device hotplug and parent bus 'hot' change support
+>   + improved doc with examples and converted to rst format
+> 
+> Regarding the Resettable interface changes and how to handle more
+> reset types, please read patch 3 message.
+> 
+> The series is organized as follows:
+> Patch 1 is unmodified. Patch 2 adds some utility trace events.
+> Patches 3 to 8 adds resettable api in devices and buses. Patch 9 adds
+> some documentation. Patches 10 and 11 transition the call sites of
+> qemu_register_reset(qdev/qbus_reset_all_fn, ...).
+> 
+> Apart from patch 7 about hotplug which is really a rfc. I think other
+> patches are in pretty good shape.
+> Patch 3 and 4 are quite big but I don't think it make much sense to
+> split them. I could give it a try if you think it will ease reviews.
+> Note that depending on what name we choose for device/bus reset
+> functions (see patch 8), we may finally don't need patch 1.
+> 
+> I've also added patches 12 and 13 which handle the raspi sd card
+> reparenting. I'm not sure they fit well in this series but at some
+> point in this development I thought they had to be before patch 9
+> (finally it is not the case). Since I had to develop some specific
+> resettable support just for this case , I kept them as an example
+> of what transition a device is. Note that patch 13 handle the only
+> reset parent change (tricky) case I found (apart from hotplug).
+> 
+> Thanks for your feedback,
+> Damien
+> 
+> Damien Hedde (13):
+>   add device_legacy_reset function to prepare for reset api change
+>   hw/core/qdev: add trace events to help with resettable transition
+>   hw/core: create Resettable QOM interface
+>   hw/core: add Resettable support to BusClass and DeviceClass
+>   hw/core/resettable: add support for changing parent
+>   hw/core/qdev: handle parent bus change regarding resettable
+>   hw/core/qdev: update hotplug reset regarding resettable
+>   hw/core: deprecate old reset functions and introduce new ones
+>   docs/devel/reset.txt: add doc about Resettable interface
+>   vl: replace deprecated qbus_reset_all registration
+>   hw/s390x/ipl: replace deprecated qdev_reset_all registration
+>   hw/gpio/bcm2835_gpio: Isolate sdbus reparenting
+>   hw/gpio/bcm2835_gpio: Update to resettable
+> 
+>  Makefile.objs            |   1 +
+>  docs/devel/reset.rst     | 282 ++++++++++++++++++++++++++++++++++++++
+>  hw/audio/intel-hda.c     |   2 +-
+>  hw/core/Makefile.objs    |   1 +
+>  hw/core/bus.c            | 102 ++++++++++++++
+>  hw/core/qdev.c           | 156 +++++++++++++++++++--
+>  hw/core/resettable.c     | 289 +++++++++++++++++++++++++++++++++++++++
+>  hw/core/trace-events     |  27 ++++
+>  hw/gpio/bcm2835_gpio.c   |  31 +++--
+>  hw/hyperv/hyperv.c       |   2 +-
+>  hw/i386/pc.c             |   2 +-
+>  hw/ide/microdrive.c      |   8 +-
+>  hw/intc/spapr_xive.c     |   2 +-
+>  hw/ppc/pnv_psi.c         |   2 +-
+>  hw/ppc/spapr_pci.c       |   2 +-
+>  hw/ppc/spapr_vio.c       |   2 +-
+>  hw/s390x/ipl.c           |  10 +-
+>  hw/s390x/s390-pci-inst.c |   2 +-
+>  hw/scsi/vmw_pvscsi.c     |   2 +-
+>  hw/sd/omap_mmc.c         |   2 +-
+>  hw/sd/pl181.c            |   2 +-
+>  include/hw/qdev-core.h   |  58 +++++++-
+>  include/hw/resettable.h  | 224 ++++++++++++++++++++++++++++++
+>  tests/Makefile.include   |   1 +
+>  vl.c                     |  10 +-
+>  25 files changed, 1185 insertions(+), 37 deletions(-)
+>  create mode 100644 docs/devel/reset.rst
+>  create mode 100644 hw/core/resettable.c
+>  create mode 100644 include/hw/resettable.h
+> 

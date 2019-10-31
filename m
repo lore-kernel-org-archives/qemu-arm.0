@@ -1,195 +1,256 @@
-Received: by 2002:a5d:4890:0:0:0:0:0 with SMTP id g16csp2458803wrq;
-        Thu, 24 Oct 2019 07:54:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzZ6D1YunqJ6TaQYqAtmBLyYfw2x9Bvg5hrhAoxHcww2EeMFDUMtUYKWNBSEI1G8KHOCcZk
-X-Received: by 2002:ac8:53ca:: with SMTP id c10mr1512174qtq.94.1571928889840;
-        Thu, 24 Oct 2019 07:54:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571928889; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1133303wri;
+        Thu, 31 Oct 2019 06:07:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxro4do0KWrggRTfzFt8DbhfjSmmXcId3PfBPrT7U1yMjhSWkTiq2yujzkh5qyEy6EKQHAm
+X-Received: by 2002:a17:906:76c9:: with SMTP id q9mr3846848ejn.53.1572527259757;
+        Thu, 31 Oct 2019 06:07:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572527259; cv=none;
         d=google.com; s=arc-20160816;
-        b=mHKDv7ENYVpP9krId7wLL7fRpE3tP5kOXEOJT6l6rmyEtiPx02DSaWDWXbybsxBT+D
-         Q0DGMZSdHFloggFYDwbMl2VpTs3w1+OtFFejkodd7B33EHz1Cpd0CNluyR968wg8q0Gw
-         3w/rxfVbk3QJj7ltWdLXJ21K4bWx5M3736NFmCVXFG+wT/525oY0CYpfIY5aAHWxu/d2
-         PvEk0XwXL7/wG+9DgZ+NFuS93LncK5cIpO3MTPXS43jxM7vBpFnDQQ8LDa5Nt6v0p3H5
-         +5zUO/K6MEQ6s+QvaHlAjwa5N/c4YaaXY6BQi7S0zJPPzt+hZ0sSHNrE1GS7N8C0LCoq
-         tA4g==
+        b=Oa+1dU90sRK5yjKvi4JvYtgAUiaPP2YwJLKQwyh1qEL4aWJb65WGoGdHaAitcKFrRD
+         FhXWn34tpbTaVSImLMOqoqgFxOg3nx85x7Cl6hMwBhkPwYvOGC8DyK54UaM+a3m/eLRW
+         /LyQcb2NhTxeFidZg1AioD9PCfPxysByvJOE05tWlwYSsFP3MOvhUKNQ8r8fNG0E1Wob
+         rHwlAghd4pnjxUnKrXmVmrP/qeQtxuN3DdwoSk1R4+TOzGCoYqZ5jq3Xv2NRtnI2g6nh
+         V1qp+g6f4+FypZrLOmQq1pSCkZmbkSno4W2aDIPHL1ZXG2EFawUaaTZVJSFlNdWAx7iU
+         SeUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=WPooH9e56nUP3fQYMc9LZIHEV2Orw7XoLKLkOxq68DE=;
-        b=T6NyleK1qyIGOkD30PPoK5euUwDnbpdvl/KVUIK5jd73+ZHatHLFmL7ok72wURJF0B
-         viDj6MRLORQDNaPnYK1zGDxDyAW8xoisX6OtEppq8S7Xhb4qWIfEZXzZ+J3DpCga3rpU
-         dOSuF/oBpsbuhciPPu3MmucF3A3X8gxvLliV923ASe2r2ZZgteK5CkXu7YSdFfwNs+uL
-         /S3+upWFAk65WXs3iEMXTz5+ae9uVvxR+w307aZDey5++rYVAh/7iwdKfJP3lxN03TH3
-         53+3/8TYB4wI5D6qsXEx/Y7YiNBIiH/4Yy/KETx99aVSRKRpJT0a3pj65VfVq9Sx+a94
-         r9pQ==
+        h=list-id:precedence:sender:content-transfer-encoding:in-reply-to
+         :mime-version:user-agent:date:message-id:from:cc:references:to
+         :subject;
+        bh=oNxOVeqJU/U12p8vtYMu71CUmHkWbWF/LcutKE8Ldzw=;
+        b=UbbFi0KO165HH0x3txMKyK/1DbbvzL8ZFVSwkhFYjzWgJamkwTjK4fJaiA09DHBOtT
+         IVjf1mJJWqrKE9mp/dLn00nmU8AkWlXzd/xZuPrWy7fFN9UT3gOb8KzkGICHaah/YrwR
+         DZFEtSiRiZSdbEjf8LdT2kojdjvpqmA8k4X1s9ruTz6pwIo8cUtkNy4zsWBILR2y6zm9
+         MoGla2vrKiiaRtg4XxLaqpXclPYe7+46Xs8upEdUKONJfHHIzwl8leDrJjrIAY2sOIwy
+         5VIlCw4zkB0HtKIaQ/HT+8EHdU6AFhRcm1RaL/mQScFtG5aK5CDXbVxvK0bB+BCIMZ0e
+         w3kA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GiBkPS7k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g9si915408qvp.166.2019.10.24.07.54.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2019 07:54:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Return-Path: <linux-kernel-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id h58si4363737eda.18.2019.10.31.06.07.39;
+        Thu, 31 Oct 2019 06:07:39 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GiBkPS7k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44748 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iNeVk-0002M2-SF
-	for alex.bennee@linaro.org; Thu, 24 Oct 2019 10:54:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56663)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iNd5j-0006Jk-36
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 09:23:52 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iNd5h-0006DR-Ly
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 09:23:50 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:35691)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iNd5h-0006Cl-CN
- for qemu-devel@nongnu.org; Thu, 24 Oct 2019 09:23:49 -0400
-Received: by mail-oi1-x244.google.com with SMTP id x3so20598196oig.2
- for <qemu-devel@nongnu.org>; Thu, 24 Oct 2019 06:23:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=WPooH9e56nUP3fQYMc9LZIHEV2Orw7XoLKLkOxq68DE=;
- b=GiBkPS7kcX+X9TwT/9y2g8Zda25S/HdUZSj6gepim/wAhyN11ZdXJA/U9ccCiHWVRt
- 0nOg4mJ60KYf10tBTdoXGdPDQfSso6NF4YJ3peVdMGltzZrn3ftIr6LRCWOsVcCK2SQv
- R7mwb3yLUU6Sdfi85d6tu9yNgbo5zKOAGF10qSjkcAK3IJmwapLu8eLSo+X5ACxCHILt
- RmzHTgCourE5C7nGvVajPDmn/fbzqzEdXjfUOt0CNG9XzHGh7dtNegWJvwC8Q0FsepiV
- lIQg41tKY6nQBnDlj+C62gfN39lne6FOGryvQY98Ajf4wfkuuTHPT4tYgn//q0CIFzPI
- bdBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=WPooH9e56nUP3fQYMc9LZIHEV2Orw7XoLKLkOxq68DE=;
- b=APyMpocRNLiUUddBpMV67LdgqDj5VOMZymx8+VDxku8VL/lCqOq5TzG8IbTFBMZnsY
- fvUaOcRzHzpSSZvYQMglaAbrVXppUASx/VvlexczaLaKedtvKpJaLHN1/fQJoxt0j+zk
- M8XJQ6lHa38BYo9H/RXjtVDa7qxllHlkAzgUmZirx5SEqVAWAIOZD5VIRq68sZgyeUCr
- cTMjfudWTcr09b6U3sXwIfvmgHnuajhWann47f4rBwh5jAzbrpfCr4BsCgnb/MeinK/T
- w7jta29ApvmhUQJGvFV72JmvyyfZDEqfnYcW8AALICTcLeWYgNsC2ZfOGb3LYASrfXDn
- DNPQ==
-X-Gm-Message-State: APjAAAWm0vGSeqJVBMMyGjK6zsqnC8eT/A2qqgbqfO4tBRCtUUKFm2WC
- YJTyGMaHrJmAht5/9FYmBnjpfbhUS9IDjwyBI8s/Dw==
-X-Received: by 2002:a05:6808:9:: with SMTP id u9mr4707985oic.98.1571923427960; 
- Thu, 24 Oct 2019 06:23:47 -0700 (PDT)
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726910AbfJaNHi (ORCPT <rfc822;lee.jones@linaro.org>
+        + 26 others); Thu, 31 Oct 2019 09:07:38 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5240 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726462AbfJaNHi (ORCPT <rfc822;linux-kernel@vger.kernel.org>);
+        Thu, 31 Oct 2019 09:07:38 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id 1D02563FB0F6D69357FD;
+        Thu, 31 Oct 2019 21:07:35 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Thu, 31 Oct 2019
+ 21:07:24 +0800
+Subject: Re: [RFC PATCH 1/2] kvm/arm: add capability to forward hypercall to
+ user space
+To:     James Morse <james.morse@arm.com>
+References: <1569338454-26202-1-git-send-email-guoheyi@huawei.com>
+ <1569338454-26202-2-git-send-email-guoheyi@huawei.com>
+ <e097fb69-1e68-4082-d310-e7666e30b5d6@arm.com>
+ <d62b84ac-1a7e-de05-a1c1-c52dfb463462@huawei.com>
+ <22aa23e0-cd4e-3692-ee94-e110ace49adb@arm.com>
+CC:     <linux-arm-kernel@lists.infradead.org>,
+        <linux-kernel@vger.kernel.org>, <kvm@vger.kernel.org>,
+        <qemu-arm@nongnu.org>, <wanghaibin.wang@huawei.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Dave Martin <Dave.Martin@arm.com>,
+        Marc Zyngier <marc.zyngier@arm.com>,
+        Mark Rutland <mark.rutland@arm.com>,
+        Julien Thierry <julien.thierry.kdev@gmail.com>,
+        Suzuki K Poulose <suzuki.poulose@arm.com>,
+        Russell King <linux@armlinux.org.uk>,
+        "Catalin Marinas" <catalin.marinas@arm.com>,
+        Will Deacon <will@kernel.org>, <kvmarm@lists.cs.columbia.edu>
+From:   Guoheyi <guoheyi@huawei.com>
+Message-ID: <4af47d1c-40cc-8440-d834-d721e1c0a758@huawei.com>
+Date:   Thu, 31 Oct 2019 21:07:22 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-References: <20191019234715.25750-1-f4bug@amsat.org>
- <20191019234715.25750-12-f4bug@amsat.org>
-In-Reply-To: <20191019234715.25750-12-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 24 Oct 2019 14:23:36 +0100
-Message-ID: <CAFEAcA_w1zW4ewY-ts=yJbKFNRVhOjXuAtj9_0rt4EvD3qkm3Q@mail.gmail.com>
-Subject: Re: [PATCH v3 11/16] hw/arm/raspi: Use -smp cores=<N> option to
- restrict enabled cores
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Matthias Brugger <mbrugger@suse.com>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, "Emilio G . Cota" <cota@braap.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
- qemu-arm <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>,
- Laurent Bonnans <laurent.bonnans@here.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Pete Batard <pete@akeo.ie>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8NzuYEKhHEam
+In-Reply-To: <22aa23e0-cd4e-3692-ee94-e110ace49adb@arm.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
+Sender: linux-kernel-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <linux-kernel.vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+X-TUID: 1MoqdZfSxKlX
 
-On Sun, 20 Oct 2019 at 00:47, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> The abstract TYPE_BCM283X device provides a 'enabled-cpus' property
-> to restrict the number of cores powered on reset. This because on
-> real hardware the GPU is responsible of starting the cores and keep
-> them spinning until the Linux kernel is ready to use them.
-> When using the -kernel paramenter, QEMU does this by installing the
-> 'raspi_smpboot' code when arm_boot_info::write_board_setup() is
-> called. This is a special feature to help the Linux kernel, and can
-> only be used with a Linux kernel.
->
-> Even if loaded with the -kernel option, U-boot is not Linux, thus
-> is not recognized as it and the raspi_smpboot code is not installed.
->
-> Upon introduction of this machine in commit 1df7d1f9303, the -smp <N>
-> option allowd to limit the number of cores powered on reset.
-> Unfortunately later commit 72649619341 added a check which made this
-> feature unusable:
->
->   $ qemu-system-aarch64 -M raspi3 -smp 1
->   qemu-system-aarch64: Invalid SMP CPUs 1. The min CPUs supported by mach=
-ine 'raspi3' is 4
->
-> Fortunately, the -smp option allow various kind of CPU topology:
->
->   -smp [cpus=3D]n[,maxcpus=3Dcpus][,cores=3Dcores][,threads=3Dthreads][,d=
-ies=3Ddies][,sockets=3Dsockets]
->            set the number of CPUs to 'n' [default=3D1]
->            maxcpus=3D maximum number of total cpus, including
->            offline CPUs for hotplug, etc
->            cores=3D number of CPU cores on one socket (for PC, it's on on=
-e die)
->            threads=3D number of threads on one CPU core
->            dies=3D number of CPU dies on one socket (for PC only)
->            sockets=3D number of discrete sockets in the system
->
-> Let's use the 'cores' argument to specify the number of cores powered
-> at reset to restore this feature, and allow to boot U-boot.
+Sorry for the late, for it took some time for me to think it over...
 
-From the help message quoted, 'cores' is about NUMA topology,
-it's nothing to do with "how many cores do we have powerd on
-on reset". We should definitely not be borrowing it for
-an unrelated purpose.
 
-> We can now run U-boot using:
+On 2019/10/22 0:42, James Morse wrote:
+> Hi Heyi,
 >
->   $ qemu-system-aarch64 -M raspi3 -smp 4,cores=3D1 ...
+> On 09/10/2019 13:33, Guoheyi wrote:
+>> On 2019/10/2 1:19, James Morse wrote:
+>>> On 24/09/2019 16:20, Heyi Guo wrote:
+>>>> As more SMC/HVC usages emerge on arm64 platforms, like SDEI, it makes
+>>>> sense for kvm to have the capability of forwarding such calls to user
+>>>> space for further emulation.
+>>> (what do you mean by further? Doesn't user-space have to do all of it?)
+>> For kvm will always handle hvc/smc guest exit for the first step, even if it is only a
+>> simple forwarding, I called the user-space processing as "further emulation".
+>>
+>>>> We reuse the existing term "hypercall" for SMC/HVC, as well as the
+>>>> hypercall structure in kvm_run to exchange arguments and return
+>>>> values. The definition on arm64 is as below:
+>>>>
+>>>> exit_reason: KVM_EXIT_HYPERCALL
+>>>>
+>>>> Input:
+>>>>     nr: the immediate value of SMC/HVC calls; not really used today.
+>>>>     args[6]: x0..x5 (This is not fully conform with SMCCC which requires
+>>>>              x6 as argument as well, but use space can use GET_ONE_REG
+>>>>              ioctl for such rare case).
+>>> If this structure isn't right for us, we could define a different one for arm/arm64.
+>>> (we did this for kvm_vcpu_events)
+>> Do you mean that we can move the hypercall struct definition to arch specific kvm_host.h?
+>> For it is in the common kvm_run structure, we'll need to change every kvm supported
+>> architectures, including x86, mips, powerpc, s390. Is it acceptable?
+> Ah! Sorry, I'd missed this was in the kvm_run structure. The get-events example doesn't
+> apply here as that was a separate ioctl().
+>
+>
+>>>> Return:
+>>>>     args[0..3]: x0..x3 as defined in SMCCC. We need to extract
+>>>>                 args[0..3] and write them to x0..x3 when hypercall exit
+>>>>                 returns.
+>>> Are we saying that KVM_EXIT_HYPERCALL expects to be used with SMC-CC?
+>>> (if so, we should state that).
+>> Yes I followed SMC-CC when writing this.
+>>> I'm not certain we should tie this to SMC-CC.
+>>>
+>>> If we don't tie it to SMC-CC this selection of in/out registers looks odd, there is
+>>> nothing about HVC/SMC that uses these registers, its just the SMC convention.
+>> Maybe we don't need to tie it to SMC-CC, and simply load all values in args[6] to GP
+>> registers...
+>> And then there is either no strong reason to extend hypercall structure for ARM.
+>
+>>>> Flag hypercall_forward is added to turn on/off hypercall forwarding
+>>>> and the default is false. Another flag hypercall_excl_psci is to
+>>>> exclude PSCI from forwarding for backward compatible, and it only
+>>>> makes sense to check its value when hypercall_forward is enabled.
+>>> Calling out PSCI like this is something we shouldn't do. There will be, (are!) other
+>>> SMC-CC calls that the kernel provides emulation for, we can't easily add to this list.
+>> Yes; I didn't figure out good way to keep compatibility and future extension...
+> I think the best trick is not to interpret the SMC/HVC calls from the guest. The kernel
+> obviously does, but the API shouldn't force us to.
+>
+>
+>>> I think the best way to avoid this, is to say the hypercall mechanism forwards 'unhandled
+>>> SMC/HVC' to user-space. Which things the kernel chooses to handle can change.
+>>>
+>>> We need a way for user-space to know which SMC/HVC calls the kernel will handle, and will
+>>> not forward. A suggestion is to add a co-processor that lists these by #imm and r0/x0
+>>> value. User-space can then query any call to find out if it would be exported if the guest
+>>> made that call. Something like kvm_arm_get_fw_reg().
+>> Do you mean we add only one co-processor to list all SMC/HVC calls kernel will handle?
+> Yes, some way of listing them.
+> e.g. user-space wants to handle HVC's with #imm==0 and w0==0x84000000, this co-processor
+> would list that as one of the things that the kernel will handle.
+>
+> If we can find a way of describing 64bit register values that would save them from being a
+> problem in the future, but it may be too complicated to describe a 64bit register space
+> and 16 bits of immediate.
+>
+> I think its okay for this co-processor to be SMC-CC specific, as its describing what the
+> kernel supports. The KVM-api in contrast should be flexible enough to describe anything
+> any guest may wish to do.
+>
+>
+>> So
+>> the reg size should be large enough to hold the list, each entry of which contains a #imm
+>> and r0/x0 pair? Is the reg size fixed by definition or it can be queried by user-space? If
+>> it is fixed, what's the size should we choose?
+> (fixed/not-fixed - its a trade-off for complexity now, but no-one may ever use the full
+> flexibility).
+>
+> I think we can assume the kernel will only offer things that look like SMC-CC to the
+> guest. If the guest does something outside this space, its up to user-space to handle. (so
+> the KVM-API must support non-SMC-CC stuff). I think we should define a co-processor for
+> SMC/HVC where the #imm is 0. This then gives us 32bits of space we can map directly onto
+> the w0 values.
+Shall we setup a new class of co-processor and use the following id bit 
+patterns (assuming the type index to be 0x0016)?
 
-Either:
- (a) we need to support "act like the firmware/GPU" for
-booting guest binaries on this board, in the same way that our PSCI
-support is effectively emulating firmware-level facilities
- (b) the u-boot binary should be provided to QEMU in the
-right image format to use the kernel boot ABI
- (c) u-boot could be wrapped in a small guest binary that
-deals with handling all the secondary cores
+0x6030 <high 16 bits of SMC-CC function ID> 0016 <low 16 bits of SMC-CC 
+function ID>
 
-I'm not really a huge fan of (a) because we already have a
-huge pile of random weird ways of loading guest images
-that are undocumented, behave differently from board to
-board or architecture to architecture, etc. I'm not too
-keen on making that swamp worse, even though there's an
-argument that the right UI for a raspi board model is to
-provide the same "load an ELF file" handling that the real
-hardware does for ELF files via the GPU/firmware combo.
+And the value of the co-processor returned to user space can be 0 (KVM 
+will not handle) or 1 (KVM will handle)?
 
-thanks
--- PMM
+>
+>
+>> Does it make sense to extend the entry to hold the function ID base and limit, so that it
+>> can describe the whole range for each function group, like PSCI, SDEI, etc?
+> This may be over-complex, user-space would always need to enumerate the whole thing. I
+> think commonly user-space would only want to know about one entry: For cases where we know
+> the structure, user-space can just query the '_VERSION' call. If that isn't supported,
+> user-space can assume the rest of that space is unimplemented. (the kernel shouldn't
+> provide an incomplete emulation of these APIs)
+>
+>
+>>> For 32bit, are we going to export SMC/HVC calls that failed their condition-code checks?
+>> I'm not familiar with 32bit, either we don't have 32bit platforms to test the code. So my
+>> preference is not to make many changes to 32bit...
+> I'm not that familiar with it either ... You don't have anything with aarch32 support at
+> EL1? I don't think we should add an API that only works with Aarch64 guests.
+We have some D05 which is based on cortex A72 and should support aarch32 
+guest. I can take a try.
+
+Our object is to support aarch32 guest on an aarch64 hypervisor, but not 
+on an aarch32 hypervisor, isn't it?
+
+>
+> For 32bit, we either need to expose these condition-code bits, and say user-space should
+> work out if it needs to do anything. Or, handle this in the kernel, in which case we don't
+> need to expose the condition-code bits, but we should document that the kernel will do the
+> check.
+>
+>
+> Nested-virt may cause some 'fun' here. If user-space starts an aarch64 guest at EL2, it
+> may start its own aarch32 guest at EL1. If the aarch32 guest makes an SMC, who handles it?
+> If user-space's aarch64 guest didn't set the traps for SMC, I think this should be
+> delivered to user-space, which may be surprised by the request from an aarch32 guest.
+>
+> (its also possible nested-virt has me confused, it is pretty mind bending!)
+>
+>
+>>> The hypercall structure should probably indicate whether the SMC/HVC call came from
+>>> aarch32 or aarch64, as the behaviour may be different.
+>> How about to use the longmode field in hypercall structure? Standard service calls will
+>> indicate this in function ID, but we may need to know before parsing the function ID,
+>> isn't it?
+> Sure, as its a __u32, we could dump the guest PSTATE from SPSR in there.
+>
+>
+> I think the last thing is 'ret', and whether we should provide a way of passing 'x0' back
+> to the guest, or expect user-space to use set-one-reg. Most of the time user-space will
+> only want to set x0, and doing this would let us initialise it to all-ones in the kernel,
+> which means the guest gets the unknown-smc value back if user-space ignores the exit.
+The current RFC is not expecting user-space to use set-one-reg to set GP 
+registers for returning, to reduce ioctl() invocations for better 
+performance.
+I didn't use "ret" for guest to hold the returned x0, but still used 
+"args[6]" to exchange x0~x5. I agree to set quick path for x0 only, and 
+kvm doesn't bother to set the other 5 GP registers.
+
+Thanks a lot,
+
+Heyi
+
+>
+>
+> Thanks,
+>
+> James
+>
+> .
+>
+

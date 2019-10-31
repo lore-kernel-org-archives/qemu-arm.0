@@ -1,170 +1,160 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp585419wri;
-        Wed, 30 Oct 2019 21:09:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw2QGturU9LAOgfgGK5DFUCR63S11GzThf2+r1wK2sAb6w/mmz8+KJPUrPI9fK+wgNGd3Tb
-X-Received: by 2002:a37:84b:: with SMTP id 72mr3432055qki.337.1572494987266;
-        Wed, 30 Oct 2019 21:09:47 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1219628wri;
+        Thu, 31 Oct 2019 07:12:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwT+3K050HvBdXClc8Jw5wHsh2bg4tvrMUmrPJQa+HeQPpAF6h5l1BJYxqxN/dGASvUy1jx
+X-Received: by 2002:ad4:5891:: with SMTP id dz17mr4927076qvb.160.1572531149619;
+        Thu, 31 Oct 2019 07:12:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572531149; cv=none;
+        d=google.com; s=arc-20160816;
+        b=J68LT+92Oi+jYT3YynZr2xk5eF3uo3nzuIhTLTq96zV0k4d8wYEyY++5/gIZcRWlI8
+         rnf74XteCzGgqt5ncaiaXM1sUqviIVpry7LzvrQk7SnLeDTYjdQZMI2gDDxB8hPwPKZB
+         S+4fakMo0gKMedjDxYkUUKi6TRktERbsurLMccM6Cpb041E4ti2fLye2+RBSQYZqNEUU
+         9gi241b8ie5nESDMTpGB5VEWhZU6dtPBRlfq1urc6rlA2Ce6/gTXuNxi6kwNBQ6NyyKv
+         9FGQce1aS4QJsRMh0h16EQ00ESr1heL39GQaJRbQE8xFfQSmhq1PNYiH90kQq7dnRwZc
+         71ng==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=V1gaEy9wcqeS02cr9UZs/fS7CG6P4K+IC6I6/NxjPgo=;
+        b=r/AeTrwLYMusvGPxkKpz0/zDLZbmJVIl46UugPRfxVaxf6JA79ZJ2YryYwd83xQwJH
+         XR2ovDJzPh/AANSYnIu1ReSojVz6skA/t66ip6EMX+Gw6TJhhWybd98WN3vo89Y6ZNEF
+         TvJHIvP+rCtpqdEYVvsBQwrd2308Rq55bbrSkRjm50Rqqc5e28a1FHzuY72jAtlhBz+q
+         KceeAyuD8iUdub5PA5pK7Uc94ZAoXZrAjTUFiW62aZgAEoJxLd4YV/zMxqj7FYWnbynB
+         tknoLt6gxBNTLxWaklVz9+MtlZ735xzgbT4SEQvji3gFU9Z0ZsFXyv5876WVYmNwqI9P
+         fB7Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E3VAIX5W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b26si3527867qvf.133.2019.10.30.21.09.47
+        by mx.google.com with ESMTPS id x35si4829058qth.358.2019.10.31.07.12.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Oct 2019 21:09:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 31 Oct 2019 07:12:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=DJ9S0SIk;
-       arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46366 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E3VAIX5W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50462 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iQ1mM-0000kS-NJ
-	for alex.bennee@linaro.org; Thu, 31 Oct 2019 00:09:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58841)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iQBBb-0003SV-Kb
+	for alex.bennee@linaro.org; Thu, 31 Oct 2019 10:12:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44656)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar@xilinx.com>) id 1iQ1lY-0000iO-Nj
- for qemu-devel@nongnu.org; Thu, 31 Oct 2019 00:08:57 -0400
+ (envelope-from <philmd@redhat.com>) id 1iQBAL-0001zS-5Q
+ for qemu-arm@nongnu.org; Thu, 31 Oct 2019 10:11:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <edgar@xilinx.com>) id 1iQ1lX-0001pM-PW
- for qemu-devel@nongnu.org; Thu, 31 Oct 2019 00:08:56 -0400
-Received: from mail-eopbgr800040.outbound.protection.outlook.com
- ([40.107.80.40]:34256 helo=NAM03-DM3-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <edgar@xilinx.com>)
- id 1iQ1lV-0001ec-NJ; Thu, 31 Oct 2019 00:08:53 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DLU/y7y/mMl2VDv4S4RnybIgtQhrWdfVWxFAgS5gJTrYTF3E+44c7V6M2bSSp69GPJCLqM2+2DZBMX3g07kj+Py8/Zv8OUmOjyOUrJunx5QauaIgRC+C/UjaBAl3NoFFKBv/49GXmp6Ov1omNVGON9dSiNBpNItKEeRNcgizf4C2jSdjRGVxqT9kzPycA0ZfsH5eObSBZHLv4tsuYvV0hSoseqIgwHBtsCiYBEH/ZqHVdYguxoHT8d6/Z0n3LTZhVXEl9M6x6AZl3gIftuAHT0iN7tQ/JeYFzStWJA143kJmB9MACeAkmvUf1XzPEwwAeonEqFYuMTOLetH+x3vDNA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4p/6ZYQQWD852qSusOhdrvDuptbYfzVTqSpfuWY7xo4=;
- b=EeziwvJJEFd+r8yClAw9z52ribFlhSyZDkwzuaY7zh1yQCRBXekt0PKCMMi1k7djzlX6gfUXIOOGHwuU2B/e5Kz6OvYztHP66VbHKYAB1FGdjqMkEXSDH03uZY6IanM80QARoJmvSPK4knpzMpW/g1AeY2x1Sntehhe8V7g3Nnl86rYQnP6CJHtrCeGN/c7RNR4p8ZOH00zpDK4gOjqjQ8jhOe8+pZOCO0jDDLBOZFDL+FiMIsTROqUqIGjFjiaEVVdW+nv/RDH2/PmvRZt1tfZbGp+kStpVasjXS4lE5jqeVTdqwLm7xlM2Ph4pVptIE6lS441D43HSwmGFa8Z7mA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.83) smtp.rcpttodomain=kernel.org smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4p/6ZYQQWD852qSusOhdrvDuptbYfzVTqSpfuWY7xo4=;
- b=DJ9S0SIk2wUB7T49oBX8/yBaqJnjU+/hcdzTlYGHZg89oGhJZ9dX4nSCLkVJmj4jiaQm+3jhBztzmnDBfXemtxMbJAWkno+XEhhy0bhl9IOCgrMe1tKK1+lbrS7Eb+Bqhmh3+qMMk178fy+ZwQG4Xo4P71s0yS2Ex/bQDNVw7+M=
-Received: from BL0PR02CA0144.namprd02.prod.outlook.com (2603:10b6:208:35::49)
- by DM5PR02MB2297.namprd02.prod.outlook.com (2603:10b6:3:59::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2387.20; Thu, 31 Oct
- 2019 04:08:51 +0000
-Received: from CY1NAM02FT036.eop-nam02.prod.protection.outlook.com
- (2a01:111:f400:7e45::206) by BL0PR02CA0144.outlook.office365.com
- (2603:10b6:208:35::49) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2408.20 via Frontend
- Transport; Thu, 31 Oct 2019 04:08:51 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
- smtp.mailfrom=xilinx.com; kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- CY1NAM02FT036.mail.protection.outlook.com (10.152.75.124) with Microsoft SMTP
- Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2387.20
- via Frontend Transport; Thu, 31 Oct 2019 04:08:49 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
- by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
- (envelope-from <edgar@xilinx.com>)
- id 1iQ1lR-0003br-08; Wed, 30 Oct 2019 21:08:49 -0700
-Received: from [127.0.0.1] (helo=localhost)
- by xsj-pvapsmtp01 with smtp (Exim 4.63)
- (envelope-from <edgar@xilinx.com>)
- id 1iQ1lL-0007WP-TJ; Wed, 30 Oct 2019 21:08:43 -0700
-Received: from xsj-pvapsmtp01 (mailman.xilinx.com [149.199.38.66])
- by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id x9V48XAe029365; 
- Wed, 30 Oct 2019 21:08:33 -0700
-Received: from [10.71.116.27] (helo=localhost)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <edgar@xilinx.com>)
- id 1iQ1lA-0007Va-PQ; Wed, 30 Oct 2019 21:08:32 -0700
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH v1 1/1] hw/arm/boot: Rebuild hflags when modifying CPUState at
- boot
-Date: Thu, 31 Oct 2019 05:08:30 +0100
-Message-ID: <20191031040830.18800-2-edgar.iglesias@xilinx.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20191031040830.18800-1-edgar.iglesias@xilinx.com>
+ (envelope-from <philmd@redhat.com>) id 1iQBAJ-0002mp-VT
+ for qemu-arm@nongnu.org; Thu, 31 Oct 2019 10:11:08 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:26482
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iQBAJ-0002Wq-Ri
+ for qemu-arm@nongnu.org; Thu, 31 Oct 2019 10:11:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1572531065;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=V1gaEy9wcqeS02cr9UZs/fS7CG6P4K+IC6I6/NxjPgo=;
+ b=E3VAIX5WlBvRZF/RVh1TWi6rdaqJD9WTOMiNtAvqwe04zz2e1q0LmwC92EZsDno8gqtnOH
+ BTU7RGzR4rDF9ohckbNM3mg+HzvzZkbmgud14rXrhxoj0uFsWpU6N66i5A/2Hy81TMHlJG
+ vn5GwP+eGPhTgJYt7mA3ejqQXVP/vkA=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-416-UuUxGHpnNjuUmpIl5hZkhg-1; Thu, 31 Oct 2019 10:11:01 -0400
+Received: by mail-wr1-f71.google.com with SMTP id h4so3400576wrx.15
+ for <qemu-arm@nongnu.org>; Thu, 31 Oct 2019 07:11:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cXjnbC0nat4frL9KT8PDHBjvOMX3WcGx8DlnuviTmr4=;
+ b=a/N2KZs9kwpDOdtzBxQeTiSER5ZgXNa3ncUZq8hwre9dfuULQCX3/WXuxo3cgncEHP
+ nLuEPR3JKUJh7GdbhWuTYGqpsLrPe9zATKy9vqYoXk5YzOus/Su3CV5pFpzvJLv72oju
+ tn8mXF9JfuL9FqYSE+pnLKEPhNNMrIwuVfhYn2/vZu+nFQAYhQPKszZ3jmb/S08k1f8n
+ amqHCGG0rG7KqXmGHFAwlk0W1rp/Sy4X/JzCY+scxoQw8oSO5e8YVB7AgXFMWIwdvlJl
+ gbT+OLoKCWPbNEyayj0rVz860MKgxJCmLweDYkADnHXOQcgS1CHaucCX/DAqToUcxIBN
+ nZOg==
+X-Gm-Message-State: APjAAAX4M7FvYaiBwH5+AqBsIU9SicwxnWt3m2xLO9BuXwzi7TIIeYeX
+ 3CpOuY5r3hF65p8vYNxln6SelzIi/zPoe17QR+itCc2vUcmVEVutCTeEOvmoy7X5Z8AVjxryS27
+ a5DG2F+1sAe26
+X-Received: by 2002:adf:d183:: with SMTP id v3mr5672750wrc.316.1572531060370; 
+ Thu, 31 Oct 2019 07:11:00 -0700 (PDT)
+X-Received: by 2002:adf:d183:: with SMTP id v3mr5672723wrc.316.1572531060212; 
+ Thu, 31 Oct 2019 07:11:00 -0700 (PDT)
+Received: from [172.20.51.145] ([91.217.168.176])
+ by smtp.gmail.com with ESMTPSA id x9sm867027wru.32.2019.10.31.07.10.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 31 Oct 2019 07:10:59 -0700 (PDT)
+Subject: Re: [PATCH v1 1/1] hw/arm/boot: Rebuild hflags when modifying
+ CPUState at boot
+To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
 References: <20191031040830.18800-1-edgar.iglesias@xilinx.com>
+ <20191031040830.18800-2-edgar.iglesias@xilinx.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <637b245d-4d38-6b24-f118-5d4083accc76@redhat.com>
+Date: Thu, 31 Oct 2019 15:10:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
+In-Reply-To: <20191031040830.18800-2-edgar.iglesias@xilinx.com>
+Content-Language: en-US
+X-MC-Unique: UuUxGHpnNjuUmpIl5hZkhg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(4636009)(346002)(136003)(39860400002)(396003)(376002)(189003)(199004)(36386004)(186003)(2906002)(2616005)(36756003)(426003)(9786002)(4326008)(76176011)(478600001)(1076003)(2870700001)(7416002)(70206006)(70586007)(48376002)(336012)(356004)(486006)(126002)(476003)(11346002)(446003)(316002)(57986006)(51416003)(26005)(50466002)(76506006)(50226002)(8936002)(107886003)(81156014)(47776003)(5660300002)(305945005)(8676002)(81166006)(4744005)(106002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DM5PR02MB2297; H:xsj-pvapsmtpgw01; FPR:;
- SPF:Pass; LANG:en; PTR:unknown-60-83.xilinx.com; MX:1; A:1; 
-Content-Type: text/plain
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 762d2dab-a1a9-488b-e59d-08d75db8089f
-X-MS-TrafficTypeDiagnostic: DM5PR02MB2297:
-X-Microsoft-Antispam-PRVS: <DM5PR02MB22975FBD749CB0EDB15E5D07C2630@DM5PR02MB2297.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:454;
-X-Forefront-PRVS: 02070414A1
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ESFOXOPBqQE7v9Ss43O0UMFjRJUA3Jw7SNOOJGwRjBxjyA5G3x3B19aNSMO/XROvtyzVXSDOs2dSZ4iB2LOsbA5KILz3I1FFUYl/72rMqh/hmR1ilnRH9EYDvo0Pj8U8MBMBczcwJCjsTXG72FheYyv5PjBpLX2n94ivfjw00+tcG2z94A1RCPvuC3A/sprk+N1TIqUa0R/4T9HdW1a8cct+hywCwFPQe8B2Lsp5rgUs8G5WvrO6Wy2ey2mFZ+OREY1FKyGc38InHDIk4+Dbv3uJf/5sgUIxkuqSm5gsrKcZz1ipCIqmsxKAuL5vga7D8IdK98g0t8yZK9CIaXNKHCF28gu/F6Tj1DGG9kaYugoK7wkMokvIXD+kQf5rVKSSLYui2zXvwfLzX8VvPzX5rX1kEBNeuy7ksL3kgfeUwGt3zenyakcA7737RU3iWXEp
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2019 04:08:49.4835 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 762d2dab-a1a9-488b-e59d-08d75db8089f
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
- Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR02MB2297
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.80.40
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, frederic.konrad@adacore.com, philmd@redhat.com,
+ sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com,
  luc.michel@greensocs.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5Ux1Rm9Y7ek3
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QPMXWzYhSZfB
 
-Rebuild hflags when modifying CPUState at boot.
+On 10/31/19 5:08 AM, Edgar E. Iglesias wrote:
+> Rebuild hflags when modifying CPUState at boot.
+>=20
+> Fixes: e979972a6a
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> ---
+>   hw/arm/boot.c | 1 +
+>   1 file changed, 1 insertion(+)
+>=20
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index c264864c11..ef6724960c 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -786,6 +786,7 @@ static void do_cpu_reset(void *opaque)
+>                   info->secondary_cpu_reset_hook(cpu, info);
+>               }
+>           }
+> +        arm_rebuild_hflags(env);
+>       }
+>   }
+>  =20
+>=20
 
-Fixes: e979972a6a
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- hw/arm/boot.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index c264864c11..ef6724960c 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -786,6 +786,7 @@ static void do_cpu_reset(void *opaque)
-                 info->secondary_cpu_reset_hook(cpu, info);
-             }
-         }
-+        arm_rebuild_hflags(env);
-     }
- }
-=20
---=20
-2.19.1
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 

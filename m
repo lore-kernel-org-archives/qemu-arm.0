@@ -1,66 +1,128 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp478269wri;
-        Tue, 5 Nov 2019 01:39:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz8LkJS1f6zIgsxaSwOKU4Mi1t0/VfVsoKUp84Mi98mNr8kF3d/Au6J+p9wmhtzt3mDcX7w
-X-Received: by 2002:ac8:44c5:: with SMTP id b5mr15460102qto.334.1572946755581;
-        Tue, 05 Nov 2019 01:39:15 -0800 (PST)
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp584812wri;
+        Wed, 30 Oct 2019 21:09:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqww749uuPoI5MkgA39tWkJukhuwdEYO6ZQqrx0MCKoxC1dsRcOwL+QzDdalDcyI0ouZC4DV
+X-Received: by 2002:aa7:cdc2:: with SMTP id h2mr3583110edw.4.1572494942994;
+        Wed, 30 Oct 2019 21:09:02 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q30si2322087qtd.193.2019.11.05.01.39.15
+        by mx.google.com with ESMTPS id 92si3672108edh.321.2019.10.30.21.09.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2019 01:39:15 -0800 (PST)
+        Wed, 30 Oct 2019 21:09:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
+       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=DjsWHixn;
+       arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42158 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46358 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRvIw-0004F9-Fz
-	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:39:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48672)
+	id 1iQ1ld-0000f6-Sd
+	for alex.bennee@linaro.org; Thu, 31 Oct 2019 00:09:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58759)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iRvIn-0004Ep-RN
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:39:06 -0500
+ (envelope-from <edgar@xilinx.com>) id 1iQ1lN-0000ew-SS
+ for qemu-arm@nongnu.org; Thu, 31 Oct 2019 00:08:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iRvIm-0000u3-KH
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:39:05 -0500
-Resent-Date: Tue, 05 Nov 2019 04:39:05 -0500
-Resent-Message-Id: <E1iRvIm-0000u3-KH@eggs.gnu.org>
-Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21860)
+ (envelope-from <edgar@xilinx.com>) id 1iQ1lM-00019Y-Re
+ for qemu-arm@nongnu.org; Thu, 31 Oct 2019 00:08:45 -0400
+Received: from mail-eopbgr800043.outbound.protection.outlook.com
+ ([40.107.80.43]:14016 helo=NAM03-DM3-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iRvIm-0000td-CI; Tue, 05 Nov 2019 04:39:04 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1572946731; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=VeLPgtWDmvh7Lim1Dfcks6d11Zpfd1fD3Bgxvp/1dkSYpjYxASvdtkMgl/nO+W3ZzJaWlwSOSf3bSU2BPTHjLhfLC/RECrI0Qi5cV2qhLhIaFTEQofw2huIrpWY27hAO0iwBeOFx/fW38bnnfpX7yar5wRFA3KM0iHMJXK9H9ZY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1572946731;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=tRAUzc0vF+ip47ILtykuGhN5utdensmtZBGfJp9iUVg=; 
- b=Ghmo/Mm4W69y+uzlcn60MuNQZi7vlkrPXnoFVAeejR7jH1Hr/Q9yXBssR9VW+aBdUhqG1/fez/Hw8jf3HVLyvji1JNSLYy8IEqFLxWcyf1d6nRfGSf7BF20qEaTGqpUuPoSjy7GnwNSyvAWls5+Utbj9+LM5v0wDCce2AynnW04=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1572946730014501.9923676384676;
- Tue, 5 Nov 2019 01:38:50 -0800 (PST)
-In-Reply-To: <20191105091056.9541-1-guoheyi@huawei.com>
-Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
-Message-ID: <157294672808.27285.2932737819886573001@37313f22b938>
+ (Exim 4.71) (envelope-from <edgar@xilinx.com>)
+ id 1iQ1lM-000124-Hn; Thu, 31 Oct 2019 00:08:44 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Brg1DOljVuTJviUTY/03RFHYFTPo602NSiTqecPImzAo05FbW3RJCgPnY/+nZVXHxRYDYcdmjVr0DDaPzwlOfW2a7hLI6tyookgFNmPT7ywSmep7Nyt2almb8ZJRh+QmX6FoNXPBFXsuJkH6IXRNKFrydzIQVGSB4PwW9a3/TGeKkbWg7rlKRq6yXGq+MEgwqd4b7pEKTw9DCnzYFhC7Lap/0L19ao9rZxRFdRGgSMH7rXWht4E+KU8kW6WHXp284P0VlB+iC1AOkvUBLOqK2N0CNrguJpTk3n55LxrOx5VdSpcw3KFKl7aoezmrvnHzphAIJAd0AOUWe500HWLINQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KOmClXhtyMiHcrnLMQUjKdU62BxVnSIwyNgO1KaHqy8=;
+ b=CmjORyW2m/JvL5pinJvSg8vfbP3GS9JziLJqbUkddqUJcwNQgzc2MLKxRE9pxXeqUSTeAo7rAWQykaAeN59+OwB64Wvnhf1kYW8sG4f6ySTIcDZMumGgXgwSr47CXi+k9PCmwD5Fo97AZd5+qOAPHH9wNflzwknaMRakj2BSsN7vuqgKi8/mblkZtfoO17KbVKd3UIuwnoOjh9IPZprezArbNxioxchp9QC2DxkdgPiX6ZmBZUDqGQBf/nom2TFYfsaWv35PkazLnyyQdcE2sbN/mxUytNis3aP+H0/xQ4wbOdv2fSwrBrlstisjXX9pDKaWW3SzFLIr18lCg8X+AQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=kernel.org smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KOmClXhtyMiHcrnLMQUjKdU62BxVnSIwyNgO1KaHqy8=;
+ b=DjsWHixnhpPfUZVfoK099/UPCIPyjl1sxA1Feq4VbmXbl4yC5uUR/w6Mi08SOpFhIj+2uLT3BR33I4hJXs6wBrmcHQPHakYZCBIbDnqjnQ/L0SrhmRXonjM6nCI6Jm1icB4xakm19om6SmVunCxe3nZ/W1y16+xDpgdNLU/C+Uw=
+Received: from BL0PR02CA0096.namprd02.prod.outlook.com (2603:10b6:208:51::37)
+ by BYAPR02MB5317.namprd02.prod.outlook.com (2603:10b6:a03:68::24)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2387.28; Thu, 31 Oct
+ 2019 04:08:39 +0000
+Received: from SN1NAM02FT063.eop-nam02.prod.protection.outlook.com
+ (2a01:111:f400:7e44::209) by BL0PR02CA0096.outlook.office365.com
+ (2603:10b6:208:51::37) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2408.20 via Frontend
+ Transport; Thu, 31 Oct 2019 04:08:39 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; kernel.org; dkim=none (message not signed)
+ header.d=none;kernel.org; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ SN1NAM02FT063.mail.protection.outlook.com (10.152.72.213) with Microsoft SMTP
+ Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2367.14
+ via Frontend Transport; Thu, 31 Oct 2019 04:08:39 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+ by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
+ (envelope-from <edgar@xilinx.com>)
+ id 1iQ1lG-0003bl-Qv; Wed, 30 Oct 2019 21:08:38 -0700
+Received: from [127.0.0.1] (helo=localhost)
+ by xsj-pvapsmtp01 with smtp (Exim 4.63)
+ (envelope-from <edgar@xilinx.com>)
+ id 1iQ1lB-0007Vn-NV; Wed, 30 Oct 2019 21:08:33 -0700
+Received: from xsj-pvapsmtp01 (smtp3.xilinx.com [149.199.38.66])
+ by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id x9V48Vwm029359; 
+ Wed, 30 Oct 2019 21:08:31 -0700
+Received: from [10.71.116.27] (helo=localhost)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <edgar@xilinx.com>)
+ id 1iQ1l9-0007VU-CZ; Wed, 30 Oct 2019 21:08:31 -0700
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: [PATCH v1 0/1] hw/arm/boot: Rebuild hflags when modifying CPUState at
+ boot
+Date: Thu, 31 Oct 2019 05:08:29 +0100
+Message-ID: <20191031040830.18800-1-edgar.iglesias@xilinx.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: guoheyi@huawei.com
-Date: Tue, 5 Nov 2019 01:38:50 -0800 (PST)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.58
+Content-Transfer-Encoding: quoted-printable
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(4636009)(346002)(136003)(396003)(376002)(39860400002)(199004)(189003)(426003)(1076003)(47776003)(336012)(476003)(126002)(486006)(106002)(316002)(7416002)(305945005)(107886003)(4326008)(51416003)(48376002)(50466002)(2616005)(478600001)(26005)(57986006)(186003)(50226002)(8936002)(5660300002)(36756003)(9786002)(8676002)(81156014)(81166006)(4744005)(2906002)(70586007)(2870700001)(36386004)(70206006)(356004)(76506006);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BYAPR02MB5317; H:xsj-pvapsmtpgw01; FPR:;
+ SPF:Pass; LANG:en; PTR:unknown-60-83.xilinx.com; A:1; MX:1; 
+Content-Type: text/plain
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 825427a5-8f7a-4306-a14b-08d75db80287
+X-MS-TrafficTypeDiagnostic: BYAPR02MB5317:
+X-Microsoft-Antispam-PRVS: <BYAPR02MB531795353F0411650BC4B2D5C2630@BYAPR02MB5317.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:5797;
+X-Forefront-PRVS: 02070414A1
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: pO0cK7j0VRQXEcgHnjXfnCLdYHW8LPoRhXA2d0I0pERB6J8ojmW0M6rckAyZoAeOFLozxvvXAGXPxkC6D3OZfproI/GMwqcWqMLPRltxQZkSKCgMinvEoB+GUGKG9vBwLVC+vT96Krr8D4MwK80GY7NVFhyAVVkD5iQiv709wzyr4o1NOCxup1zjLWm01++nrVq1YoKtJLSWphw1HktDt5yNwhMhoD6kAAqlMHWVV1GXcvMw0nujjMkG0KKOESCXSwKfcYymBRoiGyzevfbo6ocApi8DU5d9aANEVkPeFUlMawrfVp6xx+kQBgTxAi+1MJr9Iv26ewdE7hag88vWxJTBAcghTBA6VlZ08NqZOvvTnBQ3rsL21FoLJJaB5JmCuLKmIbBp+eEUpoWODgnZkHq+Nxs8Am6qPvMxMut9LBkni2XT+sUXwhtarXHcsQsK
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2019 04:08:39.2892 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 825427a5-8f7a-4306-a14b-08d75db80287
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
+ Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB5317
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.80.43
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,43 +134,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: mark.rutland@arm.com, peter.maydell@linaro.org, mst@redhat.com,
- marc.zyngier@arm.com, wanghaibin.wang@huawei.com, cohuck@redhat.com,
- qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- james.morse@arm.com, pbonzini@redhat.com, guoheyi@huawei.com,
- imammedo@redhat.com, Dave.Martin@arm.com
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, philmd@redhat.com,
+ luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sVKeaJ1lcCe5
+X-TUID: Z9OpPwrnmtwo
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEwNTA5MTA1Ni45NTQx
-LTEtZ3VvaGV5aUBodWF3ZWkuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUgZG9j
-a2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBjb21t
-YW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFsbGVk
-LCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NSSVBU
-IEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9ja2VyLWlt
-YWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5nd0BmZWRv
-cmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgICByYWlzZSBDYWxs
-ZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nlc3NFcnJv
-cjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJlbCcsICdj
-b20ucWVtdS5pbnN0YW5jZS51dWlkPTM3MDhiMmUyNzJmYTQ1M2FhYTJmNmRkMzFmNWM0YmZmJywg
-Jy11JywgJzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy0t
-cm0nLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9PUFRTPScs
-ICctZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdTSE9XX0VO
-Vj0nLCAnLWUnLCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAnLXYnLCAnL2hvbWUvcGF0
-Y2hldzIvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eicsICctdics
-ICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtYWNsYng2ajIvc3JjL2RvY2tlci1zcmMuMjAx
-OS0xMS0wNS0wNC4zNi41MS4xODc3Oi92YXIvdG1wL3FlbXU6eixybycsICdxZW11OmZlZG9yYScs
-ICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LW1pbmd3J10nIHJldHVybmVkIG5vbi16ZXJvIGV4
-aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJlbD1jb20ucWVtdS5pbnN0YW5jZS51dWlk
-PTM3MDhiMmUyNzJmYTQ1M2FhYTJmNmRkMzFmNWM0YmZmCm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1
-bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRpcmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10
-ZXN0ZXItdG1wLWFjbGJ4NmoyL3NyYycKbWFrZTogKioqIFtkb2NrZXItcnVuLXRlc3QtbWluZ3dA
-ZmVkb3JhXSBFcnJvciAyCgpyZWFsICAgIDFtNTcuNTUzcwp1c2VyICAgIDBtNy43MjhzCgoKVGhl
-IGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MTEw
-NTA5MTA1Ni45NTQxLTEtZ3VvaGV5aUBodWF3ZWkuY29tL3Rlc3RpbmcuZG9ja2VyLW1pbmd3QGZl
-ZG9yYS8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkg
-UGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNr
-IHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+I'm seeing asserts with missmatching hflags when doing direct boots
+on versal. This patch fixes the problem for me, rebuilding hflags
+after boot code modifes the state.
+
+Cheers,
+Edgar
+
+Edgar E. Iglesias (1):
+  hw/arm/boot: Rebuild hflags when modifying CPUState at boot
+
+ hw/arm/boot.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+--=20
+2.19.1
 

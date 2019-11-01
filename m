@@ -1,392 +1,126 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1253751wri;
-        Thu, 31 Oct 2019 07:37:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzqFI/REV6kyZCOrXzTLiEIBrvf2Rg8zuuxQPxXsK+I+Opg7we4ry6Buyl01fIsrNZ46ZcC
-X-Received: by 2002:ac8:c86:: with SMTP id n6mr5732321qti.80.1572532659951;
-        Thu, 31 Oct 2019 07:37:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572532659; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CA6Gcw6ic5VU3cfZBukh61Syeh7yQGz4kz5QNYU9UJ3fPioWUSbJ/6MXSIqVjgaLPS
-         kA5ZxqYR8TtXsJVrPG/MwP7lTEhFtBNX0jNet2OC/rqeMvT4P9KbAZ1PFCxGNIFZ3M6V
-         c54NIA7Po/ZM0Dg4Tc5Q7IN4iOs2pQAp/jnwGve/wEdfYp2q8w6f8OfY5m9jQR83LLLB
-         kXZ7hhlp9sLUkD5bQQlLkVtkBSaRSg6yCkKZQT9KzU7gWJwQoII68R2P+F+4CyQjH2mh
-         BaiVXPNywlFF4V03xcrP6Wyl6zs+kqAQP90ftKUEJnXQXilbcFu9LAbgWc4KX2TihIkj
-         KskA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9aRicQGQeeR0NRsMiufZBZ+3m5FnR4gDww1lsLI4DgM=;
-        b=IsUYK+UcZ16ErQakiNyHVu/fFQwrbZnP/VmfTpLwfCejV2/OaHQPxbnmdi3t2S7Sdo
-         SW27hZE9nVOU4EGfenRiJeLTpahxMA7rmGGBPFE1jD/Klabrh5TYNCxXpLnpBjMI3aHQ
-         CxhOiuqdLiuddz0GCSns66gQuHdFR/KUUnxs1ANSDP/aMmcdgtEdu/o49/C9DBqy2yhn
-         eYuypJd3ZwaRvVUQltvx51cqVpI1ollLSmW/leB9Av+DsfGMpubPjBlnPffAW5wv1NLu
-         g8/lVl5JhN8qS8CwoUSvAhQ+VupRcK8cEXHX8cby01ETWh1hYEoEimtZ5haCVeVVHOYB
-         ICNA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TVTdMVGR;
-       spf=pass (google.com: domain of drjones@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id p2si4967095qti.30.2019.10.31.07.37.39
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp347203wri;
+        Fri, 1 Nov 2019 05:01:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwN6mId8Pd/As8ZCB6UA954bdKhfm6+I91dDQb7NElWMnJJKpRXH6VBfs/FlvjD4ZbkOCpE
+X-Received: by 2002:a37:a211:: with SMTP id l17mr1244178qke.139.1572609719572;
+        Fri, 01 Nov 2019 05:01:59 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z12si6693378qvg.212.2019.11.01.05.01.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 31 Oct 2019 07:37:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 01 Nov 2019 05:01:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TVTdMVGR;
-       spf=pass (google.com: domain of drjones@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1572532659;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9aRicQGQeeR0NRsMiufZBZ+3m5FnR4gDww1lsLI4DgM=;
-	b=TVTdMVGRT02r8F0D3ztq4DQ7WgbYMV41x3x0I9V68DdI3nd1LqCD/Xnh4pQvDEOKKnHwcT
-	xLtQhZpe2RbcQT11kjHxfb7Ua9kdtAlyc+fA9bFyQArQB/PpMTLYWku4jXMFgB7hpoQNVC
-	3aLDmggWvR45bDd5cC05lMmIltJZ8Xg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-121-P7rZWGESPG-exBBU2NWLlw-1; Thu, 31 Oct 2019 10:37:36 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E6671800D49;
-	Thu, 31 Oct 2019 14:37:34 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-117-53.ams2.redhat.com [10.36.117.53])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 679D260870;
-	Thu, 31 Oct 2019 14:36:55 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	peter.maydell@linaro.org
-Cc: richard.henderson@linaro.org,
-	eric.auger@redhat.com,
-	beata.michalska@linaro.org,
-	m.mizuma@jp.fujitsu.com,
-	alex.bennee@linaro.org,
-	Dave.Martin@arm.com,
-	armbru@redhat.com,
-	eblake@redhat.com,
-	imammedo@redhat.com
-Subject: [PATCH v8 9/9] target/arm/kvm: host cpu: Add support for sve<N> properties
-Date: Thu, 31 Oct 2019 15:27:34 +0100
-Message-Id: <20191031142734.8590-10-drjones@redhat.com>
-In-Reply-To: <20191031142734.8590-1-drjones@redhat.com>
-References: <20191031142734.8590-1-drjones@redhat.com>
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38480 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iQVcs-0006C0-PD
+	for alex.bennee@linaro.org; Fri, 01 Nov 2019 08:01:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60662)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <no-reply@patchew.org>) id 1iQVci-0006AQ-LS
+ for qemu-arm@nongnu.org; Fri, 01 Nov 2019 08:01:49 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <no-reply@patchew.org>) id 1iQVch-00071S-Dg
+ for qemu-arm@nongnu.org; Fri, 01 Nov 2019 08:01:48 -0400
+Resent-Date: Fri, 01 Nov 2019 08:01:48 -0400
+Resent-Message-Id: <E1iQVch-00071S-Dg@eggs.gnu.org>
+Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21414)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iQVca-0006kZ-D9; Fri, 01 Nov 2019 08:01:40 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1572609680; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=eK3rhbvc9Ke05AvCj2Zyj10PDJxgVg191hAcWDZhSoMRWDEORQ75SoVL/XBIFtPi/N5WYRTC+XtCJFC09uwQ6L98VDqebtktUGFd7S+pTIejohyR7+WM0r5bsjp9pYfPR8gsnIhU6B27q3pZr8csrQPvC6bJXYEgNE8Fgo8beD8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1572609680;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=T++H83sSwtBJ4X02+3lIWcqT5603KG9JI5Gl25Lu4xM=; 
+ b=O5TPfdQh7+wop6Oyg9w/56AkM5vFZTbEW+WJcQwlyJPPu3dDIzyCZ7tamVIs2fUWokg9CyXYpB88l4xC1wDr2h1+gW70fy/V+QJ0LKMHsgFtL/ljxEjkDmdazx/kR/q0nWa55PpcIeBua+s7qtKzkKvLx9HDeodtfMbtAU6AZUw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1572609678113103.3370246499004;
+ Fri, 1 Nov 2019 05:01:18 -0700 (PDT)
+In-Reply-To: <20191101103232.3692818-1-luc.michel@greensocs.com>
+Subject: Re: [PATCH] hw/arm/pxa2xx: rebuild hflags cache when modifying CPU
+ state
+Message-ID: <157260967693.11413.16298730643618763413@37313f22b938>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: P7rZWGESPG-exBBU2NWLlw-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
-X-TUID: VcowkvN0peka
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: luc.michel@greensocs.com
+Date: Fri, 1 Nov 2019 05:01:18 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 136.143.188.54
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, balrogg@gmail.com,
+ qemu-devel@nongnu.org, luc.michel@greensocs.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ESm3zJ9j2NnT
 
-Allow cpu 'host' to enable SVE when it's available, unless the
-user chooses to disable it with the added 'sve=3Doff' cpu property.
-Also give the user the ability to select vector lengths with the
-sve<N> properties. We don't adopt 'max' cpu's other sve property,
-sve-max-vq, because that property is difficult to use with KVM.
-That property assumes all vector lengths in the range from 1 up
-to and including the specified maximum length are supported, but
-there may be optional lengths not supported by the host in that
-range. With KVM one must be more specific when enabling vector
-lengths.
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEwMTEwMzIzMi4zNjky
+ODE4LTEtbHVjLm1pY2hlbEBncmVlbnNvY3MuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxl
+ZCB0aGUgZG9ja2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRl
+c3RpbmcgY29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2Vy
+IGluc3RhbGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBU
+RVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1hZ2UtY2VudG9z
+NyBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50b3M3IFNIT1df
+RU5WPTEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgQ0MgICAgICBh
+YXJjaDY0LXNvZnRtbXUvaHcvYXJtL2FsbHdpbm5lci1hMTAubwogIENDICAgICAgYWFyY2g2NC1z
+b2Z0bW11L2h3L2FybS9jdWJpZWJvYXJkLm8KL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2FybS9weGEy
+eHguYzogSW4gZnVuY3Rpb24gJ3B4YTJ4eF9wd3Jtb2RlX3dyaXRlJzoKL3RtcC9xZW11LXRlc3Qv
+c3JjL2h3L2FybS9weGEyeHguYzozMDk6OTogZXJyb3I6IGluY29tcGF0aWJsZSB0eXBlIGZvciBh
+cmd1bWVudCAxIG9mICdhcm1fcmVidWlsZF9oZmxhZ3MnCiAgICAgICAgIGFybV9yZWJ1aWxkX2hm
+bGFncyhzLT5jcHUtPmVudik7CiAgICAgICAgIF4KSW4gZmlsZSBpbmNsdWRlZCBmcm9tIC90bXAv
+cWVtdS10ZXN0L3NyYy9ody9hcm0vcHhhMnh4LmM6MTU6MDoKL3RtcC9xZW11LXRlc3Qvc3JjL3Rh
+cmdldC9hcm0vY3B1Lmg6MzMwNDo2OiBub3RlOiBleHBlY3RlZCAnc3RydWN0IENQVUFSTVN0YXRl
+IConIGJ1dCBhcmd1bWVudCBpcyBvZiB0eXBlICdDUFVBUk1TdGF0ZScKIHZvaWQgYXJtX3JlYnVp
+bGRfaGZsYWdzKENQVUFSTVN0YXRlICplbnYpOwogICAgICBeCm1ha2VbMV06ICoqKiBbaHcvYXJt
+L3B4YTJ4eC5vXSBFcnJvciAxCm1ha2VbMV06ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpv
+YnMuLi4uCm1ha2U6ICoqKiBbYWFyY2g2NC1zb2Z0bW11L2FsbF0gRXJyb3IgMgptYWtlOiAqKiog
+V2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgogIExJTksgICAgeDg2XzY0LXNvZnRtbXUv
+cWVtdS1zeXN0ZW0teDg2XzY0ClRyYWNlYmFjayAobW9zdCByZWNlbnQgY2FsbCBsYXN0KToKLS0t
+CiAgICByYWlzZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNh
+bGxlZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4n
+LCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPWY3MWZhNWJhYzQ0MjRkZWY4NDVi
+Njc3YWFkN2YxOTlhJywgJy11JywgJzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11
+bmNvbmZpbmVkJywgJy0tcm0nLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NP
+TkZJR1VSRV9PUFRTPScsICctZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScs
+ICctZScsICdTSE9XX0VOVj0xJywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywg
+Jy12JywgJy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90bXAv
+Y2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLWZfdGxma3FyL3Ny
+Yy9kb2NrZXItc3JjLjIwMTktMTEtMDEtMDcuNTcuNDAuMTk4OTc6L3Zhci90bXAvcWVtdTp6LHJv
+JywgJ3FlbXU6Y2VudG9zNycsICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LXF1aWNrJ10nIHJl
+dHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJlbD1jb20u
+cWVtdS5pbnN0YW5jZS51dWlkPWY3MWZhNWJhYzQ0MjRkZWY4NDViNjc3YWFkN2YxOTlhCm1ha2Vb
+MV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRpcmVjdG9yeSBg
+L3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLWZfdGxma3FyL3NyYycKbWFrZTogKioqIFtkb2Nr
+ZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10gRXJyb3IgMgoKcmVhbCAgICAzbTM2LjY4MHMKdXNl
+ciAgICAwbTcuMTg2cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNo
+ZXcub3JnL2xvZ3MvMjAxOTExMDExMDMyMzIuMzY5MjgxOC0xLWx1Yy5taWNoZWxAZ3JlZW5zb2Nz
+LmNvbS90ZXN0aW5nLmRvY2tlci1xdWlja0BjZW50b3M3Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFp
+bCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3Jn
+L10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Tested-by: Masayoshi Mizuma <m.mizuma@jp.fujitsu.com>
----
- docs/arm-cpu-features.rst | 19 ++++++++++++-------
- target/arm/cpu.c          |  3 +++
- target/arm/cpu.h          |  2 ++
- target/arm/cpu64.c        | 33 +++++++++++++++++----------------
- target/arm/kvm64.c        | 14 +++++++++++++-
- tests/arm-cpu-features.c  | 17 ++++++++---------
- 6 files changed, 55 insertions(+), 33 deletions(-)
-
-diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
-index bed218d44619..1b367e22e16e 100644
---- a/docs/arm-cpu-features.rst
-+++ b/docs/arm-cpu-features.rst
-@@ -272,31 +272,36 @@ SVE CPU Property Examples
-=20
-      $ qemu-system-aarch64 -M virt -cpu max
-=20
--  3) Only enable the 128-bit vector length::
-+  3) When KVM is enabled, implicitly enable all host CPU supported vector
-+     lengths with the `host` CPU type::
-+
-+     $ qemu-system-aarch64 -M virt,accel=3Dkvm -cpu host
-+
-+  4) Only enable the 128-bit vector length::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve128=3Don
-=20
--  4) Disable the 512-bit vector length and all larger vector lengths,
-+  5) Disable the 512-bit vector length and all larger vector lengths,
-      since 512 is a power-of-two.  This results in all the smaller,
-      uninitialized lengths (128, 256, and 384) defaulting to enabled::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve512=3Doff
-=20
--  5) Enable the 128-bit, 256-bit, and 512-bit vector lengths::
-+  6) Enable the 128-bit, 256-bit, and 512-bit vector lengths::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve128=3Don,sve256=3Don,sve512=
-=3Don
-=20
--  6) The same as (5), but since the 128-bit and 256-bit vector
-+  7) The same as (6), but since the 128-bit and 256-bit vector
-      lengths are required for the 512-bit vector length to be enabled,
-      then allow them to be auto-enabled::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve512=3Don
-=20
--  7) Do the same as (6), but by first disabling SVE and then re-enabling i=
-t::
-+  8) Do the same as (7), but by first disabling SVE and then re-enabling i=
-t::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve=3Doff,sve512=3Don,sve=3Don
-=20
--  8) Force errors regarding the last vector length::
-+  9) Force errors regarding the last vector length::
-=20
-      $ qemu-system-aarch64 -M virt -cpu max,sve128=3Doff
-      $ qemu-system-aarch64 -M virt -cpu max,sve=3Doff,sve128=3Doff,sve=3Do=
-n
-@@ -308,5 +313,5 @@ The examples in "SVE CPU Property Examples" exhibit man=
-y ways to select
- vector lengths which developers may find useful in order to avoid overly
- verbose command lines.  However, the recommended way to select vector
- lengths is to explicitly enable each desired length.  Therefore only
--example's (1), (3), and (5) exhibit recommended uses of the properties.
-+example's (1), (4), and (6) exhibit recommended uses of the properties.
-=20
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 17d1f2b2894d..7a4ac9339bf9 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2670,6 +2670,9 @@ static void arm_host_initfn(Object *obj)
-     ARMCPU *cpu =3D ARM_CPU(obj);
-=20
-     kvm_arm_set_cpu_features_from_host(cpu);
-+    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        aarch64_add_sve_properties(obj);
-+    }
-     arm_cpu_post_init(obj);
- }
-=20
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index a044d6028b6a..e1a66a2d1cc0 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -977,11 +977,13 @@ int aarch64_cpu_gdb_write_register(CPUState *cpu, uin=
-t8_t *buf, int reg);
- void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
- void aarch64_sve_change_el(CPUARMState *env, int old_el,
-                            int new_el, bool el0_a64);
-+void aarch64_add_sve_properties(Object *obj);
- #else
- static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { =
-}
- static inline void aarch64_sve_change_el(CPUARMState *env, int o,
-                                          int n, bool a)
- { }
-+static inline void aarch64_add_sve_properties(Object *obj) { }
- #endif
-=20
- #if !defined(CONFIG_TCG)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index c161a146ff0d..68baf0482ffa 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -594,6 +594,21 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, c=
-onst char *name,
-     cpu->isar.id_aa64pfr0 =3D t;
- }
-=20
-+void aarch64_add_sve_properties(Object *obj)
-+{
-+    uint32_t vq;
-+
-+    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-+                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
-+
-+    for (vq =3D 1; vq <=3D ARM_MAX_VQ; ++vq) {
-+        char name[8];
-+        sprintf(name, "sve%d", vq * 128);
-+        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
-+                            cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
-+    }
-+}
-+
- /* -cpu max: if KVM is enabled, like -cpu host (best possible with this ho=
-st);
-  * otherwise, a CPU with as many features enabled as our emulation support=
-s.
-  * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
-@@ -602,17 +617,11 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, =
-const char *name,
- static void aarch64_max_initfn(Object *obj)
- {
-     ARMCPU *cpu =3D ARM_CPU(obj);
--    uint32_t vq;
--    uint64_t t;
-=20
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
--        if (kvm_arm_sve_supported(CPU(cpu))) {
--            t =3D cpu->isar.id_aa64pfr0;
--            t =3D FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
--            cpu->isar.id_aa64pfr0 =3D t;
--        }
-     } else {
-+        uint64_t t;
-         uint32_t u;
-         aarch64_a57_initfn(obj);
-=20
-@@ -712,17 +721,9 @@ static void aarch64_max_initfn(Object *obj)
- #endif
-     }
-=20
--    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
--                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
-+    aarch64_add_sve_properties(obj);
-     object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_v=
-q,
-                         cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
--
--    for (vq =3D 1; vq <=3D ARM_MAX_VQ; ++vq) {
--        char name[8];
--        sprintf(name, "sve%d", vq * 128);
--        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
--                            cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
--    }
- }
-=20
- struct ARMCPUInfo {
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index c93bbee425ae..876184b8fe4d 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -488,7 +488,9 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *=
-ahcf)
-      * and then query that CPU for the relevant ID registers.
-      */
-     int fdarray[3];
-+    bool sve_supported;
-     uint64_t features =3D 0;
-+    uint64_t t;
-     int err;
-=20
-     /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
-@@ -578,13 +580,23 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures=
- *ahcf)
-                               ARM64_SYS_REG(3, 0, 0, 3, 2));
-     }
-=20
-+    sve_supported =3D ioctl(fdarray[0], KVM_CHECK_EXTENSION, KVM_CAP_ARM_S=
-VE) > 0;
-+
-     kvm_arm_destroy_scratch_host_vcpu(fdarray);
-=20
-     if (err < 0) {
-         return false;
-     }
-=20
--   /* We can assume any KVM supporting CPU is at least a v8
-+    /* Add feature bits that can't appear until after VCPU init. */
-+    if (sve_supported) {
-+        t =3D ahcf->isar.id_aa64pfr0;
-+        t =3D FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
-+        ahcf->isar.id_aa64pfr0 =3D t;
-+    }
-+
-+    /*
-+     * We can assume any KVM supporting CPU is at least a v8
-      * with VFPv4+Neon; this in turn implies most of the other
-      * feature bits.
-      */
-diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-index 40d8395b7f75..b132ed09806d 100644
---- a/tests/arm-cpu-features.c
-+++ b/tests/arm-cpu-features.c
-@@ -458,8 +458,8 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-             "We cannot guarantee the CPU type 'cortex-a15' works "
-             "with KVM on this host", NULL);
-=20
--        assert_has_feature(qts, "max", "sve");
--        resp =3D do_query_no_props(qts, "max");
-+        assert_has_feature(qts, "host", "sve");
-+        resp =3D do_query_no_props(qts, "host");
-         kvm_supports_sve =3D resp_get_feature(resp, "sve");
-         vls =3D resp_get_sve_vls(resp);
-         qobject_unref(resp);
-@@ -470,7 +470,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-             sprintf(max_name, "sve%d", max_vq * 128);
-=20
-             /* Enabling a supported length is of course fine. */
--            assert_sve_vls(qts, "max", vls, "{ %s: true }", max_name);
-+            assert_sve_vls(qts, "host", vls, "{ %s: true }", max_name);
-=20
-             /* Get the next supported length smaller than max-vq. */
-             vq =3D 64 - __builtin_clzll(vls & ~BIT_ULL(max_vq - 1));
-@@ -479,7 +479,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-                  * We have at least one length smaller than max-vq,
-                  * so we can disable max-vq.
-                  */
--                assert_sve_vls(qts, "max", (vls & ~BIT_ULL(max_vq - 1)),
-+                assert_sve_vls(qts, "host", (vls & ~BIT_ULL(max_vq - 1)),
-                                "{ %s: false }", max_name);
-=20
-                 /*
-@@ -489,7 +489,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-                  */
-                 sprintf(name, "sve%d", vq * 128);
-                 error =3D g_strdup_printf("cannot disable %s", name);
--                assert_error(qts, "max", error,
-+                assert_error(qts, "host", error,
-                              "{ %s: true, %s: false }",
-                              max_name, name);
-                 g_free(error);
-@@ -502,7 +502,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-             vq =3D __builtin_ffsll(vls);
-             sprintf(name, "sve%d", vq * 128);
-             error =3D g_strdup_printf("cannot disable %s", name);
--            assert_error(qts, "max", error, "{ %s: false }", name);
-+            assert_error(qts, "host", error, "{ %s: false }", name);
-             g_free(error);
-=20
-             /* Get an unsupported length. */
-@@ -514,7 +514,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-             if (vq <=3D SVE_MAX_VQ) {
-                 sprintf(name, "sve%d", vq * 128);
-                 error =3D g_strdup_printf("cannot enable %s", name);
--                assert_error(qts, "max", error, "{ %s: true }", name);
-+                assert_error(qts, "host", error, "{ %s: true }", name);
-                 g_free(error);
-             }
-         } else {
-@@ -523,8 +523,7 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-     } else {
-         assert_has_not_feature(qts, "host", "aarch64");
-         assert_has_not_feature(qts, "host", "pmu");
--
--        assert_has_not_feature(qts, "max", "sve");
-+        assert_has_not_feature(qts, "host", "sve");
-     }
-=20
-     qtest_quit(qts);
---=20
-2.21.0

@@ -1,106 +1,99 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp164082wri;
-        Thu, 31 Oct 2019 16:39:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzVpbJ64jwov5mwjeu1F4HKkYtaw2Moq/k7C0yRPKf9u4eYg8XokUGIzbQdwj0feKiDw9RS
-X-Received: by 2002:a37:e50c:: with SMTP id e12mr7837973qkg.52.1572565151786;
-        Thu, 31 Oct 2019 16:39:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572565151; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp135691wri;
+        Fri, 1 Nov 2019 01:26:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwdfzAvpPyXOJDZwlsH3YOdVEdEpZkvV2aie2uVHEDQuNbFfJ9+MVnjRrsgSKOAqEvFawjC
+X-Received: by 2002:a17:906:913:: with SMTP id i19mr2136811ejd.23.1572596779134;
+        Fri, 01 Nov 2019 01:26:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572596779; cv=none;
         d=google.com; s=arc-20160816;
-        b=mxJAb38cQKbwjbOcaR+WhMF0nPt7AueNJlTuNLL2nTbNK80Hh7uxaf6gwF8SauuxDN
-         ZgK6brEZKc9dugqH8iIHVNcQbu+tDFeei3l/nEp/PxK3UW4gnBL3pjABcTaVIquNwf/t
-         4UjLRBqS1sOpDr4BDFdBAGNsv0Dt6EXP6vJL9kmgz4h4WAYWOXRfXIwSS1owLmzISujZ
-         NiWgA8Hd+c0N01YtvqPcKfY8ODT++ASOH5UUa4WwE1mAh3XXMegNpRZqBZOrcVQj09p2
-         Z8vpJWqvoCcKq9aRsskustluHRs1Wzkf5RYHd64akKK38VECSVtnBTbXfAfPsk3w+Ems
-         dcwQ==
+        b=BqAsBKqY01kMfEl5EhejOQOlBjEpAdWa9g4NDJtJXCnfSSJKv7YwjtS3fhHyilBpXG
+         F6lrJjb6IOIWe0OgDq5iV2yh6DBQpBGchRVMTyQEDsPrm9dNjl1Wu7erY3+pbYOAoGK7
+         +7Folbx/8sWi2X6RcZGDOSNSy4ILftJmaZvt5JYqO+aW1MhqaP6Z2AazFqccOttoKnYk
+         ZEtFi8/v1cvCRkU2vtyc/+jF2HxWVsXVGBZk5/qjQ9edqFuIgMLZkzcfHIm9EeaAg2nU
+         wdxcj+m3rb/FgLRVT2e0mTGnZn+tCvhTzjbGbZDvzqLGyFFP6sF/x7ubTyCjuZDyA4l+
+         pkzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=UksvnpYzNdVLEB9Tttzdp8pXC8HzwmxPaXzPQbuCWA8=;
-        b=cRPBC3iwLrn602P8Xhn4c8/L0Qdq6pQtDESPOsyOELMnY7Y/aThWyAnKAEcWEbSec0
-         U4bXTTuOZWW2w2yHSfaze/nXqNd8SXF+WlOhTmnjxEI5bEQcDQBf3cO6/VdETDpzTKZ1
-         XZSrvmyfIa7Qr5h3p9VdYU5t5UzMJuvTOEX3ItGKrml6bMPzK8HY2qdMjaUkflYrDmPF
-         c2vzPXHQkNJBgHcr6LLkD91o8SHajpEb4o3mS3b0O0ZSEb4IgVhlCtcpdgVmGlhBYSDq
-         wnV9XuK8P1I42LYfswvndc0oNBEQ7LB8ikE0QKLWAzbEdyE1eovSdr38QIDHxaq2O6tJ
-         hrbA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=sbeKhEjQCX+T18ZQtx1UfiIxbNkhOWlH/7+HDAJnBtA=;
+        b=VXSwliwL/PT64UJ8+96J95h44zrPbZgrm8wN+t+lDig570trXTxE6arKj/lSkqEmUq
+         g75zSXTY4k175PH39Db1QvwmxG3p84gg2vUob/iv+fcSrKSvYujX5akEa6hmd+Zzn+wb
+         G3zZCjCUhY5gXG4NoZlnA2zMQEzTWIdDFd0APJPH4RbXupLcwhhd4Gq7apq2s/NDbIDj
+         o9oKyqVb3qjjHMFEFRzpMsUs/XYxCrMEMGqd5fQh1zpv6wdOZ6KWg99m+uGw3jNdDZ+2
+         PkZ44UsEdW4Yr4+EOCvPNnxBXZSzW9hDXkLCriSPNajL3WSAlJNad1MgI33+mvVDT2VP
+         V4gA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xtIEuVoG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y197si5862790qkb.371.2019.10.31.16.39.11
+        by mx.google.com with ESMTPS id 25si1954933ejw.349.2019.11.01.01.26.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Oct 2019 16:39:11 -0700 (PDT)
+        Fri, 01 Nov 2019 01:26:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xtIEuVoG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54878 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57248 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iQK23-00052r-34
-	for alex.bennee@linaro.org; Thu, 31 Oct 2019 19:39:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53641)
+	id 1iQSGA-0000i1-56
+	for alex.bennee@linaro.org; Fri, 01 Nov 2019 04:26:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52354)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iQK1a-00051a-Jf
- for qemu-arm@nongnu.org; Thu, 31 Oct 2019 19:38:44 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iQSFx-0000h3-SZ
+ for qemu-arm@nongnu.org; Fri, 01 Nov 2019 04:26:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iQK1X-000083-Vs
- for qemu-arm@nongnu.org; Thu, 31 Oct 2019 19:38:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38356)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iQK1V-0008VS-G8
- for qemu-arm@nongnu.org; Thu, 31 Oct 2019 19:38:37 -0400
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 92DA5C04B940
- for <qemu-arm@nongnu.org>; Thu, 31 Oct 2019 23:38:35 +0000 (UTC)
-Received: by mail-wr1-f72.google.com with SMTP id z9so4466095wrq.11
- for <qemu-arm@nongnu.org>; Thu, 31 Oct 2019 16:38:35 -0700 (PDT)
+ (envelope-from <peter.maydell@linaro.org>) id 1iQSFw-0005Hx-L1
+ for qemu-arm@nongnu.org; Fri, 01 Nov 2019 04:26:05 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:46354)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iQSFw-0005BW-Ek
+ for qemu-arm@nongnu.org; Fri, 01 Nov 2019 04:26:04 -0400
+Received: by mail-ot1-x344.google.com with SMTP id 89so7698417oth.13
+ for <qemu-arm@nongnu.org>; Fri, 01 Nov 2019 01:26:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=sbeKhEjQCX+T18ZQtx1UfiIxbNkhOWlH/7+HDAJnBtA=;
+ b=xtIEuVoGLlX3GhEYev9F5T1M4u9orpchY60p8++2qmASwIzBy32vRiTKkfiIyOXAnr
+ 6JXIXxJW2K9dr1jG5uhu5CeeyH0Pghs3QY2tEv9YxR202TN58vKVJBAqMFPYjU1DrFf6
+ 3qAXhLBhWQYwuHojSFEfxbRZxz0fkOE7tYFhLb19jHUIj9ANOzTa0HjurQKNrbVcCeSI
+ ntv1JYLUHu0wTx3ySXdY9eZkBxq6cJc3WfCuAXI1O/ALoGc2c6BBStdVUoxMVBOr26+R
+ 8d6G6CLnsiwBHSQ2QT1jmcI/XL2UlB62yK2/V3Pc3UydfAw2CWAG0lnU0wOcFattr3T6
+ p0qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=J8bgphd3ygQ74msF+m1sFmeYg6lP0SClY9MLtdmfy28=;
- b=F9KOv1cxCSJ3oc+ssEYM6/OI2NPVtbyWMLZ+9zwmckkZuC9kKKWJNT1EoBbPJLpvhW
- 6K/mgkhVeyykL3Qa2Nwu/0u3Z3qvo8o2/Cl8llZl1YbbUnAgduEeOe12wxPybt4pdqhh
- TqQtabuae3ySQRoPqnjtv3Lv56Vsu2XokTO/vsC/gXkUKcjcDwoHT2S+VEW2z9kd2q0M
- 3efqyREpd7Am8yVCc1NPGwf0gcbpBOzJavH+LT/uBBvaL8LyM88WPV75KwXowoqTVHi3
- mJCfTLkObwmhEq/W0Mf/fXiibl1PJkOr7ZQL8dFb7kFY4IYyHPsQHibzVUf3qbrKG9oP
- KzUw==
-X-Gm-Message-State: APjAAAWI4lA2T2Ih3kI+sWyXx5TJGuMh/gDq9n1H2h9PorDBqoq5kaIW
- Ub0DIGmHb0T82Oufs5TMQx10QOjZLVqfvWTGc8/XUY2UdUUMo02V8CUtH1QPtgUr/Q5+eghqDkB
- w1YzvQjKxJ6DB
-X-Received: by 2002:a1c:a791:: with SMTP id q139mr7380861wme.155.1572565114395; 
- Thu, 31 Oct 2019 16:38:34 -0700 (PDT)
-X-Received: by 2002:a1c:a791:: with SMTP id q139mr7380849wme.155.1572565114221; 
- Thu, 31 Oct 2019 16:38:34 -0700 (PDT)
-Received: from [192.168.20.58] (94.222.26.109.rev.sfr.net. [109.26.222.94])
- by smtp.gmail.com with ESMTPSA id b3sm874766wmh.17.2019.10.31.16.38.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Oct 2019 16:38:33 -0700 (PDT)
-Subject: Re: [PATCH v5 11/13] hw/s390x/ipl: replace deprecated qdev_reset_all
- registration
-To: Damien Hedde <damien.hedde@greensocs.com>, qemu-devel@nongnu.org
-References: <20191018150630.31099-1-damien.hedde@greensocs.com>
- <20191018150630.31099-12-damien.hedde@greensocs.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <29cfdbcc-3e83-a980-f753-dae8549e5853@redhat.com>
-Date: Fri, 1 Nov 2019 00:38:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=sbeKhEjQCX+T18ZQtx1UfiIxbNkhOWlH/7+HDAJnBtA=;
+ b=KS1T2gAb48koWqMiB265wtEcVJigTvnQNmomHZEyalYFeJB0H9c45MbQrkVcAk2ugA
+ uLzjNmsUky69V57w2dZpFVqVqYh543S+rs2vnu4IvK4rCN8tLPD8U8CI8JpaInmegT2P
+ bK6cMMKAGeqS2R/v3dyo4DItSkW/uHw3CFi3USj0oz/zs4gvIUvm0YdbSoDRMHo8boXo
+ +DIl1l+BtM7OoAfNgmfEhHkoLuog2WWhM9T/BKAzOxozsdK/kQXIOtwzhjgs9/iSrByF
+ 2qYyx/p1epDoG0GI2LSrVSfvIrtoE1tLxE2JiHvG5tkeYuYm5z7jNh6al/RS71brDxdC
+ 7afw==
+X-Gm-Message-State: APjAAAUFesl4OETiiQvOJ+qRnaEJCwwPvWEcsJU3fsLifvambd8LRkpS
+ BkIw503nH0xzoshaxmHqxTq9qAS7BZPrUHSRllwriw==
+X-Received: by 2002:a05:6830:1b71:: with SMTP id
+ d17mr7830338ote.232.1572596762929; 
+ Fri, 01 Nov 2019 01:26:02 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20191018150630.31099-12-damien.hedde@greensocs.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+References: <20191031040830.18800-1-edgar.iglesias@xilinx.com>
+In-Reply-To: <20191031040830.18800-1-edgar.iglesias@xilinx.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 1 Nov 2019 08:25:49 +0000
+Message-ID: <CAFEAcA9HJR+YDrfDYvH02vn1sofuhFt0=Avs1XDfJnHr3rcwOg@mail.gmail.com>
+Subject: Re: [PATCH v1 0/1] hw/arm/boot: Rebuild hflags when modifying
+ CPUState at boot
+To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,67 +105,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Thomas Huth <thuth@redhat.com>,
- berrange@redhat.com, ehabkost@redhat.com, cohuck@redhat.com,
- mark.burton@greensocs.com, qemu-s390x@nongnu.org,
- Christian Borntraeger <borntraeger@de.ibm.com>, edgari@xilinx.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com, david@gibson.dropbear.id.au
+Cc: figlesia@xilinx.com, Stefano Stabellini <sstabellini@kernel.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZFBLRIvLIBP8
+X-TUID: 1Nsl6TUPK5R7
 
-On 10/18/19 5:06 PM, Damien Hedde wrote:
-> Replace deprecated qdev_reset_all by resettable_cold_reset_fn for
-> the ipl registration in the main reset handlers.
->=20
-> This does not impact the behavior for the following reasons:
-> + at this point resettable just call the old reset methods of devices
->    and buses in the same order than qdev/qbus.
-> + resettable handlers registered with qemu_register_reset are
->    serialized; there is no interleaving.
-> + eventual explicit calls to legacy reset API (device_reset or
->    qdev/qbus_reset) inside this reset handler will not be masked out
->    by resettable mechanism; they do not go through resettable api.
->=20
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> ---
-> Cc: Cornelia Huck <cohuck@redhat.com>
-> Cc: qemu-s390x@nongnu.org
-> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
-> Cc: Thomas Huth <thuth@redhat.com>
-> ---
->   hw/s390x/ipl.c | 10 +++++++++-
->   1 file changed, 9 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
-> index ca544d64c5..2689f7a017 100644
-> --- a/hw/s390x/ipl.c
-> +++ b/hw/s390x/ipl.c
-> @@ -237,7 +237,15 @@ static void s390_ipl_realize(DeviceState *dev, Err=
-or **errp)
->        */
->       ipl->compat_start_addr =3D ipl->start_addr;
->       ipl->compat_bios_start_addr =3D ipl->bios_start_addr;
-> -    qemu_register_reset(qdev_reset_all_fn, dev);
-> +    /*
-> +     * Because this Device is not on any bus in the qbus tree (it is
-> +     * not a sysbus device and it's not on some other bus like a PCI
-> +     * bus) it will not be automatically reset by the 'reset the
-> +     * sysbus' hook registered by vl.c like most devices. So we must
-> +     * manually register a reset hook for it.
+On Thu, 31 Oct 2019 at 04:08, Edgar E. Iglesias
+<edgar.iglesias@xilinx.com> wrote:
+>
+> I'm seeing asserts with missmatching hflags when doing direct boots
+> on versal. This patch fixes the problem for me, rebuilding hflags
+> after boot code modifes the state.
+>
+> Cheers,
+> Edgar
+>
+> Edgar E. Iglesias (1):
+>   hw/arm/boot: Rebuild hflags when modifying CPUState at boot
+>
+>  hw/arm/boot.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
 
-:)
 
-> +     * TODO: there should be a better way to do this.
+Applied to target-arm.next, thanks.
 
-:(
-
-> +     */
-> +    qemu_register_reset(resettable_cold_reset_fn, dev);
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
->   error:
->       error_propagate(errp, err);
->   }
->=20
+-- PMM

@@ -1,99 +1,76 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp135691wri;
-        Fri, 1 Nov 2019 01:26:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwdfzAvpPyXOJDZwlsH3YOdVEdEpZkvV2aie2uVHEDQuNbFfJ9+MVnjRrsgSKOAqEvFawjC
-X-Received: by 2002:a17:906:913:: with SMTP id i19mr2136811ejd.23.1572596779134;
-        Fri, 01 Nov 2019 01:26:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572596779; cv=none;
-        d=google.com; s=arc-20160816;
-        b=BqAsBKqY01kMfEl5EhejOQOlBjEpAdWa9g4NDJtJXCnfSSJKv7YwjtS3fhHyilBpXG
-         F6lrJjb6IOIWe0OgDq5iV2yh6DBQpBGchRVMTyQEDsPrm9dNjl1Wu7erY3+pbYOAoGK7
-         +7Folbx/8sWi2X6RcZGDOSNSy4ILftJmaZvt5JYqO+aW1MhqaP6Z2AazFqccOttoKnYk
-         ZEtFi8/v1cvCRkU2vtyc/+jF2HxWVsXVGBZk5/qjQ9edqFuIgMLZkzcfHIm9EeaAg2nU
-         wdxcj+m3rb/FgLRVT2e0mTGnZn+tCvhTzjbGbZDvzqLGyFFP6sF/x7ubTyCjuZDyA4l+
-         pkzQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=sbeKhEjQCX+T18ZQtx1UfiIxbNkhOWlH/7+HDAJnBtA=;
-        b=VXSwliwL/PT64UJ8+96J95h44zrPbZgrm8wN+t+lDig570trXTxE6arKj/lSkqEmUq
-         g75zSXTY4k175PH39Db1QvwmxG3p84gg2vUob/iv+fcSrKSvYujX5akEa6hmd+Zzn+wb
-         G3zZCjCUhY5gXG4NoZlnA2zMQEzTWIdDFd0APJPH4RbXupLcwhhd4Gq7apq2s/NDbIDj
-         o9oKyqVb3qjjHMFEFRzpMsUs/XYxCrMEMGqd5fQh1zpv6wdOZ6KWg99m+uGw3jNdDZ+2
-         PkZ44UsEdW4Yr4+EOCvPNnxBXZSzW9hDXkLCriSPNajL3WSAlJNad1MgI33+mvVDT2VP
-         V4gA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xtIEuVoG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp253731wri;
+        Fri, 1 Nov 2019 03:33:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzXNah96ag3yLjA6an1ihUMtm4epoKk0ewVcYDEpEVwN+bswYWGpDiq5ZbISzMeGHefiouZ
+X-Received: by 2002:a37:a283:: with SMTP id l125mr4704387qke.298.1572604404262;
+        Fri, 01 Nov 2019 03:33:24 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 25si1954933ejw.349.2019.11.01.01.26.19
+        by mx.google.com with ESMTPS id z13si5827252qvi.153.2019.11.01.03.33.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Nov 2019 01:26:19 -0700 (PDT)
+        Fri, 01 Nov 2019 03:33:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xtIEuVoG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57248 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=oEbRZSg1;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37438 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iQSGA-0000i1-56
-	for alex.bennee@linaro.org; Fri, 01 Nov 2019 04:26:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52354)
+	id 1iQUF9-0001Eb-Iy
+	for alex.bennee@linaro.org; Fri, 01 Nov 2019 06:33:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45546)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iQSFx-0000h3-SZ
- for qemu-arm@nongnu.org; Fri, 01 Nov 2019 04:26:06 -0400
+ (envelope-from <luc.michel@greensocs.com>) id 1iQUEj-0001As-An
+ for qemu-arm@nongnu.org; Fri, 01 Nov 2019 06:32:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iQSFw-0005Hx-L1
- for qemu-arm@nongnu.org; Fri, 01 Nov 2019 04:26:05 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:46354)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iQSFw-0005BW-Ek
- for qemu-arm@nongnu.org; Fri, 01 Nov 2019 04:26:04 -0400
-Received: by mail-ot1-x344.google.com with SMTP id 89so7698417oth.13
- for <qemu-arm@nongnu.org>; Fri, 01 Nov 2019 01:26:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sbeKhEjQCX+T18ZQtx1UfiIxbNkhOWlH/7+HDAJnBtA=;
- b=xtIEuVoGLlX3GhEYev9F5T1M4u9orpchY60p8++2qmASwIzBy32vRiTKkfiIyOXAnr
- 6JXIXxJW2K9dr1jG5uhu5CeeyH0Pghs3QY2tEv9YxR202TN58vKVJBAqMFPYjU1DrFf6
- 3qAXhLBhWQYwuHojSFEfxbRZxz0fkOE7tYFhLb19jHUIj9ANOzTa0HjurQKNrbVcCeSI
- ntv1JYLUHu0wTx3ySXdY9eZkBxq6cJc3WfCuAXI1O/ALoGc2c6BBStdVUoxMVBOr26+R
- 8d6G6CLnsiwBHSQ2QT1jmcI/XL2UlB62yK2/V3Pc3UydfAw2CWAG0lnU0wOcFattr3T6
- p0qw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=sbeKhEjQCX+T18ZQtx1UfiIxbNkhOWlH/7+HDAJnBtA=;
- b=KS1T2gAb48koWqMiB265wtEcVJigTvnQNmomHZEyalYFeJB0H9c45MbQrkVcAk2ugA
- uLzjNmsUky69V57w2dZpFVqVqYh543S+rs2vnu4IvK4rCN8tLPD8U8CI8JpaInmegT2P
- bK6cMMKAGeqS2R/v3dyo4DItSkW/uHw3CFi3USj0oz/zs4gvIUvm0YdbSoDRMHo8boXo
- +DIl1l+BtM7OoAfNgmfEhHkoLuog2WWhM9T/BKAzOxozsdK/kQXIOtwzhjgs9/iSrByF
- 2qYyx/p1epDoG0GI2LSrVSfvIrtoE1tLxE2JiHvG5tkeYuYm5z7jNh6al/RS71brDxdC
- 7afw==
-X-Gm-Message-State: APjAAAUFesl4OETiiQvOJ+qRnaEJCwwPvWEcsJU3fsLifvambd8LRkpS
- BkIw503nH0xzoshaxmHqxTq9qAS7BZPrUHSRllwriw==
-X-Received: by 2002:a05:6830:1b71:: with SMTP id
- d17mr7830338ote.232.1572596762929; 
- Fri, 01 Nov 2019 01:26:02 -0700 (PDT)
+ (envelope-from <luc.michel@greensocs.com>) id 1iQUEg-0007hK-ID
+ for qemu-arm@nongnu.org; Fri, 01 Nov 2019 06:32:56 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:58506)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
+ id 1iQUEf-0007bh-2M; Fri, 01 Nov 2019 06:32:53 -0400
+Received: from michell-laptop.bar.greensocs.com (unknown [172.17.10.10])
+ by beetle.greensocs.com (Postfix) with ESMTPS id 731C296EF0;
+ Fri,  1 Nov 2019 10:32:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1572604370;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=TWIoQbCMNr59K0TvAGIYJ3dpVbpC7CHYlShLKKuNPZs=;
+ b=oEbRZSg1ZRLuJviItjq8A7+wbbDuqDEvORTGYIiJGxfHrZ7ifTzP7sxHMOiH60j+pYHI+8
+ Xo70hFTNfyonk0ETs9gQGKldEDoX6UQuEcLGYKKIVuNwL9F3IPzaLI5cSNl7ptNKvHL2s2
+ MktBeE+yUHf9jBZbHuNk6hNikrs+bJw=
+From: Luc Michel <luc.michel@greensocs.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrzej Zaborowski <balrogg@gmail.com>
+Subject: [PATCH] hw/arm/pxa2xx: rebuild hflags cache when modifying CPU state
+Date: Fri,  1 Nov 2019 11:32:32 +0100
+Message-Id: <20191101103232.3692818-1-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-References: <20191031040830.18800-1-edgar.iglesias@xilinx.com>
-In-Reply-To: <20191031040830.18800-1-edgar.iglesias@xilinx.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Nov 2019 08:25:49 +0000
-Message-ID: <CAFEAcA9HJR+YDrfDYvH02vn1sofuhFt0=Avs1XDfJnHr3rcwOg@mail.gmail.com>
-Subject: Re: [PATCH v1 0/1] hw/arm/boot: Rebuild hflags when modifying
- CPUState at boot
-To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1572604370;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=TWIoQbCMNr59K0TvAGIYJ3dpVbpC7CHYlShLKKuNPZs=;
+ b=ch8pjICrYsTi/1X36dJg3vJ4gnhdmsRav/9mP3g2L3zW0TL4ne3jgFhsTJhQ8c5bnOMYzR
+ lNHfEwWwV5KTSssR9/wM2nPGUngR4kZ2/Z+FEilzSRSEkba1e+WwsL9RprFJnj0u2Xu25o
+ RXRZVWgVzOun0Cgb0TpZ+7MNhQknuxQ=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1572604370; a=rsa-sha256; cv=none;
+ b=jsoyk9T35zu9YoQ9qpp7O0UaxzUNesHZ+X3PfFXEyViVa3euSPhrappgXaaDTO7iGo5gKE
+ 4yjaM4jank9UDKUAW13F2aU74AES8R315JpC78dGeYBWSnnKlQa+p3WXjRsW6Y8cOl7DG0
+ w9eZ7nJKE5ETVREFwTa5/YHlraX1Mh4=
+ARC-Authentication-Results: i=1;
+	beetle.greensocs.com;
+	none
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,37 +82,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, Stefano Stabellini <sstabellini@kernel.org>,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
+Cc: Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1Nsl6TUPK5R7
+X-TUID: nu6bnNBQ/vxL
 
-On Thu, 31 Oct 2019 at 04:08, Edgar E. Iglesias
-<edgar.iglesias@xilinx.com> wrote:
->
-> I'm seeing asserts with missmatching hflags when doing direct boots
-> on versal. This patch fixes the problem for me, rebuilding hflags
-> after boot code modifes the state.
->
-> Cheers,
-> Edgar
->
-> Edgar E. Iglesias (1):
->   hw/arm/boot: Rebuild hflags when modifying CPUState at boot
->
->  hw/arm/boot.c | 1 +
->  1 file changed, 1 insertion(+)
->
+This machine modifies the CPU state when simulating suspend mode. This
+commit adds a missing call to arm_rebuild_hflags after those
+modifications.
 
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+---
+I came over this missing hflags rebuild while reviewing Edgar's similar
+fix in hw/arm/boot.c. I could not find any other place where it would be
+missing but I may be wrong.
+---
+ hw/arm/pxa2xx.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Applied to target-arm.next, thanks.
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index cdafde2f76..7982ffbfbe 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -306,6 +306,8 @@ static void pxa2xx_pwrmode_write(CPUARMState *env, co=
+nst ARMCPRegInfo *ri,
+         cpu_physical_memory_write(8, &buffer, 4);
+ #endif
+=20
++        arm_rebuild_hflags(s->cpu->env);
++
+         /* Suspend */
+         cpu_interrupt(current_cpu, CPU_INTERRUPT_HALT);
+=20
+--=20
+2.23.0
 
--- PMM

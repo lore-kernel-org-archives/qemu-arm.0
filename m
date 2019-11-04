@@ -1,247 +1,168 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp3904781wri;
-        Mon, 4 Nov 2019 04:17:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxuYbrLgBBFbXt12jTvYy+4X65HmbAn8GihzYn3eOYRHTzOscp06FqMlcCKJb7TGn6Y+oH8
-X-Received: by 2002:a17:906:1d19:: with SMTP id n25mr2553480ejh.151.1572869830073;
-        Mon, 04 Nov 2019 04:17:10 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp4007210wri;
+        Mon, 4 Nov 2019 05:50:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqybmQVtT4nckBj1MNya5TaZ+wHO73td74rX0AfSW0PICjukvIPxt5x/s0CmO9m/vK76tguz
+X-Received: by 2002:a17:906:85c8:: with SMTP id i8mr1291944ejy.46.1572875432692;
+        Mon, 04 Nov 2019 05:50:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572875432; cv=none;
+        d=google.com; s=arc-20160816;
+        b=OLQxISlyauFQ5pjNUbZxsNwfNIz+5QxiQLV2gif/2UQludvjWwC8/nmMD0IIqXC63+
+         eT20nZwTVtzgn56WasLjgmNkruoN2PjI1SSXSyro/hBTP/hMvhXkS6vt70eGox9VvgzF
+         gXKSCSc4wrj6BIfb6LHQgSoQwyX2cmtJRSlhSvrrgjXSKt3XD91LtdUi9own7cF/5JRc
+         HQz7qfQag0Fgi2XR4ROO726tMU1PeGbYdWVyB3EghHlE0T40Vgl2wd/y9OFp6GVk1KIc
+         sSt1jD/9CAZarMid2uq2disS4utfSYpjWvzcgmnY8kh4rdeBgXlnpjocrFecX/QN3mHm
+         IWAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:cc:to:from:ironport-sdr:dkim-signature;
+        bh=GCPYjmUDKPjzEsKoGBxiddFyuLgCMT/rxM1sQVxsGs8=;
+        b=eSqzj3XhiSLkqefLEUGm4rSh01NClGCfWqPqjbeGhhcGPD6xFpkZ/oCpzSYSMnrofP
+         OLeKh00qnzQ6+j0tnufTDrmGShEWBZTfwEQUWENfo64Sky4Reg07UWpmXs5eCZS6O6hZ
+         cW6VQpyF9P2XmCyXDMx6SA9BYgfbKePQXgduSZOOer6telU7uG0XvHCuMilnKAm+MjEM
+         5PwnOuzA0cmd3htyoO9h3Y8K9c3bZPjLV0ex/1guOJgwNnTJugXwGzaU3PiAU/aYAcRD
+         gj9Gs8JP1vdyVGfl9AjMF7XiQiIkCZV7ApB1aPbD+RKgBkOo6QRPVs19mQw6lQNuTB7j
+         veKA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=mqJq1Hsa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g19si11433662ejj.120.2019.11.04.04.17.09
+        by mx.google.com with ESMTPS id r25si7741886eji.283.2019.11.04.05.50.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Nov 2019 04:17:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Nov 2019 05:50:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=OqeHt0uE;
-       arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60046 helo=lists1p.gnu.org)
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=mqJq1Hsa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
+Received: from localhost ([::1]:32992 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRbIC-00073Y-D7
-	for alex.bennee@linaro.org; Mon, 04 Nov 2019 07:17:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40033)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iRckZ-0005w2-HO
+	for alex.bennee@linaro.org; Mon, 04 Nov 2019 08:50:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36514)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1iRbHc-00071W-Na
- for qemu-arm@nongnu.org; Mon, 04 Nov 2019 07:16:34 -0500
+ (envelope-from <prvs=204c4f724=graf@amazon.de>) id 1iRaua-0006d2-1T
+ for qemu-devel@nongnu.org; Mon, 04 Nov 2019 06:52:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1iRbHX-0004p2-7I
- for qemu-arm@nongnu.org; Mon, 04 Nov 2019 07:16:32 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:41754)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1iRbHV-0004kD-8P; Mon, 04 Nov 2019 07:16:27 -0500
-Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 86FDB96EF0;
- Mon,  4 Nov 2019 12:16:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1572869778;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=i6Tpk6AXyDe7PMgxB49odyYmY16dx+pgUnO7RjeK2Fw=;
- b=OqeHt0uEhxkrN7JWB9L6kXvkzTrXnjPyMzBvXANpURMPcHSWjRTet0W5QGrECVhUPhP2JG
- A92fGhkG5KSAoljbfkklBjLmFoWcd9UQIU53ZtmIE/atFeXNEFeECXktMVGoDFfH+ynfDL
- +oxZ04G2c3oJBpfXjpa4+MXviYWrEec=
-Subject: Re: [PATCH v5 02/13] hw/core/qdev: add trace events to help with
- resettable transition
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20191018150630.31099-1-damien.hedde@greensocs.com>
- <20191018150630.31099-3-damien.hedde@greensocs.com>
- <f5d78215-ee4d-ae1a-74dc-52b3c179d88c@redhat.com>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <984a87d7-0430-d777-0fe9-ce5cfea712a1@greensocs.com>
-Date: Mon, 4 Nov 2019 13:16:17 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.0
+ (envelope-from <prvs=204c4f724=graf@amazon.de>) id 1iRauZ-00049A-2m
+ for qemu-devel@nongnu.org; Mon, 04 Nov 2019 06:52:43 -0500
+Received: from smtp-fw-6002.amazon.com ([52.95.49.90]:28429)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <prvs=204c4f724=graf@amazon.de>)
+ id 1iRauW-00046h-QM; Mon, 04 Nov 2019 06:52:40 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1572868361; x=1604404361;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=GCPYjmUDKPjzEsKoGBxiddFyuLgCMT/rxM1sQVxsGs8=;
+ b=mqJq1Hsa4jO7kWoV7nQceGLujLq5M5TuNhA146AKE9m4wFw/PnJvX7tv
+ c/K/3z1HSMTBC68NwolpyBqqYWybaGkNmk+kc6WBRvFtVIhRclD7Bz+HL
+ MMT3hRABNzoFJVw/57O765Q7S6nmxboS94q0euvCXHjS/NGWShARldTZr Q=;
+IronPort-SDR: 7Kz8+dXMdacXqmT+trIiQ7tchKOg6F86qoR6nzDnu2/97AoMFPEeCXbXS0VZLddgfPreTAi8IZ
+ r298VJLYe0eQ==
+Received: from iad6-co-svc-p1-lb1-vlan3.amazon.com (HELO
+ email-inbound-relay-2b-5bdc5131.us-west-2.amazon.com) ([10.124.125.6])
+ by smtp-border-fw-out-6002.iad6.amazon.com with ESMTP;
+ 04 Nov 2019 11:52:39 +0000
+Received: from EX13MTAUWC001.ant.amazon.com
+ (pdx4-ws-svc-p6-lb7-vlan3.pdx.amazon.com [10.170.41.166])
+ by email-inbound-relay-2b-5bdc5131.us-west-2.amazon.com (Postfix) with ESMTPS
+ id 14615A2872; Mon,  4 Nov 2019 11:52:38 +0000 (UTC)
+Received: from EX13D20UWC001.ant.amazon.com (10.43.162.244) by
+ EX13MTAUWC001.ant.amazon.com (10.43.162.135) with Microsoft SMTP Server (TLS)
+ id 15.0.1367.3; Mon, 4 Nov 2019 11:52:37 +0000
+Received: from u79c5a0a55de558.ant.amazon.com (10.43.161.77) by
+ EX13D20UWC001.ant.amazon.com (10.43.162.244) with Microsoft SMTP Server (TLS)
+ id 15.0.1367.3; Mon, 4 Nov 2019 11:52:36 +0000
+From: Alexander Graf <graf@amazon.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Hendrik Borghorst
+ <hborghor@amazon.de>
+Subject: [PATCH] pl031: Expose RTCICR as proper WC register
+Date: Mon, 4 Nov 2019 12:52:28 +0100
+Message-ID: <20191104115228.30745-1-graf@amazon.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-In-Reply-To: <f5d78215-ee4d-ae1a-74dc-52b3c179d88c@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1572869778;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=i6Tpk6AXyDe7PMgxB49odyYmY16dx+pgUnO7RjeK2Fw=;
- b=XiScZxKkrdroCmK5yR7oO1Ut6xkVx0qLNlSNsCwtOc0t5cm7ls+eUUOCO0KesG6b4lY45r
- UziEglRyeWz2Mia6BWw8QSrNlvOzfcN9Xc/kezmm1MB5yWtEgx6hMZdc1hgKnMr7oEWa64
- Lhs2Ji6yuylOOYJRLNl1zpQt7ndg7jg=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1572869778; a=rsa-sha256; cv=none;
- b=2zp18q1d3Hwped1Y2ZE0nOIR4AtHSHTlcbkctL7BySCzpqHwfrb8SSLcpb3fIx39Vmkhth
- BN1ZmUHvRj1l4BuLMMa59+Tc+ZXBOYqK/oXvV1kDkH3/7PQJKSVQgyzMcJdrZNt85zL4YD
- TogY1+SIrs2F/jWv6PL0prAf4HZB+KA=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 5.135.226.135
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain
+X-Originating-IP: [10.43.161.77]
+X-ClientProxiedBy: EX13D06UWC002.ant.amazon.com (10.43.162.205) To
+ EX13D20UWC001.ant.amazon.com (10.43.162.244)
+Precedence: Bulk
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 52.95.49.90
+X-Mailman-Approved-At: Mon, 04 Nov 2019 08:49:53 -0500
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
- cohuck@redhat.com, mark.burton@greensocs.com, qemu-s390x@nongnu.org,
- edgari@xilinx.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
- david@gibson.dropbear.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0P46acLBINU6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ElChomtll736
+
+The current pl031 RTCICR register implementation always clears the IRQ
+pending status on a register write, regardless of the value it writes.
+
+To justify that behavior, it references the arm926e documentation
+(DDI0287B) and indicates that said document states that any write clears
+the internal IRQ state. I could however not find any text in that document
+backing the statement. In fact, it explicitly says:
+
+  "Writing 1 to bit 0 of RTCICR clears the RTCINTR flag."
+
+which describes it as much as a write-to-clear register as the PL031 spec
+(DDI0224) does:
+
+  "Writing 1 to bit position 0 clears the corresponding interrupt.
+   Writing 0 has no effect."
+
+Let's remove the bogus comment and instead follow both specs to what they
+say.
+
+Reported-by: Hendrik Borghorst <hborghor@amazon.de>
+Signed-off-by: Alexander Graf <graf@amazon.com>
+---
+ hw/rtc/pl031.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
+index 3a982752a2..c57cf83165 100644
+--- a/hw/rtc/pl031.c
++++ b/hw/rtc/pl031.c
+@@ -149,11 +149,7 @@ static void pl031_write(void * opaque, hwaddr offset,
+         pl031_update(s);
+         break;
+     case RTC_ICR:
+-        /* The PL031 documentation (DDI0224B) states that the interrupt is
+-           cleared when bit 0 of the written value is set.  However the
+-           arm926e documentation (DDI0287B) states that the interrupt is
+-           cleared when any value is written.  */
+-        s->is = 0;
++        s->is &= ~value;
+         pl031_update(s);
+         break;
+     case RTC_CR:
+-- 
+2.17.1
 
 
-On 11/1/19 12:23 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 10/18/19 5:06 PM, Damien Hedde wrote:
->> Adds trace events to reset procedure and when updating the parent
->> bus of a device.
->>
->> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
->> ---
->> =C2=A0 hw/core/qdev.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 27 +++++++=
-+++++++++++++++++---
->> =C2=A0 hw/core/trace-events |=C2=A0 9 +++++++++
->> =C2=A0 2 files changed, 33 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
->> index 60be2f2fef..f230063189 100644
->> --- a/hw/core/qdev.c
->> +++ b/hw/core/qdev.c
->> @@ -38,6 +38,7 @@
->> =C2=A0 #include "hw/boards.h"
->> =C2=A0 #include "hw/sysbus.h"
->> =C2=A0 #include "migration/vmstate.h"
->> +#include "trace.h"
->> =C2=A0 =C2=A0 bool qdev_hotplug =3D false;
->> =C2=A0 static bool qdev_hot_added =3D false;
->> @@ -98,7 +99,9 @@ void qdev_set_parent_bus(DeviceState *dev, BusState
->> *bus)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool replugging =3D dev->parent_bus !=3D=
- NULL;
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (replugging) {
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Keep a reference to the=
- device while it's not plugged into
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 trace_qdev_update_parent_b=
-us(dev, dev->parent_bus, bus);
->=20
-> Nitpicking, if you respin, can you add object_get_typename(OBJECT(dev))=
-)
-> and object_get_typename(OBJECT(bus)))?
 
-sure. I was wondering if having some kind of qom object support to trace
-would be feasible. Because it's a bit tedious to add this each time. And
-IMO it would be more useful to have the path, but we can't reasonably
-compute it as a trace_..() arguments.
 
->=20
-> With/without it:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->=20
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * Keep a reference t=
-o the device while it's not plugged into
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * any bus=
-, to avoid it potentially evaporating when it is
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * dereffe=
-d in bus_remove_child().
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->> @@ -272,6 +275,18 @@ HotplugHandler
->> *qdev_get_hotplug_handler(DeviceState *dev)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return hotplug_ctrl;
->> =C2=A0 }
->> =C2=A0 +static int qdev_prereset(DeviceState *dev, void *opaque)
->> +{
->> +=C2=A0=C2=A0=C2=A0 trace_qdev_reset_tree(dev, object_get_typename(OBJ=
-ECT(dev)));
->> +=C2=A0=C2=A0=C2=A0 return 0;
->> +}
->> +
->> +static int qbus_prereset(BusState *bus, void *opaque)
->> +{
->> +=C2=A0=C2=A0=C2=A0 trace_qbus_reset_tree(bus, object_get_typename(OBJ=
-ECT(bus)));
->> +=C2=A0=C2=A0=C2=A0 return 0;
->> +}
->> +
->> =C2=A0 static int qdev_reset_one(DeviceState *dev, void *opaque)
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 device_legacy_reset(dev);
->> @@ -282,6 +297,7 @@ static int qdev_reset_one(DeviceState *dev, void
->> *opaque)
->> =C2=A0 static int qbus_reset_one(BusState *bus, void *opaque)
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 BusClass *bc =3D BUS_GET_CLASS(bus);
->> +=C2=A0=C2=A0=C2=A0 trace_qbus_reset(bus, object_get_typename(OBJECT(b=
-us)));
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (bc->reset) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bc->reset(bus);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->> @@ -290,7 +306,9 @@ static int qbus_reset_one(BusState *bus, void
->> *opaque)
->> =C2=A0 =C2=A0 void qdev_reset_all(DeviceState *dev)
->> =C2=A0 {
->> -=C2=A0=C2=A0=C2=A0 qdev_walk_children(dev, NULL, NULL, qdev_reset_one=
-,
->> qbus_reset_one, NULL);
->> +=C2=A0=C2=A0=C2=A0 trace_qdev_reset_all(dev, object_get_typename(OBJE=
-CT(dev)));
->> +=C2=A0=C2=A0=C2=A0 qdev_walk_children(dev, qdev_prereset, qbus_preres=
-et,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_rese=
-t_one, qbus_reset_one, NULL);
->> =C2=A0 }
->> =C2=A0 =C2=A0 void qdev_reset_all_fn(void *opaque)
->> @@ -300,7 +318,9 @@ void qdev_reset_all_fn(void *opaque)
->> =C2=A0 =C2=A0 void qbus_reset_all(BusState *bus)
->> =C2=A0 {
->> -=C2=A0=C2=A0=C2=A0 qbus_walk_children(bus, NULL, NULL, qdev_reset_one=
-,
->> qbus_reset_one, NULL);
->> +=C2=A0=C2=A0=C2=A0 trace_qbus_reset_all(bus, object_get_typename(OBJE=
-CT(bus)));
->> +=C2=A0=C2=A0=C2=A0 qbus_walk_children(bus, qdev_prereset, qbus_preres=
-et,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_rese=
-t_one, qbus_reset_one, NULL);
->> =C2=A0 }
->> =C2=A0 =C2=A0 void qbus_reset_all_fn(void *opaque)
->> @@ -1108,6 +1128,7 @@ void device_legacy_reset(DeviceState *dev)
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DeviceClass *klass =3D DEVICE_GET_CLASS=
-(dev);
->> =C2=A0 +=C2=A0=C2=A0=C2=A0 trace_qdev_reset(dev, object_get_typename(O=
-BJECT(dev)));
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (klass->reset) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 klass->reset(de=
-v);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->> diff --git a/hw/core/trace-events b/hw/core/trace-events
->> index fe47a9c8cb..1a669be0ea 100644
->> --- a/hw/core/trace-events
->> +++ b/hw/core/trace-events
->> @@ -1,2 +1,11 @@
->> =C2=A0 # loader.c
->> =C2=A0 loader_write_rom(const char *name, uint64_t gpa, uint64_t size,=
- bool
->> isrom) "%s: @0x%"PRIx64" size=3D0x%"PRIx64" ROM=3D%d"
->> +
->> +# qdev.c
->> +qdev_reset(void *obj, const char *objtype) "obj=3D%p(%s)"
->> +qdev_reset_all(void *obj, const char *objtype) "obj=3D%p(%s)"
->> +qdev_reset_tree(void *obj, const char *objtype) "obj=3D%p(%s)"
->> +qbus_reset(void *obj, const char *objtype) "obj=3D%p(%s)"
->> +qbus_reset_all(void *obj, const char *objtype) "obj=3D%p(%s)"
->> +qbus_reset_tree(void *obj, const char *objtype) "obj=3D%p(%s)"
->> +qdev_update_parent_bus(void *obj, void *oldp, void *newp) "obj=3D%p
->> old_parent=3D%p new_parent=3D%p"
->>
+Amazon Development Center Germany GmbH
+Krausenstr. 38
+10117 Berlin
+Geschaeftsfuehrung: Christian Schlaeger, Ralf Herbrich
+Eingetragen am Amtsgericht Charlottenburg unter HRB 149173 B
+Sitz: Berlin
+Ust-ID: DE 289 237 879
+
+
+

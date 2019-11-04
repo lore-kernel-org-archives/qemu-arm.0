@@ -1,120 +1,141 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp3935081wri;
-        Mon, 4 Nov 2019 04:44:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwwcOOMYyHELomZV2KbP3X+WWeVpoxOJQKUjQmQgRMJpO2fRpXehyOVjCEKGlxWvN99pBqH
-X-Received: by 2002:a17:906:95c2:: with SMTP id n2mr23670491ejy.21.1572871442123;
-        Mon, 04 Nov 2019 04:44:02 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1572871442; cv=pass;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp4541287wri;
+        Mon, 4 Nov 2019 14:02:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzJn8gQWM236jc8TBr5na4gcjUl9/tzY7TmHM3mVVE911VrfxDTR58t8jH+yTWGkOD0ZfdT
+X-Received: by 2002:a05:6402:88c:: with SMTP id e12mr31409204edy.170.1572904959454;
+        Mon, 04 Nov 2019 14:02:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572904959; cv=none;
         d=google.com; s=arc-20160816;
-        b=lqrCVYEAw1icCVUOVi9MytP6IZcZk9UBWL7oJjFzFjjrD6vRC2/IEIsFN/fyKVzwSy
-         SDI3z2KlrKHWJugr1s2I2dGI9fY54LoAqx2NmxzZClQ2pzIz2CJHQNyCK2seoGgoOsi4
-         tf/GGq7nHpZSSrTR8R+2ztnh0Sq4eLdtf6D7LDRrY5W8BF860suIu/xHfOyr/gC/o0fg
-         ypRiuFb6tsD5Q+W/z8wIto7Th5JpCQXUcmDWJec1/LFIv+nIR98V0awvTkoRHQJ9FDSk
-         DEYb9P1z0NY95Sh3ih+O2XDyEy6qCCUwWKCCjWfKk/flXp/JOxa43JWJdoR42biD2L7k
-         pFrQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:date:cc:to:from:content-transfer-encoding
-         :mime-version:message-id:subject:reply-to:in-reply-to;
-        bh=6Ln4BdVwFHO2I5x/J3dmCMdBNcZGsmz/4+6/IHcamSs=;
-        b=S+NUJV8d+ok0KNNd9kl9XU50X/yIlkcka/LHGr2HOKy9RvzYlXS3Mkj+kjreyATwmk
-         Xx7yfa1ctop5kVDMlRffHrxFWWONu7qrYMmWE2rigmRyJwUdhefUpOjFnArXLZf96Co0
-         4IbFzUE5fTzyTkJA4ElP/Fn/h+jR/MJgxD5iramRkSC9rkKyNnC7c8mNDLB5f2eMQBEV
-         OMO3I88NUlPEevXqNo2B6dJjc+aXHUIgmsYfhA9REK8XyBs9FZIb1mUgIoE2doIKNJO9
-         QxiZeQM903ZX+N/XTZXw0hrmgWv64tPDLzWOzrsky7QaX9/Szl1haP6plmvLpmCipXei
-         +5iQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b34si7100416edc.74.2019.11.04.04.44.01;
-        Mon, 04 Nov 2019 04:44:02 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+        b=aparybS9QZ+2xbFoYJANZfhj62AndqlcIfdPC5bTdfgsYtOHfUGzQDrXknsrVEC88a
+         1QovoOAL3jbwwvsUkak2a5K8WcyMRTsJof0aHdBYnlY1NvEDfDCy8SZ1Jf06JoLlNnui
+         Nlnyc8jAMQOVD+N0HS5a+0g/mruiPfKEpuU8P0LODogICw1cwF6wViYLookXuuJBfHtn
+         p9pWZhlFP7PWuUY8JtsROqsNWzO6DW+59g4891AACVSbGMcqZh+RvfhykToeXoXUxq5n
+         3KZD4pma9IDT5V2Ws3bgLb8RKmnracBj0xFaQKqJ3KAYxC4jBxRHuWlJ4x7OxGcf3R/i
+         esnw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=P8PibeiupuNi15dHm5+jUR5CChJ9w0TTLJd6WN7BGpg=;
+        b=01d99PFSLc/CW7hZYiqIssAg9RcKlpOXYZQoGQhj6C+9Zubmhtc5W6kfSo4lbSiQht
+         ozT5V6FBjXMiYObqGBe7ERox6TwXjlFT0u/NU2ACfmH0ey9Vg0SwpDSXMit5J6021DrU
+         zH9tuI8SWWrqsFiGS2tPI8qzjp2uMJbt7XfDRCVbWSmOITlMN0RGVP9v0fmZ9DG6byy4
+         AOd5xcR9d6iMNA890tqOASloum7aRZhmXlPcxG6fR7hL4h9QKoO5a+JDflMC8UTmlTNM
+         xFSUGlTlqofK1QK/4bCwJniBiIzn8Cnsp6s1Ee3jil2RE5Lyrz1exEP2u1c7zNMFPH61
+         X4Vw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=zKPvNnFT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w3si6730856edu.189.2019.11.04.14.02.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 04 Nov 2019 14:02:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728903AbfKDMoB (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 4 Nov 2019 07:44:01 -0500
-Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21879 "EHLO
-        sender4-of-o58.zoho.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1727236AbfKDMoA (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 4 Nov 2019 07:44:00 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1572871412; cv=none; 
-        d=zohomail.com; s=zohoarc; 
-        b=ZGGX4IiQmFpfjgydc5Xn3ayaHUnZg5ayc1LgN+2EPAEWadlQ72zdOWTHjWwWf463miX0+AQduBQOwrZZGDWGqGQg9RXjYQU/UgNLOTWKMHHGwVhJAg9XdayW3ORX/ipIds8MeKjQhM9LJCYoJCwmZ0pT2Q7XjsREIdqT1UkQTYs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-        t=1572871412; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
-        bh=6Ln4BdVwFHO2I5x/J3dmCMdBNcZGsmz/4+6/IHcamSs=; 
-        b=OXHSlHABKLoE/hqE1f3/eQLMEHQH+AidsnP2yoeYe4Qz5s3+azo1sI0zcMwQEpMxEKYXYqKdTAGrp1j35ct3daqdXcwBags9mh6M4a5BqzIHRxGHBO4zaAlBTofir9euc9yn3DpsM7i+6pE+Qegqzwhyq/2ev0FbQnnXK9GOLWA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-        dkim=pass  header.i=patchew.org;
-        spf=pass  smtp.mailfrom=no-reply@patchew.org;
-        dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-        with SMTPS id 1572871409656174.88674502333663; Mon, 4 Nov 2019 04:43:29 -0800 (PST)
-In-Reply-To: <20191104121458.29208-1-zhengxiang9@huawei.com>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v21 0/6] Add ARMv8 RAS virtualization support in QEMU
-Message-ID: <157287140443.27285.11755911437215821061@37313f22b938>
+       dkim=fail header.i=@linaro.org header.s=google header.b=zKPvNnFT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38892 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iRkQo-0003oA-GB
+	for alex.bennee@linaro.org; Mon, 04 Nov 2019 17:02:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44026)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <jean-philippe@linaro.org>) id 1iRh8k-00064r-7F
+ for qemu-arm@nongnu.org; Mon, 04 Nov 2019 13:31:48 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <jean-philippe@linaro.org>) id 1iRh8h-000498-TL
+ for qemu-arm@nongnu.org; Mon, 04 Nov 2019 13:31:45 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55951)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
+ id 1iRh8d-00047v-Dx
+ for qemu-arm@nongnu.org; Mon, 04 Nov 2019 13:31:41 -0500
+Received: by mail-wm1-x343.google.com with SMTP id m17so8556386wmi.5
+ for <qemu-arm@nongnu.org>; Mon, 04 Nov 2019 10:31:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=P8PibeiupuNi15dHm5+jUR5CChJ9w0TTLJd6WN7BGpg=;
+ b=zKPvNnFTHPGsmJ+HlfIRPewnCGM9caXmxt4I3/bpQ+JkqrtLbBlQmkfB75j94yvcbD
+ i9whR6nKmUCxfQv7QRCdMPTfeB5XQdYtN1TWDeXCjSp6ZB7zKLEEcwU0TUvx/bRNywMP
+ EgwogmRw+ESqVLaFS+1Yap2YQeRc1u8Jd0tBOdmpvx/POKm++nh4LsWyQKxGS8Wxp5Zf
+ FsBN4T+PI382Zwy9wdyISDUz7ptKMpmQp0HI9/PvY2r10d/iTYopOjKKnX/HeFIci703
+ N8/5jCoRUPEUSd1cBtF7i53WUYZFOPyZwehnDHliWdut+Vq6j2Kx7j9iE26Dd7Uowl82
+ Xu1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=P8PibeiupuNi15dHm5+jUR5CChJ9w0TTLJd6WN7BGpg=;
+ b=gdqfteX6NCd2cBQ5iloKXSWp8DHhVnjPootNvub7oi9BlDXCpLVj6erAAWLS4KQeEE
+ C5mLd2K3U381MTuftcT3FZJHwyW4V8PWJ3SX1mrmA9qu1ZCADEQpO3qgNgReXpl113K8
+ sa7ZkOu6dwxLvw2JmnTp+ATplT3il/AmC6J2WDr8DLjLTEcjKZuExB3SIowe/TK7l3gX
+ NFXwx/vqril2VpBHq57mCP3kMr2dGH5nom4t/Wn7NAOfxV2ro+XatE1ydMVK4LYD3Dil
+ 1oNZpWzAW75AA1M2SG0aDRWc+mv82FXxBk8wd4n8YCXdd/YVin4pXpZXf85HCCCL50H8
+ tCAw==
+X-Gm-Message-State: APjAAAX4cNOQk9sPHt8rpQqAfEDP/C5V5r3AXPCMk/UwYpmjBKbRq26+
+ ZPt58EvvFftabyEkKcF8tfBEWQ==
+X-Received: by 2002:a05:600c:1002:: with SMTP id
+ c2mr417364wmc.79.1572892294020; 
+ Mon, 04 Nov 2019 10:31:34 -0800 (PST)
+Received: from lophozonia ([85.195.192.192])
+ by smtp.gmail.com with ESMTPSA id g14sm18776667wro.33.2019.11.04.10.31.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 Nov 2019 10:31:33 -0800 (PST)
+Date: Mon, 4 Nov 2019 19:31:31 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH for-4.2 v10 06/15] virtio-iommu: Endpoint and domains
+ structs and helpers
+Message-ID: <20191104183131.GA3540585@lophozonia>
+References: <20190730172137.23114-1-eric.auger@redhat.com>
+ <20190730172137.23114-7-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-From:   no-reply@patchew.org
-To:     zhengxiang9@huawei.com
-Cc:     pbonzini@redhat.com, mst@redhat.com, imammedo@redhat.com,
-        shannon.zhaosl@gmail.com, peter.maydell@linaro.org,
-        lersek@redhat.com, james.morse@arm.com, gengdongjiu@huawei.com,
-        mtosatti@redhat.com, rth@twiddle.net, ehabkost@redhat.com,
-        jonathan.cameron@huawei.com, xuwei5@huawei.com,
-        kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-        linuxarm@huawei.com, wanghaibin.wang@huawei.com,
-        zhengxiang9@huawei.com
-Date:   Mon, 4 Nov 2019 04:43:29 -0800 (PST)
-X-ZohoMailClient: External
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: K+4DpVy+W+wR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190730172137.23114-7-eric.auger@redhat.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::343
+X-Mailman-Approved-At: Mon, 04 Nov 2019 17:02:06 -0500
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, mst@redhat.com,
+ tn@semihalf.com, qemu-devel@nongnu.org, peterx@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, bharat.bhushan@nxp.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QMc5RzNynRCx
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEwNDEyMTQ1OC4yOTIw
-OC0xLXpoZW5neGlhbmc5QGh1YXdlaS5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRo
-ZSBkb2NrZXItcXVpY2tAY2VudG9zNyBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGlu
-ZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5z
-dGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1Qg
-U0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAptYWtlIGRvY2tlci1pbWFnZS1jZW50b3M3IFY9
-MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LXF1aWNrQGNlbnRvczcgU0hPV19FTlY9
-MSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKICBURVNUICAgIGNoZWNr
-LXVuaXQ6IHRlc3RzL3Rlc3QtdGhyb3R0bGUKICBURVNUICAgIGNoZWNrLXVuaXQ6IHRlc3RzL3Rl
-c3QtdGhyZWFkLXBvb2wKKioKRVJST1I6L3RtcC9xZW11LXRlc3Qvc3JjL3Rlc3RzL21pZ3JhdGlv
-bi10ZXN0LmM6OTAzOndhaXRfZm9yX21pZ3JhdGlvbl9mYWlsOiBhc3NlcnRpb24gZmFpbGVkOiAo
-IXN0cmNtcChzdGF0dXMsICJzZXR1cCIpIHx8ICFzdHJjbXAoc3RhdHVzLCAiZmFpbGVkIikgfHwg
-KGFsbG93X2FjdGl2ZSAmJiAhc3RyY21wKHN0YXR1cywgImFjdGl2ZSIpKSkKRVJST1IgLSBCYWls
-IG91dCEgRVJST1I6L3RtcC9xZW11LXRlc3Qvc3JjL3Rlc3RzL21pZ3JhdGlvbi10ZXN0LmM6OTAz
-OndhaXRfZm9yX21pZ3JhdGlvbl9mYWlsOiBhc3NlcnRpb24gZmFpbGVkOiAoIXN0cmNtcChzdGF0
-dXMsICJzZXR1cCIpIHx8ICFzdHJjbXAoc3RhdHVzLCAiZmFpbGVkIikgfHwgKGFsbG93X2FjdGl2
-ZSAmJiAhc3RyY21wKHN0YXR1cywgImFjdGl2ZSIpKSkKbWFrZTogKioqIFtjaGVjay1xdGVzdC1h
-YXJjaDY0XSBFcnJvciAxCm1ha2U6ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4u
-CiAgVEVTVCAgICBjaGVjay11bml0OiB0ZXN0cy90ZXN0LWhiaXRtYXAKICBURVNUICAgIGlvdGVz
-dC1xY293MjogMDEzCi0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNt
-ZCkKc3VicHJvY2Vzcy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbics
-ICdkb2NrZXInLCAncnVuJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD0yNjA3
-YWIzYWExOGY0ZTY1OGUyMWVjMjQ4ZGQ4MGMwYycsICctdScsICcxMDAxJywgJy0tc2VjdXJpdHkt
-b3B0JywgJ3NlY2NvbXA9dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9MSVNUPScs
-ICctZScsICdFWFRSQV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcs
-ICctZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9MScsICctZScsICdDQ0FDSEVfRElSPS92
-YXIvdG1wL2NjYWNoZScsICctdicsICcvaG9tZS9wYXRjaGV3Ly5jYWNoZS9xZW11LWRvY2tlci1j
-Y2FjaGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXIt
-dG1wLWd6MnQ4eTZtL3NyYy9kb2NrZXItc3JjLjIwMTktMTEtMDQtMDcuMzIuMjAuOTU3NTovdmFy
-L3RtcC9xZW11Onoscm8nLCAncWVtdTpjZW50b3M3JywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rl
-c3QtcXVpY2snXScgcmV0dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmls
-dGVyPWxhYmVsPWNvbS5xZW11Lmluc3RhbmNlLnV1aWQ9MjYwN2FiM2FhMThmNGU2NThlMjFlYzI0
-OGRkODBjMGMKbWFrZVsxXTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZp
-bmcgZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtZ3oydDh5Nm0vc3JjJwpt
-YWtlOiAqKiogW2RvY2tlci1ydW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAg
-IDExbTQuNjkzcwp1c2VyICAgIDBtOC45MTRzCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBh
-dApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MTEwNDEyMTQ1OC4yOTIwOC0xLXpoZW5neGlh
-bmc5QGh1YXdlaS5jb20vdGVzdGluZy5kb2NrZXItcXVpY2tAY2VudG9zNy8/dHlwZT1tZXNzYWdl
-LgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9w
-YXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxA
-cmVkaGF0LmNvbQ==
+Hi Eric,
+
+On Tue, Jul 30, 2019 at 07:21:28PM +0200, Eric Auger wrote:
+>  static void virtio_iommu_device_unrealize(DeviceState *dev, Error **errp)
+>  {
+>      VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+> +    VirtIOIOMMU *s = VIRTIO_IOMMU(dev);
+> +
+> +    g_tree_destroy(s->domains);
+> +    g_tree_destroy(s->endpoints);
+
+virtio_iommu_device_reset() must completely clear the internal state as
+well (noticed while testing modprobe/rmmod).
+
+Thanks,
+Jean

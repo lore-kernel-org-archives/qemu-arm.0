@@ -1,109 +1,75 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp4057938wri;
-        Mon, 4 Nov 2019 06:34:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzwkn03BoNvu7uKxDneBeLoroK5JZ/CVoLPBgz2RuJC2ge5sybbZ4oo7qYZuRJt8zZiPt/T
-X-Received: by 2002:ad4:4391:: with SMTP id s17mr5171406qvr.232.1572878043997;
-        Mon, 04 Nov 2019 06:34:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572878043; cv=none;
-        d=google.com; s=arc-20160816;
-        b=zPRxWqqKwJUCavkxf9J334HQ90fixIaPw76xajF1dFCInF4fKAY9inwgfLMqF/6k7q
-         U57Ds8z+ribCnP0Wo0/YJ7PWLrgkhB7qoQcBS0y5hs8lC9J0N267AZqTEfwP2tYjuqHW
-         WWl0B0VA4tXp+U1mPU6u04G7HzWu4qLa9O+5HRSJytAl7MazIaO8vqcRJFU4/+snWp37
-         p1wjodqiDi64TnVc5jULq/G/5xZa8jGW5RXiUip3cZWgvpixFqTgil5Qwd+N2cMJw8j3
-         zJxrA/DGsHRzfWQ2RpIlVA5Q9yYXUrl/gNg+FAaLkymUxz2u880MhDjQUL+d3jtXKckv
-         Pljg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=T6LAuzJsRET+VgSP0FSThXHF/R+C9+h1Ol50rElM4f0=;
-        b=fi6OMUwR5Ab27NDFFOZXvzC/VaaCAhLLJ3dW8arsemd34GUmkzUZR9UA+IdXsQdRod
-         yrtx/qhspcl49JkqR+yzMAz3cDjbfCEMqrpWgsiSYH+6qEZ1LGRdg6RLYzmPBN6X7sZz
-         OAuIr2isKnSsYNvlFe6W4uUXJw4PD1BM6kkhNKR5lp9VEAOJgqpTI7WBSiZBKVau5nbF
-         wKTa9GiF3nG/5kfcW15A1ErKX6UPldaG4RSfj3DvuKfcy74b6QPX492iCjwPezzYYkeE
-         +cCepLcxIpQ3osUFfcgnj5PgIa/Kw1bZflO4AxIB9uzoGtcX+qMCDCwfVJ4z7/bQOTgX
-         G4UA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp4106695wri;
+        Mon, 4 Nov 2019 07:17:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzTP+FZjH4hFwdPNmeEQWOVZEQS1cb7S1xKtBMhLh2vROp9wDwhlINDsejZ4A1pECWbthiR
+X-Received: by 2002:a17:906:4bd4:: with SMTP id x20mr24733345ejv.200.1572880645701;
+        Mon, 04 Nov 2019 07:17:25 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l141si13414182qke.67.2019.11.04.06.34.03
+        by mx.google.com with ESMTPS id k20si8677896edj.55.2019.11.04.07.17.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Nov 2019 06:34:03 -0800 (PST)
+        Mon, 04 Nov 2019 07:17:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34014 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=xRY5qNhq;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34372 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRdQg-0003nY-W5
-	for alex.bennee@linaro.org; Mon, 04 Nov 2019 09:34:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35026)
+	id 1iRe6e-0003yZ-0F
+	for alex.bennee@linaro.org; Mon, 04 Nov 2019 10:17:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40240)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iRdQH-0003k2-3i
- for qemu-devel@nongnu.org; Mon, 04 Nov 2019 09:33:38 -0500
+ (envelope-from <clement.deschamps@greensocs.com>) id 1iRe1V-00017t-R2
+ for qemu-devel@nongnu.org; Mon, 04 Nov 2019 10:12:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iRdQF-0002JI-L0
- for qemu-devel@nongnu.org; Mon, 04 Nov 2019 09:33:37 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54260)
+ (envelope-from <clement.deschamps@greensocs.com>) id 1iRe1U-0002DO-Rv
+ for qemu-devel@nongnu.org; Mon, 04 Nov 2019 10:12:05 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:47152)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iRdQF-0002Iv-CF
- for qemu-devel@nongnu.org; Mon, 04 Nov 2019 09:33:35 -0500
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id F418181E1A
- for <qemu-devel@nongnu.org>; Mon,  4 Nov 2019 14:33:33 +0000 (UTC)
-Received: by mail-wr1-f69.google.com with SMTP id v6so1194486wrm.18
- for <qemu-devel@nongnu.org>; Mon, 04 Nov 2019 06:33:33 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=pqd2a+23lsIGqYc0RuIYbYmHJtC1x0ID8yTRwiJDGGw=;
- b=oWi6TntmMAhc4FrFXy0cJ4S710V8BxfQlX5cg0zyO5DhMXb1ebVVqQJDjspvn7TDbW
- wwqky2lpdIsd90VEfu7KdYivrtKGuW9/CmvjMgm7BYfVlyYjjLrUyVbx5guRrRyo20Um
- OJmRROm5Ade/bl2H2Uyn/3z1ESWnE9vfAe3j7J4X31TUcU+2dmA8DRHMH1wVlyc/I/Ez
- CqJzNscozALotpQAMzqxp3LIRzGxqZyFdsxjByOSUPU2kxqDblciPG85SvHuQsxJmaLq
- lIVXmFRpjahAhTkPt1VHu/mVYO6nhAuqUsrRL9STAS8WMXtTU39jKpdcXggJ9qSA4TuS
- O1jQ==
-X-Gm-Message-State: APjAAAXEdX0fpCYSsOz0mJwnbskgc9k9H+VcDEDiZl2pCwhuntz5LplA
- T63ysEJIyVGfckAk61r5EJDWB4KkeCMw7lzA76FtjHrIMbmkd5TtH1U14ZlzVc6nfe6mr0UTXIw
- GDgbLrXpVijte+OI=
-X-Received: by 2002:a5d:52c8:: with SMTP id r8mr22997242wrv.347.1572878012692; 
- Mon, 04 Nov 2019 06:33:32 -0800 (PST)
-X-Received: by 2002:a5d:52c8:: with SMTP id r8mr22997221wrv.347.1572878012466; 
- Mon, 04 Nov 2019 06:33:32 -0800 (PST)
-Received: from [192.168.1.24] (lfbn-1-7864-228.w92-167.abo.wanadoo.fr.
- [92.167.33.228])
- by smtp.gmail.com with ESMTPSA id y19sm20817315wmd.29.2019.11.04.06.33.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Nov 2019 06:33:31 -0800 (PST)
-Subject: Re: [PATCH v5 02/13] hw/core/qdev: add trace events to help with
- resettable transition
-To: Damien Hedde <damien.hedde@greensocs.com>, qemu-devel@nongnu.org
-References: <20191018150630.31099-1-damien.hedde@greensocs.com>
- <20191018150630.31099-3-damien.hedde@greensocs.com>
- <f5d78215-ee4d-ae1a-74dc-52b3c179d88c@redhat.com>
- <984a87d7-0430-d777-0fe9-ce5cfea712a1@greensocs.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <e008dc9a-4a04-8183-3610-bbb3361a877c@redhat.com>
-Date: Mon, 4 Nov 2019 15:33:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ (Exim 4.71) (envelope-from <clement.deschamps@greensocs.com>)
+ id 1iRe1R-0002Av-TG; Mon, 04 Nov 2019 10:12:02 -0500
+Received: from chartreuse.bar.greensocs.com (chartreuse.bar.greensocs.com
+ [172.16.11.101])
+ by beetle.greensocs.com (Postfix) with ESMTPS id 217B096F52;
+ Mon,  4 Nov 2019 15:11:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1572880319;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=9POxuJGJwaGIEQPa0Ye5ozjHsuXtnHg87pzNAASKC88=;
+ b=xRY5qNhqlocAm5FR10uUXp1djzLTb/CITHx1a55E84OKbDWlQCatzytwVeOH2eUBpQikjX
+ avZPCUQheNQB/g4hzcEZFMNi/6bqFvVB0ClU/qCyynZCqABCTAYb5ideTdt7sw4H0X3vjo
+ RQlkuOvP4jQwQsgAorCvmysI50jKAGk=
+From: Clement Deschamps <clement.deschamps@greensocs.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/arm/boot: Set NSACR.{CP11, CP10} in dummy SMC setup routine
+Date: Mon,  4 Nov 2019 16:11:37 +0100
+Message-Id: <20191104151137.81931-1-clement.deschamps@greensocs.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-In-Reply-To: <984a87d7-0430-d777-0fe9-ce5cfea712a1@greensocs.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1572880319;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=9POxuJGJwaGIEQPa0Ye5ozjHsuXtnHg87pzNAASKC88=;
+ b=v9WBhfGPtmNdF3fhSFLoyBEzUuwKw4JvMu3oFQMQB6EnfOR4egfRgDF0g6TslF3LN7xALY
+ Q8U31NHIdunDxK5y3PZeN938howl2iABb446IsVz7QLOCaAsF4QDus8vpFvctjpYDTSQq2
+ 9lhSb19ULvjdhwp8gubQcMUuvjcXdk0=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1572880319; a=rsa-sha256; cv=none;
+ b=uPHf5codb4Livp3i42ROSbz+Dqc3I9CsRt/j76+uqt3nr0TcaqX94Lnv/8I/12IsX/3mgp
+ Y+EDpUuQe55SpK8ExvFpsYsKFUNygpLweoHvR8b92DObtmyQYg7EWtlkj4SCKRwn0YAi24
+ ejhvAk2lkfbtSxORW9MqEAn2c2tntVc=
+ARC-Authentication-Results: i=1;
+	beetle.greensocs.com;
+	none
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,166 +81,49 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
- cohuck@redhat.com, mark.burton@greensocs.com, qemu-s390x@nongnu.org,
- edgari@xilinx.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
- david@gibson.dropbear.id.au
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Clement Deschamps <clement.deschamps@greensocs.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YWGd8kXawvNt
+X-TUID: sUU+DwqbQy2H
 
-On 11/4/19 1:16 PM, Damien Hedde wrote:
-> On 11/1/19 12:23 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 10/18/19 5:06 PM, Damien Hedde wrote:
->>> Adds trace events to reset procedure and when updating the parent
->>> bus of a device.
->>>
->>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
->>> ---
->>>  =C2=A0 hw/core/qdev.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 27 +++++=
-+++++++++++++++++++---
->>>  =C2=A0 hw/core/trace-events |=C2=A0 9 +++++++++
->>>  =C2=A0 2 files changed, 33 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
->>> index 60be2f2fef..f230063189 100644
->>> --- a/hw/core/qdev.c
->>> +++ b/hw/core/qdev.c
->>> @@ -38,6 +38,7 @@
->>>  =C2=A0 #include "hw/boards.h"
->>>  =C2=A0 #include "hw/sysbus.h"
->>>  =C2=A0 #include "migration/vmstate.h"
->>> +#include "trace.h"
->>>  =C2=A0 =C2=A0 bool qdev_hotplug =3D false;
->>>  =C2=A0 static bool qdev_hot_added =3D false;
->>> @@ -98,7 +99,9 @@ void qdev_set_parent_bus(DeviceState *dev, BusState
->>> *bus)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool replugging =3D dev->parent_bus !=
-=3D NULL;
->>>  =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (replugging) {
->>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Keep a reference to th=
-e device while it's not plugged into
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 trace_qdev_update_parent_=
-bus(dev, dev->parent_bus, bus);
->>
->> Nitpicking, if you respin, can you add object_get_typename(OBJECT(dev)=
-))
->> and object_get_typename(OBJECT(bus)))?
->=20
-> sure. I was wondering if having some kind of qom object support to trac=
-e
-> would be feasible. Because it's a bit tedious to add this each time. An=
-d
-> IMO it would be more useful to have the path, but we can't reasonably
-> compute it as a trace_..() arguments.
+Set the NSACR CP11 and CP10 bits, to allow FPU access in Non-Secure state
+when using dummy SMC setup routine. Otherwise an AArch32 kernel will UNDE=
+F as
+soon as it tries to use the FPU.
 
-Meanwhile you can use:
+This fixes kernel panic when booting raspbian on raspi2.
 
-   if (trace_event_get_state_backends(TRACE_QDEV_UPDATE_PARENT_BUS)) {
-       ...
+Successfully tested with:
+  2017-01-11-raspbian-jessie-lite.img
+  2018-11-13-raspbian-stretch-lite.img
+  2019-07-10-raspbian-buster-lite.img
 
->>
->> With/without it:
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * Keep a reference =
-to the device while it's not plugged into
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * any b=
-us, to avoid it potentially evaporating when it is
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * deref=
-fed in bus_remove_child().
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->>> @@ -272,6 +275,18 @@ HotplugHandler
->>> *qdev_get_hotplug_handler(DeviceState *dev)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return hotplug_ctrl;
->>>  =C2=A0 }
->>>  =C2=A0 +static int qdev_prereset(DeviceState *dev, void *opaque)
->>> +{
->>> +=C2=A0=C2=A0=C2=A0 trace_qdev_reset_tree(dev, object_get_typename(OB=
-JECT(dev)));
->>> +=C2=A0=C2=A0=C2=A0 return 0;
->>> +}
->>> +
->>> +static int qbus_prereset(BusState *bus, void *opaque)
->>> +{
->>> +=C2=A0=C2=A0=C2=A0 trace_qbus_reset_tree(bus, object_get_typename(OB=
-JECT(bus)));
->>> +=C2=A0=C2=A0=C2=A0 return 0;
->>> +}
->>> +
->>>  =C2=A0 static int qdev_reset_one(DeviceState *dev, void *opaque)
->>>  =C2=A0 {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 device_legacy_reset(dev);
->>> @@ -282,6 +297,7 @@ static int qdev_reset_one(DeviceState *dev, void
->>> *opaque)
->>>  =C2=A0 static int qbus_reset_one(BusState *bus, void *opaque)
->>>  =C2=A0 {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 BusClass *bc =3D BUS_GET_CLASS(bus);
->>> +=C2=A0=C2=A0=C2=A0 trace_qbus_reset(bus, object_get_typename(OBJECT(=
-bus)));
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (bc->reset) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bc->reset(bus=
-);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> @@ -290,7 +306,9 @@ static int qbus_reset_one(BusState *bus, void
->>> *opaque)
->>>  =C2=A0 =C2=A0 void qdev_reset_all(DeviceState *dev)
->>>  =C2=A0 {
->>> -=C2=A0=C2=A0=C2=A0 qdev_walk_children(dev, NULL, NULL, qdev_reset_on=
-e,
->>> qbus_reset_one, NULL);
->>> +=C2=A0=C2=A0=C2=A0 trace_qdev_reset_all(dev, object_get_typename(OBJ=
-ECT(dev)));
->>> +=C2=A0=C2=A0=C2=A0 qdev_walk_children(dev, qdev_prereset, qbus_prere=
-set,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_rese=
-t_one, qbus_reset_one, NULL);
->>>  =C2=A0 }
->>>  =C2=A0 =C2=A0 void qdev_reset_all_fn(void *opaque)
->>> @@ -300,7 +318,9 @@ void qdev_reset_all_fn(void *opaque)
->>>  =C2=A0 =C2=A0 void qbus_reset_all(BusState *bus)
->>>  =C2=A0 {
->>> -=C2=A0=C2=A0=C2=A0 qbus_walk_children(bus, NULL, NULL, qdev_reset_on=
-e,
->>> qbus_reset_one, NULL);
->>> +=C2=A0=C2=A0=C2=A0 trace_qbus_reset_all(bus, object_get_typename(OBJ=
-ECT(bus)));
->>> +=C2=A0=C2=A0=C2=A0 qbus_walk_children(bus, qdev_prereset, qbus_prere=
-set,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_rese=
-t_one, qbus_reset_one, NULL);
->>>  =C2=A0 }
->>>  =C2=A0 =C2=A0 void qbus_reset_all_fn(void *opaque)
->>> @@ -1108,6 +1128,7 @@ void device_legacy_reset(DeviceState *dev)
->>>  =C2=A0 {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DeviceClass *klass =3D DEVICE_GET_CLA=
-SS(dev);
->>>  =C2=A0 +=C2=A0=C2=A0=C2=A0 trace_qdev_reset(dev, object_get_typename=
-(OBJECT(dev)));
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (klass->reset) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 klass->reset(=
-dev);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> diff --git a/hw/core/trace-events b/hw/core/trace-events
->>> index fe47a9c8cb..1a669be0ea 100644
->>> --- a/hw/core/trace-events
->>> +++ b/hw/core/trace-events
->>> @@ -1,2 +1,11 @@
->>>  =C2=A0 # loader.c
->>>  =C2=A0 loader_write_rom(const char *name, uint64_t gpa, uint64_t siz=
-e, bool
->>> isrom) "%s: @0x%"PRIx64" size=3D0x%"PRIx64" ROM=3D%d"
->>> +
->>> +# qdev.c
->>> +qdev_reset(void *obj, const char *objtype) "obj=3D%p(%s)"
->>> +qdev_reset_all(void *obj, const char *objtype) "obj=3D%p(%s)"
->>> +qdev_reset_tree(void *obj, const char *objtype) "obj=3D%p(%s)"
->>> +qbus_reset(void *obj, const char *objtype) "obj=3D%p(%s)"
->>> +qbus_reset_all(void *obj, const char *objtype) "obj=3D%p(%s)"
->>> +qbus_reset_tree(void *obj, const char *objtype) "obj=3D%p(%s)"
->>> +qdev_update_parent_bus(void *obj, void *oldp, void *newp) "obj=3D%p
->>> old_parent=3D%p new_parent=3D%p"
->>>
+See also commit ece628fcf6 that fixes the issue when *not* using the
+dummy SMC setup routine.
+
+Fixes: fc1120a7f5
+Signed-off-by: Clement Deschamps <clement.deschamps@greensocs.com>
+---
+ hw/arm/boot.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index ef6724960c..8fb4a63606 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -240,6 +240,9 @@ void arm_write_secure_board_setup_dummy_smc(ARMCPU *c=
+pu,
+     };
+     uint32_t board_setup_blob[] =3D {
+         /* board setup addr */
++        0xee110f51, /* mrc     p15, 0, r0, c1, c1, 2  ;read NSACR */
++        0xe3800b03, /* orr     r0, #0xc00             ;set CP11, CP10 */
++        0xee010f51, /* mcr     p15, 0, r0, c1, c1, 2  ;write NSACR */
+         0xe3a00e00 + (mvbar_addr >> 4), /* mov r0, #mvbar_addr */
+         0xee0c0f30, /* mcr     p15, 0, r0, c12, c0, 1 ;set MVBAR */
+         0xee110f11, /* mrc     p15, 0, r0, c1 , c1, 0 ;read SCR */
+--=20
+2.23.0
+

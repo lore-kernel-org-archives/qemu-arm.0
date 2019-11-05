@@ -1,170 +1,150 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp4588484wri;
-        Mon, 4 Nov 2019 14:51:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzUHDZWroTVqLwi6f/uxUrVF8sNRHH92l6U98Lb5OjEK5mjfk1tScNH7oEMOGvCvqvfyRYT
-X-Received: by 2002:ac8:53c5:: with SMTP id c5mr15161154qtq.55.1572907876747;
-        Mon, 04 Nov 2019 14:51:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572907876; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp453495wri;
+        Tue, 5 Nov 2019 01:12:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzQe/IHRhAp0Qz58nJtTpcIJvYXczEaADnw7Yv0U5abYH/O+b0fMFuUSMaeVILQ115t9gfZ
+X-Received: by 2002:a37:470b:: with SMTP id u11mr1429968qka.172.1572945155961;
+        Tue, 05 Nov 2019 01:12:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572945155; cv=none;
         d=google.com; s=arc-20160816;
-        b=0oXpdsV59br3WDb7CNdBDLcjqa0A0hjn/Qh3swLOUMyJnMRp9ypm18Z/bStOh5pJwj
-         Ei+fkyhL5RahYMQOzNEdda96/Vb9umQ76BujiGwmgDi8doVucM9qsWWydZr9LV5RU12i
-         lLm2R55ejQwJBu9EBdE4K3+bKh0RpPurW48LG3Kl9hlmxd8mnlInXgx9JfkxsE4mEvYl
-         vSkhlSuuj9DlsjHOkICgnBHmYcXlDCKpszghPMql6NifRq1Pja7Y/SsvBsnrLwS10d4T
-         s0jl8PXT0jDG/g6OCtT3Q+L8geZ6zJiP51n8xvTehWoWOfBV1ruA5JNumrKo981oUhO0
-         DnRg==
+        b=U+X64pN9v2lydj0If3G5uvw0kce0749PZLxspJl/dW8BjM5wN4uIuEkMaWrQqaRztI
+         jgbfgAZ5FwhxRCPmvArsheuv4UPyGrjl8otyETE9QVve/82xrjPSHwK5kcFkVb9gNCFc
+         dEKFMn05CF/mvrBibi4mP2U+Mtzr6xUVQQX2TRa6mkAwazWd9eGEo6WsY841t8ZLf1u7
+         p8+WfLLZz4q7lQX/uUTLBU/luw22jCb0ldOdN7/kqNPU6EC/gErm7jv0MgoxQqnF7u3h
+         pQ8NaBDLNGblvjutlX9V8606zDcxdzVFvK0hX4GcVmEEo+uaWqlIHDoedoWpW9vYISsY
+         xnkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=9kVs6zEhIaUYtoZsrcQ9DLJHMd5fX57zNJlXdyi8YO0=;
-        b=fx3ZcXoXJu7fshDyi948lKhz7JYBKIzE7kYfFVWqbpw/hWrvfEkvodDWFGi2cY9tfF
-         yvAM6nnQyTU6Z06dOUKAjWRuLcXIF+b+ZS7TRjdAKL/nB8+YTQNBEMd5Now0CyPKpBXZ
-         AcW4L7tqVC64QRtKwC1yExd34+DcbPM75ac0OODdYiEzuFTJtGMCWd0RIgvhNdGdH2qs
-         F7JEZb9WvDY3qVIRbBPHuCs/NhEo02+ZFM5XXflcnRSM/zNTgFVihnQFYJOt6TldB3HS
-         IRaStq+ijzdTtmYO0X2MTqN7lfoHBFuXDt/WxDXXtTHkpwIzuFT3wdtQghlM/yGYM6GB
-         UX7w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=HiQhAh7UIjCJgydyktuYcRZzmdI10XrZEkZmT8+V1+o=;
+        b=zSlLVsNEzjl/Wh5ExGcBmcwjJe/Hdp85UUiU8XhLlxaIhWw7O6p1yjI/RILdu/iENs
+         gd8moPliK+htalLmbUAag5OEZSgeDka6OopmSUEbn2R1VfyLV0VKRrq0iosjTeSMdwTe
+         acRjHdBP6RkLQGxFbC913gT0Q3i4FMwcEINTnWk/x2/XUE6CXsQHQJmOyZaAbPJlT4+J
+         yCECjbR98motzRdtaE/WN8W5/FcA7NuzdYaiijtfxNC2bbAXu3GmUzAcWURQ4OaReMeD
+         lsV/Gz0jszmWesz4Nse5Q6r1GTza6sOar3W5h27qLmaoo5d+k6dboUUbs5mnNzl3VfVM
+         Esng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=U1sNtmMR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u126si1192849qka.331.2019.11.04.14.51.16
+        by mx.google.com with ESMTPS id 19si15326878qkf.40.2019.11.05.01.12.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Nov 2019 14:51:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Nov 2019 01:12:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=U1sNtmMR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39318 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41752 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRlBs-00016C-4Z
-	for alex.bennee@linaro.org; Mon, 04 Nov 2019 17:51:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47308)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iRut8-00051u-LT
+	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:12:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42940)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iRlBF-00013Z-ML
- for qemu-devel@nongnu.org; Mon, 04 Nov 2019 17:50:38 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iRusu-00051I-KT
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iRlBC-00066w-QZ
- for qemu-devel@nongnu.org; Mon, 04 Nov 2019 17:50:36 -0500
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:41241)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iRlBB-00064t-7Y; Mon, 04 Nov 2019 17:50:33 -0500
-Received: by mail-lj1-x244.google.com with SMTP id m9so19484896ljh.8;
- Mon, 04 Nov 2019 14:50:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9kVs6zEhIaUYtoZsrcQ9DLJHMd5fX57zNJlXdyi8YO0=;
- b=U1sNtmMRSfMzMto4Sjq748jB9gPzxo49yQkPYbiY0ZZ+R6zuaZ1wHKg2g3Y4XZOGMJ
- 5gvlGXSAbAIvU1yegxBI9qK7TGIcput01iiXpSBiHvkjdke81BbVI4Vu+DIJ7gIVe800
- r6BQbjqLqtYwcykSirAxDY2aJoXZC0KIz9DQt9PYAmhVWzXplab/rerUTQC1zgADoBm5
- QE7PKPLqUC6t9Z/G0XM9+ELMy32AASaaj6JDKEzlLP4oxH+zqBEnfz6aAi4LAarBu3Mi
- sZaD/X4yRP8mIVdCjEzdspkC8gvt5aRC7dBi8CHtF/r4JkawZj5TJYbg/Fu6gcwB2n7t
- Rsww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9kVs6zEhIaUYtoZsrcQ9DLJHMd5fX57zNJlXdyi8YO0=;
- b=GcvHZqB6xKS9Cqw1PMObdNqbmaKCs3HehgKXoKi5k/ok+tWddQfeQOfZ62m/e+6Fhv
- 0x2AWmZuGh8FwdUCVtJ34/Rpa62zaySd2DrFt8xG3oVu1DTmJexsal4gpvLPE0dl6pYp
- APPqFSBWVo8htIivWUnNVq4H5iBh84bm9ji0Vr81wA0RF2YaXLPEc7a9W+MgUUhZdY1S
- 4tw+8GOhYOFGMRgyD13lUfFlm58dikxzZQTfxxPPvwxZurEb9lvnr/x6/1BxdqxY8liY
- SPgdKWsXfA2eWNIeYabV/1jlUVcjl5QsE56kWmHoZtl1P9WVJXPDFZ2p4HhsPto6GdNS
- MVvw==
-X-Gm-Message-State: APjAAAUCzY5LCsnG7WOAbySJG01dHJ8Js1rp1be4NnkYsMHZBZLVMjcs
- pQorYrPS4SfClT94O2oRPhwcB2pX9c7bWeknzzw=
-X-Received: by 2002:a2e:82cd:: with SMTP id n13mr20444780ljh.156.1572907830498; 
- Mon, 04 Nov 2019 14:50:30 -0800 (PST)
+ (envelope-from <guoheyi@huawei.com>) id 1iRust-0007jl-B5
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:20 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2190 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1iRuss-0007he-V8; Tue, 05 Nov 2019 04:12:19 -0500
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 1FE66EE9B26D8FE4F05B;
+ Tue,  5 Nov 2019 17:12:13 +0800 (CST)
+Received: from linux-OtBuvb.huawei.com (10.175.104.212) by
+ DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 5 Nov 2019 17:12:06 +0800
+From: Heyi Guo <guoheyi@huawei.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: [RFC v2 06/14] arm/sdei: add system reset callback
+Date: Tue, 5 Nov 2019 17:10:48 +0800
+Message-ID: <20191105091056.9541-7-guoheyi@huawei.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20191105091056.9541-1-guoheyi@huawei.com>
+References: <20191105091056.9541-1-guoheyi@huawei.com>
 MIME-Version: 1.0
-References: <20191104181604.21943-1-linus.ziegert+qemu@holoplot.com>
-In-Reply-To: <20191104181604.21943-1-linus.ziegert+qemu@holoplot.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 4 Nov 2019 14:44:53 -0800
-Message-ID: <CAKmqyKMWS18ssBUhDgYSnGiFRwCkSJPBRui4Op50Tq_Z-OUakA@mail.gmail.com>
-Subject: Re: [PATCH] net/cadence_gem: Set PHY autonegotiation restart status
-To: linus.ziegert@holoplot.com
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::244
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.212]
+X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.190
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- Linus Ziegert <linus.ziegert+qemu@holoplot.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SAp/esCLwVIX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Mark
+ Rutland <mark.rutland@arm.com>, Peter Maydell <peter.maydell@linaro.org>,
+ James Morse <james.morse@arm.com>, Marc Zyngier <marc.zyngier@arm.com>,
+ Jingyi Wang <wangjingyi11@huawei.com>, Heyi Guo <guoheyi@huawei.com>,
+ wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wznDGM90TcTh
 
-On Mon, Nov 4, 2019 at 2:02 PM <linus.ziegert@holoplot.com> wrote:
->
-> From: Linus Ziegert <linus.ziegert+qemu@holoplot.com>
->
-> The Linux kernel PHY driver sets AN_RESTART in the BMCR of the
-> PHY when autonegotiation is started.
-> Recently the kernel started to read back the PHY's AN_RESTART
-> bit and now checks whether the autonegotiation is complete and
-> the bit was cleared [1]. Otherwise the link status is down.
->
-> The emulated PHY needs to clear AN_RESTART immediately to inform
-> the kernel driver about the completion of autonegotiation phase.
->
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c36757eb9dee
->
-> Signed-off-by: Linus Ziegert <linus.ziegert+qemu@holoplot.com>
+For this is a logical device which is not attached to system bus, we
+cannot use DeviceClass->reset interface directly. Instead we register
+our own reset callback to reset SDEI services when system resets.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+Signed-off-by: Jingyi Wang <wangjingyi11@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Dave Martin <Dave.Martin@arm.com>
+Cc: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Cc: James Morse <james.morse@arm.com>
+---
+ target/arm/sdei.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-Alistair
+diff --git a/target/arm/sdei.c b/target/arm/sdei.c
+index 0c0212bfa8..6af4a9044b 100644
+--- a/target/arm/sdei.c
++++ b/target/arm/sdei.c
+@@ -1147,6 +1147,26 @@ static void qemu_sde_init(QemuSDEState *s)
+     qemu_private_sde_init(s);
+ }
+=20
++static void qemu_sde_reset(void *opaque)
++{
++    int64_t         ret =3D 0;
++    CPUState        *cs;
++    QemuSDEState    *s =3D opaque;
++
++    CPU_FOREACH(cs) {
++        QemuSDECpu *sde_cpu =3D get_sde_cpu(s, cs);
++        ret |=3D sdei_private_reset_common(s, cs, true);
++        sde_cpu->masked =3D true;
++        sde_cpu->critical_running_event =3D SDEI_INVALID_EVENT_ID;
++        sde_cpu->normal_running_event =3D SDEI_INVALID_EVENT_ID;
++    }
++
++    ret |=3D sdei_shared_reset_common(s, first_cpu, true);
++    if (ret) {
++        error_report("SDEI system reset failed: 0x%lx", ret);
++    }
++}
++
+ static void sde_array_save(QemuSDE **array, int count)
+ {
+     int i;
+@@ -1299,6 +1319,7 @@ static void sdei_initfn(Object *obj)
+     sde_state =3D s;
+=20
+     qemu_sde_init(s);
++    qemu_register_reset(qemu_sde_reset, s);
+ }
+=20
+ static void qemu_sde_class_init(ObjectClass *klass, void *data)
+--=20
+2.19.1
 
-> ---
->  hw/net/cadence_gem.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 7f9cb5ab95..b8be73dc55 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -271,9 +271,10 @@
->  #define PHY_REG_EXT_PHYSPCFC_ST   27
->  #define PHY_REG_CABLE_DIAG   28
->
-> -#define PHY_REG_CONTROL_RST  0x8000
-> -#define PHY_REG_CONTROL_LOOP 0x4000
-> -#define PHY_REG_CONTROL_ANEG 0x1000
-> +#define PHY_REG_CONTROL_RST       0x8000
-> +#define PHY_REG_CONTROL_LOOP      0x4000
-> +#define PHY_REG_CONTROL_ANEG      0x1000
-> +#define PHY_REG_CONTROL_ANRESTART 0x0200
->
->  #define PHY_REG_STATUS_LINK     0x0004
->  #define PHY_REG_STATUS_ANEGCMPL 0x0020
-> @@ -1345,7 +1346,7 @@ static void gem_phy_write(CadenceGEMState *s, unsigned reg_num, uint16_t val)
->          }
->          if (val & PHY_REG_CONTROL_ANEG) {
->              /* Complete autonegotiation immediately */
-> -            val &= ~PHY_REG_CONTROL_ANEG;
-> +            val &= ~(PHY_REG_CONTROL_ANEG | PHY_REG_CONTROL_ANRESTART);
->              s->phy_regs[PHY_REG_STATUS] |= PHY_REG_STATUS_ANEGCMPL;
->          }
->          if (val & PHY_REG_CONTROL_LOOP) {
-> --
-> 2.21.0
->
->

@@ -1,97 +1,136 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp592751wri;
-        Tue, 5 Nov 2019 03:32:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxWeNNg97Pn8RdIU6V6r1tFcvB+zeK0rYb9yBa3XUF+PdhDBvm3lPgnQPOWzKRdExB/NQr4
-X-Received: by 2002:a17:906:5859:: with SMTP id h25mr29238616ejs.2.1572953543103;
-        Tue, 05 Nov 2019 03:32:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572953543; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp687444wri;
+        Tue, 5 Nov 2019 05:02:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzToAhln/bdAK76BlWV6DabhNS3nYQO1dHpEL+Uk4hhJIVoJDTWes4gGAdGdNzRqF3EBC2p
+X-Received: by 2002:ac8:854:: with SMTP id x20mr14513069qth.279.1572958931379;
+        Tue, 05 Nov 2019 05:02:11 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1572958931; cv=pass;
         d=google.com; s=arc-20160816;
-        b=vK9YzgdlrKOx1UPta36V+qX2raAHQYK/VFkeNjUvV3BiQWW6J/z3VG0FrJEKfIbfbj
-         WlAHhE7zcMJWFcaHdhFyOAytyXbt3S5X2FLg2iYHD6l7dwLseUJEDP14slZ3iDmPV8iD
-         o9iPGljcBV7w8M1us0Uvh/zu6E8QaOTTzfb7MW7kwwNBI7Y0jC3xXkYP1EpN6PVPyGOU
-         NIEJw7vUFXM9BXgjM3a1yeliadA4XcXp3s9BVD4kYRSukcVggvi5tXbgmftuoRQKLSrC
-         kVEh+U2YEIcfxRa28DgKQPNt2WttrUqYS5obKJkPMiG+wwvu2ugAD+6mK6vxUKzU9Uq1
-         /C5A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=NDDiYrwlQHjm0TVs9Myp6K1dOKhou1B+DRkxrUHP+LeaJP+EHooT063T+bHv5q2teg
+         0HyygC/Ae0gI6ZXgHVtldZvQUL0fnNV7uujC6L6x1gj45yfjXQ4OXSOenybWDEplxVcF
+         Yovxrd0Wy1JChSmKZuO46/c6KXt6MXUzgZPW5QmREmjSdJgPwanUTo/kKhVszfQX5QNT
+         ecUOOVea1yQ8unLym/xngyzG14pGdimM/rgXGmu59sK4eO/GeS1n2hhPVeFOPVPWdgmE
+         KH7FL2pt/2sDBoq89FA30VLmvjWug1H6ceRbQSPdxOTtBaZ+pJonFdg4n0uuxR/NgsiR
+         SO/Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=W7mjdv/Lb2qS2Sc8H5RNZYF+HROjMlbSou5W7A6L6Qg=;
-        b=JBqTcyP4pDMDu+G1DWdOXsaeqP46xAPhnFYvSZx0JwuVwclxLSWTGSeE+tHazpNMDl
-         MNL/+RVBQVXK3qEGveqN+RQv0R5OYjfCJ5ZDIwhqs4cHrL/yKonNr0XxphvkUpfvMqyK
-         BgimdxN43cHO+XBgpI1Xv42aw0bbXo8kBSRQoutPtyMYz/WslH6Z7V+Q4dBxZajquryq
-         PpcxejRasfkO2IM/v3NQXJ64BzynsHvhXPctnnowimYOfvBqYon7ZqifmLPmHNoiYjWK
-         8P4UH4WGawDULfSqW/S6XVY/+ZRP9YPqe07i+JXJIOmfsHy/+iZY87JoGO9xmz3zG9q7
-         jyAg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@holoplot-com.20150623.gappssmtp.com header.s=20150623 header.b=YJHJK3PT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:to:from:dkim-signature;
+        bh=KOOmbuGsaxsoxhOUlBwyBef7yWKEzLJnfHGxf62F6iY=;
+        b=ex3zK5Yfuu5LUcXRqnIQI8POwTSV2UjTvHll4YgHAPoz7syHBdIlvxlJzakyZhoPON
+         emOemVNKjCG+vn3+k+cP81o4xeTTfN1X3XtwLAqfAO05TU6IihoRTybuDWJYnGkE/S57
+         ZL8SNQPPe7gey/LoLCSmHABFLJIYlBh4qMBC59jzKkcGpDYSYVbvn8sgksLnuoxrk31+
+         eFyttE3YMG1R9mfwlyHcdliGNbrBI8DyyPipQuEiFZYG0jXk7f8svg6+idPQunNlCQyD
+         +xxE/ZOU+HqeYsDoABNTqqgP0bThl/E7hdJr5KxBblmVFKSfsPAjbbw7TKR34qIcVIzV
+         ul7w==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@here.com header.s=selector2 header.b=LIpdWSzY;
+       arc=pass (i=1 spf=pass spfdomain=here.com dkim=pass dkdomain=here.com dmarc=pass fromdomain=here.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=here.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p20si11663283eju.109.2019.11.05.03.32.22
+        by mx.google.com with ESMTPS id o2si14587234qkc.141.2019.11.05.05.02.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2019 03:32:23 -0800 (PST)
+        Tue, 05 Nov 2019 05:02:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@holoplot-com.20150623.gappssmtp.com header.s=20150623 header.b=YJHJK3PT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43110 helo=lists1p.gnu.org)
+       dkim=pass header.i=@here.com header.s=selector2 header.b=LIpdWSzY;
+       arc=pass (i=1 spf=pass spfdomain=here.com dkim=pass dkdomain=here.com dmarc=pass fromdomain=here.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=here.com
+Received: from localhost ([::1]:44046 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRx4Q-0004Ds-1P
-	for alex.bennee@linaro.org; Tue, 05 Nov 2019 06:32:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45391)
+	id 1iRyTJ-0007uB-Vb
+	for alex.bennee@linaro.org; Tue, 05 Nov 2019 08:02:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35088)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <linus.ziegert@holoplot.com>) id 1iRx4F-0004D9-Vx
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 06:32:13 -0500
+ (envelope-from <laurent.bonnans@here.com>) id 1iRyT4-0007sw-Tn
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 08:01:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <linus.ziegert@holoplot.com>) id 1iRx4A-0001RF-93
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 06:32:09 -0500
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:35177)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <linus.ziegert@holoplot.com>)
- id 1iRx48-0000iy-1Y
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 06:32:05 -0500
-Received: by mail-il1-x141.google.com with SMTP id z12so5913500ilp.2
- for <qemu-arm@nongnu.org>; Tue, 05 Nov 2019 03:31:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=holoplot-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=W7mjdv/Lb2qS2Sc8H5RNZYF+HROjMlbSou5W7A6L6Qg=;
- b=YJHJK3PTuSWhg4SgKNAU1lb65c4WwoTFIPCSg4NbJ96dQhP/z5hZeXcjDS5SUr9fGu
- SYpFvI2BMxPQbBkUOzHIyWQSqFACEuXfEg4Zi/uK6OOdOMbJ6LOMZM5kP31QLOokSVM/
- I7cNhBk0K4zjEgKJ+omkLyWs2FefJnfeIf9b7r/I9Y9uo48Vmy1gjcZ3k1yeVSe4jegv
- Gdd52BcEFrrYNyLF1Mu1QFrBgylROPkgTqxx68TjFbMylNB1hJSdbP3d0AWS6KlWjsaf
- 7gasw2bjdkbmsYyzDnBYG8NZVArWbh7XT11kdXey89AFSNfzLUG9I5uNAEdGIhFmVZrc
- fbjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=W7mjdv/Lb2qS2Sc8H5RNZYF+HROjMlbSou5W7A6L6Qg=;
- b=T/MEbxniZ6u8uuhfxMcpNQQREHvzjm36Yj32R1SzgUtzl6IXY3kme05UJLDCaR4auq
- /ToyzbDtRu8yL6+6ABuLWRc0CN89T1CV1MIF5HZgP24sHttOlBwNxIlGZ4iCwc7wX7vj
- 8YSVGX+J8jBk7B3eiBNR6hZHkAPeDf+z9yofUyl+xenxXPUDO+Q0OKZuwVvRKN0ochVI
- mDvCe69Ky2+//EjGVmQ8DimTghqScRGw+vE0gIdjSwf4Fci09yEtT8kNC2SBMgYmX3Rw
- amUz0cqsCurxLWQy/YJ29fHbuRsw1x6c2zRwz+XfUe+0iLDX03F9Saw+d4oyzucWcCHk
- N6bA==
-X-Gm-Message-State: APjAAAVl5yoVzjx0SpeQDGw/uhTasJBZddlGpkT5wBuHuEZM2t8YuypE
- EfBXcR93IZoVlS9+A3CwM2IDDAjE+v/sqD6Ij+SNeQ==
-X-Received: by 2002:a92:c504:: with SMTP id r4mr30264541ilg.132.1572953518544; 
- Tue, 05 Nov 2019 03:31:58 -0800 (PST)
+ (envelope-from <laurent.bonnans@here.com>) id 1iRyT3-0000aR-KS
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 08:01:54 -0500
+Received: from mail-eopbgr80132.outbound.protection.outlook.com
+ ([40.107.8.132]:35399 helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <laurent.bonnans@here.com>)
+ id 1iRySy-0000QD-0n; Tue, 05 Nov 2019 08:01:48 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ljCEE+buCc4Oup2PomaVq+BGQ/ArER7d0IUegoShMBUanhcSnnyAxlWbLWH1IFM4ESqHx5XpCB7I02OQhQ6wRgYtcl3+1S9MCSrBPrYxhS6NOb/cVL3ePuolPIQD0c3Ml3vaTBG+x5B5FXvXAt2cVc2v2CpAbc8p/5QBhj+Tu1zZWzs+1W8zQ9LqpjbHhrf0/+jkXSXTmESuiSbUFrRpDVUUFt2oVt18u4+T79A96H5eA1uMcekFGj9Fw+wAVPP7tvJeeomEJd9Ud0sWIQ9Nym2L+VpvQxxaB48vtLjBIASDD/FzUU0v0CuVLabGuQM6jJAmkoPxKPG44MpJDiYm0Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KOOmbuGsaxsoxhOUlBwyBef7yWKEzLJnfHGxf62F6iY=;
+ b=lzRdUYVwU3MRRkQ1Xxt03Ao2TYufF1cPZKJiECpCsn9IbpfEYEEnWUNDmk40+8mGFIpqZ4h0GHMhb5/4PRdEqXtjXudTUm4ccWJZ0KVLF0oE/TL3ajzhNw+2QIUAEftRAuT/7Kn4QdtGuaEZ+uIE42qj8SZxul8TA57ILQ4wW3j01TIvKohwU+puMqwibe4qhuTJytd1NgrC+jjDFXKNd59Vh7GLxSSB61q61pm7z6ozFT9xmLG4+fvyzDR6+DWXQcAUXRwvloC/UrBoYwX5/xi5q1DvIf47hHQiaZOwF8oaTCOmJNBoLMiTP/yQlOFpb7W06XYcpeStZ/G/gIyyvg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=here.com; dmarc=pass action=none header.from=here.com;
+ dkim=pass header.d=here.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=here.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KOOmbuGsaxsoxhOUlBwyBef7yWKEzLJnfHGxf62F6iY=;
+ b=LIpdWSzYQNPqG81igoYcIrQw7fTGpwVE6O65LS7rVHhzm6vfXxGLaU04cQP7p16s8t4LH0s8TzkXUPPG1JT51+Lc2CdB8E4O4wylBAajynyMIchKKv9WpbFwFnjvROYKba8W1YAKSXG8TSn8Bnp96WwfkXk4RwXcmPjCJ59ryGM=
+Received: from AM5PR04MB3299.eurprd04.prod.outlook.com (10.173.255.158) by
+ AM5PR04MB3043.eurprd04.prod.outlook.com (10.173.254.146) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2408.24; Tue, 5 Nov 2019 13:01:42 +0000
+Received: from AM5PR04MB3299.eurprd04.prod.outlook.com
+ ([fe80::8ce8:9eaf:3916:4bc9]) by AM5PR04MB3299.eurprd04.prod.outlook.com
+ ([fe80::8ce8:9eaf:3916:4bc9%6]) with mapi id 15.20.2408.024; Tue, 5 Nov 2019
+ 13:01:42 +0000
+From: "Bonnans, Laurent" <laurent.bonnans@here.com>
+To: Clement Deschamps <clement.deschamps@greensocs.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] hw/arm/boot: Set NSACR.{CP11, CP10} in dummy SMC setup
+ routine
+Thread-Topic: [PATCH] hw/arm/boot: Set NSACR.{CP11, CP10} in dummy SMC setup
+ routine
+Thread-Index: AQHVkyLpdZ9C4+vVyUaj7PS7hruIkqd8jA+A
+Date: Tue, 5 Nov 2019 13:01:42 +0000
+Message-ID: <e04fb8db-6711-df97-50b6-c91bdbdb1219@here.com>
+References: <20191104151137.81931-1-clement.deschamps@greensocs.com>
+In-Reply-To: <20191104151137.81931-1-clement.deschamps@greensocs.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=laurent.bonnans@here.com; 
+x-originating-ip: [131.228.216.128]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: ff3cef91-4653-42b4-4188-08d761f04ddd
+x-ms-traffictypediagnostic: AM5PR04MB3043:
+x-microsoft-antispam-prvs: <AM5PR04MB304346813F8E3BC3E6200A58857E0@AM5PR04MB3043.eurprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:962;
+x-forefront-prvs: 0212BDE3BE
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(136003)(376002)(366004)(396003)(39860400002)(346002)(199004)(189003)(54906003)(186003)(31686004)(486006)(86362001)(66066001)(6116002)(11346002)(91956017)(71200400001)(14454004)(66556008)(66946007)(6486002)(14444005)(8676002)(256004)(7736002)(31696002)(66476007)(3846002)(476003)(305945005)(2906002)(6246003)(76176011)(2616005)(71190400001)(229853002)(25786009)(76116006)(81166006)(81156014)(66446008)(4001150100001)(8936002)(99286004)(110136005)(26005)(478600001)(316002)(5660300002)(102836004)(2501003)(36756003)(64756008)(4326008)(6506007)(6512007)(6436002)(446003)(53546011);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:AM5PR04MB3043;
+ H:AM5PR04MB3299.eurprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: here.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: cT7DHPcqgwTLlyaC9Hc+H5gAOvyqL25ls1X5Y2UmIPv1Zw/LGfNWLCGUeToP59cLtQPZrNomQ/5U27QVaTLG142hmREojTWl0+roaXxtDyMvFqRcDMXlqp9TCSniyZBeXXLaOX28l0zchEJL6z//kZCgvHkmHreTyZsCb0qQ0Kx7cAaQhgwS1Y+eH66VAazKgVga0PygRrig5hXPzy7aTY4PKr6R8TC35l+HSztRSv50DUAMsVp4eLxYDCgByz96TCO4yhFDKAMVM+WK3YhCNou4NSPSCmDlL6M+PNbyWKTsGV1URW51U0Fb6zNzp2+TvlthhL/MqC0lR7ZK7UTgM2iHk9TyfoiNtebyHQd5XkgVPYaXtFv14yw4Y2nww9QLTeMJ1/rk9GzOLqJXImuWu1OP5gJMXn8QqEd/VYzFWSyC8y0cfCAcugCKr1R7np1h
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <666D6D0B453F0544893AED044BC8BEEE@eurprd04.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20191104181604.21943-1-linus.ziegert+qemu@holoplot.com>
- <CAKmqyKMWS18ssBUhDgYSnGiFRwCkSJPBRui4Op50Tq_Z-OUakA@mail.gmail.com>
-In-Reply-To: <CAKmqyKMWS18ssBUhDgYSnGiFRwCkSJPBRui4Op50Tq_Z-OUakA@mail.gmail.com>
-From: Linus Ziegert <linus.ziegert@holoplot.com>
-Date: Tue, 5 Nov 2019 12:31:22 +0100
-Message-ID: <CAPm2bJ_mfVepKP9hj-PQBnESsCi6t+9zj-m_KWQYx6m-S5ddAg@mail.gmail.com>
-Subject: Re: [PATCH] net/cadence_gem: Set PHY autonegotiation restart status
-To: Alistair Francis <alistair23@gmail.com>
-Content-Type: multipart/alternative; boundary="000000000000b8b2ce059697c714"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::141
+X-OriginatorOrg: here.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ff3cef91-4653-42b4-4188-08d761f04ddd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Nov 2019 13:01:42.1106 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 6d4034cd-7225-4f72-b853-91feaea64919
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: OSRWo25711VWrVURZnVrE9GL0xZ1zwNhi2TZuPFIbcY5mv2iMNhJXP8q8ajJVpOXPI6HnUf4kdgOTQ0AWtaCp1mqNy5WGBFr6tKBNWHu1kE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR04MB3043
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.8.132
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,137 +142,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- Linus Ziegert <linus.ziegert+qemu@holoplot.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vCSqwaRYLwSj
+X-TUID: N5DHGw2k2BZQ
 
---000000000000b8b2ce059697c714
-Content-Type: text/plain; charset="UTF-8"
-
-Am Mo., 4. Nov. 2019 um 23:50 Uhr schrieb Alistair Francis <
-alistair23@gmail.com>:
->
-> On Mon, Nov 4, 2019 at 2:02 PM <linus.ziegert@holoplot.com> wrote:
-> >
-> > From: Linus Ziegert <linus.ziegert+qemu@holoplot.com>
-> >
-> > The Linux kernel PHY driver sets AN_RESTART in the BMCR of the
-> > PHY when autonegotiation is started.
-> > Recently the kernel started to read back the PHY's AN_RESTART
-> > bit and now checks whether the autonegotiation is complete and
-> > the bit was cleared [1]. Otherwise the link status is down.
-> >
-> > The emulated PHY needs to clear AN_RESTART immediately to inform
-> > the kernel driver about the completion of autonegotiation phase.
-> >
-> > [1]
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c36757eb9dee
-> >
-> > Signed-off-by: Linus Ziegert <linus.ziegert+qemu@holoplot.com>
->
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-I consider this stable material. Applies cleanly to all versions starting
-from v1.5.0.
-Thanks
-
->
-> Alistair
->
-> > ---
-> >  hw/net/cadence_gem.c | 9 +++++----
-> >  1 file changed, 5 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> > index 7f9cb5ab95..b8be73dc55 100644
-> > --- a/hw/net/cadence_gem.c
-> > +++ b/hw/net/cadence_gem.c
-> > @@ -271,9 +271,10 @@
-> >  #define PHY_REG_EXT_PHYSPCFC_ST   27
-> >  #define PHY_REG_CABLE_DIAG   28
-> >
-> > -#define PHY_REG_CONTROL_RST  0x8000
-> > -#define PHY_REG_CONTROL_LOOP 0x4000
-> > -#define PHY_REG_CONTROL_ANEG 0x1000
-> > +#define PHY_REG_CONTROL_RST       0x8000
-> > +#define PHY_REG_CONTROL_LOOP      0x4000
-> > +#define PHY_REG_CONTROL_ANEG      0x1000
-> > +#define PHY_REG_CONTROL_ANRESTART 0x0200
-> >
-> >  #define PHY_REG_STATUS_LINK     0x0004
-> >  #define PHY_REG_STATUS_ANEGCMPL 0x0020
-> > @@ -1345,7 +1346,7 @@ static void gem_phy_write(CadenceGEMState *s,
-unsigned reg_num, uint16_t val)
-> >          }
-> >          if (val & PHY_REG_CONTROL_ANEG) {
-> >              /* Complete autonegotiation immediately */
-> > -            val &= ~PHY_REG_CONTROL_ANEG;
-> > +            val &= ~(PHY_REG_CONTROL_ANEG | PHY_REG_CONTROL_ANRESTART);
-> >              s->phy_regs[PHY_REG_STATUS] |= PHY_REG_STATUS_ANEGCMPL;
-> >          }
-> >          if (val & PHY_REG_CONTROL_LOOP) {
-> > --
-> > 2.21.0
-> >
-> >
-
---000000000000b8b2ce059697c714
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div><div><br><br>Am Mo., 4. Nov. 2019 um 23:50 Uhr schrie=
-b Alistair Francis &lt;<a href=3D"mailto:alistair23@gmail.com">alistair23@g=
-mail.com</a>&gt;:<br>&gt;<br>&gt; On Mon, Nov 4, 2019 at 2:02 PM &lt;<a hre=
-f=3D"mailto:linus.ziegert@holoplot.com">linus.ziegert@holoplot.com</a>&gt; =
-wrote:<br>&gt; &gt;<br>&gt; &gt; From: Linus Ziegert &lt;<a href=3D"mailto:=
-linus.ziegert%2Bqemu@holoplot.com">linus.ziegert+qemu@holoplot.com</a>&gt;<=
-br>&gt; &gt;<br>&gt; &gt; The Linux kernel PHY driver sets AN_RESTART in th=
-e BMCR of the<br>&gt; &gt; PHY when autonegotiation is started.<br>&gt; &gt=
-; Recently the kernel started to read back the PHY&#39;s AN_RESTART<br>&gt;=
- &gt; bit and now checks whether the autonegotiation is complete and<br>&gt=
-; &gt; the bit was cleared [1]. Otherwise the link status is down.<br>&gt; =
-&gt;<br>&gt; &gt; The emulated PHY needs to clear AN_RESTART immediately to=
- inform<br>&gt; &gt; the kernel driver about the completion of autonegotiat=
-ion phase.<br>&gt; &gt;<br>&gt; &gt; [1] <a href=3D"https://git.kernel.org/=
-pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3Dc36757eb9dee">http=
-s://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=
-=3Dc36757eb9dee</a><br>&gt; &gt;<br>&gt; &gt; Signed-off-by: Linus Ziegert =
-&lt;<a href=3D"mailto:linus.ziegert%2Bqemu@holoplot.com">linus.ziegert+qemu=
-@holoplot.com</a>&gt;<br>&gt;<br>&gt; Reviewed-by: Alistair Francis &lt;<a =
-href=3D"mailto:alistair.francis@wdc.com">alistair.francis@wdc.com</a>&gt;<b=
-r><br></div>I consider this stable material. Applies cleanly to all version=
-s starting from v1.5.0.<br></div>Thanks<br><div><div>=C2=A0<br>&gt;<br>&gt;=
- Alistair<br>&gt;<br>&gt; &gt; ---<br>&gt; &gt; =C2=A0hw/net/cadence_gem.c =
-| 9 +++++----<br>&gt; &gt; =C2=A01 file changed, 5 insertions(+), 4 deletio=
-ns(-)<br>&gt; &gt;<br>&gt; &gt; diff --git a/hw/net/cadence_gem.c b/hw/net/=
-cadence_gem.c<br>&gt; &gt; index 7f9cb5ab95..b8be73dc55 100644<br>&gt; &gt;=
- --- a/hw/net/cadence_gem.c<br>&gt; &gt; +++ b/hw/net/cadence_gem.c<br>&gt;=
- &gt; @@ -271,9 +271,10 @@<br>&gt; &gt; =C2=A0#define PHY_REG_EXT_PHYSPCFC_=
-ST =C2=A0 27<br>&gt; &gt; =C2=A0#define PHY_REG_CABLE_DIAG =C2=A0 28<br>&gt=
-; &gt;<br>&gt; &gt; -#define PHY_REG_CONTROL_RST =C2=A00x8000<br>&gt; &gt; =
--#define PHY_REG_CONTROL_LOOP 0x4000<br>&gt; &gt; -#define PHY_REG_CONTROL_=
-ANEG 0x1000<br>&gt; &gt; +#define PHY_REG_CONTROL_RST =C2=A0 =C2=A0 =C2=A0 =
-0x8000<br>&gt; &gt; +#define PHY_REG_CONTROL_LOOP =C2=A0 =C2=A0 =C2=A00x400=
-0<br>&gt; &gt; +#define PHY_REG_CONTROL_ANEG =C2=A0 =C2=A0 =C2=A00x1000<br>=
-&gt; &gt; +#define PHY_REG_CONTROL_ANRESTART 0x0200<br>&gt; &gt;<br>&gt; &g=
-t; =C2=A0#define PHY_REG_STATUS_LINK =C2=A0 =C2=A0 0x0004<br>&gt; &gt; =C2=
-=A0#define PHY_REG_STATUS_ANEGCMPL 0x0020<br>&gt; &gt; @@ -1345,7 +1346,7 @=
-@ static void gem_phy_write(CadenceGEMState *s, unsigned reg_num, uint16_t =
-val)<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>&gt; &gt; =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0if (val &amp; PHY_REG_CONTROL_ANEG) {<br>&gt; &g=
-t; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Complete autonegotiat=
-ion immediately */<br>&gt; &gt; - =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-val &amp;=3D ~PHY_REG_CONTROL_ANEG;<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0val &amp;=3D ~(PHY_REG_CONTROL_ANEG | PHY_REG_CONTROL_ANRE=
-START);<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;=
-phy_regs[PHY_REG_STATUS] |=3D PHY_REG_STATUS_ANEGCMPL;<br>&gt; &gt; =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0if (val &amp; PHY_REG_CONTROL_LOOP) {<br>&gt; &gt; --<br>&gt; &gt; 2.21.=
-0<br>&gt; &gt;<br>&gt; &gt;<br></div></div></div>
-
---000000000000b8b2ce059697c714--
+T24gMTEvNC8xOSA0OjExIFBNLCBDbGVtZW50IERlc2NoYW1wcyB3cm90ZToNCg0KPiBTZXQgdGhl
+IE5TQUNSIENQMTEgYW5kIENQMTAgYml0cywgdG8gYWxsb3cgRlBVIGFjY2VzcyBpbiBOb24tU2Vj
+dXJlIHN0YXRlDQo+IHdoZW4gdXNpbmcgZHVtbXkgU01DIHNldHVwIHJvdXRpbmUuIE90aGVyd2lz
+ZSBhbiBBQXJjaDMyIGtlcm5lbCB3aWxsIFVOREVGIGFzDQo+IHNvb24gYXMgaXQgdHJpZXMgdG8g
+dXNlIHRoZSBGUFUuDQo+DQo+IFRoaXMgZml4ZXMga2VybmVsIHBhbmljIHdoZW4gYm9vdGluZyBy
+YXNwYmlhbiBvbiByYXNwaTIuDQpJIGNhbiBjb25maXJtIHRoYXQgaXQgc29sdmVzIHRoZSBrZXJu
+ZWwgcGFuaWNzIHdlJ3ZlIGhhZCBpbiBvdXIgdGVzdHMgDQp3aGVuIHJ1bm5pbmcgb3VyIHlvY3Rv
+LWJ1aWx0IGltYWdlcy4NCg0KVGVzdGVkLWJ5OiBMYXVyZW50IEJvbm5hbnMgPGxhdXJlbnQuYm9u
+bmFuc0BoZXJlLmNvbT4NCg0KTGF1cmVudA0KPg0KPiBTdWNjZXNzZnVsbHkgdGVzdGVkIHdpdGg6
+DQo+ICAgIDIwMTctMDEtMTEtcmFzcGJpYW4tamVzc2llLWxpdGUuaW1nDQo+ICAgIDIwMTgtMTEt
+MTMtcmFzcGJpYW4tc3RyZXRjaC1saXRlLmltZw0KPiAgICAyMDE5LTA3LTEwLXJhc3BiaWFuLWJ1
+c3Rlci1saXRlLmltZw0KPg0KPiBTZWUgYWxzbyBjb21taXQgZWNlNjI4ZmNmNiB0aGF0IGZpeGVz
+IHRoZSBpc3N1ZSB3aGVuICpub3QqIHVzaW5nIHRoZQ0KPiBkdW1teSBTTUMgc2V0dXAgcm91dGlu
+ZS4NCj4NCj4gRml4ZXM6IGZjMTEyMGE3ZjUNCj4gU2lnbmVkLW9mZi1ieTogQ2xlbWVudCBEZXNj
+aGFtcHMgPGNsZW1lbnQuZGVzY2hhbXBzQGdyZWVuc29jcy5jb20+DQo+IC0tLQ0KPiAgIGh3L2Fy
+bS9ib290LmMgfCAzICsrKw0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykNCj4N
+Cj4gZGlmZiAtLWdpdCBhL2h3L2FybS9ib290LmMgYi9ody9hcm0vYm9vdC5jDQo+IGluZGV4IGVm
+NjcyNDk2MGMuLjhmYjRhNjM2MDYgMTAwNjQ0DQo+IC0tLSBhL2h3L2FybS9ib290LmMNCj4gKysr
+IGIvaHcvYXJtL2Jvb3QuYw0KPiBAQCAtMjQwLDYgKzI0MCw5IEBAIHZvaWQgYXJtX3dyaXRlX3Nl
+Y3VyZV9ib2FyZF9zZXR1cF9kdW1teV9zbWMoQVJNQ1BVICpjcHUsDQo+ICAgICAgIH07DQo+ICAg
+ICAgIHVpbnQzMl90IGJvYXJkX3NldHVwX2Jsb2JbXSA9IHsNCj4gICAgICAgICAgIC8qIGJvYXJk
+IHNldHVwIGFkZHIgKi8NCj4gKyAgICAgICAgMHhlZTExMGY1MSwgLyogbXJjICAgICBwMTUsIDAs
+IHIwLCBjMSwgYzEsIDIgIDtyZWFkIE5TQUNSICovDQo+ICsgICAgICAgIDB4ZTM4MDBiMDMsIC8q
+IG9yciAgICAgcjAsICMweGMwMCAgICAgICAgICAgICA7c2V0IENQMTEsIENQMTAgKi8NCj4gKyAg
+ICAgICAgMHhlZTAxMGY1MSwgLyogbWNyICAgICBwMTUsIDAsIHIwLCBjMSwgYzEsIDIgIDt3cml0
+ZSBOU0FDUiAqLw0KPiAgICAgICAgICAgMHhlM2EwMGUwMCArIChtdmJhcl9hZGRyID4+IDQpLCAv
+KiBtb3YgcjAsICNtdmJhcl9hZGRyICovDQo+ICAgICAgICAgICAweGVlMGMwZjMwLCAvKiBtY3Ig
+ICAgIHAxNSwgMCwgcjAsIGMxMiwgYzAsIDEgO3NldCBNVkJBUiAqLw0KPiAgICAgICAgICAgMHhl
+ZTExMGYxMSwgLyogbXJjICAgICBwMTUsIDAsIHIwLCBjMSAsIGMxLCAwIDtyZWFkIFNDUiAqLw==

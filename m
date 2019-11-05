@@ -1,87 +1,89 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1034853wri;
-        Tue, 5 Nov 2019 09:51:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxxri9Rkz3jUTDvJAz7G790SeUQwhPANNmFL8Bj9ULmBIWTFojI8SyQK0buxPhUfr1abggI
-X-Received: by 2002:a17:906:6094:: with SMTP id t20mr5642579ejj.316.1572976288884;
-        Tue, 05 Nov 2019 09:51:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572976288; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1035027wri;
+        Tue, 5 Nov 2019 09:51:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx27WhrTX5eyj+eIn33AB6w47YBNiRs9BrDT5nFTkXdnLzC7/jPV9FJ+duVt8dJn+Ko1QpR
+X-Received: by 2002:a50:875e:: with SMTP id 30mr37931220edv.45.1572976300945;
+        Tue, 05 Nov 2019 09:51:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572976300; cv=none;
         d=google.com; s=arc-20160816;
-        b=J3Qvb3l26S+Nar+mNAv2IxSxHYGFbrBMjX0UlSEvnDeREFSTxUJwfF94d1c1ANFgKI
-         W839vU6UCV5DZR6hn6W1GfDyQtWR8iSLfXC5dlZLAnKTGdd8C72BBaAxx4kZ8pTOeRzS
-         R42Z6ygDErG+Gqdi3xkmgoBS7t8NEei9xKm2VGWpXCWAwkBLMCLKNPhRlzPedztSP1g7
-         d3YLPW+BlCuBFcVbGCCaY8cBVgr7Fzbd7NUFsgYbMyrOxdU7miWmH96SijEUK8P4oDQc
-         qk27GWuqmHUCCOrTGo7MGBEBz/rZxIM5/oh8j2bpQ6hQK2pp7Yq+ZM2mr9cRiUGT5D2d
-         sXOw==
+        b=ynbUEgPoLfxhzFKaOOJyyImX7ty7UU1AoBX0XvolL0cNZltJyOnsP1LRmfGMwravdq
+         gabztf1guohwWwurmLQZZrnqP73vOkOL6UmvETmTY6aBikO6BIYzQI/ejRjtoGBq+Jfq
+         FSIk4yF4Wi5wVOb0pSr4oTpvLbCKIxdA89QpBAxIX+TYw98AUdBTIykj9Rimvt1ffDMA
+         cGb6x98/LATtUHsgtzarZLfilCu1ElDSvlLPazf11b0Ho6X/6Xjz6JSfzwR5k4TPnv7+
+         XVjxcv3+uz2EK6O13EsedmoT54ydSI9fpvBLMc7Lzw3ClChuTflQBF+DSBeht7v5krSN
+         vXgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=tlt1dxE/lf/OU4KKafFnDt5Cv/36MHDOswtusek8LVc=;
-        b=JvA3eM6aNsa4IQercg+RT6qh/fitLb04zpRFYE2DI5YKV+psdizhuUL0l7TIhdh/tb
-         0aokDuHhFmZf1TwndS/v5yqGi0bifA0QhwTdqUB1CqZoTb9QOzprttcgsNh090k8hxBy
-         Lel/faXUqiQO7k6vjNvGQdacVz8jMk+eiDO92P03ZVqJoPyJODbQ6s5BWO+rFbUJ00Zk
-         Em2qs5Lp6jAj4tsrMviCgu4EhfulYmxk90ffLYMzPBMnCo9Xyis8NEfnDVxriq04WWMZ
-         mGdO3H8KOdmz4CbVo2akhgrsCk8EnoJa0hxFT81CSReR78DkYg/iJ2JtVd2jiSK9aGZR
-         Y0pg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=lkBVhE+DGu4iin+pTeTvS1RXP+Ew7BhO+1q4xCrzvpU=;
+        b=UPRFvtfbpcQGzf6p7vGRKycjCfHsJckr82H+KxRudOrphf1lPc9KsCgR/44W+Dusbs
+         RuaCz0rYySFNe7pG05U+8vlUP/nfEul1KsF+pdiIURjYe3Lpf2PGrzoLStV8lYbFdlHI
+         Y8iJ3IEP3ymR+3E6k0dfty40qWPy1OsZNQ0bxtW9yW1/rQSQi4qPNuERoHgJXvKyjxG3
+         0G+e//sNkUtVJwQysH1t0KH+pCa5e1+Wjq2KsCTZNOiv6lnXzFjR8W7MEMYS1Mn75tWE
+         5h/cVvY1J97VFmI+dbSmHQGUVmorFNjTwCMtOYwvfe2wXBxG3u1uwp8hOQ6SCFebZfVC
+         ugSg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x31si11457742eda.334.2019.11.05.09.51.28
+        by mx.google.com with ESMTPS id q20si3758349eja.339.2019.11.05.09.51.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2019 09:51:28 -0800 (PST)
+        Tue, 05 Nov 2019 09:51:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46984 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46986 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iS2zH-0002tQ-9I
-	for alex.bennee@linaro.org; Tue, 05 Nov 2019 12:51:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47235)
+	id 1iS2zT-0003Fx-Js
+	for alex.bennee@linaro.org; Tue, 05 Nov 2019 12:51:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47237)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iS2yf-0002QE-N9
+ (envelope-from <laurent@vivier.eu>) id 1iS2yf-0002QF-Oy
  for qemu-arm@nongnu.org; Tue, 05 Nov 2019 12:50:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iS2ye-0004Z4-NB
+ (envelope-from <laurent@vivier.eu>) id 1iS2ye-0004Yz-L6
  for qemu-arm@nongnu.org; Tue, 05 Nov 2019 12:50:49 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:46591)
+Received: from mout.kundenserver.de ([217.72.192.75]:34039)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iS2ya-0004Wq-8i; Tue, 05 Nov 2019 12:50:44 -0500
+ id 1iS2yZ-0004Wm-Li; Tue, 05 Nov 2019 12:50:43 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MdeOl-1hsREj3xdx-00Zj7B; Tue, 05 Nov 2019 18:50:21 +0100
+ id 1M42Ss-1iS2yG0Su0-0007FQ; Tue, 05 Nov 2019 18:50:24 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL v2 0/3] Trivial branch patches
-Date: Tue,  5 Nov 2019 18:50:07 +0100
-Message-Id: <20191105175010.2591-1-laurent@vivier.eu>
+Subject: [PULL v2 2/3] hw/misc/grlib_ahb_apb_pnp: Fix 8-bit accesses
+Date: Tue,  5 Nov 2019 18:50:09 +0100
+Message-Id: <20191105175010.2591-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20191105175010.2591-1-laurent@vivier.eu>
+References: <20191105175010.2591-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bVlXh+qfacMYAJz0JYhOyV/CyLXAoaePIt05Vn/XxD8LtGnM1tr
- GXXn06EiHaloQjwhDdOWzFLEfaOUmFNry8lZMGSIvXXQY/AvH/MOpXkIPZTpoD8ZWKbZoPT
- AlrpUTkZ2yTxn/w8RnJof5KISGUZwN8ctqeco5tBWFnYqxWmaut/OixibWFpfqCzugpOgUN
- AYjerAX25MByQ9tiRIp9w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:FDAFY9f0SXI=:JhUvsvMKENvKfD/dRw9zBJ
- ttvXeWgWtQ0G3bGac4B0To/qcFALz5sKpcxEWnHS29A6okPGDzapmAd/IShQY40J0eMEICMdY
- Hhzf9Hv/Ar5WdBr4nPDRIaV4oXFzDj11D1kGeinxlLF8ATqRqqqj74PKDOkRlbxpWtHB/ZkT9
- h0l6BM+7TbeMhlPykRA9n7cBN85XmNhUbItIeBUQ1dBxKHb3PXojjC/5Nd52kLo3cuiDG+qwW
- i0yUuL0LyLSmCVL1Phv2oJWmDkJmYpOd30QrCrLfBegwku/pYcPkGVmvOlQoDqtCBTPuH2Vdc
- avbzYzExQuGDPlqelThcukrRhp1Lf7nRAJ5I397SctfYy90gJ/+JtN/O6rICOOJFxv4Mw0t/w
- /IYZBfO+J9luFhU349T/KwemXsHRilcrTAi4HuXIZSPY9DRifvYs5MC3XQ3HPhYW+mBNYHSz7
- b12PjhLdPJNuVEX1fvuYCi4H4YTsGEJGrMEfqrcuceKOfKtcORLa2YXltU2buGnPX1TSj2ucy
- JByAjDcbOJWiOpjuMwC4M7q6e6pOvehyJnKnkwno1Kg7d4layedaxjcKRBM7WnF12bGxHRVmW
- 1dCHl+goyPjFvWKp85s5wItlIJgeQkPL54xcsKV8kS8cH9i2eZoaoFqzXiy5xgYvi7/4Mir35
- Cd0FJuQPGz6Q0Ec0lmnPkQPoR1+oJr+MMbGx9QNhuDXOzk1W1sXb8XaZrGceyWRfIktYY0mTx
- IKPhbskzE9rR0Rh/mSIF+t6LfpMcmBLSxazfbvNWxQk7F65vUHflTE5Za7e5hoaUV+g2YTSwD
- nyT5Pf5CoiVM0EwhDU/DfgpcBn2lUtSjaRXZyY/LGv71R2E2jhgL/AnOkDtII8BQd5A6X1oS2
- Nm4tEFD373kW4k8ERvB9jzTREmeslEmIZmwsqqXr0=
+X-Provags-ID: V03:K1:lZFxrSfyzft189ztgtj2zhDPSI/v8wne3TXsIYykJJGOhUsiUZI
+ WUL5cdIywdu0OUa3r4YX6cB3Tht5LIMC0ClU0II1uDHDHXG37ReL8vF62QOrl1xOxWDZxAa
+ yCqIAJHzVW28Cq2J7jJQs6dd+fOzaDuzfjzVCqTQsbJVnvlh+AledLIOc1Vel5LH8FUBnnh
+ o47BZat4luIwytgGxrHcg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:av6w0M/wZvM=:rDhXnAD9A6cpkNh2e0TgfK
+ J5zOnZTmo/W2/DrEV1TxsmjMZKnl4JwjBQ2mVcpEMorM95RpraeHljKk6t3tDPN9htva00ZS+
+ n0IKmM/g54Fxgbudpy2rNfAWupAwq8AOCr38O1wobl8Bp/lRRRUuj1DZn0hrORfW1BiiE1gRu
+ GthE7ZJHo2MLLrMrhXBnGO7DPuPRa+1vEbtQk9FBU6jVR3g1Bmt3QddQzGLkiUOsMnAKkXybK
+ iv9ZHOq6yKrXbOPUdJNLZqKmNu5QB8SvFBiRLk53kKWXg5DL8P3PSyFE44kUyIDBbCa2s3Ohc
+ f94YctBbcL9YU5QBlW6Nwu4fdldc8HR0zwl23GHM8taAuVWhUUst0bAcbky1izqYVhnwHJn1R
+ eQrdjr9KZX5ac4OXFu1KZrTwkQpp0tfr/HI2TkwfmnngyN4UksepaIhwp2Yjb0O7A88PqEUco
+ 4gDwDOA4U9bZNwEmwCgRAEhma1/YgZjpzKq8KwOH2+r85K5x7yNvLw9sSqzWLFA22rjhvchsv
+ kDgAfgPtmB73k4lCOcLXEJpK0Wqgr/5KGZTohZmKSsuInPT/SYbnutSzOYKmnGtZQL5DBYf3a
+ Ffz0lRXXmB1JvCyKrdlixwyOy5ZMKgh26Ca8J9olDZLuqEXYVP665ZS3UZpQ7giQkdwruVD1z
+ VjZqrV5/+n8dISFBbupy5B/MNVImCkyCk1EuopkA7tj/QGjFM02nT+QEu1hmyrSQMJYIcyC1h
+ v6AOWFzBqbucg6B8a7O4b488V2tPkikK+6Xj0FxRIchrNIh1TO3HeYrR72TWCmYvoiJsE3oVw
+ MSVb44EyLNzkUgBzQ0nagEe+iBk+aTQLdvfM0Glo9oYSOyWcn6XykZEbWXbsOFtHKhG2fXxdO
+ yV0/pVe89F9Tov60kVhYGU5ic5vtb/L80oLvPPMJo=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 217.72.192.73
+X-Received-From: 217.72.192.75
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,46 +105,56 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- David Gibson <david@gibson.dropbear.id.au>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Jiri Gaisler <jiri@gaisler.se>, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q0gilbxsMqLs
+X-TUID: VyO/PHVE3RuW
 
-The following changes since commit 36609b4fa36f0ac934874371874416f7533a5408:
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-  Merge remote-tracking branch 'remotes/palmer/tags/palmer-for-master-4.2-sf1' into staging (2019-11-02 17:59:03 +0000)
+The Plug & Play region of the AHB/APB bridge can be accessed
+by various word size, however the implementation is clearly
+restricted to 32-bit:
 
-are available in the Git repository at:
+  static uint64_t grlib_apb_pnp_read(void *opaque, hwaddr offset, unsigned size)
+  {
+      APBPnp *apb_pnp = GRLIB_APB_PNP(opaque);
 
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+      return apb_pnp->regs[offset >> 2];
+  }
 
-for you to fetch changes up to e187e55ec65039ed6bd982debee632450ace3bae:
+Set the MemoryRegionOps::impl min/max fields to 32-bit, so
+memory.c::access_with_adjusted_size() can adjust when the
+access is not 32-bit.
 
-  global: Squash 'the the' (2019-11-05 18:39:14 +0100)
+This is required to run RTEMS on leon3, the grlib scanning
+functions do byte accesses.
 
-----------------------------------------------------------------
-Trivial fixes (20191105-v2)
+Reported-by: Jiri Gaisler <jiri@gaisler.se>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
+Message-Id: <20191025110114.27091-3-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/misc/grlib_ahb_apb_pnp.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-----------------------------------------------------------------
-
-Dr. David Alan Gilbert (1):
-  global: Squash 'the the'
-
-Philippe Mathieu-Daudé (2):
-  hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to PnP registers
-  hw/misc/grlib_ahb_apb_pnp: Fix 8-bit accesses
-
- disas/libvixl/vixl/invalset.h       |  2 +-
- docs/interop/pr-helper.rst          |  2 +-
- docs/specs/ppc-spapr-hotplug.txt    |  2 +-
- docs/specs/ppc-xive.rst             |  2 +-
- docs/specs/tpm.txt                  |  2 +-
- hw/misc/grlib_ahb_apb_pnp.c         | 12 ++++++++++++
- include/hw/xen/interface/io/blkif.h |  2 +-
- scripts/dump-guest-memory.py        |  2 +-
- 8 files changed, 19 insertions(+), 7 deletions(-)
-
+diff --git a/hw/misc/grlib_ahb_apb_pnp.c b/hw/misc/grlib_ahb_apb_pnp.c
+index f3c015d2c35f..e230e2536361 100644
+--- a/hw/misc/grlib_ahb_apb_pnp.c
++++ b/hw/misc/grlib_ahb_apb_pnp.c
+@@ -242,6 +242,10 @@ static const MemoryRegionOps grlib_apb_pnp_ops = {
+     .read       = grlib_apb_pnp_read,
+     .write      = grlib_apb_pnp_write,
+     .endianness = DEVICE_BIG_ENDIAN,
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
+ };
+ 
+ static void grlib_apb_pnp_realize(DeviceState *dev, Error **errp)
 -- 
-v2: remove patch from Greg that has lines with more than 80 columns
 2.21.0
 

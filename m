@@ -1,65 +1,65 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp453567wri;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp453577wri;
         Tue, 5 Nov 2019 01:12:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwMAEybYf3cNiGIqlC9P+1hzDhn+bOud09ifwKaaoXgD4UDYACTR9CR0yGrmX/dZs2U6S0I
-X-Received: by 2002:a37:8dc2:: with SMTP id p185mr18027807qkd.7.1572945160124;
+X-Google-Smtp-Source: APXvYqyrl+JL9dmyZ/QEh9Yu9yeBetviukolLnEa2qp6uxoRJDRLbhNxvoR2j9zfEXFmMaOL3mTr
+X-Received: by 2002:a37:81c1:: with SMTP id c184mr12265081qkd.59.1572945160853;
         Tue, 05 Nov 2019 01:12:40 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1572945160; cv=none;
         d=google.com; s=arc-20160816;
-        b=bhTvda3oiWnK8Xq2SjLqkKpCX5A33asF1zfCRH3OPYXwEIBDjqb5cY62RUiNhDUVCa
-         b3RhkFn668TnyX6Lwsmcs4s/Kr1VxQloWEnZGfbGg1xTcganXq7mXO7RRE/rtex2nOd2
-         0wyBP8OdYK26B63XTkKcYjBseghRiSymOAfTBNhiAQYhv9j2PnXiMtVYJEOs32yKusyd
-         IRr3NnNqWrXTuk1uwRMCEaBNQj+3wwkoVoukTuYd/CkBb/IgY1mgaSg5zjWotfeTMOSq
-         iQ6TFa0OgwwLe0kf2/ockL5yuH/xcaZ08A+409pdjhR1f2QS1qanYEOmoq+Tne4KTcWD
-         cl+w==
+        b=I2NlYzS1UtsD1ba7OZmL1cL8sYaFiuvyyKnZ+2dVyY/1CA3FuqtHIqvGrNmAfwRqCG
+         RA3163mGPubTmAw/lEf7NI4VTo2REbaWLyCds+CbcKvAXBNIk6IGEPd/xQk+nN/auZ+k
+         iKw7ul1tl9joK4/30AinXD5TT7eS55WluAtWgYANh/1tAI/zifg/uHLLiSU+6OMWmIzm
+         qUn7WGtV34bnLjoTJrWqqcfgvEhLeuz+dz/3prtQ1RdIsI0ijP20HCrfYipdauGJNFnI
+         iD2fTPZX1xv7ETyP1Eq0tWFTAGmkpiC1Kw2xQgtIUX9s0sdaR5ulcwCdIVWcBMqhjjP2
+         dtnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=AU9jnjhnzVC601YSebITylchpDete/uNAu0dhW2S5J4=;
-        b=dd+rM+QAnlrzEJZ45Iok+a35rBZs3nHVqBSEHX8wh5I+27+YU6xyD0crpQmGYXaGYj
-         3JJAdM3CCGCcaChjXbWLjp59Lrnxd+g0N3hZh5BnacF2+3JDAWoY+Zds5LK5Eyj3ZRm7
-         iXHt1/e1w4Fy6jrUL5IKpIOMc+e5R8FP0uEjz+cXVi9/nOF1ILeEhtOlkrpCup9/PxX2
-         Zmmn9TE5VluSDKOirquMrFj7ZbNNcJqY5DlfMbuMi/qWGIhDDVfedg4TPzL8io64nGof
-         A7s2NqpxO0SYYuThReSI83bBJgPJCoFUYgrQvxr7wu940iMQ4ZnX4IRrtbG9+4+qhPgq
-         bnMQ==
+        bh=0z1sV+nrIiXCF7X5ZyGodvqk5mKYFCX8yNrUGVPDSZQ=;
+        b=kQtz/HvaCVLdD7iPSLKIfFynNyTyyn9mwspfhvbRCsKvRya/7f+AqTlVsKfoJyw/oi
+         jlU83uklX7e5yek2qUKVY55hlw+svdPzBB3ur210Rv2MQrWRBVCNjyhOhJSn28bAj7Ge
+         KFX7v2OTnzf78rJsEH/UNrI0xc1FfvoGqs1cQ53ry5W1BBuR/sHHV6oHNQNFqKnJFNw1
+         ruVZQLY2k5jQKoaebXo4oPCPw6Mib8KzTS/JcNjR4XJRcg9q9WvtX1gxi0lP6s1cGW27
+         lTtqu7mi2nn4hnRv8ZlzbPUhMWFapg2AU5VInpA4OJ7fQrW4utzAwS4BkVggSoycA8Pe
+         EMiw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h128si14365685qkf.233.2019.11.05.01.12.39
+        by mx.google.com with ESMTPS id e26si14893499qtc.18.2019.11.05.01.12.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 05 Nov 2019 01:12:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41778 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41776 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRutC-00054L-NM
-	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:12:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42938)
+	id 1iRutD-000545-Rn
+	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:12:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42943)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1iRusu-00051H-Ig
+ (envelope-from <guoheyi@huawei.com>) id 1iRusu-00051J-KO
  for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1iRust-0007jZ-AH
+ (envelope-from <guoheyi@huawei.com>) id 1iRust-0007jd-AP
  for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:20 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2191 helo=huawei.com)
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2193 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1iRuss-0007hi-V5; Tue, 05 Nov 2019 04:12:19 -0500
+ id 1iRuss-0007ho-VA; Tue, 05 Nov 2019 04:12:19 -0500
 Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 25CF166D1E71EF4D29B8;
+ by Forcepoint Email with ESMTP id 30E169802AA03F54722A;
  Tue,  5 Nov 2019 17:12:13 +0800 (CST)
 Received: from linux-OtBuvb.huawei.com (10.175.104.212) by
  DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 5 Nov 2019 17:12:07 +0800
+ 14.3.439.0; Tue, 5 Nov 2019 17:12:04 +0800
 From: Heyi Guo <guoheyi@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [RFC v2 08/14] core/irq: add qemu_irq_remove_intercept interface
-Date: Tue, 5 Nov 2019 17:10:50 +0800
-Message-ID: <20191105091056.9541-9-guoheyi@huawei.com>
+Subject: [RFC v2 04/14] arm: add CONFIG_SDEI build flag
+Date: Tue, 5 Nov 2019 17:10:46 +0800
+Message-ID: <20191105091056.9541-5-guoheyi@huawei.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20191105091056.9541-1-guoheyi@huawei.com>
 References: <20191105091056.9541-1-guoheyi@huawei.com>
@@ -88,16 +88,10 @@ Cc: Mark Rutland <mark.rutland@arm.com>,
  wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EDyGDHbXQO7I
+X-TUID: AMgWZ3I6nwpC
 
-We use qemu_irq as the bridge for other qemu modules to switch from
-irq injection to SDEI event trigger after VM binds the interrupt to
-SDEI event. We use qemu_irq_intercept_in() to override qemu_irq
-handler with SDEI event trigger, so we also need a corresponding
-interface to restore the handler to default one (i.e. ARM GIC).
-
-qemu_irq_remove_intercept() is the new interface to do the above
-job.
+Integrate SDEI support for arm/aarch64 targets by default, if KVM is
+enabled.
 
 Signed-off-by: Heyi Guo <guoheyi@huawei.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
@@ -106,54 +100,48 @@ Cc: Marc Zyngier <marc.zyngier@arm.com>
 Cc: Mark Rutland <mark.rutland@arm.com>
 Cc: James Morse <james.morse@arm.com>
 ---
- hw/core/irq.c    | 11 +++++++++++
- include/hw/irq.h |  8 ++++++--
- 2 files changed, 17 insertions(+), 2 deletions(-)
+ default-configs/arm-softmmu.mak | 1 +
+ hw/arm/Kconfig                  | 4 ++++
+ target/arm/Makefile.objs        | 2 ++
+ 3 files changed, 7 insertions(+)
 
-diff --git a/hw/core/irq.c b/hw/core/irq.c
-index 7cc0295d0e..114bce6c21 100644
---- a/hw/core/irq.c
-+++ b/hw/core/irq.c
-@@ -145,6 +145,17 @@ void qemu_irq_intercept_in(qemu_irq *gpio_in, qemu_i=
-rq_handler handler, int n)
-     }
- }
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
+u.mak
+index 1f2e0e7fde..fc1f2b2ead 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -40,3 +40,4 @@ CONFIG_FSL_IMX25=3Dy
+ CONFIG_FSL_IMX7=3Dy
+ CONFIG_FSL_IMX6UL=3Dy
+ CONFIG_SEMIHOSTING=3Dy
++CONFIG_SDEI=3Dy
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index c6e7782580..472bc3a75b 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -469,3 +469,7 @@ config ARMSSE_CPUID
 =20
-+void qemu_irq_remove_intercept(qemu_irq *gpio_in, int n)
-+{
-+    int i;
-+    qemu_irq *old_irqs =3D gpio_in[0]->opaque;
-+    for (i =3D 0; i < n; i++) {
-+        gpio_in[i]->handler =3D old_irqs[i]->handler;
-+        gpio_in[i]->opaque =3D old_irqs[i]->opaque;
-+    }
-+    qemu_free_irqs(old_irqs, n);
-+}
+ config ARMSSE_MHU
+     bool
 +
- static const TypeInfo irq_type_info =3D {
-    .name =3D TYPE_IRQ,
-    .parent =3D TYPE_OBJECT,
-diff --git a/include/hw/irq.h b/include/hw/irq.h
-index fe527f6f51..1af1db93bb 100644
---- a/include/hw/irq.h
-+++ b/include/hw/irq.h
-@@ -56,8 +56,12 @@ qemu_irq qemu_irq_split(qemu_irq irq1, qemu_irq irq2);
-  */
- qemu_irq *qemu_irq_proxy(qemu_irq **target, int n);
++config SDEI
++    bool
++    depends on KVM
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index cf26c16f5f..72e01d08dc 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -11,6 +11,8 @@ obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARC=
+H64))) +=3D kvm32.o
+ obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) +=3D kvm64.o
+ obj-$(call lnot,$(CONFIG_KVM)) +=3D kvm-stub.o
 =20
--/* For internal use in qtest.  Similar to qemu_irq_split, but operating
--   on an existing vector of qemu_irq.  */
-+/*
-+ * Similar to qemu_irq_split, but operating on an existing vector of qem=
-u_irq.
-+ */
- void qemu_irq_intercept_in(qemu_irq *gpio_in, qemu_irq_handler handler, =
-int n);
-=20
-+/* Restore the irq handler intercepted by qemu_irq_intercept_in() */
-+void qemu_irq_remove_intercept(qemu_irq *gpio_in, int n);
++obj-$(CONFIG_SDEI) +=3D sdei.o
 +
- #endif
+ DECODETREE =3D $(SRC_PATH)/scripts/decodetree.py
+=20
+ target/arm/decode-sve.inc.c: $(SRC_PATH)/target/arm/sve.decode $(DECODET=
+REE)
 --=20
 2.19.1
 

@@ -1,65 +1,65 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp456466wri;
-        Tue, 5 Nov 2019 01:15:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxpSi7eMDCTbiL+KHh5sAY7+MnCpcKYorykJq9zw4RKeGNqZpqQ5AagW6YafJOzMT+AeLXC
-X-Received: by 2002:aa7:d1c9:: with SMTP id g9mr14425648edp.162.1572945334584;
-        Tue, 05 Nov 2019 01:15:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572945334; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp457233wri;
+        Tue, 5 Nov 2019 01:16:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyeQiSuMd0h4L42Md9kd7y6xw+ZwYYHhMLJTPIsDlgNrT8U0T8Ri7xGNkFT+i3nT+pO3uT9
+X-Received: by 2002:a50:8c02:: with SMTP id p2mr7849070edp.30.1572945380501;
+        Tue, 05 Nov 2019 01:16:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572945380; cv=none;
         d=google.com; s=arc-20160816;
-        b=SKEfO7uCp5UCcIKXHv9ZEI1/NQVcIWuW6F90SfRek+KYRerVO4lUyQkqVACD9Or2Ov
-         +7nXxqAivclhsKuUV6SzukeTwbQ51JzfChUT/fgvPpnELWC3dOyC+TsCrcRGKuxj6e/+
-         Tf6w5IHBJwiHAFGUTtnoskcgzanObYaegj054cIUxACNVnAVb3PLPVHQn4MAmDHHhMtt
-         XdwUYzWuYtTo4Dbk3N2tTnD2aarWXZzR4wBmjs/2BsmZAXxZJS4C01O8acitAYnnv4zv
-         45RF3QR6Hu+UjEmJ05GeNDSEgvmCE06k/meS8JiDf3ANaiO31R0wCyJXFD+SnPUNo9Jb
-         lJRQ==
+        b=BIwXvwPOZjja+52JyABXiWRc1X23CgVGu+3Rw4j+e8/qalSzCe3MdHUQKievGTcK4C
+         yDklOuKMtLAIhv2FV5bLVyelqbfFBOjDo+d6pnPwnB1kAr4We5GQlXV8B246kGuqjPH0
+         AnFIC94JMrN2iu0TFm+jhbr/YBO3ICyBLQjJG59G+0vz/Muqa3x5U268oA/nWCI/kW3O
+         GdyqmfpmkwsJd7xnJjpsVYZOmBcJn0sfjFnBeTjMScVFNGRcBf4fsibX+vf4Qyhj9rmG
+         bey5xouSXhtIFl3Zh5hbOfKdwMaJNMdCbpbYx5Y6O72z48Snrs9uiJ/gmKMXu6zDQiZY
+         /6rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=02Y1EZMgl6LF52uyC9B5UwjGA50gaZu1BePudc7ellw=;
-        b=Mnul+UlOFiNsk2ul6CriYvjSNXz7BIi/Ab91aCi9Qc/BIqS68l5larvt0xb/jVqvDW
-         4WoXz164wVg+LI5BuftDRNIgNIEA7phnoRjrNfxyZ58KmSl/g/elrb4QBKAryGfdXNuc
-         mwuUw4ME/avnjhzbeH6N6XFrGjDsSrKSwzyfY5xNY4n2t0ePk18Ihl2iAxi5FQ1CU6ez
-         bwsbHDjPaJjBkEHuNKIWkvxhqaJhi18FHg38YA0EMjy3VAxfn9fPz4rSqocYxUNJTSuA
-         uFfrLAJjxVEU70WPFYhvfNRCB1q4DtcSUiu6F8LYgYXlAL3GRVIZi93z2hviidk26Z50
-         sDNg==
+        bh=4+uEM3DIa1rW1u97g/gZy2oMIMYGNDAXHAc0JkDtiZM=;
+        b=ysbULrGtJHq49+d3m7v8nn9W9O2+fYOaTeKAotm2PtU/vRTuTcr+A9CwHnHtbngTXy
+         otQpMRotv1tuxywwDuYzjmmp6D7R1iIq1hJmMI/66HdMrhhQYFjcAU9kUu3q5IbxwYrU
+         vsxW5G7b5LAYqAWlmWQzPyvnAlngRhCtyTC47DmC6/PjJbQpLFpI0O7xTe5JxpWZiIDi
+         W855xkuzbPCRc/qF9qEgmdyQrJEivylOB/mJ0dt6gRuvi3bq7nuYiMeRo6UO5hOd/w2a
+         AMjuZUEdBzz3s1UQqQfkgnovgzBzjZQd0AhMG/o79Ods8cAuhWnK2G4+Ic2n6BgypkvV
+         q1VA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gz25si13094948ejb.81.2019.11.05.01.15.34
+        by mx.google.com with ESMTPS id f13si9631342eda.288.2019.11.05.01.16.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2019 01:15:34 -0800 (PST)
+        Tue, 05 Nov 2019 01:16:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41854 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRuw0-00010e-Mj
-	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:15:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43161)
+	id 1iRuwk-0001mE-VH
+	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:16:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43046)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1iRusz-00055R-Qn
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:28 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iRusx-00051z-C3
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1iRusw-0007mv-5M
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:25 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2197 helo=huawei.com)
+ (envelope-from <guoheyi@huawei.com>) id 1iRusv-0007lk-K0
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:23 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:52116 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1iRusv-0007kT-Fy; Tue, 05 Nov 2019 04:12:22 -0500
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 45015584A918BF356752;
- Tue,  5 Nov 2019 17:12:13 +0800 (CST)
+ id 1iRusv-0007j8-79; Tue, 05 Nov 2019 04:12:21 -0500
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 3294EB169FFE9A49559A;
+ Tue,  5 Nov 2019 17:12:18 +0800 (CST)
 Received: from linux-OtBuvb.huawei.com (10.175.104.212) by
  DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 5 Nov 2019 17:12:04 +0800
+ 14.3.439.0; Tue, 5 Nov 2019 17:12:10 +0800
 From: Heyi Guo <guoheyi@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [RFC v2 03/14] arm/sdei: add virtual device framework
-Date: Tue, 5 Nov 2019 17:10:45 +0800
-Message-ID: <20191105091056.9541-4-guoheyi@huawei.com>
+Subject: [RFC v2 13/14] arm/kvm: handle guest exit of hypercall
+Date: Tue, 5 Nov 2019 17:10:55 +0800
+Message-ID: <20191105091056.9541-14-guoheyi@huawei.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20191105091056.9541-1-guoheyi@huawei.com>
 References: <20191105091056.9541-1-guoheyi@huawei.com>
@@ -70,7 +70,7 @@ X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.190
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,550 +82,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark
- Rutland <mark.rutland@arm.com>, Peter Maydell <peter.maydell@linaro.org>,
- James Morse <james.morse@arm.com>, Marc Zyngier <marc.zyngier@arm.com>,
- Jingyi Wang <wangjingyi11@huawei.com>, Heyi Guo <guoheyi@huawei.com>,
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>,
+ James Morse <james.morse@arm.com>, Heyi Guo <guoheyi@huawei.com>,
  wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bBuUwh5KYDFF
+X-TUID: Lra4pMvCoD13
 
-SDEI is useful to emulate NMI on arm64 platforms. To support SDEI in
-virtual machine with KVM enabled, we choose to implement SDEI
-interfaces in qemu. It is targeted for KVM mode only, for the full
-user space emulation can also emulate secure world and have ARM
-Trusted Firmware to run on emulated EL3.
-
-- We create a logical SDEI device to hold the states of SDEI services,
-  to support VM migration.
-- Only one SDEI virtual device is allowed in the whole VM to provide
-  SDEI services.
-- We create struct QemuSDE to hold states of each SDEI event, and
-  private events with the same ID on different CPUs have their own
-  QemuSDE instance.
-- We create struct QemuSDEProp to hold properties of each SDEI event,
-  so all private instances with the same ID will pointed to the same
-  QemuSDEProp.
-- We create struct QemuSDECpu to hold CPU/PE states, including the
-  interrupted CPU context.
-- Slot numbers for private and shared event are fixed, for guests
-  cannot request more interrupt binds than BIND_SLOTS in SDEI_FEATURES
-  call.
-- The first PRIVATE_SLOT_COUNT slots in property array are for private
-  events, and the next SHARED_SLOT_COUNT slots are for shared events.
-- We use property slot index as lower bit for each allocated event
-  number, so that we can get property easily from valid input event
-  number, as well as the QemuSDE instance.
+Add support to handle guest exit of hypercall, and forward to SDEI
+dispatcher if SDEI is enabled and it is an SDEI request.
 
 Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-Signed-off-by: Jingyi Wang <wangjingyi11@huawei.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Dave Martin <Dave.Martin@arm.com>
 Cc: Marc Zyngier <marc.zyngier@arm.com>
 Cc: Mark Rutland <mark.rutland@arm.com>
 Cc: James Morse <james.morse@arm.com>
 ---
- target/arm/sdei.c     | 344 ++++++++++++++++++++++++++++++++++++++++++
- target/arm/sdei_int.h | 118 +++++++++++++++
- 2 files changed, 462 insertions(+)
- create mode 100644 target/arm/sdei.c
- create mode 100644 target/arm/sdei_int.h
+ target/arm/kvm.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/target/arm/sdei.c b/target/arm/sdei.c
-new file mode 100644
-index 0000000000..931e46923a
---- /dev/null
-+++ b/target/arm/sdei.c
-@@ -0,0 +1,344 @@
-+/*
-+ * ARM SDEI emulation for ARM64 virtual machine with KVM
-+ *
-+ * Copyright (c) Huawei Technologies Co., Ltd. 2019. All rights reserved=
-.
-+ *
-+ * Authors:
-+ *    Heyi Guo <guoheyi@huawei.com>
-+ *    Jingyi Wang <wangjingyi11@huawei.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify =
-it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2 or later, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOU=
-T
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License=
- for
-+ * more details.
-+ *
-+ * You should have received a copy of the GNU General Public License alo=
-ng with
-+ * this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "arm-powerctl.h"
-+#include "qemu/timer.h"
-+#include "sysemu/kvm.h"
-+#include "sysemu/kvm_int.h"
-+#include "sysemu/sysemu.h"
-+#include "sysemu/reset.h"
-+#include "qemu/error-report.h"
-+#include "sdei_int.h"
-+#include "internals.h"
-+#include "hw/boards.h"
-+#include "hw/intc/arm_gicv3.h"
-+#include "hw/intc/arm_gic.h"
-+#include "hw/irq.h"
-+#include "hw/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "qom/object.h"
-+
-+#define TYPE_ARM_SDEI "arm_sdei"
-+#define QEMU_SDEI(obj) OBJECT_CHECK(QemuSDEState, (obj), TYPE_ARM_SDEI)
-+
-+static QemuSDEState *sde_state;
-+
-+static void qemu_sde_prop_init(QemuSDEState *s)
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index b473c63edb..035a39e49f 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -30,6 +30,7 @@
+ #include "hw/boards.h"
+ #include "hw/irq.h"
+ #include "qemu/log.h"
++#include "sdei.h"
+=20
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] =3D {
+     KVM_CAP_LAST_INFO
+@@ -676,6 +677,19 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kv=
+m_run *run)
+ }
+=20
+=20
++static void kvm_arm_handle_hypercall(CPUState *cs, struct kvm_run *run)
 +{
-+    QemuSDEProp *sde_props =3D s->sde_props_state;
-+    int i;
-+    for (i =3D 0; i < ARRAY_SIZE(s->sde_props_state); i++) {
-+        sde_props[i].event_id =3D SDEI_INVALID_EVENT_ID;
-+        sde_props[i].interrupt =3D SDEI_INVALID_INTERRUPT;
-+        sde_props[i].sde_index =3D i >=3D PRIVATE_SLOT_COUNT ?
-+                                 i - PRIVATE_SLOT_COUNT : i;
++    uint32_t func_id =3D run->hypercall.args[0];
 +
-+        qemu_mutex_init(&(sde_props[i].lock));
-+        sde_props[i].refcount =3D 0;
-+    }
-+    sde_props[0].event_id =3D SDEI_STD_EVT_SOFTWARE_SIGNAL;
-+    sde_props[0].interrupt =3D SDEI_INVALID_INTERRUPT;
-+    sde_props[0].is_shared =3D false;
-+    sde_props[0].is_critical =3D false;
-+
-+    for (i =3D 0; i < ARRAY_SIZE(s->irq_map); i++) {
-+        s->irq_map[i] =3D SDEI_INVALID_EVENT_ID;
++    if (sdei_enabled &&
++        func_id >=3D SDEI_1_0_FN_BASE && func_id <=3D SDEI_MAX_REQ) {
++        sdei_handle_request(cs, run);
++        return;
 +    }
 +
-+    qemu_mutex_init(&s->sdei_interrupt_bind_lock);
++    run->hypercall.args[0] =3D -1;
 +}
 +
-+static void qemu_sde_cpu_init(QemuSDEState *s)
-+{
-+    int i;
-+    QemuSDECpu *sde_cpus;
-+
-+    s->sdei_max_cpus =3D current_machine->smp.max_cpus;
-+    s->sde_cpus =3D g_new0(QemuSDECpu, s->sdei_max_cpus);
-+    sde_cpus =3D s->sde_cpus;
-+    for (i =3D 0; i < s->sdei_max_cpus; i++) {
-+        sde_cpus[i].masked =3D true;
-+        sde_cpus[i].critical_running_event =3D SDEI_INVALID_EVENT_ID;
-+        sde_cpus[i].normal_running_event =3D SDEI_INVALID_EVENT_ID;
-+    }
-+}
-+
-+static bool is_valid_event_number(int32_t event)
-+{
-+    int32_t slot_id;
-+
-+    if (event < 0 || (event & 0x3F000000)) {
-+        return false;
-+    }
-+
-+    slot_id =3D SDEI_EVENT_TO_SLOT(event);
-+    if (slot_id >=3D PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT) {
-+        return false;
-+    }
-+
-+    return true;
-+}
-+
-+static bool is_valid_event(QemuSDEState *s, int32_t event)
-+{
-+    if (!is_valid_event_number(event)) {
-+        return false;
-+    }
-+
-+    if (s->sde_props_state[SDEI_EVENT_TO_SLOT(event)].event_id !=3D even=
-t) {
-+        return false;
-+    }
-+
-+    return true;
-+}
-+
-+static QemuSDEProp *get_sde_prop_no_lock(QemuSDEState *s, int32_t event)
-+{
-+    if (!is_valid_event(s, event)) {
-+        return NULL;
-+    }
-+
-+    return &s->sde_props_state[SDEI_EVENT_TO_SLOT(event)];
-+}
-+
-+static void sde_array_init(QemuSDE **array, int count)
-+{
-+    int i;
-+
-+    for (i =3D 0; i < count; i++) {
-+        QemuSDE *sde;
-+        sde =3D array[i];
-+        if (!sde) {
-+            sde =3D g_new0(QemuSDE, 1);
-+        }
-+        sde->event_id =3D SDEI_INVALID_EVENT_ID;
-+        sde->enabled =3D false;
-+        sde->running =3D false;
-+        sde->pending =3D false;
-+        sde->unregister_pending =3D false;
-+        qemu_mutex_init(&sde->lock);
-+        array[i] =3D sde;
-+    }
-+}
-+
-+static void qemu_shared_sde_init(QemuSDEState *s)
-+{
-+    sde_array_init(s->shared_sde_array, SHARED_SLOT_COUNT);
-+}
-+
-+static void qemu_private_sde_init(QemuSDEState *s)
-+{
-+    int i;
-+
-+    for (i =3D 0; i < s->sdei_max_cpus; i++) {
-+        sde_array_init(s->sde_cpus[i].private_sde_array, PRIVATE_SLOT_CO=
-UNT);
-+    }
-+}
-+
-+static void qemu_sde_init(QemuSDEState *s)
-+{
-+    qemu_sde_prop_init(s);
-+    qemu_sde_cpu_init(s);
-+
-+    qemu_shared_sde_init(s);
-+    qemu_private_sde_init(s);
-+}
-+
-+static void sde_array_save(QemuSDE **array, int count)
-+{
-+    int i;
-+
-+    for (i =3D 0; i < count; i++) {
-+        QemuSDE *sde =3D array[i];
-+        if (sde->event_id !=3D SDEI_INVALID_EVENT_ID) {
-+            sde->event_id =3D sde->prop->event_id;
-+            sde->cpu_affinity =3D ARM_CPU(sde->target_cpu)->mp_affinity;
-+        }
-+    }
-+}
-+
-+static int qemu_sdei_pre_save(void *opaque)
-+{
-+    QemuSDEState *s =3D opaque;
-+    int i;
-+
-+    for (i =3D 0; i < s->sdei_max_cpus; i++) {
-+        sde_array_save(s->sde_cpus[i].private_sde_array, PRIVATE_SLOT_CO=
-UNT);
-+    }
-+
-+    sde_array_save(s->shared_sde_array, SHARED_SLOT_COUNT);
-+
-+    return 0;
-+}
-+
-+
-+static int qemu_sdei_post_load(void *opaque, int version_id)
-+{
-+    QemuSDEState *s =3D opaque;
-+    QemuSDEProp *sde_props =3D s->sde_props_state;
-+    QemuSDE **array;
-+    int i, j;
-+
-+    for (i =3D 0; i < s->sdei_max_cpus; i++) {
-+        array =3D s->sde_cpus[i].private_sde_array;
-+        for (j =3D 0; j < PRIVATE_SLOT_COUNT; j++) {
-+            QemuSDE *sde =3D array[j];
-+            if (sde->event_id !=3D SDEI_INVALID_EVENT_ID) {
-+                sde->prop =3D get_sde_prop_no_lock(s, sde->event_id);
-+                sde->target_cpu =3D arm_get_cpu_by_id(sde->cpu_affinity)=
-;
-+            }
-+        }
-+    }
-+
-+    array =3D s->shared_sde_array;
-+    for (j =3D 0; j < SHARED_SLOT_COUNT; j++) {
-+        QemuSDE *sde =3D array[j];
-+        if (sde->event_id !=3D SDEI_INVALID_EVENT_ID) {
-+            sde->prop =3D get_sde_prop_no_lock(s, sde->event_id);
-+            sde->target_cpu =3D arm_get_cpu_by_id(sde->cpu_affinity);
-+        }
-+    }
-+
-+    for (i =3D 0; i < PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT; i++) {
-+        int intid =3D sde_props[i].interrupt;
-+
-+        if (intid !=3D SDEI_INVALID_INTERRUPT) {
-+            s->irq_map[intid] =3D sde_props[i].event_id;
-+        }
-+    }
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_sdes =3D {
-+    .name =3D "qemu_sdei/sdes",
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_BOOL(enabled, QemuSDE),
-+        VMSTATE_BOOL(running, QemuSDE),
-+        VMSTATE_BOOL(pending, QemuSDE),
-+        VMSTATE_BOOL(unregister_pending, QemuSDE),
-+        VMSTATE_UINT64(ep_address, QemuSDE),
-+        VMSTATE_UINT64(ep_argument, QemuSDE),
-+        VMSTATE_UINT64(routing_mode, QemuSDE),
-+        VMSTATE_INT32(event_id, QemuSDE),
-+        VMSTATE_UINT64(cpu_affinity, QemuSDE),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static const VMStateDescription vmstate_sde_props =3D {
-+    .name =3D "qemu_sdei/sde_props",
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_INT32(event_id, QemuSDEProp),
-+        VMSTATE_INT32(interrupt, QemuSDEProp),
-+        VMSTATE_BOOL(is_shared, QemuSDEProp),
-+        VMSTATE_BOOL(is_critical, QemuSDEProp),
-+        VMSTATE_INT32(sde_index, QemuSDEProp),
-+        VMSTATE_INT32(refcount, QemuSDEProp),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static const VMStateDescription vmstate_sde_cpu =3D {
-+    .name =3D "qemu_sdei/sde_cpu",
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_ARRAY_OF_POINTER_TO_STRUCT(private_sde_array, QemuSDECpu=
-,
-+                                           PRIVATE_SLOT_COUNT, 1,
-+                                           vmstate_sdes, QemuSDE),
-+        VMSTATE_UINT64_ARRAY(ctx[0].xregs, QemuSDECpu, SAVED_GP_NUM),
-+        VMSTATE_UINT64_ARRAY(ctx[1].xregs, QemuSDECpu, SAVED_GP_NUM),
-+        VMSTATE_UINT64(ctx[0].pc, QemuSDECpu),
-+        VMSTATE_UINT64(ctx[1].pc, QemuSDECpu),
-+        VMSTATE_UINT32(ctx[0].pstate, QemuSDECpu),
-+        VMSTATE_UINT32(ctx[1].pstate, QemuSDECpu),
-+        VMSTATE_INT32(critical_running_event, QemuSDECpu),
-+        VMSTATE_INT32(normal_running_event, QemuSDECpu),
-+        VMSTATE_BOOL(masked, QemuSDECpu),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static const VMStateDescription vmstate_sde_state =3D {
-+    .name =3D "qemu_sdei",
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .pre_save =3D qemu_sdei_pre_save,
-+    .post_load =3D qemu_sdei_post_load,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_STRUCT_ARRAY(sde_props_state, QemuSDEState,
-+                             PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT, 1,
-+                             vmstate_sde_props, QemuSDEProp),
-+        VMSTATE_ARRAY_OF_POINTER_TO_STRUCT(shared_sde_array, QemuSDEStat=
-e,
-+                                           SHARED_SLOT_COUNT, 1,
-+                                           vmstate_sdes, QemuSDE),
-+        VMSTATE_STRUCT_VARRAY_POINTER_INT32(sde_cpus, QemuSDEState,
-+                                            sdei_max_cpus,
-+                                            vmstate_sde_cpu, QemuSDECpu)=
-,
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+
-+static void sdei_initfn(Object *obj)
-+{
-+    QemuSDEState *s =3D QEMU_SDEI(obj);
-+
-+    if (sde_state) {
-+        error_report("Only one SDEI dispatcher is allowed!");
-+        abort();
-+    }
-+    sde_state =3D s;
-+
-+    qemu_sde_init(s);
-+}
-+
-+static void qemu_sde_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->desc =3D "SDEI_QEMU";
-+    dc->vmsd =3D &vmstate_sde_state;
-+    dc->user_creatable =3D true;
-+}
-+
-+static const TypeInfo sde_qemu_info =3D {
-+    .name          =3D TYPE_ARM_SDEI,
-+    .parent        =3D TYPE_DEVICE,
-+    .instance_size =3D sizeof(QemuSDEState),
-+    .instance_init =3D sdei_initfn,
-+    .class_init    =3D qemu_sde_class_init,
-+};
-+
-+static void register_types(void)
-+{
-+    type_register_static(&sde_qemu_info);
-+}
-+
-+type_init(register_types);
-diff --git a/target/arm/sdei_int.h b/target/arm/sdei_int.h
-new file mode 100644
-index 0000000000..d3fd7cbc10
---- /dev/null
-+++ b/target/arm/sdei_int.h
-@@ -0,0 +1,118 @@
-+/*
-+ * ARM SDEI emulation internal interfaces
-+ *
-+ * Copyright (c) Huawei Technologies Co., Ltd. 2019. All rights reserved=
-.
-+ *
-+ * Authors:
-+ *    Heyi Guo <guoheyi@huawei.com>
-+ *    Jingyi Wang <wangjingyi11@huawei.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify =
-it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2 or later, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOU=
-T
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License=
- for
-+ * more details.
-+ *
-+ * You should have received a copy of the GNU General Public License alo=
-ng with
-+ * this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef QEMU_SDEI_INT_H
-+#define QEMU_SDEI_INT_H
-+
-+#include <linux/kvm.h>
-+#include <linux/arm_sdei.h>
-+#include <asm-arm64/kvm.h>
-+#include "hw/intc/arm_gic_common.h"
-+#include "qemu/thread.h"
-+
-+#define SDEI_STD_EVT_SOFTWARE_SIGNAL        0
-+#define SDEI_FEATURE_BIND_SLOTS             0
-+#define SDEI_PARAM_MAX                      18
-+
-+#define PRIVATE_SLOT_COUNT                  16
-+#define PLAT_PRIVATE_SLOT_COUNT             8
-+#define SHARED_SLOT_COUNT                   32
-+#define PLAT_SHARED_SLOT_COUNT              16
-+#define SDEI_INVALID_INTERRUPT              -1
-+#define SDEI_INVALID_EVENT_ID               -1
-+
-+#define SDEI_EVENT_TO_SLOT(event)           ((event) & 0xFFFFFF)
-+#define SDEI_IS_SHARED_EVENT(event)         \
-+    (SDEI_EVENT_TO_SLOT(event) >=3D PRIVATE_SLOT_COUNT)
-+
-+typedef enum {
-+    SDEI_PRIO_NORMAL        =3D 0,
-+    SDEI_PRIO_CRITICAL      =3D 1,
-+} QemuSDEIPriority;
-+
-+typedef struct QemuSDEProp {
-+    QemuMutex       lock;
-+    int32_t         event_id;
-+    int             interrupt;
-+    bool            is_shared;
-+    bool            is_critical;
-+    /* This is the internal index for private or shared SDE */
-+    int             sde_index;
-+    int             refcount;
-+} QemuSDEProp;
-+
-+typedef struct QemuSDE {
-+    QemuSDEProp     *prop;
-+    CPUState        *target_cpu;
-+    QemuMutex       lock;
-+    bool            enabled;
-+    bool            running;
-+    bool            pending;
-+    bool            unregister_pending;
-+    uint64_t        ep_address;
-+    uint64_t        ep_argument;
-+    uint64_t        routing_mode;
-+    int32_t         event_id;
-+    /*
-+     * For it is not easy to save the pointer target_cpu during migratio=
-n, we
-+     * add below field to save the corresponding numerical values.
-+     */
-+    uint64_t        cpu_affinity;
-+} QemuSDE;
-+
-+/*
-+ * GP registers x0~x17 may be modified by client, so they must be saved =
-by
-+ * dispatcher.
-+ */
-+#define SAVED_GP_NUM        18
-+
-+typedef struct QemuSDECpuCtx {
-+    uint64_t        xregs[SAVED_GP_NUM];
-+    uint64_t        pc;
-+    uint32_t        pstate;
-+} QemuSDECpuCtx;
-+
-+typedef enum {
-+    SDEI_EVENT_PRIO_NORMAL =3D 0,
-+    SDEI_EVENT_PRIO_CRITICAL,
-+    SDEI_EVENT_PRIO_COUNT,
-+} SdeiEventPriority;
-+
-+typedef struct QemuSDECpu {
-+    QemuSDE         *private_sde_array[PRIVATE_SLOT_COUNT];
-+    QemuSDECpuCtx   ctx[SDEI_EVENT_PRIO_COUNT];
-+    bool            masked;
-+    int32_t         critical_running_event;
-+    int32_t         normal_running_event;
-+} QemuSDECpu;
-+
-+typedef struct QemuSDEState {
-+    DeviceState     parent_obj;
-+    QemuSDEProp     sde_props_state[PRIVATE_SLOT_COUNT + SHARED_SLOT_COU=
-NT];
-+    QemuSDECpu      *sde_cpus;
-+    int             sdei_max_cpus;
-+    QemuSDE         *shared_sde_array[SHARED_SLOT_COUNT];
-+    int32_t         irq_map[GIC_MAXIRQ];
-+    QemuMutex       sdei_interrupt_bind_lock;
-+} QemuSDEState;
-+
-+#endif
+ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+ {
+     int ret =3D 0;
+@@ -686,6 +700,9 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run=
+ *run)
+             ret =3D EXCP_DEBUG;
+         } /* otherwise return to guest */
+         break;
++    case KVM_EXIT_HYPERCALL:
++        kvm_arm_handle_hypercall(cs, run);
++        break;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+                       __func__, run->exit_reason);
 --=20
 2.19.1
 

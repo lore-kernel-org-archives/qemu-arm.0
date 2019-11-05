@@ -1,234 +1,114 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp463378wri;
-        Tue, 5 Nov 2019 01:23:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzkMWKYfUSr1B5Fl3bmpf+zX6LcCvHQw6mUsMLfIUb6EAJixIikKTSVUcI6Ql5LoDi6CYAf
-X-Received: by 2002:a05:6402:2042:: with SMTP id bc2mr31254512edb.167.1572945786699;
-        Tue, 05 Nov 2019 01:23:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572945786; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Az5N3ERDn2yeAwipAVa4HEVirBQ/vsUiYgKIu2I5cTVfuWbw1GMgUlk8qvHRZs7sse
-         A9wEFMrcz5UqMNjTGsKs2PvZlby9KWH8Jko4WgEaNbAyTVg0CntC2+jrN7A/oPgA4Ige
-         Z5oc912GKKYw8rTntGt+qBv/1m6KHLimGnoMP05k4G+ZoJXNWmKdBvyZf3zGFqaq50/d
-         oJblDfQxx+2jUIYWa7qIW1MynERJxAEW7WEH6z5gWD4ZEfu7OdAA2ZNcW3+C+Yq+KXzf
-         wYLe5/WPaFn/VdyOw+Io5pSPspgqZ49IlRioXnXyX47aN1DM6AhBTMXMIMlO7PealMI4
-         tp3Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=lMEowrCbThT1xSvea3Ghsv+sYmFLHKHRAYIN2vpjeYo=;
-        b=WPwBWfh+gAhjHS7isPLKsTeNO80uMMWlTbz7qMV9a7LUSvyW39rWs6+jMuRgQrJm7m
-         vQYzQ9q1PNaIOEyTAK/M+zoVvBYIztEFt7Om+bZqFf6Ok/47+y+ZgO9Ho3TTbODqtMJD
-         6ZBfUO95OGCFDJybst02FfxPLfnpwy7lR6/ZzrQQaN7tRSRpM3BwPlGbVqnnrFt3+Iln
-         F+ayXVLvxMe7MO/3IFOCmvfcOG9OgsDPJK26eX+j3L7di3GKe4GurXH+uoGTEulxIuHF
-         gV5SqWKOSKa82qm5VuPJVB0myWvjI74hJg8M3idEILNE5YFiaihcax6UhTbnnHIQmqs2
-         ndvg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp476162wri;
+        Tue, 5 Nov 2019 01:36:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwUULjd08zew2wDdW6joJKEawHaA+zdOw1W97eSxfLkmCXzJvzETRCLgPebwM6d91dIWHmm
+X-Received: by 2002:a0c:baad:: with SMTP id x45mr9679114qvf.230.1572946602184;
+        Tue, 05 Nov 2019 01:36:42 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10si7047936ejg.325.2019.11.05.01.23.06
+        by mx.google.com with ESMTPS id l5si3816093qvh.115.2019.11.05.01.36.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2019 01:23:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Nov 2019 01:36:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41952 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42140 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRv3J-0001BO-CA
-	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:23:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44156)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iRvGT-0002rm-Ll
+	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:36:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48123)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1iRuwN-0001p2-AG
- for qemu-devel@nongnu.org; Tue, 05 Nov 2019 04:16:01 -0500
+ (envelope-from <no-reply@patchew.org>) id 1iRvGL-0002qz-CN
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:36:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1iRuwL-0002Pv-BR
- for qemu-devel@nongnu.org; Tue, 05 Nov 2019 04:15:55 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:56026 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1iRuwH-0002LV-E6; Tue, 05 Nov 2019 04:15:49 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 140828AB8BB749B6CA1E;
- Tue,  5 Nov 2019 17:15:47 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 5 Nov 2019
- 17:15:39 +0800
-Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-References: <20191105091056.9541-1-guoheyi@huawei.com>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <5bea63bb-9898-146e-f664-283459c86b84@huawei.com>
-Date: Tue, 5 Nov 2019 17:15:37 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
-MIME-Version: 1.0
+ (envelope-from <no-reply@patchew.org>) id 1iRvGJ-0007Fn-U8
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:36:33 -0500
+Resent-Date: Tue, 05 Nov 2019 04:36:33 -0500
+Resent-Message-Id: <E1iRvGJ-0007Fn-U8@eggs.gnu.org>
+Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21807)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iRvGJ-0007Ed-Mi; Tue, 05 Nov 2019 04:36:31 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1572946570; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=WP7NECgrS22LCXsN9JOtUd7yrlJtI7PgiVDdaMMJyRHg5zYgKaI3ORmfo8GFnDkCh87iUDs6Nv8in08Y3SKkWK6jBceo6ijsEBh+Y3ba1Srh+paUNt6F0CdhCLUAnmzsBjoUVGrhkivzSAxb8r1xLx66hz7YFPlXZdEUI0ZBeZU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1572946570;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=GFANozUNjBvs4NVj5q4cPLAGb5Y0/XXP+WwcrhWWU1M=; 
+ b=B2IK2MPFtxzioDfoxI51WNDvitU5pdzJdv7QVmOYolG7iJQaZXcJQpql+A/qMYDeHXrC8g534+m7KjAFj+KMWQJgOfkSjdzLjvE+/D8gexBvXij2r864uVTqeDTanDno/3NYxLGZBgibAKQ1xY3DPi3zvO/E0+1doEoMSF0u8j4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1572946570109243.44228298152495;
+ Tue, 5 Nov 2019 01:36:10 -0800 (PST)
 In-Reply-To: <20191105091056.9541-1-guoheyi@huawei.com>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
+Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
+Message-ID: <157294656804.27285.16227922339527005419@37313f22b938>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: guoheyi@huawei.com
+Date: Tue, 5 Nov 2019 01:36:10 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 136.143.188.58
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
- Cornelia Huck <cohuck@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, James Morse <james.morse@arm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com,
- Dave Martin <Dave.Martin@arm.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YYUyevK0j4fv
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: mark.rutland@arm.com, peter.maydell@linaro.org, mst@redhat.com,
+ marc.zyngier@arm.com, wanghaibin.wang@huawei.com, cohuck@redhat.com,
+ qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+ james.morse@arm.com, pbonzini@redhat.com, guoheyi@huawei.com,
+ imammedo@redhat.com, Dave.Martin@arm.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8bJWs8gwGjpq
 
-
-
-On 2019/11/5 17:10, Heyi Guo wrote:
-> SDEI is for ARM "Software Delegated Exception Interface". AS ARM64 doesn't have
-> native non-maskable interrupt (NMI), we rely on higher privileged (larger
-> exception level) software to change the execution flow of lower privileged
-> (smaller exception level) software when certain events occur, to emulate NMI
-> mechanism, and SDEI is the standard interfaces between the two levels of
-> privileged software. It is based on SMC/HVC calls.
-Sorry I forgot to attach the link of SDEI specification v1.0:
-
-http://infocenter.arm.com/help/topic/com.arm.doc.den0054a/ARM_DEN0054A_Software_Delegated_Exception_Interface.pdf
-
->
-> The higher privileged software implements an SDEI dispatcher to handle SDEI
-> related SMC/HVC calls and trigger SDEI events; the lower privileged software
-> implements an SDEI client to request SDEI services and handle SDEI events.
->
-> Core interfaces provided by SDEI include:
->
-> 1. interrupt bind: client can request to bind an interrupt to an SDEI event, so
-> the interrupt will be a non-maskable event and the event number will be returned
-> to the caller. Only PPI and SPI can be bound to SDEI events.
->
-> 2. register: client can request to register a handler to an SDEI event, so
-> dispatcher will change PC of lower privileged software to this handler when
-> certain event occurs.
->
-> 3. complete: client notifies dispatcher that it has completed the event
-> handling, so dispatcher will restore the context of guest when it is
-> interrupted.
->
-> In virtualization situation, guest OS is the lower privileged software and
-> hypervisor is the higher one.
->
-> KVM is supposed to pass SMC/HVC calls to qemu, and qemu will emulate an SDEI
-> dispatcher to serve the SDEI requests and trigger the events. If an interrupt is
-> requested to be bound to an event, qemu should not inject the interrupt to guest
-> any more; instead, it should save the context of VCPU and change the PC to event
-> handler which is registered by guest, and then return to guest.
->
-> To make the conversion of interrupt to SDEI event transparent to other modules
-> in qemu, we used qemu_irq and qemu_irq_intercept_in() to override the default
-> irq handler with SDEI event trigger. I saw qemu_irq_intercept_in() should be
-> only used in qemu MST, but it seemed fit to override interrupt injection with
-> event trigger after guest requests to bind interrupt to SDEI event.
->
-> This patchset is trying to implement the whole SDEI framework in qemu with KVM
-> enabled, including all SDEI v1.0 interfaces, as well as event trigger conduit
-> from other qemu devices after interrupt binding.
->
-> Key points:
-> - We propose to only support kvm enabled arm64 virtual machines, for
->    non-kvm VMs can emulate EL3 and have Trusted Firmware run on it,
->    which has a builtin SDEI dispatcher.
-> - New kvm capability KVM_CAP_FORWARD_HYPERCALL is added to probe if
->    kvm supports forwarding hypercalls, and the capability should be
->    enabled explicitly.
-> - We make the dispatcher as a logical device, to save the states
->    during migration or save/restore operation; only one instance is
->    allowed in one VM.
-> - We use qemu_irq as the bridge for other qemu modules to switch from
->    irq injection to SDEI event trigger after VM binds the interrupt to
->    SDEI event. We use qemu_irq_intercept_in() to override qemu_irq
->    handler with SDEI event trigger, and a new interface
->    qemu_irq_remove_intercept() is added to restore the handler to
->    default one (i.e. ARM GIC).
->
-> More details are in the commit message of each patch.
->
-> Basic tests are done by emulating a watchdog timer and triggering SDEI
-> event in every 10s.
->
-> Please focus on the interfaces and framework first. We can refine the code for
-> several rounds after the big things have been determined.
->
-> Any comment or suggestion is welcome.
->
-> Thanks,
->
-> HG
->
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Dave Martin <Dave.Martin@arm.com>
-> Cc: Marc Zyngier <marc.zyngier@arm.com>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: James Morse <james.morse@arm.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Cornelia Huck <cohuck@redhat.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
->
-> v2:
-> - Import import linux/arm_sdei.h to standard-headers
-> - Drop SDEI table definition and add comments
-> - Some bugfix and code refinement
->
-> Heyi Guo (14):
->    update-linux-headers.sh: import linux/arm_sdei.h to standard-headers
->    standard-headers: import arm_sdei.h
->    arm/sdei: add virtual device framework
->    arm: add CONFIG_SDEI build flag
->    arm/sdei: add support to handle SDEI requests from guest
->    arm/sdei: add system reset callback
->    arm/sdei: add support to trigger event by GIC interrupt ID
->    core/irq: add qemu_irq_remove_intercept interface
->    arm/sdei: override qemu_irq handler when binding interrupt
->    arm/sdei: add support to register interrupt bind notifier
->    linux-headers/kvm.h: add capability to forward hypercall
->    arm/sdei: add stub to fix build failure when SDEI is not enabled
->    arm/kvm: handle guest exit of hypercall
->    virt/acpi: add SDEI table if SDEI is enabled
->
->   default-configs/arm-softmmu.mak           |    1 +
->   hw/arm/Kconfig                            |    4 +
->   hw/arm/virt-acpi-build.c                  |   26 +
->   hw/core/irq.c                             |   11 +
->   include/hw/irq.h                          |    8 +-
->   include/standard-headers/linux/arm_sdei.h |   73 +
->   linux-headers/linux/kvm.h                 |    1 +
->   scripts/update-linux-headers.sh           |    1 +
->   target/arm/Makefile.objs                  |    4 +
->   target/arm/kvm.c                          |   17 +
->   target/arm/sdei-stub.c                    |   49 +
->   target/arm/sdei.c                         | 1576 +++++++++++++++++++++
->   target/arm/sdei.h                         |   60 +
->   target/arm/sdei_int.h                     |  121 ++
->   14 files changed, 1950 insertions(+), 2 deletions(-)
->   create mode 100644 include/standard-headers/linux/arm_sdei.h
->   create mode 100644 target/arm/sdei-stub.c
->   create mode 100644 target/arm/sdei.c
->   create mode 100644 target/arm/sdei.h
->   create mode 100644 target/arm/sdei_int.h
->
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEwNTA5MTA1Ni45NTQx
+LTEtZ3VvaGV5aUBodWF3ZWkuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUgZG9j
+a2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3RpbmcgY29t
+bWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3RhbGxl
+ZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFNDUklQ
+VCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1hZ2UtY2VudG9zNyBWPTEgTkVU
+V09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50b3M3IFNIT1dfRU5WPTEgSj0x
+NCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgICByYWlzZSBDYWxsZWRQcm9j
+ZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjogQ29t
+bWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJlbCcsICdjb20ucWVt
+dS5pbnN0YW5jZS51dWlkPWVlZDI5ZTg3YzFjZDQ2YjI5ZDQzMjdmNmVmZmFmZDViJywgJy11Jywg
+JzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy0tcm0nLCAn
+LWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9PUFRTPScsICctZScs
+ICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdTSE9XX0VOVj0xJywg
+Jy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcy
+Ly5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zh
+ci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLW5rcGZtbzQ3L3NyYy9kb2NrZXItc3JjLjIwMTktMTEt
+MDUtMDQuMzMuNTguMjU0MTU6L3Zhci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6Y2VudG9zNycsICcv
+dmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LXF1aWNrJ10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQg
+c3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJlbD1jb20ucWVtdS5pbnN0YW5jZS51dWlkPWVl
+ZDI5ZTg3YzFjZDQ2YjI5ZDQzMjdmNmVmZmFmZDViCm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1bl0g
+RXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRpcmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0
+ZXItdG1wLW5rcGZtbzQ3L3NyYycKbWFrZTogKioqIFtkb2NrZXItcnVuLXRlc3QtcXVpY2tAY2Vu
+dG9zN10gRXJyb3IgMgoKcmVhbCAgICAybTEwLjkxOXMKdXNlciAgICAwbTguMDE5cwoKClRoZSBm
+dWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTExMDUw
+OTEwNTYuOTU0MS0xLWd1b2hleWlAaHVhd2VpLmNvbS90ZXN0aW5nLmRvY2tlci1xdWlja0BjZW50
+b3M3Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQ
+YXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sg
+dG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 

@@ -1,66 +1,66 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp458288wri;
-        Tue, 5 Nov 2019 01:17:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwAPJ43XSBHgq4cyeIiRO9RSQDzxo+H2Wl3B9QAQ0LGpyJwM6U3yG0ZQ+K4vdxqFz5vutj5
-X-Received: by 2002:a50:ef16:: with SMTP id m22mr17065062eds.154.1572945445532;
-        Tue, 05 Nov 2019 01:17:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572945445; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp459580wri;
+        Tue, 5 Nov 2019 01:18:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzLaip4r+QMtjTOrt3H0KqYkFauNyD5WiwwfFInDEu8t48PcshTthELtoe57LYAMXbhQuaG
+X-Received: by 2002:a05:620a:15a3:: with SMTP id f3mr18317135qkk.410.1572945526150;
+        Tue, 05 Nov 2019 01:18:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572945526; cv=none;
         d=google.com; s=arc-20160816;
-        b=BHRFS77yb1U7EX1AakD10cjlQwMeYbwlvfvsZt4/XeLOie7pbDXYfTBxWcUPnhyUc+
-         k/cTSNpDIVR7sDK8AtRl3vX06brRdwRqtZ60oBC0e2I39VfIq2vyxgS8rGvI1hDEO/+y
-         qYTb4rXYyKgjnOiZW7Yyj5dfWNr/EKc6V5PaTo3peK1Iz/GxGrNLZPRl4nQHgOON7lGn
-         2VGq6jHVmQR/xyvRNhxlIngKI4OzI4BeIqxa10irN6sjNe4UtzgBhXO0ETnjwLIKoG76
-         nYQbytljv/35EEj/NWIMohodWq1QJwYaTXphjUWNq98ETdv5sx0/9rJdL4aOvU4TB3mf
-         eAoQ==
+        b=S3R8gO0xZs2yw5PR9iucCn145XoVvsmzFT9kUXvmYYNBE61Pr7Xvl6LdwPr5V6/L64
+         34XFTyj1yPFc45Cf1fBrp6FSxtTfJ0hDx8g+ezaQj/p7pHuQsZc/nhzUQPg+UJH/m1KX
+         zc3iK5kYTTIiYBjQ9MsDif5E/IBHlLVsOx3KLg/dhPx/nm4V5c1G98iP2woMdzgHwzo0
+         vJPSDmBhRMTgRoRaGJxNDAPGviYKhlKVupk2gb9Mo1BkxggRbnYuJ96Y6r7ZbhqpEym5
+         JzSlsPXmC9K0mTAFCi5kdExG2pHt4iuOJJp46enWuGZaaQ96WTeQjhV7Bv5CsS6XKSsA
+         O7Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=m83ydIVkXTuqODZkul2Ull8iN8M7KLYAE8nT87WFXVc=;
-        b=Rh7DOl6oYW8TWdXeGg/126Qt3LTss+rX+PC9KLDZGegLXin9dhgQOucp3veBSKzbO9
-         p+u3CW8bxry7uz91KGI5RNkEiZWA8s9cG0aL+9SIARgUIb8zCB0n4YYjJE32/rGWptHp
-         xhzEeKly71swiZKyxzzb2zJQ1E5vwOK6/eIsGSiQt1SU65YQXieQvU+86H3Shq5431ny
-         cDs8yMSJ4Q9MuP5PuULReUEhEgRupUO7s83DaEEZIuYkx+Xx+NKKJY8flVLP3Qav4N5/
-         uEWcbvJaj6+OXhyJKObUY80GBKvLh6vyAhD2LPQ3w8scPED+zyWg0coAs6URuREe5Opy
-         9o7Q==
+        bh=rhN7RIY4X+CHO3JXVG3arImRdBdmn07zki4ql/ojqMc=;
+        b=mwzPuNrFUeZarNB5xg5sY0NZ0FuOxv5BgcZ6Gz4oHOfd4n3M3j38EymxglbOcmhQR+
+         ysPCJ4bgKxEdTaaXhzkrR6fe/lcAzIn621xLYHJ2/vReazfOvI/4HDis1Tv5R+idjLmW
+         xSgl+mY1TfwRKvwV57FAi1KS/t9aOWRvsvHsby2r3AikpKNpp0c+Z7JZQo2vvXBOw1P1
+         CC0a5OP+rp8TwbajKCHT/3sip4u4Bnven7PZ0FCjbeKKua6OBCxVxi7/EVVdIfpsNvOv
+         LgVNTJQYkAc9Y8EMqvmW4dBCFf1MLMxWkunGMLNkqwvuVpvRx7Y6w11YLeElx/l00wvk
+         xrMA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g90si9937095edd.329.2019.11.05.01.17.25
+        by mx.google.com with ESMTPS id i22si14992571qvb.54.2019.11.05.01.18.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2019 01:17:25 -0800 (PST)
+        Tue, 05 Nov 2019 01:18:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41882 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41894 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRuxn-0002ba-Uo
-	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:17:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43080)
+	id 1iRuz5-00045v-RI
+	for alex.bennee@linaro.org; Tue, 05 Nov 2019 04:18:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43059)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1iRusy-00052h-31
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:25 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iRusx-00052B-Jb
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1iRusv-0007lv-O0
+ (envelope-from <guoheyi@huawei.com>) id 1iRusv-0007lc-JO
  for qemu-arm@nongnu.org; Tue, 05 Nov 2019 04:12:23 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:52158 helo=huawei.com)
+Received: from szxga07-in.huawei.com ([45.249.212.35]:52212 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1iRusv-0007j7-4L; Tue, 05 Nov 2019 04:12:21 -0500
+ id 1iRusv-0007jC-6m; Tue, 05 Nov 2019 04:12:21 -0500
 Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 3842331F2AAD5394DB38;
+ by Forcepoint Email with ESMTP id 45AA184DA50D9691C0CB;
  Tue,  5 Nov 2019 17:12:18 +0800 (CST)
 Received: from linux-OtBuvb.huawei.com (10.175.104.212) by
  DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 5 Nov 2019 17:12:07 +0800
+ 14.3.439.0; Tue, 5 Nov 2019 17:12:09 +0800
 From: Heyi Guo <guoheyi@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [RFC v2 09/14] arm/sdei: override qemu_irq handler when binding
- interrupt
-Date: Tue, 5 Nov 2019 17:10:51 +0800
-Message-ID: <20191105091056.9541-10-guoheyi@huawei.com>
+Subject: [RFC v2 11/14] linux-headers/kvm.h: add capability to forward
+ hypercall
+Date: Tue, 5 Nov 2019 17:10:53 +0800
+Message-ID: <20191105091056.9541-12-guoheyi@huawei.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20191105091056.9541-1-guoheyi@huawei.com>
 References: <20191105091056.9541-1-guoheyi@huawei.com>
@@ -84,258 +84,106 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Mark Rutland <mark.rutland@arm.com>,
- Peter Maydell <peter.maydell@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>,
- James Morse <james.morse@arm.com>, Heyi Guo <guoheyi@huawei.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
+ Cornelia Huck <cohuck@redhat.com>, James Morse <james.morse@arm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Heyi Guo <guoheyi@huawei.com>,
  wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DLz9V7S1t/1J
+X-TUID: KMV7d2N1r4xg
 
-Override qemu_irq handler to support trigger SDEI event transparently
-after guest binds interrupt to SDEI event. We don't have good way to
-get GIC device and to guarantee SDEI device is initialized after GIC,
-so we search GIC in system bus when the first SDEI request happens or
-in VMSTATE post_load().
+To keep backward compatibility, we add new KVM capability
+"KVM_CAP_FORWARD_HYPERCALL" to probe whether KVM supports forwarding
+hypercall to userspace.
+
+The capability should be enabled explicitly, for we don't want user
+space application to deal with unexpected hypercall exits. After
+enabling this cap, all HVC calls unhandled by kvm will be forwarded to
+user space.
 
 Signed-off-by: Heyi Guo <guoheyi@huawei.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Cornelia Huck <cohuck@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 Cc: Dave Martin <Dave.Martin@arm.com>
 Cc: Marc Zyngier <marc.zyngier@arm.com>
 Cc: Mark Rutland <mark.rutland@arm.com>
 Cc: James Morse <james.morse@arm.com>
 ---
- target/arm/sdei.c     | 130 +++++++++++++++++++++++++++++++++++++++++-
- target/arm/sdei_int.h |   3 +
- 2 files changed, 132 insertions(+), 1 deletion(-)
+ linux-headers/linux/kvm.h |  1 +
+ target/arm/sdei.c         | 16 ++++++++++++++++
+ target/arm/sdei.h         |  2 ++
+ 3 files changed, 19 insertions(+)
 
+diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+index 3d9b18f7f8..36c9b3859f 100644
+--- a/linux-headers/linux/kvm.h
++++ b/linux-headers/linux/kvm.h
+@@ -1000,6 +1000,7 @@ struct kvm_ppc_resize_hpt {
+ #define KVM_CAP_PMU_EVENT_FILTER 173
+ #define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
+ #define KVM_CAP_HYPERV_DIRECT_TLBFLUSH 175
++#define KVM_CAP_FORWARD_HYPERCALL 176
+=20
+ #ifdef KVM_CAP_IRQ_ROUTING
+=20
 diff --git a/target/arm/sdei.c b/target/arm/sdei.c
-index 713ac97775..529a06c1f6 100644
+index 4cc68e4acf..56e6874f6f 100644
 --- a/target/arm/sdei.c
 +++ b/target/arm/sdei.c
-@@ -88,6 +88,24 @@ static void qemu_sde_cpu_init(QemuSDEState *s)
-     }
+@@ -46,6 +46,7 @@
+ #define SMCCC_RETURN_REG_COUNT 4
+ #define PSTATE_M_EL_SHIFT      2
+=20
++bool sdei_enabled;
+ static QemuSDEState *sde_state;
+=20
+ typedef struct QemuSDEIBindNotifyEntry {
+@@ -1524,6 +1525,7 @@ static const VMStateDescription vmstate_sde_state =3D=
+ {
+ static void sdei_initfn(Object *obj)
+ {
+     QemuSDEState *s =3D QEMU_SDEI(obj);
++    KVMState *kvm =3D KVM_STATE(current_machine->accelerator);
+=20
+     if (sde_state) {
+         error_report("Only one SDEI dispatcher is allowed!");
+@@ -1533,6 +1535,20 @@ static void sdei_initfn(Object *obj)
+=20
+     qemu_sde_init(s);
+     qemu_register_reset(qemu_sde_reset, s);
++
++    if (kvm_check_extension(kvm, KVM_CAP_FORWARD_HYPERCALL)) {
++        int ret;
++        ret =3D kvm_vm_enable_cap(kvm, KVM_CAP_FORWARD_HYPERCALL, 0, 0);
++        if (ret < 0) {
++            error_report("Enable hypercall forwarding failed: %s",
++                         strerror(-ret));
++            abort();
++        }
++        sdei_enabled =3D true;
++        info_report("qemu sdei enabled");
++    } else {
++        info_report("KVM does not support forwarding hypercall.");
++    }
  }
 =20
-+static int gic_int_to_irq(int num_irq, int intid, int cpu)
-+{
-+    if (intid >=3D GIC_INTERNAL) {
-+        return intid - GIC_INTERNAL;
-+    }
-+    return num_irq - GIC_INTERNAL + cpu * GIC_INTERNAL + intid;
-+}
-+
-+static int irq_to_gic_int(int num_irq, int irq, int *cpu)
-+{
-+    if (irq < num_irq - GIC_INTERNAL) {
-+        return irq + GIC_INTERNAL;
-+    }
-+    irq -=3D num_irq - GIC_INTERNAL;
-+    *cpu =3D irq / GIC_INTERNAL;
-+    return irq % GIC_INTERNAL;
-+}
-+
- static inline QemuSDECpu *get_sde_cpu(QemuSDEState *s, CPUState *cs)
- {
-     if (cs->cpu_index >=3D s->sdei_max_cpus) {
-@@ -410,6 +428,74 @@ static void dispatch_cpu(QemuSDEState *s, CPUState *=
-cs, bool is_critical)
-     }
- }
+ static void qemu_sde_class_init(ObjectClass *klass, void *data)
+diff --git a/target/arm/sdei.h b/target/arm/sdei.h
+index 9c15cf3186..9f683ca2a0 100644
+--- a/target/arm/sdei.h
++++ b/target/arm/sdei.h
+@@ -29,6 +29,8 @@
 =20
-+static void qemu_sdei_irq_handler(void *opaque, int irq, int level)
-+{
-+    int cpu =3D 0;
-+
-+    irq =3D irq_to_gic_int(sde_state->num_irq, irq, &cpu);
-+    trigger_sdei_by_irq(cpu, irq);
-+}
-+
-+static void override_qemu_irq(QemuSDEState *s, int32_t event, uint32_t i=
-ntid)
-+{
-+    qemu_irq irq;
-+    QemuSDE *sde;
-+    CPUState *cs;
-+
-+    /* SPI */
-+    if (intid >=3D GIC_INTERNAL) {
-+        cs =3D first_cpu;
-+        irq =3D qdev_get_gpio_in(s->gic_dev,
-+                               gic_int_to_irq(s->num_irq, intid, 0));
-+        if (irq) {
-+            qemu_irq_intercept_in(&irq, qemu_sdei_irq_handler, 1);
-+        }
-+        sde =3D get_sde_no_check(s, event, cs);
-+        sde->irq =3D irq;
-+        put_sde(sde, cs);
-+        return;
-+    }
-+    /* PPI */
-+    CPU_FOREACH(cs) {
-+        irq =3D qdev_get_gpio_in(
-+            s->gic_dev,
-+            gic_int_to_irq(s->num_irq, intid, cs->cpu_index));
-+        if (irq) {
-+            qemu_irq_intercept_in(&irq, qemu_sdei_irq_handler, 1);
-+        }
-+        sde =3D get_sde_no_check(s, event, cs);
-+        sde->irq =3D irq;
-+        put_sde(sde, cs);
-+    }
-+}
-+
-+static void restore_qemu_irq(QemuSDEState *s, int32_t event, uint32_t in=
-tid)
-+{
-+    QemuSDE *sde;
-+    CPUState *cs;
-+
-+    /* SPI */
-+    if (intid >=3D GIC_INTERNAL) {
-+        cs =3D first_cpu;
-+        sde =3D get_sde_no_check(s, event, cs);
-+        if (sde->irq) {
-+            qemu_irq_remove_intercept(&sde->irq, 1);
-+            sde->irq =3D NULL;
-+        }
-+        put_sde(sde, cs);
-+        return;
-+    }
-+    /* PPI */
-+    CPU_FOREACH(cs) {
-+        sde =3D get_sde_no_check(s, event, cs);
-+        if (sde->irq) {
-+            qemu_irq_remove_intercept(&sde->irq, 1);
-+            sde->irq =3D NULL;
-+        }
-+        put_sde(sde, cs);
-+    }
-+}
-+
- static int32_t sdei_alloc_event_num(QemuSDEState *s, bool is_critical,
-                                     bool is_shared, int intid)
- {
-@@ -443,6 +529,7 @@ static int32_t sdei_alloc_event_num(QemuSDEState *s, =
-bool is_critical,
-             sde_props[index].interrupt =3D intid;
-             sde_props[index].is_shared =3D is_shared;
-             sde_props[index].is_critical =3D is_critical;
-+            override_qemu_irq(s, event, intid);
-             s->irq_map[intid] =3D event;
-             qemu_mutex_unlock(&sde_props[index].lock);
-             qemu_mutex_unlock(&s->sdei_interrupt_bind_lock);
-@@ -460,6 +547,7 @@ static int32_t sdei_free_event_num_locked(QemuSDEStat=
-e *s, QemuSDEProp *prop)
-         return SDEI_DENIED;
-     }
+ #define SDEI_MAX_REQ        SDEI_1_0_FN(0x12)
 =20
-+    restore_qemu_irq(s, prop->event_id, prop->interrupt);
-     s->irq_map[prop->interrupt] =3D SDEI_INVALID_EVENT_ID;
-     prop->event_id =3D SDEI_INVALID_EVENT_ID;
-     prop->interrupt =3D SDEI_INVALID_INTERRUPT;
-@@ -992,13 +1080,33 @@ static int64_t sdei_event_pe_unmask(QemuSDEState *=
-s, CPUState *cs,
-     return SDEI_SUCCESS;
- }
-=20
-+static int dev_walkerfn(DeviceState *dev, void *opaque)
-+{
-+    QemuSDEState *s =3D opaque;
++extern bool sdei_enabled;
 +
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_GICV3_COMMON)) {
-+        GICv3State *gic =3D ARM_GICV3_COMMON(dev);
-+        s->num_irq =3D gic->num_irq;
-+        s->gic_dev =3D dev;
-+        return -1;
-+    }
-+
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_GIC_COMMON)) {
-+        GICState *gic =3D ARM_GIC_COMMON(dev);
-+        s->num_irq =3D gic->num_irq;
-+        s->gic_dev =3D dev;
-+        return -1;
-+    }
-+    return 0;
-+}
-+
- static int64_t sdei_event_interrupt_bind(QemuSDEState *s, CPUState *cs,
-                                          struct kvm_run *run)
- {
-     uint64_t *args =3D (uint64_t *)(run->hypercall.args);
-     uint32_t intid =3D args[1];
+ void sdei_handle_request(CPUState *cs, struct kvm_run *run);
 =20
--    if (intid < GIC_NR_SGIS || intid >=3D GIC_MAXIRQ) {
-+    if (intid < GIC_NR_SGIS || intid >=3D s->num_irq) {
-         return SDEI_INVALID_PARAMETERS;
-     }
-     return sdei_alloc_event_num(s, false, intid >=3D GIC_INTERNAL, intid=
-);
-@@ -1112,6 +1220,17 @@ void sdei_handle_request(CPUState *cs, struct kvm_=
-run *run)
-         return;
-     }
-=20
-+    if (!sde_state->gic_dev) {
-+        /* Search for ARM GIC device */
-+        qbus_walk_children(sysbus_get_default(), dev_walkerfn,
-+                           NULL, NULL, NULL, sde_state);
-+        if (!sde_state->gic_dev) {
-+            error_report("Cannot find ARM GIC device!");
-+            run->hypercall.args[0] =3D SDEI_NOT_SUPPORTED;
-+            return;
-+        }
-+    }
-+
-     if (func_id < SDEI_1_0_FN_BASE || func_id > SDEI_MAX_REQ) {
-         error_report("Invalid SDEI function ID: 0x%x", func_id);
-         run->hypercall.args[0] =3D SDEI_INVALID_PARAMETERS;
-@@ -1259,11 +1378,20 @@ static int qemu_sdei_post_load(void *opaque, int =
-version_id)
-         }
-     }
-=20
-+    /* Search for ARM GIC device */
-+    qbus_walk_children(sysbus_get_default(), dev_walkerfn,
-+                       NULL, NULL, NULL, s);
-+    if (!s->gic_dev) {
-+        error_report("Cannot find ARM GIC device!");
-+        return 0;
-+    }
-+
-     for (i =3D 0; i < PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT; i++) {
-         int intid =3D sde_props[i].interrupt;
-=20
-         if (intid !=3D SDEI_INVALID_INTERRUPT) {
-             s->irq_map[intid] =3D sde_props[i].event_id;
-+            override_qemu_irq(s, sde_props[i].event_id, intid);
-         }
-     }
-=20
-diff --git a/target/arm/sdei_int.h b/target/arm/sdei_int.h
-index d3fd7cbc10..a251b04ab5 100644
---- a/target/arm/sdei_int.h
-+++ b/target/arm/sdei_int.h
-@@ -63,6 +63,7 @@ typedef struct QemuSDEProp {
- typedef struct QemuSDE {
-     QemuSDEProp     *prop;
-     CPUState        *target_cpu;
-+    qemu_irq        irq;
-     QemuMutex       lock;
-     bool            enabled;
-     bool            running;
-@@ -107,9 +108,11 @@ typedef struct QemuSDECpu {
-=20
- typedef struct QemuSDEState {
-     DeviceState     parent_obj;
-+    DeviceState     *gic_dev;
-     QemuSDEProp     sde_props_state[PRIVATE_SLOT_COUNT + SHARED_SLOT_COU=
-NT];
-     QemuSDECpu      *sde_cpus;
-     int             sdei_max_cpus;
-+    int             num_irq;
-     QemuSDE         *shared_sde_array[SHARED_SLOT_COUNT];
-     int32_t         irq_map[GIC_MAXIRQ];
-     QemuMutex       sdei_interrupt_bind_lock;
+ /*
 --=20
 2.19.1
 

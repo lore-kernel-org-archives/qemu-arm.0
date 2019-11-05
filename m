@@ -1,180 +1,204 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp687444wri;
-        Tue, 5 Nov 2019 05:02:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzToAhln/bdAK76BlWV6DabhNS3nYQO1dHpEL+Uk4hhJIVoJDTWes4gGAdGdNzRqF3EBC2p
-X-Received: by 2002:ac8:854:: with SMTP id x20mr14513069qth.279.1572958931379;
-        Tue, 05 Nov 2019 05:02:11 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1572958931; cv=pass;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp808970wri;
+        Tue, 5 Nov 2019 06:43:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw26GVzXWRxrGmmgjT8VGCAu12r/PW0BHuFVMj5XTKenaiotUFXErRPQbLacWEX/BEX6WJl
+X-Received: by 2002:a5d:4684:: with SMTP id u4mr24273431wrq.352.1572964982757;
+        Tue, 05 Nov 2019 06:43:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572964982; cv=none;
         d=google.com; s=arc-20160816;
-        b=NDDiYrwlQHjm0TVs9Myp6K1dOKhou1B+DRkxrUHP+LeaJP+EHooT063T+bHv5q2teg
-         0HyygC/Ae0gI6ZXgHVtldZvQUL0fnNV7uujC6L6x1gj45yfjXQ4OXSOenybWDEplxVcF
-         Yovxrd0Wy1JChSmKZuO46/c6KXt6MXUzgZPW5QmREmjSdJgPwanUTo/kKhVszfQX5QNT
-         ecUOOVea1yQ8unLym/xngyzG14pGdimM/rgXGmu59sK4eO/GeS1n2hhPVeFOPVPWdgmE
-         KH7FL2pt/2sDBoq89FA30VLmvjWug1H6ceRbQSPdxOTtBaZ+pJonFdg4n0uuxR/NgsiR
-         SO/Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature;
-        bh=KOOmbuGsaxsoxhOUlBwyBef7yWKEzLJnfHGxf62F6iY=;
-        b=ex3zK5Yfuu5LUcXRqnIQI8POwTSV2UjTvHll4YgHAPoz7syHBdIlvxlJzakyZhoPON
-         emOemVNKjCG+vn3+k+cP81o4xeTTfN1X3XtwLAqfAO05TU6IihoRTybuDWJYnGkE/S57
-         ZL8SNQPPe7gey/LoLCSmHABFLJIYlBh4qMBC59jzKkcGpDYSYVbvn8sgksLnuoxrk31+
-         eFyttE3YMG1R9mfwlyHcdliGNbrBI8DyyPipQuEiFZYG0jXk7f8svg6+idPQunNlCQyD
-         +xxE/ZOU+HqeYsDoABNTqqgP0bThl/E7hdJr5KxBblmVFKSfsPAjbbw7TKR34qIcVIzV
-         ul7w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@here.com header.s=selector2 header.b=LIpdWSzY;
-       arc=pass (i=1 spf=pass spfdomain=here.com dkim=pass dkdomain=here.com dmarc=pass fromdomain=here.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=here.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o2si14587234qkc.141.2019.11.05.05.02.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2019 05:02:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=T3yhVIF0GoOc+xITvKGpwizpnMw4L/gMJ0YIbsrdlq11lt4Bh8igTDgUbvlgQlshLV
+         FOlWR8NlXKr1/CFv3tSidVIiB6T/vCA+fSXkqau9w3lnYs+qsZxoyRW9aJwZ4Hrj/RN1
+         eOCHyJpu5peLBkI4H5gQXS+h1w4VS8JgCfZq7Mb/jLq/HU2a+pZvn2BLnWCDdw3/bqJx
+         s5Zi3OpGSG70ShpvSsxjwzGL3XBRbDtLNgNGsjZfLifVrqETZWh/2VbevU/dyV1rhvV/
+         se6ah/Sy4oUW4KUi2yIupN771qLRd2OzcuG7nmhYfYl+jirHFDlHwBmiObBNUd4k3v9K
+         8PDQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=MN6hpwjD0DzHIrBNYwQqB2rnVGhQuAOfGnvXzFJjYIo=;
+        b=DkxnyywemdGmbg8asCx/m3okRfgE8GnuM1d8oZn65lLE757ey/Y9sBIW10dWEP1eKx
+         H/v8n/8XPce6D3Qs0k+dYlxUg9/XQYrOQmMcHprDRpYg2X2I6Az76AX0lQhl3H9ImL/3
+         aV+4QqHg1HCn3CMo2qj/mwJmRHtzKbXPmxJpnaV3PJpJRB3JVICe+vdTB0qnJLCR0vMa
+         pMROKhYuFyUUVlcu7XRxmNwZ4eTKMFXphBPQStUcjtSQv4vF1CZ2s+rFsywBB9vC/SrJ
+         pqGc6nCbubn/SqbmOo9qlVPrE6g+fk7V8/rUhizQNY3KEAQkB3uM3wZSJ8k4Eg6TMQOk
+         t8NA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Return-Path: <laurent@vivier.eu>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.133])
+        by mx.google.com with ESMTPS id k12si16832322wrv.278.2019.11.05.06.43.02
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 05 Nov 2019 06:43:02 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.133;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@here.com header.s=selector2 header.b=LIpdWSzY;
-       arc=pass (i=1 spf=pass spfdomain=here.com dkim=pass dkdomain=here.com dmarc=pass fromdomain=here.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=here.com
-Received: from localhost ([::1]:44046 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iRyTJ-0007uB-Vb
-	for alex.bennee@linaro.org; Tue, 05 Nov 2019 08:02:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35088)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent.bonnans@here.com>) id 1iRyT4-0007sw-Tn
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 08:01:55 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent.bonnans@here.com>) id 1iRyT3-0000aR-KS
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 08:01:54 -0500
-Received: from mail-eopbgr80132.outbound.protection.outlook.com
- ([40.107.8.132]:35399 helo=EUR04-VI1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <laurent.bonnans@here.com>)
- id 1iRySy-0000QD-0n; Tue, 05 Nov 2019 08:01:48 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ljCEE+buCc4Oup2PomaVq+BGQ/ArER7d0IUegoShMBUanhcSnnyAxlWbLWH1IFM4ESqHx5XpCB7I02OQhQ6wRgYtcl3+1S9MCSrBPrYxhS6NOb/cVL3ePuolPIQD0c3Ml3vaTBG+x5B5FXvXAt2cVc2v2CpAbc8p/5QBhj+Tu1zZWzs+1W8zQ9LqpjbHhrf0/+jkXSXTmESuiSbUFrRpDVUUFt2oVt18u4+T79A96H5eA1uMcekFGj9Fw+wAVPP7tvJeeomEJd9Ud0sWIQ9Nym2L+VpvQxxaB48vtLjBIASDD/FzUU0v0CuVLabGuQM6jJAmkoPxKPG44MpJDiYm0Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KOOmbuGsaxsoxhOUlBwyBef7yWKEzLJnfHGxf62F6iY=;
- b=lzRdUYVwU3MRRkQ1Xxt03Ao2TYufF1cPZKJiECpCsn9IbpfEYEEnWUNDmk40+8mGFIpqZ4h0GHMhb5/4PRdEqXtjXudTUm4ccWJZ0KVLF0oE/TL3ajzhNw+2QIUAEftRAuT/7Kn4QdtGuaEZ+uIE42qj8SZxul8TA57ILQ4wW3j01TIvKohwU+puMqwibe4qhuTJytd1NgrC+jjDFXKNd59Vh7GLxSSB61q61pm7z6ozFT9xmLG4+fvyzDR6+DWXQcAUXRwvloC/UrBoYwX5/xi5q1DvIf47hHQiaZOwF8oaTCOmJNBoLMiTP/yQlOFpb7W06XYcpeStZ/G/gIyyvg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=here.com; dmarc=pass action=none header.from=here.com;
- dkim=pass header.d=here.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=here.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KOOmbuGsaxsoxhOUlBwyBef7yWKEzLJnfHGxf62F6iY=;
- b=LIpdWSzYQNPqG81igoYcIrQw7fTGpwVE6O65LS7rVHhzm6vfXxGLaU04cQP7p16s8t4LH0s8TzkXUPPG1JT51+Lc2CdB8E4O4wylBAajynyMIchKKv9WpbFwFnjvROYKba8W1YAKSXG8TSn8Bnp96WwfkXk4RwXcmPjCJ59ryGM=
-Received: from AM5PR04MB3299.eurprd04.prod.outlook.com (10.173.255.158) by
- AM5PR04MB3043.eurprd04.prod.outlook.com (10.173.254.146) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2408.24; Tue, 5 Nov 2019 13:01:42 +0000
-Received: from AM5PR04MB3299.eurprd04.prod.outlook.com
- ([fe80::8ce8:9eaf:3916:4bc9]) by AM5PR04MB3299.eurprd04.prod.outlook.com
- ([fe80::8ce8:9eaf:3916:4bc9%6]) with mapi id 15.20.2408.024; Tue, 5 Nov 2019
- 13:01:42 +0000
-From: "Bonnans, Laurent" <laurent.bonnans@here.com>
-To: Clement Deschamps <clement.deschamps@greensocs.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] hw/arm/boot: Set NSACR.{CP11, CP10} in dummy SMC setup
- routine
-Thread-Topic: [PATCH] hw/arm/boot: Set NSACR.{CP11, CP10} in dummy SMC setup
- routine
-Thread-Index: AQHVkyLpdZ9C4+vVyUaj7PS7hruIkqd8jA+A
-Date: Tue, 5 Nov 2019 13:01:42 +0000
-Message-ID: <e04fb8db-6711-df97-50b6-c91bdbdb1219@here.com>
-References: <20191104151137.81931-1-clement.deschamps@greensocs.com>
-In-Reply-To: <20191104151137.81931-1-clement.deschamps@greensocs.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=laurent.bonnans@here.com; 
-x-originating-ip: [131.228.216.128]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: ff3cef91-4653-42b4-4188-08d761f04ddd
-x-ms-traffictypediagnostic: AM5PR04MB3043:
-x-microsoft-antispam-prvs: <AM5PR04MB304346813F8E3BC3E6200A58857E0@AM5PR04MB3043.eurprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:962;
-x-forefront-prvs: 0212BDE3BE
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(136003)(376002)(366004)(396003)(39860400002)(346002)(199004)(189003)(54906003)(186003)(31686004)(486006)(86362001)(66066001)(6116002)(11346002)(91956017)(71200400001)(14454004)(66556008)(66946007)(6486002)(14444005)(8676002)(256004)(7736002)(31696002)(66476007)(3846002)(476003)(305945005)(2906002)(6246003)(76176011)(2616005)(71190400001)(229853002)(25786009)(76116006)(81166006)(81156014)(66446008)(4001150100001)(8936002)(99286004)(110136005)(26005)(478600001)(316002)(5660300002)(102836004)(2501003)(36756003)(64756008)(4326008)(6506007)(6512007)(6436002)(446003)(53546011);
- DIR:OUT; SFP:1102; SCL:1; SRVR:AM5PR04MB3043;
- H:AM5PR04MB3299.eurprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: here.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: cT7DHPcqgwTLlyaC9Hc+H5gAOvyqL25ls1X5Y2UmIPv1Zw/LGfNWLCGUeToP59cLtQPZrNomQ/5U27QVaTLG142hmREojTWl0+roaXxtDyMvFqRcDMXlqp9TCSniyZBeXXLaOX28l0zchEJL6z//kZCgvHkmHreTyZsCb0qQ0Kx7cAaQhgwS1Y+eH66VAazKgVga0PygRrig5hXPzy7aTY4PKr6R8TC35l+HSztRSv50DUAMsVp4eLxYDCgByz96TCO4yhFDKAMVM+WK3YhCNou4NSPSCmDlL6M+PNbyWKTsGV1URW51U0Fb6zNzp2+TvlthhL/MqC0lR7ZK7UTgM2iHk9TyfoiNtebyHQd5XkgVPYaXtFv14yw4Y2nww9QLTeMJ1/rk9GzOLqJXImuWu1OP5gJMXn8QqEd/VYzFWSyC8y0cfCAcugCKr1R7np1h
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <666D6D0B453F0544893AED044BC8BEEE@eurprd04.prod.outlook.com>
-Content-Transfer-Encoding: base64
+       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1MjPYI-1i4EoB2dju-00kyqs; Tue, 05 Nov 2019 15:43:01 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	xen-devel@lists.xenproject.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Fabien Chouteau <chouteau@adacore.com>,
+	qemu-ppc@nongnu.org,
+	Paul Durrant <paul@xen.org>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	KONRAD Frederic <frederic.konrad@adacore.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Claudio Fontana <claudio.fontana@huawei.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 4/4] global: Squash 'the the'
+Date: Tue,  5 Nov 2019 15:42:47 +0100
+Message-Id: <20191105144247.10301-5-laurent@vivier.eu>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20191105144247.10301-1-laurent@vivier.eu>
+References: <20191105144247.10301-1-laurent@vivier.eu>
 MIME-Version: 1.0
-X-OriginatorOrg: here.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ff3cef91-4653-42b4-4188-08d761f04ddd
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Nov 2019 13:01:42.1106 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 6d4034cd-7225-4f72-b853-91feaea64919
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: OSRWo25711VWrVURZnVrE9GL0xZ1zwNhi2TZuPFIbcY5mv2iMNhJXP8q8ajJVpOXPI6HnUf4kdgOTQ0AWtaCp1mqNy5WGBFr6tKBNWHu1kE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR04MB3043
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.8.132
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N5DHGw2k2BZQ
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:JNoxt4H34KkBSPuWmF9GErgKUZwyQv3Mxe+T2CTt6aHlA2A5yRR
+ 3E+liXgMDMhesz7bdii/u3mcbwIwTGlzMxclNKuIeSI+Ti/9qyNoUwv7wioMYkVOEoFcOfw
+ V50zys+VtgQCtYTjEhZhAIZ9bXG+lxXncNV5qyt11sWNjC7i9v/ePmItrO3v0a+8tgwzJOx
+ A/7AjMdEAcs+vG7ryklHA==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Xfx0CyW1lWU=:dIquTygg+lDDE2ngKnWlqC
+ CixfxkPGwz3v9iDyscyMwcEo5z/peQAFvuaEJsEIR8T5tLoq3FlR/sWqnncXn0lBmBYnCyM4K
+ 5mc/JK4O7wNXh6A5T6Ko53e2vHiaSdeHhnOXFDs4zgYRdKd14Yq6Mr8NzlwPpFVlNwaHXosnF
+ dSqkL6LPusb9GlFrqyOlcOEQtPIp75XDTTaFy4Vhl7oTsjNgxYDTFLhgrGUhJK6nkQqQj0S4P
+ 6lzCHZOKM+8Zm9niyqL335Xbc+gRgtZ2NIycOxEs/3icCrOImAShbM799FuMp9hqUSaijj4lU
+ k9iF4sCpPDQFWOJk6tWlz/qJVvfjAvR+cnXW5HrcD6+e88GM8+yMI3ADdeb3DmEnS+gcfuxTG
+ TGj5EHYFpAleIMrOoMDeIrG3QuIXWtiq/7KQPrn6Z+e5H2CTQkU3R2yaSuaYbY/bAKqv/+cof
+ BW2tzRhvFu5k7vD9BS/JuTC+PtFFg1e6/nbiRywH+9LwEsLYvICWJCFqTyYDkVVNa35v7b3hD
+ WakILpLSVOYOt3Usa/QaVv4TqwWiJi6AGdFBMMDVd+HKAtHiNDflmaFRUUgn16K4g0Bc9n88v
+ pr+5D+o3QTr8+0/PctrR6mkR3EsoTPNsZModvCRfWAU3cAEqDWfExnb1+f3WPSn6UCDiX67ny
+ 5wt/Fq4yMMYLYvdxKCpLm9qSJrYWjv3l214xEuH/jCHE0xcJngoBIJ8xmsI+zUSAUUTN/Wgno
+ brVGdTH1x19OyRGq+1iH2AHsQzsXSdG6caSBdHd/R3icCEpvl5OLXThpCKsG06X00NJtWFgGQ
+ crSP4WXP6VxJW+/e+59I+bxgVeorXM4FJRa8L95yVaCFVUHnb0IL8p0p4KeDuOoQivHG/1bRl
+ dTGRrI+pqpnXTYf+kdEXsuPFJWTffENDL14Tpm1aA=
+X-TUID: e7iSxA2rxOQV
 
-T24gMTEvNC8xOSA0OjExIFBNLCBDbGVtZW50IERlc2NoYW1wcyB3cm90ZToNCg0KPiBTZXQgdGhl
-IE5TQUNSIENQMTEgYW5kIENQMTAgYml0cywgdG8gYWxsb3cgRlBVIGFjY2VzcyBpbiBOb24tU2Vj
-dXJlIHN0YXRlDQo+IHdoZW4gdXNpbmcgZHVtbXkgU01DIHNldHVwIHJvdXRpbmUuIE90aGVyd2lz
-ZSBhbiBBQXJjaDMyIGtlcm5lbCB3aWxsIFVOREVGIGFzDQo+IHNvb24gYXMgaXQgdHJpZXMgdG8g
-dXNlIHRoZSBGUFUuDQo+DQo+IFRoaXMgZml4ZXMga2VybmVsIHBhbmljIHdoZW4gYm9vdGluZyBy
-YXNwYmlhbiBvbiByYXNwaTIuDQpJIGNhbiBjb25maXJtIHRoYXQgaXQgc29sdmVzIHRoZSBrZXJu
-ZWwgcGFuaWNzIHdlJ3ZlIGhhZCBpbiBvdXIgdGVzdHMgDQp3aGVuIHJ1bm5pbmcgb3VyIHlvY3Rv
-LWJ1aWx0IGltYWdlcy4NCg0KVGVzdGVkLWJ5OiBMYXVyZW50IEJvbm5hbnMgPGxhdXJlbnQuYm9u
-bmFuc0BoZXJlLmNvbT4NCg0KTGF1cmVudA0KPg0KPiBTdWNjZXNzZnVsbHkgdGVzdGVkIHdpdGg6
-DQo+ICAgIDIwMTctMDEtMTEtcmFzcGJpYW4tamVzc2llLWxpdGUuaW1nDQo+ICAgIDIwMTgtMTEt
-MTMtcmFzcGJpYW4tc3RyZXRjaC1saXRlLmltZw0KPiAgICAyMDE5LTA3LTEwLXJhc3BiaWFuLWJ1
-c3Rlci1saXRlLmltZw0KPg0KPiBTZWUgYWxzbyBjb21taXQgZWNlNjI4ZmNmNiB0aGF0IGZpeGVz
-IHRoZSBpc3N1ZSB3aGVuICpub3QqIHVzaW5nIHRoZQ0KPiBkdW1teSBTTUMgc2V0dXAgcm91dGlu
-ZS4NCj4NCj4gRml4ZXM6IGZjMTEyMGE3ZjUNCj4gU2lnbmVkLW9mZi1ieTogQ2xlbWVudCBEZXNj
-aGFtcHMgPGNsZW1lbnQuZGVzY2hhbXBzQGdyZWVuc29jcy5jb20+DQo+IC0tLQ0KPiAgIGh3L2Fy
-bS9ib290LmMgfCAzICsrKw0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykNCj4N
-Cj4gZGlmZiAtLWdpdCBhL2h3L2FybS9ib290LmMgYi9ody9hcm0vYm9vdC5jDQo+IGluZGV4IGVm
-NjcyNDk2MGMuLjhmYjRhNjM2MDYgMTAwNjQ0DQo+IC0tLSBhL2h3L2FybS9ib290LmMNCj4gKysr
-IGIvaHcvYXJtL2Jvb3QuYw0KPiBAQCAtMjQwLDYgKzI0MCw5IEBAIHZvaWQgYXJtX3dyaXRlX3Nl
-Y3VyZV9ib2FyZF9zZXR1cF9kdW1teV9zbWMoQVJNQ1BVICpjcHUsDQo+ICAgICAgIH07DQo+ICAg
-ICAgIHVpbnQzMl90IGJvYXJkX3NldHVwX2Jsb2JbXSA9IHsNCj4gICAgICAgICAgIC8qIGJvYXJk
-IHNldHVwIGFkZHIgKi8NCj4gKyAgICAgICAgMHhlZTExMGY1MSwgLyogbXJjICAgICBwMTUsIDAs
-IHIwLCBjMSwgYzEsIDIgIDtyZWFkIE5TQUNSICovDQo+ICsgICAgICAgIDB4ZTM4MDBiMDMsIC8q
-IG9yciAgICAgcjAsICMweGMwMCAgICAgICAgICAgICA7c2V0IENQMTEsIENQMTAgKi8NCj4gKyAg
-ICAgICAgMHhlZTAxMGY1MSwgLyogbWNyICAgICBwMTUsIDAsIHIwLCBjMSwgYzEsIDIgIDt3cml0
-ZSBOU0FDUiAqLw0KPiAgICAgICAgICAgMHhlM2EwMGUwMCArIChtdmJhcl9hZGRyID4+IDQpLCAv
-KiBtb3YgcjAsICNtdmJhcl9hZGRyICovDQo+ICAgICAgICAgICAweGVlMGMwZjMwLCAvKiBtY3Ig
-ICAgIHAxNSwgMCwgcjAsIGMxMiwgYzAsIDEgO3NldCBNVkJBUiAqLw0KPiAgICAgICAgICAgMHhl
-ZTExMGYxMSwgLyogbXJjICAgICBwMTUsIDAsIHIwLCBjMSAsIGMxLCAwIDtyZWFkIFNDUiAqLw==
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+
+'the' has a tendency to double up; squash them back down.
+
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20191104185202.102504-1-dgilbert@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ disas/libvixl/vixl/invalset.h       | 2 +-
+ docs/interop/pr-helper.rst          | 2 +-
+ docs/specs/ppc-spapr-hotplug.txt    | 2 +-
+ docs/specs/ppc-xive.rst             | 2 +-
+ docs/specs/tpm.txt                  | 2 +-
+ include/hw/xen/interface/io/blkif.h | 2 +-
+ scripts/dump-guest-memory.py        | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/disas/libvixl/vixl/invalset.h b/disas/libvixl/vixl/invalset.h
+index ffdc0237b47c..ef5e49d6feb2 100644
+--- a/disas/libvixl/vixl/invalset.h
++++ b/disas/libvixl/vixl/invalset.h
+@@ -102,7 +102,7 @@ template<TEMPLATE_INVALSET_P_DECL> class InvalSet {
+   size_t size() const;
+ 
+   // Returns true if no elements are stored in the set.
+-  // Note that this does not mean the the backing storage is empty: it can still
++  // Note that this does not mean the backing storage is empty: it can still
+   // contain invalid elements.
+   bool empty() const;
+ 
+diff --git a/docs/interop/pr-helper.rst b/docs/interop/pr-helper.rst
+index 9f76d5bcf98f..e926f0a6c9cb 100644
+--- a/docs/interop/pr-helper.rst
++++ b/docs/interop/pr-helper.rst
+@@ -10,7 +10,7 @@ can delegate implementation of persistent reservations to an external
+ restricting access to block devices to specific initiators in a shared
+ storage setup.
+ 
+-For a more detailed reference please refer the the SCSI Primary
++For a more detailed reference please refer to the SCSI Primary
+ Commands standard, specifically the section on Reservations and the
+ "PERSISTENT RESERVE IN" and "PERSISTENT RESERVE OUT" commands.
+ 
+diff --git a/docs/specs/ppc-spapr-hotplug.txt b/docs/specs/ppc-spapr-hotplug.txt
+index cc7833108e12..859d52cce6c8 100644
+--- a/docs/specs/ppc-spapr-hotplug.txt
++++ b/docs/specs/ppc-spapr-hotplug.txt
+@@ -385,7 +385,7 @@ Each LMB list entry consists of the following elements:
+   is used to retrieve the right associativity list to be used for this
+   LMB.
+ - A 32bit flags word. The bit at bit position 0x00000008 defines whether
+-  the LMB is assigned to the the partition as of boot time.
++  the LMB is assigned to the partition as of boot time.
+ 
+ ibm,dynamic-memory-v2
+ 
+diff --git a/docs/specs/ppc-xive.rst b/docs/specs/ppc-xive.rst
+index 148d57eb6ab2..83d43f658b90 100644
+--- a/docs/specs/ppc-xive.rst
++++ b/docs/specs/ppc-xive.rst
+@@ -163,7 +163,7 @@ Interrupt Priority Register (PIPR) is also updated using the IPB. This
+ register represent the priority of the most favored pending
+ notification.
+ 
+-The PIPR is then compared to the the Current Processor Priority
++The PIPR is then compared to the Current Processor Priority
+ Register (CPPR). If it is more favored (numerically less than), the
+ CPU interrupt line is raised and the EO bit of the Notification Source
+ Register (NSR) is updated to notify the presence of an exception for
+diff --git a/docs/specs/tpm.txt b/docs/specs/tpm.txt
+index 5d8c26b1adba..9c8cca042da8 100644
+--- a/docs/specs/tpm.txt
++++ b/docs/specs/tpm.txt
+@@ -89,7 +89,7 @@ TPM upon reboot. The PPI specification defines the operation requests and the
+ actions the firmware has to take. The system administrator passes the operation
+ request number to the firmware through an ACPI interface which writes this
+ number to a memory location that the firmware knows. Upon reboot, the firmware
+-finds the number and sends commands to the the TPM. The firmware writes the TPM
++finds the number and sends commands to the TPM. The firmware writes the TPM
+ result code and the operation request number to a memory location that ACPI can
+ read from and pass the result on to the administrator.
+ 
+diff --git a/include/hw/xen/interface/io/blkif.h b/include/hw/xen/interface/io/blkif.h
+index 8b1be50ce81e..d07fa1e07822 100644
+--- a/include/hw/xen/interface/io/blkif.h
++++ b/include/hw/xen/interface/io/blkif.h
+@@ -341,7 +341,7 @@
+  *      access (even when it should be read-only). If the frontend hits the
+  *      maximum number of allowed persistently mapped grants, it can fallback
+  *      to non persistent mode. This will cause a performance degradation,
+- *      since the the backend driver will still try to map those grants
++ *      since the backend driver will still try to map those grants
+  *      persistently. Since the persistent grants protocol is compatible with
+  *      the previous protocol, a frontend driver can choose to work in
+  *      persistent mode even when the backend doesn't support it.
+diff --git a/scripts/dump-guest-memory.py b/scripts/dump-guest-memory.py
+index 2c587cbefc57..9371e4581308 100644
+--- a/scripts/dump-guest-memory.py
++++ b/scripts/dump-guest-memory.py
+@@ -170,7 +170,7 @@ class ELF(object):
+         self.ehdr.e_phnum += 1
+ 
+     def to_file(self, elf_file):
+-        """Writes all ELF structures to the the passed file.
++        """Writes all ELF structures to the passed file.
+ 
+         Structure:
+         Ehdr
+-- 
+2.21.0

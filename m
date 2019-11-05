@@ -1,66 +1,101 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1129495wri;
-        Tue, 5 Nov 2019 11:21:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyjv0QuhC6K6aubi/+i1d4EvGSNCIvjHe9JAwGcf03DjT7Xzkyh6vgyC4O85VlgftxCv3A+
-X-Received: by 2002:a17:906:4e55:: with SMTP id g21mr31968651ejw.0.1572981710847;
-        Tue, 05 Nov 2019 11:21:50 -0800 (PST)
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1199806wri;
+        Tue, 5 Nov 2019 12:28:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzvxfxi2zgm3S/ilkuA3cxlP9gD8Fht+a0bSDqGN7RbKS1uAtFHf0Bja1MTsAJNdawn9OaD
+X-Received: by 2002:a17:906:e2cb:: with SMTP id gr11mr32220414ejb.205.1572985699841;
+        Tue, 05 Nov 2019 12:28:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572985699; cv=none;
+        d=google.com; s=arc-20160816;
+        b=AkwrWdFWElO5J9T/f5k/B/44bgw1e4Vby0FT9/KBRemiWpdV2FBYMKUohVQslG8skI
+         DVX553SYJA+VHXHTF1tYbzRo8oN329VW8+ENpkYHnqbaWXa7SJ08CtRhKtajMwjNrWhj
+         p6tIEVXAlpjP7V7T8O3M68LWpnUgGprJXMcRnuyIyGEwVa/pLNjbtPG21J2H3ZQQYqKw
+         0lZnHTwRo5ZKQj+QwPh9Hjxtu63ESioEI0H1Bf1+YdWTJlzqvBxwRzyJNkLZRG30PHvl
+         nzmBj5Cw0ZPakdIe0ge+ikUw0gsWpjsfELqKaXP3fqEPCtB02mNqOMA+G7UQO9W5lwFd
+         GEDQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=57MtDgGya2ixDopTm0gAiXbS8omOEDYfogKw+vGRjhI=;
+        b=Rz5+sxUyuKgwnKp2UkbjVPH45fAHuchGGZgYMJ81dMChXpIPT07ng3KYidNXXAaPtz
+         Hs+eQPf2HA/QS0zsF/pRkdaW0W8iqtzTRzCs77maiPObtpOG9fa16DwuhSmmw5W2N/g/
+         axh1ZeWbVfiw8ZjduDhyksMgms5RwmdamySoG3POx3ePNUDKMb05PiVvRS3ZXU68yG6J
+         Ka70cV7z+Q53c4E2GG6VJIHR2kMI3YJhKQR8ZR2Z5bLMRCvxOrtyGeFudNjQ9zyJqp64
+         18f792C+Gj0RFglNOX66+cVtc5AimZTASttWsVm5BK7R0tLaiuio0WxZ/9vKA8yIPO4z
+         xDFA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZGvqdpvf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d51si10876083ede.168.2019.11.05.11.21.50
+        by mx.google.com with ESMTPS id n1si13024968eda.359.2019.11.05.12.28.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2019 11:21:50 -0800 (PST)
+        Tue, 05 Nov 2019 12:28:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48734 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZGvqdpvf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iS4Oj-0000ip-GA
-	for alex.bennee@linaro.org; Tue, 05 Nov 2019 14:21:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42207)
+	id 1iS5R4-0005QE-QF
+	for alex.bennee@linaro.org; Tue, 05 Nov 2019 15:28:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54923)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iS4OU-0000ca-S4
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 14:21:36 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iS5Qv-0005Pz-0O
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 15:28:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iS4OS-0002yu-KN
- for qemu-arm@nongnu.org; Tue, 05 Nov 2019 14:21:34 -0500
-Resent-Date: Tue, 05 Nov 2019 14:21:33 -0500
-Resent-Message-Id: <E1iS4OS-0002yu-KN@eggs.gnu.org>
-Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21886)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iS4OC-0002og-RA; Tue, 05 Nov 2019 14:21:17 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1572981612; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=UgAYfejr3fDVbo8L7rVv3ShvbjcrSeXpwTR6dXZm7OHpa4WAG4T6j7lavuPgVqSBMpARBeosIAMK/OEW4+rjJJmMyhj2e1xaXUGW9xeFkkHO2LLQd4hbiOfBP8948IxsrVdppq1/RXMpqX7hwgHFPBBkoJb92JGt5J6vI5k/W4s=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1572981612;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=TKqHNauIz3QKxpJho757GRjU1wyQS+vDXhCWV2Kk3eE=; 
- b=GyG4nz3vWbbjEgOBZ6+ArmRAp+534/5aQolivw7aHofmnurtRusRbRiT8Sg+LrUoOI190q2jmQ9yDc1XFhfxqLycBOar1u5II3zbQFoAtxIzCFHDDoKYSeoRurP/glDzL5J7wuTgYK0v8PHAcu1QnIEzLNbMqP5w3JlzSg6hl2I=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 157298161033387.53528998268598;
- Tue, 5 Nov 2019 11:20:10 -0800 (PST)
-In-Reply-To: <20191105175010.2591-1-laurent@vivier.eu>
-Subject: Re: [Xen-devel] [PULL v2 0/3] Trivial branch patches
-Message-ID: <157298160814.27285.16893877491189017648@37313f22b938>
+ (envelope-from <peter.maydell@linaro.org>) id 1iS5Qu-0006Kd-2j
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 15:28:08 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:42989)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iS5Qt-0006KG-Ut
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2019 15:28:08 -0500
+Received: by mail-ot1-x343.google.com with SMTP id b16so18809511otk.9
+ for <qemu-arm@nongnu.org>; Tue, 05 Nov 2019 12:28:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=57MtDgGya2ixDopTm0gAiXbS8omOEDYfogKw+vGRjhI=;
+ b=ZGvqdpvfnQyqTLv/MkMjdDGyVc15ttlZ5MksgLkwcA6KwIc9rRDLQ/poLcyV1yvLrX
+ KRvku6zCccMzyWqcXa2VbNTbnBjDV96592miGLatFcnwplPafMeNmCEMYyop4Z5mJksA
+ JEe7y2YBDNlzMPk3JOx0knNzLOWuIsrIVk779ATBYGY2w6PPsgUzmEVklUAimS1AGi8q
+ obPkmAX7e8ouWA5amKAVXXfKle7knW/PJM2ZznrkgwNMekf467huYDxB2NpMO8HrxqVl
+ f0tpfhiiooN44DOv+fWMCTJoQvWCPLucA6//8mEHf5BrySPiOVH57YK/k5/xjABvSXWX
+ Iqfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=57MtDgGya2ixDopTm0gAiXbS8omOEDYfogKw+vGRjhI=;
+ b=YwvX7dhu9eh3goj9GXxyps/UyXUCMh+adVlzczF9nthxqkfsJF+4RFxuTafhJeMXUb
+ 3iZNLhNGPnIMnCpBrRhx48P8v5brQvtW7PFz2geMGSipBcfSq2Xt/VKON8WaKkss6AYF
+ JNtfT298e6gVg5Fy8p+fwtqUqp6RsR6MtYbxNsx16W03wNTVBSteZytnzrggYUvXKI7D
+ fmnN7mo3xsIbRZ3EhGvW6nFMVXysS1oYQHYYqrwhFWKCAjMQpzgNJN8li7w41PREnKj8
+ 8SoF9N8gcXkTD6LM5VXrME+klYkXaFWuQDK5R5TQFPYtOIIqIilv9Mc0MmiqGJV5dv/g
+ SL7A==
+X-Gm-Message-State: APjAAAVH+5wjuv815kJeo/feqp4xJ+PpudHqyUBNbek4NWKwDtqSYD5f
+ RKEsBZ+5PqH4adw3MJSzubtNFFCDOqGgKT5Q0Dabjg==
+X-Received: by 2002:a05:6830:ca:: with SMTP id
+ x10mr22806746oto.221.1572985687172; 
+ Tue, 05 Nov 2019 12:28:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: laurent@vivier.eu
-Date: Tue, 5 Nov 2019 11:20:10 -0800 (PST)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.58
+References: <20191101103232.3692818-1-luc.michel@greensocs.com>
+ <CAFEAcA96tfJNVrnQzKyzooy7sJ__WKWWHXdAy_TNy=hSB_DOQQ@mail.gmail.com>
+ <aff8e672-e0c7-a0f5-9c53-403a2e57524d@linaro.org>
+In-Reply-To: <aff8e672-e0c7-a0f5-9c53-403a2e57524d@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 Nov 2019 20:27:59 +0000
+Message-ID: <CAFEAcA__axmxsKL6NPYbGBMLS+YZ-aKNntn9hkSSg3nQR9Ksnw@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/pxa2xx: rebuild hflags cache when modifying CPU
+ state
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,46 +107,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, sstabellini@kernel.org, ehabkost@redhat.com,
- paul@xen.org, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
- claudio.fontana@huawei.com, qemu-devel@nongnu.org, chouteau@adacore.com,
- laurent@vivier.eu, xen-devel@lists.xenproject.org, frederic.konrad@adacore.com,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, clg@kaod.org, crosa@redhat.com,
- anthony.perard@citrix.com, marcandre.lureau@redhat.com,
- david@gibson.dropbear.id.au
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EeJYcyva4AyW
+X-TUID: cbveHZrVbtma
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEwNTE3NTAxMC4yNTkx
-LTEtbGF1cmVudEB2aXZpZXIuZXUvCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2ZSBz
-b21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBpbmZv
-cm1hdGlvbjoKClN1YmplY3Q6IFtYZW4tZGV2ZWxdIFtQVUxMIHYyIDAvM10gVHJpdmlhbCBicmFu
-Y2ggcGF0Y2hlcwpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxOTExMDUxNzUwMTAuMjU5MS0x
-LWxhdXJlbnRAdml2aWVyLmV1Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNo
-CmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxv
-Y2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRy
-dWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMv
-Y2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoK
-U3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwo0OWE1NWY3IGdsb2JhbDogU3F1YXNoICd0
-aGUgdGhlJwpjMGI1NTEzIGh3L21pc2MvZ3JsaWJfYWhiX2FwYl9wbnA6IEZpeCA4LWJpdCBhY2Nl
-c3NlcwplYjQzMzk1IGh3L21pc2MvZ3JsaWJfYWhiX2FwYl9wbnA6IEF2b2lkIGNyYXNoIHdoZW4g
-d3JpdGluZyB0byBQblAgcmVnaXN0ZXJzCgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzMgQ2hlY2tp
-bmcgY29tbWl0IGViNDMzOTViZjhmMSAoaHcvbWlzYy9ncmxpYl9haGJfYXBiX3BucDogQXZvaWQg
-Y3Jhc2ggd2hlbiB3cml0aW5nIHRvIFBuUCByZWdpc3RlcnMpCjIvMyBDaGVja2luZyBjb21taXQg
-YzBiNTUxM2Y5NzFhIChody9taXNjL2dybGliX2FoYl9hcGJfcG5wOiBGaXggOC1iaXQgYWNjZXNz
-ZXMpCjMvMyBDaGVja2luZyBjb21taXQgNDlhNTVmN2ZlYjE5IChnbG9iYWw6IFNxdWFzaCAndGhl
-IHRoZScpCkVSUk9SOiBkbyBub3QgdXNlIEM5OSAvLyBjb21tZW50cwojMjY6IEZJTEU6IGRpc2Fz
-L2xpYnZpeGwvdml4bC9pbnZhbHNldC5oOjEwNToKKyAgLy8gTm90ZSB0aGF0IHRoaXMgZG9lcyBu
-b3QgbWVhbiB0aGUgYmFja2luZyBzdG9yYWdlIGlzIGVtcHR5OiBpdCBjYW4gc3RpbGwKCnRvdGFs
-OiAxIGVycm9ycywgMCB3YXJuaW5ncywgNTYgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMy8zIGhhcyBz
-dHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJl
-IGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNL
-UEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBl
-eGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8v
-cGF0Y2hldy5vcmcvbG9ncy8yMDE5MTEwNTE3NTAxMC4yNTkxLTEtbGF1cmVudEB2aXZpZXIuZXUv
-dGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0
-b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5k
-IHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+On Tue, 5 Nov 2019 at 11:20, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 11/1/19 11:42 AM, Peter Maydell wrote:
+> > The other place that might need checking is the PSCI/etc
+> > code for doing CPU power on/off (and other callers to the
+> > power up/down functions like the imx6 power control regs).
+> > Richard, did you look at that code to see if it needed hflags updates?
+>
+> I had a quick grovel through hw/misc/imx6_src.c and didn't see anything; was
+> there something more specific you were thinking of?
 
+Not anything all that specific, but all the power-on/off
+code is basically doing "change the state of this other
+CPU by mangling its register state/etc". I forget how much
+of this we do in common code and how much in the calling
+code that handles the specifics of ACPI/imx6/etc.
+
+thanks
+-- PMM

@@ -1,175 +1,113 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp683616wri;
-        Wed, 6 Nov 2019 04:20:04 -0800 (PST)
-X-Received: by 2002:a5d:4d0f:: with SMTP id z15mr2313621wrt.195.1573042804237;
-        Wed, 06 Nov 2019 04:20:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573042804; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp704082wri;
+        Wed, 6 Nov 2019 04:38:02 -0800 (PST)
+X-Received: by 2002:a1c:f303:: with SMTP id q3mr2370841wmq.63.1573043882301;
+        Wed, 06 Nov 2019 04:38:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573043882; cv=none;
         d=google.com; s=arc-20160816;
-        b=nzFnJzxy6yPtQimCiXbBQk8jwCzOLY/DC/yOPY1LLoxIBljcjf71FjwIZ+79K7O/F3
-         ZxFuvsGzrMDcKnbaDM+VbC7F8gbjuGpcOupFTmeZnBfitm95LMDWYUtax2iYLyHUy8RA
-         gnlgt80t9U79TdSiJ3/CrEtUsCfO+EJ6n+y1K0q/+GxLs8zykpQAylJj0u2YlY/2S7oq
-         8kbdV71Khi3MGcjoi/OwsORwN1HsYa/MjqMyJlcm8iBj68YNuQsdiagOeeigZFDOitBW
-         hacvh6UkpWrZQCqLwVwnA0HNPtL5QiGv1nP+7yXSk/qfC+KkPVMPAft4vRM8Y4koD74u
-         gYBQ==
+        b=J3TCZKyRjYzlqwHpT8KzNR7r+vqgCJEGXZ56KnN+N8iIotM6ip4f6vtrlpA8ra+X1J
+         oNfHexFtHWcx2pmW0OW6NdE+0yuB3SkKRm2WFaEc/VqRgYdLg0fWeEuTzG2yP3a/9ipS
+         ffwwSErXDE6rrtWUcq9cdzoZE+9PtaJTzdQ9i1PDUgsNXK8JFV/1orpOOVwNuh4F8qJI
+         hsQ3D9M44P8YJMGFaWgESifG8alXhj2MbcH9zBpU8IsLXU4v5UqNHANE0JQdWZU2pyga
+         /Mln+NcCLM/m7+UJhbO4nc+L1cBB1zN/Ny/oa+DaYyZbeTYecQ++2ZlkRipWXcXfCW5b
+         7n1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=RpgoQPK/LIDerO7lJEQ4U9SYduXiB2Zh7dzR1O0Iln0=;
-        b=AHReqkjtSN/cz39ui/EXT8knnN2sKDEgw5lIvXF7EMN13iYhSoCkjJtePYD0b28ykm
-         fzGp519t4X75h16KEx3HTG5jRo/gvZmoUayFv0v9I3cAHNps2jmauCbJ0e7awZ/iYe0l
-         KggbT80Z4hSOdph2sXREH6Z3x6xYuSbbG4qKJt4N33XP9wcaOWqZXBtV2rDx1ZuVzx1R
-         0WdpNzhKL4URBX/Mz0osG6smtCWbqhs6Kvw6zAgRhVrz+/+aILdYCtjDZBM8WqdCV3DZ
-         vUU4ixnYo5gdeNoKpSjcUNCtWM4tIAij6ojhcNC88/EW74wHQ8llhCpeiWMA+bok0izZ
-         WXQQ==
+        bh=YOge0QqtcuIlddFRrjy7ps5JM5zsRKGYUfXqx3lLARs=;
+        b=kK2bcQ6zc2vE062PKznATzHGwwH1X+Gy65luB3d1DesBJ7HjARtOnMqkTxyFGra2Hd
+         QQBV4Hj0/0Tr8CctN2q6PEf+vUUfkP/SFZLjlMOsPvbfSO771+a1N8nw5yIAGfdzeXCv
+         bA8+4gIzNB4TaQOIPa3rSOfRVpo8P35KamyOOqSqzYOAFupc0lddJvJBudabb7HRFF4k
+         urercog9rvYfwKEILkBrcjTyjNxaXMTnVY6uHrQvcrsZzvMfqNR82elZS+tVJnZvYRAh
+         rzTTWHE/8GDiNf9HkzwLQZF7zICYPljQgTJpXSLtHQb8gyLLYYYPgOpJ+p2RzR9L8Q3D
+         XqaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=htqJc+6b;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sC4TXVpJ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id z22sor1783312wml.11.2019.11.06.04.20.04
+        by mx.google.com with SMTPS id w8sor12466874wrc.35.2019.11.06.04.38.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 06 Nov 2019 04:20:04 -0800 (PST)
+        Wed, 06 Nov 2019 04:38:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=htqJc+6b;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sC4TXVpJ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=RpgoQPK/LIDerO7lJEQ4U9SYduXiB2Zh7dzR1O0Iln0=;
-        b=htqJc+6bldWKqzELJgsZtN7whFCVs7FF1pQeQgQkxhD9vhr41lA0i92w5eXrHyDX0v
-         UgXIKW/pB0ma+i6/ZlDj51IKIAj1jUguoL7r7xqBpkBtdr7ZhoKgYVnLsNVsw///wwac
-         kqfCIhG63FPxt6EEplOqzaTD/8H30JC/5TVdEH1/agwDwzXVJHnUU9W2KdiV29x9YXP/
-         RC74yd5Tb+G5DzViPKv3htYVsPOvqF5wRxLLcgul8xss2iJ1eS+9VX5eYoEOXzE2q/VZ
-         3vQVL53+uPcakZkyhtlf7iHa9R5YpPjvOx+g1TSBMI6DJXt5nngH3NKadLYRRkyNcj9s
-         Y92g==
+        bh=YOge0QqtcuIlddFRrjy7ps5JM5zsRKGYUfXqx3lLARs=;
+        b=sC4TXVpJ5b1BJBWCrlK4a+7PRDZyI4lap2vz/xRWxWuE7B8ntd98YEkuIijBY/fCYw
+         tcfwKis3KfZuf+sWPCr7hXqoe5SPg5iK4+OHfDK7v1VXDfeSFpUl++dCS5GQXEQS5Dhl
+         QbaQPGlsiWflYKgpO69mBk2BTM03h9cpnIIRxRQhC2UlSl8H//PkqlaXqb0R0R+3icGH
+         X/1yNHwj1rK3yGuhLAnVQT+YFCoixP4W2AuyAjlC39cCvfN4IkQY2qocuaxxujdl/Gld
+         yf5WCQ7W2bJ4FO66HdzrUYg0nI0XNQvX0x3XxlOkcMK+TgkxB8ObOBuP0mKMFgm2oKQd
+         +/HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=RpgoQPK/LIDerO7lJEQ4U9SYduXiB2Zh7dzR1O0Iln0=;
-        b=aEA7mqJmICyHBmcbmoH/EV8mI0ZeQo4t3T5etnAQJWt149TQGMHS3twSzma+U1eJTg
-         ueTxuI4+YYJBA52Ml87CVHFRMPp0InuEeswaGgzt0WqJp8DP9UMmZRSatj3XDptBKgil
-         hOTR86Z32lrZiINXBCNUbeH84VXiflNL82xxPwqUnlyRaMzJU48OS4WJlgsIqn9bjTe3
-         0N6+sQorjd+ENI9UUaZYhvej9upyxqgjpztfVf9sqxteCl+A0AhIU00lPwymIpfD3Cv8
-         gFLu3hScmgTzUcsHUgLjbROoxUi0wN/YLdDxLfZg8xVjaU2rFT5weEXgmpAeTPSaGT0k
-         y4TQ==
-X-Gm-Message-State: APjAAAUoobdWL/p62LzKPCZ3WdY/ZWLYssAxlqq11brGUdG83lA7aW3F
-	aVBZ80ZdEik0rV39m/6wKIN8UaEM
-X-Google-Smtp-Source: APXvYqzroIhHkQSdGLo6acutV3vLksrRmQeHFLbXl0uC87zPIgBoz3VIDgdpv2lCs7HFkt2fKb+D7Q==
-X-Received: by 2002:a1c:9ccd:: with SMTP id f196mr2247964wme.152.1573042803847;
-        Wed, 06 Nov 2019 04:20:03 -0800 (PST)
+        bh=YOge0QqtcuIlddFRrjy7ps5JM5zsRKGYUfXqx3lLARs=;
+        b=uhKbX73qIBgKKd6EbmxsDk4TacW1gpVDdpbqdsX7SOv+ZJH+zY1Bt6KiGBZFo/kQTS
+         2ovndZXutG7s0Ldd1kXTq96k9UsYIAa1anW5DZKn4SQ5eEbudsQfCR50ZARn7Uvpemgz
+         IwixoHT48GvHuZXizoTgFFPTtL4E9N05DRcTJVIC62/5PKwJqJI/oVu2dWim2jWF1f78
+         TyV163DtYsibuPhn6FYJH9SuJRGo2tXqDn/jJmD0SkPD2YCXuSPxv+NF3lt73q11WX7U
+         k2ItIMltLEf7RgiuCJf6J0J7iFm/ST5LD3wbuGor+zjpg7vbJccrZ2jF0BqHLVA1ljZ2
+         877Q==
+X-Gm-Message-State: APjAAAVnM6o8wM2v0K7WFhBWxOz/pW129tz9vMYwuoMYIZ2iunOSlCKg
+	HR9T9FZvGgziYMYNwy678It6+wmT/cIqJtnb
+X-Google-Smtp-Source: APXvYqzKbuvTV/Ug12/b+y870UfB4QkxxsRZ5ndWseoBEkZ16fhfBKVgH5ViMCrXNGD4XrhHJA1Ndw==
+X-Received: by 2002:a5d:5230:: with SMTP id i16mr2529051wra.317.1573043881912;
+        Wed, 06 Nov 2019 04:38:01 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.8.102] (31.red-176-87-122.dynamicip.rima-tde.net. [176.87.122.31])
-        by smtp.gmail.com with ESMTPSA id i3sm24118569wrw.69.2019.11.06.04.20.01
+        by smtp.gmail.com with ESMTPSA id w22sm2545916wmc.16.2019.11.06.04.38.00
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Nov 2019 04:20:03 -0800 (PST)
-Subject: Re: [PATCH v2 2/4] Memory: Enable writeback for given memory region
+        Wed, 06 Nov 2019 04:38:01 -0800 (PST)
+Subject: Re: [PATCH v2 4/4] target/arm: Add support for DC CVAP & DC CVADP ins
 To: Beata Michalska <beata.michalska@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
  pbonzini@redhat.com, quintela@redhat.com, dgilbert@redhat.com,
  eric.auger@redhat.com, shameerali.kolothum.thodi@huawei.com
 References: <20191105234100.22052-1-beata.michalska@linaro.org>
- <20191105234100.22052-3-beata.michalska@linaro.org>
+ <20191105234100.22052-5-beata.michalska@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <5c75bd31-213f-88a4-2eee-0046f99f65fe@linaro.org>
-Date: Wed, 6 Nov 2019 13:19:59 +0100
+Message-ID: <c7f96f08-1ab2-e5ea-68d7-ec181017ab78@linaro.org>
+Date: Wed, 6 Nov 2019 13:37:58 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20191105234100.22052-3-beata.michalska@linaro.org>
+In-Reply-To: <20191105234100.22052-5-beata.michalska@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TUID: 3gqocRoEUs+b
+X-TUID: ulEzsYtzN/35
 
-On 11/6/19 12:40 AM, Beata Michalska wrote:
-> +void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t length)
-> +{
-> +    void *addr = ramblock_ptr(block, start);
-> +
-> +    /*
-> +     * The requested range might spread up to the very end of the block
-> +     */
-> +    if ((start + length) > block->used_length) {
-> +        qemu_log("%s: sync range outside the block boundaries: "
-> +                     "start: " RAM_ADDR_FMT " length: " RAM_ADDR_FMT
-> +                     " block length: " RAM_ADDR_FMT " Narrowing down ..." ,
-> +                     __func__, start, length, block->used_length);
-> +        length = block->used_length - start;
-> +    }
+On 11/6/19 12:41 AM, Beata Michalska wrote:
+> ARMv8.2 introduced support for Data Cache Clean instructions
+> to PoP (point-of-persistence) - DC CVAP and PoDP (point-of-deep-persistence)
+> - DV CVADP. Both specify conceptual points in a memory system where all writes
+> that are to reach them are considered persistent.
+> The support provided considers both to be actually the same so there is no
+> distinction between the two. If none is available (there is no backing store
+> for given memory) both will result in Data Cache Clean up to the point of
+> coherency. Otherwise sync for the specified range shall be performed.
+> 
+> Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+> ---
+>  linux-user/elfload.c |  2 ++
+>  target/arm/cpu.h     | 10 ++++++++++
+>  target/arm/cpu64.c   |  1 +
+>  target/arm/helper.c  | 56 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  4 files changed, 69 insertions(+)
 
-qemu_log_mask w/ GUEST_ERROR?  How do we expect the length to overflow?
-
-> +#ifdef CONFIG_LIBPMEM
-> +    /* The lack of support for pmem should not block the sync */
-> +    if (ramblock_is_pmem(block)) {
-> +        pmem_persist(addr, length);
-> +    } else
-> +#endif
-
-Perhaps better to return out of that if block than have the dangling else.
-
-> +/**
-> + * Sync changes made to the memory mapped file back to the backing
-> + * storage. For POSIX compliant systems this will simply fallback
-> + * to regular msync call (thus the required alignment). Otherwise
-> + * it will trigger whole file sync (including the metadata case
-> + * there is no support to skip that otherwise)
-> + *
-> + * @addr   - start of the memory area to be synced
-> + * @length - length of the are to be synced
-> + * @align  - alignment (expected to be PAGE_SIZE)
-> + * @fd     - file descriptor for the file to be synced
-> + *           (mandatory only for POSIX non-compliant systems)
-> + */
-> +int qemu_msync(void *addr, size_t length, size_t align, int fd)
-> +{
-> +#ifdef CONFIG_POSIX
-> +    size_t align_mask;
-> +
-> +    /* Bare minimum of sanity checks on the alignment */
-> +    /* The start address needs to be a multiple of PAGE_SIZE */
-> +    align = MAX(align, qemu_real_host_page_size);
-> +    align_mask = ~(qemu_real_host_page_size - 1);
-> +    align = (align + ~align_mask) & align_mask;
-> +
-> +    align_mask = ~(align - 1);
-
-I don't understand what you're trying to do with align.
-
-You pass in qemu_host_page_size from the one caller, and then adjust it for
-qemu_real_host_page_size?
-
-Why pass in anything at all, and just use qemu_real_host_page_mask?
-
-> +    /**
-> +     * There are no strict reqs as per the length of mapping
-> +     * to be synced. Still the length needs to follow the address
-> +     * alignment changes. Additionally - round the size to the multiple
-> +     * of requested alignment (expected as PAGE_SIZE)
-> +     */
-> +    length += ((uintptr_t)addr & (align - 1));
-> +    length = (length + ~align_mask) & align_mask;
-> +
-> +    addr = (void *)((uintptr_t)addr & align_mask);
-> +
-> +    return msync(addr, length, MS_SYNC);
-> +#else /* CONFIG_POSIX */
-> +    /**
-> +     * Perform the sync based on the file descriptor
-> +     * The sync range will most probably be wider than the one
-> +     * requested - but it will still get the job done
-> +     */
-> +    return qemu_fdatasync(fd);
-> +#endif /* CONFIG_POSIX */
-> +}
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

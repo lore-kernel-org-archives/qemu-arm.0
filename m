@@ -1,101 +1,94 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1093644wri;
-        Wed, 6 Nov 2019 09:55:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyfkZA8shnJjDBy8FTh0eCAyGJZiANEI0pCLfjLBKm0ggO+zcMe9O89z7Fqx0t5yvabqkH7
-X-Received: by 2002:a17:906:5859:: with SMTP id h25mr36405248ejs.2.1573062950922;
-        Wed, 06 Nov 2019 09:55:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573062950; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp59592wri;
+        Wed, 6 Nov 2019 13:48:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwl0H3UOw8L6FQ501NeSI4zdjqAvr+QO6PyQR7FlSLeIEILdUJ+M6OzCWBdigOZIXtJahjq
+X-Received: by 2002:ac8:2361:: with SMTP id b30mr189698qtb.322.1573076924275;
+        Wed, 06 Nov 2019 13:48:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573076924; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZV1nuZeiE5gjpXVJ3Dzbk3lB4iL24tgRhXtc6iONEMEx6pfk/n41oZpRFTIZjjMJb7
-         HBCYetGAniGDDzR9x/zKzGJhiQ/eGCKRuZ/z2DTpyotzFcRbPEorBcw5kyRBON3gnnaz
-         NL4TiV6HQ0we3yMP/KRBqxOoVWs1LTq33UVZ9kQL9OLymvIHrjU45qP4u0HTPY2/2XzY
-         62ghFZ2zh1tn5S572mVlEoj0tSa9wA932pu4X8hA07XYVEv2o8A2E53e8BpVJTIcv7pT
-         vl/SjSnX/xRh4aq6AqyLIfRfXsy8RqRtm6J8/7g0slxZcoRptZMptvtxXrfRSyJCn+s5
-         PkDQ==
+        b=NxoSyGhNBc5bMELRkqzRTXh5sMOA+PvI2zzo+W3FFELrpHa/ZO9Ez18phSYROVnHhV
+         QvQTLBk+1kiMDgkp38dZVyxk8BBmtlo9ot+EhKiyxiciUjAdAhNMS7lrio/jrO5YA9d9
+         mQ9/gFxAJvK+1XdfZYq72fFue4eYulIzvogxC8SWxf8cCcJTzcP9wdaIruu4a+jWbNUO
+         cJwJT5/H/NC1pEHTZRga1VDl1ZB5pkQ55BGBTcNIwDerjxaVZEhuJLEWsjiQfQG1pjX5
+         ETgkMhkep6Ke1dz8SGXjxF9M4CPZVd2VKRJvtTZ/yS2/b2nC5xCo8FeFQQd/DCZXnw88
+         nD0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=q/sQyRgFw+9/RcW7NfVajRFE3P8eOjZF/FPFFSHK0fE=;
-        b=dHvbHokUqQSPIvTCoUV28mVPKlctQFW96+pRNNoBsYHzriXrN2/TpYQsp/kKLhOwvP
-         8zERk4pZxPpIxf6pBGk4pdvOuVKjgxsfPk9jVEpPwpyAtp24YPxSLs6v1jVO/A7ltyoq
-         TUZDcUUZ2EKVlin1XTVpekAi75naHTQkY2tQzY8cOrmmhHQ2s/GrT9lCWnJpIIYMf5Pq
-         GpEe3MiNcSiXVJVxZ1oAoDVEFMxFGXb/7xmut4y6pudfskelSMhJqEuqn7xb0AY4O66H
-         E9d9GePp0yCydTgni3PjK7jTQIlc3W8bejWyjavyzc7dtJh5HxE9WYQfL0JXH/zZ6Sl1
-         jZ4Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=nwlj6uiKUgzMCbTeGZiXPFxXjosIburAr5T/E5BOXKw=;
+        b=PIS/sKHgP5E/oH5SjB6LvuHwDJMRHKchPUHxYVU6ok5WxizjrAxU2oZrEt87BwQqZi
+         nlEyLAPjNSwitMAz+Xio7ZfYuqXwPMoG2jeofNvjq/3TxoIHxGr6t/02Yr4a8OydHLMl
+         FVsGWzxGDCqYDH36KOHvV1t1jN5wbhddshs6p/IH9iYArx4CFx3rxNGRnHXQGjoJGph9
+         hQqASSB6fHPkNCp6b+JcY2DWEckI0aZPr0yDvKcnaTDfms5gyaWF+l/iD/VPx6GsyF3o
+         4ptn0GzsIkLX9sgA8C8bvpbeJlVv0Dwg50OYDJZU5CgwoFPa2keeADp5AoiOrvStKiFF
+         9k1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MpVZAEuQ;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sKiTWxKF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p20si14140864eju.109.2019.11.06.09.55.50
+        by mx.google.com with ESMTPS id m31si18191529qvc.91.2019.11.06.13.48.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Nov 2019 09:55:50 -0800 (PST)
+        Wed, 06 Nov 2019 13:48:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MpVZAEuQ;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sKiTWxKF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33876 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35414 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iSPX3-0004Nj-OR
-	for alex.bennee@linaro.org; Wed, 06 Nov 2019 12:55:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51267)
+	id 1iSTAR-0008Hd-Nf
+	for alex.bennee@linaro.org; Wed, 06 Nov 2019 16:48:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52184)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1iSPWs-0004LN-Aw
- for qemu-arm@nongnu.org; Wed, 06 Nov 2019 12:55:39 -0500
+ (envelope-from <marcinguy@gmail.com>) id 1iSPd3-0007Ou-Rq
+ for qemu-arm@nongnu.org; Wed, 06 Nov 2019 13:02:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1iSPWr-0006yJ-6c
- for qemu-arm@nongnu.org; Wed, 06 Nov 2019 12:55:38 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:50776
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1iSPWr-0006wF-3e
- for qemu-arm@nongnu.org; Wed, 06 Nov 2019 12:55:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573062936;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=q/sQyRgFw+9/RcW7NfVajRFE3P8eOjZF/FPFFSHK0fE=;
- b=MpVZAEuQsiY/getVPNGCHxMtW/yTEtJKQkYoihm3x7zKF8XqmQoxsZdY3FSlCKPi+QnInT
- aB1ZuuB2fSBeNjZHyToqxor0yxAEOLa4D1qtDX1s0BpcY/3AxQhvKe8yVNpghJBv6/7HEI
- SMC9H66uequTqZaE/ust4bLqQgD05uA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-327-4s9pU-fJMAS0NcmNh66v8g-1; Wed, 06 Nov 2019 12:55:32 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4860E1005500;
- Wed,  6 Nov 2019 17:55:31 +0000 (UTC)
-Received: from gondolin (dhcp-192-218.str.redhat.com [10.33.192.218])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D5DF85C240;
- Wed,  6 Nov 2019 17:55:26 +0000 (UTC)
-Date: Wed, 6 Nov 2019 18:55:24 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Heyi Guo <guoheyi@huawei.com>
-Subject: Re: [RFC v2 11/14] linux-headers/kvm.h: add capability to forward
- hypercall
-Message-ID: <20191106185524.0fe51c50.cohuck@redhat.com>
-In-Reply-To: <20191105091056.9541-12-guoheyi@huawei.com>
-References: <20191105091056.9541-1-guoheyi@huawei.com>
- <20191105091056.9541-12-guoheyi@huawei.com>
-Organization: Red Hat GmbH
+ (envelope-from <marcinguy@gmail.com>) id 1iSPd2-0006qN-DS
+ for qemu-arm@nongnu.org; Wed, 06 Nov 2019 13:02:01 -0500
+Received: from mail-vs1-xe2c.google.com ([2607:f8b0:4864:20::e2c]:39715)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <marcinguy@gmail.com>) id 1iSPd2-0006oQ-8N
+ for qemu-arm@nongnu.org; Wed, 06 Nov 2019 13:02:00 -0500
+Received: by mail-vs1-xe2c.google.com with SMTP id y129so16580287vsc.6
+ for <qemu-arm@nongnu.org>; Wed, 06 Nov 2019 10:02:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=nwlj6uiKUgzMCbTeGZiXPFxXjosIburAr5T/E5BOXKw=;
+ b=sKiTWxKFqYMYxwPWXxvae6ZjgCpmz6leF8hEc+jxSnAbWvg6/fZ8c4C72cU5sDVIgI
+ 1ZiUmH7meRWsYBTCTOQOjfgtEIKKCXTPTSjtu3tSRHNIgoCXhq8egroznxxuFNHX6Ddj
+ ijHHhPdCbczEOjLwgEUYD0bnbWPdVZ4Di3dReZ9imrnQ5/TkMGLtCJo8ntOa9J17B3aC
+ 8oiIGi64uW7vxKEpI1Tn2/5mXgZCjP3DCb9xph/oDtdY8BBQbKVhF+udUrd5OgGjiWGN
+ KcUAN2NI/CvlOm7dbFwF/uqOS4n0LLPpSCw+b3y+yO5E1bSXMkBIuTrHzB0gFfiv4dER
+ 3i5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=nwlj6uiKUgzMCbTeGZiXPFxXjosIburAr5T/E5BOXKw=;
+ b=mAa3fSVS5pDoVxmNCkv1ZyXu52H+lUsKstoc9HomoVQuL3uEU4IQiWXmCm+SbAirhY
+ D+4xrrGIs9PTOo0ZIcIA8jsVSGtJnnAkhN0YBy3FPxIsNg9ewlTvRQ32YRWjdZl8owEH
+ CMrQck7d13olcuTgtQuSUhmhyiCb6Uj+9hYA1uBwFMWROQADQ1dlUiPLJhBBIqcCgVdr
+ svf6YcueL3xxVgj23ZGLDtDFdpg+mUIu6cjoFfInMmtF1/s0SH+7lS0fXSl4Fi75iUrf
+ YonsixVpljtF4Xn9tpFEYyDDuB31ic8FpPbcdVtKVwrUw39VNMRGmVJvD6bo6xRwdo6q
+ 0wmw==
+X-Gm-Message-State: APjAAAWK37R2MCyCHDME31m741gT4oYeOZ9jP2TP/jmRYcK/4BT6bsbW
+ KwlAejoa0lR8VI8UUVNwnQ9uMGX9ZA/FUE5DYjm5BkVlWgs=
+X-Received: by 2002:a67:fbd9:: with SMTP id o25mr2058060vsr.70.1573063318952; 
+ Wed, 06 Nov 2019 10:01:58 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: 4s9pU-fJMAS0NcmNh66v8g-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+From: Marcin Kozlowski <marcinguy@gmail.com>
+Date: Wed, 6 Nov 2019 19:01:48 +0100
+Message-ID: <CAP6wrbU__y06GLKnTKpwtvwTyVW+77qmiMkxAB8n-+ABvPtBag@mail.gmail.com>
+Subject: Booting Android (Samsung) Kernel in QEMU
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000055df100596b158e2"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::e2c
+X-Mailman-Approved-At: Wed, 06 Nov 2019 16:48:37 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,59 +100,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, James Morse <james.morse@arm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com,
- Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9P2d3W2ONHO3
+X-TUID: Te78utq77Q63
 
-On Tue, 5 Nov 2019 17:10:53 +0800
-Heyi Guo <guoheyi@huawei.com> wrote:
+--00000000000055df100596b158e2
+Content-Type: text/plain; charset="UTF-8"
 
-> To keep backward compatibility, we add new KVM capability
-> "KVM_CAP_FORWARD_HYPERCALL" to probe whether KVM supports forwarding
-> hypercall to userspace.
->=20
-> The capability should be enabled explicitly, for we don't want user
-> space application to deal with unexpected hypercall exits. After
-> enabling this cap, all HVC calls unhandled by kvm will be forwarded to
-> user space.
->=20
-> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Cornelia Huck <cohuck@redhat.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Dave Martin <Dave.Martin@arm.com>
-> Cc: Marc Zyngier <marc.zyngier@arm.com>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: James Morse <james.morse@arm.com>
-> ---
->  linux-headers/linux/kvm.h |  1 +
->  target/arm/sdei.c         | 16 ++++++++++++++++
->  target/arm/sdei.h         |  2 ++
->  3 files changed, 19 insertions(+)
->=20
-> diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-> index 3d9b18f7f8..36c9b3859f 100644
-> --- a/linux-headers/linux/kvm.h
-> +++ b/linux-headers/linux/kvm.h
-> @@ -1000,6 +1000,7 @@ struct kvm_ppc_resize_hpt {
->  #define KVM_CAP_PMU_EVENT_FILTER 173
->  #define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
->  #define KVM_CAP_HYPERV_DIRECT_TLBFLUSH 175
-> +#define KVM_CAP_FORWARD_HYPERCALL 176
-> =20
->  #ifdef KVM_CAP_IRQ_ROUTING
+Hi list,
 
-Is this cap upstream already? I would have thought your header sync
-would have brought it in, then. (Saying this, that header sync looks
-awfully small.)
+Trying to boot a Samsung S7 Edge Kernel 3.18.x using QEMU
 
-If it is not upstream yet, please split off this hunk into a separate
-patch -- it's a bit annoying, but makes life easier for merging.
+/usr/local/bin/qemu-system-aarch64  -M virt -cpu cortex-a57  -kernel
+$HOME/s7boot/boot.emmc.win-zImage -initrd
+$HOME/s7boot/boot.emmc.win-ramdisk.gz -nographic
 
+Nothing happens
+
+Screen remains as it was.
+
+CPU is at 100% for QEMU process
+
+Using QEMU:
+
+/usr/local/bin/qemu-system-aarch64 --version
+QEMU emulator version 4.1.0
+Copyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers
+
+Trying it with -s -S
+
+ /usr/local/bin/qemu-system-aarch64  -M virt -cpu cortex-a57  -kernel
+$HOME/s7boot/boot.emmc.win-zImage -initrd
+$HOME/s7boot/boot.emmc.win-ramdisk.gz -nographic -s -S
+
+GDB
+
+Type "apropos word" to search for commands related to "word".
+(gdb) target remote:1234
+Remote debugging using :1234
+warning: while parsing target description (at line 1): Target description
+specified unknown architecture "aarch64"
+warning: Could not load XML target description; ignoring
+0x00000000 in ?? ()
+(gdb) cont
+Continuing.
+^C
+Program received signal SIGINT, Interrupt.
+0x40080000 in ?? ()
+(gdb) cont
+Continuing.
+
+So I guess it get stuck at 0x4008000
+
+Anyway .... I tried several Kernels (downloaded from device, LineageOS,
+Some other custom, also compiled one from Samsung Sources) with no luck.
+
+Question:
+
+Anybody booted  Android Kernel/Samsung in QEMU?
+
+
+Thanks,
+
+P.S Also asked this on StackOverflow here:
+https://stackoverflow.com/questions/58688656/booting-android-samsung-kernel-in-qemu
+
+--00000000000055df100596b158e2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi list,</div><div><br></div><div>Trying to boot a Sa=
+msung S7 Edge Kernel 3.18.x using QEMU</div><br>/usr/local/bin/qemu-system-=
+aarch64 =C2=A0-M virt -cpu cortex-a57 =C2=A0-kernel $HOME/s7boot/boot.emmc.=
+win-zImage -initrd $HOME/s7boot/boot.emmc.win-ramdisk.gz -nographic<br><br>=
+Nothing happens<br><br>Screen remains as it was.<br><br>CPU is at 100% for =
+QEMU process<br><br>Using QEMU:<br><br>/usr/local/bin/qemu-system-aarch64 -=
+-version<br>QEMU emulator version 4.1.0<br>Copyright (c) 2003-2019 Fabrice =
+Bellard and the QEMU Project developers<br><br>Trying it with -s -S<br><br>=
+=C2=A0/usr/local/bin/qemu-system-aarch64 =C2=A0-M virt -cpu cortex-a57 =C2=
+=A0-kernel $HOME/s7boot/boot.emmc.win-zImage -initrd $HOME/s7boot/boot.emmc=
+.win-ramdisk.gz -nographic -s -S<br><br>GDB<br><br>Type &quot;apropos word&=
+quot; to search for commands related to &quot;word&quot;.<br>(gdb) target r=
+emote:1234<br>Remote debugging using :1234<br>warning: while parsing target=
+ description (at line 1): Target description specified unknown architecture=
+ &quot;aarch64&quot;<br>warning: Could not load XML target description; ign=
+oring<br>0x00000000 in ?? ()<br>(gdb) cont<br>Continuing.<br>^C<br>Program =
+received signal SIGINT, Interrupt.<br>0x40080000 in ?? ()<br>(gdb) cont<br>=
+Continuing.<br><br>So I guess it get stuck at 0x4008000<br><br>Anyway .... =
+I tried several Kernels (downloaded from device, LineageOS, Some other cust=
+om, also compiled one from Samsung Sources) with no luck.<br><br>Question:<=
+br><br><div>Anybody booted=C2=A0 Android Kernel/Samsung in QEMU?</div><div>=
+<br></div><br><div>Thanks,</div><div><br></div><div>P.S Also asked this on =
+StackOverflow here: <br></div><div><a href=3D"https://stackoverflow.com/que=
+stions/58688656/booting-android-samsung-kernel-in-qemu">https://stackoverfl=
+ow.com/questions/58688656/booting-android-samsung-kernel-in-qemu</a></div><=
+div><br></div><br></div>
+
+--00000000000055df100596b158e2--

@@ -1,134 +1,173 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp2691016wrh;
-        Mon, 6 May 2019 10:58:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyHczEofrIvy3VoqmEKeh1P7RjDzy743reVXa1IBvtRUHrETQ2ME/k/VCG0NcCsQ6S6WzEM
-X-Received: by 2002:adf:f309:: with SMTP id i9mr18707968wro.258.1557165491643;
-        Mon, 06 May 2019 10:58:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557165491; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp860486wri;
+        Thu, 7 Nov 2019 03:57:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxpjq2xjQf3a7XMvxQ90O3LoPAbsJz8kX3VindcqncPuoNIM5NqRFaACCQ9JsFs/0F2wKsB
+X-Received: by 2002:a05:620a:90a:: with SMTP id v10mr2290786qkv.195.1573127869867;
+        Thu, 07 Nov 2019 03:57:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573127869; cv=none;
         d=google.com; s=arc-20160816;
-        b=PO3oYwZWBva/RmrTPQoF+odOjMQIeMuPJHa2DAfA2lYSUEpj71wnrdymVWEyLJHXfq
-         AjmWeDK1rXTTX9fP8p7QnWNoQVm3c33J7UL08nY2PtGB8IF/DAu08t+z+5KGTfi+oUw7
-         +MRCz+s1ZdIEP/zElLz7DJAa2SP1V0hVdCILFUfIYVoZlAn6sVcVxs5yEb9R+u8bQFmL
-         21HSFzLo5OybfLKp2Sgo6qaN6gVPKm4hHTK6DwDvCLFpRJsHgskYyw5DOixr4D9P/7ua
-         AeG3zTWkAW1gqxn/MQdMMbxcfikuVOudUK6T2GoS/60kM9hSLMidnGxnGLCiJbO9RWqL
-         ubGg==
+        b=zix36e/FQtpTvTdul9mC2iLs0H45cDcIeSA249L96oCUuPvfU4RyjTmunRd8IZk/Ox
+         jVNPuMpoR9wCwWn+Q8ttuTQ9lgZX8yYRbyOP5NXVVzy29W2cL459DHQeaPHl0RDsrmXV
+         xART1C/GuRehFKaiOc6/nhq8CJ0RKNamHJ/F89Qn5A2Pd+swO71mt1JSe7T81hX/jWMz
+         OvbLHwMkKKx/ARFq5qXqHdzQI8tmPXzO3XRXrhF1xDl250F++qfYRvLYnKKyJqPIvtvR
+         Cph/Vo9opttqqhqslm6ngkaW+9Y+jHroES7qSlaC2h4GM/dDQN2DDDX0r5gyMH1c/gv9
+         1C4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=36Fsn3xcHSFGDQA4my1eogQjONmqZJI9mRQYBJ8NslY=;
-        b=K831yEXJo1HdykUXUbL7yGaU/CeKFSJb9yoGL9KAh4299k8tOrYzC9RZ10yeuBO/8O
-         JD6UQUiVO8R1IhiQ+bm86sbEGtbmPHw6zmwirAGblSm7+LhOvNMrRSYWlbGJsrAwr4wm
-         Gk5rcEqVdnF8W13ZMvqUBnJzI4G1DnvVYbHO+VQwjFC5qVC3ONUkHSVpk2spvw7SZSho
-         uujJV8H3eTbOHDTBPx2t5mvjwpNjOJBnfAhXD7fj53vH3yvODRu2lQk4OntNEKe4nQZ3
-         vMXrimLi1JqTyzWhANLRMUobrLPIlI1NLndGi0XLN3if4Xv2+l3hH40MB3dOEW8V+OTB
-         NULQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=JnnDLttzHLpwMxaQ+0dMp7sILf4cUbDybYytJ5MiziU=;
+        b=FlRobsFlnpcxudzYEqjnPTtb3IRR8TBunHZj1ru16beJ7qIXjjl2kuCUHXNaNHjYdx
+         aqy1MB47hEmf5e86ohsj578iBjw8NDpTf0/3Hb10NEODdu8f/1RXWlFlpvTjmoRP0EHU
+         oR45sV9eP9lQe37IQGiL1/F18hVVsgtohD7unU0TTuE9f7e6dT/HrvyudHivs+lOUda1
+         QZQfzJR+7E3CIiT8yJI42mchgIalwCDiZODxnoSp2e3Q0IQwtMQGsKou9jNdTxip/G91
+         ibr6EWzVfkxJ9y0DB4IZ4jnjaSa+VU/vsHleTK8GrCBKmRcdsTyEU3xKH38a4tNAiz0u
+         QJ1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vw9LG8YZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j16si336327wrm.457.2019.05.06.10.58.11
+        by mx.google.com with ESMTPS id z18si912547qka.214.2019.11.07.03.57.49
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 May 2019 10:58:11 -0700 (PDT)
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 07 Nov 2019 03:57:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vw9LG8YZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:60256 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41298 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hNhsQ-0004rH-M7
-	for alex.bennee@linaro.org; Mon, 06 May 2019 13:58:10 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45007)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hNhl1-0007Mh-91
-	for qemu-arm@nongnu.org; Mon, 06 May 2019 13:50:32 -0400
+	id 1iSgQ9-0003aQ-5G
+	for alex.bennee@linaro.org; Thu, 07 Nov 2019 06:57:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53218)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <guoheyi@huawei.com>) id 1iSgQ0-0003V4-Sd
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2019 06:57:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hNhl0-0005IO-EI
-	for qemu-arm@nongnu.org; Mon, 06 May 2019 13:50:31 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:35681)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hNhl0-0005HY-9y
-	for qemu-arm@nongnu.org; Mon, 06 May 2019 13:50:30 -0400
-Received: by mail-oi1-x242.google.com with SMTP id w197so10282846oia.2
-	for <qemu-arm@nongnu.org>; Mon, 06 May 2019 10:50:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=36Fsn3xcHSFGDQA4my1eogQjONmqZJI9mRQYBJ8NslY=;
-	b=vw9LG8YZhh2+iuiqdt1IJCehylR9CoKkbnHxGgBKjE9vI1YeGkbF8kqn7aRgBNKhdZ
-	06gydMfP8HCI/HphHgKYP4ySaGy2BQhWtEn5e59z3IznfeIcjiIh/CJtr2qBiyKwsUxC
-	bfZ8Ghv48EPwZBhnV/ATYBRFn0Dzm/r2/Vd+XEy0cJX7Tq2ur+QTGvvM5tHqjCjFAzyA
-	1n8AhS8rkjfJhUk7Uqb8JjAJBpldl9Ab2jgvFmRlxjJ5S6jd5RPd4ARKTSXNdRXWz569
-	5imlKtajIBk5/Vjrr/X1DTa5x9vZoIO+sLSgBagTHrjc964umTY7+OOkC4JyqxADZwOU
-	ywAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=36Fsn3xcHSFGDQA4my1eogQjONmqZJI9mRQYBJ8NslY=;
-	b=kShFm69jGRT4MfLnzIyQmW56fbp1vW2MsdjpmLpjY28+lsz0ln3JZ0gWqSpOHPAk+j
-	eliOTPZ2r8w3/Ba7XyDO/+VBEW7ihTQsmbPt6tNMWOgfcrIoaeuvJrD6+g6IhOM2Gjv2
-	O9hKuk4eyg9EXg0KvntOePr0oygOPGTgKAaHRn1gEeHuvelpQMNH1CIBt7MS+TgdV/73
-	Z0z1E/tr2mvi2nJmZ05hX9VjMMuf97h7/4qSHarNQQ22fiC4uYrvpQmZVExjQyHW1sKZ
-	mwhF1YIIhSooKlvWJV8AL2H39RNJHlTPGGG2+bUsRhwxwAAtSrEz3Cqc8mCmtyxEtIdT
-	L+yA==
-X-Gm-Message-State: APjAAAVXD+BAl8bn+5wFZTyPXOZgA2Dqyc1P0VnFL3E7CUDCWcweSBMb
-	8+HkpvOoH46af3qdkyRQbOc6FMxnMXiSnGthFy2H0Q==
-X-Received: by 2002:aca:b3c2:: with SMTP id c185mr2076049oif.98.1557165028822; 
-	Mon, 06 May 2019 10:50:28 -0700 (PDT)
+ (envelope-from <guoheyi@huawei.com>) id 1iSgPy-0001Cd-EZ
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2019 06:57:40 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:48724 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1iSgPy-000178-2k; Thu, 07 Nov 2019 06:57:38 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id E310182D411826A41F90;
+ Thu,  7 Nov 2019 19:57:31 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.439.0; Thu, 7 Nov 2019
+ 19:57:23 +0800
+Subject: Re: [RFC v2 11/14] linux-headers/kvm.h: add capability to forward
+ hypercall
+To: "Michael S. Tsirkin" <mst@redhat.com>
+References: <20191105091056.9541-1-guoheyi@huawei.com>
+ <20191105091056.9541-12-guoheyi@huawei.com>
+ <20191106185524.0fe51c50.cohuck@redhat.com>
+ <4dbcbd18-0e6c-f985-c36d-96df65331d11@huawei.com>
+ <20191107035624-mutt-send-email-mst@kernel.org>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <da720295-2a84-e38b-9828-5287daefcfa2@huawei.com>
+Date: Thu, 7 Nov 2019 19:57:22 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-References: <CAAVaN8zqOM4Fz3NfJ1gL9-G8WCBQyBt+p+Fgnrj3kgUwx2cKiA@mail.gmail.com>
-	<CAFEAcA_YU-MdnrCcSTyL3b93wTCCDzN0GcbSRe28ZPh14FPB6A@mail.gmail.com>
-	<CAAVaN8xxU7ZzDZ=-TMe8_U5z8Zoiq4ny-Z1VK8bgUyAJ8YdPXg@mail.gmail.com>
-In-Reply-To: <CAAVaN8xxU7ZzDZ=-TMe8_U5z8Zoiq4ny-Z1VK8bgUyAJ8YdPXg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 May 2019 18:50:17 +0100
-Message-ID: <CAFEAcA8cYs2Z2viWy9GGF=9=k--h4+cZizdSc5bpaibuAzurrQ@mail.gmail.com>
-To: Andy Ng <andreas2025@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-arm] qemu-system-arm with GPU support for QT with OpenGL
- on
+In-Reply-To: <20191107035624-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.23
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ James Morse <james.morse@arm.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o37pllVhvJQr
+X-TUID: 9cPxzqxr/IYo
 
-On Sun, 5 May 2019 at 18:46, Andy Ng <andreas2025@gmail.com> wrote:
-> But I get the error "Guest has not initialised the display (yet)"
 
-This just means that the guest OS has not done anything
-to draw to the screen. The problem is almost certainly
-in the configuration of the guest (ie either the kernel has
-not got the support compiled in for the pci controller or
-the virtio subsystem or the virtio-gpu, or it's not configured
-to try to use it for a console). Check the kernel logs to
-see if the guest has successfully probed for the pci
-controller and whether it knows about the virtio devices
-plugged into it.
 
-PS: -device virtio-blk-device is using virtio-mmio,
-but -device virtio-gpu is using virtio-pci. It should be
-possible to use both at once, but it's a bit weird --
-usually you'd just use one of them (virtio-pci is
-recommended).
+On 2019/11/7 16:57, Michael S. Tsirkin wrote:
+> On Thu, Nov 07, 2019 at 09:44:36AM +0800, Guoheyi wrote:
+>>
+>> On 2019/11/7 1:55, Cornelia Huck wrote:
+>>> On Tue, 5 Nov 2019 17:10:53 +0800
+>>> Heyi Guo <guoheyi@huawei.com> wrote:
+>>>
+>>>> To keep backward compatibility, we add new KVM capability
+>>>> "KVM_CAP_FORWARD_HYPERCALL" to probe whether KVM supports forwarding
+>>>> hypercall to userspace.
+>>>>
+>>>> The capability should be enabled explicitly, for we don't want user
+>>>> space application to deal with unexpected hypercall exits. After
+>>>> enabling this cap, all HVC calls unhandled by kvm will be forwarded to
+>>>> user space.
+>>>>
+>>>> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+>>>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>>>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+>>>> Cc: Cornelia Huck <cohuck@redhat.com>
+>>>> Cc: Paolo Bonzini <pbonzini@redhat.com>
+>>>> Cc: Dave Martin <Dave.Martin@arm.com>
+>>>> Cc: Marc Zyngier <marc.zyngier@arm.com>
+>>>> Cc: Mark Rutland <mark.rutland@arm.com>
+>>>> Cc: James Morse <james.morse@arm.com>
+>>>> ---
+>>>>    linux-headers/linux/kvm.h |  1 +
+>>>>    target/arm/sdei.c         | 16 ++++++++++++++++
+>>>>    target/arm/sdei.h         |  2 ++
+>>>>    3 files changed, 19 insertions(+)
+>>>>
+>>>> diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+>>>> index 3d9b18f7f8..36c9b3859f 100644
+>>>> --- a/linux-headers/linux/kvm.h
+>>>> +++ b/linux-headers/linux/kvm.h
+>>>> @@ -1000,6 +1000,7 @@ struct kvm_ppc_resize_hpt {
+>>>>    #define KVM_CAP_PMU_EVENT_FILTER 173
+>>>>    #define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
+>>>>    #define KVM_CAP_HYPERV_DIRECT_TLBFLUSH 175
+>>>> +#define KVM_CAP_FORWARD_HYPERCALL 176
+>>>>    #ifdef KVM_CAP_IRQ_ROUTING
+>>> Is this cap upstream already? I would have thought your header sync
+>>> would have brought it in, then. (Saying this, that header sync looks
+>>> awfully small.)
+>>>
+>>> If it is not upstream yet, please split off this hunk into a separate
+>>> patch -- it's a bit annoying, but makes life easier for merging.
+>> No, it is not upstream yet. The whole framework and interfaces between KVM
+>> and qemu are still under discussion. I'll keep in mind of this when moving
+>> forward to next steps...
+>>
+>> Thanks,
+>> HG
+> It's best to add it in some other place meanwhile.
+Do you mean to split this patch from the whole patch set and send it 
+separately? Sorry I'm not clear about maintainers' work and may bring 
+you some trouble...
 
-thanks
--- PMM
+Thanks,
+HG
+
+> Then we can drop it when it's in an upstream header.
+>
+>
+>>>
+>>> .
+>>>
+> .
+>
+
+

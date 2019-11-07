@@ -1,205 +1,185 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp879215wri;
-        Thu, 7 Nov 2019 04:13:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzpi/I8Nw8TZeN4UfzbrrRE9tyFzKKNQ/zf2Mnnng75swDAK/kyb6eFIVtc0GyDU91Jh1YO
-X-Received: by 2002:a50:b558:: with SMTP id z24mr3141820edd.67.1573128784322;
-        Thu, 07 Nov 2019 04:13:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573128784; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1058337wri;
+        Thu, 7 Nov 2019 06:41:41 -0800 (PST)
+X-Received: by 2002:a6b:ef0d:: with SMTP id k13mr3812839ioh.220.1573137701654;
+        Thu, 07 Nov 2019 06:41:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573137701; cv=none;
         d=google.com; s=arc-20160816;
-        b=NOcSBqozPmijeD7wG+xwSdgXOIB9RFPKkOhWc1AzHu+TYYIrvlR9okH+qkTDvNQuig
-         kEqDPnr59fN0MRoNpyKFZ81ZVbGrZQhEvzAQGkjlGpVJE/0WZUgB38fUB/UHZ7SbSV3A
-         rnjZYipqG8fYsbTHE+2N+BQ+ZKX08J7eF9tcntmuXkSSFZZHsIhibPm6cuthZm9n7xjj
-         HmVlLToxRw1g8xgKV2CbR+Yc8NkfKDkjwHR/LIskL0DoU3edHDbBPCFHhVCaDkH4gLVg
-         YjA02tFwR6glJ8oHgb9MhhP5P5OpCHepY12H8SMXkMbUzcfgwkkmLiFLXcAo22GVXOqX
-         FSlw==
+        b=nGt7d8yw3PfNJThftTe3kVal8RW534HHE6z7Rx4rwjFrrwivaNkrmk4vikprbk4Ota
+         4QgbTpZS5IJ2Y2+y2uGog3e7HZxIgeN45hO78yr4guROR+0Jip5aepPGFi3NbiTRW05u
+         uKs+1K62O8H6+4PnHhnGvcy8+tS9ltv3rQuIIjvOQCCKtmBDCBPy+82Nef9CCzOjkXsq
+         QQzG9kus3MM8/RKO/9RS0eGkVWumMUxBlgOElY6hNImDm+1cyI5bh/n5LiSvbv+lcz5C
+         khKt4NLLQwP/mhmM1Vb6eIo13YhgoeYBVX7G9VgLfn/NHdpGAEsjjmcEJGFGJXCDbBSY
+         IyVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=It6V3UM/dbrCXbVlN6LCxs/ovMmz5vJ2AooEt0KlmFw=;
-        b=GB0avd1FJEWGfhrMqN9Fp4Z5+bWbUfZ/HN8a8Llr0YEKP0MgxE0xxiyQrZurJb4VlJ
-         RdJWn3FwxmBojRO5QfuD/RWbx2TBDH8bACekFf6l5e3/JdPBtZJR7sNBE3N9z/NVXaEg
-         2uAndwj9pdlUzAHZA6dZe7ZWGlrV7unyEdrH/jTo/VYKkbh4On3EMC4wqUbtBjC24bKg
-         VRzfI0ZE2RlddvrfHtbrROgFlT8IIF71bGfYSx3127qkauRNOqVZmd9JFjgpLhMiVnbB
-         xzkmrwnxkNQiaehDd0+D39LU2yOmfzN+5uiRB61hBkEbwWtOAdk+mZjNPuRg9YHfRYBB
-         Gd9w==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=beurS30dVz2/YuV7ui9xnfzvdQ87X84xaIMxSAmPcls=;
+        b=s5iQ1Dw8iDZ3IbMX22rX6BvAvsLPg8e4eDA6+taIBRNXApfQNVJv2nQziILs5x4nlj
+         33cF37/NvZaNuAhdK1kdfzr9seeZp6YWhD9qiVWo9j3v0In+X1mdA9UTg7UDwlEQSmQx
+         8MmuXkhy9Kp4dFlKu0ALGcRSHlLiwL5zQl16H6q2aHqlAYfEQZ2BSk9tOeaYifxW5Udw
+         v4pKynf4esADNlwEBxnft8ypwwhK9K2zY3odfQE3+u6EU8OFEQ5LSHTg9gNi74ANtsZD
+         /JzH6E6tFTaCxBZ75geGpC1zuKEtMqKAm2MsD8FjlDLtLy8fN8TPTCqwdz2DQyP2LUJl
+         ODGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mu4MxBqe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 24si1498946eje.293.2019.11.07.04.13.04
+       dkim=pass header.i=@linaro.org header.s=google header.b=O8qXDfuK;
+       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <beata.michalska@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 27sor2499688ilx.105.2019.11.07.06.41.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Nov 2019 04:13:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 07 Nov 2019 06:41:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mu4MxBqe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41454 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iSgeq-0004R6-7A
-	for alex.bennee@linaro.org; Thu, 07 Nov 2019 07:13:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55387)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1iSgeJ-0004Pn-LD
- for qemu-arm@nongnu.org; Thu, 07 Nov 2019 07:12:29 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1iSgeH-00083y-Us
- for qemu-arm@nongnu.org; Thu, 07 Nov 2019 07:12:27 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:34869
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1iSgeH-0007xR-KQ
- for qemu-arm@nongnu.org; Thu, 07 Nov 2019 07:12:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573128744;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=It6V3UM/dbrCXbVlN6LCxs/ovMmz5vJ2AooEt0KlmFw=;
- b=Mu4MxBqePUiJwsI21ZdP6VPSR6aXbvIEKwcOwa9tVyuXYRFh5zgP2aZ3dVJUfwhl6rLE16
- sHia+wZvfxujwjH/NxfXbz6sTqN8ttfS7VL68T/Snw7FYdUuibp6untNIDMBDR7Mrj/tX1
- rcesQQ+YGIZluOMoEm1+YmOa0UAsBdY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-432-IIwgu445NTusestkhKdMeg-1; Thu, 07 Nov 2019 07:12:20 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 17FBE107ACC3;
- Thu,  7 Nov 2019 12:12:19 +0000 (UTC)
-Received: from gondolin (ovpn-117-222.ams2.redhat.com [10.36.117.222])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A32A75D6D8;
- Thu,  7 Nov 2019 12:12:13 +0000 (UTC)
-Date: Thu, 7 Nov 2019 13:12:10 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Guoheyi <guoheyi@huawei.com>
-Subject: Re: [RFC v2 11/14] linux-headers/kvm.h: add capability to forward
- hypercall
-Message-ID: <20191107131210.26acf011.cohuck@redhat.com>
-In-Reply-To: <da720295-2a84-e38b-9828-5287daefcfa2@huawei.com>
-References: <20191105091056.9541-1-guoheyi@huawei.com>
- <20191105091056.9541-12-guoheyi@huawei.com>
- <20191106185524.0fe51c50.cohuck@redhat.com>
- <4dbcbd18-0e6c-f985-c36d-96df65331d11@huawei.com>
- <20191107035624-mutt-send-email-mst@kernel.org>
- <da720295-2a84-e38b-9828-5287daefcfa2@huawei.com>
-Organization: Red Hat GmbH
+       dkim=pass header.i=@linaro.org header.s=google header.b=O8qXDfuK;
+       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=beurS30dVz2/YuV7ui9xnfzvdQ87X84xaIMxSAmPcls=;
+        b=O8qXDfuKMgswevczNlpe51sEmIimUjl7BTsjfkRsxNNIujN4GCigmcBfF/Zln7XhWs
+         IaYhPCk310t7WAjYEXq8E6Jy1z+HzDHowzJIHV/T1BKL/cLzfvV8Pfz+Iib8PaduxdkD
+         on6eDttUwYXejGL7z6H0YkWsW6Vgh0gcVzxrq09+fFhMcGqj0sxsoKWinLJpBL5i4fMG
+         aedz7P0qSZpmtAyGBFVY1MFycViFf5nGWSwyJdDiurzto0bJ/hRp3cAvQWsO3YYZFtdq
+         qaxlV7H7oYakMUMCWrUeWnndbjB18GeZUVPsjlV89IFAfBkJPP5qKIOGIetlayWueLzB
+         +oug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=beurS30dVz2/YuV7ui9xnfzvdQ87X84xaIMxSAmPcls=;
+        b=I5BAeY43/d3EDRLUC9/zt2UAUOONWhPVQs3OZQwl5oCZaQRuVtkfUci/hJunbn1oq1
+         SbgdX+XUON5GmcuILB4XA6YFaDWk6eZBnhoPYqjY83zNX4nvDumx52nExTIbp7Had1/b
+         5UsJqWMov9Yo5qP4PYEmleevM0oxKmEcGWZd0k9CpSRmM68rR4jYP/x/gGNnrJJW/chX
+         a7bqM2oW1xL6hMyteeU39t/gDFSPiJH/bmARUEE1NbJ44KkdDnhn8xptsA3UY+u/PVB8
+         DH2dfh/KCvmISTCTl8WTcBKgzI97GjmUxOX7TCEBZyMMYHz44shkKCFFZGOrYMbtdOow
+         8H7g==
+X-Gm-Message-State: APjAAAW1f//kRtdjG+oYoXq2MM0In+UD8F7ZZHx1zw7QL6spLQVkiIvr
+	n7iJzpbpLHNPkWszMKCRQvO4N24e9p8aHuFPCqJGFTgS
+X-Google-Smtp-Source: APXvYqzK3KJBelcRjH/eBhtaIbfS9XsunYhYvVDHKr84kv7NYPNjEPj49Mp2C7wf/YnNe3dEV485cFDsT6E5JmMeCFQ=
+X-Received: by 2002:a92:60b:: with SMTP id x11mr3091170ilg.69.1573137701158;
+ Thu, 07 Nov 2019 06:41:41 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: IIwgu445NTusestkhKdMeg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, James Morse <james.morse@arm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com,
- Dave Martin <Dave.Martin@arm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4Qu+MRmJsMFZ
+References: <20191105234100.22052-1-beata.michalska@linaro.org>
+ <20191105234100.22052-3-beata.michalska@linaro.org> <5c75bd31-213f-88a4-2eee-0046f99f65fe@linaro.org>
+In-Reply-To: <5c75bd31-213f-88a4-2eee-0046f99f65fe@linaro.org>
+From: Beata Michalska <beata.michalska@linaro.org>
+Date: Thu, 7 Nov 2019 14:41:29 +0000
+Message-ID: <CADSWDztHetgmbUOp4WyRAkR0daAG6kkwhUTcyKWiCTWHQ1XB=w@mail.gmail.com>
+Subject: Re: [PATCH v2 2/4] Memory: Enable writeback for given memory region
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	pbonzini@redhat.com, quintela@redhat.com, 
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, eric.auger@redhat.com, 
+	shameerali.kolothum.thodi@huawei.com
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: lRtgiuxMYQYq
 
-On Thu, 7 Nov 2019 19:57:22 +0800
-Guoheyi <guoheyi@huawei.com> wrote:
+On Wed, 6 Nov 2019 at 12:20, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 11/6/19 12:40 AM, Beata Michalska wrote:
+> > +void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t length)
+> > +{
+> > +    void *addr = ramblock_ptr(block, start);
+> > +
+> > +    /*
+> > +     * The requested range might spread up to the very end of the block
+> > +     */
+> > +    if ((start + length) > block->used_length) {
+> > +        qemu_log("%s: sync range outside the block boundaries: "
+> > +                     "start: " RAM_ADDR_FMT " length: " RAM_ADDR_FMT
+> > +                     " block length: " RAM_ADDR_FMT " Narrowing down ..." ,
+> > +                     __func__, start, length, block->used_length);
+> > +        length = block->used_length - start;
+> > +    }
+>
+> qemu_log_mask w/ GUEST_ERROR?  How do we expect the length to overflow?
 
-> On 2019/11/7 16:57, Michael S. Tsirkin wrote:
-> > On Thu, Nov 07, 2019 at 09:44:36AM +0800, Guoheyi wrote: =20
-> >>
-> >> On 2019/11/7 1:55, Cornelia Huck wrote: =20
-> >>> On Tue, 5 Nov 2019 17:10:53 +0800
-> >>> Heyi Guo <guoheyi@huawei.com> wrote:
-> >>> =20
-> >>>> To keep backward compatibility, we add new KVM capability
-> >>>> "KVM_CAP_FORWARD_HYPERCALL" to probe whether KVM supports forwarding
-> >>>> hypercall to userspace.
-> >>>>
-> >>>> The capability should be enabled explicitly, for we don't want user
-> >>>> space application to deal with unexpected hypercall exits. After
-> >>>> enabling this cap, all HVC calls unhandled by kvm will be forwarded =
-to
-> >>>> user space.
-> >>>>
-> >>>> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-> >>>> Cc: Peter Maydell <peter.maydell@linaro.org>
-> >>>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> >>>> Cc: Cornelia Huck <cohuck@redhat.com>
-> >>>> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> >>>> Cc: Dave Martin <Dave.Martin@arm.com>
-> >>>> Cc: Marc Zyngier <marc.zyngier@arm.com>
-> >>>> Cc: Mark Rutland <mark.rutland@arm.com>
-> >>>> Cc: James Morse <james.morse@arm.com>
-> >>>> ---
-> >>>>    linux-headers/linux/kvm.h |  1 +
-> >>>>    target/arm/sdei.c         | 16 ++++++++++++++++
-> >>>>    target/arm/sdei.h         |  2 ++
-> >>>>    3 files changed, 19 insertions(+)
-> >>>>
-> >>>> diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-> >>>> index 3d9b18f7f8..36c9b3859f 100644
-> >>>> --- a/linux-headers/linux/kvm.h
-> >>>> +++ b/linux-headers/linux/kvm.h
-> >>>> @@ -1000,6 +1000,7 @@ struct kvm_ppc_resize_hpt {
-> >>>>    #define KVM_CAP_PMU_EVENT_FILTER 173
-> >>>>    #define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
-> >>>>    #define KVM_CAP_HYPERV_DIRECT_TLBFLUSH 175
-> >>>> +#define KVM_CAP_FORWARD_HYPERCALL 176
-> >>>>    #ifdef KVM_CAP_IRQ_ROUTING =20
-> >>> Is this cap upstream already? I would have thought your header sync
-> >>> would have brought it in, then. (Saying this, that header sync looks
-> >>> awfully small.)
-> >>>
-> >>> If it is not upstream yet, please split off this hunk into a separate
-> >>> patch -- it's a bit annoying, but makes life easier for merging. =20
-> >> No, it is not upstream yet. The whole framework and interfaces between=
- KVM
-> >> and qemu are still under discussion. I'll keep in mind of this when mo=
-ving
-> >> forward to next steps...
-> >>
-> >> Thanks,
-> >> HG =20
-> > It's best to add it in some other place meanwhile. =20
-> Do you mean to split this patch from the whole patch set and send it=20
-> separately? Sorry I'm not clear about maintainers' work and may bring=20
-> you some trouble...
+In theory it shouldn't, at least with current usage.
+I guess the probe_access will make sure of that.
+This was more of a precaution to enable catching potential/future misuses
+aka debugging purpose. I can get rid of that it that's playing too safe.
 
-My preferred approach:
+>
+> > +#ifdef CONFIG_LIBPMEM
+> > +    /* The lack of support for pmem should not block the sync */
+> > +    if (ramblock_is_pmem(block)) {
+> > +        pmem_persist(addr, length);
+> > +    } else
+> > +#endif
+>
+> Perhaps better to return out of that if block than have the dangling else.
 
-- add a commit entitled "placeholder for headers update" that contains
-  the not-yet-upstream changes in the header files you need
-- base the rest of your work on that
-...
-<review happens, series looks good>
-...
-- if kernel changes are upstream: replace the placeholder patch with a
-  real update (may include separate patches, if you need an additional
-  header); maintainer merges
-- if kernel changes are not yet upstream: maintainer merges with
-  placeholder to a feature branch, replaces with real update and merges
-  once kernel patches hit upstream
-(not every maintainer does the second approach; they may ask you
-instead to resend with a proper headers update once the kernel changes
-are upstream)
+Good idea
+>
+> > +/**
+> > + * Sync changes made to the memory mapped file back to the backing
+> > + * storage. For POSIX compliant systems this will simply fallback
+> > + * to regular msync call (thus the required alignment). Otherwise
+> > + * it will trigger whole file sync (including the metadata case
+> > + * there is no support to skip that otherwise)
+> > + *
+> > + * @addr   - start of the memory area to be synced
+> > + * @length - length of the are to be synced
+> > + * @align  - alignment (expected to be PAGE_SIZE)
+> > + * @fd     - file descriptor for the file to be synced
+> > + *           (mandatory only for POSIX non-compliant systems)
+> > + */
+> > +int qemu_msync(void *addr, size_t length, size_t align, int fd)
+> > +{
+> > +#ifdef CONFIG_POSIX
+> > +    size_t align_mask;
+> > +
+> > +    /* Bare minimum of sanity checks on the alignment */
+> > +    /* The start address needs to be a multiple of PAGE_SIZE */
+> > +    align = MAX(align, qemu_real_host_page_size);
+> > +    align_mask = ~(qemu_real_host_page_size - 1);
+> > +    align = (align + ~align_mask) & align_mask;
+> > +
+> > +    align_mask = ~(align - 1);
+>
+> I don't understand what you're trying to do with align.
+>
+> You pass in qemu_host_page_size from the one caller, and then adjust it for
+> qemu_real_host_page_size?
+>
+> Why pass in anything at all, and just use qemu_real_host_page_mask?
 
+The qemu_msync was supposed to be generic and not tied to current use case
+without any assumptions on the alignment and whether that would  be an actual
+host page size. So that was just to make sure it will be a multiple of that.
+I can get rid of that with assumption all will be using the same alignment.
+
+BR
+Beata
+>
+> > +    /**
+> > +     * There are no strict reqs as per the length of mapping
+> > +     * to be synced. Still the length needs to follow the address
+> > +     * alignment changes. Additionally - round the size to the multiple
+> > +     * of requested alignment (expected as PAGE_SIZE)
+> > +     */
+> > +    length += ((uintptr_t)addr & (align - 1));
+> > +    length = (length + ~align_mask) & align_mask;
+> > +
+> > +    addr = (void *)((uintptr_t)addr & align_mask);
+> > +
+> > +    return msync(addr, length, MS_SYNC);
+> > +#else /* CONFIG_POSIX */
+> > +    /**
+> > +     * Perform the sync based on the file descriptor
+> > +     * The sync range will most probably be wider than the one
+> > +     * requested - but it will still get the job done
+> > +     */
+> > +    return qemu_fdatasync(fd);
+> > +#endif /* CONFIG_POSIX */
+> > +}
+>
+>
+> r~
+>

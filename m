@@ -1,259 +1,162 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3360661wrh;
-        Tue, 7 May 2019 01:25:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwjBsrAYu4ouO+7G/yzKoe9RzbNChN8U5y5LrS65eIEEq60iZ6hmXEQBeLm5p+6XxgcPwRu
-X-Received: by 2002:a7b:cb85:: with SMTP id m5mr4170070wmi.75.1557217502981;
-        Tue, 07 May 2019 01:25:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557217502; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1400805wri;
+        Thu, 7 Nov 2019 11:11:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxxXhIXyb0qqocbhm4abfw8CmA7gBQvrNOXr3TaB+LxGRkwUwX3RtIy+emNIAQnbDnK0OPE
+X-Received: by 2002:a50:8969:: with SMTP id f38mr5443114edf.211.1573153900772;
+        Thu, 07 Nov 2019 11:11:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573153900; cv=none;
         d=google.com; s=arc-20160816;
-        b=GG60LG9D+zLoBB8DfqyoJ0kbY9BFTXfac330/hf49fTpVBLjsCda0kYYXX4c4UbmOk
-         2r0GbMFzrPZM+ptmFrR6qijPXCBwBjwRA2gFgE8xiDJqaTGvsmiOvLKQjVtzqyE8AJOR
-         CouiD3k3AmCwb1hUZvQUexc/6m8h+tZNRlz45IzzHI7UagVWqrXQKEms5rOsry17m9TF
-         obXboMdf4EyJlD11VA51FL+2GJE+0M65PP2bF1TLAUkcdaQdA4trk/rxGktdsyr9MEP+
-         sUtQYesubhfCDd6/En9QaclbTt4ZT7a9qEoc3UJy8Pupat1u9MOoNxsdkQ9HVm+cxMPU
-         jHSQ==
+        b=RmdpXx5DOTJdWGK3Fz095RKyEZyod/GUILIkoureY6bDvBEvSZNQcXa8isth/LaYSq
+         AWG/X/gb/G26NGHcGsIZvG0+J0eHl7NCqiphl9TzxFk7fREmi8QyxyaGgn8wHixVOwUg
+         uEiAl0rjNR6VpU2qVZ+yImfTLGbAIP2uRxSwY8SlTSYJImWFye8k75HC6ukRoNYT6yV8
+         QJFSit53JlvyqS3UYxYjJ3USWXrZeYIjhPHSXI0LzJWIyrzV2qiciHhbGFHvZRxREIWT
+         WGeUqvJGsfFaOUTVQ0rYT0moZuKvGLtjCDz85hVsXkqQnvJOWm4YCgAdMsEoqMrNEDdw
+         jV8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=I21YvCPcgIVWbXvdF2W09kroqqJtXmX6zqaLH/cAbjI=;
-        b=Q14SI2Xx0DIUSYaOHySZWM6n6o9i1fLJYeHGbH999vN7VrS5xvh0AZM4od+bPTllNq
-         VTjLKBOV+0zcKAxejIoU1q/Hl8UWiQDlSAkShQjE5y6r2bp9x4wLelBu6Z+e0vEPquAk
-         ke4ZFKyj3HbT8YoWOVyJNRCxnSDn8Y/8RRUmtvX4NHbfBNa7xUbjiqgTHOqx3MC1r1lD
-         mxIvKSKHFBVJbn1TRw8g52DC3CaEz1G2AS1DYqAEhF96ytL+8BPbPZpDZ0Pc0/ByL30E
-         28Tyk9Muq0Vw6bR6D4d6GTIbyajLN+iy2A2swakF6adFFUIeU8vlJ9X4PdMLtFL7lJvf
-         n82g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject;
+        bh=LdXf7MTFMmIVBuF25Tew3NUYCDzZvoOw7upMb2dItu0=;
+        b=vt0YVA8yRhLoDFJran93tfslA7qCIZpMT3kKebuZqHZaeHw7YUv37mcDeY/H3O7YBP
+         CnIjBMeP7Zc48Cc8bQaomu0hGu6KD4+Hlz4aAL+n1h11+uO/US7GMpazTSE9jJASBRq6
+         OUP2RbeCZUUOnnEQJ5Yhvz/qex3jZJB5zfTvda7v2LrE4sKQVKq4lGc3rlXfoJttFNpl
+         2iyqqfO88vV+Lza0O4v+1C/5TVEjubS764K1eFSzMO6+46Au3Rlx8Xuzg0JC4o+Qgylm
+         YyJKmuTv7e64/ieF3mJWnWLZq+nWZDgsgQ36g4rxdsvPYee6yXjOAiz8YHfWjpyeRFto
+         LOiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t133si8995265wmg.45.2019.05.07.01.25.02
+        by mx.google.com with ESMTPS id p4si2059286ejo.21.2019.11.07.11.11.40
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 May 2019 01:25:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 07 Nov 2019 11:11:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:42092 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hNvPJ-0005FP-Rz
-	for alex.bennee@linaro.org; Tue, 07 May 2019 04:25:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57971)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1hNvKN-0000gI-Vf
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 04:20:00 -0400
+Received: from localhost ([::1]:47492 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iSnBz-0003pC-Q4
+	for alex.bennee@linaro.org; Thu, 07 Nov 2019 14:11:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42525)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1iSnA6-0002th-Tg
+ for qemu-devel@nongnu.org; Thu, 07 Nov 2019 14:09:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1hNvKM-0008Ao-Q2
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 04:19:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49478)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1hNvKM-0008AC-HF; Tue, 07 May 2019 04:19:54 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ABBC630821A3;
-	Tue,  7 May 2019 08:19:53 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-45.ams2.redhat.com
-	[10.36.116.45])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C451F277A5;
-	Tue,  7 May 2019 08:19:50 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id A9B73A1E8; Tue,  7 May 2019 10:19:46 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  7 May 2019 10:19:44 +0200
-Message-Id: <20190507081946.19264-7-kraxel@redhat.com>
-In-Reply-To: <20190507081946.19264-1-kraxel@redhat.com>
-References: <20190507081946.19264-1-kraxel@redhat.com>
+ (envelope-from <philmd@redhat.com>) id 1iSnA4-0006Y2-Rw
+ for qemu-devel@nongnu.org; Thu, 07 Nov 2019 14:09:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:34548)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iSnA4-0006X2-JK
+ for qemu-devel@nongnu.org; Thu, 07 Nov 2019 14:09:40 -0500
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 79814C04BE1B
+ for <qemu-devel@nongnu.org>; Thu,  7 Nov 2019 19:09:39 +0000 (UTC)
+Received: by mail-wm1-f72.google.com with SMTP id d140so2762767wmd.1
+ for <qemu-devel@nongnu.org>; Thu, 07 Nov 2019 11:09:39 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=16r2Lo1JPA8EbWA2hCflj2bRrHuTnN6bxDYwViD8zFQ=;
+ b=nL2V7AdxR4CGldCjyHseHVQUMRJ9UjhcAsROLNKOn9odSM7/6t14v8dA45ag2IBRmJ
+ vfQcul1lE1cuNHOx5EmL1QI+K5X0Cu0wfwqLWxlWLx7trkS+JoG4eUt863JZe4s4E+i2
+ uSXblrRmXBL6eiS3w4ENMpDNOGTXGu+QPp0Zt0ArBvyyFmDk3pwISw5xjykMZp/DCXrl
+ M8Lpz8mNzeG1evBaXsptXtnAY2pn5c7cDD6szVGYKp4jTS93f+ADePf8clgDoeAg4iDh
+ 6j0sXb0QGdChCU6z8H3uim4dQV8WydEGTZvN6NmH+OugLq1m5NUeYDoe4epMUK2+kDSo
+ RWAQ==
+X-Gm-Message-State: APjAAAUzdrxgb3P15Hpr6cElisyGSacmbQUPJsTzonzYu1qfp6Ly/2kW
+ wVC8ElelXD2ftpT4Fd5DUxTJAGw4EuIWiM6fcJyIHLXQ0VUN2HscMQku/dZkVBQ0qUOkMPynaRM
+ 5Z/fIBgG5ofkYZIc=
+X-Received: by 2002:a5d:6a08:: with SMTP id m8mr4337187wru.52.1573153778105;
+ Thu, 07 Nov 2019 11:09:38 -0800 (PST)
+X-Received: by 2002:a5d:6a08:: with SMTP id m8mr4337156wru.52.1573153777811;
+ Thu, 07 Nov 2019 11:09:37 -0800 (PST)
+Received: from [10.101.1.81] ([176.12.107.132])
+ by smtp.gmail.com with ESMTPSA id b1sm2922565wrs.74.2019.11.07.11.09.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 Nov 2019 11:09:36 -0800 (PST)
+Subject: Re: [PATCH-for-4.1? 0/7] vl: Allow building with CONFIG_BLUETOOTH
+ disabled
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190712133928.21394-1-philmd@redhat.com>
+ <421f2fb2-6e8d-7579-029a-e8de726c6a5e@redhat.com>
+ <56d102b4-3f55-7070-c012-56ad65138873@redhat.com>
+ <CAFEAcA8axpVeXjWV+2cz8PL-gR_6GvU=i0BMt01pYhff_1LOwQ@mail.gmail.com>
+ <4ed2e2b7-91b0-197f-7532-bf9daac075bf@redhat.com>
+Message-ID: <d79cec06-ff17-a118-7bf9-91ae1791c014@redhat.com>
+Date: Thu, 7 Nov 2019 20:09:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Tue, 07 May 2019 08:19:53 +0000 (UTC)
+In-Reply-To: <4ed2e2b7-91b0-197f-7532-bf9daac075bf@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL 6/8] qxl: avoid unaligned pointer reads/writes
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MtRGSwqJugKi
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Miroslav Rezanina <mrezanin@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kOuaaY1kfrZY
 
-From: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+On 8/14/19 2:45 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 8/13/19 4:04 PM, Peter Maydell wrote:
+>> On Tue, 13 Aug 2019 at 15:01, Philippe Mathieu-Daud=C3=A9 <philmd@redh=
+at.com> wrote:
+>>> On 7/15/19 3:13 PM, Thomas Huth wrote:
+>>>> On 12/07/2019 15.39, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>> A series of obvious patches to build without the deprecated
+>>>>> bluetooth devices. Still worth for 4.1 or too late?
+>>>>> It is clearly not a bugfix.
+>>>>
+>>>> I wonder whether this series is worth the effort right now, or wheth=
+er
+>>>> we should simply nuke the bluetooth code after 4.1 has been released=
+?
+>>>
+>>> Well, perfect is the enemy of good :)
+>>>
+>>> This series is already done and is an improvement to what we have.
+>>>
+>>> Regarding nuking it, it depends on the Nokia N-series boards, they mi=
+ght
+>>> become useless without BT support.
+>>
+>> Er, they're not useless at all without BT support. The BT
+>> hardware is a really tiny part that I doubt many users of
+>> the board models ever used. As long as we retain a "simulate
+>> doing nothing much" model of the BT device to show the guest
+>> I don't care whether the BT backend code disappears.
+>=20
+> OK, I won't insist then.
 
-The SPICE_RING_PROD_ITEM() macro is initializing a local
-'uint64_t *' variable to point to the 'el' field inside
-the QXLReleaseRing struct. This uint64_t field is not
-guaranteed aligned as the struct is packed.
+Bluetooth is dead, long live BT!
 
-Code should not take the address of fields within a
-packed struct. Changing the SPICE_RING_PROD_ITEM()
-macro to avoid taking the address of the field is
-impractical. It is clearer to just remove the macro
-and inline its functionality in the three call sites
-that need it.
-
-Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-Message-Id: <20190412121626.19829-6-berrange@redhat.com>
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
----
- hw/display/qxl.c | 55 +++++++++++++++++++++---------------------------
- 1 file changed, 24 insertions(+), 31 deletions(-)
-
-diff --git a/hw/display/qxl.c b/hw/display/qxl.c
-index 632923add239..3880a7410b73 100644
---- a/hw/display/qxl.c
-+++ b/hw/display/qxl.c
-@@ -33,24 +33,6 @@
-=20
- #include "qxl.h"
-=20
--/*
-- * NOTE: SPICE_RING_PROD_ITEM accesses memory on the pci bar and as
-- * such can be changed by the guest, so to avoid a guest trigerrable
-- * abort we just qxl_set_guest_bug and set the return to NULL. Still
-- * it may happen as a result of emulator bug as well.
-- */
--#undef SPICE_RING_PROD_ITEM
--#define SPICE_RING_PROD_ITEM(qxl, r, ret) {                             =
-\
--        uint32_t prod =3D (r)->prod & SPICE_RING_INDEX_MASK(r);         =
-  \
--        if (prod >=3D ARRAY_SIZE((r)->items)) {                         =
-  \
--            qxl_set_guest_bug(qxl, "SPICE_RING_PROD_ITEM indices mismatc=
-h " \
--                          "%u >=3D %zu", prod, ARRAY_SIZE((r)->items)); =
-  \
--            ret =3D NULL;                                               =
-  \
--        } else {                                                        =
-\
--            ret =3D &(r)->items[prod].el;                               =
-  \
--        }                                                               =
-\
--    }
--
- #undef SPICE_RING_CONS_ITEM
- #define SPICE_RING_CONS_ITEM(qxl, r, ret) {                             =
-\
-         uint32_t cons =3D (r)->cons & SPICE_RING_INDEX_MASK(r);         =
-  \
-@@ -414,7 +396,8 @@ static void init_qxl_rom(PCIQXLDevice *d)
- static void init_qxl_ram(PCIQXLDevice *d)
- {
-     uint8_t *buf;
--    uint64_t *item;
-+    uint32_t prod;
-+    QXLReleaseRing *ring;
-=20
-     buf =3D d->vga.vram_ptr;
-     d->ram =3D (QXLRam *)(buf + le32_to_cpu(d->shadow_rom.ram_header_off=
-set));
-@@ -426,9 +409,12 @@ static void init_qxl_ram(PCIQXLDevice *d)
-     SPICE_RING_INIT(&d->ram->cmd_ring);
-     SPICE_RING_INIT(&d->ram->cursor_ring);
-     SPICE_RING_INIT(&d->ram->release_ring);
--    SPICE_RING_PROD_ITEM(d, &d->ram->release_ring, item);
--    assert(item);
--    *item =3D 0;
-+
-+    ring =3D &d->ram->release_ring;
-+    prod =3D ring->prod & SPICE_RING_INDEX_MASK(ring);
-+    assert(prod < ARRAY_SIZE(ring->items));
-+    ring->items[prod].el =3D 0;
-+
-     qxl_ring_set_dirty(d);
- }
-=20
-@@ -732,7 +718,7 @@ static int interface_req_cmd_notification(QXLInstance=
- *sin)
- static inline void qxl_push_free_res(PCIQXLDevice *d, int flush)
- {
-     QXLReleaseRing *ring =3D &d->ram->release_ring;
--    uint64_t *item;
-+    uint32_t prod;
-     int notify;
-=20
- #define QXL_FREE_BUNCH_SIZE 32
-@@ -759,11 +745,15 @@ static inline void qxl_push_free_res(PCIQXLDevice *=
-d, int flush)
-     if (notify) {
-         qxl_send_events(d, QXL_INTERRUPT_DISPLAY);
-     }
--    SPICE_RING_PROD_ITEM(d, ring, item);
--    if (!item) {
-+
-+    ring =3D &d->ram->release_ring;
-+    prod =3D ring->prod & SPICE_RING_INDEX_MASK(ring);
-+    if (prod >=3D ARRAY_SIZE(ring->items)) {
-+        qxl_set_guest_bug(d, "SPICE_RING_PROD_ITEM indices mismatch "
-+                          "%u >=3D %zu", prod, ARRAY_SIZE(ring->items));
-         return;
-     }
--    *item =3D 0;
-+    ring->items[prod].el =3D 0;
-     d->num_free_res =3D 0;
-     d->last_release =3D NULL;
-     qxl_ring_set_dirty(d);
-@@ -775,7 +765,8 @@ static void interface_release_resource(QXLInstance *s=
-in,
- {
-     PCIQXLDevice *qxl =3D container_of(sin, PCIQXLDevice, ssd.qxl);
-     QXLReleaseRing *ring;
--    uint64_t *item, id;
-+    uint32_t prod;
-+    uint64_t id;
-=20
-     if (!ext.info) {
-         return;
-@@ -795,16 +786,18 @@ static void interface_release_resource(QXLInstance =
-*sin,
-      * pci bar 0, $command.release_info
-      */
-     ring =3D &qxl->ram->release_ring;
--    SPICE_RING_PROD_ITEM(qxl, ring, item);
--    if (!item) {
-+    prod =3D ring->prod & SPICE_RING_INDEX_MASK(ring);
-+    if (prod >=3D ARRAY_SIZE(ring->items)) {
-+        qxl_set_guest_bug(qxl, "SPICE_RING_PROD_ITEM indices mismatch "
-+                          "%u >=3D %zu", prod, ARRAY_SIZE(ring->items));
-         return;
-     }
--    if (*item =3D=3D 0) {
-+    if (ring->items[prod].el =3D=3D 0) {
-         /* stick head into the ring */
-         id =3D ext.info->id;
-         ext.info->next =3D 0;
-         qxl_ram_set_dirty(qxl, &ext.info->next);
--        *item =3D id;
-+        ring->items[prod].el =3D id;
-         qxl_ring_set_dirty(qxl);
-     } else {
-         /* append item to the list */
---=20
-2.18.1
-
+v4.2.0-rc0 just got tagged. We should stop linking unmaintained dead=20
+code. If nobody step in to nuke BT, we should consider applying this=20
+series before we release QEMU 5.0 with dead Bluetooth. This approach is=20
+still better than burying our head in the sand.

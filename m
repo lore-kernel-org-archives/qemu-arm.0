@@ -1,113 +1,177 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1226107wri;
-        Thu, 7 Nov 2019 08:59:36 -0800 (PST)
-X-Received: by 2002:aca:de88:: with SMTP id v130mr4480080oig.108.1573145975895;
-        Thu, 07 Nov 2019 08:59:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573145975; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2730665wri;
+        Fri, 8 Nov 2019 07:59:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxHf7Psu/LclZoMK+BsXwP+m2thpSKzQzzTGYIS/Oe0MsuMY1xK7ug8+F32j5cx3ug7s0ee
+X-Received: by 2002:a05:620a:1498:: with SMTP id w24mr9454223qkj.170.1573228772174;
+        Fri, 08 Nov 2019 07:59:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573228772; cv=none;
         d=google.com; s=arc-20160816;
-        b=IR6F1xy/RcwG54/biRL7EKV3IYyGnzH2JUOuIkScJmCjyotxkD6dHGp/k8FKB9xzmV
-         QREG9cGyoqwU0lwFGLaBcTbbK10ARI7SHPSaaB+n6c8yozGqamk69k9zR5N17FQS1SxJ
-         a5hQFZb5eU+SMfGgoxTN3l9EpPztOpq4N4nqiQ5uqboDem2+2kqieTXpYuBSbOsDl7y0
-         T/2VzmJ6oJKUdhvVA0bFa0AM2PPlRlimsFmiRIZEGLlw/a0ArqkglsCIFXM82YP6SMtn
-         WVfw5VezOLD3vgmb1didipfsA+QVxJcn12Wa4m9XsSMzJ8CZK3lJg4k0TsvwpBpHxJz4
-         jjMQ==
+        b=gpKTh0R6QP9loL6GyK109qB7uy9yux8iQz2FhmrgBIJSQiKyy7a0elqOtdGrE85pOb
+         3PeSz+Bx/gJq7jELMS5FCPkwSIlDi9/HZz5Xy7BRGZoHn07TBr30xt3EwsVwend3dMaB
+         TrJfu013DFcc6KeQB+WCCnSTCPp8RuxHl3+HU1NL62mZ/yI4nd9JClSa7i0CY8VeWjyZ
+         XXs+8/GUPA6at2nf+2cAt0CHnRUL9pcvAqsxcijoGboOKYzqT7Slnt1+6LA921Mv8/lB
+         UApUBfLYUajE/g9WlylQuNjlVw/UBJF2rr7kh0JuRE6B+xhL4sHdjWN1E96dZjXG3SgG
+         LWcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=YlTR4TdSPoOesve9OqxIozhrIPiBsAGxdnkBKhvgtrY=;
-        b=mLNaFD5u97S4/GrsAwZQT/PRMuo/ouOokDmAiVSwCx0X+NTwQfGvp3UH2ldJwS7S6w
-         l5w/lKz6Fxt90o1+R8MTgoet8jxHdsOMST8kjye1URqq51t1B6XONfr/0PxHGoR793+x
-         141FPmfNQQ2UHjgjK4r0y72um3rumQ0cd8cPFymR4bi9RAjuWcb3MyptbEvphJsk7RQC
-         dztE+YfkXIuktBcK9qw4ngQ88SaLEA4r7GGCNctKuPyATLnNZpx9a7/uqwAYcHfix82f
-         k4FmPK8WTBzlEl9hy/uSVkwNU5mNFtErTkVOt8iUWgM7GBsB67xxJ/KHPsX117AqtmfK
-         ohjQ==
+        bh=LQ3GbzhAlWakkp9NcFJ+/X9NGKDGeaOkAkmOLvHt9y8=;
+        b=NfnRURJm6Oo+69zjIpo3NNCqUyIuI3CTQVjVaHGgt3lDJNy90JBaUQO4iRZ4xs9Txw
+         IhjrweF2m16loZDvrw/To/suzG+VgHKYIw7bRldcWC+wcCLtQfKUk1Mo0tUYFhGVy4ho
+         SnC2qr3dChYnSklhMQP2i559arVHtutfMJEtRmaor3c+14xxx9d7FLV0c9uQO0Zz0diU
+         PTyd+PLfcjOu+C/oJ43KddNLIY5qnCsX9+KZbOuQqYv5bS4NrO6VLmE/TbC8yeEDxJRR
+         Q8AeutPATJn1GLRDXOhQIkT9qk9NZiCd3iKx2jkvOEu+X19Xb1wEtaSOJZ+XgkvqLPlc
+         kVBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K8vPGoB2;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 30sor2043867otj.91.2019.11.07.08.59.35
+       dkim=fail header.i=@linaro.org header.s=google header.b=me70BZMe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o16si3771238qkk.24.2019.11.08.07.59.32
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 07 Nov 2019 08:59:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 08 Nov 2019 07:59:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K8vPGoB2;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=YlTR4TdSPoOesve9OqxIozhrIPiBsAGxdnkBKhvgtrY=;
-        b=K8vPGoB2VlBbIC2Tg4G3Pq/99ABraVY9h3aszfV2Io0MevfPb75Y9z8NJ0SuBXJCFa
-         N3j3JyHon1wpDu7kHaLkUKm7MT3vWYasF+HbGqXFchpjsBEZj43tWtb/GOGbGOYB77V+
-         uM3x1ylHoWZbcQYTs74j95rSWb88jAMerxnGaXxtdZGUhcvdL1KXV+fAtLjGyv9AXmsv
-         DLolkTjPpJS1QiBhVZ3n3LhFTkt3DQ00nXehLzNy+F274JV9beZxGjQvIUXKZI+oikjs
-         lne9ssA89GWUFnn9CqCSVVPUx7QQVIAg1hnEnv8jH6AoADKXRaqaNtfoDEkSbSdTZ5/v
-         91yw==
+       dkim=fail header.i=@linaro.org header.s=google header.b=me70BZMe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56752 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iT6fb-0001CC-G6
+	for alex.bennee@linaro.org; Fri, 08 Nov 2019 10:59:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55652)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1iT6ez-00019O-8L
+ for qemu-devel@nongnu.org; Fri, 08 Nov 2019 10:58:54 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1iT6ex-0000Wf-Un
+ for qemu-devel@nongnu.org; Fri, 08 Nov 2019 10:58:52 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:36040)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iT6ex-0000WI-OP
+ for qemu-devel@nongnu.org; Fri, 08 Nov 2019 10:58:51 -0500
+Received: by mail-oi1-x242.google.com with SMTP id j7so5659683oib.3
+ for <qemu-devel@nongnu.org>; Fri, 08 Nov 2019 07:58:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LQ3GbzhAlWakkp9NcFJ+/X9NGKDGeaOkAkmOLvHt9y8=;
+ b=me70BZMeByRR5nOfJOfXrhTXOLix/75IkVNyJwLh3MG2Vs4aWNyArN38fX455vnoiy
+ 7xQhnCorGK6EaaJWvFaBzv1o2ALA7IWTvKj86zUDvZn0cVb1cMyqNUhZJVZkMK6/3X00
+ 0iGArVQbqZAjRD2cZn5a3b8dfEmFjFoBeQ4+5FfnosuwQQqPe/An1X6s7gjk6MfT9m8A
+ EWLf5uhTYtSpz/6oaefKht6SWGDuFlFtC5lcbFEO/7hVX575Bb5sD5oU83jX4Bo5Hxzy
+ Lu1AwrTL0g7pnH8VIyr1qlavg8O0kqvCkcgfsth/N3c09i7Yu218RbrTkuCgc/04wCZg
+ NNLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=YlTR4TdSPoOesve9OqxIozhrIPiBsAGxdnkBKhvgtrY=;
-        b=auaM7zmjdvDylUsB6zpPZgfcLl7oGgs2qz4A8Q7CeLPg/tJi+RwLK45yffxtqaoxNd
-         zPyGMEP4V2XrZkSkBqM53aXbZU6CBPgaUR7d4JrFhI2ylpMvzl48LtTtjo8FIzXRuPDA
-         A6Tb2R5s3eNF14wPLgXdk5VbXGr5SXwL/BV4lbr7imDHR+2bY87t2HJvQsy6/yJnAwBO
-         NnHz56RG2uDdBAHvnKDKnwm0T/OTSkl0lJ9INb9J96N8faDcPo2LfsqGzpSTQPja1/Um
-         VlHhmyxuSJlUExPHWBl2tkijc6w5qNF3qbiqBLEHjghcpEenPL0x8Kjz/HT0Us3BElTm
-         AD6Q==
-X-Gm-Message-State: APjAAAU/wo+feiyBmLTn2DSJ2CHeyAFmiOaqJHiqODXODPz313BdKY3I
-	Rt2Z8bkDZhsULbit2jqOtLI7AvXWl5Q1kC2yDhIH83ybAWZKlA==
-X-Google-Smtp-Source: APXvYqzIxmerSzgEKKe21KM237lxkZgTuMYSklK0IoD9d58+pfjE4DhN4pZiFE/zWcCTMexUHKANrqbFVaJBt80ZPqM=
-X-Received: by 2002:a9d:6357:: with SMTP id y23mr1878477otk.91.1573145975246;
- Thu, 07 Nov 2019 08:59:35 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LQ3GbzhAlWakkp9NcFJ+/X9NGKDGeaOkAkmOLvHt9y8=;
+ b=I+cFFAx9GXs8apPavZKnFj2PSnaz9G25h0cRo2CIMDbS9gBmNZSVVSMe+C7a8lteLf
+ /qyhXzssC/2CoQCTqe0Sd4fia8VgaYW38DUfR0XQx/XciXNv7EwqV4qsgzux0NpaYdkH
+ ZCOZ2ZfT2xzGU1or6priLTE0/ZAYFN6fMA3aItTHqK8tWV4DYg0SGybxHYbOAtzpt0D2
+ HLcl5VHBsXgLKGdkfVMRGpE6tgDdDz8GqGD3/g6L+wzAKKVsfTZyIbB1Q7pDOqeGHytL
+ YsbNCNmQpSZA1doCDG7sGlcQfXHT6+RpCzBn5C/KiUzXuPqA1dJrb9eHHCJ2SDY2g0RR
+ o0Zg==
+X-Gm-Message-State: APjAAAVhsY8MTmHP6+Rfoq6YGlKA0XSx7RSLRQ3gU3vuE1MHtBLuSZ1X
+ srDFcZT63V8sFPkNi+Mm/1xY1X3GajpIzrUhP7fHlQ==
+X-Received: by 2002:aca:3e8a:: with SMTP id l132mr9887523oia.146.1573228730711; 
+ Fri, 08 Nov 2019 07:58:50 -0800 (PST)
 MIME-Version: 1.0
-References: <20191105234100.22052-1-beata.michalska@linaro.org>
- <20191105234100.22052-3-beata.michalska@linaro.org> <5c75bd31-213f-88a4-2eee-0046f99f65fe@linaro.org>
- <CADSWDztHetgmbUOp4WyRAkR0daAG6kkwhUTcyKWiCTWHQ1XB=w@mail.gmail.com> <87lfsrhbf2.fsf@linaro.org>
-In-Reply-To: <87lfsrhbf2.fsf@linaro.org>
+References: <20191104115228.30745-1-graf@amazon.com>
+In-Reply-To: <20191104115228.30745-1-graf@amazon.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 7 Nov 2019 16:59:24 +0000
-Message-ID: <CAFEAcA_CTNu0Zzc-carvJaFbqtDm4bftN0QCB6dksKPECMv-+w@mail.gmail.com>
-Subject: Re: [PATCH v2 2/4] Memory: Enable writeback for given memory region
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Beata Michalska <beata.michalska@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Juan Quintela <quintela@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
-	Eric Auger <eric.auger@redhat.com>, 
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Date: Fri, 8 Nov 2019 15:58:39 +0000
+Message-ID: <CAFEAcA8zkR_MZ-28Nc=x4j05U9MsFYfzQtkHxTf65ZwacK020w@mail.gmail.com>
+Subject: Re: [PATCH] pl031: Expose RTCICR as proper WC register
+To: Alexander Graf <graf@amazon.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: NYCZxxfslvhH
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Hendrik Borghorst <hborghor@amazon.de>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tEL26pGyDd8N
 
-On Thu, 7 Nov 2019 at 16:57, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
+On Mon, 4 Nov 2019 at 11:52, Alexander Graf <graf@amazon.com> wrote:
 >
+> The current pl031 RTCICR register implementation always clears the IRQ
+> pending status on a register write, regardless of the value it writes.
 >
-> Beata Michalska <beata.michalska@linaro.org> writes:
+> To justify that behavior, it references the arm926e documentation
+> (DDI0287B) and indicates that said document states that any write clears
+> the internal IRQ state. I could however not find any text in that document
+> backing the statement. In fact, it explicitly says:
 >
-> > On Wed, 6 Nov 2019 at 12:20, Richard Henderson
-> > <richard.henderson@linaro.org> wrote:
-> >> qemu_log_mask w/ GUEST_ERROR?  How do we expect the length to overflow=
-?
-> >
-> > In theory it shouldn't, at least with current usage.
-> > I guess the probe_access will make sure of that.
-> > This was more of a precaution to enable catching potential/future misus=
-es
-> > aka debugging purpose. I can get rid of that it that's playing too
-> > safe.
+>   "Writing 1 to bit 0 of RTCICR clears the RTCINTR flag."
 >
-> If the internal code might get it wrong and that would be a bug then the
-> g_assert(), if the values are ultimately from the guest then log with
-> GUEST_ERROR as Richard suggests.
+> which describes it as much as a write-to-clear register as the PL031 spec
+> (DDI0224) does:
+>
+>   "Writing 1 to bit position 0 clears the corresponding interrupt.
+>    Writing 0 has no effect."
 
-...or consider asserting at this level and making the target
-specific calling code sanitize and do the GUEST_ERROR logging
-(it can do a better job of it because it knows what the
-target-specific operation that the guest just got wrong was).
+DDI0287B page 11-2 section 11.1 says
+"The interrupt is cleared by writing any data value to the
+interrupt clear register RTCICR". As you note, this contradicts
+what it says later on in section 11.2.2.
+
+(Interestingly, the PL030 does have a "write any value to
+clear the interrupt" register, RTCEOI.)
+
+I'm fairly sure this patch is right and the DDI0287B document
+has an error, since it isn't internally consistent and doesn't
+match the proper PL031 TRM.
+
+Did you find this because you had a guest that assumed the
+other behaviour? This bug has been in QEMU for a very long time,
+and it seems odd for a guest to deliberately perform an action
+(writing 0) which is documented to have no effect on the device...
+
+> Let's remove the bogus comment and instead follow both specs to what they
+> say.
+>
+> Reported-by: Hendrik Borghorst <hborghor@amazon.de>
+> Signed-off-by: Alexander Graf <graf@amazon.com>
+> ---
+>  hw/rtc/pl031.c | 6 +-----
+>  1 file changed, 1 insertion(+), 5 deletions(-)
+>
+> diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
+> index 3a982752a2..c57cf83165 100644
+> --- a/hw/rtc/pl031.c
+> +++ b/hw/rtc/pl031.c
+> @@ -149,11 +149,7 @@ static void pl031_write(void * opaque, hwaddr offset,
+>          pl031_update(s);
+>          break;
+>      case RTC_ICR:
+> -        /* The PL031 documentation (DDI0224B) states that the interrupt is
+> -           cleared when bit 0 of the written value is set.  However the
+> -           arm926e documentation (DDI0287B) states that the interrupt is
+> -           cleared when any value is written.  */
+> -        s->is = 0;
+> +        s->is &= ~value;
+>          pl031_update(s);
+>          break;
+>      case RTC_CR:
+> --
+> 2.17.1
 
 thanks
 -- PMM

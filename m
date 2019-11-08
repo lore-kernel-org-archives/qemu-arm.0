@@ -1,99 +1,85 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp1414428wrr;
-        Mon, 11 Nov 2019 06:47:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwTtqH0HfaC+y0c7VXPnqZVLRVCW8qbEOU739Ao/nT4/CPwoePq0hS+iGmr0vh7yCdRccrA
-X-Received: by 2002:aa7:c453:: with SMTP id n19mr27591658edr.103.1573483620778;
-        Mon, 11 Nov 2019 06:47:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573483620; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1844445wri;
+        Thu, 7 Nov 2019 17:54:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwqea/oy2w8iiQoUWplpc7Km6cUnRCINCplSuWS0KqN9j8/6KiZ0s45wzdJm07zWqD4Z9TE
+X-Received: by 2002:aed:3225:: with SMTP id y34mr7820801qtd.353.1573178077244;
+        Thu, 07 Nov 2019 17:54:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573178077; cv=none;
         d=google.com; s=arc-20160816;
-        b=sxcXxSau2taMJ9NZLHdPyLvtHLI3jYZzF+/MorfcbqZFbiiCubDlKlEfZzKS2TYhom
-         8jf8kjZB1MQ0tAc31VCVtHkY5bq5gAA+zZ/ZLt2hx/4CSgxJ39CX15tr/loH1z5dfMyV
-         hr83DVghlBIg0gphPI0KEv5ED8ue2TOOG2qJAwQwVfgg3ReGG/tFuWKkonuCRjPrlxco
-         tAx8uYDsZBlHPCbptNfmuBhHibqtfRFHRIE31A9tzsqc8d65Xh2PzWPY29btDK6wklX2
-         nRLTqQj1ThmWmNDrW9fZ7zTkgbQ9NPjakMlsEFivep1sSqmSKdyhKBZ5VSc03UWPZnS+
-         /Tuw==
+        b=gAFDGGnZyx/GmUFWOKL0S0eweGZV73aQZ/v7tv6g2zvZ0HSD0J1eNZEwQU27mQxy4N
+         p2xDHDl2BYmlUUzWpXkwDc1DaT6ewajPyq8vLSWnhlpwfZwhz84CB3EwFQrwYxONPswZ
+         uTMlzG3noNjFW0d9RKdviOTtNaSI2lX533K7fBmn0GRjD7s9yrJxuaFVobH6gU7lTqVs
+         dd5jGfIOH5VbqrPOei0H66lxiWt4jEDPD9BUMMK49l9SpmyhBEIrWi/AuG85P57/qshy
+         nhXM4jUScValtOsrl6RzHyFXKZYrMlIQX5++1RujW3bAk1qeHtHx/8FEfeIc315Ud3T1
+         4Jww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=LZydry80oyQXH8KpJ6MxrynCvNld+ei+1kOrA0VeTJo=;
-        b=O81ALhBUngtmgF59cNjV5zsSAGXRXHEHdnr6ypkBkZ7zwLAQnyDl5ah8p8rYLhCeCx
-         /rxZ/NXZ7tElph3ok/3n1XoStLKEJKVb1qoHbw/N/sGSXOzbTCX0WlmaTxvyqeaJ/PzS
-         RNgGC9GpD6HEsTNe4c5UuMghts5kQovZiJevfXhxdygPiYxkB8eozs9bwuLJx+Fv67ED
-         8RbCxJp7WnnwwTRtMcYiVIqdJe5KZHyxVX2Os+R0RAMs7p9iLnX530SHJOjpW9YbjkFd
-         ln0MaiT6u/MENkB+45N6i4UcQsPsSYIds+Ht853E6cxHcsLKikjt32fAmeR322Pg7WTN
-         8zog==
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=NynImZ17FAi4o/3Z9zNF1P6DHs5p5/WBnugBDlcheho=;
+        b=xOzIavoOHYx6FbywV6tKZjvSWGsX8kLijSCdTiSK4LxDJLg2TMGmywKgNquob7bFxj
+         bLJkTqkgKPRmzFPiBXGYg4MT6KncyXI7lFZHacwITkMw4Q+lJtdXPhpV0+6bp8ibPb/+
+         KmkGLbc2j/05IFVmj+4OZco4A/5Q//2MDHWYhBUtzSFQJrV5WKUKc4cXN+R5cguA12CX
+         +fJekyV87NJ6Co5pGcIrSDLAPFnpBflXRDccaFnUjhIHvdTlmRBjsvTE+mK/t0McVwwt
+         XPUhN8KBNN+pmQFuAN/cB+J+0uQ9o6hKNUEvUJMV0u+Uj2UpED7x43mjbGuS6/T3hyjT
+         sZ2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LDATR3LI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8si9844086ejq.57.2019.11.11.06.47.00
+        by mx.google.com with ESMTPS id w128si2671624qkc.99.2019.11.07.17.54.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2019 06:47:00 -0800 (PST)
+        Thu, 07 Nov 2019 17:54:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LDATR3LI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53776 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49206 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iUAy3-0002uA-SJ
-	for alex.bennee@linaro.org; Mon, 11 Nov 2019 09:46:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57071)
+	id 1iStTw-0002vO-MF
+	for alex.bennee@linaro.org; Thu, 07 Nov 2019 20:54:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42640)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1iUAxo-0002tH-VB
- for qemu-arm@nongnu.org; Mon, 11 Nov 2019 09:46:46 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iStTl-0002ux-Vy
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2019 20:54:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1iUAxn-0001EX-GC
- for qemu-arm@nongnu.org; Mon, 11 Nov 2019 09:46:44 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:49057
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <guoheyi@huawei.com>) id 1iStTk-0004Ay-Kb
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2019 20:54:25 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2198 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iUAxn-0001Do-Cz
- for qemu-arm@nongnu.org; Mon, 11 Nov 2019 09:46:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573483602;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LZydry80oyQXH8KpJ6MxrynCvNld+ei+1kOrA0VeTJo=;
- b=LDATR3LIzci3NHeXRmOfx38Z/QXunMHdmWa5KlFl1RI9AocCGImPaCOOjiKYcZY7FNCfSh
- QpeLh6wm22guPmD4ESjKsYPbzy8wSzglfmf6sDVTtI4MM7PktZLGjTkJjkcaXuGV4H/U1S
- v8b/2o7GINZDUjCK+RfqigznN1LDZDE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-420-pcuDuBSgNvGijyqUsKvevw-1; Mon, 11 Nov 2019 09:46:39 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0FD768017E0;
- Mon, 11 Nov 2019 14:46:38 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8E47D17196;
- Mon, 11 Nov 2019 14:46:29 +0000 (UTC)
-Date: Mon, 11 Nov 2019 15:46:27 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Subject: Re: [PATCH 4/5] hw/arm/boot: Expose the pmem nodes in the DT
-Message-ID: <20191111154627.63fc061b@redhat.com>
-In-Reply-To: <20191004155302.4632-5-shameerali.kolothum.thodi@huawei.com>
-References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
- <20191004155302.4632-5-shameerali.kolothum.thodi@huawei.com>
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1iStTk-00044h-92; Thu, 07 Nov 2019 20:54:24 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id CC77A107FC70F11991A6;
+ Fri,  8 Nov 2019 09:54:15 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.439.0; Fri, 8 Nov 2019
+ 09:54:06 +0800
+Subject: Re: [RFC v2 11/14] linux-headers/kvm.h: add capability to forward
+ hypercall
+To: Cornelia Huck <cohuck@redhat.com>
+References: <20191105091056.9541-1-guoheyi@huawei.com>
+ <20191105091056.9541-12-guoheyi@huawei.com>
+ <20191106185524.0fe51c50.cohuck@redhat.com>
+ <4dbcbd18-0e6c-f985-c36d-96df65331d11@huawei.com>
+ <20191107035624-mutt-send-email-mst@kernel.org>
+ <da720295-2a84-e38b-9828-5287daefcfa2@huawei.com>
+ <20191107131210.26acf011.cohuck@redhat.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <3e0dc8b2-77dd-f37a-861b-fdd90134e880@huawei.com>
+Date: Fri, 8 Nov 2019 09:54:05 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: pcuDuBSgNvGijyqUsKvevw-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20191107131210.26acf011.cohuck@redhat.com>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,109 +91,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, shannon.zhaosl@gmail.com, qemu-devel@nongnu.org,
- xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
- qemu-arm@nongnu.org, lersek@redhat.com
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, James Morse <james.morse@arm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com,
+ Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VgC8MMqsKumq
+X-TUID: yu1Ql+HjYU0S
 
-On Fri, 4 Oct 2019 16:53:01 +0100
-Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> From: Eric Auger <eric.auger@redhat.com>
->=20
-> In case of NV-DIMM slots, let's add /pmem DT nodes
-Why should we do it for NVDIMM but not for PC-DIMM?
 
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/boot.c | 45 +++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 45 insertions(+)
->=20
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index c264864c11..bd6d72b33e 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -20,6 +20,7 @@
->  #include "hw/boards.h"
->  #include "sysemu/reset.h"
->  #include "hw/loader.h"
-> +#include "hw/mem/memory-device.h"
->  #include "elf.h"
->  #include "sysemu/device_tree.h"
->  #include "qemu/config-file.h"
-> @@ -523,6 +524,44 @@ static void fdt_add_psci_node(void *fdt)
->      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
->  }
-> =20
-> +static int fdt_add_pmem_node(void *fdt, uint32_t acells, uint32_t scells=
-)
-> +{
-> +    MemoryDeviceInfoList *info, *info_list =3D qmp_memory_device_list();
-> +    MemoryDeviceInfo *mi;
-> +    int ret;
-> +
-> +    for (info =3D info_list; info !=3D NULL; info =3D info->next) {
-> +        mi =3D info->value;
-> +
-> +        if (mi->type =3D=3D MEMORY_DEVICE_INFO_KIND_NVDIMM) {
-> +            PCDIMMDeviceInfo *di =3D mi->u.nvdimm.data;
-> +            char *nodename;
-> +
-> +            nodename =3D g_strdup_printf("/pmem@%" PRIx64, di->addr);
-> +            qemu_fdt_add_subnode(fdt, nodename);
-> +            qemu_fdt_setprop_string(fdt, nodename, "compatible", "pmem-r=
-egion");
-> +            ret =3D qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", a=
-cells,
-> +                                               di->addr, scells, di->siz=
-e);
-> +            /* only set the NUMA ID if it is specified */
-> +            if (!ret && di->node >=3D 0) {
-> +                ret =3D qemu_fdt_setprop_cell(fdt, nodename, "numa-node-=
-id",
-> +                                            di->node);
-> +            }
-> +
-> +            g_free(nodename);
-> +
-> +            if (ret < 0) {
-> +                fprintf(stderr, "couldn't add NVDIMM /memory@%"PRIx64" n=
-ode\n",
-shouldn't it be s:/memory:/pmem:
+On 2019/11/7 20:12, Cornelia Huck wrote:
+> On Thu, 7 Nov 2019 19:57:22 +0800
+> Guoheyi <guoheyi@huawei.com> wrote:
+>
+>> On 2019/11/7 16:57, Michael S. Tsirkin wrote:
+>>> On Thu, Nov 07, 2019 at 09:44:36AM +0800, Guoheyi wrote:
+>>>> On 2019/11/7 1:55, Cornelia Huck wrote:
+>>>>> On Tue, 5 Nov 2019 17:10:53 +0800
+>>>>> Heyi Guo <guoheyi@huawei.com> wrote:
+>>>>>   
+>>>>>> To keep backward compatibility, we add new KVM capability
+>>>>>> "KVM_CAP_FORWARD_HYPERCALL" to probe whether KVM supports forwarding
+>>>>>> hypercall to userspace.
+>>>>>>
+>>>>>> The capability should be enabled explicitly, for we don't want user
+>>>>>> space application to deal with unexpected hypercall exits. After
+>>>>>> enabling this cap, all HVC calls unhandled by kvm will be forwarded to
+>>>>>> user space.
+>>>>>>
+>>>>>> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+>>>>>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>>>>>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+>>>>>> Cc: Cornelia Huck <cohuck@redhat.com>
+>>>>>> Cc: Paolo Bonzini <pbonzini@redhat.com>
+>>>>>> Cc: Dave Martin <Dave.Martin@arm.com>
+>>>>>> Cc: Marc Zyngier <marc.zyngier@arm.com>
+>>>>>> Cc: Mark Rutland <mark.rutland@arm.com>
+>>>>>> Cc: James Morse <james.morse@arm.com>
+>>>>>> ---
+>>>>>>     linux-headers/linux/kvm.h |  1 +
+>>>>>>     target/arm/sdei.c         | 16 ++++++++++++++++
+>>>>>>     target/arm/sdei.h         |  2 ++
+>>>>>>     3 files changed, 19 insertions(+)
+>>>>>>
+>>>>>> diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+>>>>>> index 3d9b18f7f8..36c9b3859f 100644
+>>>>>> --- a/linux-headers/linux/kvm.h
+>>>>>> +++ b/linux-headers/linux/kvm.h
+>>>>>> @@ -1000,6 +1000,7 @@ struct kvm_ppc_resize_hpt {
+>>>>>>     #define KVM_CAP_PMU_EVENT_FILTER 173
+>>>>>>     #define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
+>>>>>>     #define KVM_CAP_HYPERV_DIRECT_TLBFLUSH 175
+>>>>>> +#define KVM_CAP_FORWARD_HYPERCALL 176
+>>>>>>     #ifdef KVM_CAP_IRQ_ROUTING
+>>>>> Is this cap upstream already? I would have thought your header sync
+>>>>> would have brought it in, then. (Saying this, that header sync looks
+>>>>> awfully small.)
+>>>>>
+>>>>> If it is not upstream yet, please split off this hunk into a separate
+>>>>> patch -- it's a bit annoying, but makes life easier for merging.
+>>>> No, it is not upstream yet. The whole framework and interfaces between KVM
+>>>> and qemu are still under discussion. I'll keep in mind of this when moving
+>>>> forward to next steps...
+>>>>
+>>>> Thanks,
+>>>> HG
+>>> It's best to add it in some other place meanwhile.
+>> Do you mean to split this patch from the whole patch set and send it
+>> separately? Sorry I'm not clear about maintainers' work and may bring
+>> you some trouble...
+> My preferred approach:
+>
+> - add a commit entitled "placeholder for headers update" that contains
+>    the not-yet-upstream changes in the header files you need
+> - base the rest of your work on that
+> ...
+> <review happens, series looks good>
+> ...
+> - if kernel changes are upstream: replace the placeholder patch with a
+>    real update (may include separate patches, if you need an additional
+>    header); maintainer merges
+> - if kernel changes are not yet upstream: maintainer merges with
+>    placeholder to a feature branch, replaces with real update and merges
+>    once kernel patches hit upstream
+> (not every maintainer does the second approach; they may ask you
+> instead to resend with a proper headers update once the kernel changes
+> are upstream)
 
-and maybe move error printing outside like it's done in fdt_add_memory_node=
-()
-to be consistent with current code.
+Thanks a lot. I'll do that in the next version.
+HG
 
-> +                        di->addr);
-> +                goto out;
-> +            }
-> +        }
-> +    }
-> +out:
-> +    qapi_free_MemoryDeviceInfoList(info_list);
-> +    return ret;
-> +}
-> +
->  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->                   hwaddr addr_limit, AddressSpace *as, MachineState *ms)
->  {
-> @@ -622,6 +661,12 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_=
-info *binfo,
->          }
->      }
-> =20
-> +    rc =3D fdt_add_pmem_node(fdt, acells, scells);
-> +    if (rc < 0) {
-> +        fprintf(stderr, "couldn't add pmem memory nodes\n");
-> +        goto fail;
-> +    }
-> +
->      rc =3D fdt_path_offset(fdt, "/chosen");
->      if (rc < 0) {
->          qemu_fdt_add_subnode(fdt, "/chosen");
+>
+> .
+>
+
 

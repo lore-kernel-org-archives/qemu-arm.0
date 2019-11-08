@@ -1,95 +1,113 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2188760wri;
-        Fri, 8 Nov 2019 00:11:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy1tFqfMHi5C+CmAdVhQSgo6o0tMY0qbI/2iu9N/EBYCMXbywygMO1p9pQwqdM/1HKkJPHc
-X-Received: by 2002:a17:906:c801:: with SMTP id cx1mr7491370ejb.266.1573200690062;
-        Fri, 08 Nov 2019 00:11:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573200690; cv=none;
-        d=google.com; s=arc-20160816;
-        b=yq4rzNI+DZ+P18zruJTQbTmAKV7do8zwK8wZ0Mx/XucYUwnf1sif2QTaajmLW0G5mY
-         Wg+y6PqNhYeGyDFj7Zk/ZuWCp72o//u8fxQLzsPrLm2KFrguvjqiNqqnGYrIi672vH3n
-         dvghTJ6fKHxv+jQ8cNqn6cSe8lXbmdRcRShQQPJj8ejbh/WRjSlswSPSi7nDu3fR6V7a
-         qk0auWSWCY1yh4ExS7w5ZamOvQtL+XABLvmXgzmtFbvuGdbdP/uLJ082jX+irHVrWjI6
-         Hl8mlMkFvqLthbzfCZvY0doKD3AHqrOkDMErMWJlkph2qDmkbM1hcQO+m85GGnN+EJeA
-         9lyA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=3qKEx9ErzmcGFScSe99yGFheuPO8ezWieYlgByTh+4k=;
-        b=nsq8UJ9lRkbbO4ydKVyjg+12UmMU/HaAiZYi0UsVzp9dMW3CyW3n7Ewho4cfvFNjAv
-         CVmc8wxez3MAYJoFeleBNV2xCBWuhlJFMIcDfhh56V+iZOsuh5yXYhpDDYnnXAwio+he
-         xDqTd9Dhzivn2zJY2rUNpQX14BB5CPlB1tShgX/+UzhlT4tT9YCbSAIgsgrLljeZaxtw
-         jEQZaxcEZMLNJ1agvWl8RyIi410Jb3/za/aBtNus7S21I4efMSJZD7mPsmyh145d5sM7
-         j1K4WNiQxD8Uw/YFeIgG6oXFp1GlB2on68x8udmmoona4C/oMxcv/XqRKnQum73fmD2H
-         omrA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v19si3217467ejx.308.2019.11.08.00.11.29;
-        Fri, 08 Nov 2019 00:11:30 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2694631wri;
+        Fri, 8 Nov 2019 07:27:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwBHPKYVxzglZrc1pWlW1JPNxqjX07w+b3jQ4d0j4EHKUkAVdRxICXP7oPqNN7qYnGgXYUq
+X-Received: by 2002:a05:620a:12cb:: with SMTP id e11mr9637127qkl.247.1573226864407;
+        Fri, 08 Nov 2019 07:27:44 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z27si3946137qtb.171.2019.11.08.07.27.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 08 Nov 2019 07:27:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727459AbfKHILZ (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 8 Nov 2019 03:11:25 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:5747 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726072AbfKHILZ (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 8 Nov 2019 03:11:25 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 0B11D5CF9E69D6D25DA8;
-        Fri,  8 Nov 2019 16:11:24 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Fri, 8 Nov 2019
- 16:11:14 +0800
-Subject: Re: [PATCH v21 3/6] ACPI: Add APEI GHES table generation support
-To:     Xiang Zheng <zhengxiang9@huawei.com>, <pbonzini@redhat.com>,
-        <mst@redhat.com>, <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-CC:     <wanghaibin.wang@huawei.com>
-References: <20191104121458.29208-1-zhengxiang9@huawei.com>
- <20191104121458.29208-4-zhengxiang9@huawei.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <3068b1f2-7175-485a-a9a1-dcba0bf82dea@huawei.com>
-Date:   Fri, 8 Nov 2019 16:11:05 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=YhdudGTZ;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56154 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iT6Ap-000689-En
+	for alex.bennee@linaro.org; Fri, 08 Nov 2019 10:27:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50613)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <damien.hedde@greensocs.com>) id 1iT6A6-00063r-Sa
+ for qemu-arm@nongnu.org; Fri, 08 Nov 2019 10:26:59 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <damien.hedde@greensocs.com>) id 1iT6A5-0000Y1-SA
+ for qemu-arm@nongnu.org; Fri, 08 Nov 2019 10:26:58 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:33314)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1iT6A5-0000Xc-LN; Fri, 08 Nov 2019 10:26:57 -0500
+Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id F14F796EF0;
+ Fri,  8 Nov 2019 15:26:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1573226814;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SpIN/FeyzyiDDM1leB4oCp2dWBwoukM1bFmAIRHkboo=;
+ b=YhdudGTZ7b/C8StE2Vju8edQOZ/ER7xg+3RaUGEulbDofeR3uAkQkpVyRTpyTYzluX8pu7
+ MqLpSCZSe6fyrcc5SvKAB1rkmYV4QpcYp9VRvd8K/un6iX5an1itRbuibCYQCcV3GFiHqg
+ Z0KjfKZOjmQadjgiORr4SgcykMZvSC4=
+Subject: Re: [PATCH v5 00/13] Multi-phase reset mechanism
+From: Damien Hedde <damien.hedde@greensocs.com>
+To: qemu-devel@nongnu.org
+References: <20191018150630.31099-1-damien.hedde@greensocs.com>
+ <efef625a-8162-5454-128f-489d636563a1@greensocs.com>
+Message-ID: <aae84bfb-e735-0aac-124c-9abbdea882ff@greensocs.com>
+Date: Fri, 8 Nov 2019 16:26:53 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20191104121458.29208-4-zhengxiang9@huawei.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
+In-Reply-To: <efef625a-8162-5454-128f-489d636563a1@greensocs.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 7vEowp4PCCdg
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1573226814;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SpIN/FeyzyiDDM1leB4oCp2dWBwoukM1bFmAIRHkboo=;
+ b=MZNeecKpiQBHeGE99mPwRtvLU5kq7e0bueNGwtlDAd9dgv/tOcAg2dTvkaRjH540mMpkmu
+ 6ZysBugfhxZ1brMCtGSn7ZiCytSGZuR3tpTPg6RT+m9khJ4xg/dml+FzmIxBNJiKitqWtF
+ 1VcYfeL+kFVCDC03leFQaXy95kyWKLw=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1573226814; a=rsa-sha256; cv=none;
+ b=1R6gXKiwrLzQqyJIEeE1xBaSmW6FsFXNZnc0STfm/f0Nik06rroyxINPsbRfRR02XB/WT7
+ pFtGz6HrOMDxKZ5UnNFyUU79D1cUu71397D2FCj6Mrcvx2GP5g1PJu6S4srdOhedfPy2kB
+ LBoPIndMw+KxF36uD1ACwRcb7N+IoWs=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 5.135.226.135
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
+ cohuck@redhat.com, mark.burton@greensocs.com, qemu-s390x@nongnu.org,
+ edgari@xilinx.com, qemu-arm@nongnu.org, pbonzini@redhat.com, philmd@redhat.com,
+ david@gibson.dropbear.id.au
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: n0+HLIQOQSrI
 
-On 2019/11/4 20:14, Xiang Zheng wrote:
-> From: Dongjiu Geng <gengdongjiu@huawei.com>
-> 
-> This patch implements APEI GHES Table generation via fw_cfg blobs. Now
-> it only supports ARMv8 SEA, a type of GHESv2 error source. Afterwards,
-> we can extend the supported types if needed. For the CPER section,
-> currently it is memory section because kernel mainly wants userspace to
-> handle the memory errors.
-> 
-> This patch follows the spec ACPI 6.2 to build the Hardware Error Source
-> table. For more detailed information, please refer to document:
-> docs/specs/acpi_hest_ghes.rst
-> 
-> Suggested-by: Laszlo Ersek <lersek@redhat.com>
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 
-Hi Xiang,
-   please add "Reviewed-by: Michael S. Tsirkin <mst@redhat.com> " which from Michael, thanks.
+On 10/29/19 4:53 PM, Damien Hedde wrote:
+> Hi,
+> 
+> Does anyone has comment about the interface / patch 3 ?
+> Should I try to split it ?
+
+ping
+
+> 
+> Thanks,
+> Damien
+> 
+
+Thanks,
+Damien

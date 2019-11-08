@@ -1,177 +1,203 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2730665wri;
-        Fri, 8 Nov 2019 07:59:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxHf7Psu/LclZoMK+BsXwP+m2thpSKzQzzTGYIS/Oe0MsuMY1xK7ug8+F32j5cx3ug7s0ee
-X-Received: by 2002:a05:620a:1498:: with SMTP id w24mr9454223qkj.170.1573228772174;
-        Fri, 08 Nov 2019 07:59:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573228772; cv=none;
+Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp2757466wri;
+        Fri, 8 Nov 2019 08:18:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwv4GUlik19tlk0341mQrOc8gTdABbQhojkJmALNKun1lWqySc6cqD5++WPL/rEFg5Aj7m+
+X-Received: by 2002:a37:98c6:: with SMTP id a189mr9678678qke.230.1573229903308;
+        Fri, 08 Nov 2019 08:18:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573229903; cv=none;
         d=google.com; s=arc-20160816;
-        b=gpKTh0R6QP9loL6GyK109qB7uy9yux8iQz2FhmrgBIJSQiKyy7a0elqOtdGrE85pOb
-         3PeSz+Bx/gJq7jELMS5FCPkwSIlDi9/HZz5Xy7BRGZoHn07TBr30xt3EwsVwend3dMaB
-         TrJfu013DFcc6KeQB+WCCnSTCPp8RuxHl3+HU1NL62mZ/yI4nd9JClSa7i0CY8VeWjyZ
-         XXs+8/GUPA6at2nf+2cAt0CHnRUL9pcvAqsxcijoGboOKYzqT7Slnt1+6LA921Mv8/lB
-         UApUBfLYUajE/g9WlylQuNjlVw/UBJF2rr7kh0JuRE6B+xhL4sHdjWN1E96dZjXG3SgG
-         LWcg==
+        b=ikjShztAzeJ0Hj0gye+dnlY7qaW4MW7Bn01EMH6+32SQ/gZHJJL6YsvXVVnluRUlfQ
+         3XqRgLKeJYvr+kLhjXzIbfb2M/jTodUPk+gOrPaVs699h7KdKlfKQpcwzv/BtTyrW4wi
+         finyq1TCcFGMzTiR8U/VXv73iHrBKZoNhKV88hhubNxZFRMgP/AMu7AkNoCPTj3x9bBQ
+         8Tcf89TT4+s5v7BRYoOSQ+ZIJexW8f99m+SOSMHlrEkRhlwuFBbLgyvaC2rrrBnNxU7V
+         mb/QBgNAQD0g1PDNpAuGcxuZmmHVH/TDqW5Mb7pvjYg8hP+Q1qNLH0McX1K6+TCBRmi0
+         AFdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=LQ3GbzhAlWakkp9NcFJ+/X9NGKDGeaOkAkmOLvHt9y8=;
-        b=NfnRURJm6Oo+69zjIpo3NNCqUyIuI3CTQVjVaHGgt3lDJNy90JBaUQO4iRZ4xs9Txw
-         IhjrweF2m16loZDvrw/To/suzG+VgHKYIw7bRldcWC+wcCLtQfKUk1Mo0tUYFhGVy4ho
-         SnC2qr3dChYnSklhMQP2i559arVHtutfMJEtRmaor3c+14xxx9d7FLV0c9uQO0Zz0diU
-         PTyd+PLfcjOu+C/oJ43KddNLIY5qnCsX9+KZbOuQqYv5bS4NrO6VLmE/TbC8yeEDxJRR
-         Q8AeutPATJn1GLRDXOhQIkT9qk9NZiCd3iKx2jkvOEu+X19Xb1wEtaSOJZ+XgkvqLPlc
-         kVBQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=b4Jix9NabG0otXDbqUQ6itxjepo67TQzsB7CUbH+vJw=;
+        b=AiRY7jofwT0eK9VqFeMlrJPmWHwtl5UmsQIVcCAGEw8eogDGzBsEFek4TyDMsdMsLr
+         dpXZRzKyJLZG7xYv+A/Bb2VIOFqVWlY+6oJqf2Rn2mFgCD46+N9cwqsYyQq1JZF92k9R
+         6L2Z+l50q/3EPrMjZn2S6cyZ+Vxp1S7ChO7+OrjTSz62RoagFKdYdVl5F9XG4+Z/nHtc
+         9Rcl6dL8h49wkaeRDah20MrmPs7GDlrzY4wnzhQpf9rDgvqoaAGEP2xtsT8uPaRtWctj
+         FdtbA7IHnP0SGMgrXULDai9/+yKqGfG+Mkq7ztsQeLip2hV1zfakjjXHy88bB6ZxWB4Z
+         Bf5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=me70BZMe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E9DnldRX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o16si3771238qkk.24.2019.11.08.07.59.32
+        by mx.google.com with ESMTPS id 46si3902608qte.107.2019.11.08.08.18.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Nov 2019 07:59:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Nov 2019 08:18:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=me70BZMe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56752 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E9DnldRX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57122 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iT6fb-0001CC-G6
-	for alex.bennee@linaro.org; Fri, 08 Nov 2019 10:59:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55652)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iT6xq-0006Sy-FA
+	for alex.bennee@linaro.org; Fri, 08 Nov 2019 11:18:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59679)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iT6ez-00019O-8L
- for qemu-devel@nongnu.org; Fri, 08 Nov 2019 10:58:54 -0500
+ (envelope-from <imammedo@redhat.com>) id 1iT6xY-0006Pz-9j
+ for qemu-arm@nongnu.org; Fri, 08 Nov 2019 11:18:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iT6ex-0000Wf-Un
- for qemu-devel@nongnu.org; Fri, 08 Nov 2019 10:58:52 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:36040)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iT6ex-0000WI-OP
- for qemu-devel@nongnu.org; Fri, 08 Nov 2019 10:58:51 -0500
-Received: by mail-oi1-x242.google.com with SMTP id j7so5659683oib.3
- for <qemu-devel@nongnu.org>; Fri, 08 Nov 2019 07:58:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LQ3GbzhAlWakkp9NcFJ+/X9NGKDGeaOkAkmOLvHt9y8=;
- b=me70BZMeByRR5nOfJOfXrhTXOLix/75IkVNyJwLh3MG2Vs4aWNyArN38fX455vnoiy
- 7xQhnCorGK6EaaJWvFaBzv1o2ALA7IWTvKj86zUDvZn0cVb1cMyqNUhZJVZkMK6/3X00
- 0iGArVQbqZAjRD2cZn5a3b8dfEmFjFoBeQ4+5FfnosuwQQqPe/An1X6s7gjk6MfT9m8A
- EWLf5uhTYtSpz/6oaefKht6SWGDuFlFtC5lcbFEO/7hVX575Bb5sD5oU83jX4Bo5Hxzy
- Lu1AwrTL0g7pnH8VIyr1qlavg8O0kqvCkcgfsth/N3c09i7Yu218RbrTkuCgc/04wCZg
- NNLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=LQ3GbzhAlWakkp9NcFJ+/X9NGKDGeaOkAkmOLvHt9y8=;
- b=I+cFFAx9GXs8apPavZKnFj2PSnaz9G25h0cRo2CIMDbS9gBmNZSVVSMe+C7a8lteLf
- /qyhXzssC/2CoQCTqe0Sd4fia8VgaYW38DUfR0XQx/XciXNv7EwqV4qsgzux0NpaYdkH
- ZCOZ2ZfT2xzGU1or6priLTE0/ZAYFN6fMA3aItTHqK8tWV4DYg0SGybxHYbOAtzpt0D2
- HLcl5VHBsXgLKGdkfVMRGpE6tgDdDz8GqGD3/g6L+wzAKKVsfTZyIbB1Q7pDOqeGHytL
- YsbNCNmQpSZA1doCDG7sGlcQfXHT6+RpCzBn5C/KiUzXuPqA1dJrb9eHHCJ2SDY2g0RR
- o0Zg==
-X-Gm-Message-State: APjAAAVhsY8MTmHP6+Rfoq6YGlKA0XSx7RSLRQ3gU3vuE1MHtBLuSZ1X
- srDFcZT63V8sFPkNi+Mm/1xY1X3GajpIzrUhP7fHlQ==
-X-Received: by 2002:aca:3e8a:: with SMTP id l132mr9887523oia.146.1573228730711; 
- Fri, 08 Nov 2019 07:58:50 -0800 (PST)
+ (envelope-from <imammedo@redhat.com>) id 1iT6xW-0002Hp-0K
+ for qemu-arm@nongnu.org; Fri, 08 Nov 2019 11:18:03 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:47873
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iT6xV-0002H9-44
+ for qemu-arm@nongnu.org; Fri, 08 Nov 2019 11:18:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573229880;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=b4Jix9NabG0otXDbqUQ6itxjepo67TQzsB7CUbH+vJw=;
+ b=E9DnldRXsAOyCiY5BUO78RYATb2XBv2jrBw/Vf12xCEG9to4GXDcqrr2db2y1JkKHvSOTO
+ CUBz30zq/hql375wEeHmJCo0jMKGMYsqJmqX8KvDEejBqusH0rZdYKsPFOkFNLZs2pgHBX
+ hdF5yPdW3x7RUQ3ceYDIBmr7m0GPewg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-357-mdUmDLnVPaiJWgUvaJ-k6A-1; Fri, 08 Nov 2019 11:17:57 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 618028017DD;
+ Fri,  8 Nov 2019 16:17:55 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 95D3D5D6B7;
+ Fri,  8 Nov 2019 16:17:47 +0000 (UTC)
+Date: Fri, 8 Nov 2019 17:17:45 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH 1/5] hw/arm: Align ACPI blob len to PAGE size
+Message-ID: <20191108171745.1465295b@redhat.com>
+In-Reply-To: <20191004155302.4632-2-shameerali.kolothum.thodi@huawei.com>
+References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
+ <20191004155302.4632-2-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-References: <20191104115228.30745-1-graf@amazon.com>
-In-Reply-To: <20191104115228.30745-1-graf@amazon.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 8 Nov 2019 15:58:39 +0000
-Message-ID: <CAFEAcA8zkR_MZ-28Nc=x4j05U9MsFYfzQtkHxTf65ZwacK020w@mail.gmail.com>
-Subject: Re: [PATCH] pl031: Expose RTCICR as proper WC register
-To: Alexander Graf <graf@amazon.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-X-BeenThere: qemu-devel@nongnu.org
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: mdUmDLnVPaiJWgUvaJ-k6A-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Hendrik Borghorst <hborghor@amazon.de>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tEL26pGyDd8N
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, lersek@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ElKjVLfbme5T
 
-On Mon, 4 Nov 2019 at 11:52, Alexander Graf <graf@amazon.com> wrote:
->
-> The current pl031 RTCICR register implementation always clears the IRQ
-> pending status on a register write, regardless of the value it writes.
->
-> To justify that behavior, it references the arm926e documentation
-> (DDI0287B) and indicates that said document states that any write clears
-> the internal IRQ state. I could however not find any text in that document
-> backing the statement. In fact, it explicitly says:
->
->   "Writing 1 to bit 0 of RTCICR clears the RTCINTR flag."
->
-> which describes it as much as a write-to-clear register as the PL031 spec
-> (DDI0224) does:
->
->   "Writing 1 to bit position 0 clears the corresponding interrupt.
->    Writing 0 has no effect."
+On Fri, 4 Oct 2019 16:52:58 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-DDI0287B page 11-2 section 11.1 says
-"The interrupt is cleared by writing any data value to the
-interrupt clear register RTCICR". As you note, this contradicts
-what it says later on in section 11.2.2.
-
-(Interestingly, the PL030 does have a "write any value to
-clear the interrupt" register, RTCEOI.)
-
-I'm fairly sure this patch is right and the DDI0287B document
-has an error, since it isn't internally consistent and doesn't
-match the proper PL031 TRM.
-
-Did you find this because you had a guest that assumed the
-other behaviour? This bug has been in QEMU for a very long time,
-and it seems odd for a guest to deliberately perform an action
-(writing 0) which is documented to have no effect on the device...
-
-> Let's remove the bogus comment and instead follow both specs to what they
-> say.
->
-> Reported-by: Hendrik Borghorst <hborghor@amazon.de>
-> Signed-off-by: Alexander Graf <graf@amazon.com>
+> If ACPI blob length modifications happens after the initial
+> virt_acpi_build() call, and the changed blob length is within
+> the PAGE size boundary, then the revised size is not seen by
+> the firmware on Guest reboot. The is because in the
+> virt_acpi_build_update() -> acpi_ram_update() -> qemu_ram_resize()
+> path, qemu_ram_resize() uses ram_block size which is aligned
+> to PAGE size and the "resize callback" to update the size seen
+> by firmware is not getting invoked. Hence align ACPI blob sizes
+> to PAGE boundary.
+>=20
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
->  hw/rtc/pl031.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
->
-> diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
-> index 3a982752a2..c57cf83165 100644
-> --- a/hw/rtc/pl031.c
-> +++ b/hw/rtc/pl031.c
-> @@ -149,11 +149,7 @@ static void pl031_write(void * opaque, hwaddr offset,
->          pl031_update(s);
->          break;
->      case RTC_ICR:
-> -        /* The PL031 documentation (DDI0224B) states that the interrupt is
-> -           cleared when bit 0 of the written value is set.  However the
-> -           arm926e documentation (DDI0287B) states that the interrupt is
-> -           cleared when any value is written.  */
-> -        s->is = 0;
-> +        s->is &= ~value;
->          pl031_update(s);
->          break;
->      case RTC_CR:
-> --
-> 2.17.1
+> More details on this issue can be found here,
+> https://patchwork.kernel.org/patch/11154757/
+re-read it again and it seems to me that this patch is workaround
+rather than a solution to the problem.
+CCing Michael as an author this code.
 
-thanks
--- PMM
+on x86 we have crazy history of manually aligning acpi blobs, see code unde=
+r comment
+
+  /* We'll expose it all to Guest so we want to reduce
+
+so used_length endups with over-sized value which includes table and paddin=
+g
+and it happens that ACPI_BUILD_TABLE_SIZE is much bigger than host page siz=
+e
+so if on reboot we happen to exceed ACPI_BUILD_TABLE_SIZE, the next padded =
+table
+size (used_length) would be  2 x ACPI_BUILD_TABLE_SIZE which doesn't trigge=
+r
+  block->used_length =3D=3D HOST_PAGE_ALIGN(newsize)
+condition so fwcfg gets updated value.
+
+
+> ---
+>  hw/arm/virt-acpi-build.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+>=20
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 4cd50175e0..074e0c858e 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -790,6 +790,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuild=
+Tables *tables)
+>      GArray *table_offsets;
+>      unsigned dsdt, xsdt;
+>      GArray *tables_blob =3D tables->table_data;
+> +    GArray *cmd_blob =3D tables->linker->cmd_blob;
+>      MachineState *ms =3D MACHINE(vms);
+> =20
+>      table_offsets =3D g_array_new(false, true /* clear */,
+> @@ -854,6 +855,19 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuil=
+dTables *tables)
+>          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
+>      }
+> =20
+> +    /*
+> +     * Align the ACPI blob lengths to PAGE size so that on ACPI table
+> +     * regeneration, the length that firmware sees really gets updated
+> +     * through 'resize' callback in qemu_ram_resize() in the
+> +     * virt_acpi_build_update() -> acpi_ram_update() -> qemu_ram_resize(=
+)
+> +     * path.
+> +     */
+> +    g_array_set_size(tables_blob,
+> +                     TARGET_PAGE_ALIGN(acpi_data_len(tables_blob)));
+here it would depend on TARGET_PAGE_ALIGN vs HOST_PAGE_ALIGN relation
+so depending on host it could flip it's behavior to opposite.
+
+one thing we could do is dropping (block->used_length =3D=3D newsize) condi=
+tion
+another is to use value of block->used_length for s->files->f[index].size.
+
+Michael,
+what's your take in this?
+
+> +    g_array_set_size(tables->rsdp,
+> +                     TARGET_PAGE_ALIGN(acpi_data_len(tables->rsdp)));
+> +    g_array_set_size(cmd_blob,
+> +                     TARGET_PAGE_ALIGN(acpi_data_len(cmd_blob)));
+>      /* Cleanup memory that's no longer used. */
+>      g_array_free(table_offsets, true);
+>  }
+

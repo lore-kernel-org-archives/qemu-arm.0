@@ -1,94 +1,99 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp1279367wrr;
-        Mon, 11 Nov 2019 04:47:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxQ1cRmXySB0lN0F91WKLVFy0VozE8oVt9rDp8E0Bu+RVDkYxLWMQComsZgwFrSLRp5XXfG
-X-Received: by 2002:aa7:df8c:: with SMTP id b12mr26734802edy.166.1573476453428;
-        Mon, 11 Nov 2019 04:47:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573476453; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp1388079wrr;
+        Mon, 11 Nov 2019 06:24:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxU13Hbg6yMYRbzTsYeUwVyCwpVksUQKKTn7Qp03bnkKn9K4zvue2ljUvxY3lUoSzbAaabw
+X-Received: by 2002:ae9:ebcf:: with SMTP id b198mr10674721qkg.143.1573482294359;
+        Mon, 11 Nov 2019 06:24:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573482294; cv=none;
         d=google.com; s=arc-20160816;
-        b=IV6Km+ourzlkyrhW8q+yI9JfJUSV6c2BT1/JTkXrWeJPNFG7/9kwgXZF0zBTNRjj0I
-         13l+LwYBMxZhuIDbGex94F/nAduyaP6jwnhp9tW6CPdpqFdIJnWS0ZaE7noT8Z9TZadx
-         6NWk8Int01YYfApT50I/wRHNrj7y5VEh6VB3mMEFlYeQv7tWGMNgyYqVR6Sgtm4yzJ7+
-         AaHpmPszpkx/fY5SZOW2jQTc6YikbEd0KPJx0q3faBiqN4EXCa+1Kj9a5pEEBywCeVni
-         QIcD73n7Wz6YGwB113EyNMnokFmZJZ4HcUL+yD+A0G7x5toSS6uBdhACyPu5pZnwjvzh
-         p5Sg==
+        b=nKR8ecvx1Pka5p+b9wMYc6iPQBQqS3xg4vS5tG4+L5hyrnf3GlEwgCZJ3++0Jdp//h
+         JDZ35x7+dOZWDDj3ql6TBPRXD79x/yeuiEtffwmDAuOMHYv9LgMeAym4EXYibciUwFd+
+         /lzXJ5mEQeruopRaxchnQJXuFbBqb2KLXT3MHPJbViQcxH3bVbUlJVpZkm5rrFnCRVgQ
+         dw06XfzGzI8tFHRycyJTYXFSZiKTlh3o0Ph9MBPGBbMGO0tiRTdk3jD/Dw1P1gaVcnzy
+         I79VUpKZCZg939XlXMlaLpQZWrQ5Rilj26HtG8T0N4Rl7eusyGssnU1keAef2pRp+D35
+         D4jA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=pmRTjbeZgIOcr5YZpcmWLXKTrnWwTyIRS6DDbAF47JQ=;
-        b=F6RSe72OQaCUBpt1BpU70iospq6m1YrqZbe2rF1gUxMaOXX3Xl6UIoxaGPO51CBf4N
-         FNwNDM6PQNNrJd+ikwhUY72n4gjYzJP3/2s3e0Wv46KVVxuzZODDrdY8u+g5lAAEpzWW
-         3dMTidoFbS6ml+vdv8Qi8C34nLw9n3/4N2F8T/C9BRz/8zkLDATsQW70Z/fK+R9m4E6n
-         9MHBdMGL087PpYh0dBoeYMbOzm41n+JK2mjZ76o6Ckh4D6uKErfs6TpptaBJK9aaydDY
-         kORhuG19w1NFnxr0dCg7l0MlnsfOLYW6bAWaDUOwvO1JN05v+HPDG4n4vqib4K5KIs8b
-         Chnw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=c5MLCRruWAeKvnK3HfmEpVctzcmYx4mCz+j9wkkF96Q=;
+        b=bGBvfFYZ+fuQLQCgI4X4ph9AArNCjzoy5NloZnXqpLnqnkRcNwlpeQy15GqvpWecf8
+         8HeL1oWQXFND3ui8rsoUzhMGShMQ3OHqroAvofra2qtGH4I3t2RAw5gX/HzAvBeQQxnM
+         AZMbe9koT6eA+KQEu8NViBLZT+Vab6q5KAtuWKWV6I+K+YVtJNMZoaJPJ0cYcbtZekwW
+         44w2G4T5Z1O62pSIHqkyPzwX4SVAaZzORs9cBmmLruGwk21m8lgqxLQhkCF2tQ7wtJCr
+         JlCz1Tk8KsnSQIksTu7ozM01Vaukw2IodUa+fKQuBX9NtRzfVcaBaCL1pYfdZU75RUYL
+         uQOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="NR1XKX/p";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8si12564639edi.304.2019.11.11.04.47.33
+        by mx.google.com with ESMTPS id y62si3505684qke.181.2019.11.11.06.24.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2019 04:47:33 -0800 (PST)
+        Mon, 11 Nov 2019 06:24:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52048 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="NR1XKX/p";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53590 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iU96S-0005iY-Dx
-	for alex.bennee@linaro.org; Mon, 11 Nov 2019 07:47:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40143)
+	id 1iUAcf-0002TL-L8
+	for alex.bennee@linaro.org; Mon, 11 Nov 2019 09:24:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54235)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iU96K-0005hg-Bd
- for qemu-arm@nongnu.org; Mon, 11 Nov 2019 07:47:25 -0500
+ (envelope-from <imammedo@redhat.com>) id 1iUAcV-0002QV-Bg
+ for qemu-arm@nongnu.org; Mon, 11 Nov 2019 09:24:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iU96I-0003jG-Cf
- for qemu-arm@nongnu.org; Mon, 11 Nov 2019 07:47:24 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2049 helo=huawei.com)
+ (envelope-from <imammedo@redhat.com>) id 1iUAcT-00015S-CS
+ for qemu-arm@nongnu.org; Mon, 11 Nov 2019 09:24:43 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:29657
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iU96I-0003i7-6d; Mon, 11 Nov 2019 07:47:22 -0500
-Received: from lhreml709-cah.china.huawei.com (unknown [172.18.7.108])
- by Forcepoint Email with ESMTP id 2536B2190D1575115E8B;
- Mon, 11 Nov 2019 12:47:16 +0000 (GMT)
-Received: from lhreml707-chm.china.huawei.com (10.201.108.56) by
- lhreml709-cah.china.huawei.com (10.201.108.32) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Mon, 11 Nov 2019 12:47:15 +0000
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml707-chm.china.huawei.com (10.201.108.56) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Mon, 11 Nov 2019 12:47:15 +0000
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1713.004; Mon, 11 Nov 2019 12:47:15 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: RE: [PATCH 1/5] hw/arm: Align ACPI blob len to PAGE size
-Thread-Topic: [PATCH 1/5] hw/arm: Align ACPI blob len to PAGE size
-Thread-Index: AQHVeswOt9Cm/mHIvkOjMvan5ZmmMqeBqoOAgAR2W8A=
-Date: Mon, 11 Nov 2019 12:47:15 +0000
-Message-ID: <3ae89f87a5d64f57bea7246772c41301@huawei.com>
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iUAcT-00015H-7f
+ for qemu-arm@nongnu.org; Mon, 11 Nov 2019 09:24:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573482280;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=c5MLCRruWAeKvnK3HfmEpVctzcmYx4mCz+j9wkkF96Q=;
+ b=NR1XKX/pgG95scv9iusXgvlL+VbHIk48UCj/fcEe/eMSh5zMzSKJjqnj11Y+M36Di8U7qr
+ 1vBULuIwR8YFG6gUr53unzJfHFWTBUkqbB2rg+RrQ9YDHLf652Xf3DkAnd3nPCwbWV6IlT
+ S7lC06cPM+xu8wYcaiarE1EjhlBLg+g=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-164-Uii5XZuxPaCUaowUA6E6Mw-1; Mon, 11 Nov 2019 09:24:37 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D1AB107AD2F;
+ Mon, 11 Nov 2019 14:24:36 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AED131823C;
+ Mon, 11 Nov 2019 14:24:31 +0000 (UTC)
+Date: Mon, 11 Nov 2019 15:24:29 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH 2/5] nvdimm: Use configurable ACPI IO base and size
+Message-ID: <20191111152429.50b02929@redhat.com>
+In-Reply-To: <20191004155302.4632-3-shameerali.kolothum.thodi@huawei.com>
 References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
- <20191004155302.4632-2-shameerali.kolothum.thodi@huawei.com>
- <20191108171745.1465295b@redhat.com>
-In-Reply-To: <20191108171745.1465295b@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <20191004155302.4632-3-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: Uii5XZuxPaCUaowUA6E6Mw-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 185.176.76.210
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,150 +105,243 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>
+Cc: peter.maydell@linaro.org, shannon.zhaosl@gmail.com, qemu-devel@nongnu.org,
+ xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /EathGgT4tsO
+X-TUID: lCOpk1WWt5kc
 
-Hi Igor,
+On Fri, 4 Oct 2019 16:52:59 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> -----Original Message-----
-> From: Igor Mammedov [mailto:imammedo@redhat.com]
-> Sent: 08 November 2019 16:18
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org;
-> shannon.zhaosl@gmail.com; xuwei (O) <xuwei5@huawei.com>;
-> lersek@redhat.com; Linuxarm <linuxarm@huawei.com>; Michael S. Tsirkin
-> <mst@redhat.com>
-> Subject: Re: [PATCH 1/5] hw/arm: Align ACPI blob len to PAGE size
+> From: Kwangwoo Lee <kwangwoo.lee@sk.com>
 >=20
-> On Fri, 4 Oct 2019 16:52:58 +0100
-> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+> This patch makes IO base and size configurable to create NPIO AML for
+> ACPI NFIT. Since a different architecture like AArch64 does not use
+> port-mapped IO, a configurable IO base is required to create correct
+> mapping of ACPI IO address and size.
 >=20
-> > If ACPI blob length modifications happens after the initial
-> > virt_acpi_build() call, and the changed blob length is within
-> > the PAGE size boundary, then the revised size is not seen by
-> > the firmware on Guest reboot. The is because in the
-> > virt_acpi_build_update() -> acpi_ram_update() -> qemu_ram_resize()
-> > path, qemu_ram_resize() uses ram_block size which is aligned
-> > to PAGE size and the "resize callback" to update the size seen
-> > by firmware is not getting invoked. Hence align ACPI blob sizes
-> > to PAGE boundary.
-> >
-> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > ---
-> > More details on this issue can be found here,
-> > https://patchwork.kernel.org/patch/11154757/
-> re-read it again and it seems to me that this patch is workaround
-> rather than a solution to the problem.
-
-Thanks for taking a look at this. Yes, I was also not very sure about this =
-approach
-as the root cause of the issue is in qemu_ram_resize().
-
-> CCing Michael as an author this code.
-> on x86 we have crazy history of manually aligning acpi blobs, see code un=
-der
-> comment
+> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  hw/acpi/nvdimm.c        | 32 ++++++++++++++++++++++----------
+>  hw/i386/acpi-build.c    |  6 ++++++
+>  hw/i386/acpi-build.h    |  3 +++
+>  hw/i386/pc_piix.c       |  2 ++
+>  hw/i386/pc_q35.c        |  2 ++
+>  include/hw/mem/nvdimm.h |  3 +++
+>  6 files changed, 38 insertions(+), 10 deletions(-)
 >=20
->   /* We'll expose it all to Guest so we want to reduce
->=20
-> so used_length endups with over-sized value which includes table and padd=
-ing
-> and it happens that ACPI_BUILD_TABLE_SIZE is much bigger than host page
-> size
-> so if on reboot we happen to exceed ACPI_BUILD_TABLE_SIZE, the next padde=
-d
-> table
-> size (used_length) would be  2 x ACPI_BUILD_TABLE_SIZE which doesn't
-> trigger
->   block->used_length =3D=3D HOST_PAGE_ALIGN(newsize)
-> condition so fwcfg gets updated value.
+> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+> index 9fdad6dc3f..f91eea3802 100644
+> --- a/hw/acpi/nvdimm.c
+> +++ b/hw/acpi/nvdimm.c
+> @@ -926,11 +926,13 @@ void nvdimm_acpi_plug_cb(HotplugHandler *hotplug_de=
+v, DeviceState *dev)
+>  }
+> =20
+>  void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+> +                            struct AcpiGenericAddress dsm_io,
+>                              FWCfgState *fw_cfg, Object *owner)
+>  {
+> +    state->dsm_io =3D dsm_io;
+>      memory_region_init_io(&state->io_mr, owner, &nvdimm_dsm_ops, state,
+> -                          "nvdimm-acpi-io", NVDIMM_ACPI_IO_LEN);
+> -    memory_region_add_subregion(io, NVDIMM_ACPI_IO_BASE, &state->io_mr);
+> +                          "nvdimm-acpi-io", dsm_io.bit_width >> 3);
+> +    memory_region_add_subregion(io, dsm_io.address, &state->io_mr);
+> =20
+>      state->dsm_mem =3D g_array_new(false, true /* clear */, 1);
+>      acpi_data_push(state->dsm_mem, sizeof(NvdimmDsmIn));
+> @@ -959,12 +961,14 @@ void nvdimm_init_acpi_state(NVDIMMState *state, Mem=
+oryRegion *io,
+> =20
+>  #define NVDIMM_QEMU_RSVD_UUID   "648B9CF2-CDA1-4312-8AD9-49C4AF32BD62"
+> =20
+> -static void nvdimm_build_common_dsm(Aml *dev)
+> +static void nvdimm_build_common_dsm(Aml *dev,
+> +                                    NVDIMMState *nvdimm_state)
+>  {
+>      Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem, *elsectx2;
+>      Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_invalid;
+>      Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf, *dsm_out_bu=
+f_size;
+>      uint8_t byte_list[1];
+> +    AmlRegionSpace rs;
+> =20
+>      method =3D aml_method(NVDIMM_COMMON_DSM, 5, AML_SERIALIZED);
+>      uuid =3D aml_arg(0);
+> @@ -975,9 +979,16 @@ static void nvdimm_build_common_dsm(Aml *dev)
+> =20
+>      aml_append(method, aml_store(aml_name(NVDIMM_ACPI_MEM_ADDR), dsm_mem=
+));
+> =20
+> +    if (nvdimm_state->dsm_io.space_id =3D=3D AML_AS_SYSTEM_IO) {
+> +        rs =3D AML_SYSTEM_IO;
+> +    } else {
+> +        rs =3D AML_SYSTEM_MEMORY;
+> +    }
+> +
+>      /* map DSM memory and IO into ACPI namespace. */
+> -    aml_append(method, aml_operation_region(NVDIMM_DSM_IOPORT, AML_SYSTE=
+M_IO,
+> -               aml_int(NVDIMM_ACPI_IO_BASE), NVDIMM_ACPI_IO_LEN));
+> +    aml_append(method, aml_operation_region(NVDIMM_DSM_IOPORT, rs,
+> +               aml_int(nvdimm_state->dsm_io.address),
+> +               nvdimm_state->dsm_io.bit_width >> 3));
+>      aml_append(method, aml_operation_region(NVDIMM_DSM_MEMORY,
+>                 AML_SYSTEM_MEMORY, dsm_mem, sizeof(NvdimmDsmIn)));
+> =20
+> @@ -992,7 +1003,7 @@ static void nvdimm_build_common_dsm(Aml *dev)
+>      field =3D aml_field(NVDIMM_DSM_IOPORT, AML_DWORD_ACC, AML_NOLOCK,
+>                        AML_PRESERVE);
+>      aml_append(field, aml_named_field(NVDIMM_DSM_NOTIFY,
+> -               NVDIMM_ACPI_IO_LEN * BITS_PER_BYTE));
+> +              (nvdimm_state->dsm_io.bit_width >> 3) * BITS_PER_BYTE));
+Why are you converting bits to bytes and then back to bits, here?
 
-Yes, this is the reason why the issue is not visible on x86.
-=20
->=20
-> > ---
-> >  hw/arm/virt-acpi-build.c | 14 ++++++++++++++
-> >  1 file changed, 14 insertions(+)
-> >
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 4cd50175e0..074e0c858e 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -790,6 +790,7 @@ void virt_acpi_build(VirtMachineState *vms,
-> AcpiBuildTables *tables)
-> >      GArray *table_offsets;
-> >      unsigned dsdt, xsdt;
-> >      GArray *tables_blob =3D tables->table_data;
-> > +    GArray *cmd_blob =3D tables->linker->cmd_blob;
-> >      MachineState *ms =3D MACHINE(vms);
-> >
-> >      table_offsets =3D g_array_new(false, true /* clear */,
-> > @@ -854,6 +855,19 @@ void virt_acpi_build(VirtMachineState *vms,
-> AcpiBuildTables *tables)
-> >          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
-> >      }
-> >
-> > +    /*
-> > +     * Align the ACPI blob lengths to PAGE size so that on ACPI table
-> > +     * regeneration, the length that firmware sees really gets updated
-> > +     * through 'resize' callback in qemu_ram_resize() in the
-> > +     * virt_acpi_build_update() -> acpi_ram_update() ->
-> qemu_ram_resize()
-> > +     * path.
-> > +     */
-> > +    g_array_set_size(tables_blob,
-> > +
-> TARGET_PAGE_ALIGN(acpi_data_len(tables_blob)));
-> here it would depend on TARGET_PAGE_ALIGN vs HOST_PAGE_ALIGN relation
-> so depending on host it could flip it's behavior to opposite.
 
-Ok.
-
->=20
-> one thing we could do is dropping (block->used_length =3D=3D newsize) con=
-dition
-
-I tried this before and strangely for some reason on reboot path,
-
-virt_acpi_build_update() is called with build_state being NULL and no acpi_=
-ram_update()
-happens. Not sure what causes this behavior when we drop the above conditio=
-n.
-
-> another is to use value of block->used_length for s->files->f[index].size=
-.
-
-I just tried this by passing block->used_length to fw_cfg_add_file_callback=
-() .
-This could work for this case. But not sure there will be any corner cases
-and also there isn't any easy way to access the mr->ram_balck->used_length =
-from
-hw/core/loader.c.
-
->=20
-> Michael,
-> what's your take in this?
-
-Thanks,
-Shameer
-
->=20
-> > +    g_array_set_size(tables->rsdp,
-> > +
-> TARGET_PAGE_ALIGN(acpi_data_len(tables->rsdp)));
-> > +    g_array_set_size(cmd_blob,
-> > +                     TARGET_PAGE_ALIGN(acpi_data_len(cmd_blob)));
-> >      /* Cleanup memory that's no longer used. */
-> >      g_array_free(table_offsets, true);
-> >  }
+>      aml_append(method, field);
+> =20
+>      /*
+> @@ -1260,7 +1271,8 @@ static void nvdimm_build_nvdimm_devices(Aml *root_d=
+ev, uint32_t ram_slots)
+>  }
+> =20
+>  static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
+> -                              BIOSLinker *linker, GArray *dsm_dma_area,
+> +                              BIOSLinker *linker,
+> +                              NVDIMMState *nvdimm_state,
+>                                uint32_t ram_slots)
+>  {
+>      Aml *ssdt, *sb_scope, *dev;
+> @@ -1288,7 +1300,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets=
+, GArray *table_data,
+>       */
+>      aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0012")));
+> =20
+> -    nvdimm_build_common_dsm(dev);
+> +    nvdimm_build_common_dsm(dev, nvdimm_state);
+> =20
+>      /* 0 is reserved for root device. */
+>      nvdimm_build_device_dsm(dev, 0);
+> @@ -1307,7 +1319,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets=
+, GArray *table_data,
+>                                                 NVDIMM_ACPI_MEM_ADDR);
+> =20
+>      bios_linker_loader_alloc(linker,
+> -                             NVDIMM_DSM_MEM_FILE, dsm_dma_area,
+> +                             NVDIMM_DSM_MEM_FILE, nvdimm_state->dsm_mem,
+>                               sizeof(NvdimmDsmIn), false /* high memory *=
+/);
+>      bios_linker_loader_add_pointer(linker,
+>          ACPI_BUILD_TABLE_FILE, mem_addr_offset, sizeof(uint32_t),
+> @@ -1329,7 +1341,7 @@ void nvdimm_build_acpi(GArray *table_offsets, GArra=
+y *table_data,
+>          return;
+>      }
+> =20
+> -    nvdimm_build_ssdt(table_offsets, table_data, linker, state->dsm_mem,
+> +    nvdimm_build_ssdt(table_offsets, table_data, linker, state,
+>                        ram_slots);
+> =20
+>      device_list =3D nvdimm_get_device_list();
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 1d077a7cb7..b5170912a8 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -126,6 +126,12 @@ typedef struct FwCfgTPMConfig {
+> =20
+>  static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg);
+> =20
+> +const struct AcpiGenericAddress x86_nvdimm_acpi_dsmio =3D {
+> +    .space_id =3D AML_AS_SYSTEM_IO,
+> +    .address =3D NVDIMM_ACPI_IO_BASE,
+> +    .bit_width =3D NVDIMM_ACPI_IO_LEN << 3
+> +};
+> +
+>  static void init_common_fadt_data(MachineState *ms, Object *o,
+>                                    AcpiFadtData *data)
+>  {
+> diff --git a/hw/i386/acpi-build.h b/hw/i386/acpi-build.h
+> index 007332e51c..74df5fc612 100644
+> --- a/hw/i386/acpi-build.h
+> +++ b/hw/i386/acpi-build.h
+> @@ -1,6 +1,9 @@
+> =20
+>  #ifndef HW_I386_ACPI_BUILD_H
+>  #define HW_I386_ACPI_BUILD_H
+> +#include "hw/acpi/acpi-defs.h"
+> +
+> +extern const struct AcpiGenericAddress x86_nvdimm_acpi_dsmio;
+> =20
+>  void acpi_setup(void);
+> =20
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 6824b72124..78521cf017 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -58,6 +58,7 @@
+>  #include "migration/misc.h"
+>  #include "kvm_i386.h"
+>  #include "sysemu/numa.h"
+> +#include "hw/i386/acpi-build.h"
+> =20
+>  #define MAX_IDE_BUS 2
+> =20
+> @@ -303,6 +304,7 @@ else {
+> =20
+>      if (machine->nvdimms_state->is_enabled) {
+>          nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
+> +                               x86_nvdimm_acpi_dsmio,
+>                                 pcms->fw_cfg, OBJECT(pcms));
+>      }
+>  }
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 8fad20f314..d53ee8de84 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -53,6 +53,7 @@
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/numa.h"
+> +#include "hw/i386/acpi-build.h"
+> =20
+>  /* ICH9 AHCI has 6 ports */
+>  #define MAX_SATA_PORTS     6
+> @@ -330,6 +331,7 @@ static void pc_q35_init(MachineState *machine)
+> =20
+>      if (machine->nvdimms_state->is_enabled) {
+>          nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
+> +                               x86_nvdimm_acpi_dsmio,
+>                                 pcms->fw_cfg, OBJECT(pcms));
+>      }
+>  }
+> diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
+> index 523a9b3d4a..5fe440861e 100644
+> --- a/include/hw/mem/nvdimm.h
+> +++ b/include/hw/mem/nvdimm.h
+> @@ -25,6 +25,7 @@
+> =20
+>  #include "hw/mem/pc-dimm.h"
+>  #include "hw/acpi/bios-linker-loader.h"
+> +#include "hw/acpi/aml-build.h"
+> =20
+>  #define NVDIMM_DEBUG 0
+>  #define nvdimm_debug(fmt, ...)                                \
+> @@ -140,10 +141,12 @@ struct NVDIMMState {
+>       */
+>      int32_t persistence;
+>      char    *persistence_string;
+> +    struct AcpiGenericAddress dsm_io;
+>  };
+>  typedef struct NVDIMMState NVDIMMState;
+> =20
+>  void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+> +                            struct AcpiGenericAddress dsm_io,
+>                              FWCfgState *fw_cfg, Object *owner);
+>  void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
+>                         BIOSLinker *linker, NVDIMMState *state,
 

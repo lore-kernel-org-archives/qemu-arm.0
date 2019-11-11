@@ -1,48 +1,48 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp726248wrr;
-        Sun, 10 Nov 2019 17:44:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxdafBKheJQZqnLQFmnDClSsVmQkRsta9dYC92uAh3etnWOQNU1VEOVvIlxD4GtGXH5HmYQ
-X-Received: by 2002:aa7:cad0:: with SMTP id l16mr23791963edt.82.1573436673915;
-        Sun, 10 Nov 2019 17:44:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573436673; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp726263wrr;
+        Sun, 10 Nov 2019 17:44:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz3wL27p1fvRU9BA2dOyGo3NG4Alfl+dKUdf/5dk9zpHP9w2HnocBn+Pa2oCQ+WWgFOjApK
+X-Received: by 2002:aa7:d3da:: with SMTP id o26mr24223859edr.302.1573436675687;
+        Sun, 10 Nov 2019 17:44:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573436675; cv=none;
         d=google.com; s=arc-20160816;
-        b=KjuN+zW80BVCJoAGEolSVqi0OnLVklfe8UJI7BCadD/s4mSz5IPckX5JPRoApxuby6
-         HK/8/xsfchCpXVqi6qnuC8htZ4lONC62xuislwcI6RwEUjiBap0PcuibY6t5zv6TLw7K
-         B2PQxOHGcRVITIFZyQoDvPyzFqBu7HhLmaQEu2KsMgiE+IhuiQ+xxACEqJhml/Okb9w0
-         8KC+i/i3H61zKENfdprjUECHuXPiEaDtNd5zCeNzVDIagz1R+lgOPxzdagSJOhmcplrp
-         LjIQxcx22o6mslA4D7OsEccJexdJN92fvwqeSQr6aKMG9LDKRD7uNj0hRiG3EESr1irO
-         8NEw==
+        b=MjvsWIMDFo5za/mPzleSB4nb74aiXXnugfS59ChYu17KWSxLUbYqLYTaOXRKMexnFU
+         Uh1GERs22k/RvEXSvk4j+IuyE64fGQ83bUHPqAV2g6+AGLsLgGNIuBb2P236ym1QP1wk
+         MJ2V7m8n1glhpE4bFzswYG0HlzYh4z5J8OJ8AQNaVPZiiyjI0Ds10Oeq7Y1wyfrmqu+0
+         76j94WVSOorzibrDPUdqIaxuYYoleJ+scFEqzXcma2jKuR4UH9zwAoz16wN+prP625h+
+         uXmEtSAKMyCDXIYhgS0kkr8SHzTWMvOSW+5JiVPgKroSNO+GRj0O+SfLQmNWtl6hsw8y
+         ACOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=2VwIKQyMDgyOw6qxsT9Wez2YpQFq93Rh7po7dHpL9ds=;
-        b=DvfCF5rVNZJlRkQ5UIFGcLyb8EVLNgvpw3LJe/HjdShogkZKF8brMgBcPmUtYGZf6X
-         3KOPKviTve3A9UiexlE2aaeQ2YP6xhl1CJsnAPudjVLI1xpaIU85OHm7RUpQMu8sqV9J
-         8tkBApPA0wAKcNrZpvLfNhbAVK7umIFoZtosPxdaK8KdPPtHyIM5CUDqzGHFgsBXTTu9
-         9vLTvNWOR4YPmFtzakeia+uBuIjU8G2MbYlpDJU8eWy0ebgYhA+avnx1+dWeXPWmj3dZ
-         yx8hgBRUlx9YNuChH3GfJvCKzXapWLyUTSIeFvg+017p5ALiUzbmKZjtIpQ6wlOmCBag
-         lemA==
+        bh=O4xDY6KOmtrmng7As9h8BYK+ybHuKJltzy/8bEkaKG8=;
+        b=Do4Qhr9ZKfPbzSXhyYonwBzJv2C8mGI4YXmGfAXtKG1GcEC/Od2EyBGo2tRJu6uV0A
+         MD5x1xt0c80MlvAnVNnJIXTbFzfQbsXgiEXXNkecNvxWyzaGL/MDgYjHHa9ybvea1hSw
+         QwThdTjrvQs6+2ej0iXdtm/nkmhQL5A6FjDx65vpF55A+x2+KQ4+AwPr02idNV6N4WUa
+         wNuhhUL73O1KXpaM0wwRgi7TnuLxPthIosmh00+38YmvwN/xy6aPjprbKgDS0QK5zXZZ
+         oo1g9AwCaUa8DdhVd182lwFdklZuGioaang5/LyR8GQyNwtx+/t8d41+cDyfvi2BXW5J
+         sMpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id uz25si8556637ejb.43.2019.11.10.17.44.33;
-        Sun, 10 Nov 2019 17:44:33 -0800 (PST)
+        by mx.google.com with ESMTP id uz25si8556637ejb.43.2019.11.10.17.44.35;
+        Sun, 10 Nov 2019 17:44:35 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726871AbfKKBo2 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Sun, 10 Nov 2019 20:44:28 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:6177 "EHLO huawei.com"
+        id S1726953AbfKKBoe (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Sun, 10 Nov 2019 20:44:34 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:6178 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726789AbfKKBo1 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sun, 10 Nov 2019 20:44:27 -0500
+        id S1726824AbfKKBoe (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sun, 10 Nov 2019 20:44:34 -0500
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 0D7E8820CD7FDC4E85F3;
+        by Forcepoint Email with ESMTP id 15A30E704D2DBB69064B;
         Mon, 11 Nov 2019 09:44:26 +0800 (CST)
 Received: from HGHY4Z004218071.china.huawei.com (10.133.224.57) by
  DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.439.0; Mon, 11 Nov 2019 09:44:20 +0800
+ 14.3.439.0; Mon, 11 Nov 2019 09:44:17 +0800
 From:   Xiang Zheng <zhengxiang9@huawei.com>
 To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
@@ -53,9 +53,9 @@ To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
         <linuxarm@huawei.com>
 CC:     <zhengxiang9@huawei.com>, <wanghaibin.wang@huawei.com>
-Subject: [RESEND PATCH v21 6/6] MAINTAINERS: Add APCI/APEI/GHES entries
-Date:   Mon, 11 Nov 2019 09:40:48 +0800
-Message-ID: <20191111014048.21296-7-zhengxiang9@huawei.com>
+Subject: [RESEND PATCH v21 4/6] KVM: Move hwpoison page related functions into kvm-all.c
+Date:   Mon, 11 Nov 2019 09:40:46 +0800
+Message-ID: <20191111014048.21296-5-zhengxiang9@huawei.com>
 X-Mailer: git-send-email 2.15.1.windows.2
 In-Reply-To: <20191111014048.21296-1-zhengxiang9@huawei.com>
 References: <20191111014048.21296-1-zhengxiang9@huawei.com>
@@ -67,39 +67,169 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: NqxcR9FW5cz/
+X-TUID: PUxvYX61o8RR
 
 From: Dongjiu Geng <gengdongjiu@huawei.com>
 
-I and Xiang are willing to review the APEI-related patches and
-volunteer as the reviewers for the APEI/GHES part.
+kvm_hwpoison_page_add() and kvm_unpoison_all() will both be used by X86
+and ARM platforms, so moving them into "accel/kvm/kvm-all.c" to avoid
+duplicate code.
+
+For architectures that don't use the poison-list functionality the
+reset handler will harmlessly do nothing, so let's register the
+kvm_unpoison_all() function in the generic kvm_init() function.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 ---
- MAINTAINERS | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ accel/kvm/kvm-all.c      | 36 ++++++++++++++++++++++++++++++++++++
+ include/sysemu/kvm_int.h | 12 ++++++++++++
+ target/i386/kvm.c        | 36 ------------------------------------
+ 3 files changed, 48 insertions(+), 36 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 325e67a04e..043f7a928e 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1414,6 +1414,15 @@ F: tests/bios-tables-test.c
- F: tests/acpi-utils.[hc]
- F: tests/data/acpi/
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 140b0bd8f6..f45096d5a0 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -41,6 +41,7 @@
+ #include "hw/irq.h"
+ #include "sysemu/sev.h"
+ #include "sysemu/balloon.h"
++#include "sysemu/reset.h"
  
-+ACPI/APEI/GHES
-+R: Dongjiu Geng <gengdongjiu@huawei.com>
-+R: Xiang Zheng <zhengxiang9@huawei.com>
-+L: qemu-arm@nongnu.org
-+S: Maintained
-+F: hw/acpi/acpi_ghes.c
-+F: include/hw/acpi/acpi_ghes.h
-+F: docs/specs/acpi_hest_ghes.rst
+ #include "hw/boards.h"
+ 
+@@ -856,6 +857,39 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
+     return ret;
+ }
+ 
++typedef struct HWPoisonPage {
++    ram_addr_t ram_addr;
++    QLIST_ENTRY(HWPoisonPage) list;
++} HWPoisonPage;
 +
- ppc4xx
- M: David Gibson <david@gibson.dropbear.id.au>
- L: qemu-ppc@nongnu.org
++static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
++    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
++
++static void kvm_unpoison_all(void *param)
++{
++    HWPoisonPage *page, *next_page;
++
++    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
++        QLIST_REMOVE(page, list);
++        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
++        g_free(page);
++    }
++}
++
++void kvm_hwpoison_page_add(ram_addr_t ram_addr)
++{
++    HWPoisonPage *page;
++
++    QLIST_FOREACH(page, &hwpoison_page_list, list) {
++        if (page->ram_addr == ram_addr) {
++            return;
++        }
++    }
++    page = g_new(HWPoisonPage, 1);
++    page->ram_addr = ram_addr;
++    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
++}
++
+ static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
+ {
+ #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
+@@ -2031,6 +2065,8 @@ static int kvm_init(MachineState *ms)
+         goto err;
+     }
+ 
++    qemu_register_reset(kvm_unpoison_all, NULL);
++
+     if (machine_kernel_irqchip_allowed(ms)) {
+         kvm_irqchip_create(ms, s);
+     }
+diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
+index ac2d1f8b56..c660a70c51 100644
+--- a/include/sysemu/kvm_int.h
++++ b/include/sysemu/kvm_int.h
+@@ -42,4 +42,16 @@ void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
+                                   AddressSpace *as, int as_id);
+ 
+ void kvm_set_max_memslot_size(hwaddr max_slot_size);
++
++/**
++ * kvm_hwpoison_page_add:
++ *
++ * Parameters:
++ *  @ram_addr: the address in the RAM for the poisoned page
++ *
++ * Add a poisoned page to the list
++ *
++ * Return: None.
++ */
++void kvm_hwpoison_page_add(ram_addr_t ram_addr);
+ #endif
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index bfd09bd441..d8f2507a8d 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -24,7 +24,6 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/hw_accel.h"
+ #include "sysemu/kvm_int.h"
+-#include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
+ #include "kvm_i386.h"
+ #include "hyperv.h"
+@@ -521,40 +520,6 @@ uint64_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
+     }
+ }
+ 
+-
+-typedef struct HWPoisonPage {
+-    ram_addr_t ram_addr;
+-    QLIST_ENTRY(HWPoisonPage) list;
+-} HWPoisonPage;
+-
+-static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
+-    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
+-
+-static void kvm_unpoison_all(void *param)
+-{
+-    HWPoisonPage *page, *next_page;
+-
+-    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
+-        QLIST_REMOVE(page, list);
+-        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
+-        g_free(page);
+-    }
+-}
+-
+-static void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+-{
+-    HWPoisonPage *page;
+-
+-    QLIST_FOREACH(page, &hwpoison_page_list, list) {
+-        if (page->ram_addr == ram_addr) {
+-            return;
+-        }
+-    }
+-    page = g_new(HWPoisonPage, 1);
+-    page->ram_addr = ram_addr;
+-    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
+-}
+-
+ static int kvm_get_mce_cap_supported(KVMState *s, uint64_t *mce_cap,
+                                      int *max_banks)
+ {
+@@ -2157,7 +2122,6 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         fprintf(stderr, "e820_add_entry() table is full\n");
+         return ret;
+     }
+-    qemu_register_reset(kvm_unpoison_all, NULL);
+ 
+     shadow_mem = machine_kvm_shadow_mem(ms);
+     if (shadow_mem != -1) {
 -- 
 2.19.1
 

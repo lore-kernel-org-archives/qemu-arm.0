@@ -1,190 +1,1040 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp1210550wrr;
-        Mon, 11 Nov 2019 03:41:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy8T3PTa9fUFsx4GhrSB85mPNXtYHnFuwAr22yB5qwpomn8Z578531OqsZsNXPPbrFI+qZT
-X-Received: by 2002:a05:6402:19ae:: with SMTP id o14mr26222118edz.241.1573472497112;
-        Mon, 11 Nov 2019 03:41:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573472497; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp1548400wrr;
+        Mon, 11 Nov 2019 08:39:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwhO9hx+ixFntg5cYDI6Xn3QwSjTq0kusvvccgTFw5eMK1ISPlHZT1nbWHRX+5qFmweAWd7
+X-Received: by 2002:a50:91c4:: with SMTP id h4mr27683387eda.36.1573490382232;
+        Mon, 11 Nov 2019 08:39:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573490382; cv=none;
         d=google.com; s=arc-20160816;
-        b=M6OKbb9QK611WFaCXT+vLqyQl+Xka3WzMgnbdP1PbejYN7tNuVgBhqjneQRnVn4Y7P
-         MT3GFQ2ZYZwKU6VL5F5phs0uPZEcPhwyF2uH7FK7ci20/8OkoiVLkx0Iua2sp2dSDjAn
-         4Zi/J7BmdAbyd3Q41mEhuc9S3ijmH9COeUqkrX+YGPj+dahSnA+eoKqeft5eoenadxAy
-         nd72c/wfN+I1k+2CnzakpmI5bSFdOUu1pB8iItlOnzBeYIXmCQbdM8nYqaXqGjVvjosd
-         uO9pjfvuKuMRvGtvrGsVK5gRvs21t/uuDd+2kYeEvMVX3Bql1FVEWQ0J0s3i5fJih7X1
-         iuUg==
+        b=aQnO3sVT5paHRso79F+aL5IA0klZKW9ligerTIU7bpl7QQ498+mCZ0lEsqWwJ+w/C1
+         ROR0rpcPrbU8DGmp+5e2I0LWY+2Z01pahhIqcu7rIXF1fRjFX1ftNuIvJkomkeBkSR3+
+         VUFUmZuDRwkSSHBdeze+LCxaOOQckm5ziy9ChdN9j1p7a0O4uXSoRgpgEAYiGrDi+KsO
+         oHWHdPUwR7Ag+AZPGxxD4XYojzaSROHVfWqm3EEe3dSBtzO3IhJrhtYCs3oZdrY1am+t
+         A2sOCac1JFAOVx+A2roQILc1Xp/0HdmlNj0mfNzMmghbBg7jWhK9497ZEA/nwcdvUZHn
+         bnWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=AtPSNj6z0S1pVpexbPs9ZLnCorH702J0Ex7uyj4ZEY8=;
-        b=nn/cB6VycXtGut1dv0L/zqW0ltGyqx55AT6kfH0Sbzv7zX912vvS//VAkaW+dPUgkE
-         LRNwgOAQ2VVZaHIYsEf8JDGIyaKQyeWmIHPiH46jI2MELT3hRoSYqzMts9Ed4lq/E15z
-         3e+FkaCmbLYIhpwhl/V2VxuFJhiZ7cNg5v5wORuePC5W9W6BlLPTi9/2MtC2mrRlKkZT
-         bawfZAtaC4Kl9E8ZIh3vaguFRyur73dAP529ytqk4OQFh3G83EfWVoPVVccHHwx6+urm
-         SbYUekt+EA62GIXWl9FSCQyDWLMVzD8MyjIXqiv+/1lF3HYiuAyJggn/GSOJ1mwGq3ux
-         UoDA==
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=JYP7NG+HYTf3HXLqxjKEJMatac/ljNXPWh3jd9LTM+s=;
+        b=YBZJIUJXEK4q2CNDpP1kpPz63/A3kMCYxHY6DvcQQdVUMvPY08alA2dq18FuxNhgLO
+         /QpIGh7lgIUweCq5Mya5/uYG52O9rO6Sy2Bu3YVVHOXJTNc8EaWkMFiufrdwHQ61ASh3
+         501+vFDXYYyhkhLHLyL/hvX3zdT3pm2NRrvbSrT//zVNs7eYuMK5cOrTTovQemNmLBEG
+         FgZ6JBqkb06VpU4wOOhUWEMgbP1a1+TTu05dh9HOjBIItpB6Q6U1GBnPsEF/e3TO5YTV
+         ojtkFM5nVbsLOdOdqZLUxVjIp737oGfYfRrhHjeCx9SOFlE9zIYF4FF3xQxTI+553Ny1
+         s6Sg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ex6f9vIb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M3WZTQbe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b14si10344373edf.199.2019.11.11.03.41.37
+        by mx.google.com with ESMTPS id 14si10472388eja.294.2019.11.11.08.39.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2019 03:41:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Nov 2019 08:39:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ex6f9vIb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51364 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M3WZTQbe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55056 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iU84e-00078F-4N
-	for alex.bennee@linaro.org; Mon, 11 Nov 2019 06:41:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59605)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iUCj6-0000Aj-RA
+	for alex.bennee@linaro.org; Mon, 11 Nov 2019 11:39:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45113)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iU84X-000780-4j
- for qemu-arm@nongnu.org; Mon, 11 Nov 2019 06:41:30 -0500
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iUCgf-0006Xi-1s
+ for qemu-devel@nongnu.org; Mon, 11 Nov 2019 11:37:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iU84V-0007t6-UD
- for qemu-arm@nongnu.org; Mon, 11 Nov 2019 06:41:28 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:41815)
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iUCgb-0004lN-PN
+ for qemu-devel@nongnu.org; Mon, 11 Nov 2019 11:37:08 -0500
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a]:34871)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iU84V-0007so-OS
- for qemu-arm@nongnu.org; Mon, 11 Nov 2019 06:41:27 -0500
-Received: by mail-ot1-x343.google.com with SMTP id 94so10973317oty.8
- for <qemu-arm@nongnu.org>; Mon, 11 Nov 2019 03:41:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AtPSNj6z0S1pVpexbPs9ZLnCorH702J0Ex7uyj4ZEY8=;
- b=ex6f9vIbsRDhKRZeqp2h9DrOxKpraMvCR5q+S7CizPIXJrCnVhbsJG0WuAs+5/ATfh
- SUqbMHkNbGNIIcYOMC7Dg/PUKkD0KTnMEDufMOiMsJsPQai+/CYhDbLfJs2wL+HYVqD4
- rofxtgc95mMRqPSLnXwBELY0PiFzwxdKb4gAwXh59EuloNqq7fR9w0+CoaDc8ubzNKqN
- 6pbZ2qRPnQ0q5X7xrWUp9VX8eOj0a9wfhzYrg+QibJt5+jGFSqlI/xtEkLgq9n/FmSPL
- MZIt6Rj2/Oqt8/vIpJPcBeU3+fovLvyU8+rv6YEmVSNNk8fv9wYpZSl1pqA60L6np552
- ftTQ==
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1iUCgb-0004kz-F4; Mon, 11 Nov 2019 11:37:05 -0500
+Received: by mail-oi1-x22a.google.com with SMTP id n16so12043991oig.2;
+ Mon, 11 Nov 2019 08:37:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=JYP7NG+HYTf3HXLqxjKEJMatac/ljNXPWh3jd9LTM+s=;
+ b=M3WZTQberArhSLibbkTNNgKV1JuporTY+QUt37lswJrfwjI7GLilaN9ngG/KG4atf3
+ NPKNkOy+Jtf96KGZig2awVEkQbrQO/dJYWkiVrB6CCL8TWrr1pLDNWrc55xAy5LwgxUu
+ Lo+9E11MyVWK4YaQqKStQ/V9PMey2O0QG1F3Rx691sBnOClmcNmjOKmDhJiRk5W2GbhA
+ XRLFQVpcjLoRkSutIesDNf1E1i2FF/3Zz8KpTEpDZnAbFt8KZbVX3U/XdHUmscdzAhDp
+ YrqxT1S66Snn08rCnQMU/GfDRLn7gG8HKP2+obZpCU3EfaZT3hdP7x9gEo81O9FMm2kP
+ VI9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
  :message-id:subject:to:cc;
- bh=AtPSNj6z0S1pVpexbPs9ZLnCorH702J0Ex7uyj4ZEY8=;
- b=jVTaL9e64FGfFcn6VsEkP/K3N/3nmb2GWI2Eiu0AaH0nICQUD/Culi5suDIqnZeygD
- RFy+0+gbbV90b2U2iiF5jqudNGE8xyOub9jpZUmgk9OgxORrsbfJ43Mg+/KPvcCjQwYA
- kwcw7rhgZN82NCPm2B8lVoStq7Fvas+rkOhN+DyFBuEtu41DEI6ftMawImEbxywPlFft
- oMXuhxbnpo1jtTglA04KjN7LWQmt+Eg/JMFjvGXwszLLWG3vPdSUccujtztwrG+swocb
- 2DGwXPIhlxnMtcHqEn6Ii83qoEhLFOh9FlDi1mlbSd4ffJVQi9OjXRfgPwnK/WaaebTu
- M5HA==
-X-Gm-Message-State: APjAAAU0pIsVmK5AVSMakRqkopQ7LWphDnt9QbJN5B3q/FhzCPQ7ri+P
- C+LVY9dwUCZxXSZgF1mRLtBrFyxhMUT9jOFk//wJWA==
-X-Received: by 2002:a9d:12d2:: with SMTP id g76mr21584489otg.232.1573472486652; 
- Mon, 11 Nov 2019 03:41:26 -0800 (PST)
+ bh=JYP7NG+HYTf3HXLqxjKEJMatac/ljNXPWh3jd9LTM+s=;
+ b=rp5UUlmwf8DaJilMi66LhHfT8KCg9tfmvdxvZr9mwmV9nTnwdaYWxqdPQw560xryux
+ bLNDtzzXuKgpkX27KN6luXGdKBYiGjQDV9plXRfjsOHO1VG6ZyTTbBU/lGQKJRptAk6x
+ PfiYfUAD6U2mWHHfcd8PM7xIwosQP0CqOdYlQHiiZlJgvcDRCXVbXJN2CEN1CgeuDIVF
+ m97zwCYNq+mqRcsy7U/eHmFJ0Q+NOg80P3J37De34hX8t514DTMukda5jJRYk2zw4OZ+
+ xH3q/uNDYuymJMyFzPfcffF9FjbPoKSucz95a9zQrrCSRrvYLwF3d/4+9sIR1Dcljrqt
+ j0+g==
+X-Gm-Message-State: APjAAAU4FSaAAQIoLkhBpWaRa2VVMhUrI0aLNeVaI33OzT0i1B2nqo0y
+ zu72MHJxiDoMqszBBm1sYyfS+Kdc6Gmf6ZFKnoA=
+X-Received: by 2002:aca:d17:: with SMTP id 23mr1301748oin.136.1573490224084;
+ Mon, 11 Nov 2019 08:37:04 -0800 (PST)
 MIME-Version: 1.0
-References: <20191104151137.81931-1-clement.deschamps@greensocs.com>
-In-Reply-To: <20191104151137.81931-1-clement.deschamps@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Nov 2019 11:41:15 +0000
-Message-ID: <CAFEAcA93tmw3GJWz-7hrLAc3YSzfDtTwNL-GY9OoeUBDcGHNqw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/boot: Set NSACR.{CP11,
- CP10} in dummy SMC setup routine
-To: Clement Deschamps <clement.deschamps@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
+Received: by 2002:a05:6830:1391:0:0:0:0 with HTTP; Mon, 11 Nov 2019 08:37:03
+ -0800 (PST)
+In-Reply-To: <20191011160552.22907-27-vsementsov@virtuozzo.com>
+References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
+ <20191011160552.22907-27-vsementsov@virtuozzo.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Mon, 11 Nov 2019 17:37:03 +0100
+Message-ID: <CAL1e-=hEk9=xGkoCsCUpcYhA+iJexja1E_4WpTKHvqa6W3nhKw@mail.gmail.com>
+Subject: Re: [RFC v5 026/126] python: add commit-per-subsystem.py
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Content-Type: multipart/alternative; boundary="000000000000dd3eff059714bd30"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::22a
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eq3gRSPN+ywB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
+ Jan Kiszka <jan.kiszka@siemens.com>, Alberto Garcia <berto@igalia.com>,
+ Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Laszlo Ersek <lersek@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Eric Farman <farman@linux.ibm.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, "Denis V. Lunev" <den@openvz.org>,
+ Hannes Reinecke <hare@suse.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ "Gonglei \(Arei\)" <arei.gonglei@huawei.com>, Liu Yuan <namei.unix@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
+ Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Stafford Horne <shorne@gmail.com>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
+ Anthony Green <green@moxielogic.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
+ Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
+ Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+ "integration@gluster.org" <integration@gluster.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ "Richard W.M. Jones" <rjones@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZOfYdxoEuEVx
 
-On Mon, 4 Nov 2019 at 15:12, Clement Deschamps
-<clement.deschamps@greensocs.com> wrote:
+--000000000000dd3eff059714bd30
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Friday, October 11, 2019, Vladimir Sementsov-Ogievskiy <
+vsementsov@virtuozzo.com> wrote:
+
+> Add script to automatically commit tree-wide changes per-subsystem.
 >
-> Set the NSACR CP11 and CP10 bits, to allow FPU access in Non-Secure state
-> when using dummy SMC setup routine. Otherwise an AArch32 kernel will UNDEF as
-> soon as it tries to use the FPU.
->
-> This fixes kernel panic when booting raspbian on raspi2.
->
-> Successfully tested with:
->   2017-01-11-raspbian-jessie-lite.img
->   2018-11-13-raspbian-stretch-lite.img
->   2019-07-10-raspbian-buster-lite.img
->
-> See also commit ece628fcf6 that fixes the issue when *not* using the
-> dummy SMC setup routine.
->
-> Fixes: fc1120a7f5
-> Signed-off-by: Clement Deschamps <clement.deschamps@greensocs.com>
+> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 > ---
->  hw/arm/boot.c | 3 +++
->  1 file changed, 3 insertions(+)
+
+
+Great idea!
+
+Can you just add a comment somewhere close to the top of the file on script
+usage? Or "--help" option? If you would like to be the script maintainer,
+please change the MAINTAINERS too.
+
+Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
+
+
 >
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index ef6724960c..8fb4a63606 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -240,6 +240,9 @@ void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
->      };
->      uint32_t board_setup_blob[] = {
->          /* board setup addr */
-> +        0xee110f51, /* mrc     p15, 0, r0, c1, c1, 2  ;read NSACR */
-> +        0xe3800b03, /* orr     r0, #0xc00             ;set CP11, CP10 */
-> +        0xee010f51, /* mcr     p15, 0, r0, c1, c1, 2  ;write NSACR */
->          0xe3a00e00 + (mvbar_addr >> 4), /* mov r0, #mvbar_addr */
->          0xee0c0f30, /* mcr     p15, 0, r0, c12, c0, 1 ;set MVBAR */
->          0xee110f11, /* mrc     p15, 0, r0, c1 , c1, 0 ;read SCR */
+> CC: Gerd Hoffmann <kraxel@redhat.com>
+> CC: "Gonglei (Arei)" <arei.gonglei@huawei.com>
+> CC: Eduardo Habkost <ehabkost@redhat.com>
+> CC: Igor Mammedov <imammedo@redhat.com>
+> CC: Laurent Vivier <lvivier@redhat.com>
+> CC: Amit Shah <amit@kernel.org>
+> CC: Kevin Wolf <kwolf@redhat.com>
+> CC: Max Reitz <mreitz@redhat.com>
+> CC: John Snow <jsnow@redhat.com>
+> CC: Ari Sundholm <ari@tuxera.com>
+> CC: Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
+> CC: Paolo Bonzini <pbonzini@redhat.com>
+> CC: Stefan Hajnoczi <stefanha@redhat.com>
+> CC: Fam Zheng <fam@euphon.net>
+> CC: Stefan Weil <sw@weilnetz.de>
+> CC: Ronnie Sahlberg <ronniesahlberg@gmail.com>
+> CC: Peter Lieven <pl@kamp.de>
+> CC: Eric Blake <eblake@redhat.com>
+> CC: "Denis V. Lunev" <den@openvz.org>
+> CC: Markus Armbruster <armbru@redhat.com>
+> CC: Alberto Garcia <berto@igalia.com>
+> CC: Jason Dillaman <dillaman@redhat.com>
+> CC: Wen Congyang <wencongyang2@huawei.com>
+> CC: Xie Changlong <xiechanglong.d@gmail.com>
+> CC: Liu Yuan <namei.unix@gmail.com>
+> CC: "Richard W.M. Jones" <rjones@redhat.com>
+> CC: Jeff Cody <codyprime@gmail.com>
+> CC: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
+> CC: "Daniel P. Berrang=C3=A9" <berrange@redhat.com>
+> CC: Richard Henderson <rth@twiddle.net>
+> CC: Greg Kurz <groug@kaod.org>
+> CC: "Michael S. Tsirkin" <mst@redhat.com>
+> CC: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+> CC: Beniamino Galvani <b.galvani@gmail.com>
+> CC: Peter Maydell <peter.maydell@linaro.org>
+> CC: "C=C3=A9dric Le Goater" <clg@kaod.org>
+> CC: Andrew Jeffery <andrew@aj.id.au>
+> CC: Joel Stanley <joel@jms.id.au>
+> CC: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> CC: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
+> CC: Antony Pavlov <antonynpavlov@gmail.com>
+> CC: Jean-Christophe Dubois <jcd@tribudubois.net>
+> CC: Peter Chubb <peter.chubb@nicta.com.au>
+> CC: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> CC: Eric Auger <eric.auger@redhat.com>
+> CC: Alistair Francis <alistair@alistair23.me>
+> CC: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> CC: Stefano Stabellini <sstabellini@kernel.org>
+> CC: Anthony Perard <anthony.perard@citrix.com>
+> CC: Paul Durrant <paul@xen.org>
+> CC: Paul Burton <pburton@wavecomp.com>
+> CC: Aleksandar Rikalo <arikalo@wavecomp.com>
+> CC: Chris Wulff <crwulff@gmail.com>
+> CC: Marek Vasut <marex@denx.de>
+> CC: David Gibson <david@gibson.dropbear.id.au>
+> CC: Cornelia Huck <cohuck@redhat.com>
+> CC: Halil Pasic <pasic@linux.ibm.com>
+> CC: Christian Borntraeger <borntraeger@de.ibm.com>
+> CC: "Herv=C3=A9 Poussineau" <hpoussin@reactos.org>
+> CC: Xiao Guangrong <xiaoguangrong.eric@gmail.com>
+> CC: Aurelien Jarno <aurelien@aurel32.net>
+> CC: Aleksandar Markovic <amarkovic@wavecomp.com>
+> CC: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> CC: Jason Wang <jasowang@redhat.com>
+> CC: Laszlo Ersek <lersek@redhat.com>
+> CC: Yuval Shaia <yuval.shaia@oracle.com>
+> CC: Palmer Dabbelt <palmer@sifive.com>
+> CC: Sagar Karandikar <sagark@eecs.berkeley.edu>
+> CC: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+> CC: David Hildenbrand <david@redhat.com>
+> CC: Thomas Huth <thuth@redhat.com>
+> CC: Eric Farman <farman@linux.ibm.com>
+> CC: Matthew Rosato <mjrosato@linux.ibm.com>
+> CC: Hannes Reinecke <hare@suse.com>
+> CC: Michael Walle <michael@walle.cc>
+> CC: Artyom Tarasenko <atar4qemu@gmail.com>
+> CC: Stefan Berger <stefanb@linux.ibm.com>
+> CC: Samuel Thibault <samuel.thibault@ens-lyon.org>
+> CC: Alex Williamson <alex.williamson@redhat.com>
+> CC: Tony Krowiak <akrowiak@linux.ibm.com>
+> CC: Pierre Morel <pmorel@linux.ibm.com>
+> CC: Michael Roth <mdroth@linux.vnet.ibm.com>
+> CC: Hailiang Zhang <zhang.zhanghailiang@huawei.com>
+> CC: Juan Quintela <quintela@redhat.com>
+> CC: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> CC: Luigi Rizzo <rizzo@iet.unipi.it>
+> CC: Giuseppe Lettieri <g.lettieri@iet.unipi.it>
+> CC: Vincenzo Maffione <v.maffione@gmail.com>
+> CC: Jan Kiszka <jan.kiszka@siemens.com>
+> CC: Anthony Green <green@moxielogic.com>
+> CC: Stafford Horne <shorne@gmail.com>
+> CC: Guan Xuetao <gxt@mprc.pku.edu.cn>
+> CC: Max Filippov <jcmvbkbc@gmail.com>
+> CC: qemu-block@nongnu.org
+> CC: integration@gluster.org
+> CC: sheepdog@lists.wpkg.org
+> CC: qemu-arm@nongnu.org
+> CC: xen-devel@lists.xenproject.org
+> CC: qemu-ppc@nongnu.org
+> CC: qemu-s390x@nongnu.org
+> CC: qemu-riscv@nongnu.org
+>
+>  python/commit-per-subsystem.py | 204 +++++++++++++++++++++++++++++++++
+>  1 file changed, 204 insertions(+)
+>  create mode 100755 python/commit-per-subsystem.py
+>
+> diff --git a/python/commit-per-subsystem.py b/python/commit-per-subsystem=
+.
+> py
+> new file mode 100755
+> index 0000000000..2ccf84cb15
+> --- /dev/null
+> +++ b/python/commit-per-subsystem.py
+> @@ -0,0 +1,204 @@
+> +#!/usr/bin/env python3
+> +#
+> +# Copyright (c) 2019 Virtuozzo International GmbH
+> +#
+> +# This program is free software; you can redistribute it and/or modify
+> +# it under the terms of the GNU General Public License as published by
+> +# the Free Software Foundation; either version 2 of the License, or
+> +# (at your option) any later version.
+> +#
+> +# This program is distributed in the hope that it will be useful,
+> +# but WITHOUT ANY WARRANTY; without even the implied warranty of
+> +# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> +# GNU General Public License for more details.
+> +#
+> +# You should have received a copy of the GNU General Public License
+> +# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+> +#
+> +
+> +import subprocess
+> +import sys
+> +import os
+> +import glob
+> +
+> +
+> +def git_add(pattern):
+> +    subprocess.run(['git', 'add', pattern])
+> +
+> +
+> +def git_commit(msg):
+> +    subprocess.run(['git', 'commit', '-m', msg], capture_output=3DTrue)
+> +
+> +
+> +def git_changed_files():
+> +    ret =3D subprocess.check_output(['git', 'diff', '--name-only'],
+> encoding=3D'utf-8').split('\n')
+> +    if ret[-1] =3D=3D '':
+> +        del ret[-1]
+> +    return ret
+> +
+> +
+> +maintainers =3D sys.argv[1]
+> +message =3D sys.argv[2].strip()
+> +
+> +subsystem =3D None
+> +
+> +remap =3D {
+> +    'Block layer core': 'block',
+> +    'Block Jobs': 'block',
+> +    'Dirty Bitmaps': 'block',
+> +    'Block QAPI, monitor, command line': 'block',
+> +    'Block I/O path': 'block',
+> +    'Throttling infrastructure': 'block',
+> +    'Architecture support': 's390x',
+> +    'Guest CPU Cores (KVM)': 'kvm',
+> +    'Guest CPU Cores (Xen)': 'xen',
+> +    'Guest CPU cores (TCG)': 'tcg',
+> +    'Network Block Device (NBD)': 'nbd',
+> +    'Parallel NOR Flash devices': 'pflash',
+> +    'Firmware configuration (fw_cfg)': 'fw_cfg',
+> +    'Block SCSI subsystem': 'scsi',
+> +    'Network device backends': 'net',
+> +    'Netmap network backend': 'net',
+> +    'Host Memory Backends': 'hostmem',
+> +    'Cryptodev Backends': 'cryptodev',
+> +    'QEMU Guest Agent': 'qga',
+> +    'COLO Framework': 'colo',
+> +    'Command line option argument parsing': 'cmdline',
+> +    'Character device backends': 'chardev'
+> +}
+> +
+> +
+> +class Maintainers:
+> +    def add(self, subsystem, path, mapper, mapper_name, glob_count=3D1):
+> +        if subsystem in remap:
+> +            subsystem =3D remap[subsystem]
+> +        if subsystem not in self.subsystems:
+> +            self.subsystems.append(subsystem)
+> +
+> +        if path[-1] =3D=3D '/':
+> +            path =3D path[:-1]
+> +
+> +        if path in mapper:
+> +            if mapper[path][1] =3D=3D glob_count:
+> +                print('Warning: "{}" both in "{}" and "{}" in {} mapper
+> with '
+> +                      'same glob-count=3D{}. {} ignored for this
+> path.'.format(
+> +                        path, mapper[path][0], subsystem, mapper_name,
+> glob_count,
+> +                          subsystem))
+> +                return
+> +            if mapper[path][1] < glob_count:
+> +                # silently ignore worse match
+> +                return
+> +
+> +        mapper[path] =3D (subsystem, glob_count)
+> +
+> +    def __init__(self, file_name):
+> +        self.map_file =3D {}
+> +        self.map_glob_file =3D {}
+> +        self.map_dir =3D {}
+> +        self.map_glob_dir =3D {}
+> +        self.map_unmaintained_dir =3D {
+> +            'python': ('python', 1),
+> +            'hw/misc': ('misc', 1)
+> +        }
+> +        self.subsystems =3D ['python', 'misc']
+> +        subsystem =3D None
+> +
+> +        with open(file_name) as f:
+> +            mode2 =3D False
+> +            prevline =3D ''
+> +            for line in f:
+> +                line =3D line.rstrip()
+> +                if not line:
+> +                    continue
+> +                if len(line) >=3D 2 and line[1] =3D=3D ':':
+> +                    if line[0] =3D=3D 'F':
+> +                        fname =3D line[3:]
+> +                        if fname in ['*', '*/']:
+> +                            continue
+> +                        if os.path.isfile(fname):
+> +                            self.add(subsystem, fname, self.map_file,
+> 'file')
+> +                        elif os.path.isdir(fname):
+> +                            self.add(subsystem, fname, self.map_dir,
+> 'dir')
+> +                        else:
+> +                            paths =3D glob.glob(fname)
+> +                            if not paths:
+> +                                print('Warning: nothing corresponds to
+> "{}"'.format(fname))
+> +                                continue
+> +
+> +                            n =3D len(paths)
+> +                            for f in paths:
+> +                                if os.path.isfile(f):
+> +                                    self.add(subsystem, f,
+> self.map_glob_file, 'glob-file', n)
+> +                                else:
+> +                                    assert os.path.isdir(f)
+> +                                    self.add(subsystem, f,
+> self.map_glob_dir, 'glob-dir', n)
+> +                elif line[:3] =3D=3D '---':
+> +                    subsystem =3D prevline
+> +                    if subsystem =3D=3D 'Devices':
+> +                        mode2 =3D True
+> +                elif mode2:
+> +                    subsystem =3D line
+> +                prevline =3D line
+> +
+> +    def find_in_map_dir(self, file_name, mapper):
+> +        while file_name !=3D '' and file_name not in mapper:
+> +            file_name =3D os.path.dirname(file_name)
+> +
+> +        return None if file_name =3D=3D '' else mapper[file_name][0]
+> +
+> +    def find_in_map_file(self, file_name, mapper):
+> +        if file_name in mapper:
+> +            return mapper[file_name][0]
+> +
+> +    def find_subsystem(self, file_name):
+> +        s =3D self.find_in_map_file(file_name, self.map_file)
+> +        if s is not None:
+> +            return s
+> +
+> +        s =3D self.find_in_map_file(file_name, self.map_glob_file)
+> +        if s is not None:
+> +            return s
+> +
+> +        s =3D self.find_in_map_dir(file_name, self.map_dir)
+> +        if s is not None:
+> +            return s
+> +
+> +        s =3D self.find_in_map_dir(file_name, self.map_glob_dir)
+> +        if s is not None:
+> +            return s
+> +
+> +        s =3D self.find_in_map_dir(file_name, self.map_unmaintained_dir)
+> +        if s is not None:
+> +            return s
+> +
+> +        self.subsystems.append(file_name)
+> +        return file_name
+> +
+> +
+> +def commit(subsystem):
+> +    msg =3D subsystem
+> +    if msg in remap:
+> +        msg =3D remap[msg]
+> +    msg +=3D ': ' + message
+> +    git_commit(msg)
+> +
+> +mnt =3D Maintainers(maintainers)
+> +res =3D {}
+> +for f in git_changed_files():
+> +    s =3D mnt.find_subsystem(f)
+> +    if s in res:
+> +        res[s].append(f)
+> +    else:
+> +        res[s] =3D [f]
+> +
+> +for s in mnt.subsystems:
+> +    if s in res:
+> +        print(s)
+> +        for f in res[s]:
+> +            print('  ', f)
+> +
+> +for s in mnt.subsystems:
+> +    if s in res:
+> +        for f in res[s]:
+> +            git_add(f)
+> +        commit(s)
 > --
-> 2.23.0
+> 2.21.0
+>
+>
+>
 
-Yep. The boot.c logic sets NSACR.{CP11,CP10} for booting a
-Linux kernel unless (a) the board says we should boot the
-kernel in Secure mode or (b) this is the primary CPU and
-the board requires the board_setup code to run in Secure mode.
-In that case the board_setup code must set NSACR in the same
-way that it is responsible for dropping down to NS.
+--000000000000dd3eff059714bd30
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-This affects highbank and raspi, which are the only boards
-that set info->secure_board_setup; both of those use the
-arm_write_secure_board_setup_dummy_smc(), so this fix is
-all we should need.
+<br><br>On Friday, October 11, 2019, Vladimir Sementsov-Ogievskiy &lt;<a hr=
+ef=3D"mailto:vsementsov@virtuozzo.com">vsementsov@virtuozzo.com</a>&gt; wro=
+te:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-=
+left:1px #ccc solid;padding-left:1ex">Add script to automatically commit tr=
+ee-wide changes per-subsystem.<br>
+<br>
+Signed-off-by: Vladimir Sementsov-Ogievskiy &lt;<a href=3D"mailto:vsementso=
+v@virtuozzo.com">vsementsov@virtuozzo.com</a>&gt;<br>
+---</blockquote><div><br></div><div>Great idea!</div><div><br></div><div>Ca=
+n you just add a comment somewhere close to the top of the file on script u=
+sage? Or &quot;--help&quot; option? If you would like to be the script main=
+tainer, please change the MAINTAINERS too.</div><div><br></div><div>Reviewe=
+d-by: Aleksandar Markovic &lt;<a href=3D"mailto:amarkovic@wavecomp.com">ama=
+rkovic@wavecomp.com</a>&gt;</div><div>=C2=A0</div><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left=
+:1ex">
+<br>
+CC: Gerd Hoffmann &lt;<a href=3D"mailto:kraxel@redhat.com">kraxel@redhat.co=
+m</a>&gt;<br>
+CC: &quot;Gonglei (Arei)&quot; &lt;<a href=3D"mailto:arei.gonglei@huawei.co=
+m">arei.gonglei@huawei.com</a>&gt;<br>
+CC: Eduardo Habkost &lt;<a href=3D"mailto:ehabkost@redhat.com">ehabkost@red=
+hat.com</a>&gt;<br>
+CC: Igor Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com">imammedo@redha=
+t.com</a>&gt;<br>
+CC: Laurent Vivier &lt;<a href=3D"mailto:lvivier@redhat.com">lvivier@redhat=
+.com</a>&gt;<br>
+CC: Amit Shah &lt;<a href=3D"mailto:amit@kernel.org">amit@kernel.org</a>&gt=
+;<br>
+CC: Kevin Wolf &lt;<a href=3D"mailto:kwolf@redhat.com">kwolf@redhat.com</a>=
+&gt;<br>
+CC: Max Reitz &lt;<a href=3D"mailto:mreitz@redhat.com">mreitz@redhat.com</a=
+>&gt;<br>
+CC: John Snow &lt;<a href=3D"mailto:jsnow@redhat.com">jsnow@redhat.com</a>&=
+gt;<br>
+CC: Ari Sundholm &lt;<a href=3D"mailto:ari@tuxera.com">ari@tuxera.com</a>&g=
+t;<br>
+CC: Pavel Dovgalyuk &lt;<a href=3D"mailto:pavel.dovgaluk@ispras.ru">pavel.d=
+ovgaluk@ispras.ru</a>&gt;<br>
+CC: Paolo Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com">pbonzini@redha=
+t.com</a>&gt;<br>
+CC: Stefan Hajnoczi &lt;<a href=3D"mailto:stefanha@redhat.com">stefanha@red=
+hat.com</a>&gt;<br>
+CC: Fam Zheng &lt;<a href=3D"mailto:fam@euphon.net">fam@euphon.net</a>&gt;<=
+br>
+CC: Stefan Weil &lt;<a href=3D"mailto:sw@weilnetz.de">sw@weilnetz.de</a>&gt=
+;<br>
+CC: Ronnie Sahlberg &lt;<a href=3D"mailto:ronniesahlberg@gmail.com">ronnies=
+ahlberg@gmail.com</a>&gt;<br>
+CC: Peter Lieven &lt;<a href=3D"mailto:pl@kamp.de">pl@kamp.de</a>&gt;<br>
+CC: Eric Blake &lt;<a href=3D"mailto:eblake@redhat.com">eblake@redhat.com</=
+a>&gt;<br>
+CC: &quot;Denis V. Lunev&quot; &lt;<a href=3D"mailto:den@openvz.org">den@op=
+envz.org</a>&gt;<br>
+CC: Markus Armbruster &lt;<a href=3D"mailto:armbru@redhat.com">armbru@redha=
+t.com</a>&gt;<br>
+CC: Alberto Garcia &lt;<a href=3D"mailto:berto@igalia.com">berto@igalia.com=
+</a>&gt;<br>
+CC: Jason Dillaman &lt;<a href=3D"mailto:dillaman@redhat.com">dillaman@redh=
+at.com</a>&gt;<br>
+CC: Wen Congyang &lt;<a href=3D"mailto:wencongyang2@huawei.com">wencongyang=
+2@huawei.com</a>&gt;<br>
+CC: Xie Changlong &lt;<a href=3D"mailto:xiechanglong.d@gmail.com">xiechangl=
+ong.d@gmail.com</a>&gt;<br>
+CC: Liu Yuan &lt;<a href=3D"mailto:namei.unix@gmail.com">namei.unix@gmail.c=
+om</a>&gt;<br>
+CC: &quot;Richard W.M. Jones&quot; &lt;<a href=3D"mailto:rjones@redhat.com"=
+>rjones@redhat.com</a>&gt;<br>
+CC: Jeff Cody &lt;<a href=3D"mailto:codyprime@gmail.com">codyprime@gmail.co=
+m</a>&gt;<br>
+CC: &quot;Marc-Andr=C3=A9 Lureau&quot; &lt;<a href=3D"mailto:marcandre.lure=
+au@redhat.com">marcandre.lureau@redhat.com</a>&gt;<br>
+CC: &quot;Daniel P. Berrang=C3=A9&quot; &lt;<a href=3D"mailto:berrange@redh=
+at.com">berrange@redhat.com</a>&gt;<br>
+CC: Richard Henderson &lt;<a href=3D"mailto:rth@twiddle.net">rth@twiddle.ne=
+t</a>&gt;<br>
+CC: Greg Kurz &lt;<a href=3D"mailto:groug@kaod.org">groug@kaod.org</a>&gt;<=
+br>
+CC: &quot;Michael S. Tsirkin&quot; &lt;<a href=3D"mailto:mst@redhat.com">ms=
+t@redhat.com</a>&gt;<br>
+CC: Marcel Apfelbaum &lt;<a href=3D"mailto:marcel.apfelbaum@gmail.com">marc=
+el.apfelbaum@gmail.com</a>&gt;<br>
+CC: Beniamino Galvani &lt;<a href=3D"mailto:b.galvani@gmail.com">b.galvani@=
+gmail.com</a>&gt;<br>
+CC: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.may=
+dell@linaro.org</a>&gt;<br>
+CC: &quot;C=C3=A9dric Le Goater&quot; &lt;<a href=3D"mailto:clg@kaod.org">c=
+lg@kaod.org</a>&gt;<br>
+CC: Andrew Jeffery &lt;<a href=3D"mailto:andrew@aj.id.au">andrew@aj.id.au</=
+a>&gt;<br>
+CC: Joel Stanley &lt;<a href=3D"mailto:joel@jms.id.au">joel@jms.id.au</a>&g=
+t;<br>
+CC: Andrew Baumann &lt;<a href=3D"mailto:Andrew.Baumann@microsoft.com">Andr=
+ew.Baumann@microsoft.com</a>&gt;<br>
+CC: &quot;Philippe Mathieu-Daud=C3=A9&quot; &lt;<a href=3D"mailto:philmd@re=
+dhat.com">philmd@redhat.com</a>&gt;<br>
+CC: Antony Pavlov &lt;<a href=3D"mailto:antonynpavlov@gmail.com">antonynpav=
+lov@gmail.com</a>&gt;<br>
+CC: Jean-Christophe Dubois &lt;<a href=3D"mailto:jcd@tribudubois.net">jcd@t=
+ribudubois.net</a>&gt;<br>
+CC: Peter Chubb &lt;<a href=3D"mailto:peter.chubb@nicta.com.au">peter.chubb=
+@nicta.com.au</a>&gt;<br>
+CC: Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml@gmail.com">sundeep=
+.lkml@gmail.com</a>&gt;<br>
+CC: Eric Auger &lt;<a href=3D"mailto:eric.auger@redhat.com">eric.auger@redh=
+at.com</a>&gt;<br>
+CC: Alistair Francis &lt;<a href=3D"mailto:alistair@alistair23.me">alistair=
+@alistair23.me</a>&gt;<br>
+CC: &quot;Edgar E. Iglesias&quot; &lt;<a href=3D"mailto:edgar.iglesias@gmai=
+l.com">edgar.iglesias@gmail.com</a>&gt;<br>
+CC: Stefano Stabellini &lt;<a href=3D"mailto:sstabellini@kernel.org">sstabe=
+llini@kernel.org</a>&gt;<br>
+CC: Anthony Perard &lt;<a href=3D"mailto:anthony.perard@citrix.com">anthony=
+.perard@citrix.com</a>&gt;<br>
+CC: Paul Durrant &lt;<a href=3D"mailto:paul@xen.org">paul@xen.org</a>&gt;<b=
+r>
+CC: Paul Burton &lt;<a href=3D"mailto:pburton@wavecomp.com">pburton@wavecom=
+p.com</a>&gt;<br>
+CC: Aleksandar Rikalo &lt;<a href=3D"mailto:arikalo@wavecomp.com">arikalo@w=
+avecomp.com</a>&gt;<br>
+CC: Chris Wulff &lt;<a href=3D"mailto:crwulff@gmail.com">crwulff@gmail.com<=
+/a>&gt;<br>
+CC: Marek Vasut &lt;<a href=3D"mailto:marex@denx.de">marex@denx.de</a>&gt;<=
+br>
+CC: David Gibson &lt;<a href=3D"mailto:david@gibson.dropbear.id.au">david@g=
+ibson.dropbear.id.au</a>&gt;<br>
+CC: Cornelia Huck &lt;<a href=3D"mailto:cohuck@redhat.com">cohuck@redhat.co=
+m</a>&gt;<br>
+CC: Halil Pasic &lt;<a href=3D"mailto:pasic@linux.ibm.com">pasic@linux.ibm.=
+com</a>&gt;<br>
+CC: Christian Borntraeger &lt;<a href=3D"mailto:borntraeger@de.ibm.com">bor=
+ntraeger@de.ibm.com</a>&gt;<br>
+CC: &quot;Herv=C3=A9 Poussineau&quot; &lt;<a href=3D"mailto:hpoussin@reacto=
+s.org">hpoussin@reactos.org</a>&gt;<br>
+CC: Xiao Guangrong &lt;<a href=3D"mailto:xiaoguangrong.eric@gmail.com">xiao=
+guangrong.eric@gmail.com</a>&gt;<br>
+CC: Aurelien Jarno &lt;<a href=3D"mailto:aurelien@aurel32.net">aurelien@aur=
+el32.net</a>&gt;<br>
+CC: Aleksandar Markovic &lt;<a href=3D"mailto:amarkovic@wavecomp.com">amark=
+ovic@wavecomp.com</a>&gt;<br>
+CC: Mark Cave-Ayland &lt;<a href=3D"mailto:mark.cave-ayland@ilande.co.uk">m=
+ark.cave-ayland@ilande.co.uk</a>&gt;<br>
+CC: Jason Wang &lt;<a href=3D"mailto:jasowang@redhat.com">jasowang@redhat.c=
+om</a>&gt;<br>
+CC: Laszlo Ersek &lt;<a href=3D"mailto:lersek@redhat.com">lersek@redhat.com=
+</a>&gt;<br>
+CC: Yuval Shaia &lt;<a href=3D"mailto:yuval.shaia@oracle.com">yuval.shaia@o=
+racle.com</a>&gt;<br>
+CC: Palmer Dabbelt &lt;<a href=3D"mailto:palmer@sifive.com">palmer@sifive.c=
+om</a>&gt;<br>
+CC: Sagar Karandikar &lt;<a href=3D"mailto:sagark@eecs.berkeley.edu">sagark=
+@eecs.berkeley.edu</a>&gt;<br>
+CC: Bastian Koppelmann &lt;<a href=3D"mailto:kbastian@mail.uni-paderborn.de=
+">kbastian@mail.uni-paderborn.de</a>&gt;<br>
+CC: David Hildenbrand &lt;<a href=3D"mailto:david@redhat.com">david@redhat.=
+com</a>&gt;<br>
+CC: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a=
+>&gt;<br>
+CC: Eric Farman &lt;<a href=3D"mailto:farman@linux.ibm.com">farman@linux.ib=
+m.com</a>&gt;<br>
+CC: Matthew Rosato &lt;<a href=3D"mailto:mjrosato@linux.ibm.com">mjrosato@l=
+inux.ibm.com</a>&gt;<br>
+CC: Hannes Reinecke &lt;<a href=3D"mailto:hare@suse.com">hare@suse.com</a>&=
+gt;<br>
+CC: Michael Walle &lt;michael@walle.cc&gt;<br>
+CC: Artyom Tarasenko &lt;<a href=3D"mailto:atar4qemu@gmail.com">atar4qemu@g=
+mail.com</a>&gt;<br>
+CC: Stefan Berger &lt;<a href=3D"mailto:stefanb@linux.ibm.com">stefanb@linu=
+x.ibm.com</a>&gt;<br>
+CC: Samuel Thibault &lt;<a href=3D"mailto:samuel.thibault@ens-lyon.org">sam=
+uel.thibault@ens-lyon.org</a>&gt;<br>
+CC: Alex Williamson &lt;<a href=3D"mailto:alex.williamson@redhat.com">alex.=
+williamson@redhat.com</a>&gt;<br>
+CC: Tony Krowiak &lt;<a href=3D"mailto:akrowiak@linux.ibm.com">akrowiak@lin=
+ux.ibm.com</a>&gt;<br>
+CC: Pierre Morel &lt;<a href=3D"mailto:pmorel@linux.ibm.com">pmorel@linux.i=
+bm.com</a>&gt;<br>
+CC: Michael Roth &lt;<a href=3D"mailto:mdroth@linux.vnet.ibm.com">mdroth@li=
+nux.vnet.ibm.com</a>&gt;<br>
+CC: Hailiang Zhang &lt;<a href=3D"mailto:zhang.zhanghailiang@huawei.com">zh=
+ang.zhanghailiang@huawei.com</a>&gt;<br>
+CC: Juan Quintela &lt;<a href=3D"mailto:quintela@redhat.com">quintela@redha=
+t.com</a>&gt;<br>
+CC: &quot;Dr. David Alan Gilbert&quot; &lt;<a href=3D"mailto:dgilbert@redha=
+t.com">dgilbert@redhat.com</a>&gt;<br>
+CC: Luigi Rizzo &lt;<a href=3D"mailto:rizzo@iet.unipi.it">rizzo@iet.unipi.i=
+t</a>&gt;<br>
+CC: Giuseppe Lettieri &lt;<a href=3D"mailto:g.lettieri@iet.unipi.it">g.lett=
+ieri@iet.unipi.it</a>&gt;<br>
+CC: Vincenzo Maffione &lt;<a href=3D"mailto:v.maffione@gmail.com">v.maffion=
+e@gmail.com</a>&gt;<br>
+CC: Jan Kiszka &lt;<a href=3D"mailto:jan.kiszka@siemens.com">jan.kiszka@sie=
+mens.com</a>&gt;<br>
+CC: Anthony Green &lt;<a href=3D"mailto:green@moxielogic.com">green@moxielo=
+gic.com</a>&gt;<br>
+CC: Stafford Horne &lt;<a href=3D"mailto:shorne@gmail.com">shorne@gmail.com=
+</a>&gt;<br>
+CC: Guan Xuetao &lt;<a href=3D"mailto:gxt@mprc.pku.edu.cn">gxt@mprc.pku.edu=
+.cn</a>&gt;<br>
+CC: Max Filippov &lt;<a href=3D"mailto:jcmvbkbc@gmail.com">jcmvbkbc@gmail.c=
+om</a>&gt;<br>
+CC: <a href=3D"mailto:qemu-block@nongnu.org">qemu-block@nongnu.org</a><br>
+CC: <a href=3D"mailto:integration@gluster.org">integration@gluster.org</a><=
+br>
+CC: <a href=3D"mailto:sheepdog@lists.wpkg.org">sheepdog@lists.wpkg.org</a><=
+br>
+CC: <a href=3D"mailto:qemu-arm@nongnu.org">qemu-arm@nongnu.org</a><br>
+CC: <a href=3D"mailto:xen-devel@lists.xenproject.org">xen-devel@lists.xenpr=
+oject.org</a><br>
+CC: <a href=3D"mailto:qemu-ppc@nongnu.org">qemu-ppc@nongnu.org</a><br>
+CC: <a href=3D"mailto:qemu-s390x@nongnu.org">qemu-s390x@nongnu.org</a><br>
+CC: <a href=3D"mailto:qemu-riscv@nongnu.org">qemu-riscv@nongnu.org</a><br>
+<br>
+=C2=A0python/commit-per-subsystem.py | 204 ++++++++++++++++++++++++++++++<w=
+br>+++<br>
+=C2=A01 file changed, 204 insertions(+)<br>
+=C2=A0create mode 100755 python/commit-per-subsystem.py<br>
+<br>
+diff --git a/python/commit-per-subsystem.<wbr>py b/python/commit-per-subsys=
+tem.<wbr>py<br>
+new file mode 100755<br>
+index 0000000000..2ccf84cb15<br>
+--- /dev/null<br>
++++ b/python/commit-per-subsystem.<wbr>py<br>
+@@ -0,0 +1,204 @@<br>
++#!/usr/bin/env python3<br>
++#<br>
++# Copyright (c) 2019 Virtuozzo International GmbH<br>
++#<br>
++# This program is free software; you can redistribute it and/or modify<br>
++# it under the terms of the GNU General Public License as published by<br>
++# the Free Software Foundation; either version 2 of the License, or<br>
++# (at your option) any later version.<br>
++#<br>
++# This program is distributed in the hope that it will be useful,<br>
++# but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the<br>
++# GNU General Public License for more details.<br>
++#<br>
++# You should have received a copy of the GNU General Public License<br>
++# along with this program.=C2=A0 If not, see &lt;<a href=3D"http://www.gnu=
+.org/licenses/" target=3D"_blank">http://www.gnu.org/licenses/</a>&gt;<wbr>=
+.<br>
++#<br>
++<br>
++import subprocess<br>
++import sys<br>
++import os<br>
++import glob<br>
++<br>
++<br>
++def git_add(pattern):<br>
++=C2=A0 =C2=A0 subprocess.run([&#39;git&#39;, &#39;add&#39;, pattern])<br>
++<br>
++<br>
++def git_commit(msg):<br>
++=C2=A0 =C2=A0 subprocess.run([&#39;git&#39;, &#39;commit&#39;, &#39;-m&#39=
+;, msg], capture_output=3DTrue)<br>
++<br>
++<br>
++def git_changed_files():<br>
++=C2=A0 =C2=A0 ret =3D subprocess.check_output([&#39;git&#39;<wbr>, &#39;di=
+ff&#39;, &#39;--name-only&#39;], encoding=3D&#39;utf-8&#39;).split(&#39;\n&=
+#39;)<br>
++=C2=A0 =C2=A0 if ret[-1] =3D=3D &#39;&#39;:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 del ret[-1]<br>
++=C2=A0 =C2=A0 return ret<br>
++<br>
++<br>
++maintainers =3D sys.argv[1]<br>
++message =3D sys.argv[2].strip()<br>
++<br>
++subsystem =3D None<br>
++<br>
++remap =3D {<br>
++=C2=A0 =C2=A0 &#39;Block layer core&#39;: &#39;block&#39;,<br>
++=C2=A0 =C2=A0 &#39;Block Jobs&#39;: &#39;block&#39;,<br>
++=C2=A0 =C2=A0 &#39;Dirty Bitmaps&#39;: &#39;block&#39;,<br>
++=C2=A0 =C2=A0 &#39;Block QAPI, monitor, command line&#39;: &#39;block&#39;=
+,<br>
++=C2=A0 =C2=A0 &#39;Block I/O path&#39;: &#39;block&#39;,<br>
++=C2=A0 =C2=A0 &#39;Throttling infrastructure&#39;: &#39;block&#39;,<br>
++=C2=A0 =C2=A0 &#39;Architecture support&#39;: &#39;s390x&#39;,<br>
++=C2=A0 =C2=A0 &#39;Guest CPU Cores (KVM)&#39;: &#39;kvm&#39;,<br>
++=C2=A0 =C2=A0 &#39;Guest CPU Cores (Xen)&#39;: &#39;xen&#39;,<br>
++=C2=A0 =C2=A0 &#39;Guest CPU cores (TCG)&#39;: &#39;tcg&#39;,<br>
++=C2=A0 =C2=A0 &#39;Network Block Device (NBD)&#39;: &#39;nbd&#39;,<br>
++=C2=A0 =C2=A0 &#39;Parallel NOR Flash devices&#39;: &#39;pflash&#39;,<br>
++=C2=A0 =C2=A0 &#39;Firmware configuration (fw_cfg)&#39;: &#39;fw_cfg&#39;,=
+<br>
++=C2=A0 =C2=A0 &#39;Block SCSI subsystem&#39;: &#39;scsi&#39;,<br>
++=C2=A0 =C2=A0 &#39;Network device backends&#39;: &#39;net&#39;,<br>
++=C2=A0 =C2=A0 &#39;Netmap network backend&#39;: &#39;net&#39;,<br>
++=C2=A0 =C2=A0 &#39;Host Memory Backends&#39;: &#39;hostmem&#39;,<br>
++=C2=A0 =C2=A0 &#39;Cryptodev Backends&#39;: &#39;cryptodev&#39;,<br>
++=C2=A0 =C2=A0 &#39;QEMU Guest Agent&#39;: &#39;qga&#39;,<br>
++=C2=A0 =C2=A0 &#39;COLO Framework&#39;: &#39;colo&#39;,<br>
++=C2=A0 =C2=A0 &#39;Command line option argument parsing&#39;: &#39;cmdline=
+&#39;,<br>
++=C2=A0 =C2=A0 &#39;Character device backends&#39;: &#39;chardev&#39;<br>
++}<br>
++<br>
++<br>
++class Maintainers:<br>
++=C2=A0 =C2=A0 def add(self, subsystem, path, mapper, mapper_name, glob_cou=
+nt=3D1):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if subsystem in remap:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 subsystem =3D remap[subsystem]<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if subsystem not in self.subsystems:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self.subsystems.append(<wbr>subs=
+ystem)<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if path[-1] =3D=3D &#39;/&#39;:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 path =3D path[:-1]<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if path in mapper:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if mapper[path][1] =3D=3D glob_c=
+ount:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 print(&#39;Warning=
+: &quot;{}&quot; both in &quot;{}&quot; and &quot;{}&quot; in {} mapper wit=
+h &#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &#39;same glob-count=3D{}. {} ignored for this path.&#39;.format(<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 path, mapper[path][0], subsystem, mapper_name, glob_count,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 subsystem))<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if mapper[path][1] &lt; glob_cou=
+nt:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 # silently ignore =
+worse match<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 mapper[path] =3D (subsystem, glob_count)<br>
++<br>
++=C2=A0 =C2=A0 def __init__(self, file_name):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.map_file =3D {}<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.map_glob_file =3D {}<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.map_dir =3D {}<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.map_glob_dir =3D {}<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.map_unmaintained_dir =3D {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;python&#39;: (&#39;python&#=
+39;, 1),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;hw/misc&#39;: (&#39;misc&#3=
+9;, 1)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.subsystems =3D [&#39;python&#39;, &#39;mi=
+sc&#39;]<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 subsystem =3D None<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 with open(file_name) as f:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mode2 =3D False<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 prevline =3D &#39;&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 for line in f:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 line =3D line.rstr=
+ip()<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if not line:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cont=
+inue<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if len(line) &gt;=
+=3D 2 and line[1] =3D=3D &#39;:&#39;:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if l=
+ine[0] =3D=3D &#39;F&#39;:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 fname =3D line[3:]<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 if fname in [&#39;*&#39;, &#39;*/&#39;]:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 continue<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 if os.path.isfile(fname):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 self.add(subsystem, fname, self.map_file, &#39;fil=
+e&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 elif os.path.isdir(fname):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 self.add(subsystem, fname, self.map_dir, &#39;dir&=
+#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 else:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 paths =3D glob.glob(fname)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 if not paths:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 print(&#39;Warning: nothing correspo=
+nds to &quot;{}&quot;&#39;.format(fname))<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 continue<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 n =3D len(paths)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 for f in paths:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if os.path.isfile(f):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self.add(subsystem, f,=
+ self.map_glob_file, &#39;glob-file&#39;, n)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 else:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 assert os.path.isdir(f=
+)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self.add(subsystem, f,=
+ self.map_glob_dir, &#39;glob-dir&#39;, n)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 elif line[:3] =3D=
+=3D &#39;---&#39;:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 subs=
+ystem =3D prevline<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if s=
+ubsystem =3D=3D &#39;Devices&#39;:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 mode2 =3D True<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 elif mode2:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 subs=
+ystem =3D line<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 prevline =3D line<=
+br>
++<br>
++=C2=A0 =C2=A0 def find_in_map_dir(self, file_name, mapper):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 while file_name !=3D &#39;&#39; and file_name =
+not in mapper:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 file_name =3D os.path.dirname(fi=
+le_name)<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return None if file_name =3D=3D &#39;&#39; els=
+e mapper[file_name][0]<br>
++<br>
++=C2=A0 =C2=A0 def find_in_map_file(self, file_name, mapper):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if file_name in mapper:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return mapper[file_name][0]<br>
++<br>
++=C2=A0 =C2=A0 def find_subsystem(self, file_name):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s =3D self.find_in_map_file(file_<wbr>name, se=
+lf.map_file)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if s is not None:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return s<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s =3D self.find_in_map_file(file_<wbr>name, se=
+lf.map_glob_file)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if s is not None:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return s<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s =3D self.find_in_map_dir(file_<wbr>name, sel=
+f.map_dir)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if s is not None:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return s<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s =3D self.find_in_map_dir(file_<wbr>name, sel=
+f.map_glob_dir)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if s is not None:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return s<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s =3D self.find_in_map_dir(file_<wbr>name, sel=
+f.map_unmaintained_dir)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if s is not None:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return s<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.subsystems.append(file_<wbr>name)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return file_name<br>
++<br>
++<br>
++def commit(subsystem):<br>
++=C2=A0 =C2=A0 msg =3D subsystem<br>
++=C2=A0 =C2=A0 if msg in remap:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 msg =3D remap[msg]<br>
++=C2=A0 =C2=A0 msg +=3D &#39;: &#39; + message<br>
++=C2=A0 =C2=A0 git_commit(msg)<br>
++<br>
++mnt =3D Maintainers(maintainers)<br>
++res =3D {}<br>
++for f in git_changed_files():<br>
++=C2=A0 =C2=A0 s =3D mnt.find_subsystem(f)<br>
++=C2=A0 =C2=A0 if s in res:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 res[s].append(f)<br>
++=C2=A0 =C2=A0 else:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 res[s] =3D [f]<br>
++<br>
++for s in mnt.subsystems:<br>
++=C2=A0 =C2=A0 if s in res:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 print(s)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 for f in res[s]:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 print(&#39;=C2=A0 &#39;, f)<br>
++<br>
++for s in mnt.subsystems:<br>
++=C2=A0 =C2=A0 if s in res:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 for f in res[s]:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 git_add(f)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 commit(s)<br>
+-- <br>
+2.21.0<br>
+<br>
+<br>
+</blockquote>
 
-I plan to fold in this comment update:
-
-diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
-index 7f4d0ca7cdf..ce2b48b88bc 100644
---- a/include/hw/arm/boot.h
-+++ b/include/hw/arm/boot.h
-@@ -107,9 +107,12 @@ struct arm_boot_info {
-     void (*write_board_setup)(ARMCPU *cpu,
-                               const struct arm_boot_info *info);
-
--    /* If set, the board specific loader/setup blob will be run from secure
-+    /*
-+     * If set, the board specific loader/setup blob will be run from secure
-      * mode, regardless of secure_boot. The blob becomes responsible for
--     * changing to non-secure state if implementing a non-secure boot
-+     * changing to non-secure state if implementing a non-secure boot,
-+     * including setting up EL3/Secure registers such as the NSACR as
-+     * required by the Linux booting ABI before the switch to non-secure.
-      */
-     bool secure_board_setup;
-
-and tweak the commit message to mention highbank, when I
-apply it to target-arm.next.
-
-thanks
--- PMM
+--000000000000dd3eff059714bd30--

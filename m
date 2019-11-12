@@ -1,130 +1,166 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2360563wrr;
-        Mon, 11 Nov 2019 23:45:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx3v3FTqVD4DtLWm3Y44YAwLFUIVS+a7am5C09e9eFZ5sN9CiXixMD5yFZzF9N6juZqhGoc
-X-Received: by 2002:a50:ec1a:: with SMTP id g26mr28304334edr.84.1573544757421;
-        Mon, 11 Nov 2019 23:45:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573544757; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2361771wrr;
+        Mon, 11 Nov 2019 23:47:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzXCD6QBeQRX5+D+P+1wUjNjVqzkeNNnLP6CC38nOwGngLBl8DKKYbNFOfUlVXXtZtjZBIv
+X-Received: by 2002:a17:906:e291:: with SMTP id gg17mr10167584ejb.240.1573544859252;
+        Mon, 11 Nov 2019 23:47:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573544859; cv=none;
         d=google.com; s=arc-20160816;
-        b=tMZXA3jWNnCxt8BTygyPphaDaGf/d7nDB1XPsr7xEmIKuRcZHCwZYqJ5jDe8w0R+lR
-         Y2Qc5PvpLw+LlO0Hqb2NTe4tnarvg2D7xeMyHgH9pBf8rKgcwJCp/p7Ll8g0kedGTiDy
-         R97JvXOOTaPBhWDgKFVwZjVGfdM4iPHqkfDoSevd1I/jO/ITn6W1+jMzRj8cC6npZPX4
-         3egzmzOXB3b4/uyt9ReYoTSQYg9JumlA7M/YmNN6ym++QaKmfF1Pf1DRg6cRzAQrBhOR
-         UxEeWR2TU2Zj36nxrybE2L5hnaEXKJe7bIC37qOV7LYyjkLzDYCUBM8l85gB0393atxA
-         KbPA==
+        b=bLG1iwIZOzkvrQzEx98ECBTPeK+jvNtUHSXWd+KjYIc36WcstPZ9QCl2z8BZsoUvdm
+         KXiYOcv5D8egKVKttkcDdaswiyiAn//CcFhefD1tsy6dvvhN5E8FfloEc3oVXQbgnRaI
+         U9wBoT1hpoR+Yc+0x1y30Ii7bjC2RDaDBbbFS4IJhLllBdfyCa5ZyIUpF22Z2NICg1vM
+         41q1jHgyODrzC57KGJynmjXDq2upSfHhD3JtD9FkqSfTf50cjLintYsju+TFVBoeblY8
+         zaVn6frFQyLwTGQGF9sOBbID+Mqbzm7PdL0MqCeepiJCk9M9K38rXZPeBMGjNXibAr23
+         2K+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=6ntgY6T8EDJB/jX2fMtJtCCXYJnyGmOBY8sW9aOb0Dw=;
-        b=scZOzeRWMWZ/kyU4yJqd3n1sYIIxZmxkQLimmf4BevLeISBE8IYo/rNU1MmrkhNYLK
-         uo/Q8V36ro6A/V7IMeH0AAABylHNriIHA+MzTxxkZuXSa6k1AQyPIKlJKu9NvVZFsE4X
-         esp0sjj2iebkvQ4z3hcZLaryznImh3sQZ72e9rjuqgVlx/s7m6z47C1hazA95ZbpBUXx
-         5sa7ycms9eyJu2H95VMAjqnCmtSyX7IwPzKv9uUjRUPj6eANsL+AGeRv5Nb0lqmAnBPC
-         3VK7jVqoi7gTDaGWl5EhL0wGvOZP2/iD6EdfK7PgO/FP4esrsV8YDdF3dCCexfPKu/1Y
-         CvFA==
+        bh=R0QsGUzBLcxJwPKreGZSGemFi+6OIcjO3W6en9HnRtY=;
+        b=M5bkOG5tkx1ok1at9w5W8xUbiKLQVwwWphZS0pUPM2YgAT3MnEmd9adLrwstvj2IbS
+         C1TO2wgci9TBPHPkMUDyniSNr8yAuPQWOhCZlgFls4akLJzkzqggE4pU72J4PQf9Qb2G
+         cQGdQ7Y5hjsDgc8XYiuM+Bc3mGUMVmJNQ1wyuZhh8eXRo9W9wjTMSXUoYWiy2fMTmucF
+         JhnSKFOiLUuRE4ty3b/gXzFQNTAp48WVHJLdANfM/HUEJRHnVRrAJAKWtQvcfYZBQCOI
+         1FXTXMH6DlZEVe+iD2+qVODaxP4yKvt6g8Vc43hACGY94TdYUvk5Ht7ClSlQWDi0e2xo
+         /JxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p11si11038921ejz.98.2019.11.11.23.45.57
+        by mx.google.com with ESMTPS id v13si10801594eju.409.2019.11.11.23.47.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2019 23:45:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Nov 2019 23:47:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59852 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iUQs8-0005qF-3k
-	for alex.bennee@linaro.org; Tue, 12 Nov 2019 02:45:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35403)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iUQtl-0007Ja-TK
+	for alex.bennee@linaro.org; Tue, 12 Nov 2019 02:47:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35435)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iUQrw-0005nX-8f
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:45:45 -0500
+ (envelope-from <clg@kaod.org>) id 1iUQs4-000607-QW
+ for qemu-devel@nongnu.org; Tue, 12 Nov 2019 02:45:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iUQrv-0004Lo-8Q
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:45:44 -0500
-Received: from 6.mo173.mail-out.ovh.net ([46.105.43.93]:53019)
+ (envelope-from <clg@kaod.org>) id 1iUQs2-0004cD-Ie
+ for qemu-devel@nongnu.org; Tue, 12 Nov 2019 02:45:52 -0500
+Received: from 8.mo69.mail-out.ovh.net ([46.105.56.233]:47859)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iUQrv-00043w-3A
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:45:43 -0500
-Received: from player758.ha.ovh.net (unknown [10.108.35.13])
- by mo173.mail-out.ovh.net (Postfix) with ESMTP id 68BC5121D83
- for <qemu-arm@nongnu.org>; Tue, 12 Nov 2019 08:45:33 +0100 (CET)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iUQs2-0004ZN-Cf
+ for qemu-devel@nongnu.org; Tue, 12 Nov 2019 02:45:50 -0500
+Received: from player776.ha.ovh.net (unknown [10.108.54.52])
+ by mo69.mail-out.ovh.net (Postfix) with ESMTP id D11F9711DB
+ for <qemu-devel@nongnu.org>; Tue, 12 Nov 2019 08:45:48 +0100 (CET)
 Received: from kaod.org (lfbn-1-2229-223.w90-76.abo.wanadoo.fr [90.76.50.223])
  (Authenticated sender: clg@kaod.org)
- by player758.ha.ovh.net (Postfix) with ESMTPSA id 74576C03D0FB;
- Tue, 12 Nov 2019 07:45:27 +0000 (UTC)
-Subject: Re: [PATCH 1/4] aspeed/sdmc: Make ast2600 default 1G
+ by player776.ha.ovh.net (Postfix) with ESMTPSA id 56029BF536AB;
+ Tue, 12 Nov 2019 07:45:43 +0000 (UTC)
+Subject: Re: [PATCH 2/4] aspeed/scu: Fix W1C behavior
 To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@aj.id.au>
 References: <20191112064058.13275-1-joel@jms.id.au>
- <20191112064058.13275-2-joel@jms.id.au>
+ <20191112064058.13275-3-joel@jms.id.au>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <5c0c7d7e-0580-2bcd-39ac-6314c61dd1d3@kaod.org>
-Date: Tue, 12 Nov 2019 08:45:26 +0100
+Message-ID: <c873360c-68fb-fc89-902d-459c7f557636@kaod.org>
+Date: Tue, 12 Nov 2019 08:45:42 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191112064058.13275-2-joel@jms.id.au>
+In-Reply-To: <20191112064058.13275-3-joel@jms.id.au>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Ovh-Tracer-Id: 7141583110517197632
+X-Ovh-Tracer-Id: 7146086708984253248
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedruddvkedgheejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejheekrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedruddvkedgheejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejjeeirdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 46.105.43.93
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 46.105.56.233
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LWo0y2CkSsM8
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qXCtBquiThgQ
 
 On 12/11/2019 07:40, Joel Stanley wrote:
-> Most boards have this much.
+> This models the clock write one to clear registers, and fixes up some
+> incorrect behavior in all of the write to clear registers.
+>=20
+> There was also a typo in one of the register definitions.
 >=20
 > Signed-off-by: Joel Stanley <joel@jms.id.au>
 
 
 Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-
 > ---
->  hw/misc/aspeed_sdmc.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  hw/misc/aspeed_scu.c | 11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
 >=20
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index f3a63a2e01db..2df3244b53c8 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -208,10 +208,10 @@ static int ast2600_rambits(AspeedSDMCState *s)
->      }
-> =20
->      /* use a common default */
-> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 512M",
-> +    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 1024M",
->                  s->ram_size);
-> -    s->ram_size =3D 512 << 20;
-> -    return ASPEED_SDMC_AST2600_512MB;
-> +    s->ram_size =3D 1024 << 20;
-> +    return ASPEED_SDMC_AST2600_1024MB;
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 717509bc5460..aac4645f8c3c 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -98,7 +98,7 @@
+>  #define AST2600_CLK_STOP_CTRL     TO_REG(0x80)
+>  #define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
+>  #define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
+> -#define AST2600_CLK_STOP_CTR2L_CLR TO_REG(0x94)
+> +#define AST2600_CLK_STOP_CTRL2_CLR TO_REG(0x94)
+>  #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
+>  #define AST2600_HPLL_PARAM        TO_REG(0x200)
+>  #define AST2600_HPLL_EXT          TO_REG(0x204)
+> @@ -532,11 +532,12 @@ static uint64_t aspeed_ast2600_scu_read(void *opa=
+que, hwaddr offset,
+>      return s->regs[reg];
 >  }
 > =20
->  static void aspeed_sdmc_reset(DeviceState *dev)
+> -static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset, uint=
+64_t data,
+> +static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset, uint=
+64_t data64,
+>                                       unsigned size)
+>  {
+>      AspeedSCUState *s =3D ASPEED_SCU(opaque);
+>      int reg =3D TO_REG(offset);
+> +    uint32_t data =3D data64;
+> =20
+>      if (reg >=3D ASPEED_AST2600_SCU_NR_REGS) {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+> @@ -563,15 +564,19 @@ static void aspeed_ast2600_scu_write(void *opaque=
+, hwaddr offset, uint64_t data,
+>          /* fall through */
+>      case AST2600_SYS_RST_CTRL:
+>      case AST2600_SYS_RST_CTRL2:
+> +    case AST2600_CLK_STOP_CTRL:
+> +    case AST2600_CLK_STOP_CTRL2:
+>          /* W1S (Write 1 to set) registers */
+>          s->regs[reg] |=3D data;
+>          return;
+>      case AST2600_SYS_RST_CTRL_CLR:
+>      case AST2600_SYS_RST_CTRL2_CLR:
+> +    case AST2600_CLK_STOP_CTRL_CLR:
+> +    case AST2600_CLK_STOP_CTRL2_CLR:
+>      case AST2600_HW_STRAP1_CLR:
+>      case AST2600_HW_STRAP2_CLR:
+>          /* W1C (Write 1 to clear) registers */
+> -        s->regs[reg] &=3D ~data;
+> +        s->regs[reg - 1] &=3D ~data;
+>          return;
+> =20
+>      case AST2600_RNG_DATA:
 >=20
 

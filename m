@@ -1,84 +1,100 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2368532wrr;
-        Mon, 11 Nov 2019 23:56:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzhm4sKAApC5SsPldwGH7N4vKPHiJEkpHxJ8iDEDVw5x4hNPhuUSlZaahKu0hieqiL4HAUp
-X-Received: by 2002:ac8:3789:: with SMTP id d9mr30882530qtc.132.1573545415660;
-        Mon, 11 Nov 2019 23:56:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573545415; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2527762wrr;
+        Tue, 12 Nov 2019 02:49:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz41lmEFbxodevq8FUtEwcZz9h811ukPEYVTZgJINd2YtDTzy3PrubivKbNkXMNwS0jJn/o
+X-Received: by 2002:a0c:f110:: with SMTP id i16mr28303579qvl.205.1573555759897;
+        Tue, 12 Nov 2019 02:49:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573555759; cv=none;
         d=google.com; s=arc-20160816;
-        b=wwRSBHDn9qjIM+xAickGTIVQeNTi1NYriUzzg1JA2rwEb5ZZvBtWsvttysXkOQWBX+
-         IhNM/6kMIEfjd5FciN1Pmg02l28gR/2261HWhtvklL0Oshq+x6KABLK0naoN5LytPo9D
-         vWStXk6W/bDq8FgwbQEDY//R0oWnrHMc6Fes3G/TIq33W+B6lMzIInKSYkrpeT2L4hVo
-         xYMtRYmp88zheODeOEp5ZE0lQtWb8NcFWSqHxgh2CD8Q90Vbd479vFwh16A6/HXD21UW
-         viHJvhfL80rK68LhaWesDjt4F+QCqNkmL6epIM+l/ayoz9POovA8rDF00fwpgpVT++KA
-         qKww==
+        b=FbcEpwpp8nUptYqsxj/BKpVUtb8LVWcoBfUWq3mjbtgGBDKKnbOmaPutfmBhId1NoA
+         f7lbCJD8LpDxetRkyW0/uMTXzxEj72bShphb6ufmtzX6s2V4wa+o69kXROeE3EfoNrYJ
+         tBPyA048+cSAKMiKs/epMOtNlOx1Atg1pmOJJSO5djzFqoZG2yraFTOLvQMBBsn//Pj8
+         tV0nni1QhJb5tygPUKtkeVakmDBwInyETcyd7pW4M8vB5+R2kNt51p0ihjXqvSi4YKsj
+         Vcqg6/or8cz9Zui6rdNjmGfnOUB7368KNxsfASuGcv5RbFJGkqtYpPHckvhhuR3SCgNV
+         CyRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=PDdzmDuuXICnTzRkm3zBnH9PUC89J6knRXEy96irb24=;
-        b=jo4Wa52cCDdT3m3PpsgVfSdc/Cqet7qa2NaIIPkM96tEFhjS9gxxmmzLohy9NV0NWc
-         PAYlWH+RVLCVIWoiSMfsRZ6eJtbe77jtyRbRFnbiqKZ72YZpg+TzycH6XAOztv0gMzDo
-         Club4YNKJMGg/KgEvBs1orSDdsPWZZwIMT1v2HcEPfvFEflQ8k8OROzJqEeiZUh5lYSY
-         BuBPncgRStlXwF3A/SekQAect0jSQbwREo8Ktp/SRGWkn50zfJXKYVYzM90Yuk5bie8F
-         2uruWD922pCv1ffUE7H1wyuFz4lpU3ccXQ3in11N29Uutj2qdUGLJe2odSqsU2VmQLvN
-         zbVA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=dWdtdVSX4SXrv3pRMdhWS8ETD1vhi/BaRAPmhG1bYHE=;
+        b=0aPPLLdxywxNQIZvfYup9P4q3YnqTTh2ONO56BnGmjmG3rSWlAB/EfwDwkDyhgKQb8
+         A2bI21ZT3JdAVMyc2WJN+Cij51CRNjL8hZ5fiQSnYdkQGTZFrO782pV06WuYXXLYEHPR
+         /08cBIx8Fgbn0bbS2xJZYN3f8AY6TLt3Y4qUGV52FZE0AhGT/BZQY0PGAOmhz5wOhpfv
+         Er5toRpvXmpNlpzrONXC7fmb+w+HpXHbbH9SSZZJggaBLFt643SE6mv51tWVjFqzjERH
+         Yg4u31A7JGkE9khmJPhsfdjh8P2bH8T9/QvaJxccKfZuIcI90M16NOEtr4HFz+24JJp5
+         Nnog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UZgEze/l";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q26si10103650qtn.249.2019.11.11.23.56.55
+        by mx.google.com with ESMTPS id a4si10982731qtd.101.2019.11.12.02.49.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2019 23:56:55 -0800 (PST)
+        Tue, 12 Nov 2019 02:49:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59930 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UZgEze/l";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33288 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iUR2l-0005Bq-1y
-	for alex.bennee@linaro.org; Tue, 12 Nov 2019 02:56:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36631)
+	id 1iUTjb-0002Hi-3n
+	for alex.bennee@linaro.org; Tue, 12 Nov 2019 05:49:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58815)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iUR2b-0005B5-Al
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:56:46 -0500
+ (envelope-from <cohuck@redhat.com>) id 1iUTio-0001Fs-58
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 05:48:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iUR2a-00089l-2j
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:56:45 -0500
-Received: from 6.mo69.mail-out.ovh.net ([46.105.50.107]:48338)
+ (envelope-from <cohuck@redhat.com>) id 1iUTim-0000UF-Bo
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 05:48:30 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:53668
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iUR2Z-00087D-Sp
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:56:44 -0500
-Received: from player799.ha.ovh.net (unknown [10.108.35.223])
- by mo69.mail-out.ovh.net (Postfix) with ESMTP id 0D0CF71723
- for <qemu-arm@nongnu.org>; Tue, 12 Nov 2019 08:56:42 +0100 (CET)
-Received: from kaod.org (lfbn-1-2229-223.w90-76.abo.wanadoo.fr [90.76.50.223])
- (Authenticated sender: clg@kaod.org)
- by player799.ha.ovh.net (Postfix) with ESMTPSA id 7FFFCBEFD2A3;
- Tue, 12 Nov 2019 07:56:36 +0000 (UTC)
-Subject: Re: [PATCH 4/4] watchdog/aspeed: Fix AST2600 frequency behaviour
-To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>
-References: <20191112064058.13275-1-joel@jms.id.au>
- <20191112064058.13275-5-joel@jms.id.au>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <87e0a727-bfd5-a485-e986-e26fd4cccfef@kaod.org>
-Date: Tue, 12 Nov 2019 08:56:33 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1iUTil-0000Rh-RU
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 05:48:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573555707;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=dWdtdVSX4SXrv3pRMdhWS8ETD1vhi/BaRAPmhG1bYHE=;
+ b=UZgEze/l06RZBz2/yxO3JBImYbCtKFl7vjYCu8QTp7qhiZ4lxDiQ1L68wZ/vZQs0e7Dkwq
+ oZWID1DZFKkjMW+cxXgkuzqDrfMbSG7zZHFBJ5GWCT2XGq02UJeZ84yREm36Q4wZDeLZfa
+ 4ZE0x2vd9C37PczeqhfbyWguy3iwwBU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-85-AvjgrY1VOuSsA1UYDmu95g-1; Tue, 12 Nov 2019 05:48:24 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5E59B8C656C;
+ Tue, 12 Nov 2019 10:48:22 +0000 (UTC)
+Received: from localhost (dhcp-192-218.str.redhat.com [10.33.192.218])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DB98461081;
+ Tue, 12 Nov 2019 10:48:15 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>
+Subject: [PATCH] hw: add compat machines for 5.0
+Date: Tue, 12 Nov 2019 11:48:11 +0100
+Message-Id: <20191112104811.30323-1-cohuck@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20191112064058.13275-5-joel@jms.id.au>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 7329889868546018112
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedruddvkedgheelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejleelrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: AvjgrY1VOuSsA1UYDmu95g-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 46.105.50.107
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,134 +106,247 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 66Fz0lbd1BtW
+X-TUID: LuknM2KYxCd1
 
-On 12/11/2019 07:40, Joel Stanley wrote:
-> The AST2600 control register sneakily changed the meaning of bit 4
-> without anyone noticing. It no longer controls the 1MHz vs APB clock
-> select, and instead always runs at 1MHz.
->=20
-> The AST2500 was always 1MHz too, but it retained bit 4, making it read
-> only. We can model both using the same fixed 1MHz calculation.
->=20
-> Fixes: ea29711f467f ("watchdog/aspeed: Fix AST2600 control reg behaviou=
-r")
+Add 5.0 machine types for arm/i440fx/q35/s390x/spapr.
 
-which commit is that ^ ? Did you mean :
+For i440fx and q35, unversioned cpu models are still translated
+to -v1; I'll leave changing this (if desired) to the respective
+maintainers.
 
-Fixes: 6b2b2a703cad ("hw: wdt_aspeed: Add AST2600 support")
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+---
 
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
+also pushed out to https://github.com/cohuck/qemu machine-5.0
 
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+x86 folks: if you want to change the cpu model versioning, I
+can do it in this patch, or just do it on top yourselves
 
-C.
+---
+ hw/arm/virt.c              |  7 ++++++-
+ hw/core/machine.c          |  3 +++
+ hw/i386/pc.c               |  3 +++
+ hw/i386/pc_piix.c          | 14 +++++++++++++-
+ hw/i386/pc_q35.c           | 13 ++++++++++++-
+ hw/ppc/spapr.c             | 15 +++++++++++++--
+ hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+ include/hw/boards.h        |  3 +++
+ include/hw/i386/pc.h       |  3 +++
+ 9 files changed, 69 insertions(+), 6 deletions(-)
 
-> ---
->  hw/watchdog/wdt_aspeed.c         | 21 +++++++++++++++++----
->  include/hw/watchdog/wdt_aspeed.h |  1 +
->  2 files changed, 18 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index 5697ed83325a..f43a3bc88976 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -93,11 +93,11 @@ static uint64_t aspeed_wdt_read(void *opaque, hwadd=
-r offset, unsigned size)
-> =20
->  }
-> =20
-> -static void aspeed_wdt_reload(AspeedWDTState *s, bool pclk)
-> +static void aspeed_wdt_reload(AspeedWDTState *s)
->  {
->      uint64_t reload;
-> =20
-> -    if (pclk) {
-> +    if (!(s->regs[WDT_CTRL] & WDT_CTRL_1MHZ_CLK)) {
->          reload =3D muldiv64(s->regs[WDT_RELOAD_VALUE], NANOSECONDS_PER=
-_SECOND,
->                            s->pclk_freq);
->      } else {
-> @@ -109,6 +109,16 @@ static void aspeed_wdt_reload(AspeedWDTState *s, b=
-ool pclk)
->      }
->  }
-> =20
-> +static void aspeed_wdt_reload_1mhz(AspeedWDTState *s)
-> +{
-> +    uint64_t reload =3D s->regs[WDT_RELOAD_VALUE] * 1000ULL;
-> +
-> +    if (aspeed_wdt_is_enabled(s)) {
-> +        timer_mod(s->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + re=
-load);
-> +    }
-> +}
-> +
-> +
->  static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t dat=
-a,
->                               unsigned size)
->  {
-> @@ -130,13 +140,13 @@ static void aspeed_wdt_write(void *opaque, hwaddr=
- offset, uint64_t data,
->      case WDT_RESTART:
->          if ((data & 0xFFFF) =3D=3D WDT_RESTART_MAGIC) {
->              s->regs[WDT_STATUS] =3D s->regs[WDT_RELOAD_VALUE];
-> -            aspeed_wdt_reload(s, !(s->regs[WDT_CTRL] & WDT_CTRL_1MHZ_C=
-LK));
-> +            awc->wdt_reload(s);
->          }
->          break;
->      case WDT_CTRL:
->          if (enable && !aspeed_wdt_is_enabled(s)) {
->              s->regs[WDT_CTRL] =3D data;
-> -            aspeed_wdt_reload(s, !(data & WDT_CTRL_1MHZ_CLK));
-> +            awc->wdt_reload(s);
->          } else if (!enable && aspeed_wdt_is_enabled(s)) {
->              s->regs[WDT_CTRL] =3D data;
->              timer_del(s->timer);
-> @@ -283,6 +293,7 @@ static void aspeed_2400_wdt_class_init(ObjectClass =
-*klass, void *data)
->      awc->offset =3D 0x20;
->      awc->ext_pulse_width_mask =3D 0xff;
->      awc->reset_ctrl_reg =3D SCU_RESET_CONTROL1;
-> +    awc->wdt_reload =3D aspeed_wdt_reload;
->  }
-> =20
->  static const TypeInfo aspeed_2400_wdt_info =3D {
-> @@ -317,6 +328,7 @@ static void aspeed_2500_wdt_class_init(ObjectClass =
-*klass, void *data)
->      awc->ext_pulse_width_mask =3D 0xfffff;
->      awc->reset_ctrl_reg =3D SCU_RESET_CONTROL1;
->      awc->reset_pulse =3D aspeed_2500_wdt_reset_pulse;
-> +    awc->wdt_reload =3D aspeed_wdt_reload_1mhz;
->  }
-> =20
->  static const TypeInfo aspeed_2500_wdt_info =3D {
-> @@ -336,6 +348,7 @@ static void aspeed_2600_wdt_class_init(ObjectClass =
-*klass, void *data)
->      awc->ext_pulse_width_mask =3D 0xfffff; /* TODO */
->      awc->reset_ctrl_reg =3D AST2600_SCU_RESET_CONTROL1;
->      awc->reset_pulse =3D aspeed_2500_wdt_reset_pulse;
-> +    awc->wdt_reload =3D aspeed_wdt_reload_1mhz;
->  }
-> =20
->  static const TypeInfo aspeed_2600_wdt_info =3D {
-> diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt=
-_aspeed.h
-> index dfedd7662dd1..819c22993a6e 100644
-> --- a/include/hw/watchdog/wdt_aspeed.h
-> +++ b/include/hw/watchdog/wdt_aspeed.h
-> @@ -47,6 +47,7 @@ typedef struct AspeedWDTClass {
->      uint32_t ext_pulse_width_mask;
->      uint32_t reset_ctrl_reg;
->      void (*reset_pulse)(AspeedWDTState *s, uint32_t property);
-> +    void (*wdt_reload)(AspeedWDTState *s);
->  }  AspeedWDTClass;
-> =20
->  #endif /* WDT_ASPEED_H */
->=20
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index d4bedc260712..02f654b63278 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2147,10 +2147,15 @@ static void machvirt_machine_init(void)
+ }
+ type_init(machvirt_machine_init);
+=20
++static void virt_machine_5_0_options(MachineClass *mc)
++{
++}
++DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
++
+ static void virt_machine_4_2_options(MachineClass *mc)
+ {
+ }
+-DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
++DEFINE_VIRT_MACHINE(4, 2)
+=20
+ static void virt_machine_4_1_options(MachineClass *mc)
+ {
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 1689ad3bf8af..21fe2d974817 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -27,6 +27,9 @@
+ #include "hw/pci/pci.h"
+ #include "hw/mem/nvdimm.h"
+=20
++GlobalProperty hw_compat_4_2[] =3D {};
++const size_t hw_compat_4_2_len =3D G_N_ELEMENTS(hw_compat_4_2);
++
+ GlobalProperty hw_compat_4_1[] =3D {
+     { "virtio-pci", "x-pcie-flr-init", "off" },
+ };
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 96715f8a3f99..2126c49ee7c5 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -103,6 +103,9 @@
+=20
+ struct hpet_fw_config hpet_cfg =3D {.count =3D UINT8_MAX};
+=20
++GlobalProperty pc_compat_4_2[] =3D {};
++const size_t pc_compat_4_2_len =3D G_N_ELEMENTS(pc_compat_4_2);
++
+ GlobalProperty pc_compat_4_1[] =3D {};
+ const size_t pc_compat_4_1_len =3D G_N_ELEMENTS(pc_compat_4_1);
+=20
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 2aefa3b8dfe3..65915ea23c4a 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -424,7 +424,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+ }
+=20
+-static void pc_i440fx_4_2_machine_options(MachineClass *m)
++static void pc_i440fx_5_0_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_i440fx_machine_options(m);
+@@ -433,6 +433,18 @@ static void pc_i440fx_4_2_machine_options(MachineClass=
+ *m)
+     pcmc->default_cpu_version =3D 1;
+ }
+=20
++DEFINE_I440FX_MACHINE(v5_0, "pc-i440fx-5.0", NULL,
++                      pc_i440fx_5_0_machine_options);
++
++static void pc_i440fx_4_2_machine_options(MachineClass *m)
++{
++    pc_i440fx_5_0_machine_options(m);
++    m->alias =3D NULL;
++    m->is_default =3D 0;
++    compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
++    compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
++}
++
+ DEFINE_I440FX_MACHINE(v4_2, "pc-i440fx-4.2", NULL,
+                       pc_i440fx_4_2_machine_options);
+=20
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index d51f5247276d..c582a6f6a363 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -348,7 +348,7 @@ static void pc_q35_machine_options(MachineClass *m)
+     m->max_cpus =3D 288;
+ }
+=20
+-static void pc_q35_4_2_machine_options(MachineClass *m)
++static void pc_q35_5_0_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_q35_machine_options(m);
+@@ -356,6 +356,17 @@ static void pc_q35_4_2_machine_options(MachineClass *m=
+)
+     pcmc->default_cpu_version =3D 1;
+ }
+=20
++DEFINE_Q35_MACHINE(v5_0, "pc-q35-5.0", NULL,
++                   pc_q35_5_0_machine_options);
++
++static void pc_q35_4_2_machine_options(MachineClass *m)
++{
++    pc_q35_5_0_machine_options(m);
++    m->alias =3D NULL;
++    compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
++    compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
++}
++
+ DEFINE_Q35_MACHINE(v4_2, "pc-q35-4.2", NULL,
+                    pc_q35_4_2_machine_options);
+=20
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 94f9d27096af..d5c33f2c19d3 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -4486,15 +4486,26 @@ static const TypeInfo spapr_machine_info =3D {
+     }                                                                \
+     type_init(spapr_machine_register_##suffix)
+=20
++/*
++ * pseries-5.0
++ */
++static void spapr_machine_5_0_class_options(MachineClass *mc)
++{
++    /* Defaults for the latest behaviour inherited from the base class */
++}
++
++DEFINE_SPAPR_MACHINE(5_0, "5.0", true);
++
+ /*
+  * pseries-4.2
+  */
+ static void spapr_machine_4_2_class_options(MachineClass *mc)
+ {
+-    /* Defaults for the latest behaviour inherited from the base class */
++    spapr_machine_5_0_class_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+ }
+=20
+-DEFINE_SPAPR_MACHINE(4_2, "4.2", true);
++DEFINE_SPAPR_MACHINE(4_2, "4.2", false);
+=20
+ /*
+  * pseries-4.1
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index d3edeef0ad92..01e7e209a5da 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -639,14 +639,26 @@ bool css_migration_enabled(void)
+     }                                                                     =
+    \
+     type_init(ccw_machine_register_##suffix)
+=20
++static void ccw_machine_5_0_instance_options(MachineState *machine)
++{
++}
++
++static void ccw_machine_5_0_class_options(MachineClass *mc)
++{
++}
++DEFINE_CCW_MACHINE(5_0, "5.0", true);
++
+ static void ccw_machine_4_2_instance_options(MachineState *machine)
+ {
++    ccw_machine_5_0_instance_options(machine);
+ }
+=20
+ static void ccw_machine_4_2_class_options(MachineClass *mc)
+ {
++    ccw_machine_5_0_class_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+ }
+-DEFINE_CCW_MACHINE(4_2, "4.2", true);
++DEFINE_CCW_MACHINE(4_2, "4.2", false);
+=20
+ static void ccw_machine_4_1_instance_options(MachineState *machine)
+ {
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index de45087f34cb..24cbeecbaecc 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -329,6 +329,9 @@ struct MachineState {
+     } \
+     type_init(machine_initfn##_register_types)
+=20
++extern GlobalProperty hw_compat_4_2[];
++extern const size_t hw_compat_4_2_len;
++
+ extern GlobalProperty hw_compat_4_1[];
+ extern const size_t hw_compat_4_1_len;
+=20
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index e6fa8418ca61..0b23fc73c99b 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -239,6 +239,9 @@ void pc_system_firmware_init(PCMachineState *pcms, Memo=
+ryRegion *rom_memory);
+ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+                        const CPUArchIdList *apic_ids, GArray *entry);
+=20
++extern GlobalProperty pc_compat_4_2[];
++extern const size_t pc_compat_4_2_len;
++
+ extern GlobalProperty pc_compat_4_1[];
+ extern const size_t pc_compat_4_1_len;
+=20
+--=20
+2.21.0
 

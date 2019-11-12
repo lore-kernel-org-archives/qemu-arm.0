@@ -1,111 +1,87 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2347421wrr;
-        Mon, 11 Nov 2019 23:29:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyd2IWav7a0W0MiIrMzfok14d2y4K/5trbr/aX2x8F3rGrH7EmKEETbOupVcitY6hDaCi31
-X-Received: by 2002:a05:620a:14a6:: with SMTP id x6mr14032798qkj.109.1573543773454;
-        Mon, 11 Nov 2019 23:29:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573543773; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2360563wrr;
+        Mon, 11 Nov 2019 23:45:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx3v3FTqVD4DtLWm3Y44YAwLFUIVS+a7am5C09e9eFZ5sN9CiXixMD5yFZzF9N6juZqhGoc
+X-Received: by 2002:a50:ec1a:: with SMTP id g26mr28304334edr.84.1573544757421;
+        Mon, 11 Nov 2019 23:45:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573544757; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dr6j2hC0OUh0Y2HTpYFz7WEKqicNDPiHCTGMS6YRaBGdM0ulSI5vFJBkoVY9qzJ0iN
-         7svYAeVj1yA2szaHYLfGbpdNfLK3RTZXhkD1yzMyesWjbRhC4/FU0M1HnhZvJEfevNq6
-         paBwBzsXw9Gp7VPb3SwZ2i5VKUlQeKhdyJXp8HZV97gjdsIpV0VbuC4EG1qenf6VwLuS
-         KNYbUAaTvET1/78hEDy/ByDR578eaqb0Ir81GLpMc9Hgb/Q4qg1HUSIfN80E/6pYLcZj
-         UzYjDaugDnt7LpJQVQc7Jc3IT6kZVcwOZgPydlLwFrysnjI8RW0R2pWl3sBNyDNfAC0K
-         Ktgg==
+        b=tMZXA3jWNnCxt8BTygyPphaDaGf/d7nDB1XPsr7xEmIKuRcZHCwZYqJ5jDe8w0R+lR
+         Y2Qc5PvpLw+LlO0Hqb2NTe4tnarvg2D7xeMyHgH9pBf8rKgcwJCp/p7Ll8g0kedGTiDy
+         R97JvXOOTaPBhWDgKFVwZjVGfdM4iPHqkfDoSevd1I/jO/ITn6W1+jMzRj8cC6npZPX4
+         3egzmzOXB3b4/uyt9ReYoTSQYg9JumlA7M/YmNN6ym++QaKmfF1Pf1DRg6cRzAQrBhOR
+         UxEeWR2TU2Zj36nxrybE2L5hnaEXKJe7bIC37qOV7LYyjkLzDYCUBM8l85gB0393atxA
+         KbPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:content-transfer-encoding:precedence
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:ironport-sdr
-         :dkim-signature;
-        bh=RyvCqFZvFwYZ3N0bZBdZwAvrpWyTSX4ddC9HK3PFDww=;
-        b=t1f/VwtKiwrlSL5WNy1R++IeDr8eIH3oi/VHKCWlWOguZkHeqHlZkAw9jeO8Iw6Vnk
-         5NvDOFi5rbTpOh2uepgm6UMz9FriBoku9vZuRa5KMGL14SDXpl+392GpXKxROc8n9xnN
-         ygr14YRrr3qE/KrEErln3ZlGl3IHCLb4VjYvieWFKoWWtesgnPcvxanY8HWbVorbtNzQ
-         rs+1cfmtu83hZ+u+15UUxLhGeZOtDgB5rCpRL2azWfVs15La9otPOO1rT/ME/7WDRE+0
-         LqAkjDULOonspjFf+BPeth5FZRcPxh7yoDzDGun+t4dgjVYpujGt4AWTqrEaADXtZiN3
-         IQ2w==
+         :message-id:from:references:to:subject;
+        bh=6ntgY6T8EDJB/jX2fMtJtCCXYJnyGmOBY8sW9aOb0Dw=;
+        b=scZOzeRWMWZ/kyU4yJqd3n1sYIIxZmxkQLimmf4BevLeISBE8IYo/rNU1MmrkhNYLK
+         uo/Q8V36ro6A/V7IMeH0AAABylHNriIHA+MzTxxkZuXSa6k1AQyPIKlJKu9NvVZFsE4X
+         esp0sjj2iebkvQ4z3hcZLaryznImh3sQZ72e9rjuqgVlx/s7m6z47C1hazA95ZbpBUXx
+         5sa7ycms9eyJu2H95VMAjqnCmtSyX7IwPzKv9uUjRUPj6eANsL+AGeRv5Nb0lqmAnBPC
+         3VK7jVqoi7gTDaGWl5EhL0wGvOZP2/iD6EdfK7PgO/FP4esrsV8YDdF3dCCexfPKu/1Y
+         CvFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=gekg4eC2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b6si9740344qtr.46.2019.11.11.23.29.33
+        by mx.google.com with ESMTPS id p11si11038921ejz.98.2019.11.11.23.45.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2019 23:29:33 -0800 (PST)
+        Mon, 11 Nov 2019 23:45:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=gekg4eC2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
-Received: from localhost ([::1]:59770 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59852 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iUQcG-0001sR-W6
-	for alex.bennee@linaro.org; Tue, 12 Nov 2019 02:29:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34101)
+	id 1iUQs8-0005qF-3k
+	for alex.bennee@linaro.org; Tue, 12 Nov 2019 02:45:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35403)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prvs=21215ebf9=graf@amazon.de>) id 1iUQbi-0001sD-C8
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:28:59 -0500
+ (envelope-from <clg@kaod.org>) id 1iUQrw-0005nX-8f
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:45:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prvs=21215ebf9=graf@amazon.de>) id 1iUQbg-0002lT-Pt
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:28:58 -0500
-Received: from smtp-fw-33001.amazon.com ([207.171.190.10]:38679)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <prvs=21215ebf9=graf@amazon.de>)
- id 1iUQbf-0002jV-NK; Tue, 12 Nov 2019 02:28:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1573543736; x=1605079736;
- h=subject:to:cc:references:from:message-id:date:
- mime-version:in-reply-to:content-transfer-encoding;
- bh=RyvCqFZvFwYZ3N0bZBdZwAvrpWyTSX4ddC9HK3PFDww=;
- b=gekg4eC2xmX+QR3s4p21SYcn5OfRyJ/SoKKJIYJmC1qEaxEbp++YUhXP
- iP6YrelLY+PJjE27LHkg8YJkEBin+LPkg/7889CMb8xGDzWozzwDuGm4E
- kVGWLNLDGywloEC+6F8sGNNyk7Ii+mQL8+lZQBIoqPNUC0u2W1IAUcdh+ I=;
-IronPort-SDR: rd/xyY8e+f5VFLbGnAp4bEijYT1IV0uBFJaspNuVuyAabqc7itf8T8gCbWMQ43hIGK76tkt/a5
- PEB9zgIh1Vuw==
-X-IronPort-AV: E=Sophos;i="5.68,295,1569283200"; 
-   d="scan'208";a="6673907"
-Received: from sea32-co-svc-lb4-vlan3.sea.corp.amazon.com (HELO
- email-inbound-relay-1e-17c49630.us-east-1.amazon.com) ([10.47.23.38])
- by smtp-border-fw-out-33001.sea14.amazon.com with ESMTP;
- 12 Nov 2019 07:28:48 +0000
-Received: from EX13MTAUWC001.ant.amazon.com
- (iad55-ws-svc-p15-lb9-vlan2.iad.amazon.com [10.40.159.162])
- by email-inbound-relay-1e-17c49630.us-east-1.amazon.com (Postfix) with ESMTPS
- id 0ADC0A16A3; Tue, 12 Nov 2019 07:28:46 +0000 (UTC)
-Received: from EX13D20UWC001.ant.amazon.com (10.43.162.244) by
- EX13MTAUWC001.ant.amazon.com (10.43.162.135) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Tue, 12 Nov 2019 07:28:46 +0000
-Received: from 38f9d3867b82.ant.amazon.com (10.43.160.101) by
- EX13D20UWC001.ant.amazon.com (10.43.162.244) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Tue, 12 Nov 2019 07:28:44 +0000
-Subject: Re: [PATCH] pl031: Expose RTCICR as proper WC register
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Hendrik Borghorst <hborghor@amazon.de>
-References: <20191104115228.30745-1-graf@amazon.com>
- <CAFEAcA8zkR_MZ-28Nc=x4j05U9MsFYfzQtkHxTf65ZwacK020w@mail.gmail.com>
-From: Alexander Graf <graf@amazon.com>
-Message-ID: <246a7cd4-7c39-c92e-05c3-1045bca2c114@amazon.com>
-Date: Tue, 12 Nov 2019 09:28:40 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
- Gecko/20100101 Thunderbird/60.9.1
+ (envelope-from <clg@kaod.org>) id 1iUQrv-0004Lo-8Q
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:45:44 -0500
+Received: from 6.mo173.mail-out.ovh.net ([46.105.43.93]:53019)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iUQrv-00043w-3A
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 02:45:43 -0500
+Received: from player758.ha.ovh.net (unknown [10.108.35.13])
+ by mo173.mail-out.ovh.net (Postfix) with ESMTP id 68BC5121D83
+ for <qemu-arm@nongnu.org>; Tue, 12 Nov 2019 08:45:33 +0100 (CET)
+Received: from kaod.org (lfbn-1-2229-223.w90-76.abo.wanadoo.fr [90.76.50.223])
+ (Authenticated sender: clg@kaod.org)
+ by player758.ha.ovh.net (Postfix) with ESMTPSA id 74576C03D0FB;
+ Tue, 12 Nov 2019 07:45:27 +0000 (UTC)
+Subject: Re: [PATCH 1/4] aspeed/sdmc: Make ast2600 default 1G
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>
+References: <20191112064058.13275-1-joel@jms.id.au>
+ <20191112064058.13275-2-joel@jms.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <5c0c7d7e-0580-2bcd-39ac-6314c61dd1d3@kaod.org>
+Date: Tue, 12 Nov 2019 08:45:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8zkR_MZ-28Nc=x4j05U9MsFYfzQtkHxTf65ZwacK020w@mail.gmail.com>
+In-Reply-To: <20191112064058.13275-2-joel@jms.id.au>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Originating-IP: [10.43.160.101]
-X-ClientProxiedBy: EX13D34UWC002.ant.amazon.com (10.43.162.137) To
- EX13D20UWC001.ant.amazon.com (10.43.162.244)
-Precedence: Bulk
-Content-Type: text/plain; charset="utf-8"; format="flowed"
-Content-Transfer-Encoding: base64
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 207.171.190.10
+X-Ovh-Tracer-Id: 7141583110517197632
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedruddvkedgheejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejheekrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 46.105.43.93
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
+Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
@@ -114,48 +90,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JQK2APyVmApg
+X-TUID: LWo0y2CkSsM8
 
-SGV5IFBldGVyLAoKT24gMDguMTEuMTkgMTc6NTgsIFBldGVyIE1heWRlbGwgd3JvdGU6Cj4gT24g
-TW9uLCA0IE5vdiAyMDE5IGF0IDExOjUyLCBBbGV4YW5kZXIgR3JhZiA8Z3JhZkBhbWF6b24uY29t
-PiB3cm90ZToKPj4KPj4gVGhlIGN1cnJlbnQgcGwwMzEgUlRDSUNSIHJlZ2lzdGVyIGltcGxlbWVu
-dGF0aW9uIGFsd2F5cyBjbGVhcnMgdGhlIElSUQo+PiBwZW5kaW5nIHN0YXR1cyBvbiBhIHJlZ2lz
-dGVyIHdyaXRlLCByZWdhcmRsZXNzIG9mIHRoZSB2YWx1ZSBpdCB3cml0ZXMuCj4+Cj4+IFRvIGp1
-c3RpZnkgdGhhdCBiZWhhdmlvciwgaXQgcmVmZXJlbmNlcyB0aGUgYXJtOTI2ZSBkb2N1bWVudGF0
-aW9uCj4+IChEREkwMjg3QikgYW5kIGluZGljYXRlcyB0aGF0IHNhaWQgZG9jdW1lbnQgc3RhdGVz
-IHRoYXQgYW55IHdyaXRlIGNsZWFycwo+PiB0aGUgaW50ZXJuYWwgSVJRIHN0YXRlLiBJIGNvdWxk
-IGhvd2V2ZXIgbm90IGZpbmQgYW55IHRleHQgaW4gdGhhdCBkb2N1bWVudAo+PiBiYWNraW5nIHRo
-ZSBzdGF0ZW1lbnQuIEluIGZhY3QsIGl0IGV4cGxpY2l0bHkgc2F5czoKPj4KPj4gICAgIldyaXRp
-bmcgMSB0byBiaXQgMCBvZiBSVENJQ1IgY2xlYXJzIHRoZSBSVENJTlRSIGZsYWcuIgo+Pgo+PiB3
-aGljaCBkZXNjcmliZXMgaXQgYXMgbXVjaCBhcyBhIHdyaXRlLXRvLWNsZWFyIHJlZ2lzdGVyIGFz
-IHRoZSBQTDAzMSBzcGVjCj4+IChEREkwMjI0KSBkb2VzOgo+Pgo+PiAgICAiV3JpdGluZyAxIHRv
-IGJpdCBwb3NpdGlvbiAwIGNsZWFycyB0aGUgY29ycmVzcG9uZGluZyBpbnRlcnJ1cHQuCj4+ICAg
-ICBXcml0aW5nIDAgaGFzIG5vIGVmZmVjdC4iCj4gCj4gRERJMDI4N0IgcGFnZSAxMS0yIHNlY3Rp
-b24gMTEuMSBzYXlzCj4gIlRoZSBpbnRlcnJ1cHQgaXMgY2xlYXJlZCBieSB3cml0aW5nIGFueSBk
-YXRhIHZhbHVlIHRvIHRoZQo+IGludGVycnVwdCBjbGVhciByZWdpc3RlciBSVENJQ1IiLiBBcyB5
-b3Ugbm90ZSwgdGhpcyBjb250cmFkaWN0cwo+IHdoYXQgaXQgc2F5cyBsYXRlciBvbiBpbiBzZWN0
-aW9uIDExLjIuMi4KPiAKPiAoSW50ZXJlc3RpbmdseSwgdGhlIFBMMDMwIGRvZXMgaGF2ZSBhICJ3
-cml0ZSBhbnkgdmFsdWUgdG8KPiBjbGVhciB0aGUgaW50ZXJydXB0IiByZWdpc3RlciwgUlRDRU9J
-LikKPiAKPiBJJ20gZmFpcmx5IHN1cmUgdGhpcyBwYXRjaCBpcyByaWdodCBhbmQgdGhlIERESTAy
-ODdCIGRvY3VtZW50Cj4gaGFzIGFuIGVycm9yLCBzaW5jZSBpdCBpc24ndCBpbnRlcm5hbGx5IGNv
-bnNpc3RlbnQgYW5kIGRvZXNuJ3QKPiBtYXRjaCB0aGUgcHJvcGVyIFBMMDMxIFRSTS4KPiAKPiBE
-aWQgeW91IGZpbmQgdGhpcyBiZWNhdXNlIHlvdSBoYWQgYSBndWVzdCB0aGF0IGFzc3VtZWQgdGhl
-Cj4gb3RoZXIgYmVoYXZpb3VyPyBUaGlzIGJ1ZyBoYXMgYmVlbiBpbiBRRU1VIGZvciBhIHZlcnkg
-bG9uZyB0aW1lLAo+IGFuZCBpdCBzZWVtcyBvZGQgZm9yIGEgZ3Vlc3QgdG8gZGVsaWJlcmF0ZWx5
-IHBlcmZvcm0gYW4gYWN0aW9uCj4gKHdyaXRpbmcgMCkgd2hpY2ggaXMgZG9jdW1lbnRlZCB0byBo
-YXZlIG5vIGVmZmVjdCBvbiB0aGUgZGV2aWNlLi4uCgpXZSBmb3VuZCB0aGlzIGJ1ZyBieSB0cnlp
-bmcgdG8gZmluZCBqdXN0aWZpY2F0aW9uIGZvciB0aGUgYmVoYXZpb3IgaW4gCnRoZSBzcGVjIGFu
-ZCBhcHBhcmVudGx5IG15IHNwZWMgcmVhZGluZyBza2lsbHMgd2VyZSBsYWNraW5nLiBJIGNvdWxk
-IG5vdCAKZmluZCB0aGUgcmVmZXJlbmNlIHlvdSBjaXRlZCBhYm92ZS4KClNvIG5vLCBJIGRpZCBu
-b3Qgc2VlIGFueSBndWVzdCBicmVha2FnZS4KCkkgc3RpbGwgdGhpbmsgdGhhdCBiZWluZyBjb25z
-aXN0ZW50IHdpdGggdGhlIGFjdHVhbCBQTDAzMSBzcGVjIGlzIApwcmVmZXJhYmxlIHRob3VnaC4g
-SWYgYW55IHJlYWwgd29ybGQgZ3Vlc3QgYnJlYWtzIGJlY2F1c2Ugb2YgdGhpcywgd2UgCmNhbiBz
-dGlsbCByZXZlcnQgdGhpcyBwYXRjaCBhbmQgZG9jdW1lbnQgdGhlIGV4YWN0IGJyZWFrYWdlIGlu
-IHRoZSAKY29tbWVudCBpbnN0ZWFkLgoKCkFsZXgKCgoKQW1hem9uIERldmVsb3BtZW50IENlbnRl
-ciBHZXJtYW55IEdtYkgKS3JhdXNlbnN0ci4gMzgKMTAxMTcgQmVybGluCkdlc2NoYWVmdHNmdWVo
-cnVuZzogQ2hyaXN0aWFuIFNjaGxhZWdlciwgUmFsZiBIZXJicmljaApFaW5nZXRyYWdlbiBhbSBB
-bXRzZ2VyaWNodCBDaGFybG90dGVuYnVyZyB1bnRlciBIUkIgMTQ5MTczIEIKU2l0ejogQmVybGlu
-ClVzdC1JRDogREUgMjg5IDIzNyA4NzkKCgo=
+On 12/11/2019 07:40, Joel Stanley wrote:
+> Most boards have this much.
+>=20
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+
+
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+
+> ---
+>  hw/misc/aspeed_sdmc.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> index f3a63a2e01db..2df3244b53c8 100644
+> --- a/hw/misc/aspeed_sdmc.c
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -208,10 +208,10 @@ static int ast2600_rambits(AspeedSDMCState *s)
+>      }
+> =20
+>      /* use a common default */
+> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 512M",
+> +    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 1024M",
+>                  s->ram_size);
+> -    s->ram_size =3D 512 << 20;
+> -    return ASPEED_SDMC_AST2600_512MB;
+> +    s->ram_size =3D 1024 << 20;
+> +    return ASPEED_SDMC_AST2600_1024MB;
+>  }
+> =20
+>  static void aspeed_sdmc_reset(DeviceState *dev)
+>=20
 

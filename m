@@ -1,101 +1,98 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2716191wrr;
-        Tue, 12 Nov 2019 05:48:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzdOrCvZh9W8St4pWJuo7HS3BIvJbASLsoycucQJ6ArjNdcBwREAgfSY9MKqWsFsqiQEgmJ
-X-Received: by 2002:aed:22c1:: with SMTP id q1mr31023851qtc.337.1573566494455;
-        Tue, 12 Nov 2019 05:48:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573566494; cv=none;
+Received: by 2002:a17:90b:958:0:0:0:0 with SMTP id dw24csp7934685pjb;
+        Tue, 12 Nov 2019 06:40:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxrNPWXPhWtnTXIDPbmocRuDVgpW9yS9JsiDElZiUJVT0BcymFv3E5joeOMxYdBsTI+B4Ip
+X-Received: by 2002:aa7:c2c7:: with SMTP id m7mr33283985edp.295.1573569611575;
+        Tue, 12 Nov 2019 06:40:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573569611; cv=none;
         d=google.com; s=arc-20160816;
-        b=jWk4z1bKdd5Ug1OXvZa6lQltwwq96UNvwMjlgIlNos1la+vokRzy/hD2nu2sXkwv0n
-         OtDmmRjwVHRED0WvQK3tmpKAEbbtjggpe8Ox5Zhy10hcT4/s5nu+axtUeEzd758ebAya
-         n3IRsY/mPJCZ8ESQt+sVp75M0jelKBSMaQzhwC0aJquokMb2g1viBa4ypIRue2QM0Q6U
-         Pnxq4NqKLsXjN3McYi877wMMhqlhBnwFWXoZl4M4T6Coj09OVQKqSlFFSZA9d3F10RWN
-         e6z41i2CTgehZJT//et7J7X5lojse9iRInuMfO0k5DZHXVBq4Wp9DssKbVLITngiHGV6
-         zcjw==
+        b=WpEFdLm9k5CuaA1H+oExC8ToHtBVdFWDvXUrIuILpktWYkztBVszIC/+QJQATiFTEJ
+         gvWiWUQFCsmJuZBo4DiXXGJWBSFIyzC5VvNFezEEq1iqMrFL5tRAYJUJ0O08rVMpob3o
+         ssqCdQug7OokU9/Uzi487G0CLjib46jKGsMf5lxBq+SI/tfQvWKi0ZtBfIrMZXOPBEpi
+         Cla+snQJtz6AACKGiqL6VSUPpqInva/UpbWinqrdWjqJH0+dpHOQvlWP6I2+ANEvQ8UK
+         EnYag1yqWVJCucDP7Er0NtdDBvqv6F7zx7QWkYB2QBGEarqD0utXfjl9kmHPDJJTlBOO
+         eUsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=RYLIFYQlGm9Ki6YHiQ6cr/ujzB2VBpC1BfYM0Iim6bA=;
-        b=Xkwh54T28Sksyl3o1HbT8YnW880oY7QIVm9eGJKYbdLNLel2EW/jB28M8WnnaF8UTj
-         9kZ6YiB4pSzq2Y1YePKLSxR8wIelibxrzhsvxhmckHolG5+DVWbDTqKuc9q9yW1NjzRx
-         HlU+wNHYe9OSvs9TA9ThDkxk9+LXtxMRwZ+gay90IxdpwNAxuKsa5B72Cgsk3p4LmCXF
-         L//njz6pr6olagB3W/OF9k2uI6gE+NHIhXnqfOqtDOYf0ma5NAAyoHOvu4X9tsQWATRU
-         zvkNDQUVzM+u3h6IaY50p665XJqgpwOPtqsYOY4KRnlH76agmsfd40bhByQT9zLA91Me
-         LkbA==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=tnhPRLPJ/5MrUb5GfbZcfW8Ek/saOTgyfSOq0d+rRSM=;
+        b=qiIu8Frloz/6XYvdIxfAs0TJzCnlp5IxLNPr7BklDKKjpbUb44SFZZE8peqDFTGMMv
+         SRystG+3ggrDY52ABNsC2aa0L1yZZs0SZOmO9slwX0sT5pr6jZZEiMrLQJL+rULr7rXB
+         jMpT+MNMX0FsTHc7GuoPXG1vT8Zi7LBFdJVAOU+tkI26ElZlihDh0ZdDkWLd+gNt3c3k
+         2hnq4G2/Hwf1rex5tqbqzvC9rFMadXmvqNLNnPo5EwEaCJYv7l9HYT4aGJNsb4457FYp
+         Q2hGCUQw7XMUkW1FzmlBINFmyiMMKr7acu9D69R6nyUMHqFx2pS8kNZWTv5jsYzle+GZ
+         h8Tw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T5gs3IXM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=N38waVHR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h1si7832059qtc.302.2019.11.12.05.48.14
+        by mx.google.com with ESMTPS id m3si12607230edp.357.2019.11.12.06.40.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Nov 2019 05:48:14 -0800 (PST)
+        Tue, 12 Nov 2019 06:40:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T5gs3IXM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=N38waVHR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35212 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35726 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iUWWj-0003tC-RM
-	for alex.bennee@linaro.org; Tue, 12 Nov 2019 08:48:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52153)
+	id 1iUXL0-0000JH-7l
+	for alex.bennee@linaro.org; Tue, 12 Nov 2019 09:40:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58416)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1iUWWN-0003pt-2D
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 08:47:52 -0500
+ (envelope-from <imammedo@redhat.com>) id 1iUXKF-0000In-Jp
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 09:39:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1iUWWG-00062x-Md
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 08:47:48 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:34968
+ (envelope-from <imammedo@redhat.com>) id 1iUXKD-0005JK-7u
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 09:39:23 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28597
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1iUWW7-0005qC-As
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 08:47:40 -0500
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iUXKD-0005J6-4v
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 09:39:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573566454;
+ s=mimecast20190719; t=1573569560;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RYLIFYQlGm9Ki6YHiQ6cr/ujzB2VBpC1BfYM0Iim6bA=;
- b=T5gs3IXM0rIlCcCwqVoTT3fxfphT9IDzAu5lpjrKz1S/Ont/MGqPVSQcjjX0cfoeZbDVG3
- +OAETxwth7WuECnYXEmL9ike/D2ISd6i84TDiy1ohTfQps1c+95XtM04U3b2YJWBghw9bU
- 9HIdadj1fy1s+Ip19xWOTLQm365Rc+4=
+ bh=tnhPRLPJ/5MrUb5GfbZcfW8Ek/saOTgyfSOq0d+rRSM=;
+ b=N38waVHR1CiQuKTZ5wu6QXhcA0bT+LDYNFnU9XnZGj/l2DUmC1XAIY4G7FFpgCR5bhhfnJ
+ HFVAckzHx+BdTfTSsQi8QyVjprH6f3ctKprzZDTetso0ODPFQw8pvn+28ba8LYYKLN4Gnd
+ oMj0FUk08vYkA8+s5sdeu+2f7Yeb4Ec=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-274-zlx4a0vzMP2Ou6GrLn4HXA-1; Tue, 12 Nov 2019 08:47:31 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-413-m-8exEPtMt6WE6B7_oki3g-1; Tue, 12 Nov 2019 09:39:17 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2DF3385EE6D;
- Tue, 12 Nov 2019 13:47:27 +0000 (UTC)
-Received: from gondolin (dhcp-192-218.str.redhat.com [10.33.192.218])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4CE076106A;
- Tue, 12 Nov 2019 13:46:40 +0000 (UTC)
-Date: Tue, 12 Nov 2019 14:46:38 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>
-Subject: Re: [RFC v5 000/126] error: auto propagated local_err
-Message-ID: <20191112144638.4baf555a.cohuck@redhat.com>
-In-Reply-To: <CAMxuvawy_TStTDXYoNF0zFjh6eOF1EUKe6BYAxUo_S9-cxMPSg@mail.gmail.com>
-References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
- <d1756cd0-8ad7-1e6c-b127-59ed24c5e512@virtuozzo.com>
- <CAMxuvawy_TStTDXYoNF0zFjh6eOF1EUKe6BYAxUo_S9-cxMPSg@mail.gmail.com>
-Organization: Red Hat GmbH
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 395F8108BD1B;
+ Tue, 12 Nov 2019 14:39:16 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 865595DDAA;
+ Tue, 12 Nov 2019 14:39:11 +0000 (UTC)
+Date: Tue, 12 Nov 2019 15:39:10 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH 0/5] ARM virt: Add NVDIMM support
+Message-ID: <20191112153910.435414be@redhat.com>
+In-Reply-To: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
+References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: zlx4a0vzMP2Ou6GrLn4HXA-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: m-8exEPtMt6WE6B7_oki3g-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,121 +104,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
- Jan Kiszka <jan.kiszka@siemens.com>, Eric Blake <eblake@redhat.com>,
- Alberto Garcia <berto@igalia.com>,
- Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
- =?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- Anthony Green <green@moxielogic.com>, Laurent Vivier <lvivier@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Palmer Dabbelt <palmer@sifive.com>, Eric Farman <farman@linux.ibm.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Hannes Reinecke <hare@suse.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Liu Yuan <namei.unix@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
- Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>,
- Stafford Horne <shorne@gmail.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
- Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
- Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
- Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- "integration@gluster.org" <integration@gluster.org>,
- Laszlo Ersek <lersek@redhat.com>, "Richard W.M. Jones" <rjones@redhat.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
- Denis Lunev <den@virtuozzo.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
- "armbru@redhat.com" <armbru@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
- David Gibson <david@gibson.dropbear.id.au>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+Cc: peter.maydell@linaro.org, shannon.zhaosl@gmail.com, qemu-devel@nongnu.org,
+ xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +kMbFyXhraNh
+X-TUID: LY6EZ3Pzp3WM
 
-On Fri, 8 Nov 2019 22:57:25 +0400
-Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> wrote:
+On Fri, 4 Oct 2019 16:52:57 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> Hi
+> This series adds NVDIMM support to arm/virt platform.
+> This has a dependency on [0] and make use of the GED
+> device for NVDIMM hotplug events. The series reuses
+> some of=C2=A0the=C2=A0patches posted by Eric in his earlier
+> attempt here[1].
 >=20
-> On Fri, Nov 8, 2019 at 7:31 PM Vladimir Sementsov-Ogievskiy
-> <vsementsov@virtuozzo.com> wrote:
-> >
-> > Finally, what is the plan?
-> >
-> > Markus what do you think?
-> >
-> > Now a lot of patches are reviewed, but a lot of are not.
-> >
-> > Is there any hope that all patches will be reviewed? Should I resend th=
-e
-> > whole series, or may be reduce it to reviewed subsystems only? =20
+> Patch 1/5 is a fix to the Guest reboot issue on NVDIMM
+> hot add case described here[2].
 >=20
-> I don't think we have well established rules for whole-tree cleanups
-> like this. In the past, several cleanup series got lost.
+> I have done basic sanity testing of NVDIMM deviecs with
+> both ACPI and DT Guest boot. Further testing is always
+> welcome.
+>=20
+> Please let me know your feedback.
+one more thing,
 
-Yes, it is always problematic if a series touches a lot of different
-subsystems.
+It's possible to run bios-tables-test for virt/arm now,
+pls add corresponding test case
+it might be easier to just extend test_acpi_virt_tcg_memhp() with nvdimms
 
 >=20
-> It will take ages to get every subsystem maintainer to review the
-> patches. Most likely, since they are quite systematic, there isn't
-> much to say and it is easy to miss something that has some hidden
-> ramifications. Perhaps whole-tree cleanups should require at least 2
-> reviewers to bypass the subsytem maintainer review? But my past
-> experience with this kind of exercice doesn't encourage me, and
-> probably I am not the only one.
-
-It's not just the reviews; it's easy to miss compile problems on less
-mainstream architectures (and even easier to miss functional problems
-there, although they are probably less likely with automated rework.)
-CI can probably help, but that's something for the future.
-
-Anyway, I've now gotten around to that series; spotted one problem in
-s390x code, I think.
-
-One thing that's helpful for such a large series is a git branch that
-makes it easy to give the series a quick go. (You can use patchew, but
-it takes time before it gets all mails, so just pushing it somewhere
-and letting people know is a good idea anyway.)
+> Thanks,
+> Shameer
+>=20
+> [0] https://patchwork.kernel.org/cover/11150345/
+> [1] https://patchwork.kernel.org/cover/10830777/
+> [2] https://patchwork.kernel.org/patch/11154757/
+>=20
+> Eric Auger (1):
+>   hw/arm/boot: Expose the pmem nodes in the DT
+>=20
+> Kwangwoo Lee (2):
+>   nvdimm: Use configurable ACPI IO base and size
+>   hw/arm/virt: Add nvdimm hot-plug infrastructure
+>=20
+> Shameer Kolothum (2):
+>   hw/arm: Align ACPI blob len to PAGE size
+>   hw/arm/virt: Add nvdimm hotplug support
+>=20
+>  docs/specs/acpi_hw_reduced_hotplug.rst |  1 +
+>  hw/acpi/generic_event_device.c         | 13 ++++++++
+>  hw/acpi/nvdimm.c                       | 32 ++++++++++++------
+>  hw/arm/Kconfig                         |  1 +
+>  hw/arm/boot.c                          | 45 ++++++++++++++++++++++++++
+>  hw/arm/virt-acpi-build.c               | 20 ++++++++++++
+>  hw/arm/virt.c                          | 42 ++++++++++++++++++++----
+>  hw/i386/acpi-build.c                   |  6 ++++
+>  hw/i386/acpi-build.h                   |  3 ++
+>  hw/i386/pc_piix.c                      |  2 ++
+>  hw/i386/pc_q35.c                       |  2 ++
+>  hw/mem/Kconfig                         |  2 +-
+>  include/hw/acpi/generic_event_device.h |  1 +
+>  include/hw/arm/virt.h                  |  1 +
+>  include/hw/mem/nvdimm.h                |  3 ++
+>  15 files changed, 157 insertions(+), 17 deletions(-)
+>=20
 

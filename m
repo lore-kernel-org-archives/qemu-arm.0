@@ -1,99 +1,99 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2598445wrr;
-        Tue, 12 Nov 2019 03:57:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx0atxZ/ZHKB6QoY0sIWY8r9aUbiiYRbDaLOVd25xUqOeQq41HTIhG/+9VU8B42URz9W2VJ
-X-Received: by 2002:a17:906:d71:: with SMTP id s17mr21132587ejh.312.1573559858060;
-        Tue, 12 Nov 2019 03:57:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573559858; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2664474wrr;
+        Tue, 12 Nov 2019 05:02:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzWMSog4Ugxwg1+aTf6kPxarskbIS6mks2nqMmlDaSpOgR3qqYMhepSRBGY1Q9j54J5e6Vv
+X-Received: by 2002:a37:68a:: with SMTP id 132mr15360853qkg.359.1573563744870;
+        Tue, 12 Nov 2019 05:02:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573563744; cv=none;
         d=google.com; s=arc-20160816;
-        b=grk5q0i+RyyPUmCEcdodUwfcXCTypDQe57c5849sjZjPZSnkWFbJnJaQlflqi9NifL
-         4sVcxZHXb9I3oUb9SFMVIaZXHJGtErGvJLVrqeDxe8LwlzKZcoYazQLqTzfPT/fbCJ+o
-         Ta9nNN6GKT3RC9JCyS3bAnKk5T7xJH8hzaqCEyb9R2IoLisyyTT8eHMeLu+z+zDV2PUt
-         ytZMF3gDo59WvNftcs+TrOETLy3mgY/QadJy3cEwzUwNoj3SoOBzClwxKx0Y5/lx/xe9
-         GF6P7LyAHrgLdMLDGlM6o4KxrBWT/EvjOqQp2BCSyE0VjZWSdiVkzsm/dKmoV3gWDn45
-         FWTA==
+        b=sobJg50JkKyWoLY/O5uTxCoXuLHkbM65ibz5p3p0SMXNWGfwctt3sMuY/hEk4ADiJ4
+         FlzR+lu1W2dbmbvCUE64PXToe5zSC0wcyDCcT055y8VbiEaPjiQz0b87LmE/mPdedr8u
+         Z1o85ALS6zWH+lOCj93rbsWNQ40tZHm9UYj1G9VliY0E0Vf682YasfntSdhdg2gYcBKd
+         nw8Lh+SH1GtqRWlJDSfROGMSVYdRRFwkmiqB+aXZy1vIocvNalFKWT9ADArfv5C1VsBs
+         J8rtjnUrSugtYnzGNPpxDjrUg4wIvRLdRIoHsy4KRrBQ+b+4Nsr5oe90u1Pv0ICpGNSB
+         Zogw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=mHpwGMoPzVkjMtJKGRfojVDKC+X1kuu8azyLDSIFOE4=;
-        b=WbDzpfTXoC6Spmx/EGZt+OX6gVG1chd9vc62zeAQgnvPHGi2pZvBUicMvK//ULfsee
-         bmdRo8hMnAjz/MFfUlrEWZgZkTWfuJd7JDDQMjE3QOGLmM4mIRDe/DY88OYngatpE+O0
-         vkIgnlyLFoHXwu9fK0dttTFNTdjvgN78+k14HH7V155MjPfFIAp9v/KBIa5w67k9sC3Y
-         ZwwQiA8O3NUvZY+lHZlYMNZqslQzP+ktJpvYK9eR9joDGW9coswe7OfGbUNPCVk/qKCR
-         gUAp2Nkamzp3vPAKCg9xKp+YBjShWWxsCkYLJJ5djxG+06Xfn7K+fhG7jMlNX9z756YC
-         w3cg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=HsBUanOsuGMlQrRd7wFmfdPgoLITqUpiAVc+JdLSNsM=;
+        b=xFu2eB3olE8cEgDYnUrm4cHe+Z49Ym7jU51s8bWzeYDphbigqCkmZVlLUjMRaTGsr6
+         gXA7+Rc00DMcbtHUQ4llCUd45Pl8HIi2m4UKpC9uZtntcF0e8O+9ipp7SmPvd6UVOQkR
+         d6bl6INZypMqeJ8/lNYu4FNs0U5cpjfbU5p1em5pIft6hiGP4D2QEx0yKWVxxWY8/tFy
+         nwZI9rJqsZbgzh/tiX3rhId+rsyAp2tJP0I1lbFDzFgcjfIHyKKh40+LJrINBQAe/Cgk
+         /WZNspq3FVzKjDIeaMSo6YqP4WhhyFDcsheL6Z/2fGz4M88RrIrK2kx8mkOwh62frtmX
+         fOAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pqkQGZ6S;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UMQtAL52;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v13si11133163eju.409.2019.11.12.03.57.38
+        by mx.google.com with ESMTPS id d15si10299800qtr.301.2019.11.12.05.02.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Nov 2019 03:57:38 -0800 (PST)
+        Tue, 12 Nov 2019 05:02:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pqkQGZ6S;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UMQtAL52;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33872 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iUUng-0004br-PV
-	for alex.bennee@linaro.org; Tue, 12 Nov 2019 06:57:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38787)
+	id 1iUVoO-0002jC-7T
+	for alex.bennee@linaro.org; Tue, 12 Nov 2019 08:02:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46841)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iUUnX-0004ZV-Ro
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 06:57:28 -0500
+ (envelope-from <imammedo@redhat.com>) id 1iUVo0-0002f4-D1
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 08:02:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iUUnW-0000hr-H5
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 06:57:27 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:39165)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iUUnV-0000hd-Sz
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 06:57:26 -0500
-Received: by mail-ot1-x341.google.com with SMTP id z9so897285otq.6
- for <qemu-arm@nongnu.org>; Tue, 12 Nov 2019 03:57:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=mHpwGMoPzVkjMtJKGRfojVDKC+X1kuu8azyLDSIFOE4=;
- b=pqkQGZ6STXIyXNO4PMpO1Yen/Pj4jbOobXe9Pewp56aTepFfn964MHsmDQCZAN5uhq
- R8PU4Xjs1cKsQGQdrT3PcNJdxL+gcs+psvSXjRtR9vsIk78uozNerRKc+rDnegADqX+s
- 3UHPthspSxA0Tkah9vqod3p6lF09oycDAQgdoP9pCe5nZm2+SVen6HDiSEYNd7tlDEVM
- GH+ddjvWFSvkOtomPc5gpV7ZZI7c/2fNeLnb9007YUIw3HJwwviECrvWowzI6mlmCSW6
- 5nHNy2pddcqZ8Zd8YY5V1d/wX09sjI9TYmR41N1Xm7IRPkMKf+OE9gbMkkRInoSnhIGf
- MsFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=mHpwGMoPzVkjMtJKGRfojVDKC+X1kuu8azyLDSIFOE4=;
- b=jfi9cWoG4ADOhfSYS7P45r3Wf1Mbtrh3D/VIoZ8iq2V1cu4HkOda1Rl/LJbtVeytuX
- 293qcuFwQqnBaNNtvs1MTCJQnfJrTLrZMqfdQyRqx0YH8/m46vDmWFe8J6dW+PlSRXAL
- WW4bCh12o+2d7NjuhyH109iFNwDA6AM1YFjG5vLq9deQ5hCR97RwPiJ2oU/rOIscdGpG
- ON1zQZuMRmfZ9bOsN7lWHhwpaD42pX3k2gdV0hliyyu41at9nZkn93yHtCfdW3jBIdAc
- GK1Hp5gyRwoaLd9u1BFLzwgmv7VByuYiDy0i312MP8GOc46qsLVSwAC6eQ6Rvy4HWSH0
- WEWA==
-X-Gm-Message-State: APjAAAXhrDC3rMtCXYSjxwtGkwSz849IQIcYjaBua+Wz4q1F7sWW0auh
- JSWdUA9ODljGrzJKcpgpwPBYoEEaI9tmWMLwYXTodg==
-X-Received: by 2002:a9d:7ac2:: with SMTP id m2mr15265137otn.135.1573559844701; 
- Tue, 12 Nov 2019 03:57:24 -0800 (PST)
+ (envelope-from <imammedo@redhat.com>) id 1iUVnz-0005Ol-2S
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 08:02:00 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46210
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iUVny-0005OS-Tg
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2019 08:01:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573563717;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HsBUanOsuGMlQrRd7wFmfdPgoLITqUpiAVc+JdLSNsM=;
+ b=UMQtAL52abPLHgLEZeqV3y2aimSWQ7glNPLKCj3fISz1pW/Bx9ATQWD8YbTeB6mtrzEImS
+ vwPJzs8ukgNERd5/Q/NrKS/OaZ3TcAKWfA52cZnlYkNXh5qUtM0Q9uGKQ5sYiME4rpXs5F
+ 3BwfithfRu5EnY0tyYpWeBTN4NxIPq0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-311-2XUNvjmsMXuNKjaiMOeo-g-1; Tue, 12 Nov 2019 08:01:54 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2755B18B5F6A;
+ Tue, 12 Nov 2019 13:01:53 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DF1746292A;
+ Tue, 12 Nov 2019 13:01:47 +0000 (UTC)
+Date: Tue, 12 Nov 2019 14:01:45 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH 5/5] hw/arm/virt: Add nvdimm hotplug support
+Message-ID: <20191112140145.7ad2f034@redhat.com>
+In-Reply-To: <20191004155302.4632-6-shameerali.kolothum.thodi@huawei.com>
+References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
+ <20191004155302.4632-6-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-References: <20191104115228.30745-1-graf@amazon.com>
- <CAFEAcA8zkR_MZ-28Nc=x4j05U9MsFYfzQtkHxTf65ZwacK020w@mail.gmail.com>
- <246a7cd4-7c39-c92e-05c3-1045bca2c114@amazon.com>
-In-Reply-To: <246a7cd4-7c39-c92e-05c3-1045bca2c114@amazon.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Nov 2019 11:57:13 +0000
-Message-ID: <CAFEAcA_kwscZRqK5wTRu5WLkixGYbdV0c7mZMV6n+40DOS0-Mg@mail.gmail.com>
-Subject: Re: [PATCH] pl031: Expose RTCICR as proper WC register
-To: Alexander Graf <graf@amazon.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: 2XUNvjmsMXuNKjaiMOeo-g-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,38 +105,183 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Hendrik Borghorst <hborghor@amazon.de>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, shannon.zhaosl@gmail.com, qemu-devel@nongnu.org,
+ xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5mFYy6EsbCYu
+X-TUID: seqT6nfJyFCo
 
-On Tue, 12 Nov 2019 at 07:28, Alexander Graf <graf@amazon.com> wrote:
->
-> Hey Peter,
->
-> On 08.11.19 17:58, Peter Maydell wrote:
-> > Did you find this because you had a guest that assumed the
-> > other behaviour? This bug has been in QEMU for a very long time,
-> > and it seems odd for a guest to deliberately perform an action
-> > (writing 0) which is documented to have no effect on the device...
->
-> We found this bug by trying to find justification for the behavior in
-> the spec and apparently my spec reading skills were lacking. I could not
-> find the reference you cited above.
->
-> So no, I did not see any guest breakage.
->
-> I still think that being consistent with the actual PL031 spec is
-> preferable though. If any real world guest breaks because of this, we
-> can still revert this patch and document the exact breakage in the
-> comment instead.
+On Fri, 4 Oct 2019 16:53:02 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Yeah, I agree; I'm essentially just gathering material
-for the commit message here. (The gold standard would be
-to go find some hardware with a real pl031 and prod it
-to confirm behaviour, but that's more effort than really
-seems justified to me.)
+> This adds support for nvdimm hotplug events through GED
+> and enables nvdimm for the arm/virt. Now Guests with DT boot
+> can have nvdimm cold plug and with ACPI both cold/hot plug.
+>=20
+> Hot removal functionality is not yet supported.
+>=20
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 
-thanks
--- PMM
+I'd move out DT cold-plug out of this patch is it's not related
+to this patch at all
+
+otherwise patch looks good, so=20
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  docs/specs/acpi_hw_reduced_hotplug.rst |  1 +
+>  hw/acpi/generic_event_device.c         | 13 +++++++++++++
+>  hw/arm/virt.c                          | 20 +++++++++++++++-----
+>  include/hw/acpi/generic_event_device.h |  1 +
+>  4 files changed, 30 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/docs/specs/acpi_hw_reduced_hotplug.rst b/docs/specs/acpi_hw_=
+reduced_hotplug.rst
+> index 911a98255b..e3abe975bf 100644
+> --- a/docs/specs/acpi_hw_reduced_hotplug.rst
+> +++ b/docs/specs/acpi_hw_reduced_hotplug.rst
+> @@ -63,6 +63,7 @@ GED IO interface (4 byte access)
+>      bits:
+>         0: Memory hotplug event
+>         1: System power down event
+> +       2: NVDIMM hotplug event
+>      2-31: Reserved
+> =20
+>  **write_access:**
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_devic=
+e.c
+> index 9cee90cc70..ad1b684304 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -16,6 +16,7 @@
+>  #include "hw/acpi/generic_event_device.h"
+>  #include "hw/irq.h"
+>  #include "hw/mem/pc-dimm.h"
+> +#include "hw/mem/nvdimm.h"
+>  #include "hw/qdev-properties.h"
+>  #include "migration/vmstate.h"
+>  #include "qemu/error-report.h"
+> @@ -23,6 +24,7 @@
+>  static const uint32_t ged_supported_events[] =3D {
+>      ACPI_GED_MEM_HOTPLUG_EVT,
+>      ACPI_GED_PWR_DOWN_EVT,
+> +    ACPI_GED_NVDIMM_HOTPLUG_EVT,
+>  };
+> =20
+>  /*
+> @@ -110,6 +112,11 @@ void build_ged_aml(Aml *table, const char *name, Hot=
+plugHandler *hotplug_dev,
+>                             aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE)=
+,
+>                                        aml_int(0x80)));
+>                  break;
+> +            case ACPI_GED_NVDIMM_HOTPLUG_EVT:
+> +                aml_append(if_ctx,
+> +                           aml_notify(aml_name("\\_SB.NVDR"),
+> +                                      aml_int(0x80)));
+> +                break;
+>              default:
+>                  /*
+>                   * Please make sure all the events in ged_supported_even=
+ts[]
+> @@ -175,7 +182,11 @@ static void acpi_ged_device_plug_cb(HotplugHandler *=
+hotplug_dev,
+>      AcpiGedState *s =3D ACPI_GED(hotplug_dev);
+> =20
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        if (object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)) {
+> +            nvdimm_acpi_plug_cb(hotplug_dev, dev);
+> +        } else {
+>              acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp)=
+;
+> +        }
+>      } else {
+>          error_setg(errp, "virt: device plug request for unsupported devi=
+ce"
+>                     " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -192,6 +203,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, A=
+cpiEventStatusBits ev)
+>          sel =3D ACPI_GED_MEM_HOTPLUG_EVT;
+>      } else if (ev & ACPI_POWER_DOWN_STATUS) {
+>          sel =3D ACPI_GED_PWR_DOWN_EVT;
+> +    } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
+> +        sel =3D ACPI_GED_NVDIMM_HOTPLUG_EVT;
+>      } else {
+>          /* Unknown event. Return without generating interrupt. */
+>          warn_report("GED: Unsupported event %d. No irq injected", ev);
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 30bc8a7803..acdcba9638 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -543,6 +543,10 @@ static inline DeviceState *create_acpi_ged(VirtMachi=
+neState *vms, qemu_irq *pic)
+>          event |=3D ACPI_GED_MEM_HOTPLUG_EVT;
+>      }
+> =20
+> +    if (ms->nvdimms_state->is_enabled) {
+> +        event |=3D ACPI_GED_NVDIMM_HOTPLUG_EVT;
+> +    }
+> +
+>      dev =3D qdev_create(NULL, TYPE_ACPI_GED);
+>      qdev_prop_set_uint32(dev, "ged-event", event);
+> =20
+> @@ -1938,9 +1942,12 @@ static void virt_memory_pre_plug(HotplugHandler *h=
+otplug_dev, DeviceState *dev,
+>      }
+> =20
+>      if (!vms->acpi_dev) {
+> -        error_setg(errp,
+> -                   "memory hotplug is not enabled: missing acpi-ged devi=
+ce");
+> -        return;
+> +        /* Allow nvdimm DT or cold plug */
+> +        if (!(is_nvdimm && !dev->hotplugged)) {
+> +            error_setg(errp,
+> +                       "memory hotplug is not enabled: missing acpi-ged =
+device");
+> +            return;
+> +         }
+
+
+
+>      }
+> =20
+>      pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
+> @@ -1964,8 +1971,10 @@ static void virt_memory_plug(HotplugHandler *hotpl=
+ug_dev,
+>          nvdimm_plug(ms->nvdimms_state);
+>      }
+> =20
+> -    hhc =3D HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
+> -    hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &error_abort);
+> +    if (vms->acpi_dev) {
+> +        hhc =3D HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
+> +        hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &error_abort);
+> +    }
+>  out:
+>      error_propagate(errp, local_err);
+>  }
+> @@ -2073,6 +2082,7 @@ static void virt_machine_class_init(ObjectClass *oc=
+, void *data)
+>      hc->plug =3D virt_machine_device_plug_cb;
+>      hc->unplug_request =3D virt_machine_device_unplug_request_cb;
+>      mc->numa_mem_supported =3D true;
+> +    mc->nvdimm_supported =3D true;
+>      mc->auto_enable_numa_with_memhp =3D true;
+>  }
+> =20
+> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/gen=
+eric_event_device.h
+> index d157eac088..9eb86ca4fd 100644
+> --- a/include/hw/acpi/generic_event_device.h
+> +++ b/include/hw/acpi/generic_event_device.h
+> @@ -82,6 +82,7 @@
+>   */
+>  #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
+>  #define ACPI_GED_PWR_DOWN_EVT      0x2
+> +#define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+> =20
+>  typedef struct GEDState {
+>      MemoryRegion io;
+

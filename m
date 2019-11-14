@@ -1,100 +1,77 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp2673757wrr;
-        Tue, 12 Nov 2019 05:10:13 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzUDdQJzQ54OImdJdtl1WzyoQWMFWvhsoU7DemNUay+45/efRat2JxmN0PjjurvxtgUPAup
-X-Received: by 2002:a05:620a:136f:: with SMTP id d15mr15143049qkl.395.1573564213038;
-        Tue, 12 Nov 2019 05:10:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573564213; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5241886wrr;
+        Thu, 14 Nov 2019 01:46:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxb9NFPAKk+IO0Q/n8kn8I9Jbo9X4pvTVAVScFUkFouL1jT5ACYec5pm5s+0vg2Hzqx1Gfx
+X-Received: by 2002:ac8:f30:: with SMTP id e45mr7225539qtk.222.1573724803068;
+        Thu, 14 Nov 2019 01:46:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573724803; cv=none;
         d=google.com; s=arc-20160816;
-        b=CjipJYllnVok+xNCDsFqkJ0bxNp0fHt0LqJ07uSxGPABmOQuzpRnbPyPvTVAuLfVu3
-         c+9DepFGY+Tg2pIi+9s65WPZf+CJhWUpKrAODrgeQLDRCPP7uIK/vTsXN206ulVQjJss
-         ay31FW+rDG3HGyJUjJh35HBL3CBzj7BTHo05Hb+3speczfC2V4Ye5HYS757u4/+dKczu
-         MhKd7qsmN9Rv93xFzysQ9Q3X2XS+aA0vPSuKvzq2mhOnAfocIvlkuO+YVZBEBjlq6hn0
-         KSQrpJ4IF5QYv7eWgkuKxC5IOCWK2JTF87rF+WHkJwwz96VN31JOR/3PrxwaUtmLWVj+
-         2DtA==
+        b=A6BdVK+u4uAPRA3t8XagBvheRmxuOQOP1Rx20MN0tMFJuQQmXIR1E1KUqzRDyhuNdR
+         foGXGkc2+0KKiGkzd4xWooRNNcQNZZRkt9xuYC6i9oKm7U+xLeNMpVTCrRy1gwcznecO
+         ZRxolIYDnaaBBx8jZMSYx3pE1iQLaWilGzQG+ba1zmHyNgfiSBoI2USNVAIw2yd+k8EX
+         kkbiEsEer8S5m7FYri2lvowClrc8H0vMCL48RuaYyeOXf3++AZpYHwWH2QNDyoMhqa1o
+         0xhitjIBkksfOjgJvcO9V9yaLa23ku4/t9axJa6b1NcC3GNUsrXUBgfH3R19YJ1ts8uQ
+         Xhgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=ExOAjPbS2nTR50G1z/MZukkj/KFXFG4y01OM1qLbB7E=;
-        b=ZVvRIBJq/sIx5YOpbFGaDKLHpa/s/GtknDHEuC+dL0STOb7OKnx/Q5FB4e7ycCnIeW
-         ldKbG9yCvTbQJee9W19u++ZRoqqYUVwpxQG9Y+bIeRvtb/yHX55FMSDeh1ie6w0IZp9E
-         g6Hh03AWZSAykefnmzzW6Ll3lhRdiS1GE03z4G55Y0EtMNO9y+uBN5rDqUpptzdut4Yi
-         Lpy3g9N3e0dEU4UWsJf8isAgdvgamM+xew5EUdSPw83VMk0WmBziOwoBU7A3+mAli6AD
-         sr3k++zIWSAAqRL4DRXUkXdMQ8mumxGugVMIY8YIARfiEFsMrJtU9irBnnxFDqBohQya
-         RDBQ==
+         :mime-version:message-id:date:subject:to:from;
+        bh=8YJsp5qVq00RaDtqKMCN5G/Y/SzV8EUooowKOYH7Oog=;
+        b=xRNIOgEWLKztn/7Kt3yztGbU1LiWlPebZjbYJaZx/v7bz5pQbeo4gBZqzoXTGLFXeQ
+         vJMDzQqbAnoeStYDCUv0SBnoHuGAVTJ/IYM4elekEudC3bx41jfxxsQu29uVwVkiA7O3
+         ZVJw7NL5pss/cFaGE6KoXQbLlOV5c54TxhZn2I/gqtopEVWQhYWxexk9szWKwHXKgaIt
+         EEYvznxNcUEbh5r0FdRa/cJCeSlFeVgBU96ll30qYeVWtZlDb+LNw/MSZWx5AjMmjoPv
+         frbdgGIwbbLUmss9s+4GK8tXDx0LbQKCncFZtk8Zo4ubsZIceiAcybhqxJ+Rd4RByWjo
+         lYKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g7oPESo2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o187si5493822qkd.251.2019.11.12.05.10.12
+        by mx.google.com with ESMTPS id w11si2745658qvz.128.2019.11.14.01.46.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Nov 2019 05:10:13 -0800 (PST)
+        Thu, 14 Nov 2019 01:46:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g7oPESo2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34882 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54886 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iUVvw-0007FN-Gu
-	for alex.bennee@linaro.org; Tue, 12 Nov 2019 08:10:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47708)
+	id 1iVBi5-0007j9-Eg
+	for alex.bennee@linaro.org; Thu, 14 Nov 2019 04:46:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37214)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1iUVvg-00070v-OC
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 08:09:57 -0500
+ (envelope-from <clg@kaod.org>) id 1iVBhZ-0007gM-Ix
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1iUVvf-0007u4-HR
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 08:09:56 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:50219
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <clg@kaod.org>) id 1iVBhY-0004K0-Eo
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:09 -0500
+Received: from 17.mo7.mail-out.ovh.net ([188.165.35.227]:50268)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1iUVvf-0007tP-CH
- for qemu-arm@nongnu.org; Tue, 12 Nov 2019 08:09:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573564194;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ExOAjPbS2nTR50G1z/MZukkj/KFXFG4y01OM1qLbB7E=;
- b=g7oPESo2Ho1mOwfYzkmi0yTm3Vz+FZClOm8+qMupKxGD0n1NjTtLIK7aEcRtfyDtFjXd6p
- jmmV87hmKs+l2G7cAw7cTD8jCrhXQ1ur2wRSn0CDRllxS3hK6i8CGHL2H+6iqqrLVkuMAC
- G45aEi56358YnYs3IBQ+wE7BjNDJl8I=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-96-cJbp8iMbNVK94nX1TElAnA-1; Tue, 12 Nov 2019 08:09:53 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 71F69800C72;
- Tue, 12 Nov 2019 13:09:49 +0000 (UTC)
-Received: from gondolin (dhcp-192-218.str.redhat.com [10.33.192.218])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BF1E05C1D8;
- Tue, 12 Nov 2019 13:08:57 +0000 (UTC)
-Date: Tue, 12 Nov 2019 14:08:55 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-Subject: Re: [RFC v5 026/126] python: add commit-per-subsystem.py
-Message-ID: <20191112140855.5001fba9.cohuck@redhat.com>
-In-Reply-To: <20191011160552.22907-27-vsementsov@virtuozzo.com>
-References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
- <20191011160552.22907-27-vsementsov@virtuozzo.com>
-Organization: Red Hat GmbH
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iVBhY-0004GF-9D
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:08 -0500
+Received: from player737.ha.ovh.net (unknown [10.108.42.82])
+ by mo7.mail-out.ovh.net (Postfix) with ESMTP id D0DE913851B
+ for <qemu-arm@nongnu.org>; Thu, 14 Nov 2019 10:45:58 +0100 (CET)
+Received: from kaod.org (lfbn-1-2229-223.w90-76.abo.wanadoo.fr [90.76.50.223])
+ (Authenticated sender: clg@kaod.org)
+ by player737.ha.ovh.net (Postfix) with ESMTPSA id 2EC692A78286;
+ Thu, 14 Nov 2019 09:45:51 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 0/5] aspeed: AST2600 SMC fixes and tacoma-bmc machine 
+Date: Thu, 14 Nov 2019 10:45:39 +0100
+Message-Id: <20191114094544.30114-1-clg@kaod.org>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: cJbp8iMbNVK94nX1TElAnA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 2474165046772665105
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudeffedgtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffogggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejfeejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 188.165.35.227
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,78 +83,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
- Jan Kiszka <jan.kiszka@siemens.com>, Eric Blake <eblake@redhat.com>,
- Alberto Garcia <berto@igalia.com>,
- Hailiang Zhang <zhang.zhanghailiang@huawei.com>, qemu-block@nongnu.org,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
- =?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- Anthony Green <green@moxielogic.com>, Laurent Vivier <lvivier@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
- qemu-ppc@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>, sheepdog@lists.wpkg.org,
- Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Palmer Dabbelt <palmer@sifive.com>, Eric Farman <farman@linux.ibm.com>,
- Max Filippov <jcmvbkbc@gmail.com>, "Denis V. Lunev" <den@openvz.org>,
- Hannes Reinecke <hare@suse.com>, Stefano Stabellini <sstabellini@kernel.org>,
- "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Liu Yuan <namei.unix@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
- Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>,
- Stafford Horne <shorne@gmail.com>, qemu-riscv@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
- Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
- Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
- Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
- xen-devel@lists.xenproject.org, integration@gluster.org,
- Laszlo Ersek <lersek@redhat.com>, "Richard W.M. Jones" <rjones@redhat.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
- armbru@redhat.com,
- =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
- David Gibson <david@gibson.dropbear.id.au>,
- Tony Krowiak <akrowiak@linux.ibm.com>, "Daniel
- P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ydbvmb8XeHzz
+X-TUID: Gdd2KlBTzVYf
 
-On Fri, 11 Oct 2019 19:04:12 +0300
-Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> wrote:
+Hello,
 
-> Add script to automatically commit tree-wide changes per-subsystem.
->=20
-> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-> ---
+Here are fixes for the AST2600 SMC controller and the definition of a
+new tacoma-bmc board using the AST2600 SoC.
 
-I think this still needs some notes as to the supposed usage.
+Thanks,
+
+C.
+
+C=C3=A9dric Le Goater (5):
+  aspeed/smc: Restore default AHB window mapping at reset
+  aspeed/smc: Do not map disabled segment on the AST2600
+  aspeed/smc: Add AST2600 timings registers
+  aspeed: remove AspeedBoardConfig array and use AspeedMachineClass
+  aspeed: Add support for the tacoma-bmc board
+
+ include/hw/arm/aspeed.h     |  24 ++-
+ include/hw/ssi/aspeed_smc.h |   1 +
+ hw/arm/aspeed.c             | 283 +++++++++++++++++++++++-------------
+ hw/ssi/aspeed_smc.c         |  63 +++++---
+ 4 files changed, 235 insertions(+), 136 deletions(-)
+
+--=20
+2.21.0
 

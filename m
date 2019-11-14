@@ -1,173 +1,200 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5244390wrr;
-        Thu, 14 Nov 2019 01:49:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxMYwznIe65oOIJIAboOZJeCYv4LA+C21qJSUPesJoazEDj+BDRNfHJykCNRrFQfPOoEpy1
-X-Received: by 2002:a17:906:c797:: with SMTP id cw23mr7417634ejb.19.1573724989671;
-        Thu, 14 Nov 2019 01:49:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573724989; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5245192wrr;
+        Thu, 14 Nov 2019 01:50:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwFk7LsondsgkFFLavas/RCVHaMBwJq7NAOeRxGxG9suGKWm6zDGoDJhTxJKJINv41isVuE
+X-Received: by 2002:a17:907:2061:: with SMTP id qp1mr7683132ejb.43.1573725039488;
+        Thu, 14 Nov 2019 01:50:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573725039; cv=none;
         d=google.com; s=arc-20160816;
-        b=vIDpSzAF9D/11p+GSHBkmm2vViHDIMPgSQAtclblQhJsvQ69V8MBzr9TLkIpgLs4p3
-         hzy112UA9+R5rsqdgyfkU9gseeufBmT7USmaaBlLGvrNnukEispEHjU/XcGNNrW5cNh3
-         7ePThEuqIDk2UEz1HFmfWPIJtJjdcObHhqwJorGc8xtwYA24eSvDB2DB64ge5Pg1AElb
-         yPxeg2i22J/9kTeHW2JON+7yiU/nt4/FJJTA+KkvmgR3c8uhL/geyF4NjDPHp7luIqSu
-         IU07nbNTwIyZUh/Bp3K5Qlau4JCKx7AhyLFlISZwldoJBiClKxJ0I5kPpoI67CDmpTpt
-         Vr/A==
+        b=uUr7xkWyRZ+XR23V9ScB7M9xi+Do+dqYecf8OhSw0GO8CyYHEaipJGTB1P1+04jMMT
+         P3y31eLw8DpmXcOsMdN904AhtGyiOYzmD32MFiaR86PGMXhHIT7ieRCjfWAb4/7pqRq9
+         DOVwAPn9b8sUJKQqQSx/GH42Y4dU5qvyisVIYJ0jShdZpV3Y6/lSsjRugwvtvbJDlvRk
+         CoGBM/aiw+i3lH6GA1RYapTpAMRB3bboFVmz3tvOnPhRIRHaxYRwXeuCcFAmfAQ+hnjx
+         L6m7m4UPdbqjU5FZl7GR6tTRbzHnpuCex1GfINTQu6h7yAZzAQzwcF7rOtW/kYQjz29B
+         Fy6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=9FUVJSjvatEiT/eS50h/OxSefLk8gFOimniR6V4KFkk=;
-        b=i2FXvPsOlv1cAC8vwbt6rsiqAuS2tX6Dw4lE/hENgQDoy0VfLAQd7zsBX2MCbrc4zT
-         YPnWSvQR/iJxGTgjzJuxsXOPAd8uZRNL/h+irsmwkv3xpamGxQatZ9hPzcrejd3pyeZM
-         FPkmS3c7NIL7+F6DbLfh8ITpoNt7IsRKfD04cIbQAmZGAkg0xxJDKqSBxzYt2jjvsUyf
-         Agjja3pjh4krS0PYRbkat1SCZ6zEk2VsYakHJ2hza2GOzLQhTp1H1J7cj4km/4I7LjX8
-         qbEEX3wtR2RPQ1kS8y5AI48Pl/oOD1659ihMWz/2kNCvwyF/7KMawJIfsF5kaw5W7DeE
-         DNKQ==
+        bh=3SIx8kAu24GIEbXSolS7xH/o783ZAi9NIXax7UtIqUQ=;
+        b=YTHe8/XvR6zK3Lgr0vS+ruHb3YL/WH11/4Ck8eMP3Q2z9cPU/QqBRQDxHTUvyOwn6J
+         Bo5Eze153gHPrQGeOxD4Uqm3aZdYI04aheTQ5wMNVws7TriOsoB9k8EtgR8i0f+z11KX
+         dpTxiaL+wVsA6JFgA2tXMVKT5t78B4q7SKu1dQWG4q4XuEWMyjJjFuk6e62cZxSiV66t
+         x8rVBGAAgohsIVEAYkyW0gYAuogr3em0HESbU43+zMveAC6BBR6YKjQqS+lJ7x6+zvb1
+         2Ay3a2Rnlv0nCKEdYaaogGvxd1zetMytVmL+TJLXSxGWM1bigCR6i8UjZPaRadapBEkE
+         Sy2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o15si3047115ejh.124.2019.11.14.01.49.49
+        by mx.google.com with ESMTPS id n2si3135102ejz.65.2019.11.14.01.50.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Nov 2019 01:49:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Nov 2019 01:50:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54912 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54914 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iVBl6-0001yY-9L
-	for alex.bennee@linaro.org; Thu, 14 Nov 2019 04:49:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37268)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iVBlu-0002LU-5P
+	for alex.bennee@linaro.org; Thu, 14 Nov 2019 04:50:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37445)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iVBhg-0007if-FC
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:21 -0500
+ (envelope-from <clg@kaod.org>) id 1iVBi0-0007vO-II
+ for qemu-devel@nongnu.org; Thu, 14 Nov 2019 04:46:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iVBhe-0004Oq-NA
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:16 -0500
-Received: from 10.mo4.mail-out.ovh.net ([188.165.33.109]:57736)
+ (envelope-from <clg@kaod.org>) id 1iVBhz-0004cM-7C
+ for qemu-devel@nongnu.org; Thu, 14 Nov 2019 04:46:36 -0500
+Received: from 5.mo6.mail-out.ovh.net ([46.105.54.31]:53704)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iVBhe-0004Iv-HA
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:14 -0500
-Received: from player737.ha.ovh.net (unknown [10.108.42.82])
- by mo4.mail-out.ovh.net (Postfix) with ESMTP id 99652212A40
- for <qemu-arm@nongnu.org>; Thu, 14 Nov 2019 10:46:05 +0100 (CET)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iVBhz-0004bh-1R
+ for qemu-devel@nongnu.org; Thu, 14 Nov 2019 04:46:35 -0500
+Received: from player737.ha.ovh.net (unknown [10.108.57.16])
+ by mo6.mail-out.ovh.net (Postfix) with ESMTP id 5717C1EC539
+ for <qemu-devel@nongnu.org>; Thu, 14 Nov 2019 10:46:33 +0100 (CET)
 Received: from kaod.org (lfbn-1-2229-223.w90-76.abo.wanadoo.fr [90.76.50.223])
  (Authenticated sender: clg@kaod.org)
- by player737.ha.ovh.net (Postfix) with ESMTPSA id 75B0F2A7832C;
- Thu, 14 Nov 2019 09:45:58 +0000 (UTC)
+ by player737.ha.ovh.net (Postfix) with ESMTPSA id DDAA32A786B0;
+ Thu, 14 Nov 2019 09:46:25 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 1/5] aspeed/smc: Restore default AHB window mapping at reset
-Date: Thu, 14 Nov 2019 10:45:40 +0100
-Message-Id: <20191114094544.30114-2-clg@kaod.org>
+Subject: [PATCH 5/5] aspeed: Add support for the tacoma-bmc board
+Date: Thu, 14 Nov 2019 10:45:44 +0100
+Message-Id: <20191114094544.30114-6-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191114094544.30114-1-clg@kaod.org>
 References: <20191114094544.30114-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 2476135371268131601
+X-Ovh-Tracer-Id: 2483735194706610961
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudeffedgtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejfeejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudeffedgtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejfeejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedu
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 188.165.33.109
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 46.105.54.31
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
  Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kKBrOwncbc5e
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PtGy4Bus2Dlr
 
-The current model only restores the Segment Register values but leaves
-the previous CS mapping behind. Introduce a helper setting the
-register value and mapping the region at the requested address. Use
-this helper when a Segment register is set and at reset.
+The Tacoma BMC board is replacement board for the BMC of the OpenPOWER
+Witherspoon system. It uses a AST2600 SoC instead of a AST2500 and is
+used for HW bringup.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c | 32 +++++++++++++++++++++-----------
- 1 file changed, 21 insertions(+), 11 deletions(-)
+ hw/arm/aspeed.c | 52 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index f0c7bbbad302..955ec21852ac 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -475,10 +475,26 @@ static bool aspeed_smc_flash_overlap(const AspeedSM=
-CState *s,
-     return false;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index e34e6787430b..729f2e79cd79 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -92,6 +92,10 @@ struct AspeedBoardState {
+ #define AST2600_EVB_HW_STRAP1 0x000000C0
+ #define AST2600_EVB_HW_STRAP2 0x00000003
+=20
++/* Tacoma hardware value */
++#define TACOMA_BMC_HW_STRAP1  0x00000000
++#define TACOMA_BMC_HW_STRAP2  0x00000000
++
+ /*
+  * The max ram region is for firmwares that scan the address space
+  * with load/store to guess how much RAM the SoC has.
+@@ -167,6 +171,34 @@ static void aspeed_board_init_flashes(AspeedSMCState=
+ *s, const char *flashtype,
+     }
  }
 =20
-+static void aspeed_smc_flash_set_segment_region(AspeedSMCState *s, int c=
-s,
-+                                                uint64_t regval)
++static void tacoma_bmc_i2c_init(AspeedBoardState *bmc)
 +{
-+    AspeedSMCFlash *fl =3D &s->flashes[cs];
-+    AspeedSegments seg;
++    AspeedSoCState *soc =3D &bmc->soc;
++    uint8_t *eeprom_buf =3D g_malloc0(8 * 1024);
 +
-+    s->ctrl->reg_to_segment(s, regval, &seg);
++    /* Bus 3: TODO bmp280@77 */
++    /* Bus 3: TODO max31785@52 */
++    /* Bus 3: TODO dps310@76 */
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), "pca9552"=
+, 0x60);
 +
-+    memory_region_transaction_begin();
-+    memory_region_set_size(&fl->mmio, seg.size);
-+    memory_region_set_address(&fl->mmio, seg.addr - s->ctrl->flash_windo=
-w_base);
-+    memory_region_set_enabled(&fl->mmio, true);
-+    memory_region_transaction_commit();
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "tmp423",=
+ 0x4c);
 +
-+    s->regs[R_SEG_ADDR0 + cs] =3D regval;
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 5), "tmp423",=
+ 0x4c);
++
++    /* The tacoma expects a TMP275 but a TMP105 is compatible */
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), TYPE_TMP1=
+05,
++                     0x4a);
++
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "pca9552=
+",
++                     0x60);
++    /* The tacoma expects Epson RX8900 RTC but a ds1338 is compatible */
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338"=
+,
++                     0x32);
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), 0x5=
+1,
++                          eeprom_buf);
++    /* Bus 11: TODO ucd90160@64 */
 +}
 +
- static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
-                                          uint64_t new)
+ static void aspeed_machine_init(MachineState *machine)
  {
--    AspeedSMCFlash *fl =3D &s->flashes[cs];
-     AspeedSegments seg;
+     AspeedBoardState *bmc;
+@@ -485,6 +517,22 @@ static void aspeed_machine_ast2600_evb_class_init(Ob=
+jectClass *oc, void *data)
+     mc->default_ram_size =3D 1 * GiB;
+ };
 =20
-     s->ctrl->reg_to_segment(s, new, &seg);
-@@ -529,13 +545,7 @@ static void aspeed_smc_flash_set_segment(AspeedSMCSt=
-ate *s, int cs,
-     aspeed_smc_flash_overlap(s, &seg, cs);
-=20
-     /* All should be fine now to move the region */
--    memory_region_transaction_begin();
--    memory_region_set_size(&fl->mmio, seg.size);
--    memory_region_set_address(&fl->mmio, seg.addr - s->ctrl->flash_windo=
-w_base);
--    memory_region_set_enabled(&fl->mmio, true);
--    memory_region_transaction_commit();
--
--    s->regs[R_SEG_ADDR0 + cs] =3D new;
-+    aspeed_smc_flash_set_segment_region(s, cs, new);
- }
-=20
- static uint64_t aspeed_smc_flash_default_read(void *opaque, hwaddr addr,
-@@ -897,10 +907,10 @@ static void aspeed_smc_reset(DeviceState *d)
-         qemu_set_irq(s->cs_lines[i], true);
-     }
-=20
--    /* setup default segment register values for all */
-+    /* setup the default segment register values and regions for all */
-     for (i =3D 0; i < s->ctrl->max_slaves; ++i) {
--        s->regs[R_SEG_ADDR0 + i] =3D
--            s->ctrl->segment_to_reg(s, &s->ctrl->segments[i]);
-+        aspeed_smc_flash_set_segment_region(s, i,
-+                    s->ctrl->segment_to_reg(s, &s->ctrl->segments[i]));
-     }
-=20
-     /* HW strapping flash type for the AST2600 controllers  */
++static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data=
+)
++{
++    MachineClass *mc =3D MACHINE_CLASS(oc);
++    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       =3D "Aspeed AST2600 EVB (Cortex A7)";
++    amc->soc_name  =3D "ast2600-a0";
++    amc->hw_strap1 =3D TACOMA_BMC_HW_STRAP1;
++    amc->hw_strap2 =3D TACOMA_BMC_HW_STRAP2;
++    amc->fmc_model =3D "mx66l1g45g";
++    amc->spi_model =3D "mx66l1g45g";
++    amc->num_cs    =3D 2;
++    amc->i2c_init  =3D tacoma_bmc_i2c_init;
++    mc->default_ram_size =3D 1 * GiB;
++};
++
+ static const TypeInfo aspeed_machine_types[] =3D {
+     {
+         .name          =3D MACHINE_TYPE_NAME("palmetto-bmc"),
+@@ -510,6 +558,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
+         .name          =3D MACHINE_TYPE_NAME("ast2600-evb"),
+         .parent        =3D TYPE_ASPEED_MACHINE,
+         .class_init    =3D aspeed_machine_ast2600_evb_class_init,
++    }, {
++        .name          =3D MACHINE_TYPE_NAME("tacoma-bmc"),
++        .parent        =3D TYPE_ASPEED_MACHINE,
++        .class_init    =3D aspeed_machine_tacoma_class_init,
+     }, {
+         .name          =3D TYPE_ASPEED_MACHINE,
+         .parent        =3D TYPE_MACHINE,
 --=20
 2.21.0
 

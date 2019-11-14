@@ -1,192 +1,182 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp4668085wrr;
-        Wed, 13 Nov 2019 14:13:28 -0800 (PST)
-X-Received: by 2002:a65:4305:: with SMTP id j5mr6088008pgq.297.1573683208454;
-        Wed, 13 Nov 2019 14:13:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573683208; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5008094wrr;
+        Wed, 13 Nov 2019 21:12:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzlmaUgAs7NFlVK2o+iA+Xu7DAEDMNXCGJ/zrCRlyv3DAc9jvtAUH6/QN2sU77UDK9b49bL
+X-Received: by 2002:a05:620a:149a:: with SMTP id w26mr5846861qkj.361.1573708331848;
+        Wed, 13 Nov 2019 21:12:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573708331; cv=none;
         d=google.com; s=arc-20160816;
-        b=yIn0EesVpnuxefVR2tXps1H02nWsg+yYZZ4Vep6f9ewIZGpe0FqenZVlCowvaGj1yG
-         dYc4wm+Xf1ADU/Ipf6ii8oANVi5r3qHDZ4JYy57W8CnG3ffGhbNW40Cs6PC/GKY/lNoP
-         vv0EfyDB+ntMokq9vHPQVFNubnYOMX5FmaJLglMNdKc9eKGZcbDGoEO02j3wINrarPmf
-         7RiXyd5jTD+WTHIDfo5QuKFaJXf+gB5vuLHyXSgaiDPsVL9F7AhdEvWCy+RAY100J/vt
-         TkrnPN4sPmNQ6m43AijdBIJBlTxjvx2Nzrx8tCLIcRHGSK4xqHlc3sVo+Xg/svmTGLo+
-         t9Mw==
+        b=YmcI8INdPpUlCW7eZswPxtq4QhD7yaPAkj/rIhPqFuLuPbiWxj2ifUtmBR5jJuGWAP
+         HdQwCi8+47e9kpbrTcQ0YuyOoA/3GNwrijzP8Oy1HUxQfuPN72tbcY8DE0DI5Sd4yJ34
+         xgn4t62SDVtJ2/RIg5E4yT534znkgICRqmrFOoSOeDpOv+ovQXiVzzRqimeEihFJApv2
+         kXhWYw+d4StEhTwCZODFfeGvU/mKcpd82RiOqrF9XhjnAjVzocjcPv95EvOge45XKq8e
+         NoNM87reSmw3ugxdBHI0TuyivYHgCTd41bqD5mG/CHiy6CsNm+FAuKYmprma9xRI2EJ1
+         x+Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=nAP5XJXdKxaozCcpOcXkIdrUjuBLz94yxW3NObWQlgM=;
-        b=edLVbxpaDHJSV4RkuhBVNzzK3rTZ0vRTo/n0QPXnHvdDtTEXTJBxIzph9itX2APK0Y
-         BVsbhyOcFNPOEDt9fdwQtD7HRi5kISfS7lHWS+/48Hi35qRD244Wez1mBCj+FPTgKw4K
-         KWOAbDN6Aax+40PSoeZwLgONNBO5tAD258+IpDnbzYM/YMkJE5ks7wL5yxZ275omKDxu
-         FC+fKG/N6B1gysKHzV5hQS9j0BITxzITQG1+TCxPI4yL1Bg19CroZzJS16EojWTXwhgE
-         KyPSOONB+zR+z8RsingfgyHyecOdZuVFEjYWIiT9EV4iomh22fGLNcoX4TrG0srfYnaH
-         DDGw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=qurGMs96yYd/u+W79GcEmwcPbKTUkpo4qilX3j6mjFY=;
+        b=U9ok7/4WLW/mcLLNAOjkSeePSvqVhKw/arcXGHl+wjTLCIidxJK6ojP0n76ijvhw2U
+         jbOdIkupk218ErJET3LeTBE37L5QxLsKymxPFfsaJfXjA3KNfw4btqbI3GYxmh+oK+dT
+         Xk6L2wskXRXSZn9lkJRcTeYJFibfHr9mkDjcnMdgJQJKE0+UL4he3n0Uj8U8SEeuRqew
+         FZyVOAWsab0xplWb34YQo/lEpeBiFjWVD5O6GPnT9FytUxz0uMKVyidgX2hkWEfmlMGN
+         T+eyfDXjgOlX/6iXazTzA4u7QpbIvLliZ1CXXgIxRjklFLa2MaxrVq/znGZOhTt5tbNA
+         qn4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KSJ9+PCG;
-       spf=pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=joel.stan@gmail.com
-Return-Path: <joel.stan@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b5sor4216851plk.58.2019.11.13.14.13.28
-        (Google Transport Security);
-        Wed, 13 Nov 2019 14:13:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=pass header.i=@vayavyalabs.com header.s=vayavyalabs header.b=MDgpTeyD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 186si2663574qkd.13.2019.11.13.21.12.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 13 Nov 2019 21:12:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KSJ9+PCG;
-       spf=pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=joel.stan@gmail.com
+       dkim=pass header.i=@vayavyalabs.com header.s=vayavyalabs header.b=MDgpTeyD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53480 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iV7QR-0003aG-AS
+	for alex.bennee@linaro.org; Thu, 14 Nov 2019 00:12:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48760)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <pratikp@vayavyalabs.com>) id 1iV7Q7-0003aA-GS
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 00:11:52 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <pratikp@vayavyalabs.com>) id 1iV7Q6-0004JW-6l
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 00:11:51 -0500
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d]:39587)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <pratikp@vayavyalabs.com>)
+ id 1iV7Q6-0004HU-0G
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 00:11:50 -0500
+Received: by mail-ot1-x32d.google.com with SMTP id w24so3317184otk.6
+ for <qemu-arm@nongnu.org>; Wed, 13 Nov 2019 21:11:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=nAP5XJXdKxaozCcpOcXkIdrUjuBLz94yxW3NObWQlgM=;
-        b=KSJ9+PCGE7qR0mmVCze0s+sM2HIzUzZ2VQXrgmI8YGkl/K4jObRNkEgMXQtLXIA+Em
-         KlMRApyxFOkwr4yu5kGYDWmpyo0dbdy8+CHRemXlSryWMjZ09U5u5gAHEIitcquv1MIN
-         JuwRPSJ9nHFy5ex1eyftCtooJJlrHd1sj2bNlkJqWSxnQrwLeMynca1jiClM6zFOVID2
-         +xCwxza1ArFXBpnKM2FHL3OnyNjDI7k5PldE2ncsRgiy2RVNFHYoSufKannhIRQLVvyQ
-         PK/TVgdK1Acg0veLH0X5KmMgJlpW947o7cSXJTbNun8vKfLxdYhj8mLlLOqYI9sezHFa
-         u+Mw==
+ d=vayavyalabs.com; s=vayavyalabs;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=qurGMs96yYd/u+W79GcEmwcPbKTUkpo4qilX3j6mjFY=;
+ b=MDgpTeyDMlrm4sAPlj8ng1u8ol3+dXYFnETWjCeRLg62LyMBhkm2UbCHqzwpeR0Jnz
+ ayu2+RmkybX3gQxG/LkB0AYVcAgKyoNIwP8q5cc8qy1EH1Q8HuMfOvXSemOTeTQRPaid
+ UoIDOc7jA/B0K93eKW9FGjFelj8P0OSHiAR4A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=nAP5XJXdKxaozCcpOcXkIdrUjuBLz94yxW3NObWQlgM=;
-        b=fbiv611H3PIW8C4PIwBJyVN5hg1OTl7JQyCU7ULKNPUMiv4FMylwjOeEjgsBQkknxR
-         hrg4eJpH7vD1c2p7KA+zsMAv0Wv6N9v1/yhj8IY1ADV5tIF6JOChgeymNf48yB6hl87e
-         v7eqmn0XnPs7cnu/9JoE6M+ugTysv17s0/UFkMMN87H7Jry5V/uRR9atE4CqJRdD4Cor
-         RXGaGu/lars7aKLGOxx/Ob9KQdiIVZr1++AKhKJ0XJ6quK4cHJ24oD7cWw941EfQqpE9
-         uC4vxmB6VzQmTUdMjjBzTf37wkwnnrgD9zAzjBwFTNGp68/KKiJOLF4CqqIP/IEfuXhE
-         jE9Q==
-X-Gm-Message-State: APjAAAVnVUt0nmhw81bHSCqJA3T2kHhYpV4rrFHxOQOwzf9Yymw8m6jv
-	8uGYwgxclng5u2pqrw+eo4CVr9tBp2E=
-X-Google-Smtp-Source: APXvYqzo/DKt23zo8dF8lERxUeqD/tcuTpx2OEFK+kMK+mysqvj4EWbNODKUa6HiksH032g2CRAqpw==
-X-Received: by 2002:a17:902:6f01:: with SMTP id w1mr6355065plk.35.1573683207515;
-        Wed, 13 Nov 2019 14:13:27 -0800 (PST)
-Return-Path: <joel.stan@gmail.com>
-Received: from voyager.lan ([45.124.203.14])
-        by smtp.gmail.com with ESMTPSA id w69sm5252005pfc.164.2019.11.13.14.13.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Nov 2019 14:13:27 -0800 (PST)
-Sender: "joel.stan@gmail.com" <joel.stan@gmail.com>
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v3 4/4] watchdog/aspeed: Fix AST2600 frequency behaviour
-Date: Thu, 14 Nov 2019 08:43:01 +1030
-Message-Id: <20191113221301.8768-5-joel@jms.id.au>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <20191113221301.8768-1-joel@jms.id.au>
-References: <20191113221301.8768-1-joel@jms.id.au>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=qurGMs96yYd/u+W79GcEmwcPbKTUkpo4qilX3j6mjFY=;
+ b=nx+h1rzIQEUljiRVoVxS4iiek1tKy7KUm1GBaS4MEufNcu36YCLTNbIaUzBvkUyS1w
+ cj/qywouW/REMlGfcKYUI9+8qvYP32nld3xAkYcpD7Rhr5qk0TxvIscZQnyKGN8rrK+u
+ WDAs/MI+nWnXtkZttGonTzd+s2S3k7spocjpmV/FHq26l4WN7yzImc+1JyX9DYjzCNhi
+ H5a48bFvIY0Q8acOt146fYj1jEygDsykTCOhWGvVPub+C/Ee5uWKJ+lwFLB30LgGEFe8
+ 8dLUp0RcelquyLAbl2R/JCdUO1QyqMAc/Lp2Qxy6Fn9wt96KB1S1UBdbCIxWJXsoAAT4
+ wtxA==
+X-Gm-Message-State: APjAAAVLnOgBlq+Y99P6HYpLirBd74rHk/GHFkovSpqVFpguHz5VWt7E
+ j8/Dp+o0uqmrVFQCCkLXvrudwHqc344E+zyqxcK+v0Gp
+X-Received: by 2002:a9d:7284:: with SMTP id t4mr6556722otj.259.1573708307943; 
+ Wed, 13 Nov 2019 21:11:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: w6X0hz/pz/tT
+From: Pratik Parvati <pratikp@vayavyalabs.com>
+Date: Thu, 14 Nov 2019 10:41:36 +0530
+Message-ID: <CA+aXn+EtxWUVBBqhtjuY9hyKjtLFiSF=fZ8nSiqZq7+KCJDgfQ@mail.gmail.com>
+Subject: Qemu support for mcimx6ul-evk machine
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000ace5ee059747842f"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::32d
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QiiUBQdaWCe3
 
-The AST2600 control register sneakily changed the meaning of bit 4
-without anyone noticing. It no longer controls the 1MHz vs APB clock
-select, and instead always runs at 1MHz.
+--000000000000ace5ee059747842f
+Content-Type: text/plain; charset="UTF-8"
 
-The AST2500 was always 1MHz too, but it retained bit 4, making it read
-only. We can model both using the same fixed 1MHz calculation.
+Hi Support team,
 
-Fixes: 6b2b2a703cad ("hw: wdt_aspeed: Add AST2600 support")
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
-v2: Fix Fixes line in commit message
----
- hw/watchdog/wdt_aspeed.c         | 21 +++++++++++++++++----
- include/hw/watchdog/wdt_aspeed.h |  1 +
- 2 files changed, 18 insertions(+), 4 deletions(-)
+Lately, I am trying to get Linux up on qemu-arm *mcimx6ul-evk* machine
+using buildroot. I have generated all the images required for my target
+machine. Following are the steps I followed for building images on
+buildroot (*version: buildroot-2016.11.1*).
 
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index d283d07d6546..122aa8daaadf 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -93,11 +93,11 @@ static uint64_t aspeed_wdt_read(void *opaque, hwaddr offset, unsigned size)
- 
- }
- 
--static void aspeed_wdt_reload(AspeedWDTState *s, bool pclk)
-+static void aspeed_wdt_reload(AspeedWDTState *s)
- {
-     uint64_t reload;
- 
--    if (pclk) {
-+    if (!(s->regs[WDT_CTRL] & WDT_CTRL_1MHZ_CLK)) {
-         reload = muldiv64(s->regs[WDT_RELOAD_VALUE], NANOSECONDS_PER_SECOND,
-                           s->pclk_freq);
-     } else {
-@@ -109,6 +109,16 @@ static void aspeed_wdt_reload(AspeedWDTState *s, bool pclk)
-     }
- }
- 
-+static void aspeed_wdt_reload_1mhz(AspeedWDTState *s)
-+{
-+    uint64_t reload = s->regs[WDT_RELOAD_VALUE] * 1000ULL;
-+
-+    if (aspeed_wdt_is_enabled(s)) {
-+        timer_mod(s->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + reload);
-+    }
-+}
-+
-+
- static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
-                              unsigned size)
- {
-@@ -130,13 +140,13 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
-     case WDT_RESTART:
-         if ((data & 0xFFFF) == WDT_RESTART_MAGIC) {
-             s->regs[WDT_STATUS] = s->regs[WDT_RELOAD_VALUE];
--            aspeed_wdt_reload(s, !(s->regs[WDT_CTRL] & WDT_CTRL_1MHZ_CLK));
-+            awc->wdt_reload(s);
-         }
-         break;
-     case WDT_CTRL:
-         if (enable && !aspeed_wdt_is_enabled(s)) {
-             s->regs[WDT_CTRL] = data;
--            aspeed_wdt_reload(s, !(data & WDT_CTRL_1MHZ_CLK));
-+            awc->wdt_reload(s);
-         } else if (!enable && aspeed_wdt_is_enabled(s)) {
-             s->regs[WDT_CTRL] = data;
-             timer_del(s->timer);
-@@ -283,6 +293,7 @@ static void aspeed_2400_wdt_class_init(ObjectClass *klass, void *data)
-     awc->offset = 0x20;
-     awc->ext_pulse_width_mask = 0xff;
-     awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
-+    awc->wdt_reload = aspeed_wdt_reload;
- }
- 
- static const TypeInfo aspeed_2400_wdt_info = {
-@@ -317,6 +328,7 @@ static void aspeed_2500_wdt_class_init(ObjectClass *klass, void *data)
-     awc->ext_pulse_width_mask = 0xfffff;
-     awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
-     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
-+    awc->wdt_reload = aspeed_wdt_reload_1mhz;
- }
- 
- static const TypeInfo aspeed_2500_wdt_info = {
-@@ -336,6 +348,7 @@ static void aspeed_2600_wdt_class_init(ObjectClass *klass, void *data)
-     awc->ext_pulse_width_mask = 0xfffff; /* TODO */
-     awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
-     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
-+    awc->wdt_reload = aspeed_wdt_reload_1mhz;
- }
- 
- static const TypeInfo aspeed_2600_wdt_info = {
-diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
-index dfedd7662dd1..819c22993a6e 100644
---- a/include/hw/watchdog/wdt_aspeed.h
-+++ b/include/hw/watchdog/wdt_aspeed.h
-@@ -47,6 +47,7 @@ typedef struct AspeedWDTClass {
-     uint32_t ext_pulse_width_mask;
-     uint32_t reset_ctrl_reg;
-     void (*reset_pulse)(AspeedWDTState *s, uint32_t property);
-+    void (*wdt_reload)(AspeedWDTState *s);
- }  AspeedWDTClass;
- 
- #endif /* WDT_ASPEED_H */
--- 
-2.24.0
+$ make freescale_imx6ulevk_defconfig
+$ make nconfig
+
+I have selected the packages required for my qemu build and then built the
+images using command
+
+$ make
+
+in "*output/images"* I see the following images generated,
+*boot.vfat,  imx6ul-14x14-evk.dtb,  rootfs.ext2,  rootfs.ext4,
+rootfs.tar,  sdcard.img,  u-boot.bin,  u-boot.imx,  zImage*.
+
+I am referring this <https://dzone.com/articles/an-arm-image-with-buildroot>
+article to replicate the same for mcimx6ul-evk. I ran the below command to
+boot Linux on my target machine
+
+$ qemu-system-arm -M mcimx6ul-evk -m 512M -kernel output/images/zImage
+-monitor stdio -drive file=output/images/rootfs.ext2,format=raw
+
+I don't see Linux booting on the serial0 console without any logs. can
+someone please help me how to resolve this? Or am I missing something here?
+
+Note: The qemu(*version: qemu-4.1.0*) is built for arm target using below
+commands.
+
+$ ./configure --target-list=arm-softmmu --enable-sdl
+$ make
+$ sudo make install
+
+Thanks & Regards,
+Pratik
+
+--000000000000ace5ee059747842f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Support team,<div><br></div><div>Lately, I am trying to=
+ get Linux up on qemu-arm=C2=A0<b>mcimx6ul-evk</b> machine using buildroot.=
+ I have generated all the images required for my target machine. Following =
+are the steps I followed for building images on buildroot (<i>version: buil=
+droot-2016.11.1</i>).=C2=A0</div><div><br></div><div><font face=3D"monospac=
+e">$ make=C2=A0freescale_imx6ulevk_defconfig</font></div><div><font face=3D=
+"monospace">$ make nconfig</font></div><div><font face=3D"monospace"><br></=
+font></div><div><font face=3D"arial, sans-serif">I have selected the packag=
+es required for my qemu build and then built the images using command</font=
+></div><div><font face=3D"arial, sans-serif"><br></font></div><div><font fa=
+ce=3D"monospace">$ make</font></div><div><br></div><div>in &quot;<i>output/=
+images&quot;</i> I see the following images generated,</div><div><b>boot.vf=
+at,=C2=A0 imx6ul-14x14-evk.dtb,=C2=A0 rootfs.ext2,=C2=A0 rootfs.ext4,=C2=A0=
+ rootfs.tar,=C2=A0 sdcard.img,=C2=A0 u-boot.bin,=C2=A0 u-boot.imx,=C2=A0 zI=
+mage</b>.<br></div><div><br></div><div>I am referring <a href=3D"https://dz=
+one.com/articles/an-arm-image-with-buildroot" target=3D"_blank">this</a> ar=
+ticle to replicate the same for=C2=A0mcimx6ul-evk. I ran the below command =
+to boot Linux on my target machine</div><div><br></div><div><font face=3D"m=
+onospace">$=C2=A0qemu-system-arm -M mcimx6ul-evk -m 512M -kernel output/ima=
+ges/zImage -monitor stdio -drive file=3Doutput/images/rootfs.ext2,format=3D=
+raw</font></div><div><font face=3D"monospace"><br></font></div><div><font f=
+ace=3D"arial, sans-serif">I don&#39;t see Linux booting on the serial0 cons=
+ole without any logs. can someone please help me how to resolve=C2=A0this? =
+Or am I missing something=C2=A0here?</font></div><div><font face=3D"arial, =
+sans-serif"><br></font></div><div><font face=3D"arial, sans-serif">Note: Th=
+e qemu(<i>version: qemu-4.1.0</i>) is built=C2=A0for arm target using below=
+ commands.</font></div><div><font face=3D"arial, sans-serif"><br></font></d=
+iv><div><font face=3D"monospace">$ ./configure --target-list=3Darm-softmmu =
+--enable-sdl</font></div><div><font face=3D"monospace">$ make</font></div><=
+div><font face=3D"monospace">$ sudo make install</font></div><div><br></div=
+><div><div><div dir=3D"ltr" data-smartmail=3D"gmail_signature"><div dir=3D"=
+ltr">Thanks &amp; Regards,<div>Pratik</div></div></div></div></div></div>
+
+--000000000000ace5ee059747842f--

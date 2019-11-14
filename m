@@ -1,79 +1,79 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5244180wrr;
-        Thu, 14 Nov 2019 01:49:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwJSInJL0EDYIxBtOG/OA0LP4nRDmMc+4s8foS3aa79BaNQh5QPGocHlIQzEsg0SKUu52ZR
-X-Received: by 2002:a17:906:3606:: with SMTP id q6mr7192637ejb.307.1573724975851;
-        Thu, 14 Nov 2019 01:49:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573724975; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5244390wrr;
+        Thu, 14 Nov 2019 01:49:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxMYwznIe65oOIJIAboOZJeCYv4LA+C21qJSUPesJoazEDj+BDRNfHJykCNRrFQfPOoEpy1
+X-Received: by 2002:a17:906:c797:: with SMTP id cw23mr7417634ejb.19.1573724989671;
+        Thu, 14 Nov 2019 01:49:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573724989; cv=none;
         d=google.com; s=arc-20160816;
-        b=c9Ii4Ol2Cg/vBTfinDKx6TKJRWAYmxX2GBCMUyuugn7k8XtoSx7B4IR37qj43mWh97
-         A11n938C1IsqenW8Juz4/m1fIbagfdzV+a+e+38VNU+Gl8PZEhuq6L2XCNEaV1uc+Fwc
-         Xb2u2gBNpe718kCQfGQr6UW1fAXF5V/vhkR5CSLrKtUTwsD6u4qDMMpmzXbslf/b+BSA
-         g92el3yparvtaIKDAohYrbDhezVPMBiuCyWT90GbVYdNyhEVWw9svOUszxRDk3lh7FWl
-         1TShZDjI3KQF3xHKqK8/BZjHSYtUI8HozfWbPaasOU7a3u21VXPapccudxeaC3kuf9gN
-         kqGw==
+        b=vIDpSzAF9D/11p+GSHBkmm2vViHDIMPgSQAtclblQhJsvQ69V8MBzr9TLkIpgLs4p3
+         hzy112UA9+R5rsqdgyfkU9gseeufBmT7USmaaBlLGvrNnukEispEHjU/XcGNNrW5cNh3
+         7ePThEuqIDk2UEz1HFmfWPIJtJjdcObHhqwJorGc8xtwYA24eSvDB2DB64ge5Pg1AElb
+         yPxeg2i22J/9kTeHW2JON+7yiU/nt4/FJJTA+KkvmgR3c8uhL/geyF4NjDPHp7luIqSu
+         IU07nbNTwIyZUh/Bp3K5Qlau4JCKx7AhyLFlISZwldoJBiClKxJ0I5kPpoI67CDmpTpt
+         Vr/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=+ty8wry/giU28BptEXJKa0kxQTaGNSuJLoYqArs1qbo=;
-        b=zbH4L2SGPuM7fPG92FD0QoRWF0234JwL/93R+gJhmY2vxIe1vyN1atZZJlXgDHd/bv
-         5UaHoc04cBo0m2Lv96goXxYxns/my2Mi9j6VpYMsvQJx3ItV9cotZsLL/dlOmpTe9WNA
-         M29nSOEDzKWtF0aid99zlOUhWEYihGzZZN5PKx+IVD2U3xTsIxg3lxfWeRtHU6suLxHq
-         bLdZqhPPLmuttFJIKXcrGwYMAaeJ8ZPMyLCONLSumM3iqeNOOJ84qoZZ/+/06pbsiolf
-         Ug1KFgrnS+hHXvlarVG5h1K7xWoUMSBKi/cpaXiD+GSxzFOBL+4IaiUY/iTMrYSoQftf
-         kcgQ==
+        bh=9FUVJSjvatEiT/eS50h/OxSefLk8gFOimniR6V4KFkk=;
+        b=i2FXvPsOlv1cAC8vwbt6rsiqAuS2tX6Dw4lE/hENgQDoy0VfLAQd7zsBX2MCbrc4zT
+         YPnWSvQR/iJxGTgjzJuxsXOPAd8uZRNL/h+irsmwkv3xpamGxQatZ9hPzcrejd3pyeZM
+         FPkmS3c7NIL7+F6DbLfh8ITpoNt7IsRKfD04cIbQAmZGAkg0xxJDKqSBxzYt2jjvsUyf
+         Agjja3pjh4krS0PYRbkat1SCZ6zEk2VsYakHJ2hza2GOzLQhTp1H1J7cj4km/4I7LjX8
+         qbEEX3wtR2RPQ1kS8y5AI48Pl/oOD1659ihMWz/2kNCvwyF/7KMawJIfsF5kaw5W7DeE
+         DNKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id rl7si3011701ejb.340.2019.11.14.01.49.35
+        by mx.google.com with ESMTPS id o15si3047115ejh.124.2019.11.14.01.49.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Nov 2019 01:49:35 -0800 (PST)
+        Thu, 14 Nov 2019 01:49:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54910 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54912 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iVBks-0001cR-9J
-	for alex.bennee@linaro.org; Thu, 14 Nov 2019 04:49:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37266)
+	id 1iVBl6-0001yY-9L
+	for alex.bennee@linaro.org; Thu, 14 Nov 2019 04:49:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37268)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iVBhg-0007ie-EU
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:22 -0500
+ (envelope-from <clg@kaod.org>) id 1iVBhg-0007if-FC
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iVBhe-0004Oj-AF
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:15 -0500
-Received: from 6.mo178.mail-out.ovh.net ([46.105.53.132]:50092)
+ (envelope-from <clg@kaod.org>) id 1iVBhe-0004Oq-NA
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:16 -0500
+Received: from 10.mo4.mail-out.ovh.net ([188.165.33.109]:57736)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iVBhe-0004O7-4s
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iVBhe-0004Iv-HA
  for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:14 -0500
-Received: from player737.ha.ovh.net (unknown [10.108.57.141])
- by mo178.mail-out.ovh.net (Postfix) with ESMTP id 5F8F481A78
- for <qemu-arm@nongnu.org>; Thu, 14 Nov 2019 10:46:12 +0100 (CET)
+Received: from player737.ha.ovh.net (unknown [10.108.42.82])
+ by mo4.mail-out.ovh.net (Postfix) with ESMTP id 99652212A40
+ for <qemu-arm@nongnu.org>; Thu, 14 Nov 2019 10:46:05 +0100 (CET)
 Received: from kaod.org (lfbn-1-2229-223.w90-76.abo.wanadoo.fr [90.76.50.223])
  (Authenticated sender: clg@kaod.org)
- by player737.ha.ovh.net (Postfix) with ESMTPSA id 680DF2A7842D;
- Thu, 14 Nov 2019 09:46:05 +0000 (UTC)
+ by player737.ha.ovh.net (Postfix) with ESMTPSA id 75B0F2A7832C;
+ Thu, 14 Nov 2019 09:45:58 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 2/5] aspeed/smc: Do not map disabled segment on the AST2600
-Date: Thu, 14 Nov 2019 10:45:41 +0100
-Message-Id: <20191114094544.30114-3-clg@kaod.org>
+Subject: [PATCH 1/5] aspeed/smc: Restore default AHB window mapping at reset
+Date: Thu, 14 Nov 2019 10:45:40 +0100
+Message-Id: <20191114094544.30114-2-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191114094544.30114-1-clg@kaod.org>
 References: <20191114094544.30114-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 2478105698616970001
+X-Ovh-Tracer-Id: 2476135371268131601
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudeffedgtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejfeejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedu
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudeffedgtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejfeejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 46.105.53.132
+X-Received-From: 188.165.33.109
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,69 +90,84 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QzOVzuiNTbaI
+X-TUID: kKBrOwncbc5e
 
-The segments can be disabled on the AST2600 (zero register value).
-CS0 is open by default but not the other CS. This is closing the
-access to the flash device in user mode and forbids scanning.
+The current model only restores the Segment Register values but leaves
+the previous CS mapping behind. Introduce a helper setting the
+register value and mapping the region at the requested address. Use
+this helper when a Segment register is set and at reset.
 
-In the model, check the segment size and disable the associated region
-when the value is zero.
-
-Fixes: bcaa8ddd081c ("aspeed/smc: Add AST2600 support")
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+ hw/ssi/aspeed_smc.c | 32 +++++++++++++++++++++-----------
+ 1 file changed, 21 insertions(+), 11 deletions(-)
 
 diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 955ec21852ac..86cadbe4cc00 100644
+index f0c7bbbad302..955ec21852ac 100644
 --- a/hw/ssi/aspeed_smc.c
 +++ b/hw/ssi/aspeed_smc.c
-@@ -444,8 +444,13 @@ static void aspeed_2600_smc_reg_to_segment(const Asp=
-eedSMCState *s,
-     uint32_t start_offset =3D (reg << 16) & AST2600_SEG_ADDR_MASK;
-     uint32_t end_offset =3D reg & AST2600_SEG_ADDR_MASK;
-=20
--    seg->addr =3D s->ctrl->flash_window_base + start_offset;
--    seg->size =3D end_offset + MiB - start_offset;
-+    if (reg) {
-+        seg->addr =3D s->ctrl->flash_window_base + start_offset;
-+        seg->size =3D end_offset + MiB - start_offset;
-+    } else {
-+        seg->addr =3D s->ctrl->flash_window_base;
-+        seg->size =3D 0;
-+    }
+@@ -475,10 +475,26 @@ static bool aspeed_smc_flash_overlap(const AspeedSM=
+CState *s,
+     return false;
  }
 =20
- static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
-@@ -486,7 +491,7 @@ static void aspeed_smc_flash_set_segment_region(Aspee=
-dSMCState *s, int cs,
-     memory_region_transaction_begin();
-     memory_region_set_size(&fl->mmio, seg.size);
-     memory_region_set_address(&fl->mmio, seg.addr - s->ctrl->flash_windo=
++static void aspeed_smc_flash_set_segment_region(AspeedSMCState *s, int c=
+s,
++                                                uint64_t regval)
++{
++    AspeedSMCFlash *fl =3D &s->flashes[cs];
++    AspeedSegments seg;
++
++    s->ctrl->reg_to_segment(s, regval, &seg);
++
++    memory_region_transaction_begin();
++    memory_region_set_size(&fl->mmio, seg.size);
++    memory_region_set_address(&fl->mmio, seg.addr - s->ctrl->flash_windo=
+w_base);
++    memory_region_set_enabled(&fl->mmio, true);
++    memory_region_transaction_commit();
++
++    s->regs[R_SEG_ADDR0 + cs] =3D regval;
++}
++
+ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
+                                          uint64_t new)
+ {
+-    AspeedSMCFlash *fl =3D &s->flashes[cs];
+     AspeedSegments seg;
+=20
+     s->ctrl->reg_to_segment(s, new, &seg);
+@@ -529,13 +545,7 @@ static void aspeed_smc_flash_set_segment(AspeedSMCSt=
+ate *s, int cs,
+     aspeed_smc_flash_overlap(s, &seg, cs);
+=20
+     /* All should be fine now to move the region */
+-    memory_region_transaction_begin();
+-    memory_region_set_size(&fl->mmio, seg.size);
+-    memory_region_set_address(&fl->mmio, seg.addr - s->ctrl->flash_windo=
 w_base);
 -    memory_region_set_enabled(&fl->mmio, true);
-+    memory_region_set_enabled(&fl->mmio, !!seg.size);
-     memory_region_transaction_commit();
+-    memory_region_transaction_commit();
+-
+-    s->regs[R_SEG_ADDR0 + cs] =3D new;
++    aspeed_smc_flash_set_segment_region(s, cs, new);
+ }
 =20
-     s->regs[R_SEG_ADDR0 + cs] =3D regval;
-@@ -526,8 +531,9 @@ static void aspeed_smc_flash_set_segment(AspeedSMCSta=
-te *s, int cs,
+ static uint64_t aspeed_smc_flash_default_read(void *opaque, hwaddr addr,
+@@ -897,10 +907,10 @@ static void aspeed_smc_reset(DeviceState *d)
+         qemu_set_irq(s->cs_lines[i], true);
      }
 =20
-     /* Keep the segment in the overall flash window */
--    if (seg.addr + seg.size <=3D s->ctrl->flash_window_base ||
--        seg.addr > s->ctrl->flash_window_base + s->ctrl->flash_window_si=
-ze) {
-+    if (seg.size &&
-+        (seg.addr + seg.size <=3D s->ctrl->flash_window_base ||
-+         seg.addr > s->ctrl->flash_window_base + s->ctrl->flash_window_s=
-ize)) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment for CS%d is inva=
-lid : "
-                       "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
-                       s->ctrl->name, cs, seg.addr, seg.addr + seg.size);
+-    /* setup default segment register values for all */
++    /* setup the default segment register values and regions for all */
+     for (i =3D 0; i < s->ctrl->max_slaves; ++i) {
+-        s->regs[R_SEG_ADDR0 + i] =3D
+-            s->ctrl->segment_to_reg(s, &s->ctrl->segments[i]);
++        aspeed_smc_flash_set_segment_region(s, i,
++                    s->ctrl->segment_to_reg(s, &s->ctrl->segments[i]));
+     }
+=20
+     /* HW strapping flash type for the AST2600 controllers  */
 --=20
 2.21.0
 

@@ -1,90 +1,97 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5008094wrr;
-        Wed, 13 Nov 2019 21:12:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzlmaUgAs7NFlVK2o+iA+Xu7DAEDMNXCGJ/zrCRlyv3DAc9jvtAUH6/QN2sU77UDK9b49bL
-X-Received: by 2002:a05:620a:149a:: with SMTP id w26mr5846861qkj.361.1573708331848;
-        Wed, 13 Nov 2019 21:12:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573708331; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5273920wrr;
+        Thu, 14 Nov 2019 02:19:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyArBwNhI3flp9Ltssxo0Ssr6ifkpvu8Gafj0Z3Yp1kRVFp6e/xIZHF6ln8VY8qbgTOqGB1
+X-Received: by 2002:a37:a78e:: with SMTP id q136mr6895089qke.353.1573726780189;
+        Thu, 14 Nov 2019 02:19:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573726780; cv=none;
         d=google.com; s=arc-20160816;
-        b=YmcI8INdPpUlCW7eZswPxtq4QhD7yaPAkj/rIhPqFuLuPbiWxj2ifUtmBR5jJuGWAP
-         HdQwCi8+47e9kpbrTcQ0YuyOoA/3GNwrijzP8Oy1HUxQfuPN72tbcY8DE0DI5Sd4yJ34
-         xgn4t62SDVtJ2/RIg5E4yT534znkgICRqmrFOoSOeDpOv+ovQXiVzzRqimeEihFJApv2
-         kXhWYw+d4StEhTwCZODFfeGvU/mKcpd82RiOqrF9XhjnAjVzocjcPv95EvOge45XKq8e
-         NoNM87reSmw3ugxdBHI0TuyivYHgCTd41bqD5mG/CHiy6CsNm+FAuKYmprma9xRI2EJ1
-         x+Qw==
+        b=Y7M8hoOtjhVleA/UtDgmYP0zdBAP5ve7ECkGJO5vcL0io46R0Vds62HDA9ljXecaQk
+         S2Gg2LLmHseeI4RPFBTW8dSe9X6P967PvnseiX10qi26+HoUTeM74szB5s10Wv0lallw
+         DNwuARuHwkD9tXOVZZF3QC5S2d2VVjXUY3QVy3E7lgqjfV+qgdLirPAlmDIo5VsGJONN
+         A3bM2eDxMpWkKePT6a7UWHfcWlQrE9Rhd7JN63hQbLSCbrq4+Mw3SlKoqep0uyg4KsJv
+         R0R1hR72QwiBEm7uUadSeKpBgTIExGGoTfP0PWtDkt01/Zwbd3g+YuJOcbFuEA0EzMzl
+         Ay7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=qurGMs96yYd/u+W79GcEmwcPbKTUkpo4qilX3j6mjFY=;
-        b=U9ok7/4WLW/mcLLNAOjkSeePSvqVhKw/arcXGHl+wjTLCIidxJK6ojP0n76ijvhw2U
-         jbOdIkupk218ErJET3LeTBE37L5QxLsKymxPFfsaJfXjA3KNfw4btqbI3GYxmh+oK+dT
-         Xk6L2wskXRXSZn9lkJRcTeYJFibfHr9mkDjcnMdgJQJKE0+UL4he3n0Uj8U8SEeuRqew
-         FZyVOAWsab0xplWb34YQo/lEpeBiFjWVD5O6GPnT9FytUxz0uMKVyidgX2hkWEfmlMGN
-         T+eyfDXjgOlX/6iXazTzA4u7QpbIvLliZ1CXXgIxRjklFLa2MaxrVq/znGZOhTt5tbNA
-         qn4g==
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=AzQzIyzzw6I5hQd+v91m8MuDLjdIVIV63shhIURNVrQ=;
+        b=uzD1D8fIU3CTgcNdhm7eUlsn30UcSfl2pmcUSeWIZ4hjzIPeS8JZZds9uJbmUNgl9h
+         50KkeyO4CBhY+Yy3DN8rseEmDAT7n+aoPup2vbnLGgX7Y4LGKM4NHA6eTXyn9/H7F6pT
+         PAxi1+SIvU/4zvK0vYcoeuCnFERIMntN0wLxBv67sQydV2jH9+yejgP7BRLjPkaG+Ttl
+         7i+pZrWhZSn29oBXGYLiVC4DQXsi3+VjegZ9PN7eFRLwN2/tQxbVThX4EpeOKN2UpItx
+         ZCZpEyLFUWcd2A2JMYPryUj+p8hsv8kE7KcbCo81dxD7eig7Pcyr8xrc+3Gol3H8lOhL
+         LM4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@vayavyalabs.com header.s=vayavyalabs header.b=MDgpTeyD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=kltSAEQI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 186si2663574qkd.13.2019.11.13.21.12.11
+        by mx.google.com with ESMTPS id g54si2800484qtk.32.2019.11.14.02.19.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Nov 2019 21:12:11 -0800 (PST)
+        Thu, 14 Nov 2019 02:19:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@vayavyalabs.com header.s=vayavyalabs header.b=MDgpTeyD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53480 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=kltSAEQI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55476 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iV7QR-0003aG-AS
-	for alex.bennee@linaro.org; Thu, 14 Nov 2019 00:12:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48760)
+	id 1iVCDz-0001FU-MW
+	for alex.bennee@linaro.org; Thu, 14 Nov 2019 05:19:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45859)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pratikp@vayavyalabs.com>) id 1iV7Q7-0003aA-GS
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 00:11:52 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iVCDr-0001Ep-Jb
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 05:19:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pratikp@vayavyalabs.com>) id 1iV7Q6-0004JW-6l
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 00:11:51 -0500
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d]:39587)
+ (envelope-from <peter.maydell@linaro.org>) id 1iVCDq-0007wz-EU
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 05:19:31 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:32904)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <pratikp@vayavyalabs.com>)
- id 1iV7Q6-0004HU-0G
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 00:11:50 -0500
-Received: by mail-ot1-x32d.google.com with SMTP id w24so3317184otk.6
- for <qemu-arm@nongnu.org>; Wed, 13 Nov 2019 21:11:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vayavyalabs.com; s=vayavyalabs;
- h=mime-version:from:date:message-id:subject:to;
- bh=qurGMs96yYd/u+W79GcEmwcPbKTUkpo4qilX3j6mjFY=;
- b=MDgpTeyDMlrm4sAPlj8ng1u8ol3+dXYFnETWjCeRLg62LyMBhkm2UbCHqzwpeR0Jnz
- ayu2+RmkybX3gQxG/LkB0AYVcAgKyoNIwP8q5cc8qy1EH1Q8HuMfOvXSemOTeTQRPaid
- UoIDOc7jA/B0K93eKW9FGjFelj8P0OSHiAR4A=
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iVCDq-0007wQ-62
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2019 05:19:30 -0500
+Received: by mail-ot1-x342.google.com with SMTP id u13so4406202ote.0
+ for <qemu-arm@nongnu.org>; Thu, 14 Nov 2019 02:19:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AzQzIyzzw6I5hQd+v91m8MuDLjdIVIV63shhIURNVrQ=;
+ b=kltSAEQIoA/k1+TFNUjLNAqd7p/CxGO25moVg9X3ilpVS7tOpfzcXAZu97GRv9Ixsx
+ tBqEn8Osssg1smGgylX7GvH2dqlcYdS/b0pkBcYuJV/V7vLEPWlXR0IvAcmtnSiaLmAm
+ MclIqOWPoZtRv2eXjzKtyRog6CcWDHavaVwIrbfxfVwrkxrnOEk4FpV11bk6m6GIDzxg
+ 89Tq6/nq4eDHrNsBa22ZTya6s85fETPfUookO8IUHuO6p59elN50dWZ0c8CLDwekZNkv
+ Ozh2cAJ6EATnPtYqBpyCZPSBxxe6HooUMNpqtyjNJ9HcJKvnpGEGiIhnGOo5qMbyOHmO
+ 5C3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=qurGMs96yYd/u+W79GcEmwcPbKTUkpo4qilX3j6mjFY=;
- b=nx+h1rzIQEUljiRVoVxS4iiek1tKy7KUm1GBaS4MEufNcu36YCLTNbIaUzBvkUyS1w
- cj/qywouW/REMlGfcKYUI9+8qvYP32nld3xAkYcpD7Rhr5qk0TxvIscZQnyKGN8rrK+u
- WDAs/MI+nWnXtkZttGonTzd+s2S3k7spocjpmV/FHq26l4WN7yzImc+1JyX9DYjzCNhi
- H5a48bFvIY0Q8acOt146fYj1jEygDsykTCOhWGvVPub+C/Ee5uWKJ+lwFLB30LgGEFe8
- 8dLUp0RcelquyLAbl2R/JCdUO1QyqMAc/Lp2Qxy6Fn9wt96KB1S1UBdbCIxWJXsoAAT4
- wtxA==
-X-Gm-Message-State: APjAAAVLnOgBlq+Y99P6HYpLirBd74rHk/GHFkovSpqVFpguHz5VWt7E
- j8/Dp+o0uqmrVFQCCkLXvrudwHqc344E+zyqxcK+v0Gp
-X-Received: by 2002:a9d:7284:: with SMTP id t4mr6556722otj.259.1573708307943; 
- Wed, 13 Nov 2019 21:11:47 -0800 (PST)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AzQzIyzzw6I5hQd+v91m8MuDLjdIVIV63shhIURNVrQ=;
+ b=szstaSy9gqyMJUHM0Y817LxeOCjmTXqJ4bxIIN6xooUU+rBKCjZv172dy1k0K9OuOE
+ g31MkR77mE1KiqFB4YKCV/x6H59G/jbjqeITp2JCKbp1OCQo/0egGhvgljIAXLHQxYxP
+ WouExSaIl5n6sj5sIXlnbEo/k6g/IHphgIyuWgqaFiUzcTY+NGXLT0shzOdgSH/0OJKC
+ BqMRga2Q6Oe0I3rx/eDw49Bv+hmnSKW4fJBwMR0IZMJ89mBVhgWHQChfLAfrNfyzZveC
+ 7/tP1biE5/4D7f9Syb/D5APGEnjUqa1h0GdWOcqD9wDW2bZ+44t5IGRFPJlF7NhsJuhe
+ WuIg==
+X-Gm-Message-State: APjAAAXUR/L/88U+mcvKw2JwWyqXsjwYd3qzp2f1+dK/vxUpCk2jLY5R
+ HtmT8KlKOLABjGv7/+8Jf/FZwvldhV0Cy6FF6Ee70Q==
+X-Received: by 2002:a9d:12d2:: with SMTP id g76mr7224974otg.232.1573726769191; 
+ Thu, 14 Nov 2019 02:19:29 -0800 (PST)
 MIME-Version: 1.0
-From: Pratik Parvati <pratikp@vayavyalabs.com>
-Date: Thu, 14 Nov 2019 10:41:36 +0530
-Message-ID: <CA+aXn+EtxWUVBBqhtjuY9hyKjtLFiSF=fZ8nSiqZq7+KCJDgfQ@mail.gmail.com>
-Subject: Qemu support for mcimx6ul-evk machine
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000ace5ee059747842f"
+References: <CA+aXn+EtxWUVBBqhtjuY9hyKjtLFiSF=fZ8nSiqZq7+KCJDgfQ@mail.gmail.com>
+In-Reply-To: <CA+aXn+EtxWUVBBqhtjuY9hyKjtLFiSF=fZ8nSiqZq7+KCJDgfQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 14 Nov 2019 10:19:18 +0000
+Message-ID: <CAFEAcA-hSPZG5sVcnBbHRHwDgc_Qh3wjCsvZ99o6uyTZU-a68A@mail.gmail.com>
+Subject: Re: Qemu support for mcimx6ul-evk machine
+To: Pratik Parvati <pratikp@vayavyalabs.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::32d
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -96,87 +103,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QiiUBQdaWCe3
+X-TUID: JUMkLT5ALMZB
 
---000000000000ace5ee059747842f
-Content-Type: text/plain; charset="UTF-8"
+On Thu, 14 Nov 2019 at 05:12, Pratik Parvati <pratikp@vayavyalabs.com> wrote:
+>
+> Hi Support team,
 
-Hi Support team,
+There is no 'support team' -- you're just talking to other
+users and to developers on this mailing list :-)
 
-Lately, I am trying to get Linux up on qemu-arm *mcimx6ul-evk* machine
-using buildroot. I have generated all the images required for my target
-machine. Following are the steps I followed for building images on
-buildroot (*version: buildroot-2016.11.1*).
+> I am referring this article to replicate the same for mcimx6ul-evk. I ran the below command to boot Linux on my target machine
+>
+> $ qemu-system-arm -M mcimx6ul-evk -m 512M -kernel output/images/zImage -monitor stdio -drive file=output/images/rootfs.ext2,format=raw
+>
+> I don't see Linux booting on the serial0 console without any logs. can someone please help me how to resolve this? Or am I missing something here?
 
-$ make freescale_imx6ulevk_defconfig
-$ make nconfig
+You haven't provided a dtb file to QEMU, which is
+usually needed for the kernel to identify what
+hardware it is running on and to find devices
+like the serial port.
 
-I have selected the packages required for my qemu build and then built the
-images using command
+I also suspect that that -drive option is not doing
+anything useful (you haven't specified what it plugs
+into and I don't think the mcimx6ul-evk will assume
+you meant an SD card image by default), but that
+won't prevent initial boot so you can leave that
+problem for later.
 
-$ make
 
-in "*output/images"* I see the following images generated,
-*boot.vfat,  imx6ul-14x14-evk.dtb,  rootfs.ext2,  rootfs.ext4,
-rootfs.tar,  sdcard.img,  u-boot.bin,  u-boot.imx,  zImage*.
-
-I am referring this <https://dzone.com/articles/an-arm-image-with-buildroot>
-article to replicate the same for mcimx6ul-evk. I ran the below command to
-boot Linux on my target machine
-
-$ qemu-system-arm -M mcimx6ul-evk -m 512M -kernel output/images/zImage
--monitor stdio -drive file=output/images/rootfs.ext2,format=raw
-
-I don't see Linux booting on the serial0 console without any logs. can
-someone please help me how to resolve this? Or am I missing something here?
-
-Note: The qemu(*version: qemu-4.1.0*) is built for arm target using below
-commands.
-
-$ ./configure --target-list=arm-softmmu --enable-sdl
-$ make
-$ sudo make install
-
-Thanks & Regards,
-Pratik
-
---000000000000ace5ee059747842f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Support team,<div><br></div><div>Lately, I am trying to=
- get Linux up on qemu-arm=C2=A0<b>mcimx6ul-evk</b> machine using buildroot.=
- I have generated all the images required for my target machine. Following =
-are the steps I followed for building images on buildroot (<i>version: buil=
-droot-2016.11.1</i>).=C2=A0</div><div><br></div><div><font face=3D"monospac=
-e">$ make=C2=A0freescale_imx6ulevk_defconfig</font></div><div><font face=3D=
-"monospace">$ make nconfig</font></div><div><font face=3D"monospace"><br></=
-font></div><div><font face=3D"arial, sans-serif">I have selected the packag=
-es required for my qemu build and then built the images using command</font=
-></div><div><font face=3D"arial, sans-serif"><br></font></div><div><font fa=
-ce=3D"monospace">$ make</font></div><div><br></div><div>in &quot;<i>output/=
-images&quot;</i> I see the following images generated,</div><div><b>boot.vf=
-at,=C2=A0 imx6ul-14x14-evk.dtb,=C2=A0 rootfs.ext2,=C2=A0 rootfs.ext4,=C2=A0=
- rootfs.tar,=C2=A0 sdcard.img,=C2=A0 u-boot.bin,=C2=A0 u-boot.imx,=C2=A0 zI=
-mage</b>.<br></div><div><br></div><div>I am referring <a href=3D"https://dz=
-one.com/articles/an-arm-image-with-buildroot" target=3D"_blank">this</a> ar=
-ticle to replicate the same for=C2=A0mcimx6ul-evk. I ran the below command =
-to boot Linux on my target machine</div><div><br></div><div><font face=3D"m=
-onospace">$=C2=A0qemu-system-arm -M mcimx6ul-evk -m 512M -kernel output/ima=
-ges/zImage -monitor stdio -drive file=3Doutput/images/rootfs.ext2,format=3D=
-raw</font></div><div><font face=3D"monospace"><br></font></div><div><font f=
-ace=3D"arial, sans-serif">I don&#39;t see Linux booting on the serial0 cons=
-ole without any logs. can someone please help me how to resolve=C2=A0this? =
-Or am I missing something=C2=A0here?</font></div><div><font face=3D"arial, =
-sans-serif"><br></font></div><div><font face=3D"arial, sans-serif">Note: Th=
-e qemu(<i>version: qemu-4.1.0</i>) is built=C2=A0for arm target using below=
- commands.</font></div><div><font face=3D"arial, sans-serif"><br></font></d=
-iv><div><font face=3D"monospace">$ ./configure --target-list=3Darm-softmmu =
---enable-sdl</font></div><div><font face=3D"monospace">$ make</font></div><=
-div><font face=3D"monospace">$ sudo make install</font></div><div><br></div=
-><div><div><div dir=3D"ltr" data-smartmail=3D"gmail_signature"><div dir=3D"=
-ltr">Thanks &amp; Regards,<div>Pratik</div></div></div></div></div></div>
-
---000000000000ace5ee059747842f--
+thanks
+-- PMM

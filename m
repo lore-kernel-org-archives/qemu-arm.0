@@ -1,78 +1,98 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id f24sm5568663wmb.37.2019.11.14.03.17.16
-        for <qemu-arm@nongnu.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Nov 2019 03:17:17 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 65DB41FF87
-	for <qemu-arm@nongnu.org>; Thu, 14 Nov 2019 11:17:16 +0000 (GMT)
-References: <CA+aXn+EtxWUVBBqhtjuY9hyKjtLFiSF=fZ8nSiqZq7+KCJDgfQ@mail.gmail.com>
-User-agent: mu4e 1.3.5; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Subject: Re: Qemu support for mcimx6ul-evk machine
-In-reply-to: <CA+aXn+EtxWUVBBqhtjuY9hyKjtLFiSF=fZ8nSiqZq7+KCJDgfQ@mail.gmail.com>
-Date: Thu, 14 Nov 2019 11:17:16 +0000
-Message-ID: <878soi7lmr.fsf@linaro.org>
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5367016wrr;
+        Thu, 14 Nov 2019 03:51:15 -0800 (PST)
+X-Received: by 2002:aca:c702:: with SMTP id x2mr2913645oif.167.1573732275310;
+        Thu, 14 Nov 2019 03:51:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573732275; cv=none;
+        d=google.com; s=arc-20160816;
+        b=JEH9qCTqIm8Ee4CFrQWFg5I6atuk4ZMiGI6MgpWkCV60RsdbVDkhWmgrbWemGdzvlE
+         LH9/HPQB1/L/2zmCRCy+ykaF5Ll9o1dk6qoZQIKDfW1KyhqUxwI21zjstjcxkcM9YnpV
+         6U/imFzkKE6XwrJqOiJwEJFCffdSPqJLyNFLvB8K+Md3tiYXgiQSbkuP9M8GSfjYqcXT
+         YND7nbav5bANBf/+N1Eml9W5lRmBlOSdOa7WGcW2ht5SYzO5FS2dHPQQZ9AXGhpheawZ
+         zig0oU4qm3bNxnW1VbHASiLlJHh8XGkGtMbj6/Q8SELSCdsdmKA+w6UN9Npc3VK45GSK
+         j61w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=IGqLxe2QF0DB/XifXDac/0bqVS6wNU43ZwFARksAUls=;
+        b=IR3qXgagdeh1sT4ie9cn+ciXz/tzL/SjUpufWiE4nUpS6yNTLpNc2PTITNPOhMCo8F
+         +oTWteZItwNp9N+SZcq1Bi6m8RdoD4rmHCXCgSa/FpVZQmMZHWuuT2VSciQzRuB8ksnV
+         r35SbYpSOB0tcIFgCjSEk/+WL04dQCw5UWK/neYC4TRIfEp3WpM5JhAI3KXVnEpkog4L
+         2F1n8OVKBGgm6qHyj67j+e6AdVLVhiq8kloA6XdbLh/SPASqiSu6VyaYQlSCZZGsC/HA
+         Zt3O+SLRS6cI7xWuGnSMjAPu3bDl1y1P0cVDMWDuwMFs/SigQihw01pYApkl0ObDEai0
+         kbyQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HJIdSvgj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o2sor3191655oib.34.2019.11.14.03.51.15
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 14 Nov 2019 03:51:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HJIdSvgj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=IGqLxe2QF0DB/XifXDac/0bqVS6wNU43ZwFARksAUls=;
+        b=HJIdSvgjtLnroe97l7Klo8+zlHcYrX2yWDDlOhSdXcHrmJTI721K4RTrT59QRTRHnf
+         Bd+QAbr4sxQwAzPno2wCz4yyKwTGxD33UIO1AqlM4mvOCO4RaC8SD9UXMl99qa8Pq2NI
+         V6cm+OshrTBwwyd6MpmgwRwgqGuxl7zYaTVI4u86WBThDQBWgmtky3nlpmpjkCXMKTFD
+         mpoXn3wZUzV4B25ZeYja0rqkHVe4bkdKxfGN5tCUVqQWNcSH3cGnQQ2GFOViT2A9+7Un
+         RMuuihRs4Of1O4rI4JR1zvVB9cbMojMAtizKH2GIO8n1P9jhZxwGbKLIMO+mfAODEQuq
+         S3gA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=IGqLxe2QF0DB/XifXDac/0bqVS6wNU43ZwFARksAUls=;
+        b=OEOM+Ivmzctx7h07ZIRyzYgJab0OiCMMARIEY/8lUo6azGC4RrNqG42pFcnUyP6UNN
+         T+2//ZllUsjX3XAbw2qIOMW8oELZJhaIcuLM5KxMrobwwHOKWdJ+f8CmSVEtMFFFOQYf
+         Bqdad+C1ZKbK2qg7ruAZd4l1VDfnAjbj34y8XFuDBekIJoO6Z/RfWro1U3p89HEXAB64
+         7eU5h1mLbkzBtAGb+bKLAcp/3RHCA1gBOcPQPy7il4hDJlYRqJUysvWmLDZr2sUUOe0J
+         OAA3GOBoPy2tGuEXn8zoKl96wcTH1yG6ydG7d+9DVOr0R6/+KETbm6QbMjivU9ttZCzG
+         WyoQ==
+X-Gm-Message-State: APjAAAW4qIrB/GeMboXywr9ZRvVOidzYoqsGQ2JYxF6X3Eg8sOSWBa+i
+	+CByTCkzGVA5wq5MyuvpTZd7w+6wJRY7lwdQ1LYYEg9fguiRHA==
+X-Google-Smtp-Source: APXvYqztKxUsfCRwW1jOh+NoYiQYUyMOAOzCH7HxTwUOhmRULT4Feei0nLEWfHJiYN+AW9GaEzIp/LBi6ijisH+4o1w=
+X-Received: by 2002:aca:cf12:: with SMTP id f18mr3044350oig.48.1573732274485;
+ Thu, 14 Nov 2019 03:51:14 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <CA+aXn+EtxWUVBBqhtjuY9hyKjtLFiSF=fZ8nSiqZq7+KCJDgfQ@mail.gmail.com>
+ <878soi7lmr.fsf@linaro.org>
+In-Reply-To: <878soi7lmr.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 14 Nov 2019 11:51:03 +0000
+Message-ID: <CAFEAcA_Afy5Fqv+G3hR6mJwYXP7ufzew0=fgwkb2oCe079EkEA@mail.gmail.com>
+Subject: Re: Qemu support for mcimx6ul-evk machine
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 0S/Q6OX4Tber
+X-TUID: 5fPlsmXE/fgV
 
+On Thu, 14 Nov 2019 at 11:17, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+>
+> Pratik Parvati <pratikp@vayavyalabs.com> writes:
+> > $ qemu-system-arm -M mcimx6ul-evk -m 512M -kernel output/images/zImage
+> > -monitor stdio -drive file=3Doutput/images/rootfs.ext2,format=3Draw
+>
+> Currently you have the monitor set to stdio so you won't see any output
+> from the serial port. You can configure serial output to multiplex with
+> the monitor with the command line option:
+>
+>   -serial mon:stdio
+>
+> and toggle between the two with C-a c
 
-Pratik Parvati <pratikp@vayavyalabs.com> writes:
+It should appear in the graphical window by default, I think.
 
-> Hi Support team,
->
-> Lately, I am trying to get Linux up on qemu-arm *mcimx6ul-evk* machine
-> using buildroot. I have generated all the images required for my target
-> machine. Following are the steps I followed for building images on
-> buildroot (*version: buildroot-2016.11.1*).
->
-> $ make freescale_imx6ulevk_defconfig
-> $ make nconfig
->
-> I have selected the packages required for my qemu build and then built the
-> images using command
->
-> $ make
->
-> in "*output/images"* I see the following images generated,
-> *boot.vfat,  imx6ul-14x14-evk.dtb,  rootfs.ext2,  rootfs.ext4,
-> rootfs.tar,  sdcard.img,  u-boot.bin,  u-boot.imx,  zImage*.
->
-> I am referring this <https://dzone.com/articles/an-arm-image-with-buildro=
-ot>
-> article to replicate the same for mcimx6ul-evk. I ran the below command to
-> boot Linux on my target machine
->
-> $ qemu-system-arm -M mcimx6ul-evk -m 512M -kernel output/images/zImage
-> -monitor stdio -drive file=3Doutput/images/rootfs.ext2,format=3Draw
-
-Currently you have the monitor set to stdio so you won't see any output
-from the serial port. You can configure serial output to multiplex with
-the monitor with the command line option:
-
-  -serial mon:stdio
-
-and toggle between the two with C-a c
-
->
-> I don't see Linux booting on the serial0 console without any logs. can
-> someone please help me how to resolve this? Or am I missing something her=
-e?
->
-> Note: The qemu(*version: qemu-4.1.0*) is built for arm target using below
-> commands.
->
-> $ ./configure --target-list=3Darm-softmmu --enable-sdl
-> $ make
-> $ sudo make install
->
-> Thanks & Regards,
-> Pratik
-
-
---
-Alex Benn=C3=A9e
+thanks
+-- PMM

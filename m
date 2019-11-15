@@ -1,66 +1,97 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp7135195wrr;
-        Fri, 15 Nov 2019 10:12:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzh/65eiMwu/qutapPoTsc40JAwGUMGNcKDNU7GrzgVO9Ls/Y7S8HNnOLgiVTEKFxQXF0h5
-X-Received: by 2002:ac8:607:: with SMTP id d7mr15267667qth.186.1573841567753;
-        Fri, 15 Nov 2019 10:12:47 -0800 (PST)
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp7221925wrr;
+        Fri, 15 Nov 2019 11:30:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyf86hiQglZ6P56vD0fSuSi53QNiUIeMaCiqCGfDRi+s+FURkTe/MQBjb4Z3I1Han50uSw8
+X-Received: by 2002:a17:906:c44f:: with SMTP id ck15mr3166306ejb.7.1573846221030;
+        Fri, 15 Nov 2019 11:30:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573846221; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bc1hp2llhB9VrrR2pW5kFulNF+Kmoo6yy9QydQ7YhLP1pXkqV1mKaDS+XltyGkC1VU
+         7Nen+e14sFTC48O5G6fZaqESUVhVGpJ90KHr5VDiXek5TGRcsD6e9Y74AcfhnNdAQFu8
+         9d6I2YvYg5j/YirGc/bEcSuTOosMnimFVMIXpTmWrEOvopV/2TLX1/UABzi6fQ+X/cwi
+         Mr27Dzbno7Z2bM/Z4HuvVjDrkwsKbI0Rg8Fs+1KAIa91Q2pSlJIfHuOVz3BODILc6HBN
+         czQyBeTm2AXc2XgwrW/Hv7aRUDpAUfG4cu/2xUbmJVwa3PEc+DzQo5IlbWnisaKksGoH
+         05oQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=h/apNc2lpH2/OD74Mr2EXYiB0PVupSrPYk7ZBbbZdVg=;
+        b=QSwsyZcCVxlN4IP6uhZa5prdKJr/wfY37bceIeDgF1DRbiNOqTfZhiXbh3vpyDBwY3
+         XphU0aZME8KUQA9q54xJ6jbc3J6rIAeIToeAwu5GEGQSWC57XGcfWMutBrX7/tICmo/0
+         u5xQ9OyMc3niOkfMt9lmKtOIosjZe2hlIick1hLoHrvExjtfyAvawsDRctC46y9Q2UeG
+         3y6MVoCz79fDr03pO9meq5LOqIGA+JF7Wttk+FuoXW/QGL9NhQ6plfI0W+snZ5qoJoeF
+         Mf7FCjOZ+mF06YRLLrpFB6tVZZTigkgh1TKs2AeVTP8wAoDP6/PHaoo2TlltCabLkjmw
+         lJyg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lyAnnFGr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l63si5923958qkb.57.2019.11.15.10.12.47
+        by mx.google.com with ESMTPS id k7si6889986edb.265.2019.11.15.11.30.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Nov 2019 10:12:47 -0800 (PST)
+        Fri, 15 Nov 2019 11:30:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44158 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lyAnnFGr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:44454 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iVg5O-0004sZ-NH
-	for alex.bennee@linaro.org; Fri, 15 Nov 2019 13:12:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46110)
+	id 1iVhIR-0007nR-Uw
+	for alex.bennee@linaro.org; Fri, 15 Nov 2019 14:30:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59408)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iVg59-0004o5-Jc
- for qemu-arm@nongnu.org; Fri, 15 Nov 2019 13:12:32 -0500
+ (envelope-from <alistair23@gmail.com>) id 1iVhIJ-0007mA-6s
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 14:30:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iVg58-0007Gb-DJ
- for qemu-arm@nongnu.org; Fri, 15 Nov 2019 13:12:31 -0500
-Resent-Date: Fri, 15 Nov 2019 13:12:31 -0500
-Resent-Message-Id: <E1iVg58-0007Gb-DJ@eggs.gnu.org>
-Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21850)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iVg54-00078n-8A; Fri, 15 Nov 2019 13:12:26 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1573841522; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=FkDU52QmpqUfKjLd1SKgSHQDI8L90k6aYv2Z+Esnnn/mA4pVFUcsjjfxS+2MgNvtBkXzYzAMzyfG9MurdYdF3Me87uRoUhlRVndhyeDhMDXqhma5NTMCHUAheET2S0DwMbxvQmEZ5qYjpD5An6oaBdfIx4ghvv3WoKQEpTlF8ac=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1573841522;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=0zoGl4u3dHHTTlIVuyqTvYjqH8DHVaC4E+r3nzLWiPk=; 
- b=OKROHwIgDJbPG8DTf4+iNA/ta5bqzKnnNlT2uPn91cHGDqReqXAFL6sUO8lU2A7R6ihXNZ0CI0VDV4jPCcyXGknGMjiNlZWgu6JjH/szDQfpy2hrBBWHAIL81+nZfTiufk7486Nq9EJ4PBl4SEgbKY4LbAnIfTL8a2HotdyS1QM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1573841521470231.23071184875278;
- Fri, 15 Nov 2019 10:12:01 -0800 (PST)
-In-Reply-To: <20191115154734.26449-1-edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v1 0/1] hw/arm: versal: Add the CRP as unimplemented
-Message-ID: <157384151968.4715.3538455192633139890@37313f22b938>
+ (envelope-from <alistair23@gmail.com>) id 1iVhIH-0001Bj-UI
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 14:30:10 -0500
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:41717)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1iVhIH-00018l-Mh; Fri, 15 Nov 2019 14:30:09 -0500
+Received: by mail-lf1-x144.google.com with SMTP id j14so8821461lfb.8;
+ Fri, 15 Nov 2019 11:30:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=h/apNc2lpH2/OD74Mr2EXYiB0PVupSrPYk7ZBbbZdVg=;
+ b=lyAnnFGrURVgEBTYUKTRlPT5WT/Cu50lwaj53sEXMWpq7pW++DIaVpr7HdS+BeikSj
+ 55o6u1On5OrJGrQjRSSPZs6loWbqpl2u5qbs0mZpl18YqUuLh8kTGEvb5hhdqMXYJe/c
+ pqlXDDFgH76WW5srzNDG27kUIFpuGiGmDxij7JMIbCJxLz5EMvSzMSo05dm93cfCBIqR
+ pFNttY90I20PFSMmCWjj9rNvDWOHBD9HsKmpivbnV514vzIrMFXPes0MnDe9N0BWwmBO
+ 0dcDfdt7clxNuaHUQelOphiOb/ZaKlvLKzuXP7nlxXThQjTpNXIhmyXNN/eOeSo/je2N
+ blww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=h/apNc2lpH2/OD74Mr2EXYiB0PVupSrPYk7ZBbbZdVg=;
+ b=WgdyFqlPKzY5QjHiZK/EcjBS2LiWj3lVvaOAX+DpH89jODUDse2Idl8LAGeOCv6kHI
+ 2mFRMyTGU/oj3CuLZXrZxvMBdArnsIKGYGoZQaW5+ysuN2vQ7nBTknq2ppDC0BzSQxma
+ mmm6F9jnAF1t8XPpbqNT8IV9v1B93Ne871J885jNW3dgDwtsLfvcv7pxPN8/fsRJwnGs
+ HwBMERpa1+SKB6dU0tjEhcwN8wJMeV6V0y0W5mEX8JA0KMgeizag3h6YOtuYIyfpN6G8
+ DpZhtLbHqRRVLtoaCggg50+tw/A+hJZHAbLXTBWAxmLPlv7JCDvVizcG7PxDB2j2PWa4
+ BYag==
+X-Gm-Message-State: APjAAAU81hr+3H4ANc01goGbcwnoEFx/x6DyxVCgj7pWwn8SRVk/Al6c
+ oeks4dy4ZPl5AoyIQEVeWf2ISVZA4VY5bKuyngo=
+X-Received: by 2002:ac2:4a8f:: with SMTP id l15mr12227636lfp.5.1573846208263; 
+ Fri, 15 Nov 2019 11:30:08 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: edgar.iglesias@gmail.com
-Date: Fri, 15 Nov 2019 10:12:01 -0800 (PST)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.58
+References: <1573833408-2388-1-git-send-email-sai.pavan.boddu@xilinx.com>
+In-Reply-To: <1573833408-2388-1-git-send-email-sai.pavan.boddu@xilinx.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 15 Nov 2019 14:29:41 -0500
+Message-ID: <CAKmqyKNJf1Hin=tRV7nZ0TaUYD1NacK4FBJqvfxxnbUdoo_BNg@mail.gmail.com>
+Subject: Re: [PATCH] display: xlnx_dp: Provide sufficient bytes for silent
+ audio channel
+To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::144
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,27 +103,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, edgar.iglesias@xilinx.com,
- sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, qemu-devel@nongnu.org,
- frederic.konrad@adacore.com, sstabellini@kernel.org, qemu-arm@nongnu.org,
- philmd@redhat.com, luc.michel@greensocs.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, KONRAD Frederic <fred.konrad@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Wd2FIueL5Bz/
+X-TUID: Thplbcyz0xev
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTExNTE1NDczNC4yNjQ0
-OS0xLWVkZ2FyLmlnbGVzaWFzQGdtYWlsLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQg
-dGhlIGRvY2tlci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0
-aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBp
-bnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVT
-VCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcg
-Vj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VO
-Vj0xIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgoKCgpUaGUgZnVsbCBs
-b2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkxMTE1MTU0NzM0
-LjI2NDQ5LTEtZWRnYXIuaWdsZXNpYXNAZ21haWwuY29tL3Rlc3RpbmcuZG9ja2VyLXF1aWNrQGNl
-bnRvczcvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5
-IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFj
-ayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+On Fri, Nov 15, 2019 at 10:59 AM Sai Pavan Boddu
+<sai.pavan.boddu@xilinx.com> wrote:
+>
+> Fill the audio channel with required number of bytes to cover the
+> elapsed time. This prevents rate control reset, and avoids debug prints
+> like below
+>
+> log:
+>         Resetting rate control (65692 samples)
+>         ...
+>         Resetting rate control (65721 samples)
+>         ...
+>
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+> ---
+>  hw/display/xlnx_dp.c | 9 +++++++--
+>  1 file changed, 7 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+> index fde3b21..7058443 100644
+> --- a/hw/display/xlnx_dp.c
+> +++ b/hw/display/xlnx_dp.c
+> @@ -394,13 +394,18 @@ static void xlnx_dp_audio_callback(void *opaque, int avail)
+>              written = AUD_write(s->amixer_output_stream,
+>                                  &s->out_buffer[s->data_ptr], s->byte_left);
+>          } else {
+> +             int len_to_copy;
+>              /*
+>               * There is nothing to play.. We don't have any data! Fill the
+>               * buffer with zero's and send it.
+>               */
+>              written = 0;
+> -            memset(s->out_buffer, 0, 1024);
+> -            AUD_write(s->amixer_output_stream, s->out_buffer, 1024);
+> +            while (avail) {
+> +                len_to_copy = MIN(AUD_CHBUF_MAX_DEPTH, avail);
+> +                memset(s->out_buffer, 0, len_to_copy);
+> +                avail -= AUD_write(s->amixer_output_stream, s->out_buffer,
+> +                                   len_to_copy);
+> +            }
+>          }
+>      } else {
+>          written = AUD_write(s->amixer_output_stream,
+> --
+> 2.7.4
+>
+>

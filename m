@@ -1,81 +1,113 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp6703048wrr;
-        Fri, 15 Nov 2019 03:53:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyOZqpqZUaqYUxAssJA56AmO96GTWMwwKa01I3B6Yg4CvJQ13ybof03PIE124XoAjrSXDtQ
-X-Received: by 2002:ac8:73ce:: with SMTP id v14mr13325471qtp.136.1573818821197;
-        Fri, 15 Nov 2019 03:53:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573818821; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp6852549wrr;
+        Fri, 15 Nov 2019 06:09:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwJ3ZRAIIyTo6+nqgP6g63Hk4aIqj/h8szKMJLMT4RI41W42b/c7KXjHejq0XHsV3UoRMn/
+X-Received: by 2002:a2e:9006:: with SMTP id h6mr11308242ljg.231.1573826945354;
+        Fri, 15 Nov 2019 06:09:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573826945; cv=none;
         d=google.com; s=arc-20160816;
-        b=YWflE20cC0IZvHWzyZvclmDdR0TMm81sKS3Wwe6V+Qkkh8Kw8zWhlVH0kuFyoIPVr8
-         qNVdrCmTOwG65SWbQYaC5ERjvfPDNlcYtI2TzqoIC3Yphu8hNFWt/BYwRRpr/GfQ5YHY
-         oIMn1I1+JAVzeMTcLWWmq7sYpyNea34wccYZrU4ZfussHe4yRDsxqcGL64ThQVXUACHc
-         5h4nnSKlDbLypGLFt86oWN/BfEEqBdUZyefe7r2+pNNpmMcupD7/P+1zT5SOaG2LuhpU
-         VSBNNynmwsARTJ+aIxqJooYkuEsnr5JcCUSyR9J4JB72VaU0XKOohTR8Q40hWGzF0Dfp
-         jfjQ==
+        b=Gd9bBFFFfDK+cCyv5YM8nn/HSRKmLXgKjIDg0iOyFEMasejRqexBJ8VxoFY/5YM1EH
+         L+h5/1Ol8+eMwf6lf9hxa2+BmU0eFtRz374yh29XT6NNrPeVytVp+bILdZj1iy0R1ARI
+         n44yzdSeK0u4blFcLMvlAoPq4iRg1qQ41ZBhzfh/7iAfva+lN8uXh+kghsF5Psd3OFBc
+         vsBkDkrRGKgOlB6MsEg1+NAC+7MwE680pV0aIlrvbCxYgJRxXddwnWNWLyXJlhOktSSf
+         lZRn+7pBazZ60lAQ07CNSlgTVtW/l8GSxJJo5DEd6wWV3myuitDFr+XgLTth7/vjFRDz
+         /d9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=FPxvJYlWIAKGmbZcyaAmYe2+vxMcDivQDmkf/TbVrvA=;
-        b=QYBkqksMJxk1hVnz41/LDLzc7EJ25JE2UtLdJRW8PohpoXA7r+nduKwDWbNer879Eu
-         +Y9031WEQBQ5NnyVKggRmG/S1+aNP3O6nsIQSEdqrzJjs9iY1AFht2sRQpXmN+HjYyOv
-         66Z/0jdL9GjKY3T9gf2BV6zGGIfKLMshQop1/XpnDLiAVI+9vKWwcwLlAbjtSuDzFmYq
-         kVpJvVek2/aMUB4d29VVSqPVxhYoBEdxuKusKYqiQChiqbXZyaCplI0Mt99CXk+fh4og
-         nQXkqlIENXCYI55dt74k8RZGPTCWXZzN4BzyE1ldnV4/zzP+iXHV4KWHc5V3itWOv+4j
-         gPOw==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=tjXBQd3zEXkIGUSPPWKe/s1PY4/gCgUQ3ktVfXiH0Zs=;
+        b=bCQmh7E+o0wY/sma+bO5aColvKfW1puuzI6K6LksSz2whhM93DJg8h9rlGZH/3zsQK
+         Cp6hQYq72O1YmEgfho6nZXQRfZJzopdXe1Uts96pzug5PlsiacEFcqeQumS8lmk2dpt/
+         MROSv92eY+Cs4Q0PLYeHgCr5Yf/iHENBpbl73ldMcUTW5yoUDCDbbczv6y2WxwzfaeRj
+         J/oDQQUosdLX9DE59vsyRwHTuyMyWWftuRywhWcTRYthdo1Bn2VaaRqrAsrioMxqSjyX
+         eZ6hoBGiViHisKwhU7fdmEnMvYFCeKV8XZSV4i0AvqrIzCvjxDMjpN1Rk6supTqrDqJd
+         Tt0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="i6/+qeqF";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZqKGZ4lt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s44si5492825qtc.147.2019.11.15.03.53.41
+        by mx.google.com with ESMTPS id e10si5965606edy.293.2019.11.15.06.09.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Nov 2019 03:53:41 -0800 (PST)
+        Fri, 15 Nov 2019 06:09:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="i6/+qeqF";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37938 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZqKGZ4lt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39544 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iVaAW-0001Df-Mz
-	for alex.bennee@linaro.org; Fri, 15 Nov 2019 06:53:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39725)
+	id 1iVcHY-0001Fo-0E
+	for alex.bennee@linaro.org; Fri, 15 Nov 2019 09:09:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57737)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1iVaAN-0001DB-PM
- for qemu-arm@nongnu.org; Fri, 15 Nov 2019 06:53:33 -0500
+ (envelope-from <mst@redhat.com>) id 1iVcHL-0001Du-8K
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 09:08:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1iVaAL-00061W-CC
- for qemu-arm@nongnu.org; Fri, 15 Nov 2019 06:53:31 -0500
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:33895 helo=ozlabs.org)
+ (envelope-from <mst@redhat.com>) id 1iVcHI-0007JK-Iv
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 09:08:50 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:24602
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1iVaAK-0005z8-Nj; Fri, 15 Nov 2019 06:53:29 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 47DxZC4cBRz9sPK; Fri, 15 Nov 2019 22:53:23 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1573818803;
- bh=Qy+aAwAfg425Zf1umA1D4VEFp1Spf/MWeYcWUZkNM9o=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=i6/+qeqFCws3+NW+6RSJPF8lDiRBC7iYMryrkiL2DPR4+tsVkeZDKN7OQl5g4C+PH
- tUjWC4E32+k4I1BWbbXhmpMOKVNXEeH2ctdrIEna2Q1DKaN0290wQpWehF2lWzST9F
- okXrB9slvWXvj0+sefQl+oen4CgKgFJqNMujBZN8=
-Date: Fri, 15 Nov 2019 20:32:40 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iVcHI-0007Ig-Es
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 09:08:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573826927;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tjXBQd3zEXkIGUSPPWKe/s1PY4/gCgUQ3ktVfXiH0Zs=;
+ b=ZqKGZ4ltcu8vjDAatX1rjSOGMH4u9gUILotTccWqQtUCy3dU9bOeaXxM9JDNrEC4e243Mm
+ 6k0h2VK0wIe180nqrL3Tv6Il4xfjAH8xS8+GnaH1tuXw9ByeNqmHOF35k5llCDdO4lJha3
+ taLcklzqvfee5cyCba/FL5pXFjdR8CM=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-404-Clr9c9zeOgexsyBfUTQXCg-1; Fri, 15 Nov 2019 09:08:45 -0500
+Received: by mail-qt1-f197.google.com with SMTP id x21so6544587qtp.1
+ for <qemu-arm@nongnu.org>; Fri, 15 Nov 2019 06:08:45 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=UJVCwZRhhPveTODtSPg3DS4InFxi5RN8lZ97QbV7LLQ=;
+ b=t0Wfwp9Sz7EvTN+UjvunhRW5DAKE+J4e4fcrJzFSakjiRsA0P/u3fgO7niYqlTkiEf
+ n+Dw25B1qCfP/ySJu56kOCpC1342heyvHhC1Ffk+FGNqqMnIJkE7dppl1kN0XzJt0WKV
+ gbu1KkgV3OJQAGzxE7YioUQR2SdRRzuoByx67KAg1xXaUu/TlaNmeRHgscDRzHVYGo2B
+ gR/LSys3Zg26sAA+1PyVoT17vO4/XGK+NGG9JuxtgaTbTasrA91lAjAHin7JRQtkfcPv
+ SRCei2VmZ15TWBuhxwo4qxFI8d/2rVfD/GL77cy8o2TPmP/77CIrVZ87HH8KLnKXlXIm
+ /i2A==
+X-Gm-Message-State: APjAAAUgG9r5cnq+N/kOf0bT/FWBsc4zSv2cRAAqS1Ty+QsGa2/mEclu
+ zhTP2J2IEBCYJulg6qigTEsoDAMa3YRMCmI2c0wMgNBjp8+pP3gVaFJEWCKID4ZkvDA2SgIw5+p
+ i5ODY41x25ezb
+X-Received: by 2002:ac8:405d:: with SMTP id j29mr13372273qtl.332.1573826925109; 
+ Fri, 15 Nov 2019 06:08:45 -0800 (PST)
+X-Received: by 2002:ac8:405d:: with SMTP id j29mr13372166qtl.332.1573826924127; 
+ Fri, 15 Nov 2019 06:08:44 -0800 (PST)
+Received: from redhat.com (bzq-79-176-6-42.red.bezeqint.net. [79.176.6.42])
+ by smtp.gmail.com with ESMTPSA id y7sm3218090qto.84.2019.11.15.06.08.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 15 Nov 2019 06:08:43 -0800 (PST)
+Date: Fri, 15 Nov 2019 09:08:37 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Cornelia Huck <cohuck@redhat.com>
 Subject: Re: [PATCH] hw: add compat machines for 5.0
-Message-ID: <20191115093240.GG2134@umbus.fritz.box>
+Message-ID: <20191115090757-mutt-send-email-mst@kernel.org>
 References: <20191112104811.30323-1-cohuck@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="reI/iBAAp9kzkmX4"
-Content-Disposition: inline
 In-Reply-To: <20191112104811.30323-1-cohuck@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
+X-MC-Unique: Clr9c9zeOgexsyBfUTQXCg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,20 +120,15 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+ Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hpqgMLJzXYIe
-
-
---reI/iBAAp9kzkmX4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+X-TUID: RiJf1Ip50PtZ
 
 On Tue, Nov 12, 2019 at 11:48:11AM +0100, Cornelia Huck wrote:
 > Add 5.0 machine types for arm/i440fx/q35/s390x/spapr.
@@ -111,16 +138,16 @@ On Tue, Nov 12, 2019 at 11:48:11AM +0100, Cornelia Huck wrote:
 > maintainers.
 >=20
 > Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
 > ---
 >=20
 > also pushed out to https://github.com/cohuck/qemu machine-5.0
 >=20
 > x86 folks: if you want to change the cpu model versioning, I
 > can do it in this patch, or just do it on top yourselves
->=20
+
+
+Seems a bit cleaner in the same patch. Eduardo what's your take?
+
 > ---
 >  hw/arm/virt.c              |  7 ++++++-
 >  hw/core/machine.c          |  3 +++
@@ -186,7 +213,8 @@ Acked-by: David Gibson <david@gibson.dropbear.id.au>
 > index 2aefa3b8dfe3..65915ea23c4a 100644
 > --- a/hw/i386/pc_piix.c
 > +++ b/hw/i386/pc_piix.c
-> @@ -424,7 +424,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+> @@ -424,7 +424,7 @@ static void pc_i440fx_machine_options(MachineClass *m=
+)
 >      machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
 >  }
 > =20
@@ -260,7 +288,8 @@ ss *m)
 > + */
 > +static void spapr_machine_5_0_class_options(MachineClass *mc)
 > +{
-> +    /* Defaults for the latest behaviour inherited from the base class */
+> +    /* Defaults for the latest behaviour inherited from the base class *=
+/
 > +}
 > +
 > +DEFINE_SPAPR_MACHINE(5_0, "5.0", true);
@@ -270,9 +299,11 @@ ss *m)
 >   */
 >  static void spapr_machine_4_2_class_options(MachineClass *mc)
 >  {
-> -    /* Defaults for the latest behaviour inherited from the base class */
+> -    /* Defaults for the latest behaviour inherited from the base class *=
+/
 > +    spapr_machine_5_0_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len)=
+;
 >  }
 > =20
 > -DEFINE_SPAPR_MACHINE(4_2, "4.2", true);
@@ -306,7 +337,8 @@ ss *m)
 >  static void ccw_machine_4_2_class_options(MachineClass *mc)
 >  {
 > +    ccw_machine_5_0_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len)=
+;
 >  }
 > -DEFINE_CCW_MACHINE(4_2, "4.2", true);
 > +DEFINE_CCW_MACHINE(4_2, "4.2", false);
@@ -342,31 +374,6 @@ moryRegion *rom_memory);
 >  extern GlobalProperty pc_compat_4_1[];
 >  extern const size_t pc_compat_4_1_len;
 > =20
+> --=20
+> 2.21.0
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---reI/iBAAp9kzkmX4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl3OcLgACgkQbDjKyiDZ
-s5LAIQ//X2f2XE9Gy8dIU0yG4iRW3Wvrv3GlrPHeT8JHjsoyXlc3yHMJJwygA3In
-KANTUCf5wA69k5qknSSip3EslNbGYQ5RXnMZpkYVJ6cqTSyqn9JCNm2TvYMuYMKG
-Hb7gMF9ql5YcjVu7vAcSEIC9fq2/2DOIJHK8yR01iJj4rV7zBPsm/JiUIpc0CBvr
-VcJ/GjkksUOAoSUnzXMuDlC2q1FVUF/pkS5ooE7lq/baLTTWnk5vpw3mUiejtDE5
-T+/L729VnBIeftH1rycIc2j+pMLHbzHcdBl9/popY0lyrEGSIQ079EqbYjvCpMew
-Rru6VZyFp8r9KjBEioYmpnmwD9hSm4xMdd0YdX7Y2oSeiHUWgskXC8Hd2FvRIwHH
-kyp2q9fgbVJ22l8JOsh9sooRXZu9IDAyjEqIab0E1r5I+cVMP5/20oqqBbY2XHvc
-gh68fHsjwaR1qeT7RU9QlljcsxnK+CAgXBQJocZPnW1/9nOj14tV2NhqD1zwgZA6
-Z7ud92Ff0mMCQBcmevFKCEbkvGwqkxO+rccpN50iZmPmGK2vhJDWpUa0hwEHziqP
-t9eIo7k+sFZNTD3pmf10XGNbLYUp9UsWwbEdcFdwZOUxs4ZkRBSB06VX7V7QKyHZ
-4KW9dKEBQhGBtBevymBXhjpLAyk3S4denjLKJO7pM2ZRtJ7bf38=
-=pI3k
------END PGP SIGNATURE-----
-
---reI/iBAAp9kzkmX4--

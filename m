@@ -1,467 +1,706 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp5245627wrr;
-        Thu, 14 Nov 2019 01:51:13 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz4z5nKTy3QJ95CF/95zdFrJh61EnnotWp6Plld8kaWsF8PSb3hjLNcDHm0FiObvVLSSIYa
-X-Received: by 2002:a17:906:b5b:: with SMTP id v27mr7418897ejg.327.1573725073794;
-        Thu, 14 Nov 2019 01:51:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573725073; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp6575791wrr;
+        Fri, 15 Nov 2019 01:38:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz0Fi0j7LtAyMyTMMJoz/700BbtViE/oOrYFp3fwAEp7JPXa+qcAfWrPE8Qd1Np+OecDrm/
+X-Received: by 2002:a5d:678f:: with SMTP id v15mr13396424wru.242.1573810704689;
+        Fri, 15 Nov 2019 01:38:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573810704; cv=none;
         d=google.com; s=arc-20160816;
-        b=yZ3hNI9Tdjn4rwao8UI7EspVyMEVrUvPBs06YmbEsvTX4H5dJB/gwqk6d2mkOHdV6k
-         mNLekOH5Xf+bI5k9dzRcnjAkZG6s3T7HjbLaLRZj+nXKpr0yVlDsLsV57foKMu0e3vxG
-         fV/PZgMtCfFluw5h0E0apzSd5393XJYYl3vHTn6SgwcyvCBD+YHyGGNp7xLSmvr6YVfR
-         nwaYUMRqb2cotAnSq9rGIo98gMlfwBzdlSiM1GdswqBanRu9KdZJcr01rdynDBc0zhna
-         bMjQSnogHj1wlLZwkeRAGnR7KwegqBlGYOMoi+pXQfpvYu8dh2bhR6k54of3B3ymS0Bh
-         ZYog==
+        b=IV5h0AYnwGFQhcaZXs/KxzelCXtPvOkU+0H9CGl6UXduZ9p4hq7t8JL2v7bn0WaZ/d
+         nDijF/HEg1iTGJ0RIY5vkG/TAka94M+OaIFSxIxSRL0H6U1QJI+jqJeIHs0AKgD7lys2
+         Uo56OPhq9ryoS3vSSS+JBb5ucMbzI2zZfvUs167Jf8JTpSsVIHsStKWneb2A7EOmyRdx
+         wvxdWBA0WqeqJ3vkpSBx7YTTOybvgudZjXfLnZ5juW5f3f1+sNOvwUu/IMBWM1mp63dI
+         ihraOjWr3M8WHQ/lj28OVWZlDFAWGrPAgxQXnt0mqsaT5sunqkNW1Z0rCdCdUqQUkDqD
+         vgIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=vBbDtvVTz5i7m5qN0JMKePrBb4hGDwLwh1Kdy2HCpms=;
-        b=VfnYBKxBa9daoX5YR6svLWzpQAmlDOlCShTA2iEtOcwtK6hMK7uiKobvn5PAkkZTIs
-         +Whwhy+5Xkhwk8ulAG0KXZGCzghihKt7oASphNfgMU36nZ3uVFeJZBvQPBV3pWsL5zv3
-         S/cK61MUc3A1gMVHahUpVpC0UlODYWCm9wHvgfO3PQK/n68D3bjOimQHwn0SWwqutLvm
-         zFZaShtbMAYdYIJh0R+qD+f7SMRsu/LeLMaTbzcYpvmY8eXWJteRlBACdhbq7SFD8Ydu
-         oyr8kYb6IJyqGeerYPysfdg25hIkA3ZtErxiuhC0Gk+hM3uf36ceeam10TPYM9FmrJ+C
-         MMoA==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=tOW4/Si0jmvf7ZtuMPsof+skG06Yqb5gH8ZFAAY8YvE=;
+        b=wgc4tfqXQVw6ekHO1oZ/76RrVUyaH7f78FpxD0KCObhM+XsAWyBPNyiayhMxdVrFET
+         1G3LXQOyNuuSMbSBDZyzE4vXjJlPTeZjeZMwvTfINA/Cd/NQJcIGR0z2BZzci/HYjlLl
+         rIkGNbVIIh6vE2I8LgCkqfqe4g/S6w5xgRV0Sbrqhv7jn/wty3P/xu8066B9vwm/kuLl
+         3CiZSdhnDbs7ecU0018xoXPiV+Mdk4f7oVxBq5p/cG8gRNjxe5vJrnkUkXVe7o5As6S1
+         PXRT5VWHVOPdjEPbX8BtPXMTBA3kpuN/M3ciQzEVuAELxZ4Zdlk7LFz3MsYiLWvprPxe
+         aG1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c29si4098970edb.223.2019.11.14.01.51.13
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Nov 2019 01:51:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hTzAiKjs;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id l23si255837edc.279.2019.11.15.01.38.24;
+        Fri, 15 Nov 2019 01:38:24 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54934 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iVBmS-0003Yp-39
-	for alex.bennee@linaro.org; Thu, 14 Nov 2019 04:51:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37375)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iVBhu-0007o0-Vx
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:32 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iVBhs-0004Xy-Ux
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:30 -0500
-Received: from 13.mo3.mail-out.ovh.net ([188.165.33.202]:48099)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iVBhr-0004Ub-Jl
- for qemu-arm@nongnu.org; Thu, 14 Nov 2019 04:46:28 -0500
-Received: from player737.ha.ovh.net (unknown [10.109.159.178])
- by mo3.mail-out.ovh.net (Postfix) with ESMTP id E6BB02315E6
- for <qemu-arm@nongnu.org>; Thu, 14 Nov 2019 10:46:25 +0100 (CET)
-Received: from kaod.org (lfbn-1-2229-223.w90-76.abo.wanadoo.fr [90.76.50.223])
- (Authenticated sender: clg@kaod.org)
- by player737.ha.ovh.net (Postfix) with ESMTPSA id 08BA02A78619;
- Thu, 14 Nov 2019 09:46:19 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 4/5] aspeed: Remove AspeedBoardConfig array and use
- AspeedMachineClass
-Date: Thu, 14 Nov 2019 10:45:43 +0100
-Message-Id: <20191114094544.30114-5-clg@kaod.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191114094544.30114-1-clg@kaod.org>
-References: <20191114094544.30114-1-clg@kaod.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hTzAiKjs;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727022AbfKOJiT (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 15 Nov 2019 04:38:19 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:34391 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1726930AbfKOJiT (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Fri, 15 Nov 2019 04:38:19 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1573810697;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=tOW4/Si0jmvf7ZtuMPsof+skG06Yqb5gH8ZFAAY8YvE=;
+        b=hTzAiKjsiT8gIC1stckqhoiegTPXEMlVAbLj0fIXQvBChZ1oELfg457mGZ5JopUtSWwXXS
+        zrUP4g9/2Yv+VUu15HginNbBBxjBxOCmhsIDBRBVF3pGdbeXrESLY3pdpLVFWL50ODxEqK
+        H516UP6tpb/JZSwZ+yAdOZpMpRhk3gE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-172-0zYVYf0-M9GzuVWeUwB2OQ-1; Fri, 15 Nov 2019 04:38:14 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0FA98801FA1;
+        Fri, 15 Nov 2019 09:38:13 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 77E655ED2A;
+        Fri, 15 Nov 2019 09:38:03 +0000 (UTC)
+Date:   Fri, 15 Nov 2019 10:38:01 +0100
+From:   Igor Mammedov <imammedo@redhat.com>
+To:     Xiang Zheng <zhengxiang9@huawei.com>
+Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>,
+        <gengdongjiu@huawei.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <jonathan.cameron@huawei.com>,
+        <xuwei5@huawei.com>, <kvm@vger.kernel.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <linuxarm@huawei.com>, wanghaibin.wang@huawei.com
+Subject: Re: [RESEND PATCH v21 3/6] ACPI: Add APEI GHES table generation
+ support
+Message-ID: <20191115103801.547fc84d@redhat.com>
+In-Reply-To: <20191111014048.21296-4-zhengxiang9@huawei.com>
+References: <20191111014048.21296-1-zhengxiang9@huawei.com>
+        <20191111014048.21296-4-zhengxiang9@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 2481764873567701777
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudeffedgtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpledtrdejiedrhedtrddvvdefnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejfeejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedu
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: 0zYVYf0-M9GzuVWeUwB2OQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 188.165.33.202
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fJbZ95Dg1K1c
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: dAVi+HpNH+/I
 
-AspeedBoardConfig is a redundant way to define class attributes and it
-complexifies the machine definition and initialization.
+On Mon, 11 Nov 2019 09:40:45 +0800
+Xiang Zheng <zhengxiang9@huawei.com> wrote:
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- include/hw/arm/aspeed.h |  24 ++---
- hw/arm/aspeed.c         | 231 ++++++++++++++++++++++------------------
- 2 files changed, 137 insertions(+), 118 deletions(-)
+> From: Dongjiu Geng <gengdongjiu@huawei.com>
+>=20
+> This patch implements APEI GHES Table generation via fw_cfg blobs. Now
+> it only supports ARMv8 SEA, a type of GHESv2 error source. Afterwards,
+> we can extend the supported types if needed. For the CPER section,
+> currently it is memory section because kernel mainly wants userspace to
+> handle the memory errors.
+>=20
+> This patch follows the spec ACPI 6.2 to build the Hardware Error Source
+> table. For more detailed information, please refer to document:
+> docs/specs/acpi_hest_ghes.rst
+>=20
+> Suggested-by: Laszlo Ersek <lersek@redhat.com>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> ---
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/acpi/Kconfig                 |   4 +
+>  hw/acpi/Makefile.objs           |   1 +
+>  hw/acpi/acpi_ghes.c             | 267 ++++++++++++++++++++++++++++++++
+>  hw/acpi/aml-build.c             |   2 +
+>  hw/arm/virt-acpi-build.c        |  12 ++
+>  include/hw/acpi/acpi_ghes.h     |  56 +++++++
+>  include/hw/acpi/aml-build.h     |   1 +
+>  8 files changed, 344 insertions(+)
+>  create mode 100644 hw/acpi/acpi_ghes.c
+>  create mode 100644 include/hw/acpi/acpi_ghes.h
+>=20
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
+u.mak
+> index 1f2e0e7fde..5722f3130e 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -40,3 +40,4 @@ CONFIG_FSL_IMX25=3Dy
+>  CONFIG_FSL_IMX7=3Dy
+>  CONFIG_FSL_IMX6UL=3Dy
+>  CONFIG_SEMIHOSTING=3Dy
+> +CONFIG_ACPI_APEI=3Dy
+> diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+> index 12e3f1e86e..ed8c34d238 100644
+> --- a/hw/acpi/Kconfig
+> +++ b/hw/acpi/Kconfig
+> @@ -23,6 +23,10 @@ config ACPI_NVDIMM
+>      bool
+>      depends on ACPI
+> =20
+> +config ACPI_APEI
+> +    bool
+> +    depends on ACPI
+> +
+>  config ACPI_PCI
+>      bool
+>      depends on ACPI && PCI
+> diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+> index 655a9c1973..84474b0ca8 100644
+> --- a/hw/acpi/Makefile.objs
+> +++ b/hw/acpi/Makefile.objs
+> @@ -5,6 +5,7 @@ common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) +=3D cpu_hotplug.o
+>  common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) +=3D memory_hotplug.o
+>  common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) +=3D cpu.o
+>  common-obj-$(CONFIG_ACPI_NVDIMM) +=3D nvdimm.o
+> +common-obj-$(CONFIG_ACPI_APEI) +=3D acpi_ghes.o
+>  common-obj-$(CONFIG_ACPI_VMGENID) +=3D vmgenid.o
+>  common-obj-$(CONFIG_ACPI_HW_REDUCED) +=3D generic_event_device.o
+>  common-obj-$(call lnot,$(CONFIG_ACPI_X86)) +=3D acpi-stub.o
+> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
+> new file mode 100644
+> index 0000000000..42c00ff3d3
+> --- /dev/null
+> +++ b/hw/acpi/acpi_ghes.c
+> @@ -0,0 +1,267 @@
+> +/*
+> + * Support for generating APEI tables and recording CPER for Guests
+> + *
+> + * Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
+> + *
+> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> +
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> +
+> + * You should have received a copy of the GNU General Public License alo=
+ng
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/acpi/acpi.h"
+> +#include "hw/acpi/aml-build.h"
+> +#include "hw/acpi/acpi_ghes.h"
+> +#include "hw/nvram/fw_cfg.h"
+> +#include "sysemu/sysemu.h"
+> +#include "qemu/error-report.h"
+> +
+> +#define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
+> +#define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
+> +
+> +/*
+> + * The size of Address field in Generic Address Structure.
+> + * ACPI 2.0/3.0: 5.2.3.1 Generic Address Structure.
+> + */
+> +#define ACPI_GHES_ADDRESS_SIZE              8
+there is not such thing as GHES_ADDRESS_SIZE.
 
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index f49bc7081e4d..4423cd0cda71 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -13,19 +13,6 @@
-=20
- typedef struct AspeedBoardState AspeedBoardState;
-=20
--typedef struct AspeedBoardConfig {
--    const char *name;
--    const char *desc;
--    const char *soc_name;
--    uint32_t hw_strap1;
--    uint32_t hw_strap2;
--    const char *fmc_model;
--    const char *spi_model;
--    uint32_t num_cs;
--    void (*i2c_init)(AspeedBoardState *bmc);
--    uint32_t ram;
--} AspeedBoardConfig;
--
- #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
- #define ASPEED_MACHINE(obj) \
-     OBJECT_CHECK(AspeedMachine, (obj), TYPE_ASPEED_MACHINE)
-@@ -41,7 +28,16 @@ typedef struct AspeedMachine {
-=20
- typedef struct AspeedMachineClass {
-     MachineClass parent_obj;
--    const AspeedBoardConfig *board;
-+
-+    const char *name;
-+    const char *desc;
-+    const char *soc_name;
-+    uint32_t hw_strap1;
-+    uint32_t hw_strap2;
-+    const char *fmc_model;
-+    const char *spi_model;
-+    uint32_t num_cs;
-+    void (*i2c_init)(AspeedBoardState *bmc);
- } AspeedMachineClass;
-=20
-=20
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 028191ff36fc..e34e6787430b 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -167,10 +167,10 @@ static void aspeed_board_init_flashes(AspeedSMCStat=
-e *s, const char *flashtype,
-     }
- }
-=20
--static void aspeed_board_init(MachineState *machine,
--                              const AspeedBoardConfig *cfg)
-+static void aspeed_machine_init(MachineState *machine)
- {
-     AspeedBoardState *bmc;
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_GET_CLASS(machine);
-     AspeedSoCClass *sc;
-     DriveInfo *drive0 =3D drive_get(IF_MTD, 0, 0);
-     ram_addr_t max_ram_size;
-@@ -182,18 +182,18 @@ static void aspeed_board_init(MachineState *machine=
+I'd just use sizeof(unit64_t), shorter and obvious value
+when seen at a call site
+
+> +
+> +/* The max size in bytes for one error block */
+> +#define ACPI_GHES_MAX_RAW_DATA_LENGTH       0x1000
+> +
+> +/*
+> + * Now only support ARMv8 SEA notification type error source
+> + */
+maybe one line comment
+
+> +#define ACPI_GHES_ERROR_SOURCE_COUNT        1
+> +
+> +/*
+> + * Generic Hardware Error Source version 2
+> + */
+ditto
+
+> +#define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
+
+
+> +
+> +/*
+> + * | +--------------------------+ 0
+> + * | |        Header            |
+> + * | +--------------------------+ 40---+-
+> + * | | .................        |      |
+> + * | | error_status_address-----+ 60   |
+> + * | | .................        |      |
+> + * | | read_ack_register--------+ 104  92
+> + * | | read_ack_preserve        |      |
+> + * | | read_ack_write           |      |
+> + * + +--------------------------+ 132--+-
+> + *
+> + * From above GHES definition, the error status address offset is 60;
+> + * the Read Ack Register offset is 104, the whole size of GHESv2 is 92
+> + */
+> +
+> +/* The error status address offset in GHES */
+> +#define ACPI_GHES_ERROR_STATUS_ADDRESS_OFFSET(start_addr, n) (start_addr=
+ + \
+> +            60 + offsetof(struct AcpiGenericAddress, address) + n * 92)
+> +
+> +/* The Read Ack Register offset in GHES */
+> +#define ACPI_GHES_READ_ACK_REGISTER_ADDRESS_OFFSET(start_addr, n) (start=
+_addr +\
+> +            104 + offsetof(struct AcpiGenericAddress, address) + n * 92)
+drop this hunk, see below why
+
+> +
+> +typedef struct AcpiGhesState {
+> +    uint64_t ghes_addr_le;
+> +} AcpiGhesState;
+> +
+> +/*
+> + * Hardware Error Notification
+> + * ACPI 4.0: 17.3.2.7 Hardware Error Notification
+
+add/
+composes dummy Hardware Error Notification descriptor of specified type
+
+> + */
+> +static void acpi_ghes_build_notify(GArray *table, const uint8_t type)
+
+typically format should be build_WHAT(), so
+ build_ghes_hw_error_notification()
+
+And I'd move this out into its own patch.
+this applies to other trivial in-depended sub-tables,
+that take all data needed to construct them from supplied arguments.
+
+> +{
+> +        /* Type */
+> +        build_append_int_noprefix(table, type, 1);
+> +        /*
+> +         * Length:
+> +         * Total length of the structure in bytes
+> +         */
+> +        build_append_int_noprefix(table, 28, 1);
+> +        /* Configuration Write Enable */
+> +        build_append_int_noprefix(table, 0, 2);
+> +        /* Poll Interval */
+> +        build_append_int_noprefix(table, 0, 4);
+> +        /* Vector */
+> +        build_append_int_noprefix(table, 0, 4);
+> +        /* Switch To Polling Threshold Value */
+> +        build_append_int_noprefix(table, 0, 4);
+> +        /* Switch To Polling Threshold Window */
+> +        build_append_int_noprefix(table, 0, 4);
+> +        /* Error Threshold Value */
+> +        build_append_int_noprefix(table, 0, 4);
+> +        /* Error Threshold Window */
+> +        build_append_int_noprefix(table, 0, 4);
+> +}
+> +
+
+/*
+  Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fwcfg blo=
+bs.
+  See docs/specs/acpi_hest_ghes.rst for blobs format
+*/
+> +void acpi_ghes_build_error_table(GArray *hardware_errors, BIOSLinker *li=
+nker)
+build_ghes_error_table()
+
+also I'd move this function into its own patch along with other
+related code that initializes and wires it into virt board.
+
+> +{
+> +    int i, error_status_block_offset;
+> +
+> +    /*
+> +     * | +--------------------------+
+> +     * | |    error_block_address   |
+> +     * | |      ..........          |
+> +     * | +--------------------------+
+> +     * | |    read_ack_register     |
+> +     * | |     ...........          |
+> +     * | +--------------------------+
+> +     * | |  Error Status Data Block |
+> +     * | |      ........            |
+> +     * | +--------------------------+
+> +     */
+I'd drop this comment, acpi_hest_ghes.rst should be sufficient,
+if it's not then fix spec. For example it's not obvious from spec
+that "Error Status Data Block" immediately follows 'read_ack_register'
+
+> +
+> +    /* Build error_block_address */
+> +    for (i =3D 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
+> +        build_append_int_noprefix(hardware_errors, 0, ACPI_GHES_ADDRESS_=
+SIZE);
+> +    }
+> +
+> +    /* Build read_ack_register */
+> +    for (i =3D 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
+> +        /*
+> +         * Initialize the value of read_ack_register to 1, so GHES can b=
+e
+> +         * writeable in the first time.
+s/in the first time/after (re)boot/
+
+> +         * ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
+> +         * (GHESv2 - Type 10)
+> +         */
+> +        build_append_int_noprefix(hardware_errors, 1, ACPI_GHES_ADDRESS_=
+SIZE);
+> +    }
+> +
+> +    /* Generic Error Status Block offset in the hardware error fw_cfg bl=
+ob */
+> +    error_status_block_offset =3D hardware_errors->len;
+> +
+> +    /* Build Error Status Data Block */
+
+/* reserve space for Error Status Data Block */
+
+> +    build_append_int_noprefix(hardware_errors, 0,
+> +        ACPI_GHES_MAX_RAW_DATA_LENGTH * ACPI_GHES_ERROR_SOURCE_COUNT);
+this function is for integers only, if you just need to reserve space
+you can use acpi_data_push().
+
+> +
+> +    /* Allocate guest memory for the hardware error fw_cfg blob */
+/* tell guest firmware to place hardware_errors blob into RAM */
+
+> +    bios_linker_loader_alloc(linker, ACPI_GHES_ERRORS_FW_CFG_FILE,
+> +                             hardware_errors, 1, false);
+> +
+> +    for (i =3D 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
+> +        /*
+> +         * Patch the address of Error Status Data Block into
+> +         * the error_block_address of hardware_errors fw_cfg blob
+ Tell firmware to patch error_block_address entries to point to
+ corresponding "Error Status Data Block"
+
+> +         */
+> +        bios_linker_loader_add_pointer(linker,
+> +            ACPI_GHES_ERRORS_FW_CFG_FILE, ACPI_GHES_ADDRESS_SIZE * i,
+> +            ACPI_GHES_ADDRESS_SIZE, ACPI_GHES_ERRORS_FW_CFG_FILE,
+> +            error_status_block_offset + i * ACPI_GHES_MAX_RAW_DATA_LENGT=
+H);
+> +    }
+> +
+> +    /*
+> +     * Write the address of hardware_errors blob into the
+> +     * hardware_errors_addr fw_cfg blob.
+/*
+tell firmware to write hardware_errors GPA into hardware_errors_addr fw_cfg=
 ,
-                        UINT32_MAX);
-=20
-     object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
--                            (sizeof(bmc->soc)), cfg->soc_name, &error_ab=
-ort,
-+                            (sizeof(bmc->soc)), amc->soc_name, &error_ab=
-ort,
-                             NULL);
-=20
-     sc =3D ASPEED_SOC_GET_CLASS(&bmc->soc);
-=20
-     object_property_set_uint(OBJECT(&bmc->soc), ram_size, "ram-size",
-                              &error_abort);
--    object_property_set_int(OBJECT(&bmc->soc), cfg->hw_strap1, "hw-strap=
-1",
-+    object_property_set_int(OBJECT(&bmc->soc), amc->hw_strap1, "hw-strap=
-1",
-                             &error_abort);
--    object_property_set_int(OBJECT(&bmc->soc), cfg->hw_strap2, "hw-strap=
-2",
-+    object_property_set_int(OBJECT(&bmc->soc), amc->hw_strap2, "hw-strap=
-2",
-                             &error_abort);
--    object_property_set_int(OBJECT(&bmc->soc), cfg->num_cs, "num-cs",
-+    object_property_set_int(OBJECT(&bmc->soc), amc->num_cs, "num-cs",
-                             &error_abort);
-     object_property_set_int(OBJECT(&bmc->soc), machine->smp.cpus, "num-c=
-pus",
-                             &error_abort);
-@@ -230,8 +230,8 @@ static void aspeed_board_init(MachineState *machine,
-                           "max_ram", max_ram_size  - ram_size);
-     memory_region_add_subregion(&bmc->ram_container, ram_size, &bmc->max=
-_ram);
-=20
--    aspeed_board_init_flashes(&bmc->soc.fmc, cfg->fmc_model, &error_abor=
-t);
--    aspeed_board_init_flashes(&bmc->soc.spi[0], cfg->spi_model, &error_a=
-bort);
-+    aspeed_board_init_flashes(&bmc->soc.fmc, amc->fmc_model, &error_abor=
-t);
-+    aspeed_board_init_flashes(&bmc->soc.spi[0], amc->spi_model, &error_a=
-bort);
-=20
-     /* Install first FMC flash content as a boot rom. */
-     if (drive0) {
-@@ -255,8 +255,8 @@ static void aspeed_board_init(MachineState *machine,
-     aspeed_board_binfo.loader_start =3D sc->memmap[ASPEED_SDRAM];
-     aspeed_board_binfo.nb_cpus =3D bmc->soc.num_cpus;
-=20
--    if (cfg->i2c_init) {
--        cfg->i2c_init(bmc);
-+    if (amc->i2c_init) {
-+        amc->i2c_init(bmc);
-     }
-=20
-     for (i =3D 0; i < ARRAY_SIZE(bmc->soc.sdhci.slots); i++) {
-@@ -383,118 +383,141 @@ static void witherspoon_bmc_i2c_init(AspeedBoardS=
-tate *bmc)
-                      0x60);
- }
-=20
--static void aspeed_machine_init(MachineState *machine)
--{
--    AspeedMachineClass *amc =3D ASPEED_MACHINE_GET_CLASS(machine);
--
--    aspeed_board_init(machine, amc->board);
--}
--
- static void aspeed_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc =3D MACHINE_CLASS(oc);
--    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
--    const AspeedBoardConfig *board =3D data;
-=20
--    mc->desc =3D board->desc;
-     mc->init =3D aspeed_machine_init;
-     mc->max_cpus =3D ASPEED_CPUS_NUM;
-     mc->no_floppy =3D 1;
-     mc->no_cdrom =3D 1;
-     mc->no_parallel =3D 1;
--    if (board->ram) {
--        mc->default_ram_size =3D board->ram;
--    }
--    amc->board =3D board;
- }
-=20
--static const TypeInfo aspeed_machine_type =3D {
--    .name =3D TYPE_ASPEED_MACHINE,
--    .parent =3D TYPE_MACHINE,
--    .instance_size =3D sizeof(AspeedMachine),
--    .class_size =3D sizeof(AspeedMachineClass),
--    .abstract =3D true,
-+static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *da=
-ta)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       =3D "OpenPOWER Palmetto BMC (ARM926EJ-S)";
-+    amc->soc_name  =3D "ast2400-a1";
-+    amc->hw_strap1 =3D PALMETTO_BMC_HW_STRAP1;
-+    amc->fmc_model =3D "n25q256a";
-+    amc->spi_model =3D "mx25l25635e";
-+    amc->num_cs    =3D 1;
-+    amc->i2c_init  =3D palmetto_bmc_i2c_init;
-+    mc->default_ram_size       =3D 256 * MiB;
-+};
-+
-+static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void =
-*data)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       =3D "Aspeed AST2500 EVB (ARM1176)";
-+    amc->soc_name  =3D "ast2500-a1";
-+    amc->hw_strap1 =3D AST2500_EVB_HW_STRAP1;
-+    amc->fmc_model =3D "w25q256";
-+    amc->spi_model =3D "mx25l25635e";
-+    amc->num_cs    =3D 1;
-+    amc->i2c_init  =3D ast2500_evb_i2c_init;
-+    mc->default_ram_size       =3D 512 * MiB;
-+};
-+
-+static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *dat=
-a)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       =3D "OpenPOWER Romulus BMC (ARM1176)";
-+    amc->soc_name  =3D "ast2500-a1";
-+    amc->hw_strap1 =3D ROMULUS_BMC_HW_STRAP1;
-+    amc->fmc_model =3D "n25q256a";
-+    amc->spi_model =3D "mx66l1g45g";
-+    amc->num_cs    =3D 2;
-+    amc->i2c_init  =3D romulus_bmc_i2c_init;
-+    mc->default_ram_size       =3D 512 * MiB;
- };
-=20
--static const AspeedBoardConfig aspeed_boards[] =3D {
-+static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       =3D "OpenPOWER Swift BMC (ARM1176)";
-+    amc->soc_name  =3D "ast2500-a1";
-+    amc->hw_strap1 =3D SWIFT_BMC_HW_STRAP1;
-+    amc->fmc_model =3D "mx66l1g45g";
-+    amc->spi_model =3D "mx66l1g45g";
-+    amc->num_cs    =3D 2;
-+    amc->i2c_init  =3D swift_bmc_i2c_init;
-+    mc->default_ram_size       =3D 512 * MiB;
-+};
-+
-+static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void =
-*data)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       =3D "OpenPOWER Witherspoon BMC (ARM1176)";
-+    amc->soc_name  =3D "ast2500-a1";
-+    amc->hw_strap1 =3D WITHERSPOON_BMC_HW_STRAP1;
-+    amc->fmc_model =3D "mx25l25635e";
-+    amc->spi_model =3D "mx66l1g45g";
-+    amc->num_cs    =3D 2;
-+    amc->i2c_init  =3D witherspoon_bmc_i2c_init;
-+    mc->default_ram_size =3D 512 * MiB;
-+};
-+
-+static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void =
-*data)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       =3D "Aspeed AST2600 EVB (Cortex A7)";
-+    amc->soc_name  =3D "ast2600-a0";
-+    amc->hw_strap1 =3D AST2600_EVB_HW_STRAP1;
-+    amc->hw_strap2 =3D AST2600_EVB_HW_STRAP2;
-+    amc->fmc_model =3D "w25q512jv";
-+    amc->spi_model =3D "mx66u51235f";
-+    amc->num_cs    =3D 1;
-+    amc->i2c_init  =3D ast2600_evb_i2c_init;
-+    mc->default_ram_size =3D 1 * GiB;
-+};
-+
-+static const TypeInfo aspeed_machine_types[] =3D {
-     {
--        .name      =3D MACHINE_TYPE_NAME("palmetto-bmc"),
--        .desc      =3D "OpenPOWER Palmetto BMC (ARM926EJ-S)",
--        .soc_name  =3D "ast2400-a1",
--        .hw_strap1 =3D PALMETTO_BMC_HW_STRAP1,
--        .fmc_model =3D "n25q256a",
--        .spi_model =3D "mx25l25635e",
--        .num_cs    =3D 1,
--        .i2c_init  =3D palmetto_bmc_i2c_init,
--        .ram       =3D 256 * MiB,
-+        .name          =3D MACHINE_TYPE_NAME("palmetto-bmc"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_palmetto_class_init,
-     }, {
--        .name      =3D MACHINE_TYPE_NAME("ast2500-evb"),
--        .desc      =3D "Aspeed AST2500 EVB (ARM1176)",
--        .soc_name  =3D "ast2500-a1",
--        .hw_strap1 =3D AST2500_EVB_HW_STRAP1,
--        .fmc_model =3D "w25q256",
--        .spi_model =3D "mx25l25635e",
--        .num_cs    =3D 1,
--        .i2c_init  =3D ast2500_evb_i2c_init,
--        .ram       =3D 512 * MiB,
-+        .name          =3D MACHINE_TYPE_NAME("ast2500-evb"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_ast2500_evb_class_init,
-     }, {
--        .name      =3D MACHINE_TYPE_NAME("romulus-bmc"),
--        .desc      =3D "OpenPOWER Romulus BMC (ARM1176)",
--        .soc_name  =3D "ast2500-a1",
--        .hw_strap1 =3D ROMULUS_BMC_HW_STRAP1,
--        .fmc_model =3D "n25q256a",
--        .spi_model =3D "mx66l1g45g",
--        .num_cs    =3D 2,
--        .i2c_init  =3D romulus_bmc_i2c_init,
--        .ram       =3D 512 * MiB,
-+        .name          =3D MACHINE_TYPE_NAME("romulus-bmc"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_romulus_class_init,
-     }, {
--        .name      =3D MACHINE_TYPE_NAME("swift-bmc"),
--        .desc      =3D "OpenPOWER Swift BMC (ARM1176)",
--        .soc_name  =3D "ast2500-a1",
--        .hw_strap1 =3D SWIFT_BMC_HW_STRAP1,
--        .fmc_model =3D "mx66l1g45g",
--        .spi_model =3D "mx66l1g45g",
--        .num_cs    =3D 2,
--        .i2c_init  =3D swift_bmc_i2c_init,
--        .ram       =3D 512 * MiB,
-+        .name          =3D MACHINE_TYPE_NAME("swift-bmc"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_swift_class_init,
-     }, {
--        .name      =3D MACHINE_TYPE_NAME("witherspoon-bmc"),
--        .desc      =3D "OpenPOWER Witherspoon BMC (ARM1176)",
--        .soc_name  =3D "ast2500-a1",
--        .hw_strap1 =3D WITHERSPOON_BMC_HW_STRAP1,
--        .fmc_model =3D "mx25l25635e",
--        .spi_model =3D "mx66l1g45g",
--        .num_cs    =3D 2,
--        .i2c_init  =3D witherspoon_bmc_i2c_init,
--        .ram       =3D 512 * MiB,
-+        .name          =3D MACHINE_TYPE_NAME("witherspoon-bmc"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_witherspoon_class_init,
-     }, {
--        .name      =3D MACHINE_TYPE_NAME("ast2600-evb"),
--        .desc      =3D "Aspeed AST2600 EVB (Cortex A7)",
--        .soc_name  =3D "ast2600-a0",
--        .hw_strap1 =3D AST2600_EVB_HW_STRAP1,
--        .hw_strap2 =3D AST2600_EVB_HW_STRAP2,
--        .fmc_model =3D "w25q512jv",
--        .spi_model =3D "mx66u51235f",
--        .num_cs    =3D 1,
--        .i2c_init  =3D ast2600_evb_i2c_init,
--        .ram       =3D 1 * GiB,
--    },
--};
--
--static void aspeed_machine_types(void)
--{
--    int i;
--
--    type_register_static(&aspeed_machine_type);
--    for (i =3D 0; i < ARRAY_SIZE(aspeed_boards); ++i) {
--        TypeInfo ti =3D {
--            .name       =3D aspeed_boards[i].name,
--            .parent     =3D TYPE_ASPEED_MACHINE,
--            .class_init =3D aspeed_machine_class_init,
--            .class_data =3D (void *)&aspeed_boards[i],
--        };
--        type_register(&ti);
-+        .name          =3D MACHINE_TYPE_NAME("ast2600-evb"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_ast2600_evb_class_init,
-+    }, {
-+        .name          =3D TYPE_ASPEED_MACHINE,
-+        .parent        =3D TYPE_MACHINE,
-+        .instance_size =3D sizeof(AspeedMachine),
-+        .class_size    =3D sizeof(AspeedMachineClass),
-+        .class_init    =3D aspeed_machine_class_init,
-+        .abstract      =3D true,
-     }
--}
-+};
-=20
--type_init(aspeed_machine_types)
-+DEFINE_TYPES(aspeed_machine_types)
---=20
-2.21.0
+once the former has been initialized.
+*/
 
+> +     */
+> +    bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_=
+FILE,
+> +        0, ACPI_GHES_ADDRESS_SIZE, ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
+> +}
+> +
+> +/* Build Hardware Error Source Table */
+> +void acpi_ghes_build_hest(GArray *table_data, GArray *hardware_errors,
+> +                          BIOSLinker *linker)
+it's not GEST specific table, so
+  build_hest()
+
+> +{
+> +    uint32_t hest_start =3D table_data->len;
+> +    uint32_t source_id =3D 0;
+> +
+> +    /* Hardware Error Source Table header*/
+> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> +
+> +    /* Error Source Count */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, =
+4);
+> +
+
+this is the place where all error source structures will be enumerated.
+I'd move out GHESv2 specific coed into a separate function so that code her=
+e
+would look like this
+
+    build_ghes_v2(...);
+   =20
+   =20
+  =20
+> +    /*
+> +     * Type:
+> +     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
+> +     */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR=
+_V2, 2);
+> +    /*
+> +     * Source Id
+
+> +     * Once we support more than one hardware error sources, we need to
+> +     * increase the value of this field.
+I'm not sure ^^^ is correct, according to spec it's just unique id per
+distinct error structure, so we just assign arbitrary values to each
+declared source and that never changes once assigned.
+
+For now I'd make source_id an enum with one member
+  enum {
+    ACPI_HEST_SRC_ID_SEA =3D 0,
+    /* future ids go here */
+    ACPI_HEST_SRC_ID_RESERVED,
+  }
+
+and use that instead of allocating magic 0 at the beginning of the function=
+.
+ build_ghes_v2(ACPI_HEST_GHES_SEA);
+Also add a comment to declaration that already assigned values are not to b=
+e changed
+
+> +     */
+> +    build_append_int_noprefix(table_data, source_id, 2);
+> +    /* Related Source Id */
+> +    build_append_int_noprefix(table_data, 0xffff, 2);
+> +    /* Flags */
+> +    build_append_int_noprefix(table_data, 0, 1);
+> +    /* Enabled */
+> +    build_append_int_noprefix(table_data, 1, 1);
+> +
+> +    /* Number of Records To Pre-allocate */
+> +    build_append_int_noprefix(table_data, 1, 4);
+> +    /* Max Sections Per Record */
+> +    build_append_int_noprefix(table_data, 1, 4);
+> +    /* Max Raw Data Length */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH,=
+ 4);
+> +
+> +    /* Error Status Address */
+> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+> +                     4 /* QWord access */, 0);
+> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +        ACPI_GHES_ERROR_STATUS_ADDRESS_OFFSET(hest_start, source_id),
+it's fine only if GHESv2 is the only entries in HEST, but once
+other types are added this macro will silently fall apart and
+cause table corruption.
+
+Instead of offset from hest_start, I suggest to use offset relative
+to GAS structure, here is an idea
+
+#define GAS_ADDR_OFFSET 4
+
+    off =3D table->len
+    build_append_gas()
+    bios_linker_loader_add_pointer(...,
+        off + GAS_ADDR_OFFSET, ...
+
+> +        ACPI_GHES_ADDRESS_SIZE, ACPI_GHES_ERRORS_FW_CFG_FILE,
+> +        source_id * ACPI_GHES_ADDRESS_SIZE);
+> +
+> +    /*
+> +     * Notification Structure
+> +     * Now only enable ARMv8 SEA notification type
+> +     */
+> +    acpi_ghes_build_notify(table_data, ACPI_GHES_NOTIFY_SEA);
+> +
+> +    /* Error Status Block Length */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH,=
+ 4);
+> +
+> +    /*
+> +     * Read Ack Register
+> +     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
+> +     * version 2 (GHESv2 - Type 10)
+> +     */
+> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+> +                     4 /* QWord access */, 0);
+> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +        ACPI_GHES_READ_ACK_REGISTER_ADDRESS_OFFSET(hest_start, 0),
+ditto
+
+> +        ACPI_GHES_ADDRESS_SIZE, ACPI_GHES_ERRORS_FW_CFG_FILE,
+> +        (ACPI_GHES_ERROR_SOURCE_COUNT + source_id) * ACPI_GHES_ADDRESS_S=
+IZE);
+> +
+> +    /*
+> +     * Read Ack Preserve
+> +     * We only provide the first bit in Read Ack Register to OSPM to wri=
+te
+> +     * while the other bits are preserved.
+> +     */
+> +    build_append_int_noprefix(table_data, ~0x1ULL, 8);
+> +    /* Read Ack Write */
+> +    build_append_int_noprefix(table_data, 0x1, 8);
+> +
+> +    build_header(linker, table_data, (void *)(table_data->data + hest_st=
+art),
+> +        "HEST", table_data->len - hest_start, 1, NULL, "GHES");
+hest is not GHEST specific so s/GHES/NULL/
+                                                        =20
+> +}
+> +
+> +static AcpiGhesState ges;
+> +void acpi_ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
+> +{
+> +
+> +    size_t size =3D 2 * ACPI_GHES_ADDRESS_SIZE + ACPI_GHES_MAX_RAW_DATA_=
+LENGTH;
+> +    size_t request_block_size =3D ACPI_GHES_ERROR_SOURCE_COUNT * size;
+> +
+
+> +    /* Create a read-only fw_cfg file for GHES */
+> +    fw_cfg_add_file(s, ACPI_GHES_ERRORS_FW_CFG_FILE, hardware_error->dat=
+a,
+> +                    request_block_size);
+> +
+> +    /* Create a read-write fw_cfg file for Address */
+> +    fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, N=
+ULL,
+> +        NULL, &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
+> +}
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 2c3702b882..3681ec6e3d 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -1578,6 +1578,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables=
+)
+>      tables->table_data =3D g_array_new(false, true /* clear */, 1);
+>      tables->tcpalog =3D g_array_new(false, true /* clear */, 1);
+>      tables->vmgenid =3D g_array_new(false, true /* clear */, 1);
+> +    tables->hardware_errors =3D g_array_new(false, true /* clear */, 1);
+>      tables->linker =3D bios_linker_loader_init();
+>  }
+> =20
+> @@ -1588,6 +1589,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tab=
+les, bool mfre)
+>      g_array_free(tables->table_data, true);
+>      g_array_free(tables->tcpalog, mfre);
+>      g_array_free(tables->vmgenid, mfre);
+> +    g_array_free(tables->hardware_errors, mfre);
+>  }
+> =20
+>  /*
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 4cd50175e0..1b1fd273e4 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -48,6 +48,7 @@
+>  #include "sysemu/reset.h"
+>  #include "kvm_arm.h"
+>  #include "migration/vmstate.h"
+> +#include "hw/acpi/acpi_ghes.h"
+> =20
+>  #define ARM_SPI_BASE 32
+> =20
+> @@ -825,6 +826,13 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuil=
+dTables *tables)
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_spcr(tables_blob, tables->linker, vms);
+> =20
+> +    if (vms->ras) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        acpi_ghes_build_error_table(tables->hardware_errors, tables->lin=
+ker);
+> +        acpi_ghes_build_hest(tables_blob, tables->hardware_errors,
+> +                             tables->linker);
+> +    }
+> +
+>      if (ms->numa_state->num_nodes > 0) {
+>          acpi_add_table(table_offsets, tables_blob);
+>          build_srat(tables_blob, tables->linker, vms);
+> @@ -942,6 +950,10 @@ void virt_acpi_setup(VirtMachineState *vms)
+>      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog-=
+>data,
+>                      acpi_data_len(tables.tcpalog));
+> =20
+> +    if (vms->ras) {
+> +        acpi_ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
+> +    }
+> +
+>      build_state->rsdp_mr =3D acpi_add_rom_blob(virt_acpi_build_update,
+>                                               build_state, tables.rsdp,
+>                                               ACPI_BUILD_RSDP_FILE, 0);
+> diff --git a/include/hw/acpi/acpi_ghes.h b/include/hw/acpi/acpi_ghes.h
+> new file mode 100644
+> index 0000000000..cb62ec9c7b
+> --- /dev/null
+> +++ b/include/hw/acpi/acpi_ghes.h
+> @@ -0,0 +1,56 @@
+> +/*
+> + * Support for generating APEI tables and recording CPER for Guests
+> + *
+> + * Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
+> + *
+> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> +
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> +
+> + * You should have received a copy of the GNU General Public License alo=
+ng
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef ACPI_GHES_H
+> +#define ACPI_GHES_H
+> +
+> +#include "hw/acpi/bios-linker-loader.h"
+> +
+> +/*
+> + * Values for Hardware Error Notification Type field
+> + */
+> +enum AcpiGhesNotifyType {
+> +    ACPI_GHES_NOTIFY_POLLED =3D 0,    /* Polled */
+> +    ACPI_GHES_NOTIFY_EXTERNAL =3D 1,  /* External Interrupt */
+> +    ACPI_GHES_NOTIFY_LOCAL =3D 2, /* Local Interrupt */
+> +    ACPI_GHES_NOTIFY_SCI =3D 3,   /* SCI */
+> +    ACPI_GHES_NOTIFY_NMI =3D 4,   /* NMI */
+> +    ACPI_GHES_NOTIFY_CMCI =3D 5,  /* CMCI, ACPI 5.0: 18.3.2.7, Table 18-=
+290 */
+> +    ACPI_GHES_NOTIFY_MCE =3D 6,   /* MCE, ACPI 5.0: 18.3.2.7, Table 18-2=
+90 */
+> +    /* GPIO-Signal, ACPI 6.0: 18.3.2.7, Table 18-332 */
+> +    ACPI_GHES_NOTIFY_GPIO =3D 7,
+> +    /* ARMv8 SEA, ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_GHES_NOTIFY_SEA =3D 8,
+> +    /* ARMv8 SEI, ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_GHES_NOTIFY_SEI =3D 9,
+> +    /* External Interrupt - GSIV, ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_GHES_NOTIFY_GSIV =3D 10,
+> +    /* Software Delegated Exception, ACPI 6.2: 18.3.2.9, Table 18-383 */
+> +    ACPI_GHES_NOTIFY_SDEI =3D 11,
+> +    ACPI_GHES_NOTIFY_RESERVED =3D 12 /* 12 and greater are reserved */
+> +};
+maybe make all comment go on newline, otherwise zoo above look ugly
+=20
+> +
+> +void acpi_ghes_build_hest(GArray *table_data, GArray *hardware_error,
+> +                          BIOSLinker *linker);
+> +
+> +void acpi_ghes_build_error_table(GArray *hardware_errors, BIOSLinker *li=
+nker);
+> +void acpi_ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
+> +#endif
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index de4a406568..8f13620701 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -220,6 +220,7 @@ struct AcpiBuildTables {
+>      GArray *rsdp;
+>      GArray *tcpalog;
+>      GArray *vmgenid;
+> +    GArray *hardware_errors;
+>      BIOSLinker *linker;
+>  } AcpiBuildTables;
+> =20

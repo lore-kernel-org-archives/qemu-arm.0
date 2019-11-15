@@ -1,307 +1,372 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp6581292wrr;
-        Fri, 15 Nov 2019 01:45:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyR5iP95Z4dOpq99LYJCh30z0dIeGPzttX7VKCpTXfyu5CzwA9HVl+3EwXoZJSsXbZtRGM2
-X-Received: by 2002:a17:906:3396:: with SMTP id v22mr12260244eja.169.1573811115942;
-        Fri, 15 Nov 2019 01:45:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573811115; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp6703048wrr;
+        Fri, 15 Nov 2019 03:53:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyOZqpqZUaqYUxAssJA56AmO96GTWMwwKa01I3B6Yg4CvJQ13ybof03PIE124XoAjrSXDtQ
+X-Received: by 2002:ac8:73ce:: with SMTP id v14mr13325471qtp.136.1573818821197;
+        Fri, 15 Nov 2019 03:53:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573818821; cv=none;
         d=google.com; s=arc-20160816;
-        b=OQTfo2+pwiun9/Cvu8XSbndM/07ytWUPe/sby9L9dIb2A+7kT9kt7r7Vu3s6gbVn7O
-         jP3H/t3Lnq6dX5mC68KEcE7IDoVdEM7VdYAFAvFHPpIt4rzeGLztfJ3Ff/fZMaGutDMc
-         69hHN+mq4QXw7YmlWssbAfmjED2nkujEdhSaDo+J168dNbqljJtwZYIETLaKdAUFyMiR
-         Dx6zcsQun2P6dm9oeKV7ljq2vHqOaXxM56CYUigKGKYO/cehGSoq0qM/8BFjcPEdLf/8
-         WLmGJ+yCUfykj2ZnCfa5dhLT2GBhqQXxs+2XMDPPisHRShgnCUzpuF4mUSe/KXT52Sfh
-         s1Dg==
+        b=YWflE20cC0IZvHWzyZvclmDdR0TMm81sKS3Wwe6V+Qkkh8Kw8zWhlVH0kuFyoIPVr8
+         qNVdrCmTOwG65SWbQYaC5ERjvfPDNlcYtI2TzqoIC3Yphu8hNFWt/BYwRRpr/GfQ5YHY
+         oIMn1I1+JAVzeMTcLWWmq7sYpyNea34wccYZrU4ZfussHe4yRDsxqcGL64ThQVXUACHc
+         5h4nnSKlDbLypGLFt86oWN/BfEEqBdUZyefe7r2+pNNpmMcupD7/P+1zT5SOaG2LuhpU
+         VSBNNynmwsARTJ+aIxqJooYkuEsnr5JcCUSyR9J4JB72VaU0XKOohTR8Q40hWGzF0Dfp
+         jfjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=rDa6afp9hueO2vBvDtK/Ls/QJ8tHZ/QehiNQvbDMUPw=;
-        b=CNenXAFL58L38XJkKPOsKXl0vivyMm7uYxDCFMJl9Y9K5m5G9VaVd+SzAzpFTvp3lJ
-         12SBrjboxSizyDQ60SBHe2YY/JPgS2l+JYWO5/yJ29G0kdNk8u+y6yUNqkiHS2ywMYNi
-         LWGvqGCymvEGsNV4K6Z808iR0RMTqwiCX/n+DZCS4DaX4o2aE7BHOhsHteySfviLLtxI
-         l9gjPhWmo0S9ae4Vuk8upmN7qTBVfv3Q7Yk1HjbYsCvNw2kSapQPX0Y23TfeuBc9uGq7
-         PtAhyFcGcShf3Pl/8Pgwzwjvx9e/hohexjyf9fWbK+18WB5y4cHb/5AwwwEo0bSSRZ2j
-         B4eQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=FPxvJYlWIAKGmbZcyaAmYe2+vxMcDivQDmkf/TbVrvA=;
+        b=QYBkqksMJxk1hVnz41/LDLzc7EJ25JE2UtLdJRW8PohpoXA7r+nduKwDWbNer879Eu
+         +Y9031WEQBQ5NnyVKggRmG/S1+aNP3O6nsIQSEdqrzJjs9iY1AFht2sRQpXmN+HjYyOv
+         66Z/0jdL9GjKY3T9gf2BV6zGGIfKLMshQop1/XpnDLiAVI+9vKWwcwLlAbjtSuDzFmYq
+         kVpJvVek2/aMUB4d29VVSqPVxhYoBEdxuKusKYqiQChiqbXZyaCplI0Mt99CXk+fh4og
+         nQXkqlIENXCYI55dt74k8RZGPTCWXZzN4BzyE1ldnV4/zzP+iXHV4KWHc5V3itWOv+4j
+         gPOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bCI5Ty86;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b18si5897835eda.307.2019.11.15.01.45.15;
-        Fri, 15 Nov 2019 01:45:15 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="i6/+qeqF";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s44si5492825qtc.147.2019.11.15.03.53.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 15 Nov 2019 03:53:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bCI5Ty86;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727643AbfKOJpN (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 15 Nov 2019 04:45:13 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:41880 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1727183AbfKOJpN (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 15 Nov 2019 04:45:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1573811111;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=rDa6afp9hueO2vBvDtK/Ls/QJ8tHZ/QehiNQvbDMUPw=;
-        b=bCI5Ty86psHuPqpjr+ZIU9WNlBLEsmMfAdRkOOhF9QTLvVhbMSIJRIagkwlAQRql6kNFrt
-        8rgu7GKS/TRPsnrizgtPlG+AIecwnlTBgd7bHjFEM/EeQPTCoRqHJqeNrInYaHukVvXIyD
-        8Zta+sDauGgLoXtmMl/XEZmz/KxVTYU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-34-bYq3-kLhNziTdAeIcPm87w-1; Fri, 15 Nov 2019 04:45:08 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C1D61DBAD;
-        Fri, 15 Nov 2019 09:45:06 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 82D431001DE1;
-        Fri, 15 Nov 2019 09:45:00 +0000 (UTC)
-Date:   Fri, 15 Nov 2019 10:44:58 +0100
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     Xiang Zheng <zhengxiang9@huawei.com>
-Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>,
-        <gengdongjiu@huawei.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
-        <ehabkost@redhat.com>, <jonathan.cameron@huawei.com>,
-        <xuwei5@huawei.com>, <kvm@vger.kernel.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <linuxarm@huawei.com>, <wanghaibin.wang@huawei.com>
-Subject: Re: [RESEND PATCH v21 2/6] docs: APEI GHES generation and CPER
- record description
-Message-ID: <20191115104458.200a6231@redhat.com>
-In-Reply-To: <20191111014048.21296-3-zhengxiang9@huawei.com>
-References: <20191111014048.21296-1-zhengxiang9@huawei.com>
-        <20191111014048.21296-3-zhengxiang9@huawei.com>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="i6/+qeqF";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37938 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iVaAW-0001Df-Mz
+	for alex.bennee@linaro.org; Fri, 15 Nov 2019 06:53:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39725)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <dgibson@ozlabs.org>) id 1iVaAN-0001DB-PM
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 06:53:33 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <dgibson@ozlabs.org>) id 1iVaAL-00061W-CC
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 06:53:31 -0500
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:33895 helo=ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1iVaAK-0005z8-Nj; Fri, 15 Nov 2019 06:53:29 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 47DxZC4cBRz9sPK; Fri, 15 Nov 2019 22:53:23 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1573818803;
+ bh=Qy+aAwAfg425Zf1umA1D4VEFp1Spf/MWeYcWUZkNM9o=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=i6/+qeqFCws3+NW+6RSJPF8lDiRBC7iYMryrkiL2DPR4+tsVkeZDKN7OQl5g4C+PH
+ tUjWC4E32+k4I1BWbbXhmpMOKVNXEeH2ctdrIEna2Q1DKaN0290wQpWehF2lWzST9F
+ okXrB9slvWXvj0+sefQl+oen4CgKgFJqNMujBZN8=
+Date: Fri, 15 Nov 2019 20:32:40 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Cornelia Huck <cohuck@redhat.com>
+Subject: Re: [PATCH] hw: add compat machines for 5.0
+Message-ID: <20191115093240.GG2134@umbus.fritz.box>
+References: <20191112104811.30323-1-cohuck@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: bYq3-kLhNziTdAeIcPm87w-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="reI/iBAAp9kzkmX4"
+Content-Disposition: inline
+In-Reply-To: <20191112104811.30323-1-cohuck@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2401:3900:2:1::2
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hpqgMLJzXYIe
+
+
+--reI/iBAAp9kzkmX4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: qKjfeWT4UGOe
 
-On Mon, 11 Nov 2019 09:40:44 +0800
-Xiang Zheng <zhengxiang9@huawei.com> wrote:
+On Tue, Nov 12, 2019 at 11:48:11AM +0100, Cornelia Huck wrote:
+> Add 5.0 machine types for arm/i440fx/q35/s390x/spapr.
+>=20
+> For i440fx and q35, unversioned cpu models are still translated
+> to -v1; I'll leave changing this (if desired) to the respective
+> maintainers.
+>=20
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 
-> From: Dongjiu Geng <gengdongjiu@huawei.com>
->=20
-> Add APEI/GHES detailed design document
->=20
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  docs/specs/acpi_hest_ghes.rst | 95 +++++++++++++++++++++++++++++++++++
->  docs/specs/index.rst          |  1 +
->  2 files changed, 96 insertions(+)
->  create mode 100644 docs/specs/acpi_hest_ghes.rst
 >=20
-> diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rs=
-t
-> new file mode 100644
-> index 0000000000..348825f9d3
-> --- /dev/null
-> +++ b/docs/specs/acpi_hest_ghes.rst
-> @@ -0,0 +1,95 @@
-> +APEI tables generating and CPER record
-> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> also pushed out to https://github.com/cohuck/qemu machine-5.0
+>=20
+> x86 folks: if you want to change the cpu model versioning, I
+> can do it in this patch, or just do it on top yourselves
+>=20
+> ---
+>  hw/arm/virt.c              |  7 ++++++-
+>  hw/core/machine.c          |  3 +++
+>  hw/i386/pc.c               |  3 +++
+>  hw/i386/pc_piix.c          | 14 +++++++++++++-
+>  hw/i386/pc_q35.c           | 13 ++++++++++++-
+>  hw/ppc/spapr.c             | 15 +++++++++++++--
+>  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>  include/hw/boards.h        |  3 +++
+>  include/hw/i386/pc.h       |  3 +++
+>  9 files changed, 69 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index d4bedc260712..02f654b63278 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2147,10 +2147,15 @@ static void machvirt_machine_init(void)
+>  }
+>  type_init(machvirt_machine_init);
+> =20
+> +static void virt_machine_5_0_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
 > +
-> +..
-> +   Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
+>  static void virt_machine_4_2_options(MachineClass *mc)
+>  {
+>  }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
+> +DEFINE_VIRT_MACHINE(4, 2)
+> =20
+>  static void virt_machine_4_1_options(MachineClass *mc)
+>  {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 1689ad3bf8af..21fe2d974817 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -27,6 +27,9 @@
+>  #include "hw/pci/pci.h"
+>  #include "hw/mem/nvdimm.h"
+> =20
+> +GlobalProperty hw_compat_4_2[] =3D {};
+> +const size_t hw_compat_4_2_len =3D G_N_ELEMENTS(hw_compat_4_2);
 > +
-> +   This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> +   See the COPYING file in the top-level directory.
+>  GlobalProperty hw_compat_4_1[] =3D {
+>      { "virtio-pci", "x-pcie-flr-init", "off" },
+>  };
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 96715f8a3f99..2126c49ee7c5 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -103,6 +103,9 @@
+> =20
+>  struct hpet_fw_config hpet_cfg =3D {.count =3D UINT8_MAX};
+> =20
+> +GlobalProperty pc_compat_4_2[] =3D {};
+> +const size_t pc_compat_4_2_len =3D G_N_ELEMENTS(pc_compat_4_2);
 > +
-> +Design Details
-> +--------------
+>  GlobalProperty pc_compat_4_1[] =3D {};
+>  const size_t pc_compat_4_1_len =3D G_N_ELEMENTS(pc_compat_4_1);
+> =20
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 2aefa3b8dfe3..65915ea23c4a 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -424,7 +424,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>      machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+>  }
+> =20
+> -static void pc_i440fx_4_2_machine_options(MachineClass *m)
+> +static void pc_i440fx_5_0_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+>      pc_i440fx_machine_options(m);
+> @@ -433,6 +433,18 @@ static void pc_i440fx_4_2_machine_options(MachineCla=
+ss *m)
+>      pcmc->default_cpu_version =3D 1;
+>  }
+> =20
+> +DEFINE_I440FX_MACHINE(v5_0, "pc-i440fx-5.0", NULL,
+> +                      pc_i440fx_5_0_machine_options);
 > +
-> +::
+> +static void pc_i440fx_4_2_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_5_0_machine_options(m);
+> +    m->alias =3D NULL;
+> +    m->is_default =3D 0;
+> +    compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+> +    compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
+> +}
 > +
-> +         etc/acpi/tables                                 etc/hardware_er=
-rors
-> +      =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D      =
-                =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> +  + +--------------------------+            +-----------------------+
-> +  | | HEST                     |            |    address            |   =
-         +--------------+
-> +  | +--------------------------+            |    registers          |   =
-         | Error Status |
-> +  | | GHES1                    |            | +---------------------+   =
-         | Data Block 1 |
-> +  | +--------------------------+ +--------->| |error_block_address1 |---=
--------->| +------------+
-> +  | | .................        | |          | +---------------------+   =
-         | |  CPER      |
-> +  | | error_status_address-----+-+ +------->| |error_block_address2 |---=
------+   | |  CPER      |
-> +  | | .................        |   |        | +---------------------+   =
-     |   | |  ....      |
-> +  | | read_ack_register--------+-+ |        | |    ..............   |   =
-     |   | |  CPER      |
-> +  | | read_ack_preserve        | | |        +-----------------------+   =
-     |   | +------------+
-> +  | | read_ack_write           | | | +----->| |error_block_addressN |---=
----+ |   | Error Status |
-> +  + +--------------------------+ | | |      | +---------------------+   =
-   | |   | Data Block 2 |
-> +  | | GHES2                    | +-+-+----->| |read_ack_register1   |   =
-   | +-->| +------------+
-> +  + +--------------------------+   | |      | +---------------------+   =
-   |     | |  CPER      |
-> +  | | .................        |   | | +--->| |read_ack_register2   |   =
-   |     | |  CPER      |
-> +  | | error_status_address-----+---+ | |    | +---------------------+   =
-   |     | |  ....      |
-> +  | | .................        |     | |    | |  .............      |   =
-   |     | |  CPER      |
-> +  | | read_ack_register--------+-----+-+    | +---------------------+   =
-   |     +-+------------+
-> +  | | read_ack_preserve        |     |   +->| |read_ack_registerN   |   =
-   |     | |..........  |
-> +  | | read_ack_write           |     |   |  | +---------------------+   =
-   |     | +------------+
-> +  + +--------------------------|     |   |                              =
-   |     | Error Status |
-> +  | | ...............          |     |   |                              =
-   |     | Data Block N |
-> +  + +--------------------------+     |   |                              =
-   +---->| +------------+
-> +  | | GHESN                    |     |   |                              =
-         | |  CPER      |
-> +  + +--------------------------+     |   |                              =
-         | |  CPER      |
-> +  | | .................        |     |   |                              =
-         | |  ....      |
-> +  | | error_status_address-----+-----+   |                              =
-         | |  CPER      |
-> +  | | .................        |         |                              =
-         +-+------------+
-> +  | | read_ack_register--------+---------+
-> +  | | read_ack_preserve        |
-> +  | | read_ack_write           |
-> +  + +--------------------------+
+>  DEFINE_I440FX_MACHINE(v4_2, "pc-i440fx-4.2", NULL,
+>                        pc_i440fx_4_2_machine_options);
+> =20
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index d51f5247276d..c582a6f6a363 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -348,7 +348,7 @@ static void pc_q35_machine_options(MachineClass *m)
+>      m->max_cpus =3D 288;
+>  }
+> =20
+> -static void pc_q35_4_2_machine_options(MachineClass *m)
+> +static void pc_q35_5_0_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+>      pc_q35_machine_options(m);
+> @@ -356,6 +356,17 @@ static void pc_q35_4_2_machine_options(MachineClass =
+*m)
+>      pcmc->default_cpu_version =3D 1;
+>  }
+> =20
+> +DEFINE_Q35_MACHINE(v5_0, "pc-q35-5.0", NULL,
+> +                   pc_q35_5_0_machine_options);
+> +
+> +static void pc_q35_4_2_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_5_0_machine_options(m);
+> +    m->alias =3D NULL;
+> +    compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+> +    compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
+> +}
+> +
+>  DEFINE_Q35_MACHINE(v4_2, "pc-q35-4.2", NULL,
+>                     pc_q35_4_2_machine_options);
+> =20
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 94f9d27096af..d5c33f2c19d3 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4486,15 +4486,26 @@ static const TypeInfo spapr_machine_info =3D {
+>      }                                                                \
+>      type_init(spapr_machine_register_##suffix)
+> =20
+> +/*
+> + * pseries-5.0
+> + */
+> +static void spapr_machine_5_0_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE(5_0, "5.0", true);
+> +
+>  /*
+>   * pseries-4.2
+>   */
+>  static void spapr_machine_4_2_class_options(MachineClass *mc)
+>  {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_5_0_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+>  }
+> =20
+> -DEFINE_SPAPR_MACHINE(4_2, "4.2", true);
+> +DEFINE_SPAPR_MACHINE(4_2, "4.2", false);
+> =20
+>  /*
+>   * pseries-4.1
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index d3edeef0ad92..01e7e209a5da 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -639,14 +639,26 @@ bool css_migration_enabled(void)
+>      }                                                                   =
+      \
+>      type_init(ccw_machine_register_##suffix)
+> =20
+> +static void ccw_machine_5_0_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_5_0_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(5_0, "5.0", true);
+> +
+>  static void ccw_machine_4_2_instance_options(MachineState *machine)
+>  {
+> +    ccw_machine_5_0_instance_options(machine);
+>  }
+> =20
+>  static void ccw_machine_4_2_class_options(MachineClass *mc)
+>  {
+> +    ccw_machine_5_0_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+>  }
+> -DEFINE_CCW_MACHINE(4_2, "4.2", true);
+> +DEFINE_CCW_MACHINE(4_2, "4.2", false);
+> =20
+>  static void ccw_machine_4_1_instance_options(MachineState *machine)
+>  {
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index de45087f34cb..24cbeecbaecc 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -329,6 +329,9 @@ struct MachineState {
+>      } \
+>      type_init(machine_initfn##_register_types)
+> =20
+> +extern GlobalProperty hw_compat_4_2[];
+> +extern const size_t hw_compat_4_2_len;
+> +
+>  extern GlobalProperty hw_compat_4_1[];
+>  extern const size_t hw_compat_4_1_len;
+> =20
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index e6fa8418ca61..0b23fc73c99b 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -239,6 +239,9 @@ void pc_system_firmware_init(PCMachineState *pcms, Me=
+moryRegion *rom_memory);
+>  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+>                         const CPUArchIdList *apic_ids, GArray *entry);
+> =20
+> +extern GlobalProperty pc_compat_4_2[];
+> +extern const size_t pc_compat_4_2_len;
+> +
+>  extern GlobalProperty pc_compat_4_1[];
+>  extern const size_t pc_compat_4_1_len;
+> =20
 
-I'd merge "Error Status Data Block" with "address registers", so it would b=
-e
-clear that "Error Status Data Block" is located after "read_ack_registerN"
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-> +
-> +(1) QEMU generates the ACPI HEST table. This table goes in the current
-> +    "etc/acpi/tables" fw_cfg blob. Each error source has different
-> +    notification types.
-> +
-> +(2) A new fw_cfg blob called "etc/hardware_errors" is introduced. QEMU
-> +    also needs to populate this blob. The "etc/hardware_errors" fw_cfg b=
-lob
-> +    contains an address registers table and an Error Status Data Block t=
-able.
-> +
-> +(3) The address registers table contains N Error Block Address entries
-> +    and N Read Ack Register entries. The size for each entry is 8-byte.
-> +    The Error Status Data Block table contains N Error Status Data Block
-> +    entries. The size for each entry is 4096(0x1000) bytes. The total si=
-ze
-> +    for the "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) =
-bytes.
-> +    N is the number of the kinds of hardware error sources.
-> +
-> +(4) QEMU generates the ACPI linker/loader script for the firmware. The
-> +    firmware pre-allocates memory for "etc/acpi/tables", "etc/hardware_e=
-rrors"
-> +    and copies blob contents there.
-> +
-> +(5) QEMU generates N ADD_POINTER commands, which patch addresses in the
-> +    "error_status_address" fields of the HEST table with a pointer to th=
-e
-> +    corresponding "address registers" in the "etc/hardware_errors" blob.
-> +
-> +(6) QEMU generates N ADD_POINTER commands, which patch addresses in the
-> +    "read_ack_register" fields of the HEST table with a pointer to the
-> +    corresponding "address registers" in the "etc/hardware_errors" blob.
+--reI/iBAAp9kzkmX4
+Content-Type: application/pgp-signature; name="signature.asc"
 
-s/"address registers" in/"read_ack_register" within/
+-----BEGIN PGP SIGNATURE-----
 
-> +
-> +(7) QEMU generates N ADD_POINTER commands for the firmware, which patch
-> +    addresses in the "error_block_address" fields with a pointer to the
-> +    respective "Error Status Data Block" in the "etc/hardware_errors" bl=
-ob.
-> +
-> +(8) QEMU defines a third and write-only fw_cfg blob which is called
-> +    "etc/hardware_errors_addr". Through that blob, the firmware can send=
- back
-> +    the guest-side allocation addresses to QEMU. The "etc/hardware_error=
-s_addr"
-> +    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER =
-command
-> +    for the firmware. The firmware will write back the start address of
-> +    "etc/hardware_errors" blob to the fw_cfg file "etc/hardware_errors_a=
-ddr".
-> +
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl3OcLgACgkQbDjKyiDZ
+s5LAIQ//X2f2XE9Gy8dIU0yG4iRW3Wvrv3GlrPHeT8JHjsoyXlc3yHMJJwygA3In
+KANTUCf5wA69k5qknSSip3EslNbGYQ5RXnMZpkYVJ6cqTSyqn9JCNm2TvYMuYMKG
+Hb7gMF9ql5YcjVu7vAcSEIC9fq2/2DOIJHK8yR01iJj4rV7zBPsm/JiUIpc0CBvr
+VcJ/GjkksUOAoSUnzXMuDlC2q1FVUF/pkS5ooE7lq/baLTTWnk5vpw3mUiejtDE5
+T+/L729VnBIeftH1rycIc2j+pMLHbzHcdBl9/popY0lyrEGSIQ079EqbYjvCpMew
+Rru6VZyFp8r9KjBEioYmpnmwD9hSm4xMdd0YdX7Y2oSeiHUWgskXC8Hd2FvRIwHH
+kyp2q9fgbVJ22l8JOsh9sooRXZu9IDAyjEqIab0E1r5I+cVMP5/20oqqBbY2XHvc
+gh68fHsjwaR1qeT7RU9QlljcsxnK+CAgXBQJocZPnW1/9nOj14tV2NhqD1zwgZA6
+Z7ud92Ff0mMCQBcmevFKCEbkvGwqkxO+rccpN50iZmPmGK2vhJDWpUa0hwEHziqP
+t9eIo7k+sFZNTD3pmf10XGNbLYUp9UsWwbEdcFdwZOUxs4ZkRBSB06VX7V7QKyHZ
+4KW9dKEBQhGBtBevymBXhjpLAyk3S4denjLKJO7pM2ZRtJ7bf38=
+=pI3k
+-----END PGP SIGNATURE-----
 
-> +(9) When QEMU gets a SIGBUS from the kernel, QEMU formats the CPER right=
- into
-> +    guest memory,=20
-
-s/
-QEMU formats the CPER right into guest memory
-/
-QEMU writes CPER into corresponding "Error Status Data Block"
-/
-
-> and then injects platform specific interrupt (in case of
-> +    arm/virt machine it's Synchronous External Abort) as a notification =
-which
-> +    is necessary for notifying the guest.
-
-
-> +
-> +(10) This notification (in virtual hardware) will be handled by the gues=
-t
-> +     kernel, guest APEI driver will read the CPER which is recorded by Q=
-EMU and
-> +     do the recovery.
-Maybe better would be to say:
-"
-On receiving notification, guest APEI driver cold read the CPER error
-and take appropriate action
-"
-
-
-also in HEST patches there is implicit ABI, which probably should be docume=
-nted here.
-More specifically kvm_arch_on_sigbus_vcpu() error injection
-uses source_id as index in "etc/hardware_errors" to find out "Error Status =
-Data Block"
-entry corresponding to error source. So supported source_id values should b=
-e assigned
-here and not be changed afterwards to make sure that guest will write error=
- into
-expected "Error Status Data Block" even if guest was migrated to a newer QE=
-MU.
-
-
-> diff --git a/docs/specs/index.rst b/docs/specs/index.rst
-> index 984ba44029..3019b9c976 100644
-> --- a/docs/specs/index.rst
-> +++ b/docs/specs/index.rst
-> @@ -13,3 +13,4 @@ Contents:
->     ppc-xive
->     ppc-spapr-xive
->     acpi_hw_reduced_hotplug
-> +   acpi_hest_ghes
+--reI/iBAAp9kzkmX4--

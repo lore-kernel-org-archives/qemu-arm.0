@@ -1,120 +1,154 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp76469wrr;
-        Fri, 15 Nov 2019 16:59:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzgGeaVwS0zQlEHP2+3y34dxubQDqp+CLDK+tp2dxTPwFVarhBBIFRMRLgurcxv7l5URnRC
-X-Received: by 2002:a17:906:3450:: with SMTP id d16mr5313130ejb.216.1573865950823;
-        Fri, 15 Nov 2019 16:59:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573865950; cv=none;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp116993wrr;
+        Fri, 15 Nov 2019 17:48:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzB4QsNWBROInvWY4y2Vo1KHcPz7GAk/cxB417gPPY/FCsiH4szd+zGRGy/HGV0MX+XvXuT
+X-Received: by 2002:ac8:3475:: with SMTP id v50mr17167028qtb.105.1573868912319;
+        Fri, 15 Nov 2019 17:48:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573868912; cv=none;
         d=google.com; s=arc-20160816;
-        b=HSeS/hh4W5NGjKQ+qnzAfmryjqsGm2Yeh0o2Pt4MiY6pvOfZVsTTh2h0QvYzX1+b3T
-         YPcIZRnC10dKVyb0/SUrBCbSSJVKLQu78fDRE1YjJzJfRnuQjUIE4iw7t+g1qD80LMge
-         Qns+MxUIHm8TIrge9Fz7B9xCAedj1Ng7deCMszWj5L9W4l12nkKk/ExMvKtWWGQsTs9Q
-         817JDsFh3uyOnQgrbjRbs3Q0w+njKLYIWeZuL4QR7t1t12CeKI3UTARDaaJiH/cVtHEp
-         nQODxNImGx3T3lEXryfHnLKusgu3IGM3JGuyL8IR9nBmvwdR9ac2lHprz/u2aQCPPRvH
-         lMBA==
+        b=qBi0+es2QyrS8wLlgIUU2qJq74at3vYs/qvfuKUeq63J/5f/pmbIwBx7w4K8OmiJoG
+         8Tl//vzWoJHuML7YfjWHByDmM1JDkVYtji8ANQQIpPAXZVI6DtDo99oaANh71V5Dw0XH
+         bgwBZzo1rrtDl5X6GCm1JwJTFs3ACrhfsyeJ2vb3thrIwyA+GSi3FWP3nI9GykrJjMJS
+         L8HMyrakomY1+jFMdU8lSPSYxsv5CZD+9aIsBE6lGMgfcqZnqzh+Ogo0BlwqDObiLwRu
+         i+w+hMiWhRjq1eQOG+gAcDsNieuqNhuaqnvqK0OG14KZ2YAy9l6zsw363LSZ1D2wjVVr
+         HgKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:content-transfer-encoding
-         :content-language:accept-language:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=4zI5bDBWf4ic551LyAUhbro9Zab3d6ITwzWyoOtF9D8=;
-        b=X64RB0gwG0jyvKxp/k3phJqoJ196WAQ5jGSF3RHTiq4NYCuGWATMx9s1mn6fk0o2j1
-         9lPfKLjoXP/418STkS3JUEvborSdKEU731Zeiu96EYCTYKyP10kcAi2nywzKBkNJRDC5
-         l3B+zW7SqxckLhGGygCoNkFLgO8IaPgG8ybTirCOH2bJPbJAb1PwDVKALU3OIcuGPiSJ
-         iyFpa/I9tJuTPq76XUf2Orl8D10meGgf9xpjmgD8brUgg6Eo+c1H2rbw+PhegMfyv83J
-         SrHdzW2Yyrp/Mb1MMX9xCB3vy+6z9qPk7+dGQTRb+pynKotqqqxiKmyrDZZFnodj5eG8
-         PSog==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=36Q409Fwy0ueCJOw8wC0Yf0RBYykAraB2iQndIHmOf4=;
+        b=QflPoRdxXFosJONt/mAujtUxIzAJ6rq4EZQeWfDQYb433R+9Umae05hXSI7WzUJkJB
+         pYmJ+GuUG8OFq32ye8atwnl2MaZ+5/63KkPj3SwkTwhYHyfjL839LvM4kFdAuxsnZ2be
+         EmGKFB8jGYR216FM9D4XQzBTQ1mqlEkEYVSAfE867WFcjkD4pu8MuK2kA0mvRb9zxtkb
+         f/Ymk4HcgzqSgZ+Y4ED/TKs5om723IzlEkZMv4jl9ll44bLagXdByfB/Ovp8Ox9CYa2l
+         1Y6GYseph2c4Sre2slbl8HerfNHDZ33a9jOc9XRMDTKpToQnrf+OJWHUjavqF8vmLLDl
+         SAPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id k20si6781957ejj.21.2019.11.15.16.59.10;
-        Fri, 15 Nov 2019 16:59:10 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gr+WYgb4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q19si7153920qte.62.2019.11.15.17.48.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 15 Nov 2019 17:48:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727170AbfKPA7E convert rfc822-to-8bit (ORCPT
-        <rfc822;daniel.diaz@linaro.org> + 4 others);
-        Fri, 15 Nov 2019 19:59:04 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2104 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727128AbfKPA7E (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 15 Nov 2019 19:59:04 -0500
-Received: from lhreml708-cah.china.huawei.com (unknown [172.18.7.108])
-        by Forcepoint Email with ESMTP id 2BCFE9E064E08B3D09D5;
-        Sat, 16 Nov 2019 00:59:02 +0000 (GMT)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml708-cah.china.huawei.com (10.201.108.49) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Sat, 16 Nov 2019 00:59:01 +0000
-Received: from dggeme755-chm.china.huawei.com (10.3.19.101) by
- lhreml710-chm.china.huawei.com (10.201.108.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.1713.5; Sat, 16 Nov 2019 00:59:00 +0000
-Received: from dggeme755-chm.china.huawei.com ([10.7.64.71]) by
- dggeme755-chm.china.huawei.com ([10.7.64.71]) with mapi id 15.01.1713.004;
- Sat, 16 Nov 2019 08:58:58 +0800
-From:   gengdongjiu <gengdongjiu@huawei.com>
-To:     Igor Mammedov <imammedo@redhat.com>
-CC:     "zhengxiang (A)" <zhengxiang9@huawei.com>,
-        "pbonzini@redhat.com" <pbonzini@redhat.com>,
-        "mst@redhat.com" <mst@redhat.com>,
-        "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-        "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-        "lersek@redhat.com" <lersek@redhat.com>,
-        "james.morse@arm.com" <james.morse@arm.com>,
-        "mtosatti@redhat.com" <mtosatti@redhat.com>,
-        "rth@twiddle.net" <rth@twiddle.net>,
-        "ehabkost@redhat.com" <ehabkost@redhat.com>,
-        "Jonathan Cameron" <jonathan.cameron@huawei.com>,
-        "xuwei (O)" <xuwei5@huawei.com>,
-        "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
-        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-        Linuxarm <linuxarm@huawei.com>,
-        "Wanghaibin (D)" <wanghaibin.wang@huawei.com>
-Subject: Re: [RESEND PATCH v21 3/6] ACPI: Add APEI GHES table generation
- support
-Thread-Topic: [RESEND PATCH v21 3/6] ACPI: Add APEI GHES table generation
- support
-Thread-Index: AdWbyMkE/1gyxkpeREeYn2g+7NgH+g==
-Date:   Sat, 16 Nov 2019 00:58:58 +0000
-Message-ID: <99a06454b0fa4eac9116af9ec978aaea@huawei.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.148.208.123]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8BIT
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gr+WYgb4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46134 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iVnCR-0001zZ-GT
+	for alex.bennee@linaro.org; Fri, 15 Nov 2019 20:48:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54125)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <ehabkost@redhat.com>) id 1iVnCG-0001yq-Nt
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 20:48:21 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <ehabkost@redhat.com>) id 1iVnCE-0007lc-AZ
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 20:48:19 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:55536
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <ehabkost@redhat.com>) id 1iVnCD-0007l7-97
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2019 20:48:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573868896;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=36Q409Fwy0ueCJOw8wC0Yf0RBYykAraB2iQndIHmOf4=;
+ b=gr+WYgb4jRyICE8+EP0K/wJ/2l8UbsMZHw8jCfXPYLIEOYIOFRj2HLQjAJRc43OLEdyHB9
+ EGS6E6G1OGj695ZUep6TNnvrUB5JW3t0SXtjvbTnZSuc8lXxMS7layOzOgWIK9JiXW84n3
+ LrxM2NaE6d1buEJdQ6SrSphCj1iK/j0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-251-tnVss1U3Oxmyi4Ep8rdeNA-1; Fri, 15 Nov 2019 20:48:12 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E19521802CE3;
+ Sat, 16 Nov 2019 01:48:10 +0000 (UTC)
+Received: from localhost (ovpn-116-6.gru2.redhat.com [10.97.116.6])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 252E26609C;
+ Sat, 16 Nov 2019 01:48:07 +0000 (UTC)
+Date: Fri, 15 Nov 2019 22:48:05 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [PATCH] hw: add compat machines for 5.0
+Message-ID: <20191116014805.GZ3812@habkost.net>
+References: <20191112104811.30323-1-cohuck@redhat.com>
+ <20191115090757-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: WH9Fa3nzRR/j
+In-Reply-To: <20191115090757-mutt-send-email-mst@kernel.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: tnVss1U3Oxmyi4Ep8rdeNA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Jiri Denemark <jdenemar@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dlcXzGWuVg/J
 
-> On Fri, 15 Nov 2019 14:32:47 +0000
-> gengdongjiu <gengdongjiu@huawei.com> wrote:
-> 
-> > > > + */
-> > > > +static void acpi_ghes_build_notify(GArray *table, const uint8_t
-> > > > +type)
-> > >
-> > > typically format should be build_WHAT(), so
-> > >  build_ghes_hw_error_notification()
-> > >
-> > > And I'd move this out into its own patch.
-> > > this applies to other trivial in-depended sub-tables, that take all data needed to construct them from supplied arguments.
-> >
-> > I very used your suggested method in previous series[1], but other
-> > maintainer suggested to move this function to this file, because he
-> > think only GHES used it
-> 
-> Using this file is ok, what I've meant for you to split function from this patch into a separate smaller patch.
-> 
-> With the way code split now I have to review 2 big complex patches at the same which makes reviewing hard and I have a hard time
-> convincing myself that code it correct.
-> 
-> Moving small self-contained chunks of code in to separate smaller patches makes review easier.
+CCing Jiri.
 
-Ok, got it. Thanks very much for the explanations
+On Fri, Nov 15, 2019 at 09:08:37AM -0500, Michael S. Tsirkin wrote:
+> On Tue, Nov 12, 2019 at 11:48:11AM +0100, Cornelia Huck wrote:
+> > Add 5.0 machine types for arm/i440fx/q35/s390x/spapr.
+> >=20
+> > For i440fx and q35, unversioned cpu models are still translated
+> > to -v1; I'll leave changing this (if desired) to the respective
+> > maintainers.
+> >=20
+> > Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> > ---
+> >=20
+> > also pushed out to https://github.com/cohuck/qemu machine-5.0
+> >=20
+> > x86 folks: if you want to change the cpu model versioning, I
+> > can do it in this patch, or just do it on top yourselves
+
+Thanks for taking care of this, Cornelia!
+
+>=20
+>=20
+> Seems a bit cleaner in the same patch. Eduardo what's your take?
+
+The plan is to eventually set
+default_cpu_version=3DCPU_VERSION_LATEST, but we won't change
+default_cpu_version in QEMU 5.0 yet.
+
+We need to keep default_cpu_version=3D1 for a few releases, until
+management software adapts.  See the "Runnability guarantee of
+CPU models" section at qemu-deprecated.texi.
+
+--=20
+Eduardo
+

@@ -1,141 +1,120 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp7284232wrr;
-        Fri, 15 Nov 2019 12:21:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzSaGpyon7rFjuFnqTJ8UrpoGvVKVVcqe+MUHEUb3lPjk4wtUiOdjIKk9EpBQRgP76XGI6S
-X-Received: by 2002:ac8:6d0b:: with SMTP id o11mr15745856qtt.253.1573849286344;
-        Fri, 15 Nov 2019 12:21:26 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s2si6541026qtj.319.2019.11.15.12.21.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Nov 2019 12:21:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp76469wrr;
+        Fri, 15 Nov 2019 16:59:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzgGeaVwS0zQlEHP2+3y34dxubQDqp+CLDK+tp2dxTPwFVarhBBIFRMRLgurcxv7l5URnRC
+X-Received: by 2002:a17:906:3450:: with SMTP id d16mr5313130ejb.216.1573865950823;
+        Fri, 15 Nov 2019 16:59:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573865950; cv=none;
+        d=google.com; s=arc-20160816;
+        b=HSeS/hh4W5NGjKQ+qnzAfmryjqsGm2Yeh0o2Pt4MiY6pvOfZVsTTh2h0QvYzX1+b3T
+         YPcIZRnC10dKVyb0/SUrBCbSSJVKLQu78fDRE1YjJzJfRnuQjUIE4iw7t+g1qD80LMge
+         Qns+MxUIHm8TIrge9Fz7B9xCAedj1Ng7deCMszWj5L9W4l12nkKk/ExMvKtWWGQsTs9Q
+         817JDsFh3uyOnQgrbjRbs3Q0w+njKLYIWeZuL4QR7t1t12CeKI3UTARDaaJiH/cVtHEp
+         nQODxNImGx3T3lEXryfHnLKusgu3IGM3JGuyL8IR9nBmvwdR9ac2lHprz/u2aQCPPRvH
+         lMBA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:mime-version:content-transfer-encoding
+         :content-language:accept-language:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=4zI5bDBWf4ic551LyAUhbro9Zab3d6ITwzWyoOtF9D8=;
+        b=X64RB0gwG0jyvKxp/k3phJqoJ196WAQ5jGSF3RHTiq4NYCuGWATMx9s1mn6fk0o2j1
+         9lPfKLjoXP/418STkS3JUEvborSdKEU731Zeiu96EYCTYKyP10kcAi2nywzKBkNJRDC5
+         l3B+zW7SqxckLhGGygCoNkFLgO8IaPgG8ybTirCOH2bJPbJAb1PwDVKALU3OIcuGPiSJ
+         iyFpa/I9tJuTPq76XUf2Orl8D10meGgf9xpjmgD8brUgg6Eo+c1H2rbw+PhegMfyv83J
+         SrHdzW2Yyrp/Mb1MMX9xCB3vy+6z9qPk7+dGQTRb+pynKotqqqxiKmyrDZZFnodj5eG8
+         PSog==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id k20si6781957ejj.21.2019.11.15.16.59.10;
+        Fri, 15 Nov 2019 16:59:10 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=cxZf7QzX;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44854 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iVi5t-0001YW-NG
-	for alex.bennee@linaro.org; Fri, 15 Nov 2019 15:21:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42729)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1iVi53-00016d-86
- for qemu-arm@nongnu.org; Fri, 15 Nov 2019 15:20:34 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <luc.michel@greensocs.com>) id 1iVi51-0000tT-Ow
- for qemu-arm@nongnu.org; Fri, 15 Nov 2019 15:20:32 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:38670)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
- id 1iVi50-0000kN-Qs; Fri, 15 Nov 2019 15:20:31 -0500
-Received: from [192.168.61.102] (lfbn-1-8165-82.w90-112.abo.wanadoo.fr
- [90.112.74.82])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 5E4CD96EF0;
- Fri, 15 Nov 2019 20:20:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1573849226;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hLDKuy7IB0iN0h9w41ICCOz6MrZwi9/YKDHpvVMqVKY=;
- b=cxZf7QzXivRd5SiWqpeEI0BMY1z1bIeJHtNMIAUyC1myFlsaoBsEt/xrjiQb8kj0kJQY8J
- OasTaiqCdceGEY1GQueqySCrahkWrT2PF9/UTe6GtlgmmzRz2o/po6j54jwReInKDT+bk0
- 4HQoVuIBBHnm0IGTgB1lEX9jFJRqAdE=
-Subject: Re: [PATCH v1 1/1] hw/arm: versal: Add the CRP as unimplemented
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
-References: <20191115154734.26449-1-edgar.iglesias@gmail.com>
- <20191115154734.26449-2-edgar.iglesias@gmail.com>
-From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <73da98ac-3635-c727-4fa7-d7d5e37a69f9@greensocs.com>
-Date: Fri, 15 Nov 2019 21:20:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727170AbfKPA7E convert rfc822-to-8bit (ORCPT
+        <rfc822;daniel.diaz@linaro.org> + 4 others);
+        Fri, 15 Nov 2019 19:59:04 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2104 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1727128AbfKPA7E (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 15 Nov 2019 19:59:04 -0500
+Received: from lhreml708-cah.china.huawei.com (unknown [172.18.7.108])
+        by Forcepoint Email with ESMTP id 2BCFE9E064E08B3D09D5;
+        Sat, 16 Nov 2019 00:59:02 +0000 (GMT)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml708-cah.china.huawei.com (10.201.108.49) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Sat, 16 Nov 2019 00:59:01 +0000
+Received: from dggeme755-chm.china.huawei.com (10.3.19.101) by
+ lhreml710-chm.china.huawei.com (10.201.108.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.1713.5; Sat, 16 Nov 2019 00:59:00 +0000
+Received: from dggeme755-chm.china.huawei.com ([10.7.64.71]) by
+ dggeme755-chm.china.huawei.com ([10.7.64.71]) with mapi id 15.01.1713.004;
+ Sat, 16 Nov 2019 08:58:58 +0800
+From:   gengdongjiu <gengdongjiu@huawei.com>
+To:     Igor Mammedov <imammedo@redhat.com>
+CC:     "zhengxiang (A)" <zhengxiang9@huawei.com>,
+        "pbonzini@redhat.com" <pbonzini@redhat.com>,
+        "mst@redhat.com" <mst@redhat.com>,
+        "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+        "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+        "lersek@redhat.com" <lersek@redhat.com>,
+        "james.morse@arm.com" <james.morse@arm.com>,
+        "mtosatti@redhat.com" <mtosatti@redhat.com>,
+        "rth@twiddle.net" <rth@twiddle.net>,
+        "ehabkost@redhat.com" <ehabkost@redhat.com>,
+        "Jonathan Cameron" <jonathan.cameron@huawei.com>,
+        "xuwei (O)" <xuwei5@huawei.com>,
+        "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+        Linuxarm <linuxarm@huawei.com>,
+        "Wanghaibin (D)" <wanghaibin.wang@huawei.com>
+Subject: Re: [RESEND PATCH v21 3/6] ACPI: Add APEI GHES table generation
+ support
+Thread-Topic: [RESEND PATCH v21 3/6] ACPI: Add APEI GHES table generation
+ support
+Thread-Index: AdWbyMkE/1gyxkpeREeYn2g+7NgH+g==
+Date:   Sat, 16 Nov 2019 00:58:58 +0000
+Message-ID: <99a06454b0fa4eac9116af9ec978aaea@huawei.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.148.208.123]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 MIME-Version: 1.0
-In-Reply-To: <20191115154734.26449-2-edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-PH
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1573849226;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hLDKuy7IB0iN0h9w41ICCOz6MrZwi9/YKDHpvVMqVKY=;
- b=OVHIqISRzhnNh85YJ20aT8ursqZEJmE7fNlZMWorgrzC7UkhynJvLbt/XdmUqicXJvbqJ/
- j2Jsxul98r3oD9dCbMyPVTujItayMX2pCaVtY/0mappFTczmzBn6xXl/BduXPXGuD92qU8
- VffU2blV1TDtawvrdLIqhbOTmBBBNOM=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1573849226; a=rsa-sha256; cv=none;
- b=X+ivAAQGOWf8T7y05RRHFzpxwp4dSvU2d3ExX66uM9ssb/cidOrBYTxhXORyVm2uSlTLYq
- HV3jUG5q/T5dwKS2AEEocxUPz0vfBwG5TsCT+JcWMC2Tz8h9uP/CEbenMkTmPvD3otcMZp
- OD5+MZtu/VUWMMmLZ1YkTCv6JsHP9rc=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 5.135.226.135
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
- philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PP4VRkoJnzs6
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: WH9Fa3nzRR/j
 
-On 11/15/19 4:47 PM, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> On Fri, 15 Nov 2019 14:32:47 +0000
+> gengdongjiu <gengdongjiu@huawei.com> wrote:
 > 
-> Add the CRP as unimplemented thus avoiding bus errors when
-> guests access these registers.
+> > > > + */
+> > > > +static void acpi_ghes_build_notify(GArray *table, const uint8_t
+> > > > +type)
+> > >
+> > > typically format should be build_WHAT(), so
+> > >  build_ghes_hw_error_notification()
+> > >
+> > > And I'd move this out into its own patch.
+> > > this applies to other trivial in-depended sub-tables, that take all data needed to construct them from supplied arguments.
+> >
+> > I very used your suggested method in previous series[1], but other
+> > maintainer suggested to move this function to this file, because he
+> > think only GHES used it
 > 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Using this file is ok, what I've meant for you to split function from this patch into a separate smaller patch.
+> 
+> With the way code split now I have to review 2 big complex patches at the same which makes reviewing hard and I have a hard time
+> convincing myself that code it correct.
+> 
+> Moving small self-contained chunks of code in to separate smaller patches makes review easier.
 
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
-
-
-> ---
->  hw/arm/xlnx-versal.c         | 2 ++
->  include/hw/arm/xlnx-versal.h | 3 +++
->  2 files changed, 5 insertions(+)
-> 
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index 98163eb1aa..8b3d8d85b8 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -257,6 +257,8 @@ static void versal_unimp(Versal *s)
->                          MM_CRL, MM_CRL_SIZE);
->      versal_unimp_area(s, "crf", &s->mr_ps,
->                          MM_FPD_CRF, MM_FPD_CRF_SIZE);
-> +    versal_unimp_area(s, "crp", &s->mr_ps,
-> +                        MM_PMC_CRP, MM_PMC_CRP_SIZE);
->      versal_unimp_area(s, "iou-scntr", &s->mr_ps,
->                          MM_IOU_SCNTR, MM_IOU_SCNTR_SIZE);
->      versal_unimp_area(s, "iou-scntr-seucre", &s->mr_ps,
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index 14405c1465..d844c4ffe4 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -119,4 +119,7 @@ typedef struct Versal {
->  #define MM_IOU_SCNTRS_SIZE          0x10000
->  #define MM_FPD_CRF                  0xfd1a0000U
->  #define MM_FPD_CRF_SIZE             0x140000
-> +
-> +#define MM_PMC_CRP                  0xf1260000U
-> +#define MM_PMC_CRP_SIZE             0x10000
->  #endif
-> 
+Ok, got it. Thanks very much for the explanations

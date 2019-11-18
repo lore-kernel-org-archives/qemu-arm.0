@@ -1,175 +1,145 @@
-Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp29856lfi;
-        Mon, 18 Nov 2019 05:21:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzlz4PFUo8zX9BzuMrrGmGLudJy2fou0BOqiVVyew2nhkzjpKQLYgGJDdyszJyu0MqbcGlW
-X-Received: by 2002:a7b:c055:: with SMTP id u21mr30264991wmc.55.1574083294311;
-        Mon, 18 Nov 2019 05:21:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574083294; cv=none;
+Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp76512lfi;
+        Mon, 18 Nov 2019 06:02:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxqdGRegyTrXjToKgyucjm4WEcJ5nbPBtKMbcX8e8UIwChp8eJj1zpsMJi/NVADOJA/M/vE
+X-Received: by 2002:a37:9d0:: with SMTP id 199mr24573107qkj.356.1574085722116;
+        Mon, 18 Nov 2019 06:02:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574085722; cv=none;
         d=google.com; s=arc-20160816;
-        b=b15fIibX71WEhclMaHM59chuglDlZbtP6vwKykavkV015s6Lgu61PRcpqCFqcLJBrW
-         lBKFH8MqAf8uHjIDQx/bbn3V/jcBuuPG1emGRxlMS3WXHlnGPVuXCF1WsX0hoRwPZ2KC
-         MrkxAHCjJD0rZd7udq/Q6wUpum9zZMMQxWkszSqfFNKG1Aoe0rjxmC4HLj9lVnjbpCRv
-         P1dNU4Xh2U86DOUwt27rdcmdnu454Nxs8uNDXQXzf+cy0OaMLXmzZ0DfIQpy4+Tgrktm
-         /UIhxJzv+v8iy3VtIATl1WoLdS89nH3FoUefOErg1dTGukz9d4jmZh7qySux22lOzPEn
-         WjTg==
+        b=q9kqH7Nz5qKGiL7j/LCFJXyslQIJivk7oYxso0F8VAoytsX838//djFAyP10sS/3mG
+         3fPp32KvrR/f8ohxyw8dgfFHwLpN+YcgAZd9gxq7KgZS0Rn1DRDl6yzrlq1NkwjONOKr
+         f51KAnHVo0j6yA4ENIbRRLcRLGbWdqveMiu0iim5CyDZnWdi5SmIkTqr5/R/MPgMw5hh
+         TTxMqEBw2SLRYRbqCAUtKsxkTGFERHSTcvXc+ES2p2wc//WtwAkPn7xq7xYRp0NUXCE/
+         sxB5slidzfl7B4SCUovoecj4vULVWBWRd7ti2qrjIvNo2AwIue3sHZ+r6iVKZ3Ywh+3D
+         cO0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=aDt0kz5uoG+Wvoc+FOMxPI8N9nsBIvdXSRfwD1DTFEU=;
-        b=EomNB213sv11sC/n3X7MyQZ9X7pyfWfb/rq3focdn/50o4g7yJj9uyWhG53CPiUsPk
-         qoDQ2WOjpgJdz8qWNw+d8iNuh/9o0lJnbIR8dkhp1exXuTcsY0k6J4uJ78ViS+tNJyhK
-         0Ucjz8kILCa4Qjb8wBvBjoxCrx5xTswCU/Wbl1RRTv1/1Awhrn9zavdYK9BndoYMIYe8
-         hQX+m2jSUNgGJno8tUkY8A3Sg0Y3vUu+abB+V2Zbrpwp4AxPZXOfgY9r7ipDKhchyF1N
-         qv7kQk0/kb9KnLB4Z5Nfvyp15O2z0Viaut1zY0JNlsOdYRPM+YXgMYENSz4sM7h0U0vN
-         guag==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=WhTJ+1f501vkUHUKKPATnM7Xp5Jofmh8PwlYt2xJv04=;
+        b=0S8dbte/aWm3eS7BLzCas57qBrfBZZxsWuM7+hNH5E2O8NLb2ScP4YQZxr7gfcApI8
+         SLrIU10D+XZVXSXYuA6Lhy2FtrhAPbKwzoOF0oQ3sMqnMA+SS1MmHFidoHwSq7GFlbk4
+         7KUus5yKi4Hkj7YMD9/X1Jlaxwy6dO71Ecv+IPfCoqJvozrOgC0Abae8Bs65T/r6YyOE
+         hzIl5BV+bB0VL+6Q4XM08FzOGJX1KwD9ybkX6GhSecqUbEtifEEpZ4grrBNn2vJbfRhH
+         q5G9aPBG6JF8FtQRxI7ntyHXFTibs8eQNpXYHswsrHo+yeY8IY9lxrmFdl2cnAU9lx6W
+         SUbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZavcAJ3Q;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id p8si11601202edq.55.2019.11.18.05.21.34;
-        Mon, 18 Nov 2019 05:21:34 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=czZYA1o+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k21si11583449qtc.334.2019.11.18.06.02.01
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 18 Nov 2019 06:02:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZavcAJ3Q;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727018AbfKRNVd (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 18 Nov 2019 08:21:33 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40970 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726984AbfKRNVc (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 18 Nov 2019 08:21:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1574083291;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=aDt0kz5uoG+Wvoc+FOMxPI8N9nsBIvdXSRfwD1DTFEU=;
-        b=ZavcAJ3Qrfm53IWdYI+/o6QjfKivMxbKU50HnQKKFHJztO31CmESl+6aZkW3amuNCi1Zdf
-        s1sUQYQ0ICa6jCF6g2wQMctDLriUuI53qzm1HcgEdjTPSzCbQAC4PR7kY1MzWzMQjnwE+4
-        0+uzctf2URhxlt2cZi9xtEIkZ7/ryI8=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-119-TluLpgONPYKfe63Zlu9EHQ-1; Mon, 18 Nov 2019 08:21:27 -0500
-Received: by mail-qv1-f70.google.com with SMTP id g33so12436363qvd.7
-        for <kvm@vger.kernel.org>; Mon, 18 Nov 2019 05:21:27 -0800 (PST)
+       dkim=fail header.i=@linaro.org header.s=google header.b=czZYA1o+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34388 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iWhbN-0007gS-HQ
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 09:02:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51165)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1iWhaz-0007fc-Gv
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:01:38 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1iWhay-00036o-92
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:01:37 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:40672)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iWhay-00035d-2O
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:01:36 -0500
+Received: by mail-ot1-x343.google.com with SMTP id m15so14557661otq.7
+ for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 06:01:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=WhTJ+1f501vkUHUKKPATnM7Xp5Jofmh8PwlYt2xJv04=;
+ b=czZYA1o+/tXtCZsPfFRxRlnAC8tk0E4LRhadp7zcBnSjx1/WLCUIHb2UU96/SPKu7t
+ SFnmBhstG/ShVi3YogsViVEe8FSzAStDpCpSDc9SUJWfGlATY+CAMAVJHbD7tVbwRC0k
+ 6qZ7VbT6jMh28+P5AI36CiCXQJW3R3Mb0n7AVK0VMgu9HypeHGU+KpViqPQgXC4zuDU6
+ roW/AzhMd2+zLhiGBmcFgfkYviXEHjDAY/JZ5pOE3rWB3oqlHX9PFM83KVkmvBbGU4Td
+ 0EPmqn++9ygbhjTxypSZsPk76nSXDQjVmqqAH9rHKZdb/Cxsvvlf527gP4DZSO2n8lZA
+ FeDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=q9+IKFPWhISyaYV00Tog4e8K2FzhfF9OCbbQXzCjBFw=;
-        b=lMCmSsmoAWgkmu+N0Lva78ICs1jXKoGG2ih1v0Ge1cAe9k0xQC2ZNwWT3wLMYDCCim
-         +A2iK5RZkC/M0Le5M+96370uBCzY7VMBAfbn8Cm559xJ0DccIUQzaezAyiSbzed/Z6QN
-         hDa7cjxj3uUMQBtHk+/1Gmp4l9Lm4WAskGLSmaTC+FY9dK73PQ2Mtya8r2z9takGCDTZ
-         zjc6TDoF5ZqCofLM51xHWnOFySPsd9IUD6U/rnytJ8wPxXBse1sMwYcscQ3G4xzTX0ep
-         I21qf50yVhy+z92IXwN/0xCY4iSlUBclgHWjQqr0g5ahzoKJuurQr6CzZfS7xT9qwXC7
-         Bmvg==
-X-Gm-Message-State: APjAAAVVJvyJpFAzoQlN68sRoShM0HwguDHmXzjBHToKswQ3h5z2LjRG
-        SQougiojtDdEd5WHT4jswQnEXAcC+wY2tzdugf1pD4R+XtFrXCTEvsd/9IuzsyL1h05rc9SWDC8
-        Qf/zeRdRm2lUt
-X-Received: by 2002:ac8:13ca:: with SMTP id i10mr25764990qtj.214.1574083287505;
-        Mon, 18 Nov 2019 05:21:27 -0800 (PST)
-X-Received: by 2002:ac8:13ca:: with SMTP id i10mr25764951qtj.214.1574083287214;
-        Mon, 18 Nov 2019 05:21:27 -0800 (PST)
-Received: from redhat.com (bzq-79-176-6-42.red.bezeqint.net. [79.176.6.42])
-        by smtp.gmail.com with ESMTPSA id a2sm8410998qkl.71.2019.11.18.05.21.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2019 05:21:26 -0800 (PST)
-Date:   Mon, 18 Nov 2019 08:21:18 -0500
-From:   "Michael S. Tsirkin" <mst@redhat.com>
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     Igor Mammedov <imammedo@redhat.com>,
-        Xiang Zheng <zhengxiang9@huawei.com>, pbonzini@redhat.com,
-        shannon.zhaosl@gmail.com, peter.maydell@linaro.org,
-        lersek@redhat.com, james.morse@arm.com, mtosatti@redhat.com,
-        rth@twiddle.net, ehabkost@redhat.com, jonathan.cameron@huawei.com,
-        xuwei5@huawei.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org, linuxarm@huawei.com,
-        wanghaibin.wang@huawei.com
-Subject: Re: [RESEND PATCH v21 3/6] ACPI: Add APEI GHES table generation
- support
-Message-ID: <20191118082036-mutt-send-email-mst@kernel.org>
-References: <20191111014048.21296-1-zhengxiang9@huawei.com>
- <20191111014048.21296-4-zhengxiang9@huawei.com>
- <20191115103801.547fc84d@redhat.com>
- <cf5e5aa4-2283-6cf9-70d0-278d167e3a13@huawei.com>
- <87758ec2-c242-71c3-51f8-a5d348f8e7fd@huawei.com>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=WhTJ+1f501vkUHUKKPATnM7Xp5Jofmh8PwlYt2xJv04=;
+ b=k/0iX6tjjcX/8ug8V6gGZFPacTQKDrPUCBWoKMaUyrzXQDrjIfvhk8Ntp3gOmTHeLg
+ RCqVFltrfsrCMGY/n13/q98MDQLY6cYUFYvqVakJgiR1dSaMunEcSwY5z/m7wlvMBXck
+ 7tfkXGSkx0Q5XiegkzoSjK6hCh0jNygenKcailaU4szoJ+TiMPpwJ79EoDM0Ym3rKGVA
+ fjkD6ETnRomy0qIfUwq6NqrIezbcRKRr0xMSilHq4x1tnmPkOEaiNlXHqSRhC0In+4LN
+ LSFJ65Kz8XsLcPaXLBFGrHrcFdEabftfYLhBssb607ZmOB9gM7SxI+9jugL3YdtSk43z
+ CTog==
+X-Gm-Message-State: APjAAAWmuuFtY2tNwwx0de7F8DivkwG5lg9k1dsYdEiCDQ8pIUqM88z/
+ f21Xz8I7/OyMWAuy/DkrN5wSZIEAhGa61qRKt7fl7g==
+X-Received: by 2002:a9d:7ac2:: with SMTP id m2mr22636654otn.135.1574085690697; 
+ Mon, 18 Nov 2019 06:01:30 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <87758ec2-c242-71c3-51f8-a5d348f8e7fd@huawei.com>
-X-MC-Unique: TluLpgONPYKfe63Zlu9EHQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
+References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
+ <20191023173154.30051-2-marcandre.lureau@redhat.com>
+In-Reply-To: <20191023173154.30051-2-marcandre.lureau@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 18 Nov 2019 14:01:16 +0000
+Message-ID: <CAFEAcA_k9TqzRJZ4=Q1jQP46SajiaMLEciSHZ83_CicMv__oiA@mail.gmail.com>
+Subject: Re: [PATCH v3 01/33] qdev: remove unused qdev_prop_int64
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 9FtQBRyb1WvZ
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tc7909YqZav7
 
-On Mon, Nov 18, 2019 at 09:18:01PM +0800, gengdongjiu wrote:
-> On 2019/11/18 20:49, gengdongjiu wrote:
-> >>> +     */
-> >>> +    build_append_int_noprefix(table_data, source_id, 2);
-> >>> +    /* Related Source Id */
-> >>> +    build_append_int_noprefix(table_data, 0xffff, 2);
-> >>> +    /* Flags */
-> >>> +    build_append_int_noprefix(table_data, 0, 1);
-> >>> +    /* Enabled */
-> >>> +    build_append_int_noprefix(table_data, 1, 1);
-> >>> +
-> >>> +    /* Number of Records To Pre-allocate */
-> >>> +    build_append_int_noprefix(table_data, 1, 4);
-> >>> +    /* Max Sections Per Record */
-> >>> +    build_append_int_noprefix(table_data, 1, 4);
-> >>> +    /* Max Raw Data Length */
-> >>> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LEN=
-GTH, 4);
-> >>> +
-> >>> +    /* Error Status Address */
-> >>> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-> >>> +                     4 /* QWord access */, 0);
-> >>> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> >>> +        ACPI_GHES_ERROR_STATUS_ADDRESS_OFFSET(hest_start, source_id)=
-,
-> >> it's fine only if GHESv2 is the only entries in HEST, but once
-> >> other types are added this macro will silently fall apart and
-> >> cause table corruption.
->    why  silently fall?
->    I think the acpi_ghes.c only support GHESv2 type, not support other ty=
-pe.
->=20
-> >>
-> >> Instead of offset from hest_start, I suggest to use offset relative
-> >> to GAS structure, here is an idea>>
-> >> #define GAS_ADDR_OFFSET 4
-> >>
-> >>     off =3D table->len
-> >>     build_append_gas()
-> >>     bios_linker_loader_add_pointer(...,
-> >>         off + GAS_ADDR_OFFSET, ...
->=20
-> If use offset relative to GAS structure, the code does not easily extend =
-to support more Generic Hardware Error Source.
-> if use offset relative to hest_start, just use a loop, the code can suppo=
-rt  more error source, for example:
-> for (source_id =3D 0; i<n; source_id++)
-> {
->    ......
->     bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->         ACPI_GHES_ERROR_STATUS_ADDRESS_OFFSET(hest_start, source_id),
->         sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
->         source_id * sizeof(uint64_t));
->   .......
-> }
->=20
-> My previous series patch support 2 error sources, but now only enable 'SE=
-A' type Error Source
+On Wed, 23 Oct 2019 at 18:32, Marc-Andr=C3=A9 Lureau
+<marcandre.lureau@redhat.com> wrote:
+>
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  hw/core/qdev-properties.c    | 32 --------------------------------
+>  include/hw/qdev-properties.h |  3 ---
+>  2 files changed, 35 deletions(-)
 
-I'd try to merge this, worry about extending things later.
-This is at v21 and the simpler you can keep things,
-the faster it'll go in.
+I think I'd rather keep this. It's weird to not have a symmetric
+set of properties for the common integer types, and annoying
+for whoever next runs into a need for an int64 property to
+have to reinstate the deleted code. (Yes, I know we don't
+currently have int8 or int16.)
+
+thanks
+-- PMM

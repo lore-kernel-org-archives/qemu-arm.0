@@ -1,107 +1,121 @@
-Received: by 2002:a05:6512:48d:0:0:0:0 with SMTP id v13csp2571630lfq;
-        Mon, 18 Nov 2019 00:43:39 -0800 (PST)
-X-Received: by 2002:adf:ef51:: with SMTP id c17mr15185732wrp.266.1574066619893;
-        Mon, 18 Nov 2019 00:43:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574066619; cv=none;
+Received: by 2002:a05:6512:48d:0:0:0:0 with SMTP id v13csp2573963lfq;
+        Mon, 18 Nov 2019 00:46:33 -0800 (PST)
+X-Received: by 2002:adf:e74e:: with SMTP id c14mr27568394wrn.124.1574066792946;
+        Mon, 18 Nov 2019 00:46:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574066792; cv=none;
         d=google.com; s=arc-20160816;
-        b=HogibExEW+FiOFZKaBYWm3EZAWRSc2NT3gv4poNRnCzbyqAdt/hMV/mWtJPzrxZtsm
-         5eM3UotuuEXTXpjROx4Id69LQDcVPnoT+5Nq8hB2L7JOIYo33NHWdYf+dqESFEvS6ZiO
-         XEd5eH5Qpm/uVmOaImbbZHPP4xmYRCu8BCZS8eGmCqK36SVEnkzUo1sIsXbExobv+ZEm
-         ZGYEiwbL2oIEvmh2byrFbd70c80x2unJt0idJvrfPrXGYPw1RV/i8x2cWsx2nYMg4jLx
-         lEQdg77Nyq7nmUUfJ4Yodvyj4JltrLpKKNj1CQvc9M5Q029MuumS3DKHxgP0xaYQIGTO
-         161w==
+        b=H8I8QFOuja1wu9p1Rk+yy6Tueme4r0rAGKRZgJaMA3Um1Fg4rbq8KiT9iFaDJHF9zk
+         Q3jEaXEQMpAbF1kuCXUbiSrtoGOWbj3CAxPw3It32SY1+RLXc8ViGk/AUNNbTykK7/1p
+         VzIymNlyEstpvLVtS5hYNzkPVvlRhDUknvgXrWgT+u+qWHdr/025cLn/dog+sTU4lySm
+         3UOr9AsjSlJZ2mhO60wa3igBjg03Je0e5Eg166pwsU+GQ5DSFciNYtc4LZw0U10xh2mG
+         VCmDlq9tkqQtwaDDZ4wbWaa/Hlhwa9n+mCNf5VnaumyzJsh740nvle7FzVjf6Y4e7euk
+         QJhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=OThwzwcmfVdhWRvXT7ysvqywDTFm+pWTsMJCbHwbx5s=;
-        b=XSdI7KfxD3P2xZhBzCk+1U3bk2sdyVfWZO37n2zoyceL1Nq3t05WZPvBz90FJ9nXS2
-         Shai3IUUhVCaji6tUMn9zYD4oMgvp4q6O28EwVr/oMPe9/XtUfSMyCh+oQaINEX8tijK
-         U7cRZ2qxDJx4geQPRJczMr3lPaAhJijVUqtWJ1XXYsW02nvKrcdF7ymDl3pevo85GqD+
-         FvXZK+Bm2rIBqqW5JSgY2fltt8uyFwPYtS9vnGubvn25ZmjMeWmjdlg8CuHqJ0hnbVAP
-         4D6SS1+thQCVVSe/QMjEcaXIHAHuKXVbJmajNXXwrIEBkQ23fT2MBcNkEM4NB7Xdd5QP
-         uIXQ==
+        bh=39OfZ/J1dOFY5eLk7gwS8kBRO4HQ1+nXIDUn6BWoxos=;
+        b=k0OKqviXuO8WK3bs8ETYGRO27nNche0PatQ0unKjrIMjkd1xpw6ruOdwtudSg8gQ0A
+         IoMEtLRdXlkP4HKJqjMyHvFOuBha9te4129kmhE9Pzt9itHhQhrPnkwaUBzlRUXjgN3U
+         Afem2HD+k/c9tvm1GWo/V+Zviq/uTj6zUvqL+VGJBCagvCUO5vMWfMiI5ZbbAb0Y85NP
+         OfI0x1qBCCOwEsihgfZF/fiWk6qfokVJuykZCCjpkSVux/kbutJeCUAwZt7V71b61ku+
+         hGwWjaj/JAWCqjkF5//Fd2vvoMMlAgwrQMa1/eMmFPP/F0OEn6uvXiV0gcrvYHUStGTD
+         lO5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U48cRy6m;
+       dkim=pass header.i=@linaro.org header.s=google header.b="n5fDL/GQ";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id d128sor2998853wmd.29.2019.11.18.00.43.39
+        by mx.google.com with SMTPS id s5sor10761533wrr.7.2019.11.18.00.46.32
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Nov 2019 00:43:39 -0800 (PST)
+        Mon, 18 Nov 2019 00:46:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U48cRy6m;
+       dkim=pass header.i=@linaro.org header.s=google header.b="n5fDL/GQ";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=OThwzwcmfVdhWRvXT7ysvqywDTFm+pWTsMJCbHwbx5s=;
-        b=U48cRy6mRRZweTCUpDWLJBdMBfqFooq/U5oMW5uYlHcnNPb8hHlnQICpqnp1LLzT4I
-         Ehvtax1UK7zN2LV7iTJiwsqskdppuqeOnO7JJRB3+4LuuTGyh4IJykmFGcjfsPY8UKnD
-         FYRUPXOm7Oa7wO8Qlw1md3zWdHQHh6mh90+k0d+H4lF+zgtSaDlgihs0YeQHgJcBCFIk
-         zlnw3joUmj4qcpTfsHPeecdwfqT17xm7sq14KCbkXtVk0XLXQVCK9KRnLN/hqaRxLy9X
-         /HZZOOE5waPwTjTnWAQNqUvsHIxvJFjwZXMembiE5Ss5IhKtPMackhB7rJFQSAkoLXp6
-         kOcA==
+        bh=39OfZ/J1dOFY5eLk7gwS8kBRO4HQ1+nXIDUn6BWoxos=;
+        b=n5fDL/GQCpyriBsTqwv0bXwa8J3DVytdiLnLHZlxsjUCfmvsiA2lQcA/NMYtpaRjw9
+         rfxFLp3MuFPdeZJZV3kE7o9TEB1Tx2CMEg6jDWXt31f7IjNZ1K/g5yXW54JIew9Ajouv
+         QNxR0DsQyBGz6v5/5d9HfhR7QWl3fEdR97czUN4mu59VnXYZmvdZpPTRrLO0+7B5k9yj
+         k7ndBee1DT3BErPzjHf1qyN7iq1bHbRDIkhWwgAOsIksNQ5gYJ+RBifYO7ifGwjyMrvA
+         tCnREZvFkwUgQGi/A6jnchMANoLYXA5b6FbgKbosPPix3mg45CA7Obj1pYkTJJEtBghb
+         Fvxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=OThwzwcmfVdhWRvXT7ysvqywDTFm+pWTsMJCbHwbx5s=;
-        b=nVYFy249ar6nl1+1t8FjDJimXQehJjRN9fz+dYKBAj4b3dTqF/uPg89dfYoStO8pzp
-         plAkhh5KbVMD/vCCwRVi+FsOxQG3GXi+V8WHwpKGwco7HLHtMIpGy5zneWvUie+Q9uXI
-         c85sc4w4/JFuDVgd9SKjo2LF98LUPNtMpMUegP7FWg/cqV0yGsh2WItp9lD5aytqRYbw
-         wyz2Ifnip+CGAgxReidiryptfzSomJq1wXymUXBzaBLntdiWYYnKjKl3xIiBH1uSAoDe
-         rCoqtom4ZjiSvHRg1MirwSX4CLT+zvb26AGA29n80Iq7a9h7d+V6dcqU1SXSC5NGxQ/N
-         972A==
-X-Gm-Message-State: APjAAAV3I3cCgTWE+ZGACJRb5p/t1ABVIOzIJ28uFg11rQIoYoEOKVyz
-	Fn9+CDlsTIIW+Q2I8i/puOQIEGMS
-X-Google-Smtp-Source: APXvYqz20zl4rmnZduEDPX62eX094sM8D1GenICsD68Nju1I7JuHhvj1+4XOkVZ6N7PFZOPWxGNl0Q==
-X-Received: by 2002:a1c:de88:: with SMTP id v130mr29402088wmg.89.1574066619549;
-        Mon, 18 Nov 2019 00:43:39 -0800 (PST)
+        bh=39OfZ/J1dOFY5eLk7gwS8kBRO4HQ1+nXIDUn6BWoxos=;
+        b=WlrGiobZ0URB2W5PG2H+KdOPi4cgcRe6gKVIDt3PAuWpLBKYz5n7whPTccwektN2r9
+         GyWCrLYQeSjyeRqxjCg7FY0tml9tik9Vj3scH6HUpznWLI1Wfxyp3g7IYDp341QFmwle
+         siUiaJXChbKh76bsIAqCQXgDjMpu6faljAiOHqOxi1bzJHPKRJWspMEcSECqjmmbLTTM
+         +dvyvMB+/ivDMRciqs+4DniiPK06vJjq+5rvRfUFQt1HmoeH206IJgC3VjUq5vm7F94y
+         7Uy9N8c8ixSA9XBv16B1CesygK/bEwMqqyPa4tbkBdlwcg3RWpt5jV2fVouttvkw78zm
+         ScBg==
+X-Gm-Message-State: APjAAAUl334HEMISESQ87EcEX2FSdlI1YCcvnvhIXHtvSR2cMneolXpZ
+	tZ+JorjzuUsxEoRasghKjuR3e/1i
+X-Google-Smtp-Source: APXvYqy+o5zQNEBg5xErOPnx+93cChLNwmyDEiU3ElYtv7yTbH5XWp8GY9buCQj8X7mkEzj6O0SVxg==
+X-Received: by 2002:adf:ff90:: with SMTP id j16mr19971770wrr.361.1574066792610;
+        Mon, 18 Nov 2019 00:46:32 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.8.102] (65.red-79-149-41.dynamicip.rima-tde.net. [79.149.41.65])
-        by smtp.gmail.com with ESMTPSA id x9sm21554339wru.32.2019.11.18.00.43.35
+        by smtp.gmail.com with ESMTPSA id 11sm20378524wmb.34.2019.11.18.00.46.27
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Nov 2019 00:43:39 -0800 (PST)
-Subject: Re: [RFC PATCH 10/11] target/arm: explicitly encode regnum in our XML
+        Mon, 18 Nov 2019 00:46:32 -0800 (PST)
+Subject: Re: [RFC PATCH 11/11] target/arm: generate xml description of our SVE
+ registers
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: alan.hayward@arm.com, luis.machado@linaro.org,
  damien.hedde@greensocs.com, Peter Maydell <peter.maydell@linaro.org>,
  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
 References: <20191115173000.21891-1-alex.bennee@linaro.org>
- <20191115173000.21891-11-alex.bennee@linaro.org>
+ <20191115173000.21891-12-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <d2778bae-5d04-5954-e552-9a426683ed34@linaro.org>
-Date: Mon, 18 Nov 2019 09:43:30 +0100
+Message-ID: <d3d7db44-6492-7309-1864-fd67d85bd404@linaro.org>
+Date: Mon, 18 Nov 2019 09:46:16 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20191115173000.21891-11-alex.bennee@linaro.org>
+In-Reply-To: <20191115173000.21891-12-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: HyWMAEFWaKaX
+X-TUID: rZs8pUDcwscU
 
-On 11/15/19 6:29 PM, Alex Bennée wrote:
-> This is described as optional but I'm not convinced of the numbering
-> when multiple target fragments are sent.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  target/arm/cpu.h     |  2 +-
->  target/arm/gdbstub.c | 16 ++++++++++------
->  target/arm/helper.c  |  2 +-
->  3 files changed, 12 insertions(+), 8 deletions(-)
+On 11/15/19 6:30 PM, Alex Bennée wrote:
+> +int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    GString *s = g_string_new(NULL);
+> +    DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
+> +    g_autoptr(GString) ts = g_string_new("");
+> +    g_autoptr(GString) us = g_string_new("");
+> +    int i, j;
+> +    info->num = 0;
+> +    g_string_printf(s, "<?xml version=\"1.0\"?>");
+> +    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+> +    g_string_append_printf(s, "<feature name=\"org.qemu.gdb.aarch64.sve\">");
+> +    /* first define types and the union they belong to */
+> +    for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+> +        int count = 128 / vec_lanes[i].size;
+> +        g_string_printf(ts, "vq%d%s", count, vec_lanes[i].suffix);
+> +        g_string_append_printf(s, "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+> +                               ts->str, vec_lanes[i].gdb_type, count);
+> +        g_string_append_printf(us, "<field name=\"%s\" type=\"%s\"/>",
+> +                               vec_lanes[i].suffix, ts->str);
+> +    }
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Really?  Separate 128-bit registers for each Zreg lane?
+Surely that's not what gdb does...
 
 
 r~

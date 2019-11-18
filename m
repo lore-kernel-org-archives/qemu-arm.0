@@ -1,189 +1,126 @@
-Received: by 2002:a05:6512:48d:0:0:0:0 with SMTP id v13csp2473868lfq;
-        Sun, 17 Nov 2019 22:45:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzYd6l0xr93XbNAHsegECUeSZHR1+NXlQEzAGuKDIugDxacwCetdsW84XTqMrnLXq7Yk431
-X-Received: by 2002:a17:906:1fcf:: with SMTP id e15mr23458371ejt.317.1574059515027;
-        Sun, 17 Nov 2019 22:45:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574059515; cv=none;
+Received: by 2002:a05:6512:48d:0:0:0:0 with SMTP id v13csp2554371lfq;
+        Mon, 18 Nov 2019 00:22:13 -0800 (PST)
+X-Received: by 2002:a1c:411:: with SMTP id 17mr25686866wme.122.1574065333464;
+        Mon, 18 Nov 2019 00:22:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574065333; cv=none;
         d=google.com; s=arc-20160816;
-        b=k8iszCZVEjrGqe7kE5zLv3LYtxF1PHFvN/TTs23qIvf5XwQ7WQVcHEkZdIHsOZ2pS0
-         edgc0oAseA5VNL2qVi5Gcbre7KzzTHjoVkxqGIcRY5eAZKMtj9LjsvjFg+9Sxq65jPUS
-         t1htChUL+ZGP2tjrXngua67W/bkUMvwGFR6K6U8vZ9s9CaBjsT+bipYEK6z4uYh+73AM
-         xGuCzwIqFtu759/vAun04f4krgtQFTCrvEEIA5CDAOXj82J78I8cT1M7rHfgxC15DNXI
-         cQP9X1EVvAzc+fmv2Lk/mbqdBxwSCk3jkatCg+RSp2JVNQcdhvygl98sh86leJ7RLqTa
-         0mQw==
+        b=kto27ehb8aZWTgeNTn6V+L2yuAulPXxaA3HR6Q/YR2rkGACUs+jGNGZZnVxneuy35h
+         HyPEmAv55ihzSQINhXtByfboFgQXFOrilgzC3lSRuf+0ZqIBqLdT4mgTmRBvLQ9i5CY2
+         atrkaCTQSpDvtW5IkJBdcis7/HobM1nI+GsFUhj0097SRvAJg2WOxZDOPNpDlAlePo0o
+         +Aok+dut0ZO3J+O4k8rSOkNy0i/OUqF5aguz6nwDAgkhr34nrfqZj0oiMzIpaLgHoZaM
+         e6TkEP5M8qlA1htJUEmv1cXSiwECJBRkag6TENnIn4oAV88pOZNKDeL380apyME0uu+s
+         o4/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=wn812f8kzw22ZLSq/mogCODXKqB1y/Bh7g5hbspyM7c=;
-        b=lXUxcJIcpaAkKrEukycNt/igJgnVfBtaJsqfS6DBVA5vlcYUFpPW69VN71WdXVm1AH
-         GWRHB8SusGYLMPS8FwAXX9ck1CVYEy4QhWnXo/FUDDhzN+uVr0vXmrtOuLfLqEir67hL
-         OmC6Ikm8v4kYKUrFZ6uqEH4xxej9kxjNGAnjsN/UaWaLWC0baVbxkFi+FfBzAgV0cu7u
-         a34Qxf1GPFwNU1LZflundY/5r2Yd2BOtlFeZUlQO2cWrAX/R18VQcfwSOHH6H3WpUTo5
-         +h8bD4IS+vsJ/XuinL4dzrmkAoIO9J0SEiue32qPW+fYzlZnqv95+kjXjETB6BqwcNBl
-         v2RA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=atGAxSqInUc7VQRL0TWcv+Od4BWkjzfh4qg5Iv9ahfU=;
+        b=U61Nbrs3mglHWPBcurIP4Lh+rgoQ5zQbh8+XwI4LzTZEhG6yzMD1os25EMg0BePbE6
+         s41wVi9QgNviaUQ7ux3oIEGQhwdbNBMk1QmtMxG9tDCghXrsujiHgO/XUaLowX5wHdWh
+         4ifBKjHEusrIGV9Ek3d/1lZPn8WbO2BrgNEsgN1xgdvQ8oD0svZCFmg1OoacwJ0jDDOk
+         rZqbRdKXm1A9SbwwxyaYh+w82QT2EzqIxp6O4CEdv1E3HjFsFye0ZTejnBQ0BcbVls6K
+         GIzTtqlKEluBvLV2GPc/87flhoY4DEKqmkGh2PRfYFwhzfvoX84mD/1pqrJHdcIIt2Eo
+         zNsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g2si2401833eja.146.2019.11.17.22.45.14
+       dkim=pass header.i=@linaro.org header.s=google header.b=dlw8iiFp;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id y8sor9867412wmd.9.2019.11.18.00.22.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Nov 2019 22:45:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 18 Nov 2019 00:22:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58538 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWamf-0002Lj-Uk
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 01:45:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38842)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1iWamW-0002JE-HA
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 01:45:05 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1iWamU-0006qM-Og
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 01:45:04 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2265 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1iWamU-0006ny-Dy; Mon, 18 Nov 2019 01:45:02 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 94E87DE79A226FC2095D;
- Mon, 18 Nov 2019 14:44:52 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS406-HUB.china.huawei.com
- (10.3.19.206) with Microsoft SMTP Server id 14.3.439.0; Mon, 18 Nov 2019
- 14:44:37 +0800
-Subject: Re: [RFC v2 14/14] virt/acpi: add SDEI table if SDEI is enabled
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20191105091056.9541-1-guoheyi@huawei.com>
- <20191105091056.9541-15-guoheyi@huawei.com>
- <20191112155253.543e15ad@redhat.com>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <9f032ccc-ae43-3710-daa8-445c6069903e@huawei.com>
-Date: Mon, 18 Nov 2019 14:44:31 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=dlw8iiFp;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=atGAxSqInUc7VQRL0TWcv+Od4BWkjzfh4qg5Iv9ahfU=;
+        b=dlw8iiFp5dUu5zs52VJ9tZC4n33mIl/doaz5AZ/4vMIz6MCL6j5IrTsuwkpWz+XoAT
+         sW8O07tmN4SwU8ZLhUnjujI94URbdicZS6ug0U++OCaUkIVyGIipMjkc7Sd7fRcAbUe1
+         EKdoV96CNLDWeBCOkg0a+n4Rhd0xBoUpDUsAEyBxPlu8SSQulI/1Dx0eSbI+O1Fw2E1s
+         oPvQ6HeCCvB5jAXlBCLd4/Qkxu8ocL4G392wqdhP8iRcaUUF6z+jsJ4jVBkj2OafhOMV
+         ZTbuzNHoFsS9zxJukwgDMFUGAWM1m0IBObJxiljcfJI60lSLRO4kpH+11i2AaP8APraO
+         +lVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=atGAxSqInUc7VQRL0TWcv+Od4BWkjzfh4qg5Iv9ahfU=;
+        b=jyYne+qiB9vJjUtQZsk/UV97O9rbURjiFkslBkzzdPfz4S5msVwfi8E/5IlbNI/Vwr
+         UdpkdsiNTYWSP8hWtGJM+C4vyRFxRWy4xJeEtqHly/ydcMNWbXqMu/HWk65NGxXZd3WJ
+         F/qxAXLxqLy2bJCHz1tt8uPdAknh/HMoFz5HTMHSF0+dbzoo1+bv4henGtYVDcThPH7h
+         NBdjhdovGb1gyvG5a+84hjnxNXcVbPctRyrVV7reulhMZx5+qYKX5L7d55iCC52qA4XX
+         u7GmihmUNhVt3ejwu736jw1u25fZyza7m3YUUWY+uWI+6Ve3emPXJyUJUx6xKXNhGame
+         c22w==
+X-Gm-Message-State: APjAAAXOl3b3ls5WGiEX5/MQpEcabewlOwTreHAehLkj87Mjaqoa2oqK
+	4uVr7UhOGyy1h536RrEZuhhsrE+S/yQYXCfI
+X-Google-Smtp-Source: APXvYqw2PATW1wpmJNc88XBdK/SNDovfy1jPIvOAnpVCdMIBAAfvi00JgtsEmXODKiRblgiNz8ix3g==
+X-Received: by 2002:a05:600c:22c3:: with SMTP id 3mr26597740wmg.139.1574065333106;
+        Mon, 18 Nov 2019 00:22:13 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.8.102] (65.red-79-149-41.dynamicip.rima-tde.net. [79.149.41.65])
+        by smtp.gmail.com with ESMTPSA id t29sm23394091wrb.53.2019.11.18.00.22.06
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Nov 2019 00:22:12 -0800 (PST)
+Subject: Re: [RFC PATCH 06/11] target/arm: use gdb_get_reg helpers
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: alan.hayward@arm.com, luis.machado@linaro.org,
+ damien.hedde@greensocs.com, Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20191115173000.21891-1-alex.bennee@linaro.org>
+ <20191115173000.21891-7-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <f41d3419-3c74-4748-6ca1-a3ab8f6cab5d@linaro.org>
+Date: Mon, 18 Nov 2019 09:19:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20191112155253.543e15ad@redhat.com>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.191
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael
- S. Tsirkin" <mst@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
- qemu-devel@nongnu.org, Shannon
- Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- James Morse <james.morse@arm.com>, wanghaibin.wang@huawei.com,
- Dave Martin <Dave.Martin@arm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dYldI8u0tgMh
+In-Reply-To: <20191115173000.21891-7-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: pYVA625hQtGh
+
+On 11/15/19 6:29 PM, Alex Bennée wrote:
+> This is cleaner than poking memory directly and will make later
+> clean-ups easier.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  target/arm/helper.c | 16 ++++++----------
+>  1 file changed, 6 insertions(+), 10 deletions(-)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index be67e2c66d6..bd821931b3d 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -105,21 +105,17 @@ static int aarch64_fpu_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
+>  {
+>      switch (reg) {
+>      case 0 ... 31:
+> +    {
+>          /* 128 bit FP register */
+> -        {
+> -            uint64_t *q = aa64_vfp_qreg(env, reg);
+> -            stq_le_p(buf, q[0]);
+> -            stq_le_p(buf + 8, q[1]);
+> -            return 16;
+> -        }
+> +        uint64_t *q = aa64_vfp_qreg(env, reg);
+> +        return gdb_get_reg128(buf, q[0], q[1]);
+
+The elements of aa64_vfp_qreg are explicitly little-endian.
+Since you defined gdb_get_reg128 as (buf, hi, lo), these
+arguments are in the wrong order.
 
 
-
-On 2019/11/12 22:52, Igor Mammedov wrote:
-> On Tue, 5 Nov 2019 17:10:56 +0800
-> Heyi Guo <guoheyi@huawei.com> wrote:
->
->> Add SDEI table if SDEI is enabled, so that guest OS can get aware and
->> utilize the interfaces.
->>
->> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: Dave Martin <Dave.Martin@arm.com>
->> Cc: Marc Zyngier <marc.zyngier@arm.com>
->> Cc: Mark Rutland <mark.rutland@arm.com>
->> Cc: James Morse <james.morse@arm.com>
->> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
->> Cc: "Michael S. Tsirkin" <mst@redhat.com>
->> Cc: Igor Mammedov <imammedo@redhat.com>
->> ---
->>
->> Notes:
->>      v2:
->>      - Drop SDEI table definition and add comments
->>
->>   hw/arm/virt-acpi-build.c | 26 ++++++++++++++++++++++++++
->>   1 file changed, 26 insertions(+)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 4cd50175e0..73d3f8cd15 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -32,6 +32,7 @@
->>   #include "trace.h"
->>   #include "hw/core/cpu.h"
->>   #include "target/arm/cpu.h"
->> +#include "target/arm/sdei.h"
->>   #include "hw/acpi/acpi-defs.h"
->>   #include "hw/acpi/acpi.h"
->>   #include "hw/nvram/fw_cfg.h"
->> @@ -475,6 +476,26 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>                    "IORT", table_data->len - iort_start, 0, NULL, NULL);
->>   }
->>   
->> +/*
->> + * ACPI spec 6.2 Software Delegated Exception Interface (SDEI).
->> + * (Revision 1.0)
->> + * "SDEI" was reserved in ACPI 6.2. See "Links to ACPI-Related Documents"
->> + * (http://uefi.org/acpi) under the heading "Software
->> + * Delegated Exceptions Interface." The definition is under
->> + * "10 Appendix C: ACPI table definitions for SDEI" in the linked document.
->> + *
->> + * This is a dummy table to expose platform SDEI capbility to OS.
->> + */
->> +static void
->> +build_sdei(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->> +{
->> +    int sdei_start = table_data->len;
->> +
->> +    (void)acpi_data_push(table_data, sizeof(AcpiTableHeader));
->> +    build_header(linker, table_data, (void *)(table_data->data + sdei_start),
->> +                 "SDEI", table_data->len - sdei_start, 1, NULL, NULL);
->> +}
->> +
->>   static void
->>   build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>   {
->> @@ -825,6 +846,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>       acpi_add_table(table_offsets, tables_blob);
->>       build_spcr(tables_blob, tables->linker, vms);
->>   
->> +    if (sdei_enabled) {
-> globals shouldn't be introduced in new code
-OK. For this feature depends on KVM, does it make sense to add a flag to 
-struct VirtMachineState?
-
-Thanks,
-HG
->
->> +        acpi_add_table(table_offsets, tables_blob);
->> +        build_sdei(tables_blob, tables->linker, vms);
->> +    }
->> +
->>       if (ms->numa_state->num_nodes > 0) {
->>           acpi_add_table(table_offsets, tables_blob);
->>           build_srat(tables_blob, tables->linker, vms);
->
-> .
->
-
-
+r~

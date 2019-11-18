@@ -1,96 +1,96 @@
-Received: by 2002:a05:6512:48d:0:0:0:0 with SMTP id v13csp2497551lfq;
-        Sun, 17 Nov 2019 23:14:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyUz4YbquDdFC7H3xxSjy0Jl+hMZw3hyKJiR0RCkeyPPJQyX2OOFzp2FWhH7aEtRAuRGoLy
-X-Received: by 2002:ac8:2f55:: with SMTP id k21mr26540006qta.237.1574061257887;
-        Sun, 17 Nov 2019 23:14:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574061257; cv=none;
+Received: by 2002:a05:6512:48d:0:0:0:0 with SMTP id v13csp2498910lfq;
+        Sun, 17 Nov 2019 23:15:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx+84gTYsL18laqy3PCt755p2aY0prQq9jJc3DA3eYVP3jiOdmTA5cGEOtM4dXCkGssbiNh
+X-Received: by 2002:a37:47c4:: with SMTP id u187mr21924550qka.174.1574061350732;
+        Sun, 17 Nov 2019 23:15:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574061350; cv=none;
         d=google.com; s=arc-20160816;
-        b=cZ51lBDYJ/e9K1/fo1duhLz3gRb0PTYo82BHlbOggJMOsxXGA8EYBZaiQMjIYmr1K5
-         RHdFjVyhFz6Wh5AzMum48NkDyFaMFx4t50Dnd9iMpfSsATafI68ixR7OCsC4tjU+iWjs
-         K5BjpoJ4KVXZFg2fNOH3m9Vj63FcFuKPAMuV3e8aOgHbmWLHX7HUP5k+waKbozS4FfX/
-         Fnz3uFEJdgn2kcEwLO+DvE59Xw9N/wEzCC1RG8VCLy7RmC5xiyIrsA7c/+eFLFH0V6qh
-         JWT8iEdb0RnYC2PEl3hgd2Ef41k0Sr9G5wOK0aDh84pZxf+i4sykdxYcUYylCrUDvmYj
-         HApA==
+        b=mTgkRrDqf1mAaTVR05gXVupSrxT7s+4bnmKSI4l4bF/PdUlcpT/6CH376QALCUjSe2
+         tGCggNljVNbKVaQ1wS13paqQ8fC68XlbPLDgAfmKYOtHk5BZiGpG0mrToDiKL9iuj/OG
+         bJ1yxh673o2biZmaYnAoaPJKVN3QHVXq+Q1jMskbt4MDxanOcyXK+NQaz9DvbNp//tmh
+         2xTZuhZ+NspFZ/KTDGcPwtHiD67pmYCfJ+7RN0OHmSefBXty73SXaPvYhs/cNi6d9z/V
+         6J3lkXuynIOaehhISGcBG9VPLxYLl4wxsWG+PB5g1lsZp8g1SohYajSkacj9zjTGzHtA
+         uOQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=31Nu3T80N9bZJ37joS3KaPNV8Dkm3/7sO4X0iTZqs+k=;
-        b=dJW3ZK8Auc9OgUP7FrFol36FVS/8CnNrIm4Envp/zxug1sPYLjklIF4oD4PetZTmfV
-         IZMfY5FhFpU58rdiVOrHCNWSS35gAQpgU10ulTmKoFe8vmsM8aOoFWF+bCpBwrQLXIql
-         n6zmBlNxW3tIE8w8jYcl83WArMLObAWt3M+9bs6XuN83lkz/STjPOT5zKzWhASeZes29
-         40vcFVfc1mOuitY4AwnHfnzLfN58fw9G3vGORtRWNMeyhgbRjq4lG0pKsExi+UuG477C
-         qvE8wnaG0z8KW4ktJFuwutMJ18hZq8Kjz/qc6GV/+R4iCaACRD3sb61KisLOiLonv0ye
-         FgsA==
+        bh=Q5sp6VNx9wexE8ZcBy7gIVJOZHvmfhANEpomWVTrTsg=;
+        b=n25np53kaCwPJxEPmGh7YJvqCGuVDKOYwYOoSfS1u0dOBt1MbyKp55tuNDCyO51of9
+         bs/mRwG6ESNvpuRd8eoKQxFL+/rKmKkFGQ1xR61Sev5gVVJjg1q6j4Cr//7IzbPKz54x
+         nCjlXJRj/uAPw2f+ICuGWUOQntzr01M4i21PgdVTDk8beS5I28SMX/5x7vgfwNK5xmKB
+         5LLvIEw8ZCIqgMvaz06oNWcCI1IZRhNU66X6tGuxXRwWF/9hi9igp7t+hEpwayU9fmSC
+         0Y2yk3d+rFZRBLptnMWf/cb+H6+DRkyJ5+xT+Drvjczb5zbtf1hqad0B5vophVSdUfLM
+         B5Pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=gYkrJTNy;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=cedjCcfH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e3si10847615qkd.265.2019.11.17.23.14.17
+        by mx.google.com with ESMTPS id f10si10287186qtb.39.2019.11.17.23.15.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Nov 2019 23:14:17 -0800 (PST)
+        Sun, 17 Nov 2019 23:15:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=gYkrJTNy;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=cedjCcfH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58656 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58682 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWbEn-0000Mk-8L
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 02:14:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42369)
+	id 1iWbGH-0000yr-LD
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 02:15:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42510)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <joel.stan@gmail.com>) id 1iWbES-0000M2-8y
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 02:13:57 -0500
+ (envelope-from <joel.stan@gmail.com>) id 1iWbFu-0000xm-V9
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 02:15:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1iWbER-0006SB-4M
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 02:13:56 -0500
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:41957)
+ (envelope-from <joel.stan@gmail.com>) id 1iWbFt-0000C3-Br
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 02:15:26 -0500
+Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:36957)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1iWbER-0006Rh-0Y; Mon, 18 Nov 2019 02:13:55 -0500
-Received: by mail-qk1-x741.google.com with SMTP id m125so13527491qkd.8;
- Sun, 17 Nov 2019 23:13:54 -0800 (PST)
+ id 1iWbFt-0000Bk-82; Mon, 18 Nov 2019 02:15:25 -0500
+Received: by mail-qv1-xf42.google.com with SMTP id s18so6122990qvr.4;
+ Sun, 17 Nov 2019 23:15:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=31Nu3T80N9bZJ37joS3KaPNV8Dkm3/7sO4X0iTZqs+k=;
- b=gYkrJTNyuHG9UM7e4o91LJX4fjOlK86/l2RTHIvUwDJuUbIg6UvNJN5RDA4PcnG7f+
- iqgN7e2E7qfkHFHqwMkF4YaotgRtaiEAnsvZO1E62FU3T7dmRH1gNCQtd9wLrl3s1xy3
- HchSuvd/NzJZNt7/ruzQ814XGN1g8QZ3GemEU=
+ bh=Q5sp6VNx9wexE8ZcBy7gIVJOZHvmfhANEpomWVTrTsg=;
+ b=cedjCcfHC7l/FovxBLXLSGPYV4U+5jMSMeLadvqPMmqVo5cI1wyH1p+YWJrmp72fa7
+ y0bEUPh6H2U0GZ2bgLR8KovtxPUuk0Xs8XA74zy98u9fpyyd7IqbKbT5K7xcgfn1aIR5
+ 6K6kJGojYgYn5kW1Z7th4WldQZzwpgX31K8sc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=31Nu3T80N9bZJ37joS3KaPNV8Dkm3/7sO4X0iTZqs+k=;
- b=QtCsP+uluM7O1rHneqVLByiz66JFVKst2hzQkfyp6x/Y/2dnreTMChwYXXkbwymPtM
- q/bZvcLAHW4D6kz7PPyrIW8Li6OcJL+Dl2J70y7kgx4i9UQoID4bHqwgxkynWPhtikIr
- d7ugvLjTZpS3WRPBdo7zFKRR9oAXsxpMGEvYOhJhx1Y5lZFVbRT1gujZVZTqHvThMZL1
- blpjz3Epr9a13tOjqkd8eYEq1U2t1PfZzqk6Mzvlaj3+5KHRdMNzSmdO64JFH3f1AYJY
- h8rXHi2XIgYDMnVM6DXR4UwGOc9TgHV2C/RwTiarHaHczI8WcivurZ/6DhX5R8WPygkE
- xejQ==
-X-Gm-Message-State: APjAAAUUeRjqWx72fdH+9u+eY+GV2eZxwi0Y1+Am7okG7d2W2dpJvsv+
- M0hYXsSHmcGRSuFSQHNiwJXyLsumQh8PIx2mLzk=
-X-Received: by 2002:a05:620a:634:: with SMTP id
- 20mr10371477qkv.330.1574061234127; 
- Sun, 17 Nov 2019 23:13:54 -0800 (PST)
+ bh=Q5sp6VNx9wexE8ZcBy7gIVJOZHvmfhANEpomWVTrTsg=;
+ b=iATEMpdL+okGcReu9pZdhzgieTFFfgsAOiOFkXY/cyntH6Be699GJwbXsxGDi4jfi5
+ mRnNEue+V/hzoMTOQ5AhtHhJAsyn8USeBRr0qXfGoPk355lXnd5gkL7hwyo/WToT+QpR
+ W/6fkwBxIQCykYiUqXrORk6Kzl8DK15QFHnhSKsR53H/pl/2nybkhnIAdM+6a2F2NwEC
+ w5lPjmdUEDtEij348kjimvY5dRBhzTenouFhhowGix6ILi31bNSPVjJEf5cDoEiBESUZ
+ EOE+olDRYfSrua40z6OpTTpUcJJ+PeG0ooJtZUEr8N0KCkqie4jSBXaA88CyMboehiZq
+ hASA==
+X-Gm-Message-State: APjAAAVhal0sj8RhQmWHHOV0tV5WUxVUZ1uBr7vOLc7p36OLqCtMr4NE
+ IsnZju4IBjJ0fENAzKCH5EoloacuJQtW85rXeXw=
+X-Received: by 2002:a05:6214:2c2:: with SMTP id
+ g2mr23856072qvu.210.1574061324137; 
+ Sun, 17 Nov 2019 23:15:24 -0800 (PST)
 MIME-Version: 1.0
 References: <20191114094544.30114-1-clg@kaod.org>
- <20191114094544.30114-3-clg@kaod.org>
-In-Reply-To: <20191114094544.30114-3-clg@kaod.org>
+ <20191114094544.30114-4-clg@kaod.org>
+In-Reply-To: <20191114094544.30114-4-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Mon, 18 Nov 2019 07:13:42 +0000
-Message-ID: <CACPK8Xd3Dedf+wjn1rpAw3wuaWCkJZBdWhFVvoLZs_E1SfWAaw@mail.gmail.com>
-Subject: Re: [PATCH 2/5] aspeed/smc: Do not map disabled segment on the AST2600
+Date: Mon, 18 Nov 2019 07:15:12 +0000
+Message-ID: <CACPK8XcXAYkanw2+fxVh9y+PnQEgrX64PkYYFpxQ5i4B1YgZOQ@mail.gmail.com>
+Subject: Re: [PATCH 3/5] aspeed/smc: Add AST2600 timings registers
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::741
+X-Received-From: 2607:f8b0:4864:20::f42
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,74 +106,140 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hNkKXP0SsSPB
+X-TUID: HylwVrAEFE/Z
 
 On Thu, 14 Nov 2019 at 09:46, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> The segments can be disabled on the AST2600 (zero register value).
-> CS0 is open by default but not the other CS. This is closing the
-> access to the flash device in user mode and forbids scanning.
+> Each CS has its own Read Timing Compensation Register on newer SoCs.
 >
-> In the model, check the segment size and disable the associated region
-> when the value is zero.
->
-> Fixes: bcaa8ddd081c ("aspeed/smc: Add AST2600 support")
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
 > ---
->  hw/ssi/aspeed_smc.c | 16 +++++++++++-----
->  1 file changed, 11 insertions(+), 5 deletions(-)
+>  include/hw/ssi/aspeed_smc.h |  1 +
+>  hw/ssi/aspeed_smc.c         | 17 ++++++++++++++---
+>  2 files changed, 15 insertions(+), 3 deletions(-)
 >
+> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+> index 684d16e33613..6fbbb238f158 100644
+> --- a/include/hw/ssi/aspeed_smc.h
+> +++ b/include/hw/ssi/aspeed_smc.h
+> @@ -40,6 +40,7 @@ typedef struct AspeedSMCController {
+>      uint8_t r_ce_ctrl;
+>      uint8_t r_ctrl0;
+>      uint8_t r_timings;
+> +    uint8_t nregs_timings;
+>      uint8_t conf_enable_w0;
+>      uint8_t max_slaves;
+>      const AspeedSegments *segments;
 > diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 955ec21852ac..86cadbe4cc00 100644
+> index 86cadbe4cc00..7755eca34976 100644
 > --- a/hw/ssi/aspeed_smc.c
 > +++ b/hw/ssi/aspeed_smc.c
-> @@ -444,8 +444,13 @@ static void aspeed_2600_smc_reg_to_segment(const Asp=
-eedSMCState *s,
->      uint32_t start_offset =3D (reg << 16) & AST2600_SEG_ADDR_MASK;
->      uint32_t end_offset =3D reg & AST2600_SEG_ADDR_MASK;
+> @@ -137,7 +137,7 @@
+>  /* Checksum Calculation Result */
+>  #define R_DMA_CHECKSUM    (0x90 / 4)
 >
-> -    seg->addr =3D s->ctrl->flash_window_base + start_offset;
-> -    seg->size =3D end_offset + MiB - start_offset;
-> +    if (reg) {
-> +        seg->addr =3D s->ctrl->flash_window_base + start_offset;
-> +        seg->size =3D end_offset + MiB - start_offset;
-> +    } else {
-> +        seg->addr =3D s->ctrl->flash_window_base;
-> +        seg->size =3D 0;
-> +    }
->  }
+> -/* Misc Control Register #2 */
+> +/* Read Timing Compensation Register */
+>  #define R_TIMINGS         (0x94 / 4)
 >
->  static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
-> @@ -486,7 +491,7 @@ static void aspeed_smc_flash_set_segment_region(Aspee=
-dSMCState *s, int cs,
->      memory_region_transaction_begin();
->      memory_region_set_size(&fl->mmio, seg.size);
->      memory_region_set_address(&fl->mmio, seg.addr - s->ctrl->flash_windo=
-w_base);
-> -    memory_region_set_enabled(&fl->mmio, true);
-> +    memory_region_set_enabled(&fl->mmio, !!seg.size);
->      memory_region_transaction_commit();
+>  /* SPI controller registers and bits (AST2400) */
+> @@ -256,6 +256,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .r_ce_ctrl         =3D R_CE_CTRL,
+>          .r_ctrl0           =3D R_CTRL0,
+>          .r_timings         =3D R_TIMINGS,
+> +        .nregs_timings     =3D 1,
+>          .conf_enable_w0    =3D CONF_ENABLE_W0,
+>          .max_slaves        =3D 5,
+>          .segments          =3D aspeed_segments_legacy,
+> @@ -271,6 +272,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .r_ce_ctrl         =3D R_CE_CTRL,
+>          .r_ctrl0           =3D R_CTRL0,
+>          .r_timings         =3D R_TIMINGS,
+> +        .nregs_timings     =3D 1,
+>          .conf_enable_w0    =3D CONF_ENABLE_W0,
+>          .max_slaves        =3D 5,
+>          .segments          =3D aspeed_segments_fmc,
+> @@ -288,6 +290,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .r_ce_ctrl         =3D 0xff,
+>          .r_ctrl0           =3D R_SPI_CTRL0,
+>          .r_timings         =3D R_SPI_TIMINGS,
+> +        .nregs_timings     =3D 1,
+>          .conf_enable_w0    =3D SPI_CONF_ENABLE_W0,
+>          .max_slaves        =3D 1,
+>          .segments          =3D aspeed_segments_spi,
+> @@ -303,6 +306,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .r_ce_ctrl         =3D R_CE_CTRL,
+>          .r_ctrl0           =3D R_CTRL0,
+>          .r_timings         =3D R_TIMINGS,
+> +        .nregs_timings     =3D 1,
+>          .conf_enable_w0    =3D CONF_ENABLE_W0,
+>          .max_slaves        =3D 3,
+>          .segments          =3D aspeed_segments_ast2500_fmc,
+> @@ -320,6 +324,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .r_ce_ctrl         =3D R_CE_CTRL,
+>          .r_ctrl0           =3D R_CTRL0,
+>          .r_timings         =3D R_TIMINGS,
+> +        .nregs_timings     =3D 1,
+>          .conf_enable_w0    =3D CONF_ENABLE_W0,
+>          .max_slaves        =3D 2,
+>          .segments          =3D aspeed_segments_ast2500_spi1,
+> @@ -335,6 +340,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .r_ce_ctrl         =3D R_CE_CTRL,
+>          .r_ctrl0           =3D R_CTRL0,
+>          .r_timings         =3D R_TIMINGS,
+> +        .nregs_timings     =3D 1,
+>          .conf_enable_w0    =3D CONF_ENABLE_W0,
+>          .max_slaves        =3D 2,
+>          .segments          =3D aspeed_segments_ast2500_spi2,
+> @@ -350,6 +356,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .r_ce_ctrl         =3D R_CE_CTRL,
+>          .r_ctrl0           =3D R_CTRL0,
+>          .r_timings         =3D R_TIMINGS,
+> +        .nregs_timings     =3D 1,
+>          .conf_enable_w0    =3D CONF_ENABLE_W0,
+>          .max_slaves        =3D 3,
+>          .segments          =3D aspeed_segments_ast2600_fmc,
+> @@ -365,6 +372,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .r_ce_ctrl         =3D R_CE_CTRL,
+>          .r_ctrl0           =3D R_CTRL0,
+>          .r_timings         =3D R_TIMINGS,
+> +        .nregs_timings     =3D 2,
+>          .conf_enable_w0    =3D CONF_ENABLE_W0,
+>          .max_slaves        =3D 2,
+>          .segments          =3D aspeed_segments_ast2600_spi1,
+> @@ -380,6 +388,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .r_ce_ctrl         =3D R_CE_CTRL,
+>          .r_ctrl0           =3D R_CTRL0,
+>          .r_timings         =3D R_TIMINGS,
+> +        .nregs_timings     =3D 3,
+>          .conf_enable_w0    =3D CONF_ENABLE_W0,
+>          .max_slaves        =3D 3,
+>          .segments          =3D aspeed_segments_ast2600_spi2,
+> @@ -951,7 +960,8 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr =
+addr, unsigned int size)
+>      addr >>=3D 2;
 >
->      s->regs[R_SEG_ADDR0 + cs] =3D regval;
-> @@ -526,8 +531,9 @@ static void aspeed_smc_flash_set_segment(AspeedSMCSta=
-te *s, int cs,
->      }
+>      if (addr =3D=3D s->r_conf ||
+> -        addr =3D=3D s->r_timings ||
+> +        (addr >=3D s->r_timings &&
+> +         addr < s->r_timings + s->ctrl->nregs_timings) ||
+>          addr =3D=3D s->r_ce_ctrl ||
+>          addr =3D=3D R_INTR_CTRL ||
+>          addr =3D=3D R_DUMMY_DATA ||
+> @@ -1216,7 +1226,8 @@ static void aspeed_smc_write(void *opaque, hwaddr a=
+ddr, uint64_t data,
+>      addr >>=3D 2;
 >
->      /* Keep the segment in the overall flash window */
-> -    if (seg.addr + seg.size <=3D s->ctrl->flash_window_base ||
-> -        seg.addr > s->ctrl->flash_window_base + s->ctrl->flash_window_si=
-ze) {
-> +    if (seg.size &&
-> +        (seg.addr + seg.size <=3D s->ctrl->flash_window_base ||
-> +         seg.addr > s->ctrl->flash_window_base + s->ctrl->flash_window_s=
-ize)) {
->          qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment for CS%d is inva=
-lid : "
->                        "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
->                        s->ctrl->name, cs, seg.addr, seg.addr + seg.size);
+>      if (addr =3D=3D s->r_conf ||
+> -        addr =3D=3D s->r_timings ||
+> +        (addr >=3D s->r_timings &&
+> +         addr < s->r_timings + s->ctrl->nregs_timings) ||
+>          addr =3D=3D s->r_ce_ctrl) {
+>          s->regs[addr] =3D value;
+>      } else if (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs) {
 > --
 > 2.21.0
 >

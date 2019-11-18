@@ -1,102 +1,102 @@
-Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp191633lfi;
-        Mon, 18 Nov 2019 07:28:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwONraUMFqakeTrAdvLwlXVBGfx5JvnRb8nBhWvt/Hm96qbiMzrTUCtMSmDMJd+whB+FSIm
-X-Received: by 2002:a05:620a:101a:: with SMTP id z26mr24178867qkj.344.1574090924402;
-        Mon, 18 Nov 2019 07:28:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574090924; cv=none;
+Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp199905lfi;
+        Mon, 18 Nov 2019 07:35:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyr6EHhQy2PgF9wJgU3j4+OLgx7uaGQ9xXjq8tQ+LWW0cKE8mLE2K/Mn3AcMUxi2z5n8ohP
+X-Received: by 2002:a5d:6351:: with SMTP id b17mr15294611wrw.126.1574091308999;
+        Mon, 18 Nov 2019 07:35:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574091308; cv=none;
         d=google.com; s=arc-20160816;
-        b=i+yt93G8p00W0wGmBdsj82HPAL+sCC1JZSKh8cv1nhzpdBIXiQUgPm0cEy+zBZB2li
-         fYwVilVMW2K9nhenEMartesorCk1MD1K6VkyYLBN8juxTs7cJsUUAL/KdhXRoXd7j/SU
-         7pxmJ3pgm4SdsnQBkrS73FIKM1fOcpVnBq2TivPzAThaLp7z9guiSO+VubpEsfd9CjL6
-         MKDILxaEnzYrjuoUlc7/kqSRfJTgVpWaQSXSrHPBJFoJ8f8ySDLGkt3uJfDKGgNjB8um
-         IdWYtVOJXX5DBTuTAtzwAIo/K8IHpe5GXTt89a3UAm2iIfpwDe/cBRYjlE4ZVF+zVQyH
-         i2mA==
+        b=zzgfPP2Xta5eAF9vjCFf12syDKNmCADMlC4l8h4ge62QctpFUA3QW4hB3fBCVx5aZQ
+         iFY+Qe+tuOf/uVGByzeCYIVLNgE1Q5G7mYYm2zdIyKeJYNIIlu63mzWgb7q1LAPoy89z
+         T/SI/NyIOPbvdMvlvxmDnsP0pWGaAaGCI6zWaHX4EH16u00NOJg7CkooDogo95hk3Lpj
+         6R2wgaUU3nc7qq/0ZJtDGW6IEIUwLbfM223urwgRFrqCC4cuWKnmT6+tCn4Dgqp7rKbj
+         yx1NXhvxUa+UIuYRv4h+Pezaiajd0u++eNZRH5TuAqfvINraVmuFcNg3mEGGs1xbeReu
+         34cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=7afJ7tzPngtye9+ZMXHFHBKQgLixlBBO+3uIN0csNZk=;
-        b=j7+o21VYuzJ45DByjkZ98E4HKqL9LhJnU3SsRmwOv6x0jg4wfgPi0nadAq1v5lTlmI
-         8LplUgJjKuoQHzTZ4vVTuzA4nE/KUwMm0ugEF1ct67V/kyj6UT3Z+RyTE3C+A+ARSL3X
-         lGIlnT9pL+hMEmpYMrWQ0sFC8NacCEoTzp1MSdzkSzdugHzBwd1tg7Zthl/Hwid268F/
-         +D15+NsEMNBYomantInJNQZ1zPyXaV8tST5BlXXs6jXArJ62rGCVDELY4U/GGsoO28FF
-         PCB2ONeDj6tCtcN215/HDaPPU27Zi/0ymbZyfJcDaPOgbz95IoCOKJlGnkUFKc96ETA1
-         mWmw==
+        bh=lFcD0c4XBd2VxlKYJhUQ7FMwh9UM1pbxiLuaAZ2es24=;
+        b=n2CYdc0tORalI9qdU/Fov/iqgmjNymkyw7zGCPPQrcy/UGcEpjOiKx6X8Bqj9EnxNG
+         0MoT6c3VGzfxESZmlLx2BP1h4vHoEHllDQM6b6HXwzcmvXLC/r5Gtucwiimt2p/ExmEG
+         bLmU4tU48XKTnUFEBPIWDyGYqYvpvJE4AXpB6vG+vi8YWCcDC3RpQjz1ypom6SNq8aJr
+         RvtqKHO9jr/n3DScsAbByP5pn919PxIm3/5NxhzC4AsnrZP6Ztdglf0n7/lWzhYKKlWD
+         Y1jIKx3m98uLs/s31SNHYtGpIAYQg9T3RhhmbrNyG8fUGtuxjhG/K3uV5qwdTT0ucd8Y
+         w24g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VEwhSkl8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UPHMGIFL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6si11534180qte.106.2019.11.18.07.28.44
+        by mx.google.com with ESMTPS id be7si11609347edb.438.2019.11.18.07.35.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2019 07:28:44 -0800 (PST)
+        Mon, 18 Nov 2019 07:35:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VEwhSkl8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UPHMGIFL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35684 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35836 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWixH-0002kO-F7
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 10:28:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37542)
+	id 1iWj3T-0006ne-P8
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 10:35:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38730)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iWix3-0002i4-2S
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 10:28:29 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iWj3I-0006ke-Dc
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 10:34:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iWix2-0002WA-0Q
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 10:28:28 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:44208)
+ (envelope-from <peter.maydell@linaro.org>) id 1iWj3H-0005jJ-CC
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 10:34:56 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35924)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iWix1-0002VV-QX
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 10:28:27 -0500
-Received: by mail-oi1-x244.google.com with SMTP id s71so15627331oih.11
- for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 07:28:27 -0800 (PST)
+ id 1iWj3H-0005ii-6o
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 10:34:55 -0500
+Received: by mail-ot1-x343.google.com with SMTP id f10so14870484oto.3
+ for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 07:34:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=7afJ7tzPngtye9+ZMXHFHBKQgLixlBBO+3uIN0csNZk=;
- b=VEwhSkl8ChEcPJNybye8+pdh9412ki0N9z9zjJh7a9eLt7hILBIFqkXrc/u9FR4aGM
- zQ+GE4RwE7ePGTIv82Gn7c3EUeSJ2V8Ln5zHKGqWXtbQL1zJhn/pEMHLq+OHBgtpl/bo
- 0d0nV/uj3OKjzh8FXhuK14gzCApwGGKU1r65UZg+k4wapFMsEeR0PCHBSvohoKJ0H+yC
- XHAmt3kXdt7cUbNNmcHFADbc7iV1dtgXm1PDj3RLGuGBewEzw6gpnMuvIs4V5QsUDice
- CSbdT1Kr41+w3Npdv4fphpDhATfyJajwcEKzqagFQGLdRHXK5x5zpoC12R+tSvFUV9Js
- PaPA==
+ bh=lFcD0c4XBd2VxlKYJhUQ7FMwh9UM1pbxiLuaAZ2es24=;
+ b=UPHMGIFLFrii9wDXK0ssxifqPC2W7RSbhjBdstsfKPW3KdiEcgJdk3TrtfQ4EitH0P
+ dTJx9OWYXgnptDTRX3kM4pFfA+pNafwKJeCda/9mZoV1ydjmf1a5NnuuNTM8xtlxcPoj
+ hno+Rwzu4Yt2zt+9nZ/+G6ohmsIFgsiVUZH1VGm2C2Uq3aFCp7lCKoUr9FG3kdocTR6O
+ 4kvcnaJ2t25XUEp4vpjyHIUdGmAvAvUOf39AFL9mNBGxLRIiirk+bPvuET1cYZOrp94N
+ ZY+E+DlBNbJ+V/ooB338QuGLk6zhmHlz5jVLgiCVUHpNj6h7KBRmAHvzYMCwXs41KbC0
+ /v2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=7afJ7tzPngtye9+ZMXHFHBKQgLixlBBO+3uIN0csNZk=;
- b=WarjXsy4lUBslDPj0zlGL0AcQBLDQUW4jM/G17MJJ+PAE9ZRVX/5sdWqnCW4Fswyj5
- svESXmSWBCu/XljX5x2Y+rHBE5qMFmwGCIr7q1k8Mm8aidvwrTVcCuvV1ABgi/70tVDT
- dDJEqY7h55UZ1JRQWuFJsjvPEFwLfefvmhqRbGk/iA24aD0ZuLbOa9DE/RBWHMNLQUyK
- tazwm6JJWSlwWdlR1YlykTjWAUU2snfSKKkIN50/0H12SknXMFGW0GocK1763bTeOISE
- 2KIudP+Vm1n7kyIwakl8wl4GeRwh8dIx/fRcR6kTibatPY95GATjo7MqGrSA0LUDdjY1
- ye5w==
-X-Gm-Message-State: APjAAAU8YtxH9JtZrM7Ms7SrhVD5gSHNinn8OLc29TDTf28SS7gr6xep
- PRjeDK9owrVyQMv+7ZWxIqbICDVUlbpeK4rCYfx3xg==
-X-Received: by 2002:aca:a9d4:: with SMTP id
- s203mr20061094oie.146.1574090906952; 
- Mon, 18 Nov 2019 07:28:26 -0800 (PST)
+ bh=lFcD0c4XBd2VxlKYJhUQ7FMwh9UM1pbxiLuaAZ2es24=;
+ b=H+Hg55t28uB+mce/WAoF3ip0YbitDwNjRcMeGHJan72UNeYi+8lq0wGrHeyVTwS4ub
+ IiQaGigiMrlts/ODGjl4K9qNHT1n5D/XDZSDXevpCPj7I2WCWXlTF+dxK2ofb0WCNT/M
+ 8WPNRfNhc1nD/tUAaYyvF+HAKepMYj0lBratC4EJBq1tyD13niwbrlPOLb991J4TF4hi
+ 6ObbLnIKM8ZFwVeJYixrJwVpEgohNGPQUrAdXVXRpAtnVfzrE97qjLtt3415AsYjfqNO
+ UaP8zruWhNEsosrxCgsc9OyebpUzsaul0zqzZW7a9+49syob2SVdD8t8jP1UfUViSi/m
+ hx6w==
+X-Gm-Message-State: APjAAAUQ13M+4JeGldZnEtKYwKwZAVCN5qNwKRiqIyNk6N3w010QcRgI
+ ODJUqyG8vUqCkBf1L9yBlU2QHvhm9dyh9JzDjGnLoQ==
+X-Received: by 2002:a9d:7ac2:: with SMTP id m2mr23006601otn.135.1574091294327; 
+ Mon, 18 Nov 2019 07:34:54 -0800 (PST)
 MIME-Version: 1.0
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-23-marcandre.lureau@redhat.com>
-In-Reply-To: <20191023173154.30051-23-marcandre.lureau@redhat.com>
+ <20191023173154.30051-25-marcandre.lureau@redhat.com>
+In-Reply-To: <20191023173154.30051-25-marcandre.lureau@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Nov 2019 15:28:12 +0000
-Message-ID: <CAFEAcA8tQ4Hn6Rm5_DeQmo5JHk5Debp_qGFqGoFvJu4Srh3sQw@mail.gmail.com>
-Subject: Re: [PATCH v3 22/33] etraxfs: remove PROP_PTR usage
+Date: Mon, 18 Nov 2019 15:34:43 +0000
+Message-ID: <CAFEAcA_R1Ne+H5k-PYEjqX+d7G55kZNh2QTxq2WN5bv1U3K=Ng@mail.gmail.com>
+Subject: Re: [PATCH v3 24/33] leon3: use qemu_irq framework instead of
+ callback as property
 To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::244
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,22 +124,37 @@ Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3Upyn3zLdU7y
+X-TUID: wKwmp4zGzmEH
 
 On Wed, 23 Oct 2019 at 18:34, Marc-Andr=C3=A9 Lureau
 <marcandre.lureau@redhat.com> wrote:
 >
-> etraxfs_dma_client are not Object, so can't be exposed to user with
-> QOM path. Let's remove property usage and move the constructor to the
-> .c unit, simplifying some code on the way.
+> "set_pin_in" property is used to define a callback mechanism where the
+> device says "call the callback function, passing it an opaque cookie
+> and a 32-bit value". We already have a generic mechanism for doing
+> that, which is the qemu_irq. So we should just use that.
 >
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->  hw/net/etraxfs_eth.c      | 44 +++++++++++++++++++++++++++++----------
->  include/hw/cris/etraxfs.h | 20 +++---------------
->  2 files changed, 36 insertions(+), 28 deletions(-)
->
 
+This is probably a good place to put a comment:
+
+/*
+ * This device assumes that the incoming 'level' value on the
+ * qemu_irq is the interrupt number, not just a simple 0/1 level.
+ */
+
+> -static void leon3_set_pil_in(void *opaque, uint32_t pil_in)
+> +static void leon3_set_pil_in(void *opaque, int n, int level)
+>  {
+> -    CPUSPARCState *env =3D (CPUSPARCState *)opaque;
+> +    CPUSPARCState *env =3D opaque;
+> +    uint32_t pil_in =3D level;
+>      CPUState *cs;
+>
+>      assert(env !=3D NULL);
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

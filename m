@@ -1,110 +1,80 @@
-Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp441709lfi;
-        Mon, 18 Nov 2019 10:55:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzfvoqR/0osrbXVX0/3B0X8e7h7Ir2kT2aJHfx1a8a9CXOZ+0QFN1uRZ6eh6njXObfmo5Hu
-X-Received: by 2002:a0c:e647:: with SMTP id c7mr4355589qvn.93.1574103326171;
-        Mon, 18 Nov 2019 10:55:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574103326; cv=none;
+Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp497551lfi;
+        Mon, 18 Nov 2019 11:45:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz24QOmBIZxlFWw51ytJ5JhOMwpXbHZQuATLXaGyrrM1LRx8uZ5J4aKGZ4jXofEJSQjItcN
+X-Received: by 2002:ad4:42b1:: with SMTP id e17mr2417385qvr.223.1574106353436;
+        Mon, 18 Nov 2019 11:45:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574106353; cv=none;
         d=google.com; s=arc-20160816;
-        b=jnlfryqyNvX8NDWIYiYpDplvA5ZPyRKdW+Xev6EhtoAogM2VmWMbVkGZs5Jp8wwrg8
-         S9niCR0+14U5lU3NwtTaZ2UYPlABFaiHL8+KfnSalzNDHoprN8aFLa6dQCHLPH6QzD7D
-         Nr66l5/L12L9rcFSZ13gWM7CrZN9ZXCQYgstt+FNdFjgu0tfCBYx8pxXiufvEwr6we0v
-         R6BARUsGJIoVYp6GeNQtbjLThLhUNaJaTmd2mmxYStzj9KxBJpSYeoCTlJ6S0Sdn9sEq
-         4Kq5/XYdEsEOQCMkl1xnqY3xhEsVYDxqgjjQCPOQyTMMmWmsGkeg/OyS5zZ6/rvslpuv
-         EvbQ==
+        b=syajQ33l1DkDuleWXBIqJExGtRXs5TZzWElBOnHmzoNgNHQbZprjERKIrs23JIPfdn
+         7P35e+05NAJ+LqPglgH6ECS/FC3sYmKAcMsZ4d83xDxhz0SN4pTCDU7skm9jwiA6J6rO
+         D9bBXFwn6h5O6igrSe5B5WxEc8ENgxIyp5aVhO9RxBrV3s00blDEo0QnfT0eeVx7rQsk
+         qPn5ZZaDB053guDlRsO7qkdH8uWVfd1V/GCDBrldhYA8xYvJz5Qi+8ULK6zCxMjYRGPn
+         OYQK1X1svT5tJSvtqcXPHeTlPEqBQ1dvtkNcBgK+/kTiTy0dpWHXiLFFciH0ulX7VdU8
+         tw5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=2wuC6zZgRTcwujJGj51sXk4BJT33h+rRfRk2wdXELLE=;
-        b=AxCW4sRLt56FbHNt2gtOcnIEWO8yF3zhG4z4c/hV2a3x9eGiqBigsp+mvWT+FRpace
-         8KbMMqbQyv5SEgk1mASyRfdQQUPq2HrqEth4a8q7tFaKgrpHKtnCmYOmjx3ARAVPD7dF
-         xyd7FQyZfXv7X6JeYs+Bi0KA1qlJHcgRuhWGJChhmAgOMpdJnb9yE1gtS8nDiRQ+m8zQ
-         HmL/MrkrcNbV2STz9j0HJ9vDOVVJThCw5Ji/rcDYDZa22u5Emxg+ZiZBxqktqKZks6lb
-         bGhW+gIulmDnFa3jXLlxyVySQ/hsYkBUPil9q+p9pYrCiVp4A/vVsd2kSLp3jI7kLzlE
-         0jSg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
+        bh=Vq+oDQI2vyko89BcCVQNXVu46ZJLWpn7VB/VDct6Tss=;
+        b=HBVpcU8WTAxiIr2CvYtS8tM32zhb9FrkxysYPdRW9qCwiTN1qXrDrv4e1KpELt9gLs
+         cqDfMzZFY9611IN3yEB6BJKZl/PnDFV0JIBS2L0AtNPmeRSdYG6dsNPUruF68p6lM8MD
+         dQfVQtowbTr50RTmgJQ8qLn5/IVCT2NQxqJ8GqmFu5nKSiYJWgVjii46KtNZh8/GAssr
+         stk26ZQEYnN3Uz1w4nsAULzCVVIjark7W/SdqiLopkCYQJTxx+qZu8ZXwakPpZnSZLJB
+         UhlXBv4gtUkFyPrXp2XZifHefBSSiq6zWqRZ2G6tkV9AAcBy54EDvjAnwe0LDjWGuqw0
+         Y/4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="QCW/R3XI";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z12si12030024qtq.123.2019.11.18.10.55.25
+        by mx.google.com with ESMTPS id ay6si12297478qvb.137.2019.11.18.11.45.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2019 10:55:26 -0800 (PST)
+        Mon, 18 Nov 2019 11:45:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="QCW/R3XI";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38300 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWmBJ-0006QR-6a
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 13:55:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42361)
+	id 1iWmy8-0003mR-Qa
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 14:45:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49880)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mlureau@redhat.com>) id 1iWmAy-00062u-8u
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 13:55:05 -0500
+ (envelope-from <groug@kaod.org>) id 1iWmxz-0003m9-57
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 14:45:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mlureau@redhat.com>) id 1iWmAx-00056B-2A
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 13:55:04 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:53912
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <groug@kaod.org>) id 1iWmxx-000835-D0
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 14:45:42 -0500
+Received: from 6.mo3.mail-out.ovh.net ([188.165.43.173]:59284)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1iWmAw-00055i-Qz
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 13:55:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574103302;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2wuC6zZgRTcwujJGj51sXk4BJT33h+rRfRk2wdXELLE=;
- b=QCW/R3XIAy3woUD/B1QWGOlAACyiFYZDGS08M9a9rpOaPYFx6a5zf4mfmMf/n1CYCL6juI
- 3Addqo0L9Hik6+aJIp6dCi1lO2W08BQ5G0NyWtVcI+dEPALqclxQFH/tR0BaGsX4nLLGNw
- Xajzr3R+KYcQ913R29llT0v79Wgk+1g=
-Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
- [209.85.167.200]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-47-fZ4BOfdDPQmR3js_N49ExA-1; Mon, 18 Nov 2019 13:55:00 -0500
-Received: by mail-oi1-f200.google.com with SMTP id s9so9212311oic.3
- for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 10:55:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=2wuC6zZgRTcwujJGj51sXk4BJT33h+rRfRk2wdXELLE=;
- b=TgkbOj5UgqqSr434lWho73ZsJfm5Bt4JeGmb4rk40JAYQouCfo3Etu7wYcL1PEL21T
- VVTrZH0cInTE3Zjuw8POEbpwar4xT5YPyRfS+Ruf78lEJxfAUEElqwN6ndd3UzIF6gt4
- OiVaFIQu1v5tH8mCTBBMyAqzbC5NEo/l2B1H8YySxCggk3iNcthYTWfJKxGXx3jWClfx
- 0gxUwB+yrYqXQG4/MyosEvXzuVFHYrPdjMPSPtEETvum9VdLKu5D096EGo5LiXJ7gsis
- 0REeXeqOg5MMt1YsKQUPLtmMhZpip0y9DBiiAdR9gEnPAIItdVYmyZ3STWXEYq0FhuUN
- DBLA==
-X-Gm-Message-State: APjAAAWUJi5hJRvRmmFa/qjvuTes8jASOojT/u5cKh7FceOWEQBw0uQQ
- uWSJGzsfY+8xAF1rX1Cm8I9FhvzUWr1yJ9B8TyOivnjy5SeSWIWIhcRl03e6+7Aokl1bitFxmup
- ozNrPgC6FJ/St4b8wEYOU6SFYZ2Se
-X-Received: by 2002:a9d:67ce:: with SMTP id c14mr575266otn.38.1574103299667;
- Mon, 18 Nov 2019 10:54:59 -0800 (PST)
-X-Received: by 2002:a9d:67ce:: with SMTP id c14mr575242otn.38.1574103299298;
- Mon, 18 Nov 2019 10:54:59 -0800 (PST)
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iWmxx-00081y-6I
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 14:45:41 -0500
+Received: from player735.ha.ovh.net (unknown [10.109.146.132])
+ by mo3.mail-out.ovh.net (Postfix) with ESMTP id A213C22C3CD
+ for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 20:45:38 +0100 (CET)
+Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
+ [82.253.208.248]) (Authenticated sender: groug@kaod.org)
+ by player735.ha.ovh.net (Postfix) with ESMTPSA id CCC5FC2EF546;
+ Mon, 18 Nov 2019 19:45:31 +0000 (UTC)
+Date: Mon, 18 Nov 2019 20:45:29 +0100
+From: Greg Kurz <groug@kaod.org>
+To: =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH for-5.0 1/2] aspeed: change the "scu" property definition
+Message-ID: <20191118204529.69fce2d2@bahia.lan>
+In-Reply-To: <20191118161712.6712-2-clg@kaod.org>
+References: <20191118161712.6712-1-clg@kaod.org>
+ <20191118161712.6712-2-clg@kaod.org>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-5-marcandre.lureau@redhat.com>
- <CAFEAcA9oV-fHLmh3uJTwJrQW60=HFQmRb_brkRpB5BYYVDqF+g@mail.gmail.com>
-In-Reply-To: <CAFEAcA9oV-fHLmh3uJTwJrQW60=HFQmRb_brkRpB5BYYVDqF+g@mail.gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Mon, 18 Nov 2019 22:54:48 +0400
-Message-ID: <CAMxuvaxLKUYWjJTY0HN0zyFU-tFQk3_qTtvaQ9S9zDN6Xvg+Bw@mail.gmail.com>
-Subject: Re: [PATCH v3 04/33] chardev: generate an internal id when none given
-To: Peter Maydell <peter.maydell@linaro.org>
-X-MC-Unique: fZ4BOfdDPQmR3js_N49ExA-1
-X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Ovh-Tracer-Id: 17645666293978274187
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudegiedguddtkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjqdffgfeufgfipdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvuffkjghfofggtgfgsehtqhertdertdejnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrddvheefrddvtdekrddvgeeknecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejfeehrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 188.165.43.173
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,130 +86,220 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Paul Burton <pburton@wavecomp.com>, Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1/4d279NRY7b
+X-TUID: WZ47qmOQah7C
 
-Hi
+On Mon, 18 Nov 2019 17:17:11 +0100
+C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 
-On Mon, Nov 18, 2019 at 6:12 PM Peter Maydell <peter.maydell@linaro.org> wr=
-ote:
->
-> On Wed, 23 Oct 2019 at 18:33, Marc-Andr=C3=A9 Lureau
-> <marcandre.lureau@redhat.com> wrote:
-> >
-> > Internally, qemu may create chardev without ID. Those will not be
-> > looked up with qemu_chr_find(), which prevents using qdev_prop_set_chr(=
-).
-> >
-> > Use id_generate(), to generate an internal name (prefixed with #), so
-> > no conflict exist with user-named chardev.
-> >
-> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->
-> > -Chardev *qemu_chardev_new(const char *id, const char *typename,
-> > -                          ChardevBackend *backend,
-> > -                          GMainContext *gcontext,
-> > -                          Error **errp)
-> > +static Chardev *chardev_new(const char *id, const char *typename,
-> > +                            ChardevBackend *backend,
-> > +                            GMainContext *gcontext,
-> > +                            Error **errp)
-> >  {
-> >      Object *obj;
-> >      Chardev *chr =3D NULL;
-> > @@ -991,6 +992,21 @@ end:
-> >      return chr;
-> >  }
-> >
-> > +Chardev *qemu_chardev_new(const char *id, const char *typename,
-> > +                          ChardevBackend *backend,
-> > +                          GMainContext *gcontext,
-> > +                          Error **errp)
-> > +{
-> > +    g_autofree char *genid =3D NULL;
-> > +
-> > +    if (!id) {
-> > +        genid =3D id_generate(ID_CHR);
-> > +        id =3D genid;
-> > +    }
-> > +
-> > +    return chardev_new(id, typename, backend, gcontext, errp);
-> > +}
->
-> So presumably the idea is that chardev_new() now must be
-> called with a non-NULL id (should it assert() that?),
+> The Aspeed Watchdog and Timer models have a link pointing to the SCU
+> controller model of the machine.
+>=20
+> Change the "scu" property definition so that it explicitly sets the
+> pointer. The property isn't optional : not being able to set the link
+> is a bug and QEMU should rather abort than exit in this case.
+>=20
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
 
-Not, it can still be called with NULL (mostly for qmp_chardev_change()).
+Reviewed-by: Greg Kurz <groug@kaod.org>
 
-> and qemu_chardev_new() can be called with a NULL id, in
-> which case it will create one ?
-
-Right
-
->
-> > +
-> >  ChardevReturn *qmp_chardev_add(const char *id, ChardevBackend *backend=
-,
-> >                                 Error **errp)
-> >  {
-> > @@ -1003,8 +1019,8 @@ ChardevReturn *qmp_chardev_add(const char *id, Ch=
-ardevBackend *backend,
-> >          return NULL;
-> >      }
-> >
-> > -    chr =3D qemu_chardev_new(id, object_class_get_name(OBJECT_CLASS(cc=
-)),
-> > -                           backend, NULL, errp);
-> > +    chr =3D chardev_new(id, object_class_get_name(OBJECT_CLASS(cc)),
-> > +                      backend, NULL, errp);
-> >      if (!chr) {
-> >          return NULL;
-> >      }
-> > @@ -1061,8 +1077,8 @@ ChardevReturn *qmp_chardev_change(const char *id,=
- ChardevBackend *backend,
-> >          return NULL;
-> >      }
-> >
-> > -    chr_new =3D qemu_chardev_new(NULL, object_class_get_name(OBJECT_CL=
-ASS(cc)),
-> > -                               backend, chr->gcontext, errp);
-> > +    chr_new =3D chardev_new(NULL, object_class_get_name(OBJECT_CLASS(c=
-c)),
-> > +                          backend, chr->gcontext, errp);
->
-> ...but if that's so, why are we calling chardev_new() here
-> and passing a NULL pointer ?
-
-Because it's qmp_chardev_change(), it's a transient state, the id is
-set after, and reparenting too. The code could probably be structured
-differently.
-
->
-> How many callsites actually pass NULL, anyway? My grep
-> seems to show:
->  * this qmp_chardev_change() call
->  * gdbstub.c
->  * hw/bt/hci-csr.c
->  * tests/test-char.c
->
-> Maybe we should just make them all pass in ID strings instead ?
-
-Well, in this case, we must be sure it doesn't conflict with user ID
-(presumably with # prefix), or duplicate etc. Why not leave it to
-id_generate() then?
+>  hw/arm/aspeed_ast2600.c  |  8 ++++----
+>  hw/arm/aspeed_soc.c      |  8 ++++----
+>  hw/timer/aspeed_timer.c  | 17 +++++++++--------
+>  hw/watchdog/wdt_aspeed.c | 17 ++++++++---------
+>  4 files changed, 25 insertions(+), 25 deletions(-)
+>=20
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index 0881eb25983e..810fd7de0c06 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -146,8 +146,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>      snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
+>      sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
+>                            sizeof(s->timerctrl), typename);
+> -    object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
+> -                                   OBJECT(&s->scu), &error_abort);
+> =20
+>      snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+>      sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
+> @@ -177,8 +175,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>          snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+>          sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
+>                                sizeof(s->wdt[i]), typename);
+> -        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
+> -                                       OBJECT(&s->scu), &error_abort);
+>      }
+> =20
+>      for (i =3D 0; i < sc->macs_num; i++) {
+> @@ -323,6 +319,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
+ev, Error **errp)
+>                         aspeed_soc_get_irq(s, ASPEED_RTC));
+> =20
+>      /* Timer */
+> +    object_property_set_link(OBJECT(&s->timerctrl),
+> +                             OBJECT(&s->scu), "scu", &error_abort);
+>      object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &e=
+rr);
+>      if (err) {
+>          error_propagate(errp, err);
+> @@ -415,6 +413,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
+ev, Error **errp)
+>      for (i =3D 0; i < sc->wdts_num; i++) {
+>          AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(&s->wdt[i]);
+> =20
+> +        object_property_set_link(OBJECT(&s->wdt[i]),
+> +                                 OBJECT(&s->scu), "scu", &error_abort);
+>          object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
+err);
+>          if (err) {
+>              error_propagate(errp, err);
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index b01c97744196..a6237e594017 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -163,8 +163,6 @@ static void aspeed_soc_init(Object *obj)
+>      snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
+>      sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
+>                            sizeof(s->timerctrl), typename);
+> -    object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
+> -                                   OBJECT(&s->scu), &error_abort);
+> =20
+>      snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+>      sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
+> @@ -194,8 +192,6 @@ static void aspeed_soc_init(Object *obj)
+>          snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+>          sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
+>                                sizeof(s->wdt[i]), typename);
+> -        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
+> -                                       OBJECT(&s->scu), &error_abort);
+>      }
+> =20
+>      for (i =3D 0; i < sc->macs_num; i++) {
+> @@ -291,6 +287,8 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
+r **errp)
+>                         aspeed_soc_get_irq(s, ASPEED_RTC));
+> =20
+>      /* Timer */
+> +    object_property_set_link(OBJECT(&s->timerctrl),
+> +                             OBJECT(&s->scu), "scu", &error_abort);
+>      object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &e=
+rr);
+>      if (err) {
+>          error_propagate(errp, err);
+> @@ -376,6 +374,8 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
+r **errp)
+>      for (i =3D 0; i < sc->wdts_num; i++) {
+>          AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(&s->wdt[i]);
+> =20
+> +        object_property_set_link(OBJECT(&s->wdt[i]),
+> +                                 OBJECT(&s->scu), "scu", &error_abort);
+>          object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
+err);
+>          if (err) {
+>              error_propagate(errp, err);
+> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+> index bcce2192a92a..a8c38cc1189b 100644
+> --- a/hw/timer/aspeed_timer.c
+> +++ b/hw/timer/aspeed_timer.c
+> @@ -19,6 +19,7 @@
+>  #include "qemu/timer.h"
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+> +#include "hw/qdev-properties.h"
+>  #include "trace.h"
+> =20
+>  #define TIMER_NR_REGS 4
+> @@ -603,15 +604,8 @@ static void aspeed_timer_realize(DeviceState *dev, E=
+rror **errp)
+>      int i;
+>      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>      AspeedTimerCtrlState *s =3D ASPEED_TIMER(dev);
+> -    Object *obj;
+> -    Error *err =3D NULL;
+> =20
+> -    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
+> -    if (!obj) {
+> -        error_propagate_prepend(errp, err, "required link 'scu' not foun=
+d: ");
+> -        return;
+> -    }
+> -    s->scu =3D ASPEED_SCU(obj);
+> +    assert(s->scu);
+> =20
+>      for (i =3D 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
+>          aspeed_init_one_timer(s, i);
+> @@ -677,6 +671,12 @@ static const VMStateDescription vmstate_aspeed_timer=
+_state =3D {
+>      }
+>  };
+> =20
+> +static Property aspeed_timer_properties[] =3D {
+> +    DEFINE_PROP_LINK("scu", AspeedTimerCtrlState, scu, TYPE_ASPEED_SCU,
+> +                     AspeedSCUState *),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+>  static void timer_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+> @@ -685,6 +685,7 @@ static void timer_class_init(ObjectClass *klass, void=
+ *data)
+>      dc->reset =3D aspeed_timer_reset;
+>      dc->desc =3D "ASPEED Timer";
+>      dc->vmsd =3D &vmstate_aspeed_timer_state;
+> +    dc->props =3D aspeed_timer_properties;
+>  }
+> =20
+>  static const TypeInfo aspeed_timer_info =3D {
+> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+> index 122aa8daaadf..f50dab922e0f 100644
+> --- a/hw/watchdog/wdt_aspeed.c
+> +++ b/hw/watchdog/wdt_aspeed.c
+> @@ -241,16 +241,8 @@ static void aspeed_wdt_realize(DeviceState *dev, Err=
+or **errp)
+>  {
+>      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>      AspeedWDTState *s =3D ASPEED_WDT(dev);
+> -    Error *err =3D NULL;
+> -    Object *obj;
+> =20
+> -    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
+> -    if (!obj) {
+> -        error_propagate(errp, err);
+> -        error_prepend(errp, "required link 'scu' not found: ");
+> -        return;
+> -    }
+> -    s->scu =3D ASPEED_SCU(obj);
+> +    assert(s->scu);
+> =20
+>      s->timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, aspeed_wdt_timer_expir=
+ed, dev);
+> =20
+> @@ -264,6 +256,12 @@ static void aspeed_wdt_realize(DeviceState *dev, Err=
+or **errp)
+>      sysbus_init_mmio(sbd, &s->iomem);
+>  }
+> =20
+> +static Property aspeed_wdt_properties[] =3D {
+> +    DEFINE_PROP_LINK("scu", AspeedWDTState, scu, TYPE_ASPEED_SCU,
+> +                     AspeedSCUState *),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+>  static void aspeed_wdt_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+> @@ -273,6 +271,7 @@ static void aspeed_wdt_class_init(ObjectClass *klass,=
+ void *data)
+>      dc->reset =3D aspeed_wdt_reset;
+>      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>      dc->vmsd =3D &vmstate_aspeed_wdt;
+> +    dc->props =3D aspeed_wdt_properties;
+>  }
+> =20
+>  static const TypeInfo aspeed_wdt_info =3D {
 

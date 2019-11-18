@@ -1,106 +1,189 @@
-Received: by 2002:adf:fb8f:0:0:0:0:0 with SMTP id a15csp4667830wrr;
-        Wed, 13 Nov 2019 14:13:13 -0800 (PST)
-X-Received: by 2002:a62:ae11:: with SMTP id q17mr7129549pff.103.1573683193518;
-        Wed, 13 Nov 2019 14:13:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573683193; cv=none;
+Received: by 2002:a05:6512:48d:0:0:0:0 with SMTP id v13csp2473868lfq;
+        Sun, 17 Nov 2019 22:45:15 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzYd6l0xr93XbNAHsegECUeSZHR1+NXlQEzAGuKDIugDxacwCetdsW84XTqMrnLXq7Yk431
+X-Received: by 2002:a17:906:1fcf:: with SMTP id e15mr23458371ejt.317.1574059515027;
+        Sun, 17 Nov 2019 22:45:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574059515; cv=none;
         d=google.com; s=arc-20160816;
-        b=QJQAJoRXa3HLyUfIT9FyWQ9JvcRqcakeODGYaqTWB0aKWRovwHYKLaW/YtaXE8DsKb
-         R8OFzcVhPoAvgZxx1Lx6PGnU2fhKaO+QCX2vU+XLDfOJEgvhlT5jIIxwGf/2igt2QZ2s
-         Ua6fk+DTyT37qvUQP5pLOUdXiEIyC+h7WFaF0MxwhS/LspZelOwTlUhXVav7a9coyius
-         DG0+mtXaHRVxjWN8sjuMqKLVk3RAKFO3NifIYkwNgfAyXgu/hIYk9AsDg+1O4GefKxob
-         ZeT0wo9r5hVQD5o2QoTJNz6mO2QnGhX+cQ6OaPbEiZDbRw4ZBmRX/ElgFXeJD/VtI1su
-         zFUg==
+        b=k8iszCZVEjrGqe7kE5zLv3LYtxF1PHFvN/TTs23qIvf5XwQ7WQVcHEkZdIHsOZ2pS0
+         edgc0oAseA5VNL2qVi5Gcbre7KzzTHjoVkxqGIcRY5eAZKMtj9LjsvjFg+9Sxq65jPUS
+         t1htChUL+ZGP2tjrXngua67W/bkUMvwGFR6K6U8vZ9s9CaBjsT+bipYEK6z4uYh+73AM
+         xGuCzwIqFtu759/vAun04f4krgtQFTCrvEEIA5CDAOXj82J78I8cT1M7rHfgxC15DNXI
+         cQP9X1EVvAzc+fmv2Lk/mbqdBxwSCk3jkatCg+RSp2JVNQcdhvygl98sh86leJ7RLqTa
+         0mQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:sender:dkim-signature;
-        bh=ufOagEkF5eMwDKIkGywA+c2/zP6DlOH3JxK6kKvdjE8=;
-        b=u3Must0e4Gc6n/woTuufCFmp9WlSwzqXZX2gL/HbY2GC9M50g0Fk2dKJshuoaBDI1g
-         UE6pBXN61s9TZjOe0zdzPCkm1CnpQLyC//n5gaEF1WJOqN6JMMl+BZJ3d5ZPDML9bNYB
-         UWCfwu4s5ubuTHI8md3Pfo+ffIruqz/MVoEZ+D6S8/+7Q+UZB9/5Y7A8OCUrVkV030Bc
-         aUOv2MPwnmqF6LcxuGNQr25iunc3mMDXAXl/Q79+5/QTHxdmdMPZN3vXN5SQzQ7Fxxto
-         MbpUMcL7WSz9ZNMmeEfEplvxDnAJx0pFRbIsjNijRfjCjPpuzk4h/RYIy8/SSxRT9/QM
-         YFOA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=wn812f8kzw22ZLSq/mogCODXKqB1y/Bh7g5hbspyM7c=;
+        b=lXUxcJIcpaAkKrEukycNt/igJgnVfBtaJsqfS6DBVA5vlcYUFpPW69VN71WdXVm1AH
+         GWRHB8SusGYLMPS8FwAXX9ck1CVYEy4QhWnXo/FUDDhzN+uVr0vXmrtOuLfLqEir67hL
+         OmC6Ikm8v4kYKUrFZ6uqEH4xxej9kxjNGAnjsN/UaWaLWC0baVbxkFi+FfBzAgV0cu7u
+         a34Qxf1GPFwNU1LZflundY/5r2Yd2BOtlFeZUlQO2cWrAX/R18VQcfwSOHH6H3WpUTo5
+         +h8bD4IS+vsJ/XuinL4dzrmkAoIO9J0SEiue32qPW+fYzlZnqv95+kjXjETB6BqwcNBl
+         v2RA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CYSnFNi9;
-       spf=pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=joel.stan@gmail.com
-Return-Path: <joel.stan@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 59sor4313166pla.6.2019.11.13.14.13.13
-        (Google Transport Security);
-        Wed, 13 Nov 2019 14:13:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g2si2401833eja.146.2019.11.17.22.45.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 17 Nov 2019 22:45:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CYSnFNi9;
-       spf=pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=joel.stan@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ufOagEkF5eMwDKIkGywA+c2/zP6DlOH3JxK6kKvdjE8=;
-        b=CYSnFNi91bJlOKbK/Oh6pt2YKRWLIjBx6Gj1HXL01lyESCT/tnz6bgqaDp5/upyESZ
-         FYA4HRSDbg9sEYrXhbQvmKLFghRlhDAHf9P+aE+lEs6UBjGgtE2fTQMTA/C0YpreEuth
-         WcysJua/ze6L/9JBV7a5QBV2e+0WhN3eripZ7a1NwVFEFB/+pSlF1bd+8heofmxk7636
-         eEO4oo7mh7H86mBognxeasVVNqpXn3ULRQ8Dhu5ZUNPlvupRWQnWMsOoWdFo+lSn8B2y
-         zi/RQsOWrO53qjJtVSjfYMwjQXz1m3BtZNDHHhMhOUpcXVobxI9ijJf/suzrlPz9S1CO
-         lnRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-         :mime-version:content-transfer-encoding;
-        bh=ufOagEkF5eMwDKIkGywA+c2/zP6DlOH3JxK6kKvdjE8=;
-        b=rbTsxPDcljXxRH1AdVfdHCwNNq4SWlOBdTXZpFiS8SjPPsLcnUpdrWZAei2rruZPrt
-         xWZNNIZJkeYg4V1S+w8I6AuVDtgfMo6MpxR96gKfcJ7An1+2Na1tZD1rtd25lrJ80Sy/
-         Q0CDfcBm9kRaj+tQegNaKkQ4IRrIgSBKCXcH78fkLHFljG8G7x6ab/5yxdeqSzum1+By
-         kHozzTTBNnzv5k2jwcOMY7a7xgCdZG0jzj0/geHGRWqEnednnUAev8XDzIHYX/xStx7Z
-         ly44aLMwzEwfRPCCc8O5uqQKm9eZs6+dC6jOC1KXcyzFg0rTeG6M3DTDa69AfPRo7lL2
-         ayYw==
-X-Gm-Message-State: APjAAAUEtWzuDszegl/jQeEOpFvP2uiRFyZtRNbc51ufmXhoF4XpIS8l
-	+68P5YHTL8z4aaaIJDO8a/fgaaH5AwE=
-X-Google-Smtp-Source: APXvYqz2DQ5LizG9g65X9Em+nEhcxKPI+Te+nQPxr2SxI8WMKsHrdvy3UBFsT+sdogErrdyWLjw1dg==
-X-Received: by 2002:a17:902:9683:: with SMTP id n3mr5933541plp.53.1573683192123;
-        Wed, 13 Nov 2019 14:13:12 -0800 (PST)
-Return-Path: <joel.stan@gmail.com>
-Received: from voyager.lan ([45.124.203.14])
-        by smtp.gmail.com with ESMTPSA id w69sm5252005pfc.164.2019.11.13.14.13.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Nov 2019 14:13:11 -0800 (PST)
-Sender: "joel.stan@gmail.com" <joel.stan@gmail.com>
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v3 0/4] arm/aspeed: Watchdog and SDRAM fixes
-Date: Thu, 14 Nov 2019 08:42:57 +1030
-Message-Id: <20191113221301.8768-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.24.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58538 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iWamf-0002Lj-Uk
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 01:45:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38842)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <guoheyi@huawei.com>) id 1iWamW-0002JE-HA
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 01:45:05 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <guoheyi@huawei.com>) id 1iWamU-0006qM-Og
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 01:45:04 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2265 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1iWamU-0006ny-Dy; Mon, 18 Nov 2019 01:45:02 -0500
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 94E87DE79A226FC2095D;
+ Mon, 18 Nov 2019 14:44:52 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.439.0; Mon, 18 Nov 2019
+ 14:44:37 +0800
+Subject: Re: [RFC v2 14/14] virt/acpi: add SDEI table if SDEI is enabled
+To: Igor Mammedov <imammedo@redhat.com>
+References: <20191105091056.9541-1-guoheyi@huawei.com>
+ <20191105091056.9541-15-guoheyi@huawei.com>
+ <20191112155253.543e15ad@redhat.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <9f032ccc-ae43-3710-daa8-445c6069903e@huawei.com>
+Date: Mon, 18 Nov 2019 14:44:31 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: MwR04AC3fCEu
+In-Reply-To: <20191112155253.543e15ad@redhat.com>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.191
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael
+ S. Tsirkin" <mst@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
+ qemu-devel@nongnu.org, Shannon
+ Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ James Morse <james.morse@arm.com>, wanghaibin.wang@huawei.com,
+ Dave Martin <Dave.Martin@arm.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dYldI8u0tgMh
 
-Three of these are fixes for ast2600 models that I found when testing
-master. The forth is a usability improvement that is helpful when
-diagnosing why a watchdog is biting.
 
-v3 adds some comments and fixes whitespace, and r-b from Alex. Thanks
-for the review Alex.
 
-v2 fixes some review comments from Cédric and adds his r-b.
+On 2019/11/12 22:52, Igor Mammedov wrote:
+> On Tue, 5 Nov 2019 17:10:56 +0800
+> Heyi Guo <guoheyi@huawei.com> wrote:
+>
+>> Add SDEI table if SDEI is enabled, so that guest OS can get aware and
+>> utilize the interfaces.
+>>
+>> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: Dave Martin <Dave.Martin@arm.com>
+>> Cc: Marc Zyngier <marc.zyngier@arm.com>
+>> Cc: Mark Rutland <mark.rutland@arm.com>
+>> Cc: James Morse <james.morse@arm.com>
+>> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+>> Cc: Igor Mammedov <imammedo@redhat.com>
+>> ---
+>>
+>> Notes:
+>>      v2:
+>>      - Drop SDEI table definition and add comments
+>>
+>>   hw/arm/virt-acpi-build.c | 26 ++++++++++++++++++++++++++
+>>   1 file changed, 26 insertions(+)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 4cd50175e0..73d3f8cd15 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -32,6 +32,7 @@
+>>   #include "trace.h"
+>>   #include "hw/core/cpu.h"
+>>   #include "target/arm/cpu.h"
+>> +#include "target/arm/sdei.h"
+>>   #include "hw/acpi/acpi-defs.h"
+>>   #include "hw/acpi/acpi.h"
+>>   #include "hw/nvram/fw_cfg.h"
+>> @@ -475,6 +476,26 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>                    "IORT", table_data->len - iort_start, 0, NULL, NULL);
+>>   }
+>>   
+>> +/*
+>> + * ACPI spec 6.2 Software Delegated Exception Interface (SDEI).
+>> + * (Revision 1.0)
+>> + * "SDEI" was reserved in ACPI 6.2. See "Links to ACPI-Related Documents"
+>> + * (http://uefi.org/acpi) under the heading "Software
+>> + * Delegated Exceptions Interface." The definition is under
+>> + * "10 Appendix C: ACPI table definitions for SDEI" in the linked document.
+>> + *
+>> + * This is a dummy table to expose platform SDEI capbility to OS.
+>> + */
+>> +static void
+>> +build_sdei(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>> +{
+>> +    int sdei_start = table_data->len;
+>> +
+>> +    (void)acpi_data_push(table_data, sizeof(AcpiTableHeader));
+>> +    build_header(linker, table_data, (void *)(table_data->data + sdei_start),
+>> +                 "SDEI", table_data->len - sdei_start, 1, NULL, NULL);
+>> +}
+>> +
+>>   static void
+>>   build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>   {
+>> @@ -825,6 +846,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>>       acpi_add_table(table_offsets, tables_blob);
+>>       build_spcr(tables_blob, tables->linker, vms);
+>>   
+>> +    if (sdei_enabled) {
+> globals shouldn't be introduced in new code
+OK. For this feature depends on KVM, does it make sense to add a flag to 
+struct VirtMachineState?
 
-Joel Stanley (4):
-  aspeed/sdmc: Make ast2600 default 1G
-  aspeed/scu: Fix W1C behavior
-  watchdog/aspeed: Improve watchdog timeout message
-  watchdog/aspeed: Fix AST2600 frequency behaviour
+Thanks,
+HG
+>
+>> +        acpi_add_table(table_offsets, tables_blob);
+>> +        build_sdei(tables_blob, tables->linker, vms);
+>> +    }
+>> +
+>>       if (ms->numa_state->num_nodes > 0) {
+>>           acpi_add_table(table_offsets, tables_blob);
+>>           build_srat(tables_blob, tables->linker, vms);
+>
+> .
+>
 
- hw/misc/aspeed_scu.c             | 15 +++++++++++----
- hw/misc/aspeed_sdmc.c            |  6 +++---
- hw/watchdog/wdt_aspeed.c         | 24 +++++++++++++++++++-----
- include/hw/watchdog/wdt_aspeed.h |  1 +
- 4 files changed, 34 insertions(+), 12 deletions(-)
 
--- 
-2.24.0

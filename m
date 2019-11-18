@@ -1,101 +1,80 @@
-Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp105237lfi;
-        Mon, 18 Nov 2019 06:22:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyTdIfx23E9duBgrjYcwy/3TBODM+os3cPXPPG2MWp+X7nxozJwrzCeZxzitpFYELhjUG9M
-X-Received: by 2002:a37:a51:: with SMTP id 78mr23968475qkk.112.1574086936782;
-        Mon, 18 Nov 2019 06:22:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574086936; cv=none;
+Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp81937lfi;
+        Mon, 18 Nov 2019 06:05:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxW4Y7tWAI7S9fGrkVZFQvbnvFnvTPu/vgJRs3WwRygkaqSC89BhuysqOVISgHtofP3S2Za
+X-Received: by 2002:a2e:5c09:: with SMTP id q9mr20511207ljb.22.1574085937658;
+        Mon, 18 Nov 2019 06:05:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574085937; cv=none;
         d=google.com; s=arc-20160816;
-        b=0KLgO30JDLG4UPyQUs7PdonMKerZhVSkjJ2sXZ1qZBHwokwP1jAv3YGHehXVpcdWdO
-         DMUDNrZHC6wp6bqIcWTBg+o6DtxS6wB3MVL0zoHeOnql1A3gNwsADGVyG/roOp1Y7xah
-         1mQcVjBnxjMhurGX+OOoY0CMePPgyYjTl5eGMIDheTDM3HOoyAN0T1jWNgwTMcfnKvf0
-         SbYCXjmW62FhwuL8QvVQ8eZ0Q05+vacmiE0oSkTfOL/cLuZuTzYBVm7hIKXr7AEFUcND
-         YpIlUph5Hah1bPZ4x7VIsRzvtpaNHFNe75usDLgDL5MLt2PD/YpmhS1u9iRUvpJ1JZFI
-         pTkw==
+        b=vkVIh+vYGnRYmuvbsgpAn1MGyd8FFqd03tU5u5PjwRes1C3Ze85KRbVeOrVQYp7fX0
+         ZSBxfyPn+mafOSJXIzMV0t6yOZKKyW5p6lqRzce8Bz7U/JNvq1LnBx4OscC6ysaLvvwA
+         BnDqWciH543Botvn/UoeaA8O/l0DdXEMxttwBuW79RmNaahyxGjAc1KHvBW+BoK8a6Pm
+         0ujM/u/jfO5fs5q+6g3avzDJHyy1T9R3QKWpk3/66LS1i+M/wtKUtgPA6pCoss4OmleL
+         EWshmqr97vEvsTqvBq25bJ4ggpBx6afiGxTEO89A9JeDeJRjIBc4LJLH1PUeaHHRvocL
+         sjrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=l93epJzFpah5Lo/MulLniiewH8jSfpIFwFL/5sKh+Kc=;
-        b=rp0jmZQ7RJ8n5uw9wyvoRq4d0klsl3MFdt0PQxfMmkEQS4DKL/tcs6DaQuKcOMJUhV
-         bXzGB8FGlTw67IMxRN8ATGAUrhign75YusKlHs0IIMsoFbnVdzEE/hmzEK4fupPcp/rB
-         EQ7w1D85LqG4l0PCJFjFcjGwmm1pL+XRkI7tlvNyz4KHDN2t3Db7DZk5fU1Sa5rwysu6
-         YSudfpzrQHcQ0O2ukvw3MIrPftz1ab0av/QTYQ43kgLc3o191TFzYAaq76rqJx6RbQTm
-         b3bs2YF2LOXXYaie5yEMp1aVuuRmdj/XD++uJ3UCseV7NzwrXKTSzDAQ1hNKXNPIS7xP
-         grWA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=NiBEpvauD0Ug1YeDqZF/8YwUXtPzyqOEkkVo9AknnTQ=;
+        b=RpJvMWszWF4F5lxoY3WvzMSAHPSW+gV5KhzEZviDX6Tcx2f0SI7v8oNcBnOrZkdlc5
+         Li2zKv4h6BGW0XX7OGQtiliZmIxABgIRiE+P4Gucf+ZH8EY8TfTkZpfhVd0Mmt2xALks
+         fUGfVKbheMC1bkBp8d+DJYCSK8H7MtWAOSjmkCCO/Qc9w2gFS+SXQ3QjT5Zmlms7ilWW
+         sTPGx4yQBKEem4HCT0WcZ0EU5t9XqpBhjmzz6F+Zn2c7TrjSggbnSuD1SrFKjnHa/14i
+         DlBf+JlgJVff3hKKmn6DqnjDVT1aJGeLGn/40w1rPXcvER18NuyUhdWO40QnAt9kmkUW
+         QNyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EP6ovBvC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a199si10698338qkg.316.2019.11.18.06.22.16
+        by mx.google.com with ESMTPS id q23si15187495eda.167.2019.11.18.06.05.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2019 06:22:16 -0800 (PST)
+        Mon, 18 Nov 2019 06:05:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EP6ovBvC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34680 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34478 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWhuy-0001hP-3n
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 09:22:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54803)
+	id 1iWheq-0002v3-I7
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 09:05:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51819)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iWhuj-0001g0-VD
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:22:02 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iWheT-0002sg-2m
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:05:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iWhui-00035F-S4
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:22:01 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38426)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iWhui-00034b-Mo
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:22:00 -0500
-Received: by mail-ot1-x343.google.com with SMTP id z25so14647261oti.5
- for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 06:22:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=l93epJzFpah5Lo/MulLniiewH8jSfpIFwFL/5sKh+Kc=;
- b=EP6ovBvCAAIrd3+bgy0sclgtvgfeFLigivyh+FkhqifJO6vm6XSBd3Vx89pL/KqR90
- u3GUboNWo80GsCYA8G5p1hUsXGiYjBKSIVk+n4r6M/DIE3Zv+Vcd+9IN35GHNnoPMhJN
- F2bo/f4M3D1r72/aShlpHDQ5/+Q7dYk2GxCsF+0PdRTETJ9YzM3EfpxdnTwrm/qY53J1
- cDUxv1js+UCrGb2vuPPEzoHoz9u8j0xSYsqkJMuMQ8PclohBX1VERtthUHkhS8T3abRT
- +9McBNPjpMJiy0TZp2rlfkqcMw2iEVHWcHdOLa5sjPAo+uNr8FWDdDKT17JZyJ6rHXMh
- xZ7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=l93epJzFpah5Lo/MulLniiewH8jSfpIFwFL/5sKh+Kc=;
- b=mBemVQBq7Iu9rCQf9GgViUDp+uzVPhbul8AGGBpW4coFwmG4S8RBahIrjX0kqTjTqZ
- odHvKKsrLojWpeIZfMimND7NTDXWKOYQyjTZUlpiTudKxbEFRiDzsYxpqs7qG+CCnLvN
- 4VIf+azOiVUkYLsgyu/wi72FdDpxR87Pa3npwrTgdDMyqC2jMFohuJvE1Iwzfo25OwlH
- v+Fn0F1bpsHKkl1OEw8tJr7LlIvuu/rzpR3LQNnKwW2J6w0kBSxS2sfG4BpKCCE7LAxR
- oXNekiO5iNezzTXrSqn0C004YWaAyrNiFbfX5udll7+9QziffheuTyINaHJZL0+mpJEH
- TZug==
-X-Gm-Message-State: APjAAAVcM7QGMcp7EJqcw1mqLXwidnanSl+CzjtJr0NCrPrepOVmWftA
- HFKvnW59acosobpSB4sLlbQzQ9sjFZfxRyh6x7mtxw==
-X-Received: by 2002:a9d:68cc:: with SMTP id i12mr8746oto.97.1574086919611;
- Mon, 18 Nov 2019 06:21:59 -0800 (PST)
+ (envelope-from <guoheyi@huawei.com>) id 1iWheN-00062B-S9
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:05:12 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:42916 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1iWheN-0005xl-F3; Mon, 18 Nov 2019 09:05:07 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 797483DE5C60F08CB2BF;
+ Mon, 18 Nov 2019 22:05:01 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Mon, 18 Nov 2019
+ 22:04:54 +0800
+Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20191105091056.9541-1-guoheyi@huawei.com>
+ <9d7a2c5d-df78-ef67-87af-3860fcb7aee8@huawei.com>
+ <CAFEAcA8dAOiqRX2Uy9g2f=hO56Zx6pbEaLY3AQ8-3SX4YK9FkQ@mail.gmail.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <be5d5996-0329-a34f-7528-503b98b112a4@huawei.com>
+Date: Mon, 18 Nov 2019 22:04:53 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-8-marcandre.lureau@redhat.com>
-In-Reply-To: <20191023173154.30051-8-marcandre.lureau@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Nov 2019 14:21:48 +0000
-Message-ID: <CAFEAcA8GHqiaHSKdTjzTY_mWxYpDLZhXLYc98kjPGLUnzsG3oQ@mail.gmail.com>
-Subject: Re: [PATCH v3 07/33] serial: register vmsd with DeviceClass
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+In-Reply-To: <CAFEAcA8dAOiqRX2Uy9g2f=hO56Zx6pbEaLY3AQ8-3SX4YK9FkQ@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,55 +86,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
- Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Mark Rutland <mark.rutland@arm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marc Zyngier <marc.zyngier@arm.com>, Cornelia Huck <cohuck@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, James Morse <james.morse@arm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com,
+ Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8Qx86Kx5RX4E
+X-TUID: WBpioxUEAnGW
 
-On Wed, 23 Oct 2019 at 18:33, Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@redhat.com> wrote:
->
-> QOM-ify further.
->
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  hw/char/serial.c | 13 ++++++++++---
->  1 file changed, 10 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index c839035fdd..4af8b0ce4c 100644
-> --- a/hw/char/serial.c
-> +++ b/hw/char/serial.c
-> @@ -990,8 +990,7 @@ SerialState *serial_init(int base, qemu_irq irq, int =
-baudbase,
->      s->baudbase =3D baudbase;
->      qemu_chr_fe_init(&s->chr, chr, &error_abort);
->      serial_realize_core(s, &error_fatal);
-> -
-> -    vmstate_register(NULL, base, &vmstate_serial, s);
-> +    qdev_set_legacy_instance_id(dev, base, 2);
->      qdev_init_nofail(dev);
+Thanks a lot. Please take your time.
 
-Did you test whether migration still works from a QEMU
-version without this patch to one with it? (The migration
-vmstate code is too complicated for me to be able to figure
-out whether passing the 'dev' pointer makes a difference
-to whot it names the state sections and whether the
-'qdev_set_legacy_instance_id' suffices to avoid problems.)
+HG
 
-thanks
--- PMM
+
+On 2019/11/18 21:35, Peter Maydell wrote:
+> On Mon, 18 Nov 2019 at 06:55, Guoheyi <guoheyi@huawei.com> wrote:
+>> Hi Peter,
+>>
+>> Could you spare some time to review the framework and provide comments
+>> and advice?
+> This patchset is on my to-review list but there are also
+> a lot of others on that list...
+>
+> thanks
+> -- PMM
+>
+> .
+>
+
+

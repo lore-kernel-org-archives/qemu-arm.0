@@ -1,102 +1,101 @@
-Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp132565lfi;
-        Mon, 18 Nov 2019 06:43:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyy0bJBx0eb40IkuM3NagwNlqJDpNIE/YoPlBAKPEgC3WuluEsl9jVxwOGaL66xVaOVJ3dQ
-X-Received: by 2002:a17:906:e297:: with SMTP id gg23mr27803990ejb.41.1574088235255;
-        Mon, 18 Nov 2019 06:43:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574088235; cv=none;
+Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp157540lfi;
+        Mon, 18 Nov 2019 07:03:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxend6f52MpvrBKAEpQPjVmh0YnT1UyxE91tdKfVgWxu+9HSdiiqCvgUZhvD7hjZ0NqG5Cp
+X-Received: by 2002:ae9:c30e:: with SMTP id n14mr24677858qkg.24.1574089435045;
+        Mon, 18 Nov 2019 07:03:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574089435; cv=none;
         d=google.com; s=arc-20160816;
-        b=NZWBA6V9ZNwg+edPfMABRuSfKkO4tc7fMthN63mGG/q0jhajUadEkVhAFvswT+vpwt
-         kqPYRiVcUXCMgm24cwZ+icJGfCmt58xRFyFcMnPJTrRGNbqxcsFnGB0JQYI2sc61soIF
-         4R/MvDrPVqNUYJIW7QCuf7H/gjFUr2O1EG1lVrfnxeRZ/V6iJQvyCvECWQlP/mau3+Um
-         RbSw5oFUS2ICvtWM9A49Utx0SBeR1EBwJxzPh+Zqg30kpflnaE29KYkgMxbtbxIj9Fci
-         PfIqH2D1+sT/61gfyJMRIv7sA4JldCA9FmhPYOClGiuaVV0L7aw3FNKPZ/Vnlnh6dx/e
-         8s0Q==
+        b=JAd4KkvuwAXUTctxVY4EMRc5PdCrghgPdsbxDX2Al0gZejO3IFQ+yhz5FJPDBAm914
+         svNWE5NkHZI/Ndhg5cBswjSlfpE+WjPcffnofQCFfRHKqUsCVEHO7DazNdeKvwwS5wav
+         QTTmwHdRUUXnzcutvDPy+bquhsbQalQy0QQB2VET4F0GTmCFE5ZqgUU9ugA3kJD80XfS
+         IH3H9JXbErs3H+gbWHSjkzoh2qAHa+WMoSQitynEEYxZfk+mCBrqF2LOMn+ybjCSrXSh
+         vlBtMEWueFRvJlVxZM90UdtLSIOYjN16OlubxhkL/RiOEUFIvAZgdE7sdK3E5vbPsotz
+         LIsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=+jsIsPEQoLu9d8nup1pe9kvAUSu0Py/WlxBrGT80qXM=;
-        b=kzUoz+LdIAgqnJ+3a7aWqXeDQW/zKtozVpgSoWL9jwiSNZ/HDKfPeBhIX+qyFlh9q5
-         KEJGg0AHGilqiB5KBHnFpPVyagP8UU9XpC690AY5yttJziuwr1rdHnxQopSy3s+5zPS5
-         6I6kZTKbELUjBGcKaT1KdE0G/CNs2XJByTcoWQGekgM+XGrcmGc0IE1uRBcnTPTmHXxL
-         wYfAP80VbgIh0U1TcoAHpexaDnYbcDUxdCSfjPrJUHAsb8MFkkALMopRPUv83kjtWFUj
-         swpVMNaUTkFHoFhhCXJKczq1P8USHJmpX0L/IgMRWvteiTgnLvRLMeDlsJmVS3IlFbFn
-         LcmA==
+        bh=Kup+OjCW82IEaimKWKBPzaRe659Et8pbAD30ottMu8o=;
+        b=gTOST/c77l6UhjS8P6/af++EjJ7ZDLFI/jaLLBKv8DQXBdcEYj3zRsySmOKw/kPs6G
+         PWQ8kG/Abzsxo2ERiBCsVngD/+TobtFprSRNtnacCdNjhrWU3Fo4DWAKKN0oveZlAcRh
+         h6Y/0k8+bE0KGxTONpuWVE03NKLWL1TT3zv8fIH4IM+i7Uwtg5lKtLvllTcX88LMGY4m
+         fjtwgeNUELrv6RvbHslUrQSQMYPcveEoR2VwMmdMxBVvpxL0CukM/r92GK3kGhn2eLqR
+         9sOy1tT9aJp9QCy+YdsuYeGduEmRzBbZZu0mvk8GWa+j8ldNx1TRiiGynOtHVDkHa76X
+         67YQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fuTglVXn;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KlRy++5I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l11si11829267ejq.208.2019.11.18.06.43.55
+        by mx.google.com with ESMTPS id d55si11438787qte.264.2019.11.18.07.03.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2019 06:43:55 -0800 (PST)
+        Mon, 18 Nov 2019 07:03:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fuTglVXn;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KlRy++5I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35056 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35248 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWiFu-0007Jt-AR
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 09:43:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59525)
+	id 1iWiZG-0005to-Dd
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 10:03:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33675)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iWiFn-0007JU-80
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:43:48 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iWiYj-0005sW-QV
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 10:03:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iWiFl-00067e-Tu
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:43:47 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41194)
+ (envelope-from <peter.maydell@linaro.org>) id 1iWiYg-00060Y-RF
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 10:03:20 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:44815)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iWiFl-00066I-Np
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:43:45 -0500
-Received: by mail-oi1-x244.google.com with SMTP id e9so15508609oif.8
- for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 06:43:45 -0800 (PST)
+ id 1iWiYa-0005tw-Ni
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 10:03:14 -0500
+Received: by mail-ot1-x344.google.com with SMTP id c19so14734236otr.11
+ for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 07:03:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=+jsIsPEQoLu9d8nup1pe9kvAUSu0Py/WlxBrGT80qXM=;
- b=fuTglVXnR6wykZFDZpJcrPQaaJPGGX42Dztzx9dyatGRdscDmuoDHi/sHu5+4dB68y
- xExqrNC9wX0Uyym/0urZ7kEFMDm/FraYD4s2On5drKUZDK/IXvnComefR9gpO/n/hRoo
- WEA4qYjaX3YIka8CDlk8HWgMgNUlCm0dFTisA7yX4rgackfYpU/D2HOrGZ/xn5/u77OY
- f18IdKh60+Z5sOMGjVau/FXDshDca1XjysifcJYLITBqGJwz6hH4dGlPxYzGv1fF8ryJ
- VyM6xlG7H4Y31TggsvYwvOLum78NJk+kZIvYtipQaCHH9v48jWcRIBqeSno8KD0g9UXe
- FulA==
+ bh=Kup+OjCW82IEaimKWKBPzaRe659Et8pbAD30ottMu8o=;
+ b=KlRy++5IN8/ITrMOf28Zpi4o0LqKmUY8CMxprP1+L9tjaNA/wwy4EJPU52M/0xIMLE
+ hCgr8y4GjXJyebzHiEQSz+CdiqB037e4tKsbHfEzjstyb/OMoz5nIlHKIWfRLFTwh6pt
+ TmcYA6X6M7cV7S3uOKdtWPPFg2SwEku1B8+rpYqsZ9DQKGKP/UzFhTTu4bddGMwlwOvh
+ N06PBR6SzbIKbGlyOROosRzF1rni/oHIKP4y3y0Y/gOAi9Sg13TEgrdD4zdynCicLm7C
+ 07Yv0c5J7wyXTq+WJNCRhls+PtB3MPntTDJWMAP/lRPHEdkYIyS4M6add9ocQEpPOjj7
+ 7lwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=+jsIsPEQoLu9d8nup1pe9kvAUSu0Py/WlxBrGT80qXM=;
- b=ryv74gBCrgSW3Brrb2T0qKsZkUw62I3jFQwKnu1F+aSKI+JT+voeOb5tvfbutcCWlk
- Krlf3hodG6025pqK1t05C2XLvlWg+KqK/1QVAN6knT+uAHSt1ffH3dIiQK36xS4DUdBY
- L9OQZQ7e8LqOm7S4Po3sX5i0eFg3wRu6+JXqBJQZKE4jyyDMOdfiq7Ra2gYTdDlVSFZJ
- vekx2oFU+BV2XbR/ZQMA6DQWt6AtOwFeQ+pxYQkylY1rMb0kdDunntkVeg4qBf3kkW7j
- EPeJo/cW3woBoiaIJS9gHnaj3bNSVOyeL0KMwbJ7yvpI+wbfE0d4KXps5t9z3ueLKJd/
- LgiA==
-X-Gm-Message-State: APjAAAUpEGBI5h+1U83cGJBahFONgYDo6Ap5G8Gsg87LnOJ62AbHNnM6
- D498/TuX0RN8uOP6w0FKoi5fivtF5jKFTdkzyl0oKg==
-X-Received: by 2002:aca:a9d4:: with SMTP id
- s203mr19873230oie.146.1574088224529; 
- Mon, 18 Nov 2019 06:43:44 -0800 (PST)
+ bh=Kup+OjCW82IEaimKWKBPzaRe659Et8pbAD30ottMu8o=;
+ b=WtirozyNlpzTpqIm27xs1vbvla/ZQqOnaz0bqUawScuVrHf0xGysyYD3AXvcDqtX5P
+ gusw5yyJkUFbIqmzFggIu4Rl4JYnojirWBbnEDLaCef5qmbHxMr3Fh8WL4ybKW+I0I/B
+ FTYo2wIoYntQDNhdpfpVA6gxf9+NMCGdHYHt7VvCOsLN+MEAx4fXUUxbj9dsh8m/aaeA
+ nsECUgIHPblkYx+KW5oWYlnQ55M7fkiTdykXIHV2DEEzpSeIinh4HVwF/R0WhotwnwvU
+ gqmjLiXm5InO476ehHQbf8aw6bgylzjt8v6zUeGMOblQIQQSv1qZBYHsTf3cSR/+ld40
+ o0kQ==
+X-Gm-Message-State: APjAAAU/gSXHjwiIY2npj4JsawMRVwhf0dLmzE+BqKhbep7KCcPVNsCI
+ NSc8gzuFBZ/fJfzgO753EyeBaZohdjn/0k1kZnDEGA==
+X-Received: by 2002:a9d:7ac2:: with SMTP id m2mr22878561otn.135.1574089390518; 
+ Mon, 18 Nov 2019 07:03:10 -0800 (PST)
 MIME-Version: 1.0
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-14-marcandre.lureau@redhat.com>
-In-Reply-To: <20191023173154.30051-14-marcandre.lureau@redhat.com>
+ <20191023173154.30051-16-marcandre.lureau@redhat.com>
+In-Reply-To: <20191023173154.30051-16-marcandre.lureau@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Nov 2019 14:43:33 +0000
-Message-ID: <CAFEAcA9Cq_MkAzqAjt5uPNu3HDUfxO0hyVWtqEiAashPEEq3=g@mail.gmail.com>
-Subject: Re: [PATCH v3 13/33] serial: start making SerialMM a sysbus device
+Date: Mon, 18 Nov 2019 15:02:58 +0000
+Message-ID: <CAFEAcA97SUwPxcZq-5BQyPgb7geBsgu46dpc1zTj4gBGZ2WwAQ@mail.gmail.com>
+Subject: Re: [PATCH v3 15/33] serial-mm: add endianness property
 To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::244
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,86 +123,60 @@ Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VieZrVrRkuel
+X-TUID: JuUbKCfOpf52
 
-On Wed, 23 Oct 2019 at 18:33, Marc-Andr=C3=A9 Lureau
+On Wed, 23 Oct 2019 at 18:34, Marc-Andr=C3=A9 Lureau
 <marcandre.lureau@redhat.com> wrote:
 >
-> Memory mapped serial device is in fact a sysbus device. The following
-> patches will make use of sysbus facilities for resource and
-> registration.
+> Add a qdev property for endianness, so memory region setup can be done
+> in realize.
 >
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->  hw/char/omap_uart.c      |  2 +-
->  hw/char/serial.c         | 47 ++++++++++++++++++++++++++++------------
->  hw/mips/boston.c         |  2 +-
->  hw/mips/mips_malta.c     |  2 +-
->  include/hw/char/serial.h | 20 ++++++++++++-----
->  5 files changed, 51 insertions(+), 22 deletions(-)
-
-
-> -SerialState *serial_mm_init(MemoryRegion *address_space,
-> +SerialMM *serial_mm_init(MemoryRegion *address_space,
->                              hwaddr base, int it_shift,
->                              qemu_irq irq, int baudbase,
->                              Chardev *chr, enum device_endian end)
->  {
-> -    DeviceState *dev =3D DEVICE(object_new(TYPE_SERIAL));
-> -    SerialState *s =3D SERIAL(dev);
-> +    SerialMM *self =3D SERIAL_MM(qdev_create(NULL, TYPE_SERIAL_MM));
-> +    SerialState *s =3D &self->serial;
+>  hw/char/serial.c         | 2 ++
+>  include/hw/char/serial.h | 1 +
+>  2 files changed, 3 insertions(+)
 >
-> -    s->it_shift =3D it_shift;
-> +    self->it_shift =3D it_shift;
->      s->irq =3D irq;
-> -    qdev_prop_set_uint32(dev, "baudbase", baudbase);
-> -    qdev_prop_set_chr(dev, "chardev", chr);
-> -    qdev_prop_set_int32(dev, "instance-id", base);
-> -    qdev_init_nofail(dev);
-> +    qdev_prop_set_uint32(DEVICE(s), "baudbase", baudbase);
-> +    qdev_prop_set_chr(DEVICE(s), "chardev", chr);
-> +    qdev_prop_set_int32(DEVICE(s), "instance-id", base);
-> +
-> +    qdev_init_nofail(DEVICE(s));
-> +    qdev_init_nofail(DEVICE(self));
+> diff --git a/hw/char/serial.c b/hw/char/serial.c
+> index c28cfc94fd..2f7667c30c 100644
+> --- a/hw/char/serial.c
+> +++ b/hw/char/serial.c
+> @@ -1081,6 +1081,7 @@ SerialMM *serial_mm_init(MemoryRegion *address_spac=
+e,
+>      qdev_prop_set_uint32(DEVICE(s), "baudbase", baudbase);
+>      qdev_prop_set_chr(DEVICE(s), "chardev", chr);
+>      qdev_prop_set_int32(DEVICE(s), "instance-id", base);
+> +    qdev_prop_set_uint8(DEVICE(s), "endianness", end);
+>
+>      qdev_init_nofail(DEVICE(s));
+>      qdev_init_nofail(DEVICE(self));
+> @@ -1102,6 +1103,7 @@ static void serial_mm_instance_init(Object *o)
+>
+>  static Property serial_mm_properties[] =3D {
+>      DEFINE_PROP_UINT8("regshift", SerialMM, regshift, 0),
+> +    DEFINE_PROP_UINT8("endianness", SerialMM, endianness, DEVICE_NATIVE_=
+ENDIAN),
 
-Something odd is going on here. This is a convenience
-wrapper around creating the SERIAL_MM device, so it's
-correct that it has to init DEVICE(self). But it should
-not be doing anything with the internals of 'self'.
-It's the instance_init/realize of the SERIAL_MM object that should
-instance_init/realize the 'self->serial' object. You have the
-code below to do the 'instance_init' in the serial_mm_instance_init
-function, but are missing the equivalent realize code.
+Again, a brief comment documenting the property here would be nice.
 
-> -    memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], s,
-> +    memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], self,
->                            "serial", 8 << it_shift);
->      memory_region_add_subregion(address_space, base, &s->io);
-> -    return s;
-> +
-> +    return self;
-> +}
-> +
-> +static void serial_mm_instance_init(Object *o)
-> +{
-> +    SerialMM *self =3D SERIAL_MM(o);
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>
+> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+> index 759c85976d..2d0802a909 100644
+> --- a/include/hw/char/serial.h
+> +++ b/include/hw/char/serial.h
+> @@ -86,6 +86,7 @@ typedef struct SerialMM {
+>      SerialState serial;
+>
+>      uint8_t regshift;
+> +    uint8_t endianness;
+>  } SerialMM;
 
-'self' is not idiomatic for the name of the variable containing
-the pointer to the object in QOM code ("git grep '\Wself\W' hw"
-shows no uses of it at all, which is quite unusual for us --
-usually the codebase has at least a few uses of any non-standard
-way of writing something ;-))
+(The type-checking on the property-setting macros doesn't let
+us define this as 'enum device_endian'.)
 
-Usually we use something approximating to the abbreviation
-of the type name, so here 'smm' would do.
-
-> +
-> +    object_initialize_child(o, "serial", &self->serial, sizeof(self->ser=
-ial),
-> +                            TYPE_SERIAL, &error_abort, NULL);
->  }
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

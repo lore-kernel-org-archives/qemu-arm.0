@@ -1,98 +1,79 @@
-Received: by 2002:a05:6512:48d:0:0:0:0 with SMTP id v13csp2452921lfq;
-        Sun, 17 Nov 2019 22:18:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz0MCoB5Y3J5BvlkLA+qFw8jnuPrhZ8/yD0iW0bW/Nyb2AALprn9eAe2YOhVhKRbWn0cJRE
-X-Received: by 2002:a17:906:c7d0:: with SMTP id dc16mr24264708ejb.73.1574057907517;
-        Sun, 17 Nov 2019 22:18:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574057907; cv=none;
+Received: by 2002:a05:6512:48d:0:0:0:0 with SMTP id v13csp2481534lfq;
+        Sun, 17 Nov 2019 22:55:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwfFvvN9kafckBjIT50FborzA0H22vO7zpiXZXnTKI0YWGkJ+zWAcJL97sSk3dPoGspqBQR
+X-Received: by 2002:ac8:3358:: with SMTP id u24mr25748122qta.63.1574060146444;
+        Sun, 17 Nov 2019 22:55:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574060146; cv=none;
         d=google.com; s=arc-20160816;
-        b=e8iSxrXzDSnWJhv2BOfiuh76eX+nBYRkMJxEon/5BwoyVCoMyrfcExvwTLlvkA3TYF
-         9Xv8zoanOhS8oRL9UwORhOAONcc3YUvftRpVePwcb3KYPqrl6i6UkiDZmnPpVJNNLYcb
-         LSZ0VJ5S0yprXmchBoa2nHo2sk/jH78w9W9dcc6Fnl51y5644vx79ZFr6UqiEMzaNsgm
-         fsa4eGJ8RqMG9iCvVpu7sJCbn724MGoNS1vSk1DhQ5f762qYVUEbT8i+EFvos2emFn3j
-         zd/yF4nvLpdffITcWgR68rP+C4U8o8fphXmeFU+RPhmNYkxIrJqoeBlNi/oVzvcaIBPH
-         tIag==
+        b=sEGxlsJtpgRIkdMx6T/ULAZzgHnPUs563DqD6cyopReuscLq+u7jnk+HkUWKMkMpVp
+         6cWjOYfP7ACj+sUnPnYx2+TciVt1f5Z0nCkNAh24W3gL5NGYoiVPLUmAbI6f0jQCVpsq
+         jE70JRADYYiwz6Ob8Md/FQ7SdNHZ9ZO6kCGEpznE1b3m6JhDWdAAalx8Lsl9wt004bkV
+         3G+j7lZ18BiIsuajSrl1jRZ2FNv/yNaFBMhanpn7JoEQbBByKLNN/wyX9CNqtxCnbec+
+         VFUztXqb15/bnKuUtOzRDQyFOAIouMSzKZG4LmeKQs/jA6JjH6ihIY9sFBFYQXCEMA2r
+         1J2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=JykI96YRsis8dgCEg/shW1vRhmHTLEtMbhdBgs5yPxU=;
-        b=IJvUtQLu020D70nXEz6NdjoCnNfexFhT7JFrWeZBi7EPn+foIaPThwDmkrDYzVYj8V
-         AlvaaGE5UT+dIOlfqypgf2SVE85rLtZ+e6a4t+LmIn6zSoZ8au5JVgchxfMximG3iUZC
-         tC2+lKO65zlRzvGj2Nv/2SA03l7xid/fXMmLdzhqJupxEo7p7Y7R+5Q3IxLIEZgzAcPv
-         UzdTANbsnGDcvgQnag9IA2nogxp3O50SmI55qnCo8ay/9sxltU6u3p51blz0gGw6h8XB
-         +P17beZY4MGv0mj2+q/zSkOxLwc4BCEtHS0nnKerrQSdvAYnDJYeWZeHbRuDNU151Z3+
-         RhnA==
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=xrElkY9FhGU8wXd5/HvARPwOx+iaOQHKWl0X7/HKFfk=;
+        b=ILY44nIjwyDUgHsrwmKz++4EoWxEgq41JpDbK/1IbUIGrdL4A+NhB9aGNFCi+n8Pbu
+         2k8wje4MuIFtImOOVGl0et5UhnAXt8leE1x4ow8XHkjVQrLSfLNYTmqM/0jL9W1kSjqd
+         BB48VPGHNPjK8TejzoX3o2+7eY6BU+L8JKZuc2pMCUdW9g3FKvgYDGk/yOo9AXUl+YMk
+         NAtKuvC+Ybz7EWMZCPm1MYJ4OKoXUo47rqt8MJyRUrcIqvH9rD0P5SROAkD2geJ7ficq
+         jHOs3vbp88NM3dF9vfMMKorUjwkXMPt7nRGLDdwlFpsQFxt0MIxMN0BZrvXzekbOtXwD
+         DcTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PePEmBFJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si10629374ejx.286.2019.11.17.22.18.27
+        by mx.google.com with ESMTPS id g34si11165760qtg.293.2019.11.17.22.55.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Nov 2019 22:18:27 -0800 (PST)
+        Sun, 17 Nov 2019 22:55:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PePEmBFJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58400 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58560 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWaMk-00071V-E7
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 01:18:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36173)
+	id 1iWawr-00051h-Rh
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 01:55:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39884)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <joel.stan@gmail.com>) id 1iWaMU-000713-3H
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 01:18:11 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iWawj-00051P-Bp
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 01:55:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1iWaMS-0005wp-G9
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 01:18:10 -0500
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:35027)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1iWaMS-0005u0-7k; Mon, 18 Nov 2019 01:18:08 -0500
-Received: by mail-pg1-x542.google.com with SMTP id k32so3408275pgl.2;
- Sun, 17 Nov 2019 22:18:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JykI96YRsis8dgCEg/shW1vRhmHTLEtMbhdBgs5yPxU=;
- b=PePEmBFJ9ddf4opsptO/b+fwxkwxeQx887M9wvI3czpv8q+BQ9ytHFT/k4IqazdzCr
- pU387EzF0vxctAuhN3c+M/6TN/hc58v7YfNbeKhD1cYG6FzzC8GbDTkwtkPnwKTO1sWj
- L2j8cgO7G8HPkEgZHA8QzZwZdK4X+QJKkOBrFGUdf4vhN9s791p15gpqJty401ufZsnz
- 9wa0w5sbMwfADwPPDK1whap688Zs7nh9D8lAwFti0pIOWnU1bH/V4S86/djDxnmfUpHn
- p1GM3Pf05ci4V+IeQtQemQUa96MZ1Il99I15u4h5Tbn1fM0n9APUqMdgcvuQefeJC/tP
- oPPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=JykI96YRsis8dgCEg/shW1vRhmHTLEtMbhdBgs5yPxU=;
- b=RicD7fpBKIDyQ7rdsnULBmQU7FNllJDiD3bZ/TuJ49EUqqsiTZLlL0mtm+7nyK2TeD
- yNkc8W7jorg7nQYS/PmALeZpLT2WTzdCKVTb0c6RiHKKRQXPjAjmQJUrlIyeZsZ3Kkaz
- k3l6JMORU0E6u9J5eHF+SAjT20e1d5e4fvLvLh34aKFZnQGtsaI9tdTl5J5ksg4Rpkmd
- yHFyDU4CLZZEsO4E+nGL1GR6qyKIcAcGZ4IlXb9PBCjNQRQa7VK3h+VABn5mc6G9Kqi/
- IzyDx1crNqISDE81hNdZxO3CavqNd0C5xczD8FyazkIk5njX0l4IrT30xcxLDeMq+oID
- MF+g==
-X-Gm-Message-State: APjAAAX6IybGn2xGs5VedOuD/omhCB9vv8sCazdLCvcT6is3aajKWXT6
- 93HhZ9bdhG5YABtXn2O4liU=
-X-Received: by 2002:a63:7218:: with SMTP id n24mr19354968pgc.100.1574057885950; 
- Sun, 17 Nov 2019 22:18:05 -0800 (PST)
-Received: from voyager.ibm.com ([36.255.48.244])
- by smtp.gmail.com with ESMTPSA id u7sm16602843pjx.19.2019.11.17.22.18.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Nov 2019 22:18:05 -0800 (PST)
-From: Joel Stanley <joel@jms.id.au>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH] misc/pca9552: Add qom set and get
-Date: Mon, 18 Nov 2019 16:47:57 +1030
-Message-Id: <20191118061757.52550-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.24.0
+ (envelope-from <guoheyi@huawei.com>) id 1iWawh-0001RV-Ln
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 01:55:37 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:36528 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1iWawh-0001Or-AU; Mon, 18 Nov 2019 01:55:35 -0500
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id C2AAD672B27508F4C875;
+ Mon, 18 Nov 2019 14:55:29 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Mon, 18 Nov 2019
+ 14:55:21 +0800
+Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+References: <20191105091056.9541-1-guoheyi@huawei.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <9d7a2c5d-df78-ef67-87af-3860fcb7aee8@huawei.com>
+Date: Mon, 18 Nov 2019 14:55:20 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::542
+In-Reply-To: <20191105091056.9541-1-guoheyi@huawei.com>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,208 +85,153 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Rashmica Gupta <rashmica.g@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Cc: Mark Rutland <mark.rutland@arm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marc Zyngier <marc.zyngier@arm.com>, Cornelia Huck <cohuck@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
+ James Morse <james.morse@arm.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TKyj6GB7V6v4
+X-TUID: Lyom2Pre0pMv
 
-Following the pattern of the work recently done with the ASPEED GPIO
-model, this adds support for inspecting and modifying the PCA9552 LEDs
-from the monitor.
+Hi Peter,
 
- (qemu) qom-set  /machine/unattached/device[17] led0 on
- (qemu) qom-get  /machine/unattached/device[17] led0
- "on"
+Could you spare some time to review the framework and provide comments 
+and advice?
 
- (qemu) qom-set  /machine/unattached/device[17] led0 off
- (qemu) qom-get  /machine/unattached/device[17] led0
- "off"
+Thanks,
 
- (qemu) qom-set  /machine/unattached/device[17] led0 pwm0
- (qemu) qom-get  /machine/unattached/device[17] led0
- "pwm0"
+HG
 
- (qemu) qom-set  /machine/unattached/device[17] led0 pwm1
- (qemu) qom-get  /machine/unattached/device[17] led0
- "pwm1"
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
-The qom device in mainline qemu is a different path. Using the monitor
-examine `info qom-tree /machine/unattached/` to discover it.
+On 2019/11/5 17:10, Heyi Guo wrote:
+> SDEI is for ARM "Software Delegated Exception Interface". AS ARM64 doesn't have
+> native non-maskable interrupt (NMI), we rely on higher privileged (larger
+> exception level) software to change the execution flow of lower privileged
+> (smaller exception level) software when certain events occur, to emulate NMI
+> mechanism, and SDEI is the standard interfaces between the two levels of
+> privileged software. It is based on SMC/HVC calls.
+>
+> The higher privileged software implements an SDEI dispatcher to handle SDEI
+> related SMC/HVC calls and trigger SDEI events; the lower privileged software
+> implements an SDEI client to request SDEI services and handle SDEI events.
+>
+> Core interfaces provided by SDEI include:
+>
+> 1. interrupt bind: client can request to bind an interrupt to an SDEI event, so
+> the interrupt will be a non-maskable event and the event number will be returned
+> to the caller. Only PPI and SPI can be bound to SDEI events.
+>
+> 2. register: client can request to register a handler to an SDEI event, so
+> dispatcher will change PC of lower privileged software to this handler when
+> certain event occurs.
+>
+> 3. complete: client notifies dispatcher that it has completed the event
+> handling, so dispatcher will restore the context of guest when it is
+> interrupted.
+>
+> In virtualization situation, guest OS is the lower privileged software and
+> hypervisor is the higher one.
+>
+> KVM is supposed to pass SMC/HVC calls to qemu, and qemu will emulate an SDEI
+> dispatcher to serve the SDEI requests and trigger the events. If an interrupt is
+> requested to be bound to an event, qemu should not inject the interrupt to guest
+> any more; instead, it should save the context of VCPU and change the PC to event
+> handler which is registered by guest, and then return to guest.
+>
+> To make the conversion of interrupt to SDEI event transparent to other modules
+> in qemu, we used qemu_irq and qemu_irq_intercept_in() to override the default
+> irq handler with SDEI event trigger. I saw qemu_irq_intercept_in() should be
+> only used in qemu MST, but it seemed fit to override interrupt injection with
+> event trigger after guest requests to bind interrupt to SDEI event.
+>
+> This patchset is trying to implement the whole SDEI framework in qemu with KVM
+> enabled, including all SDEI v1.0 interfaces, as well as event trigger conduit
+> from other qemu devices after interrupt binding.
+>
+> Key points:
+> - We propose to only support kvm enabled arm64 virtual machines, for
+>    non-kvm VMs can emulate EL3 and have Trusted Firmware run on it,
+>    which has a builtin SDEI dispatcher.
+> - New kvm capability KVM_CAP_FORWARD_HYPERCALL is added to probe if
+>    kvm supports forwarding hypercalls, and the capability should be
+>    enabled explicitly.
+> - We make the dispatcher as a logical device, to save the states
+>    during migration or save/restore operation; only one instance is
+>    allowed in one VM.
+> - We use qemu_irq as the bridge for other qemu modules to switch from
+>    irq injection to SDEI event trigger after VM binds the interrupt to
+>    SDEI event. We use qemu_irq_intercept_in() to override qemu_irq
+>    handler with SDEI event trigger, and a new interface
+>    qemu_irq_remove_intercept() is added to restore the handler to
+>    default one (i.e. ARM GIC).
+>
+> More details are in the commit message of each patch.
+>
+> Basic tests are done by emulating a watchdog timer and triggering SDEI
+> event in every 10s.
+>
+> Please focus on the interfaces and framework first. We can refine the code for
+> several rounds after the big things have been determined.
+>
+> Any comment or suggestion is welcome.
+>
+> Thanks,
+>
+> HG
+>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Dave Martin <Dave.Martin@arm.com>
+> Cc: Marc Zyngier <marc.zyngier@arm.com>
+> Cc: Mark Rutland <mark.rutland@arm.com>
+> Cc: James Morse <james.morse@arm.com>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Cornelia Huck <cohuck@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+>
+> v2:
+> - Import import linux/arm_sdei.h to standard-headers
+> - Drop SDEI table definition and add comments
+> - Some bugfix and code refinement
+>
+> Heyi Guo (14):
+>    update-linux-headers.sh: import linux/arm_sdei.h to standard-headers
+>    standard-headers: import arm_sdei.h
+>    arm/sdei: add virtual device framework
+>    arm: add CONFIG_SDEI build flag
+>    arm/sdei: add support to handle SDEI requests from guest
+>    arm/sdei: add system reset callback
+>    arm/sdei: add support to trigger event by GIC interrupt ID
+>    core/irq: add qemu_irq_remove_intercept interface
+>    arm/sdei: override qemu_irq handler when binding interrupt
+>    arm/sdei: add support to register interrupt bind notifier
+>    linux-headers/kvm.h: add capability to forward hypercall
+>    arm/sdei: add stub to fix build failure when SDEI is not enabled
+>    arm/kvm: handle guest exit of hypercall
+>    virt/acpi: add SDEI table if SDEI is enabled
+>
+>   default-configs/arm-softmmu.mak           |    1 +
+>   hw/arm/Kconfig                            |    4 +
+>   hw/arm/virt-acpi-build.c                  |   26 +
+>   hw/core/irq.c                             |   11 +
+>   include/hw/irq.h                          |    8 +-
+>   include/standard-headers/linux/arm_sdei.h |   73 +
+>   linux-headers/linux/kvm.h                 |    1 +
+>   scripts/update-linux-headers.sh           |    1 +
+>   target/arm/Makefile.objs                  |    4 +
+>   target/arm/kvm.c                          |   17 +
+>   target/arm/sdei-stub.c                    |   49 +
+>   target/arm/sdei.c                         | 1576 +++++++++++++++++++++
+>   target/arm/sdei.h                         |   60 +
+>   target/arm/sdei_int.h                     |  121 ++
+>   14 files changed, 1950 insertions(+), 2 deletions(-)
+>   create mode 100644 include/standard-headers/linux/arm_sdei.h
+>   create mode 100644 target/arm/sdei-stub.c
+>   create mode 100644 target/arm/sdei.c
+>   create mode 100644 target/arm/sdei.h
+>   create mode 100644 target/arm/sdei_int.h
+>
 
-This can be tested with a Witherspoon image.
-
-$ wget https://openpower.xyz/job/openbmc-build/distro=ubuntu,label=builder,target=witherspoon/lastSuccessfulBuild/artifact/deploy/images/witherspoon/obmc-phosphor-image-witherspoon.ubi.mtd
-
-$ qemu-system-arm -M witherspoon-bmc -serial pty -monitor pty -nographic \
- -drive file=obmc-phosphor-image-witherspoon.ubi.mtd,format=raw,if=mtd
-char device redirected to /dev/pts/5 (label compat_monitor0)
-char device redirected to /dev/pts/10 (label serial0)
-
-$ screen /dev/pts/5
-QEMU 4.1.91 monitor - type 'help' for more information
-(qemu) qom-get  /machine/unattached/device[17] led0
-"off"
-
-$ screen /dev/pts/19
-root@witherspoon:~# cd /sys/class/gpio/
-root@witherspoon:/sys/class/gpio# echo 248 > export
-root@witherspoon:/sys/class/gpio# cat gpio248/value
-0
-
-(qemu) qom-set  /machine/unattached/device[17] led0 on
-
-root@witherspoon:/sys/class/gpio# echo out > gpio248/direction
-root@witherspoon:/sys/class/gpio# cat gpio248/value
-1
-
-(qemu) qom-get  /machine/unattached/device[17] led0
-"on"
-
-(qemu) qom-set  /machine/unattached/device[17] led0 off
-(qemu) qom-get  /machine/unattached/device[17] led0
-"off"
-
-root@witherspoon:/sys/class/gpio# cat gpio248/value
-0
-
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- hw/misc/pca9552.c | 91 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 91 insertions(+)
-
-diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-index 73be28d9369c..0362aac8c862 100644
---- a/hw/misc/pca9552.c
-+++ b/hw/misc/pca9552.c
-@@ -15,12 +15,16 @@
- #include "hw/misc/pca9552.h"
- #include "hw/misc/pca9552_regs.h"
- #include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
- 
- #define PCA9552_LED_ON   0x0
- #define PCA9552_LED_OFF  0x1
- #define PCA9552_LED_PWM0 0x2
- #define PCA9552_LED_PWM1 0x3
- 
-+static const char *led_state[] = {"on", "off", "pwm0", "pwm1"};
-+
- static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin)
- {
-     uint8_t reg   = PCA9552_LS0 + (pin / 4);
-@@ -169,6 +173,84 @@ static int pca9552_event(I2CSlave *i2c, enum i2c_event event)
-     return 0;
- }
- 
-+static void pca9552_get_led(Object *obj, Visitor *v, const char *name,
-+                            void *opaque, Error **errp)
-+{
-+    PCA9552State *s = PCA9552(obj);
-+    int led, rc, reg;
-+    char *str;
-+    uint8_t state;
-+
-+    rc = sscanf(name, "led%2d", &led);
-+    if (rc != 1) {
-+        error_setg(errp, "%s: error reading %s", __func__, name);
-+        return;
-+    }
-+    if (led < 0 || led > s->nr_leds) {
-+        error_setg(errp, "%s invalid led %s", __func__, name);
-+        return;
-+    }
-+    /*
-+     * Get the LSx register as the qom interface should expose the device
-+     * state, not the modeled 'input line' behaviour which would come from
-+     * reading the INPUTx reg
-+     */
-+    reg = PCA9552_LS0 + led / 4;
-+    state = (pca9552_read(s, reg) >> (led % 8)) & 0x3;
-+    str = g_strdup(led_state[state]);
-+    visit_type_str(v, name, &str, errp);
-+}
-+
-+/*
-+ * Return an LED selector register value based on an existing one, with
-+ * the appropriate 2-bit state value set for the given LED number (0-3).
-+ */
-+static inline uint8_t pca955x_ledsel(uint8_t oldval, int led_num, int state)
-+{
-+        return (oldval & (~(0x3 << (led_num << 1)))) |
-+                ((state & 0x3) << (led_num << 1));
-+}
-+
-+static void pca9552_set_led(Object *obj, Visitor *v, const char *name,
-+                            void *opaque, Error **errp)
-+{
-+    PCA9552State *s = PCA9552(obj);
-+    Error *local_err = NULL;
-+    int led, rc, reg, val;
-+    uint8_t state;
-+    char *state_str;
-+
-+    visit_type_str(v, name, &state_str, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+    rc = sscanf(name, "led%2d", &led);
-+    if (rc != 1) {
-+        error_setg(errp, "%s: error reading %s", __func__, name);
-+        return;
-+    }
-+    if (led < 0 || led > s->nr_leds) {
-+        error_setg(errp, "%s invalid led %s", __func__, name);
-+        return;
-+    }
-+
-+    for (state = 0; state < ARRAY_SIZE(led_state); state++) {
-+        if (!strcmp(state_str, led_state[state])) {
-+            break;
-+        }
-+    }
-+    if (state >= ARRAY_SIZE(led_state)) {
-+        error_setg(errp, "%s invalid led state %s", __func__, state_str);
-+        return;
-+    }
-+
-+    reg = PCA9552_LS0 + led / 4;
-+    val = pca9552_read(s, reg);
-+    val = pca955x_ledsel(val, led % 4, state);
-+    pca9552_write(s, reg, val);
-+}
-+
- static const VMStateDescription pca9552_vmstate = {
-     .name = "PCA9552",
-     .version_id = 0,
-@@ -204,6 +286,7 @@ static void pca9552_reset(DeviceState *dev)
- static void pca9552_initfn(Object *obj)
- {
-     PCA9552State *s = PCA9552(obj);
-+    int led;
- 
-     /* If support for the other PCA955X devices are implemented, these
-      * constant values might be part of class structure describing the
-@@ -211,6 +294,14 @@ static void pca9552_initfn(Object *obj)
-      */
-     s->max_reg = PCA9552_LS3;
-     s->nr_leds = 16;
-+
-+    for (led = 0; led < s->nr_leds; led++) {
-+        char *name;
-+
-+        name = g_strdup_printf("led%d", led);
-+        object_property_add(obj, name, "bool", pca9552_get_led, pca9552_set_led,
-+                            NULL, NULL, NULL);
-+    }
- }
- 
- static void pca9552_class_init(ObjectClass *klass, void *data)
--- 
-2.24.0
 

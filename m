@@ -1,101 +1,102 @@
-Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp78039lfi;
-        Mon, 18 Nov 2019 06:03:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzpGTG87ySEXdLGVTGtTckvTg5WCsFrjwgRHEm2aJGzxtzvwdY70NLJSH6HOKQv1ux8C+ED
-X-Received: by 2002:a37:a406:: with SMTP id n6mr24918500qke.308.1574085780701;
-        Mon, 18 Nov 2019 06:03:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574085780; cv=none;
+Received: by 2002:a19:fc0b:0:0:0:0:0 with SMTP id a11csp91940lfi;
+        Mon, 18 Nov 2019 06:12:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwoNgoyv2M9vWTjlmbNQUXMA6yMGMgHIADjPchO5GAuMP44+ZtX6vaMDXBRNwsv0ZIS8+uV
+X-Received: by 2002:ac8:17e2:: with SMTP id r31mr28193445qtk.133.1574086346038;
+        Mon, 18 Nov 2019 06:12:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574086346; cv=none;
         d=google.com; s=arc-20160816;
-        b=X/ViNTl9bl+NadO/3mcDg5ng6A+X/FYOtol5D0SrNZz3Qeh2mh2AYJr6HxLdHe6jIG
-         NpTm2v/gkvaxWPiN0I+b/5tUNYewKH+s10BnDZlxbY7QW/TAmwtJRvbdEk+aWBg8Se6y
-         sOwcTvYVYnyH0KVPQye4s4mCJw5SxBlZ2a2Fy2dVXQ1QQbeGILBx9uWJiwMdJuJhJiNo
-         EDvLS7bAvzpEaK0maWq6UdKaDYfCVruUO+nv6p7bH5Tab0h+a4aSQH3mxDxXHtgcO2TI
-         QYVl7GD1TBqzzZBFNwYjAak4A+Q0LYnirURTMx6lJCf3AFFCYiflwmI6Sqv6vQ4KCMs1
-         FWgg==
+        b=gG5NmprN6uGkg4wCWX/jqJcKfOY4LZpX2SkIl2Njgof/Z61X5s2RVT7tZaScEsoa9u
+         Xb/jw5AW54GQa9iR+eXlQADmOhC3R27jidTrrXfUEIuZk5iIpyuwpf43Fz1VtHpH/xje
+         6ZnWm3FWljd/1bn1K+kEJnQknaLT8+RrNEDOui5OWksjJTw5+29+WB4B+cEwyQv+gEYu
+         bVkpuqld27svKgSMNbi3zXYtCG1oclW5FKcXvbdR1FiijynYZfs1SijffOIiPhv6rgge
+         GAviNVnaAMpdhXkjO493atJJs+tVqwOrTNGrcSxwJSoJkjU0FLuMiqTIHuOEcUbidNbC
+         DqdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=/T65KmuUv9KdpGF5zOQDRozywkHbk0CrYcHeiYnnPBg=;
-        b=lpmINdSAYqIlJjGCRL4DVNRDxcqCEeTsZfZc727hk7u1E6FqyzP1ZrfbSz3CjwnRD/
-         JHQ+GDU0nsziNA8ne2Jhb2xAfwd1jZARMoYfLnLeN+Ec13IHAh4i9CgrBvbZiPvrxuDq
-         6/VnPguc9ejAwOJEVVoz6Khu6CtfCnd6O9T5nS+PqrFbdK6l2TUCaO9Vx3TyFx7e0QeB
-         KbZIUEv+AhpL2KT2+xBOr23JpOrj3SYFpqMLK6aN9KaoEnevzDVEWbyHSJEvdtJz/MlY
-         6JkMRPWnkA4yS2ilNBMiGOjQPkPeCr5yyTC6YgpEz6AE2DnS7K7Fz4h00Ffv3bYfG/oc
-         uhEg==
+        bh=fFnzt3koHgk6JHVK5bSTYoxjzZXzNfc38goaFNH8Ixw=;
+        b=0f7kNIGEpfgDhswFHFE398+WkrEstR+9UAwSbXc2/h7JmvMq2bQ+wbfej+F+0Ron6W
+         0HNy1pii+Q0YjmujDKH6cR0KUDuMn2a9+hZP0A1EViEVP2YWz1NarJC0Y2nkurNzR8Bu
+         dxexm5ggovutGri8tGD1IWHuQIuhV/R/V5ngl7R3jJiCYpFD5qR6hxjwElxwerAHuU50
+         CxzcB6/l2ytVm27vdBVEvHp6vfiqQdtXs7/Bgo7TTYIV4tPvWu58yFk3zXCJYbtCUuYB
+         dSPi6gLFtKAo75krVq1PUlMOeBdF8y5y0wSwvlWBBSmbmzRIgFTITDxUitYtuC+LDFBs
+         VoHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DfGPNMW2;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gWbx59MV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 137si10999413qkg.323.2019.11.18.06.03.00
+        by mx.google.com with ESMTPS id v16si11285340qka.138.2019.11.18.06.12.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2019 06:03:00 -0800 (PST)
+        Mon, 18 Nov 2019 06:12:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DfGPNMW2;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gWbx59MV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34424 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34554 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWhcJ-00005c-NT
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 09:02:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51432)
+	id 1iWhlR-0005pm-2m
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 09:12:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52891)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iWhc6-0008UQ-FF
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:02:47 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iWhlH-0005oJ-7W
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:12:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iWhc5-0003z5-Fj
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:02:46 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:46505)
+ (envelope-from <peter.maydell@linaro.org>) id 1iWhlF-0003Qj-UI
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:12:14 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:34759)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iWhc5-0003xs-9V
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:02:45 -0500
-Received: by mail-ot1-x344.google.com with SMTP id n23so14541004otr.13
- for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 06:02:45 -0800 (PST)
+ id 1iWhlF-0003QH-Ns
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 09:12:13 -0500
+Received: by mail-oi1-x241.google.com with SMTP id l202so15441453oig.1
+ for <qemu-arm@nongnu.org>; Mon, 18 Nov 2019 06:12:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=/T65KmuUv9KdpGF5zOQDRozywkHbk0CrYcHeiYnnPBg=;
- b=DfGPNMW2gRBbzB0k4kr56zhYtd98ylHty1567A2VSisu/DJBsOVweuUK0gI3dNCbDM
- CRfs4xMG9VtoEpfhP9F2lgkGl4h8pY6xDiFYS4o0a+NwEIOub9RzQ0Bkw1uQciwjuMTS
- dgIWDFCLY4qvy5IoLGb8dR2BrV3y/2pvELKHbixWCkYPlLr3ybRJW0HByrs0j2ZGRaVv
- EUF+McO0FVYSlfO7RCM5H8eO1Dfc9UieUSPg2IpzRwCbBIKfepojh+W5Tkx63EU2smef
- xlibInvSG5SlvKg6nRc7DD7lOfrRySKnKF9NisrlX5GdMbYgfsVIREPyATxMJsQrKb7r
- 7IxQ==
+ bh=fFnzt3koHgk6JHVK5bSTYoxjzZXzNfc38goaFNH8Ixw=;
+ b=gWbx59MV6L7XF0X60iSsm6cTkvN3n67rqJjg3p4gg2dy/k6mXg3NOXjnqYtjgHDdDr
+ Um9iP7E6iconcfhlypjaFU6cdbo+axwJ2KBc0DEpStly5hiqAqtJ6+lZGpxKyYK81LJG
+ 7sOr1UU56M09prWpbD0ny60jz8d3zwoS9s26TydKwmvML9x/0NmUbttlr2deT4arbd+L
+ rn2PseM8+U9ETbPK0mexN261AcH8SENtHPqILQgzWUnDY0lQ+vZhR4xHXNQNYKw2P892
+ UhAR2RpFHMw3V9tWFu7qmAeiip6W4/IUzy1kvlLQ215Rb6478YnjFWS8Ani/2nMmyH4B
+ P0Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=/T65KmuUv9KdpGF5zOQDRozywkHbk0CrYcHeiYnnPBg=;
- b=aTgeD5nXaTOnjRrAekc+bVow0SEE8LkbRRfkv/emVuGFy5DzCFK1mZZ5FjwAiNNcVj
- fYGK8IOLPmg19aBX8mCAB5eNVWe+LVRYGcd8vicjXJGcF6WKIqcwmSTEKzbb1J7iW4Mu
- Pu6Sdd/tgjhCsb2+iJaHWx0IpE+72jCMjQ13xpx2RKbY/+e52hEmqXY7/Ac88blAHxg+
- iQOmrkDMPNdmfndkm9Pi6qsEMDkXyl8l8g31Sqyjc7gPItN++GNV2FCSFupAbmVL8LGA
- 4u5+cf2TF9xGhsEouPrzatnLYJtmfv2/tKLBsuG+v1gYyzO85s4jEcr2sBYXTC59gRDE
- 8KJQ==
-X-Gm-Message-State: APjAAAW3YtC+XWP/97v35Ng9y3Q/w2Y7rxkYGQ3Sec77wtEwFi8dw8Zm
- hyhbIJB6IfdCKNHpEoRbv0wiuNIPa3VyBXWjmsGrpg==
-X-Received: by 2002:a9d:68cc:: with SMTP id i12mr20742749oto.97.1574085764633; 
- Mon, 18 Nov 2019 06:02:44 -0800 (PST)
+ bh=fFnzt3koHgk6JHVK5bSTYoxjzZXzNfc38goaFNH8Ixw=;
+ b=jpxli2lwBMczwb4mN428nFiIVzpCT/cPFRvviO9fZNBJ9XT2TQhZk/wcOzCRgFHIqf
+ F6EdR9xWcEhQMO+4Ck6jfq7xVzsR/jKqAvyZtfVDJI4b01yftVb/Ak4tvX6qdU7x+hjn
+ uVw0TS89kCvRHCIuZdlEhlRbFWAngdhTtHOVvAleZMFvFNvnLwI4KNw43+DDSktAOvgB
+ fbewLRUSQD4IMvPt6cg69pqiKuMfyxW0QfaAWrsTg9fuBIeZHDeMe28K18nZ6Auv8/gv
+ n6ouMtvD8ohy4INOymOgSl5ino2N0HsdEsvz04T866NGk3tJpVIah8F560CXLAHQSYkf
+ j8Gw==
+X-Gm-Message-State: APjAAAUvJhNlg9YlADBZ7qrgUlUTzlACtSY57RKdqB/AXRYJ/Efsiwbw
+ cJdP1qmp9UK2MurjyAEQzKVv2BOf4AZ0HZx/v2IMoQ==
+X-Received: by 2002:a05:6808:b04:: with SMTP id
+ s4mr20588689oij.163.1574086332722; 
+ Mon, 18 Nov 2019 06:12:12 -0800 (PST)
 MIME-Version: 1.0
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-3-marcandre.lureau@redhat.com>
-In-Reply-To: <20191023173154.30051-3-marcandre.lureau@redhat.com>
+ <20191023173154.30051-5-marcandre.lureau@redhat.com>
+In-Reply-To: <20191023173154.30051-5-marcandre.lureau@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Nov 2019 14:02:30 +0000
-Message-ID: <CAFEAcA8q7AHR2Azsy9C7_xynoGVtbX+nRPhJaq4iiu6krvuDiQ@mail.gmail.com>
-Subject: Re: [PATCH v3 02/33] sysbus: remove unused sysbus_try_create*
+Date: Mon, 18 Nov 2019 14:12:00 +0000
+Message-ID: <CAFEAcA9oV-fHLmh3uJTwJrQW60=HFQmRb_brkRpB5BYYVDqF+g@mail.gmail.com>
+Subject: Re: [PATCH v3 04/33] chardev: generate an internal id when none given
 To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,8 +113,7 @@ Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
- Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
- Magnus Damm <magnus.damm@gmail.com>,
+ Paul Burton <pburton@wavecomp.com>, Magnus Damm <magnus.damm@gmail.com>,
  =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
@@ -124,20 +124,94 @@ Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3wlqTkzrXY9n
+X-TUID: SXGTRBss2Pad
 
-On Wed, 23 Oct 2019 at 18:32, Marc-Andr=C3=A9 Lureau
+On Wed, 23 Oct 2019 at 18:33, Marc-Andr=C3=A9 Lureau
 <marcandre.lureau@redhat.com> wrote:
 >
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  hw/core/sysbus.c    | 32 --------------------------------
->  hw/i386/pc.c        |  1 -
->  include/hw/sysbus.h |  9 +--------
->  3 files changed, 1 insertion(+), 41 deletions(-)
+> Internally, qemu may create chardev without ID. Those will not be
+> looked up with qemu_chr_find(), which prevents using qdev_prop_set_chr().
 >
+> Use id_generate(), to generate an internal name (prefixed with #), so
+> no conflict exist with user-named chardev.
+>
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> -Chardev *qemu_chardev_new(const char *id, const char *typename,
+> -                          ChardevBackend *backend,
+> -                          GMainContext *gcontext,
+> -                          Error **errp)
+> +static Chardev *chardev_new(const char *id, const char *typename,
+> +                            ChardevBackend *backend,
+> +                            GMainContext *gcontext,
+> +                            Error **errp)
+>  {
+>      Object *obj;
+>      Chardev *chr =3D NULL;
+> @@ -991,6 +992,21 @@ end:
+>      return chr;
+>  }
+>
+> +Chardev *qemu_chardev_new(const char *id, const char *typename,
+> +                          ChardevBackend *backend,
+> +                          GMainContext *gcontext,
+> +                          Error **errp)
+> +{
+> +    g_autofree char *genid =3D NULL;
+> +
+> +    if (!id) {
+> +        genid =3D id_generate(ID_CHR);
+> +        id =3D genid;
+> +    }
+> +
+> +    return chardev_new(id, typename, backend, gcontext, errp);
+> +}
+
+So presumably the idea is that chardev_new() now must be
+called with a non-NULL id (should it assert() that?),
+and qemu_chardev_new() can be called with a NULL id, in
+which case it will create one ?
+
+> +
+>  ChardevReturn *qmp_chardev_add(const char *id, ChardevBackend *backend,
+>                                 Error **errp)
+>  {
+> @@ -1003,8 +1019,8 @@ ChardevReturn *qmp_chardev_add(const char *id, Char=
+devBackend *backend,
+>          return NULL;
+>      }
+>
+> -    chr =3D qemu_chardev_new(id, object_class_get_name(OBJECT_CLASS(cc))=
+,
+> -                           backend, NULL, errp);
+> +    chr =3D chardev_new(id, object_class_get_name(OBJECT_CLASS(cc)),
+> +                      backend, NULL, errp);
+>      if (!chr) {
+>          return NULL;
+>      }
+> @@ -1061,8 +1077,8 @@ ChardevReturn *qmp_chardev_change(const char *id, C=
+hardevBackend *backend,
+>          return NULL;
+>      }
+>
+> -    chr_new =3D qemu_chardev_new(NULL, object_class_get_name(OBJECT_CLAS=
+S(cc)),
+> -                               backend, chr->gcontext, errp);
+> +    chr_new =3D chardev_new(NULL, object_class_get_name(OBJECT_CLASS(cc)=
+),
+> +                          backend, chr->gcontext, errp);
+
+...but if that's so, why are we calling chardev_new() here
+and passing a NULL pointer ?
+
+How many callsites actually pass NULL, anyway? My grep
+seems to show:
+ * this qmp_chardev_change() call
+ * gdbstub.c
+ * hw/bt/hci-csr.c
+ * tests/test-char.c
+
+Maybe we should just make them all pass in ID strings instead ?
 
 thanks
 -- PMM

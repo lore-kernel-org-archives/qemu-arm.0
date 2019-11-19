@@ -1,79 +1,79 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp603851lfc;
-        Tue, 19 Nov 2019 06:27:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqymoPyaGoIempnEF45/GqilSpNqjwF7MlWrdBVPzo1hUvlb3k8SXakIx8XEdyjyrZh21QlW
-X-Received: by 2002:a17:906:4913:: with SMTP id b19mr35073560ejq.61.1574173670478;
-        Tue, 19 Nov 2019 06:27:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574173670; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp604123lfc;
+        Tue, 19 Nov 2019 06:28:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxl+A5crhYaR+sm7ggr4ZjT0fBVd1fKTsSDfK3dR6Q17aIdcMsgscfusYCxEQMyLTWdIbHP
+X-Received: by 2002:a2e:88c9:: with SMTP id a9mr3811040ljk.30.1574173682989;
+        Tue, 19 Nov 2019 06:28:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574173682; cv=none;
         d=google.com; s=arc-20160816;
-        b=ANjOqcdddYekqCpj/2nCjxDyvGx2LEkZFelT+Fa3BNG/uhmjGCabUJcf7OFL0iIlBu
-         49ZBLQJxLZKvF8E26iDfSq5ZogQwWny7Fd2tr4PUHe+D6DnvAA3sM7rza4aS5CiXnqwW
-         20N37c5N+LGYS/cdz+y4aru6n/Y3sVGpFsEEI6wa47xG3T4iCNwINBbKqO+bI6Mzxqxt
-         pvHET7LIMFHOs3S5FK4pUJT6yik1MXjBLyiEiuQp/nIznBy566tvQE8URS2trbbYrDNV
-         pj+EQ2tKUoMeeWvy1Jw08vPZA4zLlUVhZQGeYzYVlO2Q7eTpRBGebD7psJdaVUZDyit7
-         F8Ew==
+        b=BSj89ndx5i20QKilpOEXPi2pxX67XbXZQbcuLFWzF1keZ8gywrB2I6/ByqT8fMISud
+         GJ/YmUhLcflbHlvX79BxRQL8PpBelaYZYo8aGy9Slp8FrhpNROyQ45hO6/c+6i3IHxsc
+         bPiDUPkyI9Ip81F5d03NJz9XnXRPzRVW1ZGk44IjtCtovfWGhrq1HJQvCQW9iYO0DYIh
+         lGE3DeVffsuWXU9FvmADj/UuPMvBoJqCJpLsSI/zyF917ag54aC7GgqC3ieZG3Mch96G
+         mVbqknLySxTfsqcYk2pc0KfKViYIqQJeQAmPPV+BF16zXDs9dN4SwgAEO79z4KPBgzuJ
+         uV9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=dY2o8XbFb9QUBCDymIWJMjrCqENrQuhsoFKKV2PmjZo=;
-        b=gu7jnsxcwUbgRbZ3bjfSODEvkt3EGvR+OWgq08nGLFYoBpdhAJbnQJan1qUVlXvqSc
-         B7Rt5Ghp5p/3XqEsBmg8tOwobLP3sxm90Q1JbaR25eIR+lCFLhKOtRnG7XzhzLrtS3Nw
-         TemxCjQhnhn1BdzAn+7vzOnwV2LmFgeDnrqjwUJzCVYGmQ71dOwCNfr7ER3RfdxBLZ+m
-         OOoKSzC4cUbF6OaSXv1y+lj94iITdSQizz6WNduTr+g7Yfig1CiQN/ocPgZtyP+wY/mO
-         AowZynHDBp/StnplUG4CYY9/RcrPk3UvjfYSaIHKVRcd8TZ6LlCEPyBeTVNrWLifPhIS
-         qXOA==
+        bh=aETlWnXiwxFrRWvK4Nb4s71ZM36eFMK8g1FUdl0FL64=;
+        b=Ua1Eka+qUNbwiISL+l9j9H7Kh84tdkuEKGOvmcdqNJwyyPrbk8hlIS35wnidfc9x9F
+         bzH0TvErqTGv6FAEhnKlhLhsa9Wu9GVE7JNG3joner6w4sObgjaVxeVcRzMylS204Vr/
+         vOwcPmgMU5WajfN0l+OLoPLsV/XkJD/tnsyUFwEMLQ7AWF021fZkbFNYiDqu5TvMaWg5
+         b4voQn7J+ZTDHbNgNjNHKeMd5cLCt4m8y9wFgCRCgGUMZQOOWy88y7KbTHy3I1LMhpLy
+         0FKzc9MtarnyDJkrC6RvJyeIJycGnF/djsRWHgRwY4l2KQ4Jfh3OFDxjA/zy6773rnN5
+         /+0w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k24si14101658ejv.111.2019.11.19.06.27.50
+        by mx.google.com with ESMTPS id bi17si16359868edb.430.2019.11.19.06.28.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Nov 2019 06:27:50 -0800 (PST)
+        Tue, 19 Nov 2019 06:28:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46090 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46092 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iX4Tt-0005mj-1d
-	for alex.bennee@linaro.org; Tue, 19 Nov 2019 09:27:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42273)
+	id 1iX4U5-00066A-Kv
+	for alex.bennee@linaro.org; Tue, 19 Nov 2019 09:28:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42309)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iX4H1-0007mI-S0
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 09:14:36 -0500
+ (envelope-from <clg@kaod.org>) id 1iX4H6-0007uY-ML
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 09:14:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iX4Gz-0005tY-SX
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 09:14:31 -0500
-Received: from 7.mo6.mail-out.ovh.net ([46.105.59.196]:44218)
+ (envelope-from <clg@kaod.org>) id 1iX4H5-00060U-3u
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 09:14:36 -0500
+Received: from 20.mo3.mail-out.ovh.net ([178.33.47.94]:38004)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iX4Gx-0005rY-RB
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 09:14:29 -0500
-Received: from player795.ha.ovh.net (unknown [10.109.146.32])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id 7C73D1ED3DA
- for <qemu-arm@nongnu.org>; Tue, 19 Nov 2019 15:14:24 +0100 (CET)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iX4H4-0005xF-RI
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 09:14:35 -0500
+Received: from player795.ha.ovh.net (unknown [10.109.159.191])
+ by mo3.mail-out.ovh.net (Postfix) with ESMTP id 3A7B22321C7
+ for <qemu-arm@nongnu.org>; Tue, 19 Nov 2019 15:14:32 +0100 (CET)
 Received: from kaod.org (deibp9eh1--blueice1n4.emea.ibm.com [195.212.29.166])
  (Authenticated sender: clg@kaod.org)
- by player795.ha.ovh.net (Postfix) with ESMTPSA id 4C658C18B08A;
- Tue, 19 Nov 2019 14:14:15 +0000 (UTC)
+ by player795.ha.ovh.net (Postfix) with ESMTPSA id 65B1FC18B173;
+ Tue, 19 Nov 2019 14:14:24 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 15/17] gpio: fix memory leak in aspeed_gpio_init()
-Date: Tue, 19 Nov 2019 15:12:09 +0100
-Message-Id: <20191119141211.25716-16-clg@kaod.org>
+Subject: [PATCH 16/17] aspeed: Change the "scu" property definition
+Date: Tue, 19 Nov 2019 15:12:10 +0100
+Message-Id: <20191119141211.25716-17-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191119141211.25716-1-clg@kaod.org>
 References: <20191119141211.25716-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 17924326519996648209
+X-Ovh-Tracer-Id: 17926578319576369937
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudegkedgiedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpudelhedrvdduvddrvdelrdduieeinecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejleehrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpeek
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudegkedgiedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpudelhedrvdduvddrvdelrdduieeinecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejleehrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpeei
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 46.105.59.196
+X-Received-From: 178.33.47.94
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,38 +85,221 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, PanNengyuan <pannengyuan@huawei.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Euler Robot <euler.robot@huawei.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Greg Kurz <groug@kaod.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gnEok8F1ObEv
+X-TUID: YsFSkSjoHO3W
 
-From: PanNengyuan <pannengyuan@huawei.com>
+The Aspeed Watchdog and Timer models have a link pointing to the SCU
+controller model of the machine.
 
-Address Sanitizer shows memory leak in hw/gpio/aspeed_gpio.c:875
+Change the "scu" property definition so that it explicitly sets the
+pointer. The property isn't optional : not being able to set the link
+is a bug and QEMU should rather abort than exit in this case.
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: PanNengyuan <pannengyuan@huawei.com>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Greg Kurz <groug@kaod.org>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/gpio/aspeed_gpio.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/aspeed_ast2600.c  |  8 ++++----
+ hw/arm/aspeed_soc.c      |  8 ++++----
+ hw/timer/aspeed_timer.c  | 17 +++++++++--------
+ hw/watchdog/wdt_aspeed.c | 17 ++++++++---------
+ 4 files changed, 25 insertions(+), 25 deletions(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 7acc5fa8e29a..41e11ea9b04d 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -876,6 +876,7 @@ static void aspeed_gpio_init(Object *obj)
-                                pin_idx % GPIOS_PER_GROUP);
-         object_property_add(obj, name, "bool", aspeed_gpio_get_pin,
-                             aspeed_gpio_set_pin, NULL, NULL, NULL);
-+        g_free(name);
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 0881eb25983e..810fd7de0c06 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -146,8 +146,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+     snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
+     sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
+                           sizeof(s->timerctrl), typename);
+-    object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
+-                                   OBJECT(&s->scu), &error_abort);
+=20
+     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+     sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
+@@ -177,8 +175,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+         sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
+                               sizeof(s->wdt[i]), typename);
+-        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
+-                                       OBJECT(&s->scu), &error_abort);
      }
+=20
+     for (i =3D 0; i < sc->macs_num; i++) {
+@@ -323,6 +319,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
+ev, Error **errp)
+                        aspeed_soc_get_irq(s, ASPEED_RTC));
+=20
+     /* Timer */
++    object_property_set_link(OBJECT(&s->timerctrl),
++                             OBJECT(&s->scu), "scu", &error_abort);
+     object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &e=
+rr);
+     if (err) {
+         error_propagate(errp, err);
+@@ -415,6 +413,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
+ev, Error **errp)
+     for (i =3D 0; i < sc->wdts_num; i++) {
+         AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(&s->wdt[i]);
+=20
++        object_property_set_link(OBJECT(&s->wdt[i]),
++                                 OBJECT(&s->scu), "scu", &error_abort);
+         object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
+err);
+         if (err) {
+             error_propagate(errp, err);
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index b01c97744196..a6237e594017 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -163,8 +163,6 @@ static void aspeed_soc_init(Object *obj)
+     snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
+     sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
+                           sizeof(s->timerctrl), typename);
+-    object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
+-                                   OBJECT(&s->scu), &error_abort);
+=20
+     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+     sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
+@@ -194,8 +192,6 @@ static void aspeed_soc_init(Object *obj)
+         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+         sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
+                               sizeof(s->wdt[i]), typename);
+-        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
+-                                       OBJECT(&s->scu), &error_abort);
+     }
+=20
+     for (i =3D 0; i < sc->macs_num; i++) {
+@@ -291,6 +287,8 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
+r **errp)
+                        aspeed_soc_get_irq(s, ASPEED_RTC));
+=20
+     /* Timer */
++    object_property_set_link(OBJECT(&s->timerctrl),
++                             OBJECT(&s->scu), "scu", &error_abort);
+     object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &e=
+rr);
+     if (err) {
+         error_propagate(errp, err);
+@@ -376,6 +374,8 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
+r **errp)
+     for (i =3D 0; i < sc->wdts_num; i++) {
+         AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(&s->wdt[i]);
+=20
++        object_property_set_link(OBJECT(&s->wdt[i]),
++                                 OBJECT(&s->scu), "scu", &error_abort);
+         object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
+err);
+         if (err) {
+             error_propagate(errp, err);
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index bcce2192a92a..a8c38cc1189b 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -19,6 +19,7 @@
+ #include "qemu/timer.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "hw/qdev-properties.h"
+ #include "trace.h"
+=20
+ #define TIMER_NR_REGS 4
+@@ -603,15 +604,8 @@ static void aspeed_timer_realize(DeviceState *dev, E=
+rror **errp)
+     int i;
+     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+     AspeedTimerCtrlState *s =3D ASPEED_TIMER(dev);
+-    Object *obj;
+-    Error *err =3D NULL;
+=20
+-    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
+-    if (!obj) {
+-        error_propagate_prepend(errp, err, "required link 'scu' not foun=
+d: ");
+-        return;
+-    }
+-    s->scu =3D ASPEED_SCU(obj);
++    assert(s->scu);
+=20
+     for (i =3D 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
+         aspeed_init_one_timer(s, i);
+@@ -677,6 +671,12 @@ static const VMStateDescription vmstate_aspeed_timer=
+_state =3D {
+     }
+ };
+=20
++static Property aspeed_timer_properties[] =3D {
++    DEFINE_PROP_LINK("scu", AspeedTimerCtrlState, scu, TYPE_ASPEED_SCU,
++                     AspeedSCUState *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void timer_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+@@ -685,6 +685,7 @@ static void timer_class_init(ObjectClass *klass, void=
+ *data)
+     dc->reset =3D aspeed_timer_reset;
+     dc->desc =3D "ASPEED Timer";
+     dc->vmsd =3D &vmstate_aspeed_timer_state;
++    dc->props =3D aspeed_timer_properties;
  }
 =20
+ static const TypeInfo aspeed_timer_info =3D {
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index 122aa8daaadf..f50dab922e0f 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -241,16 +241,8 @@ static void aspeed_wdt_realize(DeviceState *dev, Err=
+or **errp)
+ {
+     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+     AspeedWDTState *s =3D ASPEED_WDT(dev);
+-    Error *err =3D NULL;
+-    Object *obj;
+=20
+-    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
+-    if (!obj) {
+-        error_propagate(errp, err);
+-        error_prepend(errp, "required link 'scu' not found: ");
+-        return;
+-    }
+-    s->scu =3D ASPEED_SCU(obj);
++    assert(s->scu);
+=20
+     s->timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, aspeed_wdt_timer_expir=
+ed, dev);
+=20
+@@ -264,6 +256,12 @@ static void aspeed_wdt_realize(DeviceState *dev, Err=
+or **errp)
+     sysbus_init_mmio(sbd, &s->iomem);
+ }
+=20
++static Property aspeed_wdt_properties[] =3D {
++    DEFINE_PROP_LINK("scu", AspeedWDTState, scu, TYPE_ASPEED_SCU,
++                     AspeedSCUState *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void aspeed_wdt_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+@@ -273,6 +271,7 @@ static void aspeed_wdt_class_init(ObjectClass *klass,=
+ void *data)
+     dc->reset =3D aspeed_wdt_reset;
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+     dc->vmsd =3D &vmstate_aspeed_wdt;
++    dc->props =3D aspeed_wdt_properties;
+ }
+=20
+ static const TypeInfo aspeed_wdt_info =3D {
 --=20
 2.21.0
 

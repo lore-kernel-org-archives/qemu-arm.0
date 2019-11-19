@@ -1,95 +1,82 @@
-Received: by 2002:a05:6512:6a:0:0:0:0 with SMTP id i10csp16638lfo;
-        Mon, 18 Nov 2019 14:43:51 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwGeyWW4Uw+BccCcTBR9CjyWs/jlqnrzp0BnB5ygsvYPNXMAFhQEqXTKR9KCAM6Heuzu4+Q
-X-Received: by 2002:a37:6642:: with SMTP id a63mr13865216qkc.462.1574117031768;
-        Mon, 18 Nov 2019 14:43:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574117031; cv=none;
+Received: by 2002:a05:6512:6a:0:0:0:0 with SMTP id i10csp239653lfo;
+        Mon, 18 Nov 2019 18:51:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw8l6rjb0nbYp3qognj4O5Qnj7SUGcnSPoLDoiE7GgCvBGsX6YtljpvOmARYDoip8e1j8mr
+X-Received: by 2002:a17:906:95c1:: with SMTP id n1mr31167890ejy.158.1574131887780;
+        Mon, 18 Nov 2019 18:51:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574131887; cv=none;
         d=google.com; s=arc-20160816;
-        b=QSRrdm/Opiscnr8cj4M0xOGPar6xkEgo5YrrMd297zAirAaldVuC3GVKhuB9JXmI0i
-         /o/2cPkr9M8Idl5rN4lgboatUKoVp0OAJYqrSOD0+Ew2m+mEdegPQmjvsGkVXT5wtQxn
-         GtvEKDZzIRBrENVxRTAlcge4jQotoSqkWswFkfvvkE5soqUogKzfYA2iFOybYVwgRNPg
-         7Yr0NwV7iokwGhSwmuG0bxuFBCKzNHn952c1pDZ5dn6qPqJSFvWSD/3mzLbrOmLxa6ZX
-         XuEnV7In8m5WwcDrHZ5gQgZ+kt7it4iMBa2raObNN6sHVamDRUFGyl5T0m94bs4kgGYJ
-         SRoA==
+        b=wJKkO56loRXH8oRPIdEeCQg2/PGENTTRgG+JpS/C3rnHjI3yRxzQTllh8PnzHqUcph
+         cDGjtZH69Y2GyFR/2nJYKOH5Ovr1+1KjyE+XDP7Sujx7o77+jbPhsYG1kbd0WmMnmWIF
+         DVW3KmUNVGfuDHVLIDhJM4Lyvpi39WOFlAUDrSIw2M0QKDGODqISh1O4nuMpjn3hK+uF
+         wF7Bt7uGozi2EjobXxeR+L/9UiEVZumVbjcibnFBWHtItrHzrcenYe3WK6qmWXE4L13j
+         bsN4kFJGxGqZsYave1muijEwXd3cV5WduPhgMbHLz5fcLNUGQBtzDahJjlDTCTJbgTPe
+         MHWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=sqhRvTdW9tIzYywKH5Qy5cpb0/nS0XorlZQnNo7WIpU=;
-        b=oUMsMlkhx4TePSvoz1bph+DTSwUFybjSpXwOj8mEJl3G9ptUhpR0P4CoPcaaBL1xKF
-         yM7n2bdlKfey4yW3mdqkQqKqfBl1ZC427Habe2s7vUfMIC1lyh4YuYM2aL6XKTrL/XWN
-         U9ide8dw7ThEu02AGSkzbLE76slt4u4VFfEalxEtwtlweAF27Qjjwn88QCmhkuGpvNFB
-         HbIdt2dLOKQyzAZ5q8dqB8UvBEt8nSRIzXXT5XYDkb1xyhaBGavUtWqMdm8NC27gibY4
-         LxW5FCHYv2YiprmBbZ8/ysdK0/yrj6M9O+lKVyFr7Pc0twMxF0fJb12eRNqDk8UH7s2u
-         Glbw==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=Vz+hYSF1C5b1X2/3ton9YEhKc5hue+breZSUOTjRzNQ=;
+        b=QkS6cacD2d5pM1u/MHfNddUApsc7tRcec8P6vNapOc5Pv9Layd9VdEEQk+bZogSqxn
+         zBdgpcLjXQ2r5H9ATG5kcHjozsKocytqMdojhBGkJMyOHeqaHpZBBC1bbQ3WimL3OyJr
+         u75zwAaMumPI6Dks/RNO8lIIluEPcQomrxQzVdjJMjvGHCOkJRY0XgxCbmYN9gInsCFl
+         sCLzqr49Vki//yLELNkWRQLOgECHaqF8O8rYJZwdJTyHEUQJyt83RgHr3mVJT2bONsLa
+         dfXCrYGacR3rBJWNRCoNh3zn8AIyqTSOrFW/tYOy3UzYGixjo7sNtDkWomOxvae7sn3z
+         tZVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=HQyNT+jg;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="A/d6Q2HH";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8si4702073qtn.340.2019.11.18.14.43.51
+        by mx.google.com with ESMTPS id n3si12045549edq.254.2019.11.18.18.51.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2019 14:43:51 -0800 (PST)
+        Mon, 18 Nov 2019 18:51:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=HQyNT+jg;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="A/d6Q2HH";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40256 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41152 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWpkN-0001Hh-3v
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 17:43:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46457)
+	id 1iWtby-0006DG-S0
+	for alex.bennee@linaro.org; Mon, 18 Nov 2019 21:51:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41580)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <joel.stan@gmail.com>) id 1iWpgk-0008Uc-17
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 17:40:07 -0500
+ (envelope-from <dgibson@ozlabs.org>) id 1iWtbo-0006D9-BG
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 21:51:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1iWpgi-0004tN-Fa
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 17:40:05 -0500
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:36941)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1iWpgi-0004tD-BJ; Mon, 18 Nov 2019 17:40:04 -0500
-Received: by mail-qv1-xf43.google.com with SMTP id s18so7315502qvr.4;
- Mon, 18 Nov 2019 14:40:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=sqhRvTdW9tIzYywKH5Qy5cpb0/nS0XorlZQnNo7WIpU=;
- b=HQyNT+jgSbnSw0VF+NM6QDpJWvwOX87mzW09cLdw9uGjWPEkP5P4uN5gXBfylrBu0D
- b4AdWx6J9Kl/QfDLzu1Yl8pMUldcQrIF3PcuGyde9Lkr9C1hDaR5Og4N05ncBojyynGa
- DgoHl6GjCDwUtCwts6vdUCbBR0fTXcxk4Chik=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=sqhRvTdW9tIzYywKH5Qy5cpb0/nS0XorlZQnNo7WIpU=;
- b=K6HUh0plj+KMEN90FhftC84whyPi+xDKjGrkOiEmyEAB+h7BoCI9H1DdwyoK5fVhjG
- 95G6G1tyJv32tKB3CdEDidItrAb/vZMas70UEyYb2Bs2TbZ9n1T4fYC2aOqTDdAu2E06
- P3Exmq5kI2PiLe4GUIwXXoVb7OzBK2ut8kY1R40QPeewrB9VaEDA+YOttO01ccpV03OB
- EWPyVI5fJx4WxAK49iOdQBvl+dVGLEUusvBHx4hH1uE8Ko/1hOcWc/XGvNFrWmI9oH7h
- EVp2sIYKLd30HgGRABEurNpvl300PPBjl4hjm5nrJVcVKAnUtI+dXwiTq6YVIeBgnYIQ
- expg==
-X-Gm-Message-State: APjAAAV9iMs5OaR56Jnn2GeTAfn7mvVHe4J64jZKdSE1phgPb9EKLeOO
- m6qNtxMtOPG4iFTlzkF5b03J9ffJkz3oVBrWWRyi53PUAfE=
-X-Received: by 2002:a0c:edcc:: with SMTP id i12mr5981585qvr.20.1574116803434; 
- Mon, 18 Nov 2019 14:40:03 -0800 (PST)
+ (envelope-from <dgibson@ozlabs.org>) id 1iWtbk-0005gc-6k
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2019 21:51:16 -0500
+Received: from ozlabs.org ([2401:3900:2:1::2]:41459)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1iWtbj-0005dw-SD; Mon, 18 Nov 2019 21:51:12 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 47H9Lf4QsLz9sPZ; Tue, 19 Nov 2019 13:51:06 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1574131866;
+ bh=Io8NkImnh9AdZNZoBfrONNL2FoNsbKtSbbX7y66QYaM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=A/d6Q2HHwXzLiaLlFtcf6FC57hEX7K+A1sKZpGrSKyoPNFqTukEPUwysQvt9PMP5E
+ eD9tb88lhApqH/89Hg9KONW0nAFxyOofo30ImpSRMvJreiENYDhIMxaas34VF7WbRx
+ xC5Cv1JbT5V1oQBFa4rArr09NoF++kFNPVff2prs=
+Date: Tue, 19 Nov 2019 13:50:58 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: pannengyuan@huawei.com
+Subject: Re: [Qemu-devel][PATCH] ppc/spapr_events: fix potential NULL pointer
+ dereference in rtas_event_log_dequeue
+Message-ID: <20191119025058.GN5582@umbus.fritz.box>
+References: <1574041813-35408-1-git-send-email-pannengyuan@huawei.com>
 MIME-Version: 1.0
-References: <20191118161712.6712-1-clg@kaod.org>
- <20191118161712.6712-2-clg@kaod.org>
-In-Reply-To: <20191118161712.6712-2-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Mon, 18 Nov 2019 22:39:51 +0000
-Message-ID: <CACPK8XfkL5Uk_ruFri_D=Ww2Dx05Mvzza0j3QJh3H8+OmQZMDQ@mail.gmail.com>
-Subject: Re: [PATCH for-5.0 1/2] aspeed: change the "scu" property definition
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="lRF4gxo9Z9M++D0O"
+Content-Disposition: inline
+In-Reply-To: <1574041813-35408-1-git-send-email-pannengyuan@huawei.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f43
+X-Received-From: 2401:3900:2:1::2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -101,222 +88,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, Greg Kurz <groug@kaod.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: kuhn.chenqun@huawei.com, qemu-arm@nongnu.org, kenny.zhangjun@huawei.com,
+ qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LllRyO7MJmGM
+X-TUID: BxjXkw1RN56b
 
-On Mon, 18 Nov 2019 at 16:17, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> The Aspeed Watchdog and Timer models have a link pointing to the SCU
-> controller model of the machine.
->
-> Change the "scu" property definition so that it explicitly sets the
-> pointer. The property isn't optional : not being able to set the link
-> is a bug and QEMU should rather abort than exit in this case.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+--lRF4gxo9Z9M++D0O
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Nov 18, 2019 at 09:50:13AM +0800, pannengyuan@huawei.com wrote:
+> From: PanNengyuan <pannengyuan@huawei.com>
+>=20
+> source is being dereferenced before it is null checked, hence there is a
+> potential null pointer dereference.
+>=20
+> This fixes:
+>         360
+>     CID 68911917: (NULL_RETURNS)
+>         361. dereference: Dereferencing "source", which is known to be
+>         "NULL".
+>         361        if (source->mask & event_mask) {
+>         362            break;
+>         363        }
+>=20
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: PanNengyuan <pannengyuan@huawei.com>
+
+I don't think this is the right solution.  The only events we ever
+generated are LOG_TYPE_EPOW and LOG_TYPE_HOTPLUG, so in fact source
+should never be NULL.
+
+I think the correct way to satisfy Coverity here is to have
+rtas_event_log_to_source() do an assert(), rather than returning NULL
+for other event types.
 
 > ---
->  hw/arm/aspeed_ast2600.c  |  8 ++++----
->  hw/arm/aspeed_soc.c      |  8 ++++----
->  hw/timer/aspeed_timer.c  | 17 +++++++++--------
->  hw/watchdog/wdt_aspeed.c | 17 ++++++++---------
->  4 files changed, 25 insertions(+), 25 deletions(-)
->
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 0881eb25983e..810fd7de0c06 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -146,8 +146,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
->      snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
->      sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
->                            sizeof(s->timerctrl), typename);
-> -    object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
-> -                                   OBJECT(&s->scu), &error_abort);
->
->      snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
->      sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
-> @@ -177,8 +175,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
->          snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
->          sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
->                                sizeof(s->wdt[i]), typename);
-> -        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
-> -                                       OBJECT(&s->scu), &error_abort);
+>  hw/ppc/spapr_events.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/hw/ppc/spapr_events.c b/hw/ppc/spapr_events.c
+> index 0e4c195..febd2ef 100644
+> --- a/hw/ppc/spapr_events.c
+> +++ b/hw/ppc/spapr_events.c
+> @@ -358,7 +358,7 @@ static SpaprEventLogEntry *rtas_event_log_dequeue(Spa=
+prMachineState *spapr,
+>              rtas_event_log_to_source(spapr,
+>                                       spapr_event_log_entry_type(entry));
+> =20
+> -        if (source->mask & event_mask) {
+> +        if (source && (source->mask & event_mask)) {
+>              break;
+>          }
 >      }
->
->      for (i =3D 0; i < sc->macs_num; i++) {
-> @@ -323,6 +319,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
->                         aspeed_soc_get_irq(s, ASPEED_RTC));
->
->      /* Timer */
-> +    object_property_set_link(OBJECT(&s->timerctrl),
-> +                             OBJECT(&s->scu), "scu", &error_abort);
->      object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &e=
-rr);
->      if (err) {
->          error_propagate(errp, err);
-> @@ -415,6 +413,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
->      for (i =3D 0; i < sc->wdts_num; i++) {
->          AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(&s->wdt[i]);
->
-> +        object_property_set_link(OBJECT(&s->wdt[i]),
-> +                                 OBJECT(&s->scu), "scu", &error_abort);
->          object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
-err);
->          if (err) {
->              error_propagate(errp, err);
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index b01c97744196..a6237e594017 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -163,8 +163,6 @@ static void aspeed_soc_init(Object *obj)
->      snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
->      sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
->                            sizeof(s->timerctrl), typename);
-> -    object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
-> -                                   OBJECT(&s->scu), &error_abort);
->
->      snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
->      sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
-> @@ -194,8 +192,6 @@ static void aspeed_soc_init(Object *obj)
->          snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
->          sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
->                                sizeof(s->wdt[i]), typename);
-> -        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
-> -                                       OBJECT(&s->scu), &error_abort);
->      }
->
->      for (i =3D 0; i < sc->macs_num; i++) {
-> @@ -291,6 +287,8 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
->                         aspeed_soc_get_irq(s, ASPEED_RTC));
->
->      /* Timer */
-> +    object_property_set_link(OBJECT(&s->timerctrl),
-> +                             OBJECT(&s->scu), "scu", &error_abort);
->      object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &e=
-rr);
->      if (err) {
->          error_propagate(errp, err);
-> @@ -376,6 +374,8 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
->      for (i =3D 0; i < sc->wdts_num; i++) {
->          AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(&s->wdt[i]);
->
-> +        object_property_set_link(OBJECT(&s->wdt[i]),
-> +                                 OBJECT(&s->scu), "scu", &error_abort);
->          object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
-err);
->          if (err) {
->              error_propagate(errp, err);
-> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-> index bcce2192a92a..a8c38cc1189b 100644
-> --- a/hw/timer/aspeed_timer.c
-> +++ b/hw/timer/aspeed_timer.c
-> @@ -19,6 +19,7 @@
->  #include "qemu/timer.h"
->  #include "qemu/log.h"
->  #include "qemu/module.h"
-> +#include "hw/qdev-properties.h"
->  #include "trace.h"
->
->  #define TIMER_NR_REGS 4
-> @@ -603,15 +604,8 @@ static void aspeed_timer_realize(DeviceState *dev, E=
-rror **errp)
->      int i;
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
->      AspeedTimerCtrlState *s =3D ASPEED_TIMER(dev);
-> -    Object *obj;
-> -    Error *err =3D NULL;
->
-> -    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
-> -    if (!obj) {
-> -        error_propagate_prepend(errp, err, "required link 'scu' not foun=
-d: ");
-> -        return;
-> -    }
-> -    s->scu =3D ASPEED_SCU(obj);
-> +    assert(s->scu);
->
->      for (i =3D 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
->          aspeed_init_one_timer(s, i);
-> @@ -677,6 +671,12 @@ static const VMStateDescription vmstate_aspeed_timer=
-_state =3D {
->      }
->  };
->
-> +static Property aspeed_timer_properties[] =3D {
-> +    DEFINE_PROP_LINK("scu", AspeedTimerCtrlState, scu, TYPE_ASPEED_SCU,
-> +                     AspeedSCUState *),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
->  static void timer_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> @@ -685,6 +685,7 @@ static void timer_class_init(ObjectClass *klass, void=
- *data)
->      dc->reset =3D aspeed_timer_reset;
->      dc->desc =3D "ASPEED Timer";
->      dc->vmsd =3D &vmstate_aspeed_timer_state;
-> +    dc->props =3D aspeed_timer_properties;
->  }
->
->  static const TypeInfo aspeed_timer_info =3D {
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index 122aa8daaadf..f50dab922e0f 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -241,16 +241,8 @@ static void aspeed_wdt_realize(DeviceState *dev, Err=
-or **errp)
->  {
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
->      AspeedWDTState *s =3D ASPEED_WDT(dev);
-> -    Error *err =3D NULL;
-> -    Object *obj;
->
-> -    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
-> -    if (!obj) {
-> -        error_propagate(errp, err);
-> -        error_prepend(errp, "required link 'scu' not found: ");
-> -        return;
-> -    }
-> -    s->scu =3D ASPEED_SCU(obj);
-> +    assert(s->scu);
->
->      s->timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, aspeed_wdt_timer_expir=
-ed, dev);
->
-> @@ -264,6 +256,12 @@ static void aspeed_wdt_realize(DeviceState *dev, Err=
-or **errp)
->      sysbus_init_mmio(sbd, &s->iomem);
->  }
->
-> +static Property aspeed_wdt_properties[] =3D {
-> +    DEFINE_PROP_LINK("scu", AspeedWDTState, scu, TYPE_ASPEED_SCU,
-> +                     AspeedSCUState *),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
->  static void aspeed_wdt_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> @@ -273,6 +271,7 @@ static void aspeed_wdt_class_init(ObjectClass *klass,=
- void *data)
->      dc->reset =3D aspeed_wdt_reset;
->      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
->      dc->vmsd =3D &vmstate_aspeed_wdt;
-> +    dc->props =3D aspeed_wdt_properties;
->  }
->
->  static const TypeInfo aspeed_wdt_info =3D {
-> --
-> 2.21.0
->
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--lRF4gxo9Z9M++D0O
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl3TWJIACgkQbDjKyiDZ
+s5L6EhAAjbCe7FFJrWWbJe/cSwnSQ25e9aO+lPxny0T1elJbRhQGt1HpWW7TXnHZ
+/eYvgFRKZuXJKKpRyNbpSENWQc8mP2YVh6phNan++NRLLIPVBAz0SsXc1Nd6r/kP
+53OYhDCLUQ8DxWl/tyPJCg4BNYtNvmSAJfQkDrOByMnNYQ/GzrzsBbPo7OKgcm9Z
+yHr5ZS1EV3zgXBYR54BGdK7kRWw5/eUyNFBmnHUeACIld7gHxBAtvNPakh/byDxC
+i3y9MiN9iKqCsENMbO/0374duSlG6JdI8liAd5TBelM7212jJcNWBa/J2v5L9t8u
+PQFOo4EK2oBgr64FewTCDfHp+lloYvigfUuFQ1myV6HtuJZXro21tfQ03Bmhj3a5
+GKFX0HAfwHV7WjJAL3BFG3BkjCLE41g5SXOXvXeqlQH7OEwOdYEWTyrlgzdeu6IL
+GkLNrJJ9b9Run1maA1ZDn/jfNeNrhfNAsZfifOQq0KaDaBhh0CTbRZN/I7H8VKQv
+MufRT0OOqiyt56JwPdnCFKSuLCaXFeh0sZ4+DW0HM03voru6QMrGFZ1I7+WbdngL
+o0LcI60y1hf4uiCfrdtFNx7HLHZ6u2rDxgmWeae79WcC8ayE7SdFiUha1xBUg1pA
+ZjnRwliensFeICZfnM8dyRsOC+XF7SvuGWdEXsKPQrJoIMpv2sY=
+=Cx4x
+-----END PGP SIGNATURE-----
+
+--lRF4gxo9Z9M++D0O--

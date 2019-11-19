@@ -1,80 +1,110 @@
-Received: by 2002:a05:6512:6a:0:0:0:0 with SMTP id i10csp261986lfo;
-        Mon, 18 Nov 2019 19:19:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxML9eLo04LhPQaz2wZLfcPD4hD8q3L56jKDZ9sLWlfEwjH5wrkQuQ3CQjCmDYYjIfcx6op
-X-Received: by 2002:ac8:7085:: with SMTP id y5mr30040409qto.76.1574133544211;
-        Mon, 18 Nov 2019 19:19:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574133544; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp320858lfc;
+        Tue, 19 Nov 2019 02:23:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzOOrm4qtTswBledhCyxrdRnxaDJtyEXaNjQz/rHtC5qwZj+ub5c538cYIT0Pb3O+IXI+a8
+X-Received: by 2002:a37:a655:: with SMTP id p82mr28026469qke.61.1574159002311;
+        Tue, 19 Nov 2019 02:23:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574159002; cv=none;
         d=google.com; s=arc-20160816;
-        b=NQ+sKnIslWmtjai1+BlBhT7UbFa4gKurmFdwtdUCPt25Oo06+4IN/JiXeXJX6oXwaC
-         4oeM5pP3ABLbivFgeTWIWfRa5teALXZ4beqWuO5gHeiOC0K8z/WpaKCOfZLxfRsVT69g
-         g62GuRsJKpARz+s3Oyho4fKQV4uak0NVGSTvXhgXLAyUgBcXZVbVKrnhZ0VGDH9noXos
-         cSfRET21TXsJDyxYMZGyGuUsHw71Rs883ffoPUuBVQJvN91UJaETpZxMlCZh2omzh2BI
-         mugtBAYcD9rXq79rog2+fAp2wcbkP0G1xBJqml4p0ShMpvVJKc1GeKQu86fRhN5fI1hc
-         5GLQ==
+        b=xx6QP1LVjM1eaFgIaDX7lve38semNgncXp7agsDueGShsQAHvQsV3fFRK6PJ65CQYC
+         r5JpOOlq6qE8xCcDzj7hkaSm1cXw8iQqeVAmVaOkRszO4abk/VCKhdyOtBkJ5c0tP+2J
+         5XWsNdZS+z8EO3rSIoWVbl9jtI3MgJth6zaPbfiJfIIfcce7aubbp+/BA2ymIU3SXktA
+         4rRS7iHHIp8hjwADOp/WWHyTgb1cdqtOjRGI73f9s6Jx5jOzwAx5wMwIj0Wk8GQ2OF0Y
+         YZJoMzFMl2GvBIgZPweVIN4hBg8J7fm8EANAts9YEUHiLOFK4JDyZ0JUl/50dpsx1oPC
+         NzgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=vvMcGjDdsetynpulz+C5xtRnC462Q0Edhz5GlikMy2A=;
-        b=MvwCMUMSdv+y9fNHNZXrYLKu1ObqjtxAKmfNBcWKiYbZsAF3be2yiPTDGvwaWnALAp
-         6NAJpA0cx+FrYVi6F5rPsRRuNRgh8kSlKIQRBv/ixIx5A8m6Vg6HdpAChF5rLlHF9aWJ
-         2qCvnHe2uuzoYPpG/2mbEApOLFVNQMNKifkkgiI2lV1KXNbYrFao42tJPSQaVQ14z43m
-         ssyxlY0awLsgMwunPUVio/2do4KAjz8dqd81m/3Yu8/U1xIgyLHiLiqR5n/jsXuYKWsA
-         BzEERqmr2VqdPwhg6+nXSo+reH2fsCDzJECLY8orNSvDqh6oiBpCPmhwY+9Lpn6ixTwT
-         u7LA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=xXBWRZBtRNpFMOmDiNKH/+l5cfB3RN+RKsFJito5LPc=;
+        b=R/yki7ukpTYLWEkBc3Hkn5UuH5PraHCZUhY9CHRJNz0gxxgaqgUlqWHO3IPACJP0ZM
+         UlnQyo5MqyZIdUP9D8B4eQAuV48KkGjnktb6tId2TGw/TVFSHFDvbY4u2wSvFYhc9POc
+         +OgFjGLsAXDj7D28JP5NlQYshcRzdFEjPMj2eCwAKIFNKVPE+9ugvyjhHKBgIK/AyY2Z
+         1PNh/kuhETFQXMmFhB3Q98LAGNhR4in6VdbBrC9Zm86XzAY57tmsrjGS1xNQ/1uk8/OU
+         bKeWcR2vzjkYC0HOy+z+ZnmUlSlomDASLQBFfKDvQBPbSQI+S084fRi6q1FZqzxq6mGb
+         r78A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="af9Gh/+S";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5si12419397qvb.105.2019.11.18.19.19.04
+        by mx.google.com with ESMTPS id v138si12904481qka.146.2019.11.19.02.23.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2019 19:19:04 -0800 (PST)
+        Tue, 19 Nov 2019 02:23:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41368 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="af9Gh/+S";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iWu2h-0006Ty-Hr
-	for alex.bennee@linaro.org; Mon, 18 Nov 2019 22:19:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43386)
+	id 1iX0fJ-0001J0-BN
+	for alex.bennee@linaro.org; Tue, 19 Nov 2019 05:23:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38366)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pannengyuan@huawei.com>) id 1iWtvu-00079L-0P
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 22:12:03 -0500
+ (envelope-from <mlureau@redhat.com>) id 1iX0f7-0001GA-Lk
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 05:23:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pannengyuan@huawei.com>) id 1iWtvs-0000Ak-MU
- for qemu-arm@nongnu.org; Mon, 18 Nov 2019 22:12:01 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2266 helo=huawei.com)
+ (envelope-from <mlureau@redhat.com>) id 1iX0f6-0001wZ-IM
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 05:23:09 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:36389
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
- id 1iWtvs-0008To-CA; Mon, 18 Nov 2019 22:12:00 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 271B4698BAD516829071;
- Tue, 19 Nov 2019 11:11:53 +0800 (CST)
-Received: from [127.0.0.1] (10.120.177.99) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Tue, 19 Nov 2019
- 11:11:44 +0800
-Subject: Re: [Qemu-devel][PATCH] ppc/spapr_events: fix potential NULL pointer
- dereference in rtas_event_log_dequeue
-To: David Gibson <david@gibson.dropbear.id.au>
-References: <1574041813-35408-1-git-send-email-pannengyuan@huawei.com>
- <20191119025058.GN5582@umbus.fritz.box>
-From: pannengyuan <pannengyuan@huawei.com>
-Message-ID: <3e289453-cde4-cb9c-882f-88a5a2e78b36@huawei.com>
-Date: Tue, 19 Nov 2019 11:11:39 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1iX0f6-0001wL-E9
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 05:23:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1574158988;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xXBWRZBtRNpFMOmDiNKH/+l5cfB3RN+RKsFJito5LPc=;
+ b=af9Gh/+StSdkljM3PwZU2Q162msbnTwRmhw/smEjg3CNmwMVHdY8UFgiVmks4Whz4ilrYq
+ 2cve3oiGxWgCnwVMnzAe0zzEXEY4TT20usTuXC9XKUodmXEP9VcYEZis6LZCYcxDH5/WpC
+ W2ESuAMAtzdZevLXsWmLfH9wVW1D+fA=
+Received: from mail-ot1-f69.google.com (mail-ot1-f69.google.com
+ [209.85.210.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-148-BjitvLveNlev5UDuvdJwJQ-1; Tue, 19 Nov 2019 05:23:06 -0500
+Received: by mail-ot1-f69.google.com with SMTP id 107so11708151oth.14
+ for <qemu-arm@nongnu.org>; Tue, 19 Nov 2019 02:23:05 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=xXBWRZBtRNpFMOmDiNKH/+l5cfB3RN+RKsFJito5LPc=;
+ b=T////22zbMCSjXf+jTHiHGWmvUZ0yU+4rHPoDMLyh1n8lXBMOCRm+gImZN9gc7BNoy
+ 5VCBMXphxD49F3CC30PXeLJa0bs0UMKbrgwsKyaJjnmkZh7v08reKlm61hUG50ZBDdmY
+ wNZgA5zptsZP1PkOcqKz3WTIUany3Ch/VUDy7MBN61piuUDRF/bQlkmtX9OyGi1/o7tF
+ Cu1OGkafxJQW/0pHhmB6Ka7FeN0FJrI9rGJXpFE09jcZy4z903x2JhSQFXdfQ7Ehw8+x
+ 4sF26tJSrwHYcShb0R8kq7BLpAGryOY7sECxTYJLUjIipIKzhnD8OtUiyAJg8FhFs3Wh
+ F4cQ==
+X-Gm-Message-State: APjAAAUUXsM2U7mATafOcuY7wn8yfkaoiYj3GxjAtGcUZGg6bOFVYg97
+ 33KMgGqZr0+S91Ro+n73hcesFlckVsTz4X+3d2LhueoLoZL0+lURovsbpQAELK+t8slx0p7JQly
+ Jsv7ti6lqc61jrkkzwjtjAdE/REvq
+X-Received: by 2002:aca:484e:: with SMTP id v75mr3452455oia.6.1574158985268;
+ Tue, 19 Nov 2019 02:23:05 -0800 (PST)
+X-Received: by 2002:aca:484e:: with SMTP id v75mr3452425oia.6.1574158984991;
+ Tue, 19 Nov 2019 02:23:04 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191119025058.GN5582@umbus.fritz.box>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.120.177.99]
-X-CFilter-Loop: Reflected
+References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
+ <20191023173154.30051-8-marcandre.lureau@redhat.com>
+ <CAFEAcA8GHqiaHSKdTjzTY_mWxYpDLZhXLYc98kjPGLUnzsG3oQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA8GHqiaHSKdTjzTY_mWxYpDLZhXLYc98kjPGLUnzsG3oQ@mail.gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Tue, 19 Nov 2019 14:22:53 +0400
+Message-ID: <CAMxuvawcYnH4pp8PitMO6KcTz_GdwF7i=zJxepofsN1o9Yh65w@mail.gmail.com>
+Subject: Re: [PATCH v3 07/33] serial: register vmsd with DeviceClass
+To: Peter Maydell <peter.maydell@linaro.org>
+X-MC-Unique: BjitvLveNlev5UDuvdJwJQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.191
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -86,58 +116,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kuhn.chenqun@huawei.com, qemu-arm@nongnu.org, kenny.zhangjun@huawei.com,
- qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
+Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W7fqQksn8N50
+X-TUID: O5UPvmGjuAh5
 
-Thanks for you reply.
-I think you are right, I will send a new version later.
+On Mon, Nov 18, 2019 at 6:22 PM Peter Maydell <peter.maydell@linaro.org> wr=
+ote:
+>
+> On Wed, 23 Oct 2019 at 18:33, Marc-Andr=C3=A9 Lureau
+> <marcandre.lureau@redhat.com> wrote:
+> >
+> > QOM-ify further.
+> >
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > ---
+> >  hw/char/serial.c | 13 ++++++++++---
+> >  1 file changed, 10 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/hw/char/serial.c b/hw/char/serial.c
+> > index c839035fdd..4af8b0ce4c 100644
+> > --- a/hw/char/serial.c
+> > +++ b/hw/char/serial.c
+> > @@ -990,8 +990,7 @@ SerialState *serial_init(int base, qemu_irq irq, in=
+t baudbase,
+> >      s->baudbase =3D baudbase;
+> >      qemu_chr_fe_init(&s->chr, chr, &error_abort);
+> >      serial_realize_core(s, &error_fatal);
+> > -
+> > -    vmstate_register(NULL, base, &vmstate_serial, s);
+> > +    qdev_set_legacy_instance_id(dev, base, 2);
+> >      qdev_init_nofail(dev);
+>
+> Did you test whether migration still works from a QEMU
+> version without this patch to one with it? (The migration
 
-On 2019/11/19 10:50, David Gibson wrote:
-> On Mon, Nov 18, 2019 at 09:50:13AM +0800, pannengyuan@huawei.com wrote:
->> From: PanNengyuan <pannengyuan@huawei.com>
->>
->> source is being dereferenced before it is null checked, hence there is a
->> potential null pointer dereference.
->>
->> This fixes:
->>         360
->>     CID 68911917: (NULL_RETURNS)
->>         361. dereference: Dereferencing "source", which is known to be
->>         "NULL".
->>         361        if (source->mask & event_mask) {
->>         362            break;
->>         363        }
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: PanNengyuan <pannengyuan@huawei.com>
-> 
-> I don't think this is the right solution.  The only events we ever
-> generated are LOG_TYPE_EPOW and LOG_TYPE_HOTPLUG, so in fact source
-> should never be NULL.
-> 
-> I think the correct way to satisfy Coverity here is to have
-> rtas_event_log_to_source() do an assert(), rather than returning NULL
-> for other event types.
-> 
->> ---
->>  hw/ppc/spapr_events.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/ppc/spapr_events.c b/hw/ppc/spapr_events.c
->> index 0e4c195..febd2ef 100644
->> --- a/hw/ppc/spapr_events.c
->> +++ b/hw/ppc/spapr_events.c
->> @@ -358,7 +358,7 @@ static SpaprEventLogEntry *rtas_event_log_dequeue(SpaprMachineState *spapr,
->>              rtas_event_log_to_source(spapr,
->>                                       spapr_event_log_entry_type(entry));
->>  
->> -        if (source->mask & event_mask) {
->> +        if (source && (source->mask & event_mask)) {
->>              break;
->>          }
->>      }
-> 
+Yes, I thought I did test correctly, but I realized testing with x86
+isn't correct.
+
+So with arm/musicpal for ex, I can migrate from before->after, however
+after->before won't work. Is that ok?
+
+> vmstate code is too complicated for me to be able to figure
+> out whether passing the 'dev' pointer makes a difference
+> to whot it names the state sections and whether the
+> 'qdev_set_legacy_instance_id' suffices to avoid problems.)
+
+I don't see a way to fix after->before, because the instance id is
+initially 0 with the new code, and the old code expect a different
+value.
 

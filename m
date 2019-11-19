@@ -1,305 +1,385 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp604123lfc;
-        Tue, 19 Nov 2019 06:28:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxl+A5crhYaR+sm7ggr4ZjT0fBVd1fKTsSDfK3dR6Q17aIdcMsgscfusYCxEQMyLTWdIbHP
-X-Received: by 2002:a2e:88c9:: with SMTP id a9mr3811040ljk.30.1574173682989;
-        Tue, 19 Nov 2019 06:28:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574173682; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp763299lfc;
+        Tue, 19 Nov 2019 08:31:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxo/bOAPb7VOeHTAEzX7r13fdJajssUKKnk990FOgAg4vAU1XKw3mAbY6ivVk/hIqTBba0/
+X-Received: by 2002:ac8:2fd9:: with SMTP id m25mr33819425qta.177.1574181085624;
+        Tue, 19 Nov 2019 08:31:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574181085; cv=none;
         d=google.com; s=arc-20160816;
-        b=BSj89ndx5i20QKilpOEXPi2pxX67XbXZQbcuLFWzF1keZ8gywrB2I6/ByqT8fMISud
-         GJ/YmUhLcflbHlvX79BxRQL8PpBelaYZYo8aGy9Slp8FrhpNROyQ45hO6/c+6i3IHxsc
-         bPiDUPkyI9Ip81F5d03NJz9XnXRPzRVW1ZGk44IjtCtovfWGhrq1HJQvCQW9iYO0DYIh
-         lGE3DeVffsuWXU9FvmADj/UuPMvBoJqCJpLsSI/zyF917ag54aC7GgqC3ieZG3Mch96G
-         mVbqknLySxTfsqcYk2pc0KfKViYIqQJeQAmPPV+BF16zXDs9dN4SwgAEO79z4KPBgzuJ
-         uV9Q==
+        b=Mvayj1Lkc9fBZeMbqbenJDrvvOVxTRpgeAysxILdmW+xewjDbDLtWxNmd2CiGjCrZF
+         eKt+Q3Pw/3HVJkFoZvCuneX7XJv2xWdbe2N8dFIvL12uwj+evNjZ2h7YaKNJR6KkVpNe
+         HM5ep88jpQQC6L3cx4oPUGPaM0mDZhknFl0b5fXuqhdVlUpejiodGjrRpqJeUiYmjlIg
+         kFKgu1KPsvDsbRw/uJkCutuEID7+NARVAqHK+f3HBPGBRVsmW5FDCkvPcUqcAgH5G6iU
+         lDGKcmZL0eQsYcFj8xfZ16S+YMKrvEQwC+A/dI5HdgvSEES5T5pl2YMP0oi5zCSdfr3J
+         /mnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=aETlWnXiwxFrRWvK4Nb4s71ZM36eFMK8g1FUdl0FL64=;
-        b=Ua1Eka+qUNbwiISL+l9j9H7Kh84tdkuEKGOvmcdqNJwyyPrbk8hlIS35wnidfc9x9F
-         bzH0TvErqTGv6FAEhnKlhLhsa9Wu9GVE7JNG3joner6w4sObgjaVxeVcRzMylS204Vr/
-         vOwcPmgMU5WajfN0l+OLoPLsV/XkJD/tnsyUFwEMLQ7AWF021fZkbFNYiDqu5TvMaWg5
-         b4voQn7J+ZTDHbNgNjNHKeMd5cLCt4m8y9wFgCRCgGUMZQOOWy88y7KbTHy3I1LMhpLy
-         0FKzc9MtarnyDJkrC6RvJyeIJycGnF/djsRWHgRwY4l2KQ4Jfh3OFDxjA/zy6773rnN5
-         /+0w==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=1d0tdidy7TzTsDXiJXuuhMdCEbtkEs3/mLTy6Vm6BEo=;
+        b=PPgVMx9Hyfo9o6kF0iY17t/bxq7NERDoyA3V71rqDTm1uOrf1u6l2NuQ+/6WeFH6jk
+         oYzZMAePcA5CJGPSqPG1rWwQGGuGADrWU5MkKgWxDe7VzhdA8TscdsyvsYd3LJmXz64R
+         0quNQXqxgJ8QXyKzxZOdKXKU8DglYwgco5xPeSRQRUaEgzH2B84ZZQedvf8OmVIXjl5u
+         CQ2d6lVVITrSWUf375+GiKpEZYQv1SJKk1/IdsW0DWGbCaUU1NDuEhjrPyCpeqBHqFSr
+         B5uNcbHyu+cOHZkytQNebDCMb8yaVN1prOoUM/85o026V14B7fdH0lB0Z56yC68q2f17
+         DMCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bi17si16359868edb.430.2019.11.19.06.28.02
+        by mx.google.com with ESMTPS id k10si13496865qtm.352.2019.11.19.08.31.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Nov 2019 06:28:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Nov 2019 08:31:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46092 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47292 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iX4U5-00066A-Kv
-	for alex.bennee@linaro.org; Tue, 19 Nov 2019 09:28:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42309)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iX6PU-00033I-F4
+	for alex.bennee@linaro.org; Tue, 19 Nov 2019 11:31:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39455)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iX4H6-0007uY-ML
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 09:14:38 -0500
+ (envelope-from <clg@kaod.org>) id 1iX6M9-0000yx-6m
+ for qemu-devel@nongnu.org; Tue, 19 Nov 2019 11:28:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iX4H5-00060U-3u
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 09:14:36 -0500
-Received: from 20.mo3.mail-out.ovh.net ([178.33.47.94]:38004)
+ (envelope-from <clg@kaod.org>) id 1iX6M7-0001rI-5i
+ for qemu-devel@nongnu.org; Tue, 19 Nov 2019 11:27:57 -0500
+Received: from 1.mo177.mail-out.ovh.net ([178.33.107.143]:44256)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iX4H4-0005xF-RI
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 09:14:35 -0500
-Received: from player795.ha.ovh.net (unknown [10.109.159.191])
- by mo3.mail-out.ovh.net (Postfix) with ESMTP id 3A7B22321C7
- for <qemu-arm@nongnu.org>; Tue, 19 Nov 2019 15:14:32 +0100 (CET)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iX6M5-0001jk-BT
+ for qemu-devel@nongnu.org; Tue, 19 Nov 2019 11:27:54 -0500
+Received: from player692.ha.ovh.net (unknown [10.108.35.59])
+ by mo177.mail-out.ovh.net (Postfix) with ESMTP id 1E07E113FBA
+ for <qemu-devel@nongnu.org>; Tue, 19 Nov 2019 17:27:49 +0100 (CET)
 Received: from kaod.org (deibp9eh1--blueice1n4.emea.ibm.com [195.212.29.166])
  (Authenticated sender: clg@kaod.org)
- by player795.ha.ovh.net (Postfix) with ESMTPSA id 65B1FC18B173;
- Tue, 19 Nov 2019 14:14:24 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 16/17] aspeed: Change the "scu" property definition
-Date: Tue, 19 Nov 2019 15:12:10 +0100
-Message-Id: <20191119141211.25716-17-clg@kaod.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191119141211.25716-1-clg@kaod.org>
-References: <20191119141211.25716-1-clg@kaod.org>
+ by player692.ha.ovh.net (Postfix) with ESMTPSA id 9575FC2C8C00;
+ Tue, 19 Nov 2019 16:27:40 +0000 (UTC)
+Subject: Re: [PATCH] misc/pca9552: Add qom set and get
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+References: <20191118061757.52550-1-joel@jms.id.au>
+ <42f378d5-e7ea-11ce-11d5-9589fe7194d2@kaod.org>
+ <9f810374-97d4-8162-c92d-a1513c1a23a0@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <817b83f1-f534-9886-2054-4de6cd04a899@kaod.org>
+Date: Tue, 19 Nov 2019 17:27:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 17926578319576369937
+In-Reply-To: <9f810374-97d4-8162-c92d-a1513c1a23a0@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 1730789633458932500
 X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudegkedgiedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpudelhedrvdduvddrvdelrdduieeinecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejleehrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpeei
+X-VR-SPAMSCORE: -83
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudegkedgkeelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegfrhhlucfvnfffucdludejmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuffhomhgrihhnpehophgvnhhpohifvghrrdighiiipdhoiihlrggsshdrohhrghenucfkpheptddrtddrtddrtddpudelhedrvdduvddrvdelrdduieeinecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheiledvrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 178.33.47.94
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 178.33.107.143
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Greg Kurz <groug@kaod.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YsFSkSjoHO3W
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Rashmica Gupta <rashmica.g@gmail.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qSISqdIAdUkQ
 
-The Aspeed Watchdog and Timer models have a link pointing to the SCU
-controller model of the machine.
+On 18/11/2019 18:48, Philippe Mathieu-Daud=C3=A9 wrote:
+> Odd... I only received C=C3=A9dric answer, not Joel patch.
+>=20
+> On 11/18/19 11:00 AM, C=C3=A9dric Le Goater wrote:
+>> On 18/11/2019 07:17, Joel Stanley wrote:
+>>> Following the pattern of the work recently done with the ASPEED GPIO
+>>> model, this adds support for inspecting and modifying the PCA9552 LED=
+s
+>>> from the monitor.
+>>>
+>>> =C2=A0 (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 on
+>>> =C2=A0 (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
+>>> =C2=A0 "on"
+>>>
+>>> =C2=A0 (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 off
+>>> =C2=A0 (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
+>>> =C2=A0 "off"
+>>>
+>>> =C2=A0 (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 pwm0
+>>> =C2=A0 (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
+>>> =C2=A0 "pwm0"
+>>>
+>>> =C2=A0 (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 pwm1
+>>> =C2=A0 (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
+>>> =C2=A0 "pwm1"
+>>
+>> It would be nice to revive the QOM get patchset from David.
+>>
+>> =C2=A0=C2=A0=C2=A0=C2=A0http://patchwork.ozlabs.org/patch/666458/
+>>
+>> Did we reach some consensus ?
+>>
+>>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>>
+>> Some comments below.
+>>
+>>> ---
+>>> The qom device in mainline qemu is a different path. Using the monito=
+r
+>>> examine `info qom-tree /machine/unattached/` to discover it.
+>>>
+>>> This can be tested with a Witherspoon image.
+>>>
+>>> $ wget https://openpower.xyz/job/openbmc-build/distro=3Dubuntu,label=3D=
+builder,target=3Dwitherspoon/lastSuccessfulBuild/artifact/deploy/images/w=
+itherspoon/obmc-phosphor-image-witherspoon.ubi.mtd
+>>>
+>>> $ qemu-system-arm -M witherspoon-bmc -serial pty -monitor pty -nograp=
+hic \
+>>> =C2=A0 -drive file=3Dobmc-phosphor-image-witherspoon.ubi.mtd,format=3D=
+raw,if=3Dmtd
+>>> char device redirected to /dev/pts/5 (label compat_monitor0)
+>>> char device redirected to /dev/pts/10 (label serial0)
+>>>
+>>> $ screen /dev/pts/5
+>>> QEMU 4.1.91 monitor - type 'help' for more information
+>>> (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
+>>> "off"
+>>>
+>>> $ screen /dev/pts/19
+>>> root@witherspoon:~# cd /sys/class/gpio/
+>>> root@witherspoon:/sys/class/gpio# echo 248 > export
+>>> root@witherspoon:/sys/class/gpio# cat gpio248/value
+>>> 0
+>>>
+>>> (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 on
+>>>
+>>> root@witherspoon:/sys/class/gpio# echo out > gpio248/direction
+>>> root@witherspoon:/sys/class/gpio# cat gpio248/value
+>>> 1
+>>>
+>>> (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
+>>> "on"
+>>>
+>>> (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 off
+>>> (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
+>>> "off"
+>>>
+>>> root@witherspoon:/sys/class/gpio# cat gpio248/value
+>>> 0
+>=20
+> I am assuming this is 5.0 material.
+>=20
+> This is a good starting point, and is useful.
+>=20
+> However this would be useful for other boards/devices too.
+>=20
+> What about defining a InterfaceInfo[] for external GPIOs?
 
-Change the "scu" property definition so that it explicitly sets the
-pointer. The property isn't optional : not being able to set the link
-is a bug and QEMU should rather abort than exit in this case.
+The code below is very specific to pca9552.
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Greg Kurz <groug@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed_ast2600.c  |  8 ++++----
- hw/arm/aspeed_soc.c      |  8 ++++----
- hw/timer/aspeed_timer.c  | 17 +++++++++--------
- hw/watchdog/wdt_aspeed.c | 17 ++++++++---------
- 4 files changed, 25 insertions(+), 25 deletions(-)
+What kind of interface do you have in mind more precisely ?=20
+which handlers ?
 
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 0881eb25983e..810fd7de0c06 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -146,8 +146,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
-     snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
-     sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
-                           sizeof(s->timerctrl), typename);
--    object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
--                                   OBJECT(&s->scu), &error_abort);
-=20
-     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
-     sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
-@@ -177,8 +175,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
-         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
-         sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
-                               sizeof(s->wdt[i]), typename);
--        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
--                                       OBJECT(&s->scu), &error_abort);
-     }
-=20
-     for (i =3D 0; i < sc->macs_num; i++) {
-@@ -323,6 +319,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
-                        aspeed_soc_get_irq(s, ASPEED_RTC));
-=20
-     /* Timer */
-+    object_property_set_link(OBJECT(&s->timerctrl),
-+                             OBJECT(&s->scu), "scu", &error_abort);
-     object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &e=
-rr);
-     if (err) {
-         error_propagate(errp, err);
-@@ -415,6 +413,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
-     for (i =3D 0; i < sc->wdts_num; i++) {
-         AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(&s->wdt[i]);
-=20
-+        object_property_set_link(OBJECT(&s->wdt[i]),
-+                                 OBJECT(&s->scu), "scu", &error_abort);
-         object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
-err);
-         if (err) {
-             error_propagate(errp, err);
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index b01c97744196..a6237e594017 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -163,8 +163,6 @@ static void aspeed_soc_init(Object *obj)
-     snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
-     sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
-                           sizeof(s->timerctrl), typename);
--    object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
--                                   OBJECT(&s->scu), &error_abort);
-=20
-     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
-     sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
-@@ -194,8 +192,6 @@ static void aspeed_soc_init(Object *obj)
-         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
-         sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
-                               sizeof(s->wdt[i]), typename);
--        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
--                                       OBJECT(&s->scu), &error_abort);
-     }
-=20
-     for (i =3D 0; i < sc->macs_num; i++) {
-@@ -291,6 +287,8 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
-                        aspeed_soc_get_irq(s, ASPEED_RTC));
-=20
-     /* Timer */
-+    object_property_set_link(OBJECT(&s->timerctrl),
-+                             OBJECT(&s->scu), "scu", &error_abort);
-     object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &e=
-rr);
-     if (err) {
-         error_propagate(errp, err);
-@@ -376,6 +374,8 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
-     for (i =3D 0; i < sc->wdts_num; i++) {
-         AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(&s->wdt[i]);
-=20
-+        object_property_set_link(OBJECT(&s->wdt[i]),
-+                                 OBJECT(&s->scu), "scu", &error_abort);
-         object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
-err);
-         if (err) {
-             error_propagate(errp, err);
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index bcce2192a92a..a8c38cc1189b 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -19,6 +19,7 @@
- #include "qemu/timer.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "hw/qdev-properties.h"
- #include "trace.h"
-=20
- #define TIMER_NR_REGS 4
-@@ -603,15 +604,8 @@ static void aspeed_timer_realize(DeviceState *dev, E=
-rror **errp)
-     int i;
-     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-     AspeedTimerCtrlState *s =3D ASPEED_TIMER(dev);
--    Object *obj;
--    Error *err =3D NULL;
-=20
--    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
--    if (!obj) {
--        error_propagate_prepend(errp, err, "required link 'scu' not foun=
-d: ");
--        return;
--    }
--    s->scu =3D ASPEED_SCU(obj);
-+    assert(s->scu);
-=20
-     for (i =3D 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
-         aspeed_init_one_timer(s, i);
-@@ -677,6 +671,12 @@ static const VMStateDescription vmstate_aspeed_timer=
-_state =3D {
-     }
- };
-=20
-+static Property aspeed_timer_properties[] =3D {
-+    DEFINE_PROP_LINK("scu", AspeedTimerCtrlState, scu, TYPE_ASPEED_SCU,
-+                     AspeedSCUState *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void timer_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-@@ -685,6 +685,7 @@ static void timer_class_init(ObjectClass *klass, void=
+Thanks
+
+C.
+
+> Shouldn't we use the qemu_irq type for that then?
+>=20
+>>>
+>>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>>> ---
+>>> =C2=A0 hw/misc/pca9552.c | 91 +++++++++++++++++++++++++++++++++++++++=
+++++++++
+>>> =C2=A0 1 file changed, 91 insertions(+)
+>>>
+>>> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+>>> index 73be28d9369c..0362aac8c862 100644
+>>> --- a/hw/misc/pca9552.c
+>>> +++ b/hw/misc/pca9552.c
+>>> @@ -15,12 +15,16 @@
+>>> =C2=A0 #include "hw/misc/pca9552.h"
+>>> =C2=A0 #include "hw/misc/pca9552_regs.h"
+>>> =C2=A0 #include "migration/vmstate.h"
+>>> +#include "qapi/error.h"
+>>> +#include "qapi/visitor.h"
+>>> =C2=A0 =C2=A0 #define PCA9552_LED_ON=C2=A0=C2=A0 0x0
+>>> =C2=A0 #define PCA9552_LED_OFF=C2=A0 0x1
+>>> =C2=A0 #define PCA9552_LED_PWM0 0x2
+>>> =C2=A0 #define PCA9552_LED_PWM1 0x3
+>>> =C2=A0 +static const char *led_state[] =3D {"on", "off", "pwm0", "pwm=
+1"};
+>=20
+> BTW "pwm0/pwm1" as "state" is confuse, but I understand this is how the=
+ PCA9552 datasheet describes it.
+>=20
+>>> +
+>>> =C2=A0 static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin=
+)
+>>> =C2=A0 {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint8_t reg=C2=A0=C2=A0 =3D PCA9552_LS=
+0 + (pin / 4);
+>>> @@ -169,6 +173,84 @@ static int pca9552_event(I2CSlave *i2c, enum i2c=
+_event event)
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
+>>> =C2=A0 }
+>>> =C2=A0 +static void pca9552_get_led(Object *obj, Visitor *v, const ch=
+ar *name,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 void *opaque, Error **errp)
+>>> +{
+>>> +=C2=A0=C2=A0=C2=A0 PCA9552State *s =3D PCA9552(obj);
+>>> +=C2=A0=C2=A0=C2=A0 int led, rc, reg;
+>>> +=C2=A0=C2=A0=C2=A0 char *str;
+>>> +=C2=A0=C2=A0=C2=A0 uint8_t state;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 rc =3D sscanf(name, "led%2d", &led);
+>>> +=C2=A0=C2=A0=C2=A0 if (rc !=3D 1) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s: err=
+or reading %s", __func__, name);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0 if (led < 0 || led > s->nr_leds) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s inva=
+lid led %s", __func__, name);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0 /*
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0 * Get the LSx register as the qom interface=
+ should expose the device
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0 * state, not the modeled 'input line' behav=
+iour which would come from
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0 * reading the INPUTx reg
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0 */
+>>> +=C2=A0=C2=A0=C2=A0 reg =3D PCA9552_LS0 + led / 4;
+>>> +=C2=A0=C2=A0=C2=A0 state =3D (pca9552_read(s, reg) >> (led % 8)) & 0=
+x3;
+>>
+>> Could we add accessors to extract the register fields and to clarify
+>> the layout ?
+>>
+>>> +=C2=A0=C2=A0=C2=A0 str =3D g_strdup(led_state[state]);
+>>> +=C2=A0=C2=A0=C2=A0 visit_type_str(v, name, &str, errp);
+>>> +}
+>>> +
+>>> +/*
+>>> + * Return an LED selector register value based on an existing one, w=
+ith
+>>> + * the appropriate 2-bit state value set for the given LED number (0=
+-3).
+>>> + */
+>>> +static inline uint8_t pca955x_ledsel(uint8_t oldval, int led_num, in=
+t state)
+>>> +{
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return (oldval & (~(0x3 <=
+< (led_num << 1)))) |
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 ((state & 0x3) << (led_num << 1));
+>>> +}
+>>> +
+>>> +static void pca9552_set_led(Object *obj, Visitor *v, const char *nam=
+e,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 void *opaque, Error **errp)
+>>> +{
+>>> +=C2=A0=C2=A0=C2=A0 PCA9552State *s =3D PCA9552(obj);
+>>> +=C2=A0=C2=A0=C2=A0 Error *local_err =3D NULL;
+>>> +=C2=A0=C2=A0=C2=A0 int led, rc, reg, val;
+>>> +=C2=A0=C2=A0=C2=A0 uint8_t state;
+>>> +=C2=A0=C2=A0=C2=A0 char *state_str;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 visit_type_str(v, name, &state_str, &local_err);
+>>> +=C2=A0=C2=A0=C2=A0 if (local_err) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_propagate(errp, loc=
+al_err);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0 rc =3D sscanf(name, "led%2d", &led);
+>>> +=C2=A0=C2=A0=C2=A0 if (rc !=3D 1) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s: err=
+or reading %s", __func__, name);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0 if (led < 0 || led > s->nr_leds) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s inva=
+lid led %s", __func__, name);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 for (state =3D 0; state < ARRAY_SIZE(led_state); =
+state++) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!strcmp(state_str, le=
+d_state[state])) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 b=
+reak;
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0 if (state >=3D ARRAY_SIZE(led_state)) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s inva=
+lid led state %s", __func__, state_str);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 reg =3D PCA9552_LS0 + led / 4;
+>>> +=C2=A0=C2=A0=C2=A0 val =3D pca9552_read(s, reg);
+>>> +=C2=A0=C2=A0=C2=A0 val =3D pca955x_ledsel(val, led % 4, state);
+>>> +=C2=A0=C2=A0=C2=A0 pca9552_write(s, reg, val);
+>>> +}
+>>> +
+>>> =C2=A0 static const VMStateDescription pca9552_vmstate =3D {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .name =3D "PCA9552",
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .version_id =3D 0,
+>>> @@ -204,6 +286,7 @@ static void pca9552_reset(DeviceState *dev)
+>>> =C2=A0 static void pca9552_initfn(Object *obj)
+>>> =C2=A0 {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 PCA9552State *s =3D PCA9552(obj);
+>>> +=C2=A0=C2=A0=C2=A0 int led;
+>>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* If support for the other PCA=
+955X devices are implemented, these
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * constant values might be part =
+of class structure describing the
+>>> @@ -211,6 +294,14 @@ static void pca9552_initfn(Object *obj)
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->max_reg =3D PCA9552_LS3;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->nr_leds =3D 16;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 for (led =3D 0; led < s->nr_leds; led++) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 char *name;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 name =3D g_strdup_printf(=
+"led%d", led);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_add(obj, =
+name, "bool", pca9552_get_led, pca9552_set_led,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 NULL, NULL, NULL);
+>>
+>> It misses a :
+>>
+>> =C2=A0=C2=A0=C2=A0 g_free(name)
+>>
+>> C.
+>>
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> =C2=A0 }
+>>> =C2=A0 =C2=A0 static void pca9552_class_init(ObjectClass *klass, void=
  *data)
-     dc->reset =3D aspeed_timer_reset;
-     dc->desc =3D "ASPEED Timer";
-     dc->vmsd =3D &vmstate_aspeed_timer_state;
-+    dc->props =3D aspeed_timer_properties;
- }
-=20
- static const TypeInfo aspeed_timer_info =3D {
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 122aa8daaadf..f50dab922e0f 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -241,16 +241,8 @@ static void aspeed_wdt_realize(DeviceState *dev, Err=
-or **errp)
- {
-     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-     AspeedWDTState *s =3D ASPEED_WDT(dev);
--    Error *err =3D NULL;
--    Object *obj;
-=20
--    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
--    if (!obj) {
--        error_propagate(errp, err);
--        error_prepend(errp, "required link 'scu' not found: ");
--        return;
--    }
--    s->scu =3D ASPEED_SCU(obj);
-+    assert(s->scu);
-=20
-     s->timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, aspeed_wdt_timer_expir=
-ed, dev);
-=20
-@@ -264,6 +256,12 @@ static void aspeed_wdt_realize(DeviceState *dev, Err=
-or **errp)
-     sysbus_init_mmio(sbd, &s->iomem);
- }
-=20
-+static Property aspeed_wdt_properties[] =3D {
-+    DEFINE_PROP_LINK("scu", AspeedWDTState, scu, TYPE_ASPEED_SCU,
-+                     AspeedSCUState *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void aspeed_wdt_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-@@ -273,6 +271,7 @@ static void aspeed_wdt_class_init(ObjectClass *klass,=
- void *data)
-     dc->reset =3D aspeed_wdt_reset;
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-     dc->vmsd =3D &vmstate_aspeed_wdt;
-+    dc->props =3D aspeed_wdt_properties;
- }
-=20
- static const TypeInfo aspeed_wdt_info =3D {
---=20
-2.21.0
+>>>
+>>
+>>
+>=20
 

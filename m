@@ -1,110 +1,82 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1430867lfc;
-        Tue, 19 Nov 2019 19:36:51 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyOT0pjPEYoYkPb7rS9wabF9IDheGR6jv2QxN2goeZMTNy4AzEy47kXcGyRerfFVtmzLXui
-X-Received: by 2002:a17:906:944d:: with SMTP id z13mr2049223ejx.58.1574221011536;
-        Tue, 19 Nov 2019 19:36:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574221011; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1519306lfc;
+        Tue, 19 Nov 2019 21:27:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyx1XozYcfZlgbKwEepQkG7pQMeFgoLiIyZUenZTt6G4xL+7WDx3LGIER1uv692ygR9GI1Q
+X-Received: by 2002:a17:906:1da1:: with SMTP id u1mr2580651ejh.275.1574227644973;
+        Tue, 19 Nov 2019 21:27:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574227644; cv=none;
         d=google.com; s=arc-20160816;
-        b=QJ+EIX/hwcqFpHa2homKT0We8qKFrbFkHcWjgydv3d5WJenCrYwQBnhkw+e26WrmA8
-         Sw42zxtdRiKy6CW9baLCeJKWzAi6yR6I7Eh4KkN7XsVuHhZSu09MpsYwHIXfsgTzSTeJ
-         KEA39+wfVOCREOUeNImQRCh1ZuRfgsP4+nn/Lg6SGd22Xd6E8RkgpKAvIhka75LcgVHe
-         D1yHC7PonequhOsgKrlh+KEUp4rCpfTzJ6ZgxSJhwZncvtt7iykFcfa5NPXLoFoK2dFk
-         WZFCtfVz7G69cI2KetOXg0FU2aBaWD7d5dNmhHw7JsrROWRJl2ogyDYFaCOl3CcmNy2N
-         W2LQ==
+        b=jJZkEpa6+vHAfiFQvPJI0ZYUJ1yzahUkuAlkGL1UvsZPkM/Lk77gkTK/q0fQWeSbZV
+         ms3zRh9eHh8+66Ive+Z0pLrvKENg3y8b8UeB+YczCqVbjvFZYX56M58GqN2hYtKjDGdT
+         ONOsbGycsqK7YmN4IS4IDmHOSAhm/X7wqYUtI2va74xVcpI2jR1iLO2UiceGYgzFIgry
+         26ITIIqmJQJn6IX9n8Plg51b9xt1GggXD6I7Q+cbOeiJFeUKlXDeuG86wvWap7YAKBi1
+         VlV3CRjgrCLpk6Jg3WkpUOLOSXleBota3E5f1CsUbr1oou0sXP3bgP2+MNfDRdy3hB+x
+         /c7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=wSKl4ZjlxedUP+FlAu7TIdnnUEwTf0V/UY+HsjFaX0Y=;
-        b=eCEUKcAY//S93cnJNJzWbV4QpOz8DLDuPzsdARVRTYzp9iC6FUlcSB7ed28t/0uG9Z
-         53ADPmr/4G048S+aWU5Uy2gvNpuW0brvT6TsvWp7yT8J2va/mlGZULZgGIYT8bQLbcG9
-         sS7FumdYHzNGtgfRij5J1aGxbzAwb0PsikFO1eAHrwmn8iFVq2Y036wNYjwT+5uk54bG
-         FDu9RQHUcKFQmXyah5uw/1f8w+O1qr9djPVt2uGDBNJzvhbJUbqiLv0FzY9zWUkskzOy
-         tbSmJ6eU/MQmSRQowFhMfv5hwaL3B7Iw6iwvOVUEzytBnmSIOuFhbIwbnPGqQYKCyvOc
-         GdHg==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=1HIrtJHgiIXW8WKXJyR2AkoPQwdNbPfan5ykUGMDr2Y=;
+        b=xFAVeNLWsaqrw859rYTPW4wq5y3AGNADubsZT5a0oN08zQxVytc4m9y2GVY3miTpD+
+         eLzBDjBfdZkzszlR/O1CRvdMWLxGxxLuk6EG0TU/EmtYSkD/nWupu3tEb7NBJhcMpewh
+         phm8du+hwqK4M8L0VpFaeC9Zcjq28AhM7HF30k1Bul3XCY7T4i6OXm0klhF27vONGD1x
+         IK6F39R4kAPPu5fBg8CuIyXi8cdpvwd2y/0uzbBf1z3NiAM9a508ODsGDSbXkJnG6Iv1
+         0vgcbWCIWLXjGBSmhT8p6lpbyh3wLyAoR+7JJC3rWEZ3q8ixZNpIc79UsHM0bEOmchae
+         XN8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="J/GRzHwI";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=MQzQ9yVM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z31si18316886ede.236.2019.11.19.19.36.51
+        by mx.google.com with ESMTPS id b5si17143111edq.173.2019.11.19.21.27.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Nov 2019 19:36:51 -0800 (PST)
+        Tue, 19 Nov 2019 21:27:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="J/GRzHwI";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53370 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=MQzQ9yVM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53758 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXGnS-0004U9-82
-	for alex.bennee@linaro.org; Tue, 19 Nov 2019 22:36:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44871)
+	id 1iXIWS-0007Kz-1d
+	for alex.bennee@linaro.org; Wed, 20 Nov 2019 00:27:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38460)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mlureau@redhat.com>) id 1iXGnD-0004Mo-Io
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 22:36:36 -0500
+ (envelope-from <dgibson@ozlabs.org>) id 1iXIWI-0007JR-Mb
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 00:27:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mlureau@redhat.com>) id 1iXGnB-00051y-EF
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 22:36:34 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:42553
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <dgibson@ozlabs.org>) id 1iXIWG-0007iP-3F
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 00:27:14 -0500
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:40883 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1iXGnA-00050D-TP
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 22:36:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574220992;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wSKl4ZjlxedUP+FlAu7TIdnnUEwTf0V/UY+HsjFaX0Y=;
- b=J/GRzHwI0Fgh5t4H3XtX+CrrZzlABSyde2YZTZ72XSv97h66f9eyLM++rpBxzVdVGRpMfI
- ODg9vkql7hcfiSVzKhJGENAZYekUEZIYcPYS81lD8fV7U/ZrLO3dAG8kkg2Hf9B5fhnLCw
- OdW1C4x5qEwWKiVsaOih8AohJ6/e1MA=
-Received: from mail-ot1-f71.google.com (mail-ot1-f71.google.com
- [209.85.210.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-403-cMvyeVlIPo-Ld2PUMkeuxQ-1; Tue, 19 Nov 2019 22:36:30 -0500
-Received: by mail-ot1-f71.google.com with SMTP id 60so13235144otd.19
- for <qemu-arm@nongnu.org>; Tue, 19 Nov 2019 19:36:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=wSKl4ZjlxedUP+FlAu7TIdnnUEwTf0V/UY+HsjFaX0Y=;
- b=pKhMwC7e22eLRpClK5u114yzEJz2SHoHgtdAUwYncnHSSbaJHI9wuWSvXrhqBoWzZ1
- cNx0QVu4vde3kG14rQZrgPRDyGL9dlW4g8CU2fjXqM8NVc0K7nSaukeNNTkedaXFPqKR
- vP1nLRpXGMArwUrdlCmOKcOdp9DXiCUOg/PPoZ2EOFZKxauCeeE9pMW7z5KXZWnuzc76
- 7l5BIapshPET49AAwp9J25TEq2qGgypUd75T3n6KTpvb3GVqLMxeusIpvP1Zc/UJqml3
- Tw6fjgIvO2wWZ8X1M02id6eFVK0xx2J5TCuL3Gx2P6nRh6/GF6cjXM3HwMM1zY0Fz4HD
- /54Q==
-X-Gm-Message-State: APjAAAVkJCeY1zITQrgJf3RfI3VZULaiqZtkxDnJH+ZCAWSQrf9tbf7E
- uOgISzwuD70A/1OhynsJKT7xJKp7tftq+L0vCPoEvW6ipklK9kTJenaO589RYBBFOVt93sDtA4k
- AVvVxmiwcuR0ElPPGDwnoXa/IvXSo
-X-Received: by 2002:a9d:5cc7:: with SMTP id r7mr242478oti.331.1574220990099;
- Tue, 19 Nov 2019 19:36:30 -0800 (PST)
-X-Received: by 2002:a9d:5cc7:: with SMTP id r7mr242448oti.331.1574220989481;
- Tue, 19 Nov 2019 19:36:29 -0800 (PST)
-MIME-Version: 1.0
-References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-2-marcandre.lureau@redhat.com>
- <CAFEAcA_k9TqzRJZ4=Q1jQP46SajiaMLEciSHZ83_CicMv__oiA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_k9TqzRJZ4=Q1jQP46SajiaMLEciSHZ83_CicMv__oiA@mail.gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Wed, 20 Nov 2019 07:36:18 +0400
-Message-ID: <CAMxuvawFVf=6-GLO59T=v+W0vrhYVYuj0w30Oi6c7Zsen7Ri4g@mail.gmail.com>
-Subject: Re: [PATCH v3 01/33] qdev: remove unused qdev_prop_int64
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1iXIWF-0007fu-9u; Wed, 20 Nov 2019 00:27:12 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 47HrmB4mwpz9sPW; Wed, 20 Nov 2019 16:27:06 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1574227626;
+ bh=pKpuafZcDqiFdJFkncIRk5Np4sv1bwXlnHVfgKCTcvM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=MQzQ9yVMvevv8eayeamRF87pavqd59ueZc9PZScnOdOl1fquhKFXLSRhpgyU6BAgG
+ EIkjugAhyYMmqqmrbMt8TaA+qC+4In2xAAcfkw3UfMpIEB1BgZuZWOjYNfNhencuKB
+ cqOTxub3ysbmKSgGXX5uYOWz29tsytjjom7t6MTc=
+Date: Wed, 20 Nov 2019 16:27:01 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-X-MC-Unique: cMvyeVlIPo-Ld2PUMkeuxQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+Subject: Re: [PATCH] exynos4210_gic: Suppress gcc9 format-truncation warnings
+Message-ID: <20191120052701.GJ5582@umbus.fritz.box>
+References: <20191004025509.3012-1-david@gibson.dropbear.id.au>
+ <CAFEAcA9soWUfyfvV5Onyy0wP842Gq698_sZ+E1xGwkmnrLHnJg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="UEbtx6mvDyyRl/If"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9soWUfyfvV5Onyy0wP842Gq698_sZ+E1xGwkmnrLHnJg@mail.gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2401:3900:2:1::2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,50 +88,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
- Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ASb1Wsz3DZHj
+X-TUID: 9cWPQgYa84Mu
 
-Hi
 
-On Mon, Nov 18, 2019 at 6:01 PM Peter Maydell <peter.maydell@linaro.org> wr=
-ote:
->
-> On Wed, 23 Oct 2019 at 18:32, Marc-Andr=C3=A9 Lureau
-> <marcandre.lureau@redhat.com> wrote:
+--UEbtx6mvDyyRl/If
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Oct 14, 2019 at 01:51:39PM +0100, Peter Maydell wrote:
+> On Fri, 4 Oct 2019 at 04:10, David Gibson <david@gibson.dropbear.id.au> w=
+rote:
 > >
-> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > exynos4210_gic_realize() prints the number of cpus into some temporary
+> > buffers, but it only allows 3 bytes space for it.  That's plenty - I'm
+> > pretty sure that existing machines will only ever set this value to 2
+> > (EXYNOS4210_NCPUS).  But the compiler can't really be expected to figure
+> > that out.
+> >
+> > Some[*] gcc9 versions therefore emit -Wformat-truncation warnings.  Fix
+> > that by allowing more space in the temporary buffers - these are on sta=
+ck
+> > very briefly before being essentially strdup()ed inside the memory regi=
+on
+> > code, so there's not much cost to doing so.
+> >
+> > [*] The bizarre thing here, is that I've long gotten these warnings
+> > compiling in a 32-bit x86 container as host - Fedora 30 with
+> > gcc-9.2.1-1.fc30.i686 - but it compiles just fine on my normal x86_64 h=
+ost
+> > - Fedora 30 with and gcc-9.2.1-1.fc30.x86_64.
+> >
+> > Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
 > > ---
-> >  hw/core/qdev-properties.c    | 32 --------------------------------
-> >  include/hw/qdev-properties.h |  3 ---
-> >  2 files changed, 35 deletions(-)
->
-> I think I'd rather keep this. It's weird to not have a symmetric
-> set of properties for the common integer types, and annoying
-> for whoever next runs into a need for an int64 property to
-> have to reinstate the deleted code. (Yes, I know we don't
-> currently have int8 or int16.)
->
+> >  hw/intc/exynos4210_gic.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+> > index a1b699b6ba..2e5e47f9ec 100644
+> > --- a/hw/intc/exynos4210_gic.c
+> > +++ b/hw/intc/exynos4210_gic.c
+> > @@ -290,8 +290,8 @@ static void exynos4210_gic_realize(DeviceState *dev=
+, Error **errp)
+> >      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
+> >      const char cpu_prefix[] =3D "exynos4210-gic-alias_cpu";
+> >      const char dist_prefix[] =3D "exynos4210-gic-alias_dist";
+> > -    char cpu_alias_name[sizeof(cpu_prefix) + 3];
+> > -    char dist_alias_name[sizeof(cpu_prefix) + 3];
+> > +    char cpu_alias_name[sizeof(cpu_prefix) + 10];
+> > +    char dist_alias_name[sizeof(cpu_prefix) + 10];
+> >      SysBusDevice *gicbusdev;
+> >      uint32_t i;
+>=20
+> If we assert() that num_cpu is always <=3D EXYNOS4210_NCPUS
+> is that sufficient to clue gcc in that the buffer can't overflow?
 
-I don't think we should aim at being complete. Whenever we identify
-dead code, unused for a long while, we should clean it up.
+Interestingly, assert(s->num_cpu <=3D EXYNOS$210_NCPUS) is *not*
+sufficient, but assert(i <=3D EXYNOS4210_NCPUS) within the loop *is*
+enough.  I've updated my patch accordingly.
 
-In this case, it is even worse, this has never been used since its
-introduction in commit 07d1d063d3235c02f60dc92ec174d419e6f8a750, in
-2017.
+This isn't 4.2 material, obviously.  Should I just sit on it until 5.0
+opens, or does one of you have someplace to stage the patch in the
+meanwhile?
 
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--UEbtx6mvDyyRl/If
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl3UzqQACgkQbDjKyiDZ
+s5ICvxAA0Q4kBa2vsJ00sIsTT4gXu3ddnLjtIJ3t+ZvYqJ77jkTa4E8LwT/+JMeZ
+HAtuexE1eECRj9V1cnhW+/xfGEV83YDgekjFSZzcm1LYCWKGlcFHPefnWCYpFH4L
+vVsZ8SfU5rN8zdFe5PogFaps7ZuRf3yP8ukc+i3VkRnpTPdterR3xUCQvYoZg7pP
+99NCIjD4BFxgcPEmlIGe9LRP0TR72yOO841x1HVRqPFBFr/Ac0440WT2AWSy/Umb
+utvhUhND9NUyB2g0cACmoT504bbyH0fZOFFB+EdCxTYsgLrjAgEbaV8b7bzefPR5
+/2UOber7FCQqowgPyx11uf5djMRc5UKIaZfOkADY1tb1TuCEw7jZq7qsiYNgATXX
+/5JCRgyC2zMMOwvz4KZaIiR+FooJDCUsZvqEVO5pRtzISY5E/F0tlLDugfHTC8jr
+q90FrJXr+SvbWCfQXxOGWRMwVN7p2ZI+9dYtwUigPLTdqliSWghg0VhsOf4ZH6xy
+CGO97V1P4l5OOO3qq4vkilsSaHyEtm04MLZphH0TrVAvZVlt6XbErsSUPQTzpwuU
+V/I5Lh3ttOtuU9HX4rv6oygJ8pdBn4fs7xRxzSnHau5ZER6/wvk76FD6WKeZP+XP
+PB8YOavsTZ0OsIhzV/92mxMEsKe/zD9YWgTe22F18n3cpllcyJA=
+=+Pqu
+-----END PGP SIGNATURE-----
+
+--UEbtx6mvDyyRl/If--

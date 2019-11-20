@@ -1,99 +1,248 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1819898lfc;
-        Wed, 20 Nov 2019 02:51:12 -0800 (PST)
-X-Received: by 2002:aca:6006:: with SMTP id u6mr2214019oib.137.1574247071933;
-        Wed, 20 Nov 2019 02:51:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574247071; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2176953lfc;
+        Wed, 20 Nov 2019 07:47:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzqeIvzPN/pFlwEzdsnEWNrTWaxICLBBLWdEBBmVVFaFk6Sy7Vi39aCZzJKN72Sz9os3pRH
+X-Received: by 2002:adf:8426:: with SMTP id 35mr2076671wrf.262.1574264875412;
+        Wed, 20 Nov 2019 07:47:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574264875; cv=none;
         d=google.com; s=arc-20160816;
-        b=quaOsI7M2disgsECFwX/jaiwvLJfhzjP3zw8WItJM4u4AmMbWkzoZGF4q3JS6qMWHY
-         aOUhcRtE2sChcLAAROk22FftTtEA2DYJpjRNOSzfLfohyhXQYN+V4oxuG8nZ1ofLBOYg
-         molLBRN89TI5doxVizKD1qIBIvQRVDwEUz6unNKJAVo0zJwVBRh7txh4xd/LtNtyAWZn
-         //KZ/pPzvOuk7Xp8W2oc5uVay66MtqzjrPTxqBONX1NFVL8bNmxqWr4CbgaQnUd6Yigv
-         XOfCcs7ztZGoie0ifmYNAf+e9TS4JyTYRXT+lFkcm7226uesOOoCz6KXChkwNn2hdzRf
-         L8Wg==
+        b=yOOb6rjmmRq9N9yBb3cQBA6IWmPWt6hdlwqOcItnrHFXDZ02tgUd8sLvV6Yd+eV3MJ
+         3fcgOy9Q7mAfoysKrMjkjxiGBzXD6Da/PwtxMCOvkDQc3IGEkvAMrkiFG+cHFMTLqE+3
+         gRirAfuxRTyll+ps5SUmanPBpw2IWLyakg1vSnX5zFHY1YZKJQGsTM5682IKokMcGTzl
+         L7wcS/GHQ1IkjE+L9Cu+QbL25q8UTWusSDo0j8LAWo0SFGgFktseEqldb/phVp3DHWyV
+         UQdcAyw3wfcbNrNOdWBWs0+2XSCTOgeS+UUKZOjjqQTtwr4TnitZn28pzvq3s4SZ3jWE
+         w3zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=aal/ea6Sj9JcKtUdRuLSDnLxR0Gv/3zrPtNSuuc1hG0=;
-        b=aCrPst0q4azDiKSTHJ3i3I2TXGfhiK1Fc1Ovw+eqlw61XyCFxGgZNX3U2d5USKGiv0
-         ldx9AaEK2sZUTeCjf5m1z31bwaeIDMGEhHsftRoRK6QVu3fwh2Zph7M2Dd9HSTttCu49
-         I4Tx2/lan7/LDhELrrr1Ifwggz7yZkrjEpPbKUuTgpJ5uabyDTuxlXnbdYN8fAR6g2l9
-         J+2NSdPTvKDhbCgbrW8lSxnIQyZKbBJrXh/yWzlqtgv0o6QGmFsI9eB6+236kBA9U+0Q
-         xwxVinniRf9HqctYafI3QsjGzMDg1+W6LpUwOiA+WIsTpwSUYeDnWhNNAwAnZ+gw0Eu7
-         QBhQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=XySNkd+pWlCPo3QUalxb3KSKywGnvH/8IOsNraVJSBM=;
+        b=RP7QH8hhPSLMs+gc19AwrOiL1JsCvOAHbLklm7DM4AxIAzEbr2Xa+kPnUmIIsJinVm
+         A/7TDspujT4nJ66g89VzC8wiO86Ratn0i4JbacbVhA9Y08O6gXSTJHH+qlv47syvf8w2
+         sss3K991mohp7aFlvHIMhrWLvsSFxkoVBav97y8/NNfl+c52Sa5azb8hHqSDcnGhV582
+         FUSYTtN6J32CEFTk2ybkkA932p5Hx9W65r6UvLgPkpdwy6J3f+vcDLbLydC4hD+2v5Ne
+         Y8VWXWWhevOq7yXuaZFC3gDmf3i3HM/HJfo3RWhl9rS3dGfqWiRBg8mlasWFEtd2eqJP
+         UO4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FKhJPGk5;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id s127sor13798491oib.91.2019.11.20.02.51.11
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YxNkOauw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g19si19845413edb.280.2019.11.20.07.47.55
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 20 Nov 2019 02:51:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 20 Nov 2019 07:47:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FKhJPGk5;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=aal/ea6Sj9JcKtUdRuLSDnLxR0Gv/3zrPtNSuuc1hG0=;
-        b=FKhJPGk5E7XI+A0j2tWIauXRiitLVMqxGCcz8X1UzDfHXfpM3quXBtlsKWaMxe5HTz
-         PBDkcrPwpci26gCYA1VJJmkFiPsaDGzps5Um6yqiHulOKFBbbKUoG/recepJkZ6StTb1
-         q0icwuGQDaU5sRHJXDIEhYLRe0u+0Brco1ME6kf8wGJHM1a4H5+g2h7rtkdSJwzQGDlj
-         aY/9rZOScLGBY9taDJpuiy2peNXmayy2s68ex3ZPvUkptZwKlHb3XyysyNkfo/OTkbC+
-         eb6U1lF3FY88iSay6iT8uD/ZHe/5w4ZcFYC/DxjaIUqSpA6hHR66JNUiUYTH9Jtn7hpP
-         83Cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=aal/ea6Sj9JcKtUdRuLSDnLxR0Gv/3zrPtNSuuc1hG0=;
-        b=ezovybBX6ptTwWfYnlWld1O0RrgyrcWQOuMbk+7Z6Zv4o/UD3r9fqBap6UuIb1xJfE
-         yeqSTZvFWDYJGcJ01v5OFHu9348XC4JadExA+JMUHJd5MrNob8BmwrKUVr3MDBF/vOOa
-         wuJvFRyCUoSlKrpCkPW6P6QxXTdYMfsOGukBarte6lBBSh2EQaE2RckrD8dr47K++hLy
-         hSZmN7vxcfciGSo1GrYnGACym+dxQJ/bCIpMq5jaXs8+0kQnfVUAdxf3/K6PtSE9bne7
-         NiafknzZ+rRvArmTLvW0XJAcp/EJjRED/iaqA5UbDS3qlPGhehgAA2VAMevIEx41tGcT
-         tPZg==
-X-Gm-Message-State: APjAAAViYv0IEsM4JkX1kwjDzXYtCzLy6TKAHZZHlHxu1KpGTLcv8ZzB
-	H/8s9iECnPwEpHLuDCPw9AbZf3Do6qlceUYWBPdQZDak
-X-Google-Smtp-Source: APXvYqxQ0LOnPnMOlPNRo2pORqJlVhyrdeK+DIEjZdbmxM0JJtafzsA//rQk25cAUOV3ji1nmZOCI02JKdJKQyflC0w=
-X-Received: by 2002:aca:cf12:: with SMTP id f18mr2135547oig.48.1574247071497;
- Wed, 20 Nov 2019 02:51:11 -0800 (PST)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YxNkOauw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59596 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iXSCv-0000D1-Vn
+	for alex.bennee@linaro.org; Wed, 20 Nov 2019 10:47:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35010)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iXRwp-0006vq-2p
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 10:31:16 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iXRwn-0000mr-OP
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 10:31:14 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:54333
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1iXRwm-0000mM-JC
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 10:31:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1574263872;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=XySNkd+pWlCPo3QUalxb3KSKywGnvH/8IOsNraVJSBM=;
+ b=YxNkOauwRDYnKTjO5W7EHehw+7rScKmnT6hiADGwxJNNSzGHIgqOrhXohvPqnq+E+Wjd/T
+ gf8FFwpYvKBuuVln38Lo3IIszomkzUQaIbtwH3GCNMMItSMuVKYFJkf65/FYdx1PsTknlW
+ U7z15jZyRuwSEODCWhGIw9HnQ+38kCU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-265-NYtjh59mNPKgD-R5mLEPAA-1; Wed, 20 Nov 2019 10:31:10 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BE59780268E;
+ Wed, 20 Nov 2019 15:31:09 +0000 (UTC)
+Received: from localhost (ovpn-112-56.ams2.redhat.com [10.36.112.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4A64E1037ADA;
+ Wed, 20 Nov 2019 15:31:06 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v4 32/37] omap-intc: remove PROP_PTR
+Date: Wed, 20 Nov 2019 19:24:37 +0400
+Message-Id: <20191120152442.26657-33-marcandre.lureau@redhat.com>
+In-Reply-To: <20191120152442.26657-1-marcandre.lureau@redhat.com>
+References: <20191120152442.26657-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-References: <20191120091014.16883-1-thuth@redhat.com> <20191120091014.16883-2-thuth@redhat.com>
-In-Reply-To: <20191120091014.16883-2-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 20 Nov 2019 10:51:00 +0000
-Message-ID: <CAFEAcA_OpH_4rzpVN=v-HNadQm_Mh6yGBReKP4C_wic1ETq6kw@mail.gmail.com>
-Subject: Re: [PATCH for-5.0 1/4] hw/arm/nseries: Replace the bluetooth chardev
- with a "null" chardev
-To: Thomas Huth <thuth@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>, 
-	qemu-arm <qemu-arm@nongnu.org>, Libvirt <libvir-list@redhat.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: KBavsy3X568y
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: NYtjh59mNPKgD-R5mLEPAA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Q7hBAIsuxzYO
 
-On Wed, 20 Nov 2019 at 09:10, Thomas Huth <thuth@redhat.com> wrote:
->
-> We are going to remove the bitrotten bluetooth backend, so we can
-> not use it in the n800 and n810 machines anymore. Replace the chardev
-> here with a "null" chardev and stop including the "hw/bt.h" header.
->
-> I am not aware of a full working N8x0 environment that can be used to
-> test these machines, but the Linux kernel from the Meego project that
-> can be found on http://stskeeps.subnetmask.net/meego-n8x0/ still seems
-> to boot as far as it did before.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
+Since clocks are not QOM objects, replace PROP_PTR of clocks with
+setters methods.
+
+(in theory there should probably be different methods for omap1 &
+omap2 intc, but this is left as a future improvement)
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ hw/arm/omap1.c        |  4 ++--
+ hw/arm/omap2.c        |  4 ++--
+ hw/intc/omap_intc.c   | 17 ++++++++++-------
+ include/hw/arm/omap.h | 14 ++++++++++++++
+ 4 files changed, 28 insertions(+), 11 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 6ce038a453..1afd1d3d7f 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -3889,7 +3889,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
+n *dram,
+=20
+     s->ih[0] =3D qdev_create(NULL, "omap-intc");
+     qdev_prop_set_uint32(s->ih[0], "size", 0x100);
+-    qdev_prop_set_ptr(s->ih[0], "clk", omap_findclk(s, "arminth_ck"));
++    omap_intc_set_iclk(OMAP_INTC(s->ih[0]), omap_findclk(s, "arminth_ck"))=
+;
+     qdev_init_nofail(s->ih[0]);
+     busdev =3D SYS_BUS_DEVICE(s->ih[0]);
+     sysbus_connect_irq(busdev, 0,
+@@ -3899,7 +3899,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
+n *dram,
+     sysbus_mmio_map(busdev, 0, 0xfffecb00);
+     s->ih[1] =3D qdev_create(NULL, "omap-intc");
+     qdev_prop_set_uint32(s->ih[1], "size", 0x800);
+-    qdev_prop_set_ptr(s->ih[1], "clk", omap_findclk(s, "arminth_ck"));
++    omap_intc_set_iclk(OMAP_INTC(s->ih[1]), omap_findclk(s, "arminth_ck"))=
+;
+     qdev_init_nofail(s->ih[1]);
+     busdev =3D SYS_BUS_DEVICE(s->ih[1]);
+     sysbus_connect_irq(busdev, 0,
+diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+index 457f152bac..1d7cc435ef 100644
+--- a/hw/arm/omap2.c
++++ b/hw/arm/omap2.c
+@@ -2308,8 +2308,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
+on *sdram,
+     /* Actually mapped at any 2K boundary in the ARM11 private-peripheral =
+if */
+     s->ih[0] =3D qdev_create(NULL, "omap2-intc");
+     qdev_prop_set_uint8(s->ih[0], "revision", 0x21);
+-    qdev_prop_set_ptr(s->ih[0], "fclk", omap_findclk(s, "mpu_intc_fclk"));
+-    qdev_prop_set_ptr(s->ih[0], "iclk", omap_findclk(s, "mpu_intc_iclk"));
++    omap_intc_set_fclk(OMAP_INTC(s->ih[0]), omap_findclk(s, "mpu_intc_fclk=
+"));
++    omap_intc_set_iclk(OMAP_INTC(s->ih[0]), omap_findclk(s, "mpu_intc_iclk=
+"));
+     qdev_init_nofail(s->ih[0]);
+     busdev =3D SYS_BUS_DEVICE(s->ih[0]);
+     sysbus_connect_irq(busdev, 0,
+diff --git a/hw/intc/omap_intc.c b/hw/intc/omap_intc.c
+index 854b709ca0..73bb1c2af4 100644
+--- a/hw/intc/omap_intc.c
++++ b/hw/intc/omap_intc.c
+@@ -38,10 +38,6 @@ struct omap_intr_handler_bank_s {
+     unsigned char priority[32];
+ };
+=20
+-#define TYPE_OMAP_INTC "common-omap-intc"
+-#define OMAP_INTC(obj) \
+-    OBJECT_CHECK(struct omap_intr_handler_s, (obj), TYPE_OMAP_INTC)
+-
+ struct omap_intr_handler_s {
+     SysBusDevice parent_obj;
+=20
+@@ -391,9 +387,18 @@ static void omap_intc_realize(DeviceState *dev, Error =
+**errp)
+     }
+ }
+=20
++void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk)
++{
++    intc->iclk =3D clk;
++}
++
++void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk)
++{
++    intc->fclk =3D clk;
++}
++
+ static Property omap_intc_properties[] =3D {
+     DEFINE_PROP_UINT32("size", struct omap_intr_handler_s, size, 0x100),
+-    DEFINE_PROP_PTR("clk", struct omap_intr_handler_s, iclk),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+=20
+@@ -647,8 +652,6 @@ static void omap2_intc_realize(DeviceState *dev, Error =
+**errp)
+ static Property omap2_intc_properties[] =3D {
+     DEFINE_PROP_UINT8("revision", struct omap_intr_handler_s,
+     revision, 0x21),
+-    DEFINE_PROP_PTR("iclk", struct omap_intr_handler_s, iclk),
+-    DEFINE_PROP_PTR("fclk", struct omap_intr_handler_s, fclk),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+=20
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index f3aa670036..bcecf19f89 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -67,6 +67,20 @@ void omap_clk_setrate(omap_clk clk, int divide, int mult=
+iply);
+ int64_t omap_clk_getrate(omap_clk clk);
+ void omap_clk_reparent(omap_clk clk, omap_clk parent);
+=20
++/* omap_intc.c */
++#define TYPE_OMAP_INTC "common-omap-intc"
++#define OMAP_INTC(obj)                                              \
++    OBJECT_CHECK(omap_intr_handler, (obj), TYPE_OMAP_INTC)
++
++typedef struct omap_intr_handler_s omap_intr_handler;
++
++/*
++ * TODO: Ideally we should have a clock framework that
++ * let us wire these clocks up with QOM properties or links.
++ */
++void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
++void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
++
+ /* OMAP2 l4 Interconnect */
+ struct omap_l4_s;
+ struct omap_l4_region_s {
+--=20
+2.24.0
+

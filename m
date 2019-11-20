@@ -1,121 +1,99 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp868934lfc;
-        Tue, 19 Nov 2019 09:57:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwEQ9jKktfa8n06aeEnrHc5svdhuDAi/ZJ9+uGU/tA4+fFKkhREq3rL7K0uZ03WLClo8Mhl
-X-Received: by 2002:aed:30c3:: with SMTP id 61mr34000642qtf.243.1574186253928;
-        Tue, 19 Nov 2019 09:57:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574186253; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1260849lfc;
+        Tue, 19 Nov 2019 16:08:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyylV0fknnBUfqa/yqtfon/XWZn1tpMpY62NoHH3gmQZ2oS8e3Kra09ZzmaK474Xl2vpDJY
+X-Received: by 2002:a17:906:85c8:: with SMTP id i8mr806529ejy.46.1574208489236;
+        Tue, 19 Nov 2019 16:08:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574208489; cv=none;
         d=google.com; s=arc-20160816;
-        b=NBGUl/dzzDbH+EyenApXjt4myzrO6EslqyR+a+/yn4+tRYXB28atvCX0CP0i3yqEKZ
-         H6sQAnI5PY1m2tnjlmc2uR/0Ao+AB35SEUihvHCgZYCFQ1cTojhjxDiMxCQtPnaD30Gf
-         aA15UoZ8aUWiv2oT1H3NFYFmAyGWQL/bJBtt2D+FM/L2A97CJUuuZyiRkJ2Ak7unAzL5
-         J1afGe/bR3NEqlJiXnEMicEeSQBoYm+5/9oiywkgitvR1FRjh76B976gtwXKCJUecNG0
-         wh+4SzOqHBTPf/fjM7kdi2zyD+dwrtomhZS58g2SunTZYAZIoHvxxut/4aXwN8qemFpG
-         XFgQ==
+        b=MYWCeABm2RwdMnmdH89IIbhJN/atqCwM3130wle/E31RCgThzO6rUJIPI0NEsj142D
+         JHxDGaQz4xEczBNsb/96aCS9zl7OrizxPZqXOrL1O9o2KQgNi6aIu0PPIzJ57uNJGKYF
+         pZL8+sG9TMDytIC+8diToG5Wpj2/JNawZdsFBTGXJ6/e2VG/7kbH8mYBLB6VN9v9MgzO
+         DmnMc3bo7iiohnAXbiGRM5+KUvjHCyC9k4x3azUEBWlJ1IjqLH/HNHH3jKhj9ih4KXO/
+         6GXSS8PHV3NfFy8ELDkqcUoQoaRmdcCsY1SFw4eElrVhHe1re+JHyMoHg8w6RR9T9gbu
+         tPww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=en3Lm7igYDO8KQtJ9xK8FSriql8b9idQhOTE6syD70Y=;
-        b=dNpudilUK0Td8r576w7ewmKDzQygiJ40yUm2i1i/DAPtSKaL9Kft6Ix1nIMC7B5xtK
-         PSsKXz6kS6dNjqJI1x3ewZsM4k6p2+N75vlfkCwyNbsq+ykl4Um+b29R3erEwPbD69eJ
-         kengQBmPNxILtNTfP7J+4MahLUnBoWcbvAZpNDThkzrjjT82n25X+OpcS5BxpX2qt+5+
-         Es4wLld/+XphRgZUtGoT6nGPKI5V7ojGblwU1+CG8AP5SVEwXxGdKPnK5ttSbWpO4WDb
-         gYWBvLy3ePgthXqJteLO0xtSJNDqFvMAA72CTWtn9+Us86FoXxgwq4dS0UWXQe1fqzwy
-         NQbA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=SD1sSRLcewma8NqVVVKtNm5KTDYVgHw1jASSePwSle8=;
+        b=CcCMXOnptDjAffJc2DUE9hjBfNcXoQHujXSambhEOaoNnJhAsZNt2OBccGa6ht7CWM
+         KxfS/oIehnEotUD+l+HuewGvdWpfHG6qIU5nwHDPHGSVg3yCW+BEogQCKHrSDPjbHh3f
+         kWcQNHUcMccK9+sNfthEWY+utvMtqnat0eGVr+dXD8Bavr/zifNu2VDET97KWK45GPwr
+         zr/nnAkq9xQd+dMH4Qz/l6myjkhvelRRRXweOM2yeb9MNMVQDNsYiliIWPeH3W6vjRsO
+         UTfU3/b5pQY1gTepnl0AQvj9eeOJB/VC9260xcmYusFIMEbz1hFtCAjzHWYHq8c3lOfd
+         gRcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZdW6AxBr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nPMe//YG";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e15si12742961qvr.57.2019.11.19.09.57.33
+        by mx.google.com with ESMTPS id ob19si15912071ejb.56.2019.11.19.16.08.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Nov 2019 09:57:33 -0800 (PST)
+        Tue, 19 Nov 2019 16:08:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZdW6AxBr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nPMe//YG";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48758 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iX7kr-0005g8-Ab
-	for alex.bennee@linaro.org; Tue, 19 Nov 2019 12:57:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54313)
+	id 1iXDXT-0003kT-Vy
+	for alex.bennee@linaro.org; Tue, 19 Nov 2019 19:08:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56275)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iX7kj-0005eg-8m
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 12:57:27 -0500
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iXDXK-0003h3-0m
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 19:07:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iX7kg-0006qU-Rd
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 12:57:24 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:50128
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iX7kg-0006qA-NV
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 12:57:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574186241;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=en3Lm7igYDO8KQtJ9xK8FSriql8b9idQhOTE6syD70Y=;
- b=ZdW6AxBrwl4ODzglFQB819zM/3wURX1dUnYfLfCQ18OsNzcAUke9sJSlm8i1o41ZrgLprI
- YfjFWJexpLMCkRCgmonjYgtftOw+BW/8GhkzApcklldiEvpW8EQ/tOWGzotE/UEqglvq0g
- yYbaqIE1BWE3eAjI9+Sd/uh1hWop1t8=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-24-SS0KKmVWM1ScKtCer0fZcQ-1; Tue, 19 Nov 2019 12:57:19 -0500
-Received: by mail-wm1-f69.google.com with SMTP id 199so3112654wmb.0
- for <qemu-arm@nongnu.org>; Tue, 19 Nov 2019 09:57:19 -0800 (PST)
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iXDXI-00009j-EJ
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 19:07:57 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:45108)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1iXDXE-00005B-Q3; Tue, 19 Nov 2019 19:07:53 -0500
+Received: by mail-oi1-x241.google.com with SMTP id 14so20780823oir.12;
+ Tue, 19 Nov 2019 16:07:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=SD1sSRLcewma8NqVVVKtNm5KTDYVgHw1jASSePwSle8=;
+ b=nPMe//YGN5C8D+ECD0sKlBQo5v0Yjmc/NASRSvnUy3wwmIk2BM5W9liAU+Ha4IAiCa
+ dzK+R4qBjiJ0FMe6hc/LfEs1XQODEkpSiPhMIQ6PdiNsOX5VAK4cC7Y0/WaZK+2+75zS
+ Plsyv/0H/ArSgySFak4z3KfcHlHOO0U0byCMQrvSJkYtAVEOwAhwilo4SySoNmuCTYDP
+ o8VtWrIC0QPPm7+pVt8/k70sylU3CTNlUanuNQ1k0fOQYO0gAZwmQ2tfcAn+6HKiUO1K
+ YXXcdflk/48GuW2Nf9q0ErWCd8K28Zm87e/y5DjiihWqLGl0EJMJf5y33YNp5lA3Xcl1
+ 8raA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gOmh8+HDZkLPTm1M+wWd2bclxfW2aiET6OmnJR/6X58=;
- b=l3DNA9T8K/sB7/8jAQYNvqf435icnjvDXbP/UZkVbsbE9CbX4JFPYIZ2fLJBY8jYeM
- 5pm8UIlBbJMJlr6jHNnhmc3SYIFNFf+6pKbdid0yRbTWZq7B5HKF3Iy7f/6I43toHFZw
- v7pnONEDPQDUL2C0JUodOiBTein+Zn+orAsHek3hEHqwRCpocbSiJFf7mM5zo2eol0gx
- RkGVf/0VBBLqCR1CsMeH6XB/RLsXYVh5J2U+d5GZyeJTXlmlkpvAARj5rcGqGJ2vRKKC
- jdZDb9EsC+biW2daibzypnIs8W45WioXb0HF5POt7yMWQJEO06p5ZS3dwr8oZyQ/TXaI
- NTvw==
-X-Gm-Message-State: APjAAAUQun+/sfJiZOKbSEVTR7q4wILEbuPVPzsr4+uQUVn7BhAAeLwV
- UL0d998C7R2l5AUzm+X++8J7PXBq6MUnljBqJoMm+HlN3se/HHdPfVoGSNAVoU0LzGOwaa3LmYE
- h4gu459JD9a8/
-X-Received: by 2002:a1c:a548:: with SMTP id o69mr7086287wme.31.1574186238368; 
- Tue, 19 Nov 2019 09:57:18 -0800 (PST)
-X-Received: by 2002:a1c:a548:: with SMTP id o69mr7086266wme.31.1574186238013; 
- Tue, 19 Nov 2019 09:57:18 -0800 (PST)
-Received: from [192.168.1.35] (131.red-88-21-102.staticip.rima-tde.net.
- [88.21.102.131])
- by smtp.gmail.com with ESMTPSA id 62sm31279607wre.38.2019.11.19.09.57.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Nov 2019 09:57:17 -0800 (PST)
-Subject: Re: [PATCH] misc/pca9552: Add qom set and get
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
-References: <20191118061757.52550-1-joel@jms.id.au>
- <42f378d5-e7ea-11ce-11d5-9589fe7194d2@kaod.org>
- <9f810374-97d4-8162-c92d-a1513c1a23a0@redhat.com>
- <817b83f1-f534-9886-2054-4de6cd04a899@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <c7dea2b9-376f-c7cf-fe2e-792e3d8a17c2@redhat.com>
-Date: Tue, 19 Nov 2019 18:57:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=SD1sSRLcewma8NqVVVKtNm5KTDYVgHw1jASSePwSle8=;
+ b=TOMaL5EVVZ/04tJKGJGm09Dp1dP5yYrge/vNcf/X0wXtWGXBmserYX2cv8BKgM686z
+ LB909ubxhypQmIAmAQv7JKZ5m9GoDWNXBFT2Eko91sWfaVH2dGkWD8dLfvVucDNylb98
+ 6aTMPItfpYHG6RS1u3/xYOGHnYo8AQcQGac7sjfs3wMAoTfV48vrni5465HXKghFizUB
+ w+KZSku9x+HfkRhDC7mG09odL4zLxjBfLrO+drq/c5lNVRDnAQCM/RYK788Y1NW1/o7U
+ zPkAAKLZllDXO/mZp+vNaOlWbHffiey6RF8ZlMIRbod6X4CVrhqBa/sOpwxURMTliZAG
+ E1cA==
+X-Gm-Message-State: APjAAAVEoOK0yoMIxZAzqfZFNlMf09iNuP2EeSOM5xiRjL/yxVorl3ZH
+ tEiIlRoQHv4G9/Y5B49aC7nEmxz52WHs6ym2rhc=
+X-Received: by 2002:aca:650a:: with SMTP id m10mr200819oim.106.1574208471858; 
+ Tue, 19 Nov 2019 16:07:51 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <817b83f1-f534-9886-2054-4de6cd04a899@kaod.org>
-Content-Language: en-US
-X-MC-Unique: SS0KKmVWM1ScKtCer0fZcQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
+Received: by 2002:a05:6830:1391:0:0:0:0 with HTTP; Tue, 19 Nov 2019 16:07:51
+ -0800 (PST)
+In-Reply-To: <20191023173154.30051-19-marcandre.lureau@redhat.com>
+References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
+ <20191023173154.30051-19-marcandre.lureau@redhat.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Wed, 20 Nov 2019 01:07:51 +0100
+Message-ID: <CAL1e-=ja_ymoKhj7qaCT9Dvhy_G_F0XL-VMoNYhW5QqJXt3_Ew@mail.gmail.com>
+Subject: Re: [PATCH v3 18/33] mips: inline serial_init
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000c4849f0597bbf8bd"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -127,308 +105,253 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Rashmica Gupta <rashmica.g@gmail.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Paul Burton <pburton@wavecomp.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GKVwkfVyP7WI
+X-TUID: 5AUWHawbV3y1
 
-On 11/19/19 5:27 PM, C=C3=A9dric Le Goater wrote:
-> On 18/11/2019 18:48, Philippe Mathieu-Daud=C3=A9 wrote:
->> Odd... I only received C=C3=A9dric answer, not Joel patch.
->>
->> On 11/18/19 11:00 AM, C=C3=A9dric Le Goater wrote:
->>> On 18/11/2019 07:17, Joel Stanley wrote:
->>>> Following the pattern of the work recently done with the ASPEED GPIO
->>>> model, this adds support for inspecting and modifying the PCA9552 LEDs
->>>> from the monitor.
->>>>
->>>>  =C2=A0 (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 on
->>>>  =C2=A0 (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
->>>>  =C2=A0 "on"
->>>>
->>>>  =C2=A0 (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 off
->>>>  =C2=A0 (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
->>>>  =C2=A0 "off"
->>>>
->>>>  =C2=A0 (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 pwm0
->>>>  =C2=A0 (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
->>>>  =C2=A0 "pwm0"
->>>>
->>>>  =C2=A0 (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 pwm1
->>>>  =C2=A0 (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
->>>>  =C2=A0 "pwm1"
->>>
->>> It would be nice to revive the QOM get patchset from David.
->>>
->>>  =C2=A0=C2=A0=C2=A0=C2=A0http://patchwork.ozlabs.org/patch/666458/
->>>
->>> Did we reach some consensus ?
->>>
->>>> Signed-off-by: Joel Stanley <joel@jms.id.au>
->>>
->>> Some comments below.
->>>
->>>> ---
->>>> The qom device in mainline qemu is a different path. Using the monitor
->>>> examine `info qom-tree /machine/unattached/` to discover it.
->>>>
->>>> This can be tested with a Witherspoon image.
->>>>
->>>> $ wget https://openpower.xyz/job/openbmc-build/distro=3Dubuntu,label=
-=3Dbuilder,target=3Dwitherspoon/lastSuccessfulBuild/artifact/deploy/images/=
-witherspoon/obmc-phosphor-image-witherspoon.ubi.mtd
->>>>
->>>> $ qemu-system-arm -M witherspoon-bmc -serial pty -monitor pty -nograph=
-ic \
->>>>  =C2=A0 -drive file=3Dobmc-phosphor-image-witherspoon.ubi.mtd,format=
-=3Draw,if=3Dmtd
->>>> char device redirected to /dev/pts/5 (label compat_monitor0)
->>>> char device redirected to /dev/pts/10 (label serial0)
->>>>
->>>> $ screen /dev/pts/5
->>>> QEMU 4.1.91 monitor - type 'help' for more information
->>>> (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
->>>> "off"
->>>>
->>>> $ screen /dev/pts/19
->>>> root@witherspoon:~# cd /sys/class/gpio/
->>>> root@witherspoon:/sys/class/gpio# echo 248 > export
->>>> root@witherspoon:/sys/class/gpio# cat gpio248/value
->>>> 0
->>>>
->>>> (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 on
->>>>
->>>> root@witherspoon:/sys/class/gpio# echo out > gpio248/direction
->>>> root@witherspoon:/sys/class/gpio# cat gpio248/value
->>>> 1
->>>>
->>>> (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
->>>> "on"
->>>>
->>>> (qemu) qom-set=C2=A0 /machine/unattached/device[17] led0 off
->>>> (qemu) qom-get=C2=A0 /machine/unattached/device[17] led0
->>>> "off"
->>>>
->>>> root@witherspoon:/sys/class/gpio# cat gpio248/value
->>>> 0
->>
->> I am assuming this is 5.0 material.
->>
->> This is a good starting point, and is useful.
->>
->> However this would be useful for other boards/devices too.
->>
->> What about defining a InterfaceInfo[] for external GPIOs?
->=20
-> The code below is very specific to pca9552.
+--000000000000c4849f0597bbf8bd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Yes, sorry if I was unclear, I don't want to delay this series, I was=20
-just thinking about other uses.
+On Wednesday, October 23, 2019, Marc-Andr=C3=A9 Lureau <
+marcandre.lureau@redhat.com> wrote:
 
-> What kind of interface do you have in mind more precisely ?
-> which handlers ?
+> The function is specific to mipssim, let's inline it.
+>
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  hw/char/serial.c         | 16 ----------------
+>  hw/mips/mips_mipssim.c   | 13 ++++++++++---
+>  include/hw/char/serial.h |  2 --
+>  3 files changed, 10 insertions(+), 21 deletions(-)
 
-Here we expose the devices GPIOs (as output) so they can be modified via=20
-QMP.
 
-A QMP client could subscribe to GPIOs input events (or IRQ triggered).
+Marc-Andr=C3=A9, hi!
 
-(The PCA9552 can also use the 16 lines as input, but Joel added a "input=20
-line behaviour not modeled" comment below).
+Mismatch between the commit message and the patch content. Not acceptable.
 
-Maybe the PCA9552 isn't the best example for my generic use case,=20
-because it is already "out of the soc/board" being on a bus.
+Yours,
+Aleksandar
 
-I'm more concerned about a generic QMP way to access GPIOs from a SoC=20
-exposed to a physical user of a board.
 
->> Shouldn't we use the qemu_irq type for that then?
->>
->>>>
->>>> Signed-off-by: Joel Stanley <joel@jms.id.au>
->>>> ---
->>>>  =C2=A0 hw/misc/pca9552.c | 91 +++++++++++++++++++++++++++++++++++++++=
-++++++++
->>>>  =C2=A0 1 file changed, 91 insertions(+)
->>>>
->>>> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
->>>> index 73be28d9369c..0362aac8c862 100644
->>>> --- a/hw/misc/pca9552.c
->>>> +++ b/hw/misc/pca9552.c
->>>> @@ -15,12 +15,16 @@
->>>>  =C2=A0 #include "hw/misc/pca9552.h"
->>>>  =C2=A0 #include "hw/misc/pca9552_regs.h"
->>>>  =C2=A0 #include "migration/vmstate.h"
->>>> +#include "qapi/error.h"
->>>> +#include "qapi/visitor.h"
->>>>  =C2=A0 =C2=A0 #define PCA9552_LED_ON=C2=A0=C2=A0 0x0
->>>>  =C2=A0 #define PCA9552_LED_OFF=C2=A0 0x1
->>>>  =C2=A0 #define PCA9552_LED_PWM0 0x2
->>>>  =C2=A0 #define PCA9552_LED_PWM1 0x3
->>>>  =C2=A0 +static const char *led_state[] =3D {"on", "off", "pwm0", "pwm=
-1"};
->>
->> BTW "pwm0/pwm1" as "state" is confuse, but I understand this is how the =
-PCA9552 datasheet describes it.
->>
->>>> +
->>>>  =C2=A0 static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin=
-)
->>>>  =C2=A0 {
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint8_t reg=C2=A0=C2=A0 =3D PCA9552_LS=
-0 + (pin / 4);
->>>> @@ -169,6 +173,84 @@ static int pca9552_event(I2CSlave *i2c, enum i2c_=
-event event)
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
->>>>  =C2=A0 }
->>>>  =C2=A0 +static void pca9552_get_led(Object *obj, Visitor *v, const ch=
-ar *name,
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 void *opaque, Error **errp)
->>>> +{
->>>> +=C2=A0=C2=A0=C2=A0 PCA9552State *s =3D PCA9552(obj);
->>>> +=C2=A0=C2=A0=C2=A0 int led, rc, reg;
->>>> +=C2=A0=C2=A0=C2=A0 char *str;
->>>> +=C2=A0=C2=A0=C2=A0 uint8_t state;
->>>> +
->>>> +=C2=A0=C2=A0=C2=A0 rc =3D sscanf(name, "led%2d", &led);
->>>> +=C2=A0=C2=A0=C2=A0 if (rc !=3D 1) {
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s: erro=
-r reading %s", __func__, name);
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->>>> +=C2=A0=C2=A0=C2=A0 }
->>>> +=C2=A0=C2=A0=C2=A0 if (led < 0 || led > s->nr_leds) {
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s inval=
-id led %s", __func__, name);
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->>>> +=C2=A0=C2=A0=C2=A0 }
->>>> +=C2=A0=C2=A0=C2=A0 /*
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0 * Get the LSx register as the qom interface =
-should expose the device
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0 * state, not the modeled 'input line' behavi=
-our which would come from
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0 * reading the INPUTx reg
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0 */
->>>> +=C2=A0=C2=A0=C2=A0 reg =3D PCA9552_LS0 + led / 4;
->>>> +=C2=A0=C2=A0=C2=A0 state =3D (pca9552_read(s, reg) >> (led % 8)) & 0x=
-3;
->>>
->>> Could we add accessors to extract the register fields and to clarify
->>> the layout ?
->>>
->>>> +=C2=A0=C2=A0=C2=A0 str =3D g_strdup(led_state[state]);
->>>> +=C2=A0=C2=A0=C2=A0 visit_type_str(v, name, &str, errp);
->>>> +}
->>>> +
->>>> +/*
->>>> + * Return an LED selector register value based on an existing one, wi=
-th
->>>> + * the appropriate 2-bit state value set for the given LED number (0-=
-3).
->>>> + */
->>>> +static inline uint8_t pca955x_ledsel(uint8_t oldval, int led_num, int=
- state)
->>>> +{
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return (oldval & (~(0x3 <<=
- (led_num << 1)))) |
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 ((state & 0x3) << (led_num << 1));
->>>> +}
->>>> +
->>>> +static void pca9552_set_led(Object *obj, Visitor *v, const char *name=
-,
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 void *opaque, Error **errp)
->>>> +{
->>>> +=C2=A0=C2=A0=C2=A0 PCA9552State *s =3D PCA9552(obj);
->>>> +=C2=A0=C2=A0=C2=A0 Error *local_err =3D NULL;
->>>> +=C2=A0=C2=A0=C2=A0 int led, rc, reg, val;
->>>> +=C2=A0=C2=A0=C2=A0 uint8_t state;
->>>> +=C2=A0=C2=A0=C2=A0 char *state_str;
->>>> +
->>>> +=C2=A0=C2=A0=C2=A0 visit_type_str(v, name, &state_str, &local_err);
->>>> +=C2=A0=C2=A0=C2=A0 if (local_err) {
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_propagate(errp, loca=
-l_err);
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->>>> +=C2=A0=C2=A0=C2=A0 }
->>>> +=C2=A0=C2=A0=C2=A0 rc =3D sscanf(name, "led%2d", &led);
->>>> +=C2=A0=C2=A0=C2=A0 if (rc !=3D 1) {
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s: erro=
-r reading %s", __func__, name);
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->>>> +=C2=A0=C2=A0=C2=A0 }
->>>> +=C2=A0=C2=A0=C2=A0 if (led < 0 || led > s->nr_leds) {
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s inval=
-id led %s", __func__, name);
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->>>> +=C2=A0=C2=A0=C2=A0 }
->>>> +
->>>> +=C2=A0=C2=A0=C2=A0 for (state =3D 0; state < ARRAY_SIZE(led_state); s=
-tate++) {
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!strcmp(state_str, led=
-_state[state])) {
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 br=
-eak;
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>> +=C2=A0=C2=A0=C2=A0 }
->>>> +=C2=A0=C2=A0=C2=A0 if (state >=3D ARRAY_SIZE(led_state)) {
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "%s inval=
-id led state %s", __func__, state_str);
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->>>> +=C2=A0=C2=A0=C2=A0 }
->>>> +
->>>> +=C2=A0=C2=A0=C2=A0 reg =3D PCA9552_LS0 + led / 4;
->>>> +=C2=A0=C2=A0=C2=A0 val =3D pca9552_read(s, reg);
->>>> +=C2=A0=C2=A0=C2=A0 val =3D pca955x_ledsel(val, led % 4, state);
->>>> +=C2=A0=C2=A0=C2=A0 pca9552_write(s, reg, val);
->>>> +}
->>>> +
->>>>  =C2=A0 static const VMStateDescription pca9552_vmstate =3D {
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .name =3D "PCA9552",
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .version_id =3D 0,
->>>> @@ -204,6 +286,7 @@ static void pca9552_reset(DeviceState *dev)
->>>>  =C2=A0 static void pca9552_initfn(Object *obj)
->>>>  =C2=A0 {
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 PCA9552State *s =3D PCA9552(obj);
->>>> +=C2=A0=C2=A0=C2=A0 int led;
->>>>  =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* If support for the other PCA=
-955X devices are implemented, these
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * constant values might be part =
-of class structure describing the
->>>> @@ -211,6 +294,14 @@ static void pca9552_initfn(Object *obj)
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->max_reg =3D PCA9552_LS3;
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->nr_leds =3D 16;
->>>> +
->>>> +=C2=A0=C2=A0=C2=A0 for (led =3D 0; led < s->nr_leds; led++) {
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 char *name;
->>>> +
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 name =3D g_strdup_printf("=
-led%d", led);
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_add(obj, n=
-ame, "bool", pca9552_get_led, pca9552_set_led,
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 NULL, NULL, NULL);
->>>
->>> It misses a :
->>>
->>>  =C2=A0=C2=A0=C2=A0 g_free(name)
->>>
->>> C.
->>>
->>>> +=C2=A0=C2=A0=C2=A0 }
->>>>  =C2=A0 }
->>>>  =C2=A0 =C2=A0 static void pca9552_class_init(ObjectClass *klass, void=
- *data)
->>>>
->>>
->>>
->>
->=20
+>
+> diff --git a/hw/char/serial.c b/hw/char/serial.c
+> index 84de2740a7..ca95e09ec9 100644
+> --- a/hw/char/serial.c
+> +++ b/hw/char/serial.c
+> @@ -1023,22 +1023,6 @@ static const TypeInfo serial_io_info =3D {
+>      .class_init =3D serial_io_class_init,
+>  };
+>
+> -SerialIO *serial_init(int base, qemu_irq irq, int baudbase,
+> -                         Chardev *chr, MemoryRegion *system_io)
+> -{
+> -    SerialIO *self =3D SERIAL_IO(qdev_create(NULL, TYPE_SERIAL_IO));
+> -
+> -    qdev_prop_set_uint32(DEVICE(self), "baudbase", baudbase);
+> -    qdev_prop_set_chr(DEVICE(self), "chardev", chr);
+> -    qdev_prop_set_int32(DEVICE(self), "instance-id", base);
+> -    qdev_init_nofail(DEVICE(self));
+> -
+> -    sysbus_connect_irq(SYS_BUS_DEVICE(self), 0, irq);
+> -    memory_region_add_subregion(system_io, base, &self->serial.io);
+> -
+> -    return self;
+> -}
+> -
+>  static Property serial_properties[] =3D {
+>      DEFINE_PROP_CHR("chardev", SerialState, chr),
+>      DEFINE_PROP_UINT32("baudbase", SerialState, baudbase, 115200),
+> diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c
+> index 282bbecb24..26fb8fa4de 100644
+> --- a/hw/mips/mips_mipssim.c
+> +++ b/hw/mips/mips_mipssim.c
+> @@ -40,6 +40,7 @@
+>  #include "hw/loader.h"
+>  #include "elf.h"
+>  #include "hw/sysbus.h"
+> +#include "hw/qdev-properties.h"
+>  #include "exec/address-spaces.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/qtest.h"
+> @@ -219,9 +220,15 @@ mips_mipssim_init(MachineState *machine)
+>       * A single 16450 sits at offset 0x3f8. It is attached to
+>       * MIPS CPU INT2, which is interrupt 4.
+>       */
+> -    if (serial_hd(0))
+> -        serial_init(0x3f8, env->irq[4], 115200, serial_hd(0),
+> -                    get_system_io());
+> +    if (serial_hd(0)) {
+> +        DeviceState *dev =3D qdev_create(NULL, TYPE_SERIAL_IO);
+> +
+> +        qdev_prop_set_chr(dev, "chardev", serial_hd(0));
+> +        qdev_prop_set_int32(dev, "instance-id", 0x3f8);
+> +        qdev_init_nofail(dev);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, env->irq[4]);
+> +        sysbus_add_io(SYS_BUS_DEVICE(dev), 0x3f8, &SERIAL_IO(dev)->
+> serial.io);
+> +    }
+>
+>      if (nd_table[0].used)
+>          /* MIPSnet uses the MIPS CPU INT0, which is interrupt 2. */
+> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+> index cf9cdafaee..40e35e6fff 100644
+> --- a/include/hw/char/serial.h
+> +++ b/include/hw/char/serial.h
+> @@ -109,8 +109,6 @@ void serial_set_frequency(SerialState *s, uint32_t
+> frequency);
+>  #define TYPE_SERIAL_IO "serial-io"
+>  #define SERIAL_IO(s) OBJECT_CHECK(SerialIO, (s), TYPE_SERIAL_IO)
+>
+> -SerialIO *serial_init(int base, qemu_irq irq, int baudbase,
+> -                      Chardev *chr, MemoryRegion *system_io);
+>  SerialMM *serial_mm_init(MemoryRegion *address_space,
+>                           hwaddr base, int regshift,
+>                           qemu_irq irq, int baudbase,
+> --
+> 2.23.0.606.g08da6496b6
+>
+>
+>
 
+--000000000000c4849f0597bbf8bd
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<br><br>On Wednesday, October 23, 2019, Marc-Andr=C3=A9 Lureau &lt;<a href=
+=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt;=
+ wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bor=
+der-left:1px #ccc solid;padding-left:1ex">The function is specific to mipss=
+im, let&#39;s inline it.<br>
+<br>
+Signed-off-by:=C2=A0Marc-Andr=C3=A9=C2=A0Lureau=C2=A0&lt;<a href=3D"mailto:=
+marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0hw/char/serial.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 16 --------------=
+--<br>
+=C2=A0hw/mips/mips_mipssim.c=C2=A0 =C2=A0| 13 ++++++++++---<br>
+=C2=A0include/hw/char/serial.h |=C2=A0 2 --<br>
+=C2=A03 files changed, 10 insertions(+), 21 deletions(-)</blockquote><div><=
+br></div><div>Marc-Andr=C3=A9, hi!</div><div><br></div><div>Mismatch betwee=
+n the commit message and the patch content. Not acceptable.</div><div><br><=
+/div><div>Yours,</div><div>Aleksandar</div><div>=C2=A0</div><blockquote cla=
+ss=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pa=
+dding-left:1ex">
+<br>
+diff --git a/hw/char/serial.c b/hw/char/serial.c<br>
+index 84de2740a7..ca95e09ec9 100644<br>
+--- a/hw/char/serial.c<br>
++++ b/hw/char/serial.c<br>
+@@ -1023,22 +1023,6 @@ static const TypeInfo serial_io_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.class_init =3D serial_io_class_init,<br>
+=C2=A0};<br>
+<br>
+-SerialIO *serial_init(int base, qemu_irq irq, int baudbase,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0Chardev *chr, MemoryRegion *system_io)<br>
+-{<br>
+-=C2=A0 =C2=A0 SerialIO *self =3D SERIAL_IO(qdev_create(NULL, TYPE_SERIAL_I=
+O));<br>
+-<br>
+-=C2=A0 =C2=A0 qdev_prop_set_uint32(DEVICE(<wbr>self), &quot;baudbase&quot;=
+, baudbase);<br>
+-=C2=A0 =C2=A0 qdev_prop_set_chr(DEVICE(self)<wbr>, &quot;chardev&quot;, ch=
+r);<br>
+-=C2=A0 =C2=A0 qdev_prop_set_int32(DEVICE(<wbr>self), &quot;instance-id&quo=
+t;, base);<br>
+-=C2=A0 =C2=A0 qdev_init_nofail(DEVICE(self))<wbr>;<br>
+-<br>
+-=C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_<wbr>DEVICE(self), 0, irq);<br>
+-=C2=A0 =C2=A0 memory_region_add_subregion(<wbr>system_io, base, &amp;self-=
+&gt;<a href=3D"http://serial.io" target=3D"_blank">serial.io</a>);<br>
+-<br>
+-=C2=A0 =C2=A0 return self;<br>
+-}<br>
+-<br>
+=C2=A0static Property serial_properties[] =3D {<br>
+=C2=A0 =C2=A0 =C2=A0DEFINE_PROP_CHR(&quot;chardev&quot;, SerialState, chr),=
+<br>
+=C2=A0 =C2=A0 =C2=A0DEFINE_PROP_UINT32(&quot;baudbase&quot;, SerialState, b=
+audbase, 115200),<br>
+diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c<br>
+index 282bbecb24..26fb8fa4de 100644<br>
+--- a/hw/mips/mips_mipssim.c<br>
++++ b/hw/mips/mips_mipssim.c<br>
+@@ -40,6 +40,7 @@<br>
+=C2=A0#include &quot;hw/loader.h&quot;<br>
+=C2=A0#include &quot;elf.h&quot;<br>
+=C2=A0#include &quot;hw/sysbus.h&quot;<br>
++#include &quot;hw/qdev-properties.h&quot;<br>
+=C2=A0#include &quot;exec/address-spaces.h&quot;<br>
+=C2=A0#include &quot;qemu/error-report.h&quot;<br>
+=C2=A0#include &quot;sysemu/qtest.h&quot;<br>
+@@ -219,9 +220,15 @@ mips_mipssim_init(MachineState *machine)<br>
+=C2=A0 =C2=A0 =C2=A0 * A single 16450 sits at offset 0x3f8. It is attached =
+to<br>
+=C2=A0 =C2=A0 =C2=A0 * MIPS CPU INT2, which is interrupt 4.<br>
+=C2=A0 =C2=A0 =C2=A0 */<br>
+-=C2=A0 =C2=A0 if (serial_hd(0))<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 serial_init(0x3f8, env-&gt;irq[4], 115200, ser=
+ial_hd(0),<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 get_=
+system_io());<br>
++=C2=A0 =C2=A0 if (serial_hd(0)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 DeviceState *dev =3D qdev_create(NULL, TYPE_SE=
+RIAL_IO);<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_chr(dev, &quot;chardev&quot;, se=
+rial_hd(0));<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_int32(dev, &quot;instance-id&quo=
+t;, 0x3f8);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_init_nofail(dev);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_<wbr>DEVICE(dev), 0=
+, env-&gt;irq[4]);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_add_io(SYS_BUS_DEVICE(<wbr>dev), 0x3f8,=
+ &amp;SERIAL_IO(dev)-&gt;<a href=3D"http://serial.io" target=3D"_blank">ser=
+ial.io</a>);<br>
++=C2=A0 =C2=A0 }<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0if (nd_table[0].used)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* MIPSnet uses the MIPS CPU INT0, which =
+is interrupt 2. */<br>
+diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h<br>
+index cf9cdafaee..40e35e6fff 100644<br>
+--- a/include/hw/char/serial.h<br>
++++ b/include/hw/char/serial.h<br>
+@@ -109,8 +109,6 @@ void serial_set_frequency(<wbr>SerialState *s, uint32_t=
+ frequency);<br>
+=C2=A0#define TYPE_SERIAL_IO &quot;serial-io&quot;<br>
+=C2=A0#define SERIAL_IO(s) OBJECT_CHECK(SerialIO, (s), TYPE_SERIAL_IO)<br>
+<br>
+-SerialIO *serial_init(int base, qemu_irq irq, int baudbase,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 Chardev *chr, MemoryRegion *system_io);<br>
+=C2=A0SerialMM *serial_mm_init(MemoryRegion *address_space,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 hwaddr base, int regshift,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qemu_irq irq, int baudbase,<br>
+-- <br>
+2.23.0.606.g08da6496b6<br>
+<br>
+<br>
+</blockquote>
+
+--000000000000c4849f0597bbf8bd--

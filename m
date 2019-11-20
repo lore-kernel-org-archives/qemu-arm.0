@@ -1,112 +1,112 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1932961lfc;
-        Wed, 20 Nov 2019 04:32:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz69v+vv65fyv08HAALsZnjXwrY1q25x5SgKYejwACUUzOQCHn3BCUEQA2GIeOAizIG6CcO
-X-Received: by 2002:ae9:ef50:: with SMTP id d77mr2133915qkg.430.1574253158592;
-        Wed, 20 Nov 2019 04:32:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574253158; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1959544lfc;
+        Wed, 20 Nov 2019 04:58:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzLPFDCz89lcGygrVF7kbwOnn94gZMHe158zABbFevjOnvdefU6P6bUtobyL/kaaCEiwd6/
+X-Received: by 2002:ac8:2dc9:: with SMTP id q9mr2445960qta.219.1574254681937;
+        Wed, 20 Nov 2019 04:58:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574254681; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kcfoka4OeNrdzT0R+cn4q9tCJX2yHkTmMCzIsQY+Aiqa5NjD56LUG11J5uvxAGWxIk
-         Tqg71qSmd6yPRyO2/c+jENEk1TWWrOL8D7CZ7ahif/2kOHJL/WfX8yi9jjzKfmt3jrQ2
-         Y0RgmFajbzZLRAmXYBUuSRSJwvR35YEqIpkTuT+9rpn9Sln23sEE6LzPYEuRiexHS11s
-         vvbFaIeJnaza1b1WRFmbQJj71Ajob7/tUdtjtOKlzTkQzl3l1u65/BzgAcn9z5uzqNvn
-         uYXYbXE3WdNjjuYALtZQCcZm9sj8ySzGS3OBsMeiISg0zWMDeaNJxMJbcDNFvh7uMff5
-         cAFA==
+        b=sOADKDhzyjHCD8mWx2gzVZIqV7lAIFJXr7m1P6+rRbuaAn7Wfro6+ZKejKrSlajc4q
+         6vfvklFnN4jqyQ0ET9gGqY89ujPg1NXun0uWf6H960rTV45JFS7dlSvqtkKGDldnv4AU
+         szweH8EhTQa6FsD6yhBN9uy878aWnWZN2Jz6nnlB8rDrwQ3igr5IcHFQjNTSomXY0KfM
+         znTYebtVIxY67WLqR6cdpajvEVeFEhPrXHWuDDsFeSTETVXK4re/dhz+xY/GB9zFt2ta
+         LtNsrd+x4p1EzDtSZuhK9Dqpsyzwj0eyT5tcgXrBCMl/EG6TW9kMajpa+SmtvzaslQ6g
+         pvrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=HNr91VHOHr+EjZehfhxVDFvZzrBBHC3X4uXRcPLqpE0=;
-        b=x5/aMXk8QwlVoiJhel5M5r2xUW7id7lvq+zLGMqjrQgbZGR2dLGJTWzSxT63YFE6eE
-         df50gjGuOj3Kn0vfyO8GMZhCArXZgo879QP6e9xeUlBXQNefQTH0oPC/YP6aTXPeGrDB
-         b4ExTMKP58t9QnwlsUYmEWkhmm68tvxpZKq13WAIGvbP4yRg82z4rji+S5vfwvuVQtXQ
-         MFjq81eX7V64BtM8EOaxE3oq601u4wb/I2dp/bLWqihrY0lbB1o9TzJ+QrF5k/WbZeY4
-         fgt3qWlK4eK9RORGBU9Ut/kt2B6BN+7XGTSxhjvINwv8TE4UEogXb4n+nqzpv1yx9zIM
-         Fq6Q==
+        bh=H/Ctjf8+Vu2PC1M/BSDoeVyXahzZHXAbzR9A6DKDxlY=;
+        b=jlwR7C0oJom8TXh0mJnluuVVI2Mq7CWIN2QkdpwdNyguIWm8QChf+9mdTPYp2pLX08
+         cUuq8ds59sTzSdSDAqCi8FNrZr+ghlODXRH3MIB3a3s58mbN2zHuJszi6dHxUZA9bZ8U
+         HVnqX5o9noxnm0kWubkGsMKQTCtBhEN+EQ+jNi1cSbBDgYiN1Cg8+yG5Ex1QlAYxo5Ta
+         cf/3BWQI1LWex2UDpcxZoX79FZ6RF7ibBz6wADinJtoQHr+wENzxvzrwKSDsLhpn2ki0
+         eJnFw466sFhOsqi9Hs15rXzHzcpsMvh9XHgEJGy5ie5RrbJQCol7FQ7DmlqQyp4RXLv8
+         w/cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FwMBFdYl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b+bS3YoG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g2si15626533qtk.72.2019.11.20.04.32.38
+        by mx.google.com with ESMTPS id n14si2816310qtp.309.2019.11.20.04.58.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Nov 2019 04:32:38 -0800 (PST)
+        Wed, 20 Nov 2019 04:58:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FwMBFdYl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b+bS3YoG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57230 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57426 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXP9x-00023Z-IE
-	for alex.bennee@linaro.org; Wed, 20 Nov 2019 07:32:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55367)
+	id 1iXPYX-0001DX-3v
+	for alex.bennee@linaro.org; Wed, 20 Nov 2019 07:58:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33225)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iXP9l-000216-Eu
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 07:32:26 -0500
+ (envelope-from <philmd@redhat.com>) id 1iXPXz-0001Cc-UP
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 07:57:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iXP9k-00047U-4E
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 07:32:25 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:59455
+ (envelope-from <philmd@redhat.com>) id 1iXPXy-0007lq-MQ
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 07:57:27 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:33485
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iXP9k-00043B-0i
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 07:32:24 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iXPXx-0007lc-V1
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 07:57:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574253137;
+ s=mimecast20190719; t=1574254645;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HNr91VHOHr+EjZehfhxVDFvZzrBBHC3X4uXRcPLqpE0=;
- b=FwMBFdYlZdFmrHaJ95q8GGOiRAq6X+Up6bhvws8D9yy1+u8+GkR0jAk6wrI7b42RBXhovB
- BXGNrDWhYtTmPlPExzi9GQFQrrqc1Kll8SDD8/iq6FA6PHj33JFFK6hcCB/pWr2rChDIrd
- MC47kxXNMBQ5xC5fpnyGuHdnWoG0H5I=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-187-L5A9ikL_N3KZ-v_nJQykHA-1; Wed, 20 Nov 2019 07:32:14 -0500
-Received: by mail-wr1-f72.google.com with SMTP id w9so21126009wrn.9
- for <qemu-arm@nongnu.org>; Wed, 20 Nov 2019 04:32:14 -0800 (PST)
+ bh=H/Ctjf8+Vu2PC1M/BSDoeVyXahzZHXAbzR9A6DKDxlY=;
+ b=b+bS3YoGAkNE216Sz+Xh41z7nmdcqEOiXdauOUlhStAmx1wIZiQcOuEFvmsI/11jDk/9XY
+ UJUFOdOaC+qG8R2RZvYipP2Rgt6p7SYhugtvsFTbDLaSGOQgOl9vW399gdlM8N0gAeiPno
+ ESU/Ah7gFX1S1/dxtAivtMBPaPYArsQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-299-LtNEkN2tOR-JVXWVr4tNqA-1; Wed, 20 Nov 2019 07:57:16 -0500
+Received: by mail-wm1-f71.google.com with SMTP id y14so5087845wmi.4
+ for <qemu-arm@nongnu.org>; Wed, 20 Nov 2019 04:57:16 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Fyra5V6iUSdWSbfZeV/HRb8fo7AY542XDy1yURjY304=;
- b=Lxe9cBBN/G1IILGUGqkfQ+VCxRMfx9fk2luUgYc/cLCq9Ibz6v2b+SBSO3sfkhO4uB
- UMdBNSwnk7M2fQonZMKZYNX2Pb3UAqNTp4eQwktT3cHeZkKWSY7rxBbRWzGN7eOPLdBD
- +tUD0JOo2rxOQKXtNUd8AdpIp8mKsQWhDYMGPQivSCFmDIYEpNiGlollnNlJcroPECSy
- S0ZGUMmDE9uUNyw+M28wKZrNt9U4axMxjla8D7VZmsxiWyC1AAFLHVt2h2HFFRFFxSmH
- D0tO7aZGEci6TqmDDLp6QeEmCPbeU2+wObL8YDdNPhZLcmwrT08AV2Ai4S0KhZ48SloI
- RKcA==
-X-Gm-Message-State: APjAAAXVtU9AY80rZcN386otaC5bpBZKrl0hp20UdkvGp4dqsrQeTOwv
- 589L9yeZ3YtiZw+Z5vvhqaw3oPX63qxnjO/iFWFKLcu6ZRuR1qaWmTOCmRzDC602jFZRWlYSSQ8
- zlvx+FOA3wrYQ
-X-Received: by 2002:adf:9323:: with SMTP id 32mr3022950wro.15.1574253133122;
- Wed, 20 Nov 2019 04:32:13 -0800 (PST)
-X-Received: by 2002:adf:9323:: with SMTP id 32mr3022903wro.15.1574253132875;
- Wed, 20 Nov 2019 04:32:12 -0800 (PST)
+ bh=oAQSreoPfD9tCgT5z71iCNKY83QDH30dryE1pdkJyd8=;
+ b=UaqvfGUmNcaXq3kBb8LBsE+2T7HikxUbSKy40xf+tPiUr+lyBjWhDdroNGXLOwsQRl
+ iC2XWuZVk5HH03tor/2s0L/K7N1tau7iKvZ4tCDLGWvIc4iHYNzhwgkfKkG578dWrRGz
+ tJ9Wz/QvGkfDaDLB33GGU1lZzzLbfJWSn8I4a83anskMvSUfGShIJIbwQbPv/yqVY3U5
+ iUgvFImRxhL1uxuGqoejmgwGajnjC0ZVUR1PnyDeofU3cxyWVRjrz8HO4m1AvqXKW1U8
+ Nk2v+2bDjt2TPlUjnF5SbUSgRNEoSxOF+1xVL0ntX3EivlXXwuXlKc8P9+5jDhG0BzIh
+ QO3Q==
+X-Gm-Message-State: APjAAAVkMoh9o/ImHOa2cFAmSn5tRjzCA4rYKE+xAW9/TLQp/daLb8uV
+ 5ini6ctENqZCyplU8GbSiBWQThpKU04szgYKBAES1byRMRpnGLnLzs7pZTqbscsB0D7mUTjFH6D
+ YCZ2mt5jJ7qzs
+X-Received: by 2002:a1c:9646:: with SMTP id y67mr3009925wmd.79.1574254635509; 
+ Wed, 20 Nov 2019 04:57:15 -0800 (PST)
+X-Received: by 2002:a1c:9646:: with SMTP id y67mr3009887wmd.79.1574254635302; 
+ Wed, 20 Nov 2019 04:57:15 -0800 (PST)
 Received: from [10.201.33.134] ([195.166.127.210])
- by smtp.gmail.com with ESMTPSA id g138sm6672647wmg.11.2019.11.20.04.32.10
+ by smtp.gmail.com with ESMTPSA id o1sm31394257wrs.50.2019.11.20.04.57.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 Nov 2019 04:32:12 -0800 (PST)
-Subject: Re: [PATCH v3 12/33] serial: replace serial_exit_core() with unrealize
+ Wed, 20 Nov 2019 04:57:14 -0800 (PST)
+Subject: Re: [PATCH v3 15/33] serial-mm: add endianness property
 To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  qemu-devel@nongnu.org
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-13-marcandre.lureau@redhat.com>
+ <20191023173154.30051-16-marcandre.lureau@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <58a2eeb4-9241-2beb-d5fd-41e306f5376e@redhat.com>
-Date: Wed, 20 Nov 2019 13:32:10 +0100
+Message-ID: <7581fd7f-9284-9f62-493d-16831209cc0b@redhat.com>
+Date: Wed, 20 Nov 2019 13:57:13 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191023173154.30051-13-marcandre.lureau@redhat.com>
+In-Reply-To: <20191023173154.30051-16-marcandre.lureau@redhat.com>
 Content-Language: en-US
-X-MC-Unique: L5A9ikL_N3KZ-v_nJQykHA-1
+X-MC-Unique: LtNEkN2tOR-JVXWVr4tNqA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
@@ -140,86 +140,60 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ft57EOuZc9KV
+X-TUID: U5eENHirDrdf
 
 On 10/23/19 7:31 PM, Marc-Andr=C3=A9 Lureau wrote:
-> Instead of calling serial_exit_core() directly, use the QDev unrealize
-> callback.
+> Add a qdev property for endianness, so memory region setup can be done
+> in realize.
 >=20
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->   hw/char/serial-pci-multi.c | 2 +-
->   hw/char/serial-pci.c       | 2 +-
->   hw/char/serial.c           | 5 ++++-
->   include/hw/char/serial.h   | 1 -
->   4 files changed, 6 insertions(+), 4 deletions(-)
+>   hw/char/serial.c         | 2 ++
+>   include/hw/char/serial.h | 1 +
+>   2 files changed, 3 insertions(+)
 >=20
-> diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
-> index 60c1c948b8..a3200555aa 100644
-> --- a/hw/char/serial-pci-multi.c
-> +++ b/hw/char/serial-pci-multi.c
-> @@ -56,7 +56,7 @@ static void multi_serial_pci_exit(PCIDevice *dev)
->  =20
->       for (i =3D 0; i < pci->ports; i++) {
->           s =3D pci->state + i;
-> -        serial_exit_core(s);
-> +        object_property_set_bool(OBJECT(s), false, "realized", NULL);
->           memory_region_del_subregion(&pci->iobar, &s->io);
->           g_free(pci->name[i]);
->       }
-> diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
-> index 35a8552674..54bdd98325 100644
-> --- a/hw/char/serial-pci.c
-> +++ b/hw/char/serial-pci.c
-> @@ -69,7 +69,7 @@ static void serial_pci_exit(PCIDevice *dev)
->       PCISerialState *pci =3D DO_UPCAST(PCISerialState, dev, dev);
->       SerialState *s =3D &pci->state;
->  =20
-> -    serial_exit_core(s);
-> +    object_property_set_bool(OBJECT(s), false, "realized", NULL);
->       qemu_free_irq(s->irq);
->   }
->  =20
 > diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index bf34d9594e..667570e310 100644
+> index c28cfc94fd..2f7667c30c 100644
 > --- a/hw/char/serial.c
 > +++ b/hw/char/serial.c
-> @@ -951,8 +951,10 @@ static void serial_realize(DeviceState *dev, Error *=
-*errp)
->       qdev_set_legacy_instance_id(dev, s->instance_id, 2);
->   }
+> @@ -1081,6 +1081,7 @@ SerialMM *serial_mm_init(MemoryRegion *address_spac=
+e,
+>       qdev_prop_set_uint32(DEVICE(s), "baudbase", baudbase);
+>       qdev_prop_set_chr(DEVICE(s), "chardev", chr);
+>       qdev_prop_set_int32(DEVICE(s), "instance-id", base);
+> +    qdev_prop_set_uint8(DEVICE(s), "endianness", end);
 >  =20
-> -void serial_exit_core(SerialState *s)
-> +static void serial_unrealize(DeviceState *dev, Error **errp)
->   {
-> +    SerialState *s =3D SERIAL(dev);
-> +
->       qemu_chr_fe_deinit(&s->chr, false);
+>       qdev_init_nofail(DEVICE(s));
+>       qdev_init_nofail(DEVICE(self));
+> @@ -1102,6 +1103,7 @@ static void serial_mm_instance_init(Object *o)
 >  =20
->       timer_del(s->modem_status_poll);
-> @@ -1014,6 +1016,7 @@ static void serial_class_init(ObjectClass *klass, v=
-oid* data)
->       DeviceClass *dc =3D DEVICE_CLASS(klass);
+>   static Property serial_mm_properties[] =3D {
+>       DEFINE_PROP_UINT8("regshift", SerialMM, regshift, 0),
+> +    DEFINE_PROP_UINT8("endianness", SerialMM, endianness, DEVICE_NATIVE_=
+ENDIAN),
+
+The endianess is related to how the chipset is wired, but is not an=20
+intrinsic part of it.
+Previously, serial_mm_init() was taking care of doing the correct wiring.
+Now it seems the endianess is a property from the hardware.
+
+Anyway:
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+>       DEFINE_PROP_END_OF_LIST(),
+>   };
 >  =20
->       dc->realize =3D serial_realize;
-> +    dc->unrealize =3D serial_unrealize;
->       dc->vmsd =3D &vmstate_serial;
->       dc->props =3D serial_properties;
->   }
 > diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-> index b445df5951..7cc6304f1d 100644
+> index 759c85976d..2d0802a909 100644
 > --- a/include/hw/char/serial.h
 > +++ b/include/hw/char/serial.h
-> @@ -84,7 +84,6 @@ typedef struct SerialState {
+> @@ -86,6 +86,7 @@ typedef struct SerialMM {
+>       SerialState serial;
+>  =20
+>       uint8_t regshift;
+> +    uint8_t endianness;
+>   } SerialMM;
+>  =20
 >   extern const VMStateDescription vmstate_serial;
->   extern const MemoryRegionOps serial_io_ops;
->  =20
-> -void serial_exit_core(SerialState *s);
->   void serial_set_frequency(SerialState *s, uint32_t frequency);
->  =20
->   #define TYPE_SERIAL "serial"
 >=20
-
-Nice.
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 

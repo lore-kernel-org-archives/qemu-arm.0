@@ -1,136 +1,132 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp584330lfc;
-        Tue, 19 Nov 2019 06:13:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxowhiMFZe8Zi69OuoUijCWyLGUQbwjx3VHAiB79P0oGcOvbqy41j15B9fmtmcGekRXgp/T
-X-Received: by 2002:a1c:7d94:: with SMTP id y142mr6344601wmc.168.1574172801179;
-        Tue, 19 Nov 2019 06:13:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574172801; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1718793lfc;
+        Wed, 20 Nov 2019 01:10:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxNdOcrpa9/I0DRTkTinPRuaPFgYRLoYRUcVPlvnBl/U4SfMcMdZqAKunUy4GAsEbmKZy3x
+X-Received: by 2002:a17:906:258a:: with SMTP id m10mr3947355ejb.304.1574241037695;
+        Wed, 20 Nov 2019 01:10:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574241037; cv=none;
         d=google.com; s=arc-20160816;
-        b=cmd0X+5vnCzala1bD0JbHIzYmKPk2kp1HYrQFmavDwLsw2kWxYDtljn7UpaZlOmTSM
-         fpl3uFGIuPs7LK4IWVK63edkjypwix9GLhozx1m1tSRaHqKTOtJXa4S3iZKmWFZWf4i4
-         KgSKbOi3XzS3H9dAT4nwVrEIs6UcFNQ3mCZZ9A2bzEaSGb9gChmj5D+1u4qAUvMR5XqI
-         MIGZzipcvWKHf1/StZw5D+aLuOGBY98DuoShQsKkZshY451UGxLb9DhSG3Epw5WlaJzd
-         mhK+avJKH5oyXIWZYCH84wpP3VWvG9Ggugc/MFftK1VKLPplWTuIo7xuzU6+gHkqFtPf
-         sNfw==
+        b=bCOorLckwTbAKhCELbjtwR5HZ7EjM2wozStLNNRBJpI5ssz2ytzYNAm6vsLipe3/6r
+         uxC67SEIRqAuhkXV+JNJ4X6KMuYVWHMxQF3xkbhD5q1maLEyklXW350+2KAveH/eptP9
+         G9XYgUCw+gp0uNgMi3NeAJb7NbSb5FItrGZ061k/hMObdlhIpfyvTtI3OHeDs+RZ2rJx
+         GlPpTleYD6HSAtxXnimmrLk2FBzPVomF7IBOtiyVjPLQ6YppUc71GbFIsnr5fICeanUt
+         Zj1lSmRgl4NvA8K4bvlvjvsDeY0gZ9DvLtXxjWPlb0qsnWH8eQMcAjN0SLPmsiNxkCZ9
+         7UGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=Cw64o6iXBapNzumze8kc8aj69UM/+6AIvTmGQmhoghM=;
-        b=SoD7L4WFuvEhrSNToRHajJAY1BC/tHfN6rlfLpXHlGdCdFX5LdUaNbuRj+RinSmXlS
-         8X4lEe+yQNAXS1EVTJmO51LEjU+rjEJhwt5oqproblRy5h5wAxFhIxAr1t2jTgLl4V9a
-         XLVUjYY3ic6Hit+eUp5jSMiklSDdfpjKKZxeZrRhdt2x80BOZgQUdoIG+wpGFNqkkzuc
-         oKN6UYKWgrtJ+AMUdvAPuY43mu/wtYpr/l6berNVRfog2am3rSyR4CG6vdtAtBT9ZxKH
-         DCv6g/66zEm5MV2bpGUshv1rN6lyP9pKbjitYezLWDbw4wQUf4HKdWfHwrxLydDOweBz
-         lHOg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=vBIdHboBy7XLGKhKEx3+s1cWdLSAHcdjyZy2BY7Fk34=;
+        b=YNGdEKqpuoId+xXXpqOiYSu4uue/rWsHFpUG9k/1T/CcFghV7ob0vq11DlZeTfXKQw
+         KXbpG2pw/jtdzDWtGnel2wmIjSwUmlzSEn0wtKT5qkcvoU0tpI3PLyRuXQO1ZcpqpOjh
+         KByDmn5yJAH5K/y+miNPVegzCQzQOos0XspwoQyx6oYfEAyn7FnMgBdo7C8s8UfRHBeV
+         8RYgEXPjrizDWkRu7YHVODGnTIpgxi3btgCgcG+ApIKpy9h8g6MgqeCdUP5b/Le6kdTP
+         7e4PsNQOzUuC74MXyI779vDiGV9RqiKctMig8UrpuZqo+f2hs0cKfNdFxEPx+H9kcjda
+         ADmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of clg@kaod.org designates 178.33.111.180 as permitted sender) smtp.mailfrom=clg@kaod.org
-Return-Path: <clg@kaod.org>
-Received: from 1.mo173.mail-out.ovh.net (1.mo173.mail-out.ovh.net. [178.33.111.180])
-        by mx.google.com with ESMTPS id g14si3189312wmk.34.2019.11.19.06.13.20
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VEEV0y92;
+       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id z5si15417310ejm.51.2019.11.20.01.10.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Nov 2019 06:13:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of clg@kaod.org designates 178.33.111.180 as permitted sender) client-ip=178.33.111.180;
+        Wed, 20 Nov 2019 01:10:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of clg@kaod.org designates 178.33.111.180 as permitted sender) smtp.mailfrom=clg@kaod.org
-Received: from player795.ha.ovh.net (unknown [10.108.57.53])
-	by mo173.mail-out.ovh.net (Postfix) with ESMTP id 89F5A1228DD
-	for <alex.bennee@linaro.org>; Tue, 19 Nov 2019 15:13:20 +0100 (CET)
-Received: from kaod.org (deibp9eh1--blueice1n4.emea.ibm.com [195.212.29.166])
-	(Authenticated sender: clg@kaod.org)
-	by player795.ha.ovh.net (Postfix) with ESMTPSA id 9BA1DC18AAE1;
-	Tue, 19 Nov 2019 14:13:12 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	Joel Stanley <joel@jms.id.au>,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 07/17] aspeed/scu: Fix W1C behavior
-Date: Tue, 19 Nov 2019 15:12:01 +0100
-Message-Id: <20191119141211.25716-8-clg@kaod.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191119141211.25716-1-clg@kaod.org>
-References: <20191119141211.25716-1-clg@kaod.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VEEV0y92;
+       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1574241036;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=vBIdHboBy7XLGKhKEx3+s1cWdLSAHcdjyZy2BY7Fk34=;
+	b=VEEV0y92mjKJEgWwHldUeBraA9+qBHN311oAGESqHxtXHM+8/c+EghOQ9qLo/sNtfVFxLn
+	Xb5LTBwj5/fFjOpb3FRlWSBSZ9tZmVs3+yp1BlxbM3Q7z6BtbT1bvjmDr342tPkXM8c//3
+	9tuZSElVYY8Zg+fvSIWo/eQAQzQYT7Y=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-169-E4UftHt-OXCycQAORiqjUg-1; Wed, 20 Nov 2019 04:10:35 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3501A107ACC4;
+	Wed, 20 Nov 2019 09:10:34 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-116-131.ams2.redhat.com [10.36.116.131])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A37BE60BAB;
+	Wed, 20 Nov 2019 09:10:16 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-arm@nongnu.org,
+	libvir-list@redhat.com,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH for-5.0 0/4] Remove the deprecated bluetooth subsystem
+Date: Wed, 20 Nov 2019 10:10:10 +0100
+Message-Id: <20191120091014.16883-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 17906312122056477457
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudegkedgiedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdqfffguegfifdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpudelhedrvdduvddrvdelrdduieeinecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejleehrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheprghlvgigrdgsvghnnhgvvgeslhhinhgrrhhordhorhhgnecuvehluhhsthgvrhfuihiivgepud
-X-TUID: iJARYGLGRDQr
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: E4UftHt-OXCycQAORiqjUg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+X-TUID: XXtmLkC18NwC
 
-From: Joel Stanley <joel@jms.id.au>
+This patch series removes the bitrotten bluetooth subsystem. See
+the patch description of the third patch for the rationale.
 
-This models the clock write one to clear registers, and fixes up some
-incorrect behavior in all of the write to clear registers.
+Thomas Huth (4):
+  hw/arm/nseries: Replace the bluetooth chardev with a "null" chardev
+  hw/usb: Remove the USB bluetooth dongle device
+  Remove the core bluetooth code
+  Remove libbluetooth / bluez from the CI tests
 
-There was also a typo in one of the register definitions.
+ .gitlab-ci.yml                             |    2 +-
+ Makefile.objs                              |    2 -
+ bt-host.c                                  |  198 --
+ bt-vhci.c                                  |  167 --
+ configure                                  |   31 -
+ hw/Kconfig                                 |    1 -
+ hw/Makefile.objs                           |    1 -
+ hw/arm/nseries.c                           |   16 +-
+ hw/bt/Kconfig                              |    2 -
+ hw/bt/Makefile.objs                        |    3 -
+ hw/bt/core.c                               |  143 --
+ hw/bt/hci-csr.c                            |  512 -----
+ hw/bt/hci.c                                | 2263 --------------------
+ hw/bt/hid.c                                |  553 -----
+ hw/bt/l2cap.c                              | 1367 ------------
+ hw/bt/sdp.c                                |  989 ---------
+ hw/usb/Kconfig                             |    5 -
+ hw/usb/Makefile.objs                       |    1 -
+ hw/usb/dev-bluetooth.c                     |  581 -----
+ include/hw/bt.h                            | 2177 -------------------
+ include/sysemu/bt.h                        |   20 -
+ qemu-deprecated.texi                       |    7 -
+ qemu-doc.texi                              |   17 -
+ qemu-options.hx                            |   79 -
+ tests/docker/dockerfiles/fedora.docker     |    1 -
+ tests/docker/dockerfiles/ubuntu.docker     |    1 -
+ tests/docker/dockerfiles/ubuntu1804.docker |    1 -
+ vl.c                                       |  136 --
+ 28 files changed, 8 insertions(+), 9268 deletions(-)
+ delete mode 100644 bt-host.c
+ delete mode 100644 bt-vhci.c
+ delete mode 100644 hw/bt/Kconfig
+ delete mode 100644 hw/bt/Makefile.objs
+ delete mode 100644 hw/bt/core.c
+ delete mode 100644 hw/bt/hci-csr.c
+ delete mode 100644 hw/bt/hci.c
+ delete mode 100644 hw/bt/hid.c
+ delete mode 100644 hw/bt/l2cap.c
+ delete mode 100644 hw/bt/sdp.c
+ delete mode 100644 hw/usb/dev-bluetooth.c
+ delete mode 100644 include/hw/bt.h
+ delete mode 100644 include/sysemu/bt.h
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-[clg: checkpatch.pl fixes ]
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/misc/aspeed_scu.c | 19 ++++++++++++++-----
- 1 file changed, 14 insertions(+), 5 deletions(-)
-
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 717509bc5460..f62fa25e3474 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -98,7 +98,7 @@
- #define AST2600_CLK_STOP_CTRL     TO_REG(0x80)
- #define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
- #define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
--#define AST2600_CLK_STOP_CTR2L_CLR TO_REG(0x94)
-+#define AST2600_CLK_STOP_CTRL2_CLR TO_REG(0x94)
- #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
- #define AST2600_HPLL_PARAM        TO_REG(0x200)
- #define AST2600_HPLL_EXT          TO_REG(0x204)
-@@ -532,11 +532,13 @@ static uint64_t aspeed_ast2600_scu_read(void *opaque, hwaddr offset,
-     return s->regs[reg];
- }
- 
--static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset, uint64_t data,
--                                     unsigned size)
-+static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
-+                                     uint64_t data64, unsigned size)
- {
-     AspeedSCUState *s = ASPEED_SCU(opaque);
-     int reg = TO_REG(offset);
-+    /* Truncate here so bitwise operations below behave as expected */
-+    uint32_t data = data64;
- 
-     if (reg >= ASPEED_AST2600_SCU_NR_REGS) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-@@ -563,15 +565,22 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset, uint64_t data,
-         /* fall through */
-     case AST2600_SYS_RST_CTRL:
-     case AST2600_SYS_RST_CTRL2:
-+    case AST2600_CLK_STOP_CTRL:
-+    case AST2600_CLK_STOP_CTRL2:
-         /* W1S (Write 1 to set) registers */
-         s->regs[reg] |= data;
-         return;
-     case AST2600_SYS_RST_CTRL_CLR:
-     case AST2600_SYS_RST_CTRL2_CLR:
-+    case AST2600_CLK_STOP_CTRL_CLR:
-+    case AST2600_CLK_STOP_CTRL2_CLR:
-     case AST2600_HW_STRAP1_CLR:
-     case AST2600_HW_STRAP2_CLR:
--        /* W1C (Write 1 to clear) registers */
--        s->regs[reg] &= ~data;
-+        /*
-+         * W1C (Write 1 to clear) registers are offset by one address from
-+         * the data register
-+         */
-+        s->regs[reg - 1] &= ~data;
-         return;
- 
-     case AST2600_RNG_DATA:
--- 
-2.21.0
+--=20
+2.23.0

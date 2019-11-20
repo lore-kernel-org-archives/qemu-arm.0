@@ -1,101 +1,118 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1866132lfc;
-        Wed, 20 Nov 2019 03:32:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz3uzMdoTztRPAFetE+GfO8tnYe3gQhfgCqi03SDd/0LMEB73nuyPd4I3sig/dElCKrc3CF
-X-Received: by 2002:a17:906:1c07:: with SMTP id k7mr4635078ejg.229.1574249543866;
-        Wed, 20 Nov 2019 03:32:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574249543; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1932961lfc;
+        Wed, 20 Nov 2019 04:32:38 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz69v+vv65fyv08HAALsZnjXwrY1q25x5SgKYejwACUUzOQCHn3BCUEQA2GIeOAizIG6CcO
+X-Received: by 2002:ae9:ef50:: with SMTP id d77mr2133915qkg.430.1574253158592;
+        Wed, 20 Nov 2019 04:32:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574253158; cv=none;
         d=google.com; s=arc-20160816;
-        b=RSREHOCqA8UAILpKxCJVEvFeo1E4HB2I0BKoOz0MthqMsxzWpbN9zFi7hNgt+IibdX
-         ZVGVls3Zh/lzGCuu/3uruwEHwdPoYVk9p10DLnTf417yOCEQSdwVEpTsQGVUqfCzIueN
-         3M1JJmV+UCFU8YQ8Uxh67yZ7ZLIuhN/bI0Yjac5rah9bGUA7ddPr0yeaTq9xXgwFhZ52
-         C63ET1tiLVak7QhyHdPDE3fl5lsuXeCn4959OgcYu/RqTrS2eNOftDXIeHEWEiZoQtxQ
-         onK1be0cWTMkPPJxxUyeTnaVF+a30gXqXkjXIqHKrYh2+gKDX6WHDhQ5mqPAir6dxw7S
-         EDqQ==
+        b=Kcfoka4OeNrdzT0R+cn4q9tCJX2yHkTmMCzIsQY+Aiqa5NjD56LUG11J5uvxAGWxIk
+         Tqg71qSmd6yPRyO2/c+jENEk1TWWrOL8D7CZ7ahif/2kOHJL/WfX8yi9jjzKfmt3jrQ2
+         Y0RgmFajbzZLRAmXYBUuSRSJwvR35YEqIpkTuT+9rpn9Sln23sEE6LzPYEuRiexHS11s
+         vvbFaIeJnaza1b1WRFmbQJj71Ajob7/tUdtjtOKlzTkQzl3l1u65/BzgAcn9z5uzqNvn
+         uYXYbXE3WdNjjuYALtZQCcZm9sj8ySzGS3OBsMeiISg0zWMDeaNJxMJbcDNFvh7uMff5
+         cAFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=/JgdlCQYl45ZG1KuUlcgoaDF4DVZdtXJ4z9bLmaP+ck=;
-        b=XnyoZzaWqfiCGDpwqe2Uei9tKDOJ7TDzXKZzjpLPmJI+8IDkoitfyna36za/WYeHl1
-         H/rLSWb83U6IQVAR2SPdklcp1CGEU3F7YuOKAoWUZW9Hmv06QrKi5Tk3ZW2hkZuAMrhI
-         Y+nWd287A/W7wz9JPmEePanqy/bXhxZQaRiwMRZ1kDbC+TYHAzheycgsK9q5QzDtaVeS
-         tDY6/dS8LNxd2sn4Yi9gtTbvo3OGP6qygGT+xUtmTdXXgJ0JsstusMBUVhndp2nBbf9u
-         ATRSajkh5P3ofqoUv50MCbngNy6zmel+gJjkd7L6MGdA+9+EFCsLB+W8etaG8kcM/BKE
-         YBMQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=HNr91VHOHr+EjZehfhxVDFvZzrBBHC3X4uXRcPLqpE0=;
+        b=x5/aMXk8QwlVoiJhel5M5r2xUW7id7lvq+zLGMqjrQgbZGR2dLGJTWzSxT63YFE6eE
+         df50gjGuOj3Kn0vfyO8GMZhCArXZgo879QP6e9xeUlBXQNefQTH0oPC/YP6aTXPeGrDB
+         b4ExTMKP58t9QnwlsUYmEWkhmm68tvxpZKq13WAIGvbP4yRg82z4rji+S5vfwvuVQtXQ
+         MFjq81eX7V64BtM8EOaxE3oq601u4wb/I2dp/bLWqihrY0lbB1o9TzJ+QrF5k/WbZeY4
+         fgt3qWlK4eK9RORGBU9Ut/kt2B6BN+7XGTSxhjvINwv8TE4UEogXb4n+nqzpv1yx9zIM
+         Fq6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fJytLYSQ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FwMBFdYl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pg2si15848070ejb.216.2019.11.20.03.32.23
+        by mx.google.com with ESMTPS id g2si15626533qtk.72.2019.11.20.04.32.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Nov 2019 03:32:23 -0800 (PST)
+        Wed, 20 Nov 2019 04:32:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fJytLYSQ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FwMBFdYl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56702 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXODe-00058c-P2
-	for alex.bennee@linaro.org; Wed, 20 Nov 2019 06:32:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41726)
+	id 1iXP9x-00023Z-IE
+	for alex.bennee@linaro.org; Wed, 20 Nov 2019 07:32:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55367)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1iXODV-00056z-Dn
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 06:32:15 -0500
+ (envelope-from <philmd@redhat.com>) id 1iXP9l-000216-Eu
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 07:32:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1iXODT-0007TZ-C1
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 06:32:13 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:30421
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1iXP9k-00047U-4E
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 07:32:25 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:59455
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1iXODT-0007Rj-7g
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 06:32:11 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iXP9k-00043B-0i
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 07:32:24 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574249530;
+ s=mimecast20190719; t=1574253137;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/JgdlCQYl45ZG1KuUlcgoaDF4DVZdtXJ4z9bLmaP+ck=;
- b=fJytLYSQqDvyhnynzmHH3OvarGsw5z1wDCrLMLmL244jAjyIQy3c5QEg/mv5H0Tn309etp
- YsgAYCnB5+O1wwkeL0WJ2vLK8BqNmrXjXoYGVLpAxCCHHZYL/r+hfJt2gypO0L6ZUpYwzA
- rQElJuzupGIN5ByzTim+Snafebj55RM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-285-SHyWThuAP2iLeM0T-4HBRQ-1; Wed, 20 Nov 2019 06:30:58 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3758E802689;
- Wed, 20 Nov 2019 11:30:57 +0000 (UTC)
-Received: from work-vm (unknown [10.36.118.40])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3B67D5ED24;
- Wed, 20 Nov 2019 11:30:55 +0000 (UTC)
-Date: Wed, 20 Nov 2019 11:30:52 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH] misc/pca9552: Add qom set and get
-Message-ID: <20191120113052.GB2858@work-vm>
-References: <20191118061757.52550-1-joel@jms.id.au>
- <42f378d5-e7ea-11ce-11d5-9589fe7194d2@kaod.org>
+ bh=HNr91VHOHr+EjZehfhxVDFvZzrBBHC3X4uXRcPLqpE0=;
+ b=FwMBFdYlZdFmrHaJ95q8GGOiRAq6X+Up6bhvws8D9yy1+u8+GkR0jAk6wrI7b42RBXhovB
+ BXGNrDWhYtTmPlPExzi9GQFQrrqc1Kll8SDD8/iq6FA6PHj33JFFK6hcCB/pWr2rChDIrd
+ MC47kxXNMBQ5xC5fpnyGuHdnWoG0H5I=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-187-L5A9ikL_N3KZ-v_nJQykHA-1; Wed, 20 Nov 2019 07:32:14 -0500
+Received: by mail-wr1-f72.google.com with SMTP id w9so21126009wrn.9
+ for <qemu-arm@nongnu.org>; Wed, 20 Nov 2019 04:32:14 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Fyra5V6iUSdWSbfZeV/HRb8fo7AY542XDy1yURjY304=;
+ b=Lxe9cBBN/G1IILGUGqkfQ+VCxRMfx9fk2luUgYc/cLCq9Ibz6v2b+SBSO3sfkhO4uB
+ UMdBNSwnk7M2fQonZMKZYNX2Pb3UAqNTp4eQwktT3cHeZkKWSY7rxBbRWzGN7eOPLdBD
+ +tUD0JOo2rxOQKXtNUd8AdpIp8mKsQWhDYMGPQivSCFmDIYEpNiGlollnNlJcroPECSy
+ S0ZGUMmDE9uUNyw+M28wKZrNt9U4axMxjla8D7VZmsxiWyC1AAFLHVt2h2HFFRFFxSmH
+ D0tO7aZGEci6TqmDDLp6QeEmCPbeU2+wObL8YDdNPhZLcmwrT08AV2Ai4S0KhZ48SloI
+ RKcA==
+X-Gm-Message-State: APjAAAXVtU9AY80rZcN386otaC5bpBZKrl0hp20UdkvGp4dqsrQeTOwv
+ 589L9yeZ3YtiZw+Z5vvhqaw3oPX63qxnjO/iFWFKLcu6ZRuR1qaWmTOCmRzDC602jFZRWlYSSQ8
+ zlvx+FOA3wrYQ
+X-Received: by 2002:adf:9323:: with SMTP id 32mr3022950wro.15.1574253133122;
+ Wed, 20 Nov 2019 04:32:13 -0800 (PST)
+X-Received: by 2002:adf:9323:: with SMTP id 32mr3022903wro.15.1574253132875;
+ Wed, 20 Nov 2019 04:32:12 -0800 (PST)
+Received: from [10.201.33.134] ([195.166.127.210])
+ by smtp.gmail.com with ESMTPSA id g138sm6672647wmg.11.2019.11.20.04.32.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 20 Nov 2019 04:32:12 -0800 (PST)
+Subject: Re: [PATCH v3 12/33] serial: replace serial_exit_core() with unrealize
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
+ <20191023173154.30051-13-marcandre.lureau@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <58a2eeb4-9241-2beb-d5fd-41e306f5376e@redhat.com>
+Date: Wed, 20 Nov 2019 13:32:10 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <42f378d5-e7ea-11ce-11d5-9589fe7194d2@kaod.org>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: SHyWThuAP2iLeM0T-4HBRQ-1
+In-Reply-To: <20191023173154.30051-13-marcandre.lureau@redhat.com>
+Content-Language: en-US
+X-MC-Unique: L5A9ikL_N3KZ-v_nJQykHA-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,251 +124,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Rashmica Gupta <rashmica.g@gmail.com>
+Cc: Corey Minyard <cminyard@mvista.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Magnus Damm <magnus.damm@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, qemu-ppc@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Paul Burton <pburton@wavecomp.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GaJqcw7PwCuB
+X-TUID: Ft57EOuZc9KV
 
-* C=E9dric Le Goater (clg@kaod.org) wrote:
-> On 18/11/2019 07:17, Joel Stanley wrote:
-> > Following the pattern of the work recently done with the ASPEED GPIO
-> > model, this adds support for inspecting and modifying the PCA9552 LEDs
-> > from the monitor.
-> >=20
-> >  (qemu) qom-set  /machine/unattached/device[17] led0 on
-> >  (qemu) qom-get  /machine/unattached/device[17] led0
-> >  "on"
-> >=20
-> >  (qemu) qom-set  /machine/unattached/device[17] led0 off
-> >  (qemu) qom-get  /machine/unattached/device[17] led0
-> >  "off"
-> >=20
-> >  (qemu) qom-set  /machine/unattached/device[17] led0 pwm0
-> >  (qemu) qom-get  /machine/unattached/device[17] led0
-> >  "pwm0"
-> >=20
-> >  (qemu) qom-set  /machine/unattached/device[17] led0 pwm1
-> >  (qemu) qom-get  /machine/unattached/device[17] led0
-> >  "pwm1"
+On 10/23/19 7:31 PM, Marc-Andr=C3=A9 Lureau wrote:
+> Instead of calling serial_exit_core() directly, use the QDev unrealize
+> callback.
 >=20
-> It would be nice to revive the QOM get patchset from David.=20
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>   hw/char/serial-pci-multi.c | 2 +-
+>   hw/char/serial-pci.c       | 2 +-
+>   hw/char/serial.c           | 5 ++++-
+>   include/hw/char/serial.h   | 1 -
+>   4 files changed, 6 insertions(+), 4 deletions(-)
 >=20
-> =09http://patchwork.ozlabs.org/patch/666458/
+> diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
+> index 60c1c948b8..a3200555aa 100644
+> --- a/hw/char/serial-pci-multi.c
+> +++ b/hw/char/serial-pci-multi.c
+> @@ -56,7 +56,7 @@ static void multi_serial_pci_exit(PCIDevice *dev)
+>  =20
+>       for (i =3D 0; i < pci->ports; i++) {
+>           s =3D pci->state + i;
+> -        serial_exit_core(s);
+> +        object_property_set_bool(OBJECT(s), false, "realized", NULL);
+>           memory_region_del_subregion(&pci->iobar, &s->io);
+>           g_free(pci->name[i]);
+>       }
+> diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
+> index 35a8552674..54bdd98325 100644
+> --- a/hw/char/serial-pci.c
+> +++ b/hw/char/serial-pci.c
+> @@ -69,7 +69,7 @@ static void serial_pci_exit(PCIDevice *dev)
+>       PCISerialState *pci =3D DO_UPCAST(PCISerialState, dev, dev);
+>       SerialState *s =3D &pci->state;
+>  =20
+> -    serial_exit_core(s);
+> +    object_property_set_bool(OBJECT(s), false, "realized", NULL);
+>       qemu_free_irq(s->irq);
+>   }
+>  =20
+> diff --git a/hw/char/serial.c b/hw/char/serial.c
+> index bf34d9594e..667570e310 100644
+> --- a/hw/char/serial.c
+> +++ b/hw/char/serial.c
+> @@ -951,8 +951,10 @@ static void serial_realize(DeviceState *dev, Error *=
+*errp)
+>       qdev_set_legacy_instance_id(dev, s->instance_id, 2);
+>   }
+>  =20
+> -void serial_exit_core(SerialState *s)
+> +static void serial_unrealize(DeviceState *dev, Error **errp)
+>   {
+> +    SerialState *s =3D SERIAL(dev);
+> +
+>       qemu_chr_fe_deinit(&s->chr, false);
+>  =20
+>       timer_del(s->modem_status_poll);
+> @@ -1014,6 +1016,7 @@ static void serial_class_init(ObjectClass *klass, v=
+oid* data)
+>       DeviceClass *dc =3D DEVICE_CLASS(klass);
+>  =20
+>       dc->realize =3D serial_realize;
+> +    dc->unrealize =3D serial_unrealize;
+>       dc->vmsd =3D &vmstate_serial;
+>       dc->props =3D serial_properties;
+>   }
+> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+> index b445df5951..7cc6304f1d 100644
+> --- a/include/hw/char/serial.h
+> +++ b/include/hw/char/serial.h
+> @@ -84,7 +84,6 @@ typedef struct SerialState {
+>   extern const VMStateDescription vmstate_serial;
+>   extern const MemoryRegionOps serial_io_ops;
+>  =20
+> -void serial_exit_core(SerialState *s);
+>   void serial_set_frequency(SerialState *s, uint32_t frequency);
+>  =20
+>   #define TYPE_SERIAL "serial"
 >=20
-> Did we reach some consensus ?=20
 
-I don't think so; there were some other people implementing
-similar patches; it got bogged down in the question of string visitors
-and I hadn't dug to see if that's got fixed in the last 3 years.
-
-Dave
-
-
-> > Signed-off-by: Joel Stanley <joel@jms.id.au>
->=20
-> Some comments below.
->=20
-> > ---
-> > The qom device in mainline qemu is a different path. Using the monitor
-> > examine `info qom-tree /machine/unattached/` to discover it.
-> >=20
-> > This can be tested with a Witherspoon image.
-> >=20
-> > $ wget https://openpower.xyz/job/openbmc-build/distro=3Dubuntu,label=3D=
-builder,target=3Dwitherspoon/lastSuccessfulBuild/artifact/deploy/images/wit=
-herspoon/obmc-phosphor-image-witherspoon.ubi.mtd
-> >=20
-> > $ qemu-system-arm -M witherspoon-bmc -serial pty -monitor pty -nographi=
-c \
-> >  -drive file=3Dobmc-phosphor-image-witherspoon.ubi.mtd,format=3Draw,if=
-=3Dmtd
-> > char device redirected to /dev/pts/5 (label compat_monitor0)
-> > char device redirected to /dev/pts/10 (label serial0)
-> >=20
-> > $ screen /dev/pts/5
-> > QEMU 4.1.91 monitor - type 'help' for more information
-> > (qemu) qom-get  /machine/unattached/device[17] led0
-> > "off"
-> >=20
-> > $ screen /dev/pts/19
-> > root@witherspoon:~# cd /sys/class/gpio/
-> > root@witherspoon:/sys/class/gpio# echo 248 > export
-> > root@witherspoon:/sys/class/gpio# cat gpio248/value
-> > 0
-> >=20
-> > (qemu) qom-set  /machine/unattached/device[17] led0 on
-> >=20
-> > root@witherspoon:/sys/class/gpio# echo out > gpio248/direction
-> > root@witherspoon:/sys/class/gpio# cat gpio248/value
-> > 1
-> >=20
-> > (qemu) qom-get  /machine/unattached/device[17] led0
-> > "on"
-> >=20
-> > (qemu) qom-set  /machine/unattached/device[17] led0 off
-> > (qemu) qom-get  /machine/unattached/device[17] led0
-> > "off"
-> >=20
-> > root@witherspoon:/sys/class/gpio# cat gpio248/value
-> > 0
-> >=20
-> > Signed-off-by: Joel Stanley <joel@jms.id.au>
-> > ---
-> >  hw/misc/pca9552.c | 91 +++++++++++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 91 insertions(+)
-> >=20
-> > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-> > index 73be28d9369c..0362aac8c862 100644
-> > --- a/hw/misc/pca9552.c
-> > +++ b/hw/misc/pca9552.c
-> > @@ -15,12 +15,16 @@
-> >  #include "hw/misc/pca9552.h"
-> >  #include "hw/misc/pca9552_regs.h"
-> >  #include "migration/vmstate.h"
-> > +#include "qapi/error.h"
-> > +#include "qapi/visitor.h"
-> > =20
-> >  #define PCA9552_LED_ON   0x0
-> >  #define PCA9552_LED_OFF  0x1
-> >  #define PCA9552_LED_PWM0 0x2
-> >  #define PCA9552_LED_PWM1 0x3
-> > =20
-> > +static const char *led_state[] =3D {"on", "off", "pwm0", "pwm1"};
-> > +
-> >  static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin)
-> >  {
-> >      uint8_t reg   =3D PCA9552_LS0 + (pin / 4);
-> > @@ -169,6 +173,84 @@ static int pca9552_event(I2CSlave *i2c, enum i2c_e=
-vent event)
-> >      return 0;
-> >  }
-> > =20
-> > +static void pca9552_get_led(Object *obj, Visitor *v, const char *name,
-> > +                            void *opaque, Error **errp)
-> > +{
-> > +    PCA9552State *s =3D PCA9552(obj);
-> > +    int led, rc, reg;
-> > +    char *str;
-> > +    uint8_t state;
-> > +
-> > +    rc =3D sscanf(name, "led%2d", &led);
-> > +    if (rc !=3D 1) {
-> > +        error_setg(errp, "%s: error reading %s", __func__, name);
-> > +        return;
-> > +    }
-> > +    if (led < 0 || led > s->nr_leds) {
-> > +        error_setg(errp, "%s invalid led %s", __func__, name);
-> > +        return;
-> > +    }
-> > +    /*
-> > +     * Get the LSx register as the qom interface should expose the dev=
-ice
-> > +     * state, not the modeled 'input line' behaviour which would come =
-from
-> > +     * reading the INPUTx reg
-> > +     */
-> > +    reg =3D PCA9552_LS0 + led / 4;
-> > +    state =3D (pca9552_read(s, reg) >> (led % 8)) & 0x3;
->=20
-> Could we add accessors to extract the register fields and to clarify=20
-> the layout ?=20
->=20
-> > +    str =3D g_strdup(led_state[state]);
-> > +    visit_type_str(v, name, &str, errp);
-> > +}
-> > +
-> > +/*
-> > + * Return an LED selector register value based on an existing one, wit=
-h
-> > + * the appropriate 2-bit state value set for the given LED number (0-3=
-).
-> > + */
-> > +static inline uint8_t pca955x_ledsel(uint8_t oldval, int led_num, int =
-state)
-> > +{
-> > +        return (oldval & (~(0x3 << (led_num << 1)))) |
-> > +                ((state & 0x3) << (led_num << 1));
-> > +}
-> > +
-> > +static void pca9552_set_led(Object *obj, Visitor *v, const char *name,
-> > +                            void *opaque, Error **errp)
-> > +{
-> > +    PCA9552State *s =3D PCA9552(obj);
-> > +    Error *local_err =3D NULL;
-> > +    int led, rc, reg, val;
-> > +    uint8_t state;
-> > +    char *state_str;
-> > +
-> > +    visit_type_str(v, name, &state_str, &local_err);
-> > +    if (local_err) {
-> > +        error_propagate(errp, local_err);
-> > +        return;
-> > +    }
-> > +    rc =3D sscanf(name, "led%2d", &led);
-> > +    if (rc !=3D 1) {
-> > +        error_setg(errp, "%s: error reading %s", __func__, name);
-> > +        return;
-> > +    }
-> > +    if (led < 0 || led > s->nr_leds) {
-> > +        error_setg(errp, "%s invalid led %s", __func__, name);
-> > +        return;
-> > +    }
-> > +
-> > +    for (state =3D 0; state < ARRAY_SIZE(led_state); state++) {
-> > +        if (!strcmp(state_str, led_state[state])) {
-> > +            break;
-> > +        }
-> > +    }
-> > +    if (state >=3D ARRAY_SIZE(led_state)) {
-> > +        error_setg(errp, "%s invalid led state %s", __func__, state_st=
-r);
-> > +        return;
-> > +    }
-> > +
-> > +    reg =3D PCA9552_LS0 + led / 4;
-> > +    val =3D pca9552_read(s, reg);
-> > +    val =3D pca955x_ledsel(val, led % 4, state);
-> > +    pca9552_write(s, reg, val);
-> > +}
-> > +
-> >  static const VMStateDescription pca9552_vmstate =3D {
-> >      .name =3D "PCA9552",
-> >      .version_id =3D 0,
-> > @@ -204,6 +286,7 @@ static void pca9552_reset(DeviceState *dev)
-> >  static void pca9552_initfn(Object *obj)
-> >  {
-> >      PCA9552State *s =3D PCA9552(obj);
-> > +    int led;
-> > =20
-> >      /* If support for the other PCA955X devices are implemented, these
-> >       * constant values might be part of class structure describing the
-> > @@ -211,6 +294,14 @@ static void pca9552_initfn(Object *obj)
-> >       */
-> >      s->max_reg =3D PCA9552_LS3;
-> >      s->nr_leds =3D 16;
-> > +
-> > +    for (led =3D 0; led < s->nr_leds; led++) {
-> > +        char *name;
-> > +
-> > +        name =3D g_strdup_printf("led%d", led);
-> > +        object_property_add(obj, name, "bool", pca9552_get_led, pca955=
-2_set_led,
-> > +                            NULL, NULL, NULL);
->=20
-> It misses a :
->=20
->    g_free(name)
->=20
-> C.
->=20
-> > +    }
-> >  }
-> > =20
-> >  static void pca9552_class_init(ObjectClass *klass, void *data)
-> >=20
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+Nice.
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 

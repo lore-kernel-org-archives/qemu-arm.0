@@ -1,99 +1,110 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1260849lfc;
-        Tue, 19 Nov 2019 16:08:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyylV0fknnBUfqa/yqtfon/XWZn1tpMpY62NoHH3gmQZ2oS8e3Kra09ZzmaK474Xl2vpDJY
-X-Received: by 2002:a17:906:85c8:: with SMTP id i8mr806529ejy.46.1574208489236;
-        Tue, 19 Nov 2019 16:08:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574208489; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1430867lfc;
+        Tue, 19 Nov 2019 19:36:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyOT0pjPEYoYkPb7rS9wabF9IDheGR6jv2QxN2goeZMTNy4AzEy47kXcGyRerfFVtmzLXui
+X-Received: by 2002:a17:906:944d:: with SMTP id z13mr2049223ejx.58.1574221011536;
+        Tue, 19 Nov 2019 19:36:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574221011; cv=none;
         d=google.com; s=arc-20160816;
-        b=MYWCeABm2RwdMnmdH89IIbhJN/atqCwM3130wle/E31RCgThzO6rUJIPI0NEsj142D
-         JHxDGaQz4xEczBNsb/96aCS9zl7OrizxPZqXOrL1O9o2KQgNi6aIu0PPIzJ57uNJGKYF
-         pZL8+sG9TMDytIC+8diToG5Wpj2/JNawZdsFBTGXJ6/e2VG/7kbH8mYBLB6VN9v9MgzO
-         DmnMc3bo7iiohnAXbiGRM5+KUvjHCyC9k4x3azUEBWlJ1IjqLH/HNHH3jKhj9ih4KXO/
-         6GXSS8PHV3NfFy8ELDkqcUoQoaRmdcCsY1SFw4eElrVhHe1re+JHyMoHg8w6RR9T9gbu
-         tPww==
+        b=QJ+EIX/hwcqFpHa2homKT0We8qKFrbFkHcWjgydv3d5WJenCrYwQBnhkw+e26WrmA8
+         Sw42zxtdRiKy6CW9baLCeJKWzAi6yR6I7Eh4KkN7XsVuHhZSu09MpsYwHIXfsgTzSTeJ
+         KEA39+wfVOCREOUeNImQRCh1ZuRfgsP4+nn/Lg6SGd22Xd6E8RkgpKAvIhka75LcgVHe
+         D1yHC7PonequhOsgKrlh+KEUp4rCpfTzJ6ZgxSJhwZncvtt7iykFcfa5NPXLoFoK2dFk
+         WZFCtfVz7G69cI2KetOXg0FU2aBaWD7d5dNmhHw7JsrROWRJl2ogyDYFaCOl3CcmNy2N
+         W2LQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=SD1sSRLcewma8NqVVVKtNm5KTDYVgHw1jASSePwSle8=;
-        b=CcCMXOnptDjAffJc2DUE9hjBfNcXoQHujXSambhEOaoNnJhAsZNt2OBccGa6ht7CWM
-         KxfS/oIehnEotUD+l+HuewGvdWpfHG6qIU5nwHDPHGSVg3yCW+BEogQCKHrSDPjbHh3f
-         kWcQNHUcMccK9+sNfthEWY+utvMtqnat0eGVr+dXD8Bavr/zifNu2VDET97KWK45GPwr
-         zr/nnAkq9xQd+dMH4Qz/l6myjkhvelRRRXweOM2yeb9MNMVQDNsYiliIWPeH3W6vjRsO
-         UTfU3/b5pQY1gTepnl0AQvj9eeOJB/VC9260xcmYusFIMEbz1hFtCAjzHWYHq8c3lOfd
-         gRcg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=wSKl4ZjlxedUP+FlAu7TIdnnUEwTf0V/UY+HsjFaX0Y=;
+        b=eCEUKcAY//S93cnJNJzWbV4QpOz8DLDuPzsdARVRTYzp9iC6FUlcSB7ed28t/0uG9Z
+         53ADPmr/4G048S+aWU5Uy2gvNpuW0brvT6TsvWp7yT8J2va/mlGZULZgGIYT8bQLbcG9
+         sS7FumdYHzNGtgfRij5J1aGxbzAwb0PsikFO1eAHrwmn8iFVq2Y036wNYjwT+5uk54bG
+         FDu9RQHUcKFQmXyah5uw/1f8w+O1qr9djPVt2uGDBNJzvhbJUbqiLv0FzY9zWUkskzOy
+         tbSmJ6eU/MQmSRQowFhMfv5hwaL3B7Iw6iwvOVUEzytBnmSIOuFhbIwbnPGqQYKCyvOc
+         GdHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nPMe//YG";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="J/GRzHwI";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ob19si15912071ejb.56.2019.11.19.16.08.09
+        by mx.google.com with ESMTPS id z31si18316886ede.236.2019.11.19.19.36.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Nov 2019 16:08:09 -0800 (PST)
+        Tue, 19 Nov 2019 19:36:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nPMe//YG";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="J/GRzHwI";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52504 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53370 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXDXT-0003kT-Vy
-	for alex.bennee@linaro.org; Tue, 19 Nov 2019 19:08:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56275)
+	id 1iXGnS-0004U9-82
+	for alex.bennee@linaro.org; Tue, 19 Nov 2019 22:36:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44871)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1iXDXK-0003h3-0m
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 19:07:59 -0500
+ (envelope-from <mlureau@redhat.com>) id 1iXGnD-0004Mo-Io
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 22:36:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1iXDXI-00009j-EJ
- for qemu-arm@nongnu.org; Tue, 19 Nov 2019 19:07:57 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:45108)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1iXDXE-00005B-Q3; Tue, 19 Nov 2019 19:07:53 -0500
-Received: by mail-oi1-x241.google.com with SMTP id 14so20780823oir.12;
- Tue, 19 Nov 2019 16:07:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=SD1sSRLcewma8NqVVVKtNm5KTDYVgHw1jASSePwSle8=;
- b=nPMe//YGN5C8D+ECD0sKlBQo5v0Yjmc/NASRSvnUy3wwmIk2BM5W9liAU+Ha4IAiCa
- dzK+R4qBjiJ0FMe6hc/LfEs1XQODEkpSiPhMIQ6PdiNsOX5VAK4cC7Y0/WaZK+2+75zS
- Plsyv/0H/ArSgySFak4z3KfcHlHOO0U0byCMQrvSJkYtAVEOwAhwilo4SySoNmuCTYDP
- o8VtWrIC0QPPm7+pVt8/k70sylU3CTNlUanuNQ1k0fOQYO0gAZwmQ2tfcAn+6HKiUO1K
- YXXcdflk/48GuW2Nf9q0ErWCd8K28Zm87e/y5DjiihWqLGl0EJMJf5y33YNp5lA3Xcl1
- 8raA==
+ (envelope-from <mlureau@redhat.com>) id 1iXGnB-00051y-EF
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 22:36:34 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:42553
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1iXGnA-00050D-TP
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2019 22:36:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1574220992;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wSKl4ZjlxedUP+FlAu7TIdnnUEwTf0V/UY+HsjFaX0Y=;
+ b=J/GRzHwI0Fgh5t4H3XtX+CrrZzlABSyde2YZTZ72XSv97h66f9eyLM++rpBxzVdVGRpMfI
+ ODg9vkql7hcfiSVzKhJGENAZYekUEZIYcPYS81lD8fV7U/ZrLO3dAG8kkg2Hf9B5fhnLCw
+ OdW1C4x5qEwWKiVsaOih8AohJ6/e1MA=
+Received: from mail-ot1-f71.google.com (mail-ot1-f71.google.com
+ [209.85.210.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-403-cMvyeVlIPo-Ld2PUMkeuxQ-1; Tue, 19 Nov 2019 22:36:30 -0500
+Received: by mail-ot1-f71.google.com with SMTP id 60so13235144otd.19
+ for <qemu-arm@nongnu.org>; Tue, 19 Nov 2019 19:36:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=SD1sSRLcewma8NqVVVKtNm5KTDYVgHw1jASSePwSle8=;
- b=TOMaL5EVVZ/04tJKGJGm09Dp1dP5yYrge/vNcf/X0wXtWGXBmserYX2cv8BKgM686z
- LB909ubxhypQmIAmAQv7JKZ5m9GoDWNXBFT2Eko91sWfaVH2dGkWD8dLfvVucDNylb98
- 6aTMPItfpYHG6RS1u3/xYOGHnYo8AQcQGac7sjfs3wMAoTfV48vrni5465HXKghFizUB
- w+KZSku9x+HfkRhDC7mG09odL4zLxjBfLrO+drq/c5lNVRDnAQCM/RYK788Y1NW1/o7U
- zPkAAKLZllDXO/mZp+vNaOlWbHffiey6RF8ZlMIRbod6X4CVrhqBa/sOpwxURMTliZAG
- E1cA==
-X-Gm-Message-State: APjAAAVEoOK0yoMIxZAzqfZFNlMf09iNuP2EeSOM5xiRjL/yxVorl3ZH
- tEiIlRoQHv4G9/Y5B49aC7nEmxz52WHs6ym2rhc=
-X-Received: by 2002:aca:650a:: with SMTP id m10mr200819oim.106.1574208471858; 
- Tue, 19 Nov 2019 16:07:51 -0800 (PST)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=wSKl4ZjlxedUP+FlAu7TIdnnUEwTf0V/UY+HsjFaX0Y=;
+ b=pKhMwC7e22eLRpClK5u114yzEJz2SHoHgtdAUwYncnHSSbaJHI9wuWSvXrhqBoWzZ1
+ cNx0QVu4vde3kG14rQZrgPRDyGL9dlW4g8CU2fjXqM8NVc0K7nSaukeNNTkedaXFPqKR
+ vP1nLRpXGMArwUrdlCmOKcOdp9DXiCUOg/PPoZ2EOFZKxauCeeE9pMW7z5KXZWnuzc76
+ 7l5BIapshPET49AAwp9J25TEq2qGgypUd75T3n6KTpvb3GVqLMxeusIpvP1Zc/UJqml3
+ Tw6fjgIvO2wWZ8X1M02id6eFVK0xx2J5TCuL3Gx2P6nRh6/GF6cjXM3HwMM1zY0Fz4HD
+ /54Q==
+X-Gm-Message-State: APjAAAVkJCeY1zITQrgJf3RfI3VZULaiqZtkxDnJH+ZCAWSQrf9tbf7E
+ uOgISzwuD70A/1OhynsJKT7xJKp7tftq+L0vCPoEvW6ipklK9kTJenaO589RYBBFOVt93sDtA4k
+ AVvVxmiwcuR0ElPPGDwnoXa/IvXSo
+X-Received: by 2002:a9d:5cc7:: with SMTP id r7mr242478oti.331.1574220990099;
+ Tue, 19 Nov 2019 19:36:30 -0800 (PST)
+X-Received: by 2002:a9d:5cc7:: with SMTP id r7mr242448oti.331.1574220989481;
+ Tue, 19 Nov 2019 19:36:29 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a05:6830:1391:0:0:0:0 with HTTP; Tue, 19 Nov 2019 16:07:51
- -0800 (PST)
-In-Reply-To: <20191023173154.30051-19-marcandre.lureau@redhat.com>
 References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-19-marcandre.lureau@redhat.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Wed, 20 Nov 2019 01:07:51 +0100
-Message-ID: <CAL1e-=ja_ymoKhj7qaCT9Dvhy_G_F0XL-VMoNYhW5QqJXt3_Ew@mail.gmail.com>
-Subject: Re: [PATCH v3 18/33] mips: inline serial_init
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000c4849f0597bbf8bd"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+ <20191023173154.30051-2-marcandre.lureau@redhat.com>
+ <CAFEAcA_k9TqzRJZ4=Q1jQP46SajiaMLEciSHZ83_CicMv__oiA@mail.gmail.com>
+In-Reply-To: <CAFEAcA_k9TqzRJZ4=Q1jQP46SajiaMLEciSHZ83_CicMv__oiA@mail.gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Wed, 20 Nov 2019 07:36:18 +0400
+Message-ID: <CAMxuvawFVf=6-GLO59T=v+W0vrhYVYuj0w30Oi6c7Zsen7Ri4g@mail.gmail.com>
+Subject: Re: [PATCH v3 01/33] qdev: remove unused qdev_prop_int64
+To: Peter Maydell <peter.maydell@linaro.org>
+X-MC-Unique: cMvyeVlIPo-Ld2PUMkeuxQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,250 +119,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
- Paul Burton <pburton@wavecomp.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Paul Burton <pburton@wavecomp.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
  Magnus Damm <magnus.damm@gmail.com>,
  =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
  Richard Henderson <rth@twiddle.net>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5AUWHawbV3y1
+X-TUID: ASb1Wsz3DZHj
 
---000000000000c4849f0597bbf8bd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi
 
-On Wednesday, October 23, 2019, Marc-Andr=C3=A9 Lureau <
-marcandre.lureau@redhat.com> wrote:
-
-> The function is specific to mipssim, let's inline it.
+On Mon, Nov 18, 2019 at 6:01 PM Peter Maydell <peter.maydell@linaro.org> wr=
+ote:
 >
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  hw/char/serial.c         | 16 ----------------
->  hw/mips/mips_mipssim.c   | 13 ++++++++++---
->  include/hw/char/serial.h |  2 --
->  3 files changed, 10 insertions(+), 21 deletions(-)
-
-
-Marc-Andr=C3=A9, hi!
-
-Mismatch between the commit message and the patch content. Not acceptable.
-
-Yours,
-Aleksandar
-
-
+> On Wed, 23 Oct 2019 at 18:32, Marc-Andr=C3=A9 Lureau
+> <marcandre.lureau@redhat.com> wrote:
+> >
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > ---
+> >  hw/core/qdev-properties.c    | 32 --------------------------------
+> >  include/hw/qdev-properties.h |  3 ---
+> >  2 files changed, 35 deletions(-)
 >
-> diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index 84de2740a7..ca95e09ec9 100644
-> --- a/hw/char/serial.c
-> +++ b/hw/char/serial.c
-> @@ -1023,22 +1023,6 @@ static const TypeInfo serial_io_info =3D {
->      .class_init =3D serial_io_class_init,
->  };
->
-> -SerialIO *serial_init(int base, qemu_irq irq, int baudbase,
-> -                         Chardev *chr, MemoryRegion *system_io)
-> -{
-> -    SerialIO *self =3D SERIAL_IO(qdev_create(NULL, TYPE_SERIAL_IO));
-> -
-> -    qdev_prop_set_uint32(DEVICE(self), "baudbase", baudbase);
-> -    qdev_prop_set_chr(DEVICE(self), "chardev", chr);
-> -    qdev_prop_set_int32(DEVICE(self), "instance-id", base);
-> -    qdev_init_nofail(DEVICE(self));
-> -
-> -    sysbus_connect_irq(SYS_BUS_DEVICE(self), 0, irq);
-> -    memory_region_add_subregion(system_io, base, &self->serial.io);
-> -
-> -    return self;
-> -}
-> -
->  static Property serial_properties[] =3D {
->      DEFINE_PROP_CHR("chardev", SerialState, chr),
->      DEFINE_PROP_UINT32("baudbase", SerialState, baudbase, 115200),
-> diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c
-> index 282bbecb24..26fb8fa4de 100644
-> --- a/hw/mips/mips_mipssim.c
-> +++ b/hw/mips/mips_mipssim.c
-> @@ -40,6 +40,7 @@
->  #include "hw/loader.h"
->  #include "elf.h"
->  #include "hw/sysbus.h"
-> +#include "hw/qdev-properties.h"
->  #include "exec/address-spaces.h"
->  #include "qemu/error-report.h"
->  #include "sysemu/qtest.h"
-> @@ -219,9 +220,15 @@ mips_mipssim_init(MachineState *machine)
->       * A single 16450 sits at offset 0x3f8. It is attached to
->       * MIPS CPU INT2, which is interrupt 4.
->       */
-> -    if (serial_hd(0))
-> -        serial_init(0x3f8, env->irq[4], 115200, serial_hd(0),
-> -                    get_system_io());
-> +    if (serial_hd(0)) {
-> +        DeviceState *dev =3D qdev_create(NULL, TYPE_SERIAL_IO);
-> +
-> +        qdev_prop_set_chr(dev, "chardev", serial_hd(0));
-> +        qdev_prop_set_int32(dev, "instance-id", 0x3f8);
-> +        qdev_init_nofail(dev);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, env->irq[4]);
-> +        sysbus_add_io(SYS_BUS_DEVICE(dev), 0x3f8, &SERIAL_IO(dev)->
-> serial.io);
-> +    }
->
->      if (nd_table[0].used)
->          /* MIPSnet uses the MIPS CPU INT0, which is interrupt 2. */
-> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-> index cf9cdafaee..40e35e6fff 100644
-> --- a/include/hw/char/serial.h
-> +++ b/include/hw/char/serial.h
-> @@ -109,8 +109,6 @@ void serial_set_frequency(SerialState *s, uint32_t
-> frequency);
->  #define TYPE_SERIAL_IO "serial-io"
->  #define SERIAL_IO(s) OBJECT_CHECK(SerialIO, (s), TYPE_SERIAL_IO)
->
-> -SerialIO *serial_init(int base, qemu_irq irq, int baudbase,
-> -                      Chardev *chr, MemoryRegion *system_io);
->  SerialMM *serial_mm_init(MemoryRegion *address_space,
->                           hwaddr base, int regshift,
->                           qemu_irq irq, int baudbase,
-> --
-> 2.23.0.606.g08da6496b6
->
->
+> I think I'd rather keep this. It's weird to not have a symmetric
+> set of properties for the common integer types, and annoying
+> for whoever next runs into a need for an int64 property to
+> have to reinstate the deleted code. (Yes, I know we don't
+> currently have int8 or int16.)
 >
 
---000000000000c4849f0597bbf8bd
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+I don't think we should aim at being complete. Whenever we identify
+dead code, unused for a long while, we should clean it up.
 
-<br><br>On Wednesday, October 23, 2019, Marc-Andr=C3=A9 Lureau &lt;<a href=
-=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt;=
- wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bor=
-der-left:1px #ccc solid;padding-left:1ex">The function is specific to mipss=
-im, let&#39;s inline it.<br>
-<br>
-Signed-off-by:=C2=A0Marc-Andr=C3=A9=C2=A0Lureau=C2=A0&lt;<a href=3D"mailto:=
-marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt;<br>
----<br>
-=C2=A0hw/char/serial.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 16 --------------=
---<br>
-=C2=A0hw/mips/mips_mipssim.c=C2=A0 =C2=A0| 13 ++++++++++---<br>
-=C2=A0include/hw/char/serial.h |=C2=A0 2 --<br>
-=C2=A03 files changed, 10 insertions(+), 21 deletions(-)</blockquote><div><=
-br></div><div>Marc-Andr=C3=A9, hi!</div><div><br></div><div>Mismatch betwee=
-n the commit message and the patch content. Not acceptable.</div><div><br><=
-/div><div>Yours,</div><div>Aleksandar</div><div>=C2=A0</div><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pa=
-dding-left:1ex">
-<br>
-diff --git a/hw/char/serial.c b/hw/char/serial.c<br>
-index 84de2740a7..ca95e09ec9 100644<br>
---- a/hw/char/serial.c<br>
-+++ b/hw/char/serial.c<br>
-@@ -1023,22 +1023,6 @@ static const TypeInfo serial_io_info =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.class_init =3D serial_io_class_init,<br>
-=C2=A0};<br>
-<br>
--SerialIO *serial_init(int base, qemu_irq irq, int baudbase,<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0Chardev *chr, MemoryRegion *system_io)<br>
--{<br>
--=C2=A0 =C2=A0 SerialIO *self =3D SERIAL_IO(qdev_create(NULL, TYPE_SERIAL_I=
-O));<br>
--<br>
--=C2=A0 =C2=A0 qdev_prop_set_uint32(DEVICE(<wbr>self), &quot;baudbase&quot;=
-, baudbase);<br>
--=C2=A0 =C2=A0 qdev_prop_set_chr(DEVICE(self)<wbr>, &quot;chardev&quot;, ch=
-r);<br>
--=C2=A0 =C2=A0 qdev_prop_set_int32(DEVICE(<wbr>self), &quot;instance-id&quo=
-t;, base);<br>
--=C2=A0 =C2=A0 qdev_init_nofail(DEVICE(self))<wbr>;<br>
--<br>
--=C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_<wbr>DEVICE(self), 0, irq);<br>
--=C2=A0 =C2=A0 memory_region_add_subregion(<wbr>system_io, base, &amp;self-=
-&gt;<a href=3D"http://serial.io" target=3D"_blank">serial.io</a>);<br>
--<br>
--=C2=A0 =C2=A0 return self;<br>
--}<br>
--<br>
-=C2=A0static Property serial_properties[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0DEFINE_PROP_CHR(&quot;chardev&quot;, SerialState, chr),=
-<br>
-=C2=A0 =C2=A0 =C2=A0DEFINE_PROP_UINT32(&quot;baudbase&quot;, SerialState, b=
-audbase, 115200),<br>
-diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c<br>
-index 282bbecb24..26fb8fa4de 100644<br>
---- a/hw/mips/mips_mipssim.c<br>
-+++ b/hw/mips/mips_mipssim.c<br>
-@@ -40,6 +40,7 @@<br>
-=C2=A0#include &quot;hw/loader.h&quot;<br>
-=C2=A0#include &quot;elf.h&quot;<br>
-=C2=A0#include &quot;hw/sysbus.h&quot;<br>
-+#include &quot;hw/qdev-properties.h&quot;<br>
-=C2=A0#include &quot;exec/address-spaces.h&quot;<br>
-=C2=A0#include &quot;qemu/error-report.h&quot;<br>
-=C2=A0#include &quot;sysemu/qtest.h&quot;<br>
-@@ -219,9 +220,15 @@ mips_mipssim_init(MachineState *machine)<br>
-=C2=A0 =C2=A0 =C2=A0 * A single 16450 sits at offset 0x3f8. It is attached =
-to<br>
-=C2=A0 =C2=A0 =C2=A0 * MIPS CPU INT2, which is interrupt 4.<br>
-=C2=A0 =C2=A0 =C2=A0 */<br>
--=C2=A0 =C2=A0 if (serial_hd(0))<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 serial_init(0x3f8, env-&gt;irq[4], 115200, ser=
-ial_hd(0),<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 get_=
-system_io());<br>
-+=C2=A0 =C2=A0 if (serial_hd(0)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 DeviceState *dev =3D qdev_create(NULL, TYPE_SE=
-RIAL_IO);<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_chr(dev, &quot;chardev&quot;, se=
-rial_hd(0));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_int32(dev, &quot;instance-id&quo=
-t;, 0x3f8);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_init_nofail(dev);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_<wbr>DEVICE(dev), 0=
-, env-&gt;irq[4]);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_add_io(SYS_BUS_DEVICE(<wbr>dev), 0x3f8,=
- &amp;SERIAL_IO(dev)-&gt;<a href=3D"http://serial.io" target=3D"_blank">ser=
-ial.io</a>);<br>
-+=C2=A0 =C2=A0 }<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0if (nd_table[0].used)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* MIPSnet uses the MIPS CPU INT0, which =
-is interrupt 2. */<br>
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h<br>
-index cf9cdafaee..40e35e6fff 100644<br>
---- a/include/hw/char/serial.h<br>
-+++ b/include/hw/char/serial.h<br>
-@@ -109,8 +109,6 @@ void serial_set_frequency(<wbr>SerialState *s, uint32_t=
- frequency);<br>
-=C2=A0#define TYPE_SERIAL_IO &quot;serial-io&quot;<br>
-=C2=A0#define SERIAL_IO(s) OBJECT_CHECK(SerialIO, (s), TYPE_SERIAL_IO)<br>
-<br>
--SerialIO *serial_init(int base, qemu_irq irq, int baudbase,<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 Chardev *chr, MemoryRegion *system_io);<br>
-=C2=A0SerialMM *serial_mm_init(MemoryRegion *address_space,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 hwaddr base, int regshift,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 qemu_irq irq, int baudbase,<br>
--- <br>
-2.23.0.606.g08da6496b6<br>
-<br>
-<br>
-</blockquote>
+In this case, it is even worse, this has never been used since its
+introduction in commit 07d1d063d3235c02f60dc92ec174d419e6f8a750, in
+2017.
 
---000000000000c4849f0597bbf8bd--

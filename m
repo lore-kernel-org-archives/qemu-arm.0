@@ -1,97 +1,103 @@
-Received: by 2002:a0c:88c5:0:0:0:0:0 with SMTP id 5csp1233631qvo;
-        Thu, 21 Nov 2019 09:19:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzIbL6vyRHWbzaPoKrfcZmJ+r5wv4bDH+fAcILHjMruhXHZNlPvtfRzPgy9CK7mwv0wN/fK
-X-Received: by 2002:ad4:5550:: with SMTP id v16mr9206950qvy.18.1574356780464;
-        Thu, 21 Nov 2019 09:19:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574356780; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1982137lfc;
+        Wed, 20 Nov 2019 05:15:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyKwAJ4Q2C5mBfGRfksnTwSBSAJlvGoliDKQA5gzTwKCcdiLKBwNIwFnau1Yb4VjkM3Xbuk
+X-Received: by 2002:a5d:4b05:: with SMTP id v5mr3233451wrq.210.1574255723182;
+        Wed, 20 Nov 2019 05:15:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574255723; cv=none;
         d=google.com; s=arc-20160816;
-        b=T0lym2BByjJWYDMK8T/97OjLXqXvZ0/q14YIt0cORkSI8RQ9lsUQPagAIZwrjKi9BS
-         W+Q1ozd/9Qr90MHaSrjGSJSErie+TZ+vzsejnEAnqCxvQQrQFaoR2aUs1hbmbNzCzFxC
-         DZnFWBhwj14FXkS7ckBzKv+3Rhj/W6C3OUv3qCnutqQxU27Rdwfz8LJkkdzfE83f/llM
-         i0ptEo5ykRvz/ANGIk50O/EoG2crS9yZgrU2PBBwFJuXcbUy5jP/CBl1jtPF4JLelheI
-         HLq+gpNvMKVzjeh5XeewUwhfGND6taon8pPdXjtXIhKJV4Bs0qKAKzBM3eiQ+lA+y4K0
-         i2DA==
+        b=N6O6UDdBgFKwrALcBXNfIdZWToaaefZ3Ijbp7eJiig3MGD5YxcaQBuXK7xKR4i4fFv
+         xZAkZSotdz9v7k3Jsgb/ADonD51A2C5yz9LwZaDv02/t/1cddHS9rE+hMbowPJz0J2zL
+         ddMZl9PPKysU5S6IgnoEppBEkx+v+Nag+s8C9WVLd22/GvA37lux3R8s67Q1FpU2md4I
+         gJY+c6C0FD43x2cQ8Avzh+cYtJ5zaoKYDLVhqFp3c+Nj5RbF3N3yFwxDedbcqzmD7T7C
+         qGuYeagknvYeii4y1a8vodVnEPPdHKPF0YvfWVQMLixO338DAXkB1w4tLOwwNkrz8Ltp
+         E3Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=OVXXP0wLgTz576g1HpDgCS/1OMSPZgDUbSjyFfL4k44=;
-        b=UInM0ZApTT380qfnvDrfpwne0PWzWCtdKu81NzuQUFMSpoKCMkT2IzuLr6oxuSLI+x
-         xJhQ+Gkkt1+LFrUzoOYEXaVYAvzVEhiF1IXdgAM3y97CHe3tuuiSX7RCDb9Zn3mpKThC
-         yczBpS7/KuTWfvO7X+k8yMKGoDJ90MiTIXA2uR5vMnV/GG2THerMfiEmV9uCYpDD/4aN
-         3MsvPIIwBhgMg6Rn4kh82P6ri7A2F6ouuX6BnG6Q5UY7hOz5VHIjrzME8tAnZfzQq7FM
-         86Q4hkKRBTTY5/zgXJtn0iyGpyujWWFqtQYEq/UwFYlIH1G3yJ7dRnkHp4iq3YssB7Q8
-         pGrQ==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=FPXFGLzziNWXlHtDlx+id3E16uwnVocjU9q+wnQ7Ym4=;
+        b=BuO28C5vCTXrcaMggU6xrDk+tzh/08eF/KYroPXEtihi8lt8kXsatrKnv++9f5gzde
+         +SoXFvmDHM36dlD3YuWZ5OYBZUqMOIQpPXeIyvkW41g6GpyC8Wk+tvglLbUmQ5T/Mqw9
+         PKzGUBF65+2UU+FgqD8c6KVGcdd23QIKASMczpjQOPhcWvNN91OHopmvo7xLnYXdgiw/
+         0kMcogPEl6SspEEcKhfZ0rAp5JrInSE+mW5JNVxiveUEPkZmt/RamiaCnnD6FxWRIXU+
+         /z8B42ueBIkwyKFaqSlyY6nblgkf7UpMStu5svUbS1WiFMwKoeZFwnlrML0Q2sVR7Vb8
+         nhcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Il5S6a07;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="dklurGm/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k4si107343qte.44.2019.11.21.09.19.40
+        by mx.google.com with ESMTPS id e25si19772818ede.335.2019.11.20.05.15.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Nov 2019 09:19:40 -0800 (PST)
+        Wed, 20 Nov 2019 05:15:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Il5S6a07;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="dklurGm/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43102 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXq7H-0003Ns-KV
-	for alex.bennee@linaro.org; Thu, 21 Nov 2019 12:19:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38763)
+	id 1iXPpK-00037u-5C
+	for alex.bennee@linaro.org; Wed, 20 Nov 2019 08:15:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36815)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iXq6J-0003Jv-K6
- for qemu-devel@nongnu.org; Thu, 21 Nov 2019 12:18:40 -0500
+ (envelope-from <kwolf@redhat.com>) id 1iXPoM-00027o-3o
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 08:14:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iXq6I-000629-Dw
- for qemu-devel@nongnu.org; Thu, 21 Nov 2019 12:18:39 -0500
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333]:45333)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iXq6I-00060f-5m
- for qemu-devel@nongnu.org; Thu, 21 Nov 2019 12:18:38 -0500
-Received: by mail-ot1-x333.google.com with SMTP id r24so3579920otk.12
- for <qemu-devel@nongnu.org>; Thu, 21 Nov 2019 09:18:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=OVXXP0wLgTz576g1HpDgCS/1OMSPZgDUbSjyFfL4k44=;
- b=Il5S6a07gJSImpMiUdgQ22spmmdJCXaPmDrVAQB+CNm94jfMpLRbVmyy6yeLMMWduU
- +gu+dRHQvBZ7OcbBX0BHiwohSD4w9RrJJwFVoEoqOE8BY6gekKWlqW2LZW2uJhBLvmLT
- h2rlXpniEyHY17k4FjYgA1AaoSKsN8uQBHcXd0R7Sr7m/9dGEdCK89anETC5P1TV2HhV
- 9VHk5M27/itZfboY0WY1HmP5QRzDzIHNwV3rbC1VqNBjo3hqF+psR6LMEJVRsxibQHq3
- 8m48JNCeTYqSgiRFyi8IF+oc4t/jZPtGPFKdASkS9fzOghJQHj5vluupM98+kecIv+wb
- TlVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=OVXXP0wLgTz576g1HpDgCS/1OMSPZgDUbSjyFfL4k44=;
- b=p978MAXzdI5hKV5YV3xNqvnw9iej2xiFi0wEqUIcDe6ebX1Z46nHtnJzYhdu/RExhj
- BjSpeQr57S41hnh4rwPvk24jKjng+92Jo9gL5UNDbcfaILh7I8onPVM98Ef0su7lD6uF
- FGOsK51G0uRS55TKbdiPvL+H2Yp2tzugowpczNQ26o/1qFxnAjIT51+nqw005DvE6IUe
- Q0wiR7RH0SshHfR1L3M9j8Lx+/8hyeFf6uevfn1yBXzx8XRqqr/QQHsnJNQnCUQSOK82
- r/IhY78lOBf7Mso4vumJn1sBrRq0onOn5Wag3hyJkhaJgHz8jtKjYsVeA97m161MKaLl
- jnyQ==
-X-Gm-Message-State: APjAAAXKmkvHnZYq+RsVAVdMruxU2gCb9f/P5QqZenGGUGRWT0nyvVl3
- nPQVRQ8hYek2I0Ws5aJQ+6cOMgykpwvoeH28DIVGRQ==
-X-Received: by 2002:a9d:6357:: with SMTP id y23mr7444476otk.91.1574356714147; 
- Thu, 21 Nov 2019 09:18:34 -0800 (PST)
+ (envelope-from <kwolf@redhat.com>) id 1iXPoK-0008Ax-70
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 08:14:21 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:37216
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1iXPoK-00089F-1C
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 08:14:20 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1574255659;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=FPXFGLzziNWXlHtDlx+id3E16uwnVocjU9q+wnQ7Ym4=;
+ b=dklurGm/7LUnexueoMxxcQrygijCTwfIJvZYLKHFm1hQEmFKOcszmhD/wdO+OX6BUepCf+
+ BXhcHekTLc2wgpHFDfZ7VXDBXwJ+KigXqqmtBNOI5MRmg8Z7AgFLpWtsGi612eClJYnFPV
+ rI5OwB43QGtKd1XEDYAiQYpw2dtk+9c=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-263-8D4dw5wwPgemGbK8SniO-Q-1; Wed, 20 Nov 2019 08:14:17 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7A3C01005502;
+ Wed, 20 Nov 2019 13:14:13 +0000 (UTC)
+Received: from linux.fritz.box (unknown [10.36.118.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E45636106E;
+ Wed, 20 Nov 2019 13:13:23 +0000 (UTC)
+Date: Wed, 20 Nov 2019 14:13:22 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Subject: Re: [RFC v5 000/126] error: auto propagated local_err
+Message-ID: <20191120131322.GB5779@linux.fritz.box>
+References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
+ <d1756cd0-8ad7-1e6c-b127-59ed24c5e512@virtuozzo.com>
+ <538354c8-7ba9-8b1c-476e-5733c418207b@virtuozzo.com>
+ <606dbe22-0d1e-66bb-aba9-681ca7961623@redhat.com>
 MIME-Version: 1.0
-References: <20191121101618.29289-1-kraxel@redhat.com>
-In-Reply-To: <20191121101618.29289-1-kraxel@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 Nov 2019 17:18:23 +0000
-Message-ID: <CAFEAcA9Uokwo1tufxZ4iNZkjv6MB3Vtazyd3DV=OKqyt7jer_A@mail.gmail.com>
-Subject: Re: [PULL 0/3] Fixes 20191121 patches
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::333
+In-Reply-To: <606dbe22-0d1e-66bb-aba9-681ca7961623@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: 8D4dw5wwPgemGbK8SniO-Q-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,36 +109,129 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Jan Kiszka <jan.kiszka@siemens.com>, Alberto Garcia <berto@igalia.com>,
+ Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Anthony Green <green@moxielogic.com>, Laurent Vivier <lvivier@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Ronnie Sahlberg <ronniesahlberg@gmail.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Eric Farman <farman@linux.ibm.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Hannes Reinecke <hare@suse.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ "Gonglei \(Arei\)" <arei.gonglei@huawei.com>, Liu Yuan <namei.unix@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
+ Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Stafford Horne <shorne@gmail.com>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
+ Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
+ Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
+ Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+ "integration@gluster.org" <integration@gluster.org>,
+ Laszlo Ersek <lersek@redhat.com>, "Richard W.M. Jones" <rjones@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
+ Denis Lunev <den@virtuozzo.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Kr/CZqe+Lw94
+X-TUID: h/j6smQ67+Fb
 
-On Thu, 21 Nov 2019 at 10:16, Gerd Hoffmann <kraxel@redhat.com> wrote:
->
-> The following changes since commit 39e2821077e6dcf788b7c2a9ef50970ec7995437:
->
->   Update version for v4.2.0-rc2 release (2019-11-19 19:34:10 +0000)
->
-> are available in the Git repository at:
->
->   git://git.kraxel.org/qemu tags/fixes-20191121-pull-request
->
-> for you to fetch changes up to c55c974486b0dadf97fe47e2e789d5dba9b77138:
->
->   ui/gtk: fix gettext message's charset. (2019-11-21 09:42:30 +0100)
->
-> ----------------------------------------------------------------
-> two audio fixes and one gtk message fix.
->
-> ----------------------------------------------------------------
+Am 20.11.2019 um 13:59 hat Eric Blake geschrieben:
+> On 11/20/19 3:50 AM, Vladimir Sementsov-Ogievskiy wrote:
+> > Okay...
+> >=20
+> > I think that:
+> >=20
+> > 1. A lot of efforts (not only my, I think reviewing is already exceeded=
+ generation efforts)
+> >     are made, it would be sad to lose them.
+> >=20
+> > 2. It's safe enough to apply only part of generated patches: we just fi=
+x error_abort/error_fatal
+> >     in more popular subsystems, what's wrong with that? Why not to cove=
+r 80% cases by 20% efforts?
+> >=20
+> > 3. It's obviously impossible to merge the whole series. A lot of time p=
+assed, series diverges.
+> >=20
+> >=20
+> > So I propose the following plan:
+> >=20
+> > 1. I resend small separate series of preparation patches per maintainer=
+. They are good anyway.
+> >=20
+> > 2. We commit patch with macro (changing MUST to SHOULD in documentation=
+) and coccinelle script.
+> >      (or that may be combined with the first series from [3.])
+> >=20
+> > 3. When one of preparations taken to maintainer's tree, I send generate=
+d patches for
+> >      its maintainer.
+>=20
+> I'd still prefer waiting for direction from Markus.  We've been tied up b=
+y
+> other things (KVM Forum, 4.2 release), but now that we are in freeze, thi=
+s
+> is actually a GOOD time for Markus to finally get back to this series, an=
+d
+> there is going to be less rebasing needed if we can apply the entire clea=
+nup
+> right as 5.0 development opens in a couple of weeks.
 
+Actually, that's possibly the worst possible time for avoiding conflicts
+because during freeze, maintainers are collecting stuff in private
+branches for weeks without getting it into master.
 
-Applied, thanks.
+If you are the one who gets merged first (what are the odds?), that
+solves the problem for you, but then everyone else will get conflicts.
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/4.2
-for any user-visible changes.
+I like Vladimir's new plan.
 
--- PMM
+Kevin
+

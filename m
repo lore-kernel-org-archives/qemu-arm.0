@@ -1,308 +1,239 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2178143lfc;
-        Wed, 20 Nov 2019 07:48:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyAxk6KOW4p8RA7BEDrpfMBelcKs412zCzttNJUHQTtL3gvxrHIbjBsXeyZqolmb1caFyh1
-X-Received: by 2002:a37:6305:: with SMTP id x5mr3013924qkb.498.1574264937452;
-        Wed, 20 Nov 2019 07:48:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574264937; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2181278lfc;
+        Wed, 20 Nov 2019 07:51:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz4qh/buJEf0VDeDy4YTHSXiddq7TTQhOvS/b0QUrbpuIuBQZARIxQrgzkEOJfCAtkW7Rhq
+X-Received: by 2002:a05:6214:1183:: with SMTP id t3mr3299987qvv.240.1574265092431;
+        Wed, 20 Nov 2019 07:51:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574265092; cv=none;
         d=google.com; s=arc-20160816;
-        b=j86v/qK55TSOjbIIV9YrdB+RBPK6C0zs5o3yvEpIq5Ng5RyvBqmef+FRI93FsFk7fV
-         HtQP/Ao0jwI2eQ1HJ5DNmW4zBuXrT1pQglAo6tIWCHTR5OYn4/1djv+haLXPHzWSbmcz
-         3PPQBdpO3j0abVy9NR7YJic+dILxzpcMeoN0symHxQrIn7VOd/SW44+jLvALtubTNSj1
-         vdddnLHU2WHPZ7rW1iwvAXHoquvwFMx4Ri0GHHlsdRN38t84N+7fFsZ6u1tTV3MLAzyn
-         3r2kcgI+rH0CyqVrh24jj6R0JWZye8FEdJYlrC27M8qeL9q0UAaVZCU85lLxs2lTSIek
-         tBXQ==
+        b=JfTEmW5HyB5VrXyjhxvmd2i0D8DrZ5ZvcpTHffkymTJbwlu0NZlbP3GxlAn88RYU+X
+         iw6+3rWXUh3mxL6eTnhb+TjB+6m859XH6V6dWSr/izSWKj2OgGKpY9yQUarDEBsFsOyI
+         hQQ53uPrKCvv3vfKKeAhvvmDNK1jUZO1pbb6vqZxsbhQcv69ulZOxNUgnZr0vXw364b1
+         kHRzWHl3jeAIBXGHCwpRMqDyCnmAqajjs9PjWIWmfTSs8jl81jIHtjXV0rNS2Jw1yffh
+         5ZNoLe9INAtKEQO2xmGXV8I3EkggJxO3NywuHshr398V90P1nl+yYuhaun66PYxXLAQL
+         fB/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=93PrXJVYd3GKfbcrZNCS8vkRxB2t7fjOyy8JTOMWiD4=;
-        b=xyIi+t3MKvQsWesvJoLG7+voOMRAV1CHhye19tqSavf/DAduacAeaPbBCYmF9up/3c
-         30JJQzTG0eI9S6JbkF62ydFRwzzvRov5xAgTY9Ac3EKKav4B3oyjRr/YD4qjKmjZ7F3I
-         dUbwM9UPJ0Eimwpf85G3xlqz/qsB9loboYzhspAj0p+vE4SFF7jgL1GO5EXExLlR5qJr
-         vNVXIJ8sB5ui+J7l39bPLsCXfbh6p/gF/0cMY0DmIysA1W8i2JOwdHhlCRBuW19nabqK
-         A4xFIM6+/dGutnYZBxx+aAcdl1VaYcJxekgyuRJky9/6j0N7MFcwDFPjuTPAF1IqQTFc
-         nKQQ==
+        bh=PurGUxzBofordEzQ/Xn6ypIugdPqz6DRHCdALTotyNE=;
+        b=Oo9Wo4ydEYaNJqAYfEuxGjU1emF5dRmF4GJLg0qOZej9HCy2oYJUTNyKfYdj3OVmhm
+         td8GRu6ztHmceMN/4kXcmE7GKDDtfHcDdLTAOk97kqX8kG8SdcLOXB/iMdbLWJAbhFRl
+         VAHgX0m9M/3MotJBtz4ZiEm1r2MM13CHHvLu32t2OCfDiW0E4C1aUg/+h+K+kIOhq7Iz
+         /nAbXinKc3IZgn28i4m5oj1sBA339f+P12A4hmurRwr3qUaIRPnW+ueHkmJQtJ79rjLa
+         RfAuc9pOv1nna/uMIk7Hw/9KrgjMxiKqky+ousCZC3AYT64v5V1ERN+UAvwLK6eheFgU
+         VFrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dwCL8g++;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hiuw9kCf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n12si15582787qvz.170.2019.11.20.07.48.57
+        by mx.google.com with ESMTPS id l141si15762798qke.67.2019.11.20.07.51.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Nov 2019 07:48:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 20 Nov 2019 07:51:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dwCL8g++;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hiuw9kCf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59612 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59670 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXSDw-0002CR-CX
-	for alex.bennee@linaro.org; Wed, 20 Nov 2019 10:48:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35112)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iXSGR-0004qf-Co
+	for alex.bennee@linaro.org; Wed, 20 Nov 2019 10:51:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35082)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iXRxC-00076a-7P
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 10:31:39 -0500
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iXRx9-00075Y-3y
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 10:31:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iXRxA-00017E-9b
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 10:31:38 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:22879
+ (envelope-from <marcandre.lureau@redhat.com>) id 1iXRx1-0000z8-2E
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 10:31:29 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43644
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iXRxA-00014o-4j
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 10:31:36 -0500
+ id 1iXRwz-0000wg-3e
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 10:31:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574263891;
+ s=mimecast20190719; t=1574263883;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=93PrXJVYd3GKfbcrZNCS8vkRxB2t7fjOyy8JTOMWiD4=;
- b=dwCL8g++8ahOubyUchmO4nX2m3MD5S0BVAb/7FPaQV6Pk6ONWsraK5nwWSlI5b7iuZq/vV
- h3T3OnteOrNOUG59gcCaV5ejJ+LqCkyRieKcuAnfRpXrlqPc0elOy8hlNLaS9byxkRpeCv
- xzcK3ROyaTlhA9qZhjEKddd+8uH0DU0=
+ bh=PurGUxzBofordEzQ/Xn6ypIugdPqz6DRHCdALTotyNE=;
+ b=hiuw9kCfDy9b5iuVx6f7s3yTRWKaFnFLyiN1ekE9NZXN0glhjTnULoBq7u7h6P+GS3WVSP
+ ss+MxW2yWIjcRn36hCvrVFMfdX5D8lCmnzrS5hTQY6knZhoYX7sU5tme/HAQ95mf/EVPkU
+ Z7kxqvBU/xSJWpC4FiYEOr7cX3iJXpY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-321-3Z_kFZ8ZM6e-_ReEChe-WA-1; Wed, 20 Nov 2019 10:31:30 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-152-WoHeQrGNO7KV_-1Udi-cdQ-1; Wed, 20 Nov 2019 10:31:21 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 59723801FA1;
- Wed, 20 Nov 2019 15:31:28 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 292D0188352C;
+ Wed, 20 Nov 2019 15:31:20 +0000 (UTC)
 Received: from localhost (ovpn-112-56.ams2.redhat.com [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 583E060499;
- Wed, 20 Nov 2019 15:31:25 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 908095C1D4;
+ Wed, 20 Nov 2019 15:31:14 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 34/37] omap-gpio: remove PROP_PTR
-Date: Wed, 20 Nov 2019 19:24:39 +0400
-Message-Id: <20191120152442.26657-35-marcandre.lureau@redhat.com>
+Subject: [PATCH v4 33/37] omap-i2c: remove PROP_PTR
+Date: Wed, 20 Nov 2019 19:24:38 +0400
+Message-Id: <20191120152442.26657-34-marcandre.lureau@redhat.com>
 In-Reply-To: <20191120152442.26657-1-marcandre.lureau@redhat.com>
 References: <20191120152442.26657-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: 3Z_kFZ8ZM6e-_ReEChe-WA-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: WoHeQrGNO7KV_-1Udi-cdQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aXtcCj89Hhme
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yLl0n+KcTR9G
 
 Since clocks are not QOM objects, replace PROP_PTR of clocks with
 setters methods.
 
-Move/adapt the existing TODO comment about a clock framework.
-
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
  hw/arm/omap1.c        |  2 +-
- hw/arm/omap2.c        | 13 +++++++------
- hw/gpio/omap_gpio.c   | 42 +++++++++++++++---------------------------
- include/hw/arm/omap.h | 33 +++++++++++++++++++++++++++++----
- 4 files changed, 52 insertions(+), 38 deletions(-)
+ hw/arm/omap2.c        |  8 ++++----
+ hw/i2c/omap_i2c.c     | 19 ++++++++++++-------
+ include/hw/arm/omap.h | 13 +++++++++++++
+ 4 files changed, 30 insertions(+), 12 deletions(-)
 
 diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 807e5f70d1..761cc17ea9 100644
+index 1afd1d3d7f..807e5f70d1 100644
 --- a/hw/arm/omap1.c
 +++ b/hw/arm/omap1.c
-@@ -4012,7 +4012,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
+@@ -4030,7 +4030,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
 n *dram,
 =20
-     s->gpio =3D qdev_create(NULL, "omap-gpio");
-     qdev_prop_set_int32(s->gpio, "mpu_model", s->mpu_model);
--    qdev_prop_set_ptr(s->gpio, "clk", omap_findclk(s, "arm_gpio_ck"));
-+    omap_gpio_set_clk(OMAP1_GPIO(s->gpio), omap_findclk(s, "arm_gpio_ck"))=
-;
-     qdev_init_nofail(s->gpio);
-     sysbus_connect_irq(SYS_BUS_DEVICE(s->gpio), 0,
-                        qdev_get_gpio_in(s->ih[0], OMAP_INT_GPIO_BANK1));
+     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
+     qdev_prop_set_uint8(s->i2c[0], "revision", 0x11);
+-    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "mpuper_ck"));
++    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "mpuper_ck"));
+     qdev_init_nofail(s->i2c[0]);
+     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
+     sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(s->ih[1], OMAP_INT_I2C)=
+);
 diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-index 171e2d0472..e1c11de5ce 100644
+index 1d7cc435ef..171e2d0472 100644
 --- a/hw/arm/omap2.c
 +++ b/hw/arm/omap2.c
-@@ -2449,13 +2449,14 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRe=
-gion *sdram,
+@@ -2425,8 +2425,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
+on *sdram,
 =20
-     s->gpio =3D qdev_create(NULL, "omap2-gpio");
-     qdev_prop_set_int32(s->gpio, "mpu_model", s->mpu_model);
--    qdev_prop_set_ptr(s->gpio, "iclk", omap_findclk(s, "gpio_iclk"));
--    qdev_prop_set_ptr(s->gpio, "fclk0", omap_findclk(s, "gpio1_dbclk"));
--    qdev_prop_set_ptr(s->gpio, "fclk1", omap_findclk(s, "gpio2_dbclk"));
--    qdev_prop_set_ptr(s->gpio, "fclk2", omap_findclk(s, "gpio3_dbclk"));
--    qdev_prop_set_ptr(s->gpio, "fclk3", omap_findclk(s, "gpio4_dbclk"));
-+    omap2_gpio_set_iclk(OMAP2_GPIO(s->gpio), omap_findclk(s, "gpio_iclk"))=
-;
-+    omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 0, omap_findclk(s, "gpio1_dbc=
-lk"));
-+    omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 1, omap_findclk(s, "gpio2_dbc=
-lk"));
-+    omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 2, omap_findclk(s, "gpio3_dbc=
-lk"));
-+    omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 3, omap_findclk(s, "gpio4_dbc=
-lk"));
-     if (s->mpu_model =3D=3D omap2430) {
--        qdev_prop_set_ptr(s->gpio, "fclk4", omap_findclk(s, "gpio5_dbclk")=
-);
-+        omap2_gpio_set_fclk(OMAP2_GPIO(s->gpio), 4,
-+                            omap_findclk(s, "gpio5_dbclk"));
-     }
-     qdev_init_nofail(s->gpio);
-     busdev =3D SYS_BUS_DEVICE(s->gpio);
-diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-index 41e1aa798c..85c16897ae 100644
---- a/hw/gpio/omap_gpio.c
-+++ b/hw/gpio/omap_gpio.c
-@@ -40,10 +40,6 @@ struct omap_gpio_s {
-     uint16_t pins;
- };
+     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
+     qdev_prop_set_uint8(s->i2c[0], "revision", 0x34);
+-    qdev_prop_set_ptr(s->i2c[0], "iclk", omap_findclk(s, "i2c1.iclk"));
+-    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "i2c1.fclk"));
++    omap_i2c_set_iclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.iclk"));
++    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.fclk"));
+     qdev_init_nofail(s->i2c[0]);
+     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
+     sysbus_connect_irq(busdev, 0,
+@@ -2437,8 +2437,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
+on *sdram,
 =20
--#define TYPE_OMAP1_GPIO "omap-gpio"
--#define OMAP1_GPIO(obj) \
--    OBJECT_CHECK(struct omap_gpif_s, (obj), TYPE_OMAP1_GPIO)
+     s->i2c[1] =3D qdev_create(NULL, "omap_i2c");
+     qdev_prop_set_uint8(s->i2c[1], "revision", 0x34);
+-    qdev_prop_set_ptr(s->i2c[1], "iclk", omap_findclk(s, "i2c2.iclk"));
+-    qdev_prop_set_ptr(s->i2c[1], "fclk", omap_findclk(s, "i2c2.fclk"));
++    omap_i2c_set_iclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.iclk"));
++    omap_i2c_set_fclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.fclk"));
+     qdev_init_nofail(s->i2c[1]);
+     busdev =3D SYS_BUS_DEVICE(s->i2c[1]);
+     sysbus_connect_irq(busdev, 0,
+diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+index 3ba965a58f..3ccbd5cc2c 100644
+--- a/hw/i2c/omap_i2c.c
++++ b/hw/i2c/omap_i2c.c
+@@ -28,10 +28,7 @@
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+=20
+-#define TYPE_OMAP_I2C "omap_i2c"
+-#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
 -
- struct omap_gpif_s {
+-typedef struct OMAPI2CState {
++struct OMAPI2CState {
      SysBusDevice parent_obj;
 =20
-@@ -212,10 +208,6 @@ struct omap2_gpio_s {
-     uint8_t delay;
- };
+     MemoryRegion iomem;
+@@ -56,7 +53,7 @@ typedef struct OMAPI2CState {
+     uint8_t divider;
+     uint8_t times[2];
+     uint16_t test;
+-} OMAPI2CState;
++};
 =20
--#define TYPE_OMAP2_GPIO "omap2-gpio"
--#define OMAP2_GPIO(obj) \
--    OBJECT_CHECK(struct omap2_gpif_s, (obj), TYPE_OMAP2_GPIO)
--
- struct omap2_gpif_s {
-     SysBusDevice parent_obj;
-=20
-@@ -747,21 +739,13 @@ static void omap2_gpio_realize(DeviceState *dev, Erro=
-r **errp)
+ #define OMAP2_INTR_REV=090x34
+ #define OMAP2_GC_REV=090x34
+@@ -504,10 +501,18 @@ static void omap_i2c_realize(DeviceState *dev, Error =
+**errp)
      }
  }
 =20
--/* Using qdev pointer properties for the clocks is not ideal.
-- * qdev should support a generic means of defining a 'port' with
-- * an arbitrary interface for connecting two devices. Then we
-- * could reframe the omap clock API in terms of clock ports,
-- * and get some type safety. For now the best qdev provides is
-- * passing an arbitrary pointer.
-- * (It's not possible to pass in the string which is the clock
-- * name, because this device does not have the necessary information
-- * (ie the struct omap_mpu_state_s*) to do the clockname to pointer
-- * translation.)
-- */
-+void omap_gpio_set_clk(omap_gpif *gpio, omap_clk clk)
++void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk)
 +{
-+    gpio->clk =3D clk;
-+}
-=20
- static Property omap_gpio_properties[] =3D {
-     DEFINE_PROP_INT32("mpu_model", struct omap_gpif_s, mpu_model, 0),
--    DEFINE_PROP_PTR("clk", struct omap_gpif_s, clk),
-     DEFINE_PROP_END_OF_LIST(),
- };
-=20
-@@ -784,15 +768,19 @@ static const TypeInfo omap_gpio_info =3D {
-     .class_init    =3D omap_gpio_class_init,
- };
-=20
-+void omap2_gpio_set_iclk(omap2_gpif *gpio, omap_clk clk)
-+{
-+    gpio->iclk =3D clk;
++    i2c->iclk =3D clk;
 +}
 +
-+void omap2_gpio_set_fclk(omap2_gpif *gpio, uint8_t i, omap_clk clk)
++void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk)
 +{
-+    assert(i <=3D 5);
-+    gpio->fclk[i] =3D clk;
++    i2c->fclk =3D clk;
 +}
 +
- static Property omap2_gpio_properties[] =3D {
-     DEFINE_PROP_INT32("mpu_model", struct omap2_gpif_s, mpu_model, 0),
--    DEFINE_PROP_PTR("iclk", struct omap2_gpif_s, iclk),
--    DEFINE_PROP_PTR("fclk0", struct omap2_gpif_s, fclk[0]),
--    DEFINE_PROP_PTR("fclk1", struct omap2_gpif_s, fclk[1]),
--    DEFINE_PROP_PTR("fclk2", struct omap2_gpif_s, fclk[2]),
--    DEFINE_PROP_PTR("fclk3", struct omap2_gpif_s, fclk[3]),
--    DEFINE_PROP_PTR("fclk4", struct omap2_gpif_s, fclk[4]),
--    DEFINE_PROP_PTR("fclk5", struct omap2_gpif_s, fclk[5]),
+ static Property omap_i2c_properties[] =3D {
+     DEFINE_PROP_UINT8("revision", OMAPI2CState, revision, 0),
+-    DEFINE_PROP_PTR("iclk", OMAPI2CState, iclk),
+-    DEFINE_PROP_PTR("fclk", OMAPI2CState, fclk),
      DEFINE_PROP_END_OF_LIST(),
  };
 =20
 diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 39a295ba20..6be386d0e2 100644
+index bcecf19f89..39a295ba20 100644
 --- a/include/hw/arm/omap.h
 +++ b/include/hw/arm/omap.h
-@@ -77,6 +77,16 @@ typedef struct omap_intr_handler_s omap_intr_handler;
- /*
-  * TODO: Ideally we should have a clock framework that
-  * let us wire these clocks up with QOM properties or links.
-+ *
-+ * qdev should support a generic means of defining a 'port' with
-+ * an arbitrary interface for connecting two devices. Then we
-+ * could reframe the omap clock API in terms of clock ports,
-+ * and get some type safety. For now the best qdev provides is
-+ * passing an arbitrary pointer.
-+ * (It's not possible to pass in the string which is the clock
-+ * name, because this device does not have the necessary information
-+ * (ie the struct omap_mpu_state_s*) to do the clockname to pointer
-+ * translation.)
-  */
+@@ -81,6 +81,19 @@ typedef struct omap_intr_handler_s omap_intr_handler;
  void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
  void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
-@@ -87,13 +97,28 @@ void omap_intc_set_fclk(omap_intr_handler *intc, omap_c=
-lk clk);
 =20
- typedef struct OMAPI2CState OMAPI2CState;
-=20
--/*
-- * TODO: Ideally we should have a clock framework that
-- * let us wire these clocks up with QOM properties or links.
-- */
-+/* TODO: clock framework (see above) */
- void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk);
- void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk);
-=20
-+/* omap_gpio.c */
-+#define TYPE_OMAP1_GPIO "omap-gpio"
-+#define OMAP1_GPIO(obj)                                         \
-+    OBJECT_CHECK(struct omap_gpif_s, (obj), TYPE_OMAP1_GPIO)
++/* omap_i2c.c */
++#define TYPE_OMAP_I2C "omap_i2c"
++#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
 +
-+#define TYPE_OMAP2_GPIO "omap2-gpio"
-+#define OMAP2_GPIO(obj)                                         \
-+    OBJECT_CHECK(struct omap2_gpif_s, (obj), TYPE_OMAP2_GPIO)
++typedef struct OMAPI2CState OMAPI2CState;
 +
-+typedef struct omap_gpif_s omap_gpif;
-+typedef struct omap2_gpif_s omap2_gpif;
-+
-+/* TODO: clock framework (see above) */
-+void omap_gpio_set_clk(omap_gpif *gpio, omap_clk clk);
-+
-+void omap2_gpio_set_iclk(omap2_gpif *gpio, omap_clk clk);
-+void omap2_gpio_set_fclk(omap2_gpif *gpio, uint8_t i, omap_clk clk);
++/*
++ * TODO: Ideally we should have a clock framework that
++ * let us wire these clocks up with QOM properties or links.
++ */
++void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk);
++void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk);
 +
  /* OMAP2 l4 Interconnect */
  struct omap_l4_s;

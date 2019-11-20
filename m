@@ -1,105 +1,101 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1833823lfc;
-        Wed, 20 Nov 2019 03:04:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwIsePMTgxHX/kTRwSNqVOVIyU8zZiji8sPwKRpi1sjCitwBqxYYn1bmZpwSg87ryUklxO8
-X-Received: by 2002:a17:906:6043:: with SMTP id p3mr4678900ejj.103.1574247871659;
-        Wed, 20 Nov 2019 03:04:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574247871; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1866132lfc;
+        Wed, 20 Nov 2019 03:32:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz3uzMdoTztRPAFetE+GfO8tnYe3gQhfgCqi03SDd/0LMEB73nuyPd4I3sig/dElCKrc3CF
+X-Received: by 2002:a17:906:1c07:: with SMTP id k7mr4635078ejg.229.1574249543866;
+        Wed, 20 Nov 2019 03:32:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574249543; cv=none;
         d=google.com; s=arc-20160816;
-        b=zCslfEUWEVrbEznqFkt4kK6unL17oZWlfryLbGzOFhOjiDWQ/3oBko9u+iReQU87RI
-         LOUjMH+p0DSz5caDokEh1GQTOuS1mibQJRyPYdkQ2w7x2HlSu2IYZkXdv58h5SWPXVNs
-         ur1TaiZJ4yV6Xcw7XEt6Jp8e4xBXshzfFde8sKmIf+oST7wxzzJczPseHqVpY+HJ0Q/d
-         C85s1pBWMufoc/UAZRquglUo4BSIlnPBqhp/j6A2LfWS7ZB55tKPuX/nJ8RNfrud2a20
-         l+NS+egRWm/fydE4fnix3OShCmp1GaiRj/e24oGo4L1GFheHyqBYZcaYre3VW9Op6/4J
-         mZLg==
+        b=RSREHOCqA8UAILpKxCJVEvFeo1E4HB2I0BKoOz0MthqMsxzWpbN9zFi7hNgt+IibdX
+         ZVGVls3Zh/lzGCuu/3uruwEHwdPoYVk9p10DLnTf417yOCEQSdwVEpTsQGVUqfCzIueN
+         3M1JJmV+UCFU8YQ8Uxh67yZ7ZLIuhN/bI0Yjac5rah9bGUA7ddPr0yeaTq9xXgwFhZ52
+         C63ET1tiLVak7QhyHdPDE3fl5lsuXeCn4959OgcYu/RqTrS2eNOftDXIeHEWEiZoQtxQ
+         onK1be0cWTMkPPJxxUyeTnaVF+a30gXqXkjXIqHKrYh2+gKDX6WHDhQ5mqPAir6dxw7S
+         EDqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=xGQ7+jRsYcLEubH7JDX88uX5w//TbVg1n/VU/GJV+6A=;
-        b=KKf6qLtQ0rZ+K0RxlnZzuDTQegXFwEvps33pt9d1FGOh3OD6omn089di3jZwgH5/5k
-         bsk1/wU/Y31z448S4iqlfq/P9hDnkULDO/y7BENI25kbBlKM5lOtp4M3XFWwsZ+tUOes
-         khf0XHEI9KN3OswKOrEZd42MNIDC/eYeDyQ40bju6ecDGWgcMo/tRd+JrpQQWW0eo2kV
-         CO3pUz6T4fyZjZxcz65ZbwwpqzBJ0JqsHOXqsUiE4LRNHJOfXtMDiL+sOoF3pOMvPP/U
-         MI5D8kdsGPIVEUOmvztAty5htEB892E+G/o9II2HqlS0R+D5Pdl9kSaylArvAPgiHT1q
-         /h1Q==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=/JgdlCQYl45ZG1KuUlcgoaDF4DVZdtXJ4z9bLmaP+ck=;
+        b=XnyoZzaWqfiCGDpwqe2Uei9tKDOJ7TDzXKZzjpLPmJI+8IDkoitfyna36za/WYeHl1
+         H/rLSWb83U6IQVAR2SPdklcp1CGEU3F7YuOKAoWUZW9Hmv06QrKi5Tk3ZW2hkZuAMrhI
+         Y+nWd287A/W7wz9JPmEePanqy/bXhxZQaRiwMRZ1kDbC+TYHAzheycgsK9q5QzDtaVeS
+         tDY6/dS8LNxd2sn4Yi9gtTbvo3OGP6qygGT+xUtmTdXXgJ0JsstusMBUVhndp2nBbf9u
+         ATRSajkh5P3ofqoUv50MCbngNy6zmel+gJjkd7L6MGdA+9+EFCsLB+W8etaG8kcM/BKE
+         YBMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nwcAtTHP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fJytLYSQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hb5si15675427ejb.420.2019.11.20.03.04.31
+        by mx.google.com with ESMTPS id pg2si15848070ejb.216.2019.11.20.03.32.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Nov 2019 03:04:31 -0800 (PST)
+        Wed, 20 Nov 2019 03:32:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nwcAtTHP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fJytLYSQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56384 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXNmg-0004f5-0J
-	for alex.bennee@linaro.org; Wed, 20 Nov 2019 06:04:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35814)
+	id 1iXODe-00058c-P2
+	for alex.bennee@linaro.org; Wed, 20 Nov 2019 06:32:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41726)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@gmail.com>) id 1iXNmM-0004ZG-Vn
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 06:04:12 -0500
+ (envelope-from <dgilbert@redhat.com>) id 1iXODV-00056z-Dn
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 06:32:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@gmail.com>) id 1iXNmK-0006U2-RR
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 06:04:09 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:32785)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
- id 1iXNmH-0006PZ-U3; Wed, 20 Nov 2019 06:04:06 -0500
-Received: by mail-wr1-x442.google.com with SMTP id w9so27624999wrr.0;
- Wed, 20 Nov 2019 03:04:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=xGQ7+jRsYcLEubH7JDX88uX5w//TbVg1n/VU/GJV+6A=;
- b=nwcAtTHPOas25yEfzXaBNA5ZUsfe0lhg/0tpJ1CQxXh9X2a/PoJiUNSXbJ3F1uXXz2
- XF8atO68hdB5d8PsO6SsR6PkebXA+xh9wOVC52G8rUBkWiE4tMRkVaLox0zL9jUuF+U9
- qNdwmL/amlZH60EZNnzei7vRgbrdxX+81xsx/jobZIE/5L0wYgJ2Wo/Mn3PqQ8JRR4zV
- /820ee2Dn1ng7v5ArSaDww7BpRpIQ6Oorc39+8YNwc6eC1XLfWVMqGmBvZt4T3cNPdmF
- FShxuFBJndFcF43DTXS0vdkoiUAPkHRDWX+yAFRU8uiOHtM9UF7R/ugXQEUZbI5Wf2vR
- 7enw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=xGQ7+jRsYcLEubH7JDX88uX5w//TbVg1n/VU/GJV+6A=;
- b=sH22vr93/SLxZqpZvW+3pp5TzElaU3zXl0XnRZaQndtvG1vaSp6tBCPYiwTs5is/TF
- VuS5tjMXJYls+5No28+Coxc/wnsUcgAgmbIdKBxrEMsOkDkYXyuZRVJprSnnogF5cnop
- M7z2hk6Q2+jF4jShp2xm0qhRerfS6FKsaccAF8sJV62fbuPyn03KBe7YnZGoRGX2ChDS
- KTZ459iqncUDP/B9jWqSUzK+SxwPcQFaF53FrJyIo3MI9bB9Cls+pIZUwi4FYrx4ykfj
- UMoq1j0Y92gDTKhq4KdXy1YZej/+Rww2PEU4d284YDfoUFoDgmZlZ0Xv/dTMO7FUPNZV
- 57pw==
-X-Gm-Message-State: APjAAAV+qbn7MgCayEV9cTmrIbBDAMO7Ook2wij8+AGviMf9oUjyanVJ
- pWL1ufHIC1Rqsl/aoMmm4cmAhS9JZVSi5YBowQA=
-X-Received: by 2002:a5d:4ad2:: with SMTP id y18mr2440828wrs.396.1574247843169; 
- Wed, 20 Nov 2019 03:04:03 -0800 (PST)
+ (envelope-from <dgilbert@redhat.com>) id 1iXODT-0007TZ-C1
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 06:32:13 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:30421
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1iXODT-0007Rj-7g
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 06:32:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1574249530;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/JgdlCQYl45ZG1KuUlcgoaDF4DVZdtXJ4z9bLmaP+ck=;
+ b=fJytLYSQqDvyhnynzmHH3OvarGsw5z1wDCrLMLmL244jAjyIQy3c5QEg/mv5H0Tn309etp
+ YsgAYCnB5+O1wwkeL0WJ2vLK8BqNmrXjXoYGVLpAxCCHHZYL/r+hfJt2gypO0L6ZUpYwzA
+ rQElJuzupGIN5ByzTim+Snafebj55RM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-285-SHyWThuAP2iLeM0T-4HBRQ-1; Wed, 20 Nov 2019 06:30:58 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3758E802689;
+ Wed, 20 Nov 2019 11:30:57 +0000 (UTC)
+Received: from work-vm (unknown [10.36.118.40])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3B67D5ED24;
+ Wed, 20 Nov 2019 11:30:55 +0000 (UTC)
+Date: Wed, 20 Nov 2019 11:30:52 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH] misc/pca9552: Add qom set and get
+Message-ID: <20191120113052.GB2858@work-vm>
+References: <20191118061757.52550-1-joel@jms.id.au>
+ <42f378d5-e7ea-11ce-11d5-9589fe7194d2@kaod.org>
 MIME-Version: 1.0
-References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-14-marcandre.lureau@redhat.com>
- <CAFEAcA9Cq_MkAzqAjt5uPNu3HDUfxO0hyVWtqEiAashPEEq3=g@mail.gmail.com>
- <CAMxuvawroZ0jrQTJCbakft21Lgk2cHrE9VyihiUvYBVp+AXgXw@mail.gmail.com>
- <CAFEAcA97LxS0LhCN-uqmO++D2U3dXBn3KctW7n-4tA-b50xKcw@mail.gmail.com>
- <CAJ+F1CJGHeb2aT+8t7vEdB0bKZ8r6OAnnqpDdnkGbfDRcV=JjA@mail.gmail.com>
- <CAFEAcA-_fexNrzgdqwoaJVEyHMG-GAPZkEawiE59EX9+u_Kr5Q@mail.gmail.com>
-In-Reply-To: <CAFEAcA-_fexNrzgdqwoaJVEyHMG-GAPZkEawiE59EX9+u_Kr5Q@mail.gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Wed, 20 Nov 2019 15:03:50 +0400
-Message-ID: <CAJ+F1CL00TcaKz5LmC41urBULcO7meJuzuxW8nHmLQ6hG66tHg@mail.gmail.com>
-Subject: Re: [PATCH v3 13/33] serial: start making SerialMM a sysbus device
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <42f378d5-e7ea-11ce-11d5-9589fe7194d2@kaod.org>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: SHyWThuAP2iLeM0T-4HBRQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::442
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,92 +107,251 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-ppc <qemu-ppc@nongnu.org>, Magnus Damm <magnus.damm@gmail.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Fabien Chouteau <chouteau@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Paul Burton <pburton@wavecomp.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Rashmica Gupta <rashmica.g@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D4FCc0OPoLFy
+X-TUID: GaJqcw7PwCuB
 
-Hi
+* C=E9dric Le Goater (clg@kaod.org) wrote:
+> On 18/11/2019 07:17, Joel Stanley wrote:
+> > Following the pattern of the work recently done with the ASPEED GPIO
+> > model, this adds support for inspecting and modifying the PCA9552 LEDs
+> > from the monitor.
+> >=20
+> >  (qemu) qom-set  /machine/unattached/device[17] led0 on
+> >  (qemu) qom-get  /machine/unattached/device[17] led0
+> >  "on"
+> >=20
+> >  (qemu) qom-set  /machine/unattached/device[17] led0 off
+> >  (qemu) qom-get  /machine/unattached/device[17] led0
+> >  "off"
+> >=20
+> >  (qemu) qom-set  /machine/unattached/device[17] led0 pwm0
+> >  (qemu) qom-get  /machine/unattached/device[17] led0
+> >  "pwm0"
+> >=20
+> >  (qemu) qom-set  /machine/unattached/device[17] led0 pwm1
+> >  (qemu) qom-get  /machine/unattached/device[17] led0
+> >  "pwm1"
+>=20
+> It would be nice to revive the QOM get patchset from David.=20
+>=20
+> =09http://patchwork.ozlabs.org/patch/666458/
+>=20
+> Did we reach some consensus ?=20
 
-On Wed, Nov 20, 2019 at 2:58 PM Peter Maydell <peter.maydell@linaro.org> wr=
-ote:
->
-> On Wed, 20 Nov 2019 at 10:40, Marc-Andr=C3=A9 Lureau
-> <marcandre.lureau@gmail.com> wrote:
-> > On Wed, Nov 20, 2019 at 2:36 PM Peter Maydell <peter.maydell@linaro.org=
-> wrote:
-> > > There are two problems here:
-> > >  (1) "self" gives no hint at all about whether it's the Object*,
-> > > the DeviceState*, or the SerialMM*. All of those are the
-> > > object the method is operating on, but the type differences matter.
-> >
-> > "self" should have the type of the object that is being implemented.
-> >
-> > serial_mm_instance_init ->  SerialMM *self
->
-> In a typical device implementation, some functions take the
-> object as a "SerialMM" or other specific pointer. Some take
-> an Object*. Some take a DeviceState*. Some take void*.
-> Which of those is "the type of the object that is being implemented" ?
+I don't think so; there were some other people implementing
+similar patches; it got bogged down in the question of string visitors
+and I hadn't dug to see if that's got fixed in the last 3 years.
 
-In OOP, you implement methods for a specific type. "self" is of the
-type that is being implemented.
-
-serial_mm_foo(SerialMM *self);
-
-serial_mm_instance_init(Object *o) {
-  SerialMM *self =3D SERIAL_MM(o);
-  ..
-}
-
-
-If you have a generic function, not tied to a specific class, this
-rule doesn't apply.
-
-do_this(some arg, SerialMM *smm)
-
->
-> > > (2) *Absolutely nobody anywhere else in any other device model
-> > > is using the 'self' argument name*. It's not a convention if
-> > > only this one file is using it, and adopting it here gives us
-> > > absolutely no consistency -- exactly the opposite.
-> >
-> > Since there is no clear convention, then adding "self" isn't breaking
-> > any convention.
->
-> There is a clear convention, which I explained to you already
-> (variable is named with some abbreviation/initialism of
-> the type name, or sometimes just 's' for "state"). You are trying
-> to write code which ignores that convention and does something
-> else *which no other code is doing*. Please stop doing that -- in
-> particular, don't do it in one device in the middle of a refactoring
-> series.
->
-> If you want to argue that we should change our convention for
-> how we write QOM code, feel free -- but that should be a separate
-> discussion and probably ought to come with a plan for how
-> to do a general update of the codebase to avoid a weird
-> mix of styles.
->
-
-Fair enough
-
-We can only change things incrementally, and while doing refactoring
-is the right moment to write better and more readable code.
+Dave
 
 
---=20
-Marc-Andr=C3=A9 Lureau
+> > Signed-off-by: Joel Stanley <joel@jms.id.au>
+>=20
+> Some comments below.
+>=20
+> > ---
+> > The qom device in mainline qemu is a different path. Using the monitor
+> > examine `info qom-tree /machine/unattached/` to discover it.
+> >=20
+> > This can be tested with a Witherspoon image.
+> >=20
+> > $ wget https://openpower.xyz/job/openbmc-build/distro=3Dubuntu,label=3D=
+builder,target=3Dwitherspoon/lastSuccessfulBuild/artifact/deploy/images/wit=
+herspoon/obmc-phosphor-image-witherspoon.ubi.mtd
+> >=20
+> > $ qemu-system-arm -M witherspoon-bmc -serial pty -monitor pty -nographi=
+c \
+> >  -drive file=3Dobmc-phosphor-image-witherspoon.ubi.mtd,format=3Draw,if=
+=3Dmtd
+> > char device redirected to /dev/pts/5 (label compat_monitor0)
+> > char device redirected to /dev/pts/10 (label serial0)
+> >=20
+> > $ screen /dev/pts/5
+> > QEMU 4.1.91 monitor - type 'help' for more information
+> > (qemu) qom-get  /machine/unattached/device[17] led0
+> > "off"
+> >=20
+> > $ screen /dev/pts/19
+> > root@witherspoon:~# cd /sys/class/gpio/
+> > root@witherspoon:/sys/class/gpio# echo 248 > export
+> > root@witherspoon:/sys/class/gpio# cat gpio248/value
+> > 0
+> >=20
+> > (qemu) qom-set  /machine/unattached/device[17] led0 on
+> >=20
+> > root@witherspoon:/sys/class/gpio# echo out > gpio248/direction
+> > root@witherspoon:/sys/class/gpio# cat gpio248/value
+> > 1
+> >=20
+> > (qemu) qom-get  /machine/unattached/device[17] led0
+> > "on"
+> >=20
+> > (qemu) qom-set  /machine/unattached/device[17] led0 off
+> > (qemu) qom-get  /machine/unattached/device[17] led0
+> > "off"
+> >=20
+> > root@witherspoon:/sys/class/gpio# cat gpio248/value
+> > 0
+> >=20
+> > Signed-off-by: Joel Stanley <joel@jms.id.au>
+> > ---
+> >  hw/misc/pca9552.c | 91 +++++++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 91 insertions(+)
+> >=20
+> > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+> > index 73be28d9369c..0362aac8c862 100644
+> > --- a/hw/misc/pca9552.c
+> > +++ b/hw/misc/pca9552.c
+> > @@ -15,12 +15,16 @@
+> >  #include "hw/misc/pca9552.h"
+> >  #include "hw/misc/pca9552_regs.h"
+> >  #include "migration/vmstate.h"
+> > +#include "qapi/error.h"
+> > +#include "qapi/visitor.h"
+> > =20
+> >  #define PCA9552_LED_ON   0x0
+> >  #define PCA9552_LED_OFF  0x1
+> >  #define PCA9552_LED_PWM0 0x2
+> >  #define PCA9552_LED_PWM1 0x3
+> > =20
+> > +static const char *led_state[] =3D {"on", "off", "pwm0", "pwm1"};
+> > +
+> >  static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin)
+> >  {
+> >      uint8_t reg   =3D PCA9552_LS0 + (pin / 4);
+> > @@ -169,6 +173,84 @@ static int pca9552_event(I2CSlave *i2c, enum i2c_e=
+vent event)
+> >      return 0;
+> >  }
+> > =20
+> > +static void pca9552_get_led(Object *obj, Visitor *v, const char *name,
+> > +                            void *opaque, Error **errp)
+> > +{
+> > +    PCA9552State *s =3D PCA9552(obj);
+> > +    int led, rc, reg;
+> > +    char *str;
+> > +    uint8_t state;
+> > +
+> > +    rc =3D sscanf(name, "led%2d", &led);
+> > +    if (rc !=3D 1) {
+> > +        error_setg(errp, "%s: error reading %s", __func__, name);
+> > +        return;
+> > +    }
+> > +    if (led < 0 || led > s->nr_leds) {
+> > +        error_setg(errp, "%s invalid led %s", __func__, name);
+> > +        return;
+> > +    }
+> > +    /*
+> > +     * Get the LSx register as the qom interface should expose the dev=
+ice
+> > +     * state, not the modeled 'input line' behaviour which would come =
+from
+> > +     * reading the INPUTx reg
+> > +     */
+> > +    reg =3D PCA9552_LS0 + led / 4;
+> > +    state =3D (pca9552_read(s, reg) >> (led % 8)) & 0x3;
+>=20
+> Could we add accessors to extract the register fields and to clarify=20
+> the layout ?=20
+>=20
+> > +    str =3D g_strdup(led_state[state]);
+> > +    visit_type_str(v, name, &str, errp);
+> > +}
+> > +
+> > +/*
+> > + * Return an LED selector register value based on an existing one, wit=
+h
+> > + * the appropriate 2-bit state value set for the given LED number (0-3=
+).
+> > + */
+> > +static inline uint8_t pca955x_ledsel(uint8_t oldval, int led_num, int =
+state)
+> > +{
+> > +        return (oldval & (~(0x3 << (led_num << 1)))) |
+> > +                ((state & 0x3) << (led_num << 1));
+> > +}
+> > +
+> > +static void pca9552_set_led(Object *obj, Visitor *v, const char *name,
+> > +                            void *opaque, Error **errp)
+> > +{
+> > +    PCA9552State *s =3D PCA9552(obj);
+> > +    Error *local_err =3D NULL;
+> > +    int led, rc, reg, val;
+> > +    uint8_t state;
+> > +    char *state_str;
+> > +
+> > +    visit_type_str(v, name, &state_str, &local_err);
+> > +    if (local_err) {
+> > +        error_propagate(errp, local_err);
+> > +        return;
+> > +    }
+> > +    rc =3D sscanf(name, "led%2d", &led);
+> > +    if (rc !=3D 1) {
+> > +        error_setg(errp, "%s: error reading %s", __func__, name);
+> > +        return;
+> > +    }
+> > +    if (led < 0 || led > s->nr_leds) {
+> > +        error_setg(errp, "%s invalid led %s", __func__, name);
+> > +        return;
+> > +    }
+> > +
+> > +    for (state =3D 0; state < ARRAY_SIZE(led_state); state++) {
+> > +        if (!strcmp(state_str, led_state[state])) {
+> > +            break;
+> > +        }
+> > +    }
+> > +    if (state >=3D ARRAY_SIZE(led_state)) {
+> > +        error_setg(errp, "%s invalid led state %s", __func__, state_st=
+r);
+> > +        return;
+> > +    }
+> > +
+> > +    reg =3D PCA9552_LS0 + led / 4;
+> > +    val =3D pca9552_read(s, reg);
+> > +    val =3D pca955x_ledsel(val, led % 4, state);
+> > +    pca9552_write(s, reg, val);
+> > +}
+> > +
+> >  static const VMStateDescription pca9552_vmstate =3D {
+> >      .name =3D "PCA9552",
+> >      .version_id =3D 0,
+> > @@ -204,6 +286,7 @@ static void pca9552_reset(DeviceState *dev)
+> >  static void pca9552_initfn(Object *obj)
+> >  {
+> >      PCA9552State *s =3D PCA9552(obj);
+> > +    int led;
+> > =20
+> >      /* If support for the other PCA955X devices are implemented, these
+> >       * constant values might be part of class structure describing the
+> > @@ -211,6 +294,14 @@ static void pca9552_initfn(Object *obj)
+> >       */
+> >      s->max_reg =3D PCA9552_LS3;
+> >      s->nr_leds =3D 16;
+> > +
+> > +    for (led =3D 0; led < s->nr_leds; led++) {
+> > +        char *name;
+> > +
+> > +        name =3D g_strdup_printf("led%d", led);
+> > +        object_property_add(obj, name, "bool", pca9552_get_led, pca955=
+2_set_led,
+> > +                            NULL, NULL, NULL);
+>=20
+> It misses a :
+>=20
+>    g_free(name)
+>=20
+> C.
+>=20
+> > +    }
+> >  }
+> > =20
+> >  static void pca9552_class_init(ObjectClass *klass, void *data)
+> >=20
+>=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+

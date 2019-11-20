@@ -1,105 +1,99 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1764976lfc;
-        Wed, 20 Nov 2019 01:58:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw23hl2jb0MrOVXBMKH5fXygP6eX/LiNdpfcsdSE2DA7IcxTxTBqAcVLNJ5MHwR0kravsdw
-X-Received: by 2002:ad4:58b1:: with SMTP id ea17mr1611735qvb.155.1574243918159;
-        Wed, 20 Nov 2019 01:58:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574243918; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1819898lfc;
+        Wed, 20 Nov 2019 02:51:12 -0800 (PST)
+X-Received: by 2002:aca:6006:: with SMTP id u6mr2214019oib.137.1574247071933;
+        Wed, 20 Nov 2019 02:51:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574247071; cv=none;
         d=google.com; s=arc-20160816;
-        b=GK7iCXpBtMmxkCeTEZRgXpa/SWqXCFnnGI3IH5UZclcBp+O0HUN2jTELkGW+wMdDwP
-         38oHHUWtm8y0YXKfEeWqDXHFL5csH5WEAOib8+zJN4GqDL+teuXf2XdVNNIsyOQrwG07
-         mfsTlTWoOEHRxAWadTl0dTJnhp8UpMQNIZceFO3dCAVGC8SdIF2O2C0Dl4pZ1xGRKw6l
-         ET/C/XeJv1zOEN3VZ39qpJT9XdAPF74seZSSn096s1n3ovHswILC9fgaz1O+h2FNHBx3
-         D8I6VdcUMtxCTz4s5431TsTHdPxOwD/lUEOKkyOPfPHuldOPZsbwl8RFFQ7yVDeQ/zJ0
-         JeEQ==
+        b=quaOsI7M2disgsECFwX/jaiwvLJfhzjP3zw8WItJM4u4AmMbWkzoZGF4q3JS6qMWHY
+         aOUhcRtE2sChcLAAROk22FftTtEA2DYJpjRNOSzfLfohyhXQYN+V4oxuG8nZ1ofLBOYg
+         molLBRN89TI5doxVizKD1qIBIvQRVDwEUz6unNKJAVo0zJwVBRh7txh4xd/LtNtyAWZn
+         //KZ/pPzvOuk7Xp8W2oc5uVay66MtqzjrPTxqBONX1NFVL8bNmxqWr4CbgaQnUd6Yigv
+         XOfCcs7ztZGoie0ifmYNAf+e9TS4JyTYRXT+lFkcm7226uesOOoCz6KXChkwNn2hdzRf
+         L8Wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=O9xQYpyBt76UEq8p+FvnObMCUEWajQTRzfrWqVNDag4=;
-        b=NuIfS6pB5NhXuX3BIe/LIiCOVytBP/+KB90n38ZdI9dM5gd1SMUGZd8aCSypoMXZpj
-         nk8IlIynFSVO4dR3HOA2keTyyPlo6YFZDmJ2uG4pBISHEvb3s14Rdv6hy1HVuJfemnOw
-         QneU98HDrTCdiQDVZljZJmfxXBhG8syaBzL8XdOAgRpV55EmR2rMdqfPy63QJUUvtmiU
-         APZFzn6t5j+l7ePxxxHOk8nmodTGQjVfGMxC1eZCyoYh53jOAWueFlPuKnRa56Ci5LaJ
-         PkR8hcD22Bs0E5SGCX+qP1VLqrLGstz1WFF0ROaFGkWvZj63KqgglHIwTYUdkTapASoy
-         eStA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=aal/ea6Sj9JcKtUdRuLSDnLxR0Gv/3zrPtNSuuc1hG0=;
+        b=aCrPst0q4azDiKSTHJ3i3I2TXGfhiK1Fc1Ovw+eqlw61XyCFxGgZNX3U2d5USKGiv0
+         ldx9AaEK2sZUTeCjf5m1z31bwaeIDMGEhHsftRoRK6QVu3fwh2Zph7M2Dd9HSTttCu49
+         I4Tx2/lan7/LDhELrrr1Ifwggz7yZkrjEpPbKUuTgpJ5uabyDTuxlXnbdYN8fAR6g2l9
+         J+2NSdPTvKDhbCgbrW8lSxnIQyZKbBJrXh/yWzlqtgv0o6QGmFsI9eB6+236kBA9U+0Q
+         xwxVinniRf9HqctYafI3QsjGzMDg1+W6LpUwOiA+WIsTpwSUYeDnWhNNAwAnZ+gw0Eu7
+         QBhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cz3QgynD;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
-        by mx.google.com with ESMTPS id ch2si15873520qvb.52.2019.11.20.01.58.37
+       dkim=pass header.i=@linaro.org header.s=google header.b=FKhJPGk5;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id s127sor13798491oib.91.2019.11.20.02.51.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Nov 2019 01:58:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+        (Google Transport Security);
+        Wed, 20 Nov 2019 02:51:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cz3QgynD;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1574243917;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:openpgp:openpgp;
-	bh=O9xQYpyBt76UEq8p+FvnObMCUEWajQTRzfrWqVNDag4=;
-	b=Cz3QgynDyxTU4x2TotEzkoHHfO2KLfEeyPRkz89GYggbC2w5Gi5KYiNm6W7WNoNqS/NDYP
-	wkR/pelb4xaaurlh+feSuqsOm0OW2kGliqb0RbibkbAY24kRlg4/xQ1LWRqYZvkL+rl6FL
-	/PsRVJeRqELmCCitpH05rthddEO30vg=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-202-TPb0U2OyN8C_aYuYpo-HBg-1; Wed, 20 Nov 2019 04:58:36 -0500
-Received: by mail-wr1-f70.google.com with SMTP id 92so20949113wro.14
-        for <alex.bennee@linaro.org>; Wed, 20 Nov 2019 01:58:36 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=FKhJPGk5;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=aal/ea6Sj9JcKtUdRuLSDnLxR0Gv/3zrPtNSuuc1hG0=;
+        b=FKhJPGk5E7XI+A0j2tWIauXRiitLVMqxGCcz8X1UzDfHXfpM3quXBtlsKWaMxe5HTz
+         PBDkcrPwpci26gCYA1VJJmkFiPsaDGzps5Um6yqiHulOKFBbbKUoG/recepJkZ6StTb1
+         q0icwuGQDaU5sRHJXDIEhYLRe0u+0Brco1ME6kf8wGJHM1a4H5+g2h7rtkdSJwzQGDlj
+         aY/9rZOScLGBY9taDJpuiy2peNXmayy2s68ex3ZPvUkptZwKlHb3XyysyNkfo/OTkbC+
+         eb6U1lF3FY88iSay6iT8uD/ZHe/5w4ZcFYC/DxjaIUqSpA6hHR66JNUiUYTH9Jtn7hpP
+         83Cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=O9xQYpyBt76UEq8p+FvnObMCUEWajQTRzfrWqVNDag4=;
-        b=icgC8BQkp5Hr1+ccZ0QCWf1brH+wAtjZBmxZfW8sUiI7xAaHzJ6U1LJJGQkwscqiQ9
-         5PNvJ0kHxjbpT6K1pDRaB1WXHNTQ6cBKWT9bbYeBh1+hK6q3gQjXQ15YCMbQekPkFJ/T
-         39spz4VfUphuZcla15clqupTn/P6IWPR+Or/vAwvbXoOsYSxXOULq+q4eMKI3NS6OqFO
-         vA7D3cJVGfDk48FmMKffqy+impU395aeb9Af4BBbJ7owAS1stLlbbeo7bEqoN+1K1osW
-         FegJelblviKfQxfEnIPGOdEBj5a4PDt1YaYfyuFhRPAdgoQItAzxnTJVOrgqgz1xHa64
-         KzDw==
-X-Gm-Message-State: APjAAAVOVj5HhchL4LL18iZEq0OV+wWewoDAz4qNbfD8fyJa6YfFrlSs
-	I+WZ/crLKhp8nDk7lhQcn8JTjgbx+bnrNbyqgb1jbivZhfrYXXQLRa8QdM4T7ER3uuGR5ICo2+P
-	VLSSfHSBNoCjTVf0D
-X-Received: by 2002:adf:82cc:: with SMTP id 70mr142380wrc.231.1574243915167;
-        Wed, 20 Nov 2019 01:58:35 -0800 (PST)
-X-Received: by 2002:adf:82cc:: with SMTP id 70mr142354wrc.231.1574243914909;
-        Wed, 20 Nov 2019 01:58:34 -0800 (PST)
-Return-Path: <pbonzini@redhat.com>
-Received: from ?IPv6:2001:b07:6468:f312:dc24:9a59:da87:5724? ([2001:b07:6468:f312:dc24:9a59:da87:5724])
-        by smtp.gmail.com with ESMTPSA id v81sm6367455wmg.4.2019.11.20.01.58.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Nov 2019 01:58:34 -0800 (PST)
-Subject: Re: [PATCH for-5.0 0/4] Remove the deprecated bluetooth subsystem
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-arm@nongnu.org, libvir-list@redhat.com,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20191120091014.16883-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <689a3583-9535-f744-1938-061ad0df114b@redhat.com>
-Date: Wed, 20 Nov 2019 10:58:36 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=aal/ea6Sj9JcKtUdRuLSDnLxR0Gv/3zrPtNSuuc1hG0=;
+        b=ezovybBX6ptTwWfYnlWld1O0RrgyrcWQOuMbk+7Z6Zv4o/UD3r9fqBap6UuIb1xJfE
+         yeqSTZvFWDYJGcJ01v5OFHu9348XC4JadExA+JMUHJd5MrNob8BmwrKUVr3MDBF/vOOa
+         wuJvFRyCUoSlKrpCkPW6P6QxXTdYMfsOGukBarte6lBBSh2EQaE2RckrD8dr47K++hLy
+         hSZmN7vxcfciGSo1GrYnGACym+dxQJ/bCIpMq5jaXs8+0kQnfVUAdxf3/K6PtSE9bne7
+         NiafknzZ+rRvArmTLvW0XJAcp/EJjRED/iaqA5UbDS3qlPGhehgAA2VAMevIEx41tGcT
+         tPZg==
+X-Gm-Message-State: APjAAAViYv0IEsM4JkX1kwjDzXYtCzLy6TKAHZZHlHxu1KpGTLcv8ZzB
+	H/8s9iECnPwEpHLuDCPw9AbZf3Do6qlceUYWBPdQZDak
+X-Google-Smtp-Source: APXvYqxQ0LOnPnMOlPNRo2pORqJlVhyrdeK+DIEjZdbmxM0JJtafzsA//rQk25cAUOV3ji1nmZOCI02JKdJKQyflC0w=
+X-Received: by 2002:aca:cf12:: with SMTP id f18mr2135547oig.48.1574247071497;
+ Wed, 20 Nov 2019 02:51:11 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191120091014.16883-1-thuth@redhat.com>
-Content-Language: en-US
-X-MC-Unique: TPb0U2OyN8C_aYuYpo-HBg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
-X-TUID: uzp4IEFwGxRi
+References: <20191120091014.16883-1-thuth@redhat.com> <20191120091014.16883-2-thuth@redhat.com>
+In-Reply-To: <20191120091014.16883-2-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 20 Nov 2019 10:51:00 +0000
+Message-ID: <CAFEAcA_OpH_4rzpVN=v-HNadQm_Mh6yGBReKP4C_wic1ETq6kw@mail.gmail.com>
+Subject: Re: [PATCH for-5.0 1/4] hw/arm/nseries: Replace the bluetooth chardev
+ with a "null" chardev
+To: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>, 
+	qemu-arm <qemu-arm@nongnu.org>, Libvirt <libvir-list@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: KBavsy3X568y
 
-On 20/11/19 10:10, Thomas Huth wrote:
-> This patch series removes the bitrotten bluetooth subsystem. See
-> the patch description of the third patch for the rationale.
+On Wed, 20 Nov 2019 at 09:10, Thomas Huth <thuth@redhat.com> wrote:
+>
+> We are going to remove the bitrotten bluetooth backend, so we can
+> not use it in the n800 and n810 machines anymore. Replace the chardev
+> here with a "null" chardev and stop including the "hw/bt.h" header.
+>
+> I am not aware of a full working N8x0 environment that can be used to
+> test these machines, but the Linux kernel from the Meego project that
+> can be found on http://stskeeps.subnetmask.net/meego-n8x0/ still seems
+> to boot as far as it did before.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

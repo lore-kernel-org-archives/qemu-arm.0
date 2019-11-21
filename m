@@ -1,233 +1,138 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2732349lfc;
-        Wed, 20 Nov 2019 16:09:42 -0800 (PST)
-X-Received: by 2002:aca:7583:: with SMTP id q125mr5029476oic.168.1574294981845;
-        Wed, 20 Nov 2019 16:09:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574294981; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2816632lfc;
+        Wed, 20 Nov 2019 17:39:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxd6gEHeIUDGfiuSDPVVPkImpa3ORsMoBSrIOWhOExAwMoiUa4oBEYyCOe1hAUyIx6FyTy0
+X-Received: by 2002:a17:906:b80f:: with SMTP id dv15mr10063607ejb.188.1574300388798;
+        Wed, 20 Nov 2019 17:39:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574300388; cv=none;
         d=google.com; s=arc-20160816;
-        b=kARQNSkcWBj2XZ3MZbGVwuouirxjEJNjhy/VuufC7YmRgEFgmgOKF5W12Xafw6e1tN
-         vGXNFXdFdQuXvam0vjfECPX68kKj8mOtQRBiNPltZqteh0DKv1tV6S/QGLRGwCnxr84N
-         twS9EowXF10rIX07pu8/RAAnbtgiPb14c5OpMy3zzVv3xXlh/GNQmcaCx2Kd4PtJ0hQo
-         u6lulHtgxktVKVHnvgsnawhhsWMCcv+HcoVyVaWThmLasxA74JOESjQQt+AcwOgs8vaN
-         w5g+JaCwXQjN/vBMHpwx6jYR3e447861IHefff1GWFds9/Ud0guwtm7uMGXnw2U+/K/b
-         q4+Q==
+        b=QLmn3PG8MkvRQPOK/5z0PaALSp2XvnCxP7LfAb5o8MYtBSV0EORO6SrJ2LLdfd6gUQ
+         hBVhyRcjjoDlmQoBcm9077vKBE6Llmc2uZBfdEBMEY0uhhA4IZr5vJxLWo8n4aqvc7+H
+         aTn2b2XOY7qvzCOK+I6yD1pcRXLk1WFeW6DTSTy94vTyq65704cvyYsKsJNeJzrQAGO9
+         IaiWfwmlwRg6VfnRWuA5q6/bUlYc8+OCd5xJVE3w/4gR4oz58/n8AXKZ6oif3Z1yExnB
+         o3dWeL02N1B+Q9jLPzEgz72WsjdBLxHSyHFdCaB65sFocksm+ioFDKqXE4qfj0N5R2Eu
+         a88w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=Rdoo/trm2kfQbHrpXryTEVHE3GHeXymHmhFHGDwpeds=;
-        b=V9V48ivGR1aK0i/YybZFGbi379SHOwyVnuxQ8asx+RV53y0pTZxTDSHCNmsZcfsN6f
-         WrJIdGNJlbnzBa72n4DLY7EyHJ9mrpOXJz8b8icmpCpRmq/T31WpRffcCFIvjIw07cVo
-         sA1Kc1N5u6HdMnacU9uO6lXdSl1LBvwRDQXkex7IoRcJSVypLkCN/7Z/MAKlP3KBjv/h
-         cdFc440dpWoTrFlWRbQAso1F/B6ONeyK9IrGtvqKkwELNAhbvfqaYxvRs2/O3vtahftt
-         EII4HpBRD54dEsKn6zyPJcQCxP0OwrqtkLgbkhgiY61lCgZYbbcWIpvcKYOhTelAT6/4
-         h3XQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=G7x+0l0MGkhypHBusSieelbqM+mMXLIb2T8PK21/BIw=;
+        b=euTstCHSgnxZ7sC/9Mp+Ph+rB5pVfPDSNONinG3beEjIJFQnMFHBQP9DrpkAgVByNQ
+         +50DPL6Dbl47iy3BRXQwlQwS4Um6yLEg8xeQVyPT5wcxD3PvOsG4m9h8wRsIUzhm4QHO
+         XsN3M/UWEUROxk6aU4tFIw33OCrfWj42UD98nEOB3xjHGittih6RFi9I4cEoVb+Gumpl
+         qcutSoCdzgYxiPDKwhe9Ip+fpMvVoDx6sAcPuGxSLqI5WyVcJILHozctang2Hk3bmpfI
+         T/PpVoDt5cwACirp+ZK/48O81/5rari/kN8TNAKCKDUYYbbEeWrfVdudWEnCpgvZUqFb
+         A+EQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sngSs25s;
-       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <beata.michalska@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id j6sor405467otn.99.2019.11.20.16.09.41
+       dkim=neutral (body hash did not verify) header.i=@gibson.dropbear.id.au header.s=201602 header.b="CpJFW+/e";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r7si920853edy.16.2019.11.20.17.39.48
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 20 Nov 2019 16:09:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 20 Nov 2019 17:39:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sngSs25s;
-       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=Rdoo/trm2kfQbHrpXryTEVHE3GHeXymHmhFHGDwpeds=;
-        b=sngSs25sWQUSqJMDGvDXVQEzAQlgRRZiiFG0+slzGADNnd7glffB0YktsqjeF+7hKO
-         7bpD+FmpW1YNuLXby9+kuKqMzF2aL03X6aeYe7RCcbYM78kF5NvivS7E+OPAQ4Z98n2Q
-         02r2pF8fRl8+j/4ELA8Lu30AlQyj/Bf+dPxNosQoy+MlVB6bGHXY5ZtP2UVyduWaTncb
-         3FlDZMMM8ODEErbcUM65ofqJuASMYhmCTHTBtrVXQlIAOd9lvxhV9UpSOEfJ37eBDld4
-         il9dvh4kNgAnU+iMr9ARhUauEXFxf/wqndtRQM0vYDQ48L5upcoQ2Qarv+O+dfOc7kLI
-         NISQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=Rdoo/trm2kfQbHrpXryTEVHE3GHeXymHmhFHGDwpeds=;
-        b=hou+y8pdKwlBOOva3DdumOx/vvfpRGw5txKwllnQVW2ZM/XzHc06W7baGqQNKyQsQO
-         aux9VbAyZmOpmMqY9wdPVL8jsTrTH0aCuWm8RMjijFFZaR3ETmAKMS5ECcXS0wd8ZU7e
-         wKAxrsPswFLVbgh9ixJY+yN9w+w63dCniemO239rlnTKQJHBqkdvZVAAdhiSNcN95Q1m
-         M4CxX8R5eEViDUuArWTKxwxhb+1iNgF2HwaWwqRW5aZQB8xmybeZOUD96xifGsFhDjJF
-         d13RUhsnWViOVOY4HeRkjvAt4/myhK9Q0aeCQbx6VMoMzYg7nwtt9rBFX8tZe7cLSrN1
-         JGFQ==
-X-Gm-Message-State: APjAAAVj22wkKT9llq0+QJ9UvepFqW4JuKVuQ4+U3bPCN8spS4wJXgzL
-	U3g2epRKB3P+IQBZY9lzUwOTZ/lX
-X-Google-Smtp-Source: APXvYqxolcYUacdkXJpKZX6xSSBKx+1V9eLJfXP1J/QWskDaR8x8QdPN6xSWkUX19ZxvzuZxB0nPeg==
-X-Received: by 2002:a05:6830:155a:: with SMTP id l26mr4316290otp.119.1574294981368;
-        Wed, 20 Nov 2019 16:09:41 -0800 (PST)
-Return-Path: <beata.michalska@linaro.org>
-Received: from moi-limbo-9350.arm.com (host86-181-127-240.range86-181.btcentralplus.com. [86.181.127.240])
-        by smtp.gmail.com with ESMTPSA id z17sm351439otk.40.2019.11.20.16.09.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Nov 2019 16:09:40 -0800 (PST)
-From: Beata Michalska <beata.michalska@linaro.org>
+       dkim=neutral (body hash did not verify) header.i=@gibson.dropbear.id.au header.s=201602 header.b="CpJFW+/e";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35634 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iXbRj-0008Q8-QN
+	for alex.bennee@linaro.org; Wed, 20 Nov 2019 20:39:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38324)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <dgibson@ozlabs.org>) id 1iXbRA-0008OP-JC
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 20:39:13 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <dgibson@ozlabs.org>) id 1iXbR8-0006SU-J2
+ for qemu-devel@nongnu.org; Wed, 20 Nov 2019 20:39:12 -0500
+Received: from ozlabs.org ([203.11.71.1]:59921)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1iXbR4-0006OQ-KA; Wed, 20 Nov 2019 20:39:07 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 47JMfZ4dplz9sPn; Thu, 21 Nov 2019 12:39:02 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1574300342;
+ bh=JIfsApD1YfZ/bDz9LeRPQyITPIdEKbfk9wNA+Pc165I=;
+ h=From:To:Cc:Subject:Date:From;
+ b=CpJFW+/eB542mN3g2/u4O3uCRcVAL1kE2T1R+tpGV0g+Mg0YlWGRJPurUI8SS/FFw
+ 3x7r92N81sNWW7657+k56qtdx1I081EkiqrlJXgvKni3AYsFeFx2v5Uw4OPCgGH1Wv
+ /Dzkb7owmxAbBEjDPlhJB08xhjjvP35UCwJF8+aA=
+From: David Gibson <david@gibson.dropbear.id.au>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	richard.henderson@linaro.org,
-	alex.bennee@linaro.org,
-	pbonzini@redhat.com,
-	quintela@redhat.com,
-	dgilbert@redhat.com,
-	eric.auger@redhat.com,
-	shameerali.kolothum.thodi@huawei.com
-Subject: [PATCH v3 4/4] target/arm: Add support for DC CVAP & DC CVADP ins
-Date: Thu, 21 Nov 2019 00:08:43 +0000
-Message-Id: <20191121000843.24844-5-beata.michalska@linaro.org>
-In-Reply-To: <20191121000843.24844-1-beata.michalska@linaro.org>
-References: <20191121000843.24844-1-beata.michalska@linaro.org>
-X-TUID: EHN5mYzRfHCq
+Subject: [PATCH v2] exynos4210_gic: Suppress gcc9 format-truncation warnings
+Date: Thu, 21 Nov 2019 12:38:59 +1100
+Message-Id: <20191121013859.287372-1-david@gibson.dropbear.id.au>
+X-Mailer: git-send-email 2.23.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 203.11.71.1
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uPfuu0Us7Xaq
 
-ARMv8.2 introduced support for Data Cache Clean instructions
-to PoP (point-of-persistence) - DC CVAP and PoDP (point-of-deep-persistence)
-- DV CVADP. Both specify conceptual points in a memory system where all writes
-that are to reach them are considered persistent.
-The support provided considers both to be actually the same so there is no
-distinction between the two. If none is available (there is no backing store
-for given memory) both will result in Data Cache Clean up to the point of
-coherency. Otherwise sync for the specified range shall be performed.
+exynos4210_gic_realize() prints the number of cpus into some temporary
+buffers, but it only allows 3 bytes space for it.  That's plenty:
+existing machines will only ever set this value to EXYNOS4210_NCPUS
+(2).  But the compiler can't always figure that out, so some[*] gcc9
+versions emit -Wformat-truncation warnings.
 
-Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+We can fix that by hinting the constraint to the compiler with a
+suitably placed assert().
+
+[*] The bizarre thing here, is that I've long gotten these warnings
+    compiling in a 32-bit x86 container as host - Fedora 30 with
+    gcc-9.2.1-1.fc30.i686 - but it compiles just fine on my normal
+    x86_64 host - Fedora 30 with and gcc-9.2.1-1.fc30.x86_64.
+
+Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+
+Changes since v1:
+ * Used an assert to hint the compiler, instead of increasing the
+   buffer size.
+
 ---
- linux-user/elfload.c |  2 ++
- target/arm/cpu.h     | 10 ++++++++++
- target/arm/cpu64.c   |  1 +
- target/arm/helper.c  | 56 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 69 insertions(+)
+ hw/intc/exynos4210_gic.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index f6693e5..07b16cc 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -656,6 +656,7 @@ static uint32_t get_elf_hwcap(void)
-     GET_FEATURE_ID(aa64_jscvt, ARM_HWCAP_A64_JSCVT);
-     GET_FEATURE_ID(aa64_sb, ARM_HWCAP_A64_SB);
-     GET_FEATURE_ID(aa64_condm_4, ARM_HWCAP_A64_FLAGM);
-+    GET_FEATURE_ID(aa64_dcpop, ARM_HWCAP_A64_DCPOP);
- 
-     return hwcaps;
- }
-@@ -665,6 +666,7 @@ static uint32_t get_elf_hwcap2(void)
-     ARMCPU *cpu = ARM_CPU(thread_cpu);
-     uint32_t hwcaps = 0;
- 
-+    GET_FEATURE_ID(aa64_dcpodp, ARM_HWCAP2_A64_DCPODP);
-     GET_FEATURE_ID(aa64_condm_5, ARM_HWCAP2_A64_FLAGM2);
-     GET_FEATURE_ID(aa64_frint, ARM_HWCAP2_A64_FRINT);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 83a809d..c3c0bf5 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3616,6 +3616,16 @@ static inline bool isar_feature_aa64_frint(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, FRINTTS) != 0;
- }
- 
-+static inline bool isar_feature_aa64_dcpop(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) != 0;
-+}
+diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+index a1b699b6ba..ed4d8482e3 100644
+--- a/hw/intc/exynos4210_gic.c
++++ b/hw/intc/exynos4210_gic.c
+@@ -314,6 +314,14 @@ static void exynos4210_gic_realize(DeviceState *dev,=
+ Error **errp)
+             EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
+=20
+     for (i =3D 0; i < s->num_cpu; i++) {
++        /*
++         * This clues in gcc that our on-stack buffers do, in fact
++         * have enough room for the cpu numbers.  gcc 9.2.1 on 32-bit
++         * x86 doesn't figure this out, otherwise and gives spurious
++         * warnings.
++         */
++        assert(i <=3D EXYNOS4210_NCPUS);
 +
-+static inline bool isar_feature_aa64_dcpodp(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) >= 2;
-+}
-+
- static inline bool isar_feature_aa64_fp16(const ARMISARegisters *id)
- {
-     /* We always set the AdvSIMD and FP fields identically wrt FP16.  */
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index a39d6fc..61fd0ad 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -646,6 +646,7 @@ static void aarch64_max_initfn(Object *obj)
-         cpu->isar.id_aa64isar0 = t;
- 
-         t = cpu->isar.id_aa64isar1;
-+        t = FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);
-         t = FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR1, FCMA, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR1, APA, 1); /* PAuth, architected only */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a089fb5..f90f3ec 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5929,6 +5929,52 @@ static const ARMCPRegInfo rndr_reginfo[] = {
-       .access = PL0_R, .readfn = rndr_readfn },
-     REGINFO_SENTINEL
- };
-+
-+#ifndef CONFIG_USER_ONLY
-+static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
-+                          uint64_t value)
-+{
-+    ARMCPU *cpu = env_archcpu(env);
-+    /* CTR_EL0 System register -> DminLine, bits [19:16] */
-+    uint64_t dline_size = 4 << ((cpu->ctr >> 16) & 0xF);
-+    uint64_t vaddr_in = (uint64_t) value;
-+    uint64_t vaddr = vaddr_in & ~(dline_size - 1);
-+    void *haddr;
-+    int mem_idx = cpu_mmu_index(env, false);
-+
-+    /* This won't be crossing page boundaries */
-+    haddr = probe_read(env, vaddr, dline_size, mem_idx, GETPC());
-+    if (haddr) {
-+
-+        ram_addr_t offset;
-+        MemoryRegion *mr;
-+
-+        /* RCU lock is already being held */
-+        mr = memory_region_from_host(haddr, &offset);
-+
-+        if (mr) {
-+            memory_region_do_writeback(mr, offset, dline_size);
-+        }
-+    }
-+}
-+
-+static const ARMCPRegInfo dcpop_reg[] = {
-+    { .name = "DC_CVAP", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 1,
-+      .access = PL0_W, .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
-+      .accessfn = aa64_cacheop_access, .writefn = dccvap_writefn },
-+    REGINFO_SENTINEL
-+};
-+
-+static const ARMCPRegInfo dcpodp_reg[] = {
-+    { .name = "DC_CVADP", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 1,
-+      .access = PL0_W, .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
-+      .accessfn = aa64_cacheop_access, .writefn = dccvap_writefn },
-+    REGINFO_SENTINEL
-+};
-+#endif /*CONFIG_USER_ONLY*/
-+
- #endif
- 
- static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -6889,6 +6935,16 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-     if (cpu_isar_feature(aa64_rndr, cpu)) {
-         define_arm_cp_regs(cpu, rndr_reginfo);
-     }
-+#ifndef CONFIG_USER_ONLY
-+    /* Data Cache clean instructions up to PoP */
-+    if (cpu_isar_feature(aa64_dcpop, cpu)) {
-+        define_one_arm_cp_reg(cpu, dcpop_reg);
-+
-+        if (cpu_isar_feature(aa64_dcpodp, cpu)) {
-+            define_one_arm_cp_reg(cpu, dcpodp_reg);
-+        }
-+    }
-+#endif /*CONFIG_USER_ONLY*/
- #endif
- 
-     /*
--- 
-2.7.4
+         /* Map CPU interface per SMP Core */
+         sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
+         memory_region_init_alias(&s->cpu_alias[i], obj,
+--=20
+2.23.0
+

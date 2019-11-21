@@ -1,243 +1,143 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2181278lfc;
-        Wed, 20 Nov 2019 07:51:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz4qh/buJEf0VDeDy4YTHSXiddq7TTQhOvS/b0QUrbpuIuBQZARIxQrgzkEOJfCAtkW7Rhq
-X-Received: by 2002:a05:6214:1183:: with SMTP id t3mr3299987qvv.240.1574265092431;
-        Wed, 20 Nov 2019 07:51:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574265092; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2731831lfc;
+        Wed, 20 Nov 2019 16:09:09 -0800 (PST)
+X-Received: by 2002:aca:39c2:: with SMTP id g185mr5169930oia.150.1574294949052;
+        Wed, 20 Nov 2019 16:09:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574294949; cv=none;
         d=google.com; s=arc-20160816;
-        b=JfTEmW5HyB5VrXyjhxvmd2i0D8DrZ5ZvcpTHffkymTJbwlu0NZlbP3GxlAn88RYU+X
-         iw6+3rWXUh3mxL6eTnhb+TjB+6m859XH6V6dWSr/izSWKj2OgGKpY9yQUarDEBsFsOyI
-         hQQ53uPrKCvv3vfKKeAhvvmDNK1jUZO1pbb6vqZxsbhQcv69ulZOxNUgnZr0vXw364b1
-         kHRzWHl3jeAIBXGHCwpRMqDyCnmAqajjs9PjWIWmfTSs8jl81jIHtjXV0rNS2Jw1yffh
-         5ZNoLe9INAtKEQO2xmGXV8I3EkggJxO3NywuHshr398V90P1nl+yYuhaun66PYxXLAQL
-         fB/w==
+        b=UUgw+TVIB+EN+XOmnLCxGYPq/dFYkd6fInMz5DxRO2uqMcl9JpGxQroJNEnvjzb7rk
+         YrjNHCMQ8GyjvIsSc/0TqaqeWdy3K52j38uh5AMQUNENtOb/jlGB9P42VDH+vRGt5iNr
+         4hQ0W/WiJlI5ApnoXB2XH5e0lpT38AgIif5zIYex1qlryRTWf8Pr4eIsEyAset3kXcCE
+         x6ikfGR96rQeIq8mY9saJcLQp6LNG0QLUG/fIJL9zhKCHiNTghQT2R/ZSgJy/wrQmckT
+         LLyXfA4yt0NKvAsZ3xSW60G5B/VLo195uWx3pUeEZlFcbiNabxXd2ACQd0rjhRJbIf0o
+         VfoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=PurGUxzBofordEzQ/Xn6ypIugdPqz6DRHCdALTotyNE=;
-        b=Oo9Wo4ydEYaNJqAYfEuxGjU1emF5dRmF4GJLg0qOZej9HCy2oYJUTNyKfYdj3OVmhm
-         td8GRu6ztHmceMN/4kXcmE7GKDDtfHcDdLTAOk97kqX8kG8SdcLOXB/iMdbLWJAbhFRl
-         VAHgX0m9M/3MotJBtz4ZiEm1r2MM13CHHvLu32t2OCfDiW0E4C1aUg/+h+K+kIOhq7Iz
-         /nAbXinKc3IZgn28i4m5oj1sBA339f+P12A4hmurRwr3qUaIRPnW+ueHkmJQtJ79rjLa
-         RfAuc9pOv1nna/uMIk7Hw/9KrgjMxiKqky+ousCZC3AYT64v5V1ERN+UAvwLK6eheFgU
-         VFrg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=LnuosNvWWxN4M0Ub7V6G20xasHaJLUMucWeL+3NMq3Q=;
+        b=nmO79AQO4h2dhNKtHZtRifzf/VKott/0B6M1FBS5fgrRmzUI433RdEovuRays9mkaA
+         CjFhUugYt51GhhfUPBhhYM2Z2BbZv5CQijxx0Zoz2MOseG72NKmmm0QtDAbjO/HQCs/k
+         J1CjUsEeW/P6l1E0sT/wdnHvRfRZL4e525o8X2R2T40IWBw5PfopDdK4zP19tNNDY3k7
+         fcWPmpKo8OIWNqum7PuV6NcBX/wqwzYyd2xpIeMGilRk540dQkt6CQT+Ody7Vvpe94ug
+         OSRf4aizyVS0m/Ke8cDyv1epR3Psr7rnpghhh/BwWkkfS63FVYAc2T3JWazcgOQ8zVhl
+         /tHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hiuw9kCf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l141si15762798qke.67.2019.11.20.07.51.32
+       dkim=pass header.i=@linaro.org header.s=google header.b=NXeWgK+S;
+       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <beata.michalska@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id n48sor385825ota.181.2019.11.20.16.09.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Nov 2019 07:51:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 20 Nov 2019 16:09:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hiuw9kCf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59670 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXSGR-0004qf-Co
-	for alex.bennee@linaro.org; Wed, 20 Nov 2019 10:51:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35082)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iXRx9-00075Y-3y
- for qemu-devel@nongnu.org; Wed, 20 Nov 2019 10:31:36 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1iXRx1-0000z8-2E
- for qemu-devel@nongnu.org; Wed, 20 Nov 2019 10:31:29 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43644
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1iXRwz-0000wg-3e
- for qemu-devel@nongnu.org; Wed, 20 Nov 2019 10:31:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574263883;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PurGUxzBofordEzQ/Xn6ypIugdPqz6DRHCdALTotyNE=;
- b=hiuw9kCfDy9b5iuVx6f7s3yTRWKaFnFLyiN1ekE9NZXN0glhjTnULoBq7u7h6P+GS3WVSP
- ss+MxW2yWIjcRn36hCvrVFMfdX5D8lCmnzrS5hTQY6knZhoYX7sU5tme/HAQ95mf/EVPkU
- Z7kxqvBU/xSJWpC4FiYEOr7cX3iJXpY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-152-WoHeQrGNO7KV_-1Udi-cdQ-1; Wed, 20 Nov 2019 10:31:21 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 292D0188352C;
- Wed, 20 Nov 2019 15:31:20 +0000 (UTC)
-Received: from localhost (ovpn-112-56.ams2.redhat.com [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 908095C1D4;
- Wed, 20 Nov 2019 15:31:14 +0000 (UTC)
-From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=NXeWgK+S;
+       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=LnuosNvWWxN4M0Ub7V6G20xasHaJLUMucWeL+3NMq3Q=;
+        b=NXeWgK+Ssbx4Zts3a+GEznZ7rnyKg5GgvO6gtlIUPffykMA3WnQY2k8/61lkAfQ74N
+         dW3hBjl8UyM+rsE0x6iI5slwFnNxjrcoPwC9p++1r8orqUW+LbyC86/Cal8Xby96uhDP
+         yEHTtduXdNxLxLIBqZwPFds+DTcUtI5Y+MV09vtWykaTjhbnMrohllCzpgjYxihw6f/W
+         VPQUaJw2GHqMpGYm5+GkSAQ4tDb64WDCtQYsjkpxCft0JjuhsbKRs4qB/rFW5JV0x/q2
+         tCrFdSRVzwj5D550Z6Oiw6SBdGQ7o7bShXzExFoF15RS3loTEqBtOyX7Ivi2wQMUZIqa
+         ikBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=LnuosNvWWxN4M0Ub7V6G20xasHaJLUMucWeL+3NMq3Q=;
+        b=T3lvWYju3R5mGykdtugrhaOOA2H8oR+l3kO3S+Is8SpsyhkDyHlqvmTfT53WJSmP6v
+         6nTlSh+vrNiaMER4vauaX8jJYlu4Cc5wyVhSaKrdP9I6DrYxKiPlw6eSb6OlI0BKovWF
+         cPUmwf6A08PDic5aKgarX34jTXZJsYNEduE/QjWaOZgjCdZ1r+1+s/aELTUZW3OGZPPU
+         B7edqUe17veYManDtWuX/x6bio8o9ymHxp4xVyCc+Gd1yP9yDCvd4gG/DOdoKDnqOYTy
+         7eBURGGaYqRSQvTuUWr8pevBEKXc5VLIx4I7KhJpE3hJRUVTVctqV1ehfJrYF6wiGXFC
+         57kg==
+X-Gm-Message-State: APjAAAWmgDWHEr8Gscty+2KOmE3/nWL1zPDEQQjTVdYSc5MCOt7m8RbS
+	NK8pJu+siI4rLLucOxR41cyK4UjX
+X-Google-Smtp-Source: APXvYqxhhNg1c0F375yrETy33UdkuPy+nXreVkCoPTCe3o/6ihOrVdFsT072/uad2gigwfcWyhsXew==
+X-Received: by 2002:a9d:3b26:: with SMTP id z35mr4298201otb.355.1574294948579;
+        Wed, 20 Nov 2019 16:09:08 -0800 (PST)
+Return-Path: <beata.michalska@linaro.org>
+Received: from moi-limbo-9350.arm.com (host86-181-127-240.range86-181.btcentralplus.com. [86.181.127.240])
+        by smtp.gmail.com with ESMTPSA id z17sm351439otk.40.2019.11.20.16.09.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Nov 2019 16:09:07 -0800 (PST)
+From: Beata Michalska <beata.michalska@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 33/37] omap-i2c: remove PROP_PTR
-Date: Wed, 20 Nov 2019 19:24:38 +0400
-Message-Id: <20191120152442.26657-34-marcandre.lureau@redhat.com>
-In-Reply-To: <20191120152442.26657-1-marcandre.lureau@redhat.com>
-References: <20191120152442.26657-1-marcandre.lureau@redhat.com>
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	pbonzini@redhat.com,
+	quintela@redhat.com,
+	dgilbert@redhat.com,
+	eric.auger@redhat.com,
+	shameerali.kolothum.thodi@huawei.com
+Subject: [PATCH v3 0/4] target/arm: Support for Data Cache Clean up to PoP
+Date: Thu, 21 Nov 2019 00:08:39 +0000
+Message-Id: <20191121000843.24844-1-beata.michalska@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: WoHeQrGNO7KV_-1Udi-cdQ-1
-X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yLl0n+KcTR9G
+Content-Transfer-Encoding: 8bit
+X-TUID: wX0rNpMQhyBY
 
-Since clocks are not QOM objects, replace PROP_PTR of clocks with
-setters methods.
+ARMv8.2 introduced support for Data Cache Clean instructions to PoP
+(point-of-persistence) and PoDP (point-of-deep-persistence):
+ARMv8.2-DCCVAP &  ARMv8.2-DCCVADP respectively.
+This patch set adds support for emulating both, though there is no
+distinction between the two points: the PoDP is assumed to represent
+the same point of persistence as PoP. Case there is no such point specified
+for the considered memory system both will fall back to the DV CVAC inst
+(clean up to the point of coherency).
+The changes introduced include adding probe_read for validating read memory
+access to allow verification for mandatory read access for both cache
+clean instructions, along with support for writeback for requested memory
+regions through msync, if one is available, based otherwise on fsyncdata.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Corey Minyard <cminyard@mvista.com>
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
----
- hw/arm/omap1.c        |  2 +-
- hw/arm/omap2.c        |  8 ++++----
- hw/i2c/omap_i2c.c     | 19 ++++++++++++-------
- include/hw/arm/omap.h | 13 +++++++++++++
- 4 files changed, 30 insertions(+), 12 deletions(-)
+As currently the virt platform is missing support for NVDIMM,
+the changes have been tested  with [1] & [2]
 
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 1afd1d3d7f..807e5f70d1 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -4030,7 +4030,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
-n *dram,
-=20
-     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
-     qdev_prop_set_uint8(s->i2c[0], "revision", 0x11);
--    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "mpuper_ck"));
-+    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "mpuper_ck"));
-     qdev_init_nofail(s->i2c[0]);
-     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
-     sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(s->ih[1], OMAP_INT_I2C)=
-);
-diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-index 1d7cc435ef..171e2d0472 100644
---- a/hw/arm/omap2.c
-+++ b/hw/arm/omap2.c
-@@ -2425,8 +2425,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
-on *sdram,
-=20
-     s->i2c[0] =3D qdev_create(NULL, "omap_i2c");
-     qdev_prop_set_uint8(s->i2c[0], "revision", 0x34);
--    qdev_prop_set_ptr(s->i2c[0], "iclk", omap_findclk(s, "i2c1.iclk"));
--    qdev_prop_set_ptr(s->i2c[0], "fclk", omap_findclk(s, "i2c1.fclk"));
-+    omap_i2c_set_iclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.iclk"));
-+    omap_i2c_set_fclk(OMAP_I2C(s->i2c[0]), omap_findclk(s, "i2c1.fclk"));
-     qdev_init_nofail(s->i2c[0]);
-     busdev =3D SYS_BUS_DEVICE(s->i2c[0]);
-     sysbus_connect_irq(busdev, 0,
-@@ -2437,8 +2437,8 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
-on *sdram,
-=20
-     s->i2c[1] =3D qdev_create(NULL, "omap_i2c");
-     qdev_prop_set_uint8(s->i2c[1], "revision", 0x34);
--    qdev_prop_set_ptr(s->i2c[1], "iclk", omap_findclk(s, "i2c2.iclk"));
--    qdev_prop_set_ptr(s->i2c[1], "fclk", omap_findclk(s, "i2c2.fclk"));
-+    omap_i2c_set_iclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.iclk"));
-+    omap_i2c_set_fclk(OMAP_I2C(s->i2c[1]), omap_findclk(s, "i2c2.fclk"));
-     qdev_init_nofail(s->i2c[1]);
-     busdev =3D SYS_BUS_DEVICE(s->i2c[1]);
-     sysbus_connect_irq(busdev, 0,
-diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
-index 3ba965a58f..3ccbd5cc2c 100644
---- a/hw/i2c/omap_i2c.c
-+++ b/hw/i2c/omap_i2c.c
-@@ -28,10 +28,7 @@
- #include "qemu/error-report.h"
- #include "qapi/error.h"
-=20
--#define TYPE_OMAP_I2C "omap_i2c"
--#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
--
--typedef struct OMAPI2CState {
-+struct OMAPI2CState {
-     SysBusDevice parent_obj;
-=20
-     MemoryRegion iomem;
-@@ -56,7 +53,7 @@ typedef struct OMAPI2CState {
-     uint8_t divider;
-     uint8_t times[2];
-     uint16_t test;
--} OMAPI2CState;
-+};
-=20
- #define OMAP2_INTR_REV=090x34
- #define OMAP2_GC_REV=090x34
-@@ -504,10 +501,18 @@ static void omap_i2c_realize(DeviceState *dev, Error =
-**errp)
-     }
- }
-=20
-+void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk)
-+{
-+    i2c->iclk =3D clk;
-+}
-+
-+void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk)
-+{
-+    i2c->fclk =3D clk;
-+}
-+
- static Property omap_i2c_properties[] =3D {
-     DEFINE_PROP_UINT8("revision", OMAPI2CState, revision, 0),
--    DEFINE_PROP_PTR("iclk", OMAPI2CState, iclk),
--    DEFINE_PROP_PTR("fclk", OMAPI2CState, fclk),
-     DEFINE_PROP_END_OF_LIST(),
- };
-=20
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index bcecf19f89..39a295ba20 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -81,6 +81,19 @@ typedef struct omap_intr_handler_s omap_intr_handler;
- void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
- void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
-=20
-+/* omap_i2c.c */
-+#define TYPE_OMAP_I2C "omap_i2c"
-+#define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
-+
-+typedef struct OMAPI2CState OMAPI2CState;
-+
-+/*
-+ * TODO: Ideally we should have a clock framework that
-+ * let us wire these clocks up with QOM properties or links.
-+ */
-+void omap_i2c_set_iclk(OMAPI2CState *i2c, omap_clk clk);
-+void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk);
-+
- /* OMAP2 l4 Interconnect */
- struct omap_l4_s;
- struct omap_l4_region_s {
---=20
-2.24.0
 
+[1] https://patchwork.kernel.org/cover/10830237/
+[2] https://patchwork.kernel.org/project/qemu-devel/list/?series=159441
+
+v3:
+    - Assert on invalid sync range for ram block
+    - Drop alignment handling from qemu_msync
+
+v2:
+    - Moved the msync into a qemu wrapper with
+      CONFIG_POSIX switch + additional comments
+    - Fixed length alignment
+    - Dropped treating the DC CVAP/CVADP as special case
+      and moved those to conditional registration
+    - Dropped needless locking for grabbing mem region
+
+
+Beata Michalska (4):
+  tcg: cputlb: Add probe_read
+  Memory: Enable writeback for given memory region
+  migration: ram: Switch to ram block writeback
+  target/arm: Add support for DC CVAP & DC CVADP ins
+
+ exec.c                  | 36 +++++++++++++++++++++++++++++++
+ include/exec/exec-all.h |  6 ++++++
+ include/exec/memory.h   |  6 ++++++
+ include/exec/ram_addr.h |  8 +++++++
+ include/qemu/cutils.h   |  1 +
+ linux-user/elfload.c    |  2 ++
+ memory.c                | 12 +++++++++++
+ migration/ram.c         |  5 +----
+ target/arm/cpu.h        | 10 +++++++++
+ target/arm/cpu64.c      |  1 +
+ target/arm/helper.c     | 56 +++++++++++++++++++++++++++++++++++++++++++++++++
+ util/cutils.c           | 38 +++++++++++++++++++++++++++++++++
+ 12 files changed, 177 insertions(+), 4 deletions(-)
+
+-- 
+2.7.4

@@ -1,138 +1,153 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2816632lfc;
-        Wed, 20 Nov 2019 17:39:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxd6gEHeIUDGfiuSDPVVPkImpa3ORsMoBSrIOWhOExAwMoiUa4oBEYyCOe1hAUyIx6FyTy0
-X-Received: by 2002:a17:906:b80f:: with SMTP id dv15mr10063607ejb.188.1574300388798;
-        Wed, 20 Nov 2019 17:39:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574300388; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2817337lfc;
+        Wed, 20 Nov 2019 17:40:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy2/opiCWjV6EBhizn4iooaLwmLOckHY2luWSTm2Y7UgwODcrRDquI48DcDoHeCr7swD+dU
+X-Received: by 2002:a0c:95a1:: with SMTP id s30mr5853904qvs.110.1574300447385;
+        Wed, 20 Nov 2019 17:40:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574300447; cv=none;
         d=google.com; s=arc-20160816;
-        b=QLmn3PG8MkvRQPOK/5z0PaALSp2XvnCxP7LfAb5o8MYtBSV0EORO6SrJ2LLdfd6gUQ
-         hBVhyRcjjoDlmQoBcm9077vKBE6Llmc2uZBfdEBMEY0uhhA4IZr5vJxLWo8n4aqvc7+H
-         aTn2b2XOY7qvzCOK+I6yD1pcRXLk1WFeW6DTSTy94vTyq65704cvyYsKsJNeJzrQAGO9
-         IaiWfwmlwRg6VfnRWuA5q6/bUlYc8+OCd5xJVE3w/4gR4oz58/n8AXKZ6oif3Z1yExnB
-         o3dWeL02N1B+Q9jLPzEgz72WsjdBLxHSyHFdCaB65sFocksm+ioFDKqXE4qfj0N5R2Eu
-         a88w==
+        b=ugZTo2WNjxc+S/OCpB+OR2CqIa0+L+2O+ImImcxdeTNPPhsC4TxF25LhJ8PqD0RXis
+         uVnjWt9DVT7IUunRSyyQDTkQgpyFjH8GXYKyXb3yx6idmo3DXKvVR2rXdJyva27rrfan
+         YmAsfeUojnIt2BaBL2flCE0v5cepQuQO9n+IdeEFoBd8d8vJzVdt1EvDPv29fk0l8VZY
+         46i+8c4lKCG986rY47R7ZE/WgZ+9ybSLQyZ+S0RcNzie1muF9cU54Mc6p4t5HqZ5ttbz
+         2Au90da7xUa0ZwW037Rikg4sKMUHECcfsrNnTRdNQWdfLfBlZAx+pk8tBs+MI5zM0+Ba
+         DbTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=G7x+0l0MGkhypHBusSieelbqM+mMXLIb2T8PK21/BIw=;
-        b=euTstCHSgnxZ7sC/9Mp+Ph+rB5pVfPDSNONinG3beEjIJFQnMFHBQP9DrpkAgVByNQ
-         +50DPL6Dbl47iy3BRXQwlQwS4Um6yLEg8xeQVyPT5wcxD3PvOsG4m9h8wRsIUzhm4QHO
-         XsN3M/UWEUROxk6aU4tFIw33OCrfWj42UD98nEOB3xjHGittih6RFi9I4cEoVb+Gumpl
-         qcutSoCdzgYxiPDKwhe9Ip+fpMvVoDx6sAcPuGxSLqI5WyVcJILHozctang2Hk3bmpfI
-         T/PpVoDt5cwACirp+ZK/48O81/5rari/kN8TNAKCKDUYYbbEeWrfVdudWEnCpgvZUqFb
-         A+EQ==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=d9HEX78Gf3QwDUBBn63XFDwb0BC8v043FR9pxW9emjQ=;
+        b=e1Jl/U958ekF/OTZxqTZKREgriW502ZVl2BMjPYRWSrGpgua0wsXTOsXlgup5PlzVS
+         0Ez3eMAbezCrCS07rqM4t4ckaPS5CFkjzuwgm+Oseh8+ryoUcfgjVx/+Km7y8oB9opQ3
+         a4iU741YvY4wrY5u8sMoZI5+7lpkt4dCvATRBBcA5T40Y6MVETcR4JNr4sOCNy7sa2Mw
+         YtQ72aJ1boYASBFs6GRBIE/L5OovoMh7lyEFEOL3pT6K/Mh6JltSifcE34eRBeXrCMPB
+         LBJEQRy+U6yOZLkIqWPESp5EpU2RdNLsnINILXQoepKyvRQ+ocPARXgrLxbirHAEJQHd
+         TEEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gibson.dropbear.id.au header.s=201602 header.b="CpJFW+/e";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=YuK7cFJi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r7si920853edy.16.2019.11.20.17.39.48
+        by mx.google.com with ESMTPS id b55si784180qvh.103.2019.11.20.17.40.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Nov 2019 17:39:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 20 Nov 2019 17:40:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gibson.dropbear.id.au header.s=201602 header.b="CpJFW+/e";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35634 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=YuK7cFJi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35660 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXbRj-0008Q8-QN
-	for alex.bennee@linaro.org; Wed, 20 Nov 2019 20:39:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38324)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iXbSg-0001tw-Ql
+	for alex.bennee@linaro.org; Wed, 20 Nov 2019 20:40:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38344)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1iXbRA-0008OP-JC
- for qemu-devel@nongnu.org; Wed, 20 Nov 2019 20:39:13 -0500
+ (envelope-from <dgibson@ozlabs.org>) id 1iXbRP-00009v-4B
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 20:39:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1iXbR8-0006SU-J2
- for qemu-devel@nongnu.org; Wed, 20 Nov 2019 20:39:12 -0500
-Received: from ozlabs.org ([203.11.71.1]:59921)
+ (envelope-from <dgibson@ozlabs.org>) id 1iXbRO-0006cl-1Q
+ for qemu-arm@nongnu.org; Wed, 20 Nov 2019 20:39:27 -0500
+Received: from ozlabs.org ([203.11.71.1]:55943)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1iXbR4-0006OQ-KA; Wed, 20 Nov 2019 20:39:07 -0500
+ id 1iXbRN-0006WB-Lg; Wed, 20 Nov 2019 20:39:25 -0500
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 47JMfZ4dplz9sPn; Thu, 21 Nov 2019 12:39:02 +1100 (AEDT)
+ id 47JMfz2Tpvz9sPV; Thu, 21 Nov 2019 12:39:23 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1574300342;
- bh=JIfsApD1YfZ/bDz9LeRPQyITPIdEKbfk9wNA+Pc165I=;
- h=From:To:Cc:Subject:Date:From;
- b=CpJFW+/eB542mN3g2/u4O3uCRcVAL1kE2T1R+tpGV0g+Mg0YlWGRJPurUI8SS/FFw
- 3x7r92N81sNWW7657+k56qtdx1I081EkiqrlJXgvKni3AYsFeFx2v5Uw4OPCgGH1Wv
- /Dzkb7owmxAbBEjDPlhJB08xhjjvP35UCwJF8+aA=
+ d=gibson.dropbear.id.au; s=201602; t=1574300363;
+ bh=iiwaM5TR9jwQXbu5E2BRk8RbhYJ57IKYhIJxcQL/1Y8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=YuK7cFJiUrR6/AandKCZIjPwbF6jY/ktUgFICN8mDWVs5HGo4dgzb8Ens/DfzmLLH
+ Nb5FfER0CXkjttdueveBHdRJcZTlEU2RUGUAQn2o4k/a9kl2Ed5TIX7S7Wt+Km5cFj
+ lygiceo6z8S5/9OerS4rr5Z2qvicUw+gZauv31o4=
+Date: Thu, 21 Nov 2019 12:39:11 +1100
 From: David Gibson <david@gibson.dropbear.id.au>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2] exynos4210_gic: Suppress gcc9 format-truncation warnings
-Date: Thu, 21 Nov 2019 12:38:59 +1100
-Message-Id: <20191121013859.287372-1-david@gibson.dropbear.id.au>
-X-Mailer: git-send-email 2.23.0
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] exynos4210_gic: Suppress gcc9 format-truncation warnings
+Message-ID: <20191121013911.GR5582@umbus.fritz.box>
+References: <20191004025509.3012-1-david@gibson.dropbear.id.au>
+ <CAFEAcA9soWUfyfvV5Onyy0wP842Gq698_sZ+E1xGwkmnrLHnJg@mail.gmail.com>
+ <20191120052701.GJ5582@umbus.fritz.box>
+ <CAFEAcA-2B=tLfc9y3ri_p9nOWBAaiDkhgRQ9r-hjdmYbpzbBiA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="n7Lj0ukKFj+YqP4g"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-2B=tLfc9y3ri_p9nOWBAaiDkhgRQ9r-hjdmYbpzbBiA@mail.gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 203.11.71.1
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uPfuu0Us7Xaq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fGdZpKYJdJrt
 
-exynos4210_gic_realize() prints the number of cpus into some temporary
-buffers, but it only allows 3 bytes space for it.  That's plenty:
-existing machines will only ever set this value to EXYNOS4210_NCPUS
-(2).  But the compiler can't always figure that out, so some[*] gcc9
-versions emit -Wformat-truncation warnings.
 
-We can fix that by hinting the constraint to the compiler with a
-suitably placed assert().
+--n7Lj0ukKFj+YqP4g
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[*] The bizarre thing here, is that I've long gotten these warnings
-    compiling in a 32-bit x86 container as host - Fedora 30 with
-    gcc-9.2.1-1.fc30.i686 - but it compiles just fine on my normal
-    x86_64 host - Fedora 30 with and gcc-9.2.1-1.fc30.x86_64.
+On Wed, Nov 20, 2019 at 10:31:48AM +0000, Peter Maydell wrote:
+> On Wed, 20 Nov 2019 at 05:27, David Gibson <david@gibson.dropbear.id.au> =
+wrote:
+> >
+> > On Mon, Oct 14, 2019 at 01:51:39PM +0100, Peter Maydell wrote:
+> > > If we assert() that num_cpu is always <=3D EXYNOS4210_NCPUS
+> > > is that sufficient to clue gcc in that the buffer can't overflow?
+> >
+> > Interestingly, assert(s->num_cpu <=3D EXYNOS$210_NCPUS) is *not*
+> > sufficient, but assert(i <=3D EXYNOS4210_NCPUS) within the loop *is*
+> > enough.  I've updated my patch accordingly.
+> >
+> > This isn't 4.2 material, obviously.  Should I just sit on it until 5.0
+> > opens, or does one of you have someplace to stage the patch in the
+> > meanwhile?
+>=20
+> Easy fixes for compiler warnings aren't inherently out of scope
+> for 4.2. I'm also collecting stuff for 5.0 anyway so I suggest you
+> just send the patch.
 
-Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+Ok, done.
 
-Changes since v1:
- * Used an assert to hint the compiler, instead of increasing the
-   buffer size.
-
----
- hw/intc/exynos4210_gic.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-index a1b699b6ba..ed4d8482e3 100644
---- a/hw/intc/exynos4210_gic.c
-+++ b/hw/intc/exynos4210_gic.c
-@@ -314,6 +314,14 @@ static void exynos4210_gic_realize(DeviceState *dev,=
- Error **errp)
-             EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
-=20
-     for (i =3D 0; i < s->num_cpu; i++) {
-+        /*
-+         * This clues in gcc that our on-stack buffers do, in fact
-+         * have enough room for the cpu numbers.  gcc 9.2.1 on 32-bit
-+         * x86 doesn't figure this out, otherwise and gives spurious
-+         * warnings.
-+         */
-+        assert(i <=3D EXYNOS4210_NCPUS);
-+
-         /* Map CPU interface per SMP Core */
-         sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
-         memory_region_init_alias(&s->cpu_alias[i], obj,
 --=20
-2.23.0
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
+--n7Lj0ukKFj+YqP4g
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl3V6r8ACgkQbDjKyiDZ
+s5I11BAAmIJ3dhSzNf68hiO0dXYXzKUT/1gU5kf7dqZOhdQmNhad0T+iG0WRvXcb
+6DIu2ffox80F0l42ogC5JAzcw1O3NQ4GoKe29BPQ5TlqFwoR7GOeAW2D3g4DQPWw
+PSmJqtEHynIdiVaoEKq2MUxA0pONpf8Qtnri7BhRUA55GqRxIFqvdcJxPIgB7gTV
+fJMdHReNU0AdKGQFKJUIsUPTCkiIHMZvZnx05hDaZTQ/W1/BxBTk934dDo9+6OEe
+oFxkYkGFSOBtWMzh5RqmYowcUvJVtcJTMz6EMkRLdD+JolAxwsxIaivD69Fm+YZw
+vgK2iWKublMFNTcs/HFOdEabRq5qF/4r9dvtP0twnk/pgFO/nYyQdAq73cdc5L/W
+tV5b+Y529ZrwjFTo2yaahoGPr5jb6eSaQdXwOU710RI+t9pErj1y10X9WD/W8OBQ
+kCVVGrI4r9QUcCCcmsZN/dmn9FgcayZEAEV4tlwvOj87ZSm40vcPgwglSDEVrUuj
+XO9luGLznmW674delKoEhp0S5nolPAV0BJ66eOww9BXHE7Ck2Tqtiembd+AfzP/h
+dnGUm6cpS4Z9XTUqsYGlqF/5HuIWk2Yp8oNW+Ubb3gdz+nL1QsexGNMOv5AXbT2c
+qbbJb5BBHp49t2xnmfG5gVdm83/YVs4sOckgH6UCkKiFb53hlwc=
+=mGi0
+-----END PGP SIGNATURE-----
+
+--n7Lj0ukKFj+YqP4g--

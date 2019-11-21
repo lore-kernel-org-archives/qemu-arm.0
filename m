@@ -1,203 +1,125 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2406529lfc;
-        Wed, 20 Nov 2019 10:55:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxGkLyuOL3Sx2AGscC/lAkxmIUE+fQTheBC0kuTzq21pYTveAESkDxs/W7VCB0NIG4R1N3f
-X-Received: by 2002:a17:906:85c8:: with SMTP id i8mr7367383ejy.46.1574276102274;
-        Wed, 20 Nov 2019 10:55:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574276102; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2732241lfc;
+        Wed, 20 Nov 2019 16:09:35 -0800 (PST)
+X-Received: by 2002:a05:6830:1f29:: with SMTP id e9mr4000557oth.272.1574294975245;
+        Wed, 20 Nov 2019 16:09:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574294975; cv=none;
         d=google.com; s=arc-20160816;
-        b=cCqWdmrNaMqmtNdNYxkOIf//g34sR8jb7eJnvWM4FIjnzIS8d58/Nv6jtPAMTAWgIp
-         JvuIzWIY0dTq6bjPRR5ZPahKdgT3/lRZD7RJRZKyIXhC3ZqVkZyozc3DrBV3JHe0pVLj
-         A342V3k22tjFg0H2XlNcIdu8+f4ySOXmx9pTWLSegTQ95KS0jx+ZoZ4lFClCfFCaHtuK
-         k7uHl64VsX+y83ZuXghhTTkgCpJdoKM3gpVnXIx9tDEilY8O8lE+B+pOwkB+NEQMeb0e
-         DfgtYTf3AChjORa5xAOJKiO7jnaC9pSW0/fhtqcCm8spfixO3UoWlSr0MirVRtZ/HdNz
-         HhbA==
+        b=u1eLSAdJbmOmKFMRt0osYK0IrL9YdhQHN477RXE8edn2/7AYIn5/km3AigjqpllUmY
+         NmhXmVRJSLSumMVeVlG/4OBlqCmES/zapADr5LTHvUYMavPbyUkkglkulaOqFcbhbm77
+         c3CG6UDSsPNEcHmzwuF900p2ULfmoHn63bWrxTASlAyDZaW6Ng6RQ1FnoYPs4D5ipdF1
+         2WWFNcLd6xRDArfagWMh4oNVBFHKZKRoCCNNjgzJag3ex+PmNrHhBrGmnwGPwgoBFvtp
+         T7Z8AnW17wrVgxDV3kccc3PSGiHcPWfhn6UHajpIQGu+e2kzBjfZrnUCec+f6Zd8X620
+         7Jvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=ibW3iAYZrucLJDK3NWPHH3vAO7MrS557DPqcE2f94zw=;
-        b=xD2JYE6wfWUombI+kjbFIPX6wvGbz4oDYGNQp3xyGCPSgZUYqVQ5l4v2feoLyOr4xt
-         M/8894RrsQe/Q+o4wtRnW8JFALHAUcwwB8rB+///bWdymBa9cR4luOuEbzeIR1uSq7Ny
-         YyW9sqsoY69rjGgeMUO/5Ur8j+u0txUH6kr7ughumtenXCIsr0Fvfbek39dvBQDbjHch
-         DG7z850SuofikBkP5uAu/BeyWT+ljC6wh+MAWwOZDEGDrgz2qM81p2gUVL95TvqqYQQd
-         EU6X2jCqM2OQChQDXgE5piI6tAR0up0eM+vXGak7pkgDBpoGKRdomHlOqJhDVEMHGZzh
-         N/hA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=HsdErY/VOvmYyLB8+2L3+K8sDccz0NDXgt0JMSNXxNM=;
+        b=RJV2MDWAWsVHMv3UqkweUQCekX7+ZnFIkvKIUQwVqcdKAKsh8zerV3DcD63SLr5cm3
+         XNyZAKP5D3e2oBC3zd9AXVGU02WUtqqga9Y0qHwnTzHj3rU78ezpQUWpCvJj1v8u4pyz
+         FQCL+Q0BUlAZlDKKbNzWyi2+1zVKXlhhrVqWhKnPYPMLIfdSGoMbyxffZCQHsPEyYbBm
+         gPPRyGBozwu/VhxEOrMlRy7sVX7fVnC/9cReo0vcLEgLLWspM/xn7tZiMovdE56g0cVR
+         EaFcKp2n7B8BPN8z6iZKrA8Z0CS2o/tTlLwqI22AkEXD2lyPdkiKHozLHptD6NaIM7si
+         C18A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PtxrBSLD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gr9si16640193ejb.258.2019.11.20.10.55.02
+       dkim=pass header.i=@linaro.org header.s=google header.b=yE5W+q13;
+       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <beata.michalska@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id z131sor398502oiz.11.2019.11.20.16.09.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Nov 2019 10:55:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 20 Nov 2019 16:09:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PtxrBSLD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33604 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iXV80-0004ja-UQ
-	for alex.bennee@linaro.org; Wed, 20 Nov 2019 13:55:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41471)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1iXV7n-0004hB-Id
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 13:54:48 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1iXV7l-0000qO-Ei
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 13:54:46 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:32313
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1iXV7l-0000pj-B0
- for qemu-arm@nongnu.org; Wed, 20 Nov 2019 13:54:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574276083;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ibW3iAYZrucLJDK3NWPHH3vAO7MrS557DPqcE2f94zw=;
- b=PtxrBSLDoUb8eMGZdknKQEwRq1QcZIGZgP1wtdK2KmhH7oA3Ccokq0XrcsX/OihtNis0pR
- SuMk1yjN2mxv1W5VW1veTtYbu0R1P9YYlNQl4VYD2H4DiywnRchWGCSaecXIsdJP8M0D5Z
- QJJJXDmwlG7eppHwRLbEJlLqi5xHh00=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-294-I88dyjnYOWWW4Nm8nDdoFg-1; Wed, 20 Nov 2019 13:54:42 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 259938024C2;
- Wed, 20 Nov 2019 18:54:39 +0000 (UTC)
-Received: from work-vm (unknown [10.36.118.40])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 74D336E3F1;
- Wed, 20 Nov 2019 18:54:22 +0000 (UTC)
-Date: Wed, 20 Nov 2019 18:54:20 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>
-Subject: Re: [PATCH v3 07/33] serial: register vmsd with DeviceClass
-Message-ID: <20191120185420.GF2858@work-vm>
-References: <20191023173154.30051-1-marcandre.lureau@redhat.com>
- <20191023173154.30051-8-marcandre.lureau@redhat.com>
- <CAFEAcA8GHqiaHSKdTjzTY_mWxYpDLZhXLYc98kjPGLUnzsG3oQ@mail.gmail.com>
- <CAMxuvawcYnH4pp8PitMO6KcTz_GdwF7i=zJxepofsN1o9Yh65w@mail.gmail.com>
- <CAFEAcA9Ee950esqNT4PJgGU0txnv_oFJWvQ+8oOn0FS9PBt=-w@mail.gmail.com>
- <CAJ+F1CKYriLP=FK5s2u=azk-rfUCAG-gR6_keXDSOPS4D0Mq3A@mail.gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=yE5W+q13;
+       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=HsdErY/VOvmYyLB8+2L3+K8sDccz0NDXgt0JMSNXxNM=;
+        b=yE5W+q13zjR9HSIv2qTmit1G376oCNK63mE87vcAp5m3BCmNcERZ2pI/DleA241pJG
+         KQQ2qIzR1Alk1Fx9KC7+oD3k/jWJCLdXdpbGU0T6NjYou9MjPyj+83LE9v5igjXdUwUL
+         U+kknaJFZB98dHa/g9StcN1KFj2LRDm6AR3pQpgJhSbQNJbAC21ImS4ky+u3ScWZtAvL
+         03sMIARyePANvzh1s81EWaKdUIUR/99qzFxP/ef1QMKgpCEHsLI/s9TREBtpGjR2QB5n
+         Tt1PXsKfn2aACAqFmIPaIVFwt1lUwUS4WHWSbrdNRkiHUmHtS5D8OJMeKGpYuEAuLFPR
+         yEQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=HsdErY/VOvmYyLB8+2L3+K8sDccz0NDXgt0JMSNXxNM=;
+        b=EEN5nWAmeHYnt1rP+rC3x7LQvXOUlb2E7Wu23nIRolMFeVZ4WjHfkXIs/j+2+jW1pB
+         Hk+v11NjTL0Dc5+mabgnG71pbX5ANqjoln3p/mBWk56ok97kIOrs3qoMqAioFGqP2gR9
+         U73IjUKOg+E2AMUozl6HAwzOaP9z5DAn8ZrAxEV3qtY6RdHvPdaTlygJbn73LtNgZzPG
+         ceenSZfvfi7Hq7E9WuKCn0em9mLGHfhX0doJcQZ2k3Dlz+g5g4UIEeD/V2yKXbNFiqP5
+         szp5OO6JLfjukNy0opGyUh6b8y6jw/5v00k8gtmK1WIcNNuMMH3XPPERJGZgFkb7S1AQ
+         vUgQ==
+X-Gm-Message-State: APjAAAUdFWdGsf/lFRiApgrELRZjPE2YxxAD5DCVjsOU/KNDc2vjoHDj
+	RPT2ADHVnZevmyVnBM853cvH7CeW
+X-Google-Smtp-Source: APXvYqxcT5JqL5Y3heq9E/QnQ6K0pwMAYWD6DKsbRMakjfptkS7mNKtxkm7p6bdt3e7R4TH3PH3wVw==
+X-Received: by 2002:aca:ddc2:: with SMTP id u185mr5222506oig.174.1574294974817;
+        Wed, 20 Nov 2019 16:09:34 -0800 (PST)
+Return-Path: <beata.michalska@linaro.org>
+Received: from moi-limbo-9350.arm.com (host86-181-127-240.range86-181.btcentralplus.com. [86.181.127.240])
+        by smtp.gmail.com with ESMTPSA id z17sm351439otk.40.2019.11.20.16.09.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Nov 2019 16:09:34 -0800 (PST)
+From: Beata Michalska <beata.michalska@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	pbonzini@redhat.com,
+	quintela@redhat.com,
+	dgilbert@redhat.com,
+	eric.auger@redhat.com,
+	shameerali.kolothum.thodi@huawei.com
+Subject: [PATCH v3 3/4] migration: ram: Switch to ram block writeback
+Date: Thu, 21 Nov 2019 00:08:42 +0000
+Message-Id: <20191121000843.24844-4-beata.michalska@linaro.org>
+In-Reply-To: <20191121000843.24844-1-beata.michalska@linaro.org>
+References: <20191121000843.24844-1-beata.michalska@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAJ+F1CKYriLP=FK5s2u=azk-rfUCAG-gR6_keXDSOPS4D0Mq3A@mail.gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: I88dyjnYOWWW4Nm8nDdoFg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-ppc <qemu-ppc@nongnu.org>, Magnus Damm <magnus.damm@gmail.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Fabien Chouteau <chouteau@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- Corey Minyard <cminyard@mvista.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Paul Burton <pburton@wavecomp.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JnhLM1+WnTJb
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 5LUd9fFWu0U2
 
-* Marc-Andr=E9 Lureau (marcandre.lureau@gmail.com) wrote:
-> On Tue, Nov 19, 2019 at 2:35 PM Peter Maydell <peter.maydell@linaro.org> =
-wrote:
-> >
-> > On Tue, 19 Nov 2019 at 10:23, Marc-Andr=E9 Lureau
-> > <marcandre.lureau@redhat.com> wrote:
-> > > On Mon, Nov 18, 2019 at 6:22 PM Peter Maydell <peter.maydell@linaro.o=
-rg> wrote:
-> > > > Did you test whether migration still works from a QEMU
-> > > > version without this patch to one with it? (The migration
-> > >
-> > > Yes, I thought I did test correctly, but I realized testing with x86
-> > > isn't correct.
-> > >
-> > > So with arm/musicpal for ex, I can migrate from before->after, howeve=
-r
-> > > after->before won't work. Is that ok?
-> >
-> > Broadly speaking, the only case where we care about not
-> > breaking cross-version migration is where we have a versioned
-> > machine type. So musicpal doesn't matter too much. Beyond
-> > that, yes, generally before->after is more important than
-> > after->before. I have a feeling Red Hat downstream cares about
-> > after->before migration at least for x86 but you or your colleagues
-> > would know that better than me :-)
-> >
-> > > > vmstate code is too complicated for me to be able to figure
-> > > > out whether passing the 'dev' pointer makes a difference
-> > > > to whot it names the state sections and whether the
-> > > > 'qdev_set_legacy_instance_id' suffices to avoid problems.)
-> > >
-> > > I don't see a way to fix after->before, because the instance id is
-> > > initially 0 with the new code, and the old code expect a different
-> > > value.
-> >
-> > Can you explain how the instance ID stuff works? I was
-> > expecting that the result of setting the legacy instance ID
-> > would just be that the new version would always have
-> > the older setting, so if it works for old->new it would also
-> > work for new->old. But as I say I don't understand this bit
-> > of the migration code.
->=20
-> From what I understand, the alias_id is only used in
-> savevm.c:find_se(), and thus can only be used to match against
-> "legacy" instance id values. On new code, instance_id is generated
-> incrementally from 0 with calculate_new_instance_id(), based on
-> "qdev-path/vmsd-name".
+Switch to ram block writeback for pmem migration.
 
-I think there are cases here there's no qdev path that's viable;
-e.g. for ISA devices, the ID is set to the ISA IO base:
+Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Acked-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+---
+ migration/ram.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-hw/char/serial-isa.c
-79:    qdev_set_legacy_instance_id(dev, isa->iobase, 3);
-
-(In serial_isa_realizefn )
-
-but to be honest I'd have to trace this out and see what values the
-devices are actually using to be sure.
-
-(And yes, please don't break backwards migration; otherwise I'll
-end up having to figure out a fix).
-
-Dave
-
->=20
->=20
-> --=20
-> Marc-Andr=E9 Lureau
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-
+diff --git a/migration/ram.c b/migration/ram.c
+index 5078f94..38070f1 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -33,7 +33,6 @@
+ #include "qemu/bitops.h"
+ #include "qemu/bitmap.h"
+ #include "qemu/main-loop.h"
+-#include "qemu/pmem.h"
+ #include "xbzrle.h"
+ #include "ram.h"
+ #include "migration.h"
+@@ -3981,9 +3980,7 @@ static int ram_load_cleanup(void *opaque)
+     RAMBlock *rb;
+ 
+     RAMBLOCK_FOREACH_NOT_IGNORED(rb) {
+-        if (ramblock_is_pmem(rb)) {
+-            pmem_persist(rb->host, rb->used_length);
+-        }
++        qemu_ram_block_writeback(rb);
+     }
+ 
+     xbzrle_load_cleanup();
+-- 
+2.7.4

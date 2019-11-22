@@ -1,103 +1,102 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp731785lfc;
-        Fri, 22 Nov 2019 10:42:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy5RBvbUpuufxuSqZfAwItxXgpWOsuhP6dUp8tcHPhFsikl+H1355k8qPFv1elg1PO9Qfdw
-X-Received: by 2002:a05:6402:512:: with SMTP id m18mr2937222edv.250.1574448141019;
-        Fri, 22 Nov 2019 10:42:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574448141; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp731871lfc;
+        Fri, 22 Nov 2019 10:42:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxatEdWdCCsR5+st33Yue0GjYXfIAYSwRL5qOm9ilowfF9q7zYzSG/FhKf4lulUiyziLTyJ
+X-Received: by 2002:a50:9555:: with SMTP id v21mr2927051eda.90.1574448145210;
+        Fri, 22 Nov 2019 10:42:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574448145; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xt5WqRcw7/FCEosdqwsAMo2WtNk5zSLtzAQUACSB1GNYOPYoxAnihxthjHPjTX67SZ
-         3N4hflbk9e4Bjzkl+F7zwgJp55T5FomRuJgvumRL28TPBuyyt0Sd3wpJxyadKOYU5wFx
-         klYa0nw5+fmPbzKwgzhQf/uDmTqW9XyoHlVmFuzQCtaaYBQDMKQ964LKmvPmPNcaS0gm
-         cQnickq8XozwehFwCMlLC1oyC34ZSErjSqNHzfvDU0wz9ZeE1Ptvj6TxFDCdBTeQ9N3P
-         100q7jFfQYrH9dr8AX6tVPFekU8+AEL1ID6+l2uKlp/fWCSuHfpqYGX/N0CPQhqVx+xf
-         zxYg==
+        b=iBQiMypdhGcSGRY9LMJQjLaKs2NNcDrbL9CtPsg76yAmkXXypITImS8KMBG4fhqxta
+         z24BmP5mQ9JaTacx2azJdM4XTaR1au4yXjwwhVk8gey3gU/cw+TJ7AnDwiA53QKARSA5
+         FZX8Cm/EvtNPcMKn2xKeDEwQXX+ZKWNZ6n/oN5pWczTGO59vdLm9fzFjKLjCdSCYPEqB
+         iXn6S66zDzGwBIwV+zLi6v4mSZzukQPzBdM6m+0NXwhVI5NH/3lmfmcH8qjc8Km7DdSS
+         C3QOpRN4FTQwFUDUoYhcopEpVEcASP1xEFiLatzOS3y11RBQY5kYo9zmRYvhm62quEzG
+         VjTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=TPw8HfXS6c8+/kaQMqsXBz05eJr0Po1JCxc9Y7B3JfM=;
-        b=gDv0TR94AEAPSwdp14lpTsk+oiHORZ9kzNAe183XkIrU+RJW5yAzfd+0M+zK9nouFX
-         rcrBlYqlmdZUwjejsDe+NHl2gB/TVRbSA+hmOl4rWRK9yCpZJ//HpY8K+LfEMD+R/BaP
-         V00c5StQu+4ufXQAfPBGkHvCZ0j57mL/8bWyoJEEdYccAo+1HOX6OWJ385ZyvjIYlQ4L
-         8hrrQpl1Yq7IEH1p81YZurWG5bYlSki5xfRC79/oJ+xtMB3z8p9l3k8PZnLNooodlpwx
-         WurhMKdn7Jjsq7gv2HRMbQxuTnMZoNqRLksBE8p0iAoPCLUAU1g2xJ43/7GFJSbPfQ7G
-         YGjg==
+        bh=vS8Pmmvbc+nSyR3aOCA1ym+0sVsQeVo9J9FaMVzpxsw=;
+        b=rJUZz/sIat+lqnFrJ2YKkpFSFsMhauINLnC1kXf1WeCIRMnKo30wpqdyuOGsJB+sZ0
+         A4BtqBzFO5cpUrc+MtkQISOirVdsA2HpKVLX0V0vgrGqK5yX5bCRbtBWAptEjWdefMl7
+         yGDZERzAs4rKdj/GvenZNewaxErEpYNByS5W7zw1ufMq/VZ9vVXTZdJtE+OLXaGTRsd4
+         peiA1REIRtLx3EkkF0OwD/iqnGp+vpX7WtahkDyfPu2B9FzV18UMFyBUdAkjpblyyZiN
+         sm+YIQdpM02e06iy1aRS3pTLuQ1npGyxA8e11s5Ev5376uOkXNkaYk7dv9jbeZhWlFPS
+         jXNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bnZmZ0Fu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DwfLmtgp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l40si5928392edb.432.2019.11.22.10.42.20
+        by mx.google.com with ESMTPS id t30si5448023edt.330.2019.11.22.10.42.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Nov 2019 10:42:21 -0800 (PST)
+        Fri, 22 Nov 2019 10:42:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bnZmZ0Fu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DwfLmtgp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54196 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54198 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iYDsp-0004NO-Jf
-	for alex.bennee@linaro.org; Fri, 22 Nov 2019 13:42:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39931)
+	id 1iYDst-0004U9-IJ
+	for alex.bennee@linaro.org; Fri, 22 Nov 2019 13:42:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40271)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iYDiF-0000UM-OL
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:31:25 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iYDjB-0001lr-AF
+ for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:32:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iYDiD-0000K1-8k
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:31:23 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:45116
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1iYDj9-0000m3-Nt
+ for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:32:21 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23973
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iYDiD-0000Jt-4O
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:31:21 -0500
+ id 1iYDj8-0000jQ-7x
+ for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:32:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574447480;
+ s=mimecast20190719; t=1574447537;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TPw8HfXS6c8+/kaQMqsXBz05eJr0Po1JCxc9Y7B3JfM=;
- b=bnZmZ0Ful9ISM5iF2NXZHan957LaRlQ8wiPTrQGjTh108w20RC3GsIkNZQ4CaBSvJYo284
- xz0vI1QtQsJ9MWo1RBXHv+/T/6Hmg1HseWZAeL0rT07fpILS1AlKDy9tU2psYVJg87pa5s
- L/jyvWfIsTvgNFMWAI9NBBnCu+qX5E8=
+ bh=vS8Pmmvbc+nSyR3aOCA1ym+0sVsQeVo9J9FaMVzpxsw=;
+ b=DwfLmtgpFDM5BX3IGV2rZ6U1gA+jj+hwGnfjpZwJyZA8XOtuVowAHbf0V2gh05x3XomkQs
+ rqfhFcXMnbXmlxYUNeNS/D4cGFW255dLbIcvInUVhX+YMa5GEFtamzzhCKUfeBuhC3QJhQ
+ WTz1SfYt1B4HRdZcsIDvpJ4iwzK5AaA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-255-OrGnNxdAMZOzpYtLVAZBRA-1; Fri, 22 Nov 2019 13:31:19 -0500
+ us-mta-158-_A0TeD7KMUiBna88vLYPlQ-1; Fri, 22 Nov 2019 13:32:16 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E3BE800054;
- Fri, 22 Nov 2019 18:31:14 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8C45E107ACC4;
+ Fri, 22 Nov 2019 18:32:14 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F28A26E712;
- Fri, 22 Nov 2019 18:31:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 225F76E712;
+ Fri, 22 Nov 2019 18:32:07 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  armbru@redhat.com, jean-philippe.brucker@arm.com, bharatb.linux@gmail.com,
  yang.zhong@intel.com, dgilbert@redhat.com, quintela@redhat.com
-Subject: [PATCH for-5.0 v11 10/20] virtio-iommu-pci: Add virtio iommu pci
- support
-Date: Fri, 22 Nov 2019 19:29:33 +0100
-Message-Id: <20191122182943.4656-11-eric.auger@redhat.com>
+Subject: [PATCH for-5.0 v11 19/20] pc: Add support for virtio-iommu-pci
+Date: Fri, 22 Nov 2019 19:29:42 +0100
+Message-Id: <20191122182943.4656-20-eric.auger@redhat.com>
 In-Reply-To: <20191122182943.4656-1-eric.auger@redhat.com>
 References: <20191122182943.4656-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: OrGnNxdAMZOzpYtLVAZBRA-1
+X-MC-Unique: _A0TeD7KMUiBna88vLYPlQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,182 +111,181 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: kevin.tian@intel.com, peterx@redhat.com, tnowicki@marvell.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DRGHaDvDilJZ
+X-TUID: UFWo6CJbPJpB
 
-This patch adds virtio-iommu-pci, which is the pci proxy for
-the virtio-iommu device.
+The virtio-iommu-pci is instantiated through the -device QEMU
+option. However if instantiated it also requires an IORT ACPI table
+to describe the ID mappings between the root complex and the iommu.
+
+This patch adds the generation of the IORT table if the
+virtio-iommu-pci device is instantiated.
+
+We also declare the [0xfee00000 - 0xfeefffff] MSI reserved region
+so that it gets bypassed by the IOMMU.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
+ hw/i386/acpi-build.c | 72 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/i386/pc.c         | 15 ++++++++-
+ include/hw/i386/pc.h |  2 ++
+ 3 files changed, 88 insertions(+), 1 deletion(-)
 
-v10 -> v11:
-- add the reserved_regions array property
-
-v9 -> v10:
-- include "hw/qdev-properties.h" header
-
-v8 -> v9:
-- add the msi-bypass property
-- create virtio-iommu-pci.c
----
- hw/virtio/Makefile.objs          |  1 +
- hw/virtio/virtio-iommu-pci.c     | 91 ++++++++++++++++++++++++++++++++
- include/hw/pci/pci.h             |  1 +
- include/hw/virtio/virtio-iommu.h |  1 +
- qdev-monitor.c                   |  1 +
- 5 files changed, 95 insertions(+)
- create mode 100644 hw/virtio/virtio-iommu-pci.c
-
-diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
-index f68ac14a90..33e6bc591a 100644
---- a/hw/virtio/Makefile.objs
-+++ b/hw/virtio/Makefile.objs
-@@ -29,6 +29,7 @@ obj-$(CONFIG_VIRTIO_INPUT_HOST) +=3D virtio-input-host-pc=
-i.o
- obj-$(CONFIG_VIRTIO_INPUT) +=3D virtio-input-pci.o
- obj-$(CONFIG_VIRTIO_RNG) +=3D virtio-rng-pci.o
- obj-$(CONFIG_VIRTIO_BALLOON) +=3D virtio-balloon-pci.o
-+obj-$(CONFIG_VIRTIO_IOMMU) +=3D virtio-iommu-pci.o
- obj-$(CONFIG_VIRTIO_9P) +=3D virtio-9p-pci.o
- obj-$(CONFIG_VIRTIO_SCSI) +=3D virtio-scsi-pci.o
- obj-$(CONFIG_VIRTIO_BLK) +=3D virtio-blk-pci.o
-diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
-new file mode 100644
-index 0000000000..280230b31e
---- /dev/null
-+++ b/hw/virtio/virtio-iommu-pci.c
-@@ -0,0 +1,91 @@
-+/*
-+ * Virtio IOMMU PCI Bindings
-+ *
-+ * Copyright (c) 2019 Red Hat, Inc.
-+ * Written by Eric Auger
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 12ff55fcfb..f09cabdcae 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2744,6 +2744,72 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
+     return true;
+ }
+=20
++static inline void
++fill_iort_idmap(AcpiIortIdMapping *idmap, int i,
++                uint32_t input_base, uint32_t id_count,
++                uint32_t output_base, uint32_t output_reference)
++{
++    idmap[i].input_base =3D cpu_to_le32(input_base);
++    idmap[i].id_count =3D cpu_to_le32(id_count);
++    idmap[i].output_base =3D cpu_to_le32(output_base);
++    idmap[i].output_reference =3D cpu_to_le32(output_reference);
++}
 +
-+#include "qemu/osdep.h"
++static void
++build_iort(GArray *table_data, BIOSLinker *linker, PCMachineState *pcms)
++{
++    size_t iommu_node_size, rc_node_size, iommu_node_offset;
++    int iort_start =3D table_data->len;
++    AcpiIortPVIommuPCI *iommu;
++    AcpiIortIdMapping *idmap;
++    AcpiIortTable *iort;
++    size_t iort_length;
++    AcpiIortRC *rc;
 +
-+#include "virtio-pci.h"
++    iort =3D acpi_data_push(table_data, sizeof(*iort));
++    iort_length =3D sizeof(*iort);
++    iort->node_count =3D cpu_to_le32(2);
++
++    /* virtio-iommu node */
++
++    iommu_node_offset =3D sizeof(*iort);
++    iort->node_offset =3D cpu_to_le32(iommu_node_offset);
++    iommu_node_size =3D sizeof(*iommu);
++    iort_length +=3D iommu_node_offset;
++    iommu =3D acpi_data_push(table_data, iommu_node_size);
++    iommu->type =3D ACPI_IORT_NODE_PARAVIRT;
++    iommu->length =3D cpu_to_le16(iommu_node_size);
++    iommu->mapping_count =3D 0;
++    iommu->devid =3D cpu_to_le32(pcms->virtio_iommu_bdf);
++    iommu->model =3D cpu_to_le32(ACPI_IORT_NODE_PV_VIRTIO_IOMMU_PCI);
++
++    /* Root Complex Node */
++    rc_node_size =3D sizeof(*rc) + 2 * sizeof(*idmap);
++    iort_length +=3D rc_node_size;
++    rc =3D acpi_data_push(table_data, rc_node_size);
++
++    rc->type =3D ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
++    rc->length =3D cpu_to_le16(rc_node_size);
++    rc->mapping_count =3D cpu_to_le32(2);
++    rc->mapping_offset =3D cpu_to_le32(sizeof(*rc));
++
++    /* fully coherent device */
++    rc->memory_properties.cache_coherency =3D cpu_to_le32(1);
++    rc->memory_properties.memory_flags =3D 0x3; /* CCA =3D CPM =3D DCAS =
+=3D 1 */
++    rc->pci_segment_number =3D 0; /* MCFG pci_segment */
++    fill_iort_idmap(rc->id_mapping_array, 0, 0, pcms->virtio_iommu_bdf, 0,
++                    iommu_node_offset);
++    fill_iort_idmap(rc->id_mapping_array, 1, pcms->virtio_iommu_bdf + 1,
++                    0xFFFF - pcms->virtio_iommu_bdf,
++                    pcms->virtio_iommu_bdf + 1, iommu_node_offset);
++
++    iort =3D (AcpiIortTable *)(table_data->data + iort_start);
++    iort->length =3D cpu_to_le32(iort_length);
++
++    build_header(linker, table_data, (void *)(table_data->data + iort_star=
+t),
++                 "IORT", table_data->len - iort_start, 0, NULL, NULL);
++}
++
+ static
+ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+ {
+@@ -2835,6 +2901,12 @@ void acpi_build(AcpiBuildTables *tables, MachineStat=
+e *machine)
+             build_slit(tables_blob, tables->linker, machine);
+         }
+     }
++
++    if (pcms->virtio_iommu) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_iort(tables_blob, tables->linker, pcms);
++    }
++
+     if (acpi_get_mcfg(&mcfg)) {
+         acpi_add_table(table_offsets, tables_blob);
+         build_mcfg(tables_blob, tables->linker, &mcfg);
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index ac08e63604..af984ee041 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -84,6 +84,7 @@
+ #include "hw/net/ne2000-isa.h"
+ #include "standard-headers/asm-x86/bootparam.h"
+ #include "hw/virtio/virtio-pmem-pci.h"
 +#include "hw/virtio/virtio-iommu.h"
-+#include "hw/qdev-properties.h"
-+
-+typedef struct VirtIOIOMMUPCI VirtIOIOMMUPCI;
-+
-+/*
-+ * virtio-iommu-pci: This extends VirtioPCIProxy.
-+ *
-+ */
-+#define VIRTIO_IOMMU_PCI(obj) \
-+        OBJECT_CHECK(VirtIOIOMMUPCI, (obj), TYPE_VIRTIO_IOMMU_PCI)
-+
-+struct VirtIOIOMMUPCI {
-+    VirtIOPCIProxy parent_obj;
-+    VirtIOIOMMU vdev;
-+};
-+
-+static Property virtio_iommu_pci_properties[] =3D {
-+    DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
-+    DEFINE_PROP_ARRAY("reserved-regions", VirtIOIOMMUPCI,
-+                      vdev.nb_reserved_regions, vdev.reserved_regions,
-+                      qdev_prop_interval, Interval),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **err=
-p)
-+{
-+    VirtIOIOMMUPCI *dev =3D VIRTIO_IOMMU_PCI(vpci_dev);
-+    DeviceState *vdev =3D DEVICE(&dev->vdev);
-+
-+    qdev_set_parent_bus(vdev, BUS(&vpci_dev->bus));
-+    object_property_set_link(OBJECT(dev),
-+                             OBJECT(pci_get_bus(&vpci_dev->pci_dev)),
-+                             "primary-bus", errp);
-+    object_property_set_bool(OBJECT(vdev), true, "realized", errp);
-+}
-+
-+static void virtio_iommu_pci_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    VirtioPCIClass *k =3D VIRTIO_PCI_CLASS(klass);
-+    PCIDeviceClass *pcidev_k =3D PCI_DEVICE_CLASS(klass);
-+    k->realize =3D virtio_iommu_pci_realize;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->props =3D virtio_iommu_pci_properties;
-+    pcidev_k->vendor_id =3D PCI_VENDOR_ID_REDHAT_QUMRANET;
-+    pcidev_k->device_id =3D PCI_DEVICE_ID_VIRTIO_IOMMU;
-+    pcidev_k->revision =3D VIRTIO_PCI_ABI_VERSION;
-+    pcidev_k->class_id =3D PCI_CLASS_OTHERS;
-+}
-+
-+static void virtio_iommu_pci_instance_init(Object *obj)
-+{
-+    VirtIOIOMMUPCI *dev =3D VIRTIO_IOMMU_PCI(obj);
-+
-+    virtio_instance_init_common(obj, &dev->vdev, sizeof(dev->vdev),
-+                                TYPE_VIRTIO_IOMMU);
-+}
-+
-+static const VirtioPCIDeviceTypeInfo virtio_iommu_pci_info =3D {
-+    .base_name             =3D TYPE_VIRTIO_IOMMU_PCI,
-+    .generic_name          =3D "virtio-iommu-pci",
-+    .transitional_name     =3D "virtio-iommu-pci-transitional",
-+    .non_transitional_name =3D "virtio-iommu-pci-non-transitional",
-+    .instance_size =3D sizeof(VirtIOIOMMUPCI),
-+    .instance_init =3D virtio_iommu_pci_instance_init,
-+    .class_init    =3D virtio_iommu_pci_class_init,
-+};
-+
-+static void virtio_iommu_pci_register(void)
-+{
-+    virtio_pci_types_register(&virtio_iommu_pci_info);
-+}
-+
-+type_init(virtio_iommu_pci_register)
-+
-+
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index db75c6dfd0..d7715c826a 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -86,6 +86,7 @@ extern bool pci_available;
- #define PCI_DEVICE_ID_VIRTIO_9P          0x1009
- #define PCI_DEVICE_ID_VIRTIO_VSOCK       0x1012
- #define PCI_DEVICE_ID_VIRTIO_PMEM        0x1013
-+#define PCI_DEVICE_ID_VIRTIO_IOMMU       0x1014
+ #include "hw/mem/memory-device.h"
+ #include "sysemu/replay.h"
+ #include "qapi/qmp/qerror.h"
+@@ -1940,6 +1941,11 @@ static void pc_machine_device_pre_plug_cb(HotplugHan=
+dler *hotplug_dev,
+         pc_cpu_pre_plug(hotplug_dev, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI)) {
+         pc_virtio_pmem_pci_pre_plug(hotplug_dev, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
++        /* we declare a VIRTIO_IOMMU_RESV_MEM_T_MSI region */
++        qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
++        qdev_prop_set_string(dev, "reserved-regions[0]",
++                             "0xfee00000, 0xfeefffff, 1");
+     }
+ }
 =20
- #define PCI_VENDOR_ID_REDHAT             0x1b36
- #define PCI_DEVICE_ID_REDHAT_BRIDGE      0x0001
-diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-io=
-mmu.h
-index f55f48d304..1ab6993d29 100644
---- a/include/hw/virtio/virtio-iommu.h
-+++ b/include/hw/virtio/virtio-iommu.h
-@@ -25,6 +25,7 @@
- #include "hw/pci/pci.h"
+@@ -1952,6 +1958,12 @@ static void pc_machine_device_plug_cb(HotplugHandler=
+ *hotplug_dev,
+         pc_cpu_plug(hotplug_dev, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI)) {
+         pc_virtio_pmem_pci_plug(hotplug_dev, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), "virtio-iommu-pci")) {
++        PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
++        PCIDevice *pdev =3D PCI_DEVICE(dev);
++
++        pcms->virtio_iommu =3D true;
++        pcms->virtio_iommu_bdf =3D pci_get_bdf(pdev);
+     }
+ }
 =20
- #define TYPE_VIRTIO_IOMMU "virtio-iommu-device"
-+#define TYPE_VIRTIO_IOMMU_PCI "virtio-iommu-device-base"
- #define VIRTIO_IOMMU(obj) \
-         OBJECT_CHECK(VirtIOIOMMU, (obj), TYPE_VIRTIO_IOMMU)
+@@ -1990,7 +2002,8 @@ static HotplugHandler *pc_get_hotplug_handler(Machine=
+State *machine,
+ {
+     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
+         object_dynamic_cast(OBJECT(dev), TYPE_CPU) ||
+-        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI)) {
++        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
++        object_dynamic_cast(OBJECT(dev), "virtio-iommu-pci")) {
+         return HOTPLUG_HANDLER(machine);
+     }
 =20
-diff --git a/qdev-monitor.c b/qdev-monitor.c
-index e6b112eb0a..e61ca62061 100644
---- a/qdev-monitor.c
-+++ b/qdev-monitor.c
-@@ -66,6 +66,7 @@ static const QDevAlias qdev_alias_table[] =3D {
-     { "virtio-input-host-ccw", "virtio-input-host", QEMU_ARCH_S390X },
-     { "virtio-input-host-pci", "virtio-input-host",
-             QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
-+    { "virtio-iommu-pci", "virtio-iommu", QEMU_ARCH_ALL & ~QEMU_ARCH_S390X=
- },
-     { "virtio-keyboard-ccw", "virtio-keyboard", QEMU_ARCH_S390X },
-     { "virtio-keyboard-pci", "virtio-keyboard",
-             QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 1f86eba3f9..221b4c6ef9 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -49,6 +49,8 @@ struct PCMachineState {
+     bool smbus_enabled;
+     bool sata_enabled;
+     bool pit_enabled;
++    bool virtio_iommu;
++    uint16_t virtio_iommu_bdf;
+=20
+     /* NUMA information: */
+     uint64_t numa_nodes;
 --=20
 2.20.1
 

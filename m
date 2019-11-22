@@ -1,103 +1,101 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp744144lfc;
-        Fri, 22 Nov 2019 10:54:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzSRnjU8fIIL2PmTpP/Wa0dxOpKdKljn/jqv5FiTBZxV8RUQa8S3/tiJC+Qk2DGdEyY1EUI
-X-Received: by 2002:a05:620a:536:: with SMTP id h22mr3329540qkh.480.1574448870245;
-        Fri, 22 Nov 2019 10:54:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574448870; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp756349lfc;
+        Fri, 22 Nov 2019 11:04:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyu7Io0sjmxZxahG5KgIMqIqjjTTR19nWPnotQMoRxIZ3BcypmcBz2jUG1pVNNrwloj7LBi
+X-Received: by 2002:a17:906:404d:: with SMTP id y13mr24454552ejj.276.1574449491280;
+        Fri, 22 Nov 2019 11:04:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574449491; cv=none;
         d=google.com; s=arc-20160816;
-        b=iYqR/51z+gFdbfXVqyDzSqM4B7xk1jFGuFykcbItRKmwGoOlIeK6fh/7XMN54N0ZQa
-         mZSs4kh9Gc4C4fBKfLYoGJ5rsBIHwQg5H+RWulCg36Es1Zu+LYZFRy8DcYwZFPWA2wEp
-         xbS2/uISRobudLFvb25qY+Fvw6SL0k1nIF3Bi5XGgWUqWgGHxQnrbiv9J1LdwYVdmpfp
-         /1I16IYiR0/4pGD799B74gXRITwWaoZTp+R91VVoMTFV6/eJzHA73dL1eHJRjePG3bt6
-         yuiDVleuvK57IEH7t1D1Q5yAU4hESttBam6iWK4A2JanQC4xIAcobUZi4jPVFpB52zK4
-         hdGA==
+        b=0lciqzofALuZ2JbKGMR9skIp+gvk/2sg/xFhZqZ4L3/uS93ldV+MdIQ2xZH6sXOdhI
+         iYlgIi+UzkYUy+5RfLmO6Ea4Wf8NLEFzhq1njb06ES1yghZMiny1CmNF3YJSsta0jf/3
+         h1VvLDU1S+wzSy28jhMpr92OXG7M7c99h56tS4VplXQtVc0UR5GdDRblwFM7rvdECYXe
+         w65zP8YwmPy7qTqKgMq4Pwgaai99KiHXA8N1UQ5iuGoVIwNf55UYqOJGUFhHz0xIG/aS
+         rqSbsnTtnTkpGGL55vuNPmYq2JjzXRrLdlY2cpI7UjEamNopHQW8fg+wDRH3cILOvTzX
+         ho/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=4xFawQT2V6zPzd9LUbAi8pc+Qp3elmFlQpDHpoRueTI=;
-        b=fvZ5pZeKeUk5+Bva+cCHZKFCa4/kG69qbBRv12gZWqt4WVafKJwRcXc49b+fQ3HEF/
-         /1JOMvOQQYUJPqV/fSzJS82/MhbTlF1mhokTbOYlAYoVNSrwznVjRSNY2GdX6hE55uCu
-         ArlI4mjKAc5UD3leP9H64PY0W3FaCGYqgzzspB8WmKCiQki1yvCnDhtKyxVv9O/bf6PB
-         5/SfXk86lnifQwKB+UJMWz8NcwppwOfrhF+9dT8ToFEIBvN+EBVJcaQBOGo1ifaKas+g
-         MjvIWCG3AJHp+2bJ3VOjcuXuGu+J+dY1VkyjDMp9P8kjk8InRZ8U1pN83kZ0BVqZWHO+
-         AR6g==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=9ZtDMnAaJ6tfi/HjI8JF5OOd9hEr549YpG3sEbuiL5g=;
+        b=B64asII9lFrvbHnYnrwZ0gaLDuEDJgJ+8li5+BboRalWz9inNtZAKNnI9YTcLCB+90
+         ui/rzR0Pdn6226+1+wEcE7/5gz7p5Aw5tANca3nj0S/X0dcqPrubhZ11kjtCUdi0lI/v
+         jYLyeCC/w3xLVEq9Az/OBKWsJOIAR02kNnrZzj5sLIfBimOh0vzz+07M8CUagcQbvYov
+         CqPW2UuaSnCm2pSjA5il7IDrANO3nPY5WrDY7p4P7F9f24oxThZ4R7H2Y0eColGZtsw+
+         yoJ5AXHaLNnryjO7klvsGQXFiLTWUg+4M47tB6yRJiIfE5HMkPrzjdIP4q2EwtYBH7x5
+         jYKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KufSrxz0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ASOmHRo7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cs10si2676825qvb.177.2019.11.22.10.54.30
+        by mx.google.com with ESMTPS id ks15si5068034ejb.133.2019.11.22.11.04.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Nov 2019 10:54:30 -0800 (PST)
+        Fri, 22 Nov 2019 11:04:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KufSrxz0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ASOmHRo7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54374 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54470 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iYE4b-0000zT-N4
-	for alex.bennee@linaro.org; Fri, 22 Nov 2019 13:54:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40189)
+	id 1iYEEb-0007oa-Uq
+	for alex.bennee@linaro.org; Fri, 22 Nov 2019 14:04:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44617)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iYDiy-0001Zx-W9
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:32:10 -0500
+ (envelope-from <dgilbert@redhat.com>) id 1iYEDz-0007o3-Is
+ for qemu-arm@nongnu.org; Fri, 22 Nov 2019 14:04:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iYDix-0000gH-Jp
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:32:08 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52392
+ (envelope-from <dgilbert@redhat.com>) id 1iYEDw-0002Qc-SI
+ for qemu-arm@nongnu.org; Fri, 22 Nov 2019 14:04:10 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25895
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iYDix-0000fy-Ap
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:32:07 -0500
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1iYEDt-0002Pf-KR
+ for qemu-arm@nongnu.org; Fri, 22 Nov 2019 14:04:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574447526;
+ s=mimecast20190719; t=1574449444;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4xFawQT2V6zPzd9LUbAi8pc+Qp3elmFlQpDHpoRueTI=;
- b=KufSrxz0cSNTt9y5/nXcVjOccy4uvIhZIcaUV8SpSUncMImctZi15k95DX1ZrmHwLbDpCQ
- sR2iYGWHa6a6lbXdrXKF+ooLxwRgBKEdvFZqREfug+w6OBNGFbxz6cDW5B3DiWaiXCvL00
- /Ayy9nSMfD2KFhS20x1/pkpIUf+85yY=
+ bh=9ZtDMnAaJ6tfi/HjI8JF5OOd9hEr549YpG3sEbuiL5g=;
+ b=ASOmHRo7q6uvbjtpINXJ0SfgJRuzk2qveWYSDpevNViAWNGS5ZQH5krt9upwGbIkoHgWUw
+ a2lDodvNu91uSILalsNN9Np00glu77vI0orPzHozogvrlCzq4d0LJNeg6LOjwEoW51wCYg
+ I+R6n06H0MWTv3FkbhOsrrUoqNzBlX0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-124-JC4ZDa6mOye60nSHeAuYKA-1; Fri, 22 Nov 2019 13:32:05 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-219-euji1tPHNV6dIL6t26KjeQ-1; Fri, 22 Nov 2019 14:04:03 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1726C107ACC5;
- Fri, 22 Nov 2019 18:32:04 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5559D6E712;
- Fri, 22 Nov 2019 18:31:55 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- armbru@redhat.com, jean-philippe.brucker@arm.com, bharatb.linux@gmail.com,
- yang.zhong@intel.com, dgilbert@redhat.com, quintela@redhat.com
-Subject: [PATCH for-5.0 v11 17/20] hw/arm/virt-acpi-build: Add virtio-iommu
- node in IORT table
-Date: Fri, 22 Nov 2019 19:29:40 +0100
-Message-Id: <20191122182943.4656-18-eric.auger@redhat.com>
-In-Reply-To: <20191122182943.4656-1-eric.auger@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 20C3F107ACC5;
+ Fri, 22 Nov 2019 19:04:01 +0000 (UTC)
+Received: from work-vm (unknown [10.36.118.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 76FAB5890;
+ Fri, 22 Nov 2019 19:03:45 +0000 (UTC)
+Date: Fri, 22 Nov 2019 19:03:43 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH for-5.0 v11 12/20] qapi: Introduce DEFINE_PROP_INTERVAL
+Message-ID: <20191122190343.GP2785@work-vm>
 References: <20191122182943.4656-1-eric.auger@redhat.com>
+ <20191122182943.4656-13-eric.auger@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: JC4ZDa6mOye60nSHeAuYKA-1
+In-Reply-To: <20191122182943.4656-13-eric.auger@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: euji1tPHNV6dIL6t26KjeQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,173 +107,211 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kevin.tian@intel.com, peterx@redhat.com, tnowicki@marvell.com
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
+ quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
+ armbru@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KUvSBqJb3eG4
+X-TUID: AKBeck2qc+2C
 
-This patch builds the virtio-iommu node in the ACPI IORT table.
+* Eric Auger (eric.auger@redhat.com) wrote:
+> Introduce a new property defining a labelled interval:
+> <low address>,<high address>,label.
+>=20
+> This will be used to encode reserved IOVA regions. The label
+> is left undefined to ease reuse accross use cases.
+>=20
+> For instance, in virtio-iommu use case, reserved IOVA regions
+> will be passed by the machine code to the virtio-iommu-pci
+> device (an array of those). The label will match the
+> virtio_iommu_probe_resv_mem subtype value:
+> - VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
+> - VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
+>=20
+> This is used to inform the virtio-iommu-pci device it should
+> bypass the MSI region: 0xfee00000, 0xfeefffff, 1.
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/core/qdev-properties.c    | 90 ++++++++++++++++++++++++++++++++++++
+>  include/exec/memory.h        |  6 +++
+>  include/hw/qdev-properties.h |  3 ++
+>  include/qemu/typedefs.h      |  1 +
+>  4 files changed, 100 insertions(+)
+>=20
+> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+> index ac28890e5a..8d70f34e37 100644
+> --- a/hw/core/qdev-properties.c
+> +++ b/hw/core/qdev-properties.c
+> @@ -13,6 +13,7 @@
+>  #include "qapi/visitor.h"
+>  #include "chardev/char.h"
+>  #include "qemu/uuid.h"
+> +#include "qemu/cutils.h"
+> =20
+>  void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
+>                                    Error **errp)
+> @@ -585,6 +586,95 @@ const PropertyInfo qdev_prop_macaddr =3D {
+>      .set   =3D set_mac,
+>  };
+> =20
+> +/* --- Labelled Interval --- */
+> +
+> +/*
+> + * accepted syntax versions:
+> + *   <low address>,<high address>,<type>
+> + *   where low/high addresses are uint64_t in hexa (feat. 0x prefix)
+> + *   and type is an unsigned integer
+> + */
+> +static void get_interval(Object *obj, Visitor *v, const char *name,
+> +                         void *opaque, Error **errp)
+> +{
+> +    DeviceState *dev =3D DEVICE(obj);
+> +    Property *prop =3D opaque;
+> +    Interval *interval =3D qdev_get_prop_ptr(dev, prop);
+> +    char buffer[64];
+> +    char *p =3D buffer;
+> +
+> +    snprintf(buffer, sizeof(buffer), "0x%"PRIx64",0x%"PRIx64",%d",
+> +             interval->low, interval->high, interval->type);
+> +
+> +    visit_type_str(v, name, &p, errp);
+> +}
+> +
+> +static void set_interval(Object *obj, Visitor *v, const char *name,
+> +                         void *opaque, Error **errp)
+> +{
+> +    DeviceState *dev =3D DEVICE(obj);
+> +    Property *prop =3D opaque;
+> +    Interval *interval =3D qdev_get_prop_ptr(dev, prop);
+> +    Error *local_err =3D NULL;
+> +    unsigned int type;
+> +    gchar **fields;
+> +    uint64_t addr;
+> +    char *str;
+> +    int ret;
+> +
+> +    if (dev->realized) {
+> +        qdev_prop_set_after_realize(dev, name, errp);
+> +        return;
+> +    }
+> +
+> +    visit_type_str(v, name, &str, &local_err);
+> +    if (local_err) {
+> +        error_propagate(errp, local_err);
+> +        return;
+> +    }
+> +
+> +    fields =3D g_strsplit(str, ",", 3);
+> +
+> +    ret =3D qemu_strtou64(fields[0], NULL, 16, &addr);
+> +    if (!ret) {
+> +        interval->low =3D addr;
+> +    } else {
+> +        error_setg(errp, "Failed to decode interval low addr");
+> +        error_append_hint(errp,
+> +                          "should be an address in hexa with 0x prefix\n=
+");
+> +        goto out;
+> +    }
+> +
+> +    ret =3D qemu_strtou64(fields[1], NULL, 16, &addr);
+> +    if (!ret) {
+> +        interval->high =3D addr;
+> +    } else {
+> +        error_setg(errp, "Failed to decode interval high addr");
+> +        error_append_hint(errp,
+> +                          "should be an address in hexa with 0x prefix\n=
+");
+> +        goto out;
+> +    }
+> +
+> +    ret =3D qemu_strtoui(fields[2], NULL, 10, &type);
+> +    if (!ret) {
+> +        interval->type =3D type;
+> +    } else {
+> +        error_setg(errp, "Failed to decode interval type");
+> +        error_append_hint(errp, "should be an unsigned int in decimal\n"=
+);
+> +    }
+> +out:
+> +    g_free(str);
+> +    g_strfreev(fields);
+> +    return;
+> +}
+> +
+> +const PropertyInfo qdev_prop_interval =3D {
+> +    .name  =3D "labelled_interval",
+> +    .description =3D "Labelled interval, example: 0xFEE00000,0xFEEFFFFF,=
+0",
+> +    .get   =3D get_interval,
+> +    .set   =3D set_interval,
+> +};
+> +
+>  /* --- on/off/auto --- */
+> =20
+>  const PropertyInfo qdev_prop_on_off_auto =3D {
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index e499dc215b..e238d1c352 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -57,6 +57,12 @@ struct MemoryRegionMmio {
+>      CPUWriteMemoryFunc *write[3];
+>  };
+> =20
+> +struct Interval {
+> +    hwaddr low;
+> +    hwaddr high;
+> +    unsigned int type;
+> +};
+> +
 
-The RID space of the root complex, which spans 0x0-0x10000
-maps to streamid space 0x0-0x10000 in the virtio-iommu which in
-turn maps to deviceid space 0x0-0x10000 in the ITS group.
+Just an observation that 'Interval' is a very generic name.
+We've got 'AddrRange' but that's Int128.
 
-The iommu RID is excluded as described in virtio-iommu
-specification.
+Dave
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
----
-v8 -> v9:
-- iommu RID is not fixed anymore
-
-v7 -> v8:
-- exclude the iommu RID (0x8) in the root complex ID mapping
----
- hw/arm/virt-acpi-build.c    | 50 ++++++++++++++++++++++++++++++-------
- include/hw/acpi/acpi-defs.h | 21 +++++++++++++++-
- 2 files changed, 61 insertions(+), 10 deletions(-)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 825f3a79c0..1e22cbbbfd 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -386,14 +386,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
-     AcpiIortIdMapping *idmap;
-     AcpiIortItsGroup *its;
-     AcpiIortTable *iort;
--    AcpiIortSmmu3 *smmu;
--    size_t node_size, iort_node_offset, iort_length, smmu_offset =3D 0;
-+    size_t node_size, iort_node_offset, iort_length, iommu_offset =3D 0;
-     AcpiIortRC *rc;
-+    int nb_rc_idmappings =3D 1;
-=20
-     iort =3D acpi_data_push(table_data, sizeof(*iort));
-=20
--    if (vms->iommu =3D=3D VIRT_IOMMU_SMMUV3) {
--        nb_nodes =3D 3; /* RC, ITS, SMMUv3 */
-+    if (vms->iommu) {
-+        nb_nodes =3D 3; /* RC, ITS, IOMMU */
-     } else {
-         nb_nodes =3D 2; /* RC, ITS */
-     }
-@@ -419,9 +419,9 @@ build_iort(GArray *table_data, BIOSLinker *linker, Virt=
-MachineState *vms)
-=20
-     if (vms->iommu =3D=3D VIRT_IOMMU_SMMUV3) {
-         int irq =3D  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
-+        AcpiIortSmmu3 *smmu;
-=20
--        /* SMMUv3 node */
--        smmu_offset =3D iort_node_offset + node_size;
-+        iommu_offset =3D iort_node_offset + node_size;
-         node_size =3D sizeof(*smmu) + sizeof(*idmap);
-         iort_length +=3D node_size;
-         smmu =3D acpi_data_push(table_data, node_size);
-@@ -443,16 +443,38 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
-          */
-         fill_iort_idmap(smmu->id_mapping_array, 0, 0, 0xffff, 0,
-                         iort_node_offset);
-+    } else if (vms->iommu =3D=3D VIRT_IOMMU_VIRTIO) {
-+        AcpiIortPVIommuPCI *iommu;
-+
-+        nb_rc_idmappings =3D 2;
-+        iommu_offset =3D iort_node_offset + node_size;
-+        node_size =3D sizeof(*iommu) + 2 * sizeof(*idmap);
-+        iort_length +=3D node_size;
-+        iommu =3D acpi_data_push(table_data, node_size);
-+
-+        iommu->type =3D ACPI_IORT_NODE_PARAVIRT;
-+        iommu->length =3D cpu_to_le16(node_size);
-+        iommu->mapping_count =3D cpu_to_le32(2);
-+        iommu->mapping_offset =3D cpu_to_le32(sizeof(*iommu));
-+        iommu->devid =3D cpu_to_le32(vms->virtio_iommu_bdf);
-+        iommu->model =3D cpu_to_le32(ACPI_IORT_NODE_PV_VIRTIO_IOMMU_PCI);
-+
-+        /*
-+         * Identity RID mapping covering the whole input RID range
-+         * output IORT node is the ITS group node (the first node)
-+         */
-+        fill_iort_idmap(iommu->id_mapping_array, 0, 0, 0xffff, 0,
-+                        iort_node_offset);
-     }
-=20
-     /* Root Complex Node */
--    node_size =3D sizeof(*rc) + sizeof(*idmap);
-+    node_size =3D sizeof(*rc) + nb_rc_idmappings * sizeof(*idmap);
-     iort_length +=3D node_size;
-     rc =3D acpi_data_push(table_data, node_size);
-=20
-     rc->type =3D ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
-     rc->length =3D cpu_to_le16(node_size);
--    rc->mapping_count =3D cpu_to_le32(1);
-+    rc->mapping_count =3D cpu_to_le32(nb_rc_idmappings);
-     rc->mapping_offset =3D cpu_to_le32(sizeof(*rc));
-=20
-     /* fully coherent device */
-@@ -463,7 +485,17 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vir=
-tMachineState *vms)
-     if (vms->iommu =3D=3D VIRT_IOMMU_SMMUV3) {
-         /* Identity RID mapping and output IORT node is the iommu node */
-         fill_iort_idmap(rc->id_mapping_array, 0, 0, 0xFFFF, 0,
--                        smmu_offset);
-+                        iommu_offset);
-+    } else if (vms->iommu =3D=3D VIRT_IOMMU_VIRTIO) {
-+        /*
-+         * Identity mapping with the IOMMU RID (0x8) excluded. The output
-+         * IORT node is the iommu node.
-+         */
-+        fill_iort_idmap(rc->id_mapping_array, 0, 0, vms->virtio_iommu_bdf,=
- 0,
-+                        iommu_offset);
-+        fill_iort_idmap(rc->id_mapping_array, 1, vms->virtio_iommu_bdf + 1=
-,
-+                        0xFFFF - vms->virtio_iommu_bdf,
-+                        vms->virtio_iommu_bdf + 1, iommu_offset);
-     } else {
-         /*
-          * Identity RID mapping and the output IORT node is the ITS group
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index 57a3f58b0c..ba06f41fc0 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -581,7 +581,8 @@ enum {
-         ACPI_IORT_NODE_NAMED_COMPONENT =3D 0x01,
-         ACPI_IORT_NODE_PCI_ROOT_COMPLEX =3D 0x02,
-         ACPI_IORT_NODE_SMMU =3D 0x03,
--        ACPI_IORT_NODE_SMMU_V3 =3D 0x04
-+        ACPI_IORT_NODE_SMMU_V3 =3D 0x04,
-+        ACPI_IORT_NODE_PARAVIRT =3D 0x80
- };
-=20
- struct AcpiIortIdMapping {
-@@ -610,6 +611,24 @@ typedef struct AcpiIortItsGroup AcpiIortItsGroup;
-=20
- #define ACPI_IORT_SMMU_V3_COHACC_OVERRIDE 1
-=20
-+struct AcpiIortPVIommuPCI {
-+    ACPI_IORT_NODE_HEADER_DEF
-+    uint32_t devid;
-+    uint8_t reserved2[12];
-+    uint32_t model;
-+    uint32_t flags;
-+    uint8_t reserved3[16];
-+    AcpiIortIdMapping id_mapping_array[0];
-+} QEMU_PACKED;
-+typedef struct AcpiIortPVIommuPCI AcpiIortPVIommuPCI;
-+
-+enum {
-+    ACPI_IORT_NODE_PV_VIRTIO_IOMMU     =3D 0x0,
-+    ACPI_IORT_NODE_PV_VIRTIO_IOMMU_PCI =3D 0x1,
-+};
-+
-+#define ACPI_IORT_NODE_PV_CACHE_COHERENT    (1 << 0)
-+
- struct AcpiIortSmmu3 {
-     ACPI_IORT_NODE_HEADER_DEF
-     uint64_t base_address;
---=20
-2.20.1
+>  typedef struct IOMMUTLBEntry IOMMUTLBEntry;
+> =20
+>  /* See address_space_translate: bit 0 is read, bit 1 is write.  */
+> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+> index c6a8cb5516..2ba7c8711b 100644
+> --- a/include/hw/qdev-properties.h
+> +++ b/include/hw/qdev-properties.h
+> @@ -20,6 +20,7 @@ extern const PropertyInfo qdev_prop_chr;
+>  extern const PropertyInfo qdev_prop_tpm;
+>  extern const PropertyInfo qdev_prop_ptr;
+>  extern const PropertyInfo qdev_prop_macaddr;
+> +extern const PropertyInfo qdev_prop_interval;
+>  extern const PropertyInfo qdev_prop_on_off_auto;
+>  extern const PropertyInfo qdev_prop_losttickpolicy;
+>  extern const PropertyInfo qdev_prop_blockdev_on_error;
+> @@ -202,6 +203,8 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
+>      DEFINE_PROP(_n, _s, _f, qdev_prop_drive_iothread, BlockBackend *)
+>  #define DEFINE_PROP_MACADDR(_n, _s, _f)         \
+>      DEFINE_PROP(_n, _s, _f, qdev_prop_macaddr, MACAddr)
+> +#define DEFINE_PROP_INTERVAL(_n, _s, _f)         \
+> +    DEFINE_PROP(_n, _s, _f, qdev_prop_interval, Interval)
+>  #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
+>      DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
+>  #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
+> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+> index 375770a80f..a827c9a3fe 100644
+> --- a/include/qemu/typedefs.h
+> +++ b/include/qemu/typedefs.h
+> @@ -58,6 +58,7 @@ typedef struct ISABus ISABus;
+>  typedef struct ISADevice ISADevice;
+>  typedef struct IsaDma IsaDma;
+>  typedef struct MACAddr MACAddr;
+> +typedef struct Interval Interval;
+>  typedef struct MachineClass MachineClass;
+>  typedef struct MachineState MachineState;
+>  typedef struct MemoryListener MemoryListener;
+> --=20
+> 2.20.1
+>=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 

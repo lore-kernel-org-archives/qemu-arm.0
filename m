@@ -1,108 +1,102 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp18333lfc;
-        Fri, 22 Nov 2019 00:29:21 -0800 (PST)
-X-Received: by 2002:a1c:4946:: with SMTP id w67mr15582454wma.16.1574411361859;
-        Fri, 22 Nov 2019 00:29:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574411361; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp34347lfc;
+        Fri, 22 Nov 2019 00:48:44 -0800 (PST)
+X-Received: by 2002:a5d:4c8c:: with SMTP id z12mr16280682wrs.347.1574412524484;
+        Fri, 22 Nov 2019 00:48:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574412524; cv=none;
         d=google.com; s=arc-20160816;
-        b=hRxS/nECm/9eDATgMHXNe22uAnAwaTIpMyh5FXrKvx6S3JzTmIhsFjzt4VfuNrhbfD
-         yYT4R3LB3rsyn7G07qtheZVAAJyr/mAezU2xH+iwci99F/M/hduzQhd1cdT0bk/jl1Jd
-         TG3toR507UspEHHJGavdhnCUEXSXbPBszmq7HO0cR2fSnLs+ouaYrYogn72VXTzexev7
-         GSjTndT4r4xVdNZI47icnb/xuj745qIrIfkWjzs7TohmWKmkOwNgYjQ/l/Zlebbge5Rt
-         h46iijF9g+FUx61/ah6q1Qrl4xSzTyFvmmMT/Y5uFIErLrGkdIzNX0gfM3FQyqgRoTGY
-         UD2w==
+        b=eUm5H1l1ntulDf/prv1/Mdj3kmYR8gSVZ5MBZMgInTB+kXjKiW7yOUdytiGXbwoRJ1
+         ndRgKHp3skTyyV67JNyJw+nanvX4p+3lv3xEZpXF3upbUJza56iv5Ul1F4qS2RCmH082
+         4L5cSaxBVXFG5OBkTnJMW7w7dR+QzKJMtdTtELQgINfbJvziTPyCQhDwfjmodFYKp/+C
+         sVRVfSLqqckOLljS5h9O4DTiHrh0Y2/zuFFafAP1xne3GDEC3uFv5RlNXHWz6GQYCQ9O
+         XdTbRTshxKAk9E6pTe9VUNuXLaI4QesfFkL56ZJCHYzwknfNyFQ5puMG5nnHWCRpzUk3
+         Ukgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=wha1hglNGt4UstaAQQvLQMbo/kd1j8mCEModtILhLKk=;
-        b=e/PxAGx+NAHTP03gurhBRLBmTzTVA3uvEOY5qbLlzrgtr43RPBe9aKcQwz37IW5HlY
-         EHRvZxTFCRT8P0REVypKDFKJUJrEqXv0UqGCOYrYo5FIgfKT+HEntPNYjWzm/rzuLIDY
-         8sSX7uCoY50tm6mvqAlYkSOUiQ03BmIdW8uw/kfpHgHLXn19WMbkOgz5L61Jn6LKMEBN
-         NEPAtAGSnObGmP06JeOv20QVOhBVZdQa3zDLvryFBBgwkaEj4z/q7oUUAGxeVMMSz/Od
-         O7rDvGcRSygDzgI2a7YvUbpi3+UOa7jkvustGmXLSw5gmj2bGx5lUDN+3Cw+nekaA5V3
-         U2gQ==
+        bh=C83CqTTXMKHVxF9fBHADOxXrwQhrwdOuulbdHa0xEM0=;
+        b=CCo2IbncYvy+bi7SBXh/fdaFQkOtPoCIaUm9PopmmiNurmXMVE7wPJg7Y0yaYtOb66
+         5QyvXEmLdCt5hR46uWgeK6T30oPrb6XHxVfFBjx0ghAGCB/7G9dQr95PClY1Y7uPjiJG
+         /tUS2AZwQiJKmeqg60jEJMq4T/CndmpnL63U9GiQ3HcccNSCNA59KKB+8fj+AT7K4R9C
+         RttWPIci8StfNqbCBvewg3aU8WPRSevNGXs6xQquQCoTJE5RwNHLQlmT/yimLUE+BirE
+         qDa5awWHcRSvpiVgDDGciMsrsfs4p7tPH4tNadfT2a1dk/TOVgs0kCGKF35ccbaE+k2E
+         sVsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ccN2HvfI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x+KWXQx9;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id n6sor1317632wmc.3.2019.11.22.00.29.21
+        by mx.google.com with SMTPS id l7sor1344283wmg.29.2019.11.22.00.48.44
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 22 Nov 2019 00:29:21 -0800 (PST)
+        Fri, 22 Nov 2019 00:48:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ccN2HvfI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x+KWXQx9;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=wha1hglNGt4UstaAQQvLQMbo/kd1j8mCEModtILhLKk=;
-        b=ccN2HvfIuPBCfRYS/bPPAbsOK6lIz7D8lMTzencQTbLXiT4prEC+XQ4sQTVrQYMQuT
-         BJF5fyDFYjExZm3W5fnxiPwksxZKL96uqll9qsUeeBl0PKUmNP9tRB/eWi3zF51gdgTr
-         YjV4S+qH5MXv12NCNsRIdxlgP6Xkr6bCXb7MISQsIxiBEm8B9gGIsY+0v6oQxuyajhiE
-         kbZUW/Q5mhzk0pPH6AF7T7rLY3Qwhv+SbfBrq3qmhLyyXQh9AqfRtwe09u6A9NNTJl23
-         AsBEGIo2NoRXI2530o0CYLOCMg3Uk6V9uBdZProlq0ytC7bMqNTByqoDcjOuh6weDhzH
-         mpEw==
+        bh=C83CqTTXMKHVxF9fBHADOxXrwQhrwdOuulbdHa0xEM0=;
+        b=x+KWXQx9lCsyIw13nx2bQGMkKZekgoRL1uPL6UURHQngDKPPpSwF5A1mdDC1ygPeHV
+         0UKn+fg0vY5KAn6VM3QdYheOoDfi8Tv8Rc3rxdgHUf824Lv3CRZYAQeJpqFnb3dCwS1E
+         HpVajQa+aon87s6PF+2fXt5rY3c6z/5Pq6slOCMSxizPvACg+f0lu3kiY0tAQWK9xR7u
+         i/GOkkiVsYWvtgl8WVyZUAa/t6qh2IdO3D84mHT//MSBCClKk9SRrctsgxkdWWgfU1j5
+         ZR0WvyxXiBc/0TO8GWuHEmCnNeZAbh+mhuEAzYlh5jmkOGKp0L27wgD5daXNm60YW5tv
+         fNgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=wha1hglNGt4UstaAQQvLQMbo/kd1j8mCEModtILhLKk=;
-        b=b8CDizkI+kQ33gYvIMTTgoraMQUHik2ei5HmgkoxexpxHSI/LloU1HpzfsF/1lbqId
-         yP+ro9zkRIwUH9HJgpfdoVUw/CB7rMoIIN9yfYPwlDZSaSKEiX9LGl0fGgu8RqtLv1/V
-         z2293NrB2HJr3L+TF+tOx3gvyrHayG7nrzcxZgd7Fm4+dceWfhIt08uga4xrHKmTJevY
-         j9Fkcwnr018OovrNnzSFA0Mi4nwx/1kxKFaQA2XaJ5lBn2p+uZX6B9Dr3voe0I9wyr/T
-         Fu2gnhuabZ+rXetOutCrcPIH5gKOFa5sNmYcvOPaUCOD+v3bjaYs7k0NgYS/zznMWhAz
-         Yl7A==
-X-Gm-Message-State: APjAAAUdPgb0IOQoJJe5+s9wBOnntnSuOkWE2Zksu9amFXvv9XayeCvo
-	bliq6u6w0TTceKvP+yVjeVEKs3Or
-X-Google-Smtp-Source: APXvYqxnFIiF6Tr8PV3ns6yAC/dnuCqahHAbsIyvYK5YipNGtq9KllcfWaAY6VIrBJdtvvHg6gPeDw==
-X-Received: by 2002:a1c:20c6:: with SMTP id g189mr1203573wmg.6.1574411361531;
-        Fri, 22 Nov 2019 00:29:21 -0800 (PST)
+        bh=C83CqTTXMKHVxF9fBHADOxXrwQhrwdOuulbdHa0xEM0=;
+        b=tqAPDGor/pEzrf/JxAHv+Pgww/NhEl0WvVc25vdIFFsPoDWQaSOSdNPfHb6/otkb+I
+         apB3/jht4h4Gk5qaxVxmlJAJSZrQHXO2emGX6JIq6kjkFNectEqaE4Ri3F/rGpZToL8M
+         GUSgMoKO69kdME9azZc3ErHgHUguFx0dh2nxRL8SNVSYqoT4A1dX98/R6r2DULwH/t2n
+         kT5UjSJgMDEZx8h+xpOxlf+/CrivZMJBX986gh0aaG9OgPppHPkWVIiUGp/Io3wbiZJB
+         8AhjGfPAKH8ZiVrTXj3lrZzUbIwxw5QioSf/Cc1xWbgn9d5+gxyf0rtVRUnyzC4hakyS
+         JB+g==
+X-Gm-Message-State: APjAAAUnlzwVgGx3kcFz0G8ZqGFx9X5IRXqA7/NNjny2IOl+0yAY76Le
+	ozhuq3cAAN9LFlwwJDDAIAzxzsy8zJ8fVpZ0
+X-Google-Smtp-Source: APXvYqxRBn4AeFNTuZE/2M6a2FYrqu4hUAQ3XbbxBmWZb+BLLQrGrRHBafcKRnwSBEcA23qRT4teCw==
+X-Received: by 2002:a1c:f210:: with SMTP id s16mr15285356wmc.76.1574412523239;
+        Fri, 22 Nov 2019 00:48:43 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.143] (host217-43-132-120.range217-43.btcentralplus.com. [217.43.132.120])
-        by smtp.gmail.com with ESMTPSA id o21sm2583113wmc.17.2019.11.22.00.29.20
+Received: from ?IPv6:2a00:23c5:4e1b:3700:8d83:30a1:2751:30ec? ([2a00:23c5:4e1b:3700:8d83:30a1:2751:30ec])
+        by smtp.gmail.com with ESMTPSA id o189sm2829003wmo.23.2019.11.22.00.48.42
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Nov 2019 00:29:20 -0800 (PST)
-Subject: Re: [PATCH v3 2/4] Memory: Enable writeback for given memory region
+        Fri, 22 Nov 2019 00:48:42 -0800 (PST)
+Subject: Re: [PATCH v3 1/4] tcg: cputlb: Add probe_read
 To: Beata Michalska <beata.michalska@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
  pbonzini@redhat.com, quintela@redhat.com, dgilbert@redhat.com,
  eric.auger@redhat.com, shameerali.kolothum.thodi@huawei.com
 References: <20191121000843.24844-1-beata.michalska@linaro.org>
- <20191121000843.24844-3-beata.michalska@linaro.org>
+ <20191121000843.24844-2-beata.michalska@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <eb14d17d-3120-2697-add5-d98d82cc51e7@linaro.org>
-Date: Fri, 22 Nov 2019 08:22:58 +0000
+Message-ID: <1536641d-9291-edd8-e04d-a457f5e50ced@linaro.org>
+Date: Fri, 22 Nov 2019 08:16:38 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20191121000843.24844-3-beata.michalska@linaro.org>
+In-Reply-To: <20191121000843.24844-2-beata.michalska@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: yj2Go6ZBmwWz
+Content-Transfer-Encoding: 8bit
+X-TUID: 8cVCCruNnHb7
 
 On 11/21/19 1:08 AM, Beata Michalska wrote:
-> Add an option to trigger memory writeback to sync given memory region
-> with the corresponding backing store, case one is available.
-> This extends the support for persistent memory, allowing syncing on-demand.
+> Add probe_read alongside the write probing equivalent.
 > 
 > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->  exec.c                  | 36 ++++++++++++++++++++++++++++++++++++
->  include/exec/memory.h   |  6 ++++++
->  include/exec/ram_addr.h |  8 ++++++++
->  include/qemu/cutils.h   |  1 +
->  memory.c                | 12 ++++++++++++
->  util/cutils.c           | 38 ++++++++++++++++++++++++++++++++++++++
->  6 files changed, 101 insertions(+)
+>  include/exec/exec-all.h | 6 ++++++
+>  1 file changed, 6 insertions(+)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

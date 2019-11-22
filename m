@@ -1,102 +1,102 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp735928lfc;
-        Fri, 22 Nov 2019 10:46:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwGrEo2E5KybTn8oc5liF3qda8rm8XVunJ15H6FjAlkn5tLMpVk5shAquiEnCOQGH4QqPOt
-X-Received: by 2002:a05:6402:104d:: with SMTP id e13mr2938128edu.254.1574448370471;
-        Fri, 22 Nov 2019 10:46:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574448370; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp739051lfc;
+        Fri, 22 Nov 2019 10:49:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzM7A0EkIkd/40r2fDXfMPl1xkFkppcrh45OD4qYCJbR4dK9/FiqHbc5ZlbR3ySJhltd7Uh
+X-Received: by 2002:a37:de09:: with SMTP id h9mr14722492qkj.74.1574448553880;
+        Fri, 22 Nov 2019 10:49:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574448553; cv=none;
         d=google.com; s=arc-20160816;
-        b=SJBCl+a9IHxAPkt0ns6xLFcP/P3OT8ld8R8tD4VDrZRxK6MQITL2EB8HDSeffk5Yxc
-         HrQyTcrd+tLNSydtL3AvKscE8folXqLd5KOyraeSS9LeJ2LUQMp5dQ56wnUbPaTXpDJh
-         +En7IOGmLYwbt9hjhpYePW+bOhJXAxPFI7OWzhvrG56SOpstrPm/7oqR7+hWDr0Li4Y/
-         fzbTE5+GXIZvS6i1lGAUhNLcuadSiJe/vvtXPsSRxV92/Gfahd5JjvHLY2Bq3DLICaFS
-         w5XMdpaCOTA4rFqHFQOQeauozES20GtODaFVpHrl9A7DeSokUJFxSKZbGrgrXtDC637k
-         apfA==
+        b=WJyehU0DVTZf0v6uGAB8qa6NbOYESjBFImd5d3+LpAFD9dutwGsq0uk0XudwQdxIeI
+         N1nGWjSLLelA5FSWXbWVXa3og4GAN2niPDZBAWOE/theAVXKZOSFp/iulWnCJ12YZM7N
+         /LML2D5HkXbmQySls+9FICiBpV1MIvbWEyV7yyaaQnbK6Q9Eq8VKcEQWKoN2ay65NONa
+         4xXs9MG3OmxRYlwvEnc2D6HXyVpjVwKfykcDj7pWfht9q5YMAzrnpSoClT/bY9Z6NNfT
+         cRhDwUHiP34/+o9KnippFM+JiX/Oe09QSa0SUcXd6IzHXSyNup1hPUkRlcqqIsnzJFBW
+         JTLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=JrkR9KYpXJDWqiPpiZFZOE335FpagScjc50Vgro92e4=;
-        b=SY/B1qsUCrO3vg4xzRKiRgLHkCuJazPN/PzWj+9CgzaiY5LFQACP0uE2UklbEjgJMo
-         R0WxdunLLy74cFL9PO0J+dx1tIxzC2seVwUmYAhmICTLZrgZ9H87s7m/RC0eEtPtrpx6
-         ziorXnid6xeoHAG7M7kBFwXbWnD4vA9TO+rHMG+YiD10TOoz+X1Dd6mfjv2yZe3qkgZE
-         BbrX4xeKQgL1aBRRh3X+9+JcfHEGdvdFTF7TQl1oq2o4upjLU6czLOOyCgMNeuFKAwbT
-         +TJO1NuVgEwqF2zmFFrOs9lOh7s6z0S0cQ7BctDDL0DIvtWcTEQ5eiEqEXsfU+rzMX6s
-         iHTw==
+        bh=FH18n8gL+YCFEKuqvhyl1UKyiT9gf7yTQQ3G6LrFWao=;
+        b=K1taVrtFxuMPfJItputnrRt+Vzt7xgPVEhu2cLSGXwEOrmiWs9u1WxkwoRQ+ltnx3b
+         HJha6GoKS8W2orAQkC1T8/t6zhB4W5ZtxWK7JJqzufJevz0XokS1TzSYTUcCOYlbDBqc
+         ZEDcGUr4y9rvupK87KuutYzK5wGZtReCMOPEGaLZxUR9Tj0LPEQ4rMWqiGwOGqfSCgOb
+         kazA1NF65+Jv/bYAgdLNzo2pyp/47ZAab3X3CUIK8PPyDFq3wjkBCJ6o4Tigx/Bi9lLF
+         MFsVCgUo3sKDpKKqJdKoghhvxPLdwFpeSPlfYlfHuy9PSqB9YnExt6GzC7R3y/2nPFzm
+         bYWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XL8I0v30;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Tgw4hJro;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h21si2599246edb.20.2019.11.22.10.46.10
+        by mx.google.com with ESMTPS id l129si3169051qkb.231.2019.11.22.10.49.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Nov 2019 10:46:10 -0800 (PST)
+        Fri, 22 Nov 2019 10:49:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XL8I0v30;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Tgw4hJro;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54248 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iYDwX-000850-B1
-	for alex.bennee@linaro.org; Fri, 22 Nov 2019 13:46:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39981)
+	id 1iYDzV-0001ak-7H
+	for alex.bennee@linaro.org; Fri, 22 Nov 2019 13:49:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40309)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iYDiQ-0000jb-3Z
- for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:31:35 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iYDjM-0001us-6S
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:32:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iYDiO-0000PT-I2
- for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:31:33 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:38882
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1iYDjJ-0000oF-La
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:32:32 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:34867
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iYDiO-0000PL-DN
- for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:31:32 -0500
+ id 1iYDjH-0000o1-LB
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:32:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574447492;
+ s=mimecast20190719; t=1574447547;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JrkR9KYpXJDWqiPpiZFZOE335FpagScjc50Vgro92e4=;
- b=XL8I0v30sbPCta8qm3hVw9vooOlFW5pzcyIuDp9nydFnenqckXVdvvMVc0UnCmSRv/8/ai
- P70IsDus43/YBhZX+jHjbxMJFrNPBPiIuucoNjTk8CtGmetFLPWCsH3S4Wb9pT7dG+ZNfX
- OezCqejmrhWinj79CYPw7dvtdH6dRYk=
+ bh=FH18n8gL+YCFEKuqvhyl1UKyiT9gf7yTQQ3G6LrFWao=;
+ b=Tgw4hJroTk/2sLcXadlsTvmXeJFrhFCEynh3nien5ahBr+lKX3kW8yvOvt53U7LiN11/2O
+ qFS3gle891V91cuI/xWDsxgvfKPP1OPKO09m/pOA2pZg7liIcWzxwySkXIHkfHLTaIYXi8
+ 9sLgCsgmoLWxa0emHxAvZThbkerq+fE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-315-zAd0-MfUMdie55aYUXHa8Q-1; Fri, 22 Nov 2019 13:31:31 -0500
+ us-mta-191-zGnxj3RaNsWfCxjK8mi69A-1; Fri, 22 Nov 2019 13:32:26 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 39A591005512;
- Fri, 22 Nov 2019 18:31:29 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 055B31005502;
+ Fri, 22 Nov 2019 18:32:24 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C51926E712;
- Fri, 22 Nov 2019 18:31:25 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DE40D6E712;
+ Fri, 22 Nov 2019 18:32:14 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  armbru@redhat.com, jean-philippe.brucker@arm.com, bharatb.linux@gmail.com,
  yang.zhong@intel.com, dgilbert@redhat.com, quintela@redhat.com
-Subject: [PATCH for-5.0 v11 12/20] qapi: Introduce DEFINE_PROP_INTERVAL
-Date: Fri, 22 Nov 2019 19:29:35 +0100
-Message-Id: <20191122182943.4656-13-eric.auger@redhat.com>
+Subject: [PATCH for-5.0 v11 20/20] tests: Add virtio-iommu test
+Date: Fri, 22 Nov 2019 19:29:43 +0100
+Message-Id: <20191122182943.4656-21-eric.auger@redhat.com>
 In-Reply-To: <20191122182943.4656-1-eric.auger@redhat.com>
 References: <20191122182943.4656-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: zAd0-MfUMdie55aYUXHa8Q-1
+X-MC-Unique: zGnxj3RaNsWfCxjK8mi69A-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,193 +111,562 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: kevin.tian@intel.com, peterx@redhat.com, tnowicki@marvell.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: liuTRuvHvg0j
+X-TUID: Vwdgh06AOOUA
 
-Introduce a new property defining a labelled interval:
-<low address>,<high address>,label.
+This adds the framework to test the virtio-iommu-pci device
+and tests exercising the attach/detach, map/unmap API.
 
-This will be used to encode reserved IOVA regions. The label
-is left undefined to ease reuse accross use cases.
-
-For instance, in virtio-iommu use case, reserved IOVA regions
-will be passed by the machine code to the virtio-iommu-pci
-device (an array of those). The label will match the
-virtio_iommu_probe_resv_mem subtype value:
-- VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
-- VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
-
-This is used to inform the virtio-iommu-pci device it should
-bypass the MSI region: 0xfee00000, 0xfeefffff, 1.
+To run the tests:
+make tests/qos-test
+QTEST_QEMU_BINARY=3Dx86_64-softmmu/qemu-system-x86_64 tests/qos-test V=3D1
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/core/qdev-properties.c    | 90 ++++++++++++++++++++++++++++++++++++
- include/exec/memory.h        |  6 +++
- include/hw/qdev-properties.h |  3 ++
- include/qemu/typedefs.h      |  1 +
- 4 files changed, 100 insertions(+)
+ tests/Makefile.include      |   2 +
+ tests/libqos/virtio-iommu.c | 177 ++++++++++++++++++++++++
+ tests/libqos/virtio-iommu.h |  45 +++++++
+ tests/virtio-iommu-test.c   | 261 ++++++++++++++++++++++++++++++++++++
+ 4 files changed, 485 insertions(+)
+ create mode 100644 tests/libqos/virtio-iommu.c
+ create mode 100644 tests/libqos/virtio-iommu.h
+ create mode 100644 tests/virtio-iommu-test.c
 
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index ac28890e5a..8d70f34e37 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -13,6 +13,7 @@
- #include "qapi/visitor.h"
- #include "chardev/char.h"
- #include "qemu/uuid.h"
-+#include "qemu/cutils.h"
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 8566f5f119..76a303c4fb 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -734,6 +734,7 @@ qos-test-obj-y +=3D tests/libqos/virtio-net.o
+ qos-test-obj-y +=3D tests/libqos/virtio-pci.o
+ qos-test-obj-y +=3D tests/libqos/virtio-pci-modern.o
+ qos-test-obj-y +=3D tests/libqos/virtio-rng.o
++qos-test-obj-y +=3D tests/libqos/virtio-iommu.o
+ qos-test-obj-y +=3D tests/libqos/virtio-scsi.o
+ qos-test-obj-y +=3D tests/libqos/virtio-serial.o
 =20
- void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
-                                   Error **errp)
-@@ -585,6 +586,95 @@ const PropertyInfo qdev_prop_macaddr =3D {
-     .set   =3D set_mac,
- };
-=20
-+/* --- Labelled Interval --- */
-+
+@@ -773,6 +774,7 @@ qos-test-obj-$(CONFIG_VIRTFS) +=3D tests/virtio-9p-test=
+.o
+ qos-test-obj-y +=3D tests/virtio-blk-test.o
+ qos-test-obj-y +=3D tests/virtio-net-test.o
+ qos-test-obj-y +=3D tests/virtio-rng-test.o
++qos-test-obj-y +=3D tests/virtio-iommu-test.o
+ qos-test-obj-y +=3D tests/virtio-scsi-test.o
+ qos-test-obj-y +=3D tests/virtio-serial-test.o
+ qos-test-obj-y +=3D tests/vmxnet3-test.o
+diff --git a/tests/libqos/virtio-iommu.c b/tests/libqos/virtio-iommu.c
+new file mode 100644
+index 0000000000..b4e9ea44fb
+--- /dev/null
++++ b/tests/libqos/virtio-iommu.c
+@@ -0,0 +1,177 @@
 +/*
-+ * accepted syntax versions:
-+ *   <low address>,<high address>,<type>
-+ *   where low/high addresses are uint64_t in hexa (feat. 0x prefix)
-+ *   and type is an unsigned integer
++ * libqos driver framework
++ *
++ * Copyright (c) 2018 Emanuele Giuseppe Esposito <e.emanuelegiuseppe@gmail=
+.com>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License version 2 as published by the Free Software Foundation.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licens=
+es/>
 + */
-+static void get_interval(Object *obj, Visitor *v, const char *name,
-+                         void *opaque, Error **errp)
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/module.h"
++#include "libqos/qgraph.h"
++#include "libqos/virtio-iommu.h"
++#include "hw/virtio/virtio-iommu.h"
++
++static QGuestAllocator *alloc;
++
++/* virtio-iommu-device */
++static void *qvirtio_iommu_get_driver(QVirtioIOMMU *v_iommu,
++                                      const char *interface)
 +{
-+    DeviceState *dev =3D DEVICE(obj);
-+    Property *prop =3D opaque;
-+    Interval *interval =3D qdev_get_prop_ptr(dev, prop);
-+    char buffer[64];
-+    char *p =3D buffer;
++    if (!g_strcmp0(interface, "virtio-iommu")) {
++        return v_iommu;
++    }
++    if (!g_strcmp0(interface, "virtio")) {
++        return v_iommu->vdev;
++    }
 +
-+    snprintf(buffer, sizeof(buffer), "0x%"PRIx64",0x%"PRIx64",%d",
-+             interval->low, interval->high, interval->type);
-+
-+    visit_type_str(v, name, &p, errp);
++    fprintf(stderr, "%s not present in virtio-iommu-device\n", interface);
++    g_assert_not_reached();
 +}
 +
-+static void set_interval(Object *obj, Visitor *v, const char *name,
-+                         void *opaque, Error **errp)
++static void *qvirtio_iommu_device_get_driver(void *object,
++                                             const char *interface)
 +{
-+    DeviceState *dev =3D DEVICE(obj);
-+    Property *prop =3D opaque;
-+    Interval *interval =3D qdev_get_prop_ptr(dev, prop);
-+    Error *local_err =3D NULL;
-+    unsigned int type;
-+    gchar **fields;
-+    uint64_t addr;
-+    char *str;
++    QVirtioIOMMUDevice *v_iommu =3D object;
++    return qvirtio_iommu_get_driver(&v_iommu->iommu, interface);
++}
++
++static void virtio_iommu_cleanup(QVirtioIOMMU *interface)
++{
++    qvirtqueue_cleanup(interface->vdev->bus, interface->vq, alloc);
++}
++
++static void virtio_iommu_setup(QVirtioIOMMU *interface)
++{
++    QVirtioDevice *vdev =3D interface->vdev;
++    uint64_t features;
++
++    features =3D qvirtio_get_features(vdev);
++    features &=3D ~(QVIRTIO_F_BAD_FEATURE |
++                  (1ull << VIRTIO_RING_F_INDIRECT_DESC) |
++                  (1ull << VIRTIO_RING_F_EVENT_IDX) |
++                  (1ull << VIRTIO_IOMMU_F_BYPASS));
++    qvirtio_set_features(vdev, features);
++    interface->vq =3D qvirtqueue_setup(interface->vdev, alloc, 0);
++    qvirtio_set_driver_ok(interface->vdev);
++}
++
++static void qvirtio_iommu_device_destructor(QOSGraphObject *obj)
++{
++    QVirtioIOMMUDevice *v_iommu =3D (QVirtioIOMMUDevice *) obj;
++    QVirtioIOMMU *iommu =3D &v_iommu->iommu;
++
++    virtio_iommu_cleanup(iommu);
++}
++
++static void qvirtio_iommu_device_start_hw(QOSGraphObject *obj)
++{
++    QVirtioIOMMUDevice *v_iommu =3D (QVirtioIOMMUDevice *) obj;
++    QVirtioIOMMU *iommu =3D &v_iommu->iommu;
++
++    virtio_iommu_setup(iommu);
++}
++
++static void *virtio_iommu_device_create(void *virtio_dev,
++                                        QGuestAllocator *t_alloc,
++                                        void *addr)
++{
++    QVirtioIOMMUDevice *virtio_rdevice =3D g_new0(QVirtioIOMMUDevice, 1);
++    QVirtioIOMMU *interface =3D &virtio_rdevice->iommu;
++
++    interface->vdev =3D virtio_dev;
++    alloc =3D t_alloc;
++
++    virtio_rdevice->obj.get_driver =3D qvirtio_iommu_device_get_driver;
++    virtio_rdevice->obj.destructor =3D qvirtio_iommu_device_destructor;
++    virtio_rdevice->obj.start_hw =3D qvirtio_iommu_device_start_hw;
++
++    return &virtio_rdevice->obj;
++}
++
++/* virtio-iommu-pci */
++static void *qvirtio_iommu_pci_get_driver(void *object, const char *interf=
+ace)
++{
++    QVirtioIOMMUPCI *v_iommu =3D object;
++    if (!g_strcmp0(interface, "pci-device")) {
++        return v_iommu->pci_vdev.pdev;
++    }
++    return qvirtio_iommu_get_driver(&v_iommu->iommu, interface);
++}
++
++static void qvirtio_iommu_pci_destructor(QOSGraphObject *obj)
++{
++    QVirtioIOMMUPCI *iommu_pci =3D (QVirtioIOMMUPCI *) obj;
++    QVirtioIOMMU *interface =3D &iommu_pci->iommu;
++    QOSGraphObject *pci_vobj =3D  &iommu_pci->pci_vdev.obj;
++
++    virtio_iommu_cleanup(interface);
++    qvirtio_pci_destructor(pci_vobj);
++}
++
++static void qvirtio_iommu_pci_start_hw(QOSGraphObject *obj)
++{
++    QVirtioIOMMUPCI *iommu_pci =3D (QVirtioIOMMUPCI *) obj;
++    QVirtioIOMMU *interface =3D &iommu_pci->iommu;
++    QOSGraphObject *pci_vobj =3D  &iommu_pci->pci_vdev.obj;
++
++    qvirtio_pci_start_hw(pci_vobj);
++    virtio_iommu_setup(interface);
++}
++
++
++static void *virtio_iommu_pci_create(void *pci_bus, QGuestAllocator *t_all=
+oc,
++                                   void *addr)
++{
++    QVirtioIOMMUPCI *virtio_rpci =3D g_new0(QVirtioIOMMUPCI, 1);
++    QVirtioIOMMU *interface =3D &virtio_rpci->iommu;
++    QOSGraphObject *obj =3D &virtio_rpci->pci_vdev.obj;
++
++    virtio_pci_init(&virtio_rpci->pci_vdev, pci_bus, addr);
++    interface->vdev =3D &virtio_rpci->pci_vdev.vdev;
++    alloc =3D t_alloc;
++
++    obj->get_driver =3D qvirtio_iommu_pci_get_driver;
++    obj->start_hw =3D qvirtio_iommu_pci_start_hw;
++    obj->destructor =3D qvirtio_iommu_pci_destructor;
++
++    return obj;
++}
++
++static void virtio_iommu_register_nodes(void)
++{
++    QPCIAddress addr =3D {
++        .devfn =3D QPCI_DEVFN(4, 0),
++    };
++
++    QOSGraphEdgeOptions opts =3D {
++        .extra_device_opts =3D "addr=3D04.0",
++    };
++
++    /* virtio-iommu-device */
++    qos_node_create_driver("virtio-iommu-device", virtio_iommu_device_crea=
+te);
++    qos_node_consumes("virtio-iommu-device", "virtio-bus", NULL);
++    qos_node_produces("virtio-iommu-device", "virtio");
++    qos_node_produces("virtio-iommu-device", "virtio-iommu");
++
++    /* virtio-iommu-pci */
++    add_qpci_address(&opts, &addr);
++    qos_node_create_driver("virtio-iommu-pci", virtio_iommu_pci_create);
++    qos_node_consumes("virtio-iommu-pci", "pci-bus", &opts);
++    qos_node_produces("virtio-iommu-pci", "pci-device");
++    qos_node_produces("virtio-iommu-pci", "virtio");
++    qos_node_produces("virtio-iommu-pci", "virtio-iommu");
++}
++
++libqos_init(virtio_iommu_register_nodes);
+diff --git a/tests/libqos/virtio-iommu.h b/tests/libqos/virtio-iommu.h
+new file mode 100644
+index 0000000000..6970b45a01
+--- /dev/null
++++ b/tests/libqos/virtio-iommu.h
+@@ -0,0 +1,45 @@
++/*
++ * libqos driver framework
++ *
++ * Copyright (c) 2018 Emanuele Giuseppe Esposito <e.emanuelegiuseppe@gmail=
+.com>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License version 2 as published by the Free Software Foundation.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licens=
+es/>
++ */
++
++#ifndef TESTS_LIBQOS_VIRTIO_IOMMU_H
++#define TESTS_LIBQOS_VIRTIO_IOMMU_H
++
++#include "libqos/qgraph.h"
++#include "libqos/virtio.h"
++#include "libqos/virtio-pci.h"
++
++typedef struct QVirtioIOMMU QVirtioIOMMU;
++typedef struct QVirtioIOMMUPCI QVirtioIOMMUPCI;
++typedef struct QVirtioIOMMUDevice QVirtioIOMMUDevice;
++
++struct QVirtioIOMMU {
++    QVirtioDevice *vdev;
++    QVirtQueue *vq;
++};
++
++struct QVirtioIOMMUPCI {
++    QVirtioPCIDevice pci_vdev;
++    QVirtioIOMMU iommu;
++};
++
++struct QVirtioIOMMUDevice {
++    QOSGraphObject obj;
++    QVirtioIOMMU iommu;
++};
++
++#endif
+diff --git a/tests/virtio-iommu-test.c b/tests/virtio-iommu-test.c
+new file mode 100644
+index 0000000000..1d93d686bc
+--- /dev/null
++++ b/tests/virtio-iommu-test.c
+@@ -0,0 +1,261 @@
++/*
++ * QTest testcase for VirtIO IOMMU
++ *
++ * Copyright (c) 2014 SUSE LINUX Products GmbH
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or late=
+r.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++#include "qemu/module.h"
++#include "libqos/qgraph.h"
++#include "libqos/virtio-iommu.h"
++#include "hw/virtio/virtio-iommu.h"
++
++#define PCI_SLOT_HP             0x06
++#define QVIRTIO_IOMMU_TIMEOUT_US (30 * 1000 * 1000)
++
++static QGuestAllocator *alloc;
++
++static void iommu_hotplug(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QVirtioPCIDevice *dev =3D obj;
++    QTestState *qts =3D dev->pdev->bus->qts;
++
++    qtest_qmp_device_add(qts, "virtio-iommu-pci", "iommu1",
++                         "{'addr': %s}", stringify(PCI_SLOT_HP));
++
++}
++
++static void pci_config(void *obj, void *data, QGuestAllocator *t_alloc)
++{
++    QVirtioIOMMU *v_iommu =3D obj;
++    QVirtioDevice *dev =3D v_iommu->vdev;
++    uint64_t input_range_start =3D qvirtio_config_readq(dev, 8);
++    uint64_t input_range_end =3D qvirtio_config_readq(dev, 16);
++    uint32_t domain_range_start =3D qvirtio_config_readl(dev, 24);
++    uint32_t domain_range_end =3D qvirtio_config_readl(dev, 28);
++    uint32_t probe_size =3D qvirtio_config_readl(dev, 32);
++
++    g_assert_cmpint(input_range_start, =3D=3D, 0);
++    g_assert_cmphex(input_range_end, =3D=3D, 0xFFFFFFFFFFFFFFFF);
++    g_assert_cmpint(domain_range_start, =3D=3D, 0);
++    g_assert_cmpint(domain_range_end, =3D=3D, 32);
++    g_assert_cmphex(probe_size, =3D=3D, 0x200);
++}
++
++/**
++ * send_attach_detach - Send an attach/detach command to the device
++ * @type: VIRTIO_IOMMU_T_ATTACH/VIRTIO_IOMMU_T_DETACH
++ * @domain: domain the end point is attached to
++ * @ep: end-point
++ */
++static int send_attach_detach(QTestState *qts, QVirtioIOMMU *v_iommu,
++                              uint8_t type, uint32_t domain, uint32_t ep)
++{
++    QVirtioDevice *dev =3D v_iommu->vdev;
++    QVirtQueue *vq =3D v_iommu->vq;
++    uint64_t ro_addr, wr_addr;
++    uint32_t free_head;
++    struct virtio_iommu_req_attach req; /* same layout as detach */
++    size_t ro_size =3D sizeof(req) - sizeof(struct virtio_iommu_req_tail);
++    size_t wr_size =3D sizeof(struct virtio_iommu_req_tail);
++    char buffer[64];
 +    int ret;
 +
-+    if (dev->realized) {
-+        qdev_prop_set_after_realize(dev, name, errp);
-+        return;
-+    }
++    req.head.type =3D type;
++    req.domain =3D domain;
++    req.endpoint =3D ep;
 +
-+    visit_type_str(v, name, &str, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
++    ro_addr =3D guest_alloc(alloc, ro_size);
++    wr_addr =3D guest_alloc(alloc, wr_size);
 +
-+    fields =3D g_strsplit(str, ",", 3);
-+
-+    ret =3D qemu_strtou64(fields[0], NULL, 16, &addr);
-+    if (!ret) {
-+        interval->low =3D addr;
-+    } else {
-+        error_setg(errp, "Failed to decode interval low addr");
-+        error_append_hint(errp,
-+                          "should be an address in hexa with 0x prefix\n")=
-;
-+        goto out;
-+    }
-+
-+    ret =3D qemu_strtou64(fields[1], NULL, 16, &addr);
-+    if (!ret) {
-+        interval->high =3D addr;
-+    } else {
-+        error_setg(errp, "Failed to decode interval high addr");
-+        error_append_hint(errp,
-+                          "should be an address in hexa with 0x prefix\n")=
-;
-+        goto out;
-+    }
-+
-+    ret =3D qemu_strtoui(fields[2], NULL, 10, &type);
-+    if (!ret) {
-+        interval->type =3D type;
-+    } else {
-+        error_setg(errp, "Failed to decode interval type");
-+        error_append_hint(errp, "should be an unsigned int in decimal\n");
-+    }
-+out:
-+    g_free(str);
-+    g_strfreev(fields);
-+    return;
++    qtest_memwrite(qts, ro_addr, &req, ro_size);
++    free_head =3D qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
++    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
++    qvirtqueue_kick(qts, dev, vq, free_head);
++    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
++                           QVIRTIO_IOMMU_TIMEOUT_US);
++    qtest_memread(qts, wr_addr, buffer, wr_size);
++    ret =3D ((struct virtio_iommu_req_tail *)buffer)->status;
++    guest_free(alloc, ro_addr);
++    guest_free(alloc, wr_addr);
++    return ret;
 +}
 +
-+const PropertyInfo qdev_prop_interval =3D {
-+    .name  =3D "labelled_interval",
-+    .description =3D "Labelled interval, example: 0xFEE00000,0xFEEFFFFF,0"=
-,
-+    .get   =3D get_interval,
-+    .set   =3D set_interval,
-+};
++/**
++ * send_map - Send a map command to the device
++ * @domain: domain the new binding is attached to
++ * @virt_start: iova start
++ * @virt_end: iova end
++ * @phys_start: base physical address
++ * @flags: mapping flags
++ */
++static int send_map(QTestState *qts, QVirtioIOMMU *v_iommu,
++                    uint32_t domain, uint64_t virt_start, uint64_t virt_en=
+d,
++                    uint64_t phys_start, uint32_t flags)
++{
++    QVirtioDevice *dev =3D v_iommu->vdev;
++    QVirtQueue *vq =3D v_iommu->vq;
++    uint64_t ro_addr, wr_addr;
++    uint32_t free_head;
++    struct virtio_iommu_req_map req;
++    size_t ro_size =3D sizeof(req) - sizeof(struct virtio_iommu_req_tail);
++    size_t wr_size =3D sizeof(struct virtio_iommu_req_tail);
++    char buffer[64];
++    int ret;
 +
- /* --- on/off/auto --- */
-=20
- const PropertyInfo qdev_prop_on_off_auto =3D {
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index e499dc215b..e238d1c352 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -57,6 +57,12 @@ struct MemoryRegionMmio {
-     CPUWriteMemoryFunc *write[3];
- };
-=20
-+struct Interval {
-+    hwaddr low;
-+    hwaddr high;
-+    unsigned int type;
-+};
++    req.head.type =3D VIRTIO_IOMMU_T_MAP;
++    req.domain =3D domain;
++    req.virt_start =3D virt_start;
++    req.virt_end =3D virt_end;
++    req.phys_start =3D phys_start;
++    req.flags =3D flags;
 +
- typedef struct IOMMUTLBEntry IOMMUTLBEntry;
-=20
- /* See address_space_translate: bit 0 is read, bit 1 is write.  */
-diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-index c6a8cb5516..2ba7c8711b 100644
---- a/include/hw/qdev-properties.h
-+++ b/include/hw/qdev-properties.h
-@@ -20,6 +20,7 @@ extern const PropertyInfo qdev_prop_chr;
- extern const PropertyInfo qdev_prop_tpm;
- extern const PropertyInfo qdev_prop_ptr;
- extern const PropertyInfo qdev_prop_macaddr;
-+extern const PropertyInfo qdev_prop_interval;
- extern const PropertyInfo qdev_prop_on_off_auto;
- extern const PropertyInfo qdev_prop_losttickpolicy;
- extern const PropertyInfo qdev_prop_blockdev_on_error;
-@@ -202,6 +203,8 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
-     DEFINE_PROP(_n, _s, _f, qdev_prop_drive_iothread, BlockBackend *)
- #define DEFINE_PROP_MACADDR(_n, _s, _f)         \
-     DEFINE_PROP(_n, _s, _f, qdev_prop_macaddr, MACAddr)
-+#define DEFINE_PROP_INTERVAL(_n, _s, _f)         \
-+    DEFINE_PROP(_n, _s, _f, qdev_prop_interval, Interval)
- #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
-     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
- #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
-diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index 375770a80f..a827c9a3fe 100644
---- a/include/qemu/typedefs.h
-+++ b/include/qemu/typedefs.h
-@@ -58,6 +58,7 @@ typedef struct ISABus ISABus;
- typedef struct ISADevice ISADevice;
- typedef struct IsaDma IsaDma;
- typedef struct MACAddr MACAddr;
-+typedef struct Interval Interval;
- typedef struct MachineClass MachineClass;
- typedef struct MachineState MachineState;
- typedef struct MemoryListener MemoryListener;
++    ro_addr =3D guest_alloc(alloc, ro_size);
++    wr_addr =3D guest_alloc(alloc, wr_size);
++
++    qtest_memwrite(qts, ro_addr, &req, ro_size);
++    free_head =3D qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
++    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
++    qvirtqueue_kick(qts, dev, vq, free_head);
++    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
++                           QVIRTIO_IOMMU_TIMEOUT_US);
++    memread(wr_addr, buffer, wr_size);
++    ret =3D ((struct virtio_iommu_req_tail *)buffer)->status;
++    guest_free(alloc, ro_addr);
++    guest_free(alloc, wr_addr);
++    return ret;
++}
++
++/**
++ * send_unmap - Send an unmap command to the device
++ * @domain: domain the new binding is attached to
++ * @virt_start: iova start
++ * @virt_end: iova end
++ */
++static int send_unmap(QTestState *qts, QVirtioIOMMU *v_iommu,
++                      uint32_t domain, uint64_t virt_start, uint64_t virt_=
+end)
++{
++    QVirtioDevice *dev =3D v_iommu->vdev;
++    QVirtQueue *vq =3D v_iommu->vq;
++    uint64_t ro_addr, wr_addr;
++    uint32_t free_head;
++    struct virtio_iommu_req_unmap req;
++    size_t ro_size =3D sizeof(req) - sizeof(struct virtio_iommu_req_tail);
++    size_t wr_size =3D sizeof(struct virtio_iommu_req_tail);
++    char buffer[64];
++    int ret;
++
++    req.head.type =3D VIRTIO_IOMMU_T_UNMAP;
++    req.domain =3D domain;
++    req.virt_start =3D virt_start;
++    req.virt_end =3D virt_end;
++
++    ro_addr =3D guest_alloc(alloc, ro_size);
++    wr_addr =3D guest_alloc(alloc, wr_size);
++
++    qtest_memwrite(qts, ro_addr, &req, ro_size);
++    free_head =3D qvirtqueue_add(qts, vq, ro_addr, ro_size, false, true);
++    qvirtqueue_add(qts, vq, wr_addr, wr_size, true, false);
++    qvirtqueue_kick(qts, dev, vq, free_head);
++    qvirtio_wait_used_elem(qts, dev, vq, free_head, NULL,
++                           QVIRTIO_IOMMU_TIMEOUT_US);
++    memread(wr_addr, buffer, wr_size);
++    ret =3D ((struct virtio_iommu_req_tail *)buffer)->status;
++    guest_free(alloc, ro_addr);
++    guest_free(alloc, wr_addr);
++    return ret;
++}
++
++/* Test unmap scenari documented in the spec v0.12 */
++static void test_attach_detach(void *obj, void *data, QGuestAllocator *t_a=
+lloc)
++{
++    QVirtioIOMMU *v_iommu =3D obj;
++    QTestState *qts =3D global_qtest;
++    int ret;
++
++    alloc =3D t_alloc;
++
++    /* type, domain, ep */
++    ret =3D send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 0);
++    g_assert_cmpint(ret, =3D=3D, 0);
++    ret =3D send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 2);
++    g_assert_cmpint(ret, =3D=3D, 0);
++    ret =3D send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 1, 2);
++    g_assert_cmpint(ret, =3D=3D, 0);
++    ret =3D send_attach_detach(qts, v_iommu, VIRTIO_IOMMU_T_ATTACH, 0, 2);
++    g_assert_cmpint(ret, =3D=3D, 0);
++
++    /* domain, virt start, virt end, phys start, flags */
++    ret =3D send_map(qts, v_iommu, 0, 0, 0xFFF, 0xa1000, VIRTIO_IOMMU_MAP_=
+F_READ);
++    g_assert_cmpint(ret, =3D=3D, 0);
++
++    ret =3D send_unmap(qts, v_iommu, 4, 0x10, 0xFFF);
++    g_assert_cmpint(ret, =3D=3D, VIRTIO_IOMMU_S_NOENT);
++
++    ret =3D send_unmap(qts, v_iommu, 0, 0x10, 0xFFF);
++    g_assert_cmpint(ret, =3D=3D, VIRTIO_IOMMU_S_RANGE);
++
++    /* Spec example sequence */
++
++    /* 1 */
++    ret =3D send_unmap(qts, v_iommu, 1, 0, 4);
++    g_assert_cmpint(ret, =3D=3D, 0); /* doesn't unmap anything */
++
++    /* 2 */
++    send_map(qts, v_iommu, 1, 0, 9, 0xa1000, VIRTIO_IOMMU_MAP_F_READ);
++    ret =3D send_unmap(qts, v_iommu, 1, 0, 9);
++    g_assert_cmpint(ret, =3D=3D, 0); /* unmaps [0,9] */
++
++    /* 3 */
++    send_map(qts, v_iommu, 1, 0, 4, 0xb1000, VIRTIO_IOMMU_MAP_F_READ);
++    send_map(qts, v_iommu, 1, 5, 9, 0xb2000, VIRTIO_IOMMU_MAP_F_READ);
++    ret =3D send_unmap(qts, v_iommu, 1, 0, 9);
++    g_assert_cmpint(ret, =3D=3D, 0); /* unmaps [0,4] and [5,9] */
++
++    /* 4 */
++    send_map(qts, v_iommu, 1, 0, 9, 0xc1000, VIRTIO_IOMMU_MAP_F_READ);
++    ret =3D send_unmap(qts, v_iommu, 1, 0, 4);
++    g_assert_cmpint(ret, =3D=3D, VIRTIO_IOMMU_S_RANGE); /* doesn't unmap a=
+nything */
++
++    ret =3D send_unmap(qts, v_iommu, 1, 0, 10);
++    g_assert_cmpint(ret, =3D=3D, 0);
++
++    /* 5 */
++    send_map(qts, v_iommu, 1, 0, 4, 0xd1000, VIRTIO_IOMMU_MAP_F_READ);
++    send_map(qts, v_iommu, 1, 5, 9, 0xd2000, VIRTIO_IOMMU_MAP_F_READ);
++    ret =3D send_unmap(qts, v_iommu, 1, 0, 4);
++    g_assert_cmpint(ret, =3D=3D, 0); /* unmaps [0,4] */
++
++    ret =3D send_unmap(qts, v_iommu, 1, 5, 9);
++    g_assert_cmpint(ret, =3D=3D, 0);
++
++    /* 6 */
++    send_map(qts, v_iommu, 1, 0, 4, 0xe2000, VIRTIO_IOMMU_MAP_F_READ);
++    ret =3D send_unmap(qts, v_iommu, 1, 0, 9);
++    g_assert_cmpint(ret, =3D=3D, 0); /* unmaps [0,4] */
++
++    /* 7 */
++    send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
++    send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
++    ret =3D send_unmap(qts, v_iommu, 1, 0, 14);
++    g_assert_cmpint(ret, =3D=3D, 0); /* unmaps [0,4] and [10,14] */
++
++    send_unmap(qts, v_iommu, 1, 0, 100);
++    send_map(qts, v_iommu, 1, 10, 14, 0xf3000, VIRTIO_IOMMU_MAP_F_READ);
++    send_map(qts, v_iommu, 1, 0, 4, 0xf2000, VIRTIO_IOMMU_MAP_F_READ);
++    ret =3D send_unmap(qts, v_iommu, 1, 0, 4);
++    g_assert_cmpint(ret, =3D=3D, 0); /* unmaps [0,4] and [10,14] */
++}
++
++static void register_virtio_iommu_test(void)
++{
++    qos_add_test("hotplug", "virtio-iommu-pci", iommu_hotplug, NULL);
++    qos_add_test("config", "virtio-iommu", pci_config, NULL);
++    qos_add_test("attach_detach", "virtio-iommu", test_attach_detach, NULL=
+);
++}
++
++libqos_init(register_virtio_iommu_test);
 --=20
 2.20.1
 

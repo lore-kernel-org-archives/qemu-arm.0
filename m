@@ -1,317 +1,147 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp756349lfc;
-        Fri, 22 Nov 2019 11:04:51 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyu7Io0sjmxZxahG5KgIMqIqjjTTR19nWPnotQMoRxIZ3BcypmcBz2jUG1pVNNrwloj7LBi
-X-Received: by 2002:a17:906:404d:: with SMTP id y13mr24454552ejj.276.1574449491280;
-        Fri, 22 Nov 2019 11:04:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574449491; cv=none;
-        d=google.com; s=arc-20160816;
-        b=0lciqzofALuZ2JbKGMR9skIp+gvk/2sg/xFhZqZ4L3/uS93ldV+MdIQ2xZH6sXOdhI
-         iYlgIi+UzkYUy+5RfLmO6Ea4Wf8NLEFzhq1njb06ES1yghZMiny1CmNF3YJSsta0jf/3
-         h1VvLDU1S+wzSy28jhMpr92OXG7M7c99h56tS4VplXQtVc0UR5GdDRblwFM7rvdECYXe
-         w65zP8YwmPy7qTqKgMq4Pwgaai99KiHXA8N1UQ5iuGoVIwNf55UYqOJGUFhHz0xIG/aS
-         rqSbsnTtnTkpGGL55vuNPmYq2JjzXRrLdlY2cpI7UjEamNopHQW8fg+wDRH3cILOvTzX
-         ho/Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=9ZtDMnAaJ6tfi/HjI8JF5OOd9hEr549YpG3sEbuiL5g=;
-        b=B64asII9lFrvbHnYnrwZ0gaLDuEDJgJ+8li5+BboRalWz9inNtZAKNnI9YTcLCB+90
-         ui/rzR0Pdn6226+1+wEcE7/5gz7p5Aw5tANca3nj0S/X0dcqPrubhZ11kjtCUdi0lI/v
-         jYLyeCC/w3xLVEq9Az/OBKWsJOIAR02kNnrZzj5sLIfBimOh0vzz+07M8CUagcQbvYov
-         CqPW2UuaSnCm2pSjA5il7IDrANO3nPY5WrDY7p4P7F9f24oxThZ4R7H2Y0eColGZtsw+
-         yoJ5AXHaLNnryjO7klvsGQXFiLTWUg+4M47tB6yRJiIfE5HMkPrzjdIP4q2EwtYBH7x5
-         jYKg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ASOmHRo7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp939971lfc;
+        Fri, 22 Nov 2019 13:57:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxTGrtGsmHmgzz46ZLD7v9sW61sqy80mmFVWEKZX6igN7Zje4RVLCpx6AL4OQVM7vGOZW/l
+X-Received: by 2002:a0c:c68d:: with SMTP id d13mr6178754qvj.141.1574459869574;
+        Fri, 22 Nov 2019 13:57:49 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ks15si5068034ejb.133.2019.11.22.11.04.51
+        by mx.google.com with ESMTPS id l48si931410qtf.96.2019.11.22.13.57.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Nov 2019 11:04:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Nov 2019 13:57:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ASOmHRo7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54470 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55140 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iYEEb-0007oa-Uq
-	for alex.bennee@linaro.org; Fri, 22 Nov 2019 14:04:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44617)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iYGw0-0006FS-W8
+	for alex.bennee@linaro.org; Fri, 22 Nov 2019 16:57:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38585)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1iYEDz-0007o3-Is
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 14:04:14 -0500
+ (envelope-from <no-reply@patchew.org>) id 1iYGur-0005f7-Km
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2019 16:56:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1iYEDw-0002Qc-SI
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 14:04:10 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25895
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1iYEDt-0002Pf-KR
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 14:04:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574449444;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9ZtDMnAaJ6tfi/HjI8JF5OOd9hEr549YpG3sEbuiL5g=;
- b=ASOmHRo7q6uvbjtpINXJ0SfgJRuzk2qveWYSDpevNViAWNGS5ZQH5krt9upwGbIkoHgWUw
- a2lDodvNu91uSILalsNN9Np00glu77vI0orPzHozogvrlCzq4d0LJNeg6LOjwEoW51wCYg
- I+R6n06H0MWTv3FkbhOsrrUoqNzBlX0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-219-euji1tPHNV6dIL6t26KjeQ-1; Fri, 22 Nov 2019 14:04:03 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 20C3F107ACC5;
- Fri, 22 Nov 2019 19:04:01 +0000 (UTC)
-Received: from work-vm (unknown [10.36.118.18])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 76FAB5890;
- Fri, 22 Nov 2019 19:03:45 +0000 (UTC)
-Date: Fri, 22 Nov 2019 19:03:43 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH for-5.0 v11 12/20] qapi: Introduce DEFINE_PROP_INTERVAL
-Message-ID: <20191122190343.GP2785@work-vm>
-References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-13-eric.auger@redhat.com>
+ (envelope-from <no-reply@patchew.org>) id 1iYGup-000145-So
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2019 16:56:37 -0500
+Resent-Date: Fri, 22 Nov 2019 16:56:37 -0500
+Resent-Message-Id: <E1iYGup-000145-So@eggs.gnu.org>
+Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21828)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iYGup-00013n-Jz; Fri, 22 Nov 2019 16:56:35 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1574459775; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=gIHV0GOFPPDwgggjXTyREtuc5zK5BppoUU7XQJXWmU61c1gyIewxTu3yDgCEVTSU/aRKODcwz/gq6Ma5+URJd3gzLc6eMm7eUxH25ZOQglLajFvzI/VI+0j+nHclgCnVjxX6gnpcAELt4caEkJ2bYeeDHuzUW+X5p7TYt5Sc4Hs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1574459775;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=Aopdlnxyd+Q62iFdgjjobbRZv2KIaehJuQW03tduVIk=; 
+ b=a6TO2W4sKuuYW/1YWLsTDEBQgjXkJChtFRnbS7zOF5D/8ydKKPqeb57BobsnB4t6CBqLIrkvzSkFYy3hR05ABkQnRcH3NUHW8doB7QKUXP+/3QX2kSPlUilB8YWbuhFlQni1/GI4Xdk1lB/4Wh6AHlM3cRKCOHReRpzRxYIHlzI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1574459774321303.30069052499914;
+ Fri, 22 Nov 2019 13:56:14 -0800 (PST)
+In-Reply-To: <20191122182943.4656-1-eric.auger@redhat.com>
+Subject: Re: [PATCH for-5.0 v11 00/20] VIRTIO-IOMMU device
+Message-ID: <157445977223.7001.2372720475649008814@37313f22b938>
 MIME-Version: 1.0
-In-Reply-To: <20191122182943.4656-13-eric.auger@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: euji1tPHNV6dIL6t26KjeQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: eric.auger@redhat.com
+Date: Fri, 22 Nov 2019 13:56:14 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 136.143.188.58
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
 Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
  tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
  quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
- armbru@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AKBeck2qc+2C
+ armbru@redhat.com, eric.auger@redhat.com, bharatb.linux@gmail.com,
+ qemu-arm@nongnu.org, dgilbert@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vGrkuaWSSUCX
 
-* Eric Auger (eric.auger@redhat.com) wrote:
-> Introduce a new property defining a labelled interval:
-> <low address>,<high address>,label.
->=20
-> This will be used to encode reserved IOVA regions. The label
-> is left undefined to ease reuse accross use cases.
->=20
-> For instance, in virtio-iommu use case, reserved IOVA regions
-> will be passed by the machine code to the virtio-iommu-pci
-> device (an array of those). The label will match the
-> virtio_iommu_probe_resv_mem subtype value:
-> - VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
-> - VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
->=20
-> This is used to inform the virtio-iommu-pci device it should
-> bypass the MSI region: 0xfee00000, 0xfeefffff, 1.
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/core/qdev-properties.c    | 90 ++++++++++++++++++++++++++++++++++++
->  include/exec/memory.h        |  6 +++
->  include/hw/qdev-properties.h |  3 ++
->  include/qemu/typedefs.h      |  1 +
->  4 files changed, 100 insertions(+)
->=20
-> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-> index ac28890e5a..8d70f34e37 100644
-> --- a/hw/core/qdev-properties.c
-> +++ b/hw/core/qdev-properties.c
-> @@ -13,6 +13,7 @@
->  #include "qapi/visitor.h"
->  #include "chardev/char.h"
->  #include "qemu/uuid.h"
-> +#include "qemu/cutils.h"
-> =20
->  void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
->                                    Error **errp)
-> @@ -585,6 +586,95 @@ const PropertyInfo qdev_prop_macaddr =3D {
->      .set   =3D set_mac,
->  };
-> =20
-> +/* --- Labelled Interval --- */
-> +
-> +/*
-> + * accepted syntax versions:
-> + *   <low address>,<high address>,<type>
-> + *   where low/high addresses are uint64_t in hexa (feat. 0x prefix)
-> + *   and type is an unsigned integer
-> + */
-> +static void get_interval(Object *obj, Visitor *v, const char *name,
-> +                         void *opaque, Error **errp)
-> +{
-> +    DeviceState *dev =3D DEVICE(obj);
-> +    Property *prop =3D opaque;
-> +    Interval *interval =3D qdev_get_prop_ptr(dev, prop);
-> +    char buffer[64];
-> +    char *p =3D buffer;
-> +
-> +    snprintf(buffer, sizeof(buffer), "0x%"PRIx64",0x%"PRIx64",%d",
-> +             interval->low, interval->high, interval->type);
-> +
-> +    visit_type_str(v, name, &p, errp);
-> +}
-> +
-> +static void set_interval(Object *obj, Visitor *v, const char *name,
-> +                         void *opaque, Error **errp)
-> +{
-> +    DeviceState *dev =3D DEVICE(obj);
-> +    Property *prop =3D opaque;
-> +    Interval *interval =3D qdev_get_prop_ptr(dev, prop);
-> +    Error *local_err =3D NULL;
-> +    unsigned int type;
-> +    gchar **fields;
-> +    uint64_t addr;
-> +    char *str;
-> +    int ret;
-> +
-> +    if (dev->realized) {
-> +        qdev_prop_set_after_realize(dev, name, errp);
-> +        return;
-> +    }
-> +
-> +    visit_type_str(v, name, &str, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
-> +
-> +    fields =3D g_strsplit(str, ",", 3);
-> +
-> +    ret =3D qemu_strtou64(fields[0], NULL, 16, &addr);
-> +    if (!ret) {
-> +        interval->low =3D addr;
-> +    } else {
-> +        error_setg(errp, "Failed to decode interval low addr");
-> +        error_append_hint(errp,
-> +                          "should be an address in hexa with 0x prefix\n=
-");
-> +        goto out;
-> +    }
-> +
-> +    ret =3D qemu_strtou64(fields[1], NULL, 16, &addr);
-> +    if (!ret) {
-> +        interval->high =3D addr;
-> +    } else {
-> +        error_setg(errp, "Failed to decode interval high addr");
-> +        error_append_hint(errp,
-> +                          "should be an address in hexa with 0x prefix\n=
-");
-> +        goto out;
-> +    }
-> +
-> +    ret =3D qemu_strtoui(fields[2], NULL, 10, &type);
-> +    if (!ret) {
-> +        interval->type =3D type;
-> +    } else {
-> +        error_setg(errp, "Failed to decode interval type");
-> +        error_append_hint(errp, "should be an unsigned int in decimal\n"=
-);
-> +    }
-> +out:
-> +    g_free(str);
-> +    g_strfreev(fields);
-> +    return;
-> +}
-> +
-> +const PropertyInfo qdev_prop_interval =3D {
-> +    .name  =3D "labelled_interval",
-> +    .description =3D "Labelled interval, example: 0xFEE00000,0xFEEFFFFF,=
-0",
-> +    .get   =3D get_interval,
-> +    .set   =3D set_interval,
-> +};
-> +
->  /* --- on/off/auto --- */
-> =20
->  const PropertyInfo qdev_prop_on_off_auto =3D {
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index e499dc215b..e238d1c352 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -57,6 +57,12 @@ struct MemoryRegionMmio {
->      CPUWriteMemoryFunc *write[3];
->  };
-> =20
-> +struct Interval {
-> +    hwaddr low;
-> +    hwaddr high;
-> +    unsigned int type;
-> +};
-> +
-
-Just an observation that 'Interval' is a very generic name.
-We've got 'AddrRange' but that's Int128.
-
-Dave
-
->  typedef struct IOMMUTLBEntry IOMMUTLBEntry;
-> =20
->  /* See address_space_translate: bit 0 is read, bit 1 is write.  */
-> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-> index c6a8cb5516..2ba7c8711b 100644
-> --- a/include/hw/qdev-properties.h
-> +++ b/include/hw/qdev-properties.h
-> @@ -20,6 +20,7 @@ extern const PropertyInfo qdev_prop_chr;
->  extern const PropertyInfo qdev_prop_tpm;
->  extern const PropertyInfo qdev_prop_ptr;
->  extern const PropertyInfo qdev_prop_macaddr;
-> +extern const PropertyInfo qdev_prop_interval;
->  extern const PropertyInfo qdev_prop_on_off_auto;
->  extern const PropertyInfo qdev_prop_losttickpolicy;
->  extern const PropertyInfo qdev_prop_blockdev_on_error;
-> @@ -202,6 +203,8 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
->      DEFINE_PROP(_n, _s, _f, qdev_prop_drive_iothread, BlockBackend *)
->  #define DEFINE_PROP_MACADDR(_n, _s, _f)         \
->      DEFINE_PROP(_n, _s, _f, qdev_prop_macaddr, MACAddr)
-> +#define DEFINE_PROP_INTERVAL(_n, _s, _f)         \
-> +    DEFINE_PROP(_n, _s, _f, qdev_prop_interval, Interval)
->  #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
->      DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
->  #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
-> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-> index 375770a80f..a827c9a3fe 100644
-> --- a/include/qemu/typedefs.h
-> +++ b/include/qemu/typedefs.h
-> @@ -58,6 +58,7 @@ typedef struct ISABus ISABus;
->  typedef struct ISADevice ISADevice;
->  typedef struct IsaDma IsaDma;
->  typedef struct MACAddr MACAddr;
-> +typedef struct Interval Interval;
->  typedef struct MachineClass MachineClass;
->  typedef struct MachineState MachineState;
->  typedef struct MemoryListener MemoryListener;
-> --=20
-> 2.20.1
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEyMjE4Mjk0My40NjU2
+LTEtZXJpYy5hdWdlckByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUg
+ZG9ja2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBj
+b21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFs
+bGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NS
+SVBUIEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9ja2Vy
+LWltYWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5nd0Bm
+ZWRvcmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgQ0MgICAgICB4
+ODZfNjQtc29mdG1tdS9ody92aXJ0aW8vdmlydGlvLXNjc2ktcGNpLm8KICBDQyAgICAgIHg4Nl82
+NC1zb2Z0bW11L2h3L3ZpcnRpby92aXJ0aW8tYmxrLXBjaS5vCi90bXAvcWVtdS10ZXN0L3NyYy9o
+dy92aXJ0aW8vdmlydGlvLWlvbW11LmM6IEluIGZ1bmN0aW9uICdpbnRfY21wJzoKL3RtcC9xZW11
+LXRlc3Qvc3JjL2h3L3ZpcnRpby92aXJ0aW8taW9tbXUuYzo2OTc6NTogZXJyb3I6IHVua25vd24g
+dHlwZSBuYW1lICd1aW50JzsgZGlkIHlvdSBtZWFuICdndWludCc/CiAgICAgdWludCB1YSA9IEdQ
+T0lOVEVSX1RPX1VJTlQoYSk7CiAgICAgXn5+fgogICAgIGd1aW50Ci90bXAvcWVtdS10ZXN0L3Ny
+Yy9ody92aXJ0aW8vdmlydGlvLWlvbW11LmM6Njk4OjU6IGVycm9yOiB1bmtub3duIHR5cGUgbmFt
+ZSAndWludCc7IGRpZCB5b3UgbWVhbiAnZ3VpbnQnPwogICAgIHVpbnQgdWIgPSBHUE9JTlRFUl9U
+T19VSU5UKGIpOwogICAgIF5+fn4KICAgICBndWludAptYWtlWzFdOiAqKiogWy90bXAvcWVtdS10
+ZXN0L3NyYy9ydWxlcy5tYWs6Njk6IGh3L3ZpcnRpby92aXJ0aW8taW9tbXUub10gRXJyb3IgMQpt
+YWtlWzFdOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgogIENDICAgICAgYWFy
+Y2g2NC1zb2Z0bW11L2FjY2VsL3RjZy90Y2ctcnVudGltZS5vCiAgQ0MgICAgICBhYXJjaDY0LXNv
+ZnRtbXUvYWNjZWwvdGNnL3RjZy1ydW50aW1lLWd2ZWMubwotLS0KICBDQyAgICAgIGFhcmNoNjQt
+c29mdG1tdS9ody9ibG9jay9kYXRhcGxhbmUvdmlydGlvLWJsay5vCiAgQ0MgICAgICBhYXJjaDY0
+LXNvZnRtbXUvaHcvY2hhci9leHlub3M0MjEwX3VhcnQubwogIENDICAgICAgYWFyY2g2NC1zb2Z0
+bW11L2h3L2NoYXIvb21hcF91YXJ0Lm8KbWFrZTogKioqIFtNYWtlZmlsZTo0OTE6IHg4Nl82NC1z
+b2Z0bW11L2FsbF0gRXJyb3IgMgptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2Jz
+Li4uLgogIENDICAgICAgYWFyY2g2NC1zb2Z0bW11L2h3L2NoYXIvZGlnaWMtdWFydC5vCiAgQ0Mg
+ICAgICBhYXJjaDY0LXNvZnRtbXUvaHcvY2hhci9zdG0zMmYyeHhfdXNhcnQubwotLS0KICBDQyAg
+ICAgIGFhcmNoNjQtc29mdG1tdS9ody9hcm0vYm9vdC5vCiAgQ0MgICAgICBhYXJjaDY0LXNvZnRt
+bXUvaHcvYXJtL3N5c2J1cy1mZHQubwovdG1wL3FlbXUtdGVzdC9zcmMvaHcvdmlydGlvL3ZpcnRp
+by1pb21tdS5jOiBJbiBmdW5jdGlvbiAnaW50X2NtcCc6Ci90bXAvcWVtdS10ZXN0L3NyYy9ody92
+aXJ0aW8vdmlydGlvLWlvbW11LmM6Njk3OjU6IGVycm9yOiB1bmtub3duIHR5cGUgbmFtZSAndWlu
+dCc7IGRpZCB5b3UgbWVhbiAnZ3VpbnQnPwogICAgIHVpbnQgdWEgPSBHUE9JTlRFUl9UT19VSU5U
+KGEpOwogICAgIF5+fn4KICAgICBndWludAovdG1wL3FlbXUtdGVzdC9zcmMvaHcvdmlydGlvL3Zp
+cnRpby1pb21tdS5jOjY5ODo1OiBlcnJvcjogdW5rbm93biB0eXBlIG5hbWUgJ3VpbnQnOyBkaWQg
+eW91IG1lYW4gJ2d1aW50Jz8KICAgICB1aW50IHViID0gR1BPSU5URVJfVE9fVUlOVChiKTsKICAg
+ICBefn5+CiAgICAgZ3VpbnQKbWFrZVsxXTogKioqIFsvdG1wL3FlbXUtdGVzdC9zcmMvcnVsZXMu
+bWFrOjY5OiBody92aXJ0aW8vdmlydGlvLWlvbW11Lm9dIEVycm9yIDEKbWFrZVsxXTogKioqIFdh
+aXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4KbWFrZTogKioqIFtNYWtlZmlsZTo0OTE6IGFh
+cmNoNjQtc29mdG1tdS9hbGxdIEVycm9yIDIKVHJhY2ViYWNrIChtb3N0IHJlY2VudCBjYWxsIGxh
+c3QpOgogIEZpbGUgIi4vdGVzdHMvZG9ja2VyL2RvY2tlci5weSIsIGxpbmUgNjYyLCBpbiA8bW9k
+dWxlPgogICAgc3lzLmV4aXQobWFpbigpKQotLS0KICAgIHJhaXNlIENhbGxlZFByb2Nlc3NFcnJv
+cihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5kICdb
+J3N1ZG8nLCAnLW4nLCAnZG9ja2VyJywgJ3J1bicsICctLWxhYmVsJywgJ2NvbS5xZW11Lmluc3Rh
+bmNlLnV1aWQ9MDI4ZGYzMzI1ZDdjNDkyN2ExYzMzNDA0MDAxNjcyOGYnLCAnLXUnLCAnMTAwMycs
+ICctLXNlY3VyaXR5LW9wdCcsICdzZWNjb21wPXVuY29uZmluZWQnLCAnLS1ybScsICctZScsICdU
+QVJHRVRfTElTVD0nLCAnLWUnLCAnRVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9Jywg
+Jy1lJywgJ0o9MTQnLCAnLWUnLCAnREVCVUc9JywgJy1lJywgJ1NIT1dfRU5WPScsICctZScsICdD
+Q0FDSEVfRElSPS92YXIvdG1wL2NjYWNoZScsICctdicsICcvaG9tZS9wYXRjaGV3Mi8uY2FjaGUv
+cWVtdS1kb2NrZXItY2NhY2hlOi92YXIvdG1wL2NjYWNoZTp6JywgJy12JywgJy92YXIvdG1wL3Bh
+dGNoZXctdGVzdGVyLXRtcC1jdXRoYnVkZS9zcmMvZG9ja2VyLXNyYy4yMDE5LTExLTIyLTE2LjQ5
+LjUyLjUyMTA6L3Zhci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6ZmVkb3JhJywgJy92YXIvdG1wL3Fl
+bXUvcnVuJywgJ3Rlc3QtbWluZ3cnXScgcmV0dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4K
+ZmlsdGVyPS0tZmlsdGVyPWxhYmVsPWNvbS5xZW11Lmluc3RhbmNlLnV1aWQ9MDI4ZGYzMzI1ZDdj
+NDkyN2ExYzMzNDA0MDAxNjcyOGYKbWFrZVsxXTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1h
+a2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtY3V0
+aGJ1ZGUvc3JjJwptYWtlOiAqKiogW2RvY2tlci1ydW4tdGVzdC1taW5nd0BmZWRvcmFdIEVycm9y
+IDIKCnJlYWwgICAgNm0yMS4wMTJzCnVzZXIgICAgMG04LjMxOXMKCgpUaGUgZnVsbCBsb2cgaXMg
+YXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkxMTIyMTgyOTQzLjQ2NTYt
+MS1lcmljLmF1Z2VyQHJlZGhhdC5jb20vdGVzdGluZy5kb2NrZXItbWluZ3dAZmVkb3JhLz90eXBl
+PW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFto
+dHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hl
+dy1kZXZlbEByZWRoYXQuY29t
 

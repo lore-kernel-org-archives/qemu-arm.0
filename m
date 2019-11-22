@@ -1,102 +1,103 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp725577lfc;
-        Fri, 22 Nov 2019 10:36:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwA+XAZ0x1xyboYHWDEPnLjqVUSygWlcyjT8Yga2RO/FHVAkXSZFrMrM1TyaGNm8uB+kL+s
-X-Received: by 2002:a17:906:3919:: with SMTP id f25mr24097754eje.210.1574447771694;
-        Fri, 22 Nov 2019 10:36:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574447771; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp725662lfc;
+        Fri, 22 Nov 2019 10:36:17 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzbMHcff9sMntGkTj2jEkvquz65A5MzTAv9zRUlWkWkPaC7GpbUpZ+dGDohc4Fym2ayu9yH
+X-Received: by 2002:a50:9316:: with SMTP id m22mr2879776eda.39.1574447777288;
+        Fri, 22 Nov 2019 10:36:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574447777; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nz7V9SU4+xVuaK+QwfZxi4E4CtMaeH91Pavk9HXkGha08U0rfc+k0Utz0NiZ99JUul
-         WYOl3knbFmRam3g8yOaegru3e3IwKtFk6GyAv4hPaNQnYXm/QRr1BxP8v629nv2hgMnE
-         CMwm33CFoom3ZXYMVL0ZVfCshXRWs85OV6WiTyZe8477IzUz39o0pkmaPrK7D4pOg4KR
-         Dzptl8VxnzM7Z1z9rkB+VcWO21s4eF1qK3cuGpFHL2WP72hrbOOKl7vjp/cb/13ntKjJ
-         l2YBG5pM0qfHQXBIZrgyNQpX1o1WpOq5VPtcKT5jERYIQmbfsgP/Ecsv5dRGjI0Izgvy
-         C1qg==
+        b=VpUI7E2GtqcowfdKZm9/2tQTtkv+fcfVWXSIxdScr9ASVuIgAf6Go8gnpvyhgn0RAD
+         riyaFNn/cRbLLKYg3bRzCX/HbVHH4dgYrMc0YP9Wh9FwET9xLq51UXRIKtwE0Y/gMiJ0
+         /RdQo91dqyMzhz2Y9WlQkhyHhoQ+Hhg3wtV1ua0RsZ53wjCv/yIGsmzUY7NVAMpRCxNP
+         UFNKQBb5Emoc8on6rOksTL33m4t7FEUL3znSNv+Y/jQmKBL5Xcj0SLzsJ9qY2+9LnbMG
+         /TNp0HyAzeA08Lo2t1x29Lst7ROWi+D4f1/iSh1CHcSQzXkV573SI5mfWIU2SKhOpNHE
+         iypQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8hhhgWsyNc3pla/vGmQZILIxsZVrcOAjmqOxlbdFndM=;
-        b=aZxuCgDraYYY64oT4lx3bdRTRxfkK+JJMd1nUtiJLAzStbOP0Li6Rs+7uH8PknM2ZU
-         aOED8rYzbFNGEyruufULRoAQhiMnf9LUr/9l+X74iTgUT1bifRgEK8p1xB34SJk9wqnQ
-         BGQEROnASFJrZs5avFtLx3gfoDYA9SNX+cPBruO39Pw3Pp+z9nRme1bLkh4ZASSGFEQC
-         sytxApnIz2Q9LOIc6wZPQu/KPFOmNxMQIST9KvbXYvQA/ONECo8MJiDAk73GKr9D28UR
-         WOZ5TXDlWsd1D0mZIRg2EwxUODS3//AZowxyx9jR5yoB25eRz2rUADl7VTPDikjJLVNg
-         KoUA==
+        bh=R0ACkwGHuTAl+zNilTLyl19bEIp0WiTEJD5IwjDPAak=;
+        b=OSDxn0c1lehUnQF9aIuhz91A2WcgJGi1dLwaWqznZf7KQx8HyzfDR12pBl8fWOTjlQ
+         zNHmCdEd+bqWSwchQ9cuYwoV9HJX0teBBfionVb/ogzWVzvOFs6x1bgE1uJrK7TPDi93
+         A4DF3v0xH47Upcx4NkLS4kSNhMw3qy5Ghsk4AVcexlFOik3ONNYnWXBqoH+ddpYQHkvp
+         kmMsnu1EoyxFwydwMnfGedBc+Flrw5hSiPDGVfyO9Kqzz5ZtN7yB/PaqXQheRHqLJL6i
+         tKp+R129lNEP3slNgqPpxNP+YH/9mT0lEOpwXtgPcrPXee5odi/tca5AxoK/Ro9A93il
+         b3DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T30Ea0E7;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D61oZeyY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id sd11si3144482ejb.368.2019.11.22.10.36.11
+        by mx.google.com with ESMTPS id o17si1657743edv.258.2019.11.22.10.36.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Nov 2019 10:36:11 -0800 (PST)
+        Fri, 22 Nov 2019 10:36:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T30Ea0E7;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D61oZeyY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54114 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54118 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iYDms-0004r3-5J
-	for alex.bennee@linaro.org; Fri, 22 Nov 2019 13:36:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39662)
+	id 1iYDmx-00056J-R4
+	for alex.bennee@linaro.org; Fri, 22 Nov 2019 13:36:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39766)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iYDhP-000868-Nf
- for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:30:34 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iYDhl-0008H7-Bu
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:30:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iYDhN-0008NY-Sp
- for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:30:31 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:49315
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1iYDhk-0000AU-5e
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:30:53 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:37035
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iYDhN-0008Mz-OC
- for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:30:29 -0500
+ id 1iYDhk-0000AG-1j
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2019 13:30:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574447429;
+ s=mimecast20190719; t=1574447451;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8hhhgWsyNc3pla/vGmQZILIxsZVrcOAjmqOxlbdFndM=;
- b=T30Ea0E7HqtkIRisBXCLVmac7edfsyDVylsQg9/Jh3aTQ9Gsxs43oQQOJO65/uk1NwIZRS
- xPudb1wbYbPXpFOqUJ08G+HfhPSqIngVAz9thf6LlVSakAziHNjkLFfy8gs4jCDPK1dv8d
- CDUrlNznaQXNEuFS5Gg7/6b7aoora0E=
+ bh=R0ACkwGHuTAl+zNilTLyl19bEIp0WiTEJD5IwjDPAak=;
+ b=D61oZeyYQm9gMOn11DMZ5yzgxvJRXJEO5Ed1v5DowR3+8VdfPUR7/O9t2cUiAXErtP2AaZ
+ ddcjNQpYKnFi+OKutLb7MVN/1Z5Ks0r8MBFQvDCUHbPE/asjRNbbk6YoV6I7Jc6/Lvkwrk
+ ZCt09YemaIdtwny3SyDgjEmN2+SwEtI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-38-xA-7bsoSNDedgquKPaJDHQ-1; Fri, 22 Nov 2019 13:30:28 -0500
+ us-mta-37-Tg2joNn_NZKiNIsD2oYoXA-1; Fri, 22 Nov 2019 13:30:50 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CB12B2F34;
- Fri, 22 Nov 2019 18:30:26 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E55718A43CE;
+ Fri, 22 Nov 2019 18:30:48 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6B8346E71C;
- Fri, 22 Nov 2019 18:30:23 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3EC859F47;
+ Fri, 22 Nov 2019 18:30:45 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  armbru@redhat.com, jean-philippe.brucker@arm.com, bharatb.linux@gmail.com,
  yang.zhong@intel.com, dgilbert@redhat.com, quintela@redhat.com
-Subject: [PATCH for-5.0 v11 03/20] virtio-iommu: Decode the command payload
-Date: Fri, 22 Nov 2019 19:29:26 +0100
-Message-Id: <20191122182943.4656-4-eric.auger@redhat.com>
+Subject: [PATCH for-5.0 v11 06/20] virtio-iommu: Implement attach/detach
+ command
+Date: Fri, 22 Nov 2019 19:29:29 +0100
+Message-Id: <20191122182943.4656-7-eric.auger@redhat.com>
 In-Reply-To: <20191122182943.4656-1-eric.auger@redhat.com>
 References: <20191122182943.4656-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: xA-7bsoSNDedgquKPaJDHQ-1
+X-MC-Unique: Tg2joNn_NZKiNIsD2oYoXA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,169 +112,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: kevin.tian@intel.com, peterx@redhat.com, tnowicki@marvell.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nKH4vEDVsHO6
+X-TUID: qzi1l2ME8qkS
 
-This patch adds the command payload decoding and
-introduces the functions that will do the actual
-command handling. Those functions are not yet implemented.
+This patch implements the endpoint attach/detach to/from
+a domain.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
-
-v10 -> v11:
-- use a macro for handle command functions
-
-v9 -> v10:
-- make virtio_iommu_handle_* more compact and
-  remove get_payload_size
-
-v7 -> v8:
-- handle new domain parameter in detach
-- remove reserved checks
-
-v5 -> v6:
-- change map/unmap semantics (remove size)
-
-v4 -> v5:
-- adopt new v0.5 terminology
-
-v3 -> v4:
-- no flags field anymore in struct virtio_iommu_req_unmap
-- test reserved on attach/detach, change trace proto
-- rebase on v2.10.0.
 ---
- hw/virtio/trace-events   |  4 +++
- hw/virtio/virtio-iommu.c | 76 +++++++++++++++++++++++++++++++++-------
- 2 files changed, 68 insertions(+), 12 deletions(-)
+ hw/virtio/virtio-iommu.c | 43 ++++++++++++++++++++++++++++++++--------
+ 1 file changed, 35 insertions(+), 8 deletions(-)
 
-diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index f7dac39213..c7276116e7 100644
---- a/hw/virtio/trace-events
-+++ b/hw/virtio/trace-events
-@@ -61,3 +61,7 @@ virtio_iommu_set_features(uint64_t features) "features ac=
-cepted by the driver =3D0
- virtio_iommu_device_status(uint8_t status) "driver status =3D %d"
- virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t =
-end, uint32_t domain_range, uint32_t probe_size) "page_size_mask=3D0x%"PRIx=
-64" start=3D0x%"PRIx64" end=3D0x%"PRIx64" domain_range=3D%d probe_size=3D0x=
-%x"
- virtio_iommu_set_config(uint64_t page_size_mask, uint64_t start, uint64_t =
-end, uint32_t domain_range, uint32_t probe_size) "page_size_mask=3D0x%"PRIx=
-64" start=3D0x%"PRIx64" end=3D0x%"PRIx64" domain_bits=3D%d probe_size=3D0x%=
-x"
-+virtio_iommu_attach(uint32_t domain_id, uint32_t ep_id) "domain=3D%d endpo=
-int=3D%d"
-+virtio_iommu_detach(uint32_t domain_id, uint32_t ep_id) "domain=3D%d endpo=
-int=3D%d"
-+virtio_iommu_map(uint32_t domain_id, uint64_t virt_start, uint64_t virt_en=
-d, uint64_t phys_start, uint32_t flags) "domain=3D%d virt_start=3D0x%"PRIx6=
-4" virt_end=3D0x%"PRIx64 " phys_start=3D0x%"PRIx64" flags=3D%d"
-+virtio_iommu_unmap(uint32_t domain_id, uint64_t virt_start, uint64_t virt_=
-end) "domain=3D%d virt_start=3D0x%"PRIx64" virt_end=3D0x%"PRIx64
 diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index 7b25db3713..afd6397ac9 100644
+index 235bde2203..138d5b2a9c 100644
 --- a/hw/virtio/virtio-iommu.c
 +++ b/hw/virtio/virtio-iommu.c
-@@ -34,31 +34,83 @@
- /* Max size */
- #define VIOMMU_DEFAULT_QUEUE_SIZE 256
-=20
--static int virtio_iommu_handle_attach(VirtIOIOMMU *s,
--                                      struct iovec *iov,
--                                      unsigned int iov_cnt)
-+static int virtio_iommu_attach(VirtIOIOMMU *s,
-+                               struct virtio_iommu_req_attach *req)
+@@ -77,11 +77,12 @@ static gint interval_cmp(gconstpointer a, gconstpointer=
+ b, gpointer user_data)
+ static void virtio_iommu_detach_endpoint_from_domain(viommu_endpoint *ep)
  {
-+    uint32_t domain_id =3D le32_to_cpu(req->domain);
-+    uint32_t ep_id =3D le32_to_cpu(req->endpoint);
-+
-+    trace_virtio_iommu_attach(domain_id, ep_id);
-+
-     return VIRTIO_IOMMU_S_UNSUPP;
- }
--static int virtio_iommu_handle_detach(VirtIOIOMMU *s,
--                                      struct iovec *iov,
--                                      unsigned int iov_cnt)
-+
-+static int virtio_iommu_detach(VirtIOIOMMU *s,
-+                               struct virtio_iommu_req_detach *req)
- {
-+    uint32_t domain_id =3D le32_to_cpu(req->domain);
-+    uint32_t ep_id =3D le32_to_cpu(req->endpoint);
-+
-+    trace_virtio_iommu_detach(domain_id, ep_id);
-+
-     return VIRTIO_IOMMU_S_UNSUPP;
- }
--static int virtio_iommu_handle_map(VirtIOIOMMU *s,
--                                   struct iovec *iov,
--                                   unsigned int iov_cnt)
-+
-+static int virtio_iommu_map(VirtIOIOMMU *s,
-+                            struct virtio_iommu_req_map *req)
- {
-+    uint32_t domain_id =3D le32_to_cpu(req->domain);
-+    uint64_t phys_start =3D le64_to_cpu(req->phys_start);
-+    uint64_t virt_start =3D le64_to_cpu(req->virt_start);
-+    uint64_t virt_end =3D le64_to_cpu(req->virt_end);
-+    uint32_t flags =3D le32_to_cpu(req->flags);
-+
-+    trace_virtio_iommu_map(domain_id, virt_start, virt_end, phys_start, fl=
-ags);
-+
-     return VIRTIO_IOMMU_S_UNSUPP;
- }
--static int virtio_iommu_handle_unmap(VirtIOIOMMU *s,
--                                     struct iovec *iov,
--                                     unsigned int iov_cnt)
-+
-+static int virtio_iommu_unmap(VirtIOIOMMU *s,
-+                              struct virtio_iommu_req_unmap *req)
- {
-+    uint32_t domain_id =3D le32_to_cpu(req->domain);
-+    uint64_t virt_start =3D le64_to_cpu(req->virt_start);
-+    uint64_t virt_end =3D le64_to_cpu(req->virt_end);
-+
-+    trace_virtio_iommu_unmap(domain_id, virt_start, virt_end);
-+
-     return VIRTIO_IOMMU_S_UNSUPP;
+     QLIST_REMOVE(ep, next);
++    g_tree_unref(ep->domain->mappings);
+     ep->domain =3D NULL;
  }
 =20
-+static int virtio_iommu_iov_to_req(struct iovec *iov,
-+                                   unsigned int iov_cnt,
-+                                   void *req, size_t req_sz)
-+{
-+    size_t sz, payload_sz =3D req_sz - sizeof(struct virtio_iommu_req_tail=
-);
+-viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id)=
+;
+-viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id)
++static viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
++                                                  uint32_t ep_id)
+ {
+     viommu_endpoint *ep;
+=20
+@@ -102,15 +103,14 @@ static void virtio_iommu_put_endpoint(gpointer data)
+=20
+     if (ep->domain) {
+         virtio_iommu_detach_endpoint_from_domain(ep);
+-        g_tree_unref(ep->domain->mappings);
+     }
+=20
+     trace_virtio_iommu_put_endpoint(ep->id);
+     g_free(ep);
+ }
+=20
+-viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id)=
+;
+-viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id)
++static viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s,
++                                              uint32_t domain_id)
+ {
+     viommu_domain *domain;
+=20
+@@ -137,7 +137,6 @@ static void virtio_iommu_put_domain(gpointer data)
+     QLIST_FOREACH_SAFE(iter, &domain->endpoint_list, next, tmp) {
+         virtio_iommu_detach_endpoint_from_domain(iter);
+     }
+-    g_tree_destroy(domain->mappings);
+     trace_virtio_iommu_put_domain(domain->id);
+     g_free(domain);
+ }
+@@ -186,10 +185,27 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
+ {
+     uint32_t domain_id =3D le32_to_cpu(req->domain);
+     uint32_t ep_id =3D le32_to_cpu(req->endpoint);
++    viommu_domain *domain;
++    viommu_endpoint *ep;
+=20
+     trace_virtio_iommu_attach(domain_id, ep_id);
+=20
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    ep =3D virtio_iommu_get_endpoint(s, ep_id);
++    if (ep->domain) {
++        /*
++         * the device is already attached to a domain,
++         * detach it first
++         */
++        virtio_iommu_detach_endpoint_from_domain(ep);
++    }
 +
-+    sz =3D iov_to_buf(iov, iov_cnt, 0, req, payload_sz);
-+    if (unlikely(sz !=3D payload_sz)) {
++    domain =3D virtio_iommu_get_domain(s, domain_id);
++    QLIST_INSERT_HEAD(&domain->endpoint_list, ep, next);
++
++    ep->domain =3D domain;
++    g_tree_ref(domain->mappings);
++
++    return VIRTIO_IOMMU_S_OK;
+ }
+=20
+ static int virtio_iommu_detach(VirtIOIOMMU *s,
+@@ -197,10 +213,21 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
+ {
+     uint32_t domain_id =3D le32_to_cpu(req->domain);
+     uint32_t ep_id =3D le32_to_cpu(req->endpoint);
++    viommu_endpoint *ep;
+=20
+     trace_virtio_iommu_detach(domain_id, ep_id);
+=20
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    ep =3D g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
++    if (!ep) {
++        return VIRTIO_IOMMU_S_NOENT;
++    }
++
++    if (!ep->domain) {
 +        return VIRTIO_IOMMU_S_INVAL;
 +    }
-+    return 0;
-+}
 +
-+#define virtio_iommu_handle_req(__req)                                  \
-+static int virtio_iommu_handle_ ## __req(VirtIOIOMMU *s,                \
-+                                         struct iovec *iov,             \
-+                                         unsigned int iov_cnt)          \
-+{                                                                       \
-+    struct virtio_iommu_req_ ## __req req;                              \
-+    int ret =3D virtio_iommu_iov_to_req(iov, iov_cnt, &req, sizeof(req)); =
-\
-+                                                                        \
-+    return ret ? ret : virtio_iommu_ ## __req(s, &req);                 \
-+}
-+
-+virtio_iommu_handle_req(attach)
-+virtio_iommu_handle_req(detach)
-+virtio_iommu_handle_req(map)
-+virtio_iommu_handle_req(unmap)
-+
- static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
- {
-     VirtIOIOMMU *s =3D VIRTIO_IOMMU(vdev);
++    virtio_iommu_detach_endpoint_from_domain(ep);
++    return VIRTIO_IOMMU_S_OK;
+ }
+=20
+ static int virtio_iommu_map(VirtIOIOMMU *s,
 --=20
 2.20.1
 

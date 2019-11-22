@@ -1,103 +1,103 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp742618lfc;
-        Fri, 22 Nov 2019 10:52:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx0iYwN10l2WMTMsKy6afXNB9AidZ0BcrxQUddKOyPUUCjQneS/ScNfyeOvlTgOvZHe83zm
-X-Received: by 2002:a50:b6f8:: with SMTP id f53mr2973338ede.29.1574448774775;
-        Fri, 22 Nov 2019 10:52:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574448774; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp744144lfc;
+        Fri, 22 Nov 2019 10:54:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzSRnjU8fIIL2PmTpP/Wa0dxOpKdKljn/jqv5FiTBZxV8RUQa8S3/tiJC+Qk2DGdEyY1EUI
+X-Received: by 2002:a05:620a:536:: with SMTP id h22mr3329540qkh.480.1574448870245;
+        Fri, 22 Nov 2019 10:54:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574448870; cv=none;
         d=google.com; s=arc-20160816;
-        b=VrgkC0BDrOfa0Vk2uRgicGjzGPbcjSTULoEesYN4xkvXSQuKBaesp/+fjyzGIPNaco
-         dZAcAHQb062V12dPNg8rXue/mziLLyUjENbhkQttYqrRKLtFgXwtJWHKWxG5AX4ENylK
-         Upitb0VlAkMNodazYN9hmCK5nkUmAIuv/2qizkqflTEw+lyOw9YvRolBi4fsy2LKcTWw
-         t2ttoUFIYAqfE7Qgg3DgMyy/sluFqm97lBgJ7s9jZFKmtKWZM8dQdVhSPrPwbIc5xvuA
-         rgWcsesyk2ZZ7AfmErJFEVwnwYEoEQy0B8EKitZ/dFPhkUeOQeOywMkKEKIro236IjjH
-         QHzQ==
+        b=iYqR/51z+gFdbfXVqyDzSqM4B7xk1jFGuFykcbItRKmwGoOlIeK6fh/7XMN54N0ZQa
+         mZSs4kh9Gc4C4fBKfLYoGJ5rsBIHwQg5H+RWulCg36Es1Zu+LYZFRy8DcYwZFPWA2wEp
+         xbS2/uISRobudLFvb25qY+Fvw6SL0k1nIF3Bi5XGgWUqWgGHxQnrbiv9J1LdwYVdmpfp
+         /1I16IYiR0/4pGD799B74gXRITwWaoZTp+R91VVoMTFV6/eJzHA73dL1eHJRjePG3bt6
+         yuiDVleuvK57IEH7t1D1Q5yAU4hESttBam6iWK4A2JanQC4xIAcobUZi4jPVFpB52zK4
+         hdGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=FhRwI/WfLYzUQvZHwKeIbcL5ij+ifra/E2ARLgqQG1Y=;
-        b=ph3o7NIY1MEAdUDRTux5S+F1fzMz5xbDeX+5h7CapTjFsgh3DRRihygZe8AVxSKjmU
-         ldkYKvteeQXSJPUwxiKaM5oBfxCS7uyGzEpZjvzjZMFPAQgEOnpnd8PVaIkDHSvcxLql
-         xyU7qEg0Z2a4BWu6ZnbB6CI7S9crX8nmKIdOKWCP2euZ1UfxqVhcsnfysuyrnMSrf3yF
-         OrC38kvKyc3FxX2PsWDtJfBuncP55l1gpgUt2eY/lUlcm1HUyCM/TUMIPDGb4Yzdg5xF
-         wZUQ+1QB2fXCgIXmSo517T/0zF9GLA2D0muaFO1oysEo0IOqMwzaN0xmm+6fBMr+qBXS
-         8Tqw==
+        bh=4xFawQT2V6zPzd9LUbAi8pc+Qp3elmFlQpDHpoRueTI=;
+        b=fvZ5pZeKeUk5+Bva+cCHZKFCa4/kG69qbBRv12gZWqt4WVafKJwRcXc49b+fQ3HEF/
+         /1JOMvOQQYUJPqV/fSzJS82/MhbTlF1mhokTbOYlAYoVNSrwznVjRSNY2GdX6hE55uCu
+         ArlI4mjKAc5UD3leP9H64PY0W3FaCGYqgzzspB8WmKCiQki1yvCnDhtKyxVv9O/bf6PB
+         5/SfXk86lnifQwKB+UJMWz8NcwppwOfrhF+9dT8ToFEIBvN+EBVJcaQBOGo1ifaKas+g
+         MjvIWCG3AJHp+2bJ3VOjcuXuGu+J+dY1VkyjDMp9P8kjk8InRZ8U1pN83kZ0BVqZWHO+
+         AR6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="R4EI2U/f";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KufSrxz0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id oj24si1653475ejb.177.2019.11.22.10.52.54
+        by mx.google.com with ESMTPS id cs10si2676825qvb.177.2019.11.22.10.54.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Nov 2019 10:52:54 -0800 (PST)
+        Fri, 22 Nov 2019 10:54:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="R4EI2U/f";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KufSrxz0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54336 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iYE33-0007Kj-Pp
-	for alex.bennee@linaro.org; Fri, 22 Nov 2019 13:52:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40079)
+	id 1iYE4b-0000zT-N4
+	for alex.bennee@linaro.org; Fri, 22 Nov 2019 13:54:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40189)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iYDii-00019w-UZ
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:31:53 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iYDiy-0001Zx-W9
+ for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:32:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iYDih-0000Yq-Ve
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:31:52 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:49656
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1iYDix-0000gH-Jp
+ for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:32:08 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52392
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iYDih-0000Xs-SN
- for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:31:51 -0500
+ id 1iYDix-0000fy-Ap
+ for qemu-arm@nongnu.org; Fri, 22 Nov 2019 13:32:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574447511;
+ s=mimecast20190719; t=1574447526;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=FhRwI/WfLYzUQvZHwKeIbcL5ij+ifra/E2ARLgqQG1Y=;
- b=R4EI2U/fi7CDekkE4i1U4Cerw8IxyPMWyUvHjR+3z6KgdSVRAeLW7XW5ObAPksWI58h79i
- +GvWCGDfJy4vHV0YFX8nta0+Hn9eH/2BdHIRL4/l2bfWcum+OF5TE7c7VL7BWPbR32dG4Q
- FcX0o/KJAGeuRv+Apbrz0qIQdWM7WQ4=
+ bh=4xFawQT2V6zPzd9LUbAi8pc+Qp3elmFlQpDHpoRueTI=;
+ b=KufSrxz0cSNTt9y5/nXcVjOccy4uvIhZIcaUV8SpSUncMImctZi15k95DX1ZrmHwLbDpCQ
+ sR2iYGWHa6a6lbXdrXKF+ooLxwRgBKEdvFZqREfug+w6OBNGFbxz6cDW5B3DiWaiXCvL00
+ /Ayy9nSMfD2KFhS20x1/pkpIUf+85yY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-438-fnO2wUozNTiU70nlouFa9Q-1; Fri, 22 Nov 2019 13:31:50 -0500
+ us-mta-124-JC4ZDa6mOye60nSHeAuYKA-1; Fri, 22 Nov 2019 13:32:05 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AF3E58024C0;
- Fri, 22 Nov 2019 18:31:48 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1726C107ACC5;
+ Fri, 22 Nov 2019 18:32:04 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4E55A6E71C;
- Fri, 22 Nov 2019 18:31:45 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5559D6E712;
+ Fri, 22 Nov 2019 18:31:55 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  armbru@redhat.com, jean-philippe.brucker@arm.com, bharatb.linux@gmail.com,
  yang.zhong@intel.com, dgilbert@redhat.com, quintela@redhat.com
-Subject: [PATCH for-5.0 v11 15/20] virtio-iommu-pci: Add array of Interval
- properties
-Date: Fri, 22 Nov 2019 19:29:38 +0100
-Message-Id: <20191122182943.4656-16-eric.auger@redhat.com>
+Subject: [PATCH for-5.0 v11 17/20] hw/arm/virt-acpi-build: Add virtio-iommu
+ node in IORT table
+Date: Fri, 22 Nov 2019 19:29:40 +0100
+Message-Id: <20191122182943.4656-18-eric.auger@redhat.com>
 In-Reply-To: <20191122182943.4656-1-eric.auger@redhat.com>
 References: <20191122182943.4656-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: fnO2wUozNTiU70nlouFa9Q-1
+X-MC-Unique: JC4ZDa6mOye60nSHeAuYKA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,31 +112,170 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: kevin.tian@intel.com, peterx@redhat.com, tnowicki@marvell.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ayOLnPk4malQ
+X-TUID: KUvSBqJb3eG4
 
-The machine may need to pass reserved regions to the
-virtio-iommu-pci device (such as the MSI window on x86).
-So let's add an array of Interval properties.
+This patch builds the virtio-iommu node in the ACPI IORT table.
+
+The RID space of the root complex, which spans 0x0-0x10000
+maps to streamid space 0x0-0x10000 in the virtio-iommu which in
+turn maps to deviceid space 0x0-0x10000 in the ITS group.
+
+The iommu RID is excluded as described in virtio-iommu
+specification.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/virtio/virtio-iommu-pci.c | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
-index 4cfae1f9df..280230b31e 100644
---- a/hw/virtio/virtio-iommu-pci.c
-+++ b/hw/virtio/virtio-iommu-pci.c
-@@ -31,6 +31,9 @@ struct VirtIOIOMMUPCI {
+---
+v8 -> v9:
+- iommu RID is not fixed anymore
+
+v7 -> v8:
+- exclude the iommu RID (0x8) in the root complex ID mapping
+---
+ hw/arm/virt-acpi-build.c    | 50 ++++++++++++++++++++++++++++++-------
+ include/hw/acpi/acpi-defs.h | 21 +++++++++++++++-
+ 2 files changed, 61 insertions(+), 10 deletions(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 825f3a79c0..1e22cbbbfd 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -386,14 +386,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
+rtMachineState *vms)
+     AcpiIortIdMapping *idmap;
+     AcpiIortItsGroup *its;
+     AcpiIortTable *iort;
+-    AcpiIortSmmu3 *smmu;
+-    size_t node_size, iort_node_offset, iort_length, smmu_offset =3D 0;
++    size_t node_size, iort_node_offset, iort_length, iommu_offset =3D 0;
+     AcpiIortRC *rc;
++    int nb_rc_idmappings =3D 1;
 =20
- static Property virtio_iommu_pci_properties[] =3D {
-     DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
-+    DEFINE_PROP_ARRAY("reserved-regions", VirtIOIOMMUPCI,
-+                      vdev.nb_reserved_regions, vdev.reserved_regions,
-+                      qdev_prop_interval, Interval),
-     DEFINE_PROP_END_OF_LIST(),
+     iort =3D acpi_data_push(table_data, sizeof(*iort));
+=20
+-    if (vms->iommu =3D=3D VIRT_IOMMU_SMMUV3) {
+-        nb_nodes =3D 3; /* RC, ITS, SMMUv3 */
++    if (vms->iommu) {
++        nb_nodes =3D 3; /* RC, ITS, IOMMU */
+     } else {
+         nb_nodes =3D 2; /* RC, ITS */
+     }
+@@ -419,9 +419,9 @@ build_iort(GArray *table_data, BIOSLinker *linker, Virt=
+MachineState *vms)
+=20
+     if (vms->iommu =3D=3D VIRT_IOMMU_SMMUV3) {
+         int irq =3D  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
++        AcpiIortSmmu3 *smmu;
+=20
+-        /* SMMUv3 node */
+-        smmu_offset =3D iort_node_offset + node_size;
++        iommu_offset =3D iort_node_offset + node_size;
+         node_size =3D sizeof(*smmu) + sizeof(*idmap);
+         iort_length +=3D node_size;
+         smmu =3D acpi_data_push(table_data, node_size);
+@@ -443,16 +443,38 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
+rtMachineState *vms)
+          */
+         fill_iort_idmap(smmu->id_mapping_array, 0, 0, 0xffff, 0,
+                         iort_node_offset);
++    } else if (vms->iommu =3D=3D VIRT_IOMMU_VIRTIO) {
++        AcpiIortPVIommuPCI *iommu;
++
++        nb_rc_idmappings =3D 2;
++        iommu_offset =3D iort_node_offset + node_size;
++        node_size =3D sizeof(*iommu) + 2 * sizeof(*idmap);
++        iort_length +=3D node_size;
++        iommu =3D acpi_data_push(table_data, node_size);
++
++        iommu->type =3D ACPI_IORT_NODE_PARAVIRT;
++        iommu->length =3D cpu_to_le16(node_size);
++        iommu->mapping_count =3D cpu_to_le32(2);
++        iommu->mapping_offset =3D cpu_to_le32(sizeof(*iommu));
++        iommu->devid =3D cpu_to_le32(vms->virtio_iommu_bdf);
++        iommu->model =3D cpu_to_le32(ACPI_IORT_NODE_PV_VIRTIO_IOMMU_PCI);
++
++        /*
++         * Identity RID mapping covering the whole input RID range
++         * output IORT node is the ITS group node (the first node)
++         */
++        fill_iort_idmap(iommu->id_mapping_array, 0, 0, 0xffff, 0,
++                        iort_node_offset);
+     }
+=20
+     /* Root Complex Node */
+-    node_size =3D sizeof(*rc) + sizeof(*idmap);
++    node_size =3D sizeof(*rc) + nb_rc_idmappings * sizeof(*idmap);
+     iort_length +=3D node_size;
+     rc =3D acpi_data_push(table_data, node_size);
+=20
+     rc->type =3D ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
+     rc->length =3D cpu_to_le16(node_size);
+-    rc->mapping_count =3D cpu_to_le32(1);
++    rc->mapping_count =3D cpu_to_le32(nb_rc_idmappings);
+     rc->mapping_offset =3D cpu_to_le32(sizeof(*rc));
+=20
+     /* fully coherent device */
+@@ -463,7 +485,17 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vir=
+tMachineState *vms)
+     if (vms->iommu =3D=3D VIRT_IOMMU_SMMUV3) {
+         /* Identity RID mapping and output IORT node is the iommu node */
+         fill_iort_idmap(rc->id_mapping_array, 0, 0, 0xFFFF, 0,
+-                        smmu_offset);
++                        iommu_offset);
++    } else if (vms->iommu =3D=3D VIRT_IOMMU_VIRTIO) {
++        /*
++         * Identity mapping with the IOMMU RID (0x8) excluded. The output
++         * IORT node is the iommu node.
++         */
++        fill_iort_idmap(rc->id_mapping_array, 0, 0, vms->virtio_iommu_bdf,=
+ 0,
++                        iommu_offset);
++        fill_iort_idmap(rc->id_mapping_array, 1, vms->virtio_iommu_bdf + 1=
+,
++                        0xFFFF - vms->virtio_iommu_bdf,
++                        vms->virtio_iommu_bdf + 1, iommu_offset);
+     } else {
+         /*
+          * Identity RID mapping and the output IORT node is the ITS group
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index 57a3f58b0c..ba06f41fc0 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -581,7 +581,8 @@ enum {
+         ACPI_IORT_NODE_NAMED_COMPONENT =3D 0x01,
+         ACPI_IORT_NODE_PCI_ROOT_COMPLEX =3D 0x02,
+         ACPI_IORT_NODE_SMMU =3D 0x03,
+-        ACPI_IORT_NODE_SMMU_V3 =3D 0x04
++        ACPI_IORT_NODE_SMMU_V3 =3D 0x04,
++        ACPI_IORT_NODE_PARAVIRT =3D 0x80
  };
 =20
+ struct AcpiIortIdMapping {
+@@ -610,6 +611,24 @@ typedef struct AcpiIortItsGroup AcpiIortItsGroup;
+=20
+ #define ACPI_IORT_SMMU_V3_COHACC_OVERRIDE 1
+=20
++struct AcpiIortPVIommuPCI {
++    ACPI_IORT_NODE_HEADER_DEF
++    uint32_t devid;
++    uint8_t reserved2[12];
++    uint32_t model;
++    uint32_t flags;
++    uint8_t reserved3[16];
++    AcpiIortIdMapping id_mapping_array[0];
++} QEMU_PACKED;
++typedef struct AcpiIortPVIommuPCI AcpiIortPVIommuPCI;
++
++enum {
++    ACPI_IORT_NODE_PV_VIRTIO_IOMMU     =3D 0x0,
++    ACPI_IORT_NODE_PV_VIRTIO_IOMMU_PCI =3D 0x1,
++};
++
++#define ACPI_IORT_NODE_PV_CACHE_COHERENT    (1 << 0)
++
+ struct AcpiIortSmmu3 {
+     ACPI_IORT_NODE_HEADER_DEF
+     uint64_t base_address;
 --=20
 2.20.1
 

@@ -1,139 +1,100 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp3170980lfc;
-        Mon, 25 Nov 2019 05:43:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyfdHrCXmlwMdihJY64Z/djtAZNd+ONgRQCBnorm+gVOOwMuDUeMsgXAXGk2bmv7N3PdXNG
-X-Received: by 2002:ac8:2f4e:: with SMTP id k14mr17812063qta.357.1574689438496;
-        Mon, 25 Nov 2019 05:43:58 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1574689438; cv=pass;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp3341310lfc;
+        Mon, 25 Nov 2019 07:52:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyGbG/vX+yBOkd9fSthp6DIKLYVSiZW6oHhPxBgJP8fF8UfKXddvnBWGxVoF2Q30wjeu8cW
+X-Received: by 2002:a17:906:53c7:: with SMTP id p7mr37510597ejo.88.1574697172402;
+        Mon, 25 Nov 2019 07:52:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574697172; cv=none;
         d=google.com; s=arc-20160816;
-        b=Abq438GX8FyKGL1KSvpC3JN1zLdchzrKcDdQuig5elARdNwCLXo3R95Knujn7oxFO0
-         eW+FprrbqZSiZtE/YOh8bFtU7UWjquVcyv7pA6vtWmOPI2tiM3Xm7vp6+j7pPyoEQPVa
-         F566qpMtrrZFyCikJ8z/qYGNuvntwizNgCW53hOfPo6CDhEo/V0eGopTh+evvA6yHtFc
-         GgJYcF7jytdgX0k15SmW5/Ru0pea95wtDkEOfAoE1eAtqGmYRLlyTHmdNBTp2E2NJJxF
-         I/xLR1Y6T1JWdivW45kd86wucV9uuqNNz92nEWT23269QU5eT9QdW/n1ujA/IACrU962
-         y3kw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=vNmCtklsYYSPjN+DE99jFrluHAJfMUZw7mp3rSNyJn2LooKYimFLTw5+9DzajPM7JN
+         5fjpqXSJGDd7KlfOD7bjp6fEL4PSP/JPUKK/pmpHo+IaEUyRPz9/Tjs6gfawhTGJY8aE
+         pVbA6n9mX65jKHYolbRgvnZDTT8swtfQm5Q5QV1xMXJ4TiOpmeus3FTzytlxjujDtymP
+         tQBHMS4do5rSqRxFfGAKd9OsUWPGjBGd4Oy7bHuYPawrq7q2/u9IbEPDS2FNdV7LYWNJ
+         7t0QTMBbYR6w3yywomZY6bNCbTEAaOLzgbudlxDdg3Uud4f6AwFevJXVg6fXKs9+xhAb
+         d0cw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :message-id:date:thread-index:thread-topic:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=vlJzH3Ci31C5SPkJJp9StA5ANNvDy9cb5LlDl788HrQ=;
-        b=fkb0vQzsJVI6S/f21Ecq8YINkx1vdPqkJNfrJ9V7xURsZj7v63UGZ3zUI1l+SHrxay
-         pddSpvv7jPXSXUFb2aMqMinIwdtPjtxKaX/mLJ76nyMSdWbTXKvi5QpnqNJiVSWmwPcU
-         JVAOnZKlaqC8FVind+wQBLhmZ12k8uNSZZ1ajVxC1CGa3clgQzPMdiOYinRHcZxuYVRH
-         XQnI8rdzrI115bPb/Ii3Qi8WNBThrSD5usMzx2245fef4pny3h7lAtnBUpU27RgLC7ZY
-         2siEa9WyIrn5RWPSAhLycWb2rcMLhwb3MBjd2Gq+cNFIOcnJOnQEHEgZ2yf8QbxCf0/y
-         xWaw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@mjberubeossiaco.onmicrosoft.com header.s=selector2-mjberubeossiaco-onmicrosoft-com header.b=ewEA30d7;
-       arc=pass (i=1 spf=pass spfdomain=ossiaco.com dkim=pass dkdomain=ossiaco.com dmarc=pass fromdomain=ossiaco.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+        bh=WadP2MjNyRDE98mOoDvVW/giDJaPSGQtNH/OE+hqgmI=;
+        b=dqbg3FU1EFnOSJWGcZaVUkwUMlw+8+xTXpY9XOqoPW9bSFa4/X6R90VO3lqH+NX62u
+         8KGUmU9SZHV1MnsJvKbRog5QoOnph+kxtilJuKTJAUq1NpzYbUAwwI00pclx0CsEkXxn
+         EzuzT4uKwuXKaEGdThqigTTycxqLNwuSm/jxTBPMcJtZ+JHG8X+zOfMCE701yJaG2UV4
+         W6hcxHSMUrPMb+EMz1GdIeAAiUagmQIeRfaLp02U93UouMBS2Q3zP3Dmz1N2KfnaQq8+
+         hxMExaVqKdDfSZJGKCB1O1YMepER1bPE9ByRj46YBadAwq2Ou/2c/GwnT3+E0EQkbuqu
+         NwRA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FTLtsVxw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u31si5143039qth.20.2019.11.25.05.43.58
+        by mx.google.com with ESMTPS id z41si5258487edb.166.2019.11.25.07.52.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Nov 2019 05:43:58 -0800 (PST)
+        Mon, 25 Nov 2019 07:52:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@mjberubeossiaco.onmicrosoft.com header.s=selector2-mjberubeossiaco-onmicrosoft-com header.b=ewEA30d7;
-       arc=pass (i=1 spf=pass spfdomain=ossiaco.com dkim=pass dkdomain=ossiaco.com dmarc=pass fromdomain=ossiaco.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44114 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FTLtsVxw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iZEej-0005OD-LH
-	for alex.bennee@linaro.org; Mon, 25 Nov 2019 08:43:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34791)
+	id 1iZGfT-0004SE-AD
+	for alex.bennee@linaro.org; Mon, 25 Nov 2019 10:52:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34664)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <Jean-Hugues.Deschenes@ossiaco.com>)
- id 1iZDg1-00013S-Tj
- for qemu-arm@nongnu.org; Mon, 25 Nov 2019 07:41:15 -0500
+ (envelope-from <imammedo@redhat.com>) id 1iZGYl-0005zL-87
+ for qemu-arm@nongnu.org; Mon, 25 Nov 2019 10:45:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <Jean-Hugues.Deschenes@ossiaco.com>)
- id 1iZDg0-0001HB-Pz
- for qemu-arm@nongnu.org; Mon, 25 Nov 2019 07:41:13 -0500
-Received: from mail-eopbgr670067.outbound.protection.outlook.com
- ([40.107.67.67]:47488 helo=CAN01-TO1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <Jean-Hugues.Deschenes@ossiaco.com>)
- id 1iZDg0-0001FS-ER; Mon, 25 Nov 2019 07:41:12 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Cc4kuliiiryoCmqKGZ7H9OsQNZdbS9a8r55EOkoXIuIHCJJCU4QvUMhu4KUz8kud+uMwAtKkxU/rPNJZ3jMM2qczG4rfttQ26SlbB4bXnXvLYgBdiDw8zco5A206aszQ64MBDqyskrlNYBWXsfAbIt28aedZUf+IqdSszt2nOX787rUKgXg7zNXfhdEVxhaP4IqVMKo2D05s6kmsRO4/bdyxzePUcf7ou+8Z63lfKiIja3LGrJb2uoSlUMAI8vQbzxgCh4KlO2LTcr6YNNxD0pOfBUh0fHicgl0hGpZtz4SeZ6UZiv36RyHhnnRP5RGqgLxmoG+S2n8Mou1XT5OlWQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vlJzH3Ci31C5SPkJJp9StA5ANNvDy9cb5LlDl788HrQ=;
- b=DrPi8yL0qbSaNy+1O1K/jsA7TDeWtZ63MwRtEkpBUStCskw6G9w8pPNwWGze0cJUTZKcolhE5av+TGpGBxxznVroJ5vDjOzb02j2hOpseqlx1qtoMMereE30TlPFiMCYYrVQOx/53YELTO/6QFHstWLITZqvUNO1gOBOyjGkvHfx6mIsw48wOfSmWqUvezuDYNEY04IiGwRi3/Fxnd8pNHLQ0A5g+NvWrPTFx6VfLS/AZeGusyBqcwo7nChQ/W3EEmBgJ58WNkq/kutpi/IzsYlAdI89kig3nM2gHn96f2dnas2iPmnJi6qX2o0gQ9Q02ZF//QAPFZs09IngHLopuw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=ossiaco.com; dmarc=pass action=none header.from=ossiaco.com;
- dkim=pass header.d=ossiaco.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mjberubeossiaco.onmicrosoft.com;
- s=selector2-mjberubeossiaco-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vlJzH3Ci31C5SPkJJp9StA5ANNvDy9cb5LlDl788HrQ=;
- b=ewEA30d7phy6fyBR6KpDqjiGvCm1tNINLr9nOkfz7ZqElL3SRdtZw9QIR59Exe/RrxmFQI2C3CnzITKU38etqBx8l2F/i0B9Z1W3Y36RqvfmvxZ9mCpuNIV6z4qJzQ3Wq+pg+c6n8DBLN/QLTCDyg95K4B1se5LqdtM5YKBbv50=
-Received: from YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM (52.132.79.154) by
- YQXPR0101MB1079.CANPRD01.PROD.OUTLOOK.COM (52.132.82.145) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2474.19; Mon, 25 Nov 2019 12:41:10 +0000
-Received: from YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM
- ([fe80::6d20:2d18:b0ed:3459]) by YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM
- ([fe80::6d20:2d18:b0ed:3459%6]) with mapi id 15.20.2474.023; Mon, 25 Nov 2019
- 12:41:09 +0000
-From: =?iso-8859-1?Q?Jean-Hugues_Desch=EAnes?=
- <Jean-Hugues.Deschenes@ossiaco.com>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Subject: [PATCH] target/arm: Allow loading elf from aliased ROM regions
-Thread-Topic: [PATCH] target/arm: Allow loading elf from aliased ROM regions
-Thread-Index: AQHVo42dAgdlcFdTL0aHTFeU06w+BA==
-Date: Mon, 25 Nov 2019 12:41:09 +0000
-Message-ID: <20191125124055.19286-1-jean-hugues.deschenes@ossiaco.com>
-Accept-Language: en-CA, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: YQXPR01CA0101.CANPRD01.PROD.OUTLOOK.COM
- (2603:10b6:c00:41::30) To YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM
- (2603:10b6:c00:1f::26)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jean-Hugues.Deschenes@ossiaco.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.17.1
-x-originating-ip: [66.131.216.75]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ad7e87be-5c24-4236-c638-08d771a4bf6a
-x-ms-traffictypediagnostic: YQXPR0101MB1079:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <YQXPR0101MB1079FF9C23A048A035AA9391A04A0@YQXPR0101MB1079.CANPRD01.PROD.OUTLOOK.COM>
-x-ms-oob-tlc-oobclassifiers: OLM:1443;
-x-forefront-prvs: 0232B30BBC
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(366004)(346002)(376002)(39830400003)(396003)(136003)(199004)(189003)(66476007)(66946007)(6436002)(8936002)(2906002)(50226002)(25786009)(6486002)(8676002)(6512007)(107886003)(71200400001)(71190400001)(4326008)(66066001)(81156014)(81166006)(6116002)(3846002)(102836004)(6506007)(386003)(316002)(7736002)(26005)(2616005)(36756003)(5660300002)(54906003)(256004)(110136005)(2501003)(508600001)(305945005)(14454004)(86362001)(66446008)(99286004)(1076003)(66556008)(64756008)(186003)(52116002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:YQXPR0101MB1079;
- H:YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: ossiaco.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: GBBmv2pE5m+pN9vJizEAv6mYzyT6xk3wcxAIMwXtWv0wRONSXWZZ/o0YxuRnbcDbo9pabiYbWNdslET7ejgx6KNUUrraOh6OLDpx2oBqlBCuPTyYUEn7cwFVeYh++NHmAb+CZRhXwQPrdNLBrsupCWv8rKFVNQoa7P7dUGfs3c+GZlWpT2xBwsdbB5Tagb6f5qSPdgu1Z71APObYlbz+5s8xtFjwEMoG+iYx43pqBxPDTC+dhwzl3NINuYGolF0Cl0HZwCIQrQgQucyYgMsaZ2J9blHD+O+jLc1hKiZfDMskWwmWugTmaCK8mymb6arja0ZzETfR/PAEYgngQ+IwVICJPBHQLtR1FOOay+62b1+nlZbr9Ro3TWtoz3iJK0M5WO9evZlogfInIhU41spwxJ/87QBJZadWvveN6SkgftUW4EsjS6HER5RR9poz2Nih
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (envelope-from <imammedo@redhat.com>) id 1iZGYj-0000ai-DK
+ for qemu-arm@nongnu.org; Mon, 25 Nov 2019 10:45:55 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:60237
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iZGYj-0000aa-7o
+ for qemu-arm@nongnu.org; Mon, 25 Nov 2019 10:45:53 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1574696752;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WadP2MjNyRDE98mOoDvVW/giDJaPSGQtNH/OE+hqgmI=;
+ b=FTLtsVxwHHHFzu3Jsd6u+Pw/bkYtHaPfNXWEU1DF8u9vmIxYe6qNWCk5DHqLtyVk6D6TAe
+ kRQAkMLiERFnHseE41H/cQNe/rbQtBC1rLVaf2vUSAin373IusHX/ZNdUW1SxBCWmQo/+0
+ syAeGrIQMCgcp063adHUMFaJttH3vrc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-45-TipN8w9jPQeqvG6Dvmqr-w-1; Mon, 25 Nov 2019 10:45:49 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DB0B0A1F53;
+ Mon, 25 Nov 2019 15:45:47 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5EAC15D6A0;
+ Mon, 25 Nov 2019 15:45:43 +0000 (UTC)
+Date: Mon, 25 Nov 2019 16:45:41 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH 0/5] ARM virt: Add NVDIMM support
+Message-ID: <20191125164541.3f0a593f@redhat.com>
+In-Reply-To: <441c818f24084b4191315cf2a6267cef@huawei.com>
+References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
+ <a133d4c4-3f60-2bb1-a7d7-35cdb06af265@redhat.com>
+ <441c818f24084b4191315cf2a6267cef@huawei.com>
 MIME-Version: 1.0
-X-OriginatorOrg: ossiaco.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ad7e87be-5c24-4236-c638-08d771a4bf6a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Nov 2019 12:41:09.8194 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 7b948053-cc61-434b-af8e-9de586f466aa
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Fb6plKJNkdpSE0T1A4iqdxa15Hqqh7AjbqKu4/iwxkap5w4EUhc6lssGZ0WCd6EjKKGF7VT3ER4aFCrkJNhLZUGkJoS/nhB9XoAqdEjPUnj1tzY++0qZuVd0E71AcXB2
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: YQXPR0101MB1079
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.67.67
-X-Mailman-Approved-At: Mon, 25 Nov 2019 08:43:14 -0500
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: TipN8w9jPQeqvG6Dvmqr-w-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -146,70 +107,228 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "thuth@redhat.com" <thuth@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "martin.galvan@tallertechnologies.com" <martin.galvan@tallertechnologies.com>,
- =?iso-8859-1?Q?Jean-Hugues_Desch=EAnes?= <Jean-Hugues.Deschenes@ossiaco.com>
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>, Auger Eric <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "lersek@redhat.com" <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GKaRTOzLBzmT
+X-TUID: zQBQ4zB2rACl
 
-With this patch, we allow loading a ROM image at an aliased address,
-when it is located in a memory region for which an alias exists.
+On Mon, 25 Nov 2019 13:20:02 +0000
+Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Signed-off-by: Jean-Hugues Deschenes <jean-hugues.deschenes@ossiaco.com>
----
- target/arm/cpu.c | 33 ++++++++++++++++++++++++++-------
- 1 file changed, 26 insertions(+), 7 deletions(-)
+> Hi Eric/Igor,
+> 
+> > -----Original Message-----
+> > From: Shameerali Kolothum Thodi
+> > Sent: 22 October 2019 15:05
+> > To: 'Auger Eric' <eric.auger@redhat.com>; qemu-devel@nongnu.org;
+> > qemu-arm@nongnu.org; imammedo@redhat.com
+> > Cc: peter.maydell@linaro.org; shannon.zhaosl@gmail.com; xuwei (O)
+> > <xuwei5@huawei.com>; lersek@redhat.com; Linuxarm
+> > <linuxarm@huawei.com>
+> > Subject: RE: [PATCH 0/5] ARM virt: Add NVDIMM support
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 7a4ac9339b..00d89f8c38 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -313,13 +313,32 @@ static void arm_cpu_reset(CPUState *s)
-             initial_msp =3D ldl_p(rom);
-             initial_pc =3D ldl_p(rom + 4);
-         } else {
--            /* Address zero not covered by a ROM blob, or the ROM blob
--             * is in non-modifiable memory and this is a second reset afte=
-r
--             * it got copied into memory. In the latter case, rom_ptr
--             * will return a NULL pointer and we should use ldl_phys inste=
-ad.
--             */
--            initial_msp =3D ldl_phys(s->as, vecbase);
--            initial_pc =3D ldl_phys(s->as, vecbase + 4);
-+            /* See if the ROM blob is aliased somewhere */
-+            hwaddr len =3D 0, xlat =3D 0;
-+            MemoryRegion *mr =3D address_space_translate(s->as, vecbase, &=
-xlat,
-+                    &len, false, MEMTXATTRS_UNSPECIFIED);
-+
-+            if (mr) {
-+                rom =3D rom_ptr(mr->addr + xlat, 8);
-+            } else {
-+                rom =3D NULL;
-+            }
-+
-+            if (rom) {
-+                initial_msp =3D ldl_p(rom);
-+                initial_pc =3D ldl_p(rom + 4);
-+            } else {
-+
-+                /*
-+                 * Address zero not covered by a ROM blob, or the ROM blob
-+                 * is in non-modifiable memory and this is a second reset =
-after
-+                 * it got copied into memory. In the latter case, rom_ptr
-+                 * will return a NULL pointer and we should use ldl_phys
-+                 * instead.
-+                 */
-+                initial_msp =3D ldl_phys(s->as, vecbase);
-+                initial_pc =3D ldl_phys(s->as, vecbase + 4);
-+            }
+not related to problem discussed in this patch but you probably
+need to update docs/specs/acpi_nvdimm.txt to account for your changes
+
+> >   
+> 
+> [..]
+> 
+> > > one question: I noticed that when a NVDIMM slot is hotplugged one get
+> > > the following trace on guest:
+> > >
+> > > nfit ACPI0012:00: found a zero length table '0' parsing nfit
+> > > pmem0: detected capacity change from 0 to 1073741824
+> > >
+> > > Have you experienced the 0 length trace?  
+> > 
+> > I double checked and yes that trace is there. And I did a quick check with
+> > x86 and it is not there.
+> > 
+> > The reason looks like, ARM64 kernel receives an additional 8 bytes size when
+> > the kernel evaluates the "_FIT" object.
+> > 
+> > For the same test scenario, Qemu reports a FIT buffer size of 0xb8 and
+> > 
+> > X86 Guest kernel,
+> > [    1.601077] acpi_nfit_init: data 0xffff8a273dc12b18 sz 0xb8
+> > 
+> > ARM64 Guest,
+> > [    0.933133] acpi_nfit_init: data 0xffff00003cbe6018 sz 0xc0
+> > 
+> > I am not sure how that size gets changed for ARM which results in
+> > the above mentioned 0 length trace. I need to debug this further.
+> > 
+> > Please let me know if you have any pointers...  
+> 
+> I spend some time debugging this further and it looks like the AML code
+> behaves differently on x86 and ARM64.
+FIT table is built dynamically and you are the first to debug
+such issue.
+(apart from the author the NVDIMM code.
+ btw: why NVDIMM author is not on CC list???)
+
+
+> Booted guest with nvdimm mem, and used SSDT override with dbg prints
+> added,
+> 
+> -object memory-backend-ram,id=mem1,size=1G \
+> -device nvdimm,id=dimm1,memdev=mem1 \
+> 
+> On X86,
+> -----------
+> 
+> [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: Read FIT: offset 0 FIT size 0xb8 Dirty Yes.
+> [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: read_fit_out buf size 0xc0 func_ret_status 0
+> 
+> [AML]"NVDIMM-NCAL: Rcvd RLEN 000000C0"
+> [AML]"NVDIMM-NCAL: Creating OBUF with 000005E0 bits"
+> [AML]"NVDIMM-NCAL: Created  BUF(Local7) size 000000BC"
+> [AML]"NVDIMM-RFIT Rcvd buf size 000000BC"
+> [AML]"NVDIMM-RFIT Created NVDR.RFIT.BUFF size 000000B8"
+> [AML]"NVDIMM-FIT: Rcvd buf size 000000B8"
+> 
+> [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: Read FIT: offset 0xb8 FIT size 0xb8 Dirty No.
+> [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: read_fit_out buf size 0x8 func_ret_status 0 
+> 
+> [AML]"NVDIMM-NCAL: Rcvd RLEN 00000008"
+> [AML]"NVDIMM-NCAL: Creating OBUF with 00000020 bits"
+> [AML]"NVDIMM-NCAL: Created  BUF(Local7) size 00000004"
+> [AML]"NVDIMM-RFIT Rcvd buf size 00000004"
+> [AML]"NVDIMM-FIT: Rcvd buf size 00000000"
+> [AML]"NVDIMM-FIT: _FIT returned size 000000B8"
+> 
+> [ KERNEL] acpi_nfit_init: NVDIMM: data 0xffff9855bb9a7518 sz 0xb8  --> Guest receives correct size(0xb8) here 
+> 
+> On ARM64,
+> ---------------
+> 
+> [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: Read FIT: offset 0 FIT size 0xb8 Dirty Yes.
+> [Qemu]VDIMM:nvdimm_dsm_func_read_fit: read_fit_out buf size 0xc0 func_ret_status 0 
+> 
+> [AML]"NVDIMM-NCAL: Rcvd RLEN 00000000000000C0"
+> [AML]"NVDIMM-NCAL: Creating OBUF with 00000000000005E0 bits"
+> [AML]"NVDIMM-NCAL: Created  BUF(Local7) size 00000000000000BC"
+> [AML]"NVDIMM-RFIT Rcvd buf size 00000000000000BC"
+> [AML]"NVDIMM-RFIT Created NVDR.RFIT.BUFF size 00000000000000B8"
+> [AML]"NVDIMM-FIT: Rcvd buf size 00000000000000B8"
+> 
+> [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: Read FIT: offset 0xb8 FIT size 0xb8 Dirty No.
+> [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: read_fit_out buf size 0x8 func_ret_status 0 
+> 
+> [AML]"NVDIMM-NCAL: Rcvd RLEN 0000000000000008"
+> [AML]"NVDIMM-NCAL: Creating OBUF with 0000000000000020 bits"  --> All looks same as x86 up to here.
+> [AML]"NVDIMM-NCAL: Created  BUF(Local7) size 0000000000000008"  ---> The size goes wrong. 8 bytes instead of 4!.
+
+> [AML]"NVDIMM-RFIT Rcvd buf size 0000000000000008"
+> [AML]"NVDIMM-RFIT Created NVDR.RFIT.BUFF size 0000000000000004"
+> [AML]"NVDIMM-FIT: Rcvd buf size 0000000000000008"  --> Again size goes wrong. 8 bytes instead of 4!.
+
+                Local1 = SizeOf (Local0)
+                printf("NVDIMM-RFIT Rcvd buf size %o", Local1)
+
+                Local1 -= 0x04
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ here you get -4 so sizes you see are consistent
+
+                If ((Local1 == Zero))
+                {
+                    Return (Buffer (Zero){})
+                }
+
+                CreateField (Local0, 0x20, (Local1 << 0x03), BUFF)
+                printf("NVDIMM-RFIT Created NVDR.RFIT.BUFF size %o", Local1)
+
+ 
+> [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: Read FIT: offset 0xc0 FIT size 0xb8 Dirty No.  -->Another read is attempted 
+> [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: read_fit_out buf size 0x8 func_ret_status 3  --> Error status returned
+
+status 3 means that QEMU didn't like content of NRAM, and there is only
+1 place like this in nvdimm_dsm_func_read_fit()
+    if (read_fit->offset > fit->len) {                                           
+        func_ret_status = NVDIMM_DSM_RET_STATUS_INVALID;                         
+        goto exit;                                                               
+    }
+
+so I'd start looking from here and check that QEMU gets expected data
+in nvdimm_dsm_write(). In other words I'd try to trace/compare
+content of DSM buffer (from qemu side).
+
+
+> [AML]"NVDIMM-NCAL: Rcvd RLEN 0000000000000008"
+> [AML]"NVDIMM-NCAL: Creating OBUF with 0000000000000020 bits"
+> [AML]"NVDIMM-NCAL: Created  BUF(Local7) size 0000000000000008"
+> [AML]"NVDIMM-FIT: Rcvd buf size 0000000000000000"
+RFIT returns 0-sized buffer in case of error
+
+> [AML]"NVDIMM-FIT: _FIT returned size 00000000000000C0"   --> Wrong size returned.
+after that it goes
+
+                    Local0 = Buffer (Zero){}
+                    Local0 = RFIT (Local3)
+                    Local1 = SizeOf (Local0)
+                    printf("NVDIMM-FIT: Rcvd buf size %o", Local1)
+                    If ((RSTA == 0x0100))
+                    {
+                        Local2 = Buffer (Zero){}
+                        Local3 = Zero
+                    }
+                    Else
+                    {
+                        If ((Local1 == Zero))
+  --> here, probably on the second iteration of the loop taking Zero
+      size as EOF sign but without checking for any error (RSTA !=0)
+      and returning partial buffer only
+
+                        {
+                           printf("NVDIMM-FIT: _FIT returned size %o", SizeOf(Local2))
+                           Return (Local2)
+                        }
+
+relevant code in QEMU that builds this AML is in nvdimm_build_fit()
+
+> [ KERNEL] acpi_nfit_init: NVDIMM: data 0xffff0000fc57ce18 sz 0xc0   -->Kernel gets 0xc0 instead of 0xb8
+> 
+> 
+> It looks like the aml, "CreateField (ODAT, Zero, Local1, OBUF)" goes wrong for
+> ARM64 when the buffer is all zeroes. My knowledge on aml is very limited and not
+> sure this is a 32/64bit issue or not. I am attaching the SSDT files with the above
+> dbg prints added. Could you please take a look and let me know what actually is
+> going on here...
+
+diff -u SSDT-dbg-x86.dsl SSDT-dbg-arm64.dsl 
+--- SSDT-dbg-x86.dsl	2019-11-25 14:50:22.024983026 +0100
++++ SSDT-dbg-arm64.dsl	2019-11-25 14:50:06.740690645 +0100
+@@[...]
+@@ -28,7 +28,7 @@
+             Method (NCAL, 5, Serialized)
+             {
+                 Local6 = MEMA /* \MEMA */
+-                OperationRegion (NPIO, SystemIO, 0x0A18, 0x04)
++                OperationRegion (NPIO, SystemMemory, 0x09090000, 0x04)
+that's fine and matches your code
+
+                 OperationRegion (NRAM, SystemMemory, Local6, 0x1000)
+                 Field (NPIO, DWordAcc, NoLock, Preserve)
+                 {
+@@ -210,6 +210,6 @@
          }
-=20
-         env->regs[13] =3D initial_msp & 0xFFFFFFFC;
---=20
-2.17.1
+     }
+ 
+-    Name (MEMA, 0xBFBFD000)
++    Name (MEMA, 0xFFFF0000)
+
+However value here is suspicious. If I recall right it should
+point to DMS buffer allocated by firmware somewhere in the guest RAM.
+
+
+ }
+ 
+> Much appreciated,
+> Shameer.
+> 
+> 
 

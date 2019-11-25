@@ -1,118 +1,105 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp3141894lfc;
-        Mon, 25 Nov 2019 05:19:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzL+6AsP5ParaQEtEScVqA1kfTI527RyMbqW/Sku06Bt2+U+KdMBK4Q0uFP0AXHB4VftJpO
-X-Received: by 2002:ac8:8f0:: with SMTP id y45mr20852193qth.389.1574687972279;
-        Mon, 25 Nov 2019 05:19:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574687972; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp3145292lfc;
+        Mon, 25 Nov 2019 05:22:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxtt9rNxSfVAn3tSnrsXOhyKH0+CzISvGpgRXn9VgNGNqu4pQBX6DaphcEmE0oxv/QYp4d5
+X-Received: by 2002:a37:a757:: with SMTP id q84mr15628451qke.394.1574688147649;
+        Mon, 25 Nov 2019 05:22:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574688147; cv=none;
         d=google.com; s=arc-20160816;
-        b=yU28k9ssuReP64Xevx1G9ijHLc7yWH1pDhjWU+y8jP11OzOrxOjaO5TcaCIkYGzYjM
-         iFbGwpKcyJZiZf3xBF/jbaUeCU3Xox1wHXIXFYcv90HRRg9L/cH2XCAlTywHgXpI83AR
-         lMTXXD5/btLNUBnxazNkdfrugV4auZ7+UFFMmLtV3sT5iyd1yyCMsoaRNT57RQCz//Wl
-         hkyBf2tFywY+tw/ujbEIpGM4ss5u1uVbb4XwNkVzd9ghkOXL0QMTeo6gXLVslA3VCfVo
-         9x2ihFRqPsjIMCWkTYMyNz9S0JRd92gLUQuCXSDELqUiSXSe7db9w1UumE9778qGomPP
-         S8Vw==
+        b=WBeGQ41CITN8sk5oVCVdi36Khk3m2JGx2e76a+Wgga5t9P8FBzMz0NNVD4rxnPfU0a
+         gGbzGa9jZifFBTmK+Pe3u1khQOauQOUVzwCo80D0UI1HW+8sQUtazbQbboV+RV69P6+G
+         kxG60eFOcCY6I8Aeo1jMWXrShMtimmWL81SqLlOlP+s93zkD7W6fSRq9+wgnGbrdhDTX
+         f8P1oB2Dkic030bybGUxeq3UkDYavkxfzaPQ8RsBIlunKuTV7QVSH+8BQI6CJZzxS+Br
+         8GwkQxBuO2SznNruyecduBwHatQDfSjvpx1/ahxqCgbiPM+gGkKPVXdxZyY/I1VEMORK
+         Wi3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=006G3GA3tOQGxBjDMES8FWn/jj2JIGTz+zvys5oFahI=;
-        b=RhFKC/OEYtd9chop8Rp7g7w5BeaShgnd4p/3xvjPv+9IGew6+vGKeURS3LKxRTj/XL
-         KLbIEZvg6xVf5g1hWEOczfMPuLW/TPEmn0coLZFSwzyLG2yFlgxZWsRKKY/9/zyWXG9K
-         foxVTNGGrIalKEt0wSgOag7ZQOuwlvj0i5Nq5flkY7R+iwfYGqo7lv1fTu1aD8QPH8Zs
-         zjy4zdu+WbVKD3NmCLYax1SRpDZaNSBiPHifYblMvfOXeO2WM1xJ5udVRXbaKL0WUAgI
-         hlw8xHGGO8enmvKoeeNT5MhdMgaJpHKxC0gf6IdMO4Uezdrk49I3eaHJ64avAfdUyy9a
-         CBrQ==
+        bh=jRWuMLeGzCMUskZLTKN0weGeFC9AcDT2It3tBZMeekc=;
+        b=Pi1gOekZgkVpieQifWbAUH+KD/buyGbSD8vK3bzn9DWbsW1piaL/rKNHcnnmgAZGL9
+         l6+2J3C+800WNFdvrkUnFvlv4S2XFX7pDPZJZUa5QGYztFxdI7tglQ5KrzQYysPAfKNE
+         TyK/oXtDrhyk0M7qeStR+RQ69VypNdMEyMBMWp2s9lH+2L0aRNrwItx68L99wT2j+9de
+         C0woPT/O1wz2JO+p8RNSf5eV6k6ZRW4wR1yk5f6FXVasGh6CI6qWkfHIsDh1ilcoHbth
+         dBdxylntbf+DmxyjPsNwXH9jrIOAY+A0gdIxhEX03H9QHe1nWOGH0z+akrtWvNOohAz9
+         EKQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PEg0xPDh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BX4PNcwF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i31si4547192qtd.380.2019.11.25.05.19.32
+        by mx.google.com with ESMTPS id k188si4379777qke.31.2019.11.25.05.22.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Nov 2019 05:19:32 -0800 (PST)
+        Mon, 25 Nov 2019 05:22:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PEg0xPDh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BX4PNcwF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43802 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iZEH4-00067i-W8
-	for alex.bennee@linaro.org; Mon, 25 Nov 2019 08:19:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39505)
+	id 1iZEJu-0000VK-Sp
+	for alex.bennee@linaro.org; Mon, 25 Nov 2019 08:22:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40572)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iZE5C-0005W9-Mz
- for qemu-devel@nongnu.org; Mon, 25 Nov 2019 08:07:16 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iZECn-0004Nd-Bb
+ for qemu-devel@nongnu.org; Mon, 25 Nov 2019 08:15:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iZE5A-00072F-Pl
- for qemu-devel@nongnu.org; Mon, 25 Nov 2019 08:07:14 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40786
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1iZECk-0002ya-UI
+ for qemu-devel@nongnu.org; Mon, 25 Nov 2019 08:15:05 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:35900
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iZE59-00071k-3D
- for qemu-devel@nongnu.org; Mon, 25 Nov 2019 08:07:12 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1iZECi-0002wV-Ud
+ for qemu-devel@nongnu.org; Mon, 25 Nov 2019 08:15:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574687230;
+ s=mimecast20190719; t=1574687695;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=006G3GA3tOQGxBjDMES8FWn/jj2JIGTz+zvys5oFahI=;
- b=PEg0xPDhYKxEiNsEStQ0ZU3rKZjsNQKa96LE8FMHOJmlRmJFOKYM+80/zNOe3bxUtMcUkC
- /ogeRlb20ljp3Z6TnpB6qNuH95rXRmKJWfzrR0N96umFjQTSpWd6jFhW8y9FPADC1dSgBf
- ppBtkEiWnkWDjfx2DrX52N4BnaV/GdQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-331-0EUQYw9lOkCZOENYVCcGtA-1; Mon, 25 Nov 2019 08:07:09 -0500
-Received: by mail-wm1-f71.google.com with SMTP id v8so4539478wml.4
- for <qemu-devel@nongnu.org>; Mon, 25 Nov 2019 05:07:09 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xTcSBEsYVgOHYuOYONZmSVsrznxxUGWIqiXuR9K4h38=;
- b=Fnf5VgmgYmIpRePZll6Eud82Tuvv8OxfLaFUm/WmiVUyeFZopfY7HyOMzr0ibF4To6
- KBXRaJkia6pc38L2i6Jtey+nmF7KYLdjvAwJ9x3HEkKEpckrH9aSjeq43owwlW6fybaI
- PI0CPz6f03AuS1gTqx8015Nj4ncRPxMR2mfrOeGMe9gC3yUb9IuCHxWJd1Eh5IH1PwKz
- rNTqDmFWzhl1NYaW8CVGwsISwyRDnUcdXOOtoXszLWEP78qG3QTG+SBCJfjfI75A9vhf
- tCgFPRzghRwcv5gDNAKK9JFjdM3JSc12hiFirPkUGRgePbod2nHadI1thR+UP/18l5jf
- C4eg==
-X-Gm-Message-State: APjAAAXKJhbpgUNYvmtqeVxnnRmalsBbbWoWlB5u60N9ybxJy92ZLuWk
- d1E1cKOSe/S6Si1fC0TqrLIn1XKJ1d19+vWtZb7jMfbHB2BWB9eMP0/ErdujXJSwbYF5G35bpvu
- AB2ACyZgLmOhAwGA=
-X-Received: by 2002:adf:e2cd:: with SMTP id d13mr31939252wrj.221.1574687228047; 
- Mon, 25 Nov 2019 05:07:08 -0800 (PST)
-X-Received: by 2002:adf:e2cd:: with SMTP id d13mr31939213wrj.221.1574687227826; 
- Mon, 25 Nov 2019 05:07:07 -0800 (PST)
-Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
- [88.21.103.182])
- by smtp.gmail.com with ESMTPSA id f24sm8389062wmb.37.2019.11.25.05.07.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Nov 2019 05:07:07 -0800 (PST)
-Subject: Re: [PATCH v6 1/9] hw/core/clock: introduce clock objects
-To: Damien Hedde <damien.hedde@greensocs.com>, qemu-devel@nongnu.org
-References: <20190904125531.27545-1-damien.hedde@greensocs.com>
- <20190904125531.27545-2-damien.hedde@greensocs.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <560f9a2f-b604-69e7-7114-13e167102872@redhat.com>
-Date: Mon, 25 Nov 2019 14:07:06 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ bh=jRWuMLeGzCMUskZLTKN0weGeFC9AcDT2It3tBZMeekc=;
+ b=BX4PNcwFXSXkF+vo804XJsJgUkp4a+jiGgoLRXsuchPkyPjAk1LXgYyoZScmPoBQMRZxFk
+ LqGhLjxyIKl2Rax5pG3jlCwa+h7BkGvWbLL+KrKZ+Mqm34r9agKSDe2Fu11yH3wTVHpsdh
+ laVfmPuE/ml6+muBuyW+GnW4MjmTV2Q=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-440-N6daUUm6M2-8NIivTWpaLQ-1; Mon, 25 Nov 2019 08:14:54 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 01375800580;
+ Mon, 25 Nov 2019 13:14:53 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F0F0A5C1D4;
+ Mon, 25 Nov 2019 13:14:40 +0000 (UTC)
+Subject: Re: [PATCH for-4.2 v10 06/15] virtio-iommu: Endpoint and domains
+ structs and helpers
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+References: <20190730172137.23114-1-eric.auger@redhat.com>
+ <20190730172137.23114-7-eric.auger@redhat.com>
+ <20191104183131.GA3540585@lophozonia>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <274cfd7e-7aae-5754-31d5-f0434fb8a5c8@redhat.com>
+Date: Mon, 25 Nov 2019 14:14:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190904125531.27545-2-damien.hedde@greensocs.com>
+In-Reply-To: <20191104183131.GA3540585@lophozonia>
 Content-Language: en-US
-X-MC-Unique: 0EUQYw9lOkCZOENYVCcGtA-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: N6daUUm6M2-8NIivTWpaLQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,85 +111,38 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
- alistair@alistair23.me, mark.burton@greensocs.com, marcandre.lureau@redhat.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com, edgar.iglesias@gmail.com
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, mst@redhat.com,
+ tn@semihalf.com, qemu-devel@nongnu.org, peterx@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, bharat.bhushan@nxp.com,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pA1X0cbF3/VB
+X-TUID: jFdpTjWxJj0f
 
-On 9/4/19 2:55 PM, Damien Hedde wrote:
-> Introduce clock objects: ClockIn and ClockOut.
->=20
-> These objects may be used to distribute clocks from an object to several
-> other objects. Each ClockIn object contains the current state of the
-> clock: the frequency; it allows an object to migrate its input clock stat=
-e
-> independently of other objects.
->=20
-> A ClockIn may be connected to a ClockOut so that it receives update,
-> through a callback, whenever the Clockout is updated using the
-> ClockOut's set function.
->=20
-> This is based on the original work of Frederic Konrad.
->=20
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->   Makefile.objs         |   1 +
->   hw/core/Makefile.objs |   1 +
->   hw/core/clock.c       | 144 ++++++++++++++++++++++++++++++++++++++++++
->   hw/core/trace-events  |   6 ++
->   include/hw/clock.h    | 124 ++++++++++++++++++++++++++++++++++++
->   5 files changed, 276 insertions(+)
->   create mode 100644 hw/core/clock.c
->   create mode 100644 include/hw/clock.h
->=20
-> diff --git a/Makefile.objs b/Makefile.objs
-> index a723a47e14..4da623c759 100644
-> --- a/Makefile.objs
-> +++ b/Makefile.objs
-> @@ -153,6 +153,7 @@ trace-events-subdirs +=3D hw/audio
->   trace-events-subdirs +=3D hw/block
->   trace-events-subdirs +=3D hw/block/dataplane
->   trace-events-subdirs +=3D hw/char
-> +trace-events-subdirs +=3D hw/core
->   trace-events-subdirs +=3D hw/dma
->   trace-events-subdirs +=3D hw/hppa
->   trace-events-subdirs +=3D hw/i2c
-> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-> index 69b408ad1c..c66a5b2c6b 100644
-> --- a/hw/core/Makefile.objs
-> +++ b/hw/core/Makefile.objs
-> @@ -7,6 +7,7 @@ common-obj-$(CONFIG_SOFTMMU) +=3D fw-path-provider.o
->   # irq.o needed for qdev GPIO handling:
->   common-obj-y +=3D irq.o
->   common-obj-y +=3D hotplug.o
-> +common-obj-y +=3D clock.o
->   common-obj-$(CONFIG_SOFTMMU) +=3D nmi.o
->   common-obj-$(CONFIG_SOFTMMU) +=3D vm-change-state-handler.o
->  =20
-> diff --git a/hw/core/clock.c b/hw/core/clock.c
-> new file mode 100644
-> index 0000000000..888f247f2a
-> --- /dev/null
-> +++ b/hw/core/clock.c
-> @@ -0,0 +1,144 @@
-> +/*
-> + * Clock inputs and outputs
-> + *
-> + * Copyright GreenSocs 2016-2018
+Hi Jean,
+On 11/4/19 7:31 PM, Jean-Philippe Brucker wrote:
+> Hi Eric,
+> 
+> On Tue, Jul 30, 2019 at 07:21:28PM +0200, Eric Auger wrote:
+>>  static void virtio_iommu_device_unrealize(DeviceState *dev, Error **errp)
+>>  {
+>>      VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+>> +    VirtIOIOMMU *s = VIRTIO_IOMMU(dev);
+>> +
+>> +    g_tree_destroy(s->domains);
+>> +    g_tree_destroy(s->endpoints);
+> 
+> virtio_iommu_device_reset() must completely clear the internal state as
+> well (noticed while testing modprobe/rmmod).
+I just noticed I forgot to take into account this comment in v11.
 
-2019 now?
+I will fix that shortly.
 
-> + *
-> + * Authors:
-> + *  Frederic Konrad <fred.konrad@greensocs.com>
-> + *  Damien Hedde <damien.hedde@greensocs.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + */
+Thanks
+
+Eric
+> 
+> Thanks,
+> Jean
+> 
 

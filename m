@@ -1,165 +1,122 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp2917061lfc;
-        Mon, 25 Nov 2019 01:49:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxswg04BRnUU1zZK4MUAsWRMbWVN4JoRFf/olB888VFJgwPc186h27EADct5xmQBUGUn/c
-X-Received: by 2002:a50:ce47:: with SMTP id k7mr17258901edj.150.1574675355623;
-        Mon, 25 Nov 2019 01:49:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574675355; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp3091414lfc;
+        Mon, 25 Nov 2019 04:36:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyhdbCqySuRIQwVU+3w1oYDTWZX43Uv+dOmREGmy/3AX1BCu4n2Vjfvoo3Q7Ja1kJnIc/bR
+X-Received: by 2002:a17:906:57c3:: with SMTP id u3mr37280882ejr.254.1574685369449;
+        Mon, 25 Nov 2019 04:36:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574685369; cv=none;
         d=google.com; s=arc-20160816;
-        b=wEmnqcycO7mm21mOzw+ZQ5LSBVnMlvibbTGwm/B+th7Revo/NYsSgGhZMmQpq2u4Bp
-         gB8HPDy4lpAS4tgp28MhKL1qYJHpsnJv1FDP4PGItlsEfR+dosSbrEEBtuHchDvJ9WZi
-         ESh8NsnP//8JYG08v5QaBQQB4MohrLzRIzgOd+oboKiNgHda4PVMUKMSKLkckmEZC+7v
-         36v+h3cAbclcaIXkJp14F4iCUYeRJWjSBUltTM08wLHEjv6xrkq02H+E8lG6M0P5VMqa
-         YtG2Os6xxvAeFc664yU5tkqhHyKpdF5xIH6LO6E1Oi9mNK4FwpdcDnUwiboCMEWvZ2/O
-         C08A==
+        b=VfnmXGPPUSDIkQqzbC9zXB3C65cd0fBXgQQrHe2pHIB1RrFWSyYynCzPwHwjwLBZe9
+         /eUZ3G5VAJR3qMJ5n1l5fhka5YVSMzegE2r5Lxp6Zc5znzmsOzrkVIYukBcZ/uZhbfnf
+         7XW0deMSHF8PmwBh/wa+daz8aJ1DGmGQfAsJRKGCzlRkg1MN5Q4rVicpfpfl50I1pXof
+         7QM524Jw0bqTIqd4SVV5yBXt8t6iFq5mh8+eV3PCvyWPhjKFfTpPxgq32bozALPjOtFO
+         99W+5xnvbl37cimOtiBf6Lk1MZd++b0vV2fxnotVoTJbuMmiT0aP4l+lFjqTSK53SHzz
+         hffw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=LI90vjXh2HXUGcnDPIxy5xrhkGpcg6ttLKuY2YJfARU=;
-        b=namVbN7aF+RkYuqMy9VNhzFeO8eIu58ryiCJ6wk6XGfWZ71nxT0SOh79zyRIndF/cU
-         wo3j4zvcOlWY/9YuXxS2wlzK21U0IBlalN5HnTpwY6/1paC+/7ghJgT02rXPFQf1iszG
-         MXgCMQfOl8N4ZXNmOWck0e5DHv0talynd30T1wZddBieJtqHVKOdyLhJPtu0INVvH+M2
-         s2DH/IdrQRQ+Pja07Q3klzB3O2Oorl2CshgojlHy5GvMQGitdw5+XhmPReS6DsPWor0U
-         u33zguAix8eauLz1pLuHsfc9xu3UEi5LTDeoQP3D9nsCeJX1290Brg8G3QDWIyO9YEAt
-         yezg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=YhGSQLV2D7XNSxzSxCbubGu4XO9QMlaCo9qKLd5hMtY=;
+        b=X8g2zf5JBupPSOGEgrqkfEv1XHQn3/CKYZHR9QP4P6CBHFnsl3kpweanfXsnzyU0RB
+         Zv1Lu5XM4ANQBnbgYtrqeDUIMVa3OuQPhyS+qX632jq5XUEdEB/eI7JXJ0kfaCEntrZ6
+         6EsgaEqaTIBRPEppCvDdA/S42QMTTAL87B0BExKoz28/4UPaL8CiKO8HFTRJBjr2XQm+
+         ATs0e06JH/sQS/dVb/o/qs2hRnXQ0iBOwzhXxxPdxdZ4RjiOIHFWDmZIZnd0B/7yEUB7
+         aTBFY/wsRvtSnPJJA+YBGw30EULf+wh1Ed5uUmMhmIzm2Gnjr5+dxSsPlLwNgS4iIh6B
+         Pltw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aIJofAWW;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id bm18si4639424edb.74.2019.11.25.01.49.15;
-        Mon, 25 Nov 2019 01:49:15 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v13si4221689eju.409.2019.11.25.04.36.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 25 Nov 2019 04:36:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aIJofAWW;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727332AbfKYJtM (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 25 Nov 2019 04:49:12 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:44101 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1727052AbfKYJtL (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 25 Nov 2019 04:49:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1574675350;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=LI90vjXh2HXUGcnDPIxy5xrhkGpcg6ttLKuY2YJfARU=;
-        b=aIJofAWWfB45O1ifaaxgp7F/Mjy1pA1nLVDUAcyWtMsyiRe3ITdUx6z74ODSBP6PynCYGg
-        eM1z+ZGaFwr3N4hMhV50tdhiULR7DbGujZAbjcREIuq90IJNcRakCl2cop7aIl7OPRYzM6
-        ZrxQdxOGrQZuhqC8koLF60rIleQGw6o=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-20-8zfc_lBjPRynSK0RUXnuaA-1; Mon, 25 Nov 2019 04:49:09 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E1D0E107ACE5;
-        Mon, 25 Nov 2019 09:49:07 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 8DDD510016DA;
-        Mon, 25 Nov 2019 09:49:00 +0000 (UTC)
-Date:   Mon, 25 Nov 2019 10:48:59 +0100
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     "Michael S. Tsirkin" <mst@redhat.com>
-Cc:     gengdongjiu <gengdongjiu@huawei.com>, peter.maydell@linaro.org,
-        ehabkost@redhat.com, kvm@vger.kernel.org,
-        wanghaibin.wang@huawei.com, mtosatti@redhat.com,
-        qemu-devel@nongnu.org, linuxarm@huawei.com,
-        shannon.zhaosl@gmail.com, Xiang Zheng <zhengxiang9@huawei.com>,
-        qemu-arm@nongnu.org, james.morse@arm.com,
-        jonathan.cameron@huawei.com, pbonzini@redhat.com,
-        xuwei5@huawei.com, lersek@redhat.com, rth@twiddle.net
-Subject: Re: [RESEND PATCH v21 3/6] ACPI: Add APEI GHES table generation
- support
-Message-ID: <20191125104859.70047602@redhat.com>
-In-Reply-To: <20191118082036-mutt-send-email-mst@kernel.org>
-References: <20191111014048.21296-1-zhengxiang9@huawei.com>
-        <20191111014048.21296-4-zhengxiang9@huawei.com>
-        <20191115103801.547fc84d@redhat.com>
-        <cf5e5aa4-2283-6cf9-70d0-278d167e3a13@huawei.com>
-        <87758ec2-c242-71c3-51f8-a5d348f8e7fd@huawei.com>
-        <20191118082036-mutt-send-email-mst@kernel.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43092 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iZDb6-0005DQ-D1
+	for alex.bennee@linaro.org; Mon, 25 Nov 2019 07:36:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33596)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <pannengyuan@huawei.com>) id 1iZDaU-0005AU-Aq
+ for qemu-arm@nongnu.org; Mon, 25 Nov 2019 07:35:31 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <pannengyuan@huawei.com>) id 1iZDaR-0005zK-Eu
+ for qemu-arm@nongnu.org; Mon, 25 Nov 2019 07:35:29 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:48886 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
+ id 1iZDaQ-0005tw-U9; Mon, 25 Nov 2019 07:35:27 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 2FFE3C02C28C39762234;
+ Mon, 25 Nov 2019 20:35:15 +0800 (CST)
+Received: from HGHY2P002143101.china.huawei.com (10.184.39.213) by
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.439.0; Mon, 25 Nov 2019 20:35:05 +0800
+From: <pannengyuan@huawei.com>
+To: <david@gibson.dropbear.id.au>
+Subject: [PATCH V2] ppc/spapr_events: fix potential NULL pointer dereference
+ in rtas_event_log_dequeue
+Date: Mon, 25 Nov 2019 20:34:51 +0800
+Message-ID: <1574685291-38176-1-git-send-email-pannengyuan@huawei.com>
+X-Mailer: git-send-email 2.7.2.windows.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: 8zfc_lBjPRynSK0RUXnuaA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Yj3/2UeBRSNN
+Content-Type: text/plain
+X-Originating-IP: [10.184.39.213]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.32
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: kuhn.chenqun@huawei.com, qemu-arm@nongnu.org,
+ PanNengyuan <pannengyuan@huawei.com>, qemu-devel@nongnu.org,
+ kenny.zhangjun@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0+RDeV4+ReZm
 
-On Mon, 18 Nov 2019 08:21:18 -0500
-"Michael S. Tsirkin" <mst@redhat.com> wrote:
+From: PanNengyuan <pannengyuan@huawei.com>
 
-> On Mon, Nov 18, 2019 at 09:18:01PM +0800, gengdongjiu wrote:
-> > On 2019/11/18 20:49, gengdongjiu wrote:  
-> > >>> +     */
-> > >>> +    build_append_int_noprefix(table_data, source_id, 2);
-> > >>> +    /* Related Source Id */
-> > >>> +    build_append_int_noprefix(table_data, 0xffff, 2);
-> > >>> +    /* Flags */
-> > >>> +    build_append_int_noprefix(table_data, 0, 1);
-> > >>> +    /* Enabled */
-> > >>> +    build_append_int_noprefix(table_data, 1, 1);
-> > >>> +
-> > >>> +    /* Number of Records To Pre-allocate */
-> > >>> +    build_append_int_noprefix(table_data, 1, 4);
-> > >>> +    /* Max Sections Per Record */
-> > >>> +    build_append_int_noprefix(table_data, 1, 4);
-> > >>> +    /* Max Raw Data Length */
-> > >>> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-> > >>> +
-> > >>> +    /* Error Status Address */
-> > >>> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-> > >>> +                     4 /* QWord access */, 0);
-> > >>> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> > >>> +        ACPI_GHES_ERROR_STATUS_ADDRESS_OFFSET(hest_start, source_id),  
-> > >> it's fine only if GHESv2 is the only entries in HEST, but once
-> > >> other types are added this macro will silently fall apart and
-> > >> cause table corruption.  
-> >    why  silently fall?
-> >    I think the acpi_ghes.c only support GHESv2 type, not support other type.
-> >   
-> > >>
-> > >> Instead of offset from hest_start, I suggest to use offset relative
-> > >> to GAS structure, here is an idea>>
-> > >> #define GAS_ADDR_OFFSET 4
-> > >>
-> > >>     off = table->len
-> > >>     build_append_gas()
-> > >>     bios_linker_loader_add_pointer(...,
-> > >>         off + GAS_ADDR_OFFSET, ...  
-> > 
-> > If use offset relative to GAS structure, the code does not easily extend to support more Generic Hardware Error Source.
-> > if use offset relative to hest_start, just use a loop, the code can support  more error source, for example:
-> > for (source_id = 0; i<n; source_id++)
-> > {
-> >    ......
-> >     bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> >         ACPI_GHES_ERROR_STATUS_ADDRESS_OFFSET(hest_start, source_id),
-> >         sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
-> >         source_id * sizeof(uint64_t));
-> >   .......
-> > }
-> > 
-> > My previous series patch support 2 error sources, but now only enable 'SEA' type Error Source  
-> 
-> I'd try to merge this, worry about extending things later.
-> This is at v21 and the simpler you can keep things,
-> the faster it'll go in.
-I don't think the series is ready for merging yet.
-It has a number of issues (not stylistic ones) that need to be fixed first.
+This fixes coverity issues 68911917:
+        360
+    CID 68911917: (NULL_RETURNS)
+        361. dereference: Dereferencing "source", which is known to be
+             "NULL".
+        361        if (source->mask & event_mask) {
+        362            break;
+        363        }
 
-As for extending, I think I've suggested to simplify series
-to account for single error source only in some places so it
-would be easier on author and reviewers and worry about extending
-it later.
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: PanNengyuan <pannengyuan@huawei.com>
+---
+ hw/ppc/spapr_events.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/ppc/spapr_events.c b/hw/ppc/spapr_events.c
+index 0e4c195..e355e00 100644
+--- a/hw/ppc/spapr_events.c
++++ b/hw/ppc/spapr_events.c
+@@ -358,6 +358,7 @@ static SpaprEventLogEntry *rtas_event_log_dequeue(SpaprMachineState *spapr,
+             rtas_event_log_to_source(spapr,
+                                      spapr_event_log_entry_type(entry));
+ 
++        g_assert(source);
+         if (source->mask & event_mask) {
+             break;
+         }
+-- 
+2.7.2.windows.1
+
 

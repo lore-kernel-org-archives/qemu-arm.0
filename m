@@ -1,118 +1,138 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp3165009lfc;
-        Mon, 25 Nov 2019 05:38:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyk2Em32njvL42DEqJGRbhtBztwTVixP1yBp5LIz7iYYwG3gxZZeVP7qotJhnHlT1OHix2r
-X-Received: by 2002:a37:a947:: with SMTP id s68mr13017777qke.168.1574689123317;
-        Mon, 25 Nov 2019 05:38:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574689123; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp4607653lfc;
+        Tue, 26 Nov 2019 04:56:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqytnSnd4QywWbA1unx11cS6YdFyys3puKLtAlVfu67YW6iLbJR3kXTJ3AauFnOv4Xy7tr2h
+X-Received: by 2002:a17:906:5251:: with SMTP id y17mr44156138ejm.108.1574773006293;
+        Tue, 26 Nov 2019 04:56:46 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1574773006; cv=pass;
         d=google.com; s=arc-20160816;
-        b=FVpoouWbgOsPKT6JsHilRq3D5LoHxAE85vxdY0LDINhcpCJ1N+3rcWmwWFxfEq1VRI
-         Zxiu4ft6JPr4aDRdbsAvnVYvlvRxs18G8CNkukIKznOLS09ruSeqKWtX2FW647XTsCf6
-         LphyyKKvV+7bd6Y5GxVn62pEUMmbNMu3oGOUR9aozQo26LLTC4sU7MDjYseDsGydyTmO
-         ZCtBMmYrTIyGQAIHj+dTqoLEu678KhtjryC98FpJtytbmWgSpgRp1QW6vp3Hr0eqdq9x
-         O544aNkTVs/mK7rQuok32pSvvlFuVjCWmurj6rXBR500WeMe2rpbvvSNFGY6m8bz+2if
-         QjJQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=PQldwj1Z/Dp98XfA5a4w6k94wTZsb3mwzxwTXU7lnTXR4n8WB46TWD1kHWxLtqAlma
+         /SKK50HpU2JsqhGZLkWZt8kSBh54KKraVD3dT32HJyLtclEIGLcuCEuU1JeMhWjJb4yt
+         snp6VfVTG+K2pfwgrtRa5tqLOFFBYaNBCs5Ldg3HkQW27c22DpWdDe6U7w9y2mnvAfa6
+         jYA0HY/MkALpofkkJ6dqzt4msLfsrgxYP9kd0yLzk1rFLbCDmEU4cKR0SSrGHbOMDMEf
+         T/xpzD9NopRVLJ8V2NwmDZ2mMXr1EXR9x6r61s0G0UsR7ArtfYECkk/vm31kYWG5Ny3s
+         VPfg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=sXVl2pmE8sgcL0Gm1Jj2gijP5whuB4vilTsYhnVMceA=;
-        b=e8IkUDWfF1GpAhrKv6hnqOgTRVQ0pfslFUjKGytyHDtuEfrSzKptdpQIgIsN4JHJOR
-         5r2oaO1n3+7NLxwPpYfqaRLN21HAdTeussl1sFzguJVhVxMlJhJB64FbWxvQN+/L3pFh
-         qK9UV3qUrEe+T4lvVGsd3mM/rkmVoIDoeEp/tiIZK+KlNvLsEl2RCa311S/myyYrwv+V
-         v4yWrs9rcmjNqNvlctKbWA48NqtoGD74m5VaV9+NSByxQKfdn6gDT6Fm3fdx49JdnVnJ
-         cF5kINZODpagBq/YcdYLLK6E/JtfHdBBXq6aRuSW7TPby3xhS/lYMPLnwxJUQKqXcNf2
-         v6OQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W1tVdDAM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :message-id:date:thread-index:thread-topic:subject:to:from
+         :dkim-signature;
+        bh=aLOdiNugfezjGlaxLbmLhoO0DoCvVRM8fgneB7sKL1k=;
+        b=kXZLE4smbU62W6EUrBSWfoKRs6vZ8JN6CZYPSuW1YV0iUu9K2sdo0EsJ9UxDwYb4HU
+         CkQvwShWcowwGkwaVxECiEL2eo+lVWEfm6Hk6Hy3RPzNzBpKOSQii5m8C/EakoxkifrR
+         KBhe1y9opOMt+NWHfClOeWT+K6Q+thsst7x9C7knmmmN8e33kaYAT9H9W8dwD5oivf3S
+         niuBwQBzH+zLz93Z0F07p0byj8UzP8ci0Te1dLVIU7H3x9ssMjPpj7o7qPKVSWUQF1jh
+         rv9Kz24QcDk98E0oyZ4M+EG1Y3SLHmuvJOsFxSp4hQHbpxl4OLDImXBzq/kZcp1AXRzm
+         1y4A==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@mjberubeossiaco.onmicrosoft.com header.s=selector2-mjberubeossiaco-onmicrosoft-com header.b="etFfIV0/";
+       arc=pass (i=1 spf=pass spfdomain=ossiaco.com dkim=pass dkdomain=ossiaco.com dmarc=pass fromdomain=ossiaco.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p13si4798612qvl.38.2019.11.25.05.38.43
+        by mx.google.com with ESMTPS id o22si7470754edv.175.2019.11.26.04.56.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Nov 2019 05:38:43 -0800 (PST)
+        Tue, 26 Nov 2019 04:56:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W1tVdDAM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44022 helo=lists1p.gnu.org)
+       dkim=pass header.i=@mjberubeossiaco.onmicrosoft.com header.s=selector2-mjberubeossiaco-onmicrosoft-com header.b="etFfIV0/";
+       arc=pass (i=1 spf=pass spfdomain=ossiaco.com dkim=pass dkdomain=ossiaco.com dmarc=pass fromdomain=ossiaco.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54326 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iZEZe-00006f-HU
-	for alex.bennee@linaro.org; Mon, 25 Nov 2019 08:38:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43810)
+	id 1iZaOb-0007k1-7s
+	for alex.bennee@linaro.org; Tue, 26 Nov 2019 07:56:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32876)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iZEYT-0008VV-I5
- for qemu-arm@nongnu.org; Mon, 25 Nov 2019 08:37:32 -0500
+ (envelope-from <Jean-Hugues.Deschenes@ossiaco.com>)
+ id 1iZaOJ-0007jh-QI
+ for qemu-arm@nongnu.org; Tue, 26 Nov 2019 07:56:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iZEYR-00077p-I6
- for qemu-arm@nongnu.org; Mon, 25 Nov 2019 08:37:29 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:58510
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iZEYR-00077O-C8
- for qemu-arm@nongnu.org; Mon, 25 Nov 2019 08:37:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574689046;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sXVl2pmE8sgcL0Gm1Jj2gijP5whuB4vilTsYhnVMceA=;
- b=W1tVdDAMSJ59ui1wauKIhG1C0COSHE+WPiXaEJIG0BqwV/p6KnnvP+LIkVFdIO24HwKqFu
- JrG4Bf4ZymEIxtdd+BmraLK3/p0ajnclTxKkxJj/goBsk+e9SMqrJwMPt7H+YqyqWUBtS2
- vjDjpnl/H6PWgcgNFtooyxDAtPAvo5o=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-398-aqheW72UN_OfKLLg5v2Qfg-1; Mon, 25 Nov 2019 08:37:25 -0500
-Received: by mail-wr1-f69.google.com with SMTP id m17so8790273wrb.20
- for <qemu-arm@nongnu.org>; Mon, 25 Nov 2019 05:37:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=p32ZRuKZsY0M8IfH5Oj/l+vZ/Q/3M4AI8ee5ljzQD/U=;
- b=TfxKmz3RzPEx9S6CzqkVxpormZQXPnRaTmP2cbLurQtxHvbP0vR5IJWft8mfUucxZr
- CYJtLK0vb2HanxEQ2XVCn4qf55+J/lmjd9cokKldf77VXmB5E/AixzEYw0gCLVDnL1q+
- IJrnl/pfsKwEhs46+LnOy54NqHWibqe+eepEhw6ICtEQ7qmf45KmDgG1ZaZrWzxzegl5
- GQQr5F+BjNFdgMp7oBib/F5a8i4z/8kO+a4ETy1Hhb28f2NNKlbbpaTCiA/vvGphbZKH
- IBJz74a9Wc+rNO147JZ6BiHVj2QosIhtwI0kxq+1jzXGTZ1HisVeloXhilpjBhE3ZdFY
- unYg==
-X-Gm-Message-State: APjAAAWRKnA/bDt4coDuhqHr8MUaHLY/UI9fSUNUUclLqdEQ4QsMITNF
- EF3sN1mMQBUJEyrYfkv1quAOm/V3g+91kYhjv8O9OacBHBRbbsnTIXDS7CDe5m+7DV9hzYS6ndV
- wCA3Awozjy9+q
-X-Received: by 2002:a1c:544b:: with SMTP id p11mr29154666wmi.46.1574689043833; 
- Mon, 25 Nov 2019 05:37:23 -0800 (PST)
-X-Received: by 2002:a1c:544b:: with SMTP id p11mr29154642wmi.46.1574689043516; 
- Mon, 25 Nov 2019 05:37:23 -0800 (PST)
-Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
- [88.21.103.182])
- by smtp.gmail.com with ESMTPSA id w10sm8155717wmd.26.2019.11.25.05.37.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Nov 2019 05:37:22 -0800 (PST)
-Subject: Re: [PATCH v6 1/9] hw/core/clock: introduce clock objects
-To: Damien Hedde <damien.hedde@greensocs.com>, qemu-devel@nongnu.org
-References: <20190904125531.27545-1-damien.hedde@greensocs.com>
- <20190904125531.27545-2-damien.hedde@greensocs.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <50c7d986-1630-e75c-acbd-24330e961dbb@redhat.com>
-Date: Mon, 25 Nov 2019 14:37:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
-MIME-Version: 1.0
-In-Reply-To: <20190904125531.27545-2-damien.hedde@greensocs.com>
+ (envelope-from <Jean-Hugues.Deschenes@ossiaco.com>)
+ id 1iZaOI-0005l0-Ov
+ for qemu-arm@nongnu.org; Tue, 26 Nov 2019 07:56:27 -0500
+Received: from mail-eopbgr660071.outbound.protection.outlook.com
+ ([40.107.66.71]:32142 helo=CAN01-QB1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <Jean-Hugues.Deschenes@ossiaco.com>)
+ id 1iZaOI-0005k0-EV; Tue, 26 Nov 2019 07:56:26 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Uk+oSSZauVJP1xU+8um8HKjQLVyL35nMgaRfSywOl3kMVqd+pko25Wu7B6buuEIxOo/S6Y0r482APWFM4PmIki274gQ91xNUAuYsM4CLTh2ne3ciL0WqujR9hIuftohfhpKcjYAlLWR1q1cy56n5E3plNdmO/YAx1azMpmjg++03nzp4ZCuZQhZaAtNv4yyPzWRrOh9yhy1kL9rvkHO0UyR0qSnhCS4eszmeGbOiUP63pAOaZNnNnI9rwFJbvHfYyXSQj4ojRkAJ1MoPFoiMgy21eokrT5KksvVkY69KPLh9xTaDzBkSrTQMg/Hcehi/kS8oo7qJGAaK3CF52fEAQA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aLOdiNugfezjGlaxLbmLhoO0DoCvVRM8fgneB7sKL1k=;
+ b=nADLFqn+G4zLMm5ZpopZkZKTe343Rme/fk/NFy1SCV81WkkTi1dHcSh+4+dy2BAZmQEPcci2kLORhDQb4qjMLoZo7ukzt2WiV6GKfynLUGpbEiySMUbuqGORhLi+/C0t5c3YEWsb2Wt1NstMRfxZ3itE3q7eB3e+Sr0Koxvf+4Ayz1gWz/HNH0h9jAXgLNAeigmrejUIUjxsH7Vhs1upHNNhZT9+FYwVvomP67MqWmP4hu8pouQfOOnHnvQn3Lg3eF+X96f5l2JodFxwNt4ot2NBn9WjDW6RbQjInrTcR4RRnWcrSh705eDMD31vf8hvGDr1baKBXG6ectYQmJF/fw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=ossiaco.com; dmarc=pass action=none header.from=ossiaco.com;
+ dkim=pass header.d=ossiaco.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mjberubeossiaco.onmicrosoft.com;
+ s=selector2-mjberubeossiaco-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aLOdiNugfezjGlaxLbmLhoO0DoCvVRM8fgneB7sKL1k=;
+ b=etFfIV0/B+kX6jeNqjl/fF8pDvw1d6zbTeZI4n3ulHRGtflXxpEN0hGGXV3ek3Aj85KkAHsoN3/GCkyRWn8jvrMAFv8YmYsoAP3vruBiYbp2cmbth2Xsu/ga/Y3FuRLb2S07orIxowaSk12qR6+WB7jlj9/N4NE9fyMiFNlPLJg=
+Received: from YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM (52.132.79.154) by
+ YQXPR0101MB2069.CANPRD01.PROD.OUTLOOK.COM (52.132.76.142) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2495.17; Tue, 26 Nov 2019 12:56:24 +0000
+Received: from YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM
+ ([fe80::6d20:2d18:b0ed:3459]) by YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM
+ ([fe80::6d20:2d18:b0ed:3459%6]) with mapi id 15.20.2474.023; Tue, 26 Nov 2019
+ 12:56:23 +0000
+From: =?iso-8859-1?Q?Jean-Hugues_Desch=EAnes?=
+ <Jean-Hugues.Deschenes@ossiaco.com>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+Subject: [PATCH v2] target/arm: Allow loading elf from aliased ROM regions
+Thread-Topic: [PATCH v2] target/arm: Allow loading elf from aliased ROM regions
+Thread-Index: AQHVpFjo2qJ5d5kPXkapkLNs4XYJ+Q==
+Date: Tue, 26 Nov 2019 12:56:23 +0000
+Message-ID: <20191126125600.2059-1-jean-hugues.deschenes@ossiaco.com>
+Accept-Language: en-CA, en-US
 Content-Language: en-US
-X-MC-Unique: aqheW72UN_OfKLLg5v2Qfg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: QB1PR01CA0019.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:c00:2d::32) To YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:c00:1f::26)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Jean-Hugues.Deschenes@ossiaco.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-mailer: git-send-email 2.17.1
+x-originating-ip: [66.131.216.75]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: d22427b7-dad9-4340-e94e-08d772700aa0
+x-ms-traffictypediagnostic: YQXPR0101MB2069:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <YQXPR0101MB2069943380B1E0F87F435F77A0450@YQXPR0101MB2069.CANPRD01.PROD.OUTLOOK.COM>
+x-ms-oob-tlc-oobclassifiers: OLM:1443;
+x-forefront-prvs: 0233768B38
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(4636009)(396003)(346002)(39830400003)(136003)(366004)(376002)(199004)(189003)(4326008)(386003)(6506007)(110136005)(54906003)(107886003)(1076003)(5660300002)(6486002)(86362001)(25786009)(2501003)(316002)(26005)(508600001)(186003)(52116002)(305945005)(102836004)(7736002)(81166006)(81156014)(2616005)(3846002)(6116002)(2906002)(8676002)(71200400001)(71190400001)(36756003)(256004)(14454004)(99286004)(66066001)(50226002)(66946007)(66476007)(66556008)(64756008)(66446008)(6436002)(8936002)(6512007);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:YQXPR0101MB2069;
+ H:YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: ossiaco.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: kpbVmUTISqeaV9Zu3X6KaCBrJ0As9zIqaSYY0LIl0jHj597K8y463yH/PSd3iwrq37Pyl9gNWSACLfaRfc336iqAoUaE4p8jqDBDs+hRvKLZBARtrtW63/f6z/dSjeu+Q4llzZLY1hlytVOmkXwY7IfTnQUctWyjCSLkv03moC1a2+vQ+lrr+oRa2qhNHyuvLujvoVlABz9TcXd+jBdOJmndnytDvMT54emy5pdFOniT88USPsGZC4iyGv7QJWidNwO6eniWkCXsTu4Egs6jmv12Z1587xAMd43KGreQpMJ5Kun2mqM6IL64Tt/V5jvUgQo9xJprPS9FWzYtNyk6nWzQ9rP6iNmF18wU0si42n/IHGiwZriJb9LQyRlyDeE4Tjbb+Ew8ArHKec+7gwy+qxEel6UCzpq7nVKL6iNW2E1Nfvht3PBmEAFfkfRRaivH
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
+MIME-Version: 1.0
+X-OriginatorOrg: ossiaco.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d22427b7-dad9-4340-e94e-08d772700aa0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Nov 2019 12:56:23.7964 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 7b948053-cc61-434b-af8e-9de586f466aa
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: UpUjF4xVjTde6liMz0y0UxYagYbfJX0nLypduji4XtQngugXdcQ3KUUcnfhEJ+mHjaFMaTBQfRn0WpEvAKAhAjqhoJnXA5UiRb/E3VGf3JMh2kBGzusc30Iwz2tDthIa
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: YQXPR0101MB2069
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.66.71
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,371 +144,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
- alistair@alistair23.me, mark.burton@greensocs.com, marcandre.lureau@redhat.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "alistair@alistair23.me" <alistair@alistair23.me>,
+ =?iso-8859-1?Q?Jean-Hugues_Desch=EAnes?= <Jean-Hugues.Deschenes@ossiaco.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ojEoyhxEJ/Y+
+X-TUID: 6mBnBAEg1Ovf
 
-On 9/4/19 2:55 PM, Damien Hedde wrote:
-> Introduce clock objects: ClockIn and ClockOut.
->=20
-> These objects may be used to distribute clocks from an object to several
-> other objects. Each ClockIn object contains the current state of the
-> clock: the frequency; it allows an object to migrate its input clock stat=
-e
-> independently of other objects.
->=20
-> A ClockIn may be connected to a ClockOut so that it receives update,
-> through a callback, whenever the Clockout is updated using the
-> ClockOut's set function.
->=20
-> This is based on the original work of Frederic Konrad.
->=20
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->   Makefile.objs         |   1 +
->   hw/core/Makefile.objs |   1 +
->   hw/core/clock.c       | 144 ++++++++++++++++++++++++++++++++++++++++++
->   hw/core/trace-events  |   6 ++
->   include/hw/clock.h    | 124 ++++++++++++++++++++++++++++++++++++
->   5 files changed, 276 insertions(+)
->   create mode 100644 hw/core/clock.c
->   create mode 100644 include/hw/clock.h
->=20
-> diff --git a/Makefile.objs b/Makefile.objs
-> index a723a47e14..4da623c759 100644
-> --- a/Makefile.objs
-> +++ b/Makefile.objs
-> @@ -153,6 +153,7 @@ trace-events-subdirs +=3D hw/audio
->   trace-events-subdirs +=3D hw/block
->   trace-events-subdirs +=3D hw/block/dataplane
->   trace-events-subdirs +=3D hw/char
-> +trace-events-subdirs +=3D hw/core
->   trace-events-subdirs +=3D hw/dma
->   trace-events-subdirs +=3D hw/hppa
->   trace-events-subdirs +=3D hw/i2c
-> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-> index 69b408ad1c..c66a5b2c6b 100644
-> --- a/hw/core/Makefile.objs
-> +++ b/hw/core/Makefile.objs
-> @@ -7,6 +7,7 @@ common-obj-$(CONFIG_SOFTMMU) +=3D fw-path-provider.o
->   # irq.o needed for qdev GPIO handling:
->   common-obj-y +=3D irq.o
->   common-obj-y +=3D hotplug.o
-> +common-obj-y +=3D clock.o
->   common-obj-$(CONFIG_SOFTMMU) +=3D nmi.o
->   common-obj-$(CONFIG_SOFTMMU) +=3D vm-change-state-handler.o
->  =20
-> diff --git a/hw/core/clock.c b/hw/core/clock.c
-> new file mode 100644
-> index 0000000000..888f247f2a
-> --- /dev/null
-> +++ b/hw/core/clock.c
-> @@ -0,0 +1,144 @@
-> +/*
-> + * Clock inputs and outputs
-> + *
-> + * Copyright GreenSocs 2016-2018
-> + *
-> + * Authors:
-> + *  Frederic Konrad <fred.konrad@greensocs.com>
-> + *  Damien Hedde <damien.hedde@greensocs.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/clock.h"
-> +#include "trace.h"
-> +
-> +#define CLOCK_PATH(_clk) (_clk->canonical_path)
-> +
-> +void clock_out_setup_canonical_path(ClockOut *clk)
-> +{
-> +    g_free(clk->canonical_path);
-> +    clk->canonical_path =3D object_get_canonical_path(OBJECT(clk));
-> +}
-> +
-> +void clock_in_setup_canonical_path(ClockIn *clk)
-> +{
-> +    g_free(clk->canonical_path);
-> +    clk->canonical_path =3D object_get_canonical_path(OBJECT(clk));
-> +}
-> +
-> +void clock_set_callback(ClockIn *clk, ClockCallback *cb, void *opaque)
-> +{
-> +    assert(clk);
-> +
-> +    clk->callback =3D cb;
-> +    clk->callback_opaque =3D opaque;
-> +}
-> +
-> +void clock_init_frequency(ClockIn *clk, uint64_t freq)
-> +{
-> +    assert(clk);
-> +
-> +    clk->frequency =3D freq;
-> +}
-> +
-> +void clock_clear_callback(ClockIn *clk)
-> +{
-> +    clock_set_callback(clk, NULL, NULL);
-> +}
-> +
-> +void clock_connect(ClockIn *clkin, ClockOut *clkout)
-> +{
-> +    assert(clkin && clkin->driver =3D=3D NULL);
-> +    assert(clkout);
-> +
-> +    trace_clock_connect(CLOCK_PATH(clkin), CLOCK_PATH(clkout));
-> +
-> +    QLIST_INSERT_HEAD(&clkout->followers, clkin, sibling);
-> +    clkin->driver =3D clkout;
-> +}
-> +
-> +static void clock_disconnect(ClockIn *clk)
-> +{
-> +    if (clk->driver =3D=3D NULL) {
-> +        return;
-> +    }
-> +
-> +    trace_clock_disconnect(CLOCK_PATH(clk));
-> +
-> +    clk->driver =3D NULL;
-> +    QLIST_REMOVE(clk, sibling);
-> +}
-> +
-> +void clock_set_frequency(ClockOut *clk, uint64_t freq)
-> +{
-> +    ClockIn *follower;
-> +    trace_clock_set_frequency(CLOCK_PATH(clk), freq);
-> +
-> +    QLIST_FOREACH(follower, &clk->followers, sibling) {
-> +        trace_clock_propagate(CLOCK_PATH(clk), CLOCK_PATH(follower));
-> +        if (follower->frequency !=3D freq) {
-> +            follower->frequency =3D freq;
-> +            if (follower->callback) {
-> +                follower->callback(follower->callback_opaque);
-> +            }
-> +        }
-> +    }
-> +}
-> +
-> +static void clock_out_initfn(Object *obj)
-> +{
-> +    ClockOut *clk =3D CLOCK_OUT(obj);
-> +
-> +    QLIST_INIT(&clk->followers);
-> +}
-> +
-> +static void clock_out_finalizefn(Object *obj)
-> +{
-> +    ClockOut *clk =3D CLOCK_OUT(obj);
-> +    ClockIn *follower, *next;
-> +
-> +    /* clear our list of followers */
-> +    QLIST_FOREACH_SAFE(follower, &clk->followers, sibling, next) {
-> +        clock_disconnect(follower);
-> +    }
-> +
-> +    g_free(clk->canonical_path);
-> +    clk->canonical_path =3D NULL;
-> +}
-> +
-> +static void clock_in_finalizefn(Object *obj)
-> +{
-> +    ClockIn *clk =3D CLOCK_IN(obj);
-> +
-> +    /* remove us from driver's followers list */
-> +    clock_disconnect(clk);
-> +
-> +    g_free(clk->canonical_path);
-> +    clk->canonical_path =3D NULL;
-> +}
-> +
-> +static const TypeInfo clock_out_info =3D {
-> +    .name              =3D TYPE_CLOCK_OUT,
-> +    .parent            =3D TYPE_OBJECT,
-> +    .instance_size     =3D sizeof(ClockOut),
-> +    .instance_init     =3D clock_out_initfn,
-> +    .instance_finalize =3D clock_out_finalizefn,
-> +};
-> +
-> +static const TypeInfo clock_in_info =3D {
-> +    .name              =3D TYPE_CLOCK_IN,
-> +    .parent            =3D TYPE_OBJECT,
-> +    .instance_size     =3D sizeof(ClockIn),
-> +    .instance_finalize =3D clock_in_finalizefn,
-> +};
-> +
-> +static void clock_register_types(void)
-> +{
-> +    type_register_static(&clock_in_info);
-> +    type_register_static(&clock_out_info);
-> +}
-> +
-> +type_init(clock_register_types)
-> diff --git a/hw/core/trace-events b/hw/core/trace-events
-> index ecf966c314..aa940e268b 100644
-> --- a/hw/core/trace-events
-> +++ b/hw/core/trace-events
-> @@ -34,3 +34,9 @@ resettable_phase_hold_end(void *obj, int needed) "obj=
-=3D%p needed=3D%d"
->   resettable_phase_exit(void *obj, const char *type) "obj=3D%p(%s)"
->   resettable_phase_exit_end(void *obj, uint32_t count) "obj=3D%p count=3D=
-%" PRIu32
->   resettable_count_underflow(void *obj) "obj=3D%p"
-> +
-> +# hw/core/clock-port.c
+With this patch, we allow loading a ROM image at an aliased address,
+when it is located in a memory region for which an alias exists.
 
-"# clock.c"
+Changes since v1:
+- Removes unnecessary "else rom =3D NULL" clause after having verified mr.
 
-> +clock_connect(const char *clk, const char *driver) "'%s' drived-by '%s'"
-> +clock_disconnect(const char *clk) "'%s'"
-> +clock_set_frequency(const char *clk, uint64_t freq) "'%s' freq_hz=3D%" P=
-RIu64
-> +clock_propagate(const char *clko, const char *clki) "'%s' =3D> '%s'"
-> diff --git a/include/hw/clock.h b/include/hw/clock.h
-> new file mode 100644
-> index 0000000000..fd11202ba4
-> --- /dev/null
-> +++ b/include/hw/clock.h
-> @@ -0,0 +1,124 @@
-> +#ifndef QEMU_HW_CLOCK_H
-> +#define QEMU_HW_CLOCK_H
-> +
-> +#include "qom/object.h"
-> +#include "qemu/queue.h"
-> +
-> +#define TYPE_CLOCK_IN "clock-in"
-> +#define CLOCK_IN(obj) OBJECT_CHECK(ClockIn, (obj), TYPE_CLOCK_IN)
-> +#define TYPE_CLOCK_OUT "clock-out"
-> +#define CLOCK_OUT(obj) OBJECT_CHECK(ClockOut, (obj), TYPE_CLOCK_OUT)
-> +
-> +typedef void ClockCallback(void *opaque);
-> +
-> +typedef struct ClockOut ClockOut;
-> +typedef struct ClockIn ClockIn;
-> +
-> +struct ClockIn {
-> +    /*< private >*/
-> +    Object parent_obj;
-> +    /*< private >*/
-> +    uint64_t frequency;
-> +    char *canonical_path; /* clock path cache */
-> +    ClockOut *driver; /* clock output controlling this clock */
-> +    ClockCallback *callback; /* local callback */
-> +    void *callback_opaque; /* opaque argument for the callback */
-> +    QLIST_ENTRY(ClockIn) sibling;  /* entry in a followers list */
-> +};
-> +
-> +struct ClockOut {
-> +    /*< private >*/
-> +    Object parent_obj;
-> +    /*< private >*/
-> +    char *canonical_path; /* clock path cache */
-> +    QLIST_HEAD(, ClockIn) followers; /* list of registered clocks */
-> +};
+Signed-off-by: Jean-Hugues Deschenes <jean-hugues.deschenes@ossiaco.com>
+---
+ target/arm/cpu.c | 31 ++++++++++++++++++++++++-------
+ 1 file changed, 24 insertions(+), 7 deletions(-)
 
-Can we keep the structure definitions opaque in hw/core/clock.c?
-If so, clock_get_frequency() can't be inlined anymore.
-
-> +
-> +/**
-> + * clock_out_setup_canonical_path:
-> + * @clk: clock
-> + *
-> + * compute the canonical path of the clock (used by log messages)
-> + */
-> +void clock_out_setup_canonical_path(ClockOut *clk);
-> +
-> +/**
-> + * clock_in_setup_canonical_path:
-> + * @clk: clock
-> + *
-> + * compute the canonical path of the clock (used by log messages)
-> + */
-> +void clock_in_setup_canonical_path(ClockIn *clk);
-> +
-> +/**
-> + * clock_add_callback:
-> + * @clk: the clock to register the callback into
-> + * @cb: the callback function
-> + * @opaque: the argument to the callback
-> + *
-> + * Register a callback called on every clock update.
-> + */
-> +void clock_set_callback(ClockIn *clk, ClockCallback *cb, void *opaque);
-> +
-> +/**
-> + * clock_clear_callback:
-> + * @clk: the clock to delete the callback from
-> + *
-> + * Unregister the callback registered with clock_set_callback.
-> + */
-> +void clock_clear_callback(ClockIn *clk);
-> +
-> +/**
-> + * clock_init_frequency:
-> + * @clk: the clock to initialize.
-> + * @freq: the clock's frequency in Hz or 0 if unclocked.
-> + *
-> + * Initialize the local cached frequency value of @clk to @freq.
-> + * Note: this function must only be called during device inititializatio=
-n
-> + * or migration.
-> + */
-> +void clock_init_frequency(ClockIn *clk, uint64_t freq);
-> +
-> +/**
-> + * clock_connect:
-> + * @clkin: the drived clock.
-> + * @clkout: the driving clock.
-> + *
-> + * Setup @clkout to drive @clkin: Any @clkout update will be propagated
-> + * to @clkin.
-> + */
-> +void clock_connect(ClockIn *clkin, ClockOut *clkout);
-> +
-> +/**
-> + * clock_set_frequency:
-> + * @clk: the clock to update.
-> + * @freq: the new clock's frequency in Hz or 0 if unclocked.
-> + *
-> + * Update the @clk to the new @freq.
-> + * This change will be propagated through registered clock inputs.
-> + */
-> +void clock_set_frequency(ClockOut *clk, uint64_t freq);
-> +
-> +/**
-> + * clock_get_frequency:
-> + * @clk: the clk to fetch the clock
-> + *
-> + * @return: the current frequency of @clk in Hz. If @clk is NULL, return=
- 0.
-> + */
-> +static inline uint64_t clock_get_frequency(const ClockIn *clk)
-> +{
-> +    return clk ? clk->frequency : 0;
-> +}
-> +
-> +/**
-> + * clock_is_enabled:
-> + * @clk: a clock state
-> + *
-> + * @return: true if the clock is running. If @clk is NULL return false.
-> + */
-> +static inline bool clock_is_enabled(const ClockIn *clk)
-> +{
-> +    return clock_get_frequency(clk) !=3D 0;
-> +}
-> +
-> +#endif /* QEMU_HW_CLOCK_H */
->=20
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 7a4ac9339b..bff81b51d1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -313,13 +313,30 @@ static void arm_cpu_reset(CPUState *s)
+             initial_msp =3D ldl_p(rom);
+             initial_pc =3D ldl_p(rom + 4);
+         } else {
+-            /* Address zero not covered by a ROM blob, or the ROM blob
+-             * is in non-modifiable memory and this is a second reset afte=
+r
+-             * it got copied into memory. In the latter case, rom_ptr
+-             * will return a NULL pointer and we should use ldl_phys inste=
+ad.
+-             */
+-            initial_msp =3D ldl_phys(s->as, vecbase);
+-            initial_pc =3D ldl_phys(s->as, vecbase + 4);
++            /* See if the ROM blob is aliased somewhere */
++            hwaddr len =3D 0, xlat =3D 0;
++            MemoryRegion *mr =3D address_space_translate(s->as, vecbase, &=
+xlat,
++                    &len, false, MEMTXATTRS_UNSPECIFIED);
++
++            if (mr) {
++                rom =3D rom_ptr(mr->addr + xlat, 8);
++            }
++
++            if (rom) {
++                initial_msp =3D ldl_p(rom);
++                initial_pc =3D ldl_p(rom + 4);
++            } else {
++
++                /*
++                 * Address zero not covered by a ROM blob, or the ROM blob
++                 * is in non-modifiable memory and this is a second reset =
+after
++                 * it got copied into memory. In the latter case, rom_ptr
++                 * will return a NULL pointer and we should use ldl_phys
++                 * instead.
++                 */
++                initial_msp =3D ldl_phys(s->as, vecbase);
++                initial_pc =3D ldl_phys(s->as, vecbase + 4);
++            }
+         }
+=20
+         env->regs[13] =3D initial_msp & 0xFFFFFFFC;
+--=20
+2.17.1
 

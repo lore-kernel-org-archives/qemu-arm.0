@@ -1,213 +1,253 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp4607653lfc;
-        Tue, 26 Nov 2019 04:56:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqytnSnd4QywWbA1unx11cS6YdFyys3puKLtAlVfu67YW6iLbJR3kXTJ3AauFnOv4Xy7tr2h
-X-Received: by 2002:a17:906:5251:: with SMTP id y17mr44156138ejm.108.1574773006293;
-        Tue, 26 Nov 2019 04:56:46 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1574773006; cv=pass;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp5484677lfc;
+        Tue, 26 Nov 2019 17:38:15 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwJiVr5StxFbXB1XR4QpMUQKn7DMAdRRn2AGvqqIalxDA67AGlH0ZNobvRDNb4A8TOIPYA3
+X-Received: by 2002:a17:906:e289:: with SMTP id gg9mr46094459ejb.71.1574818695698;
+        Tue, 26 Nov 2019 17:38:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574818695; cv=none;
         d=google.com; s=arc-20160816;
-        b=PQldwj1Z/Dp98XfA5a4w6k94wTZsb3mwzxwTXU7lnTXR4n8WB46TWD1kHWxLtqAlma
-         /SKK50HpU2JsqhGZLkWZt8kSBh54KKraVD3dT32HJyLtclEIGLcuCEuU1JeMhWjJb4yt
-         snp6VfVTG+K2pfwgrtRa5tqLOFFBYaNBCs5Ldg3HkQW27c22DpWdDe6U7w9y2mnvAfa6
-         jYA0HY/MkALpofkkJ6dqzt4msLfsrgxYP9kd0yLzk1rFLbCDmEU4cKR0SSrGHbOMDMEf
-         T/xpzD9NopRVLJ8V2NwmDZ2mMXr1EXR9x6r61s0G0UsR7ArtfYECkk/vm31kYWG5Ny3s
-         VPfg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :message-id:date:thread-index:thread-topic:subject:to:from
-         :dkim-signature;
-        bh=aLOdiNugfezjGlaxLbmLhoO0DoCvVRM8fgneB7sKL1k=;
-        b=kXZLE4smbU62W6EUrBSWfoKRs6vZ8JN6CZYPSuW1YV0iUu9K2sdo0EsJ9UxDwYb4HU
-         CkQvwShWcowwGkwaVxECiEL2eo+lVWEfm6Hk6Hy3RPzNzBpKOSQii5m8C/EakoxkifrR
-         KBhe1y9opOMt+NWHfClOeWT+K6Q+thsst7x9C7knmmmN8e33kaYAT9H9W8dwD5oivf3S
-         niuBwQBzH+zLz93Z0F07p0byj8UzP8ci0Te1dLVIU7H3x9ssMjPpj7o7qPKVSWUQF1jh
-         rv9Kz24QcDk98E0oyZ4M+EG1Y3SLHmuvJOsFxSp4hQHbpxl4OLDImXBzq/kZcp1AXRzm
-         1y4A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@mjberubeossiaco.onmicrosoft.com header.s=selector2-mjberubeossiaco-onmicrosoft-com header.b="etFfIV0/";
-       arc=pass (i=1 spf=pass spfdomain=ossiaco.com dkim=pass dkdomain=ossiaco.com dmarc=pass fromdomain=ossiaco.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o22si7470754edv.175.2019.11.26.04.56.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Nov 2019 04:56:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=NXPqN5sRgbE83AlBQKobvPuTsTpT8gE6opwH0G17mAXIWEJXMoBQzXTfNb3wcZPt/S
+         34Hn0W+/LFAKo+lNSrKjgmx3ysi1v3MxnRft4kABByQyxuN2ft9HbPUl8+ylxtKBmh8/
+         Zfs4AcsXnQFHa6UvvB1ky2yuzBi2b+Zt2gHncPK7I1t1+Ttv6u8v4ITwMZO7oVA0lQCM
+         97kWjc+jeMFcRkT4U4eotfNSNRf08U4yopSDE0nDecCkeR6kwDo4hpgGj6+nLNbhjoMX
+         t4TDhDC1720AHzZGsp19vkSOsa7HGfrVFV/3Wyn+AGNzwWzdU4qko8hqgNMV9pu/Qx3M
+         QI9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:cc:to:subject:from;
+        bh=/G7z6DiNIlXSDN573YDVWRgNT8q/A/r1pnb0b5tLQMg=;
+        b=zVPfBS4VGC1JV41O6vNCA3Hm2Ik5kdLce5IR3+I6LKnJ/B5jWh01hMn2znBzssERoR
+         7vah9bsjsF2dhLECE6tFIBW7aFfpt6MXhX0Ma0uUXEzm05BRE4qT9Y6pU9DMl8I4E/hn
+         vE88B5Ms5/AX5wNWOlZX0vhCF11ty4rvS5vUxeNJa1iCeJKvB+2UAK4WhSjm9YTYm2Wl
+         gHW8mmNrTjnWPcoQDtVeJGS8/Co2awNkEVLZ5zb+wiZHOhz/B/nxK9FJgFo9xLQb8/1S
+         /4+RnNSQhqZCVMFqE7TbtU0XNkSKc0gIYHy92JibhFsMPzSWNRs6V5+6LGEldp0S3Wse
+         9XTQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id f6si8747778edq.325.2019.11.26.17.38.15;
+        Tue, 26 Nov 2019 17:38:15 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@mjberubeossiaco.onmicrosoft.com header.s=selector2-mjberubeossiaco-onmicrosoft-com header.b="etFfIV0/";
-       arc=pass (i=1 spf=pass spfdomain=ossiaco.com dkim=pass dkdomain=ossiaco.com dmarc=pass fromdomain=ossiaco.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54326 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iZaOb-0007k1-7s
-	for alex.bennee@linaro.org; Tue, 26 Nov 2019 07:56:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32876)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <Jean-Hugues.Deschenes@ossiaco.com>)
- id 1iZaOJ-0007jh-QI
- for qemu-arm@nongnu.org; Tue, 26 Nov 2019 07:56:29 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <Jean-Hugues.Deschenes@ossiaco.com>)
- id 1iZaOI-0005l0-Ov
- for qemu-arm@nongnu.org; Tue, 26 Nov 2019 07:56:27 -0500
-Received: from mail-eopbgr660071.outbound.protection.outlook.com
- ([40.107.66.71]:32142 helo=CAN01-QB1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <Jean-Hugues.Deschenes@ossiaco.com>)
- id 1iZaOI-0005k0-EV; Tue, 26 Nov 2019 07:56:26 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Uk+oSSZauVJP1xU+8um8HKjQLVyL35nMgaRfSywOl3kMVqd+pko25Wu7B6buuEIxOo/S6Y0r482APWFM4PmIki274gQ91xNUAuYsM4CLTh2ne3ciL0WqujR9hIuftohfhpKcjYAlLWR1q1cy56n5E3plNdmO/YAx1azMpmjg++03nzp4ZCuZQhZaAtNv4yyPzWRrOh9yhy1kL9rvkHO0UyR0qSnhCS4eszmeGbOiUP63pAOaZNnNnI9rwFJbvHfYyXSQj4ojRkAJ1MoPFoiMgy21eokrT5KksvVkY69KPLh9xTaDzBkSrTQMg/Hcehi/kS8oo7qJGAaK3CF52fEAQA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aLOdiNugfezjGlaxLbmLhoO0DoCvVRM8fgneB7sKL1k=;
- b=nADLFqn+G4zLMm5ZpopZkZKTe343Rme/fk/NFy1SCV81WkkTi1dHcSh+4+dy2BAZmQEPcci2kLORhDQb4qjMLoZo7ukzt2WiV6GKfynLUGpbEiySMUbuqGORhLi+/C0t5c3YEWsb2Wt1NstMRfxZ3itE3q7eB3e+Sr0Koxvf+4Ayz1gWz/HNH0h9jAXgLNAeigmrejUIUjxsH7Vhs1upHNNhZT9+FYwVvomP67MqWmP4hu8pouQfOOnHnvQn3Lg3eF+X96f5l2JodFxwNt4ot2NBn9WjDW6RbQjInrTcR4RRnWcrSh705eDMD31vf8hvGDr1baKBXG6ectYQmJF/fw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=ossiaco.com; dmarc=pass action=none header.from=ossiaco.com;
- dkim=pass header.d=ossiaco.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mjberubeossiaco.onmicrosoft.com;
- s=selector2-mjberubeossiaco-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aLOdiNugfezjGlaxLbmLhoO0DoCvVRM8fgneB7sKL1k=;
- b=etFfIV0/B+kX6jeNqjl/fF8pDvw1d6zbTeZI4n3ulHRGtflXxpEN0hGGXV3ek3Aj85KkAHsoN3/GCkyRWn8jvrMAFv8YmYsoAP3vruBiYbp2cmbth2Xsu/ga/Y3FuRLb2S07orIxowaSk12qR6+WB7jlj9/N4NE9fyMiFNlPLJg=
-Received: from YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM (52.132.79.154) by
- YQXPR0101MB2069.CANPRD01.PROD.OUTLOOK.COM (52.132.76.142) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2495.17; Tue, 26 Nov 2019 12:56:24 +0000
-Received: from YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM
- ([fe80::6d20:2d18:b0ed:3459]) by YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM
- ([fe80::6d20:2d18:b0ed:3459%6]) with mapi id 15.20.2474.023; Tue, 26 Nov 2019
- 12:56:23 +0000
-From: =?iso-8859-1?Q?Jean-Hugues_Desch=EAnes?=
- <Jean-Hugues.Deschenes@ossiaco.com>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Subject: [PATCH v2] target/arm: Allow loading elf from aliased ROM regions
-Thread-Topic: [PATCH v2] target/arm: Allow loading elf from aliased ROM regions
-Thread-Index: AQHVpFjo2qJ5d5kPXkapkLNs4XYJ+Q==
-Date: Tue, 26 Nov 2019 12:56:23 +0000
-Message-ID: <20191126125600.2059-1-jean-hugues.deschenes@ossiaco.com>
-Accept-Language: en-CA, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: QB1PR01CA0019.CANPRD01.PROD.OUTLOOK.COM
- (2603:10b6:c00:2d::32) To YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM
- (2603:10b6:c00:1f::26)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jean-Hugues.Deschenes@ossiaco.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.17.1
-x-originating-ip: [66.131.216.75]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: d22427b7-dad9-4340-e94e-08d772700aa0
-x-ms-traffictypediagnostic: YQXPR0101MB2069:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <YQXPR0101MB2069943380B1E0F87F435F77A0450@YQXPR0101MB2069.CANPRD01.PROD.OUTLOOK.COM>
-x-ms-oob-tlc-oobclassifiers: OLM:1443;
-x-forefront-prvs: 0233768B38
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(396003)(346002)(39830400003)(136003)(366004)(376002)(199004)(189003)(4326008)(386003)(6506007)(110136005)(54906003)(107886003)(1076003)(5660300002)(6486002)(86362001)(25786009)(2501003)(316002)(26005)(508600001)(186003)(52116002)(305945005)(102836004)(7736002)(81166006)(81156014)(2616005)(3846002)(6116002)(2906002)(8676002)(71200400001)(71190400001)(36756003)(256004)(14454004)(99286004)(66066001)(50226002)(66946007)(66476007)(66556008)(64756008)(66446008)(6436002)(8936002)(6512007);
- DIR:OUT; SFP:1101; SCL:1; SRVR:YQXPR0101MB2069;
- H:YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: ossiaco.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: kpbVmUTISqeaV9Zu3X6KaCBrJ0As9zIqaSYY0LIl0jHj597K8y463yH/PSd3iwrq37Pyl9gNWSACLfaRfc336iqAoUaE4p8jqDBDs+hRvKLZBARtrtW63/f6z/dSjeu+Q4llzZLY1hlytVOmkXwY7IfTnQUctWyjCSLkv03moC1a2+vQ+lrr+oRa2qhNHyuvLujvoVlABz9TcXd+jBdOJmndnytDvMT54emy5pdFOniT88USPsGZC4iyGv7QJWidNwO6eniWkCXsTu4Egs6jmv12Z1587xAMd43KGreQpMJ5Kun2mqM6IL64Tt/V5jvUgQo9xJprPS9FWzYtNyk6nWzQ9rP6iNmF18wU0si42n/IHGiwZriJb9LQyRlyDeE4Tjbb+Ew8ArHKec+7gwy+qxEel6UCzpq7nVKL6iNW2E1Nfvht3PBmEAFfkfRRaivH
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726576AbfK0BiO (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Tue, 26 Nov 2019 20:38:14 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:58782 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726094AbfK0BiO (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 26 Nov 2019 20:38:14 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 4F42ECA742D128B964E0;
+        Wed, 27 Nov 2019 09:38:09 +0800 (CST)
+Received: from [127.0.0.1] (10.133.224.57) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server id 14.3.439.0; Wed, 27 Nov 2019
+ 09:37:59 +0800
+From:   Xiang Zheng <zhengxiang9@huawei.com>
+Subject: Re: [RESEND PATCH v21 2/6] docs: APEI GHES generation and CPER record
+ description
+To:     Igor Mammedov <imammedo@redhat.com>
+CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>,
+        <gengdongjiu@huawei.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <jonathan.cameron@huawei.com>,
+        <xuwei5@huawei.com>, <kvm@vger.kernel.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <linuxarm@huawei.com>, <wanghaibin.wang@huawei.com>
+References: <20191111014048.21296-1-zhengxiang9@huawei.com>
+ <20191111014048.21296-3-zhengxiang9@huawei.com>
+ <20191115104458.200a6231@redhat.com>
+Message-ID: <05d2ba81-501f-bd7e-8da4-73e413169688@huawei.com>
+Date:   Wed, 27 Nov 2019 09:37:57 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-X-OriginatorOrg: ossiaco.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d22427b7-dad9-4340-e94e-08d772700aa0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Nov 2019 12:56:23.7964 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 7b948053-cc61-434b-af8e-9de586f466aa
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: UpUjF4xVjTde6liMz0y0UxYagYbfJX0nLypduji4XtQngugXdcQ3KUUcnfhEJ+mHjaFMaTBQfRn0WpEvAKAhAjqhoJnXA5UiRb/E3VGf3JMh2kBGzusc30Iwz2tDthIa
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: YQXPR0101MB2069
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.66.71
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "alistair@alistair23.me" <alistair@alistair23.me>,
- =?iso-8859-1?Q?Jean-Hugues_Desch=EAnes?= <Jean-Hugues.Deschenes@ossiaco.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6mBnBAEg1Ovf
+In-Reply-To: <20191115104458.200a6231@redhat.com>
+Content-Type: text/plain; charset="windows-1252"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.224.57]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: rMKTAXzfCgQX
 
-With this patch, we allow loading a ROM image at an aliased address,
-when it is located in a memory region for which an alias exists.
+Hi Igor,
 
-Changes since v1:
-- Removes unnecessary "else rom =3D NULL" clause after having verified mr.
+Thanks for your review!
+Since the series of patches are going to be merged, we will address your comments by follow up patches.
 
-Signed-off-by: Jean-Hugues Deschenes <jean-hugues.deschenes@ossiaco.com>
----
- target/arm/cpu.c | 31 ++++++++++++++++++++++++-------
- 1 file changed, 24 insertions(+), 7 deletions(-)
+On 2019/11/15 17:44, Igor Mammedov wrote:
+> On Mon, 11 Nov 2019 09:40:44 +0800
+> Xiang Zheng <zhengxiang9@huawei.com> wrote:
+> 
+>> From: Dongjiu Geng <gengdongjiu@huawei.com>
+>>
+>> Add APEI/GHES detailed design document
+>>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+>> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+>> ---
+>>  docs/specs/acpi_hest_ghes.rst | 95 +++++++++++++++++++++++++++++++++++
+>>  docs/specs/index.rst          |  1 +
+>>  2 files changed, 96 insertions(+)
+>>  create mode 100644 docs/specs/acpi_hest_ghes.rst
+>>
+>> diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
+>> new file mode 100644
+>> index 0000000000..348825f9d3
+>> --- /dev/null
+>> +++ b/docs/specs/acpi_hest_ghes.rst
+>> @@ -0,0 +1,95 @@
+>> +APEI tables generating and CPER record
+>> +======================================
+>> +
+>> +..
+>> +   Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
+>> +
+>> +   This work is licensed under the terms of the GNU GPL, version 2 or later.
+>> +   See the COPYING file in the top-level directory.
+>> +
+>> +Design Details
+>> +--------------
+>> +
+>> +::
+>> +
+>> +         etc/acpi/tables                                 etc/hardware_errors
+>> +      ====================                      ==========================================
+>> +  + +--------------------------+            +-----------------------+
+>> +  | | HEST                     |            |    address            |            +--------------+
+>> +  | +--------------------------+            |    registers          |            | Error Status |
+>> +  | | GHES1                    |            | +---------------------+            | Data Block 1 |
+>> +  | +--------------------------+ +--------->| |error_block_address1 |----------->| +------------+
+>> +  | | .................        | |          | +---------------------+            | |  CPER      |
+>> +  | | error_status_address-----+-+ +------->| |error_block_address2 |--------+   | |  CPER      |
+>> +  | | .................        |   |        | +---------------------+        |   | |  ....      |
+>> +  | | read_ack_register--------+-+ |        | |    ..............   |        |   | |  CPER      |
+>> +  | | read_ack_preserve        | | |        +-----------------------+        |   | +------------+
+>> +  | | read_ack_write           | | | +----->| |error_block_addressN |------+ |   | Error Status |
+>> +  + +--------------------------+ | | |      | +---------------------+      | |   | Data Block 2 |
+>> +  | | GHES2                    | +-+-+----->| |read_ack_register1   |      | +-->| +------------+
+>> +  + +--------------------------+   | |      | +---------------------+      |     | |  CPER      |
+>> +  | | .................        |   | | +--->| |read_ack_register2   |      |     | |  CPER      |
+>> +  | | error_status_address-----+---+ | |    | +---------------------+      |     | |  ....      |
+>> +  | | .................        |     | |    | |  .............      |      |     | |  CPER      |
+>> +  | | read_ack_register--------+-----+-+    | +---------------------+      |     +-+------------+
+>> +  | | read_ack_preserve        |     |   +->| |read_ack_registerN   |      |     | |..........  |
+>> +  | | read_ack_write           |     |   |  | +---------------------+      |     | +------------+
+>> +  + +--------------------------|     |   |                                 |     | Error Status |
+>> +  | | ...............          |     |   |                                 |     | Data Block N |
+>> +  + +--------------------------+     |   |                                 +---->| +------------+
+>> +  | | GHESN                    |     |   |                                       | |  CPER      |
+>> +  + +--------------------------+     |   |                                       | |  CPER      |
+>> +  | | .................        |     |   |                                       | |  ....      |
+>> +  | | error_status_address-----+-----+   |                                       | |  CPER      |
+>> +  | | .................        |         |                                       +-+------------+
+>> +  | | read_ack_register--------+---------+
+>> +  | | read_ack_preserve        |
+>> +  | | read_ack_write           |
+>> +  + +--------------------------+
+> 
+> I'd merge "Error Status Data Block" with "address registers", so it would be
+> clear that "Error Status Data Block" is located after "read_ack_registerN"
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 7a4ac9339b..bff81b51d1 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -313,13 +313,30 @@ static void arm_cpu_reset(CPUState *s)
-             initial_msp =3D ldl_p(rom);
-             initial_pc =3D ldl_p(rom + 4);
-         } else {
--            /* Address zero not covered by a ROM blob, or the ROM blob
--             * is in non-modifiable memory and this is a second reset afte=
-r
--             * it got copied into memory. In the latter case, rom_ptr
--             * will return a NULL pointer and we should use ldl_phys inste=
-ad.
--             */
--            initial_msp =3D ldl_phys(s->as, vecbase);
--            initial_pc =3D ldl_phys(s->as, vecbase + 4);
-+            /* See if the ROM blob is aliased somewhere */
-+            hwaddr len =3D 0, xlat =3D 0;
-+            MemoryRegion *mr =3D address_space_translate(s->as, vecbase, &=
-xlat,
-+                    &len, false, MEMTXATTRS_UNSPECIFIED);
-+
-+            if (mr) {
-+                rom =3D rom_ptr(mr->addr + xlat, 8);
-+            }
-+
-+            if (rom) {
-+                initial_msp =3D ldl_p(rom);
-+                initial_pc =3D ldl_p(rom + 4);
-+            } else {
-+
-+                /*
-+                 * Address zero not covered by a ROM blob, or the ROM blob
-+                 * is in non-modifiable memory and this is a second reset =
-after
-+                 * it got copied into memory. In the latter case, rom_ptr
-+                 * will return a NULL pointer and we should use ldl_phys
-+                 * instead.
-+                 */
-+                initial_msp =3D ldl_phys(s->as, vecbase);
-+                initial_pc =3D ldl_phys(s->as, vecbase + 4);
-+            }
-         }
-=20
-         env->regs[13] =3D initial_msp & 0xFFFFFFFC;
---=20
-2.17.1
+Yes, this image doesn't demonstrate this point. We will make some changes on
+this image.
 
+> 
+>> +
+>> +(1) QEMU generates the ACPI HEST table. This table goes in the current
+>> +    "etc/acpi/tables" fw_cfg blob. Each error source has different
+>> +    notification types.
+>> +
+>> +(2) A new fw_cfg blob called "etc/hardware_errors" is introduced. QEMU
+>> +    also needs to populate this blob. The "etc/hardware_errors" fw_cfg blob
+>> +    contains an address registers table and an Error Status Data Block table.
+>> +
+>> +(3) The address registers table contains N Error Block Address entries
+>> +    and N Read Ack Register entries. The size for each entry is 8-byte.
+>> +    The Error Status Data Block table contains N Error Status Data Block
+>> +    entries. The size for each entry is 4096(0x1000) bytes. The total size
+>> +    for the "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
+>> +    N is the number of the kinds of hardware error sources.
+>> +
+>> +(4) QEMU generates the ACPI linker/loader script for the firmware. The
+>> +    firmware pre-allocates memory for "etc/acpi/tables", "etc/hardware_errors"
+>> +    and copies blob contents there.
+>> +
+>> +(5) QEMU generates N ADD_POINTER commands, which patch addresses in the
+>> +    "error_status_address" fields of the HEST table with a pointer to the
+>> +    corresponding "address registers" in the "etc/hardware_errors" blob.
+>> +
+>> +(6) QEMU generates N ADD_POINTER commands, which patch addresses in the
+>> +    "read_ack_register" fields of the HEST table with a pointer to the
+>> +    corresponding "address registers" in the "etc/hardware_errors" blob.
+> 
+> s/"address registers" in/"read_ack_register" within/
+
+OK.
+
+> 
+>> +
+>> +(7) QEMU generates N ADD_POINTER commands for the firmware, which patch
+>> +    addresses in the "error_block_address" fields with a pointer to the
+>> +    respective "Error Status Data Block" in the "etc/hardware_errors" blob.
+>> +
+>> +(8) QEMU defines a third and write-only fw_cfg blob which is called
+>> +    "etc/hardware_errors_addr". Through that blob, the firmware can send back
+>> +    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
+>> +    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER command
+>> +    for the firmware. The firmware will write back the start address of
+>> +    "etc/hardware_errors" blob to the fw_cfg file "etc/hardware_errors_addr".
+>> +
+> 
+>> +(9) When QEMU gets a SIGBUS from the kernel, QEMU formats the CPER right into
+>> +    guest memory, 
+> 
+> s/
+> QEMU formats the CPER right into guest memory
+> /
+> QEMU writes CPER into corresponding "Error Status Data Block"
+> /
+> 
+
+OK.
+
+>> and then injects platform specific interrupt (in case of
+>> +    arm/virt machine it's Synchronous External Abort) as a notification which
+>> +    is necessary for notifying the guest.
+> 
+> 
+>> +
+>> +(10) This notification (in virtual hardware) will be handled by the guest
+>> +     kernel, guest APEI driver will read the CPER which is recorded by QEMU and
+>> +     do the recovery.
+> Maybe better would be to say:
+> "
+> On receiving notification, guest APEI driver cold read the CPER error
+> and take appropriate action
+> "
+
+OK.
+
+> 
+> 
+> also in HEST patches there is implicit ABI, which probably should be documented here.
+> More specifically kvm_arch_on_sigbus_vcpu() error injection
+> uses source_id as index in "etc/hardware_errors" to find out "Error Status Data Block"
+> entry corresponding to error source. So supported source_id values should be assigned
+> here and not be changed afterwards to make sure that guest will write error into
+> expected "Error Status Data Block" even if guest was migrated to a newer QEMU.
+> 
+
+OK, I will add the descriptions of the implicit ABI.
+
+-- 
+
+Thanks,
+Xiang

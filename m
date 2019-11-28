@@ -1,112 +1,83 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp7134448lfc;
-        Wed, 27 Nov 2019 21:50:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyMIzeoUtMNWZj9SJsBcNlr08cXsw+r4UXLy9yGqy8Xkswc0I8GKXmLPeSMNsYBL9XRG1u6
-X-Received: by 2002:ac8:2441:: with SMTP id d1mr34618782qtd.386.1574920214570;
-        Wed, 27 Nov 2019 21:50:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574920214; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp7284136lfc;
+        Thu, 28 Nov 2019 00:47:08 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyJSMjxW7IeQGrcJyz3YRAuXXucBCppZFl1dn1j0Ys56BigQC/lj2N3YW4GaPDyVJoXBkYi
+X-Received: by 2002:a17:906:6b89:: with SMTP id l9mr12796352ejr.130.1574930828550;
+        Thu, 28 Nov 2019 00:47:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574930828; cv=none;
         d=google.com; s=arc-20160816;
-        b=cEpm4w9DTLIdkTHBNaNxuwIFTDTkPAJtS+nlU6nmX1x2QOttx5JMlYOPRKXUdbpSeP
-         dHxkwQ+FW/FJqLvswAOyKdggofOrAtSqfVD8ysEnOJcPRl+soZ87Qk26htqndJVi2Lpq
-         6CDyysfuqA6HUSuRupIgTsQnRMVg55AGqWeHwIWrEXl3Vnf5YMhIG1e0JzQWUuYvWHqW
-         yijgxetCNgzvf3w5CSq71jSNi2sO7SdZ5Cvo9/iA5OfTSLAljnlDiAKhcsnTdTO3blxa
-         W8M20sjjytRb3jvOdSYeEg/3FDJqzVC84/YlQbHU3yJ0KKmrghzOaPJIxTQxChPJnIg0
-         k8DA==
+        b=FzdJmpLuDWtBoaJqCLXQcHL54YwVCBh/ie9whB2pJIzkggnS90tEy1u1OAei2IiPxq
+         uLl+1kWYY0/FlwBx9IjigRyt3K8xpQTlUqMVfpAqv25P+klcPZnhvkHCOqFgAkVqSsYn
+         MpOLdYj4FyO3wEhUeyRAv81ElnL+HYW3t1hE9M6aI1CQUjCc04i0nqDpZZbjmwQghma3
+         wel2L/hHyPkpLelNx5MoSX6DqM8J+w9NdLQT/kyAoyTphHtBkG4OflOyiQLMysjCHhOV
+         mqhY1UcPbMw5nC8GfpEBpc3aA+j2fncWMnf7Pd4d4F3kCH8Zo3HSlF1P1+8h7g2yMJa2
+         06mQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature:dkim-signature;
-        bh=QtPlHzwjC4iXCCxuQoeirIh5WeTqNoM7oHnbBwCwgY8=;
-        b=BQKcCu2AihoA78KyCi3wQ29zyJKrsXmAvuPe4lR1KILM8wB49EYKSaBc+JQyHTEKOB
-         n/D50c//BmbFr7tXtJpfYBNadNIlqGXGW5fiKDjdlAwnAx+fVSNEhbccek6lrb52EioJ
-         9F7bzC6Htm2vdN8JKoF4WxnCGuKToWNF9xw2gqP4SArvhDYJ2wXfGCKyBPreAAsdYyLP
-         utVUJbUQNp5qid6AcgvEDdBvYCV4T3JwdYvDLCvfedQeS7iAI1mEZOJz1L8Hh8XfDCt1
-         LCn4mij/qXMhZ1wViIfV4LeysUf0VkFHI+SLeLYM71oAN9Hbc1Hr7fes7UF2+G4uMQ6c
-         rDaQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=0xG3ecRPgFaYzaucTgwZvwCvYzhmQxF3tc2tWhid1+4=;
+        b=aD8eym6Ky65fee97a+QVfrg24RKCT+ncX6WZfHSEY1isyv5HAgBdYyveDK6CK2CybI
+         K1jV9YKve2H2gqIUIJipvnL4G/CGjjrw/26bpllEOMo6TDgxMg96nRm1mdjIsE9ttW6o
+         huyoyuJciC9GkAzAsLJ4x1dGlEmxkrtu6LLFcWfmPSAOPPnp889/XGdPRiWqp7prMEcw
+         8BDr65LlcFURmsPDM7xTb5lqp/9wTke6niAd1ZGD/U7W77iGJqkse/vPQIrfu7Y2zgw+
+         yEB/SGNxd1wQaKyxcQNTBdSqLqBtcBl8lAbnew0I+OvKKbAw1DJLPzxBhno0cc7x62M/
+         6diQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=n6nIrfCo;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=DPjvE5sz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d18si11174517qvz.158.2019.11.27.21.50.14
+        by mx.google.com with ESMTPS id rs25si11640322ejb.85.2019.11.28.00.47.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Nov 2019 21:50:14 -0800 (PST)
+        Thu, 28 Nov 2019 00:47:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=n6nIrfCo;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=DPjvE5sz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45520 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46574 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iaCgv-0002ru-S3
-	for alex.bennee@linaro.org; Thu, 28 Nov 2019 00:50:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48317)
+	id 1iaFS6-0004B6-I9
+	for alex.bennee@linaro.org; Thu, 28 Nov 2019 03:47:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39542)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1iaCb9-0006lZ-2r
- for qemu-arm@nongnu.org; Thu, 28 Nov 2019 00:44:16 -0500
+ (envelope-from <clg@kaod.org>) id 1iaFRe-000486-6p
+ for qemu-arm@nongnu.org; Thu, 28 Nov 2019 03:46:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1iaCb7-0001r8-IS
- for qemu-arm@nongnu.org; Thu, 28 Nov 2019 00:44:14 -0500
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:54713)
+ (envelope-from <clg@kaod.org>) id 1iaFRc-0005R6-LL
+ for qemu-arm@nongnu.org; Thu, 28 Nov 2019 03:46:37 -0500
+Received: from 2.mo69.mail-out.ovh.net ([178.33.251.80]:33902)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1iaCb7-0001qE-BX; Thu, 28 Nov 2019 00:44:13 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 1FA592275C;
- Thu, 28 Nov 2019 00:44:13 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Thu, 28 Nov 2019 00:44:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
- :to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm1; bh=QtPlHzwjC4iXC
- CxuQoeirIh5WeTqNoM7oHnbBwCwgY8=; b=n6nIrfCo944EVJQldW2x/3inI9TH/
- HicuPhJgQJK+NyoNXNlJ7ClYy58EvOPzaZQ7leiqoFeIbz+/q/09or6JnmEF8oBv
- i2cPSkIRKlStUdzZ30sMZoooDJBHKvbpfwDvV51pEltkZ26Mp7WZcThQnSd6c428
- 8J8SrkLmUcP8FI8HNUaHWpDajhSzE0GMuxOVENqRqNBJkkoHduRfgjmnDeAyQoa3
- aq9Jx3/OVqGCo4CRY6uPorVlZuSe4OW4dHfOldjgu6YG7zc3U9nirOvZNSuFn6TJ
- kQWNwmyOFcP+R8qE59BnRSQdhBYczqq7vxawKLI8WAZckSCXAs/XLsj2g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :in-reply-to:message-id:mime-version:references:subject:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; bh=QtPlHzwjC4iXCCxuQoeirIh5WeTqNoM7oHnbBwCwgY8=; b=DPjvE5sz
- befuCv1GS3fOqu1ur3qGGTV6mZFBfCy5EWsrHJSvcxGS5YLuIK+ynYLjIJz0eo4N
- oLjfv+ZlZcjUIMtA1dFaTcA8GQFDumadf6Nhl9kt8V1JsYPu8WP1Ck7mo5EGUuL3
- t6qWfZURb8IHxDEKbnbMwiuGp+2/1ueMJcKYi9LAKAhujpbenTXLL0OPqR0Ku7mG
- yTRH6a1sZs1SVP0rLA3t3TRMagQD59miRKAOVS6go+z8stX5CvXHDFxzz05zqf8l
- LYcCpI+j9d1QcmhYQr9fTt6y27BOyD1SsGLLYAyb2psvtl7KW9fep1JR5M+Go+A3
- QI3O1RHs1k/sIQ==
-X-ME-Sender: <xms:rF7fXZifHmoCCnnKEaluXN0fhbplwCa_ojuzhFh3dKBwwRMjCsYu-g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudeiiedgkeekucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgjfhgggfestdekre
- dtredttdenucfhrhhomheptehnughrvgifucflvghffhgvrhihuceorghnughrvgifsegr
- jhdrihgurdgruheqnecukfhppedvtddvrdekuddrudekrdeftdenucfrrghrrghmpehmrg
- hilhhfrhhomheprghnughrvgifsegrjhdrihgurdgruhenucevlhhushhtvghrufhiiigv
- pedu
-X-ME-Proxy: <xmx:rV7fXSR5sUPFqGVvUFwQCbue8DpU1XvM0dZ-nXMOTICXfy0i5U0y5w>
- <xmx:rV7fXUHZQez54iJIEEmMg1YNcZAVDAL3WafuPwwsRYKwrbH7xRyDeg>
- <xmx:rV7fXSnwJHZmKNLbMl_RsFi7NU4K5sd9xDVIYpFsQ7g3R1eb0Wuifg>
- <xmx:rV7fXUhmVraKWNO7w7MJK3L79XE841Tr_0tq0f_W-T0674hxO1HlVQ>
-Received: from mistburn.au.ibm.com (bh02i525f01.au.ibm.com [202.81.18.30])
- by mail.messagingengine.com (Postfix) with ESMTPA id A8FA38005A;
- Thu, 28 Nov 2019 00:44:10 -0500 (EST)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: qemu-arm@nongnu.org
-Subject: [PATCH 3/4] target/arm: Prepare generic timer for per-platform CNTFRQ
-Date: Thu, 28 Nov 2019 16:15:26 +1030
-Message-Id: <20191128054527.25450-4-andrew@aj.id.au>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191128054527.25450-1-andrew@aj.id.au>
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iaFRc-0005JQ-DA
+ for qemu-arm@nongnu.org; Thu, 28 Nov 2019 03:46:36 -0500
+Received: from player734.ha.ovh.net (unknown [10.108.1.232])
+ by mo69.mail-out.ovh.net (Postfix) with ESMTP id 02C6973CC4
+ for <qemu-arm@nongnu.org>; Thu, 28 Nov 2019 09:46:32 +0100 (CET)
+Received: from kaod.org (lfbn-1-2229-223.w90-76.abo.wanadoo.fr [90.76.50.223])
+ (Authenticated sender: clg@kaod.org)
+ by player734.ha.ovh.net (Postfix) with ESMTPSA id 0E1E0C919A07;
+ Thu, 28 Nov 2019 08:46:26 +0000 (UTC)
+Subject: Re: [PATCH 2/4] target/arm: Abstract the generic timer frequency
+To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
 References: <20191128054527.25450-1-andrew@aj.id.au>
+ <20191128054527.25450-3-andrew@aj.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <cd0b8fe7-ce7a-1ba4-2c5c-1bec0a2d1a57@kaod.org>
+Date: Thu, 28 Nov 2019 09:46:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20191128054527.25450-3-andrew@aj.id.au>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 9901163780868115264
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudeiiedguddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjqdffgfeufgfipdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdeltddrjeeirdehtddrvddvfeenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeefgedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 66.111.4.26
+X-Received-From: 178.33.251.80
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,166 +89,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, clg@kaod.org,
- joel@jms.id.au
+Cc: peter.maydell@linaro.org, joel@jms.id.au, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d2uS7DapGkzw
+X-TUID: vuTq7snr1atN
 
-The ASPEED AST2600 clocks the generic timer at the rate of HPLL. On
-recent firmwares this is at 1125MHz, which is considerably quicker than
-the assumed 62.5MHz of the current generic timer implementation. The
-delta between the value as read from CNTFRQ and the true rate of the
-underlying QEMUTimer leads to sticky behaviour in AST2600 guests.
+On 28/11/2019 06:45, Andrew Jeffery wrote:
+> Prepare for SoCs such as the ASPEED AST2600 whose firmware configures
+> CNTFRQ to values significantly larger than the static 62.5MHz value
+> currently derived from GTIMER_SCALE. As the OS potentially derives its
+> timer periods from the CNTFRQ value the lack of support for running
+> QEMUTimers at the appropriate rate leads to sticky behaviour in the
+> guest.
+> 
+> Substitute the GTIMER_SCALE constant with use of a helper to derive the
+> period from gt_cntfrq stored in struct ARMCPU. Initially set gt_cntfrq
+> to the frequency associated with GTIMER_SCALE so current behaviour is
+> maintained.
+> 
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> ---
+>  target/arm/cpu.c    |  2 ++
+>  target/arm/cpu.h    | 10 ++++++++++
+>  target/arm/helper.c | 10 +++++++---
+>  3 files changed, 19 insertions(+), 3 deletions(-)
+> 
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 7a4ac9339bf9..5698a74061bb 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -974,6 +974,8 @@ static void arm_cpu_initfn(Object *obj)
+>      if (tcg_enabled()) {
+>          cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
+>      }
+> +
+> +    cpu->gt_cntfrq = NANOSECONDS_PER_SECOND / GTIMER_SCALE;
+>  }
+>  
+>  static Property arm_cpu_reset_cbar_property =
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 83a809d4bac4..666c03871fdf 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -932,8 +932,18 @@ struct ARMCPU {
+>       */
+>      DECLARE_BITMAP(sve_vq_map, ARM_MAX_VQ);
+>      DECLARE_BITMAP(sve_vq_init, ARM_MAX_VQ);
+> +
+> +    /* Generic timer counter frequency, in Hz */
+> +    uint64_t gt_cntfrq;
+>  };
+>  
+> +static inline unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
+> +{
+> +    /* XXX: Could include qemu/timer.h to get NANOSECONDS_PER_SECOND? */
+> +    const unsigned int ns_per_s = 1000 * 1000 * 1000;
+> +    return ns_per_s > cpu->gt_cntfrq ? ns_per_s / cpu->gt_cntfrq : 1;
+> +}
 
-Add a feature-gated property exposing CNTFRQ for ARM CPUs providing the
-generic timer. This allows platforms to configure CNTFRQ (and the
-associated QEMUTimer) to the appropriate frequency prior to starting the
-guest.
+Are you inlining this helper for performance reasons ? 
 
-As the platform can now determine the rate of CNTFRQ we're exposed to
-limitations of QEMUTimer that didn't previously materialise: In the
-course of emulation we need to arbitrarily and accurately convert
-between guest ticks and time, but we're constrained by QEMUTimer's use
-of an integer scaling factor. Its effect is QEMUTimer cannot exactly
-capture the period of frequencies that do not cleanly divide
-NANOSECONDS_PER_SECOND for scaling ticks to time. As such, provide an
-equally inaccurate scaling factor for scaling time to ticks so at least
-an self-consistent inverse relationship holds.
+C. 
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
- target/arm/cpu.c    | 43 +++++++++++++++++++++++++++++++++----------
- target/arm/cpu.h    | 18 ++++++++++++++++++
- target/arm/helper.c |  9 ++++++++-
- 3 files changed, 59 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5698a74061bb..f186019a77fd 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -974,10 +974,12 @@ static void arm_cpu_initfn(Object *obj)
-     if (tcg_enabled()) {
-         cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
-     }
--
--    cpu->gt_cntfrq = NANOSECONDS_PER_SECOND / GTIMER_SCALE;
- }
- 
-+static Property arm_cpu_gt_cntfrq_property =
-+            DEFINE_PROP_UINT64("cntfrq", ARMCPU, gt_cntfrq,
-+                               NANOSECONDS_PER_SECOND / GTIMER_SCALE);
-+
- static Property arm_cpu_reset_cbar_property =
-             DEFINE_PROP_UINT64("reset-cbar", ARMCPU, reset_cbar, 0);
- 
-@@ -1174,6 +1176,11 @@ void arm_cpu_post_init(Object *obj)
- 
-     qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property,
-                              &error_abort);
-+
-+    if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
-+        qdev_property_add_static(DEVICE(cpu), &arm_cpu_gt_cntfrq_property,
-+                                 &error_abort);
-+    }
- }
- 
- static void arm_cpu_finalizefn(Object *obj)
-@@ -1253,14 +1260,30 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         }
-     }
- 
--    cpu->gt_timer[GTIMER_PHYS] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
--                                           arm_gt_ptimer_cb, cpu);
--    cpu->gt_timer[GTIMER_VIRT] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
--                                           arm_gt_vtimer_cb, cpu);
--    cpu->gt_timer[GTIMER_HYP] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
--                                          arm_gt_htimer_cb, cpu);
--    cpu->gt_timer[GTIMER_SEC] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
--                                          arm_gt_stimer_cb, cpu);
-+
-+    {
-+        uint64_t scale;
-+
-+        if (arm_feature(env, ARM_FEATURE_GENERIC_TIMER)) {
-+            if (!cpu->gt_cntfrq) {
-+                error_setg(errp, "Invalid CNTFRQ: %"PRId64"Hz",
-+                           cpu->gt_cntfrq);
-+                return;
-+            }
-+            scale = gt_cntfrq_period_ns(cpu);
-+        } else {
-+            scale = GTIMER_SCALE;
-+        }
-+
-+        cpu->gt_timer[GTIMER_PHYS] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-+                                               arm_gt_ptimer_cb, cpu);
-+        cpu->gt_timer[GTIMER_VIRT] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-+                                               arm_gt_vtimer_cb, cpu);
-+        cpu->gt_timer[GTIMER_HYP] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-+                                              arm_gt_htimer_cb, cpu);
-+        cpu->gt_timer[GTIMER_SEC] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-+                                              arm_gt_stimer_cb, cpu);
-+    }
- #endif
- 
-     cpu_exec_realizefn(cs, &local_err);
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 666c03871fdf..0bcd13dcac81 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -939,6 +939,24 @@ struct ARMCPU {
- 
- static inline unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
- {
-+    /*
-+     * The exact approach to calculating guest ticks is:
-+     *
-+     *     muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), cpu->gt_cntfrq,
-+     *              NANOSECONDS_PER_SECOND);
-+     *
-+     * We don't do that. Rather we intentionally use integer division
-+     * truncation below and in the caller for the conversion of host monotonic
-+     * time to guest ticks to provide the exact inverse for the semantics of
-+     * the QEMUTimer scale factor. QEMUTimer's scale facter is an integer, so
-+     * it loses precision when representing frequencies where
-+     * `(NANOSECONDS_PER_SECOND % cpu->gt_cntfrq) > 0` holds. Failing to
-+     * provide an exact inverse leads to scheduling timers with negative
-+     * periods, which in turn leads to sticky behaviour in the guest.
-+     *
-+     * Finally, CNTFRQ is effectively capped at 1GHz to ensure our scale factor
-+     * cannot become zero.
-+     */
-     /* XXX: Could include qemu/timer.h to get NANOSECONDS_PER_SECOND? */
-     const unsigned int ns_per_s = 1000 * 1000 * 1000;
-     return ns_per_s > cpu->gt_cntfrq ? ns_per_s / cpu->gt_cntfrq : 1;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1cc0551081a0..79e278e78291 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2683,6 +2683,13 @@ void arm_gt_stimer_cb(void *opaque)
-     gt_recalc_timer(cpu, GTIMER_SEC);
- }
- 
-+static void arm_gt_cntfrq_reset(CPUARMState *env, const ARMCPRegInfo *opaque)
-+{
-+    ARMCPU *cpu = env_archcpu(env);
-+
-+    cpu->env.cp15.c14_cntfrq = cpu->gt_cntfrq;
-+}
-+
- static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     /* Note that CNTFRQ is purely reads-as-written for the benefit
-      * of software; writing it doesn't actually change the timer frequency.
-@@ -2697,7 +2704,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 0,
-       .access = PL1_RW | PL0_R, .accessfn = gt_cntfrq_access,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_cntfrq),
--      .resetvalue = (1000 * 1000 * 1000) / GTIMER_SCALE,
-+      .resetfn = arm_gt_cntfrq_reset,
-     },
-     /* overall control: mostly access permissions */
-     { .name = "CNTKCTL", .state = ARM_CP_STATE_BOTH,
--- 
-2.20.1
+>  void arm_cpu_post_init(Object *obj);
+>  
+>  uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz);
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 65c4441a3896..1cc0551081a0 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -2409,7 +2409,9 @@ static CPAccessResult gt_stimer_access(CPUARMState *env,
+>  
+>  static uint64_t gt_get_countervalue(CPUARMState *env)
+>  {
+> -    return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / GTIMER_SCALE;
+> +    ARMCPU *cpu = env_archcpu(env);
+> +
+> +    return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / gt_cntfrq_period_ns(cpu);
+>  }
+>  
+>  static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+> @@ -2445,7 +2447,7 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+>           * set the timer for as far in the future as possible. When the
+>           * timer expires we will reset the timer for any remaining period.
+>           */
+> -        if (nexttick > INT64_MAX / GTIMER_SCALE) {
+> +        if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
+>              timer_mod_ns(cpu->gt_timer[timeridx], INT64_MAX);
+>          } else {
+>              timer_mod(cpu->gt_timer[timeridx], nexttick);
+> @@ -2874,11 +2876,13 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
+>  
+>  static uint64_t gt_virt_cnt_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>  {
+> +    ARMCPU *cpu = env_archcpu(env);
+> +
+>      /* Currently we have no support for QEMUTimer in linux-user so we
+>       * can't call gt_get_countervalue(env), instead we directly
+>       * call the lower level functions.
+>       */
+> -    return cpu_get_clock() / GTIMER_SCALE;
+> +    return cpu_get_clock() / gt_cntfrq_period(cpu);
+>  }
+>  
+>  static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
+> 
 

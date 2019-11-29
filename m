@@ -1,117 +1,94 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9170449lfc;
-        Fri, 29 Nov 2019 07:39:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxrzzTAIfJWZBMmqzn6jTBMICFMIHReHUsLVCsOSVGy0xODGnNo7nzUtKsqXi/lIB9/DyBV
-X-Received: by 2002:a17:906:b253:: with SMTP id ce19mr35631918ejb.61.1575041946048;
-        Fri, 29 Nov 2019 07:39:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575041946; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9194951lfc;
+        Fri, 29 Nov 2019 08:00:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwsvROOoIMBNEw4V0nRzfiTSHRSbjmFFCJiMfdpQmx7R0TgZHwF5eHI1r/ktmHDoaCcGcvC
+X-Received: by 2002:a17:906:a40e:: with SMTP id l14mr61747885ejz.168.1575043232424;
+        Fri, 29 Nov 2019 08:00:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575043232; cv=none;
         d=google.com; s=arc-20160816;
-        b=znjn+YNbcSn60SXhJ/fgGKsjZAyIqpjMGnf++jVOzAlMF+IBayKQUFNWdKnGfYY5DC
-         /fbLcHWy5mwyRsO0zqb/dAVsXQE3Yv316PPzu6X8t55bE7nTr0xqVAP0TKCuA/osx2S4
-         EVVf/fxZex9/vmXy0ei2KZXG/+/9XKJygVxUAuLhUNX3CUXQfy5F+cNQw2qa8s4W6tPq
-         AaUVer+RvugT+ZAs0l1l4Rp/8PlU8pgPsPi2FEdoc7sTr2m8SILUaPOyAKnOvKmJAgvG
-         sXgrQEcjPgWauNfb2XeEpdHr5gkv+9jyiO1BIRO6qkFOa2ctEVyN+/84q3+q1+WrK2ji
-         TBpg==
+        b=QG9ZdthhI/s6/CE3YO6UO94q5CleoqYnDy2s9mpRtwFFio2PP2vvIZbEG/MDe8Cdkl
+         OaAe9NH17VdyVn0EF41+NXcmmXmkW+0cZIkgGTzL4rcyn83fPW3AGBbW/rfco8YofPvo
+         LQoYmyPOneVHG+6gT68pyFMi/tPC6efEWXoX07rh05JehCurqoy+gUSPOJxIEqbK42HM
+         NiYR2z/u/x0gF8JgsQc7xOTrAWzRGcHx0OwbwprbS2nOmOBWjvmDB35xQnt9zBNddzWY
+         WdCWMaeSbjZ0pfNGcn3ht2kqDt8nj23LO6o94vHj1KN7SNqhYSMT58wTc5tFbYBbStzU
+         Fq3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=dLxPmCibd/jvExQ+b8ZmycwQV2L50zWdzkVxWAZ1Lxs=;
-        b=Bc2UJJwfxjFe1gcf+htozMWvwCG51VpHzKrvmS+5fCzhV6ewjjL1FRTv440nvGwjyO
-         XigpgAqFSD8i1UlPgca+MTog1zaqZigyjJrn/uyzme+d71Cn/Yx2Rg/deEFTE1DJlOlG
-         E20TQRHJG9DgxlSvQ+iCRgXCLyCyALjRnbMHevrdw0bYUt/rb8EnNXeYVXBJeditjy/3
-         aiUm4vsI7tvxXViIEt++oIDd+Cd6c8DBRokpDl6MwnrdvbKz5OE4LkyzzBczfZkoZSw8
-         O8xb93h4YNXp9AXwH4n34STGRLwjia9Z3bE5PS+DIOORcwr3nOCjRW5Z4IQomcGKqXiW
-         Bm4g==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:ironport-sdr:ironport-sdr;
+        bh=/VEYOxeYLGugiDICNVT4vpxMUIzvHOPncTUcmEaoQVI=;
+        b=glInfZBa13BurAymxMXD+PWDk39Vt/dt2famBBlREUk2v4WiJ1RSXawMiKK0+TKg/d
+         p3aJgDbpAOgWts3/yaq94nkP5ReUCfvY8P993TTBeHkyG5p5zoLfi8yyQuU0Nruqsnmd
+         uA4HhwQQ4fALwGfeB1lvEs/msqu+xyaMc2neMWr/acjgo0HfpBGe1rX8iZPVueYG/Lkm
+         a0S2r989Pnx/KXO2dD91BvUbH0S/Nm+aA9rjV40COvx9iyni0OhUsNfHjyd+xFJKu1yj
+         VETQdPdz23CJPF5iak6uc6aOle2dMfzHmE8NdagH8nurmQwsrHxTVRFEx1WR4Ocv695b
+         OkJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NGxggF2e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b12si8272224edy.63.2019.11.29.07.39.05
+        by mx.google.com with ESMTPS id q9si5293901edn.121.2019.11.29.08.00.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Nov 2019 07:39:06 -0800 (PST)
+        Fri, 29 Nov 2019 08:00:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NGxggF2e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60308 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60436 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iaiMJ-0002J0-3i
-	for alex.bennee@linaro.org; Fri, 29 Nov 2019 10:39:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52397)
+	id 1iaih5-0000WX-9x
+	for alex.bennee@linaro.org; Fri, 29 Nov 2019 11:00:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56439)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iaiLm-0002G1-P9
- for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:38:32 -0500
+ (envelope-from <Bilal_Wasim@mentor.com>) id 1iaig0-0000S2-FB
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:59:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iaiLg-0002Pd-6d
- for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:38:26 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:27230
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <Bilal_Wasim@mentor.com>) id 1iaifx-0002Ym-4B
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:59:22 -0500
+Received: from esa3.mentor.iphmx.com ([68.232.137.180]:46077)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iaiLe-0002KS-Kt
- for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:38:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575041901;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dLxPmCibd/jvExQ+b8ZmycwQV2L50zWdzkVxWAZ1Lxs=;
- b=NGxggF2eI3pzRyfxTbPi6C4PLLuHJF7zF24asPDAz2j3ZYe3smfzriLb4bEkeaouTlYqo4
- wd+dNXAoLNgONPk/u1oT+ECLYCsDoO3DTCPCebyXTbihpMtoQguOvAj71GzZNw8CTXdYtZ
- pJwFSvP1xNRdnHGiOpZt99P7EFgTcRg=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-335-D1_H9LCpNB6U_Q9kwBH9Jg-1; Fri, 29 Nov 2019 10:38:20 -0500
-Received: by mail-wr1-f70.google.com with SMTP id b13so1618392wrx.22
- for <qemu-arm@nongnu.org>; Fri, 29 Nov 2019 07:38:19 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=dLxPmCibd/jvExQ+b8ZmycwQV2L50zWdzkVxWAZ1Lxs=;
- b=o5wf1zIOPPWnv/oXGIc37MOhgXxL/tpUI1Kq+Mw1WvIXfKTucuzacGEe5ys3WZOJmW
- TPDvkPss1ERECaDUQdkjRGNxhM2mWYFyt5fAZszlm48qHBkGm0hIPyNX5MuC1esQRXb5
- l14qrC6jIXght+9yr3lJASB53P25OS45SkIwDoGZvpVUBVzaT+Rr+BqPlwlKsn7vVG0i
- vmCHKsRmxWwPdFNoqor0BWOpDirgiv9XMDra6hicQ0u1ZyLUt2eDr0ITJ2Dm0zrh45v+
- GShZrbvVDkS3G89Jn/A3aBJRp1JPcQWLGF0H1mxMuIax4IObrRb5V/vuQabqAr4AxZ37
- LIow==
-X-Gm-Message-State: APjAAAXz2u16Wq3JIWdVxhtEiq63XLzlAOOQpBK9s9TyuwI9ACI1G3sW
- ezF/A9QeQ7miaGK147BCfdBGzvKRCAQN1893NXelcv60MzUCcdSZO6T6JgFBjIeySoGw3hXaLpK
- CpukozoxoLuHg
-X-Received: by 2002:adf:a551:: with SMTP id j17mr53471054wrb.18.1575041898635; 
- Fri, 29 Nov 2019 07:38:18 -0800 (PST)
-X-Received: by 2002:adf:a551:: with SMTP id j17mr53471040wrb.18.1575041898449; 
- Fri, 29 Nov 2019 07:38:18 -0800 (PST)
-Received: from [192.168.1.74] (67.23.27.109.rev.sfr.net. [109.27.23.67])
- by smtp.gmail.com with ESMTPSA id h15sm28786322wrb.44.2019.11.29.07.38.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 29 Nov 2019 07:38:17 -0800 (PST)
-Subject: Re: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
+ (Exim 4.71) (envelope-from <Bilal_Wasim@mentor.com>)
+ id 1iaifo-0001pw-Ma; Fri, 29 Nov 2019 10:59:12 -0500
+IronPort-SDR: RrpVsafef8GvYfhN9b7gems2e8x126OoQCTOXxsVeGPXVjw23p4J6Ti24F/6isr7sP266CWE4G
+ JPsEQwin7ByMoTcb7PHxwP6lDfJBEPOQwFNgM2NlwaASAze3h3v4UK7xv3tYrmh4jvJ7YLNKJX
+ 9NvuOgMZJ6EBsIYnRQq+Ou/lN+8P4sl2KaoML2UeqsH7+4qJ6Jq/R3S5Wy/WTGckPe5UhT+lcz
+ 5qxgghijQuHKc/RANCB2veCUFaRBdAWR5d7GHPJzBsAgMN9TdkRw9A736b5e+hSD4CbreMLMsP
+ qSw=
+X-IronPort-AV: E=Sophos;i="5.69,257,1571731200"; d="scan'208";a="43631118"
+Received: from orw-gwy-02-in.mentorg.com ([192.94.38.167])
+ by esa3.mentor.iphmx.com with ESMTP; 29 Nov 2019 07:59:06 -0800
+IronPort-SDR: 5RegC455+GJpQy38oG9WxXAB++Z6w1Km3HLqUFxfu+IwizpNJ6sTm0Qt0UGHathjtP7v75wl8/
+ IjmIGFqp5IT9LBYTGw1OxjxXV3GTwgkRGPujrDXe2tgGCMUx2ivxQhCfcoJwNDVRIWDN5IG7rD
+ ZsjherK8pmUMYuUgYiqEgrgMu/Q2MoDRPdjBQLLKI6iw9aTPycs6rjA/+S8WNQ47/DTTzc9tOg
+ s5JEz+rGoCE2b8UwJe8kcUGAC1m5q2kHFO3KS6pse4GD/nQfFKGjV+mxzQFvfacmmM0msL22v4
+ 6ME=
+From: "Wasim, Bilal" <Bilal_Wasim@mentor.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ "bilalwasim676@gmail.com" <bilalwasim676@gmail.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+Subject: RE: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
  mode.
-To: bilalwasim676@gmail.com, qemu-devel@nongnu.org
+Thread-Topic: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
+ mode.
+Thread-Index: AQHVpsZtzk/Nr8P2J0mB7aONo8AxiKeiSHsAgAAFdlA=
+Date: Fri, 29 Nov 2019 15:59:00 +0000
+Message-ID: <8c956ae31e8f44a2b831a5030b2448b4@SVR-IES-MBX-03.mgc.mentorg.com>
 References: <20191129150508.24404-1-bilalwasim676@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <afe9efde-7ac1-8607-446a-8fbf10accece@redhat.com>
-Date: Fri, 29 Nov 2019 16:38:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
-MIME-Version: 1.0
-In-Reply-To: <20191129150508.24404-1-bilalwasim676@gmail.com>
+ <afe9efde-7ac1-8607-446a-8fbf10accece@redhat.com>
+In-Reply-To: <afe9efde-7ac1-8607-446a-8fbf10accece@redhat.com>
+Accept-Language: en-GB, en-IE, en-US
 Content-Language: en-US
-X-MC-Unique: D1_H9LCpNB6U_Q9kwBH9Jg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [137.202.0.90]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 68.232.137.180
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,93 +100,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Jason Wang <jasowang@redhat.com>,
- aa1ronham@gmail.com, jcd@tribudubois.net, qemu-arm@nongnu.org,
- bilal_wasim@mentor.com, linux@roeck-us.net
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Jason Wang <jasowang@redhat.com>, "aa1ronham@gmail.com" <aa1ronham@gmail.com>,
+ "jcd@tribudubois.net" <jcd@tribudubois.net>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "linux@roeck-us.net" <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5/T8Y8Pg4JuH
+X-TUID: O+tRjMWbgjUP
 
-Hi Bilal,
-
-Cc'ing Jason, the maintainer of network devices.
-
-On 11/29/19 4:05 PM, bilalwasim676@gmail.com wrote:
-> From: bwasim <bilal_wasim@mentor.com>
-
-Your git setup misses your 'user.name', you could fix it running:
-
-   git config user.name "Bilal Wasim"
-
-(eventually with the --global option).
-
-The patch looks good otherwise.
-
-Thanks!
-
-> Loopback mode only works when specific conditions (as dictated
-> by the IP guide) are met, i.e. the MII_MODE is set and the
-> RMII_MODE is cleared. If not, we simply send the packet on the
-> output queue (for TX to the host network). Tested by running a
-> custom RTOS and TXing a ton of packets. The same packets were
-> received on the RX side..
-> 
-> Signed-off-by: Bilal Wasim <bilal_wasim@mentor.com>
-> ---
->   hw/net/imx_fec.c | 27 +++++++++++++++++++++++++--
->   1 file changed, 25 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-> index bd99236864..c51e7f7363 100644
-> --- a/hw/net/imx_fec.c
-> +++ b/hw/net/imx_fec.c
-> @@ -256,6 +256,29 @@ static const VMStateDescription vmstate_imx_eth = {
->   
->   static void imx_eth_update(IMXFECState *s);
->   
-> +/*
-> + * Function to check if the MAC is configured to run in loopback mode.
-> + * If so, invoke the "receive" routine.
-> + * Else write to the output.
-> + * */
-> +static void send_pkt(IMXFECState *s, uint8_t *frame, int frame_size)
-> +{
-> +    NetClientState *nc = qemu_get_queue(s->nic);
-> +
-> +    /*
-> +     * Loopback or Normal mode ?
-> +     * Per the FEC Manual: If loopback is enabled, the MII_MODE
-> +     * should be SET and the RMII_MODE should be cleared. Loopback
-> +     * will only work if this criterion is met. If not met,
-> +     * we will send the frame on the output queue. */
-> +    if ((s->regs[ENET_RCR] & ENET_RCR_LOOP) && (s->regs[ENET_RCR] & ENET_RCR_MII_MODE)
-> +            && !(s->regs[ENET_RCR] & ENET_RCR_RMII_MODE)) {
-> +        nc->info->receive(nc, frame, frame_size);
-> +    } else {
-> +        qemu_send_packet(nc, frame, frame_size);
-> +    }
-> +}
-> +
->   /*
->    * The MII phy could raise a GPIO to the processor which in turn
->    * could be handled as an interrpt by the OS.
-> @@ -488,7 +511,7 @@ static void imx_fec_do_tx(IMXFECState *s)
->           frame_size += len;
->           if (bd.flags & ENET_BD_L) {
->               /* Last buffer in frame.  */
-> -            qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_size);
-> +            send_pkt(s, (uint8_t *)&s->frame, frame_size);
->               ptr = s->frame;
->               frame_size = 0;
->               s->regs[ENET_EIR] |= ENET_INT_TXF;
-> @@ -586,7 +609,7 @@ static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
->               }
->               /* Last buffer in frame.  */
->   
-> -            qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_size);
-> +            send_pkt(s, (uint8_t *)&s->frame, frame_size);
->               ptr = s->frame;
->   
->               frame_size = 0;
-> 
-
+VGhhbmtzIGZvciB0aGUgcG9pbnRlcnMgcGhpbGlwcGUuLiBJcyB0aGUgcGF0Y2ggb2theSB0byBi
+ZSBtZXJnZWQgd2l0aG91dCBpdCBvciBkbyBJIG5lZWQgdG8gZG8gYSByZS1zdWJtaXNzaW9uIHdp
+dGggdGhlIHVwZGF0ZWQgdXNlcm5hbWUgPw0KDQotIEJpbGFsIA0KDQotLS0tLU9yaWdpbmFsIE1l
+c3NhZ2UtLS0tLQ0KRnJvbTogUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgW21haWx0bzpwaGlsbWRA
+cmVkaGF0LmNvbV0gDQpTZW50OiBGcmlkYXksIE5vdmVtYmVyIDI5LCAyMDE5IDg6MzggUE0NClRv
+OiBiaWxhbHdhc2ltNjc2QGdtYWlsLmNvbTsgcWVtdS1kZXZlbEBub25nbnUub3JnDQpDYzogcGV0
+ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBhYTFyb25oYW1AZ21haWwuY29tOyBqY2RAdHJpYnVkdWJv
+aXMubmV0OyBxZW11LWFybUBub25nbnUub3JnOyBXYXNpbSwgQmlsYWwgPEJpbGFsX1dhc2ltQG1l
+bnRvci5jb20+OyBsaW51eEByb2Vjay11cy5uZXQ7IEphc29uIFdhbmcgPGphc293YW5nQHJlZGhh
+dC5jb20+DQpTdWJqZWN0OiBSZTogW1BBVENIXSBuZXQvaW14X2ZlYzogVXBkYXRpbmcgdGhlIElN
+WF9GRUMgSVAgdG8gc3VwcG9ydCBsb29wYmFjayBtb2RlLg0KDQpIaSBCaWxhbCwNCg0KQ2MnaW5n
+IEphc29uLCB0aGUgbWFpbnRhaW5lciBvZiBuZXR3b3JrIGRldmljZXMuDQoNCk9uIDExLzI5LzE5
+IDQ6MDUgUE0sIGJpbGFsd2FzaW02NzZAZ21haWwuY29tIHdyb3RlOg0KPiBGcm9tOiBid2FzaW0g
+PGJpbGFsX3dhc2ltQG1lbnRvci5jb20+DQoNCllvdXIgZ2l0IHNldHVwIG1pc3NlcyB5b3VyICd1
+c2VyLm5hbWUnLCB5b3UgY291bGQgZml4IGl0IHJ1bm5pbmc6DQoNCiAgIGdpdCBjb25maWcgdXNl
+ci5uYW1lICJCaWxhbCBXYXNpbSINCg0KKGV2ZW50dWFsbHkgd2l0aCB0aGUgLS1nbG9iYWwgb3B0
+aW9uKS4NCg0KVGhlIHBhdGNoIGxvb2tzIGdvb2Qgb3RoZXJ3aXNlLg0KDQpUaGFua3MhDQoNCj4g
+TG9vcGJhY2sgbW9kZSBvbmx5IHdvcmtzIHdoZW4gc3BlY2lmaWMgY29uZGl0aW9ucyAoYXMgZGlj
+dGF0ZWQgYnkgdGhlIA0KPiBJUCBndWlkZSkgYXJlIG1ldCwgaS5lLiB0aGUgTUlJX01PREUgaXMg
+c2V0IGFuZCB0aGUgUk1JSV9NT0RFIGlzIA0KPiBjbGVhcmVkLiBJZiBub3QsIHdlIHNpbXBseSBz
+ZW5kIHRoZSBwYWNrZXQgb24gdGhlIG91dHB1dCBxdWV1ZSAoZm9yIFRYIA0KPiB0byB0aGUgaG9z
+dCBuZXR3b3JrKS4gVGVzdGVkIGJ5IHJ1bm5pbmcgYSBjdXN0b20gUlRPUyBhbmQgVFhpbmcgYSB0
+b24gDQo+IG9mIHBhY2tldHMuIFRoZSBzYW1lIHBhY2tldHMgd2VyZSByZWNlaXZlZCBvbiB0aGUg
+Ulggc2lkZS4uDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBCaWxhbCBXYXNpbSA8YmlsYWxfd2FzaW1A
+bWVudG9yLmNvbT4NCj4gLS0tDQo+ICAgaHcvbmV0L2lteF9mZWMuYyB8IDI3ICsrKysrKysrKysr
+KysrKysrKysrKysrKystLQ0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAyNSBpbnNlcnRpb25zKCspLCAy
+IGRlbGV0aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2h3L25ldC9pbXhfZmVjLmMgYi9ody9u
+ZXQvaW14X2ZlYy5jIGluZGV4IA0KPiBiZDk5MjM2ODY0Li5jNTFlN2Y3MzYzIDEwMDY0NA0KPiAt
+LS0gYS9ody9uZXQvaW14X2ZlYy5jDQo+ICsrKyBiL2h3L25ldC9pbXhfZmVjLmMNCj4gQEAgLTI1
+Niw2ICsyNTYsMjkgQEAgc3RhdGljIGNvbnN0IFZNU3RhdGVEZXNjcmlwdGlvbiB2bXN0YXRlX2lt
+eF9ldGggPSANCj4gew0KPiAgIA0KPiAgIHN0YXRpYyB2b2lkIGlteF9ldGhfdXBkYXRlKElNWEZF
+Q1N0YXRlICpzKTsNCj4gICANCj4gKy8qDQo+ICsgKiBGdW5jdGlvbiB0byBjaGVjayBpZiB0aGUg
+TUFDIGlzIGNvbmZpZ3VyZWQgdG8gcnVuIGluIGxvb3BiYWNrIG1vZGUuDQo+ICsgKiBJZiBzbywg
+aW52b2tlIHRoZSAicmVjZWl2ZSIgcm91dGluZS4NCj4gKyAqIEVsc2Ugd3JpdGUgdG8gdGhlIG91
+dHB1dC4NCj4gKyAqICovDQo+ICtzdGF0aWMgdm9pZCBzZW5kX3BrdChJTVhGRUNTdGF0ZSAqcywg
+dWludDhfdCAqZnJhbWUsIGludCBmcmFtZV9zaXplKSANCj4gK3sNCj4gKyAgICBOZXRDbGllbnRT
+dGF0ZSAqbmMgPSBxZW11X2dldF9xdWV1ZShzLT5uaWMpOw0KPiArDQo+ICsgICAgLyoNCj4gKyAg
+ICAgKiBMb29wYmFjayBvciBOb3JtYWwgbW9kZSA/DQo+ICsgICAgICogUGVyIHRoZSBGRUMgTWFu
+dWFsOiBJZiBsb29wYmFjayBpcyBlbmFibGVkLCB0aGUgTUlJX01PREUNCj4gKyAgICAgKiBzaG91
+bGQgYmUgU0VUIGFuZCB0aGUgUk1JSV9NT0RFIHNob3VsZCBiZSBjbGVhcmVkLiBMb29wYmFjaw0K
+PiArICAgICAqIHdpbGwgb25seSB3b3JrIGlmIHRoaXMgY3JpdGVyaW9uIGlzIG1ldC4gSWYgbm90
+IG1ldCwNCj4gKyAgICAgKiB3ZSB3aWxsIHNlbmQgdGhlIGZyYW1lIG9uIHRoZSBvdXRwdXQgcXVl
+dWUuICovDQo+ICsgICAgaWYgKChzLT5yZWdzW0VORVRfUkNSXSAmIEVORVRfUkNSX0xPT1ApICYm
+IChzLT5yZWdzW0VORVRfUkNSXSAmIEVORVRfUkNSX01JSV9NT0RFKQ0KPiArICAgICAgICAgICAg
+JiYgIShzLT5yZWdzW0VORVRfUkNSXSAmIEVORVRfUkNSX1JNSUlfTU9ERSkpIHsNCj4gKyAgICAg
+ICAgbmMtPmluZm8tPnJlY2VpdmUobmMsIGZyYW1lLCBmcmFtZV9zaXplKTsNCj4gKyAgICB9IGVs
+c2Ugew0KPiArICAgICAgICBxZW11X3NlbmRfcGFja2V0KG5jLCBmcmFtZSwgZnJhbWVfc2l6ZSk7
+DQo+ICsgICAgfQ0KPiArfQ0KPiArDQo+ICAgLyoNCj4gICAgKiBUaGUgTUlJIHBoeSBjb3VsZCBy
+YWlzZSBhIEdQSU8gdG8gdGhlIHByb2Nlc3NvciB3aGljaCBpbiB0dXJuDQo+ICAgICogY291bGQg
+YmUgaGFuZGxlZCBhcyBhbiBpbnRlcnJwdCBieSB0aGUgT1MuDQo+IEBAIC00ODgsNyArNTExLDcg
+QEAgc3RhdGljIHZvaWQgaW14X2ZlY19kb190eChJTVhGRUNTdGF0ZSAqcykNCj4gICAgICAgICAg
+IGZyYW1lX3NpemUgKz0gbGVuOw0KPiAgICAgICAgICAgaWYgKGJkLmZsYWdzICYgRU5FVF9CRF9M
+KSB7DQo+ICAgICAgICAgICAgICAgLyogTGFzdCBidWZmZXIgaW4gZnJhbWUuICAqLw0KPiAtICAg
+ICAgICAgICAgcWVtdV9zZW5kX3BhY2tldChxZW11X2dldF9xdWV1ZShzLT5uaWMpLCBzLT5mcmFt
+ZSwgZnJhbWVfc2l6ZSk7DQo+ICsgICAgICAgICAgICBzZW5kX3BrdChzLCAodWludDhfdCAqKSZz
+LT5mcmFtZSwgZnJhbWVfc2l6ZSk7DQo+ICAgICAgICAgICAgICAgcHRyID0gcy0+ZnJhbWU7DQo+
+ICAgICAgICAgICAgICAgZnJhbWVfc2l6ZSA9IDA7DQo+ICAgICAgICAgICAgICAgcy0+cmVnc1tF
+TkVUX0VJUl0gfD0gRU5FVF9JTlRfVFhGOyBAQCAtNTg2LDcgKzYwOSw3IEBAIA0KPiBzdGF0aWMg
+dm9pZCBpbXhfZW5ldF9kb190eChJTVhGRUNTdGF0ZSAqcywgdWludDMyX3QgaW5kZXgpDQo+ICAg
+ICAgICAgICAgICAgfQ0KPiAgICAgICAgICAgICAgIC8qIExhc3QgYnVmZmVyIGluIGZyYW1lLiAg
+Ki8NCj4gICANCj4gLSAgICAgICAgICAgIHFlbXVfc2VuZF9wYWNrZXQocWVtdV9nZXRfcXVldWUo
+cy0+bmljKSwgcy0+ZnJhbWUsIGZyYW1lX3NpemUpOw0KPiArICAgICAgICAgICAgc2VuZF9wa3Qo
+cywgKHVpbnQ4X3QgKikmcy0+ZnJhbWUsIGZyYW1lX3NpemUpOw0KPiAgICAgICAgICAgICAgIHB0
+ciA9IHMtPmZyYW1lOw0KPiAgIA0KPiAgICAgICAgICAgICAgIGZyYW1lX3NpemUgPSAwOw0KPiAN
+Cg0K

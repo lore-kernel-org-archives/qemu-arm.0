@@ -1,183 +1,215 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9127606lfc;
-        Fri, 29 Nov 2019 07:07:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxqXwWWKe5Ouu7MlhO/TKRxs0dLzlgWrPSC6PpSlAYnDKsy37AKJXo5oyh+Rymo9HhsCfSH
-X-Received: by 2002:a50:8c02:: with SMTP id p2mr45676934edp.30.1575040063837;
-        Fri, 29 Nov 2019 07:07:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575040063; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9170449lfc;
+        Fri, 29 Nov 2019 07:39:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxrzzTAIfJWZBMmqzn6jTBMICFMIHReHUsLVCsOSVGy0xODGnNo7nzUtKsqXi/lIB9/DyBV
+X-Received: by 2002:a17:906:b253:: with SMTP id ce19mr35631918ejb.61.1575041946048;
+        Fri, 29 Nov 2019 07:39:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575041946; cv=none;
         d=google.com; s=arc-20160816;
-        b=ew300jtRXDUDOOKl+eHcVdBeu4w+Te2RKf/EsdJUeFR5CJudVFJ9dVoTNwsYRvMoNl
-         0p1a+vuuzRBCMPa+6NQeARiuaZdZdhRApXcg8EekYy1GJ2ZqRv0aiXLdYCqpUnyVfeuo
-         ey5sAWUB2Gg/vZcaJnHtgIW5wiaogCaovI+K6uc9UahhhM8/xw5pgUa9U6gLKei89txq
-         L19uc7Rrwi9LU1W5FZfqV8Na2Rinv7rJ/l1tFIwDR3BPp8yV3DQvxi6zcPll6LLcjdAu
-         tXSH6rzKkQRsR7CzHj8S6C4RfEcxOlqyvjxWe25VSkqLkWxY0z7sYnNP4A2IHYDpeTkh
-         /RdA==
+        b=znjn+YNbcSn60SXhJ/fgGKsjZAyIqpjMGnf++jVOzAlMF+IBayKQUFNWdKnGfYY5DC
+         /fbLcHWy5mwyRsO0zqb/dAVsXQE3Yv316PPzu6X8t55bE7nTr0xqVAP0TKCuA/osx2S4
+         EVVf/fxZex9/vmXy0ei2KZXG/+/9XKJygVxUAuLhUNX3CUXQfy5F+cNQw2qa8s4W6tPq
+         AaUVer+RvugT+ZAs0l1l4Rp/8PlU8pgPsPi2FEdoc7sTr2m8SILUaPOyAKnOvKmJAgvG
+         sXgrQEcjPgWauNfb2XeEpdHr5gkv+9jyiO1BIRO6qkFOa2ctEVyN+/84q3+q1+WrK2ji
+         TBpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=IP/SLTFWhk4WDxJ1ziCkF6+oL9+QPiFnZPV17DQ8R5U=;
-        b=KwFsmYZ4L2Ni6X6Bx8PtrdJJL4pBuKbrZnI3oiUGm8smJLQBvsvThNyZu3MtIbNSHC
-         LKIyZr6isWbxAlaJ5epIAkg7ot3sxx8fovzmd9Fjem5NrcXRDZDyTeMhoFYauoNQzpvT
-         Wxyh/DweCLTtAw3OFrJqC34EmEbgoQU0IrFHcV14Q5cM5Wz2BJPoD59exP5n3W5r3WU/
-         vKMbnWksFuwqREjJTcofFV3GBHP89FTw//HNs1pGKZA9d54qyvu6z4RlVh8YYjBjbyXQ
-         uXl2MHX9qMSkLd8jClWckuGe6HV1bFc2/YkHSdTN4Yi/WOHYcHD5uFTvfoIOo8JphI1F
-         +FLw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=dLxPmCibd/jvExQ+b8ZmycwQV2L50zWdzkVxWAZ1Lxs=;
+        b=Bc2UJJwfxjFe1gcf+htozMWvwCG51VpHzKrvmS+5fCzhV6ewjjL1FRTv440nvGwjyO
+         XigpgAqFSD8i1UlPgca+MTog1zaqZigyjJrn/uyzme+d71Cn/Yx2Rg/deEFTE1DJlOlG
+         E20TQRHJG9DgxlSvQ+iCRgXCLyCyALjRnbMHevrdw0bYUt/rb8EnNXeYVXBJeditjy/3
+         aiUm4vsI7tvxXViIEt++oIDd+Cd6c8DBRokpDl6MwnrdvbKz5OE4LkyzzBczfZkoZSw8
+         O8xb93h4YNXp9AXwH4n34STGRLwjia9Z3bE5PS+DIOORcwr3nOCjRW5Z4IQomcGKqXiW
+         Bm4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="UqZt/0sF";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NGxggF2e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h17si13985380ejy.239.2019.11.29.07.07.43
+        by mx.google.com with ESMTPS id b12si8272224edy.63.2019.11.29.07.39.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Nov 2019 07:07:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 29 Nov 2019 07:39:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="UqZt/0sF";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60058 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NGxggF2e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60308 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iahrw-0007sD-Si
-	for alex.bennee@linaro.org; Fri, 29 Nov 2019 10:07:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57250)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iaiMJ-0002J0-3i
+	for alex.bennee@linaro.org; Fri, 29 Nov 2019 10:39:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52397)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <bilalwasim676@gmail.com>) id 1iahpj-0007eG-Bp
- for qemu-devel@nongnu.org; Fri, 29 Nov 2019 10:05:25 -0500
+ (envelope-from <philmd@redhat.com>) id 1iaiLm-0002G1-P9
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:38:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <bilalwasim676@gmail.com>) id 1iahpd-00021n-84
- for qemu-devel@nongnu.org; Fri, 29 Nov 2019 10:05:20 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:34959)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <bilalwasim676@gmail.com>)
- id 1iahpd-0001w6-0W; Fri, 29 Nov 2019 10:05:17 -0500
-Received: by mail-wm1-x342.google.com with SMTP id n5so15446956wmc.0;
- Fri, 29 Nov 2019 07:05:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=IP/SLTFWhk4WDxJ1ziCkF6+oL9+QPiFnZPV17DQ8R5U=;
- b=UqZt/0sF6K3hSurWZjirrNXqcWwXrukOFmuTPzKfJwKDBaAA+AaplJ5xTOBoWj/vaZ
- oHPCv7uR6jFVcxIUQlF6BcvGAe9durEObp3zng0zJV4wfK7RGG2UIg1pFw8MSIOJC9dK
- o2aS74idukEd2Pl/49GOUPpbqrIfeZ0Hg9Xr4YatEdMkOvDev4gT8/syCtX3pEViJOmG
- acceuJQUjZA6/G8j81sa48b6XQFY8rR0Xy5lDKBoSw+VWPpCPPRVyVP/LfHwRh4JXmGV
- 5s1tlBT6PUgp4yXdyahk6YopshUJKI1bjj49NUyS0Gf+K0RCVHVMpOXa/ffoX/jPZjHN
- 3irQ==
+ (envelope-from <philmd@redhat.com>) id 1iaiLg-0002Pd-6d
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:38:26 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:27230
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iaiLe-0002KS-Kt
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:38:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575041901;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dLxPmCibd/jvExQ+b8ZmycwQV2L50zWdzkVxWAZ1Lxs=;
+ b=NGxggF2eI3pzRyfxTbPi6C4PLLuHJF7zF24asPDAz2j3ZYe3smfzriLb4bEkeaouTlYqo4
+ wd+dNXAoLNgONPk/u1oT+ECLYCsDoO3DTCPCebyXTbihpMtoQguOvAj71GzZNw8CTXdYtZ
+ pJwFSvP1xNRdnHGiOpZt99P7EFgTcRg=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-335-D1_H9LCpNB6U_Q9kwBH9Jg-1; Fri, 29 Nov 2019 10:38:20 -0500
+Received: by mail-wr1-f70.google.com with SMTP id b13so1618392wrx.22
+ for <qemu-arm@nongnu.org>; Fri, 29 Nov 2019 07:38:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=IP/SLTFWhk4WDxJ1ziCkF6+oL9+QPiFnZPV17DQ8R5U=;
- b=RfLKxpMblNRVQDJu5IAEbRzm8sdADUvPELav0sU0nV6m/XM6si0+So3xPIPQFKMPY1
- sOlsh3Pz9/BIoKnB0R26Sy+CPXnE1qt7sQjDnjE2x6dIJow8XUIT0LA7cFWLU0Cbdjda
- VjFu1Rbc38zh4W9ZB38rcs9PZHmtZbSocFmBUFbFa4VhBLvYUZ77ECowY7Ff4M3lJAIB
- omD49HJsteOTAPcPGq0fm2bsRxznWYDIBqHhTC7Z5yh2dfmTLkNDawpYOVSK2RXqg+Vk
- TLcamdhlU566Da21eODe/nQlYz+HSTeERlBUbekMtNgdzsIV6qgvb+7GbR/glmAO6bYq
- dMFg==
-X-Gm-Message-State: APjAAAX9GP+E87ysqagqS9UP3qk/B5GtV3MUU/paXAWZpN2FS/eibmIr
- AM4xTVQR076+cStTDgAcaedENnB4u34=
-X-Received: by 2002:a7b:c5d0:: with SMTP id n16mr15744553wmk.78.1575039914542; 
- Fri, 29 Nov 2019 07:05:14 -0800 (PST)
-Received: from PKL-BWASIM-LT.mgc.mentorg.com ([110.93.212.98])
- by smtp.gmail.com with ESMTPSA id c1sm26928066wrs.24.2019.11.29.07.05.12
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 29 Nov 2019 07:05:13 -0800 (PST)
-From: bilalwasim676@gmail.com
-To: qemu-devel@nongnu.org
-Subject: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback mode.
-Date: Fri, 29 Nov 2019 20:05:08 +0500
-Message-Id: <20191129150508.24404-1-bilalwasim676@gmail.com>
-X-Mailer: git-send-email 2.19.1.windows.1
+ bh=dLxPmCibd/jvExQ+b8ZmycwQV2L50zWdzkVxWAZ1Lxs=;
+ b=o5wf1zIOPPWnv/oXGIc37MOhgXxL/tpUI1Kq+Mw1WvIXfKTucuzacGEe5ys3WZOJmW
+ TPDvkPss1ERECaDUQdkjRGNxhM2mWYFyt5fAZszlm48qHBkGm0hIPyNX5MuC1esQRXb5
+ l14qrC6jIXght+9yr3lJASB53P25OS45SkIwDoGZvpVUBVzaT+Rr+BqPlwlKsn7vVG0i
+ vmCHKsRmxWwPdFNoqor0BWOpDirgiv9XMDra6hicQ0u1ZyLUt2eDr0ITJ2Dm0zrh45v+
+ GShZrbvVDkS3G89Jn/A3aBJRp1JPcQWLGF0H1mxMuIax4IObrRb5V/vuQabqAr4AxZ37
+ LIow==
+X-Gm-Message-State: APjAAAXz2u16Wq3JIWdVxhtEiq63XLzlAOOQpBK9s9TyuwI9ACI1G3sW
+ ezF/A9QeQ7miaGK147BCfdBGzvKRCAQN1893NXelcv60MzUCcdSZO6T6JgFBjIeySoGw3hXaLpK
+ CpukozoxoLuHg
+X-Received: by 2002:adf:a551:: with SMTP id j17mr53471054wrb.18.1575041898635; 
+ Fri, 29 Nov 2019 07:38:18 -0800 (PST)
+X-Received: by 2002:adf:a551:: with SMTP id j17mr53471040wrb.18.1575041898449; 
+ Fri, 29 Nov 2019 07:38:18 -0800 (PST)
+Received: from [192.168.1.74] (67.23.27.109.rev.sfr.net. [109.27.23.67])
+ by smtp.gmail.com with ESMTPSA id h15sm28786322wrb.44.2019.11.29.07.38.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 Nov 2019 07:38:17 -0800 (PST)
+Subject: Re: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
+ mode.
+To: bilalwasim676@gmail.com, qemu-devel@nongnu.org
+References: <20191129150508.24404-1-bilalwasim676@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <afe9efde-7ac1-8607-446a-8fbf10accece@redhat.com>
+Date: Fri, 29 Nov 2019 16:38:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::342
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20191129150508.24404-1-bilalwasim676@gmail.com>
+Content-Language: en-US
+X-MC-Unique: D1_H9LCpNB6U_Q9kwBH9Jg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, aa1ronham@gmail.com, jcd@tribudubois.net,
- qemu-arm@nongnu.org, bilal_wasim@mentor.com, linux@roeck-us.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e5Te/tividbg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Jason Wang <jasowang@redhat.com>,
+ aa1ronham@gmail.com, jcd@tribudubois.net, qemu-arm@nongnu.org,
+ bilal_wasim@mentor.com, linux@roeck-us.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5/T8Y8Pg4JuH
 
-From: bwasim <bilal_wasim@mentor.com>
+Hi Bilal,
 
-Loopback mode only works when specific conditions (as dictated
-by the IP guide) are met, i.e. the MII_MODE is set and the
-RMII_MODE is cleared. If not, we simply send the packet on the
-output queue (for TX to the host network). Tested by running a
-custom RTOS and TXing a ton of packets. The same packets were
-received on the RX side..
+Cc'ing Jason, the maintainer of network devices.
 
-Signed-off-by: Bilal Wasim <bilal_wasim@mentor.com>
----
- hw/net/imx_fec.c | 27 +++++++++++++++++++++++++--
- 1 file changed, 25 insertions(+), 2 deletions(-)
+On 11/29/19 4:05 PM, bilalwasim676@gmail.com wrote:
+> From: bwasim <bilal_wasim@mentor.com>
 
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index bd99236864..c51e7f7363 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -256,6 +256,29 @@ static const VMStateDescription vmstate_imx_eth = {
- 
- static void imx_eth_update(IMXFECState *s);
- 
-+/*
-+ * Function to check if the MAC is configured to run in loopback mode.
-+ * If so, invoke the "receive" routine.
-+ * Else write to the output.
-+ * */
-+static void send_pkt(IMXFECState *s, uint8_t *frame, int frame_size)
-+{
-+    NetClientState *nc = qemu_get_queue(s->nic);
-+
-+    /*
-+     * Loopback or Normal mode ?
-+     * Per the FEC Manual: If loopback is enabled, the MII_MODE
-+     * should be SET and the RMII_MODE should be cleared. Loopback
-+     * will only work if this criterion is met. If not met,
-+     * we will send the frame on the output queue. */
-+    if ((s->regs[ENET_RCR] & ENET_RCR_LOOP) && (s->regs[ENET_RCR] & ENET_RCR_MII_MODE)
-+            && !(s->regs[ENET_RCR] & ENET_RCR_RMII_MODE)) {
-+        nc->info->receive(nc, frame, frame_size);
-+    } else {
-+        qemu_send_packet(nc, frame, frame_size);
-+    }
-+}
-+
- /*
-  * The MII phy could raise a GPIO to the processor which in turn
-  * could be handled as an interrpt by the OS.
-@@ -488,7 +511,7 @@ static void imx_fec_do_tx(IMXFECState *s)
-         frame_size += len;
-         if (bd.flags & ENET_BD_L) {
-             /* Last buffer in frame.  */
--            qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_size);
-+            send_pkt(s, (uint8_t *)&s->frame, frame_size);
-             ptr = s->frame;
-             frame_size = 0;
-             s->regs[ENET_EIR] |= ENET_INT_TXF;
-@@ -586,7 +609,7 @@ static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
-             }
-             /* Last buffer in frame.  */
- 
--            qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_size);
-+            send_pkt(s, (uint8_t *)&s->frame, frame_size);
-             ptr = s->frame;
- 
-             frame_size = 0;
--- 
-2.19.1.windows.1
+Your git setup misses your 'user.name', you could fix it running:
+
+   git config user.name "Bilal Wasim"
+
+(eventually with the --global option).
+
+The patch looks good otherwise.
+
+Thanks!
+
+> Loopback mode only works when specific conditions (as dictated
+> by the IP guide) are met, i.e. the MII_MODE is set and the
+> RMII_MODE is cleared. If not, we simply send the packet on the
+> output queue (for TX to the host network). Tested by running a
+> custom RTOS and TXing a ton of packets. The same packets were
+> received on the RX side..
+> 
+> Signed-off-by: Bilal Wasim <bilal_wasim@mentor.com>
+> ---
+>   hw/net/imx_fec.c | 27 +++++++++++++++++++++++++--
+>   1 file changed, 25 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+> index bd99236864..c51e7f7363 100644
+> --- a/hw/net/imx_fec.c
+> +++ b/hw/net/imx_fec.c
+> @@ -256,6 +256,29 @@ static const VMStateDescription vmstate_imx_eth = {
+>   
+>   static void imx_eth_update(IMXFECState *s);
+>   
+> +/*
+> + * Function to check if the MAC is configured to run in loopback mode.
+> + * If so, invoke the "receive" routine.
+> + * Else write to the output.
+> + * */
+> +static void send_pkt(IMXFECState *s, uint8_t *frame, int frame_size)
+> +{
+> +    NetClientState *nc = qemu_get_queue(s->nic);
+> +
+> +    /*
+> +     * Loopback or Normal mode ?
+> +     * Per the FEC Manual: If loopback is enabled, the MII_MODE
+> +     * should be SET and the RMII_MODE should be cleared. Loopback
+> +     * will only work if this criterion is met. If not met,
+> +     * we will send the frame on the output queue. */
+> +    if ((s->regs[ENET_RCR] & ENET_RCR_LOOP) && (s->regs[ENET_RCR] & ENET_RCR_MII_MODE)
+> +            && !(s->regs[ENET_RCR] & ENET_RCR_RMII_MODE)) {
+> +        nc->info->receive(nc, frame, frame_size);
+> +    } else {
+> +        qemu_send_packet(nc, frame, frame_size);
+> +    }
+> +}
+> +
+>   /*
+>    * The MII phy could raise a GPIO to the processor which in turn
+>    * could be handled as an interrpt by the OS.
+> @@ -488,7 +511,7 @@ static void imx_fec_do_tx(IMXFECState *s)
+>           frame_size += len;
+>           if (bd.flags & ENET_BD_L) {
+>               /* Last buffer in frame.  */
+> -            qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_size);
+> +            send_pkt(s, (uint8_t *)&s->frame, frame_size);
+>               ptr = s->frame;
+>               frame_size = 0;
+>               s->regs[ENET_EIR] |= ENET_INT_TXF;
+> @@ -586,7 +609,7 @@ static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
+>               }
+>               /* Last buffer in frame.  */
+>   
+> -            qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_size);
+> +            send_pkt(s, (uint8_t *)&s->frame, frame_size);
+>               ptr = s->frame;
+>   
+>               frame_size = 0;
+> 
 

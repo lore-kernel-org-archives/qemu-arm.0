@@ -1,94 +1,111 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9194951lfc;
-        Fri, 29 Nov 2019 08:00:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwsvROOoIMBNEw4V0nRzfiTSHRSbjmFFCJiMfdpQmx7R0TgZHwF5eHI1r/ktmHDoaCcGcvC
-X-Received: by 2002:a17:906:a40e:: with SMTP id l14mr61747885ejz.168.1575043232424;
-        Fri, 29 Nov 2019 08:00:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575043232; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9203707lfc;
+        Fri, 29 Nov 2019 08:06:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwrbPEBdpMtF3KeAc6mHen7aelG7QHDvCU6RnWR1QL0hBFPDnp8cYeCzI0mC479WoTq2oLn
+X-Received: by 2002:a2e:144b:: with SMTP id 11mr24904943lju.216.1575043569548;
+        Fri, 29 Nov 2019 08:06:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575043569; cv=none;
         d=google.com; s=arc-20160816;
-        b=QG9ZdthhI/s6/CE3YO6UO94q5CleoqYnDy2s9mpRtwFFio2PP2vvIZbEG/MDe8Cdkl
-         OaAe9NH17VdyVn0EF41+NXcmmXmkW+0cZIkgGTzL4rcyn83fPW3AGBbW/rfco8YofPvo
-         LQoYmyPOneVHG+6gT68pyFMi/tPC6efEWXoX07rh05JehCurqoy+gUSPOJxIEqbK42HM
-         NiYR2z/u/x0gF8JgsQc7xOTrAWzRGcHx0OwbwprbS2nOmOBWjvmDB35xQnt9zBNddzWY
-         WdCWMaeSbjZ0pfNGcn3ht2kqDt8nj23LO6o94vHj1KN7SNqhYSMT58wTc5tFbYBbStzU
-         Fq3A==
+        b=S66ENkBzitHl6OLzaWm1F0M+2MHO1yJKn/7UTDEEpbl8A/VYB65Tvr25JXmuQT4pcM
+         m0zNm7F1XMnEwaqUc7qUPW4W5SgxYrmovWyhg0m+g5el8h61eiTooVOMzvRea6BXv/gc
+         XS7fJphhWGT44ZndSToBPuJyHVnad9ArPuOFsAzcxPo1tfQgNiiXPSAXBQKF+DHiuSlZ
+         JjqvMwpofXDxkNa/vzAebLQ4/1nmLZVC0U4DYyhZOH8YDSfqUT0Jj+3muCuAeWB5AV9N
+         5ospuVJy+fsclaIf9nywEtC+5D/v8Na1msJAwrHU9epThlGCE6ooDSOQAavmdxobgJBS
+         7Q/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from:ironport-sdr:ironport-sdr;
-        bh=/VEYOxeYLGugiDICNVT4vpxMUIzvHOPncTUcmEaoQVI=;
-        b=glInfZBa13BurAymxMXD+PWDk39Vt/dt2famBBlREUk2v4WiJ1RSXawMiKK0+TKg/d
-         p3aJgDbpAOgWts3/yaq94nkP5ReUCfvY8P993TTBeHkyG5p5zoLfi8yyQuU0Nruqsnmd
-         uA4HhwQQ4fALwGfeB1lvEs/msqu+xyaMc2neMWr/acjgo0HfpBGe1rX8iZPVueYG/Lkm
-         a0S2r989Pnx/KXO2dD91BvUbH0S/Nm+aA9rjV40COvx9iyni0OhUsNfHjyd+xFJKu1yj
-         VETQdPdz23CJPF5iak6uc6aOle2dMfzHmE8NdagH8nurmQwsrHxTVRFEx1WR4Ocv695b
-         OkJg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=zg8HBt8/v556Px1AquN+KYHYk63ghRTuJn/glDQ/6mE=;
+        b=FzKzQ/zpmnKSz/bnljauVuRyH2R2SlSrsm0HMuQoDRhD+c3XES0v0G43JK92nkBGRW
+         r0tQ9jk0lbE+IwE42q0LIvVxm39rEIpZR8a9EKOTFhCf2n7jfCRkgewBFbOQnBkEdKU4
+         yz2ywDrMUxrT4dase3n6r8igm2VXQw5xKvcDRw8bFMi6XkGrMuMJeoeEnn8ptIbH6yn2
+         8dcVm6O6mVaR087RIqV1rP9xGuZ+G3vEb0RCwtO9uCPlmhUd2tJPjrsHn7+IKubSXCyL
+         6Fcl1NkbkLzh+ifFqbEK4R/grhgQxVXut9NYJF0HmtRYns24voCikU4CXQ4IPX5XCAO4
+         fykQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EqQNTK2N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9si5293901edn.121.2019.11.29.08.00.32
+        by mx.google.com with ESMTPS id i15si3524285edx.429.2019.11.29.08.06.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Nov 2019 08:00:32 -0800 (PST)
+        Fri, 29 Nov 2019 08:06:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60436 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EqQNTK2N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60510 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iaih5-0000WX-9x
-	for alex.bennee@linaro.org; Fri, 29 Nov 2019 11:00:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56439)
+	id 1iaimW-0005jb-Cp
+	for alex.bennee@linaro.org; Fri, 29 Nov 2019 11:06:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35629)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <Bilal_Wasim@mentor.com>) id 1iaig0-0000S2-FB
- for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:59:27 -0500
+ (envelope-from <pmathieu@redhat.com>) id 1iailr-0004uY-Sv
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 11:05:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <Bilal_Wasim@mentor.com>) id 1iaifx-0002Ym-4B
- for qemu-arm@nongnu.org; Fri, 29 Nov 2019 10:59:22 -0500
-Received: from esa3.mentor.iphmx.com ([68.232.137.180]:46077)
+ (envelope-from <pmathieu@redhat.com>) id 1iailH-00089B-Cz
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 11:04:54 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52497
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <Bilal_Wasim@mentor.com>)
- id 1iaifo-0001pw-Ma; Fri, 29 Nov 2019 10:59:12 -0500
-IronPort-SDR: RrpVsafef8GvYfhN9b7gems2e8x126OoQCTOXxsVeGPXVjw23p4J6Ti24F/6isr7sP266CWE4G
- JPsEQwin7ByMoTcb7PHxwP6lDfJBEPOQwFNgM2NlwaASAze3h3v4UK7xv3tYrmh4jvJ7YLNKJX
- 9NvuOgMZJ6EBsIYnRQq+Ou/lN+8P4sl2KaoML2UeqsH7+4qJ6Jq/R3S5Wy/WTGckPe5UhT+lcz
- 5qxgghijQuHKc/RANCB2veCUFaRBdAWR5d7GHPJzBsAgMN9TdkRw9A736b5e+hSD4CbreMLMsP
- qSw=
-X-IronPort-AV: E=Sophos;i="5.69,257,1571731200"; d="scan'208";a="43631118"
-Received: from orw-gwy-02-in.mentorg.com ([192.94.38.167])
- by esa3.mentor.iphmx.com with ESMTP; 29 Nov 2019 07:59:06 -0800
-IronPort-SDR: 5RegC455+GJpQy38oG9WxXAB++Z6w1Km3HLqUFxfu+IwizpNJ6sTm0Qt0UGHathjtP7v75wl8/
- IjmIGFqp5IT9LBYTGw1OxjxXV3GTwgkRGPujrDXe2tgGCMUx2ivxQhCfcoJwNDVRIWDN5IG7rD
- ZsjherK8pmUMYuUgYiqEgrgMu/Q2MoDRPdjBQLLKI6iw9aTPycs6rjA/+S8WNQ47/DTTzc9tOg
- s5JEz+rGoCE2b8UwJe8kcUGAC1m5q2kHFO3KS6pse4GD/nQfFKGjV+mxzQFvfacmmM0msL22v4
- 6ME=
-From: "Wasim, Bilal" <Bilal_Wasim@mentor.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- "bilalwasim676@gmail.com" <bilalwasim676@gmail.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Subject: RE: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
- mode.
-Thread-Topic: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
- mode.
-Thread-Index: AQHVpsZtzk/Nr8P2J0mB7aONo8AxiKeiSHsAgAAFdlA=
-Date: Fri, 29 Nov 2019 15:59:00 +0000
-Message-ID: <8c956ae31e8f44a2b831a5030b2448b4@SVR-IES-MBX-03.mgc.mentorg.com>
+ (Exim 4.71) (envelope-from <pmathieu@redhat.com>) id 1iailH-00084X-8o
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 11:04:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575043489;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zg8HBt8/v556Px1AquN+KYHYk63ghRTuJn/glDQ/6mE=;
+ b=EqQNTK2NsenAVGHUY1pA4HimCWIXQD77str7Z2X9hVEsslJkzS5L37xmzgJVuecAvCaPsy
+ wiGW+tZafR0vojB5dpbarDL620HUBcW/x1tP3tSgLyl7+Db9Fj5klFsSh5lZVKF7SfRjQY
+ ZZlnQhHY+oVhQU3BsIFz4Q2rOQGt2So=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-280-_szglWd3Omi_Zwue2G-L3A-1; Fri, 29 Nov 2019 11:04:48 -0500
+Received: by mail-wr1-f71.google.com with SMTP id q6so15778528wrv.11
+ for <qemu-arm@nongnu.org>; Fri, 29 Nov 2019 08:04:48 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=zg8HBt8/v556Px1AquN+KYHYk63ghRTuJn/glDQ/6mE=;
+ b=NQG2Anoy/NqUbswIsy9rHv8KlJdTq9Gum99Mv6M+ogZecBK/ztUP29rW+LCZZMw4VX
+ HFqa2FZkVxqxeI8GwRIHB9jyut67SU6w0F8fTxrYkEs3EbL0Ai0uJuL9Www9KcLIPizg
+ AdS4lHFqyFQXLOKHqjK2c26c0q/PNUxJTxyV/R+cA205cPZvHCTVYrcxqKoLP7x7dJ0e
+ xgYjj+nTry9I8JBJdHW2PRW7gVCpGaI6INFbutJpryhPNwrU1PmbLUhhI/7dt5wQ8lA+
+ TZpQWH6DXsTHFfI+hWDTXYe8l72zr3D748FcaH/eK0pkrogi3vjmYB6nL5qg/bMGpeg+
+ xTDg==
+X-Gm-Message-State: APjAAAVy3HRnV78u/ti8JZwhTh3aZSUxI2JNifpCOfxvhNShm+54SUND
+ pUvl6As+p7bBRS5lxhc6QUPR4vvXOKAFTqs/r+fMDK545rI8Ibnf+2J5W4XQy3AyZCwjtyouzwx
+ 64WL+YUQxxzq74AZoXxOISSJiI/ZQ
+X-Received: by 2002:a1c:46:: with SMTP id 67mr16423601wma.51.1575043486162;
+ Fri, 29 Nov 2019 08:04:46 -0800 (PST)
+X-Received: by 2002:a1c:46:: with SMTP id 67mr16423551wma.51.1575043485738;
+ Fri, 29 Nov 2019 08:04:45 -0800 (PST)
+MIME-Version: 1.0
 References: <20191129150508.24404-1-bilalwasim676@gmail.com>
  <afe9efde-7ac1-8607-446a-8fbf10accece@redhat.com>
-In-Reply-To: <afe9efde-7ac1-8607-446a-8fbf10accece@redhat.com>
-Accept-Language: en-GB, en-IE, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [137.202.0.90]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 68.232.137.180
+ <8c956ae31e8f44a2b831a5030b2448b4@SVR-IES-MBX-03.mgc.mentorg.com>
+In-Reply-To: <8c956ae31e8f44a2b831a5030b2448b4@SVR-IES-MBX-03.mgc.mentorg.com>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Fri, 29 Nov 2019 17:04:34 +0100
+Message-ID: <CAP+75-X_POJfTO=gOUu1zCPtcfnQ5yemQo0hqB_s3jy_C17o9g@mail.gmail.com>
+Subject: Re: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
+ mode.
+To: "Wasim, Bilal" <Bilal_Wasim@mentor.com>
+X-MC-Unique: _szglWd3Omi_Zwue2G-L3A-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -101,76 +118,121 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Jason Wang <jasowang@redhat.com>, "aa1ronham@gmail.com" <aa1ronham@gmail.com>,
+ Jason Wang <jasowang@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "aa1ronham@gmail.com" <aa1ronham@gmail.com>,
  "jcd@tribudubois.net" <jcd@tribudubois.net>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "bilalwasim676@gmail.com" <bilalwasim676@gmail.com>,
  "linux@roeck-us.net" <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O+tRjMWbgjUP
+X-TUID: IUV2k83Vztxb
 
-VGhhbmtzIGZvciB0aGUgcG9pbnRlcnMgcGhpbGlwcGUuLiBJcyB0aGUgcGF0Y2ggb2theSB0byBi
-ZSBtZXJnZWQgd2l0aG91dCBpdCBvciBkbyBJIG5lZWQgdG8gZG8gYSByZS1zdWJtaXNzaW9uIHdp
-dGggdGhlIHVwZGF0ZWQgdXNlcm5hbWUgPw0KDQotIEJpbGFsIA0KDQotLS0tLU9yaWdpbmFsIE1l
-c3NhZ2UtLS0tLQ0KRnJvbTogUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgW21haWx0bzpwaGlsbWRA
-cmVkaGF0LmNvbV0gDQpTZW50OiBGcmlkYXksIE5vdmVtYmVyIDI5LCAyMDE5IDg6MzggUE0NClRv
-OiBiaWxhbHdhc2ltNjc2QGdtYWlsLmNvbTsgcWVtdS1kZXZlbEBub25nbnUub3JnDQpDYzogcGV0
-ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBhYTFyb25oYW1AZ21haWwuY29tOyBqY2RAdHJpYnVkdWJv
-aXMubmV0OyBxZW11LWFybUBub25nbnUub3JnOyBXYXNpbSwgQmlsYWwgPEJpbGFsX1dhc2ltQG1l
-bnRvci5jb20+OyBsaW51eEByb2Vjay11cy5uZXQ7IEphc29uIFdhbmcgPGphc293YW5nQHJlZGhh
-dC5jb20+DQpTdWJqZWN0OiBSZTogW1BBVENIXSBuZXQvaW14X2ZlYzogVXBkYXRpbmcgdGhlIElN
-WF9GRUMgSVAgdG8gc3VwcG9ydCBsb29wYmFjayBtb2RlLg0KDQpIaSBCaWxhbCwNCg0KQ2MnaW5n
-IEphc29uLCB0aGUgbWFpbnRhaW5lciBvZiBuZXR3b3JrIGRldmljZXMuDQoNCk9uIDExLzI5LzE5
-IDQ6MDUgUE0sIGJpbGFsd2FzaW02NzZAZ21haWwuY29tIHdyb3RlOg0KPiBGcm9tOiBid2FzaW0g
-PGJpbGFsX3dhc2ltQG1lbnRvci5jb20+DQoNCllvdXIgZ2l0IHNldHVwIG1pc3NlcyB5b3VyICd1
-c2VyLm5hbWUnLCB5b3UgY291bGQgZml4IGl0IHJ1bm5pbmc6DQoNCiAgIGdpdCBjb25maWcgdXNl
-ci5uYW1lICJCaWxhbCBXYXNpbSINCg0KKGV2ZW50dWFsbHkgd2l0aCB0aGUgLS1nbG9iYWwgb3B0
-aW9uKS4NCg0KVGhlIHBhdGNoIGxvb2tzIGdvb2Qgb3RoZXJ3aXNlLg0KDQpUaGFua3MhDQoNCj4g
-TG9vcGJhY2sgbW9kZSBvbmx5IHdvcmtzIHdoZW4gc3BlY2lmaWMgY29uZGl0aW9ucyAoYXMgZGlj
-dGF0ZWQgYnkgdGhlIA0KPiBJUCBndWlkZSkgYXJlIG1ldCwgaS5lLiB0aGUgTUlJX01PREUgaXMg
-c2V0IGFuZCB0aGUgUk1JSV9NT0RFIGlzIA0KPiBjbGVhcmVkLiBJZiBub3QsIHdlIHNpbXBseSBz
-ZW5kIHRoZSBwYWNrZXQgb24gdGhlIG91dHB1dCBxdWV1ZSAoZm9yIFRYIA0KPiB0byB0aGUgaG9z
-dCBuZXR3b3JrKS4gVGVzdGVkIGJ5IHJ1bm5pbmcgYSBjdXN0b20gUlRPUyBhbmQgVFhpbmcgYSB0
-b24gDQo+IG9mIHBhY2tldHMuIFRoZSBzYW1lIHBhY2tldHMgd2VyZSByZWNlaXZlZCBvbiB0aGUg
-Ulggc2lkZS4uDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBCaWxhbCBXYXNpbSA8YmlsYWxfd2FzaW1A
-bWVudG9yLmNvbT4NCj4gLS0tDQo+ICAgaHcvbmV0L2lteF9mZWMuYyB8IDI3ICsrKysrKysrKysr
-KysrKysrKysrKysrKystLQ0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAyNSBpbnNlcnRpb25zKCspLCAy
-IGRlbGV0aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2h3L25ldC9pbXhfZmVjLmMgYi9ody9u
-ZXQvaW14X2ZlYy5jIGluZGV4IA0KPiBiZDk5MjM2ODY0Li5jNTFlN2Y3MzYzIDEwMDY0NA0KPiAt
-LS0gYS9ody9uZXQvaW14X2ZlYy5jDQo+ICsrKyBiL2h3L25ldC9pbXhfZmVjLmMNCj4gQEAgLTI1
-Niw2ICsyNTYsMjkgQEAgc3RhdGljIGNvbnN0IFZNU3RhdGVEZXNjcmlwdGlvbiB2bXN0YXRlX2lt
-eF9ldGggPSANCj4gew0KPiAgIA0KPiAgIHN0YXRpYyB2b2lkIGlteF9ldGhfdXBkYXRlKElNWEZF
-Q1N0YXRlICpzKTsNCj4gICANCj4gKy8qDQo+ICsgKiBGdW5jdGlvbiB0byBjaGVjayBpZiB0aGUg
-TUFDIGlzIGNvbmZpZ3VyZWQgdG8gcnVuIGluIGxvb3BiYWNrIG1vZGUuDQo+ICsgKiBJZiBzbywg
-aW52b2tlIHRoZSAicmVjZWl2ZSIgcm91dGluZS4NCj4gKyAqIEVsc2Ugd3JpdGUgdG8gdGhlIG91
-dHB1dC4NCj4gKyAqICovDQo+ICtzdGF0aWMgdm9pZCBzZW5kX3BrdChJTVhGRUNTdGF0ZSAqcywg
-dWludDhfdCAqZnJhbWUsIGludCBmcmFtZV9zaXplKSANCj4gK3sNCj4gKyAgICBOZXRDbGllbnRT
-dGF0ZSAqbmMgPSBxZW11X2dldF9xdWV1ZShzLT5uaWMpOw0KPiArDQo+ICsgICAgLyoNCj4gKyAg
-ICAgKiBMb29wYmFjayBvciBOb3JtYWwgbW9kZSA/DQo+ICsgICAgICogUGVyIHRoZSBGRUMgTWFu
-dWFsOiBJZiBsb29wYmFjayBpcyBlbmFibGVkLCB0aGUgTUlJX01PREUNCj4gKyAgICAgKiBzaG91
-bGQgYmUgU0VUIGFuZCB0aGUgUk1JSV9NT0RFIHNob3VsZCBiZSBjbGVhcmVkLiBMb29wYmFjaw0K
-PiArICAgICAqIHdpbGwgb25seSB3b3JrIGlmIHRoaXMgY3JpdGVyaW9uIGlzIG1ldC4gSWYgbm90
-IG1ldCwNCj4gKyAgICAgKiB3ZSB3aWxsIHNlbmQgdGhlIGZyYW1lIG9uIHRoZSBvdXRwdXQgcXVl
-dWUuICovDQo+ICsgICAgaWYgKChzLT5yZWdzW0VORVRfUkNSXSAmIEVORVRfUkNSX0xPT1ApICYm
-IChzLT5yZWdzW0VORVRfUkNSXSAmIEVORVRfUkNSX01JSV9NT0RFKQ0KPiArICAgICAgICAgICAg
-JiYgIShzLT5yZWdzW0VORVRfUkNSXSAmIEVORVRfUkNSX1JNSUlfTU9ERSkpIHsNCj4gKyAgICAg
-ICAgbmMtPmluZm8tPnJlY2VpdmUobmMsIGZyYW1lLCBmcmFtZV9zaXplKTsNCj4gKyAgICB9IGVs
-c2Ugew0KPiArICAgICAgICBxZW11X3NlbmRfcGFja2V0KG5jLCBmcmFtZSwgZnJhbWVfc2l6ZSk7
-DQo+ICsgICAgfQ0KPiArfQ0KPiArDQo+ICAgLyoNCj4gICAgKiBUaGUgTUlJIHBoeSBjb3VsZCBy
-YWlzZSBhIEdQSU8gdG8gdGhlIHByb2Nlc3NvciB3aGljaCBpbiB0dXJuDQo+ICAgICogY291bGQg
-YmUgaGFuZGxlZCBhcyBhbiBpbnRlcnJwdCBieSB0aGUgT1MuDQo+IEBAIC00ODgsNyArNTExLDcg
-QEAgc3RhdGljIHZvaWQgaW14X2ZlY19kb190eChJTVhGRUNTdGF0ZSAqcykNCj4gICAgICAgICAg
-IGZyYW1lX3NpemUgKz0gbGVuOw0KPiAgICAgICAgICAgaWYgKGJkLmZsYWdzICYgRU5FVF9CRF9M
-KSB7DQo+ICAgICAgICAgICAgICAgLyogTGFzdCBidWZmZXIgaW4gZnJhbWUuICAqLw0KPiAtICAg
-ICAgICAgICAgcWVtdV9zZW5kX3BhY2tldChxZW11X2dldF9xdWV1ZShzLT5uaWMpLCBzLT5mcmFt
-ZSwgZnJhbWVfc2l6ZSk7DQo+ICsgICAgICAgICAgICBzZW5kX3BrdChzLCAodWludDhfdCAqKSZz
-LT5mcmFtZSwgZnJhbWVfc2l6ZSk7DQo+ICAgICAgICAgICAgICAgcHRyID0gcy0+ZnJhbWU7DQo+
-ICAgICAgICAgICAgICAgZnJhbWVfc2l6ZSA9IDA7DQo+ICAgICAgICAgICAgICAgcy0+cmVnc1tF
-TkVUX0VJUl0gfD0gRU5FVF9JTlRfVFhGOyBAQCAtNTg2LDcgKzYwOSw3IEBAIA0KPiBzdGF0aWMg
-dm9pZCBpbXhfZW5ldF9kb190eChJTVhGRUNTdGF0ZSAqcywgdWludDMyX3QgaW5kZXgpDQo+ICAg
-ICAgICAgICAgICAgfQ0KPiAgICAgICAgICAgICAgIC8qIExhc3QgYnVmZmVyIGluIGZyYW1lLiAg
-Ki8NCj4gICANCj4gLSAgICAgICAgICAgIHFlbXVfc2VuZF9wYWNrZXQocWVtdV9nZXRfcXVldWUo
-cy0+bmljKSwgcy0+ZnJhbWUsIGZyYW1lX3NpemUpOw0KPiArICAgICAgICAgICAgc2VuZF9wa3Qo
-cywgKHVpbnQ4X3QgKikmcy0+ZnJhbWUsIGZyYW1lX3NpemUpOw0KPiAgICAgICAgICAgICAgIHB0
-ciA9IHMtPmZyYW1lOw0KPiAgIA0KPiAgICAgICAgICAgICAgIGZyYW1lX3NpemUgPSAwOw0KPiAN
-Cg0K
+On Fri, Nov 29, 2019 at 4:59 PM Wasim, Bilal <Bilal_Wasim@mentor.com> wrote=
+:
+>
+> Thanks for the pointers philippe.. Is the patch okay to be merged without=
+ it or do I need to do a re-submission with the updated username ?
+
+If there are no review comments on your patch, I think the maintainer
+taking your patch can fix this details directly, no need to resend.
+
+> -----Original Message-----
+> From: Philippe Mathieu-Daud=C3=A9 [mailto:philmd@redhat.com]
+> Sent: Friday, November 29, 2019 8:38 PM
+> To: bilalwasim676@gmail.com; qemu-devel@nongnu.org
+> Cc: peter.maydell@linaro.org; aa1ronham@gmail.com; jcd@tribudubois.net; q=
+emu-arm@nongnu.org; Wasim, Bilal <Bilal_Wasim@mentor.com>; linux@roeck-us.n=
+et; Jason Wang <jasowang@redhat.com>
+> Subject: Re: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loop=
+back mode.
+>
+> Hi Bilal,
+>
+> Cc'ing Jason, the maintainer of network devices.
+>
+> On 11/29/19 4:05 PM, bilalwasim676@gmail.com wrote:
+> > From: bwasim <bilal_wasim@mentor.com>
+>
+> Your git setup misses your 'user.name', you could fix it running:
+>
+>    git config user.name "Bilal Wasim"
+>
+> (eventually with the --global option).
+>
+> The patch looks good otherwise.
+>
+> Thanks!
+>
+> > Loopback mode only works when specific conditions (as dictated by the
+> > IP guide) are met, i.e. the MII_MODE is set and the RMII_MODE is
+> > cleared. If not, we simply send the packet on the output queue (for TX
+> > to the host network). Tested by running a custom RTOS and TXing a ton
+> > of packets. The same packets were received on the RX side..
+> >
+> > Signed-off-by: Bilal Wasim <bilal_wasim@mentor.com>
+> > ---
+> >   hw/net/imx_fec.c | 27 +++++++++++++++++++++++++--
+> >   1 file changed, 25 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c index
+> > bd99236864..c51e7f7363 100644
+> > --- a/hw/net/imx_fec.c
+> > +++ b/hw/net/imx_fec.c
+> > @@ -256,6 +256,29 @@ static const VMStateDescription vmstate_imx_eth =
+=3D
+> > {
+> >
+> >   static void imx_eth_update(IMXFECState *s);
+> >
+> > +/*
+> > + * Function to check if the MAC is configured to run in loopback mode.
+> > + * If so, invoke the "receive" routine.
+> > + * Else write to the output.
+> > + * */
+> > +static void send_pkt(IMXFECState *s, uint8_t *frame, int frame_size)
+> > +{
+> > +    NetClientState *nc =3D qemu_get_queue(s->nic);
+> > +
+> > +    /*
+> > +     * Loopback or Normal mode ?
+> > +     * Per the FEC Manual: If loopback is enabled, the MII_MODE
+> > +     * should be SET and the RMII_MODE should be cleared. Loopback
+> > +     * will only work if this criterion is met. If not met,
+> > +     * we will send the frame on the output queue. */
+> > +    if ((s->regs[ENET_RCR] & ENET_RCR_LOOP) && (s->regs[ENET_RCR] & EN=
+ET_RCR_MII_MODE)
+> > +            && !(s->regs[ENET_RCR] & ENET_RCR_RMII_MODE)) {
+> > +        nc->info->receive(nc, frame, frame_size);
+> > +    } else {
+> > +        qemu_send_packet(nc, frame, frame_size);
+> > +    }
+> > +}
+> > +
+> >   /*
+> >    * The MII phy could raise a GPIO to the processor which in turn
+> >    * could be handled as an interrpt by the OS.
+> > @@ -488,7 +511,7 @@ static void imx_fec_do_tx(IMXFECState *s)
+> >           frame_size +=3D len;
+> >           if (bd.flags & ENET_BD_L) {
+> >               /* Last buffer in frame.  */
+> > -            qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_s=
+ize);
+> > +            send_pkt(s, (uint8_t *)&s->frame, frame_size);
+> >               ptr =3D s->frame;
+> >               frame_size =3D 0;
+> >               s->regs[ENET_EIR] |=3D ENET_INT_TXF; @@ -586,7 +609,7 @@
+> > static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
+> >               }
+> >               /* Last buffer in frame.  */
+> >
+> > -            qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_s=
+ize);
+> > +            send_pkt(s, (uint8_t *)&s->frame, frame_size);
+> >               ptr =3D s->frame;
+> >
+> >               frame_size =3D 0;
+> >
+>
+

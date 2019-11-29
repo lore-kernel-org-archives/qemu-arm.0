@@ -1,102 +1,102 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9004521lfc;
-        Fri, 29 Nov 2019 05:38:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyVYq2pqPUr7RVpNMTlQbhVBG3sRm7gI44wgJ2TjpvNn+MlV4hrINcmxYAO7kc+t+M1iXi3
-X-Received: by 2002:a50:c343:: with SMTP id q3mr8335654edb.209.1575034706136;
-        Fri, 29 Nov 2019 05:38:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575034706; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9012702lfc;
+        Fri, 29 Nov 2019 05:44:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyDrBgIe+0cJPpbl+NBd1GkldlZOhX2bFBUDY7cNRuUdoKP1TwR2TIOML7+4M/AAiyxey+L
+X-Received: by 2002:a37:bd06:: with SMTP id n6mr16272497qkf.286.1575035082434;
+        Fri, 29 Nov 2019 05:44:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575035082; cv=none;
         d=google.com; s=arc-20160816;
-        b=G6TvV2VoSqK18LM1JXYoGE9/2DQf0bYhH88zlcDWHeIfrNo9kTfKL5gkM4gXqTD9xK
-         X5ZIzW70Hj59IbSHZXOH97KzvxhleGhonCm5xr0GeCGOjnrmFYjw9DHxy+7Y7alK8+Bh
-         y6joQO8jPRUdePG1b+Vto7L9GGSkP8XhhVBoPZsxreCP20HWHeo2ywpKrJKZWrwRp4Mb
-         /t4gN2WSk+GHd3ISdCmNhxvRE6JaUK/r77qpcfYieCJavfg9SE2FaJBPQDMOe1g1aJ80
-         920ApJSzfQ6K8kihWn6yLcsMufdG2s2Tu459HDQPjRKZcuBIjSW7iePJsIvD6MOScNP4
-         2CVA==
+        b=DLSVuqdG/UD6UcpoPSOrySKYZVf7nt92kMgiYCiju79YDUd5EyLvccScm/q30Ztlz8
+         Dg95SBH7bmbDzFkURB3UYaultqKFAma3Vi/5AG9SCDxWhIWf5o1SoXCZ1AkaSYFbGmnM
+         rpfp2yLmXOIgYx02ORBrqbrTiv5Gao6PEPLWO3qo5xzu/T4HmJIemIh8YP46K21LlEZ8
+         YiWpO56x59NBxRx6e8WaSoXd/1iRPk6F/1CfRLlM3uR6Odesvw5n3uQ7tHXg1P536S/R
+         P12kgSMy/Cn/NpUunx1d/TeaASLmb8efOVwS6G4nKYxTMG+NeycAEes1k6OVYuyJNnJL
+         My9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=+H5beYs7R9VzKoKtKDCo0/PtILiDZOqNPj6UEVTqWI8=;
-        b=rckI0ZGMo23tTcbcyfuorjNhNjpJGpVAYQ7ppr2lHVuxJjxo9pyPITuHj5y37HjYWu
-         UuL73HthfLInpXXqc/R37pdbEUn1/qoHVXBusSEkAzqGgQC/uoX+oiXEfJNvrKp7ai78
-         9SjV7co6bayG6f0uo4ntMaqHxqXXIgYS2nifkfa65FPLtknG4IZCCTFoW3t7DqNpso/9
-         TPQ0PVOPjlsJoxioOPU4UPHNJa7BSGe+O4Zj402v+hQNQA8eMdlRGomVLMP7Mwx/Hvc4
-         0M2vkhBLMZMukIW0hPVU0VPBnLJ5bXuzHNr/hIfDx0wx3SbFCc1Vlh/QFxDbF2sfxkeO
-         bxUg==
+        bh=3vLHdln1DbX8BhwYGzhWQv2zwN23+8GT4g7zmpr3u9E=;
+        b=LJW6UXXhnYt+0L7rBy1YGvg3sIj+tXNUAYQBwyZq+pdv7bGNGHikKvO+pDNBDOb0i1
+         EXbny1ao/OJOZOKLRlnXuOmA6jhbRoDjjefkDM1vWE2aGQCC3JVMW8c4p+n1ufORqdsb
+         wVFuabi3ai3SvSlTR57VFLwClpG7bKScAk6T1hIPoRyDXWU3+gCU5jfcRgTG5wcUzM2f
+         rXikv+yvxdmc0NHbPaSi5ERcJqgqNUTWyUlHfeA0vnmKdcAHjw2u9OJJsz5pEsHJBYaA
+         Z1DSR0/7vJQ5b1c8cwLxVVDmqKJfv1ZhA/HQTwmQi5PGDY7A+R5hPetx33jgUJJBy0/e
+         6wRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qXE5evr1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KLMMCDDv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cc4si15649954edb.237.2019.11.29.05.38.26
+        by mx.google.com with ESMTPS id dg18si14200930qvb.7.2019.11.29.05.44.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Nov 2019 05:38:26 -0800 (PST)
+        Fri, 29 Nov 2019 05:44:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qXE5evr1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KLMMCDDv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59168 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59236 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iagTZ-00025y-6P
-	for alex.bennee@linaro.org; Fri, 29 Nov 2019 08:38:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44871)
+	id 1iagZX-0006sh-Na
+	for alex.bennee@linaro.org; Fri, 29 Nov 2019 08:44:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51489)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <bilalwasim676@gmail.com>) id 1iac0y-0005np-RK
- for qemu-devel@nongnu.org; Fri, 29 Nov 2019 03:52:40 -0500
+ (envelope-from <bilalwasim676@gmail.com>) id 1iadRs-0003um-Cd
+ for qemu-devel@nongnu.org; Fri, 29 Nov 2019 05:24:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <bilalwasim676@gmail.com>) id 1iac0u-0000jz-Fb
- for qemu-devel@nongnu.org; Fri, 29 Nov 2019 03:52:33 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:34101)
+ (envelope-from <bilalwasim676@gmail.com>) id 1iadRp-0001yq-0w
+ for qemu-devel@nongnu.org; Fri, 29 Nov 2019 05:24:26 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42603)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <bilalwasim676@gmail.com>)
- id 1iac0u-0000Qs-7R; Fri, 29 Nov 2019 03:52:32 -0500
-Received: by mail-wr1-x442.google.com with SMTP id t2so34045329wrr.1;
- Fri, 29 Nov 2019 00:52:28 -0800 (PST)
+ id 1iadRo-0001jB-O6; Fri, 29 Nov 2019 05:24:24 -0500
+Received: by mail-wr1-x441.google.com with SMTP id a15so34481351wrf.9;
+ Fri, 29 Nov 2019 02:24:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=+H5beYs7R9VzKoKtKDCo0/PtILiDZOqNPj6UEVTqWI8=;
- b=qXE5evr1plLKDoAiwd+QFIqDiPhVreKVkrMKLbRivLYKG4HxvcjfU7lOCzlNzguNT5
- TZ0+lWOHLpJFsFnu/ABwvFBi1WDAvPXOHlIBZjnyCX6sq+ChKlGYJ3iOpmv46rJmL2Ak
- oFm+oZoI6X9zWSfg+zj1KGQ0A1wNbddIeA2PgSPYdGU1xIaEO8IEKc6ClyN0r6Wkqa8B
- EL6OJfng+mvqqDbCTuYTpiq+vEvJMidIjhI0X0yaKPosriD9cxx2JjncWRhg2XKn8VvZ
- Ya3+9/XVBmZaPDvrJwKXFyqzNHH0M6t4d17sizeyj3vdsiUQQTmMuRcJhJdqei9n8BMg
- E1WQ==
+ bh=3vLHdln1DbX8BhwYGzhWQv2zwN23+8GT4g7zmpr3u9E=;
+ b=KLMMCDDvzQbjNZiuFf8HPcoa8P565LXBj5IVn/3rtTW94oK74YD6K7GsO5GN5ygyd/
+ TOvOtM7reXvFVTL1prqrX4dtuFZgX6QJkCnGBfGqNGxoS7nUt/VALUyNfobtiYOUtaWu
+ d1WcOUhOTnl+s7mcrIwfqSmAzzTmuA6XOt6mZ3R123raDcMmL9nHqL6xH0zNdhd+eKq9
+ AC8vIN4LCr1xGnr/daGCzjqj4HCn8hN9+C/5/wLPGALwYUCYrkRghKcJ9vpSv2sEcDLL
+ 1FTsguk01vWrEKRiiwDNkc7Ug4OcLx6pYQmVPc8X2V9jC/GT2QnlU3KXmchJY0O+m68e
+ 97Qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=+H5beYs7R9VzKoKtKDCo0/PtILiDZOqNPj6UEVTqWI8=;
- b=G9tn4B75GBiK1Ph6/TzB3hFFckYlSPyQRPxcYfrQXH363AAn+KCEXDyEQMLe37kFKJ
- H7hA9SSnsXqNIwenHbJW8lFk/S7V+gDFYrYCrOXwHbVWRID5dWAAwXy/eWQuxd7BHwUp
- BFsALKSkDNGxd/BXiOoKRkEz4/TifM3/L/kD/etqsiGUoOOqLN2t5Sq2NcTBdtgeVWY1
- RtOsSKmKECg2gMa8LJAYrSj+uvR6QVJajcSVep9N1vhEV2kRfEDaeW6TXvAsPtx6bov3
- 41Gt/SbS95ZdFcsiBe/J3/lw1nY36X2qRB8oIMJBcvoOjGrpmHfSgos4xfDF+/XE8Uuo
- ajiw==
-X-Gm-Message-State: APjAAAXAf7oOjMBwGeHjVmkUbJpV/83tnlAssst+kfzOTr5tRZlITaV6
- EY9Nz/rD6PMbYCSA+uNRC1L5pwZcIbA=
-X-Received: by 2002:adf:f5cf:: with SMTP id k15mr2678894wrp.182.1575017546576; 
- Fri, 29 Nov 2019 00:52:26 -0800 (PST)
+ bh=3vLHdln1DbX8BhwYGzhWQv2zwN23+8GT4g7zmpr3u9E=;
+ b=IJGNvn+hqLNgMrv/0BMn66PPdw8KJbP7XfLZOOrUwrJVRZIkdikQhzopx13nHPScrc
+ qalTAQBVG/yW+gx79uiRlz8hSy47L+nfrDpkH/ni6OBfBD3uf28V7O+HcYD/X2MENQnB
+ tPTNA3hr/ouZOTGlHFlIELErvZ9YBUgi1AR4V7wm7BBrdAmwwr0B5qCBJhWYotLZ8256
+ wttn7hThPMP1M53dcZZqh8BkvB47D7fONSWPVfVlM598lvGBIEq9t/L9Gq8twquITuF4
+ UWthpBmwdp+OSqVLTksyDPYAvll8o0p8L8Q8NJlow67E6SAegb2STnJfRMEQcMeOaGtN
+ wcVA==
+X-Gm-Message-State: APjAAAUmF3UXrhpupjtAiK7jYB2rzSlAbs0CzMt9o2HYlmx1zQfIV9Ik
+ KrU4I0+ePGa+h3p5Xm7XPiM9hUnxpd8=
+X-Received: by 2002:a5d:68cf:: with SMTP id p15mr2093577wrw.31.1575023060081; 
+ Fri, 29 Nov 2019 02:24:20 -0800 (PST)
 Received: from PKL-BWASIM-LT.mgc.mentorg.com ([110.93.212.98])
- by smtp.gmail.com with ESMTPSA id x13sm12490515wmc.19.2019.11.29.00.52.24
+ by smtp.gmail.com with ESMTPSA id a26sm12698479wmm.14.2019.11.29.02.24.18
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 29 Nov 2019 00:52:26 -0800 (PST)
+ Fri, 29 Nov 2019 02:24:19 -0800 (PST)
 From: bilalwasim676@gmail.com
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2] net/cadence_gem: Updating the GEM MAC IP to properly
+Subject: [PATCH v3] net/cadence_gem: Updating the GEM MAC IP to properly
  filter out multicast addresses.
-Date: Fri, 29 Nov 2019 13:52:16 +0500
-Message-Id: <20191129085216.5108-1-bilalwasim676@gmail.com>
+Date: Fri, 29 Nov 2019 15:24:14 +0500
+Message-Id: <20191129102414.14060-1-bilalwasim676@gmail.com>
 X-Mailer: git-send-email 2.19.1.windows.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::442
-X-Mailman-Approved-At: Fri, 29 Nov 2019 08:30:34 -0500
+X-Received-From: 2a00:1450:4864:20::441
+X-Mailman-Approved-At: Fri, 29 Nov 2019 08:30:37 -0500
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,7 +112,7 @@ Cc: edgar.iglesias@gmail.com, qemu-arm@nongnu.org, bilal_wasim@mentor.com,
  alistair@alistair23.me, peter.maydell@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6axK6qT7SwZU
+X-TUID: KesavHVUMlwn
 
 From: bwasim <bilal_wasim@mentor.com>
 
@@ -124,11 +124,11 @@ with ZCU102-A53 / IPv6 on a TAP interface. Works well..
 
 Signed-off-by: Bilal Wasim <bilal_wasim@mentor.com>
 ---
- hw/net/cadence_gem.c | 19 ++++++++++++-------
- 1 file changed, 12 insertions(+), 7 deletions(-)
+ hw/net/cadence_gem.c | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
 
 diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index b8be73dc55..042188c1ba 100644
+index b8be73dc55..6400b3653b 100644
 --- a/hw/net/cadence_gem.c
 +++ b/hw/net/cadence_gem.c
 @@ -34,6 +34,7 @@
@@ -180,6 +180,15 @@ index b8be73dc55..042188c1ba 100644
              }
          }
      }
+@@ -1083,7 +1088,7 @@ static void gem_transmit_updatestats(CadenceGEMState *s, const uint8_t *packet,
+     }
+ 
+     /* Error-free Multicast Frames counter */
+-    if (packet[0] == 0x01) {
++    if (is_multicast_ether_addr(packet)) {
+         s->regs[GEM_TXMCNT]++;
+     }
+ 
 -- 
 2.19.1.windows.1
 

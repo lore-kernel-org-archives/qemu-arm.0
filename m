@@ -1,106 +1,93 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp8848748lfc;
-        Fri, 29 Nov 2019 03:43:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy5EGg7HmYCWL3WGECuKCKBjs8Tm6O2Mw7iutiWaua7+ztDkWYGPZl00gD/klj05QJj2QpC
-X-Received: by 2002:ac8:46c7:: with SMTP id h7mr33435882qto.320.1575027800924;
-        Fri, 29 Nov 2019 03:43:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575027800; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp8857735lfc;
+        Fri, 29 Nov 2019 03:51:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxN6YQgbcdpW/tzsn9jZhAjLOTlxm49OddSgYdgY2tv71spYTIRFZe7+jnMc10fTjdsQ9kj
+X-Received: by 2002:adf:f508:: with SMTP id q8mr7251859wro.334.1575028281042;
+        Fri, 29 Nov 2019 03:51:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575028281; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pe3ZUHk1VzUODqyQFIdMNhPaHL8JO4tEALzjSFSTDYPu9mZ67NUw+nq46y7L1laNuK
-         YcRYjLwM0vq1VS387jFgenoGHF9YOj7jSDxgJ8qd5xojdEkAB9LnqJYGtl3oodekqhe5
-         CaRbzbQXGMJVq+/P3lGfw5mYQXMGk/k/k6VjsjBR8e/6Pigj4AAV+equL53HOQrGaU71
-         99EY8szemigqhrZ8JaR/2e6bEUSTrhcChnMr8IBoxPn9/4BmL1Nn1Km64tjzmWu//hjN
-         IZ1Jj63Db75ZcsUUwxTO6IsNOXoUpO4H3Z1seJWOFCF9fekIWg7DnOZDJNDYj6PaycEn
-         yjsA==
+        b=0beaiv/aKvxhsm6C3HVhU80rlO1udQ99BUbVGUD1oVOMhxYaa0YiBlnS7kIqKjBx5a
+         ZqyBFzY+ILn/2d7NKq7ksuslcWQlWMJB+aR6HnEDi3TqZ09PUY8MqiG0XdEf0CtH2z0R
+         dK0Po1EXcQ0PiqpXhQG7S/34NXybEfjeLQseM9mgIPDm3EHuFGOqLe8IFxAYBPiGbf38
+         37Qn9N5GIMNPq9xD7myYvxF10JuKHO03iIlH3SAceTLTHgTnOG6VIRwK+4PkqAdBnlok
+         l/DnK+opY+KgOI0N9iCk1GXW6yixJuHw6HSPeLUSdmShAFY4dTxkoJfMJgW/C2s97rb1
+         PNbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=TdIehHzq+Y4vqV0PwyzEM2+xR/h9WqArJUVh23XUysA=;
-        b=ymNmdVYnTGSMDTW0AUXzbRJL3Or1td5tDr0Mg90FNii5x612OHNJRjmQHq8M+ZhBp+
-         4mlZN1h9zIP2g+iYk3+StFmDTVHPGFTnHGKpbP3dsiCAJ7dlXaIwenRVVBoyjUpwvmSv
-         lUpjDTIL+iih7FbheVgqh3e3N2dl26OOnqluRFw2gIOJMROGECwz/ptagJBot6meQSw3
-         wASZ3Trbt5SkjHGl7NAt4jgcOSqRy/C+O/2EnELV2X9KM/LIhmYO0hitt53eaB8WGVnK
-         D1hy62oJSO+Mja7b08Q7f5fSjUSuow+/zxF974zlRhAYutmTfETfIY5JRwNLOWf8Zxvt
-         o3CQ==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:ironport-sdr:ironport-sdr;
+        bh=TQYOeyZ+G2Jl5UJeiXkfduch13Bp+A7oHqYYERQi3j8=;
+        b=gSoRcx/FxSze2qmt2eqzib/oD/NlGX9uvyEVLfK7v/tpbUGCeKDUYkSwYHR/UcdE8R
+         8sOREJJQiMt7HfTTNO4lcB0uZ0UfRxBzUPEbHLIMSgU3lKYG81GkZKs94dGLEC6k6r2U
+         HWv1UwUrZWEJv/gEQdumOvYk4Komw10aWCX4/KCi4JFqU/q7hTj3HEF+52du8s7Vd/ZP
+         L6olBgxAjaRZCGRqMK58uFrwlcGTyGiN24vtX/Kw7kQDvKHtGelyI0vy4fhUGiEc8WR8
+         C8WTrLH3fOudYPCHpIfBP5CjmazhCK57I0tvJeLsOCJU33GV6IWV8Fq9BVo5Hcb3crKc
+         kF0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZpG9FT6B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i3si14249201qtj.308.2019.11.29.03.43.20
+        by mx.google.com with ESMTPS id f18si5507031edq.302.2019.11.29.03.51.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Nov 2019 03:43:20 -0800 (PST)
+        Fri, 29 Nov 2019 03:51:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZpG9FT6B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57632 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iaeg8-0005xK-Ci
-	for alex.bennee@linaro.org; Fri, 29 Nov 2019 06:43:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40626)
+	id 1iaent-0001vE-1W
+	for alex.bennee@linaro.org; Fri, 29 Nov 2019 06:51:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45588)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1iaeM8-0000iK-SR
- for qemu-devel@nongnu.org; Fri, 29 Nov 2019 06:22:39 -0500
+ (envelope-from <Bilal_Wasim@mentor.com>) id 1iaeOw-0002aU-0K
+ for qemu-devel@nongnu.org; Fri, 29 Nov 2019 06:25:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <edgar.iglesias@gmail.com>) id 1iaeM4-0003EH-Ao
- for qemu-devel@nongnu.org; Fri, 29 Nov 2019 06:22:34 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37612)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
- id 1iaeM4-0002sO-2w; Fri, 29 Nov 2019 06:22:32 -0500
-Received: by mail-wr1-x441.google.com with SMTP id w15so3758505wru.4;
- Fri, 29 Nov 2019 03:22:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=TdIehHzq+Y4vqV0PwyzEM2+xR/h9WqArJUVh23XUysA=;
- b=ZpG9FT6B/oronXjzN27TUDS590BCPC+S5JmfY8QNDx5K0Q/pziKAnD5ziL5Pvh+vch
- 2asMF/BUsK5pfm7Lx/XRo4Bqr55BiaAfTjGouw12L7CwkrqS2B/HCtsebbWowfjhur5H
- 0SZBd2KAA7a8qu6ZTI7uhLWE4Dk5KfldijTWZjYccIs6/4fDeFne/9U1cP3jF4kj0UhV
- 94D3hLmMuZNqz5Od0O+ZeyqpYbc0rsxfl2NvlPomvXGKiWjBHAndUG5tsPLKKYLDCkDZ
- FvT0xuIOrJej8auy3SAk7gpk5937y8fdtlDrhgXrm63CEZrn8tgnG5tZji9CK1cJs1yM
- sWAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=TdIehHzq+Y4vqV0PwyzEM2+xR/h9WqArJUVh23XUysA=;
- b=j7q+VaxfdPoeXZ1mCXdz23eWij0SqR2iKCmcUPTFE6rAEsAMUNK6BSjrvRBOPysf9A
- 6SxUQOmCm8xzQUd9Y3jGWTqDfa0sGhMfoUlNREulWBsKqwhPtCPvujGPSpS425EP9DiR
- ox7XYtcpIivr9jhOMFo7Bf5fHEb+9xWRT8xoH6A+ItS76HvhvFAkjLgPGGpJTpKh4Kac
- EuUHybDo4RoF82kTrlh+EeZHLihzIrEj6k6KABuZnTrrvtlrafcF+qJWRaaITBb6bqdl
- abAUVwH3EydyiB8T9BU60zrh2dxfaO6cFZo9/kJ4Oka/xYaTu72Y9dbyKLmyXpzXqskZ
- LliA==
-X-Gm-Message-State: APjAAAWkvHvVkt+8G8sa3aeGxHlWt28iA+k6v62wlfNr67JTJUQVfwSZ
- 8Ap68OWlFr9DCjvgaqdteWHxszolnKg=
-X-Received: by 2002:adf:f606:: with SMTP id t6mr36724053wrp.85.1575026545826; 
- Fri, 29 Nov 2019 03:22:25 -0800 (PST)
-Received: from localhost (ec2-34-244-242-0.eu-west-1.compute.amazonaws.com.
- [34.244.242.0])
- by smtp.gmail.com with ESMTPSA id c17sm231270wrr.87.2019.11.29.03.22.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Nov 2019 03:22:25 -0800 (PST)
-Date: Fri, 29 Nov 2019 12:22:27 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: bilalwasim676@gmail.com
-Subject: Re: [PATCH v3] net/cadence_gem: Updating the GEM MAC IP to properly
+ (envelope-from <Bilal_Wasim@mentor.com>) id 1iaeOq-0002kO-6w
+ for qemu-devel@nongnu.org; Fri, 29 Nov 2019 06:25:26 -0500
+Received: from esa3.mentor.iphmx.com ([68.232.137.180]:57531)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <Bilal_Wasim@mentor.com>)
+ id 1iaeOo-0002aW-2o; Fri, 29 Nov 2019 06:25:22 -0500
+IronPort-SDR: GTLqJW6RXPQNPOC/SOcfMIOdCUKvKndfJXtkoav8cNd9SHRyq4IhQwTVXRwn1rusypBqXgsef6
+ pCywU1FWZqTHAAJKQX+C2HGJDERksBHzpN5DeEjGWZTRc80m6/gxP3Kg7xoecuuvChzKVyW8e5
+ n9mVz3H5pzoDyWAOd8Hpr0LwSOb6HV9zYl/sbmLY+DctjxJgsmSf66KJI0UN1oHqHtr/cIIBJA
+ RuaxlMSzVBbwqG6k24KCVeU8Mpg64t1cev9JNDzulLsf/kzRPj3AP4LI3Y2+xbpoe9UQWrDowl
+ izc=
+X-IronPort-AV: E=Sophos;i="5.69,257,1571731200"; d="scan'208";a="43623921"
+Received: from orw-gwy-02-in.mentorg.com ([192.94.38.167])
+ by esa3.mentor.iphmx.com with ESMTP; 29 Nov 2019 03:25:10 -0800
+IronPort-SDR: NUwPZRuv8dBo3L+tNWf/4uIobHGAyj7QHfCv/Wg4c/LLr6JYDN1G97ir4/yjiGnG4hIakV8QG7
+ ekhCqtfSbteXBRdVzNw7AlXGmGQXYsuzLRULYA1O700mCgkyQq3bPnFBgAxpaBHIXcUu1svOJs
+ ew/YRkH0qWmeW3G55dlTETM5cz+Ube+/wC2S9Lsbp8wszQVD5Vr7jAYnMoWnZwwlJh3akDUUDX
+ QzKyCNNXuHw3kRmMIakNynLPo6/nVCoRamvuHAdX7+TyONv+iizhFjpzDH+j89/Bnrzyj+j9/f
+ K4o=
+From: "Wasim, Bilal" <Bilal_Wasim@mentor.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, "bilalwasim676@gmail.com"
+ <bilalwasim676@gmail.com>
+Subject: RE: [PATCH v3] net/cadence_gem: Updating the GEM MAC IP to properly
  filter out multicast addresses.
-Message-ID: <20191129112227.GC25295@toto>
+Thread-Topic: [PATCH v3] net/cadence_gem: Updating the GEM MAC IP to properly
+ filter out multicast addresses.
+Thread-Index: AQHVpp8tgvWMiE5SAUuNXNNescw4gqeiAVGAgAAAhAA=
+Date: Fri, 29 Nov 2019 11:25:05 +0000
+Message-ID: <1ed44ab59c784e3d97f9ffe871dbb476@SVR-IES-MBX-03.mgc.mentorg.com>
 References: <20191129102414.14060-1-bilalwasim676@gmail.com>
+ <20191129112227.GC25295@toto>
+In-Reply-To: <20191129112227.GC25295@toto>
+Accept-Language: en-GB, en-IE, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [137.202.0.90]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20191129102414.14060-1-bilalwasim676@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::441
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 68.232.137.180
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,19 +99,35 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, bilal_wasim@mentor.com,
- qemu-devel@nongnu.org, alistair@alistair23.me
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "alistair@alistair23.me" <alistair@alistair23.me>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jcRsdRjkE/rk
+X-TUID: pUKrteM5+sx7
+
+Thanks for also helping me get through the "somewhat" tedious patch process=
+ of QEMU.. Will be helpful for future submissions..=20
+
+- Bilal
+
+-----Original Message-----
+From: Edgar E. Iglesias [mailto:edgar.iglesias@gmail.com]=20
+Sent: Friday, November 29, 2019 4:22 PM
+To: bilalwasim676@gmail.com
+Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; alistair@alistair23.me; Was=
+im, Bilal <Bilal_Wasim@mentor.com>; peter.maydell@linaro.org
+Subject: Re: [PATCH v3] net/cadence_gem: Updating the GEM MAC IP to properl=
+y filter out multicast addresses.
 
 On Fri, Nov 29, 2019 at 03:24:14PM +0500, bilalwasim676@gmail.com wrote:
 > From: bwasim <bilal_wasim@mentor.com>
-> 
-> The current code makes a bad assumption that the most-significant byte
-> of the MAC address is used to determine if the address is multicast or
+>=20
+> The current code makes a bad assumption that the most-significant byte=20
+> of the MAC address is used to determine if the address is multicast or=20
 > unicast, but in reality only a single bit is used to determine this.
-> This caused IPv6 to not work.. Fix is now in place and has been tested
+> This caused IPv6 to not work.. Fix is now in place and has been tested=20
 > with ZCU102-A53 / IPv6 on a TAP interface. Works well..
 
 
@@ -139,14 +142,14 @@ Cheers,
 Edgar
 
 
-> 
+>=20
 > Signed-off-by: Bilal Wasim <bilal_wasim@mentor.com>
 > ---
 >  hw/net/cadence_gem.c | 21 +++++++++++++--------
 >  1 file changed, 13 insertions(+), 8 deletions(-)
-> 
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index b8be73dc55..6400b3653b 100644
+>=20
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c index=20
+> b8be73dc55..6400b3653b 100644
 > --- a/hw/net/cadence_gem.c
 > +++ b/hw/net/cadence_gem.c
 > @@ -34,6 +34,7 @@
@@ -154,43 +157,49 @@ Edgar
 >  #include "sysemu/dma.h"
 >  #include "net/checksum.h"
 > +#include "net/eth.h"
->  
+> =20
 >  #ifdef CADENCE_GEM_ERR_DEBUG
 >  #define DB_PRINT(...) do { \
-> @@ -601,7 +602,7 @@ static void gem_receive_updatestats(CadenceGEMState *s, const uint8_t *packet,
+> @@ -601,7 +602,7 @@ static void gem_receive_updatestats(CadenceGEMState *=
+s, const uint8_t *packet,
 >      }
->  
+> =20
 >      /* Error-free Multicast Frames counter */
-> -    if (packet[0] == 0x01) {
+> -    if (packet[0] =3D=3D 0x01) {
 > +    if (is_multicast_ether_addr(packet)) {
 >          s->regs[GEM_RXMULTICNT]++;
 >      }
->  
-> @@ -690,21 +691,25 @@ static int gem_mac_address_filter(CadenceGEMState *s, const uint8_t *packet)
+> =20
+> @@ -690,21 +691,25 @@ static int gem_mac_address_filter(CadenceGEMState *=
+s, const uint8_t *packet)
 >      }
->  
+> =20
 >      /* Accept packets -w- hash match? */
-> -    if ((packet[0] == 0x01 && (s->regs[GEM_NWCFG] & GEM_NWCFG_MCAST_HASH)) ||
-> -        (packet[0] != 0x01 && (s->regs[GEM_NWCFG] & GEM_NWCFG_UCAST_HASH))) {
+> -    if ((packet[0] =3D=3D 0x01 && (s->regs[GEM_NWCFG] & GEM_NWCFG_MCAST_=
+HASH)) ||
+> -        (packet[0] !=3D 0x01 && (s->regs[GEM_NWCFG] & GEM_NWCFG_UCAST_HA=
+SH))) {
 > +    if ((is_multicast_ether_addr(packet)
 > +        && (s->regs[GEM_NWCFG] & GEM_NWCFG_MCAST_HASH)) ||
 > +        (is_unicast_ether_addr(packet)
 > +        && (s->regs[GEM_NWCFG] & GEM_NWCFG_UCAST_HASH))) {
 >          unsigned hash_index;
->  
->          hash_index = calc_mac_hash(packet);
+> =20
+>          hash_index =3D calc_mac_hash(packet);
 >          if (hash_index < 32) {
 >              if (s->regs[GEM_HASHLO] & (1<<hash_index)) {
-> -                return packet[0] == 0x01 ? GEM_RX_MULTICAST_HASH_ACCEPT :
+> -                return packet[0] =3D=3D 0x01 ? GEM_RX_MULTICAST_HASH_ACC=
+EPT :
 > -                                           GEM_RX_UNICAST_HASH_ACCEPT;
 > +                return is_multicast_ether_addr(packet) ?
 > +                       GEM_RX_MULTICAST_HASH_ACCEPT :
 > +                       GEM_RX_UNICAST_HASH_ACCEPT;
 >              }
 >          } else {
->              hash_index -= 32;
+>              hash_index -=3D 32;
 >              if (s->regs[GEM_HASHHI] & (1<<hash_index)) {
-> -                return packet[0] == 0x01 ? GEM_RX_MULTICAST_HASH_ACCEPT :
+> -                return packet[0] =3D=3D 0x01 ? GEM_RX_MULTICAST_HASH_ACC=
+EPT :
 > -                                           GEM_RX_UNICAST_HASH_ACCEPT;
 > +                return is_multicast_ether_addr(packet) ?
 > +                       GEM_RX_MULTICAST_HASH_ACCEPT :
@@ -198,15 +207,16 @@ Edgar
 >              }
 >          }
 >      }
-> @@ -1083,7 +1088,7 @@ static void gem_transmit_updatestats(CadenceGEMState *s, const uint8_t *packet,
+> @@ -1083,7 +1088,7 @@ static void gem_transmit_updatestats(CadenceGEMStat=
+e *s, const uint8_t *packet,
 >      }
->  
+> =20
 >      /* Error-free Multicast Frames counter */
-> -    if (packet[0] == 0x01) {
+> -    if (packet[0] =3D=3D 0x01) {
 > +    if (is_multicast_ether_addr(packet)) {
 >          s->regs[GEM_TXMCNT]++;
 >      }
->  
-> -- 
+> =20
+> --
 > 2.19.1.windows.1
-> 
+>=20

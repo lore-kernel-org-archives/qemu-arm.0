@@ -1,97 +1,81 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9426680lfc;
-        Fri, 29 Nov 2019 11:19:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxbkf/YSqo16ZEwP82rtc4IErV47yiecFOfNcYHPQQv/sjPgPQq5KIlpD02gswYhPxhTTGo
-X-Received: by 2002:ac8:610a:: with SMTP id a10mr43670587qtm.50.1575055171036;
-        Fri, 29 Nov 2019 11:19:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575055171; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp9883318lfc;
+        Fri, 29 Nov 2019 19:47:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzuVWag8n6mG4EUtLjuHpihg4XMZuTumKmSt+P3kPDyicjkCEAZ7+UYtPObGcijAs5FAmAM
+X-Received: by 2002:a05:6402:205c:: with SMTP id bc28mr48844055edb.124.1575085679077;
+        Fri, 29 Nov 2019 19:47:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575085679; cv=none;
         d=google.com; s=arc-20160816;
-        b=hkV2HCM7gQpoZED3PoC6EmIhzYGOd3jOvAyA8RhtCpTpjDVwswuxiJ9KlnDCStszTn
-         ZDyMN7bPy+LqGFyzBu/ROSYCfz8+I3P9t5yXhv06Oqirg5Ni++3T/+3b/29dM0iz3VFN
-         3VG5wV4crwJ7VdPi8NUBgVHHvX6QRrSZTkVeTDdFmwrCnZZZ+89SQT4C0a1RQ88Jme37
-         NEy+SAY0h5UcpOhaGY13eRhunvFv9lrrTMngdkVPBzRm7tqLnNwfEa/8tiF6cb/M/8kB
-         AkJnBa0nyCMOGMLqDvIug9Q7vnK7RGr0dsFpTQaC2TsIii1sK8omnBHmfeSpsLewxX6N
-         3UEA==
+        b=R5sRJ8ctZ3W/trgFAeNy9kcFgUF2E52rvDEP8Rxc2LCr1chD3ExS0GsFQE0zEqsFC8
+         Wnw4IE1BdKMIFhTurZZkl5pPWhIdxvjAoDm/TVxmwLAWEFrzXE4SifzraAERkhxsXHw2
+         MEym5qwLNo+29E2SuFgI+GgRZ8qXMyx77XhAFigiTzP1GmkQUTXgpl8NAtkLpXDV8HgP
+         eD19qVTmndtOZnAhAce9OpWo+iwDqTgFiG8YYtN9skJzX7bUuybkY04briHhnMbK+GY0
+         8ydHdMgYmpzSNvDQ3HagO+uhwTENvCz9JB5rXRwqljEFFGyKMGxWZj5jlav/ANNmQjOx
+         aT4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=+FtFsuQtq3eVlLtLusxL2dw9FGxIT8kWy5OnLveth6I=;
-        b=DYkAeotFV6gPte0dgGqqpCng1tyVt+PrN4Wc+ZKuCaS5xr9jJzabc49PM/zuXqCsm5
-         VTAHyY0z+BwIbPP0rwcj8cOREj/Ycvrom2du9iBv74tcrvWhP9+2r1+4UZzybcfX0r3A
-         KKo7/kLWo4PDlYA0VGS6HXmT5F9Ybtoz+lawNG8QIo0rMNLAlmCFi2VkC1/Leyu3VPfn
-         TrapiZ5O/aOmt8ZL91PXFnWrd3s8Fd/38Lfvyd2LVEenMlfxMaLCh+//M8APxxwkMxmw
-         AD4Lm5sQ4ps1y7pankwRgUgXqVkkc/Uvr4A67R1IpoaAm2H6uSXZzYb40XmeqSCDu2VQ
-         Iauw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=fUhnoS0fvy6ItQJG4cPBDS0p8d8ka6GcdP8TOajEPTM=;
+        b=tz9rnH/mvTlcAb6rLiaHevOwuBCqMXTxI/O6UVCQpTIRqeApZttUZLJjscmxZ5SZPF
+         w3NMUDPF0eeK02P19yF2rLbpf2IM7hbUV+mSKlBysAd2gIeDpPQtil4mImpwlkhMl9zg
+         IDdX4Q4Gt2sUkaGXoEipbDDcycjXygVgUAKgq1B8KPaGLrLr/a0eHG1/mbOwDD156hfD
+         asbtOgnGRc8MmwHCIMFBroJb9Xdbv6E8qWfAfN3dSKPnKOkmjKA6mW8TzX9x7LB5NNpR
+         i778wCIJKDrvvpFRJcY83oMRdZYzrrDLkRJgkhFxVy29oBcZ42VLB+x7/cq8DRPD+w7n
+         ofNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=d2aGixWd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q10si7984998qvs.125.2019.11.29.11.19.30
+        by mx.google.com with ESMTPS id x20si5034298eju.208.2019.11.29.19.47.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Nov 2019 11:19:31 -0800 (PST)
+        Fri, 29 Nov 2019 19:47:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=d2aGixWd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34694 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37058 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ialnc-0007Mc-FC
-	for alex.bennee@linaro.org; Fri, 29 Nov 2019 14:19:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53786)
+	id 1iatji-0002Tc-3P
+	for alex.bennee@linaro.org; Fri, 29 Nov 2019 22:47:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46890)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1ialbz-00014U-JP
- for qemu-arm@nongnu.org; Fri, 29 Nov 2019 14:07:29 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iatjY-0002Sy-Ev
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 22:47:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1ialbs-0002VO-7L
- for qemu-arm@nongnu.org; Fri, 29 Nov 2019 14:07:22 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:39515)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1ialbs-00025B-2S
- for qemu-arm@nongnu.org; Fri, 29 Nov 2019 14:07:20 -0500
-Received: by mail-ot1-x344.google.com with SMTP id 77so4412095oty.6
- for <qemu-arm@nongnu.org>; Fri, 29 Nov 2019 11:07:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+FtFsuQtq3eVlLtLusxL2dw9FGxIT8kWy5OnLveth6I=;
- b=d2aGixWd7g5bE3+AyqaOyriJ/3AMKr+cfuMkOT24yV/t3bg3VDL9KI9z/Jji5pD7CI
- FWZsy7kpuiVyQiCRCYyYsoNGppsjvQ+ZFswedEakglw6ma66mHdvSy5Rr5QRqy7f1oQW
- Ze6Xz7GdJvNa6eeC8jGbPj6PqUBMO5tAG/O9dyAtABsXvVEyVcA/H6VIVb+zIgoG+no7
- OHgFp5T92/j8q5k7hs58H0m6dF8crUHzbrfGj4rOTfjKUjYLRSg6Hnht4SgSJEe1VUY+
- YM1MAyQVJS08iY0/lLhL7ol5SUPck+qY1bZP2FS0ARFm7e7VhjBequn/PXU6jwewdsCi
- uw9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+FtFsuQtq3eVlLtLusxL2dw9FGxIT8kWy5OnLveth6I=;
- b=Lp3ni5PJdxQgIpCKlV8+EkgtKOB39U+WDl24zb9tgbCGh20U0Y6cObQjdNwz1co4HF
- LBv/vL3ZRSMHlpjE75oiiWcPc53j3twEgMI/PZWJugb/y0H3f4ozY/Dycpvk27iMDsdY
- LS0eTp2fZbs5+JEz0uvleO6wXvUg1X9szkVy/UUy/JcGSyil7bogOU1efeNXJsMkAqHC
- 3/laRdHil35yeBaV+ThvxLnY1hkTHzT91hYc84fFWzmKqTskszpgCWZ50x2i95hQXWnc
- R2afaj6Y/L7lAbrXMOXFOX7Ih3DCmNcjB2J7Wa1o4JxHjoL0N4lMl5WWEy6JFrTLeecp
- cjKA==
-X-Gm-Message-State: APjAAAW/ulbG0VNsqbGE4forAiJBTJ9m1/Kna6qP1MX+7PBUJiP6P8pT
- smFqOiqb3u0YL4bpgPx0gs332TUDgl7DnGuOZGzt8g==
-X-Received: by 2002:a9d:6357:: with SMTP id y23mr12375124otk.91.1575054432823; 
- Fri, 29 Nov 2019 11:07:12 -0800 (PST)
+ (envelope-from <guoheyi@huawei.com>) id 1iatjX-0008Ud-85
+ for qemu-arm@nongnu.org; Fri, 29 Nov 2019 22:47:48 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:45896 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1iatjW-0008PT-SQ; Fri, 29 Nov 2019 22:47:47 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 113F89A65A6B2CC338E6;
+ Sat, 30 Nov 2019 11:47:40 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server id 14.3.439.0; Sat, 30 Nov 2019
+ 11:47:32 +0800
+Subject: Re: [Qemu-devel] [PATCH v5 0/2] arm/acpi: simplify aml code and
+ enable SHPC
+To: Igor Mammedov <imammedo@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>
+References: <1552098649-28341-1-git-send-email-guoheyi@huawei.com>
+ <20190312170859.73f0de9d@redhat.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <ca5ccc80-663f-83e6-d9ce-4d5e3749988d@huawei.com>
+Date: Sat, 30 Nov 2019 11:47:31 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-References: <20191018150630.31099-1-damien.hedde@greensocs.com>
-In-Reply-To: <20191018150630.31099-1-damien.hedde@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 29 Nov 2019 19:07:02 +0000
-Message-ID: <CAFEAcA8yMWyXyP08HWWkAo72KUQgN4JwbaSHA-Y8msiCLLrvzQ@mail.gmail.com>
-Subject: Re: [PATCH v5 00/13] Multi-phase reset mechanism
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+In-Reply-To: <20190312170859.73f0de9d@redhat.com>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,47 +87,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x <qemu-s390x@nongnu.org>,
- Cornelia Huck <cohuck@redhat.com>, Mark Burton <mark.burton@greensocs.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Edgar Iglesias <edgari@xilinx.com>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, wanghaibin.wang@huawei.com,
+ "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j7BR3T/NDJXi
+X-TUID: 7/KrCtZrIvVM
 
-On Fri, 18 Oct 2019 at 16:07, Damien Hedde <damien.hedde@greensocs.com> wrote:
->
-> Hi all,
->
-> The purpose of this series is to split the current reset procedure
-> into multiple phases. This will help to solve some ordering
-> difficulties we have during reset. Previous version can be found here:
-> https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg04359.html
->
-> This series adds resettable interface and transitions base Device and
-> Bus classes (sysbus subclasses are ok too). It provides new reset
-> functions but does not switch anymore the old functions
-> (device_reset() and qdev/qbus_reset_all()) to resettable interface.
-> These functions keep the exact same behavior as before.
->
-> The series also transition the main reset handlers registration which
-> has no impact until devices and buses are transitioned.
->
-> I think this version is way better regarding the transition from the
-> legacy to the resettable interface than the previous one.
-> After this series, the plan is then to transition devices, buses and
-> legacy reset call sites. Devices and buses have to be transitioned
-> from mother class to daughter classes order but until the final
-> (daughter) class is transitioned, old monolitic reset behavior will
-> be kept for this class.
+Hi Peter, Igor,
 
-Hi; I finally got back to reviewing this patchset, and I've
-left comments on various patches (minor stuff only). I didn't
-bother to comment on a few patches that I was happy with and
-somebody else had already reviewed.
+I couldn't find these 2 patches in the latest tree. Could you help to 
+merge them?
 
-thanks
--- PMM
+Thanks,
+
+HG
+
+
+On 2019/3/13 0:09, Igor Mammedov wrote:
+> On Sat, 9 Mar 2019 10:30:47 +0800
+> Heyi Guo <guoheyi@huawei.com> wrote:
+>
+>> After the introduction of generic PCIe root port and PCIe-PCI bridge, we will
+>> also have SHPC controller on ARM, and we don't support ACPI hot plug, so just
+>> enable SHPC native hot plug.
+> Peter,
+>   could you queue it via your tree?
+>
+>> Igor also spotted the store operation outside of bit and/or is not necessary, so
+>> simply the code at first.
+>>
+>> v5:
+>> - Refine commit message of patch 1/2
+>>
+>> v4:
+>> - Improve the code indention.
+>>
+>> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+>> Cc: Igor Mammedov <imammedo@redhat.com>
+>>
+>>
+>>
+>> Heyi Guo (2):
+>>    hw/arm/acpi: simplify AML bit and/or statement
+>>    hw/arm/acpi: enable SHPC native hot plug
+>>
+>>   hw/arm/virt-acpi-build.c | 21 +++++++++++++--------
+>>   1 file changed, 13 insertions(+), 8 deletions(-)
+>>
+>
+> .
+>
+
+

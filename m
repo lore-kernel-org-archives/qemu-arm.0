@@ -1,99 +1,100 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp567478lfc;
-        Mon, 2 Dec 2019 13:38:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxnDqr62ai0e/1+c7YgBax/95rHoUa5kxKBSxarQkyF58iGdjn+zairUiV46thP5of5V5xV
-X-Received: by 2002:a05:6402:1456:: with SMTP id d22mr1500242edx.40.1575322716174;
-        Mon, 02 Dec 2019 13:38:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575322716; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp567615lfc;
+        Mon, 2 Dec 2019 13:38:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxFSzMd7QOPrqRzHsBzWs+X3yzxrpbVj3KgeX4qC1gbZcaJwnhOK0kcQDGhfV4Q/oYwXguH
+X-Received: by 2002:a17:906:160a:: with SMTP id m10mr1773785ejd.46.1575322724687;
+        Mon, 02 Dec 2019 13:38:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575322724; cv=none;
         d=google.com; s=arc-20160816;
-        b=djAOKuVGoP+2VuT20NlpkW7ccaY4HwX6oFjx6/uL0+UwDpSMTg2PaepxO0G2Fmbf56
-         1YgaCj1IrZ0zmm3kUYakF/UJMWbusW+82yt6crKhwgnP8WURYWhYBfJGPennjNH26nud
-         H0uYEg+f8lP1yuKcFsLFNg2yCQMON9RxXaFCPHstGFiJhkEsqclNfedQwuDiRdjsKgg7
-         ro8z3FsEzT/goohZySBVtd/GEBJK00CCzW0xOvUQECCW+AT7DL3l/GwZT5+4gyfKwNaG
-         wbStGheUpGMkS+U65EDjJX4/mfUdEU365RkDY5Mj+HkUi6mTScDS8p5M0aALSyxqgPmz
-         8EiQ==
+        b=A82+EA7BPjpXwdZhpHjecDmFq9ay52TcCIXHdd06Hdjz9EPOUY1d7A/dK6kVQT+Kt1
+         4JHg2ijlsP+aSF497/zXQCetZ1enJzlA+hapaqFAejHuw/rbqZWYq3gYf+F3Gn/ValFL
+         18qALHYq6Xdxe66Nfbiic/VxufrwbeQhizhjjtcRgyafgoR4aXsCileZhJ7viWwhVsKy
+         y+Fa7SimuZAM0EMjnrK+d1yzRGVQaxxJKPCuvjhjTePYVyge6WKInMhtaf3M6hW9uWz/
+         s0CXJGEMOhxJ0LE4LFdBO3sX4GNJ/gVlHTbt+c145NPjJMcLtcWg//DPBl54zQ/Fa/Gl
+         Yx8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=YSSdKKG1i6JVSlPytRsAwGL4WTE2dxtGdKjtspalJFE=;
-        b=dy2B/FEa/n7QZ7M5Aq2QXxyg8N8yviXo7aYvGssOrxd3Dvh5wy/SqrkVAAOMEEiaFy
-         nQ4w/ICkOKBVssBzaLSwXMYf6MwGEvv/eaXp7JIlp0BbYrPVyVdEhBzdLoxiSivssK6l
-         VpEwMr/a6s0Bl7X8gNWvmzuiRMu8tePIuSPICRUvShbRWWFH9jU6awTdLRTIiGVw9CKJ
-         vhRSCmEL2273OpJbQSJBEw/qq5Lf3ib+mpo96rTC84jKv4IWVvEj0X05mzbcg2XeDAge
-         hnT6temQZmCMldqxPbT9NEmKSsSbbvHftc3hUIy5EsSO7KkZYboUad/yn3y9rSjdfV6G
-         OrlA==
+        bh=6mohYVc55+3KFtvWDD44Yy/lRiZu/L99ANQeBUfkI2w=;
+        b=1BSq2ue4LFkC9KEdEMywXErO77HGKQebgNnWCvbuyc9j2yd4nNGdZ1mK7zG9TEzKhs
+         XyUnjquCF3snAwEGI5t4gagJkraBEb7qYaCorWuL0NLY8fMcDDz0mYiIGj66XUIv90Yc
+         JuiTKPvUVwR3WzgshcOSxsAMEO74TH1L552B9xZWBH7RoV4iO27kl/ZGGEyQJusjfd+T
+         9FutZcbgdu+VGGhjw490AnCI2JeQDPet8J2Vb1kxJK0yeH/c4i2OS6+cdDPJQFEheCL0
+         NVHz9RZLSzsIljW2PIqXoH3ED4bt0uDc5Urb0VwrOYrVOzlQlIMbFzhjRWNyvV4bSi7h
+         ojQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L7ZszqUz;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uSigWBGq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4si599725ejd.306.2019.12.02.13.38.35
+        by mx.google.com with ESMTPS id b43si524778edf.446.2019.12.02.13.38.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Dec 2019 13:38:36 -0800 (PST)
+        Mon, 02 Dec 2019 13:38:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L7ZszqUz;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uSigWBGq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44826 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44828 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ibtOs-000417-P5
-	for alex.bennee@linaro.org; Mon, 02 Dec 2019 16:38:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38539)
+	id 1ibtP1-00044t-BO
+	for alex.bennee@linaro.org; Mon, 02 Dec 2019 16:38:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38271)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ibsxp-0002ru-TD
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 16:10:41 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ibsxg-0002hD-ON
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 16:10:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ibsxk-0000qd-PH
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 16:10:37 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:41607)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ibsxa-0000kK-IU
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 16:10:26 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:53089)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ibsxQ-0000b8-Pf; Mon, 02 Dec 2019 16:10:13 -0500
-Received: by mail-wr1-x441.google.com with SMTP id b18so983379wrj.8;
- Mon, 02 Dec 2019 13:10:07 -0800 (PST)
+ id 1ibsxK-0000Ze-T0; Mon, 02 Dec 2019 16:10:08 -0500
+Received: by mail-wm1-x341.google.com with SMTP id p9so832211wmc.2;
+ Mon, 02 Dec 2019 13:10:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=YSSdKKG1i6JVSlPytRsAwGL4WTE2dxtGdKjtspalJFE=;
- b=L7ZszqUzkHcluseCQLaWzNFJkI+6teYGz8kuF4ZzyMxGNDrQjkB1q3yD4lB0aSz1t2
- 4WgoAtsG1TqhLzlPY6scu4WFW5vve946/3lHfjOcecVoDicSS53/rs7DIXcFQbEW+smO
- HoGj+UsxG+J/smctlkiTJnmBHksNt9KsnixK4M34VWwG9hrCbW/UO8LoCofv+6iB2pGs
- fmUecTmhJf5HdwFMGVdat0iCixJRq6nlFChReialxQJmlf8prJJxVlJiqzqivWEKkBI8
- VWTkyLJb+olapWmqYemz1GpeTCJdfVrAN8Z9LT8BzMO6dfw7GDhUgJLLZCH47Cv7KOfw
- 5XNg==
+ bh=6mohYVc55+3KFtvWDD44Yy/lRiZu/L99ANQeBUfkI2w=;
+ b=uSigWBGqzoAwI+P2C+q5Yx/llTHRDCinveHXuALIGGg/dQ9lx7TuvrliC5GXiHGAfo
+ Wx+1NxP4wCm1F6nGQ89Ensb6ogUnDdheYxrqFRT4gN0SCtB105JK0YBAhndG9hzpvNjH
+ y1vutiiYVXGx0JMSKbeuElb9mLNR08NjkNlj27VOZEpixX7P4YSI08rUJCpLKn5z5xRn
+ 258vIVzoLMbwgQeQx2BN2gPICiloUWQMsxSY3LxSrYoDaKokdqEapzt0IFytWhFGSUDn
+ vIXKk2C8ksJ9xNvE4KSCyRmbFsDioCsBpj40ANxfpk/jitW0hlJZsLO6EEwL8oHVPNRU
+ 4dHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=YSSdKKG1i6JVSlPytRsAwGL4WTE2dxtGdKjtspalJFE=;
- b=FUYpHTd04WBfPD0Tzcr5h10VBlV+I6VcmDPSgmnGvV2rmw7DEhA8Q8do2R98IE5K4c
- vdzhLsbKmOSlsNuTocWq96VCD6oojdDlZ5fIDm2NJITE8NcJIQmBmKc3uGu85T22yXjr
- y5mCmkk7SVc2jL4DALsN/a051GEVPlQzLnF/excNYXE+XjZxCelPq1nN3RfY+Dtkcccs
- 8Zek+8Qmge7IvmAskSXT9Xkgrj0qWLJcLaPE5xmK5cmD1Dle+/QHrLaA+8Iiv2WjqPBQ
- +2Busx4fmHKuFx7fUVHHdGWcy2obLDmRlqODaG3LhMCarB5F/PgRUt19+C07TptPiAO2
- Oitg==
-X-Gm-Message-State: APjAAAUIYTTcBSU9aMyCibpqxqdXHItBbH25brEIH2csRGgSHICmW9DL
- F0ml87b7K6lud4+9pj0zXIp15fQ4
-X-Received: by 2002:adf:edd0:: with SMTP id v16mr1112264wro.310.1575321005843; 
- Mon, 02 Dec 2019 13:10:05 -0800 (PST)
+ bh=6mohYVc55+3KFtvWDD44Yy/lRiZu/L99ANQeBUfkI2w=;
+ b=Q1zd1JhAeXucbbVp27IsA+X/sEowQXyQp1XUjavdZsqh+BAJ0UQHfLdu5aUWG9vTnP
+ X/HIthpK6DUOf6OWkoHkBMJb8aNODeqY/hjPrwSiXEjkU6Eb2TlFurNOANaQY4rMrzBk
+ 4CUKcgh45hysUaOzHpY7JB3o4ouKrJk2QA5/1ucIDIyePukG9ZlP6q1lgRDUSnHQqe53
+ g6kxbiDKrup/hNpSKXH7x+A7LNmkWp/FvtBGmbnnLkePNCiVaR4KPisAZfKwJxX7bMFd
+ 6Yr8uGUi1VUQgXHr0oC3PTSeyKc4oa+ZXa2p+WmGQJgRMT7yVfkQ/saMEDMXWX7g6UnB
+ iVkQ==
+X-Gm-Message-State: APjAAAXiKwx+sxdk2eMzf+XnzxfzDio1YClBSZ/o0dRJamHi9UEFYnGp
+ Nqu9IVut+no/TayFr37ZMqPn793R
+X-Received: by 2002:a05:600c:2318:: with SMTP id
+ 24mr30400612wmo.21.1575321002800; 
+ Mon, 02 Dec 2019 13:10:02 -0800 (PST)
 Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
- by smtp.gmail.com with ESMTPSA id f1sm770859wrp.93.2019.12.02.13.10.05
+ by smtp.gmail.com with ESMTPSA id f1sm770859wrp.93.2019.12.02.13.10.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Dec 2019 13:10:05 -0800 (PST)
+ Mon, 02 Dec 2019 13:10:02 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 10/10] arm: allwinner-h3: add EMAC ethernet device
-Date: Mon,  2 Dec 2019 22:09:47 +0100
-Message-Id: <20191202210947.3603-11-nieklinnenbank@gmail.com>
+Subject: [PATCH 07/10] arm: allwinner-h3: add CPU Configuration module
+Date: Mon,  2 Dec 2019 22:09:44 +0100
+Message-Id: <20191202210947.3603-8-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191202210947.3603-1-nieklinnenbank@gmail.com>
 References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
+X-Received-From: 2a00:1450:4864:20::341
 X-Mailman-Approved-At: Mon, 02 Dec 2019 16:38:01 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,131 +111,76 @@ Cc: b.galvani@gmail.com, peter.maydell@linaro.org,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v9ANqXKYNlJ6
+X-TUID: 3W/XoKel53Xu
 
-The Allwinner H3 System on Chip includes an Ethernet MAC (EMAC)
-which provides 10M/100M/1000M Ethernet connectivity. This commit
-adds support for the Allwinner H3 EMAC, including emulation for
-the following functionality:
+The Allwinner H3 System on Chip design contains four ARM Cortex A7
+processors that can be configured and reset using the CPU Configuration
+module interface. This commit adds support for the CPU configuration
+interface which emulates the following features:
 
- * DMA transfers
- * MII interface
- * Transmit CRC calculation
+ * CPU reset
+ * Shared 64-bit timer
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 ---
- hw/arm/Kconfig                     |   1 +
- hw/arm/allwinner-h3.c              |  17 +
- hw/arm/orangepi.c                  |   7 +
- hw/net/Kconfig                     |   3 +
- hw/net/Makefile.objs               |   1 +
- hw/net/allwinner-h3-emac.c         | 786 +++++++++++++++++++++++++++++
- hw/net/trace-events                |  10 +
- include/hw/arm/allwinner-h3.h      |   2 +
- include/hw/net/allwinner-h3-emac.h |  69 +++
- 9 files changed, 896 insertions(+)
- create mode 100644 hw/net/allwinner-h3-emac.c
- create mode 100644 include/hw/net/allwinner-h3-emac.h
+ hw/arm/allwinner-h3.c                 |  11 +
+ hw/misc/Makefile.objs                 |   1 +
+ hw/misc/allwinner-h3-cpucfg.c         | 280 ++++++++++++++++++++++++++
+ include/hw/arm/allwinner-h3.h         |   2 +
+ include/hw/misc/allwinner-h3-cpucfg.h |  44 ++++
+ 5 files changed, 338 insertions(+)
+ create mode 100644 hw/misc/allwinner-h3-cpucfg.c
+ create mode 100644 include/hw/misc/allwinner-h3-cpucfg.h
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index ebf8d2325f..551cff3442 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -294,6 +294,7 @@ config ALLWINNER_A10
- config ALLWINNER_H3
-     bool
-     select ALLWINNER_A10_PIT
-+    select ALLWINNER_H3_EMAC
-     select SERIAL
-     select ARM_TIMER
-     select ARM_GIC
 diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index c2972caf88..274b8548c0 100644
+index ebd8fde412..44aba1de6a 100644
 --- a/hw/arm/allwinner-h3.c
 +++ b/hw/arm/allwinner-h3.c
-@@ -53,6 +53,9 @@ static void aw_h3_init(Object *obj)
+@@ -44,6 +44,9 @@ static void aw_h3_init(Object *obj)
  
-     sysbus_init_child_obj(obj, "mmc0", &s->mmc0, sizeof(s->mmc0),
-                           TYPE_AW_H3_SDHOST);
+     sysbus_init_child_obj(obj, "syscon", &s->syscon, sizeof(s->syscon),
+                           TYPE_AW_H3_SYSCON);
 +
-+    sysbus_init_child_obj(obj, "emac", &s->emac, sizeof(s->emac),
-+                          TYPE_AW_H3_EMAC);
++    sysbus_init_child_obj(obj, "cpucfg", &s->cpucfg, sizeof(s->cpucfg),
++                          TYPE_AW_H3_CPUCFG);
  }
  
  static void aw_h3_realize(DeviceState *dev, Error **errp)
-@@ -237,6 +240,20 @@ static void aw_h3_realize(DeviceState *dev, Error **errp)
-         return;
+@@ -195,6 +198,14 @@ static void aw_h3_realize(DeviceState *dev, Error **errp)
      }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->syscon), 0, AW_H3_SYSCON_BASE);
  
-+    /* EMAC */
-+    if (nd_table[0].used) {
-+        qemu_check_nic_model(&nd_table[0], TYPE_AW_H3_EMAC);
-+        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
-+    }
-+    object_property_set_bool(OBJECT(&s->emac), true, "realized", &err);
-+    if (err != NULL) {
++    /* CPU Configuration */
++    object_property_set_bool(OBJECT(&s->cpucfg), true, "realized", &err);
++    if (err) {
 +        error_propagate(errp, err);
 +        return;
 +    }
-+    sysbusdev = SYS_BUS_DEVICE(&s->emac);
-+    sysbus_mmio_map(sysbusdev, 0, AW_H3_EMAC_BASE);
-+    sysbus_connect_irq(sysbusdev, 0, s->irq[AW_H3_GIC_SPI_EMAC]);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0, AW_H3_CPUCFG_BASE);
 +
      /* Universal Serial Bus */
      sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI0_BASE,
                           s->irq[AW_H3_GIC_SPI_EHCI0]);
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-index dee3efaf08..8a61eb0e69 100644
---- a/hw/arm/orangepi.c
-+++ b/hw/arm/orangepi.c
-@@ -61,6 +61,13 @@ static void orangepi_init(MachineState *machine)
-         exit(1);
-     }
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index b234aefba5..c4ca2ed689 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -29,6 +29,7 @@ common-obj-$(CONFIG_MACIO) += macio/
+ common-obj-$(CONFIG_IVSHMEM_DEVICE) += ivshmem.o
  
-+    /* Setup EMAC properties */
-+    object_property_set_int(OBJECT(&s->h3->emac), 1, "phy-addr", &err);
-+    if (err != NULL) {
-+        error_reportf_err(err, "Couldn't set phy address: ");
-+        exit(1);
-+    }
-+
-     /* Mark H3 object realized */
-     object_property_set_bool(OBJECT(s->h3), true, "realized", &err);
-     if (err != NULL) {
-diff --git a/hw/net/Kconfig b/hw/net/Kconfig
-index 3856417d42..36d3923992 100644
---- a/hw/net/Kconfig
-+++ b/hw/net/Kconfig
-@@ -74,6 +74,9 @@ config MIPSNET
- config ALLWINNER_EMAC
-     bool
- 
-+config ALLWINNER_H3_EMAC
-+    bool
-+
- config IMX_FEC
-     bool
- 
-diff --git a/hw/net/Makefile.objs b/hw/net/Makefile.objs
-index 7907d2c199..5548deb07a 100644
---- a/hw/net/Makefile.objs
-+++ b/hw/net/Makefile.objs
-@@ -23,6 +23,7 @@ common-obj-$(CONFIG_XGMAC) += xgmac.o
- common-obj-$(CONFIG_MIPSNET) += mipsnet.o
- common-obj-$(CONFIG_XILINX_AXI) += xilinx_axienet.o
- common-obj-$(CONFIG_ALLWINNER_EMAC) += allwinner_emac.o
-+common-obj-$(CONFIG_ALLWINNER_H3_EMAC) += allwinner-h3-emac.o
- common-obj-$(CONFIG_IMX_FEC) += imx_fec.o
- 
- common-obj-$(CONFIG_CADENCE) += cadence_gem.o
-diff --git a/hw/net/allwinner-h3-emac.c b/hw/net/allwinner-h3-emac.c
+ common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-clk.o
++obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-cpucfg.o
+ common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-syscon.o
+ common-obj-$(CONFIG_REALVIEW) += arm_sysctl.o
+ common-obj-$(CONFIG_NSERIES) += cbus.o
+diff --git a/hw/misc/allwinner-h3-cpucfg.c b/hw/misc/allwinner-h3-cpucfg.c
 new file mode 100644
-index 0000000000..37f6f44406
+index 0000000000..b47feebd73
 --- /dev/null
-+++ b/hw/net/allwinner-h3-emac.c
-@@ -0,0 +1,786 @@
++++ b/hw/misc/allwinner-h3-cpucfg.c
+@@ -0,0 +1,280 @@
 +/*
-+ * Allwinner H3 EMAC emulation
++ * Allwinner H3 CPU Configuration Module emulation
 + *
 + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
 + *
@@ -255,818 +201,292 @@ index 0000000000..37f6f44406
 +#include "qemu/osdep.h"
 +#include "hw/sysbus.h"
 +#include "migration/vmstate.h"
-+#include "net/net.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
 +#include "qemu/log.h"
-+#include "trace.h"
-+#include "net/checksum.h"
 +#include "qemu/module.h"
-+#include "exec/cpu-common.h"
-+#include "hw/net/allwinner-h3-emac.h"
++#include "qemu/error-report.h"
++#include "qemu/timer.h"
++#include "hw/core/cpu.h"
++#include "arm-powerctl.h"
++#include "hw/misc/allwinner-h3-cpucfg.h"
++#include "trace.h"
 +
-+/* EMAC register offsets */
-+#define REG_BASIC_CTL_0        (0x0000) /* Basic Control 0 */
-+#define REG_BASIC_CTL_1        (0x0004) /* Basic Control 1 */
-+#define REG_INT_STA            (0x0008) /* Interrupt Status */
-+#define REG_INT_EN             (0x000C) /* Interrupt Enable */
-+#define REG_TX_CTL_0           (0x0010) /* Transmit Control 0 */
-+#define REG_TX_CTL_1           (0x0014) /* Transmit Control 1 */
-+#define REG_TX_FLOW_CTL        (0x001C) /* Transmit Flow Control */
-+#define REG_TX_DMA_DESC_LIST   (0x0020) /* Transmit Descriptor List Address */
-+#define REG_RX_CTL_0           (0x0024) /* Receive Control 0 */
-+#define REG_RX_CTL_1           (0x0028) /* Receive Control 1 */
-+#define REG_RX_DMA_DESC_LIST   (0x0034) /* Receive Descriptor List Address */
-+#define REG_FRM_FLT            (0x0038) /* Receive Frame Filter */
-+#define REG_RX_HASH_0          (0x0040) /* Receive Hash Table 0 */
-+#define REG_RX_HASH_1          (0x0044) /* Receive Hash Table 1 */
-+#define REG_MII_CMD            (0x0048) /* Management Interface Command */
-+#define REG_MII_DATA           (0x004C) /* Management Interface Data */
-+#define REG_ADDR_HIGH          (0x0050) /* MAC Address High */
-+#define REG_ADDR_LOW           (0x0054) /* MAC Address Low */
-+#define REG_TX_DMA_STA         (0x00B0) /* Transmit DMA Status */
-+#define REG_TX_CUR_DESC        (0x00B4) /* Transmit Current Descriptor */
-+#define REG_TX_CUR_BUF         (0x00B8) /* Transmit Current Buffer */
-+#define REG_RX_DMA_STA         (0x00C0) /* Receive DMA Status */
-+#define REG_RX_CUR_DESC        (0x00C4) /* Receive Current Descriptor */
-+#define REG_RX_CUR_BUF         (0x00C8) /* Receive Current Buffer */
-+#define REG_RGMII_STA          (0x00D0) /* RGMII Status */
++/* CPUCFG register offsets */
++#define REG_CPUS_RST_CTRL       (0x0000) /* CPUs Reset Control */
++#define REG_CPU0_RST_CTRL       (0x0040) /* CPU#0 Reset Control */
++#define REG_CPU0_CTRL           (0x0044) /* CPU#0 Control */
++#define REG_CPU0_STATUS         (0x0048) /* CPU#0 Status */
++#define REG_CPU1_RST_CTRL       (0x0080) /* CPU#1 Reset Control */
++#define REG_CPU1_CTRL           (0x0084) /* CPU#1 Control */
++#define REG_CPU1_STATUS         (0x0088) /* CPU#1 Status */
++#define REG_CPU2_RST_CTRL       (0x00C0) /* CPU#2 Reset Control */
++#define REG_CPU2_CTRL           (0x00C4) /* CPU#2 Control */
++#define REG_CPU2_STATUS         (0x00C8) /* CPU#2 Status */
++#define REG_CPU3_RST_CTRL       (0x0100) /* CPU#3 Reset Control */
++#define REG_CPU3_CTRL           (0x0104) /* CPU#3 Control */
++#define REG_CPU3_STATUS         (0x0108) /* CPU#3 Status */
++#define REG_CPU_SYS_RST         (0x0140) /* CPU System Reset */
++#define REG_CLK_GATING          (0x0144) /* CPU Clock Gating */
++#define REG_GEN_CTRL            (0x0184) /* General Control */
++#define REG_SUPER_STANDBY       (0x01A0) /* Super Standby Flag */
++#define REG_ENTRY_ADDR          (0x01A4) /* Reset Entry Address */
++#define REG_DBG_EXTERN          (0x01E4) /* Debug External */
++#define REG_CNT64_CTRL          (0x0280) /* 64-bit Counter Control */
++#define REG_CNT64_LOW           (0x0284) /* 64-bit Counter Low */
++#define REG_CNT64_HIGH          (0x0288) /* 64-bit Counter High */
 +
-+/* EMAC register flags */
-+#define BASIC_CTL0_100Mbps     (0b11 << 2)
-+#define BASIC_CTL0_FD          (1 << 0)
-+#define BASIC_CTL1_SOFTRST     (1 << 0)
++/* CPUCFG register flags */
++#define CPUX_RESET_RELEASED     ((1 << 1) | (1 << 0))
++#define CPUX_STATUS_SMP         (1 << 0)
++#define CPU_SYS_RESET_RELEASED  (1 << 0)
++#define CLK_GATING_ENABLE       ((1 << 8) | 0xF)
 +
-+#define INT_STA_RGMII_LINK     (1 << 16)
-+#define INT_STA_RX_EARLY       (1 << 13)
-+#define INT_STA_RX_OVERFLOW    (1 << 12)
-+#define INT_STA_RX_TIMEOUT     (1 << 11)
-+#define INT_STA_RX_DMA_STOP    (1 << 10)
-+#define INT_STA_RX_BUF_UA      (1 << 9)
-+#define INT_STA_RX             (1 << 8)
-+#define INT_STA_TX_EARLY       (1 << 5)
-+#define INT_STA_TX_UNDERFLOW   (1 << 4)
-+#define INT_STA_TX_TIMEOUT     (1 << 3)
-+#define INT_STA_TX_BUF_UA      (1 << 2)
-+#define INT_STA_TX_DMA_STOP    (1 << 1)
-+#define INT_STA_TX             (1 << 0)
++/* CPUCFG register reset values */
++#define REG_CLK_GATING_RST      (0x0000010F)
++#define REG_GEN_CTRL_RST        (0x00000020)
++#define REG_SUPER_STANDBY_RST   (0x0)
++#define REG_CNT64_CTRL_RST      (0x0)
 +
-+#define INT_EN_RX_EARLY        (1 << 13)
-+#define INT_EN_RX_OVERFLOW     (1 << 12)
-+#define INT_EN_RX_TIMEOUT      (1 << 11)
-+#define INT_EN_RX_DMA_STOP     (1 << 10)
-+#define INT_EN_RX_BUF_UA       (1 << 9)
-+#define INT_EN_RX              (1 << 8)
-+#define INT_EN_TX_EARLY        (1 << 5)
-+#define INT_EN_TX_UNDERFLOW    (1 << 4)
-+#define INT_EN_TX_TIMEOUT      (1 << 3)
-+#define INT_EN_TX_BUF_UA       (1 << 2)
-+#define INT_EN_TX_DMA_STOP     (1 << 1)
-+#define INT_EN_TX              (1 << 0)
-+
-+#define TX_CTL0_TX_EN          (1 << 31)
-+#define TX_CTL1_TX_DMA_START   (1 << 31)
-+#define TX_CTL1_TX_DMA_EN      (1 << 30)
-+#define TX_CTL1_TX_FLUSH       (1 << 0)
-+
-+#define RX_CTL0_RX_EN          (1 << 31)
-+#define RX_CTL0_STRIP_FCS      (1 << 28)
-+#define RX_CTL0_CRC_IPV4       (1 << 27)
-+
-+#define RX_CTL1_RX_DMA_START   (1 << 31)
-+#define RX_CTL1_RX_DMA_EN      (1 << 30)
-+#define RX_CTL1_RX_MD          (1 << 1)
-+
-+#define RX_FRM_FLT_DIS_ADDR    (1 << 31)
-+
-+#define MII_CMD_PHY_ADDR_SHIFT (12)
-+#define MII_CMD_PHY_ADDR_MASK  (0xf000)
-+#define MII_CMD_PHY_REG_SHIFT  (4)
-+#define MII_CMD_PHY_REG_MASK   (0xf0)
-+#define MII_CMD_PHY_RW         (1 << 1)
-+#define MII_CMD_PHY_BUSY       (1 << 0)
-+
-+#define TX_DMA_STA_STOP        (0b000)
-+#define TX_DMA_STA_RUN_FETCH   (0b001)
-+#define TX_DMA_STA_WAIT_STA    (0b010)
-+
-+#define RX_DMA_STA_STOP        (0b000)
-+#define RX_DMA_STA_RUN_FETCH   (0b001)
-+#define RX_DMA_STA_WAIT_FRM    (0b011)
-+
-+#define RGMII_LINK_UP          (1 << 3)
-+#define RGMII_FD               (1 << 0)
-+
-+/* EMAC register reset values */
-+#define REG_BASIC_CTL_1_RST    (0x08000000)
-+
-+/* EMAC constants */
-+#define AW_H3_EMAC_MIN_PKT_SZ  (64)
-+
-+/* Transmit/receive frame descriptor */
-+typedef struct FrameDescriptor {
-+    uint32_t status;
-+    uint32_t status2;
-+    uint32_t addr;
-+    uint32_t next;
-+} FrameDescriptor;
-+
-+/* Frame descriptor flags */
-+#define DESC_STATUS_CTL                 (1 << 31)
-+#define DESC_STATUS2_BUF_SIZE_MASK      (0x7ff)
-+
-+/* Transmit frame descriptor flags */
-+#define TX_DESC_STATUS_LENGTH_ERR       (1 << 14)
-+#define TX_DESC_STATUS2_FIRST_DESC      (1 << 29)
-+#define TX_DESC_STATUS2_LAST_DESC       (1 << 30)
-+#define TX_DESC_STATUS2_CHECKSUM_MASK   (0x3 << 27)
-+
-+/* Receive frame descriptor flags */
-+#define RX_DESC_STATUS_FIRST_DESC       (1 << 9)
-+#define RX_DESC_STATUS_LAST_DESC        (1 << 8)
-+#define RX_DESC_STATUS_FRM_LEN_MASK     (0x3fff0000)
-+#define RX_DESC_STATUS_FRM_LEN_SHIFT    (16)
-+#define RX_DESC_STATUS_NO_BUF           (1 << 14)
-+#define RX_DESC_STATUS_HEADER_ERR       (1 << 7)
-+#define RX_DESC_STATUS_LENGTH_ERR       (1 << 4)
-+#define RX_DESC_STATUS_CRC_ERR          (1 << 1)
-+#define RX_DESC_STATUS_PAYLOAD_ERR      (1 << 0)
-+#define RX_DESC_STATUS2_RX_INT_CTL      (1 << 31)
-+
-+/* MII register offsets */
-+#define MII_REG_CR                      (0x0)
-+#define MII_REG_ST                      (0x1)
-+#define MII_REG_ID_HIGH                 (0x2)
-+#define MII_REG_ID_LOW                  (0x3)
-+
-+/* MII register flags */
-+#define MII_REG_CR_RESET                (1 << 15)
-+#define MII_REG_CR_POWERDOWN            (1 << 11)
-+#define MII_REG_CR_10Mbit               (0)
-+#define MII_REG_CR_100Mbit              (1 << 13)
-+#define MII_REG_CR_1000Mbit             (1 << 6)
-+#define MII_REG_CR_AUTO_NEG             (1 << 12)
-+#define MII_REG_CR_AUTO_NEG_RESTART     (1 << 9)
-+#define MII_REG_CR_FULLDUPLEX           (1 << 8)
-+
-+#define MII_REG_ST_100BASE_T4           (1 << 15)
-+#define MII_REG_ST_100BASE_X_FD         (1 << 14)
-+#define MII_REG_ST_100BASE_X_HD         (1 << 13)
-+#define MII_REG_ST_10_FD                (1 << 12)
-+#define MII_REG_ST_10_HD                (1 << 11)
-+#define MII_REG_ST_100BASE_T2_FD        (1 << 10)
-+#define MII_REG_ST_100BASE_T2_HD        (1 << 9)
-+#define MII_REG_ST_AUTONEG_COMPLETE     (1 << 5)
-+#define MII_REG_ST_AUTONEG_AVAIL        (1 << 3)
-+#define MII_REG_ST_LINK_UP              (1 << 2)
-+
-+/* MII constants */
-+#define MII_PHY_ID_HIGH                 (0x0044)
-+#define MII_PHY_ID_LOW                  (0x1400)
-+
-+static void aw_h3_emac_mii_set_link(AwH3EmacState *s, bool link_active)
++static void allwinner_h3_cpucfg_cpu_reset(AwH3CpuCfgState *s, uint8_t cpu_id)
 +{
-+    if (link_active) {
-+        s->mii_st |= MII_REG_ST_LINK_UP;
-+    } else {
-+        s->mii_st &= ~MII_REG_ST_LINK_UP;
-+    }
-+}
++    int ret;
 +
-+static void aw_h3_emac_mii_reset(AwH3EmacState *s, bool link_active)
-+{
-+    s->mii_cr = MII_REG_CR_100Mbit | MII_REG_CR_AUTO_NEG |
-+                MII_REG_CR_FULLDUPLEX;
-+    s->mii_st = MII_REG_ST_100BASE_T4 | MII_REG_ST_100BASE_X_FD |
-+                MII_REG_ST_100BASE_X_HD | MII_REG_ST_10_FD | MII_REG_ST_10_HD |
-+                MII_REG_ST_100BASE_T2_FD | MII_REG_ST_100BASE_T2_HD |
-+                MII_REG_ST_AUTONEG_COMPLETE | MII_REG_ST_AUTONEG_AVAIL;
++    trace_allwinner_h3_cpucfg_cpu_reset(cpu_id, s->entry_addr);
 +
-+    aw_h3_emac_mii_set_link(s, link_active);
-+}
-+
-+static void aw_h3_emac_mii_cmd(AwH3EmacState *s)
-+{
-+    uint8_t addr, reg;
-+
-+    addr = (s->mii_cmd & MII_CMD_PHY_ADDR_MASK) >> MII_CMD_PHY_ADDR_SHIFT;
-+    reg = (s->mii_cmd & MII_CMD_PHY_REG_MASK) >> MII_CMD_PHY_REG_SHIFT;
-+
-+    if (addr != s->mii_phy_addr) {
++    ret = arm_set_cpu_on(cpu_id, s->entry_addr, 0, 3, false);
++    if (ret != QEMU_ARM_POWERCTL_RET_SUCCESS) {
++        error_report("%s: failed to bring up CPU %d: err %d",
++                     __func__, cpu_id, ret);
 +        return;
 +    }
-+
-+    /* Read or write a PHY register? */
-+    if (s->mii_cmd & MII_CMD_PHY_RW) {
-+        trace_aw_h3_emac_mii_write_reg(reg, s->mii_data);
-+
-+        switch (reg) {
-+        case MII_REG_CR:
-+            if (s->mii_data & MII_REG_CR_RESET) {
-+                aw_h3_emac_mii_reset(s, s->mii_st & MII_REG_ST_LINK_UP);
-+            } else {
-+                s->mii_cr = s->mii_data & ~(MII_REG_CR_RESET |
-+                                            MII_REG_CR_AUTO_NEG_RESTART);
-+            }
-+            break;
-+        default:
-+            qemu_log_mask(LOG_UNIMP, "allwinner-h3-emac: write access to "
-+                                     "unknown MII register 0x%x\n", reg);
-+            break;
-+        }
-+    } else {
-+        switch (reg) {
-+        case MII_REG_CR:
-+            s->mii_data = s->mii_cr;
-+            break;
-+        case MII_REG_ST:
-+            s->mii_data = s->mii_st;
-+            break;
-+        case MII_REG_ID_HIGH:
-+            s->mii_data = MII_PHY_ID_HIGH;
-+            break;
-+        case MII_REG_ID_LOW:
-+            s->mii_data = MII_PHY_ID_LOW;
-+            break;
-+        default:
-+            qemu_log_mask(LOG_UNIMP, "allwinner-h3-emac: read access to "
-+                                     "unknown MII register 0x%x\n", reg);
-+            s->mii_data = 0;
-+            break;
-+        }
-+
-+        trace_aw_h3_emac_mii_read_reg(reg, s->mii_data);
-+    }
 +}
 +
-+static void aw_h3_emac_update_irq(AwH3EmacState *s)
++static uint64_t allwinner_h3_cpucfg_read(void *opaque, hwaddr offset,
++                                         unsigned size)
 +{
-+    qemu_set_irq(s->irq, (s->int_sta & s->int_en) != 0);
-+}
++    const AwH3CpuCfgState *s = (AwH3CpuCfgState *)opaque;
++    uint64_t val = 0;
 +
-+static uint32_t aw_h3_emac_next_desc(FrameDescriptor *desc, size_t min_size)
-+{
-+    uint32_t paddr = desc->next;
-+
-+    cpu_physical_memory_read(paddr, desc, sizeof(*desc));
-+
-+    if ((desc->status & DESC_STATUS_CTL) &&
-+        (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
-+        return paddr;
-+    } else {
++    switch (offset) {
++    case REG_CPUS_RST_CTRL:     /* CPUs Reset Control */
++    case REG_CPU_SYS_RST:       /* CPU System Reset */
++        val = CPU_SYS_RESET_RELEASED;
++        break;
++    case REG_CPU0_RST_CTRL:     /* CPU#0 Reset Control */
++    case REG_CPU1_RST_CTRL:     /* CPU#1 Reset Control */
++    case REG_CPU2_RST_CTRL:     /* CPU#2 Reset Control */
++    case REG_CPU3_RST_CTRL:     /* CPU#3 Reset Control */
++        val = CPUX_RESET_RELEASED;
++        break;
++    case REG_CPU0_CTRL:         /* CPU#0 Control */
++    case REG_CPU1_CTRL:         /* CPU#1 Control */
++    case REG_CPU2_CTRL:         /* CPU#2 Control */
++    case REG_CPU3_CTRL:         /* CPU#3 Control */
++        val = 0;
++        break;
++    case REG_CPU0_STATUS:       /* CPU#0 Status */
++    case REG_CPU1_STATUS:       /* CPU#1 Status */
++    case REG_CPU2_STATUS:       /* CPU#2 Status */
++    case REG_CPU3_STATUS:       /* CPU#3 Status */
++        val = CPUX_STATUS_SMP;
++        break;
++    case REG_CLK_GATING:        /* CPU Clock Gating */
++        val = CLK_GATING_ENABLE;
++        break;
++    case REG_GEN_CTRL:          /* General Control */
++        val = s->gen_ctrl;
++        break;
++    case REG_SUPER_STANDBY:     /* Super Standby Flag */
++        val = s->super_standby;
++        break;
++    case REG_ENTRY_ADDR:        /* Reset Entry Address */
++        val = s->entry_addr;
++        break;
++    case REG_DBG_EXTERN:        /* Debug External */
++        break;
++    case REG_CNT64_CTRL:        /* 64-bit Counter Control */
++        val = s->counter_ctrl;
++        break;
++    case REG_CNT64_LOW:         /* 64-bit Counter Low */
++        val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) & 0xffffffff;
++        break;
++    case REG_CNT64_HIGH:        /* 64-bit Counter High */
++        val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) >> 32;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad read offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
 +        return 0;
 +    }
++
++    trace_allwinner_h3_cpucfg_read(offset, val, size);
++
++    return val;
 +}
 +
-+static uint32_t aw_h3_emac_get_desc(FrameDescriptor *desc, uint32_t start_addr,
-+                                    size_t min_size)
++static void allwinner_h3_cpucfg_write(void *opaque, hwaddr offset,
++                                      uint64_t val, unsigned size)
 +{
-+    uint32_t desc_addr = start_addr;
++    AwH3CpuCfgState *s = (AwH3CpuCfgState *)opaque;
 +
-+    /* Note that the list is a cycle. Last entry points back to the head. */
-+    while (desc_addr != 0) {
-+        cpu_physical_memory_read(desc_addr, desc, sizeof(*desc));
-+
-+        if ((desc->status & DESC_STATUS_CTL) &&
-+            (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
-+            return desc_addr;
-+        } else if (desc->next == start_addr) {
-+            break;
-+        } else {
-+            desc_addr = desc->next;
-+        }
-+    }
-+
-+    return 0;
-+}
-+
-+static uint32_t aw_h3_emac_get_rx_desc(AwH3EmacState *s, FrameDescriptor *desc,
-+                                       size_t min_size)
-+{
-+    return aw_h3_emac_get_desc(desc, s->rx_desc_curr, min_size);
-+}
-+
-+static uint32_t aw_h3_emac_get_tx_desc(AwH3EmacState *s, FrameDescriptor *desc,
-+                                       size_t min_size)
-+{
-+    return aw_h3_emac_get_desc(desc, s->tx_desc_head, min_size);
-+}
-+
-+static void aw_h3_emac_flush_desc(FrameDescriptor *desc, uint32_t phys_addr)
-+{
-+    cpu_physical_memory_write(phys_addr, desc, sizeof(*desc));
-+}
-+
-+static int aw_h3_emac_can_receive(NetClientState *nc)
-+{
-+    AwH3EmacState *s = qemu_get_nic_opaque(nc);
-+    FrameDescriptor desc;
-+
-+    return (s->rx_ctl0 & RX_CTL0_RX_EN) &&
-+           (aw_h3_emac_get_rx_desc(s, &desc, 0) != 0);
-+}
-+
-+static ssize_t aw_h3_emac_receive(NetClientState *nc, const uint8_t *buf,
-+                                  size_t size)
-+{
-+    AwH3EmacState *s = qemu_get_nic_opaque(nc);
-+    FrameDescriptor desc;
-+    size_t bytes_left = size;
-+    size_t desc_bytes = 0;
-+    size_t pad_fcs_size = 4;
-+    size_t padding = 0;
-+
-+    if (!(s->rx_ctl0 & RX_CTL0_RX_EN)) {
-+        return -1;
-+    }
-+
-+    s->rx_desc_curr = aw_h3_emac_get_rx_desc(s, &desc, AW_H3_EMAC_MIN_PKT_SZ);
-+    if (!s->rx_desc_curr) {
-+        s->int_sta |= INT_STA_RX_BUF_UA;
-+    }
-+
-+    /* Keep filling RX descriptors until the whole frame is written */
-+    while (s->rx_desc_curr && bytes_left > 0) {
-+        desc.status &= ~DESC_STATUS_CTL;
-+        desc.status &= ~RX_DESC_STATUS_FRM_LEN_MASK;
-+
-+        if (bytes_left == size) {
-+            desc.status |= RX_DESC_STATUS_FIRST_DESC;
-+        }
-+
-+        if ((desc.status2 & DESC_STATUS2_BUF_SIZE_MASK) <
-+            (bytes_left + pad_fcs_size)) {
-+            desc_bytes = desc.status2 & DESC_STATUS2_BUF_SIZE_MASK;
-+            desc.status |= desc_bytes << RX_DESC_STATUS_FRM_LEN_SHIFT;
-+        } else {
-+            padding = pad_fcs_size;
-+            if (bytes_left < AW_H3_EMAC_MIN_PKT_SZ) {
-+                padding += (AW_H3_EMAC_MIN_PKT_SZ - bytes_left);
-+            }
-+
-+            desc_bytes = (bytes_left);
-+            desc.status |= RX_DESC_STATUS_LAST_DESC;
-+            desc.status |= (bytes_left + padding)
-+                            << RX_DESC_STATUS_FRM_LEN_SHIFT;
-+        }
-+
-+        cpu_physical_memory_write(desc.addr, buf, desc_bytes);
-+        aw_h3_emac_flush_desc(&desc, s->rx_desc_curr);
-+        trace_aw_h3_emac_receive(s->rx_desc_curr, desc.addr, desc_bytes);
-+
-+        /* Check if frame needs to raise the receive interrupt */
-+        if (!(desc.status2 & RX_DESC_STATUS2_RX_INT_CTL)) {
-+            s->int_sta |= INT_STA_RX;
-+        }
-+
-+        /* Increment variables */
-+        buf += desc_bytes;
-+        bytes_left -= desc_bytes;
-+
-+        /* Move to the next descriptor */
-+        s->rx_desc_curr = aw_h3_emac_next_desc(&desc, 64);
-+        if (!s->rx_desc_curr) {
-+            /* Not enough buffer space available */
-+            s->int_sta |= INT_STA_RX_BUF_UA;
-+            s->rx_desc_curr = s->rx_desc_head;
-+            break;
-+        }
-+    }
-+
-+    /* Report receive DMA is finished */
-+    s->rx_ctl1 &= ~RX_CTL1_RX_DMA_START;
-+    aw_h3_emac_update_irq(s);
-+
-+    return size;
-+}
-+
-+static void aw_h3_emac_transmit(AwH3EmacState *s)
-+{
-+    NetClientState *nc = qemu_get_queue(s->nic);
-+    FrameDescriptor desc;
-+    size_t bytes = 0;
-+    size_t packet_bytes = 0;
-+    size_t transmitted = 0;
-+    static uint8_t packet_buf[2048];
-+
-+    s->tx_desc_curr = aw_h3_emac_get_tx_desc(s, &desc, 0);
-+
-+    /* Read all transmit descriptors */
-+    while (s->tx_desc_curr != 0) {
-+
-+        /* Read from physical memory into packet buffer */
-+        bytes = desc.status2 & DESC_STATUS2_BUF_SIZE_MASK;
-+        if (bytes + packet_bytes > sizeof(packet_buf)) {
-+            desc.status |= TX_DESC_STATUS_LENGTH_ERR;
-+            break;
-+        }
-+        cpu_physical_memory_read(desc.addr, packet_buf + packet_bytes, bytes);
-+        packet_bytes += bytes;
-+        desc.status &= ~DESC_STATUS_CTL;
-+        aw_h3_emac_flush_desc(&desc, s->tx_desc_curr);
-+
-+        /* After the last descriptor, send the packet */
-+        if (desc.status2 & TX_DESC_STATUS2_LAST_DESC) {
-+            if (desc.status2 & TX_DESC_STATUS2_CHECKSUM_MASK) {
-+                net_checksum_calculate(packet_buf, packet_bytes);
-+            }
-+
-+            qemu_send_packet(nc, packet_buf, packet_bytes);
-+            trace_aw_h3_emac_transmit(s->tx_desc_curr, desc.addr, bytes);
-+
-+            packet_bytes = 0;
-+            transmitted++;
-+        }
-+        s->tx_desc_curr = aw_h3_emac_next_desc(&desc, 0);
-+    }
-+
-+    /* Raise transmit completed interrupt */
-+    if (transmitted > 0) {
-+        s->int_sta |= INT_STA_TX;
-+        s->tx_ctl1 &= ~TX_CTL1_TX_DMA_START;
-+        aw_h3_emac_update_irq(s);
-+    }
-+}
-+
-+static void aw_h3_emac_reset(DeviceState *dev)
-+{
-+    AwH3EmacState *s = AW_H3_EMAC(dev);
-+    NetClientState *nc = qemu_get_queue(s->nic);
-+
-+    trace_aw_h3_emac_reset();
-+
-+    s->mii_cmd = 0;
-+    s->mii_data = 0;
-+    s->basic_ctl0 = 0;
-+    s->basic_ctl1 = 0;
-+    s->int_en = 0;
-+    s->int_sta = 0;
-+    s->frm_flt = 0;
-+    s->rx_ctl0 = 0;
-+    s->rx_ctl1 = RX_CTL1_RX_MD;
-+    s->rx_desc_head = 0;
-+    s->rx_desc_curr = 0;
-+    s->tx_ctl0 = 0;
-+    s->tx_ctl1 = 0;
-+    s->tx_desc_head = 0;
-+    s->tx_desc_curr = 0;
-+    s->tx_flowctl = 0;
-+
-+    aw_h3_emac_mii_reset(s, !nc->link_down);
-+}
-+
-+static uint64_t aw_h3_emac_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    AwH3EmacState *s = opaque;
-+    uint64_t value = 0;
-+    FrameDescriptor desc;
++    trace_allwinner_h3_cpucfg_write(offset, val, size);
 +
 +    switch (offset) {
-+    case REG_BASIC_CTL_0:       /* Basic Control 0 */
-+        value = s->basic_ctl0;
++    case REG_CPUS_RST_CTRL:     /* CPUs Reset Control */
++    case REG_CPU_SYS_RST:       /* CPU System Reset */
 +        break;
-+    case REG_BASIC_CTL_1:       /* Basic Control 1 */
-+        value = s->basic_ctl1;
-+        break;
-+    case REG_INT_STA:           /* Interrupt Status */
-+        value = s->int_sta;
-+        break;
-+    case REG_INT_EN:            /* Interupt Enable */
-+        value = s->int_en;
-+        break;
-+    case REG_TX_CTL_0:          /* Transmit Control 0 */
-+        value = s->tx_ctl0;
-+        break;
-+    case REG_TX_CTL_1:          /* Transmit Control 1 */
-+        value = s->tx_ctl1;
-+        break;
-+    case REG_TX_FLOW_CTL:       /* Transmit Flow Control */
-+        value = s->tx_flowctl;
-+        break;
-+    case REG_TX_DMA_DESC_LIST:  /* Transmit Descriptor List Address */
-+        value = s->tx_desc_head;
-+        break;
-+    case REG_RX_CTL_0:          /* Receive Control 0 */
-+        value = s->rx_ctl0;
-+        break;
-+    case REG_RX_CTL_1:          /* Receive Control 1 */
-+        value = s->rx_ctl1;
-+        break;
-+    case REG_RX_DMA_DESC_LIST:  /* Receive Descriptor List Address */
-+        value = s->rx_desc_head;
-+        break;
-+    case REG_FRM_FLT:           /* Receive Frame Filter */
-+        value = s->frm_flt;
-+        break;
-+    case REG_RX_HASH_0:         /* Receive Hash Table 0 */
-+    case REG_RX_HASH_1:         /* Receive Hash Table 1 */
-+        break;
-+    case REG_MII_CMD:           /* Management Interface Command */
-+        value = s->mii_cmd;
-+        break;
-+    case REG_MII_DATA:          /* Management Interface Data */
-+        value = s->mii_data;
-+        break;
-+    case REG_ADDR_HIGH:         /* MAC Address High */
-+        value = *(((uint32_t *) (s->conf.macaddr.a)) + 1);
-+        break;
-+    case REG_ADDR_LOW:          /* MAC Address Low */
-+        value = *(uint32_t *) (s->conf.macaddr.a);
-+        break;
-+    case REG_TX_DMA_STA:        /* Transmit DMA Status */
-+        break;
-+    case REG_TX_CUR_DESC:       /* Transmit Current Descriptor */
-+        value = s->tx_desc_curr;
-+        break;
-+    case REG_TX_CUR_BUF:        /* Transmit Current Buffer */
-+        if (s->tx_desc_curr != 0) {
-+            cpu_physical_memory_read(s->tx_desc_curr, &desc, sizeof(desc));
-+            value = desc.addr;
-+        } else {
-+            value = 0;
++    case REG_CPU0_RST_CTRL:     /* CPU#0 Reset Control */
++        if (val) {
++            allwinner_h3_cpucfg_cpu_reset(s, 0);
 +        }
 +        break;
-+    case REG_RX_DMA_STA:        /* Receive DMA Status */
-+        break;
-+    case REG_RX_CUR_DESC:       /* Receive Current Descriptor */
-+        value = s->rx_desc_curr;
-+        break;
-+    case REG_RX_CUR_BUF:        /* Receive Current Buffer */
-+        if (s->rx_desc_curr != 0) {
-+            cpu_physical_memory_read(s->rx_desc_curr, &desc, sizeof(desc));
-+            value = desc.addr;
-+        } else {
-+            value = 0;
++    case REG_CPU1_RST_CTRL:     /* CPU#1 Reset Control */
++        if (val) {
++            allwinner_h3_cpucfg_cpu_reset(s, 1);
 +        }
++        break;
++    case REG_CPU2_RST_CTRL:     /* CPU#2 Reset Control */
++        if (val) {
++            allwinner_h3_cpucfg_cpu_reset(s, 2);
++        }
++        break;
++    case REG_CPU3_RST_CTRL:     /* CPU#3 Reset Control */
++        if (val) {
++            allwinner_h3_cpucfg_cpu_reset(s, 3);
++        }
++        break;
++    case REG_CPU0_CTRL:         /* CPU#0 Control */
++    case REG_CPU1_CTRL:         /* CPU#1 Control */
++    case REG_CPU2_CTRL:         /* CPU#2 Control */
++    case REG_CPU3_CTRL:         /* CPU#3 Control */
++    case REG_CPU0_STATUS:       /* CPU#0 Status */
++    case REG_CPU1_STATUS:       /* CPU#1 Status */
++    case REG_CPU2_STATUS:       /* CPU#2 Status */
++    case REG_CPU3_STATUS:       /* CPU#3 Status */
++    case REG_CLK_GATING:        /* CPU Clock Gating */
++    case REG_GEN_CTRL:          /* General Control */
++        s->gen_ctrl = val;
++        break;
++    case REG_SUPER_STANDBY:     /* Super Standby Flag */
++        s->super_standby = val;
++        break;
++    case REG_ENTRY_ADDR:        /* Reset Entry Address */
++        s->entry_addr = val;
++        break;
++    case REG_DBG_EXTERN:        /* Debug External */
++        break;
++    case REG_CNT64_CTRL:        /* 64-bit Counter Control */
++        s->counter_ctrl = val;
++        break;
++    case REG_CNT64_LOW:         /* 64-bit Counter Low */
++    case REG_CNT64_HIGH:        /* 64-bit Counter High */
 +        break;
 +    default:
-+        qemu_log_mask(LOG_UNIMP, "allwinner-h3-emac: read access to unknown "
-+                                 "EMAC register 0x" TARGET_FMT_plx "\n",
-+                                  offset);
-+    }
-+
-+    trace_aw_h3_emac_read(offset, value);
-+    return value;
-+}
-+
-+static void aw_h3_emac_write(void *opaque, hwaddr offset, uint64_t value,
-+                             unsigned size)
-+{
-+    AwH3EmacState *s = opaque;
-+    NetClientState *nc = qemu_get_queue(s->nic);
-+
-+    trace_aw_h3_emac_write(offset, value);
-+
-+    switch (offset) {
-+    case REG_BASIC_CTL_0:       /* Basic Control 0 */
-+        s->basic_ctl0 = value;
-+        break;
-+    case REG_BASIC_CTL_1:       /* Basic Control 1 */
-+        if (value & BASIC_CTL1_SOFTRST) {
-+            aw_h3_emac_reset(DEVICE(s));
-+            value &= ~BASIC_CTL1_SOFTRST;
-+        }
-+        s->basic_ctl1 = value;
-+        if (aw_h3_emac_can_receive(nc)) {
-+            qemu_flush_queued_packets(nc);
-+        }
-+        break;
-+    case REG_INT_STA:           /* Interrupt Status */
-+        s->int_sta &= ~value;
-+        aw_h3_emac_update_irq(s);
-+        break;
-+    case REG_INT_EN:            /* Interrupt Enable */
-+        s->int_en = value;
-+        aw_h3_emac_update_irq(s);
-+        break;
-+    case REG_TX_CTL_0:          /* Transmit Control 0 */
-+        s->tx_ctl0 = value;
-+        break;
-+    case REG_TX_CTL_1:          /* Transmit Control 1 */
-+        s->tx_ctl1 = value;
-+        if (value & TX_CTL1_TX_DMA_EN) {
-+            aw_h3_emac_transmit(s);
-+        }
-+        break;
-+    case REG_TX_FLOW_CTL:       /* Transmit Flow Control */
-+        s->tx_flowctl = value;
-+        break;
-+    case REG_TX_DMA_DESC_LIST:  /* Transmit Descriptor List Address */
-+        s->tx_desc_head = value;
-+        s->tx_desc_curr = value;
-+        break;
-+    case REG_RX_CTL_0:          /* Receive Control 0 */
-+        s->rx_ctl0 = value;
-+        break;
-+    case REG_RX_CTL_1:          /* Receive Control 1 */
-+        s->rx_ctl1 = value | RX_CTL1_RX_MD;
-+        if ((value & RX_CTL1_RX_DMA_EN) && aw_h3_emac_can_receive(nc)) {
-+            qemu_flush_queued_packets(nc);
-+        }
-+        break;
-+    case REG_RX_DMA_DESC_LIST:  /* Receive Descriptor List Address */
-+        s->rx_desc_head = value;
-+        s->rx_desc_curr = value;
-+        break;
-+    case REG_FRM_FLT:           /* Receive Frame Filter */
-+        s->frm_flt = value;
-+        break;
-+    case REG_RX_HASH_0:         /* Receive Hash Table 0 */
-+    case REG_RX_HASH_1:         /* Receive Hash Table 1 */
-+        break;
-+    case REG_MII_CMD:           /* Management Interface Command */
-+        s->mii_cmd = value & ~MII_CMD_PHY_BUSY;
-+        aw_h3_emac_mii_cmd(s);
-+        break;
-+    case REG_MII_DATA:          /* Management Interface Data */
-+        s->mii_data = value;
-+        break;
-+    case REG_ADDR_HIGH:         /* MAC Address High */
-+        s->conf.macaddr.a[4] = (value & 0xff);
-+        s->conf.macaddr.a[5] = (value & 0xff00) >> 8;
-+        break;
-+    case REG_ADDR_LOW:          /* MAC Address Low */
-+        s->conf.macaddr.a[0] = (value & 0xff);
-+        s->conf.macaddr.a[1] = (value & 0xff00) >> 8;
-+        s->conf.macaddr.a[2] = (value & 0xff0000) >> 16;
-+        s->conf.macaddr.a[3] = (value & 0xff000000) >> 24;
-+        break;
-+    case REG_TX_DMA_STA:        /* Transmit DMA Status */
-+    case REG_TX_CUR_DESC:       /* Transmit Current Descriptor */
-+    case REG_TX_CUR_BUF:        /* Transmit Current Buffer */
-+    case REG_RX_DMA_STA:        /* Receive DMA Status */
-+    case REG_RX_CUR_DESC:       /* Receive Current Descriptor */
-+    case REG_RX_CUR_BUF:        /* Receive Current Buffer */
-+    case REG_RGMII_STA:         /* RGMII Status */
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "allwinner-h3-emac: write access to unknown "
-+                                 "EMAC register 0x" TARGET_FMT_plx "\n",
-+                                  offset);
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad write offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return;
 +    }
 +}
 +
-+static void aw_h3_emac_set_link(NetClientState *nc)
-+{
-+    AwH3EmacState *s = qemu_get_nic_opaque(nc);
-+
-+    trace_aw_h3_emac_set_link(!nc->link_down);
-+    aw_h3_emac_mii_set_link(s, !nc->link_down);
-+}
-+
-+static const MemoryRegionOps aw_h3_emac_mem_ops = {
-+    .read = aw_h3_emac_read,
-+    .write = aw_h3_emac_write,
++static const MemoryRegionOps allwinner_h3_cpucfg_ops = {
++    .read = allwinner_h3_cpucfg_read,
++    .write = allwinner_h3_cpucfg_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .valid = {
 +        .min_access_size = 4,
 +        .max_access_size = 4,
-+    },
++        .unaligned = false
++    }
 +};
 +
-+static NetClientInfo net_aw_h3_emac_info = {
-+    .type = NET_CLIENT_DRIVER_NIC,
-+    .size = sizeof(NICState),
-+    .can_receive = aw_h3_emac_can_receive,
-+    .receive = aw_h3_emac_receive,
-+    .link_status_changed = aw_h3_emac_set_link,
-+};
++static void allwinner_h3_cpucfg_reset(DeviceState *dev)
++{
++    AwH3CpuCfgState *s = AW_H3_CPUCFG(dev);
 +
-+static void aw_h3_emac_init(Object *obj)
++    /* Set default values for registers */
++    s->gen_ctrl = REG_GEN_CTRL_RST;
++    s->super_standby = REG_SUPER_STANDBY_RST;
++    s->entry_addr = 0;
++    s->counter_ctrl = REG_CNT64_CTRL_RST;
++}
++
++static void allwinner_h3_cpucfg_realize(DeviceState *dev, Error **errp)
++{
++}
++
++static void allwinner_h3_cpucfg_init(Object *obj)
 +{
 +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwH3EmacState *s = AW_H3_EMAC(obj);
++    AwH3CpuCfgState *s = AW_H3_CPUCFG(obj);
 +
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aw_h3_emac_mem_ops, s,
-+                          TYPE_AW_H3_EMAC, AW_H3_EMAC_REGS_MEM_SIZE);
++    /* Memory mapping */
++    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_h3_cpucfg_ops, s,
++                          TYPE_AW_H3_CPUCFG, AW_H3_CPUCFG_REGS_MEM_SIZE);
 +    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
 +}
 +
-+static void aw_h3_emac_realize(DeviceState *dev, Error **errp)
-+{
-+    AwH3EmacState *s = AW_H3_EMAC(dev);
-+
-+    qemu_macaddr_default_if_unset(&s->conf.macaddr);
-+    s->nic = qemu_new_nic(&net_aw_h3_emac_info, &s->conf,
-+                          object_get_typename(OBJECT(dev)), dev->id, s);
-+    qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
-+}
-+
-+static Property aw_h3_emac_properties[] = {
-+    DEFINE_NIC_PROPERTIES(AwH3EmacState, conf),
-+    DEFINE_PROP_UINT8("phy-addr", AwH3EmacState, mii_phy_addr, 0),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static int aw_h3_emac_post_load(void *opaque, int version_id)
-+{
-+    AwH3EmacState *s = opaque;
-+
-+    aw_h3_emac_set_link(qemu_get_queue(s->nic));
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_aw_emac = {
-+    .name = TYPE_AW_H3_EMAC,
++static const VMStateDescription allwinner_h3_cpucfg_vmstate = {
++    .name = TYPE_AW_H3_CPUCFG,
 +    .version_id = 1,
 +    .minimum_version_id = 1,
-+    .post_load = aw_h3_emac_post_load,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8(mii_phy_addr, AwH3EmacState),
-+        VMSTATE_UINT32(mii_cmd, AwH3EmacState),
-+        VMSTATE_UINT32(mii_data, AwH3EmacState),
-+        VMSTATE_UINT32(basic_ctl0, AwH3EmacState),
-+        VMSTATE_UINT32(basic_ctl1, AwH3EmacState),
-+        VMSTATE_UINT32(int_en, AwH3EmacState),
-+        VMSTATE_UINT32(int_sta, AwH3EmacState),
-+        VMSTATE_UINT32(frm_flt, AwH3EmacState),
-+        VMSTATE_UINT32(rx_ctl0, AwH3EmacState),
-+        VMSTATE_UINT32(rx_ctl1, AwH3EmacState),
-+        VMSTATE_UINT32(rx_desc_head, AwH3EmacState),
-+        VMSTATE_UINT32(rx_desc_curr, AwH3EmacState),
-+        VMSTATE_UINT32(tx_ctl0, AwH3EmacState),
-+        VMSTATE_UINT32(tx_ctl1, AwH3EmacState),
-+        VMSTATE_UINT32(tx_desc_head, AwH3EmacState),
-+        VMSTATE_UINT32(tx_desc_curr, AwH3EmacState),
-+        VMSTATE_UINT32(tx_flowctl, AwH3EmacState),
++        VMSTATE_UINT32(gen_ctrl, AwH3CpuCfgState),
++        VMSTATE_UINT32(super_standby, AwH3CpuCfgState),
++        VMSTATE_UINT32(counter_ctrl, AwH3CpuCfgState),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static void aw_h3_emac_class_init(ObjectClass *klass, void *data)
++static void allwinner_h3_cpucfg_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->realize = aw_h3_emac_realize;
-+    dc->props = aw_h3_emac_properties;
-+    dc->reset = aw_h3_emac_reset;
-+    dc->vmsd = &vmstate_aw_emac;
++    dc->reset = allwinner_h3_cpucfg_reset;
++    dc->realize = allwinner_h3_cpucfg_realize;
++    dc->vmsd = &allwinner_h3_cpucfg_vmstate;
 +}
 +
-+static const TypeInfo aw_h3_emac_info = {
-+    .name           = TYPE_AW_H3_EMAC,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(AwH3EmacState),
-+    .instance_init  = aw_h3_emac_init,
-+    .class_init     = aw_h3_emac_class_init,
++static const TypeInfo allwinner_h3_cpucfg_info = {
++    .name          = TYPE_AW_H3_CPUCFG,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_init = allwinner_h3_cpucfg_init,
++    .instance_size = sizeof(AwH3CpuCfgState),
++    .class_init    = allwinner_h3_cpucfg_class_init,
 +};
 +
-+static void aw_h3_emac_register_types(void)
++static void allwinner_h3_cpucfg_register(void)
 +{
-+    type_register_static(&aw_h3_emac_info);
++    type_register_static(&allwinner_h3_cpucfg_info);
 +}
 +
-+type_init(aw_h3_emac_register_types)
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index e70f12bee1..e9e2f26f68 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -1,5 +1,15 @@
- # See docs/devel/tracing.txt for syntax documentation.
- 
-+# allwinner-h3-emac.c
-+aw_h3_emac_mii_write_reg(uint32_t reg, uint32_t value) "MII write: reg=0x%x value=0x%x"
-+aw_h3_emac_mii_read_reg(uint32_t reg, uint32_t value) "MII read: reg=0x%x value=0x%x"
-+aw_h3_emac_receive(uint32_t desc, uint32_t paddr, uint32_t bytes) "RX packet: desc=0x%08x paddr=0x%08x bytes=%u"
-+aw_h3_emac_transmit(uint32_t desc, uint32_t paddr, uint32_t bytes) "TX packet: desc=0x%08x paddr=0x%08x bytes=%u"
-+aw_h3_emac_reset(void) "HW reset"
-+aw_h3_emac_set_link(bool active) "Set link: active=%u"
-+aw_h3_emac_read(uint64_t offset, uint64_t val) "MMIO read: offset=0x%" PRIx64 " value=0x%" PRIx64
-+aw_h3_emac_write(uint64_t offset, uint64_t val) "MMIO write: offset=0x%" PRIx64 " value=0x%" PRIx64
-+
- # etraxfs_eth.c
- mdio_phy_read(int regnum, uint16_t value) "read phy_reg:%d value:0x%04x"
- mdio_phy_write(int regnum, uint16_t value) "write phy_reg:%d value:0x%04x"
++type_init(allwinner_h3_cpucfg_register)
 diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-index 7aff4ebbd2..b964a60f41 100644
+index 2bc526b77b..374061b550 100644
 --- a/include/hw/arm/allwinner-h3.h
 +++ b/include/hw/arm/allwinner-h3.h
-@@ -31,6 +31,7 @@
+@@ -27,6 +27,7 @@
+ #include "hw/timer/allwinner-a10-pit.h"
+ #include "hw/intc/arm_gic.h"
+ #include "hw/misc/allwinner-h3-clk.h"
++#include "hw/misc/allwinner-h3-cpucfg.h"
  #include "hw/misc/allwinner-h3-syscon.h"
- #include "hw/misc/allwinner-h3-sid.h"
- #include "hw/sd/allwinner-h3-sdhost.h"
-+#include "hw/net/allwinner-h3-emac.h"
  #include "target/arm/cpu.h"
  
- #define AW_H3_SRAM_A1_BASE     (0x00000000)
-@@ -119,6 +120,7 @@ typedef struct AwH3State {
+@@ -112,6 +113,7 @@ typedef struct AwH3State {
+     qemu_irq irq[AW_H3_GIC_NUM_SPI];
+     AwA10PITState timer;
+     AwH3ClockState ccu;
++    AwH3CpuCfgState cpucfg;
      AwH3SysconState syscon;
-     AwH3SidState sid;
-     AwH3SDHostState mmc0;
-+    AwH3EmacState emac;
      GICState gic;
      MemoryRegion sram_a1;
-     MemoryRegion sram_a2;
-diff --git a/include/hw/net/allwinner-h3-emac.h b/include/hw/net/allwinner-h3-emac.h
+diff --git a/include/hw/misc/allwinner-h3-cpucfg.h b/include/hw/misc/allwinner-h3-cpucfg.h
 new file mode 100644
-index 0000000000..a007d54472
+index 0000000000..808aaa90f6
 --- /dev/null
-+++ b/include/hw/net/allwinner-h3-emac.h
-@@ -0,0 +1,69 @@
++++ b/include/hw/misc/allwinner-h3-cpucfg.h
+@@ -0,0 +1,44 @@
 +/*
-+ * Allwinner H3 EMAC emulation
++ * Allwinner H3 CPU Configuration Module emulation
 + *
 + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
 + *
@@ -1084,54 +504,29 @@ index 0000000000..a007d54472
 + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 + */
 +
-+#ifndef ALLWINNER_H3_EMAC_H
-+#define ALLWINNER_H3_EMAC_H
++#ifndef HW_MISC_ALLWINNER_H3_CPUCFG_H
++#define HW_MISC_ALLWINNER_H3_CPUCFG_H
 +
-+#include "qemu/units.h"
-+#include "net/net.h"
-+#include "qemu/fifo8.h"
-+#include "hw/net/mii.h"
 +#include "hw/sysbus.h"
 +
-+#define AW_H3_EMAC_REGS_MEM_SIZE  (1024)
++#define AW_H3_CPUCFG_REGS_MEM_SIZE  (1024)
 +
-+#define TYPE_AW_H3_EMAC "allwinner-h3-emac"
-+#define AW_H3_EMAC(obj) OBJECT_CHECK(AwH3EmacState, (obj), TYPE_AW_H3_EMAC)
++#define TYPE_AW_H3_CPUCFG   "allwinner-h3-cpucfg"
++#define AW_H3_CPUCFG(obj)   OBJECT_CHECK(AwH3CpuCfgState, (obj), \
++                                         TYPE_AW_H3_CPUCFG)
 +
-+typedef struct AwH3EmacState {
++typedef struct AwH3CpuCfgState {
 +    /*< private >*/
-+    SysBusDevice  parent_obj;
++    SysBusDevice parent_obj;
 +    /*< public >*/
 +
 +    MemoryRegion iomem;
-+    qemu_irq     irq;
-+    NICState     *nic;
-+    NICConf      conf;
++    uint32_t gen_ctrl;
++    uint32_t super_standby;
++    uint32_t entry_addr;
++    uint32_t counter_ctrl;
 +
-+    uint8_t      mii_phy_addr;
-+    uint32_t     mii_cmd;
-+    uint32_t     mii_data;
-+    uint32_t     mii_cr;
-+    uint32_t     mii_st;
-+
-+    uint32_t     basic_ctl0;
-+    uint32_t     basic_ctl1;
-+    uint32_t     int_en;
-+    uint32_t     int_sta;
-+    uint32_t     frm_flt;
-+
-+    uint32_t     rx_ctl0;
-+    uint32_t     rx_ctl1;
-+    uint32_t     rx_desc_head;
-+    uint32_t     rx_desc_curr;
-+
-+    uint32_t     tx_ctl0;
-+    uint32_t     tx_ctl1;
-+    uint32_t     tx_desc_head;
-+    uint32_t     tx_desc_curr;
-+    uint32_t     tx_flowctl;
-+
-+} AwH3EmacState;
++} AwH3CpuCfgState;
 +
 +#endif
 -- 

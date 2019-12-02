@@ -1,101 +1,83 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp12574746lfc;
-        Mon, 2 Dec 2019 03:15:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqziTLH9MU4JhUwey6KWdz0fmgnEnYo4O/oKMf0ZovYM80TulnObr0pczBbdbsR5SFnoR1W4
-X-Received: by 2002:ac8:4447:: with SMTP id m7mr28563553qtn.100.1575285337259;
-        Mon, 02 Dec 2019 03:15:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575285337; cv=none;
-        d=google.com; s=arc-20160816;
-        b=EVQY1Sg3QItf6TjwoV7KjUCwxizut6iz0KgoQmGND18tuKl/Lkki1Lt8Lc6z1Md7J3
-         1DI5oR9hytt9ruv7mN0UpS3/blkKba5OL8u0RPKu1Tq1oSsH2mZppLXsdad+LupXaSVm
-         ZOE7DL7bE3nXz4ypSQyPdxTxDTTxwo6pGGEzeEh/GmGSFIx+XP0eMEbj4rzj5wn8xfje
-         X8p/JwdC8o0JIYs+bJ8VZ63wISLep/OXiOKTBmbimg0VhQKuDeBK22sV/cXgBJK90W4t
-         1KkvhE8QNWkY1fYSPaqrAprvRNJIuuLGLQcmf46moXC5gRjdQUTXtabDVrT8/zincEJk
-         n9rQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=xN2DMI7ujIHJDmHjQcTmxMXXC1w59NzaLVTz8uCIN04=;
-        b=nFF1sQEvB1jjuN/qg1rY3rjjigbfj8uL8oG+1xIUKSHME3F/7OrEYHvKG4+nWorhNn
-         p/Vw0gkleskP8OIHcZWssmh1utJSI94WvDUasZfCr+e+0GmwnwuQDmc5Kujq/XzJS/gJ
-         FS/gw+NDtWBPo8orDBAvSVwj72et82a8ae/wUD7zh28Xat3PHkuPPPMyk4fPWhz0RTMl
-         Exd5Vrqry54TO36L7d2ylNTa5YL9ipeTxpF/wNvX6+c7eq+3l842IEnrP9xXCLR1218e
-         glzTrIlANKpnDEDjfN+zkbj8EDihjoAooQw1ODcGVqPFyAvwvkqJlO8EBiOuCu5Ih/DI
-         0L6A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xiV7tWWo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp12602702lfc;
+        Mon, 2 Dec 2019 03:39:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqygp0GVQolWrMQ/0RFuohh3TIU6mykKjwdvwCTInTgeLemhCs/+2Mgt6kd169tqHo32NB3S
+X-Received: by 2002:a37:4ccb:: with SMTP id z194mr31444548qka.128.1575286744331;
+        Mon, 02 Dec 2019 03:39:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20si597535qkv.222.2019.12.02.03.15.37
+        by mx.google.com with ESMTPS id s20si9378757qkg.56.2019.12.02.03.39.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Dec 2019 03:15:37 -0800 (PST)
+        Mon, 02 Dec 2019 03:39:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xiV7tWWo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34154 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=3qnXKbgn;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ibjg0-0002U8-CB
-	for alex.bennee@linaro.org; Mon, 02 Dec 2019 06:15:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40921)
+	id 1ibk2h-0006KY-KT
+	for alex.bennee@linaro.org; Mon, 02 Dec 2019 06:39:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44577)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1ibjfP-0002NM-MA
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 06:15:04 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1ibk29-0006KR-Dr
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 06:38:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1ibjfO-0008CI-G3
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 06:14:59 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:34561)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1ibjfO-0008Bw-AM
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 06:14:58 -0500
-Received: by mail-oi1-x241.google.com with SMTP id l136so16436297oig.1
- for <qemu-arm@nongnu.org>; Mon, 02 Dec 2019 03:14:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xN2DMI7ujIHJDmHjQcTmxMXXC1w59NzaLVTz8uCIN04=;
- b=xiV7tWWoibjcZDYkMIDqkXiXMYwQCKblJ/ZFe6EVovM5woD8kjN1WRON36vxeVnn8d
- BDRsPARpuFvIKD0QrSwyu/2/ARUmUpy69V10/vOn/5JXjwEclFeeUcTluSAPi+4mEaOB
- 1yLMMLFxp3Myfrwugb4PitEGGsqhEF/8cJpPaRLUp/PXNf8VUd0EAxSRf3qmHQuzJX2K
- /nH747q/4IPdw1rM/wWkSOVf23Ns60t+eKFxpkuBgS1BYDe4c8t6+wqr7/JkHDItXvTh
- /FDGseOA/NIAKOu64pMW+KHT9ygco/xPZT680GyAQBS7OjdllB5bFVy1urMAM7j6Doxz
- LHpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=xN2DMI7ujIHJDmHjQcTmxMXXC1w59NzaLVTz8uCIN04=;
- b=UtCR1Xuqzw75dCbPgSmD/WwgMfu+Ny/uo0MrXhUTC8hqXZ9CZ7+0mcQLewR9PHVqxD
- KFPOAhTi2lQiLfohlDMeQwOdSPKCJJ5xWiljftr0w4pnPzJpDAGd4FnV3Y2kUgLMLnrc
- jMqXUElTHszqpM441xLir01Tu0iRAFApgnn5Zocl2IZFRst8zj9mQz7qHqwaOsD8EZDx
- 4PY1mHDbjlZQMxggjzG6BrvFNMFp0C6BMZPYnnd2J/GojzOe+G+Ch6klvAy6v+XDuaOI
- f2bdCU9EVTHwWPovf3XBEFSi66vbBNeZe2OKq5RLJBcKsMVj7jAkRsMu4BHZwk5q4PNC
- ZtEA==
-X-Gm-Message-State: APjAAAVks2UDGoewINtIGSDfWU2vDC1B8Vun9m6WrCc0e6voLg9A2e8+
- d8juz6AVqoEw/hSAZyaVl7fEtVFIX1zDH8tANnIe2Q==
-X-Received: by 2002:aca:f5cc:: with SMTP id
- t195mr20322028oih.163.1575285297444; 
- Mon, 02 Dec 2019 03:14:57 -0800 (PST)
-MIME-Version: 1.0
+ (envelope-from <damien.hedde@greensocs.com>) id 1ibk28-0004Ps-1l
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 06:38:29 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:51086)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1ibk27-0004PE-FE; Mon, 02 Dec 2019 06:38:28 -0500
+Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 82F8696EF0;
+ Mon,  2 Dec 2019 11:38:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1575286701;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=kc4rOJaJAYsNyCWNjPbW9WW8Alz48HOG756F5zrMF0A=;
+ b=3qnXKbgngrLys298wuE/JEhUm0wVSEaZ89fMLWV4Cb34aYF/4myeg4+4+XSagbqI3LafXk
+ IhRQHAqQYfQfC3GP97klTyipM93omHoIP2Mq6fqQefl7XCghoBMbNGmrXnO7AmXlh6WwY8
+ qYu2RljaoW3ebaC1K2uAmgcxphur5uQ=
+Subject: Re: [PATCH v5 04/13] hw/core: add Resettable support to BusClass and
+ DeviceClass
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20191018150630.31099-1-damien.hedde@greensocs.com>
- <20191018150630.31099-4-damien.hedde@greensocs.com>
- <CAFEAcA9kc1-=DkYSqL6DOrLCNKt5uuxnf6-XYJ97g15T--1NvA@mail.gmail.com>
- <20402bef-d615-3258-bde9-12d42c9b1029@greensocs.com>
-In-Reply-To: <20402bef-d615-3258-bde9-12d42c9b1029@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Dec 2019 11:14:46 +0000
-Message-ID: <CAFEAcA_XqjUhYvKmr-dNJCL3w32WPegqLmTw5FSDwAPZ+HeGkQ@mail.gmail.com>
-Subject: Re: [PATCH v5 03/13] hw/core: create Resettable QOM interface
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+ <20191018150630.31099-5-damien.hedde@greensocs.com>
+ <CAFEAcA9z_Tu3jEABbRVgoZfw=_6RDm8MOQNOYh4qwmQzJjBAgQ@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <0befd5d7-dde3-9a41-6c60-1bc372f7fd28@greensocs.com>
+Date: Mon, 2 Dec 2019 12:38:20 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9z_Tu3jEABbRVgoZfw=_6RDm8MOQNOYh4qwmQzJjBAgQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1575286701;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=kc4rOJaJAYsNyCWNjPbW9WW8Alz48HOG756F5zrMF0A=;
+ b=Wi4oqgutqhzNbKcEtiG4+L4eiPJCFAsdD4tm4s9izLCm1Ju2q41Lv7sAOnTuh8Pm6Rfo2F
+ JCNDiq6dDsKhlrgZteDGN3NWCfjUzRJPhTfJZ05H77uYoC4VoUpW1E7Zi+R4j3PmtkR36A
+ UIpLYX8uNZvuektGCsFrIPCoPyUoYls=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575286701; a=rsa-sha256; cv=none;
+ b=a5+O9S4I9dxfA+Rnf7LutTBtMjnLdCtsP1Uiv3LCOVrc80pTRx1i+NPR4ofgLPefyvngrv
+ H65jPJ2pdBO/uL5Rqr6K2HqSzL/j0eA0rFbJzkGgtOgHQG+pxcqx0ji9M47acfIZPTPrTv
+ Gs7YpitOBwpWbXPIM6JRKXWl/gpu2Uo=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,42 +94,54 @@ Cc: "Daniel P. Berrange" <berrange@redhat.com>,
  Cornelia Huck <cohuck@redhat.com>, Mark Burton <mark.burton@greensocs.com>,
  QEMU Developers <qemu-devel@nongnu.org>, Edgar Iglesias <edgari@xilinx.com>,
  qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qc/yMbKOT9PZ
+X-TUID: 7KAElx12hZie
 
-On Mon, 2 Dec 2019 at 11:07, Damien Hedde <damien.hedde@greensocs.com> wrote:
->
->
-> On 11/29/19 7:32 PM, Peter Maydell wrote:
-> > On Fri, 18 Oct 2019 at 16:07, Damien Hedde <damien.hedde@greensocs.com> wrote:
-> >> +/**
-> >> + * enter_phase_in_progress:
-> >> + * Flag telling whether we are currently in an enter phase where side
-> >> + * effects are forbidden. This flag allows us to catch if reset is called
-> >> + * again during during this phase.
-> >> + */
-> >> +static bool enter_phase_in_progress;
-> >
-> > This looks weird -- I don't think a global for this works,
-> > because you might have several distinct subtrees of
-> > devices, and be doing reset on them both at once.
-> > I think that we only use this for an assert, though -- is
-> > that right? If so, we could just drop this.
->
-> We say that we need to own the iothread mutex for any reset, so global
-> should be ok. Thought, I just checked, it's only mentioned in the
-> documentation not in the header file. I should probably add a comment
-> there too along with the link to the documentation file.
 
-Ah, right, I hadn't considered that the mutex is effectively
-restricting to only a single reset happening at once. If
-you want to keep the asserts you can, if you add a comment
-noting that these globals are (a) only for asserts and (b)
-OK because we rely on the iothread mutex to ensure that only
-one reset operation can be in progress at once.
 
-thanks
--- PMM
+On 11/29/19 7:36 PM, Peter Maydell wrote:
+> On Fri, 18 Oct 2019 at 16:07, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>>
+>> This commit adds support of Resettable interface to buses and devices:
+>> + ResettableState structure is added in the Bus/Device state
+>> + Resettable methods are implemented.
+>> + device/bus_is_in_reset function defined
+>>
+>> This commit allows to transition the objects to the new
+>> multi-phase interface without changing the reset behavior at all.
+>> Object single reset method can be split into the 3 different phases
+>> but the 3 phases are still executed in a row for a given object.
+>> From the qdev/qbus reset api point of view, nothing is changed.
+>> qdev_reset_all() and qbus_reset_all() are not modified as well as
+>> device_legacy_reset().
+>>
+>> Transition of an object must be done from mother class to daughter
+>> classes.
+> 
+> The standard terminology here is "parent class" and "child class".
+> 
+> I notice you've used mother/daughter in a bunch of other comments
+> in various patches -- could you change that to the more usual
+> terms, please?
+Yes. Sorry for that.
+
+> 
+>> Care has been taken to allow the transition of a mother class
+>> without requiring the daughter classes to be transitioned at the same
+>> time. Note that SysBus and SysBusDevice class do not need any transition
+>> because they do not override the legacy reset method.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> 
+> Otherwise
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> thanks
+> -- PMM
+> 
+
+--
+Damien

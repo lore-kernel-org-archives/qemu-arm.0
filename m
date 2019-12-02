@@ -1,105 +1,77 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp11950032lfc;
-        Sun, 1 Dec 2019 14:52:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwEqYROqtVDRxdf2baVmV8piWzquLjSYjwYApgbuZcMvwSIzFsHTkB01YVQTPH83aL8IGdj
-X-Received: by 2002:aa7:d6c8:: with SMTP id x8mr29343434edr.300.1575240738273;
-        Sun, 01 Dec 2019 14:52:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575240738; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp12281143lfc;
+        Sun, 1 Dec 2019 22:08:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw1MQfaFVy2U2WlU9LOyAC5d1JUR/h3doiGT1+kN6sI8zTiwbeoIoqyqslOnLXbrpR2zyoA
+X-Received: by 2002:ad4:5525:: with SMTP id ba5mr30266467qvb.117.1575266920787;
+        Sun, 01 Dec 2019 22:08:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575266920; cv=none;
         d=google.com; s=arc-20160816;
-        b=eLkohsc5DUkClDQFo11vNMtAsOnFwouLlvbEkZ+eEuelGUyJThhkt1KtVYxFcdpwxw
-         4/MQj31jNN56FNEdaJvihHyR9f48meaByVuVbijTLFWRI+0/sM3UjMnr6wpoqzIcJT8Y
-         Pk7GJzOCKu0GYERZ0BOsL9y9TtK3hZKwu+oKV3XSygUtcLxMDcDmHvsT8sh3EgVc1+ky
-         gnJ73bUF2DGuYKVhcgU50ILuw+Z9MUySFbKSobUWkidNn7rPL465+0RvM6JSMXSHVY8k
-         OfD6jinKD0XBZIT2jv9YnnxMX99V56qnprKxTUGVTEZXISeyoVjJlXVmy2fjNvjHUbeI
-         HuwQ==
+        b=up1f6LCLT8pRMHL8wxcgqiH6U25XEwsg0fyd8dTeDmj2kxfQ7x4WN7c6JfxhayF2v1
+         ItHdmKksPN+z233i8fgdk0RRTDPc+Vscm/iKZHnKzcu6htncBtCaQi5Fl+YfqBVjeSOz
+         HdQ4WfR2mF90fhTWCz8cgcywBk7wiPeKqXGJ7BaihwwMaqsZXNIStiDsYIVH+z8dMCMd
+         Jejxe2i9iu+qtv16lomTuKlgb/bpbLaKS83M9lkvqV+eP0xIOaH39Uu7XYiT/CduDJH3
+         bD6TykH+poltAU6i8xABL17ZW4+axrj0h3RaVumuJnkzPolgDx6fwPkmBtxxvbnsFgsY
+         zaiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=IseQ1yMIAUS2jCMaYl3VxZeZJQk1+p0QJl3nw4mJTGE=;
-        b=uD4JMgYa/kSqsOo0rGB25cibl8EiU4WO/bEQpluJU/eoXuzmjNaFF0L8Lwlueniemt
-         w1As3x7fsK1z4jxf7MKmmVBOvmrmzLaYLMc2Do8mJ2Sj5Ms873KvNy2FmrWUpRhp2Xo1
-         vrQm+d2CzpQmpxaFlRYrXPr5n6TZJYbyNjbRQn1yVJWoCDm8o8U9twC715L6UzLAqmjT
-         zYcK+l7lZC1FR//REHJ+u6EHc6mImCByB8zEX6po7Yz4D9WELnY46q3zgtwS5+IGRO92
-         XDidLst0OWL2RJKhjFLyqsKLjJfV7Ligt0G0tmdMYgREUHFY9AuKME7ByyPUDHimua9E
-         MGZQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=LVd/i8HW09e/vdFnL8QhLU0pyTvDK6DiGpY/Dul0znU=;
+        b=zf9LVumNFXrvqMifyS1+7M76jhxGfe4956lgUJbe2JMKUgOb1PiBs4KzlP3wZsucsG
+         tkZUsTBjejPDu9wvh7vdUbm5BGp/i9ACwkKbbeszfhAG3lE7PytVRpFsBB+rod68tmvS
+         QEISJw0bq85FUufHKPDQnsaxQa1YN7URjNZL0QKMhpGx3Jn2fwUg2ooZc383fciV3mWp
+         EuAz+uAuTvX3TfGxI7CPExqw5XPoaX5xabi984+9NA0QJFT42+dLyfZQbfKBx7OXLKzV
+         QqnujsK6dlm+9cV4/0ZKUVCLV1k16wY+a47ku78JAm23h9ROm8uXn/trHccjhRxyW473
+         xwTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZA9KXIQ3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=neutral (body hash did not verify) header.i=@gibson.dropbear.id.au header.s=201602 header.b=bi3XDkPw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t18si19372770ejs.161.2019.12.01.14.52.18
+        by mx.google.com with ESMTPS id o18si11821761qkm.275.2019.12.01.22.08.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 01 Dec 2019 14:52:18 -0800 (PST)
+        Sun, 01 Dec 2019 22:08:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZA9KXIQ3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56454 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@gibson.dropbear.id.au header.s=201602 header.b=bi3XDkPw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ibY4f-0004e4-6z
-	for alex.bennee@linaro.org; Sun, 01 Dec 2019 17:52:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34489)
+	id 1ibesy-0004W8-6h
+	for alex.bennee@linaro.org; Mon, 02 Dec 2019 01:08:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58136)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1ibY4V-0004dh-Ch
- for qemu-arm@nongnu.org; Sun, 01 Dec 2019 17:52:08 -0500
+ (envelope-from <dgibson@ozlabs.org>) id 1ibesb-0004Vo-RQ
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 01:08:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1ibY4U-00082u-89
- for qemu-arm@nongnu.org; Sun, 01 Dec 2019 17:52:07 -0500
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:38839)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1ibY4T-00082S-VM
- for qemu-arm@nongnu.org; Sun, 01 Dec 2019 17:52:06 -0500
-Received: by mail-oi1-x243.google.com with SMTP id b8so1459376oiy.5
- for <qemu-arm@nongnu.org>; Sun, 01 Dec 2019 14:52:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=IseQ1yMIAUS2jCMaYl3VxZeZJQk1+p0QJl3nw4mJTGE=;
- b=ZA9KXIQ3HKXqA5b8YXHh3v0NxMpNtsG1PCebeqLAX/g9Shdb4ak7/rQmEhRDOmjOTA
- 03uEXv+WMfiif/qbklGUxe4uoXO+ZTgkiUeFsaWwXS2KEx5JYFOm54UtwJG+BLK1G+Hu
- XgHqQMvy0lg+8cnQvb9+TMYDlbxspDZS7j0QuU03l+CfmlA06mkhfabY1odMyolwvDso
- yfj3upR4NkcINkCcijmP47fKIq72ODP+D9qn3L12ZTXnOoOWMdBkKGpyDJZnz7eW7gDU
- s3qAFXa8rqeQveGZu4dfjKJgeK3reCYTfg8VnentglkgLRIwPlyv/+/voDOcqCzDjfOb
- s9RA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=IseQ1yMIAUS2jCMaYl3VxZeZJQk1+p0QJl3nw4mJTGE=;
- b=U5pjibaCQXf6/EpI1OP/9HUiM7WrkvvF2/v7yZ8CA0MGlg2MvPAkWxw4LOuEG3A0Uv
- 5opEC4fpFl1x4whjqLLz05/PrVPwsxQ52J8wSMsj/8v1B9kHqHcZtV7lqF2ice6Ep8yF
- /4QXh9L5p/XtrQoI1Ec3pSk3Sb0x+8k258GEoRmRMwCijHrxpP2vV4dbTELDr5ulKwP2
- fXOt7ma3033ljF0flGQPIKApTxGzVD3DULT9ZVqySOIGT2ZPx57JfuP+5FtKNtQgVjMP
- ZOK5woi+TWt9TxgUCHpPTVMOWIRGErx9Uteo3/JDDq2RZykUifNDejutJiWx/GUc648A
- 39Tg==
-X-Gm-Message-State: APjAAAV5xy9cKgm6+fMsQ/YR/DpGlz2UYrcOv4lwPL6k60q1g17U65GQ
- e+hBVAYSHuclXim7wR++/dpNHgoH6tKIMasPogXHZA==
-X-Received: by 2002:aca:f5cc:: with SMTP id
- t195mr18593935oih.163.1575240725047; 
- Sun, 01 Dec 2019 14:52:05 -0800 (PST)
+ (envelope-from <dgibson@ozlabs.org>) id 1ibesa-00016R-9l
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 01:08:17 -0500
+Received: from ozlabs.org ([203.11.71.1]:53979)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1ibesZ-00016B-8u; Mon, 02 Dec 2019 01:08:16 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 47RF621gLzz9sPL; Mon,  2 Dec 2019 17:08:10 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1575266890;
+ bh=USu8JlsY/OzHA2YhXxTPxDDMZBunzRsn+270mXy38Zo=;
+ h=From:To:Cc:Subject:Date:From;
+ b=bi3XDkPwIZaOws/HGq/oT54ob58swfTjE0sP4YauSYuvixDLssPVIE1tKsGEYBcMJ
+ TcWo7VfXn6a1tbmIzSpeW44GVJQYIZBwLMVJhCGTzM4LoTpcrnMQExbq2XR7JCzJCt
+ mcZ+GuU/2FAVchKJPlHlrdjXqvsBtUQzN/lAns/Q=
+From: David Gibson <david@gibson.dropbear.id.au>
+To: peter.maydell@linaro.org
+Subject: [PATCHv3] exynos4210_gic: Suppress gcc9 format-truncation warnings
+Date: Mon,  2 Dec 2019 17:08:06 +1100
+Message-Id: <20191202060806.77968-1-david@gibson.dropbear.id.au>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-References: <20191125124055.19286-1-jean-hugues.deschenes@ossiaco.com>
- <3e2857fd-aa5e-acc5-edd6-359715a636a6@linaro.org>
- <CAFEAcA90u0GsZZTX6EB0AzrS+A-ErTEGE2XVeJH8wvSmfF80tQ@mail.gmail.com>
- <YQXPR0101MB1142ACF7B4629FB56926BDF1A0400@YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM>
-In-Reply-To: <YQXPR0101MB1142ACF7B4629FB56926BDF1A0400@YQXPR0101MB1142.CANPRD01.PROD.OUTLOOK.COM>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 1 Dec 2019 22:51:53 +0000
-Message-ID: <CAFEAcA8y2bNiyJh1KOLERw_gi-k7nyGLgBEv=oYQZMOaCM_Rrg@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Allow loading elf from aliased ROM regions
-To: =?UTF-8?Q?Jean=2DHugues_Desch=C3=AAnes?=
- <Jean-Hugues.Deschenes@ossiaco.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 203.11.71.1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,28 +83,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "thuth@redhat.com" <thuth@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "martin.galvan@tallertechnologies.com" <martin.galvan@tallertechnologies.com>
+Cc: i.mitsyanko@gmail.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZJ0Xepz7YMtU
+X-TUID: 46UAegXzj5q7
 
-On Sun, 1 Dec 2019 at 22:50, Jean-Hugues Desch=C3=AAnes
-<Jean-Hugues.Deschenes@ossiaco.com> wrote:
-> > My preference for fixing this properly is:
-> >  * get Damien's three-phase-reset patchset into master
-> >  * make the ROM blob loader write its data into ram
-> >    in phase 2 ('hold')
-> > * make the arm CPU reset read the data in phase 3 ('exit')
+exynos4210_gic_realize() prints the number of cpus into some temporary
+buffers, but it only allows 3 bytes space for it.  That's plenty:
+existing machines will only ever set this value to EXYNOS4210_NCPUS
+(2).  But the compiler can't always figure that out, so some[*] gcc9
+versions emit -Wformat-truncation warnings.
 
-> Makes perfect sense. Feel free to drop the patch.
+We can fix that by hinting the constraint to the compiler with a
+suitably placed assert().
 
-Well, I'm still vaguely tracking this patch; we might want
-a temporary-fix if it looks like the phased-reset approach
-is going to take too long to get into master.
+[*] The bizarre thing here, is that I've long gotten these warnings
+    compiling in a 32-bit x86 container as host - Fedora 30 with
+    gcc-9.2.1-1.fc30.i686 - but it compiles just fine on my normal
+    x86_64 host - Fedora 30 with and gcc-9.2.1-1.fc30.x86_64.
 
-thanks
--- PMM
+Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Peter, up to you if you squeeze this in for qemu-4.2 or leave it until 5.=
+0
+
+Changes since v2:
+ * Moved the assert outside the for loop using a trick suggested by
+   Richard Henderson
+Changes since v1:
+ * Used an assert to hint the compiler, instead of increasing the
+   buffer size.
+
+---
+ hw/intc/exynos4210_gic.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+index a1b699b6ba..ddd006aca6 100644
+--- a/hw/intc/exynos4210_gic.c
++++ b/hw/intc/exynos4210_gic.c
+@@ -293,6 +293,7 @@ static void exynos4210_gic_realize(DeviceState *dev, =
+Error **errp)
+     char cpu_alias_name[sizeof(cpu_prefix) + 3];
+     char dist_alias_name[sizeof(cpu_prefix) + 3];
+     SysBusDevice *gicbusdev;
++    uint32_t n =3D s->num_cpu;
+     uint32_t i;
+=20
+     s->gic =3D qdev_create(NULL, "arm_gic");
+@@ -313,7 +314,14 @@ static void exynos4210_gic_realize(DeviceState *dev,=
+ Error **errp)
+     memory_region_init(&s->dist_container, obj, "exynos4210-dist-contain=
+er",
+             EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
+=20
+-    for (i =3D 0; i < s->num_cpu; i++) {
++    /*
++     * This clues in gcc that our on-stack buffers do, in fact have
++     * enough room for the cpu numbers.  gcc 9.2.1 on 32-bit x86
++     * doesn't figure this out, otherwise and gives spurious warnings.
++     */
++    assert(n <=3D EXYNOS4210_NCPUS);
++    for (i =3D 0; i < n; i++) {
++
+         /* Map CPU interface per SMP Core */
+         sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
+         memory_region_init_alias(&s->cpu_alias[i], obj,
+--=20
+2.23.0
+

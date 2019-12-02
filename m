@@ -1,77 +1,82 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp12281143lfc;
-        Sun, 1 Dec 2019 22:08:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw1MQfaFVy2U2WlU9LOyAC5d1JUR/h3doiGT1+kN6sI8zTiwbeoIoqyqslOnLXbrpR2zyoA
-X-Received: by 2002:ad4:5525:: with SMTP id ba5mr30266467qvb.117.1575266920787;
-        Sun, 01 Dec 2019 22:08:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575266920; cv=none;
-        d=google.com; s=arc-20160816;
-        b=up1f6LCLT8pRMHL8wxcgqiH6U25XEwsg0fyd8dTeDmj2kxfQ7x4WN7c6JfxhayF2v1
-         ItHdmKksPN+z233i8fgdk0RRTDPc+Vscm/iKZHnKzcu6htncBtCaQi5Fl+YfqBVjeSOz
-         HdQ4WfR2mF90fhTWCz8cgcywBk7wiPeKqXGJ7BaihwwMaqsZXNIStiDsYIVH+z8dMCMd
-         Jejxe2i9iu+qtv16lomTuKlgb/bpbLaKS83M9lkvqV+eP0xIOaH39Uu7XYiT/CduDJH3
-         bD6TykH+poltAU6i8xABL17ZW4+axrj0h3RaVumuJnkzPolgDx6fwPkmBtxxvbnsFgsY
-         zaiw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=LVd/i8HW09e/vdFnL8QhLU0pyTvDK6DiGpY/Dul0znU=;
-        b=zf9LVumNFXrvqMifyS1+7M76jhxGfe4956lgUJbe2JMKUgOb1PiBs4KzlP3wZsucsG
-         tkZUsTBjejPDu9wvh7vdUbm5BGp/i9ACwkKbbeszfhAG3lE7PytVRpFsBB+rod68tmvS
-         QEISJw0bq85FUufHKPDQnsaxQa1YN7URjNZL0QKMhpGx3Jn2fwUg2ooZc383fciV3mWp
-         EuAz+uAuTvX3TfGxI7CPExqw5XPoaX5xabi984+9NA0QJFT42+dLyfZQbfKBx7OXLKzV
-         QqnujsK6dlm+9cV4/0ZKUVCLV1k16wY+a47ku78JAm23h9ROm8uXn/trHccjhRxyW473
-         xwTw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gibson.dropbear.id.au header.s=201602 header.b=bi3XDkPw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp12564960lfc;
+        Mon, 2 Dec 2019 03:08:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzWzd9EM2gBgaafwUXWPg6S9r06XILJcXPx+H3NypsDNJf8BKru2NL983HYdR1PKnVCZ/fx
+X-Received: by 2002:a05:6402:1596:: with SMTP id c22mr798766edv.268.1575284901497;
+        Mon, 02 Dec 2019 03:08:21 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18si11821761qkm.275.2019.12.01.22.08.40
+        by mx.google.com with ESMTPS id v1si11462064ejr.0.2019.12.02.03.08.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 01 Dec 2019 22:08:40 -0800 (PST)
+        Mon, 02 Dec 2019 03:08:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gibson.dropbear.id.au header.s=201602 header.b=bi3XDkPw;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=IwMknjXk;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59306 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34050 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ibesy-0004W8-6h
-	for alex.bennee@linaro.org; Mon, 02 Dec 2019 01:08:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58136)
+	id 1ibjYy-0006CU-9C
+	for alex.bennee@linaro.org; Mon, 02 Dec 2019 06:08:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39746)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1ibesb-0004Vo-RQ
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 01:08:19 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1ibjYY-00069q-AK
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 06:07:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1ibesa-00016R-9l
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 01:08:17 -0500
-Received: from ozlabs.org ([203.11.71.1]:53979)
+ (envelope-from <damien.hedde@greensocs.com>) id 1ibjYW-00054A-Jb
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 06:07:53 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:50072)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1ibesZ-00016B-8u; Mon, 02 Dec 2019 01:08:16 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 47RF621gLzz9sPL; Mon,  2 Dec 2019 17:08:10 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1575266890;
- bh=USu8JlsY/OzHA2YhXxTPxDDMZBunzRsn+270mXy38Zo=;
- h=From:To:Cc:Subject:Date:From;
- b=bi3XDkPwIZaOws/HGq/oT54ob58swfTjE0sP4YauSYuvixDLssPVIE1tKsGEYBcMJ
- TcWo7VfXn6a1tbmIzSpeW44GVJQYIZBwLMVJhCGTzM4LoTpcrnMQExbq2XR7JCzJCt
- mcZ+GuU/2FAVchKJPlHlrdjXqvsBtUQzN/lAns/Q=
-From: David Gibson <david@gibson.dropbear.id.au>
-To: peter.maydell@linaro.org
-Subject: [PATCHv3] exynos4210_gic: Suppress gcc9 format-truncation warnings
-Date: Mon,  2 Dec 2019 17:08:06 +1100
-Message-Id: <20191202060806.77968-1-david@gibson.dropbear.id.au>
-X-Mailer: git-send-email 2.23.0
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1ibjYW-00053H-0V; Mon, 02 Dec 2019 06:07:52 -0500
+Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 286D096EF0;
+ Mon,  2 Dec 2019 11:07:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1575284864;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VgBiRzmN073Vt3AzJ9rm6Cx1Gcb36ZBoNwgbMrTiU+8=;
+ b=IwMknjXkDLtrvdHaZyxhRACIvQFjk55icM9LvYUSHcazLx66RDyaVeAcjF4v3xGEsB3wgH
+ LSdk0tdDVohQXzT4OKI8bLxxHtYVwnPv8o9oQUvp4ij5A9B0DTvAkzBmdXMcc6GcSadSNE
+ H9EwwcdXqGAJKksmiE6+1sbogmSnL9c=
+Subject: Re: [PATCH v5 03/13] hw/core: create Resettable QOM interface
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20191018150630.31099-1-damien.hedde@greensocs.com>
+ <20191018150630.31099-4-damien.hedde@greensocs.com>
+ <CAFEAcA9kc1-=DkYSqL6DOrLCNKt5uuxnf6-XYJ97g15T--1NvA@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <20402bef-d615-3258-bde9-12d42c9b1029@greensocs.com>
+Date: Mon, 2 Dec 2019 12:07:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CAFEAcA9kc1-=DkYSqL6DOrLCNKt5uuxnf6-XYJ97g15T--1NvA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1575284865;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VgBiRzmN073Vt3AzJ9rm6Cx1Gcb36ZBoNwgbMrTiU+8=;
+ b=EduGSw3JMDJG1Sn0lWOS4xD/qCTqnAe1EDmixxcw/wDW2HokGjApZ+oY50/E1hA+ovnJSp
+ F6vxS/giWXu4cyDxhS9TSpxpUmGFhFzXBKnNGa1hRSzQ7YXSROnUQ6m/ev6OlHwIH4S7Lk
+ N5IgVUYXwAhAmXoN8xql2dv0Hrty7BU=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575284865; a=rsa-sha256; cv=none;
+ b=DK378j0q4oF3AN+WuCUGrN6wsxVONTwWkMYG0ySpG4lnjDJAp/jj/eTOSwaCKmPJSYqoYQ
+ /tANyc0d2QZkQ4kpgZcOAvhFchWCuQS3D516Hg6bnt84htG6abXi5B2eJy3tyG2fZlxKoF
+ OjDGnAVD5ZCezPXjZLjuldVhMsWb2Lg=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 203.11.71.1
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,76 +88,144 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: i.mitsyanko@gmail.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+Cc: "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x <qemu-s390x@nongnu.org>,
+ Cornelia Huck <cohuck@redhat.com>, Mark Burton <mark.burton@greensocs.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Edgar Iglesias <edgari@xilinx.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 46UAegXzj5q7
+X-TUID: ZMlPO7hP92b9
 
-exynos4210_gic_realize() prints the number of cpus into some temporary
-buffers, but it only allows 3 bytes space for it.  That's plenty:
-existing machines will only ever set this value to EXYNOS4210_NCPUS
-(2).  But the compiler can't always figure that out, so some[*] gcc9
-versions emit -Wformat-truncation warnings.
 
-We can fix that by hinting the constraint to the compiler with a
-suitably placed assert().
+On 11/29/19 7:32 PM, Peter Maydell wrote:
+> On Fri, 18 Oct 2019 at 16:07, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>>
+>> This commit defines an interface allowing multi-phase reset. This aims
+>> to solve a problem of the actual single-phase reset (built in
+>> DeviceClass and BusClass): reset behavior is dependent on the order
+>> in which reset handlers are called. In particular doing external
+>> side-effect (like setting an qemu_irq) is problematic because receiving
+>> object may not be reset yet.
+>>
+>> The Resettable interface divides the reset in 3 well defined phases.
+>> To reset an object tree, all 1st phases are executed then all 2nd then
+>> all 3rd. See the comments in include/hw/resettable.h for a more complete
+>> description. The interface defines 3 phases to let the future
+>> possibility of holding an object into reset for some time.
+>>
+>> The qdev/qbus reset in DeviceClass and BusClass will be modified in
+>> following commits to use this interface. A mechanism is provided
+>> to allow executing a transitional reset handler in place of the 2nd
+>> phase which is executed in children-then-parent order inside a tree.
+>> This will allow to transition devices and buses smoothly while
+>> keeping the exact current qdev/qbus reset behavior for now.
+>>
+>> Documentation will be added in a following commit.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>> ---
+>>
+>> In this patch only a single reset type is supported, but the interface
+>> allows for more to be defined.
+>>
+>> I had some thought about problems which may arise when having multiple
+>> reset types:
+> 
+> [snip]
+> 
+> Yeah, these all seem right. We clearly need to think a bit
+> more before we add multiple reset types. Let's get this basic
+> just-cold-reset in for now and come back to the rest later.
+> 
+> 
+> Almost all of my comments below are just grammar/typo fixes
+> for comments. The only substantives are:
+>  * globals
+>  * copyright/licensing comment needed in the .h file
+> and they're pretty minor items.
+> 
+>> +/**
+>> + * enter_phase_in_progress:
+>> + * Flag telling whether we are currently in an enter phase where side
+>> + * effects are forbidden. This flag allows us to catch if reset is called
+>> + * again during during this phase.
+>> + */
+>> +static bool enter_phase_in_progress;
+> 
+> This looks weird -- I don't think a global for this works,
+> because you might have several distinct subtrees of
+> devices, and be doing reset on them both at once.
+> I think that we only use this for an assert, though -- is
+> that right? If so, we could just drop this.
 
-[*] The bizarre thing here, is that I've long gotten these warnings
-    compiling in a 32-bit x86 container as host - Fedora 30 with
-    gcc-9.2.1-1.fc30.i686 - but it compiles just fine on my normal
-    x86_64 host - Fedora 30 with and gcc-9.2.1-1.fc30.x86_64.
+We say that we need to own the iothread mutex for any reset, so global
+should be ok. Thought, I just checked, it's only mentioned in the
+documentation not in the header file. I should probably add a comment
+there too along with the link to the documentation file.
 
-Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+If we want to drop the iothread mutex constraint. I think we need to
+carefully check there is no hidden problem. In particular in hold and
+exit phases we allow to have external effects like setting gpios and we
+have no way to control what it provokes.
 
-Peter, up to you if you squeeze this in for qemu-4.2 or leave it until 5.=
-0
+You're right it is just for assert: to avoid any miss-use of the api
+which could lead to being in bad reset state. So we can indeed drop it.
 
-Changes since v2:
- * Moved the assert outside the for loop using a trick suggested by
-   Richard Henderson
-Changes since v1:
- * Used an assert to hint the compiler, instead of increasing the
-   buffer size.
+> 
+>> +void resettable_assert_reset(Object *obj, ResetType type)
+>> +{
+>> +    assert(!enter_phase_in_progress);
+>> +    /* TODO: change that assert when adding support for other reset types */
+> 
+> I'm not sure which assert this is referring to -- the one above
+> the comment, or the one below ?
 
----
- hw/intc/exynos4210_gic.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+It refers to the assert(type == RESET_TYPE_COLD).
+I added theses because we cannot just add items in the enum to have
+working multiple reset types.
+A comment like this will be more clear:
+/*
+ * TODO: Additional reset types need support in phases handling
+ * functions (resettable_phase_enter/hold/exit()) before allowing more
+ * enum entries. Remove the following assert when it is done.
+ */
 
-diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-index a1b699b6ba..ddd006aca6 100644
---- a/hw/intc/exynos4210_gic.c
-+++ b/hw/intc/exynos4210_gic.c
-@@ -293,6 +293,7 @@ static void exynos4210_gic_realize(DeviceState *dev, =
-Error **errp)
-     char cpu_alias_name[sizeof(cpu_prefix) + 3];
-     char dist_alias_name[sizeof(cpu_prefix) + 3];
-     SysBusDevice *gicbusdev;
-+    uint32_t n =3D s->num_cpu;
-     uint32_t i;
-=20
-     s->gic =3D qdev_create(NULL, "arm_gic");
-@@ -313,7 +314,14 @@ static void exynos4210_gic_realize(DeviceState *dev,=
- Error **errp)
-     memory_region_init(&s->dist_container, obj, "exynos4210-dist-contain=
-er",
-             EXYNOS4210_EXT_GIC_DIST_REGION_SIZE);
-=20
--    for (i =3D 0; i < s->num_cpu; i++) {
-+    /*
-+     * This clues in gcc that our on-stack buffers do, in fact have
-+     * enough room for the cpu numbers.  gcc 9.2.1 on 32-bit x86
-+     * doesn't figure this out, otherwise and gives spurious warnings.
-+     */
-+    assert(n <=3D EXYNOS4210_NCPUS);
-+    for (i =3D 0; i < n; i++) {
-+
-         /* Map CPU interface per SMP Core */
-         sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
-         memory_region_init_alias(&s->cpu_alias[i], obj,
---=20
-2.23.0
+> 
+>> +    assert(type == RESET_TYPE_COLD);
+>> +    trace_resettable_reset_assert_begin(obj, type);
+>> +    enter_phase_in_progress = true;
+>> +    resettable_phase_enter(obj, NULL, type);
+>> +    enter_phase_in_progress = false;
+>> +    resettable_phase_hold(obj, NULL, type);
+>> +    trace_resettable_reset_assert_end(obj);
+>> +}
+>> +
+>> +void resettable_release_reset(Object *obj, ResetType type)
+>> +{
+>> +    assert(!enter_phase_in_progress);
+>> +    /* TODO: change that assert when adding support for other reset types */
+> 
+> Ditto.
+> 
+> 
+> 
+>> --- /dev/null
+>> +++ b/include/hw/resettable.h
+>> @@ -0,0 +1,199 @@
+>> +#ifndef HW_RESETTABLE_H
+>> +#define HW_RESETTABLE_H
+>> +
+> 
+> All new files, including even small header files, should have
+> the usual copyright-and-license comment at the top. (Can you
+> check also whether this needs adding for any other new files the
+> patchset creates, please?)
 
+I'll do that and fix all the typos
+
+Thanks for the review,
+--
+Damien

@@ -1,170 +1,107 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp11838991lfc;
-        Sun, 1 Dec 2019 12:14:12 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwJPKlNvSOTXmkbvDJJhJ3WrS/uBQqTepEl//KOkwDEELZe21WGgJ8/TCkWXJgGLJhrqEQk
-X-Received: by 2002:ac8:91:: with SMTP id c17mr24646741qtg.222.1575231252062;
-        Sun, 01 Dec 2019 12:14:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575231252; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp12115360lfc;
+        Sun, 1 Dec 2019 18:20:33 -0800 (PST)
+X-Received: by 2002:a63:ec50:: with SMTP id r16mr29106459pgj.284.1575253232962;
+        Sun, 01 Dec 2019 18:20:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575253232; cv=none;
         d=google.com; s=arc-20160816;
-        b=whSgFya6HFuEEBc+TqDK048lYAzzOqaOOeHus7VFB3swn7HwuWGElELoTRj+Rtrf0m
-         raqZbPcvYfhS7XwLdDSGXzPAE2Lv5D9QBC7qGoQhfs3moSl1G0Y3H3L6I8spv1C0MZYO
-         ec0oJ+sVu5E6EbjpIK8gsegXHIoikX6udPsXI7LjSdM2z4swgLK2uM5dmVSCKPkyRhx5
-         kIn3mW007Ht13sAPmKNOGBFbXoxTbds3RAsyZpIqnCKEV7Rdh27M7aEgUZtUP1n0Je4e
-         /l6oBlyZ/dOjrDYeydWDhTkAOkrE+8QkePqw2xyY2PfbNLzTUgB0egX+s6kROTuyTBg+
-         +BCA==
+        b=pQ1DzJD1v99ufZVlzK88MQ7CaBv9XnI8b0ib3lbawGImyauDazjWgpq0vpuS3DLEa3
+         VFNKw6+qKUgEgB1oHSmAs5ecOEEX0rIdjLYin3rVGyU8hX67loZvACVqZUkj6ppfKeHt
+         HTL3HaA/cq6OLEgXK1jwryv2msZMa2axm7ykdq+H4shnk7fLWpazs/Dn9S1/XfUTmX7b
+         kqgIAG5wYjq0X604eT2r1WIP8/g8bqLT00YcPz7vnOOQ2eeWs5ouhNxtQRo+t+tTToF1
+         jo392tsdUfFVbsfe8gI2isSB7a4EFKrOIUbqzgHAN/3kRQ8/QRIOjpuTktObA4O000zX
+         NfmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=bHfSivU4hJr09nOJLd5vKBR8gTED97l4+uFHbFtW+SU=;
-        b=jhMOPf2hkA15xNS40m2XZbV1MAIFzezV+6CJt5Bhb7wEdUPm72bue9gJ76sf7pR13Z
-         B6lIpzDKQxtJN3qkwByzt4kXZOyBaN+w9vqEQjLPcxm+zQGT6sO7dxXzR3JF/54Tp+TL
-         zQ3p1hsntPAqi9XGZnSnkNqpYyVHFktHQ5tZDYSQ/qmf0iJaeYwlIOi4ZEJiw7KaQKwM
-         gfhwFj4nBO4tmL4z+AUoAqysSUHb8LK9A4mpqQ8jSfJT98NbOH+DyxwzOw6UQSkeQ6Kf
-         ifPengOMnBgOhikwKUMyXKpcFMva9XewgU+kHgQRRvttKOcgfdjLAJeOUKowSnZVi2Ep
-         9Vuw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=5hUapDdSTy6UoCaM66PJkqib1gmdUsvni7at3Ufdd7s=;
+        b=EYLs8a2JviOlnfTRhK4ui8beSzTqo5mc/HVtNELxNnEDWRoffCrt1RlYuIhS256eDf
+         TWMhyQDyF2UjvpV9xNwZrgyutalNu+F43lP8TdJjTJuPUWHUOf9aq3bUbyLkhQE6kX66
+         TJbN++Sqq7llJyRRPB2+VnEaV+yCOgHknDv1Ma6jhrqA4419lvoeTNIGZ1E8p4H6aQ13
+         0I0P3wFi5THZVMNUD+/hQJy32Zb+/NvXW+KD8gRUCD6y0bOUJAnYDk8pPpZuWx2hNWeU
+         lXCZm9azwZSJQOgBUJRXKrseNlkbpRtsAb9/njbbnlmJMRN1AtLVoEYtuP0tjm6q6mLn
+         dojw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YT2YJwYx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k7si18106700qkg.11.2019.12.01.12.14.11
+       dkim=pass header.i=@linaro.org header.s=google header.b=jHYnvDBV;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id j10sor26873870pjs.3.2019.12.01.18.20.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 01 Dec 2019 12:14:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sun, 01 Dec 2019 18:20:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YT2YJwYx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55092 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ibVbf-0005HY-Ho
-	for alex.bennee@linaro.org; Sun, 01 Dec 2019 15:14:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41175)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1ibVah-0004rq-9y
- for qemu-devel@nongnu.org; Sun, 01 Dec 2019 15:13:12 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1ibVag-00004r-2u
- for qemu-devel@nongnu.org; Sun, 01 Dec 2019 15:13:11 -0500
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:36779)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1ibVaf-0008W1-RW
- for qemu-devel@nongnu.org; Sun, 01 Dec 2019 15:13:10 -0500
-Received: by mail-pl1-x644.google.com with SMTP id k20so2846981pls.3
- for <qemu-devel@nongnu.org>; Sun, 01 Dec 2019 12:13:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=bHfSivU4hJr09nOJLd5vKBR8gTED97l4+uFHbFtW+SU=;
- b=YT2YJwYxZ0YMoca4Kgn0oL/Q226dFZUjRDqe7K9coMy8u0fseScJ5yBcxFOuAJ1xHc
- PQ0H02LTh5DjctptONNY5JqCVbIFLxiZViEM5RjAMNi8Kjl+xuirTFNbczy6E1Nk2Pwh
- TNd+0dHTAGaD68ND6P2PNADPMRFoBI7F1neSLMbSwvfg+vqFjBEf+S2DuEouWX4FXOto
- mly+wcx//YsDHQgzYnCp7tmm2AI2a0fDPo3pKANUHaxrf8KTJ/+y0RRXVhsQmKCUCJtm
- DtqF0gGlW7NBVV8bVE1XBiX1F/KWCboKORlTr64I6Ua017y8uZ7EzwcfbN+rbS8ILcFL
- Fj/A==
+       dkim=pass header.i=@linaro.org header.s=google header.b=jHYnvDBV;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=5hUapDdSTy6UoCaM66PJkqib1gmdUsvni7at3Ufdd7s=;
+        b=jHYnvDBVn58Ny1PQUdsLQnJQpPYnabVyORpefXghJEcMTp7k4NYdar5CnmOMda27XM
+         GT6yYXdrwrLII+FwZrurAeY8wq3XhhRTMM1SebX/zEjLTMursTOHxibXwWCc7xDbtB9Q
+         5Iy4Usnd+d2xeKoa8SkQ4QtE5EYvTmzOW24EawViHoBQtr0bF+HPe332P6RR2QM125k5
+         1hB1Re7CEYWSMCN4O2nzUUS9hKjT7rR7QRDjMlLvVqfyLOd0mZQ0+EcnKIV6iXlZ8xU6
+         G5P0IclncwYpW7g9Qp5iDC+ShhFmcc8g69hYDLgGJvYN4jrLVAhFoHXnVANQp29RoouN
+         UO9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=bHfSivU4hJr09nOJLd5vKBR8gTED97l4+uFHbFtW+SU=;
- b=Hud5nVxCFZm6t7KN92bmMXkVIYxdOMwRfao11ubk/H5MkA5OiazvQZexvZhw/HMrYK
- sRCj/V7actFX9qXDqOCxLUZx3FzpKaliD83k4EaXkEPdUKXI7Qny+W+tDcds9RXXzufl
- 3ubb1MBGlXXG9WVlu7qAKBEPPP7ZrOv8rN2OKAnIXt5/E2vo84HAz7pxAhpsFKvgn87w
- eCmCP83zZAQVUVa8FM2EsFMiOtSKw8Uba/8V84NnIcwCp9vNbEbCewAlUxmv9c/A6QHA
- hy/hCpmexXIcR25qlJsNAmJupETxLIGJAVoYq2F5Hv621dm33konGazZMRMAjtXrOXeu
- MkKA==
-X-Gm-Message-State: APjAAAWmBkkDgwq+bJ5koOdgZ7CkRBiuA3w0NlFLMwKOzlamDjeYGrYH
- fymZ1gOjQkOyE09G2OZK2jO2eg==
-X-Received: by 2002:a17:902:a5cb:: with SMTP id
- t11mr10706508plq.84.1575231187730; 
- Sun, 01 Dec 2019 12:13:07 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=5hUapDdSTy6UoCaM66PJkqib1gmdUsvni7at3Ufdd7s=;
+        b=e0GueT3UJ1YSdzflTO8FLmLLE2gE83WFuoMRPuf+lQYVzCcOz8yJNL0a1qi8v8mFJB
+         N21dsCk4C4s7TmNlHS7grf5Bp9AHB4E9At+9yB3UH89seWAmt6pRZPfJ4NSBV4I/p98Z
+         HIRJz0pnz6zbGKFYPa3lKW6uKPWlW+F+1FtqLyK+d1F3zccwFx/cJF0pd4aewSI1URUD
+         DiVk0PW8tUgU6zYl0WvkpxU4u24L4DGAcp5U3sDvtWvQYDKm5AjFQsFirIGUQQoAg+XJ
+         RdqRVABOBONsRxix03QqOsQJupRYCW3dS4vkTwGOK8YlPVcoa+ztl4stLM2SgV35a1m8
+         tyZg==
+X-Gm-Message-State: APjAAAX75AAjlEBsgyIWjeqPo6xQ5BQsHPFJJtzaQOaKAgT+HDBdy+5J
+	1yYuI7T73S5oZ5Gfc+Uhm+eVDQws
+X-Google-Smtp-Source: APXvYqzcXDYGSuCRSjKxq1xJuolroMKTSgTJZV9U8azUqGUsCSbKV2uX9/86J7AjdunGuI+f6h+ZnQ==
+X-Received: by 2002:a17:90a:650c:: with SMTP id i12mr33314855pjj.28.1575253232515;
+        Sun, 01 Dec 2019 18:20:32 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id g30sm30333407pgm.23.2019.12.01.12.13.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 01 Dec 2019 12:13:06 -0800 (PST)
-Subject: Re: [PATCH] target/arm: Allow loading elf from aliased ROM regions
-To: =?UTF-8?Q?Jean-Hugues_Desch=c3=aanes?= <Jean-Hugues.Deschenes@ossiaco.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <20191125124055.19286-1-jean-hugues.deschenes@ossiaco.com>
+        by smtp.gmail.com with ESMTPSA id u7sm31314045pfh.84.2019.12.01.18.20.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 01 Dec 2019 18:20:31 -0800 (PST)
+Subject: Re: [PATCH v2 06/14] target/arm: use gdb_get_reg helpers
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: alan.hayward@arm.com, luis.machado@linaro.org,
+ damien.hedde@greensocs.com, Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20191130084602.10818-1-alex.bennee@linaro.org>
+ <20191130084602.10818-7-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <3e2857fd-aa5e-acc5-edd6-359715a636a6@linaro.org>
-Date: Sun, 1 Dec 2019 12:13:05 -0800
+Message-ID: <b6b96831-6f07-f452-a888-feeda7b57802@linaro.org>
+Date: Sun, 1 Dec 2019 18:20:29 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.1
 MIME-Version: 1.0
-In-Reply-To: <20191125124055.19286-1-jean-hugues.deschenes@ossiaco.com>
+In-Reply-To: <20191130084602.10818-7-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::644
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "thuth@redhat.com" <thuth@redhat.com>,
- "martin.galvan@tallertechnologies.com" <martin.galvan@tallertechnologies.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3v2nDPDTCZRi
+X-TUID: VwBh5dsDivIe
 
-On 11/25/19 12:41 PM, Jean-Hugues Deschênes wrote:
->              initial_msp = ldl_p(rom);
->              initial_pc = ldl_p(rom + 4);
->          } else {
-> -            /* Address zero not covered by a ROM blob, or the ROM blob
-> -             * is in non-modifiable memory and this is a second reset after
-> -             * it got copied into memory. In the latter case, rom_ptr
-> -             * will return a NULL pointer and we should use ldl_phys instead.
-> -             */
-> -            initial_msp = ldl_phys(s->as, vecbase);
-> -            initial_pc = ldl_phys(s->as, vecbase + 4);
-> +            /* See if the ROM blob is aliased somewhere */
-> +            hwaddr len = 0, xlat = 0;
-> +            MemoryRegion *mr = address_space_translate(s->as, vecbase, &xlat,
-> +                    &len, false, MEMTXATTRS_UNSPECIFIED);
-> +
-> +            if (mr) {
-> +                rom = rom_ptr(mr->addr + xlat, 8);
-> +            } else {
-> +                rom = NULL;
-> +            }
-> +
-> +            if (rom) {
-> +                initial_msp = ldl_p(rom);
-> +                initial_pc = ldl_p(rom + 4);
-> +            } else {
-> +
-> +                /*
-> +                 * Address zero not covered by a ROM blob, or the ROM blob
-> +                 * is in non-modifiable memory and this is a second reset after
-> +                 * it got copied into memory. In the latter case, rom_ptr
-> +                 * will return a NULL pointer and we should use ldl_phys
-> +                 * instead.
-> +                 */
-> +                initial_msp = ldl_phys(s->as, vecbase);
-> +                initial_pc = ldl_phys(s->as, vecbase + 4);
-> +            }
->          }
+On 11/30/19 8:45 AM, Alex Bennée wrote:
+> This is cleaner than poking memory directly and will make later
+> clean-ups easier.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> 
+> ---
+> v2
+>   - make sure we pass hi/lo correctly as quads are stored in LE order
+> ---
+>  target/arm/helper.c | 18 +++++++-----------
+>  1 file changed, 7 insertions(+), 11 deletions(-)
 
-Can this entire section, including the rom_ptr thing just above, be replaced
-with two address_space_read()?
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~

@@ -1,110 +1,109 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp12764876lfc;
-        Mon, 2 Dec 2019 05:45:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx77fsWJzSIcQ+EZDU+c3wg/kBtL97V190fWCrlZItXkkun/5dyW9dkeTt3B99e1Y/XTQMn
-X-Received: by 2002:a05:6402:148f:: with SMTP id e15mr34245765edv.254.1575294343917;
-        Mon, 02 Dec 2019 05:45:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575294343; cv=none;
+Received: by 2002:a0c:88f1:0:0:0:0:0 with SMTP id 46csp3179764qvo;
+        Mon, 2 Dec 2019 06:35:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzVtt8vTCtvhbY3ECBdD5KntV/amVodL4oAh88ztOxYiOElv7Y9zucQ75k7iCvCHSzzvT1p
+X-Received: by 2002:ac8:7198:: with SMTP id w24mr5095424qto.32.1575297345412;
+        Mon, 02 Dec 2019 06:35:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575297345; cv=none;
         d=google.com; s=arc-20160816;
-        b=MVWJJs+Kvx5zNW2FRW0aK0KtjHNU3NqC9R8fQLLV3Cn1ofq0EpZQq6VoW8fJviiyP5
-         zPs184S55KsoZ4z047sihTP7+tQ0NZ+MtYBv27f4fHwxw9AYxzpAJMKZgCSwKkd632XU
-         YXKYmr96T88ergUt0/++q5l8ETXbTh2mlOZnxmqq3r5Yk2yhP/0UOffkMPlcMXb73hQT
-         7vl/cbuwaUSFLcadAQUPsya5mdCCeliVvqMhelGfRMe3x/ys75M4W4D3/37hD3OOXiV0
-         wVxB9bX4TA7eIzKMJegPcCh3hVgwujSISSdjZX37cVL1/HxrrvNPjkVtQtOZPnzIWSqL
-         OoZw==
+        b=dnrbbBlHJB9IMd4pvzsV+DId6YoaC06coJlBhK04mtR9vTGehwy6n12A1P7zPZF9nz
+         Tvr3jFGVcMFUWh8Bod4vYa5Nh8xB8neS9dDTq9BCI5CZmQjdVVSveC3WJc6oIDbzgl9l
+         NKxX0+QREnTL7KM2I0B3odYRleYumH+zEU7m8C22lxhQt0bnTPI/qUTnYfc5/lZIkETq
+         kKAl5wvzLurlW3QSXjNv2/EI3hLVYDENgfJjtUVwaqG1yU8HtGP3gq9fl0zq2YoVXieR
+         NtcplCXTlsJAeEl48z5gacIKY0vQH6t+jh2HC1SU1fuOlOxBmZGtZvLoOk/QC38wh595
+         BEVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=UNCsfXRsfWtMe/ccNNxw+9lM/I8D9p1NJg7vYX4iwto=;
-        b=QXrFkg19YlHyfQ1qVh2PnWuH1nkXFKWV4GfcRpSNG7HDuojkDie8JuKraVsamwcpkU
-         HeMHvlg6ETvuB4JjjX15raheGXloirKXI9tGlu1kjfQlspGJjypmxjmkz8/p81myzIAi
-         bhvpLoGjVHJoUyGy0AJkEnzhOtArMpCAm+xYi0xRLWv0fg0GIU+Dv6/gsxpKnaAxC0ej
-         ZJPVOVQnBLj5axGGkqm0SOFWPltgl27YrQW5Rpvr60zI7VDE6bQn5oKjZGlsJ59vWpZh
-         gt2nHlodlUEie3Q1cQup7LcjALtouB14iYTLlQ3wZpTg47DTalUjOpz+ygtQEuC5WQEp
-         H90w==
+        bh=OOx/U42IwCgVTBRpxJArTPlYznxoXFOGHOWbSCNf3W0=;
+        b=DA3JCh5Pjsiiy1ml46nK97kvgjGWP+jN+PHhUDKnSV9zfdPYHdOeVRw4aYxB0SW6+8
+         iTVH1KSaArXbkQoYOJETHJ4QHJuKSmDdE4pb1xj92lPc2AJC7AChjg3u8WkW3DCjeDVl
+         Kw7fhzag4DJDdFix3qUzO/BZrL3ecZ2I+ZPbBF2iDk9sp63XQgg3XJD6ootmXgGWSn7t
+         2WZxfCsLUzcXLF5eDVYVzxFFV+W2nItrClls1bzQj4pXN5i6U7VMWfCuH9y4yPRA5De/
+         Jgs/Q5B0shi0pW4H4pC+T5+IEl7yREc+ruivGM3arM4BlaiGA1LFG5y1zivljTwRwSTH
+         Jegw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GszemOh2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=AixxexQ6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o7si8370761ejn.389.2019.12.02.05.45.43
+        by mx.google.com with ESMTPS id b12si10399388qvb.186.2019.12.02.06.35.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Dec 2019 05:45:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 02 Dec 2019 06:35:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GszemOh2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=AixxexQ6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35990 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ibm1G-0008Kw-Pt
-	for alex.bennee@linaro.org; Mon, 02 Dec 2019 08:45:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60396)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ibmng-00005H-T6
+	for alex.bennee@linaro.org; Mon, 02 Dec 2019 09:35:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39045)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1ibm0c-0008HA-Hh
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 08:45:03 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1ibmmq-000818-C2
+ for qemu-devel@nongnu.org; Mon, 02 Dec 2019 09:34:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1ibm0b-00021f-FN
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 08:45:02 -0500
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:33539)
+ (envelope-from <peter.maydell@linaro.org>) id 1ibmmo-00086K-Fm
+ for qemu-devel@nongnu.org; Mon, 02 Dec 2019 09:34:52 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:37071)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1ibm0b-00021A-9v
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 08:45:01 -0500
-Received: by mail-ot1-x342.google.com with SMTP id d17so7547099otc.0
- for <qemu-arm@nongnu.org>; Mon, 02 Dec 2019 05:45:01 -0800 (PST)
+ id 1ibmmo-000867-8g
+ for qemu-devel@nongnu.org; Mon, 02 Dec 2019 09:34:50 -0500
+Received: by mail-ot1-x342.google.com with SMTP id k14so15570394otn.4
+ for <qemu-devel@nongnu.org>; Mon, 02 Dec 2019 06:34:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UNCsfXRsfWtMe/ccNNxw+9lM/I8D9p1NJg7vYX4iwto=;
- b=GszemOh2qwGzBLjApmjYSNZ2JTIrzG+/uWRRrnG15sjyz/gqhzW050LjQ7RzIVOFMh
- d/34ZiuyCFqlDmSgEREJEF9kFaXCVd6dksSzcYTV73OdGkab5RntwQzuAzZ8sLicqe2O
- 9phzehzJGyEQL4sWDYRWol0qaRDk587Z1bjdU/cBRWIpjMP10hBnn5VWrCk9e2mHU09S
- mwaRUsjRJQHQ86/QPFGndOlwnv7iQNpJ0LwFVe2GjkCx9ae6tB4NYcxdku9YNIZaO1kK
- +Zodi3RNp3RhI6vRedjt9/vgUtceKpadfK5LfZ6j2D9u/9BgxqfIJ6l8lGJAkPwxiNjw
- j61A==
+ :cc; bh=OOx/U42IwCgVTBRpxJArTPlYznxoXFOGHOWbSCNf3W0=;
+ b=AixxexQ6NC6ix+9Y/G6mMoBv8oToordZIDm9iTjHK/NuaqLFlE+SJF0xWbD9Jp+jHD
+ lRZDytoHgV2TRX6Lz1YUFn1w0n+jt7Nw/b5tTXd01Hgxzx+FVnr4dN6veJEH5FOibRdF
+ vp7UUGZcWeMrswboob5fEMMDUzjSiJsgcp8Or63Y2B5jxxr+alTpR6Xv78MJaC2hCFhK
+ pj7mzRPSjFvekMQftUSefI1hl+ySCjf2XJhktOeQXbZTh+LZaLJqfTEphmrvvTpcUUyh
+ TNzWzSD2y5Olli2o/br/1H680YdLirHieiWrfED5+jYiUEHOweJIt4ueLzTnQMuTBM6X
+ r0wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=UNCsfXRsfWtMe/ccNNxw+9lM/I8D9p1NJg7vYX4iwto=;
- b=M1zDsgb56H2aF0QUNq81dLv8E43sYprIInzqz1toHgFQEAAnzJDbA0C5H5mrDD8cC/
- rWbqpHpFT8coUcxmwNc5KFGz7N9p00CnpX/QRxf1uB6Jd+rgpp2hFLA2iPAy2mDCYyFN
- wqcs5kKeNhvjM/WfFyjp9bzz7pSt6eJbt9BYaa2YNBFUklKP5k4spkXdcG8rTUvz/9pB
- gVghDZA4LiBuYnQhJ+WLUDWKuTDTrjyGs1ZRaG2ab3OeOSG5u3zSFqCh7s6h1BLDLtQc
- 0GVXByBfXjvBi4qdLn6d+CVYoTVqjDcNJYlv2dg+80AijnyJ/yD7SjB+my6xUOhjbp7v
- HIrw==
-X-Gm-Message-State: APjAAAVXzrSpxt84+ixbDYfcRTSH04gFDEkeIfklJQy1dUqUZ3JXbhCy
- VERZo2WOxQdiDi+055XgSTV3TJMUbLzNp2E4hXnCkg==
-X-Received: by 2002:a9d:12d2:: with SMTP id g76mr22150584otg.232.1575294300474; 
- Mon, 02 Dec 2019 05:45:00 -0800 (PST)
+ bh=OOx/U42IwCgVTBRpxJArTPlYznxoXFOGHOWbSCNf3W0=;
+ b=Q823TM87GxuxZQMBvPd6mDZc+O1saJJmsKBbKFkrJNFJ1mGP5yMX42lmWMtRAEcGbm
+ hOAFV6wtww0I8DjsxJjQpOloTdG6XcO8/TZQyNJcQhtfE2CUm6ukMzSVLxMfdc5tav2z
+ 2EDT9WWasTDHBcNvWZu2HZ8rBUXU2XYuq+4GfUI760tevI0FYeOjoKDmwDoatuN5UpHG
+ kHw2SBapbpLJ4L3ShHPzS9WnDWDNHKjqnoehan7yKfeaFlWRYYXJ3XCPGxAzL4XTc+5n
+ RDxIt8QXhXbDUlqLgnjTJYrwOY2NbO3qtzx93vio3eXssQ1AbyDBcU0XEMJeMUI4bMda
+ rWbA==
+X-Gm-Message-State: APjAAAVkqIBW8vnKeU9u9SD7LOlfw87pUBadZ/ZNezuEWKQJWBqexyIs
+ e0nffaj9RVo8AbYkCcu4PO+vHzp3mn/K1FGnVaktlQ==
+X-Received: by 2002:a9d:6357:: with SMTP id y23mr21860696otk.91.1575297288933; 
+ Mon, 02 Dec 2019 06:34:48 -0800 (PST)
 MIME-Version: 1.0
 References: <20190904125531.27545-1-damien.hedde@greensocs.com>
- <20190904125531.27545-3-damien.hedde@greensocs.com>
-In-Reply-To: <20190904125531.27545-3-damien.hedde@greensocs.com>
+ <20190904125531.27545-4-damien.hedde@greensocs.com>
+In-Reply-To: <20190904125531.27545-4-damien.hedde@greensocs.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Dec 2019 13:44:49 +0000
-Message-ID: <CAFEAcA8mBqt-zpoYGQYa1OwRzT90Vx-QUEWcsDH=eFecXVk+OA@mail.gmail.com>
-Subject: Re: [PATCH v6 2/9] hw/core/clock-vmstate: define a vmstate entry for
- clock state
+Date: Mon, 2 Dec 2019 14:34:37 +0000
+Message-ID: <CAFEAcA9M4qR89wykURrUxqxeWoNqYHxuJSwC5Mum6GfmWSG=nA@mail.gmail.com>
+Subject: Re: [PATCH v6 3/9] qdev: add clock input&output support to devices.
 To: Damien Hedde <damien.hedde@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2607:f8b0:4864:20::342
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: "Daniel P. Berrange" <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
@@ -112,19 +111,306 @@ Cc: "Daniel P. Berrange" <berrange@redhat.com>,
  QEMU Developers <qemu-devel@nongnu.org>,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
  qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6yD00pSVyo3b
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MBVsSxngZlFg
 
 On Wed, 4 Sep 2019 at 13:56, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> ---
-> This was in the previous reviewed commit. But it can't be in the
-> clock.c file in order to allow linux-user builds.
+> Add functions to easily add input or output clocks to a device.
+> A clock objects is added as a child of the device.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+"object"
+
+> The api is very similar the gpio's one.
+
+"API"; "to the GPIO API".
+
+>
+> This is based on the original work of Frederic Konrad.
+>
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>
+
+> +static NamedClockList *qdev_init_clocklist(DeviceState *dev, const char *name,
+> +        bool forward)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    /*
+> +     * The clock path will be computed by the device's realize function call.
+> +     * This is required to ensure the clock's canonical path is right and log
+> +     * messages are meaningfull.
+
+"meaningful"
+
+> +     */
+> +    assert(name);
+> +    assert(!dev->realized);
+> +
+> +    /* The ncl structure will be freed in device's finalize function call */
+
+Do you mean "in device_finalize()", or "in the finalize method
+of the device" ?  If you mean a specific function, then it's
+good to name it, so the reader can go and check that code if
+they need to confirm that there's a matching free()/deref/etc.
+
+> +    ncl = g_malloc0(sizeof(*ncl));
+
+Prefer g_new0(NamedClockList, 1).
+
+> +    ncl->name = g_strdup(name);
+> +    ncl->forward = forward;
+> +
+> +    QLIST_INSERT_HEAD(&dev->clocks, ncl, node);
+> +    return ncl;
+> +}
+> +
+> +ClockOut *qdev_init_clock_out(DeviceState *dev, const char *name)
+> +{
+> +    NamedClockList *ncl;
+> +    Object *clk;
+> +
+> +    ncl = qdev_init_clocklist(dev, name, false);
+> +
+> +    clk = object_new(TYPE_CLOCK_OUT);
+> +
+> +    /* will fail if name already exists */
+
+This is true but it would be more helpful to say
+ /*
+  * Trying to create a clock whose name clashes with some other
+  * clock or property is a bug in the caller and we will abort().
+  */
+
+(assuming that's what's going on here).
+
+> +    object_property_add_child(OBJECT(dev), name, clk, &error_abort);
+> +    object_unref(clk); /* remove the initial ref made by object_new */
+> +
+> +    ncl->out = CLOCK_OUT(clk);
+> +    return ncl->out;
+> +}
+> +
+> +ClockIn *qdev_init_clock_in(DeviceState *dev, const char *name,
+> +                        ClockCallback *callback, void *opaque)
+> +{
+> +    NamedClockList *ncl;
+> +    Object *clk;
+> +
+> +    ncl = qdev_init_clocklist(dev, name, false);
+> +
+> +    clk = object_new(TYPE_CLOCK_IN);
+> +    /*
+> +     * the ref initialized by object_new will be cleared during dev finalize.
+
+This means "in device_finalize()", I think from reading later patches ?
+
+> +     * It allows us to safely remove the callback.
+> +     */
+> +
+> +    /* will fail if name already exists */
+
+Similar remark as for earlier comment.
+
+> +    object_property_add_child(OBJECT(dev), name, clk, &error_abort);
+> +
+> +    ncl->in = CLOCK_IN(clk);
+> +    if (callback) {
+> +        clock_set_callback(ncl->in, callback, opaque);
+> +    }
+> +    return ncl->in;
+> +}
+
+> +ClockIn *qdev_get_clock_in(DeviceState *dev, const char *name)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    assert(dev && name);
+> +
+> +    ncl = qdev_get_clocklist(dev, name);
+> +    return ncl ? ncl->in : NULL;
+> +}
+
+Do we expect to want to be able to pass in the name of
+a clock that doesn't exist ? Should that be an error
+rather than returning NULL ?
+
+> +
+> +static ClockOut *qdev_get_clock_out(DeviceState *dev, const char *name)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    assert(dev && name);
+> +
+> +    ncl = qdev_get_clocklist(dev, name);
+> +    return ncl ? ncl->out : NULL;
+
+Ditto.
+
+> +}
+> +
+> +void qdev_connect_clock_out(DeviceState *dev, const char *name, ClockIn *clk,
+> +                            Error **errp)
+> +{
+> +    ClockOut *clkout = qdev_get_clock_out(dev, name);
+> +
+> +    if (!clk) {
+> +        error_setg(errp, "NULL input clock");
+> +        return;
+> +    }
+> +
+> +    if (!clkout) {
+> +        error_setg(errp, "no output clock '%s' in device", name);
+> +        return;
+> +    }
+> +
+> +    clock_connect(clk, clkout);
+
+Do we need to support returning an error here, or would it
+always be a programming bug to try to connect a non-existent clock?
+
+> --- /dev/null
+> +++ b/include/hw/qdev-clock.h
+> @@ -0,0 +1,67 @@
+> +#ifndef QDEV_CLOCK_H
+> +#define QDEV_CLOCK_H
+
+Another missing copyright/license comment.
+
+> +
+> +#include "hw/clock.h"
+> +
+> +/**
+> + * qdev_init_clock_in:
+> + * @dev: the device in which to add a clock
+
+"the device to add a clock input to"
+
+> + * @name: the name of the clock (can't be NULL).
+> + * @callback: optional callback to be called on update or NULL.
+> + * @opaque:   argument for the callback
+> + * @returns: a pointer to the newly added clock
+> + *
+> + * Add a input clock to device @dev as a clock named @name.
+> + * This adds a child<> property.
+> + * The callback will be called with @dev as opaque parameter.
+
+Isn't it called with @opaque, not @dev ?
+
+> + */
+> +ClockIn *qdev_init_clock_in(DeviceState *dev, const char *name,
+> +                            ClockCallback *callback, void *opaque);
+> +
+> +/**
+> + * qdev_init_clock_out:
+> + * @dev: the device to add a clock to
+
+"the device to add a clock output to"
+
+> + * @name: the name of the clock (can't be NULL).
+> + * @callback: optional callback to be called on update or NULL.
+> + * @returns: a pointer to the newly added clock
+> + *
+> + * Add a output clock to device @dev as a clock named @name.
+> + * This adds a child<> property.
+> + */
+> +ClockOut *qdev_init_clock_out(DeviceState *dev, const char *name);
+> +
+> +/**
+> + * qdev_get_clock_in:
+> + * @dev: the device which has the clock
+> + * @name: the name of the clock (can't be NULL).
+> + * @returns: a pointer to the clock
+> + *
+> + * Get the clock @name from @dev or NULL if does not exists.
+
+"if it does not exist"
+
+> + */
+> +ClockIn *qdev_get_clock_in(DeviceState *dev, const char *name);
+> +
+> +/**
+> + * qdev_connect_clock_out:
+> + * @dev: the device which has the clock
+> + * @name: the name of the clock (can't be NULL).
+> + * @errp: error report
+> + *
+> + * Connect @clk to the output clock @name of @dev.
+> + * Reports an error if clk is NULL or @name does not exists in @dev.
+
+"or if @name does not exist in @dev"
+
+> + */
+> +void qdev_connect_clock_out(DeviceState *dev, const char *name, ClockIn *clk,
+> +                            Error **errp);
+> +
+> +/**
+> + * qdev_pass_clock:
+> + * @dev: the device to forward the clock to
+> + * @name: the name of the clock to be added (can't be NULL)
+> + * @container: the device which already has the clock
+> + * @cont_name: the name of the clock in the container device
+> + *
+> + * Add a clock @name to @dev which forward to the clock @cont_name in @container
+> + */
+
+'container' seems odd terminology here, because I would expect
+the usual use of this function to be when a 'container' object
+like an SoC wants to forward a clock to one of its components;
+in that case the 'container' SoC would be @dev, wouldn't it?
+We should get this to be the same way round as qdev_pass_gpios(),
+which takes "DeviceState *dev, DeviceState *container", and
+passes the gpios that exist on 'dev' over to 'container' so that
+'container' now has gpios which it did not before.
+
+Also, your use of 'forward to' is inconsistent: in the 'dev'
+documentation you say we're forwarding the clock to 'dev',
+but in the body of the documentation you say we're forwarding
+the clock to the clock in 'container'.
+
+I think the way to resolve this is to stick to the terminology
+in the function name itself:
+ @dev: the device which has the clock
+ @name: the name of the clock on @dev
+ @container: the name of the device which the clock should
+  be passed to
+ @cont_name: the name to use for the clock on @container
+
+Q: if you pass a clock to another device with this function,
+does it still exist to be used directly on the original
+device? For qdev_pass_gpios it does not (I think), but
+this is more accident of implementation than anything else.
+
+> +void qdev_pass_clock(DeviceState *dev, const char *name,
+> +                     DeviceState *container, const char *cont_name);
+> +
+> +#endif /* QDEV_CLOCK_H */
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index eb11f0f801..60a65f6142 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -131,6 +131,19 @@ struct NamedGPIOList {
+>      QLIST_ENTRY(NamedGPIOList) node;
+>  };
+>
+> +typedef struct NamedClockList NamedClockList;
+> +
+> +typedef struct ClockIn ClockIn;
+> +typedef struct ClockOut ClockOut;
+> +
+> +struct NamedClockList {
+> +    char *name;
+
+Could this be 'const char*' ?
+
+> +    bool forward;
+> +    ClockIn *in;
+> +    ClockOut *out;
+> +    QLIST_ENTRY(NamedClockList) node;
+> +};
 
 thanks
 -- PMM

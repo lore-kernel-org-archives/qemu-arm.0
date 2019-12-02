@@ -1,99 +1,99 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp568162lfc;
-        Mon, 2 Dec 2019 13:39:12 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxs1HbWtI7BEVjDER2qweEk3xHtHHCVwYKMUxh3CuoZ7YmUpm4KZ0gGUJe8FmKmv+GFZ5jQ
-X-Received: by 2002:a50:ac81:: with SMTP id x1mr1428582edc.200.1575322752775;
-        Mon, 02 Dec 2019 13:39:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575322752; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp568300lfc;
+        Mon, 2 Dec 2019 13:39:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwTQEoiJJ61WhnpcvVWoV/T7ibYATx5deV9THKljQ7ViaQFS1I0dkdzZZ2os2Mkhk1AQZ9m
+X-Received: by 2002:a05:6402:68c:: with SMTP id f12mr1399026edy.161.1575322760521;
+        Mon, 02 Dec 2019 13:39:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575322760; cv=none;
         d=google.com; s=arc-20160816;
-        b=YBCJ5N3ihm/c4VmSCbZEFYJaIy9QSE3ArMiOgY+Wp/KVVyBYteGSKfISCbsSxhltgU
-         NrodgP2a+CBbOymQXQ1AywzUl/py2mI7zZI5m6gqpFsyArFbNnWfuQwUkv/qY+9RNsKy
-         G1I9Lbxh2Zyhdp5r0PympVi3WXs9TJVa2JzvDcLjdoGCe4bdfvdP413YMAMUGMT5ndHu
-         bGoIrc0HH1v7yybMmOb4+ZgIz/vcJHybmi2h1ti6cNbORmYUaTSPrmozFxqhXqJqLMDz
-         mD7l1n2H6PuRpZB2TJyXovxegv9DCcBQvSyVSM/MQ/J/oA8GW/F9/TUsPY0ESlCEMJQm
-         2JmA==
+        b=nssbyI6qUQ2KYK4BwDv8QMvd9ap+gdng5NQ8Q9GCRsuZo8oowzh8NTC8hGSGlly9Zn
+         xipbkr8f8l1DpkU1ysKjNCe345FbW1wNh1uMXQuO4+6SKf4UgLYJL2SOTNb5ZEAPthpE
+         ORG2xiguV1HXFrX1eeTdxbG6Iq9Iz0Hze4wZataluZkhNaDevYx7aAYTddUl87LC444n
+         kZ1RV1i9C17pAjcnywWtlwyRnVV1OcVLuSMo9rxD+Xv3eLjxyD+bqeShYzxipa4UlO5L
+         UcWHZuCSFpvyl2PGEqia6erl9ZdD3mjcvM94xzBwVE9u01j2TJiQeEAg2KnDwNz5jepp
+         gmZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=8lluLcXPi3hnYH6Ygv8lu4PnBF+2/P64LGe20+1b09Y=;
-        b=ZdvAHynw4gMJGXKL9Fg1PMTL6pDLoiqpHRqw84fCVQD2VSaeuRMYJ8e0A1i5qTMSdH
-         Vf2xBetBEgq95YscFURYuDb/Nt4O5dUaKU00o63w2g+X7ZQ8Oo/WCXO52+wTGK/lv+Rd
-         GM8yDMnTXkRs/0vr5TD1hApgzS/TsaaPeyoeuhOuHiNOgQJJucQRmj0NXFmgw91uddEt
-         BgfFtIqeoOklYNDuQPMCQWf5neWBiPiDm7H3jRdQu3fYz1//dKqRpOSj6d+l77luLidy
-         RmyKNUo8nSzfLOTJYNACEUSV2BarCgXkGO+hucelPeIG8l0PiSpJF9FTPBCfkLFfUKpz
-         leOw==
+        bh=AgPJ0iFJ+07Qrw6Zp/uHV5hRBVIzjEeNp0NWpzIpFCg=;
+        b=AksDbdykS/jA0FASRKXDqaphs5iCZ65nYkMAax2kxuQgHbe42oVGhIjPOl3veA1a/m
+         SXrsEzhQgCWTPFwq1WSgy6UZkNMrDX6W7DDhsmWMlITWDrqzlaXHrHqFKrLE+vd+7TbN
+         WGqxb1VRh5NmP+Xf2azYxkMKGHza5B2fQyHJG77jw/jlLl760UrcZPWmXFtRRMyAEsa4
+         x3GOsfhfAZpiTOK6gAl96uCv2/JcnIlgkaKOnex3sTI47AJNkmaXD4fY7z4oHtG4sf2J
+         jA86CZ9AzXPc3TPSYRycInOhcRcsRFZs1kArh8Y6WMnA6qUM+vTtepa3oJrAp/oaSKPQ
+         TGxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="IaaNGa/x";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rgGZ9TSu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cw21si655620edb.7.2019.12.02.13.39.12
+        by mx.google.com with ESMTPS id 7si637352ejy.230.2019.12.02.13.39.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Dec 2019 13:39:12 -0800 (PST)
+        Mon, 02 Dec 2019 13:39:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="IaaNGa/x";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rgGZ9TSu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44832 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ibtPS-0004OE-W0
-	for alex.bennee@linaro.org; Mon, 02 Dec 2019 16:39:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38608)
+	id 1ibtPb-0004lg-2C
+	for alex.bennee@linaro.org; Mon, 02 Dec 2019 16:39:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38331)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ibsxv-0002va-OS
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 16:10:46 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ibsxj-0002kB-Rk
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 16:10:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ibsxp-0000vH-Py
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 16:10:39 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:38631)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ibsxh-0000nC-3G
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 16:10:31 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:51721)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ibsxj-0000Zk-PN; Mon, 02 Dec 2019 16:10:32 -0500
-Received: by mail-wm1-x342.google.com with SMTP id p17so1104582wmi.3;
- Mon, 02 Dec 2019 13:10:04 -0800 (PST)
+ id 1ibsxM-0000YW-Jq; Mon, 02 Dec 2019 16:10:09 -0500
+Received: by mail-wm1-x343.google.com with SMTP id g206so842231wme.1;
+ Mon, 02 Dec 2019 13:09:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=8lluLcXPi3hnYH6Ygv8lu4PnBF+2/P64LGe20+1b09Y=;
- b=IaaNGa/xTJJsau+FEd6bH3Orvmr7M2hmoP8N4NJOvvEdG5FBhAw7r5qoEF3O2E4oq4
- T29F62P3aY/FBVASqu1vlTt6Y23w3xBZoaHA+6bPbx0NEssAcq1dNOqNcTLFVQWHHB53
- rgX7XNIAV5m/TEsEpTVQyX//tVS0wpbPouzxhCtKtIbwFF1Bmu81qdlZQ9qDwGz8YL9q
- RGKFx2LyN3zHBWWRHuyq7Qj3rb6+TgNkcki6bcp97TNv6knjtjkVug0E7cG6lvsebw3n
- cVFtCATFktltFwI2eBDF7asFVTEr4jcRCp+Du+9fCYYx1s5wBTGF9hSKR0uIO9WhcLr/
- adQw==
+ bh=AgPJ0iFJ+07Qrw6Zp/uHV5hRBVIzjEeNp0NWpzIpFCg=;
+ b=rgGZ9TSu23Brs9CWi1uIQPcIbNmWeZcN/XhCELuSS2DL2iCh23d1NIEAaKqMbOGgOr
+ bfwleHIBxy6v0TxJt1nLLwfFWshKFgnNr3o6glgpKWZ1oVERhdyadmzDf/BcstzKRVej
+ iqB+EGR01Dsme50rkNuGO7i9HhFilODj08WIQH06Sw95oSu6I++jH4DDdsPdnJG7JE2Z
+ JQwHOI2LGmgVp++FOEUV8kQBYy2PtVpUnMB1KReteWREc9M8yf7FPYEAUudrNy/xOHPH
+ pZWSeIxeuR67xVPbdpWbX13WqEDiHcy4aPTLEof5571p7UjE43IwC2cQl2AYUIKv7+dR
+ pgww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=8lluLcXPi3hnYH6Ygv8lu4PnBF+2/P64LGe20+1b09Y=;
- b=Wq1okkFiPenTfcVusacAWlGnGr3n8T/DT2z2XgqO/56y2FUFX25TnkYy1f/N0Y2xTT
- rbV8tYwe0gsbx+HG79+fXASonCknMD8aBB7RNEI5ffQ8sGOdXA9JttQpLndXYvIqeUI9
- aDOAWPEHKjC75vlxtle3+UIsPyHpkrMyXBnmrqi69ATKnYU5RkT9Il6aS5GwBwU2djfl
- ksnVGg5BKv0gmoZkz4D7BpM/5bv5QVE2WKNuWkhX4Jndq8IQ+YW0kZfChHkwaTIZhh7v
- krSfRGUYpE4TdV1ue6ihU2mco4aPQ/HKd8RhEUBrLtGju+jfQEzBpRGszRwqFDnBleWL
- oA/g==
-X-Gm-Message-State: APjAAAV2Dp9H9CXqhoRwzWM6XpJK85vgwliPAmd29ErrEIuwHeTOdzh6
- 6AOymjpBZvfR1w4aJUtZjLpgngQH
-X-Received: by 2002:a1c:a548:: with SMTP id o69mr30725863wme.31.1575321003600; 
- Mon, 02 Dec 2019 13:10:03 -0800 (PST)
+ bh=AgPJ0iFJ+07Qrw6Zp/uHV5hRBVIzjEeNp0NWpzIpFCg=;
+ b=K1aqZI8rKogup5Jt3rCyye8u1GaWUl5yrrxtQrZgnPmVSHG9iDpSKUfKjxjyI44rKa
+ 7HfiSfKAvPzU8191zwGWY670sk9rjaGPXn4yrliCM7T8mBYqc7Yxil5T2TnrPRPBJm6R
+ RJCVpvO6tTPwHFKQgy6Q8PhoRlqkc9/WwNzdJiSIyIowB5jVgiEdWRdcReu4rnzpg/VR
+ FJXD5//2KYq3nMesDWmMvVNT+x5riMaipOfF/p776rcF6NPNgQe8e5cFTGlq+vsNyuc3
+ vpK18lwe+WOo4Xe3Ihj2J/YPG/biEvD04YglTsY33FdXODOejIjpe1M0b/AfGmo8j2pb
+ YcDw==
+X-Gm-Message-State: APjAAAXn96YHcHukpXDujDG+XrXtZrZQx8mCLUzytjvvkC9yfcUcq603
+ zYwgTNxZSfF8QGxZlZkUw2T+aNW9
+X-Received: by 2002:a7b:cb0b:: with SMTP id u11mr22335109wmj.64.1575320998608; 
+ Mon, 02 Dec 2019 13:09:58 -0800 (PST)
 Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
- by smtp.gmail.com with ESMTPSA id f1sm770859wrp.93.2019.12.02.13.10.02
+ by smtp.gmail.com with ESMTPSA id f1sm770859wrp.93.2019.12.02.13.09.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Dec 2019 13:10:03 -0800 (PST)
+ Mon, 02 Dec 2019 13:09:58 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 08/10] arm: allwinner-h3: add Security Identifier device
-Date: Mon,  2 Dec 2019 22:09:45 +0100
-Message-Id: <20191202210947.3603-9-nieklinnenbank@gmail.com>
+Subject: [PATCH 02/10] hw: arm: add Xunlong Orange Pi PC machine
+Date: Mon,  2 Dec 2019 22:09:39 +0100
+Message-Id: <20191202210947.3603-3-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191202210947.3603-1-nieklinnenbank@gmail.com>
 References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::342
+X-Received-From: 2a00:1450:4864:20::343
 X-Mailman-Approved-At: Mon, 02 Dec 2019 16:38:01 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,74 +110,56 @@ Cc: b.galvani@gmail.com, peter.maydell@linaro.org,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1BDWW+Ut05tm
+X-TUID: b9uG1oCAipjO
 
-The Security Identifier device in Allwinner H3 System on Chip
-gives applications a per-board unique identifier. This commit
-adds support for the Allwinner H3 Security Identifier using
-randomized data as input.
+The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
+based embedded computer with mainline support in both U-Boot
+and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
+512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
+various other I/O. This commit add support for the Xunlong
+Orange Pi PC machine.
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 ---
- hw/arm/allwinner-h3.c              |  11 ++
- hw/misc/Makefile.objs              |   1 +
- hw/misc/allwinner-h3-sid.c         | 162 +++++++++++++++++++++++++++++
- hw/misc/trace-events               |   5 +
- include/hw/arm/allwinner-h3.h      |   2 +
- include/hw/misc/allwinner-h3-sid.h |  42 ++++++++
- 6 files changed, 223 insertions(+)
- create mode 100644 hw/misc/allwinner-h3-sid.c
- create mode 100644 include/hw/misc/allwinner-h3-sid.h
+ MAINTAINERS          |  1 +
+ hw/arm/Makefile.objs |  2 +-
+ hw/arm/orangepi.c    | 90 ++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 92 insertions(+), 1 deletion(-)
+ create mode 100644 hw/arm/orangepi.c
 
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index 44aba1de6a..4fc4c8c725 100644
---- a/hw/arm/allwinner-h3.c
-+++ b/hw/arm/allwinner-h3.c
-@@ -47,6 +47,9 @@ static void aw_h3_init(Object *obj)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 29c9936037..42c913d6cb 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -485,6 +485,7 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/*/allwinner-h3*
+ F: include/hw/*/allwinner-h3*
++F: hw/arm/orangepi.c
  
-     sysbus_init_child_obj(obj, "cpucfg", &s->cpucfg, sizeof(s->cpucfg),
-                           TYPE_AW_H3_CPUCFG);
-+
-+    sysbus_init_child_obj(obj, "sid", &s->sid, sizeof(s->sid),
-+                          TYPE_AW_H3_SID);
- }
- 
- static void aw_h3_realize(DeviceState *dev, Error **errp)
-@@ -206,6 +209,14 @@ static void aw_h3_realize(DeviceState *dev, Error **errp)
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0, AW_H3_CPUCFG_BASE);
- 
-+    /* Security Identifier */
-+    object_property_set_bool(OBJECT(&s->sid), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0, AW_H3_SID_BASE);
-+
-     /* Universal Serial Bus */
-     sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI0_BASE,
-                          s->irq[AW_H3_GIC_SPI_EHCI0]);
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index c4ca2ed689..f3620eee4e 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -31,6 +31,7 @@ common-obj-$(CONFIG_IVSHMEM_DEVICE) += ivshmem.o
- common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-clk.o
- obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-cpucfg.o
- common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-syscon.o
-+common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-sid.o
- common-obj-$(CONFIG_REALVIEW) += arm_sysctl.o
- common-obj-$(CONFIG_NSERIES) += cbus.o
- common-obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o
-diff --git a/hw/misc/allwinner-h3-sid.c b/hw/misc/allwinner-h3-sid.c
+ ARM PrimeCell and CMSDK devices
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 956e496052..8d5ea453d5 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -34,7 +34,7 @@ obj-$(CONFIG_DIGIC) += digic.o
+ obj-$(CONFIG_OMAP) += omap1.o omap2.o
+ obj-$(CONFIG_STRONGARM) += strongarm.o
+ obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
+-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3.o
++obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3.o orangepi.o
+ obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
+ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+ obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zynqmp.o xlnx-zcu102.o
+diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
 new file mode 100644
-index 0000000000..e13e0d9887
+index 0000000000..5ef2735f81
 --- /dev/null
-+++ b/hw/misc/allwinner-h3-sid.c
-@@ -0,0 +1,162 @@
++++ b/hw/arm/orangepi.c
+@@ -0,0 +1,90 @@
 +/*
-+ * Allwinner H3 Security ID emulation
++ * Orange Pi emulation
 + *
 + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
 + *
@@ -196,231 +178,76 @@ index 0000000000..e13e0d9887
 + */
 +
 +#include "qemu/osdep.h"
-+#include "hw/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/guest-random.h"
++#include "exec/address-spaces.h"
 +#include "qapi/error.h"
-+#include "hw/misc/allwinner-h3-sid.h"
++#include "cpu.h"
++#include "hw/sysbus.h"
++#include "hw/boards.h"
++#include "hw/qdev-properties.h"
++#include "hw/arm/allwinner-h3.h"
 +
-+/* SID register offsets */
-+#define REG_PRCTL         (0x40) /* Control */
-+#define REG_RDKEY         (0x60) /* Read Key */
-+
-+/* SID register flags */
-+#define REG_PRCTL_WRITE   (0x2)  /* Unknown write flag */
-+#define REG_PRCTL_OP_LOCK (0xAC) /* Lock operation */
-+
-+static uint64_t allwinner_h3_sid_read(void *opaque, hwaddr offset,
-+                                      unsigned size)
-+{
-+    const AwH3SidState *s = (AwH3SidState *)opaque;
-+    uint64_t val = 0;
-+
-+    switch (offset) {
-+    case REG_PRCTL:    /* Control */
-+        val = s->control;
-+        break;
-+    case REG_RDKEY:    /* Read Key */
-+        val = s->rdkey;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad read offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        return 0;
-+    }
-+
-+    return val;
-+}
-+
-+static void allwinner_h3_sid_write(void *opaque, hwaddr offset,
-+                                      uint64_t val, unsigned size)
-+{
-+    AwH3SidState *s = (AwH3SidState *)opaque;
-+
-+    switch (offset) {
-+    case REG_PRCTL:    /* Control */
-+        s->control = val & ~(REG_PRCTL_WRITE);
-+        if (!(s->control & REG_PRCTL_OP_LOCK)) {
-+            uint32_t id = (s->control >> 16) / sizeof(uint32_t);
-+            if (id < AW_H3_SID_NUM_IDS) {
-+                s->rdkey = s->identifier[id];
-+            }
-+        }
-+        break;
-+    case REG_RDKEY:    /* Read Key */
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad write offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps allwinner_h3_sid_ops = {
-+    .read = allwinner_h3_sid_read,
-+    .write = allwinner_h3_sid_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+        .unaligned = false
-+    }
++static struct arm_boot_info orangepi_binfo = {
++    .loader_start = AW_H3_SDRAM_BASE,
++    .board_id = -1,
 +};
 +
-+static void allwinner_h3_sid_reset(DeviceState *dev)
++typedef struct OrangePiState {
++    AwH3State *h3;
++    MemoryRegion sdram;
++} OrangePiState;
++
++static void orangepi_init(MachineState *machine)
 +{
-+    AwH3SidState *s = AW_H3_SID(dev);
++    OrangePiState *s = g_new(OrangePiState, 1);
 +    Error *err = NULL;
 +
-+    /* Set default values for registers */
-+    s->control = 0;
-+    s->rdkey = 0;
++    s->h3 = AW_H3(object_new(TYPE_AW_H3));
 +
-+    /* Initialize identifier data */
-+    for (int i = 0; i < AW_H3_SID_NUM_IDS; i++) {
-+        s->identifier[i] = 0;
++    /* Setup timer properties */
++    object_property_set_int(OBJECT(&s->h3->timer), 32768, "clk0-freq", &err);
++    if (err != NULL) {
++        error_reportf_err(err, "Couldn't set clk0 frequency: ");
++        exit(1);
 +    }
 +
-+    if (qemu_guest_getrandom(s->identifier, sizeof(s->identifier), &err)) {
-+        error_report_err(err);
++    object_property_set_int(OBJECT(&s->h3->timer), 24000000, "clk1-freq",
++                            &err);
++    if (err != NULL) {
++        error_reportf_err(err, "Couldn't set clk1 frequency: ");
++        exit(1);
 +    }
-+}
 +
-+static void allwinner_h3_sid_realize(DeviceState *dev, Error **errp)
-+{
-+}
-+
-+static void allwinner_h3_sid_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwH3SidState *s = AW_H3_SID(obj);
-+
-+    /* Memory mapping */
-+    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_h3_sid_ops, s,
-+                          TYPE_AW_H3_SID, AW_H3_SID_REGS_MEM_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription allwinner_h3_sid_vmstate = {
-+    .name = TYPE_AW_H3_SID,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(control, AwH3SidState),
-+        VMSTATE_UINT32(rdkey, AwH3SidState),
-+        VMSTATE_UINT32_ARRAY(identifier, AwH3SidState, AW_H3_SID_NUM_IDS),
-+        VMSTATE_END_OF_LIST()
++    /* Mark H3 object realized */
++    object_property_set_bool(OBJECT(s->h3), true, "realized", &err);
++    if (err != NULL) {
++        error_reportf_err(err, "Couldn't realize Allwinner H3: ");
++        exit(1);
 +    }
-+};
 +
-+static void allwinner_h3_sid_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
++    /* RAM */
++    memory_region_allocate_system_memory(&s->sdram, NULL, "orangepi.ram",
++                                         machine->ram_size);
++    memory_region_add_subregion(get_system_memory(), AW_H3_SDRAM_BASE,
++                                &s->sdram);
 +
-+    dc->reset = allwinner_h3_sid_reset;
-+    dc->realize = allwinner_h3_sid_realize;
-+    dc->vmsd = &allwinner_h3_sid_vmstate;
++    /* Load target kernel */
++    orangepi_binfo.ram_size = machine->ram_size;
++    orangepi_binfo.nb_cpus  = AW_H3_NUM_CPUS;
++    arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
 +}
 +
-+static const TypeInfo allwinner_h3_sid_info = {
-+    .name          = TYPE_AW_H3_SID,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = allwinner_h3_sid_init,
-+    .instance_size = sizeof(AwH3SidState),
-+    .class_init    = allwinner_h3_sid_class_init,
-+};
-+
-+static void allwinner_h3_sid_register(void)
++static void orangepi_machine_init(MachineClass *mc)
 +{
-+    type_register_static(&allwinner_h3_sid_info);
++    mc->desc = "Orange Pi PC";
++    mc->init = orangepi_init;
++    mc->units_per_default_bus = 1;
++    mc->min_cpus = AW_H3_NUM_CPUS;
++    mc->max_cpus = AW_H3_NUM_CPUS;
++    mc->default_cpus = AW_H3_NUM_CPUS;
++    mc->ignore_memory_transaction_failures = true;
 +}
 +
-+type_init(allwinner_h3_sid_register)
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 1deb1d08c1..5d8a95816a 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -1,5 +1,10 @@
- # See docs/devel/tracing.txt for syntax documentation.
- 
-+# allwinner-h3-cpucfg.c
-+allwinner_h3_cpucfg_cpu_reset(uint8_t cpu_id, uint32_t reset_addr) "H3-CPUCFG: cpu_reset: id %u, reset_addr 0x%08x"
-+allwinner_h3_cpucfg_read(uint64_t offset, uint64_t data, unsigned size) "H3-CPUCFG: read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+allwinner_h3_cpucfg_write(uint64_t offset, uint64_t data, unsigned size) "H3-CPUCFG: write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+
- # eccmemctl.c
- ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
- ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
-diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-index 374061b550..33602599eb 100644
---- a/include/hw/arm/allwinner-h3.h
-+++ b/include/hw/arm/allwinner-h3.h
-@@ -29,6 +29,7 @@
- #include "hw/misc/allwinner-h3-clk.h"
- #include "hw/misc/allwinner-h3-cpucfg.h"
- #include "hw/misc/allwinner-h3-syscon.h"
-+#include "hw/misc/allwinner-h3-sid.h"
- #include "target/arm/cpu.h"
- 
- #define AW_H3_SRAM_A1_BASE     (0x00000000)
-@@ -115,6 +116,7 @@ typedef struct AwH3State {
-     AwH3ClockState ccu;
-     AwH3CpuCfgState cpucfg;
-     AwH3SysconState syscon;
-+    AwH3SidState sid;
-     GICState gic;
-     MemoryRegion sram_a1;
-     MemoryRegion sram_a2;
-diff --git a/include/hw/misc/allwinner-h3-sid.h b/include/hw/misc/allwinner-h3-sid.h
-new file mode 100644
-index 0000000000..359cc86dfc
---- /dev/null
-+++ b/include/hw/misc/allwinner-h3-sid.h
-@@ -0,0 +1,42 @@
-+/*
-+ * Allwinner H3 Security ID emulation
-+ *
-+ * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_MISC_ALLWINNER_H3_SID_H
-+#define HW_MISC_ALLWINNER_H3_SID_H
-+
-+#include "hw/sysbus.h"
-+
-+#define AW_H3_SID_NUM_IDS        (4)
-+#define AW_H3_SID_REGS_MEM_SIZE  (1024)
-+
-+#define TYPE_AW_H3_SID    "allwinner-h3-sid"
-+#define AW_H3_SID(obj)    OBJECT_CHECK(AwH3SidState, (obj), TYPE_AW_H3_SID)
-+
-+typedef struct AwH3SidState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    MemoryRegion iomem;
-+    uint32_t control;
-+    uint32_t rdkey;
-+    uint32_t identifier[AW_H3_SID_NUM_IDS];
-+} AwH3SidState;
-+
-+#endif
++DEFINE_MACHINE("orangepi", orangepi_machine_init)
 -- 
 2.17.1
 

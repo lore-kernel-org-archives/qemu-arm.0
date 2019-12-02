@@ -1,131 +1,128 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp12118879lfc;
-        Sun, 1 Dec 2019 18:24:51 -0800 (PST)
-X-Received: by 2002:a63:d351:: with SMTP id u17mr28511993pgi.84.1575253490775;
-        Sun, 01 Dec 2019 18:24:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575253490; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp12132053lfc;
+        Sun, 1 Dec 2019 18:41:37 -0800 (PST)
+X-Received: by 2002:a63:c20c:: with SMTP id b12mr23056421pgd.407.1575254497545;
+        Sun, 01 Dec 2019 18:41:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575254497; cv=none;
         d=google.com; s=arc-20160816;
-        b=WRuaulLOCZ3bpdoYbzEQXBo7FYxZQZMCRoZY7EdnaCc9M8IrZtkccnsBCWZPRLDKze
-         F4wvWge+ePikiZfZ5CeT3HWPL/yu5MJvqW9e0/LrDE0ZbrodGca+oRKLObxceeIffIFL
-         t2K4dYSRCM8RABGfiY4tNM7/m1iTZngiS+T0qjOfRjq7UZnso9TG7A1G4QjGTgw+AjOw
-         hWQkRvzoyNEWthJDl+P13ckvu24CTmYsC/650IYS8sVKLo6p9e601JrCxNqxaJqTCOYw
-         lvpWUtp2KCufz7BPz5fVZbqqIN0UW5Ld5OgURF1QN55EMv3NaPxeQ3fkA1q0LCA+R/TO
-         Eu+g==
+        b=CTWeEOvA57xYIxMys61SRxG/5lOYO3srpxVsY6DhILGnHDb3ZpzX51khi0pOTXaMlm
+         xA6tHveatCy0suRmtzDe8yO7s6Hgt0nPN1GnhpfCHnRr3F5o/GTYxQReIC76jUO18dTj
+         HichWdBBrJmasl8BeztE7YqLUtZJdXRkwkUC/l7uN40kaBcnnjMDgnbp1m9FTsFORPYY
+         3BwoN8BUf1fiGKv4f6NA0lZB3owdnkYzCWQz6oS8OgcrpHkwAHEJ2ryIhjJDsAIbrKv3
+         Meu01P+zJbUtMN6P90nK7vGU1F7t2TWSB+ICu+jqg6H32cAPzqQJO6Z1iJ0FPD32vlWa
+         jufg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=9uZMeOcjp69CcLk4kJoh51jLK8rzeIE59U8CnyNM9uw=;
-        b=rwjuoOui2IJoM97M88VUAsxwoqrRNrcrKRF4KETJ/2Eb+zo7BcL351wYfQwMuzP2vY
-         IEevfc4YiBwJRe7WznY4h51N8iL5741JamdQVI6eyhGFpKAWi9aHJ23d4qN4ekVFsOib
-         ETtTTV1I9/TbYN3HmqpvUfMLLM/Xsat3U6nEOPRpIJyZ8JeSd4vJt/3Mr4L7mkvV2sqO
-         s3cpTWaQZQf1YD4NKz14Pa/W53Nox4i7SbthTg8UfvECY4mEnQ9JqnDs9CNt1orGyVqv
-         QUQakCejztADSQkuDf/NxU4J8O2OmuDiPgbW8aU0mJUN0Q/cXviS5mS0pd7GMGzzAa4V
-         /Pug==
+        bh=c13Wjzos1EtGKKvew52DvMGXElPNobtTinpSlmyukJA=;
+        b=hqZtK7pZTQSgFNI6WSvCismFV9tHNJ4L95mqZSWqK2Uoq8m0KtzwfH7vHj3wgmO4zX
+         0CbpDLiUN71EdGR+ZMWhr+MFL8dM5JB7LWq/L0tBIpyK2FEDUosFoRg0+Sx0Ax3Xckv0
+         4ow2VOyH0YqwwiMY7Xh76ymFxP934uhFPBKonHddtmqswTmpP0y1ZBz9L70YFrJDLX/b
+         MojS+GJTx3iJsUXgcaQC67zl/JZnLMmUqgRAwECvVpdr0yFuQzQnwBFy5VhxDEtmjPz0
+         4x5ZI0qDb6Tu/YntO0Z7F7Wewt9NlDfjhsMy/qMoJvvUczXs+E481RNJCgOHcBo4v04M
+         R0HQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NdKXEZFP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NKlNgjFQ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m5sor26773172pjs.15.2019.12.01.18.24.50
+        by mx.google.com with SMTPS id o73sor20301383pjb.14.2019.12.01.18.41.37
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 01 Dec 2019 18:24:50 -0800 (PST)
+        Sun, 01 Dec 2019 18:41:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NdKXEZFP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NKlNgjFQ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=9uZMeOcjp69CcLk4kJoh51jLK8rzeIE59U8CnyNM9uw=;
-        b=NdKXEZFPqImyiun752tSnpnNEyZG0dTjM0NwfMw7m/reaycfYDF5JhWaLkXPkOm+hW
-         YtJqnFRYK+0i68KbHUGbwDX7xf2L5eRwOn0Z4XexdP5slDmA5M9LquKLrv4macGSEYB+
-         s5lvW11sgcZfqb3Fz8f+XJD2vb21K0F+tofwnUu1/gRNzCoMkcxH2ttbHaiiykR0sR80
-         zKnYQhYym+rUBSKupGJLIAaTPKdO44FmyaKa+ejylbqwcUx+cNLcEDR3D+he+esdPIw/
-         sVYX/yIT9nXJNPQnA151wsnHZN1GMcCzCZX7udc5Evd2SyE0OrSvQbR5JwmWTD5ld3sc
-         sV7A==
+        bh=c13Wjzos1EtGKKvew52DvMGXElPNobtTinpSlmyukJA=;
+        b=NKlNgjFQi6sOk7HkO8p4H2g/ovKzfs0J94FjBbxdCd36Y4m9tvWePzC7/XYhvTgFi8
+         qmPC+NHbeOAXw9kVJubX6e5o6GjZ0HmTFmhPFgO7Pk4alsSBHA1HbOlIEzwrjxkxZ9OB
+         PCVcEq4WuFMTaE+2FFTLuOb1GIETNMrcvAeQdV6Sx/5MfDbQYcNUBvCP2RmbC2rK79/h
+         bywxmJON8h3vF3aSfXsf3MmyqUDg/bPeETBaUpRRdRpJhtGsWwqdC9QPrZnfPapPwHwv
+         dSwMlmHgbBDhUp/XflIn99HfTwF4tZjTqoc3oKQFd8HYQlBLKl1kb+8xHKzJXPWnRe7n
+         PZZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=9uZMeOcjp69CcLk4kJoh51jLK8rzeIE59U8CnyNM9uw=;
-        b=VpGg4oSinxCsxICb4/JZF1v1sx8VXK/zbHs2fTE3Y87Y+5S0saM+VHeiYGwjBDyrCU
-         LQiKas86ZTTirLk/kO+7rNctD8o20xsnLdvZOS/EWIYHYTVdf26wnyy0TIi5uyz9J4Ou
-         qx94DhpYXQDZ5k4qDh38pSN7mNlKyN/nevoOhkqGEvkxetRZZjKvO5wKKsuqxbLFRi/a
-         o4PkhtF8iRGwl26EisAKiEzYP/e4rIOMv7a/DSokhy/cghCCEkkJP8ismM8kKleFmC1Y
-         YP7ptW1eqUfwf93IUIhJ40YA94MUaR+fVVjey6Uav64Vb9VIrPCc3itnFo/AATEjXGDR
-         ovog==
-X-Gm-Message-State: APjAAAWP2u0/ZV6mVewJSkvjDMKcK6Agv4NXDG2tFuDq5o+uvhVOKDQ1
-	kyBpiSBibMLFKfnYcnC5UDkQ9T/f
-X-Google-Smtp-Source: APXvYqwNCsLHCmgtq4yEB82YTo8Go2tM/yn6Jyk+zdoQ0lb8zpr6smFP27PzPme3sWBdki3UBROaiw==
-X-Received: by 2002:a17:90a:30a4:: with SMTP id h33mr32078066pjb.50.1575253490309;
-        Sun, 01 Dec 2019 18:24:50 -0800 (PST)
+        bh=c13Wjzos1EtGKKvew52DvMGXElPNobtTinpSlmyukJA=;
+        b=WsoishuZK8PaTSBWHNMnlQvTjx1tRyWg5KTZRn18ng6Dfu4aKVDsd1bO2TPoo2QCzo
+         e11+lEP3u4Hs1pVICO+ltCsSajyNTt98KMa40D569aOfkLFEpPPUhOEuJihvzmIvANKY
+         MxCeKmJcfIk2wJBT0e3utGd3NQnQ4c/BftMVrJ+qMLUBPzWIXBCRbkoYrpmDQfZhYBm3
+         H/M7aO4IUb/BykFWTf17BMYyqCJGyRGLKZFSJMMKGxfRHe+r5FwhothM6+K1zRFUnCYK
+         +stU9HOKlP7Gr9yh36xWLZKLbsOK2DfrAC16wurrYDzkFQEB4AVESTXLhG0tMaMYoNC3
+         sGSw==
+X-Gm-Message-State: APjAAAWwgbytfVY6F3upuSmj5+gGQ7fKzaniDVaENZrJpiprLUHe4G1R
+	v01UXvuknbwdl0PhEveij0L/g8Jd
+X-Google-Smtp-Source: APXvYqwwdN0t6YJZkt+82dxh4n2UojMRsqoLnEp3XQMKtVLZEuJURDc98DpQCtzq6wkNWU0nnDswHg==
+X-Received: by 2002:a17:90b:d85:: with SMTP id bg5mr6202738pjb.99.1575254496974;
+        Sun, 01 Dec 2019 18:41:36 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id h3sm20818336pji.16.2019.12.01.18.24.48
+        by smtp.gmail.com with ESMTPSA id u18sm16530275pgi.44.2019.12.01.18.41.35
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 01 Dec 2019 18:24:49 -0800 (PST)
-Subject: Re: [PATCH v2 08/14] gdbstub: extend GByteArray to read register
- helpers
+        Sun, 01 Dec 2019 18:41:36 -0800 (PST)
+Subject: Re: [PATCH v2 11/14] target/arm: default SVE length to 64 bytes for
+ linux-user
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: alan.hayward@arm.com, luis.machado@linaro.org,
- damien.hedde@greensocs.com, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <rth@twiddle.net>, Peter Maydell
- <peter.maydell@linaro.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Michael Walle <michael@walle.cc>,
- Laurent Vivier <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- Stafford Horne <shorne@gmail.com>, David Gibson
- <david@gibson.dropbear.id.au>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
- "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>
+ damien.hedde@greensocs.com, Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
 References: <20191130084602.10818-1-alex.bennee@linaro.org>
- <20191130084602.10818-9-alex.bennee@linaro.org>
+ <20191130084602.10818-12-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e052df9d-d2bc-b257-adf1-33299bf7b6a5@linaro.org>
-Date: Sun, 1 Dec 2019 18:24:47 -0800
+Message-ID: <9362663d-6452-39aa-2a8d-1cfd853d7faa@linaro.org>
+Date: Sun, 1 Dec 2019 18:41:34 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.1
 MIME-Version: 1.0
-In-Reply-To: <20191130084602.10818-9-alex.bennee@linaro.org>
+In-Reply-To: <20191130084602.10818-12-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: wBAUhHQFBzW0
+X-TUID: OGZp+LYOHQmg
 
 On 11/30/19 8:45 AM, Alex Bennée wrote:
-> -static int cpu_read_virt_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
-> +static int cpu_read_virt_reg(CPUS390XState *env, GByteArray *mem_buf, int n)
->  {
->      switch (n) {
->      case S390_VIRT_CKC_REGNUM:
-> @@ -296,9 +296,9 @@ static int cpu_write_virt_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
->  /* total number of registers in s390-gs.xml */
->  #define S390_NUM_GS_REGS 4
->  
-> -static int cpu_read_gs_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
-> +static int cpu_read_gs_reg(CPUS390XState *env, GByteArray *buf, int n)
+> The Linux kernel chooses the default of 64 bytes for SVE registers on
+> the basis that it is the largest size that won't grow the signal
+> frame. When debugging larger sizes are also unwieldy in gdb as each
+> zreg will take over a page of terminal to display.
+> 
+> The user can of course always specify a larger size with the
+> sve-max-vq property on the command line:
+> 
+>   -cpu max,sve-max-vq=16
+> 
+> This should not make any difference to SVE enabled software as the SVE
+> is of course vector length agnostic.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  target/arm/cpu64.c | 3 +++
+>  1 file changed, 3 insertions(+)
 
-Sometimes you're changing the name from mem_buf and sometimes not.  Perhaps
-better not to change it anywhere, or change it everywhere first, without
-changing the type.
+6 is the largest size that doesn't grow the signal frame.
+I imagine 4 was chosen because that's the only real hw atm.
+
+> +        /* Default sve-max-vq to a reasonable numer */
+> +        cpu->sve_max_vq = 4;
+
+I also agree that we should match the kernel, but this is not the right way.
+Changing max vq is not the same as changing the default vq.
+
+You should change the value of env->vfp.zcr_el[1] in arm_cpu_reset(), and the
+user can increase the length with prctl(2) as they would be able to on real
+hardware that would have support for longer vector lengths.
+
+Also, I don't think you should mix this up with gdb stuff.
 
 
 r~

@@ -1,121 +1,83 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1683198lfc;
-        Tue, 3 Dec 2019 07:45:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz7eyBoymQvR262tcXgxjxFIV3+dYwYYD2KLi1FOLRqoEAqHk3AqmUsyaMm4s8amSl0y8Mc
-X-Received: by 2002:ac8:327b:: with SMTP id y56mr5526439qta.161.1575387906573;
-        Tue, 03 Dec 2019 07:45:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575387906; cv=none;
-        d=google.com; s=arc-20160816;
-        b=AGb1jZQDRp0OLDJd5IfbCOQfv+pc2A6wepUTIfi+7DGeAQ24IjUoisjOIb8sP6Ap3F
-         /Ooi9dGgbb4yALu/LdN0a5rKmYdoWOREzINuNeDXlQRxO4uo+INB+QymWHMiAXDNSHDX
-         o2i7dMrnRzqGUWcH3/BRGs1EK1SjjwqZ7CI2cq7s2HVIPmwlOUq/O13YqEU7bBMTgkTb
-         Tv1r4+9aylOt0onQjQl6vxXOXLU8q3SkilgOYtwDTp7kXeSaUgGNvXG5WTof/rlUqnJB
-         q3XgMzgbsqP4+ixvBrS5Z63MJyYvD6I9wi0UbNt3WngQDSlHd1BV35yXxPmzW4rd2OQe
-         4tGA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=WeerkaiTznFWZe+uFrLFBE25ivmPwQ5NX0TUY7VdjnU=;
-        b=cTT4G/X2B1qHXZ6R5Qh1EB8GLw6n9nCbHZonGtwbKd2vBovd2ftTZXmAuEtBGQtlsj
-         1vREyu6qaRko9JONjcgac3idMnoLXnWbruIH+PmjCuC0AMTRmajfhnFsbWthAYPpKYd2
-         om6LvOaL1zc1WrWHqgc01ZND6CXpe4RlNk+OiKdTl2fN+eb1n6EyOoJ0ZVN5lFOaPTq6
-         RA/fyUnRq9YtfhazjqfrS07dV+b6Xe5OEoIbZjQ6rVf254ymyebjM9qFdkbO/EEL4a6Z
-         y5G/Gq3g9bSdMcSr0K8ZaNYnMglPEqGZBWoOHjGKbNnFZFKKeBgXmjXCA2hljbTHOT/R
-         ZG2A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q1+cA51v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1720421lfc;
+        Tue, 3 Dec 2019 08:13:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxLvhYyWKiNFK9JOFcy5f3X6sRgqU4sI3Wy7VmBD0OEwg3koQrO2wxQcyEf6aMQzzr1jndp
+X-Received: by 2002:a37:9186:: with SMTP id t128mr5566763qkd.180.1575389602209;
+        Tue, 03 Dec 2019 08:13:22 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v19si2160747qvz.108.2019.12.03.07.45.06
+        by mx.google.com with ESMTPS id x4si2292900qth.220.2019.12.03.08.13.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2019 07:45:06 -0800 (PST)
+        Tue, 03 Dec 2019 08:13:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q1+cA51v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55340 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=OEJ3qSVV;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55630 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icAMH-0006d1-0b
-	for alex.bennee@linaro.org; Tue, 03 Dec 2019 10:45:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47392)
+	id 1icAnd-0002PD-5P
+	for alex.bennee@linaro.org; Tue, 03 Dec 2019 11:13:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35673)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1icA7L-0000YE-Bc
- for qemu-arm@nongnu.org; Tue, 03 Dec 2019 10:29:37 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1icADJ-0002hv-Pj
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 10:35:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1icA7E-0003iZ-IX
- for qemu-arm@nongnu.org; Tue, 03 Dec 2019 10:29:30 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:56163
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <damien.hedde@greensocs.com>) id 1icADG-0001Xe-IM
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 10:35:44 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:42236)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1icA78-0003bZ-On
- for qemu-arm@nongnu.org; Tue, 03 Dec 2019 10:29:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575386958;
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1icAD8-0001TX-5I; Tue, 03 Dec 2019 10:35:35 -0500
+Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id DCD3096EF0;
+ Tue,  3 Dec 2019 15:35:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1575387330;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WeerkaiTznFWZe+uFrLFBE25ivmPwQ5NX0TUY7VdjnU=;
- b=Q1+cA51vv7EbACpYpkWsjpbfYqQeGIIjSJEVxmWMiAasIrbzp2KZrg/q/FbVO614Ejg/lp
- RJjyucd1TdzQRUDbNwkZ7j+jnl7BQb9bOcklPMNKTpf9is5IrS+xk4pzCgQQDiH8r7D7zZ
- EJKuH7J9shSsSSXNlkTU1XeekvuEeyg=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-430-NkLAkHsWMk67nQG7SyUGbw-1; Tue, 03 Dec 2019 10:29:17 -0500
-Received: by mail-wm1-f71.google.com with SMTP id y133so1055335wmd.8
- for <qemu-arm@nongnu.org>; Tue, 03 Dec 2019 07:29:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=WeerkaiTznFWZe+uFrLFBE25ivmPwQ5NX0TUY7VdjnU=;
- b=Lcn2sdMEKhZc87W/T0144HN+Q3kwsyEEY8H1I8aP6RaDnbSbxKfOEERSwcpTWsRvkB
- yjNuHHoYOszDLDjxXt7IH5StCzNVzMBIgoD2qghBZ65nD0TyeYN4kklBc5ciQN/6F+aj
- dYtGrRDzdyk0e9FEj9DG8Zs534a4kWGjsZ/6jEaxBeh3H8IY60ZtHIftW8yyDazdrGmU
- 4JrzIN4WUxDPf9yOzI1gJNQoiW7lALJZ4ZjNOnb+ocWLiTaDDdh5ZkLE0k6DkcTHmTGY
- gGq/6ZhDTukEbJiJ90euRMzs45kWh4m6rg+gN8LZE9k6k+pz+xI55oWx1Md5tCbM6Kn2
- 68sQ==
-X-Gm-Message-State: APjAAAUsAAzfDjHxOMny83KnEK2SASmrGSYz3kJJIjJ99cpBjrbQ41A8
- YS6GnaXSFaSFK1MWffS/vR9kr0DHHtRPKLBsqPDdO1TEDXqjbx3bc8j65O94teEiHPmmDmsLZFz
- FcSoAb4WhnmYC
-X-Received: by 2002:a5d:4acb:: with SMTP id y11mr6035643wrs.106.1575386955687; 
- Tue, 03 Dec 2019 07:29:15 -0800 (PST)
-X-Received: by 2002:a5d:4acb:: with SMTP id y11mr6035607wrs.106.1575386955402; 
- Tue, 03 Dec 2019 07:29:15 -0800 (PST)
-Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
- [88.21.103.182])
- by smtp.gmail.com with ESMTPSA id c1sm3105575wmk.22.2019.12.03.07.29.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Dec 2019 07:29:14 -0800 (PST)
-Subject: Re: [PATCH v6 9/9] hw/arm/xilinx_zynq: connect uart clocks to slcr
-To: Damien Hedde <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>
+ bh=3rtcgx24BVdxIE+n3CGbbouJnJV5jKm2LoYK00DXaEs=;
+ b=OEJ3qSVVm5k8two2BmGqm8TXAADshyO7sFGozbodU4XCA3r+Un0ewHCkkL7ZpL31aqenJQ
+ 9rOoU0oL1aipTwBujtVobAn0hSD9xRF7NbL8B4ECbE9zDcwO8XhsMEfifAAofn6bKEKiNu
+ Xe3VEztr3kecFoEY6AUIC0p84FGc2+8=
+Subject: Re: [PATCH v6 3/9] qdev: add clock input&output support to devices.
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20190904125531.27545-1-damien.hedde@greensocs.com>
- <20190904125531.27545-10-damien.hedde@greensocs.com>
- <CAFEAcA96yu6Uttsi6eZokjyxE8At18ADF+Q6c7Na2ArvdLME+Q@mail.gmail.com>
- <f373af20-0df4-384f-b1a3-10bf873c315e@greensocs.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <db2836fa-e2f1-d1ab-88be-1b24f5a18302@redhat.com>
-Date: Tue, 3 Dec 2019 16:29:13 +0100
+ <20190904125531.27545-4-damien.hedde@greensocs.com>
+ <a7d0808d-b57a-f8a7-93ea-ec69aee81cf9@redhat.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <b4f65dde-6752-abba-0b9b-d95cddd09f04@greensocs.com>
+Date: Tue, 3 Dec 2019 16:35:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <f373af20-0df4-384f-b1a3-10bf873c315e@greensocs.com>
-Content-Language: en-US
-X-MC-Unique: NkLAkHsWMk67nQG7SyUGbw-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <a7d0808d-b57a-f8a7-93ea-ec69aee81cf9@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1575387330;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3rtcgx24BVdxIE+n3CGbbouJnJV5jKm2LoYK00DXaEs=;
+ b=iNQjZ75iPSc3miDBaPymDurBw9qHFoIuohGqgdrP2jmS1vh9d5d5g3oUDhscGY+LPV1adZ
+ pwthFQbMM/ZVsxSkmaUOpDf2NQEsmUlY5MgoJqZj8lOBWkL+jQ5Ju6Vwc0n5xjxOEWn6Kr
+ 90M/OmUOHo9JopDYsCzxy2odhHhP19g=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575387330; a=rsa-sha256; cv=none;
+ b=7k8HL8dK8tnvMqkFIiTRbMlA6Tb3/MudCDaFaG3shDmBB9qPtv2kRX3jicl6WIeZLGvJ2d
+ KPJU45zNQFtVM5fdUU5G36bl0ykxstOAt+WkgU04kjj8VgpD6BX3i7E2WUdZOuDRL6TRRm
+ jeGQJ3m9S+tmHpvGZcWKCVs8BmNWwZ0=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -127,46 +89,252 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Burton <mark.burton@greensocs.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
+ alistair@alistair23.me, mark.burton@greensocs.com, marcandre.lureau@redhat.com,
+ qemu-arm@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m5lixh7Wsw2V
+X-TUID: DKXrMbQ0N+aN
 
-On 12/3/19 3:59 PM, Damien Hedde wrote:
-> On 12/2/19 4:34 PM, Peter Maydell wrote:
->> On Wed, 4 Sep 2019 at 13:56, Damien Hedde <damien.hedde@greensocs.com> wrote:
->>>
->>> Add the connection between the slcr's output clocks and the uarts inputs.
->>>
->>> Also add the main board clock 'ps_clk', which is hard-coded to 33.33MHz
->>> (the default frequency). This clock is used to feed the slcr's input
->>> clock.
->>>
->>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+
+
+On 11/25/19 2:30 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Nitpick: remove trailing dot in patch subject
+>=20
+> On 9/4/19 2:55 PM, Damien Hedde wrote:
+>> Add functions to easily add input or output clocks to a device.
+>> A clock objects is added as a child of the device.
+>=20
+> <newline>?
+>=20
+>> The api is very similar the gpio's one.
+>=20
+> Maybe "This API is very similar to the QDEV GPIO API."
+>=20
 >>
->> Nothing obviously wrong in the body of the patch, but as with
->> 7 and 8, review from a Xilinx person would be helpful.
+>> This is based on the original work of Frederic Konrad.
 >>
->> /* board base frequency: 33.333333 MHz */
->> #define PS_CLK_FREQUENCY (100 * 1000 * 1000 / 3)
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 >>
->> This is interesting, because it's not an integer... I'll come back
->> to this topic in a reply to the cover letter in a moment.
-> 
-> For this precise case, what I wanted is the resulting integer which I
-> got from the device trees in linux (btw I should probably add this point
-> in  comment). Just thought it was more readable this way than "33333333".
+>> ---
+>> I've removed the reviewed-by/tested-by of Philippe because I did a sma=
+ll
+>> modification.
+>>
+>> qdev_connect_clock() which allowed to connect an input to an output is
+>> now split in 2:
+>> + qdev_get_clock_in() which gets a given input from a device
+>> + qdev_connect_clock_out() which connect a given output to a clock
+>> (previously fetched by qdev_get_clock_in())
+>> This part is located in (qdev-clock.[c|h]).
+>> It better matches gpios api and also add the possibility to connect a
+>> device's input clock to a random output clock (used in patch 9).
+>>
+>> Also add missing qdev-clock in the test-qdev-global-props so that test=
+s
+>> pass.
+>> ---
+>> =C2=A0 hw/core/Makefile.objs=C2=A0=C2=A0 |=C2=A0=C2=A0 2 +-
+>> =C2=A0 hw/core/qdev-clock.c=C2=A0=C2=A0=C2=A0 | 155 ++++++++++++++++++=
+++++++++++++++++++++++
+>> =C2=A0 hw/core/qdev.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0 32 +++++++++
+>> =C2=A0 include/hw/qdev-clock.h |=C2=A0 67 +++++++++++++++++
+>> =C2=A0 include/hw/qdev-core.h=C2=A0 |=C2=A0 14 ++++
+>> =C2=A0 tests/Makefile.include=C2=A0 |=C2=A0=C2=A0 1 +
+>=20
+> Please setup the scripts/git.orderfile to ease reviews.
+>=20
+>> =C2=A0 6 files changed, 270 insertions(+), 1 deletion(-)
+>> =C2=A0 create mode 100644 hw/core/qdev-clock.c
+>> =C2=A0 create mode 100644 include/hw/qdev-clock.h
+>>
+>> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+>> index 8fcebf2e67..4523d3b5c7 100644
+>> --- a/hw/core/Makefile.objs
+>> +++ b/hw/core/Makefile.objs
+>> @@ -1,5 +1,5 @@
+>> =C2=A0 # core qdev-related obj files, also used by *-user:
+>> -common-obj-y +=3D qdev.o qdev-properties.o
+>> +common-obj-y +=3D qdev.o qdev-properties.o qdev-clock.o
+>> =C2=A0 common-obj-y +=3D bus.o reset.o
+>> =C2=A0 common-obj-y +=3D resettable.o
+>> =C2=A0 common-obj-$(CONFIG_SOFTMMU) +=3D qdev-fw.o
+>> diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
+>> new file mode 100644
+>> index 0000000000..bebdd8fa15
+>> --- /dev/null
+>> +++ b/hw/core/qdev-clock.c
+>> @@ -0,0 +1,155 @@
+>> +/*
+>> + * Device's clock
+>> + *
+>> + * Copyright GreenSocs 2016-2018
+>=20
+> 2019
+>=20
+>> + *
+>> + * Authors:
+>> + *=C2=A0 Frederic Konrad <fred.konrad@greensocs.com>
+>> + *=C2=A0 Damien Hedde <damien.hedde@greensocs.com>
+>> + *
+>> + * This work is licensed under the terms of the GNU GPL, version 2 or
+>> later.
+>> + * See the COPYING file in the top-level directory.
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "hw/qdev-clock.h"
+>> +#include "hw/qdev-core.h"
+>> +#include "qapi/error.h"
+>> +
+>> +static NamedClockList *qdev_init_clocklist(DeviceState *dev, const
+>> char *name,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool forward)
+>=20
+> Indentation off.
+>=20
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 NamedClockList *ncl;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /*
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * The clock path will be computed by the dev=
+ice's realize
+>> function call.
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * This is required to ensure the clock's can=
+onical path is right
+>> and log
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * messages are meaningfull.
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 */
+>> +=C2=A0=C2=A0=C2=A0 assert(name);
+>> +=C2=A0=C2=A0=C2=A0 assert(!dev->realized);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /* The ncl structure will be freed in device's fin=
+alize function
+>> call */
+>> +=C2=A0=C2=A0=C2=A0 ncl =3D g_malloc0(sizeof(*ncl));
+>=20
+> Similar but easier to review:
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ncl =3D g_new0(NamedClockList, 1)
+>=20
+>> +=C2=A0=C2=A0=C2=A0 ncl->name =3D g_strdup(name);
+>> +=C2=A0=C2=A0=C2=A0 ncl->forward =3D forward;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 QLIST_INSERT_HEAD(&dev->clocks, ncl, node);
+>> +=C2=A0=C2=A0=C2=A0 return ncl;
+>> +}
+>> +
+>> +ClockOut *qdev_init_clock_out(DeviceState *dev, const char *name)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 NamedClockList *ncl;
+>> +=C2=A0=C2=A0=C2=A0 Object *clk;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 ncl =3D qdev_init_clocklist(dev, name, false);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 clk =3D object_new(TYPE_CLOCK_OUT);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /* will fail if name already exists */
+>> +=C2=A0=C2=A0=C2=A0 object_property_add_child(OBJECT(dev), name, clk, =
+&error_abort);
+>> +=C2=A0=C2=A0=C2=A0 object_unref(clk); /* remove the initial ref made =
+by object_new */
+>> +
+>> +=C2=A0=C2=A0=C2=A0 ncl->out =3D CLOCK_OUT(clk);
+>> +=C2=A0=C2=A0=C2=A0 return ncl->out;
+>> +}
+>> +
+>> +ClockIn *qdev_init_clock_in(DeviceState *dev, const char *name,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Clo=
+ckCallback *callback, void *opaque)
+>=20
+> Indentation off.
+>=20
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 NamedClockList *ncl;
+>> +=C2=A0=C2=A0=C2=A0 Object *clk;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 ncl =3D qdev_init_clocklist(dev, name, false);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 clk =3D object_new(TYPE_CLOCK_IN);
+>> +=C2=A0=C2=A0=C2=A0 /*
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * the ref initialized by object_new will be =
+cleared during dev
+>> finalize.
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * It allows us to safely remove the callback=
+.
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 */
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /* will fail if name already exists */
+>> +=C2=A0=C2=A0=C2=A0 object_property_add_child(OBJECT(dev), name, clk, =
+&error_abort);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 ncl->in =3D CLOCK_IN(clk);
+>> +=C2=A0=C2=A0=C2=A0 if (callback) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clock_set_callback(ncl->in=
+, callback, opaque);
+>> +=C2=A0=C2=A0=C2=A0 }
+>> +=C2=A0=C2=A0=C2=A0 return ncl->in;
+>> +}
+>> +
+>> +static NamedClockList *qdev_get_clocklist(DeviceState *dev, const
+>> char *name)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 NamedClockList *ncl;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 QLIST_FOREACH(ncl, &dev->clocks, node) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (strcmp(name, ncl->name=
+) =3D=3D 0) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 re=
+turn ncl;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> +=C2=A0=C2=A0=C2=A0 }
+>> +
+>> +=C2=A0=C2=A0=C2=A0 return NULL;
+>> +}
+>> +
+>> +void qdev_pass_clock(DeviceState *dev, const char *name,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DeviceState *containe=
+r, const char *cont_name)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 NamedClockList *original_ncl, *ncl;
+>> +=C2=A0=C2=A0=C2=A0 Object **clk;
+>=20
+> Is it really a Object** or a Object*?
 
-FWIW I'm auditing if it is possible to use the float type for 
-frequencies (before to ask on the list if this makes sense), because in 
-hw/core/ptimer we use timers with periods, and loose some precision 
-using 1/freq again.
+An Object** because it tells where the Object* is stored for the link
+property below.
 
-Also we have MiB/KiB in "qemu/units.h" and I'd like to introduce MHz/KHz.
+>=20
+>> +
+>> +=C2=A0=C2=A0=C2=A0 assert(container && cont_name);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 original_ncl =3D qdev_get_clocklist(container, con=
+t_name);
+>> +=C2=A0=C2=A0=C2=A0 assert(original_ncl); /* clock must exist in origi=
+n */
+>> +
+>> +=C2=A0=C2=A0=C2=A0 ncl =3D qdev_init_clocklist(dev, name, true);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 if (ncl->out) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clk =3D (Object **)&ncl->o=
+ut;
+>> +=C2=A0=C2=A0=C2=A0 } else {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clk =3D (Object **)&ncl->i=
+n;
+>> +=C2=A0=C2=A0=C2=A0 }
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /* will fail if name already exists */
+>> +=C2=A0=C2=A0=C2=A0 object_property_add_link(OBJECT(dev), name,
+>> object_get_typename(*clk),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 clk, NULL, OBJ_PROP_LINK_STRONG,
+>> &error_abort);
+>> +}
+>> +
 
+--
+Damien

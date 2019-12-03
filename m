@@ -1,98 +1,76 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1392158lfc;
-        Tue, 3 Dec 2019 03:49:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwGhzY676X/uFspyXM4meXgFZomsBNQkl0zpzOZr5gRU95Kk0beOPqcsVIPueJ95lz0D9c0
-X-Received: by 2002:a05:620a:1486:: with SMTP id w6mr738674qkj.454.1575373760647;
-        Tue, 03 Dec 2019 03:49:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575373760; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1437683lfc;
+        Tue, 3 Dec 2019 04:30:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxgtieNtzgMTkJ/FAwHsHSx7dph9kO3Hk+rpc+kuM9DrqwZUJWibhu4j0oTZUb/JKMdPLqt
+X-Received: by 2002:a50:f612:: with SMTP id c18mr2929714edn.285.1575376253877;
+        Tue, 03 Dec 2019 04:30:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575376253; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZP9ROfwQcTH6VHJCb2jVMhdI2M5+b01mtDToFJqNePTOFtkRHEre88CUFENt2CYL+U
-         CzTKR2naee0yZjCpJYAHlsJY7cpgq+MHFZGHIXfmtQM9l/qljvnzhq/ugvj5yNpW7eCB
-         uAD8hj33eH8QpcPjJaDmDUX6+MJA/+s9/m9ymxbK1U7GUxa+mvaaz5WmQcEiq+EUChxI
-         svDGkPqUhTRHjt9JzhDb4H+suvERLG/o2NJ9etrC0vc+2MD21VzpWrleU8KxubxGzJQT
-         UAikGyjRNbr4WPAdgOtiPTRjFl5n/GmRgc22ucxAbJ4s15eAOALNtpQZHc+FB5i5dvnG
-         Vu3A==
+        b=a0UTNUcn7pq464KVwiqBxzAGRPyPpIEGwoUw4l1t9H+GknJsN4KFaJevTY9OjLtAV8
+         cvpiif16K83qpBFLJ+UN5yAUNGgKHNglSGLFlV3nbnEeuliVVTKql8Vl7UtYBDJwVoVh
+         dl7+OUrD9bC9ua7KHeWdRoumrIBvdqA86emK3JahAZjgLSz+Xsf4dN5ifSK9Z2d4leGT
+         HIKigC320Th4m7drpReC3zZuaabgGq/3CqqatvRnUoCqUNMzpREZpYZTz/IxZOYGpbn3
+         DXtaL2rsXVKtVjPzpOKR+Gt93opYuJeEkCSA7NZcLvZ7YDTE9f9+ka9dSy2JLGh7ins+
+         2uaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=J9a9Q25g3Pw3d8B2XWQ6fSo3JvscZVrNGGE/LmkOG4U=;
-        b=fIGBBajU9iy3VnCiiV4m0olmpK5NsVDLh5wPQG/jX5JglBbvrqayeCbzTpw2fgJ1gj
-         dmM9vZEGXGYSrPzIPA5ZHqjsF6M4KmjhOEjSxyYCuJ07cfJHGYG/rK+Mz9abKaF1DuTk
-         pry34rkx21wzJuC5aBdXS6K2VNAg+N0vU041O7DmzOTskfV5HBN7zh3KsIA2Si7I4psx
-         N05/T0C9+G+bOaumjHL+E+1x4/v3r4hXTZYHlyCXJBVdBquqDh54BdSTQVHvs0u8S3GP
-         XvTd8T8L9lMWCf0Hlqb+OHgCc9v0IsLiRC/elrKidv2PCEinqZXSVP+lyN8RVjFMekoo
-         sTJw==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=HNx5awebTenw3cog8mBdUqGHqH9AuegEds8jI01zaEQ=;
+        b=fso5KqaFHjC3t5VXKMzvvSs+G/JducibK2C8pB5DusU6bD+6qLudhGwhjNKdmqLmJ3
+         xyKcFpJ0ZENIq5Uap+wuB3Pmh1MIgqv4LbdOz48dOSvQEi7UC4JCe+T31iohtW0Gw4Ia
+         TZRqdgzdE8qNYRvDziNbdY2Aqiw6jwnB4bNVi+nhmsK8cZP3XKBFX4lCAnY81It0+Qpz
+         IYl3Kpah0nEcnYvWE+FRuadZjAr5AR8orjDzO9je25AojJLqem4s5mDGmSJs1DbRgJBe
+         KNfLFGTAqFuGXu3PCsbc4i4IGsi3ah1V1B2ILFDyz31S86nl7afEjxnAQeWr6ZZNjNp6
+         no1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=e78gdWVp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u13si1917042qkk.225.2019.12.03.03.49.20
+        by mx.google.com with ESMTPS id q15si2131780edw.361.2019.12.03.04.30.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2019 03:49:20 -0800 (PST)
+        Tue, 03 Dec 2019 04:30:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=e78gdWVp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52194 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52656 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ic6gC-00063Z-0u
-	for alex.bennee@linaro.org; Tue, 03 Dec 2019 06:49:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53270)
+	id 1ic7KO-00083y-C0
+	for alex.bennee@linaro.org; Tue, 03 Dec 2019 07:30:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48783)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1ic6fy-0005zj-TB
- for qemu-arm@nongnu.org; Tue, 03 Dec 2019 06:49:08 -0500
+ (envelope-from <zhengxiang9@huawei.com>) id 1ic7JK-000832-Of
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 07:29:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1ic6fw-0000UE-An
- for qemu-arm@nongnu.org; Tue, 03 Dec 2019 06:49:06 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:43690)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1ic6fv-0000QT-T6
- for qemu-arm@nongnu.org; Tue, 03 Dec 2019 06:49:04 -0500
-Received: by mail-oi1-x242.google.com with SMTP id t25so713816oij.10
- for <qemu-arm@nongnu.org>; Tue, 03 Dec 2019 03:49:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=J9a9Q25g3Pw3d8B2XWQ6fSo3JvscZVrNGGE/LmkOG4U=;
- b=e78gdWVplLjIhNu/AMecMmugJ37cfElNi4nZQ+auDgqzXWKfTKcP1e/vdTAzmge50y
- P2EW9SgCi43AXrcRvIuM+L45DLOzK83HOKlaCSNRmUoGn00+5S8kPjUBzIWC8Jm02mKt
- Wl7ejaJTVqkQvK3JK/ZEaXXCugrO77bUSRyveZxKPzgodz+3ypCD9uY/QD5qyGgQaUu1
- NOmW7u9R4AB/GWPdZvPsz8/pGK4o0ccofLbG1K7CQBq0RZhxKFqhrAVPph5IufrqTyCo
- nIPfvmX3M33lM0G/85H3q2Wdi31Vm1LyXoG94w6qwkP/BHWHJ2RKTnwUbmSSBejchftA
- +SFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=J9a9Q25g3Pw3d8B2XWQ6fSo3JvscZVrNGGE/LmkOG4U=;
- b=WsEuVXLctLHAWYDpvK83bALwZzITD8VV2NJw2/+ur2Qb+rpHyJLucEJe7rLR6v2cr7
- v54eVRMhqi5AY38GHAxWJwwfZZ2xyQ/Slz/AS+Zgtfx+Q9n5tpXPozhnNzFRZhNf0hbk
- JdeYrSY8UjJApKsrztvATeHbiSPCb1ezmv5hpomZ72dOzE0MGrbORC270g1Tdzy1/vYv
- +z3kn4H5jUkoSE5UX1MKG11Y7hs56BFANKWn718ViE7sQLu1aAJTrpS4coguw8Uljoii
- 0EvH+PwodMtZwMnXCifuvW4IZuw0z5EYXVEElXWksnV4/r+RaWLT6FEcUG4BjCSpNv6l
- Z2gA==
-X-Gm-Message-State: APjAAAWuMuiz2pEiFJiCkg3qI25hfgZPOhtnFtXwi4TxKyLqRCOiidqz
- 4fxJn6fi7yaGGCk90jcCXWPltOzomqykGx8Z1r6zbQ==
-X-Received: by 2002:aca:3182:: with SMTP id x124mr3275663oix.170.1575373742707; 
- Tue, 03 Dec 2019 03:49:02 -0800 (PST)
+ (envelope-from <zhengxiang9@huawei.com>) id 1ic7JI-0003dh-78
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 07:29:45 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:40894 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <zhengxiang9@huawei.com>)
+ id 1ic7JG-0003Q7-F6; Tue, 03 Dec 2019 07:29:44 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 631662E73581EE20096E;
+ Tue,  3 Dec 2019 20:29:31 +0800 (CST)
+Received: from HGHY4Z004218071.china.huawei.com (10.133.224.57) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 3 Dec 2019 20:29:23 +0800
+From: Xiang Zheng <zhengxiang9@huawei.com>
+To: <peter.maydell@linaro.org>, <thuth@redhat.com>, <lvivier@redhat.com>
+Subject: [PATCH 2/5] tests: fw_cfg: Support read/write of fw_cfg registers on
+ aarch64
+Date: Tue, 3 Dec 2019 20:27:50 +0800
+Message-ID: <20191203122753.19792-3-zhengxiang9@huawei.com>
+X-Mailer: git-send-email 2.15.1.windows.2
+In-Reply-To: <20191203122753.19792-1-zhengxiang9@huawei.com>
+References: <20191203122753.19792-1-zhengxiang9@huawei.com>
 MIME-Version: 1.0
-References: <20191011134744.2477-1-richard.henderson@linaro.org>
- <20191011134744.2477-4-richard.henderson@linaro.org>
-In-Reply-To: <20191011134744.2477-4-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Dec 2019 11:48:51 +0000
-Message-ID: <CAFEAcA8_SQ6ugs360PJD58547mmZY1yu5xb=Fq0P006HJ1yGRA@mail.gmail.com>
-Subject: Re: [PATCH v5 03/22] target/arm: Add MTE system registers
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::242
+Content-Type: text/plain
+X-Originating-IP: [10.133.224.57]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,108 +82,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: lersek@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kraxel@redhat.com, wanghaibin.wang@huawei.com, pbonzini@redhat.com,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EE+VeuURQbB+
+X-TUID: q07nJsw0r+l/
 
-On Fri, 11 Oct 2019 at 14:48, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> This is TFSRE0_EL1, TFSR_EL1, TFSR_EL2, TFSR_EL3,
-> RGSR_EL1, GCR_EL1, GMID_EL1, and PSTATE.TCO.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
-> v3: Add GMID; add access_mte.
-> v4: Define only TCO at mte_insn_reg.
-> ---
->  target/arm/cpu.h           |  3 ++
->  target/arm/internals.h     |  6 ++++
->  target/arm/helper.c        | 73 ++++++++++++++++++++++++++++++++++++++
->  target/arm/translate-a64.c | 11 ++++++
->  4 files changed, 93 insertions(+)
+Refer to the fw_cfg registers locations of x86 and arm in
+docs/specs/fw_cfg.txt, the test codes need to differ on the addresses
+for read/write.
 
+Besides, fix the endian problems in mm_fw_cfg_select().
 
-> +    { .name = "GMID_EL1", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 3, .opc1 = 1, .crn = 0, .crm = 0, .opc2 = 4,
-> +      .access = PL1_R, .type = ARM_CP_CONST, .resetvalue = GMID_EL1_BS },
+Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+---
+ tests/libqos/fw_cfg.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
 
-This should trap if HCR_EL2.TID5 is 1 (since we're adding
-support for the TID* ID reg trap bits now).
-
-> +    REGINFO_SENTINEL
-> +};
-> +
-> +static const ARMCPRegInfo mte_tco_reginfo[] = {
-> +    { .name = "TCO", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 3, .opc1 = 3, .crn = 4, .crm = 2, .opc2 = 7,
-> +      .type = ARM_CP_NO_RAW,
-> +      .access = PL0_RW, .readfn = tco_read, .writefn = tco_write },
-> +    REGINFO_SENTINEL
-> +};
->  #endif
->
->  static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInfo *ri,
-> @@ -6881,6 +6948,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->      if (cpu_isar_feature(aa64_rndr, cpu)) {
->          define_arm_cp_regs(cpu, rndr_reginfo);
->      }
-
-So, aa64_mte_insn_reg here is checking for ID_AA64PFR1_EL1 != 0
-("instructions accessible at EL0 are implemented")
-and aa64_mte is checking for >= 2 ("full implementation").
-I think a couple of brief comments would clarify:
-
-> +    if (cpu_isar_feature(aa64_mte_insn_reg, cpu)) {
-           /* EL0-visible MTE registers, present even for dummy
-implementation */
-> +        define_arm_cp_regs(cpu, mte_tco_reginfo);
-> +    }
-> +    if (cpu_isar_feature(aa64_mte, cpu)) {
-           /* MTE registers present for a full implementation */
-> +        define_arm_cp_regs(cpu, mte_reginfo);
-> +    }
-
-(The other way to arrange this would be to have the 'real'
-TCO regdef in mte_reginfo, and separately have "reginfo
-if we only have the dummy visible-from-EL0-parts-only
-which defines a constant 0 TCO" (and also make the MSR_i
-code implement a RAZ/WI for this case, for consistency).
-An implementation that allows the guest to toggle the PSTATE.TCO
-bit to no visible effect is architecturally valid, though.)
-
->  #endif
->
->      /*
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index c85db69db4..62bdf50796 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -1611,6 +1611,17 @@ static void handle_msr_i(DisasContext *s, uint32_t insn,
->          s->base.is_jmp = DISAS_UPDATE;
->          break;
->
-> +    case 0x1c: /* TCO */
-> +        if (!dc_isar_feature(aa64_mte_insn_reg, s)) {
-> +            goto do_unallocated;
-> +        }
-> +        if (crm & 1) {
-> +            set_pstate_bits(PSTATE_TCO);
-> +        } else {
-> +            clear_pstate_bits(PSTATE_TCO);
-> +        }
-> +        break;
-> +
->      default:
->      do_unallocated:
->          unallocated_encoding(s);
-> --
-> 2.17.1
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/libqos/fw_cfg.c b/tests/libqos/fw_cfg.c
+index 1f46258f96..c1518c5e81 100644
+--- a/tests/libqos/fw_cfg.c
++++ b/tests/libqos/fw_cfg.c
+@@ -57,7 +57,14 @@ uint64_t qfw_cfg_get_u64(QFWCFG *fw_cfg, uint16_t key)
+ 
+ static void mm_fw_cfg_select(QFWCFG *fw_cfg, uint16_t key)
+ {
+-    qtest_writew(fw_cfg->qts, fw_cfg->base, key);
++    const char *arch = qtest_get_arch();
++    uint64_t offset = 0;
++
++    if (!strcmp(arch, "aarch64")) {
++        offset = 8;
++    }
++
++    qtest_writew(fw_cfg->qts, fw_cfg->base + offset, cpu_to_be16(key));
+ }
+ 
+ /*
+@@ -108,9 +115,15 @@ static void mm_fw_cfg_read(QFWCFG *fw_cfg, void *data, size_t len)
+ {
+     uint8_t *ptr = data;
+     int i;
++    uint64_t offset = 2;
++    const char *arch = qtest_get_arch();
++
++    if (!strcmp(arch, "aarch64")) {
++        offset = 0;
++    }
+ 
+     for (i = 0; i < len; i++) {
+-        ptr[i] = qtest_readb(fw_cfg->qts, fw_cfg->base + 2);
++        ptr[i] = qtest_readb(fw_cfg->qts, fw_cfg->base + offset);
+     }
+ }
+ 
+-- 
+2.19.1
 
 
-thanks
--- PMM

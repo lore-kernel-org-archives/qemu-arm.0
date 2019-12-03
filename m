@@ -1,114 +1,83 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp713661lfc;
-        Mon, 2 Dec 2019 15:47:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz1B5vZvttQApXwsyArMx0lusdv6V1RE16QweCdncB1HHRoifUzAdm+n1EKjSDCf1QtHgHE
-X-Received: by 2002:a37:7f02:: with SMTP id a2mr1967780qkd.111.1575330456089;
-        Mon, 02 Dec 2019 15:47:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575330456; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp756075lfc;
+        Mon, 2 Dec 2019 16:22:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwjNp/bFo32EFz3gx02cNPhFA28eu4UgkH/xizOoEXjWxa8rLjLlU6HiBbFgnmWkLas811X
+X-Received: by 2002:a37:814:: with SMTP id 20mr2161911qki.314.1575332568042;
+        Mon, 02 Dec 2019 16:22:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575332568; cv=none;
         d=google.com; s=arc-20160816;
-        b=fYOKKdqgcTJtGqxeFImmXeWdlmNHMceIh1/cdcHvhyb3I7dDNTtG0ZBgV39gRMdV0y
-         IP0sgWxqL5XlwHPIWf5dKB/kYLdAWq8EllUCULRaor0H39dizJJMsWUSsrYsO1cuVKo5
-         PMAswy8dpIH6a15szy0tUSVmdgY+p1NmUdJMYHEyu/MdfM1GkH7f4fgGg9aOMdmsh6pN
-         TU0GBczXnRvUZV1VMsefPonuxgQlfwarHDpJV8LbtQ/d4ThwBlp/jUNZmRd91L0+OrQ5
-         8e6aBLBNo+Cb2REQfLqNLOrKqF0q48WDlROV1iD+vTN/VmW31n54Kx18+YNnryZD4Sn5
-         HL8A==
+        b=zjCPzeGxtXGkFM26r5NYHA87B9Gt4KDwyFbWdFYtkhNTKY2hhuXL8r2U9a86Ai9pPk
+         7bIGOCTAgyodB4hHfk7XXoWScHPOyRcssJntIfYI/I0xfKpb/SMmioVEf9bvQwb6o5xl
+         JWrxSKpFYBUyKvX4xq1rKj9ekbcORP1Yyq+uRNp4lZV+ialfxnXWe0/QgcXYIYZ85oRi
+         JveIA9njFHOfA4w+3XcVtszyQQ6tAW1LcHvP8GveqodktaRmYA39lH9XCYMiK3BXUFxW
+         tDj2gOWZ1gfByDlJUsTCHmlp3Eflmv5p0r6C0nffnFhgjjMuriBrvW7hORQzxvSyMvNQ
+         lXkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
-         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
-         :dkim-signature;
-        bh=T1YLlY9V/qV1QpYaEv4Ka5wkXLx/BWaEadcqV8jlgZo=;
-        b=C2A5Kf0mzE1YxHMb9YOdnPKKpp6FOq2lSp412YfoHpkJxOLsqt/PsroyIiYkLWcKu/
-         RD8+I1optVbkZgjqkbWp5aHJrTbFttq7NP92vA9IEF3qL3Iu0vVSt44QOo5WWgOzyxLC
-         tSH/MfpA9t6j9OISjuzJvQlQ+bv2pdnWxz8ufpNb6OxoyxfmJuybCsJevN76DVbCiTdn
-         GxX+skcu0QTvkKVD+6nOJlh5TCqH21IrAvQIRxOlNw0H1fX3S58MyeTitA1WzxADtsnQ
-         VVv7Gf/Ak4Q3oE/jO0cDRw5WoCRUE2kYkrheNFnxcxQQTOxCdEv+1CCDJIdWuGxVVTC7
-         Qabw==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=gUs1aHIhkAYyNC/LCrpFW0gUfErLk49ve4CMZBaHA0w=;
+        b=rrH8wN68Rv+em3A5kQ4KJjabscEAyua9jBDijZVSBJpHnwuuzYTbvQ3hGAdhEgbabQ
+         CPwNAIh66S/mrNwuS7PuFEHnQOYcFF6vUcJJHyYcsAUWrsO8CJu9EJ5SFEogT0qb7aPT
+         rlnhnmdJZhQt/3HwMIJb9Pgv5eRalvqdjzm+pqLL/VTp6rKQDk1AQNng0hDIZiFrxuNv
+         HkvfX+081AKacaLRcNTmdqj0WEMyeE7UsvWFzzGIIgPzXsEM4kiQTF043c0z1ZmgeN1S
+         +ABZqOYvnhbK4Bj7drUpwUfGDI2BJEANiiMhuH51U9HvvhqTWA05is2GBZnl6oJOiyEZ
+         bZLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=Zs5Nk6iX;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="HE6E0A+/";
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=YVqPCs+L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l90si832941qtd.153.2019.12.02.15.47.35
+        by mx.google.com with ESMTPS id c19si900920qtb.110.2019.12.02.16.22.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Dec 2019 15:47:36 -0800 (PST)
+        Mon, 02 Dec 2019 16:22:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=Zs5Nk6iX;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="HE6E0A+/";
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=YVqPCs+L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45752 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ibvPj-0003Rq-CI
-	for alex.bennee@linaro.org; Mon, 02 Dec 2019 18:47:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42899)
+	id 1ibvxn-0002uo-0A
+	for alex.bennee@linaro.org; Mon, 02 Dec 2019 19:22:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51036)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1ibvPI-0003RP-QT
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 18:47:09 -0500
+ (envelope-from <dgibson@ozlabs.org>) id 1ibvxE-0002rI-LA
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 19:22:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1ibvPH-0004FH-MJ
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 18:47:08 -0500
-Received: from wout5-smtp.messagingengine.com ([64.147.123.21]:42123)
+ (envelope-from <dgibson@ozlabs.org>) id 1ibvxA-0001iz-LD
+ for qemu-arm@nongnu.org; Mon, 02 Dec 2019 19:22:10 -0500
+Received: from ozlabs.org ([2401:3900:2:1::2]:38763)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1ibvPC-00049z-72; Mon, 02 Dec 2019 18:47:03 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id 81CD8F8A;
- Mon,  2 Dec 2019 18:46:58 -0500 (EST)
-Received: from imap2 ([10.202.2.52])
- by compute4.internal (MEProxy); Mon, 02 Dec 2019 18:46:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type; s=fm1; bh=T1YLlY9V/qV1QpYaEv4Ka5wkXLx/BWa
- EadcqV8jlgZo=; b=Zs5Nk6iXLrth+cygCz1YEZOxWYX5H8Zz1TyKzMOP5YAZOlV
- kIIyrQ3EHP+Q3nhoaczdqp/zyoSYH5ztyN7s4sBG+MD6noDEhHYZ+mc/m+FDP1Mt
- 4PrtrH0aB55M3UoHkFn//Ns9qwlpGRjO2L0zh6nNZ97DaTgRVCfy/wY18EAkJaJh
- +RTUDFiphzDWmg/FAkNRHeGZ2h1oO8+RHXvhRtKcLVDFHXdW3FV6JUHQWHB0qA2J
- xFIHZUrhsgKBaCP8HjxiWSsAcMh3ydbXsLTB8GwMwrLSouPbn3y7yhYUpFXgonwq
- 2btMbULw8ejk4Iq4Fc0+/oXS6bgeZ/7GyH0gSDQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=T1YLlY
- 9V/qV1QpYaEv4Ka5wkXLx/BWaEadcqV8jlgZo=; b=HE6E0A+/I7ZX5ch2uzMG/Z
- GJ41RgedyqXgFMl6gOBcvdYN+kQqJGxMbl7H90XdzQ8aCq+F70yF2nByJaU9nh8l
- VWWiv3hYceENtuv/hqHug/XY4qI/tRV9Mh6FJl7s2Njt7TbSvhDaT8CQ7F0UIlnU
- AFZCDGhKYez61r7InE3fxMcV7+VqLcmEp/YxOJi6/YRgKswng4wzddVmDaB9FYeC
- IM4GK4TpptwyJOPjpVm0ea16YsbRUs/KG6kwlnJT4R3d8xWhVVJRifkKe1me3vk7
- yxsrToiyXxuTuFxCB25geCXxCEFYV4ULzhhSKA/L0UzIz/M0ZtGTqwekdjfJ0hFg
- ==
-X-ME-Sender: <xms:caLlXY2hduFBz4pPrQfpnm44Y-hhwsFa1H-KrB5NN5L4M5eSdbP4yQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudejiedguddvucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvffutgesthdtredtreertdenucfhrhhomhepfdetnhgu
- rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecurfgrrh
- grmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghunecuvehluhhsthgv
- rhfuihiivgeptd
-X-ME-Proxy: <xmx:caLlXWesRFtPMrts7kFSg1zojsYR3JY3mi8CVl-bZO8ZQnlCYMdbig>
- <xmx:caLlXXiHPQW6Orgboz1tgECrWxkh74LiNPIiA79aB8ESfZjF6GjIWA>
- <xmx:caLlXaLtTb_ydif9dyyNmhR3g8fJcZBEAqJr55bzM69sYHOFI98y2g>
- <xmx:cqLlXV7mePgUUeKwdGVNbvIAmX7jLjYHm_njQCEAduKdexdMD9RmiA>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 6C820E00A2; Mon,  2 Dec 2019 18:46:57 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.1.7-578-g826f590-fmstable-20191119v1
-Mime-Version: 1.0
-Message-Id: <b9632739-5df1-4b88-aede-abb897424cc5@www.fastmail.com>
-In-Reply-To: <CAFEAcA99yzysf0J=n1yYgtxBmBDvi8-=CrCO6kdymt8Woo9t1Q@mail.gmail.com>
-References: <20191128054527.25450-1-andrew@aj.id.au>
- <20191128054527.25450-3-andrew@aj.id.au>
- <CAFEAcA99yzysf0J=n1yYgtxBmBDvi8-=CrCO6kdymt8Woo9t1Q@mail.gmail.com>
-Date: Tue, 03 Dec 2019 10:18:32 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Peter Maydell" <peter.maydell@linaro.org>
-Subject: Re: [PATCH 2/4] target/arm: Abstract the generic timer frequency
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 64.147.123.21
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1ibvx4-0001b3-JL; Mon, 02 Dec 2019 19:22:05 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 47RjN22lNWz9sPL; Tue,  3 Dec 2019 11:21:54 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1575332514;
+ bh=UtK4MZTFX5Ll0DXboYjXPnFFAe2D7Fp1y5zVX5+Q3ZY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=YVqPCs+L2aR5OdrZPNE1791xeM+P8UTLF2nm6pneJP2rtg06ktc2HWlx6Sw+NS5Jh
+ QxcZnlr9OcZj7PqR6TarySOK4U8byKmNkvs7ZfXtd6X23AbY5p8f9w8XsdAj/NztrK
+ OcjB1Nxe+TmTvSxBM/XL3atLc+Tb9DQEJLMXsjTE=
+Date: Tue, 3 Dec 2019 11:21:43 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCHv3] exynos4210_gic: Suppress gcc9 format-truncation warnings
+Message-ID: <20191203002143.GD37909@umbus.fritz.box>
+References: <20191202060806.77968-1-david@gibson.dropbear.id.au>
+ <8b490fbe-2b09-2a2c-16a8-6739ce6a847d@linaro.org>
+ <CAFEAcA-W74ZGVEat3A1cmgCGrGY9gF_7T-w9DK0TSPEXc4Cm_g@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="YToU2i3Vx8H2dn7O"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-W74ZGVEat3A1cmgCGrGY9gF_7T-w9DK0TSPEXc4Cm_g@mail.gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2401:3900:2:1::2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,60 +89,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VwPilpNw/Smx
+X-TUID: 0sCk3TE+pG9x
 
 
+--YToU2i3Vx8H2dn7O
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Tue, 3 Dec 2019, at 04:42, Peter Maydell wrote:
-> On Thu, 28 Nov 2019 at 05:44, Andrew Jeffery <andrew@aj.id.au> wrote:
+On Mon, Dec 02, 2019 at 05:44:11PM +0000, Peter Maydell wrote:
+> On Mon, 2 Dec 2019 at 16:08, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
 > >
-> > Prepare for SoCs such as the ASPEED AST2600 whose firmware configures
-> > CNTFRQ to values significantly larger than the static 62.5MHz value
-> > currently derived from GTIMER_SCALE. As the OS potentially derives its
-> > timer periods from the CNTFRQ value the lack of support for running
-> > QEMUTimers at the appropriate rate leads to sticky behaviour in the
-> > guest.
+> > On 12/1/19 6:08 AM, David Gibson wrote:
+> > >
+> > > -    for (i =3D 0; i < s->num_cpu; i++) {
+> > > +    /*
+> > > +     * This clues in gcc that our on-stack buffers do, in fact have
+> > > +     * enough room for the cpu numbers.  gcc 9.2.1 on 32-bit x86
+> > > +     * doesn't figure this out, otherwise and gives spurious warning=
+s.
+> > > +     */
+> > > +    assert(n <=3D EXYNOS4210_NCPUS);
+> > > +    for (i =3D 0; i < n; i++) {
+> > > +
+> > >          /* Map CPU interface per SMP Core */
 > >
-> > Substitute the GTIMER_SCALE constant with use of a helper to derive the
-> > period from gt_cntfrq stored in struct ARMCPU. Initially set gt_cntfrq
-> > to the frequency associated with GTIMER_SCALE so current behaviour is
-> > maintained.
+> > Watch out for the extra line added at the start of the block.  Otherwis=
+e,
 > >
-> > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> 
-> > +static inline unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
-> > +{
-> > +    /* XXX: Could include qemu/timer.h to get NANOSECONDS_PER_SECOND? */
-> > +    const unsigned int ns_per_s = 1000 * 1000 * 1000;
-> > +    return ns_per_s > cpu->gt_cntfrq ? ns_per_s / cpu->gt_cntfrq : 1;
-> > +}
-> 
-> This function is named gt_cntfrq_period_ns()...
-> 
-> >  static uint64_t gt_virt_cnt_read(CPUARMState *env, const ARMCPRegInfo *ri)
-> >  {
-> > +    ARMCPU *cpu = env_archcpu(env);
-> > +
-> >      /* Currently we have no support for QEMUTimer in linux-user so we
-> >       * can't call gt_get_countervalue(env), instead we directly
-> >       * call the lower level functions.
-> >       */
-> > -    return cpu_get_clock() / GTIMER_SCALE;
-> > +    return cpu_get_clock() / gt_cntfrq_period(cpu);
-> >  }
-> 
-> ...but here we call gt_cntfrq_period(), which doesn't exist,
-> and indeed at least one of the patchew build systems reported
-> it as a compile failure.
-> 
+> > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>=20
+> I thought about putting this in rc4 but eventually decided
+> against it. Queued for 5.0 (with the stray extra blank line
+> removed).
 
-Ah yep, I failed to test user mode after renaming the function and missed this.
+Great!
 
-I haven't seen an alert from patchew though, I wonder where that got to?
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-Andrew
+--YToU2i3Vx8H2dn7O
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl3lqpUACgkQbDjKyiDZ
+s5KuEg//UFgKQhzaHfjvcBROlr7x4twHsRWOLWgBcDPDwdlpNTIjs1PBdgOtMs7/
+VsBl2BmLDsOFqrZ5ZRdXCnEkqqTnwDiDJOSDBd/RDm+TE+HSFXOZ8sgi1N8BPeee
+Pwnu/bCDt4OkfkZc6iIE4QWE0zbz7GwLZG7B+9S43Ymoc0lnEukXHRab35sasw4W
+vUU9CFosmI8X8jS2eH39HLr8eBgjktmq8wnmK9kY8FobcUWuX/vWtk19ivpMjuER
+KcsOUywiDTCk64XcForkJwRym0s3R+8DivVYk2r17YDq1bA5Bk9mluRsJz/BEJ60
+aPu7CfO7vBfKNgNyhfX0y8dps83ghK3sdKJKwDlPvg61l3/b5uxGHWBV5n3tXpLP
+oEmgSpMJUCO395ONvCD6l9gjZARUHiRodk4uoQD9R5y1ripqFqA3zp0F9fixfHgX
+3dp8u80HnZz992SZOjBVTy5O4lL5Ne2enDNMBowAkEFS2hJs/qYO22wOag4C0lrI
+HR82DNuy38oRvbTsQ8O4VDPO3G1v24QB7Gcz1EqsJNSeJ4MrkoxfaPxwi+uvYsrW
+72ULRh2h2yDfyt1Lea8V4Gd1oGVPrXUQ8KqgYl0NSMePgmKztqvuTgyCk5Kvnopy
+GpvzBpHrOGxas/+G8bnpjhnYvaBEVYMgeT2SUaAe63zBnOhkpHM=
+=jc2+
+-----END PGP SIGNATURE-----
+
+--YToU2i3Vx8H2dn7O--

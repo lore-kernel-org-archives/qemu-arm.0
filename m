@@ -1,112 +1,118 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1007227lfc;
-        Mon, 2 Dec 2019 20:17:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxXcqnn4lUTx5D/zB5fLxPpHlE8DO3i4vF1+QNon+9To8UROKGTvVX8M57EC8oYzDxAhmp+
-X-Received: by 2002:a05:620a:68c:: with SMTP id f12mr3091345qkh.411.1575346626373;
-        Mon, 02 Dec 2019 20:17:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575346626; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1088182lfc;
+        Mon, 2 Dec 2019 22:06:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwg8LXGu9Gd+eHThndWhVY6oZMNHFq9EuufH445oa9pEoXCbv6dO/wTBS1//PDz2xoIMmG3
+X-Received: by 2002:a37:a3ca:: with SMTP id m193mr3446702qke.217.1575353164134;
+        Mon, 02 Dec 2019 22:06:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575353164; cv=none;
         d=google.com; s=arc-20160816;
-        b=zB5ucLH7iuuOr18Q8Bf/Kx0vjOUMRpeaVUHO2J5xw4683ITJRdwMYOV27I/tQVkWTV
-         CXR6HGtZVs7RAHAR3e2Tse3ias0AQT5qQaM6cfkvayy6kcTaeTvXLQLAoSGrELv3Rw0w
-         SoP6xtCpYZpTXK94O11NyWDXPGrtSGzj7dYAl86UCXkyzPZZOLbGXNsNgpE68icRXhTR
-         0oCsGj3CizZERBvvk1WBJJy6ku5tA2HgCqupsWgOcnmWV8fFJQVAY60yvPXMcmWQBoYJ
-         xtuxFk6w5AUDcZYx9xeEgPu7LmWPY9Jy3m2JzWLeD+oqrsUUT2OWxJSiOjTQeTNppgsZ
-         D6Og==
+        b=qG8j6znEtKgS0fS7iRUaC1oWBdWbtG0o5UOx70icKyuhzsPWwB8jbxExKNygMGXLDD
+         M9I+bkCcxGaOUxA60pL1/bGctlleB+uzp6EHmS9kw7FdoBhFopMKhr1J63K2OJ2Gzhwf
+         FTfJRyr9Z//1FhkU016G1jXlvpaHClY4I/a5tSX3sdx++hhd3H/G8h3TIJGj4pNJkNrz
+         exMEH7mctWpc+0+gpl5Dfncl4xEcEX03g1vXE7E2yVoinSY+JhR9a10LkaO7hpN+bDt0
+         mAQLuGazNk7dnuLwi2k5XA93le17mAvd2b7dHBI+cNhQ0PJrIcRKhplSLqhpdCt45uEC
+         mh+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature:dkim-signature;
-        bh=rb9NcXkJ9zfKj9uToigm9zdKRmguNiX84tLrvX+4KtM=;
-        b=m5QqlV0tRw+gzKPvdRiGd+F3TQJny9pHZAT64ev1drBiweb53rqLIOkTg6rvLOqska
-         ecdVw+41+BCRlTaXl0qr0NdDNZylyC6SA+g47vtSfSLTF+EcbPpX89W2Jh2EO/NiwvbY
-         BoWA/233nQwkqHv+pZQv/mGVmjI+S+G3DSQinfp4Gfit4jxkE8Fz3ZjtYULQwXCrMBRu
-         bDxrTxLOV+1JDsvpWo2zoSe/wJz3iY31iiV6OkgkAEAjl6OmLYj4G0PPmKQlfxr5PoJi
-         cGRuy57mD4M3EFdRK8oDZw07d176oXZEeahQUgi04ZTEygCxTR9QW+PWvcMFoe8tBWfi
-         5r9Q==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Uvedzpt4OkIgx2yiLQUlMfryhKEnzzdOmhEosWuDBL0=;
+        b=m2XI0Unz3cEeqbNUmEv8xwQMQaKyBUiK8PBQH5kskidUuLr/SYeCO4w4W4lHix1w4q
+         h0edU1feqG83O6HcIpR//bcD/fniKlMfaPMwrS0fEzwCXSLlVUpUSagPISXlRP/rU3ju
+         HXSH5lW7dRfE8SPvGA90yaOyNPIP55gp0SOvGIoLmPoWRLtyRKLm6W42y5hsYP0FTA8m
+         D5fcXkKwyt3G+dfXvPlJgW99e9HMiD8PDfQ/8qEmXByOY7/NdWCAc/cDcpuD7e3gXG7a
+         jcpBO1zGQTHOH0lTywhtZ2oBt30Yy4egFk4/x/aG1oY1QEGSkfEQT4OScWv1kuq2is0h
+         invg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=rxWOCAb4;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=WkWYouxI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=c43+a1nN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12si1229625qth.311.2019.12.02.20.17.06
+        by mx.google.com with ESMTPS id c18si1427876qkc.333.2019.12.02.22.06.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Dec 2019 20:17:06 -0800 (PST)
+        Mon, 02 Dec 2019 22:06:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=rxWOCAb4;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=WkWYouxI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48254 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=c43+a1nN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ibzcX-0000pm-B6
-	for alex.bennee@linaro.org; Mon, 02 Dec 2019 23:17:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33623)
+	id 1ic1Jz-0002Tl-Gr
+	for alex.bennee@linaro.org; Tue, 03 Dec 2019 01:06:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38488)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1ibzYz-0005dw-PM
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 23:13:26 -0500
+ (envelope-from <philmd@redhat.com>) id 1ic1Jj-0002TI-6v
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 01:05:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1ibzYy-0001BM-IX
- for qemu-arm@nongnu.org; Mon, 02 Dec 2019 23:13:25 -0500
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24]:56831)
+ (envelope-from <philmd@redhat.com>) id 1ic1Jg-0005Hl-LN
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 01:05:45 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:47499
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1ibzYy-00019R-9q; Mon, 02 Dec 2019 23:13:24 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id F2E39C28;
- Mon,  2 Dec 2019 23:13:22 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Mon, 02 Dec 2019 23:13:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
- :to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm1; bh=rb9NcXkJ9zfKj
- 9uToigm9zdKRmguNiX84tLrvX+4KtM=; b=rxWOCAb4QrTYOHw+AOy9CHaP5yQDu
- ds+pxsIFfO9BFgBI7FoLLK0qXoKMCesOvXF1pj3ogu+akepRTdud9P5IyiDf6E9I
- HYoKDLKa7qRu9+aNbSBmCBnxV82dR7xbjwjrMz4zUlOtqT6jdqM2BiKRvrGhBKs0
- 2AlmCWFeiZIbsHqfjDDrq4HDm7AaIyl8KX2m9mu195yT6/CdI/MO0M3j2u1FYkVY
- blZ9DmDe7az8dkBE5TNDLMGY+Yr2au8jFekLESI4N+3uBlOPl8wJF2IkT28TA7J3
- bQn+/y3rcladJtUYeXMGy+BstGRWwxLFVFa4Q9lCkwcya3sGsTm5eYB+A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :in-reply-to:message-id:mime-version:references:subject:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; bh=rb9NcXkJ9zfKj9uToigm9zdKRmguNiX84tLrvX+4KtM=; b=WkWYouxI
- 5CUu77WyTFyO2M6zDePAr/jScj+GR/8I3O1OKS/wMkCJcoao/7xt+pkb5ceAQRw0
- Cs74PJMWZ8/x4LXr5vZh5UGHxKxSTKsOJC/LrjYC+f+OAIJgvDTN4kbJSyBQysnD
- u81Cv8VAA+18JaHK085JNmtcLYPRk9755gp2tjWOc3FweK5GROnQXSfNVD3K0pP6
- BYw8nLFQnIuDGG+tvH/6tVVh9ZmQ+n06c4UcvATaD9gCfGZ2irydJv9OELuxfsO/
- KrDa+9GKXmi+FoalFwcjtIwHahZ6a/vbgJR90NOdcKFXPxrs2tdFm2aCCagTNpED
- L3Akb93Vzv5wKA==
-X-ME-Sender: <xms:4uDlXWeoiQ0yLw6ICzeAiEgMF9JqL1llktRxtbePxK80V5O26KIYAA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudejiedgieeiucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeetnhgurhgv
- ficulfgvfhhfvghrhicuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucfkphepvddtvd
- drkedurddukedrfedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghj
- rdhiugdrrghunecuvehluhhsthgvrhfuihiivgeptd
-X-ME-Proxy: <xmx:4uDlXUczAqMuYt8lCNKLlJfd1vBLMS0rPVgyainGXS8MTxMEMQi0yA>
- <xmx:4uDlXSiMIPsejHjsM-TXqyTMaZF3fTq1u8AoXfk5z9BWCTtqHxWQyA>
- <xmx:4uDlXYSmph7QTjLmpVx-V3E1y2WB0GC3rjbKy4d-W4wqm6d6BES1EA>
- <xmx:4uDlXeufxVmFIzmHGq7TnlI8ARfOdHd3fp8EKjtfGwgPjkWBN3F05A>
-Received: from mistburn.au.ibm.com (bh02i525f01.au.ibm.com [202.81.18.30])
- by mail.messagingengine.com (Postfix) with ESMTPA id E375C80060;
- Mon,  2 Dec 2019 23:13:19 -0500 (EST)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: qemu-arm@nongnu.org
-Subject: [PATCH v2 2/4] target/arm: Abstract the generic timer frequency
-Date: Tue,  3 Dec 2019 14:44:38 +1030
-Message-Id: <20191203041440.6275-3-andrew@aj.id.au>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191203041440.6275-1-andrew@aj.id.au>
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ic1Jg-0005Fc-FO
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 01:05:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575353143;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Uvedzpt4OkIgx2yiLQUlMfryhKEnzzdOmhEosWuDBL0=;
+ b=c43+a1nNFnnvJu73mRFRnh0tKF/Brq9vvjIA4fnJAYzd9OUEqQMCgXG1iKybWQji2Cx79V
+ bTCbtA6ry7hFJ7jZqkPn1OtpTx729q9BXfpvPBAIZsb1BRGJe1Oaxv8mlYD28fNh/v9zlB
+ rxDE6emjpv2619RXSd7+pAEHAnicdeY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-375-XR4lizlWNgS93tHlJsWgRA-1; Tue, 03 Dec 2019 01:05:42 -0500
+Received: by mail-wm1-f69.google.com with SMTP id n4so548015wmd.7
+ for <qemu-arm@nongnu.org>; Mon, 02 Dec 2019 22:05:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Uvedzpt4OkIgx2yiLQUlMfryhKEnzzdOmhEosWuDBL0=;
+ b=NUsG4h6lj5n9fZLhDoClUrA4KPLBnqARWuZW7Cq1BIR5NyGaJ9qmBD1ZZ5rbsHmQzk
+ c6UYlP1AZeIv9kU6QfAiP0i8imXLBHv2MpLFVmi/bci/13HCS7FjTNeiWrB/fRKtErmr
+ 1JIL1h31Dnd2gceUCCgkg2VNl5OQ7YskkqRZ7FlqGFLhM539i8H9KJirHNjDvQziRm9h
+ jSMeZ/IqYRPBhZnDoy0WpBUmDLsHRDX7kLMf3fx68yfkh01f8CVwiA/in6DQkCq4m5DA
+ InDBqvoHh1JKp0aqp9tmRJrroCQt8yjJdCxnFQpewo/GWoTpeOIM0dMG0C22VkzO+cYY
+ NJ4A==
+X-Gm-Message-State: APjAAAUcARjcFRNBP17g6GVZSUMWNl7+Vq2skd/XbHPP1susqkVXincb
+ ZOdPHZiJdcENC7W+8lu5//tb4mlB0Gjoze9ubq0j8trt5jd57Q+DG92pwOAbsWSsuuOv+uVyOgg
+ M3e5T8xPhTMqk
+X-Received: by 2002:a1c:6707:: with SMTP id b7mr28806157wmc.54.1575353141380; 
+ Mon, 02 Dec 2019 22:05:41 -0800 (PST)
+X-Received: by 2002:a1c:6707:: with SMTP id b7mr28806135wmc.54.1575353141122; 
+ Mon, 02 Dec 2019 22:05:41 -0800 (PST)
+Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
+ [88.21.103.182])
+ by smtp.gmail.com with ESMTPSA id n188sm1991006wme.14.2019.12.02.22.05.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Dec 2019 22:05:40 -0800 (PST)
+Subject: Re: [PATCH v2 0/4] Expose GT CNTFRQ as a CPU property to support
+ AST2600
+To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
 References: <20191203041440.6275-1-andrew@aj.id.au>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <6540201e-b8dc-753b-cdaf-5d7da8716714@redhat.com>
+Date: Tue, 3 Dec 2019 07:05:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20191203041440.6275-1-andrew@aj.id.au>
+Content-Language: en-US
+X-MC-Unique: XR4lizlWNgS93tHlJsWgRA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 64.147.123.24
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,107 +124,20 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
- Richard Henderson <richard.henderson@linaro.org>, clg@kaod.org, joel@jms.id.au
+Cc: peter.maydell@linaro.org, joel@jms.id.au, qemu-devel@nongnu.org,
+ clg@kaod.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LjCAVguV7OrN
+X-TUID: vygdvB+LnkAh
 
-Prepare for SoCs such as the ASPEED AST2600 whose firmware configures
-CNTFRQ to values significantly larger than the static 62.5MHz value
-currently derived from GTIMER_SCALE. As the OS potentially derives its
-timer periods from the CNTFRQ value the lack of support for running
-QEMUTimers at the appropriate rate leads to sticky behaviour in the
-guest.
+On 12/3/19 5:14 AM, Andrew Jeffery wrote:
+> Hello,
+> 
+> This is a v2 of the belated follow-up from a few of my earlier attempts to fix
+> up the ARM generic timer for correct behaviour on the ASPEED AST2600 SoC. The
+> AST2600 clocks the generic timer at the rate of HPLL, which is configured to
+> 1125MHz.  This is significantly quicker than the currently hard-coded generic
+> timer rate of 62.5MHz and so we see "sticky" behaviour in the guest.
 
-Substitute the GTIMER_SCALE constant with use of a helper to derive the
-period from gt_cntfrq stored in struct ARMCPU. Initially set gt_cntfrq
-to the frequency associated with GTIMER_SCALE so current behaviour is
-maintained.
-
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.c    |  2 ++
- target/arm/cpu.h    | 10 ++++++++++
- target/arm/helper.c | 10 +++++++---
- 3 files changed, 19 insertions(+), 3 deletions(-)
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 7a4ac9339bf9..5698a74061bb 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -974,6 +974,8 @@ static void arm_cpu_initfn(Object *obj)
-     if (tcg_enabled()) {
-         cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
-     }
-+
-+    cpu->gt_cntfrq = NANOSECONDS_PER_SECOND / GTIMER_SCALE;
- }
- 
- static Property arm_cpu_reset_cbar_property =
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 83a809d4bac4..666c03871fdf 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -932,8 +932,18 @@ struct ARMCPU {
-      */
-     DECLARE_BITMAP(sve_vq_map, ARM_MAX_VQ);
-     DECLARE_BITMAP(sve_vq_init, ARM_MAX_VQ);
-+
-+    /* Generic timer counter frequency, in Hz */
-+    uint64_t gt_cntfrq;
- };
- 
-+static inline unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
-+{
-+    /* XXX: Could include qemu/timer.h to get NANOSECONDS_PER_SECOND? */
-+    const unsigned int ns_per_s = 1000 * 1000 * 1000;
-+    return ns_per_s > cpu->gt_cntfrq ? ns_per_s / cpu->gt_cntfrq : 1;
-+}
-+
- void arm_cpu_post_init(Object *obj);
- 
- uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 65c4441a3896..2622a9a8d02f 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2409,7 +2409,9 @@ static CPAccessResult gt_stimer_access(CPUARMState *env,
- 
- static uint64_t gt_get_countervalue(CPUARMState *env)
- {
--    return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / GTIMER_SCALE;
-+    ARMCPU *cpu = env_archcpu(env);
-+
-+    return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / gt_cntfrq_period_ns(cpu);
- }
- 
- static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
-@@ -2445,7 +2447,7 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
-          * set the timer for as far in the future as possible. When the
-          * timer expires we will reset the timer for any remaining period.
-          */
--        if (nexttick > INT64_MAX / GTIMER_SCALE) {
-+        if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
-             timer_mod_ns(cpu->gt_timer[timeridx], INT64_MAX);
-         } else {
-             timer_mod(cpu->gt_timer[timeridx], nexttick);
-@@ -2874,11 +2876,13 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
- 
- static uint64_t gt_virt_cnt_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-+    ARMCPU *cpu = env_archcpu(env);
-+
-     /* Currently we have no support for QEMUTimer in linux-user so we
-      * can't call gt_get_countervalue(env), instead we directly
-      * call the lower level functions.
-      */
--    return cpu_get_clock() / GTIMER_SCALE;
-+    return cpu_get_clock() / gt_cntfrq_period_ns(cpu);
- }
- 
- static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
--- 
-2.20.1
+Glad you fixed this! I hit the same problem with the Raspi4.
 

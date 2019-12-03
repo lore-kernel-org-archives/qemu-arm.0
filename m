@@ -1,56 +1,56 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp976020lfc;
-        Mon, 2 Dec 2019 19:35:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzizsLwfonwPdMcc2Zbs7ertYJfe6J8koflGoesYd3Deuf+RpfDJj+7eacdmEnhSCJvnRSm
-X-Received: by 2002:a54:4595:: with SMTP id z21mr2126020oib.136.1575344124473;
-        Mon, 02 Dec 2019 19:35:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575344124; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp976066lfc;
+        Mon, 2 Dec 2019 19:35:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx3WPK/YFo8mmrj6xoP5ES0fH55OROY/CcxkXLg8uj/6fO+eCirEsELJ7VByUMp+RfWrdXn
+X-Received: by 2002:a9d:6a7:: with SMTP id 36mr1735869otx.136.1575344126896;
+        Mon, 02 Dec 2019 19:35:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575344126; cv=none;
         d=google.com; s=arc-20160816;
-        b=ICPI+w0zZqs5UOTlUMXzah51W3eM3hJJZfhd4jJWP4EBFrHgLvcPkCig1eKAnUDWIa
-         DPKTRcBUJtZq4S0CbV/56XbzuNZ9X2M5vzE8BLrvX5hP130GWtJ3waH5knzRyOzSgvVk
-         xGmsbhY99DHfvLumJ5Hz7UnKKys6KP2A3XaI2x7qdPoiZsSarKHnVM9Wy3YAQEJAC9fe
-         QYOzjeOuzpnmvCNuJRiCgMYYbekQbfdiiza6/HlTAt4hzggQOsjIHSrI1PwFXumYb9Ns
-         0QrXKZFm4vJI1gRXPqhaFfssa4J7qm4phFS+JR1R7enmRCER1rrcakt4Nt6om3SjTATk
-         E4Lw==
+        b=W/Cz21Lqp4kyHwd2K6T720Dz23ZgpQZVS9IPze5UN+YCsJrGPc6g1i9r1UY79ra4D9
+         1+moO0fyJATl3aNpa2Od2ECnyL/uWsqQ+M3xUS7j4NAGBJCbrpvyHBjLoy53ikytw/pQ
+         o8OgCuyUp9qsqnEtHGdURHDjigsXdTUTsf1oytxrx+17OLlq9o9jSCUlYoAqN5pKr/rE
+         zOqxS7dbLS9LV3EzTyb8X+kp7Yj+rFks+SfWPBlDjd1MYT87A/whzunUrLvKuyHeYBHK
+         QOD9AWPdNHcCfEo32GAqCkVfepSbsZ4Qdm7cK0HFMK1o+kw6JTxeJ0E25+hpF6kf5cxa
+         bMHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:cc:to:subject;
-        bh=iY+6S69KmYfkMMwt77xDnHGQ1qW0QUZW0dDn/Br2ah4=;
-        b=MnnAZiwH3EoqbxaB2YYzqIdNl7OOJyHdAYAvBmTVW6b33DuqgMBJo5cFsLkfNyhgLI
-         7RS/+/6Vvb+ML/rggsa/0WvxsYb8B1OmtvMJd3t6cf4S1uS7y7h4HCdoqWgkx58dtZPJ
-         1Hdql5MnRSyrXvq/8BedaxI+iTVdYxexMk+CAEbBsPyWZdcH3Yq8Z4o4bRzjJPy9DZ+5
-         V+ya6iOfInw3T8GAuoYGtmDq2kJCpTxUv15QkYPZGZWpCZRxEi/5izVzHjzzSahzuWH6
-         Kjrksoz/vUddieHnLJbwa78QVZe5ITUFxxAZlnVcy61RCIStjV0gqTrIKaZXG5TO/EU7
-         h4Fg==
+        bh=BwnIsEv/+7gQoqky1bIiOUZrDDgoWm/lZyt9+lSb6Y4=;
+        b=jwYSQND3QVyvYYHbygQTo2KCNIbK2xmst2ZpmrQFjODtyiQgx90KAi8ELPiTA89bqK
+         /hh5Xki8PHJ1dwic7lbu/3P4LBUzyjCCwiHGsOQSe2Hv2U16y+YavO+e9TVa84wU5R95
+         tx20BQ+8q5IneajxKctKgYhSxhx8VKSI3aKN9cqH2D/UPmT4Q0JiyRH46fLI+CK4yTaz
+         aPSBG2mur2649avF0DWz4XF10eHeVcSXPrLBOsPV0SVzTB+goP27NCf3sNPRxGh4PT6P
+         5dnk2B7mnfvojv8ma/hLmEGlP7lhuPKwuWulhrh9k4EiUKtdFKAnIqToqx+GshHpmfUK
+         6QQA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id d62si417125oib.144.2019.12.02.19.35.24;
-        Mon, 02 Dec 2019 19:35:24 -0800 (PST)
+        by mx.google.com with ESMTP id d62si417125oib.144.2019.12.02.19.35.26;
+        Mon, 02 Dec 2019 19:35:26 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726673AbfLCDfX (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 2 Dec 2019 22:35:23 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:7191 "EHLO huawei.com"
+        id S1726707AbfLCDfZ (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Mon, 2 Dec 2019 22:35:25 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:6739 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726319AbfLCDfX (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 2 Dec 2019 22:35:23 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 95E033A9891C360ACA0D;
-        Tue,  3 Dec 2019 11:35:19 +0800 (CST)
-Received: from [127.0.0.1] (10.133.224.57) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0; Tue, 3 Dec 2019
- 11:35:09 +0800
+        id S1726319AbfLCDfZ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 2 Dec 2019 22:35:25 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id 1D09FC0E0806ED26CA59;
+        Tue,  3 Dec 2019 11:35:24 +0800 (CST)
+Received: from [127.0.0.1] (10.133.224.57) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.439.0; Tue, 3 Dec 2019
+ 11:35:14 +0800
 Subject: Re: [RESEND PATCH v21 5/6] target-arm: kvm64: handle SIGBUS signal
  from kernel or KVM
-To:     Beata Michalska <beata.michalska@linaro.org>
+To:     Beata Michalska <beata.michalska@linaro.org>,
+        Igor Mammedov <imammedo@redhat.com>
 CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
         <shannon.zhaosl@gmail.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
+        "Peter Maydell" <peter.maydell@linaro.org>,
         Laszlo Ersek <lersek@redhat.com>, <james.morse@arm.com>,
         gengdongjiu <gengdongjiu@huawei.com>, <mtosatti@redhat.com>,
         <rth@twiddle.net>, <ehabkost@redhat.com>,
@@ -62,14 +62,15 @@ References: <20191111014048.21296-1-zhengxiang9@huawei.com>
  <20191111014048.21296-6-zhengxiang9@huawei.com>
  <CADSWDztF=eaUDNnq8bhnPyTKW1YjAWm4UBaH-NBPkzjnzx0bxg@mail.gmail.com>
  <22a3935a-a672-f8f1-e5be-6c0725f738c4@huawei.com>
- <CADSWDzsEFNMKrC6h4=r70KMzG8XX_5DS1CfGBGBCMmOTfu6qyA@mail.gmail.com>
+ <20191127140223.58d1a35b@redhat.com>
+ <CADSWDztu=aP=ckxLsKdP7URmYFLn=JtOcm=zMAGJXo-G_9TOHQ@mail.gmail.com>
 From:   Xiang Zheng <zhengxiang9@huawei.com>
-Message-ID: <9e22a655-5333-ba65-a00d-712b5b144ff4@huawei.com>
-Date:   Tue, 3 Dec 2019 11:35:07 +0800
+Message-ID: <4282defe-80e6-fdd9-ece0-3349c94f2611@huawei.com>
+Date:   Tue, 3 Dec 2019 11:35:13 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <CADSWDzsEFNMKrC6h4=r70KMzG8XX_5DS1CfGBGBCMmOTfu6qyA@mail.gmail.com>
+In-Reply-To: <CADSWDztu=aP=ckxLsKdP7URmYFLn=JtOcm=zMAGJXo-G_9TOHQ@mail.gmail.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
@@ -79,196 +80,81 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: WkPTjdMBoFXI
-
+X-TUID: e9ak3u2ROVo9
 
 
 On 2019/11/27 22:17, Beata Michalska wrote:
-> Hi
+> On Wed, 27 Nov 2019 at 13:03, Igor Mammedov <imammedo@redhat.com> wrote:
+>>
+>> On Wed, 27 Nov 2019 20:47:15 +0800
+>> Xiang Zheng <zhengxiang9@huawei.com> wrote:
+>>
+>>> Hi Beata,
+>>>
+>>> Thanks for you review!
+>>>
+>>> On 2019/11/22 23:47, Beata Michalska wrote:
+>>>> Hi,
+>>>>
+>>>> On Mon, 11 Nov 2019 at 01:48, Xiang Zheng <zhengxiang9@huawei.com> wrote:
+>>>>>
+>>>>> From: Dongjiu Geng <gengdongjiu@huawei.com>
+>>>>>
+>>>>> Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+>>>>> translates the host VA delivered by host to guest PA, then fills this PA
+>>>>> to guest APEI GHES memory, then notifies guest according to the SIGBUS
+>>>>> type.
+>>>>>
+>>>>> When guest accesses the poisoned memory, it will generate a Synchronous
+>>>>> External Abort(SEA). Then host kernel gets an APEI notification and calls
+>>>>> memory_failure() to unmapped the affected page in stage 2, finally
+>>>>> returns to guest.
+>>>>>
+>>>>> Guest continues to access the PG_hwpoison page, it will trap to KVM as
+>>>>> stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
+>>>>> Qemu, Qemu records this error address into guest APEI GHES memory and
+>>>>> notifes guest using Synchronous-External-Abort(SEA).
+>>>>>
+>>>>> In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
+>>>>> in which we can setup the type of exception and the syndrome information.
+>>>>> When switching to guest, the target vcpu will jump to the synchronous
+>>>>> external abort vector table entry.
+>>>>>
+>>>>> The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
+>>>>> ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
+>>>>> not valid and hold an UNKNOWN value. These values will be set to KVM
+>>>>> register structures through KVM_SET_ONE_REG IOCTL.
+>>>>>
+>>>>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>>>>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+>>>>> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+>>>>> ---
+>> [...]
+>>>>> diff --git a/include/hw/acpi/acpi_ghes.h b/include/hw/acpi/acpi_ghes.h
+>>>>> index cb62ec9c7b..8e3c5b879e 100644
+>>>>> --- a/include/hw/acpi/acpi_ghes.h
+>>>>> +++ b/include/hw/acpi/acpi_ghes.h
+>>>>> @@ -24,6 +24,9 @@
+>>>>>
+>>>>>  #include "hw/acpi/bios-linker-loader.h"
+>>>>>
+>>>>> +#define ACPI_GHES_CPER_OK                   1
+>>>>> +#define ACPI_GHES_CPER_FAIL                 0
+>>>>> +
+>>>>
+>>>> Is there really a need to introduce those ?
+>>>>
+>>>
+>>> Don't you think it's more clear than using "1" or "0"? :)
+>>
+>> or maybe just reuse default libc return convention: 0 - ok, -1 - fail
+>> and drop custom macros
+>>
 > 
-> On Wed, 27 Nov 2019 at 12:47, Xiang Zheng <zhengxiang9@huawei.com> wrote:
->>
->> Hi Beata,
->>
->> Thanks for you review!
->>
-> YAW
-> 
->> On 2019/11/22 23:47, Beata Michalska wrote:
->>> Hi,
->>>
->>> On Mon, 11 Nov 2019 at 01:48, Xiang Zheng <zhengxiang9@huawei.com> wrote:
->>>>
->>>> From: Dongjiu Geng <gengdongjiu@huawei.com>
->>>>
->>>> Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
->>>> translates the host VA delivered by host to guest PA, then fills this PA
->>>> to guest APEI GHES memory, then notifies guest according to the SIGBUS
->>>> type.
->>>>
->>>> When guest accesses the poisoned memory, it will generate a Synchronous
->>>> External Abort(SEA). Then host kernel gets an APEI notification and calls
->>>> memory_failure() to unmapped the affected page in stage 2, finally
->>>> returns to guest.
->>>>
->>>> Guest continues to access the PG_hwpoison page, it will trap to KVM as
->>>> stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
->>>> Qemu, Qemu records this error address into guest APEI GHES memory and
->>>> notifes guest using Synchronous-External-Abort(SEA).
->>>>
->>>> In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
->>>> in which we can setup the type of exception and the syndrome information.
->>>> When switching to guest, the target vcpu will jump to the synchronous
->>>> external abort vector table entry.
->>>>
->>>> The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
->>>> ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
->>>> not valid and hold an UNKNOWN value. These values will be set to KVM
->>>> register structures through KVM_SET_ONE_REG IOCTL.
->>>>
->>>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->>>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
->>>> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
->>>> ---
->>>>  hw/acpi/acpi_ghes.c         | 297 ++++++++++++++++++++++++++++++++++++
->>>>  include/hw/acpi/acpi_ghes.h |   4 +
->>>>  include/sysemu/kvm.h        |   3 +-
->>>>  target/arm/cpu.h            |   4 +
->>>>  target/arm/helper.c         |   2 +-
->>>>  target/arm/internals.h      |   5 +-
->>>>  target/arm/kvm64.c          |  64 ++++++++
->>>>  target/arm/tlb_helper.c     |   2 +-
->>>>  target/i386/cpu.h           |   2 +
->>>>  9 files changed, 377 insertions(+), 6 deletions(-)
->>>>
->>>> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
->>>> index 42c00ff3d3..f5b54990c0 100644
->>>> --- a/hw/acpi/acpi_ghes.c
->>>> +++ b/hw/acpi/acpi_ghes.c
->>>> @@ -39,6 +39,34 @@
->>>>  /* The max size in bytes for one error block */
->>>>  #define ACPI_GHES_MAX_RAW_DATA_LENGTH       0x1000
->>>>
->>>> +/*
->>>> + * The total size of Generic Error Data Entry
->>>> + * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
->>>> + * Table 18-343 Generic Error Data Entry
->>>> + */
->>>> +#define ACPI_GHES_DATA_LENGTH               72
->>>> +
->>>> +/*
->>>> + * The memory section CPER size,
->>>> + * UEFI 2.6: N.2.5 Memory Error Section
->>>> + */
->>>> +#define ACPI_GHES_MEM_CPER_LENGTH           80
->>>> +
->>>> +/*
->>>> + * Masks for block_status flags
->>>> + */
->>>> +#define ACPI_GEBS_UNCORRECTABLE         1
->>>
->>> Why not listing all supported statuses ? Similar to error severity below ?
->>>
->>
->> We now only use the first bit for uncorrectable error. The correctable errors
->> are handled in host and would not be delivered to QEMU.
->>
->> I think it's unnecessary to list all the bit masks.
-> 
-> I'm not sure we are using all the error severity types either, but fair enough.
->>
->>>> +
->>>> +/*
->>>> + * Values for error_severity field
->>>> + */
->>>> +enum AcpiGenericErrorSeverity {
->>>> +    ACPI_CPER_SEV_RECOVERABLE,
->>>> +    ACPI_CPER_SEV_FATAL,
->>>> +    ACPI_CPER_SEV_CORRECTED,
->>>> +    ACPI_CPER_SEV_NONE,
->>>> +};
->>>> +
->>>>  /*
->>>>   * Now only support ARMv8 SEA notification type error source
->>>>   */
->>>> @@ -49,6 +77,16 @@
->>>>   */
->>>>  #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
->>>>
->>>> +#define UUID_BE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)        \
->>>> +    {{{ ((a) >> 24) & 0xff, ((a) >> 16) & 0xff, ((a) >> 8) & 0xff, (a) & 0xff, \
->>>> +    ((b) >> 8) & 0xff, (b) & 0xff,                   \
->>>> +    ((c) >> 8) & 0xff, (c) & 0xff,                    \
->>>> +    (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) } } }
->>>> +
->>>> +#define UEFI_CPER_SEC_PLATFORM_MEM                   \
->>>> +    UUID_BE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
->>>> +    0xED, 0x7C, 0x83, 0xB1)
->>>> +
->>>>  /*
-> 
-> As suggested in different thread - could this be also made common with
-> NVMe code ?
-
-Sure, I will make it common in a separate patch.
-
->>>> @@ -1036,6 +1062,44 @@ int kvm_arch_get_registers(CPUState *cs)
->>>>      return ret;
->>>>  }
->>>>
->>>> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->>>> +{
->>>> +    ram_addr_t ram_addr;
->>>> +    hwaddr paddr;
->>>> +
->>>> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
->>>> +
->>>> +    if (acpi_enabled && addr &&
->>>> +            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
->>>> +        ram_addr = qemu_ram_addr_from_host(addr);
->>>> +        if (ram_addr != RAM_ADDR_INVALID &&
->>>> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
->>>> +            kvm_hwpoison_page_add(ram_addr);
->>>> +            /*
->>>> +             * Asynchronous signal will be masked by main thread, so
->>>> +             * only handle synchronous signal.
->>>> +             */
->>>
->>> I'm not entirely sure that the comment above is correct (it has been
->>> pointed out before). I would expect the AO signal to be handled here as
->>> well. Not having proper support to do that just yet is another story but
->>> the comment might be bit misleading.
->>>
->>
->> We also expect the AO signal can be handled here. Maybe we could add the comment like:
->>
->> "Asynchronous signal is masked by main thread now. Once it can be asserted, we could
->> handle it." :)
->>
-> Still not entirely there - if I'm not mistaken. Both BUS_MCEERR_AR and
-> BUS_MVEERR_AO can end up here.
-> I'm not entirely sure what you mean by "masked by main thread" ? Both will be
-> handled by sigbus_handler and as such both will end up here either
-> directly through kvm_on_sigbus
-> or through kvm_cpu_exec with pending sigbus. Or am I misguided ?
+> Totally agree.
 > 
 
-In fact BUS_MCEERR_AO cannot go to here, because QEMU main thread masks the SIGBUS signal[1]
-and vcpu threads can only handle the BUS_MCEERR_AR.
-
-         Qemu Main Thread   VCPU Threads
-
-Kernel:  Mask SIGBUS        AO SIGBUS would be send to Qemu main thread in kernel(kill_proc())
-
-KVM:     Mask SIGBUS        Only send AR SIGBUS to VCPU threads in KVM(kvm_send_hwpoison_signal())
-
-
-However, maybe we shouldn't consider the behaviors of kernel or KVM and just keep
-the logic of handling the AO signal in kvm_arch_on_sigbus_vcpu() like what x86 version
-does.
-
-
-[1] https://lists.gnu.org/archive/html/qemu-devel/2017-11/msg03575.html
+OK, let's reuse default libc return convention.
 
 -- 
 

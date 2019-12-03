@@ -1,131 +1,191 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1738462lfc;
-        Tue, 3 Dec 2019 08:26:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyvEvmZTrbdYKi2RntlOWLJP6AKLrl1bzjhogM29L66iSotofWCo3Yl5uASpdTf5WPOReaT
-X-Received: by 2002:a17:906:8554:: with SMTP id h20mr6936518ejy.203.1575390369851;
-        Tue, 03 Dec 2019 08:26:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575390369; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1743795lfc;
+        Tue, 3 Dec 2019 08:30:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyAAVyz3KclL0h2jMu3BaZ43PEsepNcA1DsB2t6JPX8ApGPN1lyoY9ks0AgFnCJEib01TL2
+X-Received: by 2002:ac8:138b:: with SMTP id h11mr5822639qtj.153.1575390607572;
+        Tue, 03 Dec 2019 08:30:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575390607; cv=none;
         d=google.com; s=arc-20160816;
-        b=vw0rE7lk6PH7Ru8MipeDz16eBPkFx3xJaBYHzCWBEKxDJwFRNREkXFJ97JzSgLcEQt
-         7PfQlpUMYGF1zGC2c9Yl7Q54c9MxoRusQZyejRe/FlWBsDKbdmf43Dc9AsQ1pL4kjlG7
-         IsPwqr1+zFa4zEa3qArpu1NWMqAF0IoeRk9q2BpC885JNnlfG7PPxWCacETga81wbniL
-         jR4+m/gA0zFrJpgf+5OwcQqZLoV6VX8vDBrPNyoj0quckzE75gAt4ow5rUvje0ZiPs5/
-         OTSIoFIIu9lMttpjuHDlltlHzOhwXuSnO6X+6pjtwsRV+pyLK8CtNQfs8d4QQF13QQte
-         WkHQ==
+        b=INOYO34rDGQBGeR8Vl0RE+U/LvWy97d82i/eZ37N8XCHRdcE9dSLetbPgnNgVRXjbC
+         s2W/V+k6NG9PzS4ua5fgivOWkym/giCxaicMUUXczU5gypv587b1DiOtQOeIbtacYSV3
+         AMme/5cUb1t+dGXWVFFOgtfeWVhKv7G6TvVvrEQqRNPsb3kvPhjCMD+eeET6wjny6hav
+         /+sg/tWexPLDu7HfXWXj0hFnIKkEhjgoGypOVendm4nsnj1ANdzmWI5/5i/wwZLLas/m
+         M7wCXR8K1IQRk5n5InEoCp+bq8I1hlWeLwJVsAgoAnIPxyNLhmX8PVHp4AUcWy1tot5l
+         l75w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kK01j+jtcyJhmrX4/7BKHM8cxyWwgPUG6WT1zXZuUmY=;
-        b=aJNVXBVdSqteRLHml8GjsrIZFQrDU8JZCjQw64BgZX9Yc23tqj2nsn+LU69/owGj8I
-         taz/H33BuGP6rEHOli+zP4zzdsG00rO7HbA+GOjLGvarFpqLJxPjWmzlqJkjeQayK5cf
-         0E0l7RpJpVYsIP+ytkjXw9Qe5aNwFbwBo7ajjyD4HguhOePIfeMKYVyBD9q3iyoZkB9E
-         qB+cIiqFqheKLJe65pAuvkANcnO1Zpkwklg8PHWdzERPKOuy2llmnKovyTqdbv2cwo/6
-         SCvmhubyN2wSE8B0TYsTTPkgloQj7LrAm39i3/MBczcRDD8IlAF7hMyyOBky2MVqjFcv
-         ki/w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=m/GrtFDIpUGCPR2VKiymWN5ig4th9UzpETIPcVzQZwM=;
+        b=hJS3WPGh5XC4t5mCjS2eiYfhBCihz4HziS+N2cysifg/GKq9aPMjqAgW2dyBOAnzud
+         OrhOrx0Q+nFKbhzggcP4oykIMeWpix6aIQ9P+oTYApnLiyhRV7f6tnNldt+KI5hvxHIM
+         4oIzy7qLd9NMXTvQeAthCihsqs/LrCCc+UNoKGus4FLtuoSKoJsUl9mREPN4NESUfK/v
+         sZj3xbhhrfrFk4JqbrCmelkh6aHlAldRcquqVo6E5tRAPDoiD6en9dkLffEvqWWRVs2B
+         ytbnxROtoJdKOMZpBAO0fwKiDXUpHovY3a0hRlWxc6yN6tMFupqLUIfP+Yeg6E2eqc6Y
+         9h0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kxU82a8S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=Gxj93EMQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y24si2519106eds.102.2019.12.03.08.26.09
+        by mx.google.com with ESMTPS id h32si1165746qtd.129.2019.12.03.08.30.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2019 08:26:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Dec 2019 08:30:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kxU82a8S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55774 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Gxj93EMQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55878 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icB03-0001yn-My
-	for alex.bennee@linaro.org; Tue, 03 Dec 2019 11:26:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45632)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1icB3s-000615-MY
+	for alex.bennee@linaro.org; Tue, 03 Dec 2019 11:30:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44492)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <bilalwasim676@gmail.com>) id 1icAfb-0007aP-4f
- for qemu-devel@nongnu.org; Tue, 03 Dec 2019 11:05:00 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1icAoy-0003aA-Lw
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 11:14:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <bilalwasim676@gmail.com>) id 1icAfY-0003bA-JS
- for qemu-devel@nongnu.org; Tue, 03 Dec 2019 11:04:57 -0500
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:33282)
+ (envelope-from <richard.henderson@linaro.org>) id 1icAox-0003Sz-A9
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 11:14:40 -0500
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:38479)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <bilalwasim676@gmail.com>)
- id 1icAfX-0003Vs-Gk; Tue, 03 Dec 2019 11:04:55 -0500
-Received: by mail-qv1-xf42.google.com with SMTP id z3so1746657qvn.0;
- Tue, 03 Dec 2019 08:04:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kK01j+jtcyJhmrX4/7BKHM8cxyWwgPUG6WT1zXZuUmY=;
- b=kxU82a8ScrfqhiA70X7n4MfyE6AWrHQ/9lcfQ/19RC4Y0aNTqQCJNVFbqePLERicNN
- jhSFFHCBxNHDoLuvXdrSN640pKNY4sr3fXbKF/NBtIPQHcVUPWJrs/Ti+eiHBtx2zgwR
- QkWyu+qkUeaKD3NuDglJXBPXSBmEUxSQs44s8kETv7Mg3XROl7bk4OT2odDJfDoSiGLE
- PIzg4qkaiMS2fsBez4kWMLTB9AwRjx+tr+GVWNAAQwjNkSMeZFIXdTXwZJfXeHl3mFzk
- rjE0JKMWIb+iaFYOZZqW0LSlbsFPK4qMiE1+V1608Qs9jkL2XvUTZ9vcQe1n00EXQv9V
- m5tA==
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1icAov-0003OE-5P
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 11:14:38 -0500
+Received: by mail-pl1-x642.google.com with SMTP id o8so1881955pls.5
+ for <qemu-arm@nongnu.org>; Tue, 03 Dec 2019 08:14:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=m/GrtFDIpUGCPR2VKiymWN5ig4th9UzpETIPcVzQZwM=;
+ b=Gxj93EMQEDNXx+9uH+yAaDemwYyjMep+z7TB242BIKQK09nNj945DFcwdZNZ+uaBnJ
+ sfjS80AHP7xe72AMXJnKmjco6bERdJdkfMnaGP94wrh7m7W459Kmz/9gFeB8UXsveF6Q
+ QJ+3dt1eRzjHpz6Pxb/9LNGkYNghSMpM19kPNIfhTdYelrvOth7cZoZ02fd0+uEKrHF7
+ pAm5+Mpd4gnomkBq9Gl4JahycOG5I3Y9u1erWYy7uevU78vrTWnyrnodr+OkjGIomOCm
+ YeaA4ZGa7EfOxKh28RtfgzM+f18OTVxZIOz1FQ3tKDq33Hosdx5NCEwDhRmFpyhYsRLh
+ 5rxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kK01j+jtcyJhmrX4/7BKHM8cxyWwgPUG6WT1zXZuUmY=;
- b=ZdRRaT2BZZg+sVxvt4sxb2tUyTxhizh1p4/4J4fduPpTAsMed3Wtr8Hq2FxVKJC09y
- Wk/an09wftZvQ3QlSfcPzi1rXyAHNpV3HqPAc0BfipchcIfGtV7YLpvHeIysE9JHp+Zx
- zIv1cqJvUyUN0faI8LPCKg0I6l9L/311Oe0RcsSGj2K7gCqoB9jGbrvt4in5NP//ED+3
- KeLafX7p80XTVTVGxCnzliqI5tWT1BSfQg/3BQtJuwDdp8y6Oeq8qweRTmH+cNRoXpNo
- kq4FQOgNEhZWGBY9///gYsZjT4uCliZSzeoK7GAo71041OVi8kzqaoQi6nM0SiwnRV+E
- e0Sg==
-X-Gm-Message-State: APjAAAU6jNf5I7XGvS3s6zSaDuS0XzukctmWUhYlK8Oyykl3z+5y4MHb
- dneXteYPS4XW4yI3qgw7O4f2rUWo6EcFpyXcuBk=
-X-Received: by 2002:a05:6214:4f0:: with SMTP id
- cl16mr5858994qvb.213.1575389089889; 
- Tue, 03 Dec 2019 08:04:49 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=m/GrtFDIpUGCPR2VKiymWN5ig4th9UzpETIPcVzQZwM=;
+ b=ar30X2pM+AJe+Q89nDn21MNhIyFmT5G8N1aMGmkJh3yyhnyM+8yMfJ15I+ZxjZCpiJ
+ WR+GyZQ7fHD7Z/WDTjEYVqlbNEgsfFlSCsSjS2ZYClycCq8WrLZaPEgRdFvs5aiZtEkE
+ Ea6QFkiaX7Pv1J3RBhT7Sx4aqa69vFEFirTk6r592xoMT7CG+kB9Xb3Y5xU8RDqpf3Wc
+ 3XPQIWPuPCByrQEvypgP6+xC5sX0IEYVAYamzomsAgqkLHAI+XlNsy+aO2cE+xAY1+aC
+ 5SYKcXhXqAtjMYnpb1SRmmW0UQIX7g8iwViQYfhZfLqTOJVxEaHcid/UKeAM45Qmn/Op
+ lRNw==
+X-Gm-Message-State: APjAAAWBttpZToW23ScFVZhRlKUH8ynwEj/hpQa4l31k/xvDHQFlTvYG
+ RT0N8wysM+thoFIjP69Ipzo5o6A8kDQ=
+X-Received: by 2002:a17:902:6b01:: with SMTP id
+ o1mr5582660plk.24.1575389669582; 
+ Tue, 03 Dec 2019 08:14:29 -0800 (PST)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id s60sm708994pjb.3.2019.12.03.08.14.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 03 Dec 2019 08:14:28 -0800 (PST)
+Subject: Re: [PATCH v5 04/22] target/arm: Add helper_mte_check{1,2,3}
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20191011134744.2477-1-richard.henderson@linaro.org>
+ <20191011134744.2477-5-richard.henderson@linaro.org>
+ <CAFEAcA_WOMbFzFQghakLxxuCTc2b3p6eb18nS5KSrSj+oW-Ckg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <120a00d4-a33d-6263-c6d4-4671449d7dab@linaro.org>
+Date: Tue, 3 Dec 2019 08:14:26 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-References: <20191129150508.24404-1-bilalwasim676@gmail.com>
- <afe9efde-7ac1-8607-446a-8fbf10accece@redhat.com>
- <8c956ae31e8f44a2b831a5030b2448b4@SVR-IES-MBX-03.mgc.mentorg.com>
- <CAP+75-X_POJfTO=gOUu1zCPtcfnQ5yemQo0hqB_s3jy_C17o9g@mail.gmail.com>
-In-Reply-To: <CAP+75-X_POJfTO=gOUu1zCPtcfnQ5yemQo0hqB_s3jy_C17o9g@mail.gmail.com>
-From: Bilal Wasim <bilalwasim676@gmail.com>
-Date: Tue, 3 Dec 2019 21:04:38 +0500
-Message-ID: <CAHKB+OBU94Gh1qjnUZrEE0ARXezKbP37hcB02Gewjbb_bQM7oA@mail.gmail.com>
-Subject: Re: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
- mode.
-To: jasowang@redhat.com
-Content-Type: multipart/alternative; boundary="0000000000001602820598cedb09"
+In-Reply-To: <CAFEAcA_WOMbFzFQghakLxxuCTc2b3p6eb18nS5KSrSj+oW-Ckg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f42
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::642
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "aa1ronham@gmail.com" <aa1ronham@gmail.com>,
- "jcd@tribudubois.net" <jcd@tribudubois.net>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wasim,
- Bilal" <Bilal_Wasim@mentor.com>, philmd@redhat.com,
- "linux@roeck-us.net" <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sl8py06ZRXj4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yaxvTgJQvAf4
 
---0000000000001602820598cedb09
-Content-Type: text/plain; charset="UTF-8"
+Oh, to finish up on the replies...
 
-ping...
+On 12/3/19 1:42 PM, Peter Maydell wrote:
+>> +    ptr_tag = allocation_tag_from_addr(dirty_ptr);
+>> +    if (ptr_tag == 0) {
+>> +        ARMVAParameters p = aa64_va_parameters(env, dirty_ptr, stage1, true);
+>> +        if (p.tcma) {
+>> +            return clean_ptr;
+>> +        }
+>> +    }
+> 
+> I don't think this logic gets the "regime has two address ranges"
+> case correct. For a two-address-range translation regime (where
+> TCR_ELx has TCMA0 and TCMA1 bits, rather than just a single TCMA bit),
+> then the 'select' argument to this function needs to be involved,
+> because we should do a tag-unchecked access if:
+>  * addr[59:55]==0b00000 (ie select == 0 and ptr_tag == 0)
+>    and TCR_ELx.TCMA0 is set
+>  * addr[59:55]==0b11111 (ie select == 1 and ptr_tag == 0xf)
+>    and TCR_ELx.TCMA1 is set
+> (the pseudocode for this is in AArch64.AccessTagIsChecked(),
+> and the TCR_EL1.TCMA[01] bit definitions agree; the text in
+> D6.8.1 appears to be confused.)
 
---0000000000001602820598cedb09
-Content-Type: text/html; charset="UTF-8"
+It used to be correct.
 
-<div dir="ltr">ping...<br><img width="0" height="0" class="mailtrack-img" alt="" style="display:flex" src="https://mailtrack.io/trace/mail/ab61d4b3de3f44dd6a6ab1395b6369b442d6a47f.png?u=596396"></div>
+That was the lovely bit about physical vs logical tags.  Add 1 bit bit 55, let
+the carry ripple up, so that the physical tag check for TCMA was always against 0.
 
---0000000000001602820598cedb09--
+That seems to be broken now in the final spec.
+
+>> +        el = arm_current_el(env);
+>> +        regime_el = (el ? el : 1);   /* TODO: ARMv8.1-VHE EL2&0 regime */
+> 
+> We could write this as "regime_el(env, stage1)" if that function
+> wasn't local to helper.c, right ?
+
+Yes.
+
+>> +            /* noreturn; fall through to assert anyway */
+> 
+> hopefully this fallthrough comment syntax doesn't confuse any
+> of our compilers/static analyzers...
+
+It shouldn't...
+
+>> +            /* Tag check fail causes asynchronous flag set.  */
+>> +            env->cp15.tfsr_el[regime_el] |= 1 << select;
+> 
+> Won't this incorrectly accumulate tagfails for EL0 into
+> TFSR_EL1 rather than TFSRE0_EL1 ? I think you want "[el]".
+
+Yep.
+
+>> +            /* Case 3: Reserved. */
+>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>> +                          "Tag check failure with SCTLR_EL%d.TCF "
+>> +                          "set to reserved value %d\n", regime_el, tcf);
+> 
+> Technically this message is going to be wrong for the
+> case of el==0 (where it's SCTLR_EL1.TCF0, not .TCF, that's
+> been mis-set).
+
+Yep.
+
+
+r~

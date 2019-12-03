@@ -1,103 +1,98 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1480962lfc;
-        Tue, 3 Dec 2019 05:09:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw/8ZXSJODs5Pne/LT7Y1vPb5tU8aJAnXG7v9kF5P81QpvT/v14FtYC2v1rXNVrnaFtPfxm
-X-Received: by 2002:a17:906:6093:: with SMTP id t19mr5930558ejj.50.1575378546580;
-        Tue, 03 Dec 2019 05:09:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575378546; cv=none;
+Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1562165lfc;
+        Tue, 3 Dec 2019 06:16:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyhfxcoXzFuq795N4c3yenqEE9E2+u0JK5aisu6VkIfxLXO2WPJfAku+csIhukSN7fWiOoa
+X-Received: by 2002:a17:906:f47:: with SMTP id h7mr6349243ejj.254.1575382570778;
+        Tue, 03 Dec 2019 06:16:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575382570; cv=none;
         d=google.com; s=arc-20160816;
-        b=Al2mnGPVQJ/Pd6Sg1zx4waJtmvMrU6LFbEwE5bWQmtRtKt3SB/GnyCUfDjOcsQf60f
-         mB/5VKlIn8VCRNP8b547BfDw4IMEmPVSIJQ0nA+E9hC73K47Slhq4g1FytjajK/F/pGf
-         qDOQGwB2SB4/HLE8pqfYa2+xGdsG8SXksu/T4UV9efm18UhGqGrMn67Evx3jOGegDQbx
-         fmYbJ7pKgiLwyX5xi9j3aGIV9wtJENsirdjaQvwMH3hCSMXOIeVTcNGfsOzKNE2YpOOo
-         D6melSCnAAf/nvhpffcNlMS7wkrhAwjghCmC89aa1MGv9yWDwSxek1hRakEpPmJ6OiCj
-         y3BA==
+        b=WqRwSnWk3Y3kQttuOrCLr2XEKFUW6n4XKW2WCN1J2H1Y9DY+deAdWIORVrtrfKW9Kw
+         ShtNLAW4AZbxN6p8IN4E4VYvUBf1Cma3sP/w6vzOH7pRt7qYZ1bQP6u1cqiC26YHmieu
+         47CnaJMJhpZCh7X1OxLkG0EtzPHYURw7yRyje5hMhpt6ClOHNI2f7JR1tZrY6qsV1eaU
+         Q2hRc7DdqWSRIxLxzCt1KQ04PbBkTsQeka7uygyEX33wVcxQ7Dd+bFkBuKyGrm3CSQcl
+         +LqN6YAPxt686mnIpYv3HYNo+glgOKLhrMt3DP3FRfHx3sjly/ONLByqc7y9Zqg+SlDa
+         gb6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=2fFnz/Aj1Pp+kEJTzCgNJw48MFTE8Uwes9027KPoL0E=;
-        b=MO1wIc8jgaCSqOB3QakrEo5OLaZu9maGzX/zdmebSkT/FJMMz6ZvCK3/U+FW5HQoJy
-         q067j+6uH0bd5wBkpRoIneyuzbNqxEPS+LCJFczwx31GGhw7+ZFSeRmlnnc5iXnoIFNK
-         lcY14ek64QxoGTVxuNSy8T6RxXlL9YJ7RUykAzsagL6QDW4IOejMmRjtAkdwJAwXYJ/P
-         BZMfEiXNBvcayhL692/ZuEb+XjUUKskKPFZVzmOw1Gq0m7ydihcweosHht2R+i8uvx02
-         sNgZyL4JRshKm0/XuQEC4Qb+jOxwJX6UM2h8w52tOPneRCeGV9eqYTt3xmFO6TFdH8tp
-         5d5w==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=/CnwmbUFWRsqWL2N14UyvLbg9Cdi2y+1OqJISDKJtjw=;
+        b=r/XeYNsyUSXuo01z+XBWkUSQ39vccKkkfMWdwygMEBuPmR37yefrZJ6LpWF6TVrB+G
+         KfO8xPFK8d3LsdriiwvKNoIGKzBJwYGd9EsfRq2HjNsA66LhM9NXUUMffDcsopt1Zma8
+         SYn8RUVBSISYdEa+pSmdZH8/IEnLwa0rNFbr/JONMPLWbl/Lpvkt1FtGaosanKNFRZOD
+         8foZ2JmVnWylf6HjmH/TTgquM2geEBKI6YKQ95qCH4UoVXAux93x+iGT/8zf3tODX/ZO
+         SO8YYykVjeufNazBPXvyktqNt84hrNk5Qnh77uVa4sj7VJYHU42BhhhcYkaejmohkiAX
+         ptIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gge1iNbo;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BlJfO5T6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s19si2226953edw.235.2019.12.03.05.09.06
+        by mx.google.com with ESMTPS id z12si2379203edx.47.2019.12.03.06.16.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2019 05:09:06 -0800 (PST)
+        Tue, 03 Dec 2019 06:16:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gge1iNbo;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BlJfO5T6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53142 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ic7vL-0001Xs-Lc
-	for alex.bennee@linaro.org; Tue, 03 Dec 2019 08:09:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57241)
+	id 1ic8yG-0005is-M0
+	for alex.bennee@linaro.org; Tue, 03 Dec 2019 09:16:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47175)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1ic7oF-0006HU-BH
- for qemu-arm@nongnu.org; Tue, 03 Dec 2019 08:01:45 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1ic8qT-0002F3-6L
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 09:08:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1ic7o5-00043b-5z
- for qemu-arm@nongnu.org; Tue, 03 Dec 2019 08:01:37 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:46618
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ic7o1-0003uz-HP
- for qemu-arm@nongnu.org; Tue, 03 Dec 2019 08:01:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575378086;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=2fFnz/Aj1Pp+kEJTzCgNJw48MFTE8Uwes9027KPoL0E=;
- b=Gge1iNbo8exZzMlKDCpWL8Ffe/8h9RZes+gLGBk2+qLj19liXd5l96ApU98A7BmrK6Dnlh
- fA5LwOca5hiXTnrWCamyBAn/sVR0Gi90aZ85acbm8RuhSiaDh1iRtlCK7OgIyoPFXNmdRS
- 20tixW5RENOwr1qVhSQVi5kIqhhUs7s=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-100-nbF3ed9yMV-7zY4bN5cvjg-1; Tue, 03 Dec 2019 08:01:23 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AAAF08024CC;
- Tue,  3 Dec 2019 13:01:22 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-176.ams2.redhat.com [10.36.116.176])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3267667E5D;
- Tue,  3 Dec 2019 13:01:20 +0000 (UTC)
-Subject: Re: [PATCH 0/5] tests: Enable fw_cfg tests on AArch64
-To: Xiang Zheng <zhengxiang9@huawei.com>, peter.maydell@linaro.org,
- lvivier@redhat.com
-References: <20191203122753.19792-1-zhengxiang9@huawei.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <b5ef73c8-fa23-8efe-ef03-1d223a49bb93@redhat.com>
-Date: Tue, 3 Dec 2019 14:01:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <peter.maydell@linaro.org>) id 1ic8qN-0001ea-U8
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 09:08:00 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:42070)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1ic8qN-0001Nk-Op
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2019 09:07:59 -0500
+Received: by mail-oi1-x241.google.com with SMTP id j22so3345048oij.9
+ for <qemu-arm@nongnu.org>; Tue, 03 Dec 2019 06:07:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/CnwmbUFWRsqWL2N14UyvLbg9Cdi2y+1OqJISDKJtjw=;
+ b=BlJfO5T6fkfYo1fKkjLYeImj5Q96TDjDI6FnqyphfcPqiN4MNwsZ2tbxNd8rOfEHys
+ FyVbL8XqQ4NXLyKFt1f9Rjl/BAJ3fUJrCXJnVZylGOzLOPMOM8q4YstgwXFcyR/Etx9w
+ 6HWNyJqkQB40DhSlxb/12LkgHuoY5H/hf+4I3ERP/pz+sTNEJli7I7rOdY/m5gB2ikyl
+ Eb6SEfRBl1aqKDkbp77oZtLFtSnfpULHMx/WSIQOPaaEhRI+gYxvsT81SSkOuWJbGxRt
+ edQFqqZejHYb8vuVOWg61B9mh1M+bzaphg1Sq6RBUFfg6cxdpLoIWOSO9zE60p3yuTVK
+ hFpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/CnwmbUFWRsqWL2N14UyvLbg9Cdi2y+1OqJISDKJtjw=;
+ b=oiySnEqevOKv/33Tn/pmVlPIGr58j8kVyuttaKUd0DmDr89PqbiskvTk42fy+t5x46
+ Q46E2+nOevBJNOTr/4zpXiZbk48+18cqa5FhsLDoD+Gt7wOyRBFt+I3R+x9k9jVOTCXv
+ 0Fsk8g5cL0V0doKkEDW/6J41Nr4Mp4JgUl6BDBz6SWGNu/OApB4udbY/HIP8r9Z1id0F
+ VuWFhPpSl1HoPOFQOp6IbWRT+OMqE6N/TTOKGo89ApmsGBTyGGq1eUuBTYlXyk3MQTPd
+ 9creg9ObyADUy7pU5uDgtCL2htEdFcrcRPj2O30kpP6sjdjUJPZtu5Pg8L2VXTCLFoRr
+ 4AKA==
+X-Gm-Message-State: APjAAAVRhsdjRQOCjzxvc7AusJ4qZF0+a2/sOJOC6Fmpk69qNW4ShX6n
+ km5UNRCd2ODLoUwBRR2aUvtmV721dUwJft7ghUdwjA==
+X-Received: by 2002:aca:edd5:: with SMTP id l204mr3760486oih.98.1575382075765; 
+ Tue, 03 Dec 2019 06:07:55 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191203122753.19792-1-zhengxiang9@huawei.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: nbF3ed9yMV-7zY4bN5cvjg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
+References: <20191011134744.2477-1-richard.henderson@linaro.org>
+ <20191011134744.2477-6-richard.henderson@linaro.org>
+In-Reply-To: <20191011134744.2477-6-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Dec 2019 14:07:44 +0000
+Message-ID: <CAFEAcA9ps2JZHi2nTUrog7rgRc5gL8QbqYhSgFCS_-ARe_0T1Q@mail.gmail.com>
+Subject: Re: [PATCH v5 05/22] target/arm: Suppress tag check for sp+offset
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,37 +104,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: lersek@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kraxel@redhat.com, wanghaibin.wang@huawei.com, pbonzini@redhat.com,
- philmd@redhat.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6wh42wRxTzVh
+X-TUID: ghPgkJ3A2rna
 
-On 03/12/2019 13.27, Xiang Zheng wrote:
-> There are quite a few tests disabled on AArch64 such as fw_cfg-tests.
-> This patch series fix some problems in test code and adapt it to
-> virt machine.
-> 
-> Xiang Zheng (5):
->   tests: fw_cfg: Rename pc_fw_cfg_* to fw_cfg_*
->   tests: fw_cfg: Support read/write of fw_cfg registers on aarch64
->   tests: fw_cfg: Use virt as default machine in fw_cfg-test.c
->   hw/arm/virt: Add FW_CFG_RAM_SIZE and FW_CFG_MAX_CPUS into fw_cfg
->   tests: Enable fw_cfg test on aarch64
+On Fri, 11 Oct 2019 at 14:49, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> R0078 specifies that base register, or base register plus immediate
+> offset, is unchecked when the base register is SP.
 
- Hi,
+It looks like rule-numbers didn't make it into the final Arm ARM,
+so I guess the reference here would just be to section D6.8.1 ?
 
-this breaks "make check-qtest-ppc64":
+Also, this phrasing is slightly ambiguous about whether the
+"when base is SP" condition applies to both "base register"
+and "base register + immediate", or just to the last of the two;
+the correct reading is the latter of these (and the D6.8.1
+Arm ARM text is in error; trust the pseudocode here).
 
-  TEST    check-qtest-ppc64: tests/boot-order-test
-**
-ERROR:tests/boot-order-test.c:40:test_a_boot_order: assertion failed
-(actual == expected_boot): (0x00000000 == 0x00000063)
+We could perhaps say something like:
 
-Please make sure that "make check" continuous to work with all other
-targets, too.
+D6.8.1 specifies that accesses are tag-unchecked for loads and
+stores (including exclusives, compare-and-swap, etc) whose addresses are:
+ * base-register only, where the base register is SP
+ * base-register plus immediate, where the base register is SP
+   (not including reg+imm with writeback addressing forms)
+and also that literal (pc-relative) loads are tag-unchecked.
 
- Thanks,
-  Thomas
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> v2: Include writeback addresses as checked.
 
+The load-literal case is implicitly tag-unchecked because
+the address calculation doesn't go via clean_data_tbi(), right?
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

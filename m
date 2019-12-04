@@ -1,88 +1,99 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp778710lff;
-        Wed, 4 Dec 2019 07:22:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx0iDd/C5N69LmNDuyrdQyuXXepoZNh/1j9IhzHKxiR1kGtxCIqSN2BDfxAlhZbl+XsPb/S
-X-Received: by 2002:a50:e108:: with SMTP id h8mr4714303edl.196.1575472978362;
-        Wed, 04 Dec 2019 07:22:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575472978; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp851131lff;
+        Wed, 4 Dec 2019 08:20:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyzYRKe7ZbBZzWQNTH7cYPag9aJOwv0g/ccswhSN8UnLkb8bqkAPTWnGqPt0fsVMcA9cxsA
+X-Received: by 2002:a50:927c:: with SMTP id j57mr4851407eda.217.1575476418958;
+        Wed, 04 Dec 2019 08:20:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575476418; cv=none;
         d=google.com; s=arc-20160816;
-        b=H5YD5UwhzcfyglKFBzvDF2mrp/Eh0rAQ+FvupbNt073xSVY2zOdB+sA/LWgYV19AV6
-         QZrv5s/XHolqMChWgoE8kObn+8MjQAHOhftE2qGh3NiaZgy4a4XGWG9QQYCuFFxiBFKW
-         4VgFPFeMXB/uE/jSBOcISqT7N7uhGyZ/qvoIa+qfY9GvbSOru51JmTo9TmjvKOyYeOgD
-         WnHxxj322j+Fqc6JQE7KhvhLUo0aLBoekZAajnLzNqxu89xufYnugmZmu6NaLXqScNLa
-         0niR51MHG8sk/qgrtUXJDA3uu1hF3JlPQH57RZwHz0iSIUI9PSw2lbPPyA89WtK/Pm2r
-         mViQ==
+        b=aW5BN7CJWPtHPcRH99vwSynCA/gxxi4fhvTdzAavl4BTdCvCCDAOYrV9/KqjPxRhaQ
+         Dw8jn4vQ5kN1CchaeMyHWeqKAP1kHimjUBUzH44VuAZM8zOS4QKRKj+DoBJ88yRNuVSg
+         y4hCgAMDQNLrnjtcmmZ3ccRz971sd3wSPHMFqmAnXxLg5zE5Bc/KMMO052ejc7az19oL
+         OSTVATN0yhTH1jvKBd4XtO7uD+C8VC80YCa2GTHGTjht3amksFyOmxXm/X8DMx1MyD8X
+         Ks2pRk9KYu9Vg5u0w92rCgj8NNpake/aRzSa5p4jfpCis/J6n/G9isaDoFgaZlPkRp45
+         xgcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=t+SZUDwuabwvrVYnvGlONrM17yGt7Jazh7HcRAhz5ko=;
-        b=KIKvYYP78ftXYghQ/e0RBmeXiz4eCcBSESZLL9fIl4lfT4Dui670ACEUPakjALwPMo
-         amX+OG24WERwsDmQAmB0tawOnxnAzpK+IFyToXSs5Tp6cXUzRW2J0E6bckq+zEiyhbjY
-         Ilm4y2nbS0/VqByIzkEtO88XvsiiZz9RBWAd6XKOQBFdtYM5eyUFKDMDs8F8pRHngtnT
-         GBdwMsEjK1oGGsQfFzSsN3Q6R9Mho++c2zyWJRtLj4P+sPrJ5nGH9woAQ0znDQeHdFwq
-         XJf9psJFPw2s2zMP4FuwipMTBVvsjKqX7c6l9lC8wkb9CucIc+iRJHagHKWg0VPqRuh9
-         76Eg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=5t/1v78hE6NyJ3o2GpUTU1gSeku0E4UCR1wVphzXSp8=;
+        b=p134nQn2V7a3Y3olb8F34DJO0rjwqxs+qnNjZxRfA/SFpBwOB2aLhSC4ZeIcB4XEmq
+         ogYk2V18NVjIa/ZGUHvyr6x5e8Z09vF+/BNY2dZq802Vxn1WHwzacER9+IHlQlE+Yz2e
+         G5NJDLbr3G47cnPWK//rn7n0NlrZI8/aaJmEgrafJJKyXd7We7eKKwTjSy0FkhfG+gbJ
+         rFt1m/6OtjlprJsFEQ1cmPZH32MVNpbtp0hERcDWx4ThzurG2hXfoc0CBYdUFFcOaIqe
+         iJANMAjbfw5limk2fmxKHixsTMLXYPX2cQ90QR08g6956JyOVrZFhaIOg8x9YPpE3X1k
+         bCoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f5sesb5Y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l23si5089819edv.243.2019.12.04.07.22.58
+        by mx.google.com with ESMTPS id w11si4751850edx.286.2019.12.04.08.20.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2019 07:22:58 -0800 (PST)
+        Wed, 04 Dec 2019 08:20:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40332 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f5sesb5Y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:40926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icWUT-0003jj-8Y
-	for alex.bennee@linaro.org; Wed, 04 Dec 2019 10:22:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51093)
+	id 1icXNx-00019l-TG
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 11:20:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60531)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <frederic.konrad@adacore.com>) id 1icWUK-0003ja-Cn
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 10:22:50 -0500
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1icXFh-00056j-H8
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 11:11:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <frederic.konrad@adacore.com>) id 1icWUI-0008Cu-5n
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 10:22:48 -0500
-Received: from mel.act-europe.fr ([194.98.77.210]:47418
- helo=smtp.eu.adacore.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
- id 1icWUH-0008CA-SE; Wed, 04 Dec 2019 10:22:46 -0500
-Received: from localhost (localhost [127.0.0.1])
- by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 09BD181387;
- Wed,  4 Dec 2019 16:22:43 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
-Received: from smtp.eu.adacore.com ([127.0.0.1])
- by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cYHIzmlfooSm; Wed,  4 Dec 2019 16:22:42 +0100 (CET)
-Received: from localhost.localdomain (lfbn-tou-1-352-33.w86-206.abo.wanadoo.fr
- [86.206.184.33])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by smtp.eu.adacore.com (Postfix) with ESMTPSA id 93DA281382;
- Wed,  4 Dec 2019 16:22:40 +0100 (CET)
-Subject: Re: [PATCH 10/10] arm: allwinner-h3: add EMAC ethernet device
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-11-nieklinnenbank@gmail.com>
- <a234bebd-d794-7400-c9f8-77561ba46aa3@adacore.com>
- <0b549e25-cf45-e491-9342-58592514870f@redhat.com>
-From: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-ID: <cbe88e1c-c473-e19d-c8e8-4e124252a402@adacore.com>
-Date: Wed, 4 Dec 2019 16:22:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.1
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1icXFd-0004EK-Aa
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 11:11:44 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:41919)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1icXFU-00046f-A2; Wed, 04 Dec 2019 11:11:32 -0500
+Received: by mail-oi1-x242.google.com with SMTP id i1so3261594oie.8;
+ Wed, 04 Dec 2019 08:11:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=5t/1v78hE6NyJ3o2GpUTU1gSeku0E4UCR1wVphzXSp8=;
+ b=f5sesb5YnQ/z44M/W65klN3FzjaV2vupsX7HXvjF42WsFP2WRlxPtBurWsKdCXz5gQ
+ VUZXTfBX4GTKlJT2h7zDnng7XrbfCXp1euLhsD02j4nMongOw4oGOEp8hG+Jed4iszW9
+ 6wkclceNxBackjQq4kw/0FQ5UUox7MpnPWWevcRan+xdrRXA49FzHqXTDOQzD294aZa3
+ +62A1m3HX32X3M11aU9G0WMal4nD06/lDh2+V5MFCcOx+PBm2thi3Gq8+6pqOF7yu13+
+ V0HN704Muph5q2grlhjLvJhCg6pWC9M6yd6l4aza11FhVZm4pxbWjkNLX4mLRTi7fdF6
+ jcyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=5t/1v78hE6NyJ3o2GpUTU1gSeku0E4UCR1wVphzXSp8=;
+ b=N7bVXmk6+WJw9okT6sz+vNfQaBZbAbO/8/BKTEtXjpeTxhFmtOGUQzD4rF+cxwL2eA
+ Vku7c/y4agwCejTwWR4YJLcKUZmnujZU2n7HKIviE9UZ8HnV7VGYq+t+3b7KVm7avXAj
+ p9vTMIrg3NCQTonHUaCzWL5j1q3LCKLdf2z38YviXH0eKCGpXXzvJgN0CcbwWRWuw4fM
+ fMXo8xDrv1VpN3ziVVE8PH+htLGDKv81dJjRGNK+LiBaxahajJ361LkdgUqBwcREgaJg
+ 6kROSC8UCPaMrGQ1F6H2muOBiyQx7LWbG5rd8nwvrgeGkA7ORx9FgAZXqDz6vrtgGB1Q
+ rsPw==
+X-Gm-Message-State: APjAAAUuv+ThB9HlzpYP/joMM/xVapnP/fl3/sOOBREItgveXYeuy3g2
+ teSnN2lKL2tA7OPiUm/HJ9+FHVSh1cM3aoss1GI=
+X-Received: by 2002:aca:bd85:: with SMTP id n127mr3267748oif.136.1575475889777; 
+ Wed, 04 Dec 2019 08:11:29 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <0b549e25-cf45-e491-9342-58592514870f@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: fr
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 194.98.77.210
+Received: by 2002:a9d:d21:0:0:0:0:0 with HTTP;
+ Wed, 4 Dec 2019 08:11:29 -0800 (PST)
+In-Reply-To: <20191202210947.3603-5-nieklinnenbank@gmail.com>
+References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
+ <20191202210947.3603-5-nieklinnenbank@gmail.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Wed, 4 Dec 2019 17:11:29 +0100
+Message-ID: <CAL1e-=gVMXsWKAdo8c8QtjAYeK6p0AyTmi_a-sFHL2x4wGq6Vg@mail.gmail.com>
+Subject: Re: [PATCH 04/10] arm: allwinner-h3: add USB host controller
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000c332150598e3106d"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -94,463 +105,295 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Jason Wang <jasowang@redhat.com>,
- Sai Pavan Boddu <saipava@xilinx.com>, Grant Likely <grant.likely@secretlab.ca>,
- b.galvani@gmail.com, qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Sven Schnelle <svens@stackframe.org>
+Cc: "b.galvani@gmail.com" <b.galvani@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b6nRlLl/dJIS
+X-TUID: jy0Yqp2g8/y4
+
+--000000000000c332150598e3106d
+Content-Type: text/plain; charset="UTF-8"
+
+On Monday, December 2, 2019, Niek Linnenbank <nieklinnenbank@gmail.com>
+wrote:
+
+> The Allwinner H3 System on Chip contains multiple USB 2.0 bus
+> connections which provide software access using the Enhanced
+> Host Controller Interface (EHCI) and Open Host Controller
+> Interface (OHCI) interfaces. This commit adds support for
+> both interfaces in the Allwinner H3 System on Chip.
+>
+> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> ---
 
 
+Niek, hi!
 
-Le 12/4/19 =C3=A0 4:14 PM, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit=C2=A0=
-:
-> On 12/3/19 10:33 AM, KONRAD Frederic wrote:
->> Le 12/2/19 =C3=A0 10:09 PM, Niek Linnenbank a =C3=A9crit=C2=A0:
->>> The Allwinner H3 System on Chip includes an Ethernet MAC (EMAC)
->>> which provides 10M/100M/1000M Ethernet connectivity. This commit
->>> adds support for the Allwinner H3 EMAC, including emulation for
->>> the following functionality:
->>>
->>> =C2=A0 * DMA transfers
->>> =C2=A0 * MII interface
->>> =C2=A0 * Transmit CRC calculation
->>>
->>> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
->>> ---
->>> =C2=A0 hw/arm/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-|=C2=A0=C2=A0 1 +
->>> =C2=A0 hw/arm/allwinner-h3.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 17 +
->>> =C2=A0 hw/arm/orangepi.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 7=
- +
->>> =C2=A0 hw/net/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-|=C2=A0=C2=A0 3 +
->>> =C2=A0 hw/net/Makefile.objs=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 1 +
->>> =C2=A0 hw/net/allwinner-h3-emac.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 | 786 +++++++++++++++++++++++++++++
->>> =C2=A0 hw/net/trace-events=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 10 +
->>> =C2=A0 include/hw/arm/allwinner-h3.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
-=A0=C2=A0 2 +
->>> =C2=A0 include/hw/net/allwinner-h3-emac.h |=C2=A0 69 +++
->>> =C2=A0 9 files changed, 896 insertions(+)
->>> =C2=A0 create mode 100644 hw/net/allwinner-h3-emac.c
->>> =C2=A0 create mode 100644 include/hw/net/allwinner-h3-emac.h
->>>
->>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->>> index ebf8d2325f..551cff3442 100644
->>> --- a/hw/arm/Kconfig
->>> +++ b/hw/arm/Kconfig
->>> @@ -294,6 +294,7 @@ config ALLWINNER_A10
->>> =C2=A0 config ALLWINNER_H3
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 select ALLWINNER_A10_PIT
->>> +=C2=A0=C2=A0=C2=A0 select ALLWINNER_H3_EMAC
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 select SERIAL
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 select ARM_TIMER
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 select ARM_GIC
->>> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
->>> index c2972caf88..274b8548c0 100644
->>> --- a/hw/arm/allwinner-h3.c
->>> +++ b/hw/arm/allwinner-h3.c
->>> @@ -53,6 +53,9 @@ static void aw_h3_init(Object *obj)
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sysbus_init_child_obj(obj, "mmc0", &s-=
->mmc0, sizeof(s->mmc0),
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 TYPE_AW_H3_SDHOST);
->>> +
->>> +=C2=A0=C2=A0=C2=A0 sysbus_init_child_obj(obj, "emac", &s->emac, size=
-of(s->emac),
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 TYPE_AW_H3_EMAC);
->>> =C2=A0 }
->>> =C2=A0 static void aw_h3_realize(DeviceState *dev, Error **errp)
->>> @@ -237,6 +240,20 @@ static void aw_h3_realize(DeviceState *dev, Erro=
-r **errp)
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> +=C2=A0=C2=A0=C2=A0 /* EMAC */
->>> +=C2=A0=C2=A0=C2=A0 if (nd_table[0].used) {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_check_nic_model(&nd_=
-table[0], TYPE_AW_H3_EMAC);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_set_nic_properties(D=
-EVICE(&s->emac), &nd_table[0]);
->>> +=C2=A0=C2=A0=C2=A0 }
->>> +=C2=A0=C2=A0=C2=A0 object_property_set_bool(OBJECT(&s->emac), true, =
-"realized", &err);
->>> +=C2=A0=C2=A0=C2=A0 if (err !=3D NULL) {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_propagate(errp, err=
-);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->>> +=C2=A0=C2=A0=C2=A0 }
->>> +=C2=A0=C2=A0=C2=A0 sysbusdev =3D SYS_BUS_DEVICE(&s->emac);
->>> +=C2=A0=C2=A0=C2=A0 sysbus_mmio_map(sysbusdev, 0, AW_H3_EMAC_BASE);
->>> +=C2=A0=C2=A0=C2=A0 sysbus_connect_irq(sysbusdev, 0, s->irq[AW_H3_GIC=
-_SPI_EMAC]);
->>> +
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Universal Serial Bus */
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, =
-AW_H3_EHCI0_BASE,
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 s->irq[AW_H3_GIC_SPI_EHCI0]);
->>> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
->>> index dee3efaf08..8a61eb0e69 100644
->>> --- a/hw/arm/orangepi.c
->>> +++ b/hw/arm/orangepi.c
->>> @@ -61,6 +61,13 @@ static void orangepi_init(MachineState *machine)
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exit(1);
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> +=C2=A0=C2=A0=C2=A0 /* Setup EMAC properties */
->>> +=C2=A0=C2=A0=C2=A0 object_property_set_int(OBJECT(&s->h3->emac), 1, =
-"phy-addr", &err);
->>> +=C2=A0=C2=A0=C2=A0 if (err !=3D NULL) {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_reportf_err(err, "C=
-ouldn't set phy address: ");
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exit(1);
->>> +=C2=A0=C2=A0=C2=A0 }
->>> +
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Mark H3 object realized */
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_set_bool(OBJECT(s->h3)=
-, true, "realized", &err);
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (err !=3D NULL) {
->>> diff --git a/hw/net/Kconfig b/hw/net/Kconfig
->>> index 3856417d42..36d3923992 100644
->>> --- a/hw/net/Kconfig
->>> +++ b/hw/net/Kconfig
->>> @@ -74,6 +74,9 @@ config MIPSNET
->>> =C2=A0 config ALLWINNER_EMAC
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool
->>> +config ALLWINNER_H3_EMAC
->>> +=C2=A0=C2=A0=C2=A0 bool
->>> +
->>> =C2=A0 config IMX_FEC
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool
->>> diff --git a/hw/net/Makefile.objs b/hw/net/Makefile.objs
->>> index 7907d2c199..5548deb07a 100644
->>> --- a/hw/net/Makefile.objs
->>> +++ b/hw/net/Makefile.objs
->>> @@ -23,6 +23,7 @@ common-obj-$(CONFIG_XGMAC) +=3D xgmac.o
->>> =C2=A0 common-obj-$(CONFIG_MIPSNET) +=3D mipsnet.o
->>> =C2=A0 common-obj-$(CONFIG_XILINX_AXI) +=3D xilinx_axienet.o
->>> =C2=A0 common-obj-$(CONFIG_ALLWINNER_EMAC) +=3D allwinner_emac.o
->>> +common-obj-$(CONFIG_ALLWINNER_H3_EMAC) +=3D allwinner-h3-emac.o
->>> =C2=A0 common-obj-$(CONFIG_IMX_FEC) +=3D imx_fec.o
->>> =C2=A0 common-obj-$(CONFIG_CADENCE) +=3D cadence_gem.o
->>> diff --git a/hw/net/allwinner-h3-emac.c b/hw/net/allwinner-h3-emac.c
->>> new file mode 100644
->>> index 0000000000..37f6f44406
->>> --- /dev/null
->>> +++ b/hw/net/allwinner-h3-emac.c
->>> @@ -0,0 +1,786 @@
->>> +/*
->>> + * Allwinner H3 EMAC emulation
->>> + *
->>> + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
->>> + *
->>> + * This program is free software: you can redistribute it and/or mod=
-ify
->>> + * it under the terms of the GNU General Public License as published=
- by
->>> + * the Free Software Foundation, either version 2 of the License, or
->>> + * (at your option) any later version.
->>> + *
->>> + * This program is distributed in the hope that it will be useful,
->>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See th=
-e
->>> + * GNU General Public License for more details.
->>> + *
->>> + * You should have received a copy of the GNU General Public License
->>> + * along with this program.=C2=A0 If not, see <http://www.gnu.org/li=
-censes/>.
->>> + */
->>> +
->>> +#include "qemu/osdep.h"
->>> +#include "hw/sysbus.h"
->>> +#include "migration/vmstate.h"
->>> +#include "net/net.h"
->>> +#include "hw/irq.h"
->>> +#include "hw/qdev-properties.h"
->>> +#include "qemu/log.h"
->>> +#include "trace.h"
->>> +#include "net/checksum.h"
->>> +#include "qemu/module.h"
->>> +#include "exec/cpu-common.h"
->>> +#include "hw/net/allwinner-h3-emac.h"
->>> +
->>> +/* EMAC register offsets */
->>> +#define REG_BASIC_CTL_0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0=
-x0000) /* Basic Control 0 */
->>> +#define REG_BASIC_CTL_1=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0=
-x0004) /* Basic Control 1 */
->>> +#define REG_INT_STA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 (0x0008) /* Interrupt Status */
->>> +#define REG_INT_EN=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 (0x000C) /* Interrupt Enable */
->>> +#define REG_TX_CTL_0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 (0x0010) /* Transmit Control 0 */
->>> +#define REG_TX_CTL_1=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 (0x0014) /* Transmit Control 1 */
->>> +#define REG_TX_FLOW_CTL=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0=
-x001C) /* Transmit Flow Control */
->>> +#define REG_TX_DMA_DESC_LIST=C2=A0=C2=A0 (0x0020) /* Transmit Descri=
-ptor List Address */
->>> +#define REG_RX_CTL_0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 (0x0024) /* Receive Control 0 */
->>> +#define REG_RX_CTL_1=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 (0x0028) /* Receive Control 1 */
->>> +#define REG_RX_DMA_DESC_LIST=C2=A0=C2=A0 (0x0034) /* Receive Descrip=
-tor List Address */
->>> +#define REG_FRM_FLT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 (0x0038) /* Receive Frame Filter */
->>> +#define REG_RX_HASH_0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (0x0040) /* Receive Hash Table 0 */
->>> +#define REG_RX_HASH_1=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (0x0044) /* Receive Hash Table 1 */
->>> +#define REG_MII_CMD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 (0x0048) /* Management Interface Command */
->>> +#define REG_MII_DATA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 (0x004C) /* Management Interface Data */
->>> +#define REG_ADDR_HIGH=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (0x0050) /* MAC Address High */
->>> +#define REG_ADDR_LOW=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 (0x0054) /* MAC Address Low */
->>> +#define REG_TX_DMA_STA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (0x00B0) /* Transmit DMA Status */
->>> +#define REG_TX_CUR_DESC=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0=
-x00B4) /* Transmit Current Descriptor */
->>> +#define REG_TX_CUR_BUF=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (0x00B8) /* Transmit Current Buffer */
->>> +#define REG_RX_DMA_STA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (0x00C0) /* Receive DMA Status */
->>> +#define REG_RX_CUR_DESC=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0=
-x00C4) /* Receive Current Descriptor */
->>> +#define REG_RX_CUR_BUF=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (0x00C8) /* Receive Current Buffer */
->>> +#define REG_RGMII_STA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (0x00D0) /* RGMII Status */
->>> +
->>> +/* EMAC register flags */
->>> +#define BASIC_CTL0_100Mbps=C2=A0=C2=A0=C2=A0=C2=A0 (0b11 << 2)
->>> +#define BASIC_CTL0_FD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (1 << 0)
->>> +#define BASIC_CTL1_SOFTRST=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 0)
->>> +
->>> +#define INT_STA_RGMII_LINK=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 16)
->>> +#define INT_STA_RX_EARLY=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 1=
-3)
->>> +#define INT_STA_RX_OVERFLOW=C2=A0=C2=A0=C2=A0 (1 << 12)
->>> +#define INT_STA_RX_TIMEOUT=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 11)
->>> +#define INT_STA_RX_DMA_STOP=C2=A0=C2=A0=C2=A0 (1 << 10)
->>> +#define INT_STA_RX_BUF_UA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 9)
->>> +#define INT_STA_RX=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 (1 << 8)
->>> +#define INT_STA_TX_EARLY=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 5=
-)
->>> +#define INT_STA_TX_UNDERFLOW=C2=A0=C2=A0 (1 << 4)
->>> +#define INT_STA_TX_TIMEOUT=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 3)
->>> +#define INT_STA_TX_BUF_UA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 2)
->>> +#define INT_STA_TX_DMA_STOP=C2=A0=C2=A0=C2=A0 (1 << 1)
->>> +#define INT_STA_TX=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 (1 << 0)
->>> +
->>> +#define INT_EN_RX_EARLY=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1=
- << 13)
->>> +#define INT_EN_RX_OVERFLOW=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 12)
->>> +#define INT_EN_RX_TIMEOUT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 11)
->>> +#define INT_EN_RX_DMA_STOP=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 10)
->>> +#define INT_EN_RX_BUF_UA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 9=
-)
->>> +#define INT_EN_RX=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 8)
->>> +#define INT_EN_TX_EARLY=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1=
- << 5)
->>> +#define INT_EN_TX_UNDERFLOW=C2=A0=C2=A0=C2=A0 (1 << 4)
->>> +#define INT_EN_TX_TIMEOUT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 3)
->>> +#define INT_EN_TX_BUF_UA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 2=
-)
->>> +#define INT_EN_TX_DMA_STOP=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 1)
->>> +#define INT_EN_TX=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 0)
->>> +
->>> +#define TX_CTL0_TX_EN=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (1 << 31)
->>> +#define TX_CTL1_TX_DMA_START=C2=A0=C2=A0 (1 << 31)
->>> +#define TX_CTL1_TX_DMA_EN=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 30)
->>> +#define TX_CTL1_TX_FLUSH=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 0=
-)
->>> +
->>> +#define RX_CTL0_RX_EN=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (1 << 31)
->>> +#define RX_CTL0_STRIP_FCS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 28)
->>> +#define RX_CTL0_CRC_IPV4=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 2=
-7)
->>> +
->>> +#define RX_CTL1_RX_DMA_START=C2=A0=C2=A0 (1 << 31)
->>> +#define RX_CTL1_RX_DMA_EN=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 30)
->>> +#define RX_CTL1_RX_MD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (1 << 1)
->>> +
->>> +#define RX_FRM_FLT_DIS_ADDR=C2=A0=C2=A0=C2=A0 (1 << 31)
->>> +
->>> +#define MII_CMD_PHY_ADDR_SHIFT (12)
->>> +#define MII_CMD_PHY_ADDR_MASK=C2=A0 (0xf000)
->>> +#define MII_CMD_PHY_REG_SHIFT=C2=A0 (4)
->>> +#define MII_CMD_PHY_REG_MASK=C2=A0=C2=A0 (0xf0)
->>> +#define MII_CMD_PHY_RW=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (1 << 1)
->>> +#define MII_CMD_PHY_BUSY=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 0=
-)
->>> +
->>> +#define TX_DMA_STA_STOP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0=
-b000)
->>> +#define TX_DMA_STA_RUN_FETCH=C2=A0=C2=A0 (0b001)
->>> +#define TX_DMA_STA_WAIT_STA=C2=A0=C2=A0=C2=A0 (0b010)
->>> +
->>> +#define RX_DMA_STA_STOP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0=
-b000)
->>> +#define RX_DMA_STA_RUN_FETCH=C2=A0=C2=A0 (0b001)
->>> +#define RX_DMA_STA_WAIT_FRM=C2=A0=C2=A0=C2=A0 (0b011)
->>> +
->>> +#define RGMII_LINK_UP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (1 << 3)
->>> +#define RGMII_FD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 0)
->>> +
->>> +/* EMAC register reset values */
->>> +#define REG_BASIC_CTL_1_RST=C2=A0=C2=A0=C2=A0 (0x08000000)
->>> +
->>> +/* EMAC constants */
->>> +#define AW_H3_EMAC_MIN_PKT_SZ=C2=A0 (64)
->>> +
->>> +/* Transmit/receive frame descriptor */
->>> +typedef struct FrameDescriptor {
->>> +=C2=A0=C2=A0=C2=A0 uint32_t status;
->>> +=C2=A0=C2=A0=C2=A0 uint32_t status2;
->>> +=C2=A0=C2=A0=C2=A0 uint32_t addr;
->>> +=C2=A0=C2=A0=C2=A0 uint32_t next;
->>> +} FrameDescriptor;
->>> +
->>> +/* Frame descriptor flags */
->>> +#define DESC_STATUS_CTL=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 31)
->>> +#define DESC_STATUS2_BUF_SIZE_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0x=
-7ff)
->>> +
->>> +/* Transmit frame descriptor flags */
->>> +#define TX_DESC_STATUS_LENGTH_ERR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (1 << 14)
->>> +#define TX_DESC_STATUS2_FIRST_DESC=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 =
-<< 29)
->>> +#define TX_DESC_STATUS2_LAST_DESC=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (1 << 30)
->>> +#define TX_DESC_STATUS2_CHECKSUM_MASK=C2=A0=C2=A0 (0x3 << 27)
->>> +
->>> +/* Receive frame descriptor flags */
->>> +#define RX_DESC_STATUS_FIRST_DESC=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (1 << 9)
->>> +#define RX_DESC_STATUS_LAST_DESC=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (1 << 8)
->>> +#define RX_DESC_STATUS_FRM_LEN_MASK=C2=A0=C2=A0=C2=A0=C2=A0 (0x3fff0=
-000)
->>> +#define RX_DESC_STATUS_FRM_LEN_SHIFT=C2=A0=C2=A0=C2=A0 (16)
->>> +#define RX_DESC_STATUS_NO_BUF=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 (1 << 14)
->>> +#define RX_DESC_STATUS_HEADER_ERR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (1 << 7)
->>> +#define RX_DESC_STATUS_LENGTH_ERR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (1 << 4)
->>> +#define RX_DESC_STATUS_CRC_ERR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 (1 << 1)
->>> +#define RX_DESC_STATUS_PAYLOAD_ERR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 =
-<< 0)
->>> +#define RX_DESC_STATUS2_RX_INT_CTL=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 =
-<< 31)
->>> +
->>> +/* MII register offsets */
->>> +#define MII_REG_CR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (0x0)
->>> +#define MII_REG_ST=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (0x1)
->>> +#define MII_REG_ID_HIGH=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0x2)
->>> +#define MII_REG_ID_LOW=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0x3)
->>> +
->>> +/* MII register flags */
->>> +#define MII_REG_CR_RESET=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 15)
->>> +#define MII_REG_CR_POWERDOWN=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 11)
->>> +#define MII_REG_CR_10Mbit=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0)
->>> +#define MII_REG_CR_100Mbit=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 13)
->>> +#define MII_REG_CR_1000Mbit=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 6)
->>> +#define MII_REG_CR_AUTO_NEG=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 12)
->>> +#define MII_REG_CR_AUTO_NEG_RESTART=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 9)
->>> +#define MII_REG_CR_FULLDUPLEX=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 (1 << 8)
->>> +
->>> +#define MII_REG_ST_100BASE_T4=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 (1 << 15)
->>> +#define MII_REG_ST_100BASE_X_FD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 (1 << 14)
->>> +#define MII_REG_ST_100BASE_X_HD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 (1 << 13)
->>> +#define MII_REG_ST_10_FD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 12)
->>> +#define MII_REG_ST_10_HD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 11)
->>> +#define MII_REG_ST_100BASE_T2_FD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (1 << 10)
->>> +#define MII_REG_ST_100BASE_T2_HD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (1 << 9)
->>> +#define MII_REG_ST_AUTONEG_COMPLETE=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 5)
->>> +#define MII_REG_ST_AUTONEG_AVAIL=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (1 << 3)
->>> +#define MII_REG_ST_LINK_UP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << 2)
->>> +
->>> +/* MII constants */
->>> +#define MII_PHY_ID_HIGH=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0x0044)
->>> +#define MII_PHY_ID_LOW=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (0x1400)
->>
->> I wonder if we can't share all those mii stuff accross the network ada=
-pters
->> instead of redoing the work everytime. I've some patches about it I ma=
-y post
->> them sometimes.
->=20
-> I started that too, salvaging patches from Grant Likely and Sai Pavan B=
-oddu, but=20
-> I'm doing this in my hobbyist time so progress is slow. I estimate I'v =
-80% of=20
-> the work done.
-> Basically it adds a MDIO QBUS (as SD/I2C) and we can plug multiple QDEV=
- slaves.=20
-> Benefits are easily tracing of the MDIO activity, and ability to interc=
-hange the=20
-> master/slaves for testing (think libqos qgraph).
->=20
+I would like to clarify a detail here:
 
-Interesting! I didn't go that far though. The ability to change the devic=
-e
-ID and not rewriting those registers for every network adapters is suffic=
-ient
-for me :).
+The spec of the SoC enumerates (in 8.5.2.4. USB Host Register List) a
+number of registers for reading various USB-related states, but also for
+setting some of USB features.
+
+Does this series cover these registers, and interaction with them? If yes,
+how and where? If not, do you think it is not necessary at all? Or perhaps
+that it is a non-crucial limitation of this series?
+
+Thanks in advance, and congrats for your, it seems, first submission!
+
+Aleksandar
+
+
+ hw/arm/allwinner-h3.c    | 20 ++++++++++++++++++++
+>  hw/usb/hcd-ehci-sysbus.c | 17 +++++++++++++++++
+>  hw/usb/hcd-ehci.h        |  1 +
+>  3 files changed, 38 insertions(+)
+>
+> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> index 5566e979ec..afeb49c0ac 100644
+> --- a/hw/arm/allwinner-h3.c
+> +++ b/hw/arm/allwinner-h3.c
+> @@ -26,6 +26,7 @@
+>  #include "hw/sysbus.h"
+>  #include "hw/arm/allwinner-h3.h"
+>  #include "hw/misc/unimp.h"
+> +#include "hw/usb/hcd-ehci.h"
+>  #include "sysemu/sysemu.h"
+>
+>  static void aw_h3_init(Object *obj)
+> @@ -183,6 +184,25 @@ static void aw_h3_realize(DeviceState *dev, Error
+> **errp)
+>      }
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, AW_H3_CCU_BASE);
+>
+> +    /* Universal Serial Bus */
+> +    sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI0_BASE,
+> +                         s->irq[AW_H3_GIC_SPI_EHCI0]);
+> +    sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI1_BASE,
+> +                         s->irq[AW_H3_GIC_SPI_EHCI1]);
+> +    sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI2_BASE,
+> +                         s->irq[AW_H3_GIC_SPI_EHCI2]);
+> +    sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI3_BASE,
+> +                         s->irq[AW_H3_GIC_SPI_EHCI3]);
+> +
+> +    sysbus_create_simple("sysbus-ohci", AW_H3_OHCI0_BASE,
+> +                         s->irq[AW_H3_GIC_SPI_OHCI0]);
+> +    sysbus_create_simple("sysbus-ohci", AW_H3_OHCI1_BASE,
+> +                         s->irq[AW_H3_GIC_SPI_OHCI1]);
+> +    sysbus_create_simple("sysbus-ohci", AW_H3_OHCI2_BASE,
+> +                         s->irq[AW_H3_GIC_SPI_OHCI2]);
+> +    sysbus_create_simple("sysbus-ohci", AW_H3_OHCI3_BASE,
+> +                         s->irq[AW_H3_GIC_SPI_OHCI3]);
+> +
+>      /* UART */
+>      if (serial_hd(0)) {
+>          serial_mm_init(get_system_memory(), AW_H3_UART0_REG_BASE, 2,
+> diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
+> index 020211fd10..174c3446ef 100644
+> --- a/hw/usb/hcd-ehci-sysbus.c
+> +++ b/hw/usb/hcd-ehci-sysbus.c
+> @@ -145,6 +145,22 @@ static const TypeInfo ehci_exynos4210_type_info = {
+>      .class_init    = ehci_exynos4210_class_init,
+>  };
+>
+> +static void ehci_aw_h3_class_init(ObjectClass *oc, void *data)
+> +{
+> +    SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
+> +    DeviceClass *dc = DEVICE_CLASS(oc);
+> +
+> +    sec->capsbase = 0x0;
+> +    sec->opregbase = 0x10;
+> +    set_bit(DEVICE_CATEGORY_USB, dc->categories);
+> +}
+> +
+> +static const TypeInfo ehci_aw_h3_type_info = {
+> +    .name          = TYPE_AW_H3_EHCI,
+> +    .parent        = TYPE_SYS_BUS_EHCI,
+> +    .class_init    = ehci_aw_h3_class_init,
+> +};
+> +
+>  static void ehci_tegra2_class_init(ObjectClass *oc, void *data)
+>  {
+>      SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
+> @@ -267,6 +283,7 @@ static void ehci_sysbus_register_types(void)
+>      type_register_static(&ehci_platform_type_info);
+>      type_register_static(&ehci_xlnx_type_info);
+>      type_register_static(&ehci_exynos4210_type_info);
+> +    type_register_static(&ehci_aw_h3_type_info);
+>      type_register_static(&ehci_tegra2_type_info);
+>      type_register_static(&ehci_ppc4xx_type_info);
+>      type_register_static(&ehci_fusbh200_type_info);
+> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
+> index 0298238f0b..edb59311c4 100644
+> --- a/hw/usb/hcd-ehci.h
+> +++ b/hw/usb/hcd-ehci.h
+> @@ -342,6 +342,7 @@ typedef struct EHCIPCIState {
+>  #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
+>  #define TYPE_PLATFORM_EHCI "platform-ehci-usb"
+>  #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
+> +#define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
+>  #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
+>  #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
+>  #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
+> --
+> 2.17.1
+>
+>
+>
+
+--000000000000c332150598e3106d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<br><br>On Monday, December 2, 2019, Niek Linnenbank &lt;<a href=3D"mailto:=
+nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt; wrote:<br><block=
+quote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc=
+ solid;padding-left:1ex">The Allwinner H3 System on Chip contains multiple =
+USB 2.0 bus<br>
+connections which provide software access using the Enhanced<br>
+Host Controller Interface (EHCI) and Open Host Controller<br>
+Interface (OHCI) interfaces. This commit adds support for<br>
+both interfaces in the Allwinner H3 System on Chip.<br>
+<br>
+Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.c=
+om">nieklinnenbank@gmail.com</a>&gt;<br>
+---</blockquote><div><br></div><div>Niek, hi!</div><div><br></div><div>I wo=
+uld like to clarify a detail here:</div><div><br></div><div>The spec of the=
+ SoC enumerates (in 8.5.2.4. USB Host Register List) a number of registers =
+for reading various USB-related states, but also for setting some of USB fe=
+atures.</div><div>=C2=A0</div><div>Does this series cover these registers, =
+and interaction with them? If yes, how and where? If not, do you think it i=
+s not necessary at all? Or perhaps that it is a non-crucial limitation of t=
+his series?</div><div><br></div><div>Thanks in advance, and congrats for yo=
+ur, it seems, first submission!</div><div><br></div><div>Aleksandar</div><d=
+iv><br></div><div><br></div><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+=C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 | 20 ++++++++++++++++++++<br>
+=C2=A0hw/usb/hcd-ehci-sysbus.c | 17 +++++++++++++++++<br>
+=C2=A0hw/usb/hcd-ehci.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 1 +<br>
+=C2=A03 files changed, 38 insertions(+)<br>
+<br>
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
+index 5566e979ec..afeb49c0ac 100644<br>
+--- a/hw/arm/allwinner-h3.c<br>
++++ b/hw/arm/allwinner-h3.c<br>
+@@ -26,6 +26,7 @@<br>
+=C2=A0#include &quot;hw/sysbus.h&quot;<br>
+=C2=A0#include &quot;hw/arm/allwinner-h3.h&quot;<br>
+=C2=A0#include &quot;hw/misc/unimp.h&quot;<br>
++#include &quot;hw/usb/hcd-ehci.h&quot;<br>
+=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+<br>
+=C2=A0static void aw_h3_init(Object *obj)<br>
+@@ -183,6 +184,25 @@ static void aw_h3_realize(DeviceState *dev, Error **er=
+rp)<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_<wbr>DEVICE(&amp;s-&gt;ccu), 0,=
+ AW_H3_CCU_BASE);<br>
+<br>
++=C2=A0 =C2=A0 /* Universal Serial Bus */<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_<wbr>H3_EHCI, AW_H3_EHCI0_BASE,=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_EHCI0]);<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_<wbr>H3_EHCI, AW_H3_EHCI1_BASE,=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_EHCI1]);<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_<wbr>H3_EHCI, AW_H3_EHCI2_BASE,=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_EHCI2]);<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_<wbr>H3_EHCI, AW_H3_EHCI3_BASE,=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_EHCI3]);<br>
++<br>
++=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-<wbr>ohci&quot;, AW_H3_OHC=
+I0_BASE,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_OHCI0]);<br>
++=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-<wbr>ohci&quot;, AW_H3_OHC=
+I1_BASE,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_OHCI1]);<br>
++=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-<wbr>ohci&quot;, AW_H3_OHC=
+I2_BASE,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_OHCI2]);<br>
++=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-<wbr>ohci&quot;, AW_H3_OHC=
+I3_BASE,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_OHCI3]);<br>
++<br>
+=C2=A0 =C2=A0 =C2=A0/* UART */<br>
+=C2=A0 =C2=A0 =C2=A0if (serial_hd(0)) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0serial_mm_init(get_system_<wbr>memory(), =
+AW_H3_UART0_REG_BASE, 2,<br>
+diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c<br>
+index 020211fd10..174c3446ef 100644<br>
+--- a/hw/usb/hcd-ehci-sysbus.c<br>
++++ b/hw/usb/hcd-ehci-sysbus.c<br>
+@@ -145,6 +145,22 @@ static const TypeInfo ehci_exynos4210_type_info =3D {<=
+br>
+=C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =3D ehci_exynos4210_class_init=
+,<br>
+=C2=A0};<br>
+<br>
++static void ehci_aw_h3_class_init(<wbr>ObjectClass *oc, void *data)<br>
++{<br>
++=C2=A0 =C2=A0 SysBusEHCIClass *sec =3D SYS_BUS_EHCI_CLASS(oc);<br>
++=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(oc);<br>
++<br>
++=C2=A0 =C2=A0 sec-&gt;capsbase =3D 0x0;<br>
++=C2=A0 =C2=A0 sec-&gt;opregbase =3D 0x10;<br>
++=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_USB, dc-&gt;categories);<br>
++}<br>
++<br>
++static const TypeInfo ehci_aw_h3_type_info =3D {<br>
++=C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_AW_H3_EHCI,=
+<br>
++=C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_EHCI,<br=
+>
++=C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D ehci_aw_h3_class_init,<br>
++};<br>
++<br>
+=C2=A0static void ehci_tegra2_class_init(<wbr>ObjectClass *oc, void *data)<=
+br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0SysBusEHCIClass *sec =3D SYS_BUS_EHCI_CLASS(oc);<br>
+@@ -267,6 +283,7 @@ static void ehci_sysbus_register_types(<wbr>void)<br>
+=C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_<wbr>platform_type_info)=
+;<br>
+=C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_<wbr>xlnx_type_info);<br=
+>
+=C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_<wbr>exynos4210_type_inf=
+o);<br>
++=C2=A0 =C2=A0 type_register_static(&amp;ehci_aw_<wbr>h3_type_info);<br>
+=C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_<wbr>tegra2_type_info);<=
+br>
+=C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_<wbr>ppc4xx_type_info);<=
+br>
+=C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_<wbr>fusbh200_type_info)=
+;<br>
+diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h<br>
+index 0298238f0b..edb59311c4 100644<br>
+--- a/hw/usb/hcd-ehci.h<br>
++++ b/hw/usb/hcd-ehci.h<br>
+@@ -342,6 +342,7 @@ typedef struct EHCIPCIState {<br>
+=C2=A0#define TYPE_SYS_BUS_EHCI &quot;sysbus-ehci-usb&quot;<br>
+=C2=A0#define TYPE_PLATFORM_EHCI &quot;platform-ehci-usb&quot;<br>
+=C2=A0#define TYPE_EXYNOS4210_EHCI &quot;exynos4210-ehci-usb&quot;<br>
++#define TYPE_AW_H3_EHCI &quot;aw-h3-ehci-usb&quot;<br>
+=C2=A0#define TYPE_TEGRA2_EHCI &quot;tegra2-ehci-usb&quot;<br>
+=C2=A0#define TYPE_PPC4xx_EHCI &quot;ppc4xx-ehci-usb&quot;<br>
+=C2=A0#define TYPE_FUSBH200_EHCI &quot;fusbh200-ehci-usb&quot;<br>
+-- <br>
+2.17.1<br>
+<br>
+<br>
+</blockquote>
+
+--000000000000c332150598e3106d--

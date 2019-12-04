@@ -1,77 +1,77 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp580146lff;
-        Wed, 4 Dec 2019 04:39:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqydhcfVUIPnKZExt5NzXpE+gYE2EzW9HsFLhWpmPWZuVwrPfQraWhIZA9+VXfTZC874xz9k
-X-Received: by 2002:aed:3b14:: with SMTP id p20mr2443254qte.176.1575463156448;
-        Wed, 04 Dec 2019 04:39:16 -0800 (PST)
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp593194lff;
+        Wed, 4 Dec 2019 04:52:17 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx0YACFyet8j3g1QlPXdgMMoDinRl0VLnCLcGrumupRJ6qIMLQ5oCnkBFk32j2578fcQqBu
+X-Received: by 2002:a17:906:4ec9:: with SMTP id i9mr2872553ejv.159.1575463937098;
+        Wed, 04 Dec 2019 04:52:17 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k4si4145845qte.44.2019.12.04.04.39.15
+        by mx.google.com with ESMTPS id bc21si4441643edb.308.2019.12.04.04.52.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2019 04:39:15 -0800 (PST)
+        Wed, 04 Dec 2019 04:52:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=RRh5qfR9;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="fIcbZZK/";
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38049 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38366 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icTw2-0002om-Nz
-	for alex.bennee@linaro.org; Wed, 04 Dec 2019 07:39:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49916)
+	id 1icU8d-0003BS-TE
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 07:52:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55678)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1icTVX-0004TK-Lw
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 07:11:52 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1icU8E-0003B9-1g
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 07:51:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1icTVV-0002AQ-70
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 07:11:50 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:46166)
+ (envelope-from <damien.hedde@greensocs.com>) id 1icU8C-0006jD-E7
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 07:51:49 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:47514)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1icTVU-0001kY-LP; Wed, 04 Dec 2019 07:11:49 -0500
+ id 1icU8B-0006ih-Rz; Wed, 04 Dec 2019 07:51:48 -0500
 Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 05BAF96EF0;
- Wed,  4 Dec 2019 12:11:43 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 0800496EF0;
+ Wed,  4 Dec 2019 12:51:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1575461504;
+ s=mail; t=1575463905;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TaurbfOKuOcfUaP1AMMQnTq3LAvy/GF5omcI4wFBMHA=;
- b=RRh5qfR9TkykdbQBNF5BrwkB5Zn6pbAjlGt0vQEkdZJSt1YX7YFxUHAn+xSTY4tvzqwwS+
- aPVyaeiXCvE4/55lhA6J8RBb4wnqnuhNsU7fFnWvOafuhrGCWtXmmFSRBuYeZf7VZ762ot
- ysbL7+sVv6wjHSN4j1UJK2tDVZsTOs0=
-Subject: Re: [PATCH v6 6/9] docs/clocks: add device's clock documentation
+ bh=OBFgRgY4wIEhLoMAYwc94hmZaFaQBM/mMjjINIFJ5ZI=;
+ b=fIcbZZK/GP3axF2KOd6gSzFzLkmwVdlQPTY13wtdOQUQ1tdvRqstqQGdCW7x5On5l2PPwb
+ ZJu1Onc9esznT+CnUPhLaalnkUlwcCW7QxHhRq1CLBihRfz0zRaIeoSrUapbI5SalatM+H
+ v3aAJoi4nGSIwKR38ilekoGMg7KjqU8=
+Subject: Re: [PATCH v6 7/9] hw/misc/zynq_slcr: add clock generation for uarts
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190904125531.27545-1-damien.hedde@greensocs.com>
- <20190904125531.27545-7-damien.hedde@greensocs.com>
- <CAFEAcA-N=pBSMrALSYTHFFk4K=G+Zv_BO0ytF1FBS_PG6WMr2w@mail.gmail.com>
+ <20190904125531.27545-8-damien.hedde@greensocs.com>
+ <CAFEAcA_mmBeVnx5TsdeEaEU=jNnkFR9aa-nziaTQD7par7GpoA@mail.gmail.com>
 From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <9a460a48-250f-eb70-f2cd-bbc9624963b1@greensocs.com>
-Date: Wed, 4 Dec 2019 13:11:42 +0100
+Message-ID: <7e255f65-bbfa-897a-4dd0-cb366886f32c@greensocs.com>
+Date: Wed, 4 Dec 2019 13:51:44 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-N=pBSMrALSYTHFFk4K=G+Zv_BO0ytF1FBS_PG6WMr2w@mail.gmail.com>
+In-Reply-To: <CAFEAcA_mmBeVnx5TsdeEaEU=jNnkFR9aa-nziaTQD7par7GpoA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1575461504;
+ s=mail; t=1575463905;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TaurbfOKuOcfUaP1AMMQnTq3LAvy/GF5omcI4wFBMHA=;
- b=yOiKSflFcV8ysr1i64O5apL2lQ7AfpgP6u6IJehGC+wbvPMnuPdXr8i5k8wFJChxb7yZwv
- 9Da4UxHDpU58v73F2rhW4uAR0EPcGo/DzdcsUG4oSoxMI4Z5MH0OLbFNmQGqHt7Jy3x4+/
- JmGV34Z42jrRLtyFk1kn/7bV/cdOtrY=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575461504; a=rsa-sha256; cv=none;
- b=jxaYQJd2zVG4nWG7KgI5GAO9a3ly5rTRUjxj/naUxXX87iPkXYAwnH1zxrFyW3tfjR84ll
- NOXHImHWT6h80cyco6ePcTjfa3j1c57snuSolbdJoywxmhK57jlPfbQHOvYZwkSplX4Dj4
- 5FUH4zgvSDCcbbSvPCG1JmBA8eemLyk=
+ bh=OBFgRgY4wIEhLoMAYwc94hmZaFaQBM/mMjjINIFJ5ZI=;
+ b=3N5xzz1AsIzwskbc4d4tQ8te3WGoJ42BR7F2ZfcXncEENAfIok9ANzMCuKZUHDh/6nx8GN
+ UwWO9QL7kBr16K48vzIjPWmFAdDExAO2MXWiy6G+xAYdCEFsTVho5X3zT2EIC4rYhnS2f3
+ HQrkGZs2VSsIXDrPE6YVJL7Iteg14SQ=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575463905; a=rsa-sha256; cv=none;
+ b=7jh+YjDZfbgf5tQMfwe6bqIXCKyuv8k1OZdQL8g8W6rFUvmQZNSeTJxSyGIKhE03Xgn3wt
+ M0McP9y3PXyBF66cv9Ac9a2KrrmSYFDwCMeIYucA5YqB6N7Ktm2A5Jcsl83MSo1rKMLYJm
+ Jwk30WQ2Aj8FXnOg6oAxazaXZNjifaY=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
@@ -98,115 +98,111 @@ Cc: "Daniel P. Berrange" <berrange@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QsgKoXn7eSaR
+X-TUID: 3WZIjDLaps4m
 
 
-On 12/2/19 4:17 PM, Peter Maydell wrote:
+
+On 12/2/19 4:20 PM, Peter Maydell wrote:
 > On Wed, 4 Sep 2019 at 13:56, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >>
->> Add the documentation about the clock inputs and outputs in devices.
+>> Switch the slcr to multi-phase reset and add some clocks:
+>> + the main input clock (ps_clk)
+>> + the reference clock outputs for each uart (uart0 & 1)
 >>
->> This is based on the original work of Frederic Konrad.
+>> The clock frequencies are computed using the internal pll & uart configuration
+>> registers and the ps_clk frequency.
 >>
 >> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> 
+> Review of this and the following two patches by some Xilinx
+> person would be nice. I've just looked them over for general
+> issues, and haven't checked against the hardware specs.
+> 
 >> ---
->>  docs/devel/clock.txt | 246 +++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 246 insertions(+)
->>  create mode 100644 docs/devel/clock.txt
-> 
-> Could you convert this to rst format, please?Yes.
 > 
 > 
+>> +/*
+>> + * return the output frequency of a clock given:
+>> + * + the frequencies in an array corresponding to mux's indexes
+>> + * + the register xxx_CLK_CTRL value
+>> + * + enable bit index in ctrl register
+>> + *
+>> + * This function make the assumption that ctrl_reg value is organized as follow:
 > 
->> +Changing a clock output
->> +=======================
+> "makes"; "that the"; "follows"
+> 
+>> + * + bits[13:8] clock divisor
+>> + * + bits[5:4]  clock mux selector (index in array)
+>> + * + bits[index] clock enable
+>> + */
+>> +static uint64_t zynq_slcr_compute_clock(const uint64_t mux[],
+>> +                                        uint32_t ctrl_reg,
+>> +                                        unsigned index)
+>> +{
+>> +    uint32_t srcsel = extract32(ctrl_reg, 4, 2); /* bits [5:4] */
+>> +    uint32_t divisor = extract32(ctrl_reg, 8, 6); /* bits [13:8] */
 >> +
->> +A device can change its outputs using the clock_set_frequency function. It
->> +will trigger updates on every connected inputs.
-> 
-> "input"
-> 
->> +
->> +For example, let's say that we have an output clock "clkout" and we have a
->> +pointer to it in the device state because we did the following in init phase:
->> +dev->clkout = qdev_init_clock_out(DEVICE(dev), "clkout");
->> +
->> +Then at any time (apart from the cases listed below), it is possible to
->> +change the clock value by doing:
->> +clock_set_frequency(dev->clkout, 1000 * 1000 * 1000); /* 1Ghz */
->> +This operation must be done while holding the qemu io lock.
->> +
->> +One can change clocks only when it is allowed to have side effects on other
->> +objects. In consequence, it is forbidden:
->> ++ during migration,
->> ++ and in the init phase of reset.
->> +
->> +Forwarding clocks
->> +=================
->> +
->> +Sometimes, one needs to forward, or inherit, a clock from another device.
->> +Typically, when doing device composition, a device might expose a sub-device's
->> +clock without interfering with it.
->> +The function qdev_pass_clock() can be used to achieve this behaviour. Note, that
-> 
-> "Note that"
-> 
->> +it is possible to expose the clock under a different name. This works for both
->> +inputs or outputs.
-> 
-> "inputs and outputs"
-> 
-> 
->> +Migration
->> +=========
->> +
->> +Only the ClockIn object has a state. ClockOut is not concerned by migration.
-> 
-> "has any state".
-> 
-> "ClockOut has no state and does not need special handling for migration."
-> 
->> +
->> +In case the frequency of in input clock is needed for a device's migration,
->> +this state must be migrated.
-> 
-> Are you trying to say that if an input clock is known to be a
-> fixed frequency we don't need to migrate anything? I wonder
-> if we need to worry about that or if we could/should just say that
-> input clocks should always be migrated.
-
-What I wanted to say is that there are indeed probably cases where
-migrating the frequency is unnecessary. For example if we only use the
-callback and never fetch the frequency outside it: if the frequency is
-only used to compute something which is already saved/loaded during
-migration.
-
-But yes we could just do as you say. It's probably less confusing.
-
-> 
->> The VMSTATE_CLOCKIN macro defines an entry to
->> +be added in a vmstate description.
->> +
->> +For example, if a device has a clock input and the device state looks like:
->> +MyDeviceState {
->> +    DeviceState parent_obj;
->> +    ClockIn *clk;
->> +};
->> +
->> +Then, to add the clock frequency to the device's migrated state, the vmstate
->> +description is:
->> +VMStateDescription my_device_vmstate = {
->> +    .name = "my_device",
->> +    .fields = (VMStateField[]) {
->> +        VMSTATE_CLOCKIN(clk, MyDeviceState),
->> +        VMSTATE_END_OF_LIST()
+>> +    /* first, check if clock is enabled */
+>> +    if (((ctrl_reg >> index) & 1u) == 0) {
+>> +        return 0;
 >> +    }
+>> +
+>> +    /*
+>> +     * according to the Zynq technical ref. manual UG585 v1.12.2 in
+>> +     * "Clocks" chapter, section 25.10.1 page 705" the range of the divisor
+>> +     * is [1;63].
+> 
+> Is this the range notation the spec doc uses?
+
+The exact terms is:
+"The 6-bit divider provides a divide range of 1 to 63"
+At the time, I checked also the kernel sources, and this is the behavior
+implemented in the driver as well (1 based timer and allowing 0 special
+value for bypass). The bypass is undocumented as far as I can tell.
+
+> 
+>> +     * So divide the source while avoiding division-by-zero.
+>> +     */
+>> +    return mux[srcsel] / (divisor ? divisor : 1u);
+>> +}
+>> +
+> 
+>> +static const ClockPortInitArray zynq_slcr_clocks = {
+>> +    QDEV_CLOCK_IN(ZynqSLCRState, ps_clk, zynq_slcr_ps_clk_callback),
+>> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart0_ref_clk),
+>> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart1_ref_clk),
+>> +    QDEV_CLOCK_END
 >> +};
 >> +
->> +When adding a input clock support to an existing device, you must care about
->> +migration compatibility. To this end, you can use the clock_init_frequency in
->> +a pre_load function to setup a default value in case the source vm does not
->> +migrate the frequency.
+>>  static void zynq_slcr_init(Object *obj)
+>>  {
+>>      ZynqSLCRState *s = ZYNQ_SLCR(obj);
+>> @@ -425,6 +559,8 @@ static void zynq_slcr_init(Object *obj)
+>>      memory_region_init_io(&s->iomem, obj, &slcr_ops, s, "slcr",
+>>                            ZYNQ_SLCR_MMIO_SIZE);
+>>      sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
+>> +
+>> +    qdev_init_clocks(DEVICE(obj), zynq_slcr_clocks);
+>>  }
+>>
+>>  static const VMStateDescription vmstate_zynq_slcr = {
+>> @@ -440,9 +576,12 @@ static const VMStateDescription vmstate_zynq_slcr = {
+>>  static void zynq_slcr_class_init(ObjectClass *klass, void *data)
+>>  {
+>>      DeviceClass *dc = DEVICE_CLASS(klass);
+>> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+>>
+>>      dc->vmsd = &vmstate_zynq_slcr;
+>> -    dc->reset = zynq_slcr_reset;
+>> +    rc->phases.init = zynq_slcr_reset_init;
+>> +    rc->phases.hold = zynq_slcr_reset_hold;
+>> +    rc->phases.exit = zynq_slcr_reset_exit;
+>>  }
+> 
+> We're adding an input clock, so doesn't the migration
+> state struct need to be updated to migrate it ?
+Yes, we can. Although this input clock is really not expected to change.
+
 > 
 > thanks
 > -- PMM

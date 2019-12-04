@@ -1,402 +1,388 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1527720lfc;
-        Tue, 3 Dec 2019 05:49:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzQejegHtrJdDxwxkXkzx9L6Y98jVwaUbL7Zd2S7LEzCc6WOnCsGL/1eh7PLryBgutIlcX+
-X-Received: by 2002:ac8:614a:: with SMTP id d10mr4894665qtm.373.1575380972353;
-        Tue, 03 Dec 2019 05:49:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575380972; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp749636lff;
+        Wed, 4 Dec 2019 07:01:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzL47hjfz7TDu8Bp1meEU4ddLkiRiIz0k0N8ypbv6J9zB8RhJgZlXvGZSs/3CvZE5XQDLCM
+X-Received: by 2002:a5d:540f:: with SMTP id g15mr4381793wrv.86.1575471693903;
+        Wed, 04 Dec 2019 07:01:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575471693; cv=none;
         d=google.com; s=arc-20160816;
-        b=DGhWoMsujt0Y64Iqt7M1vNbbvasqxtBIUdA4+zvibZWXOUWWNLIsMMJg1J7DwLaLzg
-         Xx4Xa1k321mwMdS6i2KxPpg455RjFL9D61BdcpNjFCeYUZZtWgTiFGhCPi70/8JjUizn
-         /o9DLcsK3qVtDnNUY9xSSKMDyKBK18gi6B3/I+Gdduk6RF6tAcY/0FXF0fCVlRPdFu00
-         irxLB5RYpiTzPvdnhxRe6W8zpqOOMBso/lzhC2BR2GUK0nvXYQ9UmeSIqieEPwJQLGnJ
-         BRP7k8pG9cDEflyHRLYmFxl1+AovbR2a0V3/OTe724HvuAmizeAhZlLTuOvXcvCMRyPt
-         UUNQ==
+        b=Z0oTASG9BEaX8ud/mBQbk6HEfjp8/mJkl1KXpHOseDl3vM7l5mezZV/JQ1bqPzsSto
+         v+zMS1lfbxk39392D8kUg4n3c8KMnoyaIgXbJ6L2xR1X54U60o/mL+7ZthOW583BrJmL
+         XUdTiUjl/9F/0Y56034ACyE3XmVUTBXIiCT9EMsYIdBomT6M7Ey/yRfBZ5LLY02eRK3y
+         gQez9xBrdqOUfFiOyur/uz8FnGuwp4/uSzWhmtQ8PClZlVAKpkL92vKFhjRmS/oaaa+A
+         IBGQ/5kQKPJ+b/yUSS98Xmc6OGjTHthlTopjyRf60pUlJmLuAAMXuEz+F6LXl9AkzVp8
+         VRRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=soWhI6No3tGQBHEkzHvxFefPjyrYmqm4pcmKH6TBqBM=;
-        b=0rRZCAa3vQtxrcTySgSTi1+rkfpADd5H5Pf3hjBETeGB8Ho4nfc3By+rjwwc4OX1oZ
-         jbKKaKZyF3KrAgIauGhudDMSJmfT4Aj0OI49RXl1rh0TZcYogspTkzn5UiCJl1s3LMhH
-         wN+GFYD2eMnAixGthTBBI1ZUxhi+AwKd7chTlvrkShzi49ruv4I8hIVJzYYamrM3/doD
-         nyTWITmzAqhdJ6rg5F2sNXTpEAjVW32pByFTRhhC6p0bi7flon9DGBBed+8ut/hIhy6O
-         em4FZLCRkYCDL12vJ5+kIW0cJlDNMRZix9pWkw4tBcm+OosBIkUTv6+Q4K5YwYAU19fN
-         Tm1w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=ajRfpg8Ys2mundddq1XB+ae7HTn9RvM1JIztRsA+x88=;
+        b=PQEx+gHbHrpkl02Q8WksHAwZTWT7YUm0okeLRMb45CpptY5JbxArhkYWu3jbkPC1fD
+         gjLrSRfKsZvZ/vIpiho98if3R2MLsIGmUKoz6LvSAKwbM1uLQxHvKr5KbFxFKKp4qLy2
+         O7touNZbF+nEYvoihFrAR7viJ5pKEqFEINuEVsygxhgjXWbC4WjYBk1W/okkwGLLeSBG
+         8KEEgQEedVG0Dm/1KsovsNsUSwge65rTc4TRMwdRRB2G8+/mmitsLjDR3/pcmH5xUpPN
+         0BY686yVzF3uabEK/kXwKV5kJiRaN3FHnKeaLuH78eOIx5NsdnVYi5saULST2nH2P3hW
+         YcVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ppgXXhsX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A+ywdV5W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m21si1935625qvh.56.2019.12.03.05.49.32
+        by mx.google.com with ESMTPS id q18si4905851edg.23.2019.12.04.07.01.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2019 05:49:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Dec 2019 07:01:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ppgXXhsX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53880 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A+ywdV5W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40088 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ic8YT-0007WV-CN
-	for alex.bennee@linaro.org; Tue, 03 Dec 2019 08:49:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53570)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1icW9k-00088i-Mp
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 10:01:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48422)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1ic8Rk-0005Lp-5Q
- for qemu-devel@nongnu.org; Tue, 03 Dec 2019 08:42:34 -0500
+ (envelope-from <armbru@redhat.com>) id 1icW95-0007yG-5v
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 10:00:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1ic8RW-0003ge-M6
- for qemu-devel@nongnu.org; Tue, 03 Dec 2019 08:42:21 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:46567)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1ic8RW-0003Yj-E3
- for qemu-devel@nongnu.org; Tue, 03 Dec 2019 08:42:18 -0500
-Received: by mail-oi1-x242.google.com with SMTP id a124so3238505oii.13
- for <qemu-devel@nongnu.org>; Tue, 03 Dec 2019 05:42:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=soWhI6No3tGQBHEkzHvxFefPjyrYmqm4pcmKH6TBqBM=;
- b=ppgXXhsXDNWhUOFl0X91JCfyO9UwZrGH1VEYHpZE7vzkNRqS+w29S9V2E3OwCl+kB4
- nL/csPgdpy9XzSpFsLO6ZqH32x6hFZBxKXxXpgDtPXoRwZLV0SD/RRlBzqa4305T7RYQ
- 53RPa9ZpkEQcwBQlZr+y4YMjN8YIxetAYSJ1Nd2f5JoLhdpLuELu5+f107GUpddyg9fN
- EsIvUiRAaiTNvPAwNbXswlwqCGiJY46irap2tVAQwH04+h+5c5VerKUVFF21515ZGkZu
- eSvqBRiIhb0CU/+X5Lm0aw5fQwYlZi7a7gHTT22DVH9R9B/mQ6SyWH9FiF9MiqT7zfJQ
- a6lg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=soWhI6No3tGQBHEkzHvxFefPjyrYmqm4pcmKH6TBqBM=;
- b=X7bXH3omA29Ah7/nh2ss0tU2iGo9f1+hElFp6mCsrc2+mqlinK4ch/r2XCoLr6MvjJ
- +DgIGezufyNJmaa8oFVk+4Zbbv9C4WSKiBxu3VrIoyTq2nccIBEjjuiVqQdE465jFLRD
- As1JgBT5DiM0Ydjw708wRBKV0RAP+qVatfH2Uj0ox+5SYNyWDeH/lWj1dSc7L3Yob8pv
- jvf2tM7n7nNGqFVah9LyMMRCuZBXTRD/bNUAtnAS2/dbkMzZHWiUMSmvmpSk5vnhLBS/
- f5nELgqZ44cVGfQgxIcJSSFhPIU3TozFo89yRF8+b1ophAYMum+6bUZkCdsTk5N7n4dR
- TmWg==
-X-Gm-Message-State: APjAAAXkCGgoyJ4Otwa1O+eqQyO6spbKiCI04v7w/LW8uZZD+Lg/iZAF
- cscWnO5lL7nF9OvDJRK4rD5Ea0hC5q+8sn1zHp83Og==
-X-Received: by 2002:aca:edd5:: with SMTP id l204mr3664271oih.98.1575380536122; 
- Tue, 03 Dec 2019 05:42:16 -0800 (PST)
+ (envelope-from <armbru@redhat.com>) id 1icW8x-0000MA-PY
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 10:00:50 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:33688
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1icW8x-0000Ll-JS
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 10:00:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575471643;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ajRfpg8Ys2mundddq1XB+ae7HTn9RvM1JIztRsA+x88=;
+ b=A+ywdV5WHf3FBI4ktUXu7ICSEbE2SacHxC4AkvV9WKIb3dyCmtID2cVDscbs0Fn9sWUDTD
+ fxe0NTe1r9dfbgsz9680THTB8UqzJaYENPIqd5zPevHmvkcBuEmhTVqmgu0XZW7+ehi12h
+ kOBG0WhgeB5AJspWzLTjoBwbbVH88Fk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-121-mtHk5eY3O-2_dbJ5ZdlsaQ-1; Wed, 04 Dec 2019 10:00:40 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D568618557FF;
+ Wed,  4 Dec 2019 15:00:36 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-134.ams2.redhat.com
+ [10.36.116.134])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4E41E19C68;
+ Wed,  4 Dec 2019 15:00:01 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id C11E51138606; Wed,  4 Dec 2019 15:59:59 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Subject: Re: [RFC v5 024/126] error: auto propagated local_err
+References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
+ <20191011160552.22907-25-vsementsov@virtuozzo.com>
+Date: Wed, 04 Dec 2019 15:59:59 +0100
+In-Reply-To: <20191011160552.22907-25-vsementsov@virtuozzo.com> (Vladimir
+ Sementsov-Ogievskiy's message of "Fri, 11 Oct 2019 19:04:10 +0300")
+Message-ID: <87muc8p24w.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20191011134744.2477-1-richard.henderson@linaro.org>
- <20191011134744.2477-5-richard.henderson@linaro.org>
-In-Reply-To: <20191011134744.2477-5-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Dec 2019 13:42:05 +0000
-Message-ID: <CAFEAcA_WOMbFzFQghakLxxuCTc2b3p6eb18nS5KSrSj+oW-Ckg@mail.gmail.com>
-Subject: Re: [PATCH v5 04/22] target/arm: Add helper_mte_check{1,2,3}
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-X-BeenThere: qemu-devel@nongnu.org
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: mtHk5eY3O-2_dbJ5ZdlsaQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CuTDCL0Muriy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
+ Jan Kiszka <jan.kiszka@siemens.com>, Alberto Garcia <berto@igalia.com>,
+ Hailiang Zhang <zhang.zhanghailiang@huawei.com>, qemu-block@nongnu.org,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
+ =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Laszlo Ersek <lersek@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>, "Dr.
+ David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
+ qemu-ppc@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Peter Maydell <peter.maydell@linaro.org>, sheepdog@lists.wpkg.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Eric Farman <farman@linux.ibm.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, "Denis V. Lunev" <den@openvz.org>,
+ Hannes Reinecke <hare@suse.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ "Gonglei \(Arei\)" <arei.gonglei@huawei.com>, Liu Yuan <namei.unix@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
+ Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Stafford Horne <shorne@gmail.com>, qemu-riscv@nongnu.org,
+ Cornelia Huck <cohuck@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
+ Anthony Green <green@moxielogic.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
+ Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
+ Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
+ xen-devel@lists.xenproject.org, integration@gluster.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ "Richard W.M. Jones" <rjones@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
+ armbru@redhat.com,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VssgX0ku71B7
 
-On Fri, 11 Oct 2019 at 14:49, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> writes:
+
+> Here is introduced ERRP_AUTO_PROPAGATE macro, to be used at start of
+> functions with errp OUT parameter.
 >
-> Implements the rules of "PE generation of Checked and Unchecked
-> accesses" which aren't already implied by TB_FLAGS_MTE_ACTIVE.
-> Implements the rules of "PE handling of Tag Check Failure".
+> It has three goals:
 >
-> Does not implement tag physical address space, so all operations
-> reduce to unchecked so far.
+> 1. Fix issue with error_fatal & error_prepend/error_append_hint: user
+> can't see this additional information, because exit() happens in
+> error_setg earlier than information is added. [Reported by Greg Kurz]
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> 2. Fix issue with error_abort & error_propagate: when we wrap
+> error_abort by local_err+error_propagate, resulting coredump will
+> refer to error_propagate and not to the place where error happened.
+
+I get what you mean, but I have plenty of context.
+
+> (the macro itself doesn't fix the issue, but it allows to [3.] drop all
+> local_err+error_propagate pattern, which will definitely fix the issue)
+
+The parenthesis is not part of the goal.
+
+> [Reported by Kevin Wolf]
+>
+> 3. Drop local_err+error_propagate pattern, which is used to workaround
+> void functions with errp parameter, when caller wants to know resulting
+> status. (Note: actually these functions could be merely updated to
+> return int error code).
+>
+> To achieve these goals, we need to add invocation of the macro at start
+> of functions, which needs error_prepend/error_append_hint (1.); add
+> invocation of the macro at start of functions which do
+> local_err+error_propagate scenario the check errors, drop local errors
+> from them and just use *errp instead (2., 3.).
+
+The paragraph talks about two cases: 1. and 2.+3.  Makes me think we
+want two paragraphs, each illustrated with an example.
+
+What about you provide the examples, and then I try to polish the prose?
+
+> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 > ---
-> v2: Fix TFSR update.
-> v3: Split helper_mte_check per {1,2} IAs; take tbi data from translate.
-> v5: Split helper_mte_check3, the only one that needs a runtime check for tbi.
-> ---
->  target/arm/helper-a64.h    |   4 +
->  target/arm/mte_helper.c    | 167 +++++++++++++++++++++++++++++++++++++
->  target/arm/translate-a64.c |  15 +++-
->  target/arm/Makefile.objs   |   1 +
->  4 files changed, 186 insertions(+), 1 deletion(-)
->  create mode 100644 target/arm/mte_helper.c
 >
-> diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-> index a915c1247f..a82e21f15a 100644
-> --- a/target/arm/helper-a64.h
-> +++ b/target/arm/helper-a64.h
-> @@ -102,3 +102,7 @@ DEF_HELPER_FLAGS_3(autda, TCG_CALL_NO_WG, i64, env, i64, i64)
->  DEF_HELPER_FLAGS_3(autdb, TCG_CALL_NO_WG, i64, env, i64, i64)
->  DEF_HELPER_FLAGS_2(xpaci, TCG_CALL_NO_RWG_SE, i64, env, i64)
->  DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
-> +
-> +DEF_HELPER_FLAGS_2(mte_check1, TCG_CALL_NO_WG, i64, env, i64)
-> +DEF_HELPER_FLAGS_2(mte_check2, TCG_CALL_NO_WG, i64, env, i64)
-> +DEF_HELPER_FLAGS_3(mte_check3, TCG_CALL_NO_WG, i64, env, i64, i32)
-> diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-> new file mode 100644
-> index 0000000000..bbb90cbe86
-> --- /dev/null
-> +++ b/target/arm/mte_helper.c
-> @@ -0,0 +1,167 @@
-> +/*
-> + * ARM v8.5-MemTag Operations
-> + *
-> + * Copyright (c) 2019 Linaro, Ltd.
-> + *
-> + * This library is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU Lesser General Public
-> + * License as published by the Free Software Foundation; either
-> + * version 2.1 of the License, or (at your option) any later version.
-> + *
-> + * This library is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> + * Lesser General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU Lesser General Public
-> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "cpu.h"
-> +#include "internals.h"
-> +#include "exec/exec-all.h"
-> +#include "exec/cpu_ldst.h"
-> +#include "exec/helper-proto.h"
-> +
-> +
-> +static int get_allocation_tag(CPUARMState *env, uint64_t ptr, uintptr_t ra)
-> +{
-> +    /* Tag storage not implemented.  */
-> +    return -1;
-> +}
-> +
-> +static int allocation_tag_from_addr(uint64_t ptr)
-> +{
-> +    ptr += 1ULL << 55;  /* carry ptr[55] into ptr[59:56].  */
-> +    return extract64(ptr, 56, 4);
-
-What's the carry-bit-55 logic for? The pseudocode
-AArch64.AllocationTagFromAddress just returns bits [59:56].
-
-> +}
-> +
-> +/*
-> + * Perform a checked access for MTE.
-> + * On arrival, TBI is known to enabled, as is allocation_tag_access_enabled.
-
-"to be"
-
-> + */
-> +static uint64_t do_mte_check(CPUARMState *env, uint64_t dirty_ptr,
-> +                             uint64_t clean_ptr, uint32_t select,
-> +                             uintptr_t ra)
-> +{
-> +    ARMMMUIdx stage1 = arm_stage1_mmu_idx(env);
-> +    int ptr_tag, mem_tag;
-> +
-> +    /*
-> +     * If TCMA is enabled, then physical tag 0 is unchecked.
-> +     * Note the rules in D6.8.1 are written with logical tags, where
-> +     * the corresponding physical tag rule is simpler: equal to 0.
-> +     * We will need the physical tag below anyway.
-> +     */
-
-This reads a bit oddly, because (in the final version of the spec)
-physical and logical tags are identical (AArch64.PhysicalTag()
-just returns bits [59:56] of the vaddr).
-
-> +    ptr_tag = allocation_tag_from_addr(dirty_ptr);
-> +    if (ptr_tag == 0) {
-> +        ARMVAParameters p = aa64_va_parameters(env, dirty_ptr, stage1, true);
-> +        if (p.tcma) {
-> +            return clean_ptr;
-> +        }
-> +    }
-
-I don't think this logic gets the "regime has two address ranges"
-case correct. For a two-address-range translation regime (where
-TCR_ELx has TCMA0 and TCMA1 bits, rather than just a single TCMA bit),
-then the 'select' argument to this function needs to be involved,
-because we should do a tag-unchecked access if:
- * addr[59:55]==0b00000 (ie select == 0 and ptr_tag == 0)
-   and TCR_ELx.TCMA0 is set
- * addr[59:55]==0b11111 (ie select == 1 and ptr_tag == 0xf)
-   and TCR_ELx.TCMA1 is set
-(the pseudocode for this is in AArch64.AccessTagIsChecked(),
-and the TCR_EL1.TCMA[01] bit definitions agree; the text in
-D6.8.1 appears to be confused.)
-
-> +
-> +    /*
-> +     * If an access is made to an address that does not provide tag
-> +     * storage, the result is IMPLEMENTATION DEFINED.  We choose to
-> +     * treat the access as unchecked.
-> +     * This is similar to MemAttr != Tagged, which are also unchecked.
-> +     */
-> +    mem_tag = get_allocation_tag(env, clean_ptr, ra);
-> +    if (mem_tag < 0) {
-> +        return clean_ptr;
-> +    }
-> +
-> +    /* If the tags do not match, the tag check operation fails.  */
-> +    if (unlikely(ptr_tag != mem_tag)) {
-> +        int el, regime_el, tcf;
-> +        uint64_t sctlr;
-> +
-> +        el = arm_current_el(env);
-> +        regime_el = (el ? el : 1);   /* TODO: ARMv8.1-VHE EL2&0 regime */
-
-We could write this as "regime_el(env, stage1)" if that function
-wasn't local to helper.c, right ?
-
-> +        sctlr = env->cp15.sctlr_el[regime_el];
-> +        if (el == 0) {
-> +            tcf = extract64(sctlr, 38, 2);
-> +        } else {
-> +            tcf = extract64(sctlr, 40, 2);
-> +        }
-> +
-> +        switch (tcf) {
-> +        case 1:
-> +            /*
-> +             * Tag check fail causes a synchronous exception.
-> +             *
-> +             * In restore_state_to_opc, we set the exception syndrome
-> +             * for the load or store operation.  Do that first so we
-> +             * may overwrite that with the syndrome for the tag check.
-> +             */
-> +            cpu_restore_state(env_cpu(env), ra, true);
-> +            env->exception.vaddress = dirty_ptr;
-> +            raise_exception(env, EXCP_DATA_ABORT,
-> +                            syn_data_abort_no_iss(el != 0, 0, 0, 0, 0, 0x11),
-> +                            exception_target_el(env));
-> +            /* noreturn; fall through to assert anyway */
-
-hopefully this fallthrough comment syntax doesn't confuse any
-of our compilers/static analyzers...
-
-> +
-> +        case 0:
-> +            /*
-> +             * Tag check fail does not affect the PE.
-> +             * We eliminate this case by not setting MTE_ACTIVE
-> +             * in tb_flags, so that we never make this runtime call.
-> +             */
-> +            g_assert_not_reached();
-> +
-> +        case 2:
-> +            /* Tag check fail causes asynchronous flag set.  */
-> +            env->cp15.tfsr_el[regime_el] |= 1 << select;
-
-Won't this incorrectly accumulate tagfails for EL0 into
-TFSR_EL1 rather than TFSRE0_EL1 ? I think you want "[el]".
-
-> +            break;
-> +
-> +        default:
-> +            /* Case 3: Reserved. */
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "Tag check failure with SCTLR_EL%d.TCF "
-> +                          "set to reserved value %d\n", regime_el, tcf);
-
-Technically this message is going to be wrong for the
-case of el==0 (where it's SCTLR_EL1.TCF0, not .TCF, that's
-been mis-set).
-
-> +            break;
-> +        }
-> +    }
-> +
-> +    return clean_ptr;
-> +}
-> +
-> +/*
-> + * Perform check in translation regime w/single IA range.
-> + * It is known that TBI is enabled on entry.
-> + */
-> +uint64_t HELPER(mte_check1)(CPUARMState *env, uint64_t dirty_ptr)
-> +{
-> +    uint64_t clean_ptr = extract64(dirty_ptr, 0, 56);
-> +    return do_mte_check(env, dirty_ptr, clean_ptr, 0, GETPC());
-> +}
-> +
-> +/*
-> + * Perform check in translation regime w/two IA ranges.
-> + * It is known that TBI is enabled on entry.
-> + */
-> +uint64_t HELPER(mte_check2)(CPUARMState *env, uint64_t dirty_ptr)
-> +{
-> +    uint32_t select = extract64(dirty_ptr, 55, 1);
-> +    uint64_t clean_ptr = sextract64(dirty_ptr, 0, 56);
-> +    return do_mte_check(env, dirty_ptr, clean_ptr, select, GETPC());
-> +}
-> +
-> +/*
-> + * Perform check in translation regime w/two IA ranges.
-> + * The TBI argument is the concatenation of TBI1:TBI0.
-> + */
-> +uint64_t HELPER(mte_check3)(CPUARMState *env, uint64_t dirty_ptr, uint32_t tbi)
-> +{
-> +    uint32_t select = extract64(dirty_ptr, 55, 1);
-> +    uint64_t clean_ptr = sextract64(dirty_ptr, 0, 56);
-> +
-> +    if ((tbi >> select) & 1) {
-> +        return do_mte_check(env, dirty_ptr, clean_ptr, select, GETPC());
-> +    } else {
-> +        /* TBI is disabled; the access is unchecked.  */
-> +        return dirty_ptr;
-> +    }
-> +}
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 62bdf50796..8e4fea6b4c 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -214,7 +214,20 @@ static void gen_a64_set_pc(DisasContext *s, TCGv_i64 src)
->  static TCGv_i64 clean_data_tbi(DisasContext *s, TCGv_i64 addr)
->  {
->      TCGv_i64 clean = new_tmp_a64(s);
-> -    gen_top_byte_ignore(s, clean, addr, s->tbid);
-> +
-> +    /* Note that s->mte_active already includes a check for s->tbid != 0. */
-> +    if (!s->mte_active) {
-> +        gen_top_byte_ignore(s, clean, addr, s->tbid);
-> +    } else if (!regime_has_2_ranges(s->mmu_idx)) {
-> +        gen_helper_mte_check1(clean, cpu_env, addr);
-> +    } else if (s->tbid == 3) {
-> +        /* Both TBI1:TBI0 are set; no need to check at runtime. */
-> +        gen_helper_mte_check2(clean, cpu_env, addr);
-> +    } else {
-> +        TCGv_i32 tbi = tcg_const_i32(s->tbid);
-> +        gen_helper_mte_check3(clean, cpu_env, addr, tbi);
-> +        tcg_temp_free_i32(tbi);
-> +    }
->      return clean;
->  }
+> CC: Gerd Hoffmann <kraxel@redhat.com>
+> CC: "Gonglei (Arei)" <arei.gonglei@huawei.com>
+> CC: Eduardo Habkost <ehabkost@redhat.com>
+> CC: Igor Mammedov <imammedo@redhat.com>
+> CC: Laurent Vivier <lvivier@redhat.com>
+> CC: Amit Shah <amit@kernel.org>
+> CC: Kevin Wolf <kwolf@redhat.com>
+> CC: Max Reitz <mreitz@redhat.com>
+> CC: John Snow <jsnow@redhat.com>
+> CC: Ari Sundholm <ari@tuxera.com>
+> CC: Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
+> CC: Paolo Bonzini <pbonzini@redhat.com>
+> CC: Stefan Hajnoczi <stefanha@redhat.com>
+> CC: Fam Zheng <fam@euphon.net>
+> CC: Stefan Weil <sw@weilnetz.de>
+> CC: Ronnie Sahlberg <ronniesahlberg@gmail.com>
+> CC: Peter Lieven <pl@kamp.de>
+> CC: Eric Blake <eblake@redhat.com>
+> CC: "Denis V. Lunev" <den@openvz.org>
+> CC: Markus Armbruster <armbru@redhat.com>
+> CC: Alberto Garcia <berto@igalia.com>
+> CC: Jason Dillaman <dillaman@redhat.com>
+> CC: Wen Congyang <wencongyang2@huawei.com>
+> CC: Xie Changlong <xiechanglong.d@gmail.com>
+> CC: Liu Yuan <namei.unix@gmail.com>
+> CC: "Richard W.M. Jones" <rjones@redhat.com>
+> CC: Jeff Cody <codyprime@gmail.com>
+> CC: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
+> CC: "Daniel P. Berrang=C3=A9" <berrange@redhat.com>
+> CC: Richard Henderson <rth@twiddle.net>
+> CC: Greg Kurz <groug@kaod.org>
+> CC: "Michael S. Tsirkin" <mst@redhat.com>
+> CC: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+> CC: Beniamino Galvani <b.galvani@gmail.com>
+> CC: Peter Maydell <peter.maydell@linaro.org>
+> CC: "C=C3=A9dric Le Goater" <clg@kaod.org>
+> CC: Andrew Jeffery <andrew@aj.id.au>
+> CC: Joel Stanley <joel@jms.id.au>
+> CC: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> CC: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
+> CC: Antony Pavlov <antonynpavlov@gmail.com>
+> CC: Jean-Christophe Dubois <jcd@tribudubois.net>
+> CC: Peter Chubb <peter.chubb@nicta.com.au>
+> CC: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> CC: Eric Auger <eric.auger@redhat.com>
+> CC: Alistair Francis <alistair@alistair23.me>
+> CC: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> CC: Stefano Stabellini <sstabellini@kernel.org>
+> CC: Anthony Perard <anthony.perard@citrix.com>
+> CC: Paul Durrant <paul@xen.org>
+> CC: Paul Burton <pburton@wavecomp.com>
+> CC: Aleksandar Rikalo <arikalo@wavecomp.com>
+> CC: Chris Wulff <crwulff@gmail.com>
+> CC: Marek Vasut <marex@denx.de>
+> CC: David Gibson <david@gibson.dropbear.id.au>
+> CC: Cornelia Huck <cohuck@redhat.com>
+> CC: Halil Pasic <pasic@linux.ibm.com>
+> CC: Christian Borntraeger <borntraeger@de.ibm.com>
+> CC: "Herv=C3=A9 Poussineau" <hpoussin@reactos.org>
+> CC: Xiao Guangrong <xiaoguangrong.eric@gmail.com>
+> CC: Aurelien Jarno <aurelien@aurel32.net>
+> CC: Aleksandar Markovic <amarkovic@wavecomp.com>
+> CC: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> CC: Jason Wang <jasowang@redhat.com>
+> CC: Laszlo Ersek <lersek@redhat.com>
+> CC: Yuval Shaia <yuval.shaia@oracle.com>
+> CC: Palmer Dabbelt <palmer@sifive.com>
+> CC: Sagar Karandikar <sagark@eecs.berkeley.edu>
+> CC: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+> CC: David Hildenbrand <david@redhat.com>
+> CC: Thomas Huth <thuth@redhat.com>
+> CC: Eric Farman <farman@linux.ibm.com>
+> CC: Matthew Rosato <mjrosato@linux.ibm.com>
+> CC: Hannes Reinecke <hare@suse.com>
+> CC: Michael Walle <michael@walle.cc>
+> CC: Artyom Tarasenko <atar4qemu@gmail.com>
+> CC: Stefan Berger <stefanb@linux.ibm.com>
+> CC: Samuel Thibault <samuel.thibault@ens-lyon.org>
+> CC: Alex Williamson <alex.williamson@redhat.com>
+> CC: Tony Krowiak <akrowiak@linux.ibm.com>
+> CC: Pierre Morel <pmorel@linux.ibm.com>
+> CC: Michael Roth <mdroth@linux.vnet.ibm.com>
+> CC: Hailiang Zhang <zhang.zhanghailiang@huawei.com>
+> CC: Juan Quintela <quintela@redhat.com>
+> CC: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> CC: Luigi Rizzo <rizzo@iet.unipi.it>
+> CC: Giuseppe Lettieri <g.lettieri@iet.unipi.it>
+> CC: Vincenzo Maffione <v.maffione@gmail.com>
+> CC: Jan Kiszka <jan.kiszka@siemens.com>
+> CC: Anthony Green <green@moxielogic.com>
+> CC: Stafford Horne <shorne@gmail.com>
+> CC: Guan Xuetao <gxt@mprc.pku.edu.cn>
+> CC: Max Filippov <jcmvbkbc@gmail.com>
+> CC: qemu-block@nongnu.org
+> CC: integration@gluster.org
+> CC: sheepdog@lists.wpkg.org
+> CC: qemu-arm@nongnu.org
+> CC: xen-devel@lists.xenproject.org
+> CC: qemu-ppc@nongnu.org
+> CC: qemu-s390x@nongnu.org
+> CC: qemu-riscv@nongnu.org
 >
-> diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-> index cf26c16f5f..8fd7d086c8 100644
-> --- a/target/arm/Makefile.objs
-> +++ b/target/arm/Makefile.objs
-> @@ -67,3 +67,4 @@ obj-$(CONFIG_SOFTMMU) += psci.o
->  obj-$(TARGET_AARCH64) += translate-a64.o helper-a64.o
->  obj-$(TARGET_AARCH64) += translate-sve.o sve_helper.o
->  obj-$(TARGET_AARCH64) += pauth_helper.o
-> +obj-$(TARGET_AARCH64) += mte_helper.o
-> --
-> 2.17.1
+>  include/qapi/error.h | 38 ++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 38 insertions(+)
+>
+> diff --git a/include/qapi/error.h b/include/qapi/error.h
+> index d6898d833b..47238d9065 100644
+> --- a/include/qapi/error.h
+> +++ b/include/qapi/error.h
+> @@ -345,6 +345,44 @@ void error_set_internal(Error **errp,
+>                          ErrorClass err_class, const char *fmt, ...)
+>      GCC_FMT_ATTR(6, 7);
+> =20
+> +typedef struct ErrorPropagator {
+> +    Error *local_err;
+> +    Error **errp;
+> +} ErrorPropagator;
+> +
+> +static inline void error_propagator_cleanup(ErrorPropagator *prop)
+> +{
+> +    error_propagate(prop->errp, prop->local_err);
+> +}
+> +
+> +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_clean=
+up);
+> +
+> +/*
+> + * ERRP_AUTO_PROPAGATE
+> + *
+> + * This macro is created to be the first line of a function with Error *=
+*errp
+> + * OUT parameter. It's needed only in cases where we want to use error_p=
+repend,
+> + * error_append_hint or dereference *errp. It's still safe (but useless)=
+ in
+> + * other cases.
+> + *
+> + * If errp is NULL or points to error_fatal, it is rewritten to point to=
+ a
+> + * local Error object, which will be automatically propagated to the ori=
+ginal
+> + * errp on function exit (see error_propagator_cleanup).
+> + *
+> + * After invocation of this macro it is always safe to dereference errp
+> + * (as it's not NULL anymore) and to add information (by error_prepend o=
+r
+> + * error_append_hint)
+> + * (as, if it was error_fatal, we swapped it with a local_error to be
+> + * propagated on cleanup).
+> + *
+> + * Note: we don't wrap the error_abort case, as we want resulting coredu=
+mp
+> + * to point to the place where the error happened, not to error_propagat=
+e.
+> + */
+> +#define ERRP_AUTO_PROPAGATE()                                  \
+> +    g_auto(ErrorPropagator) _auto_errp_prop =3D {.errp =3D errp};  \
+> +    errp =3D ((errp =3D=3D NULL || *errp =3D=3D error_fatal)            =
+ \
+> +            ? &_auto_errp_prop.local_err : errp)
+> +
+>  /*
+>   * Special error destination to abort on error.
+>   * See error_setg() and error_propagate() for details.
 
-thanks
--- PMM
+Missing: update of the big comment starting with "Error reporting system
+loosely patterned after Glib's GError."
+

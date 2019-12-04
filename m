@@ -1,187 +1,149 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp666499lff;
-        Wed, 4 Dec 2019 05:56:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxTm4ZeDYgS8BTo4iupUOt9xGCmJ7zO/FEE2C/+cM2bcl+QWHm/KQdzOTdh+H3DTUn3EayI
-X-Received: by 2002:a50:ac06:: with SMTP id v6mr4170320edc.4.1575467812966;
-        Wed, 04 Dec 2019 05:56:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575467812; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp667420lff;
+        Wed, 4 Dec 2019 05:57:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxsTZjf41a41tu6+uYY8BImhbWc1lcgfRgeGtZpgoa416Zy/RJRyjyrbkDurOnOhAexJI5+
+X-Received: by 2002:a37:4acc:: with SMTP id x195mr2980207qka.52.1575467865015;
+        Wed, 04 Dec 2019 05:57:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575467865; cv=none;
         d=google.com; s=arc-20160816;
-        b=NzGmlm0HtMoDmwZIt6OU4VJT1OGL5tqjPzhP1iJTTGJNovw2MfQLwCnTT+8Wq7hCro
-         la1IgacBUPy1UVlWPvc6Dn0E6t9EevbE5VCf7OHfJmKW0PK2Lo12PEEbGhi6dNxrZp2P
-         dmhXMhClyMJOkWDMCsy8H1UY6fIBL8L5bOZmy6HMyj9D/fN8SIU9bgkKhSFuZ8iGQfCT
-         rim2RLmZf4MKKDZZUCsxmifqd7x7FgA7jQL2X5doXB5Ic2RcKYSrq51AQVWCxVvN0jvP
-         3wzRrUtr+Yt/xOT5fXQ+soKzJj3uYrf0NO7wk7JLAJcVUOTklrSi9EeCPq6LDf5H7njr
-         L/0A==
+        b=x3rtQRodgiBipx47BtPbNBPyDLmuDJIZPCz+48Kt/gN2FeUjXYxbUxd1Bxs7oD62YD
+         nIj6GQJV6RvbV2lQwb5+vH1fsAakfbNyBWeihBjBgmtcvdkK8s7nGJ1diXnfdj7IrmlC
+         XJHqZ6P1cCDVn28b6KpHr2txVZT8GB6TtnA0BnxJa762Yr/+wvlqK4cIbFHb3UQxB9nv
+         V16ntKwJVFGaT7GUqprDW2Grh1J4ztn5gd6x9yB0nM7uk+mB6Q4hNMufYnvznpNjJASE
+         qVgRLVbUmtiqmycQdBCKQ5cgVfAveAH8TzWOp85siAXdC0L/MDa2ty5vHPLVo2eDlpn8
+         92yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:cc:to:from:ironport-sdr:dkim-signature;
-        bh=903Oin9iiuc+khCz3xboU318uHpQzskDGrltjVjcCSM=;
-        b=GN4ghwFLpuftkmHZdhmwVkQAKc3khdPzWNrAxLhAkC2dSaFBBo4k3i7mr5dhFjU3E3
-         BtMnVCeKO609AbglZwomPSy/2xvndNl+ekAqvTZXKHUOn2QDyUjaor+imY3hoATwZtzs
-         X1pij66MB015qEdG+VjhZWRwSnU8/dZk601POjJcoSm6b2/wNKui3mIaVlGtnH/89Mu8
-         1Gt4lh6CPF4RMYlV1clOgA0uF+Y0mnKEpkyDXc6+76pKW06Dzxl+8vEttypZfWfFTtP6
-         Et60GlCBF6SrpVz3Uix1CWp/EUTseh3AUOhsGDgLd27vQ++7vAR1cXS3HbFK1WxyKZXb
-         xLIA==
+        bh=ZJTN+ohaJEyJa5Mz38YWX2orkNnDr5ayiRkSEay2Bdo=;
+        b=NHnUI2SrHOM0+1jpM0SY0wdEImVVY5ATn9kfSgKlJwvQ9sg0+/prJVeu/rv5ibcLVh
+         18ejJW9ddR2nQ7HmbAUuoDNCw2qiteq5upRzoDQKaENZkHJqc4VQbRDGzw9+VPeU+87v
+         w+0+zhtUijgOfvrQN/vlZ7uigl3Sqrgr8KIrCz63e4yDQH+HzcKiDzkWwpNy/a9jbHsx
+         C07+aDDyTW//uIgwDyDxLMgeA3uYMSp+Ov4Sf5BZXHVPAXea7hMs95WDq3qjBzsuEZzF
+         OTXyMgqQmwjesWIlJ5Mjdvtct8qEL5g4IE7fQRj+++3ckeNcYoZK+PAP7HJkdytIg3Rg
+         7DvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=FfLvHL4r;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=Jb+yjW7W;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7si4463929edr.301.2019.12.04.05.56.52
+        by mx.google.com with ESMTPS id m25si4625751qka.320.2019.12.04.05.57.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2019 05:56:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Dec 2019 05:57:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=FfLvHL4r;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=Jb+yjW7W;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
-Received: from localhost ([::1]:39268 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39272 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icV99-0005Tb-DI
-	for alex.bennee@linaro.org; Wed, 04 Dec 2019 08:56:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38439)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1icVA0-0005cV-09
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 08:57:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38528)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <prvs=2346a8ea7=sveith@amazon.com>)
- id 1icV8l-00059X-5Y
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 08:56:28 -0500
+ id 1icV8s-0005Lu-AO
+ for qemu-devel@nongnu.org; Wed, 04 Dec 2019 08:56:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <prvs=2346a8ea7=sveith@amazon.com>)
- id 1icV8j-0005Hh-Th
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 08:56:27 -0500
-Received: from smtp-fw-6001.amazon.com ([52.95.48.154]:42197)
+ id 1icV8r-0005RR-7w
+ for qemu-devel@nongnu.org; Wed, 04 Dec 2019 08:56:34 -0500
+Received: from smtp-fw-2101.amazon.com ([72.21.196.25]:62079)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <prvs=2346a8ea7=sveith@amazon.com>)
- id 1icV8j-00058h-Pi; Wed, 04 Dec 2019 08:56:25 -0500
+ id 1icV8o-0005PN-UN; Wed, 04 Dec 2019 08:56:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.de; i=@amazon.de; q=dns/txt; s=amazon201209;
- t=1575467786; x=1607003786;
+ t=1575467791; x=1607003791;
  h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=903Oin9iiuc+khCz3xboU318uHpQzskDGrltjVjcCSM=;
- b=FfLvHL4rlHS3OTiics/U3hMmZjFuBmt6+Mx/jDoVpOWeE04uCSpgsZvU
- 4TqaJ0Uu0kt19Z0o2DVqQqvFn8tYIiEDySqUi/HUckopc0cInm3/OF9ds
- 4dvnk4WFnk2nyJ0Y2lkf3I3b8OyHhdnwWAaUAysi1P+ryZK936629hjUt Q=;
-IronPort-SDR: 14zrM5qDK+M1wIRKinaJl1On6utbiyQqfM9hpWiDqLLMvFtDYSLempEbZ898yszACoWOIFSjRH
- onZAOInhjG7w==
+ bh=ZJTN+ohaJEyJa5Mz38YWX2orkNnDr5ayiRkSEay2Bdo=;
+ b=Jb+yjW7WmxhOiBvSEB8HwP8Zi/Wdac+eksxvj7s/Wv5AQO12vILGGXg2
+ 6cSq1q7qci2B/F0pamc4TDE9FNipZcajTaNOkfIQtvii+XZFNDExseP5h
+ FvtmEb5lIs5zy03zaLHW0yw0B3aHJtdR05mqPdqaG4NRe/B4s5WVCm0yM 4=;
+IronPort-SDR: xAghjvXNYNirL+e0jZsjnDzVKkEodVBF1T9JaUN3H8Slhdwps/MZLMCnBH+oh0CIHOOs/1woY2
+ yi3yNajWEnlg==
 X-IronPort-AV: E=Sophos;i="5.69,277,1571702400"; 
-   d="scan'208";a="7621894"
-Received: from iad6-co-svc-p1-lb1-vlan3.amazon.com (HELO
- email-inbound-relay-2c-6f38efd9.us-west-2.amazon.com) ([10.124.125.6])
- by smtp-border-fw-out-6001.iad6.amazon.com with ESMTP;
- 04 Dec 2019 13:56:25 +0000
+   d="scan'208";a="7106992"
+Received: from iad6-co-svc-p1-lb1-vlan2.amazon.com (HELO
+ email-inbound-relay-2c-6f38efd9.us-west-2.amazon.com) ([10.124.125.2])
+ by smtp-border-fw-out-2101.iad2.amazon.com with ESMTP;
+ 04 Dec 2019 13:56:29 +0000
 Received: from sveith-desktop.aka.corp.amazon.com
  (pdx2-ws-svc-lb17-vlan2.amazon.com [10.247.140.66])
  by email-inbound-relay-2c-6f38efd9.us-west-2.amazon.com (Postfix) with ESMTPS
- id 292F1A1FA7; Wed,  4 Dec 2019 13:56:23 +0000 (UTC)
+ id DF7E8A1FAE; Wed,  4 Dec 2019 13:56:27 +0000 (UTC)
 Received: from sveith-desktop.aka.corp.amazon.com (localhost [127.0.0.1])
  by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Debian-3) with ESMTP id
- xB4DuMZO029396; Wed, 4 Dec 2019 14:56:22 +0100
+ xB4DuQXE029431; Wed, 4 Dec 2019 14:56:26 +0100
 Received: (from sveith@localhost)
- by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Submit) id xB4DuMcV029395;
- Wed, 4 Dec 2019 14:56:22 +0100
+ by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Submit) id xB4DuQPZ029429;
+ Wed, 4 Dec 2019 14:56:26 +0100
 From: Simon Veith <sveith@amazon.de>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: Simon Veith <sveith@amazon.de>, Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH 3/5] hw/arm/smmuv3: Align stream table base address to table
- size
-Date: Wed,  4 Dec 2019 14:55:46 +0100
-Message-Id: <1575467748-28898-4-git-send-email-sveith@amazon.de>
+Subject: [PATCH 4/5] hw/arm/smmuv3: Use correct bit positions in EVT_SET_ADDR2
+ macro
+Date: Wed,  4 Dec 2019 14:55:47 +0100
+Message-Id: <1575467748-28898-5-git-send-email-sveith@amazon.de>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1575467748-28898-1-git-send-email-sveith@amazon.de>
 References: <1575467748-28898-1-git-send-email-sveith@amazon.de>
 Precedence: Bulk
 X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 52.95.48.154
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 72.21.196.25
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lg42T1NX6I8Z
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WreQIJmho7tV
 
-Per the specification, and as observed in hardware, the SMMUv3 aligns
-the SMMU_STRTAB_BASE address to the size of the table by masking out the
-respective least significant bits in the ADDR field.
+The bit offsets in the EVT_SET_ADDR2 macro do not match those specified
+in the ARM SMMUv3 Architecture Specification. In all events that use
+this macro, e.g. F_WALK_EABT, the faulting fetch address or IPA actually
+occupies the 32-bit words 6 and 7 in the event record contiguously, with
+the upper and lower unused bits clear due to alignment or maximum
+supported address bits. How many bits are clear depends on the
+individual event type.
 
-Apply this masking logic to our smmu_find_ste() lookup function per the
-specification.
+Update the macro to write to the correct words in the event record so
+that guest drivers can obtain accurate address information on events.
 
-ref. ARM IHI 0070C, section 6.3.23.
+ref. ARM IHI 0070C, sections 7.3.12 through 7.3.16.
 
 Signed-off-by: Simon Veith <sveith@amazon.de>
 Cc: Eric Auger <eric.auger@redhat.com>
 Cc: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
 ---
- hw/arm/smmuv3.c | 29 +++++++++++++++++++++++++----
- 1 file changed, 25 insertions(+), 4 deletions(-)
+ hw/arm/smmuv3-internal.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index aad4639..2d6c275 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -376,8 +376,9 @@ bad_ste:
- static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
-                          SMMUEventInfo *event)
- {
--    dma_addr_t addr;
-+    dma_addr_t addr, strtab_base;
-     uint32_t log2size;
-+    int strtab_size_shift;
-     int ret;
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index d190181..eb275e2 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -461,8 +461,8 @@ typedef struct SMMUEventInfo {
+     } while (0)
+ #define EVT_SET_ADDR2(x, addr)                            \
+     do {                                                  \
+-            (x)->word[7] = deposit32((x)->word[7], 3, 29, addr >> 16);   \
+-            (x)->word[7] = deposit32((x)->word[7], 0, 16, addr & 0xffff);\
++            (x)->word[7] = (uint32_t)(addr >> 32);        \
++            (x)->word[6] = (uint32_t)(addr & 0xffffffff); \
+     } while (0)
  
-     trace_smmuv3_find_ste(sid, s->features, s->sid_split);
-@@ -391,10 +392,23 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
-     }
-     if (s->features & SMMU_FEATURE_2LVL_STE) {
-         int l1_ste_offset, l2_ste_offset, max_l2_ste, span;
--        dma_addr_t strtab_base, l1ptr, l2ptr;
-+        dma_addr_t l1ptr, l2ptr;
-         STEDesc l1std;
- 
--        strtab_base = s->strtab_base & SMMU_BASE_ADDR_MASK;
-+        /*
-+         * Align strtab base address to table size. For this purpose, assume it
-+         * is not bounded by SMMU_IDR1_SIDSIZE.
-+         */
-+        strtab_size_shift = log2size - s->sid_split - 1 + 3;
-+        if (strtab_size_shift < DMA_ADDR_BITS) {
-+            if (strtab_size_shift < 5) {
-+                strtab_size_shift = 5;
-+            }
-+            strtab_base = s->strtab_base & SMMU_BASE_ADDR_MASK &
-+                          ~((1ULL << strtab_size_shift) - 1);
-+        } else {
-+            strtab_base = 0;
-+        }
-         l1_ste_offset = sid >> s->sid_split;
-         l2_ste_offset = sid & ((1 << s->sid_split) - 1);
-         l1ptr = (dma_addr_t)(strtab_base + l1_ste_offset * sizeof(l1std));
-@@ -433,7 +447,14 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
-         }
-         addr = l2ptr + l2_ste_offset * sizeof(*ste);
-     } else {
--        addr = (s->strtab_base & SMMU_BASE_ADDR_MASK) + sid * sizeof(*ste);
-+        strtab_size_shift = log2size + 5;
-+        if (strtab_size_shift < DMA_ADDR_BITS) {
-+            strtab_base = s->strtab_base & SMMU_BASE_ADDR_MASK &
-+                          ~((1ULL << strtab_size_shift) - 1);
-+        } else {
-+            strtab_base = 0;
-+        }
-+        addr = strtab_base + sid * sizeof(*ste);
-     }
- 
-     if (smmu_get_ste(s, addr, ste, event)) {
+ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
 -- 
 2.7.4
 

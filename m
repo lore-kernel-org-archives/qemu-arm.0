@@ -1,77 +1,79 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp529172lff;
-        Wed, 4 Dec 2019 03:52:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwS47FS3w/BABpaM2nvriQv7O3pyf4kPXsMtX8luPCTkkxrfJ2+8D1bDJskj1pZy7MdfvKG
-X-Received: by 2002:ac8:5448:: with SMTP id d8mr2202646qtq.205.1575460365059;
-        Wed, 04 Dec 2019 03:52:45 -0800 (PST)
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp575599lff;
+        Wed, 4 Dec 2019 04:35:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx5nhbyXYTIjAvMX2KGBfmMq6HAB+5dd7F5XI6uKaQski6gumRVbV8KgvXyPs/42YQuhnMD
+X-Received: by 2002:aa7:d64f:: with SMTP id v15mr3706781edr.71.1575462909463;
+        Wed, 04 Dec 2019 04:35:09 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u24si4563141qke.73.2019.12.04.03.52.44
+        by mx.google.com with ESMTPS id c5si4398145ejr.128.2019.12.04.04.35.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2019 03:52:45 -0800 (PST)
+        Wed, 04 Dec 2019 04:35:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=1uvJNFWE;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=ME8n+R4f;
        arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37272 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icTD0-00036b-AZ
-	for alex.bennee@linaro.org; Wed, 04 Dec 2019 06:52:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47776)
+	id 1icTs4-0005be-33
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 07:35:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47415)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1icSSr-0002CJ-6M
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 06:05:04 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1icTIx-0006n5-Tb
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 06:58:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1icSSk-00084g-Il
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 06:04:56 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:44230)
+ (envelope-from <damien.hedde@greensocs.com>) id 1icTIr-00034k-WE
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 06:58:48 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:45762)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1icSSi-0007Mo-8r; Wed, 04 Dec 2019 06:04:53 -0500
+ id 1icTIr-0002iI-Cu; Wed, 04 Dec 2019 06:58:45 -0500
 Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPSA id A476D96EF0;
- Wed,  4 Dec 2019 11:04:42 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id A95F296EF0;
+ Wed,  4 Dec 2019 11:58:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1575457483;
+ s=mail; t=1575460722;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hcjwxM4UObU02Iu0FnUFEfgmhSEGsz5B6l28uOEWu2U=;
- b=1uvJNFWEMFotdydoqOGFrDvv/196PrbDBQalc4K9pVlXsGCmQtjKOK2xOFpH8fagwYtzBf
- nz4qX9BQtv92JW+ViG8XeQkY/JQ72MaJwxEMHuLkFzLBZBwNoEoWXHnUgxsCwWiqrVxWPK
- sL/M3+QFGiZwHcJ09A2/VDI6la7QFyQ=
-Subject: Re: [PATCH v6 5/9] qdev-clock: introduce an init array to ease the
- device construction
-To: Peter Maydell <peter.maydell@linaro.org>
+ bh=8ljSCwCD3O4e7pPsXT+MroUcr3135nqWethx1Gpbjuk=;
+ b=ME8n+R4fLmX9fusvWwUBqlaHbU3t6uMxB4GWpYle5KmMmGxA3gWLNDe80yNw25b5GePgrm
+ SCWxuwA6suJbg5CMUpzBDG3TxTtVuj/V2iRpMKlXHdY24V0TTlItUW/90NOJ993Zw5Pdfg
+ hAYBtQuwtisRqbayMzldysn7j8WXl18=
+Subject: Re: [PATCH v6 3/9] qdev: add clock input&output support to devices.
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20190904125531.27545-1-damien.hedde@greensocs.com>
- <20190904125531.27545-6-damien.hedde@greensocs.com>
- <CAFEAcA_Dc7K+NfVAScCk8MYykZ-VrbgJjJwFQCiQ3F7yyseNDQ@mail.gmail.com>
+ <20190904125531.27545-4-damien.hedde@greensocs.com>
+ <CAFEAcA9M4qR89wykURrUxqxeWoNqYHxuJSwC5Mum6GfmWSG=nA@mail.gmail.com>
+ <8ac54ca8-4acf-5145-9ead-6791a5181617@greensocs.com>
+ <d6937a23-d6d5-fe22-bc42-0bec543decf6@redhat.com>
 From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <102dda6f-ca2d-7d16-0a65-8f6d5a6d1d46@greensocs.com>
-Date: Wed, 4 Dec 2019 12:04:42 +0100
+Message-ID: <e9c078e5-be16-ca95-7cfa-44cbcc63a3be@greensocs.com>
+Date: Wed, 4 Dec 2019 12:58:41 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_Dc7K+NfVAScCk8MYykZ-VrbgJjJwFQCiQ3F7yyseNDQ@mail.gmail.com>
+In-Reply-To: <d6937a23-d6d5-fe22-bc42-0bec543decf6@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1575457483;
+ s=mail; t=1575460722;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hcjwxM4UObU02Iu0FnUFEfgmhSEGsz5B6l28uOEWu2U=;
- b=rVwR/jUlT7f/nrP/jeiZzwLoeaVKbTGAbtVgjWOOSJkz+T3XKLsYSe1v9hCdRaGGF4I/Ob
- sulxMi3qF/yBiUCqOsgSHRXTf3WgtgvPWR/h5turZ2ncYRn+Sx9cPSa5XmN60qpCdJIGEN
- xNQtVwmZy5B1eN4ctPh8NofjwEYLGBA=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575457483; a=rsa-sha256; cv=none;
- b=Oqs2WeakP7YcTe0+dleEMc/eRA3F9RRrNMMczPRsT5NuYJCdCVJPSv0gIIu6NEC1ElX3XY
- Rg1HC6j38PTiO1aarrSKB508ta64OFjrj4OM4LxLog/slhLbit0jRQleMVkTWZ0gq5OfYP
- OFOjdB4XZLwWBRmTRU7mnmBS2PuxXAI=
+ bh=8ljSCwCD3O4e7pPsXT+MroUcr3135nqWethx1Gpbjuk=;
+ b=kMohnrxOSGi/bc2DJWVZPeVkXKu0dPgbRlmc2HIz42+9hLjxiPb2sKVuLevJQVVyDeTbSq
+ XMrUZxavi+77oRokysQqiSD/egPitKW2O9/Uw2+/S7y56jV88TacJQ+EIuWZ4tK+BnCv/I
+ xyDANj8WMWukbFxLN16t7LSjXI7LeTY=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575460722; a=rsa-sha256; cv=none;
+ b=4jjL4V+OVqzIQM1lGRM833Vyrn2OZM1Expn5PvC3c1PT+VafVskD/PbWfHgNspsHeBi/+j
+ 2iOHgwS4U60Mp/2o1SSot5u+I182q5r76STPd2V202inWZx4Rn3ZQC7BtWCnmD4m2oq/oF
+ yvU4RLtGEwvBv3F4PQW+ZPhDozP78wE=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 Content-Transfer-Encoding: quoted-printable
@@ -95,156 +97,117 @@ Cc: "Daniel P. Berrange" <berrange@redhat.com>,
  Mark Burton <mark.burton@greensocs.com>,
  QEMU Developers <qemu-devel@nongnu.org>,
  =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+ qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tp0JanN41lhx
+X-TUID: P656tKH18sHR
 
 
 
-On 12/2/19 4:13 PM, Peter Maydell wrote:
-> On Wed, 4 Sep 2019 at 13:56, Damien Hedde <damien.hedde@greensocs.com> =
-wrote:
+On 12/4/19 10:53 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 12/4/19 10:05 AM, Damien Hedde wrote:
+>> On 12/2/19 3:34 PM, Peter Maydell wrote:
+>>> On Wed, 4 Sep 2019 at 13:56, Damien Hedde
+>>> <damien.hedde@greensocs.com> wrote:
+>>>>
+> [...]
+>>>> +/**
+>>>> + * qdev_pass_clock:
+>>>> + * @dev: the device to forward the clock to
+>>>> + * @name: the name of the clock to be added (can't be NULL)
+>>>> + * @container: the device which already has the clock
+>>>> + * @cont_name: the name of the clock in the container device
+>>>> + *
+>>>> + * Add a clock @name to @dev which forward to the clock @cont_name
+>>>> in @container
+>>>> + */
+>>>
+>>> 'container' seems odd terminology here, because I would expect
+>>> the usual use of this function to be when a 'container' object
+>>> like an SoC wants to forward a clock to one of its components;
+>>> in that case the 'container' SoC would be @dev, wouldn't it?
 >>
->> Introduce a function and macro helpers to setup several clocks
->> in a device from a static array description.
+>> Yes. I agree it is confusing.
+>> This function just allow a a device 'A' to exhibit a clock from anothe=
+r
+>> device 'B' (typically a composing sub-device, inside a soc like you
+>> said). The device A is not supposed to interact with the clock itself.
+>> The original sub-device is the true
+>> owner/controller of the clock and is the only one which should use the
+>> clock API: setting a callback on it (input clock); or updating the clo=
+ck
+>> frequency (output clock).
+>> Basically, it just add the clock into the device clock namespace witho=
+ut
+>> interfering with it.
 >>
->> An element of the array describes the clock (name and direction) as
->> well as the related callback and an optional offset to store the
->> created object pointer in the device state structure.
+>>> We should get this to be the same way round as qdev_pass_gpios(),
+>>> which takes "DeviceState *dev, DeviceState *container", and
+>>> passes the gpios that exist on 'dev' over to 'container' so that
+>>> 'container' now has gpios which it did not before.
 >>
->> The array must be terminated by a special element QDEV_CLOCK_END.
+>> Ok, I'll invert the arguments.
 >>
->> This is based on the original work of Frederic Konrad.
+>>>
+>>> Also, your use of 'forward to' is inconsistent: in the 'dev'
+>>> documentation you say we're forwarding the clock to 'dev',
+>>> but in the body of the documentation you say we're forwarding
+>>> the clock to the clock in 'container'.
 >>
->> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->> ---
->>  hw/core/qdev-clock.c    | 26 ++++++++++++++++
->>  include/hw/qdev-clock.h | 67 ++++++++++++++++++++++++++++++++++++++++=
-+
->>  2 files changed, 93 insertions(+)
+>> I'll try to clarify this and make the documentation more consistent wi=
+th
+>> the comments here.
 >>
->> diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
->> index bebdd8fa15..32ad45c061 100644
->> --- a/hw/core/qdev-clock.c
->> +++ b/hw/core/qdev-clock.c
->> @@ -153,3 +153,29 @@ void qdev_connect_clock_out(DeviceState *dev, con=
-st char *name, ClockIn *clk,
+>>>
+>>> I think the way to resolve this is to stick to the terminology
+>>> in the function name itself:
+>>> =C2=A0 @dev: the device which has the clock
+>>> =C2=A0 @name: the name of the clock on @dev
+>>> =C2=A0 @container: the name of the device which the clock should
+>>> =C2=A0=C2=A0 be passed to
+>>> =C2=A0 @cont_name: the name to use for the clock on @container
 >>
->>      clock_connect(clk, clkout);
->>  }
->> +
->> +void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray cloc=
-ks)
->> +{
->> +    const struct ClockPortInitElem *elem;
->> +
->> +    assert(dev);
->> +    assert(clocks);
+>> I think container is confusing because depending on how we reason (clo=
+ck
+>> in a device; device in another device), we end up thinking the opposit=
+e.
+>>
+>> Maybe we can use "exhibit" instead of "container" in the 2nd pair of
+>> parameters, or prefix use "origin" or "owner" as a prefix for the firs=
+t
+>> pair of parameters.
 >=20
-> More unnecessary asserts, I think.
+> @sink vs @source?
 >=20
+>>> Q: if you pass a clock to another device with this function,
+>>> does it still exist to be used directly on the original
+>>> device? For qdev_pass_gpios it does not (I think), but
+>>> this is more accident of implementation than anything else.
+>>
+>> It depends what we mean by "used by".
+>> Original device can:
+>> + set the callback in case it is an input
+>> + update the frequency in case it is an output
 >=20
->=20
->> +/**
->> + * ClockInitElem:
->> + * @name: name of the clock (can't be NULL)
->> + * @is_output: indicates whether the clock is input or output
->> + * @callback: for inputs, optional callback to be called on clock's u=
-pdate
->> + * with device as opaque
->> + * @offset: optional offset to store the ClockIn or ClockOut pointer =
-in device
->> + * state structure (0 means unused)
->> + */
->> +struct ClockPortInitElem {
->> +    const char *name;
->> +    bool is_output;
->> +    ClockCallback *callback;
->> +    size_t offset;
->> +};
->> +
->> +#define clock_offset_value(_type, _devstate, _field) \
->> +    (offsetof(_devstate, _field) + \
->> +     type_check(_type *, typeof_field(_devstate, _field)))
->=20
-> Avoid leading underscores, please.
->=20
->> +
->> +#define QDEV_CLOCK(_is_output, _type, _devstate, _field, _callback) {=
- \
->> +    .name =3D (stringify(_field)), \
->> +    .is_output =3D _is_output, \
->> +    .callback =3D _callback, \
->> +    .offset =3D clock_offset_value(_type, _devstate, _field), \
->> +}
->> +
->> +/**
->> + * QDEV_CLOCK_(IN|OUT):
->> + * @_devstate: structure type. @dev argument of qdev_init_clocks belo=
-w must be
->> + * a pointer to that same type.
->=20
-> It's a bit unclear what "below" here is referring to. Maybe
-> just have this be "@devstate: name of a C struct type"
-> and then explain below...
->=20
->> + * @_field: a field in @_devstate (must be ClockIn* or ClockOut*)
->> + * @_callback: (for input only) callback (or NULL) to be called with =
-the device
->> + * state as argument
->> + *
->=20
-> ...here, where we can have a paragraph giving the purpose
-> of the macro:
->=20
-> "Define an entry in a ClockPortInitArray which is intended
-> to be passed to qdev_init_clocks(), which should be called
-> with an @dev argument which is a pointer to the @devstate
-> struct type."
+> Hmm here you use @input vs @output...
 
-Sounds good.
+Not really. What I meant here is that the device which originally
+creates the clock is the only device which can interact with the clock.
+And it will never gives this right to another device even if
+qdev_pass_clock() is used.
+
+There are 2 interactions, depending on the clock direction (input or
+output). If it is an input clock, it can register a callback on
+frequency changes; and if it is an output clock, it can updates the
+frequency of the clock.
 
 >=20
->> + * The name of the clock will be derived from @_field
+>> But since an input clock can only be connected once,
+>> I think the logic here is that any connection should now go through th=
+e
+>> new device. But this is not checked and using one or the other is
+>> exactly the same.
+>>
+>> Maybe I misunderstood the meaning of qdev_pass_gpios().
+> [...]
 >=20
-> Derived how? Guessing from the stringify(_field) above that it
-> will be the same as the field name ?
-
-yes.
-
->=20
-> It makes sense to hardcode the opaque pointer for the callback to be
-> the device pointer.
->=20
->=20
->> + */
->> +#define QDEV_CLOCK_IN(_devstate, _field, _callback) \
->> +    QDEV_CLOCK(false, ClockIn, _devstate, _field, _callback)
->> +
->> +#define QDEV_CLOCK_OUT(_devstate, _field) \
->> +    QDEV_CLOCK(true, ClockOut, _devstate, _field, NULL)
->> +
->> +/**
->> + * QDEV_CLOCK_IN_NOFIELD:
->> + * @_name: name of the clock
->> + * @_callback: callback (or NULL) to be called with the device state =
-as argument
->> + */
->> +#define QDEV_CLOCK_IN_NOFIELD(_name, _callback) { \
->> +    .name =3D _name, \
->> +    .is_output =3D false, \
->> +    .callback =3D _callback, \
->> +    .offset =3D 0, \
->> +}
->=20
-> When would we want to use this one ?
-
-If the callback interaction is enough, we don't need to access the clock
-object directly. So we don't need the field in the device state
-structure. I can remove this macro for sake of simplicity.
-
---
-Damien

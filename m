@@ -1,82 +1,79 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp575599lff;
-        Wed, 4 Dec 2019 04:35:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx5nhbyXYTIjAvMX2KGBfmMq6HAB+5dd7F5XI6uKaQski6gumRVbV8KgvXyPs/42YQuhnMD
-X-Received: by 2002:aa7:d64f:: with SMTP id v15mr3706781edr.71.1575462909463;
-        Wed, 04 Dec 2019 04:35:09 -0800 (PST)
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp580146lff;
+        Wed, 4 Dec 2019 04:39:16 -0800 (PST)
+X-Google-Smtp-Source: APXvYqydhcfVUIPnKZExt5NzXpE+gYE2EzW9HsFLhWpmPWZuVwrPfQraWhIZA9+VXfTZC874xz9k
+X-Received: by 2002:aed:3b14:: with SMTP id p20mr2443254qte.176.1575463156448;
+        Wed, 04 Dec 2019 04:39:16 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5si4398145ejr.128.2019.12.04.04.35.09
+        by mx.google.com with ESMTPS id k4si4145845qte.44.2019.12.04.04.39.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2019 04:35:09 -0800 (PST)
+        Wed, 04 Dec 2019 04:39:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=ME8n+R4f;
-       arc=fail (body hash mismatch);
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=RRh5qfR9;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37930 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38049 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icTs4-0005be-33
-	for alex.bennee@linaro.org; Wed, 04 Dec 2019 07:35:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47415)
+	id 1icTw2-0002om-Nz
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 07:39:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49916)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1icTIx-0006n5-Tb
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 06:58:54 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1icTVX-0004TK-Lw
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 07:11:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1icTIr-00034k-WE
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 06:58:48 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:45762)
+ (envelope-from <damien.hedde@greensocs.com>) id 1icTVV-0002AQ-70
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 07:11:50 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:46166)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1icTIr-0002iI-Cu; Wed, 04 Dec 2019 06:58:45 -0500
+ id 1icTVU-0001kY-LP; Wed, 04 Dec 2019 07:11:49 -0500
 Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPSA id A95F296EF0;
- Wed,  4 Dec 2019 11:58:41 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 05BAF96EF0;
+ Wed,  4 Dec 2019 12:11:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1575460722;
+ s=mail; t=1575461504;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8ljSCwCD3O4e7pPsXT+MroUcr3135nqWethx1Gpbjuk=;
- b=ME8n+R4fLmX9fusvWwUBqlaHbU3t6uMxB4GWpYle5KmMmGxA3gWLNDe80yNw25b5GePgrm
- SCWxuwA6suJbg5CMUpzBDG3TxTtVuj/V2iRpMKlXHdY24V0TTlItUW/90NOJ993Zw5Pdfg
- hAYBtQuwtisRqbayMzldysn7j8WXl18=
-Subject: Re: [PATCH v6 3/9] qdev: add clock input&output support to devices.
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
+ bh=TaurbfOKuOcfUaP1AMMQnTq3LAvy/GF5omcI4wFBMHA=;
+ b=RRh5qfR9TkykdbQBNF5BrwkB5Zn6pbAjlGt0vQEkdZJSt1YX7YFxUHAn+xSTY4tvzqwwS+
+ aPVyaeiXCvE4/55lhA6J8RBb4wnqnuhNsU7fFnWvOafuhrGCWtXmmFSRBuYeZf7VZ762ot
+ ysbL7+sVv6wjHSN4j1UJK2tDVZsTOs0=
+Subject: Re: [PATCH v6 6/9] docs/clocks: add device's clock documentation
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190904125531.27545-1-damien.hedde@greensocs.com>
- <20190904125531.27545-4-damien.hedde@greensocs.com>
- <CAFEAcA9M4qR89wykURrUxqxeWoNqYHxuJSwC5Mum6GfmWSG=nA@mail.gmail.com>
- <8ac54ca8-4acf-5145-9ead-6791a5181617@greensocs.com>
- <d6937a23-d6d5-fe22-bc42-0bec543decf6@redhat.com>
+ <20190904125531.27545-7-damien.hedde@greensocs.com>
+ <CAFEAcA-N=pBSMrALSYTHFFk4K=G+Zv_BO0ytF1FBS_PG6WMr2w@mail.gmail.com>
 From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <e9c078e5-be16-ca95-7cfa-44cbcc63a3be@greensocs.com>
-Date: Wed, 4 Dec 2019 12:58:41 +0100
+Message-ID: <9a460a48-250f-eb70-f2cd-bbc9624963b1@greensocs.com>
+Date: Wed, 4 Dec 2019 13:11:42 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <d6937a23-d6d5-fe22-bc42-0bec543decf6@redhat.com>
+In-Reply-To: <CAFEAcA-N=pBSMrALSYTHFFk4K=G+Zv_BO0ytF1FBS_PG6WMr2w@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1575460722;
+ s=mail; t=1575461504;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8ljSCwCD3O4e7pPsXT+MroUcr3135nqWethx1Gpbjuk=;
- b=kMohnrxOSGi/bc2DJWVZPeVkXKu0dPgbRlmc2HIz42+9hLjxiPb2sKVuLevJQVVyDeTbSq
- XMrUZxavi+77oRokysQqiSD/egPitKW2O9/Uw2+/S7y56jV88TacJQ+EIuWZ4tK+BnCv/I
- xyDANj8WMWukbFxLN16t7LSjXI7LeTY=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575460722; a=rsa-sha256; cv=none;
- b=4jjL4V+OVqzIQM1lGRM833Vyrn2OZM1Expn5PvC3c1PT+VafVskD/PbWfHgNspsHeBi/+j
- 2iOHgwS4U60Mp/2o1SSot5u+I182q5r76STPd2V202inWZx4Rn3ZQC7BtWCnmD4m2oq/oF
- yvU4RLtGEwvBv3F4PQW+ZPhDozP78wE=
+ bh=TaurbfOKuOcfUaP1AMMQnTq3LAvy/GF5omcI4wFBMHA=;
+ b=yOiKSflFcV8ysr1i64O5apL2lQ7AfpgP6u6IJehGC+wbvPMnuPdXr8i5k8wFJChxb7yZwv
+ 9Da4UxHDpU58v73F2rhW4uAR0EPcGo/DzdcsUG4oSoxMI4Z5MH0OLbFNmQGqHt7Jy3x4+/
+ JmGV34Z42jrRLtyFk1kn/7bV/cdOtrY=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575461504; a=rsa-sha256; cv=none;
+ b=jxaYQJd2zVG4nWG7KgI5GAO9a3ly5rTRUjxj/naUxXX87iPkXYAwnH1zxrFyW3tfjR84ll
+ NOXHImHWT6h80cyco6ePcTjfa3j1c57snuSolbdJoywxmhK57jlPfbQHOvYZwkSplX4Dj4
+ 5FUH4zgvSDCcbbSvPCG1JmBA8eemLyk=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 5.135.226.135
@@ -97,117 +94,120 @@ Cc: "Daniel P. Berrange" <berrange@redhat.com>,
  Mark Burton <mark.burton@greensocs.com>,
  QEMU Developers <qemu-devel@nongnu.org>,
  =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+ qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P656tKH18sHR
+X-TUID: QsgKoXn7eSaR
 
 
+On 12/2/19 4:17 PM, Peter Maydell wrote:
+> On Wed, 4 Sep 2019 at 13:56, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>>
+>> Add the documentation about the clock inputs and outputs in devices.
+>>
+>> This is based on the original work of Frederic Konrad.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>> ---
+>>  docs/devel/clock.txt | 246 +++++++++++++++++++++++++++++++++++++++++++
+>>  1 file changed, 246 insertions(+)
+>>  create mode 100644 docs/devel/clock.txt
+> 
+> Could you convert this to rst format, please?Yes.
+> 
+> 
+> 
+>> +Changing a clock output
+>> +=======================
+>> +
+>> +A device can change its outputs using the clock_set_frequency function. It
+>> +will trigger updates on every connected inputs.
+> 
+> "input"
+> 
+>> +
+>> +For example, let's say that we have an output clock "clkout" and we have a
+>> +pointer to it in the device state because we did the following in init phase:
+>> +dev->clkout = qdev_init_clock_out(DEVICE(dev), "clkout");
+>> +
+>> +Then at any time (apart from the cases listed below), it is possible to
+>> +change the clock value by doing:
+>> +clock_set_frequency(dev->clkout, 1000 * 1000 * 1000); /* 1Ghz */
+>> +This operation must be done while holding the qemu io lock.
+>> +
+>> +One can change clocks only when it is allowed to have side effects on other
+>> +objects. In consequence, it is forbidden:
+>> ++ during migration,
+>> ++ and in the init phase of reset.
+>> +
+>> +Forwarding clocks
+>> +=================
+>> +
+>> +Sometimes, one needs to forward, or inherit, a clock from another device.
+>> +Typically, when doing device composition, a device might expose a sub-device's
+>> +clock without interfering with it.
+>> +The function qdev_pass_clock() can be used to achieve this behaviour. Note, that
+> 
+> "Note that"
+> 
+>> +it is possible to expose the clock under a different name. This works for both
+>> +inputs or outputs.
+> 
+> "inputs and outputs"
+> 
+> 
+>> +Migration
+>> +=========
+>> +
+>> +Only the ClockIn object has a state. ClockOut is not concerned by migration.
+> 
+> "has any state".
+> 
+> "ClockOut has no state and does not need special handling for migration."
+> 
+>> +
+>> +In case the frequency of in input clock is needed for a device's migration,
+>> +this state must be migrated.
+> 
+> Are you trying to say that if an input clock is known to be a
+> fixed frequency we don't need to migrate anything? I wonder
+> if we need to worry about that or if we could/should just say that
+> input clocks should always be migrated.
 
-On 12/4/19 10:53 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 12/4/19 10:05 AM, Damien Hedde wrote:
->> On 12/2/19 3:34 PM, Peter Maydell wrote:
->>> On Wed, 4 Sep 2019 at 13:56, Damien Hedde
->>> <damien.hedde@greensocs.com> wrote:
->>>>
-> [...]
->>>> +/**
->>>> + * qdev_pass_clock:
->>>> + * @dev: the device to forward the clock to
->>>> + * @name: the name of the clock to be added (can't be NULL)
->>>> + * @container: the device which already has the clock
->>>> + * @cont_name: the name of the clock in the container device
->>>> + *
->>>> + * Add a clock @name to @dev which forward to the clock @cont_name
->>>> in @container
->>>> + */
->>>
->>> 'container' seems odd terminology here, because I would expect
->>> the usual use of this function to be when a 'container' object
->>> like an SoC wants to forward a clock to one of its components;
->>> in that case the 'container' SoC would be @dev, wouldn't it?
->>
->> Yes. I agree it is confusing.
->> This function just allow a a device 'A' to exhibit a clock from anothe=
-r
->> device 'B' (typically a composing sub-device, inside a soc like you
->> said). The device A is not supposed to interact with the clock itself.
->> The original sub-device is the true
->> owner/controller of the clock and is the only one which should use the
->> clock API: setting a callback on it (input clock); or updating the clo=
-ck
->> frequency (output clock).
->> Basically, it just add the clock into the device clock namespace witho=
-ut
->> interfering with it.
->>
->>> We should get this to be the same way round as qdev_pass_gpios(),
->>> which takes "DeviceState *dev, DeviceState *container", and
->>> passes the gpios that exist on 'dev' over to 'container' so that
->>> 'container' now has gpios which it did not before.
->>
->> Ok, I'll invert the arguments.
->>
->>>
->>> Also, your use of 'forward to' is inconsistent: in the 'dev'
->>> documentation you say we're forwarding the clock to 'dev',
->>> but in the body of the documentation you say we're forwarding
->>> the clock to the clock in 'container'.
->>
->> I'll try to clarify this and make the documentation more consistent wi=
-th
->> the comments here.
->>
->>>
->>> I think the way to resolve this is to stick to the terminology
->>> in the function name itself:
->>> =C2=A0 @dev: the device which has the clock
->>> =C2=A0 @name: the name of the clock on @dev
->>> =C2=A0 @container: the name of the device which the clock should
->>> =C2=A0=C2=A0 be passed to
->>> =C2=A0 @cont_name: the name to use for the clock on @container
->>
->> I think container is confusing because depending on how we reason (clo=
-ck
->> in a device; device in another device), we end up thinking the opposit=
-e.
->>
->> Maybe we can use "exhibit" instead of "container" in the 2nd pair of
->> parameters, or prefix use "origin" or "owner" as a prefix for the firs=
-t
->> pair of parameters.
->=20
-> @sink vs @source?
->=20
->>> Q: if you pass a clock to another device with this function,
->>> does it still exist to be used directly on the original
->>> device? For qdev_pass_gpios it does not (I think), but
->>> this is more accident of implementation than anything else.
->>
->> It depends what we mean by "used by".
->> Original device can:
->> + set the callback in case it is an input
->> + update the frequency in case it is an output
->=20
-> Hmm here you use @input vs @output...
+What I wanted to say is that there are indeed probably cases where
+migrating the frequency is unnecessary. For example if we only use the
+callback and never fetch the frequency outside it: if the frequency is
+only used to compute something which is already saved/loaded during
+migration.
 
-Not really. What I meant here is that the device which originally
-creates the clock is the only device which can interact with the clock.
-And it will never gives this right to another device even if
-qdev_pass_clock() is used.
+But yes we could just do as you say. It's probably less confusing.
 
-There are 2 interactions, depending on the clock direction (input or
-output). If it is an input clock, it can register a callback on
-frequency changes; and if it is an output clock, it can updates the
-frequency of the clock.
-
->=20
->> But since an input clock can only be connected once,
->> I think the logic here is that any connection should now go through th=
-e
->> new device. But this is not checked and using one or the other is
->> exactly the same.
->>
->> Maybe I misunderstood the meaning of qdev_pass_gpios().
-> [...]
->=20
+> 
+>> The VMSTATE_CLOCKIN macro defines an entry to
+>> +be added in a vmstate description.
+>> +
+>> +For example, if a device has a clock input and the device state looks like:
+>> +MyDeviceState {
+>> +    DeviceState parent_obj;
+>> +    ClockIn *clk;
+>> +};
+>> +
+>> +Then, to add the clock frequency to the device's migrated state, the vmstate
+>> +description is:
+>> +VMStateDescription my_device_vmstate = {
+>> +    .name = "my_device",
+>> +    .fields = (VMStateField[]) {
+>> +        VMSTATE_CLOCKIN(clk, MyDeviceState),
+>> +        VMSTATE_END_OF_LIST()
+>> +    }
+>> +};
+>> +
+>> +When adding a input clock support to an existing device, you must care about
+>> +migration compatibility. To this end, you can use the clock_init_frequency in
+>> +a pre_load function to setup a default value in case the source vm does not
+>> +migrate the frequency.
+> 
+> thanks
+> -- PMM
+> 

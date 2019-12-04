@@ -1,77 +1,77 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp593194lff;
-        Wed, 4 Dec 2019 04:52:17 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx0YACFyet8j3g1QlPXdgMMoDinRl0VLnCLcGrumupRJ6qIMLQ5oCnkBFk32j2578fcQqBu
-X-Received: by 2002:a17:906:4ec9:: with SMTP id i9mr2872553ejv.159.1575463937098;
-        Wed, 04 Dec 2019 04:52:17 -0800 (PST)
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp644962lff;
+        Wed, 4 Dec 2019 05:36:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqweFHmu2aD0LYeTjOqpxn2689rgBvFuVQuSwOEsK9UKwmnuCnROa0YPCoYxriogGJNxzeSJ
+X-Received: by 2002:a50:f38e:: with SMTP id g14mr4024294edm.168.1575466573393;
+        Wed, 04 Dec 2019 05:36:13 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bc21si4441643edb.308.2019.12.04.04.52.16
+        by mx.google.com with ESMTPS id n18si4516259edb.248.2019.12.04.05.36.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2019 04:52:17 -0800 (PST)
+        Wed, 04 Dec 2019 05:36:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="fIcbZZK/";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=FsPwH7tU;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38366 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38968 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icU8d-0003BS-TE
-	for alex.bennee@linaro.org; Wed, 04 Dec 2019 07:52:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55678)
+	id 1icUpA-0002sn-8u
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 08:36:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33365)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1icU8E-0003B9-1g
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 07:51:51 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1icUoi-0002sf-7G
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 08:35:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1icU8C-0006jD-E7
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 07:51:49 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:47514)
+ (envelope-from <damien.hedde@greensocs.com>) id 1icUog-0005mI-Uv
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 08:35:43 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:48770)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1icU8B-0006ih-Rz; Wed, 04 Dec 2019 07:51:48 -0500
+ id 1icUog-0005lx-Be; Wed, 04 Dec 2019 08:35:42 -0500
 Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 0800496EF0;
- Wed,  4 Dec 2019 12:51:44 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id A2AEA96EF0;
+ Wed,  4 Dec 2019 13:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1575463905;
+ s=mail; t=1575466540;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OBFgRgY4wIEhLoMAYwc94hmZaFaQBM/mMjjINIFJ5ZI=;
- b=fIcbZZK/GP3axF2KOd6gSzFzLkmwVdlQPTY13wtdOQUQ1tdvRqstqQGdCW7x5On5l2PPwb
- ZJu1Onc9esznT+CnUPhLaalnkUlwcCW7QxHhRq1CLBihRfz0zRaIeoSrUapbI5SalatM+H
- v3aAJoi4nGSIwKR38ilekoGMg7KjqU8=
-Subject: Re: [PATCH v6 7/9] hw/misc/zynq_slcr: add clock generation for uarts
+ bh=lfOQ/XuakjnWsNeoSdUr3UbRkZAPKweMNeEUHV4Xnuw=;
+ b=FsPwH7tUIlPN+HEcjUAFkh6QI5D5MxlR5GSZf71wEkbnloI2SWr1EcTtiGDazvuvDHSv1e
+ kZkzJtDEolHMEDmv/7f7WiNmiRy9LKFAHXO14fuQ/+9l0J/lPuHgvfFK8QAU0968EQfxzA
+ 8FYZMLgPqklsa1uwF08ooTC3t63VdG4=
+Subject: Re: [PATCH v6 8/9] hw/char/cadence_uart: add clock support
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190904125531.27545-1-damien.hedde@greensocs.com>
- <20190904125531.27545-8-damien.hedde@greensocs.com>
- <CAFEAcA_mmBeVnx5TsdeEaEU=jNnkFR9aa-nziaTQD7par7GpoA@mail.gmail.com>
+ <20190904125531.27545-9-damien.hedde@greensocs.com>
+ <CAFEAcA8=7yhQR4Gw2OYmiF0cFJDaVn2hnUrfnZGFJK6wyuB97Q@mail.gmail.com>
 From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <7e255f65-bbfa-897a-4dd0-cb366886f32c@greensocs.com>
-Date: Wed, 4 Dec 2019 13:51:44 +0100
+Message-ID: <75c38376-bbe9-1c52-d7a5-cc3aa73cbac2@greensocs.com>
+Date: Wed, 4 Dec 2019 14:35:39 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_mmBeVnx5TsdeEaEU=jNnkFR9aa-nziaTQD7par7GpoA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8=7yhQR4Gw2OYmiF0cFJDaVn2hnUrfnZGFJK6wyuB97Q@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1575463905;
+ s=mail; t=1575466540;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OBFgRgY4wIEhLoMAYwc94hmZaFaQBM/mMjjINIFJ5ZI=;
- b=3N5xzz1AsIzwskbc4d4tQ8te3WGoJ42BR7F2ZfcXncEENAfIok9ANzMCuKZUHDh/6nx8GN
- UwWO9QL7kBr16K48vzIjPWmFAdDExAO2MXWiy6G+xAYdCEFsTVho5X3zT2EIC4rYhnS2f3
- HQrkGZs2VSsIXDrPE6YVJL7Iteg14SQ=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575463905; a=rsa-sha256; cv=none;
- b=7jh+YjDZfbgf5tQMfwe6bqIXCKyuv8k1OZdQL8g8W6rFUvmQZNSeTJxSyGIKhE03Xgn3wt
- M0McP9y3PXyBF66cv9Ac9a2KrrmSYFDwCMeIYucA5YqB6N7Ktm2A5Jcsl83MSo1rKMLYJm
- Jwk30WQ2Aj8FXnOg6oAxazaXZNjifaY=
+ bh=lfOQ/XuakjnWsNeoSdUr3UbRkZAPKweMNeEUHV4Xnuw=;
+ b=ZscCWZk7LlsX8kd02cRVKUwB1nMABjLhOmUc1PXXfZbZnq2OypHT4t49Wh2r3GkhDeJRgY
+ Z9qV0aUv76SUzD51IgtrM6Wdr18gD74B0d0/8wUWiVNTwVFZ4zOBhVaTou6VI3ndT8W4Do
+ 1Wr4V7PgTq5x/uPcfOlchRN/7HFpxIs=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575466540; a=rsa-sha256; cv=none;
+ b=7hg/tmCb64KH5gTd7e1YfQlpOb0Kta8faJfKWjxmQq96wCOQ6V8Qme84h/PY0hjkgS74wz
+ NKc4vsbiipK9Ic/5rhp42A6MQZK4/KhznzfS1GaMlCLz2lrqSbVJcr1li1Q/kSQCGg5R8S
+ zmddbVnXlKnDB1jJSn8AGOzdsAg+C+k=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
@@ -98,112 +98,78 @@ Cc: "Daniel P. Berrange" <berrange@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3WZIjDLaps4m
+X-TUID: TztqJq0WRhMx
 
 
 
-On 12/2/19 4:20 PM, Peter Maydell wrote:
+On 12/2/19 4:24 PM, Peter Maydell wrote:
 > On Wed, 4 Sep 2019 at 13:56, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >>
->> Switch the slcr to multi-phase reset and add some clocks:
->> + the main input clock (ps_clk)
->> + the reference clock outputs for each uart (uart0 & 1)
+>> Switch the cadence uart to multi-phase reset and add the
+>> reference clock input.
 >>
->> The clock frequencies are computed using the internal pll & uart configuration
->> registers and the ps_clk frequency.
+>> The input clock frequency is added to the migration structure.
+>>
+>> The reference clock controls the baudrate generation. If it disabled,
+>> any input characters and events are ignored.
+>>
+>> If this clock remains unconnected, the uart behaves as before
+>> (it default to a 50MHz ref clock).
 >>
 >> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 > 
-> Review of this and the following two patches by some Xilinx
-> person would be nice. I've just looked them over for general
-> issues, and haven't checked against the hardware specs.
-> 
->> ---
-> 
-> 
->> +/*
->> + * return the output frequency of a clock given:
->> + * + the frequencies in an array corresponding to mux's indexes
->> + * + the register xxx_CLK_CTRL value
->> + * + enable bit index in ctrl register
->> + *
->> + * This function make the assumption that ctrl_reg value is organized as follow:
-> 
-> "makes"; "that the"; "follows"
-> 
->> + * + bits[13:8] clock divisor
->> + * + bits[5:4]  clock mux selector (index in array)
->> + * + bits[index] clock enable
->> + */
->> +static uint64_t zynq_slcr_compute_clock(const uint64_t mux[],
->> +                                        uint32_t ctrl_reg,
->> +                                        unsigned index)
->> +{
->> +    uint32_t srcsel = extract32(ctrl_reg, 4, 2); /* bits [5:4] */
->> +    uint32_t divisor = extract32(ctrl_reg, 8, 6); /* bits [13:8] */
->> +
->> +    /* first, check if clock is enabled */
->> +    if (((ctrl_reg >> index) & 1u) == 0) {
->> +        return 0;
->> +    }
->> +
->> +    /*
->> +     * according to the Zynq technical ref. manual UG585 v1.12.2 in
->> +     * "Clocks" chapter, section 25.10.1 page 705" the range of the divisor
->> +     * is [1;63].
-> 
-> Is this the range notation the spec doc uses?
-
-The exact terms is:
-"The 6-bit divider provides a divide range of 1 to 63"
-At the time, I checked also the kernel sources, and this is the behavior
-implemented in the driver as well (1 based timer and allowing 0 special
-value for bypass). The bypass is undocumented as far as I can tell.
-
-> 
->> +     * So divide the source while avoiding division-by-zero.
->> +     */
->> +    return mux[srcsel] / (divisor ? divisor : 1u);
->> +}
->> +
-> 
->> +static const ClockPortInitArray zynq_slcr_clocks = {
->> +    QDEV_CLOCK_IN(ZynqSLCRState, ps_clk, zynq_slcr_ps_clk_callback),
->> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart0_ref_clk),
->> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart1_ref_clk),
->> +    QDEV_CLOCK_END
->> +};
->> +
->>  static void zynq_slcr_init(Object *obj)
+>>  static void uart_parameters_setup(CadenceUARTState *s)
 >>  {
->>      ZynqSLCRState *s = ZYNQ_SLCR(obj);
->> @@ -425,6 +559,8 @@ static void zynq_slcr_init(Object *obj)
->>      memory_region_init_io(&s->iomem, obj, &slcr_ops, s, "slcr",
->>                            ZYNQ_SLCR_MMIO_SIZE);
->>      sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
+>>      QEMUSerialSetParams ssp;
+>> -    unsigned int baud_rate, packet_size;
+>> +    unsigned int baud_rate, packet_size, input_clk;
+>> +    input_clk = clock_get_frequency(s->refclk);
+>>
+>> -    baud_rate = (s->r[R_MR] & UART_MR_CLKS) ?
+>> -            UART_INPUT_CLK / 8 : UART_INPUT_CLK;
+>> +    baud_rate = (s->r[R_MR] & UART_MR_CLKS) ? input_clk / 8 : input_clk;
+>> +    baud_rate /= (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
+>> +    trace_cadence_uart_baudrate(baud_rate);
 >> +
->> +    qdev_init_clocks(DEVICE(obj), zynq_slcr_clocks);
->>  }
+>> +    ssp.speed = baud_rate;
 >>
->>  static const VMStateDescription vmstate_zynq_slcr = {
->> @@ -440,9 +576,12 @@ static const VMStateDescription vmstate_zynq_slcr = {
->>  static void zynq_slcr_class_init(ObjectClass *klass, void *data)
->>  {
->>      DeviceClass *dc = DEVICE_CLASS(klass);
->> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+>> -    ssp.speed = baud_rate / (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
+>>      packet_size = 1;
 >>
->>      dc->vmsd = &vmstate_zynq_slcr;
->> -    dc->reset = zynq_slcr_reset;
->> +    rc->phases.init = zynq_slcr_reset_init;
->> +    rc->phases.hold = zynq_slcr_reset_hold;
->> +    rc->phases.exit = zynq_slcr_reset_exit;
->>  }
+>>      switch (s->r[R_MR] & UART_MR_PAR) {
+>> @@ -215,6 +220,13 @@ static void uart_parameters_setup(CadenceUARTState *s)
+>>      }
+>>
+>>      packet_size += ssp.data_bits + ssp.stop_bits;
+>> +    if (ssp.speed == 0) {
+>> +        /*
+>> +         * Avoid division-by-zero below.
+>> +         * TODO: find something better
+>> +         */
 > 
-> We're adding an input clock, so doesn't the migration
-> state struct need to be updated to migrate it ?
-Yes, we can. Although this input clock is really not expected to change.
+> Any ideas what might be better? :-)
 
-> 
-> thanks
-> -- PMM
-> 
+Well maybe the comment is misplaced. Because it is probably a good thing
+to round up the ssp.speed in case it becomes 0 (which is very unlikely
+apart from the case where the input clock is 0/disabled).
+
+The problem is what should we do when the clock is disabled ?
+Right now we:
++ set a minimal baudrate
++ ignore input characters/events
++ still forward output characters... (I just checked)
+
+I suppose we could at least fix the last point: we can drop any output
+characters. But if this happen, there is definitely a problem somewhere
+(a firmware should not try to send characters to an unclocked uart). Is
+there a qemu way of reporting this kind of situation ?
+
+It would be best to somehow tell the backend we're not handling anything
+anymore. So I could put that in the comment instead.
+
+I really don't know if/how we can do that. When I looked I did not see
+any way to do the opposite of qemu_chr_fe_accept_input() which is done
+to start receiving stuff.
+
+--
+Damien

@@ -1,101 +1,108 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp670655lff;
-        Wed, 4 Dec 2019 06:00:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyVtj4IDlwoQDYuxgB0aBwx9kglkXr6lpUv3BqB9Fd/GKl1bDXqDQFtj4LbqdcVgZU86ppw
-X-Received: by 2002:a2e:8698:: with SMTP id l24mr2197635lji.94.1575468045770;
-        Wed, 04 Dec 2019 06:00:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575468045; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp764708lff;
+        Wed, 4 Dec 2019 07:11:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzbGQja5TBr00mzHEEvUFdhG12QVsIdC5NqQhmIBoCNMu+MaKeTgOsfdv1bLxU0VLFnJMir
+X-Received: by 2002:a05:6214:902:: with SMTP id dj2mr2957840qvb.133.1575472315845;
+        Wed, 04 Dec 2019 07:11:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575472315; cv=none;
         d=google.com; s=arc-20160816;
-        b=CK5X2vBqHH49IQ8p98B4de+BtVCRNcDbhySL46Yr9DxJye8MDlVKASjAkUEupq1lGI
-         TpImX0TytKHBNydeL8Bjg66u990srtoNFWv2i+ceGUMXAcH7s/YDft2VimGT5bgiY31+
-         f4rNF4MaImBziVBfrLE4+zTgqluMAqplPYaKCuHx3H4gMAMEpN1nAbLnQtFN4KZFnNOK
-         TVwlvYxHGnywmYceNdQdD9kTarkHT9Eqvy4/jIKT9d/2qyfvThjBrkCtdusG4AvP1Nxz
-         XJWE5agn/edftMjKqKzyuWFCinRHo4jzF9mJB/ROHKd9AWjzN/MeoX03W3HmZNDFoSTw
-         9x4g==
+        b=0upew46Ugacpj9rlMDMvQc9PaVhKvkmGzhAQCi4uoUtidqKrFk2R86cyss6VbK84wx
+         4M6A3Xb7nBnCzd2TZ9fk44RPpIsZcUGxMHzBtmsqjkRB0ZX1KkQFrmcFLxzLR08l/CCA
+         HrUPfJLqDFaoff7s4Gk/CPOYSSUsgKevYAg5OfIWTYheLT7G7vPLvOxz3WN83DjCe4/q
+         lwFwAj2ekCCSbSDHoXHsyjwveoXSqxTneqUK32ur1kBr90hT38uV4as63f32Bqlpqwg8
+         sQ0Rx6R7ooKUbkGbNebcyKoSSxLTxpwXyqBM0Zphr/yj/mOdFHnvwJq2lstt5SFnQiaz
+         g2Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:cc:to:from:ironport-sdr:dkim-signature;
-        bh=uThbvtPQAz4aUcOeaWmIN//ZqDzYZn0zQCbaxFwdtm0=;
-        b=jUDzmO/n6XqTwIE57mz1JzjUzSAZ2sWyDP33bzP0w8QXBOPxqkMtQIgNOzB3uvnXJz
-         bq0xJTx+dcDWItKBLlqo4+dxt+Dch5ebEm5crojEiX7R/2FXAOPpfOmTM1SVLvlNXSmw
-         ICdtS/WUhOzCj1IC/Gjteh3aI236Tveu9usK2Yw82ofxmiAs4o9bYI/NdsAxnC2PDDU7
-         WFN0092/lyAFtqv0vFK7hK+tnRhK1xPlTVhKGV8DT+I7cR+bXjEV+qgHlTwMRor+eBii
-         JeJW+SollKndtd5tEY/9Cuo9/+gmzSvKmaRJQXuip4IfYEr5uo/DuioRjSLzpz3I1BNZ
-         Sx6A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=4/Qwt0GouNX9aM/smKfTqvCUQpZ3KJlj3iVgRiG22vk=;
+        b=xeSkPIg2ppexburodPuSFUIORBdbLT+pFmFZmIo6DvIouk+L3ZkgKahHhZdBQNQ+cy
+         3UXs06fzQFe6JOPZytzG+jIPETVjDMttdQPKtvJ5tIHjpWs7FS5uRqdSVxBkk9SclsKS
+         PGjq6aQQINKvk97VORZSw2C63PgPN/0VZWA9BlIVca7huA7TULSTbLQ1WB2lEPZB/8Je
+         2NKIpqZFXOa90oDoderR3zm+LCWIIs/4lIWPAag0HOmJAy2PBeHXmRuyF8IFxgVM1ewx
+         +IGoRbZ4is0VgC5X/aYUluD5YmKSb+a+HIwbyolnnmmZDAjnoAk4CB36Rboh7zOMmbTR
+         AZNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=FEZpZAsT;
+       dkim=fail header.i=@linaro.org header.s=google header.b=txot3Llf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l8si4897159ejc.226.2019.12.04.06.00.44
+        by mx.google.com with ESMTPS id a6si4182428qvl.116.2019.12.04.07.11.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2019 06:00:45 -0800 (PST)
+        Wed, 04 Dec 2019 07:11:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=FEZpZAsT;
+       dkim=fail header.i=@linaro.org header.s=google header.b=txot3Llf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
-Received: from localhost ([::1]:39330 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40254 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icVCt-0001BU-7P
-	for alex.bennee@linaro.org; Wed, 04 Dec 2019 09:00:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38531)
+	id 1icWJn-0008HL-8m
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 10:11:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50138)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prvs=2346a8ea7=sveith@amazon.com>)
- id 1icV8s-0005M9-Gh
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 08:56:35 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1icWJe-0008Gz-Jh
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 10:11:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prvs=2346a8ea7=sveith@amazon.com>)
- id 1icV8r-0005RZ-Dz
- for qemu-arm@nongnu.org; Wed, 04 Dec 2019 08:56:34 -0500
-Received: from smtp-fw-9101.amazon.com ([207.171.184.25]:9536)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <prvs=2346a8ea7=sveith@amazon.com>)
- id 1icV8r-0005QG-6e; Wed, 04 Dec 2019 08:56:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.de; i=@amazon.de; q=dns/txt; s=amazon201209;
- t=1575467793; x=1607003793;
- h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=uThbvtPQAz4aUcOeaWmIN//ZqDzYZn0zQCbaxFwdtm0=;
- b=FEZpZAsTEgUabUqIqUochmBbsfGJ9UvVqT7JWHO3eLSokf10badQzn5y
- gZUGy8gNbWzLFChaB+Zfyrz3+jgyfWgGTv19UidtKkZEUOFv3KoRxGkpO
- tWDTHk/mBYDC488mbJqqiaJ3Bqg7fVJfEKDl4x2lXJJCJjU9E2bWV+iPx c=;
-IronPort-SDR: 99aAc83sA2OgyShNxfulzAYj5fH+VfXXffUGMHdweV+0Iuyx7LbWzGx1DrSMd9TbQzfj+YgX+/
- 8qH33e89q97w==
-X-IronPort-AV: E=Sophos;i="5.69,277,1571702400"; 
-   d="scan'208";a="3177723"
-Received: from sea32-co-svc-lb4-vlan3.sea.corp.amazon.com (HELO
- email-inbound-relay-2a-119b4f96.us-west-2.amazon.com) ([10.47.23.38])
- by smtp-border-fw-out-9101.sea19.amazon.com with ESMTP;
- 04 Dec 2019 13:56:32 +0000
-Received: from sveith-desktop.aka.corp.amazon.com
- (pdx2-ws-svc-lb17-vlan3.amazon.com [10.247.140.70])
- by email-inbound-relay-2a-119b4f96.us-west-2.amazon.com (Postfix) with ESMTPS
- id BA66F1A11D5; Wed,  4 Dec 2019 13:56:31 +0000 (UTC)
-Received: from sveith-desktop.aka.corp.amazon.com (localhost [127.0.0.1])
- by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Debian-3) with ESMTP id
- xB4DuUkY029462; Wed, 4 Dec 2019 14:56:30 +0100
-Received: (from sveith@localhost)
- by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Submit) id xB4DuUrM029461;
- Wed, 4 Dec 2019 14:56:30 +0100
-From: Simon Veith <sveith@amazon.de>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Simon Veith <sveith@amazon.de>, Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH 5/5] hw/arm/smmuv3: Report F_STE_FETCH fault address in
- correct word position
-Date: Wed,  4 Dec 2019 14:55:48 +0100
-Message-Id: <1575467748-28898-6-git-send-email-sveith@amazon.de>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1575467748-28898-1-git-send-email-sveith@amazon.de>
-References: <1575467748-28898-1-git-send-email-sveith@amazon.de>
-Precedence: Bulk
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 207.171.184.25
+ (envelope-from <peter.maydell@linaro.org>) id 1icWJd-0003Ay-CQ
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 10:11:46 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:45952)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1icWJd-0003AN-3Q
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 10:11:45 -0500
+Received: by mail-ot1-x341.google.com with SMTP id 59so6565645otp.12
+ for <qemu-arm@nongnu.org>; Wed, 04 Dec 2019 07:11:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=4/Qwt0GouNX9aM/smKfTqvCUQpZ3KJlj3iVgRiG22vk=;
+ b=txot3LlfUrdPFV8xcn0ktczbFaWdRP1NcTfchRBQkBGqH90l52P+tEJFZXMzQ+rolk
+ TbQuZu0N6AHmidT+gG5Hh4cIc6xy2uumCVA1ZSUryVZNcRYTjBtGrfyO795gtClyltA9
+ LNlLVIRMtFRGx4nIxvtXa6Re2lcf0yplU2TAmlLlfnWNpdg8BpxFpumnHqo6aQE40oEy
+ 7H1gWQ3u08m+kGhL6YTImwX9jcmtWkEF7iOiDACu5hVbRbDALgiv+hF7u6a6uG6NgcQ4
+ b830G/n6nL7SqOeaqbgBDQtUwKAGG2HkrdVthEpQ+UWPquAFmPE2mTNArofaqyL+6yqZ
+ SWAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=4/Qwt0GouNX9aM/smKfTqvCUQpZ3KJlj3iVgRiG22vk=;
+ b=b1m/TnqkjC1uTeYI7IxOpdnwCAEMob1339CKYeI3zIK3YudZ+wPrh8v7XoYHX3M0Xt
+ pdE/fn5rCEWZDUTc4I9O9Mi7qGTvEhwwMRwnzSdT+B142fQDQqwqusaUGM+BYXhzNh+w
+ DquTgQkX5kWs6JBHVwfyZ2R5sYjJRGJ+iaDRp9qNvEv9XftH7F8eMBRWqnKwopxYKBoi
+ 7zars7bZwp06KrxYGwVO6kbSE4xqSjlefFQ6Nqi2jbGp52hsSHxZAW0HeF9cz9WMFyGW
+ /65FqFOP/v5a/a6r6blTxEHBhZMXB1Mb7/mI3te5i+wJWv/5IQi2k3rT9PSnmhYkt+19
+ 8agA==
+X-Gm-Message-State: APjAAAXdrBJ6H5NoYwgVC/d3UlDiudR9yVm78t0tXAJ5Dtz7eO6gFhg0
+ /KgwHzlOEc7wrN9w7As0A0Dr4emjkko76TO+ke0pMw==
+X-Received: by 2002:a9d:6745:: with SMTP id w5mr2733664otm.221.1575472303955; 
+ Wed, 04 Dec 2019 07:11:43 -0800 (PST)
+MIME-Version: 1.0
+References: <20191129150508.24404-1-bilalwasim676@gmail.com>
+ <afe9efde-7ac1-8607-446a-8fbf10accece@redhat.com>
+ <8c956ae31e8f44a2b831a5030b2448b4@SVR-IES-MBX-03.mgc.mentorg.com>
+ <CAP+75-X_POJfTO=gOUu1zCPtcfnQ5yemQo0hqB_s3jy_C17o9g@mail.gmail.com>
+ <db2c5074-307c-d20e-73f2-9c2b44612d6f@redhat.com>
+In-Reply-To: <db2c5074-307c-d20e-73f2-9c2b44612d6f@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 4 Dec 2019 15:11:32 +0000
+Message-ID: <CAFEAcA89Zw+MUJzhwSx39qVv8cRVNgRf7fe1K1oLYVjZfur9Wg@mail.gmail.com>
+Subject: Re: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
+ mode.
+To: Jason Wang <jasowang@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
+Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
@@ -104,43 +111,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "aa1ronham@gmail.com" <aa1ronham@gmail.com>,
+ "jcd@tribudubois.net" <jcd@tribudubois.net>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wasim,
+ Bilal" <Bilal_Wasim@mentor.com>,
+ "bilalwasim676@gmail.com" <bilalwasim676@gmail.com>,
+ "linux@roeck-us.net" <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4ScRNgOZF+VO
+X-TUID: SGCHDVOl6vG+
 
-The smmuv3_record_event() function that generates the F_STE_FETCH error
-uses the EVT_SET_ADDR macro to record the fetch address, placing it in
-32-bit words 4 and 5.
+On Wed, 4 Dec 2019 at 02:15, Jason Wang <jasowang@redhat.com> wrote:
+>
+>
+> On 2019/11/30 =E4=B8=8A=E5=8D=8812:04, Philippe Mathieu-Daud=C3=A9 wrote:
+> > On Fri, Nov 29, 2019 at 4:59 PM Wasim, Bilal <Bilal_Wasim@mentor.com> w=
+rote:
+> >> Thanks for the pointers philippe.. Is the patch okay to be merged with=
+out it or do I need to do a re-submission with the updated username ?
+> > If there are no review comments on your patch, I think the maintainer
+> > taking your patch can fix this details directly, no need to resend.
+> >
+> >> -----Original Message-----
+> >> From: Philippe Mathieu-Daud=C3=A9 [mailto:philmd@redhat.com]
+> >> Sent: Friday, November 29, 2019 8:38 PM
+> >> To: bilalwasim676@gmail.com; qemu-devel@nongnu.org
+> >> Cc: peter.maydell@linaro.org; aa1ronham@gmail.com; jcd@tribudubois.net=
+; qemu-arm@nongnu.org; Wasim, Bilal <Bilal_Wasim@mentor.com>; linux@roeck-u=
+s.net; Jason Wang <jasowang@redhat.com>
+> >> Subject: Re: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support l=
+oopback mode.
+> >>
+> >> Hi Bilal,
+> >>
+> >> Cc'ing Jason, the maintainer of network devices.
+> >>
+> >> On 11/29/19 4:05 PM, bilalwasim676@gmail.com wrote:
+> >>> From: bwasim <bilal_wasim@mentor.com>
+> >> Your git setup misses your 'user.name', you could fix it running:
+> >>
+> >>     git config user.name "Bilal Wasim"
+> >>
+> >> (eventually with the --global option).
+> >>
+> >> The patch looks good otherwise.
+> >>
+> >> Thanks!
+>
+>
+> Applied with the fix for user.name.
 
-The correct position for this address is in words 6 and 7, per the
-SMMUv3 Architecture Specification.
+Could you fix up the non-standard block comment formatting too?
 
-Update the function to use the EVT_SET_ADDR2 macro instead, which is the
-macro intended for writing to these words.
-
-ref. ARM IHI 0070C, section 7.3.4.
-
-Signed-off-by: Simon Veith <sveith@amazon.de>
-Cc: Eric Auger <eric.auger@redhat.com>
-Cc: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
----
- hw/arm/smmuv3.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 2d6c275..125e47d 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -172,7 +172,7 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
-     case SMMU_EVT_F_STE_FETCH:
-         EVT_SET_SSID(&evt, info->u.f_ste_fetch.ssid);
-         EVT_SET_SSV(&evt,  info->u.f_ste_fetch.ssv);
--        EVT_SET_ADDR(&evt, info->u.f_ste_fetch.addr);
-+        EVT_SET_ADDR2(&evt, info->u.f_ste_fetch.addr);
-         break;
-     case SMMU_EVT_C_BAD_STE:
-         EVT_SET_SSID(&evt, info->u.c_bad_ste.ssid);
--- 
-2.7.4
-
+thanks
+-- PMM

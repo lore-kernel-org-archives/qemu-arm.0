@@ -1,213 +1,147 @@
-Received: by 2002:a19:6911:0:0:0:0:0 with SMTP id e17csp1900087lfc;
-        Tue, 3 Dec 2019 10:34:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzMn+cjO+H93nq4h2U/Z6vkSv08cnrZTaiU405m/iI3JPjdyU9Q+VaT7jvV40Ivnrd7wnVC
-X-Received: by 2002:a05:6402:518:: with SMTP id m24mr5034115edv.35.1575398050665;
-        Tue, 03 Dec 2019 10:34:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575398050; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp372902lff;
+        Wed, 4 Dec 2019 01:09:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwu/IglCtwiARGAAF5gNIOhBh/QJ3ZJmia9UfW9wOm9WQxNSm3fHvSIVjUIekhSsRP06B+O
+X-Received: by 2002:a0c:964f:: with SMTP id 15mr1785553qvy.64.1575450575228;
+        Wed, 04 Dec 2019 01:09:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575450575; cv=none;
         d=google.com; s=arc-20160816;
-        b=sGpzsZHt4MEjTV6X3+gOLcSge2sy06jsYrHQMGHv1mIPfHIaGsl1cKYHk3qROmhssM
-         H+ZHoLX/AO3hAf2rhfqCDQ93ojZ3H/+2Tk+ecB9a0ZnIfXtv31Xtg+CeNUR+cIQnocr6
-         Yubj93IHRWlt4977HbPOhstwE6+kR02u5rdSKdIYpGb1PYTkE5tQdYvp4N4sqWw1tD/J
-         N2dMvwT1ZtHzBy16wxOp/veEDlC3wWL8LksMDi/ZrWBWyzMCJsFChSih22Prr/AyAq7T
-         3yO9N3tJ/x1uCV6fOcZYRXsELebsE0qc20+Q2yb34+ADE4foM+YhWTB43Nf0nKl/Yp3b
-         F8Eg==
+        b=RCo3hWXR3pcuhN752rKfT5V0Lh6iWTBGGbTwn2XTkVHKat5SBOdNguvXt3PkwoF9Gq
+         uwgmltDaxj1h7fKxBvhsPZT6aaWGC6Cnnh9x1SdIGCRwUFA2aqQuzOUwELD29ljyyd3R
+         NjQW8S91OGkdfo8CWOdVAU05c8v4ktj+eV+ADPjGQQY6aQp4w58lQ0pq7XkmTw+BQgDg
+         zl4M6mPDGF9SVCXmEHi1TCwXxjn/iWum5P+zPDcCjSEVx+c7Z+NQ1ZJikhmy+XTuCv5x
+         h4BjyU7Iectee29tY4vM8c+o6LjJXppu6Xtaq5wyeepYNVBQC9A3b7cbXAYD5FLLBLfZ
+         Uw6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=SDFRBhregaWR6UCPYA48ea7W+JzhzpaIQSt2Oza1ncI=;
-        b=TVle81hILmgFHkqAMbnXLV+TBHBXUh9sbKy/MSfWNSomGUF6mX/dRpzh8bYMdO29GV
-         VpKMjrVVz2GOI62oqdYNG0Oi5r903e2Djp/FHqmECXWLwfxRKDT/UwFBMxiucRJVTCFN
-         CHBWgVx80TVTNDFRqUG2cVgfF4fP0+WfwnhQ6FkcDAuUlg7bG1c31wRnRXx1ot8wrs1X
-         My4nH8awW/cak680POAMu5Rx1Zid4brVpmYiFDHoFuREXl4r7dRrUMDLBNnua3tmWJxD
-         BtUi9G0c9rL4knfs6MoYHgvdqM7S257MVGBdjdG3WKMDzYHxZzYK8LPJyeF2MBGHNmRj
-         rJrw==
+        bh=AunsICv+tc9ByKDHB67N3AR9wBDUA6R0R700dp0nRsM=;
+        b=0Unbbsd7DJ/l4NmC1xM2oSX5JBBhMS05ge8sWr8EfqRKMYr8WKvP1/qBGJqTBMVB4v
+         a99WT12QPD410CWZmfsgnk1UjK8peHaopX1CVGFNB0WQ4VDJFptdC+BsIDwbA59JCAJt
+         zCZkV4GOxNSv3WjAlCKTEecd0WWd2dyJBcvOb0XdCaQJ82k1juIKITnvuzNx2/GLPIi1
+         mmlOyxAsoe0FKeiweeIdSUc8VwUyAg3ANSm2dpTcNVdqgwbkDpc/qI2enGptSVxNg+zU
+         57yqbHeX9TRnjEK1opuSnvrmnyweeE58oE8cGo10MHj1t8c1qsTMXJXzIIomyJuJ94a/
+         BJHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CF5414ln;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EGMbAMvp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10si3032490edk.122.2019.12.03.10.34.10
+        by mx.google.com with ESMTPS id h20si4221611qtc.100.2019.12.04.01.09.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2019 10:34:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Dec 2019 01:09:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CF5414ln;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EGMbAMvp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57282 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35956 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icCzt-00084m-EX
-	for alex.bennee@linaro.org; Tue, 03 Dec 2019 13:34:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33328)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1icQf1-0006v3-Lk
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 04:09:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55614)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1icBy1-0005Df-V9
- for qemu-devel@nongnu.org; Tue, 03 Dec 2019 12:28:08 -0500
+ (envelope-from <philmd@redhat.com>) id 1icQZf-000546-1n
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 04:03:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1icBxs-0007Oj-Ee
- for qemu-devel@nongnu.org; Tue, 03 Dec 2019 12:27:59 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:23733
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1icQZ1-0003T3-Nn
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 04:03:17 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23793
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1icBxr-0007A5-Ai
- for qemu-devel@nongnu.org; Tue, 03 Dec 2019 12:27:56 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1icQZ1-0003Gb-IY
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2019 04:03:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575394067;
+ s=mimecast20190719; t=1575450192;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SDFRBhregaWR6UCPYA48ea7W+JzhzpaIQSt2Oza1ncI=;
- b=CF5414lnLW0u0dyO+jkREvi+LZF4viE1Jtw6utZSV7H3dmnnyQpUyhuCZJlpAx1RiMFRGn
- ykIp2873VB6TuT1D7VS3SvGSGhPmaHJjkS+FHcg1+IxpYywmbYv0AQH7iq3Im78rThxJg3
- qldRLxUrMKLuVBgciisxtZIu7nIrkPU=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-39-joCplyXEMuajDOH65RtKNA-1; Tue, 03 Dec 2019 12:27:43 -0500
-Received: by mail-wm1-f72.google.com with SMTP id f16so1216235wmb.2
- for <qemu-devel@nongnu.org>; Tue, 03 Dec 2019 09:27:43 -0800 (PST)
+ bh=AunsICv+tc9ByKDHB67N3AR9wBDUA6R0R700dp0nRsM=;
+ b=EGMbAMvppCmIwv1ljLX4O//IBwiSUKFK+pTFPBAoOI18E2dZkAKcdT6vmwCtzmGw0azT0L
+ 58PibU8leCvVT1Gk9nEjhHxLWKnA5l2BtvQZEHMvAMh/wC8A4Wy23wtIAlgDY5A6w0s9uU
+ 2inse8Mf+/68wn5Kv2ZDiUu0BS8X15o=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-110-4h6D6CPFMNGGCRpIfnCnGQ-1; Wed, 04 Dec 2019 04:03:11 -0500
+Received: by mail-wr1-f69.google.com with SMTP id 92so3329036wro.14
+ for <qemu-arm@nongnu.org>; Wed, 04 Dec 2019 01:03:11 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0D6PkLGHTZYjnPVu9XAb8Uu49tCjXJV4smH8ssuZw2s=;
- b=oWdUKh5SxO+qT0XcSA9KaHtveOtOaOZj3QpjoSu6ncBEeWW8DFIgqR0AqBaqtGajK/
- aKsb60yRH/9yn3QQ7wnjjhPvLt+m2pB4aKSUAzwknJuwIFqr0uKKL+95cSZ5Sx/8PCzg
- IOwjFUDfd2MlV0fTktPSC8kDmtKMsLmbjS/d01xwHwOFd8xNvhai7u+5WI6qH33Qp7mQ
- hQogqBvtqnZioYj934S5/h1OnxeEKz4Uw0ADK9UU5dWouV0U4UwkVOgNtwIOUwjLjQPO
- enqr0cWndb6w6VIH5fIBxOIRUVj9R99lPi6liaCcr+9soird6TdZcsHFJksd/3qP4hDH
- W3Bg==
-X-Gm-Message-State: APjAAAWh0jSR/HxZrLr+mPvGMvfScbvPWrl4aVDldbH0o5AMhE5KmVTU
- saPKdI9nCItyPt9ufGis8C3yg7ZwxTPh6w3WfSGegquAfaDahnS6Ru1EVs2mEwRq0osBXnon3sJ
- 9IEJwR8AgJkP+6Uw=
-X-Received: by 2002:a5d:49c7:: with SMTP id t7mr6345194wrs.369.1575394062922; 
- Tue, 03 Dec 2019 09:27:42 -0800 (PST)
-X-Received: by 2002:a5d:49c7:: with SMTP id t7mr6345170wrs.369.1575394062698; 
- Tue, 03 Dec 2019 09:27:42 -0800 (PST)
+ bh=AunsICv+tc9ByKDHB67N3AR9wBDUA6R0R700dp0nRsM=;
+ b=SWJuBONDCkNplJHaKhqmqc96DAM3x4kNlx1vVxTyUGr6qEKmsxNv4dMq0BG56gkGI+
+ qtqY4H7+ag4bldVWsK3ljqtsoEC7R8LlPYz2ZoGH47ZgrlNe2akoKxWywOEYNjT32dHQ
+ B/vJZOBpRGQAjhPeq9CCN1nLBo5lQFcOUmZJ2tq8vDGsCOsdAb/YxjKsnAvbvF62N2Rm
+ Wi0nj7NT9/MMfmllNCaFJmqDF80ku/BHQmMG796RtLELlYYy9ytNisZEn98FXCUKu7VK
+ WzoQcDwmI3xfNUBKg0/+N0BN3lIGtBnIUSctduqUjN6bBN0MYbA388l2n3WIlS7hcWmP
+ i5qg==
+X-Gm-Message-State: APjAAAUyTEHVn/uNlbZsXUIIZl/JqrQg9JnOgG3YK9o4PHYXevYhJZd+
+ WKKTBWvEIziY9TaIVewCsn4MJkGvXU+IWOik1ZGM089/funengA5Lw9YbuAb+M9JUrfxCJs1uJO
+ NowH0tzMpORQs
+X-Received: by 2002:a7b:c004:: with SMTP id c4mr37831504wmb.45.1575450189753; 
+ Wed, 04 Dec 2019 01:03:09 -0800 (PST)
+X-Received: by 2002:a7b:c004:: with SMTP id c4mr37831490wmb.45.1575450189566; 
+ Wed, 04 Dec 2019 01:03:09 -0800 (PST)
 Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
  [88.21.103.182])
- by smtp.gmail.com with ESMTPSA id l3sm4465275wrt.29.2019.12.03.09.27.41
+ by smtp.gmail.com with ESMTPSA id c2sm7263359wrp.46.2019.12.04.01.03.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Dec 2019 09:27:42 -0800 (PST)
-Subject: Re: [PATCH v2 2/4] target/arm: Abstract the generic timer frequency
-To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
-References: <20191203041440.6275-1-andrew@aj.id.au>
- <20191203041440.6275-3-andrew@aj.id.au>
- <283c152b-b1c7-551e-bec0-c087b14de996@redhat.com>
- <4e90d36d-aa13-441f-9298-56f83a5bff6a@www.fastmail.com>
+ Wed, 04 Dec 2019 01:03:08 -0800 (PST)
+Subject: Re: [PATCH 02/10] hw: arm: add Xunlong Orange Pi PC machine
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
+ <20191202210947.3603-3-nieklinnenbank@gmail.com>
+ <b14e5a75-ebe3-311e-60a8-3f71b0874a10@redhat.com>
+ <CAPan3Woz7+1K9Yth6MfHqLfjcDMh8xGVzTShN7gi3XM8W_BNnw@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <87bf3c1d-9e77-f4a1-1163-548a3cfee3bc@redhat.com>
-Date: Tue, 3 Dec 2019 18:27:41 +0100
+Message-ID: <239606dc-3545-c3f7-1e11-429f53994147@redhat.com>
+Date: Wed, 4 Dec 2019 10:03:07 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <4e90d36d-aa13-441f-9298-56f83a5bff6a@www.fastmail.com>
+In-Reply-To: <CAPan3Woz7+1K9Yth6MfHqLfjcDMh8xGVzTShN7gi3XM8W_BNnw@mail.gmail.com>
 Content-Language: en-US
-X-MC-Unique: joCplyXEMuajDOH65RtKNA-1
+X-MC-Unique: 4h6D6CPFMNGGCRpIfnCnGQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YuGKzqyiBwx/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: b.galvani@gmail.com, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LpnF084ndN6i
 
-On 12/3/19 1:48 PM, Andrew Jeffery wrote:
-> On Tue, 3 Dec 2019, at 16:39, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 12/3/19 5:14 AM, Andrew Jeffery wrote:
->>> Prepare for SoCs such as the ASPEED AST2600 whose firmware configures
->>> CNTFRQ to values significantly larger than the static 62.5MHz value
->>> currently derived from GTIMER_SCALE. As the OS potentially derives its
->>> timer periods from the CNTFRQ value the lack of support for running
->>> QEMUTimers at the appropriate rate leads to sticky behaviour in the
->>> guest.
->>>
->>> Substitute the GTIMER_SCALE constant with use of a helper to derive the
->>> period from gt_cntfrq stored in struct ARMCPU. Initially set gt_cntfrq
->>> to the frequency associated with GTIMER_SCALE so current behaviour is
->>> maintained.
->>>
->>> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
->>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->>> ---
->>>    target/arm/cpu.c    |  2 ++
->>>    target/arm/cpu.h    | 10 ++++++++++
->>>    target/arm/helper.c | 10 +++++++---
->>>    3 files changed, 19 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->>> index 7a4ac9339bf9..5698a74061bb 100644
->>> --- a/target/arm/cpu.c
->>> +++ b/target/arm/cpu.c
->>> @@ -974,6 +974,8 @@ static void arm_cpu_initfn(Object *obj)
->>>        if (tcg_enabled()) {
->>>            cpu->psci_version =3D 2; /* TCG implements PSCI 0.2 */
->>>        }
->>> +
->>> +    cpu->gt_cntfrq =3D NANOSECONDS_PER_SECOND / GTIMER_SCALE;
->>>    }
->>>   =20
->>>    static Property arm_cpu_reset_cbar_property =3D
->>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->>> index 83a809d4bac4..666c03871fdf 100644
->>> --- a/target/arm/cpu.h
->>> +++ b/target/arm/cpu.h
->>> @@ -932,8 +932,18 @@ struct ARMCPU {
->>>         */
->>>        DECLARE_BITMAP(sve_vq_map, ARM_MAX_VQ);
->>>        DECLARE_BITMAP(sve_vq_init, ARM_MAX_VQ);
->>> +
->>> +    /* Generic timer counter frequency, in Hz */
->>> +    uint64_t gt_cntfrq;
->>
->> You can also explicit the unit by calling it 'gt_cntfrq_hz'.
->=20
-> Fair call, I'll fix that.
->=20
->>
->>>    };
->>>   =20
->>> +static inline unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
->>> +{
->>> +    /* XXX: Could include qemu/timer.h to get NANOSECONDS_PER_SECOND? =
-*/
->>
->> Why inline this call? I doubt there is a significant performance gain.
->=20
-> It wasn't so much performance. It started out as a macro for a simple cal=
-culation
-> because I didn't want to duplicate it across a number of places, then I w=
-anted type
-> safety for the pointer so  I switched the macro in the header to an inlin=
-e function. So
-> it is an evolution of the patch rather than something that came from an e=
-xplicit goal
-> of e.g. performance.
+On 12/3/19 8:33 PM, Niek Linnenbank wrote:
+> Hello Philippe,
+> 
+> Thanks for your quick review comments!
+> I'll start working on a v2 of the patches and include the changes you 
+> suggested.
 
-OK. Eventually NANOSECONDS_PER_SECOND will move to "qemu/units.h".
-
-Should the XXX comment stay? I'm not sure, it is confusing.
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Thanks, but I'd suggest to wait few more days to give time to others 
+reviewers. Else having multiple versions of a big series reviewed at the 
+same time is very confusing.
+I have other minor comments on others patches, but need to find the time 
+to continue reviewing.
 

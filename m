@@ -1,118 +1,100 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp898632lff;
-        Wed, 4 Dec 2019 08:59:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyW1vVsRFtWwxIr0xRH8COfjaicHmUS3G9ErXzeZ/fgHv2jTa5VDKLVLkR4oa6J+V7qF/Wk
-X-Received: by 2002:a17:906:3290:: with SMTP id 16mr4123838ejw.329.1575478794570;
-        Wed, 04 Dec 2019 08:59:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575478794; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1113118lff;
+        Wed, 4 Dec 2019 12:07:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzfUGn7TCS+VaLkpUe8km963sKjNaepI24ZAbC1YbnAqBHZjUPN1mByKnrA8MfpAPEQ/UIh
+X-Received: by 2002:a50:b6f2:: with SMTP id f47mr6204615ede.138.1575490057726;
+        Wed, 04 Dec 2019 12:07:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575490057; cv=none;
         d=google.com; s=arc-20160816;
-        b=pdrfD6SQSFZd63iChyk/BbqYeOaspBlpjMFSAK+fyNkIXcYR5dltUBRAVNLHkvTu2I
-         9K1jvA4DgtYtcnnva4U2ZtXTAF71X7rXSLqc3UfujzNAVmG1St8uCV+OnAAHbhMwxFYn
-         PTk4qRB7PD0xpm+/496GOloJ3lblCmLnQZxVbSwzz/l9tSMSZoOeOavZR3fbFuwaOSi6
-         iqTYZv4w/aGeEJ41m32Sdjwsuy9+53iHy9nePHpKT0qHsqwS5zD8g4EIje2NzMzOUXBq
-         PWSRCmOrmpnA8kiaNP9oq8PPJGhN3VX3DP9N1hNXv5qJVfqEXiDZQIA9MjMdHuj+xIa5
-         3cAg==
+        b=duspNZAShKWpgvj36qQWN7wnSIU3frmJNO/GKoh1orNa65EMqg9yCuyvOfjgwe26D9
+         JLzpNqrTAdrArVhqshnbAfvJQYQ2F75FT9DYT07Ghv8Td8Uh/aPCjrzZk24yjA9NEBz0
+         XzrgSOSbrWG7BKX8s58Hooz4js93sbbdpWo6PuLOWXk8I/XKm5Mqh+pnJMlVrInJXhrz
+         Snkk3uOXRmxz5+kyiaRZNM/yxy/9AmhaCHuT4vl0rd4ieS5rGlHEP2shFjqRoV5idaqI
+         AdPP9WUT7cHvhKX7fO2f+1mi0r53p47Ek9U8cxA/kA6ZaKGqB8bJT7ULiSEAGimRmAFy
+         XZ9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Sn7syersY781ySQM/IKHN+gNGr7N27AdeWJ99eb3Pjw=;
-        b=pfY7SDquqdBKtsLvsWL0G6xU8o8NeZcUu4Qf85NJDGIvK9JEdMIFtQzluLEhduxG6s
-         b2Ruafb/X1B74Po8wUNrw1bdrzjuoaUwPHWnplnGx5uxQ2IZosObXQlmQPit084FGW1C
-         pudbdjZXKzBfbnYo1ayKKr1gyo+j4us1lGheHayNHmc/L0WnthuWwc3Ck6jb5ggZwOoo
-         aX4yVKFF76s5A7kxyBMObk/YQUO0GtTXN2bTFyJGA5xMzCS9a1FHYo3IPjFw4aScRw55
-         F1ndcepMbr5EL6lD5WQWaUyhyfaIdF41c1+M0k4oPl6Yzy/nGNkXrEzW38EOt2nJeY4P
-         4LUA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=I5pUPHYbr0BueGJe7F25s/VFQXDl8+ZiGmqPzGqYpgY=;
+        b=uIUbIxILJJvoc00h7cdJYs++0oxfa2wbp17jC/zWYbDEg4870MevsdMuNltg7T4kvY
+         JHDnHr8T5vTkfm/lrboAfDRshwRnJXemUT/FCqGsubEXMcSMmGh7d9yj4SK+GH1fSHiM
+         WhvPHlzORMpVtwGpR/Jo4hKsEdRGwBqMN4Srdr7dPclVbnXJtJsPFUewp6qXPxLiGytS
+         IDel59ZlY40H1lMUk9Y0GIUDn7rbLPS7nbNEErFBzk4bOm4TDE3Jcup4KsICKFFh5WGr
+         WUA1ML6X64XjxGMZG+7BhKFUznSDzJ1YGpqVf5By3d+78zcB1zwL3tswgC/m7jvGH0RZ
+         1wow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eyciIFFP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jlnALiCZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a12si4311944edv.177.2019.12.04.08.59.54
+        by mx.google.com with ESMTPS id os11si4726367ejb.326.2019.12.04.12.07.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2019 08:59:54 -0800 (PST)
+        Wed, 04 Dec 2019 12:07:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eyciIFFP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jlnALiCZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41438 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46676 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icY0H-0000RY-4E
-	for alex.bennee@linaro.org; Wed, 04 Dec 2019 11:59:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40561)
+	id 1icavu-0005hE-Ms
+	for alex.bennee@linaro.org; Wed, 04 Dec 2019 15:07:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59315)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1icXud-00042O-S9
- for qemu-devel@nongnu.org; Wed, 04 Dec 2019 11:54:06 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1icafE-0003yV-9E
+ for qemu-devel@nongnu.org; Wed, 04 Dec 2019 14:50:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1icXuX-00049S-2O
- for qemu-devel@nongnu.org; Wed, 04 Dec 2019 11:54:02 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:39824
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1icXuU-0002sy-V0
- for qemu-devel@nongnu.org; Wed, 04 Dec 2019 11:53:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575478433;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Sn7syersY781ySQM/IKHN+gNGr7N27AdeWJ99eb3Pjw=;
- b=eyciIFFPcNKeuSUjuXTUItLgRFRsEC/6dsAmZmPHxOUqYmtM9x5qq+1ORFLHl9QCyWirOW
- ivOTTBrx+wf6u4ZWGt5f6g5U2S1VRaamc1k27ZWa1yNdW2Y35QF9vD06xqStomA4mU5HH0
- SQLREx9bnvDQ3+GTyWCIHVNc3BwEjik=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-108-bnIj1nTaPDWvZySKK4vQOQ-1; Wed, 04 Dec 2019 11:53:51 -0500
-Received: by mail-wr1-f69.google.com with SMTP id b2so124867wrj.9
- for <qemu-devel@nongnu.org>; Wed, 04 Dec 2019 08:53:51 -0800 (PST)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1icafD-00032G-2Y
+ for qemu-devel@nongnu.org; Wed, 04 Dec 2019 14:50:20 -0500
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:39711)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1icafC-0002ys-PY; Wed, 04 Dec 2019 14:50:18 -0500
+Received: by mail-il1-x142.google.com with SMTP id a7so668142ild.6;
+ Wed, 04 Dec 2019 11:50:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=I5pUPHYbr0BueGJe7F25s/VFQXDl8+ZiGmqPzGqYpgY=;
+ b=jlnALiCZ9Pzedb7XVTPCJGOgZDTsT2BpiWWDkywevUOm0ns/61Cq7WElbVpLPQeBZD
+ IbszXua3FwaREiCZc/dsXkyxOhRi6mxozA1ODc4NK9RFpYX9hHn4Z/0JUgu6DJ17UE8S
+ 7iLRPNrXfA861gA9oTEEKd46HQc1Dqdbn0jVHYqrJBsPXIDJQdG+H6j/effvSkxTmCyt
+ Mmx7Fk9iRHxL4Q8YZL8lFvGSvsWxd/H/bmHdYb3eZAreKri0TRiZfc5fA2EUurbIkm7F
+ SwztkkL6Cf1qdL1v7AA5JL5ZdEVdAKViuux9o0h+nCiOqhdfUp5y06FqtfzHqLZEqPTH
+ PxyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Sn7syersY781ySQM/IKHN+gNGr7N27AdeWJ99eb3Pjw=;
- b=qGAqng/ww3JrhbmOWOzPtPBfcM8BcwgJEiWtwx+irC+uCsZ0MR8rKUn0KdZ+uTluNx
- oUWda/sydzjwFMcQEgFsFLTx5TlXd/gPBemcX9Q7Ni2CdtU1IbPoFc+nwKpdUaeU9FQw
- G7irW0IzBXhCWuqu2PrARIt+Sr8VYpCT0IyOyujchyg1ozz6dZrCiXloBs3UFN6MRmcx
- vrFXv4LilRZmzlBxUk5pCd3i1eby6rVwYqP51bmHa78la7SRQg0/Dzugn8QBZGLlH7+y
- RSNXUDzFgYJMszsRf3IB80NwF85yLgEbWUAnTfO/XCfYeoJIS26AXV4WUCZgM0vCB+bT
- T/bQ==
-X-Gm-Message-State: APjAAAXWbxxOoGGOEfAblXZVClY1qv52pAVJOXERJ5OG0jSaA8m461cG
- e6Gx+RTBZyM6wmE6DcxwfUDXa0h+VkA4VXdfXIHg6RsJi6hL3BZMmHBzV16aqFztUosSRvBvQYS
- pusc5CvpCQgBt1v4=
-X-Received: by 2002:adf:e3d0:: with SMTP id k16mr5203000wrm.241.1575478430064; 
- Wed, 04 Dec 2019 08:53:50 -0800 (PST)
-X-Received: by 2002:adf:e3d0:: with SMTP id k16mr5202967wrm.241.1575478429632; 
- Wed, 04 Dec 2019 08:53:49 -0800 (PST)
-Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
- [88.21.103.182])
- by smtp.gmail.com with ESMTPSA id l4sm7045743wml.33.2019.12.04.08.53.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Dec 2019 08:53:49 -0800 (PST)
-Subject: Re: [PATCH 01/10] hw: arm: add Allwinner H3 System-on-Chip
-To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-2-nieklinnenbank@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <5d3961ca-8586-6d93-2525-fd2e29b233e1@redhat.com>
-Date: Wed, 4 Dec 2019 17:53:48 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=I5pUPHYbr0BueGJe7F25s/VFQXDl8+ZiGmqPzGqYpgY=;
+ b=CwxY4Z19/IzguWYRpqPGK+jECwm93Di3R+aPnv1gq5QLVDFrw+rs7AEUExcM0f/gqj
+ 8r/NlSYc57LyrtTOi4XS/vUabxe8MXjghl8BkjTe/O8zckjvgJ9KkJVNGxAl1Y36/ave
+ 1xlAUNpOb1s7PkmAZDH1qR4I3yxyoKVZ1Ln9gE5ecPMFhNpeMWTvToobF7aTja/1xXTV
+ Ov6xZqvKLLVRNeyoNuU9p9HF7WI5FJ8whtE133CjVQ1nSnEU7B4lhBwNhyCmHWn7Efxe
+ aRLc+2vaTdx/2pcgsjEzd5NGwj7Hl2WMvLw7uoSSrHm3qId+M35LyzxJvnxcp8WI5qmI
+ i2zQ==
+X-Gm-Message-State: APjAAAWrX31ArnkW9QUuASJKrRSHU5xpP5pPDSSxSC1PY0uWTv14k8d+
+ mNbUr+fpwrWk98fT4Qz1lIifTKxKo4NWK91JgLU=
+X-Received: by 2002:a92:5a45:: with SMTP id o66mr4970679ilb.67.1575489017236; 
+ Wed, 04 Dec 2019 11:50:17 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191202210947.3603-2-nieklinnenbank@gmail.com>
-Content-Language: en-US
-X-MC-Unique: bnIj1nTaPDWvZySKK4vQOQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
+References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
+ <20191202210947.3603-3-nieklinnenbank@gmail.com>
+ <b14e5a75-ebe3-311e-60a8-3f71b0874a10@redhat.com>
+ <CAPan3Woz7+1K9Yth6MfHqLfjcDMh8xGVzTShN7gi3XM8W_BNnw@mail.gmail.com>
+ <239606dc-3545-c3f7-1e11-429f53994147@redhat.com>
+In-Reply-To: <239606dc-3545-c3f7-1e11-429f53994147@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Wed, 4 Dec 2019 20:50:05 +0100
+Message-ID: <CAPan3Wr07TotY3zMXYba7M24Da5VShfsQR4jFTWkt6-Tk672bA@mail.gmail.com>
+Subject: Re: [PATCH 02/10] hw: arm: add Xunlong Orange Pi PC machine
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="0000000000003852570598e61f67"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::142
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,483 +106,83 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: b.galvani@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- Markus Armbruster <armbru@redhat.com>
+Cc: b.galvani@gmail.com, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wolc+CnS4ng+
+X-TUID: SDxZ0ftT7gTp
 
-Hi Niek,
+--0000000000003852570598e61f67
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 12/2/19 10:09 PM, Niek Linnenbank wrote:
-> The Allwinner H3 is a System on Chip containing four ARM Cortex A7
-> processor cores. Features and specifications include DDR2/DDR3 memory,
-> SD/MMC storage cards, 10/100/1000Mbit ethernet, USB 2.0, HDMI and
-> various I/O modules. This commit adds support for the Allwinner H3
-> System on Chip.
-> 
-> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> ---
->   MAINTAINERS                     |   7 ++
->   default-configs/arm-softmmu.mak |   1 +
->   hw/arm/Kconfig                  |   8 ++
->   hw/arm/Makefile.objs            |   1 +
->   hw/arm/allwinner-h3.c           | 215 ++++++++++++++++++++++++++++++++
->   include/hw/arm/allwinner-h3.h   | 118 ++++++++++++++++++
->   6 files changed, 350 insertions(+)
->   create mode 100644 hw/arm/allwinner-h3.c
->   create mode 100644 include/hw/arm/allwinner-h3.h
+On Wed, Dec 4, 2019 at 10:03 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+wrote:
 
-Since your series changes various files, can you have a look at the 
-scripts/git.orderfile file and setup it for your QEMU contributions?
+> On 12/3/19 8:33 PM, Niek Linnenbank wrote:
+> > Hello Philippe,
+> >
+> > Thanks for your quick review comments!
+> > I'll start working on a v2 of the patches and include the changes you
+> > suggested.
+>
+> Thanks, but I'd suggest to wait few more days to give time to others
+> reviewers. Else having multiple versions of a big series reviewed at the
+> same time is very confusing.
+> I have other minor comments on others patches, but need to find the time
+> to continue reviewing.
+>
+>
+OK Philippe, I will follow your advise and wait a few more days before
+submitting a new version.
+I'll wait at least until you had a chance to review all the patches. I'm
+new to the QEMU
+community, so I will need to learn the process along the way.
 
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 5e5e3e52d6..29c9936037 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -479,6 +479,13 @@ F: hw/*/allwinner*
->   F: include/hw/*/allwinner*
->   F: hw/arm/cubieboard.c
->   
-> +Allwinner-h3
-> +M: Niek Linnenbank <nieklinnenbank@gmail.com>
-> +L: qemu-arm@nongnu.org
-> +S: Maintained
-> +F: hw/*/allwinner-h3*
-> +F: include/hw/*/allwinner-h3*
-> +
->   ARM PrimeCell and CMSDK devices
->   M: Peter Maydell <peter.maydell@linaro.org>
->   L: qemu-arm@nongnu.org
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 1f2e0e7fde..d75a239c2c 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -40,3 +40,4 @@ CONFIG_FSL_IMX25=y
->   CONFIG_FSL_IMX7=y
->   CONFIG_FSL_IMX6UL=y
->   CONFIG_SEMIHOSTING=y
-> +CONFIG_ALLWINNER_H3=y
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index c6e7782580..ebf8d2325f 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -291,6 +291,14 @@ config ALLWINNER_A10
->       select SERIAL
->       select UNIMP
->   
-> +config ALLWINNER_H3
-> +    bool
-> +    select ALLWINNER_A10_PIT
-> +    select SERIAL
-> +    select ARM_TIMER
-> +    select ARM_GIC
-> +    select UNIMP
-> +
->   config RASPI
->       bool
->       select FRAMEBUFFER
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index fe749f65fd..956e496052 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -34,6 +34,7 @@ obj-$(CONFIG_DIGIC) += digic.o
->   obj-$(CONFIG_OMAP) += omap1.o omap2.o
->   obj-$(CONFIG_STRONGARM) += strongarm.o
->   obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
-> +obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3.o
->   obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
->   obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
->   obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zynqmp.o xlnx-zcu102.o
-> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> new file mode 100644
-> index 0000000000..470fdfebef
-> --- /dev/null
-> +++ b/hw/arm/allwinner-h3.c
-> @@ -0,0 +1,215 @@
-> +/*
-> + * Allwinner H3 System on Chip emulation
-> + *
-> + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> + *
-> + * This program is free software: you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation, either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "exec/address-spaces.h"
-> +#include "qapi/error.h"
-> +#include "qemu/module.h"
-> +#include "qemu/units.h"
-> +#include "cpu.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/arm/allwinner-h3.h"
-> +#include "hw/misc/unimp.h"
-> +#include "sysemu/sysemu.h"
-> +
-> +static void aw_h3_init(Object *obj)
-> +{
-> +    AwH3State *s = AW_H3(obj);
-> +
-> +    sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
-> +                          TYPE_ARM_GIC);
-> +
-> +    sysbus_init_child_obj(obj, "timer", &s->timer, sizeof(s->timer),
-> +                          TYPE_AW_A10_PIT);
-> +}
-> +
-> +static void aw_h3_realize(DeviceState *dev, Error **errp)
-> +{
-> +    AwH3State *s = AW_H3(dev);
-> +    SysBusDevice *sysbusdev = NULL;
-> +    Error *err = NULL;
-> +    unsigned i = 0;
-> +
-> +    /* CPUs */
-> +    for (i = 0; i < AW_H3_NUM_CPUS; i++) {
+Regards,
+Niek
 
-In https://www.mail-archive.com/qemu-devel@nongnu.org/msg662942.html
-Markus noted some incorrect pattern, and apparently you inherited it.
-You should initialize 'err' in the loop.
 
-> +        Object *cpuobj = object_new(ARM_CPU_TYPE_NAME("cortex-a7"));
-> +        CPUState *cpustate = CPU(cpuobj);
 
-We loose access to the CPUs. Can you use an array of AW_H3_NUM_CPUS cpus 
-in AwH3State?
 
-> +
-> +        /* Set the proper CPU index */
-> +        cpustate->cpu_index = i;
-> +
-> +        /* Provide Power State Coordination Interface */
-> +        object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC,
-> +                                "psci-conduit", &error_abort);
 
-Here you use the error_abort shortcut.
+--=20
+Niek Linnenbank
 
-> +
-> +        /* Disable secondary CPUs */
-> +        object_property_set_bool(cpuobj, i > 0, "start-powered-off", &err);
-> +        if (err != NULL) {
-> +            error_propagate(errp, err);
-> +            return;
+--0000000000003852570598e61f67
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Here you return.
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Dec 4, 2019 at 10:03 AM Phili=
+ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
+at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On 12/3/19 8:33 PM, Niek Linnenbank wrote:<br>
+&gt; Hello Philippe,<br>
+&gt; <br>
+&gt; Thanks for your quick review comments!<br>
+&gt; I&#39;ll start working on a v2 of the patches and include the changes =
+you <br>
+&gt; suggested.<br>
+<br>
+Thanks, but I&#39;d suggest to wait few more days to give time to others <b=
+r>
+reviewers. Else having multiple versions of a big series reviewed at the <b=
+r>
+same time is very confusing.<br>
+I have other minor comments on others patches, but need to find the time <b=
+r>
+to continue reviewing.<br>
+<br>
+</blockquote></div><div><br></div><div>OK Philippe, I will follow your advi=
+se and wait a few more days before submitting a new version.</div><div>I&#3=
+9;ll wait at least until you had a chance to review all the patches. I&#39;=
+m new to the QEMU</div><div>community, so I will need to learn the process =
+along the way.</div><div><br></div><div>Regards,</div><div>Niek<br></div><d=
+iv><br></div><div><br></div><div><br></div><div><br></div><br>-- <br><div d=
+ir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<=
+br><br></div></div></div></div>
 
-> +        }
-> +
-> +        /* All exception levels required */
-> +        object_property_set_bool(cpuobj,
-> +                                 true, "has_el3", NULL);
-> +        object_property_set_bool(cpuobj,
-> +                                 true, "has_el2", NULL);
-
-Here you don't use error.
-
-Cc'ing Markus who is the expert, since he might have better suggestions.
-
-This function is called before the machine starts, and we are not 
-handling with user-provided configurations, so I'd say using 
-&error_abort in all places is OK.
-
-> +
-> +        /* Mark realized */
-> +        object_property_set_bool(cpuobj, true, "realized", &err);
-> +        if (err != NULL) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        object_unref(cpuobj);
-> +    }
-> +
-> +    /* Generic Interrupt Controller */
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", AW_H3_GIC_NUM_SPI +
-> +                                                     GIC_INTERNAL);
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", AW_H3_NUM_CPUS);
-> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", false);
-> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-virtualization-extensions", true);
-> +
-> +    object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
-
-Why change API? Can we use qdev_init_nofail() instead?
-
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    sysbusdev = SYS_BUS_DEVICE(&s->gic);
-> +    sysbus_mmio_map(sysbusdev, 0, AW_H3_GIC_DIST_BASE);
-> +    sysbus_mmio_map(sysbusdev, 1, AW_H3_GIC_CPU_BASE);
-> +    sysbus_mmio_map(sysbusdev, 2, AW_H3_GIC_HYP_BASE);
-> +    sysbus_mmio_map(sysbusdev, 3, AW_H3_GIC_VCPU_BASE);
-> +
-> +    /*
-> +     * Wire the outputs from each CPU's generic timer and the GICv3
-> +     * maintenance interrupt signal to the appropriate GIC PPI inputs,
-> +     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-> +     */
-> +    for (i = 0; i < AW_H3_NUM_CPUS; i++) {
-> +        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-> +        int ppibase = AW_H3_GIC_NUM_SPI + i * GIC_INTERNAL + GIC_NR_SGIS;
-> +        int irq;
-> +        /*
-> +         * Mapping from the output timer irq lines from the CPU to the
-> +         * GIC PPI inputs used for this board.
-> +         */
-> +        const int timer_irq[] = {
-> +            [GTIMER_PHYS] = AW_H3_GIC_PPI_ARM_PHYSTIMER,
-> +            [GTIMER_VIRT] = AW_H3_GIC_PPI_ARM_VIRTTIMER,
-> +            [GTIMER_HYP]  = AW_H3_GIC_PPI_ARM_HYPTIMER,
-> +            [GTIMER_SEC]  = AW_H3_GIC_PPI_ARM_SECTIMER,
-> +        };
-> +
-> +        /* Connect CPU timer outputs to GIC PPI inputs */
-> +        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
-> +            qdev_connect_gpio_out(cpudev, irq,
-> +                                  qdev_get_gpio_in(DEVICE(&s->gic),
-> +                                                   ppibase + timer_irq[irq]));
-> +        }
-> +
-> +        /* Connect GIC outputs to CPU interrupt inputs */
-> +        sysbus_connect_irq(sysbusdev, i,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-> +        sysbus_connect_irq(sysbusdev, i + AW_H3_NUM_CPUS,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-> +        sysbus_connect_irq(sysbusdev, i + (2 * AW_H3_NUM_CPUS),
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-> +        sysbus_connect_irq(sysbusdev, i + (3 * AW_H3_NUM_CPUS),
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-> +
-> +        /* GIC maintenance signal */
-> +        sysbus_connect_irq(sysbusdev, i + (4 * AW_H3_NUM_CPUS),
-> +                           qdev_get_gpio_in(DEVICE(&s->gic),
-> +                                            ppibase + AW_H3_GIC_PPI_MAINT));
-> +    }
-> +
-> +    for (i = 0; i < AW_H3_GIC_NUM_SPI; i++) {
-> +        s->irq[i] = qdev_get_gpio_in(DEVICE(&s->gic), i);
-
-Apparently we don't need the irq array in AwH3State, because ...
-
-> +    }
-> +
-> +    /* Timer */
-> +    object_property_set_bool(OBJECT(&s->timer), true, "realized", &err);
-> +    if (err != NULL) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    sysbusdev = SYS_BUS_DEVICE(&s->timer);
-> +    sysbus_mmio_map(sysbusdev, 0, AW_H3_PIT_REG_BASE);
-> +    sysbus_connect_irq(sysbusdev, 0, s->irq[AW_H3_GIC_SPI_TIMER0]);
-> +    sysbus_connect_irq(sysbusdev, 1, s->irq[AW_H3_GIC_SPI_TIMER1]);
-
-... we can call qdev_get_gpio_in() here directly.
-
-> +
-> +    /* SRAM */
-> +    memory_region_init_ram(&s->sram_a1, OBJECT(dev), "sram A1",
-> +                            AW_H3_SRAM_A1_SIZE, &error_fatal);
-> +    memory_region_init_ram(&s->sram_a2, OBJECT(dev), "sram A2",
-> +                            AW_H3_SRAM_A2_SIZE, &error_fatal);
-> +    memory_region_init_ram(&s->sram_c, OBJECT(dev), "sram C",
-> +                            AW_H3_SRAM_C_SIZE, &error_fatal);
-> +    memory_region_add_subregion(get_system_memory(), AW_H3_SRAM_A1_BASE,
-> +                                &s->sram_a1);
-> +    memory_region_add_subregion(get_system_memory(), AW_H3_SRAM_A2_BASE,
-> +                                &s->sram_a2);
-> +    memory_region_add_subregion(get_system_memory(), AW_H3_SRAM_C_BASE,
-> +                                &s->sram_c);
-> +
-> +    /* UART */
-> +    if (serial_hd(0)) {
-> +        serial_mm_init(get_system_memory(), AW_H3_UART0_REG_BASE, 2,
-> +                       s->irq[AW_H3_GIC_SPI_UART0], 115200, serial_hd(0),
-
-qdev_get_gpio_in() here too.
-
-> +                       DEVICE_NATIVE_ENDIAN);
-> +    }
-> +
-> +    /* Unimplemented devices */
-> +    create_unimplemented_device("display-engine", AW_H3_DE_BASE, AW_H3_DE_SIZE);
-> +    create_unimplemented_device("dma", AW_H3_DMA_BASE, AW_H3_DMA_SIZE);
-> +    create_unimplemented_device("lcd0", AW_H3_LCD0_BASE, AW_H3_LCD0_SIZE);
-> +    create_unimplemented_device("lcd1", AW_H3_LCD1_BASE, AW_H3_LCD1_SIZE);
-> +    create_unimplemented_device("gpu", AW_H3_GPU_BASE, AW_H3_GPU_SIZE);
-> +    create_unimplemented_device("hdmi", AW_H3_HDMI_BASE, AW_H3_HDMI_SIZE);
-> +    create_unimplemented_device("rtc", AW_H3_RTC_BASE, AW_H3_RTC_SIZE);
-> +    create_unimplemented_device("audio-codec", AW_H3_AC_BASE, AW_H3_AC_SIZE);
-> +}
-> +
-> +static void aw_h3_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +
-> +    dc->realize = aw_h3_realize;
-> +    /* Reason: uses serial_hds and nd_table */
-> +    dc->user_creatable = false;
-> +}
-> +
-> +static const TypeInfo aw_h3_type_info = {
-> +    .name = TYPE_AW_H3,
-> +    .parent = TYPE_DEVICE,
-> +    .instance_size = sizeof(AwH3State),
-> +    .instance_init = aw_h3_init,
-> +    .class_init = aw_h3_class_init,
-> +};
-> +
-> +static void aw_h3_register_types(void)
-> +{
-> +    type_register_static(&aw_h3_type_info);
-> +}
-> +
-> +type_init(aw_h3_register_types)
-> diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-> new file mode 100644
-> index 0000000000..af368c2254
-> --- /dev/null
-> +++ b/include/hw/arm/allwinner-h3.h
-> @@ -0,0 +1,118 @@
-> +/*
-> + * Allwinner H3 System on Chip emulation
-> + *
-> + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> + *
-> + * This program is free software: you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation, either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#ifndef HW_ARM_ALLWINNER_H3_H
-> +#define HW_ARM_ALLWINNER_H3_H
-> +
-> +#include "qemu/error-report.h"
-> +#include "qemu/units.h"
-> +#include "hw/char/serial.h"
-> +#include "hw/arm/boot.h"
-> +#include "hw/timer/allwinner-a10-pit.h"
-> +#include "hw/intc/arm_gic.h"
-> +#include "target/arm/cpu.h"
-> +
-> +#define AW_H3_SRAM_A1_BASE     (0x00000000)
-> +#define AW_H3_SRAM_A2_BASE     (0x00044000)
-> +#define AW_H3_SRAM_C_BASE      (0x00010000)
-> +#define AW_H3_DE_BASE          (0x01000000)
-> +#define AW_H3_SYSCON_BASE      (0x01c00000)
-> +#define AW_H3_DMA_BASE         (0x01c02000)
-> +#define AW_H3_LCD0_BASE        (0x01c0c000)
-> +#define AW_H3_LCD1_BASE        (0x01c0d000)
-> +#define AW_H3_SID_BASE         (0x01c14000)
-> +#define AW_H3_CCU_BASE         (0x01c20000)
-> +#define AW_H3_PIC_REG_BASE     (0x01c20400)
-> +#define AW_H3_PIT_REG_BASE     (0x01c20c00)
-> +#define AW_H3_AC_BASE          (0x01c22c00)
-> +#define AW_H3_UART0_REG_BASE   (0x01c28000)
-> +#define AW_H3_EMAC_BASE        (0x01c30000)
-> +#define AW_H3_MMC0_BASE        (0x01c0f000)
-> +#define AW_H3_EHCI0_BASE       (0x01c1a000)
-> +#define AW_H3_OHCI0_BASE       (0x01c1a400)
-> +#define AW_H3_EHCI1_BASE       (0x01c1b000)
-> +#define AW_H3_OHCI1_BASE       (0x01c1b400)
-> +#define AW_H3_EHCI2_BASE       (0x01c1c000)
-> +#define AW_H3_OHCI2_BASE       (0x01c1c400)
-> +#define AW_H3_EHCI3_BASE       (0x01c1d000)
-> +#define AW_H3_OHCI3_BASE       (0x01c1d400)
-> +#define AW_H3_GPU_BASE         (0x01c40000)
-> +#define AW_H3_GIC_DIST_BASE    (0x01c81000)
-> +#define AW_H3_GIC_CPU_BASE     (0x01c82000)
-> +#define AW_H3_GIC_HYP_BASE     (0x01c84000)
-> +#define AW_H3_GIC_VCPU_BASE    (0x01c86000)
-> +#define AW_H3_HDMI_BASE        (0x01ee0000)
-> +#define AW_H3_RTC_BASE         (0x01f00000)
-> +#define AW_H3_CPUCFG_BASE      (0x01f01c00)
-> +#define AW_H3_SDRAM_BASE       (0x40000000)
-> +
-> +#define AW_H3_SRAM_A1_SIZE     (64 * KiB)
-> +#define AW_H3_SRAM_A2_SIZE     (32 * KiB)
-> +#define AW_H3_SRAM_C_SIZE      (44 * KiB)
-> +#define AW_H3_DE_SIZE          (4 * MiB)
-> +#define AW_H3_DMA_SIZE         (4 * KiB)
-> +#define AW_H3_LCD0_SIZE        (4 * KiB)
-> +#define AW_H3_LCD1_SIZE        (4 * KiB)
-> +#define AW_H3_GPU_SIZE         (64 * KiB)
-> +#define AW_H3_HDMI_SIZE        (128 * KiB)
-> +#define AW_H3_RTC_SIZE         (1 * KiB)
-> +#define AW_H3_AC_SIZE          (2 * KiB)
-> +
-> +#define AW_H3_GIC_PPI_MAINT          (9)
-> +#define AW_H3_GIC_PPI_ARM_HYPTIMER  (10)
-> +#define AW_H3_GIC_PPI_ARM_VIRTTIMER (11)
-> +#define AW_H3_GIC_PPI_ARM_SECTIMER  (13)
-> +#define AW_H3_GIC_PPI_ARM_PHYSTIMER (14)
-> +
-> +#define AW_H3_GIC_SPI_UART0         (0)
-> +#define AW_H3_GIC_SPI_TIMER0        (18)
-> +#define AW_H3_GIC_SPI_TIMER1        (19)
-> +#define AW_H3_GIC_SPI_MMC0          (60)
-> +#define AW_H3_GIC_SPI_MMC1          (61)
-> +#define AW_H3_GIC_SPI_MMC2          (62)
-> +#define AW_H3_GIC_SPI_EHCI0         (72)
-> +#define AW_H3_GIC_SPI_OHCI0         (73)
-> +#define AW_H3_GIC_SPI_EHCI1         (74)
-> +#define AW_H3_GIC_SPI_OHCI1         (75)
-> +#define AW_H3_GIC_SPI_EHCI2         (76)
-> +#define AW_H3_GIC_SPI_OHCI2         (77)
-> +#define AW_H3_GIC_SPI_EHCI3         (78)
-> +#define AW_H3_GIC_SPI_OHCI3         (79)
-> +#define AW_H3_GIC_SPI_EMAC          (82)
-
-I'd move half of the previous definitions into allwinner-h3.c, since 
-they are only used there.
-
-Also, I'd use an enum for the PPI/SPI.
-
-> +
-> +#define AW_H3_GIC_NUM_SPI           (128)
-> +#define AW_H3_NUM_CPUS              (4)
-> +
-> +#define TYPE_AW_H3 "allwinner-h3"
-> +#define AW_H3(obj) OBJECT_CHECK(AwH3State, (obj), TYPE_AW_H3)
-> +
-> +typedef struct AwH3State {
-> +    /*< private >*/
-> +    DeviceState parent_obj;
-> +    /*< public >*/
-> +
-> +    qemu_irq irq[AW_H3_GIC_NUM_SPI];
-> +    AwA10PITState timer;
-> +    GICState gic;
-> +    MemoryRegion sram_a1;
-> +    MemoryRegion sram_a2;
-> +    MemoryRegion sram_c;
-> +} AwH3State;
-> +
-> +#endif
-> 
-
-Nice clean patch, for a first contribution :)
-
+--0000000000003852570598e61f67--

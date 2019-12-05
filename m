@@ -1,106 +1,107 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2056705lff;
-        Thu, 5 Dec 2019 05:54:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx0YVa5INUy3fn/TP1C46NM2BdErq+yDO+aV6z4f8WZB/x63s9/X344w5qs1KPfr2xHxx4N
-X-Received: by 2002:a05:6808:12:: with SMTP id u18mr1417744oic.51.1575554064487;
-        Thu, 05 Dec 2019 05:54:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575554064; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2077933lff;
+        Thu, 5 Dec 2019 06:10:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqww8koO37iCbiW3ElbghAbx1qK4oMwIrP/sa2v5kcUw0V73QnHE/v0cqEMwcJEREBtYJnfV
+X-Received: by 2002:a05:620a:6ce:: with SMTP id 14mr8159437qky.417.1575555006835;
+        Thu, 05 Dec 2019 06:10:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575555006; cv=none;
         d=google.com; s=arc-20160816;
-        b=juUSJJbqnlZMhe8npUcx0XVtvAA4BOVWHUrVB0wH2BHrXcUKLRsc+FMMUYG1W1FJxd
-         wofGBdyQoQnVz1Q92tIA5yi3TpFjBBzMtSbcxyTUSBfaaDMMy5XcsRSxgK5cOsMv15N1
-         MhahXJesI8PRDxTPFF1WMiwvburc+KtUCwGy2P8HdLveqj2+D4aQstLC1gqO05E4WG9+
-         r/SABTBX9Cgpu0fkagtDePn3UEitzezO/m2mtH65bJCiKYfjzqfWKfRDLlK+gDNWTN8g
-         73i/h/B8Qr45LL9apSLWOwVwVywfeShUsp1/6ecnQJvjNE+zMR684RYNYIry3juO+rZ/
-         l0ig==
+        b=BI4keaqRiLjl6yGCaYubBj3dGCMSob54mimlbIcmUjQhQ5qxtxB9LUlJJ6sVrXBciq
+         tJkVoiEjyQKqQRU/EC69suYiX9o7DjV29su0VdC0J0H4sI7ijulqvUYS711q9l8QB4X8
+         ZNxAw54KZRdBEWZ/yRUV+Wa6PABEOnhxUme6FMKNNc9pf/rDPaDeXvAe9B17c5l+f7Vd
+         rduHxglgHPOXyh8sAtacX2Je7VDxJARZeZ/A9QkIERD36bdqdSZwNxxCPTutcT41AWoz
+         26Rsn//XRxFp69drkKeXVUG5JLABMAIzr3cn65Dv2qJeLvJYZ7yYhqKoPpWl0jQz4P0b
+         CONw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=hnhb/x6YaZwfbYwlyRlda7171y0HPcU5qK2g5bnRUHs=;
-        b=EJvQDzGhaCmNSz8kb1fDJHF5aapUymy++muhpmSTXxmEzu3JEFua/1F0aUWPvfUVoB
-         1pmygSNigzX1s561NpueOH+x+X40JSV9BbgqLH8evXgfhcXP4JEdzlPnvDWmLb88Y7BS
-         f2QbjnJ9zjSp4eVncpNqBK5yc5addUTwzxBov6pqqtskUmKCsPk6fgdD4bGflyOyNB/Z
-         tc1soBJ5pJ3TPlQLTy/t3vW6zYmyuylswOiduX485ezQ5Bvn+5ux+CC//9fRaQhk89Gw
-         huArEnpSf8pKqAKneBy9Imm+U1rOI+Cq7eWD6N+o0ywzkBBt4u/Zaik4+VydjfiZGgvr
-         LuCw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=NLRko2/oQTzK9BJwSE/ikxWjurLXgr2kyfOXgtePXp0=;
+        b=KgGZ30PENeTQlP24rDWb8G946u4XQwoiB7pJMEWq/k+Q2hOE7PRiUcLndUHyCYvNw4
+         YPe6019GPc+xrnQGmikP99WAsLBvW2PooxGK+Yi6k+r/wJLSKQeEWzQs6GGN4AnD+CNE
+         Z7byBiw6hQZOg1Q6rrW4BOhMJ6LDyGPkD7ql3hP+gxKmBFJbxwNpX8rFU5o5zs/ICqBp
+         1wnexnMFZ2+3QeSTpQl1z8k45WDhhOzZI24c9zNaUauLRMijMeRQ0O9htqAUduWI7or3
+         cMvOWbsf2C5GqqhjqHfu9EKB0cOCDA87R//yC6BytYEHFYYlKhN6C7JxGIqpOAUQS5vN
+         +tRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HV66kXuS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Yy4eDk86;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y198si5067252oia.163.2019.12.05.05.54.24
+        by mx.google.com with ESMTPS id k21si6083225qtj.316.2019.12.05.06.10.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Dec 2019 05:54:24 -0800 (PST)
+        Thu, 05 Dec 2019 06:10:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HV66kXuS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Yy4eDk86;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54450 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54914 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icraJ-00052p-Jp
-	for alex.bennee@linaro.org; Thu, 05 Dec 2019 08:54:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48774)
+	id 1icrpV-0003La-RL
+	for alex.bennee@linaro.org; Thu, 05 Dec 2019 09:10:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55553)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1icrLh-0007hn-PX
- for qemu-devel@nongnu.org; Thu, 05 Dec 2019 08:39:20 -0500
+ (envelope-from <jasowang@redhat.com>) id 1icrlw-0008Kv-L5
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2019 09:06:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1icrLe-0004S5-Qc
- for qemu-devel@nongnu.org; Thu, 05 Dec 2019 08:39:16 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:29659
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <jasowang@redhat.com>) id 1icrlv-0000WC-7R
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2019 09:06:24 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40606
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1icrLd-0004Pq-3h
- for qemu-devel@nongnu.org; Thu, 05 Dec 2019 08:39:13 -0500
+ (Exim 4.71) (envelope-from <jasowang@redhat.com>) id 1icrlu-0000TW-UP
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2019 09:06:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575553150;
+ s=mimecast20190719; t=1575554782;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hnhb/x6YaZwfbYwlyRlda7171y0HPcU5qK2g5bnRUHs=;
- b=HV66kXuStetuAOJKDAWC5J25aq+52xIA7o9LJKwmjZYRVw6H80MmvmIgnBqPueQZ/u6qFZ
- z/0cXKIZFJBuTmnvKCAqULunXONc6vmcpbVxpy5mGnh/8G0NsAeL2klQXKcSe8cC3rJyA8
- mY/KRgMIkamjdIu4Qgj/o3A/P22H8H0=
+ bh=NLRko2/oQTzK9BJwSE/ikxWjurLXgr2kyfOXgtePXp0=;
+ b=Yy4eDk86vfviu2XvuEQpRqAU5CN8lyc2NQJj5BnBPAM0B1TGsmCji30JO1A6tIA6haHRX2
+ H2xY+61U0lPQtvC8KaRkclmuLy7ueCiNgJxRuE+t/XEdu5GHQIIxRrA+SOqv2qqVSgcfHS
+ gCnUZ/L6AzE2z4BY5r64UuFMv9EDB+c=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-103-In8rOFh3PGWTvk4no7Xklw-1; Thu, 05 Dec 2019 07:37:20 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-315-Rvc7Il-UOk2M4BUmu0_qfQ-1; Thu, 05 Dec 2019 09:06:19 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 247F5100;
- Thu,  5 Dec 2019 12:37:14 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-134.ams2.redhat.com
- [10.36.116.134])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 59B435C1B5;
- Thu,  5 Dec 2019 12:36:42 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BB0531138606; Thu,  5 Dec 2019 13:36:40 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-Subject: Re: [RFC v5 024/126] error: auto propagated local_err
-References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
- <20191011160552.22907-25-vsementsov@virtuozzo.com>
- <87muc8p24w.fsf@dusky.pond.sub.org>
- <55393c08-5bda-8042-1a95-f350b3781d99@virtuozzo.com>
-Date: Thu, 05 Dec 2019 13:36:40 +0100
-In-Reply-To: <55393c08-5bda-8042-1a95-f350b3781d99@virtuozzo.com> (Vladimir
- Sementsov-Ogievskiy's message of "Thu, 5 Dec 2019 09:38:49 +0000")
-Message-ID: <87d0d3c5k7.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5EBC6186E658;
+ Thu,  5 Dec 2019 14:06:17 +0000 (UTC)
+Received: from [10.72.12.127] (ovpn-12-127.pek2.redhat.com [10.72.12.127])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 737C55D6A5;
+ Thu,  5 Dec 2019 14:06:11 +0000 (UTC)
+Subject: Re: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support loopback
+ mode.
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20191129150508.24404-1-bilalwasim676@gmail.com>
+ <afe9efde-7ac1-8607-446a-8fbf10accece@redhat.com>
+ <8c956ae31e8f44a2b831a5030b2448b4@SVR-IES-MBX-03.mgc.mentorg.com>
+ <CAP+75-X_POJfTO=gOUu1zCPtcfnQ5yemQo0hqB_s3jy_C17o9g@mail.gmail.com>
+ <db2c5074-307c-d20e-73f2-9c2b44612d6f@redhat.com>
+ <CAFEAcA89Zw+MUJzhwSx39qVv8cRVNgRf7fe1K1oLYVjZfur9Wg@mail.gmail.com>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <4d9b3cb3-db73-5a58-c32c-594984508a68@redhat.com>
+Date: Thu, 5 Dec 2019 22:06:09 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: In8rOFh3PGWTvk4no7Xklw-1
+In-Reply-To: <CAFEAcA89Zw+MUJzhwSx39qVv8cRVNgRf7fe1K1oLYVjZfur9Wg@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: Rvc7Il-UOk2M4BUmu0_qfQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,187 +113,63 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
- Jan Kiszka <jan.kiszka@siemens.com>, Alberto Garcia <berto@igalia.com>,
- Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
- =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Anthony Green <green@moxielogic.com>, Laurent Vivier <lvivier@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Palmer Dabbelt <palmer@sifive.com>, Eric Farman <farman@linux.ibm.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Hannes Reinecke <hare@suse.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "Gonglei \(Arei\)" <arei.gonglei@huawei.com>, Liu Yuan <namei.unix@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
- Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Stafford Horne <shorne@gmail.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Cornelia Huck <cohuck@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
- Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
- Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
- Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- "integration@gluster.org" <integration@gluster.org>,
- Laszlo Ersek <lersek@redhat.com>, "Richard W.M. Jones" <rjones@redhat.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
- Denis Lunev <den@virtuozzo.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+Cc: "bilalwasim676@gmail.com" <bilalwasim676@gmail.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
- Markus Armbruster <armbru@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
- David Gibson <david@gibson.dropbear.id.au>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+ "aa1ronham@gmail.com" <aa1ronham@gmail.com>,
+ "jcd@tribudubois.net" <jcd@tribudubois.net>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Wasim,
+ Bilal" <Bilal_Wasim@mentor.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ "linux@roeck-us.net" <linux@roeck-us.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2DGfO2+1+Ft0
+X-TUID: iH8nU5xClAAl
 
-Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> writes:
 
-> 04.12.2019 17:59, Markus Armbruster wrote:
->> Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> writes:
->>=20
->>> Here is introduced ERRP_AUTO_PROPAGATE macro, to be used at start of
->>> functions with errp OUT parameter.
+On 2019/12/4 =E4=B8=8B=E5=8D=8811:11, Peter Maydell wrote:
+> On Wed, 4 Dec 2019 at 02:15, Jason Wang<jasowang@redhat.com>  wrote:
+>> On 2019/11/30 =E4=B8=8A=E5=8D=8812:04, Philippe Mathieu-Daud=C3=A9 wrote=
+:
+>>> On Fri, Nov 29, 2019 at 4:59 PM Wasim, Bilal<Bilal_Wasim@mentor.com>  w=
+rote:
+>>>> Thanks for the pointers philippe.. Is the patch okay to be merged with=
+out it or do I need to do a re-submission with the updated username ?
+>>> If there are no review comments on your patch, I think the maintainer
+>>> taking your patch can fix this details directly, no need to resend.
 >>>
->>> It has three goals:
->>>
->>> 1. Fix issue with error_fatal & error_prepend/error_append_hint: user
->>> can't see this additional information, because exit() happens in
->>> error_setg earlier than information is added. [Reported by Greg Kurz]
->>>
->>> 2. Fix issue with error_abort & error_propagate: when we wrap
->>> error_abort by local_err+error_propagate, resulting coredump will
->>> refer to error_propagate and not to the place where error happened.
->>=20
->> I get what you mean, but I have plenty of context.
->>=20
->>> (the macro itself doesn't fix the issue, but it allows to [3.] drop all
->>> local_err+error_propagate pattern, which will definitely fix the issue)
->>=20
->> The parenthesis is not part of the goal.
->>=20
->>> [Reported by Kevin Wolf]
->>>
->>> 3. Drop local_err+error_propagate pattern, which is used to workaround
->>> void functions with errp parameter, when caller wants to know resulting
->>> status. (Note: actually these functions could be merely updated to
->>> return int error code).
->>>
->>> To achieve these goals, we need to add invocation of the macro at start
->>> of functions, which needs error_prepend/error_append_hint (1.); add
->>> invocation of the macro at start of functions which do
->>> local_err+error_propagate scenario the check errors, drop local errors
->>> from them and just use *errp instead (2., 3.).
->>=20
->> The paragraph talks about two cases: 1. and 2.+3.=20
+>>>> -----Original Message-----
+>>>> From: Philippe Mathieu-Daud=C3=A9 [mailto:philmd@redhat.com]
+>>>> Sent: Friday, November 29, 2019 8:38 PM
+>>>> To:bilalwasim676@gmail.com;qemu-devel@nongnu.org
+>>>> Cc:peter.maydell@linaro.org;aa1ronham@gmail.com;jcd@tribudubois.net;qe=
+mu-arm@nongnu.org; Wasim, Bilal<Bilal_Wasim@mentor.com>;linux@roeck-us.net;=
+ Jason Wang<jasowang@redhat.com>
+>>>> Subject: Re: [PATCH] net/imx_fec: Updating the IMX_FEC IP to support l=
+oopback mode.
+>>>>
+>>>> Hi Bilal,
+>>>>
+>>>> Cc'ing Jason, the maintainer of network devices.
+>>>>
+>>>> On 11/29/19 4:05 PM,bilalwasim676@gmail.com  wrote:
+>>>>> From: bwasim<bilal_wasim@mentor.com>
+>>>> Your git setup misses your 'user.name', you could fix it running:
+>>>>
+>>>>      git config user.name "Bilal Wasim"
+>>>>
+>>>> (eventually with the --global option).
+>>>>
+>>>> The patch looks good otherwise.
+>>>>
+>>>> Thanks!
+>> Applied with the fix for user.name.
+> Could you fix up the non-standard block comment formatting too?
 >
-> Hmm, I don't think so.. 1. and 2. are issues. 3. is a refactoring.. We ju=
-st
-> fix achieve 2 and 3 by one action.
+> thanks
+> -- PMM
 >
->> Makes me think we
->> want two paragraphs, each illustrated with an example.
->>=20
->> What about you provide the examples, and then I try to polish the prose?
->
-> 1: error_fatal problem
->
-> Assume the following code flow:
->
-> int f1(errp) {
->     ...
->     ret =3D f2(errp);
->     if (ret < 0) {
->        error_append_hint(errp, "very useful hint");
->        return ret;
->     }
->     ...
-> }
->
-> Now, if we call f1 with &error_fatal argument and f2 fails, the program
-> will exit immediately inside f2, when setting the errp. User will not
-> see the hint.
->
-> So, in this case we should use local_err.
 
-How does this example look after the transformation?
+Yes, fixed.
 
-> 2: error_abort problem
->
-> Now, consider functions without return value. We normally use local_err
-> variable to catch failures:
->
-> void f1(errp) {
->     Error *local_err =3D NULL;
->     ...
->     f2(&local_err);
->     if (local_err) {
->         error_propagate(errp, local_err);
->         return;
->     }
->     ...
-> }
->
-> Now, if we call f2 with &error_abort and f2 fails, the stack in resulting
-> crash dump will point to error_propagate, not to the failure point in f2,
-> which complicates debugging.
->
-> So, we should never wrap error_abort by local_err.
-
-Likewise.
-
->
-> =3D=3D=3D
->
-> Our solution:
->
-> - Fixes [1.], adding invocation of new macro into functions with error_ap=
-pen_hint/error_prepend,
->    New macro will wrap error_fatal.
-> - Fixes [2.], by switching from hand-written local_err to smart macro, wh=
-ich never
->    wraps error_abort.
-> - Handles [3.], by switching to macro, which is less code
-> - Additionally, macro doesn't wrap normal non-zero errp, to avoid extra p=
-ropagations
->    (in fact, error_propagate is called, but returns immediately on first =
-if (!local_err))
+Thanks
 

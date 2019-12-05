@@ -1,348 +1,298 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1865573lff;
-        Thu, 5 Dec 2019 03:02:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx3G4k/PlfmlOyWlYnUkX6Rl9L4X69szNnaS5Gx7TO5gtcH3eWe2JsH1HzvLsMSdw80DP0R
-X-Received: by 2002:a25:570b:: with SMTP id l11mr5858367ybb.477.1575543722532;
-        Thu, 05 Dec 2019 03:02:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575543722; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2056705lff;
+        Thu, 5 Dec 2019 05:54:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx0YVa5INUy3fn/TP1C46NM2BdErq+yDO+aV6z4f8WZB/x63s9/X344w5qs1KPfr2xHxx4N
+X-Received: by 2002:a05:6808:12:: with SMTP id u18mr1417744oic.51.1575554064487;
+        Thu, 05 Dec 2019 05:54:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575554064; cv=none;
         d=google.com; s=arc-20160816;
-        b=ML3rvD+6q0Kf0ro2ZLVRLPEW3lkQCz5UMDI6eqGFY6ATz2SXgmWhvuZUP5wEPbPjUE
-         tfKcL0EwciyUeqLOOmt1k+F3KX5ctRT8RIHF2m4tJ4W3YYFUTx52vghroYn2ZcXfa8cI
-         diMuhqkOXWra8vHTbK3oa3Yl/YkSxyBFDejYjvtyUlBoz5J0JYEpqeY9QJRGS+y5A8fS
-         gedW8qZW1f4jvFO/0ZauUkLqIG713t4CHCtIbURvKZxTXn+xkTrG0e5DjrT3zj/aXwCw
-         ZzpeVDDlSqnRBIs+Aa2BYDkJGMgucbK19XTkDWv7/n8zKHlMTivjT7PRAgtS3MYsdBHh
-         NcEA==
+        b=juUSJJbqnlZMhe8npUcx0XVtvAA4BOVWHUrVB0wH2BHrXcUKLRsc+FMMUYG1W1FJxd
+         wofGBdyQoQnVz1Q92tIA5yi3TpFjBBzMtSbcxyTUSBfaaDMMy5XcsRSxgK5cOsMv15N1
+         MhahXJesI8PRDxTPFF1WMiwvburc+KtUCwGy2P8HdLveqj2+D4aQstLC1gqO05E4WG9+
+         r/SABTBX9Cgpu0fkagtDePn3UEitzezO/m2mtH65bJCiKYfjzqfWKfRDLlK+gDNWTN8g
+         73i/h/B8Qr45LL9apSLWOwVwVywfeShUsp1/6ecnQJvjNE+zMR684RYNYIry3juO+rZ/
+         l0ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=nXUqmRSry+2VkpQAsGw0698CR5HOjXyePDV6ReLRvGg=;
-        b=ccsHWlBgiEqRLLPyREz9cr4dB7sgMdxs9tPHTvI/5BXSTmK9dWSS9/vwxtHxCXaTsX
-         0q59CgjmajFGK8T/upnRsh4BBn4zuN/SEBmPKxZN6IpNCJRXExhwMCENYoR2/F7qdYAu
-         wRA8Yyn8xd7Mof6Oo4yREUEkgz5PRnVtrmLFrDF6Obh4nhFuaLjgcBd/HG30oLZagxmG
-         jVH9H93lm69XjRHm5UZuatonS6nsHSf8NWvCvuWv/HgIko07yLCquYYi/Jpt9u6MRF4x
-         i1jcLsJYRUKcfr0o/eflMssxceX4LFpLLZcbLz+vKdaa8itEzdD/fHsAl8RmVDQXCk3p
-         EL/g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=hnhb/x6YaZwfbYwlyRlda7171y0HPcU5qK2g5bnRUHs=;
+        b=EJvQDzGhaCmNSz8kb1fDJHF5aapUymy++muhpmSTXxmEzu3JEFua/1F0aUWPvfUVoB
+         1pmygSNigzX1s561NpueOH+x+X40JSV9BbgqLH8evXgfhcXP4JEdzlPnvDWmLb88Y7BS
+         f2QbjnJ9zjSp4eVncpNqBK5yc5addUTwzxBov6pqqtskUmKCsPk6fgdD4bGflyOyNB/Z
+         tc1soBJ5pJ3TPlQLTy/t3vW6zYmyuylswOiduX485ezQ5Bvn+5ux+CC//9fRaQhk89Gw
+         huArEnpSf8pKqAKneBy9Imm+U1rOI+Cq7eWD6N+o0ywzkBBt4u/Zaik4+VydjfiZGgvr
+         LuCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XTv4+9cK;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
-        by mx.google.com with ESMTPS id d3si4188170ywc.124.2019.12.05.03.02.02
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HV66kXuS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y198si5067252oia.163.2019.12.05.05.54.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Dec 2019 03:02:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 05 Dec 2019 05:54:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XTv4+9cK;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HV66kXuS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54450 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1icraJ-00052p-Jp
+	for alex.bennee@linaro.org; Thu, 05 Dec 2019 08:54:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48774)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <armbru@redhat.com>) id 1icrLh-0007hn-PX
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2019 08:39:20 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <armbru@redhat.com>) id 1icrLe-0004S5-Qc
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2019 08:39:16 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:29659
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1icrLd-0004Pq-3h
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2019 08:39:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1575543721;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nXUqmRSry+2VkpQAsGw0698CR5HOjXyePDV6ReLRvGg=;
-	b=XTv4+9cKR/LhPJm6pU5NSxvcRXJfkUc7d7u+UuMNPCpVH4gvZyQKodHSq5dKnMY1IrR88h
-	NZUgERSoWut9bWB2HQlFMgA3WQIP8t8iMmmBNiDOvigGdfXHe8s07vza8t56uQJDCpZaB9
-	YvV0smT91BzggUmIPnovey2pujOxIG8=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-44-TtGS9r5xNVCrzdsMXGD_OQ-1; Thu, 05 Dec 2019 06:02:00 -0500
-Received: by mail-wm1-f72.google.com with SMTP id i17so853933wmd.1
-        for <alex.bennee@linaro.org>; Thu, 05 Dec 2019 03:02:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=DN+oinf0xZ0J1+dC2H6zxxOHcMlos5bPEPinjCdAlNw=;
-        b=fAx6CYoqBfoTY2azystGUvggK5syVYZvHTv/XF27/8G7+X/VRjN6FLYCAiwjhD348C
-         7279w8EqnhpMYd+tKOdsXjpP6grYX/5th7YqbU51LlCVO/dv1tCUv41c+134TWmC/YI6
-         wE7JfA8N/mKfehFZQL15WiIDUah7TRnkXe4qvQKoD/fbiWbi4agUzSrVYS9UCT/KWF0H
-         zCgu3Fqngpe4gbzDQutOhjO+sF6aGr197r7o3QirHHqhg+5C7SxMmEr/wROerm0R4Jix
-         SRWAJwvPWl24ifUAQDggAqfIk0xqM3M2J45CztTST4gLZ1GKf8fB9g4lHidIVBaAoJIC
-         rzbw==
-X-Gm-Message-State: APjAAAVN6C3mgtv0bTk9BPC7Uaf32exfCfk4T5ZW4XPLXwEZEaklCNH9
-	Od+j88WHkMFSFWmcfAItwXYYX/09JGRGMm2/oAu+UcudiGuMwNXV/Qvs6aF8NKU62GcHe5TXXGm
-	cbXGRFk0lRAwy2VcE
-X-Received: by 2002:adf:fe90:: with SMTP id l16mr10000812wrr.265.1575543719486;
-        Thu, 05 Dec 2019 03:01:59 -0800 (PST)
-X-Received: by 2002:adf:fe90:: with SMTP id l16mr10000755wrr.265.1575543719122;
-        Thu, 05 Dec 2019 03:01:59 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net. [88.21.103.182])
-        by smtp.gmail.com with ESMTPSA id w8sm10742098wmm.0.2019.12.05.03.01.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Dec 2019 03:01:58 -0800 (PST)
-Subject: Re: [PATCH v6 0/9] Clock framework API
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Cleber Rosa <crosa@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Damien Hedde <damien.hedde@greensocs.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Mark Burton <mark.burton@greensocs.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, "Daniel P. Berrange"
- <berrange@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>
-References: <20190904125531.27545-1-damien.hedde@greensocs.com>
- <CAFEAcA98rt6nRDSrwk8XRbaBT67LZXvF=XEV13dtJBp4fPUscw@mail.gmail.com>
- <be199ad6-1b79-f77d-afad-faeb042151ed@greensocs.com>
- <febdb64d-9d02-66ad-84d2-dc795879e48b@redhat.com>
- <a0cea550-d6c7-0193-b4e6-24ed879be61d@greensocs.com>
- <279a0fd5-1ea5-b3c7-27bb-b1d22db5e359@redhat.com>
- <20191205102151.GB2824@work-vm>
- <f3aa4881-dd41-ce71-0f5a-8d36bf5c3828@redhat.com>
- <20191205105613.GE2824@work-vm>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <138ef325-dc9a-2ca5-9044-c67ffdabb968@redhat.com>
-Date: Thu, 5 Dec 2019 12:01:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ s=mimecast20190719; t=1575553150;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hnhb/x6YaZwfbYwlyRlda7171y0HPcU5qK2g5bnRUHs=;
+ b=HV66kXuStetuAOJKDAWC5J25aq+52xIA7o9LJKwmjZYRVw6H80MmvmIgnBqPueQZ/u6qFZ
+ z/0cXKIZFJBuTmnvKCAqULunXONc6vmcpbVxpy5mGnh/8G0NsAeL2klQXKcSe8cC3rJyA8
+ mY/KRgMIkamjdIu4Qgj/o3A/P22H8H0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-103-In8rOFh3PGWTvk4no7Xklw-1; Thu, 05 Dec 2019 07:37:20 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 247F5100;
+ Thu,  5 Dec 2019 12:37:14 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-134.ams2.redhat.com
+ [10.36.116.134])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 59B435C1B5;
+ Thu,  5 Dec 2019 12:36:42 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id BB0531138606; Thu,  5 Dec 2019 13:36:40 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Subject: Re: [RFC v5 024/126] error: auto propagated local_err
+References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
+ <20191011160552.22907-25-vsementsov@virtuozzo.com>
+ <87muc8p24w.fsf@dusky.pond.sub.org>
+ <55393c08-5bda-8042-1a95-f350b3781d99@virtuozzo.com>
+Date: Thu, 05 Dec 2019 13:36:40 +0100
+In-Reply-To: <55393c08-5bda-8042-1a95-f350b3781d99@virtuozzo.com> (Vladimir
+ Sementsov-Ogievskiy's message of "Thu, 5 Dec 2019 09:38:49 +0000")
+Message-ID: <87d0d3c5k7.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20191205105613.GE2824@work-vm>
-Content-Language: en-US
-X-MC-Unique: TtGS9r5xNVCrzdsMXGD_OQ-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: In8rOFh3PGWTvk4no7Xklw-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
-X-TUID: jwzRrxR1S+Rb
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
+ Jan Kiszka <jan.kiszka@siemens.com>, Alberto Garcia <berto@igalia.com>,
+ Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
+ =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Anthony Green <green@moxielogic.com>, Laurent Vivier <lvivier@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Eric Farman <farman@linux.ibm.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Hannes Reinecke <hare@suse.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ "Gonglei \(Arei\)" <arei.gonglei@huawei.com>, Liu Yuan <namei.unix@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
+ Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Stafford Horne <shorne@gmail.com>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
+ Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
+ Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
+ Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+ "integration@gluster.org" <integration@gluster.org>,
+ Laszlo Ersek <lersek@redhat.com>, "Richard W.M. Jones" <rjones@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
+ Denis Lunev <den@virtuozzo.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2DGfO2+1+Ft0
 
-On 12/5/19 11:56 AM, Dr. David Alan Gilbert wrote:
-> * Philippe Mathieu-Daud=C3=A9 (philmd@redhat.com) wrote:
->> On 12/5/19 11:21 AM, Dr. David Alan Gilbert wrote:
->>> * Philippe Mathieu-Daud=C3=A9 (philmd@redhat.com) wrote:
->>>> On 12/5/19 10:36 AM, Damien Hedde wrote:
->>>>> On 12/4/19 9:34 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>>> On 12/4/19 5:40 PM, Damien Hedde wrote:
->>>>>>> On 12/2/19 5:15 PM, Peter Maydell wrote:
->>>>>>>>
->>>>>>>> The one topic I think we could do with discussing is whether
->>>>>>>> a simple uint64_t giving the frequency of the clock in Hz is
->>>>>>>> the right representation. In particular in your patch 9 the
->>>>>>>> board has a clock frequency that's not a nice integer number
->>>>>>>> of Hz. I think Philippe also mentioned on irc some board where
->>>>>>>> the UART clock ends up at a weird frequency. Since the
->>>>>>>> representation of the frequency is baked into the migration
->>>>>>>> format it's going to be easier to get it right first rather
->>>>>>>> than trying to change it later.
->>>>>>
->>>>>> Important precision for Damien, IIUC we can not migrate float/double=
- types.
->>>>>>
->>>>>>>> So what should the representation be? Some random thoughts:
->>>>>>>>
->>>>>>>> 1) ptimer internally uses a 'period plus fraction' representation:
->>>>>>>>    =C2=A0 int64_t period is the integer part of the period in nano=
-seconds,
->>>>>>>>    =C2=A0 uint32_t period_frac is the fractional part of the perio=
-d
->>>>>>>> (if you like you can think of this as "96-bit integer
->>>>>>>> period measured in units of one-2^32nd of a nanosecond").
->>>>>>>> However its only public interfaces for setting the frequency
->>>>>>>> are (a) set the frequency in Hz (uint32_t) or (b) set
->>>>>>>> the period in nanoseconds (int64_t); the period_frac part
->>>>>>>> is used to handle frequencies which don't work out to
->>>>>>>> a nice whole number of nanoseconds per cycle.
->>>>>>
->>>>>> This is very clear, thanks Peter!
->>>>>>
->>>>>> The period+period_frac split allow us to migrate the 96 bits:
->>>>>>
->>>>>>    =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT32(period_=
-frac, ptimer_state),
->>>>>>    =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_INT64(period, =
-ptimer_state),
->>>>>>
->>>>>>>> 2) I hear that SystemC uses "value plus a time unit", with
->>>>>>>> the smallest unit being a picosecond. (I think SystemC
->>>>>>>> also lets you specify the duty cycle, but we definitely
->>>>>>>> don't want to get into that!)
->>>>>>>
->>>>>>> The "value" is internally stored in a 64bits unsigned integer.
->>>>>>>
->>>>>>>>
->>>>>>>> 3) QEMUTimers are basically just nanosecond timers
->>>>>>
->>>>>> Similarly to SystemC, the QEMUTimers macro use a 'scale' unit, of:
->>>>>>
->>>>>> #define SCALE_MS 1000000
->>>>>> #define SCALE_US 1000
->>>>>> #define SCALE_NS 1
->>>>>>
->>>>>>>>
->>>>>>>> 4) The MAME emulator seems to work with periods of
->>>>>>>> 96-bit attoseconds (represented internally by a
->>>>>>>> 32-bit count of seconds plus a 64-bit count of
->>>>>>>> attoseconds). One attosecond is 1e-18 seconds.
->>>>>>>>
->>>>>>>> Does anybody else have experience with other modelling
->>>>>>>> or emulator technology and how it represents clocks ?
->>>>>>>
->>>>>>> 5) In linux, a clock rate is an "unsigned long" representing Hz.
->>>>>>>
->>>>>>>>
->>>>>>>> I feel we should at least be able to represent clocks
->>>>>>>> with the same accuracy that ptimer has.
->>>>>>>
->>>>>>> Then is a maybe a good idea to store the period and not the frequen=
-cy in
->>>>>>> clocks so that we don't loose anything when we switch from a clock =
-to a
->>>>>>> ptimer ?
->>>>>>
->>>>>> I think storing the period as an integer type is a good idea.
->>>>>>
->>>>>> However if we store the period in nanoseconds, we get at most 1GHz
->>>>>> frequency.
->>>>>>
->>>>>> The attosecond granularity feels overkill.
->>>>>>
->>>>>> If we use a 96-bit integer to store picoseconds and use similar SCAL=
-E
->>>>>> macros we get to 1THz.
->>>>>>
->>>>>> Regardless the unit chosen, as long it is integer, we can migrate it=
-.
->>>>>> If can migrate the period, we don't need to migrate the frequency.
->>>>>> We can then use the float type in with the timer API to pass frequen=
-cies
->>>>>> (which in the modeled hardware are ratios, likely not integers).
->>>>>>
->>>>>> So we could use set_freq(100e6 / 3), set_freq(40e6 / 5.5) directly.
->>>>>>
->>>>>>> Regarding the clock, I don't see any strong obstacle to switch
->>>>>>> internally to a period based value.
->>>>>>> The only things we have to choose is how to represent a disabled cl=
-ock.
->>>>>>> Since putting a "0" period to a ptimer will disable the timer in
->>>>>>> ptimer_reload(). We can choose that (and it's a good value because =
-we
->>>>>>> can multiply or divide it, it stays the same).
->>>>>>>
->>>>>>> We could use the same representation as a ptimer. But if we don't k=
-eep a
->>>>>>> C number representation, then computation of frequencies/periods wi=
-ll be
->>>>>>> complicated at best and error prone.
->>>>>>>
->>>>>>>    =C2=A0From that point of view, if we could stick to a 64bits int=
-eger (or
->>>>>>> floating point number) it would be great. Can we use a sub nanoseco=
-nd
->>>>>>> unit that fit our needs ?
->>>>>>>
->>>>>>> I did some test with a unit of 2^-32 of nanoseconds on 64bits (is t=
-hat
->>>>>>> the unit of the ptimer fractional part ?) and if I'm not mistaken
->>>>>>> + we have a frequency range from ~0.2Hz up to 10^18Hz
->>>>>>> + the resolution is decreasing with the frequency (but at 100Mhz we=
- have
->>>>>>> a ~2.3mHz resolution, at 1GHz it's ~0.23Hz and at 10GHz ~23Hz
->>>>>>> resolution). We hit 1Hz resolution around 2GHz.
->>>>>>>
->>>>>>> So it sounds to me we have largely enough resolution to model clock=
-s in
->>>>>>> the range of frequencies we will have to handle. What do you think =
-?
->>>>>>
->>>>>> Back to your series, I wonder why you want to store the frequency in
->>>>>> ClockIn. ClockIn shouldn't be aware at what frequency it is clocked.
->>>>>> What matters is ClockOut, and each device exposing ClockOuts has a
->>>>>> (migrated) state of the output frequencies (rather in fields, or enc=
-oded
->>>>>> in registers). Once migrated, after the state is loaded back into th=
-e
->>>>>> device, we call post_load(). Isn't it a good place to call
->>>>>> clock_set_frequency(ClockOut[]) which will correctly set each ClockI=
-n
->>>>>> frequency.
->>>>>>
->>>>>> IOW I don't think ClockIn/ClockOut require to migrate a frequency fi=
-eld.
->>>>>>
->>>>>
->>>>> I agree it is more logical to store the frequency in clock out. But,
->>>>> regarding migration constraints, we have no choice I think because a
->>>>> device cannot rely on values that are migrated by another device for
->>>>> restoring its state. (when I checked, I add the impression that
->>>>> post_load()s are called on a per device migration basis not all at th=
-e
->>>>> end of migration).
->>>>
->>>> Cc'ing David to clear that out.
->>>
->>>
->>> That's pretty much right; the 'post_load' is called on a structure at t=
-he end
->>> of loading the data for that structure.
->>>
->>> You can do things at the end of migration; one way is to register a
->>> vm change state handler (search for qemu_add_vm_change_state_handler)
->>> and that means you get a kick when the VM starts running or a timer set
->>> in virtual time (not wall clock time because that becomes sensitive
->>> to the speed of the host).
->>>
->>> Somewhere ^^^ it says we can't migrate fp values; I'm not sure that's
->>> true; we've got a VMSTATE_FLOAT64 macro but I don't see it's used
->>> anywhere.
->>
->> OK, Cc'ing Alex & Richard now, because I guess remember a discussion abo=
-ut
->> "we can not migrate floats because this is a architectural implementatio=
-n,
->> so cross-architecture migration is likely to fail". But I can't find tra=
-ce
->> of a such discussion on the list or IRC logs.
->> Maybe this was instead about whether we can use the host FPU registers.
->=20
-> We have to be careful when migrating the FP registers within a CPU,
-> since they can have crazy values that are not valid/weird corners of
-> standard FP encodings (e.g. if the guest just uses the FP registers as
-> a spare 64bit register - which is perfectly valid on some
-> architectures). However, migrating an actual floating point
-> real world measurement should be fine.  I'm assuming we can rely on
-> 64 bit IEEE FP format on the wire being portable.
+Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> writes:
 
-Understood, thanks for clearing this out!
-
-Side note, we don't do cross-arch migration testing, but we talked about=20
-having a 'different QEMU version' migration test. When we get a such=20
-test setup, it shouldn't be too difficult to evolve to some cross-arch=20
-migration test.
-
->> I hope I'm wrong and confuse, this is a great news for me to know we
->> can migrate floats!
->>
->>> Dave
+> 04.12.2019 17:59, Markus Armbruster wrote:
+>> Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> writes:
+>>=20
+>>> Here is introduced ERRP_AUTO_PROPAGATE macro, to be used at start of
+>>> functions with errp OUT parameter.
 >>>
->>>>> So we could store the frequency in clock out and migrate things there=
-.
->>>>> But since we have no way to ensure all clock out states are migrated
->>>>> before some device fetch a ClockIn: we'll have to say "don't fetch on=
-e
->>>>> of your ClockIn frequency during migration and migrate the value
->>>>> yourself if you need it", pretty much like gpios.
->>>>>
->>>>> So we will probably migrate all ClockOut and almost all ClockIn.
->>>>>
->>>>> It would nice if we had a way to ensure clocks are migrated before
->>>>> devices try to use them. But I don't think this is possible.
->>>>>
->>>>> --
->>>>> Damien
->>>>>
->>>>
->>> --
->>> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+>>> It has three goals:
 >>>
->>
-> --
-> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
->=20
+>>> 1. Fix issue with error_fatal & error_prepend/error_append_hint: user
+>>> can't see this additional information, because exit() happens in
+>>> error_setg earlier than information is added. [Reported by Greg Kurz]
+>>>
+>>> 2. Fix issue with error_abort & error_propagate: when we wrap
+>>> error_abort by local_err+error_propagate, resulting coredump will
+>>> refer to error_propagate and not to the place where error happened.
+>>=20
+>> I get what you mean, but I have plenty of context.
+>>=20
+>>> (the macro itself doesn't fix the issue, but it allows to [3.] drop all
+>>> local_err+error_propagate pattern, which will definitely fix the issue)
+>>=20
+>> The parenthesis is not part of the goal.
+>>=20
+>>> [Reported by Kevin Wolf]
+>>>
+>>> 3. Drop local_err+error_propagate pattern, which is used to workaround
+>>> void functions with errp parameter, when caller wants to know resulting
+>>> status. (Note: actually these functions could be merely updated to
+>>> return int error code).
+>>>
+>>> To achieve these goals, we need to add invocation of the macro at start
+>>> of functions, which needs error_prepend/error_append_hint (1.); add
+>>> invocation of the macro at start of functions which do
+>>> local_err+error_propagate scenario the check errors, drop local errors
+>>> from them and just use *errp instead (2., 3.).
+>>=20
+>> The paragraph talks about two cases: 1. and 2.+3.=20
+>
+> Hmm, I don't think so.. 1. and 2. are issues. 3. is a refactoring.. We ju=
+st
+> fix achieve 2 and 3 by one action.
+>
+>> Makes me think we
+>> want two paragraphs, each illustrated with an example.
+>>=20
+>> What about you provide the examples, and then I try to polish the prose?
+>
+> 1: error_fatal problem
+>
+> Assume the following code flow:
+>
+> int f1(errp) {
+>     ...
+>     ret =3D f2(errp);
+>     if (ret < 0) {
+>        error_append_hint(errp, "very useful hint");
+>        return ret;
+>     }
+>     ...
+> }
+>
+> Now, if we call f1 with &error_fatal argument and f2 fails, the program
+> will exit immediately inside f2, when setting the errp. User will not
+> see the hint.
+>
+> So, in this case we should use local_err.
+
+How does this example look after the transformation?
+
+> 2: error_abort problem
+>
+> Now, consider functions without return value. We normally use local_err
+> variable to catch failures:
+>
+> void f1(errp) {
+>     Error *local_err =3D NULL;
+>     ...
+>     f2(&local_err);
+>     if (local_err) {
+>         error_propagate(errp, local_err);
+>         return;
+>     }
+>     ...
+> }
+>
+> Now, if we call f2 with &error_abort and f2 fails, the stack in resulting
+> crash dump will point to error_propagate, not to the failure point in f2,
+> which complicates debugging.
+>
+> So, we should never wrap error_abort by local_err.
+
+Likewise.
+
+>
+> =3D=3D=3D
+>
+> Our solution:
+>
+> - Fixes [1.], adding invocation of new macro into functions with error_ap=
+pen_hint/error_prepend,
+>    New macro will wrap error_fatal.
+> - Fixes [2.], by switching from hand-written local_err to smart macro, wh=
+ich never
+>    wraps error_abort.
+> - Handles [3.], by switching to macro, which is less code
+> - Additionally, macro doesn't wrap normal non-zero errp, to avoid extra p=
+ropagations
+>    (in fact, error_propagate is called, but returns immediately on first =
+if (!local_err))
+

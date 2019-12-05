@@ -1,151 +1,142 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2514344lff;
-        Thu, 5 Dec 2019 11:25:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzpR0SlBFZ7ggil2iU7F5J2/XN20UZAHuIZfLQ+eQeiIHC43TbYOWAV4fMTFXZ0GUrk5mXB
-X-Received: by 2002:aca:de88:: with SMTP id v130mr8925268oig.108.1575573927204;
-        Thu, 05 Dec 2019 11:25:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575573927; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2684784lff;
+        Thu, 5 Dec 2019 14:06:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxM0ry2tWGAJtQxZIbmygveheLZlrxFkhkKiZ3G4koFH0EGldnOhuIKVB5avZgx1Vh9Yyxj
+X-Received: by 2002:a9d:75da:: with SMTP id c26mr8719258otl.40.1575583615410;
+        Thu, 05 Dec 2019 14:06:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575583615; cv=none;
         d=google.com; s=arc-20160816;
-        b=K6KEravT4ePnIn4pQ+P/mCXJPYmiXq23+01my09sXSJ0CDHrBtl/kN/Eou/BsMrO8p
-         OLH1lr01eE8nejrYaPVBb3nkRUVQ5cKBDHioJkAcPlZuN875/MPlQDIUoHoyNn30WjtI
-         a/2vvy5wK6nkAZB/xJ8U7qdmiYBmoK3l4E3P2NdikO51pD+ypkHht1nDILNDeNVj1vm1
-         OQ8PsG8ATy3CUZ3wPLl0NkYMfmI7KPzVHDIhCYlN464dxfYX7YUTuRpECpwRzPIuGEl6
-         zTg+xQK9p8ieUbTpIhfJWeA0FKHJcBamr6UQH/VNvMrw38O3QPaH2lHpBnfSbgaZaHQh
-         mhwg==
+        b=rTyc+JfuPJkkv4O40J6NWNihsNesiIWZ91/kkgi+mN/bN0jxR+cxKmIUNNbBqahvAO
+         pzAqa6igMUpvsgM8QpQHVlXX5x4OAdbtMRChvuU5tdygx4QQ9tfsSc2342X/4rPAMBwK
+         K6AmKJFiHfQ1z+PwP3SQRARGUXmuSipTrRliQqF5wnzFVDn2OBFj4edq+vr/Jk5Alal7
+         ZruHpTc1s7vlOCIMLzCqdOzakEPiLuYDNF+0+iroYkGjBKsT6UpvptfRGF7Z2qxrpnbP
+         TtUlWUbN9UyYl7Qe8sg4mPiMn0/TanMlceCRsv2LxuHcrqeumtI8O7Ms/W7blw7X4n3V
+         Kl1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:content-transfer-encoding:precedence
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=hGPCjxihMUhKShcKlyxjNO+KotcaAPS/t36MNL94j40=;
-        b=TEcKkPROFiXMbdzjcWQHmuHst4xbG/xWtx+eNt4P6L1MbWg9BCqy/q3pntvrMDM2J3
-         qXJtQ5UJeOfGcfECBFP0jZDm8ofdHRUlPqE1FmL93aWBm597en1MQ4VtcYDc5sqjBG3Q
-         64tVrM4UJ5QxHS6ykHWJxTfRXgrgLkm+ZrGgtP0XdUHzzyXFXBcs24cF/S16TuRfMNHd
-         gjhTZ1iu/SnncirNMWjhY8iodWtzJE7ZIKGt6fAEe6gMgxHoQmHpk8amQpec41ghgLfv
-         j4MYYFs+c2Um1q5RYj917m1tvxzr8O2la+a0JFMFC7u+6H405sTs0gh8Slwhr5ytRvGg
-         ggIA==
+         :message-id:from:references:to:subject:ironport-sdr:dkim-signature;
+        bh=P8mYv0xtxGqWLdjaZW6V3Ab1CXn0QejLguDGBu0GVMc=;
+        b=LLhgj5h4XwNO/djLfiyCPdDQUfgIeL0uGfu6LzuRfW4C79ENHSlKanjTyQF3G/wSBS
+         7PLK9ARzTV0dTkgP6H6K8EEwvozONZZTPw+6GikvRGZhNbNPE41Ni762SwONCr6MS8qt
+         oh0x3lb5aNtP61Gb/C2TBE2FhlVBvUuTkO69OAn1UvSPVtMjVJWsknGJW3mYazP3+WUv
+         WFVL9ahfIH9TpmTiCAzd0ZrELyQ0wmlV6VW35AQdZLf0zGxX4pxhnZr/zl0YR0P/IgJB
+         oXuRL51aH0qn1M9jH6WyP0+xFQ2A+dDy3WlbXDcMBlvp9ZubREtCs7qPY4vcxWrCTS5W
+         IneA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sCuRL7FN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=KdkaZwkh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f188si5762920oia.70.2019.12.05.11.25.27
+        by mx.google.com with ESMTPS id l204si5751284oig.31.2019.12.05.14.06.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Dec 2019 11:25:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Dec 2019 14:06:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sCuRL7FN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60096 helo=lists1p.gnu.org)
+       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=KdkaZwkh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
+Received: from localhost ([::1]:33102 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icwkf-0003IF-Qq
-	for alex.bennee@linaro.org; Thu, 05 Dec 2019 14:25:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34896)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iczGw-0006Nj-Av
+	for alex.bennee@linaro.org; Thu, 05 Dec 2019 17:06:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46868)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1icwkE-0003Hg-3X
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 14:24:58 -0500
+ (envelope-from <prvs=235b7d7bf=sveith@amazon.de>) id 1iczFS-0006Hi-1k
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2019 17:05:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1icwkC-00050w-7s
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 14:24:57 -0500
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:35161)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1icwkB-0004vr-I4
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 14:24:55 -0500
-Received: by mail-pg1-x541.google.com with SMTP id l24so2054854pgk.2
- for <qemu-arm@nongnu.org>; Thu, 05 Dec 2019 11:24:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=hGPCjxihMUhKShcKlyxjNO+KotcaAPS/t36MNL94j40=;
- b=sCuRL7FNZbTsQZUuct5ez9ifzZWjyGajs5TFVPs/77bFu1207pMfPoGnNZoMpv8Jux
- F03/9NTrZ3ZT5R46NN9y76rTJKRuMTnU0Qu3YAD5JF8c/c4WuN1etVYR76lz2fJmBoS0
- mqZnM4n8EJP2pY4Wh/Kyz42XxEj4T0SEFMfBNbS6rSZNuU07SIRa8E5PRdHLp5HcEGKw
- jBgyc4kjWxzVvqdlIqrQvI97pvee1aezsSgF/SvOcmnarzItthIvAPFrFZNq14SDs1nP
- HQHoQSZ+MFZ0ZA3isDdOgVQS8Vs9v737DAj6JIzA7C/34sXNGO/gf9Sq9pinmFtpcOx/
- ewgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hGPCjxihMUhKShcKlyxjNO+KotcaAPS/t36MNL94j40=;
- b=k9FbJSnzxnWG1Hp3mJiGRhUzOmrMLS5/To/QV7Xwl547bCCH68ZOgSFYcLPE4NqZyx
- YRP/3Cj+LBV6Glg/qZmGPdD9XVG4Lac/tuKsFGvjjt6cjSMEXQ3fYiQJlsfjbW6ZZPDM
- th93GKEfuDeD6oEbqPUqZcMMgwHPKOyb9D67GYuE2DhVkZH4LeXu8KCtjLoO3BtRznYS
- 5vittkT8cYnIT87/CAW79UpKj0FUo4bG1+8+oo/QEU3xCsiCPYtBRehtoUd9QO1cw+Ki
- IoC+s+7EyzUJ1/bagyhjw0clhVXHchh6DKpFz6WROz+qvJAs6n6vatTJFI86tG8kEUcc
- F7Zg==
-X-Gm-Message-State: APjAAAUS5w9GBIF9GlmwmdfrBRT4n/kKH76MsDxAKmW5e78fz3RcVkTU
- K6O+msnQTU6fTpGenGobDlK6Q9PcOgU=
-X-Received: by 2002:a65:5307:: with SMTP id m7mr11219160pgq.113.1575573893805; 
- Thu, 05 Dec 2019 11:24:53 -0800 (PST)
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id k16sm14110816pfh.97.2019.12.05.11.24.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Dec 2019 11:24:52 -0800 (PST)
-Subject: Re: [PATCH v5 20/22] target/arm: Create tagged ram when MTE is enabled
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20191011134744.2477-1-richard.henderson@linaro.org>
- <20191011134744.2477-21-richard.henderson@linaro.org>
- <CAFEAcA93AX9nikuqq9M1jZOxv1a7QJZpiocHnn=n-gSbsGBS7w@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <bcc3ff61-e737-2af2-5c0d-a6062cbaf083@linaro.org>
-Date: Thu, 5 Dec 2019 11:24:50 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.1
+ (envelope-from <prvs=235b7d7bf=sveith@amazon.de>) id 1iczFQ-0007sG-Qy
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2019 17:05:21 -0500
+Received: from smtp-fw-2101.amazon.com ([72.21.196.25]:16889)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <prvs=235b7d7bf=sveith@amazon.de>)
+ id 1iczFA-0007ib-6y; Thu, 05 Dec 2019 17:05:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.de; i=@amazon.de; q=dns/txt; s=amazon201209;
+ t=1575583504; x=1607119504;
+ h=subject:to:references:from:message-id:date:mime-version:
+ in-reply-to:content-transfer-encoding;
+ bh=P8mYv0xtxGqWLdjaZW6V3Ab1CXn0QejLguDGBu0GVMc=;
+ b=KdkaZwkhTO6HHsgueshg6o54S9IvWmoQHh6Zio6QvcQKHKMVAZ2xQ84V
+ mIHL1lgsgFbgtI7aaY4SRM8IZd0X+1khoPjLoZhHH72WY7MJhxFfqPLcy
+ Cg3A2UfEevhfqLyf0/fEtmH1F9DpT7DppGk77YHVbpr2W54ORxxl78qWE U=;
+IronPort-SDR: BSls0ZgOCEvY6zuYJFv1d5GRNCESfSb+rcY46D3cmF7B/2l0LipF7FIYGoT0Hz8ZRyfJR4S47t
+ v/4WD2dsyWEg==
+X-IronPort-AV: E=Sophos;i="5.69,282,1571702400"; 
+   d="scan'208";a="7339802"
+Received: from iad6-co-svc-p1-lb1-vlan2.amazon.com (HELO
+ email-inbound-relay-2a-f14f4a47.us-west-2.amazon.com) ([10.124.125.2])
+ by smtp-border-fw-out-2101.iad2.amazon.com with ESMTP;
+ 05 Dec 2019 22:05:01 +0000
+Received: from EX13MTAUEA001.ant.amazon.com
+ (pdx4-ws-svc-p6-lb7-vlan2.pdx.amazon.com [10.170.41.162])
+ by email-inbound-relay-2a-f14f4a47.us-west-2.amazon.com (Postfix) with ESMTPS
+ id 7D2E1A22CB; Thu,  5 Dec 2019 22:05:00 +0000 (UTC)
+Received: from EX13D18EUC002.ant.amazon.com (10.43.164.50) by
+ EX13MTAUEA001.ant.amazon.com (10.43.61.82) with Microsoft SMTP Server (TLS)
+ id 15.0.1367.3; Thu, 5 Dec 2019 22:04:59 +0000
+Received: from [10.95.146.221] (10.43.166.12) by EX13D18EUC002.ant.amazon.com
+ (10.43.164.50) with Microsoft SMTP Server (TLS) id 15.0.1367.3;
+ Thu, 5 Dec 2019 22:04:58 +0000
+Subject: Re: [PATCH 1/5] hw/arm/smmuv3: Apply address mask to linear strtab
+ base address
+To: Auger Eric <eric.auger@redhat.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>
+References: <1575467748-28898-1-git-send-email-sveith@amazon.de>
+ <1575467748-28898-2-git-send-email-sveith@amazon.de>
+ <0f01a30e-5b27-f97c-903a-a8a2a74a1cdd@redhat.com>
+From: Simon Veith <sveith@amazon.de>
+Message-ID: <13be5c71-128a-0ae7-1af0-72b58b5958ab@amazon.de>
+Date: Thu, 5 Dec 2019 23:04:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA93AX9nikuqq9M1jZOxv1a7QJZpiocHnn=n-gSbsGBS7w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <0f01a30e-5b27-f97c-903a-a8a2a74a1cdd@redhat.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::541
-X-BeenThere: qemu-arm@nongnu.org
+X-Originating-IP: [10.43.166.12]
+X-ClientProxiedBy: EX13D30EUC004.ant.amazon.com (10.43.164.11) To
+ EX13D18EUC002.ant.amazon.com (10.43.164.50)
+Precedence: Bulk
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 72.21.196.25
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ap3MUeV3PNBD
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 37H/t8c+LeMx
 
-On 12/5/19 10:40 AM, Peter Maydell wrote:
->> +         * If it is, we must allocate the ram to back that up.
->> +         */
->> +        if (object_property_find(cpuobj, "tag-memory", NULL)) {
->> +            if (!tag_sysmem) {
->> +                tag_sysmem = g_new(MemoryRegion, 1);
->> +                memory_region_init(tag_sysmem, OBJECT(machine),
->> +                                   "tag-memory", UINT64_MAX / 32);
->> +
->> +                if (vms->secure) {
->> +                    secure_tag_sysmem = g_new(MemoryRegion, 1);
->> +                    memory_region_init(secure_tag_sysmem, OBJECT(machine),
->> +                                       "secure-tag-memory", UINT64_MAX / 32);
->> +
->> +                    /* As with ram, secure-tag takes precedence over tag.  */
->> +                    memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
->> +                                                        tag_sysmem, -1);
->> +                }
->> +            }
-> 
-> Are there really separate S and NS tag RAMs?
+SGVsbG8gRXJpYywKCk9uIDA1LzEyLzIwMTkgMDk6NDIsIEF1Z2VyIEVyaWMgd3JvdGU6Cj4gTm90
+IHJlbGF0ZWQgdG8gdGhpcyBwYXRjaCBidXQgSSBub3RpY2VkIFNNTVVfQkFTRV9BRERSX01BU0sg
+c2hvdWxkIGJlCj4gMHhmZmZmZmZmZmZmYzAgYW5kIG5vdCAweGZmZmZmZmZmZmZlMC4gSSBjYW4g
+Zml4IGl0IHNlcGFyYXRlbHkgb3IgaWYgeW91Cj4gcmVzcGluLCB5b3UgbWF5IGZpeCBpdCBhcyB3
+ZWxsPwoKR29vZCBjYXRjaCwgdGhhbmsgeW91LiBJJ2xsIGZpeCBpdCBpbiB0aGUgbmV4dCB2ZXJz
+aW9uLgoKTG9va2luZyBhdCB0aGUgdXBwZXIgZW5kIG9mIHRoYXQgbWFzaywgaXQgc2VlbXMgdGhh
+dCB3ZSBhcmUgY3VycmVudGx5IG1hc2tpbmcgb3V0IGJpdHMgNDggdGhyb3VnaCA2MywgcmF0aGVy
+IHRoYW4ganVzdCA1MSB0aHJvdWdoIDYzLgpUaGUgcmVmZXJlbmNlIG1hbnVhbCBzYXlzIHRoYXQg
+dGhpcyBzaG91bGQgYmUgZG9uZSB0byBtYXRjaCB0aGUgc3lzdGVtIHBoeXNpY2FsIGFkZHJlc3Mg
+c2l6ZSBhcyBnaXZlbiBieSBTTU1VX0lEUjUuT0FTLgoKV2UgZGVmaW5lIFNNTVVfSURSNV9PQVMg
+dG8gYmUgNCwgd2hpY2ggc2VsZWN0cyBhIHBoeXNpY2FsIGFkZHJlc3Mgc2l6ZSBvZiA0NCBiaXRz
+IChyZWYuIHNlY3Rpb24gNi4zLjYpLiBJIHRoaW5rIHRoZSBtYXNrIHNob3VsZCB0aGVyZWZvcmUg
+YmUgMHhmZmZmZmZmZmZjMCB0byBjbGVhciBiaXRzIDQ0IGFuZCBhYm92ZS4gRG8geW91IGFncmVl
+PwoKSWRlYWxseSwgd2Ugd291bGQgZGVyaXZlIHRoaXMgbWFzayBmcm9tIG91ciBkZWZpbml0aW9u
+IG9mIFNNTVVfSURSNV9PQVMsIGJ1dCBJJ20gbm90IHN1cmUgaXQncyBva2F5IHRvIHN0dWZmIGEg
+Y2FsbCB0byBvYXMyYml0cygpIGludG8gdGhlIFNNTVVfQkFTRV9BRERSX01BU0sgbWFjcm8uCgpS
+ZWdhcmRzClNpbW9uCgoKCkFtYXpvbiBEZXZlbG9wbWVudCBDZW50ZXIgR2VybWFueSBHbWJICkty
+YXVzZW5zdHIuIDM4CjEwMTE3IEJlcmxpbgpHZXNjaGFlZnRzZnVlaHJ1bmc6IENocmlzdGlhbiBT
+Y2hsYWVnZXIsIFJhbGYgSGVyYnJpY2gKRWluZ2V0cmFnZW4gYW0gQW10c2dlcmljaHQgQ2hhcmxv
+dHRlbmJ1cmcgdW50ZXIgSFJCIDE0OTE3MyBCClNpdHo6IEJlcmxpbgpVc3QtSUQ6IERFIDI4OSAy
+MzcgODc5CgoK
 
-Implementation defined, I believe.  As with everything about tag storage, it
-would seem.  But since there are separate S and NS normal RAMS, I create
-separate tag spaces to match.
-
-
-r~

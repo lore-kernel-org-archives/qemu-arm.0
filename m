@@ -1,97 +1,98 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1733601lff;
-        Thu, 5 Dec 2019 00:39:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwflZdGdU8c8Rsf2TSVsxbHCcU+I6t4zvl4IPoybpTGozEXe7AMXSbasVewyBptkXmfgyv/
-X-Received: by 2002:a05:6830:1d6e:: with SMTP id l14mr5706446oti.32.1575535176801;
-        Thu, 05 Dec 2019 00:39:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575535176; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1735682lff;
+        Thu, 5 Dec 2019 00:42:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxW3B+K13dxJbhHyhf8W8Eej1tQbvk41iHD4C6S2K8/anWLL67yBvqvremTPFmoVJkQDZQG
+X-Received: by 2002:ad4:40c7:: with SMTP id x7mr6592873qvp.176.1575535330910;
+        Thu, 05 Dec 2019 00:42:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575535330; cv=none;
         d=google.com; s=arc-20160816;
-        b=rnyr9BxFW1da8GwA1yZlnNq4aqnA8H6uDtnlb7bSnNLGzC3QeShxeHRJ7G/JoGzG0y
-         cb7wEoJqmC9+tpt6b4guN/RpKS6jWrKmqr6GJzZuNWS1WzW+1tbWMK2b+13hMZEUgl1n
-         wLgzb2bK4SZfVpLVk2TLWYu6ZW0stRVaMPOaB19OcpoRetWhfr0kj8GmWqgL/FwicV6J
-         Aes3FQtENx5UOoS4wXI7OQeS4LoKQMMWrn1DLeucZZFfdtD2UJlX598bJsPmximB6Q6W
-         Vk4H86YZgF5QznhqTWPVu/kbEPvc/YDduWn3Qb61ofHSM4hSokR7TZ1w3nd5W1GY2D4g
-         o0HA==
+        b=KspTbXruGUnrWdOEc4UzPxbhqm40JFRWa7wsJMl+oklpUFhXVocLbGySbfNJz4SMTq
+         u52p4P0AVY8TS9PAJCIDwKGYsF1sQl/lvHphl5xR1r6dYK/tg6kDxhVuEku0U7mv6qbL
+         PX8bTMD/UKsTbPBjAWhHGaXaYcGfSSRnMgCz1gbUH5+HtCDNHZUMqj3m0wtTgenGoLfK
+         DoZKech8wEePitQX3m+o7TLyvY/CFE1WRHkeI9z0Dn511VU0eVtcc4vTfk2kgtzYaThs
+         DbdxSVeVn0dQY8lSpzebyAtnpRmjG+dCQU9Ek/215Lmi5VApb4EiMccdbOVEqKbm2fh7
+         dQug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=WEw3d+DqTbpKJERAhcdHK2F5dU6bzzDjmvLgz+gaJQ0=;
-        b=j6tUGeaUaU0gDNiJErs463+9QBEUCK7l0wzfkSkno6fkLN8v38wVg1e7JG9RzUgTbj
-         veV/QPpyhU6EKOwqq+h0I+P+M3c5bJUnJ/jg7RNNIF5dm5otdb/2nENSB3nmkIG4cMW+
-         pk+SeN53A3YfIoWno53ayNUNFsJrc0Py82tx3Q0uQ4JZ0YNbSkYKWbh9RTrgykG3ZVot
-         fzkCtfXDC2RqCpkgX0cC1ncFpMXE9tthn2z8IujNyiuURmp1jXF3QtcvO/yMWtGqNT48
-         cXUYm1KloPLsXMiCSBu2h/KLUDxdNv9rJTXbSHHcqlc5o/oZ/77QwBN/koXCgxyTz3Ph
-         N/8A==
+        bh=oWzU1D6brfrqeWW9oo+vPzM9VdKyFyvRG4TgMO+1RUw=;
+        b=aZjJs1d8cGlsqgTsUeT7soxlWqwSklcDEEkyse8TAq8DQ6xor9cpN9/KIJxVt+YIqi
+         sn3tFzvew5ICFImCJoAmPK9HlIYWnjJtCNJreaZ1KsnUSowYDFnwMb1/LSDDHyjAg+ZT
+         HLS2FDPRgJynJat7GNc9zRLhArqXDz9xTmCIg5elFdGHwRJSUqW6q9Il7eySxqnsa4gY
+         2O88qgAt0aCiCUq/bDH2kJxSYP5lY38jnlXh8q94SX+SoFFLKmzpTPBb953APiV+8f7V
+         B6G/bUSvN4lL/FkQyahyl021oCswCOgdTzdXWGtZciVDxgH8k/lOoEEf3z4x78DsuhS8
+         /ngg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H98HaKzO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cqj0gmhx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e6si1584302otq.217.2019.12.05.00.39.36
+        by mx.google.com with ESMTPS id k8si6127654qke.360.2019.12.05.00.42.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Dec 2019 00:39:36 -0800 (PST)
+        Thu, 05 Dec 2019 00:42:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H98HaKzO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cqj0gmhx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51512 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51542 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icmff-0007bK-Mf
-	for alex.bennee@linaro.org; Thu, 05 Dec 2019 03:39:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43976)
+	id 1icmiA-0000hU-8n
+	for alex.bennee@linaro.org; Thu, 05 Dec 2019 03:42:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38225)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1icmfQ-0007XP-OO
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 03:39:24 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1icmi1-0000hH-7I
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 03:42:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1icmfP-0003if-J3
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 03:39:20 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:39159)
+ (envelope-from <eric.auger@redhat.com>) id 1icmhz-0002ti-WF
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 03:42:01 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:50358
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1icmfP-0003gr-8t
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 03:39:19 -0500
+ id 1icmhl-0002WI-8P
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 03:41:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575535158;
+ s=mimecast20190719; t=1575535304;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WEw3d+DqTbpKJERAhcdHK2F5dU6bzzDjmvLgz+gaJQ0=;
- b=H98HaKzOVl5eusB1sMuBL4lkYdHwVop0tXN5HQ72TmgFL9FnXmjXOWhcRQQLIGHtLDzcCC
- 7GL0/bOXhipHAN5g7h/BQuvXOwhK3V2ceK6gkhl9d9YPjnw674LGbb9IhWkZlZOrDF9qnK
- o9MV2mUAau+cB5HPNPLeEiZUKgs+aH8=
+ bh=oWzU1D6brfrqeWW9oo+vPzM9VdKyFyvRG4TgMO+1RUw=;
+ b=cqj0gmhxSR7iftuFooTxDWPxylJ3zTsZyLjMEv/Hlivj81FwovJownIJiV424NQkYQuQnc
+ XkXO3HWuMJOBixu+cWPBsDz+FZ2Na/KDmFgouSMb5ls6MIms2ZTPXDTeIGKd3y1JiQrbSe
+ MI8xRsmg3VBYhDqnB/rvQ/kMY6OggEs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-22-Vv2LqZlkOUWmOhPLzVbL5w-1; Thu, 05 Dec 2019 03:39:15 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-274-6JD909Y4MhyCz5GoWs41Sg-1; Thu, 05 Dec 2019 03:41:41 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 292518017DF;
- Thu,  5 Dec 2019 08:39:14 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6422964A7D;
+ Thu,  5 Dec 2019 08:41:40 +0000 (UTC)
 Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 555526012C;
- Thu,  5 Dec 2019 08:39:13 +0000 (UTC)
-Subject: Re: [PATCH 5/5] hw/arm/smmuv3: Report F_STE_FETCH fault address in
- correct word position
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 82FE85C1B5;
+ Thu,  5 Dec 2019 08:41:39 +0000 (UTC)
+Subject: Re: [PATCH 2/5] hw/arm/smmuv3: Check stream IDs against actual table
+ LOG2SIZE
 To: Simon Veith <sveith@amazon.de>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <1575467748-28898-1-git-send-email-sveith@amazon.de>
- <1575467748-28898-6-git-send-email-sveith@amazon.de>
+ <1575467748-28898-3-git-send-email-sveith@amazon.de>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <39341988-f302-c750-9801-4710ff50c2fe@redhat.com>
-Date: Thu, 5 Dec 2019 09:39:11 +0100
+Message-ID: <1a0656ce-5da0-2251-1304-1ee0e683b887@redhat.com>
+Date: Thu, 5 Dec 2019 09:41:37 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <1575467748-28898-6-git-send-email-sveith@amazon.de>
+In-Reply-To: <1575467748-28898-3-git-send-email-sveith@amazon.de>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: Vv2LqZlkOUWmOhPLzVbL5w-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: 6JD909Y4MhyCz5GoWs41Sg-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
@@ -111,46 +112,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4UlXUJNaJbr+
+X-TUID: BEybxn9cXtEn
 
 Hi Simon,
-
 On 12/4/19 2:55 PM, Simon Veith wrote:
-> The smmuv3_record_event() function that generates the F_STE_FETCH error
-> uses the EVT_SET_ADDR macro to record the fetch address, placing it in
-> 32-bit words 4 and 5.
+> When checking whether a stream ID is in range of the stream table, we
+> have so far been only checking it against our implementation limit
+> (SMMU_IDR1_SIDSIZE). However, the guest can program the
+> STRTAB_BASE_CFG.LOG2SIZE field to a size that is smaller than this
+> limit.
 > 
-> The correct position for this address is in words 6 and 7, per the
-> SMMUv3 Architecture Specification.
+> Check the stream ID against this limit as well to match the hardware
+> behavior of raising C_BAD_STREAMID events in case the limit is exceeded.
 > 
-> Update the function to use the EVT_SET_ADDR2 macro instead, which is the
-> macro intended for writing to these words.
-> 
-> ref. ARM IHI 0070C, section 7.3.4.
+> ref. ARM IHI 0070C, section 6.3.24.
 > 
 > Signed-off-by: Simon Veith <sveith@amazon.de>
 > Cc: Eric Auger <eric.auger@redhat.com>
 > Cc: qemu-devel@nongnu.org
 > Cc: qemu-arm@nongnu.org
 > ---
->  hw/arm/smmuv3.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/arm/smmuv3.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
 > 
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 2d6c275..125e47d 100644
+> index eef9a18..aad4639 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -172,7 +172,7 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
->      case SMMU_EVT_F_STE_FETCH:
->          EVT_SET_SSID(&evt, info->u.f_ste_fetch.ssid);
->          EVT_SET_SSV(&evt,  info->u.f_ste_fetch.ssv);
-> -        EVT_SET_ADDR(&evt, info->u.f_ste_fetch.addr);
-> +        EVT_SET_ADDR2(&evt, info->u.f_ste_fetch.addr);
->          break;
->      case SMMU_EVT_C_BAD_STE:
->          EVT_SET_SSID(&evt, info->u.c_bad_ste.ssid);
+> @@ -377,11 +377,15 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+>                           SMMUEventInfo *event)
+>  {
+>      dma_addr_t addr;
+> +    uint32_t log2size;
+>      int ret;
+>  
+>      trace_smmuv3_find_ste(sid, s->features, s->sid_split);
+> -    /* Check SID range */
+> -    if (sid > (1 << SMMU_IDR1_SIDSIZE)) {
+> +    log2size = FIELD_EX32(s->strtab_base_cfg, STRTAB_BASE_CFG, LOG2SIZE);
+> +    /*
+> +     * Check SID range against both guest-configured and implementation limits
+> +     */
+> +    if (sid > (1 << MIN(log2size, SMMU_IDR1_SIDSIZE))) {I think this should be sid >= (1 << MIN(log2size, SMMU_IDR1_SIDSIZE))
+
+If you agree can you fix it at the same time?
+>          event->type = SMMU_EVT_C_BAD_STREAMID;
+>          return -EINVAL;
+>      }
 > 
-Acked-by: Eric Auger <eric.auger@redhat.com>
 
 Thanks
 

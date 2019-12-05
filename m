@@ -1,107 +1,100 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2371244lff;
-        Thu, 5 Dec 2019 09:34:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx8ctIahPSRk3ALxb2EOzuyUEhU/ZvYqpLMxKo0YNDp9elFTBMiR/8cwrBnQ8DmXuo1EX4w
-X-Received: by 2002:ac8:24e6:: with SMTP id t35mr2904302qtt.280.1575567259910;
-        Thu, 05 Dec 2019 09:34:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575567259; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2384442lff;
+        Thu, 5 Dec 2019 09:43:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw73SX4INnaSSaCPgLbLqesNx2W5E/2ggolNkyBd07FeRs9LmW1U/eC2MfvT5FBPuclQvFn
+X-Received: by 2002:a9d:1425:: with SMTP id h34mr7558793oth.166.1575567780263;
+        Thu, 05 Dec 2019 09:43:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575567780; cv=none;
         d=google.com; s=arc-20160816;
-        b=ktC+Ddq7+itorntVcJHQB6RG55MaRIzVgBypRAclUY2zrh4pHojIKMfNw3xsKo7hrH
-         NKRejEh2Q8JoNdWg9NpqWNFDfF+zClowDkmy9+V021wzPx1uYacxzbb5Ui7KXIzbe5zi
-         7gSCDidu+Qyf2AtTarD504/pYlDB4tCBwmNcuWEwfznuOxK4+1UBDys4RHEqxum7Q/xU
-         gjv8d2BvWQUQA3dG9sPLKdNPTesX8sT4WaP3kxyPv4fM+xHTDfpcalXKa3dJys6YgaW1
-         /3RH3doGAp5tOiMPZAKLJPqHN6f0/JsOcU/ulJP2V+h8rEbY3S269707pb6Yz8NGJEoP
-         aRfw==
+        b=oXZZSlpSAdDbZiAPaU5iFGZOjdvgVIWwb3mlEzMxLHIsUZYpKmjECy8RBpe/0CaVLY
+         UChYNAGiaCf+rPh1N9OK14NYLbaxIlB0zyE8S3bcn6m1jJBeFCXXZijGGrvQNtzsyvC6
+         K2gZbhIs3zXaJvWxIa3+9FQnQEjgkeBrUwIRYBKeir6VCckWXUOU7M3ZJWMPFwTahpjd
+         DrM8Jh5SWmjmmzPS3c4x4pAssElUumQdzZI4icM0sHXWZwa24uMGNupgcljb2DotZlfN
+         +UZPt8yu9eZQ0tDL5yKtwSi5wqJ1pdg/PPq0Ou1pHPASZRkqH/rK7GsZA9PxIYCwMAIS
+         HvWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:from:references:to:subject:dkim-signature;
-        bh=SXeZyo48H3SZ9vKNo89jpscEKcAmkJ65SmGcOay8P6g=;
-        b=HuwtUW8ljKAlo7waLdaKayj0+vMYqXsu2sZLoO9p/3F2ww7F3ZFY30UZU7ccwMnpAY
-         2J639N0t9PqKcthcS9cRAuL+yKzN6OYM5UeV9OSlDj0A1TpsCZ2OkXkAtloZ6hrVle2o
-         u3366cT3GfX4wStGqtpMp4tDGjFDc0AuOkjoSigC57ZAclDOPKYKZLtPCNFqvK0p5/UO
-         +lLb3IoymesYlx7mvlsTH3Oo8XR7saBcY+gjlGFa12pAtUAZqfl4WK0aEpn8tvfn49AK
-         r/8PZFFuhPEwg50Lvk58EaLDxAgfx5Q8RGBJ8LLZ9zcQHqSjcGmDhWtZWK/fAEBD4cf4
-         liXg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=iNUL6o24JTKX4/e7ryKKlUun/EEBdrrjt6MWlFZHtt0=;
+        b=ykJcDokdahTM8r5zoF52MvdbYZfWwTBCPA7aCznpKEqxcnLNypgV85fn9rJ/eksr0n
+         Yr+lkBSp/v3l1tNvIaCAeRr/HPIB3sJWu3FDZCl+DfCmWKxLRaX6CesC6meCHtftjxuJ
+         73ck2C1rxre6GH1znHa1G6rNgG+hOOqF7UR3myR9yVlTX/+nysxICcfaJbO2xZa5VDzh
+         atZSRkfNGcExey0ml8EcukiZlD5RokwDeYGg61vCdgbM3dyYrJSvJMopUfPc6/eiuE2p
+         y76Ye2vtrZgpxi4nKLxgstKqNESK0VPD2gLd4B1xCBZLjrkL6Bc3PEsBAfQGpR5Fg4bw
+         Hs8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RM5kEcsH;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dh0rYjcg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j76si6750829qke.356.2019.12.05.09.34.19
+        by mx.google.com with ESMTPS id v202si4109113oie.79.2019.12.05.09.43.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Dec 2019 09:34:19 -0800 (PST)
+        Thu, 05 Dec 2019 09:43:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RM5kEcsH;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dh0rYjcg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58540 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58629 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icv19-0001Ii-98
-	for alex.bennee@linaro.org; Thu, 05 Dec 2019 12:34:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60993)
+	id 1icv9X-0005Ys-EV
+	for alex.bennee@linaro.org; Thu, 05 Dec 2019 12:42:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34592)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1icv0O-00013E-IS
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 12:33:34 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1icv9K-0005VK-EE
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 12:42:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1icv0H-0006UB-Vj
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 12:33:29 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:58945)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1icv0G-0006Rb-3Z
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 12:33:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575567201;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SXeZyo48H3SZ9vKNo89jpscEKcAmkJ65SmGcOay8P6g=;
- b=RM5kEcsHTyKGqFH/bUVeQ/6BF21N4sYuxtXzS+eTI3lGX4lGttc7l0Dfb8jq1BNyj1arxD
- ueUym+D+NjRmW057UswGMBxm0eSloq2SGlaZrSSJcW2F7hzl14akl+LzBXP1y90QfAQgDB
- 4lf3whKZYtpLj8TMUoUdh3Xh3g0/J8k=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-1-gkHur7j6PiOysEy_2vMLcg-1; Thu, 05 Dec 2019 12:33:20 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7409E800D41;
- Thu,  5 Dec 2019 17:33:16 +0000 (UTC)
-Received: from [10.3.116.171] (ovpn-116-171.phx2.redhat.com [10.3.116.171])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 885356012D;
- Thu,  5 Dec 2019 17:32:42 +0000 (UTC)
-Subject: Re: [RFC v5 024/126] error: auto propagated local_err
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Markus Armbruster <armbru@redhat.com>
-References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
- <20191011160552.22907-25-vsementsov@virtuozzo.com>
- <87muc8p24w.fsf@dusky.pond.sub.org>
- <55393c08-5bda-8042-1a95-f350b3781d99@virtuozzo.com>
- <87d0d3c5k7.fsf@dusky.pond.sub.org>
- <eef60af5-ff92-3df7-bad5-c981690d66ad@virtuozzo.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <54c19813-8a10-1607-6fdc-cd7d930ecac7@redhat.com>
-Date: Thu, 5 Dec 2019 11:32:41 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (envelope-from <peter.maydell@linaro.org>) id 1icv9J-0001hm-2c
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 12:42:46 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:33829)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1icv9I-0001d7-RL
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 12:42:44 -0500
+Received: by mail-ot1-x342.google.com with SMTP id a15so3374326otf.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Dec 2019 09:42:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=iNUL6o24JTKX4/e7ryKKlUun/EEBdrrjt6MWlFZHtt0=;
+ b=dh0rYjcgJ3RUdG6Gi37DLPiYYqEgTj835qJegCy0kyY+lDtuZ6AKZ/RlvoBGc6KWUW
+ eBHRoQ8REevtPRuvV8kANU8dLniuLz7/IAw1gpX/vBEGKoEf+kXVzpe5pbXy6MABH43U
+ 74s1C5XjKl0rVVXtaDYOiHeLHPmbLFZ9BU9BTlgTzgGs/0ZeLZF9VdA3JuHWdMayVLnw
+ X3oDG5Ipcffb9bsqxmEZ0MYyd5k+p+LKRFEXcImh9Y5yAtGfjym8CCqLMrM4RlS1YC+G
+ YRn0RanjRCXuwSKKdUS4UgHXTqF8Zmhe9ydXg7pAe9rhXXQZ4DDYvxrFsh9RmYtm8L1j
+ /39w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=iNUL6o24JTKX4/e7ryKKlUun/EEBdrrjt6MWlFZHtt0=;
+ b=dXXQOl3Lvt3PNkXyYEVNpD405+Xi91XOUD6qG3pCzPtSFtzVknBEmYFKrtXaMgzCY6
+ RFKnKDMxzqjMM5KRcikCEqQwdlEt3+e9iVnQHsV6fU3icF2pMWqEvufkKz393La2alAh
+ pA8ePxQKUhVOpcsvdfMmaK+AI/b/88dSlgNO6OhpYpxUCqKrqxhhE/uG//OBAMTI+eFN
+ +eVtUXGXvQLHKd4tFwkh0ds1d+tfaoPgk00IsrMhWiO1JlL1nE0uF/LR+MWJ0BmP8dR7
+ yhwfkWey7iCIuH2XPxv/V8/FRn4NkGx9boFG756oMZbJ8XrDuaKoU8379RBAfYbiCAKb
+ 8qOg==
+X-Gm-Message-State: APjAAAVCfDjQa8Wl3SRmGteSo3sfARANn3MyVdDjqCwrmhOInPjKze5V
+ 8JsfCkk+MC56Whl1ZgzWgehTx+htMc3GMyXWwbXdhsBnz8c=
+X-Received: by 2002:a05:6830:2001:: with SMTP id
+ e1mr7043345otp.97.1575567763730; 
+ Thu, 05 Dec 2019 09:42:43 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <eef60af5-ff92-3df7-bad5-c981690d66ad@virtuozzo.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: gkHur7j6PiOysEy_2vMLcg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+References: <20191011134744.2477-1-richard.henderson@linaro.org>
+ <20191011134744.2477-14-richard.henderson@linaro.org>
+In-Reply-To: <20191011134744.2477-14-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Dec 2019 17:42:32 +0000
+Message-ID: <CAFEAcA93YL0mkN+uMpOD12U1S6uoPNqpkPZ+EmDabNAQC+m-Sg@mail.gmail.com>
+Subject: Re: [PATCH v5 13/22] target/arm: Implement the LDGM and STGM
+ instructions
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,199 +106,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>, Jan Kiszka <jan.kiszka@siemens.com>,
- Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Laszlo Ersek <lersek@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Ronnie Sahlberg <ronniesahlberg@gmail.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Palmer Dabbelt <palmer@sifive.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Hannes Reinecke <hare@suse.com>, Stefano Stabellini <sstabellini@kernel.org>,
- "Gonglei \(Arei\)" <arei.gonglei@huawei.com>, Liu Yuan <namei.unix@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
- Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Stafford Horne <shorne@gmail.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Cornelia Huck <cohuck@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
- Anthony Green <green@moxielogic.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Juan Quintela <quintela@redhat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- "integration@gluster.org" <integration@gluster.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
- Denis Lunev <den@virtuozzo.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
- David Gibson <david@gibson.dropbear.id.au>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fn31pxlrZiVi
+X-TUID: X62BKZLdjvCx
 
-On 12/5/19 8:58 AM, Vladimir Sementsov-Ogievskiy wrote:
+On Fri, 11 Oct 2019 at 14:50, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> v3: Require pre-cleaned addresses.
+> ---
+>  target/arm/helper-a64.h    |  3 ++
+>  target/arm/mte_helper.c    | 96 ++++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-a64.c | 42 +++++++++++++----
+>  3 files changed, 132 insertions(+), 9 deletions(-)
+>
 
->>>> What about you provide the examples, and then I try to polish the prose?
->>>
->>> 1: error_fatal problem
->>>
->>> Assume the following code flow:
->>>
->>> int f1(errp) {
->>>       ...
->>>       ret = f2(errp);
->>>       if (ret < 0) {
->>>          error_append_hint(errp, "very useful hint");
->>>          return ret;
->>>       }
->>>       ...
->>> }
->>>
->>> Now, if we call f1 with &error_fatal argument and f2 fails, the program
->>> will exit immediately inside f2, when setting the errp. User will not
->>> see the hint.
->>>
->>> So, in this case we should use local_err.
->>
->> How does this example look after the transformation?
-
-Without ERRP_AUTO_PROPAGATE(), the transformation is a lot of boilerplate:
-
-int f1(errp) {
-     Error *err = NULL;
-     ret = f2(&err);
-     if (ret < 0) {
-         error_append_hint(&err, "very useful hint");
-         error_propagate(errp, err);
-         return ret;
-     }
-}
-
-what's worse, that boilerplate to solve problem 1 turns out to be...
-
-> 
-> Good point.
-> 
-> int f1(errp) {
->      ERRP_AUTO_PROPAGATE();
->      ...
->      ret = f2(errp);
->      if (ret < 0) {
->         error_append_hint(errp, "very useful hint");
->         return ret;
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 4ecb0a2fb7..4e049bb4aa 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -3592,7 +3592,7 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+>      uint64_t offset = sextract64(insn, 12, 9) << LOG2_TAG_GRANULE;
+>      int op2 = extract32(insn, 10, 3);
+>      int op1 = extract32(insn, 22, 2);
+> -    bool is_load = false, is_pair = false, is_zero = false;
+> +    bool is_load = false, is_pair = false, is_zero = false, is_mult = false;
+>      int index = 0;
+>      TCGv_i64 dirty_addr, clean_addr, tcg_rt;
+>
+> @@ -3602,13 +3602,18 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
 >      }
->      ...
-> }
-> 
-> - nothing changed, only add macro at start. But now errp is safe, if it was
-> error_fatal it is wrapped by local error, and will only call exit on automatic
-> propagation on f1 finish.
-> 
->>
->>> 2: error_abort problem
->>>
->>> Now, consider functions without return value. We normally use local_err
->>> variable to catch failures:
->>>
->>> void f1(errp) {
->>>       Error *local_err = NULL;
->>>       ...
->>>       f2(&local_err);
->>>       if (local_err) {
->>>           error_propagate(errp, local_err);
->>>           return;
->>>       }
->>>       ...
->>> }
+>
 
-the very same code as the cause of problem 2.
+These are the insns that should UNDEF if we have only
+the insn_reg dummy flavour of MTE.
 
->>>
->>> Now, if we call f2 with &error_abort and f2 fails, the stack in resulting
->>> crash dump will point to error_propagate, not to the failure point in f2,
->>> which complicates debugging.
->>>
->>> So, we should never wrap error_abort by local_err.
->>
->> Likewise.
-> 
-> And here:
-> 
-> void f1(errp) {
->       ERRP_AUTO_PROPAGATE();
->       ...
->       f2(errp);
->       if (*errp) {
->           return;
->       }
->       ...
-> 
-> - if errp was NULL, it is wrapped, so dereferencing errp is safe. On return,
->     local error is automatically propagated to original one.
+(Also, unlike STG and ST2G, none of the M insns want
+Xt to be <Xt|SP>.)
 
-So, the use of ERRP_AUTO_PROPAGATE() solves BOTH problems 1 and 2 - we 
-avoid the boilerplate that trades one problem for another, by 
-consolidating ALL of the boilerplate into a single-line macro, such that 
-error_propagate() no longer needs to be called anywhere except inside 
-the ERRP_AUTO_PROPAGATE macro.
 
-> 
->>
->>>
->>> ===
->>>
->>> Our solution:
->>>
->>> - Fixes [1.], adding invocation of new macro into functions with error_appen_hint/error_prepend,
->>>      New macro will wrap error_fatal.
->>> - Fixes [2.], by switching from hand-written local_err to smart macro, which never
->>>      wraps error_abort.
->>> - Handles [3.], by switching to macro, which is less code
->>> - Additionally, macro doesn't wrap normal non-zero errp, to avoid extra propagations
->>>      (in fact, error_propagate is called, but returns immediately on first if (!local_err))
->>
-> 
-> 
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
+thanks
+-- PMM

@@ -1,191 +1,127 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2408441lff;
-        Thu, 5 Dec 2019 10:01:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwKwGMMdV6zF+ohsoaWabEDDcCCfm9tZi26awdrpNGVZ5Qqqa/XBCZZZgSJi6WfN4qnB9gv
-X-Received: by 2002:a0c:9497:: with SMTP id j23mr8501634qvj.173.1575568898488;
-        Thu, 05 Dec 2019 10:01:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575568898; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2420877lff;
+        Thu, 5 Dec 2019 10:09:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwBfX6HQ67Sjp0lFsvHQL4ZNqEPBKUIgHRTVKtj2aPfeXmMTEX9NUCUBwWQGB3FcnCqT3Tt
+X-Received: by 2002:a37:62d2:: with SMTP id w201mr9186882qkb.445.1575569363228;
+        Thu, 05 Dec 2019 10:09:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575569363; cv=none;
         d=google.com; s=arc-20160816;
-        b=0SGguBJ9sgpyf7N4T7XbMvQQ6JDngoOT+Zrtg0xLTexg40j3WYBbhQ2Ffyg6IPaR4B
-         QBcyXXuuUjAahr+ApZRxaNwsy49yV6Iequf7SDOL92twMLQT4B5AO0RGLkMoE3EnBbC8
-         zcwj7fUqgLPX1e8wygMBGqx1jpheIo1+qhCA4LhjD5I7M6CxsRaW+chRJ5eWLSUnwCYx
-         IjUjMa20g+M54Y+2pLgnSAbj2CjIwlZaSxtWrTIGsebEuUrbwxvoH7IejMWnx0fG5H9r
-         EGd+3oVV+/ylBcQMv8lYBSRMEDQ2LIHLFoiz5YIz/U2ZiqdgALSwTqC+WJFuwF6SmITH
-         pDtg==
+        b=MBGWdFNT1x7UODwLz1E3TxuhqVN8FL0mDW0XJcFK+7fYxfFg69/FSyfVNN+OK81CRJ
+         oZ61/O3TQ9a+8+vpdwxXoSoeRHAYRIKgePgBTkgCoWeTGsOURrZCkYotrEAQQeP5QXtG
+         Z0KReE+46y+kzXAXiSI0vEjC34PUGWcAsX12HvWmkX7IIKHoojNpc6uYmuA45VYyIWwt
+         LO42IRMhbRlEssezHBCyElNmUT+HI6rllejHLwueBPch5pOXKyh2UOLyKoKI5LKdgtxF
+         9GEL5twv9whh6uyaVIyU34vZnP736Bs9ilQ53VE33bD/48PZD/QPEfxdbJemyzdXVg6c
+         IEhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=7TZrodYeXioGpPRAE8ETahiLdBZLUfn2Bk6fVVqCSEE=;
-        b=b5qOX45IRRfLT8kUMw1lWVojuHKh3NgwdiGtkFhk+XbD7FhPyLDCaEKXnGByM37+SJ
-         fzootu7EqIWMmsgLER+T7e3kMxQyn5S8KczNgJRMWeyeMgnsIY7Maa5I3DdUsD19HUPK
-         3Pc8UereLx3RHTbLVpDj7fA0woyqmxqRChE91d0tV9Ii1JFnOIu4Z593pIQ3p2jP25zg
-         1DE4pxrRi+L7ZL5AzrYScbwj9HiEv3U/YgUBQNIWQiEdJrLGtd1fevYa2f/1blTzQde6
-         k/TrCGmXa1jCHJaJgZXZL5QYuqmaoYjAfa2HHgtn8roD8hwmq7H8o+5bi4UrBZzs1WjR
-         R3WA==
+        bh=pYOvYVtwhI2S/mDqdqrvk92S8L5OgxKP7rFHJhTjPR0=;
+        b=kqN7uFnhPPjcyFJVwFI7ii309lGQtK960ZVwqWQ/l/emm40tiwzFQVKTMKU2tIIuwu
+         R/pivu803hIKIeMJexonvNzH6fwc8EqqSzSetZ2ZFyjwkUk/7OqYC/PEjqWk0tc/pNUY
+         TO0/VI92rsJqOvoyqRFL67DeSxaq99ZNpvLaopFiSYHyOjFJ7y7hDlyWuuXiqrqf5kt2
+         vs7H9BnlTrUT7IrhbHkqZ30XYt4aJZIv25C/3dcW6rxmtPOiSRhTEA78UXt1f8ac7bT6
+         xu/+/a8+va/uYBKHo+3dkT/E28ODUKqH/hkUaaxAWhEvbZHUCzt6H85pFzMAtbVlTZsd
+         eVCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="HUNJNG/d";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b="t6pWO/TV";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q24si6333061qtp.248.2019.12.05.10.01.38
+        by mx.google.com with ESMTPS id d16si964761qto.204.2019.12.05.10.09.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Dec 2019 10:01:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Dec 2019 10:09:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="HUNJNG/d";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b="t6pWO/TV";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58924 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59088 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icvRZ-0005iq-Ab
-	for alex.bennee@linaro.org; Thu, 05 Dec 2019 13:01:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53141)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1icvZ4-0006dK-Js
+	for alex.bennee@linaro.org; Thu, 05 Dec 2019 13:09:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42853)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1icvG0-0001XG-L8
- for qemu-devel@nongnu.org; Thu, 05 Dec 2019 12:49:41 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1icvL5-0008L6-US
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 12:54:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1icvFz-0001xB-3D
- for qemu-devel@nongnu.org; Thu, 05 Dec 2019 12:49:40 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:36457)
+ (envelope-from <peter.maydell@linaro.org>) id 1icvL4-0003ga-SU
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 12:54:55 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38396)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1icvFy-0001rZ-PI
- for qemu-devel@nongnu.org; Thu, 05 Dec 2019 12:49:38 -0500
-Received: by mail-oi1-x242.google.com with SMTP id c16so3557559oic.3
- for <qemu-devel@nongnu.org>; Thu, 05 Dec 2019 09:49:38 -0800 (PST)
+ id 1icvL4-0003gQ-M3
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 12:54:54 -0500
+Received: by mail-ot1-x343.google.com with SMTP id h20so3379954otn.5
+ for <qemu-arm@nongnu.org>; Thu, 05 Dec 2019 09:54:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7TZrodYeXioGpPRAE8ETahiLdBZLUfn2Bk6fVVqCSEE=;
- b=HUNJNG/dr1YTRjWt3dX54M87sHzpPiOvZQre8eN8yoJpamPABH+Kh6Isj8UR3GJh0f
- mBL30w3DXmU2D7ge6BEDL0rCIl6R6EeVAx0MfF16CjbcCqjVfxGA/RJT9JY8JYqtl5+i
- LUO7SuZMqr5QA2DrFxo6G5zEV+ASvZdQecLM69Wrs/LmTeHdEw+PLa3KgIN0v5kLTrKW
- 4XSw+n7YPYB/2OYM91K/WI3ULiMp4Np35xvQXUFBY/hK9VEKyNEqhhJxbsG+WJIQl5Se
- ZlYflHgu3NyCyGD8az9dwFBOKBXpG/Cj/7IKqPXdfmm6xj18SWN2YORi4PmpuNSmhQQS
- iyOg==
+ :cc; bh=pYOvYVtwhI2S/mDqdqrvk92S8L5OgxKP7rFHJhTjPR0=;
+ b=t6pWO/TVK+5BkLfuWbEirKmZHs5GZ3vCHTiHCrxcSLP6tMsm/En+EqeIPXycN6wQfx
+ j2QNH6wC++IIohwIid+BgS/i2O7wY3q19DrroInE5+fcQAU2x+CNv2Wag5qfv0ucwL7H
+ n8rcQ5KM4yGrYnzbJdUU1jhwVy3i6W4VXCxYwP1AYQwtb7Fv/kKv5PJMSdM919CdgQ5/
+ aAhCAm5F9/0VjGo//NjJAMj0BsrkVYC4dUfctkmhPiy4xodOE0znuHVYMilVc81AXfk+
+ 3HEYlvm6A59MrQLd7Zzv87BSgQy0I4FnYtWtebglYenojTluzNrwAHCaA6lhGQm0t0D/
+ hhbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=7TZrodYeXioGpPRAE8ETahiLdBZLUfn2Bk6fVVqCSEE=;
- b=MJlUdHHHmI1e7pdlSP8LgJoS6z+ENBqlAJ1M16fhYZ4y7vqgTDA6/j3GspzlFv5eU9
- 5UYj8oT+QmTB5Xd1nYp14z4afKOu2QbeNb02U65Nxi1vwIdyrufWYkCJYJQQvwbwcm+1
- X9uNQxoG6o1dpdFKnoSKJ5BJBRTDmBOzZdravwVz99VcP8fYFwKsIqoZ9JYuc7Y/5qTz
- v3fIvpN4uyRva6H4oLIEKuCG63hqiiHjQmLHUOPx2j2bAFkeFpizes7QQDhENTDk7SqM
- 5ft7Ja5qRr52jWOgnplbsbuaZlK+TPAy/SMQ2fXhK/9EG4/aZhXnCYXk0Bp+EatZ8fjY
- deag==
-X-Gm-Message-State: APjAAAWHv7UxQXRvV/8yDRdMzVdEONvAWSm2Wq0P7qeo0GKGKhpWhyQZ
- N+4zslXBmzFoASfQMmmDW3YD5uUVZgTV67hjLx6VhA==
-X-Received: by 2002:aca:3182:: with SMTP id x124mr8488329oix.170.1575568177597; 
- Thu, 05 Dec 2019 09:49:37 -0800 (PST)
+ bh=pYOvYVtwhI2S/mDqdqrvk92S8L5OgxKP7rFHJhTjPR0=;
+ b=djPDd2JBm3JXjzhD+A11Yk0cakbc/0oU+B2oBi0fpK2ZbEHmNQYhbRwrEWBnTgYqjR
+ ewI9lJeiwxrBZ5Sm+Hf/FagLvBKH1C42AlTRN3A067xO51PLEJfF2naetJIB025YAePS
+ rpKMeMWzNvOlwFWR1wzO/ysllBmclftBQ2yqZWD08lytES4jEp6B5M5ziK8R8IkFksCI
+ sikmbJedxw/iGXBq+sRXZDKW2q6uAHe3P8lLiArMqiRyZQRQcjrI13C2jf+lnVMSS2Z9
+ TUl5h4uFUFGsnBLTgjlx2udY6KjRFzaRf2e+6+1XrPAsJPAgQQimUcmdigQ/81FgzMiJ
+ hIwQ==
+X-Gm-Message-State: APjAAAU4XApxmQN+hJi6IOeZa+0u/3WXJwgcUvXG1dpjwi88DfQNhLcu
+ Oy3tB5nngwzD59yoHCzCyhphJwA67aBxt/Pra2zdVQ==
+X-Received: by 2002:a9d:6745:: with SMTP id w5mr7319934otm.221.1575568493991; 
+ Thu, 05 Dec 2019 09:54:53 -0800 (PST)
 MIME-Version: 1.0
 References: <20191011134744.2477-1-richard.henderson@linaro.org>
- <20191011134744.2477-15-richard.henderson@linaro.org>
-In-Reply-To: <20191011134744.2477-15-richard.henderson@linaro.org>
+ <20191011134744.2477-16-richard.henderson@linaro.org>
+In-Reply-To: <20191011134744.2477-16-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Dec 2019 17:49:26 +0000
-Message-ID: <CAFEAcA9tHvwN-FbVWoMRfidGC8uJD6k8w=ucs537Gh-=CtmxeA@mail.gmail.com>
-Subject: Re: [PATCH v5 14/22] target/arm: Implement the access tag cache
- flushes
+Date: Thu, 5 Dec 2019 17:54:43 +0000
+Message-ID: <CAFEAcA9TF5bQWpOccJynDSBVRekZaUbgMWtjxkiyKzmM7=g2eQ@mail.gmail.com>
+Subject: Re: [PATCH v5 15/22] target/arm: Clean address for DC ZVA
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::343
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QP5FSuxkLQRw
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kTQtSm39aItw
 
 On Fri, 11 Oct 2019 at 14:50, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Like the regular data cache flushes, these are nops within qemu.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/helper.c | 48 +++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 48 insertions(+)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index f435a8d8bd..33bc176e1c 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -5978,6 +5978,54 @@ static const ARMCPRegInfo mte_reginfo[] = {
->      { .name = "GMID_EL1", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 1, .crn = 0, .crm = 0, .opc2 = 4,
->        .access = PL1_R, .type = ARM_CP_CONST, .resetvalue = GMID_EL1_BS },
-> +    { .name = "IGVAC", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 3,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "IGSW", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 4,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "IGDVAC", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 5,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "IGDSW", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 6,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CGSW", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 4,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CGDSW", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 6,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CIGSW", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 4,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CIGDSW", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 6,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CGVAC", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 10, .opc2 = 3,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CGDVAC", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 10, .opc2 = 5,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CGVAP", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 3,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CGDVAP", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 5,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CGVADP", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 3,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CGDVADP", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 5,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CIGVAC", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 3,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
-> +    { .name = "CIGDVAC", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 5,
-> +      .type = ARM_CP_NOP, .access = PL1_W },
->      REGINFO_SENTINEL
->  };
+> This data access was forgotten in the previous patch.
 
-Some of these, but not all, are conditionally available at EL0,
-which means that for those that are:
- * .access should be PL0_W
- * .accessfn should be aa64_cacheop_access() (which checks
-    SCTLR_EL1.UCI)
- * they need to be in a reginfo that makes them available
-   for the insns-and-regs-only flavour of MTE
+Do you mean "in the patch where we added support for cleaning
+addresses of TBI information"? As written it sounds like you're
+referring to the previous patch in this patchseries.
+
+> Fixes: 3a471103ac1823ba
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

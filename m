@@ -1,99 +1,143 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2240169lff;
-        Thu, 5 Dec 2019 08:14:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy1+33NcPcKyJh389jbAVyOiJKO2liZ2yHgazoOYIbYlUS85p/uXN8C4SGikl/S5UvWA46R
-X-Received: by 2002:a05:620a:102e:: with SMTP id a14mr8760223qkk.159.1575562450586;
-        Thu, 05 Dec 2019 08:14:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575562450; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2279010lff;
+        Thu, 5 Dec 2019 08:37:16 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwYIeaQduLunwfofvzxgzKA1AP06v0iDD4/iAbbPA9lBJfRWFnG5uQanfkq2/C3KlrIiOfY
+X-Received: by 2002:ac8:47cc:: with SMTP id d12mr8505039qtr.246.1575563836584;
+        Thu, 05 Dec 2019 08:37:16 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1575563836; cv=pass;
         d=google.com; s=arc-20160816;
-        b=s/c37SxpQa9C+j8DmV39OBYrYrOq0SfDb6DJ6FdMv5pehW8B1aNjLQzLdCzawkF8eL
-         7Bnnmbo3SWL4ry8XGC6Tz+DE0eZ2jsQ+XE2Rsa/gTxLG6dJFAY1xM6SC2LyNb/A7AZ53
-         s4EgDy3kh8aZsDrXo9Ldftxj+JexNWhuEXYChM7+c23qU1UD97a0kUC/gSHk1H9PswFW
-         zpx08D3bhAS9JLTDnpI6uXWrPUIzaIFjiVX0LIfKEY+2IHUfbYRsueqe6PhuXB25GSnx
-         QFZe/8fkhvuhtNIbTSO8oLq6btB64fzuXBRn/K7nkSDpnVYC4gXRE2iDMnJIkHhHeIvI
-         +dMA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=XtAQj9BEeCLYJRF2bf+FfGztccYodientWTh5EKtypAK59p9V+7wDPpQZcJwQgy021
+         tCfruOXdUS8QUxcx9ugFE9R4QB9vi28IyrqB2uH43TVAQt+h1exyAj8DpL2O9ip0wi9B
+         E7Y9kDpayF/S3wyLnLdKu+0ITgulbTw7M95qahITUiyvyQlyCetvacmXsQw1EokQ1syz
+         cNvnhLNGyo2TkPVYO/KefNrojrtKIpealpCZqGe7Li8KYu9fTGJCAg86kbuIUOHuyhe+
+         Nxngt0n5Sc3pdo4/xqT/KYyh5w5AnY1PZTxH0C2GdwDd5s52ANVdiWg2vqsUXl4NZfaa
+         Q3Wg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=O7zxnns45g/PqlaLvC0zluFyeYIq9ueCzPawLjJ2Kw0=;
-        b=mtSfMoE9OteVdqpnRQavH/F3MD3QXswYYCL6mOwvo8Vs1jhzyahs+MEgL56XPmiAFA
-         /fa7I7WBa4nWfN75tPykDecpIqxqrytfGT6cFTlWcEUVqjInkefFGQ6rRlyVuBic8Q1l
-         kniy7FrtjQHaEb6e3FNAM0mEq4Ssa8lAAtYeVCHnTJ/ncJxi+078TZy9Jetkx4xtcmie
-         IWuw4CfrhHCrxBuJ94dCfLtVXDmUjY4CFVfnKVgdR6CPzVz08n2/KZ9nZV6IIT/Gk5Sk
-         0hcpwZIelGibl5sRKuxv0Twv4M3XwuPX/m47b1NkxcJpsOCnZU6mfqAfyYuBUsq9lywu
-         m3YQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=wd7KtQBZ;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:to:from:dkim-signature;
+        bh=BYFcZEZvWhTiSAbFQyG3vTsddaFK3yn9mr+VXoBleB4=;
+        b=C2RzLfV2l2REzlE36uEJPqnDUK5Z3mY3y1t0iDlLtCsvIg4hLQeUiaH8S+W4wY98/H
+         rsQY9R6irY8devrcv5bPhKxN6/3AMwag8a0I6D6Hd982EZdUBFag4a65Z8mQl3b/Q7He
+         gw/pyieVXSPebXvXmJz1tyMrncRtY/s4ArjCAc0dfusKVrS2Br80UduyWXrynL40OjdK
+         3d7qVFsfkzcqMtJ6OFrXqeaq5GvDBLVBiAEdqRc//VoWP2EPfGL3HD9av5HxjtC4BqBL
+         BeAjW/s7n7aGpP8hbvN+2iT9zyEGkg39XuM2CAt86k3S2JwqxjwQKiu3LibCiKd1UP6f
+         n9ww==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=kd7JrIfM;
+       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c19si6929137qtb.110.2019.12.05.08.14.10
+        by mx.google.com with ESMTPS id q11si7127983qtr.1.2019.12.05.08.37.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Dec 2019 08:14:10 -0800 (PST)
+        Thu, 05 Dec 2019 08:37:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=wd7KtQBZ;
+       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=kd7JrIfM;
+       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57030 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
+Received: from localhost ([::1]:57330 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ictlZ-0000DO-Nw
-	for alex.bennee@linaro.org; Thu, 05 Dec 2019 11:14:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48440)
+	id 1icu7u-0004T1-4q
+	for alex.bennee@linaro.org; Thu, 05 Dec 2019 11:37:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46783)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1ictjt-0006zY-20
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 11:12:26 -0500
+ (envelope-from <vsementsov@virtuozzo.com>) id 1icu7e-0004Me-BK
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 11:36:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1ictjr-0006Cg-NQ
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 11:12:24 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:43977)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1ictjq-0006A3-CQ
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 11:12:23 -0500
-Received: by mail-oi1-x241.google.com with SMTP id t25so3198281oij.10
- for <qemu-arm@nongnu.org>; Thu, 05 Dec 2019 08:12:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=O7zxnns45g/PqlaLvC0zluFyeYIq9ueCzPawLjJ2Kw0=;
- b=wd7KtQBZUXWCXoFLpeVmPM2yG03Y/cbrTiubxSkOvykVU0kCdjP+vbXSe7T7i302pV
- tJHo9TTZJAxjYblLJ8L4WSBdWaNSP8+pkogVaK6DmtjW5rGn+If2IqWZwnfz/fwy81y7
- 7OOqLPYDjdPu0HyvQ3e2ljXGevOGYAFwCLDZs/SYrWihVv2DfoI5rplZkpb4psUOKUAB
- fwmdLZWc9/TahUKfSfR4Py2YafwxFEqC6sW9A5v6SXnOdE7MZDUvf9ejOapZG6C4xElQ
- LuDstYmScARwTOkPCUeAz+4Ut3OH7xv8xghIuLkxVbP8HJAbkCsE00Q0Bb9uAiZQac9U
- U9NQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=O7zxnns45g/PqlaLvC0zluFyeYIq9ueCzPawLjJ2Kw0=;
- b=JLovvx9mXPYJzLLlMR6XlwLYN24Ps6dvUZRE+YW85PY5NnWQO4+T12FvPul2DxeKYT
- bNPQUS2XcXoLGuvqjoFKGBtKs4R63HXJgSC5oZ9tXb2A+4LrnLs4Ekcdr9XPcHHo/O1k
- +RKZ8IdTDmFMoq65NDzzZQDonfWP0KzjYfHYhozOvpMKP215QL9wn1dAzUgPg9btMYFW
- TVvwL0EfqV+kH1AKlsbBoWh0HtjrzQZPauZaWhYxFIDEZoflzDrFSN76EL9uj7gGKO6Y
- SqcLP8oFV1dJVjGOm746H8IZwaYPC+i1odp5noKTolNF6eXUFdHdmcmOTsDEqiX/5X+/
- GaMw==
-X-Gm-Message-State: APjAAAUDnUad8nQK1Fm+vRRralIWN3gX68ZE6P9PlFenwkPH17vdc3ac
- V/xlfubVxSvg5ibneSoPHECnJIBIykedX8lfvfNrjw==
-X-Received: by 2002:aca:f484:: with SMTP id s126mr7442804oih.48.1575562340754; 
- Thu, 05 Dec 2019 08:12:20 -0800 (PST)
+ (envelope-from <vsementsov@virtuozzo.com>) id 1icu7c-0002Rh-Lg
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 11:36:58 -0500
+Received: from mail-eopbgr80125.outbound.protection.outlook.com
+ ([40.107.8.125]:62784 helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1icu7R-0001QU-9S; Thu, 05 Dec 2019 11:36:46 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fr4ykQT3Ewm21lon3aUQPxSwSL/JLevYNelkzsFKTG4Y9mHz3lenYYAstffgZ0XvEWLG8C68hdl1OUTFIOOn1wEeRZGj6byBiLIX4AhW+TV+EmbD0OUtf5mWkdrNrJsDyflV7vPgxORQtKUirTtqZ1HdzbrPhYfA8jAhPF2w//ArWuq3UwS2xrc8BIiNLL1TZwwZg6vSZt3k09LHK4kMo4773HHqTOaWaNKx8+Hlug+xOs+MzmTF0qqK4iS5PNdpMoD+29Mr9vXclRUfysQhQl6B/TuoMy841W/Hhtndvy85xC4AonEqbpgL/xsv0+VtXrNQ7qy1E0dYoIUCFD2f7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BYFcZEZvWhTiSAbFQyG3vTsddaFK3yn9mr+VXoBleB4=;
+ b=mys6kURJ5U/S8z9ERRIk8VTzLrAyDpPnsZJVJlNyrbku93kha415V3wrsvxGrNkB+RA2m1cXSqQsRgd1MwuBVSjyuzE6wxJGV5CoUPq6Ot3B6x1UsepDw+PZSQUb0FuUdwxN5QoTt0v7yGuMYcpDnT7FrDDx4YnFYH17AhjxpvCExhJIEelUZwlHvkD3BF3bwoJxqc6wUDQ2RQQjKLsNCGHHx+O0cynyAlbG+kgAaAgohx6wqJNN0O3Ug61bjp1O26ouOTlhdmBd9fceEwaxPXIw8J4WL2s6HxHndSP44mVcAaDEJZeUXqOwoZMNNt+n1IVihMiKJ1EPoxBoi/+2AQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
+ header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BYFcZEZvWhTiSAbFQyG3vTsddaFK3yn9mr+VXoBleB4=;
+ b=kd7JrIfMeOe9HUIUk1hOGaDSrtkaQUQaXAQ7ZSqZXMf6bPvtl6pXsGEDKPtbm0zRI9y4IuJOCqyw1rpRl+afy6GOTGPdl8RAqnJHFeSB4TLZqXCVzluGz1HdDCwzPuWGC2kJds+ptfcTVJfONYEj0N78n2VjTKzrCLJDV8BT2GE=
+Received: from AM6PR08MB4423.eurprd08.prod.outlook.com (20.179.7.140) by
+ AM6PR08MB3413.eurprd08.prod.outlook.com (20.177.113.10) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2495.20; Thu, 5 Dec 2019 16:36:42 +0000
+Received: from AM6PR08MB4423.eurprd08.prod.outlook.com
+ ([fe80::11a9:a944:c946:3030]) by AM6PR08MB4423.eurprd08.prod.outlook.com
+ ([fe80::11a9:a944:c946:3030%7]) with mapi id 15.20.2516.014; Thu, 5 Dec 2019
+ 16:36:42 +0000
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+To: Markus Armbruster <armbru@redhat.com>
+Subject: Re: [RFC v5 024/126] error: auto propagated local_err
+Thread-Topic: [RFC v5 024/126] error: auto propagated local_err
+Thread-Index: AQHVgE3c5dwPNEl0z0OyUhbNfTU1EqeqZpzagAFqo4D///+mMYAAWcgA///pCIA=
+Date: Thu, 5 Dec 2019 16:36:42 +0000
+Message-ID: <a6df5b5b-7b76-fe38-cbd4-f2473a109d3d@virtuozzo.com>
+References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
+ <20191011160552.22907-25-vsementsov@virtuozzo.com>
+ <87muc8p24w.fsf@dusky.pond.sub.org>
+ <55393c08-5bda-8042-1a95-f350b3781d99@virtuozzo.com>
+ <87d0d3c5k7.fsf@dusky.pond.sub.org>
+ <eef60af5-ff92-3df7-bad5-c981690d66ad@virtuozzo.com>
+In-Reply-To: <eef60af5-ff92-3df7-bad5-c981690d66ad@virtuozzo.com>
+Accept-Language: ru-RU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: HE1PR07CA0005.eurprd07.prod.outlook.com
+ (2603:10a6:7:67::15) To AM6PR08MB4423.eurprd08.prod.outlook.com
+ (2603:10a6:20b:bf::12)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=vsementsov@virtuozzo.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-tagtoolbar-keys: D20191205193635106
+x-originating-ip: [185.231.240.5]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: a1cfaf18-b700-494f-df99-08d779a14f16
+x-ms-traffictypediagnostic: AM6PR08MB3413:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <AM6PR08MB34131D6E623E75FC45330EF1C15C0@AM6PR08MB3413.eurprd08.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-forefront-prvs: 02426D11FE
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(136003)(366004)(346002)(396003)(39850400004)(376002)(199004)(189003)(2906002)(5660300002)(14454004)(66556008)(31686004)(99286004)(25786009)(66476007)(66946007)(305945005)(66446008)(71190400001)(11346002)(71200400001)(2616005)(52116002)(186003)(102836004)(7336002)(64756008)(76176011)(54906003)(6486002)(229853002)(26005)(8676002)(478600001)(86362001)(6506007)(14444005)(316002)(6512007)(7406005)(7366002)(8936002)(81156014)(36756003)(7416002)(81166006)(6916009)(31696002)(4326008);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:AM6PR08MB3413;
+ H:AM6PR08MB4423.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: virtuozzo.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: XhQDb+2ARl2+jHpU+uwJQ+uh6sTJqoAzH2+T7uuoM6rK7g89Le1+sNf4bbgjjGWXLDTNzsPLocj9HEC8jnWT7hITmTh3+l9fOMpV809II19hVe+Mt9L9ne+BoVhfLzwVNWKvMtk5/7F3QeDc4DRqVbuQO9uvujEXCSVBPK5WgdTakLa9ppbTBygdaSv6Sqe+UxuEaX2Qw4PXCDaJj7idqjyTckcydRJTDTMPW4p6hPCiLxCjUeNr6MZLuopeTcJ+B/NOozorTq0uBzagFWuHsJA5MRBwbOP4BXyAkAZvK8ATJcsyJfZtPtlJDyIwpE1BSG4H3buqkVNLpSjA3TZGBYwRnJDfxTkoyEBXXij39Ry8U/7xDqtf16GitTm1YuLQxkS7fjMy5JvtizfGFi6V+NGI4wSzUP6aRRoNO7AGftBAuULOolSVNJVD+1R9+pnF
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <E07E37C4DC38D7428A8813972FC8B55D@eurprd08.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20191011134744.2477-1-richard.henderson@linaro.org>
- <20191011134744.2477-11-richard.henderson@linaro.org>
-In-Reply-To: <20191011134744.2477-11-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Dec 2019 16:12:09 +0000
-Message-ID: <CAFEAcA-MKN5vJYTwF5fbQVvgC_QpfezG_S4Z1gF1Qxtc5NSNoA@mail.gmail.com>
-Subject: Re: [PATCH v5 10/22] target/arm: Define arm_cpu_do_unaligned_access
- for CONFIG_USER_ONLY
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+X-OriginatorOrg: virtuozzo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a1cfaf18-b700-494f-df99-08d779a14f16
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2019 16:36:42.3587 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 9ww9nQ2S5biuo2Gs3TzO0zG6DcTSL/RApkcqWEvb6E17V9WBvtGy3Cbz01pgkplP3IhsPjesh9CXSt3U1ggljILAKqVf/A31/VazwVaEhvY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR08MB3413
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.8.125
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,59 +149,159 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Jan Kiszka <jan.kiszka@siemens.com>, Alberto Garcia <berto@igalia.com>,
+ Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
+ =?utf-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Laszlo Ersek <lersek@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Ronnie Sahlberg <ronniesahlberg@gmail.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Eric Farman <farman@linux.ibm.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Hannes Reinecke <hare@suse.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ "Gonglei \(Arei\)" <arei.gonglei@huawei.com>, Liu Yuan <namei.unix@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
+ Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>,
+ Stafford Horne <shorne@gmail.com>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
+ Anthony Green <green@moxielogic.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
+ Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
+ Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+ "integration@gluster.org" <integration@gluster.org>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ "Richard W.M.
+ Jones" <rjones@redhat.com>, Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Max Reitz <mreitz@redhat.com>, Denis Lunev <den@virtuozzo.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
+ =?utf-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?= <berrange@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pw34q2h+CTwK
+X-TUID: yJ2tjy4RDx7M
 
-On Fri, 11 Oct 2019 at 14:50, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> We will need this to raise unaligned exceptions from user mode.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/tlb_helper.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-> index 5feb312941..29b92a1149 100644
-> --- a/target/arm/tlb_helper.c
-> +++ b/target/arm/tlb_helper.c
-> @@ -10,8 +10,6 @@
->  #include "internals.h"
->  #include "exec/exec-all.h"
->
-> -#if !defined(CONFIG_USER_ONLY)
-> -
->  static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
->                                              unsigned int target_el,
->                                              bool same_el, bool ea,
-> @@ -122,6 +120,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
->      arm_deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
->  }
->
-> +#ifndef CONFIG_USER_ONLY
->  /*
->   * arm_cpu_do_transaction_failed: handle a memory system error response
->   * (eg "no device/memory present at address") by raising an external abort
-> --
-> 2.17.1
-
-Isn't this just enabling compilation of the softmmu
-arm_cpu_do_unaligned_access() on linux-user? That codepath
-does a lot of softmmu stuff including calling arm_deliver_fault()
-(which implicitly does somewhat more looking at EL1 system
-register state than we necessarily have set up correctly
-for the user-mode code).
-
-For arm_cpu_tlb_fill() which handles prefetch/data aborts
-we just have a separate much simpler codepath for
-CONFIG_USER_ONLY which doesn't call arm_deliver_fault().
-I think being consistent here about how we handle the
-CONFIG_USER_ONLY case would help avoid having a codepath
-that isn't very well tested because it's only used in
-the odd special case of unaligned-address exceptions.
-
-thanks
--- PMM
+MDUuMTIuMjAxOSAxNzo1OCwgVmxhZGltaXIgU2VtZW50c292LU9naWV2c2tpeSB3cm90ZToNCj4g
+MDUuMTIuMjAxOSAxNTozNiwgTWFya3VzIEFybWJydXN0ZXIgd3JvdGU6DQo+PiBWbGFkaW1pciBT
+ZW1lbnRzb3YtT2dpZXZza2l5IDx2c2VtZW50c292QHZpcnR1b3p6by5jb20+IHdyaXRlczoNCj4+
+DQo+Pj4gMDQuMTIuMjAxOSAxNzo1OSwgTWFya3VzIEFybWJydXN0ZXIgd3JvdGU6DQo+Pj4+IFZs
+YWRpbWlyIFNlbWVudHNvdi1PZ2lldnNraXkgPHZzZW1lbnRzb3ZAdmlydHVvenpvLmNvbT4gd3Jp
+dGVzOg0KPj4+Pg0KPj4+Pj4gSGVyZSBpcyBpbnRyb2R1Y2VkIEVSUlBfQVVUT19QUk9QQUdBVEUg
+bWFjcm8sIHRvIGJlIHVzZWQgYXQgc3RhcnQgb2YNCj4+Pj4+IGZ1bmN0aW9ucyB3aXRoIGVycnAg
+T1VUIHBhcmFtZXRlci4NCj4+Pj4+DQo+Pj4+PiBJdCBoYXMgdGhyZWUgZ29hbHM6DQo+Pj4+Pg0K
+Pj4+Pj4gMS4gRml4IGlzc3VlIHdpdGggZXJyb3JfZmF0YWwgJiBlcnJvcl9wcmVwZW5kL2Vycm9y
+X2FwcGVuZF9oaW50OiB1c2VyDQo+Pj4+PiBjYW4ndCBzZWUgdGhpcyBhZGRpdGlvbmFsIGluZm9y
+bWF0aW9uLCBiZWNhdXNlIGV4aXQoKSBoYXBwZW5zIGluDQo+Pj4+PiBlcnJvcl9zZXRnIGVhcmxp
+ZXIgdGhhbiBpbmZvcm1hdGlvbiBpcyBhZGRlZC4gW1JlcG9ydGVkIGJ5IEdyZWcgS3Vyel0NCj4+
+Pj4+DQo+Pj4+PiAyLiBGaXggaXNzdWUgd2l0aCBlcnJvcl9hYm9ydCAmIGVycm9yX3Byb3BhZ2F0
+ZTogd2hlbiB3ZSB3cmFwDQo+Pj4+PiBlcnJvcl9hYm9ydCBieSBsb2NhbF9lcnIrZXJyb3JfcHJv
+cGFnYXRlLCByZXN1bHRpbmcgY29yZWR1bXAgd2lsbA0KPj4+Pj4gcmVmZXIgdG8gZXJyb3JfcHJv
+cGFnYXRlIGFuZCBub3QgdG8gdGhlIHBsYWNlIHdoZXJlIGVycm9yIGhhcHBlbmVkLg0KPj4+Pg0K
+Pj4+PiBJIGdldCB3aGF0IHlvdSBtZWFuLCBidXQgSSBoYXZlIHBsZW50eSBvZiBjb250ZXh0Lg0K
+Pj4+Pg0KPj4+Pj4gKHRoZSBtYWNybyBpdHNlbGYgZG9lc24ndCBmaXggdGhlIGlzc3VlLCBidXQg
+aXQgYWxsb3dzIHRvIFszLl0gZHJvcCBhbGwNCj4+Pj4+IGxvY2FsX2VycitlcnJvcl9wcm9wYWdh
+dGUgcGF0dGVybiwgd2hpY2ggd2lsbCBkZWZpbml0ZWx5IGZpeCB0aGUgaXNzdWUpDQo+Pj4+DQo+
+Pj4+IFRoZSBwYXJlbnRoZXNpcyBpcyBub3QgcGFydCBvZiB0aGUgZ29hbC4NCj4+Pj4NCj4+Pj4+
+IFtSZXBvcnRlZCBieSBLZXZpbiBXb2xmXQ0KPj4+Pj4NCj4+Pj4+IDMuIERyb3AgbG9jYWxfZXJy
+K2Vycm9yX3Byb3BhZ2F0ZSBwYXR0ZXJuLCB3aGljaCBpcyB1c2VkIHRvIHdvcmthcm91bmQNCj4+
+Pj4+IHZvaWQgZnVuY3Rpb25zIHdpdGggZXJycCBwYXJhbWV0ZXIsIHdoZW4gY2FsbGVyIHdhbnRz
+IHRvIGtub3cgcmVzdWx0aW5nDQo+Pj4+PiBzdGF0dXMuIChOb3RlOiBhY3R1YWxseSB0aGVzZSBm
+dW5jdGlvbnMgY291bGQgYmUgbWVyZWx5IHVwZGF0ZWQgdG8NCj4+Pj4+IHJldHVybiBpbnQgZXJy
+b3IgY29kZSkuDQo+Pj4+Pg0KPj4+Pj4gVG8gYWNoaWV2ZSB0aGVzZSBnb2Fscywgd2UgbmVlZCB0
+byBhZGQgaW52b2NhdGlvbiBvZiB0aGUgbWFjcm8gYXQgc3RhcnQNCj4+Pj4+IG9mIGZ1bmN0aW9u
+cywgd2hpY2ggbmVlZHMgZXJyb3JfcHJlcGVuZC9lcnJvcl9hcHBlbmRfaGludCAoMS4pOyBhZGQN
+Cj4+Pj4+IGludm9jYXRpb24gb2YgdGhlIG1hY3JvIGF0IHN0YXJ0IG9mIGZ1bmN0aW9ucyB3aGlj
+aCBkbw0KPj4+Pj4gbG9jYWxfZXJyK2Vycm9yX3Byb3BhZ2F0ZSBzY2VuYXJpbyB0aGUgY2hlY2sg
+ZXJyb3JzLCBkcm9wIGxvY2FsIGVycm9ycw0KPj4+Pj4gZnJvbSB0aGVtIGFuZCBqdXN0IHVzZSAq
+ZXJycCBpbnN0ZWFkICgyLiwgMy4pLg0KPj4+Pg0KPj4+PiBUaGUgcGFyYWdyYXBoIHRhbGtzIGFi
+b3V0IHR3byBjYXNlczogMS4gYW5kIDIuKzMuDQo+Pj4NCj4+PiBIbW0sIEkgZG9uJ3QgdGhpbmsg
+c28uLiAxLiBhbmQgMi4gYXJlIGlzc3Vlcy4gMy4gaXMgYSByZWZhY3RvcmluZy4uIFdlIGp1c3QN
+Cj4+PiBmaXggYWNoaWV2ZSAyIGFuZCAzIGJ5IG9uZSBhY3Rpb24uDQo+Pj4NCj4+Pj4gTWFrZXMg
+bWUgdGhpbmsgd2UNCj4+Pj4gd2FudCB0d28gcGFyYWdyYXBocywgZWFjaCBpbGx1c3RyYXRlZCB3
+aXRoIGFuIGV4YW1wbGUuDQo+Pj4+DQo+Pj4+IFdoYXQgYWJvdXQgeW91IHByb3ZpZGUgdGhlIGV4
+YW1wbGVzLCBhbmQgdGhlbiBJIHRyeSB0byBwb2xpc2ggdGhlIHByb3NlPw0KPj4+DQo+Pj4gMTog
+ZXJyb3JfZmF0YWwgcHJvYmxlbQ0KPj4+DQo+Pj4gQXNzdW1lIHRoZSBmb2xsb3dpbmcgY29kZSBm
+bG93Og0KPj4+DQo+Pj4gaW50IGYxKGVycnApIHsNCj4+PiAgICAgICAuLi4NCj4+PiAgICAgICBy
+ZXQgPSBmMihlcnJwKTsNCj4+PiAgICAgICBpZiAocmV0IDwgMCkgew0KPj4+ICAgICAgICAgIGVy
+cm9yX2FwcGVuZF9oaW50KGVycnAsICJ2ZXJ5IHVzZWZ1bCBoaW50Iik7DQo+Pj4gICAgICAgICAg
+cmV0dXJuIHJldDsNCj4+PiAgICAgICB9DQo+Pj4gICAgICAgLi4uDQo+Pj4gfQ0KPj4+DQo+Pj4g
+Tm93LCBpZiB3ZSBjYWxsIGYxIHdpdGggJmVycm9yX2ZhdGFsIGFyZ3VtZW50IGFuZCBmMiBmYWls
+cywgdGhlIHByb2dyYW0NCj4+PiB3aWxsIGV4aXQgaW1tZWRpYXRlbHkgaW5zaWRlIGYyLCB3aGVu
+IHNldHRpbmcgdGhlIGVycnAuIFVzZXIgd2lsbCBub3QNCj4+PiBzZWUgdGhlIGhpbnQuDQo+Pj4N
+Cj4+PiBTbywgaW4gdGhpcyBjYXNlIHdlIHNob3VsZCB1c2UgbG9jYWxfZXJyLg0KPj4NCj4+IEhv
+dyBkb2VzIHRoaXMgZXhhbXBsZSBsb29rIGFmdGVyIHRoZSB0cmFuc2Zvcm1hdGlvbj8NCj4gDQo+
+IEdvb2QgcG9pbnQuDQo+IA0KPiBpbnQgZjEoZXJycCkgew0KPiAgICAgIEVSUlBfQVVUT19QUk9Q
+QUdBVEUoKTsNCj4gICAgICAuLi4NCj4gICAgICByZXQgPSBmMihlcnJwKTsNCj4gICAgICBpZiAo
+cmV0IDwgMCkgew0KPiAgICAgICAgIGVycm9yX2FwcGVuZF9oaW50KGVycnAsICJ2ZXJ5IHVzZWZ1
+bCBoaW50Iik7DQo+ICAgICAgICAgcmV0dXJuIHJldDsNCj4gICAgICB9DQo+ICAgICAgLi4uDQo+
+IH0NCj4gDQo+IC0gbm90aGluZyBjaGFuZ2VkLCBvbmx5IGFkZCBtYWNybyBhdCBzdGFydC4gQnV0
+IG5vdyBlcnJwIGlzIHNhZmUsIGlmIGl0IHdhcw0KPiBlcnJvcl9mYXRhbCBpdCBpcyB3cmFwcGVk
+IGJ5IGxvY2FsIGVycm9yLCBhbmQgd2lsbCBvbmx5IGNhbGwgZXhpdCBvbiBhdXRvbWF0aWMNCj4g
+cHJvcGFnYXRpb24gb24gZjEgZmluaXNoLg0KPiANCj4+DQo+Pj4gMjogZXJyb3JfYWJvcnQgcHJv
+YmxlbQ0KPj4+DQo+Pj4gTm93LCBjb25zaWRlciBmdW5jdGlvbnMgd2l0aG91dCByZXR1cm4gdmFs
+dWUuIFdlIG5vcm1hbGx5IHVzZSBsb2NhbF9lcnINCj4+PiB2YXJpYWJsZSB0byBjYXRjaCBmYWls
+dXJlczoNCj4+Pg0KPj4+IHZvaWQgZjEoZXJycCkgew0KPj4+ICAgICAgIEVycm9yICpsb2NhbF9l
+cnIgPSBOVUxMOw0KPj4+ICAgICAgIC4uLg0KPj4+ICAgICAgIGYyKCZsb2NhbF9lcnIpOw0KPj4+
+ICAgICAgIGlmIChsb2NhbF9lcnIpIHsNCj4+PiAgICAgICAgICAgZXJyb3JfcHJvcGFnYXRlKGVy
+cnAsIGxvY2FsX2Vycik7DQo+Pj4gICAgICAgICAgIHJldHVybjsNCj4+PiAgICAgICB9DQo+Pj4g
+ICAgICAgLi4uDQo+Pj4gfQ0KPj4+DQo+Pj4gTm93LCBpZiB3ZSBjYWxsIGYyIHdpdGggJmVycm9y
+X2Fib3J0IGFuZCBmMiBmYWlscywgdGhlIHN0YWNrIGluIHJlc3VsdGluZw0KPj4+IGNyYXNoIGR1
+bXAgd2lsbCBwb2ludCB0byBlcnJvcl9wcm9wYWdhdGUsIG5vdCB0byB0aGUgZmFpbHVyZSBwb2lu
+dCBpbiBmMiwNCj4+PiB3aGljaCBjb21wbGljYXRlcyBkZWJ1Z2dpbmcuDQo+Pj4NCj4+PiBTbywg
+d2Ugc2hvdWxkIG5ldmVyIHdyYXAgZXJyb3JfYWJvcnQgYnkgbG9jYWxfZXJyLg0KPj4NCj4+IExp
+a2V3aXNlLg0KPiANCj4gQW5kIGhlcmU6DQo+IA0KPiB2b2lkIGYxKGVycnApIHsNCj4gICAgICAg
+RVJSUF9BVVRPX1BST1BBR0FURSgpOw0KPiAgICAgICAuLi4NCj4gICAgICAgZjIoZXJycCk7DQo+
+ICAgICAgIGlmICgqZXJycCkgew0KPiAgICAgICAgICAgcmV0dXJuOw0KPiAgICAgICB9DQo+ICAg
+ICAgIC4uLg0KPiANCj4gLSBpZiBlcnJwIHdhcyBOVUxMLCBpdCBpcyB3cmFwcGVkLCBzbyBkZXJl
+ZmVyZW5jaW5nIGVycnAgaXMgc2FmZS4gT24gcmV0dXJuLA0KPiAgICAgbG9jYWwgZXJyb3IgaXMg
+YXV0b21hdGljYWxseSBwcm9wYWdhdGVkIHRvIG9yaWdpbmFsIG9uZS4NCg0KYW5kIGlmIGl0IHdh
+cyBlcnJvcl9hYm9ydCwgaXQgaXMgbm90IHdyYXBwZWQsIHNvIHdpbGwgY3Jhc2ggd2hlcmUgZmFp
+bGVkLg0KDQo+IA0KPj4NCj4+Pg0KPj4+ID09PQ0KPj4+DQo+Pj4gT3VyIHNvbHV0aW9uOg0KPj4+
+DQo+Pj4gLSBGaXhlcyBbMS5dLCBhZGRpbmcgaW52b2NhdGlvbiBvZiBuZXcgbWFjcm8gaW50byBm
+dW5jdGlvbnMgd2l0aCBlcnJvcl9hcHBlbl9oaW50L2Vycm9yX3ByZXBlbmQsDQo+Pj4gICAgICBO
+ZXcgbWFjcm8gd2lsbCB3cmFwIGVycm9yX2ZhdGFsLg0KPj4+IC0gRml4ZXMgWzIuXSwgYnkgc3dp
+dGNoaW5nIGZyb20gaGFuZC13cml0dGVuIGxvY2FsX2VyciB0byBzbWFydCBtYWNybywgd2hpY2gg
+bmV2ZXINCj4+PiAgICAgIHdyYXBzIGVycm9yX2Fib3J0Lg0KPj4+IC0gSGFuZGxlcyBbMy5dLCBi
+eSBzd2l0Y2hpbmcgdG8gbWFjcm8sIHdoaWNoIGlzIGxlc3MgY29kZQ0KPj4+IC0gQWRkaXRpb25h
+bGx5LCBtYWNybyBkb2Vzbid0IHdyYXAgbm9ybWFsIG5vbi16ZXJvIGVycnAsIHRvIGF2b2lkIGV4
+dHJhIHByb3BhZ2F0aW9ucw0KPj4+ICAgICAgKGluIGZhY3QsIGVycm9yX3Byb3BhZ2F0ZSBpcyBj
+YWxsZWQsIGJ1dCByZXR1cm5zIGltbWVkaWF0ZWx5IG9uIGZpcnN0IGlmICghbG9jYWxfZXJyKSkN
+Cj4+DQo+IA0KPiANCg0KDQotLSANCkJlc3QgcmVnYXJkcywNClZsYWRpbWlyDQo=

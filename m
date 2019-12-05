@@ -1,119 +1,104 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1557665lff;
-        Wed, 4 Dec 2019 21:03:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwy96Lf3y56QbrbwsEA31GFnIwClcLHb+4zYzqjM/dBFaBF0TP/IiNZ9AHgWHn5k7cypzw5
-X-Received: by 2002:ac8:75d6:: with SMTP id z22mr6102735qtq.111.1575522183938;
-        Wed, 04 Dec 2019 21:03:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575522183; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1732040lff;
+        Thu, 5 Dec 2019 00:37:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxgFTh6h+NjwPb8/E4HQBSx5TBP/BEdVJyxDNc93yr8FOXZSoWKxqQpM6HdFlZp6TEPTuQ+
+X-Received: by 2002:aca:5487:: with SMTP id i129mr5941136oib.167.1575535071482;
+        Thu, 05 Dec 2019 00:37:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575535071; cv=none;
         d=google.com; s=arc-20160816;
-        b=VhSPHY4MsBbye7UiSj7bjjY+07GuPM4T6iB1V9rQy/NLx0sXBbl2eXoKg/kzEp9wR4
-         rXY4Av99y00QxLCdHrbTmzVOm+/E8dH9E2yW7HVU2GGu7NXIg8tf0qPJft+n/r3yESPX
-         fUzit6vikxsLk66AwO2JE1iaN0n/5w/0dglw3Z+bZ+RKFuXp2Ad/9ASwVL4rpwgcHqVA
-         BAJJp8c8CmyUL9ZZhpXvgBSHgf/9UT20Nxoq3LwO5GPhV+hNeqcds1HMcIyn9gMGhFT9
-         MmdUhOJDaUeEMgX8h5u8sGUvOJZBJEoJHSd9T6Q6KF0sYHF+cvYRpdNCSgFS6Z/4SQ0u
-         0Haw==
+        b=VZpIT+Dcql+a35IPplWf/kvPie4spNPoOXYEtRYlVIioOqKU5nrylglEsZGEeR3fCD
+         OQq2VPYIx4A0tWjoBl/CES1mxYYxtX+Up9x3r8o0HUtkQJ0YFdLR1uB8E8MC2Czul8/B
+         zYNPhTlm1qUCqHqGmsFcvzx4qXjsp/xrHa4KP1orCrAyhAQK/1Tsiquro5EYD+d/TB7b
+         e68bVJjvvTt0PHM1fEuK1bYwaRiHG8++Q1LOaoPlV0AZsPG7vpV9/Zn5LnfsigedHU2I
+         0pSAfo9k0/apggiWKMNk0HRRptaeQAgKC5IWEkrfaZuPdHF5Rjm+211SVYVK6iyiVA93
+         3XEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:from:date:references:in-reply-to:message-id:mime-version
-         :user-agent:dkim-signature:dkim-signature;
-        bh=Gm0Bu76qnev5eR0jj9tPedHTPd0qyliUowe7Q0H39aI=;
-        b=Odo8w+uAunZAedpxBwRbmeUYNB/RgNMi3GFxX2JOqyIOCjwlUTvMHJ5lPNM0as+Qxo
-         D6SCdw7PfxiTv2417ld6I3VHsxmotwrsd8X70J9feBDUmvrfbUrPIMQHbIpZyUbhts5a
-         N17xPty1HSQkWrQnIN8AUtEbuZRUjK5njhZxGw3suMaX24WRLkt/n+ATGDlPLnsuxjLS
-         o1C3rPXMUSRioMkmOEk/vi5nnGvAQ7Ap2N3dCGJH+76zKL3IOH3OOl80QEzDv0bMY9Pz
-         4S/BbIMHeEZVf990BWKqzcXvHg955nPbrdFpZeOqEC/7t6tzaa/CNg20kunHSmg4LnDt
-         2Y1g==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=gjAx9qo7unBhZw8XOGVCMog1QrLyKDuC1ZKnNfrR6Ic=;
+        b=JXAD2ULoPeq4ESODFihRrlR4j4hPJJBps+/e/L9wDG1xjET9tQD/tgozzqkm3yiSgB
+         DeymFKDPulsXKv2aERg4c/TY/4igaubQSALvSLs33xZ2Eu0SsGjoNC08AT04tS58hyfX
+         KlbChIlQXjzi/YrsQt9pJSTJMjahWoU8S7gICrlrUX27W6YAM2XAyeHuhkFsQxAFniXg
+         XUE96FoQIaThzwB61r/Hw7W9S+2If5AvASDtm4BFBJZJ+AoKtjicWsHjpK5W3XH7GW1v
+         MzlnLOdsQ3/LmxHHqvQyPik8yALzdHjmD/DgiZ3IHx6ysIzlyZiKAUYVrdu7utkU3UO2
+         SGXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=OX+hWXUV;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=EOZvZyXL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DVqcGIHJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v91si5613797qvv.205.2019.12.04.21.03.03
+        by mx.google.com with ESMTPS id 46si4723349otu.11.2019.12.05.00.37.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2019 21:03:03 -0800 (PST)
+        Thu, 05 Dec 2019 00:37:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=OX+hWXUV;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=EOZvZyXL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50070 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DVqcGIHJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51498 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1icjI6-00078R-VK
-	for alex.bennee@linaro.org; Thu, 05 Dec 2019 00:03:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51228)
+	id 1icmdy-0005md-Mq
+	for alex.bennee@linaro.org; Thu, 05 Dec 2019 03:37:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58591)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1icjHt-00076M-H6
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 00:02:50 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1icmdk-0005hr-Ic
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 03:37:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1icjHs-0004DV-5a
- for qemu-arm@nongnu.org; Thu, 05 Dec 2019 00:02:49 -0500
-Received: from out4-smtp.messagingengine.com ([66.111.4.28]:57249)
+ (envelope-from <eric.auger@redhat.com>) id 1icmdj-0007Ys-Dz
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 03:37:36 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:54164
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1icjHo-0004AQ-FD; Thu, 05 Dec 2019 00:02:46 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 1402A227B8;
- Thu,  5 Dec 2019 00:02:41 -0500 (EST)
-Received: from imap2 ([10.202.2.52])
- by compute4.internal (MEProxy); Thu, 05 Dec 2019 00:02:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type:content-transfer-encoding; s=fm1; bh=Gm0Bu
- 76qnev5eR0jj9tPedHTPd0qyliUowe7Q0H39aI=; b=OX+hWXUVlXljYh73YbpVX
- uk67rYXN4fsOD5l+nVQ1fdHNEAop0/CPM39xmLBfZCWpPndnxWbIpnF2hydvMVXu
- iDLt86pWkUR4+XTb5sGDbDi3q40LVMZ/Lf/CHuFFdVXi42UNTN/m8f1U8SxSIt9/
- 9PPlsF37mTXaayfyTjrp0sDf8DyrzAGUpMfYYIJL+f1D3ALYZMPMAMSltN4w5Rnx
- pDeFqhq0IZo+1lRh6zxP7npx5a39XOZvvpw8FnFYjTelyrZks9p3L3HIMSMb8veJ
- bVRJJHuyYYPSjq7xlgxE7mxtkFcAWXCvYzeGyMJRncJnE+6usaFxpopFsfYYZuya
- A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; bh=Gm0Bu76qnev5eR0jj9tPedHTPd0qyliUowe7Q0H39
- aI=; b=EOZvZyXLmz0TaFvn8tufEc/zPRTBUr6dclFE1VBO73z426qsNWf01DoCe
- dXCgMPH3kEujC61WF/4DZ4S7ZZ0LCOG2r6zUenehQ5ne+JyWmBv9Lqv6tz3FvpLg
- If5wj/K9SO0MOcK4+L95nuQGpzAZvEXmUCu95qh3TdvjI/MJInfG+WjbYQUCfuM4
- qWib4AfeEzJuy7UC0cUz8Q/t7UELUMqe/i0TUa3bGhI+NooEfqxQeBrwQjVfaItU
- FM+TQkHDu8hhbm5CxBqwaj8pq5RPbr1fjKRQRbuKCcMt+9T6klV3Omfu/YFTdOEZ
- SauWSGyR9RAkp2KjHup2K0CPhUkMQ==
-X-ME-Sender: <xms:cI_oXaX3jlb25omEAYtzXsQQUePA4rxoBtw4Ow302Ve9cwgE_hCWZQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudektddgjeelucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
- ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucfrrg
- hrrghmpehmrghilhhfrhhomheprghnughrvgifsegrjhdrihgurdgruhenucevlhhushht
- vghrufhiiigvpedt
-X-ME-Proxy: <xmx:cI_oXa2knlD6TnwXA42kGk-bxpS64sIHNJ4BIN3P8dq9cB_LfbUPUQ>
- <xmx:cI_oXZZ4pnIn3c37bcw2UgmrDU4VGkOsCbWbcDHrH6aSuIbQH4rv7g>
- <xmx:cI_oXVolf65iVtdkqbv_AJNZnMB_qK2QzAKjaBX-E1Nt6c3BHYAn2g>
- <xmx:cY_oXStJPN0fIE_l7k3y3IhX5YCfwgxM-Ty25801dspTkHqXRArDDg>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 63050E00A2; Thu,  5 Dec 2019 00:02:40 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.1.7-612-g13027cc-fmstable-20191203v1
-Mime-Version: 1.0
-Message-Id: <ef0aab28-093c-41ef-9a2c-925de97145b2@www.fastmail.com>
-In-Reply-To: <87bf3c1d-9e77-f4a1-1163-548a3cfee3bc@redhat.com>
-References: <20191203041440.6275-1-andrew@aj.id.au>
- <20191203041440.6275-3-andrew@aj.id.au>
- <283c152b-b1c7-551e-bec0-c087b14de996@redhat.com>
- <4e90d36d-aa13-441f-9298-56f83a5bff6a@www.fastmail.com>
- <87bf3c1d-9e77-f4a1-1163-548a3cfee3bc@redhat.com>
-Date: Thu, 05 Dec 2019 15:34:15 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 2/4] target/arm: Abstract the generic timer frequency
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1icmdi-0007Q9-6b
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2019 03:37:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575535053;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gjAx9qo7unBhZw8XOGVCMog1QrLyKDuC1ZKnNfrR6Ic=;
+ b=DVqcGIHJWtKbaTpkjVYQzoiUk5xIKKErUcsmSlZ4E5uGlE13o2RouHBUGPQTgxDrulo4jc
+ Iv2Y2QvKsisyhfkMf0TgVRc++Vffztp8Ea1ECtUJZMZkJpRa18KrAHY60ma2nMY28QDVh+
+ rXwGPOPK1fFtFf9txKc/Fr93D8Afdfg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-165-KrgiRwe-O-WdUIogmUeZOw-1; Thu, 05 Dec 2019 03:37:30 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D46541005502;
+ Thu,  5 Dec 2019 08:37:28 +0000 (UTC)
+Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C13B517AA3;
+ Thu,  5 Dec 2019 08:37:27 +0000 (UTC)
+Subject: Re: [PATCH 4/5] hw/arm/smmuv3: Use correct bit positions in
+ EVT_SET_ADDR2 macro
+To: Simon Veith <sveith@amazon.de>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <1575467748-28898-1-git-send-email-sveith@amazon.de>
+ <1575467748-28898-5-git-send-email-sveith@amazon.de>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <56987d35-a6cc-e9dc-b216-efae755a9fe0@redhat.com>
+Date: Thu, 5 Dec 2019 09:37:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
+MIME-Version: 1.0
+In-Reply-To: <1575467748-28898-5-git-send-email-sveith@amazon.de>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: KrgiRwe-O-WdUIogmUeZOw-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 66.111.4.28
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -125,107 +110,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 95IgMAmpJCRq
+X-TUID: 84rRKrLoClQL
 
+Hi Simon,
 
+On 12/4/19 2:55 PM, Simon Veith wrote:
+> The bit offsets in the EVT_SET_ADDR2 macro do not match those specified
+> in the ARM SMMUv3 Architecture Specification. In all events that use
+> this macro, e.g. F_WALK_EABT, the faulting fetch address or IPA actually
+> occupies the 32-bit words 6 and 7 in the event record contiguously, with
+> the upper and lower unused bits clear due to alignment or maximum
+> supported address bits. How many bits are clear depends on the
+> individual event type.
+> 
+> Update the macro to write to the correct words in the event record so
+> that guest drivers can obtain accurate address information on events.
+> 
+> ref. ARM IHI 0070C, sections 7.3.12 through 7.3.16.
+> 
+> Signed-off-by: Simon Veith <sveith@amazon.de>
+Acked-by: Eric Auger <eric.auger@redhat.com>
 
-On Wed, 4 Dec 2019, at 03:57, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 12/3/19 1:48 PM, Andrew Jeffery wrote:
-> > On Tue, 3 Dec 2019, at 16:39, Philippe Mathieu-Daud=C3=A9 wrote:
-> >> On 12/3/19 5:14 AM, Andrew Jeffery wrote:
-> >>> Prepare for SoCs such as the ASPEED AST2600 whose firmware configu=
-res
-> >>> CNTFRQ to values significantly larger than the static 62.5MHz valu=
-e
-> >>> currently derived from GTIMER_SCALE. As the OS potentially derives=
- its
-> >>> timer periods from the CNTFRQ value the lack of support for runnin=
-g
-> >>> QEMUTimers at the appropriate rate leads to sticky behaviour in th=
-e
-> >>> guest.
-> >>>
-> >>> Substitute the GTIMER_SCALE constant with use of a helper to deriv=
-e the
-> >>> period from gt_cntfrq stored in struct ARMCPU. Initially set gt_cn=
-tfrq
-> >>> to the frequency associated with GTIMER_SCALE so current behaviour=
- is
-> >>> maintained.
-> >>>
-> >>> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> >>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> >>> ---
-> >>>    target/arm/cpu.c    |  2 ++
-> >>>    target/arm/cpu.h    | 10 ++++++++++
-> >>>    target/arm/helper.c | 10 +++++++---
-> >>>    3 files changed, 19 insertions(+), 3 deletions(-)
-> >>>
-> >>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> >>> index 7a4ac9339bf9..5698a74061bb 100644
-> >>> --- a/target/arm/cpu.c
-> >>> +++ b/target/arm/cpu.c
-> >>> @@ -974,6 +974,8 @@ static void arm_cpu_initfn(Object *obj)
-> >>>        if (tcg_enabled()) {
-> >>>            cpu->psci_version =3D 2; /* TCG implements PSCI 0.2 */
-> >>>        }
-> >>> +
-> >>> +    cpu->gt_cntfrq =3D NANOSECONDS_PER_SECOND / GTIMER_SCALE;
-> >>>    }
-> >>>   =20
-> >>>    static Property arm_cpu_reset_cbar_property =3D
-> >>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> >>> index 83a809d4bac4..666c03871fdf 100644
-> >>> --- a/target/arm/cpu.h
-> >>> +++ b/target/arm/cpu.h
-> >>> @@ -932,8 +932,18 @@ struct ARMCPU {
-> >>>         */
-> >>>        DECLARE_BITMAP(sve_vq_map, ARM_MAX_VQ);
-> >>>        DECLARE_BITMAP(sve_vq_init, ARM_MAX_VQ);
-> >>> +
-> >>> +    /* Generic timer counter frequency, in Hz */
-> >>> +    uint64_t gt_cntfrq;
-> >>
-> >> You can also explicit the unit by calling it 'gt_cntfrq_hz'.
-> >=20
-> > Fair call, I'll fix that.
-> >=20
-> >>
-> >>>    };
-> >>>   =20
-> >>> +static inline unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
-> >>> +{
-> >>> +    /* XXX: Could include qemu/timer.h to get NANOSECONDS_PER_SEC=
-OND? */
-> >>
-> >> Why inline this call? I doubt there is a significant performance ga=
-in.
-> >=20
-> > It wasn't so much performance. It started out as a macro for a simpl=
-e calculation
-> > because I didn't want to duplicate it across a number of places, the=
-n I wanted type
-> > safety for the pointer so  I switched the macro in the header to an =
-inline function. So
-> > it is an evolution of the patch rather than something that came from=
- an explicit goal
-> > of e.g. performance.
->=20
-> OK. Eventually NANOSECONDS_PER_SECOND will move to "qemu/units.h".
->=20
-> Should the XXX comment stay? I'm not sure, it is confusing.
+Thanks
 
-I'll remove that.=20
+Eric
+> Cc: Eric Auger <eric.auger@redhat.com>
+> Cc: qemu-devel@nongnu.org
+> Cc: qemu-arm@nongnu.org
+> ---
+>  hw/arm/smmuv3-internal.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index d190181..eb275e2 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -461,8 +461,8 @@ typedef struct SMMUEventInfo {
+>      } while (0)
+>  #define EVT_SET_ADDR2(x, addr)                            \
+>      do {                                                  \
+> -            (x)->word[7] = deposit32((x)->word[7], 3, 29, addr >> 16);   \
+> -            (x)->word[7] = deposit32((x)->word[7], 0, 16, addr & 0xffff);\
+> +            (x)->word[7] = (uint32_t)(addr >> 32);        \
+> +            (x)->word[6] = (uint32_t)(addr & 0xffffffff); \
+>      } while (0)
+>  
+>  void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
+> 
 
->=20
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-Thanks. However, did you still want your comment on 4/4 addressed (move
-the comment to this patch)?
-
-Andrew

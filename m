@@ -1,112 +1,179 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1051177lff;
-        Fri, 6 Dec 2019 09:37:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwbR2N14LCfvDop5cMuviN8Z+KmzJR7tQ7jyr+Qsm5UxXhYYRyQtlSef+9q54EsozU+XDD/
-X-Received: by 2002:a05:6830:232c:: with SMTP id q12mr11437851otg.168.1575653822108;
-        Fri, 06 Dec 2019 09:37:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575653822; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1084077lff;
+        Fri, 6 Dec 2019 10:05:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx6j6kDoPY9hzQtC4jdUXSL5Qf90NgnpMtZHhPwKtA2rTOPXD2YjrV8s3BLpzVgpblq4Wg/
+X-Received: by 2002:a05:6214:11ab:: with SMTP id u11mr13291312qvv.193.1575655536279;
+        Fri, 06 Dec 2019 10:05:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575655536; cv=none;
         d=google.com; s=arc-20160816;
-        b=hs/OIy8o9F28fAPXhY0O22Pq8nrzboCovp8vA54yqE/AgpkzLGW4/K2u9WENzlZFCJ
-         2avPQDCZ6IZ1hS+YMtoeiU0hOt8+BVSz02c60ZXnr7vkYQjXNLtIOB4CxQQd+BexScFz
-         4t1/7DOiokNkZZ9Qn+LCP5W/dqBiYHw4PosPl9Fz5ZYF5MsefEK5qda/9gJ47wU4AC+y
-         vt01Lo6PcAF9A19PS4/PRDLWYDpYU6GDZuNJlMQLRSQVR74v1ymM0tldGGqcFLB781OZ
-         OtlzeDyw/Ok2dH7xMGP+3Totm+X3ZH4uc5f0RTkrhdWbYNRnXhFg+wpj/blVTl49yNxu
-         /y4g==
+        b=lR+vRvREz+zhxsJrrtId3C1ELcNs+LLVcH5uS3vAX/eEGiYX2fjSbz2Lg66M9S3bqY
+         OjCyU8BWPpSq1ym4ImunlD70XLJ/wSU4C9Ik42hnx2AKxA0XhDBnTnCEw7iMWfZjGT76
+         itdRrVvsWb3qI4DuCqvxsoy6r6p4jvj9TU/7Li+MTfRZvq/rZZBrUWjVjWYcBRNZYF1s
+         6C595zcPdJS4raUN7j2WBcfdlmYvo9cGcamEPj2DUb8SUB1mdAm7Z5Rg0eDhGKn9xBxG
+         Hk2GE5wl89lRiqF0A92LYho7fw9VmNTUk0voXtzlD3nyQe+PTkem8hSdC88Z2n68H4G1
+         YhSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=jQlUohbVClNOF24U9Gw7AxXeZL3vyNGEDJfapbzA03s=;
-        b=m/4B0qlyRhA9cvpvSMNqgli/tsE2a4m/xIXKrYpMun6WZ7V9lIu6MvB9HquCVVVkaU
-         2ihnT3Lv/FaPTCDxTRnWbW6qL2VUzMVDM/ir5U3BT7xBGmpseeec2ynoXsPelfK6lssp
-         Mo1ur48+NnpFm3h1xkuETmKYZydd50R7cGXJAlmEdWg8+COBfSIUOSn/hhJxP6t2GnTZ
-         iWEAnjPo0n3WqGfdMbIDU42LTqPikKE2yRMhCwWn2Fa0ovXifP4jUX55em7lV9qs8X7A
-         iRJtW6U3hTOTq2cQbRuOqjmhUv/LKIFBBNxf9X8mgh2eiQ7/qoGr0bpaTYZ9pYnbAzO3
-         8/pw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=/8FkBmT49LXKNBsclsnSXXFcBOEc1Utu4LKmwsbCXCs=;
+        b=qE0d1ib3CQoCjNL/UCheqhQ8Rr/BIXwsDF28X9MYWhLcxIa9WyAlLYUH46gUmpuCup
+         cjMRzdlgRqO3w/tXhH7yh6qFONPvnSXyWy7e+86I5e+g350wdBPdEi/cpIumRcovmzDJ
+         Gyo7AtmJDQJ2RGkwiHbr5KMJsnnH0ijaeQBPurrvwc2BZCysWo3R8w22yR8IO8s3Okru
+         ZJky6+cQoL3/UAPovyfi1uBUIOZ4AjCjxXLglLo4Vatc5dNng/cFvQcnjiQWyHP8uhCK
+         e9UuFem3XcirMNCgI/3MYW6b9GS7LIcYeDc4Jfy0wrclry/0BQ3bEpanxHHp9eAgLwgC
+         b5Pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id l6si7140295oti.249.2019.12.06.09.37.01;
-        Fri, 06 Dec 2019 09:37:02 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Yqu6RzLU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k4si8984095qvh.185.2019.12.06.10.05.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 06 Dec 2019 10:05:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726321AbfLFRhB (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 6 Dec 2019 12:37:01 -0500
-Received: from foss.arm.com ([217.140.110.172]:51704 "EHLO foss.arm.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1726312AbfLFRhA (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 6 Dec 2019 12:37:00 -0500
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-        by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4A52431B;
-        Fri,  6 Dec 2019 09:37:00 -0800 (PST)
-Received: from [10.1.196.63] (e123195-lin.cambridge.arm.com [10.1.196.63])
-        by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E51A03F52E;
-        Fri,  6 Dec 2019 09:36:58 -0800 (PST)
-Subject: Re: [kvm-unit-tests RFC 01/10] arm64: Provide read/write_sysreg_s
-To:     Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
-        maz@kernel.org, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andrew.murray@arm.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org
-References: <20191206172724.947-1-eric.auger@redhat.com>
- <20191206172724.947-2-eric.auger@redhat.com>
-From:   Alexandru Elisei <alexandru.elisei@arm.com>
-Message-ID: <efe2c571-1b69-5cc4-3505-24d092a9f985@arm.com>
-Date:   Fri, 6 Dec 2019 17:36:57 +0000
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Yqu6RzLU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42912 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1idHyx-000347-D0
+	for alex.bennee@linaro.org; Fri, 06 Dec 2019 13:05:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51217)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1idGK2-0005uN-Lw
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 11:19:15 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1idGK0-0003Ah-CZ
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 11:19:13 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57353
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1idGK0-000342-6A
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 11:19:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575649139;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/8FkBmT49LXKNBsclsnSXXFcBOEc1Utu4LKmwsbCXCs=;
+ b=Yqu6RzLUxCmTX/omRdr8DcAHCy1TldKqcQpwZm/8kh7nLv0H6ylfRiIJUyWXyEiXa1Uesj
+ b3cWIZACQ9s9hA3895bYwNHWSsYc1OaXRYYyofUvNTXSa+dTnFMw9+uIoklquxAgXo16aX
+ Ag/AHUhQsUdzwOQWU0RWo6dBWLIZ5ig=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-403-okxgRtGWOkiNIh-bKaMVpg-1; Fri, 06 Dec 2019 11:18:55 -0500
+Received: by mail-wm1-f72.google.com with SMTP id v8so2276497wml.4
+ for <qemu-devel@nongnu.org>; Fri, 06 Dec 2019 08:18:55 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=XDTWNNsDHsp0CCh47OiHb+CMYdzkyMNSlMUYmHnXQpw=;
+ b=FIcLYaXAUa16Z3LlQyH9ircsIRdi8ReY1+QnStry+MGyYZuSows7qMrjZnWeaTp2wh
+ jbuUDX5u9J1X8+DLsGx761ZWdb+xgjVO/RbwO0HgSP4OQWnrlgIm+bBDB2TygujXpZyF
+ mscoXg1omWRMAtWrM13E+sHWx54zMhbva8JgWN6lTq3ZaLuSjQW6ZfhhVQyfJjavssO3
+ oNvtfeDmiuTHoPfHZcp5jKgF2rFBhcdSRt+0wRGtCkuoiWhszFT3y2P+w2oY6ctlXcsZ
+ SEbTr5Cr31PHvChcylTJUnomlzxlZk2iSeAvl/WZZnncZJibTGjR1lUknwb411vYLoaP
+ 7hgg==
+X-Gm-Message-State: APjAAAW5JIyRBoeNbEPs2lM1Etbj+hYG5jI4MkxTaEXVosYjD+MejTBm
+ cuifdjpeBGsGGr9FuYKrbdcH4J95ylygXvAtB06BQwR4dCEfWquG8dv8af9TQwMYyRO40QYQ+Lh
+ gA0floiDZkGsaf9A=
+X-Received: by 2002:a1c:6485:: with SMTP id y127mr12068571wmb.19.1575649134714; 
+ Fri, 06 Dec 2019 08:18:54 -0800 (PST)
+X-Received: by 2002:a1c:6485:: with SMTP id y127mr12068550wmb.19.1575649134426; 
+ Fri, 06 Dec 2019 08:18:54 -0800 (PST)
+Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
+ [88.21.103.182])
+ by smtp.gmail.com with ESMTPSA id m7sm11782414wrr.40.2019.12.06.08.18.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 06 Dec 2019 08:18:53 -0800 (PST)
+Subject: Re: [PATCH-for-5.0] hw/arm/sbsa-ref: Call qdev_get_gpio_in in place
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20191206072257.7221-1-philmd@redhat.com>
+ <CAFEAcA-n=RKviDr9h+hCdwETN-Et5+A--v+HU_DuwqCQ2BWdDA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <75d0cce3-de3e-08ac-0ecf-c97d93e30c8d@redhat.com>
+Date: Fri, 6 Dec 2019 17:18:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191206172724.947-2-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <CAFEAcA-n=RKviDr9h+hCdwETN-Et5+A--v+HU_DuwqCQ2BWdDA@mail.gmail.com>
 Content-Language: en-US
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: KFpnbIUq8WXV
+X-MC-Unique: okxgRtGWOkiNIh-bKaMVpg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Leif Lindholm <leif.lindholm@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 16dww5PsBiJr
 
-Hi,
+On 12/6/19 4:34 PM, Peter Maydell wrote:
+> On Fri, 6 Dec 2019 at 07:23, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>>
+>> Instead of filling an array of qemu_irq and passing it around,
+>> directly call qdev_get_gpio_in() on the GIC.
+>>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> ---
+>> I accept better patch subject suggestions :)
+>> ---
+>>   hw/arm/sbsa-ref.c | 58 +++++++++++++++++++++++------------------------
+>>   1 file changed, 29 insertions(+), 29 deletions(-)
+>>
+>> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+>> index 27046cc284..30cb647551 100644
+>> --- a/hw/arm/sbsa-ref.c
+>> +++ b/hw/arm/sbsa-ref.c
+>> @@ -328,7 +328,7 @@ static void create_secure_ram(SBSAMachineState *sms,
+>>       memory_region_add_subregion(secure_sysmem, base, secram);
+>>   }
+>>
+>> -static void create_gic(SBSAMachineState *sms, qemu_irq *pic)
+>> +static DeviceState *create_gic(SBSAMachineState *sms)
+>>   {
+>>       unsigned int smp_cpus =3D MACHINE(sms)->smp.cpus;
+>>       DeviceState *gicdev;
+>> @@ -403,12 +403,10 @@ static void create_gic(SBSAMachineState *sms, qemu=
+_irq *pic)
+>>                              qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+>>       }
+>>
+>> -    for (i =3D 0; i < NUM_IRQS; i++) {
+>> -        pic[i] =3D qdev_get_gpio_in(gicdev, i);
+>> -    }
+>> +    return gicdev;
+>=20
+> If you make DeviceState *gic a field in SBSAMachineState then
+> you don't need to pass it in as a parameter to all these
+> functions. I think this code is mostly borrowed from the
+> virt board, which is written the way it is because at the
+> time we didn't have machine state structs which could
+> own all the device structs etc for the devices on the board.
 
-On 12/6/19 5:27 PM, Eric Auger wrote:
-> From: Andrew Jones <drjones@redhat.com>
->
-> Sometimes we need to test access to system registers which are
-> missing assembler mnemonics.
->
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> ---
->  lib/arm64/asm/sysreg.h | 11 +++++++++++
->  1 file changed, 11 insertions(+)
->
-> diff --git a/lib/arm64/asm/sysreg.h b/lib/arm64/asm/sysreg.h
-> index a03830b..a45eebd 100644
-> --- a/lib/arm64/asm/sysreg.h
-> +++ b/lib/arm64/asm/sysreg.h
-> @@ -38,6 +38,17 @@
->  	asm volatile("msr " xstr(r) ", %x0" : : "rZ" (__val));	\
->  } while (0)
->  
-> +#define read_sysreg_s(r) ({					\
-> +	u64 __val;						\
-> +	asm volatile("mrs_s %0, " xstr(r) : "=r" (__val));	\
-> +	__val;							\
-> +})
-> +
-> +#define write_sysreg_s(v, r) do {				\
-> +	u64 __val = (u64)v;					\
-> +	asm volatile("msr_s " xstr(r) ", %x0" : : "rZ" (__val));\
-> +} while (0)
-> +
->  asm(
->  "	.irp	num,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30\n"
->  "	.equ	.L__reg_num_x\\num, \\num\n"
+Great idea, thanks!
 
-That's exactly the code that I wrote for my EL2 series :)
-
-Reviewed-by: Alexandru Elisei <alexandru.elisei@arm.com>
-
-Thanks,
-Alex

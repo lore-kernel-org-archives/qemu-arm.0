@@ -1,99 +1,101 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp954598lff;
-        Fri, 6 Dec 2019 08:17:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzmknYUMPbmrkTDfSwIcExuGJ8OTbFrC5Be3J/xp9yVgrguUkVUMvQBYb3hvDZZokW6gJbC
-X-Received: by 2002:a9d:7:: with SMTP id 7mr10193957ota.26.1575649064488;
-        Fri, 06 Dec 2019 08:17:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575649064; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1012930lff;
+        Fri, 6 Dec 2019 09:05:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw6gukCOx43nAJt/03AUoWH7kfUobkOSn9V/QNQF1c4eo2ZtqjEVqzGKERfDBSKSvd8YIrA
+X-Received: by 2002:a0c:8061:: with SMTP id 88mr13690591qva.62.1575651947749;
+        Fri, 06 Dec 2019 09:05:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575651947; cv=none;
         d=google.com; s=arc-20160816;
-        b=rfNxOcg1A5Bvtl9BA4oyZvBpl/En3ybo9bxRfL+qrsk32fEFcLV1E2Z0VK1PXbRV2r
-         7BrJHUvkFF912G4VS8ElQ7n+XRMBHKw6hxSfpAmuDhrhIb6uXhm6btnkcFd55rlQ7B5+
-         NaHiKIAfEcnbGIVAKFXaUSdlezSivEef0h2SuF2nvNk+UwknSjHUncmo1CHnN+Hral5u
-         8qBwWIv/f/EBL2z73apuzMpXixvAKS8aRrenkuqLH7qb9LqIgGLsCgZOaXpejDWG7z68
-         QcJB76D33H0mWISbJhXIwDYTq8aor3PuaJX6t9Zh1crp1e/z5BlGYFlha5JyNZDyacbm
-         nlnQ==
+        b=vEsH0T/aHvhC0Kkk/mCy2x63UozIs6GDO4Q3U/gxMsIPdlMDSVlIgpUIhmehOEOl6+
+         vrDfUXVRPnwC8ZGg2nvupOlr1/1FPUCeQ7P+yJ38y6ueuCfnNp1Gd3yiw+hrQ7S0Hlpr
+         MjqUZJMBA0ka2+8ndDTiIdMK/z/wJqQaJDOgN9iYMa4Dd4BH7gDSo+FOMIE1rmF5KRi+
+         O/FFCfAFz5WgkVOFLy18nAbNZhXjNC/j6AhEqTECJ6/wRaAxgHYa7wLBxcv5rEwV/Fly
+         B0b/JZAa1lgDGgU8obdxCu5J941RBFzs5GB3jelWXr5eNP7sj3PPlVfnIdwz1Hr1IRfv
+         8buQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=6SeJWuW7smgEfzxeMhKUR3tViJ1MMS3OliKE3zzGKtU=;
-        b=MqtSwQroxG0a+Yn3x0SeyywW6kKSfWvuZ/P24Y5C0wX7KHgLLsS4J6Sc8sSmw8eoKf
-         0tM97zZS34gMCucCtWDrvuty7kDrjxvU6uc2sEycu8kgAw37OR8ZlohXeG0H2indcvZ0
-         QE/gTx9z+zkz/+CCB+FaJ8YQ08WR42mzIElC6EaOikEs7Dcio26lIhQIsMlgrtVkgXcX
-         9B3hr3CrokZUvOdJVrjbOHkpGx4Xsmz1Gei9fAg51x2AaJ8m+dEa60PGfIcXQfRod5ev
-         jhooQxsJhv1L4A2+8+sHT0sLDYJoCNoiBdEHU1juEpCL5KEvrUgf8cQ883q8Kh68By+D
-         wPAg==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=xx+gBQINEfsdCHgzHWk9u1vbTF0umg2qaZIaBUYeVFs=;
+        b=0/31VgRp0P3Bcx/eAssANkhW3kzPel225fWVWgJsUBrnupdKLzs16qC/WTNj30FOqZ
+         YXms7QFXEAomRXpNgiLy58+5z6CBCKG37pikpOoYrRjNCbxWhVFer02IJbQQsjvtTY+I
+         nKGF483/2zaTS5lbA5AI6Ar1HctGgZVME0AjesuE+TWIuL+WkLlgk0eIaNQDRsf2Dmcy
+         6mXGEQeumqnai8xdfz3L8bqwigPNdgXQmK+ZfewfUmXj5rSzECzYfm4LUQ6JUcOXmrPz
+         tiRX4E3Rgwpts92I8qdXA1Xwtyx30tAwn1s7blsY0DjCBmy6Ig+VgkOGD0n/ZI61K8QT
+         oNFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=s7UKlPpB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I3fr0R0v;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a26si7058965oto.199.2019.12.06.08.17.44
+        by mx.google.com with ESMTPS id g37si9284340qtg.139.2019.12.06.09.05.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Dec 2019 08:17:44 -0800 (PST)
+        Fri, 06 Dec 2019 09:05:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=s7UKlPpB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I3fr0R0v;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40614 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41452 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1idGIY-0003Be-W7
-	for alex.bennee@linaro.org; Fri, 06 Dec 2019 11:17:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58910)
+	id 1idH34-00038A-Pn
+	for alex.bennee@linaro.org; Fri, 06 Dec 2019 12:05:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58894)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1idEyg-0008Lt-Sk
- for qemu-devel@nongnu.org; Fri, 06 Dec 2019 09:53:07 -0500
+ (envelope-from <drjones@redhat.com>) id 1idFvF-0001Oq-0g
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:53:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1idEyf-0005G5-KM
- for qemu-devel@nongnu.org; Fri, 06 Dec 2019 09:53:06 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:43425)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1idEyf-0005EP-8R
- for qemu-devel@nongnu.org; Fri, 06 Dec 2019 09:53:05 -0500
-Received: by mail-oi1-x242.google.com with SMTP id x14so2821326oic.10
- for <qemu-devel@nongnu.org>; Fri, 06 Dec 2019 06:53:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6SeJWuW7smgEfzxeMhKUR3tViJ1MMS3OliKE3zzGKtU=;
- b=s7UKlPpBZD1y3gEUPUtZSvKlf+9xf3fyBPXTbvolyaLSa3/gXKLvv18JDrNBynJ29X
- M9VnbeztwyV6mhNSQpvM/AWI35JqfDTE0H2q/kRP6xmZnO78giE7niRuGBrH0uIBoT56
- yeYghhciwt9trXxFMxfhCO3dkzyZTqTbpoOXDcL3uak5Jwps5TzlgFiVEwLkxBH95Vh2
- rKq/0soWsRqx3UIntqXNG88V+vHoxG1iYRcoQjh1hAN+To0TxOKTxdjfwtsim2WcMb+r
- 5i0+LS3K+ZQN2UaYLrAhTPNcuxBt6fpWsP2fmreNyqiWIbSmN6yM05wmF8RXtSLqFTrf
- 1Cvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6SeJWuW7smgEfzxeMhKUR3tViJ1MMS3OliKE3zzGKtU=;
- b=iuRIPhW2I9WbOcGZmioU8BHq8cnlQspNA5S2uZUJVjTv1zyW8RPCsVOQmAG70+Vt4y
- 56dkgNEb+mg7ixjUyKrrmEhOuz+0zyh0ZFMWLvDGvgf0wnkS533LAgwecODGy8shf9kb
- QIk91sTJxmftJR7HdeGDzii+JuxDmXl3kB5LSWRy7GQwrbaNceMT9fq9C2rs6ScHBgFv
- oUHfKypFrVUG0x6CY7WmAaUIWBG4yBrrhmjCvcvy48XbQmJ1JQpVpsmoPt9rBbAgH14E
- ny7fBjbWpMLmwtsZ3HlPSISZWO6LG5LNu6vmyp3UpxJ8Vu1fSWV63hcwpF107hBA4tly
- QekQ==
-X-Gm-Message-State: APjAAAVQJpRJX8xqJjCntx8PE2wcP3pSQ6d3ONHJ8T1fn3Q6iefKsroD
- WTwICCqdI4JxMU+ZPjJ3El3IVXE+6dMcuRGc528d9sJ9
-X-Received: by 2002:aca:edd5:: with SMTP id l204mr12369452oih.98.1575637362903; 
- Fri, 06 Dec 2019 05:02:42 -0800 (PST)
+ (envelope-from <drjones@redhat.com>) id 1idFvD-0001TF-NK
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:53:36 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:35100
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1idFvD-0001Rf-Ju
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:53:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575647614;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xx+gBQINEfsdCHgzHWk9u1vbTF0umg2qaZIaBUYeVFs=;
+ b=I3fr0R0v4FYy9x4JfAx8fDj3syXyx9AVruAC8wMYYhG5svmRSuArVbHajeJ09WOrTslS9S
+ Oc0s3uyVf2AIVlvd0IIl+OmekIxP3DQuC06tOwqaWIHt6w/sz9g7h/m0GNQoMyp5J8rK1K
+ p+y2Wa+/tFIHHp4DrXhGATT6Edsop+U=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-219-ZKWUJp0YOXu4ZFKdzCgesQ-1; Fri, 06 Dec 2019 10:53:31 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28DD0DB22;
+ Fri,  6 Dec 2019 15:53:30 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CFB325D9E1;
+ Fri,  6 Dec 2019 15:53:28 +0000 (UTC)
+Date: Fri, 6 Dec 2019 16:53:27 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
+ virtual time
+Message-ID: <20191206155327.7adiyjjkjh56mg2t@kamzik.brq.redhat.com>
+References: <20191016143410.5023-1-drjones@redhat.com>
+ <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
 MIME-Version: 1.0
-References: <20191011134744.2477-1-richard.henderson@linaro.org>
- <20191011134744.2477-23-richard.henderson@linaro.org>
-In-Reply-To: <20191011134744.2477-23-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Dec 2019 13:02:32 +0000
-Message-ID: <CAFEAcA8AaCOBKSgVrpMxAiEGN0+JmJjJtMY-=M4ed06SAoe69g@mail.gmail.com>
-Subject: Re: [PATCH v5 22/22] target/arm: Add allocation tag storage for
- system mode
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::242
+In-Reply-To: <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: ZKWUJp0YOXu4ZFKdzCgesQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,107 +107,60 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Marc Zyngier <maz@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, bijan.mottahedeh@oracle.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EbeljPCnBa/H
+X-TUID: ikxz5K7hbM1/
 
-On Fri, 11 Oct 2019 at 14:50, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/mte_helper.c | 61 +++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 61 insertions(+)
->
-> diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-> index e8d8a6bedb..657383ba0e 100644
-> --- a/target/arm/mte_helper.c
-> +++ b/target/arm/mte_helper.c
-> @@ -28,8 +28,69 @@
->  static uint8_t *allocation_tag_mem(CPUARMState *env, uint64_t ptr,
->                                     bool write, uintptr_t ra)
->  {
-> +#ifdef CONFIG_USER_ONLY
->      /* Tag storage not implemented.  */
->      return NULL;
-> +#else
-> +    CPUState *cs = env_cpu(env);
-> +    uintptr_t index;
-> +    int mmu_idx;
-> +    CPUTLBEntry *entry;
-> +    CPUIOTLBEntry *iotlbentry;
-> +    MemoryRegionSection *section;
-> +    hwaddr physaddr, tag_physaddr;
-> +
-> +    /*
-> +     * Find the TLB entry for this access.
-> +     * As a side effect, this also raises an exception for invalid access.
-> +     *
-> +     * TODO: Perhaps there should be a cputlb helper that returns a
-> +     * matching tlb entry + iotlb entry.  That would also be able to
-> +     * make use of the victim tlb cache, which is currently private.
-> +     */
-> +    mmu_idx = cpu_mmu_index(env, false);
-> +    index = tlb_index(env, mmu_idx, ptr);
-> +    entry = tlb_entry(env, mmu_idx, ptr);
-> +    if (!tlb_hit(write ? tlb_addr_write(entry) : entry->addr_read, ptr)) {
-> +        bool ok = arm_cpu_tlb_fill(cs, ptr, 16,
-> +                                   write ? MMU_DATA_STORE : MMU_DATA_LOAD,
-> +                                   mmu_idx, false, ra);
-> +        assert(ok);
-> +        index = tlb_index(env, mmu_idx, ptr);
-> +        entry = tlb_entry(env, mmu_idx, ptr);
-> +    }
-> +
-> +    /* If the virtual page MemAttr != Tagged, nothing to do.  */
-> +    iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
-> +    if (!iotlbentry->attrs.target_tlb_bit1) {
-> +        return NULL;
-> +    }
-> +
-> +    /*
-> +     * Find the physical address for the virtual access.
-> +     *
-> +     * TODO: It should be possible to have the tag mmu_idx map
-> +     * from main memory ram_addr to tag memory host address.
-> +     * that would allow this lookup step to be cached as well.
-> +     */
-> +    section = iotlb_to_section(cs, iotlbentry->addr, iotlbentry->attrs);
-> +    physaddr = ((iotlbentry->addr & TARGET_PAGE_MASK) + ptr
-> +                + section->offset_within_address_space
-> +                - section->offset_within_region);
+On Fri, Dec 06, 2019 at 03:22:58PM +0000, Peter Maydell wrote:
+> On Wed, 16 Oct 2019 at 15:34, Andrew Jones <drjones@redhat.com> wrote:
+> >
+> > v2:
+> >  - move from RFC status to v1
+> >  - put kvm_arm_vm_state_change() in kvm.c to share among kvm32.c and kv=
+m64.c
+> >  - add r-b's from Richard
+> >
+> >
+> > This series is inspired by a series[1] posted by Bijan Mottahedeh about
+> > a year ago.  The problem described in the cover letter of [1] is easily
+> > reproducible and some users would like to have the option to avoid it.
+> > However the solution, which is to adjust the virtual counter offset eac=
+h
+> > time the VM transitions to the running state, introduces a different
+> > problem, which is that the virtual and physical counters diverge.  As
+> > described in the cover letter of [1] this divergence is easily observed
+> > when comparing the output of `date` and `hwclock` after suspending the
+> > guest, waiting a while, and then resuming it.  Because this different
+> > problem may actually be worse for some users, unlike [1], the series
+> > posted here makes the virtual counter offset adjustment optional and no=
+t
+> > even enabled by default.  Besides the adjustment being optional, this
+> > series approaches the needed changes differently to apply them in more
+> > appropriate locations.  Finally, unlike [1], this series doesn't attemp=
+t
+> > to measure "pause time" itself.  Simply using QEMU_CLOCK_VIRTUAL, which
+> > only ticks when the VM is not stopped, is sufficient.
+>=20
+> So I guess my overall question is "what is the x86 solution to
+> this problem, and why is this all arm-specific?" It would also
 
-I'm surprised that going from vaddr to (physaddr, attrs) requires
-this much effort, it seems like the kind of thing we would
-already have a function to do.
+x86 adjusts the counter offset by default, and I don't think there's any
+way to turn that behavior off. I think it's too late to follow that
+default for arm, but this series provides a way to opt into the same
+behavior.
 
-> +
-> +    /* Convert to the physical address in tag space.  */
-> +    tag_physaddr = physaddr >> (LOG2_TAG_GRANULE + 1);
-> +
-> +    /* Choose the tlb index to use for the tag physical access.  */
-> +    mmu_idx = iotlbentry->attrs.secure ? ARMMMUIdx_TagS : ARMMMUIdx_TagNS;
-> +    mmu_idx = arm_to_core_mmu_idx(mmu_idx);
-> +
-> +    /*
-> +     * FIXME: Get access length and type so that we can use
-> +     * probe_access, so that pages are marked dirty for migration.
-> +     */
-> +    return tlb_vaddr_to_host(env, tag_physaddr, MMU_DATA_LOAD, mmu_idx);
+> be helpful to know how it fits into all the other proposals regarding
+> time in VMs.
 
-Hmm, does that mean that a setup with MemTag is not migratable?
-If so, we should at least install a migration-blocker for CPUs
-in that configuration.
+I've been lightly following the other stuff, but haven't yet seen any
+overlap.
 
-> +#endif
->  }
->
->  static int get_allocation_tag(CPUARMState *env, uint64_t ptr, uintptr_t ra)
-> --
-> 2.17.1
->
+BTW, this series needs to be rebased and reposted. I've been waiting for
+4.2 though.
 
+Thanks,
+drew
 
-thanks
--- PMM

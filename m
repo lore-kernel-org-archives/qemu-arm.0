@@ -1,129 +1,139 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1036129lff;
-        Fri, 6 Dec 2019 09:24:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzmK461lordIPTfhbkn3oiZ8WC1abddRwIsPW+xid2fuu+DtSc/QuwrooTcmjWVbemf7A7a
-X-Received: by 2002:ac8:5486:: with SMTP id h6mr13932612qtq.17.1575653068450;
-        Fri, 06 Dec 2019 09:24:28 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h14si8610860qkj.110.2019.12.06.09.24.28
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Dec 2019 09:24:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1039967lff;
+        Fri, 6 Dec 2019 09:27:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzxD4vE4fCxFLwnwg8vAALPUM4XkPG6+ADcZI36HpqYN3l6SYL7AXcLVhGkmoltRqSLGSRW
+X-Received: by 2002:a9d:70d2:: with SMTP id w18mr12479907otj.48.1575653261840;
+        Fri, 06 Dec 2019 09:27:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575653261; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VI7RSb1jHjalG/JibTs+eNridr1sR7Ef2b1CrWoPidJMt20VejtDvtSJHbZXlHDn8C
+         7vjnzhtduA0EJQx6K7k6kKs0HBLJULswyvt57+A1poPSzmRQrQE7In+Vmo64pQR5F3Iz
+         gmKlFfhh/dd9KDFJj5P6/AmBWBnNPCoDoDa8SGxNoBdIgZijzYTfn78XSVsM5I8AX+0z
+         +rwB+VQvJtVTcQJzMKZ1/QP2l6QO5AGCTgpYeBZbVHnXpuHRAjix1Iwk4zgwlJABsgwP
+         JLSqVJaOMYhK51cM9KypSyiIdsrK/7aBtJI0S49dTy8sjOyJjcFrRdOdxZXgbR+iZfYU
+         KT9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=aakNe6ZpWKcgBnsHkUK2g0Vs/5LZCUeTONSVZshyz7w=;
+        b=hMvb6pOzVCZBPfy1PkwYcXKoyZ8WGVjgkgybr358AL0feRHgvicaNVGjHUkLBe9ZHf
+         6xSEICLoLxGKb3WKumyts0pEhvMR5hdNtWNifYD8e8N+/jlWN4zHKQAZgPJ9S+1tAFZc
+         tr6zon5qRw3U8btEb1kFhRmsHXnytpCzLtr8f+ojNIjBycXUJzRrB142LaVm+fWL2gzI
+         gGIGX86JyN5oOZc8jcW+NQXoAcFQXfmooy+YqThLNwN41OyBWsLmENWk2E/7O2A3fk91
+         1ErRDDjIs3XkaX6r4ytnig6BDCm8KGWq0RqY5nrzdKsTMzUQ1VZAWWW6x0XzvAklqK5G
+         3SKw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/cX5IFR";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id g6si6984218otb.231.2019.12.06.09.27.41;
+        Fri, 06 Dec 2019 09:27:41 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=i9R7WRPk;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41800 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1idHL9-0004iw-GA
-	for alex.bennee@linaro.org; Fri, 06 Dec 2019 12:24:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35019)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1idFiP-0002ph-V0
- for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:40:22 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1idFiN-0004Rk-S8
- for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:40:21 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:42634)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1idFiJ-0004H1-W7; Fri, 06 Dec 2019 10:40:16 -0500
-Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 36ED296EF0;
- Fri,  6 Dec 2019 15:40:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1575646813;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LkE7SYCCqhtLN+sQUgbdWaSzdNEbRl8KD/D5Bb/y4UQ=;
- b=i9R7WRPkIyEU6u+LR6jGj5PMR/0Smq/CyvfXWd2gh0cKhGtb1Q2GV43MkwwWT5ikGGmH3I
- X9HzAqOVHSUJoHJzB+HhbKcrqONYqeTqgyToaPwse0OHADY/atH7a3TcEsR+qc742jPUSM
- CW6JeydkMowtoyAQ4aDd++UYM4FVQDE=
-Subject: Re: [PATCH v5 09/13] docs/devel/reset.txt: add doc about Resettable
- interface
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20191018150630.31099-1-damien.hedde@greensocs.com>
- <20191018150630.31099-10-damien.hedde@greensocs.com>
- <CAFEAcA_4x+EvDS8Lc0xyPE1GHRh4+7dvJ6sxMPXZjkrZ_CgrHw@mail.gmail.com>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <6e730df5-878e-369f-dd79-08dfb6e09082@greensocs.com>
-Date: Fri, 6 Dec 2019 16:40:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/cX5IFR";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726315AbfLFR1k (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 6 Dec 2019 12:27:40 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:54715 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1726287AbfLFR1k (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 6 Dec 2019 12:27:40 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1575653258;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=aakNe6ZpWKcgBnsHkUK2g0Vs/5LZCUeTONSVZshyz7w=;
+        b=g/cX5IFRjINdqnxG1fMspMs+PpzWmjtELZ8nBFyg8kMZz/Sx+bvoPJIL7qMEXGtJrhgidB
+        WKjACNnmknIXE3GAgSzNtTaRRGJOolLxvo91HSFowz6udq3s1af2r3ohGdoCtYsz+xz9ZV
+        SRPQLMoEc9wPeoFRvYEvhG/riBV5XOg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-268-mx1TiMz0PQSCxMj6L9ao7A-1; Fri, 06 Dec 2019 12:27:35 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DBC14800597;
+        Fri,  6 Dec 2019 17:27:33 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-117.ams2.redhat.com [10.36.116.117])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 8C6426CE40;
+        Fri,  6 Dec 2019 17:27:28 +0000 (UTC)
+From:   Eric Auger <eric.auger@redhat.com>
+To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     drjones@redhat.com, andrew.murray@arm.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org
+Subject: [kvm-unit-tests RFC 00/10] KVM: arm64: PMUv3 Event Counter Tests
+Date:   Fri,  6 Dec 2019 18:27:14 +0100
+Message-Id: <20191206172724.947-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_4x+EvDS8Lc0xyPE1GHRh4+7dvJ6sxMPXZjkrZ_CgrHw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1575646814;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LkE7SYCCqhtLN+sQUgbdWaSzdNEbRl8KD/D5Bb/y4UQ=;
- b=VOH82BzNEyHsWBACjsBw+dpMN3NvW9nA7R5ucbUFKXUE1QES5J3T9yQSGa4aFGCy7L9hYF
- RIvF41tOocEJyddELByNhiyASgikgpbZOn1q9CP690QFbKM1iSgzKUi0VX55MDekzBjWCi
- LKgdSSc00pnEU1Y4qDiD1+5eT8mDxPc=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575646814; a=rsa-sha256; cv=none;
- b=oaG3ZgcD+ITNRtGCz+O9+FA6/pa581OSI35YXe5p1yu60HxT+jkzWWG0ZjsoG7XxqY7k9B
- hQjBO6J2YiCp4dHIPogwafP9OWLPuEZRC+XCWyp/Rs/R0MdcwMl2zgh/YkeQ7W/2mGxjPT
- ftV99nD4gwsiMPKf1lP+saI3aP8o2t8=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 5.135.226.135
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x <qemu-s390x@nongnu.org>,
- Cornelia Huck <cohuck@redhat.com>, Mark Burton <mark.burton@greensocs.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Edgar Iglesias <edgari@xilinx.com>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xLILI/QBRdYI
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: mx1TiMz0PQSCxMj6L9ao7A-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 2xraNrj0CGeD
 
+This series implements tests exercising the PMUv3 event counters.
+It tests both the 32-bit and 64-bit versions. Overflow interrupts
+also are checked. Those tests only are written for arm64.
 
+It allowed to reveal some issues related to SW_INCR implementation
+(esp. related to 64-bit implementation), some problems related to
+32-bit <-> 64-bit transitions and consistency of enabled states
+of odd and event counters.
 
-On 11/29/19 8:00 PM, Peter Maydell wrote:
-> On Fri, 18 Oct 2019 at 16:07, Damien Hedde <damien.hedde@greensocs.com> wrote:
->>
->> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> 
-> Subject line still says ".txt".
-> 
->> ---
->>
->> Should I add an entry into index.rst ?
-> 
-> Yes, please.
-> 
-> I have one substantive comment on this patch: in the
-> MyDev example of implementing reset, you make the enter/hold/exit
-> functions do the reset of the subclass and then call the
-> myclass->parent_phases method. This feels to me like it's the
-> wrong way round and the parent class should reset first. Does
-> it make any difference to do it this way round?
-> 
+Overflow interrupt testing relies of one patch from Andre
+("arm: gic: Provide per-IRQ helper functions") to enable the
+PPI 23, coming from "arm: gic: Test SPIs and interrupt groups"
+(https://patchwork.kernel.org/cover/11234975/). Drew kindly
+provided "arm64: Provide read/write_sysreg_s".
 
-Not really, I'll update them to what you say.
+All PMU tests can be launched with:
+./run_tests.sh -g pmu
+Tests also can be launched individually. For example:
+./arm-run arm/pmu.flat -append 'chained-sw-incr'
 
---
-Damien
+With KVM:
+- chain-promotion and chained-sw-incr are known to be failing.
+- Problems were reported upstream.
+With TCG:
+- pmu-event-introspection is failing due to missing required events
+  (we may remove this from TCG actually)
+- chained-sw-incr also fails. I haven't investigated yet.
+
+Andre Przywara (1):
+  arm: gic: Provide per-IRQ helper functions
+
+Andrew Jones (1):
+  arm64: Provide read/write_sysreg_s
+
+Eric Auger (8):
+  pmu: Let pmu tests take a sub-test parameter
+  pmu: Add a pmu struct
+  pmu: Check Required Event Support
+  pmu: Basic event counter Tests
+  pmu: Test chained counter
+  arm: pmu: test 32-bit <-> 64-bit transitions
+  arm/arm64: gic: Introduce setup_irq() helper
+  pmu: Test overflow interrupts
+
+ arm/gic.c              |  24 +-
+ arm/pmu.c              | 754 ++++++++++++++++++++++++++++++++++++++++-
+ arm/unittests.cfg      |  55 ++-
+ lib/arm/asm/gic-v3.h   |   2 +
+ lib/arm/asm/gic.h      |  12 +
+ lib/arm/gic.c          | 101 ++++++
+ lib/arm64/asm/sysreg.h |  11 +
+ 7 files changed, 922 insertions(+), 37 deletions(-)
+
+--=20
+2.20.1

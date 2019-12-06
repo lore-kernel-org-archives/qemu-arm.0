@@ -1,120 +1,83 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1033905lff;
-        Fri, 6 Dec 2019 09:22:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyZ5NDM6lnqX5bUjGPxWLY87yEWYXB4ZlRnRhZHfqdsTCrD0Do4xjiQsTqwYB0gAq2Qcll4
-X-Received: by 2002:ac8:43d0:: with SMTP id w16mr14224657qtn.43.1575652947650;
-        Fri, 06 Dec 2019 09:22:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575652947; cv=none;
-        d=google.com; s=arc-20160816;
-        b=dlTmzTwMfiRD3xHNcHJeU3CdKEur2HugJ/nJmJe0p/RSJKcb/AXGt+SNBwr+Ol6vyR
-         gcUfqHWr8/qP3jvKf0W0oX8gpwsTgHDFcpwVzGZ27V/KngqQj2oQkgVFenrxqmyxcA1D
-         0rBlGdh2PgOXraqRK0sg7Q/H9uMERr1wV66QdH8bC5H5ka+Ai292I8kGPdI/YI2df/x4
-         N43POv0ERPGcd4qvl0fjUTYV2eHs5/BGJVH8RlpvJ9ZbqP1g4J0J2iWhbVlUmW8GaL0u
-         qLqbpEyMyne+l69E8UEgigI01A+OH9/RaDyGCq81qZ3UI6opw6IdY+Ddf6piQUA530mj
-         QGnQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=0qupRbolM3W2FUEthNaPkSI1sSlTOG/MJsLRancNr7k=;
-        b=KNlS3hno9Uhu/0UEiMelLng5MduJFI6ZlethEO/0PJPoOs+RNBzkBpmCzk492xU+U3
-         GS/7irXJtTrk8J3haKS20L/nj3/uakj52kBYICFxdxyQJBcc7lbnA1duYsu0xzEBFJAl
-         alVNI/ZS4D3TTI0lMqAbmF0lEkwt0oHwcfCY1ARraKZqBkKuyQhJ6uWJHdi9jqmL1oae
-         B/1KqF3TetvBF3wKEuMmQldKKQd14q8/3RKwaLqdDAWPHMApwIjNU+n5ACap6bAUoWU+
-         o7CtF9oG6RP41r3qk9elyNFZeviF9cA3X9iEmTMvywU2xjehyXaku2VMBLdD3D8A5CzU
-         kVMA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=haLopbUb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1036129lff;
+        Fri, 6 Dec 2019 09:24:28 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzmK461lordIPTfhbkn3oiZ8WC1abddRwIsPW+xid2fuu+DtSc/QuwrooTcmjWVbemf7A7a
+X-Received: by 2002:ac8:5486:: with SMTP id h6mr13932612qtq.17.1575653068450;
+        Fri, 06 Dec 2019 09:24:28 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5si1868182qkh.254.2019.12.06.09.22.27
+        by mx.google.com with ESMTPS id h14si8610860qkj.110.2019.12.06.09.24.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Dec 2019 09:22:27 -0800 (PST)
+        Fri, 06 Dec 2019 09:24:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=haLopbUb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41780 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=i9R7WRPk;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1idHJC-0003gm-VU
-	for alex.bennee@linaro.org; Fri, 06 Dec 2019 12:22:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56267)
+	id 1idHL9-0004iw-GA
+	for alex.bennee@linaro.org; Fri, 06 Dec 2019 12:24:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35019)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1idGaC-0006Ts-SE
- for qemu-devel@nongnu.org; Fri, 06 Dec 2019 11:35:57 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1idFiP-0002ph-V0
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:40:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1idGa5-0004qY-Iw
- for qemu-devel@nongnu.org; Fri, 06 Dec 2019 11:35:52 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:52756
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <damien.hedde@greensocs.com>) id 1idFiN-0004Rk-S8
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:40:21 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:42634)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1idGZx-0004od-DY
- for qemu-devel@nongnu.org; Fri, 06 Dec 2019 11:35:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575650135;
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1idFiJ-0004H1-W7; Fri, 06 Dec 2019 10:40:16 -0500
+Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 36ED296EF0;
+ Fri,  6 Dec 2019 15:40:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1575646813;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0qupRbolM3W2FUEthNaPkSI1sSlTOG/MJsLRancNr7k=;
- b=haLopbUbINFJmG/+n6tuh4bU6ZgOjPx/4P3z3wmX3R2WMTU5i5fBZG0aVs9UU/RP28AHL/
- bo8VOEdGcCjWWF1KRgVZTRJ1VFvH0Fnel2VQPrpoFL9/5J0VGAhrmj8zqamg6jacAINIIU
- Pp5ji+tl/JCvIGKIq1CdJLj65k8PiBQ=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-61-b_mYKIinNW6T9c2uVY9tfA-1; Fri, 06 Dec 2019 11:35:34 -0500
-Received: by mail-wr1-f71.google.com with SMTP id f17so3378914wrt.19
- for <qemu-devel@nongnu.org>; Fri, 06 Dec 2019 08:35:33 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=0qupRbolM3W2FUEthNaPkSI1sSlTOG/MJsLRancNr7k=;
- b=rA5zk7ESAYwtkOZhZMCU+pCcpejjlXXSgWuVozlr8bjiimgQ7tswoG5/WnXlMaRnyw
- q8JD77aXSLzHLpGN7X7x6oATHImDr1ClhDY40qgFo7Nac2FvXSqoCUeXwBHHOdv/B1QW
- tedqYrJQ12ZnF9bC+nfdA3mf0pBv/+18I2bAg1AvBm9mTZx4Lzd0sN9nhAGamV0xGX+V
- NJp9qe7GBU7oO7e13V8ZX1jVYQEXeJMNYpIqRmsKKEhLOPOlJ88f2Onj720voVbrydT+
- hdisx9v9Cefa+fpSKtxAMfZxf5sSI+M8sfzE/iZwq21oCv7uYfwTL7xvvmh8K0gQZnfb
- R9QQ==
-X-Gm-Message-State: APjAAAWcAnpwk2vKC7pq4D+fD2s6Ky5XElPKzCFICjNzeyS4a1t7jL2B
- PQ4CnhQKUCY9uJt0cFx4wbzWgHOyw3S9tytVZ7RE3TTtr8AHQpoVYrmZzU6sncEq1XCNIbGsaSo
- D4RzRm8nzuFsW/zQ=
-X-Received: by 2002:a7b:c95a:: with SMTP id i26mr11262554wml.67.1575650132434; 
- Fri, 06 Dec 2019 08:35:32 -0800 (PST)
-X-Received: by 2002:a7b:c95a:: with SMTP id i26mr11262536wml.67.1575650132233; 
- Fri, 06 Dec 2019 08:35:32 -0800 (PST)
-Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
- [88.21.103.182])
- by smtp.gmail.com with ESMTPSA id f1sm16986312wrp.93.2019.12.06.08.35.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Dec 2019 08:35:31 -0800 (PST)
-Subject: Re: [PATCH 08/10] arm: allwinner-h3: add Security Identifier device
-To: Peter Maydell <peter.maydell@linaro.org>,
- Niek Linnenbank <nieklinnenbank@gmail.com>
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-9-nieklinnenbank@gmail.com>
- <CAFEAcA-1Re0noxPN04uXqRYX=-g97jtiweZA=WcFo1OwXBoN5w@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <41ab9f5a-3318-b412-44e8-f8571a64da64@redhat.com>
-Date: Fri, 6 Dec 2019 17:35:30 +0100
+ bh=LkE7SYCCqhtLN+sQUgbdWaSzdNEbRl8KD/D5Bb/y4UQ=;
+ b=i9R7WRPkIyEU6u+LR6jGj5PMR/0Smq/CyvfXWd2gh0cKhGtb1Q2GV43MkwwWT5ikGGmH3I
+ X9HzAqOVHSUJoHJzB+HhbKcrqONYqeTqgyToaPwse0OHADY/atH7a3TcEsR+qc742jPUSM
+ CW6JeydkMowtoyAQ4aDd++UYM4FVQDE=
+Subject: Re: [PATCH v5 09/13] docs/devel/reset.txt: add doc about Resettable
+ interface
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20191018150630.31099-1-damien.hedde@greensocs.com>
+ <20191018150630.31099-10-damien.hedde@greensocs.com>
+ <CAFEAcA_4x+EvDS8Lc0xyPE1GHRh4+7dvJ6sxMPXZjkrZ_CgrHw@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <6e730df5-878e-369f-dd79-08dfb6e09082@greensocs.com>
+Date: Fri, 6 Dec 2019 16:40:12 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-1Re0noxPN04uXqRYX=-g97jtiweZA=WcFo1OwXBoN5w@mail.gmail.com>
-Content-Language: en-US
-X-MC-Unique: b_mYKIinNW6T9c2uVY9tfA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <CAFEAcA_4x+EvDS8Lc0xyPE1GHRh4+7dvJ6sxMPXZjkrZ_CgrHw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1575646814;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LkE7SYCCqhtLN+sQUgbdWaSzdNEbRl8KD/D5Bb/y4UQ=;
+ b=VOH82BzNEyHsWBACjsBw+dpMN3NvW9nA7R5ucbUFKXUE1QES5J3T9yQSGa4aFGCy7L9hYF
+ RIvF41tOocEJyddELByNhiyASgikgpbZOn1q9CP690QFbKM1iSgzKUi0VX55MDekzBjWCi
+ LKgdSSc00pnEU1Y4qDiD1+5eT8mDxPc=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575646814; a=rsa-sha256; cv=none;
+ b=oaG3ZgcD+ITNRtGCz+O9+FA6/pa581OSI35YXe5p1yu60HxT+jkzWWG0ZjsoG7XxqY7k9B
+ hQjBO6J2YiCp4dHIPogwafP9OWLPuEZRC+XCWyp/Rs/R0MdcwMl2zgh/YkeQ7W/2mGxjPT
+ ftV99nD4gwsiMPKf1lP+saI3aP8o2t8=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,31 +89,41 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x <qemu-s390x@nongnu.org>,
+ Cornelia Huck <cohuck@redhat.com>, Mark Burton <mark.burton@greensocs.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Edgar Iglesias <edgari@xilinx.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u6FUxNv2D3M9
+X-TUID: xLILI/QBRdYI
 
-On 12/6/19 3:27 PM, Peter Maydell wrote:
-> On Mon, 2 Dec 2019 at 21:10, Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
+
+
+On 11/29/19 8:00 PM, Peter Maydell wrote:
+> On Fri, 18 Oct 2019 at 16:07, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >>
->> The Security Identifier device in Allwinner H3 System on Chip
->> gives applications a per-board unique identifier. This commit
->> adds support for the Allwinner H3 Security Identifier using
->> randomized data as input.
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 > 
-> If this is a fixed value in hardware, I'm not sure that
-> having the QEMU model pick a random value is the best
-> choice. If we just set it to a fixed value in QEMU, is
-> that going to cause problems?
+> Subject line still says ".txt".
 > 
-> (Generally it's nice for QEMU to be deterministic, so it
-> behaves the same way every time you run it. Also if it's
-> always the same we don't need to bother migrating the
-> ID value.)
+>> ---
+>>
+>> Should I add an entry into index.rst ?
+> 
+> Yes, please.
+> 
+> I have one substantive comment on this patch: in the
+> MyDev example of implementing reset, you make the enter/hold/exit
+> functions do the reset of the subclass and then call the
+> myclass->parent_phases method. This feels to me like it's the
+> wrong way round and the parent class should reset first. Does
+> it make any difference to do it this way round?
+> 
 
-Agreed. Since the identifier is 128-bit, I'd use DEFINE_PROP_UUID() or, 
-to be even safer, DEFINE_PROP_UUID_NODEFAULT().
-See how the ipmi-bmc-sim device checks its guid field and fails if unset.
+Not really, I'll update them to what you say.
 
+--
+Damien

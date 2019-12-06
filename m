@@ -1,94 +1,161 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp894074lff;
-        Fri, 6 Dec 2019 07:29:32 -0800 (PST)
-X-Received: by 2002:aca:ec4d:: with SMTP id k74mr11949816oih.64.1575646172468;
-        Fri, 06 Dec 2019 07:29:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575646172; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp980271lff;
+        Fri, 6 Dec 2019 08:38:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwjGM1WwbWX5ywWB00U1lKdkVA2Fcy33SdaxxEDHTEpY5MgdDLnOTY1dMtj0d/9TZyy2OE2
+X-Received: by 2002:ac8:8d6:: with SMTP id y22mr13260181qth.85.1575650317205;
+        Fri, 06 Dec 2019 08:38:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575650317; cv=none;
         d=google.com; s=arc-20160816;
-        b=gJV+ZuKr8ibYYoHf6RrPoHH1ijFZaDxhW+jd3n+zO0d4R4oAK05+z5fr+jdDWZFa9L
-         dEvabU1wotYjv+3vuCcdyzrk2IlHOxnJ3xEtSJRwOVq/S49gfPsYD0wnbNVz5oAuGvrr
-         YxFrM42giwlu89F/xs9Javn/RWkZt+EjxVpGfhgg84cVgNILZcn4p3XxYP0M9shTLsFb
-         Vzw9ZNtBsfOiU06a3zB6sAZP6f/KBxmFjQSnrN0gpTojC7vSjTt3QRC2y8Pq2Bh7MfGK
-         jvj5wmxlMAqjGf+IgmPlNG2M345A6uDYwe9VNNHRvfiyk9Zoqw2mog5jdr0QtzwqbBZN
-         JElA==
+        b=BPXLVr2XA+HSxY3w65CL0ur6Dz197+l52tlqnt6YlG3G5Jm9AJyZEmLAXFhOc1eJgE
+         Y9Of6ntwuQxCyvteTVESKS4PWJGXPdrPOmD84PXdZe9vY8d6R/Ls7k0+rf5+fuibUSZD
+         D2PSiEaxMPBtVfe2VGuOni8kfLK+WiJOfa1hK0vA5pYn/i0oBlGQD3rEB1D2q7wtvgzR
+         xSn1JnOdZSAn3SSdwFJleGvCBoQMkD1hGnfQa3eInDnf4ZaT4pSbUpXcNX4f+eDPHAxf
+         KgmeZaoi4cXmrVRRxojVNtJqzVVah8e3+uZBZNICpHyvELx0bjlc4hT3PZ/PBqnLSiK5
+         qGeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=2Yzv5Xveobx+eBUxsnVw67hztizIW+3C2SXpKxGaDxU=;
-        b=mBYfY2OklWgclVGmzA4y9/LxLfJmilkQrUje+8aZEkTiZRUDI3EKqOsdYz1IvteKCz
-         QXLIeUIdj6WTYbTEK3KZURbHhPRBRDZUNgEgut5nsCYBuuHO1+062k0btiReFbI0cu/s
-         wuxEdg6hR9jdOpE2E1N/wyJygV26Gwhk+hIGA2XNB1f+QjhvV+l4UKCr02xibVW1IToi
-         7EKsLw7U+zPto/E0X85DPU6OUMX+Xpdi6ycv1a51+AhxHoRUlxVd8D21HSiPh+w82/pJ
-         8n5GJGVY00d9aje/1zKyJ80vUH/Uag0qgqlI22zdSnPFzab32sU98IAfrVb6FlqWuznJ
-         940w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=RPcSIYISFBGo154XUSTQYSxMjNsNm7pj3byN7uYuvPg=;
+        b=z8Lhs1tSxiGeNrQZcW460jMNGoCDFuo9FEyKxYGcaI/S09baZTFZaYDWdr0H1LH3P/
+         pcK+3GLZjCfXjrOc+bLmuXS+NT2V+ySz5b1rvEJb1tha9hx9OEMHWBCxIWegpwXFamy7
+         Ed8j/SDQg160OxVSmYFshWlu3PSXgnPTnDrqzjVO0v8VZeV6cmz0S/D83fxkSu3fClxA
+         38Wv5z9ntVDMgsjJL3M73y6/3vCiYeJvxMf/gkqsptPUuxTbWsRo2Q4q8d3KJS5qq1xf
+         lv6rrEQp4UKJZcxK2AjZ864OUygzPmduJYlun3Pr8fhMBE+DJQFMCbpkl3gO+qOnAIps
+         u4GA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ozGlnR8b;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m10sor6687559otr.55.2019.12.06.07.29.32
+       dkim=fail header.i=@linaro.org header.s=google header.b=eOKamfZl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 21si8518717qkf.293.2019.12.06.08.38.37
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 06 Dec 2019 07:29:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 06 Dec 2019 08:38:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ozGlnR8b;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=2Yzv5Xveobx+eBUxsnVw67hztizIW+3C2SXpKxGaDxU=;
-        b=ozGlnR8bZqcf4D26sD/TAzQBXj2oK0ZCFIJGSuFogeAaLHPq8maW6DUvYPnjxfN4Rf
-         EvMIWUO6sI6Tv4tDgjOFjfJP8T2FelTTep1/D3pdwHk57D7mRj5m8nLomvSyA+LOYVr6
-         JtcLBaxcW4U4OyyshjGFKMh5CCZhzqKPkgLsM4YsqNfp46e9KiNkYCuGS4OO1bp0F0ug
-         +AU8Y212F9DmF8Us1AeC6l0L6LU6q9v9JLGImOJWCUx4X5ZTrDyyOssxS3nNE57MPC3+
-         xJcS4E3IG7ZOZ/yqTqElfuNgxw0UdELz8ZjKERi6+lhnClcdfhHfRrHoQ+E5ZLidBlDw
-         IxOA==
+       dkim=fail header.i=@linaro.org header.s=google header.b=eOKamfZl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41020 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1idGcl-0008L2-Vi
+	for alex.bennee@linaro.org; Fri, 06 Dec 2019 11:38:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32910)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1idFd9-0004Ru-Ou
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:34:56 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1idFd8-00054G-FN
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:34:55 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:33341)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1idFd8-00052O-9X
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 10:34:54 -0500
+Received: by mail-ot1-x342.google.com with SMTP id d17so6168332otc.0
+ for <qemu-devel@nongnu.org>; Fri, 06 Dec 2019 07:34:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=RPcSIYISFBGo154XUSTQYSxMjNsNm7pj3byN7uYuvPg=;
+ b=eOKamfZlDixU8QGd/iqSOaHV9oe5RhQvoLa/8FzX30/1VJkuC4apnoGlH37gw+SGQF
+ brGOKNS1YYtxM5vIx72h/OLYOQVHwYypPHyq5eLetOoA80+MGcevGo0qCh/RpHyUayfW
+ Je3OgdtMjvrtsh7fxbl4MgQIgnHvAkP9Hu8G3xPp7A0Pm4Jrlw1r/Gya+tnCOtSxSnIp
+ WmRRLvjCrtu8fvfYCrNuR59xORsKxHEtGYE7PxtUFcThIxodq+Q9shEcLGmOZTGQvAzx
+ K733qXbsjSjX++qb5Qm4BdZCZBweDl8vtk7B8DUrXF5LhAwG7jDyVaSWirIpe/KRC/L3
+ WVpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=2Yzv5Xveobx+eBUxsnVw67hztizIW+3C2SXpKxGaDxU=;
-        b=WXCWA427Nc9ic6lupwKLTTgD7QoFqpskWF85cMOJcRIDv8jbONaWOeRFNSmJq7kPiz
-         Pwrfa+ME/osZxhKgPGEncgQwyWXr2juze97ethAyiUuwd0FHSWxQC2jl0gKoHuOfIhtU
-         fDLJzRo/J5eNGEREXFnWxxprPPQ7xhZ360CK/PDj+NS2ZapA41wAQDyynxaW4eehS//c
-         ib8FiHjqpQmSkyvoE40ljqkjDXrZLDEMOd+gQQ8K89umRmj2/4QcRUqdSzcxUU5bE8WQ
-         SgzICKBulY0Dk6FuJj3PvyFcQi6OTzoNBOgB9tD0qCjLK79+NmY0KBB6xa/tdplA3ek/
-         Y2Tg==
-X-Gm-Message-State: APjAAAU3DUUBpjgmVECcAvzyMquUFJygXBHlGJMlObLld5vH6cV96Z+1
-	/W4Yo+SMYA3YlEc/b4jSqrLghfJwLV4Ungzfim8eiclOlQ0=
-X-Google-Smtp-Source: APXvYqx7ADnxQQd2CUTKfZRlgeADallzuH7gsnzL/2RWBJif6Y+L4dcK5VnOh/+pYwlvxXY7o9ruYzUI7U7UbPbY4jU=
-X-Received: by 2002:a9d:12d2:: with SMTP id g76mr11796431otg.232.1575646171756;
- Fri, 06 Dec 2019 07:29:31 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=RPcSIYISFBGo154XUSTQYSxMjNsNm7pj3byN7uYuvPg=;
+ b=JriZUYQT+C/Oe1S5srGhmsp9ITcLOonVUEupH9Ml/bd3trMnfqGjIKCpYNKE1Nlrbd
+ 6rhWbS3XkQO7w5DdFKhWQzp9szz0+u3lQL/dC0sKWOrmSFq0iEQDktzJp4Bu27OsIZoV
+ Qq+MLEOku8IsWaZ7bS7d+KGLHg0ntWXa7G/sVW0i0Njhi4S2HvD80wQIynoATCHm0E0/
+ /3bSCQkfF3ur6Cq4b4ziFEyg15gq6yJQoeeDjXvA7CFZF/RHKrBYpz8D1S6xtRxdH7aP
+ ts3okcSGyT5QXl+y5+PJjVAI7s+8G0XTx8j1bD2w8JdYwpj2AzYsovh/jWnlHZkwOfJd
+ s1CQ==
+X-Gm-Message-State: APjAAAUAJYskSGwiu7gTJqOQCEPvgY7cRqngi3lri1jwgXYcDHmQIUyo
+ kTk+wY+7VUIIE/ygPyJJTuD5a+sIRngNoYhXyw33lg==
+X-Received: by 2002:a05:6830:4a4:: with SMTP id
+ l4mr5490552otd.91.1575646493249; 
+ Fri, 06 Dec 2019 07:34:53 -0800 (PST)
 MIME-Version: 1.0
-References: <20191206122247.7507-1-alex.bennee@linaro.org>
-In-Reply-To: <20191206122247.7507-1-alex.bennee@linaro.org>
+References: <20191206072257.7221-1-philmd@redhat.com>
+In-Reply-To: <20191206072257.7221-1-philmd@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Dec 2019 15:29:21 +0000
-Message-ID: <CAFEAcA9S51DWqysHbO42CjOhZBMA4qwN2zT+isOmWFtH5G8N3Q@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: don't bother with id_aa64pfr0_read for USER_ONLY
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Date: Fri, 6 Dec 2019 15:34:42 +0000
+Message-ID: <CAFEAcA-n=RKviDr9h+hCdwETN-Et5+A--v+HU_DuwqCQ2BWdDA@mail.gmail.com>
+Subject: Re: [PATCH-for-5.0] hw/arm/sbsa-ref: Call qdev_get_gpio_in in place
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: g/9/Gh5/ijIr
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::342
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Leif Lindholm <leif.lindholm@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MSxKcYbvb+hM
 
-On Fri, 6 Dec 2019 at 12:22, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
+On Fri, 6 Dec 2019 at 07:23, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
 >
-> For system emulation we need to check the state of the GIC before we
-> report the value. However this isn't relevant to exporting of the
-> value to linux-user and indeed breaks the exported value as set by
-> modify_arm_cp_regs.
+> Instead of filling an array of qemu_irq and passing it around,
+> directly call qdev_get_gpio_in() on the GIC.
 >
-> [AJB: the other option would be just to set reset value anyway and not
-> ifdef out the readfn as the register will become const anyway]
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> I accept better patch subject suggestions :)
+> ---
+>  hw/arm/sbsa-ref.c | 58 +++++++++++++++++++++++------------------------
+>  1 file changed, 29 insertions(+), 29 deletions(-)
+>
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 27046cc284..30cb647551 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -328,7 +328,7 @@ static void create_secure_ram(SBSAMachineState *sms,
+>      memory_region_add_subregion(secure_sysmem, base, secram);
+>  }
+>
+> -static void create_gic(SBSAMachineState *sms, qemu_irq *pic)
+> +static DeviceState *create_gic(SBSAMachineState *sms)
+>  {
+>      unsigned int smp_cpus =3D MACHINE(sms)->smp.cpus;
+>      DeviceState *gicdev;
+> @@ -403,12 +403,10 @@ static void create_gic(SBSAMachineState *sms, qemu_=
+irq *pic)
+>                             qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+>      }
+>
+> -    for (i =3D 0; i < NUM_IRQS; i++) {
+> -        pic[i] =3D qdev_get_gpio_in(gicdev, i);
+> -    }
+> +    return gicdev;
 
-If you want it to be const it would be clearer to define it
-with ARM_CP_CONST... I'm not sure what an ARM_CP_NO_RAW without
-a readfn or a fieldoffset will do on reads.
+If you make DeviceState *gic a field in SBSAMachineState then
+you don't need to pass it in as a parameter to all these
+functions. I think this code is mostly borrowed from the
+virt board, which is written the way it is because at the
+time we didn't have machine state structs which could
+own all the device structs etc for the devices on the board.
 
 thanks
 -- PMM

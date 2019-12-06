@@ -1,96 +1,97 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1238457lff;
-        Fri, 6 Dec 2019 12:21:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwW596UAPEVkNeza80eLroeecE019LpvGyNS35FNVZY7Aom1fb+Sem9Ju67L0iKXtOwld5N
-X-Received: by 2002:a9d:7cd9:: with SMTP id r25mr12130367otn.326.1575663662771;
-        Fri, 06 Dec 2019 12:21:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575663662; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1352418lff;
+        Fri, 6 Dec 2019 14:16:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyLgyT+pCkDt/Dk/GQIzk9+LvWDyt1endOG9U7f0tD8er45Q1HibL5sdSgplmx7JMDG/NTO
+X-Received: by 2002:a05:6830:204a:: with SMTP id f10mr13205764otp.29.1575670610192;
+        Fri, 06 Dec 2019 14:16:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575670610; cv=none;
         d=google.com; s=arc-20160816;
-        b=lJC7LL9Ob3quD8W/FxIePtLMKJpCw7dgOSZO49TU21Nkfnr5mnDMzWFYlA6t+O9tUj
-         jcrI1vUV40MpwmprldOjgXhuH955qXJ4AfxFuGp9LzZY4rWhfoCBymt7Oau6dQtrQ7ww
-         JL3Vs5ZNPGFruOVjLD/LlWO63vFZ5/uUTcXJThhTMaJP0vrK7+HxjmBp9+ZSr/nMs2ZB
-         5YxERanJ1Bu5MQeKmvStWbQBUs63z2Pj9m1CWpiFJw9TneROcUUzY6D+DsUanpZRIr2T
-         av+zSeCAqHJeAsUK8aloHppbI0i2plQvtIpTM4wd38iNCev0TnMC8gLi2aLaL4bkuR5L
-         n1Sg==
+        b=YGPaGvqYv36u8TviOyGtA8LOuK8A1bMeOVTDe6uh/rAGwhQphkXRYaaUnXmGbYgdfx
+         m8W3GoXJmCu3MCNbVrFFY+jpq05n7Wt5mF/GNQINjbuKSrOSQdFO9h4k0PYwomvKzkSw
+         dTT8q+Wec0xEdnCKkbt4WqK3LR3iJQe+Uu9k4xeRTmjEoQuUqyRy/u8O0YvTDiYX0s4u
+         DrN380HjHtZfefboT3CWMC19ndk5hXyQ4S9m4Wu6Cn0AGBSTneKD1whHMi+8RX9JgFpK
+         jyPF/g3sOOm3hTdt/Dji95Z5+ETKohrGFuCEkuIQOD8o18Nlglg5pTk4/absmWd/MqDQ
+         3ddQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=VPrqLSDF6cbyZzlOcEit277juDu8n1Mg9FZXYf0DkF8=;
-        b=Pg/IooFvd6s4Ho4FJG6rVcVMEdRjTlpKLIf/nL3a2TVr4LhZNXbLfbsOz1dFXOdkxf
-         Ce6zwwS+Y7qxZuPiALFkk/ijwRBff22/WWJT2942/7E/WyC3Hjb+wkUjnW8fj4v8H0Mi
-         0uUaOuAa/f9DoSHufmCLNSY9DqHel/chciqD07R/L610Dk0AFYK6s1o0s4RFFdVtUKBW
-         hdDTO79br9eJvtWyrWi2kCdN7L8zm7n0Ug8EfzBGM63T/kW45cWQ1zq3qWkadvXW+ad3
-         2O93nds4LIw/F1tp8pl6dv0pQHE5RhUZloXliC+FwVphk9fJ4AHznDpr63FXAxg3Zxnr
-         BTIg==
+        bh=s/7OdeqmZUFG/ihDfSirzk0p9NzkShThT+s7z8P7mpE=;
+        b=xiMbq5FYNifU9zgZmvC39rpF5M9dJ3bdzvyOX3wi6FbWuxDkWTQRB2hL2dQNIJSB71
+         tdUvMa/pN9FC32vL2kG2wJeDWA0jZw8kBqdgGEN4iU0+qvh/lAyTfKNEcMJL8v/oNsAT
+         NrlATH/vovNxeE/e0kHdbhsbaGGZB/d20X6sj4SkES2O2unv9wNNGmtt+gF8LGHoX2QF
+         F6TiDM6vlezwejgu+/F+cBIkuzk1vV/uGdptts9WK/5MkxSnMDvt5vrTFA44r59SyJzl
+         busbBxd6B2EpDoVlw5pA7La6sSYc5hw7sJRPFMPbGwrT5W5iCE5GUFkrofh1YjgrbeXL
+         wEqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=biYg6He5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MlCjZLTa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m21si1063909otk.132.2019.12.06.12.21.02
+        by mx.google.com with ESMTPS id i6si2032665oth.182.2019.12.06.14.16.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Dec 2019 12:21:02 -0800 (PST)
+        Fri, 06 Dec 2019 14:16:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=biYg6He5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MlCjZLTa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45020 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1idK61-0005W0-Tw
-	for alex.bennee@linaro.org; Fri, 06 Dec 2019 15:21:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42970)
+	id 1idLu5-0002nj-6e
+	for alex.bennee@linaro.org; Fri, 06 Dec 2019 17:16:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60078)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1idK5n-0005Vs-Ko
- for qemu-arm@nongnu.org; Fri, 06 Dec 2019 15:20:48 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1idLtU-0002k3-EO
+ for qemu-arm@nongnu.org; Fri, 06 Dec 2019 17:16:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1idK5l-0002V4-Bn
- for qemu-arm@nongnu.org; Fri, 06 Dec 2019 15:20:47 -0500
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:33990)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1idLtR-0007x2-22
+ for qemu-arm@nongnu.org; Fri, 06 Dec 2019 17:16:12 -0500
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:47042)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1idK5l-0002T4-4w; Fri, 06 Dec 2019 15:20:45 -0500
-Received: by mail-io1-xd43.google.com with SMTP id z193so8632636iof.1;
- Fri, 06 Dec 2019 12:20:45 -0800 (PST)
+ id 1idLtJ-0007aw-Ur; Fri, 06 Dec 2019 17:16:02 -0500
+Received: by mail-io1-xd43.google.com with SMTP id i11so8843635iol.13;
+ Fri, 06 Dec 2019 14:16:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VPrqLSDF6cbyZzlOcEit277juDu8n1Mg9FZXYf0DkF8=;
- b=biYg6He5J7jIk7sNgqpqyTA6deV7GDILYQE8zyKyRPVkR9r+Cq0+bIz2ji3lcUPATg
- wXmNwlEgPjVJY1sOU4Mu5g3gt/0nlAAqYQZbp63N0GWTnG3PkegYYPRlslUjW08etW43
- gZk736CpE1P2nmwp7H4tb43tU3ExA4ZYKK8xfgU1hrc8wNFrvXiuZtuEOsvswMR7Dv8Z
- PQABx4Q7r9Ro8JElzczbgvCU3x0OKwNePjG8UPjGGLp8LXGpqLFWcojGQ/raK2WXffAu
- 0GMGxFW3dqJvKGRrjP/kQdGDDypcOsBewFIqZN5dedBREXKa2MqsekjmfAdh6adS896Z
- F30g==
+ :cc; bh=s/7OdeqmZUFG/ihDfSirzk0p9NzkShThT+s7z8P7mpE=;
+ b=MlCjZLTacz8jXTW90H/+4HvcVgZkXw04W9zw9uUByxgOGK+3exgno7jzijCKP3NK56
+ 7UpxMdDJ09Ur55szOv10QoGIUi6dD8xhzV1xbl38IXxxGsvnJvisHklgeAcs7HhdJpLW
+ 3OGT2S53/CbXSlaBXuhQ0No+imlQDkufb56PLvD9IFPbhsyfmQyUAOH7BHPIAqViZyMS
+ QBvxhZu3f8N6PTw7q559BMthz3XxYhqYs6yYScEb1wfnpvxv+T5gvpMQJciTiOQG2EnE
+ hK3RNr8mvBZHtgDFCnIQu+2eaNhfeZKHbpQTd4HxULruYlu9xPcpyPKA/ji1ZzVg/Ieq
+ URzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=VPrqLSDF6cbyZzlOcEit277juDu8n1Mg9FZXYf0DkF8=;
- b=uoIFLYLAFsQ1fUC6L2JGFO4bKTLR7r5B+Szmw9geq7EOJbbN5pZeRi3891vuS98sy8
- B0IFa/i3TkcCOuCOMNfDUg6bGUApGtZJpXv7Jwz3h94X3Oh217mOd+xExFLByTOIm8lr
- hAB8gIs+1S3i0Q7Zo6kiRIB86lrRWa4TK5sGRpxbqsXmKbQgf0kl/r39UvxRzo8CrCZR
- bY1iQgPnub2ldbVK+J9td3VChv4COjZMG+uxplllSGXzZWhtg4YG9/9PG86yn5+2lkoX
- YOMH/2E+HI1LaBxUjaJLKOQ4Zl8nPnuTxNyR313O1Mqm+Ld0MGZWAmNMEsPriGBwAfTm
- Erbg==
-X-Gm-Message-State: APjAAAWRKZqY0C7x7J07kzSgfsUm7Bpwj6D664q0aMS+oTCNOol64QG4
- tD71Nokwqxa+8A6WY0GjGoYZmdcKXifQ8j1IKHg=
-X-Received: by 2002:a5d:8f17:: with SMTP id f23mr12298036iof.265.1575663644369; 
- Fri, 06 Dec 2019 12:20:44 -0800 (PST)
+ bh=s/7OdeqmZUFG/ihDfSirzk0p9NzkShThT+s7z8P7mpE=;
+ b=e/4NQKV0KkIMWVI0tQHKSxtZJlaeET3rMm4IWfl5mSWkJ2AVkb7m21EX2/Xu+XZQlK
+ v4PDs6sOCK6ezC42DaFWZLsIVxGpBrC7tALJo2F9ZMMS8RYy1ZDV4/8dKdrAvdzlG6ZN
+ 1OmK+wR/ouAVRhUMjsrD83BO9ILKvF4QklJ+hAznAhxCB560kDG+yPwsNhn5iv4XmPtk
+ ZKGqNKyo0n3NMltoUzBvkqjJKG571fBo6g2a2YpiBlBcOTMHCc/bEwFAzOU5c61uB1nM
+ CoKNc3ufT7anzDkkEn85GXbG+mwkYbKc6B0wlo9a+hzYhZ+1yyeOSyvhlPBUkaPAh5Ck
+ bStA==
+X-Gm-Message-State: APjAAAUNm125rX0wg9Uf7WjUKKKPrQ6VNdcGehGMP4o/FkNDozZftTeM
+ 8yAdF7DzkgfNaSI6MW1yKD2XRkrPEv4TqfukAuM=
+X-Received: by 2002:a6b:d912:: with SMTP id r18mr12132192ioc.306.1575670559704; 
+ Fri, 06 Dec 2019 14:15:59 -0800 (PST)
 MIME-Version: 1.0
 References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-9-nieklinnenbank@gmail.com>
- <CAFEAcA-1Re0noxPN04uXqRYX=-g97jtiweZA=WcFo1OwXBoN5w@mail.gmail.com>
- <41ab9f5a-3318-b412-44e8-f8571a64da64@redhat.com>
-In-Reply-To: <41ab9f5a-3318-b412-44e8-f8571a64da64@redhat.com>
+ <20191202210947.3603-3-nieklinnenbank@gmail.com>
+ <b14e5a75-ebe3-311e-60a8-3f71b0874a10@redhat.com>
+ <CAPan3WohBP_47h1ZPP12ZuyiY43B3B6tGFMH-sK=LAAjMbwpaA@mail.gmail.com>
+ <ce2125dd-004c-a5a2-81cf-b8aaae76444e@redhat.com>
+In-Reply-To: <ce2125dd-004c-a5a2-81cf-b8aaae76444e@redhat.com>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Fri, 6 Dec 2019 21:20:33 +0100
-Message-ID: <CAPan3Wq_fFcHb1TR5bP0O4T8mRo73Fi5Fe-8VNw93Cv6jwLg=g@mail.gmail.com>
-Subject: Re: [PATCH 08/10] arm: allwinner-h3: add Security Identifier device
+Date: Fri, 6 Dec 2019 23:15:48 +0100
+Message-ID: <CAPan3WrN28W-h9RYA88LbA8eWP6Me9VcNisnZhwNgC2WOgVLxg@mail.gmail.com>
+Subject: Re: [PATCH 02/10] hw: arm: add Xunlong Orange Pi PC machine
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000ceea9005990ec7cb"
+Content-Type: multipart/alternative; boundary="000000000000fe8a3705991063e9"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2607:f8b0:4864:20::d43
@@ -110,116 +111,793 @@ Cc: Beniamino Galvani <b.galvani@gmail.com>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VYlS2nG1Ecg/
+X-TUID: UFRbdA+AfjdR
 
---000000000000ceea9005990ec7cb
+--000000000000fe8a3705991063e9
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hey Peter, Philippe,
+Hi Philippe,
 
-On Fri, Dec 6, 2019 at 5:35 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+On Fri, Dec 6, 2019 at 6:41 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
 om>
 wrote:
 
-> On 12/6/19 3:27 PM, Peter Maydell wrote:
-> > On Mon, 2 Dec 2019 at 21:10, Niek Linnenbank <nieklinnenbank@gmail.com>
-> wrote:
-> >>
-> >> The Security Identifier device in Allwinner H3 System on Chip
-> >> gives applications a per-board unique identifier. This commit
-> >> adds support for the Allwinner H3 Security Identifier using
-> >> randomized data as input.
+> On 12/5/19 11:15 PM, Niek Linnenbank wrote:
+> > Hello Philippe,
 > >
-> > If this is a fixed value in hardware, I'm not sure that
-> > having the QEMU model pick a random value is the best
-> > choice. If we just set it to a fixed value in QEMU, is
-> > that going to cause problems?
+> > On Tue, Dec 3, 2019 at 10:18 AM Philippe Mathieu-Daud=C3=A9
+> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
 > >
-> > (Generally it's nice for QEMU to be deterministic, so it
-> > behaves the same way every time you run it. Also if it's
-> > always the same we don't need to bother migrating the
-> > ID value.)
+> >     On 12/2/19 10:09 PM, Niek Linnenbank wrote:
+> >      > The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
+> >      > based embedded computer with mainline support in both U-Boot
+> >      > and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
+> >      > 512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
+> >      > various other I/O. This commit add support for the Xunlong
+> >      > Orange Pi PC machine.
+> >      >
+> >      > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com
+> >     <mailto:nieklinnenbank@gmail.com>>
+> >      > ---
+> >      >   MAINTAINERS          |  1 +
+> >      >   hw/arm/Makefile.objs |  2 +-
+> >      >   hw/arm/orangepi.c    | 90
+> >     ++++++++++++++++++++++++++++++++++++++++++++
+> >      >   3 files changed, 92 insertions(+), 1 deletion(-)
+> >      >   create mode 100644 hw/arm/orangepi.c
+> >      >
+> >      > diff --git a/MAINTAINERS b/MAINTAINERS
+> >      > index 29c9936037..42c913d6cb 100644
+> >      > --- a/MAINTAINERS
+> >      > +++ b/MAINTAINERS
+> >      > @@ -485,6 +485,7 @@ L: qemu-arm@nongnu.org
+> >     <mailto:qemu-arm@nongnu.org>
+> >      >   S: Maintained
+> >      >   F: hw/*/allwinner-h3*
+> >      >   F: include/hw/*/allwinner-h3*
+> >      > +F: hw/arm/orangepi.c
+> >      >
+> >      >   ARM PrimeCell and CMSDK devices
+> >      >   M: Peter Maydell <peter.maydell@linaro.org
+> >     <mailto:peter.maydell@linaro.org>>
+> >      > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> >      > index 956e496052..8d5ea453d5 100644
+> >      > --- a/hw/arm/Makefile.objs
+> >      > +++ b/hw/arm/Makefile.objs
+> >      > @@ -34,7 +34,7 @@ obj-$(CONFIG_DIGIC) +=3D digic.o
+> >      >   obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o
+> >      >   obj-$(CONFIG_STRONGARM) +=3D strongarm.o
+> >      >   obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboard.o
+> >      > -obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o
+> >      > +obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o orangepi.o
+> >      >   obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o raspi=
+.o
+> >      >   obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o
+> >      >   obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=3D xlnx-zynqmp.o xlnx-zcu102.o
+> >      > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+> >      > new file mode 100644
+> >      > index 0000000000..5ef2735f81
+> >      > --- /dev/null
+> >      > +++ b/hw/arm/orangepi.c
+> >      > @@ -0,0 +1,90 @@
+> >      > +/*
+> >      > + * Orange Pi emulation
+> >      > + *
+> >      > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com
+> >     <mailto:nieklinnenbank@gmail.com>>
+> >      > + *
+> >      > + * This program is free software: you can redistribute it and/o=
+r
+> >     modify
+> >      > + * it under the terms of the GNU General Public License as
+> >     published by
+> >      > + * the Free Software Foundation, either version 2 of the
+> License, or
+> >      > + * (at your option) any later version.
+> >      > + *
+> >      > + * This program is distributed in the hope that it will be
+> useful,
+> >      > + * but WITHOUT ANY WARRANTY; without even the implied warranty =
+of
+> >      > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See th=
+e
+> >      > + * GNU General Public License for more details.
+> >      > + *
+> >      > + * You should have received a copy of the GNU General Public
+> License
+> >      > + * along with this program.  If not, see
+> >     <http://www.gnu.org/licenses/>.
+> >      > + */
+> >      > +
+> >      > +#include "qemu/osdep.h"
+> >      > +#include "exec/address-spaces.h"
+> >      > +#include "qapi/error.h"
+> >      > +#include "cpu.h"
+> >      > +#include "hw/sysbus.h"
+> >      > +#include "hw/boards.h"
+> >      > +#include "hw/qdev-properties.h"
+> >      > +#include "hw/arm/allwinner-h3.h"
+> >      > +
+> >      > +static struct arm_boot_info orangepi_binfo =3D {
+> >      > +    .loader_start =3D AW_H3_SDRAM_BASE,
+> >      > +    .board_id =3D -1,
+> >      > +};
+> >      > +
+> >      > +typedef struct OrangePiState {
+> >      > +    AwH3State *h3;
+> >      > +    MemoryRegion sdram;
+> >      > +} OrangePiState;
+> >      > +
+> >      > +static void orangepi_init(MachineState *machine)
+> >      > +{
+> >      > +    OrangePiState *s =3D g_new(OrangePiState, 1);
+> >      > +    Error *err =3D NULL;
+> >      > +
+> >
+> >     Here I'd add:
+> >
+> >             if (strcmp(machine->cpu_type,
+> >     ARM_CPU_TYPE_NAME("cortex-a7")) !=3D 0) {
+> >                 error_report("This board can only be used with cortex-a=
+7
+> >     CPU");
+> >                 exit(1);
+> >             }
+> >
+> > Done!
+> >
+> >      > +    s->h3 =3D AW_H3(object_new(TYPE_AW_H3));
+> >      > +
+> >      > +    /* Setup timer properties */
+> >      > +    object_property_set_int(OBJECT(&s->h3->timer), 32768,
+> >     "clk0-freq", &err);
+> >      > +    if (err !=3D NULL) {
+> >      > +        error_reportf_err(err, "Couldn't set clk0 frequency: ")=
+;
+> >      > +        exit(1);
+> >      > +    }
+> >      > +
+> >      > +    object_property_set_int(OBJECT(&s->h3->timer), 24000000,
+> >     "clk1-freq",
+> >      > +                            &err);
+> >      > +    if (err !=3D NULL) {
+> >      > +        error_reportf_err(err, "Couldn't set clk1 frequency: ")=
+;
+> >      > +        exit(1);
+> >      > +    }
+> >      > +
+> >      > +    /* Mark H3 object realized */
+> >      > +    object_property_set_bool(OBJECT(s->h3), true, "realized",
+> &err);
+> >
+> >     I'm not sure if that's correct but I'd simply use &error_abort here=
+.
+> >
+> > Done, I applied it to all the functions and removed the err variable.
+> >
+> >      > +    if (err !=3D NULL) {
+> >      > +        error_reportf_err(err, "Couldn't realize Allwinner H3:
+> ");
+> >      > +        exit(1);
+> >      > +    }
+> >      > +
+> >      > +    /* RAM */
+> >      > +    memory_region_allocate_system_memory(&s->sdram, NULL,
+> >     "orangepi.ram",
+> >      > +                                         machine->ram_size);
+> >
+> >     I'd only allow machine->ram_size =3D=3D 1 * GiB here, since the onb=
+oard
+> >     DRAM
+> >     is not upgradable.
+> >
+> >
+> > Agree, we should add something for that. Would it be acceptable if we
+> > make the 1GB an upper limit?
+> > I see that the Raspberry Pi is doing that too in hw/arm/raspi.c, like s=
+o:
+> >
+> >      if (machine->ram_size > 1 * GiB) {
+> >          error_report("Requested ram size is too large for this machine=
+:
+> "
+> >                       "maximum is 1GB");
+> >          exit(1);
+> >      }
+> >
+> > I think it would be helpful to allow the flexibility to the user of
+> > reducing the RAM to less than 1GB,
+> > in case resources of the host OS are limited. What do you think?
 >
-> Agreed. Since the identifier is 128-bit, I'd use DEFINE_PROP_UUID() or,
-> to be even safer, DEFINE_PROP_UUID_NODEFAULT().
-> See how the ipmi-bmc-sim device checks its guid field and fails if unset.
+> Sure, good idea.
+>
+> FIY (in case you add more models) we recently noticed there is a problem
+> when using 2GiB default on 32-bit hosts, so the workaround is to use <=3D
+> 1GiB default.
+>
+> >      > +    memory_region_add_subregion(get_system_memory(),
+> >     AW_H3_SDRAM_BASE,
+> >      > +                                &s->sdram);
+> >      > +
+> >      > +    /* Load target kernel */
+> >      > +    orangepi_binfo.ram_size =3D machine->ram_size;
+> >      > +    orangepi_binfo.nb_cpus  =3D AW_H3_NUM_CPUS;
+> >      > +    arm_load_kernel(ARM_CPU(first_cpu), machine,
+> &orangepi_binfo);
+> >      > +}
+> >      > +
+> >      > +static void orangepi_machine_init(MachineClass *mc)
+> >      > +{
+> >      > +    mc->desc =3D "Orange Pi PC";
+> >      > +    mc->init =3D orangepi_init;
+> >      > +    mc->units_per_default_bus =3D 1;
+> >      > +    mc->min_cpus =3D AW_H3_NUM_CPUS;
+> >      > +    mc->max_cpus =3D AW_H3_NUM_CPUS;
+> >      > +    mc->default_cpus =3D AW_H3_NUM_CPUS;
+> >
+> >              mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a7");
+> >
+> >      > +    mc->ignore_memory_transaction_failures =3D true;
+> >
+> >     You should not use this flag in new design. See the documentation i=
+n
+> >     include/hw/boards.h:
+> >
+> >        * @ignore_memory_transaction_failures:
+> >        *    [...] New board models
+> >        *    should instead use "unimplemented-device" for all memory
+> >     ranges where
+> >        *    the guest will attempt to probe for a device that QEMU
+> doesn't
+> >        *    implement and a stub device is required.
+> >
+> >     You already use the "unimplemented-device".
+> >
+> > Thanks, I'm working on this now. I think that at least I'll need to add
+> > all of the devices mentioned in the 4.1 Memory Mapping chapter of the
+> > datasheet
+> > as an unimplemented device. Previously I only added some that I thought
+> > were relevant.
+> >
+> > I added all the missing devices as unimplemented and removed the
+> > ignore_memory_transaction_failures flag
+>
+> I was going to say, "instead of adding *all* the devices regions you can
+> add the likely bus decoding regions", probably:
+>
+> 0x01c0.0000   128KiB   AMBA AXI
+> 0x01c2.0000   64KiB    AMBA APB
+>
+> But too late.
 >
 
-Thank you both for clarifying this. OK, I'll update this patch such that
-the identifier is fixed,
-using the functions Philippe suggested.
+Hehe its okey, I can change it to whichever is preferable: the minimum set
+with unimplemented device entries to get a working linux kernel / u-boot or
+just cover the full memory space from the datasheet. My initial thought was
+that if
+we only provide the minimum set, and the linux kernel later adds a new
+driver for a device
+which is not marked unimplemented, it will trigger the data abort and
+potentially resulting in a non-booting kernel.
 
-The reason I originally chose to make it randomized is that U-Boot mainline
-reads out the
-SID data in order to create a MAC address for the ethernet device. So when
-a user runs multiple
-QEMU machines inside a virtualized network, they will get the same MACs if
-the SID isnt unique.
-However this problem can also be solved very easy with U-Boot itself by
-just overriding the ethaddr environment variable.
+But I'm not sure what is normally done here. I do see other board files
+using the create_unimplemented_device() function,
+but I dont know if they are covering the whole memory space or not.
 
-For your interest, in the U-Boot source you can see this behaviour in the
-file
-arch/arm/mach-sunxi/cpu_info.c:139 in sunxi_get_sid(), sun8i_efuse_read()
-where it reads the SID
-and in board/sunxi/board.c:782 in setup_environment() where it uses the SID
-to create the MAC address.
+Any thoughts? :-)
+
+
+>
+> > from the machine. Now it seems Linux gets a data abort while probing th=
+e
+> > uart1 serial device at 0x01c28400,
+>
+> Did you add the UART1 as UNIMP or 16550?
+>
+>
+I discovered what goes wrong here. See this kernel oops message:
+
+[    1.084985] [f08600f8] *pgd=3D6f00a811, *pte=3D01c28653, *ppte=3D01c2845=
+3
+[    1.085564] Internal error: : 8 [#1] SMP ARM
+[    1.085698] Modules linked in:
+[    1.085940] CPU: 0 PID: 1 Comm: swapper/0 Not tainted
+5.4.0-11747-g2f13437b8917 #4
+[    1.085968] Hardware name: Allwinner sun8i Family
+[    1.086447] PC is at dw8250_setup_port+0x10/0x10c
+[    1.086478] LR is at dw8250_probe+0x500/0x56c
+
+It tries to access the UART0 at base address 0x01c28400, which I did
+provide. The strange
+thing is that is accesses offset 0xf8, thus address 0x01c284f8. The
+datasheet does not mention this register
+but if we provide the 1KiB (0x400) I/O space it should at least read as
+zero and writes ignored. Unfortunately the emulated
+serial driver only maps a small portion until 0x1f:
+
+(qemu) info mtree
+...
+    0000000001c28000-0000000001c2801f (prio 0, i/o): serial
+    0000000001c28400-0000000001c2841f (prio 0, i/o): serial
+    0000000001c28800-0000000001c2881f (prio 0, i/o): serial
+
+
+Apparently, the register that the mainline linux kernel is using is
+DesignWare specific:
+
+drivers/tty/serial/8250/8250_dwlib.c:13:
+
+/* Offsets for the DesignWare specific registers */
+#define DW_UART_DLF<--->0xc0 /* Divisor Latch Fraction Register */
+#define DW_UART_CPR<--->0xf4 /* Component Parameter Register */
+#define DW_UART_UCV<--->0xf8 /* UART Component Version */
+
+I tried to find a way to increase the memory mapped size of the serial
+device I created with serial_mm_init(),
+but I don't think its possible with that interface.
+
+I did manage to get it working by overlaying the UART0 with another
+unimplemented device
+that does have an I/O size of 0x400, but I guess that is probably not the
+solution we are looking for?
+
+I wonder, did any of the other SoC / boards have this problem when removing
+mc->ignore_memory_transaction_failures?
 
 Regards,
 Niek
 
+> so I'll need to debug it further. I'll post back when I have more results=
+.
+> >
+> > Regards,
+> > Niek
+> >
+> >      > +}
+> >      > +
+> >      > +DEFINE_MACHINE("orangepi", orangepi_machine_init)
+> >
+> >     Can you name it 'orangepi-pc'? So we can add other orangepi models.
+> >
+> >     Thanks,
+> >
+> >     Phil.
+> >
+> >
+> >
+> > --
+> > Niek Linnenbank
+> >
+>
+>
+
 --=20
 Niek Linnenbank
 
---000000000000ceea9005990ec7cb
+--000000000000fe8a3705991063e9
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hey Peter, Philippe,<br></div><br><div class=3D"gmail=
-_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Dec 6, 2019 at 5:35 P=
-M Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">phil=
-md@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">On 12/6/19 3:27 PM, Peter Maydell wrote:<br>
-&gt; On Mon, 2 Dec 2019 at 21:10, Niek Linnenbank &lt;<a href=3D"mailto:nie=
-klinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt; w=
-rote:<br>
-&gt;&gt;<br>
-&gt;&gt; The Security Identifier device in Allwinner H3 System on Chip<br>
-&gt;&gt; gives applications a per-board unique identifier. This commit<br>
-&gt;&gt; adds support for the Allwinner H3 Security Identifier using<br>
-&gt;&gt; randomized data as input.<br>
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Dec 6, 2019 =
+at 6:41 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.=
+com">philmd@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
+04);padding-left:1ex">On 12/5/19 11:15 PM, Niek Linnenbank wrote:<br>
+&gt; Hello Philippe,<br>
 &gt; <br>
-&gt; If this is a fixed value in hardware, I&#39;m not sure that<br>
-&gt; having the QEMU model pick a random value is the best<br>
-&gt; choice. If we just set it to a fixed value in QEMU, is<br>
-&gt; that going to cause problems?<br>
+&gt; On Tue, Dec 3, 2019 at 10:18 AM Philippe Mathieu-Daud=C3=A9 <br>
+&gt; &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redh=
+at.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.com" target=3D"_blank=
+">philmd@redhat.com</a>&gt;&gt; wrote:<br>
 &gt; <br>
-&gt; (Generally it&#39;s nice for QEMU to be deterministic, so it<br>
-&gt; behaves the same way every time you run it. Also if it&#39;s<br>
-&gt; always the same we don&#39;t need to bother migrating the<br>
-&gt; ID value.)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0On 12/2/19 10:09 PM, Niek Linnenbank wrote:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; The Xunlong Orange Pi PC is an Allwinner H3 S=
+ystem on Chip<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; based embedded computer with mainline support=
+ in both U-Boot<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; and Linux. The board comes with a Quad Core C=
+ortex A7 @ 1.3GHz,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; 512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB=
+, HDMI and<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; various other I/O. This commit add support fo=
+r the Xunlong<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Orange Pi PC machine.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D=
+"mailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.co=
+m</a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
+om" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; ---<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 |=C2=A0 1 +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0hw/arm/Makefile.objs |=C2=A0 2 +-=
 <br>
-Agreed. Since the identifier is 128-bit, I&#39;d use DEFINE_PROP_UUID() or,=
- <br>
-to be even safer, DEFINE_PROP_UUID_NODEFAULT().<br>
-See how the ipmi-bmc-sim device checks its guid field and fails if unset.<b=
-r></blockquote><div><br></div><div>Thank you both for clarifying this. OK, =
-I&#39;ll update this patch such that the identifier is fixed,</div><div>usi=
-ng the functions Philippe suggested.</div><div><br></div><div>The reason I =
-originally chose to make it randomized is that U-Boot mainline reads out th=
-e</div><div>SID data in order to create a MAC address for the ethernet devi=
-ce. So when a user runs multiple</div><div>QEMU machines inside a virtualiz=
-ed network, they will get the same MACs if the SID isnt unique.</div><div>H=
-owever this problem can also be solved very easy with U-Boot itself by just=
- overriding the ethaddr environment variable.<br></div><div><br></div><div>=
-For your interest, in the U-Boot source you can see this behaviour in the f=
-ile</div><div>arch/arm/mach-sunxi/cpu_info.c:139 in sunxi_get_sid(), sun8i_=
-efuse_read() where it reads the SID</div><div>and in board/sunxi/board.c:78=
-2 in setup_environment() where it uses the SID to create the MAC address.<b=
-r></div></div><div><br></div><div>Regards,</div><div>Niek<br></div><br>-- <=
-br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Niek Li=
-nnenbank<br><br></div></div></div></div>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 | =
+90<br>
+&gt;=C2=A0 =C2=A0 =C2=A0++++++++++++++++++++++++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A03 files changed, 92 insertions(+)=
+, 1 deletion(-)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0create mode 100644 hw/arm/orangep=
+i.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/MAINTAINERS b/MAINTAINERS<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index 29c9936037..42c913d6cb 100644<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- a/MAINTAINERS<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/MAINTAINERS<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -485,6 +485,7 @@ L: <a href=3D"mailto:qemu=
+-arm@nongnu.org" target=3D"_blank">qemu-arm@nongnu.org</a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:qemu-arm@nongnu.org" t=
+arget=3D"_blank">qemu-arm@nongnu.org</a>&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0S: Maintained<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0F: hw/*/allwinner-h3*<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0F: include/hw/*/allwinner-h3*<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +F: hw/arm/orangepi.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0ARM PrimeCell and CMSDK devices<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0M: Peter Maydell &lt;<a href=3D"m=
+ailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org<=
+/a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:peter.maydell@linaro.o=
+rg" target=3D"_blank">peter.maydell@linaro.org</a>&gt;&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/hw/arm/Makefile.objs b/hw/arm/Ma=
+kefile.objs<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index 956e496052..8d5ea453d5 100644<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- a/hw/arm/Makefile.objs<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/hw/arm/Makefile.objs<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -34,7 +34,7 @@ obj-$(CONFIG_DIGIC) +=3D di=
+gic.o<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_OMAP) +=3D omap1.o o=
+map2.o<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_STRONGARM) +=3D stro=
+ngarm.o<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_ALLWINNER_A10) +=3D =
+allwinner-a10.o cubieboard.o<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3=
+.o<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3=
+.o orangepi.o<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_RASPI) +=3D bcm2835_=
+peripherals.o bcm2836.o raspi.o<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_STM32F205_SOC) +=3D =
+stm32f205_soc.o<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=
+=3D xlnx-zynqmp.o xlnx-zcu102.o<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/hw/arm/orangepi.c b/hw/arm/orang=
+epi.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; new file mode 100644<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index 0000000000..5ef2735f81<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- /dev/null<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/hw/arm/orangepi.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -0,0 +1,90 @@<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +/*<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * Orange Pi emulation<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + *<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * Copyright (C) 2019 Niek Linnenbank &lt;<a=
+ href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@=
+gmail.com</a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
+om" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + *<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * This program is free software: you can re=
+distribute it and/or<br>
+&gt;=C2=A0 =C2=A0 =C2=A0modify<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * it under the terms of the GNU General Pub=
+lic License as<br>
+&gt;=C2=A0 =C2=A0 =C2=A0published by<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * the Free Software Foundation, either vers=
+ion 2 of the License, or<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * (at your option) any later version.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + *<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * This program is distributed in the hope t=
+hat it will be useful,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * but WITHOUT ANY WARRANTY; without even th=
+e implied warranty of<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * MERCHANTABILITY or FITNESS FOR A PARTICUL=
+AR PURPOSE.=C2=A0 See the<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * GNU General Public License for more detai=
+ls.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + *<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * You should have received a copy of the GN=
+U General Public License<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * along with this program.=C2=A0 If not, se=
+e<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;<a href=3D"http://www.gnu.org/licenses/" rel=3D=
+"noreferrer" target=3D"_blank">http://www.gnu.org/licenses/</a>&gt;.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;qemu/osdep.h&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;exec/address-spaces.h&quot;<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;qapi/error.h&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;cpu.h&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;hw/sysbus.h&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;hw/boards.h&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;hw/qdev-properties.h&quot;<br=
+>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;hw/arm/allwinner-h3.h&quot;<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +static struct arm_boot_info orangepi_binfo =
+=3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 .loader_start =3D AW_H3_SDRAM_=
+BASE,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 .board_id =3D -1,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +};<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +typedef struct OrangePiState {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 AwH3State *h3;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 MemoryRegion sdram;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +} OrangePiState;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +static void orangepi_init(MachineState *mach=
+ine)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 OrangePiState *s =3D g_new(Ora=
+ngePiState, 1);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 Error *err =3D NULL;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Here I&#39;d add:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (strcmp(machine-&gt;=
+cpu_type,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0ARM_CPU_TYPE_NAME(&quot;cortex-a7&quot;)) !=3D 0) {=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_rep=
+ort(&quot;This board can only be used with cortex-a7<br>
+&gt;=C2=A0 =C2=A0 =C2=A0CPU&quot;);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<=
+br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt; <br>
+&gt; Done!<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 s-&gt;h3 =3D AW_H3(object_new(=
+TYPE_AW_H3));<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* Setup timer properties */<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 object_property_set_int(OBJECT=
+(&amp;s-&gt;h3-&gt;timer), 32768,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&quot;clk0-freq&quot;, &amp;err);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (err !=3D NULL) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_reportf_er=
+r(err, &quot;Couldn&#39;t set clk0 frequency: &quot;);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 object_property_set_int(OBJECT=
+(&amp;s-&gt;h3-&gt;timer), 24000000,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&quot;clk1-freq&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;err);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (err !=3D NULL) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_reportf_er=
+r(err, &quot;Couldn&#39;t set clk1 frequency: &quot;);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* Mark H3 object realized */<=
+br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 object_property_set_bool(OBJEC=
+T(s-&gt;h3), true, &quot;realized&quot;, &amp;err);<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0I&#39;m not sure if that&#39;s correct but I&#39;d =
+simply use &amp;error_abort here.<br>
+&gt; <br>
+&gt; Done, I applied it to all the functions and removed the err variable.<=
+br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (err !=3D NULL) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_reportf_er=
+r(err, &quot;Couldn&#39;t realize Allwinner H3: &quot;);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* RAM */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 memory_region_allocate_system_=
+memory(&amp;s-&gt;sdram, NULL,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&quot;orangepi.ram&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0machine-&gt;ram_size);<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0I&#39;d only allow machine-&gt;ram_size =3D=3D 1 * =
+GiB here, since the onboard<br>
+&gt;=C2=A0 =C2=A0 =C2=A0DRAM<br>
+&gt;=C2=A0 =C2=A0 =C2=A0is not upgradable.<br>
+&gt; <br>
+&gt; <br>
+&gt; Agree, we should add something for that. Would it be acceptable if we =
+<br>
+&gt; make the 1GB an upper limit?<br>
+&gt; I see that the Raspberry Pi is doing that too in hw/arm/raspi.c, like =
+so:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 if (machine-&gt;ram_size &gt; 1 * GiB) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;Requested ram siz=
+e is too large for this machine: &quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0&quot;maximum is 1GB&quot;);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; <br>
+&gt; I think it would be helpful to allow the flexibility to the user of <b=
+r>
+&gt; reducing the RAM to less than 1GB,<br>
+&gt; in case resources of the host OS are limited. What do you think?<br>
+<br>
+Sure, good idea.<br>
+<br>
+FIY (in case you add more models) we recently noticed there is a problem <b=
+r>
+when using 2GiB default on 32-bit hosts, so the workaround is to use &lt;=
+=3D <br>
+1GiB default.<br>
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 memory_region_add_subregion(ge=
+t_system_memory(),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0AW_H3_SDRAM_BASE,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;=
+s-&gt;sdram);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* Load target kernel */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 orangepi_binfo.ram_size =3D ma=
+chine-&gt;ram_size;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 orangepi_binfo.nb_cpus=C2=A0 =
+=3D AW_H3_NUM_CPUS;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 arm_load_kernel(ARM_CPU(first_=
+cpu), machine, &amp;orangepi_binfo);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +static void orangepi_machine_init(MachineCla=
+ss *mc)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;desc =3D &quot;Orange P=
+i PC&quot;;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;init =3D orangepi_init;=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;units_per_default_bus =
+=3D 1;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;min_cpus =3D AW_H3_NUM_=
+CPUS;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;max_cpus =3D AW_H3_NUM_=
+CPUS;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;default_cpus =3D AW_H3_=
+NUM_CPUS;<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mc-&gt;default_cpu_typ=
+e =3D ARM_CPU_TYPE_NAME(&quot;cortex-a7&quot;);<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;ignore_memory_transacti=
+on_failures =3D true;<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0You should not use this flag in new design. See the=
+ documentation in<br>
+&gt;=C2=A0 =C2=A0 =C2=A0include/hw/boards.h:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 * @ignore_memory_transaction_failures:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 [...] New board models<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 should instead use &quot;uni=
+mplemented-device&quot; for all memory<br>
+&gt;=C2=A0 =C2=A0 =C2=A0ranges where<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 the guest will attempt to pr=
+obe for a device that QEMU doesn&#39;t<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 implement and a stub device =
+is required.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0You already use the &quot;unimplemented-device&quot=
+;.<br>
+&gt; <br>
+&gt; Thanks, I&#39;m working on this now. I think that at least I&#39;ll ne=
+ed to add<br>
+&gt; all of the devices mentioned in the 4.1 Memory Mapping chapter of the =
+<br>
+&gt; datasheet<br>
+&gt; as an unimplemented device. Previously I only added some that I though=
+t <br>
+&gt; were relevant.<br>
+&gt; <br>
+&gt; I added all the missing devices as unimplemented and removed the <br>
+&gt; ignore_memory_transaction_failures flag<br>
+<br>
+I was going to say, &quot;instead of adding *all* the devices regions you c=
+an <br>
+add the likely bus decoding regions&quot;, probably:<br>
+<br>
+0x01c0.0000=C2=A0 =C2=A0128KiB=C2=A0 =C2=A0AMBA AXI<br>
+0x01c2.0000=C2=A0 =C2=A064KiB=C2=A0 =C2=A0 AMBA APB<br>
+<br>
+But too late.<br></blockquote><div><br></div><div>Hehe its okey, I can chan=
+ge it to whichever is preferable: the minimum set</div><div>with unimplemen=
+ted device entries to get a working linux kernel / u-boot or <br></div><div=
+>just cover the full memory space from the datasheet. My initial thought wa=
+s that if</div><div>we only provide the minimum set, and the linux kernel l=
+ater adds a new driver for a device</div><div>which is not marked unimpleme=
+nted, it will trigger the data abort and potentially resulting in a non-boo=
+ting kernel.<br></div><div><br></div><div>But I&#39;m not sure what is norm=
+ally done here. I do see other board files using the create_unimplemented_d=
+evice() function,</div><div>but I dont know if they are covering the whole =
+memory space or not.</div><div><br></div><div>Any thoughts? :-)<br></div><d=
+iv>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+&gt; from the machine. Now it seems Linux gets a data abort while probing t=
+he <br>
+&gt; uart1 serial device at 0x01c28400,<br>
+<br>
+Did you add the UART1 as UNIMP or 16550?<br>
+<br></blockquote><div><br></div><div>I discovered what goes wrong here. See=
+ this kernel oops message:</div><div><br></div><div><pre>[    1.084985] [f0=
+8600f8] *pgd=3D6f00a811, *pte=3D01c28653, *ppte=3D01c28453
+[    1.085564] Internal error: : 8 [#1] SMP ARM
+[    1.085698] Modules linked in:
+[    1.085940] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.4.0-11747-g2f134=
+37b8917 #4
+[    1.085968] Hardware name: Allwinner sun8i Family
+[    1.086447] PC is at dw8250_setup_port+0x10/0x10c
+[    1.086478] LR is at dw8250_probe+0x500/0x56c
+</pre></div><div>It tries to access the UART0 at base address 0x01c28400, w=
+hich I did provide. The strange</div><div>thing is that is accesses offset =
+0xf8, thus address 0x01c284f8. The datasheet does not mention this register=
+</div><div>but if we provide the 1KiB (0x400) I/O space it should at least =
+read as zero and writes ignored. Unfortunately the emulated</div><div>seria=
+l driver only maps a small portion until 0x1f:</div><div><pre>(qemu) info m=
+tree
+...=20
+    0000000001c28000-0000000001c2801f (prio 0, i/o): serial
+    0000000001c28400-0000000001c2841f (prio 0, i/o): serial
+    0000000001c28800-0000000001c2881f (prio 0, i/o): serial</pre></div><div=
+><br></div><div>Apparently, the register that the mainline linux kernel is =
+using is DesignWare specific:<br></div><div><pre>drivers/tty/serial/8250/82=
+50_dwlib.c:13:
 
---000000000000ceea9005990ec7cb--
+/* Offsets for the DesignWare specific registers */
+#define DW_UART_DLF&lt;---&gt;0xc0 /* Divisor Latch Fraction Register */
+#define DW_UART_CPR&lt;---&gt;0xf4 /* Component Parameter Register */
+#define DW_UART_UCV&lt;---&gt;0xf8 /* UART Component Version */</pre></div>=
+<div>I tried to find a way to increase the memory mapped size of the serial=
+ device I created with serial_mm_init(),</div><div>but I don&#39;t think it=
+s possible with that interface. <br></div><div><br></div><div>I did manage =
+to get it working by overlaying the UART0 with another unimplemented device=
+</div><div>that does have an I/O size of 0x400, but I guess that is probabl=
+y not the solution we are looking for?<br></div><div><br></div><div>I wonde=
+r, did any of the other SoC / boards have this problem when removing mc-&gt=
+;ignore_memory_transaction_failures?<br></div><div>=C2=A0</div><div>Regards=
+,</div><div>Niek<br></div><div><br></div><blockquote class=3D"gmail_quote" =
+style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
+dding-left:1ex">
+&gt; so I&#39;ll need to debug it further. I&#39;ll post back when I have m=
+ore results.<br>
+&gt; <br>
+&gt; Regards,<br>
+&gt; Niek<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +DEFINE_MACHINE(&quot;orangepi&quot;, orangep=
+i_machine_init)<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Can you name it &#39;orangepi-pc&#39;? So we can ad=
+d other orangepi models.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Thanks,<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Phil.<br>
+&gt; <br>
+&gt; <br>
+&gt; <br>
+&gt; -- <br>
+&gt; Niek Linnenbank<br>
+&gt; <br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div></div>
+
+--000000000000fe8a3705991063e9--

@@ -1,175 +1,128 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp768418lff;
-        Fri, 6 Dec 2019 05:49:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwnnr9k3lRwrLGOjXgybAh1A8YxB2is/GTYN884uUVXi2iZThDNK67fD2z4C6qkyBEGhAyo
-X-Received: by 2002:a50:f391:: with SMTP id g17mr16206931edm.52.1575640154879;
-        Fri, 06 Dec 2019 05:49:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575640154; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp790573lff;
+        Fri, 6 Dec 2019 06:07:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzEqiFgvYAUDcJHZzsoOXA6+yi1dn0Hza0/wEk47/swXgTXi4+NmErIvw0nQNpCLEuiXv24
+X-Received: by 2002:a9d:7757:: with SMTP id t23mr11129706otl.315.1575641229742;
+        Fri, 06 Dec 2019 06:07:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575641229; cv=none;
         d=google.com; s=arc-20160816;
-        b=pAV7UKLj3KKRyTpLSQX3U7f8DyuXjJGlqRkAmLT/hd2Hx5Hq0Fg1vObQHEz/PK4hvG
-         gbBh8nG+MbXEstyXuxJmrdPmWEi9Gh11SFK+IXTIx0T5Wy/GvGs1h34G/DHLuGoOsZY4
-         VPZOYTN7wbcytkhFtadQXF+r3qhP34UsSe2BckVLBLAwuVSB0eroXX+SVOkpe/0WJUQy
-         8T6HQmjQvpVf/Lu7C1yJpz628LaCBgI8qaS/uMCE/SzXVMkY+YGs9+Iz2t8EWCS5y9MQ
-         tJ2f2JVtlZvlrFU8vo0fnyb6A+taCQRz0OV9V/IxltGozQ0H+N9heR0nnK4WiC6+/i+5
-         5Mmw==
+        b=AChlhfITNQw5VB4lffY5fb+YzCw2RHiImr4w1dB79INm8r3im+frt9fK0T6BYIJU9I
+         zBAfLuRi2aWRpT+9AfJRhEPr7LD/Kw0mcQ774GeFAaBXB29doygfJKw3xgaf0YLl7/rf
+         yg9zxNRPeCKwJd8gHtMQVA0W9MuUz/LVnUAGUDtiuOxscosLtD15/Dsy5C2XwBgaoGvx
+         Ki2G9oxshHeNV8WXdp80KC1QiF19ZBT2JLF8uGw9a5WFhDu40hcVExJXWEoD21ybhNy2
+         lflNwpxJD3s69bdsYEm8Nq5ftBvfK/NMSd8bjLUPAH7CdovhUPPbVYe44MfcfdEgCBbW
+         eDpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:content-transfer-encoding:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=qeEpOHiVicsdQEuTeVw1xPx0IpulfUWaY/EsL1Z8z1Q=;
-        b=ys+E49R6H1RwcienR+kLllQGTOQCMZiPFt0mvIDEwWvPV+nAiiZki4ASudmFSyWfXm
-         qF//YI1DjQjn4o3xp91ViGvHdRtBnjW1CCTxJTK5cE14r+3tgC42oAzO5MRMQt233/Bc
-         tj1FBeFuURc19ZW6lPumxGJ8Am7nB1qRID3GFmQUY/F6cjhl3URs8BQdzP7kon+3I7K8
-         O/K7o/i6B2tgngw+b8xhZyCrOD2X/3cIH1HwyjtK7fqBIRqmwmkpZKgfzrDWSrvqKnt4
-         UpHK7HhMS0tY7/V/jNZRxQUilpngNtWkZHSrMWgnuxMc45NE+p687iuF325mwEr85CE/
-         oUWQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=cYXyl8AMCk5ToB9fyPwohHN+Sd1sgQsQirBd7UyHPFk=;
+        b=IA6BMI0dOlNbr3h6NFK8jO2Vo665LMGfbxA4tU5BMKd/BJUpanm8K8GMg+/oq8fvAf
+         G/kj3D5nQTpNKhsOuaiOy5rmY149k3s4/FeyZFxrTVUFk8zhkz+ff43hoZ29K3LVIRyA
+         /skjH6DDUT2SXfNJbT2FjBd8FAkZ2bnOnqoENIeEWUFoTKKENmcrpxK3w53oeTVbzRli
+         gHNmLUJBToZHR47Wv00M2QqJyC8l6A5cKr9vEJG3rqHirFj5qDEzOjkEvpKs98s3O5R+
+         Iq5EdHpsJXISWdgo0B5Gh+GhtPnsTx+4EvXYCGlGXi4eHrlj/X9u+CfHwmXdCmap929X
+         mUGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aKHndkf5;
-       spf=pass (google.com: domain of dgilbert@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=dgilbert@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <dgilbert@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id dm22si10075500edb.381.2019.12.06.05.49.14
+       dkim=fail header.i=@linaro.org header.s=google header.b=HpckPagM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 73si6594583otj.82.2019.12.06.06.07.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Dec 2019 05:49:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of dgilbert@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 06 Dec 2019 06:07:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aKHndkf5;
-       spf=pass (google.com: domain of dgilbert@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=dgilbert@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1575640153;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=qeEpOHiVicsdQEuTeVw1xPx0IpulfUWaY/EsL1Z8z1Q=;
-	b=aKHndkf53e7je9e10NbF7y3oO2GyLa9P0J7gRidcjdvG8ZBrIZB7vL7tyJmF+gUlM/4JjC
-	kikESSTNJu3RhOGNGmucoOn4/6kkYAweMP3w/RibCEriH8RU4W8h78ZW5c2tcXC6AF224W
-	yG4F0vdmIYcxKa5gtjCDmpyOdQFGdg8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-343-4R-FKP8ONSOLEjbz2If8fQ-1; Fri, 06 Dec 2019 08:49:12 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AFEA7107ACC4;
-	Fri,  6 Dec 2019 13:49:10 +0000 (UTC)
-Received: from work-vm (ovpn-117-232.ams2.redhat.com [10.36.117.232])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3ADC9608A5;
-	Fri,  6 Dec 2019 13:49:02 +0000 (UTC)
-Date: Fri, 6 Dec 2019 13:48:59 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Cleber Rosa <crosa@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Damien Hedde <damien.hedde@greensocs.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Mark Burton <mark.burton@greensocs.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"Daniel P. Berrange" <berrange@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Oksana Voshchana <ovoshcha@redhat.com>
-Subject: Re: [PATCH v6 0/9] Clock framework API
-Message-ID: <20191206134859.GC2878@work-vm>
-References: <CAFEAcA98rt6nRDSrwk8XRbaBT67LZXvF=XEV13dtJBp4fPUscw@mail.gmail.com>
- <be199ad6-1b79-f77d-afad-faeb042151ed@greensocs.com>
- <febdb64d-9d02-66ad-84d2-dc795879e48b@redhat.com>
- <a0cea550-d6c7-0193-b4e6-24ed879be61d@greensocs.com>
- <279a0fd5-1ea5-b3c7-27bb-b1d22db5e359@redhat.com>
- <20191205102151.GB2824@work-vm>
- <f3aa4881-dd41-ce71-0f5a-8d36bf5c3828@redhat.com>
- <20191205105613.GE2824@work-vm>
- <138ef325-dc9a-2ca5-9044-c67ffdabb968@redhat.com>
- <20191206124613.GA3902@dhcp-17-72.bos.redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=HpckPagM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37778 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1idEGC-0000kN-W2
+	for alex.bennee@linaro.org; Fri, 06 Dec 2019 09:07:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47745)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1idEG4-0000js-ST
+ for qemu-arm@nongnu.org; Fri, 06 Dec 2019 09:07:01 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1idEG3-0006Yc-Fe
+ for qemu-arm@nongnu.org; Fri, 06 Dec 2019 09:07:00 -0500
+Received: from mail-oi1-f196.google.com ([209.85.167.196]:38756)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1idEG3-0006Ws-9G
+ for qemu-arm@nongnu.org; Fri, 06 Dec 2019 09:06:59 -0500
+Received: by mail-oi1-f196.google.com with SMTP id b8so6256768oiy.5
+ for <qemu-arm@nongnu.org>; Fri, 06 Dec 2019 06:06:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=cYXyl8AMCk5ToB9fyPwohHN+Sd1sgQsQirBd7UyHPFk=;
+ b=HpckPagMtDVfW21+RGXHGUL3MffnE2Q0RVPX5nHcCmDwveTkYH5y59BkHJgbYEi0UL
+ fcGmF5HmxJjfJcgjCRtZhDy+XIYk1ja+JfuFb8LBrAGiea4FlPe1xiTxjKnWINy6xhb6
+ LGxbDKpprGMd5zS+/q78/l6iDLCwL1rxW7Ld1NvVbKJ7pKD6m72ZuFSNRMPTEXSK6rNf
+ DQk5haXynfV2fKy0k1SPPHnqyvUZZWammFwbuL3OKrTIAvtiSsOCqLZ63O0ts2amUHG4
+ /OXIfBr73MDOYl7OxgMJW/kut1/HpKDxLyBBAaOCaNvMinOvRBD30QFGeWyF2JjiPoBp
+ eXMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=cYXyl8AMCk5ToB9fyPwohHN+Sd1sgQsQirBd7UyHPFk=;
+ b=lGXNm4SLucmDfsylWoL/JGGLiusMW4/64rhaac6AI0SwuOH9PLpK2sJSvVYOHohc/K
+ NHiZfcX1QafIRFRvxiLkWZeomlo+4HmPoDH9PAkGxbthRlzxYlfG9bunuXFbViNDpkvg
+ +27FI8SYesb7LKNmH2uEPEui1/9Q2oYQ/dTy2hljk4dithVzXYlLvkunEGLO0/iHRQs/
+ eyhO9x6ppZiZjaNTwjPM2CEKBvWdkrrtKlULHQWhLr7zF2nZh+8qt7Z0AmKyc9F8Tr4H
+ rPhUTlR+cTsSrZUIN+SZqhK2GXrfODKL0sxie5sCC8spjogv+HSNdArz7ttvVe2QbL0V
+ tn9A==
+X-Gm-Message-State: APjAAAVW559jVj2YbXUranB6bGgNtwnw2ZCdk1jMK8zntf4s8/JoS9sX
+ nQ6+WAIk43ZwttnnFrl9d1OdO0GDFxgaobsHXT1IeT1y
+X-Received: by 2002:aca:edd5:: with SMTP id l204mr12409527oih.98.1575637968500; 
+ Fri, 06 Dec 2019 05:12:48 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191206124613.GA3902@dhcp-17-72.bos.redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: 4R-FKP8ONSOLEjbz2If8fQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=iso-8859-1
+References: <20191119141211.25716-1-clg@kaod.org>
+In-Reply-To: <20191119141211.25716-1-clg@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Dec 2019 13:12:37 +0000
+Message-ID: <CAFEAcA9GANxjJ1yJ7Wvaj1Yt=7QXc6_A32wa9gayfcupAfme7w@mail.gmail.com>
+Subject: Re: [PATCH 00/17] aspeed: extensions and fixes
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-TUID: gbaExh6f6y9F
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.167.196
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xK2WmaCmzKf3
 
-* Cleber Rosa (crosa@redhat.com) wrote:
-> On Thu, Dec 05, 2019 at 12:01:56PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> >=20
-> > Understood, thanks for clearing this out!
-> >=20
-> > Side note, we don't do cross-arch migration testing, but we talked abou=
-t
-> > having a 'different QEMU version' migration test. When we get a such te=
-st
-> > setup, it shouldn't be too difficult to evolve to some cross-arch migra=
-tion
-> > test.
-> >
->=20
-> +Oksana,
->=20
-> Avocado-VT has had this as a core concept as far as I can remember, and
-> it's exposed even as a command line argument:
->=20
->    avocado run --help
->    ...
->    [--vt-qemu-dst-bin VT_DST_QEMU_BIN]
->    ...
->=20
+On Tue, 19 Nov 2019 at 14:12, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> Hi,
+>
+> Here is a series adding :
+>
+>  - support for pool buffer transfers in the I2C controller
+>  - fixes for the AST2600 and for the SMC controller
+>  - a new Tacoma BMC board using the AST2600 SoC.
+>  - misc small cleanups
 
-Yeh, I've run that in the past - it works OK.
+Applied to target-arm.next for 5.0; thanks.
 
-Dave
-
-> Oksana is currently working on new migration test cases, and may consider
-> looking into adding "different QEMU version" support too.
->=20
-> PS: I have to say, though, that I'm trying to get my mind around
-> cross-arch migration being real.
->=20
-> - Cleber.
->=20
-> > > > I hope I'm wrong and confuse, this is a great news for me to know w=
-e
-> > > > can migrate floats!
-> > > >=20
-> > > > > Dave
-> > > > >=20
-> > > > > > > So we could store the frequency in clock out and migrate thin=
-gs there.
-> > > > > > > But since we have no way to ensure all clock out states are m=
-igrated
-> > > > > > > before some device fetch a ClockIn: we'll have to say "don't =
-fetch one
-> > > > > > > of your ClockIn frequency during migration and migrate the va=
-lue
-> > > > > > > yourself if you need it", pretty much like gpios.
-> > > > > > >=20
-> > > > > > > So we will probably migrate all ClockOut and almost all Clock=
-In.
-> > > > > > >=20
-> > > > > > > It would nice if we had a way to ensure clocks are migrated b=
-efore
-> > > > > > > devices try to use them. But I don't think this is possible.
-> > > > > > >=20
-> > > > > > > --
-> > > > > > > Damien
-> > > > > > >=20
-> > > > > >=20
-> > > > > --
-> > > > > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-> > > > >=20
-> > > >=20
-> > > --
-> > > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-> > >=20
-> >=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+-- PMM

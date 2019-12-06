@@ -1,314 +1,240 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp889524lff;
-        Fri, 6 Dec 2019 07:25:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyxdxcq/Ylgf4sZfs4cn9AVmKU2dlgSx9dburpE9T4w70jmHIpAFBHB6IZyxmjIrTt7uSEs
-X-Received: by 2002:a9d:5c84:: with SMTP id a4mr1330725oti.305.1575645948670;
-        Fri, 06 Dec 2019 07:25:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575645948; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp904460lff;
+        Fri, 6 Dec 2019 07:37:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw3GYFAVlE7+vZujvQ2/OOcLGjm6G8g6tZwTAk8jdPuy39xavXRhsB+P4O94y1MlOO7NUYb
+X-Received: by 2002:a05:620a:9cc:: with SMTP id y12mr4434746qky.336.1575646669877;
+        Fri, 06 Dec 2019 07:37:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575646669; cv=none;
         d=google.com; s=arc-20160816;
-        b=MBrtUoc00JQlfvq0nY6TJFRelydE27f9XSo2FwzYG6z+P/6ZDFcNAyGU3DVkdjSDrY
-         jt4BkDcX4Ru5Zl4lD+AZFUNS3vK/a1v9vBzLIZaV2IwQ5GB7ld7SeATeO5SLKoBBjRka
-         k6MHmHI/VKlcP4wJkG4VUz3H/NcpDu5Fq4qifr3EeMWtZkY4x7DX2n3GjXHurD2Lr3IF
-         m/UlZcOburs1tdusQS1vX/DN0/y0DwG4QhT8kuFPTmtd6sQjIDM3fGVi2J5X8A4yjYLy
-         Gibeaio53cBSkI4hz84PTs8zFIoAZVcXSGjDBKCiWsEa9Lx0XL2d+Ai9XODjjzirZaFl
-         5GNQ==
+        b=tpQzJpfRB34xscs/STM5u61cCPQIwWx+6mRdv8Sc8hspl2aazKQjcfT6a9QEnSWHD+
+         FG0dRFPmRWLaL6RAWmELt+MDoCs0EOj6T5CfgQZUiz+EDb9e3MpN25hvt+RX67gZ7/jM
+         Eken731lsHurDcFnnO5AMXoqsgkrSjbrlq9RiboIJCzNGhLzRFrNYnljufRJuIXMswCq
+         I7Moj9IRicZ9hmX2HkCouF8GVdBeMLpky7MXi6TPI9blSfbdHpuaGle2aTbc76n8xN3E
+         uRdg7nJk4VoUS+2Ey1EZqS8xUSSHKyFGI6XkPBEpmtEXHV6Qx0UirA7Qdi81eh9yhcpB
+         8Czg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=RVrvv9IFtOxf7TVu5YfYeIqWyis1fMQehJN3vG2vBTg=;
-        b=06rocvidhKYHS9tn5Vt7ogNPB+L3CPKkp+xv+5iWFAVbmID3Hsa0/ysbCcJIR4jhtY
-         G3GE8BY6oLD3NGydOHuxCZxD7IiXwPSCX7lFC8CbJwNyZdRzFt4U+j/bd8tCNazVSdD0
-         ljpwiIkQCLq4X/MtSBAQco6F5/MLyPm1zm/wAyNOgRf8FEB1TQ+Jm03NQsxuY5TGUV+F
-         zoIwdtnfa+2o9oBlp67KZ5sUG5zYixX3KXN9GYOJQi+N5UGc1f44Ns2bjbM2+1D4x/kV
-         jWXfQ2gK0Abe1cHFN6RiBSSfFmmW13PJOP6gnLfA2WjAX3hyTcUz1knQnD5oA1fYNxQd
-         98ww==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=uhSPlg+i9CiAubF7ClC0ww2vNy2qAmWgFnaNVgQgOxE=;
+        b=fXHilTvFxm7h4HLYi0CGI95DSzaZA37Ksa0wS0EFCNEFUajc4+2n9yUajBjlx0rJGJ
+         l8dezSGVF2TIAaykClz/WMTcRW/XImPrwC2PtHW1P4KzJlnCR7Cuv11OcOmE9LSGaxAb
+         StzWqsPBOHUX4uoaU+Jro7aIDvnNZ7azeP6TW3TBI363Bn/VGFlvKY8TXA9Ol5eGehh7
+         CZjGt7WmioxHRHvDRl0lKNTd7beaZwNI8eoG91VjNnknoSsTYIXE1r4/vnFgKNox3tt7
+         r6Ni9um/DulX43JvurE/js6yJnNCcqRv0Q0DgvN61yOtsFU7S3H6N4xcppLLKppSFuHi
+         uT8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hZsdfzpo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=zzsj35yd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b20si6957371oii.169.2019.12.06.07.25.48
+        by mx.google.com with ESMTPS id x10si7954640qth.16.2019.12.06.07.37.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Dec 2019 07:25:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 Dec 2019 07:37:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hZsdfzpo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39704 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=zzsj35yd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39872 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1idFUJ-0002uY-Dk
-	for alex.bennee@linaro.org; Fri, 06 Dec 2019 10:25:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46390)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1idFfw-00073j-VB
+	for alex.bennee@linaro.org; Fri, 06 Dec 2019 10:37:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51425)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1idEYb-0003xW-2Q
- for qemu-arm@nongnu.org; Fri, 06 Dec 2019 09:26:10 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1idErz-0007tT-2d
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 09:46:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1idEYY-0000mh-GI
- for qemu-arm@nongnu.org; Fri, 06 Dec 2019 09:26:08 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:51258
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1idEYY-0000ip-Ao
- for qemu-arm@nongnu.org; Fri, 06 Dec 2019 09:26:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575642364;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=RVrvv9IFtOxf7TVu5YfYeIqWyis1fMQehJN3vG2vBTg=;
- b=hZsdfzpougtu8kcBQiAxuTeOuqmDtlQSbTRL4Ct4qqKBeSBprFK1F5yT0ru7vC/yG3D9K6
- 1iUPmoEjPEVJlPW6iQNth2R3PwJS/CDYG7qLfPrL7FOt9LPnaIjLXlUZ38V4RCffbgql3h
- Bx26SkqIqa2z2WEzNEGZWwf6qyQj7QM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-431-u2CuVsTvOYaalhZ8yW_cuA-1; Fri, 06 Dec 2019 02:23:06 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B900DB20;
- Fri,  6 Dec 2019 07:23:05 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-212.brq.redhat.com [10.40.204.212])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8F49B19C4F;
- Fri,  6 Dec 2019 07:23:00 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.0] hw/arm/sbsa-ref: Call qdev_get_gpio_in in place
-Date: Fri,  6 Dec 2019 08:22:57 +0100
-Message-Id: <20191206072257.7221-1-philmd@redhat.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1idErx-0002Yv-Bp
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 09:46:10 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:35841)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1idErx-0002XO-4U
+ for qemu-devel@nongnu.org; Fri, 06 Dec 2019 09:46:09 -0500
+Received: by mail-oi1-x244.google.com with SMTP id c16so6378174oic.3
+ for <qemu-devel@nongnu.org>; Fri, 06 Dec 2019 06:46:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uhSPlg+i9CiAubF7ClC0ww2vNy2qAmWgFnaNVgQgOxE=;
+ b=zzsj35yd960LbiaSBcl/usD7GRpWOsvW98l1RP+jhOWQfLebIUn2wV2+T9mfupbxch
+ e93nHD4TZJlfhk5O0kSjTqVQ9kAmqFigsdzw6vbxNcKNbYHGBBJR4WtLJnOtCYmfeiWN
+ Oc+Mal+rpJUHvmiVerGR7FkUHafsoCh0ZCI/9hWqOsB9KukvjFnW74gfHF3KczHaYLWp
+ 90mLdshDyOYx7g1tE/o7HSHRWfK5XlNlhEZz7D2BrQGNv608xXmdvKJr0jGdZnhSOT91
+ Ecuk55bLRIX9g6M3EnNxsdA5sxTN0qkNTXzWj7muhFqvRD2MpCWlWU466cSZdN2ZMZ9+
+ 5LRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uhSPlg+i9CiAubF7ClC0ww2vNy2qAmWgFnaNVgQgOxE=;
+ b=pD+49TxdV3h0pGA4m0BIjQ8lnVoAs3S5N2Rs75BYIt7oYNjdDy+LCx0NnPFzSM3IfA
+ bfQuz0RT1D1pDfdzTA6T/IgcRCWBgmzNwb22mitHmfnwySl6HcdjN5aDobBun9RUBkzG
+ e1EECUxtJR7Xgj07ba/9O/4kyWoiA6LkHxSVfCvFmhIedatUu94UJIBfxEXvha4K19cY
+ O//V3fwDkW4/7mgrJLvXKvrXimaeTzHMZJX23RUhRt+/htwAhHn4jrhuUoHvb3+Eya0q
+ 2uj9RYIeyHfpyVZQP2Nx2dorjuP6MBP0GijoO57UqxhSIE8l+nUSZhVUeRad85dYWV7H
+ yXgg==
+X-Gm-Message-State: APjAAAXzR/fVNT09vOkrMIfwZkD9FNe+Nb49e00rHn580fM6yaPJwil8
+ opGPLcAd3UJsX5GPIrhG19UmtoX3Itvc0Pf64w7gnvfl
+X-Received: by 2002:aca:edd5:: with SMTP id l204mr12121697oih.98.1575632772773; 
+ Fri, 06 Dec 2019 03:46:12 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: u2CuVsTvOYaalhZ8yW_cuA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+References: <20191011134744.2477-1-richard.henderson@linaro.org>
+ <20191011134744.2477-22-richard.henderson@linaro.org>
+In-Reply-To: <20191011134744.2477-22-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Dec 2019 11:46:02 +0000
+Message-ID: <CAFEAcA8aJZRMFEpKaUN_W4U5LXoWvvzYUe0FQYwTd=RiFHeFEQ@mail.gmail.com>
+Subject: Re: [PATCH v5 21/22] target/arm: Add mmu indexes for tag memory
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, qemu-arm@nongnu.org,
- Leif Lindholm <leif.lindholm@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7KQmanxGVYKr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uoP0SIGbwgJH
 
-Instead of filling an array of qemu_irq and passing it around,
-directly call qdev_get_gpio_in() on the GIC.
+On Fri, 11 Oct 2019 at 14:50, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> The process by which one goes from an address space plus physical
+> address to a host pointer is complex.  It is easiest to reuse the
+> mechanism already present within cputlb, and letting that cache
+> the results.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu-param.h |  2 +-
+>  target/arm/cpu.h       | 12 +++++++++---
+>  target/arm/internals.h |  2 ++
+>  target/arm/helper.c    | 25 +++++++++++++++++++++++--
+>  4 files changed, 35 insertions(+), 6 deletions(-)
+>
+> diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
+> index 6e6948e960..18ac562346 100644
+> --- a/target/arm/cpu-param.h
+> +++ b/target/arm/cpu-param.h
+> @@ -29,6 +29,6 @@
+>  # define TARGET_PAGE_BITS_MIN  10
+>  #endif
+>
+> -#define NB_MMU_MODES 8
+> +#define NB_MMU_MODES 9
+>
+>  #endif
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index faca43ea78..c3609ef9d5 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2854,8 +2854,8 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+>  #define ARM_MMU_IDX_M_NEGPRI 0x2
+>  #define ARM_MMU_IDX_M_S 0x4
+>
+> -#define ARM_MMU_IDX_TYPE_MASK (~0x7)
+> -#define ARM_MMU_IDX_COREIDX_MASK 0x7
+> +#define ARM_MMU_IDX_TYPE_MASK (~0xf)
+> +#define ARM_MMU_IDX_COREIDX_MASK 0xf
+>
+>  typedef enum ARMMMUIdx {
+>      ARMMMUIdx_S12NSE0 = 0 | ARM_MMU_IDX_A,
+> @@ -2865,6 +2865,9 @@ typedef enum ARMMMUIdx {
+>      ARMMMUIdx_S1SE0 = 4 | ARM_MMU_IDX_A,
+>      ARMMMUIdx_S1SE1 = 5 | ARM_MMU_IDX_A,
+>      ARMMMUIdx_S2NS = 6 | ARM_MMU_IDX_A,
+> +    ARMMMUIdx_TagNS = 7 | ARM_MMU_IDX_A,
+> +    ARMMMUIdx_TagS = 8 | ARM_MMU_IDX_A,
+> +
+>      ARMMMUIdx_MUser = 0 | ARM_MMU_IDX_M,
+>      ARMMMUIdx_MPriv = 1 | ARM_MMU_IDX_M,
+>      ARMMMUIdx_MUserNegPri = 2 | ARM_MMU_IDX_M,
+> @@ -2891,6 +2894,8 @@ typedef enum ARMMMUIdxBit {
+>      ARMMMUIdxBit_S1SE0 = 1 << 4,
+>      ARMMMUIdxBit_S1SE1 = 1 << 5,
+>      ARMMMUIdxBit_S2NS = 1 << 6,
+> +    ARMMMUIdxBit_TagNS = 1 << 7,
+> +    ARMMMUIdxBit_TagS = 1 << 8,
+>      ARMMMUIdxBit_MUser = 1 << 0,
+>      ARMMMUIdxBit_MPriv = 1 << 1,
+>      ARMMMUIdxBit_MUserNegPri = 1 << 2,
+> @@ -3254,7 +3259,8 @@ enum {
+>  /* Return the address space index to use for a memory access */
+>  static inline int arm_asidx_from_attrs(CPUState *cs, MemTxAttrs attrs)
+>  {
+> -    return attrs.secure ? ARMASIdx_S : ARMASIdx_NS;
+> +    return ((attrs.target_tlb_bit2 ? ARMASIdx_TagNS : ARMASIdx_NS)
+> +            + attrs.secure);
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-I accept better patch subject suggestions :)
----
- hw/arm/sbsa-ref.c | 58 +++++++++++++++++++++++------------------------
- 1 file changed, 29 insertions(+), 29 deletions(-)
+If you want to do the "just add attrs.secure" can we have
+a build-time assert that ARMASIdx_S is ARMASIdx_NS + 1, and
+ditto for TagNS/TagS, please? It seems like the kind of thing
+that will catch us out later on.
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 27046cc284..30cb647551 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -328,7 +328,7 @@ static void create_secure_ram(SBSAMachineState *sms,
-     memory_region_add_subregion(secure_sysmem, base, secram);
- }
-=20
--static void create_gic(SBSAMachineState *sms, qemu_irq *pic)
-+static DeviceState *create_gic(SBSAMachineState *sms)
- {
-     unsigned int smp_cpus =3D MACHINE(sms)->smp.cpus;
-     DeviceState *gicdev;
-@@ -403,12 +403,10 @@ static void create_gic(SBSAMachineState *sms, qemu_ir=
-q *pic)
-                            qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-     }
-=20
--    for (i =3D 0; i < NUM_IRQS; i++) {
--        pic[i] =3D qdev_get_gpio_in(gicdev, i);
--    }
-+    return gicdev;
- }
-=20
--static void create_uart(const SBSAMachineState *sms, qemu_irq *pic, int ua=
-rt,
-+static void create_uart(const SBSAMachineState *sms, DeviceState *gic, int=
- uart,
-                         MemoryRegion *mem, Chardev *chr)
- {
-     hwaddr base =3D sbsa_ref_memmap[uart].base;
-@@ -420,15 +418,15 @@ static void create_uart(const SBSAMachineState *sms, =
-qemu_irq *pic, int uart,
-     qdev_init_nofail(dev);
-     memory_region_add_subregion(mem, base,
-                                 sysbus_mmio_get_region(s, 0));
--    sysbus_connect_irq(s, 0, pic[irq]);
-+    sysbus_connect_irq(s, 0, qdev_get_gpio_in(gic, irq));
- }
-=20
--static void create_rtc(const SBSAMachineState *sms, qemu_irq *pic)
-+static void create_rtc(const SBSAMachineState *sms, DeviceState *gic)
- {
-     hwaddr base =3D sbsa_ref_memmap[SBSA_RTC].base;
-     int irq =3D sbsa_ref_irqmap[SBSA_RTC];
-=20
--    sysbus_create_simple("pl031", base, pic[irq]);
-+    sysbus_create_simple("pl031", base, qdev_get_gpio_in(gic, irq));
- }
-=20
- static DeviceState *gpio_key_dev;
-@@ -442,13 +440,13 @@ static Notifier sbsa_ref_powerdown_notifier =3D {
-     .notify =3D sbsa_ref_powerdown_req
- };
-=20
--static void create_gpio(const SBSAMachineState *sms, qemu_irq *pic)
-+static void create_gpio(const SBSAMachineState *sms, DeviceState *gic)
- {
-     DeviceState *pl061_dev;
-     hwaddr base =3D sbsa_ref_memmap[SBSA_GPIO].base;
-     int irq =3D sbsa_ref_irqmap[SBSA_GPIO];
-=20
--    pl061_dev =3D sysbus_create_simple("pl061", base, pic[irq]);
-+    pl061_dev =3D sysbus_create_simple("pl061", base, qdev_get_gpio_in(gic=
-, irq));
-=20
-     gpio_key_dev =3D sysbus_create_simple("gpio-key", -1,
-                                         qdev_get_gpio_in(pl061_dev, 3));
-@@ -457,7 +455,7 @@ static void create_gpio(const SBSAMachineState *sms, qe=
-mu_irq *pic)
-     qemu_register_powerdown_notifier(&sbsa_ref_powerdown_notifier);
- }
-=20
--static void create_ahci(const SBSAMachineState *sms, qemu_irq *pic)
-+static void create_ahci(const SBSAMachineState *sms, DeviceState *gic)
- {
-     hwaddr base =3D sbsa_ref_memmap[SBSA_AHCI].base;
-     int irq =3D sbsa_ref_irqmap[SBSA_AHCI];
-@@ -471,7 +469,7 @@ static void create_ahci(const SBSAMachineState *sms, qe=
-mu_irq *pic)
-     qdev_prop_set_uint32(dev, "num-ports", NUM_SATA_PORTS);
-     qdev_init_nofail(dev);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
--    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(gic, irq))=
-;
-=20
-     sysahci =3D SYSBUS_AHCI(dev);
-     ahci =3D &sysahci->ahci;
-@@ -484,15 +482,15 @@ static void create_ahci(const SBSAMachineState *sms, =
-qemu_irq *pic)
-     }
- }
-=20
--static void create_ehci(const SBSAMachineState *sms, qemu_irq *pic)
-+static void create_ehci(const SBSAMachineState *sms, DeviceState *gic)
- {
-     hwaddr base =3D sbsa_ref_memmap[SBSA_EHCI].base;
-     int irq =3D sbsa_ref_irqmap[SBSA_EHCI];
-=20
--    sysbus_create_simple("platform-ehci-usb", base, pic[irq]);
-+    sysbus_create_simple("platform-ehci-usb", base, qdev_get_gpio_in(gic, =
-irq));
- }
-=20
--static void create_smmu(const SBSAMachineState *sms, qemu_irq *pic,
-+static void create_smmu(const SBSAMachineState *sms, DeviceState *gic,
-                         PCIBus *bus)
- {
-     hwaddr base =3D sbsa_ref_memmap[SBSA_SMMU].base;
-@@ -507,11 +505,12 @@ static void create_smmu(const SBSAMachineState *sms, =
-qemu_irq *pic,
-     qdev_init_nofail(dev);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-     for (i =3D 0; i < NUM_SMMU_IRQS; i++) {
--        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-+                           qdev_get_gpio_in(gic, irq + 1));
-     }
- }
-=20
--static void create_pcie(SBSAMachineState *sms, qemu_irq *pic)
-+static void create_pcie(SBSAMachineState *sms, DeviceState *gic)
- {
-     hwaddr base_ecam =3D sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
-     hwaddr size_ecam =3D sbsa_ref_memmap[SBSA_PCIE_ECAM].size;
-@@ -555,7 +554,8 @@ static void create_pcie(SBSAMachineState *sms, qemu_irq=
- *pic)
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
-=20
-     for (i =3D 0; i < GPEX_NUM_IRQS; i++) {
--        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-+                           qdev_get_gpio_in(gic, irq + 1));
-         gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
-     }
-=20
-@@ -574,7 +574,7 @@ static void create_pcie(SBSAMachineState *sms, qemu_irq=
- *pic)
-=20
-     pci_create_simple(pci->bus, -1, "VGA");
-=20
--    create_smmu(sms, pic, pci->bus);
-+    create_smmu(sms, gic, pci->bus);
- }
-=20
- static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size=
-)
-@@ -598,7 +598,7 @@ static void sbsa_ref_init(MachineState *machine)
-     bool firmware_loaded;
-     const CPUArchIdList *possible_cpus;
-     int n, sbsa_max_cpus;
--    qemu_irq pic[NUM_IRQS];
-+    DeviceState *gic;
-=20
-     if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a57"))) {
-         error_report("sbsa-ref: CPU type other than the built-in "
-@@ -695,22 +695,22 @@ static void sbsa_ref_init(MachineState *machine)
-=20
-     create_secure_ram(sms, secure_sysmem);
-=20
--    create_gic(sms, pic);
-+    gic =3D create_gic(sms);
-=20
--    create_uart(sms, pic, SBSA_UART, sysmem, serial_hd(0));
--    create_uart(sms, pic, SBSA_SECURE_UART, secure_sysmem, serial_hd(1));
-+    create_uart(sms, gic, SBSA_UART, sysmem, serial_hd(0));
-+    create_uart(sms, gic, SBSA_SECURE_UART, secure_sysmem, serial_hd(1));
-     /* Second secure UART for RAS and MM from EL0 */
--    create_uart(sms, pic, SBSA_SECURE_UART_MM, secure_sysmem, serial_hd(2)=
-);
-+    create_uart(sms, gic, SBSA_SECURE_UART_MM, secure_sysmem, serial_hd(2)=
-);
-=20
--    create_rtc(sms, pic);
-+    create_rtc(sms, gic);
-=20
--    create_gpio(sms, pic);
-+    create_gpio(sms, gic);
-=20
--    create_ahci(sms, pic);
-+    create_ahci(sms, gic);
-=20
--    create_ehci(sms, pic);
-+    create_ehci(sms, gic);
-=20
--    create_pcie(sms, pic);
-+    create_pcie(sms, gic);
-=20
-     sms->bootinfo.ram_size =3D machine->ram_size;
-     sms->bootinfo.nb_cpus =3D smp_cpus;
---=20
-2.21.0
+>  }
 
+>      if (env->cp15.hcr_el2 & HCR_TGE) {
+> @@ -10662,7 +10671,9 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+>                     target_ulong *page_size,
+>                     ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
+>  {
+> -    if (mmu_idx == ARMMMUIdx_S12NSE0 || mmu_idx == ARMMMUIdx_S12NSE1) {
+> +    switch (mmu_idx) {
+> +    case ARMMMUIdx_S12NSE0:
+> +    case ARMMMUIdx_S12NSE1:
+>          /* Call ourselves recursively to do the stage 1 and then stage 2
+>           * translations.
+>           */
+> @@ -10713,6 +10724,16 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+>               */
+>              mmu_idx = stage_1_mmu_idx(mmu_idx);
+>          }
+> +        break;
+> +
+> +    case ARMMMUIdx_TagS:
+> +    case ARMMMUIdx_TagNS:
+> +        /* Indicate tag memory to arm_asidx_from_attrs.  */
+> +        attrs->target_tlb_bit2 = true;
+> +        break;
+
+So here we fall through to the "handle a stage 1 lookup" code, which:
+ * sets attrs->secure
+ * sets attrs->user (always false, so we could have left it alone)
+ * skips the FCSE handling (as we're v8)
+ * skips the PMSA handling
+ * hits the regime_translation_disabled() check, which fills in
+   *phys_ptr, *prot and *page_size and returns
+
+Maybe it would be clearer if this case here just did all of that:
+
+    case ARMMMUIdx_TagS:
+        attrs->secure = true;
+        /* fall through */
+    case ARMMMUIdx_TagNS:
+        /* Indicate tag memory to arm_asidx_from_attrs.  */
+        attrs->target_tlb_bit2 = true;
+        *phys_ptr = address;
+        *prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+        *page_size = TARGET_PAGE_SIZE;
+        return 0;
+
+Did I miss anything out?
+Or are we going to want more things which are common between
+the stage 1 codepath and the "just a tag ram access" case
+in future?
+
+thanks
+-- PMM

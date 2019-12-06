@@ -1,99 +1,101 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id n16sm16506771wro.88.2019.12.06.06.52.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Dec 2019 06:52:43 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id DF7701FF87;
-	Fri,  6 Dec 2019 14:52:42 +0000 (GMT)
-References: <20191130084602.10818-1-alex.bennee@linaro.org>
- <20191130084602.10818-12-alex.bennee@linaro.org>
- <9362663d-6452-39aa-2a8d-1cfd853d7faa@linaro.org>
- <87o8wm7k6v.fsf@linaro.org>
- <cc54dbf6-01ed-f92d-5088-efe7e917b870@linaro.org>
-User-agent: mu4e 1.3.5; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, alan.hayward@arm.com, luis.machado@linaro.org,
- damien.hedde@greensocs.com, Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v2 11/14] target/arm: default SVE length to 64 bytes for
- linux-user
-In-reply-to: <cc54dbf6-01ed-f92d-5088-efe7e917b870@linaro.org>
-Date: Fri, 06 Dec 2019 14:52:42 +0000
-Message-ID: <87fthx7bgl.fsf@linaro.org>
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp853893lff;
+        Fri, 6 Dec 2019 07:00:02 -0800 (PST)
+X-Received: by 2002:a05:6830:1116:: with SMTP id w22mr11319975otq.63.1575644402519;
+        Fri, 06 Dec 2019 07:00:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575644402; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lRkSPo6/Gmo53P4KhlKEvAYEP9c5yhpYzkalrLlYhaRKvp4LXuiWvh4rUEbWqcuvxh
+         Xc/cGmu88u1SlXHadJX6IvMcEn0egaHVbeoG0khoIL/TTMglwBx6m1vvtPCdMsVA+eUI
+         vq2fuD1w8cFrXT3ABu1OD/RLhnD10m9phNSahGQMjduHFsAAqvaibcuibWGjdkrygXmh
+         SiVrbVpBo6QAMq0KNjM2kc2WzdCal0JvaYKx9TFi0FYogjznWfT+AUtx5GvB6SBJQBp+
+         CvzRT3tc9RC8gQwdOGBgXaTT5vD/U6BateT3M5GOJLX1QLn37vgfH0Uar6dLdT3+21Lj
+         PWaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=eOLM4an9fc0aqxUJp71/rlPAB5BObyJXmI160pSiPVY=;
+        b=tB5qShSneHtfAobzlIjRsWkvqQozxiqc0qnmQ1DpLWXi8MexFG9CbIQEsthqQ9QflT
+         Asapwxct5O2PhqrVoVS7W5rjUgpHWoq4nhOMPOjUciFmutuaKIfCh4WvhfEMBwiJMOhP
+         /SJXt+lDPvddSVJny6Sw2DfR/gHxJeoJUNucj1oR4S/Ti92byfzeL9738OOPt2Z9a4rU
+         Ybb8wpbGH9A5KZWNLvWjic6XbLTV45c+84WsFa4Xk01RgkeEv4Q4qbx6gXUW4typzttZ
+         4n8HyuJqE5QnDPsx0kwWfl6x+PNw5tprv/XPMY7zVlkm2jJ5LOj4HgX8vC0opD1cypOK
+         niJw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zxIK7zx7;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 5sor1022150oin.33.2019.12.06.07.00.02
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 06 Dec 2019 07:00:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zxIK7zx7;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=eOLM4an9fc0aqxUJp71/rlPAB5BObyJXmI160pSiPVY=;
+        b=zxIK7zx79X/dzDCJPrU8k6TPGxbecc6UbR4y6TTpTz3DjhmKeLDYXeZiP9fAVd2Y3A
+         PYo0Uy4IG9YJNo2tXj11Dny0gOc0ZrxXCwTfYBOMy21rbjFknJNnJGpMeWALjYt/J9KF
+         hABouP+p+xi7D9v3ne1hk9EGDRuAsTm6x8g0/n8r1g5lLAUCui4OV5IPqV2KvIdXbV/h
+         fYmBN7Xnn85UyLkXcXx5ZTG0HP487OrdOz5b6lu8eZb2ZY0GweAvUgNnQhyCqrbDSKcg
+         d81tT0aNtFZ61rzrLNaYqeZVPixYEMVZm425HU3H+Ka6EQIhQeuptbt9e06mpQdJnAzz
+         xbOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=eOLM4an9fc0aqxUJp71/rlPAB5BObyJXmI160pSiPVY=;
+        b=mRZr56Uc+QWk9l5zGe836B7zQOOY1voXZdDTpW/+hLYdezIobFCkD3suYFoPI2z4A0
+         WoNN7EHikdzMj5SuWzVunqmxyxj2kxOm8Kk65J5Ce1B2pNbOSiFBhw802d23kU6oDLf2
+         98wNlYmngp1QuEvIHmtRUenxA5OcWpwgSptdz0uNMKKHYbDXFe5CtGz+CqqRufE+z7gZ
+         OIYEDr3oHP8XT+ziSopi7qjJJx9Z9sJq6C/p/4h3RrvFVO4POdfQUy7Kkp9F7tecH0I4
+         WCca1rdPna/7pr+dnMGJfgSm9w5NmFR6yJs5YUfS2q2mGNcZEQQqa6ESQmcGwyc5Zn1i
+         iaPg==
+X-Gm-Message-State: APjAAAVP67xt4XDmHsqqbPVThMWHSfjXwGA1fMtR1n89e2JncI1IzFLK
+	9ZitTU152jbOgsVLZyq/PNacoziRZOrmvy+rawu6K6p7
+X-Google-Smtp-Source: APXvYqyW8BtYV2mrUNt67h9M6TKKFEoFrbE5dXdkMxeaeMaRe8xgyZT0Xqc3AaoWPU0qkfYGiYMREuLsB5IboOOlODg=
+X-Received: by 2002:aca:edd5:: with SMTP id l204mr12877351oih.98.1575644402117;
+ Fri, 06 Dec 2019 07:00:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: PYlnrMI8k8ak
+References: <20191121000843.24844-1-beata.michalska@linaro.org>
+In-Reply-To: <20191121000843.24844-1-beata.michalska@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Dec 2019 14:59:51 +0000
+Message-ID: <CAFEAcA-8gm4Ug=NVONfXN_4Ek8uL6NcjqkOzpOpsSBMXOHmUqg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/4] target/arm: Support for Data Cache Clean up to PoP
+To: Beata Michalska <beata.michalska@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Juan Quintela <quintela@redhat.com>, 
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, Eric Auger <eric.auger@redhat.com>, 
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: J60J8VmT9Kwo
 
-
-Richard Henderson <richard.henderson@linaro.org> writes:
-
-> On 12/5/19 9:31 AM, Alex Benn=C3=A9e wrote:
->>=20
->> Richard Henderson <richard.henderson@linaro.org> writes:
->>=20
->>> On 11/30/19 8:45 AM, Alex Benn=C3=A9e wrote:
->>>> The Linux kernel chooses the default of 64 bytes for SVE registers on
->>>> the basis that it is the largest size that won't grow the signal
->>>> frame. When debugging larger sizes are also unwieldy in gdb as each
->>>> zreg will take over a page of terminal to display.
->>>>
->>>> The user can of course always specify a larger size with the
->>>> sve-max-vq property on the command line:
->>>>
->>>>   -cpu max,sve-max-vq=3D16
->>>>
->>>> This should not make any difference to SVE enabled software as the SVE
->>>> is of course vector length agnostic.
->>>>
->>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>>> ---
->>>>  target/arm/cpu64.c | 3 +++
->>>>  1 file changed, 3 insertions(+)
->>>
->>> 6 is the largest size that doesn't grow the signal frame.
->>> I imagine 4 was chosen because that's the only real hw atm.
->>>
->>>> +        /* Default sve-max-vq to a reasonable numer */
->>>> +        cpu->sve_max_vq =3D 4;
->>>
->>> I also agree that we should match the kernel, but this is not the right=
- way.
->>> Changing max vq is not the same as changing the default vq.
->>>
->>> You should change the value of env->vfp.zcr_el[1] in arm_cpu_reset(), a=
-nd the
->>> user can increase the length with prctl(2) as they would be able to on =
-real
->>> hardware that would have support for longer vector lengths.
->>=20
->> No the intention is to default to a lower max VQ because...
->>=20
->>> Also, I don't think you should mix this up with gdb stuff.
->>=20
->> it is what we use for sizing the registers for the gdbstub. The other
->> option would be to use the effective zcr_el1 value at the time of the
->> gdbstub connecting but then things will go horribly wrong if the user
->> execute a prctl and widens their size.
+On Thu, 21 Nov 2019 at 00:09, Beata Michalska
+<beata.michalska@linaro.org> wrote:
 >
-> Why would you care about the size of the registers as passed by default? =
- You
-> shouldn't need or want to change that default to make gdbstub work.
->
-> The gdbstub should be passing along the vq value (via the "vg" pseudo-reg=
-ister,
-> iirc), and gdb should be working out what to display based on that.
->
-> If that isn't happening, and you are only changing the default so that gdb
-> quits displaying massive registers when they aren't in use, then you're d=
-oing
-> something wrong with gdb and gdbstub.
+> ARMv8.2 introduced support for Data Cache Clean instructions to PoP
+> (point-of-persistence) and PoDP (point-of-deep-persistence):
+> ARMv8.2-DCCVAP &  ARMv8.2-DCCVADP respectively.
+> This patch set adds support for emulating both, though there is no
+> distinction between the two points: the PoDP is assumed to represent
+> the same point of persistence as PoP. Case there is no such point specified
+> for the considered memory system both will fall back to the DV CVAC inst
+> (clean up to the point of coherency).
+> The changes introduced include adding probe_read for validating read memory
+> access to allow verification for mandatory read access for both cache
+> clean instructions, along with support for writeback for requested memory
+> regions through msync, if one is available, based otherwise on fsyncdata.
 
-Currently the upstream gdbserver sends the XML based on the VL at start-up.=
- It
-doesn't handle changes in the vector size.
 
---=20
-Alex Benn=C3=A9e
+
+Applied to target-arm.next for 5.0, thanks.
+
+-- PMM

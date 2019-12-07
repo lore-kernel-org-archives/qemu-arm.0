@@ -1,903 +1,600 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1352418lff;
-        Fri, 6 Dec 2019 14:16:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyLgyT+pCkDt/Dk/GQIzk9+LvWDyt1endOG9U7f0tD8er45Q1HibL5sdSgplmx7JMDG/NTO
-X-Received: by 2002:a05:6830:204a:: with SMTP id f10mr13205764otp.29.1575670610192;
-        Fri, 06 Dec 2019 14:16:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575670610; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1862021lff;
+        Sat, 7 Dec 2019 01:33:16 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyswSwJVzmaOUYxqnf8LHMJEOSUwmgNN9BMF+0Bhxr2J29VSi1sr3LaNo9LSeLfApkowIvE
+X-Received: by 2002:a54:440d:: with SMTP id k13mr16657580oiw.128.1575711196260;
+        Sat, 07 Dec 2019 01:33:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575711196; cv=none;
         d=google.com; s=arc-20160816;
-        b=YGPaGvqYv36u8TviOyGtA8LOuK8A1bMeOVTDe6uh/rAGwhQphkXRYaaUnXmGbYgdfx
-         m8W3GoXJmCu3MCNbVrFFY+jpq05n7Wt5mF/GNQINjbuKSrOSQdFO9h4k0PYwomvKzkSw
-         dTT8q+Wec0xEdnCKkbt4WqK3LR3iJQe+Uu9k4xeRTmjEoQuUqyRy/u8O0YvTDiYX0s4u
-         DrN380HjHtZfefboT3CWMC19ndk5hXyQ4S9m4Wu6Cn0AGBSTneKD1whHMi+8RX9JgFpK
-         jyPF/g3sOOm3hTdt/Dji95Z5+ETKohrGFuCEkuIQOD8o18Nlglg5pTk4/absmWd/MqDQ
-         3ddQ==
+        b=wD5IufTPK0485SizfLjtdhvNyv+qCl+JmO9usqfYuh9DQxxRB3i94DuhyoJ3l+RmrX
+         zLslY7px8YLJgS5QdbUGVtLXlEY7CUz9FjJqX3QAJj4fjfGHgTAYE2Tila9Jvkxdk8Q3
+         SEVPLRLqSQzwiFjFa2x5uFSfd+Z2O3tf+kf7tyzWxmngk/Xo2BDQHQzCBf7JDizgUHRh
+         mKhbBlvWv5DrRIhDt0m8KX1HETi8EdNSdCzF7rJR6r6T5c+xA9wMV5FTRXww8v6wdSw8
+         4lnbcaxW6UKfUvBzBmgNt+uBRwJySVOLstFmshzCeDNv59hRcHcUnkx+CcCpxuhICieG
+         l7Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=s/7OdeqmZUFG/ihDfSirzk0p9NzkShThT+s7z8P7mpE=;
-        b=xiMbq5FYNifU9zgZmvC39rpF5M9dJ3bdzvyOX3wi6FbWuxDkWTQRB2hL2dQNIJSB71
-         tdUvMa/pN9FC32vL2kG2wJeDWA0jZw8kBqdgGEN4iU0+qvh/lAyTfKNEcMJL8v/oNsAT
-         NrlATH/vovNxeE/e0kHdbhsbaGGZB/d20X6sj4SkES2O2unv9wNNGmtt+gF8LGHoX2QF
-         F6TiDM6vlezwejgu+/F+cBIkuzk1vV/uGdptts9WK/5MkxSnMDvt5vrTFA44r59SyJzl
-         busbBxd6B2EpDoVlw5pA7La6sSYc5hw7sJRPFMPbGwrT5W5iCE5GUFkrofh1YjgrbeXL
-         wEqg==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=O5XMJwXPKihbYIBqdHoIXV1ghxODEWDVKL8EiHeWkXA=;
+        b=dxdZ/tZ8mqqw0FBBuHDX9l18vivTQF2LWAHsslqae4Pi5+ntqwhV92J3JbLk1MVg/I
+         aCrGUHdkszn2locuu6difHzzV8LV2BLpNor5Uu1Jhh7O5jgmRgM+z6ioN4En+l6kZGJj
+         TDylKVdwJXyAKJmeM7yVd5lrBbUQzlBm+DQaVS1/oSYYXCQOipQ8gvWWDOPklyFcM1BF
+         LYdsCP3OXUjnSHPEVPvFYy7nBFDjhwb6afAi7k44MmdARxErHHgynUn5yMA2nG8Izikz
+         tg5ZAtIWfBqd+XzjP5E7RT0FdvYq9JGOOSQk7Gdu8u4/ZyfzNsznzvAFtjR+AqSXCX32
+         /S8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MlCjZLTa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6si2032665oth.182.2019.12.06.14.16.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Dec 2019 14:16:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id r6si9153835oth.315.2019.12.07.01.33.15;
+        Sat, 07 Dec 2019 01:33:16 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MlCjZLTa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45890 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1idLu5-0002nj-6e
-	for alex.bennee@linaro.org; Fri, 06 Dec 2019 17:16:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60078)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1idLtU-0002k3-EO
- for qemu-arm@nongnu.org; Fri, 06 Dec 2019 17:16:15 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1idLtR-0007x2-22
- for qemu-arm@nongnu.org; Fri, 06 Dec 2019 17:16:12 -0500
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:47042)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1idLtJ-0007aw-Ur; Fri, 06 Dec 2019 17:16:02 -0500
-Received: by mail-io1-xd43.google.com with SMTP id i11so8843635iol.13;
- Fri, 06 Dec 2019 14:16:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=s/7OdeqmZUFG/ihDfSirzk0p9NzkShThT+s7z8P7mpE=;
- b=MlCjZLTacz8jXTW90H/+4HvcVgZkXw04W9zw9uUByxgOGK+3exgno7jzijCKP3NK56
- 7UpxMdDJ09Ur55szOv10QoGIUi6dD8xhzV1xbl38IXxxGsvnJvisHklgeAcs7HhdJpLW
- 3OGT2S53/CbXSlaBXuhQ0No+imlQDkufb56PLvD9IFPbhsyfmQyUAOH7BHPIAqViZyMS
- QBvxhZu3f8N6PTw7q559BMthz3XxYhqYs6yYScEb1wfnpvxv+T5gvpMQJciTiOQG2EnE
- hK3RNr8mvBZHtgDFCnIQu+2eaNhfeZKHbpQTd4HxULruYlu9xPcpyPKA/ji1ZzVg/Ieq
- URzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=s/7OdeqmZUFG/ihDfSirzk0p9NzkShThT+s7z8P7mpE=;
- b=e/4NQKV0KkIMWVI0tQHKSxtZJlaeET3rMm4IWfl5mSWkJ2AVkb7m21EX2/Xu+XZQlK
- v4PDs6sOCK6ezC42DaFWZLsIVxGpBrC7tALJo2F9ZMMS8RYy1ZDV4/8dKdrAvdzlG6ZN
- 1OmK+wR/ouAVRhUMjsrD83BO9ILKvF4QklJ+hAznAhxCB560kDG+yPwsNhn5iv4XmPtk
- ZKGqNKyo0n3NMltoUzBvkqjJKG571fBo6g2a2YpiBlBcOTMHCc/bEwFAzOU5c61uB1nM
- CoKNc3ufT7anzDkkEn85GXbG+mwkYbKc6B0wlo9a+hzYhZ+1yyeOSyvhlPBUkaPAh5Ck
- bStA==
-X-Gm-Message-State: APjAAAUNm125rX0wg9Uf7WjUKKKPrQ6VNdcGehGMP4o/FkNDozZftTeM
- 8yAdF7DzkgfNaSI6MW1yKD2XRkrPEv4TqfukAuM=
-X-Received: by 2002:a6b:d912:: with SMTP id r18mr12132192ioc.306.1575670559704; 
- Fri, 06 Dec 2019 14:15:59 -0800 (PST)
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726106AbfLGJdO (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Sat, 7 Dec 2019 04:33:14 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:7649 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1725992AbfLGJdN (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 7 Dec 2019 04:33:13 -0500
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id BAF9296E8E8CC2C8FB65;
+        Sat,  7 Dec 2019 17:33:09 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.439.0; Sat, 7 Dec 2019
+ 17:33:03 +0800
+Subject: Re: [RESEND PATCH v21 5/6] target-arm: kvm64: handle SIGBUS signal
+ from kernel or KVM
+To:     Beata Michalska <beata.michalska@linaro.org>,
+        Xiang Zheng <zhengxiang9@huawei.com>
+CC:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <shannon.zhaosl@gmail.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        "Laszlo Ersek" <lersek@redhat.com>, <james.morse@arm.com>,
+        <mtosatti@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>,
+        <wanghaibin.wang@huawei.com>
+References: <20191111014048.21296-1-zhengxiang9@huawei.com>
+ <20191111014048.21296-6-zhengxiang9@huawei.com>
+ <CADSWDztF=eaUDNnq8bhnPyTKW1YjAWm4UBaH-NBPkzjnzx0bxg@mail.gmail.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <238ea7b3-9d6d-e3f7-40c9-e3e62b5fb477@huawei.com>
+Date:   Sat, 7 Dec 2019 17:33:01 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-3-nieklinnenbank@gmail.com>
- <b14e5a75-ebe3-311e-60a8-3f71b0874a10@redhat.com>
- <CAPan3WohBP_47h1ZPP12ZuyiY43B3B6tGFMH-sK=LAAjMbwpaA@mail.gmail.com>
- <ce2125dd-004c-a5a2-81cf-b8aaae76444e@redhat.com>
-In-Reply-To: <ce2125dd-004c-a5a2-81cf-b8aaae76444e@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Fri, 6 Dec 2019 23:15:48 +0100
-Message-ID: <CAPan3WrN28W-h9RYA88LbA8eWP6Me9VcNisnZhwNgC2WOgVLxg@mail.gmail.com>
-Subject: Re: [PATCH 02/10] hw: arm: add Xunlong Orange Pi PC machine
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000fe8a3705991063e9"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d43
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UFRbdA+AfjdR
-
---000000000000fe8a3705991063e9
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Philippe,
-
-On Fri, Dec 6, 2019 at 6:41 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om>
-wrote:
-
-> On 12/5/19 11:15 PM, Niek Linnenbank wrote:
-> > Hello Philippe,
-> >
-> > On Tue, Dec 3, 2019 at 10:18 AM Philippe Mathieu-Daud=C3=A9
-> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
-> >
-> >     On 12/2/19 10:09 PM, Niek Linnenbank wrote:
-> >      > The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
-> >      > based embedded computer with mainline support in both U-Boot
-> >      > and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
-> >      > 512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
-> >      > various other I/O. This commit add support for the Xunlong
-> >      > Orange Pi PC machine.
-> >      >
-> >      > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com
-> >     <mailto:nieklinnenbank@gmail.com>>
-> >      > ---
-> >      >   MAINTAINERS          |  1 +
-> >      >   hw/arm/Makefile.objs |  2 +-
-> >      >   hw/arm/orangepi.c    | 90
-> >     ++++++++++++++++++++++++++++++++++++++++++++
-> >      >   3 files changed, 92 insertions(+), 1 deletion(-)
-> >      >   create mode 100644 hw/arm/orangepi.c
-> >      >
-> >      > diff --git a/MAINTAINERS b/MAINTAINERS
-> >      > index 29c9936037..42c913d6cb 100644
-> >      > --- a/MAINTAINERS
-> >      > +++ b/MAINTAINERS
-> >      > @@ -485,6 +485,7 @@ L: qemu-arm@nongnu.org
-> >     <mailto:qemu-arm@nongnu.org>
-> >      >   S: Maintained
-> >      >   F: hw/*/allwinner-h3*
-> >      >   F: include/hw/*/allwinner-h3*
-> >      > +F: hw/arm/orangepi.c
-> >      >
-> >      >   ARM PrimeCell and CMSDK devices
-> >      >   M: Peter Maydell <peter.maydell@linaro.org
-> >     <mailto:peter.maydell@linaro.org>>
-> >      > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> >      > index 956e496052..8d5ea453d5 100644
-> >      > --- a/hw/arm/Makefile.objs
-> >      > +++ b/hw/arm/Makefile.objs
-> >      > @@ -34,7 +34,7 @@ obj-$(CONFIG_DIGIC) +=3D digic.o
-> >      >   obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o
-> >      >   obj-$(CONFIG_STRONGARM) +=3D strongarm.o
-> >      >   obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboard.o
-> >      > -obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o
-> >      > +obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o orangepi.o
-> >      >   obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o raspi=
-.o
-> >      >   obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o
-> >      >   obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=3D xlnx-zynqmp.o xlnx-zcu102.o
-> >      > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> >      > new file mode 100644
-> >      > index 0000000000..5ef2735f81
-> >      > --- /dev/null
-> >      > +++ b/hw/arm/orangepi.c
-> >      > @@ -0,0 +1,90 @@
-> >      > +/*
-> >      > + * Orange Pi emulation
-> >      > + *
-> >      > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com
-> >     <mailto:nieklinnenbank@gmail.com>>
-> >      > + *
-> >      > + * This program is free software: you can redistribute it and/o=
-r
-> >     modify
-> >      > + * it under the terms of the GNU General Public License as
-> >     published by
-> >      > + * the Free Software Foundation, either version 2 of the
-> License, or
-> >      > + * (at your option) any later version.
-> >      > + *
-> >      > + * This program is distributed in the hope that it will be
-> useful,
-> >      > + * but WITHOUT ANY WARRANTY; without even the implied warranty =
-of
-> >      > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See th=
-e
-> >      > + * GNU General Public License for more details.
-> >      > + *
-> >      > + * You should have received a copy of the GNU General Public
-> License
-> >      > + * along with this program.  If not, see
-> >     <http://www.gnu.org/licenses/>.
-> >      > + */
-> >      > +
-> >      > +#include "qemu/osdep.h"
-> >      > +#include "exec/address-spaces.h"
-> >      > +#include "qapi/error.h"
-> >      > +#include "cpu.h"
-> >      > +#include "hw/sysbus.h"
-> >      > +#include "hw/boards.h"
-> >      > +#include "hw/qdev-properties.h"
-> >      > +#include "hw/arm/allwinner-h3.h"
-> >      > +
-> >      > +static struct arm_boot_info orangepi_binfo =3D {
-> >      > +    .loader_start =3D AW_H3_SDRAM_BASE,
-> >      > +    .board_id =3D -1,
-> >      > +};
-> >      > +
-> >      > +typedef struct OrangePiState {
-> >      > +    AwH3State *h3;
-> >      > +    MemoryRegion sdram;
-> >      > +} OrangePiState;
-> >      > +
-> >      > +static void orangepi_init(MachineState *machine)
-> >      > +{
-> >      > +    OrangePiState *s =3D g_new(OrangePiState, 1);
-> >      > +    Error *err =3D NULL;
-> >      > +
-> >
-> >     Here I'd add:
-> >
-> >             if (strcmp(machine->cpu_type,
-> >     ARM_CPU_TYPE_NAME("cortex-a7")) !=3D 0) {
-> >                 error_report("This board can only be used with cortex-a=
-7
-> >     CPU");
-> >                 exit(1);
-> >             }
-> >
-> > Done!
-> >
-> >      > +    s->h3 =3D AW_H3(object_new(TYPE_AW_H3));
-> >      > +
-> >      > +    /* Setup timer properties */
-> >      > +    object_property_set_int(OBJECT(&s->h3->timer), 32768,
-> >     "clk0-freq", &err);
-> >      > +    if (err !=3D NULL) {
-> >      > +        error_reportf_err(err, "Couldn't set clk0 frequency: ")=
-;
-> >      > +        exit(1);
-> >      > +    }
-> >      > +
-> >      > +    object_property_set_int(OBJECT(&s->h3->timer), 24000000,
-> >     "clk1-freq",
-> >      > +                            &err);
-> >      > +    if (err !=3D NULL) {
-> >      > +        error_reportf_err(err, "Couldn't set clk1 frequency: ")=
-;
-> >      > +        exit(1);
-> >      > +    }
-> >      > +
-> >      > +    /* Mark H3 object realized */
-> >      > +    object_property_set_bool(OBJECT(s->h3), true, "realized",
-> &err);
-> >
-> >     I'm not sure if that's correct but I'd simply use &error_abort here=
-.
-> >
-> > Done, I applied it to all the functions and removed the err variable.
-> >
-> >      > +    if (err !=3D NULL) {
-> >      > +        error_reportf_err(err, "Couldn't realize Allwinner H3:
-> ");
-> >      > +        exit(1);
-> >      > +    }
-> >      > +
-> >      > +    /* RAM */
-> >      > +    memory_region_allocate_system_memory(&s->sdram, NULL,
-> >     "orangepi.ram",
-> >      > +                                         machine->ram_size);
-> >
-> >     I'd only allow machine->ram_size =3D=3D 1 * GiB here, since the onb=
-oard
-> >     DRAM
-> >     is not upgradable.
-> >
-> >
-> > Agree, we should add something for that. Would it be acceptable if we
-> > make the 1GB an upper limit?
-> > I see that the Raspberry Pi is doing that too in hw/arm/raspi.c, like s=
-o:
-> >
-> >      if (machine->ram_size > 1 * GiB) {
-> >          error_report("Requested ram size is too large for this machine=
-:
-> "
-> >                       "maximum is 1GB");
-> >          exit(1);
-> >      }
-> >
-> > I think it would be helpful to allow the flexibility to the user of
-> > reducing the RAM to less than 1GB,
-> > in case resources of the host OS are limited. What do you think?
->
-> Sure, good idea.
->
-> FIY (in case you add more models) we recently noticed there is a problem
-> when using 2GiB default on 32-bit hosts, so the workaround is to use <=3D
-> 1GiB default.
->
-> >      > +    memory_region_add_subregion(get_system_memory(),
-> >     AW_H3_SDRAM_BASE,
-> >      > +                                &s->sdram);
-> >      > +
-> >      > +    /* Load target kernel */
-> >      > +    orangepi_binfo.ram_size =3D machine->ram_size;
-> >      > +    orangepi_binfo.nb_cpus  =3D AW_H3_NUM_CPUS;
-> >      > +    arm_load_kernel(ARM_CPU(first_cpu), machine,
-> &orangepi_binfo);
-> >      > +}
-> >      > +
-> >      > +static void orangepi_machine_init(MachineClass *mc)
-> >      > +{
-> >      > +    mc->desc =3D "Orange Pi PC";
-> >      > +    mc->init =3D orangepi_init;
-> >      > +    mc->units_per_default_bus =3D 1;
-> >      > +    mc->min_cpus =3D AW_H3_NUM_CPUS;
-> >      > +    mc->max_cpus =3D AW_H3_NUM_CPUS;
-> >      > +    mc->default_cpus =3D AW_H3_NUM_CPUS;
-> >
-> >              mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a7");
-> >
-> >      > +    mc->ignore_memory_transaction_failures =3D true;
-> >
-> >     You should not use this flag in new design. See the documentation i=
-n
-> >     include/hw/boards.h:
-> >
-> >        * @ignore_memory_transaction_failures:
-> >        *    [...] New board models
-> >        *    should instead use "unimplemented-device" for all memory
-> >     ranges where
-> >        *    the guest will attempt to probe for a device that QEMU
-> doesn't
-> >        *    implement and a stub device is required.
-> >
-> >     You already use the "unimplemented-device".
-> >
-> > Thanks, I'm working on this now. I think that at least I'll need to add
-> > all of the devices mentioned in the 4.1 Memory Mapping chapter of the
-> > datasheet
-> > as an unimplemented device. Previously I only added some that I thought
-> > were relevant.
-> >
-> > I added all the missing devices as unimplemented and removed the
-> > ignore_memory_transaction_failures flag
->
-> I was going to say, "instead of adding *all* the devices regions you can
-> add the likely bus decoding regions", probably:
->
-> 0x01c0.0000   128KiB   AMBA AXI
-> 0x01c2.0000   64KiB    AMBA APB
->
-> But too late.
->
-
-Hehe its okey, I can change it to whichever is preferable: the minimum set
-with unimplemented device entries to get a working linux kernel / u-boot or
-just cover the full memory space from the datasheet. My initial thought was
-that if
-we only provide the minimum set, and the linux kernel later adds a new
-driver for a device
-which is not marked unimplemented, it will trigger the data abort and
-potentially resulting in a non-booting kernel.
-
-But I'm not sure what is normally done here. I do see other board files
-using the create_unimplemented_device() function,
-but I dont know if they are covering the whole memory space or not.
-
-Any thoughts? :-)
+In-Reply-To: <CADSWDztF=eaUDNnq8bhnPyTKW1YjAWm4UBaH-NBPkzjnzx0bxg@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: ggFLyXTOaWqu
 
 
->
-> > from the machine. Now it seems Linux gets a data abort while probing th=
-e
-> > uart1 serial device at 0x01c28400,
->
-> Did you add the UART1 as UNIMP or 16550?
->
->
-I discovered what goes wrong here. See this kernel oops message:
 
-[    1.084985] [f08600f8] *pgd=3D6f00a811, *pte=3D01c28653, *ppte=3D01c2845=
-3
-[    1.085564] Internal error: : 8 [#1] SMP ARM
-[    1.085698] Modules linked in:
-[    1.085940] CPU: 0 PID: 1 Comm: swapper/0 Not tainted
-5.4.0-11747-g2f13437b8917 #4
-[    1.085968] Hardware name: Allwinner sun8i Family
-[    1.086447] PC is at dw8250_setup_port+0x10/0x10c
-[    1.086478] LR is at dw8250_probe+0x500/0x56c
+On 2019/11/22 23:47, Beata Michalska wrote:
+> Hi,
+> 
+> On Mon, 11 Nov 2019 at 01:48, Xiang Zheng <zhengxiang9@huawei.com> wrote:
+>>
+>> From: Dongjiu Geng <gengdongjiu@huawei.com>
+>>
+>> Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+>> translates the host VA delivered by host to guest PA, then fills this PA
+>> to guest APEI GHES memory, then notifies guest according to the SIGBUS
+>> type.
+>>
+>> When guest accesses the poisoned memory, it will generate a Synchronous
+>> External Abort(SEA). Then host kernel gets an APEI notification and calls
+>> memory_failure() to unmapped the affected page in stage 2, finally
+>> returns to guest.
+>>
+>> Guest continues to access the PG_hwpoison page, it will trap to KVM as
+>> stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
+>> Qemu, Qemu records this error address into guest APEI GHES memory and
+>> notifes guest using Synchronous-External-Abort(SEA).
+>>
+>> In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
+>> in which we can setup the type of exception and the syndrome information.
+>> When switching to guest, the target vcpu will jump to the synchronous
+>> external abort vector table entry.
+>>
+>> The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
+>> ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
+>> not valid and hold an UNKNOWN value. These values will be set to KVM
+>> register structures through KVM_SET_ONE_REG IOCTL.
+>>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+>> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+>> ---
+>>  hw/acpi/acpi_ghes.c         | 297 ++++++++++++++++++++++++++++++++++++
+>>  include/hw/acpi/acpi_ghes.h |   4 +
+>>  include/sysemu/kvm.h        |   3 +-
+>>  target/arm/cpu.h            |   4 +
+>>  target/arm/helper.c         |   2 +-
+>>  target/arm/internals.h      |   5 +-
+>>  target/arm/kvm64.c          |  64 ++++++++
+>>  target/arm/tlb_helper.c     |   2 +-
+>>  target/i386/cpu.h           |   2 +
+>>  9 files changed, 377 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
+>> index 42c00ff3d3..f5b54990c0 100644
+>> --- a/hw/acpi/acpi_ghes.c
+>> +++ b/hw/acpi/acpi_ghes.c
+>> @@ -39,6 +39,34 @@
+>>  /* The max size in bytes for one error block */
+>>  #define ACPI_GHES_MAX_RAW_DATA_LENGTH       0x1000
+>>
+>> +/*
+>> + * The total size of Generic Error Data Entry
+>> + * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
+>> + * Table 18-343 Generic Error Data Entry
+>> + */
+>> +#define ACPI_GHES_DATA_LENGTH               72
+>> +
+>> +/*
+>> + * The memory section CPER size,
+>> + * UEFI 2.6: N.2.5 Memory Error Section
+>> + */
+>> +#define ACPI_GHES_MEM_CPER_LENGTH           80
+>> +
+>> +/*
+>> + * Masks for block_status flags
+>> + */
+>> +#define ACPI_GEBS_UNCORRECTABLE         1
+> 
+> Why not listing all supported statuses ? Similar to error severity below ?
+> 
+>> +
+>> +/*
+>> + * Values for error_severity field
+>> + */
+>> +enum AcpiGenericErrorSeverity {
+>> +    ACPI_CPER_SEV_RECOVERABLE,
+>> +    ACPI_CPER_SEV_FATAL,
+>> +    ACPI_CPER_SEV_CORRECTED,
+>> +    ACPI_CPER_SEV_NONE,
+>> +};
+>> +
+>>  /*
+>>   * Now only support ARMv8 SEA notification type error source
+>>   */
+>> @@ -49,6 +77,16 @@
+>>   */
+>>  #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
+>>
+>> +#define UUID_BE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)        \
+>> +    {{{ ((a) >> 24) & 0xff, ((a) >> 16) & 0xff, ((a) >> 8) & 0xff, (a) & 0xff, \
+>> +    ((b) >> 8) & 0xff, (b) & 0xff,                   \
+>> +    ((c) >> 8) & 0xff, (c) & 0xff,                    \
+>> +    (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) } } }
+>> +
+>> +#define UEFI_CPER_SEC_PLATFORM_MEM                   \
+>> +    UUID_BE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+>> +    0xED, 0x7C, 0x83, 0xB1)
+>> +
+>>  /*
+>>   * | +--------------------------+ 0
+>>   * | |        Header            |
+>> @@ -77,6 +115,174 @@ typedef struct AcpiGhesState {
+>>      uint64_t ghes_addr_le;
+>>  } AcpiGhesState;
+>>
+>> +/*
+>> + * Total size for Generic Error Status Block
+>> + * ACPI 6.2: 18.3.2.7.1 Generic Error Data,
+>> + * Table 18-380 Generic Error Status Block
+>> + */
+>> +#define ACPI_GHES_GESB_SIZE                 20
+> 
+> Minor: This is not entirely correct: GEDE is part of GESB so the total length
+> would be ACPI_GHES_GESB_SIZE + n* sizeof(GEDE)
+yes, the comments needs to correct.
 
-It tries to access the UART0 at base address 0x01c28400, which I did
-provide. The strange
-thing is that is accesses offset 0xf8, thus address 0x01c284f8. The
-datasheet does not mention this register
-but if we provide the 1KiB (0x400) I/O space it should at least read as
-zero and writes ignored. Unfortunately the emulated
-serial driver only maps a small portion until 0x1f:
+> 
+>> +/* The offset of Data Length in Generic Error Status Block */
+>> +#define ACPI_GHES_GESB_DATA_LENGTH_OFFSET   12
+>> +
+> 
+> If those were nicely represented as structures you get the offsets easily
+> without having number of defines. That could simplify the code and make it
+> more readable - see comments below
+> 
+>> +/*
+>> + * Record the value of data length for each error status block to avoid getting
+>> + * this value from guest.
+>> + */
+>> +static uint32_t acpi_ghes_data_length[ACPI_GHES_ERROR_SOURCE_COUNT];
+>> +
+>> +/*
+>> + * Generic Error Data Entry
+>> + * ACPI 6.1: 18.3.2.7.1 Generic Error Data
+>> + */
+>> +static void acpi_ghes_generic_error_data(GArray *table, QemuUUID section_type,
+>> +                uint32_t error_severity, uint16_t revision,
+>> +                uint8_t validation_bits, uint8_t flags,
+>> +                uint32_t error_data_length, QemuUUID fru_id,
+>> +                uint8_t *fru_text, uint64_t time_stamp)
+> 
+> Why not just defining a struct that represents the GED entry?
 
-(qemu) info mtree
-...
-    0000000001c28000-0000000001c2801f (prio 0, i/o): serial
-    0000000001c28400-0000000001c2841f (prio 0, i/o): serial
-    0000000001c28800-0000000001c2881f (prio 0, i/o): serial
+This is due to address Igor's comments. there are two reasons:
+1. avoid define many structures about APEI/GHES/CPER, so you can see it has very little structures definition in acpi_ghes.h
+2. using build_append_int_noprefix() to compose the table can avoid considering endian
+
+> 
+>> +{
+>> +    QemuUUID uuid_le;
+>> +
+>> +    /* Section Type */
+>> +    uuid_le = qemu_uuid_bswap(section_type);
+>> +    g_array_append_vals(table, uuid_le.data, ARRAY_SIZE(uuid_le.data));
+>> +
+>> +    /* Error Severity */
+>> +    build_append_int_noprefix(table, error_severity, 4);
+>> +    /* Revision */
+>> +    build_append_int_noprefix(table, revision, 2);
+> 
+> Minor: According to the spec it seems that the revision number is
+> a fixed value so you could drop that from the parameters....
+> or ... use a struct to represent the data
+> 
+>> +    /* Validation Bits */
+>> +    build_append_int_noprefix(table, validation_bits, 1);
+>> +    /* Flags */
+>> +    build_append_int_noprefix(table, flags, 1);
+>> +    /* Error Data Length */
+>> +    build_append_int_noprefix(table, error_data_length, 4);
+>> +
+>> +    /* FRU Id */
+>> +    uuid_le = qemu_uuid_bswap(fru_id);
+>> +    g_array_append_vals(table, uuid_le.data, ARRAY_SIZE(uuid_le.data));
+>> +
+>> +    /* FRU Text */
+>> +    g_array_append_vals(table, fru_text, 20);
+>> +    /* Timestamp */
+>> +    build_append_int_noprefix(table, time_stamp, 8);
+>> +}
+>> +
+>> +/*
+>> + * Generic Error Status Block
+>> + * ACPI 6.1: 18.3.2.7.1 Generic Error Data
+>> + */
+>> +static void acpi_ghes_generic_error_status(GArray *table, uint32_t block_status,
+>> +                uint32_t raw_data_offset, uint32_t raw_data_length,
+>> +                uint32_t data_length, uint32_t error_severity)
+> 
+> Same as the above
+> 
+>> +{
+>> +    /* Block Status */
+>> +    build_append_int_noprefix(table, block_status, 4);
+>> +    /* Raw Data Offset */
+>> +    build_append_int_noprefix(table, raw_data_offset, 4);
+>> +    /* Raw Data Length */
+>> +    build_append_int_noprefix(table, raw_data_length, 4);
+>> +    /* Data Length */
+>> +    build_append_int_noprefix(table, data_length, 4);
+>> +    /* Error Severity */
+>> +    build_append_int_noprefix(table, error_severity, 4);
+>> +}
+>> +
+>> +/* UEFI 2.6: N.2.5 Memory Error Section */
+>> +static void acpi_ghes_build_append_mem_cper(GArray *table,
+>> +                                            uint64_t error_physical_addr)
+>> +{
+>> +    /*
+>> +     * Memory Error Record
+>> +     */
+>> +
+>> +    /* Validation Bits */
+>> +    build_append_int_noprefix(table,
+>> +                              (1UL << 14) | /* Type Valid */
+>> +                              (1UL << 1) /* Physical Address Valid */,
+>> +                              8);
+>> +    /* Error Status */
+>> +    build_append_int_noprefix(table, 0, 8);
+> 
+> Just wondering whether it would be worth to specify the Error Type
+> through the Error Status ?
+> 
+>> +    /* Physical Address */
+>> +    build_append_int_noprefix(table, error_physical_addr, 8);
+>> +    /* Skip all the detailed information normally found in such a record */
+>> +    build_append_int_noprefix(table, 0, 48);
+>> +    /* Memory Error Type */
+>> +    build_append_int_noprefix(table, 0 /* Unknown error */, 1);
+>> +    /* Skip all the detailed information normally found in such a record */
+>> +    build_append_int_noprefix(table, 0, 7);
+>> +}
+>> +
+>> +static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+>> +                                      uint64_t error_physical_addr,
+>> +                                      uint32_t data_length)
+>> +{
+>> +    GArray *block;
+>> +    uint64_t current_block_length;
+>> +    /* Memory Error Section Type */
+>> +    QemuUUID mem_section_id_le = UEFI_CPER_SEC_PLATFORM_MEM;
+> 
+> As already mentioned - mixing LE /w BE
+> 
+>> +    QemuUUID fru_id = {};
+>> +    uint8_t fru_text[20] = {};
+>> +
+>> +    /*
+>> +     * Generic Error Status Block
+>> +     * | +---------------------+
+>> +     * | |     block_status    |
+>> +     * | +---------------------+
+>> +     * | |    raw_data_offset  |
+>> +     * | +---------------------+
+>> +     * | |    raw_data_length  |
+>> +     * | +---------------------+
+>> +     * | |     data_length     |
+>> +     * | +---------------------+
+>> +     * | |   error_severity    |
+>> +     * | +---------------------+
+>> +     */
+>> +    block = g_array_new(false, true /* clear */, 1);
+>> +
+>> +    /* The current whole length of the generic error status block */
+>> +    current_block_length = ACPI_GHES_GESB_SIZE + data_length;
+>> +
+>> +    /* This is the length if adding a new generic error data entry*/
+>> +    data_length += ACPI_GHES_DATA_LENGTH;
+>> +    data_length += ACPI_GHES_MEM_CPER_LENGTH;
+>> +
+>> +    /*
+>> +     * Check whether it will run out of the preallocated memory if adding a new
+>> +     * generic error data entry
+>> +     */
+>> +    if ((data_length + ACPI_GHES_GESB_SIZE) > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
+>> +        error_report("Record CPER out of boundary!!!");
+> 
+> Minor: The error message could be made more accurate, like:
+>     "Not enough memory to record new CPER"
+> 
+>> +        return ACPI_GHES_CPER_FAIL;
+>> +    }
+>> +
+>> +    /* Build the new generic error status block header */
+>> +    acpi_ghes_generic_error_status(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE),
+>> +        0, 0, cpu_to_le32(data_length), cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
+>> +
+>> +    /* Write back above generic error status block header to guest memory */
+>> +    cpu_physical_memory_write(error_block_address, block->data,
+>> +                              block->len);
+>> +
+>> +    /* Add a new generic error data entry */
+>> +
+>> +    data_length = block->len;
+>> +    /* Build this new generic error data entry header */
+>> +    acpi_ghes_generic_error_data(block, mem_section_id_le,
+>> +        cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300), 0, 0,
+>> +        cpu_to_le32(ACPI_GHES_MEM_CPER_LENGTH), fru_id, fru_text, 0);
+>> +
+>> +    /* Build the memory section CPER for above new generic error data entry */
+>> +    acpi_ghes_build_append_mem_cper(block, error_physical_addr);
+>> +
+>> +    /* Write back above this new generic error data entry to guest memory */
+>> +    cpu_physical_memory_write(error_block_address + current_block_length,
+>> +        block->data + data_length, block->len - data_length);
+>> +
+> 
+> As already mentioned and unless I have missed smth (which is highly possible)
+> this will append new records while the GESB is kept 'in-place'. So the
+> used space is
+> only growing.
+> 
+>> +    g_array_free(block, true);
+>> +
+>> +    return ACPI_GHES_CPER_OK;
+>> +}
+>> +
+>>  /*
+>>   * Hardware Error Notification
+>>   * ACPI 4.0: 17.3.2.7 Hardware Error Notification
+>> @@ -265,3 +471,94 @@ void acpi_ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
+>>      fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
+>>          NULL, &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
+>>  }
+>> +
+>> +bool acpi_ghes_record_errors(uint32_t notify, uint64_t physical_address)
+>> +{
+>> +    uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
+>> +    int loop = 0;
+>> +    uint64_t start_addr = le64_to_cpu(ges.ghes_addr_le);
+>> +    bool ret = ACPI_GHES_CPER_FAIL;
+>> +    uint8_t source_id;
+>> +    const uint8_t error_source_id[] = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+>> +                                        0xff, 0xff,    0, 0xff, 0xff, 0xff};
+>> +
+> 
+> I'm not entirely sure why this is needed - se below
+> 
+>> +    /*
+>> +     * | +---------------------+ ges.ghes_addr_le
+>> +     * | |error_block_address0 |
+>> +     * | +---------------------+ --+--
+>> +     * | |    .............    | ACPI_GHES_ADDRESS_SIZE
+>> +     * | +---------------------+ --+--
+>> +     * | |error_block_addressN |
+>> +     * | +---------------------+
+>> +     * | | read_ack_register0  |
+>> +     * | +---------------------+ --+--
+>> +     * | |   .............     | ACPI_GHES_ADDRESS_SIZE
+>> +     * | +---------------------+ --+--
+>> +     * | | read_ack_registerN  |
+>> +     * | +---------------------+ --+--
+>> +     * | |      CPER           |   |
+>> +     * | |      ....           | ACPI_GHES_MAX_RAW_DATA_LENGT
+>> +     * | |      CPER           |   |
+>> +     * | +---------------------+ --+--
+>> +     * | |    ..........       |
+>> +     * | +---------------------+
+>> +     * | |      CPER           |
+>> +     * | |      ....           |
+>> +     * | |      CPER           |
+>> +     * | +---------------------+
+>> +     */
+>> +    if (physical_address && notify < ACPI_GHES_NOTIFY_RESERVED) {
+>> +        /* Find and check the source id for this new CPER */
+>> +        source_id = error_source_id[notify];
+> 
+> Why not using switch case for supported source types ?
+> For the time being only one is being supported. And you only use that to
+> verify that support - seems a bit unnecessary.
+
+Afterwards May be we will many source types to support, so Igor's suggestion is better as shown below.
+
+static const uint8_t ghes_notify2source_id_map[] = {
+    ACPI_HEST_SRC_ID_SEA,
+    ACPI_HEST_SRC_ID_RESERVED
+}
 
 
-Apparently, the register that the mainline linux kernel is using is
-DesignWare specific:
+> 
+>> +        if (source_id != 0xff) {
+>> +            start_addr += source_id * ACPI_GHES_ADDRESS_SIZE;
+>> +        } else {
+>> +            goto out;
+>> +        }
+>> +
+[...]
+>>
+>> +/* Callers must hold the iothread mutex lock */
+>> +static void kvm_inject_arm_sea(CPUState *c)
+> 
+> We could enclose this function along with the kvm_arch_on_sigbus_vcpu
+> within ifdef switch for KVM_HAVE_MCE_INJECTION
+> 
+>> +{
+>> +    ARMCPU *cpu = ARM_CPU(c);
+>> +    CPUARMState *env = &cpu->env;
+>> +    CPUClass *cc = CPU_GET_CLASS(c);
+>> +    uint32_t esr;
+>> +    bool same_el;
+>> +
+>> +    c->exception_index = EXCP_DATA_ABORT;
+>> +    env->exception.target_el = 1;
+>> +
+>> +    /*
+>> +     * Set the DFSC to synchronous external abort and set FnV to not valid,
+>> +     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
+>> +     */
+>> +    same_el = arm_current_el(env) == env->exception.target_el;
+>> +    esr = syn_data_abort_no_iss(same_el, 1, 0, 0, 0, 0, 0x10);
+> 
+> IINM this is the only use case when FnV is considered to be valid
+> so I'm not convinced it is worth to modify the syn_data_abort_no_iss
+> just for this.
 
-drivers/tty/serial/8250/8250_dwlib.c:13:
+Here we set the FnV to not valid, not to set it to valid.
+because Guest will use the physical address that recorded in APEI table.
 
-/* Offsets for the DesignWare specific registers */
-#define DW_UART_DLF<--->0xc0 /* Divisor Latch Fraction Register */
-#define DW_UART_CPR<--->0xf4 /* Component Parameter Register */
-#define DW_UART_UCV<--->0xf8 /* UART Component Version */
-
-I tried to find a way to increase the memory mapped size of the serial
-device I created with serial_mm_init(),
-but I don't think its possible with that interface.
-
-I did manage to get it working by overlaying the UART0 with another
-unimplemented device
-that does have an I/O size of 0x400, but I guess that is probably not the
-solution we are looking for?
-
-I wonder, did any of the other SoC / boards have this problem when removing
-mc->ignore_memory_transaction_failures?
-
-Regards,
-Niek
-
-> so I'll need to debug it further. I'll post back when I have more results=
-.
-> >
-> > Regards,
-> > Niek
-> >
-> >      > +}
-> >      > +
-> >      > +DEFINE_MACHINE("orangepi", orangepi_machine_init)
-> >
-> >     Can you name it 'orangepi-pc'? So we can add other orangepi models.
-> >
-> >     Thanks,
-> >
-> >     Phil.
-> >
-> >
-> >
-> > --
-> > Niek Linnenbank
-> >
->
->
-
---=20
-Niek Linnenbank
-
---000000000000fe8a3705991063e9
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=
-=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Dec 6, 2019 =
-at 6:41 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.=
-com">philmd@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_q=
-uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
-04);padding-left:1ex">On 12/5/19 11:15 PM, Niek Linnenbank wrote:<br>
-&gt; Hello Philippe,<br>
-&gt; <br>
-&gt; On Tue, Dec 3, 2019 at 10:18 AM Philippe Mathieu-Daud=C3=A9 <br>
-&gt; &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redh=
-at.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.com" target=3D"_blank=
-">philmd@redhat.com</a>&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 12/2/19 10:09 PM, Niek Linnenbank wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; The Xunlong Orange Pi PC is an Allwinner H3 S=
-ystem on Chip<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; based embedded computer with mainline support=
- in both U-Boot<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; and Linux. The board comes with a Quad Core C=
-ortex A7 @ 1.3GHz,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; 512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB=
-, HDMI and<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; various other I/O. This commit add support fo=
-r the Xunlong<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Orange Pi PC machine.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D=
-"mailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.co=
-m</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
-om" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; ---<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 |=C2=A0 1 +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0hw/arm/Makefile.objs |=C2=A0 2 +-=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 | =
-90<br>
-&gt;=C2=A0 =C2=A0 =C2=A0++++++++++++++++++++++++++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A03 files changed, 92 insertions(+)=
-, 1 deletion(-)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0create mode 100644 hw/arm/orangep=
-i.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/MAINTAINERS b/MAINTAINERS<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index 29c9936037..42c913d6cb 100644<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- a/MAINTAINERS<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/MAINTAINERS<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -485,6 +485,7 @@ L: <a href=3D"mailto:qemu=
--arm@nongnu.org" target=3D"_blank">qemu-arm@nongnu.org</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:qemu-arm@nongnu.org" t=
-arget=3D"_blank">qemu-arm@nongnu.org</a>&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0S: Maintained<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0F: hw/*/allwinner-h3*<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0F: include/hw/*/allwinner-h3*<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +F: hw/arm/orangepi.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0ARM PrimeCell and CMSDK devices<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0M: Peter Maydell &lt;<a href=3D"m=
-ailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org<=
-/a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:peter.maydell@linaro.o=
-rg" target=3D"_blank">peter.maydell@linaro.org</a>&gt;&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/hw/arm/Makefile.objs b/hw/arm/Ma=
-kefile.objs<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index 956e496052..8d5ea453d5 100644<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- a/hw/arm/Makefile.objs<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/hw/arm/Makefile.objs<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -34,7 +34,7 @@ obj-$(CONFIG_DIGIC) +=3D di=
-gic.o<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_OMAP) +=3D omap1.o o=
-map2.o<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_STRONGARM) +=3D stro=
-ngarm.o<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_ALLWINNER_A10) +=3D =
-allwinner-a10.o cubieboard.o<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3=
-.o<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3=
-.o orangepi.o<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_RASPI) +=3D bcm2835_=
-peripherals.o bcm2836.o raspi.o<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_STM32F205_SOC) +=3D =
-stm32f205_soc.o<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=
-=3D xlnx-zynqmp.o xlnx-zcu102.o<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/hw/arm/orangepi.c b/hw/arm/orang=
-epi.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; new file mode 100644<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index 0000000000..5ef2735f81<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- /dev/null<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/hw/arm/orangepi.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -0,0 +1,90 @@<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +/*<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * Orange Pi emulation<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + *<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * Copyright (C) 2019 Niek Linnenbank &lt;<a=
- href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@=
-gmail.com</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
-om" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + *<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * This program is free software: you can re=
-distribute it and/or<br>
-&gt;=C2=A0 =C2=A0 =C2=A0modify<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * it under the terms of the GNU General Pub=
-lic License as<br>
-&gt;=C2=A0 =C2=A0 =C2=A0published by<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * the Free Software Foundation, either vers=
-ion 2 of the License, or<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * (at your option) any later version.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + *<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * This program is distributed in the hope t=
-hat it will be useful,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * but WITHOUT ANY WARRANTY; without even th=
-e implied warranty of<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * MERCHANTABILITY or FITNESS FOR A PARTICUL=
-AR PURPOSE.=C2=A0 See the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * GNU General Public License for more detai=
-ls.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + *<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * You should have received a copy of the GN=
-U General Public License<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + * along with this program.=C2=A0 If not, se=
-e<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;<a href=3D"http://www.gnu.org/licenses/" rel=3D=
-"noreferrer" target=3D"_blank">http://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; + */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;exec/address-spaces.h&quot;<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;qapi/error.h&quot;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;cpu.h&quot;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;hw/sysbus.h&quot;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;hw/boards.h&quot;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;hw/qdev-properties.h&quot;<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +#include &quot;hw/arm/allwinner-h3.h&quot;<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +static struct arm_boot_info orangepi_binfo =
-=3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 .loader_start =3D AW_H3_SDRAM_=
-BASE,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 .board_id =3D -1,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +};<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +typedef struct OrangePiState {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 AwH3State *h3;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 MemoryRegion sdram;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +} OrangePiState;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +static void orangepi_init(MachineState *mach=
-ine)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 OrangePiState *s =3D g_new(Ora=
-ngePiState, 1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 Error *err =3D NULL;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Here I&#39;d add:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (strcmp(machine-&gt;=
-cpu_type,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0ARM_CPU_TYPE_NAME(&quot;cortex-a7&quot;)) !=3D 0) {=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_rep=
-ort(&quot;This board can only be used with cortex-a7<br>
-&gt;=C2=A0 =C2=A0 =C2=A0CPU&quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt; <br>
-&gt; Done!<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 s-&gt;h3 =3D AW_H3(object_new(=
-TYPE_AW_H3));<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* Setup timer properties */<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 object_property_set_int(OBJECT=
-(&amp;s-&gt;h3-&gt;timer), 32768,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&quot;clk0-freq&quot;, &amp;err);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (err !=3D NULL) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_reportf_er=
-r(err, &quot;Couldn&#39;t set clk0 frequency: &quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 object_property_set_int(OBJECT=
-(&amp;s-&gt;h3-&gt;timer), 24000000,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&quot;clk1-freq&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;err);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (err !=3D NULL) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_reportf_er=
-r(err, &quot;Couldn&#39;t set clk1 frequency: &quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* Mark H3 object realized */<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 object_property_set_bool(OBJEC=
-T(s-&gt;h3), true, &quot;realized&quot;, &amp;err);<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0I&#39;m not sure if that&#39;s correct but I&#39;d =
-simply use &amp;error_abort here.<br>
-&gt; <br>
-&gt; Done, I applied it to all the functions and removed the err variable.<=
-br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (err !=3D NULL) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_reportf_er=
-r(err, &quot;Couldn&#39;t realize Allwinner H3: &quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* RAM */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 memory_region_allocate_system_=
-memory(&amp;s-&gt;sdram, NULL,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&quot;orangepi.ram&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0machine-&gt;ram_size);<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0I&#39;d only allow machine-&gt;ram_size =3D=3D 1 * =
-GiB here, since the onboard<br>
-&gt;=C2=A0 =C2=A0 =C2=A0DRAM<br>
-&gt;=C2=A0 =C2=A0 =C2=A0is not upgradable.<br>
-&gt; <br>
-&gt; <br>
-&gt; Agree, we should add something for that. Would it be acceptable if we =
-<br>
-&gt; make the 1GB an upper limit?<br>
-&gt; I see that the Raspberry Pi is doing that too in hw/arm/raspi.c, like =
-so:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 if (machine-&gt;ram_size &gt; 1 * GiB) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;Requested ram siz=
-e is too large for this machine: &quot;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0&quot;maximum is 1GB&quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; <br>
-&gt; I think it would be helpful to allow the flexibility to the user of <b=
-r>
-&gt; reducing the RAM to less than 1GB,<br>
-&gt; in case resources of the host OS are limited. What do you think?<br>
-<br>
-Sure, good idea.<br>
-<br>
-FIY (in case you add more models) we recently noticed there is a problem <b=
-r>
-when using 2GiB default on 32-bit hosts, so the workaround is to use &lt;=
-=3D <br>
-1GiB default.<br>
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 memory_region_add_subregion(ge=
-t_system_memory(),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0AW_H3_SDRAM_BASE,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;=
-s-&gt;sdram);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* Load target kernel */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 orangepi_binfo.ram_size =3D ma=
-chine-&gt;ram_size;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 orangepi_binfo.nb_cpus=C2=A0 =
-=3D AW_H3_NUM_CPUS;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 arm_load_kernel(ARM_CPU(first_=
-cpu), machine, &amp;orangepi_binfo);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +static void orangepi_machine_init(MachineCla=
-ss *mc)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;desc =3D &quot;Orange P=
-i PC&quot;;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;init =3D orangepi_init;=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;units_per_default_bus =
-=3D 1;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;min_cpus =3D AW_H3_NUM_=
-CPUS;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;max_cpus =3D AW_H3_NUM_=
-CPUS;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;default_cpus =3D AW_H3_=
-NUM_CPUS;<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mc-&gt;default_cpu_typ=
-e =3D ARM_CPU_TYPE_NAME(&quot;cortex-a7&quot;);<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&gt;ignore_memory_transacti=
-on_failures =3D true;<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0You should not use this flag in new design. See the=
- documentation in<br>
-&gt;=C2=A0 =C2=A0 =C2=A0include/hw/boards.h:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 * @ignore_memory_transaction_failures:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 [...] New board models<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 should instead use &quot;uni=
-mplemented-device&quot; for all memory<br>
-&gt;=C2=A0 =C2=A0 =C2=A0ranges where<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 the guest will attempt to pr=
-obe for a device that QEMU doesn&#39;t<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 implement and a stub device =
-is required.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0You already use the &quot;unimplemented-device&quot=
-;.<br>
-&gt; <br>
-&gt; Thanks, I&#39;m working on this now. I think that at least I&#39;ll ne=
-ed to add<br>
-&gt; all of the devices mentioned in the 4.1 Memory Mapping chapter of the =
-<br>
-&gt; datasheet<br>
-&gt; as an unimplemented device. Previously I only added some that I though=
-t <br>
-&gt; were relevant.<br>
-&gt; <br>
-&gt; I added all the missing devices as unimplemented and removed the <br>
-&gt; ignore_memory_transaction_failures flag<br>
-<br>
-I was going to say, &quot;instead of adding *all* the devices regions you c=
-an <br>
-add the likely bus decoding regions&quot;, probably:<br>
-<br>
-0x01c0.0000=C2=A0 =C2=A0128KiB=C2=A0 =C2=A0AMBA AXI<br>
-0x01c2.0000=C2=A0 =C2=A064KiB=C2=A0 =C2=A0 AMBA APB<br>
-<br>
-But too late.<br></blockquote><div><br></div><div>Hehe its okey, I can chan=
-ge it to whichever is preferable: the minimum set</div><div>with unimplemen=
-ted device entries to get a working linux kernel / u-boot or <br></div><div=
->just cover the full memory space from the datasheet. My initial thought wa=
-s that if</div><div>we only provide the minimum set, and the linux kernel l=
-ater adds a new driver for a device</div><div>which is not marked unimpleme=
-nted, it will trigger the data abort and potentially resulting in a non-boo=
-ting kernel.<br></div><div><br></div><div>But I&#39;m not sure what is norm=
-ally done here. I do see other board files using the create_unimplemented_d=
-evice() function,</div><div>but I dont know if they are covering the whole =
-memory space or not.</div><div><br></div><div>Any thoughts? :-)<br></div><d=
-iv>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
-x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; from the machine. Now it seems Linux gets a data abort while probing t=
-he <br>
-&gt; uart1 serial device at 0x01c28400,<br>
-<br>
-Did you add the UART1 as UNIMP or 16550?<br>
-<br></blockquote><div><br></div><div>I discovered what goes wrong here. See=
- this kernel oops message:</div><div><br></div><div><pre>[    1.084985] [f0=
-8600f8] *pgd=3D6f00a811, *pte=3D01c28653, *ppte=3D01c28453
-[    1.085564] Internal error: : 8 [#1] SMP ARM
-[    1.085698] Modules linked in:
-[    1.085940] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.4.0-11747-g2f134=
-37b8917 #4
-[    1.085968] Hardware name: Allwinner sun8i Family
-[    1.086447] PC is at dw8250_setup_port+0x10/0x10c
-[    1.086478] LR is at dw8250_probe+0x500/0x56c
-</pre></div><div>It tries to access the UART0 at base address 0x01c28400, w=
-hich I did provide. The strange</div><div>thing is that is accesses offset =
-0xf8, thus address 0x01c284f8. The datasheet does not mention this register=
-</div><div>but if we provide the 1KiB (0x400) I/O space it should at least =
-read as zero and writes ignored. Unfortunately the emulated</div><div>seria=
-l driver only maps a small portion until 0x1f:</div><div><pre>(qemu) info m=
-tree
-...=20
-    0000000001c28000-0000000001c2801f (prio 0, i/o): serial
-    0000000001c28400-0000000001c2841f (prio 0, i/o): serial
-    0000000001c28800-0000000001c2881f (prio 0, i/o): serial</pre></div><div=
-><br></div><div>Apparently, the register that the mainline linux kernel is =
-using is DesignWare specific:<br></div><div><pre>drivers/tty/serial/8250/82=
-50_dwlib.c:13:
-
-/* Offsets for the DesignWare specific registers */
-#define DW_UART_DLF&lt;---&gt;0xc0 /* Divisor Latch Fraction Register */
-#define DW_UART_CPR&lt;---&gt;0xf4 /* Component Parameter Register */
-#define DW_UART_UCV&lt;---&gt;0xf8 /* UART Component Version */</pre></div>=
-<div>I tried to find a way to increase the memory mapped size of the serial=
- device I created with serial_mm_init(),</div><div>but I don&#39;t think it=
-s possible with that interface. <br></div><div><br></div><div>I did manage =
-to get it working by overlaying the UART0 with another unimplemented device=
-</div><div>that does have an I/O size of 0x400, but I guess that is probabl=
-y not the solution we are looking for?<br></div><div><br></div><div>I wonde=
-r, did any of the other SoC / boards have this problem when removing mc-&gt=
-;ignore_memory_transaction_failures?<br></div><div>=C2=A0</div><div>Regards=
-,</div><div>Niek<br></div><div><br></div><blockquote class=3D"gmail_quote" =
-style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
-dding-left:1ex">
-&gt; so I&#39;ll need to debug it further. I&#39;ll post back when I have m=
-ore results.<br>
-&gt; <br>
-&gt; Regards,<br>
-&gt; Niek<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +DEFINE_MACHINE(&quot;orangepi&quot;, orangep=
-i_machine_init)<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Can you name it &#39;orangepi-pc&#39;? So we can ad=
-d other orangepi models.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Thanks,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Phil.<br>
-&gt; <br>
-&gt; <br>
-&gt; <br>
-&gt; -- <br>
-&gt; Niek Linnenbank<br>
-&gt; <br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div></div>
-
---000000000000fe8a3705991063e9--
+> 
+>> +
+>> +    env->exception.syndrome = esr;
+>> +
+>> +    cc->do_interrupt(c);
+>> +}
+>> +
+>>  #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
+>>                   KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+>>
+>> @@ -1036,6 +1062,44 @@ int kvm_arch_get_registers(CPUState *cs)
+>>      return ret;
+>>  }
+>>
+>> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+>> +{
+>> +    ram_addr_t ram_addr;
+>> +    hwaddr paddr;
+>> +
+>> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+>> +
+>> +    if (acpi_enabled && addr &&
+>> +            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
+>> +        ram_addr = qemu_ram_addr_from_host(addr);
+>> +        if (ram_addr != RAM_ADDR_INVALID &&
+>> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+>> +            kvm_hwpoison_page_add(ram_addr);
+>> +            /*
+>> +             * Asynchronous signal will be masked by main thread, so
+>> +             * only handle synchronous signal.
+>> +             */
+> 
+> I'm not entirely sure that the comment above is correct (it has been
+> pointed out before). I would expect the AO signal to be handled here as
+> well. Not having proper support to do that just yet is another story but
+> the comment might be bit misleading.
+> 
+> 
+>> +            if (code == BUS_MCEERR_AR) {
+>> +                kvm_cpu_synchronize_state(c);
+>> +                if (ACPI_GHES_CPER_FAIL !=
+>> +                    acpi_ghes_record_errors(ACPI_GHES_NOTIFY_SEA, paddr)) {
+>> +                    kvm_inject_arm_sea(c);
+>> +                } else {
+>> +                    fprintf(stderr, "failed to record the error\n");
+>> +                }
+>> +            }
+>> +            return;
+>> +        }
+>> +        fprintf(stderr, "Hardware memory error for memory used by "
+>> +                "QEMU itself instead of guest system!\n");
+>> +    }
+>> +
+>> +    if (code == BUS_MCEERR_AR) {
+>> +        fprintf(stderr, "Hardware memory error!\n");
+>> +        exit(1);
+>> +    }
+>> +}
+>> +
+>>  /* C6.6.29 BRK instruction */
+>>  static const uint32_t brk_insn = 0xd4200000;
+>>
+>> diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+>> index 5feb312941..499672ebbc 100644
+>> --- a/target/arm/tlb_helper.c
+>> +++ b/target/arm/tlb_helper.c
+>> @@ -33,7 +33,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+>>       * ISV field.
+>>       */
+>>      if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
+>> -        syn = syn_data_abort_no_iss(same_el,
+>> +        syn = syn_data_abort_no_iss(same_el, 0,
+>>                                      ea, 0, s1ptw, is_write, fsc);
+>>      } else {
+>>          /*
+>> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+>> index 5352c9ff55..f75a210f96 100644
+>> --- a/target/i386/cpu.h
+>> +++ b/target/i386/cpu.h
+>> @@ -29,6 +29,8 @@
+>>  /* The x86 has a strong memory model with some store-after-load re-ordering */
+>>  #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
+>>
+>> +#define KVM_HAVE_MCE_INJECTION 1
+>> +
+>>  /* Maximum instruction code size */
+>>  #define TARGET_MAX_INSN_SIZE 16
+>>
+>> --
+>> 2.19.1
+>>
+>>
+>>
+> .
+> 

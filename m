@@ -1,84 +1,336 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4817856lff;
-        Mon, 9 Dec 2019 11:28:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqykSX0WstH4bZdjzc47hJLgaDJljR5fP9HZeInKOZ47Iw77W8wJaEZx5ZgrXZNsRnNtM+tj
-X-Received: by 2002:a05:6402:17fb:: with SMTP id t27mr15679729edy.159.1575919718363;
-        Mon, 09 Dec 2019 11:28:38 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1575919718; cv=pass;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4935447lff;
+        Mon, 9 Dec 2019 13:22:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwV9svvaLiF+8bPxkHfK9/Hk3dxpKjhRpYocf1PEjSPq56zuoitUqQgK41X5qEl4kaRrttF
+X-Received: by 2002:ac8:508:: with SMTP id u8mr27698402qtg.128.1575926538997;
+        Mon, 09 Dec 2019 13:22:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575926538; cv=none;
         d=google.com; s=arc-20160816;
-        b=wrgS383BttX2L6fqhnrjDiXS0W14bQwO79DWKNodTHL+O00N/lbXkQ+Y8pS/9jHNQq
-         5Ew8TICiRQbGkEVMPTYQG1LFc/QqMHqjvrMfk18v4eA+2F7W27BW8Gpe3l6/28t68Zyo
-         ywu1InW1LxyP6u+q2MYIb5OvazYbdA6kEEdvVUjiyKHcCZnJVj9unw7aXLsAOtO9Q2as
-         zq0GvCcsoKZPLWw1NBXsUT/w3uwcdL89JtCXPWrdA1iqJw51bQEkUCWps6WdQPP3Iewc
-         eTfgXGE9teyXPIO9tsyzvm202mHKRnFHX7T0245NTXZxLK3uJorbj00I9Swnzr2NHC1N
-         c84Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :message-id:subject:reply-to:in-reply-to;
-        bh=mirHobHjZMfBqXWfg7dmvpd3KYpMKJU9Y3DgZjCNBPc=;
-        b=ptRFw/vevalyhbSmhqA4OSRIcsi6ZfaTE4gzXqdWY8IdYrTFV3nfATk9UndXVEW+or
-         m5ssdnjKbKtmm8TM6T51dVBz4+eTjsB9H9xykuMtgwRpssThi1y3LoeLC9Qjtnm6LjWG
-         RGPJ0Fyxo8gXmJX8zDWzzwNPCCuETzS7F762icmPPoZesU7eI2SDWtiK3QY5NyEPhuyX
-         N81Klhj9IbLXQ1KnXGI6ZJySHcFmcMeCQT2umm0c+iYHkjR8tj6UU/8qQUovJnKwUt3+
-         e0kPUYPyrzzVAXViUz/i5l8Q4JUa5cJkmPUHcUQABAiJ3bxT+DZQ51s5t1RoXwTjnAED
-         wWEg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.50 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender4-of-o50.zoho.com (sender4-of-o50.zoho.com. [136.143.188.50])
-        by mx.google.com with ESMTPS id dx25si441876ejb.28.2019.12.09.11.28.36
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Dec 2019 11:28:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.50 as permitted sender) client-ip=136.143.188.50;
+        b=ukxVB3mMjOWyEY/D6GEAndAxRUPt2nJ/ewiyWrQib8AVWnJ221fC2psC/czxyKVEFC
+         yjSBDB6n+QHZdfOABiF+PH0/s5gCO+7OB4+V1gGWjbwfXhJAWOUGuZHP9Y7vbH65BlZV
+         AEWO6c4DON1cNEPuv/bDpXwCZPNDhmKZ+4OZm0jJNH5OGoJkSk3gR6/IWZku0ihz5dmP
+         XaJYYGUwrnDzUGb5sm8zAI8iE0y39WLYdqAjUHHZUhsfZrclhUq9Or03gvkVxiUk0mpV
+         SmN4VnNDfu5JvvpZ/4OLK5y5TGG3vnhie7ZJfNFYExHWsVx3bTRKzrltQzIIUI4D58X0
+         g5ng==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:from:references:to;
+        bh=U49YfM52uC13ezyTatE45zF629HCdqmYz18i8VTXeks=;
+        b=hierrXKurJVdjTipk6G7MPwMjGc+V8FxOvkS6koYy9UKqtKaLuBubyae4qnM9sCjiN
+         tuWjOKqxWE4Nk0AZM1eVmEfiaiPcRqvlzqj55AxumA2RmdxIDj1R5lHFKWxwBNO1PTy8
+         TraBzI6sfcTX17Sarm1fVjKxrKyoaroe2O+5nrbHEQZhde1jxQvmMoNHOz7F0RmuwdMZ
+         QLV2bbjQabk5hHkWjjElh/hjxQmxhSKPAQp1XFI+bk+SciTJZf+YC5vbmyjGwAGqpAYN
+         zUHmRknrux40isU0J+UBBu8LHjm/g8YlWC+UBKpqm6Rwrf+lLPY3FxQHV7B68cmDb5mf
+         Imcg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 8si689362qvh.55.2019.12.09.13.22.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Dec 2019 13:22:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.50 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-ARC-Seal: i=1; a=rsa-sha256; t=1575919712; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=b5gMCZ0w6qHOSAN9xpj+OlkgqfEyriDgNSYhkPzD2j7kOTSZs/DKjcLXlgGbPnP6MfvYM5wna0BULCSmBKymE5OXtWBI0Bwn1Fjru9ZNEo4WFH+waHuPscbxXQNzaCTsD5J+Ba9JOxDvveZjEfteifMhz+Ibm6AeEFeEWX5hIIw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1575919712; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
-	bh=mirHobHjZMfBqXWfg7dmvpd3KYpMKJU9Y3DgZjCNBPc=; 
-	b=YgxIEQNNiMtiXqDht4tuVaXzZoxtqP0RPB8KO4Z1o/gwKmBNQdfArvSOnb5/qPTsbUmVtejghKP8g3sFBpAJwJBfHkG/vTqP2Iq/x1baR2URhR8MRUuDT+a3cFYLemsshbrpMuAJCCaFigCu+Rp2UblsJLFVkggCgzZWvp9Nb+s=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=patchew.org;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 1575919712344617.065409095935; Mon, 9 Dec 2019 11:28:32 -0800 (PST)
-In-Reply-To: <20191209143723.6368-1-alex.bennee@linaro.org>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] target/arm: ensure we use current exception state after SCR update
-Message-ID: <157591971115.7675.4665081235284955931@37313f22b938>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47458 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ieQTx-0005Ly-U4
+	for alex.bennee@linaro.org; Mon, 09 Dec 2019 16:22:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48096)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1ieQTq-0005LK-0u
+ for qemu-arm@nongnu.org; Mon, 09 Dec 2019 16:22:11 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1ieQTo-0007GG-Cn
+ for qemu-arm@nongnu.org; Mon, 09 Dec 2019 16:22:09 -0500
+Received: from mail.ilande.co.uk ([46.43.2.167]:41154
+ helo=mail.default.ilande.uk0.bigv.io)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1ieQTo-0005UC-66; Mon, 09 Dec 2019 16:22:08 -0500
+Received: from host86-185-91-45.range86-185.btcentralplus.com ([86.185.91.45]
+ helo=[192.168.1.65]) by mail.default.ilande.uk0.bigv.io with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.89)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1ieQRT-0006et-Ii; Mon, 09 Dec 2019 21:19:44 +0000
+To: bilalwasim676@gmail.com, qemu-devel@nongnu.org
+References: <20191207215623.16532-1-bilalwasim676@gmail.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
+ OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+Message-ID: <c1918e1a-c3c1-d732-4e09-c7b8e92201be@ilande.co.uk>
+Date: Mon, 9 Dec 2019 21:18:48 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: alex.bennee@linaro.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, richard.henderson@linaro.org, qemu-arm@nongnu.org, alex.bennee@linaro.org, philmd@redhat.com
-Date: Mon, 9 Dec 2019 11:28:32 -0800 (PST)
-X-ZohoMailClient: External
-X-TUID: aNe7LZ2pOQ2n
+In-Reply-To: <20191207215623.16532-1-bilalwasim676@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 86.185.91.45
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v2] Adding support for MAC filtering in the FEC IP
+ implementation.
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 46.43.2.167
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, jasowang@redhat.com, qemu-arm@nongnu.org,
+ philmd@redhat.com, bilal_wasim@mentor.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Cq5Rj8m/lirz
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTIwOTE0MzcyMy42MzY4
-LTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhl
-IGRvY2tlci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5n
-IGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0
-YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBT
-Q1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcgVj0x
-IE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VOVj0x
-IEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpDbG9uZSBvZiAnaHR0cHM6
-Ly9naXQucWVtdS5vcmcvZ2l0L2R0Yy5naXQnIGludG8gc3VibW9kdWxlIHBhdGggJ2R0YycgZmFp
-bGVkCmZhaWxlZCB0byB1cGRhdGUgc3VibW9kdWxlIGR0YwpTdWJtb2R1bGUgJ2R0YycgKGh0dHBz
-Oi8vZ2l0LnFlbXUub3JnL2dpdC9kdGMuZ2l0KSB1bnJlZ2lzdGVyZWQgZm9yIHBhdGggJ2R0YycK
-bWFrZVsxXTogKioqIFsvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtaDFwM3Y3Y2ovc3JjL2Rv
-Y2tlci1zcmMuMjAxOS0xMi0wOS0xNC4yOC4yOC4xODIxMl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2
-aW5nIGRpcmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLWgxcDN2N2NqL3NyYycK
-bWFrZTogKioqIFtkb2NrZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10gRXJyb3IgMgoKcmVhbCAg
-ICAwbTMuOTg1cwp1c2VyICAgIDBtMi41ODJzCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBh
-dApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MTIwOTE0MzcyMy42MzY4LTEtYWxleC5iZW5u
-ZWVAbGluYXJvLm9yZy90ZXN0aW5nLmRvY2tlci1xdWlja0BjZW50b3M3Lz90eXBlPW1lc3NhZ2Uu
-Ci0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3Bh
-dGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBy
-ZWRoYXQuY29t
+On 07/12/2019 21:56, bilalwasim676@gmail.com wrote:
+
+> From: Bilal Wasim <bilalwasim676@gmail.com>
+> 
+> This addition ensures that the IP does NOT boot up in
+> promiscuous mode by default, and so the software only receives the desired
+> packets(Unicast, Broadcast, Unicast / Multicast hashed) by default. The
+> software running on-top of QEMU can also modify these settings and disable
+> reception of broadcast frames or make the IP receive all packets (PROM mode).
+> This patch greatly reduces the number of packets received by the software
+> running on-top of the QEMU model. Tested with the armv7-a SABRE_LITE machine.
+> Testing included running a custom OS with IPv4 / IPv6 support. Hashing and
+> filtering of packets is tested to work well. Skeleton taken from the
+> CADENCE_GEM IP and hash generation algorithm from the Linux Kernel.
+> 
+> Signed-off-by: Bilal Wasim <bilalwasim676@gmail.com>
+> ---
+>  hw/net/imx_fec.c         | 117 ++++++++++++++++++++++++++++++++++++++-
+>  include/hw/net/imx_fec.h |  12 ++++
+>  2 files changed, 128 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+> index bd99236864..cc1572b5fe 100644
+> --- a/hw/net/imx_fec.c
+> +++ b/hw/net/imx_fec.c
+> @@ -419,6 +419,87 @@ static void imx_enet_write_bd(IMXENETBufDesc *bd, dma_addr_t addr)
+>      dma_memory_write(&address_space_memory, addr, bd, sizeof(*bd));
+>  }
+>  
+> +/*
+> + * Calculate a FEC MAC Address hash index
+> + */
+> +static unsigned calc_mac_hash(const uint8_t *mac, uint8_t mac_length)
+> +{
+> +    uint32_t crc = -1;
+> +    int i;
+> +
+> +    while (mac_length--) {
+> +        crc ^= *mac++;
+> +        for (i = 0; i < 8; i++) {
+> +            crc = (crc >> 1) ^ ((crc & 1) ? CRCPOLY_LE : 0);
+> +        }
+> +    }
+
+Can you not use the existing net_crc32_le() function here?
+
+> +    /*
+> +     * only upper 6 bits (FEC_HASH_BITS) are used
+> +     * which point to specific bit in the hash registers
+> +     */
+> +    return (crc >> (32 - FEC_HASH_BITS)) & 0x3f;
+> +}
+> +
+> +/*
+> + * fec_mac_address_filter:
+> + * Accept or reject this destination address?
+> + */
+> +static int fec_mac_address_filter(IMXFECState *s, const uint8_t *packet)
+> +{
+> +    const uint8_t broadcast_addr[] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+> +    uint32_t addr1, addr2;
+> +    uint8_t  hash;
+> +
+> +    /* Promiscuous mode? */
+> +    if (s->regs[ENET_RCR] & ENET_RCR_PROM) {
+> +        /* Accept all packets in promiscuous mode (even if bc_rej is set). */
+> +        return FEC_RX_PROMISCUOUS_ACCEPT;
+> +    }
+> +
+> +    /* Broadcast packet? */
+> +    if (!memcmp(packet, broadcast_addr, 6)) {
+> +        /* Reject broadcast packets? */
+> +        if (s->regs[ENET_RCR] & ENET_RCR_BC_REJ) {
+> +            return FEC_RX_REJECT;
+> +        }
+> +        /* Accept packets from broadcast address. */
+> +        return FEC_RX_BROADCAST_ACCEPT;
+> +    }
+> +
+> +    /* Accept packets -w- hash match? */
+> +    hash = calc_mac_hash(packet, 6);
+> +
+> +    /* Accept packets -w- multicast hash match? */
+> +    if ((packet[0] & 0x01) == 0x01) {
+> +        /* Computed hash matches GAUR / GALR register ? */
+> +        if (((hash < 32) && (s->regs[ENET_GALR] & (1 << hash)))
+> +                || ((hash > 31) && (s->regs[ENET_GAUR] & (1 << (hash - 32))))) {
+> +            /* Accept multicast hash enabled address. */
+> +            return FEC_RX_MULTICAST_HASH_ACCEPT;
+> +        }
+> +    } else {
+> +        /* Computed hash matches IAUR / IALR register ? */
+> +        if (((hash < 32) && (s->regs[ENET_IALR] & (1 << hash)))
+> +                || ((hash > 31) && (s->regs[ENET_IAUR] & (1 << (hash - 32))))) {
+> +            /* Accept multicast hash enabled address. */
+> +            return FEC_RX_UNICAST_HASH_ACCEPT;
+> +        }
+> +    }
+> +
+> +    /* Match Unicast address. */
+> +    addr1  = g_htonl(s->regs[ENET_PALR]);
+> +    addr2  = g_htonl(s->regs[ENET_PAUR]);
+> +    if (!(memcmp(packet, (uint8_t *) &addr1, 4) ||
+> +          memcmp(packet + 4, (uint8_t *) &addr2, 2))) {
+> +        /* Accept packet because it matches my unicast address. */
+> +        return FEC_RX_UNICAST_ACCEPT;
+> +    }
+> +
+> +    /* Return -1 because we do NOT support MAC address filtering.. */
+> +    return FEC_RX_REJECT;
+> +}
+> +
+>  static void imx_eth_update(IMXFECState *s)
+>  {
+>      /*
+> @@ -984,7 +1065,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
+>      case ENET_IALR:
+>      case ENET_GAUR:
+>      case ENET_GALR:
+> -        /* TODO: implement MAC hash filtering.  */
+> +        s->regs[index] |= value;
+>          break;
+>      case ENET_TFWR:
+>          if (s->is_fec) {
+> @@ -1066,8 +1147,15 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+>      uint32_t buf_addr;
+>      uint8_t *crc_ptr;
+>      unsigned int buf_len;
+> +    int maf;
+>      size_t size = len;
+>  
+> +    /* Is this destination MAC address "for us" ? */
+> +    maf = fec_mac_address_filter(s, buf);
+> +    if (maf == FEC_RX_REJECT) {
+> +        return FEC_RX_REJECT;
+> +    }
+> +
+>      FEC_PRINTF("len %d\n", (int)size);
+>  
+>      if (!s->regs[ENET_RDAR]) {
+> @@ -1133,6 +1221,16 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+>          } else {
+>              s->regs[ENET_EIR] |= ENET_INT_RXB;
+>          }
+> +
+> +        /* Update descriptor based on the "maf" flag. */
+> +        if (maf == FEC_RX_BROADCAST_ACCEPT) {
+> +            /* The packet is destined for the "broadcast" address. */
+> +            bd.flags |= ENET_BD_BC;
+> +        } else if (maf == FEC_RX_MULTICAST_HASH_ACCEPT) {
+> +            /* The packet is destined for a "multicast" address. */
+> +            bd.flags |= ENET_BD_MC;
+> +        }
+> +
+>          imx_fec_write_bd(&bd, addr);
+>          /* Advance to the next descriptor.  */
+>          if ((bd.flags & ENET_BD_W) != 0) {
+> @@ -1159,8 +1257,15 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+>      uint8_t *crc_ptr;
+>      unsigned int buf_len;
+>      size_t size = len;
+> +    int maf;
+>      bool shift16 = s->regs[ENET_RACC] & ENET_RACC_SHIFT16;
+>  
+> +    /* Is this destination MAC address "for us" ? */
+> +    maf = fec_mac_address_filter(s, buf);
+> +    if (maf == FEC_RX_REJECT) {
+> +        return FEC_RX_REJECT;
+> +    }
+> +
+>      FEC_PRINTF("len %d\n", (int)size);
+>  
+>      if (!s->regs[ENET_RDAR]) {
+> @@ -1254,6 +1359,16 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+>                  s->regs[ENET_EIR] |= ENET_INT_RXB;
+>              }
+>          }
+> +
+> +        /* Update descriptor based on the "maf" flag. */
+> +        if (maf == FEC_RX_BROADCAST_ACCEPT) {
+> +            /* The packet is destined for the "broadcast" address. */
+> +            bd.flags |= ENET_BD_BC;
+> +        } else if (maf == FEC_RX_MULTICAST_HASH_ACCEPT) {
+> +            /* The packet is destined for a "multicast" address. */
+> +            bd.flags |= ENET_BD_MC;
+> +        }
+> +
+>          imx_enet_write_bd(&bd, addr);
+>          /* Advance to the next descriptor.  */
+>          if ((bd.flags & ENET_BD_W) != 0) {
+> diff --git a/include/hw/net/imx_fec.h b/include/hw/net/imx_fec.h
+> index 7b3faa4019..d38c8fe0e8 100644
+> --- a/include/hw/net/imx_fec.h
+> +++ b/include/hw/net/imx_fec.h
+> @@ -275,4 +275,16 @@ typedef struct IMXFECState {
+>      uint8_t frame[ENET_MAX_FRAME_SIZE];
+>  } IMXFECState;
+>  
+> +/* FEC address filtering defines. */
+> +#define FEC_RX_REJECT                   (-1)
+> +#define FEC_RX_PROMISCUOUS_ACCEPT       (-2)
+> +#define FEC_RX_BROADCAST_ACCEPT         (-3)
+> +#define FEC_RX_MULTICAST_HASH_ACCEPT    (-4)
+> +#define FEC_RX_UNICAST_HASH_ACCEPT      (-5)
+> +#define FEC_RX_UNICAST_ACCEPT           (-6)
+> +
+> +/* FEC hash filtering defines.*/
+> +#define CRCPOLY_LE                      0xedb88320
+> +#define FEC_HASH_BITS                    6    /* #bits in hash */
+> +
+>  #endif
+
+
+ATB,
+
+Mark.

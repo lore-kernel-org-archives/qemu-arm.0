@@ -1,542 +1,633 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4133578lff;
-        Mon, 9 Dec 2019 01:24:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyizfBWrbMpkswClNW36juih3p+QF6iI0fz4c7fty24jMWvs3qEg7NQ8RiQGcaqR5fYRPHf
-X-Received: by 2002:ac8:323a:: with SMTP id x55mr24596736qta.376.1575883499589;
-        Mon, 09 Dec 2019 01:24:59 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i5si11863011qkg.15.2019.12.09.01.24.59
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Dec 2019 01:24:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4351300lff;
+        Mon, 9 Dec 2019 05:05:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxKdKuzmjAoCIBZcj92xvLRNtPU22Z9hbnaxzorOkgVhZdfVy+NSme6M22uH73Lz1Np9Fcw
+X-Received: by 2002:aca:4b4a:: with SMTP id y71mr911843oia.90.1575896733264;
+        Mon, 09 Dec 2019 05:05:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575896733; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Tlsf66Fg20IKLoD8VGPtY2DScF6qWCnXzXb3Tb7OrJGdBJ8RX4hJ2WvYc4Tk+S73rG
+         ayVxITn1vVOzIuljOw3Ql1JzFl4prlcx3D0yibbfKeqFaoTbsyU075TssovaSdU7OyUT
+         DD3pfod8y4sp9oAxlaN/cGBmpt9LRd3SSHD/xuBbl9JT7u+SB/VNH4JdxKadyRLHbax5
+         EZanbQbCaVQ2FXsY7B7uz+Opr6h7/fW87yFU9+KLgEkX56zue2n+Y2xTGU8QXRJvigek
+         tCdhTLXBOQfZDYnJYumqv/rq8fqq25bz9IYAP7Su90AR1arFirnfOF8Fay986b8yJP1R
+         0k5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Pq1VnlfgzcHCQJUO32Frg0EdLNprnm9eqLtuA42zu7k=;
+        b=BUPnxkKgp8HYdvdiNT74lvXOs0fh9/2gIVWd684Wk+lUp9xswTL+Gr1pXO0tTUwGYV
+         T2spRt7Yj+mo+Zq95itaBirNWqHHnHu4dDqqUlriQe6oa3cAbx9eJnw+bAjde0uzToyX
+         Ero9GbTHTu0itZVFM27qx0CSaLkTEQgNF3cypqWdPYhqIBbDcpXrDGUdkJXzm/Oxe9ea
+         /eL0cUln7cfA5Hm7+h2IqDU3MvATMR/Mo9YRhkoGdlazicc0fDnT9S7xVEsy6hAYkDps
+         aHHgc11k3swRTtMzMACQInx+TNWNXFVCep3xb73O9wYIT2Bzwzrq9hVwaekBK08eE3nA
+         ybdw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=feb5SHfG;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id i17si1021052otl.149.2019.12.09.05.05.33;
+        Mon, 09 Dec 2019 05:05:33 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=OkakVgGa;
-       arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37746 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ieFHm-0001Qg-SG
-	for alex.bennee@linaro.org; Mon, 09 Dec 2019 04:24:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45861)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1ieFGR-0001Ps-EY
- for qemu-devel@nongnu.org; Mon, 09 Dec 2019 04:23:37 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <luc.michel@greensocs.com>) id 1ieFGP-0007XX-C0
- for qemu-devel@nongnu.org; Mon, 09 Dec 2019 04:23:35 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:48406)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
- id 1ieFGK-0007P3-49; Mon, 09 Dec 2019 04:23:28 -0500
-Received: from [172.16.11.100] (tiramisu.bar.greensocs.com [172.16.11.100])
- by beetle.greensocs.com (Postfix) with ESMTPSA id A7BA996EF0;
- Mon,  9 Dec 2019 09:23:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1575883404;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=D4MCkhDmZVnbeV6Br6p29eQegN9pT3eqhuL4ZzCQkJE=;
- b=OkakVgGacl9TlN9zMgXQrknuj36SGrvmPqvU3gsN0ZjPbhIJFVq/dGmFTTxptIW2yaisai
- oWTZHANBLwsaShdfX5AOgAhhT8w4IBh0E4kbQ6YetpBfH41XsWJ2Acq0Bmf/JQsNB9eqnr
- eW/j8J7LOxGEsxNRqQ24O8fGTpukv0U=
-Subject: Re: [PATCH] hw/arm/virt: Simplify by moving the gic in the machine
- state
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20191209090306.20433-1-philmd@redhat.com>
-From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <eb8362dc-a593-a2a6-2318-617e37a20299@greensocs.com>
-Date: Mon, 9 Dec 2019 10:23:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+       dkim=pass header.i=@linaro.org header.s=google header.b=feb5SHfG;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727307AbfLINFc (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Mon, 9 Dec 2019 08:05:32 -0500
+Received: from mail-il1-f195.google.com ([209.85.166.195]:40658 "EHLO
+        mail-il1-f195.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1727038AbfLINFb (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 9 Dec 2019 08:05:31 -0500
+Received: by mail-il1-f195.google.com with SMTP id b15so12625601ila.7
+        for <kvm@vger.kernel.org>; Mon, 09 Dec 2019 05:05:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=Pq1VnlfgzcHCQJUO32Frg0EdLNprnm9eqLtuA42zu7k=;
+        b=feb5SHfGA+O42Pfi3xXO9Rqt5xYzZjznx9mrRC+eUdR2sFjzJRgk6UQfC4n8tb1G7W
+         zO+OYzrw7xC4wXhLbgCq9V4ZJ5XfC92+xl95paRQbBBsbz43qudQl9+BVOKkzW6aQdXI
+         FZbaKxe4igjH0EOSDjaXODalaVs949GmPhs7c53qjjkbPOra0wvHs4ROlevvToLzbxzb
+         e49MJb3Yp7vLNcCNmwfG0Pwdd5Mpfou4XfAYvlw1vgS2s1ok0shCE4PI7p/mZS7hbadp
+         bR2jzT5sjyPssQttlC7kt+g3tb+/DjQouBAjEhALtKNAhrPRlpyAOo+bS19M43MeF+hy
+         hVMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=Pq1VnlfgzcHCQJUO32Frg0EdLNprnm9eqLtuA42zu7k=;
+        b=KZ8H/aH0iZ1Khj73Fit+jdnnDDAGdyU0iJMRic6ism4A3iMliZWvu9YJEGLmfAVKUr
+         Sbz6eN8+O+19rRCuveHHe+PgrWtSNkXxJ+0DgcAKXawp9bnksB/MwCmVcZDrqTX+Zi0o
+         rHdIfDAvRSNTPNCilkgJqXQBncBbpw17TGEpVvyh7Y54FF+XtQ72zqOE2xq/jImwQLL+
+         6zYO13vpiLjswtO/NTuNBqy9/rK+Nf3QKFBRTFOItgeBq9rI0YMr1uD89Dv3gaIy8mi9
+         tJnYgct1/8g5d0isNshn295bCPJEK24qXa0arlzt7i9Ko06G9qbvdiBPFwkMkPsKIZaO
+         FEoA==
+X-Gm-Message-State: APjAAAV428PMmUktRtUrPHwtbtiimeqHITBTXpZb7g6fMwHg0yJiP70K
+        RCSDvQx95h748KtOHJy+aRd/Ky2ocppTsbgIlxpC3w==
+X-Received: by 2002:a92:5b5b:: with SMTP id p88mr9272188ilb.307.1575896730283;
+ Mon, 09 Dec 2019 05:05:30 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191209090306.20433-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-PH
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1575883405;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=D4MCkhDmZVnbeV6Br6p29eQegN9pT3eqhuL4ZzCQkJE=;
- b=GbdlQg1f+6eOYO/d3wF+31JzcteQKuTlUgeQqBFLF/C++uh2N7XftsoUXZ47ndzvO8Jk5n
- Z6Ehpka2aYoN8iDX+Bxk2C4ONnsKxtsAXCLCrfhaeJL01Lin8XNvWCuzca6KRAFa5919U9
- vka3B0sQuDHgX5sZOarQPeJPMYjknps=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1575883405; a=rsa-sha256; cv=none;
- b=dML/jeFP271XmMpPMkXjeAfDrolBzz5vhIQ8/3+w/c02gDuO6+Texy+ObH6DKyVmsHJDbS
- 2+ukNsX2sxRs3xmNBtDgeH8/gOUfvccLTw9LNTgGESb3UE8cv57hru16gKCYnk11h1SbpB
- ldxwNyIqnp9PjnzBPEE2EqGn7v2nmY8=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 5.135.226.135
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: exwNWb4xe+2F
+References: <20191111014048.21296-1-zhengxiang9@huawei.com>
+ <20191111014048.21296-6-zhengxiang9@huawei.com> <CADSWDztF=eaUDNnq8bhnPyTKW1YjAWm4UBaH-NBPkzjnzx0bxg@mail.gmail.com>
+ <238ea7b3-9d6d-e3f7-40c9-e3e62b5fb477@huawei.com>
+In-Reply-To: <238ea7b3-9d6d-e3f7-40c9-e3e62b5fb477@huawei.com>
+From:   Beata Michalska <beata.michalska@linaro.org>
+Date:   Mon, 9 Dec 2019 13:05:19 +0000
+Message-ID: <CADSWDzvFvS6mYiMhXu2J+u+sUxZaKcCE78EuSggv-VOY7zEN_w@mail.gmail.com>
+Subject: Re: [RESEND PATCH v21 5/6] target-arm: kvm64: handle SIGBUS signal
+ from kernel or KVM
+To:     gengdongjiu <gengdongjiu@huawei.com>
+Cc:     Xiang Zheng <zhengxiang9@huawei.com>, pbonzini@redhat.com,
+        mst@redhat.com, Igor Mammedov <imammedo@redhat.com>,
+        shannon.zhaosl@gmail.com, Peter Maydell <peter.maydell@linaro.org>,
+        Laszlo Ersek <lersek@redhat.com>, james.morse@arm.com,
+        mtosatti@redhat.com, rth@twiddle.net, ehabkost@redhat.com,
+        jonathan.cameron@huawei.com, xuwei5@huawei.com,
+        kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+        linuxarm@huawei.com, wanghaibin.wang@huawei.com
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 6YH8p9EhCCoT
 
-On 12/9/19 10:03 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Make the gic a field in the machine state, and instead of filling
-> an array of qemu_irq and passing it around, directly call
-> qdev_get_gpio_in() on the gic field.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On Sat, 7 Dec 2019 at 09:33, gengdongjiu <gengdongjiu@huawei.com> wrote:
+>
+>
+>
+> On 2019/11/22 23:47, Beata Michalska wrote:
+> > Hi,
+> >
+> > On Mon, 11 Nov 2019 at 01:48, Xiang Zheng <zhengxiang9@huawei.com> wrote:
+> >>
+> >> From: Dongjiu Geng <gengdongjiu@huawei.com>
+> >>
+> >> Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+> >> translates the host VA delivered by host to guest PA, then fills this PA
+> >> to guest APEI GHES memory, then notifies guest according to the SIGBUS
+> >> type.
+> >>
+> >> When guest accesses the poisoned memory, it will generate a Synchronous
+> >> External Abort(SEA). Then host kernel gets an APEI notification and calls
+> >> memory_failure() to unmapped the affected page in stage 2, finally
+> >> returns to guest.
+> >>
+> >> Guest continues to access the PG_hwpoison page, it will trap to KVM as
+> >> stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
+> >> Qemu, Qemu records this error address into guest APEI GHES memory and
+> >> notifes guest using Synchronous-External-Abort(SEA).
+> >>
+> >> In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
+> >> in which we can setup the type of exception and the syndrome information.
+> >> When switching to guest, the target vcpu will jump to the synchronous
+> >> external abort vector table entry.
+> >>
+> >> The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
+> >> ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
+> >> not valid and hold an UNKNOWN value. These values will be set to KVM
+> >> register structures through KVM_SET_ONE_REG IOCTL.
+> >>
+> >> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> >> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> >> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> >> ---
+> >>  hw/acpi/acpi_ghes.c         | 297 ++++++++++++++++++++++++++++++++++++
+> >>  include/hw/acpi/acpi_ghes.h |   4 +
+> >>  include/sysemu/kvm.h        |   3 +-
+> >>  target/arm/cpu.h            |   4 +
+> >>  target/arm/helper.c         |   2 +-
+> >>  target/arm/internals.h      |   5 +-
+> >>  target/arm/kvm64.c          |  64 ++++++++
+> >>  target/arm/tlb_helper.c     |   2 +-
+> >>  target/i386/cpu.h           |   2 +
+> >>  9 files changed, 377 insertions(+), 6 deletions(-)
+> >>
+> >> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
+> >> index 42c00ff3d3..f5b54990c0 100644
+> >> --- a/hw/acpi/acpi_ghes.c
+> >> +++ b/hw/acpi/acpi_ghes.c
+> >> @@ -39,6 +39,34 @@
+> >>  /* The max size in bytes for one error block */
+> >>  #define ACPI_GHES_MAX_RAW_DATA_LENGTH       0x1000
+> >>
+> >> +/*
+> >> + * The total size of Generic Error Data Entry
+> >> + * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
+> >> + * Table 18-343 Generic Error Data Entry
+> >> + */
+> >> +#define ACPI_GHES_DATA_LENGTH               72
+> >> +
+> >> +/*
+> >> + * The memory section CPER size,
+> >> + * UEFI 2.6: N.2.5 Memory Error Section
+> >> + */
+> >> +#define ACPI_GHES_MEM_CPER_LENGTH           80
+> >> +
+> >> +/*
+> >> + * Masks for block_status flags
+> >> + */
+> >> +#define ACPI_GEBS_UNCORRECTABLE         1
+> >
+> > Why not listing all supported statuses ? Similar to error severity below ?
+> >
+> >> +
+> >> +/*
+> >> + * Values for error_severity field
+> >> + */
+> >> +enum AcpiGenericErrorSeverity {
+> >> +    ACPI_CPER_SEV_RECOVERABLE,
+> >> +    ACPI_CPER_SEV_FATAL,
+> >> +    ACPI_CPER_SEV_CORRECTED,
+> >> +    ACPI_CPER_SEV_NONE,
+> >> +};
+> >> +
+> >>  /*
+> >>   * Now only support ARMv8 SEA notification type error source
+> >>   */
+> >> @@ -49,6 +77,16 @@
+> >>   */
+> >>  #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
+> >>
+> >> +#define UUID_BE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)        \
+> >> +    {{{ ((a) >> 24) & 0xff, ((a) >> 16) & 0xff, ((a) >> 8) & 0xff, (a) & 0xff, \
+> >> +    ((b) >> 8) & 0xff, (b) & 0xff,                   \
+> >> +    ((c) >> 8) & 0xff, (c) & 0xff,                    \
+> >> +    (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) } } }
+> >> +
+> >> +#define UEFI_CPER_SEC_PLATFORM_MEM                   \
+> >> +    UUID_BE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+> >> +    0xED, 0x7C, 0x83, 0xB1)
+> >> +
+> >>  /*
+> >>   * | +--------------------------+ 0
+> >>   * | |        Header            |
+> >> @@ -77,6 +115,174 @@ typedef struct AcpiGhesState {
+> >>      uint64_t ghes_addr_le;
+> >>  } AcpiGhesState;
+> >>
+> >> +/*
+> >> + * Total size for Generic Error Status Block
+> >> + * ACPI 6.2: 18.3.2.7.1 Generic Error Data,
+> >> + * Table 18-380 Generic Error Status Block
+> >> + */
+> >> +#define ACPI_GHES_GESB_SIZE                 20
+> >
+> > Minor: This is not entirely correct: GEDE is part of GESB so the total length
+> > would be ACPI_GHES_GESB_SIZE + n* sizeof(GEDE)
+> yes, the comments needs to correct.
+>
+> >
+> >> +/* The offset of Data Length in Generic Error Status Block */
+> >> +#define ACPI_GHES_GESB_DATA_LENGTH_OFFSET   12
+> >> +
+> >
+> > If those were nicely represented as structures you get the offsets easily
+> > without having number of defines. That could simplify the code and make it
+> > more readable - see comments below
+> >
+> >> +/*
+> >> + * Record the value of data length for each error status block to avoid getting
+> >> + * this value from guest.
+> >> + */
+> >> +static uint32_t acpi_ghes_data_length[ACPI_GHES_ERROR_SOURCE_COUNT];
+> >> +
+> >> +/*
+> >> + * Generic Error Data Entry
+> >> + * ACPI 6.1: 18.3.2.7.1 Generic Error Data
+> >> + */
+> >> +static void acpi_ghes_generic_error_data(GArray *table, QemuUUID section_type,
+> >> +                uint32_t error_severity, uint16_t revision,
+> >> +                uint8_t validation_bits, uint8_t flags,
+> >> +                uint32_t error_data_length, QemuUUID fru_id,
+> >> +                uint8_t *fru_text, uint64_t time_stamp)
+> >
+> > Why not just defining a struct that represents the GED entry?
+>
+> This is due to address Igor's comments. there are two reasons:
+> 1. avoid define many structures about APEI/GHES/CPER, so you can see it has very little structures definition in acpi_ghes.h
+> 2. using build_append_int_noprefix() to compose the table can avoid considering endian
+>
+> >
+> >> +{
+> >> +    QemuUUID uuid_le;
+> >> +
+> >> +    /* Section Type */
+> >> +    uuid_le = qemu_uuid_bswap(section_type);
+> >> +    g_array_append_vals(table, uuid_le.data, ARRAY_SIZE(uuid_le.data));
+> >> +
+> >> +    /* Error Severity */
+> >> +    build_append_int_noprefix(table, error_severity, 4);
+> >> +    /* Revision */
+> >> +    build_append_int_noprefix(table, revision, 2);
+> >
+> > Minor: According to the spec it seems that the revision number is
+> > a fixed value so you could drop that from the parameters....
+> > or ... use a struct to represent the data
+> >
+> >> +    /* Validation Bits */
+> >> +    build_append_int_noprefix(table, validation_bits, 1);
+> >> +    /* Flags */
+> >> +    build_append_int_noprefix(table, flags, 1);
+> >> +    /* Error Data Length */
+> >> +    build_append_int_noprefix(table, error_data_length, 4);
+> >> +
+> >> +    /* FRU Id */
+> >> +    uuid_le = qemu_uuid_bswap(fru_id);
+> >> +    g_array_append_vals(table, uuid_le.data, ARRAY_SIZE(uuid_le.data));
+> >> +
+> >> +    /* FRU Text */
+> >> +    g_array_append_vals(table, fru_text, 20);
+> >> +    /* Timestamp */
+> >> +    build_append_int_noprefix(table, time_stamp, 8);
+> >> +}
+> >> +
+> >> +/*
+> >> + * Generic Error Status Block
+> >> + * ACPI 6.1: 18.3.2.7.1 Generic Error Data
+> >> + */
+> >> +static void acpi_ghes_generic_error_status(GArray *table, uint32_t block_status,
+> >> +                uint32_t raw_data_offset, uint32_t raw_data_length,
+> >> +                uint32_t data_length, uint32_t error_severity)
+> >
+> > Same as the above
+> >
+> >> +{
+> >> +    /* Block Status */
+> >> +    build_append_int_noprefix(table, block_status, 4);
+> >> +    /* Raw Data Offset */
+> >> +    build_append_int_noprefix(table, raw_data_offset, 4);
+> >> +    /* Raw Data Length */
+> >> +    build_append_int_noprefix(table, raw_data_length, 4);
+> >> +    /* Data Length */
+> >> +    build_append_int_noprefix(table, data_length, 4);
+> >> +    /* Error Severity */
+> >> +    build_append_int_noprefix(table, error_severity, 4);
+> >> +}
+> >> +
+> >> +/* UEFI 2.6: N.2.5 Memory Error Section */
+> >> +static void acpi_ghes_build_append_mem_cper(GArray *table,
+> >> +                                            uint64_t error_physical_addr)
+> >> +{
+> >> +    /*
+> >> +     * Memory Error Record
+> >> +     */
+> >> +
+> >> +    /* Validation Bits */
+> >> +    build_append_int_noprefix(table,
+> >> +                              (1UL << 14) | /* Type Valid */
+> >> +                              (1UL << 1) /* Physical Address Valid */,
+> >> +                              8);
+> >> +    /* Error Status */
+> >> +    build_append_int_noprefix(table, 0, 8);
+> >
+> > Just wondering whether it would be worth to specify the Error Type
+> > through the Error Status ?
+> >
+> >> +    /* Physical Address */
+> >> +    build_append_int_noprefix(table, error_physical_addr, 8);
+> >> +    /* Skip all the detailed information normally found in such a record */
+> >> +    build_append_int_noprefix(table, 0, 48);
+> >> +    /* Memory Error Type */
+> >> +    build_append_int_noprefix(table, 0 /* Unknown error */, 1);
+> >> +    /* Skip all the detailed information normally found in such a record */
+> >> +    build_append_int_noprefix(table, 0, 7);
+> >> +}
+> >> +
+> >> +static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+> >> +                                      uint64_t error_physical_addr,
+> >> +                                      uint32_t data_length)
+> >> +{
+> >> +    GArray *block;
+> >> +    uint64_t current_block_length;
+> >> +    /* Memory Error Section Type */
+> >> +    QemuUUID mem_section_id_le = UEFI_CPER_SEC_PLATFORM_MEM;
+> >
+> > As already mentioned - mixing LE /w BE
+> >
+> >> +    QemuUUID fru_id = {};
+> >> +    uint8_t fru_text[20] = {};
+> >> +
+> >> +    /*
+> >> +     * Generic Error Status Block
+> >> +     * | +---------------------+
+> >> +     * | |     block_status    |
+> >> +     * | +---------------------+
+> >> +     * | |    raw_data_offset  |
+> >> +     * | +---------------------+
+> >> +     * | |    raw_data_length  |
+> >> +     * | +---------------------+
+> >> +     * | |     data_length     |
+> >> +     * | +---------------------+
+> >> +     * | |   error_severity    |
+> >> +     * | +---------------------+
+> >> +     */
+> >> +    block = g_array_new(false, true /* clear */, 1);
+> >> +
+> >> +    /* The current whole length of the generic error status block */
+> >> +    current_block_length = ACPI_GHES_GESB_SIZE + data_length;
+> >> +
+> >> +    /* This is the length if adding a new generic error data entry*/
+> >> +    data_length += ACPI_GHES_DATA_LENGTH;
+> >> +    data_length += ACPI_GHES_MEM_CPER_LENGTH;
+> >> +
+> >> +    /*
+> >> +     * Check whether it will run out of the preallocated memory if adding a new
+> >> +     * generic error data entry
+> >> +     */
+> >> +    if ((data_length + ACPI_GHES_GESB_SIZE) > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
+> >> +        error_report("Record CPER out of boundary!!!");
+> >
+> > Minor: The error message could be made more accurate, like:
+> >     "Not enough memory to record new CPER"
+> >
+> >> +        return ACPI_GHES_CPER_FAIL;
+> >> +    }
+> >> +
+> >> +    /* Build the new generic error status block header */
+> >> +    acpi_ghes_generic_error_status(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE),
+> >> +        0, 0, cpu_to_le32(data_length), cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
+> >> +
+> >> +    /* Write back above generic error status block header to guest memory */
+> >> +    cpu_physical_memory_write(error_block_address, block->data,
+> >> +                              block->len);
+> >> +
+> >> +    /* Add a new generic error data entry */
+> >> +
+> >> +    data_length = block->len;
+> >> +    /* Build this new generic error data entry header */
+> >> +    acpi_ghes_generic_error_data(block, mem_section_id_le,
+> >> +        cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300), 0, 0,
+> >> +        cpu_to_le32(ACPI_GHES_MEM_CPER_LENGTH), fru_id, fru_text, 0);
+> >> +
+> >> +    /* Build the memory section CPER for above new generic error data entry */
+> >> +    acpi_ghes_build_append_mem_cper(block, error_physical_addr);
+> >> +
+> >> +    /* Write back above this new generic error data entry to guest memory */
+> >> +    cpu_physical_memory_write(error_block_address + current_block_length,
+> >> +        block->data + data_length, block->len - data_length);
+> >> +
+> >
+> > As already mentioned and unless I have missed smth (which is highly possible)
+> > this will append new records while the GESB is kept 'in-place'. So the
+> > used space is
+> > only growing.
+> >
+> >> +    g_array_free(block, true);
+> >> +
+> >> +    return ACPI_GHES_CPER_OK;
+> >> +}
+> >> +
+> >>  /*
+> >>   * Hardware Error Notification
+> >>   * ACPI 4.0: 17.3.2.7 Hardware Error Notification
+> >> @@ -265,3 +471,94 @@ void acpi_ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
+> >>      fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
+> >>          NULL, &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
+> >>  }
+> >> +
+> >> +bool acpi_ghes_record_errors(uint32_t notify, uint64_t physical_address)
+> >> +{
+> >> +    uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
+> >> +    int loop = 0;
+> >> +    uint64_t start_addr = le64_to_cpu(ges.ghes_addr_le);
+> >> +    bool ret = ACPI_GHES_CPER_FAIL;
+> >> +    uint8_t source_id;
+> >> +    const uint8_t error_source_id[] = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> >> +                                        0xff, 0xff,    0, 0xff, 0xff, 0xff};
+> >> +
+> >
+> > I'm not entirely sure why this is needed - se below
+> >
+> >> +    /*
+> >> +     * | +---------------------+ ges.ghes_addr_le
+> >> +     * | |error_block_address0 |
+> >> +     * | +---------------------+ --+--
+> >> +     * | |    .............    | ACPI_GHES_ADDRESS_SIZE
+> >> +     * | +---------------------+ --+--
+> >> +     * | |error_block_addressN |
+> >> +     * | +---------------------+
+> >> +     * | | read_ack_register0  |
+> >> +     * | +---------------------+ --+--
+> >> +     * | |   .............     | ACPI_GHES_ADDRESS_SIZE
+> >> +     * | +---------------------+ --+--
+> >> +     * | | read_ack_registerN  |
+> >> +     * | +---------------------+ --+--
+> >> +     * | |      CPER           |   |
+> >> +     * | |      ....           | ACPI_GHES_MAX_RAW_DATA_LENGT
+> >> +     * | |      CPER           |   |
+> >> +     * | +---------------------+ --+--
+> >> +     * | |    ..........       |
+> >> +     * | +---------------------+
+> >> +     * | |      CPER           |
+> >> +     * | |      ....           |
+> >> +     * | |      CPER           |
+> >> +     * | +---------------------+
+> >> +     */
+> >> +    if (physical_address && notify < ACPI_GHES_NOTIFY_RESERVED) {
+> >> +        /* Find and check the source id for this new CPER */
+> >> +        source_id = error_source_id[notify];
+> >
+> > Why not using switch case for supported source types ?
+> > For the time being only one is being supported. And you only use that to
+> > verify that support - seems a bit unnecessary.
+>
+> Afterwards May be we will many source types to support, so Igor's suggestion is better as shown below.
+>
+> static const uint8_t ghes_notify2source_id_map[] = {
+>     ACPI_HEST_SRC_ID_SEA,
+>     ACPI_HEST_SRC_ID_RESERVED
+> }
+>
+>
+> >
+> >> +        if (source_id != 0xff) {
+> >> +            start_addr += source_id * ACPI_GHES_ADDRESS_SIZE;
+> >> +        } else {
+> >> +            goto out;
+> >> +        }
+> >> +
+> [...]
+> >>
+> >> +/* Callers must hold the iothread mutex lock */
+> >> +static void kvm_inject_arm_sea(CPUState *c)
+> >
+> > We could enclose this function along with the kvm_arch_on_sigbus_vcpu
+> > within ifdef switch for KVM_HAVE_MCE_INJECTION
+> >
+> >> +{
+> >> +    ARMCPU *cpu = ARM_CPU(c);
+> >> +    CPUARMState *env = &cpu->env;
+> >> +    CPUClass *cc = CPU_GET_CLASS(c);
+> >> +    uint32_t esr;
+> >> +    bool same_el;
+> >> +
+> >> +    c->exception_index = EXCP_DATA_ABORT;
+> >> +    env->exception.target_el = 1;
+> >> +
+> >> +    /*
+> >> +     * Set the DFSC to synchronous external abort and set FnV to not valid,
+> >> +     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
+> >> +     */
+> >> +    same_el = arm_current_el(env) == env->exception.target_el;
+> >> +    esr = syn_data_abort_no_iss(same_el, 1, 0, 0, 0, 0, 0x10);
+> >
+> > IINM this is the only use case when FnV is considered to be valid
+> > so I'm not convinced it is worth to modify the syn_data_abort_no_iss
+> > just for this.
+>
+> Here we set the FnV to not valid, not to set it to valid.
+> because Guest will use the physical address that recorded in APEI table.
+>
+To be precise : the FnV is  giving the status of FAR - so what you are setting
+here is status of 0b0 which means FAR is valid, not FnV on it's own.
+And my point was that you are changing the prototype for syn_data_abort_no_iss
+just for this case only so I was just thinking that it might not be
+worth that, instead
+you could just set it here ... or to be more flexible , provide a way
+to set specific bits
+on demand.
 
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
-> ---
->  include/hw/arm/virt.h |   1 +
->  hw/arm/virt.c         | 109 +++++++++++++++++++++---------------------
->  2 files changed, 55 insertions(+), 55 deletions(-)
->=20
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 0b41083e9d..38f0c33c77 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -136,6 +136,7 @@ typedef struct {
->      uint32_t iommu_phandle;
->      int psci_conduit;
->      hwaddr highest_gpa;
-> +    DeviceState *gic;
->      DeviceState *acpi_dev;
->      Notifier powerdown_notifier;
->  } VirtMachineState;
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index d4bedc2607..67d031c051 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -531,7 +531,7 @@ static void fdt_add_pmu_nodes(const VirtMachineStat=
-e *vms)
->      }
->  }
-> =20
-> -static inline DeviceState *create_acpi_ged(VirtMachineState *vms, qemu=
-_irq *pic)
-> +static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
->  {
->      DeviceState *dev;
->      MachineState *ms =3D MACHINE(vms);
-> @@ -547,14 +547,14 @@ static inline DeviceState *create_acpi_ged(VirtMa=
-chineState *vms, qemu_irq *pic)
-> =20
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED]=
-.base);
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1, vms->memmap[VIRT_PCDIMM_AC=
-PI].base);
-> -    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(vms->g=
-ic, irq));
-> =20
->      qdev_init_nofail(dev);
-> =20
->      return dev;
->  }
-> =20
-> -static void create_its(VirtMachineState *vms, DeviceState *gicdev)
-> +static void create_its(VirtMachineState *vms)
->  {
->      const char *itsclass =3D its_class_name();
->      DeviceState *dev;
-> @@ -566,7 +566,7 @@ static void create_its(VirtMachineState *vms, Devic=
-eState *gicdev)
-> =20
->      dev =3D qdev_create(NULL, itsclass);
-> =20
-> -    object_property_set_link(OBJECT(dev), OBJECT(gicdev), "parent-gicv=
-3",
-> +    object_property_set_link(OBJECT(dev), OBJECT(vms->gic), "parent-gi=
-cv3",
->                               &error_abort);
->      qdev_init_nofail(dev);
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_GIC_ITS].=
-base);
-> @@ -574,7 +574,7 @@ static void create_its(VirtMachineState *vms, Devic=
-eState *gicdev)
->      fdt_add_its_gic_node(vms);
->  }
-> =20
-> -static void create_v2m(VirtMachineState *vms, qemu_irq *pic)
-> +static void create_v2m(VirtMachineState *vms)
->  {
->      int i;
->      int irq =3D vms->irqmap[VIRT_GIC_V2M];
-> @@ -587,17 +587,17 @@ static void create_v2m(VirtMachineState *vms, qem=
-u_irq *pic)
->      qdev_init_nofail(dev);
-> =20
->      for (i =3D 0; i < NUM_GICV2M_SPIS; i++) {
-> -        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-> +                           qdev_get_gpio_in(vms->gic, irq + i));
->      }
-> =20
->      fdt_add_v2m_gic_node(vms);
->  }
-> =20
-> -static void create_gic(VirtMachineState *vms, qemu_irq *pic)
-> +static void create_gic(VirtMachineState *vms)
->  {
->      MachineState *ms =3D MACHINE(vms);
->      /* We create a standalone GIC */
-> -    DeviceState *gicdev;
->      SysBusDevice *gicbusdev;
->      const char *gictype;
->      int type =3D vms->gic_version, i;
-> @@ -606,15 +606,15 @@ static void create_gic(VirtMachineState *vms, qem=
-u_irq *pic)
-> =20
->      gictype =3D (type =3D=3D 3) ? gicv3_class_name() : gic_class_name(=
-);
-> =20
-> -    gicdev =3D qdev_create(NULL, gictype);
-> -    qdev_prop_set_uint32(gicdev, "revision", type);
-> -    qdev_prop_set_uint32(gicdev, "num-cpu", smp_cpus);
-> +    vms->gic =3D qdev_create(NULL, gictype);
-> +    qdev_prop_set_uint32(vms->gic, "revision", type);
-> +    qdev_prop_set_uint32(vms->gic, "num-cpu", smp_cpus);
->      /* Note that the num-irq property counts both internal and externa=
-l
->       * interrupts; there are always 32 of the former (mandated by GIC =
-spec).
->       */
-> -    qdev_prop_set_uint32(gicdev, "num-irq", NUM_IRQS + 32);
-> +    qdev_prop_set_uint32(vms->gic, "num-irq", NUM_IRQS + 32);
->      if (!kvm_irqchip_in_kernel()) {
-> -        qdev_prop_set_bit(gicdev, "has-security-extensions", vms->secu=
-re);
-> +        qdev_prop_set_bit(vms->gic, "has-security-extensions", vms->se=
-cure);
->      }
-> =20
->      if (type =3D=3D 3) {
-> @@ -624,25 +624,25 @@ static void create_gic(VirtMachineState *vms, qem=
-u_irq *pic)
-> =20
->          nb_redist_regions =3D virt_gicv3_redist_region_count(vms);
-> =20
-> -        qdev_prop_set_uint32(gicdev, "len-redist-region-count",
-> +        qdev_prop_set_uint32(vms->gic, "len-redist-region-count",
->                               nb_redist_regions);
-> -        qdev_prop_set_uint32(gicdev, "redist-region-count[0]", redist0=
-_count);
-> +        qdev_prop_set_uint32(vms->gic, "redist-region-count[0]", redis=
-t0_count);
-> =20
->          if (nb_redist_regions =3D=3D 2) {
->              uint32_t redist1_capacity =3D
->                      vms->memmap[VIRT_HIGH_GIC_REDIST2].size / GICV3_RE=
-DIST_SIZE;
-> =20
-> -            qdev_prop_set_uint32(gicdev, "redist-region-count[1]",
-> +            qdev_prop_set_uint32(vms->gic, "redist-region-count[1]",
->                  MIN(smp_cpus - redist0_count, redist1_capacity));
->          }
->      } else {
->          if (!kvm_irqchip_in_kernel()) {
-> -            qdev_prop_set_bit(gicdev, "has-virtualization-extensions",
-> +            qdev_prop_set_bit(vms->gic, "has-virtualization-extensions=
-",
->                                vms->virt);
->          }
->      }
-> -    qdev_init_nofail(gicdev);
-> -    gicbusdev =3D SYS_BUS_DEVICE(gicdev);
-> +    qdev_init_nofail(vms->gic);
-> +    gicbusdev =3D SYS_BUS_DEVICE(vms->gic);
->      sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
->      if (type =3D=3D 3) {
->          sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_REDIST].bas=
-e);
-> @@ -678,23 +678,23 @@ static void create_gic(VirtMachineState *vms, qem=
-u_irq *pic)
-> =20
->          for (irq =3D 0; irq < ARRAY_SIZE(timer_irq); irq++) {
->              qdev_connect_gpio_out(cpudev, irq,
-> -                                  qdev_get_gpio_in(gicdev,
-> +                                  qdev_get_gpio_in(vms->gic,
->                                                     ppibase + timer_irq=
-[irq]));
->          }
-> =20
->          if (type =3D=3D 3) {
-> -            qemu_irq irq =3D qdev_get_gpio_in(gicdev,
-> +            qemu_irq irq =3D qdev_get_gpio_in(vms->gic,
->                                              ppibase + ARCH_GIC_MAINT_I=
-RQ);
->              qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-int=
-errupt",
->                                          0, irq);
->          } else if (vms->virt) {
-> -            qemu_irq irq =3D qdev_get_gpio_in(gicdev,
-> +            qemu_irq irq =3D qdev_get_gpio_in(vms->gic,
->                                              ppibase + ARCH_GIC_MAINT_I=
-RQ);
->              sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus, irq);
->          }
-> =20
->          qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
-> -                                    qdev_get_gpio_in(gicdev, ppibase
-> +                                    qdev_get_gpio_in(vms->gic, ppibase
->                                                       + VIRTUAL_PMU_IRQ=
-));
-> =20
->          sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_=
-CPU_IRQ));
-> @@ -706,20 +706,16 @@ static void create_gic(VirtMachineState *vms, qem=
-u_irq *pic)
->                             qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
->      }
-> =20
-> -    for (i =3D 0; i < NUM_IRQS; i++) {
-> -        pic[i] =3D qdev_get_gpio_in(gicdev, i);
-> -    }
-> -
->      fdt_add_gic_node(vms);
-> =20
->      if (type =3D=3D 3 && vms->its) {
-> -        create_its(vms, gicdev);
-> +        create_its(vms);
->      } else if (type =3D=3D 2) {
-> -        create_v2m(vms, pic);
-> +        create_v2m(vms);
->      }
->  }
-> =20
-> -static void create_uart(const VirtMachineState *vms, qemu_irq *pic, in=
-t uart,
-> +static void create_uart(const VirtMachineState *vms, int uart,
->                          MemoryRegion *mem, Chardev *chr)
->  {
->      char *nodename;
-> @@ -735,7 +731,7 @@ static void create_uart(const VirtMachineState *vms=
-, qemu_irq *pic, int uart,
->      qdev_init_nofail(dev);
->      memory_region_add_subregion(mem, base,
->                                  sysbus_mmio_get_region(s, 0));
-> -    sysbus_connect_irq(s, 0, pic[irq]);
-> +    sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
-> =20
->      nodename =3D g_strdup_printf("/pl011@%" PRIx64, base);
->      qemu_fdt_add_subnode(vms->fdt, nodename);
-> @@ -767,7 +763,7 @@ static void create_uart(const VirtMachineState *vms=
-, qemu_irq *pic, int uart,
->      g_free(nodename);
->  }
-> =20
-> -static void create_rtc(const VirtMachineState *vms, qemu_irq *pic)
-> +static void create_rtc(const VirtMachineState *vms)
->  {
->      char *nodename;
->      hwaddr base =3D vms->memmap[VIRT_RTC].base;
-> @@ -775,7 +771,7 @@ static void create_rtc(const VirtMachineState *vms,=
- qemu_irq *pic)
->      int irq =3D vms->irqmap[VIRT_RTC];
->      const char compat[] =3D "arm,pl031\0arm,primecell";
-> =20
-> -    sysbus_create_simple("pl031", base, pic[irq]);
-> +    sysbus_create_simple("pl031", base, qdev_get_gpio_in(vms->gic, irq=
-));
-> =20
->      nodename =3D g_strdup_printf("/pl031@%" PRIx64, base);
->      qemu_fdt_add_subnode(vms->fdt, nodename);
-> @@ -803,7 +799,7 @@ static void virt_powerdown_req(Notifier *n, void *o=
-paque)
->      }
->  }
-> =20
-> -static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
-> +static void create_gpio(const VirtMachineState *vms)
->  {
->      char *nodename;
->      DeviceState *pl061_dev;
-> @@ -812,7 +808,8 @@ static void create_gpio(const VirtMachineState *vms=
-, qemu_irq *pic)
->      int irq =3D vms->irqmap[VIRT_GPIO];
->      const char compat[] =3D "arm,pl061\0arm,primecell";
-> =20
-> -    pl061_dev =3D sysbus_create_simple("pl061", base, pic[irq]);
-> +    pl061_dev =3D sysbus_create_simple("pl061", base,
-> +                                     qdev_get_gpio_in(vms->gic, irq));
-> =20
->      uint32_t phandle =3D qemu_fdt_alloc_phandle(vms->fdt);
->      nodename =3D g_strdup_printf("/pl061@%" PRIx64, base);
-> @@ -846,7 +843,7 @@ static void create_gpio(const VirtMachineState *vms=
-, qemu_irq *pic)
->      g_free(nodename);
->  }
-> =20
-> -static void create_virtio_devices(const VirtMachineState *vms, qemu_ir=
-q *pic)
-> +static void create_virtio_devices(const VirtMachineState *vms)
->  {
->      int i;
->      hwaddr size =3D vms->memmap[VIRT_MMIO].size;
-> @@ -882,7 +879,8 @@ static void create_virtio_devices(const VirtMachine=
-State *vms, qemu_irq *pic)
->          int irq =3D vms->irqmap[VIRT_MMIO] + i;
->          hwaddr base =3D vms->memmap[VIRT_MMIO].base + i * size;
-> =20
-> -        sysbus_create_simple("virtio-mmio", base, pic[irq]);
-> +        sysbus_create_simple("virtio-mmio", base,
-> +                             qdev_get_gpio_in(vms->gic, irq));
->      }
-> =20
->      /* We add dtb nodes in reverse order so that they appear in the fi=
-nished
-> @@ -1131,7 +1129,7 @@ static void create_pcie_irq_map(const VirtMachine=
-State *vms,
->                             0x7           /* PCI irq */);
->  }
-> =20
-> -static void create_smmu(const VirtMachineState *vms, qemu_irq *pic,
-> +static void create_smmu(const VirtMachineState *vms,
->                          PCIBus *bus)
->  {
->      char *node;
-> @@ -1154,7 +1152,8 @@ static void create_smmu(const VirtMachineState *v=
-ms, qemu_irq *pic,
->      qdev_init_nofail(dev);
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
->      for (i =3D 0; i < NUM_SMMU_IRQS; i++) {
-> -        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-> +                           qdev_get_gpio_in(vms->gic, irq + i));
->      }
-> =20
->      node =3D g_strdup_printf("/smmuv3@%" PRIx64, base);
-> @@ -1181,7 +1180,7 @@ static void create_smmu(const VirtMachineState *v=
-ms, qemu_irq *pic,
->      g_free(node);
->  }
-> =20
-> -static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
-> +static void create_pcie(VirtMachineState *vms)
->  {
->      hwaddr base_mmio =3D vms->memmap[VIRT_PCIE_MMIO].base;
->      hwaddr size_mmio =3D vms->memmap[VIRT_PCIE_MMIO].size;
-> @@ -1241,7 +1240,8 @@ static void create_pcie(VirtMachineState *vms, qe=
-mu_irq *pic)
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
-> =20
->      for (i =3D 0; i < GPEX_NUM_IRQS; i++) {
-> -        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-> +                           qdev_get_gpio_in(vms->gic, irq + i));
->          gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
->      }
-> =20
-> @@ -1301,7 +1301,7 @@ static void create_pcie(VirtMachineState *vms, qe=
-mu_irq *pic)
->      if (vms->iommu) {
->          vms->iommu_phandle =3D qemu_fdt_alloc_phandle(vms->fdt);
-> =20
-> -        create_smmu(vms, pic, pci->bus);
-> +        create_smmu(vms, pci->bus);
-> =20
->          qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
->                                 0x0, vms->iommu_phandle, 0x0, 0x10000);
-> @@ -1310,7 +1310,7 @@ static void create_pcie(VirtMachineState *vms, qe=
-mu_irq *pic)
->      g_free(nodename);
->  }
-> =20
-> -static void create_platform_bus(VirtMachineState *vms, qemu_irq *pic)
-> +static void create_platform_bus(VirtMachineState *vms)
->  {
->      DeviceState *dev;
->      SysBusDevice *s;
-> @@ -1326,8 +1326,8 @@ static void create_platform_bus(VirtMachineState =
-*vms, qemu_irq *pic)
-> =20
->      s =3D SYS_BUS_DEVICE(dev);
->      for (i =3D 0; i < PLATFORM_BUS_NUM_IRQS; i++) {
-> -        int irqn =3D vms->irqmap[VIRT_PLATFORM_BUS] + i;
-> -        sysbus_connect_irq(s, i, pic[irqn]);
-> +        int irq =3D vms->irqmap[VIRT_PLATFORM_BUS] + i;
-> +        sysbus_connect_irq(s, i, qdev_get_gpio_in(vms->gic, irq));
->      }
-> =20
->      memory_region_add_subregion(sysmem,
-> @@ -1509,7 +1509,6 @@ static void machvirt_init(MachineState *machine)
->      VirtMachineClass *vmc =3D VIRT_MACHINE_GET_CLASS(machine);
->      MachineClass *mc =3D MACHINE_GET_CLASS(machine);
->      const CPUArchIdList *possible_cpus;
-> -    qemu_irq pic[NUM_IRQS];
->      MemoryRegion *sysmem =3D get_system_memory();
->      MemoryRegion *secure_sysmem =3D NULL;
->      int n, virt_max_cpus;
-> @@ -1712,27 +1711,27 @@ static void machvirt_init(MachineState *machine=
-)
-> =20
->      virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
-> =20
-> -    create_gic(vms, pic);
-> +    create_gic(vms);
-> =20
->      fdt_add_pmu_nodes(vms);
-> =20
-> -    create_uart(vms, pic, VIRT_UART, sysmem, serial_hd(0));
-> +    create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
-> =20
->      if (vms->secure) {
->          create_secure_ram(vms, secure_sysmem);
-> -        create_uart(vms, pic, VIRT_SECURE_UART, secure_sysmem, serial_=
-hd(1));
-> +        create_uart(vms, VIRT_SECURE_UART, secure_sysmem, serial_hd(1)=
-);
->      }
-> =20
->      vms->highmem_ecam &=3D vms->highmem && (!firmware_loaded || aarch6=
-4);
-> =20
-> -    create_rtc(vms, pic);
-> +    create_rtc(vms);
-> =20
-> -    create_pcie(vms, pic);
-> +    create_pcie(vms);
-> =20
->      if (has_ged && aarch64 && firmware_loaded && acpi_enabled) {
-> -        vms->acpi_dev =3D create_acpi_ged(vms, pic);
-> +        vms->acpi_dev =3D create_acpi_ged(vms);
->      } else {
-> -        create_gpio(vms, pic);
-> +        create_gpio(vms);
->      }
-> =20
->       /* connect powerdown request */
-> @@ -1743,12 +1742,12 @@ static void machvirt_init(MachineState *machine=
-)
->       * (which will be automatically plugged in to the transports). If
->       * no backend is created the transport will just sit harmlessly id=
-le.
->       */
-> -    create_virtio_devices(vms, pic);
-> +    create_virtio_devices(vms);
-> =20
->      vms->fw_cfg =3D create_fw_cfg(vms, &address_space_memory);
->      rom_set_fw(vms->fw_cfg);
-> =20
-> -    create_platform_bus(vms, pic);
-> +    create_platform_bus(vms);
-> =20
->      vms->bootinfo.ram_size =3D machine->ram_size;
->      vms->bootinfo.nb_cpus =3D smp_cpus;
->=20
+BR
+Beata
+
+> >
+> >> +
+> >> +    env->exception.syndrome = esr;
+> >> +
+> >> +    cc->do_interrupt(c);
+> >> +}
+> >> +
+> >>  #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
+> >>                   KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+> >>
+> >> @@ -1036,6 +1062,44 @@ int kvm_arch_get_registers(CPUState *cs)
+> >>      return ret;
+> >>  }
+> >>
+> >> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> >> +{
+> >> +    ram_addr_t ram_addr;
+> >> +    hwaddr paddr;
+> >> +
+> >> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+> >> +
+> >> +    if (acpi_enabled && addr &&
+> >> +            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
+> >> +        ram_addr = qemu_ram_addr_from_host(addr);
+> >> +        if (ram_addr != RAM_ADDR_INVALID &&
+> >> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+> >> +            kvm_hwpoison_page_add(ram_addr);
+> >> +            /*
+> >> +             * Asynchronous signal will be masked by main thread, so
+> >> +             * only handle synchronous signal.
+> >> +             */
+> >
+> > I'm not entirely sure that the comment above is correct (it has been
+> > pointed out before). I would expect the AO signal to be handled here as
+> > well. Not having proper support to do that just yet is another story but
+> > the comment might be bit misleading.
+> >
+> >
+> >> +            if (code == BUS_MCEERR_AR) {
+> >> +                kvm_cpu_synchronize_state(c);
+> >> +                if (ACPI_GHES_CPER_FAIL !=
+> >> +                    acpi_ghes_record_errors(ACPI_GHES_NOTIFY_SEA, paddr)) {
+> >> +                    kvm_inject_arm_sea(c);
+> >> +                } else {
+> >> +                    fprintf(stderr, "failed to record the error\n");
+> >> +                }
+> >> +            }
+> >> +            return;
+> >> +        }
+> >> +        fprintf(stderr, "Hardware memory error for memory used by "
+> >> +                "QEMU itself instead of guest system!\n");
+> >> +    }
+> >> +
+> >> +    if (code == BUS_MCEERR_AR) {
+> >> +        fprintf(stderr, "Hardware memory error!\n");
+> >> +        exit(1);
+> >> +    }
+> >> +}
+> >> +
+> >>  /* C6.6.29 BRK instruction */
+> >>  static const uint32_t brk_insn = 0xd4200000;
+> >>
+> >> diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+> >> index 5feb312941..499672ebbc 100644
+> >> --- a/target/arm/tlb_helper.c
+> >> +++ b/target/arm/tlb_helper.c
+> >> @@ -33,7 +33,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+> >>       * ISV field.
+> >>       */
+> >>      if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
+> >> -        syn = syn_data_abort_no_iss(same_el,
+> >> +        syn = syn_data_abort_no_iss(same_el, 0,
+> >>                                      ea, 0, s1ptw, is_write, fsc);
+> >>      } else {
+> >>          /*
+> >> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+> >> index 5352c9ff55..f75a210f96 100644
+> >> --- a/target/i386/cpu.h
+> >> +++ b/target/i386/cpu.h
+> >> @@ -29,6 +29,8 @@
+> >>  /* The x86 has a strong memory model with some store-after-load re-ordering */
+> >>  #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
+> >>
+> >> +#define KVM_HAVE_MCE_INJECTION 1
+> >> +
+> >>  /* Maximum instruction code size */
+> >>  #define TARGET_MAX_INSN_SIZE 16
+> >>
+> >> --
+> >> 2.19.1
+> >>
+> >>
+> >>
+> > .
+> >
+>

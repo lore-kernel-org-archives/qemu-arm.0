@@ -1,340 +1,126 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4351221lff;
-        Mon, 9 Dec 2019 05:05:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzv7dc9fpRSLE3dJ2WmT63GooVBlyEXD1NIlgFdlrbQbIlxC/gJlm5mPKtpNoCnUU14TOn0
-X-Received: by 2002:a37:ad11:: with SMTP id f17mr5343435qkm.86.1575896728976;
-        Mon, 09 Dec 2019 05:05:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575896728; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4396828lff;
+        Mon, 9 Dec 2019 05:46:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzsdQrvSOUF7qhc/mtaR8IayGstzM1pD93OZVkwMPNhI5JvjCzitEjXoOCkGkxYO7o3hmLk
+X-Received: by 2002:ac8:65ce:: with SMTP id t14mr25002172qto.72.1575899162570;
+        Mon, 09 Dec 2019 05:46:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575899162; cv=none;
         d=google.com; s=arc-20160816;
-        b=jegr7akaGJw4MrPiO2u9KS55oDu1OHjsPGg4BSuxBzbwm9sVHmhqkO8cfdoF5bvt+3
-         Bn/mQzuDjo9sQfMq0ZsEvD6TwxFxJes36vQe8no+spAQ2pQ3FplFcNHt696TaWxouv3j
-         9/dByQLdG1apnh3Pu1vEy8RqmvHxj3n6GQjD3tp1mR0usezhRqCS6SObCxPLcMF8wOV9
-         Ux/dd0T/UpTgLYYl4ZWKNi6wgXjIsIdZ2OGf6kGZeGzJEGgCaKzo5rOA5ltQfCfn955q
-         25QLkY8Pb3yQ4kO2t1HMieQrH9/KokNItj67D4GatExjSc+gOffvzGOysnsGSSBBhn0e
-         HNcw==
+        b=noH9srer5U2uFKYBfDLiPYrVYQu2AJeNLpOVE/k8lP1Bvw/B0Cb6Q9x9scQteJx3iS
+         JekU1afIxwNxVNzL/H5fdnYJZ/efg0YtikcKUxKluReRXTzp/8UdQlhYpY09LEeIzsmV
+         T1fFsaY1eI2Nyo9y4+EAHX/flAm0nzEYjVLs+kVi19INqVv9q3bnhFPedBEeyfzgCBk3
+         SI03VRzEMCkcqT0fMEpLOaEtWVLr5P7/ONV4QhGIfLEjyf/s3I06r30vKDt+Sfb7ypSU
+         f00j2IuJFF2cdyUqHAlxFaX6OSWypZG+2YbIV6asL2pdYleN6ZFdv4UttMp02BfQYEtn
+         hBSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=WUTWruy8QGOB0sdGg4R0FXufnDD/YjDRgb/2mF3IdSc=;
-        b=yEFSO0CnmJuqP79r50NXV4mUUWoSHOuWgLn6mjYaa6psiuBaDTLLZ1mH9hPhkyzWil
-         FmaCGuGOeielTn9YiIeRgiGTKPDri06tbenM4W5HGkTm4senlz4gc3382tyMVFE1Wjx1
-         xTZbYVkeW7madXDW6fEoHA3DDd2k+N2TkMAEYGFPaM4vltrcM0afhmj7zluUkplTJUOL
-         JxLzOX8c1Of+XD1Vdnm5usH0fCRlDMYAQG0TiUeVRHCDUa4gHuS1I946dUgCUbeSuqc0
-         euYQBJzdwer9Pzou2hynWMDqDO7LdetMqQPNbd80mCShTl9D23a/oGsoilY7HdEFMKWy
-         yIrQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=gxSwZyfeXxijSS52FpvVEEVrVieTj0X+VbLn4u/MPlA=;
+        b=gY10j/57eE1OgdOm7xnZ2Yk5dJsZRmRWdpdgpl30avkNj+fjTHIbaycGLGlGI+oDpS
+         c3HRUwXDbXWpa7+a5gBSFVtEO9mOGl9BsH8NCF/tcZ2YoKwirdv3bk9FCI1GccavJg5w
+         G1z27NQBv8RMnkdyaD1MiY5r9h/N6qvFl2Ts7dQuqL/uRdxGilhGskqij8dPGaSHKl5v
+         a93HbGmoA00WVw0UF1GOk48FutGLs0dg6YoTw3JGmlzB/pitKin6VrunJMJaqztOYnTq
+         UuqFApWNYyob7pehj9ptol2RE9SMMYRl1s/LeuWwY6gBWl8loe6F0+z3FzfB9j0zx/qm
+         MqyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b187si1328049qke.375.2019.12.09.05.05.28
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cPvCuArR;
+       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by mx.google.com with ESMTPS id o45si14244066qtk.333.2019.12.09.05.46.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Dec 2019 05:05:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 09 Dec 2019 05:46:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39762 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ieIjA-0002ED-59
-	for alex.bennee@linaro.org; Mon, 09 Dec 2019 08:05:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42808)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ieIiq-0002Dx-F3
- for qemu-arm@nongnu.org; Mon, 09 Dec 2019 08:05:10 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ieIio-0001Uq-FV
- for qemu-arm@nongnu.org; Mon, 09 Dec 2019 08:05:08 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2055 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ieIio-0001T4-5I; Mon, 09 Dec 2019 08:05:06 -0500
-Received: from lhreml701-cah.china.huawei.com (unknown [172.18.7.108])
- by Forcepoint Email with ESMTP id EF84DEC8CF68C3FF54C9;
- Mon,  9 Dec 2019 13:04:51 +0000 (GMT)
-Received: from lhreml709-chm.china.huawei.com (10.201.108.58) by
- lhreml701-cah.china.huawei.com (10.201.108.42) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Mon, 9 Dec 2019 13:04:51 +0000
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml709-chm.china.huawei.com (10.201.108.58) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Mon, 9 Dec 2019 13:04:51 +0000
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1713.004; Mon, 9 Dec 2019 13:04:51 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Subject: RE: [PATCH 1/5] hw/arm: Align ACPI blob len to PAGE size
-Thread-Topic: [PATCH 1/5] hw/arm: Align ACPI blob len to PAGE size
-Thread-Index: AQHVeswOt9Cm/mHIvkOjMvan5ZmmMqeBqoOAgAR2W8CALAlAoA==
-Date: Mon, 9 Dec 2019 13:04:51 +0000
-Message-ID: <323aa74a92934b6a989e6e4dbe0dfe21@huawei.com>
-References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
- <20191004155302.4632-2-shameerali.kolothum.thodi@huawei.com>
- <20191108171745.1465295b@redhat.com>
- <3ae89f87a5d64f57bea7246772c41301@huawei.com>
-In-Reply-To: <3ae89f87a5d64f57bea7246772c41301@huawei.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cPvCuArR;
+       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1575899162;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=gxSwZyfeXxijSS52FpvVEEVrVieTj0X+VbLn4u/MPlA=;
+	b=cPvCuArRulQSABAb1qbQ2T/tlyjogvfP9ESsqav4Ayx0L8gJejSqNGLoXNfzzToXCd/f1y
+	jPjeY3FMDdNDaSFDXIq93Whq4I3xLEgcbIXQAJHNqQapGjVwWfs+5TtJbi3D/D474Bznyf
+	1bcHOtwy4HORrRMnY8clbSnxA1wOou0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-14-2wA0zExYMlaUMLVu6bu2QQ-1; Mon, 09 Dec 2019 08:46:01 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D11B5801E74;
+	Mon,  9 Dec 2019 13:45:59 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-205-146.brq.redhat.com [10.40.205.146])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 345A81001938;
+	Mon,  9 Dec 2019 13:45:54 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] target/arm: Display helpful message when hflags mismatch
+Date: Mon,  9 Dec 2019 14:45:52 +0100
+Message-Id: <20191209134552.27733-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 185.176.76.210
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- Linuxarm <linuxarm@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZtrvWuKSzcFG
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: 2wA0zExYMlaUMLVu6bu2QQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: +Rj/zXjNzrV8
 
-Hi Igor/ Michael,
+Instead of crashing in a confuse way, give some hint to the user
+about why we aborted. He might report the issue without having
+to use a debugger.
 
-> -----Original Message-----
-> From: Linuxarm [mailto:linuxarm-bounces@huawei.com] On Behalf Of
-> Shameerali Kolothum Thodi
-> Sent: 11 November 2019 12:47
-> To: Igor Mammedov <imammedo@redhat.com>
-> Cc: peter.maydell@linaro.org; shannon.zhaosl@gmail.com; Michael S. Tsirki=
-n
-> <mst@redhat.com>; qemu-devel@nongnu.org; Linuxarm
-> <linuxarm@huawei.com>; eric.auger@redhat.com; qemu-arm@nongnu.org;
-> xuwei (O) <xuwei5@huawei.com>; lersek@redhat.com
-> Subject: RE: [PATCH 1/5] hw/arm: Align ACPI blob len to PAGE size
->=20
-> Hi Igor,
->=20
-> > -----Original Message-----
-> > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > Sent: 08 November 2019 16:18
-> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> > eric.auger@redhat.com; peter.maydell@linaro.org;
-> > shannon.zhaosl@gmail.com; xuwei (O) <xuwei5@huawei.com>;
-> > lersek@redhat.com; Linuxarm <linuxarm@huawei.com>; Michael S. Tsirkin
-> > <mst@redhat.com>
-> > Subject: Re: [PATCH 1/5] hw/arm: Align ACPI blob len to PAGE size
-> >
-> > On Fri, 4 Oct 2019 16:52:58 +0100
-> > Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
-> >
-> > > If ACPI blob length modifications happens after the initial
-> > > virt_acpi_build() call, and the changed blob length is within
-> > > the PAGE size boundary, then the revised size is not seen by
-> > > the firmware on Guest reboot. The is because in the
-> > > virt_acpi_build_update() -> acpi_ram_update() -> qemu_ram_resize()
-> > > path, qemu_ram_resize() uses ram_block size which is aligned
-> > > to PAGE size and the "resize callback" to update the size seen
-> > > by firmware is not getting invoked. Hence align ACPI blob sizes
-> > > to PAGE boundary.
-> > >
-> > > Signed-off-by: Shameer Kolothum
-> <shameerali.kolothum.thodi@huawei.com>
-> > > ---
-> > > More details on this issue can be found here,
-> > > https://patchwork.kernel.org/patch/11154757/
-> > re-read it again and it seems to me that this patch is workaround
-> > rather than a solution to the problem.
->=20
-> Thanks for taking a look at this. Yes, I was also not very sure about thi=
-s
-> approach
-> as the root cause of the issue is in qemu_ram_resize().
->=20
-> > CCing Michael as an author this code.
-> > on x86 we have crazy history of manually aligning acpi blobs, see code =
-under
-> > comment
-> >
-> >   /* We'll expose it all to Guest so we want to reduce
-> >
-> > so used_length endups with over-sized value which includes table and
-> padding
-> > and it happens that ACPI_BUILD_TABLE_SIZE is much bigger than host page
-> > size
-> > so if on reboot we happen to exceed ACPI_BUILD_TABLE_SIZE, the next
-> padded
-> > table
-> > size (used_length) would be  2 x ACPI_BUILD_TABLE_SIZE which doesn't
-> > trigger
-> >   block->used_length =3D=3D HOST_PAGE_ALIGN(newsize)
-> > condition so fwcfg gets updated value.
->=20
-> Yes, this is the reason why the issue is not visible on x86.
->=20
-> >
-> > > ---
-> > >  hw/arm/virt-acpi-build.c | 14 ++++++++++++++
-> > >  1 file changed, 14 insertions(+)
-> > >
-> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > > index 4cd50175e0..074e0c858e 100644
-> > > --- a/hw/arm/virt-acpi-build.c
-> > > +++ b/hw/arm/virt-acpi-build.c
-> > > @@ -790,6 +790,7 @@ void virt_acpi_build(VirtMachineState *vms,
-> > AcpiBuildTables *tables)
-> > >      GArray *table_offsets;
-> > >      unsigned dsdt, xsdt;
-> > >      GArray *tables_blob =3D tables->table_data;
-> > > +    GArray *cmd_blob =3D tables->linker->cmd_blob;
-> > >      MachineState *ms =3D MACHINE(vms);
-> > >
-> > >      table_offsets =3D g_array_new(false, true /* clear */,
-> > > @@ -854,6 +855,19 @@ void virt_acpi_build(VirtMachineState *vms,
-> > AcpiBuildTables *tables)
-> > >          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
-> > >      }
-> > >
-> > > +    /*
-> > > +     * Align the ACPI blob lengths to PAGE size so that on ACPI tabl=
-e
-> > > +     * regeneration, the length that firmware sees really gets updat=
-ed
-> > > +     * through 'resize' callback in qemu_ram_resize() in the
-> > > +     * virt_acpi_build_update() -> acpi_ram_update() ->
-> > qemu_ram_resize()
-> > > +     * path.
-> > > +     */
-> > > +    g_array_set_size(tables_blob,
-> > > +
-> > TARGET_PAGE_ALIGN(acpi_data_len(tables_blob)));
-> > here it would depend on TARGET_PAGE_ALIGN vs HOST_PAGE_ALIGN
-> relation
-> > so depending on host it could flip it's behavior to opposite.
->=20
-> Ok.
->=20
-> >
-> > one thing we could do is dropping (block->used_length =3D=3D newsize) c=
-ondition
->=20
-> I tried this before and strangely for some reason on reboot path,
->=20
-> virt_acpi_build_update() is called with build_state being NULL and no
-> acpi_ram_update()
-> happens. Not sure what causes this behavior when we drop the above
-> condition.
->=20
-> > another is to use value of block->used_length for s->files->f[index].si=
-ze.
->=20
-> I just tried this by passing block->used_length to fw_cfg_add_file_callba=
-ck() .
-> This could work for this case. But not sure there will be any corner case=
-s
-> and also there isn't any easy way to access the mr->ram_balck->used_lengt=
-h
-> from
-> hw/core/loader.c.
->=20
-> >
-> > Michael,
-> > what's your take in this?
->=20
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ target/arm/helper.c | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
 
-This is how(below) I tried to use the RAMBlock used_length for s->files->f[=
-index].size.
-As used_length is abstracted here, I had to introduce a new api to retrieve=
- the
-same. Please take a look and let me know if there is a better way of achiev=
-ing this.
-
-Thanks.
-Shameer
-
-
----8---
-
-diff --git a/hw/core/loader.c b/hw/core/loader.c
-index 5099f27dc8..e862c8c0e1 100644
---- a/hw/core/loader.c
-+++ b/hw/core/loader.c
-@@ -1055,6 +1055,7 @@ MemoryRegion *rom_add_blob(const char *name, const vo=
-id *blob, size_t len,
-     if (fw_file_name && fw_cfg) {
-         char devpath[100];
-         void *data;
-+        size_t size;
-=20
-         if (read_only) {
-             snprintf(devpath, sizeof(devpath), "/rom@%s", fw_file_name);
-@@ -1065,13 +1066,15 @@ MemoryRegion *rom_add_blob(const char *name, const =
-void *blob, size_t len,
-         if (mc->rom_file_has_mr) {
-             data =3D rom_set_mr(rom, OBJECT(fw_cfg), devpath, read_only);
-             mr =3D rom->mr;
-+            size =3D memory_region_get_used_length(mr);
-         } else {
-             data =3D rom->data;
-+            size =3D rom->datasize;
-         }
-=20
-         fw_cfg_add_file_callback(fw_cfg, fw_file_name,
-                                  fw_callback, NULL, callback_opaque,
--                                 data, rom->datasize, read_only);
-+                                 data, size, read_only);
-     }
-     return mr;
- }
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index e499dc215b..c51e6cdb9a 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -1584,6 +1584,12 @@ void memory_region_add_subregion_overlap(MemoryRegio=
-n *mr,
-  */
- ram_addr_t memory_region_get_ram_addr(MemoryRegion *mr);
-=20
-+/**
-+ * memory_region_get_used_length: Get the used length associated with a me=
-mory
-+ *                             region
-+ */
-+ram_addr_t memory_region_get_used_length(MemoryRegion *mr);
-+
- uint64_t memory_region_get_alignment(const MemoryRegion *mr);
- /**
-  * memory_region_del_subregion: Remove a subregion.
-diff --git a/memory.c b/memory.c
-index 06484c2bff..d1f60c0c9a 100644
---- a/memory.c
-+++ b/memory.c
-@@ -2200,6 +2200,11 @@ ram_addr_t memory_region_get_ram_addr(MemoryRegion *=
-mr)
-     return mr->ram_block ? mr->ram_block->offset : RAM_ADDR_INVALID;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0bf8f53d4b..6bfb62672b 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -11348,6 +11348,20 @@ void HELPER(rebuild_hflags_a64)(CPUARMState *env, =
+int el)
+     env->hflags =3D rebuild_hflags_a64(env, el, fp_el, mmu_idx);
  }
 =20
-+ram_addr_t memory_region_get_used_length(MemoryRegion *mr)
++static inline void assert_hflags_rebuild_correctly(CPUARMState *env)
 +{
-+    return mr->ram_block ? mr->ram_block->used_length : RAM_ADDR_INVALID;
++#ifdef CONFIG_DEBUG_TCG
++    uint32_t env_flags_current =3D env->hflags;
++    uint32_t env_flags_rebuilt =3D rebuild_hflags_internal(env);
++
++    if (unlikely(env_flags_current !=3D env_flags_rebuilt)) {
++        fprintf(stderr, "TCG hflags mismatch (current:0x%08x rebuilt:0x%08=
+x)\n",
++                env_flags_current, env_flags_rebuilt);
++        abort();
++    }
++#endif
 +}
 +
- void memory_region_ram_resize(MemoryRegion *mr, ram_addr_t newsize, Error =
-**errp)
+ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
+                           target_ulong *cs_base, uint32_t *pflags)
  {
-     assert(mr->ram_block);
----8--
+@@ -11355,9 +11369,7 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_=
+ulong *pc,
+     uint32_t pstate_for_ss;
+=20
+     *cs_base =3D 0;
+-#ifdef CONFIG_DEBUG_TCG
+-    assert(flags =3D=3D rebuild_hflags_internal(env));
+-#endif
++    assert_hflags_rebuild_correctly(env);
+=20
+     if (FIELD_EX32(flags, TBFLAG_ANY, AARCH64_STATE)) {
+         *pc =3D env->pc;
+--=20
+2.21.0

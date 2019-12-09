@@ -1,108 +1,223 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4430409lff;
-        Mon, 9 Dec 2019 06:12:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyfsdVQRMjm76YMNTHPohb+WpCNBjTasYwfn8rCD7mBTDmCJaVj35iRrH3UwGOva0A5xrG4
-X-Received: by 2002:aca:1106:: with SMTP id 6mr18684615oir.75.1575900767443;
-        Mon, 09 Dec 2019 06:12:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575900767; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4655524lff;
+        Mon, 9 Dec 2019 09:08:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwPrjCnNf9cIJVgzA+/VTnLa/DoKF0zzt6tMJSg+OCrBy76E0xIS6l10raXi9lAELKGfsrL
+X-Received: by 2002:a05:6830:16c6:: with SMTP id l6mr22702989otr.186.1575911335434;
+        Mon, 09 Dec 2019 09:08:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575911335; cv=none;
         d=google.com; s=arc-20160816;
-        b=hLr/8Fmmc3s+i1dyN05zX44O+i+IYA9rdUonRfMnwvXi7Trg9im0z/pVD1KlcVEtAg
-         BAOC6sR2su2ZzqVxvcGzqt/Sr2NWrSU8nYAmKOoMzSuLwk7xw/8168VYOb+YdvCAX94K
-         LgMGnr4eCkv18dj6wLQUGsR+SmlG179jlJkRhLqptpF+hk35YRwRuGJNOn9QpeIebhl/
-         DWwxgKnwnPifdMz7OE2iHJtwxE4fnOc8jc3bf16auAzzo97Vzc3FZlykX3mZirw44klV
-         CYgdNallDuowW00B3lDd1woGTbZpqUAboTn+RZPDBEYcdWD0QdPKk7sAZ8ovrpDWh6/U
-         kDWQ==
+        b=EKv7YsSued9aeomLakVFwDzSr4yurruLIOt759z5vxus+qLMhmZnDF1vpZoMWRsFAk
+         cWNdtCZ7E2txKtG1zeVOi5qh26H1HEyoKXTciMWNfCeIPlMYgl/WsaBSW07irELs4q3t
+         IXB/GuxvrdV7zh7w8dGtIn7aCwsc8dmwmYgvFIfMD2+jzYE0HTsqS0XubnESTM3rr2N1
+         AWt7zUBLc4erlCtCAC2t5hQjCUCKRSMMyHIOTUJLQTBlImDYBFGETzgdE4/0kB6DETZ9
+         ATZKKPVbxn7TvEpBmrk8NAR8OfJ/T8vKXDu6plPyvGPPHp9ynOzspIb92SNvXPqihPq6
+         Uw7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=Gnpf9t/d4RwkLgH9ihO5BqIYEGFxKcOkOYCNvmtTjwQ=;
-        b=xvJ7QS5NFp6hSXvNrygjLF6KVHACAp+A1ed5FUdj78N9wiNBGzutWI2NrQKPbMIaaR
-         K8xSoM8CcIrUU2oByDs3hg3uEKXYKviTfpuVFm+6KT4QTq5v+tCQXSaeLXqDwcw+LXKB
-         JkSESl7ttdg0oYP7Rg2RMLVmgzGN2B2NP3NWBT0ukoJKF09ahLTTLsqGBXPwLRAfp+S4
-         PsDdCLX9HX+0KWBb8Ai4peTl6mVYc+v9Hk5qVo9fJzqnwu/Pq+tdZi+b+4r1Sx2kv2Oh
-         HTYvVwmQcf4N58TZ+nNhMXNEYyLISFpr3Bk96MHm+v2DqmK/SBqE29zqWS5bN5OTgO1S
-         F81w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=ioF9gOYZwQRQay1Cw3ZQd95BcX21otjmgrUHOTzhRPc=;
+        b=ApZ+l5fplOh8I59cofFQOkPEAPlBn7P39LEPFNfj02mLAF4Z/6oMxtd1tHq9+xMMH9
+         l1vhNeusE/48QCQlCOd2ziaNwy9/GNH3J027tNiXgGKTOJoFj8lSHtATUE+al8VvMUtD
+         IJbmW+8VPn7hayaDvQhKIF89eA9NgbaXsmQrKoeOgPimTe9mkmK2gdiWJgh1c07COt6Z
+         eFxAlJEktz2q6DXozfxQsBLefqk7zkB1dbJxhAIzpUxBmqVieKP8aEXpUvIRoK4svDUz
+         7of/yK+KCnYQ+fUPPtwcRF8as9XCwvOTNrjhF+1hZ2CFz3MZlPsO0Msr/zP100Jr8ZUn
+         LqAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v49si4755491otb.253.2019.12.09.06.12.47;
-        Mon, 09 Dec 2019 06:12:47 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mTTDgD2+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 185si204854oii.256.2019.12.09.09.08.55
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Dec 2019 09:08:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727903AbfLIOMq (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 9 Dec 2019 09:12:46 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:38252 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727572AbfLIOMq (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 9 Dec 2019 09:12:46 -0500
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id D162478339045A5766C6;
-        Mon,  9 Dec 2019 22:12:42 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Mon, 9 Dec 2019
- 22:12:37 +0800
-Subject: Re: [RESEND PATCH v21 5/6] target-arm: kvm64: handle SIGBUS signal
- from kernel or KVM
-To:     Beata Michalska <beata.michalska@linaro.org>
-CC:     Xiang Zheng <zhengxiang9@huawei.com>, <pbonzini@redhat.com>,
-        <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        "Laszlo Ersek" <lersek@redhat.com>, <james.morse@arm.com>,
-        <mtosatti@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>,
-        <wanghaibin.wang@huawei.com>
-References: <20191111014048.21296-1-zhengxiang9@huawei.com>
- <20191111014048.21296-6-zhengxiang9@huawei.com>
- <CADSWDztF=eaUDNnq8bhnPyTKW1YjAWm4UBaH-NBPkzjnzx0bxg@mail.gmail.com>
- <238ea7b3-9d6d-e3f7-40c9-e3e62b5fb477@huawei.com>
- <CADSWDzvFvS6mYiMhXu2J+u+sUxZaKcCE78EuSggv-VOY7zEN_w@mail.gmail.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <650e26cf-e007-1e31-cd0a-4042bb9fa6a8@huawei.com>
-Date:   Mon, 9 Dec 2019 22:12:33 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=mTTDgD2+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42994 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ieMWk-0000Fl-Iy
+	for alex.bennee@linaro.org; Mon, 09 Dec 2019 12:08:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43841)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <daniel.thompson@linaro.org>) id 1ieMWR-0000Fc-4p
+ for qemu-devel@nongnu.org; Mon, 09 Dec 2019 12:08:36 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <daniel.thompson@linaro.org>) id 1ieMWP-0002O3-KF
+ for qemu-devel@nongnu.org; Mon, 09 Dec 2019 12:08:34 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:36201)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <daniel.thompson@linaro.org>)
+ id 1ieMWP-0002LX-7m
+ for qemu-devel@nongnu.org; Mon, 09 Dec 2019 12:08:33 -0500
+Received: by mail-wr1-x442.google.com with SMTP id z3so17090333wru.3
+ for <qemu-devel@nongnu.org>; Mon, 09 Dec 2019 09:08:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=ioF9gOYZwQRQay1Cw3ZQd95BcX21otjmgrUHOTzhRPc=;
+ b=mTTDgD2+Iw1cBbT3UDV1VWZMAnWhJm0s734NqNT55Za2NLBygIFdPeBj7n0URp2OpP
+ AjpZ+eMJCJFTbPR9d6xxUjExAlK34HbmYOih6iAYV06l9OlPvdI5hm2PP0ggKvZ2XOox
+ HtzH7p4LgLUu6b9azxElwjaYnkASTWoW+7nK7P8zUCqTVgzbV6GMKCekKZq8u1eA01Cl
+ CMNtLHfO/Y7EP/2iP+QPUbPONHZjBCp5vNUlTAFvUpoUcyyw1bluxGZ76AeMFtrpgTcI
+ I9kR7WkMK0xsMLKomSfQYYGBMvWT9m+wdFdLsvBsgJ/a2ZLz+To2n8WbGSVGPuVGRtEd
+ FFFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ioF9gOYZwQRQay1Cw3ZQd95BcX21otjmgrUHOTzhRPc=;
+ b=ZAy1ICp0mBEDUxgGnNLmc09Hd0tMXnu2fRKEbL4KsshTFstHaGDx2GRa67scSHBDGX
+ 8wKAgP2TDXTp3iKCFW91r3AIyDtlabDQSpH2jHg1XvcJFrgVjmU6vsRgI04pXz8xw4Vg
+ fkIZ/WST/41artYsNmwByhYTZDrkXE0Wdy8WA0zHAD/nfomO3IvHAUcietE82U/ryGaN
+ gB8bcesiQWqo6iSogQHqZ6hliAi20kclNQNtVcIu1wuWKzsVtdDr9atM4YfUerYMTAil
+ 1swFSzUNuzrzV9jE2X9YFZ0qWZsTkOJfrSdGXkWbAWMqpKvBEFXJ3befEc54o60RF4Im
+ FMmA==
+X-Gm-Message-State: APjAAAUq9jOEOlZnHquR9lz6CstUOxvsu/SwK/V+cmr5B0kjIk8lAjAq
+ /bIkf4V7Sl6IanZDmOBWFWQ6rg==
+X-Received: by 2002:adf:ee82:: with SMTP id b2mr3465705wro.194.1575911309788; 
+ Mon, 09 Dec 2019 09:08:29 -0800 (PST)
+Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
+ [86.9.19.6])
+ by smtp.gmail.com with ESMTPSA id b185sm428329wme.36.2019.12.09.09.08.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 09 Dec 2019 09:08:29 -0800 (PST)
+Date: Mon, 9 Dec 2019 17:08:27 +0000
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/arm/virt: Second uart for normal-world
+Message-ID: <20191209170827.yojyts6qdvpxbkp4@holly.lan>
+References: <20191209152456.977399-1-daniel.thompson@linaro.org>
+ <CAFEAcA-sgFKev2MiOjRAzuE0trNYQoNe6LOFLeghGm73N1h=SA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CADSWDzvFvS6mYiMhXu2J+u+sUxZaKcCE78EuSggv-VOY7zEN_w@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: swI1LHGEPvov
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-sgFKev2MiOjRAzuE0trNYQoNe6LOFLeghGm73N1h=SA@mail.gmail.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::442
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "patches@linaro.org" <patches@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: g7tRQ7kTVAL4
 
-
-
-On 2019/12/9 21:05, Beata Michalska wrote:
->> Here we set the FnV to not valid, not to set it to valid.
->> because Guest will use the physical address that recorded in APEI table.
->>
-> To be precise : the FnV is  giving the status of FAR - so what you are setting
-> here is status of 0b0 which means FAR is valid, not FnV on it's own.
-> And my point was that you are changing the prototype for syn_data_abort_no_iss
-> just for this case only so I was just thinking that it might not be
-> worth that, instead
-> you could just set it here ... or to be more flexible , provide a way
-> to set specific bits
-> on demand.
-
-No, I set the FnV to 0b1, not 0b0, the whole esr_el1's value is 0x96000410, as shown below log:
-I remember changing the prototype for syn_data_abort_no_iss is suggested by Peter Maydell.
-
-
-[1]:
-[   62.851830] Internal error: synchronous external abort: 96000410 [#1] PREEMPT SMP
-[   62.854465] Modules linked in:
-
-
-
+On Mon, Dec 09, 2019 at 03:36:17PM +0000, Peter Maydell wrote:
+> On Mon, 9 Dec 2019 at 15:25, Daniel Thompson <daniel.thompson@linaro.org> wrote:
+> >
+> > The virt machine can have two UARTs but the second UART is only
+> > registered when secure-mode support is enabled. Change the machine so
+> > this UART is always registered bringing the behaviour of the virt
+> > machine closer to x86 land, where VMs can be expected to support two
+> > UARTs. This approach is also similar to how a TZPC would typically
+> > make a UART inaccessible to normal world on physical hardware.
+> >
+> > Signed-off-by: Daniel Thompson <daniel.thompson@linaro.org>
+> > ---
+> >
+> > Notes:
+> >     It is difficult to add a UART without some kind of odd difference of
+> >     behaviour somewhere. As far as I could tell the choices are:
+> >
+> >     1. Move the secure UART from UART1 to UART2. This is a
+> >        not-backward-compatible difference of behaviour (will likely break
+> >        the command lines for existing users of the secure UART).
+> >
+> >     2. We tack the new UART on at the end, meaning UART1 will re-enumerates
+> >        as UART2 when secure mode is enabled/disabled. This is rather
+> >        surprising for users.
+> >
+> >     3. UART1 is registered and inaccessible when secure mode is not enabled
+> >        (e.g. user must provide a dummy -serial argument to skip the missing
+> >        UART)
+> >
+> >     4. Normal world can only use the second UART if there is no secure mode
+> >        support.
+> >
+> >     5. Don't support an extra UART ;-)
+> >
+> >     Of these I concluded that #4 was least worst! Ultimately it is should be
+> >     unsurprising for users because it is how most physical hardware works
+> >     (e.g. a trustzone controller is used to make an existing UART
+> >     inaccessible to normal world).
 > 
+> This change looks simple but it will break booting of UEFI
+> in the guest. Unfortunately UEFI enumerates UARTs in the guest
+> in the opposite order to the Linux kernel, so whichever way
+> round you put the extra UART something will get it wrong and
+> stop producing output where the user expects.
+> 
+> I think the conclusion I came to was that the only way to
+> avoid breaking existing command lines would be to only
+> create the second UART if the user explicitly asked for
+> it somehow. (Possibly just looking at "if there really is
+> a 2nd serial on the command line" with "if (serial_hd(1)"
+> would suffice, or perhaps not.)
+
+I don't object to making it command line dependant (it is certainly
+lower risk) but, out of interest, has using /aliases to force the
+kernel to enumerate the serial nodes in the existing order been ruled
+out for any reason.
+
+With something like the patch below we can give /dev/ttyAMA0
+with a stable device number regardless of the order of the UARTs
+within the DT:
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a5cca04dba7f..7078cfc0c106 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -225,8 +225,12 @@ static void create_fdt(VirtMachineState *vms)
+     qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
+     qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+ 
+-    /* /chosen must exist for load_dtb to fill in necessary properties later */
++    /*
++     * /chosen and /aliases must exist for load_dtb to fill in
++     * necessary properties later
++     */
+     qemu_fdt_add_subnode(fdt, "/chosen");
++    qemu_fdt_add_subnode(fdt, "/aliases");
+ 
+     /* Clock node, for the benefit of the UART. The kernel device tree
+      * binding documentation claims the PL011 node clock properties are
+@@ -754,6 +758,9 @@ static void create_uart(const VirtMachineState *vms,
+qemu_irq *pic, int uart,
+ 
+     if (uart == VIRT_UART) {
+         qemu_fdt_setprop_string(vms->fdt, "/chosen", "stdout-path", nodename);
++	qemu_fdt_setprop_string(vms->fdt, "/aliases", "serial0", nodename);
++    } else if (!vms->secure) {
++	qemu_fdt_setprop_string(vms->fdt, "/aliases", "serial1", nodename);
+     } else {
+         /* Mark as not usable by the normal world */
+         qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
+
+
+> You also need to do something to add the 2nd UART to the ACPI tables.
+> 
+> (Very out of date and broken patchset from last time I looked at this:
+> https://lists.gnu.org/archive/html/qemu-arm/2017-12/msg00063.html
+> )
+
+Thanks for the heads up. I'll have to do a bit of reading/testing
+before I get back to you on that!
+
+
+Daniel.

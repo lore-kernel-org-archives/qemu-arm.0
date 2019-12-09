@@ -1,223 +1,126 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4655524lff;
-        Mon, 9 Dec 2019 09:08:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwPrjCnNf9cIJVgzA+/VTnLa/DoKF0zzt6tMJSg+OCrBy76E0xIS6l10raXi9lAELKGfsrL
-X-Received: by 2002:a05:6830:16c6:: with SMTP id l6mr22702989otr.186.1575911335434;
-        Mon, 09 Dec 2019 09:08:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575911335; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4658110lff;
+        Mon, 9 Dec 2019 09:10:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwjTYP9p2K1WOAprL+AT/T5MhtzWywsUh13Cpj4aEzBhvYOKDgi8zvNVtm48c0g/TbNJSKY
+X-Received: by 2002:a9d:32e:: with SMTP id 43mr12084195otv.301.1575911451336;
+        Mon, 09 Dec 2019 09:10:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575911451; cv=none;
         d=google.com; s=arc-20160816;
-        b=EKv7YsSued9aeomLakVFwDzSr4yurruLIOt759z5vxus+qLMhmZnDF1vpZoMWRsFAk
-         cWNdtCZ7E2txKtG1zeVOi5qh26H1HEyoKXTciMWNfCeIPlMYgl/WsaBSW07irELs4q3t
-         IXB/GuxvrdV7zh7w8dGtIn7aCwsc8dmwmYgvFIfMD2+jzYE0HTsqS0XubnESTM3rr2N1
-         AWt7zUBLc4erlCtCAC2t5hQjCUCKRSMMyHIOTUJLQTBlImDYBFGETzgdE4/0kB6DETZ9
-         ATZKKPVbxn7TvEpBmrk8NAR8OfJ/T8vKXDu6plPyvGPPHp9ynOzspIb92SNvXPqihPq6
-         Uw7Q==
+        b=b446LkMToNaTbigDbMNJMHoCvQDn37MWgil/SJPui13rHJQddhGSqxSi6z66oZruKS
+         TiFZCVe+Q92JCtjzg7Jd+1LtO3uSbYI2Wf7iXYAEVRsMAXKO7n8HeTD2HNPHYst+F5M1
+         HNO+WAwC36/C13dbn3qUHiEUYMyzc3Ykt61gc+GB4xrrUwTxEJOVjLXdaIjg+UkBAjS3
+         7b20UZIP7B5f9TyzXilrS8rFCLSjOUjCu8LwrnyYLNbBtyBYOcnHLhON/lKN/JkpsIum
+         dW73XQkS37N5Cqw7Q0vD5RYfp4JbLZDs8TGD2+9Nhl6rtTGdxzzjXpqP+7hYeh79ocxm
+         ICAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=ioF9gOYZwQRQay1Cw3ZQd95BcX21otjmgrUHOTzhRPc=;
-        b=ApZ+l5fplOh8I59cofFQOkPEAPlBn7P39LEPFNfj02mLAF4Z/6oMxtd1tHq9+xMMH9
-         l1vhNeusE/48QCQlCOd2ziaNwy9/GNH3J027tNiXgGKTOJoFj8lSHtATUE+al8VvMUtD
-         IJbmW+8VPn7hayaDvQhKIF89eA9NgbaXsmQrKoeOgPimTe9mkmK2gdiWJgh1c07COt6Z
-         eFxAlJEktz2q6DXozfxQsBLefqk7zkB1dbJxhAIzpUxBmqVieKP8aEXpUvIRoK4svDUz
-         7of/yK+KCnYQ+fUPPtwcRF8as9XCwvOTNrjhF+1hZ2CFz3MZlPsO0Msr/zP100Jr8ZUn
-         LqAA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=uG0p7uaocyTdM0lZUqiJyB5zKa4/nuiB6lCeMmbQvYg=;
+        b=dTQM6iE1ejfE2sCiUH1LnK8MMa0W+OPwjWZ5loD+wG3CnlEDzBuTriMbJ8uIbcoKTn
+         wsAa7Gsn/2/nSXF8DXgk+jjvTvZrXKc6bc47XjSxhEnSm0/N9C/rErjl8/XnFE6OrRgI
+         cD4togP1uqGjYOr8sMgk7m0/oZfY8QOiQGKf1f9qrLb6K4kfGpyp+5r4XWsJdoCz2ywS
+         WOXNFRdJy+rEZnDjZOVG4RPyqmarGcKYAbJA+WyVG7S89NtLsefnwF/AgnvQvVbXIX8y
+         slEyWf6omXC/plBCIHVH8Z6GkCVhqzC8AXyf2+HRb7/RkmBdJBDnhhVEfyt0kywRntNR
+         bAxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mTTDgD2+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vxj318R4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 185si204854oii.256.2019.12.09.09.08.55
+        by mx.google.com with ESMTPS id i6si168841otp.5.2019.12.09.09.10.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Dec 2019 09:08:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Dec 2019 09:10:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mTTDgD2+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vxj318R4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42994 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43056 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ieMWk-0000Fl-Iy
-	for alex.bennee@linaro.org; Mon, 09 Dec 2019 12:08:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43841)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ieMYc-0001nG-HW
+	for alex.bennee@linaro.org; Mon, 09 Dec 2019 12:10:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45080)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <daniel.thompson@linaro.org>) id 1ieMWR-0000Fc-4p
- for qemu-devel@nongnu.org; Mon, 09 Dec 2019 12:08:36 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1ieMYV-0001n2-Jd
+ for qemu-arm@nongnu.org; Mon, 09 Dec 2019 12:10:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <daniel.thompson@linaro.org>) id 1ieMWP-0002O3-KF
- for qemu-devel@nongnu.org; Mon, 09 Dec 2019 12:08:34 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:36201)
+ (envelope-from <peter.maydell@linaro.org>) id 1ieMYU-0005wx-Kb
+ for qemu-arm@nongnu.org; Mon, 09 Dec 2019 12:10:43 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:43383)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <daniel.thompson@linaro.org>)
- id 1ieMWP-0002LX-7m
- for qemu-devel@nongnu.org; Mon, 09 Dec 2019 12:08:33 -0500
-Received: by mail-wr1-x442.google.com with SMTP id z3so17090333wru.3
- for <qemu-devel@nongnu.org>; Mon, 09 Dec 2019 09:08:32 -0800 (PST)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1ieMYU-0005wT-Fc
+ for qemu-arm@nongnu.org; Mon, 09 Dec 2019 12:10:42 -0500
+Received: by mail-oi1-x242.google.com with SMTP id x14so6959687oic.10
+ for <qemu-arm@nongnu.org>; Mon, 09 Dec 2019 09:10:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ioF9gOYZwQRQay1Cw3ZQd95BcX21otjmgrUHOTzhRPc=;
- b=mTTDgD2+Iw1cBbT3UDV1VWZMAnWhJm0s734NqNT55Za2NLBygIFdPeBj7n0URp2OpP
- AjpZ+eMJCJFTbPR9d6xxUjExAlK34HbmYOih6iAYV06l9OlPvdI5hm2PP0ggKvZ2XOox
- HtzH7p4LgLUu6b9azxElwjaYnkASTWoW+7nK7P8zUCqTVgzbV6GMKCekKZq8u1eA01Cl
- CMNtLHfO/Y7EP/2iP+QPUbPONHZjBCp5vNUlTAFvUpoUcyyw1bluxGZ76AeMFtrpgTcI
- I9kR7WkMK0xsMLKomSfQYYGBMvWT9m+wdFdLsvBsgJ/a2ZLz+To2n8WbGSVGPuVGRtEd
- FFFA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uG0p7uaocyTdM0lZUqiJyB5zKa4/nuiB6lCeMmbQvYg=;
+ b=Vxj318R459k3r1HH7WKzuOobiHupJZ/+ErR13u9Ln0EV651ESx44qpEzkD1N4+S8nC
+ 2geP1OSFmIXo8BqBFHMvjrUt9bK/bVpZeozDuaTzBgLsiFVd6Se+3a1bPG+SgCyqrmXv
+ HEFkOP5ytYA/AtXNsqsxqGUeKjA/+334Nhlyd4QgcZq/bxxCtrXpZV6sbKJaKogpSLnv
+ funYKCiOy6KFZgu1lzZ/HfZwzcL08vI6Dk9+WlP9ggE8AS81M8y5nZUcybNBZ7cj3oXa
+ NURnBXJ7F5DOYDzTs898khBJ8NHxaJzr4IpvKGKxrdsha7x8B0JJ7SGzgU1yCKFnNuLZ
+ adTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ioF9gOYZwQRQay1Cw3ZQd95BcX21otjmgrUHOTzhRPc=;
- b=ZAy1ICp0mBEDUxgGnNLmc09Hd0tMXnu2fRKEbL4KsshTFstHaGDx2GRa67scSHBDGX
- 8wKAgP2TDXTp3iKCFW91r3AIyDtlabDQSpH2jHg1XvcJFrgVjmU6vsRgI04pXz8xw4Vg
- fkIZ/WST/41artYsNmwByhYTZDrkXE0Wdy8WA0zHAD/nfomO3IvHAUcietE82U/ryGaN
- gB8bcesiQWqo6iSogQHqZ6hliAi20kclNQNtVcIu1wuWKzsVtdDr9atM4YfUerYMTAil
- 1swFSzUNuzrzV9jE2X9YFZ0qWZsTkOJfrSdGXkWbAWMqpKvBEFXJ3befEc54o60RF4Im
- FMmA==
-X-Gm-Message-State: APjAAAUq9jOEOlZnHquR9lz6CstUOxvsu/SwK/V+cmr5B0kjIk8lAjAq
- /bIkf4V7Sl6IanZDmOBWFWQ6rg==
-X-Received: by 2002:adf:ee82:: with SMTP id b2mr3465705wro.194.1575911309788; 
- Mon, 09 Dec 2019 09:08:29 -0800 (PST)
-Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
- [86.9.19.6])
- by smtp.gmail.com with ESMTPSA id b185sm428329wme.36.2019.12.09.09.08.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Dec 2019 09:08:29 -0800 (PST)
-Date: Mon, 9 Dec 2019 17:08:27 +0000
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] hw/arm/virt: Second uart for normal-world
-Message-ID: <20191209170827.yojyts6qdvpxbkp4@holly.lan>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uG0p7uaocyTdM0lZUqiJyB5zKa4/nuiB6lCeMmbQvYg=;
+ b=VihmClLbLnWOL+65o+2QUzkGRX0H+9goWRe0GoFtUk6TA4LDrJ3b4Kx+Krqf/CrXWI
+ ONHf5Phn98RN94u1InzdLtbNd42oAPzIEE9vIzcnVPss9Ze7LV6tDfhwF5iun+9M0CAE
+ nQFS3+2/5ip0qwuuMBf2Y6CZJN5Iweu9UkTQYojklDTajLeKORBBWZx1yXspFmF7mg6M
+ j8iGmxTqe3h3oaRwUvBqQ2z8nQuPkbfhJpgMs7mR5I8oxJbwZm6ESF0Dgz6He0Vvz8BD
+ uRFUEN+5sZqKdvnwNbk7b6Ah2JKzuoUOnHi/AbJxArnH5kn92l7td+RxgomWWqKNgDyw
+ XZpA==
+X-Gm-Message-State: APjAAAV25oP45HgPGc04YAAii/uBDsiQ5SGyYhRfJQ0tWOiDC4hMvCaX
+ v3ZkcyE0frO93mxGsFPsWz8ohWLSDPTKd9txihTWaw==
+X-Received: by 2002:aca:edd5:: with SMTP id l204mr78252oih.98.1575911441621;
+ Mon, 09 Dec 2019 09:10:41 -0800 (PST)
+MIME-Version: 1.0
 References: <20191209152456.977399-1-daniel.thompson@linaro.org>
  <CAFEAcA-sgFKev2MiOjRAzuE0trNYQoNe6LOFLeghGm73N1h=SA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-sgFKev2MiOjRAzuE0trNYQoNe6LOFLeghGm73N1h=SA@mail.gmail.com>
+ <20191209170827.yojyts6qdvpxbkp4@holly.lan>
+In-Reply-To: <20191209170827.yojyts6qdvpxbkp4@holly.lan>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Dec 2019 17:10:30 +0000
+Message-ID: <CAFEAcA_3_EwjAZ_Av4a9BkT_3KmbEEFFFukyV7gsDuWPrYKmVQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: Second uart for normal-world
+To: Daniel Thompson <daniel.thompson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::442
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::242
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
  "patches@linaro.org" <patches@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g7tRQ7kTVAL4
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8Jvatz2S3ZV2
 
-On Mon, Dec 09, 2019 at 03:36:17PM +0000, Peter Maydell wrote:
-> On Mon, 9 Dec 2019 at 15:25, Daniel Thompson <daniel.thompson@linaro.org> wrote:
-> >
-> > The virt machine can have two UARTs but the second UART is only
-> > registered when secure-mode support is enabled. Change the machine so
-> > this UART is always registered bringing the behaviour of the virt
-> > machine closer to x86 land, where VMs can be expected to support two
-> > UARTs. This approach is also similar to how a TZPC would typically
-> > make a UART inaccessible to normal world on physical hardware.
-> >
-> > Signed-off-by: Daniel Thompson <daniel.thompson@linaro.org>
-> > ---
-> >
-> > Notes:
-> >     It is difficult to add a UART without some kind of odd difference of
-> >     behaviour somewhere. As far as I could tell the choices are:
-> >
-> >     1. Move the secure UART from UART1 to UART2. This is a
-> >        not-backward-compatible difference of behaviour (will likely break
-> >        the command lines for existing users of the secure UART).
-> >
-> >     2. We tack the new UART on at the end, meaning UART1 will re-enumerates
-> >        as UART2 when secure mode is enabled/disabled. This is rather
-> >        surprising for users.
-> >
-> >     3. UART1 is registered and inaccessible when secure mode is not enabled
-> >        (e.g. user must provide a dummy -serial argument to skip the missing
-> >        UART)
-> >
-> >     4. Normal world can only use the second UART if there is no secure mode
-> >        support.
-> >
-> >     5. Don't support an extra UART ;-)
-> >
-> >     Of these I concluded that #4 was least worst! Ultimately it is should be
-> >     unsurprising for users because it is how most physical hardware works
-> >     (e.g. a trustzone controller is used to make an existing UART
-> >     inaccessible to normal world).
-> 
-> This change looks simple but it will break booting of UEFI
-> in the guest. Unfortunately UEFI enumerates UARTs in the guest
-> in the opposite order to the Linux kernel, so whichever way
-> round you put the extra UART something will get it wrong and
-> stop producing output where the user expects.
-> 
-> I think the conclusion I came to was that the only way to
-> avoid breaking existing command lines would be to only
-> create the second UART if the user explicitly asked for
-> it somehow. (Possibly just looking at "if there really is
-> a 2nd serial on the command line" with "if (serial_hd(1)"
-> would suffice, or perhaps not.)
+On Mon, 9 Dec 2019 at 17:08, Daniel Thompson <daniel.thompson@linaro.org> wrote:
+> I don't object to making it command line dependant (it is certainly
+> lower risk) but, out of interest, has using /aliases to force the
+> kernel to enumerate the serial nodes in the existing order been ruled
+> out for any reason.
 
-I don't object to making it command line dependant (it is certainly
-lower risk) but, out of interest, has using /aliases to force the
-kernel to enumerate the serial nodes in the existing order been ruled
-out for any reason.
+No, I don't think anybody's investigated that (I wasn't aware
+that you could do something like that). Bear in mind that the
+kernel is not the only consumer of the DT, though -- you need
+to use a mechanism that all DT consumers will handle correctly.
 
-With something like the patch below we can give /dev/ttyAMA0
-with a stable device number regardless of the order of the UARTs
-within the DT:
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a5cca04dba7f..7078cfc0c106 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -225,8 +225,12 @@ static void create_fdt(VirtMachineState *vms)
-     qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
-     qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
- 
--    /* /chosen must exist for load_dtb to fill in necessary properties later */
-+    /*
-+     * /chosen and /aliases must exist for load_dtb to fill in
-+     * necessary properties later
-+     */
-     qemu_fdt_add_subnode(fdt, "/chosen");
-+    qemu_fdt_add_subnode(fdt, "/aliases");
- 
-     /* Clock node, for the benefit of the UART. The kernel device tree
-      * binding documentation claims the PL011 node clock properties are
-@@ -754,6 +758,9 @@ static void create_uart(const VirtMachineState *vms,
-qemu_irq *pic, int uart,
- 
-     if (uart == VIRT_UART) {
-         qemu_fdt_setprop_string(vms->fdt, "/chosen", "stdout-path", nodename);
-+	qemu_fdt_setprop_string(vms->fdt, "/aliases", "serial0", nodename);
-+    } else if (!vms->secure) {
-+	qemu_fdt_setprop_string(vms->fdt, "/aliases", "serial1", nodename);
-     } else {
-         /* Mark as not usable by the normal world */
-         qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
-
-
-> You also need to do something to add the 2nd UART to the ACPI tables.
-> 
-> (Very out of date and broken patchset from last time I looked at this:
-> https://lists.gnu.org/archive/html/qemu-arm/2017-12/msg00063.html
-> )
-
-Thanks for the heads up. I'll have to do a bit of reading/testing
-before I get back to you on that!
-
-
-Daniel.
+thanks
+-- PMM

@@ -1,105 +1,106 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6062321lff;
-        Tue, 10 Dec 2019 08:44:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzVUR+dPST8H7EbpXRMyOV5mtETJz8Nf3R8usV3vMG0fBVby8iX0AZSH0MH+vR3ftuYio/f
-X-Received: by 2002:a05:6830:1e37:: with SMTP id t23mr26767219otr.16.1575996287935;
-        Tue, 10 Dec 2019 08:44:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575996287; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6063470lff;
+        Tue, 10 Dec 2019 08:45:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz6y5CMpgwSF3O9Fl7S7O+RHeGyKVM+rxdQSXK+etBghZyXWRG7sYGD35IEMLbUHhV3i5T1
+X-Received: by 2002:ac8:43ce:: with SMTP id w14mr1147009qtn.256.1575996340229;
+        Tue, 10 Dec 2019 08:45:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575996340; cv=none;
         d=google.com; s=arc-20160816;
-        b=LsyBFKjGJdgGlGu86thZBSoQ+8ANmsR7HTpsomqmBCF2eLEOX2Ge8n4Ua5kqALYIrM
-         hHZFzJsapUjUhYHnlxImqBTmRMETcpS61be5CsHckKl7I7eq9WlfnrOhKp2uTnEnONm+
-         rst7mTPbQuf0Q9eziqDGAfF8ZPwHuch9lfOFxOKhlK02Q58LTDg5UzCEDbwgtqQBM2iZ
-         95CI4nBeUZqaig5XtOTq2EuYwJBRB96a1aEn/vrRld5POoWL2/o6tP9FVultsv2vJnu9
-         uroBV2c/GNsY/DiFRaN2T9ihNjc8lL7gOPQP9rfXPf5DA2J3oJ5n2368bzHJD0IQQYeT
-         J6KQ==
+        b=ni6QsNFiYKLP2vC3x8LPvb7nFH6X6LV6ubtWmJjV6qeh55NsK0J9MkZjRrzIsCL0OU
+         8+IbA7trt6vvNpwNEUelvyMlsAbn8839m/ofGaZCvy6plIzMO1euJ8NcjXdXba0jF8Np
+         YOz14pHtwdFotcDa3Ax5ktihvJSsMOHwod0UXhyXocnOZGh0cG+lhxzXvMbjWsbGmp0u
+         eRb5emq+7v8oDuIhgpJPpi2OYzn7vadDfa3IxYg1aAOkkcYqTwZZ6a0H11KSRfF+t4Ki
+         kY3Hv4oMs3QhQjSJ0IKxgaF5epHnKbl21I7vS2aMcoqjmTfAsHJnMGKz0kvcSrYxH2ic
+         VZqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=Pc/HUtwzczF7hl6cnINcFfG6ZqHbQFHNh940PLCprkw=;
-        b=jkTV1o+TWj55EzE+SDawJXSZNTRmGTmn4/BOY8jDIC9k3sQS48t9vDOhclYDOzdXHI
-         Tg8FOtKUMQkrWq3lDbBqqZQ698QT3ydYXJYsJ6jUu90tJ9QwmgBwMcCf/N3lVisYxipD
-         Q4jEuLIzGvJBpPctNKDRx0Rh4DqvYMB+jQylraI9Xj/TltnT8PaBTPMUEiSN4t0s05Ww
-         LRX93ZrCWCh/yUWJaipjTiGGK2i20Fx2JzV2PyB5/Sx8T2ROQM89GNjK89qJ6yWJijYm
-         WrA65Z88sSNtMIqKiY7o6vC8MTag8p8tgikc8FIaT9BSw9CA/OZyDispPvutGzY90wyr
-         NjlQ==
+        bh=g9cCMZtEkM7Y7AHaz9CHJEQ5Bqx3hepUjwcskldSK3k=;
+        b=UhoxktEbRarC8kZaaBPJkAgWMGXF3T9neO8nq4esz0ifYEQxmoAgoiBfWqaBgagWYM
+         AKpx+E6uxa0wXz1HhY4jJVinoBaZ1MsPEd9FbRDASwmvmNMKw2mhXj9WaQqQumPe0Huz
+         lMqQ+nPsy33Ng/rs9qovuL9IxD5f7Oxus6uEvTI/dk4qRgkE7BDxMZs4ceeivpLXQQIX
+         qHXVkBAqFfml4x+FTZV1Y8Cj6a6eJwclHle7WQQ7xclMUeaiqZ+WYD5DkykoOuLgwTkK
+         Y58tX60PeCNRdB7YZXfmO2ujrngQFWuJpRHbbVyHjvo80F0W1cOLghWQMs9ERALe7CDD
+         aRAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RnTss9rS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DwlGZP8+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b25si2120897otp.212.2019.12.10.08.44.47
+        by mx.google.com with ESMTPS id x13si2076010qvw.27.2019.12.10.08.45.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 08:44:47 -0800 (PST)
+        Tue, 10 Dec 2019 08:45:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RnTss9rS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DwlGZP8+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59046 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59080 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ieicw-0003G0-Sw
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:44:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58944)
+	id 1ieidn-0003xd-6D
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:45:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59065)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jean-philippe@linaro.org>) id 1ieicm-0003Cw-3I
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:44:37 -0500
+ (envelope-from <jean-philippe@linaro.org>) id 1ieidC-0003t0-UM
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:45:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jean-philippe@linaro.org>) id 1ieicl-0004MB-3d
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:44:36 -0500
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:41048)
+ (envelope-from <jean-philippe@linaro.org>) id 1ieidB-0004XH-Ut
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:45:02 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:34709)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
- id 1ieick-0004Lk-Ts
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:44:35 -0500
-Received: by mail-wr1-x443.google.com with SMTP id c9so20887576wrw.8
- for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 08:44:34 -0800 (PST)
+ id 1ieidB-0004Wq-OV
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:45:01 -0500
+Received: by mail-wr1-x441.google.com with SMTP id t2so20914308wrr.1
+ for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 08:45:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=Pc/HUtwzczF7hl6cnINcFfG6ZqHbQFHNh940PLCprkw=;
- b=RnTss9rSbsavmfAYaoiMDwVIsdegSm3Pwy0/t5YimwPdG0Tv+LXOQAikrquQ1gH/L3
- t/vDKRUi3Jpds48e+qclxshkUJMTwRB0d2Z1wWKfo37Bk0KI+5eSNqMcvp0pK4DKbHEh
- nyuqJYgoAfQg01JLLSalT+YN/J/pBKerH2xedN+0pQF6Kn0s7vvu2vaPZYHOA6ZeGcxS
- 4mzyygEJZSbZpsZ3NQXNV1PZdZRQ1QomUgc4zDAP3hRV4kTJauoI+7QJ79sjdIYSYzZA
- MMS3U5K+wmQTiC/pTOaPd3uE7PE0u9HFilKg6hdez/KP+HMU4KXkiZdd8WsF5MqPfT7s
- QWog==
+ bh=g9cCMZtEkM7Y7AHaz9CHJEQ5Bqx3hepUjwcskldSK3k=;
+ b=DwlGZP8+EpwQOTeJoLtucByNvZ9UpL03GK829rihVuEGOLULBNz27gCFJi/Y9asyhA
+ /yagQyBTIKXfYCsif4YPCvJbeLoOViM5nGXhqxXYlgmTYkhnTJv5RJ/Tm+M7uQsAlBdz
+ 3pZyBSiQXfNRschF5jx2eAS19+lA3YNorgni/IIgCVFtGxsy01bK+19MfpLQpDlKMcrC
+ GUisdoMI78UK5NWmssIS0hibeg8OIweSne2qOi/aywIcas+FK1bE1xob0FsOeLAv1BsG
+ /6nI6fMq/NzZQJUmr07aa0CPG5rrmuzUBnkk0tBxYOdW6vd5x4frEWqvWAlA2Li5cwGb
+ Xqyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=Pc/HUtwzczF7hl6cnINcFfG6ZqHbQFHNh940PLCprkw=;
- b=N9DHmie+2GifBVZ37d2hSlIJQePuavdgtLU0XzKLYHs5rD/M3YH6ZCCZHE2vXNuE8F
- 8l5QMefhr59MspNvFHY6XYGiWCr1lRVPF+dTpYzBX2ymVwbmPWXQlRgFgR7LZNgFwmpW
- 1Rk3QbjgWM/IbJkqUehqavKdUiL/U/6eztvgyBOjpTC0NeInsn2o/H7qkNr2Wh0XWNid
- 6T/mwTeHbZo+1F8QV9M9BsAP3DlDlmsNc6eATdnBmp3Zjg5LIFYTOQ3HVYM8t/P14IJz
- AW0VHfQpK09jiE0Bq+6ZZY3+K7BEe+T2PbULdIQYNIZT3XiusTN4ovKSOaXf37+Fz9TB
- IMEA==
-X-Gm-Message-State: APjAAAUXaqLeUEkLUKGZ44f/UIHBY4iXSabmKpkVT7GMtEa4/lNI25GU
- 7idAGZ3y2pIBnyIivfHSW3I+KQ==
-X-Received: by 2002:adf:e3c1:: with SMTP id k1mr4138784wrm.151.1575996273900; 
- Tue, 10 Dec 2019 08:44:33 -0800 (PST)
+ bh=g9cCMZtEkM7Y7AHaz9CHJEQ5Bqx3hepUjwcskldSK3k=;
+ b=KkWcCeF8+Ty/jSR6T4PyDOWxE1Q2EiqL7GzvRkhcuT+VfLbUZr/aooYOi3g8cZAibv
+ LsHMLZ7Hma7/hu0dT637kf8hpmz2ABw8/xK5oMw5OmG4CggQnYY+oYpGwsBTo6ZmClyh
+ Cr7XaPEbTAU86qbE4lqczcovDUuc9S79prWyibU0sIGKXjdGrpRWiIUr01r5EmD0OtE4
+ aV6YtdaJJW3EiTbPOdEeRyXlwYCk9BEdpjK39klBABckaAJXot2Saffzl4SqKEYtB//n
+ p1F5H6IpbfpTDu8Ac1h/QEZYsPZ8DawqJLR5i9YJR1poeBt6VNtxqxMG+x1sNBLmfNDm
+ PcwQ==
+X-Gm-Message-State: APjAAAULVdB+mKoCkgAoKK2IeKnaF8cHrFLafFq1F4U34rRLAL0GsK8o
+ UIznZgo8NPFoX76s8sieW+X2bA==
+X-Received: by 2002:adf:ffc5:: with SMTP id x5mr4392337wrs.92.1575996300824;
+ Tue, 10 Dec 2019 08:45:00 -0800 (PST)
 Received: from myrica (adsl-84-227-176-239.adslplus.ch. [84.227.176.239])
- by smtp.gmail.com with ESMTPSA id x18sm3823630wrr.75.2019.12.10.08.44.32
+ by smtp.gmail.com with ESMTPSA id p10sm3682392wmi.15.2019.12.10.08.44.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Dec 2019 08:44:33 -0800 (PST)
-Date: Tue, 10 Dec 2019 17:44:28 +0100
+ Tue, 10 Dec 2019 08:45:00 -0800 (PST)
+Date: Tue, 10 Dec 2019 17:44:55 +0100
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH for-5.0 v11 09/20] virtio-iommu: Implement fault reporting
-Message-ID: <20191210164428.GH277340@myrica>
+Subject: Re: [PATCH for-5.0 v11 10/20] virtio-iommu-pci: Add virtio iommu pci
+ support
+Message-ID: <20191210164455.GI277340@myrica>
 References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-10-eric.auger@redhat.com>
+ <20191122182943.4656-11-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20191122182943.4656-10-eric.auger@redhat.com>
+In-Reply-To: <20191122182943.4656-11-eric.auger@redhat.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::443
+X-Received-From: 2a00:1450:4864:20::441
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,43 +119,12 @@ Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
  dgilbert@redhat.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w02hLMLjYPfZ
+X-TUID: tMfv+jKWZ6jl
 
-On Fri, Nov 22, 2019 at 07:29:32PM +0100, Eric Auger wrote:
-> @@ -443,6 +489,8 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->      if (!ep) {
->          if (!bypass_allowed) {
->              error_report_once("%s sid=%d is not known!!", __func__, sid);
-> +            virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_UNKNOWN,
-> +                                      0, sid, 0);
+On Fri, Nov 22, 2019 at 07:29:33PM +0100, Eric Auger wrote:
+> This patch adds virtio-iommu-pci, which is the pci proxy for
+> the virtio-iommu device.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-I guess we could report the faulting address as well, it can be useful for
-diagnostics.
-
->          } else {
->              entry.perm = flag;
->          }
-> @@ -455,6 +503,8 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->                            "%s %02x:%02x.%01x not attached to any domain\n",
->                            __func__, PCI_BUS_NUM(sid),
->                            PCI_SLOT(sid), PCI_FUNC(sid));
-> +            virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_DOMAIN,
-> +                                      0, sid, 0);
-
-Here as well, especially since that error would get propagated by a linux
-guest to the device driver
-
->          } else {
->              entry.perm = flag;
->          }
-> @@ -468,16 +518,25 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "%s no mapping for 0x%"PRIx64" for sid=%d\n",
->                        __func__, addr, sid);
-> +        virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_MAPPING,
-> +                                  0, sid, addr);
-
-Flag VIRTIO_IOMMU_FAULT_F_ADDRESS denotes a valid address field
-
-Thanks,
-Jean
+Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>

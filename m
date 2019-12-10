@@ -1,162 +1,163 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5828368lff;
-        Tue, 10 Dec 2019 05:49:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw7I6V7mHpsNILg74ZF/KaRadl0mQ2300KXfBHP5Dj1HQ2XH3YNhMGif3owQgsBEWAnG91E
-X-Received: by 2002:a9d:150:: with SMTP id 74mr14780001otu.149.1575985771614;
-        Tue, 10 Dec 2019 05:49:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575985771; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5844023lff;
+        Tue, 10 Dec 2019 06:03:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzOMJ4GCbAMeINELCHs0EP36+tIH1pob9MDXIhVa3WSFn5Wr8p3q9wKcOu9GjiMaNpHNPGj
+X-Received: by 2002:aca:ecd0:: with SMTP id k199mr4126035oih.158.1575986607638;
+        Tue, 10 Dec 2019 06:03:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575986607; cv=none;
         d=google.com; s=arc-20160816;
-        b=rO0Y6NuzADLsBnU+PFtdheD7QGIFYa+PQukDu7OGWTPn7v3BsmHZEpAMJ8b1QzEDjp
-         zej1CDXnuvWQjqz7E7zEGsT2ILf0lRUjcqVvoI5AbZ8u4KCfUAzTsGfmH1ofb4lE6mW1
-         WpxYMkA5cpTlp0JzXGro8MSGgxQ4BvnuaSwwy56RB9toskKSrcBcadfHKG9jWqIIagbo
-         yshQ1111bGfhAQu1X2V3N9ksLXdooOxSITm3gVdAvOM0XZO/TG81om5D/Tqhj9WyNwsG
-         HAZ1ITichfkrFOGAvbg5HlsA8IJMPXpxqgGBEPwmGdBizoFLaFsO8IGOZUfLquszPIU8
-         ctZw==
+        b=njSedktgz209vaqi+yOfx9c3DQp/Zq48CKq3pxTugLLz29eF2cNk7xlE38wQMk04Zv
+         sSjLr5NJAkYK6Hx7JBFu6xEtEvrEbFdNrl7R1Ncb3yNn/xthTu45QqWOvGR/c6Ueg5mS
+         ocO84YVlQO9rqf0VkFs7TR0jER1VAAT+7s+62qvalIvbJkWULsnsRksdp+cAtAqBoqj6
+         Ftu/joYYgH/0VHqilcdfw2brfXd4z3zSqnUWvi3OIeDXnh75HCSdhqUoNQatHx/D4ORZ
+         zQIp6/rpzlL2ig612ULUvJG5XWzaA2wSI0CUntGL/ZaDw2NVfeuN0Imbi6waQPikmntg
+         I/zA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=I64k/0k0WqHLXmozMKl6bFkRveg8+eAnwsRxOZOuy1o=;
-        b=zu+nPikuP6u1ZUwgcOND6UzSg5TvN3oNQCW9a2KVTTbLhmXZ5qJbZPKKItCNpKo5Ab
-         bL+ZwbvN4afur7qV2RylGKYZinPwKztNbky6EuuT52UQnBKhTH1YiqEijcCdAtTl2dMz
-         EZKhKNWjD/wlt6uB9Rnm9sQ3HegZZZz8IcbIXX3/O2bi6rCMpoBXrm2rxRjFRV1UDRyG
-         +ozpNj4CqiMo3iaybRiBuvQhxlQmI9t/0r+hdkeJk2sJnI1TPpk+rSzamucfes7ty076
-         vE+MBanHd/xD7kpNYw1QWqwsZbr/Pqd3hU9Q7XFxmcPR7IZGwy1p6FjxHJy7X0MHRB1P
-         +i1Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=30l090qRempxAQzWf4nBrff/DdGwPwgmUiqdyPb2KYc=;
+        b=aOLW+2q7BVod/aoWVB/fpqYfENjaJuR6k6fFUn7rmRPLr0M513EEVYb6xKhWfSKviz
+         DNK5lT5IlAoLmBXWtus6haGaWDWbhIPnWeow774B57DoTEssH7f6qAJWLUl9mLH5LzX6
+         DqAf++6hvNgZU755/+zX2jqsaIn5VCiacmYSOHVCgIJmYFMl5Zq4cYMVEFQ5E5+neBzC
+         ofmzFpSVV/QAKBy+KM7coqBNMIslEVZTveWKA1bEKKhbrEPVirmkS0HA5mdx16X/7AMZ
+         qPQmebr2Aspg3gCf4nvibHoIWlBSGRefBSBtGwfBqejNHgDFD36m/lTwWfOeYoYPYAG6
+         Dv3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="L35dLW/w";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=ONRmAizk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b133si1967475oii.155.2019.12.10.05.49.31
+        by mx.google.com with ESMTPS id d16si1912391otc.210.2019.12.10.06.03.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 05:49:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2019 06:03:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="L35dLW/w";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57072 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=ONRmAizk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ieftK-00067M-N7
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 08:49:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44483)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ieg6o-0003IC-MY
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 09:03:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47933)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1ieftA-00065W-8M
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 08:49:21 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1ieg5D-0002ap-RA
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 09:01:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1ieft8-0007jW-G4
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 08:49:19 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:31733
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1ieft8-0007jA-Bu
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 08:49:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575985757;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=I64k/0k0WqHLXmozMKl6bFkRveg8+eAnwsRxOZOuy1o=;
- b=L35dLW/wFoshKygftk0jLhW8iEVTurqKxOKFB9fU5RzxaglW/mhJcrJEnUz/qCnzBL16MX
- 2bzuniVjLXhcKsOhRMBRzLWwXc3vJuPqcrd4e5z2vnJz1ttjxQc56g95bC6KGpK2lTYr8K
- 1bcwc2WAWjC0mtmOTYB5NqyrE8LJXwo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-108-mc-EPHbLP0i3DQouD872lQ-1; Tue, 10 Dec 2019 08:49:14 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 95FB112D658B;
- Tue, 10 Dec 2019 13:49:12 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3ADD710016E8;
- Tue, 10 Dec 2019 13:49:08 +0000 (UTC)
-Date: Tue, 10 Dec 2019 14:49:06 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v6 0/2] arm/acpi: simplify aml code and enable SHPC
-Message-ID: <20191210144906.14e41c7a@redhat.com>
-In-Reply-To: <CAFEAcA_cP1pW=WC=0M7S37TRi_4uwaA_kQRTJ_xRkqbq48eLTg@mail.gmail.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1ieg5C-0004dv-EB
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 09:01:47 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:44607)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1ieg5C-0004ce-7Z
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 09:01:46 -0500
+Received: by mail-ot1-x344.google.com with SMTP id x3so15515621oto.11
+ for <qemu-devel@nongnu.org>; Tue, 10 Dec 2019 06:01:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=30l090qRempxAQzWf4nBrff/DdGwPwgmUiqdyPb2KYc=;
+ b=ONRmAizkqbJm3R6WGB70ZV/jttGViISia5PR8I9bebhYGd1Q/p8FaqOLWWYKoGrmWG
+ 2v9RtUw2I1EufJwlC6S/T4Gv8ezsrTC79Som+z3I4SWmlSSAIfmcOAujeAWcU1kbS6IP
+ kbYxDyQWKFQ5750gUU5VNRXNaoeYiRrj47e7FaSaFvstCQJ2I4S1JBP/wGmfL+FLCwDs
+ 0AV8bo5TA7556zo9Etcx8tE97CtCxllWdy/At8vUxXdyXH8kiEQFNz8URdWfIs9AJtp/
+ sDCYYKh2rtEqvC3EOOcq1QS6+621kcDKhaDb+F08XW7fdmMrzA2cJ/Jh5wbfCdp13/b+
+ xB9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=30l090qRempxAQzWf4nBrff/DdGwPwgmUiqdyPb2KYc=;
+ b=L0finDEAAY2APNHL2yj0R12CF4SJPvMOhyeGp1ZbHQsBcp7TxYmvFO67/qjofi6Oe7
+ jKXxGCXcuc+i/8/x0BsYRByUtjWDh5MNxTr9X586Fquv80vUC2cNfy9PdZz0Zr5w0Nv3
+ 4NvoQpdpZjfphV5qGmKIaJvpiWefF1CQ5Q/+kHRm3HPWmdjwNJ8/HLLzvQu3ndHp26lY
+ A+sPs/Q9QLszuuJ1GDq/0tLzwyKPXtyH8ma/RrsFnGY9ljSwKKN7ZxCw8wkLrj1QK6V5
+ ZQD2iyPoNPbE9K8l0XOtC1oCVnkel79L9h38tanNIsp9clGc0owAk7PR7lK7o+uHoU2Z
+ v90g==
+X-Gm-Message-State: APjAAAU/dZ431u3weKvv7ExA1+UAaH1BR29iM1ZwRJ2de4+K9R3MtiYR
+ gTytAz3W/3ZoEsr4/+48vOJ0lCopFPEwXfkJ/u280w==
+X-Received: by 2002:a05:6830:4a4:: with SMTP id
+ l4mr20181236otd.91.1575986503065; 
+ Tue, 10 Dec 2019 06:01:43 -0800 (PST)
+MIME-Version: 1.0
 References: <20191209063719.23086-1-guoheyi@huawei.com>
  <CAFEAcA_cP1pW=WC=0M7S37TRi_4uwaA_kQRTJ_xRkqbq48eLTg@mail.gmail.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: mc-EPHbLP0i3DQouD872lQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
+ <20191210144906.14e41c7a@redhat.com>
+In-Reply-To: <20191210144906.14e41c7a@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 10 Dec 2019 14:01:31 +0000
+Message-ID: <CAFEAcA8BvqAD_QGJk_y1NxiHYcdZ3qR41jNnddsTYs=1tkCuJQ@mail.gmail.com>
+Subject: Re: [PATCH v6 0/2] arm/acpi: simplify aml code and enable SHPC
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  QEMU Developers <qemu-devel@nongnu.org>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
  Heyi Guo <guoheyi@huawei.com>, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l9kNQWIvD0Nv
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UnyMabR2kCL8
 
-On Mon, 9 Dec 2019 17:51:10 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
-
-> On Mon, 9 Dec 2019 at 06:38, Heyi Guo <guoheyi@huawei.com> wrote:
+On Tue, 10 Dec 2019 at 13:49, Igor Mammedov <imammedo@redhat.com> wrote:
+>
+> On Mon, 9 Dec 2019 17:51:10 +0000
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> > On Mon, 9 Dec 2019 at 06:38, Heyi Guo <guoheyi@huawei.com> wrote:
+> > >
+> > > After the introduction of generic PCIe root port and PCIe-PCI bridge, we will
+> > > also have SHPC controller on ARM, and we don't support ACPI hot plug, so just
+> > > enable SHPC native hot plug.
+> > >
+> > > Igor also spotted the store operation outside of bit and/or is not necessary, so
+> > > simply the code at first.
+> > >
+> > > v6:
+> > > - Fix "make check" errors by updating tests/data/acpi/virt/DSDT*.
+> > >
+> > > v5:
+> > > - Refine commit message of patch 1/2
+> > >
+> > > v4:
+> > > - Improve the code indention.
+> > >
+> > > Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> > > Cc: Peter Maydell <peter.maydell@linaro.org>
+> > > Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> > > Cc: Igor Mammedov <imammedo@redhat.com>
 > >
-> > After the introduction of generic PCIe root port and PCIe-PCI bridge, we will
-> > also have SHPC controller on ARM, and we don't support ACPI hot plug, so just
-> > enable SHPC native hot plug.
-> >
-> > Igor also spotted the store operation outside of bit and/or is not necessary, so
-> > simply the code at first.
-> >
-> > v6:
-> > - Fix "make check" errors by updating tests/data/acpi/virt/DSDT*.
-> >
-> > v5:
-> > - Refine commit message of patch 1/2
-> >
-> > v4:
-> > - Improve the code indention.
-> >
-> > Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> > Cc: Peter Maydell <peter.maydell@linaro.org>
-> > Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> > Cc: Igor Mammedov <imammedo@redhat.com>  
-> 
-> Thanks, applied to target-arm.next. (it's a bit awkward that acpi
-> table updates require also updating a bunch of binary test files,
-> but I suppose trying to make the golden-reference be some textual
-> format would be not very feasible.)
+> > Thanks, applied to target-arm.next. (it's a bit awkward that acpi
+> > table updates require also updating a bunch of binary test files,
+> > but I suppose trying to make the golden-reference be some textual
+> > format would be not very feasible.)
+>
+> Michael tried document it (commit 30c63d4fbd69)
+> so that binary blobs would not be required (trusted).
+>
+> Problem is usually in blobs being un-review-able and
+> unresolvable merge conflicts, that's why Michael
+> updates tables manually for all changes in pull req.
 
-Michael tried document it (commit 30c63d4fbd69)
-so that binary blobs would not be required (trusted).
+A workflow that requires me to do a blob update when I
+apply patches to target-arm.next isn't going to work for me.
+If Michael wants the blobs to be handled like that, then all
+patches which need to touch them will have to go via his tree.
 
-Problem is usually in blobs being un-review-able and
-unresolvable merge conflicts, that's why Michael
-updates tables manually for all changes in pull req.
-
-But in this case it touches only ARM tables and it's
-the first change to go in, so it could just work out.
-
-
-> 
-> thanks
-> -- PMM
-> 
-
+thanks
+-- PMM

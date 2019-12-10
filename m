@@ -1,264 +1,199 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5618008lff;
-        Tue, 10 Dec 2019 02:35:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxLNybmuFgYPJ80IZwVBGdOi9vBOPC8CUSIQN0ctF2BXgIYEikOgfzEygcLMhLI/V3aXxSg
-X-Received: by 2002:ac8:67c6:: with SMTP id r6mr29057000qtp.42.1575974121340;
-        Tue, 10 Dec 2019 02:35:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575974121; cv=none;
+Received: by 2002:a0c:95ac:0:0:0:0:0 with SMTP id s41csp401761qvs;
+        Tue, 10 Dec 2019 03:06:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxk0qCOLtwDBpgPJ3LQCx5WaU7h1Pm/ZSrL86EPW5egQUn/O4N/+b8SGEt7Py41ai0lDhCL
+X-Received: by 2002:a05:6808:64e:: with SMTP id z14mr3261072oih.79.1575976014555;
+        Tue, 10 Dec 2019 03:06:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575976014; cv=none;
         d=google.com; s=arc-20160816;
-        b=pdUVg1cpVFN6KWbOje+eogkIT5/jXPijK4j0Qqf20wh8cd8m27DPbkxeRKfSr/MOa2
-         FougNRCB2t5XqtyGopK8Looqxl1GvBQPy3UXSM/+ISmG/r40fv7/e7ZHkV02hx8ogfA+
-         66yG06WF8JfDyFXXnDdfx+2bsnf2isw336/NMA28pVFHpyvIr9DLQ+D360kxcpKULdcG
-         +9sf2xG/lNZ8ZF5kf1AKFrfWeXwACxNORqalMmnulSFyP7mp24GIwFXOZMemLHjJeNJs
-         Bt/6qWaUzF2IIrHpyQQaVv0fINZVheRpoCPBgajs1OXCeN6QV1hMfG8eOdR5oA5suHGb
-         mb+w==
+        b=gyUAi5c1PZ3cB0cMkyd0XOdipo1YPZL0b9uX1fiBEAxLl17fLFsTEC3zzDHZSS3/Lo
+         8hY18AFn+MomUaK/RyK27ct1FCSM5W8p9XiE7yjVQAtrWaVpm6Q1KZKk4fjZlM27L50F
+         R7ueL93hgMsupWMHHglvZvtnmJNg+/pQXdcF6Y44JhbpJ1hnr17aGnrjMTjvbAxfCeho
+         hUoeFnT5Fgh/NVgE0Z1jwE3Ll9TM1HZAel2hSITD3jfgViFnU+oYuQIJiYaoX71agQKx
+         pdw85Eq7avTSzUmyL48ToB+EO4wIjtHUUOr5MHBUBpsIWxI571DLxI8IInD+7YhQxzgE
+         jUZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=DbC6J/Esv/pbrerwBcSji/sNv2EzMh2+mNukZYl9JSw=;
-        b=miMBRKXlj+eNbJT+I9GbOXvPfWEIt4wVbJNV6xh/r+/mMEilTIqqGAiXVPD/dS4dzY
-         RUXWpovLUdVse8O0Kq+UUrnkAwpEQ+F0brWwWYXTC0QnvRGXc7UO2fFAy7mZWq1XUhL4
-         uFI4WMwvLGpN/bWPWp2yKra2W83hQTTTE8GCRozFF8j+oVtvKoQn2bXkeT1nga1ccgoE
-         RW/L+2/BDiUUgIscnKczyew2HtWkFOtMHkF6KdmU5m5FPqfnCFz2K1q1Hu1PLCRbkW/Z
-         0NavmeBjMz3C7MYCS35NbMay6mBT1PaNuG3uQHSXA30vKgifSBOxNbC1yvIkM+5Ss29n
-         s7Pw==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=z5V5YY8ucihfErt16zYIpWs1KUH/OqX2XpnQG4ohYVk=;
+        b=Exvha4Uf85H0xyTqu0ktYgBKxdZspF/iPvw4i6R+xBFFqUb+jJGY6kPgeusPk21TYq
+         nu4cb970bMjdvxsHIbf3xxs+E7GHN4mgMOWGDOCQuPyKNZ0pgRatIZDqu5H7z7x7hSiE
+         SpoASpFysoSU/W09N9/k5QikxldzdxfKHTYrXqFY1vxY278UXQkezUnob8SBH51J3n97
+         yuPEN5vIap/RZJ7cEXC1Sp6InHYPXBVCyprPvY+G/zT67+CwC8k2kFP9PtRkqq6QtRE7
+         Zk6xQbI0hDzquHs+h+sVzajxR95TrUDpSG/GzPmBtnmNg3dsXwJG4glIZeuTy4EQ1XCn
+         cq7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HQuZzC0n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x2si1603018qkn.86.2019.12.10.02.35.21
+        by mx.google.com with ESMTPS id f194si1728436oig.243.2019.12.10.03.06.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 02:35:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2019 03:06:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53024 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HQuZzC0n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55148 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iecrQ-0002Uq-Bt
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 05:35:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41009)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iedLx-0002Zm-L5
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 06:06:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53978)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <frederic.konrad@adacore.com>) id 1iecrE-0002RD-Nl
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 05:35:10 -0500
+ (envelope-from <drjones@redhat.com>) id 1iedKr-0001av-PZ
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 06:05:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <frederic.konrad@adacore.com>) id 1iecr9-0007NQ-2D
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 05:35:08 -0500
-Received: from mel.act-europe.fr ([2a02:2ab8:224:1::a0a:d2]:41065
- helo=smtp.eu.adacore.com)
+ (envelope-from <drjones@redhat.com>) id 1iedKn-0004VL-Tt
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 06:05:45 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:54003
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
- id 1iecr8-0007MP-P2; Tue, 10 Dec 2019 05:35:03 -0500
-Received: from localhost (localhost [127.0.0.1])
- by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 1D4798138C;
- Tue, 10 Dec 2019 11:34:59 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
-Received: from smtp.eu.adacore.com ([127.0.0.1])
- by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aBl5xW3mX5DS; Tue, 10 Dec 2019 11:34:59 +0100 (CET)
-Received: from localhost.localdomain (lfbn-tou-1-352-33.w86-206.abo.wanadoo.fr
- [86.206.184.33])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iedKn-0004VA-MN
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 06:05:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575975941;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=z5V5YY8ucihfErt16zYIpWs1KUH/OqX2XpnQG4ohYVk=;
+ b=HQuZzC0nxs07fYH9XUT2bo/Wl4anCwgOw0X/6eblk1ZElZPA/Ql/trsJ8pxWCSeuIz3T32
+ pwdlbnNBOyBA91THJG5bnT66/6RlIFrHm2XVmyQbEd4TNW82vUROWZmTiGONz9jnM1r9yp
+ 9MAs9PIFCYxvVZ9TbHM8HCYWO4r4uB8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-201-SR1kMiVrPKmk2g8b02wheA-1; Tue, 10 Dec 2019 06:05:37 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by smtp.eu.adacore.com (Postfix) with ESMTPSA id C928881388;
- Tue, 10 Dec 2019 11:34:58 +0100 (CET)
-Subject: Re: [PATCH 00/10] Add Allwinner H3 SoC and Orange Pi PC Machine
-To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
-From: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-ID: <6d774864-2bea-ecd6-0b14-a28d0756bfbc@adacore.com>
-Date: Tue, 10 Dec 2019 11:34:54 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.1
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 64049802C9B;
+ Tue, 10 Dec 2019 11:05:36 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8FD236FDCE;
+ Tue, 10 Dec 2019 11:05:33 +0000 (UTC)
+Date: Tue, 10 Dec 2019 12:05:31 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
+ virtual time
+Message-ID: <20191210110531.psjzlikir2ep2omo@kamzik.brq.redhat.com>
+References: <20191016143410.5023-1-drjones@redhat.com>
+ <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
+ <20191206155327.7adiyjjkjh56mg2t@kamzik.brq.redhat.com>
+ <596d07e933cb4da48dbba5b492e81a2438e78a2f.camel@redhat.com>
+ <CAFEAcA9+G0jprsHRQp8g=Aso+2-_GhoWkDGx4WWxoC88maOKEg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20191202210947.3603-1-nieklinnenbank@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: fr
+In-Reply-To: <CAFEAcA9+G0jprsHRQp8g=Aso+2-_GhoWkDGx4WWxoC88maOKEg@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: SR1kMiVrPKmk2g8b02wheA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 2a02:2ab8:224:1::a0a:d2
-X-BeenThere: qemu-arm@nongnu.org
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: b.galvani@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j2z/fDidi3Mx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: bijan.mottahedeh@oracle.com, Marc Zyngier <maz@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrea Bolognani <abologna@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /vdz820onaQm
 
+On Tue, Dec 10, 2019 at 10:29:22AM +0000, Peter Maydell wrote:
+> On Tue, 10 Dec 2019 at 09:51, Andrea Bolognani <abologna@redhat.com> wrot=
+e:
+> >
+> > On Fri, 2019-12-06 at 16:53 +0100, Andrew Jones wrote:
+> > > On Fri, Dec 06, 2019 at 03:22:58PM +0000, Peter Maydell wrote:
+> > > > On Wed, 16 Oct 2019 at 15:34, Andrew Jones <drjones@redhat.com> wro=
+te:
+> > > > > This series is inspired by a series[1] posted by Bijan Mottahedeh=
+ about
+> > > > > a year ago.  The problem described in the cover letter of [1] is =
+easily
+> > > > > reproducible and some users would like to have the option to avoi=
+d it.
+> > > > > However the solution, which is to adjust the virtual counter offs=
+et each
+> > > > > time the VM transitions to the running state, introduces a differ=
+ent
+> > > > > problem, which is that the virtual and physical counters diverge.=
+  As
+> > > > > described in the cover letter of [1] this divergence is easily ob=
+served
+> > > > > when comparing the output of `date` and `hwclock` after suspendin=
+g the
+> > > > > guest, waiting a while, and then resuming it.  Because this diffe=
+rent
+> > > > > problem may actually be worse for some users, unlike [1], the ser=
+ies
+> > > > > posted here makes the virtual counter offset adjustment optional =
+and not
+> > > > > even enabled by default.  Besides the adjustment being optional, =
+this
+> > > > > series approaches the needed changes differently to apply them in=
+ more
+> > > > > appropriate locations.  Finally, unlike [1], this series doesn't =
+attempt
+> > > > > to measure "pause time" itself.  Simply using QEMU_CLOCK_VIRTUAL,=
+ which
+> > > > > only ticks when the VM is not stopped, is sufficient.
+> > > >
+> > > > So I guess my overall question is "what is the x86 solution to
+> > > > this problem, and why is this all arm-specific?" It would also
+> > >
+> > > x86 adjusts the counter offset by default, and I don't think there's =
+any
+> > > way to turn that behavior off. I think it's too late to follow that
+> > > default for arm, but this series provides a way to opt into the same
+> > > behavior.
+> >
+> > My understanding is that turning kvm-adjvtime either on or off
+> > results in a different set of advantages and drawbacks, with neither
+> > begin a one-size-fits-all solution. So it's good that we offer a way
+> > for the user to pick one or the other based on their specific needs.
+>=20
+> If this is the case, shouldn't we be looking at having the
+> option exist for all architectures, not just arm? Obviously
+> pre-existing behaviour would imply having the default have
+> to differ for some archs/machines.
+>
 
+x86 developers could easily add this feature if/when they need a way to
+disable their current default behavior. But, since the kvm-adjvtime
+default would likely be 'on' for them, then they'd probably prefer the
+feature be named kvm-no-adjvtime, and default 'off'. Should we try to
+anticipate what x86 might want when naming this feature? IMO, we should
+not, especially because I'm doubtful that x86 will ever want to implement
+it. Also, what about the other KVM capable architectures? Which defaults
+do they have now? And do we expect them to want to expose a switch to the
+user to change it?
 
-Le 12/2/19 =C3=A0 10:09 PM, Niek Linnenbank a =C3=A9crit=C2=A0:
-> Dear QEMU developers,
->=20
-> Hereby I would like to contribute the following set of patches to QEMU
-> which add support for the Allwinner H3 System on Chip and the
-> Orange Pi PC machine. The following features and devices are supported:
->=20
->   * SMP (Quad Core Cortex A7)
->   * Generic Interrupt Controller configuration
->   * SRAM mappings
->   * Timer device (re-used from Allwinner A10)
->   * UART
->   * SD/MMC storage controller
->   * EMAC ethernet connectivity
->   * USB 2.0 interfaces
->   * Clock Control Unit
->   * System Control module
->   * Security Identifier device
->=20
-> Functionality related to graphical output such as HDMI, GPU,
-> Display Engine and audio are not included. Recently released
-> mainline Linux kernels (4.19 up to latest master) and mainline U-Boot
-> are known to work. The SD/MMC code is tested using bonnie++ and
-> various tools such as fsck, dd and fdisk. The EMAC is verified with ipe=
-rf3
-> using -netdev socket.
->=20
-> To build a Linux mainline kernel that can be booted by the Orange Pi PC
-> machine, simply configure the kernel using the sunxi_defconfig configur=
-ation:
->   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper
->   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make sunxi_defconfig
->=20
-> To be able to use USB storage, you need to manually enable the correspo=
-nding
-> configuration item. Start the kconfig configuration tool:
->   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make menuconfig
->=20
-> Navigate to the following item, enable it and save your configuration:
->   Device Drivers > USB support > USB Mass Storage support
->=20
-> Build the Linux kernel with:
->   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make -j5
->=20
-> To boot the newly build linux kernel in QEMU with the Orange Pi PC mach=
-ine, use:
->   $ qemu-system-arm -M orangepi -m 512 -nic user -nographic \
->       -kernel /path/to/linux/arch/arm/boot/zImage \
->       -append 'console=3DttyS0,115200' \
->       -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb
->=20
-> Note that this kernel does not have a root filesystem. You may provide =
-it
-> with an official Orange Pi PC image [1] either as an SD card or as
-> USB mass storage. To boot using the Orange Pi PC Debian image on SD car=
-d,
-> simply add the -sd argument and provide the proper root=3D kernel param=
-eter:
->   $ qemu-system-arm -M orangepi -m 512 -nic user -nographic \
->       -kernel /path/to/linux/arch/arm/boot/zImage \
->       -append 'console=3DttyS0,115200 root=3D/dev/mmcblk0p2' \
->       -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb \
->       -sd OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img
->=20
-> Alternatively, you can also choose to build and boot a recent buildroot=
- [2]
-> using the orangepi_pc_defconfig or Armbian image [3] for Orange Pi PC.
-> To attach an USB mass storage device to the machine, simply append to t=
-he command:
->   -drive if=3Dnone,id=3Dstick,file=3Dmyimage.img \
->   -device usb-storage,bus=3Dusb-bus.0,drive=3Dstick
->=20
-> U-Boot mainline can be build and configured using the orangepi_pc_defco=
-nfig
-> using similar commands as describe above for Linux. To start U-Boot usi=
-ng
-> the Orange Pi PC machine, provide the u-boot binary to the -kernel argu=
-ment:
->   $ qemu-system-arm -M orangepi -m 512 -nic user -nographic \
->       -kernel /path/to/uboot/u-boot -sd disk.img
->=20
-> Use the following U-boot commands to load and boot a Linux kernel from =
-SD card:
->   -> setenv bootargs console=3DttyS0,115200
->   -> ext2load mmc 0 0x42000000 zImage
->   -> ext2load mmc 0 0x43000000 sun8i-h2-plus-orangepi-zero.dtb
->   -> bootz 0x42000000 - 0x43000000
->=20
-> Looking forward to your review comments. I will do my best
-> to update the patches where needed.
->=20
-> With kind regards,
->=20
-> Niek Linnenbank
->=20
-> [1] http://www.orangepi.org/downloadresources/
-> [2] https://buildroot.org/download.html
-> [3] https://www.armbian.com/orange-pi-pc/
+OTOH, I agree with Andrea that it would be nice if arm had the same
+default as x86, allowing the documentation regarding this stuff to apply
+to both. If we did choose to turn this feature on by default for virt-5.0,
+then maybe we should introduce the feature with the name kvm-no-adjvtime
+instead.
 
-Works well on my side with vanilla linux-4.9.13 built with gcc-8.3.0 + bu=
-sybox
-and sun8i-h3-orangepi-one.dtb.
+Thanks,
+drew
 
-Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
-
->=20
-> Niek Linnenbank (10):
->    hw: arm: add Allwinner H3 System-on-Chip
->    hw: arm: add Xunlong Orange Pi PC machine
->    arm: allwinner-h3: add Clock Control Unit
->    arm: allwinner-h3: add USB host controller
->    arm: allwinner-h3: add System Control module
->    arm/arm-powerctl: set NSACR.{CP11,CP10} bits in arm_set_cpu_on()
->    arm: allwinner-h3: add CPU Configuration module
->    arm: allwinner-h3: add Security Identifier device
->    arm: allwinner-h3: add SD/MMC host controller
->    arm: allwinner-h3: add EMAC ethernet device
->=20
->   MAINTAINERS                           |   8 +
->   default-configs/arm-softmmu.mak       |   1 +
->   hw/arm/Kconfig                        |   9 +
->   hw/arm/Makefile.objs                  |   1 +
->   hw/arm/allwinner-h3.c                 | 316 ++++++++++
->   hw/arm/orangepi.c                     | 114 ++++
->   hw/misc/Makefile.objs                 |   4 +
->   hw/misc/allwinner-h3-clk.c            | 227 ++++++++
->   hw/misc/allwinner-h3-cpucfg.c         | 280 +++++++++
->   hw/misc/allwinner-h3-sid.c            | 162 ++++++
->   hw/misc/allwinner-h3-syscon.c         | 139 +++++
->   hw/misc/trace-events                  |   5 +
->   hw/net/Kconfig                        |   3 +
->   hw/net/Makefile.objs                  |   1 +
->   hw/net/allwinner-h3-emac.c            | 786 +++++++++++++++++++++++++
->   hw/net/trace-events                   |  10 +
->   hw/sd/Makefile.objs                   |   1 +
->   hw/sd/allwinner-h3-sdhost.c           | 791 +++++++++++++++++++++++++=
-+
->   hw/sd/trace-events                    |   7 +
->   hw/usb/hcd-ehci-sysbus.c              |  17 +
->   hw/usb/hcd-ehci.h                     |   1 +
->   include/hw/arm/allwinner-h3.h         | 130 +++++
->   include/hw/misc/allwinner-h3-clk.h    |  41 ++
->   include/hw/misc/allwinner-h3-cpucfg.h |  44 ++
->   include/hw/misc/allwinner-h3-sid.h    |  42 ++
->   include/hw/misc/allwinner-h3-syscon.h |  43 ++
->   include/hw/net/allwinner-h3-emac.h    |  69 +++
->   include/hw/sd/allwinner-h3-sdhost.h   |  73 +++
->   target/arm/arm-powerctl.c             |   3 +
->   29 files changed, 3328 insertions(+)
->   create mode 100644 hw/arm/allwinner-h3.c
->   create mode 100644 hw/arm/orangepi.c
->   create mode 100644 hw/misc/allwinner-h3-clk.c
->   create mode 100644 hw/misc/allwinner-h3-cpucfg.c
->   create mode 100644 hw/misc/allwinner-h3-sid.c
->   create mode 100644 hw/misc/allwinner-h3-syscon.c
->   create mode 100644 hw/net/allwinner-h3-emac.c
->   create mode 100644 hw/sd/allwinner-h3-sdhost.c
->   create mode 100644 include/hw/arm/allwinner-h3.h
->   create mode 100644 include/hw/misc/allwinner-h3-clk.h
->   create mode 100644 include/hw/misc/allwinner-h3-cpucfg.h
->   create mode 100644 include/hw/misc/allwinner-h3-sid.h
->   create mode 100644 include/hw/misc/allwinner-h3-syscon.h
->   create mode 100644 include/hw/net/allwinner-h3-emac.h
->   create mode 100644 include/hw/sd/allwinner-h3-sdhost.h
->=20

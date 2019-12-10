@@ -1,105 +1,108 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6074533lff;
-        Tue, 10 Dec 2019 08:54:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxeYjhXfRxAIOc6BojkW35pnaOVneA98tQ6KjKbMSDl8Tz+pi5GA9rlg+R2y7K2tZMh7tvZ
-X-Received: by 2002:a9d:1d02:: with SMTP id m2mr24687903otm.45.1575996896671;
-        Tue, 10 Dec 2019 08:54:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575996896; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6074789lff;
+        Tue, 10 Dec 2019 08:55:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzUTlTQ9pnj6MhqQVxlfbUPBTSy6CPt/QPOAGz6BwnWW/iPTE7fVZ4BJUrIG4/+R8km7daY
+X-Received: by 2002:a0c:ead1:: with SMTP id y17mr28325804qvp.210.1575996910892;
+        Tue, 10 Dec 2019 08:55:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575996910; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y/8i9dBo679XRAvvp+DKXlMlQ3xOEg/40OAhqpkATM40/t4QnUbbMgl5bMbH3+396y
-         4CbtD9MMLcjRRCbELmIYIyvnI43ra20TEozdiXfs8YvBzwmVpWn1ikBC1CnMP8dZsiOD
-         XiNRubJl0sidT65i5rJl08bOYOhOl+2Eu+e4HJdweDP0vCvvD5+XNASbK+hyIL18ZXHc
-         YoWdVBjX6LuRzUnbDlyJmyyq69t3DkrCnuTFvg44gRoGk0HzKv5fpWl/05JRS6TLHe3G
-         q8vY8EH01bli0RnoEJA7K5Fz1wa7XUMxJcZXGLzCuSq7GY4l8DbWYBG8I0tLFFXoBB/h
-         /Yrw==
+        b=cKlrqk/vAopZDeWDBQ3PXx41chkBco/QBaGRQlhev+WCxrQ92oD6EYnAZiT2CPBALs
+         hJejVuPns6v62tbOqVnwhWLvbIi2aRwHzyhi/E7HJUXldI8i9ptnuMP0UfYRzgVDNgMg
+         +vqmdQmVaMibdM14WX8phu0NWXY5Cd2btGSKZZD3SAP+Y4dDGO7kIUK/d20HoW8FtWcm
+         FnddYf8zrTxR27IctmxT+DWwgOKrUoZsff1m7uQuVAMyGiWpR6bDdKv9L2CmfO7zRYJ/
+         hLgrxHab+3k1eLZZkOocfdV62I5674GbTCjTkb21wq7mDEZkrIqDZTlNhSZfjaA275iA
+         Lx1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=yBKxW4v01bphY2O9YP1yA6L9FAbeDZs2B/G4JBWdu/E=;
-        b=Rh8dHBapT7iiBRPhKwnJodDOYnl5O34nw50lVT9r34Z4GCRG+3VEuKxz2/SsmWwcPz
-         X6pObgyqY/T33c8jd8xi1hk+AG8uaO75ZmSUJfImC8f4w/v4v4ueQ8/HIF8ATxS9UTYl
-         2osR3AUqCKLg8WXUhZtwx2GjY4xWFeBe04KR4K3rQiMaten1vEe1fwcLpdMslEyMBmk3
-         zUvUPG7AyzrphZddIw7PvzjQNZG71i6umprpfUuIPweh8QZtwPoutJDm+1yGjU9TyBrG
-         dD4lxUO9YCc7IvFBFi7vRRt9rO2/wF+Zk2IdDfOYJP89ICHG0hJyAR+1uaZ0YBGrtCbg
-         +2Mw==
+        bh=UxvJ/YVTJuP+hzpz1BJMpuf68KLAsLUo57u2sksODLU=;
+        b=rFtKGprQPjl5CS7f+tzaKgAycDvzdTWWb5mWoh5Z/U2XLkAVF2AaxgnBzKf+Ltik29
+         q/7PrZSHHVsaykuIJG9vAkeHfR4V05bT/edqnMJPS48NQ2Hs8kGh/Hrtyl2ZehJU5TxI
+         +GB3VT2l3s/RvOfShpzPBi/bwXevh75blKh9PwQsrv/5Qo8mj5MFS+nvYihuNCr/xCJJ
+         2p2P/eUQ6g47NIDmgz8Rhw14ECt/vEzmBRSBwYxvW5Kjr+tbcVQCUdYIkO5fooF2trZQ
+         WiicBId9wHTSWI4CBIc9qJShNdVHyT4ix5CwhIY7pEXDvbKCnolyGSmphwL/ofAjiOHM
+         5mvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=j5+PyxjG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BGiPRQuw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v18si2028271otn.257.2019.12.10.08.54.56
+        by mx.google.com with ESMTPS id a68si2355900qke.236.2019.12.10.08.55.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 08:54:56 -0800 (PST)
+        Tue, 10 Dec 2019 08:55:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=j5+PyxjG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BGiPRQuw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59378 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59398 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ieiml-0004kM-IE
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:54:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59291)
+	id 1ieimz-00054j-Hg
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:55:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33195)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jean-philippe@linaro.org>) id 1ieieR-0004k4-Pq
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:46:20 -0500
+ (envelope-from <daniel.thompson@linaro.org>) id 1ieilm-0003wN-VN
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:53:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jean-philippe@linaro.org>) id 1ieieQ-000555-Ua
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:46:19 -0500
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:46261)
+ (envelope-from <daniel.thompson@linaro.org>) id 1ieill-0007dQ-RL
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:53:54 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38950)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
- id 1ieieQ-00054a-Os
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:46:18 -0500
-Received: by mail-wr1-x443.google.com with SMTP id z7so20781808wrl.13
- for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 08:46:18 -0800 (PST)
+ (Exim 4.71) (envelope-from <daniel.thompson@linaro.org>)
+ id 1ieill-0007cQ-Lf
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:53:53 -0500
+Received: by mail-wm1-x341.google.com with SMTP id d5so2458713wmb.4
+ for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 08:53:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=yBKxW4v01bphY2O9YP1yA6L9FAbeDZs2B/G4JBWdu/E=;
- b=j5+PyxjGFHC0Sr3oAnZYMUkLhH3Yjf/rZSjyCb+vUWnHg8tykTdUKDwS7HlIrmy6Sk
- nNXzqKGkeyQz4ujmtDZL+im0k2nQYSoivNp3P0P3qLl8ICw4iYxyKqI5MC4Sv7S5VSam
- Mg91e5Ycs2wgJyiuysUOIHSbewI/6UvG4AN5SvtKGzvyejo3uWy+FptbcGyNll+5XAX2
- XHHAVRIUgfWyTRQZHXfPusugHkAu+UGIVgj4ISzTzgS13M/ZjdCaeHQIcseinzJGbHCS
- e1b18kluJ4WcKH6h0+vJye8COrWjl8ugB6+2WkHO2ehGnrHsFt1j/UIrzaMBdym6fj4B
- yM7w==
+ bh=UxvJ/YVTJuP+hzpz1BJMpuf68KLAsLUo57u2sksODLU=;
+ b=BGiPRQuwSInGNHSJAJJyjw7IdSn2N/5ded78AZFJiUsXWL2FJn25Ro9Kdak/CS/Wlb
+ RDw21qnr3CwaeOALl/A0is/GVeXyG2FwjftKiBjFdzylfZ3YkLhwt00ZN7h5XDBUkxVl
+ 5ki1+DZNwPsqJTJMr6Yqr8rrpr1Ng3Nf8gYauYG9PUJWf2dgs4B3Fv+lipGlTHY12kTg
+ E0pKtq/Kpr5Wu2SzOCbvCgGaZOYrYIrdKtwQpYuUrfqllnpKfzitGy/HXk+zOY8zaKdG
+ 5W9mCF2aLisOKJnqwI3t7QFqLJtIzSHq/Vz57fQPwoSFVJHZLmgDGLv/Dr9zbyclJ0fj
+ A0Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=yBKxW4v01bphY2O9YP1yA6L9FAbeDZs2B/G4JBWdu/E=;
- b=ML+ktX6qjZBr4IYP+Dlhgnzo/WJMcW6kdNJ+PoKgDcD26KUKtQk5YUNepR5gYDbqPo
- aynKQQf4C9YVIWx/oe7fqNQstQNyqgSg+JzVKrqwyO48mhYjo+EuO1R+XsZ8Zxq4DfaA
- yu9T/Wq51Mp8JwxB6fhhUb9IekWtKuIvU6DiCrChK+zjDHGmHBeiUaBB+V2j8cp0YMu0
- kSH9IP3olFH2+ezdINYPd1c99RMaGF6w6M4RHVnaJJx+elrNoJsYViL/oiNjqXNvImlr
- kRa5txUEY0lX6bnpE6FHqo/wbZe8RBoqe+Sz279hpHcbFy91qFxJFhZ/nDjCUvkeZDOq
- j7WA==
-X-Gm-Message-State: APjAAAVqHZEpKc2+xsx7ejBaXz2KYJSopWmSQO0I7XtX898Tz3M57o38
- hgrw8U4sj2vyS6cNPPCtsot2UA==
-X-Received: by 2002:adf:fe4d:: with SMTP id m13mr3978876wrs.179.1575996377832; 
- Tue, 10 Dec 2019 08:46:17 -0800 (PST)
-Received: from myrica (adsl-84-227-176-239.adslplus.ch. [84.227.176.239])
- by smtp.gmail.com with ESMTPSA id w22sm3534503wmk.34.2019.12.10.08.46.16
+ bh=UxvJ/YVTJuP+hzpz1BJMpuf68KLAsLUo57u2sksODLU=;
+ b=e4g3ktbyQxMrLddT2YOlO0BTcxQgQOk4AmrmS2mBomD4B3GSUr0Uq9efPzvYhd/1/c
+ 0tydbY+FlpWaG3IXlc3nnC08B4mjzR0gM8xp6COhvUrt0z1tEV+cxgjoyozHTPncO/KD
+ XDBJoM1shUImoFMZFPHULVD+GdxEjtbOdtBQi7yJARsRXl4cILub0+YxbxNgPYqYVul9
+ OGlRxA1C2jdioyWBHGB19u3FUvDohAWfivC+NwjmzxdGUIATUHh7aueTjwJqSaLIeywr
+ DE8O83F3/EB3PIp28f9vkuaqKIO3kLXWrpMYmInUBIPmknInLXq+Z+NEgX7j+ZH+Iq0B
+ b6TA==
+X-Gm-Message-State: APjAAAVi57TXrQRJX3Cuk+OkcqT7+3rKk86Fdt2XMIytyTx9mzvyZfyV
+ i8FF7evTj1iHEw6EfJpfXORi7g==
+X-Received: by 2002:a1c:731a:: with SMTP id d26mr5975246wmb.130.1575996832049; 
+ Tue, 10 Dec 2019 08:53:52 -0800 (PST)
+Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
+ [86.9.19.6])
+ by smtp.gmail.com with ESMTPSA id z18sm3637640wmf.21.2019.12.10.08.53.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Dec 2019 08:46:17 -0800 (PST)
-Date: Tue, 10 Dec 2019 17:46:12 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH for-5.0 v11 13/20] virtio-iommu: Implement probe request
-Message-ID: <20191210164612.GK277340@myrica>
-References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-14-eric.auger@redhat.com>
+ Tue, 10 Dec 2019 08:53:51 -0800 (PST)
+Date: Tue, 10 Dec 2019 16:53:49 +0000
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/arm/virt: Second uart for normal-world
+Message-ID: <20191210165349.5sfyqwkbpfl7nlk2@holly.lan>
+References: <20191209152456.977399-1-daniel.thompson@linaro.org>
+ <CAFEAcA-sgFKev2MiOjRAzuE0trNYQoNe6LOFLeghGm73N1h=SA@mail.gmail.com>
+ <20191209170827.yojyts6qdvpxbkp4@holly.lan>
+ <CAFEAcA_3_EwjAZ_Av4a9BkT_3KmbEEFFFukyV7gsDuWPrYKmVQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20191122182943.4656-14-eric.auger@redhat.com>
+In-Reply-To: <CAFEAcA_3_EwjAZ_Av4a9BkT_3KmbEEFFFukyV7gsDuWPrYKmVQ@mail.gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::443
+X-Received-From: 2a00:1450:4864:20::341
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,20 +114,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
- quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
- armbru@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- dgilbert@redhat.com, eric.auger.pro@gmail.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7RKl6tJ7EtIS
+X-TUID: yAfuzxHuUtPu
 
-On Fri, Nov 22, 2019 at 07:29:36PM +0100, Eric Auger wrote:
-> This patch implements the PROBE request. At the moment,
-> no reserved regions are returned as none are registered
-> per device. Only a NONE property is returned.
+On Mon, Dec 09, 2019 at 05:10:30PM +0000, Peter Maydell wrote:
+> On Mon, 9 Dec 2019 at 17:08, Daniel Thompson <daniel.thompson@linaro.org> wrote:
+> > I don't object to making it command line dependant (it is certainly
+> > lower risk) but, out of interest, has using /aliases to force the
+> > kernel to enumerate the serial nodes in the existing order been ruled
+> > out for any reason.
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> No, I don't think anybody's investigated that (I wasn't aware
+> that you could do something like that). Bear in mind that the
+> kernel is not the only consumer of the DT, though -- you need
+> to use a mechanism that all DT consumers will handle correctly.
 
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+The syntax for /aliases is standardized (in the DT documentation) but
+AFAIK the exact semantic meaning of an alias relies somewhat on idiom.
+It is true that the DT binding documentation for some serial drivers
+does include details of /aliases but sadly PL011 is not amoung them.
+
+I took a fairly detailed look at FreeBSD. I don't think /aliases is
+used to control enumeration order but that appears to be because
+aliases are handled in a different way to Linux. For example 
+FreeBSD allows a custom console to be selected using FDT syntax
+(hw.fdt.console=serial0 or hw.fdt.console=/path/to/fdt-uart ) which
+means the Linux-like approach (such as console=ttyAMA0) need not be
+used.
+
+In summary I think that support for /aliases can and should be added
+since it the best way to help DT systems figure out how to match qemu
+uart numbering to its own naming.
+
+However I agree we still need a way to create systems with only a
+single UART even if I have not yet been able to come up with a test
+case that proves /aliases is insufficient ;-)
+
+
+Daniel.

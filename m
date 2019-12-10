@@ -1,189 +1,186 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6058545lff;
-        Tue, 10 Dec 2019 08:41:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw24Iy9WPpBQWnzHdFb5pJii7JvR//RG/1OXsNg0GKr11bMBwBAnB4+B1Z2rt/AhjCEFhFV
-X-Received: by 2002:a37:9906:: with SMTP id b6mr19505365qke.406.1575996100310;
-        Tue, 10 Dec 2019 08:41:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575996100; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6060852lff;
+        Tue, 10 Dec 2019 08:43:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxATLCCWeHOKkMAxXoNGnw8oC3qchYmyZxpCGTEKt735Xk+snGKLrci3niBInGn0LRJrBKp
+X-Received: by 2002:a37:a4cf:: with SMTP id n198mr13549683qke.483.1575996214282;
+        Tue, 10 Dec 2019 08:43:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575996214; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y//Xtpv9Qg04h/86F0MZd9oIbKB4FpOIZ9kOfw8yfHWDZV4Pq/rcPbSqpHo2kM4kT+
-         v5iC47wCgz47DeLkYPk7C932pBYvb+LbdyzXf5dmlwoKDZPIlpQz/dPvmFBKR9WLPvaI
-         +/hbp6OT8/iURpp8WLkvTZ1Adm5t5wM3dHPjoTgvr3GJK/F0cdkgJ8iBpHQ1Ft5xzKFh
-         RYevk8Nq8TVhTpgmJGUfSxKzZEjCOVulQV7LrAwnGQTg6misXmTPwc1orvnqV7SnG5mZ
-         uGtaO4vlWUpHTDkSZ9yUMmYFcJEM7VOcym9hpoobfYKlZksAPqZ/vziQrvB6CB9I8Uhg
-         RprA==
+        b=bWwOR23xm8yy3yfLTAtFhD83QtHUI+06tbT1z5M6yy5QN8OBnti+57zkpbOQ/8mtvk
+         KGDSR/6Z4BXwA8AN94ThrhGFrMOoalIn+mSGAfdTQb5ggHiPNR9ZZm5UZn9ZeVjX/hHe
+         O+VOUAGDysliMiMo1fiTXJGYau1i6gwcP2mR6ypp5Ibm7Ap5sWrAZd4hmQlivBylNS0U
+         AJZf0Ggb7qYeGXHEzesJ0YZQlCAP2eHaDvlJUzOMJxK9spJUvzjeB3ULSbJldnUQSjSc
+         8qbrnIL+iwT7C9V2oc1y7NI4/8MNsQ1jznIkzN3yl6dkGwpI/jNI0lc9ZD3K0EQwQIf4
+         1wvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=oQ2rGxKgg83OZ9oqSgECS/5VH/LEYzs7CGZjuEUgRUI=;
-        b=bhMWBCFUQpnUOpCfBNZGLYwVZsY42puEXl3RBXCjAfphwmfyzA/oP+jxtQlCrmxYaa
-         HCjRCPEFCaB+eZQXLGB4jq3ap+2jOChS1IDLo7/6IN1bqOsbJYObcMru9eqbBzNV5ByQ
-         NIuRjtVghevSFoqp129WKrsqvA3ApkxZuCzpfnzwvzXDyFuxS2Zl+JbLt/jpvy75eV0A
-         D+s5MaN4JnNwI7XstdHJ47pzq5E7aT6INj2EW8S4/i1tI+oSYzqtLCUm+tqiUHvW8Lyv
-         oug6XMoOuUWj/g0YpG2utiyq/h74wDfw4tmej3JwR53vT2rgNCCPqFGGoxm/r/sk3yZc
-         tUEg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=gqtOT5wE759za0LpbvnxJtRB0nZSfy/DZcdzVo4pDRI=;
+        b=uSPfVAaF4vI8nA4YJ79OWNxWjtNDrnNY9PYrLciVqasaPSMNIwVHVBhJHCWR6pEGX4
+         fW0BmuxzsIK2z3wx8TirywtcyqRUmJ1Ys48oUg8hh5a98j0CvkNh6jQnmIaSptf0CedZ
+         Sm/KLmguFwePDf02CJtimzp5HC+zKZj4drutrBUjhuFa+HGDcy7K0mkqJ48RcWiu3tA1
+         9VzCfo2fYoVDy41YJWzygDyRt6HtfbWnbZM8g3qQuriNvNnT6WMhC+jjoFnoQcu/EcZx
+         f3blx2UAExr6wVtrOAbFUAL34n7nrtKCxN2xqXeAPXtuxrDEb5HLni/v3KDsERaF2qE5
+         PXMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U2FuMeKa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="lLCV/4Kj";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a198si2123779qkb.38.2019.12.10.08.41.40
+        by mx.google.com with ESMTPS id h3si2102710qvs.71.2019.12.10.08.43.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 08:41:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2019 08:43:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U2FuMeKa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58946 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="lLCV/4Kj";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58972 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ieiZv-0000L1-Mx
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:41:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58133)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ieibl-0001hA-OP
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:43:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58295)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1ieiZb-0008Td-FH
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:41:20 -0500
+ (envelope-from <jean-philippe@linaro.org>) id 1ieiaL-0000mZ-FM
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 11:42:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1ieiZa-0003Tn-Bi
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:41:19 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27881
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1ieiZa-0003TB-6w
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:41:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575996077;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oQ2rGxKgg83OZ9oqSgECS/5VH/LEYzs7CGZjuEUgRUI=;
- b=U2FuMeKaqgxy+iGDpBgo5bCgXw9zQJw2HHyuJ/4Q9+797q+iMJ08+JmFb18wQka96E4XHQ
- SWMxHo/Y/WbAmMZWDHH0kQBvnd5rZa5Plbp5bBT51gnmYx/X/P5V/8eufVyr6Vm0n1gedV
- 6acw9wrylReaa1fWfYTu7ZakekpSQwA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-132-fCV5_Z9mP2qvGb4xpFHIBQ-1; Tue, 10 Dec 2019 11:41:13 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 71E711010C5D;
- Tue, 10 Dec 2019 16:41:12 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 227271001902;
- Tue, 10 Dec 2019 16:41:10 +0000 (UTC)
-Date: Tue, 10 Dec 2019 17:41:08 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v1 2/5] timer: arm: Introduce functions to get the host
- cntfrq
-Message-ID: <20191210164108.waqpn3wbo75nwqpx@kamzik.brq.redhat.com>
-References: <20191016143410.5023-1-drjones@redhat.com>
- <20191016143410.5023-3-drjones@redhat.com>
- <CAFEAcA-a9O88EbKqSNxb_7GLVZzC+dx0daEWyAAe9SS4SRa1oQ@mail.gmail.com>
+ (envelope-from <jean-philippe@linaro.org>) id 1ieiaK-0003he-BB
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 11:42:05 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35070)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
+ id 1ieiaK-0003hP-3L
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 11:42:04 -0500
+Received: by mail-wr1-x441.google.com with SMTP id g17so20886806wro.2
+ for <qemu-devel@nongnu.org>; Tue, 10 Dec 2019 08:42:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=gqtOT5wE759za0LpbvnxJtRB0nZSfy/DZcdzVo4pDRI=;
+ b=lLCV/4KjY237HMPohF0mo2sSICkE5JBX794nSpAY+rZx6y/ynvDvsy48mtIzV4pzHS
+ xbgVZ9JUDviRDv3KleVVmodHwqH1Bh5TDjOMb3MmhmE1J67RYHFtoDb4NH75EcJ90R4u
+ q5wlb+wIMNeFVqYpnamEzMOO9IrIS78NeAUBrhFk0WxqlFuj8dipHRszGbzZU0wmfLLc
+ s93pqsexqAAf1dNG0RrRmoeMnB4GVeb0459lyZE9Qqru4HBz709oEsuca58h++gMGB+O
+ jwx30o5OzVspUdv36R5YLjTU9EYZts1t80PIRbShq5L3Ph7whBKvhj1BR8o/HAV/b0GS
+ 3U+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=gqtOT5wE759za0LpbvnxJtRB0nZSfy/DZcdzVo4pDRI=;
+ b=sMv1lRDTmhkOegQ+HsUyKdW1r2/hJmz/PBzEeV/2Ft6FxHyu9ZTx2tVyQpMmT7Bu2x
+ yowqcIVppVMeK9VkJugT7/eM/8+TfHWVQjrumrmvUQKKeQIksRM069OfGrVEXJEMxynU
+ 2EFiWR/Ftk6Z+WHSi96JlS5TPXRmsuXD8mKQ293z+pNqowWQkAGNufZkbIf/ERxakB1i
+ heNEeft6Wse5O+z1v6z5AsqLTP+ZbucafkCSP7CfTncoTi1qy/GrIsWHTXyKwZ/sNqzp
+ D7xWNfaszLTFHjdzP1BQi7pH63MZu8bn+3//1W09I7o0LpMB3zzXID13lmsgkW1UJdjM
+ YVUw==
+X-Gm-Message-State: APjAAAUAjlfP0Qdqxwot2JBp/MCCHWHtITygDgFRnVqZcmXBM2DRclfI
+ +TdgGLQMyEmFrYH4gHXI+mLPGA==
+X-Received: by 2002:a5d:4cc9:: with SMTP id c9mr4213902wrt.70.1575996123027;
+ Tue, 10 Dec 2019 08:42:03 -0800 (PST)
+Received: from myrica (adsl-84-227-176-239.adslplus.ch. [84.227.176.239])
+ by smtp.gmail.com with ESMTPSA id e8sm3824236wrt.7.2019.12.10.08.42.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Dec 2019 08:42:02 -0800 (PST)
+Date: Tue, 10 Dec 2019 17:41:56 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH for-5.0 v11 06/20] virtio-iommu: Implement attach/detach
+ command
+Message-ID: <20191210164156.GE277340@myrica>
+References: <20191122182943.4656-1-eric.auger@redhat.com>
+ <20191122182943.4656-7-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-a9O88EbKqSNxb_7GLVZzC+dx0daEWyAAe9SS4SRa1oQ@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: fCV5_Z9mP2qvGb4xpFHIBQ-1
-X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20191122182943.4656-7-eric.auger@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::441
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <maz@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, bijan.mottahedeh@oracle.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5tv5t6BqaCyV
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
+ quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
+ armbru@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ dgilbert@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X6LL5lexUM1g
 
-On Tue, Dec 10, 2019 at 03:47:39PM +0000, Peter Maydell wrote:
-> On Wed, 16 Oct 2019 at 15:34, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > When acceleration like KVM is in use it's necessary to use the host's
-> > counter frequency when converting ticks to or from time units.
-> >
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> > ---
-> >  include/qemu/timer.h | 16 ++++++++++++++++
-> >  1 file changed, 16 insertions(+)
-> >
-> > diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-> > index 85bc6eb00b21..8941ddea8242 100644
-> > --- a/include/qemu/timer.h
-> > +++ b/include/qemu/timer.h
-> > @@ -1006,6 +1006,22 @@ static inline int64_t cpu_get_host_ticks(void)
-> >  }
-> >  #endif
-> >
-> > +#if defined(__aarch64__)
-> > +static inline uint32_t cpu_get_host_tick_frequency(void)
-> > +{
-> > +    uint64_t frq;
-> > +    asm volatile("mrs %0, cntfrq_el0" : "=3Dr" (frq));
-> > +    return frq;
-> > +}
-> > +#elif defined(__arm__)
-> > +static inline uint32_t cpu_get_host_tick_frequency(void)
-> > +{
-> > +    uint32_t frq;
-> > +    asm volatile("mrc p15, 0, %0, c14, c0, 0" : "=3Dr" (frq));
-> > +    return frq;
-> > +}
-> > +#endif
->=20
-> Don't we want to know what the guest counter frequency
-> is, not the host counter frequency? That is, I would have
-> expected that we get this value via doing a KVM ONE_REG ioctl
-> to ask the kernel what the guest cntfrq is. Are we using
-> the host value on the assumption that the guest might have
-> misprogrammed their copy of the register?
->
+On Fri, Nov 22, 2019 at 07:29:29PM +0100, Eric Auger wrote:
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index 235bde2203..138d5b2a9c 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -77,11 +77,12 @@ static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+>  static void virtio_iommu_detach_endpoint_from_domain(viommu_endpoint *ep)
+>  {
+>      QLIST_REMOVE(ep, next);
+> +    g_tree_unref(ep->domain->mappings);
+>      ep->domain = NULL;
+>  }
+>  
+> -viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id);
+> -viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id)
+> +static viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
+> +                                                  uint32_t ep_id)
+>  {
+>      viommu_endpoint *ep;
+>  
+> @@ -102,15 +103,14 @@ static void virtio_iommu_put_endpoint(gpointer data)
+>  
+>      if (ep->domain) {
+>          virtio_iommu_detach_endpoint_from_domain(ep);
+> -        g_tree_unref(ep->domain->mappings);
+>      }
+>  
+>      trace_virtio_iommu_put_endpoint(ep->id);
+>      g_free(ep);
+>  }
+>  
+> -viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id);
+> -viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id)
+> +static viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s,
+> +                                              uint32_t domain_id)
 
-Indeed it would be best to get whatever KVM is using for the given VCPU's
-CNTFRQ through GET_ONE_REG, but KVM doesn't seem to allow it. I hadn't
-tested before, but to be sure, I did now with the following kselftests
-test
+Looks like the above change belong to patch 5?
 
- #include "kvm_util.h"
- #include "processor.h"
-=20
- static void guest_code(void) { }
-=20
- int main(void)
- {
-   struct kvm_vm *vm =3D vm_create_default(0, 0, guest_code);
-   uint64_t reg;
-=20
-   get_reg(vm, 0, ARM64_SYS_REG(3, 3, 14, 0, 0), &reg);
-   printf("%lx\n", reg);
-   return 0;
- }
+>  {
+>      viommu_domain *domain;
+>  
+> @@ -137,7 +137,6 @@ static void virtio_iommu_put_domain(gpointer data)
+>      QLIST_FOREACH_SAFE(iter, &domain->endpoint_list, next, tmp) {
+>          virtio_iommu_detach_endpoint_from_domain(iter);
+>      }
+> -    g_tree_destroy(domain->mappings);
 
-The vcpu ioctl fails with ENOENT. Currently KVM requires all guests to
-have the same frequency as the host, but I guess that will change
-eventually. It's definitely best to do the save/restore thing, as you
-suggest.
+When created by virtio_iommu_get_domain(), mappings has one reference.
+Then for each attach (including the first one) an additional reference is
+taken, and freed by virtio_iommu_detach_endpoint_from_domain(). So I think
+there are two problems:
+
+* virtio_iommu_put_domain() drops one ref for each endpoint, but we still
+  have one reference to mappings, so they're not freed. We do need this
+  g_tree_destroy()
+
+* After detaching all the endpoints, the guest may reuse the domain ID for
+  another domain, but the previous mappings haven't been erased. Not sure
+  how to fix this using the g_tree refs, because dropping all the
+  references will free the internal tree data and it won't be reusable.
 
 Thanks,
-drew
-
+Jean

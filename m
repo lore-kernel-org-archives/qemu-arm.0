@@ -1,168 +1,154 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6017202lff;
-        Tue, 10 Dec 2019 08:11:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzq7aWvuR/78CD4UikQnSnR2YjpQjQtv0WPZ773V49Y1ckyFzZG2jjAXPuWK2oLXVDHK/9b
-X-Received: by 2002:a9d:578a:: with SMTP id q10mr23352285oth.215.1575994293027;
-        Tue, 10 Dec 2019 08:11:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575994293; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6045985lff;
+        Tue, 10 Dec 2019 08:32:17 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzCEGqUVYmPJSsspACyV6Ezvowsieg4218oaCgWHYzmi7j+SbZuXNKaeGUng9ZB/bplKfrP
+X-Received: by 2002:a0c:e14f:: with SMTP id c15mr28541050qvl.169.1575995537420;
+        Tue, 10 Dec 2019 08:32:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575995537; cv=none;
         d=google.com; s=arc-20160816;
-        b=phDgRgRRNdFhr5KI8SDo089aUQA986qX28QczZmbfYLerP0fz+/3wK3itQXQau/9dn
-         X/NGM2ExTP+az1kpp8uQjBlH6o/lEfQOVx7HzYoqhCsZZQ1eSK5o9j0U/cbMch9YwK9k
-         EerhIjZAuW60DgvOn4YWyl5JE7KNXpHGcwD8jgOuc5Nta0ARCnucYInd51v8fmAPI+EX
-         Fp5jvzpxoLDMzyhk+Nev0H14A1WvF9649AJaPKmHrRyRfKYAxxI5q/RzG+Mq/nEo4rnl
-         RxrWv9DGYPX5stMMPv+Bs1vq6LkGN03L7Jr3CgkCOFyhdjFnSvqFrKFi0cpykjEbk+AZ
-         Rlrg==
+        b=cDgQwq3EE+aERMBLT2ZoRalthOy41IAuWCzhVlinBYbSDNv7JGKjf2Z2XwSj5AKf77
+         tMkuCg5EFGKWTtbX8LHV//Sr/MCsoTpMTp4TFen2/6BSXE1hola0GOdrG8gOAAmQGRSE
+         pJS+4snalPvmcy4Pw75LMHVXnyILNCdpT+4PIO1CAqlSx6ONzL5F50vdrOimXGoiPvVG
+         2sL+JhyWQbjszIzJH4wQU0YQmpv+JZng1JR1kG6678SMhlAQ9Y/EfQ/gKviY41Rwhnh7
+         JTrRIRBBJmzNyJZ5s7Jroysiq950LSDwei1dIDLrFnz3NGTHOZoZfbx3wUTt0QMrFjX+
+         gorQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=RL1wQzjB7ueQUertKiln5v+WwAvPFcgduWuDddphhwE=;
-        b=ZMaVCfW3TJwIOaWEwpLWZldF2pYpzn1mNDdmELYhEEi7LEtKV2pziiUcMGabtIKKYN
-         vV/bz2cpf5SayKxKG3ULr1q2m29OqWZ2I1RejwxzcKX5XxMgBjopIPs/2qDj4FXDVER5
-         Vfi5Ej0Sd+35hckk37RHlT0ZRjApZE7+5dRYMJUAy8AcvbDPBEHsDKrKNBZCFOqXVywT
-         SdhnNsUlkCcW6lZWRTb8XcIuIfq22SMmLQxHhiptH2YScspNqXYjfk1bDlzMN1C5lAgG
-         RTBjH1XREJfVnhO1bVFCMbRULNpCSW4iitoxcgGEdJbD4/+4rilaWnMZ8kvvkod/VqKA
-         aQXw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=yFJvEW6PL4Wk9dE8Q8kwfKDDjO3R418aBjP/+OttZ5A=;
+        b=cdurPj+vlOn57o3dmQIVatnUNhX111ybwaJ6WVoiE98UeUApAj0Uj3iGaRcC/7H739
+         ZOGlDWqB4QYcewjnsxdPMZ4MekOJjmgO48jS5DooWopakUjvuWdfM5ZfnqyhIguf+9FI
+         o1thQj8J/h0QPXh2yR3thS1ernpHma3c59tNkoK7pr9UAjkJMEJXwctePOeY/xSKWbR/
+         rVZuZ1GJCGszBcZsX6yWEe6FoHgFlhXcQzftFSSspd3O7qb0mn7cxnAZk71Zk0jGOS0f
+         avKGUCbzS9/zF7a5Ialaxuj6GK6svAQhDD6/TZ0yfoELM3sqzLkc2o7aAoftVIPUiaDq
+         aKIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FcVlzrbw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=QL3B9wwz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m25si1959902otn.208.2019.12.10.08.11.32
+        by mx.google.com with ESMTPS id s48si2228143qtc.141.2019.12.10.08.32.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 08:11:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2019 08:32:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FcVlzrbw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58330 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=QL3B9wwz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58726 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iei6m-0006UY-8j
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:11:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50337)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ieiQq-0007AT-JT
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:32:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55992)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iei6P-0006UJ-M4
- for qemu-devel@nongnu.org; Tue, 10 Dec 2019 11:11:10 -0500
+ (envelope-from <jean-philippe@linaro.org>) id 1ieiQd-00079w-Or
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:32:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iei6O-00070m-Kf
- for qemu-devel@nongnu.org; Tue, 10 Dec 2019 11:11:09 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:51817
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iei6O-00070K-Ga
- for qemu-devel@nongnu.org; Tue, 10 Dec 2019 11:11:08 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575994267;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RL1wQzjB7ueQUertKiln5v+WwAvPFcgduWuDddphhwE=;
- b=FcVlzrbwu5/V1u1OmZm1IcNsjqEC0sgDLr8pcFpNKiotaRBlLNE87GLa0xGqjQXl0l76Nv
- d4fE9AdORDFjbtJPWUgLIqLqAfw3ujWjkR5TFS2O769LDGSMW7AI4oQr2SxWs/h2Avtbx3
- o0gg8NVdR74XbAaxv8E+G04LAQNtoMg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-102-TZK-Us21OFCP-9rmFixakg-1; Tue, 10 Dec 2019 11:11:04 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF551803BC4;
- Tue, 10 Dec 2019 16:11:02 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A2E5A5C21B;
- Tue, 10 Dec 2019 16:11:01 +0000 (UTC)
-Date: Tue, 10 Dec 2019 17:10:58 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v1 3/5] target/arm/kvm: Implement cpu feature kvm-adjvtime
-Message-ID: <20191210161058.f4ysoukuhf6k62xl@kamzik.brq.redhat.com>
-References: <20191016143410.5023-1-drjones@redhat.com>
- <20191016143410.5023-4-drjones@redhat.com>
- <CAFEAcA-uP9eAMu=S98hv7Ge_3GU42acpfvWDMmcMSKagnD9rsQ@mail.gmail.com>
+ (envelope-from <jean-philippe@linaro.org>) id 1ieiQc-0007gd-Lr
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:32:03 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:42458)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
+ id 1ieiQc-0007fy-E8
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:32:02 -0500
+Received: by mail-wr1-x442.google.com with SMTP id a15so20801589wrf.9
+ for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 08:32:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=yFJvEW6PL4Wk9dE8Q8kwfKDDjO3R418aBjP/+OttZ5A=;
+ b=QL3B9wwzzN9AcFnvQWPzk69I2vS9i13JtB5K3ng8EPET4KlE2XDjpWJ2fNy2dAbjNQ
+ dHflE7wG8NvhZUEAU+fT630hhR7x70Xr7zTrYIOrgfefmzOhrf7kPav7fqTy/RzNILrA
+ 3bCH0f6ptEdJE+iPzvDm1Bb3BcwUo+Eg7lTaadOOOk6TQPeIVy5vIZ11epYqvV5pHM5w
+ YpbBaDswRn29senin0FPUedkNbM794QSWPO2h4Pgr2eoAMVZrfrKrDrO3hjbpFU3rg+X
+ Jr4MZkuLZ1y8fpfhdhg6JDdB8IFXgH5lFw7A+fGmuqMf7J/YfGIlr/oSJB2X2mT8iStN
+ 0nBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=yFJvEW6PL4Wk9dE8Q8kwfKDDjO3R418aBjP/+OttZ5A=;
+ b=d/xFjwBBuEh4QjBav1ue5JVzr7puyQX9CF5v8L6Fu5HEwHRIWTNU10pxMtRvETm4e/
+ CWaPRQEg59bnSoayCNLZ/qIQx4OsXGwNRMdgWgTYknV4YxnCuB+PizTfJ7PT5JO/WGip
+ RiuOCZTcf/H5TmCm1kLs7S8uqG+XLnv7sbIF5Ev4lfbsdy62e9cOqLdtuDjxIHWHWqGN
+ MbXJYklaWBaPxevSANKMyBsh5i0kUN36g7sv5C2e65XfBvI/Kc4FmpEfcDIoMW7X5e3c
+ EwBUgsU3b4E8I6D4EQxSsIQWeM3UofMWvdNg8/9sHwnO3mxIbMkLTB/A/jBgSnPI6Y3E
+ QgGw==
+X-Gm-Message-State: APjAAAVOR4wna9V7sRQ1zZpwUfkGtnwRLtoLwdDmwOvavjX9DYFBQqAG
+ l1btRE2CKM763lfaj/GGJpiNMQ==
+X-Received: by 2002:adf:db41:: with SMTP id f1mr4380682wrj.392.1575995520619; 
+ Tue, 10 Dec 2019 08:32:00 -0800 (PST)
+Received: from myrica (adsl-84-227-176-239.adslplus.ch. [84.227.176.239])
+ by smtp.gmail.com with ESMTPSA id x17sm3807881wrt.74.2019.12.10.08.31.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Dec 2019 08:31:59 -0800 (PST)
+Date: Tue, 10 Dec 2019 17:31:55 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH for-5.0 v11 02/20] virtio-iommu: Add skeleton
+Message-ID: <20191210163155.GA277340@myrica>
+References: <20191122182943.4656-1-eric.auger@redhat.com>
+ <20191122182943.4656-3-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-uP9eAMu=S98hv7Ge_3GU42acpfvWDMmcMSKagnD9rsQ@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: TZK-Us21OFCP-9rmFixakg-1
-X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20191122182943.4656-3-eric.auger@redhat.com>
+X-TUID: R5VuvOPQQhfH
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::442
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <maz@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, bijan.mottahedeh@oracle.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OZbhtfB365h7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
+ quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
+ armbru@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ dgilbert@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 
-On Tue, Dec 10, 2019 at 03:54:11PM +0000, Peter Maydell wrote:
-> On Wed, 16 Oct 2019 at 15:34, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > When kvm-adjvtime is enabled the guest's cntvct[_el0] won't count
-> > the time when the VM is stopped. That time is skipped by updating
-> > cntvoff[_el2] on each transition to vm_running using the current
-> > QEMU_CLOCK_VIRTUAL time. QEMU_CLOCK_VIRTUAL only ticks when the VM
-> > is running.
-> >
-> > This patch only provides the implementation. A subsequent patch
-> > will provide the CPU property allowing the feature to be enabled.
->=20
->=20
-> > +void kvm_arm_set_virtual_time(CPUState *cs)
-> > +{
-> > +    uint64_t cnt;
-> > +    struct kvm_one_reg reg =3D {
-> > +        .id =3D KVM_REG_ARM_TIMER_CNT,
-> > +        .addr =3D (uintptr_t)&cnt,
-> > +    };
-> > +    int ret;
-> > +
-> > +    cnt =3D muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
-> > +                   cpu_get_host_tick_frequency(),
-> > +                   NANOSECONDS_PER_SECOND);
-> > +
-> > +    ret =3D kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> > +    if (ret) {
-> > +        error_report("Failed to set KVM_REG_ARM_TIMER_CNT");
-> > +        abort();
-> > +    }
->=20
-> The commit message (and the doc comment for this function)
-> say that we're updating the counter offset, but the
-> kvm_one_reg operation here is updating the timer count
-> (and relying on the kernel's handling of "if we update
-> the timer count implement that by changing the offset").
-> That seems a bit confusing.
->=20
-> Would it be possible to implement "cntvct should not change while the
-> VM is stopped" with "read cntvct when the VM stops, and just write
-> back that value when the VM is restarted", rather than
-> "write back a new value calculated from QEMU_CLOCK_VIRTUAL"?
-> If I understand commit 00f4d64ee76e873be8 correctly, that's
-> basically how x86 is doing it. It would also let you sidestep
-> the need to know the tick frequency of the counter.
+Hi Eric,
 
-That's definitely worth some experimenting. Will do.
+On Fri, Nov 22, 2019 at 07:29:25PM +0100, Eric Auger wrote:
+> +typedef struct VirtIOIOMMU {
+> +    VirtIODevice parent_obj;
+> +    VirtQueue *req_vq;
+> +    VirtQueue *event_vq;
+> +    struct virtio_iommu_config config;
+> +    uint64_t features;
+> +    uint64_t acked_features;
+
+We already have guest_features in the parent object.
+
+> +    GHashTable *as_by_busptr;
+> +    IOMMUPciBus *as_by_bus_num[IOMMU_PCI_BUS_MAX];
+
+Doesn't seem used anymore.
 
 Thanks,
-drew
+Jean
 
+> +    PCIBus *primary_bus;
+> +    GTree *domains;
+> +    QemuMutex mutex;
+> +    GTree *endpoints;
+> +} VirtIOIOMMU;
+> +
+> +#endif
+> -- 
+> 2.20.1
+> 
+> 

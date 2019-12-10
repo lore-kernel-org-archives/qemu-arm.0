@@ -1,99 +1,116 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6307901lff;
-        Tue, 10 Dec 2019 12:13:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx6wdVAuv4TTBheqE9/exhBYTumqhJaVcF/g6MK3lR0845hBnjDqu5jBtjgsaA0hP5d/xPy
-X-Received: by 2002:ac8:65ce:: with SMTP id t14mr31745780qto.72.1576008780025;
-        Tue, 10 Dec 2019 12:13:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576008780; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6436409lff;
+        Tue, 10 Dec 2019 14:14:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw+6Tg7cKh4GrkyBu+wHTOd0uoCSGNW0iYOBaIyKqaf865bSIXmxGfwPI9sRxsvt2rIbPUT
+X-Received: by 2002:a05:6808:102:: with SMTP id b2mr222111oie.127.1576016073924;
+        Tue, 10 Dec 2019 14:14:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576016073; cv=none;
         d=google.com; s=arc-20160816;
-        b=FXqXbCz9hKmQdyP/DJvgkAZLSK1CXVvtmw5G5Rh4n7Z5+m8fqmt1Vuaf3PcsCnkvbJ
-         o16QbrXHNGyNJKgDApvhkqBXD00R6ChCk5FnCxvsX3EpqYP1+vpG0qQieliWMCk+r7ZM
-         TDcGneGrCuUBi4sjyZAQFYHP8tuw4aqJi2egFTiHzMLx8hKY9gpIU92SKeo0vQLDxK0a
-         N539OzvfDcubFUsu0GxSGhRvvnPVZmqJ3uOBihx0O2L+orESv7zJsutv2wo7nCGZkiOt
-         iTMuBrLM3xA7wBTGPxg6vp4vkbjt9qtmgrOqjq2wLyUKNZDaa1GFLAlvH0+wcQdlzVs2
-         8Y7Q==
+        b=IctS8QTqvmoIzX3fwJqnG1bW9EeBVXdp76WDadBhCtGhMoUeb0m3h4Zbbz1iTbL14R
+         OAYiZpToNNR/6MHqdRThZ/iwVyXkQlv40WtFcFT5jMXQxbVSgZpXTMkMjaoRyH/8rirT
+         LL0dPq49h5KWdp4LbGN1bDhz7Z3od6mbSBanhqGuqHNnrcEQ4bDXhIz61Nnp8+KpptFQ
+         7r04FiV+XkKlFjNXplXZPLya+7HAeCVLJjx8vnoUkQLuSgaD0Xxqn+1xrbgCJheApZw0
+         ESRWpm76jxtU7aPYrzaIxbNNoAyz1kQGoiHVTkcge3qMym8W92tk4iVe02GrOHFByJL6
+         JxAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=wXF79992wt0z9yLgV32jgth2ukQCBU2SjhmYPQSjvTA=;
-        b=pFENV2bXfJ5j+mSFxXkbYO1zNkU90DisNwCXQSI0cOovxc/Up7JxAc+rvpvp8o15gc
-         8LbwMuiUgsxnbKwuSXvawgYDxD8amJ8o3DfiAk6W9TwHmHsE6jecF94m+/mlHVW9dQEA
-         +uOQlcgiR2N6Gija3eKTWke2YDrjlNEj7adpIOke87S6pgVVkhB2y74jHwvM5TivGum0
-         41+u4P3CQqmVYqitOIdaGVWUCdtQL8Owuum0MzikTbWg5Q98MYZSDLJ/AFfzVhVSlANj
-         L2NZDRwBDfbYOgUAm8jQOWjjb74VYUFHb2XtTKkkEEZ4yJyKS3P7qt/FqL4MZhRdADJ1
-         dAVg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :subject:to:from:date:references:in-reply-to:message-id:mime-version
+         :user-agent:dkim-signature:dkim-signature;
+        bh=RidXcmMmXmc5rXabxPfPVHMgYhwokctJfhox3MmbJIk=;
+        b=MhvkUuDRc7w5kEDHIW3P85dvTMHSeLkoMtbM5C08/4/EA64U+KSWBIyL+KSQlBGd7m
+         f9vP0uZj70CkGK54IIc0D2Jp3D+Pk9vEig1PTyAkPXTJBdLr1TSQ+/L2XVhbVLBm9ZyK
+         hROr+XioIA8bjEC+YzVgJygvqNDf2QVl9pzIPEKpNXmP/F4cIQE9qCoTTFe2bWwtutXt
+         ruYQl0q5U5M7MuZOFSdr0EMR4Qn8gntX5oBCAi3AtJgTr1whbVpdFF63z93YEJy8hjfk
+         Y7wq3RXIb5e2EZ90B5nAC1RudIg9KO82J3PAGZUpxrII5zHj5miF3J/JuVGL/48hiwRU
+         MfBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NnCHMKpL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=QmxoGEyJ;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=oPXzfeL+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p37si2734502qte.403.2019.12.10.12.12.59
+        by mx.google.com with ESMTPS id a197si2669803oii.199.2019.12.10.14.14.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 12:13:00 -0800 (PST)
+        Tue, 10 Dec 2019 14:14:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NnCHMKpL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35524 helo=lists1p.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=QmxoGEyJ;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=oPXzfeL+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36570 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ielsR-0007ZD-Do
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 15:12:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43539)
+	id 1ienm5-0005pX-3r
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 17:14:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57985)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ielsE-0007WC-HS
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 15:12:49 -0500
+ (envelope-from <andrew@aj.id.au>) id 1ienlw-0005pK-O1
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 17:14:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ielsC-0006fh-EQ
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 15:12:46 -0500
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c]:46523)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1iels8-0006dF-70; Tue, 10 Dec 2019 15:12:40 -0500
-Received: by mail-io1-xd2c.google.com with SMTP id t26so8755596ioi.13;
- Tue, 10 Dec 2019 12:12:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wXF79992wt0z9yLgV32jgth2ukQCBU2SjhmYPQSjvTA=;
- b=NnCHMKpLVX6bx21f3ihWVTIGF3XzCpyrcrxFN5M3f7Dn3LUubc6Up6sEVJ80xmQlsI
- Vk59bmNy+2QURfrh8ygYmnjAHC/HZ0CJzYaR2t+mgpS1v6+JK/LSgtB08fQrmsBJyh54
- /XTnO5kjm1fS28z6OaSgkJ8RSDPgKUpx4CnyVOsbGJF2F3tzBiLAhrHH03E6FD/oIHEs
- o7+mcZm76WHOdPXGuv7zXx5GhaE7JiUA+v1+LDBVxZCticqxxRQyssxGrCAZocSy2fJ6
- 86ssm5P0uBeCcExxxXqJs+PwiZdjzZ17B82XzWo4oa0UyYBd76nHRW6gMZN2WQGD3SQN
- vuwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wXF79992wt0z9yLgV32jgth2ukQCBU2SjhmYPQSjvTA=;
- b=YhjC7oAt162LcaaUdHXuDlDpaOKxnzKMIHErZjc1hkPp5715ZwmJrUjgG2kcHjMAUs
- DiLorl+Pbu7Q4ZE26EtByJY1Yn4CiyXMiPsHUvSErM1pDh/v8INR6BcCIkzIrNQuzr+k
- PMgZS2Enr4jlcllYYro5HnaoZR85UA6eVW7cSkBG9H+hF/56sFou1kZeHHHCFBfAoZLd
- SdWJVXXy9E3QKcke0jDDzjG/OFfA3lg4lO9e2sQt2r6YD3dgUHW4GB75n/XadahSRGIr
- 7LPXZKdjZD0ZWltRUSIYyW55nZmJW/xb107vvWaO2++QPvPc7dks3G19yOeTpS0QTixs
- a1Jw==
-X-Gm-Message-State: APjAAAXOp/+4vfgq4h0JE+FTAV96iKTw25GhnrZawnJmOdFzLGCaDFJI
- qT7wRSltwh1a3tjebKqYprZcgm3PKzpvuCFW7J0=
-X-Received: by 2002:a02:662a:: with SMTP id k42mr27982977jac.73.1576008759530; 
- Tue, 10 Dec 2019 12:12:39 -0800 (PST)
-MIME-Version: 1.0
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <f54375da-4383-04c5-d57c-3a2f6ff46189@redhat.com>
- <CAPan3WrAgWZF1JvSAe=nWUb4rvN6qjfC6JDCnH2P6xmBuitn5w@mail.gmail.com>
- <74df65db-1f84-62ba-6d01-edf765fd1dc2@redhat.com>
-In-Reply-To: <74df65db-1f84-62ba-6d01-edf765fd1dc2@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Tue, 10 Dec 2019 21:12:28 +0100
-Message-ID: <CAPan3Wojt3SSV_kBPfinVLN+mvR_6=rf9zsHV5yq11+qe2Umyg@mail.gmail.com>
-Subject: Re: [PATCH 00/10] Add Allwinner H3 SoC and Orange Pi PC Machine
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000465c4f05995f2266"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d2c
+ (envelope-from <andrew@aj.id.au>) id 1ienlv-0003CN-Aw
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 17:14:24 -0500
+Received: from wout1-smtp.messagingengine.com ([64.147.123.24]:46149)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <andrew@aj.id.au>)
+ id 1ienlu-0003Ag-Ql; Tue, 10 Dec 2019 17:14:23 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.west.internal (Postfix) with ESMTP id 14F78D72;
+ Tue, 10 Dec 2019 17:14:21 -0500 (EST)
+Received: from imap2 ([10.202.2.52])
+ by compute4.internal (MEProxy); Tue, 10 Dec 2019 17:14:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type:content-transfer-encoding; s=fm1; bh=RidXc
+ mMmXmc5rXabxPfPVHMgYhwokctJfhox3MmbJIk=; b=QmxoGEyJt3fWmxfpf9F83
+ pL9+ggMWdJ6X7BTs5sxBhYCPW5XjAEawTh3Gdqlm/oSZ/hlDV8pmR2k+9KCwaWlz
+ nfFtdD1BcYq4gNf1xJqOjmQVTXnascxpD/KWo7yC3djEe2eBSHUpEyL8GaP7RHd9
+ lEfnXFfU0bRNV4eJu12ByKtRoxtEowUZnMNXuDLS4d8pZrHSJHLTIvL9CSKvdYfb
+ kT+pSnhtga1ZHFDs/+3QSPtJAfZnpXaVODoyiFoWCTZ5/RZ43WOAt0nZe0D8i0BM
+ eT3lf9NoSGldV+893czIOsOJBjTStZJiIxRKoL+KCCoBgiBbi+hyZMaakGYXOVeE
+ Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; bh=RidXcmMmXmc5rXabxPfPVHMgYhwokctJfhox3MmbJ
+ Ik=; b=oPXzfeL+oXtQbZUNZyQmepiqFqajuPhVNCoY1FY7RWM7hFesE+S9qcre6
+ jlc41xU+rBXGOtPKS01BcdDtr7Tlt6Wwa4cG0AB10564evtHur+nI4SFVpjN6eC9
+ 9BtyUui466tz/AErA5INcCRjGRtljnEAEuKb+MI3nUXSPBhpjPowzElODu9VVFNG
+ Do1WkW3HuYK0rq2Jm/HqPNcHaNHQSXsrWttFQ8aFir0HKvjLc4uKFR/l2VxBAVHg
+ KvFsa7QinRtW08BBF/VACP6fUi7hanfa4lLvQcbdNEiHyHoLp2EiOfeyZe+1YtZQ
+ g9Y03TjqruOEtob2nlYYcIYd/VMWg==
+X-ME-Sender: <xms:vBjwXTWYXigpnrprP0bMNZYbmj5T3wxULnssdk621rdEVkfYz1jRvA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudelfedgudehkecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpefofgggkfgjfhffhffvufgtgfesthhqredtreerjeenucfhrhhomhepfdet
+ nhgurhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecurf
+ grrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghunecuvehluhhs
+ thgvrhfuihiivgeptd
+X-ME-Proxy: <xmx:vBjwXYJTruuIUHh9nbYyreruNcnobBoiqt20lZnb7Ecs8j-u2hhdUQ>
+ <xmx:vBjwXT2TviOo3AUk4xUVcBWtL40l1fZRkNW_hySDkm3e2ntuG7y2Sw>
+ <xmx:vBjwXVKAHkNtrj7G8iSjGcI8x7mLmIu3GbNqh2sx4KuJ8twd9CldVA>
+ <xmx:vBjwXQxeQfQRQyZ2A9hsmcI4HVcobZsvTVmr8-dT6sTzwW0ZJWs88A>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 35CDBE00A2; Tue, 10 Dec 2019 17:14:20 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.1.7-679-g1f7ccac-fmstable-20191210v1
+Mime-Version: 1.0
+Message-Id: <dab5c6d3-d3a1-4d44-98d8-1626a8b62bc7@www.fastmail.com>
+In-Reply-To: <d1d53a3f-90ed-4436-59ec-fe3fcc985817@kaod.org>
+References: <cover.da2612e7c1835c563b20851f0ac26c7b175428fc.1575938234.git-series.andrew@aj.id.au>
+ <5a93d2f9d375f92e9db6b1cf8687f86beaedcbb2.1575938234.git-series.andrew@aj.id.au>
+ <d1d53a3f-90ed-4436-59ec-fe3fcc985817@kaod.org>
+Date: Wed, 11 Dec 2019 08:45:59 +1030
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 2/2] hw/arm: ast2600: Wire up the eMMC controller
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 64.147.123.24
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,376 +122,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yDp7NAt9dxOD
-
---000000000000465c4f05995f2266
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Philippe,
-
-On Tue, Dec 10, 2019 at 9:26 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com>
-wrote:
-
-> On 12/9/19 10:37 PM, Niek Linnenbank wrote:
-> > Hi Philippe,
-> >
-> > On Tue, Dec 3, 2019 at 9:47 AM Philippe Mathieu-Daud=C3=A9 <philmd@redh=
-at.com
-> > <mailto:philmd@redhat.com>> wrote:
-> >
-> >     On 12/2/19 10:09 PM, Niek Linnenbank wrote:
-> >      > Dear QEMU developers,
-> >      >
-> >      > Hereby I would like to contribute the following set of patches t=
-o
-> >     QEMU
-> >      > which add support for the Allwinner H3 System on Chip and the
-> >      > Orange Pi PC machine. The following features and devices are
-> >     supported:
-> >      >
-> >      >   * SMP (Quad Core Cortex A7)
-> >      >   * Generic Interrupt Controller configuration
-> >      >   * SRAM mappings
-> >      >   * Timer device (re-used from Allwinner A10)
-> >      >   * UART
-> >      >   * SD/MMC storage controller
-> >      >   * EMAC ethernet connectivity
-> >      >   * USB 2.0 interfaces
-> >      >   * Clock Control Unit
-> >      >   * System Control module
-> >      >   * Security Identifier device
-> >
-> >     Awesome!
-> >
-> >      > Functionality related to graphical output such as HDMI, GPU,
-> >      > Display Engine and audio are not included. Recently released
-> >      > mainline Linux kernels (4.19 up to latest master) and mainline
-> U-Boot
-> >      > are known to work. The SD/MMC code is tested using bonnie++ and
-> >      > various tools such as fsck, dd and fdisk. The EMAC is verified
-> >     with iperf3
-> >      > using -netdev socket.
-> >      >
-> >      > To build a Linux mainline kernel that can be booted by the Orang=
-e
-> >     Pi PC
-> >      > machine, simply configure the kernel using the sunxi_defconfig
-> >     configuration:
-> >      >   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper
-> >      >   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make sunxi_def=
-config
-> >      >
-> >      > To be able to use USB storage, you need to manually enable the
-> >     corresponding
-> >      > configuration item. Start the kconfig configuration tool:
-> >      >   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make menuconfi=
-g
-> >      >
-> >      > Navigate to the following item, enable it and save your
-> >     configuration:
-> >      >   Device Drivers > USB support > USB Mass Storage support
-> >      >
-> >      > Build the Linux kernel with:
-> >      >   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make -j5
-> >      >
-> >      > To boot the newly build linux kernel in QEMU with the Orange Pi
-> >     PC machine, use:
-> >      >   $ qemu-system-arm -M orangepi -m 512 -nic user -nographic \
-> >      >       -kernel /path/to/linux/arch/arm/boot/zImage \
-> >      >       -append 'console=3DttyS0,115200' \
-> >      >       -dtb
-> /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb
-> >      >
-> >      > Note that this kernel does not have a root filesystem. You may
-> >     provide it
-> >      > with an official Orange Pi PC image [1] either as an SD card or =
-as
-> >      > USB mass storage. To boot using the Orange Pi PC Debian image on
-> >     SD card,
-> >      > simply add the -sd argument and provide the proper root=3D kerne=
-l
-> >     parameter:
-> >      >   $ qemu-system-arm -M orangepi -m 512 -nic user -nographic \
-> >      >       -kernel /path/to/linux/arch/arm/boot/zImage \
-> >      >       -append 'console=3DttyS0,115200 root=3D/dev/mmcblk0p2' \
-> >      >       -dtb
-> >     /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb \
-> >      >       -sd OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img
-> >      >
-> >      > Alternatively, you can also choose to build and boot a recent
-> >     buildroot [2]
-> >      > using the orangepi_pc_defconfig or Armbian image [3] for Orange
-> >     Pi PC.
-> >
-> >     Richard, trying the Armbian image from
-> >     https://apt.armbian.com/pool/main/l/linux-4.20.7-sunxi/ I get:
-> >
-> >     $ arm-softmmu/qemu-system-arm -M orangepi -m 512 -nic user \
-> >         -append 'console=3DttyS0,115200' \
-> >         -kernel boot/vmlinuz-4.20.7-sunxi \
-> >         -dtb usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb \
-> >         -serial stdio -d unimp
-> >     Uncompressing Linux... done, booting the kernel.
-> >     rtc: unimplemented device write (size 4, value 0x16aa0001, offset
-> 0x0)
-> >     rtc: unimplemented device read (size 4, offset 0x0)
-> >     rtc: unimplemented device read (size 4, offset 0x0)
-> >     rtc: unimplemented device read (size 4, offset 0x8)
-> >     qemu-system-arm: target/arm/helper.c:11359: cpu_get_tb_cpu_state:
-> >     Assertion `flags =3D=3D rebuild_hflags_internal(env)' failed.
-> >     Aborted (core dumped)
-> >
-> >
-> > I'm trying to reproduce the error you reported here with my patch set o=
-n
-> > latest master,
-> > but so far without any result. The host OS I'm using is Ubuntu 18.04.3
-> > LTS on x86_64.
-> > I ran several times using the same 4.20.7-sunxi kernel and same command
-> > line.
-> >
-> > Some questions that might help:
-> > 1) Are there any specific steps you did in order to produce this error?
->
-> I build QEMU with:
->
-> ./configure --enable-trace-backends=3Dlog --extra-cflags=3D-ggdb --enable=
--debug
->
-> > 2) Could this be a known / existing issue?
-> > 3) How many times did you see this error?
->
-> Always
->
-> > 4) Are you also using Ubuntu 18.04.3 LTS on x86_64, or a different host
-> OS?
->
-> Host is Fedora 30.
->
-
-OK thanks, I will try again using the info above after I finished reworking
-the other patch comments.
-
-Niek
+X-TUID: TCMEC71LTXVY
 
 
->
-> >
-> > Regards,
-> > Niek
->
->
 
---=20
-Niek Linnenbank
+On Tue, 10 Dec 2019, at 23:22, C=C3=A9dric Le Goater wrote:
+> On 10/12/2019 01:52, Andrew Jeffery wrote:
+> > Initialise another SDHCI model instance for the AST2600's eMMC
+> > controller and use the SDHCI's num_slots value introduced previously=
+ to
+> > determine whether we should create an SD card instance for the new s=
+lot.
+> >=20
+> > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+>=20
+> LGTM. One comment.
+>=20
+> > ---
+> >  hw/arm/aspeed.c             | 13 +++++++++++++
+> >  hw/arm/aspeed_ast2600.c     | 21 +++++++++++++++++++++
+> >  include/hw/arm/aspeed_soc.h |  2 ++
+> >  3 files changed, 36 insertions(+)
+> >=20
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index 862549b1f3a9..0e08d62e9ff3 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -272,6 +272,19 @@ static void aspeed_board_init(MachineState *mac=
+hine,
+> >          object_property_set_bool(OBJECT(card), true, "realized", &e=
+rror_fatal);
+> >      }
+> > =20
+> > +    if (bmc->soc.emmc.num_slots) {
+> > +        SDHCIState *emmc =3D &bmc->soc.emmc.slots[0];
+> > +        DriveInfo *dinfo =3D drive_get_next(IF_SD);
+> > +        BlockBackend *blk;
+> > +        DeviceState *card;
+> > +
+> > +        blk =3D dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
+> > +        card =3D qdev_create(qdev_get_child_bus(DEVICE(emmc), "sd-b=
+us"),
+> > +                           TYPE_SD_CARD);
+> > +        qdev_prop_set_drive(card, "drive", blk, &error_fatal);
+> > +        object_property_set_bool(OBJECT(card), true, "realized", &e=
+rror_fatal);
+> > +    }
+>=20
+> I think we could use a function for the above ^
 
---000000000000465c4f05995f2266
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Yep, I'll refactor that.
 
-<div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 10, 2019 at 9:26 AM Phili=
-ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
-at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">On 12/9/19 10:37 PM, Niek Linnenbank wrote:<br>
-&gt; Hi Philippe,<br>
-&gt; <br>
-&gt; On Tue, Dec 3, 2019 at 9:47 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=
-=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redhat.com</a> <br>
-&gt; &lt;mailto:<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">phil=
-md@redhat.com</a>&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 12/2/19 10:09 PM, Niek Linnenbank wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Dear QEMU developers,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Hereby I would like to contribute the followi=
-ng set of patches to<br>
-&gt;=C2=A0 =C2=A0 =C2=A0QEMU<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; which add support for the Allwinner H3 System=
- on Chip and the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Orange Pi PC machine. The following features =
-and devices are<br>
-&gt;=C2=A0 =C2=A0 =C2=A0supported:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* SMP (Quad Core Cortex A7)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* Generic Interrupt Controller co=
-nfiguration<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* SRAM mappings<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* Timer device (re-used from Allw=
-inner A10)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* UART<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* SD/MMC storage controller<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* EMAC ethernet connectivity<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* USB 2.0 interfaces<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* Clock Control Unit<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* System Control module<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* Security Identifier device<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Awesome!<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Functionality related to graphical output suc=
-h as HDMI, GPU,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Display Engine and audio are not included. Re=
-cently released<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; mainline Linux kernels (4.19 up to latest mas=
-ter) and mainline U-Boot<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; are known to work. The SD/MMC code is tested =
-using bonnie++ and<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; various tools such as fsck, dd and fdisk. The=
- EMAC is verified<br>
-&gt;=C2=A0 =C2=A0 =C2=A0with iperf3<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; using -netdev socket.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; To build a Linux mainline kernel that can be =
-booted by the Orange<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Pi PC<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; machine, simply configure the kernel using th=
-e sunxi_defconfig<br>
-&gt;=C2=A0 =C2=A0 =C2=A0configuration:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=3Darm-=
-linux-gnueabi- make mrproper<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=3Darm-=
-linux-gnueabi- make sunxi_defconfig<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; To be able to use USB storage, you need to ma=
-nually enable the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0corresponding<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; configuration item. Start the kconfig configu=
-ration tool:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=3Darm-=
-linux-gnueabi- make menuconfig<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Navigate to the following item, enable it and=
- save your<br>
-&gt;=C2=A0 =C2=A0 =C2=A0configuration:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0Device Drivers &gt; USB support &=
-gt; USB Mass Storage support<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Build the Linux kernel with:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=3Darm-=
-linux-gnueabi- make -j5<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; To boot the newly build linux kernel in QEMU =
-with the Orange Pi<br>
-&gt;=C2=A0 =C2=A0 =C2=A0PC machine, use:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ qemu-system-arm -M orangepi -m =
-512 -nic user -nographic \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-kernel /path/to/li=
-nux/arch/arm/boot/zImage \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-append &#39;consol=
-e=3DttyS0,115200&#39; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-dtb /path/to/linux=
-/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Note that this kernel does not have a root fi=
-lesystem. You may<br>
-&gt;=C2=A0 =C2=A0 =C2=A0provide it<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; with an official Orange Pi PC image [1] eithe=
-r as an SD card or as<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; USB mass storage. To boot using the Orange Pi=
- PC Debian image on<br>
-&gt;=C2=A0 =C2=A0 =C2=A0SD card,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; simply add the -sd argument and provide the p=
-roper root=3D kernel<br>
-&gt;=C2=A0 =C2=A0 =C2=A0parameter:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ qemu-system-arm -M orangepi -m =
-512 -nic user -nographic \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-kernel /path/to/li=
-nux/arch/arm/boot/zImage \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-append &#39;consol=
-e=3DttyS0,115200 root=3D/dev/mmcblk0p2&#39; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-dtb<br>
-&gt;=C2=A0 =C2=A0 =C2=A0/path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-=
-pc.dtb \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-sd OrangePi_pc_deb=
-ian_stretch_server_linux5.3.5_v1.0.img<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Alternatively, you can also choose to build a=
-nd boot a recent<br>
-&gt;=C2=A0 =C2=A0 =C2=A0buildroot [2]<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; using the orangepi_pc_defconfig or Armbian im=
-age [3] for Orange<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Pi PC.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Richard, trying the Armbian image from<br>
-&gt;=C2=A0 =C2=A0 =C2=A0<a href=3D"https://apt.armbian.com/pool/main/l/linu=
-x-4.20.7-sunxi/" rel=3D"noreferrer" target=3D"_blank">https://apt.armbian.c=
-om/pool/main/l/linux-4.20.7-sunxi/</a> I get:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0$ arm-softmmu/qemu-system-arm -M orangepi -m 512 -n=
-ic user \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-append &#39;console=3DttyS0,115200&#=
-39; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-kernel boot/vmlinuz-4.20.7-sunxi \<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-dtb usr/lib/linux-image-dev-sunxi/su=
-n8i-h3-orangepi-pc.dtb \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-serial stdio -d unimp<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Uncompressing Linux... done, booting the kernel.<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device write (size 4, value 0x16=
-aa0001, offset 0x0)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device read (size 4, offset 0x0)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device read (size 4, offset 0x0)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device read (size 4, offset 0x8)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0qemu-system-arm: target/arm/helper.c:11359: cpu_get=
-_tb_cpu_state:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Assertion `flags =3D=3D rebuild_hflags_internal(env=
-)&#39; failed.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Aborted (core dumped)<br>
-&gt; <br>
-&gt; <br>
-&gt; I&#39;m trying to reproduce the error you reported here with my patch =
-set on <br>
-&gt; latest master,<br>
-&gt; but so far without any result. The host OS I&#39;m using is Ubuntu 18.=
-04.3 <br>
-&gt; LTS on x86_64.<br>
-&gt; I ran several times using the same 4.20.7-sunxi kernel and same comman=
-d <br>
-&gt; line.<br>
-&gt; <br>
-&gt; Some questions that might help:<br>
-&gt; 1) Are there any specific steps you did in order to produce this error=
-?<br>
-<br>
-I build QEMU with:<br>
-<br>
-./configure --enable-trace-backends=3Dlog --extra-cflags=3D-ggdb --enable-d=
-ebug<br>
-<br>
-&gt; 2) Could this be a known / existing issue?<br>
-&gt; 3) How many times did you see this error?<br>
-<br>
-Always<br>
-<br>
-&gt; 4) Are you also using Ubuntu 18.04.3 LTS on x86_64, or a different hos=
-t OS?<br>
-<br>
-Host is Fedora 30.<br></blockquote><div><br></div><div>OK thanks, I will tr=
-y again using the info above after I finished reworking the other patch com=
-ments.</div><div><br></div><div>Niek<br></div><div>=C2=A0</div><blockquote =
-class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
-id rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; <br>
-&gt; Regards,<br>
-&gt; Niek<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---000000000000465c4f05995f2266--
+Andrew

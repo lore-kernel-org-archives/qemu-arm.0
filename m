@@ -1,86 +1,90 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5980857lff;
-        Tue, 10 Dec 2019 07:45:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwIxd5UyDcH0V771dPNhZPvfsplFaO7+VM6btL9g/ySVBe4G7uAQgqz6YmtwUUIOG56golH
-X-Received: by 2002:a9d:39a5:: with SMTP id y34mr24545099otb.146.1575992740781;
-        Tue, 10 Dec 2019 07:45:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575992740; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5986466lff;
+        Tue, 10 Dec 2019 07:49:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwPevZLEycKE3iWwOhY2ZLsuJnZI7XwdXi5xg0IscEZ/nKEcVLqNzDjrwUu/jJEb4jC1hzk
+X-Received: by 2002:aca:72d0:: with SMTP id p199mr4778398oic.40.1575992981273;
+        Tue, 10 Dec 2019 07:49:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575992981; cv=none;
         d=google.com; s=arc-20160816;
-        b=i/02eCZ6bdbfjIGeXU4hTZdQZI7d61rP6Rv9bGCsSHO/naONpAMNjLmmBgM4VRU9jk
-         pBxCtUQ6HExbr3j/GdDJmQvlA3uU4Yhrozo5bzMD7fx9/QtikV4MTmqMCXRei0cYhwpR
-         9H/nc4Ap+CuBgKDHLxfeGoyrvSYTh3TUResLWNfh/GcNddIjlGhlvU2r8j3G2+NUxMPS
-         6bO8uyjMN8tdJ01mO0jRixVEToincD02CS0SxD5c3GXPv8Nb9dEmuHj+gF3BvSGGoeQp
-         N21nmAeNEhHeDzQDfK213QYraEaK3qLxmB8490OMOu+NiOxPnwEcVK3k9FyrsaKoXtVM
-         +62w==
+        b=LerwRzY9p5dRLazd+egW3U95r3voIm6j6FauNYdEPI70D5+4eB+drzbSEmUt8sNl5a
+         p7iLU+wb2eh8iDoz8pjVRGBis0Y33EbTZ4FI2qTIwAlcTxuwpQagTNtYMjuJfNl5RUDb
+         UGOdWVsK9OwTifsEH2lDUQXo5iAZFXJXsBv/oSApL/LE4lPVFCtuMUe2XNFsIgqhazpN
+         KIQXyGvG/OPuP9gwwqzbBhdtYVAquddrAcusV8MkmLqt5s7D/2I3UOpFzfykI7SPl/jZ
+         /NQYDv+5KHWOmVWIgpBUdBbrB1tGiGXpBoSgncXKWNvIuoAeAnc9y2s2GkQ2GL9T0mZK
+         gxZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=BzYMi4o5tnM8+8TW8stcvngRLupsDB7APP25/5NOis8=;
-        b=GTPwyG0ONeGJkZ/6RZWSFkE69lvO5ksYG0LeHxzDA2CdKlnFvxBXtxqJGoBKyXFZK6
-         0jfzLh/YI4UQfWChYAgZZHlnNbj7kE8JLN+7bHz6HSzS350srUYPYLMJ5s4XkjACzylX
-         8T12UdycXf3U4zvXekNf2ngNzvXRL/4mjVwR5JIYqJhBZF/QZ/glPPL1AT4KiaDljCqJ
-         qVsMs/GYCjb+o7A6Fljisz1RYwNzbK2oS5+xmQ247tZ7SlmbjAVCTodpgj7n9fbG7iAM
-         r8i5azK/7xy7DeyLW2gAlr7DJW/l/6vthjnlJE/cPNZ1Oml4CjDI/40bBW3LKW4A3EnD
-         rWlw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:references:in-reply-to:date:to:from:subject
+         :message-id:dkim-signature;
+        bh=VhYuL2Sq9yxjpF+tZAOFmq1iyF/dfLOzaDkTF2Fc/GA=;
+        b=VfOEQo4+ccWoxk9PzF0wfPidGdP+feLwkPzznof4mboXwRdlb6mG9qQuDrd8jGjazb
+         GSzNWEl44TeCV1O/igI7/8t/u4oyYt/DWCCp+2gqctFlhXI9VavI26cpcBF90pvqS3sc
+         Yf6e9fsq6uHb/XGzbJygsKg9Hcx5ATSVu7nn0WFIUqTRUxGbnVFmlp7nYW+D6uqP+q1v
+         ucBX2fU4RJp/lQjqSGT3pVH/oQ3OepKzbEz2UEfdbRMECrCpngruaqC5Ho2YHWF17wHs
+         9UnGLVBc2DXHx4gOCk3R42I5Ycm0/YLW2WOz9/DmvWBPK8MjLGSrh0lz2ombmYTkCmpm
+         HB5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZBCDTLuH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gEl9OJJs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a10si2039290oia.232.2019.12.10.07.45.40
+        by mx.google.com with ESMTPS id z21si1854801oti.160.2019.12.10.07.49.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 07:45:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2019 07:49:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZBCDTLuH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58020 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gEl9OJJs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58082 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iehhj-0003mD-RE
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 10:45:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44909)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iehlc-0005xp-EL
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 10:49:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45548)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iehhT-0003dl-C5
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 10:45:28 -0500
+ (envelope-from <abologna@redhat.com>) id 1iehk4-00052C-Nr
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 10:48:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iehhR-0001GR-TN
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 10:45:22 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35476)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iehhR-0001FC-NX
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 10:45:21 -0500
-Received: by mail-ot1-x343.google.com with SMTP id o9so15893205ote.2
- for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 07:45:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BzYMi4o5tnM8+8TW8stcvngRLupsDB7APP25/5NOis8=;
- b=ZBCDTLuHsRqqPhpnw4ZnsfkALAysJLqfOnpMBc3TMKRYD6D1NyxSzRa5jCvEh7L+iF
- NTcF7Ca5X9bszyyN+jiD/YOS2ElDgIjzAWxZSLn6LLGnQjuHjPGJM8Z5z+7Y80WO+qc5
- KJ86U98SQSBQm5fxuXJiElNJOjpvZpQKCXRURRAXPuLvYCwxJWQtzatrv4SbO3hQFB3d
- 3/qeOX2T0cjjO85pDILjRiIryKDVheA2ebR10xvGL+pq/z4Ud85QaYCQf62qJou/AOiH
- brk5EaJAKmJrm4vQHf1x+azvax3X1wegaq1YPieQDb19N9BLvkHmCFYNYGethOlLNCnP
- yapQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BzYMi4o5tnM8+8TW8stcvngRLupsDB7APP25/5NOis8=;
- b=HpxIC64w2E9I4Z1yGiwbJu/CMpk49j2k76QnywEwi6Z2PoLqP70cIJ7cX7/qmI9vQi
- 7V5vss2YW+eN/wmS3W4yNUEOxxVvTnKiATGHf+IbmC7fa2hdK8sYJXuLLXPgPssOS0zW
- +1NfN1naTHQH8oHg1rbBoxRLpkfUXl0KXQREh2acrgTCNXB5kER8EQRdaYR4xYp7d4+K
- /sOR0le/RM3Z4dqKQ5910nYl3oQja+SQ3+nGrJTMvHuKUtrPlM8E54LkHksetE4Ze98v
- usSkWY0LmGrqHImAuc1vuqT4q7bmP29ZfsIFjESGmHSsjMHPeKJKNrBuKtkDIT5PZP6l
- sUiw==
-X-Gm-Message-State: APjAAAXGGHs9qlev+pmJGMYIIO0LUbs7yWuTtGxKqFcX9fJLDlncPSKJ
- 3ZaS9lwj1yYuXbO/LyKiTlAnhJ6PK0TIJX+/pobpnA==
-X-Received: by 2002:a9d:6745:: with SMTP id w5mr25113617otm.221.1575992720459; 
- Tue, 10 Dec 2019 07:45:20 -0800 (PST)
-MIME-Version: 1.0
+ (envelope-from <abologna@redhat.com>) id 1iehk1-00043Z-FD
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 10:48:02 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:24470
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <abologna@redhat.com>) id 1iehk1-00041d-BH
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 10:48:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575992880;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VhYuL2Sq9yxjpF+tZAOFmq1iyF/dfLOzaDkTF2Fc/GA=;
+ b=gEl9OJJs333zcpWoGN+dRai+U+Qqf+29NpUm5I7XxHet6q5EY06dvVYhS+bBzhVbzLRIxm
+ hhUB+apCOn94EkhRTDCdaC1QhUHp9f5ThwD6RHcODTMIfFBkpEqDdy79Oq/JICGweuFHy3
+ T4uavo4baYqHGqfkmu1D0CBMsWCgDiY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-427-Vsc1rnNRMo-k8cxV4xnNCw-1; Tue, 10 Dec 2019 10:47:56 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 975FE100E0D9;
+ Tue, 10 Dec 2019 15:47:54 +0000 (UTC)
+Received: from ovpn-205-189.brq.redhat.com (ovpn-205-189.brq.redhat.com
+ [10.40.205.189])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 56F1660BE0;
+ Tue, 10 Dec 2019 15:47:52 +0000 (UTC)
+Message-ID: <e0f86b200d0b3c08769cdbaa080569c3ec3db3ab.camel@redhat.com>
+Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
+ virtual time
+From: Andrea Bolognani <abologna@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Date: Tue, 10 Dec 2019 16:47:49 +0100
+In-Reply-To: <20191210143311.4sen6blhfhzop6zw@kamzik.brq.redhat.com>
 References: <20191016143410.5023-1-drjones@redhat.com>
  <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
  <20191206155327.7adiyjjkjh56mg2t@kamzik.brq.redhat.com>
@@ -89,72 +93,63 @@ References: <20191016143410.5023-1-drjones@redhat.com>
  <20191210110531.psjzlikir2ep2omo@kamzik.brq.redhat.com>
  <CAFEAcA_M61hTzU=qCiUbR4V9Mnwd0phFNqTJG9pCWKreVmjy6A@mail.gmail.com>
  <20191210133254.22vcpvr3eabcnthe@kamzik.brq.redhat.com>
-In-Reply-To: <20191210133254.22vcpvr3eabcnthe@kamzik.brq.redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Dec 2019 15:45:09 +0000
-Message-ID: <CAFEAcA_Y0bX4mg7PyTgcfKtZQkPw+DEibW6OjVRGyA29mC7TiQ@mail.gmail.com>
-Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
- virtual time
-To: Andrew Jones <drjones@redhat.com>
+ <29add42daba074ab5bdbd462b2d377115fec7c3c.camel@redhat.com>
+ <20191210143311.4sen6blhfhzop6zw@kamzik.brq.redhat.com>
+User-Agent: Evolution 3.34.2 (3.34.2-1.fc31)
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: Vsc1rnNRMo-k8cxV4xnNCw-1
+X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-X-BeenThere: qemu-arm@nongnu.org
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: bijan.mottahedeh@oracle.com, Marc Zyngier <maz@kernel.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, bijan.mottahedeh@oracle.com,
+ Marc Zyngier <maz@kernel.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Andrea Bolognani <abologna@redhat.com>,
  QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HH9HFtmJ5R7b
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XNeU5Yrx1ddO
 
-On Tue, 10 Dec 2019 at 13:33, Andrew Jones <drjones@redhat.com> wrote:
-> So the ins and outs of this particular timekeeping issue (to the best of
-> my knowledge) is that x86 has implemented this behavior since
-> 00f4d64ee76e ("kvmclock: clock should count only if vm is running"), which
-> was committed over six years ago. Possibly x86 VM time would behave more
-> like arm VM time if kvmclock was disabled, but that's not a recommended
-> configuration.
->
-> PPC got an equivalent patch to the x86 one in 2017, 42043e4f1241 ("spapr:
-> clock should count only if vm is running"), but when stopping time during
-> pause on spapr they actually *keep* 'date' and 'hwclock' in synch. I guess
-> whatever clocksource 'hwclock' uses on spapr was already stopping when
-> paused? For x86 those values diverge, and for arm without this series they
-> stay the same but experience jumps, and with this series they diverge like
-> x86. I don't see any way to disable the behaviour 42043e4f1241 introduces.
->
-> s390x got what appears to be its equivalent patch last year 9bc9d3d1ae3b
-> ("s390x/tod: Properly stop the KVM TOD while the guest is not running").
-> The commit message doesn't state how hwclock and date values change /
-> don't change, and I don't see any way to disable the behavior.
->
-> MIPS has had this implemented since KVM support was introduced. No way
-> to disable it that I know of.
->
-> So why is this arm-specific? arm is just trying to catch up, but also
-> offer a switch allowing the current behavior to be selected. If other
-> architectures see value in the switch then they're free to adopt it too.
-> After having done this git mining, it looks more and more like we should
-> at least consider naming this feature 'kvm-no-adjvtime' and probably
-> also change arm's default.
+On Tue, 2019-12-10 at 15:33 +0100, Andrew Jones wrote:
+> On Tue, Dec 10, 2019 at 03:21:02PM +0100, Andrea Bolognani wrote:
+> > I agree with everything except the naming: why would
+> > 
+> >   kvm-no-adjvtime=off  vtime is adjusted      (default)
+> >   kvm-no-adjvtime=on   vtime is not adjusted
+> > 
+> > be better than
+> > 
+> >   kvm-adjvtime=on   vtime is adjusted      (default)
+> >   kvm-adjvtime=off  vtime is not adjusted
+> > 
+> > ? Both offer the exact same amount of flexibility, but the latter has
+> > the advantage of not introducing any unwieldy double negatives.
+> 
+> A default of 'off' == 0 means not setting anything at all. There's
+> already precedent for 'kvm-no*' prefixed cpu features,
+> 
+> kvm-no-smi-migration
+> kvm-nopiodelay
 
-Thanks for pulling up the handling by other architectures.
-I think I agree that we should change the arm default (ie
-we should just call this a bug fix, since the old behaviour
-seems unhelpful generally and is more random accident than
-a deliberate choice), with a switch provided just in case
-anybody had something depending on the old behaviour.
+Sorry, I'm not sure I understand. Do you mean that the array where
+you store CPU features is 0-inizialized, so it's more convenient to
+have off (0) as the default because it means you don't have to touch
+it beforehand? Or something different?
 
--- PMM
+-- 
+Andrea Bolognani / Red Hat / Virtualization
+

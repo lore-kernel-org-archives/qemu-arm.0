@@ -1,108 +1,111 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6074789lff;
-        Tue, 10 Dec 2019 08:55:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzUTlTQ9pnj6MhqQVxlfbUPBTSy6CPt/QPOAGz6BwnWW/iPTE7fVZ4BJUrIG4/+R8km7daY
-X-Received: by 2002:a0c:ead1:: with SMTP id y17mr28325804qvp.210.1575996910892;
-        Tue, 10 Dec 2019 08:55:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575996910; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6105082lff;
+        Tue, 10 Dec 2019 09:16:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwqrsxBY3twM3cou/VebQT0KZCpt7SPvFtYmV5pq8m+h7Igo+86m3cYqyjo5WDTfQczLJAK
+X-Received: by 2002:aca:e084:: with SMTP id x126mr4729670oig.97.1575998217407;
+        Tue, 10 Dec 2019 09:16:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575998217; cv=none;
         d=google.com; s=arc-20160816;
-        b=cKlrqk/vAopZDeWDBQ3PXx41chkBco/QBaGRQlhev+WCxrQ92oD6EYnAZiT2CPBALs
-         hJejVuPns6v62tbOqVnwhWLvbIi2aRwHzyhi/E7HJUXldI8i9ptnuMP0UfYRzgVDNgMg
-         +vqmdQmVaMibdM14WX8phu0NWXY5Cd2btGSKZZD3SAP+Y4dDGO7kIUK/d20HoW8FtWcm
-         FnddYf8zrTxR27IctmxT+DWwgOKrUoZsff1m7uQuVAMyGiWpR6bDdKv9L2CmfO7zRYJ/
-         hLgrxHab+3k1eLZZkOocfdV62I5674GbTCjTkb21wq7mDEZkrIqDZTlNhSZfjaA275iA
-         Lx1Q==
+        b=eE/VbOWulROrJZlfvsFIoTd8wJhN8v8wuiF27MoR4Ii+A6i9H39xiOddSBtta+tiJH
+         YNkuVKjBoAK8odssiRS+DDKU+RTi2HH/jaPwkEeVVMyNVlDH9SbdNOTxVgRQzmiUy2LV
+         LcG5qiExs0cmiAmL3ekwBF3pANjnnCc9v3FwvbJKcQeDtykR1a68lft356/aTefePOcQ
+         giuLrLEi6tXk0s2hf0N7DEUUZPB+97qLMlV5B4nnr2Jt6ayd8xmVZ3c96iAZE5YNv60m
+         aJWYSvledh3pdo+pIGFjPZyZZpBw4r7Ezt5lmytSq0OuE0wNOD9oGgYPcnnwOXQFkLPN
+         COyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=UxvJ/YVTJuP+hzpz1BJMpuf68KLAsLUo57u2sksODLU=;
-        b=rFtKGprQPjl5CS7f+tzaKgAycDvzdTWWb5mWoh5Z/U2XLkAVF2AaxgnBzKf+Ltik29
-         q/7PrZSHHVsaykuIJG9vAkeHfR4V05bT/edqnMJPS48NQ2Hs8kGh/Hrtyl2ZehJU5TxI
-         +GB3VT2l3s/RvOfShpzPBi/bwXevh75blKh9PwQsrv/5Qo8mj5MFS+nvYihuNCr/xCJJ
-         2p2P/eUQ6g47NIDmgz8Rhw14ECt/vEzmBRSBwYxvW5Kjr+tbcVQCUdYIkO5fooF2trZQ
-         WiicBId9wHTSWI4CBIc9qJShNdVHyT4ix5CwhIY7pEXDvbKCnolyGSmphwL/ofAjiOHM
-         5mvA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:references:in-reply-to:date:to:from:subject
+         :message-id:dkim-signature;
+        bh=vbeUY1tYvNFELFptAI6NyGsSXcrw+gBajlhVpD0Q4A8=;
+        b=lls6y3gs0wpDkZh2W0pKOs83SxXYi4AQqmw0urqcezWz+w8j9qahJPVMjfYxPygEfK
+         9LWWZNB/jCaOt8QQzOw2x1o96ldiDCljUtCM/PIa5ABYIoyFbpw+BhOYpEzQo4n3yeRr
+         qX2W5o9dnn/8+u4Jy5Ky7EJ7gZ50bBzwIRyFytguDo1X+wuwV2Cr4oUTNa2wOFcibOpK
+         OCH3a63GW7YuoM9AMh7RAdTUFU2aaH4DRIrvm6RkfWOiFb/KoufaBtk8KReRBB2ApRuq
+         GlVOCHucD/RDJwqOK+SfBwjmnZv7KFpv9kYaGdYS7xK/Z9spCyPR/i9hC9RLHEcRz24y
+         zKYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BGiPRQuw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DGuGYqUm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a68si2355900qke.236.2019.12.10.08.55.10
+        by mx.google.com with ESMTPS id u9si2163874oib.55.2019.12.10.09.16.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 08:55:10 -0800 (PST)
+        Tue, 10 Dec 2019 09:16:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BGiPRQuw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DGuGYqUm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59398 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ieimz-00054j-Hg
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:55:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33195)
+	id 1iej84-0005IX-B6
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 12:16:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38718)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <daniel.thompson@linaro.org>) id 1ieilm-0003wN-VN
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:53:56 -0500
+ (envelope-from <abologna@redhat.com>) id 1iej7u-0005I9-Gu
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 12:16:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <daniel.thompson@linaro.org>) id 1ieill-0007dQ-RL
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:53:54 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38950)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <daniel.thompson@linaro.org>)
- id 1ieill-0007cQ-Lf
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:53:53 -0500
-Received: by mail-wm1-x341.google.com with SMTP id d5so2458713wmb.4
- for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 08:53:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=UxvJ/YVTJuP+hzpz1BJMpuf68KLAsLUo57u2sksODLU=;
- b=BGiPRQuwSInGNHSJAJJyjw7IdSn2N/5ded78AZFJiUsXWL2FJn25Ro9Kdak/CS/Wlb
- RDw21qnr3CwaeOALl/A0is/GVeXyG2FwjftKiBjFdzylfZ3YkLhwt00ZN7h5XDBUkxVl
- 5ki1+DZNwPsqJTJMr6Yqr8rrpr1Ng3Nf8gYauYG9PUJWf2dgs4B3Fv+lipGlTHY12kTg
- E0pKtq/Kpr5Wu2SzOCbvCgGaZOYrYIrdKtwQpYuUrfqllnpKfzitGy/HXk+zOY8zaKdG
- 5W9mCF2aLisOKJnqwI3t7QFqLJtIzSHq/Vz57fQPwoSFVJHZLmgDGLv/Dr9zbyclJ0fj
- A0Iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=UxvJ/YVTJuP+hzpz1BJMpuf68KLAsLUo57u2sksODLU=;
- b=e4g3ktbyQxMrLddT2YOlO0BTcxQgQOk4AmrmS2mBomD4B3GSUr0Uq9efPzvYhd/1/c
- 0tydbY+FlpWaG3IXlc3nnC08B4mjzR0gM8xp6COhvUrt0z1tEV+cxgjoyozHTPncO/KD
- XDBJoM1shUImoFMZFPHULVD+GdxEjtbOdtBQi7yJARsRXl4cILub0+YxbxNgPYqYVul9
- OGlRxA1C2jdioyWBHGB19u3FUvDohAWfivC+NwjmzxdGUIATUHh7aueTjwJqSaLIeywr
- DE8O83F3/EB3PIp28f9vkuaqKIO3kLXWrpMYmInUBIPmknInLXq+Z+NEgX7j+ZH+Iq0B
- b6TA==
-X-Gm-Message-State: APjAAAVi57TXrQRJX3Cuk+OkcqT7+3rKk86Fdt2XMIytyTx9mzvyZfyV
- i8FF7evTj1iHEw6EfJpfXORi7g==
-X-Received: by 2002:a1c:731a:: with SMTP id d26mr5975246wmb.130.1575996832049; 
- Tue, 10 Dec 2019 08:53:52 -0800 (PST)
-Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
- [86.9.19.6])
- by smtp.gmail.com with ESMTPSA id z18sm3637640wmf.21.2019.12.10.08.53.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Dec 2019 08:53:51 -0800 (PST)
-Date: Tue, 10 Dec 2019 16:53:49 +0000
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] hw/arm/virt: Second uart for normal-world
-Message-ID: <20191210165349.5sfyqwkbpfl7nlk2@holly.lan>
-References: <20191209152456.977399-1-daniel.thompson@linaro.org>
- <CAFEAcA-sgFKev2MiOjRAzuE0trNYQoNe6LOFLeghGm73N1h=SA@mail.gmail.com>
- <20191209170827.yojyts6qdvpxbkp4@holly.lan>
- <CAFEAcA_3_EwjAZ_Av4a9BkT_3KmbEEFFFukyV7gsDuWPrYKmVQ@mail.gmail.com>
+ (envelope-from <abologna@redhat.com>) id 1iej7t-0000PQ-C5
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 12:16:46 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:60571
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <abologna@redhat.com>) id 1iej7t-0000P4-8m
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 12:16:45 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575998204;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vbeUY1tYvNFELFptAI6NyGsSXcrw+gBajlhVpD0Q4A8=;
+ b=DGuGYqUmvuSuYSRG0g/eOlzKJIkFUQ3fvG1dG/LtRwycXGT8uUKueP+Z2l+j2dYUXwe3im
+ maWC7MB1ITK4IiwPeuMwC8LQmuBhiSHaQ2u7QOqsfcWGY278Ut+SMeUry/ouypnWjKwdVZ
+ csgVfyLLIxp2ppfzea85eDmbp8dWQBw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-188-m-J_QNgtMqWr3h-gqil5nQ-1; Tue, 10 Dec 2019 12:16:40 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 623BC10054E3;
+ Tue, 10 Dec 2019 17:16:39 +0000 (UTC)
+Received: from ovpn-205-189.brq.redhat.com (ovpn-205-189.brq.redhat.com
+ [10.40.205.189])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 907081001B03;
+ Tue, 10 Dec 2019 17:16:36 +0000 (UTC)
+Message-ID: <ca3212971a456fe8bfb15bdd718dce5aa821daf1.camel@redhat.com>
+Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
+ virtual time
+From: Andrea Bolognani <abologna@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Date: Tue, 10 Dec 2019 18:16:33 +0100
+In-Reply-To: <20191210160825.ioah26u36eu2i3z2@kamzik.brq.redhat.com>
+References: <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
+ <20191206155327.7adiyjjkjh56mg2t@kamzik.brq.redhat.com>
+ <596d07e933cb4da48dbba5b492e81a2438e78a2f.camel@redhat.com>
+ <CAFEAcA9+G0jprsHRQp8g=Aso+2-_GhoWkDGx4WWxoC88maOKEg@mail.gmail.com>
+ <20191210110531.psjzlikir2ep2omo@kamzik.brq.redhat.com>
+ <CAFEAcA_M61hTzU=qCiUbR4V9Mnwd0phFNqTJG9pCWKreVmjy6A@mail.gmail.com>
+ <20191210133254.22vcpvr3eabcnthe@kamzik.brq.redhat.com>
+ <29add42daba074ab5bdbd462b2d377115fec7c3c.camel@redhat.com>
+ <20191210143311.4sen6blhfhzop6zw@kamzik.brq.redhat.com>
+ <e0f86b200d0b3c08769cdbaa080569c3ec3db3ab.camel@redhat.com>
+ <20191210160825.ioah26u36eu2i3z2@kamzik.brq.redhat.com>
+User-Agent: Evolution 3.34.2 (3.34.2-1.fc31)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_3_EwjAZ_Av4a9BkT_3KmbEEFFFukyV7gsDuWPrYKmVQ@mail.gmail.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::341
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: m-J_QNgtMqWr3h-gqil5nQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,44 +117,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- "patches@linaro.org" <patches@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, bijan.mottahedeh@oracle.com,
+ Marc Zyngier <maz@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yAfuzxHuUtPu
+X-TUID: uWd/mj/hB1bo
 
-On Mon, Dec 09, 2019 at 05:10:30PM +0000, Peter Maydell wrote:
-> On Mon, 9 Dec 2019 at 17:08, Daniel Thompson <daniel.thompson@linaro.org> wrote:
-> > I don't object to making it command line dependant (it is certainly
-> > lower risk) but, out of interest, has using /aliases to force the
-> > kernel to enumerate the serial nodes in the existing order been ruled
-> > out for any reason.
+On Tue, 2019-12-10 at 17:08 +0100, Andrew Jones wrote:
+> I don't have a strong enough opinion about kvm-adjvtime vs.
+> kvm-no-adjvtime to insist one way or another. I agree double inversions
+> are easier to mess up, but I also like the way the '-no-' better
+> communicates that the default is [probably] 'yes'.
 > 
-> No, I don't think anybody's investigated that (I wasn't aware
-> that you could do something like that). Bear in mind that the
-> kernel is not the only consumer of the DT, though -- you need
-> to use a mechanism that all DT consumers will handle correctly.
+> All interested parties, please vote. I'll be sending v2 soon and I can
+> call this thing anything the majority (or the dominate minority) prefer.
 
-The syntax for /aliases is standardized (in the DT documentation) but
-AFAIK the exact semantic meaning of an alias relies somewhat on idiom.
-It is true that the DT binding documentation for some serial drivers
-does include details of /aliases but sadly PL011 is not amoung them.
+I like kvm-adjvtime better because it avoids the double negative,
+but on the other hand if the new default is be to adjust the time
+then I don't expect many people will actually need to use the
+parameter, so the name doesn't matter that much after all :)
 
-I took a fairly detailed look at FreeBSD. I don't think /aliases is
-used to control enumeration order but that appears to be because
-aliases are handled in a different way to Linux. For example 
-FreeBSD allows a custom console to be selected using FDT syntax
-(hw.fdt.console=serial0 or hw.fdt.console=/path/to/fdt-uart ) which
-means the Linux-like approach (such as console=ttyAMA0) need not be
-used.
+-- 
+Andrea Bolognani / Red Hat / Virtualization
 
-In summary I think that support for /aliases can and should be added
-since it the best way to help DT systems figure out how to match qemu
-uart numbering to its own naming.
-
-However I agree we still need a way to create systems with only a
-single UART even if I have not yet been able to come up with a test
-case that proves /aliases is insufficient ;-)
-
-
-Daniel.

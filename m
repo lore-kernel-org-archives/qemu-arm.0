@@ -1,168 +1,167 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6013164lff;
-        Tue, 10 Dec 2019 08:08:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyLvI1nCJJHOal8Y3fLYxMB261wsVAl2MxZN7VFFjeEnQFJYMpkihNZLZhslpW9LTS/4QUo
-X-Received: by 2002:a37:f518:: with SMTP id l24mr31730863qkk.441.1575994126369;
-        Tue, 10 Dec 2019 08:08:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575994126; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6017202lff;
+        Tue, 10 Dec 2019 08:11:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzq7aWvuR/78CD4UikQnSnR2YjpQjQtv0WPZ773V49Y1ckyFzZG2jjAXPuWK2oLXVDHK/9b
+X-Received: by 2002:a9d:578a:: with SMTP id q10mr23352285oth.215.1575994293027;
+        Tue, 10 Dec 2019 08:11:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575994293; cv=none;
         d=google.com; s=arc-20160816;
-        b=pWopvIILmaJIfwez7EdisMmUF+Sjc/sZMsA4ADPqiKDpeXwYGQyT89k+deIdGs0g/j
-         aCD8LDxYGZs6ieCXtQARS8/lwTGhfsFqgMhdPtzzGN+tnKokHfgxS5354IeZgJ4CHFkM
-         wKfJ3WB+Hio8eXnGjvSTbPOhIqEc1WhKXgl/psePTH2dM4Wmj/QTFnP+TwSVgB3fbD80
-         lPn/gDtKad+Bl2Jq5RTP2X0QbOGdM06FBnHeOnSuFSw8RjT9fT7/la91KV3nrJ1NdeJg
-         1Fqp17e4cd2cR4UOQ1TQksw3G+h8K5JNTB/y+fO3CYl0XCL98IF37OsL8sDf3vxJiUuy
-         nu9A==
+        b=phDgRgRRNdFhr5KI8SDo089aUQA986qX28QczZmbfYLerP0fz+/3wK3itQXQau/9dn
+         X/NGM2ExTP+az1kpp8uQjBlH6o/lEfQOVx7HzYoqhCsZZQ1eSK5o9j0U/cbMch9YwK9k
+         EerhIjZAuW60DgvOn4YWyl5JE7KNXpHGcwD8jgOuc5Nta0ARCnucYInd51v8fmAPI+EX
+         Fp5jvzpxoLDMzyhk+Nev0H14A1WvF9649AJaPKmHrRyRfKYAxxI5q/RzG+Mq/nEo4rnl
+         RxrWv9DGYPX5stMMPv+Bs1vq6LkGN03L7Jr3CgkCOFyhdjFnSvqFrKFi0cpykjEbk+AZ
+         Rlrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=omvEPFgMa0ImghPBOD0QaB8/kVCMWZVlsLSkdCnszF4=;
-        b=vFnSn16fkMzQKtNJ0eqApuzGKJVBh8ztrkolgBGpL63NugYwnmkkr9clWFsiWX21Kf
-         +v0nR0kp2X7zI/6oczUoMWZOs7aU87ArpMRSY+w1oI41mYNGsprfXB+r584wvlFO/B+k
-         G63X8WWWxYJHUS9TTTMo3MPclMERynBCM+F1jeXC5j9xFsqHk1uqePHkwoffLFKEYDeV
-         Cnk6k2LHVSiofmXWwaehkIt228wWPMPJiI1hwstiDUUEQLT7IlcVHP/RLjmXBumMiDgb
-         BU/8aIw2NN7aB8j6q6/vRAlbKZ+WjEr5dCzJ+wt+X3wlD59zf3MV81u1CULXwZawYanX
-         0ZKw==
+        bh=RL1wQzjB7ueQUertKiln5v+WwAvPFcgduWuDddphhwE=;
+        b=ZMaVCfW3TJwIOaWEwpLWZldF2pYpzn1mNDdmELYhEEi7LEtKV2pziiUcMGabtIKKYN
+         vV/bz2cpf5SayKxKG3ULr1q2m29OqWZ2I1RejwxzcKX5XxMgBjopIPs/2qDj4FXDVER5
+         Vfi5Ej0Sd+35hckk37RHlT0ZRjApZE7+5dRYMJUAy8AcvbDPBEHsDKrKNBZCFOqXVywT
+         SdhnNsUlkCcW6lZWRTb8XcIuIfq22SMmLQxHhiptH2YScspNqXYjfk1bDlzMN1C5lAgG
+         RTBjH1XREJfVnhO1bVFCMbRULNpCSW4iitoxcgGEdJbD4/+4rilaWnMZ8kvvkod/VqKA
+         aQXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="J9/xtnlV";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FcVlzrbw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l23si2121325qtn.323.2019.12.10.08.08.46
+        by mx.google.com with ESMTPS id m25si1959902otn.208.2019.12.10.08.11.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 08:08:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2019 08:11:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="J9/xtnlV";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58290 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FcVlzrbw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58330 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iei44-00056e-O3
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:08:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49794)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iei6m-0006UY-8j
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 11:11:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50337)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iei3v-00055j-QE
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:08:36 -0500
+ (envelope-from <drjones@redhat.com>) id 1iei6P-0006UJ-M4
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 11:11:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iei3t-00068W-90
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:08:34 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25177
+ (envelope-from <drjones@redhat.com>) id 1iei6O-00070m-Kf
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 11:11:09 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:51817
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iei3t-00067z-5e
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 11:08:33 -0500
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iei6O-00070K-Ga
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2019 11:11:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575994112;
+ s=mimecast20190719; t=1575994267;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=omvEPFgMa0ImghPBOD0QaB8/kVCMWZVlsLSkdCnszF4=;
- b=J9/xtnlVc6uYxfk9Q/xvovWVwqaj/zqkCRF2ukMAMws5eGbzi2jKVwSC4AdnMEYqn0AIm9
- 2IxKMMQ5m9Kg7BrqH7ikgP/8KHF1wn1RFtaVTQyko7UPCLpnq7ALZNZd+SeZzivvhD1e8e
- zx3/QgFKIdmlkC4jvqHfR4A4E4VOjWY=
+ bh=RL1wQzjB7ueQUertKiln5v+WwAvPFcgduWuDddphhwE=;
+ b=FcVlzrbwu5/V1u1OmZm1IcNsjqEC0sgDLr8pcFpNKiotaRBlLNE87GLa0xGqjQXl0l76Nv
+ d4fE9AdORDFjbtJPWUgLIqLqAfw3ujWjkR5TFS2O769LDGSMW7AI4oQr2SxWs/h2Avtbx3
+ o0gg8NVdR74XbAaxv8E+G04LAQNtoMg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-41-qYuj1O5nOgqp6Uz9pr90jA-1; Tue, 10 Dec 2019 11:08:30 -0500
+ us-mta-102-TZK-Us21OFCP-9rmFixakg-1; Tue, 10 Dec 2019 11:11:04 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3148610054E3;
- Tue, 10 Dec 2019 16:08:29 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF551803BC4;
+ Tue, 10 Dec 2019 16:11:02 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 811FD5C1B0;
- Tue, 10 Dec 2019 16:08:27 +0000 (UTC)
-Date: Tue, 10 Dec 2019 17:08:25 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A2E5A5C21B;
+ Tue, 10 Dec 2019 16:11:01 +0000 (UTC)
+Date: Tue, 10 Dec 2019 17:10:58 +0100
 From: Andrew Jones <drjones@redhat.com>
-To: Andrea Bolognani <abologna@redhat.com>
-Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
- virtual time
-Message-ID: <20191210160825.ioah26u36eu2i3z2@kamzik.brq.redhat.com>
-References: <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
- <20191206155327.7adiyjjkjh56mg2t@kamzik.brq.redhat.com>
- <596d07e933cb4da48dbba5b492e81a2438e78a2f.camel@redhat.com>
- <CAFEAcA9+G0jprsHRQp8g=Aso+2-_GhoWkDGx4WWxoC88maOKEg@mail.gmail.com>
- <20191210110531.psjzlikir2ep2omo@kamzik.brq.redhat.com>
- <CAFEAcA_M61hTzU=qCiUbR4V9Mnwd0phFNqTJG9pCWKreVmjy6A@mail.gmail.com>
- <20191210133254.22vcpvr3eabcnthe@kamzik.brq.redhat.com>
- <29add42daba074ab5bdbd462b2d377115fec7c3c.camel@redhat.com>
- <20191210143311.4sen6blhfhzop6zw@kamzik.brq.redhat.com>
- <e0f86b200d0b3c08769cdbaa080569c3ec3db3ab.camel@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v1 3/5] target/arm/kvm: Implement cpu feature kvm-adjvtime
+Message-ID: <20191210161058.f4ysoukuhf6k62xl@kamzik.brq.redhat.com>
+References: <20191016143410.5023-1-drjones@redhat.com>
+ <20191016143410.5023-4-drjones@redhat.com>
+ <CAFEAcA-uP9eAMu=S98hv7Ge_3GU42acpfvWDMmcMSKagnD9rsQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <e0f86b200d0b3c08769cdbaa080569c3ec3db3ab.camel@redhat.com>
+In-Reply-To: <CAFEAcA-uP9eAMu=S98hv7Ge_3GU42acpfvWDMmcMSKagnD9rsQ@mail.gmail.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: qYuj1O5nOgqp6Uz9pr90jA-1
+X-MC-Unique: TZK-Us21OFCP-9rmFixakg-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, bijan.mottahedeh@oracle.com,
- Marc Zyngier <maz@kernel.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Marc Zyngier <maz@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IF+MQL0tD2ir
+ QEMU Developers <qemu-devel@nongnu.org>, bijan.mottahedeh@oracle.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OZbhtfB365h7
 
-On Tue, Dec 10, 2019 at 04:47:49PM +0100, Andrea Bolognani wrote:
-> On Tue, 2019-12-10 at 15:33 +0100, Andrew Jones wrote:
-> > On Tue, Dec 10, 2019 at 03:21:02PM +0100, Andrea Bolognani wrote:
-> > > I agree with everything except the naming: why would
-> > >=20
-> > >   kvm-no-adjvtime=3Doff  vtime is adjusted      (default)
-> > >   kvm-no-adjvtime=3Don   vtime is not adjusted
-> > >=20
-> > > be better than
-> > >=20
-> > >   kvm-adjvtime=3Don   vtime is adjusted      (default)
-> > >   kvm-adjvtime=3Doff  vtime is not adjusted
-> > >=20
-> > > ? Both offer the exact same amount of flexibility, but the latter has
-> > > the advantage of not introducing any unwieldy double negatives.
-> >=20
-> > A default of 'off' =3D=3D 0 means not setting anything at all. There's
-> > already precedent for 'kvm-no*' prefixed cpu features,
-> >=20
-> > kvm-no-smi-migration
-> > kvm-nopiodelay
+On Tue, Dec 10, 2019 at 03:54:11PM +0000, Peter Maydell wrote:
+> On Wed, 16 Oct 2019 at 15:34, Andrew Jones <drjones@redhat.com> wrote:
+> >
+> > When kvm-adjvtime is enabled the guest's cntvct[_el0] won't count
+> > the time when the VM is stopped. That time is skipped by updating
+> > cntvoff[_el2] on each transition to vm_running using the current
+> > QEMU_CLOCK_VIRTUAL time. QEMU_CLOCK_VIRTUAL only ticks when the VM
+> > is running.
+> >
+> > This patch only provides the implementation. A subsequent patch
+> > will provide the CPU property allowing the feature to be enabled.
 >=20
-> Sorry, I'm not sure I understand. Do you mean that the array where
-> you store CPU features is 0-inizialized, so it's more convenient to
-> have off (0) as the default because it means you don't have to touch
-> it beforehand? Or something different?
->
+>=20
+> > +void kvm_arm_set_virtual_time(CPUState *cs)
+> > +{
+> > +    uint64_t cnt;
+> > +    struct kvm_one_reg reg =3D {
+> > +        .id =3D KVM_REG_ARM_TIMER_CNT,
+> > +        .addr =3D (uintptr_t)&cnt,
+> > +    };
+> > +    int ret;
+> > +
+> > +    cnt =3D muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
+> > +                   cpu_get_host_tick_frequency(),
+> > +                   NANOSECONDS_PER_SECOND);
+> > +
+> > +    ret =3D kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> > +    if (ret) {
+> > +        error_report("Failed to set KVM_REG_ARM_TIMER_CNT");
+> > +        abort();
+> > +    }
+>=20
+> The commit message (and the doc comment for this function)
+> say that we're updating the counter offset, but the
+> kvm_one_reg operation here is updating the timer count
+> (and relying on the kernel's handling of "if we update
+> the timer count implement that by changing the offset").
+> That seems a bit confusing.
+>=20
+> Would it be possible to implement "cntvct should not change while the
+> VM is stopped" with "read cntvct when the VM stops, and just write
+> back that value when the VM is restarted", rather than
+> "write back a new value calculated from QEMU_CLOCK_VIRTUAL"?
+> If I understand commit 00f4d64ee76e873be8 correctly, that's
+> basically how x86 is doing it. It would also let you sidestep
+> the need to know the tick frequency of the counter.
 
-Right. The CPU feature flag (a boolean member of the CPU state) will
-be zero by default because C. It's not a big deal, though, because the
-property default can easily be set to true while it's added to a cpu
-type.
-
-I don't have a strong enough opinion about kvm-adjvtime vs.
-kvm-no-adjvtime to insist one way or another. I agree double inversions
-are easier to mess up, but I also like the way the '-no-' better
-communicates that the default is [probably] 'yes'.
-
-All interested parties, please vote. I'll be sending v2 soon and I can
-call this thing anything the majority (or the dominate minority) prefer.
+That's definitely worth some experimenting. Will do.
 
 Thanks,
 drew

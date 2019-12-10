@@ -1,101 +1,102 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5597238lff;
-        Tue, 10 Dec 2019 02:13:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxHMl4s3WJtSEOnToL+C91ACWduPfcovUlaiJEd8HxkZxBmgVfTLfrRNvsZN5nvWEr4SFxg
-X-Received: by 2002:aca:d6d2:: with SMTP id n201mr3460365oig.112.1575972827126;
-        Tue, 10 Dec 2019 02:13:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575972827; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5612233lff;
+        Tue, 10 Dec 2019 02:29:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzXmpg6zNkcZqNJFljStI4XAldGrx1S//wlVFlr/tWgxLXNFWKxdPS1NwbeIiWF5XWCYZOo
+X-Received: by 2002:a05:6830:1d7a:: with SMTP id l26mr18582309oti.138.1575973785621;
+        Tue, 10 Dec 2019 02:29:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575973785; cv=none;
         d=google.com; s=arc-20160816;
-        b=aTEWKjzeI8gt6KA+JgQyZLabwbWeLoeC0vXI7EXhTwL2CSMIm4dtqxRC1enQSzaloj
-         HoEOkyFMAy7L18a6Dq2+xdmj5pYZZgDwvmepsxkm7LrSTNKfvmG35BYWN6fDBqTXOKyX
-         gJnKBg45j4onKfcb0Iayfn0FxifzMh5LNUV9FJZcS9zVwViC5AXdSS+qqlvZAsqWAx0n
-         UXiwcOcR0u1ywbCY/mWM8IigVVQhE27SBjvhZ7tQhTmNEstqg1VA/2PQ98q+s19uIepZ
-         YQAS8q6vuvxVka1lcEkSP61zhZ1oQ4wPmiEYA6RnHW6Byhd+rgiPdb14B034MIxv4hr/
-         4IUQ==
+        b=LjM52dAb9w/v/2cVGxMvyM+54FUGPCfiSr6SD0pMo5oCjJmse69Y7IZmSIWXF84qHG
+         5YIn1R1iksw+DKKfCPVqZKXYLLOnxXEnzUKRYcrkPaDdPwUsfJ1Z48W5MW3BdYu5WCGS
+         lndQIaDpVjSvWhEmXdrvQOYTAm5VcwXaC8Lycfb4RVxCjKGLZ5d/bgZxy9paQIi/d8Eg
+         D+sp3QDm6u4ckFPMkiZeUqV8dyuveCXVJlq+3j1kO1fc9NU9YH75Nb+FcVNhhpHTO6oV
+         ix59CVszdERFyc9tbyDtHhmMAikfgtVi2VJzD704+941da3u9sfmlOOvf5csCnr5XnJk
+         leGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=3wCO3GuM2moFcAks0xXtIp9Oxy/EmVQGKpZZV5ENJBE=;
-        b=VsXaRXMDAyHJgPurZEmbYPneO0ag3AV7I3ggNm0ig1uVwhozzEKnz9SlmwfXbk8/GN
-         4K6HZQpFcqalZPsVZG4upRAVMC3mp9dlT3iGMdmRLzM59rB6y5n3G5lYvm1lr5utJ6Pg
-         E5i+ywMAEo/22+JL6fQjvt7EO7slVFHSPo7U/iHZPtoYosTcn6TAwy3/V/lPXoVIUeaC
-         RCRyIVajCNz45ruv6JrqBA3AEw1Ny89oxoWCKzkCjGxyl0Csk/lucbYXbOXb+7IN2W7X
-         G+zcgkTMrI1QEa1MPiNAetHnXh6QoSF30t4o1XZesBJBc5vUgSKRTzZ9GAPemgs4vnQ8
-         vySQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ti24g5Ml8cfyB8YPNcyhO9AecXFyWAWKkXXMl7FXl00=;
+        b=A4xbt16WsipuKkcQTtWqwtxx4NldkhLwSgNr/H73qUPMv4jyW8cs8jmLT9e1aHLjNs
+         kJYh5WTjCQ0NF73ywWwK8M2k2H13dCwIXuihTmNoPZOqDCxzRSc5uQLg2zfJQZ453jxU
+         6Qmbn2B2Yf8U3nEe+uPIQSAvwOQHKtIESvwtbeqxlJcF1GLb/MPSQaNzH+BiZBo0e80t
+         bOL4xMpkMmOkI57Y76+xYp/itG+AH8YW/BTQFZSjm6eS3/LMt+DuPIHX9jpy63ap1Yrc
+         krtX/P0nLCiTaNW3YtosGgOgc1sI1C0zLlDM5eJcbvsS/AxqviwKI+RBrwYqRFK+C0pc
+         ZMeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YTwJLSAd;
+       dkim=fail header.i=@linaro.org header.s=google header.b=wjwluSQ1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l131si1691809oib.174.2019.12.10.02.13.46
+        by mx.google.com with ESMTPS id 73si1670446oii.60.2019.12.10.02.29.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 02:13:47 -0800 (PST)
+        Tue, 10 Dec 2019 02:29:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YTwJLSAd;
+       dkim=fail header.i=@linaro.org header.s=google header.b=wjwluSQ1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52858 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52966 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iecWY-0004ri-CY
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 05:13:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38293)
+	id 1iecm0-0000hw-Re
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 05:29:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40297)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iecWR-0004rW-NW
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 05:13:40 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iecls-0000go-5a
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 05:29:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iecWQ-0007gD-JH
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 05:13:39 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:46729
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iecWQ-0007ft-FH
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 05:13:38 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575972818;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3wCO3GuM2moFcAks0xXtIp9Oxy/EmVQGKpZZV5ENJBE=;
- b=YTwJLSAdcbADMtYbi5ZrlRnn2VvuDELoP7YoYUwkfF1LZ288LTOSIHNuEDZmyQpaNNBOpq
- CB4W1nEB3rwaARCwMMudJ8bpOPLzegikTyEk7SA1/MtsdYMbYarc2rQ7zD8hmaWm3enTea
- 3aZg3UeXxQWS+fw5A1qW+lBm2liR2nc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-398-Sv9F--SmMlq1LqAvEJt_rA-1; Tue, 10 Dec 2019 05:13:34 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 62D31107ACC4;
- Tue, 10 Dec 2019 10:13:33 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5004760561;
- Tue, 10 Dec 2019 10:13:26 +0000 (UTC)
-Date: Tue, 10 Dec 2019 11:13:23 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: "Zengtao (B)" <prime.zeng@hisilicon.com>
-Subject: Re: [Qemu-devel] [RFC PATCH 0/6] hw/arm/virt: Introduce cpu topology
- support
-Message-ID: <20191210101323.q7dn2f3pkx3ya5s4@kamzik.brq.redhat.com>
-References: <20180704124923.32483-1-drjones@redhat.com>
- <678F3D1BB717D949B966B68EAEB446ED3405A26F@dggemm526-mbx.china.huawei.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1ieclr-0005qS-1U
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 05:29:36 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:37045)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1ieclq-0005q9-Rv
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 05:29:34 -0500
+Received: by mail-oi1-x244.google.com with SMTP id x195so9339170oix.4
+ for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 02:29:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ti24g5Ml8cfyB8YPNcyhO9AecXFyWAWKkXXMl7FXl00=;
+ b=wjwluSQ1qNM2r8wY1O0DiAsyN6DHzdrop036iklOQCL7dzWdo29Cj8x1Ol/AtaHO5/
+ +9kRzICtxLb+WThzB/a65Sk6undmRl5SSUI+DbnhdwVvhtzDmikD+DKi72BaXdgLF0ge
+ D2D5j5bB1wHy9IeXZ9IGPYZh8A+BGQlE/9LMIATDsHXTA1wNiLevnalEOoW9LKbTGwF3
+ kEIHx/vH1mDTMaRaCK9ZF4yB49D2t/8J+39O9CrhgIaNgzcWe4RZqBvrugCBq3ADCzT1
+ ydCdq156Nql2O7q0wriHO2zpNXbZt7nPSUKJoihE5Hj33YLDgPypt+LlBWfx0ryokIXC
+ dV2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ti24g5Ml8cfyB8YPNcyhO9AecXFyWAWKkXXMl7FXl00=;
+ b=shv1QGG/tltRc7E4zG3e2jHHjzjNdAe/aJ4zkmZnOxfBwWP605zpMndM29Z8CSGTqS
+ Rp+KkHZs+SZQLAneZTmfR5ZIg3efdEjZHRwPhgF/IA0SHcskeiJTPEWSXb3bHvl5aBy7
+ sZSUiQn6siqKCbkYaSHXKRrpAkX0FGioSyXHWtTnzYZxp7vGlAcT/mAfbRzwL68TPHUP
+ gYsa+GC8z3S0IEsDXvtUJdBpW4v1tGOuRiRLbmy7xgHDoW8rmqkIeX6kPiN9DBle6yIj
+ Bjxd50Q6rJyMejuCSZ8QqaMg72cBhxvoNCc8bPRcMzTU7cUH9R22Q9mIasiSCAA8EJzi
+ GlSg==
+X-Gm-Message-State: APjAAAV5TCzIuaqDm/A/emg4d96Az+M45LmtoAMI93qrrABMd6dKxvfk
+ odiUAHeuv2d3M06jf0qY6C0awZR4YtjYHgmN++KRdw==
+X-Received: by 2002:a05:6808:996:: with SMTP id
+ a22mr3143457oic.146.1575973773941; 
+ Tue, 10 Dec 2019 02:29:33 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <678F3D1BB717D949B966B68EAEB446ED3405A26F@dggemm526-mbx.china.huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: Sv9F--SmMlq1LqAvEJt_rA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
+References: <20191016143410.5023-1-drjones@redhat.com>
+ <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
+ <20191206155327.7adiyjjkjh56mg2t@kamzik.brq.redhat.com>
+ <596d07e933cb4da48dbba5b492e81a2438e78a2f.camel@redhat.com>
+In-Reply-To: <596d07e933cb4da48dbba5b492e81a2438e78a2f.camel@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 10 Dec 2019 10:29:22 +0000
+Message-ID: <CAFEAcA9+G0jprsHRQp8g=Aso+2-_GhoWkDGx4WWxoC88maOKEg@mail.gmail.com>
+Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
+ virtual time
+To: Andrea Bolognani <abologna@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,104 +108,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- huangdaode <huangdaode@huawei.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "imammedo@redhat.com" <imammedo@redhat.com>
+Cc: Andrew Jones <drjones@redhat.com>, bijan.mottahedeh@oracle.com,
+ Marc Zyngier <maz@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Hd7NThglUUUj
+X-TUID: 8vskg8PTYYJ2
 
-On Mon, Dec 09, 2019 at 02:14:09AM +0000, Zengtao (B) wrote:
-> Hi Andrew:
->=20
-> Any update for this patch series? I have met the same issue, and if the=
-=20
-> topology guessed by linux MPIDR conflicts with qemu specified numa, it
-> will failed to boot (sched domain initialization will fall into deadloop)=
-.
+On Tue, 10 Dec 2019 at 09:51, Andrea Bolognani <abologna@redhat.com> wrote:
+>
+> On Fri, 2019-12-06 at 16:53 +0100, Andrew Jones wrote:
+> > On Fri, Dec 06, 2019 at 03:22:58PM +0000, Peter Maydell wrote:
+> > > On Wed, 16 Oct 2019 at 15:34, Andrew Jones <drjones@redhat.com> wrote:
+> > > > This series is inspired by a series[1] posted by Bijan Mottahedeh about
+> > > > a year ago.  The problem described in the cover letter of [1] is easily
+> > > > reproducible and some users would like to have the option to avoid it.
+> > > > However the solution, which is to adjust the virtual counter offset each
+> > > > time the VM transitions to the running state, introduces a different
+> > > > problem, which is that the virtual and physical counters diverge.  As
+> > > > described in the cover letter of [1] this divergence is easily observed
+> > > > when comparing the output of `date` and `hwclock` after suspending the
+> > > > guest, waiting a while, and then resuming it.  Because this different
+> > > > problem may actually be worse for some users, unlike [1], the series
+> > > > posted here makes the virtual counter offset adjustment optional and not
+> > > > even enabled by default.  Besides the adjustment being optional, this
+> > > > series approaches the needed changes differently to apply them in more
+> > > > appropriate locations.  Finally, unlike [1], this series doesn't attempt
+> > > > to measure "pause time" itself.  Simply using QEMU_CLOCK_VIRTUAL, which
+> > > > only ticks when the VM is not stopped, is sufficient.
+> > >
+> > > So I guess my overall question is "what is the x86 solution to
+> > > this problem, and why is this all arm-specific?" It would also
+> >
+> > x86 adjusts the counter offset by default, and I don't think there's any
+> > way to turn that behavior off. I think it's too late to follow that
+> > default for arm, but this series provides a way to opt into the same
+> > behavior.
+>
+> My understanding is that turning kvm-adjvtime either on or off
+> results in a different set of advantages and drawbacks, with neither
+> begin a one-size-fits-all solution. So it's good that we offer a way
+> for the user to pick one or the other based on their specific needs.
 
-Hi Zeng,
+If this is the case, shouldn't we be looking at having the
+option exist for all architectures, not just arm? Obviously
+pre-existing behaviour would imply having the default have
+to differ for some archs/machines.
 
-This has been on my TODO list a long time, but it keeps getting preempted.
-We need to start by giving userspace control over the MPIDRs, including
-when KVM is in use. The earliest I can return to this will be mid/late
-January. If you'd like to jump in on it now, then feel free.
-
-Thanks,
-drew
-
->=20
-> Thanks.
->=20
-> > -----Original Message-----
-> > From: Qemu-devel
-> > [mailto:qemu-devel-bounces+incoming=3Dpatchwork.ozlabs.org@nongnu.or
-> > g] On Behalf Of Andrew Jones
-> > Sent: Thursday, July 05, 2018 4:49 AM
-> > To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> > Cc: wei@redhat.com; peter.maydell@linaro.org; eric.auger@redhat.com;
-> > imammedo@redhat.com
-> > Subject: [Qemu-devel] [RFC PATCH 0/6] hw/arm/virt: Introduce cpu
-> > topology support
-> >=20
-> > This series provides support for booting mach-virt machines with
-> > non-flat cpu topology, i.e. enabling the extended options of the
-> > '-smp' command line parameter (sockets,cores,threads). Both DT and
-> > ACPI description generators are added. We only apply the new feature
-> > to 3.1 and later machine types, as the change is guest visible, even
-> > when no command line change is made. This is because the basic
-> > '-smp <N>' parameter makes the assumption that <N> refers to the
-> > number of sockets, but when no topology description is provided,
-> > Linux will use the MPIDR to guess. Neither the MPIDR exposed to
-> > the guest when running with KVM nor TCG currently provides socket
-> > information, leaving Linux to assume all processing elements are
-> > cores in the same socket. For example, before this series '-smp 4'
-> > would show up in the guest as
-> >=20
-> >  CPU(s):                4
-> >  On-line CPU(s) list:   0-3
-> >  Thread(s) per core:    1
-> >  Core(s) per socket:    4
-> >  Socket(s):             1
-> >=20
-> > and after it shows up as
-> >=20
-> >  CPU(s):                4
-> >  On-line CPU(s) list:   0-3
-> >  Thread(s) per core:    1
-> >  Core(s) per socket:    1
-> >  Socket(s):             4
-> >=20
-> > It's not expected that this should be a problem, but it's worth
-> > considering. The only way to avoid the silent change is for QEMU to
-> > provide boards a way to override the default '-smp' parsing function.
-> > Otherwise, if a user wants to avoid a guest visible change, but still
-> > use a 3.1 or later mach-virt machine type, then they must ensure the
-> > command line specifies a single socket, e.g. '-smp sockets=3D1,cores=3D=
-4'
-> >=20
-> > Thanks,
-> > drew
-> >=20
-> >=20
-> > Andrew Jones (6):
-> >   hw/arm/virt: Add virt-3.1 machine type
-> >   device_tree: add qemu_fdt_add_path
-> >   hw/arm/virt: DT: add cpu-map
-> >   hw/arm/virt-acpi-build: distinguish possible and present cpus
-> >   virt-acpi-build: add PPTT table
-> >   hw/arm/virt: cpu topology: don't allow threads
-> >=20
-> >  device_tree.c                | 24 +++++++++++++
-> >  hw/acpi/aml-build.c          | 50 ++++++++++++++++++++++++++
-> >  hw/arm/virt-acpi-build.c     | 25 ++++++++++---
-> >  hw/arm/virt.c                | 69
-> > +++++++++++++++++++++++++++++++++---
-> >  include/hw/acpi/aml-build.h  |  2 ++
-> >  include/hw/arm/virt.h        |  1 +
-> >  include/sysemu/device_tree.h |  1 +
-> >  7 files changed, 162 insertions(+), 10 deletions(-)
-
+thanks
+-- PMM

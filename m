@@ -1,117 +1,102 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6242736lff;
-        Tue, 10 Dec 2019 11:14:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwYQ/f8o28EPt0EYA0iHYBQ1vPxPYRV4QurtqfiphDesCUw6ClskWxtgxD/Plzzf34pcT1r
-X-Received: by 2002:a9d:6183:: with SMTP id g3mr20835939otk.304.1576005286382;
-        Tue, 10 Dec 2019 11:14:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576005286; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6243418lff;
+        Tue, 10 Dec 2019 11:15:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy2xDTH7ssQ07KzqB6YBXcYRsrcCIqkTOd22ojXgcPW2z8/y94FlZhp7jle2N9qJbE7lCDS
+X-Received: by 2002:a54:4085:: with SMTP id i5mr378591oii.17.1576005321957;
+        Tue, 10 Dec 2019 11:15:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576005321; cv=none;
         d=google.com; s=arc-20160816;
-        b=KavSNKhvwKMkf5ZauZyRUOBIFFlN11rZK5zHsD3U4dz5m79+c4tzqEKmFQQKVUKD3w
-         J/yCjn4uAv6o8+MiYJdjDxKCL9pPXbB4ZRtNLeYwuIxJOAcUIDsNtQPIe/NeqbIc0Fvg
-         PKDk6W2eWXX+c8NiyfSIPITSM3yfcUjZJHYSTwSJ+oT0CYhdejSZMIXXgs6ZIhuHBuzT
-         W3VdSpQII2bDaQqwsY7FQYZg8PIBI0shbH72R8QTVwmX/zP6mqltxG87umxkRtFInlmx
-         7ULDFNveL94SgxWNiw6YKxD70kmejv+L6H/gmOiYFpTo30HEACmrVdcSqgjKoo+qQ5qa
-         PoWQ==
+        b=mx7erj7W/yex6kWjnhj1HQlXgkjxW2+OlBRKZOQtij81uhF2QsjcJ4aXnA2OsWRhDZ
+         TZArmr1APwsLWlJVlJkVkTd0wOvOKiTpFypL3hnXb6saVgvVZ56A99tnCeVj6VXSCEu+
+         IKW4wIs9pzRwGVXu3D0rTn9nefrDBowXHo2F0uEtz68UhfgAr9Q72nseOFHGzj5JXnk+
+         U0pqUjehM1A0tXxh8zJDT18szuCXJ2Nwbu5Iqo/n9V4MCPuXONPwkpf071myRKrz2NfS
+         hM88SLp45w/Qx56OB3FO4xqoPgFuhWEMyb7ckUsE9adxk40hny9KIlVLdLz4U6wEeh6B
+         atpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=QYz/6hrb7cqbBbeqZPE4uGuRtTwhiU/auYfMMLJF+NI=;
-        b=Pf0td0xl3GmG6jNaX6kAxgjqqWEZA8iBWJIg9CxDWr5RcfHRUn/fNYdGdda5DdFHYC
-         ww2UCCdEkxuGb6XdZHVvOalmyH0taBdj89fkrLS+f7nC48USSjajDCNktWWZ7tLuiPZH
-         mgBTLtZN2bwHOiNiGkouFZgca62GHCGoVOUWCNzSMdIZl+7BFh+ESFQCkXqafDNcWs7h
-         /6gau3/xrx8Pmnk+xJ+LzPG2S7agh9RURPGyR/JvMMVGDQXmcD3hd+JqxW/2TbfO9gI8
-         4YMU0nKPnMFjtl+AabJQbTYluBxByKVWTWrCrpT0ISwafTIz1DyA1AWE7e/czhTkWWNh
-         0dLw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=alOcQcgvp6XCV+enV3qG3D/mHnMQSHhndppzu+ZmGrM=;
+        b=xft8LzI7nrnjLio5RNRigXEipCemSb5NAt6FS5ggVQ9VLR/NpihV8rN5P6Cleti2+Q
+         ia283eRVYUtJl6MGZykdbGpkFyV2Qz39bsT/1jVPNPrk4qLU9Ytw1IWXl5OBgWJ0HSgq
+         qHezq3E368UcKorrf11HUf7wypL51lHq1YUCsh7syUBplwjNhBo71F9bQPD6Cy3fWLm6
+         JTHIyjDKdL1+e/lGH8PBPsE7i3BioUsgxz4qy4fVpsS2UwbEoq8NLnSuKa/ITATW2ZT6
+         M0FFmNVFXKQPsNjbTurTv+4L+C2loc5i2L4JqatTecTLrmZJE+B4NY/YXb02R0N108v2
+         c69Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HQGknXgx;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=THJR6EYu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b133si2437192oif.244.2019.12.10.11.14.46
+        by mx.google.com with ESMTPS id a12si2566348oie.87.2019.12.10.11.15.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 11:14:46 -0800 (PST)
+        Tue, 10 Dec 2019 11:15:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HQGknXgx;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=THJR6EYu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34942 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34964 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ieky5-00045J-Fc
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 14:14:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51293)
+	id 1iekye-0004bE-To
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 14:15:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51494)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1iekxs-000438-FE
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 14:14:33 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iekyP-0004YA-HK
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 14:15:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1iekxp-0007ip-SF
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 14:14:30 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:34120
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1iekxp-0007go-Ox
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 14:14:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576005267;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QYz/6hrb7cqbBbeqZPE4uGuRtTwhiU/auYfMMLJF+NI=;
- b=HQGknXgxhsxyJKxdsTREfC44pus7vIDuoA6rwAWPCqSfI2OME0mxX45Zt+ADtd6EWffXHq
- MoY79k5E97/7E3EN7iFmLoZTTJ6a6qSsLB+misMuE3Da6vFqJpdXXo8kzBCfu1/2nK7tpm
- kc/HOdz1w/wpjhwf5xsUIv5/yhuEs58=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-381-TXh9UueoNSeYD6SePEVmHg-1; Tue, 10 Dec 2019 14:14:26 -0500
-Received: by mail-qv1-f69.google.com with SMTP id g15so7466903qvk.11
- for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 11:14:26 -0800 (PST)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iekyN-0007wP-9V
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 14:15:05 -0500
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:40512)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1iekyI-0007uE-I6; Tue, 10 Dec 2019 14:14:58 -0500
+Received: by mail-il1-x143.google.com with SMTP id b15so17132461ila.7;
+ Tue, 10 Dec 2019 11:14:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=alOcQcgvp6XCV+enV3qG3D/mHnMQSHhndppzu+ZmGrM=;
+ b=THJR6EYuFy2c4ffOJwBwV2tVu7xDWwN+anvQQK9k3M2/FJEUncl50RXrUcdIdNqPez
+ +HU/QO0vem93nw8qdJaPXnhU/VweuNwD+uk5WLq+r9IKBzxN2zBjPR6lSRhSSrqhGSmj
+ LhBLPOIhkMhc9VX5Hdx078QKKYdAAhQfRKrLhDpyYCXDXdH7Jce7ECcmf0T/Junj7IfP
+ mmOCXfjn+lYE4q8nKrnldPGoCOBW1mCkZPvnIkK/mnfaM1HZYrgIfIADCauHxo7iNPAT
+ Chr5P3U9io3+7t1ZeCsEybz4mXcKB3vsR4Tk3fbAV7YKP7YLBT/+ZJ9cUMfxxKziU3k/
+ fmDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=t5NRopCXac/TaVRyYxckA1Ih+aNBJ6X1xXjY0vMyIYY=;
- b=arbFDJHe5TGOY3/G0hqNg+pZrHT6zdFy5BT2LxdN1s9QsZJTtyB6v8bk8yF2oT0NyS
- jbu0XHMTFlMQqKw/tDdww1OzRNR4UfvDqXhReK3a2rq/FRhBtIqfhx58Rnh7eQvg8MeM
- 1cZ8yx31z6DlSAhSdbpr1HKSzn4Y/NRBoF2WLRgzWj0jpjkq3SuJNE8VUS9y+/38JF58
- JupzLWognZt9wmrpVLEUsDEROHx7EFQ2bb5kyEZjwFgkQ4b0Emn6jYWw4dnNL9/Jf9Jk
- BWBJAjKIrZl/EaBJd+HILBdSGaEvubhogwiTPNmY6sO0qlRipqfpXL6S2gSBf7LwJ86t
- cYYg==
-X-Gm-Message-State: APjAAAWFusneLP7aAHfpBM4jIM4byjl+pgxw+TYcXojVKWFzsYEg+ILQ
- A4jUy0ehz94dX9kYylMIeqGKCLjgumm/saFHrFsfPAQ+84R6xFS0faXZ7HgZzObWEYCbl+KKe9S
- r21AHD82K241a
-X-Received: by 2002:a05:620a:2010:: with SMTP id
- c16mr33446196qka.386.1576005265880; 
- Tue, 10 Dec 2019 11:14:25 -0800 (PST)
-X-Received: by 2002:a05:620a:2010:: with SMTP id
- c16mr33446170qka.386.1576005265597; 
- Tue, 10 Dec 2019 11:14:25 -0800 (PST)
-Received: from xz-x1 ([104.156.64.74])
- by smtp.gmail.com with ESMTPSA id e2sm1211935qkb.112.2019.12.10.11.14.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Dec 2019 11:14:24 -0800 (PST)
-Date: Tue, 10 Dec 2019 14:14:23 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH for-5.0 v11 03/20] virtio-iommu: Decode the command payload
-Message-ID: <20191210191423.GH3352@xz-x1>
-References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-4-eric.auger@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=alOcQcgvp6XCV+enV3qG3D/mHnMQSHhndppzu+ZmGrM=;
+ b=d8Jmfp6cODObyXtY9K1KQ/TuO9W62pI6mOEzGOe8Hfwr6/IoIZebTW3kWWod9OKG8y
+ FdVnxVrSya3co0vYy2wOkmnC2JQA9rLSeUI/7j6OdQVZ3QvjSPpIaqN0JQvJ3imvzXe0
+ L5uYqRSqxgSZ6P/lII1Sha6m8tC06bqUYf8hB1LrvCyorHQK1pbKZmkYU4T82p0Yo8UE
+ AC1OxNmVU1VTYvDwvQOvtvVX26RWQhhlbzT5n8h+SsEi/tvRTbB1MHnxcCNOF+lXxCN/
+ +2uuQMWZeQskBAnltVFhBv9DSLhzt22MY6yB37daILe6nIC1B1yQu1yYO3lpbFdWD3UE
+ /LcQ==
+X-Gm-Message-State: APjAAAUzovezeHwCXfhWSBoeEj4M9X5dWoUqEk/CgOpVBYc/4CnbKBI4
+ ULcp10vGEkvZGjMrI+PEaTeu6VhWFvigDBdrHh0=
+X-Received: by 2002:a92:5a45:: with SMTP id o66mr33950807ilb.67.1576005297574; 
+ Tue, 10 Dec 2019 11:14:57 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191122182943.4656-4-eric.auger@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-MC-Unique: TXh9UueoNSeYD6SePEVmHg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
+ <20191202210947.3603-3-nieklinnenbank@gmail.com>
+ <b14e5a75-ebe3-311e-60a8-3f71b0874a10@redhat.com>
+ <CAPan3WohBP_47h1ZPP12ZuyiY43B3B6tGFMH-sK=LAAjMbwpaA@mail.gmail.com>
+ <ce2125dd-004c-a5a2-81cf-b8aaae76444e@redhat.com>
+ <CAPan3WrN28W-h9RYA88LbA8eWP6Me9VcNisnZhwNgC2WOgVLxg@mail.gmail.com>
+ <f5983dbb-28f6-206f-a180-83633a049325@redhat.com>
+In-Reply-To: <f5983dbb-28f6-206f-a180-83633a049325@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Tue, 10 Dec 2019 20:14:46 +0100
+Message-ID: <CAPan3Wru7AnjmeB5DWwgD0sDA2L1emZdMJLD2-d1g0cQH5fEOA@mail.gmail.com>
+Subject: Re: [PATCH 02/10] hw: arm: add Xunlong Orange Pi PC machine
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000ed1a5205995e531e"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::143
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,27 +108,441 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
- quintela@redhat.com, qemu-devel@nongnu.org, armbru@redhat.com,
- bharatb.linux@gmail.com, qemu-arm@nongnu.org, dgilbert@redhat.com,
- eric.auger.pro@gmail.com
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fRQezozx0AP3
+X-TUID: TPZAR6gExxaM
 
-On Fri, Nov 22, 2019 at 07:29:26PM +0100, Eric Auger wrote:
-> This patch adds the command payload decoding and
-> introduces the functions that will do the actual
-> command handling. Those functions are not yet implemented.
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+--000000000000ed1a5205995e531e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I would simply squash this into previous patch to avoid removing lines
-from newly introduced, but this is ok too so to keep Jean's r-b:
+Hi Philippe,
 
-Reviewed-by: Peter Xu <peterx@redhat.com>
+On Tue, Dec 10, 2019 at 9:59 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+wrote:
+
+> On 12/6/19 11:15 PM, Niek Linnenbank wrote:
+> [...]
+> >      >      > +static void orangepi_machine_init(MachineClass *mc)
+> >      >      > +{
+> >      >      > +    mc->desc =3D "Orange Pi PC";
+> >      >      > +    mc->init =3D orangepi_init;
+> >      >      > +    mc->units_per_default_bus =3D 1;
+> >      >      > +    mc->min_cpus =3D AW_H3_NUM_CPUS;
+> >      >      > +    mc->max_cpus =3D AW_H3_NUM_CPUS;
+> >      >      > +    mc->default_cpus =3D AW_H3_NUM_CPUS;
+> >      >
+> >      >              mc->default_cpu_type =3D
+> ARM_CPU_TYPE_NAME("cortex-a7");
+> >      >
+> >      >      > +    mc->ignore_memory_transaction_failures =3D true;
+> >      >
+> >      >     You should not use this flag in new design. See the
+> >     documentation in
+> >      >     include/hw/boards.h:
+> >      >
+> >      >        * @ignore_memory_transaction_failures:
+> >      >        *    [...] New board models
+> >      >        *    should instead use "unimplemented-device" for all
+> memory
+> >      >     ranges where
+> >      >        *    the guest will attempt to probe for a device that
+> >     QEMU doesn't
+> >      >        *    implement and a stub device is required.
+> >      >
+> >      >     You already use the "unimplemented-device".
+> >      >
+> >      > Thanks, I'm working on this now. I think that at least I'll need
+> >     to add
+> >      > all of the devices mentioned in the 4.1 Memory Mapping chapter o=
+f
+> >     the
+> >      > datasheet
+> >      > as an unimplemented device. Previously I only added some that I
+> >     thought
+> >      > were relevant.
+> >      >
+> >      > I added all the missing devices as unimplemented and removed the
+> >      > ignore_memory_transaction_failures flag
+> >
+> >     I was going to say, "instead of adding *all* the devices regions yo=
+u
+> >     can
+> >     add the likely bus decoding regions", probably:
+> >
+> >     0x01c0.0000   128KiB   AMBA AXI
+> >     0x01c2.0000   64KiB    AMBA APB
+> >
+> >     But too late.
+> >
+> >
+> > Hehe its okey, I can change it to whichever is preferable: the minimum
+> set
+> > with unimplemented device entries to get a working linux kernel / u-boo=
+t
+> or
+> > just cover the full memory space from the datasheet. My initial thought
+> > was that if
+> > we only provide the minimum set, and the linux kernel later adds a new
+> > driver for a device
+> > which is not marked unimplemented, it will trigger the data abort and
+> > potentially resulting in a non-booting kernel.
+> >
+> > But I'm not sure what is normally done here. I do see other board files
+> > using the create_unimplemented_device() function,
+> > but I dont know if they are covering the whole memory space or not.
+>
+> If they don't cover all memory regions, the guest code can trigger a
+> data abort indeed. Since we don't know the memory layout of old board,
+> they are still supported with ignore_memory_transaction_failures=3Dtrue,
+> so guest still run unaffected.
+> We expect new boards to implement the minimum layout.
+> As long as your guest is happy and usable, UNIMP devices are fine,
+> either as big region or individual device (this requires someone with
+> access to the datasheet to verify). If you can add a UNIMP for each
+> device - which is what you did - it is even better because the the unimp
+> access log will be more useful, having finer granularity.
+>
+>  > I added all the missing devices as unimplemented and removed the
+>  > ignore_memory_transaction_failures flag
+>
+> IOW, you already did the best you could do :)
+>
+> >      > from the machine. Now it seems Linux gets a data abort while
+> >     probing the
+> >      > uart1 serial device at 0x01c28400,
+> >
+> >     Did you add the UART1 as UNIMP or 16550?
+> >
+> >
+> > I discovered what goes wrong here. See this kernel oops message:
+> >
+> > [    1.084985] [f08600f8] *pgd=3D6f00a811, *pte=3D01c28653, *ppte=3D01c=
+28453
+> > [    1.085564] Internal error: : 8 [#1] SMP ARM
+> > [    1.085698] Modules linked in:
+> > [    1.085940] CPU: 0 PID: 1 Comm: swapper/0 Not tainted
+> 5.4.0-11747-g2f13437b8917 #4
+> > [    1.085968] Hardware name: Allwinner sun8i Family
+> > [    1.086447] PC is at dw8250_setup_port+0x10/0x10c
+> > [    1.086478] LR is at dw8250_probe+0x500/0x56c
+> >
+> > It tries to access the UART0 at base address 0x01c28400, which I did
+> > provide. The strange
+> > thing is that is accesses offset 0xf8, thus address 0x01c284f8. The
+> > datasheet does not mention this register
+> > but if we provide the 1KiB (0x400) I/O space it should at least read as
+> > zero and writes ignored. Unfortunately the emulated
+> > serial driver only maps a small portion until 0x1f:
+> >
+> > (qemu) info mtree
+> > ...
+> >      0000000001c28000-0000000001c2801f (prio 0, i/o): serial
+> >      0000000001c28400-0000000001c2841f (prio 0, i/o): serial
+> >      0000000001c28800-0000000001c2881f (prio 0, i/o): serial
+> >
+> >
+> > Apparently, the register that the mainline linux kernel is using is
+> > DesignWare specific:
+> >
+> > drivers/tty/serial/8250/8250_dwlib.c:13:
+> >
+> > /* Offsets for the DesignWare specific registers */
+> > #define DW_UART_DLF<--->0xc0 /* Divisor Latch Fraction Register */
+> > #define DW_UART_CPR<--->0xf4 /* Component Parameter Register */
+> > #define DW_UART_UCV<--->0xf8 /* UART Component Version */
+> >
+> > I tried to find a way to increase the memory mapped size of the serial
+> > device I created with serial_mm_init(),
+> > but I don't think its possible with that interface.
+> >
+> > I did manage to get it working by overlaying the UART0 with another
+> > unimplemented device
+> > that does have an I/O size of 0x400, but I guess that is probably not
+> > the solution we are looking for?
+>
+> IMHO this is the correct solution :)
+>
+> Memory regions have priority. By default a device has priority 0, and
+> UNIMP device has priority -1000.
+>
+> So you can use:
+>
+>     serial_mm_init(get_system_memory(), AW_H3_UART0_REG_BASE, 2,
+>                    s->irq[AW_H3_GIC_SPI_UART0], 115200,
+>                    serial_hd(0), DEVICE_NATIVE_ENDIAN);
+>     create_unimplemented_device("DesignWare-uart",\
+>                                 AW_H3_UART0_REG_BASE,
+>                                 0x400);
+>
+>
+Now it makes much more sense to me, thanks a lot for explaining this!
+
+Allright, I'll use this approach to finish the work for removing
+mc->ignore_memory_transaction_failures.
+
+Regards,
+Niek
+
+
+> (Or cleaner, add a create_designware_uart(...) function that does both).
+>
+> (qemu) info mtree
+> ...
+>     0000000001c28000-0000000001c2801f (prio 0, i/o): serial
+>     0000000001c28000-0000000001c283ff (prio -1000, i/o): DesignWare-uart
+>
+> You could create an UNIMP region of 0x400 - 0x20 =3D 0x3e0, but that woul=
+d
+> appear this is a different device, so I don't recommend that.
+>
+>  > I wonder, did any of the other SoC / boards have this problem when
+>  > removing mc->ignore_memory_transaction_failures?
+>
+>
 
 --=20
-Peter Xu
+Niek Linnenbank
 
+--000000000000ed1a5205995e531e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 10, 2019 at 9:59 AM Phili=
+ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
+at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On 12/6/19 11:15 PM, Niek Linnenbank wrote:<br>
+[...]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 &gt; +static void orangep=
+i_machine_init(MachineClass *mc)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&g=
+t;desc =3D &quot;Orange Pi PC&quot;;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&g=
+t;init =3D orangepi_init;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&g=
+t;units_per_default_bus =3D 1;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&g=
+t;min_cpus =3D AW_H3_NUM_CPUS;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&g=
+t;max_cpus =3D AW_H3_NUM_CPUS;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&g=
+t;default_cpus =3D AW_H3_NUM_CPUS;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 mc-&gt;default_cpu_type =3D ARM_CPU_TYPE_NAME(&quot;cortex-a7&quot;);<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 mc-&g=
+t;ignore_memory_transaction_failures =3D true;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0You should not use this fl=
+ag in new design. See the<br>
+&gt;=C2=A0 =C2=A0 =C2=A0documentation in<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0include/hw/boards.h:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 * @ignore_memory_t=
+ransaction_failures:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 [..=
+.] New board models<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 sho=
+uld instead use &quot;unimplemented-device&quot; for all memory<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0ranges where<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 the=
+ guest will attempt to probe for a device that<br>
+&gt;=C2=A0 =C2=A0 =C2=A0QEMU doesn&#39;t<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 *=C2=A0 =C2=A0 imp=
+lement and a stub device is required.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0You already use the &quot;=
+unimplemented-device&quot;.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Thanks, I&#39;m working on this now. I think =
+that at least I&#39;ll need<br>
+&gt;=C2=A0 =C2=A0 =C2=A0to add<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; all of the devices mentioned in the 4.1 Memor=
+y Mapping chapter of<br>
+&gt;=C2=A0 =C2=A0 =C2=A0the<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; datasheet<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; as an unimplemented device. Previously I only=
+ added some that I<br>
+&gt;=C2=A0 =C2=A0 =C2=A0thought<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; were relevant.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; I added all the missing devices as unimplemen=
+ted and removed the<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; ignore_memory_transaction_failures flag<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0I was going to say, &quot;instead of adding *all* t=
+he devices regions you<br>
+&gt;=C2=A0 =C2=A0 =C2=A0can<br>
+&gt;=C2=A0 =C2=A0 =C2=A0add the likely bus decoding regions&quot;, probably=
+:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A00x01c0.0000=C2=A0 =C2=A0128KiB=C2=A0 =C2=A0AMBA AXI=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A00x01c2.0000=C2=A0 =C2=A064KiB=C2=A0 =C2=A0 AMBA APB=
+<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0But too late.<br>
+&gt; <br>
+&gt; <br>
+&gt; Hehe its okey, I can change it to whichever is preferable: the minimum=
+ set<br>
+&gt; with unimplemented device entries to get a working linux kernel / u-bo=
+ot or<br>
+&gt; just cover the full memory space from the datasheet. My initial though=
+t <br>
+&gt; was that if<br>
+&gt; we only provide the minimum set, and the linux kernel later adds a new=
+ <br>
+&gt; driver for a device<br>
+&gt; which is not marked unimplemented, it will trigger the data abort and =
+<br>
+&gt; potentially resulting in a non-booting kernel.<br>
+&gt; <br>
+&gt; But I&#39;m not sure what is normally done here. I do see other board =
+files <br>
+&gt; using the create_unimplemented_device() function,<br>
+&gt; but I dont know if they are covering the whole memory space or not.<br=
+>
+<br>
+If they don&#39;t cover all memory regions, the guest code can trigger a <b=
+r>
+data abort indeed. Since we don&#39;t know the memory layout of old board, =
+<br>
+they are still supported with ignore_memory_transaction_failures=3Dtrue, <b=
+r>
+so guest still run unaffected.<br>
+We expect new boards to implement the minimum layout.<br>
+As long as your guest is happy and usable, UNIMP devices are fine, <br>
+either as big region or individual device (this requires someone with <br>
+access to the datasheet to verify). If you can add a UNIMP for each <br>
+device - which is what you did - it is even better because the the unimp <b=
+r>
+access log will be more useful, having finer granularity.<br>
+<br>
+=C2=A0&gt; I added all the missing devices as unimplemented and removed the=
+<br>
+=C2=A0&gt; ignore_memory_transaction_failures flag<br>
+<br>
+IOW, you already did the best you could do :)<br>
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; from the machine. Now it seems Linux gets a d=
+ata abort while<br>
+&gt;=C2=A0 =C2=A0 =C2=A0probing the<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; uart1 serial device at 0x01c28400,<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Did you add the UART1 as UNIMP or 16550?<br>
+&gt; <br>
+&gt; <br>
+&gt; I discovered what goes wrong here. See this kernel oops message:<br>
+&gt; <br>
+&gt; [=C2=A0 =C2=A0 1.084985] [f08600f8] *pgd=3D6f00a811, *pte=3D01c28653, =
+*ppte=3D01c28453<br>
+&gt; [=C2=A0 =C2=A0 1.085564] Internal error: : 8 [#1] SMP ARM<br>
+&gt; [=C2=A0 =C2=A0 1.085698] Modules linked in:<br>
+&gt; [=C2=A0 =C2=A0 1.085940] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.4=
+.0-11747-g2f13437b8917 #4<br>
+&gt; [=C2=A0 =C2=A0 1.085968] Hardware name: Allwinner sun8i Family<br>
+&gt; [=C2=A0 =C2=A0 1.086447] PC is at dw8250_setup_port+0x10/0x10c<br>
+&gt; [=C2=A0 =C2=A0 1.086478] LR is at dw8250_probe+0x500/0x56c<br>
+&gt; <br>
+&gt; It tries to access the UART0 at base address 0x01c28400, which I did <=
+br>
+&gt; provide. The strange<br>
+&gt; thing is that is accesses offset 0xf8, thus address 0x01c284f8. The <b=
+r>
+&gt; datasheet does not mention this register<br>
+&gt; but if we provide the 1KiB (0x400) I/O space it should at least read a=
+s <br>
+&gt; zero and writes ignored. Unfortunately the emulated<br>
+&gt; serial driver only maps a small portion until 0x1f:<br>
+&gt; <br>
+&gt; (qemu) info mtree<br>
+&gt; ...<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 0000000001c28000-0000000001c2801f (prio 0, i/o): s=
+erial<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 0000000001c28400-0000000001c2841f (prio 0, i/o): s=
+erial<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 0000000001c28800-0000000001c2881f (prio 0, i/o): s=
+erial<br>
+&gt; <br>
+&gt; <br>
+&gt; Apparently, the register that the mainline linux kernel is using is <b=
+r>
+&gt; DesignWare specific:<br>
+&gt; <br>
+&gt; drivers/tty/serial/8250/8250_dwlib.c:13:<br>
+&gt; <br>
+&gt; /* Offsets for the DesignWare specific registers */<br>
+&gt; #define DW_UART_DLF&lt;---&gt;0xc0 /* Divisor Latch Fraction Register =
+*/<br>
+&gt; #define DW_UART_CPR&lt;---&gt;0xf4 /* Component Parameter Register */<=
+br>
+&gt; #define DW_UART_UCV&lt;---&gt;0xf8 /* UART Component Version */<br>
+&gt; <br>
+&gt; I tried to find a way to increase the memory mapped size of the serial=
+ <br>
+&gt; device I created with serial_mm_init(),<br>
+&gt; but I don&#39;t think its possible with that interface.<br>
+&gt; <br>
+&gt; I did manage to get it working by overlaying the UART0 with another <b=
+r>
+&gt; unimplemented device<br>
+&gt; that does have an I/O size of 0x400, but I guess that is probably not =
+<br>
+&gt; the solution we are looking for?<br>
+<br>
+IMHO this is the correct solution :)<br>
+<br>
+Memory regions have priority. By default a device has priority 0, and <br>
+UNIMP device has priority -1000.<br>
+<br>
+So you can use:<br>
+<br>
+=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), AW_H3_UART0_REG_BASE, 2,<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;=
+irq[AW_H3_GIC_SPI_UART0], 115200,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0serial=
+_hd(0), DEVICE_NATIVE_ENDIAN);<br>
+=C2=A0 =C2=A0 create_unimplemented_device(&quot;DesignWare-uart&quot;,\<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 AW_H3_UART0_REG_BASE,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0x400);<br>
+<br></blockquote><div><br></div><div>Now it makes much more sense to me, th=
+anks a lot for explaining this!</div><div><br></div><div>Allright, I&#39;ll=
+ use this approach to finish the work for removing mc-&gt;ignore_memory_tra=
+nsaction_failures.<br></div><div><br></div><div>Regards,</div><div>Niek<br>=
+</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+(Or cleaner, add a create_designware_uart(...) function that does both).<br=
+>
+<br>
+(qemu) info mtree<br>
+...<br>
+=C2=A0 =C2=A0 0000000001c28000-0000000001c2801f (prio 0, i/o): serial<br>
+=C2=A0 =C2=A0 0000000001c28000-0000000001c283ff (prio -1000, i/o): DesignWa=
+re-uart<br>
+<br>
+You could create an UNIMP region of 0x400 - 0x20 =3D 0x3e0, but that would =
+<br>
+appear this is a different device, so I don&#39;t recommend that.<br>
+<br>
+=C2=A0&gt; I wonder, did any of the other SoC / boards have this problem wh=
+en<br>
+=C2=A0&gt; removing mc-&gt;ignore_memory_transaction_failures?<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--000000000000ed1a5205995e531e--

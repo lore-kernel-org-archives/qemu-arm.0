@@ -1,431 +1,149 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6240360lff;
-        Tue, 10 Dec 2019 11:12:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyDPp2ibnWdnTkzUNxqLwUotsoTpK22/cb0H+mgff1YEQYLZNNc1EJLPnVcsS5OFA4jwe5k
-X-Received: by 2002:a05:6830:4a4:: with SMTP id l4mr21398287otd.91.1576005170721;
-        Tue, 10 Dec 2019 11:12:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576005170; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6242736lff;
+        Tue, 10 Dec 2019 11:14:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwYQ/f8o28EPt0EYA0iHYBQ1vPxPYRV4QurtqfiphDesCUw6ClskWxtgxD/Plzzf34pcT1r
+X-Received: by 2002:a9d:6183:: with SMTP id g3mr20835939otk.304.1576005286382;
+        Tue, 10 Dec 2019 11:14:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576005286; cv=none;
         d=google.com; s=arc-20160816;
-        b=gwAs3FHAN/fiFE2+w4ER6Z5dr98/+BSEBc6QqvuPTDR+8hmQjSOV75RdS0xwxkwYju
-         y6tWxP9UJ7XaRFchqRlGE2Yvj6sR1jHO/6OUt/j24d5K9bVaxqutl7cjcrCIr/PNf6sh
-         STHZBQi2aGqNTv9qhAARNSvaO6iGsBA0MoG80zTRTJotj6+ZNZY3uFdaMF6CBL3pe0jU
-         uKfBRMimQtnIBVyovz2abR7NGdSHFOaQbDYk19QcSiPzd44vVXe65l78++4G/p2+xxJz
-         vBGQ+p2NWE4s94Pqra4hdYWdmq7BVh6QB+5kSm3OvqJ93F6iQr2hmcQtlavzeoBLo17R
-         tPPQ==
+        b=KavSNKhvwKMkf5ZauZyRUOBIFFlN11rZK5zHsD3U4dz5m79+c4tzqEKmFQQKVUKD3w
+         J/yCjn4uAv6o8+MiYJdjDxKCL9pPXbB4ZRtNLeYwuIxJOAcUIDsNtQPIe/NeqbIc0Fvg
+         PKDk6W2eWXX+c8NiyfSIPITSM3yfcUjZJHYSTwSJ+oT0CYhdejSZMIXXgs6ZIhuHBuzT
+         W3VdSpQII2bDaQqwsY7FQYZg8PIBI0shbH72R8QTVwmX/zP6mqltxG87umxkRtFInlmx
+         7ULDFNveL94SgxWNiw6YKxD70kmejv+L6H/gmOiYFpTo30HEACmrVdcSqgjKoo+qQ5qa
+         PoWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Ir2OHURJgyd1utg6eQ0vao/9jZEovfcbKpNA4WxrXQE=;
-        b=Qp6CB0r2kFnkrkB6mV6kDQpuqJ70A0H/ACizzkXsW4IjtjKtVIjyr92h2kmtb6i+QB
-         p7S7VoqLdoW3DwgzoRqlGCFozO4+DJDZ3BicHpkKprC9nE9OPgUtPgMsHkIZh9/pUQix
-         0hIBWFpR+9Rb2a1ipODeJ6eg6z+kgSqtz/C6C1E4AEG54DL3jzLXdwMJ325rdYUMMCxu
-         zA37CGmFvXKRQZNI8gGnIkqwXmlmXY+XpaSRSXqZTKUxB3LXXqXYZAYMkbOT3ndy+Oxx
-         MWh9CNOFroITpMTyy+++Q2EetvhvRrX+u0kQbgis+EKdOfsUz+JDcA+kBBGZzMZdk+PJ
-         teKA==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=QYz/6hrb7cqbBbeqZPE4uGuRtTwhiU/auYfMMLJF+NI=;
+        b=Pf0td0xl3GmG6jNaX6kAxgjqqWEZA8iBWJIg9CxDWr5RcfHRUn/fNYdGdda5DdFHYC
+         ww2UCCdEkxuGb6XdZHVvOalmyH0taBdj89fkrLS+f7nC48USSjajDCNktWWZ7tLuiPZH
+         mgBTLtZN2bwHOiNiGkouFZgca62GHCGoVOUWCNzSMdIZl+7BFh+ESFQCkXqafDNcWs7h
+         /6gau3/xrx8Pmnk+xJ+LzPG2S7agh9RURPGyR/JvMMVGDQXmcD3hd+JqxW/2TbfO9gI8
+         4YMU0nKPnMFjtl+AabJQbTYluBxByKVWTWrCrpT0ISwafTIz1DyA1AWE7e/czhTkWWNh
+         0dLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vS1r0KBq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HQGknXgx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d6si2335820oic.86.2019.12.10.11.12.50
+        by mx.google.com with ESMTPS id b133si2437192oif.244.2019.12.10.11.14.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 11:12:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2019 11:14:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vS1r0KBq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34854 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HQGknXgx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iekwD-0002wb-T6
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 14:12:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50214)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ieky5-00045J-Fc
+	for alex.bennee@linaro.org; Tue, 10 Dec 2019 14:14:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51293)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1iekvM-0002PY-9S
- for qemu-devel@nongnu.org; Tue, 10 Dec 2019 14:11:58 -0500
+ (envelope-from <peterx@redhat.com>) id 1iekxs-000438-FE
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 14:14:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1iekvK-0006Il-Fs
- for qemu-devel@nongnu.org; Tue, 10 Dec 2019 14:11:56 -0500
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:46005)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1iekvK-0006IX-7c; Tue, 10 Dec 2019 14:11:54 -0500
-Received: by mail-il1-x141.google.com with SMTP id p8so17095545iln.12;
- Tue, 10 Dec 2019 11:11:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Ir2OHURJgyd1utg6eQ0vao/9jZEovfcbKpNA4WxrXQE=;
- b=vS1r0KBqJBA0KkXC9R6Gj/Lk3TsRXyzJZNHTMZrQWNIes9KkdOTBjHurTY+NdnUUOc
- fCFDFTd9miTtWhLWWcis4/DA/SK/YoMWOhXlUvsBk5sqI2rjgo9KsW5PfQng5NVIKVD6
- 5Y/X1pvGGxf2O2g0QW32yhX0/np9lXeC8dwO2/KVTI1NYpR2spKI1vTSckTdtoOenatn
- jFbaFtQ5W0hgfLU2QMCQAdRkChosrMQaMKkmsDhSFcbMUehfHYC7IdUaMpD3uiJxRpIX
- xhtsG5+jtdmTSPf+CQNQDiGdeRKss/IOb6DEPAtrGhi6iOFtIUyAA0kvtk3Itf5jeImG
- Irjg==
+ (envelope-from <peterx@redhat.com>) id 1iekxp-0007ip-SF
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 14:14:30 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:34120
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1iekxp-0007go-Ox
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2019 14:14:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1576005267;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=QYz/6hrb7cqbBbeqZPE4uGuRtTwhiU/auYfMMLJF+NI=;
+ b=HQGknXgxhsxyJKxdsTREfC44pus7vIDuoA6rwAWPCqSfI2OME0mxX45Zt+ADtd6EWffXHq
+ MoY79k5E97/7E3EN7iFmLoZTTJ6a6qSsLB+misMuE3Da6vFqJpdXXo8kzBCfu1/2nK7tpm
+ kc/HOdz1w/wpjhwf5xsUIv5/yhuEs58=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-381-TXh9UueoNSeYD6SePEVmHg-1; Tue, 10 Dec 2019 14:14:26 -0500
+Received: by mail-qv1-f69.google.com with SMTP id g15so7466903qvk.11
+ for <qemu-arm@nongnu.org>; Tue, 10 Dec 2019 11:14:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Ir2OHURJgyd1utg6eQ0vao/9jZEovfcbKpNA4WxrXQE=;
- b=JbWYO0FDBx64Ln9J0LrymHn9a21RENGuj3U9pc/ZrDYU7zZoMJU42tPefPlca4rPMy
- 1XgeFClp0M8gbBjnW4QqNM+D6b5oRDu3xUwNDTsKM5wy9J0UoxgwQrm5pFJmy8NkPkto
- 0kZ6BUNmjH5g4iEfn7xuYT6L+IfVJAO3nY8wpm400OmNMse6JXwZdL3U7u1m9vZRSBYT
- g9B+SKy3tDhNBdE1l0BM2Dq8xKwUp0odgV1n3q1UJMs6aX5vbllr4AxckcQOyFe/FdlK
- 8/w3JF1i6UlkqbTav3T11V4eSisfDJW/PpnDUwbr5J9l1H2qN2tBy4G31xFLBc/OVBU3
- q4vQ==
-X-Gm-Message-State: APjAAAUhRiBviqTYmS3Ypy9iRSePLuh8I8fo7eRITxTH65JlSqbYgTcS
- Y4YSGg/Lre5qH0+jEZTbO8u6fyv/Lh5A246D4Hg=
-X-Received: by 2002:a92:d203:: with SMTP id y3mr4220515ily.28.1576005113295;
- Tue, 10 Dec 2019 11:11:53 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=t5NRopCXac/TaVRyYxckA1Ih+aNBJ6X1xXjY0vMyIYY=;
+ b=arbFDJHe5TGOY3/G0hqNg+pZrHT6zdFy5BT2LxdN1s9QsZJTtyB6v8bk8yF2oT0NyS
+ jbu0XHMTFlMQqKw/tDdww1OzRNR4UfvDqXhReK3a2rq/FRhBtIqfhx58Rnh7eQvg8MeM
+ 1cZ8yx31z6DlSAhSdbpr1HKSzn4Y/NRBoF2WLRgzWj0jpjkq3SuJNE8VUS9y+/38JF58
+ JupzLWognZt9wmrpVLEUsDEROHx7EFQ2bb5kyEZjwFgkQ4b0Emn6jYWw4dnNL9/Jf9Jk
+ BWBJAjKIrZl/EaBJd+HILBdSGaEvubhogwiTPNmY6sO0qlRipqfpXL6S2gSBf7LwJ86t
+ cYYg==
+X-Gm-Message-State: APjAAAWFusneLP7aAHfpBM4jIM4byjl+pgxw+TYcXojVKWFzsYEg+ILQ
+ A4jUy0ehz94dX9kYylMIeqGKCLjgumm/saFHrFsfPAQ+84R6xFS0faXZ7HgZzObWEYCbl+KKe9S
+ r21AHD82K241a
+X-Received: by 2002:a05:620a:2010:: with SMTP id
+ c16mr33446196qka.386.1576005265880; 
+ Tue, 10 Dec 2019 11:14:25 -0800 (PST)
+X-Received: by 2002:a05:620a:2010:: with SMTP id
+ c16mr33446170qka.386.1576005265597; 
+ Tue, 10 Dec 2019 11:14:25 -0800 (PST)
+Received: from xz-x1 ([104.156.64.74])
+ by smtp.gmail.com with ESMTPSA id e2sm1211935qkb.112.2019.12.10.11.14.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Dec 2019 11:14:24 -0800 (PST)
+Date: Tue, 10 Dec 2019 14:14:23 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH for-5.0 v11 03/20] virtio-iommu: Decode the command payload
+Message-ID: <20191210191423.GH3352@xz-x1>
+References: <20191122182943.4656-1-eric.auger@redhat.com>
+ <20191122182943.4656-4-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-5-nieklinnenbank@gmail.com>
- <4a900e8d-d803-5c58-5a4b-879cce5970b4@redhat.com>
- <20191210082932.teizmu3nco3ndjel@sirius.home.kraxel.org>
-In-Reply-To: <20191210082932.teizmu3nco3ndjel@sirius.home.kraxel.org>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Tue, 10 Dec 2019 20:11:42 +0100
-Message-ID: <CAPan3Wr5u7MAwL-pYX9KmMZmU7fDA_YLtxWuELPWOru9e7DmmA@mail.gmail.com>
-Subject: Re: [PATCH 04/10] arm: allwinner-h3: add USB host controller
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000f13ae605995e48fa"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::141
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20191122182943.4656-4-eric.auger@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-MC-Unique: TXh9UueoNSeYD6SePEVmHg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9jrvCSJqfghQ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
+ quintela@redhat.com, qemu-devel@nongnu.org, armbru@redhat.com,
+ bharatb.linux@gmail.com, qemu-arm@nongnu.org, dgilbert@redhat.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fRQezozx0AP3
 
---000000000000f13ae605995e48fa
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Fri, Nov 22, 2019 at 07:29:26PM +0100, Eric Auger wrote:
+> This patch adds the command payload decoding and
+> introduces the functions that will do the actual
+> command handling. Those functions are not yet implemented.
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Hi Gerd,
+I would simply squash this into previous patch to avoid removing lines
+from newly introduced, but this is ok too so to keep Jean's r-b:
 
-On Tue, Dec 10, 2019 at 9:29 AM Gerd Hoffmann <kraxel@redhat.com> wrote:
-
-> On Tue, Dec 10, 2019 at 08:56:02AM +0100, Philippe Mathieu-Daud=C3=A9 wro=
-te:
-> > On 12/2/19 10:09 PM, Niek Linnenbank wrote:
-> > > The Allwinner H3 System on Chip contains multiple USB 2.0 bus
-> > > connections which provide software access using the Enhanced
-> > > Host Controller Interface (EHCI) and Open Host Controller
-> > > Interface (OHCI) interfaces. This commit adds support for
-> > > both interfaces in the Allwinner H3 System on Chip.
-> > >
-> > > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > > ---
-> > >   hw/arm/allwinner-h3.c    | 20 ++++++++++++++++++++
-> > >   hw/usb/hcd-ehci-sysbus.c | 17 +++++++++++++++++
-> > >   hw/usb/hcd-ehci.h        |  1 +
-> >
-> > Cc'ing Gerd, the maintainer of these files.
->
-> Looks all reasonable.
-> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
->
-> (assuming this will be merged through arm tree not usb).
->
-
-Thanks for reviewing! I'll add the tag to the commit message.
-
-Regards,
-Niek
-
->
-> >
-> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >
-> > >   3 files changed, 38 insertions(+)
-> > >
-> > > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> > > index 5566e979ec..afeb49c0ac 100644
-> > > --- a/hw/arm/allwinner-h3.c
-> > > +++ b/hw/arm/allwinner-h3.c
-> > > @@ -26,6 +26,7 @@
-> > >   #include "hw/sysbus.h"
-> > >   #include "hw/arm/allwinner-h3.h"
-> > >   #include "hw/misc/unimp.h"
-> > > +#include "hw/usb/hcd-ehci.h"
-> > >   #include "sysemu/sysemu.h"
-> > >   static void aw_h3_init(Object *obj)
-> > > @@ -183,6 +184,25 @@ static void aw_h3_realize(DeviceState *dev, Erro=
-r
-> **errp)
-> > >       }
-> > >       sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, AW_H3_CCU_BASE);
-> > > +    /* Universal Serial Bus */
-> > > +    sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI0_BASE,
-> > > +                         s->irq[AW_H3_GIC_SPI_EHCI0]);
-> > > +    sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI1_BASE,
-> > > +                         s->irq[AW_H3_GIC_SPI_EHCI1]);
-> > > +    sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI2_BASE,
-> > > +                         s->irq[AW_H3_GIC_SPI_EHCI2]);
-> > > +    sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI3_BASE,
-> > > +                         s->irq[AW_H3_GIC_SPI_EHCI3]);
-> > > +
-> > > +    sysbus_create_simple("sysbus-ohci", AW_H3_OHCI0_BASE,
-> > > +                         s->irq[AW_H3_GIC_SPI_OHCI0]);
-> > > +    sysbus_create_simple("sysbus-ohci", AW_H3_OHCI1_BASE,
-> > > +                         s->irq[AW_H3_GIC_SPI_OHCI1]);
-> > > +    sysbus_create_simple("sysbus-ohci", AW_H3_OHCI2_BASE,
-> > > +                         s->irq[AW_H3_GIC_SPI_OHCI2]);
-> > > +    sysbus_create_simple("sysbus-ohci", AW_H3_OHCI3_BASE,
-> > > +                         s->irq[AW_H3_GIC_SPI_OHCI3]);
-> > > +
-> > >       /* UART */
-> > >       if (serial_hd(0)) {
-> > >           serial_mm_init(get_system_memory(), AW_H3_UART0_REG_BASE, 2=
-,
-> > > diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
-> > > index 020211fd10..174c3446ef 100644
-> > > --- a/hw/usb/hcd-ehci-sysbus.c
-> > > +++ b/hw/usb/hcd-ehci-sysbus.c
-> > > @@ -145,6 +145,22 @@ static const TypeInfo ehci_exynos4210_type_info =
-=3D
-> {
-> > >       .class_init    =3D ehci_exynos4210_class_init,
-> > >   };
-> > > +static void ehci_aw_h3_class_init(ObjectClass *oc, void *data)
-> > > +{
-> > > +    SysBusEHCIClass *sec =3D SYS_BUS_EHCI_CLASS(oc);
-> > > +    DeviceClass *dc =3D DEVICE_CLASS(oc);
-> > > +
-> > > +    sec->capsbase =3D 0x0;
-> > > +    sec->opregbase =3D 0x10;
-> > > +    set_bit(DEVICE_CATEGORY_USB, dc->categories);
-> > > +}
-> > > +
-> > > +static const TypeInfo ehci_aw_h3_type_info =3D {
-> > > +    .name          =3D TYPE_AW_H3_EHCI,
-> > > +    .parent        =3D TYPE_SYS_BUS_EHCI,
-> > > +    .class_init    =3D ehci_aw_h3_class_init,
-> > > +};
-> > > +
-> > >   static void ehci_tegra2_class_init(ObjectClass *oc, void *data)
-> > >   {
-> > >       SysBusEHCIClass *sec =3D SYS_BUS_EHCI_CLASS(oc);
-> > > @@ -267,6 +283,7 @@ static void ehci_sysbus_register_types(void)
-> > >       type_register_static(&ehci_platform_type_info);
-> > >       type_register_static(&ehci_xlnx_type_info);
-> > >       type_register_static(&ehci_exynos4210_type_info);
-> > > +    type_register_static(&ehci_aw_h3_type_info);
-> > >       type_register_static(&ehci_tegra2_type_info);
-> > >       type_register_static(&ehci_ppc4xx_type_info);
-> > >       type_register_static(&ehci_fusbh200_type_info);
-> > > diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
-> > > index 0298238f0b..edb59311c4 100644
-> > > --- a/hw/usb/hcd-ehci.h
-> > > +++ b/hw/usb/hcd-ehci.h
-> > > @@ -342,6 +342,7 @@ typedef struct EHCIPCIState {
-> > >   #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
-> > >   #define TYPE_PLATFORM_EHCI "platform-ehci-usb"
-> > >   #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
-> > > +#define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
-> > >   #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
-> > >   #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
-> > >   #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
-> > >
-> >
->
->
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
 --=20
-Niek Linnenbank
+Peter Xu
 
---000000000000f13ae605995e48fa
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div>Hi Gerd,</div><div><br></div></div><=
-div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec=
- 10, 2019 at 9:29 AM Gerd Hoffmann &lt;<a href=3D"mailto:kraxel@redhat.com"=
->kraxel@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">On Tue, Dec 10, 2019 at 08:56:02AM +0100, Philippe Mathie=
-u-Daud=C3=A9 wrote:<br>
-&gt; On 12/2/19 10:09 PM, Niek Linnenbank wrote:<br>
-&gt; &gt; The Allwinner H3 System on Chip contains multiple USB 2.0 bus<br>
-&gt; &gt; connections which provide software access using the Enhanced<br>
-&gt; &gt; Host Controller Interface (EHCI) and Open Host Controller<br>
-&gt; &gt; Interface (OHCI) interfaces. This commit adds support for<br>
-&gt; &gt; both interfaces in the Allwinner H3 System on Chip.<br>
-&gt; &gt; <br>
-&gt; &gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenba=
-nk@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; &gt; ---<br>
-&gt; &gt;=C2=A0 =C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 | 20 +++++++++++++=
-+++++++<br>
-&gt; &gt;=C2=A0 =C2=A0hw/usb/hcd-ehci-sysbus.c | 17 +++++++++++++++++<br>
-&gt; &gt;=C2=A0 =C2=A0hw/usb/hcd-ehci.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =
-1 +<br>
-&gt; <br>
-&gt; Cc&#39;ing Gerd, the maintainer of these files.<br>
-<br>
-Looks all reasonable.<br>
-Reviewed-by: Gerd Hoffmann &lt;<a href=3D"mailto:kraxel@redhat.com" target=
-=3D"_blank">kraxel@redhat.com</a>&gt;<br>
-<br>
-(assuming this will be merged through arm tree not usb).<br></blockquote><d=
-iv><br></div><div>Thanks for reviewing! I&#39;ll add the tag to the commit =
-message.</div><div><br></div><div>Regards,</div><div>Niek<br></div><blockqu=
-ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
- solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; <br>
-&gt; Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@=
-redhat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br>
-&gt; <br>
-&gt; &gt;=C2=A0 =C2=A03 files changed, 38 insertions(+)<br>
-&gt; &gt; <br>
-&gt; &gt; diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
-&gt; &gt; index 5566e979ec..afeb49c0ac 100644<br>
-&gt; &gt; --- a/hw/arm/allwinner-h3.c<br>
-&gt; &gt; +++ b/hw/arm/allwinner-h3.c<br>
-&gt; &gt; @@ -26,6 +26,7 @@<br>
-&gt; &gt;=C2=A0 =C2=A0#include &quot;hw/sysbus.h&quot;<br>
-&gt; &gt;=C2=A0 =C2=A0#include &quot;hw/arm/allwinner-h3.h&quot;<br>
-&gt; &gt;=C2=A0 =C2=A0#include &quot;hw/misc/unimp.h&quot;<br>
-&gt; &gt; +#include &quot;hw/usb/hcd-ehci.h&quot;<br>
-&gt; &gt;=C2=A0 =C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
-&gt; &gt;=C2=A0 =C2=A0static void aw_h3_init(Object *obj)<br>
-&gt; &gt; @@ -183,6 +184,25 @@ static void aw_h3_realize(DeviceState *dev, =
-Error **errp)<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&=
-gt;ccu), 0, AW_H3_CCU_BASE);<br>
-&gt; &gt; +=C2=A0 =C2=A0 /* Universal Serial Bus */<br>
-&gt; &gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI0_=
-BASE,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_EHCI0]);<br>
-&gt; &gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI1_=
-BASE,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_EHCI1]);<br>
-&gt; &gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI2_=
-BASE,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_EHCI2]);<br>
-&gt; &gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI3_=
-BASE,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_EHCI3]);<br>
-&gt; &gt; +<br>
-&gt; &gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, AW_H=
-3_OHCI0_BASE,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_OHCI0]);<br>
-&gt; &gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, AW_H=
-3_OHCI1_BASE,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_OHCI1]);<br>
-&gt; &gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, AW_H=
-3_OHCI2_BASE,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_OHCI2]);<br>
-&gt; &gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, AW_H=
-3_OHCI3_BASE,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;irq[AW_H3_GIC_SPI_OHCI3]);<br>
-&gt; &gt; +<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* UART */<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (serial_hd(0)) {<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0serial_mm_init(get_system=
-_memory(), AW_H3_UART0_REG_BASE, 2,<br>
-&gt; &gt; diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c<=
-br>
-&gt; &gt; index 020211fd10..174c3446ef 100644<br>
-&gt; &gt; --- a/hw/usb/hcd-ehci-sysbus.c<br>
-&gt; &gt; +++ b/hw/usb/hcd-ehci-sysbus.c<br>
-&gt; &gt; @@ -145,6 +145,22 @@ static const TypeInfo ehci_exynos4210_type_i=
-nfo =3D {<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =3D ehci_exyno=
-s4210_class_init,<br>
-&gt; &gt;=C2=A0 =C2=A0};<br>
-&gt; &gt; +static void ehci_aw_h3_class_init(ObjectClass *oc, void *data)<b=
-r>
-&gt; &gt; +{<br>
-&gt; &gt; +=C2=A0 =C2=A0 SysBusEHCIClass *sec =3D SYS_BUS_EHCI_CLASS(oc);<b=
-r>
-&gt; &gt; +=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(oc);<br>
-&gt; &gt; +<br>
-&gt; &gt; +=C2=A0 =C2=A0 sec-&gt;capsbase =3D 0x0;<br>
-&gt; &gt; +=C2=A0 =C2=A0 sec-&gt;opregbase =3D 0x10;<br>
-&gt; &gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_USB, dc-&gt;categories);<b=
-r>
-&gt; &gt; +}<br>
-&gt; &gt; +<br>
-&gt; &gt; +static const TypeInfo ehci_aw_h3_type_info =3D {<br>
-&gt; &gt; +=C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_A=
-W_H3_EHCI,<br>
-&gt; &gt; +=C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BU=
-S_EHCI,<br>
-&gt; &gt; +=C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D ehci_aw_h3_class_init=
-,<br>
-&gt; &gt; +};<br>
-&gt; &gt; +<br>
-&gt; &gt;=C2=A0 =C2=A0static void ehci_tegra2_class_init(ObjectClass *oc, v=
-oid *data)<br>
-&gt; &gt;=C2=A0 =C2=A0{<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0SysBusEHCIClass *sec =3D SYS_BUS_EHCI_C=
-LASS(oc);<br>
-&gt; &gt; @@ -267,6 +283,7 @@ static void ehci_sysbus_register_types(void)<=
-br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_platform=
-_type_info);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_xlnx_typ=
-e_info);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_exynos42=
-10_type_info);<br>
-&gt; &gt; +=C2=A0 =C2=A0 type_register_static(&amp;ehci_aw_h3_type_info);<b=
-r>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_tegra2_t=
-ype_info);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_ppc4xx_t=
-ype_info);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_fusbh200=
-_type_info);<br>
-&gt; &gt; diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h<br>
-&gt; &gt; index 0298238f0b..edb59311c4 100644<br>
-&gt; &gt; --- a/hw/usb/hcd-ehci.h<br>
-&gt; &gt; +++ b/hw/usb/hcd-ehci.h<br>
-&gt; &gt; @@ -342,6 +342,7 @@ typedef struct EHCIPCIState {<br>
-&gt; &gt;=C2=A0 =C2=A0#define TYPE_SYS_BUS_EHCI &quot;sysbus-ehci-usb&quot;=
-<br>
-&gt; &gt;=C2=A0 =C2=A0#define TYPE_PLATFORM_EHCI &quot;platform-ehci-usb&qu=
-ot;<br>
-&gt; &gt;=C2=A0 =C2=A0#define TYPE_EXYNOS4210_EHCI &quot;exynos4210-ehci-us=
-b&quot;<br>
-&gt; &gt; +#define TYPE_AW_H3_EHCI &quot;aw-h3-ehci-usb&quot;<br>
-&gt; &gt;=C2=A0 =C2=A0#define TYPE_TEGRA2_EHCI &quot;tegra2-ehci-usb&quot;<=
-br>
-&gt; &gt;=C2=A0 =C2=A0#define TYPE_PPC4xx_EHCI &quot;ppc4xx-ehci-usb&quot;<=
-br>
-&gt; &gt;=C2=A0 =C2=A0#define TYPE_FUSBH200_EHCI &quot;fusbh200-ehci-usb&qu=
-ot;<br>
-&gt; &gt; <br>
-&gt; <br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---000000000000f13ae605995e48fa--

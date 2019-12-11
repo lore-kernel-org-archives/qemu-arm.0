@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id m10sm2977614wrx.19.2019.12.11.09.05.29
+        by smtp.gmail.com with ESMTPSA id w13sm3138312wru.38.2019.12.11.09.11.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Dec 2019 09:05:30 -0800 (PST)
+        Wed, 11 Dec 2019 09:11:13 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E85C71FFA5;
-	Wed, 11 Dec 2019 17:05:24 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 1D0D21FFA6;
+	Wed, 11 Dec 2019 17:05:25 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org,
@@ -15,133 +15,103 @@ Cc: richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v3 19/20] tests/tcg/aarch64: add SVE iotcl test
-Date: Wed, 11 Dec 2019 17:05:19 +0000
-Message-Id: <20191211170520.7747-20-alex.bennee@linaro.org>
+Subject: [PATCH  v3 20/20] tests/tcg/aarch64: add test-sve-ioctl guest-debug test
+Date: Wed, 11 Dec 2019 17:05:20 +0000
+Message-Id: <20191211170520.7747-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191211170520.7747-1-alex.bennee@linaro.org>
 References: <20191211170520.7747-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: oFP/svSQsfbE
+X-TUID: gX/c5Ab7OW6W
 
-This is a fairly bare-bones test of setting the various vector sizes
-for SVE which will only fail if the PR_SVE_SET_VL can't reduce the
-user-space vector length by powers of 2.
-
-However we will also be able to use it in a future test which
-exercises the GDB stub.
+This test exercises the gdbstub while runing the sve-iotcl test. I
+haven't plubmed it into make system as we need a way of verifying if
+gdb has the right support for SVE.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v3
-  - use index to fill zreg
-  - CROSS_CC_HAS_SVE
----
- tests/tcg/aarch64/sve-ioctls.c    | 77 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |  4 ++
- 2 files changed, 81 insertions(+)
- create mode 100644 tests/tcg/aarch64/sve-ioctls.c
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py | 71 +++++++++++++++++++++
+ 1 file changed, 71 insertions(+)
+ create mode 100644 tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
 
-diff --git a/tests/tcg/aarch64/sve-ioctls.c b/tests/tcg/aarch64/sve-ioctls.c
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
 new file mode 100644
-index 00000000000..d7bb64d53f9
+index 00000000000..2c8c21ca381
 --- /dev/null
-+++ b/tests/tcg/aarch64/sve-ioctls.c
-@@ -0,0 +1,77 @@
-+/*
-+ * SVE ioctls tests
-+ *
-+ * Test the SVE width setting ioctls work and provide a base for
-+ * testing the gdbstub.
-+ *
-+ * Copyright (c) 2019 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include <sys/prctl.h>
-+#include <asm/hwcap.h>
-+#include <stdio.h>
-+#include <sys/auxv.h>
-+#include <stdint.h>
-+#include <stdlib.h>
++++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+@@ -0,0 +1,71 @@
++from __future__ import print_function
++#
++# Test the SVE ZReg reports the right amount of data. It uses the
++# sve-ioctl test and examines the register data each time the
++# __sve_ld_done breakpoint is hit.
++#
++# This is launched via tests/guest-debug/run-test.py
++#
 +
-+#ifndef HWCAP_CPUID
-+#define HWCAP_CPUID (1 << 11)
-+#endif
++import gdb
 +
-+#define SVE_MAX_QUADS  (2048 / 128)
-+#define BYTES_PER_QUAD (128 / 8)
++initial_vlen = 0
++failcount = 0
 +
-+#define get_cpu_reg(id) ({                                      \
-+            unsigned long __val;                                \
-+            asm("mrs %0, "#id : "=r" (__val));                  \
-+            __val;                                              \
-+        })
++def report(cond, msg):
++    "Report success/fail of test"
++    if cond:
++        print ("PASS: %s" % (msg))
++    else:
++        print ("FAIL: %s" % (msg))
++        global failcount
++        failcount += 1
 +
-+static int do_sve_ioctl_test(void)
-+{
-+    int i, res, init_vq;
++class TestBreakpoint(gdb.Breakpoint):
++    def __init__(self, sym_name="__sve_ld_done"):
++        super(TestBreakpoint, self).__init__(sym_name)
++        # self.sym, ok = gdb.lookup_symbol(sym_name)
 +
-+    res = prctl(PR_SVE_GET_VL, 0, 0, 0, 0);
-+    if (res < 0) {
-+        printf("FAILED to PR_SVE_GET_VL (%d)", res);
-+        return -1;
-+    }
-+    init_vq = res & PR_SVE_VL_LEN_MASK;
++    def stop(self):
++        val_i = gdb.parse_and_eval('i')
++        global initial_vlen
++        for i in range(0, int(val_i)):
++            val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
++            report(int(val_z) == i, "z0.b.u[%d] == %d" % (i, i))
++        for i in range(i + 1, initial_vlen):
++            val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
++            report(int(val_z) == 0, "z0.b.u[%d] == 0" % (i))
 +
-+    for (i = init_vq; i > 15; i /= 2) {
-+        printf("Checking PR_SVE_SET_VL=%d\n", i);
-+        res = prctl(PR_SVE_SET_VL, i, 0, 0, 0, 0);
-+        if (res < 0) {
-+            printf("FAILED to PR_SVE_SET_VL (%d)", res);
-+            return -1;
-+        }
-+        asm("index z0.b, #0, #1\n"
-+            ".global __sve_ld_done\n"
-+            "__sve_ld_done:\n"
-+            "mov z0.b, #0\n"
-+            : /* no outputs kept */
-+            : /* no inputs */
-+            : "memory", "z0");
-+    }
-+    printf("PASS\n");
-+    return 0;
-+}
 +
-+int main(int argc, char **argv)
-+{
-+    unsigned int sve_feature = (get_cpu_reg(ID_AA64PFR0_EL1) >> 32) & 0xf;
-+    /* Exit early if we don't support SVE at all */
-+    if (sve_feature == 0x1) {
-+        /* we also need to probe for the ioctl support */
-+        if (getauxval(AT_HWCAP) & HWCAP_SVE) {
-+            return do_sve_ioctl_test();
-+        } else {
-+            printf("SKIP: no HWCAP_SVE on this system\n");
-+            return 0;
-+        }
-+    } else {
-+        printf("SKIP: no SVE on this system\n");
-+        return 0;
-+    }
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 3f8783ada5c..209c79a1ddb 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -36,6 +36,10 @@ ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
- # System Registers Tests
- AARCH64_TESTS += sysregs
- sysregs: CFLAGS+=-march=armv8.1-a+sve
++def run_test():
++    "Run through the tests one by one"
 +
-+# SVE ioctl test
-+AARCH64_TESTS += sve-ioctls
-+sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
- endif
- 
- TESTS += $(AARCH64_TESTS)
++    print ("Setup breakpoint")
++    bp = TestBreakpoint()
++
++    global initial_vlen
++    vg = gdb.parse_and_eval("$vg")
++    initial_vlen = int(vg) * 16
++
++    gdb.execute("c")
++
++#
++# This runs as the script it sourced (via -x, via run-test.py)
++#
++
++try:
++    # These are not very useful in scripts
++    gdb.execute("set pagination off")
++    gdb.execute("set confirm off")
++
++    # Run the actual tests
++    run_test()
++except:
++    print ("GDB Exception: %s" % (sys.exc_info()[0]))
++    failcount += 1
++    import code
++    code.InteractiveConsole(locals=globals()).interact()
++    raise
++
++print("All tests complete: %d failures" % failcount)
++exit(failcount)
 -- 
 2.20.1

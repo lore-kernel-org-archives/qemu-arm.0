@@ -1,83 +1,99 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp286048lff;
-        Wed, 11 Dec 2019 00:03:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyuTZOmhWbRSH7DVXewZCf4jLv8qX0Wa4Z+/yQlLeNdXK/NTrhVf+PVRPrVwNo7sZfxCClc
-X-Received: by 2002:a05:6808:24e:: with SMTP id m14mr1784562oie.168.1576051403640;
-        Wed, 11 Dec 2019 00:03:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576051403; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp739185lff;
+        Wed, 11 Dec 2019 06:58:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz5zhMzBINkYu+xUAmaUJw/3QKk/v6nCSkVZO41yobI95UmHpjDVUFVCW4q2X4soUFQbsgK
+X-Received: by 2002:a37:ef07:: with SMTP id j7mr3332381qkk.354.1576076305818;
+        Wed, 11 Dec 2019 06:58:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576076305; cv=none;
         d=google.com; s=arc-20160816;
-        b=x7XenBw/rolbySza+tVBi/TGBuXVih1EtmR10/TOeGd+2CKgKiF2XddoEvPVVbtQWW
-         tgRWphEtGvMEJTK8p4QaAwdezJQpRHEwkC8QoDEqNat+0NokIRn1+E6vwxQO1HbWQzFi
-         Vq4334F5rxLbbc6ZfWFjnLy80UkvETd68CjBZRxl9JbIaSV8SGNkWKCZFx2aoNLoUZXe
-         pbW996Qktuz0zzsgVKp8RTHHPJySuUH96rKze46wFmbNUUwJVMAtALZ1QmOvbxMeuDDM
-         rlKS1iU0o50iEmLLNm5sOh1YKiE6TnAPWp+gXoj5sWVWho5kI70fOU0AHrPg/k2LL8OD
-         i2Ow==
+        b=TsGYW0u0QLGKn7rG+fKEMedh9BrVCCsJun4DqUjB0GRGSSOZxVMKNPqV0UTH+2+phq
+         /VF65VXappCgZ+65sV/EZ3uPCOcDho/SxuNmFhUgUpIC01Ejf5YgB79JPeTIQwQiO4fW
+         OUOTgHmASO3S2nTVLmI26Pl/XJp+K865Jbq1nfKPYIhy7sZjeK7I+/6XI6dXv3oom+OK
+         sLwWewPZHaUqvGVbKxJ0//j4VJrgr/n7h+lpChVCvQcgJQYDuqJlZmbiX8g+sCl+YToo
+         sFzi19VRZUyi9sVzdNSwaU7WRqc9Rb+ETUI/PNF+lMfd6UqYgprXjzzDHzLB5pv8B2nn
+         q4UQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=WiklgiE++7Op0SKsVjUlREiFODsbV/Pm3zI9sPt5ATs=;
-        b=fSoPkWr9zn/0Qpq9rd+GfuI4QtDsLdjMw0KxzIprgjlq6g6DWhPvyoxvZi4Hh1Bw0o
-         6EQQ1ZCx1HixJsUWk/17Ia8hBTHbuxTk3nycUGKe11bDkgH13ZfM3q8zpb2ddliVad65
-         iwoTD7kXuVsLzpvsoxuOOxR07/+mnEzPj2WdjMiq1Be3DFZKgSrnaEK26yNLfTKd0kpe
-         0nRE0A/PDDcrvO01iG7760ntn0DrTQ06S4auCnymkNYfW4DTWzLHTcLHlGRyXCUQIkmn
-         iFTIrLgDJZmZWYgmyCOUOjs54JjYTtweh5sLiTnX9gTiPPKMCSvEWjG9zRSH98Dc6OZ+
-         IQew==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:cc:to
+         :from:ironport-sdr:dkim-signature;
+        bh=Asgepvkz4JWY1boo1mZHZcuk6CbY2wol3JthUOrMfrc=;
+        b=alq0LT8kDmkS/ILshcZNYUX+gedu0BYaK92UzaTiV+964AZrbhUsEVahfdzsApOjpF
+         Kif8Jn+5WKNjBgED0EU7D7aPG6EiATxtxYrl/Fu8S4aLcUE5z1gS2mTTzDUfXbgBZVO3
+         YgiAGU97xeVzYnToxYIShkm+Ut0YcTc1GNieoG9Tgy8UAA81plUEcKi1a41Klwkrdwgx
+         SDv/Jzl4vi+c5JoS1IcxepHpBbl8IXULBHH19x2U0zTtIK1m3YLGUUyzsdbmFr6B60m1
+         p11zQ8xm8dONPW+RX87GBulk9QbbOvnNcKWEZfoUU2+EDouIYFNfKtgQXc4dK8KXuyf0
+         B/9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=CK45ggbV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r126si715280oig.36.2019.12.11.00.03.23
+        by mx.google.com with ESMTPS id m17si1150043qtp.32.2019.12.11.06.58.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Dec 2019 00:03:23 -0800 (PST)
+        Wed, 11 Dec 2019 06:58:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39708 helo=lists1p.gnu.org)
+       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=CK45ggbV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
+Received: from localhost ([::1]:43732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iewxu-0002r2-Qu
-	for alex.bennee@linaro.org; Wed, 11 Dec 2019 03:03:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33058)
+	id 1if3RZ-0005Jd-4j
+	for alex.bennee@linaro.org; Wed, 11 Dec 2019 09:58:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48557)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1iewxl-0002qh-Cs
- for qemu-arm@nongnu.org; Wed, 11 Dec 2019 03:03:14 -0500
+ (envelope-from <prvs=241120df0=sveith@amazon.com>)
+ id 1if3RP-0005JE-92
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2019 09:58:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1iewxi-0001je-62
- for qemu-arm@nongnu.org; Wed, 11 Dec 2019 03:03:13 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2222 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1iewxh-0001ND-OE; Wed, 11 Dec 2019 03:03:10 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 5F1A8C7F098378EFBC40;
- Wed, 11 Dec 2019 16:02:56 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS406-HUB.china.huawei.com
- (10.3.19.206) with Microsoft SMTP Server id 14.3.439.0; Wed, 11 Dec 2019
- 16:02:53 +0800
-Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
- virtual time
-To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>
-References: <20191016143410.5023-1-drjones@redhat.com>
- <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <5679d43f-3f29-6ee1-0894-19ef2f3e08a2@huawei.com>
-Date: Wed, 11 Dec 2019 16:02:52 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.190
+ (envelope-from <prvs=241120df0=sveith@amazon.com>)
+ id 1if3RO-0001NC-AA
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2019 09:58:15 -0500
+Received: from smtp-fw-4101.amazon.com ([72.21.198.25]:4022)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <prvs=241120df0=sveith@amazon.com>)
+ id 1if3RO-0001L7-3G; Wed, 11 Dec 2019 09:58:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.de; i=@amazon.de; q=dns/txt; s=amazon201209;
+ t=1576076294; x=1607612294;
+ h=from:to:cc:subject:date:message-id;
+ bh=Asgepvkz4JWY1boo1mZHZcuk6CbY2wol3JthUOrMfrc=;
+ b=CK45ggbVoS9RhvKxrj2TftDhpII3QTWdj6dq3DyYrCjYySVm5nqzGUPi
+ 83crgAwk0dvVVyE8NIKR6YnS6/gN/Qy4ngi7c4BOrugM3RxOnbqEJvjKJ
+ VqMHZsiuqgCYKEYepLi7eE6vqk9KAnW/m4QE8B1wKNYgjwhNA3Ze/cyZM 8=;
+IronPort-SDR: V1DlAf1kmpv5BVH9Sv5ABk2JDoz0+W1WvkC4TXJo1RTRRkil1GcCiqsh1UGUq622yrq55sd4mW
+ 307Bmn/QaL+w==
+X-IronPort-AV: E=Sophos;i="5.69,301,1571702400"; 
+   d="scan'208";a="8041226"
+Received: from iad6-co-svc-p1-lb1-vlan3.amazon.com (HELO
+ email-inbound-relay-1e-c7c08562.us-east-1.amazon.com) ([10.124.125.6])
+ by smtp-border-fw-out-4101.iad4.amazon.com with ESMTP;
+ 11 Dec 2019 14:58:12 +0000
+Received: from sveith-desktop.aka.corp.amazon.com
+ (iad7-ws-svc-lb50-vlan2.amazon.com [10.0.93.210])
+ by email-inbound-relay-1e-c7c08562.us-east-1.amazon.com (Postfix) with ESMTPS
+ id 8AFCE241D29; Wed, 11 Dec 2019 14:58:10 +0000 (UTC)
+Received: from sveith-desktop.aka.corp.amazon.com (localhost [127.0.0.1])
+ by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Debian-3) with ESMTP id
+ xBBEw52u018996; Wed, 11 Dec 2019 15:58:06 +0100
+Received: (from sveith@localhost)
+ by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Submit) id xBBEw4fi018992;
+ Wed, 11 Dec 2019 15:58:04 +0100
+From: Simon Veith <sveith@amazon.de>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Simon Veith <sveith@amazon.de>, Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH v2 0/6] hw/arm/smmuv3: Correct stream ID and event address
+ handling
+Date: Wed, 11 Dec 2019 15:57:34 +0100
+Message-Id: <1576076260-18659-1-git-send-email-sveith@amazon.de>
+X-Mailer: git-send-email 2.7.4
+Precedence: Bulk
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 72.21.198.25
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
-Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
@@ -86,68 +102,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <maz@kernel.org>, qemu-arm <qemu-arm@nongnu.org>, Richard
- Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, bijan.mottahedeh@oracle.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H09XshQ3Z/DC
+X-TUID: nfh7+KXPaOon
 
+While working on the Linux SMMUv3 driver, I noticed a few cases where the QEMU
+SMMUv3 behavior relating to stream tables was inconsistent with our hardware.
 
-=E5=9C=A8 2019/12/6 23:22, Peter Maydell =E5=86=99=E9=81=93:
-> On Wed, 16 Oct 2019 at 15:34, Andrew Jones <drjones@redhat.com> wrote:
->> v2:
->>   - move from RFC status to v1
->>   - put kvm_arm_vm_state_change() in kvm.c to share among kvm32.c and =
-kvm64.c
->>   - add r-b's from Richard
->>
->>
->> This series is inspired by a series[1] posted by Bijan Mottahedeh abou=
-t
->> a year ago.  The problem described in the cover letter of [1] is easil=
-y
->> reproducible and some users would like to have the option to avoid it.
->> However the solution, which is to adjust the virtual counter offset ea=
-ch
->> time the VM transitions to the running state, introduces a different
->> problem, which is that the virtual and physical counters diverge.  As
->> described in the cover letter of [1] this divergence is easily observe=
-d
->> when comparing the output of `date` and `hwclock` after suspending the
->> guest, waiting a while, and then resuming it.  Because this different
->> problem may actually be worse for some users, unlike [1], the series
->> posted here makes the virtual counter offset adjustment optional and n=
-ot
->> even enabled by default.  Besides the adjustment being optional, this
->> series approaches the needed changes differently to apply them in more
->> appropriate locations.  Finally, unlike [1], this series doesn't attem=
-pt
->> to measure "pause time" itself.  Simply using QEMU_CLOCK_VIRTUAL, whic=
-h
->> only ticks when the VM is not stopped, is sufficient.
-> So I guess my overall question is "what is the x86 solution to
-> this problem, and why is this all arm-specific?" It would also
-> be helpful to know how it fits into all the other proposals regarding
-> time in VMs.
+Also, when debugging those differences, I found that the errors reported through
+the QEMU SMMUv3 event queue contained the address fields in an incorrect
+position.
 
-I also sent a RFC in March and ARM KVM experts were also invoved in the=20
-discussion:
+These patches correct the QEMU SMMUv3 behavior to match the specification (and
+the behavior that I observed in our hardware). Linux guests normally will not
+notice these issues, but other SMMUv3 driver implementations might.
 
-https://lists.cs.columbia.edu/pipermail/kvmarm/2019-March/035026.html
+Simon Veith (6):
+  hw/arm/smmuv3: Apply address mask to linear strtab base address
+  hw/arm/smmuv3: Correct SMMU_BASE_ADDR_MASK value
+  hw/arm/smmuv3: Check stream IDs against actual table LOG2SIZE
+  hw/arm/smmuv3: Align stream table base address to table size
+  hw/arm/smmuv3: Use correct bit positions in EVT_SET_ADDR2 macro
+  hw/arm/smmuv3: Report F_STE_FETCH fault address in correct word
+    position
 
-According to the discussion, qemu on x86 is using KVM_KVMCLOCK_CTRL to=20
-request KVM to set a flag "PVCLOCK_GUEST_STOPPED" in pvclock, informing=20
-VM kernel about external force stop.
+ hw/arm/smmuv3-internal.h |  6 +++---
+ hw/arm/smmuv3.c          | 28 +++++++++++++++++++++-------
+ 2 files changed, 24 insertions(+), 10 deletions(-)
 
-Thanks,
+Cc: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
 
-Heyi
-
-
->
-> thanks
-> -- PMM
->
->
+-- 
+2.7.4
 

@@ -1,151 +1,160 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp739741lff;
-        Wed, 11 Dec 2019 06:58:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyv7CrZsjrm/WnmqJVK6MIwwWFb/kDbV9NMkEtM+2Hl8aL+YRV/7w/mUyPOR70DvE+mKdpS
-X-Received: by 2002:ad4:4364:: with SMTP id u4mr3410723qvt.27.1576076335868;
-        Wed, 11 Dec 2019 06:58:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576076335; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp753897lff;
+        Wed, 11 Dec 2019 07:08:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzX9GepmQgif3dedVSw+XyOZpsqK6f56ZQ2q5fAO4sRl/4mbv1vLSPKpMdW9om9JP+QOHoY
+X-Received: by 2002:aca:5f87:: with SMTP id t129mr3270059oib.36.1576076892414;
+        Wed, 11 Dec 2019 07:08:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576076892; cv=none;
         d=google.com; s=arc-20160816;
-        b=KZPT4qglJ0w16LVvQrRBWQDX1sqd5Ycbzwdh3GWD+OCaofk9OPmZtM9ODDUyflYJzl
-         8RmrDwhpenF68l2Jz9RCs5TaOUlxQI8lLE/qywwOarMYi23nQ3FwNHPyxDXuZflDj0gh
-         wBIrL3vbdazEEW3Q/vBwQgkaGGhlUovr+36BoDW3J16UclO74i2MjZT+B/NEFZhc1Ty8
-         28HR1kVWs78BuIoFXf6JrdtFShOzbf6iPiIOic951L+kxfbBFCSa54KdI+hKe+qcHuMQ
-         MWsTDOmlBPGGEZ607h6ryrIjvW2cf43s2Vi4CxibZochfa0idHEYRyjUPQUIGB5cMn1t
-         4ZjQ==
+        b=JTQDVlAO5j/0bFf+OMubl4qQL5PLN5sMGPbibRTrvOEiPgqi+VkbRipvlkcv8gDjyB
+         EILv/tbKNUwvzzB0baUywllmn+fHJVxFgNdWt5CX6J34flxppHIrM2PzFij02xbxgPal
+         GTTeqp2+CTCJ+p78BH1GtabKYcqHuMtyGiQorXo32B6B0FFdedJxyM1irSx1IxSP2UQq
+         AFwnXo2vDFVb97GPigJJm6eddWodKhV5uO//3t+eu9ttuOlXfuDJuWCl3nL4vFggX3Bh
+         /xcIRrxpJf64kGDoa1q7g3079rgH6ywY3RJgiHB3rOuP3jmep1mQLk8Oj64LSVhNmc+d
+         Z3cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:cc:to:from:ironport-sdr:dkim-signature;
-        bh=syWV6RethZ9zkiIkM27Et4g5OSvaauBfpbT1hVu+9aY=;
-        b=e1ThwvI2583/21sayoj3h7vT3CQHLEGzGHhZnxAhIBEh8EvnBQoiLikxZmNJUCJC4k
-         aoFvIWIzODJmo472kpyxYAmliOD/kX/4n0te96D1PF8mj8SAh5v16hWQYbQoLwz4tGJg
-         dYO2t2qROmQNZK5SiRigVcW5yhaun1FcBBbNbNOOm6Vm9qM1VQ36aM3YAViHbEuZh/u8
-         rZt4b4r17bGor2ZNXu17DdEfZppmIjaInsFPUaARnVP27cIkte0XqbzH1Grum2ArXiUH
-         HFnsmk2bcVmh9+GShntUssKEw1G/SMsZhgTF0/vEgt5W/IGiaP7jWGFIBBsSS6RXR95m
-         lPVA==
+        bh=PCOnbhJypslF5hM47QeKN1c0yopkDWzpKcTM5nMU8Xo=;
+        b=UW9vh2/TA9LMUTGutMtbRI6Sn3R9cMdbUiqGCvBA2mxrTjXRaBdDD3Xrx5df0dAs1H
+         hviN15yEghJut7S+BMuTL7mzxoZiQ72hQbK2+TmJFgNh8pIUWOxEVYsD3w9qMUMhNPLl
+         TInXDq8KlDLUz3KIBSMZDaja+Db/yDbiWNXBb9LGOzRS4U2ALcyIiUEItyX8XmBRs7A9
+         itUFeyQGS+0mqnfTEUH6THPo8gdH42EMdr8oUBFezJVn9j0751KAn3MCqMgbt+mnmD5i
+         jCYMb3NSxmtBjFAILEYXwsSvFkzTfmw+zjTl7qI8NPCevWAHn9Mhz5bOBRxVbEGeuEoP
+         NGWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=Ud4yWMct;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=CDj6Mvi7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q4si1038306qtn.402.2019.12.11.06.58.55
+        by mx.google.com with ESMTPS id d187si1337262oif.33.2019.12.11.07.08.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Dec 2019 06:58:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Dec 2019 07:08:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=Ud4yWMct;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=CDj6Mvi7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
-Received: from localhost ([::1]:43744 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43884 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1if3S3-0005XO-7p
-	for alex.bennee@linaro.org; Wed, 11 Dec 2019 09:58:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49991)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1if3b1-0002Qk-E2
+	for alex.bennee@linaro.org; Wed, 11 Dec 2019 10:08:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56421)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <prvs=241120df0=sveith@amazon.com>)
- id 1if3Rb-0005VT-JF
- for qemu-devel@nongnu.org; Wed, 11 Dec 2019 09:58:28 -0500
+ id 1if3ap-0002Me-7c
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2019 10:08:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <prvs=241120df0=sveith@amazon.com>)
- id 1if3Ra-0001be-IB
- for qemu-devel@nongnu.org; Wed, 11 Dec 2019 09:58:27 -0500
-Received: from smtp-fw-6001.amazon.com ([52.95.48.154]:60967)
+ id 1if3ao-0003jR-3J
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2019 10:07:59 -0500
+Received: from smtp-fw-6002.amazon.com ([52.95.49.90]:24828)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <prvs=241120df0=sveith@amazon.com>)
- id 1if3RY-0001YO-8Y; Wed, 11 Dec 2019 09:58:24 -0500
+ id 1if3an-0003ib-U2; Wed, 11 Dec 2019 10:07:58 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.de; i=@amazon.de; q=dns/txt; s=amazon201209;
- t=1576076304; x=1607612304;
+ t=1576076878; x=1607612878;
  h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=syWV6RethZ9zkiIkM27Et4g5OSvaauBfpbT1hVu+9aY=;
- b=Ud4yWMct5kmOFiH3Ispu0ZWbHdQG1c1y0CMUt0VhOEv6j4646r/6AGGd
- rhdIFPZXO+xFBlO7LFjg3BRbpSD3TemKKNPVjTWLSn6UrVw68FUqQOf69
- brMwslAkXa8jnCf+WLAUovHM4CEZe97lzSUpkymdPY2em2hFLA6waIRmv U=;
-IronPort-SDR: 5U4PCsk5faTlsL3Cto8jsoKGs1PL+7+mTrFEHbg7o+uX5q2rZ64rYnPXCTiHqUCp9Udm/yoNQu
- fzb7kbt/0GiA==
+ bh=PCOnbhJypslF5hM47QeKN1c0yopkDWzpKcTM5nMU8Xo=;
+ b=CDj6Mvi7P+4CADYQe8O5TkJhkIB8rXEMrpGN4WoS1K30AUdk6i2jNV/B
+ MmomEoFKZaxDq1GGgoVc/Zkp+HgklLUy4tXXtWxmwCLzw4hg7CTwVz6tm
+ xdD0sVt5WrHdahXmJKVFUxo9uJWz2+JmrjLB6RDEbkLeVdL98JZgDzwhF k=;
+IronPort-SDR: RWEUtVZsJacMYHqOeRxJKTi797ERWhrNiSGCdx/M2KVQwTbSZ9t73TaIVRHZabWOqmst+kEHDB
+ 3nLBTIXiDaEw==
 X-IronPort-AV: E=Sophos;i="5.69,301,1571702400"; 
-   d="scan'208";a="8624211"
+   d="scan'208";a="7181881"
 Received: from iad6-co-svc-p1-lb1-vlan3.amazon.com (HELO
- email-inbound-relay-2b-5bdc5131.us-west-2.amazon.com) ([10.124.125.6])
- by smtp-border-fw-out-6001.iad6.amazon.com with ESMTP;
- 11 Dec 2019 14:58:23 +0000
+ email-inbound-relay-2b-baacba05.us-west-2.amazon.com) ([10.124.125.6])
+ by smtp-border-fw-out-6002.iad6.amazon.com with ESMTP;
+ 11 Dec 2019 15:07:55 +0000
 Received: from sveith-desktop.aka.corp.amazon.com
- (pdx2-ws-svc-lb17-vlan2.amazon.com [10.247.140.66])
- by email-inbound-relay-2b-5bdc5131.us-west-2.amazon.com (Postfix) with ESMTPS
- id AC093A1C74; Wed, 11 Dec 2019 14:58:21 +0000 (UTC)
+ (pdx2-ws-svc-lb17-vlan3.amazon.com [10.247.140.70])
+ by email-inbound-relay-2b-baacba05.us-west-2.amazon.com (Postfix) with ESMTPS
+ id B6585A1BEC; Wed, 11 Dec 2019 15:07:54 +0000 (UTC)
 Received: from sveith-desktop.aka.corp.amazon.com (localhost [127.0.0.1])
  by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Debian-3) with ESMTP id
- xBBEwITa019099; Wed, 11 Dec 2019 15:58:18 +0100
+ xBBF7p0s024939; Wed, 11 Dec 2019 16:07:51 +0100
 Received: (from sveith@localhost)
- by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Submit) id xBBEwIVR019077;
- Wed, 11 Dec 2019 15:58:18 +0100
+ by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Submit) id xBBF7olP024913;
+ Wed, 11 Dec 2019 16:07:50 +0100
 From: Simon Veith <sveith@amazon.de>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: Simon Veith <sveith@amazon.de>, Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v2 1/6] hw/arm/smmuv3: Apply address mask to linear strtab
- base address
-Date: Wed, 11 Dec 2019 15:57:35 +0100
-Message-Id: <1576076260-18659-2-git-send-email-sveith@amazon.de>
+Subject: [PATCH v2 3/6] hw/arm/smmuv3: Check stream IDs against actual table
+ LOG2SIZE
+Date: Wed, 11 Dec 2019 16:07:37 +0100
+Message-Id: <1576076860-24820-1-git-send-email-sveith@amazon.de>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1576076260-18659-1-git-send-email-sveith@amazon.de>
 References: <1576076260-18659-1-git-send-email-sveith@amazon.de>
 Precedence: Bulk
 X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 52.95.48.154
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 52.95.49.90
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jxsKpFYukKi7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WL5yO4XysuaU
 
-In the SMMU_STRTAB_BASE register, the stream table base address only
-occupies bits [51:6]. Other bits, such as RA (bit [62]), must be masked
-out to obtain the base address.
+When checking whether a stream ID is in range of the stream table, we
+have so far been only checking it against our implementation limit
+(SMMU_IDR1_SIDSIZE). However, the guest can program the
+STRTAB_BASE_CFG.LOG2SIZE field to a size that is smaller than this
+limit.
 
-The branch for 2-level stream tables correctly applies this mask by way
-of SMMU_BASE_ADDR_MASK, but the one for linear stream tables does not.
+Check the stream ID against this limit as well to match the hardware
+behavior of raising C_BAD_STREAMID events in case the limit is exceeded.
+Also, ensure that we do not go one entry beyond the end of the table by
+checking that its index is strictly smaller than the table size.
 
-Apply the missing mask in that case as well so that the correct stream
-base address is used by guests which configure a linear stream table.
-
-Linux guests are unaffected by this change because they choose a 2-level
-stream table layout for the QEMU SMMUv3, based on the size of its stream
-ID space.
-
-ref. ARM IHI 0070C, section 6.3.23.
+ref. ARM IHI 0070C, section 6.3.24.
 
 Signed-off-by: Simon Veith <sveith@amazon.de>
 Cc: Eric Auger <eric.auger@redhat.com>
 Cc: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Acked-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/arm/smmuv3.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changed in v2:
+
+* Also check that stream ID is strictly lower than the table size
+
+ hw/arm/smmuv3.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index e2fbb83..eef9a18 100644
+index eef9a18..727558b 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -429,7 +429,7 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
-         }
-         addr = l2ptr + l2_ste_offset * sizeof(*ste);
-     } else {
--        addr = s->strtab_base + sid * sizeof(*ste);
-+        addr = (s->strtab_base & SMMU_BASE_ADDR_MASK) + sid * sizeof(*ste);
-     }
+@@ -377,11 +377,15 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+                          SMMUEventInfo *event)
+ {
+     dma_addr_t addr;
++    uint32_t log2size;
+     int ret;
  
-     if (smmu_get_ste(s, addr, ste, event)) {
+     trace_smmuv3_find_ste(sid, s->features, s->sid_split);
+-    /* Check SID range */
+-    if (sid > (1 << SMMU_IDR1_SIDSIZE)) {
++    log2size = FIELD_EX32(s->strtab_base_cfg, STRTAB_BASE_CFG, LOG2SIZE);
++    /*
++     * Check SID range against both guest-configured and implementation limits
++     */
++    if (sid >= (1 << MIN(log2size, SMMU_IDR1_SIDSIZE))) {
+         event->type = SMMU_EVT_C_BAD_STREAMID;
+         return -EINVAL;
+     }
 -- 
 2.7.4
 

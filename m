@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id w13sm3138312wru.38.2019.12.11.09.11.12
+        by smtp.gmail.com with ESMTPSA id x10sm2914366wrp.58.2019.12.11.09.11.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Dec 2019 09:11:13 -0800 (PST)
+        Wed, 11 Dec 2019 09:11:14 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1D0D21FFA6;
-	Wed, 11 Dec 2019 17:05:25 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id BF5051FFA3;
+	Wed, 11 Dec 2019 17:05:24 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org,
@@ -15,45 +15,65 @@ Cc: richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v3 20/20] tests/tcg/aarch64: add test-sve-ioctl guest-debug test
-Date: Wed, 11 Dec 2019 17:05:20 +0000
-Message-Id: <20191211170520.7747-21-alex.bennee@linaro.org>
+Subject: [PATCH  v3 18/20] tests/tcg/aarch64: add a gdbstub testcase for SVE registers
+Date: Wed, 11 Dec 2019 17:05:18 +0000
+Message-Id: <20191211170520.7747-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191211170520.7747-1-alex.bennee@linaro.org>
 References: <20191211170520.7747-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: gX/c5Ab7OW6W
+X-TUID: 4wr1MVnIj3oj
 
-This test exercises the gdbstub while runing the sve-iotcl test. I
-haven't plubmed it into make system as we need a way of verifying if
-gdb has the right support for SVE.
+We don't plumb this in yet as there are complications involved with
+binutils and cross-architectiure debugging but it is one step closer.
+
+Example:
+
+  ./tests/guest-debug/run-test.py \
+    --qemu ./aarch64-linux-user/qemu-aarch64 \
+    --qargs "-cpu max" \
+    --bin ./tests/tcg/aarch64-linux-user/hello \
+    --test ~/lsrc/qemu.git/tests/tcg/aarch64/gdbstub/test-sve.py \
+    --gdb /home/alex/src/tools/binutils-gdb.git/install/bin/gdb
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/aarch64/gdbstub/test-sve-ioctl.py | 71 +++++++++++++++++++++
- 1 file changed, 71 insertions(+)
- create mode 100644 tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+ tests/.gitignore                      |  1 +
+ tests/tcg/aarch64/gdbstub/test-sve.py | 75 +++++++++++++++++++++++++++
+ 2 files changed, 76 insertions(+)
+ create mode 100644 tests/tcg/aarch64/gdbstub/test-sve.py
 
-diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+diff --git a/tests/.gitignore b/tests/.gitignore
+index f9c01708812..8cc428b58bb 100644
+--- a/tests/.gitignore
++++ b/tests/.gitignore
+@@ -10,6 +10,7 @@ qht-bench
+ rcutorture
+ test-*
+ !test-*.c
++!test-*.py
+ !docker/test-*
+ test-qapi-commands.[ch]
+ include/test-qapi-commands-sub-module.[ch]
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
 new file mode 100644
-index 00000000000..2c8c21ca381
+index 00000000000..11bc96fc06d
 --- /dev/null
-+++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-@@ -0,0 +1,71 @@
++++ b/tests/tcg/aarch64/gdbstub/test-sve.py
+@@ -0,0 +1,75 @@
 +from __future__ import print_function
 +#
-+# Test the SVE ZReg reports the right amount of data. It uses the
-+# sve-ioctl test and examines the register data each time the
-+# __sve_ld_done breakpoint is hit.
++# Test the SVE registers are visable and changeable via gdbstub
 +#
 +# This is launched via tests/guest-debug/run-test.py
 +#
 +
 +import gdb
 +
-+initial_vlen = 0
++MAGIC = 0xDEADBEEF
++
 +failcount = 0
 +
 +def report(cond, msg):
@@ -65,33 +85,38 @@ index 00000000000..2c8c21ca381
 +        global failcount
 +        failcount += 1
 +
-+class TestBreakpoint(gdb.Breakpoint):
-+    def __init__(self, sym_name="__sve_ld_done"):
-+        super(TestBreakpoint, self).__init__(sym_name)
-+        # self.sym, ok = gdb.lookup_symbol(sym_name)
-+
-+    def stop(self):
-+        val_i = gdb.parse_and_eval('i')
-+        global initial_vlen
-+        for i in range(0, int(val_i)):
-+            val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
-+            report(int(val_z) == i, "z0.b.u[%d] == %d" % (i, i))
-+        for i in range(i + 1, initial_vlen):
-+            val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
-+            report(int(val_z) == 0, "z0.b.u[%d] == 0" % (i))
-+
-+
 +def run_test():
 +    "Run through the tests one by one"
 +
-+    print ("Setup breakpoint")
-+    bp = TestBreakpoint()
++    gdb.execute("info registers")
++    report(True, "info registers")
 +
-+    global initial_vlen
-+    vg = gdb.parse_and_eval("$vg")
-+    initial_vlen = int(vg) * 16
++    gdb.execute("info registers vector")
++    report(True, "info registers vector")
 +
-+    gdb.execute("c")
++    # Now all the zregs
++    frame = gdb.selected_frame()
++    for i in range(0, 32):
++        rname = "z%d" % (i)
++        zreg = frame.read_register(rname)
++        report(True, "Reading %s" % rname)
++        for j in range(0, 4):
++            cmd = "set $%s.q.u[%d] = 0x%x" % (rname, j, MAGIC)
++            gdb.execute(cmd)
++            report(True, "%s" % cmd)
++        for j in range(0, 4):
++            reg = "$%s.q.u[%d]" % (rname, j)
++            v = gdb.parse_and_eval(reg)
++            report(str(v.type) == "uint128_t", "size of %s" % (reg))
++        for j in range(0, 8):
++            cmd = "set $%s.d.u[%d] = 0x%x" % (rname, j, MAGIC)
++            gdb.execute(cmd)
++            report(True, "%s" % cmd)
++        for j in range(0, 8):
++            reg = "$%s.d.u[%d]" % (rname, j)
++            v = gdb.parse_and_eval(reg)
++            report(str(v.type) == "uint64_t", "size of %s" % (reg))
++            report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
 +
 +#
 +# This runs as the script it sourced (via -x, via run-test.py)
@@ -107,11 +132,11 @@ index 00000000000..2c8c21ca381
 +except:
 +    print ("GDB Exception: %s" % (sys.exc_info()[0]))
 +    failcount += 1
-+    import code
-+    code.InteractiveConsole(locals=globals()).interact()
-+    raise
 +
 +print("All tests complete: %d failures" % failcount)
++
++# Finally kill the inferior and exit gdb with a count of failures
++gdb.execute("kill")
 +exit(failcount)
 -- 
 2.20.1

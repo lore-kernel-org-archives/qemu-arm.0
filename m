@@ -1,476 +1,233 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1008541lff;
-        Wed, 11 Dec 2019 10:32:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzZl9q02TGLRUvfOfSXlMD0ZVRduNMptCP02Vpu404HEGFSEKuiV/mhRPbsuBYPIEbu3Afu
-X-Received: by 2002:a1c:9cce:: with SMTP id f197mr1255557wme.133.1576089123000;
-        Wed, 11 Dec 2019 10:32:03 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1576089122; cv=pass;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp281538lff;
+        Tue, 10 Dec 2019 23:58:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzBXBZuiVYhxkbvVjuDNau5ATWP/Mlj6xVUS0p0jvvqZWqYJWKmA9aLrs8t0gUFR4Zq1KJB
+X-Received: by 2002:a05:6830:124b:: with SMTP id s11mr1273196otp.333.1576051136642;
+        Tue, 10 Dec 2019 23:58:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576051136; cv=none;
         d=google.com; s=arc-20160816;
-        b=BQeokPbbrT/DEXOiDWx4uZ3Ki//4RLr9Fglw4XaE/9j2/e0FcWNBJILnpiuYWfxGl0
-         UojBFfL+kFA9YPveCqKHtVVwI41/i8QNr+Zi0Jit0/bab/z1ZI9I2wAISWWd9/2D8MA1
-         sVDkoS4HszFcZa2gApkvH1Ama9MQZ1KcTlqnHA8lzTqCHc2rBvhNlaI3usHz5HCQe+GN
-         EqbxvMdjgqmRSuZWFFlmpUYY7OlOCVnrd4YHk512Q3hwOjL1slsEPbZKb9t0UsNKwfW0
-         RaanSEqoAdb/Gnq1BgTi/NZHZG198Qwb6L1HAq9bVTgz79ieOBlVXt3xhKcSTmT7Y/De
-         NpvA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        b=0ydA4i4f+0GTFLqtVQrJ1TJzyECVLSRobfwtuOqKntZw/SX4zFyHTY/5zQP2oUOpCs
+         eLuRGcceBgmcTW6N8RY1nvOePyiB8rR+aARArOh6HzBhx290LD2DiMLLb4r4bGTVwfjy
+         DIYXL2AnapzKk+cjdcQqJsxBi7Ae8PtXib/NZFzcoxOH51chqd0GU+YfawdZTd9hMT0k
+         F4FzmhZUOQoy6YWo5b7HNXN6/asLFnUH64oTy/0XRl8UMOQy30mTwZCWV2v++n1ogADN
+         udeIc7ohMZDtexCUtT8jEbIZAIrQDZ2+7SoYLm0+t9MQ/Og5JVMW/Az0fTjPN2d6pvPz
+         /6cw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=mQ5xyVW08Yw0tiMnTbHBQxwUQsPAL+SLR0RjCN/xVwQ=;
-        b=lI8CwMsCUeDkHeqUiA1qpzAGrnvzeBXc8bN2wGH9Cuh3qVsw5a+w+6LBcG7vzKLx9d
-         4IZpxDVjFx5ddqddmHxmL1yBhz882f0+iUko4gqTw0yumAGPS0uDeMKMVewUlyw2IUty
-         eAQAZ9cqsdDtr4W6wYJwjaijyMTKK4p2q8p+JB0auPStEMERix/E0EM7hi8Q1HzjFcVn
-         U+5d03JhkceP8ozYZ/fLFt6aGZ+k418OiLtYGL1+l45rooFeFix2RJOTjP7z7szSE9O3
-         umc6trONhnW0miGrmYh4CUoyuC8vCwC0mZTWjl3TjeWnJYpOad5KpPGrOZhAYp2PtH2w
-         zz3Q==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b=fAl0Y54H;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
-Return-Path: <damien.hedde@greensocs.com>
-Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
-        by mx.google.com with ESMTPS id n130si2905377wma.113.2019.12.11.10.32.02
+        bh=JDT20aKapIGgJpnIA22MqTVehQMyQBhxq1PMqwGtE3M=;
+        b=giiWyJjMehQgw0mrhc84qxtjspPBVT+2f+3rDXRGYwZrdBAOcEHgyTGgpG8fXNfWse
+         WTw6I22OJZbuA8tJshVtmkoWHnWyg0A/l8g3Xn8ohVczrVQN6Ix4OxwR06F7vKGeZxXG
+         xzuSdr82ULM13vhTXEwejmN+GWViun4HjhvBdOR53sUHtQbL/h0SYRT72eZsJo257A4d
+         pSvBCyiV/BL06agku1Au6q0CkqUp42NufkTe3jQ/7CuX3z45m20CUfEd5FGpifm8cMKN
+         /hcXc6mC1espCHIgI1ApjyQ3UJ0M2q5eQ8f5A7VH19hqZYJ/ulVPCukwld4/WJnK1jzK
+         R9UA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J+Kdknet;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k17si679497oiw.238.2019.12.10.23.58.56
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Dec 2019 10:32:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
+        Tue, 10 Dec 2019 23:58:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b=fAl0Y54H;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
-Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
-	by beetle.greensocs.com (Postfix) with ESMTPSA id 300BF96EF0;
-	Wed, 11 Dec 2019 18:32:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
-	s=mail; t=1576089121;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mQ5xyVW08Yw0tiMnTbHBQxwUQsPAL+SLR0RjCN/xVwQ=;
-	b=fAl0Y54H0WvabByUlsIUS+w7FlVJ5wnWmaPKFYP6B9IJyDLtaPdF1nDzKfZ0fXDPHqHjmN
-	yYZKskzRQCnD5AvqmXGgIcSOX0hgc8uKv4aIxM8mwB2wB85bEhPkIhd6d46sKvIWDewdAh
-	7eLhssqavBHsko38WYhL2ta0EgKkozs=
-Subject: Re: [PATCH v3 08/20] gdbstub: extend GByteArray to read register
- helpers
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: richard.henderson@linaro.org, alan.hayward@arm.com,
- luis.machado@linaro.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <rth@twiddle.net>, Peter Maydell
- <peter.maydell@linaro.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Michael Walle <michael@walle.cc>,
- Laurent Vivier <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- Stafford Horne <shorne@gmail.com>, David Gibson
- <david@gibson.dropbear.id.au>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
- "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>
-References: <20191211170520.7747-1-alex.bennee@linaro.org>
- <20191211170520.7747-9-alex.bennee@linaro.org>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <b65e722f-7524-9269-3f36-6045ab5393c5@greensocs.com>
-Date: Wed, 11 Dec 2019 19:31:59 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J+Kdknet;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39674 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iewtb-0001ta-Ra
+	for alex.bennee@linaro.org; Wed, 11 Dec 2019 02:58:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58963)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <imammedo@redhat.com>) id 1iewsP-00010P-Lt
+ for qemu-devel@nongnu.org; Wed, 11 Dec 2019 02:57:43 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <imammedo@redhat.com>) id 1iewsO-0000Dx-9z
+ for qemu-devel@nongnu.org; Wed, 11 Dec 2019 02:57:41 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:49579
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iewsO-0000Bo-4u
+ for qemu-devel@nongnu.org; Wed, 11 Dec 2019 02:57:40 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1576051059;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JDT20aKapIGgJpnIA22MqTVehQMyQBhxq1PMqwGtE3M=;
+ b=J+KdknetLJEKZ/SdPEmNRRxISbSmL/3RQqWuocx9aw1hra1m1fYCnlK5vMO2gSK54alW++
+ f5KoM3RlhAIEfoJ4KFuosrcNC/7lmtRWSDbVAMUJbKOAAyEyorKfNdH2ip98X7Q0Bm2p2i
+ CqZlZifsfH3Ibg4YgXxPE5O9dbWR9cE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-314-HMXTjCAgMHOkVVSiRx10uQ-1; Wed, 11 Dec 2019 02:57:36 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75A7F18543A0;
+ Wed, 11 Dec 2019 07:57:34 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B1DAC60BAB;
+ Wed, 11 Dec 2019 07:57:29 +0000 (UTC)
+Date: Wed, 11 Dec 2019 08:57:27 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH 0/5] ARM virt: Add NVDIMM support
+Message-ID: <20191211085727.1ab9564e@redhat.com>
+In-Reply-To: <c2bb0be09e244ee59d27c7aaab1783a9@huawei.com>
+References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
+ <a133d4c4-3f60-2bb1-a7d7-35cdb06af265@redhat.com>
+ <441c818f24084b4191315cf2a6267cef@huawei.com>
+ <20191125164541.3f0a593f@redhat.com>
+ <444efcb441fe42e5aff58b3af3ab14b4@huawei.com>
+ <20191126095655.27227f59@redhat.com>
+ <c2bb0be09e244ee59d27c7aaab1783a9@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20191211170520.7747-9-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 8bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
-	s=mail; t=1576089121;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mQ5xyVW08Yw0tiMnTbHBQxwUQsPAL+SLR0RjCN/xVwQ=;
-	b=QWFzz8Xc8qssztDzulzl2qUg/Y2Hi3b+740Hj8v5WC7oYh1MVWDFq9M86v9ZfrVFwJ9tFR
-	y3TcCJ8illJ7PbaWhQqvEG6BLU+/Rvec8D0lkx0m9OjRljRSApaCqFsVVNBg46viyjQY4O
-	gW2UoLQW/+EjMSGHrOvGYbBXqfLImMM=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1576089121; a=rsa-sha256;
-	cv=none;
-	b=AdJvTldr38lAKee51wr23drslH+ZiFf69ixXo+bZmkc2IjO+Zts7XspKqv1O1VaoZ7qC+M
-	mBHDotNTEDcdIEctLayxnBt8LgdnrzSdWB63rlOqQENmprqqzK+YeY+gyknZpKZ5U9sWzz
-	/hxW4+LBQmnBHJOLPq26xZHVOC55fJc=
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-TUID: xd9oddDaU5uN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: HMXTjCAgMHOkVVSiRx10uQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "drjones@redhat.com" <drjones@redhat.com>,
+ "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
+ Auger Eric <eric.auger@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "lersek@redhat.com" <lersek@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uMgcX+w+X1kF
 
+On Mon, 9 Dec 2019 17:39:15 +0000
+Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Hi Alex,
-
-On 12/11/19 6:05 PM, Alex Bennée wrote:
-> Instead of passing a pointer to memory now just extend the GByteArray
-> to all the read register helpers. They can then safely append their
-> data through the normal way. We don't bother with this abstraction for
-> write registers as we have already ensured the buffer being copied
-> from is the correct size.
+> Hi Igor/ xiaoguangrong,
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> > -----Original Message-----
+> > From: Shameerali Kolothum Thodi
+> > Sent: 28 November 2019 12:36
+> > To: 'Igor Mammedov' <imammedo@redhat.com>;
+> > xiaoguangrong.eric@gmail.com
+> > Cc: peter.maydell@linaro.org; drjones@redhat.com;
+> > shannon.zhaosl@gmail.com; qemu-devel@nongnu.org; Linuxarm
+> > <linuxarm@huawei.com>; Auger Eric <eric.auger@redhat.com>;
+> > qemu-arm@nongnu.org; xuwei (O) <xuwei5@huawei.com>;
+> > lersek@redhat.com
+> > Subject: RE: [PATCH 0/5] ARM virt: Add NVDIMM support
+> > 
+> > 
+> >   
+> > > -----Original Message-----
+> > > From: Qemu-devel
+> > >  
+> > [mailto:qemu-devel-bounces+shameerali.kolothum.thodi=huawei.com@nongn  
+> > > u.org] On Behalf Of Igor Mammedov
+> > > Sent: 26 November 2019 08:57
+> > > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> > > Cc: peter.maydell@linaro.org; drjones@redhat.com;
+> > > xiaoguangrong.eric@gmail.com; shannon.zhaosl@gmail.com;
+> > > qemu-devel@nongnu.org; Linuxarm <linuxarm@huawei.com>; Auger Eric
+> > > <eric.auger@redhat.com>; qemu-arm@nongnu.org; xuwei (O)
+> > > <xuwei5@huawei.com>; lersek@redhat.com
+> > > Subject: Re: [PATCH 0/5] ARM virt: Add NVDIMM support  
+> > 
+> > [..]
+> >   
+> > > > > 0xb8 Dirty No.  -->Another read is attempted  
+> > > > > > [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: read_fit_out buf size 0x8  
+> > > > > func_ret_status 3  --> Error status returned
+> > > > >
+> > > > > status 3 means that QEMU didn't like content of NRAM, and there is only
+> > > > > 1 place like this in nvdimm_dsm_func_read_fit()
+> > > > >     if (read_fit->offset > fit->len) {
+> > > > >         func_ret_status = NVDIMM_DSM_RET_STATUS_INVALID;
+> > > > >         goto exit;
+> > > > >     }
+> > > > >
+> > > > > so I'd start looking from here and check that QEMU gets expected data
+> > > > > in nvdimm_dsm_write(). In other words I'd try to trace/compare
+> > > > > content of DSM buffer (from qemu side).  
+> > > >
+> > > > I had printed the DSM buffer previously and it looked same, I will double  
+> > check  
+> > > > that.  
+> > 
+> > Tried printing the buffer in both Qemu/AML code.
+> > 
+> > On Amr64,  
+> 
+> [...]
+>  
+> > Attached the SSDT.dsl used for debugging. I am still not clear why on ARM64,
+> > 2nd iteration case, the created buffer size in NCAL and RFIT methods have
+> > additional 4 bytes!.
+> > 
+> >     CreateField (ODAT, Zero, Local1, OBUF)
+> >     Concatenate (Buffer (Zero){}, OBUF, Local7)
+> > 
+> > Please let me know if you have any clue.
+> >   
+> 
+> I couldn't figure out yet, why this extra 4 bytes are added by aml code on ARM64
+> when the nvdimm_dsm_func_read_fit() returns NvdimmFuncReadFITOut without
+> any FIT data. ie, when the FIT buffer len (read_len) is zero.
+> 
+> But the below will fix this issue,
+> 
+> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+> index f91eea3802..cddf95f4c1 100644
+> --- a/hw/acpi/nvdimm.c
+> +++ b/hw/acpi/nvdimm.c
+> @@ -588,7 +588,7 @@ static void nvdimm_dsm_func_read_fit(NVDIMMState *state, NvdimmDsmIn *in,
+>      nvdimm_debug("Read FIT: offset %#x FIT size %#x Dirty %s.\n",
+>                   read_fit->offset, fit->len, fit_buf->dirty ? "Yes" : "No");
+> 
+> -    if (read_fit->offset > fit->len) {
+> +    if (read_fit->offset >= fit->len) {
+>          func_ret_status = NVDIMM_DSM_RET_STATUS_INVALID;
+>          goto exit;
+>      }
+> 
+> 
+> This will return error code to aml in the second iteration when there is no further
+> FIT data to report. But, I am not sure why this check was omitted in the first place.
+> 
+> Please let me know if this is acceptable and then probably I can look into a v2 of this
+> series.
+Sorry, I don't have capacity to debug this right now,
+but I'd prefer if 'why' question was answered first.
 
-[...]
+Anyways, if something is unclear in how concrete AML code is build/works,
+feel free to ask and I'll try to explain and guide you.
 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 0ac950d6c71..6476245e789 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -47,30 +47,27 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->  
->  static void switch_mode(CPUARMState *env, int mode);
->  
-> -static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
-> +static int vfp_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
->  {
->      int nregs;
->  
->      /* VFP data registers are always little-endian.  */
->      nregs = arm_feature(env, ARM_FEATURE_VFP3) ? 32 : 16;
->      if (reg < nregs) {
-> -        stq_le_p(buf, *aa32_vfp_dreg(env, reg));
-> -        return 8;
-> +        return gdb_get_reg64(buf, *aa32_vfp_dreg(env, reg));
+> Thanks,
+> Shameer
+> 
+> 
+> 
 
-It was a little-endian version, you've put a target-endian version.
-Is that what you meant ?
-
->      }
->      if (arm_feature(env, ARM_FEATURE_NEON)) {
->          /* Aliases for Q regs.  */
->          nregs += 16;
->          if (reg < nregs) {
->              uint64_t *q = aa32_vfp_qreg(env, reg - 32);
-> -            stq_le_p(buf, q[0]);
-> -            stq_le_p(buf + 8, q[1]);
-> -            return 16;
-> +            return gdb_get_reg128(buf, q[0], q[1]);
-
-Ditto here.
-
->          }
->      }
->      switch (reg - nregs) {
-> -    case 0: stl_p(buf, env->vfp.xregs[ARM_VFP_FPSID]); return 4;
-> -    case 1: stl_p(buf, vfp_get_fpscr(env)); return 4;
-> -    case 2: stl_p(buf, env->vfp.xregs[ARM_VFP_FPEXC]); return 4;
-> +    case 0: return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPSID]); break;
-> +    case 1: return gdb_get_reg32(buf, vfp_get_fpscr(env)); break;
-> +    case 2: return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPEXC]); break;
->      }
->      return 0;
->  }
-> @@ -101,7 +98,7 @@ static int vfp_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
->      return 0;
->  }
->  
-> -static int aarch64_fpu_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
-> +static int aarch64_fpu_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
->  {
->      switch (reg) {
->      case 0 ... 31:
-> @@ -204,7 +201,7 @@ static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
->      }
->  }
->  
-> -static int arm_gdb_get_sysreg(CPUARMState *env, uint8_t *buf, int reg)
-> +static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
->  {
->      ARMCPU *cpu = env_archcpu(env);
->      const ARMCPRegInfo *ri;
-
-[...]
-
-> diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-> index 823759c92e7..6f08021cc22 100644
-> --- a/target/ppc/gdbstub.c
-> +++ b/target/ppc/gdbstub.c
-> @@ -114,10 +114,11 @@ void ppc_maybe_bswap_register(CPUPPCState *env, uint8_t *mem_buf, int len)
->   * the FP regs zero size when talking to a newer gdb.
->   */
->  
-> -int ppc_cpu_gdb_read_register(CPUState *cs, uint8_t *mem_buf, int n)
-> +int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
->  {
->      PowerPCCPU *cpu = POWERPC_CPU(cs);
->      CPUPPCState *env = &cpu->env;
-> +    uint8_t *mem_buf;
->      int r = ppc_gdb_register_len(n);
->  
->      if (!r) {
-> @@ -126,17 +127,17 @@ int ppc_cpu_gdb_read_register(CPUState *cs, uint8_t *mem_buf, int n)
->  
->      if (n < 32) {
->          /* gprs */
-> -        gdb_get_regl(mem_buf, env->gpr[n]);
-> +        gdb_get_regl(buf, env->gpr[n]);
->      } else if (n < 64) {
->          /* fprs */
-> -        stfq_p(mem_buf, *cpu_fpr_ptr(env, n - 32));
-> +        gdb_get_reg64(buf, *cpu_fpr_ptr(env, n - 32));
->      } else {
->          switch (n) {
->          case 64:
-> -            gdb_get_regl(mem_buf, env->nip);
-> +            gdb_get_regl(buf, env->nip);
->              break;
->          case 65:
-> -            gdb_get_regl(mem_buf, env->msr);
-> +            gdb_get_regl(buf, env->msr);
->              break;
->          case 66:
->              {
-> @@ -145,31 +146,33 @@ int ppc_cpu_gdb_read_register(CPUState *cs, uint8_t *mem_buf, int n)
->                  for (i = 0; i < 8; i++) {
->                      cr |= env->crf[i] << (32 - ((i + 1) * 4));
->                  }
-> -                gdb_get_reg32(mem_buf, cr);
-> +                gdb_get_reg32(buf, cr);
->                  break;
->              }
->          case 67:
-> -            gdb_get_regl(mem_buf, env->lr);
-> +            gdb_get_regl(buf, env->lr);
->              break;
->          case 68:
-> -            gdb_get_regl(mem_buf, env->ctr);
-> +            gdb_get_regl(buf, env->ctr);
->              break;
->          case 69:
-> -            gdb_get_reg32(mem_buf, env->xer);
-> +            gdb_get_reg32(buf, env->xer);
->              break;
->          case 70:
-> -            gdb_get_reg32(mem_buf, env->fpscr);
-> +            gdb_get_reg32(buf, env->fpscr);
->              break;
->          }
->      }
-> +    mem_buf = buf->data - r;
-
-Should it not be something more like this ?
-mem_buf = buf->data + buf->len - r;
-
-There seem to be the same issue below for every
-ppc_maybe_bswap_register() call.
-
->      ppc_maybe_bswap_register(env, mem_buf, r);
->      return r;
->  }
->  
-> -int ppc_cpu_gdb_read_register_apple(CPUState *cs, uint8_t *mem_buf, int n)
-> +int ppc_cpu_gdb_read_register_apple(CPUState *cs, GByteArray *buf, int n)
->  {
->      PowerPCCPU *cpu = POWERPC_CPU(cs);
->      CPUPPCState *env = &cpu->env;
-> +    uint8_t *mem_buf;
->      int r = ppc_gdb_register_len_apple(n);
->  
->      if (!r) {
-> @@ -178,21 +181,21 @@ int ppc_cpu_gdb_read_register_apple(CPUState *cs, uint8_t *mem_buf, int n)
->  
->      if (n < 32) {
->          /* gprs */
-> -        gdb_get_reg64(mem_buf, env->gpr[n]);
-> +        gdb_get_reg64(buf, env->gpr[n]);
->      } else if (n < 64) {
->          /* fprs */
-> -        stfq_p(mem_buf, *cpu_fpr_ptr(env, n - 32));
-> +        gdb_get_reg64(buf, *cpu_fpr_ptr(env, n - 32));
->      } else if (n < 96) {
->          /* Altivec */
-> -        stq_p(mem_buf, n - 64);
-> -        stq_p(mem_buf + 8, 0);
-> +        gdb_get_reg64(buf, n - 64);
-> +        gdb_get_reg64(buf, 0);
->      } else {
->          switch (n) {
->          case 64 + 32:
-> -            gdb_get_reg64(mem_buf, env->nip);
-> +            gdb_get_reg64(buf, env->nip);
->              break;
->          case 65 + 32:
-> -            gdb_get_reg64(mem_buf, env->msr);
-> +            gdb_get_reg64(buf, env->msr);
->              break;
->          case 66 + 32:
->              {
-> @@ -201,23 +204,24 @@ int ppc_cpu_gdb_read_register_apple(CPUState *cs, uint8_t *mem_buf, int n)
->                  for (i = 0; i < 8; i++) {
->                      cr |= env->crf[i] << (32 - ((i + 1) * 4));
->                  }
-> -                gdb_get_reg32(mem_buf, cr);
-> +                gdb_get_reg32(buf, cr);
->                  break;
->              }
->          case 67 + 32:
-> -            gdb_get_reg64(mem_buf, env->lr);
-> +            gdb_get_reg64(buf, env->lr);
->              break;
->          case 68 + 32:
-> -            gdb_get_reg64(mem_buf, env->ctr);
-> +            gdb_get_reg64(buf, env->ctr);
->              break;
->          case 69 + 32:
-> -            gdb_get_reg32(mem_buf, env->xer);
-> +            gdb_get_reg32(buf, env->xer);
->              break;
->          case 70 + 32:
-> -            gdb_get_reg64(mem_buf, env->fpscr);
-> +            gdb_get_reg64(buf, env->fpscr);
->              break;
->          }
->      }
-> +    mem_buf = buf->data - r;
->      ppc_maybe_bswap_register(env, mem_buf, r);
->      return r;
->  }
-> diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.inc.c
-> index ba726dec4d0..154f876e44c 100644
-> --- a/target/ppc/translate_init.inc.c
-> +++ b/target/ppc/translate_init.inc.c
-> @@ -9587,7 +9587,7 @@ static int gdb_find_spr_idx(CPUPPCState *env, int n)
->      return -1;
->  }
->  
-> -static int gdb_get_spr_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-> +static int gdb_get_spr_reg(CPUPPCState *env, GByteArray *buf, int n)
->  {
->      int reg;
->      int len;
-> @@ -9598,8 +9598,8 @@ static int gdb_get_spr_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
->      }
->  
->      len = TARGET_LONG_SIZE;
-> -    stn_p(mem_buf, len, env->spr[reg]);
-> -    ppc_maybe_bswap_register(env, mem_buf, len);
-> +    gdb_get_regl(buf, env->spr[reg]);
-> +    ppc_maybe_bswap_register(env, buf->data - len, len);
->      return len;
->  }
->  
-> @@ -9621,15 +9621,18 @@ static int gdb_set_spr_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
->  }
->  #endif
->  
-> -static int gdb_get_float_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-> +static int gdb_get_float_reg(CPUPPCState *env, GByteArray *buf, int n)
->  {
-> +    uint8_t *mem_buf;
->      if (n < 32) {
-> -        stfq_p(mem_buf, *cpu_fpr_ptr(env, n));
-> +        gdb_get_reg64(buf, *cpu_fpr_ptr(env, n));
-> +        mem_buf = buf->data - 8;
->          ppc_maybe_bswap_register(env, mem_buf, 8);
->          return 8;
->      }
->      if (n == 32) {
-> -        stl_p(mem_buf, env->fpscr);
-> +        gdb_get_reg32(buf, env->fpscr);
-> +        mem_buf = buf->data - 4;
->          ppc_maybe_bswap_register(env, mem_buf, 4);
->          return 4;
->      }
-> @@ -9651,28 +9654,31 @@ static int gdb_set_float_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
->      return 0;
->  }
->  
-> -static int gdb_get_avr_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-> +static int gdb_get_avr_reg(CPUPPCState *env, GByteArray *buf, int n)
->  {
-> +    uint8_t *mem_buf;
-> +
->      if (n < 32) {
->          ppc_avr_t *avr = cpu_avr_ptr(env, n);
->          if (!avr_need_swap(env)) {
-> -            stq_p(mem_buf, avr->u64[0]);
-> -            stq_p(mem_buf + 8, avr->u64[1]);
-> +            gdb_get_reg128(buf, avr->u64[0] , avr->u64[1]);
->          } else {
-> -            stq_p(mem_buf, avr->u64[1]);
-> -            stq_p(mem_buf + 8, avr->u64[0]);
-> +            gdb_get_reg128(buf, avr->u64[1] , avr->u64[0]);
->          }
-> +        mem_buf = buf->data - 16;
->          ppc_maybe_bswap_register(env, mem_buf, 8);
->          ppc_maybe_bswap_register(env, mem_buf + 8, 8);
->          return 16;
->      }
->      if (n == 32) {
-> -        stl_p(mem_buf, helper_mfvscr(env));
-> +        gdb_get_reg32(buf, helper_mfvscr(env));
-> +        mem_buf = buf->data - 4;
->          ppc_maybe_bswap_register(env, mem_buf, 4);>          return 4;
->      }
->      if (n == 33) {
-> -        stl_p(mem_buf, (uint32_t)env->spr[SPR_VRSAVE]);
-> +        gdb_get_reg32(buf, (uint32_t)env->spr[SPR_VRSAVE]);
-> +        mem_buf = buf->data - 4;
->          ppc_maybe_bswap_register(env, mem_buf, 4);
->          return 4;
->      }
-> @@ -9707,25 +9713,25 @@ static int gdb_set_avr_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
->      return 0;
->  }
->  
-> -static int gdb_get_spe_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-> +static int gdb_get_spe_reg(CPUPPCState *env, GByteArray *buf, int n)
->  {
->      if (n < 32) {
->  #if defined(TARGET_PPC64)
-> -        stl_p(mem_buf, env->gpr[n] >> 32);
-> -        ppc_maybe_bswap_register(env, mem_buf, 4);
-> +        gdb_get_reg32(buf, env->gpr[n] >> 32);
-> +        ppc_maybe_bswap_register(env, buf->data - 4, 4);
->  #else
-> -        stl_p(mem_buf, env->gprh[n]);
-> +        gdb_get_reg32(buf, env->gprh[n]);
->  #endif
->          return 4;
->      }
->      if (n == 32) {
-> -        stq_p(mem_buf, env->spe_acc);
-> -        ppc_maybe_bswap_register(env, mem_buf, 8);
-> +        gdb_get_reg64(buf, env->spe_acc);
-> +        ppc_maybe_bswap_register(env, buf->data - 8, 8);
->          return 8;
->      }
->      if (n == 33) {
-> -        stl_p(mem_buf, env->spe_fscr);
-> -        ppc_maybe_bswap_register(env, mem_buf, 4);
-> +        gdb_get_reg32(buf, env->spe_fscr);
-> +        ppc_maybe_bswap_register(env, buf->data - 4, 4);
->          return 4;
->      }
->      return 0;
-> @@ -9760,11 +9766,11 @@ static int gdb_set_spe_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
->      return 0;
->  }
->  
-> -static int gdb_get_vsx_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-> +static int gdb_get_vsx_reg(CPUPPCState *env, GByteArray *buf, int n)
->  {
->      if (n < 32) {
-> -        stq_p(mem_buf, *cpu_vsrl_ptr(env, n));
-> -        ppc_maybe_bswap_register(env, mem_buf, 8);
-> +        gdb_get_reg64(buf, *cpu_vsrl_ptr(env, n));
-> +        ppc_maybe_bswap_register(env, buf->data - 8, 8);
->          return 8;
->      }
->      return 0;
-
-Otherwise, other files seem ok.
-
-Regards,
---
-Damien

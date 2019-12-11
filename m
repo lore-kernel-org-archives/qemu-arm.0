@@ -1,197 +1,218 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp656942lff;
-        Wed, 11 Dec 2019 05:54:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyXBJ9sWa8yqH6urJ4JVin7nWrSJoS8WKa+v3cZLmGuZILCIl+V40rCSomyhl8N2QTvjSiK
-X-Received: by 2002:a37:a086:: with SMTP id j128mr2871412qke.459.1576072488766;
-        Wed, 11 Dec 2019 05:54:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576072488; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp737731lff;
+        Wed, 11 Dec 2019 06:57:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzXtUaP45qaA5rzoxHNxD7Z2CPTmz1g5Ll7REwYZ7/TGQ853WJZO9U4/joSWLEVDxcIDiBH
+X-Received: by 2002:a37:ae07:: with SMTP id x7mr322647qke.28.1576076233583;
+        Wed, 11 Dec 2019 06:57:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576076233; cv=none;
         d=google.com; s=arc-20160816;
-        b=UGM1kEaRbHCtXqxHd3WRn5ge+EnlrqcrlioV8JoP2sIV2BscRgDmDi7vP2AtNP0Cdu
-         LuAXJ5B13VRsLiwvIncwFHY6nVqpe50h9rJ3omGSS9OIKetmf7X2WK8+xJMLsvzr27C0
-         aOJbaU0q2g5SsMBmmaDTyy+a4dgWFLXR6VjuUb4ZEzKD3MoCwL8At8VP6zaiR9GvyYu9
-         mv9lsvevVk2wvpDEYzXiD3MgBkljZjASVzaWuNztAo5iEhbPVEWkp3PVvowN3xD/5cJ8
-         m16srYRxLJH3AqzGOm+z8ujlIM5i1qWOatF2VVWAIfF5y4mH34OCc66+ehE98VCA/wPu
-         BbdQ==
+        b=pfjJfuB4lW6mE/wrLPe2L2ev85qAJcEuVxjmRBaDLZexqnl45Af4ZVlRyv0JF0MvRb
+         GUQt8aGaZNAGB5XcytYw1yMgFzrFQtLVkB5ZblDGDMxS+wEFazklD753vrFCQI4A/07q
+         9OkLTh9Ao06+NQiLxT1IsEE30X2CbMUKaujtkKAhcVZLNeBhMrI+3OHmt4MVOBZ8nOG+
+         fv/2I2Ouo/n+QzRmA4sRulDqjsvgjLwbCi3F3aqDZrcKiNAolPQdvWowyO+ER3mt5+YN
+         zVg3l2bJlHl/CcI2vzljt2yZNh0h7NurSQasIIOlGb9NwbVtrAgsv4GgMLVAIzylOtci
+         eW7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=UhLUcg16GhB01NuiuwR3BbgRxliH0NNJodNcvzX26HQ=;
-        b=Jm5wQFyam/XZ1i4r00xm/fw1EAwxFgL6nk1pJgxbaxteOsBBA6h5mC2xXJw+a8HK2u
-         8DfByQS02LZ0gUkWRuyfy0WYQ96cKxZeVsNzMv4HV0ibKRBlSHBc68KFW7JisOfK6MRs
-         SGeOqJzIU1VqqPe8NC1r7hEDHFetXfsnYliU6/ByPYdyTMl8qrreHeMryLzj0BM7F/uD
-         E6Ksf7DVZLlojUEKBe933WjJf+W5oCq2/nut6Zq+PVae6PcLI63LfV5Rwpv8UOzDQb93
-         +b07XxtApi76zyNp0hjBXcK6zYB6TXLk3klox6bE4r9DfBrtUNZFc1tfuHiRrYlJK05f
-         lIMQ==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=n4NPTSJrzliS+z69UC5eIwaL436Qm80hW2C6VDi4P7k=;
+        b=FUPslH+EyJ0SdHUp5RppGtuROVS5NIGgs3l6kLijn4QsLWcdYCmdz+2cYstaDFbQJ/
+         brvGpqFG813s/II0wFZPkx3HVAW3RJkWF+qClY6zIMWAB4feEcKjFZQvOZ0/FvoziRC9
+         hKGpIcwe3XlU/aY6whdYgVTyUE7LgKZj9q69vjZwcfeGbirJuut9MeaD2qYpxx51YBoP
+         sD8mZcpYauX8atRkLOmMinhxkeWFbMG1n5dtK83T1GFBcDDaQpwr2RTWJ8P5eCnt0rwP
+         bbOak0ucVNc/LIIYbHIR8QIhbjNY7RY3CFyALFQ/r8Ld+OQvtCzo5o1Mb+l2XD7ZMaEW
+         6Bvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u184si1116106qkd.202.2019.12.11.05.54.48
+        by mx.google.com with ESMTPS id d9si1145084qki.303.2019.12.11.06.57.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Dec 2019 05:54:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Dec 2019 06:57:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42786 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1if2Rz-0001vA-N5
-	for alex.bennee@linaro.org; Wed, 11 Dec 2019 08:54:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56852)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1if3QP-0004K3-09
+	for alex.bennee@linaro.org; Wed, 11 Dec 2019 09:57:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40841)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1if2OS-0006Eo-09
- for qemu-devel@nongnu.org; Wed, 11 Dec 2019 08:51:09 -0500
+ (envelope-from <prime.zeng@hisilicon.com>) id 1if3QG-0004Jg-2H
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2019 09:57:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1if2OQ-0000Sf-Hn
- for qemu-devel@nongnu.org; Wed, 11 Dec 2019 08:51:07 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2223 helo=huawei.com)
+ (envelope-from <prime.zeng@hisilicon.com>) id 1if3QE-0008SP-CO
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2019 09:57:03 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2425 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1if2ON-0000JN-3n; Wed, 11 Dec 2019 08:51:03 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 48958B31F41B410CF4E1;
- Wed, 11 Dec 2019 21:50:54 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0; Wed, 11 Dec 2019
- 21:50:44 +0800
-Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
- virtual time
+ (Exim 4.71) (envelope-from <prime.zeng@hisilicon.com>)
+ id 1if3QD-0008H3-Vj; Wed, 11 Dec 2019 09:57:02 -0500
+Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.57])
+ by Forcepoint Email with ESMTP id 43DB7CF27CCA2C6CCBDD;
+ Wed, 11 Dec 2019 19:10:54 +0800 (CST)
+Received: from DGGEMM421-HUB.china.huawei.com (10.1.198.38) by
+ DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 11 Dec 2019 19:10:53 +0800
+Received: from DGGEMM526-MBX.china.huawei.com ([169.254.8.101]) by
+ dggemm421-hub.china.huawei.com ([10.1.198.38]) with mapi id 14.03.0439.000;
+ Wed, 11 Dec 2019 19:10:45 +0800
+From: "Zengtao (B)" <prime.zeng@hisilicon.com>
 To: Andrew Jones <drjones@redhat.com>
-References: <20191016143410.5023-1-drjones@redhat.com>
- <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
- <5679d43f-3f29-6ee1-0894-19ef2f3e08a2@huawei.com>
- <20191211090000.kajcyk7oqlqr3chk@kamzik.brq.redhat.com>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <c5241a1e-f81c-2616-8169-1696c23b747d@huawei.com>
-Date: Wed, 11 Dec 2019 21:50:42 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <20191211090000.kajcyk7oqlqr3chk@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
+Subject: RE: [Qemu-devel] [RFC PATCH 0/6] hw/arm/virt: Introduce cpu
+ topology support
+Thread-Topic: [Qemu-devel] [RFC PATCH 0/6] hw/arm/virt: Introduce cpu
+ topology support
+Thread-Index: AdQTlaRpUFkm+EncK0mrDnlTRz6dtGan2sPQADKVqIAARGvRgA==
+Date: Wed, 11 Dec 2019 11:10:45 +0000
+Message-ID: <678F3D1BB717D949B966B68EAEB446ED34066A4F@dggemm526-mbx.china.huawei.com>
+References: <20180704124923.32483-1-drjones@redhat.com>
+ <678F3D1BB717D949B966B68EAEB446ED3405A26F@dggemm526-mbx.china.huawei.com>
+ <20191210101323.q7dn2f3pkx3ya5s4@kamzik.brq.redhat.com>
+In-Reply-To: <20191210101323.q7dn2f3pkx3ya5s4@kamzik.brq.redhat.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.74.221.187]
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.190
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 45.249.212.187
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, bijan.mottahedeh@oracle.com,
- Marc Zyngier <maz@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- wanghaibin 00208455 <wanghaibin.wang@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vfOJffgyk1Dz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ huangdaode <huangdaode@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "imammedo@redhat.com" <imammedo@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e7u7KWuy2CqO
 
+Hi Andrew:
 
-=E5=9C=A8 2019/12/11 17:00, Andrew Jones =E5=86=99=E9=81=93:
-> On Wed, Dec 11, 2019 at 04:02:52PM +0800, Guoheyi wrote:
->> =E5=9C=A8 2019/12/6 23:22, Peter Maydell =E5=86=99=E9=81=93:
->>> On Wed, 16 Oct 2019 at 15:34, Andrew Jones <drjones@redhat.com> wrote=
-:
->>>> v2:
->>>>    - move from RFC status to v1
->>>>    - put kvm_arm_vm_state_change() in kvm.c to share among kvm32.c a=
-nd kvm64.c
->>>>    - add r-b's from Richard
->>>>
->>>>
->>>> This series is inspired by a series[1] posted by Bijan Mottahedeh ab=
-out
->>>> a year ago.  The problem described in the cover letter of [1] is eas=
-ily
->>>> reproducible and some users would like to have the option to avoid i=
-t.
->>>> However the solution, which is to adjust the virtual counter offset =
-each
->>>> time the VM transitions to the running state, introduces a different
->>>> problem, which is that the virtual and physical counters diverge.  A=
-s
->>>> described in the cover letter of [1] this divergence is easily obser=
-ved
->>>> when comparing the output of `date` and `hwclock` after suspending t=
-he
->>>> guest, waiting a while, and then resuming it.  Because this differen=
-t
->>>> problem may actually be worse for some users, unlike [1], the series
->>>> posted here makes the virtual counter offset adjustment optional and=
- not
->>>> even enabled by default.  Besides the adjustment being optional, thi=
-s
->>>> series approaches the needed changes differently to apply them in mo=
-re
->>>> appropriate locations.  Finally, unlike [1], this series doesn't att=
-empt
->>>> to measure "pause time" itself.  Simply using QEMU_CLOCK_VIRTUAL, wh=
-ich
->>>> only ticks when the VM is not stopped, is sufficient.
->>> So I guess my overall question is "what is the x86 solution to
->>> this problem, and why is this all arm-specific?" It would also
->>> be helpful to know how it fits into all the other proposals regarding
->>> time in VMs.
->> I also sent a RFC in March and ARM KVM experts were also invoved in th=
-e
->> discussion:
->>
->> https://lists.cs.columbia.edu/pipermail/kvmarm/2019-March/035026.html
->>
->> According to the discussion, qemu on x86 is using KVM_KVMCLOCK_CTRL to
->> request KVM to set a flag "PVCLOCK_GUEST_STOPPED" in pvclock, informin=
-g VM
->> kernel about external force stop.
->>
->> Thanks,
->>
->> Heyi
-> Hi Heyi,
->
-> Apologies for having forgotten about that thread. I recall now having
-> followed it last March. Indeed it even addresses the issue in the way
-> we're coming around to now (save/restore vs. update with virtual time).
+Thanks for your reply.
+It 's fine for me if you are still tracking the thread. And I can help to t=
+est
+ if needed ^_^.
 
-Never mind :) We were also blocked by this issue when trying to support=20
-VM suspend/resume, save/restore, etc, so I'm happy to see your patches=20
-that we have the chance to fix it.
-
->
-> I just reread the whole thread, and my feeling is that, while there are
-> still many issues left to work, until we get a pvclock for arm, a patch
-> like this one, but with a way to opt-in/out in order to give users a
-> chance to choose their poison, is the best we can do. Also a patch like
-> this one is a step in the right direction, as it will be needed as part
-> of the bigger pvclock solution eventually, just as it is for x86.
-
-Yes, it is simple and it works with current version of ARM64 OS=20
-distributions.
-
-Thanks,
-
-Heyi
-
->
-> One comment on the patch is that I would prefer to do the save/restore
-> for all VCPUs, even though KVM does currently handle synchronization.
-> Not only does it "feel" more correct to apply VCPU APIs to all VCPUs,
-> but I assume it will be less problematic to implement CPU hotplug at
-> some point.
->
+> -----Original Message-----
+> From: Andrew Jones [mailto:drjones@redhat.com]
+> Sent: Tuesday, December 10, 2019 6:13 PM
+> To: Zengtao (B)
+> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; wei@redhat.com;
+> peter.maydell@linaro.org; eric.auger@redhat.com;
+> imammedo@redhat.com; xuwei (O); huangdaode
+> Subject: Re: [Qemu-devel] [RFC PATCH 0/6] hw/arm/virt: Introduce cpu
+> topology support
+>=20
+> On Mon, Dec 09, 2019 at 02:14:09AM +0000, Zengtao (B) wrote:
+> > Hi Andrew:
+> >
+> > Any update for this patch series? I have met the same issue, and if the
+> > topology guessed by linux MPIDR conflicts with qemu specified numa, it
+> > will failed to boot (sched domain initialization will fall into deadloo=
+p).
+>=20
+> Hi Zeng,
+>=20
+> This has been on my TODO list a long time, but it keeps getting preempted=
+.
+> We need to start by giving userspace control over the MPIDRs, including
+> when KVM is in use. The earliest I can return to this will be mid/late
+> January. If you'd like to jump in on it now, then feel free.
+>=20
 > Thanks,
 > drew
->
->
-> .
+>=20
+> >
+> > Thanks.
+> >
+> > > -----Original Message-----
+> > > From: Qemu-devel
+> > >
+> [mailto:qemu-devel-bounces+incoming=3Dpatchwork.ozlabs.org@nongnu.or
+> > > g] On Behalf Of Andrew Jones
+> > > Sent: Thursday, July 05, 2018 4:49 AM
+> > > To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+> > > Cc: wei@redhat.com; peter.maydell@linaro.org;
+> eric.auger@redhat.com;
+> > > imammedo@redhat.com
+> > > Subject: [Qemu-devel] [RFC PATCH 0/6] hw/arm/virt: Introduce cpu
+> > > topology support
+> > >
+> > > This series provides support for booting mach-virt machines with
+> > > non-flat cpu topology, i.e. enabling the extended options of the
+> > > '-smp' command line parameter (sockets,cores,threads). Both DT and
+> > > ACPI description generators are added. We only apply the new feature
+> > > to 3.1 and later machine types, as the change is guest visible, even
+> > > when no command line change is made. This is because the basic
+> > > '-smp <N>' parameter makes the assumption that <N> refers to the
+> > > number of sockets, but when no topology description is provided,
+> > > Linux will use the MPIDR to guess. Neither the MPIDR exposed to
+> > > the guest when running with KVM nor TCG currently provides socket
+> > > information, leaving Linux to assume all processing elements are
+> > > cores in the same socket. For example, before this series '-smp 4'
+> > > would show up in the guest as
+> > >
+> > >  CPU(s):                4
+> > >  On-line CPU(s) list:   0-3
+> > >  Thread(s) per core:    1
+> > >  Core(s) per socket:    4
+> > >  Socket(s):             1
+> > >
+> > > and after it shows up as
+> > >
+> > >  CPU(s):                4
+> > >  On-line CPU(s) list:   0-3
+> > >  Thread(s) per core:    1
+> > >  Core(s) per socket:    1
+> > >  Socket(s):             4
+> > >
+> > > It's not expected that this should be a problem, but it's worth
+> > > considering. The only way to avoid the silent change is for QEMU to
+> > > provide boards a way to override the default '-smp' parsing function.
+> > > Otherwise, if a user wants to avoid a guest visible change, but still
+> > > use a 3.1 or later mach-virt machine type, then they must ensure the
+> > > command line specifies a single socket, e.g. '-smp sockets=3D1,cores=
+=3D4'
+> > >
+> > > Thanks,
+> > > drew
+> > >
+> > >
+> > > Andrew Jones (6):
+> > >   hw/arm/virt: Add virt-3.1 machine type
+> > >   device_tree: add qemu_fdt_add_path
+> > >   hw/arm/virt: DT: add cpu-map
+> > >   hw/arm/virt-acpi-build: distinguish possible and present cpus
+> > >   virt-acpi-build: add PPTT table
+> > >   hw/arm/virt: cpu topology: don't allow threads
+> > >
+> > >  device_tree.c                | 24 +++++++++++++
+> > >  hw/acpi/aml-build.c          | 50 ++++++++++++++++++++++++++
+> > >  hw/arm/virt-acpi-build.c     | 25 ++++++++++---
+> > >  hw/arm/virt.c                | 69
+> > > +++++++++++++++++++++++++++++++++---
+> > >  include/hw/acpi/aml-build.h  |  2 ++
+> > >  include/hw/arm/virt.h        |  1 +
+> > >  include/sysemu/device_tree.h |  1 +
+> > >  7 files changed, 162 insertions(+), 10 deletions(-)
 

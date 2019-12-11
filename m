@@ -1,115 +1,80 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6439956lff;
-        Tue, 10 Dec 2019 14:18:05 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwM/GgRyKIPqtsBycGqKj+bLJB5k1k0prBoWROHn+RWg0U8zgNIspEAm8ujTvQYrOaTsBFr
-X-Received: by 2002:a05:6830:1d4c:: with SMTP id p12mr70401oth.198.1576016285414;
-        Tue, 10 Dec 2019 14:18:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576016285; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp286048lff;
+        Wed, 11 Dec 2019 00:03:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyuTZOmhWbRSH7DVXewZCf4jLv8qX0Wa4Z+/yQlLeNdXK/NTrhVf+PVRPrVwNo7sZfxCClc
+X-Received: by 2002:a05:6808:24e:: with SMTP id m14mr1784562oie.168.1576051403640;
+        Wed, 11 Dec 2019 00:03:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576051403; cv=none;
         d=google.com; s=arc-20160816;
-        b=pupa+u5QHromLCTv1ugtFGBnZItBoNRKmaWZdbEm/fwwCp1odSgMEeJXYpmdBDQLm5
-         ztc+0L4ihkJBdin4FbVbaruxPJy138CKngPhKHMwbmU/9BvvRo6zfgqgDcNUn4BedKcN
-         hlWaB7lbj2c5GGkqNs8lYrURl75N6fX8/pIUPZM2TkLnLtAsfxB9QMG8/KKQA+Qcn5qA
-         r8bv9Z/QS1TOCHrXOuvBsQP6boq31I/lbhauBJm/OEsDBIlbgUK/AhWkns+sXVKhGjGB
-         i9omD2pidhKBvsvVXgQBxXN/mMHDsR1Tmh0UP46nvwtOzNS9sDNFJVCLFPBcECSFArPU
-         GN+g==
+        b=x7XenBw/rolbySza+tVBi/TGBuXVih1EtmR10/TOeGd+2CKgKiF2XddoEvPVVbtQWW
+         tgRWphEtGvMEJTK8p4QaAwdezJQpRHEwkC8QoDEqNat+0NokIRn1+E6vwxQO1HbWQzFi
+         Vq4334F5rxLbbc6ZfWFjnLy80UkvETd68CjBZRxl9JbIaSV8SGNkWKCZFx2aoNLoUZXe
+         pbW996Qktuz0zzsgVKp8RTHHPJySuUH96rKze46wFmbNUUwJVMAtALZ1QmOvbxMeuDDM
+         rlKS1iU0o50iEmLLNm5sOh1YKiE6TnAPWp+gXoj5sWVWho5kI70fOU0AHrPg/k2LL8OD
+         i2Ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:from:date:references:in-reply-to:message-id:mime-version
-         :user-agent:dkim-signature:dkim-signature;
-        bh=3kGtzjp6D7Ka8D3pEkJj4zEeNC+L5CcFXQR/+ho4LW8=;
-        b=Xw+jK5dFwaiadQel+u4nwBoZ4ibaRvXxeKKGoCULB/cchX0awNQn5zwfjh9L6UYyeM
-         EkKrFACCSj8OPTWu3ukPC77d4A3wAIGv2sCUyufHWtMBfevouT12haQ9MyYzYHkM8t73
-         n3d3ZxBv4M5jOraZuPYeSV+c4G7vmSOaWdYbLwSspCPqi4xwwyRXTl+ulB/rN0vexIw/
-         wkUOdfRa6amD7HINAb9SDX4kk7uEgNJ8ZgWBD5FqM72Wlxj3/K2DkcUpNM6ZkPfkTM77
-         29bBetuHJ5H7itd/eGlJMGbPGbRQWxN16TQFfCFz03n1sAYkAYBIq3jsQqBuoytmr9Km
-         YWMA==
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=WiklgiE++7Op0SKsVjUlREiFODsbV/Pm3zI9sPt5ATs=;
+        b=fSoPkWr9zn/0Qpq9rd+GfuI4QtDsLdjMw0KxzIprgjlq6g6DWhPvyoxvZi4Hh1Bw0o
+         6EQQ1ZCx1HixJsUWk/17Ia8hBTHbuxTk3nycUGKe11bDkgH13ZfM3q8zpb2ddliVad65
+         iwoTD7kXuVsLzpvsoxuOOxR07/+mnEzPj2WdjMiq1Be3DFZKgSrnaEK26yNLfTKd0kpe
+         0nRE0A/PDDcrvO01iG7760ntn0DrTQ06S4auCnymkNYfW4DTWzLHTcLHlGRyXCUQIkmn
+         iFTIrLgDJZmZWYgmyCOUOjs54JjYTtweh5sLiTnX9gTiPPKMCSvEWjG9zRSH98Dc6OZ+
+         IQew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=gn61h7Xj;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=GBKwuY7n;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x126si2688192oix.53.2019.12.10.14.18.05
+        by mx.google.com with ESMTPS id r126si715280oig.36.2019.12.11.00.03.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 14:18:05 -0800 (PST)
+        Wed, 11 Dec 2019 00:03:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=gn61h7Xj;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=GBKwuY7n;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36632 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39708 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ienpU-0000BW-5v
-	for alex.bennee@linaro.org; Tue, 10 Dec 2019 17:18:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34091)
+	id 1iewxu-0002r2-Qu
+	for alex.bennee@linaro.org; Wed, 11 Dec 2019 03:03:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33058)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1ienp7-00009T-CV
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 17:17:42 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iewxl-0002qh-Cs
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2019 03:03:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1ienp6-00064a-G8
- for qemu-arm@nongnu.org; Tue, 10 Dec 2019 17:17:41 -0500
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24]:46001)
+ (envelope-from <guoheyi@huawei.com>) id 1iewxi-0001je-62
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2019 03:03:13 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2222 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1ienp6-00063i-Ap; Tue, 10 Dec 2019 17:17:40 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id 07B15ED3;
- Tue, 10 Dec 2019 17:17:38 -0500 (EST)
-Received: from imap2 ([10.202.2.52])
- by compute4.internal (MEProxy); Tue, 10 Dec 2019 17:17:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type:content-transfer-encoding; s=fm1; bh=3kGtz
- jp6D7Ka8D3pEkJj4zEeNC+L5CcFXQR/+ho4LW8=; b=gn61h7XjJ+L+CZjx1+Wtf
- khaU/OmeECCNZaZuWkHfmuhuW6SeZMF8CluM1xwV+29ttGJMEjXyn+yIS6U9NN0g
- m2rarxcxDZwx6P/aRq25+ieTGKrk4VsvaMwOMDq7C3bW2XYnH0J9okWMuL5oC3IV
- KHVlCoRIU+/KLwvJS0D1zQJMDlraP3q7rMGgfELjQuk6lb4vBUZLmPq049s0SOck
- OKYGYGMUvOJlmfJkkmerORjGWvGIwGAfF1hilcutXAtsZT8C0u5DhcX7j+bJlpyv
- YhbyjovObBd4l354iDu+0jom552crXsqVqpENBSo+b9DwuSUVWyLCKpL1lB+n0kX
- A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; bh=3kGtzjp6D7Ka8D3pEkJj4zEeNC+L5CcFXQR/+ho4L
- W8=; b=GBKwuY7ncsqFIc0lMp09ceJUEAC9nNLQl9QV4ic2xD3ADI/mu8P0jS+Cs
- A9rS8ByOdKKFTvT3FbcIfiIQ74NaQcSa6vuAPEM2/vlvJC7Kc8RL54WidcXsC+SH
- cyuhbriRAMTjAEMBpdJBX5PUJ/nflUzUUTy9a4A4E8fr9l/yTA0TR/nw1Nkm7f/4
- JLkx+2STDwE3hPuZwvSg7rDI+Mfnrqg7ZNOap06mdu0Zeel4VStY+vezl5uyArRF
- x+4EA2/0Lkle6RdMeMXKbazPKWN174vrRTc+7kUZrUB+VgqsVI7IEWUoojnrWQ6g
- Qg1/8RfA4Az5tr0LsS6GkgdTKNSLg==
-X-ME-Sender: <xms:ghnwXV39J3kQfVAeH3xRdkJqy_gzIdIC4EFQgoKF6r42Nn8HvajoBQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudelfedgudehlecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpefofgggkfgjfhffhffvufgtgfesthhqredtreerjeenucfhrhhomhepfdet
- nhgurhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecurf
- grrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghunecuvehluhhs
- thgvrhfuihiivgeptd
-X-ME-Proxy: <xmx:ghnwXWi9pO5FSTUZdq0kLU_RbJwnX2zfsN0WVobiivr8aCOyBcYGIQ>
- <xmx:ghnwXWVDWYtjiRZmr8tr2qXckh6y1Kq-C11JR7c3AXKlcH9jM46OCg>
- <xmx:ghnwXVAq83K8ssw-y_N0dYNwt-vH1FHTdo76kGPAFLAMGfQ9NmNrSg>
- <xmx:ghnwXcAFMzV2YRIKL9fk3mcx4lrLaCaidGJ232BWPR-71jTEdTvOcw>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 2E52EE00A5; Tue, 10 Dec 2019 17:17:38 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.1.7-679-g1f7ccac-fmstable-20191210v1
-Mime-Version: 1.0
-Message-Id: <94dbdf58-399b-49ca-b644-87f54795a7a1@www.fastmail.com>
-In-Reply-To: <378a875a-17c8-3b35-9753-2158e86c5412@kaod.org>
-References: <cover.da2612e7c1835c563b20851f0ac26c7b175428fc.1575938234.git-series.andrew@aj.id.au>
- <378a875a-17c8-3b35-9753-2158e86c5412@kaod.org>
-Date: Wed, 11 Dec 2019 08:49:16 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 0/2] hw/arm: ast2600: Wire up eMMC controller
-Content-Type: text/plain;charset=utf-8
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1iewxh-0001ND-OE; Wed, 11 Dec 2019 03:03:10 -0500
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 5F1A8C7F098378EFBC40;
+ Wed, 11 Dec 2019 16:02:56 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.439.0; Wed, 11 Dec 2019
+ 16:02:53 +0800
+Subject: Re: [PATCH v1 0/5] target/arm/kvm: Provide an option to adjust
+ virtual time
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>
+References: <20191016143410.5023-1-drjones@redhat.com>
+ <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <5679d43f-3f29-6ee1-0894-19ef2f3e08a2@huawei.com>
+Date: Wed, 11 Dec 2019 16:02:52 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8j8M_J8Ocdpms8a2XufigVQ6oB4JBy2BcYAkXfJX5y5A@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 64.147.123.24
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -121,27 +86,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- qemu-devel@nongnu.org
+Cc: Marc Zyngier <maz@kernel.org>, qemu-arm <qemu-arm@nongnu.org>, Richard
+ Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, bijan.mottahedeh@oracle.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 18gPY3yIL7XD
+X-TUID: H09XshQ3Z/DC
 
 
+=E5=9C=A8 2019/12/6 23:22, Peter Maydell =E5=86=99=E9=81=93:
+> On Wed, 16 Oct 2019 at 15:34, Andrew Jones <drjones@redhat.com> wrote:
+>> v2:
+>>   - move from RFC status to v1
+>>   - put kvm_arm_vm_state_change() in kvm.c to share among kvm32.c and =
+kvm64.c
+>>   - add r-b's from Richard
+>>
+>>
+>> This series is inspired by a series[1] posted by Bijan Mottahedeh abou=
+t
+>> a year ago.  The problem described in the cover letter of [1] is easil=
+y
+>> reproducible and some users would like to have the option to avoid it.
+>> However the solution, which is to adjust the virtual counter offset ea=
+ch
+>> time the VM transitions to the running state, introduces a different
+>> problem, which is that the virtual and physical counters diverge.  As
+>> described in the cover letter of [1] this divergence is easily observe=
+d
+>> when comparing the output of `date` and `hwclock` after suspending the
+>> guest, waiting a while, and then resuming it.  Because this different
+>> problem may actually be worse for some users, unlike [1], the series
+>> posted here makes the virtual counter offset adjustment optional and n=
+ot
+>> even enabled by default.  Besides the adjustment being optional, this
+>> series approaches the needed changes differently to apply them in more
+>> appropriate locations.  Finally, unlike [1], this series doesn't attem=
+pt
+>> to measure "pause time" itself.  Simply using QEMU_CLOCK_VIRTUAL, whic=
+h
+>> only ticks when the VM is not stopped, is sufficient.
+> So I guess my overall question is "what is the x86 solution to
+> this problem, and why is this all arm-specific?" It would also
+> be helpful to know how it fits into all the other proposals regarding
+> time in VMs.
 
-On Tue, 10 Dec 2019, at 19:23, C=C3=A9dric Le Goater wrote:
-> On 10/12/2019 01:52, Andrew Jeffery wrote:
-> > Hello,
-> >=20
-> > The AST2600 has an additional SDHCI intended for use as an eMMC boot=
- source.
->=20
-> Have you also considered booting the QEMU Aspeed AST2600 machine=20
-> from the eMMC device ?
->=20
+I also sent a RFC in March and ARM KVM experts were also invoved in the=20
+discussion:
 
-I hadn't got that far. I was surprised we hadn't yet wired up the eMMC c=
-ontroller at
-all, so I solved that problem first :)
+https://lists.cs.columbia.edu/pipermail/kvmarm/2019-March/035026.html
 
-Andrew
+According to the discussion, qemu on x86 is using KVM_KVMCLOCK_CTRL to=20
+request KVM to set a flag "PVCLOCK_GUEST_STOPPED" in pvclock, informing=20
+VM kernel about external force stop.
+
+Thanks,
+
+Heyi
+
+
+>
+> thanks
+> -- PMM
+>
+>
+

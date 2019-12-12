@@ -1,97 +1,145 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1016851lff;
-        Thu, 12 Dec 2019 10:26:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwVHoohW5aRHlxj2oPydrxEvqCkkCUSwySAPCj0Lnqs8bM2scYhXjN0MpycuO3wP7LCFejb
-X-Received: by 2002:ac8:4a02:: with SMTP id x2mr8791679qtq.388.1576175207441;
-        Thu, 12 Dec 2019 10:26:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576175207; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1030822lff;
+        Thu, 12 Dec 2019 10:37:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwudQbk0bWkcEdcrkjsTgJvZV7X6HaNvIfI9n94i7QN/EbPDB65a31YoiZrnnxT75039PJl
+X-Received: by 2002:aca:2109:: with SMTP id 9mr5551785oiz.119.1576175854682;
+        Thu, 12 Dec 2019 10:37:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576175854; cv=none;
         d=google.com; s=arc-20160816;
-        b=no3cXIdkxnBTUeL8gP7MRb0tLTbYzpbKJK3MvuKH6cX5T8lE1nx63mfq0gxshRw2O6
-         ceKmpXOEaJ46wNdOaF052pBGTNCX70SxLVlQmZUjYSANTceb+hEEWqxYQQ2uMxzFjpB/
-         FTgXZYL4Ovk80BCoCer8o2MpOd+jTKUzBw4+xCDKZC+ikXJzflOrjJBX8WiRKbrYlJiW
-         pPAUZS7PuSvk081g2tNUhU/igfQeANh8suE7NRPc3p0OmnAYV5i/bpxZgmVjl0MZcMV5
-         allxiQvVyoLSpq41dwP22lypxI7M3vimiRUjTFKj92ItvoJjSeqc/4HGiHHyU+kOIcvl
-         l+UA==
+        b=wqSkoTE/aetvdfmGDWu/KBe0JasDR5oHP3N84o8VMslaXCaPSVWfMBS68irmR84moI
+         g2WoxJPxKhJ2JAl9AfVDHfTbuWznLENv/0MdI6ZhpyjhwS5kSKQZZTBxmX8ZyRVjg88A
+         32OgibD7nrQjUxh+HIaGknNNKrHv43FJ0M8v70fZhLF1IIi56SPEyv0xJRz2obN3Kxgc
+         yNxPd/CvLWLYG1CZ8airj0QOCgFL7jAbHfudoozqR9qLQ8/HpY9K63lVg2I5Q7USs3L2
+         K1voVQeUo2xjBzyvzOHfv5pMOreNiauwd1Zg9qi/Uix3Nh81nW2PdbeWehQmGUqfhJxS
+         j63A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:autocrypt:from:references:to:subject
          :dkim-signature;
-        bh=p89rsIiZEknzKudPE9sULObTiNHU6cO6PEn+xslTix4=;
-        b=KJYjlJHUwdvNAXZUq55dnKQg3+Y8mmHvklopwxcACNU7iX6f3a3W3oxoIwZ2rx9O/L
-         1aG0PiujOx+kp7Mu59i5ib2duNAhJm6yopo/ju8+dwnQlfpeIT2cgC8yNNZyktm2SzaG
-         goDkQDWHbVhj6v+YFUNOTjVoY0AWuH3glALg/newl+j57+yJig1xStMZMEW8efthYHFj
-         hCkvSBcNnnKwXhSas5aNEFIJsGDlj3Ke8GCvtPz6lPZnzB5jBk7TdrN5AoIEn7qT8vaD
-         8ufykaGM+J84+uUjWf+kelY3tVoHXVCJZsqD27Ux1Gv8jkm5lM7JWx84vzNl+whsjWZD
-         kXgQ==
+        bh=qXuj2wlIvR0mV4LH44WrMCfAVVXJ4LZPzKVEVs84WzQ=;
+        b=mQHuLwAJGdYXrcp+c23AgDoyyHBQVeIerVQfEVGfWKv8Mnn4mKmIF9nLZCjjp6XIfq
+         z1SwQ7YZSG1bbyZbWo5tlsrqgDcygazBopybw+ThsB0Is3Nx8OAU6Cvwi+a0OK1J6GQT
+         658a3tKRh2rQKV785IgAO9wNlRrZva/DUWeXOjhMYTNoV0cx6AzzXInZMlztHWBrN4GO
+         hxffLLqVFghcxE5MWdHekPwDrREPXjBKWcZtHtfUHN8gDV0mDFSCqzAyUNMzFaTtBj1i
+         BFAlFi8gWx9BksfLvxim3GJAly+OEqhUp1zVJNhy2Fmu2o5QhsgHb/VFSIvkRznrB4KG
+         ZnZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P3ndChPy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SNmSXnVU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l14si3197459qtl.58.2019.12.12.10.26.47
+        by mx.google.com with ESMTPS id q12si3781008oic.195.2019.12.12.10.37.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 10:26:47 -0800 (PST)
+        Thu, 12 Dec 2019 10:37:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P3ndChPy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SNmSXnVU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35690 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35936 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifTAk-0004jS-AV
-	for alex.bennee@linaro.org; Thu, 12 Dec 2019 13:26:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46637)
+	id 1ifTLB-0001hM-8H
+	for alex.bennee@linaro.org; Thu, 12 Dec 2019 13:37:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38258)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1ifSLX-0002S0-Bp
- for qemu-devel@nongnu.org; Thu, 12 Dec 2019 12:33:52 -0500
+ (envelope-from <david@redhat.com>) id 1ifTC6-0007w1-HD
+ for qemu-devel@nongnu.org; Thu, 12 Dec 2019 13:28:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1ifSLV-0003Bz-Js
- for qemu-devel@nongnu.org; Thu, 12 Dec 2019 12:33:51 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:44550
+ (envelope-from <david@redhat.com>) id 1ifTC2-0003W6-SD
+ for qemu-devel@nongnu.org; Thu, 12 Dec 2019 13:28:07 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:52393
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1ifSLV-0003B5-Fj
- for qemu-devel@nongnu.org; Thu, 12 Dec 2019 12:33:49 -0500
+ (Exim 4.71) (envelope-from <david@redhat.com>) id 1ifTC2-0003V6-Ko
+ for qemu-devel@nongnu.org; Thu, 12 Dec 2019 13:28:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576172029;
+ s=mimecast20190719; t=1576175284;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=p89rsIiZEknzKudPE9sULObTiNHU6cO6PEn+xslTix4=;
- b=P3ndChPyKWPYAfk8sqWxdZZIHGwtkBIa5Jn7W87ojAm6K5f/aHODDCB5euJgDBeGpG+DBp
- GrY56Faclx4/Ub9UzgGCvknzoQYfY7EDKtt4pouVrOhLfKOgqPwQubPgMiiu3KX1hDv1KA
- p+cIf98MS1ozMkb7EC1s9FDhUsrqS6M=
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=qXuj2wlIvR0mV4LH44WrMCfAVVXJ4LZPzKVEVs84WzQ=;
+ b=SNmSXnVU+Sbf7hakt1GyqlCSyS+xxRdOm3cXxr6AOwswiaIAooNF/nREWo5D0MsNE2FkaO
+ KUI1S4q3XZ/IEBXf89nsWwMzWkcbD8lfBdHmMkHYAiZKFkeMhnZQ8thKQy14yLNcNCNR2I
+ C3P3pb9p4syh/g7u5nCOzVdSX4wXy7w=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-423-qCLQr4uSMVWCSCAc0HmYAg-1; Thu, 12 Dec 2019 12:33:46 -0500
+ us-mta-425-JPSbFPsHM42J2NFIiV00-Q-1; Thu, 12 Dec 2019 13:28:03 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4742418543A0;
- Thu, 12 Dec 2019 17:33:45 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7A2621C955;
- Thu, 12 Dec 2019 17:33:43 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [RFC PATCH v2 5/5] target/arm/cpu: Add the kvm-no-adjvtime CPU
- property
-Date: Thu, 12 Dec 2019 18:33:20 +0100
-Message-Id: <20191212173320.11610-6-drjones@redhat.com>
-In-Reply-To: <20191212173320.11610-1-drjones@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EB98C100551B;
+ Thu, 12 Dec 2019 18:28:00 +0000 (UTC)
+Received: from [10.36.117.65] (ovpn-117-65.ams2.redhat.com [10.36.117.65])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2CEA019C4F;
+ Thu, 12 Dec 2019 18:27:54 +0000 (UTC)
+Subject: Re: [RFC PATCH v2 1/5] hw: add compat machines for 5.0
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
 References: <20191212173320.11610-1-drjones@redhat.com>
+ <20191212173320.11610-2-drjones@redhat.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat GmbH
+Message-ID: <15037e94-0c85-63f2-e505-fb2c186a1565@redhat.com>
+Date: Thu, 12 Dec 2019 19:27:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
+In-Reply-To: <20191212173320.11610-2-drjones@redhat.com>
+Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: qCLQr4uSMVWCSCAc0HmYAg-1
+X-MC-Unique: JPSbFPsHM42J2NFIiV00-Q-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.81
@@ -106,268 +154,69 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org,
- richard.henderson@linaro.org, guoheyi@huawei.com, msys.mizuma@gmail.com
+Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com,
+ "Michael S. Tsirkin" <mst@redhat.com>, maz@kernel.org,
+ Richard Henderson <rth@twiddle.net>, Cornelia Huck <cohuck@redhat.com>,
+ richard.henderson@linaro.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>,
+ "open list:sPAPR" <qemu-ppc@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>, guoheyi@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>, msys.mizuma@gmail.com,
+ Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B1c6dfkXfLBE
+X-TUID: gfhiMUqvoszT
 
-kvm-no-adjvtime is a KVM specific CPU property and a first of its kind.
-To accommodate it we also add kvm_arm_add_vcpu_properties() and a
-KVM specific CPU properties description to the CPU features document.
+On 12.12.19 18:33, Andrew Jones wrote:
+> Add 5.0 machine types for arm/i440fx/q35/s390x/spapr.
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> 
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- docs/arm-cpu-features.rst | 31 ++++++++++++++++++++++++++++++-
- hw/arm/virt.c             |  8 ++++++++
- include/hw/arm/virt.h     |  1 +
- target/arm/cpu.c          |  2 ++
- target/arm/cpu64.c        |  1 +
- target/arm/kvm.c          | 28 ++++++++++++++++++++++++++++
- target/arm/kvm_arm.h      | 11 +++++++++++
- target/arm/monitor.c      |  1 +
- tests/arm-cpu-features.c  |  4 ++++
- 9 files changed, 86 insertions(+), 1 deletion(-)
+[...]
 
-diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
-index 1b367e22e16e..641ec9cb8f4a 100644
---- a/docs/arm-cpu-features.rst
-+++ b/docs/arm-cpu-features.rst
-@@ -31,7 +31,9 @@ supporting the feature or only supporting the feature und=
-er certain
- configurations.  For example, the `aarch64` CPU feature, which, when
- disabled, enables the optional AArch32 CPU feature, is only supported
- when using the KVM accelerator and when running on a host CPU type that
--supports the feature.
-+supports the feature.  While `aarch64` currently only works with KVM,
-+it could work with TCG.  CPU features that are specific to KVM are
-+prefixed with "kvm-" and are described in "KVM VCPU Features".
-=20
- CPU Feature Probing
- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-@@ -171,6 +173,33 @@ disabling many SVE vector lengths would be quite verbo=
-se, the `sve<N>` CPU
- properties have special semantics (see "SVE CPU Property Parsing
- Semantics").
-=20
-+KVM VCPU Features
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-+
-+KVM VCPU features are CPU features that are specific to KVM, such as
-+paravirt features or features that enable CPU virtualization extensions.
-+The features' CPU properties are only available when KVM is enabled and
-+are named with the prefix "kvm-".  KVM VCPU features may be probed,
-+enabled, and disabled in the same way as other CPU features.  Below is the
-+list of KVM VCPU features and their descriptions.
-+
-+  kvm-no-adjvtime          When disabled, each time the VM transitions
-+                           back to running state from the paused state the
-+                           VCPU's vitual counter is updated to ensure the
-+                           stopped time is not counted.  This avoids time
-+                           jumps surprising guest OSes and applications,
-+                           as long as they use the virtual counter for
-+                           timekeeping, but has the side effect of the
-+                           virtual and physical counters diverging.  All
-+                           timekeeping based on the virtual counter will
-+                           appear to lag behind any timekeeping that does
-+                           not subtract VM stopped time.  The guest may
-+                           resynchronize its virtual counter with other
-+                           time sources as needed.  Enabling this KVM VCPU
-+                           feature provides the legacy behavior, which is
-+                           to also count stopped time with the virtual
-+                           counter.
-+
- SVE CPU Properties
- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-=20
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index cb7041e9677a..e9a08eb883bf 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1664,6 +1664,11 @@ static void machvirt_init(MachineState *machine)
-             }
-         }
-=20
-+        if (vmc->kvm_no_adjvtime &&
-+            object_property_find(cpuobj, "kvm-no-adjvtime", NULL)) {
-+            object_property_set_bool(cpuobj, true, "kvm-no-adjvtime", NULL=
-);
-+        }
-+
-         if (vmc->no_pmu && object_property_find(cpuobj, "pmu", NULL)) {
-             object_property_set_bool(cpuobj, false, "pmu", NULL);
-         }
-@@ -2154,8 +2159,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
-=20
- static void virt_machine_4_2_options(MachineClass *mc)
- {
-+    VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-+
-     virt_machine_5_0_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
-+    vmc->kvm_no_adjvtime =3D true;
- }
- DEFINE_VIRT_MACHINE(4, 2)
-=20
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 0b41083e9d5c..80e00161b8f2 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -109,6 +109,7 @@ typedef struct {
-     bool smbios_old_sys_ver;
-     bool no_highmem_ecam;
-     bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
-+    bool kvm_no_adjvtime;
- } VirtMachineClass;
-=20
- typedef struct {
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 7a4ac9339bf9..53c73c25a67f 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2482,6 +2482,7 @@ static void arm_max_initfn(Object *obj)
-=20
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
-+        kvm_arm_add_vcpu_properties(obj);
-     } else {
-         cortex_a15_initfn(obj);
-=20
-@@ -2673,6 +2674,7 @@ static void arm_host_initfn(Object *obj)
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         aarch64_add_sve_properties(obj);
-     }
-+    kvm_arm_add_vcpu_properties(obj);
-     arm_cpu_post_init(obj);
- }
-=20
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index a39d6fcea34f..3cd416db8089 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -605,6 +605,7 @@ static void aarch64_max_initfn(Object *obj)
-=20
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
-+        kvm_arm_add_vcpu_properties(obj);
-     } else {
-         uint64_t t;
-         uint32_t u;
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index a55fe7d7aefd..7666b250ab96 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -17,6 +17,8 @@
- #include "qemu/timer.h"
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
-+#include "qom/object.h"
-+#include "qapi/error.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/kvm.h"
- #include "sysemu/kvm_int.h"
-@@ -179,6 +181,32 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-     env->features =3D arm_host_cpu_features.features;
- }
-=20
-+static bool kvm_no_adjvtime_get(Object *obj, Error **errp)
-+{
-+    return !ARM_CPU(obj)->kvm_adjvtime;
-+}
-+
-+static void kvm_no_adjvtime_set(Object *obj, bool value, Error **errp)
-+{
-+    ARM_CPU(obj)->kvm_adjvtime =3D !value;
-+}
-+
-+/* KVM VCPU properties should be prefixed with "kvm-". */
-+void kvm_arm_add_vcpu_properties(Object *obj)
-+{
-+    if (!kvm_enabled()) {
-+        return;
-+    }
-+
-+    ARM_CPU(obj)->kvm_adjvtime =3D true;
-+    object_property_add_bool(obj, "kvm-no-adjvtime", kvm_no_adjvtime_get,
-+                             kvm_no_adjvtime_set, &error_abort);
-+    object_property_set_description(obj, "kvm-no-adjvtime",
-+                                    "Set on to disable the adjustment of "
-+                                    "the virtual counter. VM stopped time =
-"
-+                                    "will be counted.", &error_abort);
-+}
-+
- bool kvm_arm_pmu_supported(CPUState *cpu)
- {
-     KVMState *s =3D KVM_STATE(current_machine->accelerator);
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 16b53e45377d..7d76f26beaca 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -232,6 +232,15 @@ void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *=
-map);
-  */
- void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
-=20
-+/**
-+ * void kvm_arm_add_vcpu_properties:
-+ * @obj: The CPU object to add the properties to
-+ *
-+ * Add all KVM specific CPU properties to the CPU object. These
-+ * are the CPU properties with "kvm-" prefixed names.
-+ */
-+void kvm_arm_add_vcpu_properties(Object *obj);
-+
- /**
-  * void kvm_arm_get_virtual_time:
-  * @cs: CPUState
-@@ -319,6 +328,8 @@ static inline void kvm_arm_set_cpu_features_from_host(A=
-RMCPU *cpu)
-     cpu->host_cpu_probe_failed =3D true;
- }
-=20
-+static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
-+
- static inline bool kvm_arm_aarch32_supported(CPUState *cs)
- {
-     return false;
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index fa054f8a369c..9725dfff16d4 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -103,6 +103,7 @@ static const char *cpu_model_advertised_features[] =3D =
-{
-     "sve128", "sve256", "sve384", "sve512",
-     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
-     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
-+    "kvm-no-adjvtime",
-     NULL
- };
-=20
-diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-index 06ed05e934e6..738e49447377 100644
---- a/tests/arm-cpu-features.c
-+++ b/tests/arm-cpu-features.c
-@@ -435,6 +435,8 @@ static void test_query_cpu_model_expansion(const void *=
-data)
-     assert_has_feature_enabled(qts, "cortex-a15", "pmu");
-     assert_has_not_feature(qts, "cortex-a15", "aarch64");
-=20
-+    assert_has_not_feature(qts, "max", "kvm-no-adjvtime");
-+
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         assert_has_feature_enabled(qts, "max", "aarch64");
-         assert_has_feature_enabled(qts, "max", "sve");
-@@ -469,6 +471,8 @@ static void test_query_cpu_model_expansion_kvm(const vo=
-id *data)
-         return;
-     }
-=20
-+    assert_has_feature_disabled(qts, "host", "kvm-no-adjvtime");
-+
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         bool kvm_supports_sve;
-         char max_name[8], name[8];
---=20
-2.21.0
+>  /*
+>   * pseries-4.1
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index d3edeef0ad92..a40f79e20733 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -639,14 +639,27 @@ bool css_migration_enabled(void)
+>      }                                                                         \
+>      type_init(ccw_machine_register_##suffix)
+>  
+> +
+> +static void ccw_machine_5_0_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_5_0_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(5_0, "5.0", true);
+> +
+>  static void ccw_machine_4_2_instance_options(MachineState *machine)
+>  {
+> +    ccw_machine_5_0_instance_options(machine);
+>  }
+>  
+>  static void ccw_machine_4_2_class_options(MachineClass *mc)
+>  {
+> +    ccw_machine_5_0_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+>  }
+> -DEFINE_CCW_MACHINE(4_2, "4.2", true);
+> +DEFINE_CCW_MACHINE(4_2, "4.2", false);
+>  
+
+
+s390x parts LGTM
+
+Reviewed-by: David Hildenbrand <david@redhat.com>
+
+-- 
+Thanks,
+
+David / dhildenb
 

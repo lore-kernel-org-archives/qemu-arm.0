@@ -1,222 +1,147 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1030822lff;
-        Thu, 12 Dec 2019 10:37:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwudQbk0bWkcEdcrkjsTgJvZV7X6HaNvIfI9n94i7QN/EbPDB65a31YoiZrnnxT75039PJl
-X-Received: by 2002:aca:2109:: with SMTP id 9mr5551785oiz.119.1576175854682;
-        Thu, 12 Dec 2019 10:37:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576175854; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1084814lff;
+        Thu, 12 Dec 2019 11:24:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy/aM4Tou8M4mrdrH/7ru5HM+679VwfxWdk0aLpwA4OuMEjJYXZJopq+Ny+MHtazVz+9dL2
+X-Received: by 2002:ae9:e887:: with SMTP id a129mr9494054qkg.465.1576178684502;
+        Thu, 12 Dec 2019 11:24:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576178684; cv=none;
         d=google.com; s=arc-20160816;
-        b=wqSkoTE/aetvdfmGDWu/KBe0JasDR5oHP3N84o8VMslaXCaPSVWfMBS68irmR84moI
-         g2WoxJPxKhJ2JAl9AfVDHfTbuWznLENv/0MdI6ZhpyjhwS5kSKQZZTBxmX8ZyRVjg88A
-         32OgibD7nrQjUxh+HIaGknNNKrHv43FJ0M8v70fZhLF1IIi56SPEyv0xJRz2obN3Kxgc
-         yNxPd/CvLWLYG1CZ8airj0QOCgFL7jAbHfudoozqR9qLQ8/HpY9K63lVg2I5Q7USs3L2
-         K1voVQeUo2xjBzyvzOHfv5pMOreNiauwd1Zg9qi/Uix3Nh81nW2PdbeWehQmGUqfhJxS
-         j63A==
+        b=c8IDgunrT5B8AiZQkoPoVrBYl+hUk8LcPBg8zgL8OBzX5b2gm1TERvOmJpuDoF9k8f
+         VYSfkalV6U6ZXdMC+2OVl0USsfuOTDc2OwRqk4HoJMuD1XZDUdbplHwxiZTrhSi0kRlA
+         YPUrbafUDXw1XZ1444QjnA0GNCgsXCrgJvxkv46BkqoMCw7e6Qdpfq17IxsmiUH6DZAL
+         MWL5g7YzcnfW5Fp9f8vHhRxlzjcvM+AXZXYpzjgH246o+qppg5PbGeMbvFzc9aVOVe3j
+         d7oN/Dgl8GoV+AnMRX1l411Ra4Pg31WJEscsYM1yAltpt66IVu9JHvDg7de5RyrzTulT
+         ayew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:to:subject
-         :dkim-signature;
-        bh=qXuj2wlIvR0mV4LH44WrMCfAVVXJ4LZPzKVEVs84WzQ=;
-        b=mQHuLwAJGdYXrcp+c23AgDoyyHBQVeIerVQfEVGfWKv8Mnn4mKmIF9nLZCjjp6XIfq
-         z1SwQ7YZSG1bbyZbWo5tlsrqgDcygazBopybw+ThsB0Is3Nx8OAU6Cvwi+a0OK1J6GQT
-         658a3tKRh2rQKV785IgAO9wNlRrZva/DUWeXOjhMYTNoV0cx6AzzXInZMlztHWBrN4GO
-         hxffLLqVFghcxE5MWdHekPwDrREPXjBKWcZtHtfUHN8gDV0mDFSCqzAyUNMzFaTtBj1i
-         BFAlFi8gWx9BksfLvxim3GJAly+OEqhUp1zVJNhy2Fmu2o5QhsgHb/VFSIvkRznrB4KG
-         ZnZw==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=ZaMMktr1w2w1L85b8GArQ5TfvVL+4OikUsN0TdF5oAs=;
+        b=pPhmK5HEMr3LqStNt8gGQ3llTRNPWWmohpcmV09RLz4/3l2Ko0ESBa/IhK5kbeordM
+         WPlYHz9QRsYdscgRr6DSQecuHQcGt+H0ubjPZrERINqQi9iiYbDdGbnXmropn24aU+8p
+         VRiugowWhyzyRELKOBQkJpMZf0FVZflq9HehOF6ov4ygP+onKyxUzZ47QP9zslpvCYxa
+         GtljGLFZuWgPGpdVWVP4QXzhUrvziqtNnbd5dsfsZ2kyjcXLMgDiejgDnyfBbkYZGdTj
+         rkfONFgl5rfpXSMiq2pjqqeAG1o544/CXtM6F0jlAk6Hr/lAdwfHmsieHeZTPSDIypNq
+         C3dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SNmSXnVU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LuHjU8Y5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si3781008oic.195.2019.12.12.10.37.34
+        by mx.google.com with ESMTPS id p7si3447125qtq.61.2019.12.12.11.24.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 10:37:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Dec 2019 11:24:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SNmSXnVU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LuHjU8Y5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35936 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36512 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifTLB-0001hM-8H
-	for alex.bennee@linaro.org; Thu, 12 Dec 2019 13:37:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38258)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ifU4p-0001dd-JR
+	for alex.bennee@linaro.org; Thu, 12 Dec 2019 14:24:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51494)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <david@redhat.com>) id 1ifTC6-0007w1-HD
- for qemu-devel@nongnu.org; Thu, 12 Dec 2019 13:28:11 -0500
+ (envelope-from <ehabkost@redhat.com>) id 1ifU4g-0001dB-PV
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 14:24:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <david@redhat.com>) id 1ifTC2-0003W6-SD
- for qemu-devel@nongnu.org; Thu, 12 Dec 2019 13:28:07 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:52393
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <ehabkost@redhat.com>) id 1ifU4e-0006ij-98
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 14:24:33 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:31333
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <david@redhat.com>) id 1ifTC2-0003V6-Ko
- for qemu-devel@nongnu.org; Thu, 12 Dec 2019 13:28:06 -0500
+ (Exim 4.71) (envelope-from <ehabkost@redhat.com>) id 1ifU4d-0006dk-Rl
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 14:24:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576175284;
+ s=mimecast20190719; t=1576178670;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=qXuj2wlIvR0mV4LH44WrMCfAVVXJ4LZPzKVEVs84WzQ=;
- b=SNmSXnVU+Sbf7hakt1GyqlCSyS+xxRdOm3cXxr6AOwswiaIAooNF/nREWo5D0MsNE2FkaO
- KUI1S4q3XZ/IEBXf89nsWwMzWkcbD8lfBdHmMkHYAiZKFkeMhnZQ8thKQy14yLNcNCNR2I
- C3P3pb9p4syh/g7u5nCOzVdSX4wXy7w=
+ in-reply-to:in-reply-to:references:references;
+ bh=ZaMMktr1w2w1L85b8GArQ5TfvVL+4OikUsN0TdF5oAs=;
+ b=LuHjU8Y5awuDv8JgMVQZ/IooMITjbGENlYgRxy29cAKMJnxcUon5E2s3wZhkqiwxO0934D
+ NfsPdmqd0KXA5hB5sEJ9IOKyG8tnnZvpHujeXvFgmjjh4/kf0Bak2t4kKbEB+gGLc+Ekk/
+ ibwt7nxRy4c46/t1ekJHgrWiClVub9k=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-425-JPSbFPsHM42J2NFIiV00-Q-1; Thu, 12 Dec 2019 13:28:03 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-183-s7sOpm61NjuN6GKZbrLnhw-1; Thu, 12 Dec 2019 14:24:28 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EB98C100551B;
- Thu, 12 Dec 2019 18:28:00 +0000 (UTC)
-Received: from [10.36.117.65] (ovpn-117-65.ams2.redhat.com [10.36.117.65])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2CEA019C4F;
- Thu, 12 Dec 2019 18:27:54 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EACB61005502;
+ Thu, 12 Dec 2019 19:24:25 +0000 (UTC)
+Received: from localhost (ovpn-116-90.gru2.redhat.com [10.97.116.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7E6E260BB9;
+ Thu, 12 Dec 2019 19:24:20 +0000 (UTC)
+Date: Thu, 12 Dec 2019 16:24:19 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
 Subject: Re: [RFC PATCH v2 1/5] hw: add compat machines for 5.0
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
+Message-ID: <20191212192419.GB498046@habkost.net>
 References: <20191212173320.11610-1-drjones@redhat.com>
  <20191212173320.11610-2-drjones@redhat.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <15037e94-0c85-63f2-e505-fb2c186a1565@redhat.com>
-Date: Thu, 12 Dec 2019 19:27:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
 MIME-Version: 1.0
 In-Reply-To: <20191212173320.11610-2-drjones@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: JPSbFPsHM42J2NFIiV00-Q-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: s7sOpm61NjuN6GKZbrLnhw-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com,
- "Michael S. Tsirkin" <mst@redhat.com>, maz@kernel.org,
- Richard Henderson <rth@twiddle.net>, Cornelia Huck <cohuck@redhat.com>,
- richard.henderson@linaro.org, Halil Pasic <pasic@linux.ibm.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Cornelia Huck <cohuck@redhat.com>,
+ bijan.mottahedeh@oracle.com, "Michael S. Tsirkin" <mst@redhat.com>,
+ maz@kernel.org, David Hildenbrand <david@redhat.com>,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>, qemu-arm@nongnu.org,
  "open list:sPAPR" <qemu-ppc@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>, guoheyi@huawei.com,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, guoheyi@huawei.com,
  Paolo Bonzini <pbonzini@redhat.com>, msys.mizuma@gmail.com,
- Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gfhiMUqvoszT
+ Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0B1hkb64KGkc
 
-On 12.12.19 18:33, Andrew Jones wrote:
+On Thu, Dec 12, 2019 at 06:33:16PM +0100, Andrew Jones wrote:
 > Add 5.0 machine types for arm/i440fx/q35/s390x/spapr.
-> 
+>=20
 > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> 
+>=20
+> ---
+>=20
+> Hi Eduardo,
+>=20
+> If we need to do something special for i440fx and q35, as
+> 9aec2e52ce9d ("hw: add compat machines for 4.2") implies, then
+> I'll need guidance as to what.
 
-[...]
+Keeping default_cpu_version=3D=3D1 in pc-*-5.0 (like you did) is
+correct.
 
->  /*
->   * pseries-4.1
-> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-> index d3edeef0ad92..a40f79e20733 100644
-> --- a/hw/s390x/s390-virtio-ccw.c
-> +++ b/hw/s390x/s390-virtio-ccw.c
-> @@ -639,14 +639,27 @@ bool css_migration_enabled(void)
->      }                                                                         \
->      type_init(ccw_machine_register_##suffix)
->  
-> +
-> +static void ccw_machine_5_0_instance_options(MachineState *machine)
-> +{
-> +}
-> +
-> +static void ccw_machine_5_0_class_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_CCW_MACHINE(5_0, "5.0", true);
-> +
->  static void ccw_machine_4_2_instance_options(MachineState *machine)
->  {
-> +    ccw_machine_5_0_instance_options(machine);
->  }
->  
->  static void ccw_machine_4_2_class_options(MachineClass *mc)
->  {
-> +    ccw_machine_5_0_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
->  }
-> -DEFINE_CCW_MACHINE(4_2, "4.2", true);
-> +DEFINE_CCW_MACHINE(4_2, "4.2", false);
->  
+However, you might want to use Cornelia's patch (which is
+probably already queued in the s390 tree) instead:
+https://patchew.org/QEMU/20191112104811.30323-1-cohuck@redhat.com
 
-
-s390x parts LGTM
-
-Reviewed-by: David Hildenbrand <david@redhat.com>
-
--- 
-Thanks,
-
-David / dhildenb
+--=20
+Eduardo
 

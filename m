@@ -1,136 +1,130 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id n3sm5492409wrs.8.2019.12.12.03.47.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Dec 2019 03:47:46 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 097061FF87;
-	Thu, 12 Dec 2019 11:47:46 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2] target/arm: ensure we use current exception state after SCR update
-Date: Thu, 12 Dec 2019 11:47:34 +0000
-Message-Id: <20191212114734.6962-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp717592lff;
+        Thu, 12 Dec 2019 06:36:42 -0800 (PST)
+X-Received: by 2002:a17:902:6b4b:: with SMTP id g11mr9799454plt.196.1576161402254;
+        Thu, 12 Dec 2019 06:36:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576161402; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vrlKHHjwWZVBDaviiecaQhvEgbKEdg0300M5hPjL5fly9EUoAIJHfEgaPmaC0Suy/5
+         d5zvDDx08rbb4H5W8WOK8TZ9rbjlpN88fJ69mmBN7MGrkSN6Nb1rb22vHIK7vfS8HUdO
+         cdPh10xeFBv+NtsiZ70eL1qveUX57gHvakedetI7BmSbOjluULLKLg/+/zV+b3PZn2Oy
+         X9A/wwgCZJHzfLlAWcT148LpPv03Uc8DFV7UUi0xBhxh+OlhBHxbyc9eRIzud0ALVolv
+         g6CcInmsPY+A+Ilpi4CA0R664IjO76RcoM/bORi6/ndnAjLmRM8TXzScARR26bosihdC
+         Es4Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=4I97tvfKMitrkdF5Fr4FiNCpy5zuXp19tZu9yklSAnE=;
+        b=HsUsX38RUQZANBxZxcCYnbFQdWZPkCa4lsxm/2sZMeiPa+ek+iqRopindJs0qPvZNk
+         v/sr9Gayq0RuDTYeovfIBoUaNCsc0AHgx7mHReyRpd3jVFUDGeC4iCynrxZXH4WFy/7x
+         KghvaToiJgmFlhF7syTpKSqfXfKmE2siyksj+G46GthmWb3mMrSQN6BklW38/zCkezx9
+         zuO57bzFDUDkNVT3ItY1G7xMlQ40fs29E1mAc/KI75pVH3zo/UWAuaIQ+TKtimKvH+rC
+         7R0M4y8dfxnBmWpGWxMOdxPHBWthnNK//o9DMcRS2Qq1hhDWla/kN7hs0rAu0x0KxCmD
+         iBgA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RRSwl4xe;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id bg14sor6821030pjb.24.2019.12.12.06.36.42
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 12 Dec 2019 06:36:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RRSwl4xe;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=4I97tvfKMitrkdF5Fr4FiNCpy5zuXp19tZu9yklSAnE=;
+        b=RRSwl4xerrREgUaHPFRGjdEwLZkWmMs/7lhrhHm9aK3lT3xF97ub4nfb2uRMwGB6Ro
+         IBUzG5MPZesDWl7qqgHkQGGifBxYUnGzJjSqQ9dsfmaPAVMN3F37hip/ZExT35+X0JND
+         Y5GhaITJjSIAbEixIOgPTLh4KZ5fSOVucxLDX8P1OBB47kGBFUBpr0u4rpgkRa1pwKwP
+         AcIiBhPbH9jM+A0VOs4X96j4vz55KJcmuWt5d8UDHZu4+QUs1HcnYHPE4KJ4SsdlSaUO
+         RXeJo4kGi8VbbQeAgP2LCGO7nGlMcpkNEywDOLHcsNLWOQfJYUU2zx7b8MW78m+lVjd7
+         UDsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=4I97tvfKMitrkdF5Fr4FiNCpy5zuXp19tZu9yklSAnE=;
+        b=IwdQmWW+k89gjlSFF5116d4fBJggfUEfnQJtPkGZFUxGGopvDHodCWM0w78sO3uijA
+         2nOiRE4lfuyVE+Sw4Ev34v+6XNeamR8g0hwV9oEvrBDbhewNra5jxouNh271J9bSOIjI
+         1y7VfK3nnKLzHwwI4tX+qVDLItOCIxrdhuDb1YWCmD0fOZ7T/k0RB9f+dHk0cdcDjcle
+         wi2lP4aavfD2Y5WTVBSo3+WOvhiYiCph1PmXbWR/ltGOLteZfB2MXME1udBVlMZbj5Kv
+         izy0wRoD4xSGCrjnBYB8VNL2x+PD3NjXV1w2vqFMY9e8qggRuL1juVlR+8Rs+F4vM73F
+         0OWA==
+X-Gm-Message-State: APjAAAUY4xuuy1gL1VTCHfljR/Z4D0qVOdfBv8jBmyJDxg5OT4V3peYw
+	Cw4hkdbLtrMfTdyOSMUCOiVTPcFbjiD3bg==
+X-Google-Smtp-Source: APXvYqxxo1ASiEzsNJ9CH27e7rE/AOGr3L8o63vdY9YD+vKSoO5S2to2ES5hdun0/P2lgx5GjCpGeQ==
+X-Received: by 2002:a17:90a:e4f:: with SMTP id p15mr10084854pja.90.1576161401735;
+        Thu, 12 Dec 2019 06:36:41 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id k6sm7329224pfi.119.2019.12.12.06.36.40
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Dec 2019 06:36:41 -0800 (PST)
+Subject: Re: [PATCH v2] target/arm: ensure we use current exception state
+ after SCR update
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <20191212114734.6962-1-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <ef020327-44a6-0267-2048-9feef99c1de8@linaro.org>
+Date: Thu, 12 Dec 2019 06:36:39 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20191212114734.6962-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: pORXngyLg5fo
+X-TUID: RqxSKbrqI8Qv
 
-A write to the SCR can change the effective EL by droppping the system
-from secure to non-secure mode. However if we use a cached current_el
-from before the change we'll rebuild the flags incorrectly. To fix
-this we introduce the ARM_CP_NEWEL CP flag to indicate the new EL
-should be used when recomputing the flags.
+On 12/12/19 3:47 AM, Alex Bennée wrote:
+> A write to the SCR can change the effective EL by droppping the system
+> from secure to non-secure mode. However if we use a cached current_el
+> from before the change we'll rebuild the flags incorrectly. To fix
+> this we introduce the ARM_CP_NEWEL CP flag to indicate the new EL
+> should be used when recomputing the flags.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Message-Id: <20191209143723.6368-1-alex.bennee@linaro.org>
+> 
+> ---
+> v2
+>   - don't override a ARM_CP_SPECIAL, use a new flag
+> ---
+>  target/arm/cpu.h       |  8 ++++++--
+>  target/arm/helper.h    |  1 +
+>  target/arm/helper.c    | 14 +++++++++++++-
+>  target/arm/translate.c |  6 +++++-
+>  4 files changed, 25 insertions(+), 4 deletions(-)
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20191209143723.6368-1-alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
----
-v2
-  - don't override a ARM_CP_SPECIAL, use a new flag
----
- target/arm/cpu.h       |  8 ++++++--
- target/arm/helper.h    |  1 +
- target/arm/helper.c    | 14 +++++++++++++-
- target/arm/translate.c |  6 +++++-
- 4 files changed, 25 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 83a809d4bac..c3ab47d8962 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2238,6 +2238,9 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
-  * RAISES_EXC is for when the read or write hook might raise an exception;
-  * the generated code will synchronize the CPU state before calling the hook
-  * so that it is safe for the hook to call raise_exception().
-+ * NEWEL is for writes to registers that might change the exception
-+ * level - typically on older ARM chips. For those cases we need to
-+ * re-read the new el when recomputing the translation flags.
-  */
- #define ARM_CP_SPECIAL           0x0001
- #define ARM_CP_CONST             0x0002
-@@ -2257,10 +2260,11 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
- #define ARM_CP_SVE               0x2000
- #define ARM_CP_NO_GDB            0x4000
- #define ARM_CP_RAISES_EXC        0x8000
-+#define ARM_CP_NEWEL             0x10000
- /* Used only as a terminator for ARMCPRegInfo lists */
--#define ARM_CP_SENTINEL          0xffff
-+#define ARM_CP_SENTINEL          0xfffff
- /* Mask of only the flag bits in a type field */
--#define ARM_CP_FLAG_MASK         0xf0ff
-+#define ARM_CP_FLAG_MASK         0x1f0ff
- 
- /* Valid values for ARMCPRegInfo state field, indicating which of
-  * the AArch32 and AArch64 execution states this register is visible in.
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 3d4ec267a2c..e345bdb726a 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -91,6 +91,7 @@ DEF_HELPER_2(get_user_reg, i32, env, i32)
- DEF_HELPER_3(set_user_reg, void, env, i32, i32)
- 
- DEF_HELPER_FLAGS_2(rebuild_hflags_m32, TCG_CALL_NO_RWG, void, env, int)
-+DEF_HELPER_FLAGS_1(rebuild_hflags_a32_newel, TCG_CALL_NO_RWG, void, env)
- DEF_HELPER_FLAGS_2(rebuild_hflags_a32, TCG_CALL_NO_RWG, void, env, int)
- DEF_HELPER_FLAGS_2(rebuild_hflags_a64, TCG_CALL_NO_RWG, void, env, int)
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0bf8f53d4b8..b92ef9d1905 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5096,7 +5096,7 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 0,
-       .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.scr_el3),
-       .resetvalue = 0, .writefn = scr_write },
--    { .name = "SCR",  .type = ARM_CP_ALIAS,
-+    { .name = "SCR",  .type = ARM_CP_ALIAS | ARM_CP_NEWEL,
-       .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
-       .fieldoffset = offsetoflow32(CPUARMState, cp15.scr_el3),
-@@ -11332,6 +11332,18 @@ void HELPER(rebuild_hflags_m32)(CPUARMState *env, int el)
-     env->hflags = rebuild_hflags_m32(env, fp_el, mmu_idx);
- }
- 
-+/*
-+ * If we have triggered a EL state change we can't rely on the
-+ * translator having passed it too us, we need to recompute.
-+ */
-+void HELPER(rebuild_hflags_a32_newel)(CPUARMState *env)
-+{
-+    int el = arm_current_el(env);
-+    int fp_el = fp_exception_el(env, el);
-+    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
-+    env->hflags = rebuild_hflags_a32(env, fp_el, mmu_idx);
-+}
-+
- void HELPER(rebuild_hflags_a32)(CPUARMState *env, int el)
- {
-     int fp_el = fp_exception_el(env, el);
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 4d5d4bd8886..83aa331b1ec 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -7083,7 +7083,11 @@ static int disas_coproc_insn(DisasContext *s, uint32_t insn)
-             if (arm_dc_feature(s, ARM_FEATURE_M)) {
-                 gen_helper_rebuild_hflags_m32(cpu_env, tcg_el);
-             } else {
--                gen_helper_rebuild_hflags_a32(cpu_env, tcg_el);
-+                if (ri->type & ARM_CP_NEWEL) {
-+                    gen_helper_rebuild_hflags_a32_newel(cpu_env);
-+                } else {
-+                    gen_helper_rebuild_hflags_a32(cpu_env, tcg_el);
-+                }
-             }
-             tcg_temp_free_i32(tcg_el);
-             /*
--- 
-2.20.1
+>              if (arm_dc_feature(s, ARM_FEATURE_M)) {
+>                  gen_helper_rebuild_hflags_m32(cpu_env, tcg_el);
+>              } else {
+> -                gen_helper_rebuild_hflags_a32(cpu_env, tcg_el);
+> +                if (ri->type & ARM_CP_NEWEL) {
+> +                    gen_helper_rebuild_hflags_a32_newel(cpu_env);
+> +                } else {
+> +                    gen_helper_rebuild_hflags_a32(cpu_env, tcg_el);
+> +                }
+>              }
+
+If you tweak this again, an else if would be appropriate.
+
+
+r~

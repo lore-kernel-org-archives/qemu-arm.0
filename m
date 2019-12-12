@@ -1,233 +1,111 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp281538lff;
-        Tue, 10 Dec 2019 23:58:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzBXBZuiVYhxkbvVjuDNau5ATWP/Mlj6xVUS0p0jvvqZWqYJWKmA9aLrs8t0gUFR4Zq1KJB
-X-Received: by 2002:a05:6830:124b:: with SMTP id s11mr1273196otp.333.1576051136642;
-        Tue, 10 Dec 2019 23:58:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576051136; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1383780lff;
+        Wed, 11 Dec 2019 16:31:37 -0800 (PST)
+X-Received: by 2002:a62:ee06:: with SMTP id e6mr6824605pfi.45.1576110697235;
+        Wed, 11 Dec 2019 16:31:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576110697; cv=none;
         d=google.com; s=arc-20160816;
-        b=0ydA4i4f+0GTFLqtVQrJ1TJzyECVLSRobfwtuOqKntZw/SX4zFyHTY/5zQP2oUOpCs
-         eLuRGcceBgmcTW6N8RY1nvOePyiB8rR+aARArOh6HzBhx290LD2DiMLLb4r4bGTVwfjy
-         DIYXL2AnapzKk+cjdcQqJsxBi7Ae8PtXib/NZFzcoxOH51chqd0GU+YfawdZTd9hMT0k
-         F4FzmhZUOQoy6YWo5b7HNXN6/asLFnUH64oTy/0XRl8UMOQy30mTwZCWV2v++n1ogADN
-         udeIc7ohMZDtexCUtT8jEbIZAIrQDZ2+7SoYLm0+t9MQ/Og5JVMW/Az0fTjPN2d6pvPz
-         /6cw==
+        b=fkvfZ0ZPodlqJILmCDpSjAISpXmgkBXrbZq6NjUg9Q6W/G04gUc5yr2p/4OMG7W3uL
+         XEnejeodCYrEQywscYARtH7NR2eu9aG5Lw70aK4m8oWRZoHO2A0nFTAN4Wzo54v+DYMG
+         ClonIql/RAXtTt6UV/ctu7XKb4CXoHvUYpYguxip0/Z8slAUkqDSNBzwAlO8LV4/vyZg
+         zAkaeoz3JmkNdoiME/PtzqRzvHkScmZ+PKqq+3/o3cKETWon9Ridicp/Vmli+S1aQTWD
+         SdBGOJKAwDca8JVc/uWvyUAD6QWFBzFNMe4aL2n90MkIyuJVHuciEoDMOWToZRyc8ymP
+         +yrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=JDT20aKapIGgJpnIA22MqTVehQMyQBhxq1PMqwGtE3M=;
-        b=giiWyJjMehQgw0mrhc84qxtjspPBVT+2f+3rDXRGYwZrdBAOcEHgyTGgpG8fXNfWse
-         WTw6I22OJZbuA8tJshVtmkoWHnWyg0A/l8g3Xn8ohVczrVQN6Ix4OxwR06F7vKGeZxXG
-         xzuSdr82ULM13vhTXEwejmN+GWViun4HjhvBdOR53sUHtQbL/h0SYRT72eZsJo257A4d
-         pSvBCyiV/BL06agku1Au6q0CkqUp42NufkTe3jQ/7CuX3z45m20CUfEd5FGpifm8cMKN
-         /hcXc6mC1espCHIgI1ApjyQ3UJ0M2q5eQ8f5A7VH19hqZYJ/ulVPCukwld4/WJnK1jzK
-         R9UA==
+        bh=7ahxi1d2bbzjUWQmcsGmCMgx9eDpy5No8A6ZKNnwCcs=;
+        b=0pqmEOmhlEuSZqH1H4Di0sfQT+rsEiCNTs67fSSUDkgwGlfAnTeiOeyVRfxEpvphmE
+         nf0TcfuCJjz1NvvlzVkRSQCt0TUfRuJI5QHUM9I4CHoBUwHaKSBOOpAsqb+7SFuhXQey
+         KW3PJziPeU4WVw+DgglGCZwSsuoabrapa9n6ZwsPrS1FTtgAhXRA+XcsmGO+6yHUFMc+
+         R34gff+8rcL5OIWV+hxtvqQNm5FuHtOEf/jez6l1Uvvkd44pDSnwaTFNQGUCAHe6fE0E
+         q/YzgL2wON/7Y2hW/W5RMD0xVy/6s5xJ4Xez4xvvm8Zpl12TnPyFSmJ1Df3FYfVW/dD1
+         9xLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J+Kdknet;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17si679497oiw.238.2019.12.10.23.58.56
+       dkim=pass header.i=@linaro.org header.s=google header.b="Gdyt88Z/";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 44sor4312487pld.49.2019.12.11.16.31.36
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2019 23:58:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 11 Dec 2019 16:31:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J+Kdknet;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39674 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iewtb-0001ta-Ra
-	for alex.bennee@linaro.org; Wed, 11 Dec 2019 02:58:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58963)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1iewsP-00010P-Lt
- for qemu-devel@nongnu.org; Wed, 11 Dec 2019 02:57:43 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1iewsO-0000Dx-9z
- for qemu-devel@nongnu.org; Wed, 11 Dec 2019 02:57:41 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:49579
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iewsO-0000Bo-4u
- for qemu-devel@nongnu.org; Wed, 11 Dec 2019 02:57:40 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576051059;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JDT20aKapIGgJpnIA22MqTVehQMyQBhxq1PMqwGtE3M=;
- b=J+KdknetLJEKZ/SdPEmNRRxISbSmL/3RQqWuocx9aw1hra1m1fYCnlK5vMO2gSK54alW++
- f5KoM3RlhAIEfoJ4KFuosrcNC/7lmtRWSDbVAMUJbKOAAyEyorKfNdH2ip98X7Q0Bm2p2i
- CqZlZifsfH3Ibg4YgXxPE5O9dbWR9cE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-314-HMXTjCAgMHOkVVSiRx10uQ-1; Wed, 11 Dec 2019 02:57:36 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75A7F18543A0;
- Wed, 11 Dec 2019 07:57:34 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B1DAC60BAB;
- Wed, 11 Dec 2019 07:57:29 +0000 (UTC)
-Date: Wed, 11 Dec 2019 08:57:27 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Subject: Re: [PATCH 0/5] ARM virt: Add NVDIMM support
-Message-ID: <20191211085727.1ab9564e@redhat.com>
-In-Reply-To: <c2bb0be09e244ee59d27c7aaab1783a9@huawei.com>
-References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
- <a133d4c4-3f60-2bb1-a7d7-35cdb06af265@redhat.com>
- <441c818f24084b4191315cf2a6267cef@huawei.com>
- <20191125164541.3f0a593f@redhat.com>
- <444efcb441fe42e5aff58b3af3ab14b4@huawei.com>
- <20191126095655.27227f59@redhat.com>
- <c2bb0be09e244ee59d27c7aaab1783a9@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="Gdyt88Z/";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=7ahxi1d2bbzjUWQmcsGmCMgx9eDpy5No8A6ZKNnwCcs=;
+        b=Gdyt88Z/Mcr4CQV9POK32maEJHE8LiMsUBTO0adeApEgFJsLWCioRG41OT4Po0ABqQ
+         d1NdjQ8j1wfYVW7tAJH1EY/5iGZrUeSyrw0NYOsMgcRXUZ0ne/mc55QudU1vtvWnQREU
+         9iXbpdQHPhJJnDMJ4+ZWSUYdGLog8Uys8bWjtW74WM1XBuEfRDmVmFjbVP9udnaD7D+X
+         eontXFbljWwUeVmZKbTUlZQJWkumkl0sI6281zOk22fJMFlAlg7SKK1YUb7cz7CzCgpw
+         kx3nn62bwkSX/n9pV2ZkCgCybhEz0o4Vi/7xoTWJNSvcbgs35OrZtOtexXVdRI8lVNfL
+         Ztfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=7ahxi1d2bbzjUWQmcsGmCMgx9eDpy5No8A6ZKNnwCcs=;
+        b=LiYXjf5eteyvUcU/CVXZvpr65xDLilebYNPrHB6T28VZWPDo4Y7oYpM7AWIrwAxBkT
+         rzpiHa4fW0nz3UmxtPYZ6cgDhJqc3qHS988Y26K0KCDt+0fP5crk0RjMS9VPePY/n+f+
+         PlQhe1rGui6JkK//pIW5OXWttB5F1IWb8XHCw6x/LIjDiMniDQgt87Vx2wylx8ASGoHq
+         pt8o/2BtSoiA3SkZtgqjMU7DLKilZc7ywVACsDaSp9IXs62g+tnjd1Zov4O1ZLhVTvDa
+         Bh7Mqh5mAIWUNqasES8SYWSd6LZP393UecpV+nCwxA+x3Rgzy4SAWq7rD/MvYaa4wdJR
+         0NOQ==
+X-Gm-Message-State: APjAAAWuRl/pv71n+5lGKZvRnEHWOjj5XYRx/4WMkA0XMG43GSsm656b
+	OmY8SLW1BdJL/9zmGDPTiThdexVH
+X-Google-Smtp-Source: APXvYqyy6xGMmLJlnhIAxl5T79tL8JwPW3uYtM1zUhYaP9EZFnnJ8zJ9Di2L8uuVAbcHXFjNUHw1fQ==
+X-Received: by 2002:a17:902:7c0c:: with SMTP id x12mr6449973pll.239.1576110696628;
+        Wed, 11 Dec 2019 16:31:36 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id h7sm4749443pfq.36.2019.12.11.16.31.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Dec 2019 16:31:35 -0800 (PST)
+Subject: Re: [PATCH] target/arm: ensure we use current exception state after
+ SCR update
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <20191209143723.6368-1-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <c0c7e5e4-9d62-6a07-b972-d8cbf2c18c25@linaro.org>
+Date: Wed, 11 Dec 2019 16:31:33 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: HMXTjCAgMHOkVVSiRx10uQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "drjones@redhat.com" <drjones@redhat.com>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- Auger Eric <eric.auger@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uMgcX+w+X1kF
+In-Reply-To: <20191209143723.6368-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: brFXiTV0NnvM
 
-On Mon, 9 Dec 2019 17:39:15 +0000
-Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
+On 12/9/19 6:37 AM, Alex Bennée wrote:
+> +/* Re-read the current EL, don't use cached values */
+>  #define ARM_CP_CURRENTEL         (ARM_CP_SPECIAL | 0x0400)
+>  #define ARM_CP_DC_ZVA            (ARM_CP_SPECIAL | 0x0500)
+>  #define ARM_LAST_SPECIAL         ARM_CP_DC_ZVA
+...
+> @@ -5179,7 +5179,7 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+>        .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 0,
+>        .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.scr_el3),
+>        .resetvalue = 0, .writefn = scr_write },
+> -    { .name = "SCR",  .type = ARM_CP_ALIAS,
+> +    { .name = "SCR",  .type = ARM_CP_ALIAS | ARM_CP_CURRENTEL,
 
-> Hi Igor/ xiaoguangrong,
-> 
-> > -----Original Message-----
-> > From: Shameerali Kolothum Thodi
-> > Sent: 28 November 2019 12:36
-> > To: 'Igor Mammedov' <imammedo@redhat.com>;
-> > xiaoguangrong.eric@gmail.com
-> > Cc: peter.maydell@linaro.org; drjones@redhat.com;
-> > shannon.zhaosl@gmail.com; qemu-devel@nongnu.org; Linuxarm
-> > <linuxarm@huawei.com>; Auger Eric <eric.auger@redhat.com>;
-> > qemu-arm@nongnu.org; xuwei (O) <xuwei5@huawei.com>;
-> > lersek@redhat.com
-> > Subject: RE: [PATCH 0/5] ARM virt: Add NVDIMM support
-> > 
-> > 
-> >   
-> > > -----Original Message-----
-> > > From: Qemu-devel
-> > >  
-> > [mailto:qemu-devel-bounces+shameerali.kolothum.thodi=huawei.com@nongn  
-> > > u.org] On Behalf Of Igor Mammedov
-> > > Sent: 26 November 2019 08:57
-> > > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > > Cc: peter.maydell@linaro.org; drjones@redhat.com;
-> > > xiaoguangrong.eric@gmail.com; shannon.zhaosl@gmail.com;
-> > > qemu-devel@nongnu.org; Linuxarm <linuxarm@huawei.com>; Auger Eric
-> > > <eric.auger@redhat.com>; qemu-arm@nongnu.org; xuwei (O)
-> > > <xuwei5@huawei.com>; lersek@redhat.com
-> > > Subject: Re: [PATCH 0/5] ARM virt: Add NVDIMM support  
-> > 
-> > [..]
-> >   
-> > > > > 0xb8 Dirty No.  -->Another read is attempted  
-> > > > > > [Qemu]NVDIMM:nvdimm_dsm_func_read_fit: read_fit_out buf size 0x8  
-> > > > > func_ret_status 3  --> Error status returned
-> > > > >
-> > > > > status 3 means that QEMU didn't like content of NRAM, and there is only
-> > > > > 1 place like this in nvdimm_dsm_func_read_fit()
-> > > > >     if (read_fit->offset > fit->len) {
-> > > > >         func_ret_status = NVDIMM_DSM_RET_STATUS_INVALID;
-> > > > >         goto exit;
-> > > > >     }
-> > > > >
-> > > > > so I'd start looking from here and check that QEMU gets expected data
-> > > > > in nvdimm_dsm_write(). In other words I'd try to trace/compare
-> > > > > content of DSM buffer (from qemu side).  
-> > > >
-> > > > I had printed the DSM buffer previously and it looked same, I will double  
-> > check  
-> > > > that.  
-> > 
-> > Tried printing the buffer in both Qemu/AML code.
-> > 
-> > On Amr64,  
-> 
-> [...]
->  
-> > Attached the SSDT.dsl used for debugging. I am still not clear why on ARM64,
-> > 2nd iteration case, the created buffer size in NCAL and RFIT methods have
-> > additional 4 bytes!.
-> > 
-> >     CreateField (ODAT, Zero, Local1, OBUF)
-> >     Concatenate (Buffer (Zero){}, OBUF, Local7)
-> > 
-> > Please let me know if you have any clue.
-> >   
-> 
-> I couldn't figure out yet, why this extra 4 bytes are added by aml code on ARM64
-> when the nvdimm_dsm_func_read_fit() returns NvdimmFuncReadFITOut without
-> any FIT data. ie, when the FIT buffer len (read_len) is zero.
-> 
-> But the below will fix this issue,
-> 
-> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-> index f91eea3802..cddf95f4c1 100644
-> --- a/hw/acpi/nvdimm.c
-> +++ b/hw/acpi/nvdimm.c
-> @@ -588,7 +588,7 @@ static void nvdimm_dsm_func_read_fit(NVDIMMState *state, NvdimmDsmIn *in,
->      nvdimm_debug("Read FIT: offset %#x FIT size %#x Dirty %s.\n",
->                   read_fit->offset, fit->len, fit_buf->dirty ? "Yes" : "No");
-> 
-> -    if (read_fit->offset > fit->len) {
-> +    if (read_fit->offset >= fit->len) {
->          func_ret_status = NVDIMM_DSM_RET_STATUS_INVALID;
->          goto exit;
->      }
-> 
-> 
-> This will return error code to aml in the second iteration when there is no further
-> FIT data to report. But, I am not sure why this check was omitted in the first place.
-> 
-> Please let me know if this is acceptable and then probably I can look into a v2 of this
-> series.
-Sorry, I don't have capacity to debug this right now,
-but I'd prefer if 'why' question was answered first.
+I don't think you should reuse this value.  It is not a simple bit.
 
-Anyways, if something is unclear in how concrete AML code is build/works,
-feel free to ask and I'll try to explain and guide you.
+While ARM_CP_* all appear to implement a 16-bit quantity, the type field is
+already an int, and so can easily hold more.  I think you should use a new bit
+for this.
 
-> Thanks,
-> Shameer
-> 
-> 
-> 
 
+r~

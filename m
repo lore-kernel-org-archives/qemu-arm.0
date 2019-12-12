@@ -1,605 +1,392 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp35696lff;
-        Thu, 12 Dec 2019 15:08:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw5UTgTK6Tal0Oogwh6ObvDgUHoJji04MQV+TpInJd8t/BBiQWfQEcRyvXfjtTqq0TTIqPb
-X-Received: by 2002:aca:ab95:: with SMTP id u143mr6743250oie.128.1576192111580;
-        Thu, 12 Dec 2019 15:08:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576192111; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp53248lff;
+        Thu, 12 Dec 2019 15:25:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxeGKFmcZidAGfLhqLBbese/B2QHxzrsMd2prbKlmz7IZiS5GyWmELM2y64IhAshzkAGt7N
+X-Received: by 2002:a17:906:c791:: with SMTP id cw17mr12695764ejb.69.1576193151087;
+        Thu, 12 Dec 2019 15:25:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576193151; cv=none;
         d=google.com; s=arc-20160816;
-        b=CTX/I/g8UgwJ6NQfxVLQz5y7VkO/VGcVXG0U9u+fBDzuJ44my6IQ4nZdYbLlVmfZ3U
-         bS4qY7mHMpF6+WO0pMmOJdz7GCqEqfGfovk3G9GIahq7B/HXF33e3KMqberpKeSqi6YG
-         iwxcENVXWe2Oquve0qQML82bZF/zlb8Jh6j1W/7QpHn+oOda0+19Fc+YBFsmnmWWimK2
-         sL1xii7BKsiO2CsHtd7z1H1giZio1U6HxXi5KOF6EaJk24FOgFCHYS84c37e7bItam3P
-         wE0Z+g1T4l7CMVsuUyNf/foFB2TlPFL5R3WL0LL5jYCsiHqwMRcbRQfC7/+g3HZsQ3Le
-         kI2g==
+        b=Ius2fe6eVxcYfY7Wr7z/zvbSkwSWGlP+gtUaUWNmkn22tq0iB/ojEnI0Xeln3GzWNs
+         cpYWSvZQqFB9O4hvnmsqoI27dilw/Lt/n2Nubmk5yMqop9H4XGOdiIpUNWGgf/2MRTrR
+         u0PL9XgrIApzeFzK1EBxah7h2JI0yy7+WOiVZ/qbihVkl0HV5x/vFoFguwUwvVZgiwc3
+         46uqJppUaR0ESUaCT0VyOGgUFuaofrwh/CMT0JuxHxGDmSZQObXAyrB2I3UO/Be2aISg
+         HTRbxkhjK0h7CoiWNudluXK5FFIu1T2pcc7brQCNZ4Zzh6N/Yi00g80YZkEUAvVK8Jwd
+         4EDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=y0TZkHXy72FpeYL3bZsOfbboQwjTGkf66FhGCbZ2cWo=;
-        b=PpUCBU+261E1ShuBsn++8ATcg2QjZUJN1kpwsOsY8LJOHzFmUagSWrD61C+1asXR54
-         wIzTd79SgrzwvfozO3vW4NI5kTZtT1AAvymyURKXB5wgsOETAKi5FCfrc0YSk1lXPkF6
-         j7yeQQet6U97dBffxCn2JEKXnUw7LIi4oAm5yRR7vSlG86UVW0v7vPPZdImpQumSOG5U
-         uCXt6r6cy6CsvLcQSfGpYbTcfe2ftbyb1w6aK1Nu++tQ2QBTDBaahkECo+tlzseBgBhb
-         QxBDcLW+pQjcEq4lie51e2M6LbiM9XkIGKBzmMBT62lQZXy9wuzs8QnFTZf6E8SGUzcG
-         jIrQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=9bm5i+WqIWVShCZh3myFNfdKln7wDmsnYzUCxNSPbsg=;
+        b=CD5K+YWbM1aTUoerZbARN13tg5t1pVEwa6zwVqP5YmRWwYe877wskCylZoM3HibzOD
+         CyyzQjvp8EJfTJK9gBjd1pUn4fED/ssRu+i0JphyV4/e3M4lzQ2Y3PgYFdxihH2MsxTE
+         RyMstF7yQ+ZLhEiBGROyO/IG6mTCoobFkPfuDX+Aa4wwcvHaJLH8t5UWs6tASfg8drPm
+         MNdAjVSSL8ociQZMi8ttqtsMOjlAiFzGqpQ33aWu31h3Hq/Qc91MNZ+nqG1Ol0Q9iLo7
+         MJA3Elb5cBV0dM3ar2LLEoFBEr7A22BEnOK9EwAqL2nwPbCoXCtpLtiZXAIE0Xx0ClWa
+         D1gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EpE1aob5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g62si4279609oia.57.2019.12.12.15.08.31
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iraOjb6h;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id i6si5185305ejv.240.2019.12.12.15.25.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 15:08:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Dec 2019 15:25:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EpE1aob5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38216 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifXZN-0001mc-3u
-	for alex.bennee@linaro.org; Thu, 12 Dec 2019 18:08:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57701)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ifXZ8-0001jE-Co
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 18:08:16 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ifXZ5-0001a7-Sl
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 18:08:14 -0500
-Received: from mail-il1-x132.google.com ([2607:f8b0:4864:20::132]:42401)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ifXZ0-0001Lt-I3; Thu, 12 Dec 2019 18:08:06 -0500
-Received: by mail-il1-x132.google.com with SMTP id a6so439968ili.9;
- Thu, 12 Dec 2019 15:08:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=y0TZkHXy72FpeYL3bZsOfbboQwjTGkf66FhGCbZ2cWo=;
- b=EpE1aob5Wn1nWhkVSECLNHXsYvzq1MnTYMxI01O2w62ZXlbx9M+xn1+NiDaywR5583
- 14mIVIeN7982sxZF4X2r808h/etbkontxp44IND7g/UVuOMMgLDGh3TPkiLppqbYyn1G
- N0nme8j8i1TR2vPXvij6o+Qo7WzKcVxgiDPfLqr1YbC+P9rfaYQobRONomIuAawYaZMC
- fds+k+o8pMLDSXBiRCgMqawG+Zh8x1Tx3P6Lh4FBqlCcmOdRBWsLrlPSzhYAqOAgMAE8
- AlHEsoB1Jq/bfBNGMbkKgHNAwTbb0iblECqsK6zb6qnCUv8plR7vyxgnK++3NzpqarCZ
- Xf7A==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iraOjb6h;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1576193149;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9bm5i+WqIWVShCZh3myFNfdKln7wDmsnYzUCxNSPbsg=;
+	b=iraOjb6hMzbzkpFwD4raiNSq3G38NIRfuizanN7unbKKT346mS7GqyHtQM18+iuFCPjkxO
+	TCTnwmyEkDdBgFY8qbfhwRtJwcivzRWu0ZvqMJzstWoozUGUtHzXxKHd/fsIe3yiqy6WB1
+	IlK1STev7gnufcgCeCtAFZpSdas5zcI=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-139-n9gZ8Y8bPDeUgGqYctPsuA-1; Thu, 12 Dec 2019 18:25:48 -0500
+Received: by mail-wr1-f72.google.com with SMTP id z10so1594962wrt.21
+        for <alex.bennee@linaro.org>; Thu, 12 Dec 2019 15:25:48 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=y0TZkHXy72FpeYL3bZsOfbboQwjTGkf66FhGCbZ2cWo=;
- b=XByAZypPTsdmxqlebCrTtjJIGFWayXDnBnWyvZspQD3/paN0gUvmiYZiHkYN3h/Tty
- o72B7n7atZNbK8+p+5hRy5VA3iYoW3yA2irPHCtQssK8UmwNWlwRfU/0h9VY2T7qjStK
- WESj+1sflTdRbI67hwizBwSfHyt+Bsgyhut3kQc9ZW7Bvn94VSGDhmM8bV7NlOFDhC3l
- lrdQl40xZ/32yDyaz5/KZhWNo90bULG/4GLMIl2nszmWjG6BuDs99X3cBauWOYLWU14Z
- y20fuR8G+U1ZiNUYBMNJZkgmQKnBq+8fdCImHvQaR9ruDqRm2HUzlcJRsk5EUURncv/n
- H+Mw==
-X-Gm-Message-State: APjAAAWXK8atEXa2ykR2R3QSE8Cyj2ZFBcHolqxOiq57GRtAmHZIjPQL
- V+vHM0oRjP58ntp8NIAOPTeoV659Sgzu5M5y7Sg=
-X-Received: by 2002:a92:d5cf:: with SMTP id d15mr10329035ilq.306.1576192085368; 
- Thu, 12 Dec 2019 15:08:05 -0800 (PST)
-MIME-Version: 1.0
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=DzKIlFG2oRJSszzlv3np93HXTN09dZqGbswUkVllOdc=;
+        b=GYX9drouimvJuTvjROQAcQeCy5ycHTFDmTGQ07KVXH0ukVTL1+0fDjqS5m9a9H3+Pg
+         EvIHKX3IoQUnQE4Xw8YH1FPRQTPig6WfJuF+lBlnerzqyF+BP/P1wudMoRUMD58bjTh4
+         Ge2gTYsaZzIusE0aShVr8TYL00ed3U66c0UGcOmQdLC3KsjdrP0Fw5o4tmKlCMvEHfGY
+         /q+8HjluSFqXWPSwL3pe35+1ISsrRiVOMimFB/hb0e22b01oY2h0ohI/3n+h1SSXdPEW
+         LVFS/RjoJfkKpXU0aNOTYcioHwDj96qA6ekhTS81QX2abu7subZ/Dk6vk3afjA/v+CJc
+         TvAA==
+X-Gm-Message-State: APjAAAVjqPgrhBrdkLNWzZBTEN+Bvh1+AxMuR4U/4Y8P2SKnh+JwW5V0
+	K9zVi6cw/TXSuCAF9eH7ec6d6UpwmwUtDbpk0BPOj/wkcLg9g3Kanl0o2BybmlxoNOxjQBjdE/4
+	ZhOoGxxkmJHu/7ro2
+X-Received: by 2002:a5d:5592:: with SMTP id i18mr8592374wrv.55.1576193146831;
+        Thu, 12 Dec 2019 15:25:46 -0800 (PST)
+X-Received: by 2002:a5d:5592:: with SMTP id i18mr8592342wrv.55.1576193146424;
+        Thu, 12 Dec 2019 15:25:46 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net. [83.42.66.34])
+        by smtp.gmail.com with ESMTPSA id v188sm7985013wma.10.2019.12.12.15.25.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Dec 2019 15:25:45 -0800 (PST)
+Subject: Re: [PATCH 00/10] Add Allwinner H3 SoC and Orange Pi PC Machine
+To: Niek Linnenbank <nieklinnenbank@gmail.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>
 References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
  <f54375da-4383-04c5-d57c-3a2f6ff46189@redhat.com>
  <CAPan3WrAgWZF1JvSAe=nWUb4rvN6qjfC6JDCnH2P6xmBuitn5w@mail.gmail.com>
  <74df65db-1f84-62ba-6d01-edf765fd1dc2@redhat.com>
  <CAPan3Wojt3SSV_kBPfinVLN+mvR_6=rf9zsHV5yq11+qe2Umyg@mail.gmail.com>
-In-Reply-To: <CAPan3Wojt3SSV_kBPfinVLN+mvR_6=rf9zsHV5yq11+qe2Umyg@mail.gmail.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Fri, 13 Dec 2019 00:07:54 +0100
-Message-ID: <CAPan3Woucroq2+c5J8Trw+ssEMD4tnwfKzPeOf3AZKmv_R0EgQ@mail.gmail.com>
-Subject: Re: [PATCH 00/10] Add Allwinner H3 SoC and Orange Pi PC Machine
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000058a540059989d12b"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::132
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +aWngXjmZI5J
-
---00000000000058a540059989d12b
-Content-Type: text/plain; charset="UTF-8"
+ <CAPan3Woucroq2+c5J8Trw+ssEMD4tnwfKzPeOf3AZKmv_R0EgQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <7ed70514-e67e-9403-63b3-5a81c59fe952@redhat.com>
+Date: Fri, 13 Dec 2019 00:25:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <CAPan3Woucroq2+c5J8Trw+ssEMD4tnwfKzPeOf3AZKmv_R0EgQ@mail.gmail.com>
+Content-Language: en-US
+X-MC-Unique: n9gZ8Y8bPDeUgGqYctPsuA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
+X-TUID: A9RaBRUFSPDn
 
-Hi Philippe,
+Cc'ing Alex.
 
-I have discovered that the hflags assertion error you reported is not
-caused by the Allwinner H3
-patches but actually an existing problem. What I did is to use the latest
-master (v4.2.0 tag) without any patches applied.
-and tried to boot the raspi2 machine with and without debugging enabled.
-Without debuggin, the raspi2
-machine runs fine and can boot the 5.4.2 linux kernel. With debugging
-enabled, the same hflags error shows.
-
-To reproduce it, build Linux 5.4.2 with the bmc2835_defconfig:
-
-$ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper
-$ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make bcm2835_defconfig
-$ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make -j5
-...
-First build QEMU without debugging and try to boot linux:
-$ ./configure --target-list=3Darm-softmmu; make clean; make -j5
-$ ./arm-softmmu/qemu-system-arm -M raspi2 \
-  -kernel $HOME/linux-5.4.2/arch/arm/boot/zImage \
-  -append 'console=3DttyAMA0,115200 earlyprintk debug' \
-  -dtb $HOME/linux-5.4.2/arch/arm/boot/dts/bcm2836-rpi-2-b.dtb \
-  -m 1024 -nographic -s
-[    0.000000] Booting Linux on physical CPU 0x0
-[    0.000000] Linux version 5.4.2 (me@host) (gcc version 7.4.0
-(Ubuntu/Linaro 7.4.0-1ubuntu1~18.04.1)) #1 Thu Dec 12 22:49:14 CET
-2019
-[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D10c=
-53c7d
-...
-Then rebuild QEMU with debugging enabled and again try to boot linux:
-$ ./configure --target-list=3Darm-softmmu --enable-debug
---extra-cflags=3D-ggdb; make clean; make -j5
-$ ./arm-softmmu/qemu-system-arm -M raspi2 \
-  -kernel $HOME/linux-5.4.2/arch/arm/boot/zImage \
-  -append 'console=3DttyAMA0,115200 earlyprintk debug' \
-  -dtb $HOME/linux-5.4.2/arch/arm/boot/dts/bcm2836-rpi-2-b.dtb \
-  -m 1024 -nographic -s
-qemu-system-arm: /home/me/qemu/target/arm/helper.c:11359:
-cpu_get_tb_cpu_state: Assertion `flags =3D=3D
-rebuild_hflags_internal(env)' failed.
-qemu-system-arm: /home/me/qemu/target/arm/helper.c:11359:
-cpu_get_tb_cpu_state: Assertion `flags =3D=3D
-rebuild_hflags_internal(env)' failed.
-qemu-system-arm: /home/me/qemu/target/arm/helper.c:11359:
-cpu_get_tb_cpu_state: Assertion `flags =3D=3D
-rebuild_hflags_internal(env)' failed.
-Aborted (core dumped)
-
-$ git describe
-v4.2.0
-
-
-What should be the next step? Should this be reported as a bug?
-
-Regards,
-Niek
-
-On Tue, Dec 10, 2019 at 9:12 PM Niek Linnenbank <nieklinnenbank@gmail.com>
-wrote:
-
+On 12/13/19 12:07 AM, Niek Linnenbank wrote:
 > Hi Philippe,
->
-> On Tue, Dec 10, 2019 at 9:26 AM Philippe Mathieu-Daud=C3=A9 <philmd@redha=
-t.com>
-> wrote:
->
->> On 12/9/19 10:37 PM, Niek Linnenbank wrote:
->> > Hi Philippe,
->> >
->> > On Tue, Dec 3, 2019 at 9:47 AM Philippe Mathieu-Daud=C3=A9 <
->> philmd@redhat.com
->> > <mailto:philmd@redhat.com>> wrote:
->> >
->> >     On 12/2/19 10:09 PM, Niek Linnenbank wrote:
->> >      > Dear QEMU developers,
->> >      >
->> >      > Hereby I would like to contribute the following set of patches =
-to
->> >     QEMU
->> >      > which add support for the Allwinner H3 System on Chip and the
->> >      > Orange Pi PC machine. The following features and devices are
->> >     supported:
->> >      >
->> >      >   * SMP (Quad Core Cortex A7)
->> >      >   * Generic Interrupt Controller configuration
->> >      >   * SRAM mappings
->> >      >   * Timer device (re-used from Allwinner A10)
->> >      >   * UART
->> >      >   * SD/MMC storage controller
->> >      >   * EMAC ethernet connectivity
->> >      >   * USB 2.0 interfaces
->> >      >   * Clock Control Unit
->> >      >   * System Control module
->> >      >   * Security Identifier device
->> >
->> >     Awesome!
->> >
->> >      > Functionality related to graphical output such as HDMI, GPU,
->> >      > Display Engine and audio are not included. Recently released
->> >      > mainline Linux kernels (4.19 up to latest master) and mainline
->> U-Boot
->> >      > are known to work. The SD/MMC code is tested using bonnie++ and
->> >      > various tools such as fsck, dd and fdisk. The EMAC is verified
->> >     with iperf3
->> >      > using -netdev socket.
->> >      >
->> >      > To build a Linux mainline kernel that can be booted by the Oran=
-ge
->> >     Pi PC
->> >      > machine, simply configure the kernel using the sunxi_defconfig
->> >     configuration:
->> >      >   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper
->> >      >   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make
->> sunxi_defconfig
->> >      >
->> >      > To be able to use USB storage, you need to manually enable the
->> >     corresponding
->> >      > configuration item. Start the kconfig configuration tool:
->> >      >   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make menuconf=
-ig
->> >      >
->> >      > Navigate to the following item, enable it and save your
->> >     configuration:
->> >      >   Device Drivers > USB support > USB Mass Storage support
->> >      >
->> >      > Build the Linux kernel with:
->> >      >   $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make -j5
->> >      >
->> >      > To boot the newly build linux kernel in QEMU with the Orange Pi
->> >     PC machine, use:
->> >      >   $ qemu-system-arm -M orangepi -m 512 -nic user -nographic \
->> >      >       -kernel /path/to/linux/arch/arm/boot/zImage \
->> >      >       -append 'console=3DttyS0,115200' \
->> >      >       -dtb
->> /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb
->> >      >
->> >      > Note that this kernel does not have a root filesystem. You may
->> >     provide it
->> >      > with an official Orange Pi PC image [1] either as an SD card or
->> as
->> >      > USB mass storage. To boot using the Orange Pi PC Debian image o=
-n
->> >     SD card,
->> >      > simply add the -sd argument and provide the proper root=3D kern=
-el
->> >     parameter:
->> >      >   $ qemu-system-arm -M orangepi -m 512 -nic user -nographic \
->> >      >       -kernel /path/to/linux/arch/arm/boot/zImage \
->> >      >       -append 'console=3DttyS0,115200 root=3D/dev/mmcblk0p2' \
->> >      >       -dtb
->> >     /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb \
->> >      >       -sd OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img
->> >      >
->> >      > Alternatively, you can also choose to build and boot a recent
->> >     buildroot [2]
->> >      > using the orangepi_pc_defconfig or Armbian image [3] for Orange
->> >     Pi PC.
->> >
->> >     Richard, trying the Armbian image from
->> >     https://apt.armbian.com/pool/main/l/linux-4.20.7-sunxi/ I get:
->> >
->> >     $ arm-softmmu/qemu-system-arm -M orangepi -m 512 -nic user \
->> >         -append 'console=3DttyS0,115200' \
->> >         -kernel boot/vmlinuz-4.20.7-sunxi \
->> >         -dtb usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb \
->> >         -serial stdio -d unimp
->> >     Uncompressing Linux... done, booting the kernel.
->> >     rtc: unimplemented device write (size 4, value 0x16aa0001, offset
->> 0x0)
->> >     rtc: unimplemented device read (size 4, offset 0x0)
->> >     rtc: unimplemented device read (size 4, offset 0x0)
->> >     rtc: unimplemented device read (size 4, offset 0x8)
->> >     qemu-system-arm: target/arm/helper.c:11359: cpu_get_tb_cpu_state:
->> >     Assertion `flags =3D=3D rebuild_hflags_internal(env)' failed.
->> >     Aborted (core dumped)
->> >
->> >
->> > I'm trying to reproduce the error you reported here with my patch set
->> on
->> > latest master,
->> > but so far without any result. The host OS I'm using is Ubuntu 18.04.3
->> > LTS on x86_64.
->> > I ran several times using the same 4.20.7-sunxi kernel and same comman=
-d
->> > line.
->> >
->> > Some questions that might help:
->> > 1) Are there any specific steps you did in order to produce this error=
-?
->>
->> I build QEMU with:
->>
->> ./configure --enable-trace-backends=3Dlog --extra-cflags=3D-ggdb
->> --enable-debug
->>
->> > 2) Could this be a known / existing issue?
->> > 3) How many times did you see this error?
->>
->> Always
->>
->> > 4) Are you also using Ubuntu 18.04.3 LTS on x86_64, or a different hos=
-t
->> OS?
->>
->> Host is Fedora 30.
->>
->
-> OK thanks, I will try again using the info above after I finished
-> reworking the other patch comments.
->
-> Niek
->
->
->>
->> >
->> > Regards,
->> > Niek
->>
->>
->
-> --
-> Niek Linnenbank
->
->
+>=20
+> I have discovered that the hflags assertion error you reported is not=20
+> caused by the Allwinner H3
+> patches but actually an existing problem. What I did is to use the=20
+> latest master (v4.2.0 tag) without any patches applied.
+> and tried to boot the raspi2 machine with and without debugging enabled.=
+=20
+> Without debuggin, the raspi2
+> machine runs fine and can boot the 5.4.2 linux kernel. With debugging=20
+> enabled, the same hflags error shows.
 
---=20
-Niek Linnenbank
+This might be the same bug I hit last week... Alex suggested a patch:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg664500.html
 
---00000000000058a540059989d12b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Do you mind to try it?
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">Hi Phil=
-ippe,<br></div><div><br></div><div>I have discovered that the hflags assert=
-ion error you reported is not caused by the Allwinner H3</div><div>patches =
-but actually an existing problem. What I did is to use the latest master (v=
-4.2.0 tag) without any patches applied.<br></div><div>and tried to boot the=
- raspi2 machine with and without debugging enabled. Without debuggin, the r=
-aspi2</div><div>machine runs fine and can boot the 5.4.2 linux kernel. With=
- debugging enabled, the same hflags error shows.</div><div><br></div><div>T=
-o reproduce it, build Linux 5.4.2 with the bmc2835_defconfig:<br></div><div=
-><pre>$ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper
-$ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make bcm2835_defconfig
-$ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make -j5
-...
-<br><font face=3D"arial,sans-serif">First build QEMU without debugging and =
-try to boot linux:</font><br>$ ./configure --target-list=3Darm-softmmu; mak=
-e clean; make -j5
-$ ./arm-softmmu/qemu-system-arm -M raspi2 \
-  -kernel $HOME/linux-5.4.2/arch/arm/boot/zImage \
-  -append &#39;console=3DttyAMA0,115200 earlyprintk debug&#39; \
-  -dtb $HOME/linux-5.4.2/arch/arm/boot/dts/bcm2836-rpi-2-b.dtb \
-  -m 1024 -nographic -s
-[    0.000000] Booting Linux on physical CPU 0x0
-[    0.000000] Linux version 5.4.2 (me@host) (gcc version 7.4.0 (Ubuntu/Lin=
-aro 7.4.0-1ubuntu1~18.04.1)) #1 Thu Dec 12 22:49:14 CET 2019
-[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D10c=
-53c7d
-...
-<br><font face=3D"arial,sans-serif">Then rebuild QEMU with debugging enable=
-d and again try to boot linux:</font><br>$ ./configure --target-list=3Darm-=
-softmmu --enable-debug --extra-cflags=3D-ggdb; make clean; make -j5
-$ ./arm-softmmu/qemu-system-arm -M raspi2 \
-  -kernel $HOME/linux-5.4.2/arch/arm/boot/zImage \
-  -append &#39;console=3DttyAMA0,115200 earlyprintk debug&#39; \
-  -dtb $HOME/linux-5.4.2/arch/arm/boot/dts/bcm2836-rpi-2-b.dtb \
-  -m 1024 -nographic -s
-qemu-system-arm: /home/me/qemu/target/arm/helper.c:11359: cpu_get_tb_cpu_st=
-ate: Assertion `flags =3D=3D rebuild_hflags_internal(env)&#39; failed.
-qemu-system-arm: /home/me/qemu/target/arm/helper.c:11359: cpu_get_tb_cpu_st=
-ate: Assertion `flags =3D=3D rebuild_hflags_internal(env)&#39; failed.
-qemu-system-arm: /home/me/qemu/target/arm/helper.c:11359: cpu_get_tb_cpu_st=
-ate: Assertion `flags =3D=3D rebuild_hflags_internal(env)&#39; failed.
-Aborted (core dumped)
+If it still fails, you might also add this one on top:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg663843.html
+and report the error.
 
-$ git describe
-v4.2.0</pre></div><div><br></div><div>What should be the next step? Should =
-this be reported as a bug?</div><div><br></div><div>Regards,</div><div>Niek=
-<br></div><div><br></div><div class=3D"gmail_quote"><div dir=3D"ltr" class=
-=3D"gmail_attr">On Tue, Dec 10, 2019 at 9:12 PM Niek Linnenbank &lt;<a href=
-=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt; wrote=
-:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
-8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"lt=
-r"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote"><div dir=3D"lt=
-r" class=3D"gmail_attr">On Tue, Dec 10, 2019 at 9:26 AM Philippe Mathieu-Da=
-ud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@=
-redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">On 12/9/19 10:37 PM, Niek Linnenbank wrote:<br>
-&gt; Hi Philippe,<br>
-&gt; <br>
-&gt; On Tue, Dec 3, 2019 at 9:47 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=
-=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redhat.com</a> <br>
-&gt; &lt;mailto:<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">phil=
-md@redhat.com</a>&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 12/2/19 10:09 PM, Niek Linnenbank wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Dear QEMU developers,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Hereby I would like to contribute the followi=
-ng set of patches to<br>
-&gt;=C2=A0 =C2=A0 =C2=A0QEMU<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; which add support for the Allwinner H3 System=
- on Chip and the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Orange Pi PC machine. The following features =
-and devices are<br>
-&gt;=C2=A0 =C2=A0 =C2=A0supported:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* SMP (Quad Core Cortex A7)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* Generic Interrupt Controller co=
-nfiguration<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* SRAM mappings<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* Timer device (re-used from Allw=
-inner A10)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* UART<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* SD/MMC storage controller<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* EMAC ethernet connectivity<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* USB 2.0 interfaces<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* Clock Control Unit<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* System Control module<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* Security Identifier device<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Awesome!<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Functionality related to graphical output suc=
-h as HDMI, GPU,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Display Engine and audio are not included. Re=
-cently released<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; mainline Linux kernels (4.19 up to latest mas=
-ter) and mainline U-Boot<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; are known to work. The SD/MMC code is tested =
-using bonnie++ and<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; various tools such as fsck, dd and fdisk. The=
- EMAC is verified<br>
-&gt;=C2=A0 =C2=A0 =C2=A0with iperf3<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; using -netdev socket.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; To build a Linux mainline kernel that can be =
-booted by the Orange<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Pi PC<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; machine, simply configure the kernel using th=
-e sunxi_defconfig<br>
-&gt;=C2=A0 =C2=A0 =C2=A0configuration:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=3Darm-=
-linux-gnueabi- make mrproper<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=3Darm-=
-linux-gnueabi- make sunxi_defconfig<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; To be able to use USB storage, you need to ma=
-nually enable the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0corresponding<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; configuration item. Start the kconfig configu=
-ration tool:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=3Darm-=
-linux-gnueabi- make menuconfig<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Navigate to the following item, enable it and=
- save your<br>
-&gt;=C2=A0 =C2=A0 =C2=A0configuration:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0Device Drivers &gt; USB support &=
-gt; USB Mass Storage support<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Build the Linux kernel with:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=3Darm-=
-linux-gnueabi- make -j5<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; To boot the newly build linux kernel in QEMU =
-with the Orange Pi<br>
-&gt;=C2=A0 =C2=A0 =C2=A0PC machine, use:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ qemu-system-arm -M orangepi -m =
-512 -nic user -nographic \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-kernel /path/to/li=
-nux/arch/arm/boot/zImage \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-append &#39;consol=
-e=3DttyS0,115200&#39; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-dtb /path/to/linux=
-/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Note that this kernel does not have a root fi=
-lesystem. You may<br>
-&gt;=C2=A0 =C2=A0 =C2=A0provide it<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; with an official Orange Pi PC image [1] eithe=
-r as an SD card or as<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; USB mass storage. To boot using the Orange Pi=
- PC Debian image on<br>
-&gt;=C2=A0 =C2=A0 =C2=A0SD card,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; simply add the -sd argument and provide the p=
-roper root=3D kernel<br>
-&gt;=C2=A0 =C2=A0 =C2=A0parameter:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0$ qemu-system-arm -M orangepi -m =
-512 -nic user -nographic \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-kernel /path/to/li=
-nux/arch/arm/boot/zImage \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-append &#39;consol=
-e=3DttyS0,115200 root=3D/dev/mmcblk0p2&#39; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-dtb<br>
-&gt;=C2=A0 =C2=A0 =C2=A0/path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-=
-pc.dtb \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-sd OrangePi_pc_deb=
-ian_stretch_server_linux5.3.5_v1.0.img<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Alternatively, you can also choose to build a=
-nd boot a recent<br>
-&gt;=C2=A0 =C2=A0 =C2=A0buildroot [2]<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; using the orangepi_pc_defconfig or Armbian im=
-age [3] for Orange<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Pi PC.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Richard, trying the Armbian image from<br>
-&gt;=C2=A0 =C2=A0 =C2=A0<a href=3D"https://apt.armbian.com/pool/main/l/linu=
-x-4.20.7-sunxi/" rel=3D"noreferrer" target=3D"_blank">https://apt.armbian.c=
-om/pool/main/l/linux-4.20.7-sunxi/</a> I get:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0$ arm-softmmu/qemu-system-arm -M orangepi -m 512 -n=
-ic user \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-append &#39;console=3DttyS0,115200&#=
-39; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-kernel boot/vmlinuz-4.20.7-sunxi \<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-dtb usr/lib/linux-image-dev-sunxi/su=
-n8i-h3-orangepi-pc.dtb \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-serial stdio -d unimp<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Uncompressing Linux... done, booting the kernel.<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device write (size 4, value 0x16=
-aa0001, offset 0x0)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device read (size 4, offset 0x0)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device read (size 4, offset 0x0)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device read (size 4, offset 0x8)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0qemu-system-arm: target/arm/helper.c:11359: cpu_get=
-_tb_cpu_state:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Assertion `flags =3D=3D rebuild_hflags_internal(env=
-)&#39; failed.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Aborted (core dumped)<br>
-&gt; <br>
-&gt; <br>
-&gt; I&#39;m trying to reproduce the error you reported here with my patch =
-set on <br>
-&gt; latest master,<br>
-&gt; but so far without any result. The host OS I&#39;m using is Ubuntu 18.=
-04.3 <br>
-&gt; LTS on x86_64.<br>
-&gt; I ran several times using the same 4.20.7-sunxi kernel and same comman=
-d <br>
-&gt; line.<br>
-&gt; <br>
-&gt; Some questions that might help:<br>
-&gt; 1) Are there any specific steps you did in order to produce this error=
-?<br>
-<br>
-I build QEMU with:<br>
-<br>
-./configure --enable-trace-backends=3Dlog --extra-cflags=3D-ggdb --enable-d=
-ebug<br>
-<br>
-&gt; 2) Could this be a known / existing issue?<br>
-&gt; 3) How many times did you see this error?<br>
-<br>
-Always<br>
-<br>
-&gt; 4) Are you also using Ubuntu 18.04.3 LTS on x86_64, or a different hos=
-t OS?<br>
-<br>
-Host is Fedora 30.<br></blockquote><div><br></div><div>OK thanks, I will tr=
-y again using the info above after I finished reworking the other patch com=
-ments.</div><div><br></div><div>Niek<br></div><div>=C2=A0</div><blockquote =
-class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
-id rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; <br>
-&gt; Regards,<br>
-&gt; Niek<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr"><div dir=
-=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div></div></div>
+>=20
+> To reproduce it, build Linux 5.4.2 with the bmc2835_defconfig:
+>=20
+> $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper
+> $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make bcm2835_defconfig
+> $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make -j5
+> ...
+>=20
+> First build QEMU without debugging and try to boot linux:
+> $ ./configure --target-list=3Darm-softmmu; make clean; make -j5
+> $ ./arm-softmmu/qemu-system-arm -M raspi2 \
+>    -kernel $HOME/linux-5.4.2/arch/arm/boot/zImage \
+>    -append 'console=3DttyAMA0,115200 earlyprintk debug' \
+>    -dtb $HOME/linux-5.4.2/arch/arm/boot/dts/bcm2836-rpi-2-b.dtb \
+>    -m 1024 -nographic -s
+> [    0.000000] Booting Linux on physical CPU 0x0
+> [    0.000000] Linux version 5.4.2 (me@host) (gcc version 7.4.0 (Ubuntu/L=
+inaro 7.4.0-1ubuntu1~18.04.1)) #1 Thu Dec 12 22:49:14 CET 2019
+> [    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D1=
+0c53c7d
+> ...
+>=20
+> Then rebuild QEMU with debugging enabled and again try to boot linux:
+> $ ./configure --target-list=3Darm-softmmu --enable-debug --extra-cflags=
+=3D-ggdb; make clean; make -j5
+> $ ./arm-softmmu/qemu-system-arm -M raspi2 \
+>    -kernel $HOME/linux-5.4.2/arch/arm/boot/zImage \
+>    -append 'console=3DttyAMA0,115200 earlyprintk debug' \
+>    -dtb $HOME/linux-5.4.2/arch/arm/boot/dts/bcm2836-rpi-2-b.dtb \
+>    -m 1024 -nographic -s
+> qemu-system-arm: /home/me/qemu/target/arm/helper.c:11359: cpu_get_tb_cpu_=
+state: Assertion `flags =3D=3D rebuild_hflags_internal(env)' failed.
+> qemu-system-arm: /home/me/qemu/target/arm/helper.c:11359: cpu_get_tb_cpu_=
+state: Assertion `flags =3D=3D rebuild_hflags_internal(env)' failed.
+> qemu-system-arm: /home/me/qemu/target/arm/helper.c:11359: cpu_get_tb_cpu_=
+state: Assertion `flags =3D=3D rebuild_hflags_internal(env)' failed.
+> Aborted (core dumped)
+>=20
+> $ git describe
+> v4.2.0
+>=20
+>=20
+> What should be the next step? Should this be reported as a bug?
 
---00000000000058a540059989d12b--
+In this case we might already have the fix, but if Alex patch doesn't=20
+help, you are always welcome to open a bug report:
+https://bugs.launchpad.net/qemu/+filebug
+This help to have notes/progress gathered.
+
+> On Tue, Dec 10, 2019 at 9:12 PM Niek Linnenbank=20
+> <nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>> wrote:
+>=20
+>     Hi Philippe,
+>=20
+>     On Tue, Dec 10, 2019 at 9:26 AM Philippe Mathieu-Daud=C3=A9
+>     <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
+>=20
+>         On 12/9/19 10:37 PM, Niek Linnenbank wrote:
+>          > Hi Philippe,
+>          >
+>          > On Tue, Dec 3, 2019 at 9:47 AM Philippe Mathieu-Daud=C3=A9
+>         <philmd@redhat.com <mailto:philmd@redhat.com>
+>          > <mailto:philmd@redhat.com <mailto:philmd@redhat.com>>> wrote:
+>          >
+>          >=C2=A0 =C2=A0 =C2=A0On 12/2/19 10:09 PM, Niek Linnenbank wrote:
+>          >=C2=A0 =C2=A0 =C2=A0 > Dear QEMU developers,
+>          >=C2=A0 =C2=A0 =C2=A0 >
+>          >=C2=A0 =C2=A0 =C2=A0 > Hereby I would like to contribute the fo=
+llowing set of
+>         patches to
+>          >=C2=A0 =C2=A0 =C2=A0QEMU
+>          >=C2=A0 =C2=A0 =C2=A0 > which add support for the Allwinner H3 S=
+ystem on Chip
+>         and the
+>          >=C2=A0 =C2=A0 =C2=A0 > Orange Pi PC machine. The following feat=
+ures and
+>         devices are
+>          >=C2=A0 =C2=A0 =C2=A0supported:
+>          >=C2=A0 =C2=A0 =C2=A0 >
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* SMP (Quad Core Cortex A7)
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* Generic Interrupt Controll=
+er configuration
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* SRAM mappings
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* Timer device (re-used from=
+ Allwinner A10)
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* UART
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* SD/MMC storage controller
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* EMAC ethernet connectivity
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* USB 2.0 interfaces
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* Clock Control Unit
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* System Control module
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0* Security Identifier device
+>          >
+>          >=C2=A0 =C2=A0 =C2=A0Awesome!
+>          >
+>          >=C2=A0 =C2=A0 =C2=A0 > Functionality related to graphical outpu=
+t such as
+>         HDMI, GPU,
+>          >=C2=A0 =C2=A0 =C2=A0 > Display Engine and audio are not include=
+d. Recently
+>         released
+>          >=C2=A0 =C2=A0 =C2=A0 > mainline Linux kernels (4.19 up to lates=
+t master) and
+>         mainline U-Boot
+>          >=C2=A0 =C2=A0 =C2=A0 > are known to work. The SD/MMC code is te=
+sted using
+>         bonnie++ and
+>          >=C2=A0 =C2=A0 =C2=A0 > various tools such as fsck, dd and fdisk=
+. The EMAC is
+>         verified
+>          >=C2=A0 =C2=A0 =C2=A0with iperf3
+>          >=C2=A0 =C2=A0 =C2=A0 > using -netdev socket.
+>          >=C2=A0 =C2=A0 =C2=A0 >
+>          >=C2=A0 =C2=A0 =C2=A0 > To build a Linux mainline kernel that ca=
+n be booted by
+>         the Orange
+>          >=C2=A0 =C2=A0 =C2=A0Pi PC
+>          >=C2=A0 =C2=A0 =C2=A0 > machine, simply configure the kernel usi=
+ng the
+>         sunxi_defconfig
+>          >=C2=A0 =C2=A0 =C2=A0configuration:
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=
+=3Darm-linux-gnueabi- make
+>         mrproper
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=
+=3Darm-linux-gnueabi- make
+>         sunxi_defconfig
+>          >=C2=A0 =C2=A0 =C2=A0 >
+>          >=C2=A0 =C2=A0 =C2=A0 > To be able to use USB storage, you need =
+to manually
+>         enable the
+>          >=C2=A0 =C2=A0 =C2=A0corresponding
+>          >=C2=A0 =C2=A0 =C2=A0 > configuration item. Start the kconfig co=
+nfiguration tool:
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=
+=3Darm-linux-gnueabi- make
+>         menuconfig
+>          >=C2=A0 =C2=A0 =C2=A0 >
+>          >=C2=A0 =C2=A0 =C2=A0 > Navigate to the following item, enable i=
+t and save your
+>          >=C2=A0 =C2=A0 =C2=A0configuration:
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0Device Drivers > USB support=
+ > USB Mass Storage support
+>          >=C2=A0 =C2=A0 =C2=A0 >
+>          >=C2=A0 =C2=A0 =C2=A0 > Build the Linux kernel with:
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0$ ARCH=3Darm CROSS_COMPILE=
+=3Darm-linux-gnueabi- make -j5
+>          >=C2=A0 =C2=A0 =C2=A0 >
+>          >=C2=A0 =C2=A0 =C2=A0 > To boot the newly build linux kernel in =
+QEMU with the
+>         Orange Pi
+>          >=C2=A0 =C2=A0 =C2=A0PC machine, use:
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0$ qemu-system-arm -M orangep=
+i -m 512 -nic user
+>         -nographic \
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0 =C2=A0 =C2=A0-kernel /path/=
+to/linux/arch/arm/boot/zImage \
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0 =C2=A0 =C2=A0-append 'conso=
+le=3DttyS0,115200' \
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0 =C2=A0 =C2=A0-dtb
+>         /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb
+>          >=C2=A0 =C2=A0 =C2=A0 >
+>          >=C2=A0 =C2=A0 =C2=A0 > Note that this kernel does not have a ro=
+ot filesystem.
+>         You may
+>          >=C2=A0 =C2=A0 =C2=A0provide it
+>          >=C2=A0 =C2=A0 =C2=A0 > with an official Orange Pi PC image [1] =
+either as an
+>         SD card or as
+>          >=C2=A0 =C2=A0 =C2=A0 > USB mass storage. To boot using the Oran=
+ge Pi PC
+>         Debian image on
+>          >=C2=A0 =C2=A0 =C2=A0SD card,
+>          >=C2=A0 =C2=A0 =C2=A0 > simply add the -sd argument and provide =
+the proper
+>         root=3D kernel
+>          >=C2=A0 =C2=A0 =C2=A0parameter:
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0$ qemu-system-arm -M orangep=
+i -m 512 -nic user
+>         -nographic \
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0 =C2=A0 =C2=A0-kernel /path/=
+to/linux/arch/arm/boot/zImage \
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0 =C2=A0 =C2=A0-append 'conso=
+le=3DttyS0,115200 root=3D/dev/mmcblk0p2' \
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0 =C2=A0 =C2=A0-dtb
+>          >=C2=A0 =C2=A0 =C2=A0/path/to/linux/arch/arm/boot/dts/sun8i-h3-o=
+rangepi-pc.dtb \
+>          >=C2=A0 =C2=A0 =C2=A0 >=C2=A0 =C2=A0 =C2=A0 =C2=A0-sd
+>         OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img
+>          >=C2=A0 =C2=A0 =C2=A0 >
+>          >=C2=A0 =C2=A0 =C2=A0 > Alternatively, you can also choose to bu=
+ild and boot a
+>         recent
+>          >=C2=A0 =C2=A0 =C2=A0buildroot [2]
+>          >=C2=A0 =C2=A0 =C2=A0 > using the orangepi_pc_defconfig or Armbi=
+an image [3]
+>         for Orange
+>          >=C2=A0 =C2=A0 =C2=A0Pi PC.
+>          >
+>          >=C2=A0 =C2=A0 =C2=A0Richard, trying the Armbian image from
+>          > https://apt.armbian.com/pool/main/l/linux-4.20.7-sunxi/ I get:
+>          >
+>          >=C2=A0 =C2=A0 =C2=A0$ arm-softmmu/qemu-system-arm -M orangepi -=
+m 512 -nic user \
+>          >=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-append 'console=3DttyS0,1152=
+00' \
+>          >=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-kernel boot/vmlinuz-4.20.7-s=
+unxi \
+>          >=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-dtb
+>         usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb \
+>          >=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-serial stdio -d unimp
+>          >=C2=A0 =C2=A0 =C2=A0Uncompressing Linux... done, booting the ke=
+rnel.
+>          >=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device write (size 4, va=
+lue
+>         0x16aa0001, offset 0x0)
+>          >=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device read (size 4, off=
+set 0x0)
+>          >=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device read (size 4, off=
+set 0x0)
+>          >=C2=A0 =C2=A0 =C2=A0rtc: unimplemented device read (size 4, off=
+set 0x8)
+>          >=C2=A0 =C2=A0 =C2=A0qemu-system-arm: target/arm/helper.c:11359:
+>         cpu_get_tb_cpu_state:
+>          >=C2=A0 =C2=A0 =C2=A0Assertion `flags =3D=3D rebuild_hflags_inte=
+rnal(env)' failed.
+>          >=C2=A0 =C2=A0 =C2=A0Aborted (core dumped)
+>          >
+>          >
+>          > I'm trying to reproduce the error you reported here with my
+>         patch set on
+>          > latest master,
+>          > but so far without any result. The host OS I'm using is
+>         Ubuntu 18.04.3
+>          > LTS on x86_64.
+>          > I ran several times using the same 4.20.7-sunxi kernel and
+>         same command
+>          > line.
+>          >
+>          > Some questions that might help:
+>          > 1) Are there any specific steps you did in order to produce
+>         this error?
+>=20
+>         I build QEMU with:
+>=20
+>         ./configure --enable-trace-backends=3Dlog --extra-cflags=3D-ggdb
+>         --enable-debug
+>=20
+>          > 2) Could this be a known / existing issue?
+>          > 3) How many times did you see this error?
+>=20
+>         Always
+>=20
+>          > 4) Are you also using Ubuntu 18.04.3 LTS on x86_64, or a
+>         different host OS?
+>=20
+>         Host is Fedora 30.
+>=20
+>=20
+>     OK thanks, I will try again using the info above after I finished
+>     reworking the other patch comments.
+>=20
+>     Niek

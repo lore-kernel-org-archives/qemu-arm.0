@@ -1,98 +1,104 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp586936lff;
-        Thu, 12 Dec 2019 04:50:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzUs0roFCTlUBsTosPLj1x7tCcJ2/C1NVsCmSW9W3yTnzDqEEhj+66usFDlatkPovD2qUiE
-X-Received: by 2002:ae9:ee11:: with SMTP id i17mr7829127qkg.333.1576155051857;
-        Thu, 12 Dec 2019 04:50:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576155051; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp755447lff;
+        Thu, 12 Dec 2019 07:06:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwJN4YVOf/L1iZ0/t4rjCzyPBKkVsj7Qmzi2Tsn8lZMWBdmhVHSnFf/bVTuofaMXi+vh5CZ
+X-Received: by 2002:a05:620a:16d1:: with SMTP id a17mr8383203qkn.49.1576163180710;
+        Thu, 12 Dec 2019 07:06:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576163180; cv=none;
         d=google.com; s=arc-20160816;
-        b=O06eGxukwWiA2XDtO4FudNN+b2EVF2FkuOVOuSRlj/jTyKyePjmMUtdoRX2VzJ3rHH
-         FLjj9h/RNxYaMth/iuqrWjtjnOzrUj26HL83oQMmndMMdH2Ba1qXYnzqW7oBG5Ofat7m
-         tU08BMdjoJ/cBOZQ3AYadroRvH8i+i8Xg++8fgeDl/y74hH2kSGHk989E0K4OZ8czORt
-         8/zIXWjUH9ZbtiXnozk//bogd11xAcPt2LuhkcwqzNVRpkkJGTU2ZvrA1kYrDuYz/GYt
-         ekcCDDK6PBivc0vDciUHL7bpyMJJk3Nked7wJ1U3fiCEeOlcSYtLsMN9UdTKTZLrbxCg
-         4EEA==
+        b=hRngvLdv1lWTqFh9CjDvE0dF6yLr2xa7HKZKclnMfAU9yNAE5Djdvxy5IumB23kr7a
+         zpnMm0N7LUoTtY6kkHGzu2n2axJrP2hKgTrYURHL1R5JQDC0kbFOqI16fVvUhhAyFdYI
+         zfGIVSVJBp9WuaudkQhCPMp71KcY8T5u0R2tpNX5zM+MUWc1oT6OEnk01hsu8ut1ZK+s
+         cQj+z3VTz5kmJN6YgW8eWsakr1F17h+Q2dJup7UcIBCahfHYMSsMKAqN4M9Rf5OfLIKl
+         7+jOfTsln5Fb2sIN852vq2tFqy8+SC+yJVpC13pGxv/BvPXCOVtsIXazPN9WaacxHxju
+         4Mig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=e3eBk9H3wmrRYV94a1hWXPBU9DHclXPvjVNKrXohu3g=;
-        b=DN17HKEdZNZ/20eOZJK/TA3w2ILsFMIWFI5VPaa663jrqrhpqkwgnEL/ZYylyzz/Ru
-         FlJldAp4W3ZAD6FLIQGXAc/m1CsaUMWKq4bz/PdiyQbSdCYTlOuSksIGP62P5o7s4CsS
-         DgYFx1QqRKr0jbuvyLPxrUGIdV8Twg87FEoVM02aDc9Twq+G2tSP4VH+Dmhi7J+zGhWA
-         Jl6C87SgTBeu6+AYUNU68xOyZAer3juztcx/mNX7xtQMxgQkSSPUfcGn4/qRSLHz4oTL
-         cRBXYLTCljRREtmqCTTnx4Pu7bHYZyT4v8BtUjMlyRkxnuUfGhrcQBJK5Flc1sainKbQ
-         LWGw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=tRvGMRJef+LneyeTXCaAFtX1/0kP21CjuhwNYky3o8M=;
+        b=S5dyexdEOANYHGQUaHlp4cfn+Y+6OvzzR9GJNBqkopFRPJf5Ex4mZoixBK+u//nVqS
+         7rdlvxuo+L7G2yGnojBvVlvoPit4Od6bh3/btYr9vfVAQnjxPDtiiXfiw3yqhrnUvODn
+         B2q13YIhEryCl5JUlv5d+t+O/0I1LyFrgOBmvCCLKin5eQvhuQ1tkqg/jmAnmheeYWwf
+         KpxKVSIihzEWX9hN8dB/RqpjFWyfPZmqwI19OGIw7zBb/igej4GhUwY7mhTFsSurrRVN
+         POO3NqsmM0ZrNhjFW6V0VqUCMKPdssiRZbiBUN/DLjwFhZNei34YxKRvai9C3BnG5gVE
+         hV/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TgxAmmwC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=isNuc9B0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e22si2751047qte.73.2019.12.12.04.50.51
+        by mx.google.com with ESMTPS id g16si2678142qkl.84.2019.12.12.07.06.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 04:50:51 -0800 (PST)
+        Thu, 12 Dec 2019 07:06:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TgxAmmwC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=isNuc9B0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58798 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:32832 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifNvf-0000Ko-6S
-	for alex.bennee@linaro.org; Thu, 12 Dec 2019 07:50:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37872)
+	id 1ifQ2l-0008G3-Og
+	for alex.bennee@linaro.org; Thu, 12 Dec 2019 10:06:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47414)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1ifNtn-0006Aw-0p
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 07:48:56 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1ifQ2Y-0008DM-R8
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 10:06:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1ifNtl-0005sE-Pk
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 07:48:54 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:50051
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1ifQ2W-0006w0-EH
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 10:06:06 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:42233)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1ifNtl-0005qz-K7
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 07:48:53 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1ifQ2W-0006tX-7N
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 10:06:04 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576154933;
+ s=mimecast20190719; t=1576163163;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=e3eBk9H3wmrRYV94a1hWXPBU9DHclXPvjVNKrXohu3g=;
- b=TgxAmmwCe5jLHP6xzcWAPoYlQ5GChduaRnfHaJzWOCViXOiKIrd+eh7ednU6kHGAO5KDic
- EW1VagCdfztZGOpFTnWsv7/13wmFC+yWgqBUF7TNNKUkYE0l1hJSZQGC4pg/+aSJeD7um4
- qEwtvvKrXK4bFhP88uBgKp9+yk2BHQs=
+ bh=tRvGMRJef+LneyeTXCaAFtX1/0kP21CjuhwNYky3o8M=;
+ b=isNuc9B0LYqeMl6AbyPrKiqtdoADOldi+YZwINpM0qRoDoyN3PRfNLS0NsYQvtGmBRJ6I+
+ pHf9kvea5HMGpB/WcUb7eN1DL/FK1tZLcMi6EDwVFgbHF4KMymQ+IAYX6TknhcjVdAGEi9
+ RqQfHt7sie/BhDZwG295id8nU0HAO50=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-31-Xs1KILyFN56-Kb0m_Vc_dQ-1; Thu, 12 Dec 2019 07:48:49 -0500
+ us-mta-2-xhfBSYRdOJO6i7ePqdObcg-1; Thu, 12 Dec 2019 10:05:45 -0500
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1BA7F107ACC4;
- Thu, 12 Dec 2019 12:48:48 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
- (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4E91710013A1;
- Thu, 12 Dec 2019 12:48:46 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 2/2] numa: properly check if numa is supported
-Date: Thu, 12 Dec 2019 13:48:56 +0100
-Message-Id: <1576154936-178362-3-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1576154936-178362-1-git-send-email-imammedo@redhat.com>
-References: <1576154936-178362-1-git-send-email-imammedo@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6E9F3DBC8;
+ Thu, 12 Dec 2019 15:05:43 +0000 (UTC)
+Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C01B810013A1;
+ Thu, 12 Dec 2019 15:05:35 +0000 (UTC)
+Subject: Re: [PATCH for-5.0 v11 00/20] VIRTIO-IOMMU device
+To: "Michael S. Tsirkin" <mst@redhat.com>
+References: <20191122182943.4656-1-eric.auger@redhat.com>
+ <20191211113936-mutt-send-email-mst@kernel.org>
+ <306e4e92-4e86-7a82-3777-fd85ffd0303c@redhat.com>
+ <20191211154027-mutt-send-email-mst@kernel.org>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <ffd6c0a3-88e9-ca37-ef9e-c2544dd88e80@redhat.com>
+Date: Thu, 12 Dec 2019 16:05:34 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
+MIME-Version: 1.0
+In-Reply-To: <20191211154027-mutt-send-email-mst@kernel.org>
+Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: Xs1KILyFN56-Kb0m_Vc_dQ-1
+X-MC-Unique: xhfBSYRdOJO6i7ePqdObcg-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,81 +110,239 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Tao Xu <tao3.xu@intel.com>,
- qemu-stable@nongnu.org, Leif Lindholm <leif.lindholm@linaro.org>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, quintela@redhat.com, jean-philippe.brucker@arm.com,
+ qemu-devel@nongnu.org, peterx@redhat.com, armbru@redhat.com,
+ bharatb.linux@gmail.com, qemu-arm@nongnu.org, dgilbert@redhat.com,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LwF8e23mZhA7
+X-TUID: TZDDJJBhwNX3
 
-Commit aa57020774b, by mistake used MachineClass::numa_mem_supported
-to check if NUMA is supported by machine and also as unrelated change
-set it to true for sbsa-ref board.
+Hi Michael,
 
-Luckily change didn't break machines that support NUMA, as the field
-is set to true for them.
+On 12/11/19 9:40 PM, Michael S. Tsirkin wrote:
+> On Wed, Dec 11, 2019 at 05:48:05PM +0100, Auger Eric wrote:
+>> Hi Michael,
+>>
+>> On 12/11/19 5:40 PM, Michael S. Tsirkin wrote:
+>>> On Fri, Nov 22, 2019 at 07:29:23PM +0100, Eric Auger wrote:
+>>>> This series implements the QEMU virtio-iommu device.
+>>>>
+>>>> This matches the v0.12 spec and the corresponding virtio-iommu
+>>>> driver upstreamed in 5.3.
+>>>>
+>>>> The pci proxy for the virtio-iommu device is instantiated using
+>>>> "-device virtio-iommu-pci". This series still relies on ACPI IORT/DT
+>>>> integration. Note the ACPI IORT integration is not yet upstreamed
+>>>> and testing needs to be based on Jean-Philippe's additional
+>>>> kernel patches [1].
+>>>
+>>> Or the config space approach? I really liked that one.
+>> Yes this corresponds to the paragraph below.
+>>>
+>>>>
+>>>> Work is ongoing to remove IORT adherence and allow the
+>>>> bindings between the IOMMU and the root complex to be defined
+>>>> and written into the PCI device configuration space. The outcome
+>>>> of this work is uncertain at this stage though. See [2].
+> 
+> Oh right. Why is it uncertain? Anything can be done to help?
 
-But the field is not intended for checking if NUMA is supported and
-will be flipped to false within this release for new machine types.
+Jean's series was sent on the same day as this QEMU respin. My
+understanding is we still need a way to handle platform devices. Also
+the binding info layout needs to be revised and integrated into the spec
++ voted. Those are the uncertainties I wanted to point out.
 
-Fix it:
- - by using previously used condition
-      !mc->cpu_index_to_instance_props || !mc->get_default_cpu_node_id
-   the first time and then use MachineState::numa_state down the road
-   to check if NUMA is supported
- - dropping stray sbsa-ref chunk
+Thanks
 
-Fixes: aa57020774b690a22be72453b8e91c9b5a68c516
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
-CC: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
-CC: Peter Maydell <peter.maydell@linaro.org>
-CC: Leif Lindholm <leif.lindholm@linaro.org>
-CC: qemu-arm@nongnu.org
-CC: qemu-stable@nongnu.org
-
-
- hw/arm/sbsa-ref.c | 1 -
- hw/core/machine.c | 4 ++--
- 2 files changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 27046cc..c6261d4 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -791,7 +791,6 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *=
-data)
-     mc->possible_cpu_arch_ids =3D sbsa_ref_possible_cpu_arch_ids;
-     mc->cpu_index_to_instance_props =3D sbsa_ref_cpu_index_to_props;
-     mc->get_default_cpu_node_id =3D sbsa_ref_get_default_cpu_node_id;
--    mc->numa_mem_supported =3D true;
- }
-=20
- static const TypeInfo sbsa_ref_info =3D {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 1689ad3..aa63231 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -958,7 +958,7 @@ static void machine_initfn(Object *obj)
-                                         NULL);
-     }
-=20
--    if (mc->numa_mem_supported) {
-+    if (mc->cpu_index_to_instance_props && mc->get_default_cpu_node_id) {
-         ms->numa_state =3D g_new0(NumaState, 1);
-     }
-=20
-@@ -1102,7 +1102,7 @@ void machine_run_board_init(MachineState *machine)
- {
-     MachineClass *machine_class =3D MACHINE_GET_CLASS(machine);
-=20
--    if (machine_class->numa_mem_supported) {
-+    if (machine->numa_state) {
-         numa_complete_configuration(machine);
-         if (machine->numa_state->num_nodes) {
-             machine_numa_finish_cpu_init(machine);
---=20
-2.7.4
+Eric
+> 
+>> Thanks
+>>
+>> Eric
+>>
+>>>>
+>>>> So only patches 1-11 fully rely on upstreamed kernel code. Others
+>>>> should be considered as RFC.
+>>>>
+>>>> This respin allows people to test on ARM and x86. It also
+>>>> brings migration support (tested on ARM) and various cleanups.
+>>>> Reserved regions are now passed through an array of properties.
+>>>> A libqos test also is introduced to test the virtio-iommu API.
+>>>>
+>>>> Note integration with vhost devices and vfio devices is not part
+>>>> of this series. Please follow Bharat's respins [3].
+>>>>
+>>>> The 1st Patch ("migration: Support QLIST migration") was sent
+>>>> separately [4].
+>>>>
+>>>> Best Regards
+>>>>
+>>>> Eric
+>>>>
+>>>> This series can be found at:
+>>>> https://github.com/eauger/qemu/tree/v4.2-rc2-virtio-iommu-v11
+>>>>
+>>>> [1] kernel branch to be used for guest
+>>>>     https://github.com/eauger/linux/tree/v5.4-rc8-virtio-iommu-iort
+>>>> [2] [RFC 00/13] virtio-iommu on non-devicetree platforms
+>>>> [3] VFIO/VHOST integration is not part of this series. Please follow
+>>>>     [PATCH RFC v5 0/5] virtio-iommu: VFIO integration respins
+>>>> [4] [PATCH v6] migration: Support QLIST migration
+>>>>
+>>>> Testing:
+>>>> - tested with guest using virtio-net-pci
+>>>>   (,vhost=off,iommu_platform,disable-modern=off,disable-legacy=on)
+>>>>   and virtio-blk-pci
+>>>> - migration on ARM
+>>>> - on x86 PC machine I get some AHCI non translated transactions,
+>>>>   very early. This does not prevent the guest from boot and behaving
+>>>>   properly. Warnings look like:
+>>>> qemu-system-x86_64: virtio_iommu_translate sid=250 is not known!!
+>>>> qemu-system-x86_64: no buffer available in event queue to report event
+>>>> qemu-system-x86_64: AHCI: Failed to start FIS receive engine: bad FIS
+>>>> receive buffer address
+>>>>
+>>>> History:
+>>>>
+>>>> v10 -> v11:
+>>>> - introduce virtio_iommu_handle_req macro
+>>>> - migration support
+>>>> - introduce DEFINE_PROP_INTERVAL and pass reserved regions
+>>>>   through an array of those
+>>>> - domain gtree simplification
+>>>>
+>>>> v9 -> v10:
+>>>> - rebase on 4.1.0-rc2, compliance with 0.12 spec
+>>>> - removed ACPI part
+>>>> - cleanup (see individual change logs)
+>>>> - moved to a PATCH series
+>>>>
+>>>> v8 -> v9:
+>>>> - virtio-iommu-pci device needs to be instantiated from the command
+>>>>   line (RID is not imposed anymore).
+>>>> - tail structure properly initialized
+>>>>
+>>>> v7 -> v8:
+>>>> - virtio-iommu-pci added
+>>>> - virt instantiation modified
+>>>> - DT and ACPI modified to exclude the iommu RID from the mapping
+>>>> - VIRTIO_IOMMU_F_BYPASS, VIRTIO_F_VERSION_1 features exposed
+>>>>
+>>>> v6 -> v7:
+>>>> - rebase on qemu 3.0.0-rc3
+>>>> - minor update against v0.7
+>>>> - fix issue with EP not on pci.0 and ACPI probing
+>>>> - change the instantiation method
+>>>>
+>>>> v5 -> v6:
+>>>> - minor update against v0.6 spec
+>>>> - fix g_hash_table_lookup in virtio_iommu_find_add_as
+>>>> - replace some error_reports by qemu_log_mask(LOG_GUEST_ERROR, ...)
+>>>>
+>>>> v4 -> v5:
+>>>> - event queue and fault reporting
+>>>> - we now return the IOAPIC MSI region if the virtio-iommu is instantiated
+>>>>   in a PC machine.
+>>>> - we bypass transactions on MSI HW region and fault on reserved ones.
+>>>> - We support ACPI boot with mach-virt (based on IORT proposal)
+>>>> - We moved to the new driver naming conventions
+>>>> - simplified mach-virt instantiation
+>>>> - worked around the disappearing of pci_find_primary_bus
+>>>> - in virtio_iommu_translate, check the dev->as is not NULL
+>>>> - initialize as->device_list in virtio_iommu_get_as
+>>>> - initialize bufstate.error to false in virtio_iommu_probe
+>>>>
+>>>> v3 -> v4:
+>>>> - probe request support although no reserved region is returned at
+>>>>   the moment
+>>>> - unmap semantics less strict, as specified in v0.4
+>>>> - device registration, attach/detach revisited
+>>>> - split into smaller patches to ease review
+>>>> - propose a way to inform the IOMMU mr about the page_size_mask
+>>>>   of underlying HW IOMMU, if any
+>>>> - remove warning associated with the translation of the MSI doorbell
+>>>>
+>>>> v2 -> v3:
+>>>> - rebase on top of 2.10-rc0 and especially
+>>>>   [PATCH qemu v9 0/2] memory/iommu: QOM'fy IOMMU MemoryRegion
+>>>> - add mutex init
+>>>> - fix as->mappings deletion using g_tree_ref/unref
+>>>> - when a dev is attached whereas it is already attached to
+>>>>   another address space, first detach it
+>>>> - fix some error values
+>>>> - page_sizes = TARGET_PAGE_MASK;
+>>>> - I haven't changed the unmap() semantics yet, waiting for the
+>>>>   next virtio-iommu spec revision.
+>>>>
+>>>> v1 -> v2:
+>>>> - fix redefinition of viommu_as typedef
+>>>>
+>>>>
+>>>>
+>>>> Eric Auger (20):
+>>>>   migration: Support QLIST migration
+>>>>   virtio-iommu: Add skeleton
+>>>>   virtio-iommu: Decode the command payload
+>>>>   virtio-iommu: Add the iommu regions
+>>>>   virtio-iommu: Endpoint and domains structs and helpers
+>>>>   virtio-iommu: Implement attach/detach command
+>>>>   virtio-iommu: Implement map/unmap
+>>>>   virtio-iommu: Implement translate
+>>>>   virtio-iommu: Implement fault reporting
+>>>>   virtio-iommu-pci: Add virtio iommu pci support
+>>>>   hw/arm/virt: Add the virtio-iommu device tree mappings
+>>>>   qapi: Introduce DEFINE_PROP_INTERVAL
+>>>>   virtio-iommu: Implement probe request
+>>>>   virtio-iommu: Handle reserved regions in the translation process
+>>>>   virtio-iommu-pci: Add array of Interval properties
+>>>>   hw/arm/virt-acpi-build: Introduce fill_iort_idmap helper
+>>>>   hw/arm/virt-acpi-build: Add virtio-iommu node in IORT table
+>>>>   virtio-iommu: Support migration
+>>>>   pc: Add support for virtio-iommu-pci
+>>>>   tests: Add virtio-iommu test
+>>>>
+>>>>  hw/arm/virt-acpi-build.c         |  91 ++-
+>>>>  hw/arm/virt.c                    |  53 +-
+>>>>  hw/core/qdev-properties.c        |  90 +++
+>>>>  hw/i386/acpi-build.c             |  72 +++
+>>>>  hw/i386/pc.c                     |  15 +-
+>>>>  hw/virtio/Kconfig                |   5 +
+>>>>  hw/virtio/Makefile.objs          |   2 +
+>>>>  hw/virtio/trace-events           |  22 +
+>>>>  hw/virtio/virtio-iommu-pci.c     |  91 +++
+>>>>  hw/virtio/virtio-iommu.c         | 952 +++++++++++++++++++++++++++++++
+>>>>  include/exec/memory.h            |   6 +
+>>>>  include/hw/acpi/acpi-defs.h      |  21 +-
+>>>>  include/hw/arm/virt.h            |   2 +
+>>>>  include/hw/i386/pc.h             |   2 +
+>>>>  include/hw/pci/pci.h             |   1 +
+>>>>  include/hw/qdev-properties.h     |   3 +
+>>>>  include/hw/virtio/virtio-iommu.h |  67 +++
+>>>>  include/migration/vmstate.h      |  21 +
+>>>>  include/qemu/queue.h             |  39 ++
+>>>>  include/qemu/typedefs.h          |   1 +
+>>>>  migration/trace-events           |   5 +
+>>>>  migration/vmstate-types.c        |  70 +++
+>>>>  qdev-monitor.c                   |   1 +
+>>>>  tests/Makefile.include           |   2 +
+>>>>  tests/libqos/virtio-iommu.c      | 177 ++++++
+>>>>  tests/libqos/virtio-iommu.h      |  45 ++
+>>>>  tests/test-vmstate.c             | 170 ++++++
+>>>>  tests/virtio-iommu-test.c        | 261 +++++++++
+>>>>  28 files changed, 2253 insertions(+), 34 deletions(-)
+>>>>  create mode 100644 hw/virtio/virtio-iommu-pci.c
+>>>>  create mode 100644 hw/virtio/virtio-iommu.c
+>>>>  create mode 100644 include/hw/virtio/virtio-iommu.h
+>>>>  create mode 100644 tests/libqos/virtio-iommu.c
+>>>>  create mode 100644 tests/libqos/virtio-iommu.h
+>>>>  create mode 100644 tests/virtio-iommu-test.c
+>>>>
+>>>> -- 
+>>>> 2.20.1
+>>>
+>>>
+> 
+> 
 

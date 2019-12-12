@@ -1,104 +1,95 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp765537lff;
-        Thu, 12 Dec 2019 07:13:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyvXAlIREYOsl0J4fScc5K4caF1QmCUGHGZVof7+fnnWT9vEAfjDMGE6xuX4MdO4g/1/sP+
-X-Received: by 2002:aed:25a4:: with SMTP id x33mr8075869qtc.165.1576163613392;
-        Thu, 12 Dec 2019 07:13:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576163613; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp999331lff;
+        Thu, 12 Dec 2019 10:13:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy7tDUKwof+T/Bm8n4uqvuGVvnyBRXzQO+IBwkdYvE9pfVdhrNpZ1ZymQM3cVEPjPC+S2Kn
+X-Received: by 2002:a9d:1988:: with SMTP id k8mr9748707otk.316.1576174383537;
+        Thu, 12 Dec 2019 10:13:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576174383; cv=none;
         d=google.com; s=arc-20160816;
-        b=kTKYf9EC0GNYZvGSN1HWtWtbLnpZ1E9/okzxca7JxxODlC7PSlmvmyf1HNipWfIwZd
-         hMu/q6s43OKd68FgmB+F8Lxkn2ZESJcy8eALqx++kT2n1mX78CBH2r7z1yOpkPSrMwxA
-         /tq0xG+4o8XZzXmX9COLhYQwsa32tQEh5GOXkJOB3Gn7Jr+fmpbLunIpljEbK7hXtHNg
-         6fH5bz8DCjbT/ZRcOX2nHLE6isQD5sEALyt/MxDEqIkEAdXnrh7xKWYoGSytNdXAlLPB
-         /l5hNJgH+lBhIYG1QodzAJSDolKwvZW1YpNvpvIZkOyFeOrnTXTEN5YiPbggqbs0psjw
-         7GMg==
+        b=s9DQw2T6pv7S5P/i0b7D7+gHvVaxVKAbKA468JRyizGhne2xVZCFE8oT04H8f2fPiz
+         ovgv4WU4tJYDYZERXEI8n0jm8P/43CiZv5+oQHpymVR3Tw3uq7wZL3K9vM/rjS6f+SKk
+         6Um/MAhjsHD0x62FFnENr/SFZph9ZAzIiZhJi+MXbmAULHA/4+DKIna6cD1lNF+B2vU5
+         OoV/ctmyAElhToqTsQoaE/G3ZB2hWe//tSZ5DFhxif0BAALzI21Eun4/skJOByO90c8M
+         /rBhhRD688aJCJaZ+I6LiHzsXACfa6PkRyGqmkejmE5YIu72Tb0oXkXxqcXKraGA0EhD
+         vT3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=N4fGbcXqbsKwRu/bOJBiDOmHdAb7I+sxr97ThhtjbYs=;
-        b=TnLHQTRgPnstF0Ldu4Ght9Q5WmS/FEWJXYF+hVK7L54AY8FPTNSG5EuQplDO0PDgTH
-         7LVf8Uawe2mTK2Of7gD0R4lF0SO9yb/iWeku99HXnI/33ouy4oKDBFHQakXXMYcG/C8W
-         /Al9tcJyVXQsqQmg/rOovaMGG9+WjE2V1OyijbGQGQVAYyhrs5FNYeYCPYCjgaeFbS1D
-         J9Iofk30YzPZWaV52mI1fqGm32pI6uW3dVPCEG+CXq4OGvL2o06lTKsITNUpQpXUosIS
-         TBkEAhvPPIcva8u7ftMQ+zGpuuWyiZCnd4ypsIDYnDymgh0AhwLJdyzKN8z7wtT4+qD8
-         mhRQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=2EL/bGHWUdBeUlnl5qW+9PCRIIH7sgKnghtEX7B2zvU=;
+        b=Y1HlLBEILI5hCoBwLkc479gv+ylnrdfwdsjloCpUpF39bIdAEA53LwaYijFfycjExq
+         HmQCt9/PyK+r35VlqQG2PlXIKOLfnieKG075TY2uwKWysCSkzgEbtLeSkxPlt66elwbk
+         PuK+Kd4WDNAR4ys+QHufRkzS3gI5LTFJqYjXdbvZ/9+VCr23MfByUlku48WkIflN/42q
+         Bn1RPwZKd7aM8kj+V36CCKq4FBciBQTqGhSrjlNEfj5Kys7NSJXDKCU63vq9nOpOp0j2
+         fxBQrSZHtRnwS/DbFeewN12+TUJCRJac2LEARn2VxqKqgdOE6kMA3lqT1/pPbhDOEwRl
+         9rzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g2+Q7E4u;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hgtC4VrA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c20si2809221qvx.129.2019.12.12.07.13.33
+        by mx.google.com with ESMTPS id a93si3643534otc.24.2019.12.12.10.13.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 07:13:33 -0800 (PST)
+        Thu, 12 Dec 2019 10:13:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g2+Q7E4u;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hgtC4VrA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32894 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35384 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifQ9k-0001sj-Kg
-	for alex.bennee@linaro.org; Thu, 12 Dec 2019 10:13:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48692)
+	id 1ifSxS-000544-75
+	for alex.bennee@linaro.org; Thu, 12 Dec 2019 13:13:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43821)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1ifQ9b-0001sW-PN
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 10:13:25 -0500
+ (envelope-from <drjones@redhat.com>) id 1ifSLH-0002Dt-8m
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 12:33:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1ifQ9Z-0001zV-J2
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 10:13:23 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:39868
+ (envelope-from <drjones@redhat.com>) id 1ifSLE-0002fC-3u
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 12:33:33 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:45979
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1ifQ9Z-0001wu-Bk
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 10:13:21 -0500
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1ifSLD-0002aO-R0
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 12:33:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576163600;
+ s=mimecast20190719; t=1576172009;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=N4fGbcXqbsKwRu/bOJBiDOmHdAb7I+sxr97ThhtjbYs=;
- b=g2+Q7E4u3YOcWXx6wmkvSSrXmGz6VJyofQkGO2wJvEi773ci/YUnw116aZ7oXBjX8gs5RG
- UIsnwvlkYnIpUHE73+6r7gRUtD3A6iIwo4FuTlgVk8sZac6t8PKofJ2o49cSiXHrt4qBHE
- VT4UxJdYeIis2TEpp+h7OPlNsGGtcW0=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=2EL/bGHWUdBeUlnl5qW+9PCRIIH7sgKnghtEX7B2zvU=;
+ b=hgtC4VrAgyegygxbMgiq/u7L+qvcVIa/UMD0fStmZAG3cxynJznFoCVUltacpQJiuRyrIp
+ QsHlidasPYoA1FwOLtYX9FodhBmYB83lFq6cxbqtYJanMYFBIMjn1qA7bQSl4xKOL+pP7m
+ ioU/frM2UXrDAM9OEVYavjAk1zxZxOk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-144-DU9iWiCGMEatQzC071nuYg-1; Thu, 12 Dec 2019 10:13:19 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-111-ATM9rdhPN16XJQ892c8U_g-1; Thu, 12 Dec 2019 12:33:26 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 73249800D41;
- Thu, 12 Dec 2019 15:13:17 +0000 (UTC)
-Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5847A67E46;
- Thu, 12 Dec 2019 15:13:08 +0000 (UTC)
-Subject: Re: [PATCH for-5.0 v11 12/20] qapi: Introduce DEFINE_PROP_INTERVAL
-To: Markus Armbruster <armbru@redhat.com>
-References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-13-eric.auger@redhat.com>
- <87wob17n6j.fsf@dusky.pond.sub.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <66ae0999-bdd8-6b54-f550-f036dafc982b@redhat.com>
-Date: Thu, 12 Dec 2019 16:13:06 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 92E02800D41;
+ Thu, 12 Dec 2019 17:33:24 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AA78319C4F;
+ Thu, 12 Dec 2019 17:33:21 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Subject: [RFC PATCH v2 0/5] target/arm/kvm: Adjust virtual time
+Date: Thu, 12 Dec 2019 18:33:15 +0100
+Message-Id: <20191212173320.11610-1-drjones@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87wob17n6j.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: DU9iWiCGMEatQzC071nuYg-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: ATM9rdhPN16XJQ892c8U_g-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,311 +101,125 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
- quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- eric.auger.pro@gmail.com
+Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org,
+ richard.henderson@linaro.org, guoheyi@huawei.com, msys.mizuma@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CH6McAeIfj1Z
+X-TUID: m4ieqBIqo+fN
 
-Hi Markus,
+v2:
+ - Reworked it enough that I brought back the RFC tag and retitled the
+   series. Also had to drop r-b's from a couple of patches, and even
+   drop patches.
+ - Changed approach from writing the QEMU virtual time to the guest
+   vtime counter to saving and restoring the guest vtime counter.
+ - Changed the kvm-adjvtime property, which was off by default, to a
+   kvm-no-adjvtime property, which is also off by default, meaning the
+   effective "adjust vtime" property is now on by default (but only
+   for 5.0 virt machine types and later)
 
-On 12/12/19 1:17 PM, Markus Armbruster wrote:
-> Eric Auger <eric.auger@redhat.com> writes:
-> 
->> Introduce a new property defining a labelled interval:
->> <low address>,<high address>,label.
->>
->> This will be used to encode reserved IOVA regions. The label
->> is left undefined to ease reuse accross use cases.
-> 
-> What does the last sentence mean?
-The dilemma was shall I specialize this property such as ReservedRegion
-or shall I leave it generic enough to serve somebody else use case. I
-first chose the latter but now I think I should rather call it something
-like ReservedRegion as in any case it has addresses and an integer label.
-> 
->> For instance, in virtio-iommu use case, reserved IOVA regions
->> will be passed by the machine code to the virtio-iommu-pci
->> device (an array of those). The label will match the
->> virtio_iommu_probe_resv_mem subtype value:
->> - VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
->> - VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
->>
->> This is used to inform the virtio-iommu-pci device it should
->> bypass the MSI region: 0xfee00000, 0xfeefffff, 1.
-> 
-> So the "label" part of "<low address>,<high address>,label" is a number?
-yes it is.
-> 
-> Is a number appropriate for your use case, or would an enum be better?
-I think a number is OK. There might be other types of reserved regions
-in the future. Also if we want to allow somebody else to reuse that
-property in another context, I would rather leave it open?
-> 
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com> ---
->> hw/core/qdev-properties.c | 90 ++++++++++++++++++++++++++++++++++++
->> include/exec/memory.h | 6 +++ include/hw/qdev-properties.h | 3 ++
->> include/qemu/typedefs.h | 1 + 4 files changed, 100 insertions(+)
-> 
-> Subject has 'qapi:', but it's actually about qdev.  Please adjust the subject.
-OK
-> 
->> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
->> index ac28890e5a..8d70f34e37 100644
->> --- a/hw/core/qdev-properties.c
->> +++ b/hw/core/qdev-properties.c
->> @@ -13,6 +13,7 @@
->>  #include "qapi/visitor.h"
->>  #include "chardev/char.h"
->>  #include "qemu/uuid.h"
->> +#include "qemu/cutils.h"
->>  
->>  void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
->>                                    Error **errp)
->> @@ -585,6 +586,95 @@ const PropertyInfo qdev_prop_macaddr = {
->>      .set   = set_mac,
->>  };
->>  
->> +/* --- Labelled Interval --- */
->> +
->> +/*
->> + * accepted syntax versions:
-> 
-> "versions"?
-s/versions/version
-> 
->> + *   <low address>,<high address>,<type>
->> + *   where low/high addresses are uint64_t in hexa (feat. 0x prefix)
-> 
-> "hexa" is not a word.
-OK
-> 
-> I'm afraid I don't get the parenthesis.
-I wanted to mention the 0x prefix was needed but as you mentionned below
-it is not needed actually.
-> 
->> + *   and type is an unsigned integer
->> + */
->> +static void get_interval(Object *obj, Visitor *v, const char *name,
->> +                         void *opaque, Error **errp)
->> +{
->> +    DeviceState *dev = DEVICE(obj);
->> +    Property *prop = opaque;
->> +    Interval *interval = qdev_get_prop_ptr(dev, prop);
->> +    char buffer[64];
->> +    char *p = buffer;
->> +
->> +    Snprintf(buffer, sizeof(buffer), "0x%"PRIx64",0x%"PRIx64",%d",
->> +             interval->low, interval->high, interval->type);
-> 
-> interval->type is unsigned.  Use %u, not %d.
-OK
-> 
->> +
->> +    visit_type_str(v, name, &p, errp);
->> +}
->> +
->> +static void set_interval(Object *obj, Visitor *v, const char *name,
->> +                         void *opaque, Error **errp)
->> +{
->> +    DeviceState *dev = DEVICE(obj);
->> +    Property *prop = opaque;
->> +    Interval *interval = qdev_get_prop_ptr(dev, prop);
->> +    Error *local_err = NULL;
->> +    unsigned int type;
->> +    gchar **fields;
->> +    uint64_t addr;
->> +    char *str;
->> +    int ret;
->> +
->> +    if (dev->realized) {
->> +        qdev_prop_set_after_realize(dev, name, errp);
->> +        return;
->> +    }
->> +
->> +    visit_type_str(v, name, &str, &local_err);
->> +    if (local_err) {
->> +        error_propagate(errp, local_err);
->> +        return;
->> +    }
->> +
->> +    fields = g_strsplit(str, ",", 3);
->> +
->> +    ret = qemu_strtou64(fields[0], NULL, 16, &addr);
-> 
-> Aha, the 0x prefix is actually optional.
-> 
->> +    if (!ret) {
->> +        interval->low = addr;
->> +    } else {
->> +        error_setg(errp, "Failed to decode interval low addr");
->> +        error_append_hint(errp,
->> +                          "should be an address in hexa with 0x prefix\n");
-> 
-> "hexa" is not a word, and the 0x prefix is actually optional.
-OK
-> 
->> +        goto out;
->> +    }
-> 
-> I prefer
-> 
->        if (error) {
->            handle error
->            bail out
->        }
->        handle success
-> 
-> over
-> 
->        if (success) {
->            handle success
->        if (error) {
->            handle error
->            bail out
->        }
-> 
-> In this case:
-> 
->        if (ret) {
->            error_setg(errp, "Failed to decode interval low addr");
->            error_append_hint(errp,
->                              "should be an address in hexa with 0x prefix\n");
->            goto out;
->        }
->        interval->low = addr;
-OK
-> 
-> 
->> +
->> +    ret = qemu_strtou64(fields[1], NULL, 16, &addr);
-> 
-> Crash if @str doesn't contain ',', because the g_strsplit(str, ",", 3)
-> yields { [0] = str, NULL }.
-> 
->> +    if (!ret) {
->> +        interval->high = addr;
->> +    } else {
->> +        error_setg(errp, "Failed to decode interval high addr");
->> +        error_append_hint(errp,
->> +                          "should be an address in hexa with 0x prefix\n");
->> +        goto out;
->> +    }
->> +
->> +    ret = qemu_strtoui(fields[2], NULL, 10, &type);
-> 
-> Likewise, crash if @str contains only one ','.
-> 
-> I wouldn't use g_strsplit() here.  After
-> 
->     ret = qemu_strtoui(str, &endptr, 16, &interval->low);
-> 
-> @endptr points behind the address.  So:
-> 
->     if (ret || *endptr != ',') {
->         handle error ...
->         goto out
->     }
-> 
->     ret = qemu_strtoui(endptr + 1, &endptr, 16, &interval->high);
-> 
-> and so forth.
-> 
-> Note that the if (ret || *endptr != ',') checks for two distinct errors.
-> Distinct error messages might be more helpful.
-OK I will revisit that.
-> 
->> +    if (!ret) {
->> +        interval->type = type;
->> +    } else {
->> +        error_setg(errp, "Failed to decode interval type");
->> +        error_append_hint(errp, "should be an unsigned int in decimal\n");
->> +    }
->> +out:
->> +    g_free(str);
->> +    g_strfreev(fields);
->> +    return;
->> +}
->> +
->> +const PropertyInfo qdev_prop_interval = {
->> +    .name  = "labelled_interval",
->> +    .description = "Labelled interval, example: 0xFEE00000,0xFEEFFFFF,0",
->> +    .get   = get_interval,
->> +    .set   = set_interval,
->> +};
->> +
->>  /* --- on/off/auto --- */
->>  
->>  const PropertyInfo qdev_prop_on_off_auto = {
->> diff --git a/include/exec/memory.h b/include/exec/memory.h
->> index e499dc215b..e238d1c352 100644
->> --- a/include/exec/memory.h
->> +++ b/include/exec/memory.h
->> @@ -57,6 +57,12 @@ struct MemoryRegionMmio {
->>      CPUWriteMemoryFunc *write[3];
->>  };
->>  
->> +struct Interval {
->> +    hwaddr low;
->> +    hwaddr high;
->> +    unsigned int type;
->> +};
-> 
-> This isn't an interval.  An interval consists of two values, not three.
-> 
-> The third one is called "type" here, and "label" elsewhere.  Pick one
-> and stick to it.
-> 
-> Then pick a name for the triple.  Elsewhere, you call it "labelled
-> interval".
-I would tend to use ReservedRegion now if nobody objects.
-
-Thank you for the review!
+v1:
+ - move from RFC status to v1
+ - put kvm_arm_vm_state_change() in kvm.c to share among kvm32.c and kvm64.=
+c
+ - add r-b's from Richard
 
 
-Eric
-> 
->> +
->>  typedef struct IOMMUTLBEntry IOMMUTLBEntry;
->>  
->>  /* See address_space_translate: bit 0 is read, bit 1 is write.  */
->> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
->> index c6a8cb5516..2ba7c8711b 100644
->> --- a/include/hw/qdev-properties.h
->> +++ b/include/hw/qdev-properties.h
->> @@ -20,6 +20,7 @@ extern const PropertyInfo qdev_prop_chr;
->>  extern const PropertyInfo qdev_prop_tpm;
->>  extern const PropertyInfo qdev_prop_ptr;
->>  extern const PropertyInfo qdev_prop_macaddr;
->> +extern const PropertyInfo qdev_prop_interval;
->>  extern const PropertyInfo qdev_prop_on_off_auto;
->>  extern const PropertyInfo qdev_prop_losttickpolicy;
->>  extern const PropertyInfo qdev_prop_blockdev_on_error;
->> @@ -202,6 +203,8 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
->>      DEFINE_PROP(_n, _s, _f, qdev_prop_drive_iothread, BlockBackend *)
->>  #define DEFINE_PROP_MACADDR(_n, _s, _f)         \
->>      DEFINE_PROP(_n, _s, _f, qdev_prop_macaddr, MACAddr)
->> +#define DEFINE_PROP_INTERVAL(_n, _s, _f)         \
->> +    DEFINE_PROP(_n, _s, _f, qdev_prop_interval, Interval)
->>  #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
->>      DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
->>  #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
->> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
->> index 375770a80f..a827c9a3fe 100644
->> --- a/include/qemu/typedefs.h
->> +++ b/include/qemu/typedefs.h
->> @@ -58,6 +58,7 @@ typedef struct ISABus ISABus;
->>  typedef struct ISADevice ISADevice;
->>  typedef struct IsaDma IsaDma;
->>  typedef struct MACAddr MACAddr;
->> +typedef struct Interval Interval;
->>  typedef struct MachineClass MachineClass;
->>  typedef struct MachineState MachineState;
->>  typedef struct MemoryListener MemoryListener;
-> 
-> 
+This series is inspired by a series[1] posted by Bijan Mottahedeh over
+a year ago and by the patch[2] posted by Heyi Guo almost a year ago.
+The problem described in the cover letter of [1] is easily reproducible
+and some users would like to have the option to avoid it. However the
+solution, which is to adjust the virtual counter each time the VM
+transitions to the running state, introduces a different problem, which
+is that the virtual and physical counters diverge. As described in the
+cover letter of [1] this divergence is easily observed when comparing
+the output of `date` and `hwclock` after suspending the guest, waiting
+a while, and then resuming it. Because this different problem may actually
+be worse for some users, unlike [1], the series posted here makes the
+virtual counter adjustment optional. Besides the adjustment being
+optional, this series approaches the needed changes differently to apply
+them in more appropriate locations and also integrates some of the
+approach posted in [2].
+
+Additional notes
+----------------
+
+Note 1
+------
+
+As described above, when running a guest with kvm-no-adjtime disabled
+it will be less likely the guest OS and guest applications get surprise
+time jumps when they use the virtual counter.  However the counter will
+no longer reflect real time.  It will lag behind.  If this is a problem
+then the guest can resynchronize its time from an external source or
+even from its physical counter.  If the suspend/resume is done with
+libvirt's virsh, and the guest is running the guest agent, then it's
+also possible to use a sequence like this
+
+ $ virsh suspend $GUEST
+ $ virsh resume $GUEST
+ $ virsh domtime --sync $GUEST
+
+in order to resynchronize a guest right after the resume.  Of course
+there will still be time when the clock is not right, possibly creating
+confusing timestamps in logs, for example, and the guest must still be
+tolerant to the time synchronizations.
+
+Note 2
+------
+
+Userspace that wants to set KVM_REG_ARM_TIMER_CNT should beware that
+the KVM register ID is not correct.  This cannot be fixed because it's
+UAPI and if the UAPI headers are used then it can't be a problem.
+However, if a userspace attempts to create the ID themselves from the
+register's specification, then they will get KVM_REG_ARM_TIMER_CVAL
+instead, as the _CNT and _CVAL definitions have their register
+parameters swapped.
+
+Note 3
+------
+
+I didn't test this with a 32-bit KVM host, but the changes to kvm32.c
+are the same as kvm64.c. So what could go wrong? Test results would be
+appreciated.
+=20
+
+[1] https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg05713.html
+[2] https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg03695.html
+
+Thanks,
+drew
+
+
+Andrew Jones (5):
+  hw: add compat machines for 5.0
+  target/arm/kvm64: kvm64 cpus have timer registers
+  target/arm/kvm: Implement virtual time adjustment
+  tests/arm-cpu-features: Check feature default values
+  target/arm/cpu: Add the kvm-no-adjvtime CPU property
+
+ docs/arm-cpu-features.rst  | 31 +++++++++++++++-
+ hw/arm/virt.c              | 17 ++++++++-
+ hw/core/machine.c          |  3 ++
+ hw/i386/pc.c               |  3 ++
+ hw/i386/pc_piix.c          | 14 ++++++-
+ hw/i386/pc_q35.c           | 13 ++++++-
+ hw/ppc/spapr.c             | 15 +++++++-
+ hw/s390x/s390-virtio-ccw.c | 15 +++++++-
+ include/hw/arm/virt.h      |  1 +
+ include/hw/boards.h        |  3 ++
+ include/hw/i386/pc.h       |  3 ++
+ target/arm/cpu.c           |  2 +
+ target/arm/cpu.h           |  9 +++++
+ target/arm/cpu64.c         |  1 +
+ target/arm/kvm.c           | 76 ++++++++++++++++++++++++++++++++++++++
+ target/arm/kvm32.c         |  3 ++
+ target/arm/kvm64.c         |  4 ++
+ target/arm/kvm_arm.h       | 34 +++++++++++++++++
+ target/arm/monitor.c       |  1 +
+ tests/arm-cpu-features.c   | 48 +++++++++++++++++++-----
+ 20 files changed, 280 insertions(+), 16 deletions(-)
+
+--=20
+2.21.0
 

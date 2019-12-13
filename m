@@ -1,421 +1,167 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp93880lff;
-        Thu, 12 Dec 2019 16:10:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz35OEOgs2uYA6c/PAJzeDzhf5XJZG+XY7tYokCPD3yuP//QwWxL+DwL/6UfhNhbJZeWrMB
-X-Received: by 2002:a37:41d2:: with SMTP id o201mr11558406qka.100.1576195838437;
-        Thu, 12 Dec 2019 16:10:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576195838; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp170043lff;
+        Thu, 12 Dec 2019 17:33:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzV8CqziZL+uKSbvnfdHRVurClr7Bbe7ePfevcsaXN8FB4j7FZIARgglkE9xBhh6dfLr9O8
+X-Received: by 2002:a05:6830:1608:: with SMTP id g8mr11140074otr.169.1576200812318;
+        Thu, 12 Dec 2019 17:33:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576200812; cv=none;
         d=google.com; s=arc-20160816;
-        b=K7x5bIF36tI+7V9Uit8KmmNcs07vmW1Kz84+jTZH7Bl6iO2SDCLwiJHvhspfwAnLx6
-         SLbnSI6SUaR3N7HiuJje5EkrfGPgseyWdgZJHalQwLFEeVlvaHALVoGnvPBVELESpmvM
-         AHUHyFOXUpb+puTGmAB8FlL1Yf2AIur3fjw3G99C5OkbQ03HHr0oicHg2E1G2kNLwwEm
-         2C0vSvyxykFu0dk3dfDG+6zJLTTqDgwUW5O0GkNuXB4Qj2z3PFWsRDEbew62jbVAVgVX
-         vWP7JWuGKVqU3KI3rRICo9pSsDgKhcPJ4b56YeC1cuJmNwK7rOFPpOfnKT5hMZBsMHBq
-         pKWQ==
+        b=eg8b/dRq4FDZtpUTORxyD6AFOzWePCm+lLN121QJBclVNhPyOUn8lumYPjQuhb/zf+
+         YsuwnV9ITk35e8pPhMo/lqvvrlUm2QK4fx4TsxQ4i+N5DcPSbzVKarTD29nrcsyblvvU
+         q1qNdg+3nmvSYKOeAZnrAh34t40h0EZY1HK4mxb9s6rUIAVj/XEXZn7ywl7u4AHSwQp6
+         mN5xFlERBdSq5u0D3osVNWKCaYBLow1b7ZXRpGH5ow9i7yz7OmZokKcxMkaw97RoeZZv
+         k69ZOXcoVnlHb22L0u4zeKjWbUyR/MmbgP3w3bLK6I1Uzu2Q6U3ZM92EGdxnW4DDF5Vr
+         jRnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=PcjcNVS9ZiBh6x4p+XIweK4+ijawmCzEkyUTPVZLO1A=;
-        b=h/1q/uZeKdWoYhGvjlxGnMQviVTeDCVlyZHm8aeaoZ75W74TmJ7uGY6ul9Rpmk4tEt
-         6rI28QwJgV6LuX+ABPNGafb4UcH5Pee4BlgNs9pVfp4NJvsnZXxooyz6fGO6i/V2MDX3
-         FidhtMaTMOO5JhIxtf6zZPsFjDN918IhdDJkT2xUT3oXDRlnTBgqZhkkY1LCJjyIaasb
-         T9q+l/6NxA5tABEAJjafBBQEDmy42jl7H1XrcZse6e9Fbu0tZwBXrpJYhnkHj9tGE8yj
-         jydSSWdj5jUV9sOZBqW6F/dvldeaenE4hwT/GLwra4/xTp1gUYXnlU0e7dsCpRhJBRJ7
-         euhw==
+         :message-id:from:references:to:subject;
+        bh=xq7u/yPFq4clEQh0yyg9j9vXp34Z/WtY9Rb6zHIaCDI=;
+        b=Q436QpR6tBXtGgs0ZAjOLBKuQmUWyNm3827+y20eDqdKVuRB59l+R7B9mvdlXJVo89
+         0swr8IcHrkzMFO8lsFcZKbGWZhRvx0lq4d4LDrTDkptIBytsguonQkmLDmO/aA0fxnAE
+         H4ENOWlYpnMX6nnMqhFr5CbteRdImH4DRBirMWCdsHiB9667Dv6X64f9y1RsM3HeBU7o
+         NQartOD0PLOSO2+fW41r6DCkOmcoufUqrwKLEXdutLFHxwtOLGU+YTgO6Og6Vs6dPPML
+         K2dqZpXqX5HQ2x86AzTi0Y19QCyFinrTqup5x8y+NL1LYgDBWy1kBh4YMNxhCG1go/WE
+         7ABg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bslzZ8WJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w191si3508477qka.345.2019.12.12.16.10.38
+        by mx.google.com with ESMTPS id l125si4426399oih.223.2019.12.12.17.33.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 16:10:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Dec 2019 17:33:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bslzZ8WJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39024 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:39732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifYXV-0003Wx-Sq
-	for alex.bennee@linaro.org; Thu, 12 Dec 2019 19:10:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51577)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ifZpj-0007Kk-HR
+	for alex.bennee@linaro.org; Thu, 12 Dec 2019 20:33:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54787)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ifYWg-00030w-E4
- for qemu-devel@nongnu.org; Thu, 12 Dec 2019 19:09:48 -0500
+ (envelope-from <tao3.xu@intel.com>) id 1ifZpW-0007KQ-AV
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 20:33:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ifYWe-0007Fk-4p
- for qemu-devel@nongnu.org; Thu, 12 Dec 2019 19:09:45 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:51104
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <tao3.xu@intel.com>) id 1ifZpV-0002e2-6A
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 20:33:18 -0500
+Received: from mga03.intel.com ([134.134.136.65]:14945)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ifYWd-0007DB-Uz
- for qemu-devel@nongnu.org; Thu, 12 Dec 2019 19:09:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576195782;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PcjcNVS9ZiBh6x4p+XIweK4+ijawmCzEkyUTPVZLO1A=;
- b=bslzZ8WJ7dz6YYPgSnVzJjGX24b3zCqD41Aj71hpgm0a0Uo2S31LKTEukIOEMpZmAbI+6L
- w2GAF1J7hkgbI1lOYaOLu1BFZO6tYDi2444WUJ4XHt9qSEiy5QsOgHpAz57x/9m/eIfxmq
- QB72esqHLtGCGrjuAFiw7rnuZ5l8Ucs=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-203-H1GB269sNEynsXggkAmkSQ-1; Thu, 12 Dec 2019 19:09:41 -0500
-Received: by mail-wm1-f71.google.com with SMTP id q21so1436643wmc.7
- for <qemu-devel@nongnu.org>; Thu, 12 Dec 2019 16:09:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PcjcNVS9ZiBh6x4p+XIweK4+ijawmCzEkyUTPVZLO1A=;
- b=bAK3fQCZJFj5Y8YuXEOHuQDyStNq8r7Qr3Ar1ZGkZejSXhSqff/vG4K3ariQoZIMDN
- GYi68TrzPLiXKhH9fFAkqG2Oo8LlXVGGUiL7T3xtXfVhoNIM7zjTqGS1WGQkMPnTSh+n
- WJCTL91S8f+2AcifjA/Zu16q2hck2zZdl34t7siATxgVdb+fP6JhMaedPoRYoRuPFbJx
- ZaPRArvT64HfJPzb78BopZBEgaaqq45eezo61ffy1WTnWrGyg3rIVpLwkNo1gJf9cL0X
- M8flu9qodgbEMAE6s0rj52URKg0wmKclQCmqKftiYbkEPakNeJt/WP8wzLKbfJhCHyzK
- WGZg==
-X-Gm-Message-State: APjAAAXtjoM0fL14m5vE71kT1+Kl1vnPmPRK7s0pnLT9PPJPJ9SbSrgA
- ztNPM2ZD9nrkwJSe80OHzKCkPdjco9sx5mNhhs42qcrDgvbfI6Vp/ufoZOxeZgkK4hasV64dA+p
- Uf+1y4YGHPeSVWvQ=
-X-Received: by 2002:a05:600c:24b:: with SMTP id
- 11mr9621018wmj.19.1576195779960; 
- Thu, 12 Dec 2019 16:09:39 -0800 (PST)
-X-Received: by 2002:a05:600c:24b:: with SMTP id
- 11mr9620994wmj.19.1576195779650; 
- Thu, 12 Dec 2019 16:09:39 -0800 (PST)
-Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.34])
- by smtp.gmail.com with ESMTPSA id n16sm7941308wro.88.2019.12.12.16.09.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Dec 2019 16:09:39 -0800 (PST)
-Subject: Re: [PATCH 05/10] arm: allwinner-h3: add System Control module
-To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-6-nieklinnenbank@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <949aec5f-fd92-9fb2-25f4-803cd1bbf601@redhat.com>
-Date: Fri, 13 Dec 2019 01:09:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (Exim 4.71) (envelope-from <tao3.xu@intel.com>)
+ id 1ifZpS-0002WF-93; Thu, 12 Dec 2019 20:33:14 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 12 Dec 2019 17:33:12 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,307,1571727600"; d="scan'208";a="239148017"
+Received: from txu2-mobl.ccr.corp.intel.com (HELO [10.239.196.238])
+ ([10.239.196.238])
+ by fmsmga004.fm.intel.com with ESMTP; 12 Dec 2019 17:33:10 -0800
+Subject: Re: [PATCH 2/2] numa: properly check if numa is supported
+To: Igor Mammedov <imammedo@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+References: <1576154936-178362-1-git-send-email-imammedo@redhat.com>
+ <1576154936-178362-3-git-send-email-imammedo@redhat.com>
+From: Tao Xu <tao3.xu@intel.com>
+Message-ID: <bf9dc1f6-514a-67ac-d09b-0b515545bf22@intel.com>
+Date: Fri, 13 Dec 2019 09:33:10 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.1
 MIME-Version: 1.0
-In-Reply-To: <20191202210947.3603-6-nieklinnenbank@gmail.com>
+In-Reply-To: <1576154936-178362-3-git-send-email-imammedo@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-X-MC-Unique: H1GB269sNEynsXggkAmkSQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 134.134.136.65
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: b.galvani@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rH2nTYd0Ogcx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ Leif Lindholm <leif.lindholm@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: L2taGSAp6NrR
 
-On 12/2/19 10:09 PM, Niek Linnenbank wrote:
-> The Allwinner H3 System on Chip has an System Control
-> module that provides system wide generic controls and
-> device information. This commit adds support for the
-> Allwinner H3 System Control module.
+On 12/12/2019 8:48 PM, Igor Mammedov wrote:
+> Commit aa57020774b, by mistake used MachineClass::numa_mem_supported
+> to check if NUMA is supported by machine and also as unrelated change
+> set it to true for sbsa-ref board.
 > 
-> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> Luckily change didn't break machines that support NUMA, as the field
+> is set to true for them.
+> 
+> But the field is not intended for checking if NUMA is supported and
+> will be flipped to false within this release for new machine types.
+> 
+> Fix it:
+>   - by using previously used condition
+>        !mc->cpu_index_to_instance_props || !mc->get_default_cpu_node_id
+>     the first time and then use MachineState::numa_state down the road
+>     to check if NUMA is supported
+>   - dropping stray sbsa-ref chunk
+> 
+> Fixes: aa57020774b690a22be72453b8e91c9b5a68c516
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->   hw/arm/allwinner-h3.c                 |  11 ++
->   hw/misc/Makefile.objs                 |   1 +
->   hw/misc/allwinner-h3-syscon.c         | 139 ++++++++++++++++++++++++++
->   include/hw/arm/allwinner-h3.h         |   2 +
->   include/hw/misc/allwinner-h3-syscon.h |  43 ++++++++
->   5 files changed, 196 insertions(+)
->   create mode 100644 hw/misc/allwinner-h3-syscon.c
->   create mode 100644 include/hw/misc/allwinner-h3-syscon.h
+> CC: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+> CC: Peter Maydell <peter.maydell@linaro.org>
+> CC: Leif Lindholm <leif.lindholm@linaro.org>
+> CC: qemu-arm@nongnu.org
+> CC: qemu-stable@nongnu.org
 > 
-> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> index afeb49c0ac..ebd8fde412 100644
-> --- a/hw/arm/allwinner-h3.c
-> +++ b/hw/arm/allwinner-h3.c
-> @@ -41,6 +41,9 @@ static void aw_h3_init(Object *obj)
->   
->       sysbus_init_child_obj(obj, "ccu", &s->ccu, sizeof(s->ccu),
->                             TYPE_AW_H3_CLK);
-> +
-> +    sysbus_init_child_obj(obj, "syscon", &s->syscon, sizeof(s->syscon),
-> +                          TYPE_AW_H3_SYSCON);
+> 
+>   hw/arm/sbsa-ref.c | 1 -
+>   hw/core/machine.c | 4 ++--
+>   2 files changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 27046cc..c6261d4 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -791,7 +791,6 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
+>       mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
+>       mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
+>       mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
+> -    mc->numa_mem_supported = true;
 >   }
 >   
->   static void aw_h3_realize(DeviceState *dev, Error **errp)
-> @@ -184,6 +187,14 @@ static void aw_h3_realize(DeviceState *dev, Error **errp)
+>   static const TypeInfo sbsa_ref_info = {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 1689ad3..aa63231 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -958,7 +958,7 @@ static void machine_initfn(Object *obj)
+>                                           NULL);
 >       }
->       sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, AW_H3_CCU_BASE);
 >   
-> +    /* System Control */
-> +    object_property_set_bool(OBJECT(&s->syscon), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->syscon), 0, AW_H3_SYSCON_BASE);
-> +
->       /* Universal Serial Bus */
->       sysbus_create_simple(TYPE_AW_H3_EHCI, AW_H3_EHCI0_BASE,
->                            s->irq[AW_H3_GIC_SPI_EHCI0]);
-> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> index 200ed44ce1..b234aefba5 100644
-> --- a/hw/misc/Makefile.objs
-> +++ b/hw/misc/Makefile.objs
-> @@ -29,6 +29,7 @@ common-obj-$(CONFIG_MACIO) += macio/
->   common-obj-$(CONFIG_IVSHMEM_DEVICE) += ivshmem.o
->   
->   common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-clk.o
-> +common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-syscon.o
->   common-obj-$(CONFIG_REALVIEW) += arm_sysctl.o
->   common-obj-$(CONFIG_NSERIES) += cbus.o
->   common-obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o
-> diff --git a/hw/misc/allwinner-h3-syscon.c b/hw/misc/allwinner-h3-syscon.c
-> new file mode 100644
-> index 0000000000..66bd518a05
-> --- /dev/null
-> +++ b/hw/misc/allwinner-h3-syscon.c
-> @@ -0,0 +1,139 @@
-> +/*
-> + * Allwinner H3 System Control emulation
-> + *
-> + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> + *
-> + * This program is free software: you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation, either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/sysbus.h"
-> +#include "migration/vmstate.h"
-> +#include "qemu/log.h"
-> +#include "qemu/module.h"
-> +#include "hw/misc/allwinner-h3-syscon.h"
-> +
-> +/* SYSCON register offsets */
-> +#define REG_VER                 (0x24)  /* Version */
-> +#define REG_EMAC_PHY_CLK        (0x30)  /* EMAC PHY Clock */
-> +#define REG_INDEX(offset)       (offset / sizeof(uint32_t))
-> +
-> +/* SYSCON register reset values */
-> +#define REG_VER_RST             (0x0)
-> +#define REG_EMAC_PHY_CLK_RST    (0x58000)
-> +
-> +static uint64_t allwinner_h3_syscon_read(void *opaque, hwaddr offset,
-> +                                         unsigned size)
-> +{
-> +    const AwH3SysconState *s = (AwH3SysconState *)opaque;
-> +    const uint32_t idx = REG_INDEX(offset);
-> +
-> +    if (idx >= AW_H3_SYSCON_REGS_NUM) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad read offset 0x%04x\n",
-> +                      __func__, (uint32_t)offset);
-> +        return 0;
-> +    }
-> +
-> +    return s->regs[idx];
-> +}
-> +
-> +static void allwinner_h3_syscon_write(void *opaque, hwaddr offset,
-> +                                      uint64_t val, unsigned size)
-> +{
-> +    AwH3SysconState *s = (AwH3SysconState *)opaque;
-> +    const uint32_t idx = REG_INDEX(offset);
-> +
-> +    if (idx >= AW_H3_SYSCON_REGS_NUM) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad write offset 0x%04x\n",
-> +                      __func__, (uint32_t)offset);
-> +        return;
-> +    }
-> +
-> +    switch (offset) {
-> +    case REG_VER:       /* Version */
-> +        break;
-> +    default:
-> +        s->regs[idx] = (uint32_t) val;
-> +        break;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps allwinner_h3_syscon_ops = {
-> +    .read = allwinner_h3_syscon_read,
-> +    .write = allwinner_h3_syscon_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .valid = {
-> +        .min_access_size = 4,
-> +        .max_access_size = 4,
+> -    if (mc->numa_mem_supported) {
+> +    if (mc->cpu_index_to_instance_props && mc->get_default_cpu_node_id) {
+>           ms->numa_state = g_new0(NumaState, 1);
+>       }
 
-Can you point me to the datasheet page that says this region is 
-restricted to 32-bit accesses? Maybe you want .valid -> .impl instead?
+I am wondering if @numa_mem_supported is unused here, it is unused for 
+QEMU, because the only usage of @numa_mem_supported is to initialize 
+@numa_state. Or there is other usage? So should it be removed from 
+struct MachineClass?
 
-> +        .unaligned = false
-> +    }
-> +};
-> +
-> +static void allwinner_h3_syscon_reset(DeviceState *dev)
-> +{
-> +    AwH3SysconState *s = AW_H3_SYSCON(dev);
-> +
-> +    /* Set default values for registers */
-> +    s->regs[REG_INDEX(REG_VER)] = REG_VER_RST;
-> +    s->regs[REG_INDEX(REG_EMAC_PHY_CLK)] = REG_EMAC_PHY_CLK_RST;
-> +}
-> +
-> +static void allwinner_h3_syscon_realize(DeviceState *dev, Error **errp)
-> +{
-> +}
-> +
-> +static void allwinner_h3_syscon_init(Object *obj)
-> +{
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +    AwH3SysconState *s = AW_H3_SYSCON(obj);
-> +
-> +    /* Memory mapping */
-> +    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_h3_syscon_ops, s,
-> +                          TYPE_AW_H3_SYSCON, AW_H3_SYSCON_REGS_MEM_SIZE);
-
-This definition isn't very helpful IMO, I'd use the value in place: '4 * 
-KiB'.
-
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +}
-> +
-> +static const VMStateDescription allwinner_h3_syscon_vmstate = {
-> +    .name = TYPE_AW_H3_SYSCON,
-
-Plain name.
-
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(regs, AwH3SysconState, AW_H3_SYSCON_REGS_NUM),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void allwinner_h3_syscon_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->reset = allwinner_h3_syscon_reset;
-> +    dc->realize = allwinner_h3_syscon_realize;
-> +    dc->vmsd = &allwinner_h3_syscon_vmstate;
-> +}
-> +
-> +static const TypeInfo allwinner_h3_syscon_info = {
-> +    .name          = TYPE_AW_H3_SYSCON,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_init = allwinner_h3_syscon_init,
-> +    .instance_size = sizeof(AwH3SysconState),
-> +    .class_init    = allwinner_h3_syscon_class_init,
-> +};
-> +
-> +static void allwinner_h3_syscon_register(void)
-> +{
-> +    type_register_static(&allwinner_h3_syscon_info);
-> +}
-> +
-> +type_init(allwinner_h3_syscon_register)
-> diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-> index e596516c5c..2bc526b77b 100644
-> --- a/include/hw/arm/allwinner-h3.h
-> +++ b/include/hw/arm/allwinner-h3.h
-> @@ -27,6 +27,7 @@
->   #include "hw/timer/allwinner-a10-pit.h"
->   #include "hw/intc/arm_gic.h"
->   #include "hw/misc/allwinner-h3-clk.h"
-> +#include "hw/misc/allwinner-h3-syscon.h"
->   #include "target/arm/cpu.h"
->   
->   #define AW_H3_SRAM_A1_BASE     (0x00000000)
-> @@ -111,6 +112,7 @@ typedef struct AwH3State {
->       qemu_irq irq[AW_H3_GIC_NUM_SPI];
->       AwA10PITState timer;
->       AwH3ClockState ccu;
-> +    AwH3SysconState syscon;
->       GICState gic;
->       MemoryRegion sram_a1;
->       MemoryRegion sram_a2;
-> diff --git a/include/hw/misc/allwinner-h3-syscon.h b/include/hw/misc/allwinner-h3-syscon.h
-> new file mode 100644
-> index 0000000000..22a2f2a11b
-> --- /dev/null
-> +++ b/include/hw/misc/allwinner-h3-syscon.h
-> @@ -0,0 +1,43 @@
-> +/*
-> + * Allwinner H3 System Control emulation
-> + *
-> + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> + *
-> + * This program is free software: you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation, either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#ifndef HW_MISC_ALLWINNER_H3_SYSCON_H
-> +#define HW_MISC_ALLWINNER_H3_SYSCON_H
-> +
-> +#include "hw/sysbus.h"
-> +
-> +#define AW_H3_SYSCON_REGS_MAX_ADDR  (0x30)
-> +#define AW_H3_SYSCON_REGS_NUM       ((AW_H3_SYSCON_REGS_MAX_ADDR / \
-> +                                      sizeof(uint32_t)) + 1)
-> +#define AW_H3_SYSCON_REGS_MEM_SIZE  (1024)
-
-"4.1. Memory Mapping" the System Control is 4KiB, isn't it?
-
-> +
-> +#define TYPE_AW_H3_SYSCON    "allwinner-h3-syscon"
-> +#define AW_H3_SYSCON(obj)    OBJECT_CHECK(AwH3SysconState, (obj), \
-> +                                          TYPE_AW_H3_SYSCON)
-> +
-> +typedef struct AwH3SysconState {
-> +    /*< private >*/
-> +    SysBusDevice parent_obj;
-> +    /*< public >*/
-> +
-> +    MemoryRegion iomem;
-> +    uint32_t regs[AW_H3_SYSCON_REGS_NUM];
-> +} AwH3SysconState;
-> +
-> +#endif
-> 
 

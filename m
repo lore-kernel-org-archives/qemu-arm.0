@@ -1,188 +1,198 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp545096lff;
-        Fri, 13 Dec 2019 01:12:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyai2BMR5tXp4oYLCecCD0uFAeN3+B1fXoZUOCZpl5xnmnDFOfLrx4FMWDorUO1ofKebZP5
-X-Received: by 2002:ac8:23cd:: with SMTP id r13mr11596835qtr.184.1576228361693;
-        Fri, 13 Dec 2019 01:12:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576228361; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp592541lff;
+        Fri, 13 Dec 2019 02:04:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqywojBITTAQWu38bsp+pgP/H9X+3c8zdLWTdyIHfk3DMBLFLpRQI4Lff5yUZ+HFi/a4QgbX
+X-Received: by 2002:a9d:5885:: with SMTP id x5mr13362275otg.132.1576231462695;
+        Fri, 13 Dec 2019 02:04:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576231462; cv=none;
         d=google.com; s=arc-20160816;
-        b=DMDEewBE3jfGnDVBARbPezzdAQ5YXTkaX7dSTvJ60AdX9DukYJjkv0rW0h4bxR07gz
-         yPVtVgBeKB0W9zyxFUxXrSwNvmSl7CflVhf3NJoMZU3Eb/v8j6knMlkdAqw+QOU3vuud
-         EuaBBumGpNCcyRX9rrKhqVHwLlL6UH82kREtw44KEkxNg4yldkKR+msEPAK36QBkuORI
-         AN3NDKIn43jCdGmTG2eGZQ7FxE13r0EvTtJyOG5nT4ssi1QQ3QHMiUOralUEEGGpJ+Nz
-         WkhWPknyxS6jQWSUSV01ucEzU+TL+DfrCHdUBPCZ2/FEur7ujHof9Hm/viaCiX+JiAEm
-         9FSQ==
+        b=E+RoWedPnbRJYGZvC0eXgXAyULDwwTrFoF/uwdGnO1f2sWv5owlUDHxhQ4pcWXp8Bn
+         85fX/YWqxJ5rQQxPkeDjXJxzcNkvK6mvZ+4Wbd+AqZI1MyJ3Neumejr/WzUoUL61ca+y
+         lez3K8ZD6iHLr+u7uoNt/Y4hWc/vR49Cwf7MAMUI3eecZgI7GYkZ0sKeR6TmjQSp/H88
+         jRfmAQae75vo+3yTEbvw9nFdsFMaaBwRinKaUj+pt6dOnoUPLeTcZ1EwNfQ4VNK7tZk3
+         EMbrq88XRef1XWf9XlbdRKG81SLX3X58n1Iw+0UIrW8sgthFWp87YpW2aaqeCXL1zM6t
+         yQtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=g8Vid2Cs8r6/Rmya9pqc2DE1uJoY/si0o8UbX/u+0vQ=;
-        b=EeUud0W6aPFfian9c8nbilHDtMLBfRCLcMnb5qRLbE2lJP4Im93YjokknVSN+2EJMo
-         4kD6QXXERGt48Hr5J9jVJk5PNDPsXMnKqf9ip3N7WA9cBSrX1Gui73WgRLs1oaRYlnBf
-         CVz4T1MAsp2anXL7JRa0Wo2+1MSp6mhPcRZ1Xv5YfYiRkcKzp7Xr7lxfVOCkVvoy99ZC
-         aBR4CaBGwr9yTUzxicPDOK66ORD1Y7UrbpbN/GBs0zxsDKRld8zx/s0EoVCx9sPvU90P
-         QWyuqHPLQgpuGO9EMwoYqL/tkxJ8gYCBaMn2vKPU2qssZhXhFUdC+/jxhfep+jb1W0qO
-         MUUQ==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=azycGipua+/jyOaHF/EYGm8hN/wv19QybKjhz4VJCro=;
+        b=CYKWy2Gm0mXp67qWq++AeOdcEZ8CgfkeK/HoMKnXxii9npZDIWe6EeUMsRStStqOgM
+         XFxCN4XS5FSQ+elxP6j+lLTyj7cKe8P1brAc+5AimNtQyVwYK5fs6TK4JQk8800npJHi
+         OwGoE8d48U2wSO1zkfB4lxnaU8yHfc7yjBxkWuDXRWh1li+1uGfUUWr05TDixpiTKlwN
+         r/JLgQbGqOPq1v2V4st+tjdoutdJ3FcnnTXTQScwF3twFxuXGHqH/zWGZh8J8c1qNbet
+         0ugAcvvgyBhU+PyYRMKwAYb7d4u3J6Ld0OXTiP0QQDQpF3iIdfNzcPiNGeDY0grR4XrZ
+         c9IA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CMWSYjzy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QoRRu6bb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v140si4437749qkb.120.2019.12.13.01.12.41
+        by mx.google.com with ESMTPS id t84si4783786oif.115.2019.12.13.02.04.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2019 01:12:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Dec 2019 02:04:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CMWSYjzy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42968 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QoRRu6bb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44634 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifh04-0004Rx-Ve
-	for alex.bennee@linaro.org; Fri, 13 Dec 2019 04:12:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53336)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ifho5-0006jA-Th
+	for alex.bennee@linaro.org; Fri, 13 Dec 2019 05:04:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43226)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1ifgzv-0004P8-Rf
- for qemu-arm@nongnu.org; Fri, 13 Dec 2019 04:12:33 -0500
+ (envelope-from <armbru@redhat.com>) id 1ifhn5-00068R-7V
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2019 05:03:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1ifgzt-0000su-38
- for qemu-arm@nongnu.org; Fri, 13 Dec 2019 04:12:30 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:49488
+ (envelope-from <armbru@redhat.com>) id 1ifhn2-0003wK-39
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2019 05:03:17 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:42830
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1ifgzs-0000pT-LS
- for qemu-arm@nongnu.org; Fri, 13 Dec 2019 04:12:29 -0500
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1ifhn1-0003uM-Le
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2019 05:03:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576228347;
+ s=mimecast20190719; t=1576231394;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=g8Vid2Cs8r6/Rmya9pqc2DE1uJoY/si0o8UbX/u+0vQ=;
- b=CMWSYjzynILl/YyszkPaEDN+fGwegAl3cNM+1KWDhDtgJ5qeDO2ti2p6tYqNRy2dPzU9Hr
- JncdY6sTpzdHbUfP3NyEKuEH5F+ejNf0a31Ne8G526zvuOiougcBilexyHDEZeNkQ4mYOH
- /tNditLNizZpDgElIoRevdj1Iwkm2OE=
+ bh=azycGipua+/jyOaHF/EYGm8hN/wv19QybKjhz4VJCro=;
+ b=QoRRu6bbjD2DQ9d1HuuLsvFSVonaKpP5nedc7KdadF2t/RYungd0WEgnhY03VmGfe5Vik8
+ kcNqkY/YdsY1WGshymw0ZA//x+s7KqMRcPsjZAq2SyibnTWkyJolAyWJ6lmPX4hKx7Qa0e
+ uXl3FhKRHStvQCigJbR7ovhZnEOr1uM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-216-a5GX5yCGPyOkF52cnlAqFw-1; Fri, 13 Dec 2019 04:12:24 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-153-AUUT5R3MNaenh2LbWNgr2w-1; Fri, 13 Dec 2019 05:03:13 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A5C351010FC4;
- Fri, 13 Dec 2019 09:12:22 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C6546601A2;
- Fri, 13 Dec 2019 09:12:20 +0000 (UTC)
-Date: Fri, 13 Dec 2019 10:12:19 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Tao Xu <tao3.xu@intel.com>
-Subject: Re: [PATCH 2/2] numa: properly check if numa is supported
-Message-ID: <20191213101219.0aa249dc@redhat.com>
-In-Reply-To: <bf9dc1f6-514a-67ac-d09b-0b515545bf22@intel.com>
-References: <1576154936-178362-1-git-send-email-imammedo@redhat.com>
- <1576154936-178362-3-git-send-email-imammedo@redhat.com>
- <bf9dc1f6-514a-67ac-d09b-0b515545bf22@intel.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A1126800D4E;
+ Fri, 13 Dec 2019 10:03:11 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-181.ams2.redhat.com
+ [10.36.116.181])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7CE185C1D4;
+ Fri, 13 Dec 2019 10:03:04 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D6F5F11386A7; Fri, 13 Dec 2019 11:03:02 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Subject: Re: [PATCH for-5.0 v11 12/20] qapi: Introduce DEFINE_PROP_INTERVAL
+References: <20191122182943.4656-1-eric.auger@redhat.com>
+ <20191122182943.4656-13-eric.auger@redhat.com>
+ <87wob17n6j.fsf@dusky.pond.sub.org>
+ <66ae0999-bdd8-6b54-f550-f036dafc982b@redhat.com>
+Date: Fri, 13 Dec 2019 11:03:02 +0100
+In-Reply-To: <66ae0999-bdd8-6b54-f550-f036dafc982b@redhat.com> (Auger Eric's
+ message of "Thu, 12 Dec 2019 16:13:06 +0100")
+Message-ID: <87y2vg4k6h.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: a5GX5yCGPyOkF52cnlAqFw-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: AUUT5R3MNaenh2LbWNgr2w-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Leif Lindholm <leif.lindholm@linaro.org>,
- "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bbvuad22sMhh
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
+ quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
+ dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lU1qcAruwAeR
 
-On Fri, 13 Dec 2019 09:33:10 +0800
-Tao Xu <tao3.xu@intel.com> wrote:
+Auger Eric <eric.auger@redhat.com> writes:
 
-> On 12/12/2019 8:48 PM, Igor Mammedov wrote:
-> > Commit aa57020774b, by mistake used MachineClass::numa_mem_supported
-> > to check if NUMA is supported by machine and also as unrelated change
-> > set it to true for sbsa-ref board.
-> > 
-> > Luckily change didn't break machines that support NUMA, as the field
-> > is set to true for them.
-> > 
-> > But the field is not intended for checking if NUMA is supported and
-> > will be flipped to false within this release for new machine types.
-> > 
-> > Fix it:
-> >   - by using previously used condition
-> >        !mc->cpu_index_to_instance_props || !mc->get_default_cpu_node_id
-> >     the first time and then use MachineState::numa_state down the road
-> >     to check if NUMA is supported
-> >   - dropping stray sbsa-ref chunk
-> > 
-> > Fixes: aa57020774b690a22be72453b8e91c9b5a68c516
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> > CC: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
-> > CC: Peter Maydell <peter.maydell@linaro.org>
-> > CC: Leif Lindholm <leif.lindholm@linaro.org>
-> > CC: qemu-arm@nongnu.org
-> > CC: qemu-stable@nongnu.org
-> > 
-> > 
-> >   hw/arm/sbsa-ref.c | 1 -
-> >   hw/core/machine.c | 4 ++--
-> >   2 files changed, 2 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> > index 27046cc..c6261d4 100644
-> > --- a/hw/arm/sbsa-ref.c
-> > +++ b/hw/arm/sbsa-ref.c
-> > @@ -791,7 +791,6 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
-> >       mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
-> >       mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
-> >       mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
-> > -    mc->numa_mem_supported = true;
-> >   }
-> >   
-> >   static const TypeInfo sbsa_ref_info = {
-> > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > index 1689ad3..aa63231 100644
-> > --- a/hw/core/machine.c
-> > +++ b/hw/core/machine.c
-> > @@ -958,7 +958,7 @@ static void machine_initfn(Object *obj)
-> >                                           NULL);
-> >       }
-> >   
-> > -    if (mc->numa_mem_supported) {
-> > +    if (mc->cpu_index_to_instance_props && mc->get_default_cpu_node_id) {
-> >           ms->numa_state = g_new0(NumaState, 1);
-> >       }  
-> 
-> I am wondering if @numa_mem_supported is unused here, it is unused for 
-> QEMU, because the only usage of @numa_mem_supported is to initialize 
-> @numa_state. Or there is other usage? So should it be removed from 
-> struct MachineClass?
-You are wrong, it's not intended for numa_state initialization,
-read doc comment for it in include/hw/boards.h
-(for full story look at commit cd5ff8333a3)
+> Hi Markus,
+>
+> On 12/12/19 1:17 PM, Markus Armbruster wrote:
+>> Eric Auger <eric.auger@redhat.com> writes:
+>>=20
+>>> Introduce a new property defining a labelled interval:
+>>> <low address>,<high address>,label.
+>>>
+>>> This will be used to encode reserved IOVA regions. The label
+>>> is left undefined to ease reuse accross use cases.
+>>=20
+>> What does the last sentence mean?
+> The dilemma was shall I specialize this property such as ReservedRegion
+> or shall I leave it generic enough to serve somebody else use case. I
+> first chose the latter but now I think I should rather call it something
+> like ReservedRegion as in any case it has addresses and an integer label.
+>>=20
+>>> For instance, in virtio-iommu use case, reserved IOVA regions
+>>> will be passed by the machine code to the virtio-iommu-pci
+>>> device (an array of those). The label will match the
+>>> virtio_iommu_probe_resv_mem subtype value:
+>>> - VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
+>>> - VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
+>>>
+>>> This is used to inform the virtio-iommu-pci device it should
+>>> bypass the MSI region: 0xfee00000, 0xfeefffff, 1.
+>>=20
+>> So the "label" part of "<low address>,<high address>,label" is a number?
+> yes it is.
+>>=20
+>> Is a number appropriate for your use case, or would an enum be better?
+> I think a number is OK. There might be other types of reserved regions
+> in the future. Also if we want to allow somebody else to reuse that
+> property in another context, I would rather leave it open?
+
+I'd prioritize the user interface over possible reuse (which might never
+happen).  Mind, I'm not telling you using numbers is a bad user
+interface.  In general, enums are nicer, but I don't know enough about
+this particular case.
+
+>>=20
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com> ---
+[...]
+>>> diff --git a/include/exec/memory.h b/include/exec/memory.h
+>>> index e499dc215b..e238d1c352 100644
+>>> --- a/include/exec/memory.h
+>>> +++ b/include/exec/memory.h
+>>> @@ -57,6 +57,12 @@ struct MemoryRegionMmio {
+>>>      CPUWriteMemoryFunc *write[3];
+>>>  };
+>>> =20
+>>> +struct Interval {
+>>> +    hwaddr low;
+>>> +    hwaddr high;
+>>> +    unsigned int type;
+>>> +};
+>>=20
+>> This isn't an interval.  An interval consists of two values, not three.
+>>=20
+>> The third one is called "type" here, and "label" elsewhere.  Pick one
+>> and stick to it.
+>>=20
+>> Then pick a name for the triple.  Elsewhere, you call it "labelled
+>> interval".
+> I would tend to use ReservedRegion now if nobody objects.
+
+Sounds good to me.
+
+> Thank you for the review!
+
+You're welcome!
 

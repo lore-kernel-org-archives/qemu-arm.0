@@ -1,82 +1,109 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp363655lff;
-        Thu, 12 Dec 2019 21:40:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxL99EfaHmrx5E1kZzJjjlIY1XAf9TTG/mY3d8tB75EI3XVt9r9EaxJLP1ub0YAxizRZw4v
-X-Received: by 2002:a05:6830:1e61:: with SMTP id m1mr12787377otr.68.1576215613927;
-        Thu, 12 Dec 2019 21:40:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576215613; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp370174lff;
+        Thu, 12 Dec 2019 21:48:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwQnTXzmRHu8LkhjtsKZzVfTVYaCJ44TPWeRSwlvmB7sqU4rmp8hKrsDc5s+Pez8/W6hOOp
+X-Received: by 2002:ac8:7b9b:: with SMTP id p27mr11217523qtu.2.1576216139648;
+        Thu, 12 Dec 2019 21:48:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576216139; cv=none;
         d=google.com; s=arc-20160816;
-        b=bPaUVAyjUzzgWdAY5ja+cXLsMLxuH6nWNjJAmperFBDuGXmRIWlo0zMddIX8cBbRCj
-         iGKjiadhwsR7EhkR1gohCqtPCkl2mVbSJQy42997QWcTAPGBwlywmL/fIfWXGroNRiDQ
-         ahbuh2Vi/czibVGF14TH16ReZwPIJ0jOWvy/R6o4JcBI0FoBAFfy9uwgYqY/zOL4/PXz
-         xkeys4cw1zQFqIzmILsT6mT7QsGman+Ook/ZHvB88Lc2xM07XqORvs+7SCmOQQXfHFk3
-         lsnDr8mHaPq1PfSy+xt1sZ/N/6DTq92Js4ZKKO3qOMNhhvSG8DpPJOhBm8SdwLXmGRUb
-         NTkw==
+        b=ehne8jAPESHlfvXRWuBdsoQ4R8LhU3kEhIXkoOazBVjMBCNCvMs/0XrYW0z6+OLV+T
+         LEvO95uL5PgGjPVA8T18WiO0/hPFgY9vsNL3Ml8lNZ/O/tem7DWInZEPL0mkZxCAoGy8
+         XjTx0qkBwJ4owEq8FxB5VxVLH8K2yfhQLqDwdNHkp/kgwcUTFnfbtsmJuH/dgNhcRcvC
+         XAyqRDij9lZ/N71QlMxnhvvWcB1msd8aO8lJsc7s+h9YYTtm5roB4yohhqIhcKYp4lzc
+         KXGwlgKxTU89/8T7bXp/U7YBADQYichxIh3MU3L063oqLR5I5cxBhkJCeyXUFMBdNCRr
+         1ImQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=2pe5MkO49DKQvkkjgy/8tQ1ORvmnztcSoVUDgIcxanw=;
-        b=p9oDD1trpwEvh/Z94xelJGvv8YuaEXtZqStLAYNV0qGrKomHWc+IF7bkd6FYaEWvB2
-         aIH8E8cGXsTJe17h88+p6zB5v0YU3T9uRAnFVyXfpvZJ/T+5zqKQckSpiIlCM3nfrynm
-         aHnnxXsM2eQiHN8WgXZHWDFSXsUXJQWlgfo1T2PSl6ogDN8h+470oJ5lM+mA6uzfZ/6k
-         XVpbEUtvaTEpzCH4UmBKROLAn+UlP3V0Prp7kDi7b4yc28QCsfmIe1u7StytpILkuaIS
-         B3qEnIdthXL68qmUxasgVr0r1ie9r2c61E2Ly6G5E7GjHROYRUn5n6kpZjpdGTdbZPCl
-         XvAg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature
+         :dkim-signature;
+        bh=N9bCwlClnlHDFDNFqpp3fD4D/m1EZqVMm4Nk97EMVP4=;
+        b=CsSDPSAOCufDfi9oXASPN+Tf5cRVbW986aaBlmx9iZ10hZhM66xyQrpBJHvi9u2yF/
+         T9Zv+b/E59dBANthskJMmcLZi95/zj7tDiB3gok9yDdubkbAi0ewozTQAfdpIfUIU3AR
+         PJq/MyBeHOyaNI3VAwuHuRjf2ZD7ifzamifK7WOFgPBDksdF6d2mmZe+YcgEKupZKuJF
+         FotvU97c1FAn+F8rAXyb45tHp0d7QqMdBM2oXwYFpsKfx+tCU1jRUBDu25P+XDyhFsBW
+         3vOD1b3o24vn2N9hBliC4NDUguwry0wLHgFoTYYVFEvPHRH5Ct1/K83f4sm4Z/MIcA1n
+         PPzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="kW7q/l9r";
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=e9RikxxK;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=OJnLt6TY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9si4223957oij.125.2019.12.12.21.40.13
+        by mx.google.com with ESMTPS id i5si4194183qkg.15.2019.12.12.21.48.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 21:40:13 -0800 (PST)
+        Thu, 12 Dec 2019 21:48:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="kW7q/l9r";
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=e9RikxxK;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=OJnLt6TY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41056 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41122 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifdgS-0007dj-V0
-	for alex.bennee@linaro.org; Fri, 13 Dec 2019 00:40:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50459)
+	id 1ifdow-0002yr-Aq
+	for alex.bennee@linaro.org; Fri, 13 Dec 2019 00:48:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54519)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1ifdgC-0007d8-Jm
- for qemu-arm@nongnu.org; Fri, 13 Dec 2019 00:39:58 -0500
+ (envelope-from <andrew@aj.id.au>) id 1ifdoj-0002yZ-KS
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2019 00:48:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1ifdg9-0004Ov-Rc
- for qemu-arm@nongnu.org; Fri, 13 Dec 2019 00:39:56 -0500
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:45643 helo=ozlabs.org)
+ (envelope-from <andrew@aj.id.au>) id 1ifdoi-0004bU-AH
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2019 00:48:45 -0500
+Received: from wout3-smtp.messagingengine.com ([64.147.123.19]:33035)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1ifdg9-0004HL-6R; Fri, 13 Dec 2019 00:39:53 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 47YzyC6x1Yz9sPL; Fri, 13 Dec 2019 16:39:47 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1576215587;
- bh=56eM89FTG1pvXviciouBwME2vyl4LJRakyHsbFicFXw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kW7q/l9rA2YfyK6wdsyyds/u3Yd01xGt3h2pnHPBDYewVEAh8AKG8/hDS6jk0qzT4
- CLphEkUbeeuJ8f0uNB8oiX/tmeHt6wMgnGEroQZBSxCjUFpt3VleLa/nY0wCB/Bwfs
- HsVGTXY24nJi20QByygqhDomwDdl2PKDFZyQTVOg=
-Date: Fri, 13 Dec 2019 16:00:05 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Andrew Jones <drjones@redhat.com>
-Subject: Re: [RFC PATCH v2 1/5] hw: add compat machines for 5.0
-Message-ID: <20191213050005.GC207300@umbus.fritz.box>
-References: <20191212173320.11610-1-drjones@redhat.com>
- <20191212173320.11610-2-drjones@redhat.com>
+ (Exim 4.71) (envelope-from <andrew@aj.id.au>)
+ id 1ifdoh-0004YM-Md; Fri, 13 Dec 2019 00:48:44 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.west.internal (Postfix) with ESMTP id ED206909;
+ Fri, 13 Dec 2019 00:48:41 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Fri, 13 Dec 2019 00:48:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
+ :to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding; s=fm1; bh=N9bCwlClnlHDFDNFqpp3fD4D/m
+ 1EZqVMm4Nk97EMVP4=; b=e9RikxxK9qaigA7SxEUg3gR9YbtXk+fnRLeeB9h1Oq
+ 0b8GfuOZC9ELD1gmpwFC5fYEdgbEi8J7oNp7Si0xZLVQC6NlE6x+5tomuaggvjT9
+ zu9UB6GyeQg9Zk9YVRRTCqXKOLJnQAO8vgy+0v0pvEFtCkV1AsDBB232zWGwUM1p
+ U62oW4qFCWu6cTi9rB97ft1VP0wVs+fDlNLj91rZCN1Y7jyHG1afQ8DeahlFk5eB
+ uNNwXRGMBAt2LDRU+2CIaHh3gEaaFSJD57QLovvA+og+EDwJh8ElcKXI4Jt2U2VR
+ nncERydcGxaLeFfIVN42YTBGdgM5pRNSm8U9O4NRS0/Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:date:from
+ :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=N9bCwlClnlHDFDNFq
+ pp3fD4D/m1EZqVMm4Nk97EMVP4=; b=OJnLt6TY6kCam8LNEYFbR/T7mvZzu4wK7
+ 1sWRZe/Fr4QRm2eA/WvuHdpBBUnBK7Rn3ne0Tsl/QS6CBIihHDOpynFyCHWaj5iZ
+ LdtE9blBI4Jj/IC28ftdRkv8Ee2NhyUgjL79RGBlePeeMnai//T+o1p8qdtkI1nK
+ 4ollp69wj/eP1GGDGFDMaI9QSkBZiYO35UZJB44OOZjloDJPenXW9HkXW0+BOuf7
+ UrxSj515tTkVYTntY07ax6N/rrQ6Wg78ajMHuanadlsHmTQRQKyf57EdA5qjC8VY
+ /Ogz9fqZ+cI43zbGpIOqjHKJUUOg9YmMhhlb1ZYh2y2UWLmFxp1vA==
+X-ME-Sender: <xms:OCbzXc72U_t_HP8zgA010MdlMcrN5yb79zyh1LvcM3g54GtOyiOfSg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudelkedgkeejucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgggfestdekredtre
+ dttdenucfhrhhomheptehnughrvgifucflvghffhgvrhihuceorghnughrvgifsegrjhdr
+ ihgurdgruheqnecuffhomhgrihhnpehoiihlrggsshdrohhrghenucfkphepvddtvddrke
+ durddukedrfedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhi
+ ugdrrghunecuvehluhhsthgvrhfuihiivgeptd
+X-ME-Proxy: <xmx:OCbzXXchM_kfHTJ5Stqe832G1lV_NHWdbOlsrIjY_UflTkYho9V7SQ>
+ <xmx:OCbzXW4MF_QnmgpbnAZD8ORQy78NFNKDVrdaHA7_Lq52sMDI86cSzw>
+ <xmx:OCbzXf1fxHvr7jxeXUEfrEApRRBz17PpCttQvJe1zexmJu0m7CqSKg>
+ <xmx:OSbzXUvcO83-tFO_hbOGDsZ6JdiP1T0i_4TOdkwV-j9kxdce7QLXMA>
+Received: from mistburn.au.ibm.com (bh02i525f01.au.ibm.com [202.81.18.30])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 1561E80063;
+ Fri, 13 Dec 2019 00:48:37 -0500 (EST)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: qemu-arm@nongnu.org
+Subject: [PATCH v3 0/4] Expose GT CNTFRQ as a CPU property to support AST2600
+Date: Fri, 13 Dec 2019 16:19:47 +1030
+Message-Id: <cover.ec85a2db47c3e10de70fba144e1bc75caf2f0a91.1576215453.git-series.andrew@aj.id.au>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="RyB1I56Pcq42iZjE"
-Content-Disposition: inline
-In-Reply-To: <20191212173320.11610-2-drjones@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 64.147.123.19
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,292 +115,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Cornelia Huck <cohuck@redhat.com>,
- bijan.mottahedeh@oracle.com, "Michael S. Tsirkin" <mst@redhat.com>,
- maz@kernel.org, Richard Henderson <rth@twiddle.net>,
- David Hildenbrand <david@redhat.com>, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>, qemu-arm@nongnu.org,
- "open list:sPAPR" <qemu-ppc@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, guoheyi@huawei.com,
- Paolo Bonzini <pbonzini@redhat.com>, msys.mizuma@gmail.com,
- Eduardo Habkost <ehabkost@redhat.com>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, philmd@redhat.com,
+ clg@kaod.org, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CsXjKoibeJcs
+X-TUID: Iz7GdvB5C0iq
 
+Hello,
 
---RyB1I56Pcq42iZjE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This is a v3 of the belated follow-up from a few of my earlier attempts to fix
+up the ARM generic timer for correct behaviour on the ASPEED AST2600 SoC. The
+AST2600 clocks the generic timer at the rate of HPLL, which is configured to
+1125MHz.  This is significantly quicker than the currently hard-coded generic
+timer rate of 62.5MHz and so we see "sticky" behaviour in the guest.
 
-On Thu, Dec 12, 2019 at 06:33:16PM +0100, Andrew Jones wrote:
-> Add 5.0 machine types for arm/i440fx/q35/s390x/spapr.
->=20
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
+v2 can be found here:
 
-ppc parts
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+https://patchwork.ozlabs.org/cover/1203474/
 
->=20
-> ---
->=20
-> Hi Eduardo,
->=20
-> If we need to do something special for i440fx and q35, as
-> 9aec2e52ce9d ("hw: add compat machines for 4.2") implies, then
-> I'll need guidance as to what.
-> ---
->  hw/arm/virt.c              |  9 ++++++++-
->  hw/core/machine.c          |  3 +++
->  hw/i386/pc.c               |  3 +++
->  hw/i386/pc_piix.c          | 14 +++++++++++++-
->  hw/i386/pc_q35.c           | 13 ++++++++++++-
->  hw/ppc/spapr.c             | 15 +++++++++++++--
->  hw/s390x/s390-virtio-ccw.c | 15 ++++++++++++++-
->  include/hw/boards.h        |  3 +++
->  include/hw/i386/pc.h       |  3 +++
->  9 files changed, 72 insertions(+), 6 deletions(-)
->=20
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index d4bedc260712..cb7041e9677a 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2147,10 +2147,17 @@ static void machvirt_machine_init(void)
->  }
->  type_init(machvirt_machine_init);
-> =20
-> +static void virt_machine_5_0_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
-> +
->  static void virt_machine_4_2_options(MachineClass *mc)
->  {
-> +    virt_machine_5_0_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
->  }
-> -DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
-> +DEFINE_VIRT_MACHINE(4, 2)
-> =20
->  static void virt_machine_4_1_options(MachineClass *mc)
->  {
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 1689ad3bf8af..21fe2d974817 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -27,6 +27,9 @@
->  #include "hw/pci/pci.h"
->  #include "hw/mem/nvdimm.h"
-> =20
-> +GlobalProperty hw_compat_4_2[] =3D {};
-> +const size_t hw_compat_4_2_len =3D G_N_ELEMENTS(hw_compat_4_2);
-> +
->  GlobalProperty hw_compat_4_1[] =3D {
->      { "virtio-pci", "x-pcie-flr-init", "off" },
->  };
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index ac08e6360437..58867f987d88 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -103,6 +103,9 @@
-> =20
->  struct hpet_fw_config hpet_cfg =3D {.count =3D UINT8_MAX};
-> =20
-> +GlobalProperty pc_compat_4_2[] =3D {};
-> +const size_t pc_compat_4_2_len =3D G_N_ELEMENTS(pc_compat_4_2);
-> +
->  GlobalProperty pc_compat_4_1[] =3D {};
->  const size_t pc_compat_4_1_len =3D G_N_ELEMENTS(pc_compat_4_1);
-> =20
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 1bd70d1abbc4..aa2c6147a7ea 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -424,7 +424,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
->      machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
->  }
-> =20
-> -static void pc_i440fx_4_2_machine_options(MachineClass *m)
-> +static void pc_i440fx_5_0_machine_options(MachineClass *m)
->  {
->      PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
->      pc_i440fx_machine_options(m);
-> @@ -433,6 +433,18 @@ static void pc_i440fx_4_2_machine_options(MachineCla=
-ss *m)
->      pcmc->default_cpu_version =3D 1;
->  }
-> =20
-> +DEFINE_I440FX_MACHINE(v5_0, "pc-i440fx-5.0", NULL,
-> +                      pc_i440fx_5_0_machine_options)
-> +
-> +static void pc_i440fx_4_2_machine_options(MachineClass *m)
-> +{
-> +    pc_i440fx_5_0_machine_options(m);
-> +    m->alias =3D NULL;
-> +    m->is_default =3D 0;
-> +    compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
-> +    compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
-> +}
-> +
->  DEFINE_I440FX_MACHINE(v4_2, "pc-i440fx-4.2", NULL,
->                        pc_i440fx_4_2_machine_options);
-> =20
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 385e5cffb167..ddd485d608c0 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -348,7 +348,7 @@ static void pc_q35_machine_options(MachineClass *m)
->      m->max_cpus =3D 288;
->  }
-> =20
-> -static void pc_q35_4_2_machine_options(MachineClass *m)
-> +static void pc_q35_5_0_machine_options(MachineClass *m)
->  {
->      PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
->      pc_q35_machine_options(m);
-> @@ -356,6 +356,17 @@ static void pc_q35_4_2_machine_options(MachineClass =
-*m)
->      pcmc->default_cpu_version =3D 1;
->  }
-> =20
-> +DEFINE_Q35_MACHINE(v5_0, "pc-q35-5.0", NULL,
-> +                   pc_q35_5_0_machine_options);
-> +
-> +static void pc_q35_4_2_machine_options(MachineClass *m)
-> +{
-> +    pc_q35_5_0_machine_options(m);
-> +    m->alias =3D NULL;
-> +    compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
-> +    compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
-> +}
-> +
->  DEFINE_Q35_MACHINE(v4_2, "pc-q35-4.2", NULL,
->                     pc_q35_4_2_machine_options);
-> =20
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index e076f6023c73..3ae7db156303 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -4491,15 +4491,26 @@ static const TypeInfo spapr_machine_info =3D {
->      }                                                                \
->      type_init(spapr_machine_register_##suffix)
-> =20
-> +/*
-> + * pseries-5.0
-> + */
-> +static void spapr_machine_5_0_class_options(MachineClass *mc)
-> +{
-> +    /* Defaults for the latest behaviour inherited from the base class */
-> +}
-> +
-> +DEFINE_SPAPR_MACHINE(5_0, "5.0", true);
-> +
->  /*
->   * pseries-4.2
->   */
->  static void spapr_machine_4_2_class_options(MachineClass *mc)
->  {
-> -    /* Defaults for the latest behaviour inherited from the base class */
-> +    spapr_machine_5_0_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
->  }
-> =20
-> -DEFINE_SPAPR_MACHINE(4_2, "4.2", true);
-> +DEFINE_SPAPR_MACHINE(4_2, "4.2", false);
-> =20
->  /*
->   * pseries-4.1
-> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-> index d3edeef0ad92..a40f79e20733 100644
-> --- a/hw/s390x/s390-virtio-ccw.c
-> +++ b/hw/s390x/s390-virtio-ccw.c
-> @@ -639,14 +639,27 @@ bool css_migration_enabled(void)
->      }                                                                   =
-      \
->      type_init(ccw_machine_register_##suffix)
-> =20
-> +
-> +static void ccw_machine_5_0_instance_options(MachineState *machine)
-> +{
-> +}
-> +
-> +static void ccw_machine_5_0_class_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_CCW_MACHINE(5_0, "5.0", true);
-> +
->  static void ccw_machine_4_2_instance_options(MachineState *machine)
->  {
-> +    ccw_machine_5_0_instance_options(machine);
->  }
-> =20
->  static void ccw_machine_4_2_class_options(MachineClass *mc)
->  {
-> +    ccw_machine_5_0_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
->  }
-> -DEFINE_CCW_MACHINE(4_2, "4.2", true);
-> +DEFINE_CCW_MACHINE(4_2, "4.2", false);
-> =20
->  static void ccw_machine_4_1_instance_options(MachineState *machine)
->  {
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index de45087f34cb..24cbeecbaecc 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -329,6 +329,9 @@ struct MachineState {
->      } \
->      type_init(machine_initfn##_register_types)
-> =20
-> +extern GlobalProperty hw_compat_4_2[];
-> +extern const size_t hw_compat_4_2_len;
-> +
->  extern GlobalProperty hw_compat_4_1[];
->  extern const size_t hw_compat_4_1_len;
-> =20
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 1f86eba3f998..61a998de4665 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -237,6 +237,9 @@ void pc_system_firmware_init(PCMachineState *pcms, Me=
-moryRegion *rom_memory);
->  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
->                         const CPUArchIdList *apic_ids, GArray *entry);
-> =20
-> +extern GlobalProperty pc_compat_4_2[];
-> +extern const size_t pc_compat_4_2_len;
-> +
->  extern GlobalProperty pc_compat_4_1[];
->  extern const size_t pc_compat_4_1_len;
-> =20
+Changes since v2:
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+* Address some minor review comments from Philippe and add tags
 
---RyB1I56Pcq42iZjE
-Content-Type: application/pgp-signature; name="signature.asc"
+Changes since v1:
 
------BEGIN PGP SIGNATURE-----
+* Fix a user mode build failure from partial renaming of gt_cntfrq_period_ns()
+* Add tags from Cedric and Richard
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl3zGtIACgkQbDjKyiDZ
-s5KuqhAAxyf7RGKynjk1H4vgjIrPaU6rDarsH7A7JCFgTbHxQq0dkl3dW3Z1kY2Q
-3nDOC3Fks9MWBQTzk/Vz8kdzT5Y1C7eihSbAE1G91IU0nAu7oFXc7w/t27+QHGf8
-2Ll1DNoo1L5i/9GwOp3S+sxVpL2aba8TAuyW5eOHkSLiPXRz1ohuB+8lKomAf+/c
-JJMZBX0qa41/1zDPEAqvKAb/jSBkBtmPyqmu7v4ZSnkweTxQ+y2UjYUNKS+cAwHh
-WP6QAWMdoaOCSjiwaPBjw5l101TlcH0WX9YbkuengjvbMrIlLQEkwXxft+8mK2AW
-RrVttCBHRVf0KITA1Wi8viz2ElrHOA4BCzOq90BkT+GV30HEAWrzIRYuVs7CDZ9/
-X6CQW0pXz5W4iLPXvIT9ciER4AeuFWUQZqG6C/CiXWiXYzUEASmS8XrQG70jrZ47
-89QxdUgxkKLtRleiD80wCdk2YdzAgTRwbqmBW9gyfjg8cUmseq+CjrZaMnNoJgvr
-+5Jjy937JzFiEJzrX9Rn1SJhDDJ2M+OztQMK7aYiBeusBn54B6Y70Kp5eonoi9Vd
-NMgZdzyX0hUn2oTiLWuD6KLMV6dD+vpJNqGnJGG20vtltcb3L6h2p0ZGUWwXM+Vc
-0RqP0Vbh3wUm9fhaZPPob3O5LDHvRludpw+wHdPPKmy8uBi/+88=
-=QmEN
------END PGP SIGNATURE-----
+Please review.
 
---RyB1I56Pcq42iZjE--
+Andrew
+
+Andrew Jeffery (4):
+  target/arm: Remove redundant scaling of nexttick
+  target/arm: Abstract the generic timer frequency
+  target/arm: Prepare generic timer for per-platform CNTFRQ
+  ast2600: Configure CNTFRQ at 1125MHz
+
+ hw/arm/aspeed_ast2600.c |  3 ++-
+ target/arm/cpu.c        | 65 ++++++++++++++++++++++++++++++++++++------
+ target/arm/cpu.h        |  5 +++-
+ target/arm/helper.c     | 24 ++++++++++++----
+ 4 files changed, 83 insertions(+), 14 deletions(-)
+
+base-commit: 04c9c81b8fa2ee33f59a26265700fae6fc646062
+-- 
+git-series 0.9.1

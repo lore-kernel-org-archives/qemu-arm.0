@@ -1,105 +1,105 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp370237lff;
-        Thu, 12 Dec 2019 21:49:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzcOYmc1Wx/UBJZ9jPlg7d7x0Cqn92yXUUBeWJpbmbKWVUnQBr5zVS09RWOKvBtuiFhUb4y
-X-Received: by 2002:a37:9146:: with SMTP id t67mr11184935qkd.98.1576216142671;
-        Thu, 12 Dec 2019 21:49:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576216142; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp370489lff;
+        Thu, 12 Dec 2019 21:49:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwd0Oagd6GJW7sYtsK/c4tgqnzyPW8ckLAMWJ/nHUOdpbfQiOxEiGbjFgglGPkW8YKO2RlE
+X-Received: by 2002:a37:801:: with SMTP id 1mr12470583qki.326.1576216162460;
+        Thu, 12 Dec 2019 21:49:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576216162; cv=none;
         d=google.com; s=arc-20160816;
-        b=SWFQXRgBpKY6hjEk75c4lqTQ9O00cFJ/0M9JbkCXAHyn+NY6BE+vUXwUC3ILOhpyVT
-         HrRKwAzJdbtPr0MURyNGR7BpC/Hc3M3R571fdNcn4/KhpFgwgS4SV7SBiIk0IzB0lbYr
-         C0IATQKSWDa5cvo6d71eRd9XX/GqpWNolFkjLKJAOSODL+PCZgf8XzcjYbTEgx5namFF
-         xtSaH2+6OLWDCKre43ygVKb/V6eIibu1wkAE0AybOvZWIAK+XcjBbBxPMEn/g4w6P3kd
-         KvAJ+G6WXQE4hB/ZIkdTAKHBeSijlva+9245leFm0aHkw3KOJlxDLphacazV2Cl4PZ7y
-         GpAw==
+        b=LlSTQZcp2+64tVQn54Fif474+OSFgtQaSopxLIhqS/2ul9fgjicPI08x0w4GvnxGs7
+         XeckfMkdd3w3yo9yTEUlTC60pmOf1L/V2WqdXyY6YEVclO2eGcjUqJ860HzwO+4qEqWT
+         ebMMUQlJ+1BBzpWjkPGp/s1EScc4w0eDQI7zDEMh9006GFe83Nsp53jua9rNmbp1CaCE
+         +gQ5egIFA6EvZ0qEnZteXjzQAT17oa65ufMYIsck835IBa7QQPYmUH6XGk/t5cMMouRM
+         n+jZsSA5/dNVgWhzT3kEe6x2TKkBys8sSX8qZrTEOax4DoIIgLyWRIB2wqpLyrAh0WBO
+         VV2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature:dkim-signature;
-        bh=1UCByQUYAsPHw0TDr/9tqYqfBlUQ9Y9+Vdyqo8I6jT0=;
-        b=f+uRozThrwTeg6hMv2mXdsEDLmVvcXUF2gKwID7vPy6AD2B2LiC3rVmMfyvEo3Hhuq
-         SURNuhG5OVfIcEZFZGx+/HJS/8YzmcmA03MvQ86A1C6zMRGyYwnycl3lwZCjcqleLA03
-         NDIxgH9wkHUeq82HPRQPISxYh6MgJU9ds2ACwSdTa2Wgf5uKBv2Gp7OcPWLI1ETsyu+w
-         qkvkYb3QExQWbHclD276fO+BMPp+nkBFRMcetKVPHwxA1INjgtw5DczJdWCdCcVfz8+K
-         gaSnZ5z/H69VF0+eFzRbV3KCVPe0Y7Zp6VH2LTPtwAQCR+g56Wr9q/VZ4pObfCxrqmKG
-         70Dw==
+        bh=Y2G4Ydhqmr8BBUdomWAJiCRB/fhnREwhAAn2omPfwug=;
+        b=RiM8ylu+dszIfxFw47xUoVOBCFY5Nox+QAamdulSiHZ2+ZPNP7VZ+qtqWdaCv2rlNx
+         UQU89YYUXx60otB2utk3lR5uqEMbCc1+1208M2/k70L2NT0++0QLPrWgRn3Av0H2rwXG
+         WV3mvwfbHQRrEwtiBCTluyGTFpZiZXMrTt1iSMPETHmpYGAR5rjrKRrSDTOoUygeqdZj
+         Z/qafneUriVBorvrK+Fi8hZnSsxAEWGE+lxKN22CeA6DhYKNKZEPGBAireQ3DfEZX8ua
+         9cKEeo9KCyOd2/k1vBlgYGppcw0hRfc7S3KkHFTDvsDLv00HmK6dPRYcifUGxBkbUXvd
+         pojQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=Mog8UeNj;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=huNnvZ+Q;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=MdCLTp4d;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=MR1gLMwD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b48si1289028qvh.158.2019.12.12.21.49.02
+        by mx.google.com with ESMTPS id g4si4312556qka.203.2019.12.12.21.49.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 21:49:02 -0800 (PST)
+        Thu, 12 Dec 2019 21:49:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=Mog8UeNj;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=huNnvZ+Q;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=MdCLTp4d;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=MR1gLMwD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41128 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41154 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifdoz-00030X-CD
-	for alex.bennee@linaro.org; Fri, 13 Dec 2019 00:49:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54929)
+	id 1ifdpJ-0003KU-Gf
+	for alex.bennee@linaro.org; Fri, 13 Dec 2019 00:49:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56914)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1ifdol-0002yj-IP
- for qemu-arm@nongnu.org; Fri, 13 Dec 2019 00:48:48 -0500
+ (envelope-from <andrew@aj.id.au>) id 1ifdov-0003CN-Sq
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2019 00:48:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1ifdok-0004fw-9w
- for qemu-arm@nongnu.org; Fri, 13 Dec 2019 00:48:47 -0500
-Received: from wout3-smtp.messagingengine.com ([64.147.123.19]:55527)
+ (envelope-from <andrew@aj.id.au>) id 1ifdou-00052G-U1
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2019 00:48:57 -0500
+Received: from wout3-smtp.messagingengine.com ([64.147.123.19]:59891)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1ifdok-0004eA-2a; Fri, 13 Dec 2019 00:48:46 -0500
+ id 1ifdou-00050e-Mg; Fri, 13 Dec 2019 00:48:56 -0500
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id C76068F7;
- Fri, 13 Dec 2019 00:48:44 -0500 (EST)
+ by mailout.west.internal (Postfix) with ESMTP id 69B568F7;
+ Fri, 13 Dec 2019 00:48:55 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Fri, 13 Dec 2019 00:48:45 -0500
+ by compute4.internal (MEProxy); Fri, 13 Dec 2019 00:48:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
  :to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-type:content-transfer-encoding; s=fm1; bh=
- 1UCByQUYAsPHw0TDr/9tqYqfBlUQ9Y9+Vdyqo8I6jT0=; b=Mog8UeNjUGLCDyBb
- 0uRLdhuWZ0qlfpi5XASc7z8WWwpSyFQ7pN2floLJa+a3B0ZAKwloarK9oZ9e0hzY
- /vhVvOSHPe/HGi3xIncIMthFqvmgJxUELYeivAuNKMmc8un43wE7g1Xv5d0XNlRJ
- w7u4Awg71DC+EHHiMp6amC3aKVNzVUvoFnoB7JVIt80rTiB3j7cERJt+71qwtzwz
- 3w1k5yCcxfV66EW5CkMM1W1qkZFdenj/Th9QJ696WVfCULl96tRNPYxs5sIrPv0u
- g0/yH6KORo9qYNv4Sx3FYsPLjObEYY35aHqRJ7HYwhhgzYEaGOlhYtU950F7nbik
- MDPDVQ==
+ Y2G4Ydhqmr8BBUdomWAJiCRB/fhnREwhAAn2omPfwug=; b=MdCLTp4dfLtQJ8a0
+ 7G8iWhsruhSpcZ+1LMxK8vb9NYpBp/2zF11p9OTPoz4TTEFF6QBid7Fcdy9seGBP
+ J5bDR/z5840l0gbz4YKV5yo1RSkiABi6h8TfkLZ+8CG1xotZEpjgV2syIIxvSa8z
+ x1YeghQKiaR9ElRtAVrqispkD17orP8aZlnNTFKvOoKWWQlCLb5Hx2RItxn8e7rx
+ 2PV2QCZREY/Q8+GlbFEB1S8KNpGaYEq5dy4+jWUVEWROeD9ZuWBsGbOxI0n7jQMz
+ 2nXRuZKjyAIMIIG1mYZ5ncxGOuLTUWVEVyS2j71ItNz2IwpUaMrNx8E6nHB28efC
+ BRN9eA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:content-type
  :date:from:in-reply-to:message-id:mime-version:references
  :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; bh=1UCByQUYAsPHw0TDr/9tqYqfBlUQ9Y9+Vdyqo8I6j
- T0=; b=huNnvZ+Q+4YfRQUYbw+RYsKYGLgs/h5sW/7Lcjf2/b8/mNZEIDLhCAI7d
- Y0ZbojLikiX8c6MWiQBCr9DPkWviEEdf8xqDb2KMyLprfrMoiKVDUREqw/d5E5Q+
- Ol8L7V2lC04dPiGFK28O7RZA4sCXuF3JbTU63O64c8rUAx0CO2199Trxt7jDQW2k
- WAaVZiKVj6M5YRrxkXTQdYuc90wz/MsJniu9N/c+mAq0zjC5XOeyxBGcBiaKdt/O
- +6rZup5oDrLFackU4BXDd46wp37guwchJ1QT0wJnlAaDqaUoucpyHr86PzsSy+7C
- LWAjQLPsElhSTHgk/CTbg2yzwokXg==
-X-ME-Sender: <xms:PCbzXZhT39XpRfIBKoJfiZZDPvxRtMaxYav1-Dnmf-0vE7nfKsClcA>
+ :x-sasl-enc; s=fm1; bh=Y2G4Ydhqmr8BBUdomWAJiCRB/fhnREwhAAn2omPfw
+ ug=; b=MR1gLMwDMZCGhn8K16fzDJhe1ZeYghY/W8U92hHvm/5NIfj3scf8ok+I3
+ 5pUl2Ap4gizwFfyTfPf6HKFDOdvAkiup0ZJNxYeZPEbMaqfPVfu1bxi59AhNEiem
+ BBL6CGgztrJ4AtwCVGLKLW0ZrRAmKq/Bt1vBnrQQClkAcx+xpMErgjZQOe7zqgV9
+ 7ckIJHEPxfqoiJ3Roof9z7R2f5GWErSZi9EJK/2TVpuCqvzz6onexbCXHYUL/pTE
+ Jhe/fii+QqpT3eWfoNwuVwLEdwqhzgjhhtLnVgdEUFxnOxlTFo6gFEnqMHmxXCo7
+ gwoMj2ap729N3np5EnGKtWF0iLMKA==
+X-ME-Sender: <xms:RibzXflDqFkqypoaoriat0Hj8rvQHRUe2Err55jxcIpdeb5hqUqtUA>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudelkedgkeejucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomheptehnughr
  vgifucflvghffhgvrhihuceorghnughrvgifsegrjhdrihgurdgruheqnecukfhppedvtd
  dvrdekuddrudekrdeftdenucfrrghrrghmpehmrghilhhfrhhomheprghnughrvgifsegr
- jhdrihgurdgruhenucevlhhushhtvghrufhiiigvpedt
-X-ME-Proxy: <xmx:PCbzXXJVifcYCyYH3BPdZz43WTXkTFGorCHKNyE_uxXSgqwg2pzQKA>
- <xmx:PCbzXR9Aev1m8W3mbBlN1_rYuwaPR-qF24Nv4bioavYFy_V27JoWmg>
- <xmx:PCbzXQ4bWFHGNkRr0kfTpWiYM56y42V1d8-rBIe-DE6y551K1MtavQ>
- <xmx:PCbzXdOTrqq-9kTMKdtxf-Cy0_FEU2kqBvvXH2yCgekHkTIWT1occQ>
+ jhdrihgurdgruhenucevlhhushhtvghrufhiiigvpedv
+X-ME-Proxy: <xmx:RibzXZuNbwyUk0Dot8ylXpgGKTmmLyJ9vzTW0Fa1pC5kg653MreiiQ>
+ <xmx:RibzXd8frxzpMH3ECFYNoNuo5iQznVeBgL8ewJKtplYmvjL46vuRsg>
+ <xmx:RibzXTMWaNbVsq0b_swMmcOatFl9bQKZdCLzmPL6Dxo3staJotf-KQ>
+ <xmx:RybzXccGlFrswB54pYBaNRZKbAHrWNKnhLeElJMCnq8ykUMJGMaNpw>
 Received: from mistburn.au.ibm.com (bh02i525f01.au.ibm.com [202.81.18.30])
- by mail.messagingengine.com (Postfix) with ESMTPA id 4C6DE80060;
- Fri, 13 Dec 2019 00:48:41 -0500 (EST)
+ by mail.messagingengine.com (Postfix) with ESMTPA id E07E480069;
+ Fri, 13 Dec 2019 00:48:51 -0500 (EST)
 From: Andrew Jeffery <andrew@aj.id.au>
 To: qemu-arm@nongnu.org
-Subject: [PATCH v3 1/4] target/arm: Remove redundant scaling of nexttick
-Date: Fri, 13 Dec 2019 16:19:48 +1030
-Message-Id: <f8c680720e3abe55476e6d9cb604ad27fdbeb2e0.1576215453.git-series.andrew@aj.id.au>
+Subject: [PATCH v3 4/4] ast2600: Configure CNTFRQ at 1125MHz
+Date: Fri, 13 Dec 2019 16:19:51 +1030
+Message-Id: <080ca1267a09381c43cf3c50d434fb6c186f2b6e.1576215453.git-series.andrew@aj.id.au>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.ec85a2db47c3e10de70fba144e1bc75caf2f0a91.1576215453.git-series.andrew@aj.id.au>
 References: <cover.ec85a2db47c3e10de70fba144e1bc75caf2f0a91.1576215453.git-series.andrew@aj.id.au>
@@ -124,36 +124,31 @@ Cc: peter.maydell@linaro.org, Richard Henderson <richard.henderson@linaro.org>,
  qemu-devel@nongnu.org, clg@kaod.org, philmd@redhat.com, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4yxUs0nQfPj+
+X-TUID: o8i/X4yfUxn7
 
-The corner-case codepath was adjusting nexttick such that overflow
-wouldn't occur when timer_mod() scaled the value back up. Remove a use
-of GTIMER_SCALE and avoid unnecessary operations by calling
-timer_mod_ns() directly.
+This matches the configuration set by u-boot on the AST2600.
 
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- target/arm/helper.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/arm/aspeed_ast2600.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a089fb5a6909..65c4441a3896 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2446,9 +2446,10 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
-          * timer expires we will reset the timer for any remaining period.
-          */
-         if (nexttick > INT64_MAX / GTIMER_SCALE) {
--            nexttick = INT64_MAX / GTIMER_SCALE;
-+            timer_mod_ns(cpu->gt_timer[timeridx], INT64_MAX);
-+        } else {
-+            timer_mod(cpu->gt_timer[timeridx], nexttick);
-         }
--        timer_mod(cpu->gt_timer[timeridx], nexttick);
-         trace_arm_gt_recalc(timeridx, irqstate, nexttick);
-     } else {
-         /* Timer disabled: ISTATUS and timer output always clear */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 931887ac681f..5aecc3b3caec 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -259,6 +259,9 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+         object_property_set_int(OBJECT(&s->cpu[i]), aspeed_calc_affinity(i),
+                                 "mp-affinity", &error_abort);
+ 
++        object_property_set_int(OBJECT(&s->cpu[i]), 1125000000, "cntfrq",
++                                &error_abort);
++
+         /*
+          * TODO: the secondary CPUs are started and a boot helper
+          * is needed when using -kernel
 -- 
 git-series 0.9.1

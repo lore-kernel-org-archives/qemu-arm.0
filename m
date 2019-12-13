@@ -1,115 +1,100 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp459895lff;
-        Thu, 12 Dec 2019 23:37:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwafPX5GKH2EdQhWDb30yKi9W09S692maQD4ti8LftfnT2e6ycH/jhnq+vqdVxGpruDDc/Q
-X-Received: by 2002:a05:620a:4db:: with SMTP id 27mr12592989qks.146.1576222665082;
-        Thu, 12 Dec 2019 23:37:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576222665; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp545096lff;
+        Fri, 13 Dec 2019 01:12:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyai2BMR5tXp4oYLCecCD0uFAeN3+B1fXoZUOCZpl5xnmnDFOfLrx4FMWDorUO1ofKebZP5
+X-Received: by 2002:ac8:23cd:: with SMTP id r13mr11596835qtr.184.1576228361693;
+        Fri, 13 Dec 2019 01:12:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576228361; cv=none;
         d=google.com; s=arc-20160816;
-        b=jPiTfe6S3/cJPQDJpq2yvPzndoHyvKlKmZM5MM38mpkNsDE43gFkqoDYwrJuJwAAMg
-         HM+olTArIA6273zxQJPEF22XWAo/+xeewYIRKvbTszTz95ctJRWLWiSyW5dwLzTY7e6v
-         OFDZiSAwkDic8Epa+b4UyZWm3O5+PaQ4uFlCOirEC/F8B06a6kaZuNC4UWEoMiwk59HR
-         In+gza/72FmMKyT0TqkXAF4tjFmBRIHSiqZI62E2qowUXi9yyRdGOcnbRNE1RSjCfcRv
-         XYE0hteRLaXmKI3aNDkG6IsSkbIIJJjI03xxxQVX5X2Za2BXA4SFJAotrXdQEHV59Iuy
-         KRWQ==
+        b=DMDEewBE3jfGnDVBARbPezzdAQ5YXTkaX7dSTvJ60AdX9DukYJjkv0rW0h4bxR07gz
+         yPVtVgBeKB0W9zyxFUxXrSwNvmSl7CflVhf3NJoMZU3Eb/v8j6knMlkdAqw+QOU3vuud
+         EuaBBumGpNCcyRX9rrKhqVHwLlL6UH82kREtw44KEkxNg4yldkKR+msEPAK36QBkuORI
+         AN3NDKIn43jCdGmTG2eGZQ7FxE13r0EvTtJyOG5nT4ssi1QQ3QHMiUOralUEEGGpJ+Nz
+         WkhWPknyxS6jQWSUSV01ucEzU+TL+DfrCHdUBPCZ2/FEur7ujHof9Hm/viaCiX+JiAEm
+         9FSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:from:date:references:in-reply-to:message-id:mime-version
-         :user-agent:dkim-signature:dkim-signature;
-        bh=R7vvNQShjZstXykvSSp28e4ebWdGwPKaCuhGtz3SP9U=;
-        b=bwRM0h2Dc8tiDrRA5XKGqt5LggSaa0fweRy0pRr0rCZ5SO4lDp1lVAs68rigL3LjkS
-         EJH6Q+I8Ttc1IeEj0NkqDVrQ6mRLaxWtSzLR1sPNG6gx7WW5Scvd5i8WTZtGHpevmsgR
-         zvMx4XpKCwxnkdle+iZTNbWQsshGpocIWGkbCaGBSioL2EATUbMVh7TtL6SvYcQzpDds
-         0ghz3yHbMkUzrSSppAVgNbOgVMFILEypIswjK0kwwGB9k7zQR9YJyzQzyxDqS7G746N3
-         aMlHdcj14UiFaMqw2TfwBfinPzl52FJnRlw8Jo3tOVD6FIfkqL/fmIoFc8SHm9qcZLtm
-         553A==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=g8Vid2Cs8r6/Rmya9pqc2DE1uJoY/si0o8UbX/u+0vQ=;
+        b=EeUud0W6aPFfian9c8nbilHDtMLBfRCLcMnb5qRLbE2lJP4Im93YjokknVSN+2EJMo
+         4kD6QXXERGt48Hr5J9jVJk5PNDPsXMnKqf9ip3N7WA9cBSrX1Gui73WgRLs1oaRYlnBf
+         CVz4T1MAsp2anXL7JRa0Wo2+1MSp6mhPcRZ1Xv5YfYiRkcKzp7Xr7lxfVOCkVvoy99ZC
+         aBR4CaBGwr9yTUzxicPDOK66ORD1Y7UrbpbN/GBs0zxsDKRld8zx/s0EoVCx9sPvU90P
+         QWyuqHPLQgpuGO9EMwoYqL/tkxJ8gYCBaMn2vKPU2qssZhXhFUdC+/jxhfep+jb1W0qO
+         MUUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=UXrRXxlY;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="b/MXrZne";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CMWSYjzy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g187si4350259qke.326.2019.12.12.23.37.44
+        by mx.google.com with ESMTPS id v140si4437749qkb.120.2019.12.13.01.12.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 23:37:45 -0800 (PST)
+        Fri, 13 Dec 2019 01:12:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=UXrRXxlY;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="b/MXrZne";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41916 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CMWSYjzy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42968 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iffWC-0000XU-Ev
-	for alex.bennee@linaro.org; Fri, 13 Dec 2019 02:37:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53501)
+	id 1ifh04-0004Rx-Ve
+	for alex.bennee@linaro.org; Fri, 13 Dec 2019 04:12:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53336)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1iffW4-0000XL-Lm
- for qemu-arm@nongnu.org; Fri, 13 Dec 2019 02:37:37 -0500
+ (envelope-from <imammedo@redhat.com>) id 1ifgzv-0004P8-Rf
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2019 04:12:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1iffW3-0001B5-Lv
- for qemu-arm@nongnu.org; Fri, 13 Dec 2019 02:37:36 -0500
-Received: from out3-smtp.messagingengine.com ([66.111.4.27]:45253)
+ (envelope-from <imammedo@redhat.com>) id 1ifgzt-0000su-38
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2019 04:12:30 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:49488
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1iffW3-00018Z-1i; Fri, 13 Dec 2019 02:37:35 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 6A25622706;
- Fri, 13 Dec 2019 02:37:34 -0500 (EST)
-Received: from imap2 ([10.202.2.52])
- by compute4.internal (MEProxy); Fri, 13 Dec 2019 02:37:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type:content-transfer-encoding; s=fm1; bh=R7vvN
- QShjZstXykvSSp28e4ebWdGwPKaCuhGtz3SP9U=; b=UXrRXxlY/RqY3GbUFkhrk
- SnylI3BL2xlgfwKqdVfSu4QPuBVZ5r8HhtKMLteQ/pR9PK52hgCI0jjcrfpQiyer
- QRt1O+lnQtVI8Wp6rj539BVkDp1/5t4MtWKNHD70JuiW+lcbEzk0IQyxmDq7HGH7
- D6/AVh27FRhy6dl9HDOMGPifZuBoTisrOPTu/yq1Ag73u7d9EcfFi9Gl2EX1ETMt
- CE9JEmvZ2csQYC25yk3Lit4DWf8mI6ZN+Q5Wnm/dy4kahrT9wsTm3/kZhM4X48Rq
- WTbLFjKVYPfxOAkjOX/HhKgsarUuZRKOWzzYAd9zmTT5NxG76uYhVVfPdeDZLdB9
- w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; bh=R7vvNQShjZstXykvSSp28e4ebWdGwPKaCuhGtz3SP
- 9U=; b=b/MXrZnenWgGj1row49Q8nWuHVIkklMIH/V09xnfKqYqvdzdPEyxuxQt8
- Tw7ggmBhoKuQu4W1vkxI52iaZwEgv5rfKkh138WrtF941mDFvrtdzAOz42aooegn
- oEHqDlc3aVjX01jaO1UUM7GY2c3gzpjIpqbAIsHG0Di4gSV5d5w1mBhuy+eDwPty
- AMazPPXxw4gT7AWPm/n4xv4TClbmXwsxYKFKX+zmwqN+9cF5GlXrdTh3HeM+cWKG
- ot85eF3OQcHmboLBvVcHgOm6AhNfX102FBn/BuLw8/120g1UMjp28zHQT2Y6A+sW
- 3zG93CGgQpDyjBPq3b2OrZV3VLQWw==
-X-ME-Sender: <xms:vT_zXcbzn5IWRBJmvNoh_KpYLuq9O43MMyG-Qva3FNxLqyzWH6RcNQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudelkedguddutdcutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpefofgggkfgjfhffhffvufgtgfesthhqredtreerjeenucfhrhhomhepfdet
- nhgurhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecurf
- grrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghunecuvehluhhs
- thgvrhfuihiivgeptd
-X-ME-Proxy: <xmx:vT_zXYkCys5yL4M5eVP3bu9WGnNkJPk1UTCOANvYikT-JnqKd24bYA>
- <xmx:vT_zXXYUUZMFZoMmlKEE-IRTedz2SkEGa6kJwaIy8g_VzYteayX6uA>
- <xmx:vT_zXQA--z7XnBhP3TB4hqGAmUGuL0_LlqZsu-BzNfw1UKuHYNyagQ>
- <xmx:vj_zXSIqOv2Ax0xggKCMWf-RW-JP5Vu5nXaVGw6TdYbbMPpcPm_H8Q>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 9557DE00A2; Fri, 13 Dec 2019 02:37:33 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.1.7-680-g58d4e90-fmstable-20191213v1
-Mime-Version: 1.0
-Message-Id: <1d96ac9b-5eb2-43ec-bf21-334ee3fa4420@www.fastmail.com>
-In-Reply-To: <16c90bb0-a3a9-06ec-e79a-bd98471d9e11@kaod.org>
-References: <cover.fc3e5e495d85ebd919c1f06a1a2c7c7730518f9c.1576211124.git-series.andrew@aj.id.au>
- <16c90bb0-a3a9-06ec-e79a-bd98471d9e11@kaod.org>
-Date: Fri, 13 Dec 2019 18:07:11 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 0/2] hw/arm: ast2600: Wire up eMMC controller
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1ifgzs-0000pT-LS
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2019 04:12:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1576228347;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=g8Vid2Cs8r6/Rmya9pqc2DE1uJoY/si0o8UbX/u+0vQ=;
+ b=CMWSYjzynILl/YyszkPaEDN+fGwegAl3cNM+1KWDhDtgJ5qeDO2ti2p6tYqNRy2dPzU9Hr
+ JncdY6sTpzdHbUfP3NyEKuEH5F+ejNf0a31Ne8G526zvuOiougcBilexyHDEZeNkQ4mYOH
+ /tNditLNizZpDgElIoRevdj1Iwkm2OE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-216-a5GX5yCGPyOkF52cnlAqFw-1; Fri, 13 Dec 2019 04:12:24 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A5C351010FC4;
+ Fri, 13 Dec 2019 09:12:22 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C6546601A2;
+ Fri, 13 Dec 2019 09:12:20 +0000 (UTC)
+Date: Fri, 13 Dec 2019 10:12:19 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Tao Xu <tao3.xu@intel.com>
+Subject: Re: [PATCH 2/2] numa: properly check if numa is supported
+Message-ID: <20191213101219.0aa249dc@redhat.com>
+In-Reply-To: <bf9dc1f6-514a-67ac-d09b-0b515545bf22@intel.com>
+References: <1576154936-178362-1-git-send-email-imammedo@redhat.com>
+ <1576154936-178362-3-git-send-email-imammedo@redhat.com>
+ <bf9dc1f6-514a-67ac-d09b-0b515545bf22@intel.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: a5GX5yCGPyOkF52cnlAqFw-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 66.111.4.27
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -121,36 +106,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Leif Lindholm <leif.lindholm@linaro.org>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ldj2WFLHScHK
+X-TUID: bbvuad22sMhh
 
+On Fri, 13 Dec 2019 09:33:10 +0800
+Tao Xu <tao3.xu@intel.com> wrote:
 
+> On 12/12/2019 8:48 PM, Igor Mammedov wrote:
+> > Commit aa57020774b, by mistake used MachineClass::numa_mem_supported
+> > to check if NUMA is supported by machine and also as unrelated change
+> > set it to true for sbsa-ref board.
+> > 
+> > Luckily change didn't break machines that support NUMA, as the field
+> > is set to true for them.
+> > 
+> > But the field is not intended for checking if NUMA is supported and
+> > will be flipped to false within this release for new machine types.
+> > 
+> > Fix it:
+> >   - by using previously used condition
+> >        !mc->cpu_index_to_instance_props || !mc->get_default_cpu_node_id
+> >     the first time and then use MachineState::numa_state down the road
+> >     to check if NUMA is supported
+> >   - dropping stray sbsa-ref chunk
+> > 
+> > Fixes: aa57020774b690a22be72453b8e91c9b5a68c516
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> > CC: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+> > CC: Peter Maydell <peter.maydell@linaro.org>
+> > CC: Leif Lindholm <leif.lindholm@linaro.org>
+> > CC: qemu-arm@nongnu.org
+> > CC: qemu-stable@nongnu.org
+> > 
+> > 
+> >   hw/arm/sbsa-ref.c | 1 -
+> >   hw/core/machine.c | 4 ++--
+> >   2 files changed, 2 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> > index 27046cc..c6261d4 100644
+> > --- a/hw/arm/sbsa-ref.c
+> > +++ b/hw/arm/sbsa-ref.c
+> > @@ -791,7 +791,6 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
+> >       mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
+> >       mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
+> >       mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
+> > -    mc->numa_mem_supported = true;
+> >   }
+> >   
+> >   static const TypeInfo sbsa_ref_info = {
+> > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > index 1689ad3..aa63231 100644
+> > --- a/hw/core/machine.c
+> > +++ b/hw/core/machine.c
+> > @@ -958,7 +958,7 @@ static void machine_initfn(Object *obj)
+> >                                           NULL);
+> >       }
+> >   
+> > -    if (mc->numa_mem_supported) {
+> > +    if (mc->cpu_index_to_instance_props && mc->get_default_cpu_node_id) {
+> >           ms->numa_state = g_new0(NumaState, 1);
+> >       }  
+> 
+> I am wondering if @numa_mem_supported is unused here, it is unused for 
+> QEMU, because the only usage of @numa_mem_supported is to initialize 
+> @numa_state. Or there is other usage? So should it be removed from 
+> struct MachineClass?
+You are wrong, it's not intended for numa_state initialization,
+read doc comment for it in include/hw/boards.h
+(for full story look at commit cd5ff8333a3)
 
-On Fri, 13 Dec 2019, at 18:03, C=C3=A9dric Le Goater wrote:
-> On 13/12/2019 05:28, Andrew Jeffery wrote:
-> > Hello,
-> >=20
-> > The AST2600 has an additional SDHCI intended for use as an eMMC boot=
- source.
-> > These two patches rework the existing ASPEED SDHCI model to accommod=
-ate the
-> > single-slot nature of the eMMC controller and wire it into the AST26=
-00 SoC.
-> >=20
-> > v2 contains some minor refactorings in response to issues pointed ou=
-t by
-> > Cedric.
-> =20
->=20
-> I think these patches are based on mainline. I fixed them locally on=20=
-
-> my aspeed 5.0 branch and I plan to send them along with other aspeed=20=
-
-> changes in the 5.0 timeframe. =20
-
-Yeah, they're based on Peter's tree. I'll base future patches on yours.
-
-Andrew

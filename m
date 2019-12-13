@@ -1,217 +1,163 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6268687lff;
-        Tue, 17 Dec 2019 08:50:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxxbJVmS4nf49llxkuwqbMxM6HyPm3h6qHrmfUQrsWDmkYyhFJjc12JUaikoVrbOoYTkEm/
-X-Received: by 2002:aa7:c2d3:: with SMTP id m19mr6240517edp.136.1576601444549;
-        Tue, 17 Dec 2019 08:50:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576601444; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1093547lff;
+        Fri, 13 Dec 2019 09:05:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz0Oic2EIVzByMukp5CzzngyYIw3SfjcVkzDIT2QtTzqw8zE9Aie1uJI7pHLeC0UlT7HNM7
+X-Received: by 2002:a05:6830:1707:: with SMTP id 7mr16319251otk.185.1576256741126;
+        Fri, 13 Dec 2019 09:05:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576256741; cv=none;
         d=google.com; s=arc-20160816;
-        b=zq1N+smPTsRnAKkhdiUcc06XVTdFbRN3kiNaZPL/MiOyqtMDzNtBXZ3nVMjOA8sdCx
-         aE/v0N/aLTGAAggE3jTOSjC+MjBv7V0sKzqppFK5ZpG5Ou5qhfgLzM76NI93IlpX+yuL
-         KkGwj0mYs4tzOoxNZ2pDPjDwUWT6AixWLwUixg9v/E2IccSOEFbwN+n2gkeRLQFVaqxp
-         N/pJl0lfMB3atUZAa01IBemlsFWI+HXM2A/zErIsjAhDjqcwJjYI+DVLh3oLAaTKjIkA
-         rKrbwypBypkwx8Q1YkqsX9nAKkqSIkkNz8Hc7VCXO1w3LZ1FHPMgZgwCeYF71boSfl7D
-         KBaA==
+        b=Di33aFJxb1Gu0hdBxJaHb/LmC7nNlD66bgH6zetLY+B9i1beDsTbUF0tr12M6RdpQo
+         AVn0as6wrG/Y1I3YxACfXk4oneOcV00DQZsRTMAFUczbyHRKTNkRiiC7SFfTiSK0Rqwd
+         dTUUn4XZJtD7FSLoSnMIv0lZGKfiaZcWfuH5wT8bHYVwBXoYVFjhcKakqQC5KEpKTrmq
+         Ak20LF8+hSARR7OTZcNA5rI0lTwyrrB4ZGl0WIQTXe4V0uu2XaFQF6IuVBR0SsX+yB6M
+         VrgmL35olJ5qY6FXG5x4BwmZjxY8sKVE1SJtAY+Bi6CriBLkQVK42Bg3VWUCqazX4e0C
+         5kZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Hxi4TFPUAhXySks0MDg1YAzEzstwrloAcjIJSqHZj1U=;
-        b=NjUeYl6G6Y2nl3WbTrot3himCOmF3IqHZPgqQyFTT2oL0QQy4FKgfHDT7PQ5baGOyI
-         nudGWAZy/WgSLJceo80vvjmq1v/1F+i34qdp/ficoD5SOgViZY/f1UbTBOiTcUGSJLLB
-         q9OKTf9KgWWYe4f0brJc6qf88YauiR/SyOhz3zO21RsvidB+3wS2CzH0m/jRZ3a1MU8c
-         xFqaCRvZwa1JgQ5EA4blvLIsDVBKPg04KplWIvkNM9GAVKxcM4g1OJSfQyX7JxEFk12z
-         MeLdgQd3nGXdnuN6VaF978TqP0kqIObkg+uPL2JISus53vcDj7nE9w9Bpmk5QxBA3nmK
-         rNtg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=RZT7mKlrrJvs6wCkbiK3Z4f60pKV4mJ6oeMUJT8OsSQ=;
+        b=ZP3mHiLw3MNob5MbYBpWtvT7luE62GjxYVAETSM25jawI6NKhCMD36HAdjqlhm04wj
+         sEpO3VPvSRqUB3TkqiUyuHTWVeYimfKHtBzelvKZ3Gn652qvDBUJtuTUaQFyMmfDcG9U
+         XPsr2Ons/fxOP6JO6bFKNsy0P/E73kxYWIKvgUJAYRVilpKufrZUozYcBTfu9Wn07OBB
+         6J4xqhAt6RSfRptTlqouFJcy5oaIQz2P05x4CRHdnaD37n3BbRleuevWL66lX+IolAnq
+         qe0SZAKDLRb+sHM0Cz00FUrF457QgdFIgxdZ7y4Qu3GNhPIy08TKQzZ6aKhUO/XRNjl6
+         4E5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XNcPD3er;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cujFDY+f;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id k8si16034313ejb.13.2019.12.17.08.50.44
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h22si5401420otk.294.2019.12.13.09.05.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Dec 2019 08:50:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 13 Dec 2019 09:05:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XNcPD3er;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cujFDY+f;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51772 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ifoNo-0006wv-9s
+	for alex.bennee@linaro.org; Fri, 13 Dec 2019 12:05:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55350)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1ifoMc-0006M6-5E
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2019 12:04:27 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1ifoMZ-0008P7-TF
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2019 12:04:24 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20155
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ifoMZ-0008OC-Pp
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2019 12:04:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1576601443;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Hxi4TFPUAhXySks0MDg1YAzEzstwrloAcjIJSqHZj1U=;
-	b=XNcPD3erCJ2pmg2N3rgG5QJrwu0bulGZqdXzv8una6NNhXrnwJwOtXjaZVj/iNoZLzJ1gI
-	jibt//3mUsKmVCclpB+sLIFooXU8PUUJA2YHY07jKH3e2Sm35u3WA0Ij87JcOZ6vEgXSLw
-	ITR49mt3vhBvv3ABxVYdSoumV5QcqOk=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-67-AqKb79UINzCizyGOdjZtxQ-1; Tue, 17 Dec 2019 11:50:41 -0500
-Received: by mail-wm1-f70.google.com with SMTP id n17so598473wmk.1
-        for <alex.bennee@linaro.org>; Tue, 17 Dec 2019 08:50:41 -0800 (PST)
+ s=mimecast20190719; t=1576256663;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RZT7mKlrrJvs6wCkbiK3Z4f60pKV4mJ6oeMUJT8OsSQ=;
+ b=cujFDY+flv18wXnMvQKcFqoUIm1V0f0kY32R0sHlYjINj88FdrpY5LzaXdAsR7ikFE12zH
+ SsjVCrCwP9s1DtDudcd69IAHSPtTJReOQZ4fpKjEq49CdvxsBH0JONrzstTZkVrWLDt29p
+ 18IELzsBVvTEcyAg4yE4l92eVr/eJWg=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-349-3yx9deyPOF2Y961Cm-OoWg-1; Fri, 13 Dec 2019 12:04:21 -0500
+Received: by mail-wr1-f70.google.com with SMTP id c6so2792193wrm.18
+ for <qemu-devel@nongnu.org>; Fri, 13 Dec 2019 09:04:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=aQejgbF//N7qVjT/SefZZofdV97veJrrkximXLqTP+A=;
-        b=O/Kigr7UCy1LUgkbxfltHr8DJc+NovIeuaSL/kaEpG2JEadrIcNBaeDmzaayBGvQQQ
-         7Kxq21FSC9KR8FJSVLL4DDeRm5sr44+NsOxlBJ935PfwLomAejRWtJQ7ui3sI5AT9lch
-         xKO/lukEd5m9hh8fSlCxNhHXzzGRZf2ZvTEIN/qG1t1+l4gudQnU2/BNrrAU57Quxbx4
-         QBGaxLEy6JK9PiC/97lx8jgcRD2/iIsFKIZjOeVGVvGdXZl9s8Q2SKPIJN0ME/9i/6Fk
-         2YN3eLEEvZiwxZ2HVXIPUOdwtRKk+FZTzEA9WzNWgnLQHD/hcSHYUCyXQwzNM6x0/nPo
-         ncag==
-X-Gm-Message-State: APjAAAVht4MHJP7mD6TMByBff+8B5K2oxIaidTSno+HRTNzi90Z1cBEy
-	wViKadqlmXJEPqsfEvJ9wb341+Vmey6GaygkfSGXQxkkEwDizq96R02iPeWYMYI8XdXpB0udot/
-	Oxi7o5pqRIaaXIAb0
-X-Received: by 2002:adf:fc0c:: with SMTP id i12mr40284784wrr.74.1576601440836;
-        Tue, 17 Dec 2019 08:50:40 -0800 (PST)
-X-Received: by 2002:adf:fc0c:: with SMTP id i12mr40284727wrr.74.1576601440590;
-        Tue, 17 Dec 2019 08:50:40 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net. [83.42.66.34])
-        by smtp.gmail.com with ESMTPSA id s1sm3636122wmc.23.2019.12.17.08.50.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Dec 2019 08:50:39 -0800 (PST)
-Subject: Re: [PATCH 00/14] chardev: Use QEMUChrEvent enum in IOEventHandler
- typedef
-To: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Cornelia Huck <cohuck@redhat.com>, Zhang Chen <chen.zhang@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Fabien Chouteau
- <chouteau@adacore.com>, Paul Burton <pburton@wavecomp.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
- qemu-block@nongnu.org, Corey Minyard <minyard@acm.org>,
- Max Reitz <mreitz@redhat.com>, Li Zhijian <lizhijian@cn.fujitsu.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Michael Walle <michael@walle.cc>,
- Markus Armbruster <armbru@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Alberto Garcia <berto@igalia.com>, Peter Chubb <peter.chubb@nicta.com.au>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Andrzej Zaborowski <balrogg@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Antony Pavlov <antonynpavlov@gmail.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- qemu-s390x@nongnu.org, "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>, Amit Shah <amit@kernel.org>,
- qemu-riscv@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Thomas Huth <huth@tuxfamily.org>
-References: <20191217163808.20068-1-philmd@redhat.com>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=XUiq4uJ2Xy7OvbOEdpiV9tYwd2TGjMstqgqamc0EQI0=;
+ b=Lqg8RmN7ETpxPCD7omEwQ8AhI13vlHC9mJtaSGmUWwpjDnijcrM1d6A9cDpl3x21Wu
+ n2W3Q+aeT5hZ6ShrJUqmnUoa70g6NBUPKSODBGo6EdvSo8hOD2sloxLyfWMrnLhofCSZ
+ wNvh6zosWhKB/ND9aFvF6EJZCejAXJ97rGa+cFB1LNzuiStdTTfv5+HtrwcsVmEr28eF
+ bjK6pQ2h7n5aPzcz+ohsRdJx9rZK4pewgUvbkG6iydXSVcup/efmf5c5wNseYvek791n
+ ZZrCpO8tDEI70KDFyCgQ8L36w1QXEOVY05RiUqX0zZopnKbPs0ZPaUAH5KL1oOu25DOj
+ PHrg==
+X-Gm-Message-State: APjAAAVhjUdQLApAn/woOa0zvIWcjKQrhZyx1ImNLcybbhpnn6pp5ktW
+ Fw4XLQ4+2iwGSoLLOC2ZBVcHApBflsllJTvhcHi3hIyMjhFAuQMVZgr4oTLYSzfsnuMaWGkfX6T
+ VjwTdzXyEf1nNgC0=
+X-Received: by 2002:a05:600c:2112:: with SMTP id
+ u18mr14476732wml.100.1576256659830; 
+ Fri, 13 Dec 2019 09:04:19 -0800 (PST)
+X-Received: by 2002:a05:600c:2112:: with SMTP id
+ u18mr14476695wml.100.1576256659537; 
+ Fri, 13 Dec 2019 09:04:19 -0800 (PST)
+Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.34])
+ by smtp.gmail.com with ESMTPSA id m10sm10695455wrx.19.2019.12.13.09.04.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 13 Dec 2019 09:04:18 -0800 (PST)
+Subject: Re: [PATCH v2 0/2] hw/arm: ast2600: Wire up eMMC controller
+To: Andrew Jeffery <andrew@aj.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, qemu-arm@nongnu.org
+References: <cover.fc3e5e495d85ebd919c1f06a1a2c7c7730518f9c.1576211124.git-series.andrew@aj.id.au>
+ <16c90bb0-a3a9-06ec-e79a-bd98471d9e11@kaod.org>
+ <1d96ac9b-5eb2-43ec-bf21-334ee3fa4420@www.fastmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <154a68ee-c683-d5c5-dad8-df483aa00c20@redhat.com>
-Date: Tue, 17 Dec 2019 17:50:37 +0100
+Message-ID: <d70b5f1a-08e3-4664-719f-dd5526a4135e@redhat.com>
+Date: Fri, 13 Dec 2019 18:04:17 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191217163808.20068-1-philmd@redhat.com>
+In-Reply-To: <1d96ac9b-5eb2-43ec-bf21-334ee3fa4420@www.fastmail.com>
 Content-Language: en-US
-X-MC-Unique: AqKb79UINzCizyGOdjZtxQ-1
+X-MC-Unique: 3yx9deyPOF2Y961Cm-OoWg-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-TUID: PAAL6ZNghfbc
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vv4uYUQ3zwOn
 
-On 12/17/19 5:37 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi,
+On 12/13/19 8:37 AM, Andrew Jeffery wrote:
+> On Fri, 13 Dec 2019, at 18:03, C=C3=A9dric Le Goater wrote:
+>> On 13/12/2019 05:28, Andrew Jeffery wrote:
+>>> Hello,
+>>>
+>>> The AST2600 has an additional SDHCI intended for use as an eMMC boot so=
+urce.
+>>> These two patches rework the existing ASPEED SDHCI model to accommodate=
+ the
+>>> single-slot nature of the eMMC controller and wire it into the AST2600 =
+SoC.
+>>>
+>>> v2 contains some minor refactorings in response to issues pointed out b=
+y
+>>> Cedric.
+>>  =20
+>>
+>> I think these patches are based on mainline. I fixed them locally on
+>> my aspeed 5.0 branch and I plan to send them along with other aspeed
+>> changes in the 5.0 timeframe.
 >=20
-> After this chat on #qemu IRC:
-> 13:20 <stsquad> so what is the difference between a IOReadHandler and IOE=
-ventHandler?
-> 13:25 <f4bug> stsquad: one is in-band and the other out-of-band?
-> 13:26 <stsquad> f4bug: ahh yes it seems so - connect/disconnect etc...
-> 13:27 <f4bug> see QEMUChrEvent for IOEventHandler
->=20
-> I thought it might be a good opportunity to make the IOEventHandler
-> typedef meaning more obvious, by using the QEMUChrEvent enum.
->=20
-> To be able to build I had to explicit a 'default' case when frontends
-> use a switch(event) case and do not handle all events.
->=20
-> Then I used a coccinelle spatch to change the various IOEventHandler.
-> I don't think the last patch can be split, but suggestions are welcome!
->=20
-> Regards,
->=20
-> Phil.
->=20
-> PD: I use git-publish. To avoid spamming too much, I'm using per-patch
-> Cc tag, after the '---' separator. This way each recipient should get
-> the cover and the specific patches of interests, + the last one.
->=20
-> Sent with: 'git publish --suppress-cc=3Dcccmd'
+> Yeah, they're based on Peter's tree. I'll base future patches on yours.
 
-While 'git-publish --verbose' show it was adding recipient from the tags:
-(mbox) Adding cc: ...
-(mbox) Adding cc: ...
+To help any reviewer, simply add a note in the cover on which tree your=20
+series is based. This also works with individual patch, add the note=20
+under the '---' separator.
 
-It still sent each patch to everybody from the cover:
-Server:
-MAIL FROM:
-RCPT TO: ...
-RCPT TO: ...
-
-Maybe the list was cached in the tag and I should have use the=20
---override-cc flag too:
-
-   --override-cc     Ignore any profile or saved CC emails
-
-I apologize for the no-relevant patches I spammed you with :(
-
-> Cc: "Gonglei (Arei)" <arei.gonglei@huawei.com>
-> Cc: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: "Alex Benn=C3=A9e" <alex.bennee@linaro.org>
-> Cc: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
-> Cc: Andrzej Zaborowski <balrogg@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Kevin Wolf <kwolf@redhat.com>
-> Cc: Max Reitz <mreitz@redhat.com>
-> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: Antony Pavlov <antonynpavlov@gmail.com>
-> Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
-> Cc: Fabien Chouteau <chouteau@adacore.com>
-> Cc: KONRAD Frederic <frederic.konrad@adacore.com>
-> Cc: Peter Chubb <peter.chubb@nicta.com.au>
-> Cc: Alberto Garcia <berto@igalia.com>
-> Cc: Michael Walle <michael@walle.cc>
-> Cc: Thomas Huth <huth@tuxfamily.org>
-> Cc: Joel Stanley <joel@jms.id.au>
-> Cc: Cornelia Huck <cohuck@redhat.com>
-> Cc: Halil Pasic <pasic@linux.ibm.com>
-> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
-> Cc: Laurent Vivier <lvivier@redhat.com>
-> Cc: Amit Shah <amit@kernel.org>
-> Cc: Corey Minyard <minyard@acm.org>
-> Cc: Paul Burton <pburton@wavecomp.com>
-> Cc: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
-> Cc: Aurelien Jarno <aurelien@aurel32.net>
-> Cc: Aleksandar Markovic <amarkovic@wavecomp.com>
-> Cc: Palmer Dabbelt <palmer@dabbelt.com>
-> Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>
-> Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-> Cc: Gerd Hoffmann <kraxel@redhat.com>
-> Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>
-> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-> Cc: Markus Armbruster <armbru@redhat.com>
-> Cc: Zhang Chen <chen.zhang@intel.com>
-> Cc: Li Zhijian <lizhijian@cn.fujitsu.com>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-block@nongnu.org
-> Cc: qemu-s390x@nongnu.org
-> Cc: qemu-riscv@nongnu.org

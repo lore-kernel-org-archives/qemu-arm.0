@@ -1,105 +1,111 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp307246lff;
-        Thu, 12 Dec 2019 20:27:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyf1hYZnlHURV7jiaOwn7PVCblfKIQ9d1Wds8CkhZe3Hwk696rZRcgX3+zt7WRjrXJtPUA3
-X-Received: by 2002:a9d:69ce:: with SMTP id v14mr6063125oto.248.1576211254212;
-        Thu, 12 Dec 2019 20:27:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576211254; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp307321lff;
+        Thu, 12 Dec 2019 20:27:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxqJpFskhcfiSpr3EaFQJYOqkIH6y8VFZq3xOTKL3kmPwChH6n7NnsJlhH+aZGMt6K6XZKd
+X-Received: by 2002:a05:6830:58:: with SMTP id d24mr12472566otp.356.1576211259359;
+        Thu, 12 Dec 2019 20:27:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576211259; cv=none;
         d=google.com; s=arc-20160816;
-        b=nkl8lz1NeCWBNuTH4fphVJQYH9O/MC7sbWf1HUejpFnHrxKEPCRcLHU0oUXyxZZTIU
-         yv6pqk3GpKoqjVAo+f0gcfWRgFwxpFHlqsFU8V+/NqWoh+h45kxYHhEyBCBuS/sNpUaG
-         mkmGEE+IOi/XB/b25A3UW7tsUUhrEqwh/Zlw7woD5047xEBuvlUms2f/iZmp3iARuBR+
-         X6FM/mDaUvki/8EL5B3gmXIpUhUcaM7NU2jm6O/91CaDUYkkaYVvTk7H/NrUyC0sAGTG
-         dO2oSFIuUXOCM7T3zlHt/K5k1bmLFN36Wx9V3OpmjpC1MjZx+wZgJcSdNjy5a+oRDrjX
-         uOTQ==
+        b=Cl8aolylxgFPDXgx9gYGQEidAumirx81vPoCosHBVR8dpOWMJ/OROn8zJ6t6vtqTPm
+         ivojhC3zK74Zc400CsVNaoCuG7nE4nHBEYkm/sAnClQBMnO4qnGkHmLRoUKXNok2h2Dj
+         N+VvRN3LisRK67E2h9VdjlfCPz28mfiSdDGg0Fe7bRyxUwhGrb4zYwxC9pY24V6ClhLC
+         BlSSMe0qG1sdHyXZ83VQ5eEEXv5j02hXZaa9yyDsgbqspA5G07moTufBU1FCW/IjOxDJ
+         82WVqxW9GmKT6lJBmFjPpZU0apvgmQQe1ejCD8lP/50QYajm+jOgiUhaad9PGY5q4zMW
+         dlow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature
-         :dkim-signature;
-        bh=PqgLhpy94OGx/TZUhKr14ouSOmhNdalV2V/031LW2zc=;
-        b=w3TtICrpwGXpp2jOjLSzJ2xaXO/80v3ykJL27Hgp7TYK307LxM81PTOY60tll9eRUZ
-         x8V/CyhRDFCimq50NI5foIAi3ICmVpv597sM5bu+THrwz8IUNzE3XXPTos3K85qn/IQ3
-         MLHMhq00z8hPOAyVhFNus5z7rcgkXriYmX/39G87D2bA7MQYvY/gVMBpo472BazthwVa
-         TLKnUGtd4IQWSaLAZTEHYivUA6FBY7z/KYDd6hS7ds6ZrfFvsoqdHAuWdWZ7zRBHYhkg
-         4D5TcFM17lckjZQbeNGc0cvolE6qKUnN7qA+l4eQKJEAMw7ORRL0yj57y2j8HKMmZNG5
-         tuIg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature:dkim-signature;
+        bh=0lW1mMLBYhMF9Wt+yQXH47/Bfxh3BxEXaqeyk1Njp9k=;
+        b=ehFoGyE2+P4BJ0oRjd1HZTKVoBMvzxtHjBBQ4NJ3MdSTv/c7nRtDHWlKc4xAkYngMs
+         bnxUcXB4F+O0ueSlutogPyKFg0WzgYv1hHMETHE8/rvXiYBR0ujuR4GZb8hKEkrJ22Kb
+         Ia0R1kBLeA7pj3zUjUfVAWAyzQfhUheQtDc3jCbL7iaomhWAYmhbdEe/tbTsX3XG9PVw
+         Xg++Sw1Z8DuQylucHkiiZjBn5pVdDkDQDup+eMkFI6oCFUCB78XA4tTHJ+kIhcLQJm0G
+         yv4MX/TZ4EzRtLpC+oB2oGTJyIpU4oMU1fWNLQjc/phyoIwHgk+WdroZhm4Rbwnh+WKU
+         IxFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=TQ20b1eK;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=fjtlUuFi;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=WodJyDHB;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=XnKiNzXd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x207si4345144oif.30.2019.12.12.20.27.34
+        by mx.google.com with ESMTPS id i78si4586412oib.1.2019.12.12.20.27.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Dec 2019 20:27:34 -0800 (PST)
+        Thu, 12 Dec 2019 20:27:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=TQ20b1eK;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=fjtlUuFi;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=WodJyDHB;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=XnKiNzXd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40710 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifcY9-0003Oq-8D
-	for alex.bennee@linaro.org; Thu, 12 Dec 2019 23:27:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54183)
+	id 1ifcYD-0003Pj-SW
+	for alex.bennee@linaro.org; Thu, 12 Dec 2019 23:27:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54360)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1ifcXu-0003M8-BF
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 23:27:19 -0500
+ (envelope-from <andrew@aj.id.au>) id 1ifcXv-0003N8-9F
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 23:27:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1ifcXs-0003A9-TO
- for qemu-arm@nongnu.org; Thu, 12 Dec 2019 23:27:18 -0500
-Received: from wout3-smtp.messagingengine.com ([64.147.123.19]:54753)
+ (envelope-from <andrew@aj.id.au>) id 1ifcXt-0003Ce-TZ
+ for qemu-arm@nongnu.org; Thu, 12 Dec 2019 23:27:19 -0500
+Received: from wout3-smtp.messagingengine.com ([64.147.123.19]:54267)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1ifcXs-00035M-EX; Thu, 12 Dec 2019 23:27:16 -0500
+ id 1ifcXt-0003Ai-Lv; Thu, 12 Dec 2019 23:27:17 -0500
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id F12AD877;
- Thu, 12 Dec 2019 23:27:13 -0500 (EST)
+ by mailout.west.internal (Postfix) with ESMTP id 7267A87D;
+ Thu, 12 Dec 2019 23:27:16 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Thu, 12 Dec 2019 23:27:14 -0500
+ by compute4.internal (MEProxy); Thu, 12 Dec 2019 23:27:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
- :to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding; s=fm1; bh=PqgLhpy94OGx/TZUhKr14ouSOm
- hNdalV2V/031LW2zc=; b=TQ20b1eKD9tveMzCEHh14gs1nOP7CDus0iJBcem7JE
- W1N7fTq9QC0oDxCMbs6FNEE1OhD/64Ch1F6UnpKqjDF/8hY0BzxrKATiazH5I+5l
- 7+7cPTCKOIhdo5JuqIKD7E1JG6UlfAcOdihS04W2IBcdG0gD5QSgiMmBxW0LMRd2
- 5zrP1TPkwu51xCEShImCDtEL791aVNEPcUBX9+Dhca2PDdcyxJG6r1BIMKjo9/wf
- 19UXE6s3vxWhnVopngjgYU0LCD73aOH9iKUyl1EbUUxr1MSWxeFYVUDGl2gsj549
- aOcQh90rGX1AUy3cVLnOW3/Q1Cmw8u+iklmFYnaFnwNQ==
+ :to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-type:content-transfer-encoding; s=fm1; bh=
+ 0lW1mMLBYhMF9Wt+yQXH47/Bfxh3BxEXaqeyk1Njp9k=; b=WodJyDHBTZL3ni+d
+ 53jU7Qzqp16ZJwPCeyHiyvvK9VetkUfbOqlL+9dI3R/E7N4O8yH8ykytGTlO+Gsu
+ MaOp9w43POdA60NhLLHxV4fl5I4+cE0cnJPf/sgyTMpDELfyjh0PeIxhbMaLLbUx
+ wapi55dgTjPS/wkouwYQTLhJFoVA9OvdBvVpURqIlO3PCQ3FO+R/KAAy3hmzmZco
+ PfI4rPya8AyUGwIU/egeSgul/zFuErtiRirBETTaEGv7ce8zhAZ6C+YS25JFIDXp
+ OqZDg9Vf14OpYuRAHaBYAvJjhOanDhR8/mbS9zkC/j3Rn0foQ8BkmxZnoCpvgilR
+ 4BMHBA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=PqgLhpy94OGx/TZUh
- Kr14ouSOmhNdalV2V/031LW2zc=; b=fjtlUuFiyE4jIDZ3KSWKN1GNKe9+zXfZm
- fpuP9YIwMCvdP62UyS9WOJ/YmQ2PQou19V02LzHCds9lM377pStfrYuRA6C3wJ0S
- GaY0d4NCUix9qK7H+fJj+fHrn6SL6o2ZPNxSojamgDODokHiaOLzWz56OcY/tv9x
- C03n3B3z+Jtf3VnV4XdXxEy8tzDjcsKni/YjWp/yNz7pEeGaYGE1EdC/KQCAt/0W
- Gfh5AsckbHI4xOAHn7NCTpGFIi5T6gtMA8Hwjdjqm4p/tVgwh1DTLP7Jn/mQcgXw
- xMMuIDkfMxONihV7+doR+dinxwSJ6FMPeMfCdHRQhL8RTSyeGG6wA==
-X-ME-Sender: <xms:IBPzXdlMrB_MOnDJmOfb4k3215zaCAUKop6ZXCqZ9uuOZU0IZ0xsxQ>
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; bh=0lW1mMLBYhMF9Wt+yQXH47/Bfxh3BxEXaqeyk1Njp
+ 9k=; b=XnKiNzXdpUss4L6qJkeBUIJXU3PanyxhmqJ6+vMk4ZAG38htP23jU+bbB
+ 3VAvgNaNgh5A2mcMwPQnxnw+HqnYjvj776l95zqA1eh2wD59dPeeriLTQZOmNUR6
+ l8S65WQSnbVRFG5tFptTY1dk2IlDKiWhNF1cqOE5fsvxTlsFqkNM3FMG7P+IrfyI
+ xNomE+nl7I9zEPiKPFUaljeV2SHsneOJH5PkAxEuKa8pPbq9wBa3URy3VpY7ZaFr
+ ixlXNGlwtUE9VwAM1uUVQb1uzOKOxK41gi/yCt/vq7Om69iGjJPEoCQsEBwN+fQg
+ BUonlA7J7Dq1nS52VCUsVWCor6DQw==
+X-ME-Sender: <xms:IxPzXYDKFnzgCmTEFFy7NX2TcifkXCP7vE3jgAUlAmzdwPdZOdFm_g>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudelkedgjedtucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgggfestdekredtre
- dttdenucfhrhhomheptehnughrvgifucflvghffhgvrhihuceorghnughrvgifsegrjhdr
- ihgurdgruheqnecuffhomhgrihhnpehoiihlrggsshdrohhrghenucfkphepvddtvddrke
- durddukedrfedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhi
- ugdrrghunecuvehluhhsthgvrhfuihiivgeptd
-X-ME-Proxy: <xmx:IBPzXdGjmPDFsEAobpPH6MTrWKJcPrJ6djzR77tzJVexEs8ywzDpVA>
- <xmx:IBPzXepygpgOXjWZ9tol5MBD-fwWJB_WkSjZZSk2Eq4R4pR7aCHJKQ>
- <xmx:IBPzXR4zgA3paZxElv-tetBNg92gcVenbawa1JC1IedWwyGkBGx-_g>
- <xmx:IRPzXd0yGcDmFYHjWxycXSVzfZ5W3zuaQCEK9nZAzpvOFVyM6l1DRQ>
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomheptehnughr
+ vgifucflvghffhgvrhihuceorghnughrvgifsegrjhdrihgurdgruheqnecukfhppedvtd
+ dvrdekuddrudekrdeftdenucfrrghrrghmpehmrghilhhfrhhomheprghnughrvgifsegr
+ jhdrihgurdgruhenucevlhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:IxPzXaF3wZtP8fclQpNOYBzB9omYtmZ8hfpoFRYDlGnQ0eajZQ8_fw>
+ <xmx:IxPzXf4owusVqP5hHefPk_mwoqKjC8T11BjEe4vYtvGZJ42_gDziBw>
+ <xmx:IxPzXRQoiCFYCYjZ5I794TIOiEQwf9Mp5rwu4VoyWLuPBqHsDb8W4w>
+ <xmx:JBPzXQvkYCh8m3JxfD7veREistXs4K-tycwkI0LcAHyuQAy6-DVXdg>
 Received: from mistburn.au.ibm.com (bh02i525f01.au.ibm.com [202.81.18.30])
- by mail.messagingengine.com (Postfix) with ESMTPA id 79FA980063;
- Thu, 12 Dec 2019 23:27:10 -0500 (EST)
+ by mail.messagingengine.com (Postfix) with ESMTPA id 4D73B80066;
+ Thu, 12 Dec 2019 23:27:13 -0500 (EST)
 From: Andrew Jeffery <andrew@aj.id.au>
 To: qemu-arm@nongnu.org
-Subject: [PATCH v2 0/2] hw/arm: ast2600: Wire up eMMC controller
-Date: Fri, 13 Dec 2019 14:58:40 +1030
-Message-Id: <cover.fc3e5e495d85ebd919c1f06a1a2c7c7730518f9c.1576211124.git-series.andrew@aj.id.au>
+Subject: [PATCH v2 1/2] hw/sd: Configure number of slots exposed by the ASPEED
+ SDHCI model
+Date: Fri, 13 Dec 2019 14:58:41 +1030
+Message-Id: <6281ebb475f652838d10dc48ec70fa5113b1f029.1576211124.git-series.andrew@aj.id.au>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.fc3e5e495d85ebd919c1f06a1a2c7c7730518f9c.1576211124.git-series.andrew@aj.id.au>
+References: <cover.fc3e5e495d85ebd919c1f06a1a2c7c7730518f9c.1576211124.git-series.andrew@aj.id.au>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -115,41 +121,131 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, clg@kaod.org,
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>, clg@kaod.org,
  joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9Xb5It1eaiS9
+X-TUID: zX2fTGpXeRro
 
-Hello,
+The AST2600 includes a second cut-down version of the SD/MMC controller
+found in the AST2500, named the eMMC controller. It's cut down in the
+sense that it only supports one slot rather than two, but it brings the
+total number of slots supported by the AST2600 to three.
 
-The AST2600 has an additional SDHCI intended for use as an eMMC boot source.
-These two patches rework the existing ASPEED SDHCI model to accommodate the
-single-slot nature of the eMMC controller and wire it into the AST2600 SoC.
+The existing code assumed that the SD controller always provided two
+slots. Rework the SDHCI object to expose the number of slots as a
+property to be set by the SoC configuration.
 
-v2 contains some minor refactorings in response to issues pointed out by
-Cedric.
-
-v1 can be found here:
-
-https://patchwork.ozlabs.org/cover/1206845/
-
-Please review!
-
-Andrew
-
-Andrew Jeffery (2):
-  hw/sd: Configure number of slots exposed by the ASPEED SDHCI model
-  hw/arm: ast2600: Wire up the eMMC controller
-
- hw/arm/aspeed.c              | 27 +++++++++++++++++----------
- hw/arm/aspeed_ast2600.c      | 23 +++++++++++++++++++++++
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ hw/arm/aspeed.c              |  2 +-
+ hw/arm/aspeed_ast2600.c      |  2 ++
  hw/arm/aspeed_soc.c          |  2 ++
  hw/sd/aspeed_sdhci.c         | 11 +++++++++--
- include/hw/arm/aspeed_soc.h  |  2 ++
  include/hw/sd/aspeed_sdhci.h |  1 +
- 6 files changed, 54 insertions(+), 12 deletions(-)
+ 5 files changed, 15 insertions(+), 3 deletions(-)
 
-base-commit: 6a4ef4e5d1084ce41fafa7d470a644b0fd3d9317
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 028191ff36fc..862549b1f3a9 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -259,7 +259,7 @@ static void aspeed_board_init(MachineState *machine,
+         cfg->i2c_init(bmc);
+     }
+ 
+-    for (i = 0; i < ARRAY_SIZE(bmc->soc.sdhci.slots); i++) {
++    for (i = 0; i < bmc->soc.sdhci.num_slots; i++) {
+         SDHCIState *sdhci = &bmc->soc.sdhci.slots[i];
+         DriveInfo *dinfo = drive_get_next(IF_SD);
+         BlockBackend *blk;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 931887ac681f..931ee5aae183 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -208,6 +208,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
+     sysbus_init_child_obj(obj, "sdc", OBJECT(&s->sdhci), sizeof(s->sdhci),
+                           TYPE_ASPEED_SDHCI);
+ 
++    object_property_set_int(OBJECT(&s->sdhci), 2, "num-slots", &error_abort);
++
+     /* Init sd card slot class here so that they're under the correct parent */
+     for (i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
+         sysbus_init_child_obj(obj, "sdhci[*]", OBJECT(&s->sdhci.slots[i]),
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index f4fe243458fd..c39a42f914d4 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -215,6 +215,8 @@ static void aspeed_soc_init(Object *obj)
+     sysbus_init_child_obj(obj, "sdc", OBJECT(&s->sdhci), sizeof(s->sdhci),
+                           TYPE_ASPEED_SDHCI);
+ 
++    object_property_set_int(OBJECT(&s->sdhci), 2, "num-slots", &error_abort);
++
+     /* Init sd card slot class here so that they're under the correct parent */
+     for (i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
+         sysbus_init_child_obj(obj, "sdhci[*]", OBJECT(&s->sdhci.slots[i]),
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+index cff3eb7dd21e..939d1510dedb 100644
+--- a/hw/sd/aspeed_sdhci.c
++++ b/hw/sd/aspeed_sdhci.c
+@@ -13,6 +13,7 @@
+ #include "qapi/error.h"
+ #include "hw/irq.h"
+ #include "migration/vmstate.h"
++#include "hw/qdev-properties.h"
+ 
+ #define ASPEED_SDHCI_INFO            0x00
+ #define  ASPEED_SDHCI_INFO_RESET     0x00030000
+@@ -120,14 +121,14 @@ static void aspeed_sdhci_realize(DeviceState *dev, Error **errp)
+ 
+     /* Create input irqs for the slots */
+     qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_sdhci_set_irq,
+-                                        sdhci, NULL, ASPEED_SDHCI_NUM_SLOTS);
++                                        sdhci, NULL, sdhci->num_slots);
+ 
+     sysbus_init_irq(sbd, &sdhci->irq);
+     memory_region_init_io(&sdhci->iomem, OBJECT(sdhci), &aspeed_sdhci_ops,
+                           sdhci, TYPE_ASPEED_SDHCI, 0x1000);
+     sysbus_init_mmio(sbd, &sdhci->iomem);
+ 
+-    for (int i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
++    for (int i = 0; i < sdhci->num_slots; ++i) {
+         Object *sdhci_slot = OBJECT(&sdhci->slots[i]);
+         SysBusDevice *sbd_slot = SYS_BUS_DEVICE(&sdhci->slots[i]);
+ 
+@@ -174,6 +175,11 @@ static const VMStateDescription vmstate_aspeed_sdhci = {
+     },
+ };
+ 
++static Property aspeed_sdhci_properties[] = {
++    DEFINE_PROP_UINT8("num-slots", AspeedSDHCIState, num_slots, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(classp);
+@@ -181,6 +187,7 @@ static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
+     dc->realize = aspeed_sdhci_realize;
+     dc->reset = aspeed_sdhci_reset;
+     dc->vmsd = &vmstate_aspeed_sdhci;
++    dc->props = aspeed_sdhci_properties;
+ }
+ 
+ static TypeInfo aspeed_sdhci_info = {
+diff --git a/include/hw/sd/aspeed_sdhci.h b/include/hw/sd/aspeed_sdhci.h
+index dfdab4379021..dffbb46946b9 100644
+--- a/include/hw/sd/aspeed_sdhci.h
++++ b/include/hw/sd/aspeed_sdhci.h
+@@ -24,6 +24,7 @@ typedef struct AspeedSDHCIState {
+     SysBusDevice parent;
+ 
+     SDHCIState slots[ASPEED_SDHCI_NUM_SLOTS];
++    uint8_t num_slots;
+ 
+     MemoryRegion iomem;
+     qemu_irq irq;
 -- 
 git-series 0.9.1

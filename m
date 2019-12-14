@@ -1,122 +1,368 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2535387lff;
-        Sat, 14 Dec 2019 12:02:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxRDoiDnA2ZO2wXLJe6gJVMqpYlWk01LB7cZId/nfEpB8tyoVP+zB1Q8Rev5KXvJxhFCW9b
-X-Received: by 2002:a05:6808:102:: with SMTP id b2mr8693597oie.127.1576353747431;
-        Sat, 14 Dec 2019 12:02:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576353747; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2594109lff;
+        Sat, 14 Dec 2019 13:02:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwjfySt625YXgsxebGToBX4kozl+gre3j/KoDcsYciLJPSMQIrtXdErnZH/OICO6bobyP+6
+X-Received: by 2002:a37:6706:: with SMTP id b6mr19085103qkc.461.1576357361292;
+        Sat, 14 Dec 2019 13:02:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576357361; cv=none;
         d=google.com; s=arc-20160816;
-        b=wgWLASgR4EelhxDYzI3woN1C7gzWUbkwivbOMzyPKk9bLa/nwlJviJN40m9dPFXjxw
-         M1ZdzE1Y98tg7i+0v4O1+HNXp7dZZPxbFFjdCJJz8QGJ+m+Jbu/byVMIO3/hvC498ewv
-         d9QuOfhwekoiUdRtJQ8P3VVnSbCl3TjmBvZkAtfoIaCQpCNf9OQRqZjahN4aEWmnPzSO
-         o1L64a5ZDttcOvBqjdQ3TVlLUFpmYg3nvvFTEz9klx0u3E62IwyGfA1d5e/FnDBSt9o8
-         hcZ8pyBFMN6YKgd3942QSAGqff8WJ+pBieeWgH/ct5YwqxPVJrQ88yvVZQzDxUtlM151
-         QdHA==
+        b=KVBjgcYkk1q0Fsz1x79aGphH1ceQ53EOsQ82q24/MplBRhVKTqkn9XuC91l1a1EjWc
+         z3/vSS8VeHnRT4EONtZ7OZHY3w5pbpqJxpzX8VO2ypJh87TCnKHLRcs6Rh4tVucfauNR
+         kY5rcqtlhMOEiR9kcpRqyVz3o7ymYpGvYpRGT9dUoRnNxijAAJchcdbbCf8+PdQv2gOz
+         tTBDOFWz4dDCZX6X0kHtr87pBNIbdCqIMAXkFjctQ6/6DjSfYJqrK1I36sVKiUBKniM/
+         DooXHWKy0jWJcmJMEdrfL6QGGbVOcL4cRpLsA6BMLwZyza9hWpw/84ONX8JrEbP5qZfd
+         NXsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:cc:to:subject
-         :message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=RMrXhnl08yOQWoHsGq/Mqy6tAi/gvfJoz02znJajxJM=;
-        b=rviarw0V5M+mrGa725UoBjIcqee6dXGrYg89IfpPKt4EEkNJrWLZFBIaxZxJ6HczoP
-         Ax5eDOcqzPeFo2PV4ioP/W/q30fm7wpn6hlwhzmk6Rewu1SqSKqCRtRai+zCK8ze0Cvm
-         o8MnwqM7/JtLUZm/VJxrKRx7C5XBZxjEXFdZY5TJhCJWTamnFYnLWOtcAVimMe+42slB
-         jowjpzB7QCcejz9yCfQTsa+xpipJA6z0S6zdxzzLPYLcTDiGBbWAd+fMCeAiK+HHNT9h
-         TBk8RnlxrvmaRzOqR26hNIMcjOMt9eTMwBdK0P0Z/Ul+Wn/TeiU+W6x5B8JVByXj0zoM
-         86BA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=sXWObjGl6OXDF8vN7Nqi0HgJ+038kWVON6shVGrmC1c=;
+        b=pFBFJCBNhqau3oMCDGn/XDTYY6NKLWO6qYqq3HW9N2W9ISBDh/wpM498euZnGCEmRV
+         5cQMt4svrCh8KOqfTaus7985RZHUfaY+0dD1swTJ6XetOlTTuQCIsG3rskpeXYvmjbn5
+         bOMQCXEZHwiJwVa29LXCk/YAIHtAu4b0J/jDEGioSdcMwqoUnICgM3f2P4XOQFTdgvUx
+         ceUk/gC+HAVQUVssUvCFb9upeldLjhTC6OVge3cfycf/C3Z6KdAXahEHAHizFqaTlSmf
+         csKUyLyEhuqE5krHUTgUvmFbvACcTDgwO74VZhILexB/xbl0oQ5TmtieWVlIwWL6HFRf
+         x2YQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n2Ba4DCc;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id w11si7515257oic.62.2019.12.14.12.02.26;
-        Sat, 14 Dec 2019 12:02:27 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CkInd3WL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n14si6681144qvf.92.2019.12.14.13.02.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 14 Dec 2019 13:02:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n2Ba4DCc;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726781AbfLNUB6 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Sat, 14 Dec 2019 15:01:58 -0500
-Received: from mail-oi1-f195.google.com ([209.85.167.195]:45792 "EHLO
-        mail-oi1-f195.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1726541AbfLNUB5 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sat, 14 Dec 2019 15:01:57 -0500
-Received: by mail-oi1-f195.google.com with SMTP id v10so2513072oiv.12
-        for <kvm@vger.kernel.org>; Sat, 14 Dec 2019 12:01:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=RMrXhnl08yOQWoHsGq/Mqy6tAi/gvfJoz02znJajxJM=;
-        b=n2Ba4DCcTtQy+TuObNMMxs6W75KYEp7QP4qYVJefSlzwufoqhGmr69lW7Y0J7nBj53
-         NuQ+7XCu3ltts5rk+7ISqXvQ3xyzBoPY6Ii6wmrnZM3UxXbr40UU7IwrgC7I0P0bHIJk
-         LTwV/92yIa74Qi+WpqOjSNELSVLjkJo8l/Nv2hzzMIuOVu7bc1WqJQ9RQQTn0yLspap7
-         QyW9A+TWkC1Dk6x5DPa7YZ1g+4mOuMRqmjU/HiuM+CvZorTbWbibyjYhDe5PZwP7QI7S
-         iw9ROzPqsjxlY9Bn2L+ipJXy1iV/044q866OBk6qd3XVi1zI0nFNmBQEn1oTSPfOw1np
-         f0oA==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CkInd3WL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:32910 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1igEYi-00033Z-Hi
+	for alex.bennee@linaro.org; Sat, 14 Dec 2019 16:02:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52850)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igEXX-0001v6-9x
+ for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:28 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igEXV-0005jn-9s
+ for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:27 -0500
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:35622)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1igEXP-0005Qs-Rr; Sat, 14 Dec 2019 16:01:20 -0500
+Received: by mail-il1-x144.google.com with SMTP id g12so2391745ild.2;
+ Sat, 14 Dec 2019 13:01:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=sXWObjGl6OXDF8vN7Nqi0HgJ+038kWVON6shVGrmC1c=;
+ b=CkInd3WLl4a51MtgtS6zQTWZ7yMlPbWRXrd3iJUTv5NfUuPuapCJ4p0fgebx77p6Yh
+ L9c1mEhLw0aMf5ay7e7ukJghXAaiDmBoYW5XsAYiJoLQM3HimU/MxtkVVPyzP0ZFczHu
+ wSaXXGvUeKjpfuua7BHoB8Q86l/E7AgqJ51SwAMlX7AkmDn7Xevsz6UohOWxtU+OMbVf
+ kkesjzw3qYmczaLkLsqX2B6guPS1LRuRu0wHe35yZrFMUJ4vK2OfBOABj6FXxuZwFIgP
+ 6+Bex16D0CGOnsiB9+BOp6wz6cnyywlRzg7o1eSdrXW8S0uslujVq+tfR1dVkpQSvzo/
+ zzqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=RMrXhnl08yOQWoHsGq/Mqy6tAi/gvfJoz02znJajxJM=;
-        b=Mbq31kGdzfGsqGVVvsgiEG2nHbRAt4/YqlKa8CWYbE4DvrMkGLQDBAs2umk+/Wb6PX
-         rewljlXYDqMtVyvpM33xHXrw/VSmYzuXr1Fxv5ROiYiSWi4qAFvymezoBqYKwCHL9llL
-         OG/2QDOSNS6gyocvrnfqr9V/OxXL2BmRZxk4BSdF+pL99qtMf5IketbQHijadJC6jbaW
-         U9ZGDtXtk6yISr5oLbWeBmqXtVjorrmYuEAA9dsHREl8sFHMlR4+SGmtM3sT9GBmlcit
-         Os1Dx6rschbFaQsmjBkaBZ4rAsGleptEWnRxSKKkObXgXF8avcVjFgf2bPfB27JfUNUx
-         J5dw==
-X-Gm-Message-State: APjAAAVs+ltdyaVlfuhep99lr0+c24X1szf8UBNRm/zyGTYeT+T6WXgg
-        +BWjnPboXBlNkki6kW9P+kMtbkXrIMn32j592OtFLQ==
-X-Received: by 2002:a05:6808:996:: with SMTP id a22mr8108069oic.146.1576353716975;
- Sat, 14 Dec 2019 12:01:56 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=sXWObjGl6OXDF8vN7Nqi0HgJ+038kWVON6shVGrmC1c=;
+ b=CL7ZYI4i/uYP5DostDVPb44Vv1dziospi2Q/tM9DOoPB65GTfn5+mVpLIrHmQ/Pcwu
+ HZzsHurXWXNpgbPfxmNUKCekHQbaJrKE2GaMLd/r7BcQz2m3kjSyDREHgcKzh+D5ndZe
+ AyGh0z3Tn3REIDWYhR7hjw3MsyZvtYIgwxQoLAyjjMrlwNefAOObPIHKm6ykHA8TVfAM
+ 8I6XUprMj7tUaLucrAoeBrv41we7XjDV8pXxyPxP1SBPpDFPIv3ZwvZuXBJoRaOIebT+
+ jZN3nGDJi8fTM1m3pFYhqpccMgUw9G19P/ibse1BBDzcXpvwILwyKbZub5une/wBy7NH
+ m/Pw==
+X-Gm-Message-State: APjAAAW9v56kIoO1tnfumdUwytTqf3Y8RH/c8mESC5OuSrVFnvcyp8Be
+ FfvQQgGlhkSUMP2dZTAy3/7BK6NohklDVfHbVpR6xQ==
+X-Received: by 2002:a92:d203:: with SMTP id y3mr5682158ily.28.1576355542949;
+ Sat, 14 Dec 2019 12:32:22 -0800 (PST)
 MIME-Version: 1.0
-References: <20191214155614.19004-1-philmd@redhat.com> <CAFEAcA_QZtU9X4fxZk2oWAkN-zxXdQZejrSKZbDxPKLMwdFWgw@mail.gmail.com>
- <31acb07b-a61b-1bc4-ee6e-faa511745a61@redhat.com>
-In-Reply-To: <31acb07b-a61b-1bc4-ee6e-faa511745a61@redhat.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Sat, 14 Dec 2019 20:01:46 +0000
-Message-ID: <CAFEAcA-UdDF2pd24NoOqpXSTnHHFWdvcexi5bRzq6ewt5vrrWQ@mail.gmail.com>
-Subject: Re: [PATCH 0/8] Simplify memory_region_add_subregion_overlap(..., priority=0)
-To:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc:     QEMU Developers <qemu-devel@nongnu.org>,
-        Andrew Baumann <Andrew.Baumann@microsoft.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Alex Williamson <alex.williamson@redhat.com>,
-        Aleksandar Markovic <amarkovic@wavecomp.com>,
-        Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Alistair Francis <alistair@alistair23.me>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-        Paul Burton <pburton@wavecomp.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>
+References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
+ <20191202210947.3603-10-nieklinnenbank@gmail.com>
+ <CAPan3WrRKnu5vFz=JvrnD8tewUk7SdwFVYx4xVL353AnfPDgHQ@mail.gmail.com>
+ <6bee15d7-7d80-0709-ac90-ef2052b39329@redhat.com>
+ <CAPan3Woq_EJAE6s-N5dAApAgzexGr4M-OtFkiHuMN_Xp=8_bTQ@mail.gmail.com>
+ <457e0620-c11e-8e5a-df1c-93f95f52eda8@redhat.com>
+In-Reply-To: <457e0620-c11e-8e5a-df1c-93f95f52eda8@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Sat, 14 Dec 2019 21:32:11 +0100
+Message-ID: <CAPan3Won=aRx29SBJxvGTfRTUqL_R4txS4VF2hQ6eZ4QRSGxWw@mail.gmail.com>
+Subject: Re: [PATCH 09/10] arm: allwinner-h3: add SD/MMC host controller
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="0000000000002d63fc0599afe013"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::144
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ae2sJ24JZzub
+
+--0000000000002d63fc0599afe013
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: YmG+MLhzByuU
 
-On Sat, 14 Dec 2019 at 18:17, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
-> Maybe we can a warning if priority=3D0, to force board designers to use
-> explicit priority (explicit overlap).
+On Sat, Dec 14, 2019 at 2:59 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+wrote:
 
-Priority 0 is fine, it's just one of the possible positive and
-negative values. I think what ideally we would complain about
-is where we see an overlap and both the regions involved
-have the same priority value, because in that case which
-one the guest sees is implicitly dependent on (I think) which
-order the subregions were added, which is fragile if we move
-code around. I'm not sure how easy that is to test for or how
-much of our existing code violates it, though.
+> On 12/13/19 10:00 PM, Niek Linnenbank wrote:
+> > On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9
+> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
+> >
+> >     Hi Niek,
+> >
+> >     On 12/11/19 11:34 PM, Niek Linnenbank wrote:
+> >      > Ping!
+> >      >
+> >      > Anyone would like to comment on this driver?
+> >      >
+> >      > I finished the rework on all previous comments in this series.
+> >      >
+> >      > Currently debugging the hflags error reported by Philippe.
+> >      > After that, I'm ready to send out v2 of these patches.
+> >      >
+> >      > Regards,
+> >      > Niek
+> >      >
+> >      > On Mon, Dec 2, 2019 at 10:10 PM Niek Linnenbank
+> >      > <nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>
+> >     <mailto:nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>>=
+>
+> >     wrote:
+> >      >
+> >      >     The Allwinner H3 System on Chip contains an integrated stora=
+ge
+> >      >     controller for Secure Digital (SD) and Multi Media Card (MMC=
+)
+> >      >     interfaces. This commit adds support for the Allwinner H3
+> >      >     SD/MMC storage controller with the following emulated
+> features:
+> >      >
+> >      >       * DMA transfers
+> >      >       * Direct FIFO I/O
+> >      >       * Short/Long format command responses
+> >      >       * Auto-Stop command (CMD12)
+> >      >       * Insert & remove card detection
+> >      >
+> >      >     Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com
+> >     <mailto:nieklinnenbank@gmail.com>
+> >      >     <mailto:nieklinnenbank@gmail.com
+> >     <mailto:nieklinnenbank@gmail.com>>>
+> >      >     ---
+> >      >       hw/arm/allwinner-h3.c               |  20 +
+> >      >       hw/arm/orangepi.c                   |  17 +
+> >      >       hw/sd/Makefile.objs                 |   1 +
+> >      >       hw/sd/allwinner-h3-sdhost.c         | 791
+> >     ++++++++++++++++++++++++++++
+> >      >       hw/sd/trace-events                  |   7 +
+> >      >       include/hw/arm/allwinner-h3.h       |   2 +
+> >      >       include/hw/sd/allwinner-h3-sdhost.h |  73 +++
+> >      >       7 files changed, 911 insertions(+)
+> >      >       create mode 100644 hw/sd/allwinner-h3-sdhost.c
+> >      >       create mode 100644 include/hw/sd/allwinner-h3-sdhost.h
+> [...]
+> > Thanks again for all of your helpful comments Philippe!
+> > I've started to rework the patch.
+> >
+> > One question about adding tags in the commit message: should I
+> > already add 'Reviewed-by: ' when I re-send v2 of this patch? Or should
+> > that be added after you have seen the v2 changes?
+>
+> You shouldn't add the Reviewed-by tag until explicitly given by the
+> reviewer. If the changes are trivial, it is easy to conditionally give
+> the tag such "If ... is done: R-b", "With ... fixed: R-b".
+>
 
-thanks
--- PMM
+OK, thanks for clarifying, I'll keep that in mind.
+
+
+>
+> Since this is your first contribution, I have been more careful. Also
+> since your patch is already of very good quality, I'v been a bit picky
+> regarding few details.
+>
+
+Sure, that makes sense indeed. And I very much appreciate your feedback
+Philippe,
+so please keep doing that, even about the small details ;-)
+
+
+>
+> Since there are too many comments, so I prefer to fully review the v2 of
+> this patch again.
+>
+> Yes, true indeed.
+
+Regards,
+Niek
+
+
+> Regards,
+>
+> Phil.
+>
+>
+
+--=20
+Niek Linnenbank
+
+--0000000000002d63fc0599afe013
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Sat, Dec 14, 2019 at 2:59 PM Phili=
+ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
+at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On 12/13/19 10:00 PM, Niek Linnenbank wrote:<br>
+&gt; On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9 <br>
+&gt; &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redh=
+at.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.com" target=3D"_blank=
+">philmd@redhat.com</a>&gt;&gt; wrote:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Hi Niek,<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0On 12/11/19 11:34 PM, Niek Linnenbank wrote:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Ping!<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Anyone would like to comment on this driver?<=
+br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; I finished the rework on all previous comment=
+s in this series.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Currently debugging the hflags error reported=
+ by Philippe.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; After that, I&#39;m ready to send out v2 of t=
+hese patches.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Regards,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Niek<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; On Mon, Dec 2, 2019 at 10:10 PM Niek Linnenba=
+nk<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; &lt;<a href=3D"mailto:nieklinnenbank@gmail.co=
+m" target=3D"_blank">nieklinnenbank@gmail.com</a> &lt;mailto:<a href=3D"mai=
+lto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a=
+>&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
+om" target=3D"_blank">nieklinnenbank@gmail.com</a> &lt;mailto:<a href=3D"ma=
+ilto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</=
+a>&gt;&gt;&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0wrote:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0The Allwinner H3 System on=
+ Chip contains an integrated storage<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0controller for Secure Digi=
+tal (SD) and Multi Media Card (MMC)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0interfaces. This commit ad=
+ds support for the Allwinner H3<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0SD/MMC storage controller =
+with the following emulated features:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* DMA transfers<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* Direct FIFO I/O<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* Short/Long format=
+ command responses<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* Auto-Stop command=
+ (CMD12)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* Insert &amp; remo=
+ve card detection<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0Signed-off-by: Niek Linnen=
+bank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_blank">niek=
+linnenbank@gmail.com</a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
+om" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mail=
+to:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
+om" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;&gt;&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0---<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/allwinner-h3=
+.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 20 +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/orangepi.c=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
+=A0 17 +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/Makefile.objs=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=
+=A01 +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/allwinner-h3-=
+sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 791<br>
+&gt;=C2=A0 =C2=A0 =C2=A0++++++++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/trace-events=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=
+=A07 +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/arm/allw=
+inner-h3.h=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A02 +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/sd/allwi=
+nner-h3-sdhost.h |=C2=A0 73 +++<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A07 files changed, 91=
+1 insertions(+)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 =
+hw/sd/allwinner-h3-sdhost.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 =
+include/hw/sd/allwinner-h3-sdhost.h<br>
+[...]<br>
+&gt; Thanks again for all of your helpful comments Philippe!<br>
+&gt; I&#39;ve started to rework the patch.<br>
+&gt; <br>
+&gt; One question about adding tags in the commit message: should I<br>
+&gt; already add &#39;Reviewed-by: &#39; when I re-send v2 of this patch? O=
+r should<br>
+&gt; that be added after you have seen the v2 changes?<br>
+<br>
+You shouldn&#39;t add the Reviewed-by tag until explicitly given by the <br=
+>
+reviewer. If the changes are trivial, it is easy to conditionally give <br>
+the tag such &quot;If ... is done: R-b&quot;, &quot;With ... fixed: R-b&quo=
+t;.<br></blockquote><div><br></div><div>OK, thanks for clarifying, I&#39;ll=
+ keep that in mind.<br></div><div>=C2=A0</div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex">
+<br>
+Since this is your first contribution, I have been more careful. Also <br>
+since your patch is already of very good quality, I&#39;v been a bit picky =
+<br>
+regarding few details.<br></blockquote><div>=C2=A0</div><div>Sure, that mak=
+es sense indeed. And I very much appreciate your feedback Philippe,</div><d=
+iv>so please keep doing that, even about the small details ;-)<br></div><di=
+v>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+Since there are too many comments, so I prefer to fully review the v2 of <b=
+r>
+this patch again.<br>
+<br></blockquote><div>Yes, true indeed.<br></div><div><br></div><div>Regard=
+s,</div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex">
+Regards,<br>
+<br>
+Phil.<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--0000000000002d63fc0599afe013--

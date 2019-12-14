@@ -1,123 +1,119 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2608648lff;
-        Sat, 14 Dec 2019 13:16:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzASvSb+v8/k3y81sHNMuUchRtI6VacDAqInzywp9IyEs+LLruwSln/UPX6JjU/cjRLGwii
-X-Received: by 2002:a05:6830:1e9a:: with SMTP id n26mr21111206otr.99.1576358201398;
-        Sat, 14 Dec 2019 13:16:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576358201; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2637173lff;
+        Sat, 14 Dec 2019 13:51:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwBv0lk9Dra+S04i0TQFm51TL64/6uXLkMH3+84MoicXFPlBpDLUmzUEJElSwzdGc3vFANs
+X-Received: by 2002:a05:6830:1d6a:: with SMTP id l10mr23490776oti.233.1576360285206;
+        Sat, 14 Dec 2019 13:51:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576360285; cv=none;
         d=google.com; s=arc-20160816;
-        b=foVkIrAfleyEVjsiOe41yqiHR2VltPMfu/k9r1OuZKXDVYL4Jtq8b5Vz06xL6tPS4R
-         IQj4+3LvCK54U4wR4BeW7cBKgRFa7yxBV1l6Jmjl9NncaI15gawKcSMYENvwVgj58BDf
-         oFIxxfqAR+w0LHRCMtvO+vzbqx8NT5DLpxM96Fun15jblCNx3ti2HJqKcGIJexqILwIp
-         RnjY4N9vRj8miR5QLrURhGoLPwgfEQyme2ewnOJLUOJGOReLx33l7HoVFShT+kSVEIZA
-         59paZ7LntYdNd7nAFtXksIYE58UmPaqvWZLkGnG5MJXHHB0I+Su9s/YphahIDKpEJF0Q
-         DUgQ==
+        b=zHcXRL2vZNODTF1lk+8CbAitGpJhMTeTKCdwdlT2Oe/RCViEcce6KzrRiACiZCEtR4
+         PZ/MQAdLC6foQip3BsR7u/Gew2LHOPFGiwzFaP28HVdPp7X2bU25X7HfneffQhLqs/LU
+         Lr3SM5xeiXSg9GWmsXGsCr+uOWu5esMaulFph6YhFQNAbceWL3i4eL6KW+z3lwHMS3yq
+         QeaQflhd833TWxIvZ/+e81F8q/iNtNfqDctYjbhf+z+XcBIqoEEwQDzc+HgNKkf9GIi0
+         /sxUTwg2AvqzLYnnBCVlHJYVonFLvfEbDu/1eCwMZsMx/IzYi0BOkvFuZfY1ZRr5lecD
+         kjAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=joKcrZqse/2rI2WBzidhVM6HneRljCD0MWlkHrQCOPM=;
-        b=031qyzWZJfM3kueM9iO/lJKObAJZ2HHhJBia8OIuzlk05/W9yD/R+uYbscOHZNiCqV
-         rGE+4cWGk6vuFR56/Psjkia50llAMETQRah8kFUpvgij7sxUAp23b6JEN2XPalbLEB3a
-         /eSHeQD6EAw/rTX+H1BPSZYOXjRnFmDS9BB1F95xt2W0aFOkBKb8V8MzzEuMDRKFPovM
-         NARmFHtL7uxqnEL/apiQgJioQUcLuNhfpbEd2t0amc55zE5rvGIoQ46KQ4N1U6oYErus
-         NZKLlWBVIkFbTVzYK67mEd+4IQ/0qeADmqXF9Qk/8JdmmP/pfvTqZpEV+LOVYvBpEPDF
-         Pg4A==
+        bh=QxlNDlcm8HsAwIL81XV9LrgyeoomdszW36hbadR0U1g=;
+        b=KJ7xeP1s0gfPkK0fQ4Dojfrc19meyOUokFljWapso7n6zyTI9e9+9ccUMvG2sFoTs7
+         9xCAtEj4na89kai1rn1bTRSBLb2AvJGKxYI8UTEfNAwVwvHKcox8n91XNGTfS67HSu+n
+         eIJhFGmPrUZeZVhY1iz/YUjfATTAFIuKHX9cJrPN7h0xQsA9DMTI9csEGGUCloE5jHcC
+         CJYQbKNhP6q+6oulZUm2Ap1xIQcXeHyRnnYHvXYXkWjXJvVWipYeHdw/DCRnSgv4Qc0n
+         awLJUozCzPScj8vjEbGzcbMx0SwVf/EXbqGxyah3ulPwfecvQiRKDh7s4Xub0kaw/mrd
+         P1Fg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JpYlYY6G;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aDiWJzup;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s22si8036486oij.35.2019.12.14.13.16.41
+        by mx.google.com with ESMTPS id i26si3115847otl.29.2019.12.14.13.51.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Dec 2019 13:16:41 -0800 (PST)
+        Sat, 14 Dec 2019 13:51:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JpYlYY6G;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aDiWJzup;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33146 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igEmG-0001jT-7O
-	for alex.bennee@linaro.org; Sat, 14 Dec 2019 16:16:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45568)
+	id 1igFJs-0005Hz-B7
+	for alex.bennee@linaro.org; Sat, 14 Dec 2019 16:51:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55786)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1igEXA-0001T3-2e
- for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:05 -0500
+ (envelope-from <philmd@redhat.com>) id 1igFJh-0005HT-Bk
+ for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:51:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1igEX8-0004dW-R1
- for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:03 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:40287
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1igFJf-0007RJ-9S
+ for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:51:13 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:31569
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1igEX8-0004c0-Ma
- for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:02 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1igFJf-0007O5-1j
+ for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:51:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576357262;
+ s=mimecast20190719; t=1576360270;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=joKcrZqse/2rI2WBzidhVM6HneRljCD0MWlkHrQCOPM=;
- b=JpYlYY6GRr4O0aBKfZh5xMh4bbcZqDw4STW6G34dRxb9pxZk+AL18Fs6ADiuyMhTvTGksy
- K/Vsyq+z6LG8DVY85o5/g4tYqvuFbK5mj0W3uF+riFG4gYL8JC5SjddIn9prLEzMBP/WV1
- qWPSghjMVN8rpWnX3zzKVMY8VZNjpCc=
+ bh=QxlNDlcm8HsAwIL81XV9LrgyeoomdszW36hbadR0U1g=;
+ b=aDiWJzupWuw5/dcojEA/xNS3an9uwLER1HnLQmBnae78pHJk58YbY+Rc8HJ6zoeGPADweO
+ PlvIDPTHvE67PCnYy8aLpNAcYQZSfxsljCNlj5qd/xgP8sT68yYDMEvIQE/gY2cNYIx9n1
+ 7zJqB6CFIuGmtCUpMl55sOYk4wR0nM4=
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-144-U4Ulz7HVPYCnwlkewFBVHQ-1; Sat, 14 Dec 2019 08:59:54 -0500
-Received: by mail-wr1-f69.google.com with SMTP id 90so1014979wrq.6
- for <qemu-arm@nongnu.org>; Sat, 14 Dec 2019 05:59:54 -0800 (PST)
+ us-mta-327-8Bu-ODQ7OWigUSOCyO84gw-1; Sat, 14 Dec 2019 08:49:10 -0500
+Received: by mail-wr1-f69.google.com with SMTP id f17so998089wrt.19
+ for <qemu-arm@nongnu.org>; Sat, 14 Dec 2019 05:49:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=8ablovXuvhNSxsWx83+/G5FRg33eclyz++hORIZtpqw=;
- b=ZtMtuBaWAyLYjUelDxEqkbNC7Fn4qb7rys/rt8tmEuDTn+W5q6As4IABKmOyx43wVd
- S4UGqzDYs5GRr8s3k+goi1c5dLf1z4BrcVn0jcOPLb3uLPXgVvMC/VOrXciYGEU+xLxd
- pJsqfJ4eKxLepQPsye6/kdhLU6bYrICjFMr1OLKXyPq+0pNQjovOs7QJTFqFoAuFs3gH
- nnGh579qU0GFBs7NfG8jganFB3kBlzsx04eco3ct5iKr6ShCzAXLEsvh2nU6ytKWZbPA
- Ajyssrv576birJjXzZ1QNMCoWSrdkz0uH4m3oKIcU0vPTuK3U/VGDF18cmaFeb0qT7kf
- +d6Q==
-X-Gm-Message-State: APjAAAUibtDVP6LZs8YueFMnFRxKiEmyluvS+46HpSmfVUVTxTqMDf5r
- 7QuHm4TSyi3+x/m1tf7aGhwRkYsmjgTuBCwmsldVgcTkPys8RV9/70knklxj6L7Gkh+yTYblsU7
- i/qMOrTjQX8Ia
-X-Received: by 2002:a05:600c:54b:: with SMTP id
- k11mr19359951wmc.63.1576331993073; 
- Sat, 14 Dec 2019 05:59:53 -0800 (PST)
-X-Received: by 2002:a05:600c:54b:: with SMTP id
- k11mr19359939wmc.63.1576331992865; 
- Sat, 14 Dec 2019 05:59:52 -0800 (PST)
+ bh=QxlNDlcm8HsAwIL81XV9LrgyeoomdszW36hbadR0U1g=;
+ b=pjmOrTAfI9OJQqI6Gxjum1UBUOpEFl+QMsejkFmgjgHX4kLVbgkhGT1Mj/9JZY2i1V
+ 8Id4zPlEIivCUWbRKV/JRSbAeMptu9uj4Yz2165oGLpSgSP1Sn0AqqOefXJiLBtU4fBe
+ dQlCiskb5FsBiHVNsM3YMr5gbnh/87x3ycyZAkqfK7Wfrx2Y0uXVtcQgjW/sn5MEyVeE
+ 5SEPpx9aR4TF/AmDzo4G0V0fse4ovyoZY8KYcdNMkkjWNi1Sw3rDb62X1B429aq5m9RF
+ VvkXlvzWjstGZKguAqsf14GLYEbI35S8855xCs6zqb7pXmmTarly6FxVZq1gt3RS4KJk
+ eoJg==
+X-Gm-Message-State: APjAAAV2raC2UiTh8v5zScOGNZmVON1C100m3RknVZdoy2VKU5Zb+pr8
+ 62/cO9ED71zofDwLU3+L494pxvkau0xeyU4n84yrJcCsafXP5Pji9/k5oy0Amc9Qs0aRhBuMDrD
+ +rEeLM7kCGPYX
+X-Received: by 2002:a5d:52c4:: with SMTP id r4mr17915732wrv.368.1576331349372; 
+ Sat, 14 Dec 2019 05:49:09 -0800 (PST)
+X-Received: by 2002:a5d:52c4:: with SMTP id r4mr17915697wrv.368.1576331348971; 
+ Sat, 14 Dec 2019 05:49:08 -0800 (PST)
 Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.34])
- by smtp.gmail.com with ESMTPSA id u10sm13781029wmd.1.2019.12.14.05.59.51
+ by smtp.gmail.com with ESMTPSA id h8sm14723069wrx.63.2019.12.14.05.49.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 14 Dec 2019 05:59:52 -0800 (PST)
-Subject: Re: [PATCH 09/10] arm: allwinner-h3: add SD/MMC host controller
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-10-nieklinnenbank@gmail.com>
- <CAPan3WrRKnu5vFz=JvrnD8tewUk7SdwFVYx4xVL353AnfPDgHQ@mail.gmail.com>
- <6bee15d7-7d80-0709-ac90-ef2052b39329@redhat.com>
- <CAPan3Woq_EJAE6s-N5dAApAgzexGr4M-OtFkiHuMN_Xp=8_bTQ@mail.gmail.com>
+ Sat, 14 Dec 2019 05:49:08 -0800 (PST)
+Subject: Re: [PATCH v6 2/4] hw/misc: Add the STM32F4xx EXTI device
+To: Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org
+References: <cover.1576227325.git.alistair@alistair23.me>
+ <717e76b6d41e09c352d98a83708c3e3c9fe5d63b.1576227325.git.alistair@alistair23.me>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <457e0620-c11e-8e5a-df1c-93f95f52eda8@redhat.com>
-Date: Sat, 14 Dec 2019 14:59:51 +0100
+Message-ID: <13f8810e-fb67-24c8-fecf-72f48ac5c7db@redhat.com>
+Date: Sat, 14 Dec 2019 14:49:07 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <CAPan3Woq_EJAE6s-N5dAApAgzexGr4M-OtFkiHuMN_Xp=8_bTQ@mail.gmail.com>
+In-Reply-To: <717e76b6d41e09c352d98a83708c3e3c9fe5d63b.1576227325.git.alistair@alistair23.me>
 Content-Language: en-US
-X-MC-Unique: U4Ulz7HVPYCnwlkewFBVHQ-1
+X-MC-Unique: 8Bu-ODQ7OWigUSOCyO84gw-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -129,98 +125,365 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: alistair23@gmail.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TBKEEQ/0VsOn
+X-TUID: dKcVJYnld+Le
 
-On 12/13/19 10:00 PM, Niek Linnenbank wrote:
-> On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9=20
-> <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
->=20
->     Hi Niek,
->=20
->     On 12/11/19 11:34 PM, Niek Linnenbank wrote:
->      > Ping!
->      >
->      > Anyone would like to comment on this driver?
->      >
->      > I finished the rework on all previous comments in this series.
->      >
->      > Currently debugging the hflags error reported by Philippe.
->      > After that, I'm ready to send out v2 of these patches.
->      >
->      > Regards,
->      > Niek
->      >
->      > On Mon, Dec 2, 2019 at 10:10 PM Niek Linnenbank
->      > <nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>
->     <mailto:nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>>>
->     wrote:
->      >
->      >=C2=A0 =C2=A0 =C2=A0The Allwinner H3 System on Chip contains an int=
-egrated storage
->      >=C2=A0 =C2=A0 =C2=A0controller for Secure Digital (SD) and Multi Me=
-dia Card (MMC)
->      >=C2=A0 =C2=A0 =C2=A0interfaces. This commit adds support for the Al=
-lwinner H3
->      >=C2=A0 =C2=A0 =C2=A0SD/MMC storage controller with the following em=
-ulated features:
->      >
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* DMA transfers
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* Direct FIFO I/O
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* Short/Long format command responses
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* Auto-Stop command (CMD12)
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* Insert & remove card detection
->      >
->      >=C2=A0 =C2=A0 =C2=A0Signed-off-by: Niek Linnenbank <nieklinnenbank@=
-gmail.com
->     <mailto:nieklinnenbank@gmail.com>
->      >=C2=A0 =C2=A0 =C2=A0<mailto:nieklinnenbank@gmail.com
->     <mailto:nieklinnenbank@gmail.com>>>
->      >=C2=A0 =C2=A0 =C2=A0---
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 20 +
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 17 +
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/allwinner-h3-sdhost.c=C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0| 791
->     ++++++++++++++++++++++++++++
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/trace-events=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A07 +
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/arm/allwinner-h3.h=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A02 +
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/sd/allwinner-h3-sdhost.h |=C2=
-=A0 73 +++
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A07 files changed, 911 insertions(+)
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 hw/sd/allwinner-h3-sd=
-host.c
->      >=C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 include/hw/sd/allwinn=
-er-h3-sdhost.h
-[...]
-> Thanks again for all of your helpful comments Philippe!
-> I've started to rework the patch.
->=20
-> One question about adding tags in the commit message: should I
-> already add 'Reviewed-by: ' when I re-send v2 of this patch? Or should
-> that be added after you have seen the v2 changes?
+Hi Alistair,
 
-You shouldn't add the Reviewed-by tag until explicitly given by the=20
-reviewer. If the changes are trivial, it is easy to conditionally give=20
-the tag such "If ... is done: R-b", "With ... fixed: R-b".
+On 12/14/19 3:44 AM, Alistair Francis wrote:
+> Signed-off-by: Alistair Francis <alistair@alistair23.me>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/arm/Kconfig                   |   1 +
+>   hw/misc/Kconfig                  |   3 +
+>   hw/misc/Makefile.objs            |   1 +
+>   hw/misc/stm32f4xx_exti.c         | 189 +++++++++++++++++++++++++++++++
+>   hw/misc/trace-events             |   5 +
+>   include/hw/misc/stm32f4xx_exti.h |  60 ++++++++++
+>   6 files changed, 259 insertions(+)
+>   create mode 100644 hw/misc/stm32f4xx_exti.c
+>   create mode 100644 include/hw/misc/stm32f4xx_exti.h
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 4660d14715..3d86691ae0 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -315,6 +315,7 @@ config STM32F405_SOC
+>       bool
+>       select ARM_V7M
+>       select STM32F4XX_SYSCFG
+> +    select STM32F4XX_EXTI
+>   
+>   config XLNX_ZYNQMP_ARM
+>       bool
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index 72609650b7..bdd77d8020 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -85,6 +85,9 @@ config STM32F2XX_SYSCFG
+>   config STM32F4XX_SYSCFG
+>       bool
+>   
+> +config STM32F4XX_EXTI
+> +    bool
+> +
+>   config MIPS_ITU
+>       bool
+>   
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index ea8025e0bb..c6ecbdd7b0 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -59,6 +59,7 @@ common-obj-$(CONFIG_ZYNQ) += zynq_slcr.o
+>   common-obj-$(CONFIG_ZYNQ) += zynq-xadc.o
+>   common-obj-$(CONFIG_STM32F2XX_SYSCFG) += stm32f2xx_syscfg.o
+>   common-obj-$(CONFIG_STM32F4XX_SYSCFG) += stm32f4xx_syscfg.o
+> +common-obj-$(CONFIG_STM32F4XX_EXTI) += stm32f4xx_exti.o
+>   obj-$(CONFIG_MIPS_CPS) += mips_cmgcr.o
+>   obj-$(CONFIG_MIPS_CPS) += mips_cpc.o
+>   obj-$(CONFIG_MIPS_ITU) += mips_itu.o
+> diff --git a/hw/misc/stm32f4xx_exti.c b/hw/misc/stm32f4xx_exti.c
+> new file mode 100644
+> index 0000000000..7f87a885aa
+> --- /dev/null
+> +++ b/hw/misc/stm32f4xx_exti.c
+> @@ -0,0 +1,189 @@
+> +/*
+> + * STM32F4XX EXTI
+> + *
+> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "trace.h"
+> +#include "hw/irq.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/misc/stm32f4xx_exti.h"
+> +
+> +static void stm32f4xx_exti_reset(DeviceState *dev)
+> +{
+> +    STM32F4xxExtiState *s = STM32F4XX_EXTI(dev);
+> +
+> +    s->exti_imr = 0x00000000;
+> +    s->exti_emr = 0x00000000;
+> +    s->exti_rtsr = 0x00000000;
+> +    s->exti_ftsr = 0x00000000;
+> +    s->exti_swier = 0x00000000;
+> +    s->exti_pr = 0x00000000;
+> +}
+> +
+> +static void stm32f4xx_exti_set_irq(void *opaque, int irq, int level)
+> +{
+> +    STM32F4xxExtiState *s = opaque;
+> +
+> +    if (!((1 << irq) & s->exti_imr)) {
+> +        /* Interrupt is masked */
+> +        return;
 
-Since this is your first contribution, I have been more careful. Also=20
-since your patch is already of very good quality, I'v been a bit picky=20
-regarding few details.
+I'm not sure this is correct, don't you need to set the bit in the 
+exti_pr register regardless it is masked? Else in masked polling mode 
+the guest will never see IRQ delivered.
 
-Since there are too many comments, so I prefer to fully review the v2 of=20
-this patch again.
+So I'd drop this if statement, ...
 
-Regards,
+> +    }
+> +
+> +    trace_stm32f4xx_exti_set_irq(irq, level);
+> +
+> +    if (((1 << irq) & s->exti_rtsr) && level) {
+> +        /* Rising Edge */
+> +        qemu_irq_pulse(s->irq[irq]);
 
-Phil.
+... do not pulse here, ...
+
+> +        s->exti_pr |= 1 << irq;
+> +    }
+> +
+> +    if (((1 << irq) & s->exti_ftsr) && !level) {
+> +        /* Falling Edge */
+> +        qemu_irq_pulse(s->irq[irq]);
+
+... do not pulse here, ...
+
+> +        s->exti_pr |= 1 << irq;
+> +    }
+
+... and here pulse if not masked:
+
+        if (!((1 << irq) & s->exti_imr)) {
+            /* Interrupt is masked */
+            return;
+        }
+        qemu_irq_pulse(s->irq[irq]);
+
+(Or invert the if condition).
+
+> +}
+> +
+> +static uint64_t stm32f4xx_exti_read(void *opaque, hwaddr addr,
+> +                                     unsigned int size)
+> +{
+> +    STM32F4xxExtiState *s = opaque;
+> +
+> +    trace_stm32f4xx_exti_read(addr);
+> +
+> +    switch (addr) {
+> +    case EXTI_IMR:
+> +        return s->exti_imr;
+> +    case EXTI_EMR:
+> +        return s->exti_emr;
+> +    case EXTI_RTSR:
+> +        return s->exti_rtsr;
+> +    case EXTI_FTSR:
+> +        return s->exti_ftsr;
+> +    case EXTI_SWIER:
+> +        return s->exti_swier;
+> +    case EXTI_PR:
+> +        return s->exti_pr;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "STM32F4XX_exti_read: Bad offset %x\n", (int)addr);
+> +        return 0;
+> +    }
+> +    return 0;
+> +}
+> +
+> +static void stm32f4xx_exti_write(void *opaque, hwaddr addr,
+> +                       uint64_t val64, unsigned int size)
+> +{
+> +    STM32F4xxExtiState *s = opaque;
+> +    uint32_t value = (uint32_t) val64;
+> +
+> +    trace_stm32f4xx_exti_write(addr, value);
+> +
+> +    switch (addr) {
+> +    case EXTI_IMR:
+> +        s->exti_imr = value;
+> +        return;
+> +    case EXTI_EMR:
+> +        s->exti_emr = value;
+> +        return;
+> +    case EXTI_RTSR:
+> +        s->exti_rtsr = value;
+> +        return;
+> +    case EXTI_FTSR:
+> +        s->exti_ftsr = value;
+> +        return;
+> +    case EXTI_SWIER:
+> +        s->exti_swier = value;
+> +        return;
+> +    case EXTI_PR:
+> +        /* This bit is cleared by writing a 1 to it */
+> +        s->exti_pr &= ~value;
+> +        return;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "STM32F4XX_exti_write: Bad offset %x\n", (int)addr);
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps stm32f4xx_exti_ops = {
+> +    .read = stm32f4xx_exti_read,
+> +    .write = stm32f4xx_exti_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +};
+> +
+> +static void stm32f4xx_exti_init(Object *obj)
+> +{
+> +    STM32F4xxExtiState *s = STM32F4XX_EXTI(obj);
+> +    int i;
+> +
+> +    for (i = 0; i < NUM_INTERRUPT_OUT_LINES; i++) {
+> +        sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq[i]);
+> +    }
+> +
+> +    memory_region_init_io(&s->mmio, obj, &stm32f4xx_exti_ops, s,
+> +                          TYPE_STM32F4XX_EXTI, 0x400);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> +
+> +    qdev_init_gpio_in(DEVICE(obj), stm32f4xx_exti_set_irq,
+> +                      NUM_GPIO_EVENT_IN_LINES);
+> +}
+> +
+> +static const VMStateDescription vmstate_stm32f4xx_exti = {
+> +    .name = TYPE_STM32F4XX_EXTI,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32(exti_imr, STM32F4xxExtiState),
+> +        VMSTATE_UINT32(exti_emr, STM32F4xxExtiState),
+> +        VMSTATE_UINT32(exti_rtsr, STM32F4xxExtiState),
+> +        VMSTATE_UINT32(exti_ftsr, STM32F4xxExtiState),
+> +        VMSTATE_UINT32(exti_swier, STM32F4xxExtiState),
+> +        VMSTATE_UINT32(exti_pr, STM32F4xxExtiState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void stm32f4xx_exti_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->reset = stm32f4xx_exti_reset;
+> +    dc->vmsd = &vmstate_stm32f4xx_exti;
+> +}
+> +
+> +static const TypeInfo stm32f4xx_exti_info = {
+> +    .name          = TYPE_STM32F4XX_EXTI,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(STM32F4xxExtiState),
+> +    .instance_init = stm32f4xx_exti_init,
+> +    .class_init    = stm32f4xx_exti_class_init,
+> +};
+> +
+> +static void stm32f4xx_exti_register_types(void)
+> +{
+> +    type_register_static(&stm32f4xx_exti_info);
+> +}
+> +
+> +type_init(stm32f4xx_exti_register_types)
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index 02327562bc..91a3794d68 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -90,6 +90,11 @@ stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
+>   stm32f4xx_syscfg_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+>   stm32f4xx_syscfg_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
+>   
+> +# stm32f4xx_exti
+> +stm32f4xx_exti_set_irq(int irq, int leve) "Set EXTI: %d to %d"
+> +stm32f4xx_exti_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+> +stm32f4xx_exti_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
+> +
+>   # tz-mpc.c
+>   tz_mpc_reg_read(uint32_t offset, uint64_t data, unsigned size) "TZ MPC regs read: offset 0x%x data 0x%" PRIx64 " size %u"
+>   tz_mpc_reg_write(uint32_t offset, uint64_t data, unsigned size) "TZ MPC regs write: offset 0x%x data 0x%" PRIx64 " size %u"
+> diff --git a/include/hw/misc/stm32f4xx_exti.h b/include/hw/misc/stm32f4xx_exti.h
+> new file mode 100644
+> index 0000000000..707036a41b
+> --- /dev/null
+> +++ b/include/hw/misc/stm32f4xx_exti.h
+> @@ -0,0 +1,60 @@
+> +/*
+> + * STM32F4XX EXTI
+> + *
+> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#ifndef HW_STM_EXTI_H
+> +#define HW_STM_EXTI_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "hw/hw.h"
+> +
+> +#define EXTI_IMR   0x00
+> +#define EXTI_EMR   0x04
+> +#define EXTI_RTSR  0x08
+> +#define EXTI_FTSR  0x0C
+> +#define EXTI_SWIER 0x10
+> +#define EXTI_PR    0x14
+> +
+> +#define TYPE_STM32F4XX_EXTI "stm32f4xx-exti"
+> +#define STM32F4XX_EXTI(obj) \
+> +    OBJECT_CHECK(STM32F4xxExtiState, (obj), TYPE_STM32F4XX_EXTI)
+> +
+> +#define NUM_GPIO_EVENT_IN_LINES 16
+> +#define NUM_INTERRUPT_OUT_LINES 16
+> +
+> +typedef struct {
+> +    SysBusDevice parent_obj;
+> +
+> +    MemoryRegion mmio;
+> +
+> +    uint32_t exti_imr;
+> +    uint32_t exti_emr;
+> +    uint32_t exti_rtsr;
+> +    uint32_t exti_ftsr;
+> +    uint32_t exti_swier;
+> +    uint32_t exti_pr;
+> +
+> +    qemu_irq irq[NUM_INTERRUPT_OUT_LINES];
+> +} STM32F4xxExtiState;
+> +
+> +#endif
+> 
 

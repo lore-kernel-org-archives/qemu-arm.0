@@ -1,106 +1,106 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1672049lff;
-        Fri, 13 Dec 2019 18:48:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx8bkGzZmGNATNQ92ba2WjWnCXrwE7YZGRaIcrQam4Z4QesjkDPkPbsIK2pb5oImysMBLt1
-X-Received: by 2002:a9d:da2:: with SMTP id 31mr17418424ots.319.1576291702098;
-        Fri, 13 Dec 2019 18:48:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576291702; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1672824lff;
+        Fri, 13 Dec 2019 18:49:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxQvy5VPz32XD2NaqEukjXjzcQxhPsJqDp4ev6cXj6TxeKhJPAGpcWXWwmcaEi01FzFN4SS
+X-Received: by 2002:a9d:66ca:: with SMTP id t10mr17934321otm.352.1576291774726;
+        Fri, 13 Dec 2019 18:49:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576291774; cv=none;
         d=google.com; s=arc-20160816;
-        b=Au3nL65Wj+KS0mpdkiqMAWkKcXkvRjRG1Xgenr2hvrgbn4OU6/Fh5sFchwp666LaEv
-         EHlvVPVzo0Ot/vXPb6FlZFOKbjjjNCDls8QzVXoId+Vcl+DA+eW/Z6h6qzT/huc6h1Qy
-         OGuXyZcYqQuBY/NR89p4pmbjKFA9KEs9qC1iqo/E5bagOPtgW8lOq4uJirEQoy3pp09u
-         cIKCakUri0oKgwBmNJ924WrYmMWUyoMwBKdSEDqLZpdeCoxWswH8d2ByoFScGDM1ZmMS
-         LZbS8tb5i8uGeTxB15jafzwCPu9P7DAd9zP7bgbqp880BwDYNXxtwIHUamRSkrxow/nb
-         eqwQ==
+        b=cteyiO7I4ehUy1Drv0MYq8vpdbKYc3MlVL/M+oSlq8gWQwW/1X4xeJrfhDnFeXkbtl
+         GNsRE7kHhXHiBnNqx8ROg+/P3qPpoioQS/jJieI/Z81wodbwAkPrKYf9iqWtIq2J8jfa
+         O2BA79mEct4A0qpOb/3j8pQMB1knxVvL04sxHNiAqM2uC4n525PoFBow/Pu3y/qNL4yT
+         R79whNLOqENKZxqqrF+pClHcqlXJuiGUV1eciG3rQhkxmRtHOupp84zJH0JYWKDPNpO5
+         4me3CwgvNVB47UtZFlg8u7vLBtZqSt/u8Tuw9Pq4IDT0FdEMAB3rDy3yrTgROzU3pSvS
+         W43A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature:dkim-signature;
-        bh=9kZyX/Yzo7vtKy/0W0TzGbOatkuxcmyhoqniocLdT2c=;
-        b=veql8xvYh4QcFZkdO0bZojj5gQXO4TbCoXUTlJ4OxqIX33C9OawfiPODmkBrbvM3fE
-         h4ECt6TplvMOWS8J7iJwlOEu3ph4vsN+ymnGm0u+o8IEIaGOIKuMgew3uPK7ai/I0UE+
-         wpNcL8wwC3id0BSvXFAMt1PYnf0y1V+ZtwROVGcLz8BwBuMqT0UwCojwhVTnv2OCvS0v
-         0uBrCen+9qvacbSTjG6l8ko+wxTduoLoG0rllJniUhGn8s8f+p1gtGI7CswHkfVFugMQ
-         ZR8jI/HrXM3rOjLMKh/K6fXM9HqYe7NT2QEc+buSGmX0h6tcsjJegPVqRLO+iiSEC+v7
-         ceAg==
+        bh=kUtIe6kqnG2FwdUxin7eUzLqjVTtszz1wUf2bM5zKlw=;
+        b=l+9DOolRn7ufQum6LCCEoV99dPl8AfWy1fwdPqo9aguhfcrvqljQA0jIcdi6idRMTe
+         6b2hNtVLImOPe7Bj6nhzhTa8msju9LeqpHXsxhnQvsRcnRuzu6+0DwrAED6x0QDhT4rJ
+         P7j6p/ZI/ttai7otAv5qowkTCaM0azutCnHbKWRyNDjggToL2T5IyXHeHH7wM5j5v7e0
+         yN7vZroGwrEoegaDr3gpctG7338DYzFVHFYgCBfQXtMnhwetO9laOtEB6mIcCHkWTpUn
+         MJlxXeyeOTYAr4DrFYoVZcdI4uetGIOP53dBoUsm07wM9pOxEfzrAx6bDZh4Sq8nxZsU
+         JQ8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@alistair23.me header.s=fm2 header.b="wCF/3qx3";
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=CeFHnQjo;
+       dkim=fail header.i=@alistair23.me header.s=fm2 header.b=IVi0Dfxo;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=WJt0JVfA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v21si5886545otn.8.2019.12.13.18.48.21
+        by mx.google.com with ESMTPS id l19si6014124oii.54.2019.12.13.18.49.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2019 18:48:22 -0800 (PST)
+        Fri, 13 Dec 2019 18:49:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@alistair23.me header.s=fm2 header.b="wCF/3qx3";
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=CeFHnQjo;
+       dkim=fail header.i=@alistair23.me header.s=fm2 header.b=IVi0Dfxo;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=WJt0JVfA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55608 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55630 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifxTh-0007d1-2K
-	for alex.bennee@linaro.org; Fri, 13 Dec 2019 21:48:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57926)
+	id 1ifxUr-0008WH-P5
+	for alex.bennee@linaro.org; Fri, 13 Dec 2019 21:49:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59637)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair@alistair23.me>) id 1ifxPz-0004Iy-B1
- for qemu-devel@nongnu.org; Fri, 13 Dec 2019 21:44:34 -0500
+ (envelope-from <alistair@alistair23.me>) id 1ifxQ6-0004Ti-5D
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2019 21:44:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair@alistair23.me>) id 1ifxPx-0000uU-7Q
- for qemu-devel@nongnu.org; Fri, 13 Dec 2019 21:44:31 -0500
-Received: from out5-smtp.messagingengine.com ([66.111.4.29]:37313)
+ (envelope-from <alistair@alistair23.me>) id 1ifxQ4-0001Bo-Mi
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2019 21:44:37 -0500
+Received: from out5-smtp.messagingengine.com ([66.111.4.29]:57055)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <alistair@alistair23.me>)
- id 1ifxPs-0000iC-BU; Fri, 13 Dec 2019 21:44:24 -0500
+ id 1ifxQ0-000102-A5; Fri, 13 Dec 2019 21:44:32 -0500
 Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
- by mailout.nyi.internal (Postfix) with ESMTP id 0A75922452;
- Fri, 13 Dec 2019 21:44:24 -0500 (EST)
+ by mailout.nyi.internal (Postfix) with ESMTP id 831142244E;
+ Fri, 13 Dec 2019 21:44:31 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute7.internal (MEProxy); Fri, 13 Dec 2019 21:44:24 -0500
+ by compute7.internal (MEProxy); Fri, 13 Dec 2019 21:44:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm2; bh=9kZyX/Yzo7vtK
- y/0W0TzGbOatkuxcmyhoqniocLdT2c=; b=wCF/3qx3QQTNqPws+ScT/WDWjzXqJ
- 0vnjqB1sHwDT1HC3Ib3uwj3e7RGRL3klNThLvUHnU3I8vCujzmDy5KRGD35LrbM2
- 0/sXRiCt898L1ffrOGglptJutinVUuXxn4hDzaM5tjewvNdFMZzDkQY3yb638oN+
- Kp5ciOkF1PZ21JT1rkG703aqXy/2QtEFZcqeeWZPMhNcEuDuiJs+/0pDVAHI1Wqx
- 2EkMNs4y/ihljfPWEnvHIRIvkOiJBCmfOQ2h20ja0nQFHivnW5ZNqnytB0LQ5Kgz
- G+8qLCpvmCeKpntsTqIrQTF3GuhMgs9iNsBP3V4q7Vtb+P3Bw3pTnrLnA==
+ :mime-version:content-transfer-encoding; s=fm2; bh=kUtIe6kqnG2Fw
+ dUxin7eUzLqjVTtszz1wUf2bM5zKlw=; b=IVi0DfxoEiA4oMjBgdafS+GpKn01a
+ pmRKtf3FLwliDIvpJbhmHVAMv0N8sfhHOOOFffarxyZSGWT+BZM1i53ZmGOWpXJW
+ dLonJMGCZEeDyHT1NZdk5YzNFGmQp7jySBWI5raMXFQxrsskp1bZ168akxhWDXw/
+ KgF8lC/htqEoSPNKJQm+fHuX7Cu3glA9b10gPM8Et3N4jIfNDIQbbrxFaQRFTffs
+ vrc0ALX7Ao70lLQKbWy+UVcZmMesMIxBZ7isx2S3wZKO/PqYWyrU23WjJaTttsJk
+ WusJX3kNFtxbxPvccidWZc4kkoSbcT5MBc9PGYpUKhV7hTCv/98hmxrvg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:date:from
  :in-reply-to:message-id:mime-version:references:subject:to
  :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; bh=9kZyX/Yzo7vtKy/0W0TzGbOatkuxcmyhoqniocLdT2c=; b=CeFHnQjo
- 9TGQs14D9iCFUEGkdDE6QEJP4+qHTNrUtjMyoALu46cRFWl/rJiPMbD4qU//8vPB
- 9kzcw61CT6slF+nrhgTFaYug69e9Y5Jh1n9V4lF7jAzQO1AbWYUpSu0NcpgIFJ/O
- FRh02ybQQX7ecyXGf1qfnafS+yihUMqc/8vSsnIMj6xEqoApZ42umIiuZhC0PZPr
- LBZEg0nf4FNoRpTkP3HLGZHLDTpBzivkiYkMqKwgIaXSRfu1c93REKz5kt2jkDsv
- P18mp5rHjqAfB2nkZerM9JeIyveA3wgweW7d4GuJrJ77lQY6W5yI/QvynOHdPqu+
- sCELdUaJYCOgzg==
-X-ME-Sender: <xms:h0z0Xa6k2h6MOhsamNTVt15xrzwPQIDrdHqMQxsDyb8R2e8AhxFrOA>
+ fm1; bh=kUtIe6kqnG2FwdUxin7eUzLqjVTtszz1wUf2bM5zKlw=; b=WJt0JVfA
+ odkbL40NFx8fkbar6h2WemXVyQ0G4jgCuxA225kzNDnQukym4H/VbHs7VVlf3gbX
+ zX0NRHGsE9SvqcUi51bjWdY180dy+nUEIE7I2qy7TY73LN64oVdbDKL56h2Qtcur
+ /Kh/azSj5sLfPyoPRxt79BenJRD6USdPu8z69lFnj5bA0gVv3sMMGbiah37jZV5Y
+ pz5Y9wnmdTq0Jdd+msmZpZfig6lDKbR07qtrG+lOBOEeIjY1KeKBubYdrPle+OMm
+ 2Hr/tHJ1xSrlXQNa5b29nVH5F1YcaM1qQfaRePQI6dECChFGJvlCXm0kgXM9WbUi
+ G7rNonqJFwt8HA==
+X-ME-Sender: <xms:j0z0XRskb99kEjkqxXZZRJ6M1x8dnIryifSO4a-8B5HzWqIPA-zrwg>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrvddttddggeelucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgjfhgggfestdekre
  dtredttdenucfhrhhomheptehlihhsthgrihhrucfhrhgrnhgtihhsuceorghlihhsthgr
  ihhrsegrlhhishhtrghirhdvfedrmhgvqeenucfkphepjeefrdelfedrkeegrddvtdekne
  curfgrrhgrmhepmhgrihhlfhhrohhmpegrlhhishhtrghirhesrghlihhsthgrihhrvdef
- rdhmvgenucevlhhushhtvghrufhiiigvpedu
-X-ME-Proxy: <xmx:h0z0Xed_XrX4ZIyQBZw_9Swk-0OWqnG4aKX2BXnjGY_1aWagjb5WIQ>
- <xmx:h0z0XWANOjTKHgCXG_GBTsaowJDcRTgMjLCljw_MJF0PgFq59D8_Yg>
- <xmx:h0z0XZ8nfaYpFggv5icQ9U-gFFnhzJpeS8Exhlu_H2YaEkSouBqLDQ>
- <xmx:h0z0XVA2tc-m3Amxt3qOgC7LWcRAfZ8aZC6FHWEcYHznrJJK3FOs1Q>
+ rdhmvgenucevlhhushhtvghrufhiiigvpeef
+X-ME-Proxy: <xmx:j0z0Xfc-zPV1C4kyOkl-S_U4lrKAccwo7GFZq74K2jy9sYCkbXkkXA>
+ <xmx:j0z0XVqAqYHvo7Vj8WE-1tO5eRDYgdyX7Spsfz09-xO4wIy-x6MJqA>
+ <xmx:j0z0Xd_FMrIYmgSPsxlQ6G-gkPL2DlFyN2ub0K9K7HFUjk7sH07HPA>
+ <xmx:j0z0XbtXPxpc6xoe_IUTZBCHMskyTSzSeAQsc6x9B7KpeeQ_6bfI5g>
 Received: from alistair-xps-14z.alistair23.me
  (c-73-93-84-208.hsd1.ca.comcast.net [73.93.84.208])
- by mail.messagingengine.com (Postfix) with ESMTPA id 1F0278005A;
- Fri, 13 Dec 2019 21:44:23 -0500 (EST)
+ by mail.messagingengine.com (Postfix) with ESMTPA id A85518005A;
+ Fri, 13 Dec 2019 21:44:30 -0500 (EST)
 From: Alistair Francis <alistair@alistair23.me>
 To: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v6 2/4] hw/misc: Add the STM32F4xx EXTI device
-Date: Fri, 13 Dec 2019 18:44:22 -0800
-Message-Id: <717e76b6d41e09c352d98a83708c3e3c9fe5d63b.1576227325.git.alistair@alistair23.me>
+Subject: [PATCH v6 4/4] hw/arm: Add the Netduino Plus 2
+Date: Fri, 13 Dec 2019 18:44:29 -0800
+Message-Id: <40f97ae32a6f21d8184c1cc46fad2defb302238d.1576227325.git.alistair@alistair23.me>
 X-Mailer: git-send-email 2.24.0
 In-Reply-To: <cover.1576227325.git.alistair@alistair23.me>
 References: <cover.1576227325.git.alistair@alistair23.me>
@@ -123,67 +123,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: alistair23@gmail.com, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z7I4KPIkEVJr
+X-TUID: eruPnT0hZOwf
 
 Signed-off-by: Alistair Francis <alistair@alistair23.me>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/Kconfig                   |   1 +
- hw/misc/Kconfig                  |   3 +
- hw/misc/Makefile.objs            |   1 +
- hw/misc/stm32f4xx_exti.c         | 189 +++++++++++++++++++++++++++++++
- hw/misc/trace-events             |   5 +
- include/hw/misc/stm32f4xx_exti.h |  60 ++++++++++
- 6 files changed, 259 insertions(+)
- create mode 100644 hw/misc/stm32f4xx_exti.c
- create mode 100644 include/hw/misc/stm32f4xx_exti.h
+ MAINTAINERS            |  6 +++++
+ hw/arm/Kconfig         |  3 +++
+ hw/arm/Makefile.objs   |  1 +
+ hw/arm/netduinoplus2.c | 52 ++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 62 insertions(+)
+ create mode 100644 hw/arm/netduinoplus2.c
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 10230b3212..b9dd2a11bc 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -828,6 +828,12 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ S: Maintained
+ F: hw/arm/netduino2.c
+ 
++Netduino Plus 2
++M: Alistair Francis <alistair@alistair23.me>
++M: Peter Maydell <peter.maydell@linaro.org>
++S: Maintained
++F: hw/arm/netduinoplus2.c
++
+ SmartFusion2
+ M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+ M: Peter Maydell <peter.maydell@linaro.org>
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 4660d14715..3d86691ae0 100644
+index 7bfdc3a7ac..881e7f56e7 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -315,6 +315,7 @@ config STM32F405_SOC
+@@ -105,6 +105,9 @@ config NETDUINOPLUS2
      bool
-     select ARM_V7M
-     select STM32F4XX_SYSCFG
-+    select STM32F4XX_EXTI
+     select STM32F405_SOC
  
- config XLNX_ZYNQMP_ARM
-     bool
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 72609650b7..bdd77d8020 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -85,6 +85,9 @@ config STM32F2XX_SYSCFG
- config STM32F4XX_SYSCFG
-     bool
- 
-+config STM32F4XX_EXTI
++config NETDUINOPLUS2
 +    bool
 +
- config MIPS_ITU
+ config NSERIES
      bool
- 
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index ea8025e0bb..c6ecbdd7b0 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -59,6 +59,7 @@ common-obj-$(CONFIG_ZYNQ) += zynq_slcr.o
- common-obj-$(CONFIG_ZYNQ) += zynq-xadc.o
- common-obj-$(CONFIG_STM32F2XX_SYSCFG) += stm32f2xx_syscfg.o
- common-obj-$(CONFIG_STM32F4XX_SYSCFG) += stm32f4xx_syscfg.o
-+common-obj-$(CONFIG_STM32F4XX_EXTI) += stm32f4xx_exti.o
- obj-$(CONFIG_MIPS_CPS) += mips_cmgcr.o
- obj-$(CONFIG_MIPS_CPS) += mips_cpc.o
- obj-$(CONFIG_MIPS_ITU) += mips_itu.o
-diff --git a/hw/misc/stm32f4xx_exti.c b/hw/misc/stm32f4xx_exti.c
+     select OMAP
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index d9d54da7cf..336f6dd374 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -11,6 +11,7 @@ obj-$(CONFIG_MAINSTONE) += mainstone.o
+ obj-$(CONFIG_MICROBIT) += microbit.o
+ obj-$(CONFIG_MUSICPAL) += musicpal.o
+ obj-$(CONFIG_NETDUINO2) += netduino2.o
++obj-$(CONFIG_NETDUINOPLUS2) += netduinoplus2.o
+ obj-$(CONFIG_NSERIES) += nseries.o
+ obj-$(CONFIG_SX1) += omap_sx1.o
+ obj-$(CONFIG_CHEETAH) += palm.o
+diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
 new file mode 100644
-index 0000000000..7f87a885aa
+index 0000000000..e5e247edbe
 --- /dev/null
-+++ b/hw/misc/stm32f4xx_exti.c
-@@ -0,0 +1,189 @@
++++ b/hw/arm/netduinoplus2.c
+@@ -0,0 +1,52 @@
 +/*
-+ * STM32F4XX EXTI
++ * Netduino Plus 2 Machine Model
 + *
 + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
 + *
@@ -207,252 +208,33 @@ index 0000000000..7f87a885aa
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "trace.h"
-+#include "hw/irq.h"
-+#include "migration/vmstate.h"
-+#include "hw/misc/stm32f4xx_exti.h"
++#include "qapi/error.h"
++#include "hw/boards.h"
++#include "hw/qdev-properties.h"
++#include "qemu/error-report.h"
++#include "hw/arm/stm32f405_soc.h"
++#include "hw/arm/boot.h"
 +
-+static void stm32f4xx_exti_reset(DeviceState *dev)
++static void netduinoplus2_init(MachineState *machine)
 +{
-+    STM32F4xxExtiState *s = STM32F4XX_EXTI(dev);
++    DeviceState *dev;
 +
-+    s->exti_imr = 0x00000000;
-+    s->exti_emr = 0x00000000;
-+    s->exti_rtsr = 0x00000000;
-+    s->exti_ftsr = 0x00000000;
-+    s->exti_swier = 0x00000000;
-+    s->exti_pr = 0x00000000;
++    dev = qdev_create(NULL, TYPE_STM32F405_SOC);
++    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
++    object_property_set_bool(OBJECT(dev), true, "realized", &error_fatal);
++
++    armv7m_load_kernel(ARM_CPU(first_cpu),
++                       machine->kernel_filename,
++                       FLASH_SIZE);
 +}
 +
-+static void stm32f4xx_exti_set_irq(void *opaque, int irq, int level)
++static void netduinoplus2_machine_init(MachineClass *mc)
 +{
-+    STM32F4xxExtiState *s = opaque;
-+
-+    if (!((1 << irq) & s->exti_imr)) {
-+        /* Interrupt is masked */
-+        return;
-+    }
-+
-+    trace_stm32f4xx_exti_set_irq(irq, level);
-+
-+    if (((1 << irq) & s->exti_rtsr) && level) {
-+        /* Rising Edge */
-+        qemu_irq_pulse(s->irq[irq]);
-+        s->exti_pr |= 1 << irq;
-+    }
-+
-+    if (((1 << irq) & s->exti_ftsr) && !level) {
-+        /* Falling Edge */
-+        qemu_irq_pulse(s->irq[irq]);
-+        s->exti_pr |= 1 << irq;
-+    }
++    mc->desc = "Netduino Plus 2 Machine";
++    mc->init = netduinoplus2_init;
 +}
 +
-+static uint64_t stm32f4xx_exti_read(void *opaque, hwaddr addr,
-+                                     unsigned int size)
-+{
-+    STM32F4xxExtiState *s = opaque;
-+
-+    trace_stm32f4xx_exti_read(addr);
-+
-+    switch (addr) {
-+    case EXTI_IMR:
-+        return s->exti_imr;
-+    case EXTI_EMR:
-+        return s->exti_emr;
-+    case EXTI_RTSR:
-+        return s->exti_rtsr;
-+    case EXTI_FTSR:
-+        return s->exti_ftsr;
-+    case EXTI_SWIER:
-+        return s->exti_swier;
-+    case EXTI_PR:
-+        return s->exti_pr;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "STM32F4XX_exti_read: Bad offset %x\n", (int)addr);
-+        return 0;
-+    }
-+    return 0;
-+}
-+
-+static void stm32f4xx_exti_write(void *opaque, hwaddr addr,
-+                       uint64_t val64, unsigned int size)
-+{
-+    STM32F4xxExtiState *s = opaque;
-+    uint32_t value = (uint32_t) val64;
-+
-+    trace_stm32f4xx_exti_write(addr, value);
-+
-+    switch (addr) {
-+    case EXTI_IMR:
-+        s->exti_imr = value;
-+        return;
-+    case EXTI_EMR:
-+        s->exti_emr = value;
-+        return;
-+    case EXTI_RTSR:
-+        s->exti_rtsr = value;
-+        return;
-+    case EXTI_FTSR:
-+        s->exti_ftsr = value;
-+        return;
-+    case EXTI_SWIER:
-+        s->exti_swier = value;
-+        return;
-+    case EXTI_PR:
-+        /* This bit is cleared by writing a 1 to it */
-+        s->exti_pr &= ~value;
-+        return;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "STM32F4XX_exti_write: Bad offset %x\n", (int)addr);
-+    }
-+}
-+
-+static const MemoryRegionOps stm32f4xx_exti_ops = {
-+    .read = stm32f4xx_exti_read,
-+    .write = stm32f4xx_exti_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static void stm32f4xx_exti_init(Object *obj)
-+{
-+    STM32F4xxExtiState *s = STM32F4XX_EXTI(obj);
-+    int i;
-+
-+    for (i = 0; i < NUM_INTERRUPT_OUT_LINES; i++) {
-+        sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq[i]);
-+    }
-+
-+    memory_region_init_io(&s->mmio, obj, &stm32f4xx_exti_ops, s,
-+                          TYPE_STM32F4XX_EXTI, 0x400);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-+
-+    qdev_init_gpio_in(DEVICE(obj), stm32f4xx_exti_set_irq,
-+                      NUM_GPIO_EVENT_IN_LINES);
-+}
-+
-+static const VMStateDescription vmstate_stm32f4xx_exti = {
-+    .name = TYPE_STM32F4XX_EXTI,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(exti_imr, STM32F4xxExtiState),
-+        VMSTATE_UINT32(exti_emr, STM32F4xxExtiState),
-+        VMSTATE_UINT32(exti_rtsr, STM32F4xxExtiState),
-+        VMSTATE_UINT32(exti_ftsr, STM32F4xxExtiState),
-+        VMSTATE_UINT32(exti_swier, STM32F4xxExtiState),
-+        VMSTATE_UINT32(exti_pr, STM32F4xxExtiState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void stm32f4xx_exti_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = stm32f4xx_exti_reset;
-+    dc->vmsd = &vmstate_stm32f4xx_exti;
-+}
-+
-+static const TypeInfo stm32f4xx_exti_info = {
-+    .name          = TYPE_STM32F4XX_EXTI,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(STM32F4xxExtiState),
-+    .instance_init = stm32f4xx_exti_init,
-+    .class_init    = stm32f4xx_exti_class_init,
-+};
-+
-+static void stm32f4xx_exti_register_types(void)
-+{
-+    type_register_static(&stm32f4xx_exti_info);
-+}
-+
-+type_init(stm32f4xx_exti_register_types)
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 02327562bc..91a3794d68 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -90,6 +90,11 @@ stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
- stm32f4xx_syscfg_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
- stm32f4xx_syscfg_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
- 
-+# stm32f4xx_exti
-+stm32f4xx_exti_set_irq(int irq, int leve) "Set EXTI: %d to %d"
-+stm32f4xx_exti_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
-+stm32f4xx_exti_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
-+
- # tz-mpc.c
- tz_mpc_reg_read(uint32_t offset, uint64_t data, unsigned size) "TZ MPC regs read: offset 0x%x data 0x%" PRIx64 " size %u"
- tz_mpc_reg_write(uint32_t offset, uint64_t data, unsigned size) "TZ MPC regs write: offset 0x%x data 0x%" PRIx64 " size %u"
-diff --git a/include/hw/misc/stm32f4xx_exti.h b/include/hw/misc/stm32f4xx_exti.h
-new file mode 100644
-index 0000000000..707036a41b
---- /dev/null
-+++ b/include/hw/misc/stm32f4xx_exti.h
-@@ -0,0 +1,60 @@
-+/*
-+ * STM32F4XX EXTI
-+ *
-+ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#ifndef HW_STM_EXTI_H
-+#define HW_STM_EXTI_H
-+
-+#include "hw/sysbus.h"
-+#include "hw/hw.h"
-+
-+#define EXTI_IMR   0x00
-+#define EXTI_EMR   0x04
-+#define EXTI_RTSR  0x08
-+#define EXTI_FTSR  0x0C
-+#define EXTI_SWIER 0x10
-+#define EXTI_PR    0x14
-+
-+#define TYPE_STM32F4XX_EXTI "stm32f4xx-exti"
-+#define STM32F4XX_EXTI(obj) \
-+    OBJECT_CHECK(STM32F4xxExtiState, (obj), TYPE_STM32F4XX_EXTI)
-+
-+#define NUM_GPIO_EVENT_IN_LINES 16
-+#define NUM_INTERRUPT_OUT_LINES 16
-+
-+typedef struct {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion mmio;
-+
-+    uint32_t exti_imr;
-+    uint32_t exti_emr;
-+    uint32_t exti_rtsr;
-+    uint32_t exti_ftsr;
-+    uint32_t exti_swier;
-+    uint32_t exti_pr;
-+
-+    qemu_irq irq[NUM_INTERRUPT_OUT_LINES];
-+} STM32F4xxExtiState;
-+
-+#endif
++DEFINE_MACHINE("netduinoplus2", netduinoplus2_machine_init)
 -- 
 2.24.0
 

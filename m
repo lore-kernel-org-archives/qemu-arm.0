@@ -1,181 +1,144 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2317155lff;
-        Sat, 14 Dec 2019 07:58:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzg5LW34mzLDRbS3jNNpHpH1XkzEQHMBv4qYglWvazQBjz3MAVpRSSwfKTyWifdLmLw3TcH
-X-Received: by 2002:a9d:7d9a:: with SMTP id j26mr22302134otn.283.1576339103303;
-        Sat, 14 Dec 2019 07:58:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576339103; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2346557lff;
+        Sat, 14 Dec 2019 08:29:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwLQAmZv6BX5hIdVCmKVgWMjvT1lHwN9dr8EbvnKzRfMmhcSr9VZt99jxHSwLsB/61Dz+P1
+X-Received: by 2002:a9d:578a:: with SMTP id q10mr20547924oth.215.1576340945367;
+        Sat, 14 Dec 2019 08:29:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576340945; cv=none;
         d=google.com; s=arc-20160816;
-        b=TS515gVigAlNeK97uxGbyaIK++UVi/JRGrYgZf+nIOxy35AoHj4VMJzWY4KZ0Rw9FF
-         bfq5UpNbpouhI+L8XbqIYZffWEbsVPKn0qivIB9i6tZ5siHaahrdNTJiHEfmpl94Q4YN
-         2FGNf1EgVCOdD3ekQ/xehPQdG9jtXIcVu1qnoFq9LuC+6e1APXVRwQ2/D/nPMyzjratz
-         488BMYCoovNaS1VDLXXlbIjaUBtXyeuKMmmxttdk2TC+NjP5IQ7OMGyRaP+6VwIHPWr8
-         c9KqhVJI4xqNxB6UOLIj7o6f7Pyy7uq24db3ICsgWWxonMl6K2Vx3TwwtygEdm6VdP6p
-         QGaw==
+        b=a0i3dZyKd9f7ME7OboKi64Lil9+ME8YLYEtnyQLMsN5VGXrK5fQzBZEnOqrHEaOCOO
+         AG9hnCJN6L3uVOZZYAt9Y0l8jmVKJPXx4Vuah5leialLwb+9Bw/cgnJOKm/41PB9zFDB
+         q00cV7h3xAkIu380FXULDJv0rqobL9WPzZW6lFO93IwIs7ez8RCI5HZrscIy0lhnC2wK
+         J4t04la7+1m7hoDQrSq4umwL7IecBWxCHxExDqDL4oWYD0rdzBGQgboLdwqrkil+3Ec6
+         Q51snfWX11c6xbdUxavmBRnWYFni/A95beCevL9el7plzOf7g2QkALrsTCvfptq6i5LW
+         tENg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
+        h=list-id:precedence:sender:content-transfer-encoding:cc:to:subject
+         :message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=cFyYhSJaR8h39Rbqagf85ifWXxR+w0L7k4hKSrlfago=;
-        b=tF6u+Nnsqsep2lzUovUe4ErucVWaktRIKsECrXLcpnT8TdMpEGO5eNWzQ3V/Dg1Diq
-         6lNazZx2xw7huiKcDlYBASRJDxZAB2UTBw79jzRC7dZp9Z+2Li7PUvPedisRyfegsRLI
-         jOJtVPkR2QHQVJJ6qzLCbelfe9O5FiTkFINvLg1myPf9Cbc4josgWSoIorFODuqlWBQi
-         hFxNNL3TelIUGY7Y1Qh6YDEFhEUr6/EHpAlhCayBliM+72rjSGs4gj9sJj43E8SbXdhI
-         +W8GVu/yPHZZU4dkr4ZA7V8/zGDhzKu4HGoiZZO8rGtdfKJwelk2C+qgO39sFDaKJlgY
-         f7GA==
+        bh=p9TiU/p3iswBYZrdHpdDNv4k35V7tGo3wIsIIqH6Ut8=;
+        b=ucyxHzaNN7xDK5/yeudAiUy659y29J71dm8PwlwAaSl/U8ev1kU7WoNinY1VSLZk5o
+         gF0y7jgxjGLMgrUq529v4EWi0dFqrmuZvEVxZYxL7MkKqIlTz/7unCFRn7PCl66KNZs+
+         UEQh92Sqa+uFgnPL5wRjR/LRt15VNiw2WV969ApQiRYIKSspkC+KBVtTaBG/YfFXWlil
+         HZoDouxq29vCQftSwIfqacrJiqWNH7O8xxKnuiUGNZMrIgUGBckOxiGOr3qJTPP5O13g
+         xj2GCT+MTdpIJ0sUnzIo8XleanmIJQtWvHJnboFrdaQ4KeSE7sellUeJBoo7BsQUmyx1
+         BlkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G9YbJwNp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UmX267PJ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a205si7330504oii.95.2019.12.14.07.58.23;
-        Sat, 14 Dec 2019 07:58:23 -0800 (PST)
+        by mx.google.com with ESMTP id a22si5898957otr.143.2019.12.14.08.29.05;
+        Sat, 14 Dec 2019 08:29:05 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G9YbJwNp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UmX267PJ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726890AbfLNP6W (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Sat, 14 Dec 2019 10:58:22 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:28290 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1726814AbfLNP6W (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Sat, 14 Dec 2019 10:58:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1576339101;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=cFyYhSJaR8h39Rbqagf85ifWXxR+w0L7k4hKSrlfago=;
-        b=G9YbJwNp/9mPd05ITp4rG3PhAx2NjKBAUypWRGHQS1KiMTAhEo7lFaLCXGm1eOkTGdZ5kx
-        iIUTmuCFGVqvc3BKeAl0MPRDvc2BakTrJMSV7UwdY2bJSTZ0CyXEtOgxwrwoS+3tFCoqwB
-        9W4mLl51Ued0l5a8KQCaQfC6WaQSqL8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-205-GKZmRrbXNv-VBjqVcGU-Mg-1; Sat, 14 Dec 2019 10:58:20 -0500
-X-MC-Unique: GKZmRrbXNv-VBjqVcGU-Mg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3AAA1801E74;
-        Sat, 14 Dec 2019 15:58:18 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-205-147.brq.redhat.com [10.40.205.147])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id E18B066A1A;
-        Sat, 14 Dec 2019 15:58:05 +0000 (UTC)
-From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To:     qemu-devel@nongnu.org
-Cc:     Peter Maydell <peter.maydell@linaro.org>,
+        id S1726333AbfLNQ2V (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Sat, 14 Dec 2019 11:28:21 -0500
+Received: from mail-ot1-f67.google.com ([209.85.210.67]:45769 "EHLO
+        mail-ot1-f67.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1725884AbfLNQ2V (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 14 Dec 2019 11:28:21 -0500
+Received: by mail-ot1-f67.google.com with SMTP id 59so3110753otp.12
+        for <kvm@vger.kernel.org>; Sat, 14 Dec 2019 08:28:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=p9TiU/p3iswBYZrdHpdDNv4k35V7tGo3wIsIIqH6Ut8=;
+        b=UmX267PJ+IKeDMSTN0V3PZv2FHiub2P2r+RC6k05+7qBd3TWpLmfwXUwrcObbEuAKb
+         qdw9Bqt7kVS39SJgc6/Ht5EdxnlQ9tlvmCURQLW/TS56voA0jqE9+W1zvBYee5PcWgl8
+         C7YbNPvlcrhW8OhFqvBkqRAAwGJuukZAnU8gbwUDMd1HGvciBzCgd1gg9TgaHVLxHaUP
+         zo915ceyznORJxfbYwib2hxkFL0GYEi2xcMJdiNcSP34NePaydSXsxE9hgCF9oMkCiBn
+         hmC2++LOmgEC++diZ7hJAV0piPgpM6ujTg9HuohGHqdGPz+sBcCW3fe0gJJK2Z7ipFAM
+         8Vxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=p9TiU/p3iswBYZrdHpdDNv4k35V7tGo3wIsIIqH6Ut8=;
+        b=GnX7ADnEWyWzCY6y2DZaDDhqfHrUl5Qvc/i+FEhHiwv5HnQUPK6xLR+rzyAQKm6YN6
+         hS/r/cAJaQzUNKYU2popl7Iq2Xe6H+8JkcVXwMCoWgUZPo3gI27ojeQ30PafViW8UQ1H
+         lF0x0WLuVyFGkGM7F4lOpdeVOtLEk31Qn2pKwWQ7Q2URpR2Br9WKgtG+B+qVZBrXfLjk
+         BK+fJM7o+PZZiNTGLYYwFts6sUPfA/qCmY/hndxyO95uL0/1H1meq+loABYxJ5B88rxn
+         3LT3HoYF1G2u0kxCmHcvc7KgOBgzXDp0xuZd7a9FpeMF0nEpops/6Dn6N4Ie/Arpa8YY
+         +ZEQ==
+X-Gm-Message-State: APjAAAVViNEei8QhkBH1H4HLwLevvq5A+3gmWnmaeD3UdOBOIWL9btRa
+        MEbns3EpHY7PxoxdpAS3VWZiSzo4Xp5tTcDh1uG0Uw==
+X-Received: by 2002:a9d:4d8a:: with SMTP id u10mr21854614otk.232.1576340900088;
+ Sat, 14 Dec 2019 08:28:20 -0800 (PST)
+MIME-Version: 1.0
+References: <20191214155614.19004-1-philmd@redhat.com>
+In-Reply-To: <20191214155614.19004-1-philmd@redhat.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Sat, 14 Dec 2019 16:28:08 +0000
+Message-ID: <CAFEAcA_QZtU9X4fxZk2oWAkN-zxXdQZejrSKZbDxPKLMwdFWgw@mail.gmail.com>
+Subject: Re: [PATCH 0/8] Simplify memory_region_add_subregion_overlap(..., priority=0)
+To:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc:     QEMU Developers <qemu-devel@nongnu.org>,
         Andrew Baumann <Andrew.Baumann@microsoft.com>,
-        Aurelien Jarno <aurelien@aurel32.net>, kvm@vger.kernel.org,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        kvm-devel <kvm@vger.kernel.org>,
         Alex Williamson <alex.williamson@redhat.com>,
         Aleksandar Markovic <amarkovic@wavecomp.com>,
-        Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+        Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>,
         Marcelo Tosatti <mtosatti@redhat.com>,
         Alistair Francis <alistair@alistair23.me>,
         "Michael S. Tsirkin" <mst@redhat.com>,
         Eduardo Habkost <ehabkost@redhat.com>,
         Richard Henderson <rth@twiddle.net>,
         Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
         Paul Burton <pburton@wavecomp.com>,
         Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
         "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 8/8] target/i386/cpu: Use 'mr' for MemoryRegion variables
-Date:   Sat, 14 Dec 2019 16:56:14 +0100
-Message-Id: <20191214155614.19004-9-philmd@redhat.com>
-In-Reply-To: <20191214155614.19004-1-philmd@redhat.com>
-References: <20191214155614.19004-1-philmd@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: FRwfwqv16hV3
+X-TUID: UVVJ5tWezjj7
 
-The codebase use 'as' in variable names for AddressSpace objects,
-and 'mr' for MemoryRegion objects. Since these variables are
-MemoryRegion objects, rename them as 'mr' to avoid confusion with
-AddressSpace objects.
+On Sat, 14 Dec 2019 at 15:56, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> Hi,
+>
+> In this series we use coccinelle to replace:
+> - memory_region_add_subregion_overlap(..., priority=3D0)
+> + memory_region_add_subregion(...)
+>
+> Rationale is the code is easier to read, and reviewers don't
+> have to worry about overlapping because it isn't used.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- target/i386/cpu.h |  2 +-
- target/i386/cpu.c | 18 +++++++++---------
- 2 files changed, 10 insertions(+), 10 deletions(-)
+So our implementation of these two functions makes them
+have the same behaviour, but the documentation comments
+in memory.h describe them as different: a subregion added
+with memory_region_add_subregion() is not supposed to
+overlap any other subregion unless that other subregion
+was explicitly marked as overlapping. My intention with the
+API design here was that using the _overlap() version is
+a statement of intent -- this region is *expected* to be
+overlapping with some other regions, which hopefully
+have a priority set so they go at the right order wrt this one.
+Use of the non-overlap function says "I don't expect this
+to overlap". (It doesn't actually assert that it doesn't
+overlap because we have some legacy uses, notably
+in the x86 PC machines, which do overlap without using
+the right function, which we've never tried to tidy up.)
 
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index cde2a16b94..1e5ded6e84 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -1713,7 +1713,7 @@ struct X86CPU {
-     /* in order to simplify APIC support, we leave this pointer to the
-        user */
-     struct DeviceState *apic_state;
--    struct MemoryRegion *cpu_as_root, *cpu_as_mem, *smram;
-+    MemoryRegion *cpu_mr_root, *cpu_mr_mem, *smram;
-     Notifier machine_done;
-=20
-     struct kvm_msrs *kvm_msr_buf;
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 6131c62f9d..b5d22740b8 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -5983,7 +5983,7 @@ static void x86_cpu_machine_done(Notifier *n, void =
-*unused)
-         memory_region_init_alias(cpu->smram, OBJECT(cpu), "smram",
-                                  smram, 0, 1ull << 32);
-         memory_region_set_enabled(cpu->smram, true);
--        memory_region_add_subregion_overlap(cpu->cpu_as_root, 0, cpu->sm=
-ram, 1);
-+        memory_region_add_subregion_overlap(cpu->cpu_mr_root, 0, cpu->sm=
-ram, 1);
-     }
- }
- #else
-@@ -6471,24 +6471,24 @@ static void x86_cpu_realizefn(DeviceState *dev, E=
-rror **errp)
-=20
- #ifndef CONFIG_USER_ONLY
-     if (tcg_enabled()) {
--        cpu->cpu_as_mem =3D g_new(MemoryRegion, 1);
--        cpu->cpu_as_root =3D g_new(MemoryRegion, 1);
-+        cpu->cpu_mr_mem =3D g_new(MemoryRegion, 1);
-+        cpu->cpu_mr_root =3D g_new(MemoryRegion, 1);
-=20
-         /* Outer container... */
--        memory_region_init(cpu->cpu_as_root, OBJECT(cpu), "memory", ~0ul=
-l);
--        memory_region_set_enabled(cpu->cpu_as_root, true);
-+        memory_region_init(cpu->cpu_mr_root, OBJECT(cpu), "memory", ~0ul=
-l);
-+        memory_region_set_enabled(cpu->cpu_mr_root, true);
-=20
-         /* ... with two regions inside: normal system memory with low
-          * priority, and...
-          */
--        memory_region_init_alias(cpu->cpu_as_mem, OBJECT(cpu), "memory",
-+        memory_region_init_alias(cpu->cpu_mr_mem, OBJECT(cpu), "memory",
-                                  get_system_memory(), 0, ~0ull);
--        memory_region_add_subregion(cpu->cpu_as_root, 0, cpu->cpu_as_mem=
-);
--        memory_region_set_enabled(cpu->cpu_as_mem, true);
-+        memory_region_add_subregion(cpu->cpu_mr_root, 0, cpu->cpu_mr_mem=
-);
-+        memory_region_set_enabled(cpu->cpu_mr_mem, true);
-=20
-         cs->num_ases =3D 2;
-         cpu_address_space_init(cs, 0, "cpu-memory", cs->memory);
--        cpu_address_space_init(cs, 1, "cpu-smm", cpu->cpu_as_root);
-+        cpu_address_space_init(cs, 1, "cpu-smm", cpu->cpu_mr_root);
-=20
-         /* ... SMRAM with higher priority, linked from /machine/smram.  =
-*/
-         cpu->machine_done.notify =3D x86_cpu_machine_done;
---=20
-2.21.0
+We used to have some #if-ed out code in memory.c which
+was able to detect incorrect overlap, but it got removed
+in commit b613597819587. I thought then and still do
+that rather than removing code and API distinctions that
+allow us to tell if the board code has done something
+wrong (unintentional overlap, especially unintentional
+overlap at the same priority value) it would be better to
+fix the board bugs so we could enable the warnings/asserts...
+
+thanks
+-- PMM

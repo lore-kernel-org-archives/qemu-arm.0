@@ -1,101 +1,123 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2594109lff;
-        Sat, 14 Dec 2019 13:02:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwjfySt625YXgsxebGToBX4kozl+gre3j/KoDcsYciLJPSMQIrtXdErnZH/OICO6bobyP+6
-X-Received: by 2002:a37:6706:: with SMTP id b6mr19085103qkc.461.1576357361292;
-        Sat, 14 Dec 2019 13:02:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576357361; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2608648lff;
+        Sat, 14 Dec 2019 13:16:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzASvSb+v8/k3y81sHNMuUchRtI6VacDAqInzywp9IyEs+LLruwSln/UPX6JjU/cjRLGwii
+X-Received: by 2002:a05:6830:1e9a:: with SMTP id n26mr21111206otr.99.1576358201398;
+        Sat, 14 Dec 2019 13:16:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576358201; cv=none;
         d=google.com; s=arc-20160816;
-        b=KVBjgcYkk1q0Fsz1x79aGphH1ceQ53EOsQ82q24/MplBRhVKTqkn9XuC91l1a1EjWc
-         z3/vSS8VeHnRT4EONtZ7OZHY3w5pbpqJxpzX8VO2ypJh87TCnKHLRcs6Rh4tVucfauNR
-         kY5rcqtlhMOEiR9kcpRqyVz3o7ymYpGvYpRGT9dUoRnNxijAAJchcdbbCf8+PdQv2gOz
-         tTBDOFWz4dDCZX6X0kHtr87pBNIbdCqIMAXkFjctQ6/6DjSfYJqrK1I36sVKiUBKniM/
-         DooXHWKy0jWJcmJMEdrfL6QGGbVOcL4cRpLsA6BMLwZyza9hWpw/84ONX8JrEbP5qZfd
-         NXsA==
+        b=foVkIrAfleyEVjsiOe41yqiHR2VltPMfu/k9r1OuZKXDVYL4Jtq8b5Vz06xL6tPS4R
+         IQj4+3LvCK54U4wR4BeW7cBKgRFa7yxBV1l6Jmjl9NncaI15gawKcSMYENvwVgj58BDf
+         oFIxxfqAR+w0LHRCMtvO+vzbqx8NT5DLpxM96Fun15jblCNx3ti2HJqKcGIJexqILwIp
+         RnjY4N9vRj8miR5QLrURhGoLPwgfEQyme2ewnOJLUOJGOReLx33l7HoVFShT+kSVEIZA
+         59paZ7LntYdNd7nAFtXksIYE58UmPaqvWZLkGnG5MJXHHB0I+Su9s/YphahIDKpEJF0Q
+         DUgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=sXWObjGl6OXDF8vN7Nqi0HgJ+038kWVON6shVGrmC1c=;
-        b=pFBFJCBNhqau3oMCDGn/XDTYY6NKLWO6qYqq3HW9N2W9ISBDh/wpM498euZnGCEmRV
-         5cQMt4svrCh8KOqfTaus7985RZHUfaY+0dD1swTJ6XetOlTTuQCIsG3rskpeXYvmjbn5
-         bOMQCXEZHwiJwVa29LXCk/YAIHtAu4b0J/jDEGioSdcMwqoUnICgM3f2P4XOQFTdgvUx
-         ceUk/gC+HAVQUVssUvCFb9upeldLjhTC6OVge3cfycf/C3Z6KdAXahEHAHizFqaTlSmf
-         csKUyLyEhuqE5krHUTgUvmFbvACcTDgwO74VZhILexB/xbl0oQ5TmtieWVlIwWL6HFRf
-         x2YQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=joKcrZqse/2rI2WBzidhVM6HneRljCD0MWlkHrQCOPM=;
+        b=031qyzWZJfM3kueM9iO/lJKObAJZ2HHhJBia8OIuzlk05/W9yD/R+uYbscOHZNiCqV
+         rGE+4cWGk6vuFR56/Psjkia50llAMETQRah8kFUpvgij7sxUAp23b6JEN2XPalbLEB3a
+         /eSHeQD6EAw/rTX+H1BPSZYOXjRnFmDS9BB1F95xt2W0aFOkBKb8V8MzzEuMDRKFPovM
+         NARmFHtL7uxqnEL/apiQgJioQUcLuNhfpbEd2t0amc55zE5rvGIoQ46KQ4N1U6oYErus
+         NZKLlWBVIkFbTVzYK67mEd+4IQ/0qeADmqXF9Qk/8JdmmP/pfvTqZpEV+LOVYvBpEPDF
+         Pg4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CkInd3WL;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JpYlYY6G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n14si6681144qvf.92.2019.12.14.13.02.41
+        by mx.google.com with ESMTPS id s22si8036486oij.35.2019.12.14.13.16.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Dec 2019 13:02:41 -0800 (PST)
+        Sat, 14 Dec 2019 13:16:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CkInd3WL;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JpYlYY6G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:32910 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igEYi-00033Z-Hi
-	for alex.bennee@linaro.org; Sat, 14 Dec 2019 16:02:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52850)
+	id 1igEmG-0001jT-7O
+	for alex.bennee@linaro.org; Sat, 14 Dec 2019 16:16:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45568)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1igEXX-0001v6-9x
- for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:28 -0500
+ (envelope-from <philmd@redhat.com>) id 1igEXA-0001T3-2e
+ for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1igEXV-0005jn-9s
- for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:27 -0500
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:35622)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1igEXP-0005Qs-Rr; Sat, 14 Dec 2019 16:01:20 -0500
-Received: by mail-il1-x144.google.com with SMTP id g12so2391745ild.2;
- Sat, 14 Dec 2019 13:01:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sXWObjGl6OXDF8vN7Nqi0HgJ+038kWVON6shVGrmC1c=;
- b=CkInd3WLl4a51MtgtS6zQTWZ7yMlPbWRXrd3iJUTv5NfUuPuapCJ4p0fgebx77p6Yh
- L9c1mEhLw0aMf5ay7e7ukJghXAaiDmBoYW5XsAYiJoLQM3HimU/MxtkVVPyzP0ZFczHu
- wSaXXGvUeKjpfuua7BHoB8Q86l/E7AgqJ51SwAMlX7AkmDn7Xevsz6UohOWxtU+OMbVf
- kkesjzw3qYmczaLkLsqX2B6guPS1LRuRu0wHe35yZrFMUJ4vK2OfBOABj6FXxuZwFIgP
- 6+Bex16D0CGOnsiB9+BOp6wz6cnyywlRzg7o1eSdrXW8S0uslujVq+tfR1dVkpQSvzo/
- zzqg==
+ (envelope-from <philmd@redhat.com>) id 1igEX8-0004dW-R1
+ for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:03 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:40287
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1igEX8-0004c0-Ma
+ for qemu-arm@nongnu.org; Sat, 14 Dec 2019 16:01:02 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1576357262;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=joKcrZqse/2rI2WBzidhVM6HneRljCD0MWlkHrQCOPM=;
+ b=JpYlYY6GRr4O0aBKfZh5xMh4bbcZqDw4STW6G34dRxb9pxZk+AL18Fs6ADiuyMhTvTGksy
+ K/Vsyq+z6LG8DVY85o5/g4tYqvuFbK5mj0W3uF+riFG4gYL8JC5SjddIn9prLEzMBP/WV1
+ qWPSghjMVN8rpWnX3zzKVMY8VZNjpCc=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-144-U4Ulz7HVPYCnwlkewFBVHQ-1; Sat, 14 Dec 2019 08:59:54 -0500
+Received: by mail-wr1-f69.google.com with SMTP id 90so1014979wrq.6
+ for <qemu-arm@nongnu.org>; Sat, 14 Dec 2019 05:59:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=sXWObjGl6OXDF8vN7Nqi0HgJ+038kWVON6shVGrmC1c=;
- b=CL7ZYI4i/uYP5DostDVPb44Vv1dziospi2Q/tM9DOoPB65GTfn5+mVpLIrHmQ/Pcwu
- HZzsHurXWXNpgbPfxmNUKCekHQbaJrKE2GaMLd/r7BcQz2m3kjSyDREHgcKzh+D5ndZe
- AyGh0z3Tn3REIDWYhR7hjw3MsyZvtYIgwxQoLAyjjMrlwNefAOObPIHKm6ykHA8TVfAM
- 8I6XUprMj7tUaLucrAoeBrv41we7XjDV8pXxyPxP1SBPpDFPIv3ZwvZuXBJoRaOIebT+
- jZN3nGDJi8fTM1m3pFYhqpccMgUw9G19P/ibse1BBDzcXpvwILwyKbZub5une/wBy7NH
- m/Pw==
-X-Gm-Message-State: APjAAAW9v56kIoO1tnfumdUwytTqf3Y8RH/c8mESC5OuSrVFnvcyp8Be
- FfvQQgGlhkSUMP2dZTAy3/7BK6NohklDVfHbVpR6xQ==
-X-Received: by 2002:a92:d203:: with SMTP id y3mr5682158ily.28.1576355542949;
- Sat, 14 Dec 2019 12:32:22 -0800 (PST)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=8ablovXuvhNSxsWx83+/G5FRg33eclyz++hORIZtpqw=;
+ b=ZtMtuBaWAyLYjUelDxEqkbNC7Fn4qb7rys/rt8tmEuDTn+W5q6As4IABKmOyx43wVd
+ S4UGqzDYs5GRr8s3k+goi1c5dLf1z4BrcVn0jcOPLb3uLPXgVvMC/VOrXciYGEU+xLxd
+ pJsqfJ4eKxLepQPsye6/kdhLU6bYrICjFMr1OLKXyPq+0pNQjovOs7QJTFqFoAuFs3gH
+ nnGh579qU0GFBs7NfG8jganFB3kBlzsx04eco3ct5iKr6ShCzAXLEsvh2nU6ytKWZbPA
+ Ajyssrv576birJjXzZ1QNMCoWSrdkz0uH4m3oKIcU0vPTuK3U/VGDF18cmaFeb0qT7kf
+ +d6Q==
+X-Gm-Message-State: APjAAAUibtDVP6LZs8YueFMnFRxKiEmyluvS+46HpSmfVUVTxTqMDf5r
+ 7QuHm4TSyi3+x/m1tf7aGhwRkYsmjgTuBCwmsldVgcTkPys8RV9/70knklxj6L7Gkh+yTYblsU7
+ i/qMOrTjQX8Ia
+X-Received: by 2002:a05:600c:54b:: with SMTP id
+ k11mr19359951wmc.63.1576331993073; 
+ Sat, 14 Dec 2019 05:59:53 -0800 (PST)
+X-Received: by 2002:a05:600c:54b:: with SMTP id
+ k11mr19359939wmc.63.1576331992865; 
+ Sat, 14 Dec 2019 05:59:52 -0800 (PST)
+Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.34])
+ by smtp.gmail.com with ESMTPSA id u10sm13781029wmd.1.2019.12.14.05.59.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 14 Dec 2019 05:59:52 -0800 (PST)
+Subject: Re: [PATCH 09/10] arm: allwinner-h3: add SD/MMC host controller
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
 References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
  <20191202210947.3603-10-nieklinnenbank@gmail.com>
  <CAPan3WrRKnu5vFz=JvrnD8tewUk7SdwFVYx4xVL353AnfPDgHQ@mail.gmail.com>
  <6bee15d7-7d80-0709-ac90-ef2052b39329@redhat.com>
  <CAPan3Woq_EJAE6s-N5dAApAgzexGr4M-OtFkiHuMN_Xp=8_bTQ@mail.gmail.com>
- <457e0620-c11e-8e5a-df1c-93f95f52eda8@redhat.com>
-In-Reply-To: <457e0620-c11e-8e5a-df1c-93f95f52eda8@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sat, 14 Dec 2019 21:32:11 +0100
-Message-ID: <CAPan3Won=aRx29SBJxvGTfRTUqL_R4txS4VF2hQ6eZ4QRSGxWw@mail.gmail.com>
-Subject: Re: [PATCH 09/10] arm: allwinner-h3: add SD/MMC host controller
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000002d63fc0599afe013"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::144
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <457e0620-c11e-8e5a-df1c-93f95f52eda8@redhat.com>
+Date: Sat, 14 Dec 2019 14:59:51 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <CAPan3Woq_EJAE6s-N5dAApAgzexGr4M-OtFkiHuMN_Xp=8_bTQ@mail.gmail.com>
+Content-Language: en-US
+X-MC-Unique: U4Ulz7HVPYCnwlkewFBVHQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,257 +134,93 @@ Cc: Beniamino Galvani <b.galvani@gmail.com>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ae2sJ24JZzub
+X-TUID: TBKEEQ/0VsOn
 
---0000000000002d63fc0599afe013
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 12/13/19 10:00 PM, Niek Linnenbank wrote:
+> On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9=20
+> <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
+>=20
+>     Hi Niek,
+>=20
+>     On 12/11/19 11:34 PM, Niek Linnenbank wrote:
+>      > Ping!
+>      >
+>      > Anyone would like to comment on this driver?
+>      >
+>      > I finished the rework on all previous comments in this series.
+>      >
+>      > Currently debugging the hflags error reported by Philippe.
+>      > After that, I'm ready to send out v2 of these patches.
+>      >
+>      > Regards,
+>      > Niek
+>      >
+>      > On Mon, Dec 2, 2019 at 10:10 PM Niek Linnenbank
+>      > <nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>
+>     <mailto:nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>>>
+>     wrote:
+>      >
+>      >=C2=A0 =C2=A0 =C2=A0The Allwinner H3 System on Chip contains an int=
+egrated storage
+>      >=C2=A0 =C2=A0 =C2=A0controller for Secure Digital (SD) and Multi Me=
+dia Card (MMC)
+>      >=C2=A0 =C2=A0 =C2=A0interfaces. This commit adds support for the Al=
+lwinner H3
+>      >=C2=A0 =C2=A0 =C2=A0SD/MMC storage controller with the following em=
+ulated features:
+>      >
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* DMA transfers
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* Direct FIFO I/O
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* Short/Long format command responses
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* Auto-Stop command (CMD12)
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0* Insert & remove card detection
+>      >
+>      >=C2=A0 =C2=A0 =C2=A0Signed-off-by: Niek Linnenbank <nieklinnenbank@=
+gmail.com
+>     <mailto:nieklinnenbank@gmail.com>
+>      >=C2=A0 =C2=A0 =C2=A0<mailto:nieklinnenbank@gmail.com
+>     <mailto:nieklinnenbank@gmail.com>>>
+>      >=C2=A0 =C2=A0 =C2=A0---
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 20 +
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 17 +
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/allwinner-h3-sdhost.c=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0| 791
+>     ++++++++++++++++++++++++++++
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/trace-events=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A07 +
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/arm/allwinner-h3.h=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A02 +
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/sd/allwinner-h3-sdhost.h |=C2=
+=A0 73 +++
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A07 files changed, 911 insertions(+)
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 hw/sd/allwinner-h3-sd=
+host.c
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 include/hw/sd/allwinn=
+er-h3-sdhost.h
+[...]
+> Thanks again for all of your helpful comments Philippe!
+> I've started to rework the patch.
+>=20
+> One question about adding tags in the commit message: should I
+> already add 'Reviewed-by: ' when I re-send v2 of this patch? Or should
+> that be added after you have seen the v2 changes?
 
-On Sat, Dec 14, 2019 at 2:59 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com>
-wrote:
+You shouldn't add the Reviewed-by tag until explicitly given by the=20
+reviewer. If the changes are trivial, it is easy to conditionally give=20
+the tag such "If ... is done: R-b", "With ... fixed: R-b".
 
-> On 12/13/19 10:00 PM, Niek Linnenbank wrote:
-> > On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9
-> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
-> >
-> >     Hi Niek,
-> >
-> >     On 12/11/19 11:34 PM, Niek Linnenbank wrote:
-> >      > Ping!
-> >      >
-> >      > Anyone would like to comment on this driver?
-> >      >
-> >      > I finished the rework on all previous comments in this series.
-> >      >
-> >      > Currently debugging the hflags error reported by Philippe.
-> >      > After that, I'm ready to send out v2 of these patches.
-> >      >
-> >      > Regards,
-> >      > Niek
-> >      >
-> >      > On Mon, Dec 2, 2019 at 10:10 PM Niek Linnenbank
-> >      > <nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>
-> >     <mailto:nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>>=
->
-> >     wrote:
-> >      >
-> >      >     The Allwinner H3 System on Chip contains an integrated stora=
-ge
-> >      >     controller for Secure Digital (SD) and Multi Media Card (MMC=
-)
-> >      >     interfaces. This commit adds support for the Allwinner H3
-> >      >     SD/MMC storage controller with the following emulated
-> features:
-> >      >
-> >      >       * DMA transfers
-> >      >       * Direct FIFO I/O
-> >      >       * Short/Long format command responses
-> >      >       * Auto-Stop command (CMD12)
-> >      >       * Insert & remove card detection
-> >      >
-> >      >     Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com
-> >     <mailto:nieklinnenbank@gmail.com>
-> >      >     <mailto:nieklinnenbank@gmail.com
-> >     <mailto:nieklinnenbank@gmail.com>>>
-> >      >     ---
-> >      >       hw/arm/allwinner-h3.c               |  20 +
-> >      >       hw/arm/orangepi.c                   |  17 +
-> >      >       hw/sd/Makefile.objs                 |   1 +
-> >      >       hw/sd/allwinner-h3-sdhost.c         | 791
-> >     ++++++++++++++++++++++++++++
-> >      >       hw/sd/trace-events                  |   7 +
-> >      >       include/hw/arm/allwinner-h3.h       |   2 +
-> >      >       include/hw/sd/allwinner-h3-sdhost.h |  73 +++
-> >      >       7 files changed, 911 insertions(+)
-> >      >       create mode 100644 hw/sd/allwinner-h3-sdhost.c
-> >      >       create mode 100644 include/hw/sd/allwinner-h3-sdhost.h
-> [...]
-> > Thanks again for all of your helpful comments Philippe!
-> > I've started to rework the patch.
-> >
-> > One question about adding tags in the commit message: should I
-> > already add 'Reviewed-by: ' when I re-send v2 of this patch? Or should
-> > that be added after you have seen the v2 changes?
->
-> You shouldn't add the Reviewed-by tag until explicitly given by the
-> reviewer. If the changes are trivial, it is easy to conditionally give
-> the tag such "If ... is done: R-b", "With ... fixed: R-b".
->
+Since this is your first contribution, I have been more careful. Also=20
+since your patch is already of very good quality, I'v been a bit picky=20
+regarding few details.
 
-OK, thanks for clarifying, I'll keep that in mind.
-
-
->
-> Since this is your first contribution, I have been more careful. Also
-> since your patch is already of very good quality, I'v been a bit picky
-> regarding few details.
->
-
-Sure, that makes sense indeed. And I very much appreciate your feedback
-Philippe,
-so please keep doing that, even about the small details ;-)
-
-
->
-> Since there are too many comments, so I prefer to fully review the v2 of
-> this patch again.
->
-> Yes, true indeed.
+Since there are too many comments, so I prefer to fully review the v2 of=20
+this patch again.
 
 Regards,
-Niek
 
+Phil.
 
-> Regards,
->
-> Phil.
->
->
-
---=20
-Niek Linnenbank
-
---0000000000002d63fc0599afe013
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Sat, Dec 14, 2019 at 2:59 PM Phili=
-ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
-at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">On 12/13/19 10:00 PM, Niek Linnenbank wrote:<br>
-&gt; On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9 <br>
-&gt; &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redh=
-at.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.com" target=3D"_blank=
-">philmd@redhat.com</a>&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Hi Niek,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 12/11/19 11:34 PM, Niek Linnenbank wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Ping!<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Anyone would like to comment on this driver?<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; I finished the rework on all previous comment=
-s in this series.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Currently debugging the hflags error reported=
- by Philippe.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; After that, I&#39;m ready to send out v2 of t=
-hese patches.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Regards,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Niek<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; On Mon, Dec 2, 2019 at 10:10 PM Niek Linnenba=
-nk<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; &lt;<a href=3D"mailto:nieklinnenbank@gmail.co=
-m" target=3D"_blank">nieklinnenbank@gmail.com</a> &lt;mailto:<a href=3D"mai=
-lto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a=
->&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
-om" target=3D"_blank">nieklinnenbank@gmail.com</a> &lt;mailto:<a href=3D"ma=
-ilto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</=
-a>&gt;&gt;&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0The Allwinner H3 System on=
- Chip contains an integrated storage<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0controller for Secure Digi=
-tal (SD) and Multi Media Card (MMC)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0interfaces. This commit ad=
-ds support for the Allwinner H3<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0SD/MMC storage controller =
-with the following emulated features:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* DMA transfers<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* Direct FIFO I/O<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* Short/Long format=
- command responses<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* Auto-Stop command=
- (CMD12)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* Insert &amp; remo=
-ve card detection<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0Signed-off-by: Niek Linnen=
-bank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_blank">niek=
-linnenbank@gmail.com</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
-om" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mail=
-to:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.c=
-om" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;&gt;&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0---<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/allwinner-h3=
-.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 20 +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/arm/orangepi.c=
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
-=A0 17 +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/Makefile.objs=
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=
-=A01 +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/allwinner-h3-=
-sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 791<br>
-&gt;=C2=A0 =C2=A0 =C2=A0++++++++++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/sd/trace-events=
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=
-=A07 +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/arm/allw=
-inner-h3.h=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A02 +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0include/hw/sd/allwi=
-nner-h3-sdhost.h |=C2=A0 73 +++<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A07 files changed, 91=
-1 insertions(+)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 =
-hw/sd/allwinner-h3-sdhost.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0create mode 100644 =
-include/hw/sd/allwinner-h3-sdhost.h<br>
-[...]<br>
-&gt; Thanks again for all of your helpful comments Philippe!<br>
-&gt; I&#39;ve started to rework the patch.<br>
-&gt; <br>
-&gt; One question about adding tags in the commit message: should I<br>
-&gt; already add &#39;Reviewed-by: &#39; when I re-send v2 of this patch? O=
-r should<br>
-&gt; that be added after you have seen the v2 changes?<br>
-<br>
-You shouldn&#39;t add the Reviewed-by tag until explicitly given by the <br=
->
-reviewer. If the changes are trivial, it is easy to conditionally give <br>
-the tag such &quot;If ... is done: R-b&quot;, &quot;With ... fixed: R-b&quo=
-t;.<br></blockquote><div><br></div><div>OK, thanks for clarifying, I&#39;ll=
- keep that in mind.<br></div><div>=C2=A0</div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex">
-<br>
-Since this is your first contribution, I have been more careful. Also <br>
-since your patch is already of very good quality, I&#39;v been a bit picky =
-<br>
-regarding few details.<br></blockquote><div>=C2=A0</div><div>Sure, that mak=
-es sense indeed. And I very much appreciate your feedback Philippe,</div><d=
-iv>so please keep doing that, even about the small details ;-)<br></div><di=
-v>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-Since there are too many comments, so I prefer to fully review the v2 of <b=
-r>
-this patch again.<br>
-<br></blockquote><div>Yes, true indeed.<br></div><div><br></div><div>Regard=
-s,</div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
-;padding-left:1ex">
-Regards,<br>
-<br>
-Phil.<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---0000000000002d63fc0599afe013--

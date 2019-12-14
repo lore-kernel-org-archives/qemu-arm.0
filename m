@@ -1,338 +1,140 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2017259lff;
-        Sat, 14 Dec 2019 02:46:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxDOTI2sQHNW1kpP2vYWgbVdpKNvCbkMfIn0A+H6WA16L21AR5ObCBz47zcdmCvKQyapMAn
-X-Received: by 2002:a05:620a:a5c:: with SMTP id j28mr17784125qka.218.1576320390195;
-        Sat, 14 Dec 2019 02:46:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576320390; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2315566lff;
+        Sat, 14 Dec 2019 07:56:38 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyNYlseI79fOUel7au/n+/lSP0U5MK1hq+fo/xNSbsJE89ndhPe8IXOPxdBioBm/79cL951
+X-Received: by 2002:a05:6830:594:: with SMTP id c20mr20472582oth.166.1576338998759;
+        Sat, 14 Dec 2019 07:56:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576338998; cv=none;
         d=google.com; s=arc-20160816;
-        b=deFX00UMNga7AhxNxDm8so3gMxLPl9CA6BjGj4mZ1qximPk+Nz3xp5ojxeQ4Z8kHzM
-         54hH5vEmyJ50SG/ncJ/I0/x6DZF1Ut/0eqHJEQi49NEbD4Le4J3y/qYlGCxiXJecEVhI
-         XkJaJ6891LPkjtYGNJDiMZuSun4jboQ8yKASXsMZa2ux8rF4UZCiu3nqml9j4F83FGTX
-         Vjal/aIsakTvlnPQQQ/nStT01655IZKRCB5vplrtJeYhS4Es9gN6j5yN+1mOiAp5cMWo
-         epHqeBBiIthgqe7KxcZlOwUttDdCCeJ2kin7yz8+yEpSRnPZ1iDOJwARX3pWwICgolAT
-         Mx6w==
+        b=fq6DqxXdL1YL8v6nD4mZpNhFEFexAiYL/BUciXRPEs3Iu7GDU0iQxBpIQQ0WD774MR
+         eG6dadTTWu28GF4lVsvTs/qw2j7lsMFoSbNA+53c1IEbwwB+kHCSk+ub9kMHRruQ9JZP
+         nFB/vYjr4NwRceF7Y6tEiK2HgtBnNxRotah6Aw1fudnw50/I8AXQAwPHIrjueRIODJby
+         HXmTA/MejcZz4cuB+yhkRHrmdbpc2rO4rz4IRgYFA6O6Ds4AVUF0RRgkdrMeSnQHJS1Z
+         alhPtp/dh/y7XPCNMqBCEhQes4q7npigfy1DAkT+zOhI/NBquXQwxdoVJIP9vJew1aiH
+         Lsjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:from:references:to;
-        bh=4W6gmaLEw3D7Q6Ly0+BjOJEkLwi8JvN36X2NV5GFfP4=;
-        b=C8OoVlqSYEXVPTLXf040XW1GnVyJQZi+fua2jzCJUtdaAbD9efmnSzIkLX7aMzt3EQ
-         ZoS7AaxQvPVBL3L2fHWKEU1cdR97YArxKIuy8vdjMyHNQsiUFHjdJKYYtV4TbB9r8VYe
-         cyRySg3UcPUvSIRwapRt/oBbKtvhdf1GheCEks3Z5qVJto01AmUUeQt5tlJf40PLmlh3
-         pq1UsOF1BlPza0DUTctr/qh4mx3u63kmXX+vZz34msolQvgWhshKh/GLYuljfaGMvVCP
-         5oYow72kSZZxFfl8VH53uZPQuB0jeP8zLjljxgWc3pz2ca+uhfqPmAmH05wMePant/bY
-         cw7A==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=DU+v1+qSXxMwHczsoakDiicLnkfOmtj3Euf4AZRmwFY=;
+        b=u797YQHVeQ5aItS2Ds0w18Xe3CemsKj2q98mqPS6/+baoeIR+cYJRzRBdDVvlRCuy3
+         xfe7FXEQfclabRRC6Q4k/VDZJ61micOj0yGMFSEFfWEx7rsojDTvA4qe79xmudeZd1FY
+         xlqSVNxzf5tKYCaItyTPeL+vN2xB8toCzljNtzqfUJwwnBlU6xIlvubBqAHFoMBi0Am5
+         uAmI0mreBIs9SsiKzAoEgPx9JeKTf3buFrK+yip8yv+Zac1j0FAXj9eq1ow0DXRDiIBV
+         rGeV1lsgslH3AnEqAQwYtiYpDgb+pq5RhCezXSx+sgq/FERJWiLElBuERoCQnlddICo2
+         n7/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9si6262122qkk.263.2019.12.14.02.46.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Dec 2019 02:46:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=czsEzxAk;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id a205si7330504oii.95.2019.12.14.07.56.38;
+        Sat, 14 Dec 2019 07:56:38 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58128 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ig4wP-0001PO-D9
-	for alex.bennee@linaro.org; Sat, 14 Dec 2019 05:46:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43923)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1ig4wH-0001PG-Rd
- for qemu-arm@nongnu.org; Sat, 14 Dec 2019 05:46:23 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1ig4wF-0002jN-Lu
- for qemu-arm@nongnu.org; Sat, 14 Dec 2019 05:46:21 -0500
-Received: from mail.ilande.co.uk ([46.43.2.167]:48408
- helo=mail.default.ilande.uk0.bigv.io)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1ig4wE-0001Sz-Tq; Sat, 14 Dec 2019 05:46:19 -0500
-Received: from host86-191-82-191.range86-191.btcentralplus.com
- ([86.191.82.191] helo=[192.168.1.65])
- by mail.default.ilande.uk0.bigv.io with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.89)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1ig4tx-0003f9-7q; Sat, 14 Dec 2019 10:43:57 +0000
-To: bilalwasim676@gmail.com, qemu-devel@nongnu.org
-References: <20191210140617.16656-1-bilalwasim676@gmail.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
- OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-Message-ID: <21af53f8-a057-b9d4-c6ff-29c3f1df5d69@ilande.co.uk>
-Date: Sat, 14 Dec 2019 10:43:01 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=czsEzxAk;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726820AbfLNP4h (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Sat, 14 Dec 2019 10:56:37 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:52291 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1725943AbfLNP4h (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Sat, 14 Dec 2019 10:56:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1576338995;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=DU+v1+qSXxMwHczsoakDiicLnkfOmtj3Euf4AZRmwFY=;
+        b=czsEzxAkBaZZtRWijzCurYB08NJgkBYaUM4SgbPUYmZ9SnxolkXKKOuFu3BnjmTttmCql2
+        fIMtntFJjEEW3VluP34x9C9+v+/Ms0yGfNU4yRmEWBz2JNcjSocj5z2/Gq36QuyVs5FFuW
+        AMhPaDnne4gFE4WKkn+ejc0wnNOHyEA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-200-9iIaSgdkNYWGuH4yNdMIvw-1; Sat, 14 Dec 2019 10:56:33 -0500
+X-MC-Unique: 9iIaSgdkNYWGuH4yNdMIvw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B08321005502;
+        Sat, 14 Dec 2019 15:56:31 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-205-147.brq.redhat.com [10.40.205.147])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 234905D6A7;
+        Sat, 14 Dec 2019 15:56:16 +0000 (UTC)
+From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To:     qemu-devel@nongnu.org
+Cc:     Peter Maydell <peter.maydell@linaro.org>,
+        Andrew Baumann <Andrew.Baumann@microsoft.com>,
+        Aurelien Jarno <aurelien@aurel32.net>, kvm@vger.kernel.org,
+        Alex Williamson <alex.williamson@redhat.com>,
+        Aleksandar Markovic <amarkovic@wavecomp.com>,
+        Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Alistair Francis <alistair@alistair23.me>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+        Paul Burton <pburton@wavecomp.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH 0/8] Simplify memory_region_add_subregion_overlap(..., priority=0)
+Date:   Sat, 14 Dec 2019 16:56:06 +0100
+Message-Id: <20191214155614.19004-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20191210140617.16656-1-bilalwasim676@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 86.191.82.191
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v3] net/imx_fec: Adding support for MAC filtering in the
- FEC IP implementation.
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 46.43.2.167
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, jasowang@redhat.com, qemu-arm@nongnu.org,
- philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ojv4qZNN7bmb
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Content-Transfer-Encoding: quoted-printable
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: EmItdT0+4+wt
 
-On 10/12/2019 14:06, bilalwasim676@gmail.com wrote:
+Hi,
 
-> From: bwasim <bilalwasim676@gmail.com>
-> 
-> This addition ensures that the IP does NOT boot up in promiscuous mode
-> by default, and so the software only receives the desired
-> packets(Unicast, Broadcast, Unicast / Multicast hashed) by default.
-> The software running on-top of QEMU can also modify these settings and
-> disable reception of broadcast frames or make the IP receive all packets (PROM mode).
-> This patch greatly reduces the number of packets received by the
-> software running on-top of the QEMU model. Tested with the armv7-a SABRE_LITE machine.
-> Testing included running a custom OS with IPv4 / IPv6 support. Hashing
-> and filtering of packets is tested to work well. Skeleton taken from
-> the CADENCE_GEM IP and hash generation algorithm from the Linux Kernel.
-> 
-> Signed-off-by: Bilal Wasim <bilalwasim676@gmail.com>
-> ---
->  hw/net/imx_fec.c         | 109 ++++++++++++++++++++++++++++++++++++++-
->  include/hw/net/imx_fec.h |  10 ++++
->  2 files changed, 118 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-> index bd99236864..d248f39fb0 100644
-> --- a/hw/net/imx_fec.c
-> +++ b/hw/net/imx_fec.c
-> @@ -419,6 +419,79 @@ static void imx_enet_write_bd(IMXENETBufDesc *bd, dma_addr_t addr)
->      dma_memory_write(&address_space_memory, addr, bd, sizeof(*bd));
->  }
->  
-> +/*
-> + * Calculate a FEC MAC Address hash index
-> + */
-> +static unsigned calc_mac_hash(const uint8_t *mac, uint8_t mac_length)
-> +{
-> +    uint32_t crc = net_crc32_le(mac, mac_length);
-> +
-> +    /*
-> +     * only upper 6 bits (FEC_HASH_BITS) are used
-> +     * which point to specific bit in the hash registers
-> +     */
-> +    return (crc >> (32 - FEC_HASH_BITS)) & 0x3f;
-> +}
+In this series we use coccinelle to replace:
+- memory_region_add_subregion_overlap(..., priority=3D0)
++ memory_region_add_subregion(...)
 
-Is it worth keeping this in a separate function? This appears to be a standard hash
-calculation and most other cards simply inline it like below:
+Rationale is the code is easier to read, and reviewers don't
+have to worry about overlapping because it isn't used.
 
-> +/*
-> + * fec_mac_address_filter:
-> + * Accept or reject this destination address?
-> + */
-> +static int fec_mac_address_filter(IMXFECState *s, const uint8_t *packet)
-> +{
-> +    const uint8_t broadcast_addr[] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-> +    uint32_t addr1, addr2;
-> +    uint8_t  hash;
-> +
-> +    /* Promiscuous mode? */
-> +    if (s->regs[ENET_RCR] & ENET_RCR_PROM) {
-> +        /* Accept all packets in promiscuous mode (even if bc_rej is set). */
-> +        return FEC_RX_PROMISCUOUS_ACCEPT;
-> +    }
-> +
-> +    /* Broadcast packet? */
-> +    if (!memcmp(packet, broadcast_addr, 6)) {
+Last patch is a minor cleanup in variable names.
 
-ETH_ALEN?
+I expect each subsystem maintainer to take the subsystem patches.
 
-> +        /* Reject broadcast packets? */
-> +        if (s->regs[ENET_RCR] & ENET_RCR_BC_REJ) {
-> +            return FEC_RX_REJECT;
-> +        }
-> +        /* Accept packets from broadcast address. */
-> +        return FEC_RX_BROADCAST_ACCEPT;
-> +    }
-> +
-> +    /* Accept packets -w- hash match? */
-> +    hash = calc_mac_hash(packet, 6);
+Regards,
 
-       hash = net_crc32_le(buf, ETH_ALEN) >> 26
+Phil.
 
-> +    /* Accept packets -w- multicast hash match? */
-> +    if ((packet[0] & 0x01) == 0x01) {
-> +        /* Computed hash matches GAUR / GALR register ? */
-> +        if (((hash < 32) && (s->regs[ENET_GALR] & (1 << hash)))
-> +                || ((hash > 31) && (s->regs[ENET_GAUR] & (1 << (hash - 32))))) {
-> +            /* Accept multicast hash enabled address. */
-> +            return FEC_RX_MULTICAST_HASH_ACCEPT;
-> +        }
-> +    } else {
-> +        /* Computed hash matches IAUR / IALR register ? */
-> +        if (((hash < 32) && (s->regs[ENET_IALR] & (1 << hash)))
-> +                || ((hash > 31) && (s->regs[ENET_IAUR] & (1 << (hash - 32))))) {
-> +            /* Accept multicast hash enabled address. */
-> +            return FEC_RX_UNICAST_HASH_ACCEPT;
-> +        }
-> +    }
-> +
-> +    /* Match Unicast address. */
-> +    addr1  = g_htonl(s->regs[ENET_PALR]);
-> +    addr2  = g_htonl(s->regs[ENET_PAUR]);
-> +    if (!(memcmp(packet, (uint8_t *) &addr1, 4) ||
-> +          memcmp(packet + 4, (uint8_t *) &addr2, 2))) {
-> +        /* Accept packet because it matches my unicast address. */
-> +        return FEC_RX_UNICAST_ACCEPT;
-> +    }
-> +
-> +    /* Return -1 because we do NOT support MAC address filtering.. */
-> +    return FEC_RX_REJECT;
-> +}
-> +
->  static void imx_eth_update(IMXFECState *s)
->  {
->      /*
-> @@ -984,7 +1057,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
->      case ENET_IALR:
->      case ENET_GAUR:
->      case ENET_GALR:
-> -        /* TODO: implement MAC hash filtering.  */
-> +        s->regs[index] |= value;
->          break;
->      case ENET_TFWR:
->          if (s->is_fec) {
-> @@ -1066,8 +1139,15 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
->      uint32_t buf_addr;
->      uint8_t *crc_ptr;
->      unsigned int buf_len;
-> +    int maf;
->      size_t size = len;
->  
-> +    /* Is this destination MAC address "for us" ? */
-> +    maf = fec_mac_address_filter(s, buf);
-> +    if (maf == FEC_RX_REJECT) {
-> +        return FEC_RX_REJECT;
-> +    }
-> +
->      FEC_PRINTF("len %d\n", (int)size);
->  
->      if (!s->regs[ENET_RDAR]) {
-> @@ -1133,6 +1213,16 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
->          } else {
->              s->regs[ENET_EIR] |= ENET_INT_RXB;
->          }
-> +
-> +        /* Update descriptor based on the "maf" flag. */
-> +        if (maf == FEC_RX_BROADCAST_ACCEPT) {
-> +            /* The packet is destined for the "broadcast" address. */
-> +            bd.flags |= ENET_BD_BC;
-> +        } else if (maf == FEC_RX_MULTICAST_HASH_ACCEPT) {
-> +            /* The packet is destined for a "multicast" address. */
-> +            bd.flags |= ENET_BD_MC;
-> +        }
-> +
->          imx_fec_write_bd(&bd, addr);
->          /* Advance to the next descriptor.  */
->          if ((bd.flags & ENET_BD_W) != 0) {
-> @@ -1159,8 +1249,15 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
->      uint8_t *crc_ptr;
->      unsigned int buf_len;
->      size_t size = len;
-> +    int maf;
->      bool shift16 = s->regs[ENET_RACC] & ENET_RACC_SHIFT16;
->  
-> +    /* Is this destination MAC address "for us" ? */
-> +    maf = fec_mac_address_filter(s, buf);
-> +    if (maf == FEC_RX_REJECT) {
-> +        return FEC_RX_REJECT;
-> +    }
-> +
->      FEC_PRINTF("len %d\n", (int)size);
->  
->      if (!s->regs[ENET_RDAR]) {
-> @@ -1254,6 +1351,16 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
->                  s->regs[ENET_EIR] |= ENET_INT_RXB;
->              }
->          }
-> +
-> +        /* Update descriptor based on the "maf" flag. */
-> +        if (maf == FEC_RX_BROADCAST_ACCEPT) {
-> +            /* The packet is destined for the "broadcast" address. */
-> +            bd.flags |= ENET_BD_BC;
-> +        } else if (maf == FEC_RX_MULTICAST_HASH_ACCEPT) {
-> +            /* The packet is destined for a "multicast" address. */
-> +            bd.flags |= ENET_BD_MC;
-> +        }
-> +
->          imx_enet_write_bd(&bd, addr);
->          /* Advance to the next descriptor.  */
->          if ((bd.flags & ENET_BD_W) != 0) {
-> diff --git a/include/hw/net/imx_fec.h b/include/hw/net/imx_fec.h
-> index 7b3faa4019..f9cfcf6af5 100644
-> --- a/include/hw/net/imx_fec.h
-> +++ b/include/hw/net/imx_fec.h
-> @@ -275,4 +275,14 @@ typedef struct IMXFECState {
->      uint8_t frame[ENET_MAX_FRAME_SIZE];
->  } IMXFECState;
->  
-> +/* FEC address filtering defines. */
-> +#define FEC_RX_REJECT                   (-1)
-> +#define FEC_RX_PROMISCUOUS_ACCEPT       (-2)
-> +#define FEC_RX_BROADCAST_ACCEPT         (-3)
-> +#define FEC_RX_MULTICAST_HASH_ACCEPT    (-4)
-> +#define FEC_RX_UNICAST_HASH_ACCEPT      (-5)
-> +#define FEC_RX_UNICAST_ACCEPT           (-6)
-> +
-> +#define FEC_HASH_BITS                    6    /* #bits in hash */
+Philippe Mathieu-Daud=C3=A9 (8):
+  hw/arm/nrf51_soc: Use memory_region_add_subregion() when priority is 0
+  hw/arm/raspi: Use memory_region_add_subregion() when priority is 0
+  hw/arm/xlnx-versal: Use memory_region_add_subregion() when priority is
+    0
+  hw/i386/intel_iommu: Use memory_region_add_subregion when priority is
+    0
+  hw/mips/boston: Use memory_region_add_subregion() when priority is 0
+  hw/vfio/pci: Use memory_region_add_subregion() when priority is 0
+  target/i386: Use memory_region_add_subregion() when priority is 0
+  target/i386/cpu: Use 'mr' for MemoryRegion variables
 
-If you inline the hash calculation as above then this line is no longer required.
+ target/i386/cpu.h            |  2 +-
+ hw/arm/bcm2835_peripherals.c |  4 ++--
+ hw/arm/nrf51_soc.c           | 14 +++++++-------
+ hw/arm/raspi.c               |  2 +-
+ hw/arm/xlnx-versal-virt.c    |  3 +--
+ hw/arm/xlnx-versal.c         |  4 ++--
+ hw/i386/intel_iommu.c        | 11 ++++-------
+ hw/mips/boston.c             | 14 +++++++-------
+ hw/vfio/pci.c                |  3 +--
+ target/i386/cpu.c            | 18 +++++++++---------
+ target/i386/kvm.c            |  2 +-
+ 11 files changed, 36 insertions(+), 41 deletions(-)
 
->  #endif
-
-I've done some bits on QEMU networking however I'm not familiar with this particular
-device which limits me somewhat for further review.
-
-
-ATB,
-
-Mark.
+--=20
+2.21.0

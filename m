@@ -1,101 +1,264 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4554178lff;
-        Mon, 16 Dec 2019 05:38:20 -0800 (PST)
-X-Received: by 2002:aca:eb0f:: with SMTP id j15mr8944219oih.6.1576503500294;
-        Mon, 16 Dec 2019 05:38:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576503500; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5251246lff;
+        Mon, 16 Dec 2019 15:37:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzrG4Gv6JWc4rwCOfextM0CWza1HaR8PCijY6HWclycIgiMGCn4OtFSZHSyxLJv0T+9n+4y
+X-Received: by 2002:a9d:2965:: with SMTP id d92mr2589929otb.175.1576539459937;
+        Mon, 16 Dec 2019 15:37:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576539459; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZIIcPbwTJGxCxFeGFHev++TW9LXuD+Ir2iCDv67P27FzjHY3mMdNcXBcqwZKNJzHc5
-         9tXd3h0gu6LQtRQPM5vFsjCdGWl7wEO0gwpW7RbwUplJxZwOGvLivKlArJ0705Pb3hM4
-         XSWoqfdvgRCv+hthbenenAeuxnDkkJMCccZy6252WNbBaj36bcYWkmjlewEXF6+azTnB
-         eoaePhg03QvX10Qlzx7F1E5lLz8WPXIctnQ/MoIs5OTOJ+1YlP563RsLgkodFHbkb8st
-         4iPa5ry0LBuXh4VCzgtUr8RTv6iYRaH/Ed1lF+h0w3CSyBp5QoH5wKSqPZzFzZeeT5m8
-         wqGw==
+        b=AtWtL6uCnmwc4mS8rNIS8rngPtC6N8BXGQEt6KchsGw7LyRXc0tHx0vJj6/QdVimiu
+         PeE/3TmZ6mqWeSeXqSyk/G9RVxjEow069qZBMJghB4yTjyqDmSj77ypmvWa7jUh0709X
+         shHFJyu9jKnCtCRRdzPQqOe2/bEkQmdRTmO1oZAAHj3uPkt6m6r6BeZ7c5gRvaAd5iy6
+         bil/pc3mfXOWWzYIeX/LPJpfEeihOBLdJPRbEzGETQMKf2qXrWsrSBzlbu/dqHjf+3Yf
+         QmcGP61kSjlFBCWlbLkRyH5Od5JqUmmsWf/TDAkqJtxJYT88V2qiRmoc8o3s0J27l+RW
+         /+Cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=bOiOQS281XKOtaM1Cfka5yGcYTvl+GxoBwrv7dXPzRE=;
-        b=lhac27YjPq3qkwFJsuNQceq1mq3JadRPfzceF2UgrP+6AC72BN2w2EinSwLly0fk4w
-         OAZcumzlh1z7DaJjJ+wGqA9uxba2yX3F3W7ZyoTYTOWX537qhgug+SkJXV/x0cG/iuBu
-         QcT5/huqkAKe7XWrA5hENj3IK2+OV3hDIrJxJdK6u6dTUjK5CqsGgTV4YWH2oLj+LpBG
-         Ea0PZojI7AMGxtVu00SUTlecL/9lsy8lcnZvGpe/T2AGUxnK0UtMvxiJUvhLReHaME8T
-         nnRpVy/KTtWUfiMsTNwYo37XHAKbIIj+pQ5cm22ESBCIaVxkqM8M516I/nL45Tpxl/UH
-         54TQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=56k1gd9w0pzweQ0pdSRVAAe2bI3hcno8MwlnwkRM6ZM=;
+        b=EKgvqEToWrQkB52S0X3G1fuWoUaSyeF3YIOn0ecpsLuE6lInu2Xdyv4bxer7Ronkpt
+         /OIDjVQ7SSLV2ZABZNXiJEtR2q1MWLWGkvW9Wt92hBbjgShLec6tC1uKPfUWkGskvU7e
+         PyFReXiJEbwV4PnrRpHDUiQ80LQZd2Rx+xpkP3swQlHejOAtP7sCg2h8WHpcGgmGVtOS
+         kcUUYzqtFtmda8u/E/ou+ZNs0Q0BWitlU3bHN/isBIA3J6+0G3DCVsvauOgRpTVpfmoX
+         zsU+2zFp8wpm34an760NG144mcOA1ZUgNQatmNuqXZ/AdvdXV10ddPo8l0Y/3mh2sLxy
+         BK8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uZNRKMHN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q20sor5798043oij.108.2019.12.16.05.38.20
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="GjXqTY/i";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h3si11387676otk.60.2019.12.16.15.37.39
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 16 Dec 2019 05:38:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Dec 2019 15:37:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uZNRKMHN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=bOiOQS281XKOtaM1Cfka5yGcYTvl+GxoBwrv7dXPzRE=;
-        b=uZNRKMHNPtZbu+4KvM8MpcX4OG/0UGhqrucOETxh2Qn3b4EQ7GuAqmv3TzqG/FrOQi
-         LxpamBdf+KRO92/tXtvaC8wHtOt0iC9HsfeogKO25dz20Gg1ADKL7ZVFsV8+LcODIXvj
-         k61L6YX/Wt3bdGuwc7QE+NuAT1EUNuCCfBfuEaOxWCi6ZH5CDpXEl9cWy2zov54U3DNE
-         4VJMBP2ypuHT9TvQzGyY4rTHuvw9aPuFpqWwHb+Jp3M9QyycjoFjPIgvg/Q1R3W6TlrX
-         5KJOr05Nk/F7IyWhspXEgJJAeJXQUIzKOs7IXBb9bSDu/QMz7bxS91u0vFqp6OwRmUbo
-         o+tg==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="GjXqTY/i";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33298 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1igzvm-0008As-IS
+	for alex.bennee@linaro.org; Mon, 16 Dec 2019 18:37:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50162)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igzuD-0006aD-Ae
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 18:36:02 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igzuB-0002cs-P5
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 18:36:01 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:40621)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1igzuB-0002bL-Iq; Mon, 16 Dec 2019 18:35:59 -0500
+Received: by mail-wm1-x341.google.com with SMTP id t14so1089529wmi.5;
+ Mon, 16 Dec 2019 15:35:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=56k1gd9w0pzweQ0pdSRVAAe2bI3hcno8MwlnwkRM6ZM=;
+ b=GjXqTY/ih7teLgDrI7tdcAfP6FdrS/tg4tyIQlG+Va8lA0ejPhApBtoeU7Gn17L/DB
+ UAMECp1O8NZ4JyWBXK7AA6ucMHnLQLyLgJHnXICECNzNefL55Ix1u/hfhYxubxrNVRbs
+ OBzczXp1m697AplJg7C9lcmCWEuwgVMxtE9BYVdHO5nIrDjn+6LwCBZ5o0mPQAP5nnJy
+ eEd0ozY8kCoY4xrSbc1EFgR7+9RMpcChZZ5e5Nf5PdbapjP0b5OAHvSlPCT5Rsv20hmF
+ CQveeZsttOomZ2miOnTGp6io2+ne51SNSp0MIdn6NaqztQWnRA2QnP12n4czglYhhGaA
+ hV+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=bOiOQS281XKOtaM1Cfka5yGcYTvl+GxoBwrv7dXPzRE=;
-        b=aisFaIWGaNMmR4oPU5Q1f2HW6ON9NL0futJZA3Dt0kMFqLWHIfpwgKZ8Yurmw+N7lp
-         XOmKmIq+nZHvneZohD9qXnWFbmkhRlAsLTZ9mMS6wsKnX7I+CSmtB70a2pKqPCsYqotN
-         vAw/Gri85v+Qo71MwW9UCwqMgQDNYZBuhLWPS7u+gKRPbQdCqi9R2nCtHFC/1zBnIgMv
-         bcBv8+4LKspUX5njqzQ0zRvsSjaes3Krl0kFcvVG1t84nHt8PSs2mQYXsgZKr/p7V4tc
-         5W3xpxA5HopwHmoxZG4JTUzZxJpm7iFU4ib140u6DjIESIpfdujELhOsYsjG8+t9f2wR
-         nUkA==
-X-Gm-Message-State: APjAAAUbmgvcjxrkeQQJAIOO3KHM5LyvvmHujCx1gBBUJtH6vkgoM1uB
-	2IInG49AW1rRGQx7mt2d8gTQjRh/tWFZ8L/kVT8I4EuXzbW8eg==
-X-Google-Smtp-Source: APXvYqyTTxGrF/DBC+wnwjgOgqQgtg9ZauusSN/Nf8cHy6jYbWWOyLnaGadiTTHaQl3gjL8+WVUpOZsMDqpZpbnB48Q=
-X-Received: by 2002:aca:edd5:: with SMTP id l204mr9820741oih.98.1576503499739;
- Mon, 16 Dec 2019 05:38:19 -0800 (PST)
-MIME-Version: 1.0
-References: <20191212114734.6962-1-alex.bennee@linaro.org>
-In-Reply-To: <20191212114734.6962-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Dec 2019 13:38:08 +0000
-Message-ID: <CAFEAcA8aXE7aZXzVgVE9NxZgPug_M_QxJ+ngfjsncpOKKge8dA@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: ensure we use current exception state
- after SCR update
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 2xwfwZuocVL0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=56k1gd9w0pzweQ0pdSRVAAe2bI3hcno8MwlnwkRM6ZM=;
+ b=QvEuTV494i6AZdQC9PFKHENb+gotnQEpBxncHNpXXQbdn99Q/9GBOHiPmzrDXZ6j9l
+ 17reOF3ps3ldrxgeXDwlh8g2M/CkFduZvE1aGSun8E8MzWhneNuCE3dDY64e04gW2RQR
+ oxduiPkvlAiyD1kk4fBQRwYffK/LF6hnUzk/NfBazQKmdwISSzIe9cYgMknBJD9UcgNJ
+ OziW/RuHekQ7X/2OaTneEUDV3vwjmQZM0xwM+MQlNWf5fO0fuw5RBjV45x0+3udf1lqC
+ hwvxQORjkBtQ7i9PYyn7HN+oKxXAKG+WACB+95sYMzt9mbUeUDtYYgOq2dCwrcjzgeT1
+ jqrw==
+X-Gm-Message-State: APjAAAXxMv1JhxBWVRBuXW51QrSFjwmDc2Tq+RhC9O4tvQ3mDZ315g9M
+ dKWOZg2LTK1bMZdCczl09nVm+k2u
+X-Received: by 2002:a7b:c114:: with SMTP id w20mr1660722wmi.151.1576539358199; 
+ Mon, 16 Dec 2019 15:35:58 -0800 (PST)
+Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
+ by smtp.gmail.com with ESMTPSA id z83sm984501wmg.2.2019.12.16.15.35.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Dec 2019 15:35:57 -0800 (PST)
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 02/10] hw: arm: add Xunlong Orange Pi PC machine
+Date: Tue, 17 Dec 2019 00:35:11 +0100
+Message-Id: <20191216233519.29030-3-nieklinnenbank@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20191216233519.29030-1-nieklinnenbank@gmail.com>
+References: <20191216233519.29030-1-nieklinnenbank@gmail.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::341
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Niek Linnenbank <nieklinnenbank@gmail.com>,
+ qemu-arm@nongnu.org, philmd@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hmOcCmsqcurD
 
-On Thu, 12 Dec 2019 at 11:47, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> A write to the SCR can change the effective EL by droppping the system
-> from secure to non-secure mode. However if we use a cached current_el
-> from before the change we'll rebuild the flags incorrectly. To fix
-> this we introduce the ARM_CP_NEWEL CP flag to indicate the new EL
-> should be used when recomputing the flags.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Message-Id: <20191209143723.6368-1-alex.bennee@linaro.org>
->
-> ---
+The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
+based embedded computer with mainline support in both U-Boot
+and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
+512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
+various other I/O. This commit add support for the Xunlong
+Orange Pi PC machine.
 
+Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
+---
+ hw/arm/orangepi.c    | 101 +++++++++++++++++++++++++++++++++++++++++++
+ MAINTAINERS          |   1 +
+ hw/arm/Makefile.objs |   2 +-
+ 3 files changed, 103 insertions(+), 1 deletion(-)
+ create mode 100644 hw/arm/orangepi.c
 
+diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+new file mode 100644
+index 0000000000..62cefc8c06
+--- /dev/null
++++ b/hw/arm/orangepi.c
+@@ -0,0 +1,101 @@
++/*
++ * Orange Pi emulation
++ *
++ * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "exec/address-spaces.h"
++#include "qapi/error.h"
++#include "cpu.h"
++#include "hw/sysbus.h"
++#include "hw/boards.h"
++#include "hw/qdev-properties.h"
++#include "hw/arm/allwinner-h3.h"
++
++static struct arm_boot_info orangepi_binfo = {
++    .board_id = -1,
++};
++
++typedef struct OrangePiState {
++    AwH3State *h3;
++    MemoryRegion sdram;
++} OrangePiState;
++
++static void orangepi_init(MachineState *machine)
++{
++    OrangePiState *s = g_new(OrangePiState, 1);
++
++    /* Only allow Cortex-A7 for this board */
++    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a7")) != 0) {
++        error_report("This board can only be used with cortex-a7 CPU");
++        exit(1);
++    }
++
++    s->h3 = AW_H3(object_new(TYPE_AW_H3));
++
++    /* Setup timer properties */
++    object_property_set_int(OBJECT(&s->h3->timer), 32768, "clk0-freq",
++                            &error_abort);
++    if (error_abort != NULL) {
++        error_reportf_err(error_abort, "Couldn't set clk0 frequency: ");
++        exit(1);
++    }
++
++    object_property_set_int(OBJECT(&s->h3->timer), 24000000, "clk1-freq",
++                            &error_abort);
++    if (error_abort != NULL) {
++        error_reportf_err(error_abort, "Couldn't set clk1 frequency: ");
++        exit(1);
++    }
++
++    /* Mark H3 object realized */
++    object_property_set_bool(OBJECT(s->h3), true, "realized", &error_abort);
++    if (error_abort != NULL) {
++        error_reportf_err(error_abort, "Couldn't realize Allwinner H3: ");
++        exit(1);
++    }
++
++    /* RAM */
++    if (machine->ram_size > 1 * GiB) {
++        error_report("Requested ram size is too large for this machine: "
++                     "maximum is 1GB");
++        exit(1);
++    }
++    memory_region_allocate_system_memory(&s->sdram, NULL, "orangepi.ram",
++                                         machine->ram_size);
++    memory_region_add_subregion(get_system_memory(), s->h3->memmap[AW_H3_SDRAM],
++                                &s->sdram);
++
++    /* Load target kernel */
++    orangepi_binfo.loader_start = s->h3->memmap[AW_H3_SDRAM];
++    orangepi_binfo.ram_size = machine->ram_size;
++    orangepi_binfo.nb_cpus  = AW_H3_NUM_CPUS;
++    arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
++}
++
++static void orangepi_machine_init(MachineClass *mc)
++{
++    mc->desc = "Orange Pi PC";
++    mc->init = orangepi_init;
++    mc->units_per_default_bus = 1;
++    mc->min_cpus = AW_H3_NUM_CPUS;
++    mc->max_cpus = AW_H3_NUM_CPUS;
++    mc->default_cpus = AW_H3_NUM_CPUS;
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a7");
++}
++
++DEFINE_MACHINE("orangepi-pc", orangepi_machine_init)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index aae1a049b4..db682e49ca 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -486,6 +486,7 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/*/allwinner-h3*
+ F: include/hw/*/allwinner-h3*
++F: hw/arm/orangepi.c
+ 
+ ARM PrimeCell and CMSDK devices
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 956e496052..8d5ea453d5 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -34,7 +34,7 @@ obj-$(CONFIG_DIGIC) += digic.o
+ obj-$(CONFIG_OMAP) += omap1.o omap2.o
+ obj-$(CONFIG_STRONGARM) += strongarm.o
+ obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
+-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3.o
++obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3.o orangepi.o
+ obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
+ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+ obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zynqmp.o xlnx-zcu102.o
+-- 
+2.17.1
 
-Applied to target-arm.next, thanks (I added a cc-stable).
-
--- PMM

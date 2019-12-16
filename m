@@ -1,145 +1,229 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4755529lff;
-        Mon, 16 Dec 2019 08:18:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwC6N6+Y5luJNvCM0KzYQ25tL355geXApZPsU/lkGKLDN2pYfxbzUbgf0iTYRH0i9MMGDOB
-X-Received: by 2002:a05:6830:10a:: with SMTP id i10mr31297807otp.365.1576513125203;
-        Mon, 16 Dec 2019 08:18:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576513125; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4827913lff;
+        Mon, 16 Dec 2019 09:15:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqweDQ1k45dDYv77RZXTQ0cqoH3jBNSZaja9jhi8CXZzqFJXxbYGw1mQ8ZYmHyzgE1laFX00
+X-Received: by 2002:a37:9bc2:: with SMTP id d185mr307027qke.422.1576516547836;
+        Mon, 16 Dec 2019 09:15:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576516547; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z3kWGI6+DQcAT6QFQzp96G+NQr2688qaOWoS3LCemWmDWwq1bkAg7hPOBecuuSwZQ9
-         OfCAvKuDf42zS4AoRTZ1821f3P9b8IDjhSXZXisPI9k2gDso3fD9TObUZLZCqYVQDcZE
-         3TW2mnBVKuEOmiN7V8D2eNTguYv2a7YiTJ2v2kEXupClNHTEjM2P8KFgQXvp0xJe7+IJ
-         jXDB3KXU1INe02g7wPXzXEKk0HlgmAF7IeMnBrSzpBfZcnPytNZNfKmeJlMO6PvLbpBV
-         FoeYtkw7jwRTODKaHk577vAQFjn7sOj90SBdLnPGiDIbF7guc/Jk4fy0gyEFry/Hzb+B
-         NFXg==
+        b=x3WV8HxGT2Y+iTPbZcyOOMG6DiZ8QMxlO6OOOYg4JrGjGRoCbXXZQvxE+cBI+I9wMJ
+         rt5gR+QIv8xjvPlOgZEQMYZ13Z6VmCkndjF2WJ7nMsMDn9fQafuEydogAz93TQ5fsdFO
+         zuOqbQzve8ggdhTDzu9fQeHwnBHSAG7u5jtCzQ/0ODD4pcS/IjcE1BC7jjQ6vag3l3hs
+         6q1KQRWqwC9QxwMSu6PixYLHW+QDsdlpAtEDkkrXl1uIiiQVdieq8WMM2vOaAVp5R8h4
+         JnyTnF+UH8RNodLBhOBLPawqJVczQ/pur60uzja+0p+FHB4u6RVyVa6UObEI2u1rOTy6
+         wC0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:message-id
-         :references:in-reply-to:from:date:content-transfer-encoding
-         :mime-version:subject:to;
-        bh=v/X6zm6rjtuL4U9zomzXF7IvLXDw55lm0i0+bptFZfc=;
-        b=Y31U7P9KH2M+lLSbC3oASixIul+8H8TCgXec+HKHTz7e32PrUtg04LM1YeAIoWG5KL
-         LaXiGfKtY/iyr/3XDSzNTKWsqxBKkhAfc410becmO74x38jAVozHAiBfI6KJfpVqLTcn
-         0GrCB2aGVzC6YwVczl5BVq8l5vaC+pqGXaCVahTiYZWOgOaL7XwsOUBepe+hT5qjO+Qo
-         A8IswgkFbweaRnAS8AvyBgzHvFry2ao4bLBGhXU0XUiW+0Vx2TRH/RY4c2ENw5fjH/aT
-         MMYHBoDyolVODRhBcdP1VHLBE70HhbWovzqgIVBvA5Hzb4LSqxn8jQm7apIedkHABTOh
-         rTNA==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=b6rU/7SFMPtpuUaSJZL4ZvKzOzPSprKptVNDJXTPh9c=;
+        b=Ngyqu2AudhO+zT1InW6xOpe8FZ80cNq27iWNqu2YbKJ2GNhpEk8nP2/HEH803k2BBE
+         Q7qXnCQwVjKwnf1zA2wV3Z6+nSByuJRTywcn5yaGkm7Xbm+W1NjBHbIxBkSOphIPdVS+
+         U3zhbyWV4D78PJsNl6I/i8ZRaP1m3PtLSYcFprbDi2oI10QB8DcTnhyv1t8SekwKhaJE
+         /diaik9S1YBClqfVIuLYtm7TR/RzXF8Hy8muxplz1ZJdxp/wApvcVgon5tPt2IGTPHfq
+         9M8YwpIdf6uiY5M+QMf7FKoP62jV9Fd16K+fcjHf16Sm5v8yiIbwAPkgGEPUdA7JoNcv
+         l1Yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pt3XpgE3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r10si2629ota.294.2019.12.16.08.18.45
+        by mx.google.com with ESMTPS id x13si9633529qti.48.2019.12.16.09.15.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Dec 2019 08:18:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Dec 2019 09:15:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:56376 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pt3XpgE3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57238 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igt52-00045w-AN
-	for alex.bennee@linaro.org; Mon, 16 Dec 2019 11:18:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50902)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1igtyE-0004bv-M0
+	for alex.bennee@linaro.org; Mon, 16 Dec 2019 12:15:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60550)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <maz@kernel.org>) id 1igt4p-0003xA-UF
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 11:18:35 -0500
+ (envelope-from <drjones@redhat.com>) id 1igtM6-0005Qj-Jt
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 11:36:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <maz@kernel.org>) id 1igt4o-0007sz-Ts
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 11:18:31 -0500
-Received: from inca-roads.misterjones.org ([213.251.177.50]:50356)
+ (envelope-from <drjones@redhat.com>) id 1igtM3-0001rB-BB
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 11:36:20 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:31430
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <maz@kernel.org>)
- id 1igt4l-0007gz-JQ; Mon, 16 Dec 2019 11:18:27 -0500
-Received: from www-data by cheepnis.misterjones.org with local (Exim 4.80)
- (envelope-from <maz@kernel.org>)
- id 1igt4h-0003D3-8K; Mon, 16 Dec 2019 17:18:23 +0100
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1igtM3-0001oa-20
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 11:36:19 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1576514177;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=b6rU/7SFMPtpuUaSJZL4ZvKzOzPSprKptVNDJXTPh9c=;
+ b=Pt3XpgE3nmgcBt1ke/CUnvLfLRHetfpAA9rJ8YeJtUkBVjLJiyoeSuBy8NoxDo+EP74dux
+ Cee+xcnnUCOU0UUdBaLjE5gaNc0WeiQW6NyOl7jpLMngxxOkwp7gIwAyhhzqwSLh2SE6Ic
+ dI2gkhPAwR/cxrc8uPUoznYYd/GrBkA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-90-OiXZFFJTMHGYhotQ9JwFmw-1; Mon, 16 Dec 2019 11:36:14 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2177A1809A46;
+ Mon, 16 Dec 2019 16:36:11 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (ovpn-116-122.ams2.redhat.com
+ [10.36.116.122])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AF21D605C9;
+ Mon, 16 Dec 2019 16:36:07 +0000 (UTC)
+Date: Mon, 16 Dec 2019 17:36:04 +0100
+From: Andrew Jones <drjones@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC PATCH v2 0/5] target/arm/kvm: Adjust virtual time
-X-PHP-Originating-Script: 0:main.inc
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 7bit
-Date: Mon, 16 Dec 2019 16:18:23 +0000
-From: Marc Zyngier <maz@kernel.org>
-In-Reply-To: <CAFEAcA9FprSotg11rS0fM94QiciysZ6kgKhyU4eQfZg7YYaL5Q@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 3/5] target/arm/kvm: Implement virtual time
+ adjustment
+Message-ID: <20191216163604.wje5q2mvtytxjqoy@kamzik.brq.redhat.com>
 References: <20191212173320.11610-1-drjones@redhat.com>
- <CAFEAcA9FprSotg11rS0fM94QiciysZ6kgKhyU4eQfZg7YYaL5Q@mail.gmail.com>
-Message-ID: <4cb9bcfd47dff57c9ae6bb92bae87589@www.loen.fr>
-X-Sender: maz@kernel.org
-User-Agent: Roundcube Webmail/0.7.2
-X-SA-Exim-Connect-IP: <locally generated>
-X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, drjones@redhat.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org,
- guoheyi@huawei.com, bijan.mottahedeh@oracle.com, msys.mizuma@gmail.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on cheepnis.misterjones.org);
- SAEximRunCond expanded to false
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 213.251.177.50
-X-BeenThere: qemu-arm@nongnu.org
+ <20191212173320.11610-4-drjones@redhat.com>
+ <CAFEAcA_u94O8WYLgB8DF=pu-3V7LrNWpiQFV5mDYeeqLj1Ee2Q@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_u94O8WYLgB8DF=pu-3V7LrNWpiQFV5mDYeeqLj1Ee2Q@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: OiXZFFJTMHGYhotQ9JwFmw-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, bijan.mottahedeh@oracle.com,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: bijan.mottahedeh@oracle.com, Marc Zyngier <maz@kernel.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  Heyi Guo <guoheyi@huawei.com>, msys.mizuma@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fcR+6S8jaB0O
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mIU1lmhWS9WV
 
-On 2019-12-16 15:33, Peter Maydell wrote:
-> On Thu, 12 Dec 2019 at 17:33, Andrew Jones <drjones@redhat.com> 
-> wrote:
->
->> Userspace that wants to set KVM_REG_ARM_TIMER_CNT should beware that
->> the KVM register ID is not correct.  This cannot be fixed because 
->> it's
->> UAPI and if the UAPI headers are used then it can't be a problem.
->> However, if a userspace attempts to create the ID themselves from 
->> the
->> register's specification, then they will get KVM_REG_ARM_TIMER_CVAL
->> instead, as the _CNT and _CVAL definitions have their register
->> parameters swapped.
->
-> So, to be clear, you mean that:
->
-> (1) the kernel headers say:
->
-> /* EL0 Virtual Timer Registers */
-> #define KVM_REG_ARM_TIMER_CTL           ARM64_SYS_REG(3, 3, 14, 3, 1)
-> #define KVM_REG_ARM_TIMER_CNT           ARM64_SYS_REG(3, 3, 14, 3, 2)
-> #define KVM_REG_ARM_TIMER_CVAL          ARM64_SYS_REG(3, 3, 14, 0, 2)
->
-> (2) some of the RHSes of these are wrong
->
-> (3) but the kernel internally is using the same 'wrong' value, so
-> userspace also needs to use that value, ie trust the #defined name
-> rather than manufacturing one ?
->
-> That's awkward. I think it would be worth at least having a kernel
-> patch to add a comment clearly documenting this bug.
->
-> (This error seems to only be in the 64-bit ABI, not 32-bit.)
+On Mon, Dec 16, 2019 at 03:14:00PM +0000, Peter Maydell wrote:
+> On Thu, 12 Dec 2019 at 17:33, Andrew Jones <drjones@redhat.com> wrote:
+> >
+> > When a VM is stopped (guest is paused) guest virtual time
+> > should stop counting. Otherwise, when the VM is resumed it
+> > will experience time jumps and its kernel may report soft
+> > lockups. Not counting virtual time while the VM is stopped
+> > has the side effect of making the guest's time appear to lag
+> > when compared with real time, and even with time derived from
+> > the physical counter. For this reason, this change, which is
+> > enabled by default, comes with a KVM CPU feature allowing it
+> > to be disabled, restoring legacy behavior.
+> >
+> > This patch only provides the implementation of the virtual
+> > time adjustment. A subsequent patch will provide the CPU
+> > property allowing the change to be enabled and disabled.
+> >
+> > Reported-by: Bijan Mottahedeh <bijan.mottahedeh@oracle.com>
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > ---
+> >  target/arm/cpu.h     |  9 +++++++++
+> >  target/arm/kvm.c     | 48 ++++++++++++++++++++++++++++++++++++++++++++
+> >  target/arm/kvm32.c   |  3 +++
+> >  target/arm/kvm64.c   |  3 +++
+> >  target/arm/kvm_arm.h | 23 +++++++++++++++++++++
+> >  5 files changed, 86 insertions(+)
+> >
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 83a809d4bac4..a79ea74125b3 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -821,6 +821,15 @@ struct ARMCPU {
+> >      /* KVM init features for this CPU */
+> >      uint32_t kvm_init_features[7];
+> >
+> > +    /* KVM CPU features */
+> > +    bool kvm_adjvtime;
+> > +
+> > +    /* VCPU virtual counter value used with kvm_adjvtime */
+> > +    uint64_t kvm_vtime;
+>=20
+> How does this new state interact with migration ?
 
-Yeah, this is pretty bad. I wonder how we managed not to notice
-this for so long... :-(.
+I don't think we should need to worry about this state, because migration
+will do its own save/restore of the virtual counter, and as that restore
+comes later, it'll take precedence. We still need this state for the usual
+save/restore when not migrating, though, because KVM_REG_ARM_TIMER_CNT is
+a non-runtime cpreg with its level set to KVM_PUT_FULL_STATE.
 
-Andrew, could you please write a patch documenting this (both in
-the UAPI headers and in the documentation)?
+>=20
+> > +
+> > +    /* True if the run state is, or transitioning from, RUN_STATE_PAUS=
+ED */
+> > +    bool runstate_paused;
+> > +
+> >      /* Uniprocessor system with MP extensions */
+> >      bool mp_is_up;
+> >
+> > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> > index 5b82cefef608..a55fe7d7aefd 100644
+> > --- a/target/arm/kvm.c
+> > +++ b/target/arm/kvm.c
+> > @@ -348,6 +348,24 @@ void kvm_arm_register_device(MemoryRegion *mr, uin=
+t64_t devid, uint64_t group,
+> >      memory_region_ref(kd->mr);
+> >  }
+> >
+> > +void kvm_arm_vm_state_change(void *opaque, int running, RunState state=
+)
+> > +{
+> > +    CPUState *cs =3D opaque;
+> > +    ARMCPU *cpu =3D ARM_CPU(cs);
+> > +
+> > +    if (running) {
+> > +        if (cpu->kvm_adjvtime && cpu->runstate_paused) {
+> > +            kvm_arm_set_virtual_time(cs, cpu->kvm_vtime);
+> > +        }
+> > +        cpu->runstate_paused =3D false;
+> > +    } else if (state =3D=3D RUN_STATE_PAUSED) {
+> > +        cpu->runstate_paused =3D true;
+> > +        if (cpu->kvm_adjvtime) {
+> > +            kvm_arm_get_virtual_time(cs, &cpu->kvm_vtime);
+> > +        }
+> > +    }
+> > +}
+>=20
+> How does this interact with the usual register sync to/from
+> KVM (ie kvm_arch_get_registers(), which I think will do a
+> GET_ONE_REG read of the TIMER_CNT register the way it does
+> any other sysreg, inside write_kvmstate_to_list(), plus
+> kvm_arch_set_registers() which does the write back to the
+> kernel in write_list_to_kvmstate()) ?
+
+It will, but only when level =3D=3D KVM_PUT_FULL_STATE.
+
+
+> Presumably we want this
+> version to take precedence by the set_virtual_time call
+> happening after the kvm_arch_set_registers, but is this
+> guaranteed ?
+
+Actually it doesn't really matter which takes precedence (I don't think),
+which is why we can rely on the usual save/restore for migration. We only
+need the new state this patch adds because we don't have any recent state
+otherwise, and because then we can be selective and only do the
+save/restore when transitioning to/from paused state.
 
 Thanks,
+drew
 
-         M.
--- 
-Jazz is not dead. It just smells funny...

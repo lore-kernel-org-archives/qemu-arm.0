@@ -1,147 +1,153 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4679602lff;
-        Mon, 16 Dec 2019 07:18:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyEH6W9i5bmRAoGwCvXAHEWoarWq6NHgX27LPtD5H2WcQk+vgoMIa49Kjj0rlE+9Y3gfvbN
-X-Received: by 2002:a05:6830:2081:: with SMTP id y1mr33055143otq.55.1576509497951;
-        Mon, 16 Dec 2019 07:18:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576509497; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4700771lff;
+        Mon, 16 Dec 2019 07:35:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzI+o8j4WTuCVESGrsPaT2FjCc71466DToc4hP3EpMtZ6+HPzsPIx5GDy0uMhBOYHW0ADql
+X-Received: by 2002:a05:6830:1141:: with SMTP id x1mr32987299otq.120.1576510511402;
+        Mon, 16 Dec 2019 07:35:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576510511; cv=none;
         d=google.com; s=arc-20160816;
-        b=s2rdYvW+s8fhPE6vr0OePlLQTPtCtn6QlGOFvTqrEvEUqkKFXPzCWYwMaWrgEne8+J
-         BgMKJqElOWr9F7y6A5Nt7zl87gw+0MeeIdjGJkfsCcH6ueX0JilZ9nlQF9ptChyUJnLw
-         Eva40MJcqFRxOjZE8kXxs1/+UOvvAhD8G5Usm4mlKgoRpJdHkvB4k8ny00i+c1ttmYro
-         OkqGHYY5Oh8m31IlTEhk2oPUZ333mWKh15rN/5bWZYdxIlmfTf3x8C8cyTRNgmsvRfzE
-         G9Fs3dhy4W865o36x2U0ntdRdozTo07s9kpgc52USU0BVnHfeXFlwjy9xq5bHl2l04oo
-         lF+A==
+        b=Ho6yimDlF6UI+H29s0aCsb3smvmDj1HofSFmamglLJDMpke/mXrPSMjbM9TjHgGy64
+         x5GRmhme2webWOcWTh7cDrtDyKFzm0pnhNEUgnL4r0x/aV3mYNUF8P1N5r2D1ST6q8LC
+         NXZoQwXGblcCC+3FkviHYFkq9f7Mg7tFpEFpr6LkvCIUj8G+cyHo3dVHBseeWIkEvoVJ
+         yAuX6rTkFhjkumDxJWH6rKAfMfNRq6/OF7tcejc6YZwUXnnghJkS+r6hm1CSiKOI/Tia
+         diHRcajP7KyIZzFrr/yjgcEgCUqmMR8bZDKP+x4qGbfGVEvE8DCG2m7NIEoqOLNe+dyv
+         zqLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:cc:to:from:ironport-sdr:dkim-signature;
-        bh=Z0g33k0fJJlh3np7I7IZdcyVyzV2EJT6J7A5HaBP1Jc=;
-        b=serMIwGlX0e6C0/SG8hhDAr+er1N9bTw0P78vpRj3vSZNeO1nW7Dwf2t7pifo0+MTJ
-         BP+xM++2zQiLZSQicOb4DKNgl5toEwpJMpoUh8dA2KSHChVcyo2q5MnBtyP1bMyqoItk
-         HPsj3SgyB5DKnI6KTCPWGTkX35obmRCOIt92DPEBI2X3qAHe4dCtm+VL1rSkm7DdLmny
-         iwyj6927iHKp74C5MZo0OThZ7dMagb+kCLWmcyMtuDcF9i8hzQXlDwcXE4J3kBHcQVO6
-         cU9pcJr3ZDYiGt6ByQT91N/PK/q39lcHnMPFwTOqneLxn9oAxyynhwaDbHzwMUO5Y5Qz
-         nuzA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=XlFImKkLeBBCYbNKNKMVNzlOgmpDx8oY5F19MpVJ9X0=;
+        b=iOvk3OYmw3VfjbLN/cCM0zr8/GAWP5JCWHqn1Ip494pd0+XqMmNKgE0WxjZaHcdGIC
+         99Wm7hGHIR2vy/e36r9u7fknohW1s3MUqEt6+UKxOloRsb8U1GCGmS0jCi34ln5iGuva
+         gc8VJRZCvg15jHJpjzpCDYbAsf9rgEl1O6skyS9TSMOjIklvwqvJxQD7cQ++EH2acofB
+         2evbiEmvELTEFBGLkGNiMuRzTHzIrz2MMl62YSwe0PdSozY29NN+XqLishX9d33Xlx7s
+         TlQC3S0Ba647x8ejAuj7KixCO+OXVVZfU7iUXxSLJTX5tl6NAw3WvcV/sKFeewYDZnxH
+         ZqYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=DdQXvSKh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="ac/8lu9Q";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si11164071otl.133.2019.12.16.07.18.17
+        by mx.google.com with ESMTPS id x9si9470227otk.170.2019.12.16.07.35.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Dec 2019 07:18:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Dec 2019 07:35:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amazon.de header.s=amazon201209 header.b=DdQXvSKh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.de
-Received: from localhost ([::1]:55428 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="ac/8lu9Q";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igs8W-0004cu-Hp
-	for alex.bennee@linaro.org; Mon, 16 Dec 2019 10:18:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54437)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1igsOs-0000Hf-Lj
+	for alex.bennee@linaro.org; Mon, 16 Dec 2019 10:35:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59708)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prvs=246de4cf7=sveith@amazon.com>)
- id 1igs7d-0003rC-5b
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 10:17:22 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1igsNx-00084L-8d
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 10:34:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prvs=246de4cf7=sveith@amazon.com>)
- id 1igs7c-0001va-2V
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 10:17:21 -0500
-Received: from smtp-fw-6001.amazon.com ([52.95.48.154]:28350)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <prvs=246de4cf7=sveith@amazon.com>)
- id 1igs7b-0001l9-Tf; Mon, 16 Dec 2019 10:17:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.de; i=@amazon.de; q=dns/txt; s=amazon201209;
- t=1576509440; x=1608045440;
- h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=Z0g33k0fJJlh3np7I7IZdcyVyzV2EJT6J7A5HaBP1Jc=;
- b=DdQXvSKhl1V1Io4wkW879gc70VYua6X1AQQX1wvqDzEzaUxgvBtCcym2
- +pVKbLx7DUeH78UH38X6XNNjkrB28HAbMlJmgYROPCqnkB9eV3BQBQ/i7
- 7bfY/5089iyGEjLfgBifrb2h5uOCUZ9Og0WHcGm9uyrztUEqZsckaEgSf I=;
-IronPort-SDR: fw3ADRrLN+ng2QTpfC/KOk7ikWLls4Hna//RYlheOYRyO2E025gTqCHfcvS2suqr9aiNJiFeDx
- nUvjaVQR7u+g==
-X-IronPort-AV: E=Sophos;i="5.69,322,1571702400"; 
-   d="scan'208";a="9275773"
-Received: from iad6-co-svc-p1-lb1-vlan3.amazon.com (HELO
- email-inbound-relay-2b-5bdc5131.us-west-2.amazon.com) ([10.124.125.6])
- by smtp-border-fw-out-6001.iad6.amazon.com with ESMTP;
- 16 Dec 2019 15:17:20 +0000
-Received: from sveith-desktop.aka.corp.amazon.com
- (pdx2-ws-svc-lb17-vlan2.amazon.com [10.247.140.66])
- by email-inbound-relay-2b-5bdc5131.us-west-2.amazon.com (Postfix) with ESMTPS
- id 3CCE3A2197; Mon, 16 Dec 2019 15:17:18 +0000 (UTC)
-Received: from sveith-desktop.aka.corp.amazon.com (localhost [127.0.0.1])
- by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Debian-3) with ESMTP id
- xBGFHGdw014168; Mon, 16 Dec 2019 16:17:16 +0100
-Received: (from sveith@localhost)
- by sveith-desktop.aka.corp.amazon.com (8.15.2/8.15.2/Submit) id xBGFHFLS014143;
- Mon, 16 Dec 2019 16:17:15 +0100
-From: Simon Veith <sveith@amazon.de>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Simon Veith <sveith@amazon.de>, Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v3 6/6] hw/arm/smmuv3: Report F_STE_FETCH fault address in
- correct word position
-Date: Mon, 16 Dec 2019 16:15:12 +0100
-Message-Id: <1576509312-13083-7-git-send-email-sveith@amazon.de>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1576509312-13083-1-git-send-email-sveith@amazon.de>
-References: <1576509312-13083-1-git-send-email-sveith@amazon.de>
-Precedence: Bulk
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 52.95.48.154
-X-BeenThere: qemu-arm@nongnu.org
+ (envelope-from <peter.maydell@linaro.org>) id 1igsNu-0007bX-ST
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 10:34:12 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:35132)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1igsNu-0007b1-Ia
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 10:34:10 -0500
+Received: by mail-oi1-x242.google.com with SMTP id k196so3623992oib.2
+ for <qemu-devel@nongnu.org>; Mon, 16 Dec 2019 07:34:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=XlFImKkLeBBCYbNKNKMVNzlOgmpDx8oY5F19MpVJ9X0=;
+ b=ac/8lu9Qp8RqTMui7fWYkg3YW0UzDilHTCt07oFtlDFztpucpEj1EuQyWpkzPlI7xK
+ niV9XXnmznXkYllPsnWsQgLejsr2wfbSNyARJFW0aGJSp6L3OeHK3HW4oVZr43p2oohy
+ qybzctq6hNnsIo4THy/YB0ezl9kDLuGikOkmj+wJ2sf1COWNadr70A/5DhzJpZ1QtOVP
+ Noe36WVdcTh31UmRsyLaO63hupD7Xc7abZcZzn1jmzbDFqDtkSBpbjhcYgT+LnHuYBVv
+ GEo6xSfj6Tmiq7++BPfFtymsONqYTynfgarHzh+KPpdTAypq/FIj5M5NS7h45LFT7ZJC
+ kLrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=XlFImKkLeBBCYbNKNKMVNzlOgmpDx8oY5F19MpVJ9X0=;
+ b=ACgrzqa5ljheeFxUTfWGAsQZpClYe1WUUYhjAPiHJydN4a/OsHlw3JCkL5z6Q2GEId
+ 33KWyHTkJD4leSPu51yM5EyhupuxQgnKUC9HywHu5vwRxHhjUPHqsouEZta4yr6f7nAv
+ aGVKol0gtKpKaEZj+u7JvYohp6wJAATOAPCL0lysg/iVfqTBLTnrMfXPe90C3aHTG5NH
+ BiYp637DZ7CghVge3YBxpmkccjC13DPfCh9fgB5ad9SHZgz91GBz3vdRlLMGANYJr265
+ 5loZUIRa4eIKZIWCi8WNHRdYrekzmxPUXaQC0wAQRYLZkuGDHSehXHcUTWa8y6ySjZT8
+ E+kw==
+X-Gm-Message-State: APjAAAVFMShes+5Ig9xlo9KnmADW0cBm1eYNhfBULjnkkLzPWWzfyG0Z
+ zplcRfNgYcIU8CPM2IqtMWRNgI1NkJmYY8H490Cy8Q==
+X-Received: by 2002:aca:f484:: with SMTP id s126mr9237783oih.48.1576510448904; 
+ Mon, 16 Dec 2019 07:34:08 -0800 (PST)
+MIME-Version: 1.0
+References: <20191212173320.11610-1-drjones@redhat.com>
+In-Reply-To: <20191212173320.11610-1-drjones@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 Dec 2019 15:33:57 +0000
+Message-ID: <CAFEAcA9FprSotg11rS0fM94QiciysZ6kgKhyU4eQfZg7YYaL5Q@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 0/5] target/arm/kvm: Adjust virtual time
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uo+UQp+epxq0
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: bijan.mottahedeh@oracle.com, Marc Zyngier <maz@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Heyi Guo <guoheyi@huawei.com>, msys.mizuma@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wHJhUijZ0VC+
 
-The smmuv3_record_event() function that generates the F_STE_FETCH error
-uses the EVT_SET_ADDR macro to record the fetch address, placing it in
-32-bit words 4 and 5.
+On Thu, 12 Dec 2019 at 17:33, Andrew Jones <drjones@redhat.com> wrote:
 
-The correct position for this address is in words 6 and 7, per the
-SMMUv3 Architecture Specification.
+> Userspace that wants to set KVM_REG_ARM_TIMER_CNT should beware that
+> the KVM register ID is not correct.  This cannot be fixed because it's
+> UAPI and if the UAPI headers are used then it can't be a problem.
+> However, if a userspace attempts to create the ID themselves from the
+> register's specification, then they will get KVM_REG_ARM_TIMER_CVAL
+> instead, as the _CNT and _CVAL definitions have their register
+> parameters swapped.
 
-Update the function to use the EVT_SET_ADDR2 macro instead, which is the
-macro intended for writing to these words.
+So, to be clear, you mean that:
 
-ref. ARM IHI 0070C, section 7.3.4.
+(1) the kernel headers say:
 
-Signed-off-by: Simon Veith <sveith@amazon.de>
-Cc: Eric Auger <eric.auger@redhat.com>
-Cc: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Acked-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/smmuv3.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+/* EL0 Virtual Timer Registers */
+#define KVM_REG_ARM_TIMER_CTL           ARM64_SYS_REG(3, 3, 14, 3, 1)
+#define KVM_REG_ARM_TIMER_CNT           ARM64_SYS_REG(3, 3, 14, 3, 2)
+#define KVM_REG_ARM_TIMER_CVAL          ARM64_SYS_REG(3, 3, 14, 0, 2)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 31ac3ca..8b5f157 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -172,7 +172,7 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
-     case SMMU_EVT_F_STE_FETCH:
-         EVT_SET_SSID(&evt, info->u.f_ste_fetch.ssid);
-         EVT_SET_SSV(&evt,  info->u.f_ste_fetch.ssv);
--        EVT_SET_ADDR(&evt, info->u.f_ste_fetch.addr);
-+        EVT_SET_ADDR2(&evt, info->u.f_ste_fetch.addr);
-         break;
-     case SMMU_EVT_C_BAD_STE:
-         EVT_SET_SSID(&evt, info->u.c_bad_ste.ssid);
--- 
-2.7.4
+(2) some of the RHSes of these are wrong
 
+(3) but the kernel internally is using the same 'wrong' value, so
+userspace also needs to use that value, ie trust the #defined name
+rather than manufacturing one ?
+
+That's awkward. I think it would be worth at least having a kernel
+patch to add a comment clearly documenting this bug.
+
+(This error seems to only be in the 64-bit ABI, not 32-bit.)
+
+QEMU does assume that the kernel's ID register values match
+the hardware for sysregs in some ways -- we use this when we
+construct our mapping from KVM register IDs as returned by
+KVM_GET_REG_LIST to QEMU cpreg definitions and thus CPUState
+struct fields. I *think* that in this case the only visible
+effect will be that gdbstub will show you the CNT value
+if you ask it to print the value of the CVAL sysreg.
+
+thanks
+-- PMM

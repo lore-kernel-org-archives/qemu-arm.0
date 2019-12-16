@@ -1,550 +1,223 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5253116lff;
-        Mon, 16 Dec 2019 15:39:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxVM8D5Lv38M5388B+sfyARd9hIE3y4oGmTpDRscBufAhbcXLyVzocNiNNNZTIwzLNk1Ory
-X-Received: by 2002:ad4:4f47:: with SMTP id eu7mr2011099qvb.69.1576539577780;
-        Mon, 16 Dec 2019 15:39:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576539577; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5253256lff;
+        Mon, 16 Dec 2019 15:39:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzTFTsDXUdK5gU23PbjgELoct8j2zJTkmHC1476rOuQqRK0Jczd+pOAk6EPy34B4PVe6ZSz
+X-Received: by 2002:ac8:34b5:: with SMTP id w50mr2010793qtb.107.1576539584944;
+        Mon, 16 Dec 2019 15:39:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576539584; cv=none;
         d=google.com; s=arc-20160816;
-        b=ayhbCUQbPWZMCdp24xjb69rov88mRgkibbqfV/6JbCO0Gk2KHlhdivXnpZqTcz4j0P
-         jLkj+THEORcfZ3f9Yrrai1TLxgwVE0AMCthKG/ngTxPfCi32lnWGgh9S7U86e75W2cLK
-         2tkHfUjsOWZxC+3A1+UBWk8OsR4efV87hzgKCxoEJSeWYx8D8wInxsuiVySpTBPpbJxN
-         jhgQE1E2HGFMny+QiO2aKA1tJPNQ+gOEh3kUlC7N8Th8xe6xErziM3d/dytIDsJxPWHe
-         puSESsVBKpqRR5610Ju+oQuiJC1tcD1FGvo5vhVNMsSFLyItTRbLVaMdAjguckg6AdiX
-         jndQ==
+        b=XH+BoptKU/64D27TMGClZk2KiQQRyG0k2FwjSAY6KlUWvPJ4mGJ3qHbSk6Al/9UHjU
+         yLjJVlmybfAn8l4FuLiw/i6Nh0GcjL0x9TCTI6fXycMkXAbJ4145kRtkDS28iHbzlwha
+         yAY/ll96Vz/Z5KSCMtJUWhgqUS8UGM8TqOSENnZ5z0ea5UOpS1ca9zqydepWkgZVfXkb
+         rk3MCs/RUIJg/PHaXsXUvWp2RWO/3x1H+YcpCYOG8c3R4y1d6hASlLRir+n3Mh4G19xp
+         YyXgRTOvylLMYja17pDQ0+u2hzh/KVE0KLdpETXG8Y7z5PPTKlgpHZDxNZe9+Agep2SS
+         n5fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=xDgLVEsUOOu8ERIxe7mP2M2IfpLwU7FHD+7ZqWBtdxs=;
-        b=dH4s4dYMg4YzVjDlc98tSqusNgamjZ6BcXsVB2X08dSBrne7H1wlesLSsrOUg5Fpiw
-         V0ygqI2ALLCcyS+y1kwHgPmR8c1NXrbBJ3MAnh5z7szR+wjoWPSTPOb0SAiefYHvEh62
-         UFJUN5ZQagFmCur09QzYPHEbM/ksEuo5gBp7012/RFvO044H8sjW/heALRQ5XMNWpOAN
-         OkI7K9Z2TBH76ooOwDCgsa2UjZ1zPXIWXh9X61gpZGrDcDjjbfofo+tN8aTe2kW+T4hU
-         j60pFxuQnvNVGTWELesD1ks7LoH1ZNR5q89Vy7yYHl6aPzCxntbiDt2Fx7Qh1JX5Eaq6
-         M3RA==
+        bh=SmQGHNsBURH4ZGvWc+jJV85ra1jitK2x3YLYu4ESBHA=;
+        b=p4OVc+lC/e/zC1j3t9p8pf8FVz+R6W+gNrZu+Wdn0NyJNxJM24gWB32ehH89KigVkL
+         2hDs9UKxOrahQW87nkLWMRbm9iNES4+88wYCQf2p1YOdM1aCHDwegCRddWgEoMikXas6
+         23hLen/DXp53L0J456J1qnfiFxohsAj5gU9r0I0+bN/J6ronE1Bjr243U3rQGBQn2WEY
+         lbbDtse3CvhwiW/A5rohz1ymDSzlbBEPH4KSJWeIv5xsYEJKFnVEmgnQ+5R459rLz9Cn
+         GkzVlOKzPNMYgJxLzMSSmenRXjM4e03x//WCL2z+sl7sKvmbArPNtYH/mMJGXxtYF0z3
+         twVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tQTzpcuO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eebgMRtO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w53si10537753qvc.21.2019.12.16.15.39.37
+        by mx.google.com with ESMTPS id f17si5795092qvx.115.2019.12.16.15.39.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Dec 2019 15:39:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Dec 2019 15:39:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tQTzpcuO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eebgMRtO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33356 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33348 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igzxg-0003Yd-Va
-	for alex.bennee@linaro.org; Mon, 16 Dec 2019 18:39:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50413)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1igzxo-0003I9-3R
+	for alex.bennee@linaro.org; Mon, 16 Dec 2019 18:39:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50188)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1igzuN-0006nP-8Y
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 18:36:13 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igzuE-0006aG-GK
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 18:36:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1igzuK-0002xp-S1
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 18:36:11 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:40622)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igzuD-0002ef-5P
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 18:36:02 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40622)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1igzuF-0002i1-7j; Mon, 16 Dec 2019 18:36:03 -0500
-Received: by mail-wm1-x341.google.com with SMTP id t14so1089647wmi.5;
- Mon, 16 Dec 2019 15:36:03 -0800 (PST)
+ id 1igzuC-0002dj-VS; Mon, 16 Dec 2019 18:36:01 -0500
+Received: by mail-wm1-x342.google.com with SMTP id t14so1089575wmi.5;
+ Mon, 16 Dec 2019 15:36:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=xDgLVEsUOOu8ERIxe7mP2M2IfpLwU7FHD+7ZqWBtdxs=;
- b=tQTzpcuOtPcXAw2MAF07vSuhqw2yDPZm1X7N7P+IyqWoIhqGVRuWn4TIrteOJ29kme
- uGYFfQi/N5iI9iZDzBpsw0GlvsptL22+EWIFL7p6YBHKaXO/dtCAJPbq7HfkXSWjXlb2
- /C9xhETBRr8A6q5hMum1A7G41NL5wP4PBCUFg5rPfOttY3xxTMkzBPFx8z3SCEBJ93J/
- xMM6n8YJ7HlcARSzwWbrdRCsa2BokLjI2y24TE3sIdWuugUB6sT230f3Gg0y+xrLzzDb
- aEC8C+BR3PIia2wcbb+pz7bda3bamguxOua/GIyrwWZ/BBLsMqj4HZc5w6xl/D5z+A89
- kRFQ==
+ bh=SmQGHNsBURH4ZGvWc+jJV85ra1jitK2x3YLYu4ESBHA=;
+ b=eebgMRtOxy/MIixwrQ7v/tJFD5RvEvCgFrI/G5lyGQjhVl2R/WPOL+SmDdH8JW5AOI
+ v6Y/5KgLr4tseL8EduoDkw3k0d2kgLJjJgUGrm+VchDM9FiDkOA5bsJp5MA4p3EwxNDi
+ LmrnxWtA7DnLR37goPp2BVCEWi4+z2kL9wReqzyhR3RoVdXGanmjoTkWenVCMAYzJ/XR
+ kUN1qKvxy3lEnU66DyOPDY02JaASCf/IBByDhJ5f9P5owl8pDCpTSnDbmTeV/oAq+ehU
+ 5D0k+iJ2BP/ujHSOIlJAIs6DVNZjg7p1psrmK1/Bs9Zn15WZr4A8Pfmk1JTA1JW/ejyw
+ Tamg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=xDgLVEsUOOu8ERIxe7mP2M2IfpLwU7FHD+7ZqWBtdxs=;
- b=JwmL6RlgE03QBQpYh76mTtmbVTy3rJXTc89YCKc5p4o/xlOmoNCuYdj0IYhzfiOTBX
- 1rLrmXhNND/KZSnCbt+nSjtMn2q+x01j+yTx1aog0tlc/x7gh3bTsJwk4ZiFe7qD7du1
- qZBu9BNxswGSiuVflEtilcw1ksJz9UMu9RdrT1VdZHhPBnCBijxK6nomarHHq/TDOQh9
- 4vtpyLLVQr3aXJnFLl0jwoYekyCE9nDcMm4N6yoL++8SZmVL5N5E1jCTQhfqjXrWZSas
- Hxiu36nw5qoxmH69M6jgElomUCzmMxbVZdEjrpBjSYm9fYEoPy+e6f0R1H0vTLLNKeNZ
- SMcA==
-X-Gm-Message-State: APjAAAVJ+YSrBSYemrhDpPpYCk3zo6Za9vcTXa19ygxjEdtATfM90cBM
- eeCVuhcL57xtl+juL0gCaBUOcdUp
-X-Received: by 2002:a1c:1d16:: with SMTP id d22mr1761951wmd.158.1576539361798; 
- Mon, 16 Dec 2019 15:36:01 -0800 (PST)
+ bh=SmQGHNsBURH4ZGvWc+jJV85ra1jitK2x3YLYu4ESBHA=;
+ b=WoJCBBjXguzYGrkZyjOyGUB/CriY/l+NYAT+6JvA0okQnEF59DmTrozEBuCWLSyPFz
+ 8C2/hHrRivPnlKgauO48XA/XH2mqHpAeSfO5eUKsIxGfgtO0qw/ssYQB/Fyn8Ef/55QN
+ JWllBv99xGMNB96ho+0JVOWP+0SxO5bDuI1GTBeuQtHndu5r9R3S5j4IXaD+pStAWsyl
+ DqbjbMRLeFz4LL3id3ZL6uM3RKHpEcmXuQ67+5C4/99oV5+5MwgAF82O3N4bGitZIyS8
+ QavC4Ql/EEIcWus9micOpCp+S39mEJNUGKBzTIDLt9U/7JmWgWYPX6MaQTyuqUQ5cA2S
+ 8myg==
+X-Gm-Message-State: APjAAAVidfUI+XGUsopPjVn0DIuKm27uR4jOHJGT84TaMW3O3YoAQstN
+ omBQxBh8FO061V262Ql+Lrmw+tD0
+X-Received: by 2002:a1c:8095:: with SMTP id b143mr1759229wmd.7.1576539359747; 
+ Mon, 16 Dec 2019 15:35:59 -0800 (PST)
 Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
- by smtp.gmail.com with ESMTPSA id z83sm984501wmg.2.2019.12.16.15.36.01
+ by smtp.gmail.com with ESMTPSA id z83sm984501wmg.2.2019.12.16.15.35.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Dec 2019 15:36:01 -0800 (PST)
+ Mon, 16 Dec 2019 15:35:59 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 07/10] arm: allwinner-h3: add CPU Configuration module
-Date: Tue, 17 Dec 2019 00:35:16 +0100
-Message-Id: <20191216233519.29030-8-nieklinnenbank@gmail.com>
+Subject: [PATCH v2 04/10] arm: allwinner-h3: add USB host controller
+Date: Tue, 17 Dec 2019 00:35:13 +0100
+Message-Id: <20191216233519.29030-5-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191216233519.29030-1-nieklinnenbank@gmail.com>
 References: <20191216233519.29030-1-nieklinnenbank@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::342
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, Niek Linnenbank <nieklinnenbank@gmail.com>,
  qemu-arm@nongnu.org, philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TKorQHnlzmA9
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: n+vQEcz3w+1o
 
-The Allwinner H3 System on Chip design contains four ARM Cortex A7
-processors that can be configured and reset using the CPU Configuration
-module interface. This commit adds support for the CPU configuration
-interface which emulates the following features:
-
- * CPU reset
- * Shared 64-bit timer
+The Allwinner H3 System on Chip contains multiple USB 2.0 bus
+connections which provide software access using the Enhanced
+Host Controller Interface (EHCI) and Open Host Controller
+Interface (OHCI) interfaces. This commit adds support for
+both interfaces in the Allwinner H3 System on Chip.
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/hw/arm/allwinner-h3.h         |   2 +
- include/hw/misc/allwinner-h3-cpucfg.h |  42 ++++
- hw/arm/allwinner-h3.c                 |   7 +
- hw/misc/allwinner-h3-cpucfg.c         | 288 ++++++++++++++++++++++++++
- hw/misc/Makefile.objs                 |   1 +
- hw/misc/trace-events                  |   5 +
- 6 files changed, 345 insertions(+)
- create mode 100644 include/hw/misc/allwinner-h3-cpucfg.h
- create mode 100644 hw/misc/allwinner-h3-cpucfg.c
+ hw/usb/hcd-ehci.h        |  1 +
+ hw/arm/allwinner-h3.c    | 28 ++++++++++++++++++++++++++++
+ hw/usb/hcd-ehci-sysbus.c | 17 +++++++++++++++++
+ 3 files changed, 46 insertions(+)
 
-diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-index bead6d4f85..8128ae6131 100644
---- a/include/hw/arm/allwinner-h3.h
-+++ b/include/hw/arm/allwinner-h3.h
-@@ -27,6 +27,7 @@
- #include "hw/timer/allwinner-a10-pit.h"
- #include "hw/intc/arm_gic.h"
- #include "hw/misc/allwinner-h3-clk.h"
-+#include "hw/misc/allwinner-h3-cpucfg.h"
- #include "hw/misc/allwinner-h3-syscon.h"
- #include "target/arm/cpu.h"
- 
-@@ -74,6 +75,7 @@ typedef struct AwH3State {
-     const hwaddr *memmap;
-     AwA10PITState timer;
-     AwH3ClockState ccu;
-+    AwH3CpuCfgState cpucfg;
-     AwH3SysconState syscon;
-     GICState gic;
-     MemoryRegion sram_a1;
-diff --git a/include/hw/misc/allwinner-h3-cpucfg.h b/include/hw/misc/allwinner-h3-cpucfg.h
-new file mode 100644
-index 0000000000..92b2dcbe2f
---- /dev/null
-+++ b/include/hw/misc/allwinner-h3-cpucfg.h
-@@ -0,0 +1,42 @@
-+/*
-+ * Allwinner H3 CPU Configuration Module emulation
-+ *
-+ * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_MISC_ALLWINNER_H3_CPUCFG_H
-+#define HW_MISC_ALLWINNER_H3_CPUCFG_H
-+
-+#include "hw/sysbus.h"
-+
-+#define TYPE_AW_H3_CPUCFG   "allwinner-h3-cpucfg"
-+#define AW_H3_CPUCFG(obj)   OBJECT_CHECK(AwH3CpuCfgState, (obj), \
-+                                         TYPE_AW_H3_CPUCFG)
-+
-+typedef struct AwH3CpuCfgState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    MemoryRegion iomem;
-+    uint32_t gen_ctrl;
-+    uint32_t super_standby;
-+    uint32_t entry_addr;
-+    uint32_t counter_ctrl;
-+
-+} AwH3CpuCfgState;
-+
-+#endif
+diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
+index 0298238f0b..edb59311c4 100644
+--- a/hw/usb/hcd-ehci.h
++++ b/hw/usb/hcd-ehci.h
+@@ -342,6 +342,7 @@ typedef struct EHCIPCIState {
+ #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
+ #define TYPE_PLATFORM_EHCI "platform-ehci-usb"
+ #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
++#define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
+ #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
+ #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
+ #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
 diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index 8482d616e7..1a9748ab2e 100644
+index 0da09188d1..f0ea088852 100644
 --- a/hw/arm/allwinner-h3.c
 +++ b/hw/arm/allwinner-h3.c
-@@ -193,6 +193,9 @@ static void aw_h3_init(Object *obj)
+@@ -26,6 +26,7 @@
+ #include "hw/sysbus.h"
+ #include "hw/arm/allwinner-h3.h"
+ #include "hw/misc/unimp.h"
++#include "hw/usb/hcd-ehci.h"
+ #include "sysemu/sysemu.h"
  
-     sysbus_init_child_obj(obj, "syscon", &s->syscon, sizeof(s->syscon),
-                           TYPE_AW_H3_SYSCON);
-+
-+    sysbus_init_child_obj(obj, "cpucfg", &s->cpucfg, sizeof(s->cpucfg),
-+                          TYPE_AW_H3_CPUCFG);
- }
+ /* Memory map */
+@@ -317,6 +318,33 @@ static void aw_h3_realize(DeviceState *dev, Error **errp)
+     qdev_init_nofail(DEVICE(&s->ccu));
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_H3_CCU]);
  
- static void aw_h3_realize(DeviceState *dev, Error **errp)
-@@ -325,6 +328,10 @@ static void aw_h3_realize(DeviceState *dev, Error **errp)
-     qdev_init_nofail(DEVICE(&s->syscon));
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->syscon), 0, s->memmap[AW_H3_SYSCON]);
++    /* Universal Serial Bus */
++    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_EHCI0));
++    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI1],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_EHCI1));
++    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI2],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_EHCI2));
++    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI3],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_EHCI3));
++
++    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI0],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_OHCI0));
++    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI1],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_OHCI1));
++    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI2],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_OHCI2));
++    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI3],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_OHCI3));
++
+     /* UART0 */
+     serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART0], 2,
+                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART0),
+diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
+index 020211fd10..174c3446ef 100644
+--- a/hw/usb/hcd-ehci-sysbus.c
++++ b/hw/usb/hcd-ehci-sysbus.c
+@@ -145,6 +145,22 @@ static const TypeInfo ehci_exynos4210_type_info = {
+     .class_init    = ehci_exynos4210_class_init,
+ };
  
-+    /* CPU Configuration */
-+    qdev_init_nofail(DEVICE(&s->cpucfg));
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0, s->memmap[AW_H3_CPUCFG]);
++static void ehci_aw_h3_class_init(ObjectClass *oc, void *data)
++{
++    SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
++    DeviceClass *dc = DEVICE_CLASS(oc);
 +
-     /* Universal Serial Bus */
-     sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-diff --git a/hw/misc/allwinner-h3-cpucfg.c b/hw/misc/allwinner-h3-cpucfg.c
-new file mode 100644
-index 0000000000..1d238c5c78
---- /dev/null
-+++ b/hw/misc/allwinner-h3-cpucfg.c
-@@ -0,0 +1,288 @@
-+/*
-+ * Allwinner H3 CPU Configuration Module emulation
-+ *
-+ * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
++    sec->capsbase = 0x0;
++    sec->opregbase = 0x10;
++    set_bit(DEVICE_CATEGORY_USB, dc->categories);
++}
 +
-+#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "hw/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/error-report.h"
-+#include "qemu/timer.h"
-+#include "hw/core/cpu.h"
-+#include "arm-powerctl.h"
-+#include "hw/misc/allwinner-h3-cpucfg.h"
-+#include "trace.h"
-+
-+/* CPUCFG register offsets */
-+enum {
-+    REG_CPUS_RST_CTRL       = 0x0000, /* CPUs Reset Control */
-+    REG_CPU0_RST_CTRL       = 0x0040, /* CPU#0 Reset Control */
-+    REG_CPU0_CTRL           = 0x0044, /* CPU#0 Control */
-+    REG_CPU0_STATUS         = 0x0048, /* CPU#0 Status */
-+    REG_CPU1_RST_CTRL       = 0x0080, /* CPU#1 Reset Control */
-+    REG_CPU1_CTRL           = 0x0084, /* CPU#1 Control */
-+    REG_CPU1_STATUS         = 0x0088, /* CPU#1 Status */
-+    REG_CPU2_RST_CTRL       = 0x00C0, /* CPU#2 Reset Control */
-+    REG_CPU2_CTRL           = 0x00C4, /* CPU#2 Control */
-+    REG_CPU2_STATUS         = 0x00C8, /* CPU#2 Status */
-+    REG_CPU3_RST_CTRL       = 0x0100, /* CPU#3 Reset Control */
-+    REG_CPU3_CTRL           = 0x0104, /* CPU#3 Control */
-+    REG_CPU3_STATUS         = 0x0108, /* CPU#3 Status */
-+    REG_CPU_SYS_RST         = 0x0140, /* CPU System Reset */
-+    REG_CLK_GATING          = 0x0144, /* CPU Clock Gating */
-+    REG_GEN_CTRL            = 0x0184, /* General Control */
-+    REG_SUPER_STANDBY       = 0x01A0, /* Super Standby Flag */
-+    REG_ENTRY_ADDR          = 0x01A4, /* Reset Entry Address */
-+    REG_DBG_EXTERN          = 0x01E4, /* Debug External */
-+    REG_CNT64_CTRL          = 0x0280, /* 64-bit Counter Control */
-+    REG_CNT64_LOW           = 0x0284, /* 64-bit Counter Low */
-+    REG_CNT64_HIGH          = 0x0288, /* 64-bit Counter High */
++static const TypeInfo ehci_aw_h3_type_info = {
++    .name          = TYPE_AW_H3_EHCI,
++    .parent        = TYPE_SYS_BUS_EHCI,
++    .class_init    = ehci_aw_h3_class_init,
 +};
 +
-+/* CPUCFG register flags */
-+enum {
-+    CPUX_RESET_RELEASED     = ((1 << 1) | (1 << 0)),
-+    CPUX_STATUS_SMP         = (1 << 0),
-+    CPU_SYS_RESET_RELEASED  = (1 << 0),
-+    CLK_GATING_ENABLE       = ((1 << 8) | 0xF),
-+};
-+
-+/* CPUCFG register reset values */
-+enum {
-+    REG_CLK_GATING_RST      = 0x0000010F,
-+    REG_GEN_CTRL_RST        = 0x00000020,
-+    REG_SUPER_STANDBY_RST   = 0x0,
-+    REG_CNT64_CTRL_RST      = 0x0,
-+};
-+
-+static void allwinner_h3_cpucfg_cpu_reset(AwH3CpuCfgState *s, uint8_t cpu_id)
-+{
-+    int ret;
-+
-+    trace_allwinner_h3_cpucfg_cpu_reset(cpu_id, s->entry_addr);
-+
-+    ret = arm_set_cpu_on(cpu_id, s->entry_addr, 0, 3, false);
-+    if (ret != QEMU_ARM_POWERCTL_RET_SUCCESS) {
-+        error_report("%s: failed to bring up CPU %d: err %d",
-+                     __func__, cpu_id, ret);
-+        return;
-+    }
-+}
-+
-+static uint64_t allwinner_h3_cpucfg_read(void *opaque, hwaddr offset,
-+                                         unsigned size)
-+{
-+    const AwH3CpuCfgState *s = (AwH3CpuCfgState *)opaque;
-+    uint64_t val = 0;
-+
-+    switch (offset) {
-+    case REG_CPUS_RST_CTRL:     /* CPUs Reset Control */
-+    case REG_CPU_SYS_RST:       /* CPU System Reset */
-+        val = CPU_SYS_RESET_RELEASED;
-+        break;
-+    case REG_CPU0_RST_CTRL:     /* CPU#0 Reset Control */
-+    case REG_CPU1_RST_CTRL:     /* CPU#1 Reset Control */
-+    case REG_CPU2_RST_CTRL:     /* CPU#2 Reset Control */
-+    case REG_CPU3_RST_CTRL:     /* CPU#3 Reset Control */
-+        val = CPUX_RESET_RELEASED;
-+        break;
-+    case REG_CPU0_CTRL:         /* CPU#0 Control */
-+    case REG_CPU1_CTRL:         /* CPU#1 Control */
-+    case REG_CPU2_CTRL:         /* CPU#2 Control */
-+    case REG_CPU3_CTRL:         /* CPU#3 Control */
-+        val = 0;
-+        break;
-+    case REG_CPU0_STATUS:       /* CPU#0 Status */
-+    case REG_CPU1_STATUS:       /* CPU#1 Status */
-+    case REG_CPU2_STATUS:       /* CPU#2 Status */
-+    case REG_CPU3_STATUS:       /* CPU#3 Status */
-+        val = CPUX_STATUS_SMP;
-+        break;
-+    case REG_CLK_GATING:        /* CPU Clock Gating */
-+        val = CLK_GATING_ENABLE;
-+        break;
-+    case REG_GEN_CTRL:          /* General Control */
-+        val = s->gen_ctrl;
-+        break;
-+    case REG_SUPER_STANDBY:     /* Super Standby Flag */
-+        val = s->super_standby;
-+        break;
-+    case REG_ENTRY_ADDR:        /* Reset Entry Address */
-+        val = s->entry_addr;
-+        break;
-+    case REG_DBG_EXTERN:        /* Debug External */
-+        break;
-+    case REG_CNT64_CTRL:        /* 64-bit Counter Control */
-+        val = s->counter_ctrl;
-+        break;
-+    case REG_CNT64_LOW:         /* 64-bit Counter Low */
-+        val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) & 0xffffffff;
-+        break;
-+    case REG_CNT64_HIGH:        /* 64-bit Counter High */
-+        val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) >> 32;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad read offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        return 0;
-+    }
-+
-+    trace_allwinner_h3_cpucfg_read(offset, val, size);
-+
-+    return val;
-+}
-+
-+static void allwinner_h3_cpucfg_write(void *opaque, hwaddr offset,
-+                                      uint64_t val, unsigned size)
-+{
-+    AwH3CpuCfgState *s = (AwH3CpuCfgState *)opaque;
-+
-+    trace_allwinner_h3_cpucfg_write(offset, val, size);
-+
-+    switch (offset) {
-+    case REG_CPUS_RST_CTRL:     /* CPUs Reset Control */
-+    case REG_CPU_SYS_RST:       /* CPU System Reset */
-+        break;
-+    case REG_CPU0_RST_CTRL:     /* CPU#0 Reset Control */
-+        if (val) {
-+            allwinner_h3_cpucfg_cpu_reset(s, 0);
-+        }
-+        break;
-+    case REG_CPU1_RST_CTRL:     /* CPU#1 Reset Control */
-+        if (val) {
-+            allwinner_h3_cpucfg_cpu_reset(s, 1);
-+        }
-+        break;
-+    case REG_CPU2_RST_CTRL:     /* CPU#2 Reset Control */
-+        if (val) {
-+            allwinner_h3_cpucfg_cpu_reset(s, 2);
-+        }
-+        break;
-+    case REG_CPU3_RST_CTRL:     /* CPU#3 Reset Control */
-+        if (val) {
-+            allwinner_h3_cpucfg_cpu_reset(s, 3);
-+        }
-+        break;
-+    case REG_CPU0_CTRL:         /* CPU#0 Control */
-+    case REG_CPU1_CTRL:         /* CPU#1 Control */
-+    case REG_CPU2_CTRL:         /* CPU#2 Control */
-+    case REG_CPU3_CTRL:         /* CPU#3 Control */
-+    case REG_CPU0_STATUS:       /* CPU#0 Status */
-+    case REG_CPU1_STATUS:       /* CPU#1 Status */
-+    case REG_CPU2_STATUS:       /* CPU#2 Status */
-+    case REG_CPU3_STATUS:       /* CPU#3 Status */
-+    case REG_CLK_GATING:        /* CPU Clock Gating */
-+    case REG_GEN_CTRL:          /* General Control */
-+        s->gen_ctrl = val;
-+        break;
-+    case REG_SUPER_STANDBY:     /* Super Standby Flag */
-+        s->super_standby = val;
-+        break;
-+    case REG_ENTRY_ADDR:        /* Reset Entry Address */
-+        s->entry_addr = val;
-+        break;
-+    case REG_DBG_EXTERN:        /* Debug External */
-+        break;
-+    case REG_CNT64_CTRL:        /* 64-bit Counter Control */
-+        s->counter_ctrl = val;
-+        break;
-+    case REG_CNT64_LOW:         /* 64-bit Counter Low */
-+    case REG_CNT64_HIGH:        /* 64-bit Counter High */
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad write offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        return;
-+    }
-+}
-+
-+static const MemoryRegionOps allwinner_h3_cpucfg_ops = {
-+    .read = allwinner_h3_cpucfg_read,
-+    .write = allwinner_h3_cpucfg_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+        .unaligned = false
-+    },
-+    .impl.min_access_size = 4,
-+};
-+
-+static void allwinner_h3_cpucfg_reset(DeviceState *dev)
-+{
-+    AwH3CpuCfgState *s = AW_H3_CPUCFG(dev);
-+
-+    /* Set default values for registers */
-+    s->gen_ctrl = REG_GEN_CTRL_RST;
-+    s->super_standby = REG_SUPER_STANDBY_RST;
-+    s->entry_addr = 0;
-+    s->counter_ctrl = REG_CNT64_CTRL_RST;
-+}
-+
-+static void allwinner_h3_cpucfg_realize(DeviceState *dev, Error **errp)
-+{
-+}
-+
-+static void allwinner_h3_cpucfg_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwH3CpuCfgState *s = AW_H3_CPUCFG(obj);
-+
-+    /* Memory mapping */
-+    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_h3_cpucfg_ops, s,
-+                          TYPE_AW_H3_CPUCFG, 1 * KiB);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription allwinner_h3_cpucfg_vmstate = {
-+    .name = "allwinner-h3-cpucfg",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(gen_ctrl, AwH3CpuCfgState),
-+        VMSTATE_UINT32(super_standby, AwH3CpuCfgState),
-+        VMSTATE_UINT32(counter_ctrl, AwH3CpuCfgState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void allwinner_h3_cpucfg_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = allwinner_h3_cpucfg_reset;
-+    dc->realize = allwinner_h3_cpucfg_realize;
-+    dc->vmsd = &allwinner_h3_cpucfg_vmstate;
-+}
-+
-+static const TypeInfo allwinner_h3_cpucfg_info = {
-+    .name          = TYPE_AW_H3_CPUCFG,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = allwinner_h3_cpucfg_init,
-+    .instance_size = sizeof(AwH3CpuCfgState),
-+    .class_init    = allwinner_h3_cpucfg_class_init,
-+};
-+
-+static void allwinner_h3_cpucfg_register(void)
-+{
-+    type_register_static(&allwinner_h3_cpucfg_info);
-+}
-+
-+type_init(allwinner_h3_cpucfg_register)
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index b234aefba5..c4ca2ed689 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -29,6 +29,7 @@ common-obj-$(CONFIG_MACIO) += macio/
- common-obj-$(CONFIG_IVSHMEM_DEVICE) += ivshmem.o
- 
- common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-clk.o
-+obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-cpucfg.o
- common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-syscon.o
- common-obj-$(CONFIG_REALVIEW) += arm_sysctl.o
- common-obj-$(CONFIG_NSERIES) += cbus.o
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 1deb1d08c1..b93089d010 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -1,5 +1,10 @@
- # See docs/devel/tracing.txt for syntax documentation.
- 
-+# allwinner-h3-cpucfg.c
-+allwinner_h3_cpucfg_cpu_reset(uint8_t cpu_id, uint32_t reset_addr) "H3-CPUCFG: cpu_reset: id %u, reset_addr 0x%" PRIu32
-+allwinner_h3_cpucfg_read(uint64_t offset, uint64_t data, unsigned size) "H3-CPUCFG: read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-+allwinner_h3_cpucfg_write(uint64_t offset, uint64_t data, unsigned size) "H3-CPUCFG: write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-+
- # eccmemctl.c
- ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
- ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
+ static void ehci_tegra2_class_init(ObjectClass *oc, void *data)
+ {
+     SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
+@@ -267,6 +283,7 @@ static void ehci_sysbus_register_types(void)
+     type_register_static(&ehci_platform_type_info);
+     type_register_static(&ehci_xlnx_type_info);
+     type_register_static(&ehci_exynos4210_type_info);
++    type_register_static(&ehci_aw_h3_type_info);
+     type_register_static(&ehci_tegra2_type_info);
+     type_register_static(&ehci_ppc4xx_type_info);
+     type_register_static(&ehci_fusbh200_type_info);
 -- 
 2.17.1
 

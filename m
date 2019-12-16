@@ -1,163 +1,168 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1093547lff;
-        Fri, 13 Dec 2019 09:05:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz0Oic2EIVzByMukp5CzzngyYIw3SfjcVkzDIT2QtTzqw8zE9Aie1uJI7pHLeC0UlT7HNM7
-X-Received: by 2002:a05:6830:1707:: with SMTP id 7mr16319251otk.185.1576256741126;
-        Fri, 13 Dec 2019 09:05:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576256741; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4426467lff;
+        Mon, 16 Dec 2019 03:40:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzGukTsBf2rNdoIgghl8HHwlcysOKoMILWabpa4rnJOIG9O5n5dDaHifds9jRht9wZx+neS
+X-Received: by 2002:a9d:6a98:: with SMTP id l24mr32434258otq.160.1576496411555;
+        Mon, 16 Dec 2019 03:40:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576496411; cv=none;
         d=google.com; s=arc-20160816;
-        b=Di33aFJxb1Gu0hdBxJaHb/LmC7nNlD66bgH6zetLY+B9i1beDsTbUF0tr12M6RdpQo
-         AVn0as6wrG/Y1I3YxACfXk4oneOcV00DQZsRTMAFUczbyHRKTNkRiiC7SFfTiSK0Rqwd
-         dTUUn4XZJtD7FSLoSnMIv0lZGKfiaZcWfuH5wT8bHYVwBXoYVFjhcKakqQC5KEpKTrmq
-         Ak20LF8+hSARR7OTZcNA5rI0lTwyrrB4ZGl0WIQTXe4V0uu2XaFQF6IuVBR0SsX+yB6M
-         VrgmL35olJ5qY6FXG5x4BwmZjxY8sKVE1SJtAY+Bi6CriBLkQVK42Bg3VWUCqazX4e0C
-         5kZg==
+        b=BiwVD4IupjNA2CBOtUiWE/HJT4e4Vqyh1aa6Yl4YWGPw3yGsKUxZZDZnOuO37LR5tT
+         gNPnSJTwGpXfcwHxCfJriDTgVvqkdgS1UBb58XeM+AHfqCZZ+XZU1l8FlAj/0UVmsEqt
+         7sW6pjPX6MVXtwFC9n8X1oZSiatlhIIf+Bs8makfl/74w5h+hddiXoBvDDxo1DzFR5vC
+         q7Mm0JoK6K2ARHKk6+4F++tO+hwNYqe2J54Ps3jSA3S9BnieDZqQdR9HFSBabJeiJB5P
+         VkIhiinlQSXmDCa1Ngt5UrFD6I5Pqtt8kP7L5Rvk65QUmg9UmkJtCMnHHBk4b/AeY5XR
+         wjiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=RZT7mKlrrJvs6wCkbiK3Z4f60pKV4mJ6oeMUJT8OsSQ=;
-        b=ZP3mHiLw3MNob5MbYBpWtvT7luE62GjxYVAETSM25jawI6NKhCMD36HAdjqlhm04wj
-         sEpO3VPvSRqUB3TkqiUyuHTWVeYimfKHtBzelvKZ3Gn652qvDBUJtuTUaQFyMmfDcG9U
-         XPsr2Ons/fxOP6JO6bFKNsy0P/E73kxYWIKvgUJAYRVilpKufrZUozYcBTfu9Wn07OBB
-         6J4xqhAt6RSfRptTlqouFJcy5oaIQz2P05x4CRHdnaD37n3BbRleuevWL66lX+IolAnq
-         qe0SZAKDLRb+sHM0Cz00FUrF457QgdFIgxdZ7y4Qu3GNhPIy08TKQzZ6aKhUO/XRNjl6
-         4E5w==
+        h=list-id:precedence:sender:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=OYDDHez2+eQPnVZemBiQrMSGx/8BMcqXBE4o9nFHE48=;
+        b=DTl2brs0rKzU01LgHQq8Rh2HdqGJupTuKayOvRNwvkrNiRKjdP+6OSLg4lyKa4QFBE
+         46yfLJ8XYstsF+l7wy1LvQaKwwVdQnu+8y/+daCn0xLa+1vG8DcZR7O/p7iSHLmTAiWd
+         NbEn4fOsiEZfQbtQTwGb+Om5fggkKDOvN0E9EbAT8XrYihnvsxPz7EQb23ZWYeMF3+8f
+         w/3JYs+x3FJmZUE9vOyso6Ox27Ywo8FmhOuu7FNjfEeWDaI9jH70XlnHZbXZIrImdaHm
+         WZnBROAiKJlBoXk25h2P/S7AEhD7KebUPEaRB4pPA3CbP2XOjlHPA3SdYzB9DiGaT2ES
+         beLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cujFDY+f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KBk/nbZo";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h22si5401420otk.294.2019.12.13.09.05.40
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2019 09:05:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id z203si10149874oia.124.2019.12.16.03.40.11;
+        Mon, 16 Dec 2019 03:40:11 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cujFDY+f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KBk/nbZo";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51772 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ifoNo-0006wv-9s
-	for alex.bennee@linaro.org; Fri, 13 Dec 2019 12:05:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55350)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ifoMc-0006M6-5E
- for qemu-devel@nongnu.org; Fri, 13 Dec 2019 12:04:27 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ifoMZ-0008P7-TF
- for qemu-devel@nongnu.org; Fri, 13 Dec 2019 12:04:24 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20155
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ifoMZ-0008OC-Pp
- for qemu-devel@nongnu.org; Fri, 13 Dec 2019 12:04:23 -0500
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727286AbfLPLkK (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Mon, 16 Dec 2019 06:40:10 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:44793 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1727230AbfLPLkK (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 16 Dec 2019 06:40:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576256663;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RZT7mKlrrJvs6wCkbiK3Z4f60pKV4mJ6oeMUJT8OsSQ=;
- b=cujFDY+flv18wXnMvQKcFqoUIm1V0f0kY32R0sHlYjINj88FdrpY5LzaXdAsR7ikFE12zH
- SsjVCrCwP9s1DtDudcd69IAHSPtTJReOQZ4fpKjEq49CdvxsBH0JONrzstTZkVrWLDt29p
- 18IELzsBVvTEcyAg4yE4l92eVr/eJWg=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-349-3yx9deyPOF2Y961Cm-OoWg-1; Fri, 13 Dec 2019 12:04:21 -0500
-Received: by mail-wr1-f70.google.com with SMTP id c6so2792193wrm.18
- for <qemu-devel@nongnu.org>; Fri, 13 Dec 2019 09:04:21 -0800 (PST)
+        s=mimecast20190719; t=1576496408;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references;
+        bh=OYDDHez2+eQPnVZemBiQrMSGx/8BMcqXBE4o9nFHE48=;
+        b=KBk/nbZoC62qgwq9OR0MytN0gQajn+nG//9G93J5YEduLMXncLh/BLze3xUIwKAiu/zE7z
+        Qr7fSCRvbOAbh+nnAqZDq1vCgXpLs2Do3pfPwcnsMnyTEgpzxUZ5J3qPvLiAPhuY9K/Ou8
+        CVKNZufRE3rJ6onWsLlVwXmlsFnERYQ=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-438-eAQTgS-5N32JWQj6OBJFDQ-1; Mon, 16 Dec 2019 06:40:05 -0500
+X-MC-Unique: eAQTgS-5N32JWQj6OBJFDQ-1
+Received: by mail-qv1-f71.google.com with SMTP id g6so910674qvp.0
+        for <kvm@vger.kernel.org>; Mon, 16 Dec 2019 03:40:05 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=XUiq4uJ2Xy7OvbOEdpiV9tYwd2TGjMstqgqamc0EQI0=;
- b=Lqg8RmN7ETpxPCD7omEwQ8AhI13vlHC9mJtaSGmUWwpjDnijcrM1d6A9cDpl3x21Wu
- n2W3Q+aeT5hZ6ShrJUqmnUoa70g6NBUPKSODBGo6EdvSo8hOD2sloxLyfWMrnLhofCSZ
- wNvh6zosWhKB/ND9aFvF6EJZCejAXJ97rGa+cFB1LNzuiStdTTfv5+HtrwcsVmEr28eF
- bjK6pQ2h7n5aPzcz+ohsRdJx9rZK4pewgUvbkG6iydXSVcup/efmf5c5wNseYvek791n
- ZZrCpO8tDEI70KDFyCgQ8L36w1QXEOVY05RiUqX0zZopnKbPs0ZPaUAH5KL1oOu25DOj
- PHrg==
-X-Gm-Message-State: APjAAAVhjUdQLApAn/woOa0zvIWcjKQrhZyx1ImNLcybbhpnn6pp5ktW
- Fw4XLQ4+2iwGSoLLOC2ZBVcHApBflsllJTvhcHi3hIyMjhFAuQMVZgr4oTLYSzfsnuMaWGkfX6T
- VjwTdzXyEf1nNgC0=
-X-Received: by 2002:a05:600c:2112:: with SMTP id
- u18mr14476732wml.100.1576256659830; 
- Fri, 13 Dec 2019 09:04:19 -0800 (PST)
-X-Received: by 2002:a05:600c:2112:: with SMTP id
- u18mr14476695wml.100.1576256659537; 
- Fri, 13 Dec 2019 09:04:19 -0800 (PST)
-Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.34])
- by smtp.gmail.com with ESMTPSA id m10sm10695455wrx.19.2019.12.13.09.04.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Dec 2019 09:04:18 -0800 (PST)
-Subject: Re: [PATCH v2 0/2] hw/arm: ast2600: Wire up eMMC controller
-To: Andrew Jeffery <andrew@aj.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, qemu-arm@nongnu.org
-References: <cover.fc3e5e495d85ebd919c1f06a1a2c7c7730518f9c.1576211124.git-series.andrew@aj.id.au>
- <16c90bb0-a3a9-06ec-e79a-bd98471d9e11@kaod.org>
- <1d96ac9b-5eb2-43ec-bf21-334ee3fa4420@www.fastmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d70b5f1a-08e3-4664-719f-dd5526a4135e@redhat.com>
-Date: Fri, 13 Dec 2019 18:04:17 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=OYDDHez2+eQPnVZemBiQrMSGx/8BMcqXBE4o9nFHE48=;
+        b=QDN9RbIsPLOSoWSoLSveINuLv3o5zJ5ZgHF7rfDVVg6/u3pXrayGYQaWBZBFJO75L4
+         mi3NJtRqM4lR/pjuVWMUBXSo+pbPBoIsOjx90c0/Xa4e6EK016eMzcjjrFIjBe8dUw6s
+         Z0fgRwdl/DKNd1BOa5J4EMupdmUZXZDD6uMbaAbDmQ0/KjsaR3WCilqNz2hzxmPsHc1a
+         8+jqiRGU4aSIBo+MpBfsUc6cbO/px6jlr0c9a93ySqNnvyJn8OLQZD6pA9ZhVIBlHTud
+         m/9Hfa/kL+WYv6HVUG1vWQ1XQDIc4VuOUIhqy7QrhXKxcf6oAV/59NS5tQbG5OsFiQiV
+         9IHw==
+X-Gm-Message-State: APjAAAUfgNQu/PvDVHHOtz1n/PTqBd1wh3yo3VWuqV5li2XvOIKDXNVy
+        jyDPoPRHDCttokytufWVxwiXij5jojdzI4AHbNjAze/IT7P8J9yyyegudFFm2BttcC3uZFRiJLq
+        xulM4aWn2GBoa
+X-Received: by 2002:aed:3be1:: with SMTP id s30mr24113989qte.163.1576496404872;
+        Mon, 16 Dec 2019 03:40:04 -0800 (PST)
+X-Received: by 2002:aed:3be1:: with SMTP id s30mr24113974qte.163.1576496404605;
+        Mon, 16 Dec 2019 03:40:04 -0800 (PST)
+Received: from redhat.com (bzq-111-168-31-5.red.bezeqint.net. [31.168.111.5])
+        by smtp.gmail.com with ESMTPSA id u16sm5807903qku.19.2019.12.16.03.39.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Dec 2019 03:40:03 -0800 (PST)
+Date:   Mon, 16 Dec 2019 06:39:56 -0500
+From:   "Michael S. Tsirkin" <mst@redhat.com>
+To:     Peter Maydell <peter.maydell@linaro.org>
+Cc:     Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        Andrew Baumann <Andrew.Baumann@microsoft.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        kvm-devel <kvm@vger.kernel.org>,
+        Alex Williamson <alex.williamson@redhat.com>,
+        Aleksandar Markovic <amarkovic@wavecomp.com>,
+        Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Alistair Francis <alistair@alistair23.me>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+        Paul Burton <pburton@wavecomp.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 0/8] Simplify memory_region_add_subregion_overlap(...,
+ priority=0)
+Message-ID: <20191216063529-mutt-send-email-mst@kernel.org>
+References: <20191214155614.19004-1-philmd@redhat.com>
+ <CAFEAcA_QZtU9X4fxZk2oWAkN-zxXdQZejrSKZbDxPKLMwdFWgw@mail.gmail.com>
+ <20191215044759-mutt-send-email-mst@kernel.org>
+ <CAFEAcA9ZF3VTR7kG_D-cJ+vPFTgd8zjmt2VPfJC7urNemF-5AQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <1d96ac9b-5eb2-43ec-bf21-334ee3fa4420@www.fastmail.com>
-Content-Language: en-US
-X-MC-Unique: 3yx9deyPOF2Y961Cm-OoWg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vv4uYUQ3zwOn
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9ZF3VTR7kG_D-cJ+vPFTgd8zjmt2VPfJC7urNemF-5AQ@mail.gmail.com>
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: f9X4oYtBTVNL
 
-On 12/13/19 8:37 AM, Andrew Jeffery wrote:
-> On Fri, 13 Dec 2019, at 18:03, C=C3=A9dric Le Goater wrote:
->> On 13/12/2019 05:28, Andrew Jeffery wrote:
->>> Hello,
->>>
->>> The AST2600 has an additional SDHCI intended for use as an eMMC boot so=
-urce.
->>> These two patches rework the existing ASPEED SDHCI model to accommodate=
- the
->>> single-slot nature of the eMMC controller and wire it into the AST2600 =
-SoC.
->>>
->>> v2 contains some minor refactorings in response to issues pointed out b=
-y
->>> Cedric.
->>  =20
->>
->> I think these patches are based on mainline. I fixed them locally on
->> my aspeed 5.0 branch and I plan to send them along with other aspeed
->> changes in the 5.0 timeframe.
->=20
-> Yeah, they're based on Peter's tree. I'll base future patches on yours.
+On Sun, Dec 15, 2019 at 03:27:12PM +0000, Peter Maydell wrote:
+> On Sun, 15 Dec 2019 at 09:51, Michael S. Tsirkin <mst@redhat.com> wrote:
+> >
+> > On Sat, Dec 14, 2019 at 04:28:08PM +0000, Peter Maydell wrote:
+> > > (It doesn't actually assert that it doesn't
+> > > overlap because we have some legacy uses, notably
+> > > in the x86 PC machines, which do overlap without using
+> > > the right function, which we've never tried to tidy up.)
+> >
+> > It's not exactly legacy uses.
+> >
+> > To be more exact, the way the non overlap versions
+> > are *used* is to mean "I don't care what happens when they overlap"
+> > as opposed to "will never overlap".
+> 
+> Almost all of the use of the non-overlap versions is
+> for "these are never going to overlap" -- devices or ram at
+> fixed addresses in the address space that can't
+> ever be mapped over by anything else. If you want
+> "can overlap but I don't care which one wins" then
+> that would be more clearly expressed by using the _overlap()
+> version but just giving everything that can overlap there
+> the same priority.
 
-To help any reviewer, simply add a note in the cover on which tree your=20
-series is based. This also works with individual patch, add the note=20
-under the '---' separator.
+Problem is device doesn't always know whether something can overlap it.
+Imagine device A at a fixed address.
+Guest can program device B to overlap the fixed address.
+How is device A supposed to know this can happen?
 
+
+
+> > There are lots of regions where guest can make things overlapping
+> > but doesn't, e.g. PCI BARs can be programmed to overlap
+> > almost anything.
+> >
+> > What happens on real hardware if you then access one of
+> > the BARs is undefined, but programming itself is harmless.
+> > That's why we can't assert.
+> 
+> Yeah, good point, for the special case where it's the
+> guest that's determining the addresses where something's
+> mapped we might want to allow the behaviour to fall out
+> of the implementation. (You could instead specify set of
+> priorities that makes the undefined-behaviour something
+> specific, rather than just an emergent property of
+> the implementation QEMU happens to have, but it seems
+> a bit hard to justify.)
+> 
+> thanks
+> -- PMM

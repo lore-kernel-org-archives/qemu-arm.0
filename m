@@ -1,254 +1,369 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5075195lff;
-        Mon, 16 Dec 2019 12:49:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzBJ1Eb0VpH9OerJh2y423Yg11JvqrTMlPO+DBRcNVIRxtURasB9mEH2bPGnRXSTOXMOxax
-X-Received: by 2002:a05:6830:128e:: with SMTP id z14mr32591555otp.184.1576529340074;
-        Mon, 16 Dec 2019 12:49:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576529340; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5118316lff;
+        Mon, 16 Dec 2019 13:28:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx2SnmVB20eTqu3BmaSdm9O1o5zLWyYesDjD+R2uBa4sU6jc1+o1On5eBN3ivmhJOdBZYVg
+X-Received: by 2002:a54:4117:: with SMTP id l23mr654889oic.140.1576531716838;
+        Mon, 16 Dec 2019 13:28:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576531716; cv=none;
         d=google.com; s=arc-20160816;
-        b=nPc8sVCZ9KP8G+p+MY3JJzmUIPXGBNVr6yZdS+3oaUrryg95ClabAX67vtJtubt9ew
-         sH3OTcBnnIXauzsXD7ng+0Iz8EsNfxa1TvibUlqxf1aVmsrvFP2i4mSvK/TGzILx7S2H
-         hIeNOy9ywFBGcnt9/WLTCDFV/OJ+El26pnlpWisQYSAUidyieNZCkhnhbpJApo5HzT/D
-         1Fjb8lUzrwZkzS2XGctgS0sjrYGmNp4p6B2g8fpT8NKWQNLQ9Bk4U9IavC6o9fYWWWwO
-         EJQxR17aX15gsM1Llfk+NqY4xymJh16qk4j5bCSc/sz6DUhlJgf748SCU2AsN0J1cItW
-         /z0w==
+        b=d9lDGMkZYdBdGsf9Ss8GFTCGxEg7fyhlnCc0pqfBTG17+GOFrvhc2GVMk7EpBp3dik
+         o5mA65liUkJKHJGyXYykSxPjU42MIVe3weOSKIFtn54uayeHMy/BVnSIlzvK7Uj0NfVQ
+         ZVAstVG9iRdUSmfLgf8gpZdHeTX9tOMrvZQAwKzJehi/vn39jFH6YItBfyp7+0JWD4qj
+         OBiWgbX0Czz8dpvo9LllL1etrMB+vhC7J5IFi60fkfHdg6EbvSXI36kq/KO5f43WeOq+
+         /2S8WqZLt/V2xTVNrnc/Xo45KhlpQNaBXmrnKZWy34nM3RrsDe3+cDbBEuo2q6N/PGQH
+         gogg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=xlSr73pKSiopKdILGn5ZrLva3IOgBSdl74YTmPimHio=;
-        b=gyyMbhWvb5bxJkbf/tIIXgQKQ6cI04YzKyjB/Ib5WKGVa5NUdVnO3zHnoM2HavKU0A
-         QHRIpnxBTfYJUZu3FalqD/cf2gqCBDsW12JhcWAvJ5F8JYEKDkvZCX9OJsV1DI9wdzWm
-         QM1zSbAWJNnv0Pf5CQwErKkLjtOioaHmuQGsoAo0MbJznsS9RbadDEDlhbmhCDUtyzOv
-         Rdne/Ve6uhfdk1d/zCe9E8uAm/xXpmZYx2yDxF923xNcfUqtGYO2v/4umD5FfPytRGm1
-         mmQAKb4NSGiWU4oZcjdipRtefXnmttxcmxs7EEahgwNzYokJjoHwXHai0AZFRjVrFlhP
-         fo7Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=hngYlw1ZLnncQM83R3mqcAXHiBFV3HcVdNJ/QZK7/Kc=;
+        b=KiXL3ItzfLfsjM1hVxqLDa9zhVKVO7GaXEYNS50q4j/bfjXxZVfMXC1u6j9S+ypBJL
+         nrkeeMi9OrtAGS5/OenbIbkFAY0OCpm7EctD9SNL+HjEcuLYYGC5lhLVm/AwYS4Fzot4
+         lnQU/jjBkUWH046eL6FeeEEoUhCI1i1TNUsKYwp32pVhGoJfIj7O42QhPRHjiyA1hm1v
+         Dbj99mFfqIvtfxO4z3BYh9di7l0ga+cmQ7vcJNfOg4uY/5F0JXemOloLhZFTa/MOBnyZ
+         +DNmAwVQZWhhMYy6Od84QHpgv7UKZ5fqc2VlyuoRxWI1SbsrI5PKOBbzTIDdkJE0xTQu
+         k7Ow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=coEMHF6x;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id q10si11463915otn.53.2019.12.16.12.48.59;
-        Mon, 16 Dec 2019 12:49:00 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p67si11128076oig.256.2019.12.16.13.28.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Dec 2019 13:28:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=coEMHF6x;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726885AbfLPUs7 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 16 Dec 2019 15:48:59 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:32576 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1726571AbfLPUs6 (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Mon, 16 Dec 2019 15:48:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1576529337;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=xlSr73pKSiopKdILGn5ZrLva3IOgBSdl74YTmPimHio=;
-        b=coEMHF6xnRZaxsmeSuZdjR0pNBdy27RSCNFd5TQN1V8dDzvI0lueDuyrLp57pBRUV0WhBu
-        AoiCEjNiOMT23EZZ5fjn6L9dOicXfgtyd5UiosFlUgeZLLPYnsnJYgyARVmRP76d4fR8Qo
-        gAvuMNcimZfzJY5H7txb1ekUDGrncXg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-124-OlX8qa1eNJigoM1oY1pwZA-1; Mon, 16 Dec 2019 15:48:53 -0500
-X-MC-Unique: OlX8qa1eNJigoM1oY1pwZA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 027DF10B9593;
-        Mon, 16 Dec 2019 20:48:37 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-117.ams2.redhat.com [10.36.116.117])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 4E2015D9C9;
-        Mon, 16 Dec 2019 20:48:34 +0000 (UTC)
-From:   Eric Auger <eric.auger@redhat.com>
-To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andrew.murray@arm.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, alexandru.elisei@arm.com
-Subject: [kvm-unit-tests PATCH 08/10] arm: gic: Provide per-IRQ helper functions
-Date:   Mon, 16 Dec 2019 21:47:55 +0100
-Message-Id: <20191216204757.4020-9-eric.auger@redhat.com>
-In-Reply-To: <20191216204757.4020-1-eric.auger@redhat.com>
-References: <20191216204757.4020-1-eric.auger@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60184 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1igxut-0004v2-TD
+	for alex.bennee@linaro.org; Mon, 16 Dec 2019 16:28:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50007)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1igxul-0004ud-HL
+ for qemu-arm@nongnu.org; Mon, 16 Dec 2019 16:28:29 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1igxuj-0004J6-M0
+ for qemu-arm@nongnu.org; Mon, 16 Dec 2019 16:28:27 -0500
+Received: from mail-yw1-f68.google.com ([209.85.161.68]:38366)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1igxuj-0004Id-Fe; Mon, 16 Dec 2019 16:28:25 -0500
+Received: by mail-yw1-f68.google.com with SMTP id 10so3101801ywv.5;
+ Mon, 16 Dec 2019 13:28:25 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hngYlw1ZLnncQM83R3mqcAXHiBFV3HcVdNJ/QZK7/Kc=;
+ b=Xc9JuvpzJnt+eWOeYz98a1xNDhVh4EHaNpfc3NlC9F6wX6zdJ12QxS7FPkyKEwol2U
+ uAmAdZxETSkAtxFb0QOLVsr48905CL8ucwQowxIIocE4bcNL5HP2SkIiDBwlRHPxDnz/
+ lViV9oyeYbQzvyxch/pidgQsv3kYECJ7+lI2Wyuj9ZWdqVzew1QUOnTtdUdxySDq3jAa
+ ywcWz4H60w7QICSCZotozKCHa/QM7qNc88VNqsq1ERHxlN5+eNby/+fJZLFaEGsrug8l
+ SzwpxgRhgfVbdM+Sj1QUnVq4ZcA9mVbPSpI+W8PeLhj9cOu6kL6HVMIQ/WeigX3DvmlZ
+ +IKQ==
+X-Gm-Message-State: APjAAAXy/S/4AW7HrL7ReczZL3z30+Tcik9ImUJbwatEKGrqIapvBCDZ
+ ff8tP2SyRCltkmCPupt0YNPksVo7L7qNvLosuiM=
+X-Received: by 2002:a81:3ad0:: with SMTP id h199mr8106449ywa.37.1576531704611; 
+ Mon, 16 Dec 2019 13:28:24 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
+ <20191202210947.3603-10-nieklinnenbank@gmail.com>
+ <CAPan3WrRKnu5vFz=JvrnD8tewUk7SdwFVYx4xVL353AnfPDgHQ@mail.gmail.com>
+ <6bee15d7-7d80-0709-ac90-ef2052b39329@redhat.com>
+ <CAPan3WpiWahU85-ZgV4BMPU8mUTxsq2TPn-szOHkHc5+PHUqpw@mail.gmail.com>
+ <03a78f1d-e8fe-5a53-b061-d39de9ed7a9e@redhat.com>
+ <CAPan3WrHQk-apQhQrihF_71b3_PSqkaEu1dHYmeCXuygwnAy2A@mail.gmail.com>
+In-Reply-To: <CAPan3WrHQk-apQhQrihF_71b3_PSqkaEu1dHYmeCXuygwnAy2A@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Mon, 16 Dec 2019 22:28:12 +0100
+Message-ID: <CAAdtpL6Vik9zVwSpVshWWicNMNitJ--0Xz7WHxd_wOLNGNkwgg@mail.gmail.com>
+Subject: Re: [PATCH 09/10] arm: allwinner-h3: add SD/MMC host controller
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Content-Type: multipart/alternative; boundary="0000000000003b09be0599d8e485"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.161.68
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mvv9Ku+hGhYl
+
+--0000000000003b09be0599d8e485
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: BJL6SEstDyJM
 
-From: Andre Przywara <andre.przywara@arm.com>
+Le lun. 16 d=C3=A9c. 2019 20:46, Niek Linnenbank <nieklinnenbank@gmail.com>=
+ a
+=C3=A9crit :
 
-A common theme when accessing per-IRQ parameters in the GIC distributor
-is to set fields of a certain bit width in a range of MMIO registers.
-Examples are the enabled status (one bit per IRQ), the level/edge
-configuration (2 bits per IRQ) or the priority (8 bits per IRQ).
+>
+>
+> On Mon, Dec 16, 2019 at 1:14 AM Philippe Mathieu-Daud=C3=A9 <philmd@redha=
+t.com>
+> wrote:
+>
+>> On 12/16/19 12:07 AM, Niek Linnenbank wrote:
+>> >
+>> >
+>> > On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9
+>> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
+>> >
+>> >     Hi Niek,
+>> >
+>> >     On 12/11/19 11:34 PM, Niek Linnenbank wrote:
+>> [...]
+>> >      >     +static uint32_t aw_h3_sdhost_process_desc(AwH3SDHostState
+>> *s,
+>> >      >     +                                          hwaddr desc_addr=
+,
+>> >      >     +                                          TransferDescript=
+or
+>> >     *desc,
+>> >      >     +                                          bool is_write,
+>> >     uint32_t
+>> >      >     max_bytes)
+>> >      >     +{
+>> >      >     +    uint32_t num_done =3D 0;
+>> >      >     +    uint32_t num_bytes =3D max_bytes;
+>> >      >     +    uint8_t buf[1024];
+>> >      >     +
+>> >      >     +    /* Read descriptor */
+>> >      >     +    cpu_physical_memory_read(desc_addr, desc,
+>> sizeof(*desc));
+>> >
+>> >     Should we worry about endianess here?
+>> >
+>> >
+>> > I tried to figure out what is expected, but the
+>> > Allwinner_H3_Datasheet_V1.2.pdf does not
+>> > explicitly mention endianness for any of its I/O devices. Currently it
+>> > seems all devices are
+>> > happy with using the same endianness as the CPUs. In the
+>> MemoryRegionOps
+>> > has DEVICE_NATIVE_ENDIAN
+>> > set to match the behavior seen.
+>>
+>> OK.
+>>
+>> [...]
+>> >      >     +static const MemoryRegionOps aw_h3_sdhost_ops =3D {
+>> >      >     +    .read =3D aw_h3_sdhost_read,
+>> >      >     +    .write =3D aw_h3_sdhost_write,
+>> >      >     +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+>> >
+>> >     I haven't checked .valid accesses from the datasheet.
+>> >
+>> >     However due to:
+>> >
+>> >         res =3D s->data_crc[((offset - REG_SD_DATA7_CRC) /
+>> sizeof(uint32_t))];
+>> >
+>> >     You seem to expect:
+>> >
+>> >                  .impl.min_access_size =3D 4,
+>> >
+>> >     .impl.max_access_size unset is 8, which should works.
+>> >
+>> > It seems that all registers are aligned on at least 32-bit boundaries.
+>> > And the section 5.3.5.1 mentions
+>> > that the DMA descriptors must be stored in memory 32-bit aligned. So
+>> > based on that information,
+>>
+>> So you are describing ".valid.min_access_size =3D 4", which is the minim=
+um
+>> access size on the bus.
+>> ".impl.min_access_size" is different, it is what access sizes is ready
+>> to handle your model.
+>> Your model read/write handlers expect addresses aligned on 32-bit
+>> boundary, this is why I suggested to use ".impl.min_access_size =3D 4". =
+If
+>> the guest were using a 16-bit access, your model would be buggy. If you
+>> describe your implementation to accept minimum 32-bit and the guest is
+>> allowed to use smaller accesses, QEMU will do a 32-bit access to the
+>> device, and return the 16-bit part to the guest. This way your model is
+>> safe. This is done by access_with_adjusted_size() in memory.c.
+>> If you restrict with ".valid.min_access_size =3D 4", you might think we
+>> don't need ".valid.min_access_size =3D 4" because all access from guest
+>> will be at least 32-bit. However keep in mind someone might find this
+>> device in another datasheet not limited to 32-bit, and let's say change
+>> to ".valid.min_access_size =3D 2". Without ".impl.min_access_size =3D 4"
+>> your model is buggy. So to be safe I'd use:
+>>
+>>    .impl.min_access_size =3D 4,
+>>    .valid.min_access_size =3D 4,
+>>
+>
+> Now it makes more sense to me, thanks Philippe for explaining this!
+> Great, I'll add .impl.min_access_size =3D 4.
+>
+> At this point, I've processed all the feedback that I received for all of
+> the patches
+> in this series. Is there anything else you would like to
+> see/discuss/review, or shall I send the v2 when I finish testing?
+>
 
-Add a generic helper function which is able to mask and set the
-respective number of bits, given the IRQ number and the MMIO offset.
-Provide wrappers using this function to easily allow configuring an IRQ.
+Send it! We'll discuss on updated v2 :)
 
-For now assume that private IRQ numbers always refer to the current CPU.
-In a GICv2 accessing the "other" private IRQs is not easily doable (the
-registers are banked per CPU on the same MMIO address), so we impose the
-same limitation on GICv3, even though those registers are not banked
-there anymore.
+Regards,
 
-Signed-off-by: Andre Przywara <andre.przywara@arm.com>
+Phil.
 
----
+--0000000000003b09be0599d8e485
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-initialize reg
----
- lib/arm/asm/gic-v3.h |  2 +
- lib/arm/asm/gic.h    |  9 +++++
- lib/arm/gic.c        | 90 ++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 101 insertions(+)
+<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
+"gmail_attr">Le lun. 16 d=C3=A9c. 2019 20:46, Niek Linnenbank &lt;<a href=
+=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt; a =C3=
+=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
+ 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"ltr"><di=
+v dir=3D"ltr"><br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" cla=
+ss=3D"gmail_attr">On Mon, Dec 16, 2019 at 1:14 AM Philippe Mathieu-Daud=C3=
+=A9 &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank" rel=3D"noref=
+errer">philmd@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex">On 12/16/19 12:07 AM, Niek Linnenbank wrote:<br>
+&gt; <br>
+&gt; <br>
+&gt; On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9 <br>
+&gt; &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank" rel=3D"nore=
+ferrer">philmd@redhat.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.co=
+m" target=3D"_blank" rel=3D"noreferrer">philmd@redhat.com</a>&gt;&gt; wrote=
+:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Hi Niek,<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0On 12/11/19 11:34 PM, Niek Linnenbank wrote:<br>
+[...]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+static uint32_t aw_h3_sdh=
+ost_process_desc(AwH3SDHostState *s,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 hwaddr desc_addr,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TransferDescriptor<br>
+&gt;=C2=A0 =C2=A0 =C2=A0*desc,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bool is_write,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0uint32_t<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0max_bytes)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint32_t nu=
+m_done =3D 0;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint32_t nu=
+m_bytes =3D max_bytes;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint8_t buf=
+[1024];<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 /* Read des=
+criptor */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 cpu_physica=
+l_memory_read(desc_addr, desc, sizeof(*desc));<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Should we worry about endianess here?<br>
+&gt; <br>
+&gt; <br>
+&gt; I tried to figure out what is expected, but the <br>
+&gt; Allwinner_H3_Datasheet_V1.2.pdf does not<br>
+&gt; explicitly mention endianness for any of its I/O devices. Currently it=
+ <br>
+&gt; seems all devices are<br>
+&gt; happy with using the same endianness as the CPUs. In the MemoryRegionO=
+ps <br>
+&gt; has DEVICE_NATIVE_ENDIAN<br>
+&gt; set to match the behavior seen.<br>
+<br>
+OK.<br>
+<br>
+[...]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+static const MemoryRegion=
+Ops aw_h3_sdhost_ops =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .read =3D a=
+w_h3_sdhost_read,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .write =3D =
+aw_h3_sdhost_write,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .endianness=
+ =3D DEVICE_NATIVE_ENDIAN,<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0I haven&#39;t checked .valid accesses from the data=
+sheet.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0However due to:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0res =3D s-&gt;data_crc[((offset - REG=
+_SD_DATA7_CRC) / sizeof(uint32_t))];<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0You seem to expect:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 .impl.mi=
+n_access_size =3D 4,<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0.impl.max_access_size unset is 8, which should work=
+s.<br>
+&gt; <br>
+&gt; It seems that all registers are aligned on at least 32-bit boundaries.=
+ <br>
+&gt; And the section 5.3.5.1 mentions<br>
+&gt; that the DMA descriptors must be stored in memory 32-bit aligned. So <=
+br>
+&gt; based on that information,<br>
+<br>
+So you are describing &quot;.valid.min_access_size =3D 4&quot;, which is th=
+e minimum <br>
+access size on the bus.<br>
+&quot;.impl.min_access_size&quot; is different, it is what access sizes is =
+ready <br>
+to handle your model.<br>
+Your model read/write handlers expect addresses aligned on 32-bit <br>
+boundary, this is why I suggested to use &quot;.impl.min_access_size =3D 4&=
+quot;. If <br>
+the guest were using a 16-bit access, your model would be buggy. If you <br=
+>
+describe your implementation to accept minimum 32-bit and the guest is <br>
+allowed to use smaller accesses, QEMU will do a 32-bit access to the <br>
+device, and return the 16-bit part to the guest. This way your model is <br=
+>
+safe. This is done by access_with_adjusted_size() in memory.c.<br>
+If you restrict with &quot;.valid.min_access_size =3D 4&quot;, you might th=
+ink we <br>
+don&#39;t need &quot;.valid.min_access_size =3D 4&quot; because all access =
+from guest <br>
+will be at least 32-bit. However keep in mind someone might find this <br>
+device in another datasheet not limited to 32-bit, and let&#39;s say change=
+ <br>
+to &quot;.valid.min_access_size =3D 2&quot;. Without &quot;.impl.min_access=
+_size =3D 4&quot; <br>
+your model is buggy. So to be safe I&#39;d use:<br>
+<br>
+=C2=A0 =C2=A0.impl.min_access_size =3D 4,<br>
+=C2=A0 =C2=A0.valid.min_access_size =3D 4,<br></blockquote><div><br></div><=
+div>Now it makes more sense to me, thanks Philippe for explaining this!<br>=
+</div><div>Great, I&#39;ll add .impl.min_access_size =3D 4.</div><div><br><=
+/div><div>At this point, I&#39;ve processed all the feedback that I receive=
+d for all of the patches</div><div>in this series. Is there anything else y=
+ou would like to see/discuss/review, or shall I send the v2 when I finish t=
+esting?<br></div></div></div></blockquote></div></div><div dir=3D"auto"><br=
+></div><div dir=3D"auto">Send it! We&#39;ll discuss on updated v2 :)</div><=
+div dir=3D"auto"><br></div><div dir=3D"auto">Regards,=C2=A0</div><div dir=
+=3D"auto"><br></div><div dir=3D"auto">Phil.</div></div>
 
-diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
-index 347be2f..4a445a5 100644
---- a/lib/arm/asm/gic-v3.h
-+++ b/lib/arm/asm/gic-v3.h
-@@ -23,6 +23,8 @@
- #define GICD_CTLR_ENABLE_G1A		(1U << 1)
- #define GICD_CTLR_ENABLE_G1		(1U << 0)
-=20
-+#define GICD_IROUTER			0x6000
-+
- /* Re-Distributor registers, offsets from RD_base */
- #define GICR_TYPER			0x0008
-=20
-diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
-index 1fc10a0..21cdb58 100644
---- a/lib/arm/asm/gic.h
-+++ b/lib/arm/asm/gic.h
-@@ -15,6 +15,7 @@
- #define GICD_IIDR			0x0008
- #define GICD_IGROUPR			0x0080
- #define GICD_ISENABLER			0x0100
-+#define GICD_ICENABLER			0x0180
- #define GICD_ISPENDR			0x0200
- #define GICD_ICPENDR			0x0280
- #define GICD_ISACTIVER			0x0300
-@@ -73,5 +74,13 @@ extern void gic_write_eoir(u32 irqstat);
- extern void gic_ipi_send_single(int irq, int cpu);
- extern void gic_ipi_send_mask(int irq, const cpumask_t *dest);
-=20
-+void gic_set_irq_bit(int irq, int offset);
-+void gic_enable_irq(int irq);
-+void gic_disable_irq(int irq);
-+void gic_set_irq_priority(int irq, u8 prio);
-+void gic_set_irq_target(int irq, int cpu);
-+void gic_set_irq_group(int irq, int group);
-+int gic_get_irq_group(int irq);
-+
- #endif /* !__ASSEMBLY__ */
- #endif /* _ASMARM_GIC_H_ */
-diff --git a/lib/arm/gic.c b/lib/arm/gic.c
-index 9430116..aa9cb86 100644
---- a/lib/arm/gic.c
-+++ b/lib/arm/gic.c
-@@ -146,3 +146,93 @@ void gic_ipi_send_mask(int irq, const cpumask_t *des=
-t)
- 	assert(gic_common_ops && gic_common_ops->ipi_send_mask);
- 	gic_common_ops->ipi_send_mask(irq, dest);
- }
-+
-+enum gic_bit_access {
-+	ACCESS_READ,
-+	ACCESS_SET,
-+	ACCESS_RMW
-+};
-+
-+static u8 gic_masked_irq_bits(int irq, int offset, int bits, u8 value,
-+			      enum gic_bit_access access)
-+{
-+	void *base;
-+	int split =3D 32 / bits;
-+	int shift =3D (irq % split) * bits;
-+	u32 reg =3D 0, mask =3D ((1U << bits) - 1) << shift;
-+
-+	switch (gic_version()) {
-+	case 2:
-+		base =3D gicv2_dist_base();
-+		break;
-+	case 3:
-+		if (irq < 32)
-+			base =3D gicv3_sgi_base();
-+		else
-+			base =3D gicv3_dist_base();
-+		break;
-+	default:
-+		return 0;
-+	}
-+	base +=3D offset + (irq / split) * 4;
-+
-+	switch (access) {
-+	case ACCESS_READ:
-+		return (readl(base) & mask) >> shift;
-+	case ACCESS_SET:
-+		reg =3D 0;
-+		break;
-+	case ACCESS_RMW:
-+		reg =3D readl(base) & ~mask;
-+		break;
-+	}
-+
-+	writel(reg | ((u32)value << shift), base);
-+
-+	return 0;
-+}
-+
-+void gic_set_irq_bit(int irq, int offset)
-+{
-+	gic_masked_irq_bits(irq, offset, 1, 1, ACCESS_SET);
-+}
-+
-+void gic_enable_irq(int irq)
-+{
-+	gic_set_irq_bit(irq, GICD_ISENABLER);
-+}
-+
-+void gic_disable_irq(int irq)
-+{
-+	gic_set_irq_bit(irq, GICD_ICENABLER);
-+}
-+
-+void gic_set_irq_priority(int irq, u8 prio)
-+{
-+	gic_masked_irq_bits(irq, GICD_IPRIORITYR, 8, prio, ACCESS_RMW);
-+}
-+
-+void gic_set_irq_target(int irq, int cpu)
-+{
-+	if (irq < 32)
-+		return;
-+
-+	if (gic_version() =3D=3D 2) {
-+		gic_masked_irq_bits(irq, GICD_ITARGETSR, 8, 1U << cpu,
-+				    ACCESS_RMW);
-+
-+		return;
-+	}
-+
-+	writeq(cpus[cpu], gicv3_dist_base() + GICD_IROUTER + irq * 8);
-+}
-+
-+void gic_set_irq_group(int irq, int group)
-+{
-+	gic_masked_irq_bits(irq, GICD_IGROUPR, 1, group, ACCESS_RMW);
-+}
-+
-+int gic_get_irq_group(int irq)
-+{
-+	return gic_masked_irq_bits(irq, GICD_IGROUPR, 1, 0, ACCESS_READ);
-+}
---=20
-2.20.1
+--0000000000003b09be0599d8e485--

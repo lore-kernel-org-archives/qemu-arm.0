@@ -1,369 +1,644 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5118316lff;
-        Mon, 16 Dec 2019 13:28:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx2SnmVB20eTqu3BmaSdm9O1o5zLWyYesDjD+R2uBa4sU6jc1+o1On5eBN3ivmhJOdBZYVg
-X-Received: by 2002:a54:4117:: with SMTP id l23mr654889oic.140.1576531716838;
-        Mon, 16 Dec 2019 13:28:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576531716; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5251353lff;
+        Mon, 16 Dec 2019 15:37:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqww9T05qSVIzGVAJv2ElK3huut1M9aSyqHcu1hhV4uhhk2a1/5377rHDc7EdfBo5eEbg5c8
+X-Received: by 2002:aca:4e87:: with SMTP id c129mr814214oib.153.1576539467425;
+        Mon, 16 Dec 2019 15:37:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576539467; cv=none;
         d=google.com; s=arc-20160816;
-        b=d9lDGMkZYdBdGsf9Ss8GFTCGxEg7fyhlnCc0pqfBTG17+GOFrvhc2GVMk7EpBp3dik
-         o5mA65liUkJKHJGyXYykSxPjU42MIVe3weOSKIFtn54uayeHMy/BVnSIlzvK7Uj0NfVQ
-         ZVAstVG9iRdUSmfLgf8gpZdHeTX9tOMrvZQAwKzJehi/vn39jFH6YItBfyp7+0JWD4qj
-         OBiWgbX0Czz8dpvo9LllL1etrMB+vhC7J5IFi60fkfHdg6EbvSXI36kq/KO5f43WeOq+
-         /2S8WqZLt/V2xTVNrnc/Xo45KhlpQNaBXmrnKZWy34nM3RrsDe3+cDbBEuo2q6N/PGQH
-         gogg==
+        b=SQ3DqNLlpdaQB//lMNQjamGLNWBkd89uMkuvbTh+WmtNJ/qZrWbGsVYWmKezEhtLmT
+         W0NMUfQNXNDKHyNqqzbPalrMgT5dNwugMXY/zNckPp+9+uXTh2SRUU8rBP4RkKXq74pZ
+         AD/D/TzTwRN3NIOVbCAoCV5iFNmkS4FHCOH4ZNs1Q5vkQsmPEyagyM7DL2+BNvTqADvm
+         WHl9evCip8c89fo3iTSiARs01MOdB3RQ299OqLGvJRCGVbNS41abu+yg3FHXQLYPIJI0
+         e7GJcmGe+7RalHALR22z9aL2j0p52053xr6p23QoculJg+kDoUqgcRZoUgGIvgYdo/Rb
+         EMDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=hngYlw1ZLnncQM83R3mqcAXHiBFV3HcVdNJ/QZK7/Kc=;
-        b=KiXL3ItzfLfsjM1hVxqLDa9zhVKVO7GaXEYNS50q4j/bfjXxZVfMXC1u6j9S+ypBJL
-         nrkeeMi9OrtAGS5/OenbIbkFAY0OCpm7EctD9SNL+HjEcuLYYGC5lhLVm/AwYS4Fzot4
-         lnQU/jjBkUWH046eL6FeeEEoUhCI1i1TNUsKYwp32pVhGoJfIj7O42QhPRHjiyA1hm1v
-         Dbj99mFfqIvtfxO4z3BYh9di7l0ga+cmQ7vcJNfOg4uY/5F0JXemOloLhZFTa/MOBnyZ
-         +DNmAwVQZWhhMYy6Od84QHpgv7UKZ5fqc2VlyuoRxWI1SbsrI5PKOBbzTIDdkJE0xTQu
-         k7Ow==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=HFFxDgHNUT0gW2AN+l0EB3Cl8rnPc6ibLlNqwL0CJ+E=;
+        b=VPI9c/jx78IwhrkN6c0EjBQT2OdYf/RRrpoaKnP4TAoY/w0c0OJOa4ZrwfNeY5Ot5b
+         Lir+Kdqyxy9josdoAAp4kMEl9rNQlanNR/ozLbeGjN03hywjkDpEcXoCGs5mC6WAbP5R
+         L8CHqEKuEcpHCC25HpuT6s9e4cLnUVCxu164klgu509fUkBGDmBnHEPPHcGEnvUNGuWx
+         8toipENVbM89sOAitu9qI1hAFaBdeybK0bH+yol3ufVhTGJGNhuUnSU+QIanKI3yLE5I
+         ncOteSFIin7MTmMWqYIWLB6crpABf6w+xIPVFUB7KoeNs5yWya0IHEyWQdyOFBqVI9ft
+         BdHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BpcxgEgt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p67si11128076oig.256.2019.12.16.13.28.36
+        by mx.google.com with ESMTPS id d17si11505863oij.136.2019.12.16.15.37.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Dec 2019 13:28:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Dec 2019 15:37:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60184 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BpcxgEgt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igxut-0004v2-TD
-	for alex.bennee@linaro.org; Mon, 16 Dec 2019 16:28:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50007)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1igzvu-0008Ka-5e
+	for alex.bennee@linaro.org; Mon, 16 Dec 2019 18:37:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50171)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1igxul-0004ud-HL
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 16:28:29 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igzuD-0006aF-Uz
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 18:36:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1igxuj-0004J6-M0
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 16:28:27 -0500
-Received: from mail-yw1-f68.google.com ([209.85.161.68]:38366)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igzuB-0002ce-IX
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 18:36:01 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:52291)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1igxuj-0004Id-Fe; Mon, 16 Dec 2019 16:28:25 -0500
-Received: by mail-yw1-f68.google.com with SMTP id 10so3101801ywv.5;
- Mon, 16 Dec 2019 13:28:25 -0800 (PST)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1igzuB-0002aT-9i; Mon, 16 Dec 2019 18:35:59 -0500
+Received: by mail-wm1-x343.google.com with SMTP id p9so1098959wmc.2;
+ Mon, 16 Dec 2019 15:35:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=HFFxDgHNUT0gW2AN+l0EB3Cl8rnPc6ibLlNqwL0CJ+E=;
+ b=BpcxgEgtneTECgBjWf1BeQ0Nz/UusX3TE+Attq3Ly3J86//V/3tBBCExmVp5FARH9r
+ PGYP3Ffe1G5QSUoMeUzoL03g+HI3zJQvA/KrUjYJtF27Rk/0+IOnhA7Nd5PXZPxo26yC
+ ZQETStuvC2bwxz76o5k3dy5/mm+A5kw1jE4l1WFurRNFNko89d+YPDkhYLqyo61Colzy
+ yXRW+CWd/+D0ifAfDevtDuEb/CvE2azIaJS4Jo+KqPVv4B0r/XSVgY8fLOxfemdb6rtf
+ 9GKS+6a6kbqiiSlnj3cNDjnZFJDRgxEmuPPmhmCu3OvV/xVCmuxh+rLWyE5gcXb4bxGL
+ 1hsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hngYlw1ZLnncQM83R3mqcAXHiBFV3HcVdNJ/QZK7/Kc=;
- b=Xc9JuvpzJnt+eWOeYz98a1xNDhVh4EHaNpfc3NlC9F6wX6zdJ12QxS7FPkyKEwol2U
- uAmAdZxETSkAtxFb0QOLVsr48905CL8ucwQowxIIocE4bcNL5HP2SkIiDBwlRHPxDnz/
- lViV9oyeYbQzvyxch/pidgQsv3kYECJ7+lI2Wyuj9ZWdqVzew1QUOnTtdUdxySDq3jAa
- ywcWz4H60w7QICSCZotozKCHa/QM7qNc88VNqsq1ERHxlN5+eNby/+fJZLFaEGsrug8l
- SzwpxgRhgfVbdM+Sj1QUnVq4ZcA9mVbPSpI+W8PeLhj9cOu6kL6HVMIQ/WeigX3DvmlZ
- +IKQ==
-X-Gm-Message-State: APjAAAXy/S/4AW7HrL7ReczZL3z30+Tcik9ImUJbwatEKGrqIapvBCDZ
- ff8tP2SyRCltkmCPupt0YNPksVo7L7qNvLosuiM=
-X-Received: by 2002:a81:3ad0:: with SMTP id h199mr8106449ywa.37.1576531704611; 
- Mon, 16 Dec 2019 13:28:24 -0800 (PST)
-MIME-Version: 1.0
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-10-nieklinnenbank@gmail.com>
- <CAPan3WrRKnu5vFz=JvrnD8tewUk7SdwFVYx4xVL353AnfPDgHQ@mail.gmail.com>
- <6bee15d7-7d80-0709-ac90-ef2052b39329@redhat.com>
- <CAPan3WpiWahU85-ZgV4BMPU8mUTxsq2TPn-szOHkHc5+PHUqpw@mail.gmail.com>
- <03a78f1d-e8fe-5a53-b061-d39de9ed7a9e@redhat.com>
- <CAPan3WrHQk-apQhQrihF_71b3_PSqkaEu1dHYmeCXuygwnAy2A@mail.gmail.com>
-In-Reply-To: <CAPan3WrHQk-apQhQrihF_71b3_PSqkaEu1dHYmeCXuygwnAy2A@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Mon, 16 Dec 2019 22:28:12 +0100
-Message-ID: <CAAdtpL6Vik9zVwSpVshWWicNMNitJ--0Xz7WHxd_wOLNGNkwgg@mail.gmail.com>
-Subject: Re: [PATCH 09/10] arm: allwinner-h3: add SD/MMC host controller
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Content-Type: multipart/alternative; boundary="0000000000003b09be0599d8e485"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.161.68
-X-BeenThere: qemu-arm@nongnu.org
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=HFFxDgHNUT0gW2AN+l0EB3Cl8rnPc6ibLlNqwL0CJ+E=;
+ b=Xlb9zdjCfvVUuucM+1ruZResqzQCOLTZj2lzRkBqk5fOJUlln1mp8szKTepJhcivaj
+ KIjK8oF6V4mx4FT6YEjmGaSyfSJpGGf0r0wS7KXgk8zlHREG+/8eTw2WVOe9VQBuiVhj
+ MM2+CKJ4+vUOZsBzmPkoxrMFanRYmaHCbgPqd6UVhbmCxzuGUYacaHD2UNXZZlzde8M6
+ 7omEZzDZ6/lW/MNpq442au+TaINLGzNaXl47AVUMl6T0dEz8/mKV5AHmy1kbKyMVxhyt
+ c+TpV215SeJkIWUxL4b/t8Al/LnCV8kKGrFLSHMo08A8N2aZczVzfu4HaZfJw++eSsU/
+ OfUA==
+X-Gm-Message-State: APjAAAWpWrmU8Iw6TbRneZSzjKCtRc/eWAc68LwajWMJsWDVvI+jhyR8
+ uyuzviD/RKyEKA4/ReFG3ZQ0vDL5
+X-Received: by 2002:a7b:cb4e:: with SMTP id v14mr1776593wmj.20.1576539357514; 
+ Mon, 16 Dec 2019 15:35:57 -0800 (PST)
+Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
+ by smtp.gmail.com with ESMTPSA id z83sm984501wmg.2.2019.12.16.15.35.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Dec 2019 15:35:56 -0800 (PST)
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 01/10] hw: arm: add Allwinner H3 System-on-Chip
+Date: Tue, 17 Dec 2019 00:35:10 +0100
+Message-Id: <20191216233519.29030-2-nieklinnenbank@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20191216233519.29030-1-nieklinnenbank@gmail.com>
+References: <20191216233519.29030-1-nieklinnenbank@gmail.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::343
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mvv9Ku+hGhYl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Niek Linnenbank <nieklinnenbank@gmail.com>,
+ qemu-arm@nongnu.org, philmd@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XI0FcN8kPvAq
 
---0000000000003b09be0599d8e485
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The Allwinner H3 is a System on Chip containing four ARM Cortex A7
+processor cores. Features and specifications include DDR2/DDR3 memory,
+SD/MMC storage cards, 10/100/1000Mbit ethernet, USB 2.0, HDMI and
+various I/O modules. This commit adds support for the Allwinner H3
+System on Chip.
 
-Le lun. 16 d=C3=A9c. 2019 20:46, Niek Linnenbank <nieklinnenbank@gmail.com>=
- a
-=C3=A9crit :
+Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+---
+ default-configs/arm-softmmu.mak |   1 +
+ include/hw/arm/allwinner-h3.h   |  80 +++++++
+ hw/arm/allwinner-h3.c           | 360 ++++++++++++++++++++++++++++++++
+ MAINTAINERS                     |   7 +
+ hw/arm/Kconfig                  |   8 +
+ hw/arm/Makefile.objs            |   1 +
+ 6 files changed, 457 insertions(+)
+ create mode 100644 include/hw/arm/allwinner-h3.h
+ create mode 100644 hw/arm/allwinner-h3.c
 
->
->
-> On Mon, Dec 16, 2019 at 1:14 AM Philippe Mathieu-Daud=C3=A9 <philmd@redha=
-t.com>
-> wrote:
->
->> On 12/16/19 12:07 AM, Niek Linnenbank wrote:
->> >
->> >
->> > On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9
->> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
->> >
->> >     Hi Niek,
->> >
->> >     On 12/11/19 11:34 PM, Niek Linnenbank wrote:
->> [...]
->> >      >     +static uint32_t aw_h3_sdhost_process_desc(AwH3SDHostState
->> *s,
->> >      >     +                                          hwaddr desc_addr=
-,
->> >      >     +                                          TransferDescript=
-or
->> >     *desc,
->> >      >     +                                          bool is_write,
->> >     uint32_t
->> >      >     max_bytes)
->> >      >     +{
->> >      >     +    uint32_t num_done =3D 0;
->> >      >     +    uint32_t num_bytes =3D max_bytes;
->> >      >     +    uint8_t buf[1024];
->> >      >     +
->> >      >     +    /* Read descriptor */
->> >      >     +    cpu_physical_memory_read(desc_addr, desc,
->> sizeof(*desc));
->> >
->> >     Should we worry about endianess here?
->> >
->> >
->> > I tried to figure out what is expected, but the
->> > Allwinner_H3_Datasheet_V1.2.pdf does not
->> > explicitly mention endianness for any of its I/O devices. Currently it
->> > seems all devices are
->> > happy with using the same endianness as the CPUs. In the
->> MemoryRegionOps
->> > has DEVICE_NATIVE_ENDIAN
->> > set to match the behavior seen.
->>
->> OK.
->>
->> [...]
->> >      >     +static const MemoryRegionOps aw_h3_sdhost_ops =3D {
->> >      >     +    .read =3D aw_h3_sdhost_read,
->> >      >     +    .write =3D aw_h3_sdhost_write,
->> >      >     +    .endianness =3D DEVICE_NATIVE_ENDIAN,
->> >
->> >     I haven't checked .valid accesses from the datasheet.
->> >
->> >     However due to:
->> >
->> >         res =3D s->data_crc[((offset - REG_SD_DATA7_CRC) /
->> sizeof(uint32_t))];
->> >
->> >     You seem to expect:
->> >
->> >                  .impl.min_access_size =3D 4,
->> >
->> >     .impl.max_access_size unset is 8, which should works.
->> >
->> > It seems that all registers are aligned on at least 32-bit boundaries.
->> > And the section 5.3.5.1 mentions
->> > that the DMA descriptors must be stored in memory 32-bit aligned. So
->> > based on that information,
->>
->> So you are describing ".valid.min_access_size =3D 4", which is the minim=
-um
->> access size on the bus.
->> ".impl.min_access_size" is different, it is what access sizes is ready
->> to handle your model.
->> Your model read/write handlers expect addresses aligned on 32-bit
->> boundary, this is why I suggested to use ".impl.min_access_size =3D 4". =
-If
->> the guest were using a 16-bit access, your model would be buggy. If you
->> describe your implementation to accept minimum 32-bit and the guest is
->> allowed to use smaller accesses, QEMU will do a 32-bit access to the
->> device, and return the 16-bit part to the guest. This way your model is
->> safe. This is done by access_with_adjusted_size() in memory.c.
->> If you restrict with ".valid.min_access_size =3D 4", you might think we
->> don't need ".valid.min_access_size =3D 4" because all access from guest
->> will be at least 32-bit. However keep in mind someone might find this
->> device in another datasheet not limited to 32-bit, and let's say change
->> to ".valid.min_access_size =3D 2". Without ".impl.min_access_size =3D 4"
->> your model is buggy. So to be safe I'd use:
->>
->>    .impl.min_access_size =3D 4,
->>    .valid.min_access_size =3D 4,
->>
->
-> Now it makes more sense to me, thanks Philippe for explaining this!
-> Great, I'll add .impl.min_access_size =3D 4.
->
-> At this point, I've processed all the feedback that I received for all of
-> the patches
-> in this series. Is there anything else you would like to
-> see/discuss/review, or shall I send the v2 when I finish testing?
->
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 1f2e0e7fde..d75a239c2c 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -40,3 +40,4 @@ CONFIG_FSL_IMX25=y
+ CONFIG_FSL_IMX7=y
+ CONFIG_FSL_IMX6UL=y
+ CONFIG_SEMIHOSTING=y
++CONFIG_ALLWINNER_H3=y
+diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
+new file mode 100644
+index 0000000000..e50caeffaa
+--- /dev/null
++++ b/include/hw/arm/allwinner-h3.h
+@@ -0,0 +1,80 @@
++/*
++ * Allwinner H3 System on Chip emulation
++ *
++ * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_ARM_ALLWINNER_H3_H
++#define HW_ARM_ALLWINNER_H3_H
++
++#include "qemu/error-report.h"
++#include "qemu/units.h"
++#include "hw/char/serial.h"
++#include "hw/arm/boot.h"
++#include "hw/timer/allwinner-a10-pit.h"
++#include "hw/intc/arm_gic.h"
++#include "target/arm/cpu.h"
++
++enum {
++    AW_H3_SRAM_A1,
++    AW_H3_SRAM_A2,
++    AW_H3_SRAM_C,
++    AW_H3_SYSCON,
++    AW_H3_SID,
++    AW_H3_CCU,
++    AW_H3_PIT,
++    AW_H3_UART0,
++    AW_H3_UART1,
++    AW_H3_UART2,
++    AW_H3_UART3,
++    AW_H3_EMAC,
++    AW_H3_MMC0,
++    AW_H3_EHCI0,
++    AW_H3_OHCI0,
++    AW_H3_EHCI1,
++    AW_H3_OHCI1,
++    AW_H3_EHCI2,
++    AW_H3_OHCI2,
++    AW_H3_EHCI3,
++    AW_H3_OHCI3,
++    AW_H3_GIC_DIST,
++    AW_H3_GIC_CPU,
++    AW_H3_GIC_HYP,
++    AW_H3_GIC_VCPU,
++    AW_H3_CPUCFG,
++    AW_H3_SDRAM
++};
++
++#define AW_H3_NUM_CPUS      (4)
++
++#define TYPE_AW_H3 "allwinner-h3"
++#define AW_H3(obj) OBJECT_CHECK(AwH3State, (obj), TYPE_AW_H3)
++
++typedef struct AwH3State {
++    /*< private >*/
++    DeviceState parent_obj;
++    /*< public >*/
++
++    ARMCPU cpus[AW_H3_NUM_CPUS];
++    const hwaddr *memmap;
++    AwA10PITState timer;
++    GICState gic;
++    MemoryRegion sram_a1;
++    MemoryRegion sram_a2;
++    MemoryRegion sram_c;
++} AwH3State;
++
++#endif
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+new file mode 100644
+index 0000000000..1a47de56f5
+--- /dev/null
++++ b/hw/arm/allwinner-h3.c
+@@ -0,0 +1,360 @@
++/*
++ * Allwinner H3 System on Chip emulation
++ *
++ * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "exec/address-spaces.h"
++#include "qapi/error.h"
++#include "qemu/module.h"
++#include "qemu/units.h"
++#include "cpu.h"
++#include "hw/sysbus.h"
++#include "hw/arm/allwinner-h3.h"
++#include "hw/misc/unimp.h"
++#include "sysemu/sysemu.h"
++
++/* Memory map */
++const hwaddr aw_h3_memmap[] = {
++    [AW_H3_SRAM_A1]    = 0x00000000,
++    [AW_H3_SRAM_A2]    = 0x00044000,
++    [AW_H3_SRAM_C]     = 0x00010000,
++    [AW_H3_SYSCON]     = 0x01c00000,
++    [AW_H3_SID]        = 0x01c14000,
++    [AW_H3_CCU]        = 0x01c20000,
++    [AW_H3_PIT]        = 0x01c20c00,
++    [AW_H3_UART0]      = 0x01c28000,
++    [AW_H3_UART1]      = 0x01c28400,
++    [AW_H3_UART2]      = 0x01c28800,
++    [AW_H3_UART3]      = 0x01c28c00,
++    [AW_H3_EMAC]       = 0x01c30000,
++    [AW_H3_MMC0]       = 0x01c0f000,
++    [AW_H3_EHCI0]      = 0x01c1a000,
++    [AW_H3_OHCI0]      = 0x01c1a400,
++    [AW_H3_EHCI1]      = 0x01c1b000,
++    [AW_H3_OHCI1]      = 0x01c1b400,
++    [AW_H3_EHCI2]      = 0x01c1c000,
++    [AW_H3_OHCI2]      = 0x01c1c400,
++    [AW_H3_EHCI3]      = 0x01c1d000,
++    [AW_H3_OHCI3]      = 0x01c1d400,
++    [AW_H3_GIC_DIST]   = 0x01c81000,
++    [AW_H3_GIC_CPU]    = 0x01c82000,
++    [AW_H3_GIC_HYP]    = 0x01c84000,
++    [AW_H3_GIC_VCPU]   = 0x01c86000,
++    [AW_H3_CPUCFG]     = 0x01f01c00,
++    [AW_H3_SDRAM]      = 0x40000000
++};
++
++/* List of unimplemented devices */
++struct AwH3Unimplemented {
++    const char *device_name;
++    hwaddr base;
++    hwaddr size;
++} unimplemented[] = {
++    { "d-engine",  0x01000000, 4 * MiB },
++    { "d-inter",   0x01400000, 128 * KiB },
++    { "dma",       0x01c02000, 4 * KiB },
++    { "nfdc",      0x01c03000, 4 * KiB },
++    { "ts",        0x01c06000, 4 * KiB },
++    { "keymem",    0x01c0b000, 4 * KiB },
++    { "lcd0",      0x01c0c000, 4 * KiB },
++    { "lcd1",      0x01c0d000, 4 * KiB },
++    { "ve",        0x01c0e000, 4 * KiB },
++    { "mmc1",      0x01c10000, 4 * KiB },
++    { "mmc2",      0x01c11000, 4 * KiB },
++    { "crypto",    0x01c15000, 4 * KiB },
++    { "msgbox",    0x01c17000, 4 * KiB },
++    { "spinlock",  0x01c18000, 4 * KiB },
++    { "usb0-otg",  0x01c19000, 4 * KiB },
++    { "usb0-phy",  0x01c1a000, 4 * KiB },
++    { "usb1-phy",  0x01c1b000, 4 * KiB },
++    { "usb2-phy",  0x01c1c000, 4 * KiB },
++    { "usb3-phy",  0x01c1d000, 4 * KiB },
++    { "smc",       0x01c1e000, 4 * KiB },
++    { "pio",       0x01c20800, 1 * KiB },
++    { "owa",       0x01c21000, 1 * KiB },
++    { "pwm",       0x01c21400, 1 * KiB },
++    { "keyadc",    0x01c21800, 1 * KiB },
++    { "pcm0",      0x01c22000, 1 * KiB },
++    { "pcm1",      0x01c22400, 1 * KiB },
++    { "pcm2",      0x01c22800, 1 * KiB },
++    { "audio",     0x01c22c00, 2 * KiB },
++    { "smta",      0x01c23400, 1 * KiB },
++    { "ths",       0x01c25000, 1 * KiB },
++    { "uart0",     0x01c28000, 1 * KiB },
++    { "uart1",     0x01c28400, 1 * KiB },
++    { "uart2",     0x01c28800, 1 * KiB },
++    { "uart3",     0x01c28c00, 1 * KiB },
++    { "twi0",      0x01c2ac00, 1 * KiB },
++    { "twi1",      0x01c2b000, 1 * KiB },
++    { "twi2",      0x01c2b400, 1 * KiB },
++    { "scr",       0x01c2c400, 1 * KiB },
++    { "gpu",       0x01c40000, 64 * KiB },
++    { "hstmr",     0x01c60000, 4 * KiB },
++    { "dramcom",   0x01c62000, 4 * KiB },
++    { "dramctl0",  0x01c63000, 4 * KiB },
++    { "dramphy0",  0x01c65000, 4 * KiB },
++    { "spi0",      0x01c68000, 4 * KiB },
++    { "spi1",      0x01c69000, 4 * KiB },
++    { "csi",       0x01cb0000, 320 * KiB },
++    { "tve",       0x01e00000, 64 * KiB },
++    { "hdmi",      0x01ee0000, 128 * KiB },
++    { "rtc",       0x01f00000, 1 * KiB },
++    { "r_timer",   0x01f00800, 1 * KiB },
++    { "r_intc",    0x01f00c00, 1 * KiB },
++    { "r_wdog",    0x01f01000, 1 * KiB },
++    { "r_prcm",    0x01f01400, 1 * KiB },
++    { "r_twd",     0x01f01800, 1 * KiB },
++    { "r_cpucfg",  0x01f01c00, 1 * KiB },
++    { "r_cir-rx",  0x01f02000, 1 * KiB },
++    { "r_twi",     0x01f02400, 1 * KiB },
++    { "r_uart",    0x01f02800, 1 * KiB },
++    { "r_pio",     0x01f02c00, 1 * KiB },
++    { "r_pwm",     0x01f03800, 1 * KiB },
++    { "core-dbg",  0x3f500000, 128 * KiB },
++    { "tsgen-ro",  0x3f506000, 4 * KiB },
++    { "tsgen-ctl", 0x3f507000, 4 * KiB },
++    { "ddr-mem",   0x40000000, 2 * GiB },
++    { "n-brom",    0xffff0000, 32 * KiB },
++    { "s-brom",    0xffff0000, 64 * KiB }
++};
++
++/* Per Processor Interrupts */
++enum {
++    AW_H3_GIC_PPI_MAINT     =  9,
++    AW_H3_GIC_PPI_HYPTIMER  = 10,
++    AW_H3_GIC_PPI_VIRTTIMER = 11,
++    AW_H3_GIC_PPI_SECTIMER  = 13,
++    AW_H3_GIC_PPI_PHYSTIMER = 14
++};
++
++/* Shared Processor Interrupts */
++enum {
++    AW_H3_GIC_SPI_UART0     =  0,
++    AW_H3_GIC_SPI_UART1     =  1,
++    AW_H3_GIC_SPI_UART2     =  2,
++    AW_H3_GIC_SPI_UART3     =  3,
++    AW_H3_GIC_SPI_TIMER0    = 18,
++    AW_H3_GIC_SPI_TIMER1    = 19,
++    AW_H3_GIC_SPI_MMC0      = 60,
++    AW_H3_GIC_SPI_MMC1      = 61,
++    AW_H3_GIC_SPI_MMC2      = 62,
++    AW_H3_GIC_SPI_EHCI0     = 72,
++    AW_H3_GIC_SPI_OHCI0     = 73,
++    AW_H3_GIC_SPI_EHCI1     = 74,
++    AW_H3_GIC_SPI_OHCI1     = 75,
++    AW_H3_GIC_SPI_EHCI2     = 76,
++    AW_H3_GIC_SPI_OHCI2     = 77,
++    AW_H3_GIC_SPI_EHCI3     = 78,
++    AW_H3_GIC_SPI_OHCI3     = 79,
++    AW_H3_GIC_SPI_EMAC      = 82
++};
++
++/* Allwinner H3 constants */
++enum {
++    AW_H3_GIC_NUM_SPI       = 128
++};
++
++static void aw_h3_init(Object *obj)
++{
++    AwH3State *s = AW_H3(obj);
++
++    s->memmap = aw_h3_memmap;
++
++    for (int i = 0; i < AW_H3_NUM_CPUS; i++) {
++        object_initialize_child(obj, "cpu[*]", &s->cpus[i], sizeof(s->cpus[i]),
++                                ARM_CPU_TYPE_NAME("cortex-a7"),
++                                &error_abort, NULL);
++    }
++
++    sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
++                          TYPE_ARM_GIC);
++
++    sysbus_init_child_obj(obj, "timer", &s->timer, sizeof(s->timer),
++                          TYPE_AW_A10_PIT);
++}
++
++static void aw_h3_realize(DeviceState *dev, Error **errp)
++{
++    AwH3State *s = AW_H3(dev);
++    unsigned i = 0;
++
++    /* CPUs */
++    for (i = 0; i < AW_H3_NUM_CPUS; i++) {
++
++        /* Provide Power State Coordination Interface */
++        object_property_set_int(OBJECT(&s->cpus[i]), QEMU_PSCI_CONDUIT_HVC,
++                                "psci-conduit", &error_abort);
++        if (error_abort != NULL) {
++            error_propagate(errp, error_abort);
++            return;
++        }
++
++        /* Disable secondary CPUs */
++        object_property_set_bool(OBJECT(&s->cpus[i]), i > 0,
++                                "start-powered-off", &error_abort);
++        if (error_abort != NULL) {
++            error_propagate(errp, error_abort);
++            return;
++        }
++
++        /* All exception levels required */
++        object_property_set_bool(OBJECT(&s->cpus[i]),
++                                 true, "has_el3", &error_abort);
++        if (error_abort != NULL) {
++            error_propagate(errp, error_abort);
++            return;
++        }
++
++        object_property_set_bool(OBJECT(&s->cpus[i]),
++                                 true, "has_el2", &error_abort);
++        if (error_abort != NULL) {
++            error_propagate(errp, error_abort);
++            return;
++        }
++
++        /* Mark realized */
++        qdev_init_nofail(DEVICE(&s->cpus[i]));
++    }
++
++    /* Generic Interrupt Controller */
++    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", AW_H3_GIC_NUM_SPI +
++                                                     GIC_INTERNAL);
++    qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
++    qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", AW_H3_NUM_CPUS);
++    qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", false);
++    qdev_prop_set_bit(DEVICE(&s->gic), "has-virtualization-extensions", true);
++    qdev_init_nofail(DEVICE(&s->gic));
++
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0, s->memmap[AW_H3_GIC_DIST]);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1, s->memmap[AW_H3_GIC_CPU]);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2, s->memmap[AW_H3_GIC_HYP]);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3, s->memmap[AW_H3_GIC_VCPU]);
++
++    /*
++     * Wire the outputs from each CPU's generic timer and the GICv3
++     * maintenance interrupt signal to the appropriate GIC PPI inputs,
++     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
++     */
++    for (i = 0; i < AW_H3_NUM_CPUS; i++) {
++        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
++        int ppibase = AW_H3_GIC_NUM_SPI + i * GIC_INTERNAL + GIC_NR_SGIS;
++        int irq;
++        /*
++         * Mapping from the output timer irq lines from the CPU to the
++         * GIC PPI inputs used for this board.
++         */
++        const int timer_irq[] = {
++            [GTIMER_PHYS] = AW_H3_GIC_PPI_PHYSTIMER,
++            [GTIMER_VIRT] = AW_H3_GIC_PPI_VIRTTIMER,
++            [GTIMER_HYP]  = AW_H3_GIC_PPI_HYPTIMER,
++            [GTIMER_SEC]  = AW_H3_GIC_PPI_SECTIMER,
++        };
++
++        /* Connect CPU timer outputs to GIC PPI inputs */
++        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
++            qdev_connect_gpio_out(cpudev, irq,
++                                  qdev_get_gpio_in(DEVICE(&s->gic),
++                                                   ppibase + timer_irq[irq]));
++        }
++
++        /* Connect GIC outputs to CPU interrupt inputs */
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + AW_H3_NUM_CPUS,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (2 * AW_H3_NUM_CPUS),
++                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (3 * AW_H3_NUM_CPUS),
++                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
++
++        /* GIC maintenance signal */
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (4 * AW_H3_NUM_CPUS),
++                           qdev_get_gpio_in(DEVICE(&s->gic),
++                                            ppibase + AW_H3_GIC_PPI_MAINT));
++    }
++
++    /* Timer */
++    qdev_init_nofail(DEVICE(&s->timer));
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer), 0, s->memmap[AW_H3_PIT]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 0,
++                       qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_TIMER0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 1,
++                       qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_TIMER1));
++
++    /* SRAM */
++    memory_region_init_ram(&s->sram_a1, OBJECT(dev), "sram A1",
++                            64 * KiB, &error_abort);
++    memory_region_init_ram(&s->sram_a2, OBJECT(dev), "sram A2",
++                            32 * KiB, &error_abort);
++    memory_region_init_ram(&s->sram_c, OBJECT(dev), "sram C",
++                            44 * KiB, &error_abort);
++    memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_A1],
++                                &s->sram_a1);
++    memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_A2],
++                                &s->sram_a2);
++    memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_C],
++                                &s->sram_c);
++
++    /* UART0 */
++    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART0], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART0),
++                   115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
++    /* UART1 */
++    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART1], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART1),
++                   115200, serial_hd(1), DEVICE_NATIVE_ENDIAN);
++    /* UART2 */
++    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART2], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART2),
++                   115200, serial_hd(2), DEVICE_NATIVE_ENDIAN);
++    /* UART3 */
++    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART3], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART3),
++                   115200, serial_hd(3), DEVICE_NATIVE_ENDIAN);
++
++    /* Unimplemented devices */
++    for (int i = 0; i < ARRAY_SIZE(unimplemented); i++) {
++        create_unimplemented_device(unimplemented[i].device_name,
++                                    unimplemented[i].base,
++                                    unimplemented[i].size);
++    }
++}
++
++static void aw_h3_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++
++    dc->realize = aw_h3_realize;
++    /* Reason: uses serial_hds and nd_table */
++    dc->user_creatable = false;
++}
++
++static const TypeInfo aw_h3_type_info = {
++    .name = TYPE_AW_H3,
++    .parent = TYPE_DEVICE,
++    .instance_size = sizeof(AwH3State),
++    .instance_init = aw_h3_init,
++    .class_init = aw_h3_class_init,
++};
++
++static void aw_h3_register_types(void)
++{
++    type_register_static(&aw_h3_type_info);
++}
++
++type_init(aw_h3_register_types)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 740401bcbb..aae1a049b4 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -480,6 +480,13 @@ F: hw/*/allwinner*
+ F: include/hw/*/allwinner*
+ F: hw/arm/cubieboard.c
+ 
++Allwinner-h3
++M: Niek Linnenbank <nieklinnenbank@gmail.com>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/*/allwinner-h3*
++F: include/hw/*/allwinner-h3*
++
+ ARM PrimeCell and CMSDK devices
+ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index c6e7782580..ebf8d2325f 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -291,6 +291,14 @@ config ALLWINNER_A10
+     select SERIAL
+     select UNIMP
+ 
++config ALLWINNER_H3
++    bool
++    select ALLWINNER_A10_PIT
++    select SERIAL
++    select ARM_TIMER
++    select ARM_GIC
++    select UNIMP
++
+ config RASPI
+     bool
+     select FRAMEBUFFER
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index fe749f65fd..956e496052 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -34,6 +34,7 @@ obj-$(CONFIG_DIGIC) += digic.o
+ obj-$(CONFIG_OMAP) += omap1.o omap2.o
+ obj-$(CONFIG_STRONGARM) += strongarm.o
+ obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
++obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3.o
+ obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
+ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+ obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zynqmp.o xlnx-zcu102.o
+-- 
+2.17.1
 
-Send it! We'll discuss on updated v2 :)
-
-Regards,
-
-Phil.
-
---0000000000003b09be0599d8e485
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
-"gmail_attr">Le lun. 16 d=C3=A9c. 2019 20:46, Niek Linnenbank &lt;<a href=
-=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt; a =C3=
-=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
- 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"ltr"><di=
-v dir=3D"ltr"><br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" cla=
-ss=3D"gmail_attr">On Mon, Dec 16, 2019 at 1:14 AM Philippe Mathieu-Daud=C3=
-=A9 &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank" rel=3D"noref=
-errer">philmd@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail=
-_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
-,204);padding-left:1ex">On 12/16/19 12:07 AM, Niek Linnenbank wrote:<br>
-&gt; <br>
-&gt; <br>
-&gt; On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9 <br>
-&gt; &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank" rel=3D"nore=
-ferrer">philmd@redhat.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.co=
-m" target=3D"_blank" rel=3D"noreferrer">philmd@redhat.com</a>&gt;&gt; wrote=
-:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Hi Niek,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 12/11/19 11:34 PM, Niek Linnenbank wrote:<br>
-[...]<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+static uint32_t aw_h3_sdh=
-ost_process_desc(AwH3SDHostState *s,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 hwaddr desc_addr,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TransferDescriptor<br>
-&gt;=C2=A0 =C2=A0 =C2=A0*desc,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bool is_write,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0uint32_t<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0max_bytes)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint32_t nu=
-m_done =3D 0;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint32_t nu=
-m_bytes =3D max_bytes;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint8_t buf=
-[1024];<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 /* Read des=
-criptor */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 cpu_physica=
-l_memory_read(desc_addr, desc, sizeof(*desc));<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Should we worry about endianess here?<br>
-&gt; <br>
-&gt; <br>
-&gt; I tried to figure out what is expected, but the <br>
-&gt; Allwinner_H3_Datasheet_V1.2.pdf does not<br>
-&gt; explicitly mention endianness for any of its I/O devices. Currently it=
- <br>
-&gt; seems all devices are<br>
-&gt; happy with using the same endianness as the CPUs. In the MemoryRegionO=
-ps <br>
-&gt; has DEVICE_NATIVE_ENDIAN<br>
-&gt; set to match the behavior seen.<br>
-<br>
-OK.<br>
-<br>
-[...]<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+static const MemoryRegion=
-Ops aw_h3_sdhost_ops =3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .read =3D a=
-w_h3_sdhost_read,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .write =3D =
-aw_h3_sdhost_write,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .endianness=
- =3D DEVICE_NATIVE_ENDIAN,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0I haven&#39;t checked .valid accesses from the data=
-sheet.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0However due to:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0res =3D s-&gt;data_crc[((offset - REG=
-_SD_DATA7_CRC) / sizeof(uint32_t))];<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0You seem to expect:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 .impl.mi=
-n_access_size =3D 4,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0.impl.max_access_size unset is 8, which should work=
-s.<br>
-&gt; <br>
-&gt; It seems that all registers are aligned on at least 32-bit boundaries.=
- <br>
-&gt; And the section 5.3.5.1 mentions<br>
-&gt; that the DMA descriptors must be stored in memory 32-bit aligned. So <=
-br>
-&gt; based on that information,<br>
-<br>
-So you are describing &quot;.valid.min_access_size =3D 4&quot;, which is th=
-e minimum <br>
-access size on the bus.<br>
-&quot;.impl.min_access_size&quot; is different, it is what access sizes is =
-ready <br>
-to handle your model.<br>
-Your model read/write handlers expect addresses aligned on 32-bit <br>
-boundary, this is why I suggested to use &quot;.impl.min_access_size =3D 4&=
-quot;. If <br>
-the guest were using a 16-bit access, your model would be buggy. If you <br=
->
-describe your implementation to accept minimum 32-bit and the guest is <br>
-allowed to use smaller accesses, QEMU will do a 32-bit access to the <br>
-device, and return the 16-bit part to the guest. This way your model is <br=
->
-safe. This is done by access_with_adjusted_size() in memory.c.<br>
-If you restrict with &quot;.valid.min_access_size =3D 4&quot;, you might th=
-ink we <br>
-don&#39;t need &quot;.valid.min_access_size =3D 4&quot; because all access =
-from guest <br>
-will be at least 32-bit. However keep in mind someone might find this <br>
-device in another datasheet not limited to 32-bit, and let&#39;s say change=
- <br>
-to &quot;.valid.min_access_size =3D 2&quot;. Without &quot;.impl.min_access=
-_size =3D 4&quot; <br>
-your model is buggy. So to be safe I&#39;d use:<br>
-<br>
-=C2=A0 =C2=A0.impl.min_access_size =3D 4,<br>
-=C2=A0 =C2=A0.valid.min_access_size =3D 4,<br></blockquote><div><br></div><=
-div>Now it makes more sense to me, thanks Philippe for explaining this!<br>=
-</div><div>Great, I&#39;ll add .impl.min_access_size =3D 4.</div><div><br><=
-/div><div>At this point, I&#39;ve processed all the feedback that I receive=
-d for all of the patches</div><div>in this series. Is there anything else y=
-ou would like to see/discuss/review, or shall I send the v2 when I finish t=
-esting?<br></div></div></div></blockquote></div></div><div dir=3D"auto"><br=
-></div><div dir=3D"auto">Send it! We&#39;ll discuss on updated v2 :)</div><=
-div dir=3D"auto"><br></div><div dir=3D"auto">Regards,=C2=A0</div><div dir=
-=3D"auto"><br></div><div dir=3D"auto">Phil.</div></div>
-
---0000000000003b09be0599d8e485--

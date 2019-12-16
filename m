@@ -1,141 +1,165 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4432497lff;
-        Mon, 16 Dec 2019 03:46:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx3pH4euoAa+a5wjseKgetsDqLsPij9loEAMLgXBRLh12bOsjLPjdGwgJjDRjr5A3o/lpIK
-X-Received: by 2002:a9d:7cd9:: with SMTP id r25mr29503073otn.326.1576496809714;
-        Mon, 16 Dec 2019 03:46:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576496809; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4582290lff;
+        Mon, 16 Dec 2019 06:03:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqziPRAKV7t2XJ3FGYiSl/be70qcz3g2cxY2pAEkP+jIRgH5vNzL8/8ugGB7ebtyfLoRX7uK
+X-Received: by 2002:aca:b844:: with SMTP id i65mr10018448oif.56.1576505016570;
+        Mon, 16 Dec 2019 06:03:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576505016; cv=none;
         d=google.com; s=arc-20160816;
-        b=HB2l2g31v8lfe/6unBFnJaVtlWUxssS3D+CvsMQw67AmXy6jMzCOoDbsP2igqx+ho5
-         8BMfnVKe9/5nxuUdz7cl8RZ42cTpFZYfs2AQCrWcqfRPg5k0VCLliSGhDnt/D2l7ntjq
-         pwvBMacNbeyfKAxKE2d0uM+ccGEPyIurL63W7k12XfoDSssAvLauok1/leltCFQ+AIxn
-         ge06m+tJMNdaoauDXYGi9hgYrU8pkcDVOMRoPc33m0SC0WWF6TKKlTx3gw6OXAc2absN
-         KS6uIVQOlOfVjwNY6zxjpmewpDVQrC3lqbCnjaMrOV7YVSZ6TesLETF1uO/gQf5MDDON
-         21Gw==
+        b=oggMU2jyKpK4g9CFvIMGfPBngTGdz0Jt8WWi1Z6lsjjpyCjAMj5CjaqSgoBa2qjSCL
+         NsZQ49ejEqbnatKbgTvHPc6XFr1MluqLoDh3dJyQsaSalOrNYQ4/m1NhDZOD1v32PSNS
+         xxXrM5HgZa6qJl7QluPu/ZF2gBCfBQJ1Gp9s5XwNVYKZtcAz/GpDWQKT9RoVViHzVY/a
+         0Zj1J7TXZ+NSkm5K9o245q+1/gyWiCfNXdDfL7JcM3muG5MTSC+PS8z4ZLnAcD66XnCy
+         DooL5nu4BvVPTp3M0YKkpdwBzjXCDygNo/28gxkZeDdJUMkE4zPrSHs1JkaykX0lfh53
+         bU8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=8I5trJBGTW4luMb11Ffwe+Tyg+F3aLb9Oz/+hKtjAZQ=;
-        b=T964AwMCj82wcju3Taoalde2bPTnUCfEfEg0dqaEQkgRswHp8CSu7MPvaX/YOVTt3T
-         42RRgg9ZLq5FfKezo17XPdfp61caDvBxbwrcR6XvgiE78mTK2iuRxbkpM8mF1rlEvqJ9
-         ua6QRrcC+iyVc74QazkQyHBpbYsGsLReuj6FMRE9fS4i8t9ISwQ+dhMdDdZrplRUNdoG
-         MfYlq5qUAw1E/QYWvirTzjpcb+2ZjmAs1UHAXFOEHheHtwnVIVGAbnA0O9CZMoSvlhB9
-         jgAd/yjeUPEuOgZYgxyv0nrLHOXBjquXbc0crKKtOuDsPRzDKR9dM/W9XaD9y6SYD6qF
-         i4Iw==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=A9SY0krHFjydIQmqzREy9ABCAZgjAKMUQ2ClrNvBGYM=;
+        b=H276LMkvUHhuTqf9hLIcAIDLiNHTEPIVS24K9pwke2VoAdWOMxqLClmG3t8uEfXz56
+         EIn5oH4gp5i7UJDCArVFt6Y1FzvTNQnvq+aZ+RPEAuwmAQ5BiPE2xm297w2XFwUHiODa
+         9YViI3DcFLEfTY0ktT3VCQj1vKubVkwBMNiCzKyNNd2NxxpDHEf8/Gwmt6go9qwl6vQg
+         d1lttKN2jK1NFmGupjd6d8bmU9X8k7EvDIHm24DPw8s7ksIu9ZMVT+Hku1ShZB6EpQaQ
+         7+dswq6HySmuJDmWjOpB4tiGqt6uhdplr33l9DskgS1Z/qgqCHKP89/by/nI7wddeNWj
+         uPtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yfj+MJhP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Bwdnvnv/";
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id i13si9705554otc.228.2019.12.16.03.46.49;
-        Mon, 16 Dec 2019 03:46:49 -0800 (PST)
+        by mx.google.com with ESMTP id t18si10467446oij.133.2019.12.16.06.03.36;
+        Mon, 16 Dec 2019 06:03:36 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yfj+MJhP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Bwdnvnv/";
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727508AbfLPLqs (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 16 Dec 2019 06:46:48 -0500
-Received: from mail-ot1-f66.google.com ([209.85.210.66]:41693 "EHLO
-        mail-ot1-f66.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1727286AbfLPLqs (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 16 Dec 2019 06:46:48 -0500
-Received: by mail-ot1-f66.google.com with SMTP id r27so8843542otc.8
-        for <kvm@vger.kernel.org>; Mon, 16 Dec 2019 03:46:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=8I5trJBGTW4luMb11Ffwe+Tyg+F3aLb9Oz/+hKtjAZQ=;
-        b=yfj+MJhPaUOx7sxyWSVqpAJ3fhdorMc3yaCPiBcoJGHf3s50+RFX6CsD4btsF+xSNc
-         epRtGKgGbnJcYr0b+57Psp8tbjWI91A+UwqXMW8IC/oT7eShtLBIxYb7eKq1wMyKwPQ7
-         hDHK3B767lDJVvofvKZem/Aqt3PKjOSZNDB1JlLc4zYu+HdTtUx0gF31MlGxOPJ7M7ha
-         Z+iDvgWzgkUF498+wFV8G9EUAcZ6xu5vn/w+H8bCbsk1CeEoLt0xYd/DPhZEXGjqxCMF
-         oLZb9t8B63ZeKqB1WI752r0JJh7BkK5f9q4W1HbKLXetzOwI8GmThU55YSrFU9rPVH+/
-         2aaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=8I5trJBGTW4luMb11Ffwe+Tyg+F3aLb9Oz/+hKtjAZQ=;
-        b=apt0/bz/+n9WJBC7j2oZFxobVaVoWXi0lV0Yn1IA5j+x1i+ilPRVfV9DwfdfeXM/X3
-         ToabQpyKi0KdjkptrrpmGnk9SqFHZ5G6KGNsRfWbJ1zJAcytM1mEsuO83yZeVV06Ws5i
-         3TRrzK2J6DuksEtGXqex4sm/Zxa/7FrX5iYHmyNIHFBDcgpgPW0OiFTmUQOdqT8fyBqS
-         8sxNTo6IbRgILvr0lY2i/Hexxo5JxebgptOAo9o1a+dNkFOY/Kmo9MLuRfsXTK0w8ttB
-         CGgnHPRlj2EVK/MEG91icIlrSX+n3ip8k+1AzyrbepGKbRrXVyGtoZQeRy/yRFpbLFqu
-         yrmQ==
-X-Gm-Message-State: APjAAAWwJEYZ7ooJOQ0t/iWryVunI2TzShlQ4ezR7jKJjM1waphZ8AqD
-        rP0JzRzVzQbdAjpyRAwSO6gi6Rib/J2xwrISFC/8Ew==
-X-Received: by 2002:a05:6830:13d3:: with SMTP id e19mr31703782otq.135.1576496807419;
- Mon, 16 Dec 2019 03:46:47 -0800 (PST)
+        id S1728070AbfLPODf (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Mon, 16 Dec 2019 09:03:35 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43262 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1727906AbfLPODf (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 16 Dec 2019 09:03:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1576505014;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=A9SY0krHFjydIQmqzREy9ABCAZgjAKMUQ2ClrNvBGYM=;
+        b=Bwdnvnv/tMRPue3PDfNYWJSBBNnoBsnYqXmgvVCpeGjmYlH5aiaZojBJAkIJuLGHBtD6zr
+        x/ZCsekgESdwVLG8VAUoL7GfmcWhEwBrYb6yFHSwW6TIa7G9NIA4gz1nbrQhpQ+4XPtLJP
+        l2JJSrgmgok3x7yp/zRx3fzxHaNEV3I=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-5-KZ0hcHf3OsqMUOdqJHz5Tw-1; Mon, 16 Dec 2019 09:03:25 -0500
+X-MC-Unique: KZ0hcHf3OsqMUOdqJHz5Tw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B81C9100550E;
+        Mon, 16 Dec 2019 14:03:22 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-117.ams2.redhat.com [10.36.116.117])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 60B4268860;
+        Mon, 16 Dec 2019 14:03:16 +0000 (UTC)
+From:   Eric Auger <eric.auger@redhat.com>
+To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     drjones@redhat.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org, yuzenghui@huawei.com,
+        alexandru.elisei@arm.com, thuth@redhat.com
+Subject: [kvm-unit-tests PATCH 00/16] arm/arm64: Add ITS tests
+Date:   Mon, 16 Dec 2019 15:02:19 +0100
+Message-Id: <20191216140235.10751-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20191214155614.19004-1-philmd@redhat.com> <CAFEAcA_QZtU9X4fxZk2oWAkN-zxXdQZejrSKZbDxPKLMwdFWgw@mail.gmail.com>
- <20191215044759-mutt-send-email-mst@kernel.org> <CAFEAcA9ZF3VTR7kG_D-cJ+vPFTgd8zjmt2VPfJC7urNemF-5AQ@mail.gmail.com>
- <20191216063529-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20191216063529-mutt-send-email-mst@kernel.org>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Mon, 16 Dec 2019 11:46:35 +0000
-Message-ID: <CAFEAcA8RLOOT+0Bad4PfU0Jubp9MDOTTt1rHBQYABAfd9oMRLw@mail.gmail.com>
-Subject: Re: [PATCH 0/8] Simplify memory_region_add_subregion_overlap(..., priority=0)
-To:     "Michael S. Tsirkin" <mst@redhat.com>
-Cc:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        Andrew Baumann <Andrew.Baumann@microsoft.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Alex Williamson <alex.williamson@redhat.com>,
-        Aleksandar Markovic <amarkovic@wavecomp.com>,
-        Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Alistair Francis <alistair@alistair23.me>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-        Paul Burton <pburton@wavecomp.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Content-Transfer-Encoding: quoted-printable
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 1J+ai1cmty2h
+X-TUID: rgS3gT+tYJCa
 
-On Mon, 16 Dec 2019 at 11:40, Michael S. Tsirkin <mst@redhat.com> wrote:
->
-> On Sun, Dec 15, 2019 at 03:27:12PM +0000, Peter Maydell wrote:
-> > On Sun, 15 Dec 2019 at 09:51, Michael S. Tsirkin <mst@redhat.com> wrote:
-> > >
-> > > On Sat, Dec 14, 2019 at 04:28:08PM +0000, Peter Maydell wrote:
-> > > > (It doesn't actually assert that it doesn't
-> > > > overlap because we have some legacy uses, notably
-> > > > in the x86 PC machines, which do overlap without using
-> > > > the right function, which we've never tried to tidy up.)
-> > >
-> > > It's not exactly legacy uses.
-> > >
-> > > To be more exact, the way the non overlap versions
-> > > are *used* is to mean "I don't care what happens when they overlap"
-> > > as opposed to "will never overlap".
-> >
-> > Almost all of the use of the non-overlap versions is
-> > for "these are never going to overlap" -- devices or ram at
-> > fixed addresses in the address space that can't
-> > ever be mapped over by anything else. If you want
-> > "can overlap but I don't care which one wins" then
-> > that would be more clearly expressed by using the _overlap()
-> > version but just giving everything that can overlap there
-> > the same priority.
->
-> Problem is device doesn't always know whether something can overlap it.
-> Imagine device A at a fixed address.
-> Guest can program device B to overlap the fixed address.
-> How is device A supposed to know this can happen?
+This series is a revival of an RFC series sent in Dec 2016 [1].
+Given the amount of code and the lack of traction at that time,
+I haven't respinned until now. However a recent bug found around
+the ITS migration convinced me that this work may deserve to be
+respinned and enhanced.
 
-That's why (the original intention was) only one of the
-regions needs to be marked 'overlap OK', not both.
+Tests exercise main ITS commands and also test migration.
+With the migration framework, we are able to trigger the
+migration from guest and that is very practical actually.
 
-thanks
--- PMM
+What is particular with the ITS programming is that most of
+the commands are passed through queues and there is real error
+handling. Invalid commands are just ignored and that is not
+really tester friendly.
+
+This series includes Andre's patch: "arm: gic: Provide
+per-IRQ helper functions" [2]
+
+The series can be fount at:
+https://github.com/eauger/kut/tree/its-v1
+
+Best Regards
+
+Eric
+
+[1] [kvm-unit-tests RFC 00/15] arm/arm64: add ITS framework
+    https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg00575.html
+
+[2] [kvm-unit-tests PATCH 00/17] arm: gic: Test SPIs and interrupt groups
+    https://patchwork.kernel.org/cover/11234975/
+
+For ITS migration testing use:
+./run_tests.sh -g migration (blocks on TCG but I think it is beyond the
+scope of that series)
+
+For other ITS tests:
+./run_tests.sh -g its
+
+non migration tests can be launched invidually. For instance:
+./arm-run arm/gic.flat -smp 8 -append 'its-trigger'
+
+Andre Przywara (1):
+  arm: gic: Provide per-IRQ helper functions
+
+Eric Auger (15):
+  libcflat: Add other size defines
+  arm/arm64: gic: Introduce setup_irq() helper
+  arm/arm64: gicv3: Add some re-distributor defines
+  arm/arm64: ITS: Introspection tests
+  arm/arm64: ITS: Test BASER
+  arm/arm64: ITS: Set the LPI config and pending tables
+  arm/arm64: ITS: Init the command queue
+  arm/arm64: ITS: Enable/Disable LPIs at re-distributor level
+  arm/arm64: ITS: its_enable_defaults
+  arm/arm64: ITS: Device and collection Initialization
+  arm/arm64: ITS: commands
+  arm/arm64: ITS: INT functional tests
+  arm/run: Allow Migration tests
+  arm/arm64: ITS: migration tests
+  arm/arm64: ITS: pending table migration test
+
+ arm/Makefile.common        |   3 +-
+ arm/gic.c                  | 447 +++++++++++++++++++++++++++++++++--
+ arm/run                    |   2 +-
+ arm/unittests.cfg          |  39 ++++
+ lib/arm/asm/gic-v3-its.h   | 217 +++++++++++++++++
+ lib/arm/asm/gic-v3.h       |  87 +++++++
+ lib/arm/asm/gic.h          |  13 ++
+ lib/arm/gic-v3-its-cmd.c   | 462 +++++++++++++++++++++++++++++++++++++
+ lib/arm/gic-v3-its.c       | 354 ++++++++++++++++++++++++++++
+ lib/arm/gic.c              | 132 ++++++++++-
+ lib/arm/io.c               |  13 ++
+ lib/arm64/asm/gic-v3-its.h |   1 +
+ lib/libcflat.h             |   3 +
+ 13 files changed, 1745 insertions(+), 28 deletions(-)
+ create mode 100644 lib/arm/asm/gic-v3-its.h
+ create mode 100644 lib/arm/gic-v3-its-cmd.c
+ create mode 100644 lib/arm/gic-v3-its.c
+ create mode 100644 lib/arm64/asm/gic-v3-its.h
+
+--=20
+2.20.1

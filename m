@@ -1,176 +1,141 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3937737lff;
-        Sun, 15 Dec 2019 17:04:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwWQ1u2fCGqZkF9vXjzICF9KFmH1lKU4LzSEbU0R+1rSrngVoRigYb6zRzALNjLycLcprnA
-X-Received: by 2002:a05:6830:2306:: with SMTP id u6mr30640718ote.78.1576458286818;
-        Sun, 15 Dec 2019 17:04:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576458286; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4432497lff;
+        Mon, 16 Dec 2019 03:46:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx3pH4euoAa+a5wjseKgetsDqLsPij9loEAMLgXBRLh12bOsjLPjdGwgJjDRjr5A3o/lpIK
+X-Received: by 2002:a9d:7cd9:: with SMTP id r25mr29503073otn.326.1576496809714;
+        Mon, 16 Dec 2019 03:46:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576496809; cv=none;
         d=google.com; s=arc-20160816;
-        b=TwrTc/XJW1HbBcWxGKv3Agn2k3iBNRL9kOOSUP4RUMGywRlYQruoEr6+ugcN94/ahI
-         7BK/JVvHIlXtBv4Dtxvbfoo1Gm7iVXQMwAyFxdxKqLROtKQ6k2XiYG3Yk7HCv01gdr3z
-         Lv8wy4LH+gO8d+N1E6IpK7P8ESRD5y79wzsWwwPL/EU8lvKOJP0MKjw0Xmie+mKKmDEl
-         f2MR2de03JvqyFtN9YSvE2rhdrA5k2wQgufVqCj6OtlTypZPZiobJL4gW0keXluzuxKl
-         tiOfaFZXKNbgt0ACosd3Iox3EA8OVjvKT1yWG704/Q2JSUPq32/O+EuimDP0C8gO2oFC
-         KXUQ==
+        b=HB2l2g31v8lfe/6unBFnJaVtlWUxssS3D+CvsMQw67AmXy6jMzCOoDbsP2igqx+ho5
+         8BMfnVKe9/5nxuUdz7cl8RZ42cTpFZYfs2AQCrWcqfRPg5k0VCLliSGhDnt/D2l7ntjq
+         pwvBMacNbeyfKAxKE2d0uM+ccGEPyIurL63W7k12XfoDSssAvLauok1/leltCFQ+AIxn
+         ge06m+tJMNdaoauDXYGi9hgYrU8pkcDVOMRoPc33m0SC0WWF6TKKlTx3gw6OXAc2absN
+         KS6uIVQOlOfVjwNY6zxjpmewpDVQrC3lqbCnjaMrOV7YVSZ6TesLETF1uO/gQf5MDDON
+         21Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=3DCXgyPwzgE+O6Bop8spVTYIkBWv1NVk/5XN2ffhPLY=;
-        b=wEbkEGP7iiRy3d23H0pqfZD/LFcfgW4AkYaem7IMeWIm+qAdmTiE1cebWJ4NCJWFHx
-         XZH8stENN3dY9IFr+wti8DIsg9zP6i5LFtpXcwFEUYqfiN7hFYkfaS+PJ9rieWxYO2Dc
-         Eogbag3aMunP263lwzwFOVtk0U0Mo0s0/vRDm1xaEUR8rNYtJqJSbuXh9Jf51CJcCvfq
-         caApEguu9CylRslEW3tRKzbJld/1St98jkLjryL37cTtwKkK9h9LuHwweHCSjjGHTwdP
-         oPppTyKG04sNawFp3Z8r3n8hph5mW3fw94UOtGbgTwJi6OWQyz/m0EHZUV2Km73ek8TM
-         HNCQ==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=8I5trJBGTW4luMb11Ffwe+Tyg+F3aLb9Oz/+hKtjAZQ=;
+        b=T964AwMCj82wcju3Taoalde2bPTnUCfEfEg0dqaEQkgRswHp8CSu7MPvaX/YOVTt3T
+         42RRgg9ZLq5FfKezo17XPdfp61caDvBxbwrcR6XvgiE78mTK2iuRxbkpM8mF1rlEvqJ9
+         ua6QRrcC+iyVc74QazkQyHBpbYsGsLReuj6FMRE9fS4i8t9ISwQ+dhMdDdZrplRUNdoG
+         MfYlq5qUAw1E/QYWvirTzjpcb+2ZjmAs1UHAXFOEHheHtwnVIVGAbnA0O9CZMoSvlhB9
+         jgAd/yjeUPEuOgZYgxyv0nrLHOXBjquXbc0crKKtOuDsPRzDKR9dM/W9XaD9y6SYD6qF
+         i4Iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w129si9656751oig.83.2019.12.15.17.04.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Dec 2019 17:04:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yfj+MJhP;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id i13si9705554otc.228.2019.12.16.03.46.49;
+        Mon, 16 Dec 2019 03:46:49 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:45112 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igeoX-0001g4-W5
-	for alex.bennee@linaro.org; Sun, 15 Dec 2019 20:04:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41409)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tao3.xu@intel.com>) id 1igenZ-0000b8-QW
- for qemu-arm@nongnu.org; Sun, 15 Dec 2019 20:03:47 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tao3.xu@intel.com>) id 1igenY-0005Ue-J5
- for qemu-arm@nongnu.org; Sun, 15 Dec 2019 20:03:45 -0500
-Received: from mga01.intel.com ([192.55.52.88]:20795)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <tao3.xu@intel.com>)
- id 1igenU-00053U-Ve; Sun, 15 Dec 2019 20:03:41 -0500
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Dec 2019 17:03:32 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,319,1571727600"; d="scan'208";a="414917184"
-Received: from txu2-mobl.ccr.corp.intel.com (HELO [10.239.196.238])
- ([10.239.196.238])
- by fmsmga005.fm.intel.com with ESMTP; 15 Dec 2019 17:03:30 -0800
-Subject: Re: [PATCH 2/2] numa: properly check if numa is supported
-To: Igor Mammedov <imammedo@redhat.com>
-References: <1576154936-178362-1-git-send-email-imammedo@redhat.com>
- <1576154936-178362-3-git-send-email-imammedo@redhat.com>
- <bf9dc1f6-514a-67ac-d09b-0b515545bf22@intel.com>
- <20191213101219.0aa249dc@redhat.com>
-From: Tao Xu <tao3.xu@intel.com>
-Message-ID: <a0e52b4d-d6b9-3dec-35b8-a3225f07d8d5@intel.com>
-Date: Mon, 16 Dec 2019 09:03:30 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=yfj+MJhP;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727508AbfLPLqs (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Mon, 16 Dec 2019 06:46:48 -0500
+Received: from mail-ot1-f66.google.com ([209.85.210.66]:41693 "EHLO
+        mail-ot1-f66.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1727286AbfLPLqs (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 16 Dec 2019 06:46:48 -0500
+Received: by mail-ot1-f66.google.com with SMTP id r27so8843542otc.8
+        for <kvm@vger.kernel.org>; Mon, 16 Dec 2019 03:46:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=8I5trJBGTW4luMb11Ffwe+Tyg+F3aLb9Oz/+hKtjAZQ=;
+        b=yfj+MJhPaUOx7sxyWSVqpAJ3fhdorMc3yaCPiBcoJGHf3s50+RFX6CsD4btsF+xSNc
+         epRtGKgGbnJcYr0b+57Psp8tbjWI91A+UwqXMW8IC/oT7eShtLBIxYb7eKq1wMyKwPQ7
+         hDHK3B767lDJVvofvKZem/Aqt3PKjOSZNDB1JlLc4zYu+HdTtUx0gF31MlGxOPJ7M7ha
+         Z+iDvgWzgkUF498+wFV8G9EUAcZ6xu5vn/w+H8bCbsk1CeEoLt0xYd/DPhZEXGjqxCMF
+         oLZb9t8B63ZeKqB1WI752r0JJh7BkK5f9q4W1HbKLXetzOwI8GmThU55YSrFU9rPVH+/
+         2aaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=8I5trJBGTW4luMb11Ffwe+Tyg+F3aLb9Oz/+hKtjAZQ=;
+        b=apt0/bz/+n9WJBC7j2oZFxobVaVoWXi0lV0Yn1IA5j+x1i+ilPRVfV9DwfdfeXM/X3
+         ToabQpyKi0KdjkptrrpmGnk9SqFHZ5G6KGNsRfWbJ1zJAcytM1mEsuO83yZeVV06Ws5i
+         3TRrzK2J6DuksEtGXqex4sm/Zxa/7FrX5iYHmyNIHFBDcgpgPW0OiFTmUQOdqT8fyBqS
+         8sxNTo6IbRgILvr0lY2i/Hexxo5JxebgptOAo9o1a+dNkFOY/Kmo9MLuRfsXTK0w8ttB
+         CGgnHPRlj2EVK/MEG91icIlrSX+n3ip8k+1AzyrbepGKbRrXVyGtoZQeRy/yRFpbLFqu
+         yrmQ==
+X-Gm-Message-State: APjAAAWwJEYZ7ooJOQ0t/iWryVunI2TzShlQ4ezR7jKJjM1waphZ8AqD
+        rP0JzRzVzQbdAjpyRAwSO6gi6Rib/J2xwrISFC/8Ew==
+X-Received: by 2002:a05:6830:13d3:: with SMTP id e19mr31703782otq.135.1576496807419;
+ Mon, 16 Dec 2019 03:46:47 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191213101219.0aa249dc@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 192.55.52.88
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Leif Lindholm <leif.lindholm@linaro.org>,
- "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qnfca7XUvdJJ
+References: <20191214155614.19004-1-philmd@redhat.com> <CAFEAcA_QZtU9X4fxZk2oWAkN-zxXdQZejrSKZbDxPKLMwdFWgw@mail.gmail.com>
+ <20191215044759-mutt-send-email-mst@kernel.org> <CAFEAcA9ZF3VTR7kG_D-cJ+vPFTgd8zjmt2VPfJC7urNemF-5AQ@mail.gmail.com>
+ <20191216063529-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20191216063529-mutt-send-email-mst@kernel.org>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Mon, 16 Dec 2019 11:46:35 +0000
+Message-ID: <CAFEAcA8RLOOT+0Bad4PfU0Jubp9MDOTTt1rHBQYABAfd9oMRLw@mail.gmail.com>
+Subject: Re: [PATCH 0/8] Simplify memory_region_add_subregion_overlap(..., priority=0)
+To:     "Michael S. Tsirkin" <mst@redhat.com>
+Cc:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        Andrew Baumann <Andrew.Baumann@microsoft.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        kvm-devel <kvm@vger.kernel.org>,
+        Alex Williamson <alex.williamson@redhat.com>,
+        Aleksandar Markovic <amarkovic@wavecomp.com>,
+        Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Alistair Francis <alistair@alistair23.me>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+        Paul Burton <pburton@wavecomp.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 1J+ai1cmty2h
 
-On 12/13/2019 5:12 PM, Igor Mammedov wrote:
-> On Fri, 13 Dec 2019 09:33:10 +0800
-> Tao Xu <tao3.xu@intel.com> wrote:
-> 
->> On 12/12/2019 8:48 PM, Igor Mammedov wrote:
->>> Commit aa57020774b, by mistake used MachineClass::numa_mem_supported
->>> to check if NUMA is supported by machine and also as unrelated change
->>> set it to true for sbsa-ref board.
->>>
->>> Luckily change didn't break machines that support NUMA, as the field
->>> is set to true for them.
->>>
->>> But the field is not intended for checking if NUMA is supported and
->>> will be flipped to false within this release for new machine types.
->>>
->>> Fix it:
->>>    - by using previously used condition
->>>         !mc->cpu_index_to_instance_props || !mc->get_default_cpu_node_id
->>>      the first time and then use MachineState::numa_state down the road
->>>      to check if NUMA is supported
->>>    - dropping stray sbsa-ref chunk
->>>
->>> Fixes: aa57020774b690a22be72453b8e91c9b5a68c516
->>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
->>> ---
->>> CC: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
->>> CC: Peter Maydell <peter.maydell@linaro.org>
->>> CC: Leif Lindholm <leif.lindholm@linaro.org>
->>> CC: qemu-arm@nongnu.org
->>> CC: qemu-stable@nongnu.org
->>>
->>>
->>>    hw/arm/sbsa-ref.c | 1 -
->>>    hw/core/machine.c | 4 ++--
->>>    2 files changed, 2 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
->>> index 27046cc..c6261d4 100644
->>> --- a/hw/arm/sbsa-ref.c
->>> +++ b/hw/arm/sbsa-ref.c
->>> @@ -791,7 +791,6 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
->>>        mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
->>>        mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
->>>        mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
->>> -    mc->numa_mem_supported = true;
->>>    }
->>>    
->>>    static const TypeInfo sbsa_ref_info = {
->>> diff --git a/hw/core/machine.c b/hw/core/machine.c
->>> index 1689ad3..aa63231 100644
->>> --- a/hw/core/machine.c
->>> +++ b/hw/core/machine.c
->>> @@ -958,7 +958,7 @@ static void machine_initfn(Object *obj)
->>>                                            NULL);
->>>        }
->>>    
->>> -    if (mc->numa_mem_supported) {
->>> +    if (mc->cpu_index_to_instance_props && mc->get_default_cpu_node_id) {
->>>            ms->numa_state = g_new0(NumaState, 1);
->>>        }
->>
->> I am wondering if @numa_mem_supported is unused here, it is unused for
->> QEMU, because the only usage of @numa_mem_supported is to initialize
->> @numa_state. Or there is other usage? So should it be removed from
->> struct MachineClass?
-> You are wrong, it's not intended for numa_state initialization,
-> read doc comment for it in include/hw/boards.h
-> (for full story look at commit cd5ff8333a3)
-> 
-I understand.
+On Mon, 16 Dec 2019 at 11:40, Michael S. Tsirkin <mst@redhat.com> wrote:
+>
+> On Sun, Dec 15, 2019 at 03:27:12PM +0000, Peter Maydell wrote:
+> > On Sun, 15 Dec 2019 at 09:51, Michael S. Tsirkin <mst@redhat.com> wrote:
+> > >
+> > > On Sat, Dec 14, 2019 at 04:28:08PM +0000, Peter Maydell wrote:
+> > > > (It doesn't actually assert that it doesn't
+> > > > overlap because we have some legacy uses, notably
+> > > > in the x86 PC machines, which do overlap without using
+> > > > the right function, which we've never tried to tidy up.)
+> > >
+> > > It's not exactly legacy uses.
+> > >
+> > > To be more exact, the way the non overlap versions
+> > > are *used* is to mean "I don't care what happens when they overlap"
+> > > as opposed to "will never overlap".
+> >
+> > Almost all of the use of the non-overlap versions is
+> > for "these are never going to overlap" -- devices or ram at
+> > fixed addresses in the address space that can't
+> > ever be mapped over by anything else. If you want
+> > "can overlap but I don't care which one wins" then
+> > that would be more clearly expressed by using the _overlap()
+> > version but just giving everything that can overlap there
+> > the same priority.
+>
+> Problem is device doesn't always know whether something can overlap it.
+> Imagine device A at a fixed address.
+> Guest can program device B to overlap the fixed address.
+> How is device A supposed to know this can happen?
+
+That's why (the original intention was) only one of the
+regions needs to be marked 'overlap OK', not both.
+
+thanks
+-- PMM

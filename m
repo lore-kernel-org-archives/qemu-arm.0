@@ -1,78 +1,78 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5074674lff;
-        Mon, 16 Dec 2019 12:48:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzHk7mifLSuTAWANuP7Vg9qAQB2KBzAmQiwK2xX3iWRwnLt5bGbF3tdon6IkWJqzWtgtRSP
-X-Received: by 2002:a9d:7984:: with SMTP id h4mr34454625otm.297.1576529308447;
-        Mon, 16 Dec 2019 12:48:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576529308; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5074799lff;
+        Mon, 16 Dec 2019 12:48:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwkryYZBazrC2ztSXNssr2nrbdozB7gvdpqbyhbnr9ql0OB7/G3o5Jh95cIe9odCdkdJ4r4
+X-Received: by 2002:a05:6830:2142:: with SMTP id r2mr35104371otd.334.1576529315495;
+        Mon, 16 Dec 2019 12:48:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576529315; cv=none;
         d=google.com; s=arc-20160816;
-        b=pjTLBy/Pzi3do24PVRS5Not8+Mx0QnFABHF6Kiba6HSKGo9UhP8Eint6GseQ74F2Fv
-         9xLswWkKIVh9QEVJfuM+7kzv8akTtCg4MOM3Ou/qwXBiR29ar5Vwr7N6fruQ43IrCuBc
-         yLUYrM1H9Dnf6kkKeeEQrwrX/ukIjUiUaRB0VtIc8RqxTve41oeBH72IEag6GGYg7Ms1
-         ouHjYOcqBLKmmJsxGBaWP44lggybdJj6gdDxgVxwX/tJAPP2Df/fAzG3DZQIolqf56Nb
-         5Hql0KMOh7pV436UJlLjAjozxHsUd+X8ho8x8fFWI8cwva/amWap8pt9MK5b2cQ2eY73
-         Qszw==
+        b=dEIG3pT9w2xrZZqVLvO33BNCOEvVZgEbSscclwruenff9GBXt82V0/lbuo/835znvD
+         6Otpfi38hKHH9yHWNwLdw78wsBRtY+Gjh8u4SaTwFvL1KuJ1TL5a8/8PFhcqQPd6tJzr
+         36QJi3qmMdgCKBcrRTMlGwlC9rC2KzITenUH6mRK3J9cuXvWu9JJA7ymLMr5FOpak1GJ
+         5g2oZrDxS7Mm03vhwIaSXnZS1/61iSPrU4A+01E8Wh2ejfDOc3/1aUmfUT8eJcqi6F4l
+         yaKtupCP0wHx90w+XTa54SEO+f+ejvZZBJbyjIreBRIitYPoLfPXMwXbI0tp2OmP2FAi
+         rEtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=RjCVoMYbyhxjOhuGwZyyYSLknIArKPWpJID9BdwLtBQ=;
-        b=V0D4AhfoyJSriF9z4E3OjwHBfbrtaDYd7mdQyXpVm3pIVB5GFwgOTUd4BAs5BRW7M2
-         7DJn5/Iwbsb/MPADfci3BU3CIZ0PDkZTt/oMMhi0QaiOJb3RAd/Ug9oSXSf1CWjfItVC
-         Zcb+BCO6BwEGBFVvn8YK5U0wDKmJR1esnWqLlXqrBQuKyDcY1gVk/5+AZsclAUygZTpH
-         gJg3KzQMclJl/mJ34/iD18zHnTJiXOLI1UTTsx9d/pOryxJy8WtdD+tBOU5ifSiokWic
-         xK32vE366CDZAQhWyLy/a1nu57zia2AO8hMiGAZJgW65AzjiH18LeoKzFKqD8438inkT
-         mhFQ==
+        bh=tjYVs+BNNU240LHN8Sh/MBUq5QkpqVGcrM9TYOWuLzo=;
+        b=Kmjn+FrLy4bM5URUKMJJsTJGkSDNKvFBeJFgpeias9pBUrMKYTws29vZ+nrjKMAkCb
+         swS9Mcj9QYggTLockwydEgzwkXNoAq2nXgvzvD0CUayhXpPAD7lZmi2XT4e3LyLsG4Rc
+         I89b6fGTFITemavgQsxe4io517IOj5T23FEqb8YMYhz+dEKZzu+4bjwuvV9gEWCa+BOf
+         PEY6MkjzslpepyV7+Zja8Fnyju2WFrPjRA71EuE+ChMY/+6S0f6Uwz5mWDQNqxe0P1ku
+         4PVGFjY6GxdZRgniiskCfS6/+MNNv3QdSfBJZ3ME3Jf7PMGbql4OKidJYUw6jPX1NXt4
+         PoOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EWvssBwA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a7B9y4NZ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id q10si11463915otn.53.2019.12.16.12.48.28;
-        Mon, 16 Dec 2019 12:48:28 -0800 (PST)
+        by mx.google.com with ESMTP id q10si11463915otn.53.2019.12.16.12.48.35;
+        Mon, 16 Dec 2019 12:48:35 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EWvssBwA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a7B9y4NZ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727580AbfLPUs1 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 16 Dec 2019 15:48:27 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:43318 "EHLO
+        id S1727594AbfLPUse (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Mon, 16 Dec 2019 15:48:34 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:43995 "EHLO
         us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1727501AbfLPUs0 (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Mon, 16 Dec 2019 15:48:26 -0500
+        by vger.kernel.org with ESMTP id S1727501AbfLPUse (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Mon, 16 Dec 2019 15:48:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1576529305;
+        s=mimecast20190719; t=1576529312;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=RjCVoMYbyhxjOhuGwZyyYSLknIArKPWpJID9BdwLtBQ=;
-        b=EWvssBwAfF3kiNCaCHP/LtVmyytVcJOFoi/rO5523lPY4xaj3ZKizHEEQUL7S+OxXHY/nB
-        K0fmYedCWCmsvpc1/qV3CzmJaUClivNmrG9PUVn+sAKXW4LxltWrJ/l2s60BTdfmt+X3O/
-        gyOFNgVJulAaUJ5olHlrTcBUgT+5z3w=
+        bh=tjYVs+BNNU240LHN8Sh/MBUq5QkpqVGcrM9TYOWuLzo=;
+        b=a7B9y4NZVrX1mWetk7GyO+COcOscsiQ9+6FLayeVndni+q/qJZFvBYWpzqCtLFrQF0xTAE
+        jawjG4swE4JilDrsU8MN+z5e8EfsBjlA5Q53val0bCnDKBAOzXWkukdgX36xS485z8g2M6
+        Gc6RD8JFBX3EtIl4efelECJZGw59e0M=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-129-mAQz2_z2MAmqowES4roMzw-1; Mon, 16 Dec 2019 15:48:24 -0500
-X-MC-Unique: mAQz2_z2MAmqowES4roMzw-1
+ us-mta-401-N7zJNoN6MZy9JS5P6-AjUQ-1; Mon, 16 Dec 2019 15:48:31 -0500
+X-MC-Unique: N7zJNoN6MZy9JS5P6-AjUQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B6C98024E5;
-        Mon, 16 Dec 2019 20:48:21 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CEEF78024EB;
+        Mon, 16 Dec 2019 20:48:29 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-117.ams2.redhat.com [10.36.116.117])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id C42505D9C9;
-        Mon, 16 Dec 2019 20:48:18 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 251135D9C9;
+        Mon, 16 Dec 2019 20:48:26 +0000 (UTC)
 From:   Eric Auger <eric.auger@redhat.com>
 To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
         kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
         qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc:     drjones@redhat.com, andrew.murray@arm.com, andre.przywara@arm.com,
         peter.maydell@linaro.org, alexandru.elisei@arm.com
-Subject: [kvm-unit-tests PATCH 04/10] arm: pmu: Check Required Event Support
-Date:   Mon, 16 Dec 2019 21:47:51 +0100
-Message-Id: <20191216204757.4020-5-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH 06/10] arm: pmu: Test chained counter
+Date:   Mon, 16 Dec 2019 21:47:53 +0100
+Message-Id: <20191216204757.4020-7-eric.auger@redhat.com>
 In-Reply-To: <20191216204757.4020-1-eric.auger@redhat.com>
 References: <20191216204757.4020-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -82,142 +82,195 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: iwHA9AMulY2j
+X-TUID: q3buxLNYjBif
 
-If event counters are implemented check the common events
-required by the PMUv3 are implemented.
-
-Some are unconditionally required (SW_INCR, CPU_CYCLES,
-either INST_RETIRED or INST_SPEC). Some others only are
-required if the implementation implements some other features.
-
-Check those wich are unconditionally required.
-
-This test currently fails on TCG as neither INST_RETIRED
-or INST_SPEC are supported.
+Add 2 tests exercising chained counters. The first one uses
+CPU_CYCLES and the second one uses SW_INCR.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
-
-v1 ->v2:
-- add a comment to explain the PMCEID0/1 splits
----
- arm/pmu.c         | 71 +++++++++++++++++++++++++++++++++++++++++++++++
- arm/unittests.cfg |  6 ++++
- 2 files changed, 77 insertions(+)
+ arm/pmu.c         | 128 ++++++++++++++++++++++++++++++++++++++++++++++
+ arm/unittests.cfg |  12 +++++
+ 2 files changed, 140 insertions(+)
 
 diff --git a/arm/pmu.c b/arm/pmu.c
-index d24857e..d88ef22 100644
+index 139dae3..ad98771 100644
 --- a/arm/pmu.c
 +++ b/arm/pmu.c
-@@ -101,6 +101,10 @@ static inline void precise_instrs_loop(int loop, uin=
-t32_t pmcr)
- 	: [pmcr] "r" (pmcr), [z] "r" (0)
- 	: "cc");
- }
-+
-+/* event counter tests only implemented for aarch64 */
-+static void test_event_introspection(void) {}
-+
+@@ -113,6 +113,8 @@ static void test_event_introspection(void) {}
+ static void test_event_counter_config(void) {}
+ static void test_basic_event_count(void) {}
+ static void test_mem_access(void) {}
++static void test_chained_counters(void) {}
++static void test_chained_sw_incr(void) {}
+=20
  #elif defined(__aarch64__)
  #define ID_AA64DFR0_PERFMON_SHIFT 8
- #define ID_AA64DFR0_PERFMON_MASK  0xf
-@@ -139,6 +143,70 @@ static inline void precise_instrs_loop(int loop, uin=
-t32_t pmcr)
- 	: [pmcr] "r" (pmcr)
- 	: "cc");
+@@ -459,6 +461,126 @@ static void test_mem_access(void)
+ 			read_sysreg(pmovsclr_el0));
  }
-+
-+#define PMCEID1_EL0 sys_reg(11, 3, 9, 12, 7)
-+
-+static bool is_event_supported(uint32_t n, bool warn)
+=20
++static void test_chained_counters(void)
 +{
-+	uint64_t pmceid0 =3D read_sysreg(pmceid0_el0);
-+	uint64_t pmceid1 =3D read_sysreg_s(PMCEID1_EL0);
-+	bool supported;
-+	uint32_t reg;
++	uint32_t events[] =3D { 0x11 /* CPU_CYCLES */, 0x1E /* CHAIN */};
 +
-+	/*
-+	 * The low 32-bits of PMCEID0/1 respectly describe
-+	 * event support for events 0-31/32-63. Their High
-+	 * 32-bits describe support for extended events
-+	 * starting at 0x4000, using the same split.
-+	 */
-+	if (n >=3D 0x0  && n <=3D 0x1F)
-+		reg =3D pmceid0 & 0xFFFFFFFF;
-+	else if  (n >=3D 0x4000 && n <=3D 0x401F)
-+		reg =3D pmceid0 >> 32;
-+	else if (n >=3D 0x20  && n <=3D 0x3F)
-+		reg =3D pmceid1 & 0xFFFFFFFF;
-+	else if (n >=3D 0x4020 && n <=3D 0x403F)
-+		reg =3D pmceid1 >> 32;
-+	else
-+		abort();
++	if (!satisfy_prerequisites(events, ARRAY_SIZE(events)))
++		return;
 +
-+	supported =3D  reg & (1 << n);
-+	if (!supported && warn)
-+		report_info("event %d is not supported", n);
-+	return supported;
++	pmu_reset();
++
++	write_regn(pmevtyper, 0, events[0] | PMEVTYPER_EXCLUDE_EL0);
++	write_regn(pmevtyper, 1, events[1] | PMEVTYPER_EXCLUDE_EL0);
++	/* enable counters #0 and #1 */
++	write_sysreg_s(0x3, PMCNTENSET_EL0);
++	/* preset counter #0 at 0xFFFFFFF0 */
++	write_regn(pmevcntr, 0, 0xFFFFFFF0);
++
++	precise_instrs_loop(22, pmu.pmcr_ro | PMU_PMCR_E);
++
++	report(read_regn(pmevcntr, 1) =3D=3D 1, "CHAIN counter #1 incremented")=
+;
++	report(!read_sysreg(pmovsclr_el0), "check no overflow is recorded");
++
++	/* test 64b overflow */
++
++	pmu_reset();
++	write_sysreg_s(0x3, PMCNTENSET_EL0);
++
++	write_regn(pmevcntr, 0, 0xFFFFFFF0);
++	write_regn(pmevcntr, 1, 0x1);
++	precise_instrs_loop(22, pmu.pmcr_ro | PMU_PMCR_E);
++	report_info("overflow reg =3D 0x%lx", read_sysreg(pmovsclr_el0));
++	report(read_regn(pmevcntr, 1) =3D=3D 2, "CHAIN counter #1 incremented")=
+;
++	report(!read_sysreg(pmovsclr_el0), "check no overflow is recorded");
++
++	write_regn(pmevcntr, 0, 0xFFFFFFF0);
++	write_regn(pmevcntr, 1, 0xFFFFFFFF);
++
++	precise_instrs_loop(22, pmu.pmcr_ro | PMU_PMCR_E);
++	report_info("overflow reg =3D 0x%lx", read_sysreg(pmovsclr_el0));
++	report(!read_regn(pmevcntr, 1), "CHAIN counter #1 wrapped");
++	report(read_sysreg(pmovsclr_el0) =3D=3D 0x2,
++		"check no overflow is recorded");
 +}
 +
-+static void test_event_introspection(void)
++static void test_chained_sw_incr(void)
 +{
-+	bool required_events;
++	uint32_t events[] =3D { 0x0 /* SW_INCR */, 0x0 /* SW_INCR */};
++	int i;
 +
-+	if (!pmu.nb_implemented_counters) {
-+		report_skip("No event counter, skip ...");
++	if (!satisfy_prerequisites(events, ARRAY_SIZE(events)))
 +		return;
-+	}
 +
-+	/* PMUv3 requires an implementation includes some common events */
-+	required_events =3D is_event_supported(0x0, true) /* SW_INCR */ &&
-+			  is_event_supported(0x11, true) /* CPU_CYCLES */ &&
-+			  (is_event_supported(0x8, true) /* INST_RETIRED */ ||
-+			   is_event_supported(0x1B, true) /* INST_PREC */);
++	pmu_reset();
 +
-+	if (pmu.version =3D=3D 0x4) {
-+		/* ARMv8.1 PMU: STALL_FRONTEND and STALL_BACKEND are required */
-+		required_events =3D required_events ||
-+				  is_event_supported(0x23, true) ||
-+				  is_event_supported(0x24, true);
-+	}
++	write_regn(pmevtyper, 0, events[0] | PMEVTYPER_EXCLUDE_EL0);
++	write_regn(pmevtyper, 1, events[1] | PMEVTYPER_EXCLUDE_EL0);
++	/* enable counters #0 and #1 */
++	write_sysreg_s(0x3, PMCNTENSET_EL0);
 +
-+	/*
-+	 * L1D_CACHE_REFILL(0x3) and L1D_CACHE(0x4) are only required if
-+	 * L1 data / unified cache. BR_MIS_PRED(0x10), BR_PRED(0x12) are only
-+	 * required if program-flow prediction is implemented.
-+	 */
++	/* preset counter #0 at 0xFFFFFFF0 */
++	write_regn(pmevcntr, 0, 0xFFFFFFF0);
 +
-+	report(required_events, "Check required events are implemented");
++	for (i =3D 0; i < 100; i++)
++		write_sysreg(0x1, pmswinc_el0);
++
++	report_info("SW_INCR counter #0 has value %ld", read_regn(pmevcntr, 0))=
+;
++	report(read_regn(pmevcntr, 0) =3D=3D 0xFFFFFFF0,
++		"PWSYNC does not increment if PMCR.E is unset");
++
++	pmu_reset();
++
++	write_regn(pmevcntr, 0, 0xFFFFFFF0);
++	write_sysreg_s(0x3, PMCNTENSET_EL0);
++	set_pmcr(pmu.pmcr_ro | PMU_PMCR_E);
++
++	for (i =3D 0; i < 100; i++)
++		write_sysreg(0x3, pmswinc_el0);
++
++	report(read_regn(pmevcntr, 0)  =3D=3D 84, "counter #1 after + 100 SW_IN=
+CR");
++	report(read_regn(pmevcntr, 1)  =3D=3D 100,
++		"counter #0 after + 100 SW_INCR");
++	report_info("counter values after 100 SW_INCR #0=3D%ld #1=3D%ld",
++		    read_regn(pmevcntr, 0), read_regn(pmevcntr, 1));
++	report(read_sysreg(pmovsclr_el0) =3D=3D 0x1,
++		"overflow reg after 100 SW_INCR");
++
++	/* 64b SW_INCR */
++	pmu_reset();
++
++	events[1] =3D 0x1E /* CHAIN */;
++	write_regn(pmevtyper, 1, events[1] | PMEVTYPER_EXCLUDE_EL0);
++	write_regn(pmevcntr, 0, 0xFFFFFFF0);
++	write_sysreg_s(0x3, PMCNTENSET_EL0);
++	set_pmcr(pmu.pmcr_ro | PMU_PMCR_E);
++	for (i =3D 0; i < 100; i++)
++		write_sysreg(0x3, pmswinc_el0);
++
++	report(!read_sysreg(pmovsclr_el0) && (read_regn(pmevcntr, 1) =3D=3D 1),
++		"overflow reg after 100 SW_INCR/CHAIN");
++	report_info("overflow=3D0x%lx, #0=3D%ld #1=3D%ld", read_sysreg(pmovsclr=
+_el0),
++		    read_regn(pmevcntr, 0), read_regn(pmevcntr, 1));
++
++	/* 64b SW_INCR and overflow on CHAIN counter*/
++	pmu_reset();
++
++	write_regn(pmevtyper, 1, events[1] | PMEVTYPER_EXCLUDE_EL0);
++	write_regn(pmevcntr, 0, 0xFFFFFFF0);
++	write_regn(pmevcntr, 1, 0xFFFFFFFF);
++	write_sysreg_s(0x3, PMCNTENSET_EL0);
++	set_pmcr(pmu.pmcr_ro | PMU_PMCR_E);
++	for (i =3D 0; i < 100; i++)
++		write_sysreg(0x3, pmswinc_el0);
++
++	report((read_sysreg(pmovsclr_el0) =3D=3D 0x2) &&
++		(read_regn(pmevcntr, 1) =3D=3D 0) &&
++		(read_regn(pmevcntr, 0) =3D=3D 84),
++		"overflow reg after 100 SW_INCR/CHAIN");
++	report_info("overflow=3D0x%lx, #0=3D%ld #1=3D%ld", read_sysreg(pmovsclr=
+_el0),
++		    read_regn(pmevcntr, 0), read_regn(pmevcntr, 1));
 +}
 +
  #endif
 =20
  /*
-@@ -326,6 +394,9 @@ int main(int argc, char *argv[])
- 		       "Monotonically increasing cycle count");
- 		report(check_cpi(cpi), "Cycle/instruction ratio");
- 		pmccntr64_test();
-+	} else if (strcmp(argv[1], "event-introspection") =3D=3D 0) {
+@@ -658,6 +780,12 @@ int main(int argc, char *argv[])
+ 	} else if (strcmp(argv[1], "mem-access") =3D=3D 0) {
+ 		report_prefix_push(argv[1]);
+ 		test_mem_access();
++	} else if (strcmp(argv[1], "chained-counters") =3D=3D 0) {
 +		report_prefix_push(argv[1]);
-+		test_event_introspection();
++		test_chained_counters();
++	} else if (strcmp(argv[1], "chained-sw-incr") =3D=3D 0) {
++		report_prefix_push(argv[1]);
++		test_chained_sw_incr();
  	} else {
  		report_abort("Unknown sub-test '%s'", argv[1]);
  	}
 diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index 79f0d7a..4433ef3 100644
+index 7a59403..1bd4319 100644
 --- a/arm/unittests.cfg
 +++ b/arm/unittests.cfg
-@@ -66,6 +66,12 @@ file =3D pmu.flat
- groups =3D pmu
- extra_params =3D -append 'cycle-counter 0'
+@@ -90,6 +90,18 @@ groups =3D pmu
+ arch =3D arm64
+ extra_params =3D -append 'mem-access'
 =20
-+[pmu-event-introspection]
++[pmu-chained-counters]
 +file =3D pmu.flat
 +groups =3D pmu
 +arch =3D arm64
-+extra_params =3D -append 'event-introspection'
++extra_params =3D -append 'chained-counters'
++
++[pmu-chained-sw-incr]
++file =3D pmu.flat
++groups =3D pmu
++arch =3D arm64
++extra_params =3D -append 'chained-sw-incr'
 +
  # Test PMU support (TCG) with -icount IPC=3D1
  #[pmu-tcg-icount-1]

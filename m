@@ -1,102 +1,101 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4890698lff;
-        Mon, 16 Dec 2019 10:06:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxFVUG0EIDo4bvJ+Oq91VkMRLDsI0w+rIeNqrlbBVjNPvTvRidlFHRgt1q9QOhqivhoI+eU
-X-Received: by 2002:a9d:7592:: with SMTP id s18mr34393140otk.130.1576519616294;
-        Mon, 16 Dec 2019 10:06:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576519616; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5006423lff;
+        Mon, 16 Dec 2019 11:46:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxpjY4FOQpjhwd+mTR+5fmBDS9FS+v7pcu/NpT6RTCflUYTMLAcUCbByb0BSnoZ8CGN49b6
+X-Received: by 2002:a05:6830:1582:: with SMTP id i2mr34685369otr.50.1576525591584;
+        Mon, 16 Dec 2019 11:46:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576525591; cv=none;
         d=google.com; s=arc-20160816;
-        b=xB4eew2BArZS0RzUFa6dgc3q0kB36LmJVrtwTl4p6P7smIMjLDTqu7c7b6Wnp2MECf
-         rFW2NpJUq3NzhWGhFzNFsVX3H1dlhJkKTOxPsDf+XMNJFF2j41kX5LEustvpm5ekBCOR
-         IaAHcRf5RK9X9nJ3VP3xavc0e9u7CX43AE83veswVQW5K4bf2tF5e644UmWntU90ZaSv
-         oNJOJ+pJz4qF7d6YcUWCyD5Mahd/GWoo9kFJtii28hyQATFUDv+SfLqePIzZRnFpjB30
-         BUt+JdsYRsquGqiZuuKXt5kCN1ksiap0y5VvoL27+IHIeMw7oG/eQB/JV6WhE1GoJEPb
-         Arsg==
+        b=TGTMw4sAttjyBAfkLt8HdUn+yrZc3W/Fy4MwbzuJkp7FN7dvRx23HHUBfnrlU4agSk
+         +L0zzY4+a2EKJuVGz5KpvySdp/x4J9vnAEy2u7duhTyPKdCGk9HdlTuykX4RiIu0LjUH
+         uGwFc+TH6kNFmOvS0UYxBlMi7ZMwjRsL1vJkCEgnvnz4oHlwhW3Im/1DSW54jEvdu3cw
+         +Ae1kLN9LQBeNfeCShnwfzdvRmXF2OBv5S2XM1RRfW+X1Y2wCv9oowVAwIH1wYl30pX9
+         XtYpF+d4F/hr2JSjS7GwQMg1sSqRWoKoIZRBIx/5s7vrs0nFHBL5MDdhDpFgW2th09+x
+         9dxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=MirDbpR4oYKNUHsUc37Lmf2tFcn7WlaGv1P9OqWE3II=;
-        b=u8CLsmfKGTY2E6USR6waxbnM3BdlJVGkJV4Rbx+ioYvz4OwUGJ8eb30MI092lu6lbe
-         gB+Xruppj1LSJ7xm8r1BD54zXq6NcLDKVLtNTcVR4WoiS4c48eVAszc0SZT7wxNJao/e
-         j1AbpLydGh6sfDMeo9R9hZlT6WJhh/w1Mof6JZ9n91OsQcfV0oa3d3OE9v0puVugGooz
-         43OuuaGE20nGBAez1Zhy31TEcMJfICY0qgq765AqK7c2ePwab8flsdBeeKUg10KoQkg7
-         YFgRNUOb2faBB5VEqVgi6zzNq6dULUxbi1SN3zd52a3mMIbvE8T1aKd8YgveuQzXjGXC
-         f8dg==
+        bh=OsHm0tUSHoKhbWzbKpZ0C/bNOhwpqgtB85Sg/g/m0rU=;
+        b=bZjugLuY86JC1BYqyZ8RFnnRQO2NaHNd64ADUjvVLSc6gjsGPXUDjr3ULdZ5cjIYUa
+         2IwnlM0Yzi/hjD8wndQlizpiRTKFlu26lQl0Qpyin5QidUQ3BJjlo4RQc4qcaXg7IyL/
+         uQDDy54rYJZMgeC8QGw2e4JYr9hm8DopbNREJ7pwQbNViwp0JJ9nXZrebqpKrO77Fksy
+         CISu8l6LKBkLq9nIdETGTZDc/+DRx9pWBi4x/Ah07lD6knlydF3qBZI94qKUQouE5UsL
+         mjUK1FIRkzYQGYUiWqgXwNQx3cLNaqUdaHEE4y414ajo3z1NxnZzl03AY2NhlBNOI3mX
+         YcLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=O0Xwby5+;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f4ur0HEH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t20si10992697otr.64.2019.12.16.10.06.56
+        by mx.google.com with ESMTPS id l17si10972062otn.220.2019.12.16.11.46.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Dec 2019 10:06:56 -0800 (PST)
+        Mon, 16 Dec 2019 11:46:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=O0Xwby5+;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f4ur0HEH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58218 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59252 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igulj-0008Cg-43
-	for alex.bennee@linaro.org; Mon, 16 Dec 2019 13:06:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42168)
+	id 1igwK6-0000Gc-Jk
+	for alex.bennee@linaro.org; Mon, 16 Dec 2019 14:46:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47228)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1igula-00089n-5K
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 13:06:47 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igwJv-0000Cm-Qi
+ for qemu-arm@nongnu.org; Mon, 16 Dec 2019 14:46:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1igulX-0001SO-4V
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 13:06:46 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:35146)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1igwJu-0003Le-9C
+ for qemu-arm@nongnu.org; Mon, 16 Dec 2019 14:46:19 -0500
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:41284)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1igulW-0001Qq-UY
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 13:06:43 -0500
-Received: by mail-oi1-x242.google.com with SMTP id k196so4048975oib.2
- for <qemu-arm@nongnu.org>; Mon, 16 Dec 2019 10:06:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1igwJq-0003Ju-Lc; Mon, 16 Dec 2019 14:46:14 -0500
+Received: by mail-il1-x142.google.com with SMTP id f10so6392602ils.8;
+ Mon, 16 Dec 2019 11:46:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MirDbpR4oYKNUHsUc37Lmf2tFcn7WlaGv1P9OqWE3II=;
- b=O0Xwby5+qMCAZNks4hGLGdbDjf7JhZdBAJMxRR+OkUlf+41I8x8Rmr/7n4BdRII2i/
- A4q+wIj6zNJbNWeoeeYQaE8B2GdGEcRKr1BfiLIWZfnJY2OEwF6o9cWnAEvZlK7L6zGr
- YL8CBPYvWUeSpRoxGKfRvnRxPjPgw7R6ZvKj1JuEeVgDQ6LuDMdPQYT9bSdAbqhBSBs5
- BqvsLft43G02Qgl1T8nG7NPWMxBGRwhhCIQMwkFEDVkmofx8yfI+dRyZe//YbOsINzVi
- JtKeXB69PBPKlCs1nn2/t4nbUri+pCxlYjTn2R6t+FRsvNrh55JpqxBbXqHN3rrKLaNR
- bwEQ==
+ :cc; bh=OsHm0tUSHoKhbWzbKpZ0C/bNOhwpqgtB85Sg/g/m0rU=;
+ b=f4ur0HEHZnc/2TQ0OcuK88IYSlQtgNyjvtVZp2GyoaCJx2PKY9cOXBsp2IIEPU9ZKK
+ DcgfSlo3s+5fNJeRUtbK1wwHsXh73cGUW5k7BfDG6srs62kOpEv96jaBJCuvFXRMaZEp
+ 4MS4/uDr0ECvZav0WetCFdETlkElEKwC5+X9b2tg8035N+ENFpQvXOVYkVGtmEbth1bM
+ FJN4Oykr5oVFZa4wTrYWlpyFRXWdQXu/Vgk2cvN3spbPggHzJm2M8xzEqQczS4njO7ni
+ 3uPjbgxdpsDTHEiP6Aal/QzS4mHAojJ1A3BcRJSLgqLNlyYysHKw413i6lm+OfYUdgWF
+ nMgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=MirDbpR4oYKNUHsUc37Lmf2tFcn7WlaGv1P9OqWE3II=;
- b=toKUP3g14D9l4DRj964GYGNVXgOIYafJEVPkIMPkTETO/PNXt6tIMWZz7M+s7IdfF3
- hq7Lsc9HMEcmHl4qes4zLuSSLczxd/ekbMkXz8aG3ljwFuS8cl31C0iZ1B2/sCG8NIJI
- S4c9Zh25mowMe3lhzr9hCOcj/ixCwCvRfioXYXOscO8S9A4mTsQddsxLVTpMkWWeUtvk
- f1CvHKRYv7z/wOXBGQAcyJJghB0ttM6X+jFdZhIH/vqvrO1kRzoaw+9bTlpKGVkXMS0M
- FvpE3EqAHnf4eElChKHal1uGu5RVRFdCU9O4JI4ZATjsChQq2k0392eAbB65o3l+chYG
- LIvA==
-X-Gm-Message-State: APjAAAVudiL858YqJCM9GhxMe17agdI4oFO02ss8EENgrldV3gFSdIfP
- kZ5cL3Sqsa+UWQIfULRkHx/f59SsdZ1ZSHT9M+cIMg==
-X-Received: by 2002:aca:f5cc:: with SMTP id t195mr153912oih.163.1576519601929; 
- Mon, 16 Dec 2019 10:06:41 -0800 (PST)
+ bh=OsHm0tUSHoKhbWzbKpZ0C/bNOhwpqgtB85Sg/g/m0rU=;
+ b=PRGiZyNtC5E7sDE0O4cYhmvKFjiF71l2e2lmJxGJHo0X+dnaMn90OwkObSrb7YxXX2
+ 3sQ5D81Ol/jIgWKN9EZmV7LN/GLSvDCGzPJvYKasNstxnlqjSayTGvz4xgOq5P3qctwv
+ J4Tytp74eoqWZe4eu6YjdwtyRfoaGm1kJ8TRwEp7OJVvoZyKSxthGqc3+0tTkbdWdEHM
+ SkXdh33ulBi/SBQj+hnhVDaym/7w4rBEMgr8c7WtsEYh+GnAMpPh5ahfoxd24U1SAogi
+ 6nv0OUeehLmyaZWSuXX2bbnntffSWYH2wGj9BCXeLtu2YaPGfdYaobG1ejXnDi3+lmHw
+ WAmw==
+X-Gm-Message-State: APjAAAWG08DX91Ce11ATi6I7j/tzrB+MY6PO6D6ooUGONWbYoQvhvHiX
+ x9X85aTN97zLh0ZDu7u4aSCV+EzLQhaVYuwN37c=
+X-Received: by 2002:a92:d5cf:: with SMTP id d15mr13244508ilq.306.1576525573101; 
+ Mon, 16 Dec 2019 11:46:13 -0800 (PST)
 MIME-Version: 1.0
-References: <20191212173320.11610-1-drjones@redhat.com>
- <20191212173320.11610-4-drjones@redhat.com>
- <CAFEAcA_u94O8WYLgB8DF=pu-3V7LrNWpiQFV5mDYeeqLj1Ee2Q@mail.gmail.com>
- <CAFEAcA9ZoOZt6Jh42hi6q91=kRM9T9z436J99NF+Ns5KVKUYow@mail.gmail.com>
- <20191216164355.i5rpfuqlfqv2z7m7@kamzik.brq.redhat.com>
-In-Reply-To: <20191216164355.i5rpfuqlfqv2z7m7@kamzik.brq.redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Dec 2019 18:06:30 +0000
-Message-ID: <CAFEAcA8NzQ8QYE2NMnviPPnmBn1Dwm4W_KvhMbwCNwFzkurK-Q@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 3/5] target/arm/kvm: Implement virtual time
- adjustment
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
+ <20191202210947.3603-10-nieklinnenbank@gmail.com>
+ <CAPan3WrRKnu5vFz=JvrnD8tewUk7SdwFVYx4xVL353AnfPDgHQ@mail.gmail.com>
+ <6bee15d7-7d80-0709-ac90-ef2052b39329@redhat.com>
+ <CAPan3WpiWahU85-ZgV4BMPU8mUTxsq2TPn-szOHkHc5+PHUqpw@mail.gmail.com>
+ <03a78f1d-e8fe-5a53-b061-d39de9ed7a9e@redhat.com>
+In-Reply-To: <03a78f1d-e8fe-5a53-b061-d39de9ed7a9e@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Mon, 16 Dec 2019 20:46:01 +0100
+Message-ID: <CAPan3WrHQk-apQhQrihF_71b3_PSqkaEu1dHYmeCXuygwnAy2A@mail.gmail.com>
+Subject: Re: [PATCH 09/10] arm: allwinner-h3: add SD/MMC host controller
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000c39ead0599d776e2"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::242
+X-Received-From: 2607:f8b0:4864:20::142
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,103 +107,281 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: bijan.mottahedeh@oracle.com, Marc Zyngier <maz@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Heyi Guo <guoheyi@huawei.com>, msys.mizuma@gmail.com
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AS2AISxrx9YN
+X-TUID: SLiCLJnT9+tZ
 
-On Mon, 16 Dec 2019 at 16:44, Andrew Jones <drjones@redhat.com> wrote:
->
-> On Mon, Dec 16, 2019 at 03:40:16PM +0000, Peter Maydell wrote:
-> > On Mon, 16 Dec 2019 at 15:14, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > > How does this interact with the usual register sync to/from
-> > > KVM (ie kvm_arch_get_registers(), which I think will do a
-> > > GET_ONE_REG read of the TIMER_CNT register the way it does
-> > > any other sysreg, inside write_kvmstate_to_list(), plus
-> > > kvm_arch_set_registers() which does the write back to the
-> > > kernel in write_list_to_kvmstate()) ? Presumably we want this
-> > > version to take precedence by the set_virtual_time call
-> > > happening after the kvm_arch_set_registers, but is this
-> > > guaranteed ?
+--000000000000c39ead0599d776e2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Dec 16, 2019 at 1:14 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+wrote:
+
+> On 12/16/19 12:07 AM, Niek Linnenbank wrote:
 > >
-> > ...you might also want to look at the effects of simply
-> > removing the KVM_REG_ARM_TIMER_CNT entry from the
-> > 'non_runtime_cpregs[]' array -- in commit 4b7a6bf402bd064
-> > we explicitly stopped reading/writing this register's value
-> > to/from the kernel except for inbound migration, and it
-> > feels like this patchset is now rolling back that approach,
-> > so maybe we should also be (configurably) rolling back some
-> > of its implementation rather than just leaving it in place.
+> >
+> > On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9
+> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
+> >
+> >     Hi Niek,
+> >
+> >     On 12/11/19 11:34 PM, Niek Linnenbank wrote:
+> [...]
+> >      >     +static uint32_t aw_h3_sdhost_process_desc(AwH3SDHostState *=
+s,
+> >      >     +                                          hwaddr desc_addr,
+> >      >     +                                          TransferDescripto=
+r
+> >     *desc,
+> >      >     +                                          bool is_write,
+> >     uint32_t
+> >      >     max_bytes)
+> >      >     +{
+> >      >     +    uint32_t num_done =3D 0;
+> >      >     +    uint32_t num_bytes =3D max_bytes;
+> >      >     +    uint8_t buf[1024];
+> >      >     +
+> >      >     +    /* Read descriptor */
+> >      >     +    cpu_physical_memory_read(desc_addr, desc, sizeof(*desc)=
+);
+> >
+> >     Should we worry about endianess here?
+> >
+> >
+> > I tried to figure out what is expected, but the
+> > Allwinner_H3_Datasheet_V1.2.pdf does not
+> > explicitly mention endianness for any of its I/O devices. Currently it
+> > seems all devices are
+> > happy with using the same endianness as the CPUs. In the MemoryRegionOp=
+s
+> > has DEVICE_NATIVE_ENDIAN
+> > set to match the behavior seen.
 >
-> I feel like I already considered that, maybe even tried it, a few months
-> ago when I first looked at this. I must have decided against it for some
-> reason at the time, but I don't recall what. Now I can say the reason is
-> because we only do this save/restore when we transition to/from paused
-> state, though.
-
-I found the thread which discussed the bug which originally
-caused us to add commit 4b7a6bf402bd064:
-https://lists.cs.columbia.edu/pipermail/kvmarm/2015-July/015665.html
- -- there are some codepaths which cause us to do a sync from/to
-KVM for one VCPU while others are still running. If we do a
-read-CNT-and-write-back then we effectively cause time to jump
-backwards for the other still-running CPUs.
-
-So we do still want to have TIMER_CNT listed as being KVM_PUT_FULL_STATE
-regardless, or we re-introduce that bug.
-
-Your approach in this patchset reads and writes on vm-paused,
-so it won't have the pre-2015 problems.
-
-It still feels odd that we're storing this bit of guest state
-in two places now though -- in kvm_vtime, and also in its usual
-place in the cpreg_array data structures (we write back the
-value from kvm_vtime when the VM starts running, and we write
-back the value from the cpreg_array for a PUT_FULL_STATE, which
-the comments claim is only on startup or when we just loaded
-migration state (and also undocumentedly but reasonably on
-cpu-hotplug, which arm doesn't have yet).
-
-I've just spent a little while digging through code, and
-haven't been able to satisfy myself on the ordering of which
-writeback wins: for a loadvm I think we first do a
-cpu_synchronize_all_post_init() (writing back the counter
-value from the migration data) and then after than we will
-unpause the VM -- why doesn't this overwrite the correct
-value with the wrong value from kvm_vtime ?
-
-I just noticed also that the logic used in this patch
-doesn't match what other architectures do in their vm_state_change
-function -- eg cpu_ppc_clock_vm_state_change() has an
-"if (running) { load } else { save }", and kvmclock_vm_state_change()
-for i386 also has "if (running) { ... } else { ... }", though
-it has an extra wrinkle where it captures "are we PAUSED?"
-to use in the pre_save function; the comment above
-kvmclock_pre_save() suggests maybe that would be useful for other
-than x86, too. kvm_s390_tod_vm_state_change() has
-logic that's a slightly more complicated variation on just
-testing the 'running' flag, but it doesn't look at the
-specific new state.
-
-> > I note also that the commit message there had a remark
-> > about inconsistencies between VCPUs -- is the right thing
-> > to handle this per-VM rather than per-VCPU somehow?
+> OK.
 >
-> per-VM would make sense, because the counters should be synchronized
-> among the VCPUs. KVM does that for us, though, so whichever VCPU last
-> restores its counter is the one that will determine the final value.
+> [...]
+> >      >     +static const MemoryRegionOps aw_h3_sdhost_ops =3D {
+> >      >     +    .read =3D aw_h3_sdhost_read,
+> >      >     +    .write =3D aw_h3_sdhost_write,
+> >      >     +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> >
+> >     I haven't checked .valid accesses from the datasheet.
+> >
+> >     However due to:
+> >
+> >         res =3D s->data_crc[((offset - REG_SD_DATA7_CRC) /
+> sizeof(uint32_t))];
+> >
+> >     You seem to expect:
+> >
+> >                  .impl.min_access_size =3D 4,
+> >
+> >     .impl.max_access_size unset is 8, which should works.
+> >
+> > It seems that all registers are aligned on at least 32-bit boundaries.
+> > And the section 5.3.5.1 mentions
+> > that the DMA descriptors must be stored in memory 32-bit aligned. So
+> > based on that information,
 >
-> Maybe we should have a VM ioctl instead, but ATM we only have VCPU ioctls.
+> So you are describing ".valid.min_access_size =3D 4", which is the minimu=
+m
+> access size on the bus.
+> ".impl.min_access_size" is different, it is what access sizes is ready
+> to handle your model.
+> Your model read/write handlers expect addresses aligned on 32-bit
+> boundary, this is why I suggested to use ".impl.min_access_size =3D 4". I=
+f
+> the guest were using a 16-bit access, your model would be buggy. If you
+> describe your implementation to accept minimum 32-bit and the guest is
+> allowed to use smaller accesses, QEMU will do a 32-bit access to the
+> device, and return the 16-bit part to the guest. This way your model is
+> safe. This is done by access_with_adjusted_size() in memory.c.
+> If you restrict with ".valid.min_access_size =3D 4", you might think we
+> don't need ".valid.min_access_size =3D 4" because all access from guest
+> will be at least 32-bit. However keep in mind someone might find this
+> device in another datasheet not limited to 32-bit, and let's say change
+> to ".valid.min_access_size =3D 2". Without ".impl.min_access_size =3D 4"
+> your model is buggy. So to be safe I'd use:
+>
+>    .impl.min_access_size =3D 4,
+>    .valid.min_access_size =3D 4,
+>
 
-I meant more "only do the save/load once per VM in QEMU but
-do it by working with just one VCPU". But I guess since migration
-works on all the VCPUs we're ok to do pause-resume the same way
-(and I've now tracked down what the 'inconsistentencies between VCPUs'
-were: they're when we were syncing the CNT value for one vCPU when
-others were still running.)
+Now it makes more sense to me, thanks Philippe for explaining this!
+Great, I'll add .impl.min_access_size =3D 4.
 
-thanks
--- PMM
+At this point, I've processed all the feedback that I received for all of
+the patches
+in this series. Is there anything else you would like to
+see/discuss/review, or shall I send the v2 when I finish testing?
+
+Regards,
+Niek
+
+
+>
+> > I think 32-bit is a safe choice. I've verified this with Linux mainline
+> > and U-Boot drivers and both are still working.
+>
+> Regards,
+>
+> Phil.
+>
+>
+
+--=20
+Niek Linnenbank
+
+--000000000000c39ead0599d776e2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Dec 16, 2019 at 1:14 AM Phili=
+ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
+at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On 12/16/19 12:07 AM, Niek Linnenbank wrote:<br>
+&gt; <br>
+&gt; <br>
+&gt; On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9 <br>
+&gt; &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redh=
+at.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.com" target=3D"_blank=
+">philmd@redhat.com</a>&gt;&gt; wrote:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Hi Niek,<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0On 12/11/19 11:34 PM, Niek Linnenbank wrote:<br>
+[...]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+static uint32_t aw_h3_sdh=
+ost_process_desc(AwH3SDHostState *s,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 hwaddr desc_addr,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TransferDescriptor<br>
+&gt;=C2=A0 =C2=A0 =C2=A0*desc,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bool is_write,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0uint32_t<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0max_bytes)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint32_t nu=
+m_done =3D 0;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint32_t nu=
+m_bytes =3D max_bytes;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint8_t buf=
+[1024];<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 /* Read des=
+criptor */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 cpu_physica=
+l_memory_read(desc_addr, desc, sizeof(*desc));<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Should we worry about endianess here?<br>
+&gt; <br>
+&gt; <br>
+&gt; I tried to figure out what is expected, but the <br>
+&gt; Allwinner_H3_Datasheet_V1.2.pdf does not<br>
+&gt; explicitly mention endianness for any of its I/O devices. Currently it=
+ <br>
+&gt; seems all devices are<br>
+&gt; happy with using the same endianness as the CPUs. In the MemoryRegionO=
+ps <br>
+&gt; has DEVICE_NATIVE_ENDIAN<br>
+&gt; set to match the behavior seen.<br>
+<br>
+OK.<br>
+<br>
+[...]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+static const MemoryRegion=
+Ops aw_h3_sdhost_ops =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .read =3D a=
+w_h3_sdhost_read,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .write =3D =
+aw_h3_sdhost_write,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .endianness=
+ =3D DEVICE_NATIVE_ENDIAN,<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0I haven&#39;t checked .valid accesses from the data=
+sheet.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0However due to:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0res =3D s-&gt;data_crc[((offset - REG=
+_SD_DATA7_CRC) / sizeof(uint32_t))];<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0You seem to expect:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 .impl.mi=
+n_access_size =3D 4,<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0.impl.max_access_size unset is 8, which should work=
+s.<br>
+&gt; <br>
+&gt; It seems that all registers are aligned on at least 32-bit boundaries.=
+ <br>
+&gt; And the section 5.3.5.1 mentions<br>
+&gt; that the DMA descriptors must be stored in memory 32-bit aligned. So <=
+br>
+&gt; based on that information,<br>
+<br>
+So you are describing &quot;.valid.min_access_size =3D 4&quot;, which is th=
+e minimum <br>
+access size on the bus.<br>
+&quot;.impl.min_access_size&quot; is different, it is what access sizes is =
+ready <br>
+to handle your model.<br>
+Your model read/write handlers expect addresses aligned on 32-bit <br>
+boundary, this is why I suggested to use &quot;.impl.min_access_size =3D 4&=
+quot;. If <br>
+the guest were using a 16-bit access, your model would be buggy. If you <br=
+>
+describe your implementation to accept minimum 32-bit and the guest is <br>
+allowed to use smaller accesses, QEMU will do a 32-bit access to the <br>
+device, and return the 16-bit part to the guest. This way your model is <br=
+>
+safe. This is done by access_with_adjusted_size() in memory.c.<br>
+If you restrict with &quot;.valid.min_access_size =3D 4&quot;, you might th=
+ink we <br>
+don&#39;t need &quot;.valid.min_access_size =3D 4&quot; because all access =
+from guest <br>
+will be at least 32-bit. However keep in mind someone might find this <br>
+device in another datasheet not limited to 32-bit, and let&#39;s say change=
+ <br>
+to &quot;.valid.min_access_size =3D 2&quot;. Without &quot;.impl.min_access=
+_size =3D 4&quot; <br>
+your model is buggy. So to be safe I&#39;d use:<br>
+<br>
+=C2=A0 =C2=A0.impl.min_access_size =3D 4,<br>
+=C2=A0 =C2=A0.valid.min_access_size =3D 4,<br></blockquote><div><br></div><=
+div>Now it makes more sense to me, thanks Philippe for explaining this!<br>=
+</div><div>Great, I&#39;ll add .impl.min_access_size =3D 4.</div><div><br><=
+/div><div>At this point, I&#39;ve processed all the feedback that I receive=
+d for all of the patches</div><div>in this series. Is there anything else y=
+ou would like to see/discuss/review, or shall I send the v2 when I finish t=
+esting?<br></div><div><br></div><div>Regards,</div><div>Niek<br></div><div>=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
+ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+<br>
+&gt; I think 32-bit is a safe choice. I&#39;ve verified this with Linux mai=
+nline <br>
+&gt; and U-Boot drivers and both are still working.<br>
+<br>
+Regards,<br>
+<br>
+Phil.<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--000000000000c39ead0599d776e2--

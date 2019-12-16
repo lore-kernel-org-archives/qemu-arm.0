@@ -1,104 +1,102 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4836846lff;
-        Mon, 16 Dec 2019 09:22:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxddMtICur2MFg2l9S09T9tmbyLlvt7vawa3slfPrFpSuYZC6km5MIgY1l8jfEJqeFmRyel
-X-Received: by 2002:aca:220c:: with SMTP id b12mr64870oic.55.1576516968360;
-        Mon, 16 Dec 2019 09:22:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576516968; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4842937lff;
+        Mon, 16 Dec 2019 09:27:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqytqQsoeoPugrq92hzQHUPrCZl1CN+5JADP+tI111j98qRJeKPZ9VGBe+JM6oky840QOjXD
+X-Received: by 2002:ac8:1c4e:: with SMTP id j14mr355135qtk.300.1576517264190;
+        Mon, 16 Dec 2019 09:27:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576517264; cv=none;
         d=google.com; s=arc-20160816;
-        b=x1jeNXtCpmG/qOCofm7fFJWyr5QB70pj+3OfWPyx5I9UkbNwP1dncvQAwHhTHruNUd
-         nx/dFZ6RmRORYoIMz3C11OKoUT+15XzVxfbFQA+/ayxGhP+t8KeMKdjK2qqoCQ+sxJUH
-         AW8ldlHPBFRpEKOlLEr6KR+D0afXtw5UHFlaZ/NvCa5daU/5uZwkzCks3PfrttoTmm3y
-         hZ4d99TY+cx2by7jfWj5uCoy6+2bAy9mvAashwog2y8Vs2JGCnGxWUN4+MkCrUdhTvpv
-         LGtxjzsFMRGIdbJGfd7dTkzLDexh7Jr9CJSt3BFNHwiv8rVM8TMsIizeJutwAlXichqT
-         rpLg==
+        b=JjQ/QqWe0UxVNwkQeLuuf0CKB0sTR5I2FNjpg2BQQg1MXAjYmcL4gPVuJb+82Al3rU
+         o3dkpgda0uoevcCKNzX/9DnR341fawG6YyUGIhnkJVsO+Bc4urXWYjeIiH+LdBXC52Cl
+         q5SkEMgQSNIEvdN3VjUJh/B7ZfX5SpqMiopB3K8SceaDUH2mSmB1/Blzky/Zrvju5U4D
+         QEJQh1yylT7iDDwZwsDBilD1XrlX4O0LeVoXtK4VYWNDwSJIO5q6oI3NPxdZLHdV1K1k
+         77/pu9TnvMGg200rSKNI9PmnE/SET7N2DbXLMotjcfeAgj/2eXfOmtLnzT+CVpfCg2k6
+         G9YA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=lB8rYaM4LIgsPJoAftgjG9mdXpweDU1tAotDnMpOJvo=;
-        b=CkSEknPE0TSB+9iuuYup1XMMqdOaxqEH7I3SI865uSv5BqXtyYDvcF8AkA+1VnUS5t
-         oXimXSh0EkZUHFXhml2E3UEvmODpx6oPBzxnALvUmCslokehnuEhiGEKBXMSAXFwaS0f
-         vuR7bGWX+EcUx8DVLYaanJ6HkSb1HnwmAjDd5pd97V0LCW8xlDOTGUP43fTzjCQ0kDg+
-         ojjAGIiC+hOKg9ACzA1WdmkwkToIkljDMn4l2VW7mOmVjcNQfN5mDvKmw1lmyHt9Jm5p
-         OKgS+6Br3ia7JUvhFB8FI+3AkxAGFRJbmcV2KZSxy7Ts13drQqOCue2nQhAoGqttrEht
-         AnHA==
+        bh=tOQM1/Rz4ycyGW1DEvNcWUzz5svT6E2Jm6LD2YWykoQ=;
+        b=MJLX11H9ZTPJio8iZE3VDMuY/lAsxXuulWYf2eD2DUQjXePITBS0k7NJnwbmr8Ao55
+         nLKR/HSKei57qAXMdeWT+KuSRDz+K+klb//YhhxYjdNhRxVro/eL12IIrludBF68nuOq
+         Zb9Ky0j8vh9sgCBEm+QYq16aAoXKWT0/N0OQg8mGqcEjWdrjVKHrdKYFxHJoqyWOS4lm
+         wf6XUHRLvFy9RD1DU/e219ppnPQt1G0ytzspN9uBARO7PaVVyMsh4xM7/k/2Pz9Ew4G0
+         XXghkcBJ+pPBpbP73o+MFLKiD9mwF6axVARhAniTn0C3ikJmzX8shQxzRyRYca6/QIbq
+         St/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OR5Vzfu8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EOBc1hYI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i198si10749233oib.111.2019.12.16.09.22.48
+        by mx.google.com with ESMTPS id n186si9903623qkb.267.2019.12.16.09.27.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Dec 2019 09:22:48 -0800 (PST)
+        Mon, 16 Dec 2019 09:27:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OR5Vzfu8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EOBc1hYI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57358 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57516 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igu51-0004ts-1R
-	for alex.bennee@linaro.org; Mon, 16 Dec 2019 12:22:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37804)
+	id 1igu9m-0003sF-Nn
+	for alex.bennee@linaro.org; Mon, 16 Dec 2019 12:27:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46187)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1igtTg-0007wg-Pl
- for qemu-devel@nongnu.org; Mon, 16 Dec 2019 11:44:14 -0500
+ (envelope-from <drjones@redhat.com>) id 1igtia-0001ix-BU
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 11:59:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1igtTd-0005lj-TQ
- for qemu-devel@nongnu.org; Mon, 16 Dec 2019 11:44:12 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43560
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <drjones@redhat.com>) id 1igtiZ-0008EV-6e
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 11:59:36 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:46456
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1igtTd-0005iv-P2
- for qemu-devel@nongnu.org; Mon, 16 Dec 2019 11:44:09 -0500
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1igtiZ-00087J-0q
+ for qemu-devel@nongnu.org; Mon, 16 Dec 2019 11:59:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576514649;
+ s=mimecast20190719; t=1576515573;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=lB8rYaM4LIgsPJoAftgjG9mdXpweDU1tAotDnMpOJvo=;
- b=OR5Vzfu8dVlm7K5OPuVLHdvE/5wmuODT3Ie09mPmuaSxGKRRyvN0WEyPxI/xf2uAwNiTpb
- iDhqKNob5FVgvByCrKHJzDdTnD8trqdkpVHpcxsuvFJop50Xgxc+A9wyzk/evsyGaz0SoP
- Wn2hnhAVQGkqsNOWh7rb0fy8L7uMRxE=
+ bh=tOQM1/Rz4ycyGW1DEvNcWUzz5svT6E2Jm6LD2YWykoQ=;
+ b=EOBc1hYIQsdkTlNL0/6PsKNKaZKuUHqdRVJCibsuqrtjVsSl6xCwMwjsS2LiF3E/d9Mk3X
+ s5n2H68cxTXOUdL8ljyOQwFL3YyVWO+zwJ+aeKwIsRGlQq5woZ/gqLtTBwqduMwhLb6I1x
+ LTiUJCwkPZU29gmsrjb6LyjrAFxV+z4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-383-C6LwDkwYNX-Ln7KBtyRl8w-1; Mon, 16 Dec 2019 11:44:05 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-416-sYxEI4vzMTC5hBXrq0lGtA-1; Mon, 16 Dec 2019 11:59:29 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 122EA1005512;
- Mon, 16 Dec 2019 16:44:03 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EA39E802561;
+ Mon, 16 Dec 2019 16:59:27 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (ovpn-116-122.ams2.redhat.com
  [10.36.116.122])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0D88210013D9;
- Mon, 16 Dec 2019 16:43:58 +0000 (UTC)
-Date: Mon, 16 Dec 2019 17:43:55 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E19715D9D6;
+ Mon, 16 Dec 2019 16:59:23 +0000 (UTC)
+Date: Mon, 16 Dec 2019 17:59:20 +0100
 From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC PATCH v2 3/5] target/arm/kvm: Implement virtual time
- adjustment
-Message-ID: <20191216164355.i5rpfuqlfqv2z7m7@kamzik.brq.redhat.com>
+To: Marc Zyngier <maz@kernel.org>
+Subject: Re: [RFC PATCH v2 0/5] target/arm/kvm: Adjust virtual time
+Message-ID: <20191216165920.qsx7ufviir74tbkl@kamzik.brq.redhat.com>
 References: <20191212173320.11610-1-drjones@redhat.com>
- <20191212173320.11610-4-drjones@redhat.com>
- <CAFEAcA_u94O8WYLgB8DF=pu-3V7LrNWpiQFV5mDYeeqLj1Ee2Q@mail.gmail.com>
- <CAFEAcA9ZoOZt6Jh42hi6q91=kRM9T9z436J99NF+Ns5KVKUYow@mail.gmail.com>
+ <CAFEAcA9FprSotg11rS0fM94QiciysZ6kgKhyU4eQfZg7YYaL5Q@mail.gmail.com>
+ <4cb9bcfd47dff57c9ae6bb92bae87589@www.loen.fr>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9ZoOZt6Jh42hi6q91=kRM9T9z436J99NF+Ns5KVKUYow@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: C6LwDkwYNX-Ln7KBtyRl8w-1
+In-Reply-To: <4cb9bcfd47dff57c9ae6bb92bae87589@www.loen.fr>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: sYxEI4vzMTC5hBXrq0lGtA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,52 +108,56 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: bijan.mottahedeh@oracle.com, Marc Zyngier <maz@kernel.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, bijan.mottahedeh@oracle.com,
  Richard Henderson <richard.henderson@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  Heyi Guo <guoheyi@huawei.com>, msys.mizuma@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ad+ui/7wX6qg
+X-TUID: BKuiefrpuEfr
 
-On Mon, Dec 16, 2019 at 03:40:16PM +0000, Peter Maydell wrote:
-> On Mon, 16 Dec 2019 at 15:14, Peter Maydell <peter.maydell@linaro.org> wr=
-ote:
-> > How does this interact with the usual register sync to/from
-> > KVM (ie kvm_arch_get_registers(), which I think will do a
-> > GET_ONE_REG read of the TIMER_CNT register the way it does
-> > any other sysreg, inside write_kvmstate_to_list(), plus
-> > kvm_arch_set_registers() which does the write back to the
-> > kernel in write_list_to_kvmstate()) ? Presumably we want this
-> > version to take precedence by the set_virtual_time call
-> > happening after the kvm_arch_set_registers, but is this
-> > guaranteed ?
+On Mon, Dec 16, 2019 at 04:18:23PM +0000, Marc Zyngier wrote:
+> On 2019-12-16 15:33, Peter Maydell wrote:
+> > On Thu, 12 Dec 2019 at 17:33, Andrew Jones <drjones@redhat.com> wrote:
+> >=20
+> > > Userspace that wants to set KVM_REG_ARM_TIMER_CNT should beware that
+> > > the KVM register ID is not correct.  This cannot be fixed because
+> > > it's
+> > > UAPI and if the UAPI headers are used then it can't be a problem.
+> > > However, if a userspace attempts to create the ID themselves from
+> > > the
+> > > register's specification, then they will get KVM_REG_ARM_TIMER_CVAL
+> > > instead, as the _CNT and _CVAL definitions have their register
+> > > parameters swapped.
+> >=20
+> > So, to be clear, you mean that:
+> >=20
+> > (1) the kernel headers say:
+> >=20
+> > /* EL0 Virtual Timer Registers */
+> > #define KVM_REG_ARM_TIMER_CTL           ARM64_SYS_REG(3, 3, 14, 3, 1)
+> > #define KVM_REG_ARM_TIMER_CNT           ARM64_SYS_REG(3, 3, 14, 3, 2)
+> > #define KVM_REG_ARM_TIMER_CVAL          ARM64_SYS_REG(3, 3, 14, 0, 2)
+> >=20
+> > (2) some of the RHSes of these are wrong
+> >=20
+> > (3) but the kernel internally is using the same 'wrong' value, so
+> > userspace also needs to use that value, ie trust the #defined name
+> > rather than manufacturing one ?
+> >=20
+> > That's awkward. I think it would be worth at least having a kernel
+> > patch to add a comment clearly documenting this bug.
+> >=20
+> > (This error seems to only be in the 64-bit ABI, not 32-bit.)
 >=20
-> ...you might also want to look at the effects of simply
-> removing the KVM_REG_ARM_TIMER_CNT entry from the
-> 'non_runtime_cpregs[]' array -- in commit 4b7a6bf402bd064
-> we explicitly stopped reading/writing this register's value
-> to/from the kernel except for inbound migration, and it
-> feels like this patchset is now rolling back that approach,
-> so maybe we should also be (configurably) rolling back some
-> of its implementation rather than just leaving it in place.
-
-I feel like I already considered that, maybe even tried it, a few months
-ago when I first looked at this. I must have decided against it for some
-reason at the time, but I don't recall what. Now I can say the reason is
-because we only do this save/restore when we transition to/from paused
-state, though.
-
+> Yeah, this is pretty bad. I wonder how we managed not to notice
+> this for so long... :-(.
 >=20
-> I note also that the commit message there had a remark
-> about inconsistencies between VCPUs -- is the right thing
-> to handle this per-VM rather than per-VCPU somehow?
+> Andrew, could you please write a patch documenting this (both in
+> the UAPI headers and in the documentation)?
+>
 
-per-VM would make sense, because the counters should be synchronized
-among the VCPUs. KVM does that for us, though, so whichever VCPU last
-restores its counter is the one that will determine the final value.
-
-Maybe we should have a VM ioctl instead, but ATM we only have VCPU ioctls.
+Will do. I'll try to get to it this week.
 
 Thanks,
 drew

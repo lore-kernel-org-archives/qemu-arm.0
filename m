@@ -1,387 +1,186 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5006423lff;
-        Mon, 16 Dec 2019 11:46:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxpjY4FOQpjhwd+mTR+5fmBDS9FS+v7pcu/NpT6RTCflUYTMLAcUCbByb0BSnoZ8CGN49b6
-X-Received: by 2002:a05:6830:1582:: with SMTP id i2mr34685369otr.50.1576525591584;
-        Mon, 16 Dec 2019 11:46:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576525591; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5074450lff;
+        Mon, 16 Dec 2019 12:48:16 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx7smKN7VfVCzfDAMz3R2k3wDPMSaoEDGwedOpxaGry9/yhc2+5jV+nFXleNMAOSf7G41Bo
+X-Received: by 2002:a05:6214:94b:: with SMTP id dn11mr1358106qvb.12.1576529296113;
+        Mon, 16 Dec 2019 12:48:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576529296; cv=none;
         d=google.com; s=arc-20160816;
-        b=TGTMw4sAttjyBAfkLt8HdUn+yrZc3W/Fy4MwbzuJkp7FN7dvRx23HHUBfnrlU4agSk
-         +L0zzY4+a2EKJuVGz5KpvySdp/x4J9vnAEy2u7duhTyPKdCGk9HdlTuykX4RiIu0LjUH
-         uGwFc+TH6kNFmOvS0UYxBlMi7ZMwjRsL1vJkCEgnvnz4oHlwhW3Im/1DSW54jEvdu3cw
-         +Ae1kLN9LQBeNfeCShnwfzdvRmXF2OBv5S2XM1RRfW+X1Y2wCv9oowVAwIH1wYl30pX9
-         XtYpF+d4F/hr2JSjS7GwQMg1sSqRWoKoIZRBIx/5s7vrs0nFHBL5MDdhDpFgW2th09+x
-         9dxg==
+        b=D/X7ZXFk/JXQWaRSvLRY+I4sOnubUQd/WO1bC+4h7cZ8HwclnFyqSMKmEwCdNJE6yz
+         IvMMXoeiXHUDIU2wUOi2BmYyTn5EkjcVe7BGWC+cIbziRRtbaHju03wE+2pvdUtlME1S
+         5zDyNMfgOmc4DY8wz+ywhJMmZ4/XHfMch3pmFMxROIq2ufDo568E2UEHFP7DU2kdIWpf
+         w74hHgXgGnzAj3qvm7h00V6GTXGwr04Ww8XRVgCh92K9m9VFEkffGao/3aaYNXUqD4aX
+         LDFqcbM1Bkp/QpT6598xqTtfc1t79uS9j6PZBxMOL9r0walNAXXHA0pfh2V/Tl98D4R9
+         gQ+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=OsHm0tUSHoKhbWzbKpZ0C/bNOhwpqgtB85Sg/g/m0rU=;
-        b=bZjugLuY86JC1BYqyZ8RFnnRQO2NaHNd64ADUjvVLSc6gjsGPXUDjr3ULdZ5cjIYUa
-         2IwnlM0Yzi/hjD8wndQlizpiRTKFlu26lQl0Qpyin5QidUQ3BJjlo4RQc4qcaXg7IyL/
-         uQDDy54rYJZMgeC8QGw2e4JYr9hm8DopbNREJ7pwQbNViwp0JJ9nXZrebqpKrO77Fksy
-         CISu8l6LKBkLq9nIdETGTZDc/+DRx9pWBi4x/Ah07lD6knlydF3qBZI94qKUQouE5UsL
-         mjUK1FIRkzYQGYUiWqgXwNQx3cLNaqUdaHEE4y414ajo3z1NxnZzl03AY2NhlBNOI3mX
-         YcLA==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=NPxzqCREAHr1lTYDaA+kWZitj9lizM0Ql4GFsTrn1n8=;
+        b=HcrZRfYp7e1cJXKG8ilSRgRnha24ggI2QdYZVFS67GB0ZjQNPZmH3g4+Vpp0ax2p0v
+         XM7SuHKf0S/h6oaZUiu/BW8UwEN4taHgfUDM04b8mHXUjwEny0sc12Ra56vlq0DRC6D6
+         hy7BkISSAUr4bAPiPOcAfY5C74nxOMig5I/642UFRxFUvZvHYurRpGB6iP5QqyhSwvkq
+         MdhlUs3sH7eZB0g/UMk6/TvusTtqukNJL12cVPhJ2VKdZjTWMC2g8ocyf7Qxr7ncnEDB
+         5B8f+Z5HySUDCJP7fywRuAILMlO6chfPN8w3pXuv8OHDSl6IuwPZGxnnNRflg3toHwJE
+         2eCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f4ur0HEH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l17si10972062otn.220.2019.12.16.11.46.31
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Dec 2019 11:46:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=SAZq1dLa;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id 20si11072763qka.118.2019.12.16.12.48.15;
+        Mon, 16 Dec 2019 12:48:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f4ur0HEH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59252 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1igwK6-0000Gc-Jk
-	for alex.bennee@linaro.org; Mon, 16 Dec 2019 14:46:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47228)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1igwJv-0000Cm-Qi
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 14:46:21 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1igwJu-0003Le-9C
- for qemu-arm@nongnu.org; Mon, 16 Dec 2019 14:46:19 -0500
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:41284)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1igwJq-0003Ju-Lc; Mon, 16 Dec 2019 14:46:14 -0500
-Received: by mail-il1-x142.google.com with SMTP id f10so6392602ils.8;
- Mon, 16 Dec 2019 11:46:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=OsHm0tUSHoKhbWzbKpZ0C/bNOhwpqgtB85Sg/g/m0rU=;
- b=f4ur0HEHZnc/2TQ0OcuK88IYSlQtgNyjvtVZp2GyoaCJx2PKY9cOXBsp2IIEPU9ZKK
- DcgfSlo3s+5fNJeRUtbK1wwHsXh73cGUW5k7BfDG6srs62kOpEv96jaBJCuvFXRMaZEp
- 4MS4/uDr0ECvZav0WetCFdETlkElEKwC5+X9b2tg8035N+ENFpQvXOVYkVGtmEbth1bM
- FJN4Oykr5oVFZa4wTrYWlpyFRXWdQXu/Vgk2cvN3spbPggHzJm2M8xzEqQczS4njO7ni
- 3uPjbgxdpsDTHEiP6Aal/QzS4mHAojJ1A3BcRJSLgqLNlyYysHKw413i6lm+OfYUdgWF
- nMgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=OsHm0tUSHoKhbWzbKpZ0C/bNOhwpqgtB85Sg/g/m0rU=;
- b=PRGiZyNtC5E7sDE0O4cYhmvKFjiF71l2e2lmJxGJHo0X+dnaMn90OwkObSrb7YxXX2
- 3sQ5D81Ol/jIgWKN9EZmV7LN/GLSvDCGzPJvYKasNstxnlqjSayTGvz4xgOq5P3qctwv
- J4Tytp74eoqWZe4eu6YjdwtyRfoaGm1kJ8TRwEp7OJVvoZyKSxthGqc3+0tTkbdWdEHM
- SkXdh33ulBi/SBQj+hnhVDaym/7w4rBEMgr8c7WtsEYh+GnAMpPh5ahfoxd24U1SAogi
- 6nv0OUeehLmyaZWSuXX2bbnntffSWYH2wGj9BCXeLtu2YaPGfdYaobG1ejXnDi3+lmHw
- WAmw==
-X-Gm-Message-State: APjAAAWG08DX91Ce11ATi6I7j/tzrB+MY6PO6D6ooUGONWbYoQvhvHiX
- x9X85aTN97zLh0ZDu7u4aSCV+EzLQhaVYuwN37c=
-X-Received: by 2002:a92:d5cf:: with SMTP id d15mr13244508ilq.306.1576525573101; 
- Mon, 16 Dec 2019 11:46:13 -0800 (PST)
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=SAZq1dLa;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id A38614A5A3;
+	Mon, 16 Dec 2019 15:48:15 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.391
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.391 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
+	T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bQRn5u7dT++c; Mon, 16 Dec 2019 15:48:14 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 6A1834A59B;
+	Mon, 16 Dec 2019 15:48:14 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 02BFC4A534
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Dec 2019 15:48:13 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id i2sve+8Cs8Xr for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 16 Dec 2019 15:48:11 -0500 (EST)
+Received: from us-smtp-delivery-1.mimecast.com
+ (us-smtp-delivery-1.mimecast.com [207.211.31.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id E6BFC4A50F
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Dec 2019 15:48:11 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1576529291;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=+Fxv/08Xa0VbcqCSvsm0VgrWIKaPNFsllFhCVnw+YLI=;
+ b=SAZq1dLaiyjjq8I1hzXpiBv+2GUA7ikRYoltPQLwXLcaaw1h7gxM7FG20YIqUE1i080/An
+ bRF2tGA0lfWaZxWhBnmdqwkLaPh78osqDtjt4K/rB6jKaCsj+j0vbxNbgDw2XxImgmzMTw
+ rOqHomWrPBKqWCjzMtsgwYbV++J+/Ro=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-327-_3L8DJ-vNPWrTcGnvlpMrw-1; Mon, 16 Dec 2019 15:48:09 -0500
+X-MC-Unique: _3L8DJ-vNPWrTcGnvlpMrw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9B4708D811D;
+ Mon, 16 Dec 2019 20:48:07 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-117.ams2.redhat.com [10.36.116.117])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6C11B5D9C9;
+ Mon, 16 Dec 2019 20:48:01 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+ kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: [kvm-unit-tests PATCH 00/10] KVM: arm64: PMUv3 Event Counter Tests
+Date: Mon, 16 Dec 2019 21:47:47 +0100
+Message-Id: <20191216204757.4020-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20191202210947.3603-1-nieklinnenbank@gmail.com>
- <20191202210947.3603-10-nieklinnenbank@gmail.com>
- <CAPan3WrRKnu5vFz=JvrnD8tewUk7SdwFVYx4xVL353AnfPDgHQ@mail.gmail.com>
- <6bee15d7-7d80-0709-ac90-ef2052b39329@redhat.com>
- <CAPan3WpiWahU85-ZgV4BMPU8mUTxsq2TPn-szOHkHc5+PHUqpw@mail.gmail.com>
- <03a78f1d-e8fe-5a53-b061-d39de9ed7a9e@redhat.com>
-In-Reply-To: <03a78f1d-e8fe-5a53-b061-d39de9ed7a9e@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 16 Dec 2019 20:46:01 +0100
-Message-ID: <CAPan3WrHQk-apQhQrihF_71b3_PSqkaEu1dHYmeCXuygwnAy2A@mail.gmail.com>
-Subject: Re: [PATCH 09/10] arm: allwinner-h3: add SD/MMC host controller
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000c39ead0599d776e2"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::142
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Cc: andre.przywara@arm.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SLiCLJnT9+tZ
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: Y8AHSnkr1vQL
 
---000000000000c39ead0599d776e2
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This series implements tests exercising the PMUv3 event counters.
+It tests both the 32-bit and 64-bit versions. Overflow interrupts
+also are checked. Those tests only are written for arm64.
 
-On Mon, Dec 16, 2019 at 1:14 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com>
-wrote:
+It allowed to reveal some issues related to SW_INCR implementation
+(esp. related to 64-bit implementation), some problems related to
+32-bit <-> 64-bit transitions and consistency of enabled states
+of odd and event counters.
 
-> On 12/16/19 12:07 AM, Niek Linnenbank wrote:
-> >
-> >
-> > On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9
-> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
-> >
-> >     Hi Niek,
-> >
-> >     On 12/11/19 11:34 PM, Niek Linnenbank wrote:
-> [...]
-> >      >     +static uint32_t aw_h3_sdhost_process_desc(AwH3SDHostState *=
-s,
-> >      >     +                                          hwaddr desc_addr,
-> >      >     +                                          TransferDescripto=
-r
-> >     *desc,
-> >      >     +                                          bool is_write,
-> >     uint32_t
-> >      >     max_bytes)
-> >      >     +{
-> >      >     +    uint32_t num_done =3D 0;
-> >      >     +    uint32_t num_bytes =3D max_bytes;
-> >      >     +    uint8_t buf[1024];
-> >      >     +
-> >      >     +    /* Read descriptor */
-> >      >     +    cpu_physical_memory_read(desc_addr, desc, sizeof(*desc)=
-);
-> >
-> >     Should we worry about endianess here?
-> >
-> >
-> > I tried to figure out what is expected, but the
-> > Allwinner_H3_Datasheet_V1.2.pdf does not
-> > explicitly mention endianness for any of its I/O devices. Currently it
-> > seems all devices are
-> > happy with using the same endianness as the CPUs. In the MemoryRegionOp=
-s
-> > has DEVICE_NATIVE_ENDIAN
-> > set to match the behavior seen.
->
-> OK.
->
-> [...]
-> >      >     +static const MemoryRegionOps aw_h3_sdhost_ops =3D {
-> >      >     +    .read =3D aw_h3_sdhost_read,
-> >      >     +    .write =3D aw_h3_sdhost_write,
-> >      >     +    .endianness =3D DEVICE_NATIVE_ENDIAN,
-> >
-> >     I haven't checked .valid accesses from the datasheet.
-> >
-> >     However due to:
-> >
-> >         res =3D s->data_crc[((offset - REG_SD_DATA7_CRC) /
-> sizeof(uint32_t))];
-> >
-> >     You seem to expect:
-> >
-> >                  .impl.min_access_size =3D 4,
-> >
-> >     .impl.max_access_size unset is 8, which should works.
-> >
-> > It seems that all registers are aligned on at least 32-bit boundaries.
-> > And the section 5.3.5.1 mentions
-> > that the DMA descriptors must be stored in memory 32-bit aligned. So
-> > based on that information,
->
-> So you are describing ".valid.min_access_size =3D 4", which is the minimu=
-m
-> access size on the bus.
-> ".impl.min_access_size" is different, it is what access sizes is ready
-> to handle your model.
-> Your model read/write handlers expect addresses aligned on 32-bit
-> boundary, this is why I suggested to use ".impl.min_access_size =3D 4". I=
-f
-> the guest were using a 16-bit access, your model would be buggy. If you
-> describe your implementation to accept minimum 32-bit and the guest is
-> allowed to use smaller accesses, QEMU will do a 32-bit access to the
-> device, and return the 16-bit part to the guest. This way your model is
-> safe. This is done by access_with_adjusted_size() in memory.c.
-> If you restrict with ".valid.min_access_size =3D 4", you might think we
-> don't need ".valid.min_access_size =3D 4" because all access from guest
-> will be at least 32-bit. However keep in mind someone might find this
-> device in another datasheet not limited to 32-bit, and let's say change
-> to ".valid.min_access_size =3D 2". Without ".impl.min_access_size =3D 4"
-> your model is buggy. So to be safe I'd use:
->
->    .impl.min_access_size =3D 4,
->    .valid.min_access_size =3D 4,
->
+Overflow interrupt testing relies of one patch from Andre
+("arm: gic: Provide per-IRQ helper functions") to enable the
+PPI 23, coming from "arm: gic: Test SPIs and interrupt groups"
+(https://patchwork.kernel.org/cover/11234975/). Drew kindly
+provided "arm64: Provide read/write_sysreg_s".
 
-Now it makes more sense to me, thanks Philippe for explaining this!
-Great, I'll add .impl.min_access_size =3D 4.
+All PMU tests can be launched with:
+./run_tests.sh -g pmu
+Tests also can be launched individually. For example:
+./arm-run arm/pmu.flat -append 'chained-sw-incr'
 
-At this point, I've processed all the feedback that I received for all of
-the patches
-in this series. Is there anything else you would like to
-see/discuss/review, or shall I send the v2 when I finish testing?
+With KVM:
+- chain-promotion and chained-sw-incr are known to be failing.
+- Problems were reported upstream.
+With TCG:
+- pmu-event-introspection is failing due to missing required events
+  (we may remove this from TCG actually)
+- chained-sw-incr also fails. I haven't investigated yet.
 
-Regards,
-Niek
+The series can be found at:
+https://github.com/eauger/kut/tree/pmu_event_counters_v1
 
+History:
+v1 -> v2:
+- Use new report() proto
+- Style cleanup
+- do not warn about ARM spec recommendations
+- add a comment about PMCEID0/1 splits
 
->
-> > I think 32-bit is a safe choice. I've verified this with Linux mainline
-> > and U-Boot drivers and both are still working.
->
-> Regards,
->
-> Phil.
->
->
+Andre Przywara (1):
+  arm: gic: Provide per-IRQ helper functions
 
---=20
-Niek Linnenbank
+Andrew Jones (1):
+  arm64: Provide read/write_sysreg_s
 
---000000000000c39ead0599d776e2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Eric Auger (8):
+  arm: pmu: Let pmu tests take a sub-test parameter
+  arm: pmu: Add a pmu struct
+  arm: pmu: Check Required Event Support
+  arm: pmu: Basic event counter Tests
+  arm: pmu: Test chained counter
+  arm: pmu: test 32-bit <-> 64-bit transitions
+  arm/arm64: gic: Introduce setup_irq() helper
+  arm: pmu: Test overflow interrupts
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Dec 16, 2019 at 1:14 AM Phili=
-ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
-at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">On 12/16/19 12:07 AM, Niek Linnenbank wrote:<br>
-&gt; <br>
-&gt; <br>
-&gt; On Fri, Dec 13, 2019 at 12:56 AM Philippe Mathieu-Daud=C3=A9 <br>
-&gt; &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redh=
-at.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.com" target=3D"_blank=
-">philmd@redhat.com</a>&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Hi Niek,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 12/11/19 11:34 PM, Niek Linnenbank wrote:<br>
-[...]<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+static uint32_t aw_h3_sdh=
-ost_process_desc(AwH3SDHostState *s,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 hwaddr desc_addr,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TransferDescriptor<br>
-&gt;=C2=A0 =C2=A0 =C2=A0*desc,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bool is_write,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0uint32_t<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0max_bytes)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint32_t nu=
-m_done =3D 0;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint32_t nu=
-m_bytes =3D max_bytes;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 uint8_t buf=
-[1024];<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 /* Read des=
-criptor */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 cpu_physica=
-l_memory_read(desc_addr, desc, sizeof(*desc));<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Should we worry about endianess here?<br>
-&gt; <br>
-&gt; <br>
-&gt; I tried to figure out what is expected, but the <br>
-&gt; Allwinner_H3_Datasheet_V1.2.pdf does not<br>
-&gt; explicitly mention endianness for any of its I/O devices. Currently it=
- <br>
-&gt; seems all devices are<br>
-&gt; happy with using the same endianness as the CPUs. In the MemoryRegionO=
-ps <br>
-&gt; has DEVICE_NATIVE_ENDIAN<br>
-&gt; set to match the behavior seen.<br>
-<br>
-OK.<br>
-<br>
-[...]<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+static const MemoryRegion=
-Ops aw_h3_sdhost_ops =3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .read =3D a=
-w_h3_sdhost_read,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .write =3D =
-aw_h3_sdhost_write,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0+=C2=A0 =C2=A0 .endianness=
- =3D DEVICE_NATIVE_ENDIAN,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0I haven&#39;t checked .valid accesses from the data=
-sheet.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0However due to:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0res =3D s-&gt;data_crc[((offset - REG=
-_SD_DATA7_CRC) / sizeof(uint32_t))];<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0You seem to expect:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 .impl.mi=
-n_access_size =3D 4,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0.impl.max_access_size unset is 8, which should work=
-s.<br>
-&gt; <br>
-&gt; It seems that all registers are aligned on at least 32-bit boundaries.=
- <br>
-&gt; And the section 5.3.5.1 mentions<br>
-&gt; that the DMA descriptors must be stored in memory 32-bit aligned. So <=
-br>
-&gt; based on that information,<br>
-<br>
-So you are describing &quot;.valid.min_access_size =3D 4&quot;, which is th=
-e minimum <br>
-access size on the bus.<br>
-&quot;.impl.min_access_size&quot; is different, it is what access sizes is =
-ready <br>
-to handle your model.<br>
-Your model read/write handlers expect addresses aligned on 32-bit <br>
-boundary, this is why I suggested to use &quot;.impl.min_access_size =3D 4&=
-quot;. If <br>
-the guest were using a 16-bit access, your model would be buggy. If you <br=
->
-describe your implementation to accept minimum 32-bit and the guest is <br>
-allowed to use smaller accesses, QEMU will do a 32-bit access to the <br>
-device, and return the 16-bit part to the guest. This way your model is <br=
->
-safe. This is done by access_with_adjusted_size() in memory.c.<br>
-If you restrict with &quot;.valid.min_access_size =3D 4&quot;, you might th=
-ink we <br>
-don&#39;t need &quot;.valid.min_access_size =3D 4&quot; because all access =
-from guest <br>
-will be at least 32-bit. However keep in mind someone might find this <br>
-device in another datasheet not limited to 32-bit, and let&#39;s say change=
- <br>
-to &quot;.valid.min_access_size =3D 2&quot;. Without &quot;.impl.min_access=
-_size =3D 4&quot; <br>
-your model is buggy. So to be safe I&#39;d use:<br>
-<br>
-=C2=A0 =C2=A0.impl.min_access_size =3D 4,<br>
-=C2=A0 =C2=A0.valid.min_access_size =3D 4,<br></blockquote><div><br></div><=
-div>Now it makes more sense to me, thanks Philippe for explaining this!<br>=
-</div><div>Great, I&#39;ll add .impl.min_access_size =3D 4.</div><div><br><=
-/div><div>At this point, I&#39;ve processed all the feedback that I receive=
-d for all of the patches</div><div>in this series. Is there anything else y=
-ou would like to see/discuss/review, or shall I send the v2 when I finish t=
-esting?<br></div><div><br></div><div>Regards,</div><div>Niek<br></div><div>=
-<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
-ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-<br>
-&gt; I think 32-bit is a safe choice. I&#39;ve verified this with Linux mai=
-nline <br>
-&gt; and U-Boot drivers and both are still working.<br>
-<br>
-Regards,<br>
-<br>
-Phil.<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+ arm/gic.c              |  24 +-
+ arm/pmu.c              | 783 ++++++++++++++++++++++++++++++++++++++++-
+ arm/unittests.cfg      |  55 ++-
+ lib/arm/asm/gic-v3.h   |   2 +
+ lib/arm/asm/gic.h      |  12 +
+ lib/arm/gic.c          | 101 ++++++
+ lib/arm64/asm/sysreg.h |  11 +
+ 7 files changed, 950 insertions(+), 38 deletions(-)
 
---000000000000c39ead0599d776e2--
+-- 
+2.20.1
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

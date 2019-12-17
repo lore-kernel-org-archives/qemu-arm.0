@@ -1,97 +1,97 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6396532lff;
-        Tue, 17 Dec 2019 10:32:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxW+ZdFyo9VD4wmmjr0OfPMC4TapgnneSILIzsz67N/CfxBjYQDINWdgdiOfrEQRzheLkty
-X-Received: by 2002:a05:6830:1459:: with SMTP id w25mr37251857otp.270.1576607535459;
-        Tue, 17 Dec 2019 10:32:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576607535; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6396649lff;
+        Tue, 17 Dec 2019 10:32:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzhyXUaWND098KkZ2s4AxkF1QoSGKaecFJcKosAj88RJoBvaR3gl7mow99k1l+COyK7y152
+X-Received: by 2002:a05:6808:53:: with SMTP id v19mr2489111oic.126.1576607540835;
+        Tue, 17 Dec 2019 10:32:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576607540; cv=none;
         d=google.com; s=arc-20160816;
-        b=UWe1wK+QUAb0HIFYSeF0XLT7e1ZxgwrMUmY43JeCZwoY2n0PC6QU1M30+fN93cq04Y
-         8EDXhvVgTIK95pZPbLcqxuIn4YQ9t53M44OFYNLkBtiGVDi6/+JcHXfzrjWAzL4hgASb
-         4vWCxn/hZ6RgUb3JpCgYzkKz8F06D85rulU89NxbpkMUEQlXLrz/HJayzBT2LmEzG0po
-         5uRiA7QpDjod2rWIo4elmjFn4yPx+7G42VQ5/yODWWsEN/TjRpIxQ/HeZBztH/zrlvzZ
-         DbDViWG6/ep7UPXk6MbWtTkeOk1G6oq/waScXu/e6LT83Td0xnZ9wF38ZFGzBsMKKCso
-         IlUQ==
+        b=0KT3vxwEHO8ypJLEebTFHOSyro52ZkOz93aQ7fdddWAf7KY6U1Ig0YK1kvFDVR+p4+
+         9Zrp52P+O1RjhsVEaxNrG+nvSlUt8r2Q1k6AB3AkyodfpCf0tw9FzHjt+QKUy9IEsaWD
+         jwS24icugnMKDJ+D0WJl8G1yeUNeUKBoFanSE6838CAsSEePzGw1hLGHl9WroqM2wu6B
+         PjoyjvRRDN1WteuOvy2KLLgZsaOpvX9jMU5JfHZuI5uMO4WzyA7yte9FVVFI0opewOJG
+         QQp8255p7snCrsQNhtshxJIejaLFXDTSOsda6aQfyI0oBLAw2QRIMCJww235SFYYCeXH
+         IFeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=7DH7DYNU1Zm5xKKx/ruGWzKOcjnoaA8MF93LyBj0E9Y=;
-        b=B+mUECRfVNYCF64Jt6OfYT4rMVgHpGQyOe/wr9hqCG3P2+3hm4ApRLsmIav/Bu9NkR
-         6oM+1vb1/MmAHH8Azuf7drPos147kYKZOzkCGf5nerQJh5m+6D6SbWaQDOsUu/YLl1Lf
-         fs3VgRxzjSYB6BARQQaHcCl/TJbf4OODQHUQNC2Z/PFjHo4+Wks+WIwN3DpMF0i0c2iv
-         W1p98YXgk1/kGq1S3uUjZ5ENtYhBUUORzh/eL5R5vE7z2p853Zgi9BPN7n0Qqva/5Udf
-         ipAOc2W4uTUdLwW1cHh8Nctv6I2nAoKPgb33J6+l5bBGw8vRJUAoC+OBF0LygAz/tGNR
-         DHyA==
+        bh=viU+DDZUT4ghn6789AdHJEf+Umo/KWlf1a8ZVE1hUZI=;
+        b=Rp5cmGvfJJf1yOWFF6Bc5f80XLT0g6dRTh0wwH2RoLixj9JtQcExRvZ2HvGQV4B382
+         mYc3v7qeQTt0rWSmqUkgxjc0u3vuFeHtCjHtgnUaOVM8TbRKw3C3A3f2lkrLx6g7SVfb
+         2eSzCobtGSoQZT1ZLsVgiaUH7Xw1qaobdFTK/TTBKK39SMayG9oekR9e18dJZXTGDlhE
+         8F8oSUWiDGV2rJPeneenBH2Bddo1Aow63jP3uaXExS4I1oij9Bhh4H8870heytn/ajia
+         CL6KJMPC23bEMaUDf5lOmzscJ1ddSCWCsjJsbQd6/jYno9BU9/alfL1v3ZyFvplo7YzZ
+         reoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YI+XW194;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pyrLdMSB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6si12745054oth.182.2019.12.17.10.32.15
+        by mx.google.com with ESMTPS id v145si12578527oia.68.2019.12.17.10.32.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Dec 2019 10:32:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Dec 2019 10:32:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YI+XW194;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45038 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pyrLdMSB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihHdm-00062o-9J
-	for alex.bennee@linaro.org; Tue, 17 Dec 2019 13:32:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46067)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihHdr-0006V3-NB
+	for alex.bennee@linaro.org; Tue, 17 Dec 2019 13:32:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46112)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ihHZL-00017F-CP
- for qemu-devel@nongnu.org; Tue, 17 Dec 2019 13:27:40 -0500
+ id 1ihHZN-0001Ah-DF
+ for qemu-arm@nongnu.org; Tue, 17 Dec 2019 13:27:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ihHZJ-0003aN-Qm
- for qemu-devel@nongnu.org; Tue, 17 Dec 2019 13:27:39 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:34836)
+ id 1ihHZL-0003cr-Od
+ for qemu-arm@nongnu.org; Tue, 17 Dec 2019 13:27:41 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:52909)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ihHZJ-0003YM-KT; Tue, 17 Dec 2019 13:27:37 -0500
-Received: by mail-wm1-x334.google.com with SMTP id p17so4317021wmb.0;
- Tue, 17 Dec 2019 10:27:37 -0800 (PST)
+ id 1ihHZI-0003Xb-Eb; Tue, 17 Dec 2019 13:27:36 -0500
+Received: by mail-wm1-x333.google.com with SMTP id p9so3947301wmc.2;
+ Tue, 17 Dec 2019 10:27:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=7DH7DYNU1Zm5xKKx/ruGWzKOcjnoaA8MF93LyBj0E9Y=;
- b=YI+XW194dAe4lQ6BLazs6JQoseizfLTAqOds28elDmgHrVtYsOqmGu2DGpreH5FNvo
- llVse3WE1QrSqQh6kZ0ULD4r7WRo7SIqqIQi/41dP4mPGn4iRC+TcBRFTLYt0RLsrjW7
- IU5JjQ/cdV4//B7YKtRMrXGqnPt8rhSyJSV3TpmsZX5OBhozRY6tSOf2mwDeGmVGnyQV
- AVKQBLPCFu77HwpUI5COxyu194V6C4E0jw2nMiKjZU9iQgLvnYUCwVPo8Np+G5Jeel03
- jlhJP1TTEEt6iX+R2e0PPp/Q0Cnz2r8pzPTtbNyOkeCmGFwqGOQimlvMSlmUMGvz8lxP
- /PtQ==
+ bh=viU+DDZUT4ghn6789AdHJEf+Umo/KWlf1a8ZVE1hUZI=;
+ b=pyrLdMSBAiijNyXKq1hGBJvkw5RmyUVPsa6aeoBLHPHSJXqGEG5IfEKV8pkSpsQ7Iu
+ s/CWJLWEBNJG39EgiQnCoE+0npwfwXx14wpzNJDkanxVrxjPQtnZ6zffUgwyVva/9ZXp
+ AFTvebeje5mpNmUx5MAWa1IOUCr2MNh7Ns9uFfe3N/f8mUP/RP7ExVEtAY1u1nDGppQ6
+ HkRl/YXpw8cWkXXO34DWdDdsevXqGXjOTSAWQK84Q0hmJbJP5pEgBVmVccCL5VMhzX3J
+ FdBxVp6E2LWE8wfUhUso0gZc6V9e+k1gP9FmVIddDakvv17gRngi44Ix+nY1CWV1RQms
+ xi8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=7DH7DYNU1Zm5xKKx/ruGWzKOcjnoaA8MF93LyBj0E9Y=;
- b=XdsnTC2f10wGkMda0NvuhnrGYwDdgXVmK2lPYXx+1m6tXxdyZhVyWUCPbnhv92BvQ6
- DYJAEu6XEjg6S2DqJ+fJ/4RDDB7f0Y+G3DNcrPX0SC4x7S+xfnaVlO3jsPPRBFrYAHzs
- ct9WtBrNt4Xyy0qU4jsfNDC09GFg2uWNwWYni5GVgTiIsh/gEDKaHtSnFJn3NI0DEcua
- DP44XEWHXMZwdLIBzd2e5ZKJLMWOZ9cv4wHBEEu/6JQM0O/0cFxt+unqJuvslE1VpSh5
- 9PHvSlH+/HD/hedKywCZ/JtoMK43JF/2kdN7No5+MLTCeT8cDRBV7JllV9TxWXmOXb3y
- 4Kvg==
-X-Gm-Message-State: APjAAAUzO12/3/DNFKyC3+PrK2wlgsX6j76y8nPOcmHNzBdq4fQWxfo6
- vBXafJxYwB9OOwPhzfAqP0NYX2zC
-X-Received: by 2002:a1c:6202:: with SMTP id w2mr6743047wmb.141.1576607256378; 
- Tue, 17 Dec 2019 10:27:36 -0800 (PST)
+ bh=viU+DDZUT4ghn6789AdHJEf+Umo/KWlf1a8ZVE1hUZI=;
+ b=jwrtxmHG3+CEjQR9kkexePjSUhp4vAnyZi4rNwpBVqhw3ixvvzuAOXTWourihFguox
+ Aldgx04vxkEaZuyi2D+C39LhMjVsQOnj9UWrBw+tWYE/jdRXUwuBbMAZ42YIgPVxwD+s
+ Vz9NC937lY50SVRzU/O5ahTR99F2w5vFlL70ZUbIhrh8Tpoqvd8gWNQiEAKe1zc1bsu4
+ r45wHJ/vPmLM+TpRGlGg1ByiA7TT1fTnPJ+QmVvkUZ9dKkyegQhJU4IABhU7UNdyXgln
+ 6Iu9xcdjZ3YKLtEW1arAwuJEepIvSO56GfJFoX7/dtLdeWfg0RFNgFotapiuMcC8VusZ
+ KOsA==
+X-Gm-Message-State: APjAAAV9YLwlhVz8p7O+z27V9y04sAd0AuexEMe5JNzAA14qM3aF3Q6k
+ EWo3WGlK/wkbChcGHuuk3NCCEMOk
+X-Received: by 2002:a1c:1f56:: with SMTP id f83mr7181656wmf.93.1576607255198; 
+ Tue, 17 Dec 2019 10:27:35 -0800 (PST)
 Received: from x1w.redhat.com (34.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.34])
- by smtp.gmail.com with ESMTPSA id u18sm26006975wrt.26.2019.12.17.10.27.35
+ by smtp.gmail.com with ESMTPSA id u18sm26006975wrt.26.2019.12.17.10.27.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Dec 2019 10:27:35 -0800 (PST)
+ Tue, 17 Dec 2019 10:27:34 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 3/5] tests/boot_linux_console: Add a SD card test for the
- OrangePi PC board
-Date: Tue, 17 Dec 2019 19:27:28 +0100
-Message-Id: <20191217182730.943-4-f4bug@amsat.org>
+Subject: [PATCH 2/5] tests/boot_linux_console: Add initrd test for the Orange
+ Pi PC board
+Date: Tue, 17 Dec 2019 19:27:27 +0100
+Message-Id: <20191217182730.943-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191217182730.943-1-f4bug@amsat.org>
 References: <20191217182730.943-1-f4bug@amsat.org>
@@ -101,32 +101,37 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::334
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::333
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xTiZo9J4HRb+
+ Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Guenter Roeck <linux@roeck-us.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1U1OEJ+E0x+N
+
+This test boots a Linux kernel on a OrangePi PC board and verify
+the serial output is working.
 
 The kernel image and DeviceTree blob are built by the Raspbian
 project (based on Debian):
 https://www.raspbian.org/RaspbianImages
 
-The SD image is from the kernelci.org project:
-https://kernelci.org/faq/#the-code
+The cpio image used comes from the linux-build-test project:
+https://github.com/groeck/linux-build-test
 
 If ARM is a target being built, "make check-acceptance" will
 automatically include this test by the use of the "arch:arm" tags.
@@ -138,64 +143,84 @@ Alternatively, this test can be run using:
   console: Booting Linux on physical CPU 0x0
   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
   console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+  console: CPU: div instructions available: patching division code
+  console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+  console: OF: fdt: Machine model: Xunlong Orange Pi PC
   [...]
-  console: sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
-  console: sunxi-mmc 1c0f000.mmc: Linked as a consumer to regulator.2
-  console: sunxi-mmc 1c0f000.mmc: Got CD GPIO
-  console: ledtrig-cpu: registered to indicate activity on CPUs
-  console: hidraw: raw HID events driver (C) Jiri Kosina
-  console: usbcore: registered new interface driver usbhid
-  console: usbhid: USB HID core driver
-  console: Initializing XFRM netlink socket
-  console: sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
-  console: NET: Registered protocol family 10
-  console: mmc0: host does not support reading read-only switch, assuming write-enable
-  console: mmc0: Problem switching card into high-speed mode!
-  console: mmc0: new SD card at address 4567
-  console: mmcblk0: mmc0:4567 QEMU! 60.0 MiB
+  console: Trying to unpack rootfs image as initramfs...
+  console: Freeing initrd memory: 3256K
+  console: Freeing unused kernel memory: 1024K
+  console: Run /init as init process
+  console: mount: mounting devtmpfs on /dev failed: Device or resource busy
+  console: Starting logging: OK
+  console: Initializing random number generator... random: dd: uninitialized urandom read (512 bytes read)
+  console: done.
+  console: Starting network: OK
+  console: Found console ttyS0
+  console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
+  console: Boot successful.
+  console: cat /proc/cpuinfo
+  console: / # cat /proc/cpuinfo
+  console: processor      : 0
+  console: model name     : ARMv7 Processor rev 5 (v7l)
+  console: BogoMIPS       : 125.00
+  console: Features       : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm
+  console: CPU implementer        : 0x41
+  console: CPU architecture: 7
+  console: CPU variant    : 0x0
+  console: CPU part       : 0xc07
+  console: CPU revision   : 5
   [...]
-  console: EXT4-fs (mmcblk0): mounting ext2 file system using the ext4 subsystem
-  console: EXT4-fs (mmcblk0): mounted filesystem without journal. Opts: (null)
-  console: VFS: Mounted root (ext2 filesystem) on device 179:0.
-  console: Run /sbin/init as init process
-  console: EXT4-fs (mmcblk0): re-mounted. Opts: block_validity,barrier,user_xattr,acl
-  console: Starting syslogd: OK
-  console: Starting klogd: OK
-  console: Populating /dev using udev: udevd[203]: starting version 3.2.7
-  console: /bin/sh: can't access tty; job control turned off
-  console: cat /proc/partitions
-  console: / # cat /proc/partitions
-  console: major minor  #blocks  name
-  console: 1        0       4096 ram0
-  console: 1        1       4096 ram1
-  console: 1        2       4096 ram2
-  console: 1        3       4096 ram3
-  console: 179        0      61440 mmcblk0
+  console: processor      : 3
+  console: model name     : ARMv7 Processor rev 5 (v7l)
+  console: BogoMIPS       : 125.00
+  console: Features       : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm
+  console: CPU implementer        : 0x41
+  console: CPU architecture: 7
+  console: CPU variant    : 0x0
+  console: CPU part       : 0xc07
+  console: CPU revision   : 5
+  console: Hardware       : Allwinner sun8i Family
+  console: Revision       : 0000
+  console: Serial         : 0000000000000000
+  console: cat /proc/iomem
+  console: / # cat /proc/iomem
+  console: 01000000-010fffff : clock@1000000
+  console: 01c00000-01c00fff : system-control@1c00000
+  console: 01c02000-01c02fff : dma-controller@1c02000
+  [...]
   console: reboot
   console: / # reboot
+  console: / # Found console ttyS0
+  console: Stopping network: OK
+  console: hrtimer: interrupt took 21852064 ns
+  console: Saving random seed... random: dd: uninitialized urandom read (512 bytes read)
+  console: done.
+  console: Stopping logging: OK
   console: umount: devtmpfs busy - remounted read-only
-  console: EXT4-fs (mmcblk0): re-mounted. Opts: (null)
+  console: umount: can't unmount /: Invalid argument
   console: The system is going down NOW!
   console: Sent SIGTERM to all processes
   console: Sent SIGKILL to all processes
   console: Requesting system reboot
   console: reboot: Restarting system
-  JOB TIME   : 68.64 s
+  PASS (48.32 s)
+  JOB TIME   : 49.16 s
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- tests/acceptance/boot_linux_console.py | 42 ++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ tests/acceptance/boot_linux_console.py | 41 ++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
 diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index daabd47404..8179b45910 100644
+index 820239e439..daabd47404 100644
 --- a/tests/acceptance/boot_linux_console.py
 +++ b/tests/acceptance/boot_linux_console.py
-@@ -478,6 +478,48 @@ class BootLinuxConsole(Test):
-         exec_command_and_wait_for_pattern(self, 'reboot',
-                                                 'reboot: Restarting system')
+@@ -437,6 +437,47 @@ class BootLinuxConsole(Test):
+         console_pattern = 'Kernel command line: %s' % kernel_command_line
+         self.wait_for_console_pattern(console_pattern)
  
-+    def test_arm_orangepi_sd(self):
++    def test_arm_orangepi_initrd(self):
 +        """
 +        :avocado: tags=arch:arm
 +        :avocado: tags=machine:orangepi-pc
@@ -208,32 +233,31 @@ index daabd47404..8179b45910 100644
 +                                            '/boot/vmlinuz-4.20.7-sunxi')
 +        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
 +        dtb_path = self.extract_from_deb(deb_path, dtb_path)
-+        rootfs_url = ('http://storage.kernelci.org/images/rootfs/buildroot/'
-+                      'kci-2019.02/armel/base/rootfs.ext2.xz')
-+        rootfs_hash = '692510cb625efda31640d1de0a8d60e26040f061'
-+        rootfs_path_xz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
-+        rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
-+        archive.lzma_uncompress(rootfs_path_xz, rootfs_path)
++        initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
++                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
++                      'arm/rootfs-armv7a.cpio.gz')
++        initrd_hash = '604b2e45cdf35045846b8bbfbf2129b1891bdc9c'
++        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
++        initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
++        archive.gzip_uncompress(initrd_path_gz, initrd_path)
 +
 +        self.vm.set_machine('orangepi-pc')
 +        self.vm.set_console()
 +        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
 +                               'console=ttyS0,115200 '
-+                               'root=/dev/mmcblk0 rootwait rw '
 +                               'panic=-1 noreboot')
 +        self.vm.add_args('-kernel', kernel_path,
 +                         '-dtb', dtb_path,
-+                         '-drive', 'file=' + rootfs_path + ',if=sd,format=raw',
++                         '-initrd', initrd_path,
 +                         '-append', kernel_command_line,
 +                         '-no-reboot')
 +        self.vm.launch()
-+        shell_ready = "/bin/sh: can't access tty; job control turned off"
-+        self.wait_for_console_pattern(shell_ready)
++        self.wait_for_console_pattern('Boot successful.')
 +
 +        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
 +                                                'Allwinner sun8i Family')
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
-+                                                'mmcblk0')
++        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
++                                                'system-control@1c00000')
 +        exec_command_and_wait_for_pattern(self, 'reboot',
 +                                                'reboot: Restarting system')
 +

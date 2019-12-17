@@ -1,168 +1,159 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4426467lff;
-        Mon, 16 Dec 2019 03:40:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzGukTsBf2rNdoIgghl8HHwlcysOKoMILWabpa4rnJOIG9O5n5dDaHifds9jRht9wZx+neS
-X-Received: by 2002:a9d:6a98:: with SMTP id l24mr32434258otq.160.1576496411555;
-        Mon, 16 Dec 2019 03:40:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576496411; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6334149lff;
+        Tue, 17 Dec 2019 09:38:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyiY8AyiUtXiy+6mSWh2qHfwDXgZN5jRfxcZjz1IFcecB7Y5/bnD942pvHpqZk2149hCuEX
+X-Received: by 2002:ae9:ed47:: with SMTP id c68mr6079637qkg.136.1576604332792;
+        Tue, 17 Dec 2019 09:38:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576604332; cv=none;
         d=google.com; s=arc-20160816;
-        b=BiwVD4IupjNA2CBOtUiWE/HJT4e4Vqyh1aa6Yl4YWGPw3yGsKUxZZDZnOuO37LR5tT
-         gNPnSJTwGpXfcwHxCfJriDTgVvqkdgS1UBb58XeM+AHfqCZZ+XZU1l8FlAj/0UVmsEqt
-         7sW6pjPX6MVXtwFC9n8X1oZSiatlhIIf+Bs8makfl/74w5h+hddiXoBvDDxo1DzFR5vC
-         q7Mm0JoK6K2ARHKk6+4F++tO+hwNYqe2J54Ps3jSA3S9BnieDZqQdR9HFSBabJeiJB5P
-         VkIhiinlQSXmDCa1Ngt5UrFD6I5Pqtt8kP7L5Rvk65QUmg9UmkJtCMnHHBk4b/AeY5XR
-         wjiA==
+        b=S7D63yfeeWz+lwGr5kXzO48mV3U4xPtTmqDqIeksvloHX/Ju1cAIV59UkCeEiitzqI
+         I1HzzuRFimdCid7SFlGp7ZiPZGiY5vos6j5kTytxfthXEfj+QL6oK3fCcMg7x/7ay9VA
+         YgfGri+M4ks0XQguQEu9+7uYiCD6LkPdodfknJBx9HcUwks82K3aj+jDCoxFG6GDrEH+
+         IEast02pwAnP7M4pKvUzmVgGQVTazPkro9n0aq2nMIqJk7+zbEbB1OI+6AI/G0cvaC5Q
+         K8inZl3esHAvRVZN9yqkqB2CFx7mIoRF27uU3+JwmMFRkLTuFBVTXHagCyiaw1g80llI
+         7utA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=OYDDHez2+eQPnVZemBiQrMSGx/8BMcqXBE4o9nFHE48=;
-        b=DTl2brs0rKzU01LgHQq8Rh2HdqGJupTuKayOvRNwvkrNiRKjdP+6OSLg4lyKa4QFBE
-         46yfLJ8XYstsF+l7wy1LvQaKwwVdQnu+8y/+daCn0xLa+1vG8DcZR7O/p7iSHLmTAiWd
-         NbEn4fOsiEZfQbtQTwGb+Om5fggkKDOvN0E9EbAT8XrYihnvsxPz7EQb23ZWYeMF3+8f
-         w/3JYs+x3FJmZUE9vOyso6Ox27Ywo8FmhOuu7FNjfEeWDaI9jH70XlnHZbXZIrImdaHm
-         WZnBROAiKJlBoXk25h2P/S7AEhD7KebUPEaRB4pPA3CbP2XOjlHPA3SdYzB9DiGaT2ES
-         beLg==
+        bh=HM0BAidIfenT9MqU4w2ULCCF6forF8fZZ3ED/PgaTLg=;
+        b=qQpVE0ZQaicIBYUQfaGsXjcQDGw+qKMXChWx750JD0+h2DzYLvLRxSVTj/42BgHFOS
+         e/zKPBT0O5YRGIHaH53+Bsq7n3DABBmsmSKsX7qnRJsZAZLsJrjxnl9rKmBKsiwDQtLB
+         SFmmIuuwp6PMXIDIVZxuzhDKfqJ3YaunbrcNzBVQviWhbLv5vmuZpFknUd8Np13M6/DV
+         A3otLDdKYMG2izd1O6YHhKjLTrQvwlegnckdfdnpYoWl/tlrYvoyd/He+hHCF1SkBqv2
+         87fFjcJnPrPuDK11hjl7NGux9mjjiu1pygFQttcfziHoAlfnn+Rj+YnAInDi62lnoxn8
+         gfUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KBk/nbZo";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id z203si10149874oia.124.2019.12.16.03.40.11;
-        Mon, 16 Dec 2019 03:40:11 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HKuB69O5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a132si12255369qkc.209.2019.12.17.09.38.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Dec 2019 09:38:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KBk/nbZo";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727286AbfLPLkK (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 16 Dec 2019 06:40:10 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:44793 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1727230AbfLPLkK (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 16 Dec 2019 06:40:10 -0500
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HKuB69O5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44258 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihGo7-0007bj-VE
+	for alex.bennee@linaro.org; Tue, 17 Dec 2019 12:38:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46323)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1ihGkX-0001va-GB
+ for qemu-devel@nongnu.org; Tue, 17 Dec 2019 12:35:11 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1ihGkW-0000Nj-AW
+ for qemu-devel@nongnu.org; Tue, 17 Dec 2019 12:35:09 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28117
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ihGkW-0000MN-6c
+ for qemu-devel@nongnu.org; Tue, 17 Dec 2019 12:35:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1576496408;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=OYDDHez2+eQPnVZemBiQrMSGx/8BMcqXBE4o9nFHE48=;
-        b=KBk/nbZoC62qgwq9OR0MytN0gQajn+nG//9G93J5YEduLMXncLh/BLze3xUIwKAiu/zE7z
-        Qr7fSCRvbOAbh+nnAqZDq1vCgXpLs2Do3pfPwcnsMnyTEgpzxUZ5J3qPvLiAPhuY9K/Ou8
-        CVKNZufRE3rJ6onWsLlVwXmlsFnERYQ=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-438-eAQTgS-5N32JWQj6OBJFDQ-1; Mon, 16 Dec 2019 06:40:05 -0500
-X-MC-Unique: eAQTgS-5N32JWQj6OBJFDQ-1
-Received: by mail-qv1-f71.google.com with SMTP id g6so910674qvp.0
-        for <kvm@vger.kernel.org>; Mon, 16 Dec 2019 03:40:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=OYDDHez2+eQPnVZemBiQrMSGx/8BMcqXBE4o9nFHE48=;
-        b=QDN9RbIsPLOSoWSoLSveINuLv3o5zJ5ZgHF7rfDVVg6/u3pXrayGYQaWBZBFJO75L4
-         mi3NJtRqM4lR/pjuVWMUBXSo+pbPBoIsOjx90c0/Xa4e6EK016eMzcjjrFIjBe8dUw6s
-         Z0fgRwdl/DKNd1BOa5J4EMupdmUZXZDD6uMbaAbDmQ0/KjsaR3WCilqNz2hzxmPsHc1a
-         8+jqiRGU4aSIBo+MpBfsUc6cbO/px6jlr0c9a93ySqNnvyJn8OLQZD6pA9ZhVIBlHTud
-         m/9Hfa/kL+WYv6HVUG1vWQ1XQDIc4VuOUIhqy7QrhXKxcf6oAV/59NS5tQbG5OsFiQiV
-         9IHw==
-X-Gm-Message-State: APjAAAUfgNQu/PvDVHHOtz1n/PTqBd1wh3yo3VWuqV5li2XvOIKDXNVy
-        jyDPoPRHDCttokytufWVxwiXij5jojdzI4AHbNjAze/IT7P8J9yyyegudFFm2BttcC3uZFRiJLq
-        xulM4aWn2GBoa
-X-Received: by 2002:aed:3be1:: with SMTP id s30mr24113989qte.163.1576496404872;
-        Mon, 16 Dec 2019 03:40:04 -0800 (PST)
-X-Received: by 2002:aed:3be1:: with SMTP id s30mr24113974qte.163.1576496404605;
-        Mon, 16 Dec 2019 03:40:04 -0800 (PST)
-Received: from redhat.com (bzq-111-168-31-5.red.bezeqint.net. [31.168.111.5])
-        by smtp.gmail.com with ESMTPSA id u16sm5807903qku.19.2019.12.16.03.39.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Dec 2019 03:40:03 -0800 (PST)
-Date:   Mon, 16 Dec 2019 06:39:56 -0500
-From:   "Michael S. Tsirkin" <mst@redhat.com>
-To:     Peter Maydell <peter.maydell@linaro.org>
-Cc:     Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        Andrew Baumann <Andrew.Baumann@microsoft.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Alex Williamson <alex.williamson@redhat.com>,
-        Aleksandar Markovic <amarkovic@wavecomp.com>,
-        Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Alistair Francis <alistair@alistair23.me>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-        Paul Burton <pburton@wavecomp.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 0/8] Simplify memory_region_add_subregion_overlap(...,
- priority=0)
-Message-ID: <20191216063529-mutt-send-email-mst@kernel.org>
-References: <20191214155614.19004-1-philmd@redhat.com>
- <CAFEAcA_QZtU9X4fxZk2oWAkN-zxXdQZejrSKZbDxPKLMwdFWgw@mail.gmail.com>
- <20191215044759-mutt-send-email-mst@kernel.org>
- <CAFEAcA9ZF3VTR7kG_D-cJ+vPFTgd8zjmt2VPfJC7urNemF-5AQ@mail.gmail.com>
+ s=mimecast20190719; t=1576604107;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HM0BAidIfenT9MqU4w2ULCCF6forF8fZZ3ED/PgaTLg=;
+ b=HKuB69O5j1hvhslsC7mhmX8Ai9v2sUGbH1S1ViCLDv1Jab4hFGyQ6+9D1ILJ4RTt4iLtUI
+ fP1D1paUsTEcK7Sh1conbD1MYcRR7+tc5IafB7FvYe3sKh6UHAR0AYIAdUFnRBCCS+40Bf
+ pdASUo0e21jjjwV7oeDQCMWUdSPcZyw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-209-o2RGE3-LP9WZo3T31gvbNw-1; Tue, 17 Dec 2019 12:35:04 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 845A7100728C;
+ Tue, 17 Dec 2019 17:35:02 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-205-147.brq.redhat.com [10.40.205.147])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8095E26571;
+ Tue, 17 Dec 2019 17:34:59 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 4/6] hw/timer/aspeed_timer: Add a fall through comment
+Date: Tue, 17 Dec 2019 18:34:23 +0100
+Message-Id: <20191217173425.5082-5-philmd@redhat.com>
+In-Reply-To: <20191217173425.5082-1-philmd@redhat.com>
+References: <20191217173425.5082-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9ZF3VTR7kG_D-cJ+vPFTgd8zjmt2VPfJC7urNemF-5AQ@mail.gmail.com>
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: f9X4oYtBTVNL
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: o2RGE3-LP9WZo3T31gvbNw-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +d2jzO8cLrBE
 
-On Sun, Dec 15, 2019 at 03:27:12PM +0000, Peter Maydell wrote:
-> On Sun, 15 Dec 2019 at 09:51, Michael S. Tsirkin <mst@redhat.com> wrote:
-> >
-> > On Sat, Dec 14, 2019 at 04:28:08PM +0000, Peter Maydell wrote:
-> > > (It doesn't actually assert that it doesn't
-> > > overlap because we have some legacy uses, notably
-> > > in the x86 PC machines, which do overlap without using
-> > > the right function, which we've never tried to tidy up.)
-> >
-> > It's not exactly legacy uses.
-> >
-> > To be more exact, the way the non overlap versions
-> > are *used* is to mean "I don't care what happens when they overlap"
-> > as opposed to "will never overlap".
-> 
-> Almost all of the use of the non-overlap versions is
-> for "these are never going to overlap" -- devices or ram at
-> fixed addresses in the address space that can't
-> ever be mapped over by anything else. If you want
-> "can overlap but I don't care which one wins" then
-> that would be more clearly expressed by using the _overlap()
-> version but just giving everything that can overlap there
-> the same priority.
+Reported by GCC9 when building with CFLAG -Wimplicit-fallthrough=3D2:
 
-Problem is device doesn't always know whether something can overlap it.
-Imagine device A at a fixed address.
-Guest can program device B to overlap the fixed address.
-How is device A supposed to know this can happen?
+  hw/timer/aspeed_timer.c: In function =E2=80=98aspeed_timer_set_value=E2=
+=80=99:
+  hw/timer/aspeed_timer.c:283:24: error: this statement may fall through [-=
+Werror=3Dimplicit-fallthrough=3D]
+    283 |         if (old_reload || !t->reload) {
+        |             ~~~~~~~~~~~^~~~~~~~~~~~~
+  hw/timer/aspeed_timer.c:287:5: note: here
+    287 |     case TIMER_REG_STATUS:
+        |     ^~~~
+  cc1: all warnings being treated as errors
 
+Add the missing fall through comment.
 
+Fixes: 1403f364472
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+Cc: "C=C3=A9dric Le Goater" <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>
+Cc: Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org
+---
+ hw/timer/aspeed_timer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> > There are lots of regions where guest can make things overlapping
-> > but doesn't, e.g. PCI BARs can be programmed to overlap
-> > almost anything.
-> >
-> > What happens on real hardware if you then access one of
-> > the BARs is undefined, but programming itself is harmless.
-> > That's why we can't assert.
-> 
-> Yeah, good point, for the special case where it's the
-> guest that's determining the addresses where something's
-> mapped we might want to allow the behaviour to fall out
-> of the implementation. (You could instead specify set of
-> priorities that makes the undefined-behaviour something
-> specific, rather than just an emergent property of
-> the implementation QEMU happens to have, but it seems
-> a bit hard to justify.)
-> 
-> thanks
-> -- PMM
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index a8c38cc118..c91f18415c 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -283,7 +283,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlState=
+ *s, int timer, int reg,
+         if (old_reload || !t->reload) {
+             break;
+         }
+-
++        /* fall through to re-enable */
+     case TIMER_REG_STATUS:
+         if (timer_enabled(t)) {
+             uint64_t now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+--=20
+2.21.0
+

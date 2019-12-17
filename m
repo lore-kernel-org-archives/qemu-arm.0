@@ -1,96 +1,97 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6394561lff;
-        Tue, 17 Dec 2019 10:30:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz82un0MeypZf1cfayn2FItqPMILTjwo52j786GCm6U4utgv0Rv8EynIkXfMxYjE8+Pg1fy
-X-Received: by 2002:ac8:6f04:: with SMTP id g4mr5718849qtv.314.1576607431297;
-        Tue, 17 Dec 2019 10:30:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576607431; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6396532lff;
+        Tue, 17 Dec 2019 10:32:15 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxW+ZdFyo9VD4wmmjr0OfPMC4TapgnneSILIzsz67N/CfxBjYQDINWdgdiOfrEQRzheLkty
+X-Received: by 2002:a05:6830:1459:: with SMTP id w25mr37251857otp.270.1576607535459;
+        Tue, 17 Dec 2019 10:32:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576607535; cv=none;
         d=google.com; s=arc-20160816;
-        b=iCe9wTepg5DyZAUDzfW+igcqc6l462qxM770ivBawxeSsScGZpM+UBrBfpfC6w3UJJ
-         f30MOEW1dP0T0mIHybusg/y+ZX9d6E70iFAW24izC+XiA4JeO4mqDK2dsq+B93TuXryq
-         O7/m4YT1WrlGF6zAJtAWaDTffTVcbwP1iiLDqR9Eni4j5DyGelvhqmBTbkpQfqeLB2bv
-         h3ym/i3OhJbmu+MINjeZrbNfVuey9U3C+IdmBFyLBqONT487zL+DmcvUTlRdhLFkFvPY
-         Zh7rl5L8NzH4tlq/aDe+3SClbP4jVS2iRIJwaYqalb9ItG5B/3gWhMnLtHdhuR4GVRCn
-         p9eg==
+        b=UWe1wK+QUAb0HIFYSeF0XLT7e1ZxgwrMUmY43JeCZwoY2n0PC6QU1M30+fN93cq04Y
+         8EDXhvVgTIK95pZPbLcqxuIn4YQ9t53M44OFYNLkBtiGVDi6/+JcHXfzrjWAzL4hgASb
+         4vWCxn/hZ6RgUb3JpCgYzkKz8F06D85rulU89NxbpkMUEQlXLrz/HJayzBT2LmEzG0po
+         5uRiA7QpDjod2rWIo4elmjFn4yPx+7G42VQ5/yODWWsEN/TjRpIxQ/HeZBztH/zrlvzZ
+         DbDViWG6/ep7UPXk6MbWtTkeOk1G6oq/waScXu/e6LT83Td0xnZ9wF38ZFGzBsMKKCso
+         IlUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=X3aoTKFOEPvDjRCIHjLD6crQEVS/A3CYuC7Vv8K4W3k=;
-        b=HlMMwMPbyoj1Ta6Jg34lNuknhIt5rmyug7sd4GKT45MZs5oMyQXDxdEPWHtbKWYXEn
-         sIrZrydtmkcCni2GijCtD1C47bY4KSvfTdmj2kZIrQ54LI3JxMxOHhbylGs/YInMCKDS
-         YEOyE7CAlvWVI7xjbWkoBWZFrRt/6Wu6irEaknnK88R+Ft9XCtpvCSrihcvhmM4R1azf
-         7ufOgi6dPggy0ZER9RuuAQOMtQOVrASmh057grEJLSrrnufniGJCuI3PIGNlBGdSJwGv
-         PwEjPtiiOLf7MQxc9RbklxkmW5eLenlBUr2oZOffe3ZqCU1EHGqpxBbeDx7WfgIvmCZz
-         WWeg==
+        bh=7DH7DYNU1Zm5xKKx/ruGWzKOcjnoaA8MF93LyBj0E9Y=;
+        b=B+mUECRfVNYCF64Jt6OfYT4rMVgHpGQyOe/wr9hqCG3P2+3hm4ApRLsmIav/Bu9NkR
+         6oM+1vb1/MmAHH8Azuf7drPos147kYKZOzkCGf5nerQJh5m+6D6SbWaQDOsUu/YLl1Lf
+         fs3VgRxzjSYB6BARQQaHcCl/TJbf4OODQHUQNC2Z/PFjHo4+Wks+WIwN3DpMF0i0c2iv
+         W1p98YXgk1/kGq1S3uUjZ5ENtYhBUUORzh/eL5R5vE7z2p853Zgi9BPN7n0Qqva/5Udf
+         ipAOc2W4uTUdLwW1cHh8Nctv6I2nAoKPgb33J6+l5bBGw8vRJUAoC+OBF0LygAz/tGNR
+         DHyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="kE56C8E/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YI+XW194;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n19si12158718qvz.60.2019.12.17.10.30.31
+        by mx.google.com with ESMTPS id i6si12745054oth.182.2019.12.17.10.32.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Dec 2019 10:30:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Dec 2019 10:32:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="kE56C8E/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45008 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YI+XW194;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45038 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihHc6-0004NL-Ky
-	for alex.bennee@linaro.org; Tue, 17 Dec 2019 13:30:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46129)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihHdm-00062o-9J
+	for alex.bennee@linaro.org; Tue, 17 Dec 2019 13:32:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46067)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ihHZO-0001CQ-Eq
- for qemu-arm@nongnu.org; Tue, 17 Dec 2019 13:27:43 -0500
+ id 1ihHZL-00017F-CP
+ for qemu-devel@nongnu.org; Tue, 17 Dec 2019 13:27:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ihHZN-0003dr-CM
- for qemu-arm@nongnu.org; Tue, 17 Dec 2019 13:27:42 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:45858)
+ id 1ihHZJ-0003aN-Qm
+ for qemu-devel@nongnu.org; Tue, 17 Dec 2019 13:27:39 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:34836)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ihHZK-0003bH-Ue; Tue, 17 Dec 2019 13:27:39 -0500
-Received: by mail-wr1-x444.google.com with SMTP id j42so8205346wrj.12;
- Tue, 17 Dec 2019 10:27:38 -0800 (PST)
+ id 1ihHZJ-0003YM-KT; Tue, 17 Dec 2019 13:27:37 -0500
+Received: by mail-wm1-x334.google.com with SMTP id p17so4317021wmb.0;
+ Tue, 17 Dec 2019 10:27:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=X3aoTKFOEPvDjRCIHjLD6crQEVS/A3CYuC7Vv8K4W3k=;
- b=kE56C8E/NbtpZjNbq9bhK3mGzU1Wq7Vkr0T1aZ+irlcv+JVhVJbQZeK/GkmmUjPju+
- aqeuC+SDPJKdaM+MVDpdUwsHj5QPE19K9fwW1kU5InIhrclIsNU4mF3KU3ioxA6ouA1E
- 0dY8N5rj+87UJFNwwkWUE0Qg+mTHTXZvuy93OtV5p6rwvzx/laizm27jZeyRudxywUl1
- qi741fKh57GmrzMODQpVA5ShhHLJL8qEzdwti49fvJ8613lTkLpyPUX+hPtUKzyBpTTE
- S9JjiwbHQuRlj6cHSU9Cj7hZZVWdKq27eIFyfyoqwF2WNaA3W1Fh295WFpBbmjmIMIve
- X0eA==
+ bh=7DH7DYNU1Zm5xKKx/ruGWzKOcjnoaA8MF93LyBj0E9Y=;
+ b=YI+XW194dAe4lQ6BLazs6JQoseizfLTAqOds28elDmgHrVtYsOqmGu2DGpreH5FNvo
+ llVse3WE1QrSqQh6kZ0ULD4r7WRo7SIqqIQi/41dP4mPGn4iRC+TcBRFTLYt0RLsrjW7
+ IU5JjQ/cdV4//B7YKtRMrXGqnPt8rhSyJSV3TpmsZX5OBhozRY6tSOf2mwDeGmVGnyQV
+ AVKQBLPCFu77HwpUI5COxyu194V6C4E0jw2nMiKjZU9iQgLvnYUCwVPo8Np+G5Jeel03
+ jlhJP1TTEEt6iX+R2e0PPp/Q0Cnz2r8pzPTtbNyOkeCmGFwqGOQimlvMSlmUMGvz8lxP
+ /PtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=X3aoTKFOEPvDjRCIHjLD6crQEVS/A3CYuC7Vv8K4W3k=;
- b=tQQOhSmi4/yAByk00U67litF7PxyBrQYvBQE4WtPM4eGEe6kV7G/GylkV0CYfjZ5w6
- REpaloGwcq4kGBcO474Iz9ewNiGaQU/eHidCYVXYIgq+Ugvxktz0NBnwLblGKzs1gsg5
- eQ+um/76t0jT07dXYXjTx/Ffm/2pYCx3VK1dxfx6WIBYCkG4fBa2uDk+0FndJGPYEecf
- hPZP7Y4bYTvr2xnpzRLkj2QMa5WzBrzIvCVCVggrK2Cep8gd4McALrTIYiqwM9uGdSTk
- d/kti2NOirNTAo1hyX8RobomIfzHmSqqmvu+ozhLVB78NU/RGUFp4buyYAVWgcMRzENA
- pGiw==
-X-Gm-Message-State: APjAAAWGXGD3HXQjiX5+RZLO/jLevr0OamvSotEvwafQnrrCHmmmqrLd
- wnnahsWKFMLTAb/uff8okIC1UruD
-X-Received: by 2002:a5d:6144:: with SMTP id y4mr38472286wrt.15.1576607257776; 
- Tue, 17 Dec 2019 10:27:37 -0800 (PST)
+ bh=7DH7DYNU1Zm5xKKx/ruGWzKOcjnoaA8MF93LyBj0E9Y=;
+ b=XdsnTC2f10wGkMda0NvuhnrGYwDdgXVmK2lPYXx+1m6tXxdyZhVyWUCPbnhv92BvQ6
+ DYJAEu6XEjg6S2DqJ+fJ/4RDDB7f0Y+G3DNcrPX0SC4x7S+xfnaVlO3jsPPRBFrYAHzs
+ ct9WtBrNt4Xyy0qU4jsfNDC09GFg2uWNwWYni5GVgTiIsh/gEDKaHtSnFJn3NI0DEcua
+ DP44XEWHXMZwdLIBzd2e5ZKJLMWOZ9cv4wHBEEu/6JQM0O/0cFxt+unqJuvslE1VpSh5
+ 9PHvSlH+/HD/hedKywCZ/JtoMK43JF/2kdN7No5+MLTCeT8cDRBV7JllV9TxWXmOXb3y
+ 4Kvg==
+X-Gm-Message-State: APjAAAUzO12/3/DNFKyC3+PrK2wlgsX6j76y8nPOcmHNzBdq4fQWxfo6
+ vBXafJxYwB9OOwPhzfAqP0NYX2zC
+X-Received: by 2002:a1c:6202:: with SMTP id w2mr6743047wmb.141.1576607256378; 
+ Tue, 17 Dec 2019 10:27:36 -0800 (PST)
 Received: from x1w.redhat.com (34.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.34])
- by smtp.gmail.com with ESMTPSA id u18sm26006975wrt.26.2019.12.17.10.27.36
+ by smtp.gmail.com with ESMTPSA id u18sm26006975wrt.26.2019.12.17.10.27.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Dec 2019 10:27:37 -0800 (PST)
+ Tue, 17 Dec 2019 10:27:35 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 4/5] !fixup "hw: arm: add Xunlong Orange Pi PC machine"
-Date: Tue, 17 Dec 2019 19:27:29 +0100
-Message-Id: <20191217182730.943-5-f4bug@amsat.org>
+Subject: [PATCH 3/5] tests/boot_linux_console: Add a SD card test for the
+ OrangePi PC board
+Date: Tue, 17 Dec 2019 19:27:28 +0100
+Message-Id: <20191217182730.943-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191217182730.943-1-f4bug@amsat.org>
 References: <20191217182730.943-1-f4bug@amsat.org>
@@ -100,61 +101,145 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::444
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::334
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  Cleber Rosa <crosa@redhat.com>, Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yytCUFCqnOY0
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xTiZo9J4HRb+
 
-Without this, the machine starts with default 128MB, and Ubuntu Bionic
-fails:
+The kernel image and DeviceTree blob are built by the Raspbian
+project (based on Debian):
+https://www.raspbian.org/RaspbianImages
 
-[ ***  ] (2 of 4) A start job is running for…Persistent Storage (37s / 2min 1s)
-[  *** ] (2 of 4) A start job is running for…Persistent Storage (38s / 2min 1s)
-[  OK  ] Started Flush Journal to Persistent Storage.
-Starting Create Volatile Files and Directories...
-Starting Armbian ZRAM config...
-[    **] (3 of 6) A start job is running for…s and Directories (55s / no limit)
-[     *] (3 of 6) A start job is running for…s and Directories (55s / no limit)
-[    **] (3 of 6) A start job is running for…s and Directories (56s / no limit)
-[  OK  ] Started Create Volatile Files and Directories.
-[***   ] (5 of 6) A start job is running for… ZRAM config (1min 10s / 1min 19s)
-[**    ] (5 of 6) A start job is running for… ZRAM config (1min 12s / 1min 19s)
-[*     ] (5 of 6) A start job is running for… ZRAM config (1min 13s / 1min 19s)
-[FAILED] Failed to start Armbian ZRAM config.
-See 'systemctl status armbian-zram-config.service' for details.
+The SD image is from the kernelci.org project:
+https://kernelci.org/faq/#the-code
+
+If ARM is a target being built, "make check-acceptance" will
+automatically include this test by the use of the "arch:arm" tags.
+
+Alternatively, this test can be run using:
+
+  $ avocado --show=console run -t machine:orangepi-pc tests/acceptance/boot_linux_console.py
+  console: Uncompressing Linux... done, booting the kernel.
+  console: Booting Linux on physical CPU 0x0
+  console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
+  console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+  [...]
+  console: sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
+  console: sunxi-mmc 1c0f000.mmc: Linked as a consumer to regulator.2
+  console: sunxi-mmc 1c0f000.mmc: Got CD GPIO
+  console: ledtrig-cpu: registered to indicate activity on CPUs
+  console: hidraw: raw HID events driver (C) Jiri Kosina
+  console: usbcore: registered new interface driver usbhid
+  console: usbhid: USB HID core driver
+  console: Initializing XFRM netlink socket
+  console: sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
+  console: NET: Registered protocol family 10
+  console: mmc0: host does not support reading read-only switch, assuming write-enable
+  console: mmc0: Problem switching card into high-speed mode!
+  console: mmc0: new SD card at address 4567
+  console: mmcblk0: mmc0:4567 QEMU! 60.0 MiB
+  [...]
+  console: EXT4-fs (mmcblk0): mounting ext2 file system using the ext4 subsystem
+  console: EXT4-fs (mmcblk0): mounted filesystem without journal. Opts: (null)
+  console: VFS: Mounted root (ext2 filesystem) on device 179:0.
+  console: Run /sbin/init as init process
+  console: EXT4-fs (mmcblk0): re-mounted. Opts: block_validity,barrier,user_xattr,acl
+  console: Starting syslogd: OK
+  console: Starting klogd: OK
+  console: Populating /dev using udev: udevd[203]: starting version 3.2.7
+  console: /bin/sh: can't access tty; job control turned off
+  console: cat /proc/partitions
+  console: / # cat /proc/partitions
+  console: major minor  #blocks  name
+  console: 1        0       4096 ram0
+  console: 1        1       4096 ram1
+  console: 1        2       4096 ram2
+  console: 1        3       4096 ram3
+  console: 179        0      61440 mmcblk0
+  console: reboot
+  console: / # reboot
+  console: umount: devtmpfs busy - remounted read-only
+  console: EXT4-fs (mmcblk0): re-mounted. Opts: (null)
+  console: The system is going down NOW!
+  console: Sent SIGTERM to all processes
+  console: Sent SIGKILL to all processes
+  console: Requesting system reboot
+  console: reboot: Restarting system
+  JOB TIME   : 68.64 s
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/orangepi.c | 1 +
- 1 file changed, 1 insertion(+)
+ tests/acceptance/boot_linux_console.py | 42 ++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
 
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-index 119f370924..da758d7eba 100644
---- a/hw/arm/orangepi.c
-+++ b/hw/arm/orangepi.c
-@@ -122,6 +122,7 @@ static void orangepi_machine_init(MachineClass *mc)
-     mc->max_cpus = AW_H3_NUM_CPUS;
-     mc->default_cpus = AW_H3_NUM_CPUS;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a7");
-+    mc->default_ram_size = 1 * GiB;
- }
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+index daabd47404..8179b45910 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -478,6 +478,48 @@ class BootLinuxConsole(Test):
+         exec_command_and_wait_for_pattern(self, 'reboot',
+                                                 'reboot: Restarting system')
  
- DEFINE_MACHINE("orangepi-pc", orangepi_machine_init)
++    def test_arm_orangepi_sd(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:orangepi-pc
++        """
++        deb_url = ('https://apt.armbian.com/pool/main/l/'
++                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path,
++                                            '/boot/vmlinuz-4.20.7-sunxi')
++        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
++        dtb_path = self.extract_from_deb(deb_path, dtb_path)
++        rootfs_url = ('http://storage.kernelci.org/images/rootfs/buildroot/'
++                      'kci-2019.02/armel/base/rootfs.ext2.xz')
++        rootfs_hash = '692510cb625efda31640d1de0a8d60e26040f061'
++        rootfs_path_xz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
++        rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
++        archive.lzma_uncompress(rootfs_path_xz, rootfs_path)
++
++        self.vm.set_machine('orangepi-pc')
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyS0,115200 '
++                               'root=/dev/mmcblk0 rootwait rw '
++                               'panic=-1 noreboot')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-drive', 'file=' + rootfs_path + ',if=sd,format=raw',
++                         '-append', kernel_command_line,
++                         '-no-reboot')
++        self.vm.launch()
++        shell_ready = "/bin/sh: can't access tty; job control turned off"
++        self.wait_for_console_pattern(shell_ready)
++
++        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
++                                                'Allwinner sun8i Family')
++        exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
++                                                'mmcblk0')
++        exec_command_and_wait_for_pattern(self, 'reboot',
++                                                'reboot: Restarting system')
++
+     def test_s390x_s390_ccw_virtio(self):
+         """
+         :avocado: tags=arch:s390x
 -- 
 2.21.0
 

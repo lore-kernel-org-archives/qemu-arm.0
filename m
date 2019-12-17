@@ -1,62 +1,62 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6259202lff;
-        Tue, 17 Dec 2019 08:42:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy8S1a/16QBYoFt1jqiDmB+kI9ct/xnpiYJjpFfkr2WC0Z52OGyxyGvj+ZOk7dKXwxKWMgG
-X-Received: by 2002:a37:88c2:: with SMTP id k185mr6098703qkd.317.1576600961584;
-        Tue, 17 Dec 2019 08:42:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576600961; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6259778lff;
+        Tue, 17 Dec 2019 08:43:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy7y96uu447v0e32WMB2ryU+lnPHCJxsAht53MPWEeFg7f0PiE9rSUuv8Ms3UXhmLPZFT3B
+X-Received: by 2002:ac8:1e13:: with SMTP id n19mr5299877qtl.384.1576600986950;
+        Tue, 17 Dec 2019 08:43:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576600986; cv=none;
         d=google.com; s=arc-20160816;
-        b=WEUbyV+zC5WBPeTLludZNmUg3v25mkOZJR+/OIfvmPNxJOlRzH7VqXo1axJ8+n/wEd
-         jnnqevqtMQJWR+RRTKBSsIUok3Xa0Vvik8JJaS394WcoAziL21V8Vi4yDzzJpa86iwQn
-         c0teLYBw9U37qU3bGYp9zwhPWC///7MNkttRrSxnCYNcB6M1ulkjuMwyHXRrucUcQJDM
-         wAD095/b+KRcbpwQLFVQFbvjuLn7UxsbpqBmf10Yfvql1Jn53bJicYzxFe9AqgJtHS3N
-         GLgLm8TcFjeIFfG2diuABA4bxgcjrOdlyjS2d+UkuTkIm41NaHpINvLpJVXiqE0sGYO2
-         Sb8w==
+        b=A/Ubu+zD7mNqZE5NmQdJwlNke6CZEzq7GlgYIsnLLCSvRFDnCgEQWTG9alTmYI6v7G
+         rp1/DwJi1AW1eUFRK8xmpdK6CX9hWGexWDstb4+WHsb4++CdLElZUjVTmO0Esy+VFtnh
+         kPym/EdoJdS0pN9TLwBAo+5ImieoSwIIGodMkmo5xb4JVbH7q+nNgkfqSQJSxWEgneCv
+         8bTrLXfU8ixR2s5kZT3nZBsrbXrKlqDDpTGbeylsKwP/mqdPP2yUTdKpWiEB42O6i5Jj
+         C/GR3rXI13YAHDDT3G9KZ0UIW7ZQcN3zqLUqjjidbX/2MMmihyDi3wZv1Qgh2moNTnGq
+         LJ1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1q0+8G9RTWbeMkR4IbHhx3lZKW72mNyCaGGTfMLDypg=;
-        b=cxnaLOg8SAm5WFTGc/3y/WgbAMBPMuXmNQM1IaFZJ/oTrq9LYbn+/X7xz5Jlk9gUXE
-         2x9/XiDUXlMAcpWw8tifMTL0c0Btt/bUFLPOilcfDVuHMLuBqXvB0sohFYza3Vx3ljTM
-         i33Jp1imOd1UIvbHHvBA41yOo7sxnmJCLT5VEJXBUbC23SRkEG4j46lqdLzkcLhtc+GH
-         u0ZqNFxddHirRuwqx7rlAB4UmfX8scR6UGMIeOxOkhkC4QuphwF7gxLa7KhE9DKAPKwR
-         ZZG5anC9SvA1sIpxiLWS5kiHlnMXQrj2YuW72D2ErrATr2+cEnKiGP6h0LYa1HYpuNKq
-         U57w==
+        bh=LWPdmhlylc1YC5H9DvoZFc9kbqPgnBG8SfVBw2Anx8I=;
+        b=pRlw//nEh9AexXMjXYbE9wpW1O7rC8KPzSAuRTFt9iJpnMTiNjqIZdJvvdJSwJ4opQ
+         5BPCKfkUB7hhG+UAxElccVvPGn3ZOqqBxHSeDKyXXuD46b0eINXv7rq+hZqF26KqO6bL
+         MUyM29yDJVRjJpQ/Mf8QwWwTr8whRKI957sHHMf+W72+WERuldovxpbO+i/ZGO7Q4T0r
+         QQO23yNWPMaRFMr/pMnpPOeG5Dr0sbSbjOfDJLRYTCq8z+FW8fWlwaxysUA2R+4HpRnI
+         /Wr3GacAlGtZsMBIOckX7vtwH6XaYin66pyXz96KRFZY6cP6XSI0g3n3mRE9DhhpziiC
+         kmTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KhjVgIQO;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PXJo1+fb;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
-        by mx.google.com with ESMTPS id l184si11873973qkc.220.2019.12.17.08.42.41
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id c40si12186104qvd.147.2019.12.17.08.43.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Dec 2019 08:42:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+        Tue, 17 Dec 2019 08:43:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KhjVgIQO;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PXJo1+fb;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1576600961;
+	s=mimecast20190719; t=1576600986;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=1q0+8G9RTWbeMkR4IbHhx3lZKW72mNyCaGGTfMLDypg=;
-	b=KhjVgIQOJeERrHh59Uic7l81qFudpOo5sS4d4+09CI7s4jfg3Z9LukbP5jJxfjBAT5DNFe
-	rprGpolUU0GQbQ0LeEqolPp8MkQt0A/CrTdFtlUAkFjzZozKu4SVACinhyT8+bjXvHFG2U
-	4BAYA+qg3jnG+VLEHkq7zwfMj/Q2fh8=
+	bh=LWPdmhlylc1YC5H9DvoZFc9kbqPgnBG8SfVBw2Anx8I=;
+	b=PXJo1+fbrtrISifAMs+xnXJAp8Z8JpikzQ9xdtf/5hia42uzWLYq613BHhxy8RNBG4LCyc
+	PezH1RB7JBytPSeY1shT8HWRy/hVNfQFOHqhHR2CgKNe+bEB1NZ27RHVJfo9uH5ez5lD/n
+	lo3GM6fR5PSC091J5b8B6w9UjVxZ1yk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-374-FX8W9uU1OgGW6LcCMY_TFA-1; Tue, 17 Dec 2019 11:42:35 -0500
+ us-mta-253-itWGShRrPOK60sk3Fmx78g-1; Tue, 17 Dec 2019 11:43:03 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 62959593D8;
-	Tue, 17 Dec 2019 16:42:31 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6EDC86A2A6;
+	Tue, 17 Dec 2019 16:42:57 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-205-147.brq.redhat.com [10.40.205.147])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3B4AF68865;
-	Tue, 17 Dec 2019 16:42:07 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C5A5B68865;
+	Tue, 17 Dec 2019 16:42:31 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -104,51 +104,50 @@ Cc: Cornelia Huck <cohuck@redhat.com>,
 	qemu-riscv@nongnu.org,
 	Halil Pasic <pasic@linux.ibm.com>,
 	Thomas Huth <huth@tuxfamily.org>
-Subject: [RFC PATCH 08/14] hw/usb/redirect: Explicit we ignore few QEMUChrEvent in IOEventHandler
-Date: Tue, 17 Dec 2019 17:38:02 +0100
-Message-Id: <20191217163808.20068-9-philmd@redhat.com>
+Subject: [RFC PATCH 09/14] monitor/qmp: Explicit we ignore few QEMUChrEvent in IOEventHandler
+Date: Tue, 17 Dec 2019 17:38:03 +0100
+Message-Id: <20191217163808.20068-10-philmd@redhat.com>
 In-Reply-To: <20191217163808.20068-1-philmd@redhat.com>
 References: <20191217163808.20068-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: FX8W9uU1OgGW6LcCMY_TFA-1
+X-MC-Unique: itWGShRrPOK60sk3Fmx78g-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: cIKlkMeJQg/G
+X-TUID: a6Kk717ttpMJ
 
 The Chardev events are listed in the QEMUChrEvent enum. To be
 able to use this enum in the IOEventHandler typedef, we need to
 explicit when frontends ignore some events, to silent GCC the
 following warnings:
 
-    CC      hw/usb/redirect.o
-  hw/usb/redirect.c: In function =E2=80=98usbredir_chardev_event=E2=80=99:
-  hw/usb/redirect.c:1361:5: error: enumeration value =E2=80=98CHR_EVENT_BRE=
-AK=E2=80=99 not handled in switch [-Werror=3Dswitch]
-   1361 |     switch (event) {
+    CC      monitor/qmp.o
+  monitor/qmp.c: In function =E2=80=98monitor_qmp_event=E2=80=99:
+  monitor/qmp.c:345:5: error: enumeration value =E2=80=98CHR_EVENT_BREAK=E2=
+=80=99 not handled in switch [-Werror=3Dswitch]
+    345 |     switch (event) {
         |     ^~~~~~
-  hw/usb/redirect.c:1361:5: error: enumeration value =E2=80=98CHR_EVENT_MUX=
-_IN=E2=80=99 not handled in switch [-Werror=3Dswitch]
-  hw/usb/redirect.c:1361:5: error: enumeration value =E2=80=98CHR_EVENT_MUX=
-_OUT=E2=80=99 not handled in switch [-Werror=3Dswitch]
+  monitor/qmp.c:345:5: error: enumeration value =E2=80=98CHR_EVENT_MUX_IN=
+=E2=80=99 not handled in switch [-Werror=3Dswitch]
+  monitor/qmp.c:345:5: error: enumeration value =E2=80=98CHR_EVENT_MUX_OUT=
+=E2=80=99 not handled in switch [-Werror=3Dswitch]
   cc1: all warnings being treated as errors
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
-Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
 ---
- hw/usb/redirect.c | 3 +++
+ monitor/qmp.c | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index e0f5ca6f81..acc376cc95 100644
---- a/hw/usb/redirect.c
-+++ b/hw/usb/redirect.c
-@@ -1370,6 +1370,9 @@ static void usbredir_chardev_event(void *opaque, int =
-event)
-         DPRINTF("chardev close\n");
-         qemu_bh_schedule(dev->chardev_close_bh);
+diff --git a/monitor/qmp.c b/monitor/qmp.c
+index b67a8e7d1f..d666b07e68 100644
+--- a/monitor/qmp.c
++++ b/monitor/qmp.c
+@@ -365,6 +365,9 @@ static void monitor_qmp_event(void *opaque, int event)
+         mon_refcount--;
+         monitor_fdsets_cleanup();
          break;
 +    default:
 +        /* Ignore */

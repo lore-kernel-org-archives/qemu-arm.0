@@ -1,126 +1,183 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6218777lff;
-        Tue, 17 Dec 2019 08:11:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyhw343xB/bEmSSpGYNEx1mBmseVUS458nuKbU2YvuGM4fMraPvZda/lXg1KQjSAB4cYsqd
-X-Received: by 2002:a05:620a:1592:: with SMTP id d18mr5837267qkk.80.1576599070439;
-        Tue, 17 Dec 2019 08:11:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576599070; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6222544lff;
+        Tue, 17 Dec 2019 08:13:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwfFEmy75X1nNkfJEMS0aXEtWw1O+BfqeFIVT1arm8CTZH99h25Qj3JaJhdCEH65gFmtOt0
+X-Received: by 2002:a9d:51ca:: with SMTP id d10mr37401053oth.76.1576599223637;
+        Tue, 17 Dec 2019 08:13:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576599223; cv=none;
         d=google.com; s=arc-20160816;
-        b=PrXzwajlRATuePFdGMooH7ffTdF44hiEzDexBoIPhQpQdXlEUVRIdREuPJDsN3CEL6
-         nNIq1ZeRzA2ncSzKxYE342E/Xr2opxMchRGgn25ArwGiAe3K4lYbjXCjV2uooZD/40xI
-         RrEqYaoiwFUdX6HXdbmMbL/kmhQceD+Bv2cdmCmjOc8pD2qT20HFa8fkug7uDnh7BktJ
-         nNLjc/nxt0R1kakEzHu8eexuF5uJVzbTkIvgXWHOgXS8XA7kX5NkSt3BSGhHJZ4/IM8C
-         FzKKLUBK6qRe5E/cfPWAh+xJWWr73rLKzO62TL2T+MGiPVKQ4GCP8iFQcpotYMHOAfl/
-         gXHA==
+        b=0+6RJO/J/g4Mo2cx/96luYqsoWbsIfQN6N52FjQmatMvlZmoIMYX9l2cGm3wRE0GYv
+         XNsT+nNJaPvtTK3P+5FZPYZY4pkU6PEvARsboYl1v/zmoChEigQOr4dVAZBkb6I3cSIE
+         PhS/rT8GR8mx3jnDpgQSyEMYGm24TNQKHxO0lO93qUX/hqFHWJ5k6S20oPTIKEKQIyIo
+         rcEy0Z9JkSX1DzYvsq6Bz9AxHpZ5soE1atW2/QpqVDVXr2iRYDfmQsAPyZtrAJBNWJqs
+         usuahjA5VEfAJbbzjNxb2nMNL0HhMpN1RtRhgwRXyky663cT9X7EQ5IRfzAx+9T4gKht
+         ddsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=2h83AL8aS2w2Rnp2P4AIH18JYDJUV85rQtELdieBzDw=;
-        b=CuGNvPLO632hEa7tRTPuDTwiCGz/wTJMWrd9xl+xr5GcMyGjQXVgeW6oUGNiqclIlf
-         owKuyuXlfYpvMG9g/Z6vFJrqSVCnJdFypGSYDI9CBOGYbYcu4yXQredp87g+G21OIPf4
-         P7y+k2K912dteTfGqpKkGyoA5VieOdR71Me72I5sN2MWyX3pkOFR+CIbjjkZSGtN24Dj
-         t82nclFCwXmCB8tvumi3+6sUk26MscGN0kcM3lXUQIJzeLvzNbB67R4Ujago9bL5prwL
-         ofZqNN965tpHIIqPx9qXXRHgdtevZevYojiZz/yS2anaJVrIOrJy1bPRVaC097D/qmLx
-         vqbQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=9eA6rPNcaU2ZWLl5G0XTFFRhC0j4AKLKeAJsM48P8eE=;
+        b=uoSlnwE9YZng7C/1p8YTQOBcJXmnZpgmN7pxBsDMHF/BdRle7Oq08zpv3ypl+LiCTH
+         Vme/Z75YXbHg30jfeQ2fTODMHYRswuxbTtqFjZL54/Dc/eYJ8XZY9Tb5SQA2paQHYjjM
+         Y0HnJjhbvbUIzTMnW/f0Yw0FPeIYJJTkrW86sleqrjMuuUyJzEn+2iclWpaGDdPyGYS1
+         eYj2lcAPO4HdMHZLHynTP1u+A+twoWOU3hhpUqiB/gAeWetYqvpEiu/mlmnzqoxOBHSa
+         719sT3M4V5K5s3WLjSTTqFsCmPo31vaFAcNSPJl7wrMW+qNETq25abBWCaDkQxncLVYq
+         hMLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hhQP95y3;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
-        by mx.google.com with ESMTPS id i7si4807678qkh.186.2019.12.17.08.11.10
+       dkim=fail header.i=@linaro.org header.s=google header.b="gUJAhbf/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d8si13454835otf.32.2019.12.17.08.13.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Dec 2019 08:11:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Dec 2019 08:13:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hhQP95y3;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1576599070;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2h83AL8aS2w2Rnp2P4AIH18JYDJUV85rQtELdieBzDw=;
-	b=hhQP95y3jIc40iXaCBjpK6rPKTmK09QD6rjrpBdegO7O/fpuMQoBIwRZ74re2X1DYTWg76
-	K7Tr+OX8lQCyBTi2mvLIAAmQ682jVCQFreV+Wb6FOGLXJVDVqALX4GQa2cBP6gC2ll1/Au
-	y7Rt+0bf4OuvBroMPidqzX2DgjOaknQ=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-252-kMaf0c7zN2emKZwNLHHGcw-1; Tue, 17 Dec 2019 11:11:08 -0500
-Received: by mail-wm1-f72.google.com with SMTP id g26so713571wmk.6
-        for <alex.bennee@linaro.org>; Tue, 17 Dec 2019 08:11:08 -0800 (PST)
+       dkim=fail header.i=@linaro.org header.s=google header.b="gUJAhbf/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42646 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihFTh-0001e0-Rv
+	for alex.bennee@linaro.org; Tue, 17 Dec 2019 11:13:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43400)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1ihFSW-0000sj-NR
+ for qemu-devel@nongnu.org; Tue, 17 Dec 2019 11:12:30 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1ihFSV-0000mj-8O
+ for qemu-devel@nongnu.org; Tue, 17 Dec 2019 11:12:28 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:43861)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1ihFSV-0000ku-2a
+ for qemu-devel@nongnu.org; Tue, 17 Dec 2019 11:12:27 -0500
+Received: by mail-oi1-x241.google.com with SMTP id x14so5752745oic.10
+ for <qemu-devel@nongnu.org>; Tue, 17 Dec 2019 08:12:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9eA6rPNcaU2ZWLl5G0XTFFRhC0j4AKLKeAJsM48P8eE=;
+ b=gUJAhbf/BbeTUy3EGzWR9W7DUBuThSDmXWfPvtpqb6pqMlwHbG0RRVJm+myNSSmU78
+ NCg5wHcTaOGqjsKc20aXQ27zPWoeiPes6/PxS721vk62iSYftaCBCrwuMiqx04TKEg9s
+ AY2M8wr7PyKTmmfq50oe8FUmIXwWR8QABEZDShPS+b3MrqBJpTrfkLfpGHWwXS+8tmiN
+ B8q1lt7/JWetuPYTKdJYdiE20GBKKpyQ6OEp3nZKUaoFv1W53FtG6IENGoEnOWDf6Rp9
+ fUt3FWwj1oV/jnuy72kSs4QBSaDTtPFFU4N4FFET/75OS3uJF47rsCnAa9H9Idt320AK
+ ZNog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=yn+84cH9XOOvHfsX9iXhmgM1ZPfhhA7dJdWcLpX+LnQ=;
-        b=RGjLcdhej4nkcsQ237qqDysvs5wW+TfDztr19g2PWkvsQErin4LJOMreotKVxfmbwb
-         odcycidbJlnFTEX9c27CdwJPVYPevWtxYlOAg8BlyITsMggxZGQxBkSqiwMQgqKDZ3yh
-         xcxt3LNHWirCAfXqi+f1iNlRCYvuucZI3uxe8nSdYzd2JizvCNZtAyLVhtoD2GdGjZY+
-         v1HTCLmiPc0N4y3rM3pqpyiolvaUfBKbKYRKiOylODBJUoYOQk1J/RVaDBv7PKalpO3z
-         LPAn8QW7gJ2vLLns45ORuSRaXpSSZvzYQSOY4mONP/lol+QVHUVuDnToX9Qfue66ChVo
-         +s2g==
-X-Gm-Message-State: APjAAAXUMr0He3mxzIUmWryrserERSWcAnp4n4zX/rWEDAwFo6Gm71YM
-	6bmk8yjhCO2kdtUYo2RF1Wu2h/Skp/r+Odc4XXF+a/zEs9k9d7KgAJvpgvcd1HD0SD/RS/H/Qku
-	me1XPCblYX7bpdj4G
-X-Received: by 2002:adf:e58d:: with SMTP id l13mr36464896wrm.135.1576599066994;
-        Tue, 17 Dec 2019 08:11:06 -0800 (PST)
-X-Received: by 2002:adf:e58d:: with SMTP id l13mr36464861wrm.135.1576599066777;
-        Tue, 17 Dec 2019 08:11:06 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net. [83.42.66.34])
-        by smtp.gmail.com with ESMTPSA id t81sm3521182wmg.6.2019.12.17.08.11.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Dec 2019 08:11:06 -0800 (PST)
-Subject: Re: [PATCH] target/arm: Display helpful message when hflags mismatch
-To: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Niek Linnenbank <nieklinnenbank@gmail.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-References: <20191209134552.27733-1-philmd@redhat.com>
- <CAFXwXrmi=AqO9djosRt7vEGm5XDmnBt7KhHn9AQAWbVPLp+QkA@mail.gmail.com>
- <CAFEAcA9cOr03j9H1Z7YPyFKDViG5hS2mv4ATnWWWoWoKa9fb5Q@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <34ff9b70-8779-e0fa-abb3-89f99df93975@redhat.com>
-Date: Tue, 17 Dec 2019 17:11:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9eA6rPNcaU2ZWLl5G0XTFFRhC0j4AKLKeAJsM48P8eE=;
+ b=AyfVoCxLXRJUC5pfmnpgK1q/C2cz8Lf+Zrvq/EQ1WkONhQk5GGTqb2AaJDZKQv/BYb
+ d3KArzzDrZBgByUUG6NECeu2dJMSy5fGmVaZBxTEybhGuYryvAJyPVgk6odkw4yUbSyz
+ AKbyRwWsR/We2Ny79obBJO7N2O503FY9+fn5Q0IirHwbZK50+gu+mqb/wqb4HW7YOipi
+ wRVXECsiVXLtjVNIQj9XarmcO6fj35Ay9vLjBgT54YJQEPiNHb1tGLV3mtzAXebbDbFC
+ XfCYzncOyis9GZG8rM1sfEEkbWT1xfVxrTXlUZ1+Sr+8JG78dBLh5ZniSJpM7gyO7Twj
+ q92g==
+X-Gm-Message-State: APjAAAVrTFkEVtUzoZqyfjd+xQaXkmuQflL6t9TNX+8GfEnthZprpKqD
+ 7DZjWIYjuHARGBewD26oVpy4M/q01jFkGn0vIGBHIg==
+X-Received: by 2002:aca:f5cc:: with SMTP id t195mr1919853oih.163.1576599145997; 
+ Tue, 17 Dec 2019 08:12:25 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9cOr03j9H1Z7YPyFKDViG5hS2mv4ATnWWWoWoKa9fb5Q@mail.gmail.com>
-Content-Language: en-US
-X-MC-Unique: kMaf0c7zN2emKZwNLHHGcw-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 75e4rYaeCO+c
+References: <20191216233519.29030-1-nieklinnenbank@gmail.com>
+ <20191216233519.29030-7-nieklinnenbank@gmail.com>
+ <CAPan3WpW1Q3zpnqgk=MWRWe99=MQ4XoW2kw8L3tioFxfEBXd+Q@mail.gmail.com>
+In-Reply-To: <CAPan3WpW1Q3zpnqgk=MWRWe99=MQ4XoW2kw8L3tioFxfEBXd+Q@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Dec 2019 16:12:15 +0000
+Message-ID: <CAFEAcA8Viii4Em_bf4Y=AG0jU+EFFFTX6dO-52qd=RT4uHbCVw@mail.gmail.com>
+Subject: Re: [PATCH v2 06/10] arm/arm-powerctl: rebuild hflags after setting
+ CP15 bits in arm_set_cpu_on()
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HTsKThWuHuNG
 
-On 12/17/19 5:08 PM, Peter Maydell wrote:
-> On Tue, 17 Dec 2019 at 16:02, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On Mon, 9 Dec 2019 at 03:46, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com> wrote:
->>>
->>> Instead of crashing in a confuse way, give some hint to the user
->>> about why we aborted. He might report the issue without having
->>> to use a debugger.
->>>
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>> ---
->>>   target/arm/helper.c | 18 +++++++++++++++---
->>>   1 file changed, 15 insertions(+), 3 deletions(-)
->>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->=20
->=20
->=20
-> Applied to target-arm.next, thanks.
+Cc'ing Richard : this is one for you I think... (surely we
+need to rebuild the hflags from scratch when we power up
+a CPU anyway?)
 
-Thanks, you can also add (from a different thread):
-Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+thanks
+-- PMM
+
+On Mon, 16 Dec 2019 at 23:44, Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
+>
+> Hello Peter,
+>
+> In the previous version of this patch series I included the fix for setting CP10,CP11 bits
+> in arm_set_cpu_on(), which is now in master (0c7f8c43daf65560). While that worked, I did not
+> realize that setting those bits require rebuilding the flags. Philippe reported this [1] initially,
+> later on during review we discussed [2] and attempted to correct it [3].
+>
+> Could you please have a short look at this? Right now I don't see anymore
+> issues, but I'm just not very familiar with this area of the code.
+>
+> Regards,
+> Niek
+>
+> [1] https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg01920.html
+> [2] https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg02784.html
+> [3] https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg02785.html
+>
+>
+> On Tue, Dec 17, 2019 at 12:36 AM Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
+>>
+>> After setting CP15 bits in arm_set_cpu_on() the cached hflags must
+>> be rebuild to reflect the changed processor state. Without rebuilding,
+>> the cached hflags would be inconsistent until the next call to
+>> arm_rebuild_hflags(). When QEMU is compiled with debugging enabled
+>> (--enable-debug), this problem is captured shortly after the first
+>> call to arm_set_cpu_on() for CPUs running in ARM 32-bit non-secure mode:
+>>
+>>   qemu-system-arm: target/arm/helper.c:11359: cpu_get_tb_cpu_state:
+>>   Assertion `flags == rebuild_hflags_internal(env)' failed.
+>>   Aborted (core dumped)
+>>
+>> Fixes: 0c7f8c43daf65
+>> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+>> ---
+>>  target/arm/arm-powerctl.c | 3 +++
+>>  1 file changed, 3 insertions(+)
+>>
+>> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+>> index b064513d44..b75f813b40 100644
+>> --- a/target/arm/arm-powerctl.c
+>> +++ b/target/arm/arm-powerctl.c
+>> @@ -127,6 +127,9 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+>>          target_cpu->env.regs[0] = info->context_id;
+>>      }
+>>
+>> +    /* CP15 update requires rebuilding hflags */
+>> +    arm_rebuild_hflags(&target_cpu->env);
+>> +
+>>      /* Start the new CPU at the requested address */
+>>      cpu_set_pc(target_cpu_state, info->entry);
+>>
+>> --
+>> 2.17.1
+>>
+>
+>
+> --
+> Niek Linnenbank

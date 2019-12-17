@@ -1,103 +1,99 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5771117lff;
-        Tue, 17 Dec 2019 02:04:17 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyer3bmWTL49b8OGzox2PaSGJnHRHZPSFla2WlXIX5Rq1aiz/8bSrdzQL0GNPE+cta2wBB6
-X-Received: by 2002:a05:6830:1d59:: with SMTP id p25mr38311316oth.308.1576577057546;
-        Tue, 17 Dec 2019 02:04:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576577057; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6159720lff;
+        Tue, 17 Dec 2019 07:25:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyuoVkuOL/9r0sxQceTluIF2gp14btFrwg1Em3hon07MAtvPsgdeMJO/mj6ILjTKHmn9OLm
+X-Received: by 2002:a05:620a:201d:: with SMTP id c29mr5485401qka.91.1576596336267;
+        Tue, 17 Dec 2019 07:25:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576596336; cv=none;
         d=google.com; s=arc-20160816;
-        b=jkNbS0hH1111ajfLm/Qpff4uoXo+xLmx+a41Nm3qSpx8Dxs5yPaNl6gpeqZFWgrE/E
-         +nDh/c69OWbj6KDsXGgwnn5XmmRCxIPh3lla/JmrttJk/Qh9bAf1UgozqPh+qDcYRslT
-         02wHLOuAtaAsj0dyuAQYWLvTiGj3hoKDgP7PP8UrtaMc84q5/FwQLpcA55UHF5Vpqu/Q
-         oCix3He+y3mwBUA7wp82BpIAA5M12lEbEY63er90b+IR9VFztS+IcaXkTPBIwBw3fTAI
-         Pl1YhVgDALZCEFGPJop6YgL1xRGrFy8Hh2w5rkpGDJXQN1cGa16CxmgYHxl18okX6wBn
-         /Spw==
+        b=KwEGgP0HXvQ/lDT7MS1j/NLWLLtHhhc5FJV50HIaVt95eHo57lCJ+U4eb4yKy4KtiX
+         01mDlO3PxHt8QUV/E+4nO04sANQFhEhaZV3NutBq+Uc4CpZZl9lHHxFBp82YqvG4OjnK
+         jeeSgOO4pXunNwbu7XKg52/f3JIbY5D4b2ez6Ai80B0+BlCzUsEYsDHJqv/ugMZWL+3x
+         GmW9yrw7R7ejB1uqUSv/9MxJx/XY5eveL3BjW5pFho26r8Vj2OMHMZQ9pWgXcP6bO/5u
+         KfQYx1Z8Qfq1LOfKXBeEe1h+riDlUBES9rEiPJpaMIhbrusnL/bMpSgwbJA6U7gJxBnR
+         rU2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=YTdJ9BlYlKA52aob596FqEnZ+Y7D0Vb4IPmF21pH2xE=;
-        b=johuUWFkrfetWCbQAhSLD8ICJ9+CnanmovcDXkh6yzJQO9qk4U2ZmHn+Api7W0Ps+I
-         ukqDCAI/kyIs2pabTIiHx39ytBMO/ffi04zZHADKnmGRQXozfY15bpezTotcBy3aQlOe
-         YRqMndet56ra6vETfVl3QMidYpjvExPEiWjQy5dYNr4vOKKss/KU8cUtqicLXUU2zdFo
-         Qg/851Mk1d8QFvxP7MWxVR3oKC7X/XIuvV0j+uK2vxfwduVH5+NYFnw+V+wwojvHptt4
-         +rGO4Ox2xnwTllsu4LGENGd8QEY4ck+hsnDD/JMrMEL6Lwgz9SOEGfeF1gFyM1BJG0gD
-         M5RA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=O1r3TUAOg93CqYB/EqAX5MDLFd3UQVOc322Wa0FEsFo=;
+        b=tkfBjTTaCXDNeVJKAKWoPDBaunYkeSHE0i/fHAEw/2J3bABlWsRXct7sJxU4Tn233w
+         TQxqLZ7eNQbeQwDovwpD2il0vsLtlV1KTeUcajTiGR1Z0ko72SZcQDoc6ynuFhOk3bjG
+         n1tJZPm9D/DkASnQekbJeZHrygmMiX7+gZiaU2GwAT9Pv81/XFgLBRHQH0DNGi2W8TV5
+         NhnUetkf/aUY6z3+Btif4TxlJJ+XjltxzhFDuNguUYFBOSVwJB3CNdmwq6Z/oU79mOz5
+         i8Bi+BdswihMaBKTyO41mCOh6IdX96udC0cKNVAvXFzKKkppOuCIECXEq97hIUoWjObw
+         /Xmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iXDgfssS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eIL0GvhZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k185si9264815oif.81.2019.12.17.02.04.17
+        by mx.google.com with ESMTPS id l15si11879011qkk.284.2019.12.17.07.25.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Dec 2019 02:04:17 -0800 (PST)
+        Tue, 17 Dec 2019 07:25:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iXDgfssS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eIL0GvhZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38552 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ih9iC-0002UK-Ny
-	for alex.bennee@linaro.org; Tue, 17 Dec 2019 05:04:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35947)
+	id 1ihEj9-0002vx-Ip
+	for alex.bennee@linaro.org; Tue, 17 Dec 2019 10:25:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48633)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1ih9i4-0002U9-4p
- for qemu-arm@nongnu.org; Tue, 17 Dec 2019 05:04:09 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1ihEiz-0002vb-3T
+ for qemu-arm@nongnu.org; Tue, 17 Dec 2019 10:25:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1ih9i3-00069S-55
- for qemu-arm@nongnu.org; Tue, 17 Dec 2019 05:04:08 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:52798
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1ih9i3-00069N-1l
- for qemu-arm@nongnu.org; Tue, 17 Dec 2019 05:04:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576577046;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YTdJ9BlYlKA52aob596FqEnZ+Y7D0Vb4IPmF21pH2xE=;
- b=iXDgfssS+voa5Nm0EnIQqSjlNvkMRazNB5qInEMQoOVDnY2t+pgQVeMgjrlWc6zSXQk/OL
- 0vHF3N/GEU/ODT5PvyqsJGsEB+ZLK6Nn05PD3uvZY4vrSyXwWY8tlVQlfQP7N2MRaBSctN
- NRSak4M0qZmzmtr/5FBVwQh0oyCcqpY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-40-ct_whX23NC2rkIxa7qnbow-1; Tue, 17 Dec 2019 05:04:03 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6C012107ACC7;
- Tue, 17 Dec 2019 10:04:02 +0000 (UTC)
-Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D3A37C836;
- Tue, 17 Dec 2019 10:04:01 +0000 (UTC)
+ (envelope-from <peter.maydell@linaro.org>) id 1ihEix-0000Fw-D9
+ for qemu-arm@nongnu.org; Tue, 17 Dec 2019 10:25:24 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:36304)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1ihEix-00007J-5u
+ for qemu-arm@nongnu.org; Tue, 17 Dec 2019 10:25:23 -0500
+Received: by mail-oi1-x241.google.com with SMTP id c16so4882471oic.3
+ for <qemu-arm@nongnu.org>; Tue, 17 Dec 2019 07:25:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=O1r3TUAOg93CqYB/EqAX5MDLFd3UQVOc322Wa0FEsFo=;
+ b=eIL0GvhZlsZfWhCqXhOuOjIlI/H1KiFYYdsdfwqzsfTSkLm/nMGu4AmJLRBQ93oh4F
+ NjWewEWYr9bXQHGC5ETYFY7YpnfYDpW321rVzuRvAIpscY+Y/i88jAHlWIC3yZIXmAsh
+ uReP53ITxTynhp93oBw0xr4QWNHDA+R3HYdSUXiQatErkfxq/FmNgjYBr4UaLEZsPKYh
+ JmNV82E91rGRa5Adb6cMqzn9D3Zlzpk+rGblS7+Of7KUfmyhHCpEzLGBoh68jTMf5o9e
+ 9Hzh4wTlin/5V51LBqX1AVQW/HyWTupfmYrGGj9ikF/R1YTuVDBqgSmWjOaV4iSCWwCB
+ T4NA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=O1r3TUAOg93CqYB/EqAX5MDLFd3UQVOc322Wa0FEsFo=;
+ b=tYyhAcqJGbFGrWOwsAHo88vAtiXeUlyJOCRr7bAm+NgqUF7psPpTuYe9fajXJf9T9P
+ EDkQ3H2eRgQeknV8iLevjSh1JNGID4DoMaYwd3oOmYqH9YpxPzzCk1MjsE2Tiv4IM1rf
+ 5eQb7YymAnvrFKwU31ZIB/R/Aq5jo7mSQJh9IwuGbTaUorBBnWustnUbAdEgRFQcVkcF
+ vUxNV9gOqYScm6GvhANsCVsH05wx8ABbQIJ7YemzwPJKmr5pSPgXfVWO90J/huuhjC2S
+ LJESaL9aVEzuiAzJSUDp3DIUfH0AVTgCUFYyYZL1dF5e2SQ8CKZFtTM2V5+D7m8g7XA8
+ Szng==
+X-Gm-Message-State: APjAAAVtFQPWP7DRCKxTendJSXZVA6YB64ZsXGbbr1IPdcmrcEN21tPH
+ CVRkt8N9ujHF1wveBQ9XIOFLvImPCYKNNdqipis/NO9K
+X-Received: by 2002:aca:3182:: with SMTP id x124mr1903142oix.170.1576596321508; 
+ Tue, 17 Dec 2019 07:25:21 -0800 (PST)
+MIME-Version: 1.0
+References: <1576509312-13083-1-git-send-email-sveith@amazon.de>
+ <e0a55905-e76e-40d2-3d9b-06ea5b917001@redhat.com>
+In-Reply-To: <e0a55905-e76e-40d2-3d9b-06ea5b917001@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Dec 2019 15:25:10 +0000
+Message-ID: <CAFEAcA9PcjQq_0b+ho70ydn4gew7xE3o3CeSvdW19v5WdkeJow@mail.gmail.com>
 Subject: Re: [PATCH v3 0/6] hw/arm/smmuv3: Correct stream ID and event address
  handling
-To: Simon Veith <sveith@amazon.de>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <1576509312-13083-1-git-send-email-sveith@amazon.de>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <e0a55905-e76e-40d2-3d9b-06ea5b917001@redhat.com>
-Date: Tue, 17 Dec 2019 11:03:59 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
-MIME-Version: 1.0
-In-Reply-To: <1576509312-13083-1-git-send-email-sveith@amazon.de>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: ct_whX23NC2rkIxa7qnbow-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,56 +105,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Simon Veith <sveith@amazon.de>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jbUdcZhqK9Lq
+X-TUID: RV0ukpg68kvE
 
-Hi,
+On Tue, 17 Dec 2019 at 10:04, Auger Eric <eric.auger@redhat.com> wrote:
+>
+> Hi,
+>
+> On 12/16/19 4:15 PM, Simon Veith wrote:
+> > While working on the Linux SMMUv3 driver, I noticed a few cases where the QEMU
+> > SMMUv3 behavior relating to stream tables was inconsistent with our hardware.
+> >
+> > Also, when debugging those differences, I found that the errors reported through
+> > the QEMU SMMUv3 event queue contained the address fields in an incorrect
+> > position.
+> >
+> > These patches correct the QEMU SMMUv3 behavior to match the specification (and
+> > the behavior that I observed in our hardware). Linux guests normally will not
+> > notice these issues, but other SMMUv3 driver implementations might.
+> >
+> > Changes in v2:
+> >
+> > * New patch "hw/arm/smmuv3: Correct SMMU_BASE_ADDR_MASK value" added
+> > * Updated patch "hw/arm/smmuv3: Check stream IDs against actual table LOG2SIZE"
+> > * Updated patch "hw/arm/smmuv3: Align stream table base address to table size"
+> >
+> > Changes in v3:
+> >
+> > * No changes, but sending again to correct a patch submission mishap that
+> >   confused Patchew
+> >
+> > Simon Veith (6):
+> >   hw/arm/smmuv3: Apply address mask to linear strtab base address
+> >   hw/arm/smmuv3: Correct SMMU_BASE_ADDR_MASK value
+> >   hw/arm/smmuv3: Check stream IDs against actual table LOG2SIZE
+> >   hw/arm/smmuv3: Align stream table base address to table size
+> >   hw/arm/smmuv3: Use correct bit positions in EVT_SET_ADDR2 macro
+> >   hw/arm/smmuv3: Report F_STE_FETCH fault address in correct word
+> >     position
+>
+> The series looks good to me. Also tested against non regression.
+>
+> Tested-by: Eric Auger <eric.auger@redhat.com>
 
-On 12/16/19 4:15 PM, Simon Veith wrote:
-> While working on the Linux SMMUv3 driver, I noticed a few cases where the QEMU
-> SMMUv3 behavior relating to stream tables was inconsistent with our hardware.
-> 
-> Also, when debugging those differences, I found that the errors reported through
-> the QEMU SMMUv3 event queue contained the address fields in an incorrect
-> position.
-> 
-> These patches correct the QEMU SMMUv3 behavior to match the specification (and
-> the behavior that I observed in our hardware). Linux guests normally will not
-> notice these issues, but other SMMUv3 driver implementations might.
-> 
-> Changes in v2:
-> 
-> * New patch "hw/arm/smmuv3: Correct SMMU_BASE_ADDR_MASK value" added
-> * Updated patch "hw/arm/smmuv3: Check stream IDs against actual table LOG2SIZE"
-> * Updated patch "hw/arm/smmuv3: Align stream table base address to table size"
-> 
-> Changes in v3:
-> 
-> * No changes, but sending again to correct a patch submission mishap that
->   confused Patchew
-> 
-> Simon Veith (6):
->   hw/arm/smmuv3: Apply address mask to linear strtab base address
->   hw/arm/smmuv3: Correct SMMU_BASE_ADDR_MASK value
->   hw/arm/smmuv3: Check stream IDs against actual table LOG2SIZE
->   hw/arm/smmuv3: Align stream table base address to table size
->   hw/arm/smmuv3: Use correct bit positions in EVT_SET_ADDR2 macro
->   hw/arm/smmuv3: Report F_STE_FETCH fault address in correct word
->     position
+Applied to target-arm.next, thanks.
 
-The series looks good to me. Also tested against non regression.
-
-Tested-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks
-
-Eric
-
-
-> 
->  hw/arm/smmuv3-internal.h |  6 +++---
->  hw/arm/smmuv3.c          | 28 +++++++++++++++++++++-------
->  2 files changed, 24 insertions(+), 10 deletions(-)
-> 
-
+-- PMM

@@ -1,425 +1,183 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp468713lff;
-        Wed, 18 Dec 2019 00:34:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzy8uOuR57jT0Volgnud2x5dJduStE0wvBTJeWKouRL9w6c0B5KZLNjtHEvb/vn9Io7oTKt
-X-Received: by 2002:a05:6830:611:: with SMTP id w17mr1390703oti.191.1576658063628;
-        Wed, 18 Dec 2019 00:34:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576658063; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp630878lff;
+        Wed, 18 Dec 2019 03:18:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqywdWBdPimAVgENsyNNePccUcZ01BaoAJxUG1xiiQ5Ot5wX5MQaziUBnYdC9CNNJUlArgNF
+X-Received: by 2002:a05:620a:8cc:: with SMTP id z12mr1757827qkz.48.1576667916810;
+        Wed, 18 Dec 2019 03:18:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576667916; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jw+QolajlkxZEq4MTD+6n42KIlEK2DrzwmeZ2xbSYZqN5zq1mtpOzUrM0AasCKR/Sr
-         VYjtcBydzQgYSZE2OyO7UittbdLidYCTkuy3ApOnVcIir1Nv2SBGFn9lXBGFDk99NZL8
-         bwf1UFZg15ao3lrtUY8cCVvEjuool8rst8IXSkSdOL7H3krltdzerpxWQqNZC2629CfH
-         P03lvUg5ivj446EkMNnPUs7NiCOV/t/Dqul9xDcowp7qyyIajFEPOF6f2lINOURPSY0O
-         wgxCGnByLepeWEhXG8chg2hVVuiY7q7mhhnqbWcm5zpoOJPmVHRUD2Yv2L2evdGi7r6e
-         DhJA==
+        b=hSkBJueshV2+qIGHZGX2+IkavxC/mRaIdIdLmWOv0TfJ7XoiBNislNhjtp+rz2xS6Q
+         IPx9UWZXb1nt3mJdpXHW8l1R7BScXFEpSNQGpT/30QJoQpUItulsncdvpp/kTyZafI7h
+         MIDh3OjP6uaqVj7aPrgvZe7g8qX7wsU8dB8IzWTs7FiCbyXdMb1RS7nzGPHHwBEZ/Brq
+         uttdWHzMZs0Brsrw0Lh/O8ggv629D84FsMNUcKjeq5ALGdbLsQHK52a5PPWT9+njpgl0
+         nr16Tk76ebHuEK1fIudg0ax5HzhFZwIL95xEmCMp58zjxQxw2uTkVS/Mf/s7WouXz3iJ
+         56AQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=63K5BWrmO3xE0dYReX16HtHbl5N3r9OtQ8EA+uk6VOY=;
-        b=tGNHuvD1q0em2cZ8uuNb53R4LMQL88W6wyIaKkUoa+qvjqJaj7gzVGRc2yXHs9O9Qg
-         OAOzbuEsHwpC+OuSdOOmE4ijoKryCoqm6/qFsCwBWqHAku25JsmXe3FXhfFIF1bMc87L
-         59Pz0zxF7oms/oPhHRY5QaaK5m9FpPjeDVEgheoPqGh53hs2aORl+JsXtMibxYG3B2lq
-         S8c48kYWYhkONr07oJOfNoBgg1xiA+hBzacm0uvTbuUQQ/XrdWjP6ZZHFpJTZdzW3tNE
-         TOTKeFg3T0jA1yUvASQmJ+EMkHbTI4/2CeMfDJPHMpuzqpa9X8XccsUzlINrEWm9XVJR
-         qnLg==
+         :message-id:autocrypt:from:references:to:subject;
+        bh=4X8y3Tetg6qHy5hqJqyZLYiCT8I1FXpUHM+6grT1nfw=;
+        b=wL35JCoM+1Qln6BtzKVAr4htMWDjA2WWGRpowrUIpCKit2hiUa3jlfBFZUby42LBgc
+         /npWfinAYOX/WvXIEz7pTqyftXfcna6WhcxLrFEdtbhvzJW5UdnWPWez//EaCBSKB0eb
+         xePu2KilhEgy0g/7Kzq+Sg11mVtNVG5go4ujAzIrsDBRyYtEjguwFO/1R+zQDOQuG/Jz
+         U8X/qU5rgRzvywo8Ev2xStelX4LuLIUNbElI2fwkPqlK+5Rn24NypPJ1gV1fTQ9RBrx7
+         fkZevonmLdfsKDghWW5BWvdpeFSZZgRF3eF8t8ph5XMdXYv8e7xfqNkhkks73Qi43KV4
+         klBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PMyVWhQH;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h128si972561oif.258.2019.12.18.00.34.23;
-        Wed, 18 Dec 2019 00:34:23 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id cp16si1045777qvb.103.2019.12.18.03.18.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 18 Dec 2019 03:18:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PMyVWhQH;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726723AbfLRIeW (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Wed, 18 Dec 2019 03:34:22 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:29163 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1725799AbfLRIeW (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 18 Dec 2019 03:34:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1576658060;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=63K5BWrmO3xE0dYReX16HtHbl5N3r9OtQ8EA+uk6VOY=;
-        b=PMyVWhQHGG69i19JogrLne2wA/lk0gtgNLYWpbYpEmcjbtfRgiQB0E0HuganfwcmvGyXrd
-        QC6bQvEMx+szR78zg8hJSacpHuy0gq6/rC9sKU8UMUdK+r/7ljysueOPAVIpEqhA9balDh
-        MYPeBFuF4atNefI+DzCstt4w9Tm8Yjo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-292-DzPs8fcSPxiHIgFEtpj8WA-1; Wed, 18 Dec 2019 03:34:16 -0500
-X-MC-Unique: DzPs8fcSPxiHIgFEtpj8WA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F40FF801E66;
-        Wed, 18 Dec 2019 08:34:14 +0000 (UTC)
-Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id DA86E1891F;
-        Wed, 18 Dec 2019 08:34:11 +0000 (UTC)
-Subject: Re: [kvm-unit-tests PATCH 05/16] arm/arm64: ITS: Introspection tests
-To:     Zenghui Yu <yuzenghui@huawei.com>, eric.auger.pro@gmail.com,
-        maz@kernel.org, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     andre.przywara@arm.com, drjones@redhat.com,
-        alexandru.elisei@arm.com, thuth@redhat.com,
-        peter.maydell@linaro.org
-References: <20191216140235.10751-1-eric.auger@redhat.com>
- <20191216140235.10751-6-eric.auger@redhat.com>
- <c133ebe6-10f4-2ff7-f75f-75b755397785@huawei.com>
-From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <6542297b-74d2-f3c2-63d8-04bb284414df@redhat.com>
-Date:   Wed, 18 Dec 2019 09:34:10 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52624 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihXLg-00006d-6j
+	for alex.bennee@linaro.org; Wed, 18 Dec 2019 06:18:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36000)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <laurent@vivier.eu>) id 1ihXLX-0008VB-Ic
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 06:18:28 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <laurent@vivier.eu>) id 1ihXLW-0000zM-GW
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 06:18:27 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:39265)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1ihXLS-0000Hz-BI; Wed, 18 Dec 2019 06:18:22 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1Mo6WJ-1hsqNC2nOt-00pgeU; Wed, 18 Dec 2019 12:18:13 +0100
+Subject: Re: [PATCH 1/3] MAINTAINERS: Add hw/sd/ssi-sd.c in the SD section
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20191012065426.10772-1-philmd@redhat.com>
+ <20191012065426.10772-2-philmd@redhat.com>
+ <46d94900-e916-54e2-06e6-1963fbed3bb8@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <ae01cfcb-bcca-87d6-4aaf-1c32cb3ac769@vivier.eu>
+Date: Wed, 18 Dec 2019 12:18:12 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <c133ebe6-10f4-2ff7-f75f-75b755397785@huawei.com>
+In-Reply-To: <46d94900-e916-54e2-06e6-1963fbed3bb8@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: /FAtJl2IP8xt
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:l/xGEgRKYjXPvP7jQ97OLkGJxmRbN7XfBZtzwebu296FMZF9PB5
+ OzSVuNvXeM/f72xtPyi6hvZnDS5KqmIqgaRKo3yYUe0r6pLjD68qCMcrclPbXGb6VcONMgZ
+ NpYMH+u+JmGxEIJ/l7yRxbUhM+1qLFLaKVLt+/uqsYRcsOiue4jcfAZjkyHZ+lnOITTMCSA
+ iDmiwau4tkXg+xlNI+GHQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:3FGB5m0FLwE=:QntDuNVqTdITqF2FI9YdUB
+ MK6yiGM2ElHAmh67cfaqHdYMQumCgKTQEffOQcqc5TBwIq6qpS/nZ3T9XVjV+MS35qVQblebE
+ eNX98Wls2uAz8syJsxBbVx4PkSaeVLFsTpQU58v5GT59trzaxC9R9Ke5TuZrZL4vKL6bPwxkm
+ OTojT4GCJGBs1qW77mOk+0GIfBC83PcCCvQtQ/omCr/gwKdpBFBt9xk9EreqRGSVwCUe16gg1
+ lWzTvvAEqFXTn/jcng2B0MlTsM3fu5mfBwZg6WuoO74WK5BplWFrYb5gZ+fUdrOzZvya88Pr/
+ sLwT/H8PgaTtwQjX4V6P1JK3Wv5OSBr556Xe7ZwR2FC0jljrO25e6cG53yrS4g4hlq5FXADV4
+ XeHSmgmYC7Zkqz7Nc0XoVSHt2o8DS6cWYJXISAqQS+2ZCIiiL5QdY2wQvS0LcEja60UwGH6BV
+ 678lZE4bhDqKDZ6ombdJd0cQNXBfqXGuzKrAmzj3XQyPgy4Wh6xty+GYPk87h6qu0/3mI05SD
+ oNvputVHo/HoR9+VFUo8moJYXVlo59JUQxLcNfdo/heuyC+NC3TTS7CeAx92VqhTXoDR6S1Ba
+ tPCvtM3UZ4t3scmS4rZlMYstNrbBmmvetEnUAhFMCjuriUc/+x3Dsg9p9h40AYMAwtVn6FABQ
+ 21sM+vJZwJhfsVFQ1CDHO1JUbBru81rpMfoer2keHuQEHgoAdvjhTmMT4ASSlKm16IPqwUbu6
+ AAbobpTBS3v2Sxl4CfltPBeFUWig72hgWiYrXeWCEg25FSHh8pvtT44bAO29RJ/NzunRmhoPa
+ jfyjURlhG8LFx9ZKkmePbUDEB+SIFG0J80lwrzrCKNhEKday7kURbo8YPjZ/bDBmOhSX4u0LC
+ DvTV0ffrQMh+iGzOxWegAe4gxTv+NuzbQE8umZqUE=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 212.227.126.130
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: h54H5UXYlF6y
 
-Hi Zenghui,
-
-On 12/18/19 4:46 AM, Zenghui Yu wrote:
-> Hi Eric,
->=20
-> I have to admit that this is the first time I've looked into
-> the kvm-unit-tests code, so only some minor comments inline :)
-
-no problem. Thank you for looking at this.
-
-By the way, with patch 16 I was able to test yout fix: "KVM: arm/arm64:
-vgic: Don't rely on the wrong pending table". Reverting it produced an
-error. I forgot to mention that.
->=20
-> On 2019/12/16 22:02, Eric Auger wrote:
->> Detect the presence of an ITS as part of the GICv3 init
->> routine, initialize its base address and read few registers
->> the IIDR, the TYPER to store its dimensioning parameters.
+Le 18/11/2019 à 13:26, Philippe Mathieu-Daudé a écrit :
+> Cc'ing qemu-trivial@
+> 
+> On 10/12/19 8:54 AM, Philippe Mathieu-Daudé wrote:
+>> The hw/sd/ssi-sd.c file is orphean, add it to the SD section.
 >>
->> This is our first ITS test, belonging to a new "its" group.
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>   MAINTAINERS | 1 +
+>>   1 file changed, 1 insertion(+)
 >>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->=20
-> [...]
->=20
->> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
->> new file mode 100644
->> index 0000000..2ce483e
->> --- /dev/null
->> +++ b/lib/arm/asm/gic-v3-its.h
->> @@ -0,0 +1,116 @@
->> +/*
->> + * All ITS* defines are lifted from include/linux/irqchip/arm-gic-v3.=
-h
->> + *
->> + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
->> + *
->> + * This work is licensed under the terms of the GNU LGPL, version 2.
->> + */
->> +#ifndef _ASMARM_GIC_V3_ITS_H_
->> +#define _ASMARM_GIC_V3_ITS_H_
->> +
->> +#ifndef __ASSEMBLY__
->> +
->> +#define GITS_CTLR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 0x0000
->> +#define GITS_IIDR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 0x0004
->> +#define GITS_TYPER=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 0x0008
->> +#define GITS_CBASER=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 0x0080
->> +#define GITS_CWRITER=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 0x0088
->> +#define GITS_CREADR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 0x0090
->> +#define GITS_BASER=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 0x0100
->> +
->> +#define GITS_TYPER_PLPIS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1UL << 0)
->> +#define GITS_TYPER_IDBITS_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 8
->> +#define GITS_TYPER_DEVBITS_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 13
->> +#define GITS_TYPER_DEVBITS(r)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 ((((r) >>
->> GITS_TYPER_DEVBITS_SHIFT) & 0x1f) + 1)
->> +#define GITS_TYPER_PTA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1UL << 19)
->> +#define GITS_TYPER_HWCOLLCNT_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 24
->> +
->> +#define GITS_CTLR_ENABLE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1U << 0)
->> +
->> +#define GITS_CBASER_VALID=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 (1UL << 63)
->> +#define GITS_CBASER_SHAREABILITY_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 (10)
->> +#define GITS_CBASER_INNER_CACHEABILITY_SHIFT=C2=A0=C2=A0=C2=A0 (59)
->> +#define GITS_CBASER_OUTER_CACHEABILITY_SHIFT=C2=A0=C2=A0=C2=A0 (53)
->> +#define
->> GITS_CBASER_SHAREABILITY_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 \
->> +=C2=A0=C2=A0=C2=A0 GIC_BASER_SHAREABILITY(GITS_CBASER, SHAREABILITY_M=
-ASK)
->> +#define
->> GITS_CBASER_INNER_CACHEABILITY_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
->> +=C2=A0=C2=A0=C2=A0 GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, MASK)
->> +#define
->> GITS_CBASER_OUTER_CACHEABILITY_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
->> +=C2=A0=C2=A0=C2=A0 GIC_BASER_CACHEABILITY(GITS_CBASER, OUTER, MASK)
->> +#define GITS_CBASER_CACHEABILITY_MASK
->> GITS_CBASER_INNER_CACHEABILITY_MASK
->> +
->> +#define
->> GITS_CBASER_InnerShareable=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
->> +=C2=A0=C2=A0=C2=A0 GIC_BASER_SHAREABILITY(GITS_CBASER, InnerShareable=
-)
->> +
->> +#define GITS_CBASER_nCnB=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GI=
-C_BASER_CACHEABILITY(GITS_CBASER,
->> INNER, nCnB)
->> +#define GITS_CBASER_nC=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 GIC_BASER_CACHEABILITY(GITS_CBASER,
->> INNER, nC)
->> +#define GITS_CBASER_RaWt=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GI=
-C_BASER_CACHEABILITY(GITS_CBASER,
->> INNER, RaWt)
->> +#define GITS_CBASER_RaWb=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GI=
-C_BASER_CACHEABILITY(GITS_CBASER,
->> INNER, RaWt)
->=20
-> s/RaWt/RaWb/
-OK
->=20
->> +#define GITS_CBASER_WaWt=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GI=
-C_BASER_CACHEABILITY(GITS_CBASER,
->> INNER, WaWt)
->> +#define GITS_CBASER_WaWb=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GI=
-C_BASER_CACHEABILITY(GITS_CBASER,
->> INNER, WaWb)
->> +#define GITS_CBASER_RaWaWt=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GIC_BASER_CA=
-CHEABILITY(GITS_CBASER,
->> INNER, RaWaWt)
->> +#define GITS_CBASER_RaWaWb=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GIC_BASER_CA=
-CHEABILITY(GITS_CBASER,
->> INNER, RaWaWb)
->> +
->> +#define GITS_BASER_NR_REGS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 8
->> +
->> +#define GITS_BASER_VALID=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 (1UL << 63)
->> +#define GITS_BASER_INDIRECT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 (1ULL << 62)
->> +
->> +#define GITS_BASER_INNER_CACHEABILITY_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0 (=
-59)
->> +#define GITS_BASER_OUTER_CACHEABILITY_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0 (=
-53)
->> +#define GITS_BASER_CACHEABILITY_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 0x7
->> +
->> +#define GITS_BASER_nCnB=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- GIC_BASER_CACHEABILITY(GITS_BASER,
->> INNER, nCnB)
->> +
->> +#define GITS_BASER_TYPE_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (56)
->> +#define GITS_BASER_TYPE(r)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (((r) >>
->> GITS_BASER_TYPE_SHIFT) & 7)
->> +#define GITS_BASER_ENTRY_SIZE_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (48)
->> +#define GITS_BASER_ENTRY_SIZE(r)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 ((((r) >>
->> GITS_BASER_ENTRY_SIZE_SHIFT) & 0x1f) + 1)
->> +#define GITS_BASER_SHAREABILITY_SHIFT=C2=A0=C2=A0 (10)
->> +#define
->> GITS_BASER_InnerShareable=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
->> +=C2=A0=C2=A0=C2=A0 GIC_BASER_SHAREABILITY(GITS_BASER, InnerShareable)
->> +#define GITS_BASER_PAGE_SIZE_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (8)
->> +#define GITS_BASER_PAGE_SIZE_4K=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 (0UL <<
->> GITS_BASER_PAGE_SIZE_SHIFT)
->> +#define GITS_BASER_PAGE_SIZE_16K=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 (1UL <<
->> GITS_BASER_PAGE_SIZE_SHIFT)
->> +#define GITS_BASER_PAGE_SIZE_64K=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 (2UL <<
->> GITS_BASER_PAGE_SIZE_SHIFT)
->> +#define GITS_BASER_PAGE_SIZE_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (3UL <<
->> GITS_BASER_PAGE_SIZE_SHIFT)
->> +#define GITS_BASER_PAGES_MAX=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 256
->> +#define GITS_BASER_PAGES_SHIFT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 (0)
->> +#define GITS_BASER_NR_PAGES(r)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 (((r) & 0xff) + 1)
->> +#define GITS_BASER_PHYS_ADDR_MASK=C2=A0=C2=A0=C2=A0 0xFFFFFFFFF000
->> +
->> +#define GITS_BASER_TYPE_NONE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 0
->> +#define GITS_BASER_TYPE_DEVICE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 1
->> +#define GITS_BASER_TYPE_VCPU=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 2
->> +#define GITS_BASER_TYPE_CPU=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 3
->=20
-> '3' is one of the reserved values of the GITS_BASER.Type field, and
-> what do we expect with a "GITS_BASER_TYPE_CPU" table type? ;-)
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 3ca814850e..47eae9fc46 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -1445,6 +1445,7 @@ S: Odd Fixes
+>>   F: include/hw/sd/sd*
+>>   F: hw/sd/core.c
+>>   F: hw/sd/sd*
+>> +F: hw/sd/ssi-sd.c
+>>   F: tests/sd*
+>>     USB
+>>
+> 
+> 
 
-Yes I agree. This is code extracted from the irqchip header in Dec 2016.
-I should have checked again. I only use DEVICE and COLLECTION here.
+Applied to my trivial-patches branch.
 
-I will remove all the defines I am not using at the moment. I guess most
-of the defines related to memory/cache mgt are not mandated either.
->=20
-> I think we can copy (and might update in the future) all these
-> macros against the latest Linux kernel.
->=20
->> +#define GITS_BASER_TYPE_COLLECTION=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 4
->> +
->> +#define ITS_FLAGS_CMDQ_NEEDS_FLUSHING=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1ULL << 0) > +
->> +struct its_typer {
->> +=C2=A0=C2=A0=C2=A0 unsigned int ite_size;
->> +=C2=A0=C2=A0=C2=A0 unsigned int eventid_bits;
->> +=C2=A0=C2=A0=C2=A0 unsigned int deviceid_bits;
->> +=C2=A0=C2=A0=C2=A0 unsigned int collid_bits;
->> +=C2=A0=C2=A0=C2=A0 unsigned int hw_collections;
->> +=C2=A0=C2=A0=C2=A0 bool pta;
->> +=C2=A0=C2=A0=C2=A0 bool cil;
->> +=C2=A0=C2=A0=C2=A0 bool cct;
->> +=C2=A0=C2=A0=C2=A0 bool phys_lpi;
->> +=C2=A0=C2=A0=C2=A0 bool virt_lpi;
->> +};
->> +
->> +struct its_data {
->> +=C2=A0=C2=A0=C2=A0 void *base;
->> +=C2=A0=C2=A0=C2=A0 struct its_typer typer;
->> +};
->> +
->> +extern struct its_data its_data;
->> +
->> +#define gicv3_its_base()=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (i=
-ts_data.base)
->> +
->> +extern void its_parse_typer(void);
->> +extern void its_init(void);
->> +
->> +#endif /* !__ASSEMBLY__ */
->> +#endif /* _ASMARM_GIC_V3_ITS_H_ */
->> diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
->> index 55dd84b..b44da9c 100644
->> --- a/lib/arm/asm/gic.h
->> +++ b/lib/arm/asm/gic.h
->> @@ -40,6 +40,7 @@
->> =C2=A0 =C2=A0 #include <asm/gic-v2.h>
->> =C2=A0 #include <asm/gic-v3.h>
->> +#include <asm/gic-v3-its.h>
->> =C2=A0 =C2=A0 #define PPI(irq)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 ((irq) + 16)
->> =C2=A0 #define SPI(irq)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 ((irq) + GIC_FIRST_SPI)
->> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
->> new file mode 100644
->> index 0000000..34f4d0e
->> --- /dev/null
->> +++ b/lib/arm/gic-v3-its.c
->> @@ -0,0 +1,41 @@
->> +/*
->> + * Copyright (C) 2016, Red Hat Inc, Eric Auger <eric.auger@redhat.com=
->
->> + *
->> + * This work is licensed under the terms of the GNU LGPL, version 2.
->> + */
->> +#include <asm/gic.h>
->> +
->> +struct its_data its_data;
->> +
->> +void its_parse_typer(void)
->> +{
->> +=C2=A0=C2=A0=C2=A0 u64 typer =3D readq(gicv3_its_base() + GITS_TYPER)=
-;
->> +
->> +=C2=A0=C2=A0=C2=A0 its_data.typer.ite_size =3D ((typer >> 4) & 0xf) +=
- 1;
->> +=C2=A0=C2=A0=C2=A0 its_data.typer.pta =3D typer & GITS_TYPER_PTA;
->> +=C2=A0=C2=A0=C2=A0 its_data.typer.eventid_bits =3D
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ((typer >> GITS_TYPER_IDBI=
-TS_SHIFT) & 0x1f) + 1;
->> +=C2=A0=C2=A0=C2=A0 its_data.typer.deviceid_bits =3D GITS_TYPER_DEVBIT=
-S(typer) + 1;
->=20
-> No need to '+1'. As GITS_TYPER_DEVBITS already helps us to calculate
-> the implemented DeviceID bits.
-OK
->=20
->> +
->> +=C2=A0=C2=A0=C2=A0 its_data.typer.cil =3D (typer >> 36) & 0x1;
->> +=C2=A0=C2=A0=C2=A0 if (its_data.typer.cil)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 its_data.typer.collid_bits=
- =3D ((typer >> 32) & 0xf) + 1;
->> +=C2=A0=C2=A0=C2=A0 else
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 its_data.typer.collid_bits=
- =3D 16;
->> +
->> +=C2=A0=C2=A0=C2=A0 its_data.typer.hw_collections =3D
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (typer >> GITS_TYPER_HWCOL=
-LCNT_SHIFT) & 0xff;
->> +
->> +=C2=A0=C2=A0=C2=A0 its_data.typer.cct =3D typer & 0x4;
->> +=C2=A0=C2=A0=C2=A0 its_data.typer.virt_lpi =3D typer & 0x2;
->> +=C2=A0=C2=A0=C2=A0 its_data.typer.phys_lpi =3D typer & GITS_TYPER_PLP=
-IS;
->=20
-> Personally, mix using of GITS_TYPER_* macros and some magic constants t=
-o
-> parse the TYPER makes it a bit difficult to review the code. Maybe we
-> can have more such kinds of macros in the header file and get rid of al=
-l
-> hardcoded numbers?
-Sure I will clean that up.
-
-Thanks!
-
-Eric
->=20
->=20
-> Thanks,
-> Zenghui
->=20
->=20
+Thanks,
+Laurent

@@ -1,1129 +1,390 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1314668lff;
-        Wed, 18 Dec 2019 12:50:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwPD1iWltKExgeGkAQSuXVo7xTkO8mgzxlojWN2t/FGkWNKLCx5KD+aHoOxVD8/SXh8QI+o
-X-Received: by 2002:a05:6830:2057:: with SMTP id f23mr173173otp.110.1576702243238;
-        Wed, 18 Dec 2019 12:50:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576702243; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1346882lff;
+        Wed, 18 Dec 2019 13:20:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqydIp+ncfvvFbgokraNhX++CM1XYLZa3GktaiyB0eppKV+0iiQPzKzFPBnB2Vwz28RunK+t
+X-Received: by 2002:a05:620a:1467:: with SMTP id j7mr4589994qkl.76.1576704050422;
+        Wed, 18 Dec 2019 13:20:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576704050; cv=none;
         d=google.com; s=arc-20160816;
-        b=u1c0qpZTdMEdM10pA2bAObAPOGttkV+jVfpHW8Icu4jkYdKJ7NbPkr6JevqL/lkP5O
-         w7umPHb7WxeVOktcL6RKCALw+GamkmKYSjnBjBKMSRFaEq9rreYsjyQ2t0tMY1lhHmgu
-         7E55qH7F44zVdopzxMZij2WXv3eD+jU5x1ftVCBNUYrccCtADsXJVD3ziHm9PA4DhVJ6
-         JournVAF2mqCe3jWBTGMN2NnRFvqxOCkKVXH2y/yJcDApCrpESwrhuDoXzEWtF1TML88
-         zZFPfSQStgRzjnTIfo1hPEKLvHoUt0mOzYpT0TjHVtmuJ77OXsweesKXKmvjQiLOX6Kl
-         GQCQ==
+        b=bHMQVFAFMzKA9ibThtHWXGIdf5WJjzTgmMZ2YZDmsxACJzYS+pf+K9B3jhihS6lOHH
+         OKq5G48F94vBCZ3S28J3tz4GsEMWhMgBdlqPBWuBKlTT1SE16b5ZkUSFLfxR9ZSZ5nxW
+         p2qfDnlZMvdJa2i8YE6mdhrCZ5n+EGlYHX4rtYSw3A+fGWQuvJ/Cd4DzBDhY8TNj6YNl
+         UrmzlCs+jymStAtr6Ke8GRJcIjDfPSiSfdDHidj5CBw0GoBsPh4YLi4EHIj3gkUC2Rvy
+         05swU43QNbrvWkrG0enzTX0Quq4QxttuLqTbBBCPpnlpahmEg/CqztY3QR8ryjtxc3NW
+         4q3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=iWtEX5iWpfFX5/5aJLaNvyTdKGsb22z6bJhbArJSwiE=;
-        b=jlme/kdSZ9TSnbc1PfabuUvgiUyAtfTEKPBkSzbXvZUanlYeBsdLTBR3+g3YxW3cEw
-         SuYT3GH3REP9WJOvHhh88MAfGoDJtMLB2oX7s8KLGbeYs+QXHmVDh/AoIueV5x2+3QZ6
-         tawofdAMornEAt45FRHqv39vv0prWOqfWtxsxHioFQwe9eFVtqhNdh0UmX+ta260CxWC
-         q9jWt/shVgi2hp4w6oemW+8e9c0yUVP1vejNmExC9sb8JRP4s8uFuDAyXwMYcCj0mNoL
-         gWArQrjhnpYO13fhARMRzOhfgZbMcVS3caGRyS3uekvgD2Q9SNcaVmNAKjQpgkRzvTkN
-         J8gA==
+        bh=wiaxJVCuSNQJMhOQMKQIbuNI/IgcNMi1SSwkGVjCgKE=;
+        b=UuL26cG6OCNQ9bYf3I9LCY8VAMzzxCWPo7lgY+gwoJ8Vyo5DYkS5OjGUnNSfHB/1cI
+         9fcw34Pl1G6bEPXu+IPjL3rvBEXaI4CS1DksQNLhDBXLvyDpwhJmA84HDhugdFSbdlg3
+         b1YkN/56hBXP445uSqCjVGXvWp3G0wecjKsOG0k3axMcRqk9zxIObqTfYxCdlnDwIicr
+         EWdDsv9Bl/w6G+vNwuPPjdst93K9pz5HAilPObrToG7IF9sHqv0ADyrK9K/1ijyIEsbX
+         +w6FN+VOmLDoVtrcqWLUNFNrsvz96PEqAdv55NIrIEEDeom1XYX3EHOZQX0u+tNp0YBt
+         TYNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=N3nmx0KF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A2TmBwhJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11si2072791otr.197.2019.12.18.12.50.42
+        by mx.google.com with ESMTPS id h28si2365519qkl.158.2019.12.18.13.20.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2019 12:50:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Dec 2019 13:20:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=N3nmx0KF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A2TmBwhJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60524 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihgHJ-0006ED-Fd
-	for alex.bennee@linaro.org; Wed, 18 Dec 2019 15:50:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59028)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihgkT-0003zI-PH
+	for alex.bennee@linaro.org; Wed, 18 Dec 2019 16:20:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47606)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ihgGG-0005jQ-2i
- for qemu-devel@nongnu.org; Wed, 18 Dec 2019 15:49:39 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ihgkI-0003v6-1w
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:20:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ihgGC-0006VG-Ar
- for qemu-devel@nongnu.org; Wed, 18 Dec 2019 15:49:35 -0500
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:36436)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ihgkF-0008M7-GM
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:20:37 -0500
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:32812)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ihgGB-0006S4-T6; Wed, 18 Dec 2019 15:49:32 -0500
-Received: by mail-il1-x141.google.com with SMTP id b15so2884251iln.3;
- Wed, 18 Dec 2019 12:49:28 -0800 (PST)
+ id 1ihgk4-0008FG-8t; Wed, 18 Dec 2019 16:20:24 -0500
+Received: by mail-io1-xd43.google.com with SMTP id z8so3544132ioh.0;
+ Wed, 18 Dec 2019 13:20:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iWtEX5iWpfFX5/5aJLaNvyTdKGsb22z6bJhbArJSwiE=;
- b=N3nmx0KFkypTD+KP24XDB4xd9WyaUu93VbNdo/yjD2pMqVko+uXPk0CHrOHAOK6uTa
- qReru/+FdKJ7KFL9yT0f5RGO238uK4VRsojWE2uuH2qwY0iIEZJUCWfWvEfg3GgHsuPC
- tNlkox6qpCGaRCcjvLe8wO/fD95yvr2sc5bcftDHV0LdjJJDhZycFNqYWhvGJ88C5auJ
- ri8EKELpb7LxlY5xuIfqeqkNYJB32Rc77pcoURsWgg54ka6jZa2DL85fBmrE5EAGamiF
- h7rIhx0hn+yYuffyrS9IBLrxypp5hxc8TvVlYvk+WJDJfP4EX43Eo3hUVgFz7Pm4++zp
- FOyg==
+ :cc; bh=wiaxJVCuSNQJMhOQMKQIbuNI/IgcNMi1SSwkGVjCgKE=;
+ b=A2TmBwhJbdSS7XeABnir6EeXy+cEKIX/OERrZokc2j1UINXvRkqj9JBF7V+Ol17KPt
+ QT8HBBTiq+UJrBdmxW5YUyIlJpw9/loh/sduyHwclcQ6VbkeD6UlTqXRyY9gJ8VkVztD
+ 9XgYaw3jiyntgKK3RZpl8kzD2XWJveJuDLDk6fWpE8jGAdQkih2wGC6cndbJL6gcv7Ev
+ QPLCCgJcV6W4fIkKBtXs6/XZlbCpPqopz9e+l0JJdwi/0LwAQT0wRo7ItzIA2t+bUIDE
+ mwN4hUQa7A9to1TMfaJ2wTQhN09/Sj7KXXilDn5WA0WkiCCTdie/kz3pm9BSGlNShyEZ
+ kIdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=iWtEX5iWpfFX5/5aJLaNvyTdKGsb22z6bJhbArJSwiE=;
- b=ErnadzqMCQiawgC4iz/XCxPcyvKc/eZNHqzWOnHJLldfwa2a/tee8mIDknaCe17yB5
- VRSxhzx1WDz7tnMd3mtKd11txoQ4MLxXObeX/t/pmgzy9Rue42dz7P7Y/tkEMVKmmt0L
- 0FjDzYYbkKplxvaR6YcUSqBzvEVsSssoYGa0TWC9kVucbSYs+tEB2hUYonQt65rodSBm
- AbrR1yWnHmf5r8BKyVapV3tp14lZRsCl0mWgj2O0JEkZ2l32FORg6FV4itN/lacBxy0g
- bInAh+Q5XfLvF9ooFonO0YioikzoXBsZIgidK9eEW1sZ/sSM3+v0O4vKJg44zjGsZ7fM
- 5oFg==
-X-Gm-Message-State: APjAAAU2HmbD5ls1HCndNZZLrEieNNlEI3Prvuz3lYpK6YdS0xjenjyf
- j4DNDEGIjjaOsPfwpNwzv3dVjR+zuyasIUmP07w=
-X-Received: by 2002:a92:c647:: with SMTP id 7mr3832792ill.28.1576702167837;
- Wed, 18 Dec 2019 12:49:27 -0800 (PST)
+ bh=wiaxJVCuSNQJMhOQMKQIbuNI/IgcNMi1SSwkGVjCgKE=;
+ b=NEiZ6ElNGu1u5/SKzyFgfECKxO4ufB7Ld4lwx/pViTiV84ItB3w7CCyM2QEABuNIdI
+ zkruwngE+ZuGgtpXwETUzVM3AV5trvY+45Y4br8zzkmvEy0NBKtL3jYAVnkKqOZZRLve
+ H8sEeCRWsSeoMXeyfA4ldFhbFow54smEd8Vmd9KMA1EHjpaLmWs4djkTxCeXZuK6+lqO
+ aZUymWEpTwNP7qlMt5vC6zP7x2/owrm19PieciRIqebki0w6/+f5EqosYQmFfooZZLP3
+ Ql3qfq0rOOuJvVCGY+6hETrkwkrW7NEl0eAQHMv6ypuiicLjohuVjaPXEWZmhM4Yivyr
+ 0yLw==
+X-Gm-Message-State: APjAAAXt008a7aRfuIGRAk7Scpk7EYi9mReyYVljdN6JiGpNXR4WJf7S
+ ATkCuJlS8LG6gnzJhwtfRNigXW8r8EENI1lqmXc=
+X-Received: by 2002:a6b:6f01:: with SMTP id k1mr3371292ioc.28.1576704021596;
+ Wed, 18 Dec 2019 13:20:21 -0800 (PST)
 MIME-Version: 1.0
-References: <20191216233519.29030-1-nieklinnenbank@gmail.com>
- <20191216233519.29030-9-nieklinnenbank@gmail.com>
- <7153b766-4c3b-5272-3c3e-33e973e74e8f@redhat.com>
-In-Reply-To: <7153b766-4c3b-5272-3c3e-33e973e74e8f@redhat.com>
+References: <20191217182730.943-1-f4bug@amsat.org>
+ <20191217182730.943-2-f4bug@amsat.org>
+In-Reply-To: <20191217182730.943-2-f4bug@amsat.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 18 Dec 2019 21:49:15 +0100
-Message-ID: <CAPan3Wob3Me-zbESYmFNQ4OczgLnxZZ0CtTxf8AHeRY4QyJ2+w@mail.gmail.com>
-Subject: Re: [PATCH v2 08/10] arm: allwinner-h3: add Security Identifier device
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000a170b4059a0094dc"
+Date: Wed, 18 Dec 2019 22:20:10 +0100
+Message-ID: <CAPan3WpCX5RU03+-7QPZ4evTUzaU4BDEsTU4n4M3f+0eTEAhwQ@mail.gmail.com>
+Subject: Re: [PATCH 1/5] tests/boot_linux_console: Add a quick test for the
+ OrangePi PC board
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="0000000000001f929d059a010365"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::141
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::d43
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qttpjU2juKBZ
+ QEMU Developers <qemu-devel@nongnu.org>, Guenter Roeck <linux@roeck-us.net>,
+ Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dgsuTMJxseiv
 
---000000000000a170b4059a0094dc
+--0000000000001f929d059a010365
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Philippe,
+Hey Philippe,
 
-On Tue, Dec 17, 2019 at 8:45 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com>
-wrote:
-
-> Hi Niek,
->
-> On 12/17/19 12:35 AM, Niek Linnenbank wrote:
-> > The Security Identifier device in Allwinner H3 System on Chip
-> > gives applications a per-board unique identifier. This commit
-> > adds support for the Allwinner H3 Security Identifier using
-> > a 128-bit UUID value as input.
-> >
-> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > ---
-> >   include/hw/arm/allwinner-h3.h      |   2 +
-> >   include/hw/misc/allwinner-h3-sid.h |  40 +++++++
-> >   hw/arm/allwinner-h3.c              |   7 ++
-> >   hw/arm/orangepi.c                  |   4 +
-> >   hw/misc/allwinner-h3-sid.c         | 179 ++++++++++++++++++++++++++++=
-+
-> >   hw/misc/Makefile.objs              |   1 +
-> >   hw/misc/trace-events               |   4 +
-> >   7 files changed, 237 insertions(+)
-> >   create mode 100644 include/hw/misc/allwinner-h3-sid.h
-> >   create mode 100644 hw/misc/allwinner-h3-sid.c
-> >
-> > diff --git a/include/hw/arm/allwinner-h3.h
-> b/include/hw/arm/allwinner-h3.h
-> > index 8128ae6131..c98c1972a6 100644
-> > --- a/include/hw/arm/allwinner-h3.h
-> > +++ b/include/hw/arm/allwinner-h3.h
-> > @@ -29,6 +29,7 @@
-> >   #include "hw/misc/allwinner-h3-clk.h"
-> >   #include "hw/misc/allwinner-h3-cpucfg.h"
-> >   #include "hw/misc/allwinner-h3-syscon.h"
-> > +#include "hw/misc/allwinner-h3-sid.h"
-> >   #include "target/arm/cpu.h"
-> >
-> >   enum {
-> > @@ -77,6 +78,7 @@ typedef struct AwH3State {
-> >       AwH3ClockState ccu;
-> >       AwH3CpuCfgState cpucfg;
-> >       AwH3SysconState syscon;
-> > +    AwH3SidState sid;
-> >       GICState gic;
-> >       MemoryRegion sram_a1;
-> >       MemoryRegion sram_a2;
-> > diff --git a/include/hw/misc/allwinner-h3-sid.h
-> b/include/hw/misc/allwinner-h3-sid.h
-> > new file mode 100644
-> > index 0000000000..79c9a24459
-> > --- /dev/null
-> > +++ b/include/hw/misc/allwinner-h3-sid.h
-> > @@ -0,0 +1,40 @@
-> > +/*
-> > + * Allwinner H3 Security ID emulation
-> > + *
-> > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> > + *
-> > + * This program is free software: you can redistribute it and/or modif=
-y
-> > + * it under the terms of the GNU General Public License as published b=
-y
-> > + * the Free Software Foundation, either version 2 of the License, or
-> > + * (at your option) any later version.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + *
-> > + * You should have received a copy of the GNU General Public License
-> > + * along with this program.  If not, see <http://www.gnu.org/licenses/
-> >.
-> > + */
-> > +
-> > +#ifndef HW_MISC_ALLWINNER_H3_SID_H
-> > +#define HW_MISC_ALLWINNER_H3_SID_H
-> > +
-> > +#include "hw/sysbus.h"
-> > +#include "qemu/uuid.h"
-> > +
-> > +#define TYPE_AW_H3_SID    "allwinner-h3-sid"
-> > +#define AW_H3_SID(obj)    OBJECT_CHECK(AwH3SidState, (obj),
-> TYPE_AW_H3_SID)
-> > +
-> > +typedef struct AwH3SidState {
-> > +    /*< private >*/
-> > +    SysBusDevice parent_obj;
-> > +    /*< public >*/
-> > +
-> > +    MemoryRegion iomem;
-> > +    uint32_t control;
-> > +    uint32_t rdkey;
-> > +    QemuUUID identifier;
-> > +} AwH3SidState;
-> > +
-> > +#endif
-> > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> > index 1a9748ab2e..ba34f905cd 100644
-> > --- a/hw/arm/allwinner-h3.c
-> > +++ b/hw/arm/allwinner-h3.c
-> > @@ -196,6 +196,9 @@ static void aw_h3_init(Object *obj)
-> >
-> >       sysbus_init_child_obj(obj, "cpucfg", &s->cpucfg, sizeof(s->cpucfg=
-),
-> >                             TYPE_AW_H3_CPUCFG);
-> > +
-> > +    sysbus_init_child_obj(obj, "sid", &s->sid, sizeof(s->sid),
-> > +                          TYPE_AW_H3_SID);
->
-> Here add a property alias:
->
->         object_property_add_alias(obj, "identifier", OBJECT(&s->sid),
->                                   "identifier", &error_abort);
->
-> >   }
-> >
-> >   static void aw_h3_realize(DeviceState *dev, Error **errp)
-> > @@ -332,6 +335,10 @@ static void aw_h3_realize(DeviceState *dev, Error
-> **errp)
-> >       qdev_init_nofail(DEVICE(&s->cpucfg));
-> >       sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0,
-> s->memmap[AW_H3_CPUCFG]);
-> >
-> > +    /* Security Identifier */
-> > +    qdev_init_nofail(DEVICE(&s->sid));
-> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0, s->memmap[AW_H3_SID]);
-> > +
-> >       /* Universal Serial Bus */
-> >       sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
-> >                            qdev_get_gpio_in(DEVICE(&s->gic),
-> > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> > index 62cefc8c06..b01c4b4f01 100644
-> > --- a/hw/arm/orangepi.c
-> > +++ b/hw/arm/orangepi.c
-> > @@ -62,6 +62,10 @@ static void orangepi_init(MachineState *machine)
-> >           exit(1);
-> >       }
-> >
-> > +    /* Setup SID properties */
-> > +    qdev_prop_set_string(DEVICE(&s->h3->sid), "identifier",
-> > +                         "8100c002-0001-0002-0003-000044556677");
->
-> And here use the alias:
->
->         qdev_prop_set_string(DEVICE(&s->h3), "identifier",
->                              "8100c002-0001-0002-0003-000044556677");
->
-
-Ah OK, I see what you mean. The boards should be using the SoC object only
-and
-not directly any of its sub devices, correct?
-
-
-
->
-> What means this value? Don't you want to be able to set it from command
-> line?
->
-The first word 0x02c00081 is the identifying word for the H3 SoC in the SID
-data.
-After that come the per-device unique specific bytes. This is documented at
-the end of this page in 'Currently known SID's' on the linux-sunxi.org Wiki=
-:
-  https://linux-sunxi.org/SID_Register_Guide
-
-The remaining parts of this value I simply made up without any real meaning=
+Super!! Fantastic, now we can automatically test the H3 based boards
+and use that to verify they keep working as expected when changing the code=
 .
-And yes, it would in fact make sense to have the user be able to override
-it from the command line.
-It is used by U-boot as an input for generating the MAC address. Linux also
-reads it, but I did not investigate
-how it us used there. I think I did make a TODO of using a cmdline
-argument, but later forgot to actually implement it.
 
-Do you have a suggestion how to best provide the command line argument? I
-do see '-device driver[,prop=3Dvalue]'
-is there in the --help for qemu-system-arm, but it looks like that should
-be used by the user for adding PCI / USB devices?
+Great, I'm going to use these tests also from now on (previously I had some
+small
+bash scripts).
 
+This quick test is working fine for me, so:
 
-> >       /* Mark H3 object realized */
-> >       object_property_set_bool(OBJECT(s->h3), true, "realized",
-> &error_abort);
-> >       if (error_abort !=3D NULL) {
-> > diff --git a/hw/misc/allwinner-h3-sid.c b/hw/misc/allwinner-h3-sid.c
-> > new file mode 100644
-> > index 0000000000..c472f2bcc6
-> > --- /dev/null
-> > +++ b/hw/misc/allwinner-h3-sid.c
-> > @@ -0,0 +1,179 @@
-> > +/*
-> > + * Allwinner H3 Security ID emulation
-> > + *
-> > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> > + *
-> > + * This program is free software: you can redistribute it and/or modif=
-y
-> > + * it under the terms of the GNU General Public License as published b=
-y
-> > + * the Free Software Foundation, either version 2 of the License, or
-> > + * (at your option) any later version.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + *
-> > + * You should have received a copy of the GNU General Public License
-> > + * along with this program.  If not, see <http://www.gnu.org/licenses/
-> >.
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "qemu/units.h"
-> > +#include "hw/sysbus.h"
-> > +#include "migration/vmstate.h"
-> > +#include "qemu/log.h"
-> > +#include "qemu/module.h"
-> > +#include "qemu/guest-random.h"
-> > +#include "qapi/error.h"
-> > +#include "hw/qdev-properties.h"
-> > +#include "hw/misc/allwinner-h3-sid.h"
-> > +#include "trace.h"
-> > +
-> > +/* SID register offsets */
-> > +enum {
-> > +    REG_PRCTL =3D 0x40,   /* Control */
-> > +    REG_RDKEY =3D 0x60,   /* Read Key */
-> > +};
-> > +
-> > +/* SID register flags */
-> > +enum {
-> > +    REG_PRCTL_WRITE   =3D 0x0002, /* Unknown write flag */
-> > +    REG_PRCTL_OP_LOCK =3D 0xAC00, /* Lock operation */
-> > +};
-> > +
-> > +static uint64_t allwinner_h3_sid_read(void *opaque, hwaddr offset,
-> > +                                      unsigned size)
-> > +{
-> > +    const AwH3SidState *s =3D (AwH3SidState *)opaque;
-> > +    uint64_t val =3D 0;
-> > +
-> > +    switch (offset) {
-> > +    case REG_PRCTL:    /* Control */
-> > +        val =3D s->control;
-> > +        break;
-> > +    case REG_RDKEY:    /* Read Key */
-> > +        val =3D s->rdkey;
-> > +        break;
-> > +    default:
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad read offset 0x%04x\n",
-> > +                      __func__, (uint32_t)offset);
-> > +        return 0;
-> > +    }
-> > +
-> > +    trace_allwinner_h3_sid_read(offset, val, size);
-> > +
-> > +    return val;
-> > +}
-> > +
-> > +static void allwinner_h3_sid_write(void *opaque, hwaddr offset,
-> > +                                   uint64_t val, unsigned size)
-> > +{
-> > +    AwH3SidState *s =3D (AwH3SidState *)opaque;
-> > +
-> > +    trace_allwinner_h3_sid_write(offset, val, size);
-> > +
-> > +    switch (offset) {
-> > +    case REG_PRCTL:    /* Control */
-> > +        s->control =3D val;
-> > +
-> > +        if ((s->control & REG_PRCTL_OP_LOCK) &&
-> > +            (s->control & REG_PRCTL_WRITE)) {
-> > +            uint32_t id =3D s->control >> 16;
-> > +
-> > +            if (id < sizeof(QemuUUID)) {
-> > +                s->rdkey =3D (s->identifier.data[id]) |
-> > +                           (s->identifier.data[id + 1] << 8) |
-> > +                           (s->identifier.data[id + 2] << 16) |
-> > +                           (s->identifier.data[id + 3] << 24);
->
-> This is:
->
->                     s->rdkey =3D ldl_le_p(&s->identifier.data[id]);
->
-> > +            }
-> > +        }
-> > +        s->control &=3D ~REG_PRCTL_WRITE;
-> > +        break;
-> > +    case REG_RDKEY:    /* Read Key */
->
-> Read in a write()?
->
-> Maybe we can simply /* fall through */ LOG_GUEST_ERROR?
->
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
-When writing this module, I looked at how U-Boot is using the SID registers
-and simply
-named the registers after the names used by U-Boot. You can find this part
-in arch/arm/mach-sunxi/cpu_info.c:111,
-functions sun8i_efuse_read() and sunxi_get_sid(). U-Boot defines
-SIDC_RDKEY, so I named the register also rdkey.
-I used the U-Boot source because the Allwinner H3 datasheet does not
-document the registers. Later I
-found the SID page on the linux-sunxi wiki that I mentioned earlier, and
-they also describe the same register names:
-
-   https://linux-sunxi.org/SID_Register_Guide
-
-I suspect the information on this page is written based on the source code
-from the original SDK (which I did not study btw)
-
-
->
-> > +        break;
-> > +    default:
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad write offset 0x%04x\n"=
-,
-> > +                      __func__, (uint32_t)offset);
-> > +        break;
-> > +    }
-> > +}
-> > +
-> > +static const MemoryRegionOps allwinner_h3_sid_ops =3D {
-> > +    .read =3D allwinner_h3_sid_read,
-> > +    .write =3D allwinner_h3_sid_write,
-> > +    .endianness =3D DEVICE_NATIVE_ENDIAN,
-> > +    .valid =3D {
-> > +        .min_access_size =3D 4,
-> > +        .max_access_size =3D 4,
-> > +        .unaligned =3D false
->
-> 'false' is the default value, maybe we can omit it?
->
-
-Sure, I'll remove it.
-
-
->
-> > +    },
-> > +    .impl.min_access_size =3D 4,
-> > +};
-> > +
-> > +static void allwinner_h3_sid_reset(DeviceState *dev)
-> > +{
-> > +    AwH3SidState *s =3D AW_H3_SID(dev);
-> > +
-> > +    /* Set default values for registers */
-> > +    s->control =3D 0;
-> > +    s->rdkey =3D 0;
-> > +}
-> > +
-> > +static void allwinner_h3_sid_realize(DeviceState *dev, Error **errp)
-> > +{
-> > +}
->
-> If you don't need realize(), just remove it. However maybe we want to
-> check if the identifier is null, either warn/abort or generate a random
-> one?
->
-OK, removing it!
-
-
->
-> > +
-> > +static void allwinner_h3_sid_init(Object *obj)
-> > +{
-> > +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-> > +    AwH3SidState *s =3D AW_H3_SID(obj);
-> > +
-> > +    /* Fill UUID with zeroes by default */
-> > +    qemu_uuid_parse(UUID_NONE, &s->identifier);
->
-> AwH3SidState is zeroed just before this init() call. I think we don't
-> need to zeroes the UUID again.
->
-
-Ah OK, so you mean new objects are always zeroed. That makes it
-much easier indeed. Thanks, I'll remove those lines.
-
-
->
-> > +
-> > +    /* Memory mapping */
-> > +    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_h3_sid_ops,
-> s,
-> > +                          TYPE_AW_H3_SID, 1 * KiB);
-> > +    sysbus_init_mmio(sbd, &s->iomem);
-> > +}
-> > +
-> > +static Property allwinner_h3_sid_properties[] =3D {
-> > +    DEFINE_PROP_UUID_NODEFAULT("identifier", AwH3SidState, identifier)=
-,
-> > +    DEFINE_PROP_END_OF_LIST()
-> > +};
-> > +
-> > +static const VMStateDescription allwinner_h3_sid_vmstate =3D {
-> > +    .name =3D "allwinner-h3-sid",
-> > +    .version_id =3D 1,
-> > +    .minimum_version_id =3D 1,
-> > +    .fields =3D (VMStateField[]) {
-> > +        VMSTATE_UINT32(control, AwH3SidState),
-> > +        VMSTATE_UINT32(rdkey, AwH3SidState),
-> > +        VMSTATE_END_OF_LIST()
-> > +    }
-> > +};
-> > +
-> > +static void allwinner_h3_sid_class_init(ObjectClass *klass, void *data=
-)
-> > +{
-> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > +
-> > +    dc->reset =3D allwinner_h3_sid_reset;
-> > +    dc->realize =3D allwinner_h3_sid_realize;
-> > +    dc->vmsd =3D &allwinner_h3_sid_vmstate;
-> > +    dc->props =3D allwinner_h3_sid_properties;
-> > +}
-> > +
-> > +static const TypeInfo allwinner_h3_sid_info =3D {
-> > +    .name          =3D TYPE_AW_H3_SID,
-> > +    .parent        =3D TYPE_SYS_BUS_DEVICE,
-> > +    .instance_init =3D allwinner_h3_sid_init,
-> > +    .instance_size =3D sizeof(AwH3SidState),
-> > +    .class_init    =3D allwinner_h3_sid_class_init,
-> > +};
-> > +
-> > +static void allwinner_h3_sid_register(void)
-> > +{
-> > +    type_register_static(&allwinner_h3_sid_info);
-> > +}
-> > +
-> > +type_init(allwinner_h3_sid_register)
-> > diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> > index c4ca2ed689..f3620eee4e 100644
-> > --- a/hw/misc/Makefile.objs
-> > +++ b/hw/misc/Makefile.objs
-> > @@ -31,6 +31,7 @@ common-obj-$(CONFIG_IVSHMEM_DEVICE) +=3D ivshmem.o
-> >   common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-clk.o
-> >   obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-cpucfg.o
-> >   common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-syscon.o
-> > +common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-sid.o
-> >   common-obj-$(CONFIG_REALVIEW) +=3D arm_sysctl.o
-> >   common-obj-$(CONFIG_NSERIES) +=3D cbus.o
-> >   common-obj-$(CONFIG_ECCMEMCTL) +=3D eccmemctl.o
-> > diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> > index b93089d010..a777844ca3 100644
-> > --- a/hw/misc/trace-events
-> > +++ b/hw/misc/trace-events
-> > @@ -5,6 +5,10 @@ allwinner_h3_cpucfg_cpu_reset(uint8_t cpu_id, uint32_t
-> reset_addr) "H3-CPUCFG: c
-> >   allwinner_h3_cpucfg_read(uint64_t offset, uint64_t data, unsigned
-> size) "H3-CPUCFG: read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %"
-> PRIu32
-> >   allwinner_h3_cpucfg_write(uint64_t offset, uint64_t data, unsigned
-> size) "H3-CPUCFG: write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %"
-> PRIu32
-> >
-> > +# allwinner-h3-sid.c
-> > +allwinner_h3_sid_read(uint64_t offset, uint64_t data, unsigned size)
-> "H3-SID: read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-> > +allwinner_h3_sid_write(uint64_t offset, uint64_t data, unsigned size)
-> "H3-SID: write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-> > +
-> >   # eccmemctl.c
-> >   ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
-> >   ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
-> >
->
->
 Regards,
 Niek
+
+
+
+On Tue, Dec 17, 2019 at 7:27 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
+
+> This test boots a Linux kernel on a OrangePi PC board and verify
+> the serial output is working.
+>
+> The kernel image and DeviceTree blob are built by the Raspbian
+> project (based on Debian):
+> https://www.raspbian.org/RaspbianImages
+>
+> If ARM is a target being built, "make check-acceptance" will
+> automatically include this test by the use of the "arch:arm" tags.
+>
+> Alternatively, this test can be run using:
+>
+>   $ make check-venv
+>   $ ./tests/venv/bin/avocado --show=3Dconsole,app run -t machine:orangepi=
+-pc
+> tests/acceptance/boot_linux_console.py
+>   JOB ID     : 2e4d15eceb13c33672af406f08171e6e9de1414a
+>   JOB LOG    : ~/job-results/job-2019-12-17T05.46-2e4d15e/job.log
+>   (1/1)
+> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
+:
+>   console: Uncompressing Linux... done, booting the kernel.
+>   console: Booting Linux on physical CPU 0x0
+>   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version
+> 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET
+> 2019
+>   console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D50c53=
+87d
+>   console: CPU: div instructions available: patching division code
+>   console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing
+> instruction cache
+>   console: OF: fdt: Machine model: Xunlong Orange Pi PC
+>   console: Memory policy: Data cache writealloc
+>   console: OF: reserved mem: failed to allocate memory for node
+> 'cma@4a000000'
+>   console: cma: Failed to reserve 128 MiB
+>   console: psci: probing for conduit method from DT.
+>   console: psci: PSCIv0.2 detected in firmware.
+>   console: psci: Using standard PSCI v0.2 function IDs
+>   console: psci: Trusted OS migration not required
+>   console: random: get_random_bytes called from start_kernel+0x8d/0x3c2
+> with crng_init=3D0
+>   console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r8192 d24308
+> u73728
+>   console: Built 1 zonelists, mobility grouping on.  Total pages: 32480
+>   console: Kernel command line: printk.time=3D0 console=3DttyS0,115200
+>   PASS (8.59 s)
+>   JOB TIME   : 8.81 s
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+>
+> diff --git a/tests/acceptance/boot_linux_console.py
+> b/tests/acceptance/boot_linux_console.py
+> index 7e41cebd47..820239e439 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -411,6 +411,32 @@ class BootLinuxConsole(Test):
+>          self.wait_for_console_pattern('Boot successful.')
+>          # TODO user command, for now the uart is stuck
+>
+> +    def test_arm_orangepi(self):
+> +        """
+> +        :avocado: tags=3Darch:arm
+> +        :avocado: tags=3Dmachine:orangepi-pc
+> +        """
+> +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+> +
+>  'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+> +        deb_hash =3D '1334c29c44d984ffa05ed10de8c3361f33d78315'
+> +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+> +        kernel_path =3D self.extract_from_deb(deb_path,
+> +                                            '/boot/vmlinuz-4.20.7-sunxi'=
+)
+> +        dtb_path =3D
+> '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
+> +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+> +
+> +        self.vm.set_machine('orangepi-pc')
+> +        self.vm.set_console()
+> +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
+> +                               'console=3DttyS0,115200n8 '
+> +                               'earlycon=3Duart,mmio32,0x1c28000')
+> +        self.vm.add_args('-kernel', kernel_path,
+> +                         '-dtb', dtb_path,
+> +                         '-append', kernel_command_line)
+> +        self.vm.launch()
+> +        console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
+ine
+> +        self.wait_for_console_pattern(console_pattern)
+> +
+>      def test_s390x_s390_ccw_virtio(self):
+>          """
+>          :avocado: tags=3Darch:s390x
+> --
+> 2.21.0
+>
+>
 
 --=20
 Niek Linnenbank
 
---000000000000a170b4059a0094dc
+--0000000000001f929d059a010365
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 17, 2019 at 8:45 AM Phili=
-ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
-at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">Hi Niek,<br>
+<div dir=3D"ltr"><div>Hey Philippe,</div><div><br></div><div>Super!! Fantas=
+tic, now we can automatically test the H3 based boards<br></div><div>and us=
+e that to verify they keep working as expected when changing the code.</div=
+><div><br></div><div>Great, I&#39;m going to use these tests also from now =
+on (previously I had some small</div><div>bash scripts).<br></div><div><br>=
+</div><div>This quick test is working fine for me, so:</div><div><br></div>=
+<div>Tested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.=
+com">nieklinnenbank@gmail.com</a>&gt;<br></div><div><br></div><div>Regards,=
+</div><div>Niek<br></div><div><br></div><div><br></div></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 17, 2019=
+ at 7:27 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.o=
+rg">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex">This test boots a Linux kernel on a OrangePi PC board an=
+d verify<br>
+the serial output is working.<br>
 <br>
-On 12/17/19 12:35 AM, Niek Linnenbank wrote:<br>
-&gt; The Security Identifier device in Allwinner H3 System on Chip<br>
-&gt; gives applications a per-board unique identifier. This commit<br>
-&gt; adds support for the Allwinner H3 Security Identifier using<br>
-&gt; a 128-bit UUID value as input.<br>
-&gt; <br>
-&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
-ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0include/hw/arm/allwinner-h3.h=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =
-=C2=A02 +<br>
-&gt;=C2=A0 =C2=A0include/hw/misc/allwinner-h3-sid.h |=C2=A0 40 +++++++<br>
-&gt;=C2=A0 =C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 |=C2=A0 =C2=A07 ++<br>
-&gt;=C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A04 +<br>
-&gt;=C2=A0 =C2=A0hw/misc/allwinner-h3-sid.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0| 179 +++++++++++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A0hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 =C2=A0hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A04 +<br>
-&gt;=C2=A0 =C2=A07 files changed, 237 insertions(+)<br>
-&gt;=C2=A0 =C2=A0create mode 100644 include/hw/misc/allwinner-h3-sid.h<br>
-&gt;=C2=A0 =C2=A0create mode 100644 hw/misc/allwinner-h3-sid.c<br>
-&gt; <br>
-&gt; diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-=
-h3.h<br>
-&gt; index 8128ae6131..c98c1972a6 100644<br>
-&gt; --- a/include/hw/arm/allwinner-h3.h<br>
-&gt; +++ b/include/hw/arm/allwinner-h3.h<br>
-&gt; @@ -29,6 +29,7 @@<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/misc/allwinner-h3-clk.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/misc/allwinner-h3-cpucfg.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/misc/allwinner-h3-syscon.h&quot;<br>
-&gt; +#include &quot;hw/misc/allwinner-h3-sid.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;target/arm/cpu.h&quot;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0enum {<br>
-&gt; @@ -77,6 +78,7 @@ typedef struct AwH3State {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AwH3ClockState ccu;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AwH3CpuCfgState cpucfg;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AwH3SysconState syscon;<br>
-&gt; +=C2=A0 =C2=A0 AwH3SidState sid;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0GICState gic;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0MemoryRegion sram_a1;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0MemoryRegion sram_a2;<br>
-&gt; diff --git a/include/hw/misc/allwinner-h3-sid.h b/include/hw/misc/allw=
-inner-h3-sid.h<br>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..79c9a24459<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/include/hw/misc/allwinner-h3-sid.h<br>
-&gt; @@ -0,0 +1,40 @@<br>
-&gt; +/*<br>
-&gt; + * Allwinner H3 Security ID emulation<br>
-&gt; + *<br>
-&gt; + * Copyright (C) 2019 Niek Linnenbank &lt;<a href=3D"mailto:nieklinne=
-nbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; + *<br>
-&gt; + * This program is free software: you can redistribute it and/or modi=
-fy<br>
-&gt; + * it under the terms of the GNU General Public License as published =
-by<br>
-&gt; + * the Free Software Foundation, either version 2 of the License, or<=
-br>
-&gt; + * (at your option) any later version.<br>
-&gt; + *<br>
-&gt; + * This program is distributed in the hope that it will be useful,<br=
->
-&gt; + * but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-&gt; + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the=
+The kernel image and DeviceTree blob are built by the Raspbian<br>
+project (based on Debian):<br>
+<a href=3D"https://www.raspbian.org/RaspbianImages" rel=3D"noreferrer" targ=
+et=3D"_blank">https://www.raspbian.org/RaspbianImages</a><br>
 <br>
-&gt; + * GNU General Public License for more details.<br>
-&gt; + *<br>
-&gt; + * You should have received a copy of the GNU General Public License<=
-br>
-&gt; + * along with this program.=C2=A0 If not, see &lt;<a href=3D"http://w=
-ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
-rg/licenses/</a>&gt;.<br>
-&gt; + */<br>
-&gt; +<br>
-&gt; +#ifndef HW_MISC_ALLWINNER_H3_SID_H<br>
-&gt; +#define HW_MISC_ALLWINNER_H3_SID_H<br>
-&gt; +<br>
-&gt; +#include &quot;hw/sysbus.h&quot;<br>
-&gt; +#include &quot;qemu/uuid.h&quot;<br>
-&gt; +<br>
-&gt; +#define TYPE_AW_H3_SID=C2=A0 =C2=A0 &quot;allwinner-h3-sid&quot;<br>
-&gt; +#define AW_H3_SID(obj)=C2=A0 =C2=A0 OBJECT_CHECK(AwH3SidState, (obj),=
- TYPE_AW_H3_SID)<br>
-&gt; +<br>
-&gt; +typedef struct AwH3SidState {<br>
-&gt; +=C2=A0 =C2=A0 /*&lt; private &gt;*/<br>
-&gt; +=C2=A0 =C2=A0 SysBusDevice parent_obj;<br>
-&gt; +=C2=A0 =C2=A0 /*&lt; public &gt;*/<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 MemoryRegion iomem;<br>
-&gt; +=C2=A0 =C2=A0 uint32_t control;<br>
-&gt; +=C2=A0 =C2=A0 uint32_t rdkey;<br>
-&gt; +=C2=A0 =C2=A0 QemuUUID identifier;<br>
-&gt; +} AwH3SidState;<br>
-&gt; +<br>
-&gt; +#endif<br>
-&gt; diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
-&gt; index 1a9748ab2e..ba34f905cd 100644<br>
-&gt; --- a/hw/arm/allwinner-h3.c<br>
-&gt; +++ b/hw/arm/allwinner-h3.c<br>
-&gt; @@ -196,6 +196,9 @@ static void aw_h3_init(Object *obj)<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_init_child_obj(obj, &quot;cpucfg&quot=
-;, &amp;s-&gt;cpucfg, sizeof(s-&gt;cpucfg),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0TYPE_AW_H3_CPUCFG);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 sysbus_init_child_obj(obj, &quot;sid&quot;, &amp;s-&gt;=
-sid, sizeof(s-&gt;sid),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 TYPE_AW_H3_SID);<br>
+If ARM is a target being built, &quot;make check-acceptance&quot; will<br>
+automatically include this test by the use of the &quot;arch:arm&quot; tags=
+.<br>
 <br>
-Here add a property alias:<br>
+Alternatively, this test can be run using:<br>
 <br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 object_property_add_alias(obj, &quot;identifier=
-&quot;, OBJECT(&amp;s-&gt;sid),<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;identifier&quot;, &amp;=
-error_abort);<br>
+=C2=A0 $ make check-venv<br>
+=C2=A0 $ ./tests/venv/bin/avocado --show=3Dconsole,app run -t machine:orang=
+epi-pc tests/acceptance/boot_linux_console.py<br>
+=C2=A0 JOB ID=C2=A0 =C2=A0 =C2=A0: 2e4d15eceb13c33672af406f08171e6e9de1414a=
 <br>
-&gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0static void aw_h3_realize(DeviceState *dev, Error **errp)<=
-br>
-&gt; @@ -332,6 +335,10 @@ static void aw_h3_realize(DeviceState *dev, Error=
- **errp)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_init_nofail(DEVICE(&amp;s-&gt;cpucfg));=
+=C2=A0 JOB LOG=C2=A0 =C2=A0 : ~/job-results/job-2019-12-17T05.46-2e4d15e/jo=
+b.log<br>
+=C2=A0 (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_a=
+rm_orangepi:<br>
+=C2=A0 console: Uncompressing Linux... done, booting the kernel.<br>
+=C2=A0 console: Booting Linux on physical CPU 0x0<br>
+=C2=A0 console: Linux version 4.20.7-sunxi (<a href=3D"mailto:root@armbian.=
+com" target=3D"_blank">root@armbian.com</a>) (gcc version 7.2.1 20171011 (L=
+inaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019<br>
+=C2=A0 console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D50=
+c5387d<br>
+=C2=A0 console: CPU: div instructions available: patching division code<br>
+=C2=A0 console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing inst=
+ruction cache<br>
+=C2=A0 console: OF: fdt: Machine model: Xunlong Orange Pi PC<br>
+=C2=A0 console: Memory policy: Data cache writealloc<br>
+=C2=A0 console: OF: reserved mem: failed to allocate memory for node &#39;c=
+ma@4a000000&#39;<br>
+=C2=A0 console: cma: Failed to reserve 128 MiB<br>
+=C2=A0 console: psci: probing for conduit method from DT.<br>
+=C2=A0 console: psci: PSCIv0.2 detected in firmware.<br>
+=C2=A0 console: psci: Using standard PSCI v0.2 function IDs<br>
+=C2=A0 console: psci: Trusted OS migration not required<br>
+=C2=A0 console: random: get_random_bytes called from start_kernel+0x8d/0x3c=
+2 with crng_init=3D0<br>
+=C2=A0 console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r8192 d24308=
+ u73728<br>
+=C2=A0 console: Built 1 zonelists, mobility grouping on.=C2=A0 Total pages:=
+ 32480<br>
+=C2=A0 console: Kernel command line: printk.time=3D0 console=3DttyS0,115200=
 <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;cp=
-ucfg), 0, s-&gt;memmap[AW_H3_CPUCFG]);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 /* Security Identifier */<br>
-&gt; +=C2=A0 =C2=A0 qdev_init_nofail(DEVICE(&amp;s-&gt;sid));<br>
-&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;sid), 0, s-&g=
-t;memmap[AW_H3_SID]);<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Universal Serial Bus */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;=
-memmap[AW_H3_EHCI0],<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
-&gt; diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
-&gt; index 62cefc8c06..b01c4b4f01 100644<br>
-&gt; --- a/hw/arm/orangepi.c<br>
-&gt; +++ b/hw/arm/orangepi.c<br>
-&gt; @@ -62,6 +62,10 @@ static void orangepi_init(MachineState *machine)<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 /* Setup SID properties */<br>
-&gt; +=C2=A0 =C2=A0 qdev_prop_set_string(DEVICE(&amp;s-&gt;h3-&gt;sid), &qu=
-ot;identifier&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0&quot;8100c002-0001-0002-0003-000044556677&quot;);<br>
+=C2=A0 PASS (8.59 s)<br>
+=C2=A0 JOB TIME=C2=A0 =C2=A0: 8.81 s<br>
 <br>
-And here use the alias:<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+---<br>
+=C2=A0tests/acceptance/boot_linux_console.py | 26 +++++++++++++++++++++++++=
++<br>
+=C2=A01 file changed, 26 insertions(+)<br>
 <br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_string(DEVICE(&amp;s-&gt;h3), &qu=
-ot;identifier&quot;,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;8100c002-0001-0002-0003-000044556677&q=
-uot;);<br></blockquote><div><br></div><div>Ah OK, I see what you mean. The =
-boards should be using the SoC object only and</div><div>not directly any o=
-f its sub devices, correct?<br></div><div><br></div><div>=C2=A0</div><block=
-quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1=
-px solid rgb(204,204,204);padding-left:1ex">
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot=
+_linux_console.py<br>
+index 7e41cebd47..820239e439 100644<br>
+--- a/tests/acceptance/boot_linux_console.py<br>
++++ b/tests/acceptance/boot_linux_console.py<br>
+@@ -411,6 +411,32 @@ class BootLinuxConsole(Test):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0self.wait_for_console_pattern(&#39;Boot s=
+uccessful.&#39;)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0# TODO user command, for now the uart is =
+stuck<br>
 <br>
-What means this value? Don&#39;t you want to be able to set it from command=
- <br>
-line?<br></blockquote><div>The first word 0x02c00081 is the identifying wor=
-d for the H3 SoC in the SID data.</div><div>After that come the per-device =
-unique specific bytes. This is documented at the end of this page in &#39;C=
-urrently known SID&#39;s&#39; on the <a href=3D"http://linux-sunxi.org">lin=
-ux-sunxi.org</a> Wiki:</div><div>=C2=A0 <a href=3D"https://linux-sunxi.org/=
-SID_Register_Guide">https://linux-sunxi.org/SID_Register_Guide</a></div><di=
-v><br></div><div>The remaining parts of this value I simply made up without=
- any real meaning.</div><div>And yes, it would in fact make sense to have t=
-he user be able to override it from the command line.</div><div>It is used =
-by U-boot as an input for generating the MAC address. Linux also reads it, =
-but I did not investigate</div><div>how it us used there. I think I did mak=
-e a TODO of using a cmdline argument, but later forgot to actually implemen=
-t it.</div><div><br></div><div>Do you have a suggestion how to best provide=
- the command line argument? I do see &#39;-device driver[,prop=3Dvalue]&#39=
-;</div><div>is there in the --help for qemu-system-arm, but it looks like t=
-hat should be used by the user for adding PCI / USB devices?<br></div><div>=
-<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
-ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Mark H3 object realized */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0object_property_set_bool(OBJECT(s-&gt;h3), t=
-rue, &quot;realized&quot;, &amp;error_abort);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (error_abort !=3D NULL) {<br>
-&gt; diff --git a/hw/misc/allwinner-h3-sid.c b/hw/misc/allwinner-h3-sid.c<b=
++=C2=A0 =C2=A0 def test_arm_orangepi(self):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Darch:arm<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:orangepi-pc<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.armbi=
+an.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https://apt.armbi=
+an.com/pool/main/l/</a>&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;=
+linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;1334c29c44d984ffa05ed10de8c3=
+361f33d78315&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_url, asset_h=
+ash=3Ddeb_hash)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_deb(deb_path=
+,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &#39;/boot/vmlinuz-4.20.7-sunxi&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-dev-sun=
+xi/sun8i-h3-orangepi-pc.dtb&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(deb_path, d=
+tb_path)<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_machine(&#39;orangepi-pc&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_console()<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_command_line =3D (self.KERNEL_COMMON_CO=
+MMAND_LINE +<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;console=3DttyS0,115200n8 &#39;<b=
 r>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..c472f2bcc6<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/hw/misc/allwinner-h3-sid.c<br>
-&gt; @@ -0,0 +1,179 @@<br>
-&gt; +/*<br>
-&gt; + * Allwinner H3 Security ID emulation<br>
-&gt; + *<br>
-&gt; + * Copyright (C) 2019 Niek Linnenbank &lt;<a href=3D"mailto:nieklinne=
-nbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; + *<br>
-&gt; + * This program is free software: you can redistribute it and/or modi=
-fy<br>
-&gt; + * it under the terms of the GNU General Public License as published =
-by<br>
-&gt; + * the Free Software Foundation, either version 2 of the License, or<=
-br>
-&gt; + * (at your option) any later version.<br>
-&gt; + *<br>
-&gt; + * This program is distributed in the hope that it will be useful,<br=
->
-&gt; + * but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-&gt; + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the=
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;earlycon=3Duart,mmio32,0x1c28000=
+&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.add_args(&#39;-kernel&#39;, kernel_pat=
+h,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-dtb&#39;, dtb_path,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-append&#39;, kernel_command_line)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.launch()<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 console_pattern =3D &#39;Kernel command line: =
+%s&#39; % kernel_command_line<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(console_pattern)=
 <br>
-&gt; + * GNU General Public License for more details.<br>
-&gt; + *<br>
-&gt; + * You should have received a copy of the GNU General Public License<=
-br>
-&gt; + * along with this program.=C2=A0 If not, see &lt;<a href=3D"http://w=
-ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
-rg/licenses/</a>&gt;.<br>
-&gt; + */<br>
-&gt; +<br>
-&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt; +#include &quot;qemu/units.h&quot;<br>
-&gt; +#include &quot;hw/sysbus.h&quot;<br>
-&gt; +#include &quot;migration/vmstate.h&quot;<br>
-&gt; +#include &quot;qemu/log.h&quot;<br>
-&gt; +#include &quot;qemu/module.h&quot;<br>
-&gt; +#include &quot;qemu/guest-random.h&quot;<br>
-&gt; +#include &quot;qapi/error.h&quot;<br>
-&gt; +#include &quot;hw/qdev-properties.h&quot;<br>
-&gt; +#include &quot;hw/misc/allwinner-h3-sid.h&quot;<br>
-&gt; +#include &quot;trace.h&quot;<br>
-&gt; +<br>
-&gt; +/* SID register offsets */<br>
-&gt; +enum {<br>
-&gt; +=C2=A0 =C2=A0 REG_PRCTL =3D 0x40,=C2=A0 =C2=A0/* Control */<br>
-&gt; +=C2=A0 =C2=A0 REG_RDKEY =3D 0x60,=C2=A0 =C2=A0/* Read Key */<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +/* SID register flags */<br>
-&gt; +enum {<br>
-&gt; +=C2=A0 =C2=A0 REG_PRCTL_WRITE=C2=A0 =C2=A0=3D 0x0002, /* Unknown writ=
-e flag */<br>
-&gt; +=C2=A0 =C2=A0 REG_PRCTL_OP_LOCK =3D 0xAC00, /* Lock operation */<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static uint64_t allwinner_h3_sid_read(void *opaque, hwaddr offset,<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 unsigned si=
-ze)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 const AwH3SidState *s =3D (AwH3SidState *)opaque;<br>
-&gt; +=C2=A0 =C2=A0 uint64_t val =3D 0;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt; +=C2=A0 =C2=A0 case REG_PRCTL:=C2=A0 =C2=A0 /* Control */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 val =3D s-&gt;control;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case REG_RDKEY:=C2=A0 =C2=A0 /* Read Key */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 val =3D s-&gt;rdkey;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: =
-bad read offset 0x%04x\n&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 __func__, (uint32_t)offset);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 trace_allwinner_h3_sid_read(offset, val, size);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return val;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void allwinner_h3_sid_write(void *opaque, hwaddr offset,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0uint64_t val, unsig=
-ned size)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 AwH3SidState *s =3D (AwH3SidState *)opaque;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 trace_allwinner_h3_sid_write(offset, val, size);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt; +=C2=A0 =C2=A0 case REG_PRCTL:=C2=A0 =C2=A0 /* Control */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;control =3D val;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if ((s-&gt;control &amp; REG_PRCTL_OP_LOC=
-K) &amp;&amp;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (s-&gt;control &amp; REG_PR=
-CTL_WRITE)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t id =3D s-&gt;contr=
-ol &gt;&gt; 16;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (id &lt; sizeof(QemuUUID=
-)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;rdkey =
-=3D (s-&gt;identifier.data[id]) |<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;identifier.data[id + 1] &lt;&lt; 8) |<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;identifier.data[id + 2] &lt;&lt; 16) |<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;identifier.data[id + 3] &lt;&lt; 24);<br=
->
++<br>
+=C2=A0 =C2=A0 =C2=A0def test_s390x_s390_ccw_virtio(self):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0:avocado: tags=3Darch:s390x<br>
+-- <br>
+2.21.0<br>
 <br>
-This is:<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt=
-;rdkey =3D ldl_le_p(&amp;s-&gt;identifier.data[id]);<br>
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;control &amp;=3D ~REG_PRCTL_WRITE;<=
-br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case REG_RDKEY:=C2=A0 =C2=A0 /* Read Key */<br>
-<br>
-Read in a write()?<br>
-<br>
-Maybe we can simply /* fall through */ LOG_GUEST_ERROR?<br></blockquote><di=
-v><br></div><div>When writing this module, I looked at how U-Boot is using =
-the SID registers and simply</div><div>named the registers after the names =
-used by U-Boot. You can find this part in arch/arm/mach-sunxi/cpu_info.c:11=
-1,</div><div>functions sun8i_efuse_read() and sunxi_get_sid(). U-Boot defin=
-es SIDC_RDKEY, so I named the register also rdkey.</div><div> I used the U-=
-Boot source because the Allwinner H3 datasheet does not document the regist=
-ers. Later I</div><div>found the SID page on the linux-sunxi wiki that I me=
-ntioned earlier, and they also describe the same register names:<br></div><=
-div><br></div><div>=C2=A0=C2=A0 <a href=3D"https://linux-sunxi.org/SID_Regi=
-ster_Guide">https://linux-sunxi.org/SID_Register_Guide</a></div><div><br></=
-div><div>I suspect the information on this page is written based on the sou=
-rce code from the original SDK (which I did not study btw)<br></div><div>=
-=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: =
-bad write offset 0x%04x\n&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 __func__, (uint32_t)offset);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static const MemoryRegionOps allwinner_h3_sid_ops =3D {<br>
-&gt; +=C2=A0 =C2=A0 .read =3D allwinner_h3_sid_read,<br>
-&gt; +=C2=A0 =C2=A0 .write =3D allwinner_h3_sid_write,<br>
-&gt; +=C2=A0 =C2=A0 .endianness =3D DEVICE_NATIVE_ENDIAN,<br>
-&gt; +=C2=A0 =C2=A0 .valid =3D {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .min_access_size =3D 4,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .max_access_size =3D 4,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .unaligned =3D false<br>
-<br>
-&#39;false&#39; is the default value, maybe we can omit it?<br></blockquote=
-><div><br></div><div>Sure, I&#39;ll remove it.<br></div><div>=C2=A0</div><b=
-lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
-ft:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +=C2=A0 =C2=A0 },<br>
-&gt; +=C2=A0 =C2=A0 .impl.min_access_size =3D 4,<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static void allwinner_h3_sid_reset(DeviceState *dev)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 AwH3SidState *s =3D AW_H3_SID(dev);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* Set default values for registers */<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;control =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;rdkey =3D 0;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void allwinner_h3_sid_realize(DeviceState *dev, Error **errp)<=
-br>
-&gt; +{<br>
-&gt; +}<br>
-<br>
-If you don&#39;t need realize(), just remove it. However maybe we want to <=
-br>
-check if the identifier is null, either warn/abort or generate a random one=
-?<br></blockquote><div>OK, removing it!<br></div><div>=C2=A0</div><blockquo=
-te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
-solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +<br>
-&gt; +static void allwinner_h3_sid_init(Object *obj)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);<br>
-&gt; +=C2=A0 =C2=A0 AwH3SidState *s =3D AW_H3_SID(obj);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* Fill UUID with zeroes by default */<br>
-&gt; +=C2=A0 =C2=A0 qemu_uuid_parse(UUID_NONE, &amp;s-&gt;identifier);<br>
-<br>
-AwH3SidState is zeroed just before this init() call. I think we don&#39;t <=
-br>
-need to zeroes the UUID again.<br></blockquote><div><br></div><div>Ah OK, s=
-o you mean new objects are always zeroed. That makes it</div><div>much easi=
-er indeed. Thanks, I&#39;ll remove those lines.<br></div><div>=C2=A0</div><=
-blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
-eft:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* Memory mapping */<br>
-&gt; +=C2=A0 =C2=A0 memory_region_init_io(&amp;s-&gt;iomem, OBJECT(s), &amp=
-;allwinner_h3_sid_ops, s,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 TYPE_AW_H3_SID, 1 * KiB);<br>
-&gt; +=C2=A0 =C2=A0 sysbus_init_mmio(sbd, &amp;s-&gt;iomem);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static Property allwinner_h3_sid_properties[] =3D {<br>
-&gt; +=C2=A0 =C2=A0 DEFINE_PROP_UUID_NODEFAULT(&quot;identifier&quot;, AwH3=
-SidState, identifier),<br>
-&gt; +=C2=A0 =C2=A0 DEFINE_PROP_END_OF_LIST()<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static const VMStateDescription allwinner_h3_sid_vmstate =3D {<br>
-&gt; +=C2=A0 =C2=A0 .name =3D &quot;allwinner-h3-sid&quot;,<br>
-&gt; +=C2=A0 =C2=A0 .version_id =3D 1,<br>
-&gt; +=C2=A0 =C2=A0 .minimum_version_id =3D 1,<br>
-&gt; +=C2=A0 =C2=A0 .fields =3D (VMStateField[]) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32(control, AwH3SidState),<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32(rdkey, AwH3SidState),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_END_OF_LIST()<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static void allwinner_h3_sid_class_init(ObjectClass *klass, void *dat=
-a)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;reset =3D allwinner_h3_sid_reset;<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;realize =3D allwinner_h3_sid_realize;<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;vmsd =3D &amp;allwinner_h3_sid_vmstate;<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;props =3D allwinner_h3_sid_properties;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static const TypeInfo allwinner_h3_sid_info =3D {<br>
-&gt; +=C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_AW_H3_=
-SID,<br>
-&gt; +=C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_DEV=
-ICE,<br>
-&gt; +=C2=A0 =C2=A0 .instance_init =3D allwinner_h3_sid_init,<br>
-&gt; +=C2=A0 =C2=A0 .instance_size =3D sizeof(AwH3SidState),<br>
-&gt; +=C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D allwinner_h3_sid_class_ini=
-t,<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static void allwinner_h3_sid_register(void)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 type_register_static(&amp;allwinner_h3_sid_info);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +type_init(allwinner_h3_sid_register)<br>
-&gt; diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs<br>
-&gt; index c4ca2ed689..f3620eee4e 100644<br>
-&gt; --- a/hw/misc/Makefile.objs<br>
-&gt; +++ b/hw/misc/Makefile.objs<br>
-&gt; @@ -31,6 +31,7 @@ common-obj-$(CONFIG_IVSHMEM_DEVICE) +=3D ivshmem.o<b=
-r>
-&gt;=C2=A0 =C2=A0common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-clk.o<=
-br>
-&gt;=C2=A0 =C2=A0obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-cpucfg.o<br>
-&gt;=C2=A0 =C2=A0common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-syscon=
-.o<br>
-&gt; +common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-sid.o<br>
-&gt;=C2=A0 =C2=A0common-obj-$(CONFIG_REALVIEW) +=3D arm_sysctl.o<br>
-&gt;=C2=A0 =C2=A0common-obj-$(CONFIG_NSERIES) +=3D cbus.o<br>
-&gt;=C2=A0 =C2=A0common-obj-$(CONFIG_ECCMEMCTL) +=3D eccmemctl.o<br>
-&gt; diff --git a/hw/misc/trace-events b/hw/misc/trace-events<br>
-&gt; index b93089d010..a777844ca3 100644<br>
-&gt; --- a/hw/misc/trace-events<br>
-&gt; +++ b/hw/misc/trace-events<br>
-&gt; @@ -5,6 +5,10 @@ allwinner_h3_cpucfg_cpu_reset(uint8_t cpu_id, uint32_=
-t reset_addr) &quot;H3-CPUCFG: c<br>
-&gt;=C2=A0 =C2=A0allwinner_h3_cpucfg_read(uint64_t offset, uint64_t data, u=
-nsigned size) &quot;H3-CPUCFG: read: offset 0x%&quot; PRIx64 &quot; data 0x=
-%&quot; PRIx64 &quot; size %&quot; PRIu32<br>
-&gt;=C2=A0 =C2=A0allwinner_h3_cpucfg_write(uint64_t offset, uint64_t data, =
-unsigned size) &quot;H3-CPUCFG: write: offset 0x%&quot; PRIx64 &quot; data =
-0x%&quot; PRIx64 &quot; size %&quot; PRIu32<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +# allwinner-h3-sid.c<br>
-&gt; +allwinner_h3_sid_read(uint64_t offset, uint64_t data, unsigned size) =
-&quot;H3-SID: read: offset 0x%&quot; PRIx64 &quot; data 0x%&quot; PRIx64 &q=
-uot; size %&quot; PRIu32<br>
-&gt; +allwinner_h3_sid_write(uint64_t offset, uint64_t data, unsigned size)=
- &quot;H3-SID: write: offset 0x%&quot; PRIx64 &quot; data 0x%&quot; PRIx64 =
-&quot; size %&quot; PRIu32<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0# eccmemctl.c<br>
-&gt;=C2=A0 =C2=A0ecc_mem_writel_mer(uint32_t val) &quot;Write memory enable=
- 0x%08x&quot;<br>
-&gt;=C2=A0 =C2=A0ecc_mem_writel_mdr(uint32_t val) &quot;Write memory delay =
-0x%08x&quot;<br>
-&gt; <br>
-<br>
-</blockquote></div><div><br></div><div>Regards,</div><div>Niek<br></div><br=
->-- <br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Ni=
-ek Linnenbank<br><br></div></div></div></div>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div>
 
---000000000000a170b4059a0094dc--
+--0000000000001f929d059a010365--

@@ -1,317 +1,482 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1325953lff;
-        Wed, 18 Dec 2019 13:02:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy6u0cDlJjMJkLh9hjOamV8Cgg+aOWOpB52EzuMFOH/xyxhp9O6Z/WWDuli8iiT9pGxOu8p
-X-Received: by 2002:a9d:74c7:: with SMTP id a7mr4943157otl.7.1576702955269;
-        Wed, 18 Dec 2019 13:02:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576702955; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1353897lff;
+        Wed, 18 Dec 2019 13:27:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx/IKpZJY8Sw1g/9HZHJmtyibhEkvshVFsthPwBYraUC8k3RCzBg6AvaQV7//CJ06eZvD+o
+X-Received: by 2002:a37:9bc2:: with SMTP id d185mr4826918qke.422.1576704475977;
+        Wed, 18 Dec 2019 13:27:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576704475; cv=none;
         d=google.com; s=arc-20160816;
-        b=kFhXDcRj8QPOzBAyxSIDWfS8gsji3/t0LwhvZhk4HY0kFUfj6FvLP0/8+9kB8IP5BI
-         X8/7ogUN2SxDtqi8LWiDjrNq1igJ+XDqdBoyS3yKBDAWVPWnJnvJ/82g/mXMexHcuGSd
-         lx2CfMMFMYpiPKrfo0grJYcKVvNlmDjoeNG9WZZGUZp3BMqtsEYIhye1Xh8dB2lPOl6H
-         HJJVOMBZBaHJCTLSziopv01q9Nov9MCcLCh/w07w0bcBVn3Z6WThAedh1BtoEeZm7F29
-         MQJIBpxVizVDJ8Rm7Do8sAEkz+bN2IcBf16iHFCHlAu+BKc++AVyECDp7EosV1syTetQ
-         haOw==
+        b=hx1AcvWyFClOYkCDKs74hptuxVCsj7m/RYQncTbY79Tr16PeWlFS1ZsDvKT5Vaybu4
+         c/yFY3Vn9CQa6Wlpif5miCrXBBTkt6CmoQNkEPa82LmVqCV8oYqxJ7CnzI83a2YhvEUE
+         V6Lhodf36XB6uIFhZmNcmeMK2tHlig6lphAdwzMzzfEJ/kAcw1GVPXZyCEcHiDl4ev8N
+         9C5dHNBxP5KIt8gilVLABTF2nzaixF94D82WrZYAYCm1tb1uG7k9jc8iINmN5zbEVi6c
+         aEEyAdzR/xWTIslV6/NXMM0XIFCIhcNFgtpup0zK8V02KtiszS0t90JwXW85pchILDoD
+         3WaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=ZHGtntswR8W4mR3O18kwKAC9ejq3lYrTZEGigFPxDeI=;
-        b=Dkn7krB4SLGMjBxya1/uPG17PhjLT324lOaruoWd19c7S9FxCRSrJDkZ8UXJBjd03Y
-         ZnzLPvD32YGvj/xHa6cO0ZoSePIxkEt9cEteZfQnFkjpZSftNIjXNyR4kR6aRUoSgt8Y
-         QXgTLtl3Wn/fqXctRHIbqxZ08I6Vi2+vdYZIq7sRF04rom2B5IW7blWpiKEp6YUwZd0u
-         +0OP7AJSxHy4Dt7QDON1oeHyoma6I/VaO7Gg6gdvqzveRMDNxftYRjy4JeXiPJS3+eQX
-         Cdsj09tp2lK0Ukd76ABfvKMnl8+NDynUIZfNmx98g56UyAvwZ0LkjgmVY9BzGyqNdRzq
-         hu8g==
+        bh=hjzXs3cozJZpZgcBx2emjmDsMBr6Ew/+q/IvgzsBb8w=;
+        b=KSJIrNBIfcWLbIqBnHFZ/KX0wK3K6/LZOeCNEOZRjI1Ur/xczVEYQ8ZytRXH2s4r1F
+         w7LMFleJ0Ol6s5IlANNn6J/5+7UJGnbAUZxIaPKxTCX1y8ZRQ2BeHn3wer3gcT0Aq2l7
+         jWyx/bWnjAHcaTTLEOWupjA3991fQqF0kvEKjQ/3qQZbuRmWAg74T6JGmx3zWNT3xZlz
+         DjoB1iN6NUmEE5TLo/jSH58A39CTzEH5eNk6RhnSJ9iZxE1eNNq7fsHOOIK4u1s5Lt8g
+         IAP/SBb2ctkKzsI+R2iJdx0oQoBD4oz6Gcs0JH3dq4NEUf9oCtgQmWRWyiUsBNiST0+8
+         93MA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aIMhcUuw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V6aQ1bwW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a17si2060692otr.178.2019.12.18.13.02.35
+        by mx.google.com with ESMTPS id a1si2341478qkl.114.2019.12.18.13.27.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2019 13:02:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Dec 2019 13:27:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aIMhcUuw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60620 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V6aQ1bwW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihgSo-0001LY-AF
-	for alex.bennee@linaro.org; Wed, 18 Dec 2019 16:02:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37796)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihgrL-00025q-70
+	for alex.bennee@linaro.org; Wed, 18 Dec 2019 16:27:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59015)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ihgSd-0001Gl-60
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:02:26 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ihgpr-0000fX-Mn
+ for qemu-devel@nongnu.org; Wed, 18 Dec 2019 16:26:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ihgSX-0006uW-7m
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:02:19 -0500
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:39167)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ihgpo-0007QS-HX
+ for qemu-devel@nongnu.org; Wed, 18 Dec 2019 16:26:23 -0500
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:41592)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ihgSV-0006dK-23; Wed, 18 Dec 2019 16:02:16 -0500
-Received: by mail-il1-x143.google.com with SMTP id x5so2914653ila.6;
- Wed, 18 Dec 2019 13:02:08 -0800 (PST)
+ id 1ihgpo-0007Pi-B2; Wed, 18 Dec 2019 16:26:20 -0500
+Received: by mail-il1-x142.google.com with SMTP id f10so2954841ils.8;
+ Wed, 18 Dec 2019 13:26:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZHGtntswR8W4mR3O18kwKAC9ejq3lYrTZEGigFPxDeI=;
- b=aIMhcUuwnOSRH7aLtb/p3PcYjjrEgbuqUXOC+Mg9eopCE6A5B3tQe4R594GTjYvJEy
- T5OzfzkxnQZwlx0Zq6z18tHfH0wpcir65t3cIdmiN8wyFyxxD/RTcTOjot0r7cxpKuwd
- Uu6bT9qafpeNaLNuwtEKhBo4gFpSe8ulYIHiZWTKOv6vqrCQvSs1VL7hCtrXGhHbG9oO
- oS1oLnrVNxXzsprcS6u8iEAnm7a3S5Gjb1bhq92TDsuCjrogTOfp4sIv9c+LP0K+Neo7
- 2h1dlv49e/1qgKzy1Sx7SrFnP5cItyA5ekE7K6s2NBkIxJqKqOBiZytF5ZyRZuhkI5wd
- Apgw==
+ :cc; bh=hjzXs3cozJZpZgcBx2emjmDsMBr6Ew/+q/IvgzsBb8w=;
+ b=V6aQ1bwWnawCdghS0qJqu026jJFFdUR3TRnJQvEoIY7rG5QyY+lsNHTYDJWRARCVnw
+ r8Q9DdWTBbBsFWGHz+RNZqD89mC5wVQCACHO5CXB51ACjv1S7i8GLM8g0SdAxyJTJIr3
+ DqMcfw1gbsb3obBHf2FbeHOMCZ7ptcbBfvVRGTHyspQoaSNVwU7/CsnEdu+xepW7XwW1
+ VkLGxQr0DC7FlCqk/K0v9gi33M2+1lwNZ1JfmiHbGLACPB7k5HdlCUl+EHSWKgJbjL2p
+ TP6x+8bsqzj4zD3Utfc5sWs0NT4OoBIa7Yh/uGQoA1e9Rrg9LkqlPZJrphma17LJiWpO
+ IJCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ZHGtntswR8W4mR3O18kwKAC9ejq3lYrTZEGigFPxDeI=;
- b=NUKDFlKLqs9UQW7l4+5MsoqNbK7T2weMRebb0Pr8p4dMs2eEN33BhHUQi/ZrSKa+fv
- pqtKMTEcbLNmg3XLWraa3YbMElQIuGJKixAtn6gRv4ne8/DjdM8Ti9sDqrNfKWuo55W4
- 4wgarpeoUpqTXyqirc45a490KhbxH5FuYN+vEMRD7fJBbSs3lUZPMImyXGEjUc54+Wq0
- LZ8HACxERL41IOflEgHGzekQLdphAYkTd9PnD+sRixm+V7Rtgm6AC4HJfSi6zDbKWlh+
- BPIGYElWLDFa+2H44hL4VkzrjzawWn+32rl/5PbejgXkfbNyKiqXXKMLjZSLCr/npplU
- ghTw==
-X-Gm-Message-State: APjAAAVCKGFZdnMN6qw1ELV9miRvnFB55BFNwOIME7pnDN6hIbTe+kDR
- yNYwmdAK1P1tMC+yKkqg/e7QsAavFYoZ1T4Zetg=
-X-Received: by 2002:a92:5a45:: with SMTP id o66mr3672544ilb.67.1576702925654; 
- Wed, 18 Dec 2019 13:02:05 -0800 (PST)
+ bh=hjzXs3cozJZpZgcBx2emjmDsMBr6Ew/+q/IvgzsBb8w=;
+ b=jRA92cD25CRwqxeEoGbtAiHlsq2/viKxc/yHlHjFaH/Hrd2bEQYQiIp7IrC/fy5D6z
+ 40yZwVWfM99dPEYgH4C7XDX3VgxFqwjWyPdzXrYNSegIkcTzmJry8haIML4Mbntlo+9H
+ gdgPUbW0O+kKXnVBeLfPQ41WS4YRXVxuL9CHcR7jO4uUWT2t1ldeguLBj/Gt1P4snpqM
+ GA/ilLw6YiafBlde0bg/nG/VmhQP2T8+4moCT0wz1mvlo2TWu2oXyiJ4uCj6myc/taxC
+ S2Dv+M9MYKhBc2iIDXEeowat/FiwWOGyNf8jmfd0EhdUGK3ggxqGgQuDOfFFZs4+s9wC
+ Hetg==
+X-Gm-Message-State: APjAAAWe3CNQ8gZw9tswRNevSde9uUGiGB8xzDgmiRFqtPOZcLto0M+o
+ MC2LG9lWcbcAbY27YDlBzZXxx4Bpe/BLcS2rAXg=
+X-Received: by 2002:a92:a103:: with SMTP id v3mr3394346ili.265.1576704379474; 
+ Wed, 18 Dec 2019 13:26:19 -0800 (PST)
 MIME-Version: 1.0
-References: <20191216233519.29030-1-nieklinnenbank@gmail.com>
- <20191216233519.29030-7-nieklinnenbank@gmail.com>
- <CAPan3WpW1Q3zpnqgk=MWRWe99=MQ4XoW2kw8L3tioFxfEBXd+Q@mail.gmail.com>
- <CAFEAcA8Viii4Em_bf4Y=AG0jU+EFFFTX6dO-52qd=RT4uHbCVw@mail.gmail.com>
- <19e4f2ac-6067-f61f-f340-108545fb0f02@linaro.org>
-In-Reply-To: <19e4f2ac-6067-f61f-f340-108545fb0f02@linaro.org>
+References: <20191217182730.943-1-f4bug@amsat.org>
+ <20191217182730.943-6-f4bug@amsat.org>
+In-Reply-To: <20191217182730.943-6-f4bug@amsat.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 18 Dec 2019 22:01:54 +0100
-Message-ID: <CAPan3WrcvE_43=3+b4Ybn==TEQcKj+F_VWjJRBJ6MyXNrcpUbw@mail.gmail.com>
-Subject: Re: [PATCH v2 06/10] arm/arm-powerctl: rebuild hflags after setting
- CP15 bits in arm_set_cpu_on()
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000cccf81059a00c1c9"
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Received-From: 2607:f8b0:4864:20::143
-X-BeenThere: qemu-arm@nongnu.org
+Date: Wed, 18 Dec 2019 22:26:08 +0100
+Message-ID: <CAPan3WrgL-ULAMQPTHj7zbNMS_xaTuNprp1W4GzhryQbMcPQOA@mail.gmail.com>
+Subject: Re: [RFC PATCH 5/5] tests/boot_linux_console: Add a SLOW test booting
+ Ubuntu on OrangePi PC
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="000000000000745858059a0118b3"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::142
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fn+yqx3VbNBl
+ QEMU Developers <qemu-devel@nongnu.org>, Guenter Roeck <linux@roeck-us.net>,
+ Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RJA5UEA+Iy1K
 
---000000000000cccf81059a00c1c9
+--000000000000745858059a0118b3
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Hello Richard,
+Hi Philippe,
 
-On Tue, Dec 17, 2019 at 5:41 PM Richard Henderson <
-richard.henderson@linaro.org> wrote:
+This test has some problems on my host (Ubuntu 18.04.3 LTS, avocado 73.0,
+python 3.6.9):
 
-> On 12/17/19 6:12 AM, Peter Maydell wrote:
-> > Cc'ing Richard : this is one for you I think... (surely we
-> > need to rebuild the hflags from scratch when we power up
-> > a CPU anyway?)
->
-> We do compute hflags from scratch in reset.
->
-> It has also turned out that there were a few board models that poked at the
-> contents of the cpu and needed special help.  Some of that I would imagine
-> would be fixed properly with the multi-phase reset patches, where we could
-> rebuild hflags when *leaving* reset.
->
-> In arm_set_cpu_on_async_work, we start by resetting the cpu and then start
-> poking at the contents of some system registers.  So, yes, we do need to
-> rebuild after doing that.  Also, I'm not sure how this function should fit
-> into
-> the multi-phase reset future.
->
+ (4/4) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ora=
+ngepi_bionic:
+ERROR: Input format not supported by decoder (3.25 s)
+RESULTS    : PASS 3 | ERROR 1 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0
+| CANCEL 0
+JOB TIME   : 46.22 s
 
-Great, thanks a lot for confirming and clarifying this!
-You mention the multi-phase reset feature, is that going to replace the
-arm_set_cpu_on() functionality?
-Currently I chose to use this function for implementing the CPU
-configuration module in the Allwinner H3 Soc.
-U-Boot needs the CPU configuration module to provide PSCI which Linux uses
-to bring up the secondary cores.
-And basically the CPU configuration module needs something to let the
-secondary CPUs power on, reset and start executing at some address.
-
-Would you suggest to keep using arm_set_cpu_on() for this, or should I
-instead use a different function?
+I suspect it didn't download the image correctly.
 
 Regards,
 Niek
 
+On Tue, Dec 17, 2019 at 7:27 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
+
+> This test boots Ubuntu Bionic on a OrangePi PC board.
 >
-> So:
+> As it requires 1GB of storage, and is slow, this test is disabled
+> on automatic CI testing.
 >
-> >> On Tue, Dec 17, 2019 at 12:36 AM Niek Linnenbank <
-> nieklinnenbank@gmail.com> wrote:
-> >>>
-> >>> After setting CP15 bits in arm_set_cpu_on() the cached hflags must
-> >>> be rebuild to reflect the changed processor state. Without rebuilding,
-> >>> the cached hflags would be inconsistent until the next call to
-> >>> arm_rebuild_hflags(). When QEMU is compiled with debugging enabled
-> >>> (--enable-debug), this problem is captured shortly after the first
-> >>> call to arm_set_cpu_on() for CPUs running in ARM 32-bit non-secure
-> mode:
-> >>>
-> >>>   qemu-system-arm: target/arm/helper.c:11359: cpu_get_tb_cpu_state:
-> >>>   Assertion `flags == rebuild_hflags_internal(env)' failed.
-> >>>   Aborted (core dumped)
-> >>>
-> >>> Fixes: 0c7f8c43daf65
-> >>> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> >>> ---
-> >>>  target/arm/arm-powerctl.c | 3 +++
-> >>>  1 file changed, 3 insertions(+)
-> >>>
-> >>> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-> >>> index b064513d44..b75f813b40 100644
-> >>> --- a/target/arm/arm-powerctl.c
-> >>> +++ b/target/arm/arm-powerctl.c
-> >>> @@ -127,6 +127,9 @@ static void arm_set_cpu_on_async_work(CPUState
-> *target_cpu_state,
-> >>>          target_cpu->env.regs[0] = info->context_id;
-> >>>      }
-> >>>
-> >>> +    /* CP15 update requires rebuilding hflags */
-> >>> +    arm_rebuild_hflags(&target_cpu->env);
-> >>> +
-> >>>      /* Start the new CPU at the requested address */
-> >>>      cpu_set_pc(target_cpu_state, info->entry);
-> >>>
+> It is useful for workstation testing. Currently Avocado timeouts too
+> quickly, so we can't run userland commands.
 >
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> The kernel image and DeviceTree blob are built by the Raspbian
+> project (based on Debian):
+> https://www.raspbian.org/RaspbianImages
 >
+> The Ubuntu image is downloaded from:
+> https://dl.armbian.com/orangepipc/Bionic_current
 >
-> r~
+> This test can be run using:
+>
+>   $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes \
+>     avocado --show=3Dapp,console run -t machine:orangepi-pc \
+>       tests/acceptance/boot_linux_console.py
+>   console: Uncompressing Linux... done, booting the kernel.
+>   console: Booting Linux on physical CPU 0x0
+>   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version
+> 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET
+> 2019
+>   console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D50c53=
+87d
+>   console: CPU: div instructions available: patching division code
+>   console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing
+> instruction cache
+>   console: OF: fdt: Machine model: Xunlong Orange Pi PC
+>   [...]
+>   console: sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 K=
+B
+>   console: NET: Registered protocol family 10
+>   console: mmc0: host does not support reading read-only switch, assuming
+> write-enable
+>   console: mmc0: Problem switching card into high-speed mode!
+>   console: mmc0: new SD card at address 4567
+>   console: mmcblk0: mmc0:4567 QEMU! 932 MiB
+>   console: Segment Routing with IPv6
+>   console: NET: Registered protocol family 17
+>   console: NET: Registered protocol family 15
+>   console: bridge: filtering via arp/ip/ip6tables is no longer available
+> by default. Update your scripts to load br_netfilter if you need this.
+>   console: 8021q: 802.1Q VLAN Support v1.8
+>   console: Key type dns_resolver registered
+>   console: Registering SWP/SWPB emulation handler
+>   console: mmcblk0: p1
+>   [...]
+>   console: Freeing unused kernel memory: 1024K
+>   console: Run /sbin/init as init process
+>   console: random: fast init done
+>   console: systemd[1]: System time before build time, advancing clock.
+>   console: systemd[1]: systemd 237 running in system mode. (+PAM +AUDIT
+> +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT
+> +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD -IDN2 +IDN -PCRE2
+> default-hierarchy=3Dhybrid)
+>   console: systemd[1]: Detected architecture arm.
+>   console: Welcome to Ubuntu 18.04.3 LTS!
+>   console: systemd[1]: Set hostname to <orangepipc>.
+>   console: random: systemd: uninitialized urandom read (16 bytes read)
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> RFC because this is not the definitive test, but it is helpful so
+> for for testing Niek work.
+> ---
+>  tests/acceptance/boot_linux_console.py | 41 ++++++++++++++++++++++++++
+>  1 file changed, 41 insertions(+)
+>
+> diff --git a/tests/acceptance/boot_linux_console.py
+> b/tests/acceptance/boot_linux_console.py
+> index 8179b45910..663290e0c7 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -520,6 +520,47 @@ class BootLinuxConsole(Test):
+>          exec_command_and_wait_for_pattern(self, 'reboot',
+>                                                  'reboot: Restarting
+> system')
+>
+> +    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage
+> limited')
+> +    def test_arm_orangepi_bionic(self):
+> +        """
+> +        :avocado: tags=3Darch:arm
+> +        :avocado: tags=3Dmachine:orangepi-pc
+> +        """
+> +        # This test download a 196MB compressed image and expand it to
+> 932MB...
+> +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+> +
+>  'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+> +        deb_hash =3D '1334c29c44d984ffa05ed10de8c3361f33d78315'
+> +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+> +        kernel_path =3D self.extract_from_deb(deb_path,
+> +                                            '/boot/vmlinuz-4.20.7-sunxi'=
+)
+> +        dtb_path =3D
+> '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
+> +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+> +        image_url =3D ('https://dl.armbian.com/orangepipc/archive/'
+> +                     'Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.7z=
+')
+> +        image_hash =3D '196a8ffb72b0123d92cea4a070894813d305c71e'
+> +        image_path_xz =3D self.fetch_asset(image_url, asset_hash=3Dimage=
+_hash)
+> +        image_name =3D 'Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.=
+img'
+> +        image_path =3D os.path.join(self.workdir, image_name)
+> +        archive.lzma_uncompress(image_path_xz, image_path)
+> +
+> +        self.vm.set_machine('orangepi-pc')
+> +        self.vm.set_console()
+> +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
+> +                               'console=3DttyS0,115200 '
+> +                               'root=3D/dev/mmcblk0p1 rootwait rw '
+> +                               'systemd.mask=3Ddev-ttyS0.device '
+> +                               'systemd.mask=3Darmbian-zram-config.servi=
+ce '
+> +                               'systemd.mask=3Darmbian-ramlog.service')
+> +        self.vm.add_args('-kernel', kernel_path,
+> +                         '-dtb', dtb_path,
+> +                         '-drive', 'file=3D' + image_path +
+> ',if=3Dsd,format=3Draw',
+> +                         '-append', kernel_command_line,
+> +                         '-nic', 'user',
+> +                         '-no-reboot')
+> +        self.vm.launch()
+> +        self.wait_for_console_pattern('Welcome to Ubuntu 18.04.3 LTS!')
+> +        self.wait_for_console_pattern('Started Armbian filesystem
+> resize.')
+> +
+>      def test_s390x_s390_ccw_virtio(self):
+>          """
+>          :avocado: tags=3Darch:s390x
+> --
+> 2.21.0
+>
 >
 
-
--- 
+--=20
 Niek Linnenbank
 
---000000000000cccf81059a00c1c9
+--000000000000745858059a0118b3
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hello Richard,<br></div><br><div class=3D"gmail_quote=
-"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 17, 2019 at 5:41 PM Ric=
-hard Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.=
-henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
-);padding-left:1ex">On 12/17/19 6:12 AM, Peter Maydell wrote:<br>
-&gt; Cc&#39;ing Richard : this is one for you I think... (surely we<br>
-&gt; need to rebuild the hflags from scratch when we power up<br>
-&gt; a CPU anyway?)<br>
+<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div>This test has s=
+ome problems on my host (Ubuntu 18.04.3 LTS, avocado 73.0, python 3.6.9):<b=
+r><pre> (4/4) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
+arm_orangepi_bionic: ERROR: Input format not supported by decoder (3.25 s)
+RESULTS    : PASS 3 | ERROR 1 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CA=
+NCEL 0
+JOB TIME   : 46.22 s
+</pre></div><div>I suspect it didn&#39;t download the image correctly.</div=
+><div><br></div><div>Regards,</div><div>Niek<br></div><div><br></div><div c=
+lass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 17, =
+2019 at 7:27 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@ams=
+at.org">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex">This test boots Ubuntu Bionic on a OrangePi PC board=
+.<br>
 <br>
-We do compute hflags from scratch in reset.<br>
+As it requires 1GB of storage, and is slow, this test is disabled<br>
+on automatic CI testing.<br>
 <br>
-It has also turned out that there were a few board models that poked at the=
+It is useful for workstation testing. Currently Avocado timeouts too<br>
+quickly, so we can&#39;t run userland commands.<br>
 <br>
-contents of the cpu and needed special help.=C2=A0 Some of that I would ima=
-gine<br>
-would be fixed properly with the multi-phase reset patches, where we could<=
-br>
-rebuild hflags when *leaving* reset.<br>
+The kernel image and DeviceTree blob are built by the Raspbian<br>
+project (based on Debian):<br>
+<a href=3D"https://www.raspbian.org/RaspbianImages" rel=3D"noreferrer" targ=
+et=3D"_blank">https://www.raspbian.org/RaspbianImages</a><br>
 <br>
-In arm_set_cpu_on_async_work, we start by resetting the cpu and then start<=
-br>
-poking at the contents of some system registers.=C2=A0 So, yes, we do need =
-to<br>
-rebuild after doing that.=C2=A0 Also, I&#39;m not sure how this function sh=
-ould fit into<br>
-the multi-phase reset future.<br></blockquote><div><br></div><div>Great, th=
-anks a lot for confirming and clarifying this!</div><div>You mention the mu=
-lti-phase reset feature, is that going to replace the arm_set_cpu_on() func=
-tionality?</div><div>Currently I chose to use this function for implementin=
-g the CPU configuration module in the Allwinner H3 Soc.</div><div><div>U-Bo=
-ot needs the CPU configuration module to provide PSCI which Linux uses to b=
-ring up the secondary cores.</div></div><div>And basically the CPU configur=
-ation module needs something to let the secondary CPUs power on, reset and =
-start executing at some address.</div><div><br></div><div>Would you suggest=
- to keep using arm_set_cpu_on() for this, or should I instead use a differe=
-nt function?<br></div><div><br></div><div>Regards,</div><div>Niek<br></div>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-So:<br>
-<br>
-&gt;&gt; On Tue, Dec 17, 2019 at 12:36 AM Niek Linnenbank &lt;<a href=3D"ma=
-ilto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</=
-a>&gt; wrote:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; After setting CP15 bits in arm_set_cpu_on() the cached hflags =
-must<br>
-&gt;&gt;&gt; be rebuild to reflect the changed processor state. Without reb=
-uilding,<br>
-&gt;&gt;&gt; the cached hflags would be inconsistent until the next call to=
-<br>
-&gt;&gt;&gt; arm_rebuild_hflags(). When QEMU is compiled with debugging ena=
-bled<br>
-&gt;&gt;&gt; (--enable-debug), this problem is captured shortly after the f=
-irst<br>
-&gt;&gt;&gt; call to arm_set_cpu_on() for CPUs running in ARM 32-bit non-se=
-cure mode:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0qemu-system-arm: target/arm/helper.c:11359: cpu_ge=
-t_tb_cpu_state:<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0Assertion `flags =3D=3D rebuild_hflags_internal(en=
-v)&#39; failed.<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0Aborted (core dumped)<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Fixes: 0c7f8c43daf65<br>
-&gt;&gt;&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinne=
-nbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt;&gt;&gt; ---<br>
-&gt;&gt;&gt;=C2=A0 target/arm/arm-powerctl.c | 3 +++<br>
-&gt;&gt;&gt;=C2=A0 1 file changed, 3 insertions(+)<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerc=
-tl.c<br>
-&gt;&gt;&gt; index b064513d44..b75f813b40 100644<br>
-&gt;&gt;&gt; --- a/target/arm/arm-powerctl.c<br>
-&gt;&gt;&gt; +++ b/target/arm/arm-powerctl.c<br>
-&gt;&gt;&gt; @@ -127,6 +127,9 @@ static void arm_set_cpu_on_async_work(CPUS=
-tate *target_cpu_state,<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 target_cpu-&gt;env.regs[0] =
-=3D info-&gt;context_id;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 /* CP15 update requires rebuilding hflags */<br=
->
-&gt;&gt;&gt; +=C2=A0 =C2=A0 arm_rebuild_hflags(&amp;target_cpu-&gt;env);<br=
->
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 /* Start the new CPU at the requested addr=
-ess */<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 cpu_set_pc(target_cpu_state, info-&gt;entr=
-y);<br>
-&gt;&gt;&gt;<br>
-<br>
-Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
-ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
+The Ubuntu image is downloaded from:<br>
+<a href=3D"https://dl.armbian.com/orangepipc/Bionic_current" rel=3D"norefer=
+rer" target=3D"_blank">https://dl.armbian.com/orangepipc/Bionic_current</a>=
 <br>
 <br>
-r~<br>
+This test can be run using:<br>
+<br>
+=C2=A0 $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes \<br>
+=C2=A0 =C2=A0 avocado --show=3Dapp,console run -t machine:orangepi-pc \<br>
+=C2=A0 =C2=A0 =C2=A0 tests/acceptance/boot_linux_console.py<br>
+=C2=A0 console: Uncompressing Linux... done, booting the kernel.<br>
+=C2=A0 console: Booting Linux on physical CPU 0x0<br>
+=C2=A0 console: Linux version 4.20.7-sunxi (<a href=3D"mailto:root@armbian.=
+com" target=3D"_blank">root@armbian.com</a>) (gcc version 7.2.1 20171011 (L=
+inaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019<br>
+=C2=A0 console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D50=
+c5387d<br>
+=C2=A0 console: CPU: div instructions available: patching division code<br>
+=C2=A0 console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing inst=
+ruction cache<br>
+=C2=A0 console: OF: fdt: Machine model: Xunlong Orange Pi PC<br>
+=C2=A0 [...]<br>
+=C2=A0 console: sunxi-mmc 1c0f000.mmc: initialized, max. request size: 1638=
+4 KB<br>
+=C2=A0 console: NET: Registered protocol family 10<br>
+=C2=A0 console: mmc0: host does not support reading read-only switch, assum=
+ing write-enable<br>
+=C2=A0 console: mmc0: Problem switching card into high-speed mode!<br>
+=C2=A0 console: mmc0: new SD card at address 4567<br>
+=C2=A0 console: mmcblk0: mmc0:4567 QEMU! 932 MiB<br>
+=C2=A0 console: Segment Routing with IPv6<br>
+=C2=A0 console: NET: Registered protocol family 17<br>
+=C2=A0 console: NET: Registered protocol family 15<br>
+=C2=A0 console: bridge: filtering via arp/ip/ip6tables is no longer availab=
+le by default. Update your scripts to load br_netfilter if you need this.<b=
+r>
+=C2=A0 console: 8021q: 802.1Q VLAN Support v1.8<br>
+=C2=A0 console: Key type dns_resolver registered<br>
+=C2=A0 console: Registering SWP/SWPB emulation handler<br>
+=C2=A0 console: mmcblk0: p1<br>
+=C2=A0 [...]<br>
+=C2=A0 console: Freeing unused kernel memory: 1024K<br>
+=C2=A0 console: Run /sbin/init as init process<br>
+=C2=A0 console: random: fast init done<br>
+=C2=A0 console: systemd[1]: System time before build time, advancing clock.=
+<br>
+=C2=A0 console: systemd[1]: systemd 237 running in system mode. (+PAM +AUDI=
+T +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GN=
+UTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD -IDN2 +IDN -PCRE2 defaul=
+t-hierarchy=3Dhybrid)<br>
+=C2=A0 console: systemd[1]: Detected architecture arm.<br>
+=C2=A0 console: Welcome to Ubuntu 18.04.3 LTS!<br>
+=C2=A0 console: systemd[1]: Set hostname to &lt;orangepipc&gt;.<br>
+=C2=A0 console: random: systemd: uninitialized urandom read (16 bytes read)=
+<br>
+<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+---<br>
+RFC because this is not the definitive test, but it is helpful so<br>
+for for testing Niek work.<br>
+---<br>
+=C2=A0tests/acceptance/boot_linux_console.py | 41 +++++++++++++++++++++++++=
++<br>
+=C2=A01 file changed, 41 insertions(+)<br>
+<br>
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot=
+_linux_console.py<br>
+index 8179b45910..663290e0c7 100644<br>
+--- a/tests/acceptance/boot_linux_console.py<br>
++++ b/tests/acceptance/boot_linux_console.py<br>
+@@ -520,6 +520,47 @@ class BootLinuxConsole(Test):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exec_command_and_wait_for_pattern(self, &=
+#39;reboot&#39;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;reboot: Restarting system&#39;)<br>
+<br>
++=C2=A0 =C2=A0 @skipUnless(os.getenv(&#39;AVOCADO_ALLOW_LARGE_STORAGE&#39;)=
+, &#39;storage limited&#39;)<br>
++=C2=A0 =C2=A0 def test_arm_orangepi_bionic(self):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Darch:arm<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:orangepi-pc<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 # This test download a 196MB compressed image =
+and expand it to 932MB...<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.armbi=
+an.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https://apt.armbi=
+an.com/pool/main/l/</a>&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;=
+linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;1334c29c44d984ffa05ed10de8c3=
+361f33d78315&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_url, asset_h=
+ash=3Ddeb_hash)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_deb(deb_path=
+,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &#39;/boot/vmlinuz-4.20.7-sunxi&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-dev-sun=
+xi/sun8i-h3-orangepi-pc.dtb&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(deb_path, d=
+tb_path)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_url =3D (&#39;<a href=3D"https://dl.armb=
+ian.com/orangepipc/archive/" rel=3D"noreferrer" target=3D"_blank">https://d=
+l.armbian.com/orangepipc/archive/</a>&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0&#39;Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.7z&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_hash =3D &#39;196a8ffb72b0123d92cea4a070=
+894813d305c71e&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_path_xz =3D self.fetch_asset(image_url, =
+asset_hash=3Dimage_hash)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_name =3D &#39;Armbian_19.11.3_Orangepipc=
+_bionic_current_5.3.9.img&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_path =3D os.path.join(self.workdir, imag=
+e_name)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 archive.lzma_uncompress(image_path_xz, image_p=
+ath)<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_machine(&#39;orangepi-pc&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_console()<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_command_line =3D (self.KERNEL_COMMON_CO=
+MMAND_LINE +<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;console=3DttyS0,115200 &#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;root=3D/dev/mmcblk0p1 rootwait r=
+w &#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;systemd.mask=3Ddev-ttyS0.device =
+&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;systemd.mask=3Darmbian-zram-conf=
+ig.service &#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;systemd.mask=3Darmbian-ramlog.se=
+rvice&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.add_args(&#39;-kernel&#39;, kernel_pat=
+h,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-dtb&#39;, dtb_path,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-drive&#39;, &#39;file=3D&#39; + image_path + &#39;,i=
+f=3Dsd,format=3Draw&#39;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-append&#39;, kernel_command_line,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-nic&#39;, &#39;user&#39;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-no-reboot&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.launch()<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(&#39;Welcome to =
+Ubuntu 18.04.3 LTS!&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(&#39;Started Arm=
+bian filesystem resize.&#39;)<br>
++<br>
+=C2=A0 =C2=A0 =C2=A0def test_s390x_s390_ccw_virtio(self):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0:avocado: tags=3Darch:s390x<br>
+-- <br>
+2.21.0<br>
+<br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
 div></div>
 
---000000000000cccf81059a00c1c9--
+--000000000000745858059a0118b3--

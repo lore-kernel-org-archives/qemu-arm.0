@@ -1,283 +1,514 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp220185lff;
-        Tue, 17 Dec 2019 19:46:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxrxcJXZjF/+7akyZAthIoFunUNMcKLcIcrltMbL7piDIt45qrMzAwuP56QrmlLnivyxs2R
-X-Received: by 2002:a9d:75c5:: with SMTP id c5mr273841otl.172.1576640809309;
-        Tue, 17 Dec 2019 19:46:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576640809; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp234383lff;
+        Tue, 17 Dec 2019 20:05:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzFMMFCl3yg09eZ1xjLvURCRu9ucMKCeQZFRryQqphlbtbrMlCBHXTBpSUoybJ41oFOfmGw
+X-Received: by 2002:a05:6830:1e30:: with SMTP id t16mr349172otr.220.1576641901984;
+        Tue, 17 Dec 2019 20:05:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576641901; cv=none;
         d=google.com; s=arc-20160816;
-        b=oe/lsNGtyAbV1OGxxLVpUQF4p2vqpaGDhq1Gziw14smw672OjiJVZ5tF/74Pr1F8Dz
-         beEn1T/YLkGAVs7tGIO1LWOSgM4lj3gJpNfHWeeZWlPm4zdPR8NSgeIVYFpPc+uh4VN3
-         iJdxdSHq73Vx83JwHpL/BShNCcl/IpbptCCF7K8ZDKgwPV8Z9Xi9dE9O0u3Cb7P9U8NJ
-         wJXthx03B+AGuX5LnrVM7Eyjsjew6y8fyu4lZySioI3GvlYRhF6XRqmriuepuoMIkjhV
-         bOu7Ol10kbdFtWOMCZfC8ywDFV8gtPA75Pmo1YhGmYf2LL7u5jyZMMEsYi0ZGj43VdIW
-         75OA==
+        b=oCvImM1Kyi90FHbQZCEWgvSkEqy72pw3Jr2O0g+MSbEwzKz+MRoRhkxk8aKWiI3tHM
+         QRcfOUTBkYhOjvS2sYDSYK5WcYkrbyKM0EPiyInmHc3aKpFQzHsxzWxQu7jM2iVLlQbI
+         BuD2iNGJWQTTOV1/LFHCrjdaJ/SSN+FBc+LN9FofKNTS/HW6ES3VW2OwZcCoiWmbGBNz
+         8x24MGtv6lF9y3kolE0urBmGKSFk1MdXxHRhV/DId8u0kqFRQgB3IzgIGDOOxTvpkfKL
+         3g/3Xqk5rY7uCvpY+SK4NGmTEYxfPEB2Ql+5QbNDKtoSXlqCcrik85WALYMTL0c8gDeB
+         6lcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=mK4YDpGv+x0BAun1rUh1RXI9XeAP5tlPdbXiMrlwZYA=;
-        b=uvltXAc6xZzlm9n/NIYYSJZvCqAapQRSQGuBLDM/mFUMa85YkGLaIHmSu4BN5z0gJ0
-         vDcIrRfXm897J4fkpr0RENZqVzFwBbUegzKx+HrqFFk6beWsNobDwprmgDMOkioTJKLn
-         AQoxptEcNLAV1EfBOR5s3TYSbUJZyuSzXUX2mjsJX5u/cMKhJcvNUWuL5ybA9RWTA5PN
-         lGpOmH3ig15ffQUjS9/M8D3C2gXnfkN5MhR/8Ag9soF0bXlpZTAVtHRmoat3I44dafqK
-         lFUzb5Da1pQasDvd4msSjfGZnKLLHz2E1hQYI/E+SJu6i7nWfqQZwk/O/JHXOsJ55pkB
-         3YeA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=Gn5u53AcHsOLz5ep22Df1IpTEhdGFxnRJsa3OabeLBc=;
+        b=egMR8gvbjUIqnjHn9H2HD/sQQoo1N2109/MEk7bOSVR0BBTDmICUHs7wilRmBIVEnw
+         n1bvpQAG/9CBAzNNOhMeV7+6dZF4EeSszxLfGEBjFZFm2Q6a4v02mi5E6sHFr7rTXpCx
+         eytGIvrSbHAUfkpMFW2cjQV39M96pQCVEyc7Wcwc/P6FVV+otisV9AF8ejdYa8IQlQH+
+         fn3Ta0D7520DBjv+JFLN3Rzn4IG0VzEMQnBpBUZ7YbTd35/F64kRzwFAtuhJLMfVhHSG
+         AwLCmS9+A3215mUw4++K8S5wp/xrmtB153FjN3INh9u1ygkkFqb17hHMWCAny6ThSeWn
+         nCjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id x26si707421oto.1.2019.12.17.19.46.48;
-        Tue, 17 Dec 2019 19:46:49 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YGDg11vw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q25si604340otc.115.2019.12.17.20.05.01
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Dec 2019 20:05:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726496AbfLRDqr (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 17 Dec 2019 22:46:47 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:44880 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726454AbfLRDqr (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 17 Dec 2019 22:46:47 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 6ABE29A27480C7A027BF;
-        Wed, 18 Dec 2019 11:46:44 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Wed, 18 Dec 2019
- 11:46:36 +0800
-Subject: Re: [kvm-unit-tests PATCH 05/16] arm/arm64: ITS: Introspection tests
-To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
-        <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>
-CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
-        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
-        <thuth@redhat.com>
-References: <20191216140235.10751-1-eric.auger@redhat.com>
- <20191216140235.10751-6-eric.auger@redhat.com>
-From:   Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <c133ebe6-10f4-2ff7-f75f-75b755397785@huawei.com>
-Date:   Wed, 18 Dec 2019 11:46:34 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YGDg11vw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49370 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihQa4-0008Uf-NM
+	for alex.bennee@linaro.org; Tue, 17 Dec 2019 23:05:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49648)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <alistair23@gmail.com>) id 1ihQZq-0008PG-NZ
+ for qemu-arm@nongnu.org; Tue, 17 Dec 2019 23:04:48 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <alistair23@gmail.com>) id 1ihQZo-0007zs-Os
+ for qemu-arm@nongnu.org; Tue, 17 Dec 2019 23:04:46 -0500
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:39504)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1ihQZj-0007sJ-Jz; Tue, 17 Dec 2019 23:04:40 -0500
+Received: by mail-lf1-x142.google.com with SMTP id y1so610410lfb.6;
+ Tue, 17 Dec 2019 20:04:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Gn5u53AcHsOLz5ep22Df1IpTEhdGFxnRJsa3OabeLBc=;
+ b=YGDg11vwcL+UhzjCHOiuSKvx265s/lEQvYo3cIesUfstc1TMTDUMkMiWmpyTz7Mele
+ hKSFvocS2uhzd2UCm6SS7bD2P7QETvd9rruaqSM8iKWYGzOLE+jTnwTBNPzWI1BegX5g
+ wFsLyUtzckrxrCx9pYYAxGDens6LyE5zJkCF4unfe0hcyeVWuRxEYm2N17Bu5E/8OieJ
+ Emlaiog6kkWMXwHYXxlIttymvudvvr8eL/t85T4+kW4ZeEFcXXaGIitO4w1zdMqIhurM
+ znxRssPERJMwK3Q9wVznR1b9u8uKHCcr9xzP9NZW+/Q/X4LhWZKSblXAA58ABDEaasVG
+ F9Uw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Gn5u53AcHsOLz5ep22Df1IpTEhdGFxnRJsa3OabeLBc=;
+ b=LkE2LZqrClCQzHwV5sBPGzRYDuDO6yUvctZjQPaZS92MFiYp+D4wY4Y4uu2wqvIa8N
+ Q1Wd7828k+4jUimF423U+5gV8gb6ZUq1DBhdSFUGac+vE2vzsYvE18EDVN37zW6NMZaA
+ n9F44z/f3ihmXDFS5eKvrZwdR54YUa6wGXC+Pc1xwHj7mset8se9nQWovydJs0C+qGs2
+ Sd5jA0MdHTTGY6R1cIFpn2XB4BH87q/48vWob0MXn1606+wR99AHRL0Mx05+5Pm+rmc1
+ ycnQIZrQi+EU90+oVVI04NU+H6g+D37/2zGw86R8TzhZgGP7qu+xGpfujRs2gR1jgEHr
+ iD8Q==
+X-Gm-Message-State: APjAAAV+LAyRrXRRPXBelHa8q2iE6MupwpEnEtjbHjg8MwOK2AvpKBsN
+ 68qtWNt/pCDlez/IWp+vN6EhpWeQ5z2sand/eOo=
+X-Received: by 2002:a19:8a41:: with SMTP id m62mr270749lfd.5.1576641877204;
+ Tue, 17 Dec 2019 20:04:37 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191216140235.10751-6-eric.auger@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.173.222.27]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ZD7L8UQt9Nk1
+References: <cover.1576227325.git.alistair@alistair23.me>
+ <717e76b6d41e09c352d98a83708c3e3c9fe5d63b.1576227325.git.alistair@alistair23.me>
+ <13f8810e-fb67-24c8-fecf-72f48ac5c7db@redhat.com>
+In-Reply-To: <13f8810e-fb67-24c8-fecf-72f48ac5c7db@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 17 Dec 2019 20:04:07 -0800
+Message-ID: <CAKmqyKPQbLp+SAeUMQt5MThu=ekgpJCuM-=LoydqBF4xfyefxA@mail.gmail.com>
+Subject: Re: [PATCH v6 2/4] hw/misc: Add the STM32F4xx EXTI device
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::142
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nkWcoi4oqnQN
 
-Hi Eric,
+On Sat, Dec 14, 2019 at 5:49 AM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> Hi Alistair,
+>
+> On 12/14/19 3:44 AM, Alistair Francis wrote:
+> > Signed-off-by: Alistair Francis <alistair@alistair23.me>
+> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >   hw/arm/Kconfig                   |   1 +
+> >   hw/misc/Kconfig                  |   3 +
+> >   hw/misc/Makefile.objs            |   1 +
+> >   hw/misc/stm32f4xx_exti.c         | 189 ++++++++++++++++++++++++++++++=
++
+> >   hw/misc/trace-events             |   5 +
+> >   include/hw/misc/stm32f4xx_exti.h |  60 ++++++++++
+> >   6 files changed, 259 insertions(+)
+> >   create mode 100644 hw/misc/stm32f4xx_exti.c
+> >   create mode 100644 include/hw/misc/stm32f4xx_exti.h
+> >
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index 4660d14715..3d86691ae0 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -315,6 +315,7 @@ config STM32F405_SOC
+> >       bool
+> >       select ARM_V7M
+> >       select STM32F4XX_SYSCFG
+> > +    select STM32F4XX_EXTI
+> >
+> >   config XLNX_ZYNQMP_ARM
+> >       bool
+> > diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> > index 72609650b7..bdd77d8020 100644
+> > --- a/hw/misc/Kconfig
+> > +++ b/hw/misc/Kconfig
+> > @@ -85,6 +85,9 @@ config STM32F2XX_SYSCFG
+> >   config STM32F4XX_SYSCFG
+> >       bool
+> >
+> > +config STM32F4XX_EXTI
+> > +    bool
+> > +
+> >   config MIPS_ITU
+> >       bool
+> >
+> > diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> > index ea8025e0bb..c6ecbdd7b0 100644
+> > --- a/hw/misc/Makefile.objs
+> > +++ b/hw/misc/Makefile.objs
+> > @@ -59,6 +59,7 @@ common-obj-$(CONFIG_ZYNQ) +=3D zynq_slcr.o
+> >   common-obj-$(CONFIG_ZYNQ) +=3D zynq-xadc.o
+> >   common-obj-$(CONFIG_STM32F2XX_SYSCFG) +=3D stm32f2xx_syscfg.o
+> >   common-obj-$(CONFIG_STM32F4XX_SYSCFG) +=3D stm32f4xx_syscfg.o
+> > +common-obj-$(CONFIG_STM32F4XX_EXTI) +=3D stm32f4xx_exti.o
+> >   obj-$(CONFIG_MIPS_CPS) +=3D mips_cmgcr.o
+> >   obj-$(CONFIG_MIPS_CPS) +=3D mips_cpc.o
+> >   obj-$(CONFIG_MIPS_ITU) +=3D mips_itu.o
+> > diff --git a/hw/misc/stm32f4xx_exti.c b/hw/misc/stm32f4xx_exti.c
+> > new file mode 100644
+> > index 0000000000..7f87a885aa
+> > --- /dev/null
+> > +++ b/hw/misc/stm32f4xx_exti.c
+> > @@ -0,0 +1,189 @@
+> > +/*
+> > + * STM32F4XX EXTI
+> > + *
+> > + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
+> > + *
+> > + * Permission is hereby granted, free of charge, to any person obtaini=
+ng a copy
+> > + * of this software and associated documentation files (the "Software"=
+), to deal
+> > + * in the Software without restriction, including without limitation t=
+he rights
+> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/o=
+r sell
+> > + * copies of the Software, and to permit persons to whom the Software =
+is
+> > + * furnished to do so, subject to the following conditions:
+> > + *
+> > + * The above copyright notice and this permission notice shall be incl=
+uded in
+> > + * all copies or substantial portions of the Software.
+> > + *
+> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXP=
+RESS OR
+> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABI=
+LITY,
+> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT S=
+HALL
+> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES O=
+R OTHER
+> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARI=
+SING FROM,
+> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALI=
+NGS IN
+> > + * THE SOFTWARE.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "qemu/log.h"
+> > +#include "trace.h"
+> > +#include "hw/irq.h"
+> > +#include "migration/vmstate.h"
+> > +#include "hw/misc/stm32f4xx_exti.h"
+> > +
+> > +static void stm32f4xx_exti_reset(DeviceState *dev)
+> > +{
+> > +    STM32F4xxExtiState *s =3D STM32F4XX_EXTI(dev);
+> > +
+> > +    s->exti_imr =3D 0x00000000;
+> > +    s->exti_emr =3D 0x00000000;
+> > +    s->exti_rtsr =3D 0x00000000;
+> > +    s->exti_ftsr =3D 0x00000000;
+> > +    s->exti_swier =3D 0x00000000;
+> > +    s->exti_pr =3D 0x00000000;
+> > +}
+> > +
+> > +static void stm32f4xx_exti_set_irq(void *opaque, int irq, int level)
+> > +{
+> > +    STM32F4xxExtiState *s =3D opaque;
+> > +
+> > +    if (!((1 << irq) & s->exti_imr)) {
+> > +        /* Interrupt is masked */
+> > +        return;
+>
+> I'm not sure this is correct, don't you need to set the bit in the
+> exti_pr register regardless it is masked? Else in masked polling mode
+> the guest will never see IRQ delivered.
+>
+> So I'd drop this if statement, ...
+>
+> > +    }
+> > +
+> > +    trace_stm32f4xx_exti_set_irq(irq, level);
+> > +
+> > +    if (((1 << irq) & s->exti_rtsr) && level) {
+> > +        /* Rising Edge */
+> > +        qemu_irq_pulse(s->irq[irq]);
+>
+> ... do not pulse here, ...
+>
+> > +        s->exti_pr |=3D 1 << irq;
+> > +    }
+> > +
+> > +    if (((1 << irq) & s->exti_ftsr) && !level) {
+> > +        /* Falling Edge */
+> > +        qemu_irq_pulse(s->irq[irq]);
+>
+> ... do not pulse here, ...
+>
+> > +        s->exti_pr |=3D 1 << irq;
+> > +    }
+>
+> ... and here pulse if not masked:
+>
+>         if (!((1 << irq) & s->exti_imr)) {
+>             /* Interrupt is masked */
+>             return;
+>         }
+>         qemu_irq_pulse(s->irq[irq]);
+>
+> (Or invert the if condition).
 
-I have to admit that this is the first time I've looked into
-the kvm-unit-tests code, so only some minor comments inline :)
+Good point. I have updated this.
 
-On 2019/12/16 22:02, Eric Auger wrote:
-> Detect the presence of an ITS as part of the GICv3 init
-> routine, initialize its base address and read few registers
-> the IIDR, the TYPER to store its dimensioning parameters.
-> 
-> This is our first ITS test, belonging to a new "its" group.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Alistair
 
-[...]
-
-> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-> new file mode 100644
-> index 0000000..2ce483e
-> --- /dev/null
-> +++ b/lib/arm/asm/gic-v3-its.h
-> @@ -0,0 +1,116 @@
-> +/*
-> + * All ITS* defines are lifted from include/linux/irqchip/arm-gic-v3.h
-> + *
-> + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU LGPL, version 2.
-> + */
-> +#ifndef _ASMARM_GIC_V3_ITS_H_
-> +#define _ASMARM_GIC_V3_ITS_H_
-> +
-> +#ifndef __ASSEMBLY__
-> +
-> +#define GITS_CTLR			0x0000
-> +#define GITS_IIDR			0x0004
-> +#define GITS_TYPER			0x0008
-> +#define GITS_CBASER			0x0080
-> +#define GITS_CWRITER			0x0088
-> +#define GITS_CREADR			0x0090
-> +#define GITS_BASER			0x0100
-> +
-> +#define GITS_TYPER_PLPIS                (1UL << 0)
-> +#define GITS_TYPER_IDBITS_SHIFT         8
-> +#define GITS_TYPER_DEVBITS_SHIFT        13
-> +#define GITS_TYPER_DEVBITS(r)           ((((r) >> GITS_TYPER_DEVBITS_SHIFT) & 0x1f) + 1)
-> +#define GITS_TYPER_PTA                  (1UL << 19)
-> +#define GITS_TYPER_HWCOLLCNT_SHIFT      24
-> +
-> +#define GITS_CTLR_ENABLE                (1U << 0)
-> +
-> +#define GITS_CBASER_VALID                       (1UL << 63)
-> +#define GITS_CBASER_SHAREABILITY_SHIFT          (10)
-> +#define GITS_CBASER_INNER_CACHEABILITY_SHIFT    (59)
-> +#define GITS_CBASER_OUTER_CACHEABILITY_SHIFT    (53)
-> +#define GITS_CBASER_SHAREABILITY_MASK                                   \
-> +	GIC_BASER_SHAREABILITY(GITS_CBASER, SHAREABILITY_MASK)
-> +#define GITS_CBASER_INNER_CACHEABILITY_MASK                             \
-> +	GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, MASK)
-> +#define GITS_CBASER_OUTER_CACHEABILITY_MASK                             \
-> +	GIC_BASER_CACHEABILITY(GITS_CBASER, OUTER, MASK)
-> +#define GITS_CBASER_CACHEABILITY_MASK GITS_CBASER_INNER_CACHEABILITY_MASK
-> +
-> +#define GITS_CBASER_InnerShareable                                      \
-> +	GIC_BASER_SHAREABILITY(GITS_CBASER, InnerShareable)
-> +
-> +#define GITS_CBASER_nCnB        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, nCnB)
-> +#define GITS_CBASER_nC          GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, nC)
-> +#define GITS_CBASER_RaWt        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, RaWt)
-> +#define GITS_CBASER_RaWb        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, RaWt)
-
-s/RaWt/RaWb/
-
-> +#define GITS_CBASER_WaWt        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, WaWt)
-> +#define GITS_CBASER_WaWb        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, WaWb)
-> +#define GITS_CBASER_RaWaWt      GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, RaWaWt)
-> +#define GITS_CBASER_RaWaWb      GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, RaWaWb)
-> +
-> +#define GITS_BASER_NR_REGS              8
-> +
-> +#define GITS_BASER_VALID                        (1UL << 63)
-> +#define GITS_BASER_INDIRECT                     (1ULL << 62)
-> +
-> +#define GITS_BASER_INNER_CACHEABILITY_SHIFT     (59)
-> +#define GITS_BASER_OUTER_CACHEABILITY_SHIFT     (53)
-> +#define GITS_BASER_CACHEABILITY_MASK		0x7
-> +
-> +#define GITS_BASER_nCnB         GIC_BASER_CACHEABILITY(GITS_BASER, INNER, nCnB)
-> +
-> +#define GITS_BASER_TYPE_SHIFT                   (56)
-> +#define GITS_BASER_TYPE(r)              (((r) >> GITS_BASER_TYPE_SHIFT) & 7)
-> +#define GITS_BASER_ENTRY_SIZE_SHIFT             (48)
-> +#define GITS_BASER_ENTRY_SIZE(r)        ((((r) >> GITS_BASER_ENTRY_SIZE_SHIFT) & 0x1f) + 1)
-> +#define GITS_BASER_SHAREABILITY_SHIFT   (10)
-> +#define GITS_BASER_InnerShareable                                       \
-> +	GIC_BASER_SHAREABILITY(GITS_BASER, InnerShareable)
-> +#define GITS_BASER_PAGE_SIZE_SHIFT      (8)
-> +#define GITS_BASER_PAGE_SIZE_4K         (0UL << GITS_BASER_PAGE_SIZE_SHIFT)
-> +#define GITS_BASER_PAGE_SIZE_16K        (1UL << GITS_BASER_PAGE_SIZE_SHIFT)
-> +#define GITS_BASER_PAGE_SIZE_64K        (2UL << GITS_BASER_PAGE_SIZE_SHIFT)
-> +#define GITS_BASER_PAGE_SIZE_MASK       (3UL << GITS_BASER_PAGE_SIZE_SHIFT)
-> +#define GITS_BASER_PAGES_MAX            256
-> +#define GITS_BASER_PAGES_SHIFT          (0)
-> +#define GITS_BASER_NR_PAGES(r)          (((r) & 0xff) + 1)
-> +#define GITS_BASER_PHYS_ADDR_MASK	0xFFFFFFFFF000
-> +
-> +#define GITS_BASER_TYPE_NONE            0
-> +#define GITS_BASER_TYPE_DEVICE          1
-> +#define GITS_BASER_TYPE_VCPU            2
-> +#define GITS_BASER_TYPE_CPU             3
-
-'3' is one of the reserved values of the GITS_BASER.Type field, and
-what do we expect with a "GITS_BASER_TYPE_CPU" table type? ;-)
-
-I think we can copy (and might update in the future) all these
-macros against the latest Linux kernel.
-
-> +#define GITS_BASER_TYPE_COLLECTION      4
-> +
-> +#define ITS_FLAGS_CMDQ_NEEDS_FLUSHING           (1ULL << 0) > +
-> +struct its_typer {
-> +	unsigned int ite_size;
-> +	unsigned int eventid_bits;
-> +	unsigned int deviceid_bits;
-> +	unsigned int collid_bits;
-> +	unsigned int hw_collections;
-> +	bool pta;
-> +	bool cil;
-> +	bool cct;
-> +	bool phys_lpi;
-> +	bool virt_lpi;
-> +};
-> +
-> +struct its_data {
-> +	void *base;
-> +	struct its_typer typer;
-> +};
-> +
-> +extern struct its_data its_data;
-> +
-> +#define gicv3_its_base()		(its_data.base)
-> +
-> +extern void its_parse_typer(void);
-> +extern void its_init(void);
-> +
-> +#endif /* !__ASSEMBLY__ */
-> +#endif /* _ASMARM_GIC_V3_ITS_H_ */
-> diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
-> index 55dd84b..b44da9c 100644
-> --- a/lib/arm/asm/gic.h
-> +++ b/lib/arm/asm/gic.h
-> @@ -40,6 +40,7 @@
->   
->   #include <asm/gic-v2.h>
->   #include <asm/gic-v3.h>
-> +#include <asm/gic-v3-its.h>
->   
->   #define PPI(irq)			((irq) + 16)
->   #define SPI(irq)			((irq) + GIC_FIRST_SPI)
-> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
-> new file mode 100644
-> index 0000000..34f4d0e
-> --- /dev/null
-> +++ b/lib/arm/gic-v3-its.c
-> @@ -0,0 +1,41 @@
-> +/*
-> + * Copyright (C) 2016, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU LGPL, version 2.
-> + */
-> +#include <asm/gic.h>
-> +
-> +struct its_data its_data;
-> +
-> +void its_parse_typer(void)
-> +{
-> +	u64 typer = readq(gicv3_its_base() + GITS_TYPER);
-> +
-> +	its_data.typer.ite_size = ((typer >> 4) & 0xf) + 1;
-> +	its_data.typer.pta = typer & GITS_TYPER_PTA;
-> +	its_data.typer.eventid_bits =
-> +		((typer >> GITS_TYPER_IDBITS_SHIFT) & 0x1f) + 1;
-> +	its_data.typer.deviceid_bits = GITS_TYPER_DEVBITS(typer) + 1;
-
-No need to '+1'. As GITS_TYPER_DEVBITS already helps us to calculate
-the implemented DeviceID bits.
-
-> +
-> +	its_data.typer.cil = (typer >> 36) & 0x1;
-> +	if (its_data.typer.cil)
-> +		its_data.typer.collid_bits = ((typer >> 32) & 0xf) + 1;
-> +	else
-> +		its_data.typer.collid_bits = 16;
-> +
-> +	its_data.typer.hw_collections =
-> +		(typer >> GITS_TYPER_HWCOLLCNT_SHIFT) & 0xff;
-> +
-> +	its_data.typer.cct = typer & 0x4;
-> +	its_data.typer.virt_lpi = typer & 0x2;
-> +	its_data.typer.phys_lpi = typer & GITS_TYPER_PLPIS;
-
-Personally, mix using of GITS_TYPER_* macros and some magic constants to
-parse the TYPER makes it a bit difficult to review the code. Maybe we
-can have more such kinds of macros in the header file and get rid of all
-hardcoded numbers?
-
-
-Thanks,
-Zenghui
+>
+> > +}
+> > +
+> > +static uint64_t stm32f4xx_exti_read(void *opaque, hwaddr addr,
+> > +                                     unsigned int size)
+> > +{
+> > +    STM32F4xxExtiState *s =3D opaque;
+> > +
+> > +    trace_stm32f4xx_exti_read(addr);
+> > +
+> > +    switch (addr) {
+> > +    case EXTI_IMR:
+> > +        return s->exti_imr;
+> > +    case EXTI_EMR:
+> > +        return s->exti_emr;
+> > +    case EXTI_RTSR:
+> > +        return s->exti_rtsr;
+> > +    case EXTI_FTSR:
+> > +        return s->exti_ftsr;
+> > +    case EXTI_SWIER:
+> > +        return s->exti_swier;
+> > +    case EXTI_PR:
+> > +        return s->exti_pr;
+> > +    default:
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "STM32F4XX_exti_read: Bad offset %x\n", (int)add=
+r);
+> > +        return 0;
+> > +    }
+> > +    return 0;
+> > +}
+> > +
+> > +static void stm32f4xx_exti_write(void *opaque, hwaddr addr,
+> > +                       uint64_t val64, unsigned int size)
+> > +{
+> > +    STM32F4xxExtiState *s =3D opaque;
+> > +    uint32_t value =3D (uint32_t) val64;
+> > +
+> > +    trace_stm32f4xx_exti_write(addr, value);
+> > +
+> > +    switch (addr) {
+> > +    case EXTI_IMR:
+> > +        s->exti_imr =3D value;
+> > +        return;
+> > +    case EXTI_EMR:
+> > +        s->exti_emr =3D value;
+> > +        return;
+> > +    case EXTI_RTSR:
+> > +        s->exti_rtsr =3D value;
+> > +        return;
+> > +    case EXTI_FTSR:
+> > +        s->exti_ftsr =3D value;
+> > +        return;
+> > +    case EXTI_SWIER:
+> > +        s->exti_swier =3D value;
+> > +        return;
+> > +    case EXTI_PR:
+> > +        /* This bit is cleared by writing a 1 to it */
+> > +        s->exti_pr &=3D ~value;
+> > +        return;
+> > +    default:
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "STM32F4XX_exti_write: Bad offset %x\n", (int)ad=
+dr);
+> > +    }
+> > +}
+> > +
+> > +static const MemoryRegionOps stm32f4xx_exti_ops =3D {
+> > +    .read =3D stm32f4xx_exti_read,
+> > +    .write =3D stm32f4xx_exti_write,
+> > +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> > +};
+> > +
+> > +static void stm32f4xx_exti_init(Object *obj)
+> > +{
+> > +    STM32F4xxExtiState *s =3D STM32F4XX_EXTI(obj);
+> > +    int i;
+> > +
+> > +    for (i =3D 0; i < NUM_INTERRUPT_OUT_LINES; i++) {
+> > +        sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq[i]);
+> > +    }
+> > +
+> > +    memory_region_init_io(&s->mmio, obj, &stm32f4xx_exti_ops, s,
+> > +                          TYPE_STM32F4XX_EXTI, 0x400);
+> > +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> > +
+> > +    qdev_init_gpio_in(DEVICE(obj), stm32f4xx_exti_set_irq,
+> > +                      NUM_GPIO_EVENT_IN_LINES);
+> > +}
+> > +
+> > +static const VMStateDescription vmstate_stm32f4xx_exti =3D {
+> > +    .name =3D TYPE_STM32F4XX_EXTI,
+> > +    .version_id =3D 1,
+> > +    .minimum_version_id =3D 1,
+> > +    .fields =3D (VMStateField[]) {
+> > +        VMSTATE_UINT32(exti_imr, STM32F4xxExtiState),
+> > +        VMSTATE_UINT32(exti_emr, STM32F4xxExtiState),
+> > +        VMSTATE_UINT32(exti_rtsr, STM32F4xxExtiState),
+> > +        VMSTATE_UINT32(exti_ftsr, STM32F4xxExtiState),
+> > +        VMSTATE_UINT32(exti_swier, STM32F4xxExtiState),
+> > +        VMSTATE_UINT32(exti_pr, STM32F4xxExtiState),
+> > +        VMSTATE_END_OF_LIST()
+> > +    }
+> > +};
+> > +
+> > +static void stm32f4xx_exti_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > +
+> > +    dc->reset =3D stm32f4xx_exti_reset;
+> > +    dc->vmsd =3D &vmstate_stm32f4xx_exti;
+> > +}
+> > +
+> > +static const TypeInfo stm32f4xx_exti_info =3D {
+> > +    .name          =3D TYPE_STM32F4XX_EXTI,
+> > +    .parent        =3D TYPE_SYS_BUS_DEVICE,
+> > +    .instance_size =3D sizeof(STM32F4xxExtiState),
+> > +    .instance_init =3D stm32f4xx_exti_init,
+> > +    .class_init    =3D stm32f4xx_exti_class_init,
+> > +};
+> > +
+> > +static void stm32f4xx_exti_register_types(void)
+> > +{
+> > +    type_register_static(&stm32f4xx_exti_info);
+> > +}
+> > +
+> > +type_init(stm32f4xx_exti_register_types)
+> > diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> > index 02327562bc..91a3794d68 100644
+> > --- a/hw/misc/trace-events
+> > +++ b/hw/misc/trace-events
+> > @@ -90,6 +90,11 @@ stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
+> >   stm32f4xx_syscfg_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+> >   stm32f4xx_syscfg_write(uint64_t addr, uint64_t data) "reg write: addr=
+: 0x%" PRIx64 " val: 0x%" PRIx64 ""
+> >
+> > +# stm32f4xx_exti
+> > +stm32f4xx_exti_set_irq(int irq, int leve) "Set EXTI: %d to %d"
+> > +stm32f4xx_exti_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+> > +stm32f4xx_exti_write(uint64_t addr, uint64_t data) "reg write: addr: 0=
+x%" PRIx64 " val: 0x%" PRIx64 ""
+> > +
+> >   # tz-mpc.c
+> >   tz_mpc_reg_read(uint32_t offset, uint64_t data, unsigned size) "TZ MP=
+C regs read: offset 0x%x data 0x%" PRIx64 " size %u"
+> >   tz_mpc_reg_write(uint32_t offset, uint64_t data, unsigned size) "TZ M=
+PC regs write: offset 0x%x data 0x%" PRIx64 " size %u"
+> > diff --git a/include/hw/misc/stm32f4xx_exti.h b/include/hw/misc/stm32f4=
+xx_exti.h
+> > new file mode 100644
+> > index 0000000000..707036a41b
+> > --- /dev/null
+> > +++ b/include/hw/misc/stm32f4xx_exti.h
+> > @@ -0,0 +1,60 @@
+> > +/*
+> > + * STM32F4XX EXTI
+> > + *
+> > + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
+> > + *
+> > + * Permission is hereby granted, free of charge, to any person obtaini=
+ng a copy
+> > + * of this software and associated documentation files (the "Software"=
+), to deal
+> > + * in the Software without restriction, including without limitation t=
+he rights
+> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/o=
+r sell
+> > + * copies of the Software, and to permit persons to whom the Software =
+is
+> > + * furnished to do so, subject to the following conditions:
+> > + *
+> > + * The above copyright notice and this permission notice shall be incl=
+uded in
+> > + * all copies or substantial portions of the Software.
+> > + *
+> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXP=
+RESS OR
+> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABI=
+LITY,
+> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT S=
+HALL
+> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES O=
+R OTHER
+> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARI=
+SING FROM,
+> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALI=
+NGS IN
+> > + * THE SOFTWARE.
+> > + */
+> > +
+> > +#ifndef HW_STM_EXTI_H
+> > +#define HW_STM_EXTI_H
+> > +
+> > +#include "hw/sysbus.h"
+> > +#include "hw/hw.h"
+> > +
+> > +#define EXTI_IMR   0x00
+> > +#define EXTI_EMR   0x04
+> > +#define EXTI_RTSR  0x08
+> > +#define EXTI_FTSR  0x0C
+> > +#define EXTI_SWIER 0x10
+> > +#define EXTI_PR    0x14
+> > +
+> > +#define TYPE_STM32F4XX_EXTI "stm32f4xx-exti"
+> > +#define STM32F4XX_EXTI(obj) \
+> > +    OBJECT_CHECK(STM32F4xxExtiState, (obj), TYPE_STM32F4XX_EXTI)
+> > +
+> > +#define NUM_GPIO_EVENT_IN_LINES 16
+> > +#define NUM_INTERRUPT_OUT_LINES 16
+> > +
+> > +typedef struct {
+> > +    SysBusDevice parent_obj;
+> > +
+> > +    MemoryRegion mmio;
+> > +
+> > +    uint32_t exti_imr;
+> > +    uint32_t exti_emr;
+> > +    uint32_t exti_rtsr;
+> > +    uint32_t exti_ftsr;
+> > +    uint32_t exti_swier;
+> > +    uint32_t exti_pr;
+> > +
+> > +    qemu_irq irq[NUM_INTERRUPT_OUT_LINES];
+> > +} STM32F4xxExtiState;
+> > +
+> > +#endif
+> >
+>

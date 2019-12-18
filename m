@@ -1,147 +1,173 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1298499lff;
-        Wed, 18 Dec 2019 12:33:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwwNTJtZTubPkyIEd5NHbUFAqcH+406LLk4d5L/VrOQZIx5hDpHnv2iiuQAZEhIX94Q21sC
-X-Received: by 2002:ac8:544f:: with SMTP id d15mr4010717qtq.53.1576701210571;
-        Wed, 18 Dec 2019 12:33:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576701210; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1309161lff;
+        Wed, 18 Dec 2019 12:44:31 -0800 (PST)
+X-Received: by 2002:a63:f64a:: with SMTP id u10mr5035043pgj.16.1576701871780;
+        Wed, 18 Dec 2019 12:44:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576701871; cv=none;
         d=google.com; s=arc-20160816;
-        b=FDqzMpPRFA1RRgHupZf4yiVAntqWaj+fX/vU0PT69zIosKm+ggdoDCNXh3okBNpLXy
-         osH+aimYUI3ag1A1sGnrSNBYqeijrc5ZaHxKFizg8aO1pk2St+FQ6yVPQssU4wrEC7nI
-         Jwr/wSODKWwxez1wzOYVND5S2E8WgLRuX+A7KFAzYRspKkKIfZEccGC1Xt0YwMi0ehz7
-         sAqeR39DcVO0wQXWZg37q1ewKXtc28VGH9HW5pmpodk0Nxj25fUOyKq/eMBSQsskKqtT
-         BtHwq3H8AHbrQg6DE60Sn1ghu6UpYrN0zvKw2egOOjwd4qW1paIVeKD5rbIcKzVub4zC
-         0M/A==
+        b=0SKULHEB6QrTwsv/QzMnjbjjCM07yXevnMCY/m+CSI+htDLlz8JJoceYadqrc+Bo8x
+         ZC19zucKOyVVjUUv3z+V2/yPhYorP70qafGt1xMOVJ0KtkC+5LaNZ5CUW/ubLbwDphX6
+         aPg4HgRFb5NU8Hy7LF5J+4aJekM7DJIUnbhJC1rqGFJIfX7+hc2T4VL/hXh2pTHwdOpw
+         vhX77d+BKtwRhstTQ9+lksAVKeAxNtD9TQJyxYgAE4FZ5MzrvkpxqiyekJ+VUdz5Xr8y
+         5HfDUoAiDfEqyt2JulZSkfefsABtSRdGYqwvV+bRTDnUqs6WQz3hKCy64HkEawyf4kNy
+         uy5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=EgquuMahjEW5YEjdy3ojcA50VUIAktcr/XHmJSYUEiA=;
-        b=YJvJjZXUIEE7z8p4lQoiHzqeAOHqczrb2rQ47u8sperV1e8TVnhAjP/ghDjV39cZqn
-         G7ubAaez9lO6p45QLR50gwsYZAX2ZHL1EGh8h0Kckq51ZMrDJ11xMb10V2WtIXfj0/v0
-         HbPuV3/8O9pNA532CO5auw7yjvX90YIKS8i9ciW8GTZn8+lv7urK4tKPtVENDfSGpe5w
-         f4JBx00lT0AuCEihI3ylf8M9Dk8FeVgoA3t6bva6c/JeVaZmpbai9L0108213T6yQzVI
-         Gzv/Rgr4eEhyzmKvqtshDgDQAce3xbW/JJwjt4BQ9cdoLC5W9oJAz/YoevZMTmlm/w8j
-         +arw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=hx95OyaG6MqHCdsFBIXIiXsvovMiVCSH3FKPDjN/6WY=;
+        b=hMmPQj/SoqchnVyad81TgOJ3VwR0bec3EDFs1MqTMxjSUmkP93dhZv8hhzh6FwsOOF
+         3cHOEH/Uo+Juml8s5wCyaUQQVR23mNMAf8zYyqmZF21WmNxwNyp0qoGLwEwXUCyQqEBN
+         3YJavtWTda4hu6Nj+WNb9aeDrtA4TBJyFph5LTztTU3W3NJL/9aRDW6J3Chx4HQQEGkV
+         H78LK0SEF1aISbFhLO3KUoD+n5x2r5HVbcmcZYQCAV84jo/8BZ4whaLh0j3uODpZWw7x
+         43/sQ2jkLUCK5h/l4dhNbN3/ftWQOoOcldluJJN1n5Pz6SR15ijK12jvXGxRDvjlAP+w
+         MYww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="o+/C0LqE";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v36si1551049qtd.23.2019.12.18.12.33.30
+       dkim=pass header.i=@linaro.org header.s=google header.b=UsNnZgRb;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id w12sor3575054plp.38.2019.12.18.12.44.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2019 12:33:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 18 Dec 2019 12:44:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="o+/C0LqE";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60338 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihg0f-0007v2-2s
-	for alex.bennee@linaro.org; Wed, 18 Dec 2019 15:33:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58675)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1ihfyn-0006yi-6E
- for qemu-devel@nongnu.org; Wed, 18 Dec 2019 15:31:35 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1ihfyj-000659-HY
- for qemu-devel@nongnu.org; Wed, 18 Dec 2019 15:31:31 -0500
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:52412)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1ihfyf-00061s-UJ
- for qemu-devel@nongnu.org; Wed, 18 Dec 2019 15:31:27 -0500
-Received: by mail-pj1-x1042.google.com with SMTP id w23so1408832pjd.2
- for <qemu-devel@nongnu.org>; Wed, 18 Dec 2019 12:31:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EgquuMahjEW5YEjdy3ojcA50VUIAktcr/XHmJSYUEiA=;
- b=o+/C0LqEINS+QtcNH/yIGAolsHPlUAquez6q0HgFiwy7J3Y3tKgV4JSKiBOuiupnjF
- YTzkN5WgaKYmhQb6qDP6zQjiPJCbsVFIVj+siZKqZCMhwUnC0HAME93OuJhG1owQhxI3
- I8sTlifa6jncQxO6Fgbw+vhdXvcsK9vZdrpL7N6rC6nt2dg1m4Aw5PsJC4K92sRVOgkp
- qx/SYpURXuLMFC+KWRSpOBCGjKTUpbBWK88lf28W/RhrQAf6NFp/HufOggGwCxRXPC73
- ffzUAt8Km5qBPNoNLc8V8ynKy4Bg6yUA79HYhEyp43iG7oVPcRwHoz8mSngC+QQ/NzoO
- XwBg==
+       dkim=pass header.i=@linaro.org header.s=google header.b=UsNnZgRb;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=hx95OyaG6MqHCdsFBIXIiXsvovMiVCSH3FKPDjN/6WY=;
+        b=UsNnZgRbhrHE74s+Y0gT23UUgUs1jGC47yo1iLtrOGZpR4nYucTXmbtGGb5MHA8dIf
+         4RjYWukG1+PXQgM+WvoXqVwMd6dsnhsfeEMp88gTGi4zssIU56jIuRyN7bZikZvg2oY9
+         5QQuOB2CeEqjG58lsS8yJD/HI14Mceq4BGE4194tENFkxkdHkhutttnJWQ/maa/3v5hI
+         xMwybm+viLIQQ7O1Gcl1QrHWU/IAjO25g2gWwUJOMsOfK1R/rsApvajg5atogy1fnnM1
+         9M2b7yzgi7/2Es3mOzVpzZnNu/farTn+N3wof0vTuOa2VGjnAwijYOV/f+sMP9a6wTKe
+         WPSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=EgquuMahjEW5YEjdy3ojcA50VUIAktcr/XHmJSYUEiA=;
- b=uF1X55xeqiQ9f3hPkk02ZESq2/eaMg4KHBJPsBjsxHQM8x99qUqPYOp4/6zNB1d7UK
- vlTbPE5MSBLmZkN1i8RehAIxsZesz6yjRkJahyQXpJDPwhMich8zrhfUsDGeDQu6PF+U
- VIbSCWDaauYcl0/myNWfNCsZoieCePM/RUG1joGGEBlPeKVqofJGxB4J02TWO64aFt6W
- 9aH82vAnUtRvvpbnqyp3YmTPFR+FghzcvsWJd4LWy24SE+hD90kcpfHZLS+AIUu9pzSu
- A+ykRqRYs+s2JETUpeoBE2rDGI9ifGHlbpDGxWt+5PU/+mDjIbxpZYndpKPTrQx8+2cx
- Vt3Q==
-X-Gm-Message-State: APjAAAVwghjB7ZqZviqZLf9tzpTCHpsu3mU/G8O7rV7R30pXw4W1PYbP
- krb9PhfOM7cE4O33FiF93vLtmw==
-X-Received: by 2002:a17:902:b902:: with SMTP id
- bf2mr4817097plb.137.1576701083484; 
- Wed, 18 Dec 2019 12:31:23 -0800 (PST)
-Received: from ?IPv6:2605:e000:c74f:dc00:6838:d2b2:17e2:8445?
- ([2605:e000:c74f:dc00:6838:d2b2:17e2:8445])
- by smtp.gmail.com with ESMTPSA id m101sm3955868pje.13.2019.12.18.12.31.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Dec 2019 12:31:22 -0800 (PST)
-Subject: Re: [RFC PATCH v2 6/6] hw/pci-host/designware: Remove unuseful
- FALLTHROUGH comment
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=hx95OyaG6MqHCdsFBIXIiXsvovMiVCSH3FKPDjN/6WY=;
+        b=iLLNor7y1pGGSsAXT1dHRxUWYLAsVp+1kIHrO2+ivg8+P6N9G/qFPzJBS0teHk7MXs
+         zOmpaEw3jeEpEVE5K4qN1mIWFJdaFxU8JnD33LhixsfPzWFn3cjlQppJMd8UJW9Z9Wye
+         gDcPYMdghpzwedw47B1rng+WGlPDTIT3Y6VrENt9L34R8CmPaP3Ucbt7YFiKGbDHUiGL
+         LUf55bxrPvcLkWJ96OgLGbXhhh/5ccIey8HdWxEJeDPLlOKOw/rdyv66dOQlpMwp8rsG
+         7TmRR1u5PoRp2jH7LPq6s8n811Z8KH0I3u6sHwLCFIbh8sVxXB9iTU/TscPw6JxRH8Cz
+         BlZQ==
+X-Gm-Message-State: APjAAAUfWwzqmT/ykPw47hVIYmrDKdQ+JQLu9KyA027vqpO1pkqdZDU0
+	4fu7uDTz1WgPSAlxTMPC0oZNa5JI
+X-Google-Smtp-Source: APXvYqwVxVL3Hy6fs5yv8x16VFaZHBLw+vLi/oQiTCjEj3vG/sK7eDsdh4TZ3GUPpQeDAknI3gdWsg==
+X-Received: by 2002:a17:902:363:: with SMTP id 90mr4845316pld.71.1576701871230;
+        Wed, 18 Dec 2019 12:44:31 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPv6:2605:e000:c74f:dc00:6838:d2b2:17e2:8445? ([2605:e000:c74f:dc00:6838:d2b2:17e2:8445])
+        by smtp.gmail.com with ESMTPSA id ep12sm2325545pjb.7.2019.12.18.12.44.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Dec 2019 12:44:30 -0800 (PST)
+Subject: Re: [RFC PATCH v2 14/14] chardev: Use QEMUChrEvent enum in
+ IOEventHandler typedef
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-References: <20191218192526.13845-1-philmd@redhat.com>
- <20191218192526.13845-7-philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paul Burton <pburton@wavecomp.com>, Alberto Garcia <berto@igalia.com>,
+ Li Zhijian <lizhijian@cn.fujitsu.com>, qemu-block@nongnu.org,
+ Zhang Chen <chen.zhang@intel.com>, Markus Armbruster <armbru@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Joel Stanley <joel@jms.id.au>, Laurent Vivier <lvivier@redhat.com>,
+ Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Kevin Wolf <kwolf@redhat.com>, qemu-riscv@nongnu.org,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, Thomas Huth <huth@tuxfamily.org>,
+ Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+References: <20191218172009.8868-1-philmd@redhat.com>
+ <20191218172009.8868-15-philmd@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <c54c1c5f-efd4-0a7a-6275-c265997f45a8@linaro.org>
-Date: Wed, 18 Dec 2019 10:31:19 -1000
+Message-ID: <a733dce0-4a2e-c0d7-38d5-2ab64ca4d968@linaro.org>
+Date: Wed, 18 Dec 2019 10:44:23 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191218192526.13845-7-philmd@redhat.com>
+In-Reply-To: <20191218172009.8868-15-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::1042
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>, Markus Armbruster <armbru@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WAAgyGRPXOJf
+X-TUID: UxMIs1xcsaDe
 
-On 12/18/19 9:25 AM, Philippe Mathieu-Daudé wrote:
-> We don't need to explicit this obvious switch fall through.
-> Stay consistent with the rest of the codebase.
+On 12/18/19 7:20 AM, Philippe Mathieu-Daudé wrote:
+> The Chardev events are listed in the QEMUChrEvent enum.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
-> Cc: Peter Chubb <peter.chubb@nicta.com.au>
-> Cc: Markus Armbruster <armbru@redhat.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Andrey Smirnov <andrew.smirnov@gmail.com>
-> Cc: qemu-arm@nongnu.org
-> ---
->  hw/pci-host/designware.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> By using the enum in the IOEventHandler typedef we:
+> 
+> - make the IOEventHandler type more explicit (this handler
+>   process out-of-band information, while the IOReadHandler
+>   is in-band),
+> - help static code analyzers.
+> 
+> This patch was produced with the following spatch script:
+> 
+>   @match@
+>   expression backend, opaque, context, set_open;
+>   identifier fd_can_read, fd_read, fd_event, be_change;
+>   @@
+>   qemu_chr_fe_set_handlers(backend, fd_can_read, fd_read, fd_event,
+>                            be_change, opaque, context, set_open);
+> 
+>   @depends on match@
+>   identifier opaque, event;
+>   identifier match.fd_event;
+>   @@
+>    static
+>   -void fd_event(void *opaque, int event)
+>   +void fd_event(void *opaque, QEMUChrEvent event)
+>    {
+>    ...
+>    }
+> 
+> Then the following files were manually modified:
+> 
+>   - include/chardev/char-fe.h
+>   - include/chardev/char.h
+>   - include/chardev/char-mux.h
+>   - chardev/char.c
+>   - chardev/char-mux.c
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+My guess is that the only change that must be done at the same time as the
+spatch is the typedef in char-fe.h.
+
+In particular,
+
+> -static void mux_chr_send_event(MuxChardev *d, int mux_nr, int event)
+> +static void mux_chr_send_event(MuxChardev *d, int mux_nr, QEMUChrEvent event)
+
+this doesn't appear to be required -- int will implicitly convert to enum when
+performing the call, and it can't be related to the typedef.
+
+Yes, we do want to propagate the type up the call stack, but it would be nice
+to see the spatch results on their own.
 
 
 r~

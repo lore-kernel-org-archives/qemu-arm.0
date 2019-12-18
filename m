@@ -1,104 +1,112 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1238022lff;
-        Wed, 18 Dec 2019 11:37:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw682Pk8dPGFjQwnEWHL0b8BjS173jSIPV338h9MpQw2hhQGdy9Kge9pM/k0FLSrTn5qBbo
-X-Received: by 2002:a05:620a:94f:: with SMTP id w15mr4294085qkw.380.1576697878534;
-        Wed, 18 Dec 2019 11:37:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576697878; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1295914lff;
+        Wed, 18 Dec 2019 12:31:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw81hmy/VX59LOaG/xG+GXJaNcWnLAyo/jUqUx5nPPEr/jgFjfGODkStH73mJpjAO2/R3lk
+X-Received: by 2002:a0c:b034:: with SMTP id k49mr4370491qvc.144.1576701069734;
+        Wed, 18 Dec 2019 12:31:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576701069; cv=none;
         d=google.com; s=arc-20160816;
-        b=CJTm8JeqsNJEuX7LoKwtfCUq5IJT0f8MM9T7KgxFA02fLICoiDTI/kXw9YnJYAjCxW
-         U1dVMPZrBm+wQSXiCfDeqRQh+6DhAfF1GKQuT/vfBU0m3cH+asPgzy93VYZy3Z2CD8Gz
-         dGDcttsyI0KtHSjhI5NgiNGf21yiY4wY1KA6oCKSzGUNHQvuzQbFxRhxuZo3dlhCfYx+
-         Z5++mNs4RE4Sn1qDbw+/kSjG1cKcfvLsuT0DQyFY17nBVthJ5QWzi6JpvOAHHo/cS+Nd
-         ORtVjALZ9i7PvFrkKOXoim2PnSC/JB6EOCvHNLbH8nq/bAzK/YXHwmRIybt5EvljlO1d
-         gHSw==
+        b=JC8805m3bkkDvrRN68ZBG3l7Z5785X5t4mHZp/6eH6uMKbBuP7xvcQDU6L80SpAdQX
+         vESkjadirwF3z8D/QYddOy2WJ0j6KdC/2AAinG/D7Bjo83vsxuBIRIbOIBVkOGoDsKBu
+         5VigIicINjIMRnNyIUG+h3IJqcBZyRsJ+Th7EpPiAZ1mRCJz95VAFtvncvftdoDbRQwp
+         StlBrK5GzHLEXEeE8ywhbSg/AEtZ5W6Vw13MWPW0bdqFg3cV2oe6cgGVRtg36VWG/RFZ
+         6/FVO1UxkRZMkoNG1PLnI4cRPK4Gh54iP4U0BOK5GB1owGGBPC10Ll/FOMQLR/8n3kA8
+         8ybg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=Ufj30p/+ltGQ9PCrVDcnbldrAbtNGXyHnws+Mf5/X9w=;
-        b=cIWjk67E7ZFdxGvLvVqRZJ4SzEAFiEsq+PdOo4gisgVw3Zvmg9fmycHwWEIMKd/P+f
-         CZXUVI53az1Up4tdT8VY3Qn20d2LvBL5tan7A9fVAOsB4Em5uo9fQ1NUfUsWXoCMHqx1
-         cglGLNdypl4/7rp1MU8HXrqb/KRoqMnatQgn24F+xQ8yl0FNoZU8hFom5u3pn6CeyFqL
-         p0kLv1EPnVkX5iU2YESk/iGCTEoyRrQzdDpsiYSgickPrJ8LJFskN6s5KCxcqhob6S3p
-         tlwan1ggYnjnGTEwE8BC6r1+xKuHeeY5jEhT42Jbpy9ArkYtbp4ZU0zVop/5268NqDW+
-         nf+A==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Zwl2+Ft+3Qu+jRfq+fQCSw9Ftp5WH4Fwu9KoZnjQnYQ=;
+        b=0ASghv5dauP/7gWVJLiSaG9EIRJ0uaXriHPnsF7+VhnbAAYvHFraMA0fMnv1GQdGqL
+         ffyftBHXJic1Qag8Uk1XVGrPKpTYgjlAJb/LUVEZ34zXNo8mHnMxdYRWzJZACq/M5xYz
+         ae0GjcRDbRxrlU9OGt3Sf4qSLtKpOwujg5N7iuSmRYs2Z1Kes1zitaUVsrJd4BMHCOUX
+         cdPUqdUOOeHoXJKC9C+efnl80V05tKuDI2SZMDLvBELGth85Pu6ztI1E7IB5yQ57PbHr
+         ONrHWHEEYcBu6emYdht/UNWvgJ7rPmmW4ystqZptIOfvwUQViLNzvyDR6XEOfGcW78hK
+         66LQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HVuTIsCJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wDS+QciK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6si1827111qtc.246.2019.12.18.11.37.58
+        by mx.google.com with ESMTPS id p10si2058978qvy.181.2019.12.18.12.31.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2019 11:37:58 -0800 (PST)
+        Wed, 18 Dec 2019 12:31:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HVuTIsCJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wDS+QciK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59690 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihf8v-0003PH-LZ
-	for alex.bennee@linaro.org; Wed, 18 Dec 2019 14:37:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43415)
+	id 1ihfyP-0006eY-0C
+	for alex.bennee@linaro.org; Wed, 18 Dec 2019 15:31:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54376)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1ihf7c-00021q-DT
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 14:36:37 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1ihfyB-0006eE-U7
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 15:30:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1ihf7b-0006g6-88
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 14:36:36 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:56484
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ihf7a-0006cL-Vu
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 14:36:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576697794;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=Ufj30p/+ltGQ9PCrVDcnbldrAbtNGXyHnws+Mf5/X9w=;
- b=HVuTIsCJreQ26CVPOh/EJyBd2VNQOVTJEI6hVHER8DiY96D7knifYtqAtG8RugVbXbahac
- duKsds5aA/cVvShlni6aShRVe1l/f4W4Qs9HJUAx88K4yC4qwyvx+5nbB7h3PoAB5/aDaK
- E/oFrz29zxtB5V3km94ZoIS0l24i+M4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-345-z8cuo0vYOviCYyfeKs03mw-1; Wed, 18 Dec 2019 14:36:29 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9FFD2102C84D;
- Wed, 18 Dec 2019 19:36:27 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5D5A219C58;
- Wed, 18 Dec 2019 19:36:21 +0000 (UTC)
-Subject: Re: [PATCH v2 4/6] hw/net/imx_fec: Rewrite fall through comments
+ (envelope-from <richard.henderson@linaro.org>) id 1ihfy7-0004Vh-UC
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 15:30:53 -0500
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:46168)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1ihfy6-0004SG-4Q
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 15:30:51 -0500
+Received: by mail-pf1-x444.google.com with SMTP id y14so1833309pfm.13
+ for <qemu-arm@nongnu.org>; Wed, 18 Dec 2019 12:30:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Zwl2+Ft+3Qu+jRfq+fQCSw9Ftp5WH4Fwu9KoZnjQnYQ=;
+ b=wDS+QciKsWnATGZ3S7yh04TBaSWMvEFWXTR0MnNheetTSCV7jjDK9sPngID3T5UJCP
+ YpefQwyT2xKKNs5Q+vNcteHdw05WCiNKWtOTDsbtob+xAy7fkkTq9IS+LCoYyfhNOixK
+ 8QoOmTu41zPi8aQ6Dr+7OORkEvsvApj5Yqu1lHOSV+2tAu/nTibTUGxwiunF2WA10Jak
+ GGGLbL20aU8OqUbL4YuSQ1AX7qMQVaEmKyoNw/XV9buZ7MG6xpqPR46FkRpV/idI+MPJ
+ YwY3hCb1WTgGa87t/RGjsTAdsOs05i9vdBqgzeY4bY+WpbfixoYaZH9DZShAo8AnXpjP
+ 52kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Zwl2+Ft+3Qu+jRfq+fQCSw9Ftp5WH4Fwu9KoZnjQnYQ=;
+ b=Ca7dZCO6gcR/D9XPl6rxJ6Momrr/jjAxF2zBegerAUxJdMg+rRxGwZg4IHsFu7+4UE
+ L17ilwSLMf1byTS6aer0rWXui8ERAEVuK4ANQNiTMCXAmhRSKwmUoe1PpNiqGgzblL1u
+ kXRqHbUVHsDQ35se24dzMdb0AVSCzkpaHWHimAWgrVt+5e3d8r6JrFai5p0PUr8NiT7q
+ e0zB6Qcn2yv2P9cuMIsNWxOrqeOX0SRHJxkFrvn2Gmx2YTksVwJdu6VG4l3+vjRU1akP
+ FBtALx2FHeKmwM53bhktBhWDbuXOgqvU28GO1CV8iwR/z8gVLu7rGIEiwph6Z/PBWJhr
+ 2EwA==
+X-Gm-Message-State: APjAAAUhER5AtQKmWGVIaQgAjaQtIGLtPTTB6czbWQ0Q/Ki3JIfkSadE
+ PeQ8brIMfafI8eDfVy8/IwyyQQ==
+X-Received: by 2002:a62:e30f:: with SMTP id g15mr5103872pfh.124.1576701048672; 
+ Wed, 18 Dec 2019 12:30:48 -0800 (PST)
+Received: from ?IPv6:2605:e000:c74f:dc00:6838:d2b2:17e2:8445?
+ ([2605:e000:c74f:dc00:6838:d2b2:17e2:8445])
+ by smtp.gmail.com with ESMTPSA id g9sm4613637pfm.150.2019.12.18.12.30.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 Dec 2019 12:30:47 -0800 (PST)
+Subject: Re: [RFC PATCH v2 5/6] hw/net/imx_fec: Remove unuseful FALLTHROUGH
+ comments
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20191218192526.13845-1-philmd@redhat.com>
- <20191218192526.13845-5-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <4586faa9-31ed-d90c-730c-f6c32657dceb@redhat.com>
-Date: Wed, 18 Dec 2019 20:36:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ <20191218192526.13845-6-philmd@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <b436a7de-45ed-d90e-9524-62261b5a0274@linaro.org>
+Date: Wed, 18 Dec 2019 10:30:44 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191218192526.13845-5-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: z8cuo0vYOviCYyfeKs03mw-1
-X-Mimecast-Spam-Score: 0
+In-Reply-To: <20191218192526.13845-6-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::444
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,59 +118,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,
- Aleksandar Markovic <amarkovic@wavecomp.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HriPXSKOPLhl
+X-TUID: k+CbvSF36o3t
 
-On 18/12/2019 20.25, Philippe Mathieu-Daud=C3=A9 wrote:
-> GCC9 is confused by this comment when building with CFLAG
-> -Wimplicit-fallthrough=3D2:
->=20
->   hw/net/imx_fec.c: In function =E2=80=98imx_eth_write=E2=80=99:
->   hw/net/imx_fec.c:906:12: error: this statement may fall through [-Werro=
-r=3Dimplicit-fallthrough=3D]
->     906 |         if (unlikely(single_tx_ring)) {
->         |            ^
->   hw/net/imx_fec.c:912:5: note: here
->     912 |     case ENET_TDAR:     /* FALLTHROUGH */
->         |     ^~~~
->   cc1: all warnings being treated as errors
->=20
-> Rewrite the comments in the correct place,  using 'fall through'
-> which is recognized by GCC and static analyzers.
->=20
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On 12/18/19 9:25 AM, Philippe Mathieu-Daudé wrote:
+> We don't need to explicit these obvious switch fall through
+> comments. Stay consistent with the rest of the codebase.
+> 
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
 > Cc: Peter Chubb <peter.chubb@nicta.com.au>
+> Cc: Markus Armbruster <armbru@redhat.com>
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: Jason Wang <jasowang@redhat.com>
 > Cc: qemu-arm@nongnu.org
 > ---
->  hw/net/imx_fec.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-> index bd99236864..c01ce4f078 100644
-> --- a/hw/net/imx_fec.c
-> +++ b/hw/net/imx_fec.c
-> @@ -909,7 +909,8 @@ static void imx_eth_write(void *opaque, hwaddr offset=
-, uint64_t value,
->                            TYPE_IMX_FEC, __func__);
->              return;
->          }
-> -    case ENET_TDAR:     /* FALLTHROUGH */
-> +        /* fall through */
-> +    case ENET_TDAR:
->          if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
->              s->regs[index] =3D ENET_TDAR_TDAR;
->              imx_eth_do_tx(s, index);
->=20
+>  hw/net/imx_fec.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
+
+r~

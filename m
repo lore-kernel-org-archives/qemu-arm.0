@@ -1,98 +1,98 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1346882lff;
-        Wed, 18 Dec 2019 13:20:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqydIp+ncfvvFbgokraNhX++CM1XYLZa3GktaiyB0eppKV+0iiQPzKzFPBnB2Vwz28RunK+t
-X-Received: by 2002:a05:620a:1467:: with SMTP id j7mr4589994qkl.76.1576704050422;
-        Wed, 18 Dec 2019 13:20:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576704050; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1347837lff;
+        Wed, 18 Dec 2019 13:21:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx36/nywXdVC78TB/4fybGNvFWpGzKH1r7NOR+tBmX3NiVwZrwqg3mVz7CTZ4A0E2MenPXA
+X-Received: by 2002:a05:6830:158:: with SMTP id j24mr4895894otp.316.1576704103620;
+        Wed, 18 Dec 2019 13:21:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576704103; cv=none;
         d=google.com; s=arc-20160816;
-        b=bHMQVFAFMzKA9ibThtHWXGIdf5WJjzTgmMZ2YZDmsxACJzYS+pf+K9B3jhihS6lOHH
-         OKq5G48F94vBCZ3S28J3tz4GsEMWhMgBdlqPBWuBKlTT1SE16b5ZkUSFLfxR9ZSZ5nxW
-         p2qfDnlZMvdJa2i8YE6mdhrCZ5n+EGlYHX4rtYSw3A+fGWQuvJ/Cd4DzBDhY8TNj6YNl
-         UrmzlCs+jymStAtr6Ke8GRJcIjDfPSiSfdDHidj5CBw0GoBsPh4YLi4EHIj3gkUC2Rvy
-         05swU43QNbrvWkrG0enzTX0Quq4QxttuLqTbBBCPpnlpahmEg/CqztY3QR8ryjtxc3NW
-         4q3Q==
+        b=VtegBo+y9aOEj8CF8cNkpf+62VMCwZ7rZxX/JkS35vQnbieXo9isDKRReRixQwOb1m
+         JB/p3tJAny5sHKKgh7oa4mx0s+mNAvVI7XdAU/OvnT8QfsPNP3WR7KZXbmdjieiKhCGK
+         a1LMu6JT3BQPdFjsg1RU+wgBE6hiXSSaWdjxvev/OQfuvyL5DBhsG7kqyxUOerCeaumd
+         7VROJVByc0/HXdZXblI/B79UyniS3WW4RX3hIUnuOqF7vwMnnzf50F63BysHwIS1G71K
+         xPQLfQWgPXjKoydr81YPZGXp3W4dPRuKSkRnXkHjJt0+SgMq5XimyQHdqBwHbNuHaI6C
+         vV+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=wiaxJVCuSNQJMhOQMKQIbuNI/IgcNMi1SSwkGVjCgKE=;
-        b=UuL26cG6OCNQ9bYf3I9LCY8VAMzzxCWPo7lgY+gwoJ8Vyo5DYkS5OjGUnNSfHB/1cI
-         9fcw34Pl1G6bEPXu+IPjL3rvBEXaI4CS1DksQNLhDBXLvyDpwhJmA84HDhugdFSbdlg3
-         b1YkN/56hBXP445uSqCjVGXvWp3G0wecjKsOG0k3axMcRqk9zxIObqTfYxCdlnDwIicr
-         EWdDsv9Bl/w6G+vNwuPPjdst93K9pz5HAilPObrToG7IF9sHqv0ADyrK9K/1ijyIEsbX
-         +w6FN+VOmLDoVtrcqWLUNFNrsvz96PEqAdv55NIrIEEDeom1XYX3EHOZQX0u+tNp0YBt
-         TYNA==
+        bh=eYOQYD7N468B9qLiuc+fIol2HVdnn3O8hnxJaHLAR74=;
+        b=vUA+gtsxzujEe4AvwjaqW4/6jkapUnAW0aBBBrIMgMhjv5raqmFtjm/Ua7PBjCOM7y
+         XSysHzs0Ti36SY4T26qFI9/9ex748lJadhp+O2Efewo1+K5/k3raaJmqDYdrMqxDYnFJ
+         UimyEcN8JHd/Hki1qEutr90Svfr5a4uCbIi3P2LEQ76ji705qnx5nBEhjTq/K5mWnsBN
+         E0cvoJnYmTtBSFYrzpsy48FW0CSwKMtzZaiU+pqaRx+6wDcxpFF2FLAK0zvZwrBA0FzE
+         5Io+12r7XFxcmvBr9FFy9jVEoK5vjnCZGJIk60YXHC8DQ4lMmN/dO4Z1nvhug+XcWCWA
+         IKcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A2TmBwhJ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q79xBpfa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h28si2365519qkl.158.2019.12.18.13.20.50
+        by mx.google.com with ESMTPS id h8si2216006otk.183.2019.12.18.13.21.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2019 13:20:50 -0800 (PST)
+        Wed, 18 Dec 2019 13:21:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A2TmBwhJ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q79xBpfa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60848 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60854 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihgkT-0003zI-PH
-	for alex.bennee@linaro.org; Wed, 18 Dec 2019 16:20:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47606)
+	id 1ihglK-0004kc-PF
+	for alex.bennee@linaro.org; Wed, 18 Dec 2019 16:21:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49283)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ihgkI-0003v6-1w
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:20:39 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ihgl8-0004hS-90
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:21:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ihgkF-0008M7-GM
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:20:37 -0500
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:32812)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ihgl5-00010F-UP
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:21:30 -0500
+Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b]:32790)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ihgk4-0008FG-8t; Wed, 18 Dec 2019 16:20:24 -0500
-Received: by mail-io1-xd43.google.com with SMTP id z8so3544132ioh.0;
- Wed, 18 Dec 2019 13:20:22 -0800 (PST)
+ id 1ihgl0-0000tb-Vh; Wed, 18 Dec 2019 16:21:23 -0500
+Received: by mail-il1-x12b.google.com with SMTP id v15so2979358iln.0;
+ Wed, 18 Dec 2019 13:21:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wiaxJVCuSNQJMhOQMKQIbuNI/IgcNMi1SSwkGVjCgKE=;
- b=A2TmBwhJbdSS7XeABnir6EeXy+cEKIX/OERrZokc2j1UINXvRkqj9JBF7V+Ol17KPt
- QT8HBBTiq+UJrBdmxW5YUyIlJpw9/loh/sduyHwclcQ6VbkeD6UlTqXRyY9gJ8VkVztD
- 9XgYaw3jiyntgKK3RZpl8kzD2XWJveJuDLDk6fWpE8jGAdQkih2wGC6cndbJL6gcv7Ev
- QPLCCgJcV6W4fIkKBtXs6/XZlbCpPqopz9e+l0JJdwi/0LwAQT0wRo7ItzIA2t+bUIDE
- mwN4hUQa7A9to1TMfaJ2wTQhN09/Sj7KXXilDn5WA0WkiCCTdie/kz3pm9BSGlNShyEZ
- kIdw==
+ :cc; bh=eYOQYD7N468B9qLiuc+fIol2HVdnn3O8hnxJaHLAR74=;
+ b=q79xBpfa6sMS3V6cd4FV5Gr3IhTdrdVLHJ9ywxwepUVH3mk7lAwFjgHSA2RiLttoLb
+ al87Mf00mz2U0HtNnIZkIYxdGzGXaRUXtti65ohi5muYPWEMgIoKdCHSV0UtR/8QrUQx
+ F7SIIlWLmPZBsD/SVSyGxXO16CRvQJzNiOZ30fpW1q1oj0AxXqOwSDbKeDwJVR9Tm7p/
+ noasGN4FxAiYa5ptWdfMzQSkHrohaMqB0pvv64R+9dNOmIz7q+arvN8Pcpb+pFUBXYKj
+ fsBZvNxTsmgmPwU73FMEJkj32fVtN+X8Y3p5fcNPr/op6wpFEII+zbwwYKcskpjAgLuB
+ LpbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=wiaxJVCuSNQJMhOQMKQIbuNI/IgcNMi1SSwkGVjCgKE=;
- b=NEiZ6ElNGu1u5/SKzyFgfECKxO4ufB7Ld4lwx/pViTiV84ItB3w7CCyM2QEABuNIdI
- zkruwngE+ZuGgtpXwETUzVM3AV5trvY+45Y4br8zzkmvEy0NBKtL3jYAVnkKqOZZRLve
- H8sEeCRWsSeoMXeyfA4ldFhbFow54smEd8Vmd9KMA1EHjpaLmWs4djkTxCeXZuK6+lqO
- aZUymWEpTwNP7qlMt5vC6zP7x2/owrm19PieciRIqebki0w6/+f5EqosYQmFfooZZLP3
- Ql3qfq0rOOuJvVCGY+6hETrkwkrW7NEl0eAQHMv6ypuiicLjohuVjaPXEWZmhM4Yivyr
- 0yLw==
-X-Gm-Message-State: APjAAAXt008a7aRfuIGRAk7Scpk7EYi9mReyYVljdN6JiGpNXR4WJf7S
- ATkCuJlS8LG6gnzJhwtfRNigXW8r8EENI1lqmXc=
-X-Received: by 2002:a6b:6f01:: with SMTP id k1mr3371292ioc.28.1576704021596;
- Wed, 18 Dec 2019 13:20:21 -0800 (PST)
+ bh=eYOQYD7N468B9qLiuc+fIol2HVdnn3O8hnxJaHLAR74=;
+ b=RKa86a+ol+KVhR/qPSpklfnX6xBf4iIvLkJhdzNI7C30e+gwAP7Be6pA5sdf7mbE+A
+ G7h1FT9R9jlI3vjsAVpXbOY/VWAmRi5SQ9zMJesvDP8rJPewJw6BPXxPlLuizds8ra5D
+ /PYxyUC86/5qImpS44fNaRrd9D9y1pUNxTMbtB1p4Ju3lj3t4OkfpD8cuuntECvcH8Qz
+ hRLrvG/oDXsg8nI4EzME+CzF8M5s+KikoACWnM1ssGb0EnbcXCIERyS5d7GpJAk9W9n4
+ 2cXrwyG3y5nbi0o++kry0OPqGBfa0+1GtjMNIxBLgarnI9CMB0cgQWzGLTXbzggj3a7D
+ CqWA==
+X-Gm-Message-State: APjAAAX+h8iDJWBK80GW+D/8q9tO30q2jjNhlbnP3t+HIYy5PXepgWjT
+ 6ATjCz8L6snlUe0d1lyCBi+u8NBxTol/QKvuZ7U=
+X-Received: by 2002:a92:a103:: with SMTP id v3mr3372445ili.265.1576704082031; 
+ Wed, 18 Dec 2019 13:21:22 -0800 (PST)
 MIME-Version: 1.0
 References: <20191217182730.943-1-f4bug@amsat.org>
- <20191217182730.943-2-f4bug@amsat.org>
-In-Reply-To: <20191217182730.943-2-f4bug@amsat.org>
+ <20191217182730.943-3-f4bug@amsat.org>
+In-Reply-To: <20191217182730.943-3-f4bug@amsat.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 18 Dec 2019 22:20:10 +0100
-Message-ID: <CAPan3WpCX5RU03+-7QPZ4evTUzaU4BDEsTU4n4M3f+0eTEAhwQ@mail.gmail.com>
-Subject: Re: [PATCH 1/5] tests/boot_linux_console: Add a quick test for the
- OrangePi PC board
+Date: Wed, 18 Dec 2019 22:21:11 +0100
+Message-ID: <CAPan3WoYNtHY23yYMWm7ORR8jLcAdCfushGCSfEa6UzJWjzeog@mail.gmail.com>
+Subject: Re: [PATCH 2/5] tests/boot_linux_console: Add initrd test for the
+ Orange Pi PC board
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000001f929d059a010365"
+Content-Type: multipart/alternative; boundary="000000000000b9bbe2059a010660"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d43
+X-Received-From: 2607:f8b0:4864:20::12b
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,35 +104,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Guenter Roeck <linux@roeck-us.net>,
- Cleber Rosa <crosa@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dgsuTMJxseiv
+X-TUID: yFFVSleEsYuJ
 
---0000000000001f929d059a010365
+--000000000000b9bbe2059a010660
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hey Philippe,
+This one also works fine on my host (Ubuntu 18.04 LTS):
 
-Super!! Fantastic, now we can automatically test the H3 based boards
-and use that to verify they keep working as expected when changing the code=
-.
-
-Great, I'm going to use these tests also from now on (previously I had some
-small
-bash scripts).
-
-This quick test is working fine for me, so:
-
-Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-
-Regards,
-Niek
-
-
+  Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
 On Tue, Dec 17, 2019 at 7:27 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g>
@@ -145,20 +132,16 @@ wrote:
 > project (based on Debian):
 > https://www.raspbian.org/RaspbianImages
 >
+> The cpio image used comes from the linux-build-test project:
+> https://github.com/groeck/linux-build-test
+>
 > If ARM is a target being built, "make check-acceptance" will
 > automatically include this test by the use of the "arch:arm" tags.
 >
 > Alternatively, this test can be run using:
 >
->   $ make check-venv
->   $ ./tests/venv/bin/avocado --show=3Dconsole,app run -t machine:orangepi=
--pc
+>   $ avocado --show=3Dconsole run -t machine:orangepi-pc
 > tests/acceptance/boot_linux_console.py
->   JOB ID     : 2e4d15eceb13c33672af406f08171e6e9de1414a
->   JOB LOG    : ~/job-results/job-2019-12-17T05.46-2e4d15e/job.log
->   (1/1)
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
-:
 >   console: Uncompressing Linux... done, booting the kernel.
 >   console: Booting Linux on physical CPU 0x0
 >   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version
@@ -170,38 +153,90 @@ wrote:
 >   console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing
 > instruction cache
 >   console: OF: fdt: Machine model: Xunlong Orange Pi PC
->   console: Memory policy: Data cache writealloc
->   console: OF: reserved mem: failed to allocate memory for node
-> 'cma@4a000000'
->   console: cma: Failed to reserve 128 MiB
->   console: psci: probing for conduit method from DT.
->   console: psci: PSCIv0.2 detected in firmware.
->   console: psci: Using standard PSCI v0.2 function IDs
->   console: psci: Trusted OS migration not required
->   console: random: get_random_bytes called from start_kernel+0x8d/0x3c2
-> with crng_init=3D0
->   console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r8192 d24308
-> u73728
->   console: Built 1 zonelists, mobility grouping on.  Total pages: 32480
->   console: Kernel command line: printk.time=3D0 console=3DttyS0,115200
->   PASS (8.59 s)
->   JOB TIME   : 8.81 s
+>   [...]
+>   console: Trying to unpack rootfs image as initramfs...
+>   console: Freeing initrd memory: 3256K
+>   console: Freeing unused kernel memory: 1024K
+>   console: Run /init as init process
+>   console: mount: mounting devtmpfs on /dev failed: Device or resource bu=
+sy
+>   console: Starting logging: OK
+>   console: Initializing random number generator... random: dd:
+> uninitialized urandom read (512 bytes read)
+>   console: done.
+>   console: Starting network: OK
+>   console: Found console ttyS0
+>   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version
+> 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET
+> 2019
+>   console: Boot successful.
+>   console: cat /proc/cpuinfo
+>   console: / # cat /proc/cpuinfo
+>   console: processor      : 0
+>   console: model name     : ARMv7 Processor rev 5 (v7l)
+>   console: BogoMIPS       : 125.00
+>   console: Features       : half thumb fastmult vfp edsp neon vfpv3 tls
+> vfpv4 idiva idivt vfpd32 lpae evtstrm
+>   console: CPU implementer        : 0x41
+>   console: CPU architecture: 7
+>   console: CPU variant    : 0x0
+>   console: CPU part       : 0xc07
+>   console: CPU revision   : 5
+>   [...]
+>   console: processor      : 3
+>   console: model name     : ARMv7 Processor rev 5 (v7l)
+>   console: BogoMIPS       : 125.00
+>   console: Features       : half thumb fastmult vfp edsp neon vfpv3 tls
+> vfpv4 idiva idivt vfpd32 lpae evtstrm
+>   console: CPU implementer        : 0x41
+>   console: CPU architecture: 7
+>   console: CPU variant    : 0x0
+>   console: CPU part       : 0xc07
+>   console: CPU revision   : 5
+>   console: Hardware       : Allwinner sun8i Family
+>   console: Revision       : 0000
+>   console: Serial         : 0000000000000000
+>   console: cat /proc/iomem
+>   console: / # cat /proc/iomem
+>   console: 01000000-010fffff : clock@1000000
+>   console: 01c00000-01c00fff : system-control@1c00000
+>   console: 01c02000-01c02fff : dma-controller@1c02000
+>   [...]
+>   console: reboot
+>   console: / # reboot
+>   console: / # Found console ttyS0
+>   console: Stopping network: OK
+>   console: hrtimer: interrupt took 21852064 ns
+>   console: Saving random seed... random: dd: uninitialized urandom read
+> (512 bytes read)
+>   console: done.
+>   console: Stopping logging: OK
+>   console: umount: devtmpfs busy - remounted read-only
+>   console: umount: can't unmount /: Invalid argument
+>   console: The system is going down NOW!
+>   console: Sent SIGTERM to all processes
+>   console: Sent SIGKILL to all processes
+>   console: Requesting system reboot
+>   console: reboot: Restarting system
+>   PASS (48.32 s)
+>   JOB TIME   : 49.16 s
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
+>  tests/acceptance/boot_linux_console.py | 41 ++++++++++++++++++++++++++
+>  1 file changed, 41 insertions(+)
 >
 > diff --git a/tests/acceptance/boot_linux_console.py
 > b/tests/acceptance/boot_linux_console.py
-> index 7e41cebd47..820239e439 100644
+> index 820239e439..daabd47404 100644
 > --- a/tests/acceptance/boot_linux_console.py
 > +++ b/tests/acceptance/boot_linux_console.py
-> @@ -411,6 +411,32 @@ class BootLinuxConsole(Test):
->          self.wait_for_console_pattern('Boot successful.')
->          # TODO user command, for now the uart is stuck
+> @@ -437,6 +437,47 @@ class BootLinuxConsole(Test):
+>          console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
+ine
+>          self.wait_for_console_pattern(console_pattern)
 >
-> +    def test_arm_orangepi(self):
+> +    def test_arm_orangepi_initrd(self):
 > +        """
 > +        :avocado: tags=3Darch:arm
 > +        :avocado: tags=3Dmachine:orangepi-pc
@@ -217,19 +252,38 @@ wrote:
 > +        dtb_path =3D
 > '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
 > +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+> +        initrd_url =3D ('https://github.com/groeck/linux-build-test/raw/=
+'
+> +                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+> +                      'arm/rootfs-armv7a.cpio.gz')
+> +        initrd_hash =3D '604b2e45cdf35045846b8bbfbf2129b1891bdc9c'
+> +        initrd_path_gz =3D self.fetch_asset(initrd_url,
+> asset_hash=3Dinitrd_hash)
+> +        initrd_path =3D os.path.join(self.workdir, 'rootfs.cpio')
+> +        archive.gzip_uncompress(initrd_path_gz, initrd_path)
 > +
 > +        self.vm.set_machine('orangepi-pc')
 > +        self.vm.set_console()
 > +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
-> +                               'console=3DttyS0,115200n8 '
-> +                               'earlycon=3Duart,mmio32,0x1c28000')
+> +                               'console=3DttyS0,115200 '
+> +                               'panic=3D-1 noreboot')
 > +        self.vm.add_args('-kernel', kernel_path,
 > +                         '-dtb', dtb_path,
-> +                         '-append', kernel_command_line)
+> +                         '-initrd', initrd_path,
+> +                         '-append', kernel_command_line,
+> +                         '-no-reboot')
 > +        self.vm.launch()
-> +        console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
-ine
-> +        self.wait_for_console_pattern(console_pattern)
+> +        self.wait_for_console_pattern('Boot successful.')
+> +
+> +        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
+> +                                                'Allwinner sun8i Family'=
+)
+> +        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
+> +                                                'system-control@1c00000'=
+)
+> +        exec_command_and_wait_for_pattern(self, 'reboot',
+> +                                                'reboot: Restarting
+> system')
 > +
 >      def test_s390x_s390_ccw_virtio(self):
 >          """
@@ -242,25 +296,19 @@ ine
 --=20
 Niek Linnenbank
 
---0000000000001f929d059a010365
+--000000000000b9bbe2059a010660
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hey Philippe,</div><div><br></div><div>Super!! Fantas=
-tic, now we can automatically test the H3 based boards<br></div><div>and us=
-e that to verify they keep working as expected when changing the code.</div=
-><div><br></div><div>Great, I&#39;m going to use these tests also from now =
-on (previously I had some small</div><div>bash scripts).<br></div><div><br>=
-</div><div>This quick test is working fine for me, so:</div><div><br></div>=
-<div>Tested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.=
-com">nieklinnenbank@gmail.com</a>&gt;<br></div><div><br></div><div>Regards,=
-</div><div>Niek<br></div><div><br></div><div><br></div></div><br><div class=
-=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 17, 2019=
- at 7:27 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.o=
-rg">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
-;padding-left:1ex">This test boots a Linux kernel on a OrangePi PC board an=
-d verify<br>
+<div dir=3D"ltr"><div>This one also works fine on my host (Ubuntu 18.04 LTS=
+):</div><div><br></div><div>=C2=A0 Tested-by: Niek Linnenbank &lt;<a href=
+=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;<br></=
+div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On=
+ Tue, Dec 17, 2019 at 7:27 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"ma=
+ilto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
+d rgb(204,204,204);padding-left:1ex">This test boots a Linux kernel on a Or=
+angePi PC board and verify<br>
 the serial output is working.<br>
 <br>
 The kernel image and DeviceTree blob are built by the Raspbian<br>
@@ -268,21 +316,18 @@ project (based on Debian):<br>
 <a href=3D"https://www.raspbian.org/RaspbianImages" rel=3D"noreferrer" targ=
 et=3D"_blank">https://www.raspbian.org/RaspbianImages</a><br>
 <br>
+The cpio image used comes from the linux-build-test project:<br>
+<a href=3D"https://github.com/groeck/linux-build-test" rel=3D"noreferrer" t=
+arget=3D"_blank">https://github.com/groeck/linux-build-test</a><br>
+<br>
 If ARM is a target being built, &quot;make check-acceptance&quot; will<br>
 automatically include this test by the use of the &quot;arch:arm&quot; tags=
 .<br>
 <br>
 Alternatively, this test can be run using:<br>
 <br>
-=C2=A0 $ make check-venv<br>
-=C2=A0 $ ./tests/venv/bin/avocado --show=3Dconsole,app run -t machine:orang=
-epi-pc tests/acceptance/boot_linux_console.py<br>
-=C2=A0 JOB ID=C2=A0 =C2=A0 =C2=A0: 2e4d15eceb13c33672af406f08171e6e9de1414a=
-<br>
-=C2=A0 JOB LOG=C2=A0 =C2=A0 : ~/job-results/job-2019-12-17T05.46-2e4d15e/jo=
-b.log<br>
-=C2=A0 (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_a=
-rm_orangepi:<br>
+=C2=A0 $ avocado --show=3Dconsole run -t machine:orangepi-pc tests/acceptan=
+ce/boot_linux_console.py<br>
 =C2=A0 console: Uncompressing Linux... done, booting the kernel.<br>
 =C2=A0 console: Booting Linux on physical CPU 0x0<br>
 =C2=A0 console: Linux version 4.20.7-sunxi (<a href=3D"mailto:root@armbian.=
@@ -294,44 +339,97 @@ c5387d<br>
 =C2=A0 console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing inst=
 ruction cache<br>
 =C2=A0 console: OF: fdt: Machine model: Xunlong Orange Pi PC<br>
-=C2=A0 console: Memory policy: Data cache writealloc<br>
-=C2=A0 console: OF: reserved mem: failed to allocate memory for node &#39;c=
-ma@4a000000&#39;<br>
-=C2=A0 console: cma: Failed to reserve 128 MiB<br>
-=C2=A0 console: psci: probing for conduit method from DT.<br>
-=C2=A0 console: psci: PSCIv0.2 detected in firmware.<br>
-=C2=A0 console: psci: Using standard PSCI v0.2 function IDs<br>
-=C2=A0 console: psci: Trusted OS migration not required<br>
-=C2=A0 console: random: get_random_bytes called from start_kernel+0x8d/0x3c=
-2 with crng_init=3D0<br>
-=C2=A0 console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r8192 d24308=
- u73728<br>
-=C2=A0 console: Built 1 zonelists, mobility grouping on.=C2=A0 Total pages:=
- 32480<br>
-=C2=A0 console: Kernel command line: printk.time=3D0 console=3DttyS0,115200=
+=C2=A0 [...]<br>
+=C2=A0 console: Trying to unpack rootfs image as initramfs...<br>
+=C2=A0 console: Freeing initrd memory: 3256K<br>
+=C2=A0 console: Freeing unused kernel memory: 1024K<br>
+=C2=A0 console: Run /init as init process<br>
+=C2=A0 console: mount: mounting devtmpfs on /dev failed: Device or resource=
+ busy<br>
+=C2=A0 console: Starting logging: OK<br>
+=C2=A0 console: Initializing random number generator... random: dd: uniniti=
+alized urandom read (512 bytes read)<br>
+=C2=A0 console: done.<br>
+=C2=A0 console: Starting network: OK<br>
+=C2=A0 console: Found console ttyS0<br>
+=C2=A0 console: Linux version 4.20.7-sunxi (<a href=3D"mailto:root@armbian.=
+com" target=3D"_blank">root@armbian.com</a>) (gcc version 7.2.1 20171011 (L=
+inaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019<br>
+=C2=A0 console: Boot successful.<br>
+=C2=A0 console: cat /proc/cpuinfo<br>
+=C2=A0 console: / # cat /proc/cpuinfo<br>
+=C2=A0 console: processor=C2=A0 =C2=A0 =C2=A0 : 0<br>
+=C2=A0 console: model name=C2=A0 =C2=A0 =C2=A0: ARMv7 Processor rev 5 (v7l)=
 <br>
-=C2=A0 PASS (8.59 s)<br>
-=C2=A0 JOB TIME=C2=A0 =C2=A0: 8.81 s<br>
+=C2=A0 console: BogoMIPS=C2=A0 =C2=A0 =C2=A0 =C2=A0: 125.00<br>
+=C2=A0 console: Features=C2=A0 =C2=A0 =C2=A0 =C2=A0: half thumb fastmult vf=
+p edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm<br>
+=C2=A0 console: CPU implementer=C2=A0 =C2=A0 =C2=A0 =C2=A0 : 0x41<br>
+=C2=A0 console: CPU architecture: 7<br>
+=C2=A0 console: CPU variant=C2=A0 =C2=A0 : 0x0<br>
+=C2=A0 console: CPU part=C2=A0 =C2=A0 =C2=A0 =C2=A0: 0xc07<br>
+=C2=A0 console: CPU revision=C2=A0 =C2=A0: 5<br>
+=C2=A0 [...]<br>
+=C2=A0 console: processor=C2=A0 =C2=A0 =C2=A0 : 3<br>
+=C2=A0 console: model name=C2=A0 =C2=A0 =C2=A0: ARMv7 Processor rev 5 (v7l)=
 <br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+=C2=A0 console: BogoMIPS=C2=A0 =C2=A0 =C2=A0 =C2=A0: 125.00<br>
+=C2=A0 console: Features=C2=A0 =C2=A0 =C2=A0 =C2=A0: half thumb fastmult vf=
+p edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm<br>
+=C2=A0 console: CPU implementer=C2=A0 =C2=A0 =C2=A0 =C2=A0 : 0x41<br>
+=C2=A0 console: CPU architecture: 7<br>
+=C2=A0 console: CPU variant=C2=A0 =C2=A0 : 0x0<br>
+=C2=A0 console: CPU part=C2=A0 =C2=A0 =C2=A0 =C2=A0: 0xc07<br>
+=C2=A0 console: CPU revision=C2=A0 =C2=A0: 5<br>
+=C2=A0 console: Hardware=C2=A0 =C2=A0 =C2=A0 =C2=A0: Allwinner sun8i Family=
+<br>
+=C2=A0 console: Revision=C2=A0 =C2=A0 =C2=A0 =C2=A0: 0000<br>
+=C2=A0 console: Serial=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0: 0000000000000000<=
+br>
+=C2=A0 console: cat /proc/iomem<br>
+=C2=A0 console: / # cat /proc/iomem<br>
+=C2=A0 console: 01000000-010fffff : clock@1000000<br>
+=C2=A0 console: 01c00000-01c00fff : system-control@1c00000<br>
+=C2=A0 console: 01c02000-01c02fff : dma-controller@1c02000<br>
+=C2=A0 [...]<br>
+=C2=A0 console: reboot<br>
+=C2=A0 console: / # reboot<br>
+=C2=A0 console: / # Found console ttyS0<br>
+=C2=A0 console: Stopping network: OK<br>
+=C2=A0 console: hrtimer: interrupt took 21852064 ns<br>
+=C2=A0 console: Saving random seed... random: dd: uninitialized urandom rea=
+d (512 bytes read)<br>
+=C2=A0 console: done.<br>
+=C2=A0 console: Stopping logging: OK<br>
+=C2=A0 console: umount: devtmpfs busy - remounted read-only<br>
+=C2=A0 console: umount: can&#39;t unmount /: Invalid argument<br>
+=C2=A0 console: The system is going down NOW!<br>
+=C2=A0 console: Sent SIGTERM to all processes<br>
+=C2=A0 console: Sent SIGKILL to all processes<br>
+=C2=A0 console: Requesting system reboot<br>
+=C2=A0 console: reboot: Restarting system<br>
+=C2=A0 PASS (48.32 s)<br>
+=C2=A0 JOB TIME=C2=A0 =C2=A0: 49.16 s<br>
+<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
+hat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br>
 ---<br>
-=C2=A0tests/acceptance/boot_linux_console.py | 26 +++++++++++++++++++++++++=
+=C2=A0tests/acceptance/boot_linux_console.py | 41 +++++++++++++++++++++++++=
 +<br>
-=C2=A01 file changed, 26 insertions(+)<br>
+=C2=A01 file changed, 41 insertions(+)<br>
 <br>
 diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot=
 _linux_console.py<br>
-index 7e41cebd47..820239e439 100644<br>
+index 820239e439..daabd47404 100644<br>
 --- a/tests/acceptance/boot_linux_console.py<br>
 +++ b/tests/acceptance/boot_linux_console.py<br>
-@@ -411,6 +411,32 @@ class BootLinuxConsole(Test):<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0self.wait_for_console_pattern(&#39;Boot s=
-uccessful.&#39;)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0# TODO user command, for now the uart is =
-stuck<br>
+@@ -437,6 +437,47 @@ class BootLinuxConsole(Test):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0console_pattern =3D &#39;Kernel command l=
+ine: %s&#39; % kernel_command_line<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0self.wait_for_console_pattern(console_pat=
+tern)<br>
 <br>
-+=C2=A0 =C2=A0 def test_arm_orangepi(self):<br>
++=C2=A0 =C2=A0 def test_arm_orangepi_initrd(self):<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Darch:arm<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:orangepi-pc<br>
@@ -354,28 +452,59 @@ ash=3Ddeb_hash)<br>
 xi/sun8i-h3-orangepi-pc.dtb&#39;<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(deb_path, d=
 tb_path)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 initrd_url =3D (&#39;<a href=3D"https://github=
+.com/groeck/linux-build-test/raw/" rel=3D"noreferrer" target=3D"_blank">htt=
+ps://github.com/groeck/linux-build-test/raw/</a>&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &#39;2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &#39;arm/rootfs-armv7a.cpio.gz&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 initrd_hash =3D &#39;604b2e45cdf35045846b8bbfb=
+f2129b1891bdc9c&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 initrd_path_gz =3D self.fetch_asset(initrd_url=
+, asset_hash=3Dinitrd_hash)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 initrd_path =3D os.path.join(self.workdir, &#3=
+9;rootfs.cpio&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 archive.gzip_uncompress(initrd_path_gz, initrd=
+_path)<br>
 +<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_machine(&#39;orangepi-pc&#39;)<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_console()<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_command_line =3D (self.KERNEL_COMMON_CO=
 MMAND_LINE +<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;console=3DttyS0,115200n8 &#39;<b=
-r>
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;console=3DttyS0,115200 &#39;<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;earlycon=3Duart,mmio32,0x1c28000=
-&#39;)<br>
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;panic=3D-1 noreboot&#39;)<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.add_args(&#39;-kernel&#39;, kernel_pat=
 h,<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
 =A0 =C2=A0 =C2=A0&#39;-dtb&#39;, dtb_path,<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0&#39;-append&#39;, kernel_command_line)<br>
+=A0 =C2=A0 =C2=A0&#39;-initrd&#39;, initrd_path,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-append&#39;, kernel_command_line,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-no-reboot&#39;)<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.launch()<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 console_pattern =3D &#39;Kernel command line: =
-%s&#39; % kernel_command_line<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(console_pattern)=
-<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(&#39;Boot succes=
+sful.&#39;)<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &#39;c=
+at /proc/cpuinfo&#39;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &#39;Allwinner sun8i Family&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &#39;c=
+at /proc/iomem&#39;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &#39;system-control@1c00000&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &#39;r=
+eboot&#39;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &#39;reboot: Restarting system&#39;)<br>
 +<br>
 =C2=A0 =C2=A0 =C2=A0def test_s390x_s390_ccw_virtio(self):<br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot;<br>
@@ -385,6 +514,6 @@ h,<br>
 <br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div>
+div></div>
 
---0000000000001f929d059a010365--
+--000000000000b9bbe2059a010660--

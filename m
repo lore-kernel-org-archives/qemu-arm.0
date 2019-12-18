@@ -1,161 +1,161 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1226809lff;
-        Wed, 18 Dec 2019 11:28:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxu6l6hYK9+A7Rt3fowJiYfKNrZXuh+eObnP8F2loRP4ryLkXGzu23l9wJwF6DpkHlnvIjO
-X-Received: by 2002:a54:4781:: with SMTP id o1mr1224832oic.117.1576697333990;
-        Wed, 18 Dec 2019 11:28:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576697333; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1229518lff;
+        Wed, 18 Dec 2019 11:31:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzKqMAj7yBVtXJ/SgavDkMgxovkBWIN0+0vyd+hq2bFZLpfnXeMfX0ZxSKkn8DP1OGGxxDV
+X-Received: by 2002:a9d:754a:: with SMTP id b10mr4334014otl.273.1576697463544;
+        Wed, 18 Dec 2019 11:31:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576697463; cv=none;
         d=google.com; s=arc-20160816;
-        b=dwk4y4hWVLdr6qKnoJ9c+o/RXldSLfFKAihHGIxuBF3FRRsOHYgZcbHSUuDQIn3EpH
-         slB1dRZLirL17B2VW1ZFJrGtNv1drECxD6d+cfWb76lLGkRFt1hdqGt3PlijKmoonoNr
-         drGc6vdqBZ5H3ix9gt7e2ew6HNtVxNkqx+2yiU76QdME9MTXB/OEGqT0sTmS3jfve5VE
-         g+OUzDVTaTavM4lzKfFKlw9p8j6d8nEtLg38l0LdV5RcLKKOumSTymUFDw3POqBLjED3
-         bQOMA3w7FE6+7St8+tkhM/fy3ur05ko0ojsr/8tq8LbsOnEXDdrzroCd8ZV2+sg84wok
-         tdsw==
+        b=uvTe7X4Djew40gYuCjm5FiPoCi//EpOAsooQF0Tk/QbZNb5pX/ZhAu0iyyIY+Q3BlH
+         2yxa/wHqmmwcrDqVIKqa3qw1tdzXplMOIiOYl9BTxYzxT4hs1ZHgE/ND6ez0TwPZelZD
+         78SlRsCc/3aV48QXz1kmDipwmfrkiaJQ9Iu04Pv5a/dLcbK1N4cfDxq2AXkb03lrSJ41
+         SOCzNtN2F15pjedn9/3Y3Bh+grud/jJ//DPEiduS9ht+AzUrgFABCV448VE1AU8IMcQA
+         +yElDWcABD+CCGqDvDxn0JPCm7NJkHypruNog+bjB2X7IOGRiu8aWhvwZbrg4SE3l8rR
+         DShQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=gvKn3E3vtip/x6nya4V8EKu5DfUXiZ0uZoETj2uOGIA=;
-        b=puDYQnOSwtsKwvyFMHuyBauRCF+B2ISazY9+LcNqjE285vjvyNPmONVlBpM4CDvyhD
-         rpI6mpTZNQ7WNasfihyX4tbQmOUC3MeVWVGDyqSksLLX7yCM2bjl8soUI/kNME6Zhllb
-         Qfqn0HZqG0JSmNPyg4kR58zsjXCWcXIoYtwYJsQ3EC4Sbb3U2+t2kmiM+/3VFZ/mXIn2
-         Qxtn1QhdNp33GhK5qIS5fjjzKabT5FlUp47SvUUB77Xdevj0ggADQInXfQd9Z6do9dCb
-         Dp3Ln78+U52jE4T/XEJRwQ7EJdTYZRtsn84Im5mC1ay71nzlSP5lZO5rsAwnzCEPb5HK
-         bF4A==
+        bh=TdxvmB9Qgxghb+PTOnONzrGSfc8UbEoa7GDLETeQHLY=;
+        b=dslT3ybCLaa0EArOfWx/GmHd5liDksFMBKGLKE9LSiBfeuse/4/zOeXD6y7GuliYzg
+         +1Ly/uze1XsO48HYqMimJj53pstiaQydsFzYaAtMhX+G/Q2uRjF2Q8fvtoxvFvYC0Hrh
+         rfVOJoojL3kBgkD9g7DrlSmQMKUn+viKvTpw4N1DSrW72fAxyAADa0BzpIjQzjYgBx5b
+         OLpuWFOcz466gPYvcOxJ7N25hGNrm5cP7LluxoupuKtWEx+s98NYKr1xIrdPDfhzUFce
+         CejEn30iKMz26n96aNtNudjawWANNEtD8wsb3hiLeNrSCzaF8pcMRooS6H8F+SlTOzjT
+         zxCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XY7zuboI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FufARakB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o129si1931871oib.236.2019.12.18.11.28.53
+        by mx.google.com with ESMTPS id c126si1882459oib.239.2019.12.18.11.31.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2019 11:28:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Dec 2019 11:31:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XY7zuboI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FufARakB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59522 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59546 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihf08-0002if-Jy
-	for alex.bennee@linaro.org; Wed, 18 Dec 2019 14:28:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34382)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihf2D-0004UQ-Uu
+	for alex.bennee@linaro.org; Wed, 18 Dec 2019 14:31:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34322)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ihexd-0008DJ-OQ
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 14:26:19 -0500
+ (envelope-from <philmd@redhat.com>) id 1ihexZ-00088w-31
+ for qemu-devel@nongnu.org; Wed, 18 Dec 2019 14:26:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ihexV-0003sr-Px
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 14:26:12 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:42155
+ (envelope-from <philmd@redhat.com>) id 1ihexW-0003ub-4v
+ for qemu-devel@nongnu.org; Wed, 18 Dec 2019 14:26:12 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:22077
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ihexV-0003q6-Gq
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 14:26:09 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ihexV-0003ry-SY
+ for qemu-devel@nongnu.org; Wed, 18 Dec 2019 14:26:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1576697169;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gvKn3E3vtip/x6nya4V8EKu5DfUXiZ0uZoETj2uOGIA=;
- b=XY7zuboI4EDk1jbicx6fgWAMwqopGyBorE6PU7djruSg42ylBNsiV8o1xRDGeotdOLZz2p
- 15TGVjZD0GMOPlPCPPCbgZPmTOiM7AgmRMX5GxWl5lQWSo4t0aTRZ3Kj9W47RGXRfL02zy
- 0mfw+W6+kTgzY1KyHfnsN1Uf8Ljsjj8=
+ bh=TdxvmB9Qgxghb+PTOnONzrGSfc8UbEoa7GDLETeQHLY=;
+ b=FufARakBJ6wVGTURsUbZuLvPkirJJDQxQJge8R0RQmPigHYH/y+6vxG76xeKjsWjJR1FPh
+ nOmwEny/dQhdpH+fXgSSKVBLal6K3Adheb/8I/OUqFFC0fOzGvz/pNVyImiK8wuoXq9QEr
+ jfCnWIY8CeYd7+KjKXmhOo/ddJ3p/E8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-207-0lMZT4nyOxiOKML3-m51UQ-1; Wed, 18 Dec 2019 14:26:03 -0500
+ us-mta-325-xXWuz7rlM1Cc8jiMhQbi7g-1; Wed, 18 Dec 2019 14:26:08 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 42AE212BA84;
- Wed, 18 Dec 2019 19:26:01 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9FB5D8024D3;
+ Wed, 18 Dec 2019 19:26:06 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-116-235.ams2.redhat.com [10.36.116.235])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9C44D60C81;
- Wed, 18 Dec 2019 19:25:58 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 98C6B60C81;
+ Wed, 18 Dec 2019 19:26:01 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 3/6] hw/timer/aspeed_timer: Add a fall through comment
-Date: Wed, 18 Dec 2019 20:25:23 +0100
-Message-Id: <20191218192526.13845-4-philmd@redhat.com>
+Subject: [PATCH v2 4/6] hw/net/imx_fec: Rewrite fall through comments
+Date: Wed, 18 Dec 2019 20:25:24 +0100
+Message-Id: <20191218192526.13845-5-philmd@redhat.com>
 In-Reply-To: <20191218192526.13845-1-philmd@redhat.com>
 References: <20191218192526.13845-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: 0lMZT4nyOxiOKML3-m51UQ-1
+X-MC-Unique: xXWuz7rlM1Cc8jiMhQbi7g-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YGHomLSDJfoQ
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dvGuXuFQ5M8Z
 
-Reported by GCC9 when building with CFLAG -Wimplicit-fallthrough=3D2:
+GCC9 is confused by this comment when building with CFLAG
+-Wimplicit-fallthrough=3D2:
 
-  hw/timer/aspeed_timer.c: In function =E2=80=98aspeed_timer_set_value=E2=
-=80=99:
-  hw/timer/aspeed_timer.c:283:24: error: this statement may fall through [-=
-Werror=3Dimplicit-fallthrough=3D]
-    283 |         if (old_reload || !t->reload) {
-        |             ~~~~~~~~~~~^~~~~~~~~~~~~
-  hw/timer/aspeed_timer.c:287:5: note: here
-    287 |     case TIMER_REG_STATUS:
+  hw/net/imx_fec.c: In function =E2=80=98imx_eth_write=E2=80=99:
+  hw/net/imx_fec.c:906:12: error: this statement may fall through [-Werror=
+=3Dimplicit-fallthrough=3D]
+    906 |         if (unlikely(single_tx_ring)) {
+        |            ^
+  hw/net/imx_fec.c:912:5: note: here
+    912 |     case ENET_TDAR:     /* FALLTHROUGH */
         |     ^~~~
   cc1: all warnings being treated as errors
 
-Add the missing fall through comment.
+Rewrite the comments in the correct place,  using 'fall through'
+which is recognized by GCC and static analyzers.
 
-Fixes: 1403f364472
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
-Cc: "C=C3=A9dric Le Goater" <clg@kaod.org>
+Cc: Peter Chubb <peter.chubb@nicta.com.au>
 Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Andrew Jeffery <andrew@aj.id.au>
-Cc: Joel Stanley <joel@jms.id.au>
+Cc: Jason Wang <jasowang@redhat.com>
 Cc: qemu-arm@nongnu.org
 ---
- hw/timer/aspeed_timer.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/net/imx_fec.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index a8c38cc118..c91f18415c 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -283,7 +283,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlState=
- *s, int timer, int reg,
-         if (old_reload || !t->reload) {
-             break;
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index bd99236864..c01ce4f078 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -909,7 +909,8 @@ static void imx_eth_write(void *opaque, hwaddr offset, =
+uint64_t value,
+                           TYPE_IMX_FEC, __func__);
+             return;
          }
--
-+        /* fall through to re-enable */
-     case TIMER_REG_STATUS:
-         if (timer_enabled(t)) {
-             uint64_t now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-    case ENET_TDAR:     /* FALLTHROUGH */
++        /* fall through */
++    case ENET_TDAR:
+         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
+             s->regs[index] =3D ENET_TDAR_TDAR;
+             imx_eth_do_tx(s, index);
 --=20
 2.21.0
 

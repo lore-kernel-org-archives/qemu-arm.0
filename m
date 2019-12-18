@@ -1,174 +1,283 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6692234lff;
-        Tue, 17 Dec 2019 14:55:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyBtVzdiWf04gkQ4lHkVBJJd3C4l8yBmb5f1u4N6963clq+ZYWaOJ9wh6d7G2jM1wfhAeIv
-X-Received: by 2002:ae9:ec0a:: with SMTP id h10mr381614qkg.303.1576623354635;
-        Tue, 17 Dec 2019 14:55:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576623354; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp220185lff;
+        Tue, 17 Dec 2019 19:46:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxrxcJXZjF/+7akyZAthIoFunUNMcKLcIcrltMbL7piDIt45qrMzAwuP56QrmlLnivyxs2R
+X-Received: by 2002:a9d:75c5:: with SMTP id c5mr273841otl.172.1576640809309;
+        Tue, 17 Dec 2019 19:46:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576640809; cv=none;
         d=google.com; s=arc-20160816;
-        b=v76psXd4F3JiUtHm31qkt6WVjMYJtr9NeNKvegx31khtTOgByan1Ookmu7XqWHR6MQ
-         Qh4B0TKegU8kOvpcX5mAI5See1fzKGAe9V/EwJ5TS7xt/C5+20PhysSGOO1NT6PjTpTg
-         FNs2cDl8jpzjlZg8KPs1GOqdH0vgqUOR0l2F7Xx2zilb+CRO8P7FR100pEO9uJkPy95l
-         RLvcqLfIOiTh8SeHn+9a6piF6uDnvkikShPPWpeCwMR+DSdUgcVxagVJx3/8HM+BqMs4
-         2d9iwfC+6mRgFLqC7g2nEz8/jVt+jPlsss3I90KoBdjm2ECd7dWxqMoyB9046vRAi/aK
-         2Ahg==
+        b=oe/lsNGtyAbV1OGxxLVpUQF4p2vqpaGDhq1Gziw14smw672OjiJVZ5tF/74Pr1F8Dz
+         beEn1T/YLkGAVs7tGIO1LWOSgM4lj3gJpNfHWeeZWlPm4zdPR8NSgeIVYFpPc+uh4VN3
+         iJdxdSHq73Vx83JwHpL/BShNCcl/IpbptCCF7K8ZDKgwPV8Z9Xi9dE9O0u3Cb7P9U8NJ
+         wJXthx03B+AGuX5LnrVM7Eyjsjew6y8fyu4lZySioI3GvlYRhF6XRqmriuepuoMIkjhV
+         bOu7Ol10kbdFtWOMCZfC8ywDFV8gtPA75Pmo1YhGmYf2LL7u5jyZMMEsYi0ZGj43VdIW
+         75OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
-         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
-         :dkim-signature;
-        bh=KcoJQ6orCIk0G2Qck/G/g+pS1XQXN0tv4qqhSbQjCv0=;
-        b=Rh1hzvtceds9Mvr9KeuT4VAMtlH6MkwLBukDhZuAqES96GzO1ZyfbLW077lK33y6fC
-         EulSuy6E4HTnIzObOBaew5U31NWeVNVKd2xBqaB94MDeJSY46vm/dXkshNQCi6pkJ1kB
-         +kgnd/W/G7LjEU4ojrKwJJVSfXkKihu1hG/RSYT2Bw09KnPHzBLUH5aayYJCyZcjSEGi
-         QnVuHuzW2N3dr3eHH73n61RU/r6n1aiJqeQJlSQfANUEdnmAvfS2xEG/rtKfEuotgSMH
-         gcJNlvLOJDc+QY71mugQUq8b0Mdmom1CqnY3cgOQw9kKqDiyS2rX3f9j6F5qfD8sU+tE
-         axnA==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=mK4YDpGv+x0BAun1rUh1RXI9XeAP5tlPdbXiMrlwZYA=;
+        b=uvltXAc6xZzlm9n/NIYYSJZvCqAapQRSQGuBLDM/mFUMa85YkGLaIHmSu4BN5z0gJ0
+         vDcIrRfXm897J4fkpr0RENZqVzFwBbUegzKx+HrqFFk6beWsNobDwprmgDMOkioTJKLn
+         AQoxptEcNLAV1EfBOR5s3TYSbUJZyuSzXUX2mjsJX5u/cMKhJcvNUWuL5ybA9RWTA5PN
+         lGpOmH3ig15ffQUjS9/M8D3C2gXnfkN5MhR/8Ag9soF0bXlpZTAVtHRmoat3I44dafqK
+         lFUzb5Da1pQasDvd4msSjfGZnKLLHz2E1hQYI/E+SJu6i7nWfqQZwk/O/JHXOsJ55pkB
+         3YeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=gci2Rvxx;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="kVMQ/VrK";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r26si49898qtn.7.2019.12.17.14.55.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Dec 2019 14:55:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id x26si707421oto.1.2019.12.17.19.46.48;
+        Tue, 17 Dec 2019 19:46:49 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=gci2Rvxx;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="kVMQ/VrK";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47084 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihLkv-0003YT-Qh
-	for alex.bennee@linaro.org; Tue, 17 Dec 2019 17:55:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48032)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1ihLkj-0003Xb-G0
- for qemu-arm@nongnu.org; Tue, 17 Dec 2019 17:55:42 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1ihLke-0006JK-LO
- for qemu-arm@nongnu.org; Tue, 17 Dec 2019 17:55:41 -0500
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20]:38723)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1ihLke-0006Cv-1W; Tue, 17 Dec 2019 17:55:36 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id CE2E842D;
- Tue, 17 Dec 2019 17:55:32 -0500 (EST)
-Received: from imap2 ([10.202.2.52])
- by compute4.internal (MEProxy); Tue, 17 Dec 2019 17:55:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type; s=fm1; bh=KcoJQ6orCIk0G2Qck/G/g+pS1XQXN0t
- v4qqhSbQjCv0=; b=gci2Rvxx/RZjmGiyjFXURoSjFHmOIrXbz0bhVqo1t2qj4Fg
- M25NAfO1M8M+ibyL7Ckdv5dhRJHe+cHAsbOLMkxjfhDD1pyqXWc/Nqfp75YI/A+k
- E6naJZjJdUTsrnWj+W1Wkac9WqIV6fP1WW3/+Rs3V4wBDFnnOiwVm+brQB1/eQg0
- OXMod5lEjGJvVDELsyZuGHsceezHN6p9RvKkzsibzP3A/7fOB467dmzJX9RBWBUC
- cXPmkoecfZID1Pss+cyYgdQGJv6Z9poD3kzWhKgp8I3tAd9v/9XGk4ZduNlK6aXw
- poEByApbtM7kGZ0HunPWm/AopsyFdcoc9CF9Iag==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=KcoJQ6
- orCIk0G2Qck/G/g+pS1XQXN0tv4qqhSbQjCv0=; b=kVMQ/VrKkhKtEf7DFxsMMR
- XoEnQRAt8hgLKvzw3Cx3HjjiTMU5FZDqQjwO5zw9YR76l9n46SPEh0NxhDrBkFXL
- 4ALmtvUCTvFZPfri/IjBj9Idd5CNNlMU3OafMPZEVVLvGomcgtUV4LFUFUfRqtFe
- y5/Bc/+s2fuOX78dQ32VEArxqSwDsNkycUfiMlUrz30e/O47t0g/4STFF7sKqafa
- HCoehsYtx/3P/jos6/taABQxeWVvDXDTAcXrY4yOCAAc7iwgZPvuVBHlCy5D+peS
- CIvSh2UiScYWPen9ABS4wonk7Xje836haXgFIFh8i0CKnpFP4x+yZ93miCorAnzA
- ==
-X-ME-Sender: <xms:41z5Xc7nij6_XFYfMuQq6cJWJun3W39I4KAOYb_qW7w3Z-DYRis1Ag>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrvddtkedgtdefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvffutgesthdtredtreerjeenucfhrhhomhepfdetnhgu
- rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecuffhomh
- grihhnpehoiihlrggsshdrohhrghenucfrrghrrghmpehmrghilhhfrhhomheprghnughr
- vgifsegrjhdrihgurdgruhenucevlhhushhtvghrufhiiigvpedt
-X-ME-Proxy: <xmx:41z5XREXLcECgW_m-eFYXqnCATHRSFh9AkD8tLUzvkapkU55sAYjcA>
- <xmx:41z5XXk08j8rhazqjjJiUqwlkWCIlkrfMuj-Wv0zloU9n3paDsxORw>
- <xmx:41z5XbkRmaXHPSGkhVVBTnXIdo_2Pa_Fll2dJYKWxHDmKFmAEVwScQ>
- <xmx:5Fz5XcibI17uxgWDDiqptZQiQ795FcBFpK0iVVDQ_LM55EWHERV02A>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id D91FBE00A2; Tue, 17 Dec 2019 17:55:31 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.1.7-689-g5a57b82-fmstable-20191216v1
-Mime-Version: 1.0
-Message-Id: <a947382d-e630-40b3-b94f-dadf4c76a2c7@www.fastmail.com>
-In-Reply-To: <CAFEAcA8BquhddybX8X4gsoTs=r+cwGJ6_ebno1_xPJLVVHhm9g@mail.gmail.com>
-References: <cover.ec85a2db47c3e10de70fba144e1bc75caf2f0a91.1576215453.git-series.andrew@aj.id.au>
- <CAFEAcA8BquhddybX8X4gsoTs=r+cwGJ6_ebno1_xPJLVVHhm9g@mail.gmail.com>
-Date: Wed, 18 Dec 2019 09:27:14 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Peter Maydell" <peter.maydell@linaro.org>
-Subject: =?UTF-8?Q?Re:_[PATCH_v3_0/4]_Expose_GT_CNTFRQ_as_a_CPU_property_to_suppo?=
- =?UTF-8?Q?rt_AST2600?=
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 64.147.123.20
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D0A99F43gSwD
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726496AbfLRDqr (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Tue, 17 Dec 2019 22:46:47 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:44880 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726454AbfLRDqr (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 17 Dec 2019 22:46:47 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 6ABE29A27480C7A027BF;
+        Wed, 18 Dec 2019 11:46:44 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS412-HUB.china.huawei.com
+ (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Wed, 18 Dec 2019
+ 11:46:36 +0800
+Subject: Re: [kvm-unit-tests PATCH 05/16] arm/arm64: ITS: Introspection tests
+To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+        <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>
+CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
+        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
+        <thuth@redhat.com>
+References: <20191216140235.10751-1-eric.auger@redhat.com>
+ <20191216140235.10751-6-eric.auger@redhat.com>
+From:   Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <c133ebe6-10f4-2ff7-f75f-75b755397785@huawei.com>
+Date:   Wed, 18 Dec 2019 11:46:34 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
+MIME-Version: 1.0
+In-Reply-To: <20191216140235.10751-6-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.222.27]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: ZD7L8UQt9Nk1
 
+Hi Eric,
 
+I have to admit that this is the first time I've looked into
+the kvm-unit-tests code, so only some minor comments inline :)
 
-On Wed, 18 Dec 2019, at 01:55, Peter Maydell wrote:
-> On Fri, 13 Dec 2019 at 05:48, Andrew Jeffery <andrew@aj.id.au> wrote:
-> >
-> > Hello,
-> >
-> > This is a v3 of the belated follow-up from a few of my earlier attempts to fix
-> > up the ARM generic timer for correct behaviour on the ASPEED AST2600 SoC. The
-> > AST2600 clocks the generic timer at the rate of HPLL, which is configured to
-> > 1125MHz.  This is significantly quicker than the currently hard-coded generic
-> > timer rate of 62.5MHz and so we see "sticky" behaviour in the guest.
-> >
-> > v2 can be found here:
-> >
-> > https://patchwork.ozlabs.org/cover/1203474/
-> >
-> > Changes since v2:
-> >
-> > * Address some minor review comments from Philippe and add tags
-> >
-> > Changes since v1:
-> >
-> > * Fix a user mode build failure from partial renaming of gt_cntfrq_period_ns()
-> > * Add tags from Cedric and Richard
-> >
-> > Please review.
-> >
-> > Andrew
-> >
-> > Andrew Jeffery (4):
-> >   target/arm: Remove redundant scaling of nexttick
-> >   target/arm: Abstract the generic timer frequency
-> >   target/arm: Prepare generic timer for per-platform CNTFRQ
-> >   ast2600: Configure CNTFRQ at 1125MHz
+On 2019/12/16 22:02, Eric Auger wrote:
+> Detect the presence of an ITS as part of the GICv3 init
+> routine, initialize its base address and read few registers
+> the IIDR, the TYPER to store its dimensioning parameters.
 > 
+> This is our first ITS test, belonging to a new "its" group.
 > 
-> 
-> 
-> Applied to target-arm.next, thanks.
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Thanks for your feedback throughout.
+[...]
 
-Andrew
+> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
+> new file mode 100644
+> index 0000000..2ce483e
+> --- /dev/null
+> +++ b/lib/arm/asm/gic-v3-its.h
+> @@ -0,0 +1,116 @@
+> +/*
+> + * All ITS* defines are lifted from include/linux/irqchip/arm-gic-v3.h
+> + *
+> + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU LGPL, version 2.
+> + */
+> +#ifndef _ASMARM_GIC_V3_ITS_H_
+> +#define _ASMARM_GIC_V3_ITS_H_
+> +
+> +#ifndef __ASSEMBLY__
+> +
+> +#define GITS_CTLR			0x0000
+> +#define GITS_IIDR			0x0004
+> +#define GITS_TYPER			0x0008
+> +#define GITS_CBASER			0x0080
+> +#define GITS_CWRITER			0x0088
+> +#define GITS_CREADR			0x0090
+> +#define GITS_BASER			0x0100
+> +
+> +#define GITS_TYPER_PLPIS                (1UL << 0)
+> +#define GITS_TYPER_IDBITS_SHIFT         8
+> +#define GITS_TYPER_DEVBITS_SHIFT        13
+> +#define GITS_TYPER_DEVBITS(r)           ((((r) >> GITS_TYPER_DEVBITS_SHIFT) & 0x1f) + 1)
+> +#define GITS_TYPER_PTA                  (1UL << 19)
+> +#define GITS_TYPER_HWCOLLCNT_SHIFT      24
+> +
+> +#define GITS_CTLR_ENABLE                (1U << 0)
+> +
+> +#define GITS_CBASER_VALID                       (1UL << 63)
+> +#define GITS_CBASER_SHAREABILITY_SHIFT          (10)
+> +#define GITS_CBASER_INNER_CACHEABILITY_SHIFT    (59)
+> +#define GITS_CBASER_OUTER_CACHEABILITY_SHIFT    (53)
+> +#define GITS_CBASER_SHAREABILITY_MASK                                   \
+> +	GIC_BASER_SHAREABILITY(GITS_CBASER, SHAREABILITY_MASK)
+> +#define GITS_CBASER_INNER_CACHEABILITY_MASK                             \
+> +	GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, MASK)
+> +#define GITS_CBASER_OUTER_CACHEABILITY_MASK                             \
+> +	GIC_BASER_CACHEABILITY(GITS_CBASER, OUTER, MASK)
+> +#define GITS_CBASER_CACHEABILITY_MASK GITS_CBASER_INNER_CACHEABILITY_MASK
+> +
+> +#define GITS_CBASER_InnerShareable                                      \
+> +	GIC_BASER_SHAREABILITY(GITS_CBASER, InnerShareable)
+> +
+> +#define GITS_CBASER_nCnB        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, nCnB)
+> +#define GITS_CBASER_nC          GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, nC)
+> +#define GITS_CBASER_RaWt        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, RaWt)
+> +#define GITS_CBASER_RaWb        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, RaWt)
+
+s/RaWt/RaWb/
+
+> +#define GITS_CBASER_WaWt        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, WaWt)
+> +#define GITS_CBASER_WaWb        GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, WaWb)
+> +#define GITS_CBASER_RaWaWt      GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, RaWaWt)
+> +#define GITS_CBASER_RaWaWb      GIC_BASER_CACHEABILITY(GITS_CBASER, INNER, RaWaWb)
+> +
+> +#define GITS_BASER_NR_REGS              8
+> +
+> +#define GITS_BASER_VALID                        (1UL << 63)
+> +#define GITS_BASER_INDIRECT                     (1ULL << 62)
+> +
+> +#define GITS_BASER_INNER_CACHEABILITY_SHIFT     (59)
+> +#define GITS_BASER_OUTER_CACHEABILITY_SHIFT     (53)
+> +#define GITS_BASER_CACHEABILITY_MASK		0x7
+> +
+> +#define GITS_BASER_nCnB         GIC_BASER_CACHEABILITY(GITS_BASER, INNER, nCnB)
+> +
+> +#define GITS_BASER_TYPE_SHIFT                   (56)
+> +#define GITS_BASER_TYPE(r)              (((r) >> GITS_BASER_TYPE_SHIFT) & 7)
+> +#define GITS_BASER_ENTRY_SIZE_SHIFT             (48)
+> +#define GITS_BASER_ENTRY_SIZE(r)        ((((r) >> GITS_BASER_ENTRY_SIZE_SHIFT) & 0x1f) + 1)
+> +#define GITS_BASER_SHAREABILITY_SHIFT   (10)
+> +#define GITS_BASER_InnerShareable                                       \
+> +	GIC_BASER_SHAREABILITY(GITS_BASER, InnerShareable)
+> +#define GITS_BASER_PAGE_SIZE_SHIFT      (8)
+> +#define GITS_BASER_PAGE_SIZE_4K         (0UL << GITS_BASER_PAGE_SIZE_SHIFT)
+> +#define GITS_BASER_PAGE_SIZE_16K        (1UL << GITS_BASER_PAGE_SIZE_SHIFT)
+> +#define GITS_BASER_PAGE_SIZE_64K        (2UL << GITS_BASER_PAGE_SIZE_SHIFT)
+> +#define GITS_BASER_PAGE_SIZE_MASK       (3UL << GITS_BASER_PAGE_SIZE_SHIFT)
+> +#define GITS_BASER_PAGES_MAX            256
+> +#define GITS_BASER_PAGES_SHIFT          (0)
+> +#define GITS_BASER_NR_PAGES(r)          (((r) & 0xff) + 1)
+> +#define GITS_BASER_PHYS_ADDR_MASK	0xFFFFFFFFF000
+> +
+> +#define GITS_BASER_TYPE_NONE            0
+> +#define GITS_BASER_TYPE_DEVICE          1
+> +#define GITS_BASER_TYPE_VCPU            2
+> +#define GITS_BASER_TYPE_CPU             3
+
+'3' is one of the reserved values of the GITS_BASER.Type field, and
+what do we expect with a "GITS_BASER_TYPE_CPU" table type? ;-)
+
+I think we can copy (and might update in the future) all these
+macros against the latest Linux kernel.
+
+> +#define GITS_BASER_TYPE_COLLECTION      4
+> +
+> +#define ITS_FLAGS_CMDQ_NEEDS_FLUSHING           (1ULL << 0) > +
+> +struct its_typer {
+> +	unsigned int ite_size;
+> +	unsigned int eventid_bits;
+> +	unsigned int deviceid_bits;
+> +	unsigned int collid_bits;
+> +	unsigned int hw_collections;
+> +	bool pta;
+> +	bool cil;
+> +	bool cct;
+> +	bool phys_lpi;
+> +	bool virt_lpi;
+> +};
+> +
+> +struct its_data {
+> +	void *base;
+> +	struct its_typer typer;
+> +};
+> +
+> +extern struct its_data its_data;
+> +
+> +#define gicv3_its_base()		(its_data.base)
+> +
+> +extern void its_parse_typer(void);
+> +extern void its_init(void);
+> +
+> +#endif /* !__ASSEMBLY__ */
+> +#endif /* _ASMARM_GIC_V3_ITS_H_ */
+> diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
+> index 55dd84b..b44da9c 100644
+> --- a/lib/arm/asm/gic.h
+> +++ b/lib/arm/asm/gic.h
+> @@ -40,6 +40,7 @@
+>   
+>   #include <asm/gic-v2.h>
+>   #include <asm/gic-v3.h>
+> +#include <asm/gic-v3-its.h>
+>   
+>   #define PPI(irq)			((irq) + 16)
+>   #define SPI(irq)			((irq) + GIC_FIRST_SPI)
+> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
+> new file mode 100644
+> index 0000000..34f4d0e
+> --- /dev/null
+> +++ b/lib/arm/gic-v3-its.c
+> @@ -0,0 +1,41 @@
+> +/*
+> + * Copyright (C) 2016, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU LGPL, version 2.
+> + */
+> +#include <asm/gic.h>
+> +
+> +struct its_data its_data;
+> +
+> +void its_parse_typer(void)
+> +{
+> +	u64 typer = readq(gicv3_its_base() + GITS_TYPER);
+> +
+> +	its_data.typer.ite_size = ((typer >> 4) & 0xf) + 1;
+> +	its_data.typer.pta = typer & GITS_TYPER_PTA;
+> +	its_data.typer.eventid_bits =
+> +		((typer >> GITS_TYPER_IDBITS_SHIFT) & 0x1f) + 1;
+> +	its_data.typer.deviceid_bits = GITS_TYPER_DEVBITS(typer) + 1;
+
+No need to '+1'. As GITS_TYPER_DEVBITS already helps us to calculate
+the implemented DeviceID bits.
+
+> +
+> +	its_data.typer.cil = (typer >> 36) & 0x1;
+> +	if (its_data.typer.cil)
+> +		its_data.typer.collid_bits = ((typer >> 32) & 0xf) + 1;
+> +	else
+> +		its_data.typer.collid_bits = 16;
+> +
+> +	its_data.typer.hw_collections =
+> +		(typer >> GITS_TYPER_HWCOLLCNT_SHIFT) & 0xff;
+> +
+> +	its_data.typer.cct = typer & 0x4;
+> +	its_data.typer.virt_lpi = typer & 0x2;
+> +	its_data.typer.phys_lpi = typer & GITS_TYPER_PLPIS;
+
+Personally, mix using of GITS_TYPER_* macros and some magic constants to
+parse the TYPER makes it a bit difficult to review the code. Maybe we
+can have more such kinds of macros in the header file and get rid of all
+hardcoded numbers?
+
+
+Thanks,
+Zenghui

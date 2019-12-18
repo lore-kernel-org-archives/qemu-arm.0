@@ -1,253 +1,176 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1351437lff;
-        Wed, 18 Dec 2019 13:25:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyAmuu2QmfNfFg5h5xJ6TfdlQWJoRcDeo6rBxpF3RTxfCTh14j1CZbsi/OZQuFE9g4n9eMV
-X-Received: by 2002:ac8:2ffa:: with SMTP id m55mr4165956qta.189.1576704325879;
-        Wed, 18 Dec 2019 13:25:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576704325; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1355314lff;
+        Wed, 18 Dec 2019 13:29:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw37av+kmyHviVT4F1bb+q85j9pmfSGuNChQRcPHWvPkKt7luiZ/2o1cKfTrRRZ7GYOdVlm
+X-Received: by 2002:a37:bcc4:: with SMTP id m187mr5063717qkf.329.1576704568906;
+        Wed, 18 Dec 2019 13:29:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576704568; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZKsBJB7b8iEaXF7Dll9MAMdhAJ6E9wcTZBmBaAnKOrffP18hiljLXgGZ3MUPepeae3
-         Q5gNSzpPQFQndlsnvN0M9nMz3BLV+CyDwNDm1P0P3F/TJlaX+K+LlMlAx98yB+UnjeX9
-         loQWuqcurA2uAigU1/rUuvh2MIJkJjvaT2WxcNoZ5pC/Z+TZsOhfSmCvrkZM/dgweNXE
-         gWSGd+Covguzm7I1SIry7BJbb4+qksxrpr+mgOVjqxSiNTxIzkJdCRemEXPhOTVH7Vph
-         8kE2SeHAtY/dJyrWskNVRVx3bspAa2T05lecQvpTJ1rSejWP2/XmDkHb9W8lR9Plupx8
-         SvWQ==
+        b=umY2/4UBaRbbZvgaD0z4+RirfuqcB5ceiaXrLN2/yh2zv4PFH2sPaRmm5oU5/7zA+1
+         zLZDjQPFrxXwCpF7d3yDSUuhcpsgF7/nezlIrYb2ApFAeCqxcRLL1BZQpYYzW/CCR9fa
+         daTWi1TZKdqd0mk4wAyMsOgCw7qJ3Eg5OyV0QuvfvQj+Bg9aGC6H4j8xGDPaGPK8MEdD
+         6wALrTNvNQZkVfZPutA9BKNA/fCvmJPyIO5cQQIfjgaNphC95ZMolv7TYebtQoA/CPsG
+         +5WGFlZxO2P2eXaomh7b8i7DPbtPbxWL2FvvvWtPEZ7Csl1pr6cp5p7+8ThsQXCzydkr
+         UAFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=WtKoWcYA4eLIkTD5hhsie5xpQCIYiUwxTm3208IaOxQ=;
-        b=tuZYSgf73jFlemhhddpZP+xeM9ppcAjfUjQkttVWSQEayoj8EeF1Ejy78JL1cmPlIa
-         1wg7ltmNF6+bLtb2/tk5dnsF8ex2oJoFTcXJgMzXUFJzinDMthin7w4lL0Xe4tODHBRJ
-         w7/tTZiGiv7XtJNtzSBh0g2Chy+//mpJdoss8hhmdp0dtbfijeE/Lxa+aLmoV661HuSK
-         dL2UV8/cnLkHeDJ3ouQ1wZJlBUzs8Xdl/THqIex3pG4PSxNLhvefnQYF2XuHAjXCO984
-         +nRCr2i0mpCBR5aBxwi9zn7FPu41suDhzVfC2y2hukcakiTkgS/sa8onpKGDgGcx+gY1
-         tB6A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=/wTMVe3mHFcJ+GRI7GSpvgLdvogiRtHuB4BVxZXVU9s=;
+        b=aECrRyB+ZLHPq93aN6bUZ6NRllNiZvwMkCXfKQCqxRtPpFdeyvxW2m5+Y2zEkH+tR9
+         HeG0R041UajZQpdBvQnZ7GyNseRRM/JbnoYiaEy20iXb965T7DOEvW46ztl+l4KGe/pv
+         MnNywiE8N1OjTOnlrHHYBynkYToV1nX2GFVCcvfRqitPm6QzlvphGsxX0npNWJbAq2mc
+         v9tCEmxRutiU2w42itMIsoP7fTTGQXy8ewDGT/ws+LD04LwOmWpSZ358x1oocRzcFbIL
+         SeIW+WaQr+Ibdj9fUx3/fiYDOqv8QKYyHZqE2vaXknzR9zRpo6GUCZP5DhcJqTy6HH8k
+         z24Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="VB+vxT/N";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O3fRKKTG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d19si2030039qtq.282.2019.12.18.13.25.25
+        by mx.google.com with ESMTPS id y12si2008043qth.311.2019.12.18.13.29.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2019 13:25:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Dec 2019 13:29:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="VB+vxT/N";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O3fRKKTG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60898 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60940 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihgov-0008Dw-9h
-	for alex.bennee@linaro.org; Wed, 18 Dec 2019 16:25:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53796)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihgsq-0003To-7K
+	for alex.bennee@linaro.org; Wed, 18 Dec 2019 16:29:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36730)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ihgnJ-0007D9-Fo
- for qemu-devel@nongnu.org; Wed, 18 Dec 2019 16:23:46 -0500
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1ihgse-0003PD-P5
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:29:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ihgnI-000465-2s
- for qemu-devel@nongnu.org; Wed, 18 Dec 2019 16:23:45 -0500
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:36233)
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1ihgsd-0002ml-P1
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:29:16 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:42848)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ihgnH-00043R-Sm; Wed, 18 Dec 2019 16:23:44 -0500
-Received: by mail-io1-xd43.google.com with SMTP id r13so3542887ioa.3;
- Wed, 18 Dec 2019 13:23:43 -0800 (PST)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1ihgsX-0002hV-4T; Wed, 18 Dec 2019 16:29:09 -0500
+Received: by mail-oi1-x241.google.com with SMTP id 18so1251227oin.9;
+ Wed, 18 Dec 2019 13:29:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WtKoWcYA4eLIkTD5hhsie5xpQCIYiUwxTm3208IaOxQ=;
- b=VB+vxT/N6AhQaOfbqc9J8H2pfyaQ1f2YM0CnHaQOsHkvoQf423NiJKfcQ4LlY8QivG
- dTOxiOVp6h6uF7vKsetAHW1zdH2kUY19wofGZOkZvS4DbLi5TfJPMSsAhuJcLBg68MMr
- b6d1s4d3cgaajIu4pHKDh7w+sn7/X3tn/1+W7aPwUN0wJqdD0vuu0Xt6lpH43RFgZI+6
- +JCBiyjCniMu5AlMV8W3eSuOSm7JPKq4lNGUTQJX7xkFNobUB+hDBl6plMB3bsZShVes
- Ntg3G2YETn2Ep7n0XP2QOMAWljtgAh1gixenT8PfYDWbWyJTiC5yl8VWt6fqe2KJDRdt
- qI9g==
+ :cc:content-transfer-encoding;
+ bh=/wTMVe3mHFcJ+GRI7GSpvgLdvogiRtHuB4BVxZXVU9s=;
+ b=O3fRKKTGyd4E2NdolzDIwvJANQqdz1yhDuM/LCkaqacqt/xC1yXbyg3lngBdkpoIwr
+ KhyCRTNwkjKwy582TvLU9ZDxhMP4oBvQXtExSqEuuOcvenloNKuTPURaQctNMO5LXk58
+ OdzqM8+llpqFlbaJoKGsFJb4tq8wUw+DLGxHceSsdTcIjb4opR6xU5CQVoqR2d9JQCet
+ JzDm2W6zq9eK8Y6OBD6SZMceBIl7+vwp6DUkNNiYjPtrDXEooalmUWHmuZu694k50NPw
+ GM0zVT79BCPVUmu2LZL6t9jXEiXSj/JBWtIYJNFyWQUs1A2Nye/osNkOPjDgRPmcBMUd
+ D1dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=WtKoWcYA4eLIkTD5hhsie5xpQCIYiUwxTm3208IaOxQ=;
- b=BEDoeq/+Q/nhjJIrm/FNCVsmEzIE8mV5n5W40I/5eNZ/4Y/Jo/F/0gqAgGfTP65EfZ
- 3n1kSdJ2Z5eJ0oV5VDlC4uXXYXeZm2V4VVd+6ZcDZezJqPxF3bN0w8YONyO0rBGXJHL+
- yj+BH+p1rCBlj7hx3rNgeeXXtc1JfhF9eK+oin0X0JaaZkJCm76x1ZxMLHHtqu17AvW2
- yu5UkbRy8FkXLjS7tlKcAl0gAhvQdTpLoALuRtPc6Ke+w30IRuQtyPsCwKV2QTgnoVK8
- QMXjy4/xezH/C/ITde9MDHBFXEYidWGZWT4ViJaawA05l2nyuUKApUIAbSvpH4GbJB1w
- pPwg==
-X-Gm-Message-State: APjAAAUydaQHHbh0FZ5UUOj0pL3gz0bSAGztZ8EUbohaUUMfEg73yEon
- a66H/stgkVaVgMuPkAd0IukYiOHCqHpXG5zdsD0=
-X-Received: by 2002:a02:7fd0:: with SMTP id r199mr4373763jac.126.1576704223115; 
- Wed, 18 Dec 2019 13:23:43 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=/wTMVe3mHFcJ+GRI7GSpvgLdvogiRtHuB4BVxZXVU9s=;
+ b=cM5KB6Zu7nI+sTNFFcwdQLRAGUucM7ab8MjvKL59niGrSJQO8Q9ScjAvq8gqYiKSMf
+ hqMocF0vijZMv4gxcpcS7Py4x++GeLnCg7G+MZ4P/KsHIESRofSMtHNJvCwsffAGH5z9
+ k24Rgi+NT7cjm5YsZ/TRq+LCpfrB7Nzy5WtkfaNG45bLrNlsKNIzUKBV1CJRZoN4ImWi
+ l+GOndO8XA9FSWoUIBuzAVCBVvrvRCFqhy44mOeNd2tPYStiCjFNk3oPbI2XrNQgmk+V
+ HlOeAfC2+UcUAogMc15GkRJngCyyfzI8JTy1gHK9AGSaKf5Ke6ouFLa7jTbiMVKFAwK6
+ TWyw==
+X-Gm-Message-State: APjAAAW/+vHpNWLi+rWp9RTlOlXjlpc+3PXEBiEDx+h2ehKuqSWBlzsh
+ 5c3/DH2udlb2XnpPxJOPxZz85mO8pxuNLWDfKJo=
+X-Received: by 2002:a05:6808:2d5:: with SMTP id
+ a21mr1548161oid.62.1576704548297; 
+ Wed, 18 Dec 2019 13:29:08 -0800 (PST)
 MIME-Version: 1.0
-References: <20191217182730.943-1-f4bug@amsat.org>
- <20191217182730.943-5-f4bug@amsat.org>
-In-Reply-To: <20191217182730.943-5-f4bug@amsat.org>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 18 Dec 2019 22:23:32 +0100
-Message-ID: <CAPan3WoW60CgKWhXD8RD0xAjH+g+vRa8aKY7dx4fxC=XPxZ7WQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 4/5] !fixup "hw: arm: add Xunlong Orange Pi PC machine"
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000002281e1059a010fc4"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d43
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Guenter Roeck <linux@roeck-us.net>,
- Cleber Rosa <crosa@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mk10FfPEaqZC
-
---0000000000002281e1059a010fc4
+References: <20191218192526.13845-1-philmd@redhat.com>
+ <20191218192526.13845-7-philmd@redhat.com>
+In-Reply-To: <20191218192526.13845-7-philmd@redhat.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Wed, 18 Dec 2019 22:28:57 +0100
+Message-ID: <CAL1e-=gOWYMNRo2rQ=eawnnM9+L6-mPAgTE-8ndO_etyZssLJA@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 6/6] hw/pci-host/designware: Remove unuseful
+ FALLTHROUGH comment
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
+ "open list:Stellaris" <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Qmsx/dAo/gRh
 
-Hi Philippe,
-
-Noted. I'll make sure mc->default_ram_size =3D 1 * GiB is added for the nex=
-t
-reworked patch set v3.
-
-Regards,
-Niek
-
-On Tue, Dec 17, 2019 at 7:27 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g>
-wrote:
-
-> Without this, the machine starts with default 128MB, and Ubuntu Bionic
-> fails:
+On Wed, Dec 18, 2019 at 8:29 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
 >
-> [ ***  ] (2 of 4) A start job is running for=E2=80=A6Persistent Storage (=
-37s /
-> 2min 1s)
-> [  *** ] (2 of 4) A start job is running for=E2=80=A6Persistent Storage (=
-38s /
-> 2min 1s)
-> [  OK  ] Started Flush Journal to Persistent Storage.
-> Starting Create Volatile Files and Directories...
-> Starting Armbian ZRAM config...
-> [    **] (3 of 6) A start job is running for=E2=80=A6s and Directories (5=
-5s / no
-> limit)
-> [     *] (3 of 6) A start job is running for=E2=80=A6s and Directories (5=
-5s / no
-> limit)
-> [    **] (3 of 6) A start job is running for=E2=80=A6s and Directories (5=
-6s / no
-> limit)
-> [  OK  ] Started Create Volatile Files and Directories.
-> [***   ] (5 of 6) A start job is running for=E2=80=A6 ZRAM config (1min 1=
-0s / 1min
-> 19s)
-> [**    ] (5 of 6) A start job is running for=E2=80=A6 ZRAM config (1min 1=
-2s / 1min
-> 19s)
-> [*     ] (5 of 6) A start job is running for=E2=80=A6 ZRAM config (1min 1=
-3s / 1min
-> 19s)
-> [FAILED] Failed to start Armbian ZRAM config.
-> See 'systemctl status armbian-zram-config.service' for details.
+> We don't need to explicit this obvious switch fall through.
+> Stay consistent with the rest of the codebase.
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  hw/arm/orangepi.c | 1 +
->  1 file changed, 1 insertion(+)
+
+I see you covered two cases of such comment (in patches 5 and 6).
+
+But why didn't you than cover the following cases:
+
+block/vhdx.c:            case PAYLOAD_BLOCK_NOT_PRESENT: /* fall through */
+block/vhdx.c:            case PAYLOAD_BLOCK_NOT_PRESENT: /* fall through */
+
+hw/net/rtl8139.c:    case 1: /* fall through */
+hw/net/rtl8139.c:    case 2: /* fall through */
+
+contrib/vhost-user-scsi/vhost-user-scsi.c:    case 1: /* fall through */
+(this one needs full switch block reformatting, but can this be
+changed, since it is in "contrib"?)
+
+?
+
+Thanks,
+Aleksandar
+
+
+
+> Cc: Peter Chubb <peter.chubb@nicta.com.au>
+> Cc: Markus Armbruster <armbru@redhat.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Andrey Smirnov <andrew.smirnov@gmail.com>
+> Cc: qemu-arm@nongnu.org
+> ---
+>  hw/pci-host/designware.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> index 119f370924..da758d7eba 100644
-> --- a/hw/arm/orangepi.c
-> +++ b/hw/arm/orangepi.c
-> @@ -122,6 +122,7 @@ static void orangepi_machine_init(MachineClass *mc)
->      mc->max_cpus =3D AW_H3_NUM_CPUS;
->      mc->default_cpus =3D AW_H3_NUM_CPUS;
->      mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a7");
-> +    mc->default_ram_size =3D 1 * GiB;
->  }
+> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+> index 71e9b0d9b5..dd245516dd 100644
+> --- a/hw/pci-host/designware.c
+> +++ b/hw/pci-host/designware.c
+> @@ -182,7 +182,7 @@ designware_pcie_root_config_read(PCIDevice *d, uint32=
+_t address, int len)
+>          break;
 >
->  DEFINE_MACHINE("orangepi-pc", orangepi_machine_init)
+>      case DESIGNWARE_PCIE_ATU_CR1:
+> -    case DESIGNWARE_PCIE_ATU_CR2:          /* FALLTHROUGH */
+> +    case DESIGNWARE_PCIE_ATU_CR2:
+>          val =3D viewport->cr[(address - DESIGNWARE_PCIE_ATU_CR1) /
+>                             sizeof(uint32_t)];
+>          break;
 > --
 > 2.21.0
 >
 >
-
---=20
-Niek Linnenbank
-
---0000000000002281e1059a010fc4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div>Noted. I&#39;ll=
- make sure mc-&gt;default_ram_size =3D 1 * GiB is added for the next rework=
-ed patch set v3.</div><div><br></div><div>Regards,</div><div>Niek<br></div>=
-</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
-On Tue, Dec 17, 2019 at 7:27 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"=
-mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote=
- class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px so=
-lid rgb(204,204,204);padding-left:1ex">Without this, the machine starts wit=
-h default 128MB, and Ubuntu Bionic<br>
-fails:<br>
-<br>
-[ ***=C2=A0 ] (2 of 4) A start job is running for=E2=80=A6Persistent Storag=
-e (37s / 2min 1s)<br>
-[=C2=A0 *** ] (2 of 4) A start job is running for=E2=80=A6Persistent Storag=
-e (38s / 2min 1s)<br>
-[=C2=A0 OK=C2=A0 ] Started Flush Journal to Persistent Storage.<br>
-Starting Create Volatile Files and Directories...<br>
-Starting Armbian ZRAM config...<br>
-[=C2=A0 =C2=A0 **] (3 of 6) A start job is running for=E2=80=A6s and Direct=
-ories (55s / no limit)<br>
-[=C2=A0 =C2=A0 =C2=A0*] (3 of 6) A start job is running for=E2=80=A6s and D=
-irectories (55s / no limit)<br>
-[=C2=A0 =C2=A0 **] (3 of 6) A start job is running for=E2=80=A6s and Direct=
-ories (56s / no limit)<br>
-[=C2=A0 OK=C2=A0 ] Started Create Volatile Files and Directories.<br>
-[***=C2=A0 =C2=A0] (5 of 6) A start job is running for=E2=80=A6 ZRAM config=
- (1min 10s / 1min 19s)<br>
-[**=C2=A0 =C2=A0 ] (5 of 6) A start job is running for=E2=80=A6 ZRAM config=
- (1min 12s / 1min 19s)<br>
-[*=C2=A0 =C2=A0 =C2=A0] (5 of 6) A start job is running for=E2=80=A6 ZRAM c=
-onfig (1min 13s / 1min 19s)<br>
-[FAILED] Failed to start Armbian ZRAM config.<br>
-See &#39;systemctl status armbian-zram-config.service&#39; for details.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
----<br>
-=C2=A0hw/arm/orangepi.c | 1 +<br>
-=C2=A01 file changed, 1 insertion(+)<br>
-<br>
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
-index 119f370924..da758d7eba 100644<br>
---- a/hw/arm/orangepi.c<br>
-+++ b/hw/arm/orangepi.c<br>
-@@ -122,6 +122,7 @@ static void orangepi_machine_init(MachineClass *mc)<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;max_cpus =3D AW_H3_NUM_CPUS;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;default_cpus =3D AW_H3_NUM_CPUS;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;default_cpu_type =3D ARM_CPU_TYPE_NAME(&quot;cor=
-tex-a7&quot;);<br>
-+=C2=A0 =C2=A0 mc-&gt;default_ram_size =3D 1 * GiB;<br>
-=C2=A0}<br>
-<br>
-=C2=A0DEFINE_MACHINE(&quot;orangepi-pc&quot;, orangepi_machine_init)<br>
--- <br>
-2.21.0<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div>
-
---0000000000002281e1059a010fc4--

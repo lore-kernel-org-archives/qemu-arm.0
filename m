@@ -1,108 +1,317 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1285324lff;
-        Wed, 18 Dec 2019 12:20:24 -0800 (PST)
-X-Received: by 2002:aa7:961b:: with SMTP id q27mr5133362pfg.23.1576700424774;
-        Wed, 18 Dec 2019 12:20:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576700424; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1325953lff;
+        Wed, 18 Dec 2019 13:02:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy6u0cDlJjMJkLh9hjOamV8Cgg+aOWOpB52EzuMFOH/xyxhp9O6Z/WWDuli8iiT9pGxOu8p
+X-Received: by 2002:a9d:74c7:: with SMTP id a7mr4943157otl.7.1576702955269;
+        Wed, 18 Dec 2019 13:02:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576702955; cv=none;
         d=google.com; s=arc-20160816;
-        b=rsF9ZfgrAO+Dj4WqUrO3yE4IrJ2GdTemzQC+r5eM+Y6wAd4Ld1hL9DQtoLvJY+jh6u
-         Eyz+f90jPzdp3PN2y7TTv1Z8w/CsK3o4icIlAX5ZEkbAJTUNv2wSGMSG+4AHd0aWK+Cm
-         AV96mq/iGvZ4ntgOnqkAKTnQJVPJvOYknu/BZi9omFsKC5bH5Bzx3V1lY8Psi6nfaAu1
-         EphVU1C5Jk4n8w7mlvgNVgQYTzi6aUdEGy5bfWjLFIMXGil+2qaWbUCUc7w8qfymDfsR
-         VZ11Gb7vGQfNjCjewocjDF6RPj8hH0jhBbHdnxzuCRCHSC98ZmT7HuCbb12nb+7ymXRQ
-         q8hg==
+        b=kFhXDcRj8QPOzBAyxSIDWfS8gsji3/t0LwhvZhk4HY0kFUfj6FvLP0/8+9kB8IP5BI
+         X8/7ogUN2SxDtqi8LWiDjrNq1igJ+XDqdBoyS3yKBDAWVPWnJnvJ/82g/mXMexHcuGSd
+         lx2CfMMFMYpiPKrfo0grJYcKVvNlmDjoeNG9WZZGUZp3BMqtsEYIhye1Xh8dB2lPOl6H
+         HJJVOMBZBaHJCTLSziopv01q9Nov9MCcLCh/w07w0bcBVn3Z6WThAedh1BtoEeZm7F29
+         MQJIBpxVizVDJ8Rm7Do8sAEkz+bN2IcBf16iHFCHlAu+BKc++AVyECDp7EosV1syTetQ
+         haOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=e0F0O5XBsMvA6TFnNmXgjcc4PZlPDbOS60e2ICRnBf8=;
-        b=ptu9HWoNu/HRdq00MusUz4CCkcpZsC9SuWT0o3Zbp5RPzLhzSC2PjniLg7kr0rK3ho
-         BquroVBzgU7zbHBX/VdolnJ586dF3k1d4k7VFRKR+CVr+61nrcFgfoWsGBfVH3CsXz5t
-         pGJR7w+PMYIZyEB+wOeynvoxP2ekX+Sp/39EqHNcXH3KjVxoKkWYkXqxoQNKrNyFRsL4
-         hWTb2c0LAjFnxGsjzdeceXvGiuR3VdQ9Y8I3kF/93c8DDWZnBLX1eNuJ2cpcZAeFU9uz
-         SPQYZTTKZo5DIvnVN/tEKDqgbhiUDRlsi5gY//FNfvFn3Y4eUh4Rtwx0uQOHgjLPXBYV
-         +3YA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ZHGtntswR8W4mR3O18kwKAC9ejq3lYrTZEGigFPxDeI=;
+        b=Dkn7krB4SLGMjBxya1/uPG17PhjLT324lOaruoWd19c7S9FxCRSrJDkZ8UXJBjd03Y
+         ZnzLPvD32YGvj/xHa6cO0ZoSePIxkEt9cEteZfQnFkjpZSftNIjXNyR4kR6aRUoSgt8Y
+         QXgTLtl3Wn/fqXctRHIbqxZ08I6Vi2+vdYZIq7sRF04rom2B5IW7blWpiKEp6YUwZd0u
+         +0OP7AJSxHy4Dt7QDON1oeHyoma6I/VaO7Gg6gdvqzveRMDNxftYRjy4JeXiPJS3+eQX
+         Cdsj09tp2lK0Ukd76ABfvKMnl8+NDynUIZfNmx98g56UyAvwZ0LkjgmVY9BzGyqNdRzq
+         hu8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ReDrUKny;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id c187sor1140227pfb.28.2019.12.18.12.20.24
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aIMhcUuw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a17si2060692otr.178.2019.12.18.13.02.35
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 18 Dec 2019 12:20:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 18 Dec 2019 13:02:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ReDrUKny;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=e0F0O5XBsMvA6TFnNmXgjcc4PZlPDbOS60e2ICRnBf8=;
-        b=ReDrUKnywIGJbaTsMy/auWkGB8LPssXluYZt0Gr/tynRYUb/CKJjrCHJgfMdoxbKKI
-         Nn+GCjrNrsBPaphuWhWtLg2IOnBdXKvMOQe9ZOUhU3q9FAfZPqmcdXRuq5I9dOffl9KB
-         Igc8hB2zknS04dx4pAW+kecBkpQKlymE2r/mfBhd0CuxkR7qjhB1Et9Y65Awg4MJPiMt
-         93rmAPAuBpdAZml4FBw5BCMWd+gx4VNvc2RbOQnXdUKqgos450IB/f1QnyM5c4RI+rPG
-         CRbbpNyDUgejWHAef5VDzdTUGXmBBGqr8aZwWR3aeEiHEsKBKDhU+WetwwShgPU9Fi31
-         2uRw==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aIMhcUuw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60620 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihgSo-0001LY-AF
+	for alex.bennee@linaro.org; Wed, 18 Dec 2019 16:02:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37796)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ihgSd-0001Gl-60
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:02:26 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ihgSX-0006uW-7m
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:02:19 -0500
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:39167)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1ihgSV-0006dK-23; Wed, 18 Dec 2019 16:02:16 -0500
+Received: by mail-il1-x143.google.com with SMTP id x5so2914653ila.6;
+ Wed, 18 Dec 2019 13:02:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZHGtntswR8W4mR3O18kwKAC9ejq3lYrTZEGigFPxDeI=;
+ b=aIMhcUuwnOSRH7aLtb/p3PcYjjrEgbuqUXOC+Mg9eopCE6A5B3tQe4R594GTjYvJEy
+ T5OzfzkxnQZwlx0Zq6z18tHfH0wpcir65t3cIdmiN8wyFyxxD/RTcTOjot0r7cxpKuwd
+ Uu6bT9qafpeNaLNuwtEKhBo4gFpSe8ulYIHiZWTKOv6vqrCQvSs1VL7hCtrXGhHbG9oO
+ oS1oLnrVNxXzsprcS6u8iEAnm7a3S5Gjb1bhq92TDsuCjrogTOfp4sIv9c+LP0K+Neo7
+ 2h1dlv49e/1qgKzy1Sx7SrFnP5cItyA5ekE7K6s2NBkIxJqKqOBiZytF5ZyRZuhkI5wd
+ Apgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=e0F0O5XBsMvA6TFnNmXgjcc4PZlPDbOS60e2ICRnBf8=;
-        b=sdbQ0CCqfyyazl0FdArLdJZXJPwDB5UFDEDeikm+qHYFENLkaxbeyhpWXqoRzebYq1
-         CTKl+bGBPYuBTo6U/NDY4sM//ubqaNBwMsNxKbEsSNSKfH4fmsChX1H8K9F/rYItJVGw
-         6Ug74JH97yBl+5gc293RYWIJIEKG/sQ0qpVns0dhUWMmLghAYnB9uicAkP9YnBaqfV6a
-         UHtCZYXl15v6uar5PzZgbdj+YUR2UEKVClQgnoVDtjDv2pRs9KKZU4H9HE2ihH5jMwIu
-         dwjQosB4OQy5IUvZxnDrD22ap5vP4sD2EJdGvz90fMkwOA0E0kjuKrb6L4F4XOr6MYaH
-         KV+Q==
-X-Gm-Message-State: APjAAAVPMVjajKE55IanN1eMp+4H0y50+oYZ+cCq98W/tyvLC6SjUZfd
-	llTC9LqeuHpedIlutiayiRvPyIQMU7846A==
-X-Google-Smtp-Source: APXvYqyC6nsJ598nxWFCRrSBW9fXqdLaopHZS+dIH1PjffQM5MsiiFQTgK3eM0eEHF8pF5jC9fC0eg==
-X-Received: by 2002:a62:7b54:: with SMTP id w81mr5124131pfc.127.1576700424336;
-        Wed, 18 Dec 2019 12:20:24 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPv6:2605:e000:c74f:dc00:6838:d2b2:17e2:8445? ([2605:e000:c74f:dc00:6838:d2b2:17e2:8445])
-        by smtp.gmail.com with ESMTPSA id q13sm3918673pjc.4.2019.12.18.12.20.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Dec 2019 12:20:23 -0800 (PST)
-Subject: Re: [PATCH v1 4/4] tests/tcg: add a dumb-as-bricks semihosting
- console test
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, keithp@keithp.com,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20191218180029.6744-1-alex.bennee@linaro.org>
- <20191218180029.6744-5-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <593c8577-b1f8-f821-94cd-cf017300043a@linaro.org>
-Date: Wed, 18 Dec 2019 10:20:20 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZHGtntswR8W4mR3O18kwKAC9ejq3lYrTZEGigFPxDeI=;
+ b=NUKDFlKLqs9UQW7l4+5MsoqNbK7T2weMRebb0Pr8p4dMs2eEN33BhHUQi/ZrSKa+fv
+ pqtKMTEcbLNmg3XLWraa3YbMElQIuGJKixAtn6gRv4ne8/DjdM8Ti9sDqrNfKWuo55W4
+ 4wgarpeoUpqTXyqirc45a490KhbxH5FuYN+vEMRD7fJBbSs3lUZPMImyXGEjUc54+Wq0
+ LZ8HACxERL41IOflEgHGzekQLdphAYkTd9PnD+sRixm+V7Rtgm6AC4HJfSi6zDbKWlh+
+ BPIGYElWLDFa+2H44hL4VkzrjzawWn+32rl/5PbejgXkfbNyKiqXXKMLjZSLCr/npplU
+ ghTw==
+X-Gm-Message-State: APjAAAVCKGFZdnMN6qw1ELV9miRvnFB55BFNwOIME7pnDN6hIbTe+kDR
+ yNYwmdAK1P1tMC+yKkqg/e7QsAavFYoZ1T4Zetg=
+X-Received: by 2002:a92:5a45:: with SMTP id o66mr3672544ilb.67.1576702925654; 
+ Wed, 18 Dec 2019 13:02:05 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191218180029.6744-5-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: lbiy2qsJjtJZ
+References: <20191216233519.29030-1-nieklinnenbank@gmail.com>
+ <20191216233519.29030-7-nieklinnenbank@gmail.com>
+ <CAPan3WpW1Q3zpnqgk=MWRWe99=MQ4XoW2kw8L3tioFxfEBXd+Q@mail.gmail.com>
+ <CAFEAcA8Viii4Em_bf4Y=AG0jU+EFFFTX6dO-52qd=RT4uHbCVw@mail.gmail.com>
+ <19e4f2ac-6067-f61f-f340-108545fb0f02@linaro.org>
+In-Reply-To: <19e4f2ac-6067-f61f-f340-108545fb0f02@linaro.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Wed, 18 Dec 2019 22:01:54 +0100
+Message-ID: <CAPan3WrcvE_43=3+b4Ybn==TEQcKj+F_VWjJRBJ6MyXNrcpUbw@mail.gmail.com>
+Subject: Re: [PATCH v2 06/10] arm/arm-powerctl: rebuild hflags after setting
+ CP15 bits in arm_set_cpu_on()
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000cccf81059a00c1c9"
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Received-From: 2607:f8b0:4864:20::143
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fn+yqx3VbNBl
 
-On 12/18/19 8:00 AM, Alex Bennée wrote:
-> We don't run this during check-tcg as we would need to check stuff is
-> echoed back. However we can still build the binary so people can test
-> it manually.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  tests/tcg/aarch64/system/semiconsole.c    | 36 +++++++++++++++++++++++
->  tests/tcg/aarch64/Makefile.softmmu-target |  9 +++++-
->  2 files changed, 44 insertions(+), 1 deletion(-)
->  create mode 100644 tests/tcg/aarch64/system/semiconsole.c
+--000000000000cccf81059a00c1c9
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Hello Richard,
+
+On Tue, Dec 17, 2019 at 5:41 PM Richard Henderson <
+richard.henderson@linaro.org> wrote:
+
+> On 12/17/19 6:12 AM, Peter Maydell wrote:
+> > Cc'ing Richard : this is one for you I think... (surely we
+> > need to rebuild the hflags from scratch when we power up
+> > a CPU anyway?)
+>
+> We do compute hflags from scratch in reset.
+>
+> It has also turned out that there were a few board models that poked at the
+> contents of the cpu and needed special help.  Some of that I would imagine
+> would be fixed properly with the multi-phase reset patches, where we could
+> rebuild hflags when *leaving* reset.
+>
+> In arm_set_cpu_on_async_work, we start by resetting the cpu and then start
+> poking at the contents of some system registers.  So, yes, we do need to
+> rebuild after doing that.  Also, I'm not sure how this function should fit
+> into
+> the multi-phase reset future.
+>
+
+Great, thanks a lot for confirming and clarifying this!
+You mention the multi-phase reset feature, is that going to replace the
+arm_set_cpu_on() functionality?
+Currently I chose to use this function for implementing the CPU
+configuration module in the Allwinner H3 Soc.
+U-Boot needs the CPU configuration module to provide PSCI which Linux uses
+to bring up the secondary cores.
+And basically the CPU configuration module needs something to let the
+secondary CPUs power on, reset and start executing at some address.
+
+Would you suggest to keep using arm_set_cpu_on() for this, or should I
+instead use a different function?
+
+Regards,
+Niek
+
+>
+> So:
+>
+> >> On Tue, Dec 17, 2019 at 12:36 AM Niek Linnenbank <
+> nieklinnenbank@gmail.com> wrote:
+> >>>
+> >>> After setting CP15 bits in arm_set_cpu_on() the cached hflags must
+> >>> be rebuild to reflect the changed processor state. Without rebuilding,
+> >>> the cached hflags would be inconsistent until the next call to
+> >>> arm_rebuild_hflags(). When QEMU is compiled with debugging enabled
+> >>> (--enable-debug), this problem is captured shortly after the first
+> >>> call to arm_set_cpu_on() for CPUs running in ARM 32-bit non-secure
+> mode:
+> >>>
+> >>>   qemu-system-arm: target/arm/helper.c:11359: cpu_get_tb_cpu_state:
+> >>>   Assertion `flags == rebuild_hflags_internal(env)' failed.
+> >>>   Aborted (core dumped)
+> >>>
+> >>> Fixes: 0c7f8c43daf65
+> >>> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> >>> ---
+> >>>  target/arm/arm-powerctl.c | 3 +++
+> >>>  1 file changed, 3 insertions(+)
+> >>>
+> >>> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+> >>> index b064513d44..b75f813b40 100644
+> >>> --- a/target/arm/arm-powerctl.c
+> >>> +++ b/target/arm/arm-powerctl.c
+> >>> @@ -127,6 +127,9 @@ static void arm_set_cpu_on_async_work(CPUState
+> *target_cpu_state,
+> >>>          target_cpu->env.regs[0] = info->context_id;
+> >>>      }
+> >>>
+> >>> +    /* CP15 update requires rebuilding hflags */
+> >>> +    arm_rebuild_hflags(&target_cpu->env);
+> >>> +
+> >>>      /* Start the new CPU at the requested address */
+> >>>      cpu_set_pc(target_cpu_state, info->entry);
+> >>>
+>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
+>
+> r~
+>
 
 
-r~
+-- 
+Niek Linnenbank
+
+--000000000000cccf81059a00c1c9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hello Richard,<br></div><br><div class=3D"gmail_quote=
+"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 17, 2019 at 5:41 PM Ric=
+hard Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.=
+henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex">On 12/17/19 6:12 AM, Peter Maydell wrote:<br>
+&gt; Cc&#39;ing Richard : this is one for you I think... (surely we<br>
+&gt; need to rebuild the hflags from scratch when we power up<br>
+&gt; a CPU anyway?)<br>
+<br>
+We do compute hflags from scratch in reset.<br>
+<br>
+It has also turned out that there were a few board models that poked at the=
+<br>
+contents of the cpu and needed special help.=C2=A0 Some of that I would ima=
+gine<br>
+would be fixed properly with the multi-phase reset patches, where we could<=
+br>
+rebuild hflags when *leaving* reset.<br>
+<br>
+In arm_set_cpu_on_async_work, we start by resetting the cpu and then start<=
+br>
+poking at the contents of some system registers.=C2=A0 So, yes, we do need =
+to<br>
+rebuild after doing that.=C2=A0 Also, I&#39;m not sure how this function sh=
+ould fit into<br>
+the multi-phase reset future.<br></blockquote><div><br></div><div>Great, th=
+anks a lot for confirming and clarifying this!</div><div>You mention the mu=
+lti-phase reset feature, is that going to replace the arm_set_cpu_on() func=
+tionality?</div><div>Currently I chose to use this function for implementin=
+g the CPU configuration module in the Allwinner H3 Soc.</div><div><div>U-Bo=
+ot needs the CPU configuration module to provide PSCI which Linux uses to b=
+ring up the secondary cores.</div></div><div>And basically the CPU configur=
+ation module needs something to let the secondary CPUs power on, reset and =
+start executing at some address.</div><div><br></div><div>Would you suggest=
+ to keep using arm_set_cpu_on() for this, or should I instead use a differe=
+nt function?<br></div><div><br></div><div>Regards,</div><div>Niek<br></div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+So:<br>
+<br>
+&gt;&gt; On Tue, Dec 17, 2019 at 12:36 AM Niek Linnenbank &lt;<a href=3D"ma=
+ilto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</=
+a>&gt; wrote:<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; After setting CP15 bits in arm_set_cpu_on() the cached hflags =
+must<br>
+&gt;&gt;&gt; be rebuild to reflect the changed processor state. Without reb=
+uilding,<br>
+&gt;&gt;&gt; the cached hflags would be inconsistent until the next call to=
+<br>
+&gt;&gt;&gt; arm_rebuild_hflags(). When QEMU is compiled with debugging ena=
+bled<br>
+&gt;&gt;&gt; (--enable-debug), this problem is captured shortly after the f=
+irst<br>
+&gt;&gt;&gt; call to arm_set_cpu_on() for CPUs running in ARM 32-bit non-se=
+cure mode:<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt;=C2=A0 =C2=A0qemu-system-arm: target/arm/helper.c:11359: cpu_ge=
+t_tb_cpu_state:<br>
+&gt;&gt;&gt;=C2=A0 =C2=A0Assertion `flags =3D=3D rebuild_hflags_internal(en=
+v)&#39; failed.<br>
+&gt;&gt;&gt;=C2=A0 =C2=A0Aborted (core dumped)<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; Fixes: 0c7f8c43daf65<br>
+&gt;&gt;&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinne=
+nbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&gt;&gt;&gt; ---<br>
+&gt;&gt;&gt;=C2=A0 target/arm/arm-powerctl.c | 3 +++<br>
+&gt;&gt;&gt;=C2=A0 1 file changed, 3 insertions(+)<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerc=
+tl.c<br>
+&gt;&gt;&gt; index b064513d44..b75f813b40 100644<br>
+&gt;&gt;&gt; --- a/target/arm/arm-powerctl.c<br>
+&gt;&gt;&gt; +++ b/target/arm/arm-powerctl.c<br>
+&gt;&gt;&gt; @@ -127,6 +127,9 @@ static void arm_set_cpu_on_async_work(CPUS=
+tate *target_cpu_state,<br>
+&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 target_cpu-&gt;env.regs[0] =
+=3D info-&gt;context_id;<br>
+&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; +=C2=A0 =C2=A0 /* CP15 update requires rebuilding hflags */<br=
+>
+&gt;&gt;&gt; +=C2=A0 =C2=A0 arm_rebuild_hflags(&amp;target_cpu-&gt;env);<br=
+>
+&gt;&gt;&gt; +<br>
+&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 /* Start the new CPU at the requested addr=
+ess */<br>
+&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 cpu_set_pc(target_cpu_state, info-&gt;entr=
+y);<br>
+&gt;&gt;&gt;<br>
+<br>
+Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
+ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
+<br>
+<br>
+r~<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--000000000000cccf81059a00c1c9--

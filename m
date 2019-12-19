@@ -1,263 +1,279 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2329016lff;
-        Thu, 19 Dec 2019 06:59:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzBHXbAg/juXwTdV/RLR0PoacrFk7EVa7UrCy3Lt0OpkONzxoRZtuXAVQx8FIGILL8wER/Q
-X-Received: by 2002:a9d:3677:: with SMTP id w110mr9480054otb.139.1576767558579;
-        Thu, 19 Dec 2019 06:59:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576767558; cv=none;
+Received: by 2002:a0c:8acc:0:0:0:0:0 with SMTP id 12csp1015509qvw;
+        Thu, 19 Dec 2019 07:10:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyiS9MbEVWC8eyrQlLRsS8ka2AlALkVlQva1tz57uWJYEDg4lsJtBobM2J+AMsrrYqcTDzg
+X-Received: by 2002:ae9:c018:: with SMTP id u24mr8440846qkk.339.1576768227327;
+        Thu, 19 Dec 2019 07:10:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576768227; cv=none;
         d=google.com; s=arc-20160816;
-        b=d6aBVdgplfEW56w4y2eQuKl3VYhfZyDpdCP4U4P09J93gflgHndua0C/Gl828oHBoC
-         wc8ZdZ9+/EXWKuU8zrNVZq5FwpAi9Tkx1MXWk8cW1tgsAIAWmwIWTZCZ865+zaLjJiXa
-         Y9BOVz3nr7xdlcjAz42497ru5mC1nc/ymuC6crMnCzznJwRp12xszNxwTUR2R61vbfa2
-         2yAeDwDmnhaxsVGLLnKGGuwvdHuP7fqF4S04lq7KYXomxXxqh+Jj2P9KOg8LQqMHAsKl
-         +OaykPiYjo9SmwP6zxvXh1IpIbrZN4SBxpBd7fuv3DCug9M5cuw3xgYNdCvrT69Nd4DZ
-         9WZg==
+        b=HhiB3HvHlB7ggVQnLbuxPS1kQ6JtLd8ZhOpQarfORFaUkmwfOmFRDXLIJ+Bi1gap/e
+         k1Rkc4dRd26Ho5fhE3nROB8qExX5F4D97G7gYnFjawYRWQYPYJppe1ZJ4/oT/bQI6E/s
+         i+fpkPyFDcpsBuS1x5nLomF+btJ6BN/SOGtNUgXv/9TGupi5TtZt6f959P+LKLsDtMLZ
+         kgRAav0+yAm7SJ0y6fGt7WpoZ14FJ9vleaBm1i4n1BkROs6rwPiQG8zdSiDPsyTiqBgc
+         itClcVamWULMsSLh2qRXSssN+xmqoPc1eEU1SqW6cxZGdk9y3HBs50e0uuTEiRYs71qs
+         WIrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=m1ipqa5OHZtHNf2lKB/75/Pigv0YWOWhwRNr4xbpilQ=;
-        b=ISOOLAxqpZGxRvE75LytXj2qhSKuwYeE1ZxpH3Mx+x56ZfaKWDavQDXaoCoJFLPjLZ
-         +bq4jY11w1XHtTjjeYkMZ9TK/mJ1/9fLNPUvcH1vXfs+y6rHJKfvsMZaXhlCKpN7l4e3
-         Z4JWc9ZqjxVlIM9zLEtm0nQi8lAC9fJckwteVuAyY0pVCNBBKP4cskUIhZF5VHfT/E/X
-         +UxdLYe5UTWFZqA0fCpKfZmrMwxNQfS2d4Rjaz1fJ02MRtLRfcOKejTKG2mCUWErvqjt
-         4Q2PphqzGcG7D97tQRLWjoBGpUHedPL7mTI+xLR3dNwoWDHQ5/y+RDXvURWQjFclWii8
-         9nNQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=K0UTtIepKxxGnA5XLSDgUjbcapXtoa0Q6IZaZy2NQbM=;
+        b=o5m3l/VKMOAJ6pyOppqnzRBuJ8CUdR8DJpGAdzsuQyoTjWJL2AYoPvGJoethDXzR1O
+         rdf1BJ+/exQ0jsA7S5oBohw4IuZCHftZzSbfnoHhEurQxGoTiphQ7zXTt87pj7g63zm1
+         kCLrihy9g5SOeWojFc2Kfd61ND54mOEQwtopefQPL2qqclMJPICGUTK+9XOvgePfIL6Q
+         Y+v6Ewja3LgyawDXl+zwLxbKJEZfzVCE2RQLZOsmkCipFC0aD1Q2B7Fwl9zwOYO9QEcF
+         QrEwoTuSMeFH6hbPx7VUshm2srnc9S1+mPPpp+7b9hDB8G+ASvLjQ6rNl9E8LdAXqMwz
+         +Njg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CITP3TJI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ISbEIS4S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v9si3287216oic.251.2019.12.19.06.59.18
+        by mx.google.com with ESMTPS id h6si2851980qtq.389.2019.12.19.07.10.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Dec 2019 06:59:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Dec 2019 07:10:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CITP3TJI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ISbEIS4S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43218 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihxGn-00012f-Lb
-	for alex.bennee@linaro.org; Thu, 19 Dec 2019 09:59:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59064)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihxRa-0002ji-MU
+	for alex.bennee@linaro.org; Thu, 19 Dec 2019 10:10:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35207)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1ihx7Y-0003qr-7o
- for qemu-devel@nongnu.org; Thu, 19 Dec 2019 09:49:45 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1ihxRP-0002aK-QW
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 10:10:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1ihx7V-0004NZ-Uh
- for qemu-devel@nongnu.org; Thu, 19 Dec 2019 09:49:43 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:59872
+ (envelope-from <eric.auger@redhat.com>) id 1ihxRN-0002Wi-CL
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 10:10:14 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:45729
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1ihx7V-0004GI-MG
- for qemu-devel@nongnu.org; Thu, 19 Dec 2019 09:49:41 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1ihxRM-0002Tr-96
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 10:10:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576766980;
+ s=mimecast20190719; t=1576768210;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=m1ipqa5OHZtHNf2lKB/75/Pigv0YWOWhwRNr4xbpilQ=;
- b=CITP3TJIohlfTftxnxuF2Pz6PpaG7rmNYVoBRLIzv886As+OHTPaLSCBcFmZtnd5iKyYO2
- U8Y5munFavU78mwqUEBRi8KBulQvq3lUcD9yHEqZbe0HaE0GPaKsK3d2Ai5AmXP7IB9nMR
- jMVjZQgiJH+uMLzLjyOmBuhF0EEp4f4=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-161-UkTv5fTTOMiISPdmqxqOdA-1; Thu, 19 Dec 2019 09:49:39 -0500
-Received: by mail-qv1-f72.google.com with SMTP id v3so778731qvm.2
- for <qemu-devel@nongnu.org>; Thu, 19 Dec 2019 06:49:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=QcEDdS4yPAEfgnuLolXGQpaGkrW+DFNO/rchi1OL1H8=;
- b=TE2N5zhWqlnHrknsndnWEGdoSH1B1KA+ELYjtmy/iY/G4ldDTL2gF/qEB3iDvxFqqf
- iiezQtECadUe+dVqI98Pr4TLwT1iPP89A2jNUopNZtGgTiYDxN4iT9JCs2atmmfDhl5j
- XEKBjj6PpSyiVoST3sIWCcENxT3szEkSyuY+C36FzTQ00/Usrjuiot+8WNCmyr3gubdr
- /fXjeo8oJZS9Sxs/pSQwHK6dpj+PUL0PO68RV5qP8Sa5WxMf0gG8GykfPY1DOb5uDYdO
- 0uZlAR2GIFpI7T7qLojqB4rT4IGHHnU/OdYtY5QPqahRbZmzn+Rni8h/yfmrARcqv+6Z
- 3UbA==
-X-Gm-Message-State: APjAAAWim/UZ5NjxpRmcqvLNeMHBlLREeXgXlgRD95v+iMrBvUWWVcpy
- l5/uR/Ds3gcgigmI1kvUmwgFspmZ4IUTldV3cf7ur0TvqStOkq7qlF4eNNlaWZjOLxpmXZnkH8k
- RC7kU1wtYetvkSXw=
-X-Received: by 2002:ac8:7b9b:: with SMTP id p27mr7455839qtu.2.1576766978592;
- Thu, 19 Dec 2019 06:49:38 -0800 (PST)
-X-Received: by 2002:ac8:7b9b:: with SMTP id p27mr7455812qtu.2.1576766978297;
- Thu, 19 Dec 2019 06:49:38 -0800 (PST)
-Received: from xz-x1 ([104.156.64.74])
- by smtp.gmail.com with ESMTPSA id f42sm1969151qta.0.2019.12.19.06.49.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Dec 2019 06:49:37 -0800 (PST)
-Date: Thu, 19 Dec 2019 09:49:36 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
+ bh=K0UTtIepKxxGnA5XLSDgUjbcapXtoa0Q6IZaZy2NQbM=;
+ b=ISbEIS4SH9qQ0lX/hmRRObmE43xT5PZP+uau5nuo5y7eWQrRqAhKN0/1Ir0lARFv5S2DOP
+ dsnW96m4qmqxoi+QR2YxT04YR1C8+BZqWkOgY9EuCOLkwXc8EtYYircMzAO9ANy7OfZ/30
+ oDb8KLwlgAhyubxXf5tlPgncWqExy4I=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-356-P934_7KrNnW88u4Xt8GOAQ-1; Thu, 19 Dec 2019 10:10:01 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 333D59B5A7;
+ Thu, 19 Dec 2019 15:10:00 +0000 (UTC)
+Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 44DF76E3F7;
+ Thu, 19 Dec 2019 15:09:52 +0000 (UTC)
 Subject: Re: [PATCH for-5.0 v11 08/20] virtio-iommu: Implement translate
-Message-ID: <20191219144936.GB50561@xz-x1>
+To: Peter Xu <peterx@redhat.com>
 References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-9-eric.auger@redhat.com>
- <20191210193342.GJ3352@xz-x1>
+ <20191122182943.4656-9-eric.auger@redhat.com> <20191210193342.GJ3352@xz-x1>
  <44c0041d-68ad-796f-16cc-4bab7ba0f164@redhat.com>
  <20191219133308.GA4246@xz-x1>
  <9d58b293-ada0-353e-bba2-ad1f538dfc62@redhat.com>
+ <20191219144936.GB50561@xz-x1>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <9ec9d0d5-062b-f96b-c72c-4d15865ff9a1@redhat.com>
+Date: Thu, 19 Dec 2019 16:09:47 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <9d58b293-ada0-353e-bba2-ad1f538dfc62@redhat.com>
-X-MC-Unique: UkTv5fTTOMiISPdmqxqOdA-1
+In-Reply-To: <20191219144936.GB50561@xz-x1>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: P934_7KrNnW88u4Xt8GOAQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
  tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
  quintela@redhat.com, qemu-devel@nongnu.org, armbru@redhat.com,
  bharatb.linux@gmail.com, qemu-arm@nongnu.org, dgilbert@redhat.com,
  eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jFsB9YcrM3Ok
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 712WD4299ycq
 
-On Thu, Dec 19, 2019 at 03:38:34PM +0100, Auger Eric wrote:
-> Hi Peter,
->=20
-> On 12/19/19 2:33 PM, Peter Xu wrote:
-> > On Thu, Dec 19, 2019 at 11:30:40AM +0100, Auger Eric wrote:
-> >> Hi Peter,
-> >> On 12/10/19 8:33 PM, Peter Xu wrote:
-> >>> On Fri, Nov 22, 2019 at 07:29:31PM +0100, Eric Auger wrote:
-> >>>> This patch implements the translate callback
-> >>>>
-> >>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >>>>
-> >>>> ---
-> >>>>
-> >>>> v10 -> v11:
-> >>>> - take into account the new value struct and use
-> >>>>   g_tree_lookup_extended
-> >>>> - switched to error_report_once
-> >>>>
-> >>>> v6 -> v7:
-> >>>> - implemented bypass-mode
-> >>>>
-> >>>> v5 -> v6:
-> >>>> - replace error_report by qemu_log_mask
-> >>>>
-> >>>> v4 -> v5:
-> >>>> - check the device domain is not NULL
-> >>>> - s/printf/error_report
-> >>>> - set flags to IOMMU_NONE in case of all translation faults
-> >>>> ---
-> >>>>  hw/virtio/trace-events   |  1 +
-> >>>>  hw/virtio/virtio-iommu.c | 63 +++++++++++++++++++++++++++++++++++++=
-++-
-> >>>>  2 files changed, 63 insertions(+), 1 deletion(-)
-> >>>>
-> >>>> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-> >>>> index f25359cee2..de7cbb3c8f 100644
-> >>>> --- a/hw/virtio/trace-events
-> >>>> +++ b/hw/virtio/trace-events
-> >>>> @@ -72,3 +72,4 @@ virtio_iommu_get_endpoint(uint32_t ep_id) "Alloc e=
-ndpoint=3D%d"
-> >>>>  virtio_iommu_put_endpoint(uint32_t ep_id) "Free endpoint=3D%d"
-> >>>>  virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=3D%d"
-> >>>>  virtio_iommu_put_domain(uint32_t domain_id) "Free domain=3D%d"
-> >>>> +virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, =
-uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=3D%d"
-> >>>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-> >>>> index f0a56833a2..a83666557b 100644
-> >>>> --- a/hw/virtio/virtio-iommu.c
-> >>>> +++ b/hw/virtio/virtio-iommu.c
-> >>>> @@ -412,19 +412,80 @@ static IOMMUTLBEntry virtio_iommu_translate(IO=
-MMUMemoryRegion *mr, hwaddr addr,
-> >>>>                                              int iommu_idx)
-> >>>>  {
-> >>>>      IOMMUDevice *sdev =3D container_of(mr, IOMMUDevice, iommu_mr);
-> >>>> +    viommu_interval interval, *mapping_key;
-> >>>> +    viommu_mapping *mapping_value;
-> >>>> +    VirtIOIOMMU *s =3D sdev->viommu;
-> >>>> +    viommu_endpoint *ep;
-> >>>> +    bool bypass_allowed;
-> >>>>      uint32_t sid;
-> >>>> +    bool found;
-> >>>> +
-> >>>> +    interval.low =3D addr;
-> >>>> +    interval.high =3D addr + 1;
-> >>>> =20
-> >>>>      IOMMUTLBEntry entry =3D {
-> >>>>          .target_as =3D &address_space_memory,
-> >>>>          .iova =3D addr,
-> >>>>          .translated_addr =3D addr,
-> >>>> -        .addr_mask =3D ~(hwaddr)0,
-> >>>> +        .addr_mask =3D (1 << ctz32(s->config.page_size_mask)) - 1,
-> >>>>          .perm =3D IOMMU_NONE,
-> >>>>      };
-> >>>> =20
-> >>>> +    bypass_allowed =3D virtio_has_feature(s->acked_features,
-> >>>> +                                        VIRTIO_IOMMU_F_BYPASS);
-> >>>> +
-> >>>
-> >>> Would it be easier to check bypass_allowed here once and then drop th=
-e
-> >>> latter [1] and [2] check?
-> >> bypass_allowed does not mean you systematically bypass. You bypass if
-> >> the SID is unknown or if the device is not attached to any domain.
-> >> Otherwise you translate. But maybe I miss your point.
-> >=20
-> > Ah ok, then could I ask how will this VIRTIO_IOMMU_F_BYPASS be used?
-> > For example, I think VT-d defines passthrough in a totally different
-> > way in that the PT mark will be stored in the per-device context
-> > entries, then we can allow a specific device to be pass-through when
-> > doing DMA.  That information is explicit (e.g., unknown SID will
-> > always fail the DMA), and per-device.
-> >=20
-> > Here do you mean that you just don't put a device into any domain to
-> > show it wants to use PT?  Then I'm not sure how do you identify
-> > whether this is a legal PT or a malicious device (e.g., an unknown
-> > device that even does not have any driver bound to it, which will also
-> > satisfy "unknown SID" and "not attached to any domain", iiuc).
->=20
-> The virtio-iommu spec currently says:
->=20
-> "If the VIRTIO_IOMMU_F_BYPASS feature is negotiated, all accesses from
-> unattached endpoints are
-> allowed and translated by the IOMMU using the identity function. If the
-> feature is not negotiated, any
-> memory access from an unattached endpoint fails. Upon attaching an
-> endpoint in bypass mode to a new
-> domain, any memory access from the endpoint fails, since the domain does
-> not contain any mapping.
-> "
->=20
-> I guess this can serve the purpose of devices doing early accesses,
-> before the guest OS gets the hand and maps them?
+Hi Peter, jean,
 
-OK, so there's no global enablement knob for virtio-iommu? Hmm... Then:
+On 12/19/19 3:49 PM, Peter Xu wrote:
+> On Thu, Dec 19, 2019 at 03:38:34PM +0100, Auger Eric wrote:
+>> Hi Peter,
+>>
+>> On 12/19/19 2:33 PM, Peter Xu wrote:
+>>> On Thu, Dec 19, 2019 at 11:30:40AM +0100, Auger Eric wrote:
+>>>> Hi Peter,
+>>>> On 12/10/19 8:33 PM, Peter Xu wrote:
+>>>>> On Fri, Nov 22, 2019 at 07:29:31PM +0100, Eric Auger wrote:
+>>>>>> This patch implements the translate callback
+>>>>>>
+>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>>>
+>>>>>> ---
+>>>>>>
+>>>>>> v10 -> v11:
+>>>>>> - take into account the new value struct and use
+>>>>>>   g_tree_lookup_extended
+>>>>>> - switched to error_report_once
+>>>>>>
+>>>>>> v6 -> v7:
+>>>>>> - implemented bypass-mode
+>>>>>>
+>>>>>> v5 -> v6:
+>>>>>> - replace error_report by qemu_log_mask
+>>>>>>
+>>>>>> v4 -> v5:
+>>>>>> - check the device domain is not NULL
+>>>>>> - s/printf/error_report
+>>>>>> - set flags to IOMMU_NONE in case of all translation faults
+>>>>>> ---
+>>>>>>  hw/virtio/trace-events   |  1 +
+>>>>>>  hw/virtio/virtio-iommu.c | 63 +++++++++++++++++++++++++++++++++++++++-
+>>>>>>  2 files changed, 63 insertions(+), 1 deletion(-)
+>>>>>>
+>>>>>> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+>>>>>> index f25359cee2..de7cbb3c8f 100644
+>>>>>> --- a/hw/virtio/trace-events
+>>>>>> +++ b/hw/virtio/trace-events
+>>>>>> @@ -72,3 +72,4 @@ virtio_iommu_get_endpoint(uint32_t ep_id) "Alloc endpoint=%d"
+>>>>>>  virtio_iommu_put_endpoint(uint32_t ep_id) "Free endpoint=%d"
+>>>>>>  virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=%d"
+>>>>>>  virtio_iommu_put_domain(uint32_t domain_id) "Free domain=%d"
+>>>>>> +virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
+>>>>>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>>>>>> index f0a56833a2..a83666557b 100644
+>>>>>> --- a/hw/virtio/virtio-iommu.c
+>>>>>> +++ b/hw/virtio/virtio-iommu.c
+>>>>>> @@ -412,19 +412,80 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>>>>>>                                              int iommu_idx)
+>>>>>>  {
+>>>>>>      IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
+>>>>>> +    viommu_interval interval, *mapping_key;
+>>>>>> +    viommu_mapping *mapping_value;
+>>>>>> +    VirtIOIOMMU *s = sdev->viommu;
+>>>>>> +    viommu_endpoint *ep;
+>>>>>> +    bool bypass_allowed;
+>>>>>>      uint32_t sid;
+>>>>>> +    bool found;
+>>>>>> +
+>>>>>> +    interval.low = addr;
+>>>>>> +    interval.high = addr + 1;
+>>>>>>  
+>>>>>>      IOMMUTLBEntry entry = {
+>>>>>>          .target_as = &address_space_memory,
+>>>>>>          .iova = addr,
+>>>>>>          .translated_addr = addr,
+>>>>>> -        .addr_mask = ~(hwaddr)0,
+>>>>>> +        .addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1,
+>>>>>>          .perm = IOMMU_NONE,
+>>>>>>      };
+>>>>>>  
+>>>>>> +    bypass_allowed = virtio_has_feature(s->acked_features,
+>>>>>> +                                        VIRTIO_IOMMU_F_BYPASS);
+>>>>>> +
+>>>>>
+>>>>> Would it be easier to check bypass_allowed here once and then drop the
+>>>>> latter [1] and [2] check?
+>>>> bypass_allowed does not mean you systematically bypass. You bypass if
+>>>> the SID is unknown or if the device is not attached to any domain.
+>>>> Otherwise you translate. But maybe I miss your point.
+>>>
+>>> Ah ok, then could I ask how will this VIRTIO_IOMMU_F_BYPASS be used?
+>>> For example, I think VT-d defines passthrough in a totally different
+>>> way in that the PT mark will be stored in the per-device context
+>>> entries, then we can allow a specific device to be pass-through when
+>>> doing DMA.  That information is explicit (e.g., unknown SID will
+>>> always fail the DMA), and per-device.
+>>>
+>>> Here do you mean that you just don't put a device into any domain to
+>>> show it wants to use PT?  Then I'm not sure how do you identify
+>>> whether this is a legal PT or a malicious device (e.g., an unknown
+>>> device that even does not have any driver bound to it, which will also
+>>> satisfy "unknown SID" and "not attached to any domain", iiuc).
+>>
+>> The virtio-iommu spec currently says:
+>>
+>> "If the VIRTIO_IOMMU_F_BYPASS feature is negotiated, all accesses from
+>> unattached endpoints are
+>> allowed and translated by the IOMMU using the identity function. If the
+>> feature is not negotiated, any
+>> memory access from an unattached endpoint fails. Upon attaching an
+>> endpoint in bypass mode to a new
+>> domain, any memory access from the endpoint fails, since the domain does
+>> not contain any mapping.
+>> "
+>>
+>> I guess this can serve the purpose of devices doing early accesses,
+>> before the guest OS gets the hand and maps them?
+> 
+> OK, so there's no global enablement knob for virtio-iommu? Hmm... Then:
+well this is a global knob. If this is bot negotiated any unmapped
+device can PT.
 
-  - This flag is a must for all virtio-iommu emulation, right?
-    (otherwise I can't see how system bootstraps..)
+My assumption above must be wrong as this is a negotiated feature so
+anyway the virtio-iommu driver should be involved.
 
-  - Should this flag be gone right after OS starts (otherwise I think
-    we still have the issue that any malicious device can be seen as
-    in PT mode as default)?  How is that done?
+I don't really remember the rationale of the feature bit tbh.
 
-Thanks,
+In "[virtio-dev] RE: [RFC] virtio-iommu version 0.4 " Jean discussed
+that with Kevein. Sorry I cannot find the link.
 
---=20
-Peter Xu
+" If the endpoint is not attached to any address space,
+then the device MAY abort the transaction."
+
+Kevin> From definition of BYPASS, it's orthogonal to whether there is an
+address space attached, then should we still allow "May abort" behavior?
+
+Jean> The behavior is left as an implementation choice, and I'm not sure
+it's worth enforcing in the architecture. If the endpoint isn't attached
+to any domain then (unless VIRTIO_IOMMU_F_BYPASS is negotiated), it
+isn't necessarily able to do DMA at all. The virtio-iommu device may
+setup DMA mastering lazily, in which case any DMA transaction would
+abort, or have setup DMA already, in which case the endpoint can access
+MEM_T_BYPASS regions.
+
+Hopefully Jean will remember and comment on this.
+
+Thanks
+
+Eric
+
+> 
+>   - This flag is a must for all virtio-iommu emulation, right?
+>     (otherwise I can't see how system bootstraps..)
+> 
+>   - Should this flag be gone right after OS starts (otherwise I think
+>     we still have the issue that any malicious device can be seen as
+>     in PT mode as default)?  How is that done?
+> 
+> Thanks,
+> 
 

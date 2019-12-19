@@ -1,157 +1,226 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2203262lff;
-        Thu, 19 Dec 2019 05:14:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyWMzy7xxC/1q0ckjvxah/01WKg2zNkUxLWMF83W8XWe47M6NLfLWLOMwgOr5Gmy3bwaTFw
-X-Received: by 2002:a05:6830:2110:: with SMTP id i16mr8535501otc.337.1576761251315;
-        Thu, 19 Dec 2019 05:14:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576761251; cv=none;
-        d=google.com; s=arc-20160816;
-        b=WlqMtdBtnxs8PGrkxi8HpMAaQqYoJWzJRTz0R2H87nsGjwfZ9ReBMhJ4GOwS8x00W1
-         le/zGn9dKJEVpO55D5TDKxt75vJ1nFL8erZgEIoy8yc3Bmuc2Vf936eliC/Ao4k6fJOr
-         sRk28uEH+ixIYy6bLx5SazUJIGd/9O3y0DLMSUktX+wqrILws5j64K2bOWV8Oyn2paRr
-         bei1XudnNNA6aEL13khebjJVX48PXmsdTk+4FmwOTEoFxLyHLls7ZyYoNuPFjoCEVAHq
-         rjb2c3FkSTML/F+xD8wmqTFgW9ynJpO6cHpkdPrJrV9TBAaBGeyYf+6x0mnzjfiHFzkI
-         TRUA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=YRNPtma/3WE/kvoa6afVUuYhFZ+t2zgVhExflDvAOjY=;
-        b=NYMlaSyuxgAMb+RGi/bzGI1u1GiqNGAGvksLWlQhecJZCD1QTT6FZvsY5NuTMWdZo1
-         9RpZjZ6TuQgLZUSqIADqiNPBbSrI1IpNOh5htk6CLzNlRZWGSYExD6P1VZRHtxJl+16o
-         OrC82kjeAqPvZetuiW4V49/0Dld11ZQb6O/Aq1oODXdzFGwpvhb1uzV8QV29IvWb7tM+
-         DBPn/YJ8P00T+g4TwFDyurKn+xQh0VONfVbuEjSdUo3BZU9udPNYfuAkR3XfiPBRGWFu
-         SjqZB2xx0vBluGWYvknwuds9Y6qFzd+Zlm5gPgFGqiVs9APIPcX3GUEOLh3XlUHaGTuG
-         u45Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ds1YRyF1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9si2860347oij.125.2019.12.19.05.14.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Dec 2019 05:14:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ds1YRyF1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40926 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihvd4-000795-Eo
-	for alex.bennee@linaro.org; Thu, 19 Dec 2019 08:14:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58894)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1ihv0P-0003bA-1q
- for qemu-devel@nongnu.org; Thu, 19 Dec 2019 07:34:13 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1ihv0N-0005JL-O4
- for qemu-devel@nongnu.org; Thu, 19 Dec 2019 07:34:12 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:51628
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1ihv0N-0005HE-Ig
- for qemu-devel@nongnu.org; Thu, 19 Dec 2019 07:34:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576758848;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YRNPtma/3WE/kvoa6afVUuYhFZ+t2zgVhExflDvAOjY=;
- b=ds1YRyF12jk54eUrb6lvv/MYVQyM2XpQ1yZjIU5NttYZYLMMgsdVuasnylmxZ4tmnHyfj3
- dSB8gY7DYZKUQN1/4sfApqILY1hoTEpx/jap4qudb1MIi8yDDbeQfA71kMOSt7nT+4uMFD
- BQG9tPGi0ktFgKmBtpxhJViUnEOYsjA=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-383-LFEK7r3kMamoSMmC6Ct4UQ-1; Thu, 19 Dec 2019 07:34:06 -0500
-Received: by mail-qk1-f198.google.com with SMTP id s9so3483206qkg.21
- for <qemu-devel@nongnu.org>; Thu, 19 Dec 2019 04:34:06 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=AjXvfsZCkYMFAkb3r9vpjMS8Igac5xbX3o5d2D7sCkQ=;
- b=ax23esu396LPHzZkwKqyRggqxk3f77PtmeQeyEdadJZCEahqh4Mgm6JYrSum0rcOtq
- f5HIYybWeDonjg1aGEjyMFKxsyCa2mGYwxnAiox8cdQGXIGeyav5Gl6kDMCZFA+2HIfo
- 3Ynw0sjB/E7V6ulC16IPKhsx5v4k1WcKnXPFS3TgAdmy3gVLyzmOl/hi8DqaRMZGtNKN
- 5L3Ry3k5m1Hd+7HW3POmcBCXu5VyCQ1Tp0xvA5T1DxVg/t/ZSpcCtcrjvrfMVjgWYl1/
- Zx80ZLpu9EO+qfLPJ+izbdOsB3kV3ljEVfRCUugNrftJuukBBYEOmHndnQ62ryUyyUkc
- 8siw==
-X-Gm-Message-State: APjAAAVcewkM6A9V7N0cE9sHJ4+H1nIvfW5voQ/5/4EvHnJ0xmn0arhV
- iMNnJ/x+RJJMO35TRFwS5Rl5MknJF318xBzgMxMVbLclYvs+Ql2TFdMK52Jp0fUz0fKgdipjMC+
- q6btnUFKFFXS2o3o=
-X-Received: by 2002:a05:6214:6f0:: with SMTP id
- bk16mr7347925qvb.23.1576758846407; 
- Thu, 19 Dec 2019 04:34:06 -0800 (PST)
-X-Received: by 2002:a05:6214:6f0:: with SMTP id
- bk16mr7347904qvb.23.1576758846198; 
- Thu, 19 Dec 2019 04:34:06 -0800 (PST)
-Received: from redhat.com (bzq-79-181-48-215.red.bezeqint.net. [79.181.48.215])
- by smtp.gmail.com with ESMTPSA id t15sm1674215qkg.49.2019.12.19.04.34.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Dec 2019 04:34:05 -0800 (PST)
-Date: Thu, 19 Dec 2019 07:34:00 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Heyi Guo <guoheyi@huawei.com>
-Subject: Re: [PATCH 0/2] Some cleanup in arm/virt/acpi
-Message-ID: <20191219073344-mutt-send-email-mst@kernel.org>
-References: <20191219064759.35053-1-guoheyi@huawei.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id x10sm6945535wrv.60.2019.12.19.09.50.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Dec 2019 09:50:01 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id C55D51FF87;
+	Thu, 19 Dec 2019 17:50:00 +0000 (GMT)
+References: <20191211170520.7747-1-alex.bennee@linaro.org>
+ <20191211170520.7747-9-alex.bennee@linaro.org>
+ <b65e722f-7524-9269-3f36-6045ab5393c5@greensocs.com>
+User-agent: mu4e 1.3.5; emacs 27.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Damien Hedde <damien.hedde@greensocs.com>
+Cc: qemu-devel@nongnu.org, richard.henderson@linaro.org,
+ alan.hayward@arm.com, luis.machado@linaro.org, Philippe =?utf-8?Q?Mathieu?=
+ =?utf-8?Q?-Daud=C3=A9?=
+ <philmd@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Richard Henderson
+ <rth@twiddle.net>, Peter Maydell <peter.maydell@linaro.org>, "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>,
+ Aurelien Jarno <aurelien@aurel32.net>, Aleksandar Markovic
+ <amarkovic@wavecomp.com>, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>, Stafford
+ Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis
+ <Alistair.Francis@wdc.com>, Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, David Hildenbrand
+ <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, "open list:ARM TCG CPUs"
+ <qemu-arm@nongnu.org>, "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>, "open list:S390 TCG
+ CPUs" <qemu-s390x@nongnu.org>
+Subject: Re: [PATCH v3 08/20] gdbstub: extend GByteArray to read register
+ helpers
+In-reply-to: <b65e722f-7524-9269-3f36-6045ab5393c5@greensocs.com>
+Date: Thu, 19 Dec 2019 17:50:00 +0000
+Message-ID: <87mubodx2v.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20191219064759.35053-1-guoheyi@huawei.com>
-X-MC-Unique: LFEK7r3kMamoSMmC6Ct4UQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ARh1fOhT2frC
+X-TUID: y5cw/h1t0u8i
 
-On Thu, Dec 19, 2019 at 02:47:57PM +0800, Heyi Guo wrote:
-> Remove useless device node and conflict _ADR objects in ACPI/DSDT.
->=20
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Damien Hedde <damien.hedde@greensocs.com> writes:
 
-Pls feel free to merge through ARM tree.
+> Hi Alex,
+>
+> On 12/11/19 6:05 PM, Alex Benn=C3=A9e wrote:
+>> Instead of passing a pointer to memory now just extend the GByteArray
+>> to all the read register helpers. They can then safely append their
+>> data through the normal way. We don't bother with this abstraction for
+>> write registers as we have already ensured the buffer being copied
+>> from is the correct size.
+>>=20
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>
+> [...]
+>
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index 0ac950d6c71..6476245e789 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -47,30 +47,27 @@ static bool get_phys_addr_lpae(CPUARMState *env, tar=
+get_ulong address,
+>>=20=20
+>>  static void switch_mode(CPUARMState *env, int mode);
+>>=20=20
+>> -static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
+>> +static int vfp_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
+>>  {
+>>      int nregs;
+>>=20=20
+>>      /* VFP data registers are always little-endian.  */
+>>      nregs =3D arm_feature(env, ARM_FEATURE_VFP3) ? 32 : 16;
+>>      if (reg < nregs) {
+>> -        stq_le_p(buf, *aa32_vfp_dreg(env, reg));
+>> -        return 8;
+>> +        return gdb_get_reg64(buf, *aa32_vfp_dreg(env, reg));
+>
+> It was a little-endian version, you've put a target-endian version.
+> Is that what you meant ?
 
-> Heyi Guo (2):
->   arm/virt/acpi: remove meaningless sub device "PR0" from PCI0
->   arm/virt/acpi: remove _ADR from devices identified by _HID
->=20
->  hw/arm/virt-acpi-build.c          |  12 ------------
->  tests/data/acpi/virt/DSDT         | Bin 18462 -> 18426 bytes
->  tests/data/acpi/virt/DSDT.memhp   | Bin 19799 -> 19763 bytes
->  tests/data/acpi/virt/DSDT.numamem | Bin 18462 -> 18426 bytes
->  4 files changed, 12 deletions(-)
->=20
-> --=20
-> 2.19.1
+Yes - I suspect this would have been broken if used by a big-endian
+system. gdbstub generally (SVE excepted) wants things in target order.
 
+>
+>>      }
+>>      if (arm_feature(env, ARM_FEATURE_NEON)) {
+>>          /* Aliases for Q regs.  */
+>>          nregs +=3D 16;
+>>          if (reg < nregs) {
+>>              uint64_t *q =3D aa32_vfp_qreg(env, reg - 32);
+>> -            stq_le_p(buf, q[0]);
+>> -            stq_le_p(buf + 8, q[1]);
+>> -            return 16;
+>> +            return gdb_get_reg128(buf, q[0], q[1]);
+>
+> Ditto here.
+>
+>>          }
+>>      }
+>>      switch (reg - nregs) {
+>> -    case 0: stl_p(buf, env->vfp.xregs[ARM_VFP_FPSID]); return 4;
+>> -    case 1: stl_p(buf, vfp_get_fpscr(env)); return 4;
+>> -    case 2: stl_p(buf, env->vfp.xregs[ARM_VFP_FPEXC]); return 4;
+>> +    case 0: return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPSID]); b=
+reak;
+>> +    case 1: return gdb_get_reg32(buf, vfp_get_fpscr(env)); break;
+>> +    case 2: return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPEXC]); b=
+reak;
+>>      }
+>>      return 0;
+>>  }
+>> @@ -101,7 +98,7 @@ static int vfp_gdb_set_reg(CPUARMState *env, uint8_t =
+*buf, int reg)
+>>      return 0;
+>>  }
+>>=20=20
+>> -static int aarch64_fpu_gdb_get_reg(CPUARMState *env, uint8_t *buf, int =
+reg)
+>> +static int aarch64_fpu_gdb_get_reg(CPUARMState *env, GByteArray *buf, i=
+nt reg)
+>>  {
+>>      switch (reg) {
+>>      case 0 ... 31:
+>> @@ -204,7 +201,7 @@ static void write_raw_cp_reg(CPUARMState *env, const=
+ ARMCPRegInfo *ri,
+>>      }
+>>  }
+>>=20=20
+>> -static int arm_gdb_get_sysreg(CPUARMState *env, uint8_t *buf, int reg)
+>> +static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int re=
+g)
+>>  {
+>>      ARMCPU *cpu =3D env_archcpu(env);
+>>      const ARMCPRegInfo *ri;
+>
+> [...]
+>
+>> diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
+>> index 823759c92e7..6f08021cc22 100644
+>> --- a/target/ppc/gdbstub.c
+>> +++ b/target/ppc/gdbstub.c
+>> @@ -114,10 +114,11 @@ void ppc_maybe_bswap_register(CPUPPCState *env, ui=
+nt8_t *mem_buf, int len)
+>>   * the FP regs zero size when talking to a newer gdb.
+>>   */
+>>=20=20
+>> -int ppc_cpu_gdb_read_register(CPUState *cs, uint8_t *mem_buf, int n)
+>> +int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
+>>  {
+>>      PowerPCCPU *cpu =3D POWERPC_CPU(cs);
+>>      CPUPPCState *env =3D &cpu->env;
+>> +    uint8_t *mem_buf;
+>>      int r =3D ppc_gdb_register_len(n);
+>>=20=20
+>>      if (!r) {
+>> @@ -126,17 +127,17 @@ int ppc_cpu_gdb_read_register(CPUState *cs, uint8_=
+t *mem_buf, int n)
+>>=20=20
+>>      if (n < 32) {
+>>          /* gprs */
+>> -        gdb_get_regl(mem_buf, env->gpr[n]);
+>> +        gdb_get_regl(buf, env->gpr[n]);
+>>      } else if (n < 64) {
+>>          /* fprs */
+>> -        stfq_p(mem_buf, *cpu_fpr_ptr(env, n - 32));
+>> +        gdb_get_reg64(buf, *cpu_fpr_ptr(env, n - 32));
+>>      } else {
+>>          switch (n) {
+>>          case 64:
+>> -            gdb_get_regl(mem_buf, env->nip);
+>> +            gdb_get_regl(buf, env->nip);
+>>              break;
+>>          case 65:
+>> -            gdb_get_regl(mem_buf, env->msr);
+>> +            gdb_get_regl(buf, env->msr);
+>>              break;
+>>          case 66:
+>>              {
+>> @@ -145,31 +146,33 @@ int ppc_cpu_gdb_read_register(CPUState *cs, uint8_=
+t *mem_buf, int n)
+>>                  for (i =3D 0; i < 8; i++) {
+>>                      cr |=3D env->crf[i] << (32 - ((i + 1) * 4));
+>>                  }
+>> -                gdb_get_reg32(mem_buf, cr);
+>> +                gdb_get_reg32(buf, cr);
+>>                  break;
+>>              }
+>>          case 67:
+>> -            gdb_get_regl(mem_buf, env->lr);
+>> +            gdb_get_regl(buf, env->lr);
+>>              break;
+>>          case 68:
+>> -            gdb_get_regl(mem_buf, env->ctr);
+>> +            gdb_get_regl(buf, env->ctr);
+>>              break;
+>>          case 69:
+>> -            gdb_get_reg32(mem_buf, env->xer);
+>> +            gdb_get_reg32(buf, env->xer);
+>>              break;
+>>          case 70:
+>> -            gdb_get_reg32(mem_buf, env->fpscr);
+>> +            gdb_get_reg32(buf, env->fpscr);
+>>              break;
+>>          }
+>>      }
+>> +    mem_buf =3D buf->data - r;
+>
+> Should it not be something more like this ?
+> mem_buf =3D buf->data + buf->len - r;
+
+Good catch.
+
+>
+> There seem to be the same issue below for every
+> ppc_maybe_bswap_register() call.
+
+Fixed.
+
+
+--=20
+Alex Benn=C3=A9e

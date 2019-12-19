@@ -1,182 +1,160 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2583961lff;
-        Thu, 19 Dec 2019 10:31:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqztsU6C7yQ+jrNeq3Z2Pkumdebz14dEdeJ4K5SLN0Qp+t57E+OU5yrBtu60ifFq6g9now/3
-X-Received: by 2002:a9d:4d99:: with SMTP id u25mr9800079otk.56.1576780307731;
-        Thu, 19 Dec 2019 10:31:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576780307; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2606154lff;
+        Thu, 19 Dec 2019 10:53:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxZAmzDV7nrYmebnpW/3uhV8eIuOBiHEfr0vOW9c4ZcPn9lUo00Hhjnfvwbq6U+2eWaT71L
+X-Received: by 2002:a05:620a:1183:: with SMTP id b3mr9298028qkk.316.1576781612664;
+        Thu, 19 Dec 2019 10:53:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576781612; cv=none;
         d=google.com; s=arc-20160816;
-        b=s2pKj20z1ntNXKCa4CrVHQXK5yl/lbg2odMDqDuJdX6BLvwyU35wiRJvF7yyXCyAy9
-         zKqilqvx+aq+3QBunMcbuPsZDgkb2WAEExlpcSlXy2VV0Ry3H/6r/TTzdigqZxkMaZTi
-         h/k9qDSmdKKZxq9Bfb6yXAQKYq5NHMZ8SGz+gpqSNqf+kEoYJu+gwuLAnKupVoQjKDV1
-         ZOFmOZYP7VDL/VbGXLqdb5exWXbowjN3Mtr7M34wJUIE867BzZ8prYP8wPrktzkU2z16
-         epGVzWqYaNvByK6YKMUSA4mpqchY/TEoscKd9oUtA7OKdzJSgdk344Ikv4+1MJbnSYgZ
-         r03A==
+        b=uy2eHbYW/hdrdAEElUBIlWtN4EC57uF3De70L4EauKEA3W8TT+MUhPLfUHI0Z5KipC
+         SgXTzhQIzRVkCT/QNxWY41YW31LMFzWWZBfByKo8cA3lcc+Xbl/NT3xdJTHivfvEA+IF
+         Ge12R0tzSuUdAbFI5H6WJOFymzps9UpHzt0viYQU2VUIJDzAGIJvNoWPKv6b56xs1Psl
+         p41EMWb7pgnL3vWZp7AOtWeYLCeEfe3xoLM/6vKV/EsIF5jaXee7RzYUZT/ehKfIyArC
+         bhJKHVCbsTDF9bB9vPXenbZ3YIbUeZag3VJ7cidtCzpPfj0yOD3qPh+2rlfyyk7Lk7Ld
+         AsxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=L9FWGWBUkF9tQ616rpbMJG8NkogpoEn8oAXnWBtYw1A=;
-        b=FihbyFP39rjaOkvZPjcrjeLZjUoorbIJnKAUKIrifzUQ0cHkqdhpFdgZe1HumszvTm
-         Pizol/82G1pNclhKGBEuE61tD5JBVw5xRb3XKWMNh2mDYqJhb6QZJpzp0yeEBV5UCHtt
-         LhdLqpnh6l8yvPQ6a5y02WwgADAftVjxWSCKB+xeKNm7+ZHTbN3Dx+GVTPEvxWMJFk6j
-         dkBKv32U4mAUlSVIBr9KcRkTN5ORfsGxRyMohi5IyH/xXzmvdlj+lsA5V/ipp/1zxvmC
-         77Tf3fWTrzELIg/xHOjZd9kS6ufvr6fyu8ZRZiYgb9pbbcGZ0jkl33TjoCAx6ReJbuMz
-         ZJNg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=eIBy99noocVmlwSAa63POWN6vKv6FpnLkLhwBwwq9LM=;
+        b=0f7iygwcLyTpcOBB40GNFtZsKt9a4jgnr1oq2vKnGGR02mPVt63/6OOq+b+y91QDS/
+         jq0+EgOknE4zd0RdLOIagh0ItMiAbGt2G0jG+tSDTYB5eOIYdxMD1NHM7W0kC8caz7fC
+         SrJ2u8S5JIaBUQgYQvE4UiI+oTWHjh7SPxIidOQyPwsqfVlaSDoLJCmNusIxAJ5Hjpz/
+         WWRAdS6AmnjJ8+HTJoiszVZoETpY8OP8wRKaGRTnYRJQTQcbfdaCh+D2jo6WxaYekcDk
+         Z6rDly9S71rF28OrHYPICAtnVGYOxBcTQQN5Xj1SY9mlXbASWUe7aakeUXDbp6vgmydm
+         nDCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Laf8Y/eh";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rzuwWUvW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q189si3440392oib.179.2019.12.19.10.31.47
+        by mx.google.com with ESMTPS id l186si3834319qkf.16.2019.12.19.10.53.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Dec 2019 10:31:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Dec 2019 10:53:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Laf8Y/eh";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46490 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rzuwWUvW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46636 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ii0aQ-0006na-Tn
-	for alex.bennee@linaro.org; Thu, 19 Dec 2019 13:31:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55375)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ii0vT-0008VF-L5
+	for alex.bennee@linaro.org; Thu, 19 Dec 2019 13:53:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39067)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1ii0aB-0006nN-7I
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 13:31:32 -0500
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ii0ta-0006zd-Mx
+ for qemu-devel@nongnu.org; Thu, 19 Dec 2019 13:51:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1ii0a7-0007nt-6k
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 13:31:28 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:31967
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1ii0a5-0007kc-G9
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 13:31:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576780284;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=L9FWGWBUkF9tQ616rpbMJG8NkogpoEn8oAXnWBtYw1A=;
- b=Laf8Y/ehnldXarz2/eDStd39h2f//hiKD1Py7GDUCOneN5/FflwFKvDoFAtXiNTooWWiYx
- xc4Mx38K1RTMueowc7MiCCR9Y4lL9Kz+HlmFzRLkXi6lOSOvhVLgaKLbYLLu57l4h/VDeh
- xIDABnkW6qhNWHo5zWxGc8+RPZgqNcU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-379-z_A4zvb8OBGejzTjLIywcQ-1; Thu, 19 Dec 2019 13:31:23 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1D572800D48;
- Thu, 19 Dec 2019 18:31:21 +0000 (UTC)
-Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E833E5C1B0;
- Thu, 19 Dec 2019 18:31:10 +0000 (UTC)
-Subject: Re: [PATCH for-5.0 v11 05/20] virtio-iommu: Endpoint and domains
- structs and helpers
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-6-eric.auger@redhat.com>
- <20191210163716.GD277340@myrica>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <28597404-b9ac-8c16-e9e8-ad5793f2f5a3@redhat.com>
-Date: Thu, 19 Dec 2019 19:31:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ii0tZ-0007PI-IQ
+ for qemu-devel@nongnu.org; Thu, 19 Dec 2019 13:51:34 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:45402)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ii0tZ-0007F6-9M; Thu, 19 Dec 2019 13:51:33 -0500
+Received: by mail-wr1-x433.google.com with SMTP id j42so7019940wrj.12;
+ Thu, 19 Dec 2019 10:51:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=eIBy99noocVmlwSAa63POWN6vKv6FpnLkLhwBwwq9LM=;
+ b=rzuwWUvW7fxrR8Q8rS5X13OM54/eLmN+zTAKxDRco/Oq+BgWmNrUIl1hDDIWXer+Fy
+ L8YnYjYdzu/VREz33h1DmdVp1ZV1AaGR3fO9NBba+UOJNV1pQdpBbqAuC6dumVMl6qZP
+ UlGW6/h5H1PWsw/K4YpyEoRngGgWynIlAal3ptwF+FFioIhDWpw+Nq8o5FPwZrYlr7ar
+ RnhS792N/crlExsgvEPRX4/UKZi+f9ovgG6Jb2hguh3dgpmivk+BHr6KLFHkKHrWyiuZ
+ 1Srq0elLFhgW9+pZ9HOj/JnX1wLx8CeNIT5NUZhw64eSIcTOLtRs4lFRTlIbMI0qA6pc
+ JTTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=eIBy99noocVmlwSAa63POWN6vKv6FpnLkLhwBwwq9LM=;
+ b=f8DydsLICYizaAkKFyJFFmJB+Lu4/GBxutH+i2NeRTYCPzGUiatAsi1WtJoFdaSD5W
+ XiiofyIQlmJY3gbourO/156bVSCQlSHWgf1Bh22xgurwjyK0fTWGsej0jcrJWnWRQWZn
+ uyhvtRNEf2iuTXKGMgL6zvTEc8iRuLnegl/1vz0gSgBA3zWdutVo3SZudvvEkq6JPEtS
+ 3L+gI+JuHGI7XkK8PoiDRQ9Z0fqkiUhKYcsh/sJ8fgXd0/4+SyHcmiA/ilJmFOFnFWf8
+ tnf2KkYiC43kx5jziqrsCbeVd/QXEvhjPOCe2XsMCDg790BTgKE9iMWO/pAzZUwP8q8k
+ AYUQ==
+X-Gm-Message-State: APjAAAVcnU76KWeiUNlDt/eI6/YzskyYRDTXQZyw5Zxa8GD8mFNLYScB
+ drQWW4G6qaQ0mfN4OpTTZzjB850g
+X-Received: by 2002:adf:c746:: with SMTP id b6mr10451458wrh.298.1576781490780; 
+ Thu, 19 Dec 2019 10:51:30 -0800 (PST)
+Received: from x1w.redhat.com (34.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.34])
+ by smtp.gmail.com with ESMTPSA id b67sm7435494wmc.38.2019.12.19.10.51.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Dec 2019 10:51:30 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	Niek Linnenbank <nieklinnenbank@gmail.com>
+Subject: [PATCH 01/13] hw/timer/allwinner: Use the AW_A10_PIT_TIMER_NR
+ definition
+Date: Thu, 19 Dec 2019 19:51:15 +0100
+Message-Id: <20191219185127.24388-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20191219185127.24388-1-f4bug@amsat.org>
+References: <20191219185127.24388-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20191210163716.GD277340@myrica>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: z_A4zvb8OBGejzTjLIywcQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::433
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
- quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
- armbru@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- dgilbert@redhat.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jdl+d5bhinPc
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: c2ss0JjoMoAi
 
-Hi Jean,
+We have a definition for this magic value '6', use it.
 
-On 12/10/19 5:37 PM, Jean-Philippe Brucker wrote:
-> On Fri, Nov 22, 2019 at 07:29:28PM +0100, Eric Auger wrote:
->> +typedef struct viommu_domain {
->> +    uint32_t id;
->> +    GTree *mappings;
->> +    QLIST_HEAD(, viommu_endpoint) endpoint_list;
->> +} viommu_domain;
->> +
->> +typedef struct viommu_endpoint {
->> +    uint32_t id;
->> +    viommu_domain *domain;
->> +    QLIST_ENTRY(viommu_endpoint) next;
->> +} viommu_endpoint;
-> 
-> There might be a way to merge viommu_endpoint and the IOMMUDevice
-> structure introduced in patch 4, since they both represent one endpoint.
-> Maybe virtio_iommu_find_add_pci_as() could add the IOMMUDevice to
-> s->endpoints, and IOMMUDevice could store the endpoint ID rather than bus
-> and devfn.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/timer/allwinner-a10-pit.h | 2 +-
+ hw/timer/allwinner-a10-pit.c         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-On PCI bus enumeration we locally store the PCI bus hierarchy under the
-form of GHashTable of IOMMUDevice indexed by iommu_pci_bus pointer.
-Those are all the devices attached to the downstream buses. We also use
-an array of iommu pci bus pointers indexed by bus number that is lazily
-populated due to the fact, at enumeration time we do know the bus number
-yet. As you pointed, I haven't used the array of iommu pci bus pointers
-indexed by bus number in this series and I should actually. Currently I
-am not checking on attach that the sid effectively corresponds to a sid
-protected by this iommu. I will add this in my next version. The above
-structures are used in intel_iommu and smmu code as well and I think
-eventually this may be factorized a common base class..
-
-on the other hand the gtree of viommu_endpoint - soon renamed in
-CamelCase form ;-) - corresponds to the EPs that are actually attached
-to any domain. It is indexed by sid and not by bus pointer. This is more
-adapted to the virtio-iommu case.
-
-So, despite your suggestion, I am tempted to keep the different
-structures as the first ones are common to all iommu emulation code and
-the last is adapted to the virtio-iommu operations.
-
-Thoughts?
-
-Eric
-
-> 
->> +typedef struct viommu_interval {
->> +    uint64_t low;
->> +    uint64_t high;
->> +} viommu_interval;
-> 
-> I guess these should be named in CamelCase? Although if we're allowed to
-> choose my vote goes to underscores :)
-> 
-> Thanks,
-> Jean
-> 
+diff --git a/include/hw/timer/allwinner-a10-pit.h b/include/hw/timer/allwinner-a10-pit.h
+index 871c95b512..6aceda81ee 100644
+--- a/include/hw/timer/allwinner-a10-pit.h
++++ b/include/hw/timer/allwinner-a10-pit.h
+@@ -32,7 +32,7 @@
+ 
+ #define AW_A10_PIT_TIMER_BASE      0x10
+ #define AW_A10_PIT_TIMER_BASE_END  \
+-    (AW_A10_PIT_TIMER_BASE * 6 + AW_A10_PIT_TIMER_COUNT)
++    (AW_A10_PIT_TIMER_BASE * AW_A10_PIT_TIMER_NR + AW_A10_PIT_TIMER_COUNT)
+ 
+ #define AW_A10_PIT_DEFAULT_CLOCK   0x4
+ 
+diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c
+index aae880f5b3..117e5c7bf8 100644
+--- a/hw/timer/allwinner-a10-pit.c
++++ b/hw/timer/allwinner-a10-pit.c
+@@ -225,7 +225,7 @@ static void a10_pit_reset(DeviceState *dev)
+     s->irq_status = 0;
+     a10_pit_update_irq(s);
+ 
+-    for (i = 0; i < 6; i++) {
++    for (i = 0; i < AW_A10_PIT_TIMER_NR; i++) {
+         s->control[i] = AW_A10_PIT_DEFAULT_CLOCK;
+         s->interval[i] = 0;
+         s->count[i] = 0;
+-- 
+2.21.0
 

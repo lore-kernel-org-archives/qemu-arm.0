@@ -1,104 +1,101 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2561926lff;
-        Thu, 19 Dec 2019 10:11:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxfj+nhPE/WMPt8CAQTJZzc9itn580cdEHBjHARviX4v7/OozZVxGsPncYnH9pRGfDI98Yb
-X-Received: by 2002:a9d:70d9:: with SMTP id w25mr3090579otj.231.1576779101086;
-        Thu, 19 Dec 2019 10:11:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576779101; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2577281lff;
+        Thu, 19 Dec 2019 10:25:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqysf6aOmfo/pcsUmLrsgCvGag+2UTX7wvBSmYUH9a1JUFcMc73r+IiLvoAyTbM5aG2hWHJR
+X-Received: by 2002:a37:6857:: with SMTP id d84mr9320586qkc.420.1576779919525;
+        Thu, 19 Dec 2019 10:25:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576779919; cv=none;
         d=google.com; s=arc-20160816;
-        b=pdwTjblkLuyi7NMJku6g3pHy3uNKAwDeLNujEA3Dq1LOCYzSmXx10JPViGVFlMePWL
-         EtNVC39JF011KY0icCdmLlmCNSBpys1v6tq3V1Yei3U0p2Mkoh2+mhwddLk/EFp/BHoq
-         +Id+HnfJk7uh2mYfnrfjdmzlBB7/HjQpLJNuAigR4MZ3Jf3csTnMlqoxfib4H8Nk1yHb
-         CRBUUSW+U+yBUW7ZrtJ1NdW/KmVesIXk7+OimKZhBfjjH6CRgj23gSQD/tLRjK6mAbfm
-         zQKvI9Y4nHajt3aYCcJtW6N2lzTOTwf1MBJc7Fxd80gfYcM1GJthb4vA7RuuRNtK3YiZ
-         iF3g==
+        b=WQSh66bIU1SWQuyz6lEKqMMRzJzDHnaLI1tfd4xDUoJdV0Lb9jQX3qJp1RRH51Ozre
+         W7GRiBW0cpOiPPByZD54Xv1RrJhRormjtS/Q/2fZ4AlBoOKKqERtemuUbZwyKAXsS2ah
+         nBcEACOC5Lli2NZVHNDna+RHHKgxSFqso9v92bxi7n9EnrWpuWrw2bRdDu0xRxkJxw/b
+         h6jjWASawURU7Vs/kijKKcv6J5tN8HUaf5M6lBqO2o7eCFUAtO7TsH3yagAH2mV5hWfo
+         pLuIeSA0Wp3b7ul2H/YRBWRuk9U1KN0caMt6Ln7qXgWmVLyuDk1owfJlH3vxy6pa3AtP
+         k3bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=n6pbrKZ+N3J8EgOEAGNWuIizLRnL3QASgl8e3eexOCs=;
-        b=P7hyCTVF2x7xLjC0TaaZnFf3fwhDBsz4zE8XXS/UqVPsRVEMrpP/Cay+v1t8xVrfT7
-         0wNF8tyl82mOIqFx3rkWFoJqd2xd8m4D0KimebnWui3o0Cae7UO1HH1oDYy7xUVngsvr
-         JSgVL5f7ei3X1jFB9Nk8o98Dsp0VMmgDZVhkEnmv3GpU1LeKFv7b6WGf8cuhBAX7GV8b
-         zE9uHhrW+Aki+xfa6+MoG35RzlM+9tk15k3FPlxLvavVkN5OwVs6dyVp4k1ksV7XZrm1
-         FY7gJ+/nAKYMV1qhMy+xhJr2gWg01GujWcJb4pqch0n4ZVHxKDdEYLL/D6PYtW0AbLAX
-         kHMA==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=Ac6Za8XAbQ8HeWSLgAeIz0eKhoGODHToUjlPHiwcjxY=;
+        b=PHmb03onVH2qolk3IOOAoRoOexWObqPCjgrpDatpg3s0ZsIUaMNe5zzq6xkefQqzmV
+         efGGP4cmnnazsHovZLRep7M5Zty3qPv/nxsiK4wrqfry9ykI8IZ8YBzPg7B8K9WIXM1f
+         gyRTFnfvMMidUEIuLctZT4ioZFbD51vAopX1BHnPe8pSmJkHX25kqBdVULYvhkO6/59U
+         +apydz/bi2DeYrR4BU1YUjilk9zHkDwCZlKRrSVeXs/gl0TMPZuRLVv+g4FH+SFuvP5p
+         Fb7a9hiudXQy3+U9L56gV6bZUfD0nJ/f7HE4imWBKYF44qVIDAOARcaVr28h1zOoWLwD
+         Ss5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DHrepha4;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ebHmD09y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f16si3562877otp.198.2019.12.19.10.11.40
+        by mx.google.com with ESMTPS id y30si3557325qth.361.2019.12.19.10.25.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Dec 2019 10:11:41 -0800 (PST)
+        Thu, 19 Dec 2019 10:25:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DHrepha4;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ebHmD09y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46164 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46380 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ii0Gy-0007Jk-0Z
-	for alex.bennee@linaro.org; Thu, 19 Dec 2019 13:11:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60370)
+	id 1ii0UA-0007dx-T7
+	for alex.bennee@linaro.org; Thu, 19 Dec 2019 13:25:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37212)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1ii0Gl-0007Dj-D3
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 13:11:28 -0500
+ (envelope-from <crosa@redhat.com>) id 1ii0Rv-0004WY-5b
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 13:23:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1ii0Gk-0005jT-3G
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 13:11:27 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:22064
+ (envelope-from <crosa@redhat.com>) id 1ii0Rr-0003gJ-UB
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 13:22:57 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55805
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1ii0Gj-0005dY-Qu
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 13:11:25 -0500
+ (Exim 4.71) (envelope-from <crosa@redhat.com>) id 1ii0Rr-0003an-FW
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 13:22:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576779084;
+ s=mimecast20190719; t=1576779774;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=n6pbrKZ+N3J8EgOEAGNWuIizLRnL3QASgl8e3eexOCs=;
- b=DHrepha4rthFacIa/46JRZZ7aH5NS6cyv/2MXI2qO3JK18guiDXfY2bBEXwf8voiCvp0/G
- N8jmtvsUYxWctOHGGfHNN+ESOvozkcwkk6ouyOpQ0YRcHYQxYymWYiZ9F81NcQ0HMQABqh
- CU+e6AGnybsyR0JiK3yUGxZvWbH124g=
+ bh=Ac6Za8XAbQ8HeWSLgAeIz0eKhoGODHToUjlPHiwcjxY=;
+ b=ebHmD09ybRlIVhS/QP+0V/Gmot0thMVsB7zE8WSJ1jlKxv+MuXu1cuu4/Kev87ToDeQJNl
+ csFodghIGLm3n4vKGxYn5n7XPA7JMkqF+iWCzrIhABM7s5BfqbTO3zFPGAjRVL5asthl45
+ kuus5Kxm4hKi9bBqOOjQCk0mvpEd5Fo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-53-vwIQXQheNmuIBjzxexoFXA-1; Thu, 19 Dec 2019 13:11:21 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-130-HSv8HGNWNLWX_Lw8UQY4Fw-1; Thu, 19 Dec 2019 13:22:49 -0500
+X-MC-Unique: HSv8HGNWNLWX_Lw8UQY4Fw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48206801E7E;
- Thu, 19 Dec 2019 18:11:19 +0000 (UTC)
-Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 727165C1B0;
- Thu, 19 Dec 2019 18:11:10 +0000 (UTC)
-Subject: Re: [PATCH for-5.0 v11 04/20] virtio-iommu: Add the iommu regions
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-5-eric.auger@redhat.com>
- <20191210163440.GC277340@myrica>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <1bf85182-19dd-5e84-dbb7-1734be927e82@redhat.com>
-Date: Thu, 19 Dec 2019 19:11:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AF4D3107ACC4;
+ Thu, 19 Dec 2019 18:22:47 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-70.gru2.redhat.com
+ [10.97.116.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 45B9226E6E;
+ Thu, 19 Dec 2019 18:22:43 +0000 (UTC)
+Date: Thu, 19 Dec 2019 13:22:39 -0500
+From: Cleber Rosa <crosa@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 2/5] tests/boot_linux_console: Add initrd test for the
+ Orange Pi PC board
+Message-ID: <20191219182239.GA24165@localhost.localdomain>
+References: <20191217182730.943-1-f4bug@amsat.org>
+ <20191217182730.943-3-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20191210163440.GC277340@myrica>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: vwIQXQheNmuIBjzxexoFXA-1
+In-Reply-To: <20191217182730.943-3-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="jRHKVT23PllUwdXP"
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,75 +107,190 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
- quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
- armbru@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- dgilbert@redhat.com, eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pK7qjh6ZRA7x
+X-TUID: dCc23buujIuO
 
-Hi Jean,
+--jRHKVT23PllUwdXP
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 12/10/19 5:34 PM, Jean-Philippe Brucker wrote:
-> Two small things below, but looks good overall
-> 
-> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> 
-> On Fri, Nov 22, 2019 at 07:29:27PM +0100, Eric Auger wrote:
->> +static AddressSpace *virtio_iommu_find_add_as(PCIBus *bus, void *opaque,
->> +                                              int devfn)
->> +{
->> +    VirtIOIOMMU *s = opaque;
->> +    IOMMUPciBus *sbus = g_hash_table_lookup(s->as_by_busptr, bus);
->> +    static uint32_t mr_index;
->> +    IOMMUDevice *sdev;
->> +
->> +    if (!sbus) {
->> +        sbus = g_malloc0(sizeof(IOMMUPciBus) +
->> +                         sizeof(IOMMUDevice *) * IOMMU_PCI_DEVFN_MAX);
->> +        sbus->bus = bus;
->> +        g_hash_table_insert(s->as_by_busptr, bus, sbus);
->> +    }
->> +
->> +    sdev = sbus->pbdev[devfn];
->> +    if (!sdev) {
->> +        char *name = g_strdup_printf("%s-%d-%d",
->> +                                     TYPE_VIRTIO_IOMMU_MEMORY_REGION,
->> +                                     mr_index++, devfn);
->> +        sdev = sbus->pbdev[devfn] = g_malloc0(sizeof(IOMMUDevice));
->> +
->> +        sdev->viommu = s;
->> +        sdev->bus = bus;
->> +        sdev->devfn = devfn;
-> 
-> It might be better to store the endpoint ID in IOMMUDevice, then you could
-> get rid of virtio_iommu_get_sid(), and remove a tiny bit of overhead in
-> virtio_iommu_translate(). But I doubt it's significant.
-virtio_iommu_find_add_as() gets called on PCI bus enumeration. At that
-point, the bus number may not be resolved. So I cannot retrieve and set
-the bus_number in this function.
+On Tue, Dec 17, 2019 at 07:27:27PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> This test boots a Linux kernel on a OrangePi PC board and verify
+> the serial output is working.
+>=20
+> The kernel image and DeviceTree blob are built by the Raspbian
+> project (based on Debian):
+> https://www.raspbian.org/RaspbianImages
+>=20
+> The cpio image used comes from the linux-build-test project:
+> https://github.com/groeck/linux-build-test
+>=20
+> If ARM is a target being built, "make check-acceptance" will
+> automatically include this test by the use of the "arch:arm" tags.
+>=20
+> Alternatively, this test can be run using:
+>=20
+>   $ avocado --show=3Dconsole run -t machine:orangepi-pc tests/acceptance/=
+boot_linux_console.py
+>   console: Uncompressing Linux... done, booting the kernel.
+>   console: Booting Linux on physical CPU 0x0
+>   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2=
+.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
+>   console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D50c53=
+87d
+>   console: CPU: div instructions available: patching division code
+>   console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruc=
+tion cache
+>   console: OF: fdt: Machine model: Xunlong Orange Pi PC
+>   [...]
+>   console: Trying to unpack rootfs image as initramfs...
+>   console: Freeing initrd memory: 3256K
+>   console: Freeing unused kernel memory: 1024K
+>   console: Run /init as init process
+>   console: mount: mounting devtmpfs on /dev failed: Device or resource bu=
+sy
+>   console: Starting logging: OK
+>   console: Initializing random number generator... random: dd: uninitiali=
+zed urandom read (512 bytes read)
+>   console: done.
+>   console: Starting network: OK
+>   console: Found console ttyS0
+>   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2=
+.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
+>   console: Boot successful.
+>   console: cat /proc/cpuinfo
+>   console: / # cat /proc/cpuinfo
+>   console: processor      : 0
+>   console: model name     : ARMv7 Processor rev 5 (v7l)
+>   console: BogoMIPS       : 125.00
+>   console: Features       : half thumb fastmult vfp edsp neon vfpv3 tls v=
+fpv4 idiva idivt vfpd32 lpae evtstrm
+>   console: CPU implementer        : 0x41
+>   console: CPU architecture: 7
+>   console: CPU variant    : 0x0
+>   console: CPU part       : 0xc07
+>   console: CPU revision   : 5
+>   [...]
+>   console: processor      : 3
+>   console: model name     : ARMv7 Processor rev 5 (v7l)
+>   console: BogoMIPS       : 125.00
+>   console: Features       : half thumb fastmult vfp edsp neon vfpv3 tls v=
+fpv4 idiva idivt vfpd32 lpae evtstrm
+>   console: CPU implementer        : 0x41
+>   console: CPU architecture: 7
+>   console: CPU variant    : 0x0
+>   console: CPU part       : 0xc07
+>   console: CPU revision   : 5
+>   console: Hardware       : Allwinner sun8i Family
+>   console: Revision       : 0000
+>   console: Serial         : 0000000000000000
+>   console: cat /proc/iomem
+>   console: / # cat /proc/iomem
+>   console: 01000000-010fffff : clock@1000000
+>   console: 01c00000-01c00fff : system-control@1c00000
+>   console: 01c02000-01c02fff : dma-controller@1c02000
+>   [...]
+>   console: reboot
+>   console: / # reboot
+>   console: / # Found console ttyS0
+>   console: Stopping network: OK
+>   console: hrtimer: interrupt took 21852064 ns
+>   console: Saving random seed... random: dd: uninitialized urandom read (=
+512 bytes read)
+>   console: done.
+>   console: Stopping logging: OK
+>   console: umount: devtmpfs busy - remounted read-only
+>   console: umount: can't unmount /: Invalid argument
+>   console: The system is going down NOW!
+>   console: Sent SIGTERM to all processes
+>   console: Sent SIGKILL to all processes
+>   console: Requesting system reboot
+>   console: reboot: Restarting system
+>   PASS (48.32 s)
+>   JOB TIME   : 49.16 s
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> ---
+>  tests/acceptance/boot_linux_console.py | 41 ++++++++++++++++++++++++++
+>  1 file changed, 41 insertions(+)
+>=20
+> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
+ot_linux_console.py
+> index 820239e439..daabd47404 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -437,6 +437,47 @@ class BootLinuxConsole(Test):
+>          console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
+ine
+>          self.wait_for_console_pattern(console_pattern)
+> =20
+> +    def test_arm_orangepi_initrd(self):
 
-When virtio_iommu_get_sid() is called we are sure pci_bus_num(dev->bus)
-returns a correct value.
-> 
-> [...]
->> +static const TypeInfo virtio_iommu_memory_region_info = {
->> +    .parent = TYPE_IOMMU_MEMORY_REGION,
->> +    .name = TYPE_VIRTIO_IOMMU_MEMORY_REGION,
->> +    .class_init = virtio_iommu_memory_region_class_init,
->> +};
->> +
->> +
-> 
-> nit: newline.
-Thanks
+Like in the previous patch, isn't it a good idea to name this after the exa=
+ct
+machine model, that is, test_arm_orangepi_pc_initrd?
 
-Eric
-> 
-> Thanks,
-> Jean 
-> 
+> +        """
+> +        :avocado: tags=3Darch:arm
+> +        :avocado: tags=3Dmachine:orangepi-pc
+> +        """
+> +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+> +                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.=
+deb')
+> +        deb_hash =3D '1334c29c44d984ffa05ed10de8c3361f33d78315'
+> +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+> +        kernel_path =3D self.extract_from_deb(deb_path,
+> +                                            '/boot/vmlinuz-4.20.7-sunxi'=
+)
+> +        dtb_path =3D '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-p=
+c.dtb'
+> +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+> +        initrd_url =3D ('https://github.com/groeck/linux-build-test/raw/=
+'
+> +                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+> +                      'arm/rootfs-armv7a.cpio.gz')
+> +        initrd_hash =3D '604b2e45cdf35045846b8bbfbf2129b1891bdc9c'
+> +        initrd_path_gz =3D self.fetch_asset(initrd_url, asset_hash=3Dini=
+trd_hash)
+> +        initrd_path =3D os.path.join(self.workdir, 'rootfs.cpio')
+> +        archive.gzip_uncompress(initrd_path_gz, initrd_path)
+> +
+> +        self.vm.set_machine('orangepi-pc')
 
+There's no need to set the machine type manually since ba21bde93, the
+one set by the ":avocado: tags=3Dmachine" will be used.
+
+Tested-by: Cleber Rosa <crosa@redhat.com>
+
+If this line is dropped:
+
+Reviewed-by: Cleber Rosa <crosa@redhat.com>
+
+--jRHKVT23PllUwdXP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEeruW64tGuU1eD+m7ZX6NM6XyCfMFAl37v+0ACgkQZX6NM6Xy
+CfM0UQ/+KlZKFMP1Z+n+3P/dhHONJSxepUZJp83ZFVIuF+F1I10LUj6E0xCy4MYV
+c+ic+zkPof0RDrx3kZg7SSxC0G1k4eJlr5rVgK5uKEIJaTHBR/oRrPXxKTj553qL
+CZWk4JZy+25rPrC5jSRYm3hWv6eLFbKyir6xmHnD2f39QrBD64Ywn+9ZJD+Gg/VC
+MmmVfUrOSaEEK29tI1kY7YsRsKMWny/FE/+cy6jpiq88zWx/AS2L9/+Ew6FB7hjJ
+eVBNxTdt6xBxe3+fQrDE/3TxWD8GuABOqR0x4fwfo9Mv2uRzzASh0D8vv6poT8Ru
+EoqZoHy2TrNTSuXFZItJ3FS3N7KcEI/nn90gQJd4XNL9s4kz3IWzhM0iFaTe0ZKW
+KmWC7q+oAQBXBieIdgnqscHPS08ZdD+WMlOw2pO5YEntyAJlJ6+kzOC2ilIfosB0
+AWplQE0DfGWtIfcj+UgU0Lm4AySq4lGe8T2zzbqVVIvgUK9/LuHckc8tTfvVuJ9R
+sCkP9klYlkgpVy7m9zDqzd45RXX4uFxnLNrooMX24MF6kIksfIp31qDQ6vABMaSt
+f1MPA4ujyMsdCLud+PG94WRQ9M5ooYwfltaIJjbje6YBuMMfnzbFMX7MHAaQvf6H
+pv+uO7j87Jf4LBbOXZbPzxGcGGZpHSgMn5EIWfOrbCixjd2ytM8=
+=av1r
+-----END PGP SIGNATURE-----
+
+--jRHKVT23PllUwdXP--
 

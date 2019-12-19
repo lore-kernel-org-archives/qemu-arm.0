@@ -1,176 +1,250 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1355314lff;
-        Wed, 18 Dec 2019 13:29:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw37av+kmyHviVT4F1bb+q85j9pmfSGuNChQRcPHWvPkKt7luiZ/2o1cKfTrRRZ7GYOdVlm
-X-Received: by 2002:a37:bcc4:: with SMTP id m187mr5063717qkf.329.1576704568906;
-        Wed, 18 Dec 2019 13:29:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576704568; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1564686lff;
+        Wed, 18 Dec 2019 17:06:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwHROkKEfWsu077i2c4DWPmznx+sJIYv+RGlU/Fs4eUrlawiEp487B0/0LUuNzu6FcdHW/w
+X-Received: by 2002:a05:6830:4a4:: with SMTP id l4mr5871038otd.91.1576717580917;
+        Wed, 18 Dec 2019 17:06:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576717580; cv=none;
         d=google.com; s=arc-20160816;
-        b=umY2/4UBaRbbZvgaD0z4+RirfuqcB5ceiaXrLN2/yh2zv4PFH2sPaRmm5oU5/7zA+1
-         zLZDjQPFrxXwCpF7d3yDSUuhcpsgF7/nezlIrYb2ApFAeCqxcRLL1BZQpYYzW/CCR9fa
-         daTWi1TZKdqd0mk4wAyMsOgCw7qJ3Eg5OyV0QuvfvQj+Bg9aGC6H4j8xGDPaGPK8MEdD
-         6wALrTNvNQZkVfZPutA9BKNA/fCvmJPyIO5cQQIfjgaNphC95ZMolv7TYebtQoA/CPsG
-         +5WGFlZxO2P2eXaomh7b8i7DPbtPbxWL2FvvvWtPEZ7Csl1pr6cp5p7+8ThsQXCzydkr
-         UAFg==
+        b=F6XfssK5/6VxksEX/ErSwTY4aDNa2IjwMhwafhFZNtTX6XECL0Piz0XSwCZCvZQrH/
+         VaXS9BiEAU+byYHPa8NW1tSftLrVDRe/NiCDhWFD2WvW+26+f2M7IFRb1AZhhIoLz4J6
+         u09zXSGCykAgj3OkkWCecdrrmLfBhNscu8VSPQJV/B4d++PS0Zga5/qd3Kccnu/Fp9qh
+         vj3YGnoKVz4WV+QOnyeDVFM3aQgFEPw0UFGx8Vdjas63IURb3I/2ZN95lxRVfZ9EIMQd
+         4LLjqhrxo022m+hoVsDHFOVpWB1NECeRGsbm5yn1rFQ5nF+wy8Q6Pjt/Ncj4OhVFeH6W
+         Aejw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=/wTMVe3mHFcJ+GRI7GSpvgLdvogiRtHuB4BVxZXVU9s=;
-        b=aECrRyB+ZLHPq93aN6bUZ6NRllNiZvwMkCXfKQCqxRtPpFdeyvxW2m5+Y2zEkH+tR9
-         HeG0R041UajZQpdBvQnZ7GyNseRRM/JbnoYiaEy20iXb965T7DOEvW46ztl+l4KGe/pv
-         MnNywiE8N1OjTOnlrHHYBynkYToV1nX2GFVCcvfRqitPm6QzlvphGsxX0npNWJbAq2mc
-         v9tCEmxRutiU2w42itMIsoP7fTTGQXy8ewDGT/ws+LD04LwOmWpSZ358x1oocRzcFbIL
-         SeIW+WaQr+Ibdj9fUx3/fiYDOqv8QKYyHZqE2vaXknzR9zRpo6GUCZP5DhcJqTy6HH8k
-         z24Q==
+        bh=68fSqYCY47UGUagdKMmhGH8yB2hUE4pNbQBVVoPPpU0=;
+        b=B6poOEbTTJhuDLKu8ZnQfRIRP6NbgwOojvPtIq+EPxnLVg/xMdcg5O6SWvMpLnDOFh
+         WKFWBZ+oDbpwOlGlIWX88eb6tn/lBlis9hDMzvZwdsoDbOvJV42PSn3ztka/cYhTMBtO
+         vvkjo9i4LVPKbxyo2eWU3/rI7xho06U6DhMfJvdTfOWFVqB6GeRPhFItJA4ClXR2TwEO
+         o0CJlWjYENhUPuJKefuL+3/+pzGPisf6iUPm/VJQQXPhJxEV0GfeeYhGHcTuFIlXK3ji
+         xmp50Ysu9+z2eJgqk48MJC0e4SoiAMa5S2PAziYRPTnJhTCZtyZ5GHEDz+GPQBfdgMXM
+         XR1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O3fRKKTG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UjclOZ88;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12si2008043qth.311.2019.12.18.13.29.28
+        by mx.google.com with ESMTPS id x7si2266537oto.264.2019.12.18.17.06.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2019 13:29:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Dec 2019 17:06:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O3fRKKTG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60940 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UjclOZ88;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34596 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihgsq-0003To-7K
-	for alex.bennee@linaro.org; Wed, 18 Dec 2019 16:29:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36730)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihkGi-0000eO-1Q
+	for alex.bennee@linaro.org; Wed, 18 Dec 2019 20:06:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47323)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1ihgse-0003PD-P5
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:29:17 -0500
+ (envelope-from <crosa@redhat.com>) id 1ihkFs-00008g-9l
+ for qemu-devel@nongnu.org; Wed, 18 Dec 2019 20:05:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1ihgsd-0002ml-P1
- for qemu-arm@nongnu.org; Wed, 18 Dec 2019 16:29:16 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:42848)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1ihgsX-0002hV-4T; Wed, 18 Dec 2019 16:29:09 -0500
-Received: by mail-oi1-x241.google.com with SMTP id 18so1251227oin.9;
- Wed, 18 Dec 2019 13:29:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=/wTMVe3mHFcJ+GRI7GSpvgLdvogiRtHuB4BVxZXVU9s=;
- b=O3fRKKTGyd4E2NdolzDIwvJANQqdz1yhDuM/LCkaqacqt/xC1yXbyg3lngBdkpoIwr
- KhyCRTNwkjKwy582TvLU9ZDxhMP4oBvQXtExSqEuuOcvenloNKuTPURaQctNMO5LXk58
- OdzqM8+llpqFlbaJoKGsFJb4tq8wUw+DLGxHceSsdTcIjb4opR6xU5CQVoqR2d9JQCet
- JzDm2W6zq9eK8Y6OBD6SZMceBIl7+vwp6DUkNNiYjPtrDXEooalmUWHmuZu694k50NPw
- GM0zVT79BCPVUmu2LZL6t9jXEiXSj/JBWtIYJNFyWQUs1A2Nye/osNkOPjDgRPmcBMUd
- D1dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=/wTMVe3mHFcJ+GRI7GSpvgLdvogiRtHuB4BVxZXVU9s=;
- b=cM5KB6Zu7nI+sTNFFcwdQLRAGUucM7ab8MjvKL59niGrSJQO8Q9ScjAvq8gqYiKSMf
- hqMocF0vijZMv4gxcpcS7Py4x++GeLnCg7G+MZ4P/KsHIESRofSMtHNJvCwsffAGH5z9
- k24Rgi+NT7cjm5YsZ/TRq+LCpfrB7Nzy5WtkfaNG45bLrNlsKNIzUKBV1CJRZoN4ImWi
- l+GOndO8XA9FSWoUIBuzAVCBVvrvRCFqhy44mOeNd2tPYStiCjFNk3oPbI2XrNQgmk+V
- HlOeAfC2+UcUAogMc15GkRJngCyyfzI8JTy1gHK9AGSaKf5Ke6ouFLa7jTbiMVKFAwK6
- TWyw==
-X-Gm-Message-State: APjAAAW/+vHpNWLi+rWp9RTlOlXjlpc+3PXEBiEDx+h2ehKuqSWBlzsh
- 5c3/DH2udlb2XnpPxJOPxZz85mO8pxuNLWDfKJo=
-X-Received: by 2002:a05:6808:2d5:: with SMTP id
- a21mr1548161oid.62.1576704548297; 
- Wed, 18 Dec 2019 13:29:08 -0800 (PST)
+ (envelope-from <crosa@redhat.com>) id 1ihkFo-0002KJ-Ta
+ for qemu-devel@nongnu.org; Wed, 18 Dec 2019 20:05:26 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:38264
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <crosa@redhat.com>) id 1ihkFo-0002IJ-CX
+ for qemu-devel@nongnu.org; Wed, 18 Dec 2019 20:05:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1576717523;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=68fSqYCY47UGUagdKMmhGH8yB2hUE4pNbQBVVoPPpU0=;
+ b=UjclOZ88v0Tq+ZAZRQ4oYLaOmHn+eARiHBV/z6CjBb4XKamn/Oi8Krxwhg8KMkOR6JbkyO
+ 4lfWwiVNwK99++s6lgTmnNfHGFI49jdZq9GOlSlmKWJyJLwBrhE2K0b+1sD+exBg7ZBQWg
+ S+QHtls2fJi4o9Sdiizojh45TrAW7h4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-204-f-uCtzv9OWWQHgiRUfh74Q-1; Wed, 18 Dec 2019 20:05:17 -0500
+X-MC-Unique: f-uCtzv9OWWQHgiRUfh74Q-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D62F1800D4E;
+ Thu, 19 Dec 2019 01:05:15 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-25.gru2.redhat.com
+ [10.97.116.25])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 21EA119C58;
+ Thu, 19 Dec 2019 01:05:13 +0000 (UTC)
+Date: Wed, 18 Dec 2019 20:05:11 -0500
+From: Cleber Rosa <crosa@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 1/5] tests/boot_linux_console: Add a quick test for the
+ OrangePi PC board
+Message-ID: <20191219010511.GA3582@localhost.localdomain>
+References: <20191217182730.943-1-f4bug@amsat.org>
+ <20191217182730.943-2-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20191218192526.13845-1-philmd@redhat.com>
- <20191218192526.13845-7-philmd@redhat.com>
-In-Reply-To: <20191218192526.13845-7-philmd@redhat.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Wed, 18 Dec 2019 22:28:57 +0100
-Message-ID: <CAL1e-=gOWYMNRo2rQ=eawnnM9+L6-mPAgTE-8ndO_etyZssLJA@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 6/6] hw/pci-host/designware: Remove unuseful
- FALLTHROUGH comment
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20191217182730.943-2-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="T4sUOijqQbZv57TR"
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
- "open list:Stellaris" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qmsx/dAo/gRh
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jWAZJScFGjqO
 
-On Wed, Dec 18, 2019 at 8:29 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> We don't need to explicit this obvious switch fall through.
-> Stay consistent with the rest of the codebase.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+--T4sUOijqQbZv57TR
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Dec 17, 2019 at 07:27:26PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> This test boots a Linux kernel on a OrangePi PC board and verify
+> the serial output is working.
+>=20
+> The kernel image and DeviceTree blob are built by the Raspbian
+> project (based on Debian):
+> https://www.raspbian.org/RaspbianImages
+>=20
+> If ARM is a target being built, "make check-acceptance" will
+> automatically include this test by the use of the "arch:arm" tags.
+>=20
+> Alternatively, this test can be run using:
+>=20
+>   $ make check-venv
+>   $ ./tests/venv/bin/avocado --show=3Dconsole,app run -t machine:orangepi=
+-pc tests/acceptance/boot_linux_console.py
+>   JOB ID     : 2e4d15eceb13c33672af406f08171e6e9de1414a
+>   JOB LOG    : ~/job-results/job-2019-12-17T05.46-2e4d15e/job.log
+>   (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+orangepi:
+>   console: Uncompressing Linux... done, booting the kernel.
+>   console: Booting Linux on physical CPU 0x0
+>   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2=
+.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
+>   console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D50c53=
+87d
+>   console: CPU: div instructions available: patching division code
+>   console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruc=
+tion cache
+>   console: OF: fdt: Machine model: Xunlong Orange Pi PC
+>   console: Memory policy: Data cache writealloc
+>   console: OF: reserved mem: failed to allocate memory for node 'cma@4a00=
+0000'
+>   console: cma: Failed to reserve 128 MiB
+>   console: psci: probing for conduit method from DT.
+>   console: psci: PSCIv0.2 detected in firmware.
+>   console: psci: Using standard PSCI v0.2 function IDs
+>   console: psci: Trusted OS migration not required
+>   console: random: get_random_bytes called from start_kernel+0x8d/0x3c2 w=
+ith crng_init=3D0
+>   console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r8192 d24308 u7=
+3728
+>   console: Built 1 zonelists, mobility grouping on.  Total pages: 32480
+>   console: Kernel command line: printk.time=3D0 console=3DttyS0,115200
+>   PASS (8.59 s)
+>   JOB TIME   : 8.81 s
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 > ---
+>  tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+>=20
+> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
+ot_linux_console.py
+> index 7e41cebd47..820239e439 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -411,6 +411,32 @@ class BootLinuxConsole(Test):
+>          self.wait_for_console_pattern('Boot successful.')
+>          # TODO user command, for now the uart is stuck
+> =20
+> +    def test_arm_orangepi(self):
 
-I see you covered two cases of such comment (in patches 5 and 6).
+Maybe rename the test to include the full machine type?  I mean,
+"test_arm_orangepi_pc"?
 
-But why didn't you than cover the following cases:
-
-block/vhdx.c:            case PAYLOAD_BLOCK_NOT_PRESENT: /* fall through */
-block/vhdx.c:            case PAYLOAD_BLOCK_NOT_PRESENT: /* fall through */
-
-hw/net/rtl8139.c:    case 1: /* fall through */
-hw/net/rtl8139.c:    case 2: /* fall through */
-
-contrib/vhost-user-scsi/vhost-user-scsi.c:    case 1: /* fall through */
-(this one needs full switch block reformatting, but can this be
-changed, since it is in "contrib"?)
-
-?
-
-Thanks,
-Aleksandar
-
-
-
-> Cc: Peter Chubb <peter.chubb@nicta.com.au>
-> Cc: Markus Armbruster <armbru@redhat.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Andrey Smirnov <andrew.smirnov@gmail.com>
-> Cc: qemu-arm@nongnu.org
-> ---
->  hw/pci-host/designware.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-> index 71e9b0d9b5..dd245516dd 100644
-> --- a/hw/pci-host/designware.c
-> +++ b/hw/pci-host/designware.c
-> @@ -182,7 +182,7 @@ designware_pcie_root_config_read(PCIDevice *d, uint32=
-_t address, int len)
->          break;
->
->      case DESIGNWARE_PCIE_ATU_CR1:
-> -    case DESIGNWARE_PCIE_ATU_CR2:          /* FALLTHROUGH */
-> +    case DESIGNWARE_PCIE_ATU_CR2:
->          val =3D viewport->cr[(address - DESIGNWARE_PCIE_ATU_CR1) /
->                             sizeof(uint32_t)];
->          break;
-> --
+> +        """
+> +        :avocado: tags=3Darch:arm
+> +        :avocado: tags=3Dmachine:orangepi-pc
+> +        """
+> +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+> +                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.=
+deb')
+> +        deb_hash =3D '1334c29c44d984ffa05ed10de8c3361f33d78315'
+> +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+> +        kernel_path =3D self.extract_from_deb(deb_path,
+> +                                            '/boot/vmlinuz-4.20.7-sunxi'=
+)
+> +        dtb_path =3D '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-p=
+c.dtb'
+> +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+> +
+> +        self.vm.set_machine('orangepi-pc')
+> +        self.vm.set_console()
+> +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
+> +                               'console=3DttyS0,115200n8 '
+> +                               'earlycon=3Duart,mmio32,0x1c28000')
+> +        self.vm.add_args('-kernel', kernel_path,
+> +                         '-dtb', dtb_path,
+> +                         '-append', kernel_command_line)
+> +        self.vm.launch()
+> +        console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
+ine
+> +        self.wait_for_console_pattern(console_pattern)
+> +
+>      def test_s390x_s390_ccw_virtio(self):
+>          """
+>          :avocado: tags=3Darch:s390x
+> --=20
 > 2.21.0
->
->
+>=20
+
+Either way,
+
+Reviewed-by: Cleber Rosa <crosa@redhat.com>
+Tested-by: Cleber Rosa <crosa@redhat.com>
+
+--T4sUOijqQbZv57TR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEeruW64tGuU1eD+m7ZX6NM6XyCfMFAl36zMQACgkQZX6NM6Xy
+CfOHow/5AVRnYJoVicGYtyIp9Mq6PvE+zCWD5RDQpsBlS619LYFfDdtVb3GRDIpj
+fQQkbht019M2r4F+wV3G4LZRAjnbwGPXJBB1dg29yLdGwp4T3/TvnNyUiIlIonAM
+HrzlyCVicOMkX35oHIMIXWVXaP26Oi8qosGr1oSTuYuJd25ay4sLmm0S0W9AODfF
+RGcO3gbbiosO7Mx0oz1yy/T2ehdfVzrkJ9dr08CKEoY53BRCLhlspSCVAOztdc4a
+Nh52stypvyxvp91QkS2OQraXycOYtWRPCxAZ0c0tZykOdhWJAjDF68yON2OsyoZv
+pEB9NPFKKtY2b2ifPoCOHEMyhyoZ38kM1afM2XzGtWh1bM8yTtns6JW2dy6MYbLO
+WjW1MyTNb7Nuyo1YanSUthxKwgcaNvJl2soqYp1oPnD4ikwyAS7aRn8CVDCFMKC7
+jODmos/UDS/UmeHee8wXgvwJJySiKh9+OgXh4n2vbKj8vuywAla5iGvKjnH1sft3
+ZtfTxgnO8hA17lU8gNqfqy6GbxPTAxmaSCOe0RP6bo7N/joIpqRyFd4s6unTJISd
+NvUHORrDlA6nFqKSVL8i8iT5sBeEEyZTKbd8fnKF0LKm6CIxrpuwaFxPR0lAta0V
+/tbz/km59QaZzPZQ6quYM3YbOA/hj8y2SnuZCsZZ+uOKIR8mm4U=
+=A1AX
+-----END PGP SIGNATURE-----
+
+--T4sUOijqQbZv57TR--
+

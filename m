@@ -1,162 +1,164 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2137425lff;
-        Thu, 19 Dec 2019 04:16:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwR/K5MPvHaeFgmsSPZUK0L9T+uwwOu4mCcmHsX/o7EV5PVUOBrXVr3OrxLSaXEA2q5f/3S
-X-Received: by 2002:adf:f789:: with SMTP id q9mr9312195wrp.103.1576757769004;
-        Thu, 19 Dec 2019 04:16:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576757768; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2202613lff;
+        Thu, 19 Dec 2019 05:13:38 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyDxpjQfVmPzU57aF1nT0qPsM4kWKMGO2alU+2EkI4+g1XxOi2j2USoS5Fv8O5mV4SqsXtG
+X-Received: by 2002:ac8:6f75:: with SMTP id u21mr6970362qtv.52.1576761218432;
+        Thu, 19 Dec 2019 05:13:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576761218; cv=none;
         d=google.com; s=arc-20160816;
-        b=j6XNPCNl/6EZDJ4TpK7LifeY4W/sh+7iZfvdfGmukbndBoiomS0oe6O20p7OzdI19C
-         YZiP6zNzOz9eaCsMpmt0vlrgwRIli+mSwpo+mvJwGXeltlhWaNRziQtjshkkJwiMeZkI
-         akgEg5JscfMc2g0Sc02xjHdso5rVdKShyXaFdHJOc61rg46//lZs4NX4r038G7KGJlBn
-         MeAm0EkzCL5eDVr19J1f0mpbkeq/KT2WLZFwuiWx0b0QkpfA91PbMaegcxC1ArDSSDv9
-         OOByW59FPQohYjoc1jafUnU8G4UvF8iIFpMwIl+QDzmGoqK44BuQ/A2v3Pp/5pqiy1en
-         HXVw==
+        b=i/yIP4vBplpcoH6BMrTjAtg7Rp5XKw5KVDUIthnatUduUc8dEioqyCm2jAz+62H21P
+         qTUM3DCYdoTbx8rFKyh93MKPn+XC+QtZr36i2tksCha8934hC42PquRVCIo+F8lBuqW9
+         KOxT70hP6ayxYCi5CXKQ4GUwsxty4lna744Dktbqh3vEHUq9BX2n1QC6AyE1lOYJ6OBb
+         DP7CurLZ3DglSMu7uSjHCwrqVXVzmx5tOO6WHV7L7tCENyaAsRk8DxVPnim82pWxfMtH
+         UumEYTVaVkCzEWQBgvNiBcqZzzw4dFCciDv6/H0+4XxPwka2gyczaHmRjZLBQHVGpnHA
+         fgOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=BG6PkLmSL2pjmhhB/FbOkgZYwFjUekTzuEU4/82gflc=;
-        b=BpgzZfdpq5r4IecDpcJmjywhW7vSIFfmcfFBGYLkeoxLiO3FoUkH1voneLxpAX8UZc
-         vdpFJefJKfdjcRTVWVnmkFr5RZ2dgSD4zgUjK4d+Ahruz0IsSJJVf52XSDC61v48yi8E
-         jmtwK9CFpCVm2FMAF1LSrUxOCtDXMAWcfIbMcqxGPaItlpmQ46BmCGqE9iY0qEeumpjA
-         mkpdiKin7uvFue2TH3Lm7nRkgfRzxpqY+UJWS9k8H8ACi5H06TNrkSCq5yTxUhFJ5mjK
-         0dDgtrd5ATwLyDHjUP/qVNsWPU/jqBtU0nMZbyXFjVtPALMbcSU3FFbWuXx2TvdMUEAL
-         CJ9w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=j03bvTj8hmciPAmrh7pM7iJu7uCWP2HD0yo3OK6rh70=;
+        b=ZBccP22aGovm0MlGJEiyZJr7Fc/9u0vAG/PfVcGbJUgApyuoyuxycL5fvwHVblA+NB
+         QmrllcYZ3meTXdMzQcqZ1RM5xjj0G6LCd5SHVRU2nOEgPbC6eFtdR7n9KlaIhL/hZJWX
+         RtRRXGEL5PzOFopgP3/WruPY6b3c5kcNsh6lqUoR49+k1y26knMfxU8HM0HhH/T0CB5j
+         hORGAIF2gAVcuePmaWXI1kltyZt4R4hJeqdiRnkHt4L9esttwVoyCSHmiK5MxyxGCyhv
+         KLXYA1B6VSQLwGTm30q/3XJB25HdOgC5MQnD705ZnQleiN71L199zCmP035YpxOfSyAj
+         CT5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bW5OeIrp;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id b4si4274342edf.125.2019.12.19.04.16.08
+       dkim=fail header.i=@linaro.org header.s=google header.b=hqZnlI1W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p11si2971565qtc.78.2019.12.19.05.13.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Dec 2019 04:16:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Dec 2019 05:13:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bW5OeIrp;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1576757767;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BG6PkLmSL2pjmhhB/FbOkgZYwFjUekTzuEU4/82gflc=;
-	b=bW5OeIrpMdji8JaMgBdaOTp2iR4OX4KtNG6aWzeI3lrBCMnPp6qWbTACuTlv4va+KWGJRJ
-	AzQFl1aNkt0WzKtatx/Je6xqEmKoZooIr68C/0h+LLej1iThGKtu88AJVoKtxgT3OBQ5y4
-	OH9qSWzdDNJSD8yp8Fy+7O5S5DNfeyM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-183-tSMJREfxMfiGGg5W44LUMg-1; Thu, 19 Dec 2019 07:16:06 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7DCF5107ACC5;
-	Thu, 19 Dec 2019 12:16:01 +0000 (UTC)
-Received: from gondolin (ovpn-117-134.ams2.redhat.com [10.36.117.134])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 248825C54A;
-	Thu, 19 Dec 2019 12:15:30 +0000 (UTC)
-Date: Thu, 19 Dec 2019 13:15:26 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Alex =?UTF-8?B?QmVubsOpZQ==?=
- <alex.bennee@linaro.org>, Andrzej Zaborowski <balrogg@gmail.com>, Peter
- Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>, "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>, Alistair Francis
- <alistair@alistair23.me>, Antony Pavlov <antonynpavlov@gmail.com>, Igor
- Mitsyanko <i.mitsyanko@gmail.com>, Fabien Chouteau <chouteau@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, Peter Chubb
- <peter.chubb@nicta.com.au>, Alberto Garcia <berto@igalia.com>, Michael
- Walle <michael@walle.cc>, Thomas Huth <huth@tuxfamily.org>, Joel Stanley
- <joel@jms.id.au>, Halil Pasic <pasic@linux.ibm.com>, Christian Borntraeger
- <borntraeger@de.ibm.com>, Laurent Vivier <lvivier@redhat.com>, Amit Shah
- <amit@kernel.org>, Corey Minyard <minyard@acm.org>, Paul Burton
- <pburton@wavecomp.com>, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Aleksandar Markovic
- <amarkovic@wavecomp.com>, Palmer Dabbelt <palmer@dabbelt.com>, Sagar
- Karandikar <sagark@eecs.berkeley.edu>, Bastian Koppelmann
- <kbastian@mail.uni-paderborn.de>, Gerd Hoffmann <kraxel@redhat.com>, Samuel
- Thibault <samuel.thibault@ens-lyon.org>, "Dr. David Alan Gilbert"
- <dgilbert@redhat.com>, Markus Armbruster <armbru@redhat.com>, Zhang Chen
- <chen.zhang@intel.com>, Li Zhijian <lizhijian@cn.fujitsu.com>, Jason Wang
- <jasowang@redhat.com>, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-s390x@nongnu.org, qemu-riscv@nongnu.org
-Subject: Re: [RFC PATCH v2 14/14] chardev: Use QEMUChrEvent enum in
- IOEventHandler typedef
-Message-ID: <20191219131526.776cdcb0.cohuck@redhat.com>
-In-Reply-To: <20191218172009.8868-15-philmd@redhat.com>
-References: <20191218172009.8868-1-philmd@redhat.com>
-	<20191218172009.8868-15-philmd@redhat.com>
-Organization: Red Hat GmbH
+       dkim=fail header.i=@linaro.org header.s=google header.b=hqZnlI1W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40914 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ihvcX-0006qO-M0
+	for alex.bennee@linaro.org; Thu, 19 Dec 2019 08:13:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56257)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1ihv9t-0000Xq-NO
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 07:44:02 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1ihv9q-0001FO-48
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 07:44:01 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:46294)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1ihv9p-000182-Q5
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 07:43:57 -0500
+Received: by mail-ot1-x341.google.com with SMTP id c22so7064580otj.13
+ for <qemu-arm@nongnu.org>; Thu, 19 Dec 2019 04:43:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=j03bvTj8hmciPAmrh7pM7iJu7uCWP2HD0yo3OK6rh70=;
+ b=hqZnlI1WgGL0a2W2GYcjcJNnZG18GLBC5jaC7cOmKTLG0kOkC0ZzPwzoMVHTY5SH5g
+ kDwJ5SgOhPMi0rpbmMXiF6X1h3lgPPhCXKjhIbd9i1Nf2pBaIv8nIOM+Zgakzm0CxSik
+ 12i1X1wmdBzK8ejvKq7ylj4xb3yMzYy8hMOWKCv7GZKIl07+wcc+B87HgMKSfxd7hKqP
+ a1G+qEINv8zhZQWDlA2bdaPVn63IEkMOsf4iK0osd25xtUoPllGh6Hx0r2OjkgAwtIDJ
+ kHINPG5ucfA+7ySpCqoktCfKDJIzpJqYYI4pHhexWk5vxHmpwTr68iZqo3eqvJyI9KUJ
+ AsHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=j03bvTj8hmciPAmrh7pM7iJu7uCWP2HD0yo3OK6rh70=;
+ b=q1PaMThuS2DIXTNc1MzzC3D31Dh51tU+z2+OWZ+oYExG0TPhqZZI8UERp+69rXGUXx
+ q9sI2L9ZJiiUwqdV0us7L0xvwYjbpVeXjl5xqnDHeYIlaz0+lBbAL31YZO0a+N6VmI0k
+ 9k2IHmGb4TiRF+/c6jswHI8Dzy+3jY+8TJ654vUpAdl5/mDnBUMij4s9HstcbuPVXCbe
+ 2VX6NgnSXtjTzIyV3M7ViFIfgSk5FTe5+g8O425HTtCWK2qioom+yck+5zTLOztbwDZZ
+ 0xUNyazPiHRMSqn3JQYjqg9g6R64siO69POE/pw9y+0Kfvqng/K22hx0dySAcbRH1ZiR
+ C+sg==
+X-Gm-Message-State: APjAAAX1iYT93AVhGleBpBMZtLSvVL4AsFen1iXjfDYF2cnBoIEgTPxG
+ xMzcYjxRtLSgqGjOrILtRBr7nrlhVG2vhGwYXH2T6w==
+X-Received: by 2002:a05:6830:2001:: with SMTP id
+ e1mr8197502otp.97.1576759436211; 
+ Thu, 19 Dec 2019 04:43:56 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: tSMJREfxMfiGGg5W44LUMg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: BIfcwwnjar3j
+References: <20191217210230.99559-1-jeff.kubascik@dornerworks.com>
+ <7a274247-e593-5828-73f8-2042971e8633@linaro.org>
+In-Reply-To: <7a274247-e593-5828-73f8-2042971e8633@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Dec 2019 12:43:45 +0000
+Message-ID: <CAFEAcA8Egy=Jkw8yKSumkeX=+Qxi8bPy-0fJjopHR6gCmz3FLQ@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: fix IL bit for data abort exceptions
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Jeff Kubascik <jeff.kubascik@dornerworks.com>,
+ Jarvis Roach <Jarvis.Roach@dornerworks.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xCW05Gr8uH+X
 
-On Wed, 18 Dec 2019 18:20:09 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On Wed, 18 Dec 2019 at 01:03, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 12/17/19 11:02 AM, Jeff Kubascik wrote:
+> > diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+> > index 5feb312941..e63f8bda29 100644
+> > --- a/target/arm/tlb_helper.c
+> > +++ b/target/arm/tlb_helper.c
+> > @@ -44,7 +44,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+> >          syn = syn_data_abort_with_iss(same_el,
+> >                                        0, 0, 0, 0, 0,
+> >                                        ea, 0, s1ptw, is_write, fsc,
+> > -                                      false);
+> > +                                      true);
+> >          /* Merge the runtime syndrome with the template syndrome.  */
+> >          syn |= template_syn;
+>
+> This doesn't look correct.  Surely the IL bit should come from template_syn?
 
-> The Chardev events are listed in the QEMUChrEvent enum.
->=20
-> By using the enum in the IOEventHandler typedef we:
->=20
-> - make the IOEventHandler type more explicit (this handler
->   process out-of-band information, while the IOReadHandler
->   is in-band),
-> - help static code analyzers.
->=20
-> This patch was produced with the following spatch script:
->=20
->   @match@
->   expression backend, opaque, context, set_open;
->   identifier fd_can_read, fd_read, fd_event, be_change;
->   @@
->   qemu_chr_fe_set_handlers(backend, fd_can_read, fd_read, fd_event,
->                            be_change, opaque, context, set_open);
->=20
->   @depends on match@
->   identifier opaque, event;
->   identifier match.fd_event;
->   @@
->    static
->   -void fd_event(void *opaque, int event)
->   +void fd_event(void *opaque, QEMUChrEvent event)
->    {
->    ...
->    }
->=20
-> Then the following files were manually modified:
->=20
->   - include/chardev/char-fe.h
->   - include/chardev/char.h
->   - include/chardev/char-mux.h
->   - chardev/char.c
->   - chardev/char-mux.c
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Yes. In translate.c we put it into the syndrome information by
+passing true/false to syn_data_abort_with_iss() depending on
+whether the issinfo passed in to disas_set_da_iss() has the
+ISSIs16Bit flag set.
 
-(...)
+I think this is a regression introduced in commit 46beb58efbb8a2a32
+when we converted the Thumb decoder over to decodetree. Before that
+16 bit Thumb insns were in a different place in the old decoder and
+the 16-bit Thumb path passed ISSIs16Bit in with its issflags.
+(We should cc: qemu-stable@nongnu.org on the fix for this.)
 
-> diff --git a/hw/char/terminal3270.c b/hw/char/terminal3270.c
-> index 2aab04fd4b..f7aba12565 100644
-> --- a/hw/char/terminal3270.c
-> +++ b/hw/char/terminal3270.c
-> @@ -142,7 +142,7 @@ static void terminal_read(void *opaque, const uint8_t=
- *buf, int size)
->      }
->  }
-> =20
-> -static void chr_event(void *opaque, int event)
-> +static void chr_event(void *opaque, QEMUChrEvent event)
->  {
->      Terminal3270 *t =3D opaque;
->      CcwDevice *ccw_dev =3D CCW_DEVICE(t);
+> > diff --git a/target/arm/translate.c b/target/arm/translate.c
+> > index 2b6c1f91bf..300480f1b7 100644
+> > --- a/target/arm/translate.c
+> > +++ b/target/arm/translate.c
+> > @@ -8555,7 +8555,7 @@ static ISSInfo make_issinfo(DisasContext *s, int rd, bool p, bool w)
+> >
+> >      /* ISS not valid if writeback */
+> >      if (p && !w) {
+> > -        ret = rd;
+> > +        ret = rd | (s->is_16bit ? ISSIs16Bit : 0);
+> >      } else {
+> >          ret = ISSInvalid;
+> >      }
 
-Acked-by: Cornelia Huck <cohuck@redhat.com>
+Rather than setting an is_16bit flag, we could just use
+"dc->base.pc_next - dc->pc_curr == 2", couldn't we?
+
+thanks
+-- PMM

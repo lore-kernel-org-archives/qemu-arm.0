@@ -1,226 +1,151 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id x10sm6945535wrv.60.2019.12.19.09.50.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Dec 2019 09:50:01 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C55D51FF87;
-	Thu, 19 Dec 2019 17:50:00 +0000 (GMT)
-References: <20191211170520.7747-1-alex.bennee@linaro.org>
- <20191211170520.7747-9-alex.bennee@linaro.org>
- <b65e722f-7524-9269-3f36-6045ab5393c5@greensocs.com>
-User-agent: mu4e 1.3.5; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Cc: qemu-devel@nongnu.org, richard.henderson@linaro.org,
- alan.hayward@arm.com, luis.machado@linaro.org, Philippe =?utf-8?Q?Mathieu?=
- =?utf-8?Q?-Daud=C3=A9?=
- <philmd@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>, Marcel
- Apfelbaum <marcel.apfelbaum@gmail.com>, Richard Henderson
- <rth@twiddle.net>, Peter Maydell <peter.maydell@linaro.org>, "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>,
- Aurelien Jarno <aurelien@aurel32.net>, Aleksandar Markovic
- <amarkovic@wavecomp.com>, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>, Stafford
- Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis
- <Alistair.Francis@wdc.com>, Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, David Hildenbrand
- <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>, Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Max Filippov <jcmvbkbc@gmail.com>, "open list:ARM TCG CPUs"
- <qemu-arm@nongnu.org>, "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>, "open list:S390 TCG
- CPUs" <qemu-s390x@nongnu.org>
-Subject: Re: [PATCH v3 08/20] gdbstub: extend GByteArray to read register
- helpers
-In-reply-to: <b65e722f-7524-9269-3f36-6045ab5393c5@greensocs.com>
-Date: Thu, 19 Dec 2019 17:50:00 +0000
-Message-ID: <87mubodx2v.fsf@linaro.org>
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2542740lff;
+        Thu, 19 Dec 2019 09:55:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwskGw9aL8q6wCzsCLtTi2HmlgbfDj/AuHdDFQFtCDrv0zUsOXs2kOfOIUWmUpruuqCYvPA
+X-Received: by 2002:a05:6830:1e5c:: with SMTP id e28mr10285030otj.293.1576778142181;
+        Thu, 19 Dec 2019 09:55:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576778142; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FeRS1lJwjO9B2vuSgnd8xNxcYpQB2mW6ajAEbgCGwmE3SEWskooZ147w/HzEzVE/vu
+         XJyh+vUneyPEGB1eiijy68CTHxBt8prV6ewJCcGzdH6r3w+sdQvUj9ZPoEjAcj3XMhWS
+         Icg7tFVnuZ2X5QX5SO4FodAnpMT8F4a0rhYzZQxfhtX7CGZN9gGf7svCPS4I6dycHYEX
+         xib6UL15cB6rNG21q4ewu1Zlt4jqgLP7xV+G8/hd/MSHOmkNGhMG0laIrPfsRNbmvS96
+         qM/7PO69Gj3jI70rwxox58284gXipAIBwpn0SSFVWHjuEDLHR6b/+sBfqWcMqojwq0VZ
+         2kiw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=4r1dJHdQo0OjsGUYx+/2Vrzn84OYJujOtfe17Ka8aVE=;
+        b=MUpx5LxLiftZjncuaOiXBSv1RvqLqyqxtDFe3fI9/N/2hvHaYs6mHkPAPRRRIykq7C
+         Aznldcvbixe3cIsfWC3pnDujxhDmqEG/jguH4qbb/f7v2Wr2KkL5a/pcI4HRJKcqvjRr
+         iEcTm6hD8jpAxL68M2a9IieH0GO0fytcfurbSl0eN8q6zQfirgyX5m7TOAJyZDIjuR31
+         5pIxvbqIJu8//W+EASDTbkAFPYRi/2tix7xiIlvC9w9fCa81wRxTUb8FKmLg2qZe4nqN
+         493L4NffoXplfZxpM9EEJ69LBJE+/O1cMM6w/ElV3qMulqPVCAeLNt/T3S7l4UOab8w7
+         WsAQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=R7m8dzSX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a205si3478207oii.95.2019.12.19.09.55.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Dec 2019 09:55:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=R7m8dzSX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45756 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ii01U-0002iQ-Nj
+	for alex.bennee@linaro.org; Thu, 19 Dec 2019 12:55:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54691)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <richard.henderson@linaro.org>) id 1ihzx4-0003yZ-Jd
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 12:51:07 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1ihzx3-0004zV-JF
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 12:51:06 -0500
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:35803)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1ihzx3-0004tc-8s
+ for qemu-arm@nongnu.org; Thu, 19 Dec 2019 12:51:05 -0500
+Received: by mail-pg1-x542.google.com with SMTP id l24so3516408pgk.2
+ for <qemu-arm@nongnu.org>; Thu, 19 Dec 2019 09:51:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=4r1dJHdQo0OjsGUYx+/2Vrzn84OYJujOtfe17Ka8aVE=;
+ b=R7m8dzSXDXUEWY8YDLMUipwCYPic6/eXVvFpCcf+FFwBSwrjL/GH3xJrXv8E+nq6C9
+ xxrPvYbL8zbsWC9TijBP5toRPx7yXUKrnYuPRJsAG5rfGquefKqCs4QSLE7kiR5h0Zgv
+ +Hq88OpkYenBEYgaoOh3dTkb488LL/wKRgOO+vwhUO5DFBYp73iaqHDLoVIJxKKl/fP5
+ RSJDFbSmqXTzKWsfeGHvuAAyovmTfTBm2HfrLu1zKwuDZ6OQBhdN+aycelVE/0L3fsgj
+ EXOgBIKOkkBQBMR8qHfo/Zp9y5dbfqPp+C0x+sV5+/HHz9xmwR81jhqSDOofnV9paz89
+ SVmQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=4r1dJHdQo0OjsGUYx+/2Vrzn84OYJujOtfe17Ka8aVE=;
+ b=nIozfe0/I/N1FDJAtOolqj0I2dwjYAm4axI7pXf3/RtjXaiqciGuoEO1yY/hKJ2YrA
+ OTEFWsnVSkgAN8AzLt5RL9w0wjSIDBFilkZv8NeIW5NJ7bNomForeyGF0Rf/KaOy38T2
+ uGScvEEb6VcV+/QHn8AN1aCZJeaa+1jAygyNrwkFsu0i1UC1IXHT+O934rsbnSRNYkdV
+ wT5ksG9RD+86n+DkjUdEumSl2kBm/r/nJ8nHDyOccjKcFNOa6eiNdyMkAOL58qI8YlIv
+ /xdjSeZqEUTgiOwWVmP0j8orUoN7jTv/nK2wMhs6MZS/APW+4dU24szg5nf/M1RaKLrP
+ Hoxg==
+X-Gm-Message-State: APjAAAXQlaD872kFSAvbuAKOe7KPICzw6ijvtMJJJ3vls5WYLyIirWpu
+ z5C3ishMsrZbqBIVAtPYW64Vag==
+X-Received: by 2002:a63:4d4c:: with SMTP id n12mr10509796pgl.212.1576777863828; 
+ Thu, 19 Dec 2019 09:51:03 -0800 (PST)
+Received: from ?IPv6:2605:e000:c74f:dc00:9de9:bce2:6ae3:53c4?
+ ([2605:e000:c74f:dc00:9de9:bce2:6ae3:53c4])
+ by smtp.gmail.com with ESMTPSA id r1sm8091054pgp.15.2019.12.19.09.51.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Dec 2019 09:51:03 -0800 (PST)
+Subject: Re: [PATCH] target/arm: fix IL bit for data abort exceptions
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20191217210230.99559-1-jeff.kubascik@dornerworks.com>
+ <7a274247-e593-5828-73f8-2042971e8633@linaro.org>
+ <CAFEAcA8Egy=Jkw8yKSumkeX=+Qxi8bPy-0fJjopHR6gCmz3FLQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <64d31889-6269-1f6d-6aad-8e863310cf79@linaro.org>
+Date: Thu, 19 Dec 2019 07:50:59 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8Egy=Jkw8yKSumkeX=+Qxi8bPy-0fJjopHR6gCmz3FLQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: y5cw/h1t0u8i
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::542
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Jeff Kubascik <jeff.kubascik@dornerworks.com>,
+ Jarvis Roach <Jarvis.Roach@dornerworks.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KxNYlQ+Qxb9F
+
+On 12/19/19 2:43 AM, Peter Maydell wrote:
+> I think this is a regression introduced in commit 46beb58efbb8a2a32
+> when we converted the Thumb decoder over to decodetree. Before that
+> 16 bit Thumb insns were in a different place in the old decoder and
+> the 16-bit Thumb path passed ISSIs16Bit in with its issflags.
+> (We should cc: qemu-stable@nongnu.org on the fix for this.)
+
+Oops, yes, that would be my fault.
+
+>>>      /* ISS not valid if writeback */
+>>>      if (p && !w) {
+>>> -        ret = rd;
+>>> +        ret = rd | (s->is_16bit ? ISSIs16Bit : 0);
+>>>      } else {
+>>>          ret = ISSInvalid;
+>>>      }
+> 
+> Rather than setting an is_16bit flag, we could just use
+> "dc->base.pc_next - dc->pc_curr == 2", couldn't we?
+
+We could, yes.
 
 
-Damien Hedde <damien.hedde@greensocs.com> writes:
-
-> Hi Alex,
->
-> On 12/11/19 6:05 PM, Alex Benn=C3=A9e wrote:
->> Instead of passing a pointer to memory now just extend the GByteArray
->> to all the read register helpers. They can then safely append their
->> data through the normal way. We don't bother with this abstraction for
->> write registers as we have already ensured the buffer being copied
->> from is the correct size.
->>=20
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> [...]
->
->> diff --git a/target/arm/helper.c b/target/arm/helper.c
->> index 0ac950d6c71..6476245e789 100644
->> --- a/target/arm/helper.c
->> +++ b/target/arm/helper.c
->> @@ -47,30 +47,27 @@ static bool get_phys_addr_lpae(CPUARMState *env, tar=
-get_ulong address,
->>=20=20
->>  static void switch_mode(CPUARMState *env, int mode);
->>=20=20
->> -static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
->> +static int vfp_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
->>  {
->>      int nregs;
->>=20=20
->>      /* VFP data registers are always little-endian.  */
->>      nregs =3D arm_feature(env, ARM_FEATURE_VFP3) ? 32 : 16;
->>      if (reg < nregs) {
->> -        stq_le_p(buf, *aa32_vfp_dreg(env, reg));
->> -        return 8;
->> +        return gdb_get_reg64(buf, *aa32_vfp_dreg(env, reg));
->
-> It was a little-endian version, you've put a target-endian version.
-> Is that what you meant ?
-
-Yes - I suspect this would have been broken if used by a big-endian
-system. gdbstub generally (SVE excepted) wants things in target order.
-
->
->>      }
->>      if (arm_feature(env, ARM_FEATURE_NEON)) {
->>          /* Aliases for Q regs.  */
->>          nregs +=3D 16;
->>          if (reg < nregs) {
->>              uint64_t *q =3D aa32_vfp_qreg(env, reg - 32);
->> -            stq_le_p(buf, q[0]);
->> -            stq_le_p(buf + 8, q[1]);
->> -            return 16;
->> +            return gdb_get_reg128(buf, q[0], q[1]);
->
-> Ditto here.
->
->>          }
->>      }
->>      switch (reg - nregs) {
->> -    case 0: stl_p(buf, env->vfp.xregs[ARM_VFP_FPSID]); return 4;
->> -    case 1: stl_p(buf, vfp_get_fpscr(env)); return 4;
->> -    case 2: stl_p(buf, env->vfp.xregs[ARM_VFP_FPEXC]); return 4;
->> +    case 0: return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPSID]); b=
-reak;
->> +    case 1: return gdb_get_reg32(buf, vfp_get_fpscr(env)); break;
->> +    case 2: return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPEXC]); b=
-reak;
->>      }
->>      return 0;
->>  }
->> @@ -101,7 +98,7 @@ static int vfp_gdb_set_reg(CPUARMState *env, uint8_t =
-*buf, int reg)
->>      return 0;
->>  }
->>=20=20
->> -static int aarch64_fpu_gdb_get_reg(CPUARMState *env, uint8_t *buf, int =
-reg)
->> +static int aarch64_fpu_gdb_get_reg(CPUARMState *env, GByteArray *buf, i=
-nt reg)
->>  {
->>      switch (reg) {
->>      case 0 ... 31:
->> @@ -204,7 +201,7 @@ static void write_raw_cp_reg(CPUARMState *env, const=
- ARMCPRegInfo *ri,
->>      }
->>  }
->>=20=20
->> -static int arm_gdb_get_sysreg(CPUARMState *env, uint8_t *buf, int reg)
->> +static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int re=
-g)
->>  {
->>      ARMCPU *cpu =3D env_archcpu(env);
->>      const ARMCPRegInfo *ri;
->
-> [...]
->
->> diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
->> index 823759c92e7..6f08021cc22 100644
->> --- a/target/ppc/gdbstub.c
->> +++ b/target/ppc/gdbstub.c
->> @@ -114,10 +114,11 @@ void ppc_maybe_bswap_register(CPUPPCState *env, ui=
-nt8_t *mem_buf, int len)
->>   * the FP regs zero size when talking to a newer gdb.
->>   */
->>=20=20
->> -int ppc_cpu_gdb_read_register(CPUState *cs, uint8_t *mem_buf, int n)
->> +int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
->>  {
->>      PowerPCCPU *cpu =3D POWERPC_CPU(cs);
->>      CPUPPCState *env =3D &cpu->env;
->> +    uint8_t *mem_buf;
->>      int r =3D ppc_gdb_register_len(n);
->>=20=20
->>      if (!r) {
->> @@ -126,17 +127,17 @@ int ppc_cpu_gdb_read_register(CPUState *cs, uint8_=
-t *mem_buf, int n)
->>=20=20
->>      if (n < 32) {
->>          /* gprs */
->> -        gdb_get_regl(mem_buf, env->gpr[n]);
->> +        gdb_get_regl(buf, env->gpr[n]);
->>      } else if (n < 64) {
->>          /* fprs */
->> -        stfq_p(mem_buf, *cpu_fpr_ptr(env, n - 32));
->> +        gdb_get_reg64(buf, *cpu_fpr_ptr(env, n - 32));
->>      } else {
->>          switch (n) {
->>          case 64:
->> -            gdb_get_regl(mem_buf, env->nip);
->> +            gdb_get_regl(buf, env->nip);
->>              break;
->>          case 65:
->> -            gdb_get_regl(mem_buf, env->msr);
->> +            gdb_get_regl(buf, env->msr);
->>              break;
->>          case 66:
->>              {
->> @@ -145,31 +146,33 @@ int ppc_cpu_gdb_read_register(CPUState *cs, uint8_=
-t *mem_buf, int n)
->>                  for (i =3D 0; i < 8; i++) {
->>                      cr |=3D env->crf[i] << (32 - ((i + 1) * 4));
->>                  }
->> -                gdb_get_reg32(mem_buf, cr);
->> +                gdb_get_reg32(buf, cr);
->>                  break;
->>              }
->>          case 67:
->> -            gdb_get_regl(mem_buf, env->lr);
->> +            gdb_get_regl(buf, env->lr);
->>              break;
->>          case 68:
->> -            gdb_get_regl(mem_buf, env->ctr);
->> +            gdb_get_regl(buf, env->ctr);
->>              break;
->>          case 69:
->> -            gdb_get_reg32(mem_buf, env->xer);
->> +            gdb_get_reg32(buf, env->xer);
->>              break;
->>          case 70:
->> -            gdb_get_reg32(mem_buf, env->fpscr);
->> +            gdb_get_reg32(buf, env->fpscr);
->>              break;
->>          }
->>      }
->> +    mem_buf =3D buf->data - r;
->
-> Should it not be something more like this ?
-> mem_buf =3D buf->data + buf->len - r;
-
-Good catch.
-
->
-> There seem to be the same issue below for every
-> ppc_maybe_bswap_register() call.
-
-Fixed.
-
-
---=20
-Alex Benn=C3=A9e
+r~

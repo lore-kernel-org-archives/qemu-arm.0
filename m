@@ -1,151 +1,180 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2542740lff;
-        Thu, 19 Dec 2019 09:55:42 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwskGw9aL8q6wCzsCLtTi2HmlgbfDj/AuHdDFQFtCDrv0zUsOXs2kOfOIUWmUpruuqCYvPA
-X-Received: by 2002:a05:6830:1e5c:: with SMTP id e28mr10285030otj.293.1576778142181;
-        Thu, 19 Dec 2019 09:55:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576778142; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2606188lff;
+        Thu, 19 Dec 2019 10:53:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxo2qHxb/BpkiiOCKaOt04eqB5DKYswZG+YGgmtMlkMv3u3EyUP+WohGZ+DV7R4Ecr0sQQu
+X-Received: by 2002:a9d:7999:: with SMTP id h25mr10268503otm.347.1576781615654;
+        Thu, 19 Dec 2019 10:53:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576781615; cv=none;
         d=google.com; s=arc-20160816;
-        b=FeRS1lJwjO9B2vuSgnd8xNxcYpQB2mW6ajAEbgCGwmE3SEWskooZ147w/HzEzVE/vu
-         XJyh+vUneyPEGB1eiijy68CTHxBt8prV6ewJCcGzdH6r3w+sdQvUj9ZPoEjAcj3XMhWS
-         Icg7tFVnuZ2X5QX5SO4FodAnpMT8F4a0rhYzZQxfhtX7CGZN9gGf7svCPS4I6dycHYEX
-         xib6UL15cB6rNG21q4ewu1Zlt4jqgLP7xV+G8/hd/MSHOmkNGhMG0laIrPfsRNbmvS96
-         qM/7PO69Gj3jI70rwxox58284gXipAIBwpn0SSFVWHjuEDLHR6b/+sBfqWcMqojwq0VZ
-         2kiw==
+        b=pPx5f5hnFD0XrsCQEWO7CsQtoziwxsD2/ue9nEJBoXCoHa6NxOH9pv7nay/x6S/yRU
+         nbslPSevkBgfqMRICOrjwwBLxB+NXO7hTEtUOsuyLCm1RxZx1ItiB9JTWVJPgM95lk84
+         N/cugTOS3XhpEbvvENVlkL0IUcDhhvskO4aQF/tm/nSOWOei6a3oCC4XLcrj8dha++Fq
+         xiBp/0oUHbG+npiLWa17g49IWUgnuPUSDxAiMbBPddbDXc4ubBDlGdIlxYxRfzFgDcvR
+         BualXlfgxgS5mjC/iv/fxJbQUoxNFCGaRHt8lNHwPxqNziw+e8yqOW1BXjf8hVHZwS/m
+         kUjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=4r1dJHdQo0OjsGUYx+/2Vrzn84OYJujOtfe17Ka8aVE=;
-        b=MUpx5LxLiftZjncuaOiXBSv1RvqLqyqxtDFe3fI9/N/2hvHaYs6mHkPAPRRRIykq7C
-         Aznldcvbixe3cIsfWC3pnDujxhDmqEG/jguH4qbb/f7v2Wr2KkL5a/pcI4HRJKcqvjRr
-         iEcTm6hD8jpAxL68M2a9IieH0GO0fytcfurbSl0eN8q6zQfirgyX5m7TOAJyZDIjuR31
-         5pIxvbqIJu8//W+EASDTbkAFPYRi/2tix7xiIlvC9w9fCa81wRxTUb8FKmLg2qZe4nqN
-         493L4NffoXplfZxpM9EEJ69LBJE+/O1cMM6w/ElV3qMulqPVCAeLNt/T3S7l4UOab8w7
-         WsAQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=kawbqCEjPPYKCsVnRVsa55n98nVaL/1o+fmH2TsyLNE=;
+        b=xZgZee4gXZl3isfQKxYNY9a6rmqrggPV//erRZqRIIHElxXYv2MeVdxHHbPS/WG+zW
+         BnKpsc9r/t0lInEFCyOsDQBnxkVmG+LksLlQAMhjttWJlFclDQjh+4Q6YOGHnuRbSVKX
+         L+nyWA0IM1zQaAYKGaqb68mflZcKMlfpAAFK8vkPIE17yjTTv+AQeNRX63sZg64rFeqq
+         HS2ZkVm0pXiqRhRqDShLtSCStHxfKAM/Mlhrlc4NnBmBzZchafb/ZPIC5l4xQjziAfSB
+         fom6xTFXrK9y86MLAHAe4pXHED5v6KsGu1m2Vnce6NMkAdI2wWR0iuHl9eeu+47tfAFL
+         afEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=R7m8dzSX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hlmMNCLN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a205si3478207oii.95.2019.12.19.09.55.42
+        by mx.google.com with ESMTPS id a7si3531617oic.190.2019.12.19.10.53.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Dec 2019 09:55:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Dec 2019 10:53:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=R7m8dzSX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45756 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hlmMNCLN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46638 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ii01U-0002iQ-Nj
-	for alex.bennee@linaro.org; Thu, 19 Dec 2019 12:55:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54691)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ii0vW-0000FK-T7
+	for alex.bennee@linaro.org; Thu, 19 Dec 2019 13:53:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39031)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1ihzx4-0003yZ-Jd
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 12:51:07 -0500
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ii0ta-0006zc-Fq
+ for qemu-devel@nongnu.org; Thu, 19 Dec 2019 13:51:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1ihzx3-0004zV-JF
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 12:51:06 -0500
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:35803)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ii0tY-0007HZ-0H
+ for qemu-devel@nongnu.org; Thu, 19 Dec 2019 13:51:34 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:39782)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1ihzx3-0004tc-8s
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 12:51:05 -0500
-Received: by mail-pg1-x542.google.com with SMTP id l24so3516408pgk.2
- for <qemu-arm@nongnu.org>; Thu, 19 Dec 2019 09:51:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=4r1dJHdQo0OjsGUYx+/2Vrzn84OYJujOtfe17Ka8aVE=;
- b=R7m8dzSXDXUEWY8YDLMUipwCYPic6/eXVvFpCcf+FFwBSwrjL/GH3xJrXv8E+nq6C9
- xxrPvYbL8zbsWC9TijBP5toRPx7yXUKrnYuPRJsAG5rfGquefKqCs4QSLE7kiR5h0Zgv
- +Hq88OpkYenBEYgaoOh3dTkb488LL/wKRgOO+vwhUO5DFBYp73iaqHDLoVIJxKKl/fP5
- RSJDFbSmqXTzKWsfeGHvuAAyovmTfTBm2HfrLu1zKwuDZ6OQBhdN+aycelVE/0L3fsgj
- EXOgBIKOkkBQBMR8qHfo/Zp9y5dbfqPp+C0x+sV5+/HHz9xmwR81jhqSDOofnV9paz89
- SVmQ==
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ii0tX-00077M-MV; Thu, 19 Dec 2019 13:51:31 -0500
+Received: by mail-wm1-x332.google.com with SMTP id 20so6637350wmj.4;
+ Thu, 19 Dec 2019 10:51:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kawbqCEjPPYKCsVnRVsa55n98nVaL/1o+fmH2TsyLNE=;
+ b=hlmMNCLNwX+RKju0XCfr9FBOQbehZMq5UQz4OtXjSkx2kDsWMOmkiJVcAocgiUOMCq
+ dk429h3d4vhPgkXjx+0WXlbk0ZwbwtqpfTaGGhU2wGDQyzUcX0Db5zmGi9nlpIKP8n3Z
+ xO0qpuuMEp0etQ5PzaxG8tWIcGc6UhfqfO97S5MPVIjSG4Qpdp9enG08SgnGx62SFJWH
+ uvzr3jee9R8X3QgiZaldjIdQivqTRrnekv/dryvXYfLjD5Mg0Fn2dyzKrGu5tit5unHX
+ o1TqASqFhTZvwXviwl5GKkr03feprp2aHRUlDiy/KTkHVpvxKrnC2qIizd9qvxfYoS2v
+ 9NyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=4r1dJHdQo0OjsGUYx+/2Vrzn84OYJujOtfe17Ka8aVE=;
- b=nIozfe0/I/N1FDJAtOolqj0I2dwjYAm4axI7pXf3/RtjXaiqciGuoEO1yY/hKJ2YrA
- OTEFWsnVSkgAN8AzLt5RL9w0wjSIDBFilkZv8NeIW5NJ7bNomForeyGF0Rf/KaOy38T2
- uGScvEEb6VcV+/QHn8AN1aCZJeaa+1jAygyNrwkFsu0i1UC1IXHT+O934rsbnSRNYkdV
- wT5ksG9RD+86n+DkjUdEumSl2kBm/r/nJ8nHDyOccjKcFNOa6eiNdyMkAOL58qI8YlIv
- /xdjSeZqEUTgiOwWVmP0j8orUoN7jTv/nK2wMhs6MZS/APW+4dU24szg5nf/M1RaKLrP
- Hoxg==
-X-Gm-Message-State: APjAAAXQlaD872kFSAvbuAKOe7KPICzw6ijvtMJJJ3vls5WYLyIirWpu
- z5C3ishMsrZbqBIVAtPYW64Vag==
-X-Received: by 2002:a63:4d4c:: with SMTP id n12mr10509796pgl.212.1576777863828; 
- Thu, 19 Dec 2019 09:51:03 -0800 (PST)
-Received: from ?IPv6:2605:e000:c74f:dc00:9de9:bce2:6ae3:53c4?
- ([2605:e000:c74f:dc00:9de9:bce2:6ae3:53c4])
- by smtp.gmail.com with ESMTPSA id r1sm8091054pgp.15.2019.12.19.09.51.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Dec 2019 09:51:03 -0800 (PST)
-Subject: Re: [PATCH] target/arm: fix IL bit for data abort exceptions
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20191217210230.99559-1-jeff.kubascik@dornerworks.com>
- <7a274247-e593-5828-73f8-2042971e8633@linaro.org>
- <CAFEAcA8Egy=Jkw8yKSumkeX=+Qxi8bPy-0fJjopHR6gCmz3FLQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <64d31889-6269-1f6d-6aad-8e863310cf79@linaro.org>
-Date: Thu, 19 Dec 2019 07:50:59 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=kawbqCEjPPYKCsVnRVsa55n98nVaL/1o+fmH2TsyLNE=;
+ b=YivAMyzbDWZvJ2ZTv6FOMqXVr0ndZqJwoW14LVWBjLoOLRi1ouv2emYAzS0deycGsc
+ jWsm+uixisoBGsmQnLOdq5H/vVcOzXXmg7yNOa88g5s7beLr+R5w1xmeha/66u8ut97x
+ fOCN8+UIWW08Km7HymLMM1tOGvgdvCqp1JzOFedgGQsx4B9wEdjH4j8Pc2UmKQZmsblu
+ PgmXWIl857pm4eaKGwnuYJfMr5xs2rDpqRPITWA3FbSyBgbLt2wCJShpIoMgpEBpowmx
+ 2J5yAXYW3PtA5SHCeH4ubhK8mPY9v5WQCM6yth4qYbdmrwq5LbmY3PImlX1ytEEHYMSx
+ bpRA==
+X-Gm-Message-State: APjAAAWT23b2QUZUyioLJs4ICOAGtQ7pCR/4EdEC+hSH4puGitcnSIYI
+ VsFtdwFglSUeyULfsP/OAGmvQc8h
+X-Received: by 2002:a1c:486:: with SMTP id 128mr12132694wme.163.1576781489342; 
+ Thu, 19 Dec 2019 10:51:29 -0800 (PST)
+Received: from x1w.redhat.com (34.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.34])
+ by smtp.gmail.com with ESMTPSA id b67sm7435494wmc.38.2019.12.19.10.51.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Dec 2019 10:51:28 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	Niek Linnenbank <nieklinnenbank@gmail.com>
+Subject: [RFC PATCH 00/13] hw/timer/allwinner: Make it reusable
+Date: Thu, 19 Dec 2019 19:51:14 +0100
+Message-Id: <20191219185127.24388-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8Egy=Jkw8yKSumkeX=+Qxi8bPy-0fJjopHR6gCmz3FLQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::542
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::332
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Jeff Kubascik <jeff.kubascik@dornerworks.com>,
- Jarvis Roach <Jarvis.Roach@dornerworks.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KxNYlQ+Qxb9F
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hgUWcR3suB4H
 
-On 12/19/19 2:43 AM, Peter Maydell wrote:
-> I think this is a regression introduced in commit 46beb58efbb8a2a32
-> when we converted the Thumb decoder over to decodetree. Before that
-> 16 bit Thumb insns were in a different place in the old decoder and
-> the 16-bit Thumb path passed ISSIs16Bit in with its issflags.
-> (We should cc: qemu-stable@nongnu.org on the fix for this.)
+Hi,
 
-Oops, yes, that would be my fault.
+Niek added the H3 SoC in [1] and noticed in [2] the timer
+controller is very similar (less timers, watchdog register
+placed at different address).
 
->>>      /* ISS not valid if writeback */
->>>      if (p && !w) {
->>> -        ret = rd;
->>> +        ret = rd | (s->is_16bit ? ISSIs16Bit : 0);
->>>      } else {
->>>          ret = ISSInvalid;
->>>      }
-> 
-> Rather than setting an is_16bit flag, we could just use
-> "dc->base.pc_next - dc->pc_curr == 2", couldn't we?
+On 12/18/19 9:14 PM, Niek Linnenbank wrote:
+> Actually, I copied the timer support code from the existing cubieboard.c
+> that has
+> the Allwinner A10, so potentially the same problem is there.
+>
+> While looking more closer at this part, I now also discovered that the
+> timer module from the Allwinner H3 is
+> mostly a stripped down version of the timer module in the Allwinner A10:
+>
+>    Allwinner A10, 10.2 Timer Register List, page 85:
+> https://linux-sunxi.org/images/1/1e/Allwinner_A10_User_manual_V1.5.pdf
+>
+> The A10 version has six timers, where the H3 has only two. That should
+> be fine I would say, the guest would simply
+> use those available on H3 and ignore the rest. There is however one
+> conflicting difference: the WDOG0 registers in the Allwinner H3 start
+> at a different offset and are also different. The current A10 timer does
+> not currently implement the watchdog part.
+[...]
+> So in my opinion its a bit of a trade off here: we can keep it like this
+> and re-use the A10 timer for now, and perhaps
+> attempt to generalize that module for proper use in both SoCs. Or we can
+> introduce a new H3 specific timer module.
+> What do you think?
 
-We could, yes.
+As an answer to his question, this series is to help him to
+reuse the A10 timer controller instead of adding a new model
+to the codebase.
 
+[1] https://www.mail-archive.com/qemu-devel@nongnu.org/msg665532.html
+[2] https://www.mail-archive.com/qemu-devel@nongnu.org/msg666304.html
 
-r~
+Philippe Mathieu-Daudé (13):
+  hw/timer/allwinner: Use the AW_A10_PIT_TIMER_NR definition
+  hw/timer/allwinner: Add AW_PIT_TIMER_MAX definition
+  hw/timer/allwinner: Remove unused definitions
+  hw/timer/allwinner: Move definitions from header to source
+  hw/timer/allwinner: Rename the ptimer field
+  hw/timer/allwinner: Rename 'timer_context' as 'timer'
+  hw/timer/allwinner: Move timer specific fields into AwA10TimerContext
+  hw/timer/allwinner: Add a timer_count field
+  hw/timer/allwinner: Rename AwA10TimerContext as AllwinnerTmrState
+  hw/timer/allwinner: Rename AwA10PITState as AllwinnerTmrCtrlState
+  hw/timer/allwinner: Introduce TYPE_AW_COMMON_PIT abstract device
+  hw/timer/allwinner: Rename AW_A10_PIT() as AW_TIMER_CTRL()
+  hw/timer/allwinner: Rename functions not specific to the A10 SoC
+
+ include/hw/arm/allwinner-a10.h       |   2 +-
+ include/hw/timer/allwinner-a10-pit.h |  54 ++----
+ hw/timer/allwinner-a10-pit.c         | 271 +++++++++++++++++----------
+ 3 files changed, 192 insertions(+), 135 deletions(-)
+
+-- 
+2.21.0
+

@@ -1,226 +1,154 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1763535lff;
-        Wed, 18 Dec 2019 21:25:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzdGB69xK9U10GkvSJmPswLJbIVKu81+oRLuH1RaV3LadxMx3e7NpWIRxyASoUOtDFeCr0P
-X-Received: by 2002:a9d:748d:: with SMTP id t13mr6595145otk.181.1576733159701;
-        Wed, 18 Dec 2019 21:25:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576733159; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1836244lff;
+        Wed, 18 Dec 2019 22:53:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw+44kFGNCFscrxhEYDAWl0lPOi8vTbWAWGmKr+Ne/EHix79BGytsT5Cc6Sat2LgKX6uUZf
+X-Received: by 2002:ad4:5487:: with SMTP id q7mr6353367qvy.19.1576738386533;
+        Wed, 18 Dec 2019 22:53:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576738386; cv=none;
         d=google.com; s=arc-20160816;
-        b=QIo+vxJFJ47ZJhDgu2YHWK5jMEdb07lWkBYIQ06lbhJcXz3D+GMWcFw1BaWeTkGTA3
-         8Qm7sDu7SVrdkjlDCXXGWvQCS+jTVGJ+ydoJTKh7Psodt3nAkygr1U+IFTjHEPlrAkdy
-         4FobOY3pRJ1c6Lt67nzQZtui7T4441mcjqcdl4aKc62KmZO1TI1alPsEkH8vuDnO1qC/
-         oJ2G1E/RgRuoaTvlSsnXQYdrZLXgA6aTZ92dafWiyufVGOAzco3F0aWnTX5hRJSxthI/
-         j5Q+AHLi9IRUDEHoARfs7RggupxbUAFOJjIOLf2ay6TZuVo8NIgVl+d1kpZ5h517ULQw
-         uqQA==
+        b=bqRzQvqRb873rC0Zmi7+sgmll4nBnLkSBvXn/MneYlA/aYzTQZ6HaSXIJAA8CoV/zW
+         6YOkepX9DyFtwQYU+8Xij0hsQ8Kk3ewu/8bfiqrDl939hHwpfyZIFFZk/8vWgZ0ZN0zD
+         Z2jJPYgEMa7AEUXcvDCw85gFCcWRhMna30AivPs4oRqVKcY0rKO5rV3p9ewf/Fk7za3c
+         xpljAEi+R4BqoXkdOrXULgdeEtK/qq8nqooPAn+AYeXRGEzKPBC9tB+vQ+ELK9NI+YFb
+         txBtNwMC+WVYJ+H+aCrN2fp0BYTU3KhuE5T7DcseN+egJxlaJrRhbgkK8ycFqhRktB8d
+         zLzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature:dkim-signature;
-        bh=fqnBMewqCOATafjXZmyB+vZHiX5owZHz7dR6tUsw22Y=;
-        b=KiW0K0oyL3kdVLCCv/iSzPphFx/F7nPw0HT0E34Jg+SzRwu+ULGLDnsxWfPsgpwTAU
-         MXp1i3Fb/sZCtOVcBDVjWTSngRZIh/joVaH6XOxqzPdKTNgfqfDO5Y9JKGs6nyO0Jsux
-         jMSZKqOUD6pknBVbcjkyKcEeNugki4oS2fghAZ0MAZSwJ1AkNx0S2oCXVq3NwwXCerL9
-         iE3vLQYCUDVl4csHs2M3WAwvMQ0EFNNgMcKY0D5LVbuJm2nsHaofMtuDbbvd1nyckPeR
-         lzQYiZ7RDOs5BDFQ7osluNUS0JZx0Pqzfx+cABXxDlvtrB2BFrpwFZ8/ZERd30hc878B
-         jtew==
+        h=content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:subject:cc:to:from:dkim-signature;
+        bh=qxzXx+71n4empVY6KRCherhudWNv9rkASvNeiT9MKds=;
+        b=IbcTHCXrKedEWDG/+OO8XJb4arAeCPoE3oDcxfHshC/Qpk1kkk6O8Shi3hXJxSGot6
+         GBMzyDmSpT/jNBQ1+KwsbQhuH5JPyVBsfgJEOPA45lAqPW8QsIV0myzkiXmgSyKenbeP
+         ZQaFshVThjDS+6+weCNjjLG7hYAsi4ZaCntWU5ti024YHUSVqUgdvMvnFi/k5zvz6pGj
+         /QdeqmynbSBRXibWp9sYG64K6KbcyKxn17ERfoyJLid+tGlNSZjdsngDbPJ6coNMvYJX
+         fVrz4yBaxIrGYfgwDx9gLyxOmq4o3ZhJmO9kHmTHq0z8Mlf4YJVdlLfhxQBJCJ7tfe3E
+         MS2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@alistair23.me header.s=fm2 header.b=q6CLkcWN;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=NGzn1KMs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z1si2468345otm.242.2019.12.18.21.25.59
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dSI1MOjF;
+       spf=pass (google.com: domain of armbru@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
+        by mx.google.com with ESMTPS id x2si2951519qkn.86.2019.12.18.22.53.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2019 21:25:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 18 Dec 2019 22:53:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@alistair23.me header.s=fm2 header.b=q6CLkcWN;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=NGzn1KMs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36010 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihoJy-00080o-Sk
-	for alex.bennee@linaro.org; Thu, 19 Dec 2019 00:25:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57619)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair@alistair23.me>) id 1ihoH6-0004fA-KB
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 00:23:01 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair@alistair23.me>) id 1ihoH5-0003In-AJ
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 00:23:00 -0500
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20]:36931)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <alistair@alistair23.me>)
- id 1ihoH5-0003CM-0z; Thu, 19 Dec 2019 00:22:59 -0500
-Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
- by mailout.west.internal (Postfix) with ESMTP id CEF54489;
- Thu, 19 Dec 2019 00:22:57 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute7.internal (MEProxy); Thu, 19 Dec 2019 00:22:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm2; bh=fqnBMewqCOATa
- fjXZmyB+vZHiX5owZHz7dR6tUsw22Y=; b=q6CLkcWNePuJvyfd4Z6BVPbGBJlvj
- zWP5YX9uV8JgTlCa2ukwFe0h0ymCkSiWmihJVUgocDBbKmWyG63seE6igj+Asebh
- f+gPWK2kaDW/7xJtVYgQ43wTYcZaLMKMEJLYYZ3QlJpE32Kro+4O0H9eweJNS8e/
- 9S9QTX6yMuIkGC5fQ/3j1joYS0y0MRprFPgQohp4p0e/Vv0B8ELiQvNtxnf+W8EE
- 2tXEgcgjW6EC3hlS64V87ivUQqmPGrl02sB+++dd+kZrx1ba3CYgWmkPfPGvbQSp
- dihSfv0cXzTyP0F3WAUmu2zr9Zi4nfkDp4pYHoj+6XupnBW75ytegJ46g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :in-reply-to:message-id:mime-version:references:subject:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; bh=fqnBMewqCOATafjXZmyB+vZHiX5owZHz7dR6tUsw22Y=; b=NGzn1KMs
- eq2d6UNtlWCMmQbpMYnO5qiFOtnFmBn0nHFV5jW7A90ki6368mJjTKEPkFvjUCbs
- oSKWtU+yhj9J6WPXjTMns+m5dBpflkO9lsNgP/Z4739Wl2Fz+79svPWxlRGMHi7L
- og3KqGnok4ALHZ6+Eawy8gLma5DmcdgqokJO2Au2Zu+Ir+FIDgSvTOFD9lDnahR1
- HN/Qw0lI/fxEKMlIY7L8ZIyavow8GN2Qwz5NXBbmxpe2ewC1oD31NpeK6KN2taMM
- vO0h/Flzj/Rqjhuga+baMt67hA4vVXwyF88qrdsWTy6n1VZerJ564asAyxlgEOq8
- hcwYRQXi5Ny9rw==
-X-ME-Sender: <xms:MQn7XaRncktuIFwIygiYGnIe3_w8_KWdzCK-EH5OzJWDUv70KTjwrQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrvddutddgkeduucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgjfhgggfestdekre
- dtredttdenucfhrhhomheptehlihhsthgrihhrucfhrhgrnhgtihhsuceorghlihhsthgr
- ihhrsegrlhhishhtrghirhdvfedrmhgvqeenucfkphepjeefrdelfedrkeegrddvtdekne
- curfgrrhgrmhepmhgrihhlfhhrohhmpegrlhhishhtrghirhesrghlihhsthgrihhrvdef
- rdhmvgenucevlhhushhtvghrufhiiigvpedv
-X-ME-Proxy: <xmx:MQn7XdmGI4VwGuNUOtniK09tG66jxoIJcvAgvxaw_5nn_ueYK0vUAw>
- <xmx:MQn7XSSWlMZH-t0pjfVtwPuThH_HJdcpyFkivGC1e9PIi1tu5OwP6w>
- <xmx:MQn7XTOT7vvK9N-Zo7oi1P4uMuOuo5uYI1465VwuW9xYDfpiDg7yPQ>
- <xmx:MQn7XeclT1D6iCTRI0oX-2cJYovGl7MA10QFUImohXMbKmhjTQ99Mw>
-Received: from alistair-xps-14z.alistair23.me
- (c-73-93-84-208.hsd1.ca.comcast.net [73.93.84.208])
- by mail.messagingengine.com (Postfix) with ESMTPA id 9632080059;
- Thu, 19 Dec 2019 00:22:56 -0500 (EST)
-From: Alistair Francis <alistair@alistair23.me>
-To: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- philmd@redhat.com
-Subject: [PATCH v7 4/4] hw/arm: Add the Netduino Plus 2
-Date: Wed, 18 Dec 2019 21:22:55 -0800
-Message-Id: <dad8d8d47f7625913e35e27a1c00f603a6b08f9a.1576658572.git.alistair@alistair23.me>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <cover.1576658572.git.alistair@alistair23.me>
-References: <cover.1576658572.git.alistair@alistair23.me>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dSI1MOjF;
+       spf=pass (google.com: domain of armbru@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1576738386;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qxzXx+71n4empVY6KRCherhudWNv9rkASvNeiT9MKds=;
+	b=dSI1MOjF55gFam0bbfeMLgwirRPnoWajuDH/PSrr88lyBxiXZdbM1uMujp72poYq09dltb
+	tmFwIZgAxf/jkIKmT9GZCDaYH2Q36w+hlVRudUKucZ9+7rKFEfqnNQkNV1pTqxruPoARaj
+	lIEVBim33SPJfk2Vl+S8Ta2Tqzg+bLg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-46-M1OOxZS7ODWAYahXKaS8VA-1; Thu, 19 Dec 2019 01:53:04 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6EFE7184BEC0;
+	Thu, 19 Dec 2019 06:52:59 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-42.ams2.redhat.com [10.36.116.42])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1788D10013A1;
+	Thu, 19 Dec 2019 06:52:48 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 9EAB111386A7; Thu, 19 Dec 2019 07:52:46 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  qemu-devel@nongnu.org,  Peter Maydell
+ <peter.maydell@linaro.org>,  Li Zhijian <lizhijian@cn.fujitsu.com>,  Paul
+ Burton <pburton@wavecomp.com>,  Jason Wang <jasowang@redhat.com>,  KONRAD
+ Frederic <frederic.konrad@adacore.com>,  Gerd Hoffmann
+ <kraxel@redhat.com>,  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+  Alberto Garcia <berto@igalia.com>,  Sagar Karandikar
+ <sagark@eecs.berkeley.edu>,  qemu-block@nongnu.org,  "Michael S. Tsirkin"
+ <mst@redhat.com>,  Markus Armbruster <armbru@redhat.com>,  Halil Pasic
+ <pasic@linux.ibm.com>,  Christian Borntraeger <borntraeger@de.ibm.com>,
+  "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,  Joel Stanley
+ <joel@jms.id.au>,  Samuel Thibault <samuel.thibault@ens-lyon.org>,
+  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,  Antony Pavlov
+ <antonynpavlov@gmail.com>,  Laurent Vivier <lvivier@redhat.com>,  Corey
+ Minyard <minyard@acm.org>,  Amit Shah <amit@kernel.org>,  Alistair Francis
+ <alistair@alistair23.me>,  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+  Fabien Chouteau <chouteau@adacore.com>,  qemu-s390x@nongnu.org,
+  qemu-arm@nongnu.org,  Peter Chubb <peter.chubb@nicta.com.au>,  Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,  Kevin Wolf
+ <kwolf@redhat.com>,
+  qemu-riscv@nongnu.org,  Igor Mitsyanko <i.mitsyanko@gmail.com>,  Bastian
+ Koppelmann <kbastian@mail.uni-paderborn.de>,  Cornelia Huck
+ <cohuck@redhat.com>,  Max Reitz <mreitz@redhat.com>,  Zhang Chen
+ <chen.zhang@intel.com>,  Michael Walle <michael@walle.cc>,  Palmer Dabbelt
+ <palmer@dabbelt.com>,  Thomas Huth <huth@tuxfamily.org>,  Aleksandar
+ Markovic <amarkovic@wavecomp.com>,  Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [RFC PATCH 13/14] hw/char/terminal3270: Explicit ignored QEMUChrEvent in IOEventHandler
+References: <20191217163808.20068-1-philmd@redhat.com>
+	<20191217163808.20068-14-philmd@redhat.com>
+Date: Thu, 19 Dec 2019 07:52:46 +0100
+In-Reply-To: <20191217163808.20068-14-philmd@redhat.com> ("Philippe
+	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 17 Dec 2019 17:38:07
+ +0100")
+Message-ID: <87sglgx0w1.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 64.147.123.20
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: alistair23@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D5UKLaq+ZZIb
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: M1OOxZS7ODWAYahXKaS8VA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: O/zBMT+0ZsbX
 
-Signed-off-by: Alistair Francis <alistair@alistair23.me>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- MAINTAINERS            |  6 +++++
- hw/arm/Makefile.objs   |  1 +
- hw/arm/netduinoplus2.c | 52 ++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 59 insertions(+)
- create mode 100644 hw/arm/netduinoplus2.c
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index bda53628a5..203ced66e0 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -829,6 +829,12 @@ M: Peter Maydell <peter.maydell@linaro.org>
- S: Maintained
- F: hw/arm/netduino2.c
- 
-+Netduino Plus 2
-+M: Alistair Francis <alistair@alistair23.me>
-+M: Peter Maydell <peter.maydell@linaro.org>
-+S: Maintained
-+F: hw/arm/netduinoplus2.c
-+
- SmartFusion2
- M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index d9d54da7cf..336f6dd374 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -11,6 +11,7 @@ obj-$(CONFIG_MAINSTONE) += mainstone.o
- obj-$(CONFIG_MICROBIT) += microbit.o
- obj-$(CONFIG_MUSICPAL) += musicpal.o
- obj-$(CONFIG_NETDUINO2) += netduino2.o
-+obj-$(CONFIG_NETDUINOPLUS2) += netduinoplus2.o
- obj-$(CONFIG_NSERIES) += nseries.o
- obj-$(CONFIG_SX1) += omap_sx1.o
- obj-$(CONFIG_CHEETAH) += palm.o
-diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-new file mode 100644
-index 0000000000..e5e247edbe
---- /dev/null
-+++ b/hw/arm/netduinoplus2.c
-@@ -0,0 +1,52 @@
-+/*
-+ * Netduino Plus 2 Machine Model
-+ *
-+ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/boards.h"
-+#include "hw/qdev-properties.h"
-+#include "qemu/error-report.h"
-+#include "hw/arm/stm32f405_soc.h"
-+#include "hw/arm/boot.h"
-+
-+static void netduinoplus2_init(MachineState *machine)
-+{
-+    DeviceState *dev;
-+
-+    dev = qdev_create(NULL, TYPE_STM32F405_SOC);
-+    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
-+    object_property_set_bool(OBJECT(dev), true, "realized", &error_fatal);
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu),
-+                       machine->kernel_filename,
-+                       FLASH_SIZE);
-+}
-+
-+static void netduinoplus2_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "Netduino Plus 2 Machine";
-+    mc->init = netduinoplus2_init;
-+}
-+
-+DEFINE_MACHINE("netduinoplus2", netduinoplus2_machine_init)
--- 
-2.24.0
+> The Chardev events are listed in the QEMUChrEvent enum. To be
+> able to use this enum in the IOEventHandler typedef, we need to
+> explicit when frontends ignore some events, to silent GCC the
+> following warnings:
+>
+>     CC      s390x-softmmu/hw/char/terminal3270.o
+>   hw/char/terminal3270.c: In function =E2=80=98chr_event=E2=80=99:
+>   hw/char/terminal3270.c:156:5: error: enumeration value =E2=80=98CHR_EVE=
+NT_BREAK=E2=80=99 not handled in switch [-Werror=3Dswitch]
+>     156 |     switch (event) {
+>         |     ^~~~~~
+>   hw/char/terminal3270.c:156:5: error: enumeration value =E2=80=98CHR_EVE=
+NT_MUX_IN=E2=80=99 not handled in switch [-Werror=3Dswitch]
+>   hw/char/terminal3270.c:156:5: error: enumeration value =E2=80=98CHR_EVE=
+NT_MUX_OUT=E2=80=99 not handled in switch [-Werror=3Dswitch]
+>   cc1: all warnings being treated as errors
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> Cc: Cornelia Huck <cohuck@redhat.com>
+> Cc: Halil Pasic <pasic@linux.ibm.com>
+> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+> Cc: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: qemu-s390x@nongnu.org
+> ---
+>  hw/char/terminal3270.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/hw/char/terminal3270.c b/hw/char/terminal3270.c
+> index 6859c1bcb2..9e59a2d92b 100644
+> --- a/hw/char/terminal3270.c
+> +++ b/hw/char/terminal3270.c
+> @@ -166,6 +166,9 @@ static void chr_event(void *opaque, int event)
+>          sch->curr_status.scsw.dstat =3D SCSW_DSTAT_DEVICE_END;
+>          css_conditional_io_interrupt(sch);
+>          break;
+> +    default:
+> +        /* Ignore */
+> +        break;
+>      }
+>  }
 
+I doubt the /* Ignore */ comment is worth its keep.
+
+Splitting PATCH 02-13 feels excessive to me.

@@ -1,105 +1,105 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2301504lff;
-        Thu, 19 Dec 2019 06:34:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxs0ycYpf0UN0xKDjdY+Iunao5+5KvWFcDa2Qmu+jbeMa6up9+ZM4+2xF38srldg1FuJZ9g
-X-Received: by 2002:aca:5303:: with SMTP id h3mr2152622oib.109.1576766094990;
-        Thu, 19 Dec 2019 06:34:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576766094; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2311612lff;
+        Thu, 19 Dec 2019 06:43:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwnUht8a5z5TJ9LoOYVo6XYQp5R26orfQIy0IIW3kp3jO5+w1MfvyJzJkMDBrR2McpB6Mex
+X-Received: by 2002:a37:96c2:: with SMTP id y185mr8959233qkd.202.1576766602887;
+        Thu, 19 Dec 2019 06:43:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576766602; cv=none;
         d=google.com; s=arc-20160816;
-        b=GW8B4GjINCJkdLM5k0CzsL+YynlfKcWNGjInbsLJV14/dy5csI5j8lbdMk8Zgw9VgT
-         1a6T/jSgSIYXceSaWWkB9GaNvZA+UCaGBCnStTmtaWmBBUMQsXYMsK/hLWKTQkS9GGKX
-         La1G3s4wcKTTWNEXoprPAQeDh/GSFjizYHVKXtqC3M+q2aoNq0VbSJAok8ce03xXEGJz
-         ata8nE/gInMYcHvzUU2hccvbzFIjDHo3d9faev4REnWS5Eq6/EWbO28okHYetH1PfVz5
-         vjChQq04RSwoklSWIDeQlmFvEtJjmqBfXmvK0vQ2BBDK2Tye2katHqS2/cunBlD5d04f
-         gscA==
+        b=CmElIx5/mpKJKATogMOUusVR8Oj4YZUcJc/EMHYfiTOtT0U80d7jY+FUzqTi2jydOy
+         kW/vePa9/19qvMPrCivlYyASLikznaVObMuCZ7V9+AHyZFqrWYXul/fQXrnWhHQIXXmQ
+         RKOgy8OHpD7C//mwjywQO9E7nZqDJIQdFyCMPqQZ6G9T+YJPlMM0jbEwNePk1avWOZmV
+         mpDkD/37U/yUA9fYxr6k90J19KwxV+9Oli8Jx4v1R91m0a+uv1Mi0cxLg0M8WoV1dES8
+         9/jJUxEZjwfDOfBsdUbOuz5hDWqyW7cV1r18vhl8NuEXN4VYBuBP92V0vTRoUIjrLbSn
+         AX1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=28rSLX4X8eSxZ8C3IwwotEZqVgOkmB31hF2ovohmpwg=;
-        b=FrYjw4ut6TSzFJIVsxsGVvv4751xNwNNuy8cOQhV+rsAKblVs14WZLl+d3lB6+zLKF
-         vX2P2CeYAW1Dim7YrDAmWXRtGmSHkSgDTZy3uREPvE1YXIdI+uqF0AeGEX8G8MxcTg5d
-         vyU7vF6lmq70K/6Ru4miX8HEujNPMFzk4+SexiEgr+MnRFhubEakPYJg1vLpkWMQGX9b
-         oRJyvnhyH5Mv9xCm78lljI/DiTwePz8TNHe7o9woiO1ve3fjPY+uZS60s2E2I2/2NgOF
-         zAkossSXeDFwU/CB8CWQarX4eJCh7YnvQSap4lI9jno8uv/PM+c5zGD4rlhqQBcgmgkn
-         ES+w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=FGeYsn7pVHeBnwY1fZ9RQcAAn6RDUwhcR2jNqIY+R88=;
+        b=cCWC96811IJl/n2wGeERdl++50h43eRXoHs9Sgnd3cB+HiPUVAXteFmSVDvPbybT3D
+         xwH7J80wr0z3S7hOIw+zKimNDbQ7J421HSmFUY60DITq7OWK1Jxen19d7B+0cqDDEE3z
+         vJ5na9TasvEArZqud5U23Ss1sJTlY/fcXJDrI5a/3DlCGNEq8Z8cHjuNX6lQpDVUHgEp
+         A7o3wk9VnUX7ekkPrROH0qH7Qe1MtRfyQfMCaiSjkpDuptmHUeE7X5JLgVwPMZdfp4Rn
+         cGO70BCxTTXomlRYwh2H8TjRoVEyN3obyVUTNY0RywjBSQG2crvsdrYm3aXCXo2TTatd
+         zhbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DFck97H6;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PZHbODSF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x21si3170799oif.250.2019.12.19.06.34.54
+        by mx.google.com with ESMTPS id q51si380457qtf.236.2019.12.19.06.43.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Dec 2019 06:34:54 -0800 (PST)
+        Thu, 19 Dec 2019 06:43:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DFck97H6;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PZHbODSF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42678 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ihwtB-0007Jf-Pv
-	for alex.bennee@linaro.org; Thu, 19 Dec 2019 09:34:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39800)
+	id 1ihx1N-0002Vw-LY
+	for alex.bennee@linaro.org; Thu, 19 Dec 2019 09:43:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57883)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1ihwoq-0002lp-GY
- for qemu-devel@nongnu.org; Thu, 19 Dec 2019 09:30:26 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1ihwx6-00053r-Qf
+ for qemu-devel@nongnu.org; Thu, 19 Dec 2019 09:38:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1ihwok-0002Q2-L9
- for qemu-devel@nongnu.org; Thu, 19 Dec 2019 09:30:24 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:23527
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1ihwx5-00066M-52
+ for qemu-devel@nongnu.org; Thu, 19 Dec 2019 09:38:56 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:53493
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1ihwok-0002MR-AX
- for qemu-devel@nongnu.org; Thu, 19 Dec 2019 09:30:18 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1ihwx4-00063H-Sm
+ for qemu-devel@nongnu.org; Thu, 19 Dec 2019 09:38:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576765817;
+ s=mimecast20190719; t=1576766334;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=28rSLX4X8eSxZ8C3IwwotEZqVgOkmB31hF2ovohmpwg=;
- b=DFck97H6c2dZQ0jkNrDfAESajZuT6sjjZy/uUuTVh4TqD4YvOZ5/IxudMJmD3RniPes2nn
- f67YNoO/+Cry/LdrNn/bGQtRpf3XI63d9PBryCih0p6HahPSz7qv/EhnVbB6U+s/b7YS9b
- KKtuP+KI4dKsdSo0PwVLKcm8P6EG5WY=
+ bh=FGeYsn7pVHeBnwY1fZ9RQcAAn6RDUwhcR2jNqIY+R88=;
+ b=PZHbODSFm3xTg0SvHun4gnGhV4r4jpulCg3YFqeOJCjC81zDeLlCMzccJHngWQfxzmCzGo
+ TtGP1gHEDYk8w4T8oI05WEz3Djd4zPlnEBURyP6iqT6qaeUsN+4++W2PSNuiLbCgRmEAyS
+ 7RFQPTmtX6Yi7tMYVpTkzzMva/rxS28=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-249-t6Nxs0jWMMOjzt_qKRNfUg-1; Thu, 19 Dec 2019 09:30:14 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-325-tCVEtQx3MAuaBq0xoDMSjQ-1; Thu, 19 Dec 2019 09:38:51 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A6EE81005502;
- Thu, 19 Dec 2019 14:30:12 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.36.118.50])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 41F816B566;
- Thu, 19 Dec 2019 14:30:08 +0000 (UTC)
-Date: Thu, 19 Dec 2019 15:30:05 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC PATCH v2 3/5] target/arm/kvm: Implement virtual time
- adjustment
-Message-ID: <20191219143005.gw43k2hug2n5nvto@kamzik.brq.redhat.com>
-References: <20191212173320.11610-1-drjones@redhat.com>
- <20191212173320.11610-4-drjones@redhat.com>
- <CAFEAcA_u94O8WYLgB8DF=pu-3V7LrNWpiQFV5mDYeeqLj1Ee2Q@mail.gmail.com>
- <CAFEAcA9ZoOZt6Jh42hi6q91=kRM9T9z436J99NF+Ns5KVKUYow@mail.gmail.com>
- <20191216164355.i5rpfuqlfqv2z7m7@kamzik.brq.redhat.com>
- <CAFEAcA8NzQ8QYE2NMnviPPnmBn1Dwm4W_KvhMbwCNwFzkurK-Q@mail.gmail.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3A7001089B87;
+ Thu, 19 Dec 2019 14:38:49 +0000 (UTC)
+Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 16F685E243;
+ Thu, 19 Dec 2019 14:38:36 +0000 (UTC)
+Subject: Re: [PATCH for-5.0 v11 08/20] virtio-iommu: Implement translate
+To: Peter Xu <peterx@redhat.com>
+References: <20191122182943.4656-1-eric.auger@redhat.com>
+ <20191122182943.4656-9-eric.auger@redhat.com> <20191210193342.GJ3352@xz-x1>
+ <44c0041d-68ad-796f-16cc-4bab7ba0f164@redhat.com>
+ <20191219133308.GA4246@xz-x1>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <9d58b293-ada0-353e-bba2-ad1f538dfc62@redhat.com>
+Date: Thu, 19 Dec 2019 15:38:34 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8NzQ8QYE2NMnviPPnmBn1Dwm4W_KvhMbwCNwFzkurK-Q@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: t6Nxs0jWMMOjzt_qKRNfUg-1
+In-Reply-To: <20191219133308.GA4246@xz-x1>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: tCVEtQx3MAuaBq0xoDMSjQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,136 +111,127 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: bijan.mottahedeh@oracle.com, Marc Zyngier <maz@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Heyi Guo <guoheyi@huawei.com>, msys.mizuma@gmail.com
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
+ quintela@redhat.com, qemu-devel@nongnu.org, armbru@redhat.com,
+ bharatb.linux@gmail.com, qemu-arm@nongnu.org, dgilbert@redhat.com,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9Uzh0WTIVjiD
+X-TUID: oixt3XuuyNp4
 
-On Mon, Dec 16, 2019 at 06:06:30PM +0000, Peter Maydell wrote:
-> On Mon, 16 Dec 2019 at 16:44, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > On Mon, Dec 16, 2019 at 03:40:16PM +0000, Peter Maydell wrote:
-> > > On Mon, 16 Dec 2019 at 15:14, Peter Maydell <peter.maydell@linaro.org=
-> wrote:
-> > > > How does this interact with the usual register sync to/from
-> > > > KVM (ie kvm_arch_get_registers(), which I think will do a
-> > > > GET_ONE_REG read of the TIMER_CNT register the way it does
-> > > > any other sysreg, inside write_kvmstate_to_list(), plus
-> > > > kvm_arch_set_registers() which does the write back to the
-> > > > kernel in write_list_to_kvmstate()) ? Presumably we want this
-> > > > version to take precedence by the set_virtual_time call
-> > > > happening after the kvm_arch_set_registers, but is this
-> > > > guaranteed ?
-> > >
-> > > ...you might also want to look at the effects of simply
-> > > removing the KVM_REG_ARM_TIMER_CNT entry from the
-> > > 'non_runtime_cpregs[]' array -- in commit 4b7a6bf402bd064
-> > > we explicitly stopped reading/writing this register's value
-> > > to/from the kernel except for inbound migration, and it
-> > > feels like this patchset is now rolling back that approach,
-> > > so maybe we should also be (configurably) rolling back some
-> > > of its implementation rather than just leaving it in place.
-> >
-> > I feel like I already considered that, maybe even tried it, a few month=
-s
-> > ago when I first looked at this. I must have decided against it for som=
-e
-> > reason at the time, but I don't recall what. Now I can say the reason i=
-s
-> > because we only do this save/restore when we transition to/from paused
-> > state, though.
->=20
-> I found the thread which discussed the bug which originally
-> caused us to add commit 4b7a6bf402bd064:
-> https://lists.cs.columbia.edu/pipermail/kvmarm/2015-July/015665.html
->  -- there are some codepaths which cause us to do a sync from/to
-> KVM for one VCPU while others are still running. If we do a
-> read-CNT-and-write-back then we effectively cause time to jump
-> backwards for the other still-running CPUs.
->=20
-> So we do still want to have TIMER_CNT listed as being KVM_PUT_FULL_STATE
-> regardless, or we re-introduce that bug.
+Hi Peter,
 
-Thanks for digging that up. I now recall also having read that history
-back when I first discovered KVM_REG_ARM_TIMER_CNT was special.
+On 12/19/19 2:33 PM, Peter Xu wrote:
+> On Thu, Dec 19, 2019 at 11:30:40AM +0100, Auger Eric wrote:
+>> Hi Peter,
+>> On 12/10/19 8:33 PM, Peter Xu wrote:
+>>> On Fri, Nov 22, 2019 at 07:29:31PM +0100, Eric Auger wrote:
+>>>> This patch implements the translate callback
+>>>>
+>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>
+>>>> ---
+>>>>
+>>>> v10 -> v11:
+>>>> - take into account the new value struct and use
+>>>>   g_tree_lookup_extended
+>>>> - switched to error_report_once
+>>>>
+>>>> v6 -> v7:
+>>>> - implemented bypass-mode
+>>>>
+>>>> v5 -> v6:
+>>>> - replace error_report by qemu_log_mask
+>>>>
+>>>> v4 -> v5:
+>>>> - check the device domain is not NULL
+>>>> - s/printf/error_report
+>>>> - set flags to IOMMU_NONE in case of all translation faults
+>>>> ---
+>>>>  hw/virtio/trace-events   |  1 +
+>>>>  hw/virtio/virtio-iommu.c | 63 +++++++++++++++++++++++++++++++++++++++-
+>>>>  2 files changed, 63 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+>>>> index f25359cee2..de7cbb3c8f 100644
+>>>> --- a/hw/virtio/trace-events
+>>>> +++ b/hw/virtio/trace-events
+>>>> @@ -72,3 +72,4 @@ virtio_iommu_get_endpoint(uint32_t ep_id) "Alloc endpoint=%d"
+>>>>  virtio_iommu_put_endpoint(uint32_t ep_id) "Free endpoint=%d"
+>>>>  virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=%d"
+>>>>  virtio_iommu_put_domain(uint32_t domain_id) "Free domain=%d"
+>>>> +virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
+>>>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>>>> index f0a56833a2..a83666557b 100644
+>>>> --- a/hw/virtio/virtio-iommu.c
+>>>> +++ b/hw/virtio/virtio-iommu.c
+>>>> @@ -412,19 +412,80 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>>>>                                              int iommu_idx)
+>>>>  {
+>>>>      IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
+>>>> +    viommu_interval interval, *mapping_key;
+>>>> +    viommu_mapping *mapping_value;
+>>>> +    VirtIOIOMMU *s = sdev->viommu;
+>>>> +    viommu_endpoint *ep;
+>>>> +    bool bypass_allowed;
+>>>>      uint32_t sid;
+>>>> +    bool found;
+>>>> +
+>>>> +    interval.low = addr;
+>>>> +    interval.high = addr + 1;
+>>>>  
+>>>>      IOMMUTLBEntry entry = {
+>>>>          .target_as = &address_space_memory,
+>>>>          .iova = addr,
+>>>>          .translated_addr = addr,
+>>>> -        .addr_mask = ~(hwaddr)0,
+>>>> +        .addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1,
+>>>>          .perm = IOMMU_NONE,
+>>>>      };
+>>>>  
+>>>> +    bypass_allowed = virtio_has_feature(s->acked_features,
+>>>> +                                        VIRTIO_IOMMU_F_BYPASS);
+>>>> +
+>>>
+>>> Would it be easier to check bypass_allowed here once and then drop the
+>>> latter [1] and [2] check?
+>> bypass_allowed does not mean you systematically bypass. You bypass if
+>> the SID is unknown or if the device is not attached to any domain.
+>> Otherwise you translate. But maybe I miss your point.
+> 
+> Ah ok, then could I ask how will this VIRTIO_IOMMU_F_BYPASS be used?
+> For example, I think VT-d defines passthrough in a totally different
+> way in that the PT mark will be stored in the per-device context
+> entries, then we can allow a specific device to be pass-through when
+> doing DMA.  That information is explicit (e.g., unknown SID will
+> always fail the DMA), and per-device.
+> 
+> Here do you mean that you just don't put a device into any domain to
+> show it wants to use PT?  Then I'm not sure how do you identify
+> whether this is a legal PT or a malicious device (e.g., an unknown
+> device that even does not have any driver bound to it, which will also
+> satisfy "unknown SID" and "not attached to any domain", iiuc).
 
->=20
-> Your approach in this patchset reads and writes on vm-paused,
-> so it won't have the pre-2015 problems.
->=20
-> It still feels odd that we're storing this bit of guest state
-> in two places now though -- in kvm_vtime, and also in its usual
-> place in the cpreg_array data structures (we write back the
-> value from kvm_vtime when the VM starts running, and we write
-> back the value from the cpreg_array for a PUT_FULL_STATE, which
-> the comments claim is only on startup or when we just loaded
-> migration state (and also undocumentedly but reasonably on
-> cpu-hotplug, which arm doesn't have yet).
->=20
-> I've just spent a little while digging through code, and
-> haven't been able to satisfy myself on the ordering of which
-> writeback wins: for a loadvm I think we first do a
-> cpu_synchronize_all_post_init() (writing back the counter
-> value from the migration data) and then after than we will
-> unpause the VM -- why doesn't this overwrite the correct
-> value with the wrong value from kvm_vtime ?
+The virtio-iommu spec currently says:
 
-Hmm... I think I may have gotten lost when I went through this before.
-I just went through again, and still won't claim that I'm not a bit
-lost, but it does appear I got it backwards. When I get a chance I'll
-try to test this properly.
+"If the VIRTIO_IOMMU_F_BYPASS feature is negotiated, all accesses from
+unattached endpoints are
+allowed and translated by the IOMMU using the identity function. If the
+feature is not negotiated, any
+memory access from an unattached endpoint fails. Upon attaching an
+endpoint in bypass mode to a new
+domain, any memory access from the endpoint fails, since the domain does
+not contain any mapping.
+"
 
-We could use the same location as normal, in the cpreg_array. I'd just
-need to add a search of cpreg_indexes[] in order to get the index
-needed for cpreg_values[].=20
+I guess this can serve the purpose of devices doing early accesses,
+before the guest OS gets the hand and maps them?
 
->=20
-> I just noticed also that the logic used in this patch
-> doesn't match what other architectures do in their vm_state_change
-> function -- eg cpu_ppc_clock_vm_state_change() has an
-> "if (running) { load } else { save }", and kvmclock_vm_state_change()
-> for i386 also has "if (running) { ... } else { ... }", though
-> it has an extra wrinkle where it captures "are we PAUSED?"
-> to use in the pre_save function; the comment above
-> kvmclock_pre_save() suggests maybe that would be useful for other
-> than x86, too. kvm_s390_tod_vm_state_change() has
-> logic that's a slightly more complicated variation on just
-> testing the 'running' flag, but it doesn't look at the
-> specific new state.
+Thanks
 
-Yes, originally I had just if (running) {} else {}, but after looking at
-https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg03695.html and
-seeing that the other architectures were careful to track the "are we
-paused" state, I got the feeling that we should be more specific and
-changed to if (running) {} else if (paused) {}. That's probably wrong,
-though, if we want to track all vm-stopped time.
-
->=20
-> > > I note also that the commit message there had a remark
-> > > about inconsistencies between VCPUs -- is the right thing
-> > > to handle this per-VM rather than per-VCPU somehow?
-> >
-> > per-VM would make sense, because the counters should be synchronized
-> > among the VCPUs. KVM does that for us, though, so whichever VCPU last
-> > restores its counter is the one that will determine the final value.
-> >
-> > Maybe we should have a VM ioctl instead, but ATM we only have VCPU ioct=
-ls.
->=20
-> I meant more "only do the save/load once per VM in QEMU but
-> do it by working with just one VCPU". But I guess since migration
-> works on all the VCPUs we're ok to do pause-resume the same way
-> (and I've now tracked down what the 'inconsistentencies between VCPUs'
-> were: they're when we were syncing the CNT value for one vCPU when
-> others were still running.)
->=20
-> thanks
-> -- PMM
->=20
-
-Thanks,
-drew
+Eric
+> 
+> Thanks,
+> 
 

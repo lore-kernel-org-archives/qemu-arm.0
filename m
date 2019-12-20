@@ -1,266 +1,307 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2685758lff;
-        Thu, 19 Dec 2019 12:04:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwV+212yq+rtUscoIpzCzdhZAnIHaG536nSUVaWR6K+zPsfCXOd8fgA8aDEPaZzrO4EljuT
-X-Received: by 2002:a0c:eed2:: with SMTP id h18mr9368828qvs.184.1576785897963;
-        Thu, 19 Dec 2019 12:04:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576785897; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3226845lff;
+        Thu, 19 Dec 2019 22:59:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyXQWnk3AwuDqLUnrlf06gR6zY9Xo1ioDWvBbxVPYOHKqiO2d/Q6j4/CmzlHke1lc/ERR9j
+X-Received: by 2002:a05:6830:1e11:: with SMTP id s17mr12745048otr.343.1576825160592;
+        Thu, 19 Dec 2019 22:59:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576825160; cv=none;
         d=google.com; s=arc-20160816;
-        b=GPG863Dvvu4XYt9S4iVYW7ypg3+dVObbZzG5T9O52J+eHTfC++D2FilBq0d0YVPG1B
-         2XbN/ehrd6Gh7Kbmi8+kU8E2zPsDDkc6wFGJf5YDizm1F+kxRNf6AF7rHtInq/rJa6aU
-         G3pB/9QyEHGf5Y42yKHGXAoFe95o+JsXyae4xR8MFqEM1+AcBPi1zrKUhOxpD5O9dV+8
-         RiWyEOGinw31WwZZqm3Yn7Pp8ao92Xd7jJUpYeQGvDWId1AI9eJnz73nIsczjuvOet1G
-         F3PRmGY5nyhxayFVowL5ZTVSECt9JrU631sKPHW7jyIwTXg1DJdDE2OVoTV+b/c9O7h0
-         7E+A==
+        b=Rhgz0WCPxajJFZS3Zk6eoXkU1Ngc00fETHglGtfnL2HAFqgJjz2ynGPPzchdvoPXMc
+         fbC+Qp6SvE4lwIUeTE1limpxFKdkvdnAPt7fKzrdUlmgjl8/DaR1BQZFmbeEGrtSbjyj
+         QDEWFrVZaeFw7YxVY+iB3G8N1z85gnorYcEQjTvVQRtnh6umoP8p0TG+cxzitYyE/qvJ
+         HzCjDqeXKjkBDh/hljlYXd9iDhtkLK3ft6xUcwnfizO2pBJcvA6Abv6upLRrkTA29okL
+         YdiWz8nZPCSjAHmQJRKFlSLMt7wLVf5A09e2dxDSy1ux7aG/CJeuu+69qVIFBjtTzKWr
+         68gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=wG52N/YErgv/W3XxI1efshpcorKDZYLcaar8P0GpdYg=;
-        b=fX4h9m6nDf5WqWTWPRACw9G8RqTSYRNZ7i3BQ0FHoThd+cTGUy/gFX0t8NM0lbELeL
-         tT380y7jwlSMr4r6jLzkZh1oPj1A053zkPec5CLf7ktac03wnUNr+vf4Yxekm6srAc8Z
-         dU44fTcUZ+tj+n9tXXIhY7QVjd0ARY1PINLuvYFOKmlXdbVSJHbRNIOVSq4X7wjiGy2C
-         v7t6LlLXl5j7zdxN6Z516di/XtylP7Af/DDxyjhhN0EqnXLe1Jhbq4oEXdni5MrBvPup
-         ewok342h9MGLiBKEO2AbKsF6IRNnIAb2IBJKTSPwE3QTr4lf0DP6DDa0e9fWPU9EQMrM
-         LxQA==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=7aRYYfRovf+QWVdWINKLBebnnGXgzwIiGueotLNQLLI=;
+        b=cu3EHA7N0XGipM+VS8EVCtiFKySYJ+zfgCIm4LoZ4dPuCm48WzMCaM2aY8CTYsHXsO
+         HfsNjcPV86wsKalzXHubwep+JaKYaXt0UZ6vM7Y6X8iZzNmSlIB3EtRN6g+MVx9B20Qp
+         NN+I30IIzOAZLfwEA66jWcvTmP86cSmMY7GOwHcHwkT/NYdK3PVDt0vXmIubKxNXUICV
+         z6igbAD9+creQmz1Qi+qxtC8Ov6WNkc6cmb5yS3MQUHBJxDw1yDOSC3xyUasDCEPTGlX
+         T7+Pe/cws3CYxqfxAnV6l1O3fEIZMeFrkLkDfxRIB17xA6ZXsk3Hdy3msv9RXHFOsGxv
+         rnTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="iJr6tQR/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c18si4425593qkc.333.2019.12.19.12.04.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Dec 2019 12:04:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id o4si4482708oib.70.2019.12.19.22.59.20;
+        Thu, 19 Dec 2019 22:59:20 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="iJr6tQR/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47322 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ii22b-0000KW-7x
-	for alex.bennee@linaro.org; Thu, 19 Dec 2019 15:04:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52026)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <crosa@redhat.com>) id 1ii22S-0000Fx-1v
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 15:04:49 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <crosa@redhat.com>) id 1ii22O-0003jy-RL
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 15:04:46 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:58258
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <crosa@redhat.com>) id 1ii22O-0003cI-BC
- for qemu-arm@nongnu.org; Thu, 19 Dec 2019 15:04:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576785883;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=wG52N/YErgv/W3XxI1efshpcorKDZYLcaar8P0GpdYg=;
- b=iJr6tQR/TSiCm6I7gmwaxh+qFjUxw4Sh+S7PajWnd6IKMF/3LBIVv7Bm4fTKTwT0q2PWVO
- Xy0fH9z4zVnROVAvNoqcVniTdhGxDFrmZZbX+Z2GGAuX4n5c7k9/5Nf0okXlHAYa6+lzAP
- 6hKn77y293W683xDkDZrEqnio26d9to=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-175-_BSc_oBHP0a1znd5ECemfA-1; Thu, 19 Dec 2019 15:04:39 -0500
-X-MC-Unique: _BSc_oBHP0a1znd5ECemfA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D2B1210054E3;
- Thu, 19 Dec 2019 20:04:37 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-70.gru2.redhat.com
- [10.97.116.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 490505D9E2;
- Thu, 19 Dec 2019 20:04:36 +0000 (UTC)
-Date: Thu, 19 Dec 2019 15:04:33 -0500
-From: Cleber Rosa <crosa@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 3/5] tests/boot_linux_console: Add a SD card test for the
- OrangePi PC board
-Message-ID: <20191219200433.GA28892@localhost.localdomain>
-References: <20191217182730.943-1-f4bug@amsat.org>
- <20191217182730.943-4-f4bug@amsat.org>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727110AbfLTG7T (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 20 Dec 2019 01:59:19 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:55564 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1725874AbfLTG7T (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 20 Dec 2019 01:59:19 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 9298DCC466B9D8C9D7BB;
+        Fri, 20 Dec 2019 14:59:16 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.439.0; Fri, 20 Dec 2019
+ 14:59:09 +0800
+Subject: Re: [kvm-unit-tests PATCH 06/16] arm/arm64: ITS: Test BASER
+To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+        <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>
+CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
+        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
+        <thuth@redhat.com>
+References: <20191216140235.10751-1-eric.auger@redhat.com>
+ <20191216140235.10751-7-eric.auger@redhat.com>
+From:   Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <172f58d7-5a7c-43e0-c647-a7935f5d4b43@huawei.com>
+Date:   Fri, 20 Dec 2019 14:59:07 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20191217182730.943-4-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="n8g4imXOkfNTN/H1"
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MyOJXBeLmJuE
+In-Reply-To: <20191216140235.10751-7-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.222.27]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: zERC3ZGB7vdQ
 
---n8g4imXOkfNTN/H1
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hi Eric,
 
-On Tue, Dec 17, 2019 at 07:27:28PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> The kernel image and DeviceTree blob are built by the Raspbian
-> project (based on Debian):
-> https://www.raspbian.org/RaspbianImages
->=20
-> The SD image is from the kernelci.org project:
-> https://kernelci.org/faq/#the-code
->=20
-> If ARM is a target being built, "make check-acceptance" will
-> automatically include this test by the use of the "arch:arm" tags.
->=20
-> Alternatively, this test can be run using:
->=20
->   $ avocado --show=3Dconsole run -t machine:orangepi-pc tests/acceptance/=
-boot_linux_console.py
->   console: Uncompressing Linux... done, booting the kernel.
->   console: Booting Linux on physical CPU 0x0
->   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2=
-.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
->   console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D50c53=
-87d
->   [...]
->   console: sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=3D16 sec=
-, nowayout=3D0)
->   console: sunxi-mmc 1c0f000.mmc: Linked as a consumer to regulator.2
->   console: sunxi-mmc 1c0f000.mmc: Got CD GPIO
->   console: ledtrig-cpu: registered to indicate activity on CPUs
->   console: hidraw: raw HID events driver (C) Jiri Kosina
->   console: usbcore: registered new interface driver usbhid
->   console: usbhid: USB HID core driver
->   console: Initializing XFRM netlink socket
->   console: sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 K=
-B
->   console: NET: Registered protocol family 10
->   console: mmc0: host does not support reading read-only switch, assuming=
- write-enable
->   console: mmc0: Problem switching card into high-speed mode!
->   console: mmc0: new SD card at address 4567
->   console: mmcblk0: mmc0:4567 QEMU! 60.0 MiB
->   [...]
->   console: EXT4-fs (mmcblk0): mounting ext2 file system using the ext4 su=
-bsystem
->   console: EXT4-fs (mmcblk0): mounted filesystem without journal. Opts: (=
-null)
->   console: VFS: Mounted root (ext2 filesystem) on device 179:0.
->   console: Run /sbin/init as init process
->   console: EXT4-fs (mmcblk0): re-mounted. Opts: block_validity,barrier,us=
-er_xattr,acl
->   console: Starting syslogd: OK
->   console: Starting klogd: OK
->   console: Populating /dev using udev: udevd[203]: starting version 3.2.7
->   console: /bin/sh: can't access tty; job control turned off
->   console: cat /proc/partitions
->   console: / # cat /proc/partitions
->   console: major minor  #blocks  name
->   console: 1        0       4096 ram0
->   console: 1        1       4096 ram1
->   console: 1        2       4096 ram2
->   console: 1        3       4096 ram3
->   console: 179        0      61440 mmcblk0
->   console: reboot
->   console: / # reboot
->   console: umount: devtmpfs busy - remounted read-only
->   console: EXT4-fs (mmcblk0): re-mounted. Opts: (null)
->   console: The system is going down NOW!
->   console: Sent SIGTERM to all processes
->   console: Sent SIGKILL to all processes
->   console: Requesting system reboot
->   console: reboot: Restarting system
->   JOB TIME   : 68.64 s
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+On 2019/12/16 22:02, Eric Auger wrote:
+> Add helper routines to parse and set up BASER registers.
+> Add a new test dedicated to BASER<n> accesses.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->  tests/acceptance/boot_linux_console.py | 42 ++++++++++++++++++++++++++
->  1 file changed, 42 insertions(+)
->=20
-> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
-ot_linux_console.py
-> index daabd47404..8179b45910 100644
-> --- a/tests/acceptance/boot_linux_console.py
-> +++ b/tests/acceptance/boot_linux_console.py
-> @@ -478,6 +478,48 @@ class BootLinuxConsole(Test):
->          exec_command_and_wait_for_pattern(self, 'reboot',
->                                                  'reboot: Restarting syst=
-em')
-> =20
-> +    def test_arm_orangepi_sd(self):
-
-Same suggestion wrt test name as previous two patches.
-
-> +        """
-> +        :avocado: tags=3Darch:arm
-> +        :avocado: tags=3Dmachine:orangepi-pc
-> +        """
-> +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
-> +                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.=
-deb')
-> +        deb_hash =3D '1334c29c44d984ffa05ed10de8c3361f33d78315'
-> +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
-> +        kernel_path =3D self.extract_from_deb(deb_path,
-> +                                            '/boot/vmlinuz-4.20.7-sunxi'=
-)
-> +        dtb_path =3D '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-p=
-c.dtb'
-> +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
-> +        rootfs_url =3D ('http://storage.kernelci.org/images/rootfs/build=
-root/'
-> +                      'kci-2019.02/armel/base/rootfs.ext2.xz')
-> +        rootfs_hash =3D '692510cb625efda31640d1de0a8d60e26040f061'
-> +        rootfs_path_xz =3D self.fetch_asset(rootfs_url, asset_hash=3Droo=
-tfs_hash)
-> +        rootfs_path =3D os.path.join(self.workdir, 'rootfs.cpio')
-> +        archive.lzma_uncompress(rootfs_path_xz, rootfs_path)
+>   arm/gic.c                | 20 ++++++++++
+>   arm/unittests.cfg        |  6 +++
+>   lib/arm/asm/gic-v3-its.h | 17 ++++++++
+>   lib/arm/gic-v3-its.c     | 84 ++++++++++++++++++++++++++++++++++++++++
+>   4 files changed, 127 insertions(+)
+> 
+> diff --git a/arm/gic.c b/arm/gic.c
+> index adeb981..8b56fce 100644
+> --- a/arm/gic.c
+> +++ b/arm/gic.c
+> @@ -536,6 +536,22 @@ static void test_its_introspection(void)
+>   			typer->pta ? "Redist basse address" : "PE #");
+>   }
+>   
+> +static void test_its_baser(void)
+> +{
+> +	struct its_baser *dev_baser, *coll_baser;
 > +
-> +        self.vm.set_machine('orangepi-pc')
+> +	if (!gicv3_its_base()) {
+> +		report_skip("No ITS, skip ...");
+> +		return;
+> +	}
+> +
+> +	dev_baser = its_lookup_baser(GITS_BASER_TYPE_DEVICE);
+> +	coll_baser = its_lookup_baser(GITS_BASER_TYPE_COLLECTION);
+> +	report(dev_baser && coll_baser, "detect device and collection BASER");
+> +	report_info("device baser entry_size = 0x%x", dev_baser->esz);
+> +	report_info("collection baser entry_size = 0x%x", dev_baser->esz);
 
-Can/should be dropped.
+s/dev_baser/coll_baser/
 
-With this,
+> +}
+> +
+>   int main(int argc, char **argv)
+>   {
+>   	if (!gic_init()) {
+> @@ -571,6 +587,10 @@ int main(int argc, char **argv)
+>   		report_prefix_push(argv[1]);
+>   		test_its_introspection();
+>   		report_prefix_pop();
+> +	} else if (strcmp(argv[1], "its-baser") == 0) {
+> +		report_prefix_push(argv[1]);
+> +		test_its_baser();
+> +		report_prefix_pop();
+>   	} else {
+>   		report_abort("Unknown subtest '%s'", argv[1]);
+>   	}
+> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
+> index bd20460..2234a0f 100644
+> --- a/arm/unittests.cfg
+> +++ b/arm/unittests.cfg
+> @@ -128,6 +128,12 @@ smp = $MAX_SMP
+>   extra_params = -machine gic-version=3 -append 'its-introspection'
+>   groups = its
+>   
+> +[its-baser]
+> +file = gic.flat
+> +smp = $MAX_SMP
+> +extra_params = -machine gic-version=3 -append 'its-baser'
+> +groups = its
+> +
+>   # Test PSCI emulation
+>   [psci]
+>   file = psci.flat
+> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
+> index 2ce483e..0c0178d 100644
+> --- a/lib/arm/asm/gic-v3-its.h
+> +++ b/lib/arm/asm/gic-v3-its.h
+> @@ -100,9 +100,23 @@ struct its_typer {
+>   	bool virt_lpi;
+>   };
+>   
+> +struct its_baser {
+> +	unsigned int index;
 
-Tested-by: Cleber Rosa <crosa@redhat.com>
-Reviewed-by: Cleber Rosa <crosa@redhat.com>
+We've already maintained an array of GITS_BASERs, so 'index' is
+not needed.
 
---n8g4imXOkfNTN/H1
-Content-Type: application/pgp-signature; name="signature.asc"
+> +	int type;
+> +	u64 cache;
+> +	int shr;
+> +	size_t psz;
+> +	int nr_pages;
+> +	bool indirect;
+> +	phys_addr_t table_addr;
+> +	bool valid;
+> +	int esz;
+> +};
+> +
+>   struct its_data {
+>   	void *base;
+>   	struct its_typer typer;
+> +	struct its_baser baser[GITS_BASER_NR_REGS];
+>   };
+>   
+>   extern struct its_data its_data;
+> @@ -111,6 +125,9 @@ extern struct its_data its_data;
+>   
+>   extern void its_parse_typer(void);
+>   extern void its_init(void);
+> +extern int its_parse_baser(int i, struct its_baser *baser);
+> +extern void its_setup_baser(int i, struct its_baser *baser);
+> +extern struct its_baser *its_lookup_baser(int type);
+>   
+>   #endif /* !__ASSEMBLY__ */
+>   #endif /* _ASMARM_GIC_V3_ITS_H_ */
+> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
+> index 34f4d0e..303022f 100644
+> --- a/lib/arm/gic-v3-its.c
+> +++ b/lib/arm/gic-v3-its.c
+> @@ -4,6 +4,7 @@
+>    * This work is licensed under the terms of the GNU LGPL, version 2.
+>    */
+>   #include <asm/gic.h>
+> +#include <alloc_page.h>
+>   
+>   struct its_data its_data;
+>   
+> @@ -31,11 +32,94 @@ void its_parse_typer(void)
+>   	its_data.typer.phys_lpi = typer & GITS_TYPER_PLPIS;
+>   }
+>   
+> +int its_parse_baser(int i, struct its_baser *baser)
+> +{
+> +	void *reg_addr = gicv3_its_base() + GITS_BASER + i * 8;
+> +	u64 val = readq(reg_addr);
+> +
+> +	if (!val) {
+> +		memset(baser, 0, sizeof(*baser));
+> +		return -1;
+> +	}
+> +
+> +	baser->valid = val & GITS_BASER_VALID;
+> +	baser->indirect = val & GITS_BASER_INDIRECT;
+> +	baser->type = GITS_BASER_TYPE(val);
+> +	baser->esz = GITS_BASER_ENTRY_SIZE(val);
+> +	baser->nr_pages = GITS_BASER_NR_PAGES(val);
+> +	baser->table_addr = val & GITS_BASER_PHYS_ADDR_MASK;
+> +	baser->cache = (val >> GITS_BASER_INNER_CACHEABILITY_SHIFT) &
+> +			GITS_BASER_CACHEABILITY_MASK;
+> +	switch (val & GITS_BASER_PAGE_SIZE_MASK) {
+> +	case GITS_BASER_PAGE_SIZE_4K:
+> +		baser->psz = SZ_4K;
+> +		break;
+> +	case GITS_BASER_PAGE_SIZE_16K:
+> +		baser->psz = SZ_16K;
+> +		break;
+> +	case GITS_BASER_PAGE_SIZE_64K:
+> +		baser->psz = SZ_64K;
+> +		break;
+> +	default:
+> +		baser->psz = SZ_64K;
+> +	}
+> +	baser->shr = (val >> 10) & 0x3;
+> +	return 0;
+> +}
+> +
+> +struct its_baser *its_lookup_baser(int type)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < GITS_BASER_NR_REGS; i++) {
+> +		struct its_baser *baser = &its_data.baser[i];
+> +
+> +		if (baser->type == type)
+> +			return baser;
+> +	}
+> +	return NULL;
+> +}
+> +
+>   void its_init(void)
+>   {
+> +	int i;
 
------BEGIN PGP SIGNATURE-----
+Please add a blank line here.
 
-iQIzBAEBCAAdFiEEeruW64tGuU1eD+m7ZX6NM6XyCfMFAl37184ACgkQZX6NM6Xy
-CfPeKQ//f8A9dzXc3+7b2/5oE1MTF1SOR4ETQmtNH+nd74Ga+a/0bkSGYMP9L/2h
-XHL+eXivbOt4LU1/WjKVU9BgmzyeoOcTKsQKWT0S+6dtE5ROJdnXb3RzM00nwPpW
-8e5SdgPLnNz0D+G1pyV6EntoRpBibddtlCFgl5uCNkV7NcpdnjjTHZwGdo21EucP
-bEFWTVaTmfYBp67OQtHvTW+vWpkfueovj5hhOvicjIRqZ2qpqEwk6rcPDvk5zass
-ASvH6E9MYlw1wwwlZresqKKk5aunStwaacft/cO2/FkTKZBSDkrYDcCBfGnRfrV+
-5yFYrqpc3/9ODdWWZndOnEFE9DC9R/reegkj05qL74lQZ525c9MZdmur6m0FzJW+
-IGtJaphmpyywUGXJgjl4pfP4r/2g8rEC/peCLkP+4IjfpjXV5bcADis6U7Zith4C
-BX5HYZNnxYFr6HDB1LzlQrH/csBipDinSQsQqSMgl0c3KDP+Hdx0buQ/zn/Wwh6W
-691zG2YMb1NJouNFZzOR2X5rkC4XZn9JRlQu0SAh7LTomwbJnnXWy41umkU2cCdR
-29lizLyaTjP3whNO9np0UNBcUyESJ/xNCI/F5BRDCuMDOSyS/apLio+aOlDpGSuf
-dkK2ysaPWz76a0VlO4EpUAagMeifOCBXmAjVIq09RUuS6VRgyUc=
-=7UWe
------END PGP SIGNATURE-----
+>   	if (!its_data.base)
+>   		return;
+>   
+>   	its_parse_typer();
+> +	for (i = 0; i < GITS_BASER_NR_REGS; i++)
+> +		its_parse_baser(i, &its_data.baser[i]);
+> +}
+> +
+> +void its_setup_baser(int i, struct its_baser *baser)
+> +{
+> +	unsigned long n = (baser->nr_pages * baser->psz) >> PAGE_SHIFT;
+> +	unsigned long order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
+> +	u64 val;
+> +
+> +	baser->table_addr = (u64)virt_to_phys(alloc_pages(order));
+> +
+> +	val = ((u64)baser->table_addr					|
+> +		((u64)baser->type	<< GITS_BASER_TYPE_SHIFT)	|
+> +		((u64)(baser->esz - 1)	<< GITS_BASER_ENTRY_SIZE_SHIFT)	|
+> +		((baser->nr_pages - 1)	<< GITS_BASER_PAGES_SHIFT)	|
+> +		baser->cache						|
+> +		baser->shr						|
 
---n8g4imXOkfNTN/H1--
+baser->cache << GITS_BASER_INNER_CACHEABILITY_SHIFT |
+baser->shr << 10 (GITS_BASER_SHAREABILITY_SHIFT) ?
 
+
+Thanks,
+Zenghui
+
+> +		(u64)baser->indirect	<< 62				|
+> +		(u64)baser->valid	<< 63);
+> +
+> +	switch (baser->psz) {
+> +	case SZ_4K:
+> +		val |= GITS_BASER_PAGE_SIZE_4K;
+> +		break;
+> +	case SZ_16K:
+> +		val |= GITS_BASER_PAGE_SIZE_16K;
+> +		break;
+> +	case SZ_64K:
+> +		val |= GITS_BASER_PAGE_SIZE_64K;
+> +		break;
+> +	}
+> +
+> +	writeq(val, gicv3_its_base() + GITS_BASER + i * 8);
+>   }
+>   
+> 

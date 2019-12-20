@@ -1,449 +1,232 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4138528lff;
-        Fri, 20 Dec 2019 13:12:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwSor81nNQL5in5Nzvs2s3TqKEKzkQ96oi0AezrvAWUi28n+E7y23J7drk3HQ5ogr+mTfoR
-X-Received: by 2002:ac8:4509:: with SMTP id q9mr13517309qtn.353.1576876331626;
-        Fri, 20 Dec 2019 13:12:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576876331; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4150312lff;
+        Fri, 20 Dec 2019 13:20:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyYZgexF7SESqaJqHiGjQsvFIFn12ixf8MRDgQTVhZXOWI2XEsYCoEiIF1itUk5f5I7EUhl
+X-Received: by 2002:a9d:5550:: with SMTP id h16mr16090858oti.235.1576876812696;
+        Fri, 20 Dec 2019 13:20:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576876812; cv=none;
         d=google.com; s=arc-20160816;
-        b=pj2TFx6F5HgXJj9xINgLPuW0JYh+N29I21++v2jGUKklHMfEdth0I/s+NizibkorGK
-         QB8zge3Vub1lt14u8khjoAPDuMM5q7Bn+oeGYc9eBFCv5b/eAjZeeMWVxoORVgT3X0P/
-         bcpQnpn51+V9pgrU/YcVkP/9M8oatOwuEEggC2/Q5gu4xt0lJdT3AYdYidIr2FDJol5R
-         OX7hQNhnynBA/Lf/HamoR9i2+XF3g20/SrhxyNcHMB4G4bk6P3XKYoY+9Ti8+2qDbWyz
-         5CSdNMYU5kJ/X/jQr8neLRzgXD+1srR2CXjfTHyN3YXksd9KYmovd15uwKsPwLOhG9fe
-         q9fg==
+        b=lpNsEFISdiAMBDPzVqOi5blkcxRc1roADvo3DTQJ9969ItDuEgrBDlvQ0cuXYbUSDl
+         d7AL5JAj7caLeZd9CjyaANen/Ai7W7sIv3XujE9X2EmOHDRIDhMf5GZ6XBq1MZ3EXIrW
+         DDYSgmzeeGZFM6+MkXeuPHBhSdfbqAWLYWBS8VRCi/0/8qLSUU3J+Bc1EbY+ucxWZdmv
+         b7Dnc8gtnEpg6WeB8Pxf+Qzc10bf7mdlzawM2DBaY5uN/Ylp7TjqFvMTT3oCC+Ill8qN
+         hX5iZ4dh7tiiiuPPK7FRpP6/hK6DQ0SRm6COYjtOBI6j4AlsyK1is7hjQy29NzWgsR/C
+         gbVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=VvkgRQ4HhizmbLmgoQ+HomXQu31tz6OEWac2k/Z2GhI=;
-        b=RKwVaG5BEnvGAUshU94IYZBLJBkG4C+NtthVnZ4MqKR8QIgw5bX4tGJQ0wwz18Y9z1
-         SS/rUZdifgdyNLz0XO0z8Jvx75t/i3ErUtoH3HxweChDbheeMsfrjXzV5+apW8Z8taZ5
-         5jLwqZL7gkwthynCQErEBk2kKgdmvgp2be4juUHBkHse+aDK0vMZDpFa8f5nGFrzyKOf
-         6P0/7UHjDf5JTfceWN0UUqNyUjPSO31cuC7JACYkEio7l70aFr25m0Y2gwwnGA7Ra9z+
-         UriXJp2HAFu0TySXvYSEJ58r4MdVjlYChjUjTL4Z4W/x4BhpLR5kf2x6vyMudS5T+lxX
-         7ieA==
+        bh=wvK5100t3Ru3PwlfUk2/v4Xei+KIXGvop7OqFB75Hek=;
+        b=hbbXqttyJX21T/ify8IddJ/OQlX+ONH2XOHo+QEUo8z2GjqctEm2kjNNnRK8rKA6e/
+         lIosH8maFEFBXctkJvmvp9X9YaX5Vi2xfogziVy8C1Zo4b7/yfHvWR+3g/St70RU30M8
+         Vz9r5ivBsXn2O/pJXkAV/OszZ4dFdxPj0vWVOguKKInViAVkhUivnmPyK5kKtv0LWRay
+         KmO1+082COIj5UvfX5TtrIzK6/vje/2sgQ5ahOU4iOZHM0qvFfDIJ1ufRCNGcmd1by7W
+         XZsrHVUTteWl69fFAQD6jtUyLf/59WcOYztLrxfnE0mSXFcIHfxeahXhPqmvXXMfcOzq
+         7r7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GwBpUab8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=URm1iCJy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a10si6130591qtn.326.2019.12.20.13.12.10
+        by mx.google.com with ESMTPS id l127si5628631oif.11.2019.12.20.13.20.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Dec 2019 13:12:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Dec 2019 13:20:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GwBpUab8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=URm1iCJy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33534 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iiPZC-0002bl-4u
-	for alex.bennee@linaro.org; Fri, 20 Dec 2019 16:12:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58893)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iiPgx-0000nt-Pr
+	for alex.bennee@linaro.org; Fri, 20 Dec 2019 16:20:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46601)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1iiPYM-0002AW-CC
- for qemu-devel@nongnu.org; Fri, 20 Dec 2019 16:11:19 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iiPga-0000Rw-D8
+ for qemu-arm@nongnu.org; Fri, 20 Dec 2019 16:19:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1iiPYJ-0003pO-Lg
- for qemu-devel@nongnu.org; Fri, 20 Dec 2019 16:11:18 -0500
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:34910)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iiPgZ-0006OK-3C
+ for qemu-arm@nongnu.org; Fri, 20 Dec 2019 16:19:48 -0500
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:36143)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1iiPYJ-0003kA-Ec; Fri, 20 Dec 2019 16:11:15 -0500
-Received: by mail-io1-xd44.google.com with SMTP id v18so10792979iol.2;
- Fri, 20 Dec 2019 13:11:12 -0800 (PST)
+ id 1iiPgW-000633-0p; Fri, 20 Dec 2019 16:19:44 -0500
+Received: by mail-io1-xd44.google.com with SMTP id r13so723292ioa.3;
+ Fri, 20 Dec 2019 13:19:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VvkgRQ4HhizmbLmgoQ+HomXQu31tz6OEWac2k/Z2GhI=;
- b=GwBpUab8Bvm53uyrZiKJk6wxuBXApq1m0twa1ILg2vcYXx6/q9lAPhtmUk1f6/2Dkk
- jZISrzG4WXJcsdVRfxu7rJT6jw61Gb6DV/N7YCXye753EDTE2PgPuNBQY9yLdwDVCalE
- piT7gCA5LxtWzHO55Fs6Vvyp/U6NfRr9towqGfGqQA/6HOgKY7wOqLUht08aqMoJZRkO
- fUj/H67FJvF6g2MPAF2J+lotnzproXZ6UBZNRX2GSAYUrHxXv0PDpy0PoZhAB/dH+gM4
- +u7iPjN3ap42WApqaJbuoCvUuYfuwl3oT1/h5wmHx4VJ6YfR4d7mi8NUplUkyiuz4/Pb
- GqzA==
+ :cc; bh=wvK5100t3Ru3PwlfUk2/v4Xei+KIXGvop7OqFB75Hek=;
+ b=URm1iCJyy1LNBjRcjhwN9rXbzIegcj60MtDPxNz3Nl5fYc0icXOzRNkGfxGkPbU7+H
+ KXgj98ZdmP/JZ1ureuzK+XTKoZ/qu7/8/VTw9BMOTrfUmZjQTFsUHUxrZHFFWQxar7JT
+ IUID/vyyduOqaVLorokkuRje+uubkegQvz4B9cKhXvPVmzXS97+XSRFy1WH82Zmya2hy
+ 3koqiapc/vqoFC18cxwxEH+YhStyvOxWfb3pLivsp2iVRaowtmLcaArTbdo0g8k1gGvM
+ uoQRYb3wYJFsVyBnnKZzusWfbKPLhQsEdGXtcTep9ctTjYI/VpSPwbtXFFmOlfQVFSwF
+ D1Rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=VvkgRQ4HhizmbLmgoQ+HomXQu31tz6OEWac2k/Z2GhI=;
- b=UiVi49+WbX1Hni2Jubh+UATVMgWFFgUOtz52UnRuGwq7Fg+nBEeHlykQdnTI4MJDha
- Ge3M//UrEwmT7WQEkVKLBAOLt5SHj9AIxRp9n+h/XgPzAJqssC8GU5eLk01RIiFyMhXG
- HQox6YRT5wjYqX3KQP7oJyvYoCBlqaujyHJc4xCix2lUnrCOtyiFzOGOSYJ+jM4Dn9o4
- DwhfW5N6lB2oZqkV7QUThsxDrY+x/6ExpH+Bqu+tP+O1PU7FBcZNKXd5tnAJ6q5gceAj
- XAvtlY+V1n8s7E6QhIojrQMl2lBpidv6H1LVNU+3wgY0oBYK7TuZiTHBqgCXCt0Pk6Jg
- GyXA==
-X-Gm-Message-State: APjAAAUftwM1tAnr7NuQIA9pRwe4VYEDWozEbalq2ln1SjXLq/lCd0PL
- A1rrY8V9PmZtPi1iIZQsvF8XRizBDkphgyctisg=
-X-Received: by 2002:a6b:d912:: with SMTP id r18mr5454210ioc.306.1576876271643; 
- Fri, 20 Dec 2019 13:11:11 -0800 (PST)
+ bh=wvK5100t3Ru3PwlfUk2/v4Xei+KIXGvop7OqFB75Hek=;
+ b=h/dawX8OZGW8w64zwhx+ykrh3d5bKmJv80e7+YnUxmaIPUob9cNcfOq0Jg9+qFoKg6
+ FAjXDc8lSgFDPK8JHe0CWHgqJb4n5O9wlgOZirrNDSot2a9SggFiEDWORdd9lSC0DBaY
+ C6UrJBukwOTso9efN4UVKH1H7Wg5xOKVSzgjnHHha2yUhIfpKQgcON7IMYoUZrZ7wH3A
+ Ew3l9MYJIEEywxIYOsqsoJoeXm+eq771ImwH2362cGvmDkUXj9DkbyzQiYjqbF7ktCGj
+ JsLDIjF9bkEjK+WeZX+2ET3ZhcG2DPyEMHAA4ijIXS0wLekCongu6gfJZW3tL+jVVKHQ
+ 88bA==
+X-Gm-Message-State: APjAAAWPhx7BHU6BNtC1831R7OXh0hwQO+eEfCnWWTNB6XyclwHT1dDH
+ v9H4RtGv64zvWNF6HgcE1JoCOPwSza+9pS7oxlI=
+X-Received: by 2002:a02:856a:: with SMTP id g97mr13625535jai.97.1576876783067; 
+ Fri, 20 Dec 2019 13:19:43 -0800 (PST)
 MIME-Version: 1.0
 References: <20191219185127.24388-1-f4bug@amsat.org>
- <20191219185127.24388-12-f4bug@amsat.org>
-In-Reply-To: <20191219185127.24388-12-f4bug@amsat.org>
+ <20191219185127.24388-2-f4bug@amsat.org>
+In-Reply-To: <20191219185127.24388-2-f4bug@amsat.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Fri, 20 Dec 2019 22:11:00 +0100
-Message-ID: <CAPan3WqvSFbuS8FwvVTby-gsQ1pmxJf=PUET39Ftu0oiN4GV1w@mail.gmail.com>
-Subject: Re: [RFC PATCH 11/13] hw/timer/allwinner: Introduce
- TYPE_AW_COMMON_PIT abstract device
+Date: Fri, 20 Dec 2019 22:19:31 +0100
+Message-ID: <CAPan3WpBhM22Jfu-RMwYXyQnDqYMY21hGuWHQsZWhesZGa91+A@mail.gmail.com>
+Subject: Re: [PATCH 01/13] hw/timer/allwinner: Use the AW_A10_PIT_TIMER_NR
+ definition
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="00000000000006aff2059a291ebc"
+Content-Type: multipart/alternative; boundary="0000000000008268b1059a293c14"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2607:f8b0:4864:20::d44
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Bux0rklqyy2y
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8n3AZfk0vFTB
 
---00000000000006aff2059a291ebc
+--0000000000008268b1059a293c14
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-
-Hi Philippe,
 
 On Thu, Dec 19, 2019 at 7:51 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g>
 wrote:
 
-> Extract the common code from the TYPE_AW_A10_PIT device into a new
-> abstract device: TYPE_AW_COMMON_PIT, then use it as parent, so we
-> inherit the same functionalities.
+> We have a definition for this magic value '6', use it.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
-> At this point, the only fields we can modify are the timer_count
-> and the region_size. Not enough to implement the H3 timer, since
-> we need to move the WDOG register. Still some progress, so Niek
-> can continue ;)
-> ---
->  include/hw/timer/allwinner-a10-pit.h |  1 +
->  hw/timer/allwinner-a10-pit.c         | 50 +++++++++++++++++++++++-----
->  2 files changed, 43 insertions(+), 8 deletions(-)
+>  include/hw/timer/allwinner-a10-pit.h | 2 +-
+>  hw/timer/allwinner-a10-pit.c         | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 >
 > diff --git a/include/hw/timer/allwinner-a10-pit.h
 > b/include/hw/timer/allwinner-a10-pit.h
-> index 9e28c6697a..8453a62706 100644
+> index 871c95b512..6aceda81ee 100644
 > --- a/include/hw/timer/allwinner-a10-pit.h
 > +++ b/include/hw/timer/allwinner-a10-pit.h
-> @@ -4,6 +4,7 @@
->  #include "hw/ptimer.h"
->  #include "hw/sysbus.h"
+> @@ -32,7 +32,7 @@
 >
-> +#define TYPE_AW_COMMON_PIT "allwinner-timer-controller"
->  #define TYPE_AW_A10_PIT "allwinner-A10-timer"
+>  #define AW_A10_PIT_TIMER_BASE      0x10
+>  #define AW_A10_PIT_TIMER_BASE_END  \
+> -    (AW_A10_PIT_TIMER_BASE * 6 + AW_A10_PIT_TIMER_COUNT)
+> +    (AW_A10_PIT_TIMER_BASE * AW_A10_PIT_TIMER_NR + AW_A10_PIT_TIMER_COUN=
+T)
 >
-
-So for the Allwinner H3, that means we'll need another TYPE_AW_H3_PIT
-definition?
-
-
+>  #define AW_A10_PIT_DEFAULT_CLOCK   0x4
 >
->  #define AW_PIT_TIMER_MAX        6
 > diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c
-> index f2ac271e80..ad409b96a1 100644
+> index aae880f5b3..117e5c7bf8 100644
 > --- a/hw/timer/allwinner-a10-pit.c
 > +++ b/hw/timer/allwinner-a10-pit.c
+> @@ -225,7 +225,7 @@ static void a10_pit_reset(DeviceState *dev)
+>      s->irq_status =3D 0;
+>      a10_pit_update_irq(s);
 >
-
-Perhaps we can rename the hw/timer/allwinner-a10-pit.c to a generic name,
-for example hw/timer/allwinner-pit.c ?
-
-
-> @@ -54,6 +54,20 @@
->  #define AW_A10_PIT(obj) \
->      OBJECT_CHECK(AllwinnerTmrCtrlState, (obj), TYPE_AW_A10_PIT)
->
-> +typedef struct AllwinnerTmrCtrlClass {
-> +    /*< private >*/
-> +    SysBusDeviceClass parent_class;
-> +    /*< public >*/
-> +
-> +    size_t timer_count;
-> +    size_t region_size;
-> +} AllwinnerTmrCtrlClass;
-> +
-> +#define AW_TIMER_CLASS(klass) \
-> +     OBJECT_CLASS_CHECK(AllwinnerTmrCtrlClass, (klass),
-> TYPE_AW_COMMON_PIT)
-> +#define AW_TIMER_GET_CLASS(obj) \
-> +     OBJECT_GET_CLASS(AllwinnerTmrCtrlClass, (obj), TYPE_AW_COMMON_PIT)
-> +
->  static void a10_pit_update_irq(AllwinnerTmrCtrlState *s)
->  {
->      int i;
-> @@ -303,19 +317,20 @@ static void a10_pit_timer_cb(void *opaque)
->      }
->  }
->
-> -static void a10_pit_init(Object *obj)
-> +static void aw_pit_instance_init(Object *obj)
->  {
->      AllwinnerTmrCtrlState *s =3D AW_A10_PIT(obj);
-> +    AllwinnerTmrCtrlClass *c =3D AW_TIMER_GET_CLASS(s);
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
->      uint8_t i;
->
-> -    s->timer_count =3D AW_A10_PIT_TIMER_NR;
-> +    s->timer_count =3D c->timer_count;
->
->      for (i =3D 0; i < s->timer_count; i++) {
->          sysbus_init_irq(sbd, &s->timer[i].irq);
->      }
->      memory_region_init_io(&s->iomem, OBJECT(s), &a10_pit_ops, s,
->
-
-I am curious how to support the different WDOG0 registers for the Allwinner
-H3 while keeping
-the A10 functionality also working :-) Will you give the TYPE_AW_H3_PIT
-its own MemoryRegionOps with read/write?
-
-
-> -                          TYPE_AW_A10_PIT, 0x400);
-> +                          TYPE_AW_A10_PIT, c->region_size);
->      sysbus_init_mmio(sbd, &s->iomem);
->
->      for (i =3D 0; i < s->timer_count; i++) {
-> @@ -328,26 +343,45 @@ static void a10_pit_init(Object *obj)
->      }
->  }
->
-> -static void a10_pit_class_init(ObjectClass *klass, void *data)
-> +static void aw_timer_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
->
->      dc->reset =3D a10_pit_reset;
->      dc->props =3D a10_pit_properties;
-> -    dc->desc =3D "allwinner a10 timer";
-> +    dc->desc =3D "Allwinner Timer Controller";
->      dc->vmsd =3D &vmstate_a10_pit;
->  }
->
-> +static const TypeInfo allwinner_pit_info =3D {
-> +    .name =3D TYPE_AW_COMMON_PIT,
-> +    .parent =3D TYPE_SYS_BUS_DEVICE,
-> +    .instance_init =3D aw_pit_instance_init,
-> +    .instance_size =3D sizeof(AllwinnerTmrCtrlState),
-> +    .class_init =3D aw_timer_class_init,
-> +    .class_size =3D sizeof(AllwinnerTmrCtrlClass),
-> +    .abstract   =3D true,
-> +};
-> +
-> +static void a10_pit_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    AllwinnerTmrCtrlClass *atc =3D AW_TIMER_CLASS(klass);
-> +
-> +    dc->desc =3D "Allwinner A10 Timer Controller";
-> +    atc->timer_count =3D AW_A10_PIT_TIMER_NR;
-> +    atc->region_size =3D 0x400;
-> +}
-> +
->  static const TypeInfo a10_pit_info =3D {
->      .name =3D TYPE_AW_A10_PIT,
-> -    .parent =3D TYPE_SYS_BUS_DEVICE,
-> -    .instance_size =3D sizeof(AllwinnerTmrCtrlState),
-> -    .instance_init =3D a10_pit_init,
-> +    .parent =3D TYPE_AW_COMMON_PIT,
->      .class_init =3D a10_pit_class_init,
->  };
->
->  static void a10_register_types(void)
->  {
-> +    type_register_static(&allwinner_pit_info);
->      type_register_static(&a10_pit_info);
->  }
->
+> -    for (i =3D 0; i < 6; i++) {
+> +    for (i =3D 0; i < AW_A10_PIT_TIMER_NR; i++) {
+>          s->control[i] =3D AW_A10_PIT_DEFAULT_CLOCK;
+>          s->interval[i] =3D 0;
+>          s->count[i] =3D 0;
 > --
 > 2.21.0
 >
->
+> Change looks fine to me:
+  Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+Works fine with -M orangepi-pc and -M cubieboard:
+  Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+
 
 --=20
 Niek Linnenbank
 
---00000000000006aff2059a291ebc
+--0000000000008268b1059a293c14
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
 <div dir=3D"ltr" class=3D"gmail_attr">On Thu, Dec 19, 2019 at 7:51 PM Phili=
 ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.o=
 rg</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
 n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-">Extract the common code from the TYPE_AW_A10_PIT device into a new<br>
-abstract device: TYPE_AW_COMMON_PIT, then use it as parent, so we<br>
-inherit the same functionalities.<br>
+">We have a definition for this magic value &#39;6&#39;, use it.<br>
 <br>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-At this point, the only fields we can modify are the timer_count<br>
-and the region_size. Not enough to implement the H3 timer, since<br>
-we need to move the WDOG register. Still some progress, so Niek<br>
-can continue ;)<br>
----<br>
-=C2=A0include/hw/timer/allwinner-a10-pit.h |=C2=A0 1 +<br>
-=C2=A0hw/timer/allwinner-a10-pit.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 50 ++=
-+++++++++++++++++++++-----<br>
-=C2=A02 files changed, 43 insertions(+), 8 deletions(-)<br>
+=C2=A0include/hw/timer/allwinner-a10-pit.h | 2 +-<br>
+=C2=A0hw/timer/allwinner-a10-pit.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<=
+br>
+=C2=A02 files changed, 2 insertions(+), 2 deletions(-)<br>
 <br>
 diff --git a/include/hw/timer/allwinner-a10-pit.h b/include/hw/timer/allwin=
 ner-a10-pit.h<br>
-index 9e28c6697a..8453a62706 100644<br>
+index 871c95b512..6aceda81ee 100644<br>
 --- a/include/hw/timer/allwinner-a10-pit.h<br>
 +++ b/include/hw/timer/allwinner-a10-pit.h<br>
-@@ -4,6 +4,7 @@<br>
-=C2=A0#include &quot;hw/ptimer.h&quot;<br>
-=C2=A0#include &quot;hw/sysbus.h&quot;<br>
+@@ -32,7 +32,7 @@<br>
 <br>
-+#define TYPE_AW_COMMON_PIT &quot;allwinner-timer-controller&quot;<br>
-=C2=A0#define TYPE_AW_A10_PIT &quot;allwinner-A10-timer&quot;<br></blockquo=
-te><div><br></div><div>So for the Allwinner H3, that means we&#39;ll need a=
-nother TYPE_AW_H3_PIT definition?<br></div><div>=C2=A0</div><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid =
-rgb(204,204,204);padding-left:1ex">
+=C2=A0#define AW_A10_PIT_TIMER_BASE=C2=A0 =C2=A0 =C2=A0 0x10<br>
+=C2=A0#define AW_A10_PIT_TIMER_BASE_END=C2=A0 \<br>
+-=C2=A0 =C2=A0 (AW_A10_PIT_TIMER_BASE * 6 + AW_A10_PIT_TIMER_COUNT)<br>
++=C2=A0 =C2=A0 (AW_A10_PIT_TIMER_BASE * AW_A10_PIT_TIMER_NR + AW_A10_PIT_TI=
+MER_COUNT)<br>
 <br>
-=C2=A0#define AW_PIT_TIMER_MAX=C2=A0 =C2=A0 =C2=A0 =C2=A0 6<br>
+=C2=A0#define AW_A10_PIT_DEFAULT_CLOCK=C2=A0 =C2=A00x4<br>
+<br>
 diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c<br=
 >
-index f2ac271e80..ad409b96a1 100644<br>
+index aae880f5b3..117e5c7bf8 100644<br>
 --- a/hw/timer/allwinner-a10-pit.c<br>
-+++ b/hw/timer/allwinner-a10-pit.c<br></blockquote><div><br></div><div>Perh=
-aps we can rename the hw/timer/allwinner-a10-pit.c to a generic name, for e=
-xample hw/timer/allwinner-pit.c ?<br></div><div>=C2=A0</div><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid =
-rgb(204,204,204);padding-left:1ex">
-@@ -54,6 +54,20 @@<br>
-=C2=A0#define AW_A10_PIT(obj) \<br>
-=C2=A0 =C2=A0 =C2=A0OBJECT_CHECK(AllwinnerTmrCtrlState, (obj), TYPE_AW_A10_=
-PIT)<br>
++++ b/hw/timer/allwinner-a10-pit.c<br>
+@@ -225,7 +225,7 @@ static void a10_pit_reset(DeviceState *dev)<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;irq_status =3D 0;<br>
+=C2=A0 =C2=A0 =C2=A0a10_pit_update_irq(s);<br>
 <br>
-+typedef struct AllwinnerTmrCtrlClass {<br>
-+=C2=A0 =C2=A0 /*&lt; private &gt;*/<br>
-+=C2=A0 =C2=A0 SysBusDeviceClass parent_class;<br>
-+=C2=A0 =C2=A0 /*&lt; public &gt;*/<br>
-+<br>
-+=C2=A0 =C2=A0 size_t timer_count;<br>
-+=C2=A0 =C2=A0 size_t region_size;<br>
-+} AllwinnerTmrCtrlClass;<br>
-+<br>
-+#define AW_TIMER_CLASS(klass) \<br>
-+=C2=A0 =C2=A0 =C2=A0OBJECT_CLASS_CHECK(AllwinnerTmrCtrlClass, (klass), TYP=
-E_AW_COMMON_PIT)<br>
-+#define AW_TIMER_GET_CLASS(obj) \<br>
-+=C2=A0 =C2=A0 =C2=A0OBJECT_GET_CLASS(AllwinnerTmrCtrlClass, (obj), TYPE_AW=
-_COMMON_PIT)<br>
-+<br>
-=C2=A0static void a10_pit_update_irq(AllwinnerTmrCtrlState *s)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0int i;<br>
-@@ -303,19 +317,20 @@ static void a10_pit_timer_cb(void *opaque)<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0}<br>
-<br>
--static void a10_pit_init(Object *obj)<br>
-+static void aw_pit_instance_init(Object *obj)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0AllwinnerTmrCtrlState *s =3D AW_A10_PIT(obj);<br>
-+=C2=A0 =C2=A0 AllwinnerTmrCtrlClass *c =3D AW_TIMER_GET_CLASS(s);<br>
-=C2=A0 =C2=A0 =C2=A0SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);<br>
-=C2=A0 =C2=A0 =C2=A0uint8_t i;<br>
-<br>
--=C2=A0 =C2=A0 s-&gt;timer_count =3D AW_A10_PIT_TIMER_NR;<br>
-+=C2=A0 =C2=A0 s-&gt;timer_count =3D c-&gt;timer_count;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; s-&gt;timer_count; i++) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_init_irq(sbd, &amp;s-&gt;timer[i].=
-irq);<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_init_io(&amp;s-&gt;iomem, OBJECT(s), &amp=
-;a10_pit_ops, s,<br></blockquote><div><br></div><div>I am curious how to su=
-pport the different WDOG0 registers for the Allwinner H3 while keeping</div=
-><div>the A10 functionality also working :-) Will you give the TYPE_AW_H3_P=
-IT=C2=A0 its own MemoryRegionOps with read/write?<br></div><div>=C2=A0</div=
-><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
--left:1px solid rgb(204,204,204);padding-left:1ex">
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 TYPE_AW_A10_PIT, 0x400);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 TYPE_AW_A10_PIT, c-&gt;region_size);<br>
-=C2=A0 =C2=A0 =C2=A0sysbus_init_mmio(sbd, &amp;s-&gt;iomem);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; s-&gt;timer_count; i++) {<br>
-@@ -328,26 +343,45 @@ static void a10_pit_init(Object *obj)<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0}<br>
-<br>
--static void a10_pit_class_init(ObjectClass *klass, void *data)<br>
-+static void aw_timer_class_init(ObjectClass *klass, void *data)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;reset =3D a10_pit_reset;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;props =3D a10_pit_properties;<br>
--=C2=A0 =C2=A0 dc-&gt;desc =3D &quot;allwinner a10 timer&quot;;<br>
-+=C2=A0 =C2=A0 dc-&gt;desc =3D &quot;Allwinner Timer Controller&quot;;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_a10_pit;<br>
-=C2=A0}<br>
-<br>
-+static const TypeInfo allwinner_pit_info =3D {<br>
-+=C2=A0 =C2=A0 .name =3D TYPE_AW_COMMON_PIT,<br>
-+=C2=A0 =C2=A0 .parent =3D TYPE_SYS_BUS_DEVICE,<br>
-+=C2=A0 =C2=A0 .instance_init =3D aw_pit_instance_init,<br>
-+=C2=A0 =C2=A0 .instance_size =3D sizeof(AllwinnerTmrCtrlState),<br>
-+=C2=A0 =C2=A0 .class_init =3D aw_timer_class_init,<br>
-+=C2=A0 =C2=A0 .class_size =3D sizeof(AllwinnerTmrCtrlClass),<br>
-+=C2=A0 =C2=A0 .abstract=C2=A0 =C2=A0=3D true,<br>
-+};<br>
-+<br>
-+static void a10_pit_class_init(ObjectClass *klass, void *data)<br>
-+{<br>
-+=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-+=C2=A0 =C2=A0 AllwinnerTmrCtrlClass *atc =3D AW_TIMER_CLASS(klass);<br>
-+<br>
-+=C2=A0 =C2=A0 dc-&gt;desc =3D &quot;Allwinner A10 Timer Controller&quot;;<=
-br>
-+=C2=A0 =C2=A0 atc-&gt;timer_count =3D AW_A10_PIT_TIMER_NR;<br>
-+=C2=A0 =C2=A0 atc-&gt;region_size =3D 0x400;<br>
-+}<br>
-+<br>
-=C2=A0static const TypeInfo a10_pit_info =3D {<br>
-=C2=A0 =C2=A0 =C2=A0.name =3D TYPE_AW_A10_PIT,<br>
--=C2=A0 =C2=A0 .parent =3D TYPE_SYS_BUS_DEVICE,<br>
--=C2=A0 =C2=A0 .instance_size =3D sizeof(AllwinnerTmrCtrlState),<br>
--=C2=A0 =C2=A0 .instance_init =3D a10_pit_init,<br>
-+=C2=A0 =C2=A0 .parent =3D TYPE_AW_COMMON_PIT,<br>
-=C2=A0 =C2=A0 =C2=A0.class_init =3D a10_pit_class_init,<br>
-=C2=A0};<br>
-<br>
-=C2=A0static void a10_register_types(void)<br>
-=C2=A0{<br>
-+=C2=A0 =C2=A0 type_register_static(&amp;allwinner_pit_info);<br>
-=C2=A0 =C2=A0 =C2=A0type_register_static(&amp;a10_pit_info);<br>
-=C2=A0}<br>
-<br>
+-=C2=A0 =C2=A0 for (i =3D 0; i &lt; 6; i++) {<br>
++=C2=A0 =C2=A0 for (i =3D 0; i &lt; AW_A10_PIT_TIMER_NR; i++) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;control[i] =3D AW_A10_PIT_DEFAULT_C=
+LOCK;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;interval[i] =3D 0;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;count[i] =3D 0;<br>
 -- <br>
 2.21.0<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+<br></blockquote><div>Change looks fine to me:</div><div>=C2=A0 Reviewed-by=
+: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinne=
+nbank@gmail.com</a>&gt;<br></div><div><br></div><div>Works fine with -M ora=
+ngepi-pc and -M cubieboard:</div><div>=C2=A0 Tested-by: Niek Linnenbank &lt=
+;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&g=
+t;<br></div><div>=C2=A0</div></div><br clear=3D"all"><br>-- <br><div dir=3D=
+"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><b=
+r></div></div></div></div>
 
---00000000000006aff2059a291ebc--
+--0000000000008268b1059a293c14--

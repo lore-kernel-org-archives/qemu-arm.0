@@ -1,51 +1,50 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3250160lff;
-        Thu, 19 Dec 2019 23:25:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyypwtneyWvzz2X0ZFpAgQQsACeEh5S6+GSc5fH3U2xN+ZPJApnIB5te0zlKRD2YppgnLRe
-X-Received: by 2002:a05:6830:1442:: with SMTP id w2mr14053689otp.143.1576826747393;
-        Thu, 19 Dec 2019 23:25:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576826747; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3253140lff;
+        Thu, 19 Dec 2019 23:29:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyfn2+l5Hz8Zhjm+lXKSUt+gQd9xpCSs7rmwyYqDNVquIMu21QLRfd0Qrztr9eP8tkB1Byq
+X-Received: by 2002:a9d:2c68:: with SMTP id f95mr13644954otb.33.1576826971516;
+        Thu, 19 Dec 2019 23:29:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576826971; cv=none;
         d=google.com; s=arc-20160816;
-        b=KpQsHCU1W7zrhbt/3kojw+Pj07ELicGiJoRgNpZ8ymlL6Ss7UXBOQkq/Ok5gvrQKLn
-         gcs2ZqpNkrB2RZNWqj5lSkNW1zruRlqZm7jzLuTPwY7ORtkd5PdDGWFFBoYJb/i8yMBf
-         CxRFw82lgDWt/rb8Z0jurETBjl9q+hZJS2ZXbqb8HkO4ZUPr/MD89EJUeoA7kHQpVz+c
-         Ahljo9KrPF2zQ3VL7D+UeeE58Xg/rDCLG4UVCNzqlzh8ldwv1izRqplRMKPa0K0+AQWR
-         bK9zPC5seg3CduX+iKYLuM3vnfaGw4HrkLx4qsMeziDmot+69N24Mm3+3jVT7ozumrKY
-         Wv6g==
+        b=bhrwODPraAAZkTI2uU5mCY6KGNoVAxDa8p1tvZPyzQVB6w1lEWJAQtd4alEPIM3IfB
+         eIm+fXpVdJH4xvVwKECHzCmp7jMZBteSQM4bTBgeD4CarTI+o9hTHJF/3jRsEU5feK/2
+         8y0fj8/CiqR2sKkv0xCILTgdaYmsj3tJWuG7bqnWc+rtz+cKe8oxfdONVg5p4LaP0nvu
+         dlbv2FVr216XgPiHgkiqBDa4WO/FvlljJm+rrGM146UZmMAYZx4XaxPkTTWItoxBKLYM
+         KeV0kS84gvIbe9FrIvQPpCek+2p4TR3i5sdRqplV+C6yA3VF9MvURmhX45gUbA3rFfzp
+         nYRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:cc:to:subject;
-        bh=kXZglgp3bkLuFOiau4/Vf1a0iDGKlCu7iLQcE09768Q=;
-        b=BDzFlJim88qkV9HKUciLy5Z11LoXNj8FS1Czv0EKq8fJuDDQuL1c0sS3VhfyAWgprl
-         fYwqpBpZuqzHMxSglWtY4uyo4RqLRYuSuh5Hytk5m+XNUMqtHpo/L5373NK6BpYtJx0s
-         zJYG5mE3BlZ5dOrV3YsmriC4kK7KJ5Uxt/OMQyDEYCWm1TPwVUp4aYBafy/S/xftf2Nd
-         rVGvlTLrJPSu3bL3rudyCYsdNpfgeBujtys+N3DgsjbDwG7OyZazb6xNFRc15u+Qe6jZ
-         V+kWpQhPvvYDh0Ku7mAKF3uFuP+Wi3zaYQnEiHXeTdDI1em0BJ0p9mcc127GvbW+7KGg
-         JW0g==
+        bh=9T9kjcHIthJbwk/BaJGJVshO7lVtEwZpZD5yegYHYuk=;
+        b=H5HYvNmB3QJUqrKrfvaTXeJInL6iZ/iD4Y/HXX12UpnF9Wm4Lcvi4+LXJHx0EJ8my6
+         OrL71eswV7dbVNNyrJUhvKn+DY2kug5xTcAiD6X4Nyc4bV9WlFDlngrHmlW995pPu0SR
+         f8HLQqFU+r2BzttDqwXsngDExIlVGVO0F8TolGkINb69/w6YxKZFOIrv81fLREctc6bj
+         fhsXjAGasXjXy9QtJtItMsjXgv0PZdLwJZ/qXpRmitRhNEaYPMtfDEHdI8XtbF/ysihO
+         qZsHc/xX4xe5uAv5eec2Uo4AV9L0Ki9iNSTMmsxWX7JcPoaaZgqruaZY/lUJr9X0O22P
+         0e0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h125si4213068oia.253.2019.12.19.23.25.47;
-        Thu, 19 Dec 2019 23:25:47 -0800 (PST)
+        by mx.google.com with ESMTP id q189si4355412oib.179.2019.12.19.23.29.31;
+        Thu, 19 Dec 2019 23:29:31 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726210AbfLTHZq (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 20 Dec 2019 02:25:46 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:8159 "EHLO huawei.com"
+        id S1726651AbfLTH3a (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 20 Dec 2019 02:29:30 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:50360 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726002AbfLTHZq (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 20 Dec 2019 02:25:46 -0500
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id CC1CB548BD8CEBBBEDAE;
-        Fri, 20 Dec 2019 15:25:41 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS408-HUB.china.huawei.com
- (10.3.19.208) with Microsoft SMTP Server id 14.3.439.0; Fri, 20 Dec 2019
- 15:25:33 +0800
-Subject: Re: [kvm-unit-tests PATCH 11/16] arm/arm64: ITS: Device and
- collection Initialization
+        id S1725920AbfLTH3a (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 20 Dec 2019 02:29:30 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id 7EF0A9E8FB0866428E41;
+        Fri, 20 Dec 2019 15:29:27 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS412-HUB.china.huawei.com
+ (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Fri, 20 Dec 2019
+ 15:29:16 +0800
+Subject: Re: [kvm-unit-tests PATCH 12/16] arm/arm64: ITS: commands
 To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
         <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
         <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
@@ -54,14 +53,14 @@ CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
         <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
         <thuth@redhat.com>
 References: <20191216140235.10751-1-eric.auger@redhat.com>
- <20191216140235.10751-12-eric.auger@redhat.com>
+ <20191216140235.10751-13-eric.auger@redhat.com>
 From:   Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <1f170d74-0ee5-6415-d84e-cd7de4d0f071@huawei.com>
-Date:   Fri, 20 Dec 2019 15:25:30 +0800
+Message-ID: <d56a4973-ac01-65e6-8e5d-f48da9458b5c@huawei.com>
+Date:   Fri, 20 Dec 2019 15:29:15 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20191216140235.10751-12-eric.auger@redhat.com>
+In-Reply-To: <20191216140235.10751-13-eric.auger@redhat.com>
 Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
@@ -71,144 +70,47 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: uy7Hcf/zZEje
+X-TUID: ardBlZyKocDI
 
 Hi Eric,
 
 On 2019/12/16 22:02, Eric Auger wrote:
-> Introduce an helper functions to register
-> - a new device, characterized by its device id and the
->    max number of event IDs that dimension its ITT (Interrupt
->    Translation Table).  The function allocates the ITT.
-> 
-> - a new collection, characterized by its ID and the
->    target processing engine (PE).
+> Implement main ITS commands. The code is largely inherited from
+> the ITS driver.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
 > ---
-> ---
->   lib/arm/asm/gic-v3-its.h | 20 +++++++++++++++++
->   lib/arm/gic-v3-its.c     | 46 ++++++++++++++++++++++++++++++++++++++++
->   2 files changed, 66 insertions(+)
-> 
+
+[...]
+
 > diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-> index ab639c5..245ef61 100644
+> index 245ef61..d074c17 100644
 > --- a/lib/arm/asm/gic-v3-its.h
 > +++ b/lib/arm/asm/gic-v3-its.h
-> @@ -87,6 +87,9 @@
+> @@ -161,5 +179,23 @@ extern void its_enable_defaults(void);
+>   extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
+>   extern struct its_collection *its_create_collection(u32 col_id, u32 target_pe);
 >   
->   #define ITS_FLAGS_CMDQ_NEEDS_FLUSHING           (1ULL << 0)
->   
-> +#define GITS_MAX_DEVICES		8
-> +#define GITS_MAX_COLLECTIONS		8
-> +
->   struct its_typer {
->   	unsigned int ite_size;
->   	unsigned int eventid_bits;
-> @@ -117,6 +120,17 @@ struct its_cmd_block {
->   	u64     raw_cmd[4];
->   };
->   
-> +struct its_device {
-> +	u32 device_id;	/* device ID */
-> +	u32 nr_ites;	/* Max Interrupt Translation Entries */
-> +	void *itt;	/* Interrupt Translation Table GPA */
-> +};
-> +
-> +struct its_collection {
-> +	u64 target_address;
-> +	u16 col_id;
-> +};
-> +
->   struct its_data {
->   	void *base;
->   	struct its_typer typer;
-> @@ -124,6 +138,10 @@ struct its_data {
->   	struct its_cmd_block *cmd_base;
->   	struct its_cmd_block *cmd_write;
->   	struct its_cmd_block *cmd_readr;
-> +	struct its_device devices[GITS_MAX_DEVICES];
-> +	u32 nb_devices;		/* Allocated Devices */
-> +	struct its_collection collections[GITS_MAX_COLLECTIONS];
-> +	u32 nb_collections;	/* Allocated Collections */
+> +extern void its_send_mapd(struct its_device *dev, int valid);
+> +extern void its_send_mapc(struct its_collection *col, int valid);
+> +extern void its_send_mapti(struct its_device *dev, u32 irq_id,
+> +			   u32 event_id, struct its_collection *col);
+> +extern void its_send_int(struct its_device *dev, u32 event_id);
+> +extern void its_send_inv(struct its_device *dev, u32 event_id);
+> +extern void its_send_discard(struct its_device *dev, u32 event_id);
+> +extern void its_send_clear(struct its_device *dev, u32 event_id);
+> +extern void its_send_invall(struct its_collection *col);
+> +extern void its_send_movi(struct its_device *dev,
+> +			  struct its_collection *col, u32 id);
+> +extern void its_send_sync(struct its_collection *col);
+> +extern void its_print_cmd_state(void);
 
-('nr_*' may be the more widely used one.)
+This function is not used by later patches, I guess it's mostly used
+for debug.
 
->   };
->   
->   extern struct its_data its_data;
-> @@ -140,6 +158,8 @@ extern u8 get_lpi_config(int n);
->   extern void set_pending_table_bit(int rdist, int n, bool set);
->   extern void gicv3_rdist_ctrl_lpi(u32 redist, bool set);
->   extern void its_enable_defaults(void);
-> +extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
-> +extern struct its_collection *its_create_collection(u32 col_id, u32 target_pe);
->   
->   #endif /* !__ASSEMBLY__ */
->   #endif /* _ASMARM_GIC_V3_ITS_H_ */
-> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
-> index 9a51ef4..9906428 100644
-> --- a/lib/arm/gic-v3-its.c
-> +++ b/lib/arm/gic-v3-its.c
-> @@ -284,3 +284,49 @@ void its_enable_defaults(void)
->   
->   	writel(GITS_CTLR_ENABLE, its_data.base + GITS_CTLR);
->   }
-> +
-> +struct its_device *its_create_device(u32 device_id, int nr_ites)
-> +{
-> +	struct its_baser *baser;
-> +	struct its_device *new;
-> +	unsigned long n, order;
-> +
-> +	if (its_data.nb_devices >= GITS_MAX_DEVICES)
-> +		report_abort("%s redimension GITS_MAX_DEVICES", __func__);
-> +
-> +	baser = its_lookup_baser(GITS_BASER_TYPE_DEVICE);
-> +	if (!baser)
-> +		return NULL;
-> +
-> +	new = &its_data.devices[its_data.nb_devices];
-> +
-> +	new->device_id = device_id;
-> +	new->nr_ites = nr_ites;
-> +
-> +	n = (baser->esz * nr_ites) >> PAGE_SHIFT;
-
-baser->esz is GITS_BASER.Entry_Size, which indicates the size of
-Device Table entry.
-We're allocating ITT for this device now, shouldn't we use
-its_data.typer.esz?
+(Assuming the Linux ITS driver has done the right thing ;-), I just skip
+looking at this patch.)
 
 
 Thanks,
 Zenghui
-
-> +	order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
-> +	new->itt = (void *)virt_to_phys(alloc_pages(order));
-> +
-> +	its_data.nb_devices++;
-> +	return new;
-> +}
-> +
-> +struct its_collection *its_create_collection(u32 col_id, u32 pe)
-> +{
-> +	struct its_collection *new;
-> +
-> +	if (its_data.nb_collections >= GITS_MAX_COLLECTIONS)
-> +		report_abort("%s redimension GITS_MAX_COLLECTIONS", __func__);
-> +
-> +	new = &its_data.collections[its_data.nb_collections];
-> +
-> +	new->col_id = col_id;
-> +
-> +	if (its_data.typer.pta)
-> +		new->target_address = (u64)gicv3_data.redist_base[pe];
-> +	else
-> +		new->target_address = pe << 16;
-> +
-> +	its_data.nb_collections++;
-> +	return new;
-> +}
-> 

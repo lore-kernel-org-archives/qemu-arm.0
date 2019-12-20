@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id f207sm10901781wme.9.2019.12.20.04.14.25
+        by smtp.gmail.com with ESMTPSA id x10sm10077775wrp.58.2019.12.20.04.14.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 20 Dec 2019 04:14:25 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6CBB11FF9E;
+	by zen.linaroharston (Postfix) with ESMTP id DE3101FFA9;
 	Fri, 20 Dec 2019 12:04:40 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -12,84 +12,109 @@ Cc: alan.hayward@arm.com,
 	luis.machado@linaro.org,
 	damien.hedde@greensocs.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v4 14/21] target/arm: don't bother with id_aa64pfr0_read for USER_ONLY
-Date: Fri, 20 Dec 2019 12:04:31 +0000
-Message-Id: <20191220120438.16114-15-alex.bennee@linaro.org>
+Subject: [PATCH  v4 19/21] tests/tcg/aarch64: add test-sve-ioctl guest-debug test
+Date: Fri, 20 Dec 2019 12:04:36 +0000
+Message-Id: <20191220120438.16114-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191220120438.16114-1-alex.bennee@linaro.org>
 References: <20191220120438.16114-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 4NWbAM4DWjCX
+X-TUID: 8p51REU6bc3C
 
-For system emulation we need to check the state of the GIC before we
-report the value. However this isn't relevant to exporting of the
-value to linux-user and indeed breaks the exported value as set by
-modify_arm_cp_regs.
+This test exercises the gdbstub while runing the sve-iotcl test. I
+haven't plubmed it into make system as we need a way of verifying if
+gdb has the right support for SVE.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 ---
-v2
-  - extend the ifdef and make type CONST with no accessfn
+v4
+  - interrogate ZCR_EL1 directly as no longer have vg
 ---
- target/arm/helper.c | 20 +++++++++++++++-----
- 1 file changed, 15 insertions(+), 5 deletions(-)
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py | 71 +++++++++++++++++++++
+ 1 file changed, 71 insertions(+)
+ create mode 100644 tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 857581feba4..23de21f8820 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5912,6 +5912,7 @@ static uint64_t id_pfr1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     return pfr1;
- }
- 
-+#ifndef CONFIG_USER_ONLY
- static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     ARMCPU *cpu = env_archcpu(env);
-@@ -5922,6 +5923,7 @@ static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     }
-     return pfr0;
- }
-+#endif
- 
- /* Shared logic between LORID and the rest of the LOR* registers.
-  * Secure state has already been delt with.
-@@ -6414,16 +6416,24 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-          * define new registers here.
-          */
-         ARMCPRegInfo v8_idregs[] = {
--            /* ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST because we don't
--             * know the right value for the GIC field until after we
--             * define these regs.
-+            /*
-+             * ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST in system
-+             * emulation because we don't know the right value for the
-+             * GIC field until after we define these regs.
-              */
-             { .name = "ID_AA64PFR0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 0,
--              .access = PL1_R, .type = ARM_CP_NO_RAW,
-+              .access = PL1_R,
-+#ifdef CONFIG_USER_ONLY
-+              .type = ARM_CP_CONST,
-+              .resetvalue = cpu->isar.id_aa64pfr0
-+#else
-+              .type = ARM_CP_NO_RAW,
-               .accessfn = access_aa64_tid3,
-               .readfn = id_aa64pfr0_read,
--              .writefn = arm_cp_write_ignore },
-+              .writefn = arm_cp_write_ignore
-+#endif
-+            },
-             { .name = "ID_AA64PFR1_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 1,
-               .access = PL1_R, .type = ARM_CP_CONST,
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+new file mode 100644
+index 00000000000..6b6b6c83f2d
+--- /dev/null
++++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+@@ -0,0 +1,71 @@
++from __future__ import print_function
++#
++# Test the SVE ZReg reports the right amount of data. It uses the
++# sve-ioctl test and examines the register data each time the
++# __sve_ld_done breakpoint is hit.
++#
++# This is launched via tests/guest-debug/run-test.py
++#
++
++import gdb
++
++initial_vlen = 0
++failcount = 0
++
++def report(cond, msg):
++    "Report success/fail of test"
++    if cond:
++        print ("PASS: %s" % (msg))
++    else:
++        print ("FAIL: %s" % (msg))
++        global failcount
++        failcount += 1
++
++class TestBreakpoint(gdb.Breakpoint):
++    def __init__(self, sym_name="__sve_ld_done"):
++        super(TestBreakpoint, self).__init__(sym_name)
++        # self.sym, ok = gdb.lookup_symbol(sym_name)
++
++    def stop(self):
++        val_i = gdb.parse_and_eval('i')
++        global initial_vlen
++        for i in range(0, int(val_i)):
++            val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
++            report(int(val_z) == i, "z0.b.u[%d] == %d" % (i, i))
++        for i in range(i + 1, initial_vlen):
++            val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
++            report(int(val_z) == 0, "z0.b.u[%d] == 0" % (i))
++
++
++def run_test():
++    "Run through the tests one by one"
++
++    print ("Setup breakpoint")
++    bp = TestBreakpoint()
++
++    global initial_vlen
++    vg = gdb.parse_and_eval("$ZCR_EL1")
++    initial_vlen = int(vg) * 16
++
++    gdb.execute("c")
++
++#
++# This runs as the script it sourced (via -x, via run-test.py)
++#
++
++try:
++    # These are not very useful in scripts
++    gdb.execute("set pagination off")
++    gdb.execute("set confirm off")
++
++    # Run the actual tests
++    run_test()
++except:
++    print ("GDB Exception: %s" % (sys.exc_info()[0]))
++    failcount += 1
++    import code
++    code.InteractiveConsole(locals=globals()).interact()
++    raise
++
++print("All tests complete: %d failures" % failcount)
++exit(failcount)
 -- 
 2.20.1

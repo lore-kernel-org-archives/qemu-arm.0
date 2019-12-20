@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id u14sm9777423wrm.51.2019.12.20.04.04.44
+        by smtp.gmail.com with ESMTPSA id s128sm9713941wme.39.2019.12.20.04.04.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Dec 2019 04:04:48 -0800 (PST)
+        Fri, 20 Dec 2019 04:04:53 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1760C1FF9A;
+	by zen.linaroharston (Postfix) with ESMTP id AF5D61FFA5;
 	Fri, 20 Dec 2019 12:04:40 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -12,122 +12,130 @@ Cc: alan.hayward@arm.com,
 	luis.machado@linaro.org,
 	damien.hedde@greensocs.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v4 10/21] target/arm: explicitly encode regnum in our XML
-Date: Fri, 20 Dec 2019 12:04:27 +0000
-Message-Id: <20191220120438.16114-11-alex.bennee@linaro.org>
+Subject: [PATCH  v4 17/21] tests/tcg/aarch64: add a gdbstub testcase for SVE registers
+Date: Fri, 20 Dec 2019 12:04:34 +0000
+Message-Id: <20191220120438.16114-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191220120438.16114-1-alex.bennee@linaro.org>
 References: <20191220120438.16114-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 9DynNwUckLdf
+X-TUID: qtymlCO0J3L6
 
-This is described as optional but I'm not convinced of the numbering
-when multiple target fragments are sent.
+We don't plumb this in yet as there are complications involved with
+binutils and cross-architectiure debugging but it is one step closer.
+
+Example:
+
+  ./tests/guest-debug/run-test.py \
+    --qemu ./aarch64-linux-user/qemu-aarch64 \
+    --qargs "-cpu max" \
+    --bin ./tests/tcg/aarch64-linux-user/hello \
+    --test ~/lsrc/qemu.git/tests/tcg/aarch64/gdbstub/test-sve.py \
+    --gdb /home/alex/src/tools/binutils-gdb.git/install/bin/gdb
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
 ---
-v2
-  - post inc param->n in place so we don't get out count wrong
----
- target/arm/cpu.h     |  2 +-
- target/arm/gdbstub.c | 17 +++++++++++------
- target/arm/helper.c  |  2 +-
- 3 files changed, 13 insertions(+), 8 deletions(-)
+ tests/.gitignore                      |  1 +
+ tests/tcg/aarch64/gdbstub/test-sve.py | 75 +++++++++++++++++++++++++++
+ 2 files changed, 76 insertions(+)
+ create mode 100644 tests/tcg/aarch64/gdbstub/test-sve.py
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 59d5dbae31f..40591b5dc70 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -961,7 +961,7 @@ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- /* Dynamically generates for gdb stub an XML description of the sysregs from
-  * the cp_regs hashtable. Returns the registered sysregs number.
-  */
--int arm_gen_dynamic_sysreg_xml(CPUState *cpu);
-+int arm_gen_dynamic_sysreg_xml(CPUState *cpu, int base_reg);
- 
- /* Returns the dynamically generated XML for the gdb stub.
-  * Returns a pointer to the XML contents for the specified XML file or NULL
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 1f68ab98c3b..69c35462a63 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -24,6 +24,7 @@
- typedef struct RegisterSysregXmlParam {
-     CPUState *cs;
-     GString *s;
-+    int n;
- } RegisterSysregXmlParam;
- 
- /* Old gdb always expect FPA registers.  Newer (xml-aware) gdb only expect
-@@ -108,10 +109,11 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- 
- static void arm_gen_one_xml_sysreg_tag(GString *s, DynamicGDBXMLInfo *dyn_xml,
-                                        ARMCPRegInfo *ri, uint32_t ri_key,
--                                       int bitsize)
-+                                       int bitsize, int regnum)
- {
-     g_string_append_printf(s, "<reg name=\"%s\"", ri->name);
-     g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
-+    g_string_append_printf(s, " regnum=\"%d\"", regnum);
-     g_string_append_printf(s, " group=\"cp_regs\"/>");
-     dyn_xml->data.cpregs.keys[dyn_xml->num] = ri_key;
-     dyn_xml->num++;
-@@ -131,7 +133,8 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
-     if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB))) {
-         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-             if (ri->state == ARM_CP_STATE_AA64) {
--                arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64);
-+                arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64,
-+                                           param->n++);
-             }
-         } else {
-             if (ri->state == ARM_CP_STATE_AA32) {
-@@ -140,20 +143,22 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
-                     return;
-                 }
-                 if (ri->type & ARM_CP_64BIT) {
--                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64);
-+                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64,
-+                                               param->n++);
-                 } else {
--                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 32);
-+                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 32,
-+                                               param->n++);
-                 }
-             }
-         }
-     }
- }
- 
--int arm_gen_dynamic_sysreg_xml(CPUState *cs)
-+int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     GString *s = g_string_new(NULL);
--    RegisterSysregXmlParam param = {cs, s};
-+    RegisterSysregXmlParam param = {cs, s, base_reg};
- 
-     cpu->dyn_sysreg_xml.num = 0;
-     cpu->dyn_sysreg_xml.data.cpregs.keys = g_new(uint32_t, g_hash_table_size(cpu->cp_regs));
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0a3bc53124e..488fdbf61a9 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7129,7 +7129,7 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
-                                  19, "arm-vfp.xml", 0);
-     }
-     gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
--                             arm_gen_dynamic_sysreg_xml(cs),
-+                             arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
-                              "system-registers.xml", 0);
- }
- 
+diff --git a/tests/.gitignore b/tests/.gitignore
+index f9c01708812..8cc428b58bb 100644
+--- a/tests/.gitignore
++++ b/tests/.gitignore
+@@ -10,6 +10,7 @@ qht-bench
+ rcutorture
+ test-*
+ !test-*.c
++!test-*.py
+ !docker/test-*
+ test-qapi-commands.[ch]
+ include/test-qapi-commands-sub-module.[ch]
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
+new file mode 100644
+index 00000000000..11bc96fc06d
+--- /dev/null
++++ b/tests/tcg/aarch64/gdbstub/test-sve.py
+@@ -0,0 +1,75 @@
++from __future__ import print_function
++#
++# Test the SVE registers are visable and changeable via gdbstub
++#
++# This is launched via tests/guest-debug/run-test.py
++#
++
++import gdb
++
++MAGIC = 0xDEADBEEF
++
++failcount = 0
++
++def report(cond, msg):
++    "Report success/fail of test"
++    if cond:
++        print ("PASS: %s" % (msg))
++    else:
++        print ("FAIL: %s" % (msg))
++        global failcount
++        failcount += 1
++
++def run_test():
++    "Run through the tests one by one"
++
++    gdb.execute("info registers")
++    report(True, "info registers")
++
++    gdb.execute("info registers vector")
++    report(True, "info registers vector")
++
++    # Now all the zregs
++    frame = gdb.selected_frame()
++    for i in range(0, 32):
++        rname = "z%d" % (i)
++        zreg = frame.read_register(rname)
++        report(True, "Reading %s" % rname)
++        for j in range(0, 4):
++            cmd = "set $%s.q.u[%d] = 0x%x" % (rname, j, MAGIC)
++            gdb.execute(cmd)
++            report(True, "%s" % cmd)
++        for j in range(0, 4):
++            reg = "$%s.q.u[%d]" % (rname, j)
++            v = gdb.parse_and_eval(reg)
++            report(str(v.type) == "uint128_t", "size of %s" % (reg))
++        for j in range(0, 8):
++            cmd = "set $%s.d.u[%d] = 0x%x" % (rname, j, MAGIC)
++            gdb.execute(cmd)
++            report(True, "%s" % cmd)
++        for j in range(0, 8):
++            reg = "$%s.d.u[%d]" % (rname, j)
++            v = gdb.parse_and_eval(reg)
++            report(str(v.type) == "uint64_t", "size of %s" % (reg))
++            report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
++
++#
++# This runs as the script it sourced (via -x, via run-test.py)
++#
++
++try:
++    # These are not very useful in scripts
++    gdb.execute("set pagination off")
++    gdb.execute("set confirm off")
++
++    # Run the actual tests
++    run_test()
++except:
++    print ("GDB Exception: %s" % (sys.exc_info()[0]))
++    failcount += 1
++
++print("All tests complete: %d failures" % failcount)
++
++# Finally kill the inferior and exit gdb with a count of failures
++gdb.execute("kill")
++exit(failcount)
 -- 
 2.20.1

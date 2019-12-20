@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id s128sm9713941wme.39.2019.12.20.04.04.48
+        by smtp.gmail.com with ESMTPSA id x18sm9681364wrr.75.2019.12.20.04.04.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Dec 2019 04:04:53 -0800 (PST)
+        Fri, 20 Dec 2019 04:04:51 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id AF5D61FFA5;
+	by zen.linaroharston (Postfix) with ESMTP id 2C4A81FF9B;
 	Fri, 20 Dec 2019 12:04:40 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -12,130 +12,53 @@ Cc: alan.hayward@arm.com,
 	luis.machado@linaro.org,
 	damien.hedde@greensocs.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v4 17/21] tests/tcg/aarch64: add a gdbstub testcase for SVE registers
-Date: Fri, 20 Dec 2019 12:04:34 +0000
-Message-Id: <20191220120438.16114-18-alex.bennee@linaro.org>
+Subject: [PATCH  v4 11/21] target/arm: default SVE length to 64 bytes for linux-user
+Date: Fri, 20 Dec 2019 12:04:28 +0000
+Message-Id: <20191220120438.16114-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191220120438.16114-1-alex.bennee@linaro.org>
 References: <20191220120438.16114-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: qtymlCO0J3L6
+X-TUID: Sa00MjMKbcxa
 
-We don't plumb this in yet as there are complications involved with
-binutils and cross-architectiure debugging but it is one step closer.
+The Linux kernel chooses the default of 64 bytes for SVE registers on
+the basis that it is the largest size on known hardware that won't
+grow the signal frame. We still honour the sve-max-vq property and
+userspace can expand the number of lanes by calling PR_SVE_SET_VL.
 
-Example:
-
-  ./tests/guest-debug/run-test.py \
-    --qemu ./aarch64-linux-user/qemu-aarch64 \
-    --qargs "-cpu max" \
-    --bin ./tests/tcg/aarch64-linux-user/hello \
-    --test ~/lsrc/qemu.git/tests/tcg/aarch64/gdbstub/test-sve.py \
-    --gdb /home/alex/src/tools/binutils-gdb.git/install/bin/gdb
+This should not make any difference to SVE enabled software as the SVE
+is of course vector length agnostic.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/.gitignore                      |  1 +
- tests/tcg/aarch64/gdbstub/test-sve.py | 75 +++++++++++++++++++++++++++
- 2 files changed, 76 insertions(+)
- create mode 100644 tests/tcg/aarch64/gdbstub/test-sve.py
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/tests/.gitignore b/tests/.gitignore
-index f9c01708812..8cc428b58bb 100644
---- a/tests/.gitignore
-+++ b/tests/.gitignore
-@@ -10,6 +10,7 @@ qht-bench
- rcutorture
- test-*
- !test-*.c
-+!test-*.py
- !docker/test-*
- test-qapi-commands.[ch]
- include/test-qapi-commands-sub-module.[ch]
-diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
-new file mode 100644
-index 00000000000..11bc96fc06d
---- /dev/null
-+++ b/tests/tcg/aarch64/gdbstub/test-sve.py
-@@ -0,0 +1,75 @@
-+from __future__ import print_function
-+#
-+# Test the SVE registers are visable and changeable via gdbstub
-+#
-+# This is launched via tests/guest-debug/run-test.py
-+#
-+
-+import gdb
-+
-+MAGIC = 0xDEADBEEF
-+
-+failcount = 0
-+
-+def report(cond, msg):
-+    "Report success/fail of test"
-+    if cond:
-+        print ("PASS: %s" % (msg))
-+    else:
-+        print ("FAIL: %s" % (msg))
-+        global failcount
-+        failcount += 1
-+
-+def run_test():
-+    "Run through the tests one by one"
-+
-+    gdb.execute("info registers")
-+    report(True, "info registers")
-+
-+    gdb.execute("info registers vector")
-+    report(True, "info registers vector")
-+
-+    # Now all the zregs
-+    frame = gdb.selected_frame()
-+    for i in range(0, 32):
-+        rname = "z%d" % (i)
-+        zreg = frame.read_register(rname)
-+        report(True, "Reading %s" % rname)
-+        for j in range(0, 4):
-+            cmd = "set $%s.q.u[%d] = 0x%x" % (rname, j, MAGIC)
-+            gdb.execute(cmd)
-+            report(True, "%s" % cmd)
-+        for j in range(0, 4):
-+            reg = "$%s.q.u[%d]" % (rname, j)
-+            v = gdb.parse_and_eval(reg)
-+            report(str(v.type) == "uint128_t", "size of %s" % (reg))
-+        for j in range(0, 8):
-+            cmd = "set $%s.d.u[%d] = 0x%x" % (rname, j, MAGIC)
-+            gdb.execute(cmd)
-+            report(True, "%s" % cmd)
-+        for j in range(0, 8):
-+            reg = "$%s.d.u[%d]" % (rname, j)
-+            v = gdb.parse_and_eval(reg)
-+            report(str(v.type) == "uint64_t", "size of %s" % (reg))
-+            report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
-+
-+#
-+# This runs as the script it sourced (via -x, via run-test.py)
-+#
-+
-+try:
-+    # These are not very useful in scripts
-+    gdb.execute("set pagination off")
-+    gdb.execute("set confirm off")
-+
-+    # Run the actual tests
-+    run_test()
-+except:
-+    print ("GDB Exception: %s" % (sys.exc_info()[0]))
-+    failcount += 1
-+
-+print("All tests complete: %d failures" % failcount)
-+
-+# Finally kill the inferior and exit gdb with a count of failures
-+gdb.execute("kill")
-+exit(failcount)
+---
+v2
+  - tweak zcr_el[1] instead
+---
+ target/arm/cpu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index dd51adac059..2d2e786245b 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -199,9 +199,9 @@ static void arm_cpu_reset(CPUState *s)
+         /* and to the SVE instructions */
+         env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 16, 2, 3);
+         env->cp15.cptr_el[3] |= CPTR_EZ;
+-        /* with maximum vector length */
++        /* with reasonable vector length */
+         env->vfp.zcr_el[1] = cpu_isar_feature(aa64_sve, cpu) ?
+-                             cpu->sve_max_vq - 1 : 0;
++            MIN(cpu->sve_max_vq - 1, 3) : 0;
+         env->vfp.zcr_el[2] = env->vfp.zcr_el[1];
+         env->vfp.zcr_el[3] = env->vfp.zcr_el[1];
+         /*
 -- 
 2.20.1

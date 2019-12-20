@@ -1,178 +1,152 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3625476lff;
-        Fri, 20 Dec 2019 05:45:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwxHddqMrzyJFhUeu3MdIcHWvl/kwqUreEshpM7d+bx4o/FIuZFF0j0gJqkj9vUCJQBszF2
-X-Received: by 2002:a05:6808:10d:: with SMTP id b13mr3949648oie.69.1576849559557;
-        Fri, 20 Dec 2019 05:45:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576849559; cv=none;
-        d=google.com; s=arc-20160816;
-        b=0bIrFylt9G7DGbYOpZjYW+C1yY/Rx0Q/Ljdikcre4IvCT3A8xrQRm6v2YMKiLRxC0Q
-         S/B0CS3KRsf0cIW6u2EMVTdhFStdmKfLRklwOvc4nSYZXl5MreH3sGinDUNhW8rBdd5L
-         F+fT2+J7IeCCHSF8TvjpT6HJ8/Yxl5Hi/KueUPaN9WYN25y4qMg/BLqF/meYsa1dnTJv
-         1UIAY3J8/Q5FXYOk48EUKGAhncfOPnbW7NPCMlWzwFzAEPkOmG2K7HkPqWE0wEuqjFEr
-         sKemH4V1Da+Rw+eR80V7vS80jyU78SDk5C1jQBUHPKDNC/l+xVwkSZI+vE5pf4Wtyp5z
-         0y8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=VRcUdbDrthaJqJ9M/pTbzkrtzAV4OuFcKXWsaWcpvV0=;
-        b=bvJCmy5XIHjihM8TRd1q5u+dEcfLMZPzr+5mrcmEDalA+h6GkDKyG641ArvG6Pd0Yj
-         Ydx5G7FDjbzcqYoLC9GiwGsQHtWKRxdzXm9FlSMtBjsMddnEHR0EwChBcTAPoVxm4uEe
-         JUeUGrKWtYdIz6t9fXf93R0wztGVXmQvnuw1mNMf35O5ARDyZ7fhfSjeG5unlcM7GTpA
-         xn3TrY52HMNvqLEngrgft4PczbxJM9jNR6fEuvNhthRWbAAmg6oJ3Z6A9FZptUCWCe0x
-         eJIrbpVtnQai1ZBssxRDNWX/AIVa2zpRrrMQG9plW8pBOKoRjQ7ztI4jzB2ejInfbaTn
-         nkOQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FMqwFIBq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3701915lff;
+        Fri, 20 Dec 2019 06:47:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxCBYR75OXSiq49eqzvmNkjGaQrpF6dI/3HBXq1TdlXZjCmHZxfbIH7UEiYJ+/esTfazykn
+X-Received: by 2002:a05:6830:ce:: with SMTP id x14mr2194904oto.105.1576853220604;
+        Fri, 20 Dec 2019 06:47:00 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e192si4996845oib.82.2019.12.20.05.45.59
+        by mx.google.com with ESMTPS id f25si5229698oti.84.2019.12.20.06.47.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Dec 2019 05:45:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Dec 2019 06:47:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FMqwFIBq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56040 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Vvt1dya3;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57496 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iiIbO-0001eR-Pi
-	for alex.bennee@linaro.org; Fri, 20 Dec 2019 08:45:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44333)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iiJYR-0006oG-Jm
+	for alex.bennee@linaro.org; Fri, 20 Dec 2019 09:46:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50434)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iiIaK-00015A-VU
- for qemu-devel@nongnu.org; Fri, 20 Dec 2019 08:44:54 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1iiJXz-0006j1-J3
+ for qemu-arm@nongnu.org; Fri, 20 Dec 2019 09:46:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iiIaJ-000082-Bi
- for qemu-devel@nongnu.org; Fri, 20 Dec 2019 08:44:52 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:41089)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iiIaI-0008Vg-KR
- for qemu-devel@nongnu.org; Fri, 20 Dec 2019 08:44:50 -0500
-Received: by mail-ot1-x344.google.com with SMTP id r27so11918415otc.8
- for <qemu-devel@nongnu.org>; Fri, 20 Dec 2019 05:44:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VRcUdbDrthaJqJ9M/pTbzkrtzAV4OuFcKXWsaWcpvV0=;
- b=FMqwFIBqHUOoVfxBI1lFPwqfetK5uXzkNUimwNggnBjmix0mcKsswpCbKkOwAj26cL
- WBD/1cajMSgO+xQTJqqFyx9mqyXS4PJZqjLzY0YYWPNiHcsxUOkAN0un+RVT9mKzZ0py
- jG1H4kRtP5crTlVocfgUoXJYbRXJPpzWz/Hr1UmJSzLy4lhc+fQtfCru0/NgmSajKuud
- +C4Ra2gHtETI+pyIPBslGjKdJvC+C+AQlPVpE6DDEklGj+/Q9EVKGTCiJ5WnsFF1E6gp
- Q9/rk2PA4cIN0IgBvLUoh9trAsJFbImluXoeVg3LvPGk5u0jesq6OJTkte2/zwcCgyD2
- NjdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VRcUdbDrthaJqJ9M/pTbzkrtzAV4OuFcKXWsaWcpvV0=;
- b=r9XnWtlERLhg4QpYaP4ytdZjhkd2yoS5rhqND7WQYtYVjruoBIZ16Aqnv7lm+9ASPP
- 1q8y6KawuSHh/8v4tXjwU/S2HFMfbPXkZo82XFfGiiAaPI425tgEdrjnk3xYWJGUPcLO
- Wpy0r+hnFlC3eiB+OExVc5TzBE8qrCWKTEjOLGYJp0qWDZpMIzRYNWcIH9xTNfFu1zsx
- fY5KtepEfO3Pi09XU2lLycQxVLvt/DokJm7XEKOrImEZMuxgQNZ255WYMX5F4Ei5+kz4
- pvhytPZT+v3M+//cUx9zOEVt/ldyPKifFYnp1wQbyY1NAQlUmK2fZGFRQGsXq3RXURKW
- sPqg==
-X-Gm-Message-State: APjAAAXXqq1WcVlmhN7oKPeAHtS81LEyj04XzWhCu6iaXsWSrruCQtIX
- 7rEfLA972FdyTZNFGUqGdA4RGzZKz++KFjMFyPFq/Q==
-X-Received: by 2002:a9d:3f21:: with SMTP id m30mr1208123otc.232.1576849489459; 
- Fri, 20 Dec 2019 05:44:49 -0800 (PST)
+ (envelope-from <damien.hedde@greensocs.com>) id 1iiJXy-00085f-FW
+ for qemu-arm@nongnu.org; Fri, 20 Dec 2019 09:46:31 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:52566)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1iiJXy-00081w-7P; Fri, 20 Dec 2019 09:46:30 -0500
+Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
+ [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPS id F2B3796F50;
+ Fri, 20 Dec 2019 14:46:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1576853189;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lM12RI0EHDUNjslinRXmoW1BfejdQGdartCVRRzWAmE=;
+ b=Vvt1dya3SavXYQzVTEWVATCFU2MszH4rUbjkT4YbxDGgkf40K/XO1F7h5sImmdoN2GO9Hl
+ LrW5VV8RMsWTRaigIu6Y3ez9+fh5i8aqTvzv0itAzmbBbpI77Glhwgachzbdxma3lfeFvS
+ kAmKnZWC/V0e1HLdtQIBYJ+rXlvMD9k=
+From: Damien Hedde <damien.hedde@greensocs.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 2/3] hw/gpio/bcm2835_gpio: Isolate sdbus reparenting
+Date: Fri, 20 Dec 2019 15:46:15 +0100
+Message-Id: <20191220144616.911466-3-damien.hedde@greensocs.com>
+X-Mailer: git-send-email 2.24.0
+In-Reply-To: <20191220144616.911466-1-damien.hedde@greensocs.com>
+References: <20191220144616.911466-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
-References: <20191105091056.9541-1-guoheyi@huawei.com>
-In-Reply-To: <20191105091056.9541-1-guoheyi@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 20 Dec 2019 13:44:38 +0000
-Message-ID: <CAFEAcA-+tAbb9h2wZOm56TqUvjQJT0OYFLwTVS-UxKrF5PO3mQ@mail.gmail.com>
-Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
-To: Heyi Guo <guoheyi@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-X-BeenThere: qemu-devel@nongnu.org
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1576853189;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lM12RI0EHDUNjslinRXmoW1BfejdQGdartCVRRzWAmE=;
+ b=s6FLgPAzjEcjCAtj001VhqG2TKWSG5pmbxIE+28yQNdPwGhqGH/KLK3VrkHqKduY3HjurT
+ 0I42w+jQ/AcxuxmpuruyuezSUFLtlqefcLTwkex7q5vBCyhA6ScOTpZr1T6eo8ebj8+ywA
+ HmHnDzYQJPs7Km7q4hEhHEtzfOO3r4k=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1576853189; a=rsa-sha256; cv=none;
+ b=HzoF3GU8k2kXjvUvNfjETN56zrIEk8EPSW3bPdUOGCTXALu92UkvUp4QgdiyLf+65T3Gpe
+ hpSNrQ03jZKWwNz56v2E4O7e+ItvzIUh/PZY/SGN3+9EFKqk9FooKswhtDC4duPs7Xjh5N
+ /U8DEqJO/IZmAsoSln0ruGB8nFxNvqU=
+ARC-Authentication-Results: i=1;
+	beetle.greensocs.com;
+	none
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 5.135.226.135
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Marc Zyngier <marc.zyngier@arm.com>, Cornelia Huck <cohuck@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, James Morse <james.morse@arm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com,
- Dave Martin <Dave.Martin@arm.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5UYnEfc5y87a
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org, philmd@redhat.com, Andrew.Baumann@microsoft.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4Qx3y9KMlzdc
 
-On Tue, 5 Nov 2019 at 09:12, Heyi Guo <guoheyi@huawei.com> wrote:
-> SDEI is for ARM "Software Delegated Exception Interface". AS ARM64 doesn't have
-> native non-maskable interrupt (NMI), we rely on higher privileged (larger
-> exception level) software to change the execution flow of lower privileged
-> (smaller exception level) software when certain events occur, to emulate NMI
-> mechanism, and SDEI is the standard interfaces between the two levels of
-> privileged software. It is based on SMC/HVC calls.
->
-> The higher privileged software implements an SDEI dispatcher to handle SDEI
-> related SMC/HVC calls and trigger SDEI events; the lower privileged software
-> implements an SDEI client to request SDEI services and handle SDEI events.
+Split gpfsel_set() in 2 so that the sdbus reparenting is done
+in a dedicated function: gpfsel_update_sdbus().
 
-Hi; I read through these patches last week, but I didn't reply
-then because although there are some aspects to the design that
-I don't like, I don't have a clear idea of what a better approach
-to the problems it's trying to solve would be. However I didn't
-want to go home for the end of the year without providing at
-least some response. So I'm going to lay out the parts I have
-issues with and perhaps somebody else will have a good idea.
+Update call sites of gpfsel_set() to also call gpfsel_update_sdbus().
 
-The first part that I dislike here is that this is implementing
-an entire ABI which in real hardware is provided by firmware. I
-think that QEMU's design works best when QEMU provides emulation of
-hardware or hardware-like facilities, which guest code (either
-in the kernel, or firmware/bios running in the guest) can then
-make use of. Once we start getting into implementing firmware
-interfaces directly in QEMU this rapidly becomes a large amount
-of work and code, and it's unclear where it should stop. Should
-we implement also the equivalent of firmware for omap boards?
-For imx* boards? For the raspberry pi? For xilinx boards?
-Are we going to end up reimplementing more of ARM Trusted Firmware
-functionality inside QEMU? The code to implement firmware-equivalent
-ABIs in all these boards would I think quickly become a large part
-of the codebase.
+This commit is a preparation to switch to multiphase reset.
 
-My second concern is that to do the things it wants to do,
-the implementation here does some pretty invasive things:
- * intercepting interrupt lines which ought to just be
-   emulated hardware signals between devices and the GIC
- * capturing register values of other CPUs, and arbitrarily
-   stopping those other CPUs and making them run other code
-   at a later point in time
-I'm really uncomfortable with what's just an 'emulated firmware'
-interface for one specific board model doing this kind of thing.
+Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+---
+ hw/gpio/bcm2835_gpio.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-Finally, the stated rationale for the patchset ("we'd like an
-emulated NMI equivalent") doesn't really feel to me like it's
-strong enough to counterbalance the amount of code here and
-the degree to which it's moving us into a swamp I'd prefer
-it if we could stay out of.
+diff --git a/hw/gpio/bcm2835_gpio.c b/hw/gpio/bcm2835_gpio.c
+index 25c180423f..88dc652018 100644
+--- a/hw/gpio/bcm2835_gpio.c
++++ b/hw/gpio/bcm2835_gpio.c
+@@ -75,7 +75,10 @@ static void gpfsel_set(BCM2835GpioState *s, uint8_t re=
+g, uint32_t value)
+             s->fsel[index] =3D fsel;
+         }
+     }
++}
+=20
++static void gpfsel_update_sdbus(BCM2835GpioState *s)
++{
+     /* SD controller selection (48-53) */
+     if (s->sd_fsel !=3D 0
+             && (s->fsel[48] =3D=3D 0) /* SD_CLK_R */
+@@ -210,6 +213,7 @@ static void bcm2835_gpio_write(void *opaque, hwaddr o=
+ffset,
+     case GPFSEL4:
+     case GPFSEL5:
+         gpfsel_set(s, offset / 4, value);
++        gpfsel_update_sdbus(s);
+         break;
+     case GPSET0:
+         gpset(s, value, 0, 32, &s->lev0);
+@@ -261,11 +265,15 @@ static void bcm2835_gpio_reset(DeviceState *dev)
+     BCM2835GpioState *s =3D BCM2835_GPIO(dev);
+=20
+     int i;
++    /*
++     * Initialize the gpfsel registers. In particular, it selects the SD=
+HCI bus
++     * for the sd card.
++     */
+     for (i =3D 0; i < 6; i++) {
+         gpfsel_set(s, i, 0);
+     }
+-
+-    s->sd_fsel =3D 0;
++    /* Update s->sd_fsel and move the sd card */
++    gpfsel_update_sdbus(s);
+=20
+     s->lev0 =3D 0;
+     s->lev1 =3D 0;
+--=20
+2.24.0
 
-I'd be much happier with a design where QEMU provides simple
-facilities to the guest and the guest firmware and kernel
-deal with making use of them. I appreciate that it's not
-clear how that would work though, given that in real hardware
-this works by the firmware running at EL3 and KVM not
-providing a mechanism that allows guest code that runs at
-a higher (effective or emulated) privilege level than the
-guest kernel...
-
-thanks
--- PMM

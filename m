@@ -1,98 +1,97 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4150312lff;
-        Fri, 20 Dec 2019 13:20:12 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyYZgexF7SESqaJqHiGjQsvFIFn12ixf8MRDgQTVhZXOWI2XEsYCoEiIF1itUk5f5I7EUhl
-X-Received: by 2002:a9d:5550:: with SMTP id h16mr16090858oti.235.1576876812696;
-        Fri, 20 Dec 2019 13:20:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576876812; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4160867lff;
+        Fri, 20 Dec 2019 13:29:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwQpcZ0IXF5JK4JXj4UwvDTpgM5w0+49qpRrXHrV4r/RJ6n43Z+PVkLoMY3s8J1cyEN3PPf
+X-Received: by 2002:a9d:7586:: with SMTP id s6mr16958882otk.342.1576877374419;
+        Fri, 20 Dec 2019 13:29:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576877374; cv=none;
         d=google.com; s=arc-20160816;
-        b=lpNsEFISdiAMBDPzVqOi5blkcxRc1roADvo3DTQJ9969ItDuEgrBDlvQ0cuXYbUSDl
-         d7AL5JAj7caLeZd9CjyaANen/Ai7W7sIv3XujE9X2EmOHDRIDhMf5GZ6XBq1MZ3EXIrW
-         DDYSgmzeeGZFM6+MkXeuPHBhSdfbqAWLYWBS8VRCi/0/8qLSUU3J+Bc1EbY+ucxWZdmv
-         b7Dnc8gtnEpg6WeB8Pxf+Qzc10bf7mdlzawM2DBaY5uN/Ylp7TjqFvMTT3oCC+Ill8qN
-         hX5iZ4dh7tiiiuPPK7FRpP6/hK6DQ0SRm6COYjtOBI6j4AlsyK1is7hjQy29NzWgsR/C
-         gbVQ==
+        b=DpB5skZFhSTEWeB0j3Vh5TZwfGNaurKfHbDwCiaH1XCw+YTtQl3cuzbrg2Iiw1nltM
+         C7ZbWy33eJIT0yOQgzHQaLyrLR/FaFwSesQjXlJf/FCOhcQn+4THiIrZd8iw0twdMMLY
+         zRO2QRKcnELhzifXL9+2TLeXVvsgsw2HlJPYW4UT8ld8/+WeGgfRhDg742Ep3rFgCp1V
+         sBWnwQ1Av4ebbLoqAA2uEYgo9aH7Z6OzYSmkhSKfETsyTl2o7C1T9CJZCuYEzuNd2Tsh
+         dxAEVzkeshkbuOrF2bhvA+qEW74+E2oQpbyHQ/KuvFv/JGk75AE4oeD5zGUBsK9+3cZl
+         clZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=wvK5100t3Ru3PwlfUk2/v4Xei+KIXGvop7OqFB75Hek=;
-        b=hbbXqttyJX21T/ify8IddJ/OQlX+ONH2XOHo+QEUo8z2GjqctEm2kjNNnRK8rKA6e/
-         lIosH8maFEFBXctkJvmvp9X9YaX5Vi2xfogziVy8C1Zo4b7/yfHvWR+3g/St70RU30M8
-         Vz9r5ivBsXn2O/pJXkAV/OszZ4dFdxPj0vWVOguKKInViAVkhUivnmPyK5kKtv0LWRay
-         KmO1+082COIj5UvfX5TtrIzK6/vje/2sgQ5ahOU4iOZHM0qvFfDIJ1ufRCNGcmd1by7W
-         XZsrHVUTteWl69fFAQD6jtUyLf/59WcOYztLrxfnE0mSXFcIHfxeahXhPqmvXXMfcOzq
-         7r7g==
+        bh=5FKcFFoz/FT1jFBsPVyN5pMqwGAlqiO1LFE+/xNc0UA=;
+        b=kqDXjmfwpcLW7kwCTo538VOcQYQo6GxDrv8UWsW8yax93o8tWpSu6h60zByLxxqe3u
+         0H8SJGHYyz44Hr+nAECyceluSjIJq6ERGi1xlEZqm/SyUvXE8OtNwHG97gl1vuYCaUz2
+         Y02fuS1Rpl8F5C2zCGFcP7c0z2+v7/QECN1tpTzFk4o1Aj+m/LOwuWTQ8X8GTRl+pN/W
+         HV6cZULH1BkAw30hDmtxrdHEUhdy030lnS5B6lSCk7RfxRt0IFVWwbRIbbDYlwila9UH
+         QbZtn1CARH42UNGJKZAjN9yu/Z1mLWDTXFocX8uQP1rOilbcdgwRgR+EkH7QcFyjd5ZZ
+         cj7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=URm1iCJy;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tBktb9Te;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l127si5628631oif.11.2019.12.20.13.20.12
+        by mx.google.com with ESMTPS id f23si5622309oto.205.2019.12.20.13.29.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Dec 2019 13:20:12 -0800 (PST)
+        Fri, 20 Dec 2019 13:29:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=URm1iCJy;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tBktb9Te;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33604 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33712 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iiPgx-0000nt-Pr
-	for alex.bennee@linaro.org; Fri, 20 Dec 2019 16:20:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46601)
+	id 1iiPq1-0002Mu-JY
+	for alex.bennee@linaro.org; Fri, 20 Dec 2019 16:29:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56273)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1iiPga-0000Rw-D8
- for qemu-arm@nongnu.org; Fri, 20 Dec 2019 16:19:49 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iiPoW-0000PO-V4
+ for qemu-arm@nongnu.org; Fri, 20 Dec 2019 16:28:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1iiPgZ-0006OK-3C
- for qemu-arm@nongnu.org; Fri, 20 Dec 2019 16:19:48 -0500
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:36143)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iiPoU-0007jI-Ce
+ for qemu-arm@nongnu.org; Fri, 20 Dec 2019 16:27:59 -0500
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:38848)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1iiPgW-000633-0p; Fri, 20 Dec 2019 16:19:44 -0500
-Received: by mail-io1-xd44.google.com with SMTP id r13so723292ioa.3;
- Fri, 20 Dec 2019 13:19:43 -0800 (PST)
+ id 1iiPoQ-0007KG-QL; Fri, 20 Dec 2019 16:27:55 -0500
+Received: by mail-il1-x141.google.com with SMTP id f5so9154478ilq.5;
+ Fri, 20 Dec 2019 13:27:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wvK5100t3Ru3PwlfUk2/v4Xei+KIXGvop7OqFB75Hek=;
- b=URm1iCJyy1LNBjRcjhwN9rXbzIegcj60MtDPxNz3Nl5fYc0icXOzRNkGfxGkPbU7+H
- KXgj98ZdmP/JZ1ureuzK+XTKoZ/qu7/8/VTw9BMOTrfUmZjQTFsUHUxrZHFFWQxar7JT
- IUID/vyyduOqaVLorokkuRje+uubkegQvz4B9cKhXvPVmzXS97+XSRFy1WH82Zmya2hy
- 3koqiapc/vqoFC18cxwxEH+YhStyvOxWfb3pLivsp2iVRaowtmLcaArTbdo0g8k1gGvM
- uoQRYb3wYJFsVyBnnKZzusWfbKPLhQsEdGXtcTep9ctTjYI/VpSPwbtXFFmOlfQVFSwF
- D1Rg==
+ :cc; bh=5FKcFFoz/FT1jFBsPVyN5pMqwGAlqiO1LFE+/xNc0UA=;
+ b=tBktb9Te0Cy0czwH6xaDZSPAhCAn/X4Zs1txiJTvo4H8qMFHdXeqlS0X5CXF4xxEBJ
+ jMdnWc2p6fbFF8F+DalqECCNQ1VtzFCMX/cMU27dOqukNHgxICoF9/ZT7+0vIwZ1BOD7
+ fhgKi+efaZKodH24LZYhKmfK2LvD67Y8DpIALoOjrtf39jye9I9jQsH+z6OJd6plpZRb
+ lHvlnrlifIBJN7NgbOc6ibIukpRQJpqgMwx7BrjmFa7o82La30FCIKVdjVuDOMJADK53
+ lUyzVYK/eLIfIWvRgXeaP+AUwd7twibcFilwnJk641IGZxztkJ2MOqeLnXD/LQJJwR7P
+ 4X5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=wvK5100t3Ru3PwlfUk2/v4Xei+KIXGvop7OqFB75Hek=;
- b=h/dawX8OZGW8w64zwhx+ykrh3d5bKmJv80e7+YnUxmaIPUob9cNcfOq0Jg9+qFoKg6
- FAjXDc8lSgFDPK8JHe0CWHgqJb4n5O9wlgOZirrNDSot2a9SggFiEDWORdd9lSC0DBaY
- C6UrJBukwOTso9efN4UVKH1H7Wg5xOKVSzgjnHHha2yUhIfpKQgcON7IMYoUZrZ7wH3A
- Ew3l9MYJIEEywxIYOsqsoJoeXm+eq771ImwH2362cGvmDkUXj9DkbyzQiYjqbF7ktCGj
- JsLDIjF9bkEjK+WeZX+2ET3ZhcG2DPyEMHAA4ijIXS0wLekCongu6gfJZW3tL+jVVKHQ
- 88bA==
-X-Gm-Message-State: APjAAAWPhx7BHU6BNtC1831R7OXh0hwQO+eEfCnWWTNB6XyclwHT1dDH
- v9H4RtGv64zvWNF6HgcE1JoCOPwSza+9pS7oxlI=
-X-Received: by 2002:a02:856a:: with SMTP id g97mr13625535jai.97.1576876783067; 
- Fri, 20 Dec 2019 13:19:43 -0800 (PST)
+ bh=5FKcFFoz/FT1jFBsPVyN5pMqwGAlqiO1LFE+/xNc0UA=;
+ b=sOcGJpKQWROR0Edr1y+V0vdcuaQh902pq8jZlXShzHuhBMPzi3fZtEWCfQehpbmUvM
+ jXpHSoTDoWyGUkGofhRe7tGqK2CGCEfKbO1wfrbZnSJY5MHTFEEVFQO/6zd6Q6mq4Tk5
+ T7ZsJmjivvXo76vhJpv2pl9Ild0Yl/FJ8fUZ+xxdIYMm9/MaA6qKPxQ5vG9N8v4d+oA5
+ zN0qWpNkKVPGm51d1nrqusMbtK8WnalYr/cAXzBYv7uldec0y98iqnAvxisOTrIF0U6z
+ qQlmQyNH74hPA4z08JHDRZSyRqCQs4fMmG99dQ6augwU72ANsMOobOgdD4zgrc84MeRe
+ bU1g==
+X-Gm-Message-State: APjAAAX2pKhXFIn5s8NDnghYB8Z+GSIPzkExaHaqHDgj8R7xYY4cwVGv
+ Y+9ZyCqrbFPd9E8rmE5G9ZtAYXuR7t9G4dNo92s=
+X-Received: by 2002:a92:5a45:: with SMTP id o66mr13722170ilb.67.1576877272941; 
+ Fri, 20 Dec 2019 13:27:52 -0800 (PST)
 MIME-Version: 1.0
 References: <20191219185127.24388-1-f4bug@amsat.org>
- <20191219185127.24388-2-f4bug@amsat.org>
-In-Reply-To: <20191219185127.24388-2-f4bug@amsat.org>
+ <20191219185127.24388-3-f4bug@amsat.org>
+In-Reply-To: <20191219185127.24388-3-f4bug@amsat.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Fri, 20 Dec 2019 22:19:31 +0100
-Message-ID: <CAPan3WpBhM22Jfu-RMwYXyQnDqYMY21hGuWHQsZWhesZGa91+A@mail.gmail.com>
-Subject: Re: [PATCH 01/13] hw/timer/allwinner: Use the AW_A10_PIT_TIMER_NR
- definition
+Date: Fri, 20 Dec 2019 22:27:41 +0100
+Message-ID: <CAPan3Wqq99FOj9ye1ozVab1gd9hWpb4dNDOs+a8i55PZe0mGtw@mail.gmail.com>
+Subject: Re: [PATCH 02/13] hw/timer/allwinner: Add AW_PIT_TIMER_MAX definition
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000008268b1059a293c14"
+Content-Type: multipart/alternative; boundary="000000000000b54b3e059a2959eb"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d44
+X-Received-From: 2607:f8b0:4864:20::141
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,9 +108,9 @@ Cc: Beniamino Galvani <b.galvani@gmail.com>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8n3AZfk0vFTB
+X-TUID: jdzeuD+/Y/zH
 
---0000000000008268b1059a293c14
+--000000000000b54b3e059a2959eb
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -119,57 +118,96 @@ On Thu, Dec 19, 2019 at 7:51 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g>
 wrote:
 
-> We have a definition for this magic value '6', use it.
+> This controller is able to use up to 6 timers.
+> Later we will reuse part of it to model other similar controllers
+> but with less timers. To simplify the VMSTATE, we'll keep a max
+> of 6 timers. Add a definition for that value.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  include/hw/timer/allwinner-a10-pit.h | 2 +-
->  hw/timer/allwinner-a10-pit.c         | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  include/hw/timer/allwinner-a10-pit.h | 14 ++++++++------
+>  hw/timer/allwinner-a10-pit.c         |  8 ++++----
+>  2 files changed, 12 insertions(+), 10 deletions(-)
 >
 > diff --git a/include/hw/timer/allwinner-a10-pit.h
 > b/include/hw/timer/allwinner-a10-pit.h
-> index 871c95b512..6aceda81ee 100644
+> index 6aceda81ee..54c40c7db6 100644
 > --- a/include/hw/timer/allwinner-a10-pit.h
 > +++ b/include/hw/timer/allwinner-a10-pit.h
-> @@ -32,7 +32,7 @@
+> @@ -7,6 +7,8 @@
+>  #define TYPE_AW_A10_PIT "allwinner-A10-timer"
+>  #define AW_A10_PIT(obj) OBJECT_CHECK(AwA10PITState, (obj),
+> TYPE_AW_A10_PIT)
 >
->  #define AW_A10_PIT_TIMER_BASE      0x10
->  #define AW_A10_PIT_TIMER_BASE_END  \
-> -    (AW_A10_PIT_TIMER_BASE * 6 + AW_A10_PIT_TIMER_COUNT)
-> +    (AW_A10_PIT_TIMER_BASE * AW_A10_PIT_TIMER_NR + AW_A10_PIT_TIMER_COUN=
-T)
+> +#define AW_PIT_TIMER_MAX        6
+> +
+>  #define AW_A10_PIT_TIMER_NR    6
+>  #define AW_A10_PIT_TIMER_IRQ   0x1
+>  #define AW_A10_PIT_WDOG_IRQ    0x100
+> @@ -47,17 +49,17 @@ struct AwA10PITState {
+>      /*< private >*/
+>      SysBusDevice parent_obj;
+>      /*< public >*/
+> -    qemu_irq irq[AW_A10_PIT_TIMER_NR];
+> -    ptimer_state * timer[AW_A10_PIT_TIMER_NR];
+> -    AwA10TimerContext timer_context[AW_A10_PIT_TIMER_NR];
+> +    qemu_irq irq[AW_PIT_TIMER_MAX];
+> +    ptimer_state * timer[AW_PIT_TIMER_MAX];
+> +    AwA10TimerContext timer_context[AW_PIT_TIMER_MAX];
+>      MemoryRegion iomem;
+>      uint32_t clk_freq[4];
 >
->  #define AW_A10_PIT_DEFAULT_CLOCK   0x4
->
+>      uint32_t irq_enable;
+>      uint32_t irq_status;
+> -    uint32_t control[AW_A10_PIT_TIMER_NR];
+> -    uint32_t interval[AW_A10_PIT_TIMER_NR];
+> -    uint32_t count[AW_A10_PIT_TIMER_NR];
+> +    uint32_t control[AW_PIT_TIMER_MAX];
+> +    uint32_t interval[AW_PIT_TIMER_MAX];
+> +    uint32_t count[AW_PIT_TIMER_MAX];
+>      uint32_t watch_dog_mode;
+>      uint32_t watch_dog_control;
+>      uint32_t count_lo;
 > diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c
-> index aae880f5b3..117e5c7bf8 100644
+> index 117e5c7bf8..b31a0bcd43 100644
 > --- a/hw/timer/allwinner-a10-pit.c
 > +++ b/hw/timer/allwinner-a10-pit.c
-> @@ -225,7 +225,7 @@ static void a10_pit_reset(DeviceState *dev)
->      s->irq_status =3D 0;
->      a10_pit_update_irq(s);
->
-> -    for (i =3D 0; i < 6; i++) {
-> +    for (i =3D 0; i < AW_A10_PIT_TIMER_NR; i++) {
->          s->control[i] =3D AW_A10_PIT_DEFAULT_CLOCK;
->          s->interval[i] =3D 0;
->          s->count[i] =3D 0;
+> @@ -203,15 +203,15 @@ static const VMStateDescription vmstate_a10_pit =3D=
+ {
+>      .fields =3D (VMStateField[]) {
+>          VMSTATE_UINT32(irq_enable, AwA10PITState),
+>          VMSTATE_UINT32(irq_status, AwA10PITState),
+> -        VMSTATE_UINT32_ARRAY(control, AwA10PITState, AW_A10_PIT_TIMER_NR=
+),
+> -        VMSTATE_UINT32_ARRAY(interval, AwA10PITState,
+> AW_A10_PIT_TIMER_NR),
+> -        VMSTATE_UINT32_ARRAY(count, AwA10PITState, AW_A10_PIT_TIMER_NR),
+> +        VMSTATE_UINT32_ARRAY(control, AwA10PITState, AW_PIT_TIMER_MAX),
+> +        VMSTATE_UINT32_ARRAY(interval, AwA10PITState, AW_PIT_TIMER_MAX),
+> +        VMSTATE_UINT32_ARRAY(count, AwA10PITState, AW_PIT_TIMER_MAX),
+>          VMSTATE_UINT32(watch_dog_mode, AwA10PITState),
+>          VMSTATE_UINT32(watch_dog_control, AwA10PITState),
+>          VMSTATE_UINT32(count_lo, AwA10PITState),
+>          VMSTATE_UINT32(count_hi, AwA10PITState),
+>          VMSTATE_UINT32(count_ctl, AwA10PITState),
+> -        VMSTATE_PTIMER_ARRAY(timer, AwA10PITState, AW_A10_PIT_TIMER_NR),
+> +        VMSTATE_PTIMER_ARRAY(timer, AwA10PITState, AW_PIT_TIMER_MAX),
+>          VMSTATE_END_OF_LIST()
+>      }
+>  };
 > --
 > 2.21.0
 >
-> Change looks fine to me:
-  Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> Looks good and works fine with -M orangepi-pc and -M cubieboard.
 
-Works fine with -M orangepi-pc and -M cubieboard:
-  Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
 
 --=20
 Niek Linnenbank
 
---0000000000008268b1059a293c14
+--000000000000b54b3e059a2959eb
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -178,55 +216,108 @@ Content-Transfer-Encoding: quoted-printable
 ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.o=
 rg</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
 n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-">We have a definition for this magic value &#39;6&#39;, use it.<br>
+">This controller is able to use up to 6 timers.<br>
+Later we will reuse part of it to model other similar controllers<br>
+but with less timers. To simplify the VMSTATE, we&#39;ll keep a max<br>
+of 6 timers. Add a definition for that value.<br>
 <br>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0include/hw/timer/allwinner-a10-pit.h | 2 +-<br>
-=C2=A0hw/timer/allwinner-a10-pit.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<=
-br>
-=C2=A02 files changed, 2 insertions(+), 2 deletions(-)<br>
+=C2=A0include/hw/timer/allwinner-a10-pit.h | 14 ++++++++------<br>
+=C2=A0hw/timer/allwinner-a10-pit.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0=
+ 8 ++++----<br>
+=C2=A02 files changed, 12 insertions(+), 10 deletions(-)<br>
 <br>
 diff --git a/include/hw/timer/allwinner-a10-pit.h b/include/hw/timer/allwin=
 ner-a10-pit.h<br>
-index 871c95b512..6aceda81ee 100644<br>
+index 6aceda81ee..54c40c7db6 100644<br>
 --- a/include/hw/timer/allwinner-a10-pit.h<br>
 +++ b/include/hw/timer/allwinner-a10-pit.h<br>
-@@ -32,7 +32,7 @@<br>
+@@ -7,6 +7,8 @@<br>
+=C2=A0#define TYPE_AW_A10_PIT &quot;allwinner-A10-timer&quot;<br>
+=C2=A0#define AW_A10_PIT(obj) OBJECT_CHECK(AwA10PITState, (obj), TYPE_AW_A1=
+0_PIT)<br>
 <br>
-=C2=A0#define AW_A10_PIT_TIMER_BASE=C2=A0 =C2=A0 =C2=A0 0x10<br>
-=C2=A0#define AW_A10_PIT_TIMER_BASE_END=C2=A0 \<br>
--=C2=A0 =C2=A0 (AW_A10_PIT_TIMER_BASE * 6 + AW_A10_PIT_TIMER_COUNT)<br>
-+=C2=A0 =C2=A0 (AW_A10_PIT_TIMER_BASE * AW_A10_PIT_TIMER_NR + AW_A10_PIT_TI=
-MER_COUNT)<br>
++#define AW_PIT_TIMER_MAX=C2=A0 =C2=A0 =C2=A0 =C2=A0 6<br>
++<br>
+=C2=A0#define AW_A10_PIT_TIMER_NR=C2=A0 =C2=A0 6<br>
+=C2=A0#define AW_A10_PIT_TIMER_IRQ=C2=A0 =C2=A00x1<br>
+=C2=A0#define AW_A10_PIT_WDOG_IRQ=C2=A0 =C2=A0 0x100<br>
+@@ -47,17 +49,17 @@ struct AwA10PITState {<br>
+=C2=A0 =C2=A0 =C2=A0/*&lt; private &gt;*/<br>
+=C2=A0 =C2=A0 =C2=A0SysBusDevice parent_obj;<br>
+=C2=A0 =C2=A0 =C2=A0/*&lt; public &gt;*/<br>
+-=C2=A0 =C2=A0 qemu_irq irq[AW_A10_PIT_TIMER_NR];<br>
+-=C2=A0 =C2=A0 ptimer_state * timer[AW_A10_PIT_TIMER_NR];<br>
+-=C2=A0 =C2=A0 AwA10TimerContext timer_context[AW_A10_PIT_TIMER_NR];<br>
++=C2=A0 =C2=A0 qemu_irq irq[AW_PIT_TIMER_MAX];<br>
++=C2=A0 =C2=A0 ptimer_state * timer[AW_PIT_TIMER_MAX];<br>
++=C2=A0 =C2=A0 AwA10TimerContext timer_context[AW_PIT_TIMER_MAX];<br>
+=C2=A0 =C2=A0 =C2=A0MemoryRegion iomem;<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t clk_freq[4];<br>
 <br>
-=C2=A0#define AW_A10_PIT_DEFAULT_CLOCK=C2=A0 =C2=A00x4<br>
-<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t irq_enable;<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t irq_status;<br>
+-=C2=A0 =C2=A0 uint32_t control[AW_A10_PIT_TIMER_NR];<br>
+-=C2=A0 =C2=A0 uint32_t interval[AW_A10_PIT_TIMER_NR];<br>
+-=C2=A0 =C2=A0 uint32_t count[AW_A10_PIT_TIMER_NR];<br>
++=C2=A0 =C2=A0 uint32_t control[AW_PIT_TIMER_MAX];<br>
++=C2=A0 =C2=A0 uint32_t interval[AW_PIT_TIMER_MAX];<br>
++=C2=A0 =C2=A0 uint32_t count[AW_PIT_TIMER_MAX];<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t watch_dog_mode;<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t watch_dog_control;<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t count_lo;<br>
 diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c<br=
 >
-index aae880f5b3..117e5c7bf8 100644<br>
+index 117e5c7bf8..b31a0bcd43 100644<br>
 --- a/hw/timer/allwinner-a10-pit.c<br>
 +++ b/hw/timer/allwinner-a10-pit.c<br>
-@@ -225,7 +225,7 @@ static void a10_pit_reset(DeviceState *dev)<br>
-=C2=A0 =C2=A0 =C2=A0s-&gt;irq_status =3D 0;<br>
-=C2=A0 =C2=A0 =C2=A0a10_pit_update_irq(s);<br>
+@@ -203,15 +203,15 @@ static const VMStateDescription vmstate_a10_pit =3D {=
 <br>
--=C2=A0 =C2=A0 for (i =3D 0; i &lt; 6; i++) {<br>
-+=C2=A0 =C2=A0 for (i =3D 0; i &lt; AW_A10_PIT_TIMER_NR; i++) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;control[i] =3D AW_A10_PIT_DEFAULT_C=
-LOCK;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;interval[i] =3D 0;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;count[i] =3D 0;<br>
+=C2=A0 =C2=A0 =C2=A0.fields =3D (VMStateField[]) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_UINT32(irq_enable, AwA10PITState)=
+,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_UINT32(irq_status, AwA10PITState)=
+,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(control, AwA10PITState, A=
+W_A10_PIT_TIMER_NR),<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(interval, AwA10PITState, =
+AW_A10_PIT_TIMER_NR),<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(count, AwA10PITState, AW_=
+A10_PIT_TIMER_NR),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(control, AwA10PITState, A=
+W_PIT_TIMER_MAX),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(interval, AwA10PITState, =
+AW_PIT_TIMER_MAX),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(count, AwA10PITState, AW_=
+PIT_TIMER_MAX),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_UINT32(watch_dog_mode, AwA10PITSt=
+ate),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_UINT32(watch_dog_control, AwA10PI=
+TState),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_UINT32(count_lo, AwA10PITState),<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_UINT32(count_hi, AwA10PITState),<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_UINT32(count_ctl, AwA10PITState),=
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_PTIMER_ARRAY(timer, AwA10PITState, AW_=
+A10_PIT_TIMER_NR),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_PTIMER_ARRAY(timer, AwA10PITState, AW_=
+PIT_TIMER_MAX),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_END_OF_LIST()<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0};<br>
 -- <br>
 2.21.0<br>
-<br></blockquote><div>Change looks fine to me:</div><div>=C2=A0 Reviewed-by=
-: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinne=
-nbank@gmail.com</a>&gt;<br></div><div><br></div><div>Works fine with -M ora=
-ngepi-pc and -M cubieboard:</div><div>=C2=A0 Tested-by: Niek Linnenbank &lt=
-;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&g=
-t;<br></div><div>=C2=A0</div></div><br clear=3D"all"><br>-- <br><div dir=3D=
-"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><b=
-r></div></div></div></div>
+<br>
+</blockquote></div><div>Looks good and works fine with -M orangepi-pc and -=
+M cubieboard.</div><div><br></div><div>Reviewed-by: Niek Linnenbank &lt;<a =
+href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</=
+div><div>Tested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
+ail.com">nieklinnenbank@gmail.com</a>&gt;<br></div><div><br></div><br>-- <b=
+r><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Niek Lin=
+nenbank<br><br></div></div></div></div>
 
---0000000000008268b1059a293c14--
+--000000000000b54b3e059a2959eb--

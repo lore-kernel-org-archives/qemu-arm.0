@@ -1,108 +1,96 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3865045lff;
-        Fri, 20 Dec 2019 09:02:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx0RxthhUa7l+Ck7/L4NhbSCV9HENjRVNz483+2EYBVqiRHi4GRUCnxKQiO0YZStNCADKdQ
-X-Received: by 2002:a37:693:: with SMTP id 141mr14205305qkg.134.1576861372489;
-        Fri, 20 Dec 2019 09:02:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576861372; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4117436lff;
+        Fri, 20 Dec 2019 12:53:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyC56nQ9g17nKpvol4t/cnAqVtJRuxvqE/A9gRvQXwQbtYljuZ8gK3LyJ5gX7kWUFBu6Ugp
+X-Received: by 2002:a9d:68cb:: with SMTP id i11mr13946294oto.210.1576875234926;
+        Fri, 20 Dec 2019 12:53:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576875234; cv=none;
         d=google.com; s=arc-20160816;
-        b=UV5lZwvOMmLfCwHSikDigsuguWqDnSn3J8zHYZW2d3pcIRNDA/aLkFsLX0xA2SNMjn
-         6nVdo2TvgMM4dxAQYcWkx5MaOGN99G5kROq7AV3btmdYIKYLuPvob+AQkQ22+YAcpLLi
-         aIqMLRj12Cww94BgdQqKfQ/ITR0Hu+XUs3WxOdoH9zVjXBMIeak780nWu/2rhF6f1444
-         uGm01izAHgsoiC6t9nPLoJVZbNm3ZSEY8ocrYZ8CZYoWq1M+2mc9HNozRLPCpk+U84NR
-         0Pp5jx542cYeD8KjRROd55l3Z/lQ5aBe3YgrbQb1mO5MI9CJlDTUGzUsdbQ+q3LvUb/w
-         MrhQ==
+        b=r631YwlP44+XeYEY58ClhHHaiWLcgmjzfRwyFzobk2tFhFvrt74drd0L0gBEHiEZr3
+         +qVrEDf33c2xdy7hX5J0SjFStcPQqiRjNy73smBoOp1j+/anezDDTVqxglgvOZvCX9tv
+         v/iaHjfuIB/4HUsmeeDqAHiONMBjb5NBVFMvZ7pBLOvZfgWuVhKwDAwDVO6KU6pvbtAa
+         fLV6KAjigjCgslXitUX9JZbeZ1Xj4fLvcrtYXExwd3j7DYhqGRHimuojygJ+zk2UC9xr
+         y15UZW2xjY/8B2SLXSNEBBPbhULWbfrS89NMn5WLCbByKybvma8LybdupnC59ezDQUS+
+         24OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=WS8ChejV4YO4dWg6kHYPfKg+xFnECZ3CCJJ2MBa8TKg=;
-        b=pyglfmcEum8L6b+7bG21arRilnlzaWkzgag8EVt2QDjHBLr5QEHsqWoYuQdIBdazkN
-         mqADUw1ufCpvFa7Sd6S7Kr4w2eBGUy9O978FHEW4GM4+Mo+/88pc5bZNkr9vlo0+qDAk
-         A51H1NctDR8SKr7ToaimzNeReBsYrda7zdVWEMr4sYwkLssB4ly5Gzj/rkAEBOETHwjn
-         AS7zNKkEcz85+SMG31GB5Yx6q/WtIRjFcxhKQt0YsKVQq51U2ZN+WhNrd5zHKAvjaouF
-         ZGwNJ819NesIEcha2upBRca/vGFG9BcNk8vGRChYEClPdIibe9tMvOpHDVAbIZFGoCcu
-         hwLg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=FtM6QrrcIKciVwrC1mDDncSHnEooOIfjatjv3KovqFg=;
+        b=GW9mGJydGDkcimtow0w0K6kKGknngtkMftOMmkxCXWhOVE2fSyew7kHQAjJ2fHRcjJ
+         Gg25C2t0XvC9yUU3kktkNv+Lg39wyvORV4nsTN1euijxXoanV3mv3SHrHeiQx/J3D6mN
+         1h0hcU+7nVnNddnV8yglPUt0jl/HEVfpfAw+eMiHZz1fHwyg1faFGA4Z2t7Dig/7XSHt
+         MGybEtRRd32ebcOApaHqqypXh6MHVmgpy22BJ+JyKIuj23AKaSDekT/9PWvvzgQED5tk
+         6Bi+Kgadx2iMKW6aoOXB1YbVNKCVbVMV7pSxkFQO/otevDM6vOlnBKQZkMOAycNXI1QH
+         CaBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=R6Wb0GI3;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p1GITxy0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b2si5412275qkh.275.2019.12.20.09.02.52
+        by mx.google.com with ESMTPS id k7si4302917otp.22.2019.12.20.12.53.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Dec 2019 09:02:52 -0800 (PST)
+        Fri, 20 Dec 2019 12:53:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=R6Wb0GI3;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p1GITxy0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59306 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33296 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iiLfu-0002A7-SB
-	for alex.bennee@linaro.org; Fri, 20 Dec 2019 12:02:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40077)
+	id 1iiPHV-0000KQ-Lx
+	for alex.bennee@linaro.org; Fri, 20 Dec 2019 15:53:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43633)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jean-philippe@linaro.org>) id 1iiLdm-0000Cb-4s
- for qemu-arm@nongnu.org; Fri, 20 Dec 2019 12:00:40 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iiPHL-0000Gn-9V
+ for qemu-arm@nongnu.org; Fri, 20 Dec 2019 15:53:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jean-philippe@linaro.org>) id 1iiLdk-0007js-EN
- for qemu-arm@nongnu.org; Fri, 20 Dec 2019 12:00:37 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35896)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iiPHJ-0005mM-9J
+ for qemu-arm@nongnu.org; Fri, 20 Dec 2019 15:53:43 -0500
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:40729)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
- id 1iiLdk-0007hz-2n
- for qemu-arm@nongnu.org; Fri, 20 Dec 2019 12:00:36 -0500
-Received: by mail-wr1-x441.google.com with SMTP id z3so10108251wru.3
- for <qemu-arm@nongnu.org>; Fri, 20 Dec 2019 09:00:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=WS8ChejV4YO4dWg6kHYPfKg+xFnECZ3CCJJ2MBa8TKg=;
- b=R6Wb0GI3tLLJX1jKbcK6dL58ItO88nB1eLyPF9Xal+jobILpJSw3vgUjiZjljSuPKe
- j2xj5ZZDj1fBgRP1ge6bMhNq6Pa57PW5XG/S55HtjqxPX1/KqiVWr14CdiZQOwaBhbou
- e9CL5yV3YzWwb1CINwwlTS18Y8ZGo9fg75fPqdCojqI/4UdHHlcBsudznM82wbntNJ2H
- hWjCrtmnmMkdZmmL9ZUpWqtl6uUZft91JFAWwJCMojwRgIFvy4G5pgClZeX8EJYd77R0
- hd5la9W/Ys14oieLR8SYbYFM7cSaNG7qG+cCojMEA9AT03FogkPuev5C5iT5oROZVxXE
- rpLA==
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1iiPHE-0005Lx-Me; Fri, 20 Dec 2019 15:53:36 -0500
+Received: by mail-il1-x142.google.com with SMTP id c4so9086565ilo.7;
+ Fri, 20 Dec 2019 12:53:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FtM6QrrcIKciVwrC1mDDncSHnEooOIfjatjv3KovqFg=;
+ b=p1GITxy0voPm4Nwn6qrvc43gBRnquFokzniG0K8nVveu9QqtQxF+yeqs5hU4o9knmD
+ H2A1RYpnRT9Zk3x+nRLpEYfVJRHEl0vGzRltFhE6QAPG77vlJbvqkvLe5yFNN1FuPhgP
+ z771CcRdpm1flHLbrcLtTYLJDidhEB3Ju2pGuuKsfjkGcYZi1oUkh2f3mLn7SdPr7PVP
+ ZbsVD1WIgHHK85lN5mLSidiONZ4H8J1ZLszpfjqOKRq8hPqVGpVsb/M8lUQMo8QxrPkI
+ VCHw3XmuJHHFtqeYvBvR7cVsgWNcfUTZd2g0+drx3P8pJupS6iWvzotGHvhcI48WwjV4
+ /mrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=WS8ChejV4YO4dWg6kHYPfKg+xFnECZ3CCJJ2MBa8TKg=;
- b=QOUUGt+D2Qs0VZWXG4I3JZEh108jyUkuP63tu/frH5kcG03aqUCJ7rS81YDu5txxxd
- V/Qe2pOAO6GqkRRgatvCw5/cPDNacbVmvylWxmOhWtTj75nKEMtVgGAfTlBh3p2aMCXk
- 6hJ7opWZsnu1QgwNp5Nv9nYBb8b6FxHHiwwheexVeAf3C1lan56IM+2bT6xZ7EhpR7xw
- 85WdS+KaMV2d0gxt3Xu94Q7lt6P0hBUzOWimZsZA/zfLuf7kB+FOdhImajh2irvExA7d
- Vn62z+nNDF/xgaVLdEnmtXD0Jxzilsnl4AlFnVji1FnRkgQb+FvlWyegEICxpZg2we8T
- 60TQ==
-X-Gm-Message-State: APjAAAW7FGR+UemDI8KjCx85TMDVbJr3kdeCyeDAYH6BTlB8/5P995s0
- ut7ecvQRlzRRZAlzIX+dWEzp7w==
-X-Received: by 2002:a5d:6a83:: with SMTP id s3mr15575656wru.99.1576861234459; 
- Fri, 20 Dec 2019 09:00:34 -0800 (PST)
-Received: from myrica (adsl-84-227-176-239.adslplus.ch. [84.227.176.239])
- by smtp.gmail.com with ESMTPSA id x11sm10337438wmg.46.2019.12.20.09.00.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Dec 2019 09:00:33 -0800 (PST)
-Date: Fri, 20 Dec 2019 18:00:28 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Auger Eric <eric.auger@redhat.com>
-Subject: Re: [PATCH for-5.0 v11 05/20] virtio-iommu: Endpoint and domains
- structs and helpers
-Message-ID: <20191220170028.GB2626852@myrica>
-References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-6-eric.auger@redhat.com>
- <20191210163716.GD277340@myrica>
- <28597404-b9ac-8c16-e9e8-ad5793f2f5a3@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FtM6QrrcIKciVwrC1mDDncSHnEooOIfjatjv3KovqFg=;
+ b=JOwZWUM3r97D5ucm6VcKEP7GddNHOqOouaT/dK8RfcJ694P5imuZszHZ63y+f/D6Yv
+ +v450MaqiIadDj9gN2lTEBq1K8/t89iN5z3qJChHUJKwVCS7j+wKSZM9/EhWUshm+oBn
+ bzdRSv1z0iirUx9MpPQtWso5mDJ06I3/J1jW+y/3rHUAfTOjUAzeS8LMSHQf+/nNzSPn
+ wXSRe2jeeq3gC0DEduIj8BhFHKxP78ewbZnhzn433GGXxXnpPrFKDyXZKp8owCOyGHzF
+ YxVo4zgcD0hH6YHwcFlSve4ahL4AQST2gdL2iYv6cDH/btUi6H+2HkqaAp+4V2ma1leS
+ 9tnw==
+X-Gm-Message-State: APjAAAVeP3zjQeBgE8m6tqNT1o766knwLi+c8EU/hOtsK2O/67B9DZA0
+ gN/SAMYykx6EfVznx5qm6QjYNt/yVyBhOHfVx2M=
+X-Received: by 2002:a92:c647:: with SMTP id 7mr14409560ill.28.1576875214621;
+ Fri, 20 Dec 2019 12:53:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <28597404-b9ac-8c16-e9e8-ad5793f2f5a3@redhat.com>
+References: <20191219185127.24388-1-f4bug@amsat.org>
+In-Reply-To: <20191219185127.24388-1-f4bug@amsat.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Fri, 20 Dec 2019 21:53:23 +0100
+Message-ID: <CAPan3Wop2qT6PS4XEqe=9OjpA34kJkO-PqNB74tfjyRfYTThLA@mail.gmail.com>
+Subject: Re: [RFC PATCH 00/13] hw/timer/allwinner: Make it reusable
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="00000000000005d230059a28df59"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
+X-Received-From: 2607:f8b0:4864:20::142
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,67 +102,272 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
- quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
- armbru@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- dgilbert@redhat.com, eric.auger.pro@gmail.com
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 82UArmnFS8cD
+X-TUID: Xu0wLUTw31hW
 
-On Thu, Dec 19, 2019 at 07:31:08PM +0100, Auger Eric wrote:
-> Hi Jean,
-> 
-> On 12/10/19 5:37 PM, Jean-Philippe Brucker wrote:
-> > On Fri, Nov 22, 2019 at 07:29:28PM +0100, Eric Auger wrote:
-> >> +typedef struct viommu_domain {
-> >> +    uint32_t id;
-> >> +    GTree *mappings;
-> >> +    QLIST_HEAD(, viommu_endpoint) endpoint_list;
-> >> +} viommu_domain;
-> >> +
-> >> +typedef struct viommu_endpoint {
-> >> +    uint32_t id;
-> >> +    viommu_domain *domain;
-> >> +    QLIST_ENTRY(viommu_endpoint) next;
-> >> +} viommu_endpoint;
-> > 
-> > There might be a way to merge viommu_endpoint and the IOMMUDevice
-> > structure introduced in patch 4, since they both represent one endpoint.
-> > Maybe virtio_iommu_find_add_pci_as() could add the IOMMUDevice to
-> > s->endpoints, and IOMMUDevice could store the endpoint ID rather than bus
-> > and devfn.
-> 
-> On PCI bus enumeration we locally store the PCI bus hierarchy under the
-> form of GHashTable of IOMMUDevice indexed by iommu_pci_bus pointer.
-> Those are all the devices attached to the downstream buses. We also use
-> an array of iommu pci bus pointers indexed by bus number that is lazily
-> populated due to the fact, at enumeration time we do know the bus number
-> yet. As you pointed, I haven't used the array of iommu pci bus pointers
-> indexed by bus number in this series and I should actually. Currently I
-> am not checking on attach that the sid effectively corresponds to a sid
-> protected by this iommu. I will add this in my next version. The above
-> structures are used in intel_iommu and smmu code as well and I think
-> eventually this may be factorized a common base class..
-> 
-> on the other hand the gtree of viommu_endpoint - soon renamed in
-> CamelCase form ;-) - corresponds to the EPs that are actually attached
-> to any domain. It is indexed by sid and not by bus pointer. This is more
-> adapted to the virtio-iommu case.
-> 
-> So, despite your suggestion, I am tempted to keep the different
-> structures as the first ones are common to all iommu emulation code and
-> the last is adapted to the virtio-iommu operations.
-> 
-> Thoughts?
+--00000000000005d230059a28df59
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Makes sense, it seems better to keep them separate. I had missed that the
-PCI bus number is resolved later, and started to move the endpoint ID into
-IOMMUDevice when adding MMIO support, but I'll need to revisit this.
+Hi Philippe,
 
-I'll be off for two weeks, have a nice holiday!
+On Thu, Dec 19, 2019 at 7:51 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
 
-Thanks,
-Jean
+> Hi,
+>
+> Niek added the H3 SoC in [1] and noticed in [2] the timer
+> controller is very similar (less timers, watchdog register
+> placed at different address).
+>
+> On 12/18/19 9:14 PM, Niek Linnenbank wrote:
+> > Actually, I copied the timer support code from the existing cubieboard.=
+c
+> > that has
+> > the Allwinner A10, so potentially the same problem is there.
+> >
+> > While looking more closer at this part, I now also discovered that the
+> > timer module from the Allwinner H3 is
+> > mostly a stripped down version of the timer module in the Allwinner A10=
+:
+> >
+> >    Allwinner A10, 10.2 Timer Register List, page 85:
+> > https://linux-sunxi.org/images/1/1e/Allwinner_A10_User_manual_V1.5.pdf
+> >
+> > The A10 version has six timers, where the H3 has only two. That should
+> > be fine I would say, the guest would simply
+> > use those available on H3 and ignore the rest. There is however one
+> > conflicting difference: the WDOG0 registers in the Allwinner H3 start
+> > at a different offset and are also different. The current A10 timer doe=
+s
+> > not currently implement the watchdog part.
+> [...]
+> > So in my opinion its a bit of a trade off here: we can keep it like thi=
+s
+> > and re-use the A10 timer for now, and perhaps
+> > attempt to generalize that module for proper use in both SoCs. Or we ca=
+n
+> > introduce a new H3 specific timer module.
+> > What do you think?
+>
+> As an answer to his question, this series is to help him to
+> reuse the A10 timer controller instead of adding a new model
+> to the codebase.
+>
 
+Great!! This certainly answers my question indeed!
+
+I've applied this patch on top of the allwinner H3 v2 series to test it,
+and after
+changing the type from AwA10PITState to the new AllwinnerTmrCtrlState,
+the code compiled and ran linux/u-boot without any problems:
+
+diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
+index 357bdfa711..fa0219fa1b 100644
+--- a/include/hw/arm/allwinner-h3.h
++++ b/include/hw/arm/allwinner-h3.h
+@@ -76,7 +76,7 @@ typedef struct AwH3State {
+
+     ARMCPU cpus[AW_H3_NUM_CPUS];
+     const hwaddr *memmap;
+-    AwA10PITState timer;
++    AllwinnerTmrCtrlState timer;
+     AwH3ClockState ccu;
+     AwH3CpuCfgState cpucfg;
+     AwH3SysconState syscon;
+
+Also, I tested with the A10 cubieboard machine, and it also still works
+fine:
+
+./arm-softmmu/qemu-system-arm -M cubieboard -kernel zImage -nographic
+-append 'console=3DttyS0,115200 earlyprintk usbcore.nousb root=3D/dev/sda r=
+o
+init=3D/sbin/init' -dtb sun4i-a10-cubieboard.dtb -m 512 -drive
+file=3Drootfs.ext2,if=3Dnone,id=3Ddrive-sata0-0-0,format=3Draw -device
+ide-hd,bus=3Dide.0,drive=3Ddrive-sata0-0-0,id=3Dsata0-0-0 -nic user
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 5.2.11 (me@host) (gcc version 5.4.0 20160609
+(Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.9)) #1 SMP Fri Sep 13 22:48:39 CEST 201=
+9
+[    0.000000] CPU: ARMv7 Processor [410fc080] revision 0 (ARMv7),
+cr=3D10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing
+instruction cache
+[    0.000000] OF: fdt: Machine model: Cubietech Cubieboard
+...
+
+So for me this works with both the H3 and A10:
+  Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+Regards,
+Niek
+
+>
+> [1] https://www.mail-archive.com/qemu-devel@nongnu.org/msg665532.html
+> [2] https://www.mail-archive.com/qemu-devel@nongnu.org/msg666304.html
+>
+> Philippe Mathieu-Daud=C3=A9 (13):
+>   hw/timer/allwinner: Use the AW_A10_PIT_TIMER_NR definition
+>   hw/timer/allwinner: Add AW_PIT_TIMER_MAX definition
+>   hw/timer/allwinner: Remove unused definitions
+>   hw/timer/allwinner: Move definitions from header to source
+>   hw/timer/allwinner: Rename the ptimer field
+>   hw/timer/allwinner: Rename 'timer_context' as 'timer'
+>   hw/timer/allwinner: Move timer specific fields into AwA10TimerContext
+>   hw/timer/allwinner: Add a timer_count field
+>   hw/timer/allwinner: Rename AwA10TimerContext as AllwinnerTmrState
+>   hw/timer/allwinner: Rename AwA10PITState as AllwinnerTmrCtrlState
+>   hw/timer/allwinner: Introduce TYPE_AW_COMMON_PIT abstract device
+>   hw/timer/allwinner: Rename AW_A10_PIT() as AW_TIMER_CTRL()
+>   hw/timer/allwinner: Rename functions not specific to the A10 SoC
+>
+>  include/hw/arm/allwinner-a10.h       |   2 +-
+>  include/hw/timer/allwinner-a10-pit.h |  54 ++----
+>  hw/timer/allwinner-a10-pit.c         | 271 +++++++++++++++++----------
+>  3 files changed, 192 insertions(+), 135 deletions(-)
+>
+> --
+> 2.21.0
+>
+>
+
+--=20
+Niek Linnenbank
+
+--00000000000005d230059a28df59
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div class=3D"gmail_=
+quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Dec 19, 2019 at 7:51 P=
+M Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@=
+amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">Hi,<br>
+<br>
+Niek added the H3 SoC in [1] and noticed in [2] the timer<br>
+controller is very similar (less timers, watchdog register<br>
+placed at different address).<br>
+<br>
+On 12/18/19 9:14 PM, Niek Linnenbank wrote:<br>
+&gt; Actually, I copied the timer support code from the existing cubieboard=
+.c<br>
+&gt; that has<br>
+&gt; the Allwinner A10, so potentially the same problem is there.<br>
+&gt;<br>
+&gt; While looking more closer at this part, I now also discovered that the=
+<br>
+&gt; timer module from the Allwinner H3 is<br>
+&gt; mostly a stripped down version of the timer module in the Allwinner A1=
+0:<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 Allwinner A10, 10.2 Timer Register List, page 85:<br>
+&gt; <a href=3D"https://linux-sunxi.org/images/1/1e/Allwinner_A10_User_manu=
+al_V1.5.pdf" rel=3D"noreferrer" target=3D"_blank">https://linux-sunxi.org/i=
+mages/1/1e/Allwinner_A10_User_manual_V1.5.pdf</a><br>
+&gt;<br>
+&gt; The A10 version has six timers, where the H3 has only two. That should=
+<br>
+&gt; be fine I would say, the guest would simply<br>
+&gt; use those available on H3 and ignore the rest. There is however one<br=
+>
+&gt; conflicting difference: the WDOG0 registers in the Allwinner H3 start<=
+br>
+&gt; at a different offset and are also different. The current A10 timer do=
+es<br>
+&gt; not currently implement the watchdog part.<br>
+[...]<br>
+&gt; So in my opinion its a bit of a trade off here: we can keep it like th=
+is<br>
+&gt; and re-use the A10 timer for now, and perhaps<br>
+&gt; attempt to generalize that module for proper use in both SoCs. Or we c=
+an<br>
+&gt; introduce a new H3 specific timer module.<br>
+&gt; What do you think?<br>
+<br>
+As an answer to his question, this series is to help him to<br>
+reuse the A10 timer controller instead of adding a new model<br>
+to the codebase.<br></blockquote><div><br></div><div>Great!! This certainly=
+ answers my question indeed!</div><div><br></div><div>I&#39;ve applied this=
+ patch on top of the allwinner H3 v2 series to test it, and after</div><div=
+>changing the type from AwA10PITState to the new AllwinnerTmrCtrlState,</di=
+v><div>the code compiled and ran linux/u-boot without any problems:</div><d=
+iv><br></div><div><span style=3D"font-family:monospace">diff --git a/includ=
+e/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h<br>index 357bdfa711=
+..fa0219fa1b 100644<br>--- a/include/hw/arm/allwinner-h3.h<br>+++ b/include=
+/hw/arm/allwinner-h3.h<br>@@ -76,7 +76,7 @@ typedef struct AwH3State {<br>=
+=C2=A0<br>=C2=A0 =C2=A0 =C2=A0ARMCPU cpus[AW_H3_NUM_CPUS];<br>=C2=A0 =C2=A0=
+ =C2=A0const hwaddr *memmap;<br>- =C2=A0 =C2=A0AwA10PITState timer;<br>+ =
+=C2=A0 =C2=A0AllwinnerTmrCtrlState timer;<br>=C2=A0 =C2=A0 =C2=A0AwH3ClockS=
+tate ccu;<br>=C2=A0 =C2=A0 =C2=A0AwH3CpuCfgState cpucfg;<br>=C2=A0 =C2=A0 =
+=C2=A0AwH3SysconState syscon;<br></span></div><div><br></div><div>Also, I t=
+ested with the A10 cubieboard machine, and it also still works fine:</div><=
+div><br></div><div><span style=3D"font-family:monospace">./arm-softmmu/qemu=
+-system-arm -M cubieboard -kernel zImage -nographic -append &#39;console=3D=
+ttyS0,115200 earlyprintk usbcore.nousb root=3D/dev/sda ro init=3D/sbin/init=
+&#39; -dtb sun4i-a10-cubieboard.dtb -m 512 -drive file=3Drootfs.ext2,if=3Dn=
+one,id=3Ddrive-sata0-0-0,format=3Draw -device ide-hd,bus=3Dide.0,drive=3Ddr=
+ive-sata0-0-0,id=3Dsata0-0-0 -nic user<br></span></div><div><span style=3D"=
+font-family:monospace"> [ =C2=A0 =C2=A00.000000] Booting Linux on physical =
+CPU 0x0<br>[ =C2=A0 =C2=A00.000000] Linux version 5.2.11 (me@host) (gcc ver=
+sion 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.9)) #1 SMP Fri Sep =
+13 22:48:39 CEST 2019<br>[ =C2=A0 =C2=A00.000000] CPU: ARMv7 Processor [410=
+fc080] revision 0 (ARMv7), cr=3D10c5387d<br>[ =C2=A0 =C2=A00.000000] CPU: P=
+IPT / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache<br>[ =
+=C2=A0 =C2=A00.000000] OF: fdt: Machine model: Cubietech Cubieboard<br></sp=
+an></div><div><span style=3D"font-family:monospace">...</span></div><div><s=
+pan style=3D"font-family:monospace"><br></span></div><div><span style=3D"fo=
+nt-family:monospace"><font face=3D"arial,sans-serif">So for me this works w=
+ith both the H3 and A10: <br></font></span></div><div><span style=3D"font-f=
+amily:monospace"><font face=3D"arial,sans-serif">=C2=A0 Tested-by: Niek Lin=
+nenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmai=
+l.com</a>&gt;</font><br></span></div><div>=C2=A0</div><div>Regards,</div><d=
+iv>Niek<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+[1] <a href=3D"https://www.mail-archive.com/qemu-devel@nongnu.org/msg665532=
+.html" rel=3D"noreferrer" target=3D"_blank">https://www.mail-archive.com/qe=
+mu-devel@nongnu.org/msg665532.html</a><br>
+[2] <a href=3D"https://www.mail-archive.com/qemu-devel@nongnu.org/msg666304=
+.html" rel=3D"noreferrer" target=3D"_blank">https://www.mail-archive.com/qe=
+mu-devel@nongnu.org/msg666304.html</a><br>
+<br>
+Philippe Mathieu-Daud=C3=A9 (13):<br>
+=C2=A0 hw/timer/allwinner: Use the AW_A10_PIT_TIMER_NR definition<br>
+=C2=A0 hw/timer/allwinner: Add AW_PIT_TIMER_MAX definition<br>
+=C2=A0 hw/timer/allwinner: Remove unused definitions<br>
+=C2=A0 hw/timer/allwinner: Move definitions from header to source<br>
+=C2=A0 hw/timer/allwinner: Rename the ptimer field<br>
+=C2=A0 hw/timer/allwinner: Rename &#39;timer_context&#39; as &#39;timer&#39=
+;<br>
+=C2=A0 hw/timer/allwinner: Move timer specific fields into AwA10TimerContex=
+t<br>
+=C2=A0 hw/timer/allwinner: Add a timer_count field<br>
+=C2=A0 hw/timer/allwinner: Rename AwA10TimerContext as AllwinnerTmrState<br=
+>
+=C2=A0 hw/timer/allwinner: Rename AwA10PITState as AllwinnerTmrCtrlState<br=
+>
+=C2=A0 hw/timer/allwinner: Introduce TYPE_AW_COMMON_PIT abstract device<br>
+=C2=A0 hw/timer/allwinner: Rename AW_A10_PIT() as AW_TIMER_CTRL()<br>
+=C2=A0 hw/timer/allwinner: Rename functions not specific to the A10 SoC<br>
+<br>
+=C2=A0include/hw/arm/allwinner-a10.h=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=
+=A02 +-<br>
+=C2=A0include/hw/timer/allwinner-a10-pit.h |=C2=A0 54 ++----<br>
+=C2=A0hw/timer/allwinner-a10-pit.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 271 +=
+++++++++++++++++----------<br>
+=C2=A03 files changed, 192 insertions(+), 135 deletions(-)<br>
+<br>
+-- <br>
+2.21.0<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--00000000000005d230059a28df59--

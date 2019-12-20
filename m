@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id w19sm9049230wmc.22.2019.12.20.04.04.48
+        by smtp.gmail.com with ESMTPSA id f207sm10901781wme.9.2019.12.20.04.14.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Dec 2019 04:04:53 -0800 (PST)
+        Fri, 20 Dec 2019 04:14:25 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C87411FFA6;
+	by zen.linaroharston (Postfix) with ESMTP id 6CBB11FF9E;
 	Fri, 20 Dec 2019 12:04:40 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -12,135 +12,84 @@ Cc: alan.hayward@arm.com,
 	luis.machado@linaro.org,
 	damien.hedde@greensocs.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v4 18/21] tests/tcg/aarch64: add SVE iotcl test
-Date: Fri, 20 Dec 2019 12:04:35 +0000
-Message-Id: <20191220120438.16114-19-alex.bennee@linaro.org>
+Subject: [PATCH  v4 14/21] target/arm: don't bother with id_aa64pfr0_read for USER_ONLY
+Date: Fri, 20 Dec 2019 12:04:31 +0000
+Message-Id: <20191220120438.16114-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191220120438.16114-1-alex.bennee@linaro.org>
 References: <20191220120438.16114-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: D1dxvT8fPHcr
+X-TUID: 4NWbAM4DWjCX
 
-This is a fairly bare-bones test of setting the various vector sizes
-for SVE which will only fail if the PR_SVE_SET_VL can't reduce the
-user-space vector length by powers of 2.
-
-However we will also be able to use it in a future test which
-exercises the GDB stub.
+For system emulation we need to check the state of the GIC before we
+report the value. However this isn't relevant to exporting of the
+value to linux-user and indeed breaks the exported value as set by
+modify_arm_cp_regs.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 ---
-v3
-  - use index to fill zreg
-  - CROSS_CC_HAS_SVE
+v2
+  - extend the ifdef and make type CONST with no accessfn
 ---
- tests/tcg/aarch64/sve-ioctls.c    | 77 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |  4 ++
- 2 files changed, 81 insertions(+)
- create mode 100644 tests/tcg/aarch64/sve-ioctls.c
+ target/arm/helper.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
 
-diff --git a/tests/tcg/aarch64/sve-ioctls.c b/tests/tcg/aarch64/sve-ioctls.c
-new file mode 100644
-index 00000000000..d7bb64d53f9
---- /dev/null
-+++ b/tests/tcg/aarch64/sve-ioctls.c
-@@ -0,0 +1,77 @@
-+/*
-+ * SVE ioctls tests
-+ *
-+ * Test the SVE width setting ioctls work and provide a base for
-+ * testing the gdbstub.
-+ *
-+ * Copyright (c) 2019 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include <sys/prctl.h>
-+#include <asm/hwcap.h>
-+#include <stdio.h>
-+#include <sys/auxv.h>
-+#include <stdint.h>
-+#include <stdlib.h>
-+
-+#ifndef HWCAP_CPUID
-+#define HWCAP_CPUID (1 << 11)
-+#endif
-+
-+#define SVE_MAX_QUADS  (2048 / 128)
-+#define BYTES_PER_QUAD (128 / 8)
-+
-+#define get_cpu_reg(id) ({                                      \
-+            unsigned long __val;                                \
-+            asm("mrs %0, "#id : "=r" (__val));                  \
-+            __val;                                              \
-+        })
-+
-+static int do_sve_ioctl_test(void)
-+{
-+    int i, res, init_vq;
-+
-+    res = prctl(PR_SVE_GET_VL, 0, 0, 0, 0);
-+    if (res < 0) {
-+        printf("FAILED to PR_SVE_GET_VL (%d)", res);
-+        return -1;
-+    }
-+    init_vq = res & PR_SVE_VL_LEN_MASK;
-+
-+    for (i = init_vq; i > 15; i /= 2) {
-+        printf("Checking PR_SVE_SET_VL=%d\n", i);
-+        res = prctl(PR_SVE_SET_VL, i, 0, 0, 0, 0);
-+        if (res < 0) {
-+            printf("FAILED to PR_SVE_SET_VL (%d)", res);
-+            return -1;
-+        }
-+        asm("index z0.b, #0, #1\n"
-+            ".global __sve_ld_done\n"
-+            "__sve_ld_done:\n"
-+            "mov z0.b, #0\n"
-+            : /* no outputs kept */
-+            : /* no inputs */
-+            : "memory", "z0");
-+    }
-+    printf("PASS\n");
-+    return 0;
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    unsigned int sve_feature = (get_cpu_reg(ID_AA64PFR0_EL1) >> 32) & 0xf;
-+    /* Exit early if we don't support SVE at all */
-+    if (sve_feature == 0x1) {
-+        /* we also need to probe for the ioctl support */
-+        if (getauxval(AT_HWCAP) & HWCAP_SVE) {
-+            return do_sve_ioctl_test();
-+        } else {
-+            printf("SKIP: no HWCAP_SVE on this system\n");
-+            return 0;
-+        }
-+    } else {
-+        printf("SKIP: no SVE on this system\n");
-+        return 0;
-+    }
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 3f8783ada5c..209c79a1ddb 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -36,6 +36,10 @@ ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
- # System Registers Tests
- AARCH64_TESTS += sysregs
- sysregs: CFLAGS+=-march=armv8.1-a+sve
-+
-+# SVE ioctl test
-+AARCH64_TESTS += sve-ioctls
-+sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
- endif
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 857581feba4..23de21f8820 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -5912,6 +5912,7 @@ static uint64_t id_pfr1_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     return pfr1;
+ }
  
- TESTS += $(AARCH64_TESTS)
++#ifndef CONFIG_USER_ONLY
+ static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     ARMCPU *cpu = env_archcpu(env);
+@@ -5922,6 +5923,7 @@ static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     }
+     return pfr0;
+ }
++#endif
+ 
+ /* Shared logic between LORID and the rest of the LOR* registers.
+  * Secure state has already been delt with.
+@@ -6414,16 +6416,24 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+          * define new registers here.
+          */
+         ARMCPRegInfo v8_idregs[] = {
+-            /* ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST because we don't
+-             * know the right value for the GIC field until after we
+-             * define these regs.
++            /*
++             * ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST in system
++             * emulation because we don't know the right value for the
++             * GIC field until after we define these regs.
+              */
+             { .name = "ID_AA64PFR0_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 0,
+-              .access = PL1_R, .type = ARM_CP_NO_RAW,
++              .access = PL1_R,
++#ifdef CONFIG_USER_ONLY
++              .type = ARM_CP_CONST,
++              .resetvalue = cpu->isar.id_aa64pfr0
++#else
++              .type = ARM_CP_NO_RAW,
+               .accessfn = access_aa64_tid3,
+               .readfn = id_aa64pfr0_read,
+-              .writefn = arm_cp_write_ignore },
++              .writefn = arm_cp_write_ignore
++#endif
++            },
+             { .name = "ID_AA64PFR1_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 1,
+               .access = PL1_R, .type = ARM_CP_CONST,
 -- 
 2.20.1

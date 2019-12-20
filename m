@@ -1,252 +1,178 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3610304lff;
-        Fri, 20 Dec 2019 05:32:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzyApQkNJ4F8mNYOz434nB79rwHA2z1uYNBCx82+0r0zoWAhlhH0l6NM9j8Nps3dTM7+Ql+
-X-Received: by 2002:a05:620a:4db:: with SMTP id 27mr13821501qks.146.1576848746142;
-        Fri, 20 Dec 2019 05:32:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576848746; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3625476lff;
+        Fri, 20 Dec 2019 05:45:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwxHddqMrzyJFhUeu3MdIcHWvl/kwqUreEshpM7d+bx4o/FIuZFF0j0gJqkj9vUCJQBszF2
+X-Received: by 2002:a05:6808:10d:: with SMTP id b13mr3949648oie.69.1576849559557;
+        Fri, 20 Dec 2019 05:45:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576849559; cv=none;
         d=google.com; s=arc-20160816;
-        b=iw4xOSlWxnZWpIBKfTLMR2evAHEhfFtuIqSi+RKOcw65WZp1vWFmOqTMGQVdQTEX38
-         HVakT6nBmcR7P/VT+7M6HQLMzSjLKSLiPddhHjy/UrznA0HybxQnvZUb3eMzCoAUN6LM
-         7+4gD07ZtBjzKiSQdcnachNgI7CVk+GPoZKrqlxl18kAvcxdMb1s4XAfhO5Vtp6CUCto
-         iqA3Bz0x9TmlvNK6NW4IX8wF2aHpj+fyBllBtkxCjVCgLSePDg4DQ8uGs4qYXJpQi1oa
-         x/v9G9I59vqd+b8SaWUTgkDbMPCtFEGZveJx4oCSBhwdFeesNmDnyMnedGURauM+6b0v
-         JHHA==
+        b=0bIrFylt9G7DGbYOpZjYW+C1yY/Rx0Q/Ljdikcre4IvCT3A8xrQRm6v2YMKiLRxC0Q
+         S/B0CS3KRsf0cIW6u2EMVTdhFStdmKfLRklwOvc4nSYZXl5MreH3sGinDUNhW8rBdd5L
+         F+fT2+J7IeCCHSF8TvjpT6HJ8/Yxl5Hi/KueUPaN9WYN25y4qMg/BLqF/meYsa1dnTJv
+         1UIAY3J8/Q5FXYOk48EUKGAhncfOPnbW7NPCMlWzwFzAEPkOmG2K7HkPqWE0wEuqjFEr
+         sKemH4V1Da+Rw+eR80V7vS80jyU78SDk5C1jQBUHPKDNC/l+xVwkSZI+vE5pf4Wtyp5z
+         0y8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=0fLQEqhGLRF+qLVy+VmGtZowBiX6uE7sCge73L4Z+Gk=;
-        b=GG53AjXSWeHoEPc4UyIF47XVAUIa8SKZoICS3gnIzSP0uZqlLbxjSEz0Dkux9dMtOs
-         Oimsm8XMnXNN1NaRUWyrSUvR0n3Pbcz1D5QCvJ6tPxKYkssZz5gH97PVQtYXfXKzY1uE
-         Y/SVnH9ue5g9XD7wpTgmxSkKee/EbGDvlx0shmcZgm5xTU5oUESbB+N/h5Tfn5DWDltr
-         DdLuoNeaI73Zdj8DIdIHFtQcTHJ35sciHQvDZaYpEq3U8Tz5kUZFfuBa/n0/yXf+MH/U
-         8XxvvoVUXLi4YwDbvjXCnfrbivlYjxCHFZ108B2Ivp0g5kcN76XC7w0kfiunoYkMsUtH
-         isIA==
+        bh=VRcUdbDrthaJqJ9M/pTbzkrtzAV4OuFcKXWsaWcpvV0=;
+        b=bvJCmy5XIHjihM8TRd1q5u+dEcfLMZPzr+5mrcmEDalA+h6GkDKyG641ArvG6Pd0Yj
+         Ydx5G7FDjbzcqYoLC9GiwGsQHtWKRxdzXm9FlSMtBjsMddnEHR0EwChBcTAPoVxm4uEe
+         JUeUGrKWtYdIz6t9fXf93R0wztGVXmQvnuw1mNMf35O5ARDyZ7fhfSjeG5unlcM7GTpA
+         xn3TrY52HMNvqLEngrgft4PczbxJM9jNR6fEuvNhthRWbAAmg6oJ3Z6A9FZptUCWCe0x
+         eJIrbpVtnQai1ZBssxRDNWX/AIVa2zpRrrMQG9plW8pBOKoRjQ7ztI4jzB2ejInfbaTn
+         nkOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JsAxQZ17;
-       spf=pass (google.com: domain of mlureau@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=mlureau@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <mlureau@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
-        by mx.google.com with ESMTPS id 21si5294121qkf.293.2019.12.20.05.32.25
+       dkim=fail header.i=@linaro.org header.s=google header.b=FMqwFIBq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e192si4996845oib.82.2019.12.20.05.45.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Dec 2019 05:32:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of mlureau@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 20 Dec 2019 05:45:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JsAxQZ17;
-       spf=pass (google.com: domain of mlureau@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=mlureau@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1576848745;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0fLQEqhGLRF+qLVy+VmGtZowBiX6uE7sCge73L4Z+Gk=;
-	b=JsAxQZ17VaSuoadLUKvrc9KpZA6SJya6m4WVdQS7Y1/Iba57FE13xu73NF13zcez4T+0Rk
-	s5u9ShCZTziquBeb8v+DSznP4UJpdIBDEezgwh+v/FdGg0GG6P03XN88g9hEuFlt0jLwKE
-	f6jm6tvaWDVQNp6CPdl8n5i0yIuISC0=
-Received: from mail-ot1-f69.google.com (mail-ot1-f69.google.com
- [209.85.210.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-400-jG1wclfANc2RCiVVLwbPxg-1; Fri, 20 Dec 2019 08:32:24 -0500
-Received: by mail-ot1-f69.google.com with SMTP id z3so4592717oto.22
-        for <alex.bennee@linaro.org>; Fri, 20 Dec 2019 05:32:24 -0800 (PST)
+       dkim=fail header.i=@linaro.org header.s=google header.b=FMqwFIBq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56040 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iiIbO-0001eR-Pi
+	for alex.bennee@linaro.org; Fri, 20 Dec 2019 08:45:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44333)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1iiIaK-00015A-VU
+ for qemu-devel@nongnu.org; Fri, 20 Dec 2019 08:44:54 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1iiIaJ-000082-Bi
+ for qemu-devel@nongnu.org; Fri, 20 Dec 2019 08:44:52 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:41089)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iiIaI-0008Vg-KR
+ for qemu-devel@nongnu.org; Fri, 20 Dec 2019 08:44:50 -0500
+Received: by mail-ot1-x344.google.com with SMTP id r27so11918415otc.8
+ for <qemu-devel@nongnu.org>; Fri, 20 Dec 2019 05:44:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=VRcUdbDrthaJqJ9M/pTbzkrtzAV4OuFcKXWsaWcpvV0=;
+ b=FMqwFIBqHUOoVfxBI1lFPwqfetK5uXzkNUimwNggnBjmix0mcKsswpCbKkOwAj26cL
+ WBD/1cajMSgO+xQTJqqFyx9mqyXS4PJZqjLzY0YYWPNiHcsxUOkAN0un+RVT9mKzZ0py
+ jG1H4kRtP5crTlVocfgUoXJYbRXJPpzWz/Hr1UmJSzLy4lhc+fQtfCru0/NgmSajKuud
+ +C4Ra2gHtETI+pyIPBslGjKdJvC+C+AQlPVpE6DDEklGj+/Q9EVKGTCiJ5WnsFF1E6gp
+ Q9/rk2PA4cIN0IgBvLUoh9trAsJFbImluXoeVg3LvPGk5u0jesq6OJTkte2/zwcCgyD2
+ NjdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=0fLQEqhGLRF+qLVy+VmGtZowBiX6uE7sCge73L4Z+Gk=;
-        b=oi8q55iWCbCQUyjia/KmLIQKe+ayV2nV2sG0fkKKHwGSVxXRY/GYKc2AqGvnYO0+mU
-         b/wuT7RNrOzE9iPl4L/6k61rmGoGqD1lPwXw1FSvAWxXsmxQ+CRHOvwBIWBOGJFFEJSa
-         1wGrf6UrOwin9A10JJ8NRbi2mJfSmtVTzLipEnldc2x9TJUxigpNxACWbVnaz1HiKJFX
-         vfXIlgmLd8+yt7LF2+hCxmwL7DmI8FCV9UTFOvYy814c8UHbLETTY2DkRFcpE0chD10j
-         JVNaYSmUCdGHwmPjuh4lr65uXGIF83UqVyebT35fkV0b6DtyraHmmi2Q0cDZ3wRXjkYn
-         COxQ==
-X-Gm-Message-State: APjAAAVRMnNr+lQD9CWZof3Y4b/y6Y4CS1SHEqecl+acrVqQvvH/ut04
-	trgxWo2orC7SmWK8+iA7V9l4w/L/5We52UxGYP1vdlJeReBvwJgynkeFauyeSbGENMXZZEuhcQe
-	wwwVX7uL/MJrrm0HFjZYzR+dGrh2Ow8wp
-X-Received: by 2002:a9d:730e:: with SMTP id e14mr14225399otk.62.1576848743575;
-        Fri, 20 Dec 2019 05:32:23 -0800 (PST)
-X-Received: by 2002:a9d:730e:: with SMTP id e14mr14225352otk.62.1576848743262;
- Fri, 20 Dec 2019 05:32:23 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=VRcUdbDrthaJqJ9M/pTbzkrtzAV4OuFcKXWsaWcpvV0=;
+ b=r9XnWtlERLhg4QpYaP4ytdZjhkd2yoS5rhqND7WQYtYVjruoBIZ16Aqnv7lm+9ASPP
+ 1q8y6KawuSHh/8v4tXjwU/S2HFMfbPXkZo82XFfGiiAaPI425tgEdrjnk3xYWJGUPcLO
+ Wpy0r+hnFlC3eiB+OExVc5TzBE8qrCWKTEjOLGYJp0qWDZpMIzRYNWcIH9xTNfFu1zsx
+ fY5KtepEfO3Pi09XU2lLycQxVLvt/DokJm7XEKOrImEZMuxgQNZ255WYMX5F4Ei5+kz4
+ pvhytPZT+v3M+//cUx9zOEVt/ldyPKifFYnp1wQbyY1NAQlUmK2fZGFRQGsXq3RXURKW
+ sPqg==
+X-Gm-Message-State: APjAAAXXqq1WcVlmhN7oKPeAHtS81LEyj04XzWhCu6iaXsWSrruCQtIX
+ 7rEfLA972FdyTZNFGUqGdA4RGzZKz++KFjMFyPFq/Q==
+X-Received: by 2002:a9d:3f21:: with SMTP id m30mr1208123otc.232.1576849489459; 
+ Fri, 20 Dec 2019 05:44:49 -0800 (PST)
 MIME-Version: 1.0
-References: <20191218172009.8868-1-philmd@redhat.com>
-In-Reply-To: <20191218172009.8868-1-philmd@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Fri, 20 Dec 2019 17:32:11 +0400
-Message-ID: <CAMxuvayWibPU6_mEcYEqsWUhSRra33MvwPrbAYr254ZYaYKBgg@mail.gmail.com>
-Subject: Re: [PATCH v2 00/14] chardev: Use QEMUChrEvent enum in IOEventHandler typedef
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, "Gonglei (Arei)" <arei.gonglei@huawei.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Andrzej Zaborowski <balrogg@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Alistair Francis <alistair@alistair23.me>, 
-	Antony Pavlov <antonynpavlov@gmail.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
-	Fabien Chouteau <chouteau@adacore.com>, KONRAD Frederic <frederic.konrad@adacore.com>, 
-	Peter Chubb <peter.chubb@nicta.com.au>, Alberto Garcia <berto@igalia.com>, 
-	Michael Walle <michael@walle.cc>, Thomas Huth <huth@tuxfamily.org>, Joel Stanley <joel@jms.id.au>, 
-	Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
-	Christian Borntraeger <borntraeger@de.ibm.com>, Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>, 
-	Corey Minyard <minyard@acm.org>, Paul Burton <pburton@wavecomp.com>, 
-	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>, Aurelien Jarno <aurelien@aurel32.net>, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Sagar Karandikar <sagark@eecs.berkeley.edu>, 
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Samuel Thibault <samuel.thibault@ens-lyon.org>, 
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
-	Zhang Chen <chen.zhang@intel.com>, Li Zhijian <lizhijian@cn.fujitsu.com>, 
-	Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	qemu-block <qemu-block@nongnu.org>, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org
-X-MC-Unique: jG1wclfANc2RCiVVLwbPxg-1
-X-Mimecast-Spam-Score: 0
+References: <20191105091056.9541-1-guoheyi@huawei.com>
+In-Reply-To: <20191105091056.9541-1-guoheyi@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 20 Dec 2019 13:44:38 +0000
+Message-ID: <CAFEAcA-+tAbb9h2wZOm56TqUvjQJT0OYFLwTVS-UxKrF5PO3mQ@mail.gmail.com>
+Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
+To: Heyi Guo <guoheyi@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 2pT81QEa9pmm
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marc Zyngier <marc.zyngier@arm.com>, Cornelia Huck <cohuck@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, James Morse <james.morse@arm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com,
+ Dave Martin <Dave.Martin@arm.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5UYnEfc5y87a
 
-On Wed, Dec 18, 2019 at 9:20 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
+On Tue, 5 Nov 2019 at 09:12, Heyi Guo <guoheyi@huawei.com> wrote:
+> SDEI is for ARM "Software Delegated Exception Interface". AS ARM64 doesn't have
+> native non-maskable interrupt (NMI), we rely on higher privileged (larger
+> exception level) software to change the execution flow of lower privileged
+> (smaller exception level) software when certain events occur, to emulate NMI
+> mechanism, and SDEI is the standard interfaces between the two levels of
+> privileged software. It is based on SMC/HVC calls.
 >
-> Hi,
->
-> After this chat on #qemu IRC:
-> 13:20 <stsquad> so what is the difference between a IOReadHandler and IOE=
-ventHandler?
-> 13:25 <f4bug> stsquad: one is in-band and the other out-of-band?
-> 13:26 <stsquad> f4bug: ahh yes it seems so - connect/disconnect etc...
-> 13:27 <f4bug> see QEMUChrEvent for IOEventHandler
->
-> I thought it might be a good opportunity to make the IOEventHandler
-> typedef meaning more obvious, by using the QEMUChrEvent enum.
->
-> To be able to build I had to explicit all enums ignored in the
-> switch(event) statement by these frontends.
->
-> Then I used a coccinelle spatch to change the various IOEventHandler.
-> I don't think the last patch can be split, but suggestions are welcome!
->
-> Regards,
->
-> Phil.
->
-> v2:
-> - do blindly ignore all events using a 'default' case.
->
-> Philippe Mathieu-Daud=C3=A9 (14):
->   hw/ipmi: Remove unnecessary declarations
->   hw/ipmi: Explicit we ignore some QEMUChrEvent in IOEventHandler
->   hw/char/terminal3270: Explicit ignored QEMUChrEvent in IOEventHandler
->   hw/usb/dev-serial: Explicit we ignore few QEMUChrEvent in IOEventHandle=
-r
->   hw/usb/redirect: Explicit we ignore few QEMUChrEvent in IOEventHandler
->   ccid-card-passthru: Explicit we ignore QEMUChrEvent in IOEventHandler
->   vhost-user-crypto: Explicit we ignore some QEMUChrEvent in IOEventHandl=
-er
->   vhost-user-net: Explicit we ignore few QEMUChrEvent in IOEventHandler
->   vhost-user-blk: Explicit we ignore few QEMUChrEvent in IOEventHandler
->   virtio-console: Explicit we ignore some QEMUChrEvent in IOEventHandler
->   monitor/qmp: Explicit we ignore few QEMUChrEvent in IOEventHandler
->   monitor/hmp: Explicit we ignore a QEMUChrEvent in IOEventHandler
->   chardev/char: Explicit we ignore some QEMUChrEvent in IOEventHandler
->   chardev: Use QEMUChrEvent enum in IOEventHandler typedef
+> The higher privileged software implements an SDEI dispatcher to handle SDEI
+> related SMC/HVC calls and trigger SDEI events; the lower privileged software
+> implements an SDEI client to request SDEI services and handle SDEI events.
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Hi; I read through these patches last week, but I didn't reply
+then because although there are some aspects to the design that
+I don't like, I don't have a clear idea of what a better approach
+to the problems it's trying to solve would be. However I didn't
+want to go home for the end of the year without providing at
+least some response. So I'm going to lay out the parts I have
+issues with and perhaps somebody else will have a good idea.
 
-(I guess Paolo will take the series for next PR?)
+The first part that I dislike here is that this is implementing
+an entire ABI which in real hardware is provided by firmware. I
+think that QEMU's design works best when QEMU provides emulation of
+hardware or hardware-like facilities, which guest code (either
+in the kernel, or firmware/bios running in the guest) can then
+make use of. Once we start getting into implementing firmware
+interfaces directly in QEMU this rapidly becomes a large amount
+of work and code, and it's unclear where it should stop. Should
+we implement also the equivalent of firmware for omap boards?
+For imx* boards? For the raspberry pi? For xilinx boards?
+Are we going to end up reimplementing more of ARM Trusted Firmware
+functionality inside QEMU? The code to implement firmware-equivalent
+ABIs in all these boards would I think quickly become a large part
+of the codebase.
 
->
->  include/chardev/char-fe.h       |  2 +-
->  include/chardev/char-mux.h      |  2 +-
->  include/chardev/char.h          |  4 ++--
->  backends/cryptodev-vhost-user.c |  7 ++++++-
->  chardev/char-mux.c              |  8 ++++----
->  chardev/char.c                  |  9 +++++++--
->  gdbstub.c                       |  2 +-
->  hw/arm/pxa2xx.c                 |  2 +-
->  hw/arm/strongarm.c              |  2 +-
->  hw/block/vhost-user-blk.c       |  7 ++++++-
->  hw/char/cadence_uart.c          |  2 +-
->  hw/char/digic-uart.c            |  2 +-
->  hw/char/escc.c                  |  2 +-
->  hw/char/etraxfs_ser.c           |  2 +-
->  hw/char/exynos4210_uart.c       |  2 +-
->  hw/char/grlib_apbuart.c         |  2 +-
->  hw/char/imx_serial.c            |  2 +-
->  hw/char/ipoctal232.c            |  2 +-
->  hw/char/lm32_juart.c            |  2 +-
->  hw/char/lm32_uart.c             |  2 +-
->  hw/char/mcf_uart.c              |  2 +-
->  hw/char/milkymist-uart.c        |  2 +-
->  hw/char/nrf51_uart.c            |  2 +-
->  hw/char/pl011.c                 |  2 +-
->  hw/char/serial.c                |  2 +-
->  hw/char/sh_serial.c             |  2 +-
->  hw/char/terminal3270.c          |  7 ++++++-
->  hw/char/virtio-console.c        |  7 ++++++-
->  hw/char/xilinx_uartlite.c       |  2 +-
->  hw/ipmi/ipmi_bmc_extern.c       | 12 +++++++-----
->  hw/mips/boston.c                |  2 +-
->  hw/mips/mips_malta.c            |  2 +-
->  hw/riscv/riscv_htif.c           |  2 +-
->  hw/riscv/sifive_uart.c          |  2 +-
->  hw/usb/ccid-card-passthru.c     |  7 ++++++-
->  hw/usb/dev-serial.c             |  6 +++++-
->  hw/usb/redirect.c               |  7 ++++++-
->  monitor/hmp.c                   |  6 +++++-
->  monitor/qmp.c                   |  7 ++++++-
->  net/filter-mirror.c             |  2 +-
->  net/vhost-user.c                |  9 +++++++--
->  qtest.c                         |  2 +-
->  tests/test-char.c               |  6 +++---
->  tests/vhost-user-test.c         |  2 +-
->  44 files changed, 111 insertions(+), 56 deletions(-)
->
-> Cc: "Gonglei (Arei)" <arei.gonglei@huawei.com>
-> Cc: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: "Alex Benn=C3=A9e" <alex.bennee@linaro.org>
-> Cc: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
-> Cc: Andrzej Zaborowski <balrogg@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Kevin Wolf <kwolf@redhat.com>
-> Cc: Max Reitz <mreitz@redhat.com>
-> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: Antony Pavlov <antonynpavlov@gmail.com>
-> Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
-> Cc: Fabien Chouteau <chouteau@adacore.com>
-> Cc: KONRAD Frederic <frederic.konrad@adacore.com>
-> Cc: Peter Chubb <peter.chubb@nicta.com.au>
-> Cc: Alberto Garcia <berto@igalia.com>
-> Cc: Michael Walle <michael@walle.cc>
-> Cc: Thomas Huth <huth@tuxfamily.org>
-> Cc: Joel Stanley <joel@jms.id.au>
-> Cc: Cornelia Huck <cohuck@redhat.com>
-> Cc: Halil Pasic <pasic@linux.ibm.com>
-> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
-> Cc: Laurent Vivier <lvivier@redhat.com>
-> Cc: Amit Shah <amit@kernel.org>
-> Cc: Corey Minyard <minyard@acm.org>
-> Cc: Paul Burton <pburton@wavecomp.com>
-> Cc: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
-> Cc: Aurelien Jarno <aurelien@aurel32.net>
-> Cc: Aleksandar Markovic <amarkovic@wavecomp.com>
-> Cc: Palmer Dabbelt <palmer@dabbelt.com>
-> Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>
-> Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-> Cc: Gerd Hoffmann <kraxel@redhat.com>
-> Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>
-> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-> Cc: Markus Armbruster <armbru@redhat.com>
-> Cc: Zhang Chen <chen.zhang@intel.com>
-> Cc: Li Zhijian <lizhijian@cn.fujitsu.com>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-block@nongnu.org
-> Cc: qemu-s390x@nongnu.org
-> Cc: qemu-riscv@nongnu.org
->
-> --
-> 2.21.0
->
+My second concern is that to do the things it wants to do,
+the implementation here does some pretty invasive things:
+ * intercepting interrupt lines which ought to just be
+   emulated hardware signals between devices and the GIC
+ * capturing register values of other CPUs, and arbitrarily
+   stopping those other CPUs and making them run other code
+   at a later point in time
+I'm really uncomfortable with what's just an 'emulated firmware'
+interface for one specific board model doing this kind of thing.
+
+Finally, the stated rationale for the patchset ("we'd like an
+emulated NMI equivalent") doesn't really feel to me like it's
+strong enough to counterbalance the amount of code here and
+the degree to which it's moving us into a swamp I'd prefer
+it if we could stay out of.
+
+I'd be much happier with a design where QEMU provides simple
+facilities to the guest and the guest firmware and kernel
+deal with making use of them. I appreciate that it's not
+clear how that would work though, given that in real hardware
+this works by the firmware running at EL3 and KVM not
+providing a mechanism that allows guest code that runs at
+a higher (effective or emulated) privilege level than the
+guest kernel...
+
+thanks
+-- PMM

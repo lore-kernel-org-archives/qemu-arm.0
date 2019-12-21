@@ -1,349 +1,375 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4172793lff;
-        Fri, 20 Dec 2019 13:41:42 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxsQlF9Zx+NjLtLkU7D6ahXcLEDwUBDTiF1sz2KlJbkmuA+V1o6GBOY9quEj+gFRKDtdPeh
-X-Received: by 2002:a9d:708f:: with SMTP id l15mr1033139otj.229.1576878102446;
-        Fri, 20 Dec 2019 13:41:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576878102; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5185349lff;
+        Sat, 21 Dec 2019 10:23:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzDF/SS9lzJnzBCh/boJFTxRCo1Ttu+ByjKTbaVJykDk6NPc/aotkHyPSRMtr9tBwDj7ex5
+X-Received: by 2002:ad4:51cc:: with SMTP id p12mr17147106qvq.113.1576952633485;
+        Sat, 21 Dec 2019 10:23:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576952633; cv=none;
         d=google.com; s=arc-20160816;
-        b=WLFytXrBXcILkRdUGfKerhcxhKzKGiz0wY2cQvruJQHqgP8K0z2KjT8KPYSRE+jipS
-         fWKlPePCuOH5H7PpYiAVkoPF0Di9diRDBf93BHrUq8384QnD8I/lsru1x9gu1DKcl97c
-         1JjBCA7Fsq+CBql293Ogh+0WoJoUm4pGqUM7wHKcgnYhdc/nWgAfFTlLU1AvwZx1A1Jq
-         xvDkpmHUDqRgcLq6VyF/JRmhuPhFCb9JLRCXeV1fQZy8Ljak9eGB7p4TySf6NUf55dB7
-         ZwZCQvuRs/M1YofBlPeFX76k4HCENiCpo2ht0WBdN+Xx6dGCqNRW5X4AYXclZhFFbrpa
-         bkQQ==
+        b=rEH4I2JdBsykgtC/xoBVw/AM0yVRnNtzX1p5E+929p2rGTy8A32alTUOqswVoik/NM
+         x94pS6FAcQ9mCco85SRmbPr5pJYADi0hWJRvc6QR6zb9P8+5+1b7lDP9eL0jqFpvfxFL
+         63JyxMg3vSpcp6HEw+Io8Ck7B0D0tEQW5RBqVipSWoZTT5Wbma/QGPCzFbwcg4QHqLAX
+         vDmnicxyEsuG0S463Fsw59jTnLxhEhol/8GCQjapNunmdOveLSP8KYOVQlpluzrn9Rvp
+         JLtBChjuGCrNmPxn+ZVb0GFGFs3mGEp/cN8LzOBryIdY9eDDTcZUkvVogOVhpOel5oIp
+         Vp+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=VtAkNhpFNr5u4e9iNM3vzKqzfaaIUqBY0YwX3FjL5BU=;
-        b=lSm/cSb9jDPwPPkfeBQTic1lXDOmjFvOxqGN9I4+Z4ACnJs7OSy0c7MDHoG8r/9Q8M
-         4t64AvEwgqwmMkaPPo2yzy8Ncm4KJXmHvwBtlJwCWyCWiWuEkgWKmLPB1W1eq4jz5hQd
-         LJ3rNBkwUGfSc7SUmI11E5KTE9EMerRLrG5ARnaB+8GvACVTTxk7sSrFF5SoiElnseB2
-         6Oo6wD03eL9C3Pq+YF1VdiT4Co1lD3TfnHqmLoLJyWhxfTKyoDg+r5RBt1qF7m0dNf/D
-         cPwNB8pYLkAG0Qj4Hn37STsJgNMDwHXZ5L0Y1A/J9hwA/onLnC97TVewI4OEnpS7bDru
-         9dXw==
+        bh=ZLCFWTYU9xOMO++Bg3cHTj2xEbQKJXfwi0dTYdgU4sw=;
+        b=JXvExvl0qCzIn1JRUUeY22zFjskU1oIdL+QRl3j84khbJaltHwQbYSb2P+u6LRyxoB
+         4A/9Iab61hbwgb7Ghh+XiI9/6PTitkRixBRQD4QQsiFcna2xVT2+4HQscZBuVp8cmsQ/
+         jV8UBbxpZPgSoFtxHtzGEVAG1+1DDEI74TMWpJDQzYuPHNF5+6xN0pPtTwg6emCLnkQE
+         g5hlaroywVUEMJ+tEblsS5uEtzOJIzuWrl10FgX/aXWscu1SwaADxV0/pi35RYvwwA5p
+         J6MoJR07xuCmGGUVCGwTNNt/gciEaM3vcMYI2xRSU5cPapSp9+0TVQIov9HmMNFzAp5p
+         E8Ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PfN3MXIn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D0Rki1Pv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p9si5849831otk.207.2019.12.20.13.41.42
+        by mx.google.com with ESMTPS id n12si6548410qvl.43.2019.12.21.10.23.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Dec 2019 13:41:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 21 Dec 2019 10:23:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PfN3MXIn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D0Rki1Pv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33812 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41440 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iiQ1l-0000w3-Ep
-	for alex.bennee@linaro.org; Fri, 20 Dec 2019 16:41:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46931)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iijPs-0004xI-Sa
+	for alex.bennee@linaro.org; Sat, 21 Dec 2019 13:23:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53014)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1iiQ1a-0000uT-GG
- for qemu-arm@nongnu.org; Fri, 20 Dec 2019 16:41:31 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iijOv-000449-5u
+ for qemu-devel@nongnu.org; Sat, 21 Dec 2019 13:22:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1iiQ1Y-0000y5-Kl
- for qemu-arm@nongnu.org; Fri, 20 Dec 2019 16:41:30 -0500
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:34966)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iijOt-0005kN-5q
+ for qemu-devel@nongnu.org; Sat, 21 Dec 2019 13:22:52 -0500
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:40593)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1iiQ1U-0000ht-7d; Fri, 20 Dec 2019 16:41:24 -0500
-Received: by mail-il1-x142.google.com with SMTP id g12so9200578ild.2;
- Fri, 20 Dec 2019 13:41:24 -0800 (PST)
+ id 1iijOs-0005gh-TC; Sat, 21 Dec 2019 13:22:51 -0500
+Received: by mail-il1-x141.google.com with SMTP id c4so10822963ilo.7;
+ Sat, 21 Dec 2019 10:22:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VtAkNhpFNr5u4e9iNM3vzKqzfaaIUqBY0YwX3FjL5BU=;
- b=PfN3MXIn0z5Yc1TBM+3+QBtfIdPRRDO64ligJREStb4AaqhatrSqTImziSM+WYVzE/
- J62ebPPCUQx3B41n25SH0SAEX+C59gI5MDI/31apjjK1rudCjG5Zf5mtUxUX1BUSE5LV
- W8gTjxT7aGk/L9EdzE4BwIOu6+UCADisAUDS/rrXvFBaSoMP6uNAarDqmP0Ojz58TFmu
- mhqcMI2+lOEXcB6aZpdj6rjKpAXDGbbKDQ7aRH6E9H91pSK6Xelr90hmKdrtHceP1FWS
- FOTTAPpcxc15bn4LNwycua9bBuTlsA0H+wT0hM/BkhgqhFPTwTJT6k6lz94RW4zCozSw
- E/2g==
+ :cc; bh=ZLCFWTYU9xOMO++Bg3cHTj2xEbQKJXfwi0dTYdgU4sw=;
+ b=D0Rki1Pvmo/C3zY+q5P99TxRAfzWtGptRkGD/giuD0wG5JVn+DTXb4HchyYTJgbJ5B
+ iCcGHwrBXrKeXP+Krw/liYEB2qhS1N+zYXCDiqubRp5XT78AhyzA549AA3B2Plc+iSqx
+ t1KZXliCtn/rl+TvGiqwzL3gEo6RhCcprMvQs+RMuJ/zHGLVduub/ff+y2A5RnNelF1t
+ pbXmIaRbUGLcRgG4TeSkice/6AAu+tT4cauleS6tZ8VtNBeUsLivlG7yiMu0YAtCdEvL
+ xg61sld5oLNIMfZ3BDNeLSuVQvLWNped2uLWxrUse+P/lV+YX6CgJeMQ2nXHnIuWdpHt
+ ei1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=VtAkNhpFNr5u4e9iNM3vzKqzfaaIUqBY0YwX3FjL5BU=;
- b=G2qUB470vTwNbqt14rshBVM+KPGmgToc5lLQQR2NIy46kG4CSAB/LoNsByxG0wt7vr
- RhuRzkHyYf5Yx3tQ0uGn3SQBnuoilvpLXyhUZKEeO3kmqcf6WmmadYnFM8WYVBs242H4
- db59bhKCemdwoaxZwZvGGkFPPlyFFZpEiFzl1uNZDkfvfrp65IjA2TZA1ma6dcdypazv
- Fk0LNV3e1HnJ04fj/0tHnU9eYddygaiMF7do4rSTS8oAaM40JMryOTzyiwCPVjfaCGcq
- 2iL0o76plhdq03A9YpR+xyoH8SoMbDaNzubUhn2ZR7gykHRAF1xpq4EQjmF8XijJ0A2t
- niKA==
-X-Gm-Message-State: APjAAAW7AaSYciG1Pc6sijFT8v2JiAGJPvpIkEXUdm73wIU3Ka6FscHE
- cIirf5LYIuSG4JQjNbPVYocgpXiQY7xRYtEUcW4=
-X-Received: by 2002:a92:d5cf:: with SMTP id d15mr13820251ilq.306.1576878083021; 
- Fri, 20 Dec 2019 13:41:23 -0800 (PST)
+ bh=ZLCFWTYU9xOMO++Bg3cHTj2xEbQKJXfwi0dTYdgU4sw=;
+ b=E8x19HAnkFttnXnFm+66wXq3Kj9WcHWU7I1YtMyHc/ckCydt6tO0hGj/z/fahpnHls
+ VbnHufPJ7TcUgM0n+Oi5NSH9HME8cMHNwZ/TUw4GDsfkVVcX1+BYx3Itv3eQ0GJDz5b5
+ IZTnW++AY+Zs/v2a89vredRnMZGT28UXJUcSckaHljaLZBfhvsg+/3OedTe265Z04IZG
+ eu1kHZKD3X6p4B0/lfi/++RC3pYQkvOsod62ECrmWSE73wrSz1bg09mp2CAoMCuBeVsG
+ jkE1/pF+93FMnvyH8+jirP5bSr/cOtpfusTEpOJA/cXjXC/zXd0p+CfSNNfMZd3/3DB4
+ ykMg==
+X-Gm-Message-State: APjAAAVQhEWmfVL1pwoBkuXT6R72cCt2qpW7i4plm/slhOyGTlPiXUaJ
+ j511IxXRnYZF8mMXf/hY1Ld3BI1DaPh5Wv1JZ8w=
+X-Received: by 2002:a92:af08:: with SMTP id n8mr17618555ili.217.1576952569890; 
+ Sat, 21 Dec 2019 10:22:49 -0800 (PST)
 MIME-Version: 1.0
-References: <20191219185127.24388-1-f4bug@amsat.org>
- <20191219185127.24388-5-f4bug@amsat.org>
-In-Reply-To: <20191219185127.24388-5-f4bug@amsat.org>
+References: <20191217182730.943-1-f4bug@amsat.org>
+ <20191217182730.943-2-f4bug@amsat.org>
+In-Reply-To: <20191217182730.943-2-f4bug@amsat.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Fri, 20 Dec 2019 22:41:12 +0100
-Message-ID: <CAPan3Wqhyqe3ZyXGuQsxaZS_=U5vT6_PPEr1aL-xShJzhVCPgA@mail.gmail.com>
-Subject: Re: [PATCH 04/13] hw/timer/allwinner: Move definitions from header to
- source
+Date: Sat, 21 Dec 2019 19:22:38 +0100
+Message-ID: <CAPan3Wp2=uRUNsQkZsdfLw7iYs8p6OSJw9ULLggw=2efHg4dpQ@mail.gmail.com>
+Subject: Re: [PATCH 1/5] tests/boot_linux_console: Add a quick test for the
+ OrangePi PC board
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000fe217a059a2989ed"
+Content-Type: multipart/alternative; boundary="000000000000c18efa059a3ae11e"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::142
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::141
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wZvXa12Tzqfl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Guenter Roeck <linux@roeck-us.net>,
+ Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OuMKLSETdfCG
 
---000000000000fe217a059a2989ed
+--000000000000c18efa059a3ae11e
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Dec 19, 2019 at 7:51 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+Hi Philippe,
+
+On Tue, Dec 17, 2019 at 7:27 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g>
 wrote:
 
-> These definitions are only used in the implementation, thus don't
-> need to be exported. Move them in the source file.
+> This test boots a Linux kernel on a OrangePi PC board and verify
+> the serial output is working.
+>
+> The kernel image and DeviceTree blob are built by the Raspbian
+> project (based on Debian):
+> https://www.raspbian.org/RaspbianImages
+
+
+One minor remark: I noticed here you refer to Raspbian, while the actual
+image
+used is from Armbian :-)
+
+
+>
+> If ARM is a target being built, "make check-acceptance" will
+> automatically include this test by the use of the "arch:arm" tags.
+>
+> Alternatively, this test can be run using:
+>
+>   $ make check-venv
+>   $ ./tests/venv/bin/avocado --show=3Dconsole,app run -t machine:orangepi=
+-pc
+> tests/acceptance/boot_linux_console.py
+>   JOB ID     : 2e4d15eceb13c33672af406f08171e6e9de1414a
+>   JOB LOG    : ~/job-results/job-2019-12-17T05.46-2e4d15e/job.log
+>   (1/1)
+> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
+:
+>   console: Uncompressing Linux... done, booting the kernel.
+>   console: Booting Linux on physical CPU 0x0
+>   console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version
+> 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET
+> 2019
+>   console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D50c53=
+87d
+>   console: CPU: div instructions available: patching division code
+>   console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing
+> instruction cache
+>   console: OF: fdt: Machine model: Xunlong Orange Pi PC
+>   console: Memory policy: Data cache writealloc
+>   console: OF: reserved mem: failed to allocate memory for node
+> 'cma@4a000000'
+>   console: cma: Failed to reserve 128 MiB
+>   console: psci: probing for conduit method from DT.
+>   console: psci: PSCIv0.2 detected in firmware.
+>   console: psci: Using standard PSCI v0.2 function IDs
+>   console: psci: Trusted OS migration not required
+>   console: random: get_random_bytes called from start_kernel+0x8d/0x3c2
+> with crng_init=3D0
+>   console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r8192 d24308
+> u73728
+>   console: Built 1 zonelists, mobility grouping on.  Total pages: 32480
+>   console: Kernel command line: printk.time=3D0 console=3DttyS0,115200
+>   PASS (8.59 s)
+>   JOB TIME   : 8.81 s
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  include/hw/timer/allwinner-a10-pit.h | 28 --------------------------
->  hw/timer/allwinner-a10-pit.c         | 30 ++++++++++++++++++++++++++++
->  2 files changed, 30 insertions(+), 28 deletions(-)
+>  tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
 >
-> diff --git a/include/hw/timer/allwinner-a10-pit.h
-> b/include/hw/timer/allwinner-a10-pit.h
-> index e4a644add9..c28ee5ca47 100644
-> --- a/include/hw/timer/allwinner-a10-pit.h
-> +++ b/include/hw/timer/allwinner-a10-pit.h
-> @@ -5,37 +5,9 @@
->  #include "hw/sysbus.h"
+> diff --git a/tests/acceptance/boot_linux_console.py
+> b/tests/acceptance/boot_linux_console.py
+> index 7e41cebd47..820239e439 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -411,6 +411,32 @@ class BootLinuxConsole(Test):
+>          self.wait_for_console_pattern('Boot successful.')
+>          # TODO user command, for now the uart is stuck
 >
->  #define TYPE_AW_A10_PIT "allwinner-A10-timer"
-> -#define AW_A10_PIT(obj) OBJECT_CHECK(AwA10PITState, (obj),
-> TYPE_AW_A10_PIT)
->
->  #define AW_PIT_TIMER_MAX        6
->
-> -#define AW_A10_PIT_TIMER_NR    6
-> -
-> -#define AW_A10_PIT_TIMER_IRQ_EN    0
-> -#define AW_A10_PIT_TIMER_IRQ_ST    0x4
-> -
-> -#define AW_A10_PIT_TIMER_CONTROL   0x0
-> -#define AW_A10_PIT_TIMER_EN        0x1
-> -#define AW_A10_PIT_TIMER_RELOAD    0x2
-> -#define AW_A10_PIT_TIMER_MODE      0x80
-> -
-> -#define AW_A10_PIT_TIMER_INTERVAL  0x4
-> -#define AW_A10_PIT_TIMER_COUNT     0x8
-> -#define AW_A10_PIT_WDOG_CONTROL    0x90
-> -#define AW_A10_PIT_WDOG_MODE       0x94
-> -
-> -#define AW_A10_PIT_COUNT_CTL       0xa0
-> -#define AW_A10_PIT_COUNT_RL_EN     0x2
-> -#define AW_A10_PIT_COUNT_CLR_EN    0x1
-> -#define AW_A10_PIT_COUNT_LO        0xa4
-> -#define AW_A10_PIT_COUNT_HI        0xa8
-> -
-> -#define AW_A10_PIT_TIMER_BASE      0x10
-> -#define AW_A10_PIT_TIMER_BASE_END  \
-> -    (AW_A10_PIT_TIMER_BASE * AW_A10_PIT_TIMER_NR + AW_A10_PIT_TIMER_COUN=
-T)
-> -
-> -#define AW_A10_PIT_DEFAULT_CLOCK   0x4
-> -
->  typedef struct AwA10PITState AwA10PITState;
->
->  typedef struct AwA10TimerContext {
-> diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c
-> index b31a0bcd43..00f7cc492d 100644
-> --- a/hw/timer/allwinner-a10-pit.c
-> +++ b/hw/timer/allwinner-a10-pit.c
-> @@ -24,6 +24,36 @@
->  #include "qemu/log.h"
->  #include "qemu/module.h"
->
-> +#define AW_A10_PIT_TIMER_NR         6
+> +    def test_arm_orangepi(self):
+> +        """
+> +        :avocado: tags=3Darch:arm
+> +        :avocado: tags=3Dmachine:orangepi-pc
+> +        """
+> +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
 > +
-> +#define AW_A10_PIT_TIMER_IRQ_EN     0
-> +#define AW_A10_PIT_TIMER_IRQ_ST     0x4
+>  'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+> +        deb_hash =3D '1334c29c44d984ffa05ed10de8c3361f33d78315'
+> +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+> +        kernel_path =3D self.extract_from_deb(deb_path,
+> +                                            '/boot/vmlinuz-4.20.7-sunxi'=
+)
+> +        dtb_path =3D
+> '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
+> +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
 > +
-> +#define AW_A10_PIT_TIMER_CONTROL    0x0
-> +#define AW_A10_PIT_TIMER_EN         0x1
-> +#define AW_A10_PIT_TIMER_RELOAD     0x2
-> +#define AW_A10_PIT_TIMER_MODE       0x80
+> +        self.vm.set_machine('orangepi-pc')
+> +        self.vm.set_console()
+> +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
+> +                               'console=3DttyS0,115200n8 '
+> +                               'earlycon=3Duart,mmio32,0x1c28000')
+> +        self.vm.add_args('-kernel', kernel_path,
+> +                         '-dtb', dtb_path,
+> +                         '-append', kernel_command_line)
+> +        self.vm.launch()
+> +        console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
+ine
+> +        self.wait_for_console_pattern(console_pattern)
 > +
-> +#define AW_A10_PIT_TIMER_INTERVAL   0x4
-> +#define AW_A10_PIT_TIMER_COUNT      0x8
-> +#define AW_A10_PIT_WDOG_CONTROL     0x90
-> +#define AW_A10_PIT_WDOG_MODE        0x94
-> +
-> +#define AW_A10_PIT_COUNT_CTL        0xa0
-> +#define AW_A10_PIT_COUNT_RL_EN      0x2
-> +#define AW_A10_PIT_COUNT_CLR_EN     0x1
-> +#define AW_A10_PIT_COUNT_LO         0xa4
-> +#define AW_A10_PIT_COUNT_HI         0xa8
-> +
-> +#define AW_A10_PIT_TIMER_BASE       0x10
-> +#define AW_A10_PIT_TIMER_BASE_END   \
-> +    (AW_A10_PIT_TIMER_BASE * AW_A10_PIT_TIMER_NR + AW_A10_PIT_TIMER_COUN=
-T)
-> +
-> +#define AW_A10_PIT_DEFAULT_CLOCK    0x4
-> +
-> +#define AW_A10_PIT(obj) \
-> +    OBJECT_CHECK(AwA10PITState, (obj), TYPE_AW_A10_PIT)
-> +
->  static void a10_pit_update_irq(AwA10PITState *s)
->  {
->      int i;
+>      def test_s390x_s390_ccw_virtio(self):
+>          """
+>          :avocado: tags=3Darch:s390x
 > --
 > 2.21.0
 >
 >
-Looks fine and tested on -M orangepi-pc, -M cubieboard:
-   Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-   Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
 --=20
 Niek Linnenbank
 
---000000000000fe217a059a2989ed
+--000000000000c18efa059a3ae11e
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Dec 19, 2019 at 7:51 PM Phili=
+<div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 17, 2019 at 7:27 PM Phili=
 ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.o=
 rg</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
 n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-">These definitions are only used in the implementation, thus don&#39;t<br>
-need to be exported. Move them in the source file.<br>
+">This test boots a Linux kernel on a OrangePi PC board and verify<br>
+the serial output is working.<br>
+<br>
+The kernel image and DeviceTree blob are built by the Raspbian<br>
+project (based on Debian):<br>
+<a href=3D"https://www.raspbian.org/RaspbianImages" rel=3D"noreferrer" targ=
+et=3D"_blank">https://www.raspbian.org/RaspbianImages</a></blockquote><div>=
+<br></div><div>One minor remark: I noticed here you refer to Raspbian, whil=
+e the actual image</div><div>used is from Armbian :-)<br></div><div> <br></=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
+der-left:1px solid rgb(204,204,204);padding-left:1ex"><br>
+<br>
+If ARM is a target being built, &quot;make check-acceptance&quot; will<br>
+automatically include this test by the use of the &quot;arch:arm&quot; tags=
+.<br>
+<br>
+Alternatively, this test can be run using:<br>
+<br>
+=C2=A0 $ make check-venv<br>
+=C2=A0 $ ./tests/venv/bin/avocado --show=3Dconsole,app run -t machine:orang=
+epi-pc tests/acceptance/boot_linux_console.py<br>
+=C2=A0 JOB ID=C2=A0 =C2=A0 =C2=A0: 2e4d15eceb13c33672af406f08171e6e9de1414a=
+<br>
+=C2=A0 JOB LOG=C2=A0 =C2=A0 : ~/job-results/job-2019-12-17T05.46-2e4d15e/jo=
+b.log<br>
+=C2=A0 (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_a=
+rm_orangepi:<br>
+=C2=A0 console: Uncompressing Linux... done, booting the kernel.<br>
+=C2=A0 console: Booting Linux on physical CPU 0x0<br>
+=C2=A0 console: Linux version 4.20.7-sunxi (<a href=3D"mailto:root@armbian.=
+com" target=3D"_blank">root@armbian.com</a>) (gcc version 7.2.1 20171011 (L=
+inaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019<br>
+=C2=A0 console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D50=
+c5387d<br>
+=C2=A0 console: CPU: div instructions available: patching division code<br>
+=C2=A0 console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing inst=
+ruction cache<br>
+=C2=A0 console: OF: fdt: Machine model: Xunlong Orange Pi PC<br>
+=C2=A0 console: Memory policy: Data cache writealloc<br>
+=C2=A0 console: OF: reserved mem: failed to allocate memory for node &#39;c=
+ma@4a000000&#39;<br>
+=C2=A0 console: cma: Failed to reserve 128 MiB<br>
+=C2=A0 console: psci: probing for conduit method from DT.<br>
+=C2=A0 console: psci: PSCIv0.2 detected in firmware.<br>
+=C2=A0 console: psci: Using standard PSCI v0.2 function IDs<br>
+=C2=A0 console: psci: Trusted OS migration not required<br>
+=C2=A0 console: random: get_random_bytes called from start_kernel+0x8d/0x3c=
+2 with crng_init=3D0<br>
+=C2=A0 console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r8192 d24308=
+ u73728<br>
+=C2=A0 console: Built 1 zonelists, mobility grouping on.=C2=A0 Total pages:=
+ 32480<br>
+=C2=A0 console: Kernel command line: printk.time=3D0 console=3DttyS0,115200=
+<br>
+=C2=A0 PASS (8.59 s)<br>
+=C2=A0 JOB TIME=C2=A0 =C2=A0: 8.81 s<br>
 <br>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0include/hw/timer/allwinner-a10-pit.h | 28 --------------------------<=
-br>
-=C2=A0hw/timer/allwinner-a10-pit.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 30 ++=
-++++++++++++++++++++++++++<br>
-=C2=A02 files changed, 30 insertions(+), 28 deletions(-)<br>
+=C2=A0tests/acceptance/boot_linux_console.py | 26 +++++++++++++++++++++++++=
++<br>
+=C2=A01 file changed, 26 insertions(+)<br>
 <br>
-diff --git a/include/hw/timer/allwinner-a10-pit.h b/include/hw/timer/allwin=
-ner-a10-pit.h<br>
-index e4a644add9..c28ee5ca47 100644<br>
---- a/include/hw/timer/allwinner-a10-pit.h<br>
-+++ b/include/hw/timer/allwinner-a10-pit.h<br>
-@@ -5,37 +5,9 @@<br>
-=C2=A0#include &quot;hw/sysbus.h&quot;<br>
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot=
+_linux_console.py<br>
+index 7e41cebd47..820239e439 100644<br>
+--- a/tests/acceptance/boot_linux_console.py<br>
++++ b/tests/acceptance/boot_linux_console.py<br>
+@@ -411,6 +411,32 @@ class BootLinuxConsole(Test):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0self.wait_for_console_pattern(&#39;Boot s=
+uccessful.&#39;)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0# TODO user command, for now the uart is =
+stuck<br>
 <br>
-=C2=A0#define TYPE_AW_A10_PIT &quot;allwinner-A10-timer&quot;<br>
--#define AW_A10_PIT(obj) OBJECT_CHECK(AwA10PITState, (obj), TYPE_AW_A10_PIT=
-)<br>
++=C2=A0 =C2=A0 def test_arm_orangepi(self):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Darch:arm<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:orangepi-pc<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.armbi=
+an.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https://apt.armbi=
+an.com/pool/main/l/</a>&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;=
+linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;1334c29c44d984ffa05ed10de8c3=
+361f33d78315&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_url, asset_h=
+ash=3Ddeb_hash)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_deb(deb_path=
+,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &#39;/boot/vmlinuz-4.20.7-sunxi&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-dev-sun=
+xi/sun8i-h3-orangepi-pc.dtb&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(deb_path, d=
+tb_path)<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_machine(&#39;orangepi-pc&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_console()<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_command_line =3D (self.KERNEL_COMMON_CO=
+MMAND_LINE +<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;console=3DttyS0,115200n8 &#39;<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;earlycon=3Duart,mmio32,0x1c28000=
+&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.add_args(&#39;-kernel&#39;, kernel_pat=
+h,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-dtb&#39;, dtb_path,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&#39;-append&#39;, kernel_command_line)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.launch()<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 console_pattern =3D &#39;Kernel command line: =
+%s&#39; % kernel_command_line<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(console_pattern)=
 <br>
-=C2=A0#define AW_PIT_TIMER_MAX=C2=A0 =C2=A0 =C2=A0 =C2=A0 6<br>
-<br>
--#define AW_A10_PIT_TIMER_NR=C2=A0 =C2=A0 6<br>
--<br>
--#define AW_A10_PIT_TIMER_IRQ_EN=C2=A0 =C2=A0 0<br>
--#define AW_A10_PIT_TIMER_IRQ_ST=C2=A0 =C2=A0 0x4<br>
--<br>
--#define AW_A10_PIT_TIMER_CONTROL=C2=A0 =C2=A00x0<br>
--#define AW_A10_PIT_TIMER_EN=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x1<br>
--#define AW_A10_PIT_TIMER_RELOAD=C2=A0 =C2=A0 0x2<br>
--#define AW_A10_PIT_TIMER_MODE=C2=A0 =C2=A0 =C2=A0 0x80<br>
--<br>
--#define AW_A10_PIT_TIMER_INTERVAL=C2=A0 0x4<br>
--#define AW_A10_PIT_TIMER_COUNT=C2=A0 =C2=A0 =C2=A00x8<br>
--#define AW_A10_PIT_WDOG_CONTROL=C2=A0 =C2=A0 0x90<br>
--#define AW_A10_PIT_WDOG_MODE=C2=A0 =C2=A0 =C2=A0 =C2=A00x94<br>
--<br>
--#define AW_A10_PIT_COUNT_CTL=C2=A0 =C2=A0 =C2=A0 =C2=A00xa0<br>
--#define AW_A10_PIT_COUNT_RL_EN=C2=A0 =C2=A0 =C2=A00x2<br>
--#define AW_A10_PIT_COUNT_CLR_EN=C2=A0 =C2=A0 0x1<br>
--#define AW_A10_PIT_COUNT_LO=C2=A0 =C2=A0 =C2=A0 =C2=A0 0xa4<br>
--#define AW_A10_PIT_COUNT_HI=C2=A0 =C2=A0 =C2=A0 =C2=A0 0xa8<br>
--<br>
--#define AW_A10_PIT_TIMER_BASE=C2=A0 =C2=A0 =C2=A0 0x10<br>
--#define AW_A10_PIT_TIMER_BASE_END=C2=A0 \<br>
--=C2=A0 =C2=A0 (AW_A10_PIT_TIMER_BASE * AW_A10_PIT_TIMER_NR + AW_A10_PIT_TI=
-MER_COUNT)<br>
--<br>
--#define AW_A10_PIT_DEFAULT_CLOCK=C2=A0 =C2=A00x4<br>
--<br>
-=C2=A0typedef struct AwA10PITState AwA10PITState;<br>
-<br>
-=C2=A0typedef struct AwA10TimerContext {<br>
-diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c<br=
->
-index b31a0bcd43..00f7cc492d 100644<br>
---- a/hw/timer/allwinner-a10-pit.c<br>
-+++ b/hw/timer/allwinner-a10-pit.c<br>
-@@ -24,6 +24,36 @@<br>
-=C2=A0#include &quot;qemu/log.h&quot;<br>
-=C2=A0#include &quot;qemu/module.h&quot;<br>
-<br>
-+#define AW_A10_PIT_TIMER_NR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A06<br>
 +<br>
-+#define AW_A10_PIT_TIMER_IRQ_EN=C2=A0 =C2=A0 =C2=A00<br>
-+#define AW_A10_PIT_TIMER_IRQ_ST=C2=A0 =C2=A0 =C2=A00x4<br>
-+<br>
-+#define AW_A10_PIT_TIMER_CONTROL=C2=A0 =C2=A0 0x0<br>
-+#define AW_A10_PIT_TIMER_EN=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x1<br>
-+#define AW_A10_PIT_TIMER_RELOAD=C2=A0 =C2=A0 =C2=A00x2<br>
-+#define AW_A10_PIT_TIMER_MODE=C2=A0 =C2=A0 =C2=A0 =C2=A00x80<br>
-+<br>
-+#define AW_A10_PIT_TIMER_INTERVAL=C2=A0 =C2=A00x4<br>
-+#define AW_A10_PIT_TIMER_COUNT=C2=A0 =C2=A0 =C2=A0 0x8<br>
-+#define AW_A10_PIT_WDOG_CONTROL=C2=A0 =C2=A0 =C2=A00x90<br>
-+#define AW_A10_PIT_WDOG_MODE=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x94<br>
-+<br>
-+#define AW_A10_PIT_COUNT_CTL=C2=A0 =C2=A0 =C2=A0 =C2=A0 0xa0<br>
-+#define AW_A10_PIT_COUNT_RL_EN=C2=A0 =C2=A0 =C2=A0 0x2<br>
-+#define AW_A10_PIT_COUNT_CLR_EN=C2=A0 =C2=A0 =C2=A00x1<br>
-+#define AW_A10_PIT_COUNT_LO=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00xa4<br>
-+#define AW_A10_PIT_COUNT_HI=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00xa8<br>
-+<br>
-+#define AW_A10_PIT_TIMER_BASE=C2=A0 =C2=A0 =C2=A0 =C2=A00x10<br>
-+#define AW_A10_PIT_TIMER_BASE_END=C2=A0 =C2=A0\<br>
-+=C2=A0 =C2=A0 (AW_A10_PIT_TIMER_BASE * AW_A10_PIT_TIMER_NR + AW_A10_PIT_TI=
-MER_COUNT)<br>
-+<br>
-+#define AW_A10_PIT_DEFAULT_CLOCK=C2=A0 =C2=A0 0x4<br>
-+<br>
-+#define AW_A10_PIT(obj) \<br>
-+=C2=A0 =C2=A0 OBJECT_CHECK(AwA10PITState, (obj), TYPE_AW_A10_PIT)<br>
-+<br>
-=C2=A0static void a10_pit_update_irq(AwA10PITState *s)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0int i;<br>
+=C2=A0 =C2=A0 =C2=A0def test_s390x_s390_ccw_virtio(self):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0:avocado: tags=3Darch:s390x<br>
 -- <br>
 2.21.0<br>
 <br>
-</blockquote></div><div><br></div><div>Looks fine and tested on -M orangepi=
--pc, -M cubieboard:</div><div>=C2=A0=C2=A0 Tested-by: Niek Linnenbank &lt;<=
-a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;=
-</div><div>=C2=A0=C2=A0 Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:=
-nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;<br></div><br>-- =
-<br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Niek L=
-innenbank<br><br></div></div></div></div>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
 
---000000000000fe217a059a2989ed--
+--000000000000c18efa059a3ae11e--

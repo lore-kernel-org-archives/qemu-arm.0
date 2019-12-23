@@ -1,107 +1,105 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6871313lff;
-        Mon, 23 Dec 2019 01:12:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyVPU7nmIh0mT6TytAioxEjHQy4dfOhOP5AXvDzdJ6GwITvd8rY2m+Q9YL+PNFSQE/D0wLJ
-X-Received: by 2002:a05:6830:1608:: with SMTP id g8mr29854718otr.169.1577092330381;
-        Mon, 23 Dec 2019 01:12:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1577092330; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6873556lff;
+        Mon, 23 Dec 2019 01:14:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyD0268M4BzJAaRhrTUp8pHDIzI2Im2DFsNepxvst5Gz4oZ/qsEqruxfitrsJJqlatYxT6X
+X-Received: by 2002:a0c:b034:: with SMTP id k49mr24112964qvc.144.1577092484232;
+        Mon, 23 Dec 2019 01:14:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1577092484; cv=none;
         d=google.com; s=arc-20160816;
-        b=JIP/VHEo36973TRdpFE1YiFpZoE+E7ERvldDsnh91hXCDOx98pJLoq4nsJtawMDAPt
-         ltQTjc8bo89XWSz9EnsTlyUF/AjLfAsYnrnbq6XwUnLssfPAYg84CFMOU1WX4afwBIRM
-         2YejLYUNg5GZL2KAsn1Fo5Ptr8e0KejPfL0IOCbn9mrMiQqJkO9x1R0lR97mqgDYngb/
-         DRYf5AB9L/u8x3HMe28RoDL32/B/7hOZNzV7fGUdQgD6TCsqVxHsWyDblqRXO6xjTzjm
-         /UHHrt9vZBOhSg8s2kS5VVRPVC/MVsJlYp0DEduSUAX36I4cEZbS09E3dGDozXMarY1s
-         enMw==
+        b=BRhAr4zyt93HgnViUtnOGLiG6NkjdFUI27Kb4ivC5IMjNcYGkKfRrXmBLTKnKkAg90
+         erO9HS+LQKHkLAutoi1c1voirUO8E/H3wRmnBPGLortDrOcRl9Eb7T23NQs0tDaAcr6K
+         Eif7456e/wHSA0UhGJ7NwM00uErk+dHeF8fJBd7AVf2d9mJti+ez4OBgB7fYDVv8nKRn
+         1KNooZb2LU/AZnAYfRd+Zppp41gupCt5Rtlg6tXmpFBO0HJFWdhp6ZqINgDHZK1OExrZ
+         xfVbqJrOJJNMzZxpdrCr5GVPOccS2YlrnPZaK3ajVZxTioRiSMZlacDgY+L84LhzWWCH
+         bXKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=f/xlkTrstnlRNO4FHVwyPI1ENajclFfywGWkCwYYhL8=;
-        b=dNnO+LI8BIBkGxgAkszQDOFrvWqAiA3AKiCqHiDLb2sb0UELgaNLWj//3vt1gOTKw4
-         nBBhMHYTFvjxU3B5cxL2rIyLyrNelBwWDZ8dJ9v4EfP/yf9f8uMfCvbN8y9maFcQEAq1
-         ewehFY1RQ7PYx664BAWG+vKAI5RfOe21p5MaZaqRvP990kYC8kei17lLyjQkwOehjFng
-         vlsLuYavgEgCKnCXaoEFUV9FbFTUGvui54kV1qWGJQUxV+6QYPisjE4bVkt4BvmbKSa6
-         ZLBBq2K/QzB1lhF531qZTDKQ0bthmvPxHz4FhLyE8FSkRrTaTGSavEOdhRbKXnxmZfKl
-         09+A==
+        bh=mbQBLxoCEwlwW3ReN5aW2HRPYMTYuCRL7C8tlTZoOLM=;
+        b=zIvUUXDiMRL6eX/tEHNPSX4pxdFgenky7VuHRhPcCguZwyWPeOxGcsvtpouF55frNQ
+         6AUxP/SgAesBNdaIz0/Blrt3yQa53PGSszbI7n0QymGtJFVsgNwBQcvq649vbvA/Yk5B
+         GcGKKJI/gAXteVMdzhE7pFycnAOwqQUiwOjhDFRBQnaNutY6mxkIgNxz2V8fsqY2C4nF
+         VfQEJL8c7VYxm/51nb6RiUkbrvaDJcjN/KmE0xi6rvZFUpAZ+g5ftmpTg7ivK+9OzetR
+         hjYVdG+RcXHYY979zPuN3JsjAw0yJu9dCLY19i03HMEHRdMyEeMr7PcoN1bWYkw3e7Ge
+         dIrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Eit4hSy9;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=epPGXEZc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a15si6376595otq.83.2019.12.23.01.12.10
+        by mx.google.com with ESMTPS id t3si8247379qta.29.2019.12.23.01.14.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Dec 2019 01:12:10 -0800 (PST)
+        Mon, 23 Dec 2019 01:14:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Eit4hSy9;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=epPGXEZc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54950 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54986 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ijJl3-00018m-IF
-	for alex.bennee@linaro.org; Mon, 23 Dec 2019 04:12:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58009)
+	id 1ijJnX-0003P8-Jw
+	for alex.bennee@linaro.org; Mon, 23 Dec 2019 04:14:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36021)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1ijJks-00018I-Qu
- for qemu-arm@nongnu.org; Mon, 23 Dec 2019 04:12:00 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1ijJnM-0003Ke-Jl
+ for qemu-arm@nongnu.org; Mon, 23 Dec 2019 04:14:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1ijJkq-0003rd-A3
- for qemu-arm@nongnu.org; Mon, 23 Dec 2019 04:11:57 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:24227
+ (envelope-from <eric.auger@redhat.com>) id 1ijJnL-0006sw-An
+ for qemu-arm@nongnu.org; Mon, 23 Dec 2019 04:14:32 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:36632
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1ijJkp-0003kQ-QM
- for qemu-arm@nongnu.org; Mon, 23 Dec 2019 04:11:56 -0500
+ id 1ijJnL-0006qF-5f
+ for qemu-arm@nongnu.org; Mon, 23 Dec 2019 04:14:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1577092314;
+ s=mimecast20190719; t=1577092470;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=f/xlkTrstnlRNO4FHVwyPI1ENajclFfywGWkCwYYhL8=;
- b=Eit4hSy9tg++TF/RK5CnRU04vqMS9Cqn1XS1nZ8eI91j+zhPDdrB90ng4WXcX9PIYA3Cau
- ypAi3bPXMCoKAbvK3bbAkcAYhxTg7b1lmHBt23p3s3mTC94k1UboqS4kCDLg73YAFYXzO9
- NP8+01S8eZs19zaEOvY1WIk7sAopa/E=
+ bh=mbQBLxoCEwlwW3ReN5aW2HRPYMTYuCRL7C8tlTZoOLM=;
+ b=epPGXEZc4ya6ZEqRa4VjaGvzvoqSEH8hMAfuAXLmu0xl2vBN6moCxNJZUaFwCYr5ed5wGY
+ 7ViNdSSYmPyWdObnqw1xPfxGZ+vzzZ9CCoHPeWb7q4dEnK4La5TCWfwWaVBA485n9hsWTM
+ 4LO+XJjMVElECDERnfYOWAzdiXDgVyE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-18-msKCyRmkPfiF8ozY0gdOAw-1; Mon, 23 Dec 2019 04:11:53 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-387-1rjFu8BaP1OQ4D2Lz402PA-1; Mon, 23 Dec 2019 04:14:29 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BA48D189DF40;
- Mon, 23 Dec 2019 09:11:51 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C4738DB60;
+ Mon, 23 Dec 2019 09:14:27 +0000 (UTC)
 Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BCED260BE0;
- Mon, 23 Dec 2019 09:11:41 +0000 (UTC)
-Subject: Re: [PATCH for-5.0 v11 05/20] virtio-iommu: Endpoint and domains
- structs and helpers
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A0F95D9D6;
+ Mon, 23 Dec 2019 09:14:11 +0000 (UTC)
+Subject: Re: [PATCH for-5.0 v11 06/20] virtio-iommu: Implement attach/detach
+ command
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>
 References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-6-eric.auger@redhat.com>
- <20191210163716.GD277340@myrica>
- <28597404-b9ac-8c16-e9e8-ad5793f2f5a3@redhat.com>
- <20191220170028.GB2626852@myrica>
+ <20191122182943.4656-7-eric.auger@redhat.com>
+ <20191210164156.GE277340@myrica>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <fe993994-1b69-cf47-4f9a-88572e275a3e@redhat.com>
-Date: Mon, 23 Dec 2019 10:11:37 +0100
+Message-ID: <531cb6d7-6a2b-1278-a4d2-f4ea11442967@redhat.com>
+Date: Mon, 23 Dec 2019 10:14:09 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20191220170028.GB2626852@myrica>
+In-Reply-To: <20191210164156.GE277340@myrica>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: msKCyRmkPfiF8ozY0gdOAw-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: 1rjFu8BaP1OQ4D2Lz402PA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,66 +118,80 @@ Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
  dgilbert@redhat.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LL7A9XBgSHxq
+X-TUID: nRBvJ78vTG1y
 
 Hi Jean,
 
-On 12/20/19 6:00 PM, Jean-Philippe Brucker wrote:
-> On Thu, Dec 19, 2019 at 07:31:08PM +0100, Auger Eric wrote:
->> Hi Jean,
->>
->> On 12/10/19 5:37 PM, Jean-Philippe Brucker wrote:
->>> On Fri, Nov 22, 2019 at 07:29:28PM +0100, Eric Auger wrote:
->>>> +typedef struct viommu_domain {
->>>> +    uint32_t id;
->>>> +    GTree *mappings;
->>>> +    QLIST_HEAD(, viommu_endpoint) endpoint_list;
->>>> +} viommu_domain;
->>>> +
->>>> +typedef struct viommu_endpoint {
->>>> +    uint32_t id;
->>>> +    viommu_domain *domain;
->>>> +    QLIST_ENTRY(viommu_endpoint) next;
->>>> +} viommu_endpoint;
->>>
->>> There might be a way to merge viommu_endpoint and the IOMMUDevice
->>> structure introduced in patch 4, since they both represent one endpoint.
->>> Maybe virtio_iommu_find_add_pci_as() could add the IOMMUDevice to
->>> s->endpoints, and IOMMUDevice could store the endpoint ID rather than bus
->>> and devfn.
->>
->> On PCI bus enumeration we locally store the PCI bus hierarchy under the
->> form of GHashTable of IOMMUDevice indexed by iommu_pci_bus pointer.
->> Those are all the devices attached to the downstream buses. We also use
->> an array of iommu pci bus pointers indexed by bus number that is lazily
->> populated due to the fact, at enumeration time we do know the bus number
->> yet. As you pointed, I haven't used the array of iommu pci bus pointers
->> indexed by bus number in this series and I should actually. Currently I
->> am not checking on attach that the sid effectively corresponds to a sid
->> protected by this iommu. I will add this in my next version. The above
->> structures are used in intel_iommu and smmu code as well and I think
->> eventually this may be factorized a common base class..
->>
->> on the other hand the gtree of viommu_endpoint - soon renamed in
->> CamelCase form ;-) - corresponds to the EPs that are actually attached
->> to any domain. It is indexed by sid and not by bus pointer. This is more
->> adapted to the virtio-iommu case.
->>
->> So, despite your suggestion, I am tempted to keep the different
->> structures as the first ones are common to all iommu emulation code and
->> the last is adapted to the virtio-iommu operations.
->>
->> Thoughts?
+On 12/10/19 5:41 PM, Jean-Philippe Brucker wrote:
+> On Fri, Nov 22, 2019 at 07:29:29PM +0100, Eric Auger wrote:
+>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>> index 235bde2203..138d5b2a9c 100644
+>> --- a/hw/virtio/virtio-iommu.c
+>> +++ b/hw/virtio/virtio-iommu.c
+>> @@ -77,11 +77,12 @@ static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+>>  static void virtio_iommu_detach_endpoint_from_domain(viommu_endpoint *ep)
+>>  {
+>>      QLIST_REMOVE(ep, next);
+>> +    g_tree_unref(ep->domain->mappings);
+>>      ep->domain = NULL;
+>>  }
+>>  
+>> -viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id);
+>> -viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id)
+>> +static viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
+>> +                                                  uint32_t ep_id)
+>>  {
+>>      viommu_endpoint *ep;
+>>  
+>> @@ -102,15 +103,14 @@ static void virtio_iommu_put_endpoint(gpointer data)
+>>  
+>>      if (ep->domain) {
+>>          virtio_iommu_detach_endpoint_from_domain(ep);
+>> -        g_tree_unref(ep->domain->mappings);
+>>      }
+>>  
+>>      trace_virtio_iommu_put_endpoint(ep->id);
+>>      g_free(ep);
+>>  }
+>>  
+>> -viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id);
+>> -viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id)
+>> +static viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s,
+>> +                                              uint32_t domain_id)
 > 
-> Makes sense, it seems better to keep them separate. I had missed that the
-> PCI bus number is resolved later, and started to move the endpoint ID into
-> IOMMUDevice when adding MMIO support, but I'll need to revisit this.
+> Looks like the above change belong to patch 5?
+virtio_iommu_get_domain was not used yet in last patch. I turn it into
+static now it gets used.
 > 
-> I'll be off for two weeks, have a nice holiday!
+>>  {
+>>      viommu_domain *domain;
+>>  
+>> @@ -137,7 +137,6 @@ static void virtio_iommu_put_domain(gpointer data)
+>>      QLIST_FOREACH_SAFE(iter, &domain->endpoint_list, next, tmp) {
+>>          virtio_iommu_detach_endpoint_from_domain(iter);
+>>      }
+>> -    g_tree_destroy(domain->mappings);
+> 
+> When created by virtio_iommu_get_domain(), mappings has one reference.
+> Then for each attach (including the first one) an additional reference is
+> taken, and freed by virtio_iommu_detach_endpoint_from_domain(). So I think
+> there are two problems:
+> 
+> * virtio_iommu_put_domain() drops one ref for each endpoint, but we still
+>   have one reference to mappings, so they're not freed. We do need this
+>   g_tree_destroy()
+> 
+> * After detaching all the endpoints, the guest may reuse the domain ID for
+>   another domain, but the previous mappings haven't been erased. Not sure
+>   how to fix this using the g_tree refs, because dropping all the
+>   references will free the internal tree data and it won't be reusable.
 
-Thanks, you too.
+You're perfectly right, mappings were not destroyed and I missed that.
+So I made 2 modifications:
+- do not increment the ref count on the first EP addition
+- destroy the domain when its EP list get empty.
 
-Merry Christmas! :-)
+Thanks
 
 Eric
 > 

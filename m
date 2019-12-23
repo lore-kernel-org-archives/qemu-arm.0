@@ -1,82 +1,79 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4863410lff;
-        Sat, 21 Dec 2019 04:36:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzjn/rDbtsoN7p7SPD0cUDrRLqtMk3uDrydAPGGJ3enUlMVsPGBluxDVuN3yCS47TKDh/41
-X-Received: by 2002:aca:aa15:: with SMTP id t21mr5262977oie.177.1576931780461;
-        Sat, 21 Dec 2019 04:36:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576931780; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6831580lff;
+        Mon, 23 Dec 2019 00:21:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy6bTSarc6g3JBjxxJFmubO/+D1rxkXRktQ6wo4lG2DP0k8YRo71IwEVnvGi2chHOjkDpOa
+X-Received: by 2002:a05:620a:6b8:: with SMTP id i24mr25548621qkh.9.1577089296029;
+        Mon, 23 Dec 2019 00:21:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1577089296; cv=none;
         d=google.com; s=arc-20160816;
-        b=HneY5nB9AyrAj5eSVd7fivSG1VVDvk582N73rm8XTmUXBWdaKCZEu2Pu17m0vQRc5p
-         QWvy2H3dRPSAf64A1Blx2RCrqqKlqN24WEWqz4/p/NHH5d3ZX6tAPGU1pKkHtoiyHBq2
-         7uqKs9KXELigZ70PfcMdfYZxK4sx+Wtlht8wCXb/zjKXUQ/KAYPmwPB2FOgmkBzDEM6i
-         Y39FlZjUyI/mx2ADplTJnq/bOohtBCx9RHfbOw67AG6WLl02y+KAgU+0Zh3+Njlumr16
-         PUonb+zI5FF/nSkHW1QgR3DNoLn+GoPWqA7gUYSAebYacatHRrvOfhrRPCgC7FPMSdVY
-         0Djw==
+        b=VVDxVnoWNIgPxLxH52bbSYa2AE+xAoXAHCMvP9N9f99OL5KrSvjsW42CKpf+LU0BXX
+         FqH3SITHWeLKuVT2LIPe109OPvfb9slIjVM5vJMtMknHcga64nleWbYd5iWGTOXEhnqw
+         gaZYjYh+Oomzj0r3JYMET3EWTUcGWEYwG4lfC0vTfJ2ffGfKgn/e3ETl0xyn6iYVFdzX
+         oOH6SROom1XJTUDnmVP+qQebnfrp0RNUHO9MfZpw9vGNV22aLWj5dplXfcmEIoac9+br
+         +gDSOfPaT/MdJFUV7vn6KRNmvOv10VXF/Nb47TYZhY3HYXIojg4/Z1GgkBds6L5xzc6c
+         18sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=TVGpgVsMjDmq16vaw4najvodwdC33SEMsgFjfDNmdiM=;
-        b=aCvPurScPWQveXo0OvXWzkNB1F6GqrNhjxHWnRVsisJuD1Pe5hN3CV6O49uqgrEnns
-         mJy+RRwLW7ijnIpvNKf2kiPM4Ma3mCITIYgqSgK3ZCcvfnsRWqVoU1i4b0zTzfHy8dqc
-         f9blN92MEd4cXiCqVygsj4jHiQvxRUdh0lQfBG218Yz2cxQ9O1LofEbNhrZBE0ISbbGr
-         j6t22aME7iWfvmD6nsdtoqaSCQFv2PTJcTasO6aA7W+T2dGdPMge9h+N6TMIoW31rMMO
-         O/WYNCU7NOJGRO4Dde1+B7fcZn6ooeNwzUCeWmqBqXMa8c/ok4GwCfWs7r5czm69bK0U
-         s1oA==
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=K9WGbz1RalfCDJHbJH4KeimsE2UDzC4HW+mkcAPWEpc=;
+        b=trx4V5a5mtEXBAoTn5Q6RPu4bRR9NMWlf+IrrH/qpfe1Q3QFl/+9AgFJW6HwPstvDQ
+         /aaBAfKD78WXge26jpMmzaEKcz7WXqAyWZx0/n6cif/+wmLuzhBGPRBQ1RWitynJuNIQ
+         Udn+mzEzp7z09tegn8fSrKw4unPlY6zXxD/K3tVkSgFeGjmeJ7dlmMUYWhzZ+FWIVhQ7
+         s57kuJl2Eyvjb4nXyDvheWIiChR40fR+6V5ND/3lLirQJ0Z78ColhoSIPfHqUir1wYZD
+         fb/Nw8zlFBCqfUOe4AYSNxko13lWhBpIq/h4E/9nQk+EHvGLRzzHbpPRkQMIfxuKo/jJ
+         RxNw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h203si6281511oif.3.2019.12.21.04.36.20
+        by mx.google.com with ESMTPS id ev7si8308953qvb.204.2019.12.23.00.21.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Dec 2019 04:36:20 -0800 (PST)
+        Mon, 23 Dec 2019 00:21:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38890 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iidzX-0004t5-LJ
-	for alex.bennee@linaro.org; Sat, 21 Dec 2019 07:36:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50904)
+	id 1ijIy7-00025c-2l
+	for alex.bennee@linaro.org; Mon, 23 Dec 2019 03:21:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38335)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gengdongjiu@huawei.com>) id 1iidzO-0004sy-Nj
- for qemu-arm@nongnu.org; Sat, 21 Dec 2019 07:36:11 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1ijIxo-00022x-4P
+ for qemu-arm@nongnu.org; Mon, 23 Dec 2019 03:21:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gengdongjiu@huawei.com>) id 1iidzN-0000Wd-AC
- for qemu-arm@nongnu.org; Sat, 21 Dec 2019 07:36:10 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:48738 helo=huawei.com)
+ (envelope-from <guoheyi@huawei.com>) id 1ijIxm-0005yE-5k
+ for qemu-arm@nongnu.org; Mon, 23 Dec 2019 03:21:15 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2227 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
- id 1iidzM-0007xw-Lu; Sat, 21 Dec 2019 07:36:09 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 5BEC98C9039688F26A78;
- Sat, 21 Dec 2019 20:35:53 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Sat, 21 Dec 2019
- 20:35:46 +0800
-Subject: Re: [RESEND PATCH v21 5/6] target-arm: kvm64: handle SIGBUS signal
- from kernel or KVM
-To: Igor Mammedov <imammedo@redhat.com>, Xiang Zheng <zhengxiang9@huawei.com>
-References: <20191111014048.21296-1-zhengxiang9@huawei.com>
- <20191111014048.21296-6-zhengxiang9@huawei.com>
- <20191115173713.795e5f63@redhat.com>
-From: gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <38f13f15-960d-3e56-78f5-42b1ec61a322@huawei.com>
-Date: Sat, 21 Dec 2019 20:35:44 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1ijIxl-0005RB-OP; Mon, 23 Dec 2019 03:21:14 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id E3E14B45958003554A93;
+ Mon, 23 Dec 2019 16:21:05 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.439.0; Mon, 23 Dec 2019
+ 16:20:56 +0800
+Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20191105091056.9541-1-guoheyi@huawei.com>
+ <CAFEAcA-+tAbb9h2wZOm56TqUvjQJT0OYFLwTVS-UxKrF5PO3mQ@mail.gmail.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <5aece614-4341-35e5-53a6-2f3d788e6e8d@huawei.com>
+Date: Mon, 23 Dec 2019 16:20:55 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191115173713.795e5f63@redhat.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
+In-Reply-To: <CAFEAcA-+tAbb9h2wZOm56TqUvjQJT0OYFLwTVS-UxKrF5PO3mQ@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+X-Originating-IP: [10.133.216.73]
 X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,37 +85,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, kvm@vger.kernel.org,
- mst@redhat.com, wanghaibin.wang@huawei.com, mtosatti@redhat.com,
- qemu-devel@nongnu.org, linuxarm@huawei.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, james.morse@arm.com, xuwei5@huawei.com,
- jonathan.cameron@huawei.com, pbonzini@redhat.com, lersek@redhat.com,
- rth@twiddle.net
+Cc: Mark Rutland <mark.rutland@arm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marc Zyngier <marc.zyngier@arm.com>, Cornelia Huck <cohuck@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, James Morse <james.morse@arm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com,
+ Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lCeSzHv49rMw
+X-TUID: XEdpCQSgH9iS
 
+Hi Peter,
 
+Really appreciate your comments.
 
-On 2019/11/16 0:37, Igor Mammedov wrote:
->> +
->> +        /* zero means OSPM does not acknowledge the error */
->> +        if (!read_ack_register) {
->> +            if (loop < 3) {
->> +                usleep(100 * 1000);
->> +                loop++;
->> +                goto retry;
-> as minimum this loop can stall guest repeatedly for 0.3s if guest triggers BQL,
-> until it handles error.
+For other platforms/boards emulated in qemu, like omap, imx*, etc, are=20
+they just TCG platforms? Can we just enable security and EL3 emulation=20
+for these platforms instead of implementing copies of firmware=20
+interfaces in qemu? Also I think it is possible to optimize the code to=20
+support all KVM enabled virtual boards with one single copy of SDEI=20
+code, so at least the duplication of code inside qemu might be avoided.
 
-I think reparations for 0.3s is reasonable.
-1. 0.3s is the worst case to repeat, if guest acknowledge it in before 0.3s, the guest can not stall
-2. if the previous error is not acknowledged, the next error will be lost, error handling(safety) is more important than others.
+I can understand your concerns; the exsiting SDEI code in ARM Trusted=20
+Firmware also tempted me when I started to writing the code in qemu. I=20
+agree the ideal way is to use the existing firmware directly, but how=20
+can we achieve that? Either I don't think it is good to modify the=20
+firmware code too much, for firmware should be kept simple and reliable.
 
+Does James or Marc have any idea?
 
+Thanks,
+
+Heyi
+
+=E5=9C=A8 2019/12/20 21:44, Peter Maydell =E5=86=99=E9=81=93:
+> On Tue, 5 Nov 2019 at 09:12, Heyi Guo <guoheyi@huawei.com> wrote:
+>> SDEI is for ARM "Software Delegated Exception Interface". AS ARM64 doe=
+sn't have
+>> native non-maskable interrupt (NMI), we rely on higher privileged (lar=
+ger
+>> exception level) software to change the execution flow of lower privil=
+eged
+>> (smaller exception level) software when certain events occur, to emula=
+te NMI
+>> mechanism, and SDEI is the standard interfaces between the two levels =
+of
+>> privileged software. It is based on SMC/HVC calls.
+>>
+>> The higher privileged software implements an SDEI dispatcher to handle=
+ SDEI
+>> related SMC/HVC calls and trigger SDEI events; the lower privileged so=
+ftware
+>> implements an SDEI client to request SDEI services and handle SDEI eve=
+nts.
+> Hi; I read through these patches last week, but I didn't reply
+> then because although there are some aspects to the design that
+> I don't like, I don't have a clear idea of what a better approach
+> to the problems it's trying to solve would be. However I didn't
+> want to go home for the end of the year without providing at
+> least some response. So I'm going to lay out the parts I have
+> issues with and perhaps somebody else will have a good idea.
 >
-> (not sure what to suggest here though)
-> 
-> (not sure what to suggest here though)
-> 
+> The first part that I dislike here is that this is implementing
+> an entire ABI which in real hardware is provided by firmware. I
+> think that QEMU's design works best when QEMU provides emulation of
+> hardware or hardware-like facilities, which guest code (either
+> in the kernel, or firmware/bios running in the guest) can then
+> make use of. Once we start getting into implementing firmware
+> interfaces directly in QEMU this rapidly becomes a large amount
+> of work and code, and it's unclear where it should stop. Should
+> we implement also the equivalent of firmware for omap boards?
+> For imx* boards? For the raspberry pi? For xilinx boards?
+> Are we going to end up reimplementing more of ARM Trusted Firmware
+> functionality inside QEMU? The code to implement firmware-equivalent
+> ABIs in all these boards would I think quickly become a large part
+> of the codebase.
+>
+> My second concern is that to do the things it wants to do,
+> the implementation here does some pretty invasive things:
+>   * intercepting interrupt lines which ought to just be
+>     emulated hardware signals between devices and the GIC
+>   * capturing register values of other CPUs, and arbitrarily
+>     stopping those other CPUs and making them run other code
+>     at a later point in time
+> I'm really uncomfortable with what's just an 'emulated firmware'
+> interface for one specific board model doing this kind of thing.
+>
+> Finally, the stated rationale for the patchset ("we'd like an
+> emulated NMI equivalent") doesn't really feel to me like it's
+> strong enough to counterbalance the amount of code here and
+> the degree to which it's moving us into a swamp I'd prefer
+> it if we could stay out of.
+>
+> I'd be much happier with a design where QEMU provides simple
+> facilities to the guest and the guest firmware and kernel
+> deal with making use of them. I appreciate that it's not
+> clear how that would work though, given that in real hardware
+> this works by the firmware running at EL3 and KVM not
+> providing a mechanism that allows guest code that runs at
+> a higher (effective or emulated) privilege level than the
+> guest kernel...
+>
+> thanks
+> -- PMM
+>
+> .
 

@@ -1,103 +1,69 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8080881lff;
-        Mon, 23 Dec 2019 23:41:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqys1E91J//+6igv4TUkFSuLDAeXViaK8bvPhd+R3Q24cK6vUNjPN6PZBpoMEUS4+3+cqyav
-X-Received: by 2002:a05:620a:133a:: with SMTP id p26mr29175569qkj.233.1577173276832;
-        Mon, 23 Dec 2019 23:41:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1577173276; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp12130001lff;
+        Fri, 27 Dec 2019 07:20:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyMTZqphXbALdncJwWaLcr+QA6mwMSejMloa48V1Ta+DUdG5M5Jhzu64s6b2bwVXg5dEDXt
+X-Received: by 2002:a9d:1e4:: with SMTP id e91mr52692730ote.324.1577460010925;
+        Fri, 27 Dec 2019 07:20:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1577460010; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xk6accCMAEjqDI52cjM69p8PpEPdLeGLuGVxNYYDkx2biW0JjL9qKv9Tqy2Na3cmuH
-         TkqBVVXZRrLkyio5PGJwRLk5gIBArfs/4iSibem0frzbAw8jc1ldopzvbuYn0ysc9m3t
-         DlZGpksXvfNVoGu6u+8dgHx05y5zg7cttRaals4PP+DJFEUp2mRvEbCASbdotjjwcmVs
-         3PuSa4Mhz87dOjN4pUq9Bm9MxQ5rpiHBKNnZ7EYDlTxaj1Zq5+xSlpyGFSd25mPAA4hN
-         v9ENOPhA6o5qqVYjQ5qV7tZFc2cu2Ske/WtMQheK/Z0R9bpKpBrAICl25LWrU5HbjKj/
-         LhqA==
+        b=0AbXaac8pEccslGhYfO3VSbjQWDVFhKSrHeuIXJ1w5OxRfz3kw9yLLYOqAo+SHXTZY
+         L9oexbX4VzgKKgM2AxLJqgBQf8cE1YKo5SzvSXVEGOGDhZ1W2IUVXzIpFuXU1U6ky5o2
+         HsXzgyYNsuz3byE6OLZfVW+fJorsIyay2tM4BhWsugcMMScCHkJp8XbcpLxLXH2TSIfP
+         xstmPvjbRJalWhfVvJTG1YpC0rBpe63lDpYARp1YFenS6qtMaaEK2f0jjoQOxJh5nqE7
+         MUcCd3wTcAW1tGk5FW2jADnWxjAk3fcGNV4QTzcaOCgZHEyKAtTQay0h+Dyj9B9oS08G
+         0wfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=wGJP6+ula4Kds+MGAy+5EyTiOxYEIVarv7O6UPBDLFI=;
-        b=UOM4nHapB9dKkLNvoItIGDWl+Xw0nZScmYdXMCEyj2W0zRBU7kdlLMVleDETK/jF8n
-         yz8WMXA8d8qfFRzb4kOQ6uFQsPiEu1QAcGHpInS/UKkbZINdEvWdbFQ86JzRoMa0/ME2
-         7xDN7Jvjq3zkOGQtJzVYwvjzjTj0fkYNWLNMykqsqRrChLqqJoBnWda5KDf5G6YTqsf0
-         +0E2T1P7Is5PtNM0gTwCN7Iejeml3fzIQ9p2ko850q8XHWj67cXB+8L2v63XzzrWhget
-         80ZZHr6kSuXvfpG3cCAO0X523hZtjl/kM9tWqe9TQ8O+mJN/10VAoXisTQ0F4AHj5bbz
-         t12w==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from;
+        bh=SuHfluzOWzB+7PJCcT/goRqboa3PaXInMIjL9L3A5h4=;
+        b=cE2r4DPDkBwavPufIwycNID8TBMCxkhbBdGgPfs/C4sH6gOJ3rRLAtBKWVgF+6gdw2
+         cnsvlIokOh/F/7x9J7MFN4K9SYPg7hLOhYSdblhV3b7cXOFtCayMRk7PDeVTVbQo0MfI
+         t8+NwqV/QqF0VLZOgW1eNYQRwYUWhsHF6aW3FKKFCyrStPt0z6v4whgsaf7tvMRfr5Fj
+         AWdxaSCRF05VUXfF9dA/yf3k1nZy59+2QqAzX+bcAhRIv4gr6r2RMB5qoVeECenQGbZa
+         zYqbGk3kRCFzgxrMQK+d7hP94mtaaDZLcKWpt7bDoDvfHIeIbOFtFaBJRTqAyuuFk+F+
+         yZDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=U2liXCVD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w53si9791568qvc.21.2019.12.23.23.41.16
+        by mx.google.com with ESMTPS id 16si15821368ois.140.2019.12.27.07.20.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Dec 2019 23:41:16 -0800 (PST)
+        Fri, 27 Dec 2019 07:20:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=U2liXCVD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36912 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36290 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ijeoe-00019L-6Q
-	for alex.bennee@linaro.org; Tue, 24 Dec 2019 02:41:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56074)
+	id 1ikrPO-0003r5-2v
+	for alex.bennee@linaro.org; Fri, 27 Dec 2019 10:20:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58047)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1ijenN-0000DL-Sc
- for qemu-devel@nongnu.org; Tue, 24 Dec 2019 02:39:58 -0500
+ (envelope-from <postmaster@kaiser.cx>) id 1ikXJZ-0006ZW-L0
+ for qemu-devel@nongnu.org; Thu, 26 Dec 2019 12:52:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1ijenL-0002mg-6v
- for qemu-devel@nongnu.org; Tue, 24 Dec 2019 02:39:56 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:25434
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1ijenI-0002lr-88
- for qemu-devel@nongnu.org; Tue, 24 Dec 2019 02:39:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1577173191;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wGJP6+ula4Kds+MGAy+5EyTiOxYEIVarv7O6UPBDLFI=;
- b=U2liXCVDbwqNicoVBuJsP9l1bX1dzHB4LEEN5yTpQFZiJjjAWphecyOkRNW5eNTRU1ExES
- CV8DG094nTRWFt/i8ghFOHqIB1WV50s2SKqhIuaAijN1A5o1wJU239KBLz+84vm3PCMNW0
- L36qH6pM9MQ8yEbli4zkvuSbMh7S7PQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-428-CP2_L6rzNKWoMperVLFUlA-1; Tue, 24 Dec 2019 02:39:47 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 862D4107ACC4;
- Tue, 24 Dec 2019 07:39:45 +0000 (UTC)
-Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9F1DA81740;
- Tue, 24 Dec 2019 07:39:34 +0000 (UTC)
-Subject: Re: [PATCH for-5.0 v11 18/20] virtio-iommu: Support migration
-To: Peter Xu <peterx@redhat.com>
-References: <20191122182943.4656-1-eric.auger@redhat.com>
- <20191122182943.4656-19-eric.auger@redhat.com> <20191210200110.GM3352@xz-x1>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <8b4829a5-f0f4-d4c6-c47e-a6dfc182a283@redhat.com>
-Date: Tue, 24 Dec 2019 08:39:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
-MIME-Version: 1.0
-In-Reply-To: <20191210200110.GM3352@xz-x1>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: CP2_L6rzNKWoMperVLFUlA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+ (envelope-from <postmaster@kaiser.cx>) id 1ikXJX-0008CL-RK
+ for qemu-devel@nongnu.org; Thu, 26 Dec 2019 12:52:49 -0500
+Received: from viti.kaiser.cx ([2a01:238:43fe:e600:cd0c:bd4a:7a3:8e9f]:54334)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <postmaster@kaiser.cx>)
+ id 1ikXJT-00089H-TH; Thu, 26 Dec 2019 12:52:44 -0500
+Received: from hsi-kbw-46-223-81-144.hsi.kabel-badenwuerttemberg.de
+ ([46.223.81.144] helo=martin-debian-1.paytec.ch)
+ by viti.kaiser.cx with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <martin@kaiser.cx>)
+ id 1ikXJM-0003GG-RE; Thu, 26 Dec 2019 18:52:37 +0100
+From: Martin Kaiser <martin@kaiser.cx>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Peter Chubb <peter.chubb@nicta.com.au>
+Subject: [PATCH] i.MX: add an emulation for RNGC
+Date: Thu, 26 Dec 2019 18:51:32 +0100
+Message-Id: <20191226175132.28116-1-martin@kaiser.cx>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 2a01:238:43fe:e600:cd0c:bd4a:7a3:8e9f
+X-Mailman-Approved-At: Fri, 27 Dec 2019 10:18:33 -0500
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,70 +75,418 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
- quintela@redhat.com, qemu-devel@nongnu.org, armbru@redhat.com,
- bharatb.linux@gmail.com, qemu-arm@nongnu.org, dgilbert@redhat.com,
- eric.auger.pro@gmail.com
+Cc: Martin Kaiser <martin@kaiser.cx>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 08RwUQNp2Qao
+X-TUID: BZAVrPJJm+Hg
 
-Hi Peter,
+Add an emulation for the RNGC random number generator and the compatible
+RNGB variant. These peripherals are included (at least) in imx25 and
+imx35 chipsets.
 
-On 12/10/19 9:01 PM, Peter Xu wrote:
-> On Fri, Nov 22, 2019 at 07:29:41PM +0100, Eric Auger wrote:
->> +static const VMStateDescription vmstate_virtio_iommu_device = {
->> +    .name = "virtio-iommu-device",
->> +    .minimum_version_id = 1,
->> +    .version_id = 1,
->> +    .post_load = iommu_post_load,
->> +    .fields = (VMStateField[]) {
->> +        VMSTATE_GTREE_DIRECT_KEY_V(domains, VirtIOIOMMU, 1,
->> +                                   &vmstate_domain, viommu_domain),
->> +        VMSTATE_GTREE_DIRECT_KEY_V(endpoints, VirtIOIOMMU, 1,
->> +                                   &vmstate_endpoint, viommu_endpoint),
-> 
-> IIUC vmstate_domain already contains all the endpoint information (in
-> endpoint_list of vmstate_domain), but here we migrate it twice. 
+The emulation supports the initial self test, reseeding the prng and
+reading random numbers.
 
-I migrated both because at that time I considered we could have
-endpoints not attached to any domains but I think I can now simplify
-based on the fact any EP is attached.
+Signed-off-by: Martin Kaiser <martin@kaiser.cx>
+---
+ hw/arm/fsl-imx25.c         |  11 ++
+ hw/misc/Makefile.objs      |   1 +
+ hw/misc/imx_rngc.c         | 262 +++++++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/fsl-imx25.h |   5 +
+ include/hw/misc/imx_rngc.h |  36 +++++++
+ 5 files changed, 315 insertions(+)
+ create mode 100644 hw/misc/imx_rngc.c
+ create mode 100644 include/hw/misc/imx_rngc.h
 
-
- I
-> suppose that's why now we need reconstruct_ep_domain_link() to fixup
-> the duplicated migration?
-
-Even if I only migrate the domain gtree, I need to reconstruct the
-ep->domain which was not migrated, on purpose, as it pointed to the old
-domain in the origin.
-> 
-> Then I'll instead ask whether we can skip migrating here?  Then in
-> post_load we simply:
-> 
->   foreach(domain)
->     foreach(endpoint in domain)
->       g_tree_insert(s->endpoints);
-> 
-> It might help to avoid the reconstruct_ep_domain_link ugliness?
-I agree that it is simpler. Also need to update the ep->domain as
-mentionned above. Thank you for the suggestion.
-
-
-> 
-> And besides, I also agree with Jean that the endpoint data structure
-> could be reused with IOMMUDevice somehow.
-
-As I replied to Jean, I think it makes sense to keep both structures as
-endpoints are not indexed by the same key and the bus number is resolved
-later.
-
-Thanks
-
-Eric
-> 
-> Thanks,
-> 
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index 3cb5a8fdfd..da3471b395 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -62,6 +62,9 @@ static void fsl_imx25_init(Object *obj)
+ 
+     sysbus_init_child_obj(obj, "fec", &s->fec, sizeof(s->fec), TYPE_IMX_FEC);
+ 
++    sysbus_init_child_obj(obj, "rngc", &s->rngc, sizeof(s->rngc),
++                          TYPE_IMX_RNGC);
++
+     for (i = 0; i < FSL_IMX25_NUM_I2CS; i++) {
+         sysbus_init_child_obj(obj, "i2c[*]", &s->i2c[i], sizeof(s->i2c[i]),
+                               TYPE_IMX_I2C);
+@@ -188,6 +191,14 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->fec), 0,
+                        qdev_get_gpio_in(DEVICE(&s->avic), FSL_IMX25_FEC_IRQ));
+ 
++    object_property_set_bool(OBJECT(&s->rngc), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rngc), 0, FSL_IMX25_RNGC_ADDR);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rngc), 0,
++                       qdev_get_gpio_in(DEVICE(&s->avic), FSL_IMX25_RNGC_IRQ));
+ 
+     /* Initialize all I2C */
+     for (i = 0; i < FSL_IMX25_NUM_I2CS; i++) {
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index ba898a5781..2b28f8c096 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -42,6 +42,7 @@ common-obj-$(CONFIG_IMX) += imx7_ccm.o
+ common-obj-$(CONFIG_IMX) += imx2_wdt.o
+ common-obj-$(CONFIG_IMX) += imx7_snvs.o
+ common-obj-$(CONFIG_IMX) += imx7_gpr.o
++common-obj-$(CONFIG_IMX) += imx_rngc.o
+ common-obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
+ common-obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
+ common-obj-$(CONFIG_MAINSTONE) += mst_fpga.o
+diff --git a/hw/misc/imx_rngc.c b/hw/misc/imx_rngc.c
+new file mode 100644
+index 0000000000..f935ec46a6
+--- /dev/null
++++ b/hw/misc/imx_rngc.c
+@@ -0,0 +1,262 @@
++/*
++ * Freescale i.MX RNGC emulation
++ *
++ * Copyright (C) 2019 Martin Kaiser <martin@kaiser.cx>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ *
++ * This driver provides the minimum functionality to initialize and seed
++ * an rngc and to read random numbers. The rngb that is found in imx25
++ * chipsets is also supported.
++ */
++
++
++#include "qemu/osdep.h"
++#include "qemu/main-loop.h"
++#include "qemu/module.h"
++#include "qemu/log.h"
++#include "qemu/guest-random.h"
++#include "hw/irq.h"
++#include "hw/misc/imx_rngc.h"
++
++#define RNGC_VER_ID  0x00
++#define RNGC_COMMAND 0x04
++#define RNGC_CONTROL 0x08
++#define RNGC_STATUS  0x0C
++#define RNGC_FIFO    0x14
++
++/* These version info are reported by the rngb in an imx258 chip. */
++#define RNG_TYPE_RNGB 0x1
++#define V_MAJ 0x2
++#define V_MIN 0x40
++
++#define RNGC_CMD_BIT_SW_RST    0x40
++#define RNGC_CMD_BIT_CLR_ERR   0x20
++#define RNGC_CMD_BIT_CLR_INT   0x10
++#define RNGC_CMD_BIT_SEED      0x02
++#define RNGC_CMD_BIT_SELF_TEST 0x01
++
++#define RNGC_CTRL_BIT_MASK_ERR  0x40
++#define RNGC_CTRL_BIT_MASK_DONE 0x20
++#define RNGC_CTRL_BIT_AUTO_SEED 0x10
++
++/* the current status for self-test and seed operations */
++#define OP_IDLE 0
++#define OP_RUN  1
++#define OP_DONE 2
++
++static uint64_t imx_rngc_read(void *opaque, hwaddr offset, unsigned size)
++{
++    IMXRNGCState *s = IMX_RNGC(opaque);
++    uint64_t val = 0;
++
++    switch (offset) {
++    case RNGC_VER_ID:
++        val |= RNG_TYPE_RNGB << 28 | V_MAJ << 8 | V_MIN;
++        break;
++
++    case RNGC_COMMAND:
++        if (s->op_seed == OP_RUN) {
++            val |= RNGC_CMD_BIT_SEED;
++        }
++        if (s->op_self_test == OP_RUN) {
++            val |= RNGC_CMD_BIT_SELF_TEST;
++        }
++        break;
++
++    case RNGC_CONTROL:
++        /*
++         * The CTL_ACC and VERIF_MODE bits are not supported yet.
++         * They read as 0.
++         */
++        val |= s->mask;
++        if (s->auto_seed) {
++            val |= RNGC_CTRL_BIT_AUTO_SEED;
++        }
++        /*
++         * We don't have an internal fifo like the real hardware.
++         * There's no need for strategy to handle fifo underflows.
++         * We return the FIFO_UFLOW_RESPONSE bits as 0.
++         */
++        break;
++
++    case RNGC_STATUS:
++        /*
++         * We never report any statistics test or self-test errors or any
++         * other errors. STAT_TEST_PF, ST_PF and ERROR are always 0.
++         */
++
++        /*
++         * We don't have an internal fifo, see above. Therefore, we
++         * report back the default fifo size (5 32-bit words) and
++         * indicate that our fifo is always full.
++         */
++        val |= 5 << 12 | 5 << 8;
++
++        /* We always have a new seed available. */
++        val |= 1 << 6;
++
++        if (s->op_seed == OP_DONE) {
++            val |= 1 << 5;
++        }
++        if (s->op_self_test == OP_DONE) {
++            val |= 1 << 4;
++        }
++        if (s->op_seed == OP_RUN || s->op_self_test == OP_RUN) {
++            /*
++             * We're busy if self-test is running or if we're
++             * seeding the prng.
++             */
++            val |= 1 << 1;
++        } else {
++            /*
++             * We're ready to provide secure random numbers whenever
++             * we're not busy.
++             */
++            val |= 1;
++        }
++        break;
++
++    case RNGC_FIFO:
++        qemu_guest_getrandom_nofail(&val, sizeof(val));
++        break;
++    }
++
++    return val;
++}
++
++static void __imx_rngc_reset(IMXRNGCState *s)
++{
++    s->op_self_test = OP_IDLE;
++    s->op_seed = OP_IDLE;
++    s->mask = 0;
++    s->auto_seed = false;
++}
++
++static void imx_rngc_write(void *opaque, hwaddr offset, uint64_t value,
++                           unsigned size)
++{
++    IMXRNGCState *s = IMX_RNGC(opaque);
++
++    switch (offset) {
++    case RNGC_COMMAND:
++        if (value & RNGC_CMD_BIT_SW_RST) {
++            __imx_rngc_reset(s);
++        }
++
++        /*
++         * For now, both CLR_ERR and CLR_INT clear the interrupt. We
++         * don't report any erors yet.
++         */
++        if (value & (RNGC_CMD_BIT_CLR_ERR | RNGC_CMD_BIT_CLR_INT)) {
++            qemu_irq_lower(s->irq);
++        }
++
++        if (value & RNGC_CMD_BIT_SEED) {
++            s->op_seed = OP_RUN;
++            qemu_bh_schedule(s->seed_bh);
++        }
++
++        if (value & RNGC_CMD_BIT_SELF_TEST) {
++            s->op_self_test = OP_RUN;
++            qemu_bh_schedule(s->self_test_bh);
++        }
++        break;
++
++    case RNGC_CONTROL:
++        /*
++         * The CTL_ACC and VERIF_MODE bits are not supported yet.
++         * We ignore them if they're set by the caller.
++         */
++
++        if (value & RNGC_CTRL_BIT_MASK_ERR) {
++            s->mask |= RNGC_CTRL_BIT_MASK_ERR;
++        } else {
++            s->mask &= ~RNGC_CTRL_BIT_MASK_ERR;
++        }
++
++        if (value & RNGC_CTRL_BIT_MASK_DONE) {
++            s->mask |= RNGC_CTRL_BIT_MASK_DONE;
++        } else {
++            s->mask &= ~RNGC_CTRL_BIT_MASK_DONE;
++        }
++
++        if (value & RNGC_CTRL_BIT_AUTO_SEED) {
++            s->auto_seed = true;
++        } else {
++            s->auto_seed = false;
++        }
++        break;
++    }
++}
++
++static const MemoryRegionOps imx_rngc_ops = {
++    .read  = imx_rngc_read,
++    .write = imx_rngc_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static void imx_rngc_self_test(void *opaque)
++{
++    IMXRNGCState *s = IMX_RNGC(opaque);
++
++    s->op_self_test = OP_DONE;
++    if (!(s->mask & RNGC_CTRL_BIT_MASK_DONE)) {
++        qemu_irq_raise(s->irq);
++    }
++}
++
++static void imx_rngc_seed(void *opaque)
++{
++    IMXRNGCState *s = IMX_RNGC(opaque);
++
++    s->op_seed = OP_DONE;
++    if (!(s->mask & RNGC_CTRL_BIT_MASK_DONE)) {
++        qemu_irq_raise(s->irq);
++    }
++}
++
++static void imx_rngc_realize(DeviceState *dev, Error **errp)
++{
++    IMXRNGCState *s = IMX_RNGC(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &imx_rngc_ops, s,
++                          TYPE_IMX_RNGC, 0x1000);
++    sysbus_init_mmio(sbd, &s->iomem);
++
++    sysbus_init_irq(sbd, &s->irq);
++    s->self_test_bh = qemu_bh_new(imx_rngc_self_test, s);
++    s->seed_bh = qemu_bh_new(imx_rngc_seed, s);
++}
++
++static void imx_rngc_reset(DeviceState *dev)
++{
++    IMXRNGCState *s = IMX_RNGC(dev);
++
++    __imx_rngc_reset(s);
++}
++
++static void imx_rngc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = imx_rngc_realize;
++    dc->reset = imx_rngc_reset;
++    dc->desc = "i.MX RNGC";
++}
++
++static const TypeInfo imx_rngc_info = {
++    .name          = TYPE_IMX_RNGC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(IMXRNGCState),
++    .class_init    = imx_rngc_class_init,
++};
++
++static void imx_rngc_register_types(void)
++{
++    type_register_static(&imx_rngc_info);
++}
++
++type_init(imx_rngc_register_types)
+diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
+index 241efb52ae..1c86bb55fb 100644
+--- a/include/hw/arm/fsl-imx25.h
++++ b/include/hw/arm/fsl-imx25.h
+@@ -24,6 +24,7 @@
+ #include "hw/timer/imx_gpt.h"
+ #include "hw/timer/imx_epit.h"
+ #include "hw/net/imx_fec.h"
++#include "hw/misc/imx_rngc.h"
+ #include "hw/i2c/imx_i2c.h"
+ #include "hw/gpio/imx_gpio.h"
+ #include "exec/memory.h"
+@@ -50,6 +51,7 @@ typedef struct FslIMX25State {
+     IMXGPTState    gpt[FSL_IMX25_NUM_GPTS];
+     IMXEPITState   epit[FSL_IMX25_NUM_EPITS];
+     IMXFECState    fec;
++    IMXRNGCState   rngc;
+     IMXI2CState    i2c[FSL_IMX25_NUM_I2CS];
+     IMXGPIOState   gpio[FSL_IMX25_NUM_GPIOS];
+     MemoryRegion   rom[2];
+@@ -211,6 +213,8 @@ typedef struct FslIMX25State {
+ #define FSL_IMX25_GPIO4_SIZE    0x4000
+ #define FSL_IMX25_GPIO3_ADDR    0x53FA4000
+ #define FSL_IMX25_GPIO3_SIZE    0x4000
++#define FSL_IMX25_RNGC_ADDR     0x53FB0000
++#define FSL_IMX25_RNGC_SIZE     0x4000
+ #define FSL_IMX25_GPIO1_ADDR    0x53FCC000
+ #define FSL_IMX25_GPIO1_SIZE    0x4000
+ #define FSL_IMX25_GPIO2_ADDR    0x53FD0000
+@@ -238,6 +242,7 @@ typedef struct FslIMX25State {
+ #define FSL_IMX25_EPIT1_IRQ     28
+ #define FSL_IMX25_EPIT2_IRQ     27
+ #define FSL_IMX25_FEC_IRQ       57
++#define FSL_IMX25_RNGC_IRQ      22
+ #define FSL_IMX25_I2C1_IRQ      3
+ #define FSL_IMX25_I2C2_IRQ      4
+ #define FSL_IMX25_I2C3_IRQ      10
+diff --git a/include/hw/misc/imx_rngc.h b/include/hw/misc/imx_rngc.h
+new file mode 100644
+index 0000000000..43e0bc1323
+--- /dev/null
++++ b/include/hw/misc/imx_rngc.h
+@@ -0,0 +1,36 @@
++/*
++ * Freescale i.MX RNGC emulation
++ *
++ * Copyright (C) 2019 Martin Kaiser <martin@kaiser.cx>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef IMX_RNGC_H
++#define IMX_RNGC_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_IMX_RNGC "imx.rngc"
++#define IMX_RNGC(obj) OBJECT_CHECK(IMXRNGCState, (obj), TYPE_IMX_RNGC)
++
++typedef struct IMXRNGCState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    MemoryRegion  iomem;
++
++    uint8_t op_self_test;
++    uint8_t op_seed;
++    uint8_t mask;
++    bool    auto_seed;
++
++    QEMUBH *self_test_bh;
++    QEMUBH *seed_bh;
++    qemu_irq irq;
++} IMXRNGCState;
++
++
++#endif /* IMX_RNGC_H */
+-- 
+2.11.0
 

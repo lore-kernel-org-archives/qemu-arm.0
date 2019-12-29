@@ -1,106 +1,117 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp13852119lff;
-        Sat, 28 Dec 2019 18:55:18 -0800 (PST)
-X-Received: by 2002:a65:530d:: with SMTP id m13mr64030123pgq.351.1577588118711;
-        Sat, 28 Dec 2019 18:55:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1577588118; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp13853253lff;
+        Sat, 28 Dec 2019 18:57:33 -0800 (PST)
+X-Received: by 2002:a17:90a:19d3:: with SMTP id 19mr36972151pjj.1.1577588253494;
+        Sat, 28 Dec 2019 18:57:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1577588253; cv=none;
         d=google.com; s=arc-20160816;
-        b=jnv7goHa/zermueP6ZJtJOXCiis6MD8WSe7xpXV5zIMg8y9YcwBKiGFXAcAJPz5WGa
-         lqzfbIBfm/VRN9PC4HBbWgN2C8MMY1ARzyurLQu9OBB7TBsfx3cAEnpuOqnLqbxIOEPa
-         DamKhsqAhKpcjDoRz3aOyYXIXcINdMjnMKq8TJXnpT1qA1eFJp92R+R1sXCY9Lbx6eIk
-         fIQ7msIF/XwU4/5EiwxBWAjtrkcG0Y5HkFhKncTw50/KXSJg3LfytQ7L330kjsYRbbqX
-         O1Po53qQUu4qULfei3GXC7SDycDW+ww9m9SDBI8hMGhMIxKvWPtsu2IED+f4NYPauXLJ
-         HZnQ==
+        b=vCnxB/1HKU2Q1O9T/ORKr4B3ezU+qMdLhILkXzMOOMCaHN45hIa5DxvJzDX0Jc2LvD
+         7tOJNnZuXXPuVpup9120edub91ng4kaQN7y/slb7m/cfQfQmDE7l2wKOE8jdHMlXn6s4
+         wQyjf6xTw6qe4iU7Ku4+erM0oI3jYG/3mYbknBqQ6oDIM+dfir6u+SqSYa/QSNJ6eKQD
+         vwQjVAfmLM6UMOCV3jjwd94HWfGeFLb6i1E2M4CSwLST7/JrQ2jVNWCftzRjrebcuW2F
+         hZjmuLg0f0HI0mfMmu15NbFSl+YqOqSbjoYCklaC62jQLaXx+UP9160gw4m9XxkemCNO
+         f6Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=AQ5wuWBkttqWMjzeFk3QomgPdhj10I/gl23e6kMq94s=;
-        b=oihEEmiDwNWsVOREqjQislHPibmUgkbN/BZZHlkGm0LF8+IZhUZIN1IAmtBWKJGuR8
-         883wjxJKD8ZU4W2UJxYaS0CCdTaFzaQpTiD8lCTY9VTi6Htk8PLwHhBMaxSEXLf/uYuc
-         OLM1KW+Xq4ghTYN+KeOJHBa/WwD4uk1fOTm9X2r8uDo/HRiBr/bts/uV7wRZDExtumnE
-         sJ1gPY7JjSB9cDGwCFBNuah2v3rCM21JkanRXT7r2gsu1qie9J0H+qnmSBqmKymcC/qb
-         oA6TXdt+pzizHtlMMerUMfeZaqjy+2k1G7hHQz+m3seQ6kGFx3QNNVVvrvElEORUwdCU
-         2/0w==
+        bh=yLaqwPIFuNuKqoOfcXmFF2FZpBhCNI7L5ivEi70Tx7A=;
+        b=tm2Gy4+FdACA7kZdoCbYCX1wp/e/9aMU/LZ4kpXZqM78s7ynl2DjTHI8zCyqcsChy/
+         ZBdoHXX3owW975/Nx/KvRlKhCJdjuFBw6KTUa1NfZY/8NtZmgRDPtuPCjEjzfKfBmP7D
+         wGjV9+DW3YLMt326emk/+ax3tN82MqNswChHCNUj92mrEahzdvSxlMbd07+ojM6Qs8Cm
+         onGmeiB8HET0ilSJJ33a4CaatSUaGtmv32chsjV+pnJsOiocdocw3JgW7H+uwN2mziqB
+         1K0LINjUZiKU9vMdVnVURE92Vr8y6fsfgXN1Q17t8r9MT9gOIe7jMmEv/51PRAIMQsW3
+         mtGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xhdSf+ie;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NbA0oMwy;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z18sor40108805plo.50.2019.12.28.18.55.18
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id x3sor40594245pln.2.2019.12.28.18.57.33
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 28 Dec 2019 18:55:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sat, 28 Dec 2019 18:57:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xhdSf+ie;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NbA0oMwy;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=AQ5wuWBkttqWMjzeFk3QomgPdhj10I/gl23e6kMq94s=;
-        b=xhdSf+iecpNeeGVwG0otkJI9H72zCUX16A5CwbcMsMmwt00kPYe8nQ1UPyGSP/XiMX
-         3x87StfF9KsNkdbB+Rbovzm87n1iRHQpfT1P13AfqDaL9NavmGuyrOc0FwwwI9o+Jdht
-         iNEmERIOgPD13LEU0Asc1/o7VomWkzyAZzSy2RTVrZNWxTW+cjfWiTE+E7CpQVipzaDU
-         XtlLfCC5DXYAp4K/iSyPA/XAPjMb/Sz1ZzcuGOFbbN5Tqbx3wT3fg2gVHyVDkKLueaQv
-         IFgiQGnr98ZGlKOWOfXwqz8J8wE/pXTesxMQCjYZiXYyMCBf2rgCB/XbTUr6HDPSvwiS
-         YR1w==
+        bh=yLaqwPIFuNuKqoOfcXmFF2FZpBhCNI7L5ivEi70Tx7A=;
+        b=NbA0oMwyNZ+xHiqx6KaWXfxDiL+pOlrQaZiXHwVeym3kJzJFrKbLErxhcRKN5lnWwQ
+         pu36YjNLL/9jjXLwB0yRA7HPW2AK1G5TJxE20vcLRVBsCOLm7iqI5VbEctvNdZVwukrA
+         tKUJrGKmNdGdlw1izmxlYjtYAP5w1viZr7XVSPz/KiQ+rG7ROmv+UIwpI1Lcq2/q9/61
+         kkAuXipaTjXcsUzYpwQfiKRbBrorAK6eBEfb10a794gVrLnz5nHZgdz+SpTQor0+R1wR
+         ePugyLpAxwR7J/ymPr8kZQimGyzyJOUiCz8ELa7zQkro0TtyKB3tTtiz7HGkrWxwifLT
+         A+3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=AQ5wuWBkttqWMjzeFk3QomgPdhj10I/gl23e6kMq94s=;
-        b=axn9g4Ghg3rEAEbOv+iV62hI3hz9ddKkctfmAHsX1iBcrDyatc+fRaw0FbkZNrfIvu
-         L63SFDuqDZPCIpGDp1Yo3adjlQM6XGiUd99bE8nhous/VrLOFY6UvbxsO1NDG6kJBzxC
-         NDRLkQlJoqZ3bEiURmZgbl2yoJCTCRol6qhsX6029bF43XJy3TYeClaKtjy1Xqnvob8v
-         HEylNN5FWyQo549HHK/LhQSwkB6tRhuk6qfCEKxpbS6rA4SL7WKpupm5wrkfm1p0Qs9F
-         CdWdxUqY5N85b/qvoTqC+pee8W1qvkQR8s6t5BjoDUT4DAApvQcvI/PVUu4IbMVZ0whA
-         HCxw==
-X-Gm-Message-State: APjAAAWIIwUE6OLcItifD6aIq+HNzsPj3GAUEe6rcCrFG7eiD8Mscp8h
-	maAp+q1YW/SiMYgeZ79dsc8BXAmuYM90Suql
-X-Google-Smtp-Source: APXvYqxdRsTr+OzhYPD7oVlv3tn76et79APt93h8boIWh41u+Sg3UNPIQ6vqzsHuPJTijZ08SeyhBQ==
-X-Received: by 2002:a17:902:9302:: with SMTP id bc2mr44060166plb.328.1577588118263;
-        Sat, 28 Dec 2019 18:55:18 -0800 (PST)
+        bh=yLaqwPIFuNuKqoOfcXmFF2FZpBhCNI7L5ivEi70Tx7A=;
+        b=Dqw3fJFysIDOGRNnKjUOk6WQCVHQQYiLhIXc1XOuDni3kZIgfiXEUc/YZ6dCUJmrQ1
+         tr563tyTU6WfmYdwflhxkCFreQtmIRT2y5R44WVmPsbZ3ZIs6uGRbQcrgS4XX2+Yc00D
+         cY2QbCqWpgI6gmUw7uY2yw47ryNp+pMcw5hHhkOXAukS/xLo5C0Y3CPjeVrbmqDR2Lor
+         1UE02SeJtpElgP1mETuaLfidAO8/ZslFb2nw7QFaGfm9yE+D8ENErzWJdurIIAeW1tXJ
+         0dkk6dl4f6sjeniL2udnjFoVl/OA+Eq8Cz+uueH34zvUylGjJrJ9TROyxTC9rYqy+6Z9
+         5juA==
+X-Gm-Message-State: APjAAAVQu1guZRzm2xfzP0sEGak0f4RB+xfWZkrpobFsQwVKC4UNXZEV
+	qAzS32d8xX3jk9L+Nnwb3KckHx3X
+X-Google-Smtp-Source: APXvYqwHLFGBtdQq3j/i+kaQWDuhG9WqLrDYK3G6uy+PcAqmC0j/2qwGQruwkABv4sH3+ivN+2VuJQ==
+X-Received: by 2002:a17:902:760e:: with SMTP id k14mr62031009pll.238.1577588252927;
+        Sat, 28 Dec 2019 18:57:32 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.118] (194-223-58-9.tpgi.com.au. [194.223.58.9])
-        by smtp.gmail.com with ESMTPSA id t187sm45508694pfd.21.2019.12.28.18.55.15
+        by smtp.gmail.com with ESMTPSA id q15sm42618719pgi.55.2019.12.28.18.57.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 28 Dec 2019 18:55:17 -0800 (PST)
-Subject: Re: [PATCH v2 5/5] tests/tcg: add user version of dumb-as-bricks
- semiconsole test
+        Sat, 28 Dec 2019 18:57:32 -0800 (PST)
+Subject: Re: [PATCH v2 4/5] tests/tcg: add a dumb-as-bricks semihosting
+ console test
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, keithp@keithp.com,
+Cc: keithp@keithp.com, Peter Maydell <peter.maydell@linaro.org>,
  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
 References: <20191220132246.6759-1-alex.bennee@linaro.org>
- <20191220132246.6759-6-alex.bennee@linaro.org>
+ <20191220132246.6759-5-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <09322c6e-74d9-08d0-1138-f2d5581a7244@linaro.org>
-Date: Sun, 29 Dec 2019 13:55:12 +1100
+Message-ID: <557f36ea-159f-ebb2-b7aa-e96b0844e1ae@linaro.org>
+Date: Sun, 29 Dec 2019 13:57:26 +1100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191220132246.6759-6-alex.bennee@linaro.org>
+In-Reply-To: <20191220132246.6759-5-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: POID3US1AHuD
+X-TUID: AWRuO/3gw9yf
 
 On 12/21/19 12:22 AM, Alex Bennée wrote:
-> +#if defined(__arm__)
-> +    register uintptr_t t asm("r0") = type;
-> +    register uintptr_t a0 asm("r1") = arg0;
-> +    asm("svc 0xab"
-> +        : "=r" (t)
-> +        : "r" (t), "r" (a0));
+> We don't run this during check-tcg as we would need to check stuff is
+> echoed back. However we can still build the binary so people can test
+> it manually.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> ---
+> v8
+>   - actually return the result!
+> ---
+>  tests/tcg/aarch64/system/semiconsole.c    | 38 +++++++++++++++++++++++
+>  tests/tcg/aarch64/Makefile.softmmu-target |  9 +++++-
+>  2 files changed, 46 insertions(+), 1 deletion(-)
+>  create mode 100644 tests/tcg/aarch64/system/semiconsole.c
 
-This is the #ifdef __thumb__ svc code.  Are you enforcing that with
-command-line arguments?
+There probably is a way to easily test this with python, but I don't want to
+write that script either, so.
 
-Might as well fix this, then test both arm and thumb.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+:-)
 
 
 r~

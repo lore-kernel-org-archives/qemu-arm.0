@@ -1,189 +1,201 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp15220971lff;
-        Mon, 30 Dec 2019 02:00:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxi8shc1xhRlqRxBfGDmOEyKENwV2MwipQQ6WNq5NP6pRKbDqSCWitWXeoyHUoSdgAXQDJ1
-X-Received: by 2002:a9d:1b26:: with SMTP id l35mr31126142otl.307.1577700040907;
-        Mon, 30 Dec 2019 02:00:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1577700040; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp15249765lff;
+        Mon, 30 Dec 2019 02:33:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw7MIjjiCT2A9/lrYufl3iaYtXC3H18NkR+ox9EiFQ47ngbGyXmAYKOfu9mCaKQ6+MVtmm2
+X-Received: by 2002:a05:6830:1353:: with SMTP id r19mr74776700otq.288.1577702034795;
+        Mon, 30 Dec 2019 02:33:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1577702034; cv=none;
         d=google.com; s=arc-20160816;
-        b=IwfDmGP5CWiD13imvy9WoszSKJwt/Tvr7GWQtMH6V3EF+Qj4PPSIiLsjg+W1oGYWHr
-         xcNtXR+Z6o4DIDbyKVs2q1wsStqijtip8a9OFj+choqliRXMPapgImG2dxj0i41wPMQ8
-         A9UPKj793et3hmsgPSffzr5BS/BEHGEu8/THRcPuQd2opkNRgaBBWfLJ7BW8JMziyHB6
-         /AlFz88rOf/ktO/xwvN+mjuxHnWuDPTQ+1SAqJd3dxpxtZSK93Ol+KzRwc7/Z1Wh+zv/
-         K3ez8mfzE+V+1Rt6ys5fEXmpKQUgqdyaRxWKWT9Yv5uxwo6MTQSUlMEjtgKXZPK8u1pY
-         Dzjw==
+        b=LE8n8ReBwltxedwwAftyQCid9hN6AqYB5awW7XDJPnI0lmX9dd2Zy4CgHsANeFbnpt
+         gYBdzOBafuEx9Bh3ROzxL0qa+7TeYcwhJQ04LV6wVpKH0x8m3YF3TDKlKm/nHFPgvdFD
+         gHXV3gVcT+Df/rEPdbjTkptz9d+LjbBIa07rtIIx5M3UFWGmP++7w6JBFBg+FU4ISdFG
+         qjZT8TNaj+LShCjkXSrpyykWQQzTGg3XL5y29YSMglqtee8kUsEYYGSrxeB8C9UNSCON
+         60NXnYwczjYRFi4/AnxLHijUXm/esSzEKzrAqNRR6Ewqjnu1H9QlKvzdL1gLcbrPbUU0
+         Iraw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=gqFk+x0X9D60pam+u0Foq5BjemwZC+N+k+hZLjLiTVE=;
-        b=dr/Bxs1W4M+bt9uIezhyOlieNMQGDrB3wJ864sSnEGn1C2cV/lcG0zUnBNzjaI9ppH
-         dnqnvGvwi36rGe4JPkie8itssCxe90OWXLEO2F/BAE9kGIBrtn1TpL5uV2k9Dxmr+YPQ
-         1GcX8Pt6AK3QBAHVDcgepy71cZcTQIdMjCuqj0bmRJkM5GePdPo1dGbsCdogJtFiqqlA
-         kvujIRTJ03zZpuju4ufaT/Pr2mJrxW7B27cYvt+1zW+BQEWQQzl8VTUUd5pmLKdFfU0U
-         RkBfztIZgVfuYYzj8U2ghy08CXuxTI6VTgHW8a+mrjkXoqKBeiD+dLmGzIte1fuHbAId
-         3yrw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=osz1+gLyr114GefbdMEHHWsIMT6EPaU/DWBMxBOMOeQ=;
+        b=rw9ExNyh9Q3c7g5ATA1kF2qbWOafRLvW+hjCLUOxonLw6CH2gkdAHh/qisjOxsZ37O
+         qGTMUX8qHFRFPjMomD2Iwf2YnY//YLKwT+XjogyT+FPaHSWz/zYwB2yURLOvGIAmEoKe
+         NbcyneWlZ34WceK5U7U0B3xIGF7/yE++yjMX8F3FGmuYAtNYV65UT7IQBTksM2vy9H9K
+         lMwW6NriORPJyB5rPXcFSDdYHk74DdL14cKWd8qaOcDFt2l3C8ZQvWPDXt6NVtltjxuS
+         UTfgLbUS16pHsVZ4K1D0ZWW4KeEPTqEzZ60+kvHor1zWlOenzdIOvxTQ3U2AgTkF1p7l
+         9aDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LJYC2y7w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RE2Tvwwd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w11si20565754oic.62.2019.12.30.02.00.40
+        by mx.google.com with ESMTPS id c19si15670054otp.3.2019.12.30.02.33.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Dec 2019 02:00:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Dec 2019 02:33:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LJYC2y7w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RE2Tvwwd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60034 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ilrqp-000295-TX
-	for alex.bennee@linaro.org; Mon, 30 Dec 2019 05:00:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54007)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ilsN0-0007bw-0e
+	for alex.bennee@linaro.org; Mon, 30 Dec 2019 05:33:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58909)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ilrq0-0001VS-FJ
- for qemu-devel@nongnu.org; Mon, 30 Dec 2019 04:59:49 -0500
+ (envelope-from <pbonzini@redhat.com>) id 1ilsMm-0007Wz-M1
+ for qemu-arm@nongnu.org; Mon, 30 Dec 2019 05:33:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ilrpy-0006PD-Sk
- for qemu-devel@nongnu.org; Mon, 30 Dec 2019 04:59:47 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:42670
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <pbonzini@redhat.com>) id 1ilsMk-0002CR-MK
+ for qemu-arm@nongnu.org; Mon, 30 Dec 2019 05:33:39 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46487
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ilrpy-0006ON-Oo
- for qemu-devel@nongnu.org; Mon, 30 Dec 2019 04:59:46 -0500
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1ilsMk-0002C2-JK
+ for qemu-arm@nongnu.org; Mon, 30 Dec 2019 05:33:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1577699986;
+ s=mimecast20190719; t=1577702018;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gqFk+x0X9D60pam+u0Foq5BjemwZC+N+k+hZLjLiTVE=;
- b=LJYC2y7wItLSGB24HW8x8iAxOOeOLQNf3C2lmL8/Ke/VyvMyV3vxqD9ly/jTzRPHlC+0na
- clcafZUXw9woZ+tQdVBKH5Ys+9Zbu/gMjk3UKTZCiRP130n3wwde3WJAvlptT6DbWjkc81
- ejVi2VgecVvHWaJghOg9+X8ZK/edPAw=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-379-DqbMEHdkNLaDRiAmax4bhg-1; Mon, 30 Dec 2019 04:59:44 -0500
-Received: by mail-wm1-f72.google.com with SMTP id m133so1457037wmf.2
- for <qemu-devel@nongnu.org>; Mon, 30 Dec 2019 01:59:44 -0800 (PST)
+ bh=osz1+gLyr114GefbdMEHHWsIMT6EPaU/DWBMxBOMOeQ=;
+ b=RE2TvwwdhpBUua6EMr2t/AOYMF1f9rTYGZdEyyDDY3mBTk4uhkGqqOHLwiaRyLBC/juJLY
+ 3osUysJ9ujtRE3Lwr052ewS/2Pu6Z1JaClKGz2kz6x52qzeiDFX0SQi4oMZjwW4MGm38mq
+ q5t0rvS4Ts8myTmf1riVDWDkQDrvA5I=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-189-HmYTunk-M-qACIwoirQWaw-1; Mon, 30 Dec 2019 05:33:34 -0500
+Received: by mail-ed1-f69.google.com with SMTP id c2so20136024edx.19
+ for <qemu-arm@nongnu.org>; Mon, 30 Dec 2019 02:33:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=nHtO6Vsw0hLQyKeVXTvkdGim74QMEL7005MktoQeb/g=;
- b=tSEPmPui8vc1CZo+3hSkDiVWbzzXc8/i03qFoaeXZa0OMDalvvm5CaNIkDdX53rrI7
- IIWUvlQ26A5/qZ7r/5eph9RIPcHyFPHfAmPKj91TKF6mxdS/aOoRuOYuVNUJnVJjsRwd
- 82jffxeNSr2t9XVG55/BuQB9hW74CL4zKTEVciUeZ5Xb90GzHSGAOuNLeUdWhNwa3CgY
- Z1Y50T5DsRs+Nmoapk727da3ZLcNPxp6dx7D2czp22gai2VQvP2TxM/FAeUVDCoxl1ko
- xXdayHO5UjewDrLb5ndWJ+61p9fDEcqWWhCrnj4ogKE4fnM/CiQS0l3tjoKJyxsKOYp6
- mdCw==
-X-Gm-Message-State: APjAAAWxHjBQJ3zIzp484b64q326rk+SWahck1EIo8hGchfuH+CRU9JQ
- 54g5hhl2QeNZhqY338/tQG/JgploJFQ7mvho4JOBxnjgiekBEkefzwhTB/vKohSo9a6sexQD3ZJ
- S6Nz7kqQiFtPRKiE=
-X-Received: by 2002:a1c:4454:: with SMTP id r81mr33061268wma.117.1577699983544; 
- Mon, 30 Dec 2019 01:59:43 -0800 (PST)
-X-Received: by 2002:a1c:4454:: with SMTP id r81mr33061234wma.117.1577699983295; 
- Mon, 30 Dec 2019 01:59:43 -0800 (PST)
-Received: from ?IPv6:2a01:cb18:8372:6b00:691b:aac5:8837:d4da?
- ([2a01:cb18:8372:6b00:691b:aac5:8837:d4da])
- by smtp.gmail.com with ESMTPSA id i16sm20447753wmb.36.2019.12.30.01.59.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Dec 2019 01:59:42 -0800 (PST)
-Subject: Re: [PATCH 1/2] tcg: Search includes from the project root source
- directory
-To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=osz1+gLyr114GefbdMEHHWsIMT6EPaU/DWBMxBOMOeQ=;
+ b=ZNhvJ8vzmWA1jPlsPTHoLw72nCo9gSbvkz3Kb5+SkSB+kmoOgfdjoG/rJZtq5vUJPg
+ 0iT8rz7xubLZlmzplwt6pmwf48Q0IxiDeUHmo5+XbuOgVSgcIjo7UOUa/Q/fcohaFsm3
+ 4WkwnWTsYGJ+yQvueooZpZgTNFYyOMQ3rK7pJ7WjmV/nbRdCL2GTWZrMm16dSyK+ePiT
+ fOsaSo5l4Szh5O/SGLCDx1QmfwC5WXNy9Z8jBrAPnxRAm6EQaKdXICcMRfKH5EGsVwUb
+ xC475WXHhs17e4tvwZz96IxXPWI7TLtLZhMi6q0lXrVDT5q9nC9R9hK5PDrGM8IKhFHO
+ fhxA==
+X-Gm-Message-State: APjAAAXb9VYZCdPuvePsA74WzH6KB0F3cBMz2U1e5C3dfcFHANXf8XSK
+ /J/7BWnEXNWII3TAZs0+XIVgVFmW13AOSAtK+GFoKjhVfvNg2g/y8bnnpQkfIMgFAtdANczSFl7
+ B6Ibm7d8Bf7dkgxjAk87VMb96ZRAW
+X-Received: by 2002:a17:906:7fd0:: with SMTP id
+ r16mr67457070ejs.319.1577702013586; 
+ Mon, 30 Dec 2019 02:33:33 -0800 (PST)
+X-Received: by 2002:a17:906:7fd0:: with SMTP id
+ r16mr67457016ejs.319.1577702013308; 
+ Mon, 30 Dec 2019 02:33:33 -0800 (PST)
+MIME-Version: 1.0
 References: <20191230090900.446-1-philmd@redhat.com>
  <20191230090900.446-2-philmd@redhat.com>
  <273bf2e5-1223-3d01-f930-394195c037e4@weilnetz.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <64c2434d-3b2b-1a3e-5358-e4b5acfbe8e8@redhat.com>
-Date: Mon, 30 Dec 2019 10:59:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <273bf2e5-1223-3d01-f930-394195c037e4@weilnetz.de>
-Content-Language: en-US
-X-MC-Unique: DqbMEHdkNLaDRiAmax4bhg-1
+ <64c2434d-3b2b-1a3e-5358-e4b5acfbe8e8@redhat.com>
+In-Reply-To: <64c2434d-3b2b-1a3e-5358-e4b5acfbe8e8@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 30 Dec 2019 10:33:21 +0000
+Message-ID: <CABgObfYahQbbteCAsMfKAYjPLDUpGJExO9mWyRw15mm=VWHsbQ@mail.gmail.com>
+Subject: Re: [PATCH 1/2] tcg: Search includes from the project root source
+ directory
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+X-MC-Unique: HmYTunk-M-qACIwoirQWaw-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/alternative; boundary="00000000000010b1de059ae96084"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
+ qemu-devel <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ Marek Vasut <marex@denx.de>, Markus Armbruster <armbru@redhat.com>,
  Palmer Dabbelt <palmer@dabbelt.com>,
  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
  David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Riku Voipio <riku.voipio@iki.fi>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Stafford Horne <shorne@gmail.com>, Richard Henderson <rth@twiddle.net>,
- qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+ Riku Voipio <riku.voipio@iki.fi>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ Richard Henderson <rth@twiddle.net>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Chris Wulff <crwulff@gmail.com>, Claudio Fontana <claudio.fontana@huawei.com>,
  Laurent Vivier <laurent@vivier.eu>, Michael Walle <michael@walle.cc>,
  qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z38UD7TRxOdZ
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CQWmFGl/GJGS
 
-Hi Stefan,
+--00000000000010b1de059ae96084
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 12/30/19 10:53 AM, Stefan Weil wrote:
-> Am 30.12.19 um 10:08 schrieb Philippe Mathieu-Daud=C3=A9:
->=20
-> [...]
->=20
->>   tcg/tcg-op.h                  | 2 +-
->>   tcg/tcg.h                     | 4 ++--
->>   tcg/tcg-common.c              | 2 +-
->>   tcg/tcg-op-gvec.c             | 8 ++++----
->>   tcg/tcg-op-vec.c              | 6 +++---
->>   tcg/tcg-op.c                  | 6 +++---
->>   tcg/tcg.c                     | 2 +-
->>   tcg/tci.c                     | 2 +-
->=20
->=20
-> Source files in the tcg directory should not need any change because
-> they find include files in the same directory without searching.
->=20
-> If we add a tcg/ include file prefix for them as well, that has the
-> advantage that it might look prettier and more uniform, but it has the
-> disadvantage of requiring a search by the preprocessor.
+Il lun 30 dic 2019, 09:59 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> h=
+a
+scritto:
 
-Yeah, I was not sure about these specific files. My first attempt was=20
-without modifying them, but then I thought it would be better to keep=20
-the codebase uniform, as you said.
+> > I'd prefer not changing those files.
+>
+> OK, I'll wait to see what Richard/Markus prefer.
+>
 
->=20
-> I'd prefer not changing those files.
+I think it's best if you keep the include directives as-is for files only
+needed from tcg/, and move the other headers (those that are needed from
+other directories only) to include/tcg.
 
-OK, I'll wait to see what Richard/Markus prefer.
+Thanks and happy new year!
 
-> Regards and best wished for 2020
+Paolo
 
-Thanks ;)
+>
+> > Regards and best wished for 2020
+>
+> Thanks ;)
+>
+>
+
+--00000000000010b1de059ae96084
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">Il lun 30 dic 2019, 09:59 Philippe Mathieu-Daud=C3=A9 =
+&lt;<a href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; ha scrit=
+to:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;b=
+order-left:1px #ccc solid;padding-left:1ex">&gt; I&#39;d prefer not changin=
+g those files.<br>
+<br>
+OK, I&#39;ll wait to see what Richard/Markus prefer.<br></blockquote></div>=
+</div><div dir=3D"auto"><br></div><div dir=3D"auto">I think it&#39;s best i=
+f you keep the include directives as-is for files only needed from tcg/, an=
+d move the other headers (those that are needed from other directories only=
+) to include/tcg.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Thanks=
+ and happy new year!</div><div dir=3D"auto"><br></div><div dir=3D"auto">Pao=
+lo</div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"g=
+mail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-l=
+eft:1ex">
+<br>
+&gt; Regards and best wished for 2020<br>
+<br>
+Thanks ;)<br>
+<br>
+</blockquote></div></div></div>
+
+--00000000000010b1de059ae96084--
 

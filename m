@@ -1,105 +1,122 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp15864129lff;
-        Mon, 30 Dec 2019 12:52:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx54NUfFnPJJwIEbXARMHkhNPqAJkggSKgbogWbejCNexM0gaJvMoOkkflPF0976elHqfQ3
-X-Received: by 2002:a05:620a:14bc:: with SMTP id x28mr55531478qkj.494.1577739168332;
-        Mon, 30 Dec 2019 12:52:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1577739168; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp16545927lff;
+        Tue, 31 Dec 2019 03:41:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqycJlbKH3upRy0Z1yXra9ydu8unDzG9AohA1ICB9dZNxCAl2987gnbXfeyd1cc7FhSBXmeC
+X-Received: by 2002:a9d:5e93:: with SMTP id f19mr22515000otl.121.1577792516883;
+        Tue, 31 Dec 2019 03:41:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1577792516; cv=none;
         d=google.com; s=arc-20160816;
-        b=DqiD091lcDX+0Dyn9UQUxcLSuQh+qarfvFvjvlhfwIfhxDg0mhJQxwGiQjLiuMlNaJ
-         9P308py23+mOctzDzvcBU4Qw1kXbyipSpuYOUSkYU2nm5LzKC0KrKCM+kSY4PHwOokox
-         abQryglRFzXjKYOCZEkPOm4Td+hhiDt0RIJjaVfjAOIc9jcgNzXpQIkQQ5dU16rpXl1c
-         BnAbD+G+ZxprRdmEvlbt3fKa8J71p9y07su+3FmKUDhofkT1EPk+B3CV7OmcqGeRvvOM
-         WcrjNEhKyIKjBGi6+BLX3PD0B8K4Zv+3Bd+6YLMOZWlIfN7mUltoOCd0+FKNXGK6GkWt
-         KWCg==
+        b=ijxkami/f35m8MVN3ZmP65FDYeoPDVq0GK9Kb9VawODFAUJsR+NY1tE7QZ0DmTAQG8
+         VMFV49V8plaLDsFi1gtaIuYOyq1gw3JD3x5SvCFumvlcYKov6K4HfKCQvS9WBH80Vn/2
+         KArZ0gUPtykEsoj+TS4EuehHKcTeD1qU0dViH3tiR0vOH+Mzh+6OWgbOV4nZR+Vsp6ue
+         QBtHv1BbGODvmUZQumGoy92+/3b++exA5eNMrPeLi11VEYvEk6qjm1ljoLsKioS2ccT0
+         ECo7g7VhphCsH98hsPfyRr+L1HvDHU7yUCroCVGnVtE0BMMDBz/QEIfkn2inK9Di/GHx
+         bCxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Zc0FTPmlN/eRAhViCLUrPsRLUXsok9bOT2zdMSbRLgQ=;
-        b=iWd0pG7RxbfAP6+zFZ1aWN98cV4vMlm3osNWLvPpfxMR1m9e7+eQaqLcrFYHIyVcX1
-         e6SOEGbZS4cTDij45x8zw+fv88WULchxS/+8EJDj4S9THaLi463OBtAUF29ey/U9YMUU
-         tLG2jdh5K+Um+Djpdws1EpSNpZ5em244zSR3cWlmRIfeOY/9dxpTkyqN1uyBoWJ/tbiz
-         mHWSyYcnCDFTl4Jr4xxwQ8PkmG6iQ4d4WZoh2fn6+abZWPM5Us+TyMG5Fn9NEnhziAiY
-         HqRGtG4zwl9Q1A8czjp0xx7QjOmt3ESPjUozDy7CZynI7dyGeGzh6z4mEdM7kWIMBJlJ
-         5Z9Q==
+        bh=1RvyXRVN8X1RUdnsihcJMYirHo2YGnLEsA3LPXm12ho=;
+        b=hIPinfoY+iI10LkYJZnRu4JbmVVZeRzHWdJ49RU8bZdeNwrY7H0I6JmVmr3/fYmpW2
+         nBxLHWCLtoYd6ewwTH0/VVi5uFBTaoEXmtH9jBlRzNxDkprw2qtwfrfA0lbCcMt4/5Lu
+         fJoKEn4+mkY60nKCJ+K+HoniFi721jW6WUPrET5AxNX/ETzA95T2jEgZEuRZw8xBweYP
+         riPR93dc6fXyqbffaGOh5dwzFX3doP9V1q2Qq5s45NL1wtgPsC6/PqYZe7G+pox8goKi
+         QlmgFiePvjcyPeVS1i5TpbHd53g91RZHDBzPZBe1W7EOnO+O5zmSrFrEk9TulhgoLzmv
+         P1KA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=R8X1ijzz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FgupTo+g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r6si17666387qtm.60.2019.12.30.12.52.48
+        by mx.google.com with ESMTPS id w1si22006336oia.169.2019.12.31.03.41.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Dec 2019 12:52:48 -0800 (PST)
+        Tue, 31 Dec 2019 03:41:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=R8X1ijzz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FgupTo+g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36534 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41436 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1im21s-00043a-VR
-	for alex.bennee@linaro.org; Mon, 30 Dec 2019 15:52:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50461)
+	id 1imFuO-0006uY-2v
+	for alex.bennee@linaro.org; Tue, 31 Dec 2019 06:41:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52686)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wainersm@redhat.com>) id 1im21f-00043O-3Q
- for qemu-arm@nongnu.org; Mon, 30 Dec 2019 15:52:32 -0500
+ (envelope-from <philmd@redhat.com>) id 1imFu7-0006uE-M0
+ for qemu-arm@nongnu.org; Tue, 31 Dec 2019 06:41:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <wainersm@redhat.com>) id 1im21c-0000I4-5I
- for qemu-arm@nongnu.org; Mon, 30 Dec 2019 15:52:29 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:34234
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1imFu4-0005Vm-HZ
+ for qemu-arm@nongnu.org; Tue, 31 Dec 2019 06:41:38 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:44223
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1im21b-0000GE-Io
- for qemu-arm@nongnu.org; Mon, 30 Dec 2019 15:52:28 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1imFu4-0005Pn-3t
+ for qemu-arm@nongnu.org; Tue, 31 Dec 2019 06:41:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1577739146;
+ s=mimecast20190719; t=1577792495;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Zc0FTPmlN/eRAhViCLUrPsRLUXsok9bOT2zdMSbRLgQ=;
- b=R8X1ijzzwhP2BLHQXQe7+C7Ec4lqGlZV+KePHM+EzWmQ+aRsmT1+jbEn43b0dVmGog84bW
- gBr5li2m2Z+o5WwlKbuuVU7lN+iDB8m7ZbKwfI/pTrJulTj2M6w//qzELlyvnlznhvtA31
- Qh3j1sm7cjWWhsWQQ9+23Xmyab7h9lQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-39-NjHmOij-PCKjhle4dijyog-1; Mon, 30 Dec 2019 15:52:21 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 797B2107ACC5;
- Mon, 30 Dec 2019 20:52:19 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-92.gru2.redhat.com
- [10.97.116.92])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C0BF778E81;
- Mon, 30 Dec 2019 20:52:15 +0000 (UTC)
+ bh=1RvyXRVN8X1RUdnsihcJMYirHo2YGnLEsA3LPXm12ho=;
+ b=FgupTo+gJdk4dw7jx2uVZSxmCoN9cCAKznoBdFKVpbhlL+DspzaoKANbh5ZFoPfTAj/AXc
+ BxA03GO8wxgRTT0QC2rWwgjEPe7rMbyA3c05TDyK7Mz6QwbqCJ1oqM/IYbtcMbyVO/uBXw
+ hkUY+tAN7PErq9+xPE7vxPTXS7oh0yA=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-351-bvJ_f1ZUN_u4JGgdkQI9gQ-1; Tue, 31 Dec 2019 06:41:32 -0500
+Received: by mail-wr1-f70.google.com with SMTP id 90so18910073wrq.6
+ for <qemu-arm@nongnu.org>; Tue, 31 Dec 2019 03:41:32 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=OB0+M/UOk5U9g3VP04qpBqnq+CMtYavMNojlSVI60Cc=;
+ b=CBzCQ/1pWNs9JyuKjOfDBWr3v6yZkzpXs8c6ctfU/CXoBbz8jtVS6G02UTgw8O9um0
+ or+I1AHwZ8eBmkVFRmQorgwSANa2xz8evMTyroW2P6+EcRtft5tidB+JVlqKW1Pd9/Bn
+ J4sV0/RXqZsYvkl5WIDkNKWVFIrR/dt4aZUbs0fIqRK26c+caIXv36GSx7FE1nGZVvSE
+ 1OzsDvywvUENwLRc9uo11qmxuIFQNafUxUKlFai92URKxJxTakRd1OEpQ0ZGA3Vz7Pzc
+ Uzp+SBbtOM8QAwqduNgBmZwaZG5SYGdRtVYDPr9YHv3uYuYzQQvGFSBxNGBocgRpVIfb
+ eb3w==
+X-Gm-Message-State: APjAAAUYnk99vxN+UGroiHQqCLZ0D/RpmN9njWA5b9lVt+G2/P0wNfR8
+ SOj8YvFjOc3M2fg+NUKgfl0zdFWxeZjnHuXDjW00OG7No2wEYws5Pc+mzaKTLrjzKHq3GFsF/Vg
+ iUEALl0Yx5twH
+X-Received: by 2002:a7b:c416:: with SMTP id k22mr3700412wmi.10.1577792490788; 
+ Tue, 31 Dec 2019 03:41:30 -0800 (PST)
+X-Received: by 2002:a7b:c416:: with SMTP id k22mr3700389wmi.10.1577792490458; 
+ Tue, 31 Dec 2019 03:41:30 -0800 (PST)
+Received: from [192.168.1.25] (abayonne-654-1-140-248.w86-222.abo.wanadoo.fr.
+ [86.222.91.248])
+ by smtp.gmail.com with ESMTPSA id g21sm52605250wrb.48.2019.12.31.03.41.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 31 Dec 2019 03:41:29 -0800 (PST)
 Subject: Re: [PATCH 1/6] tests/boot_linux_console: Add initrd test for the
  CubieBoard
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+To: Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20191230110953.25496-1-f4bug@amsat.org>
  <20191230110953.25496-2-f4bug@amsat.org>
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Message-ID: <31147d48-2f31-9fce-b8a4-1a270f114a45@redhat.com>
-Date: Mon, 30 Dec 2019 18:52:13 -0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ <31147d48-2f31-9fce-b8a4-1a270f114a45@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <d7abcb92-4405-2ba8-b524-281d5913f980@redhat.com>
+Date: Tue, 31 Dec 2019 12:41:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191230110953.25496-2-f4bug@amsat.org>
+In-Reply-To: <31147d48-2f31-9fce-b8a4-1a270f114a45@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: NjHmOij-PCKjhle4dijyog-1
+X-MC-Unique: bvJ_f1ZUN_u4JGgdkQI9gQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,138 +134,203 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Willian Rampazzo <wrampazz@redhat.com>, Cleber Rosa <crosa@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wyPsLYNDG2fY
+X-TUID: MnqF2UN0yZEb
 
+On 12/30/19 9:52 PM, Wainer dos Santos Moschetta wrote:
+> On 12/30/19 9:09 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> This test boots a Linux kernel on a CubieBoard and verify
+>> the serial output is working.
+>>
+>> The kernel image and DeviceTree blob are built by the Armbian
+>> project (based on Debian):
+>> https://docs.armbian.com/Developer-Guide_Build-Preparation/
+>>
+>> The cpio image used comes from the linux-build-test project:
+>> https://github.com/groeck/linux-build-test
+>>
+>> If ARM is a target being built, "make check-acceptance" will
+>> automatically include this test by the use of the "arch:arm" tags.
+>>
+>> Alternatively, this test can be run using:
+>>
+>> =C2=A0=C2=A0 $ avocado --show=3Dconsole run -t machine:cubieboard=20
+>> tests/acceptance/boot_linux_console.py
+>> =C2=A0=C2=A0 console: Uncompressing Linux... done, booting the kernel.
+>> =C2=A0=C2=A0 console: Booting Linux on physical CPU 0x0
+>> =C2=A0=C2=A0 console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc=
+ version=20
+>> 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10=20
+>> CET 2019
+>> =C2=A0=C2=A0 console: CPU: ARMv7 Processor [410fc080] revision 0 (ARMv7)=
+,=20
+>> cr=3D50c5387d
+>> =C2=A0=C2=A0 console: CPU: PIPT / VIPT nonaliasing data cache, VIPT nona=
+liasing=20
+>> instruction cache
+>> =C2=A0=C2=A0 console: OF: fdt: Machine model: Cubietech Cubieboard
+>> =C2=A0=C2=A0 [...]
+>> =C2=A0=C2=A0 console: Boot successful.
+>> =C2=A0=C2=A0 console: cat /proc/cpuinfo
+>> =C2=A0=C2=A0 console: / # cat /proc/cpuinfo
+>> =C2=A0=C2=A0 console: processor=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 0
+>> =C2=A0=C2=A0 console: model name=C2=A0=C2=A0=C2=A0=C2=A0 : ARMv7 Process=
+or rev 0 (v7l)
+>> =C2=A0=C2=A0 console: BogoMIPS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 832=
+.51
+>> =C2=A0=C2=A0 [...]
+>> =C2=A0=C2=A0 console: Hardware=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : All=
+winner sun4i/sun5i Families
+>> =C2=A0=C2=A0 console: Revision=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 000=
+0
+>> =C2=A0=C2=A0 console: Serial=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 : 0000000000000000
+>> =C2=A0=C2=A0 console: cat /proc/iomem
+>> =C2=A0=C2=A0 console: / # cat /proc/iomem
+>> =C2=A0=C2=A0 console: 01c00000-01c0002f : system-control@1c00000
+>> =C2=A0=C2=A0 console: 01c02000-01c02fff : dma-controller@1c02000
+>> =C2=A0=C2=A0 console: 01c05000-01c05fff : spi@1c05000
+>> =C2=A0=C2=A0 console: 01c0b080-01c0b093 : mdio@1c0b080
+>> =C2=A0=C2=A0 console: 01c0c000-01c0cfff : lcd-controller@1c0c000
+>> =C2=A0=C2=A0 console: 01c0d000-01c0dfff : lcd-controller@1c0d000
+>> =C2=A0=C2=A0 console: 01c0f000-01c0ffff : mmc@1c0f000
+>> =C2=A0=C2=A0 [...]
+>> =C2=A0=C2=A0 PASS (54.35 s)
+>>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> ---
+>> =C2=A0 tests/acceptance/boot_linux_console.py | 41 +++++++++++++++++++++=
++++++
+>> =C2=A0 1 file changed, 41 insertions(+)
+>>
+>> diff --git a/tests/acceptance/boot_linux_console.py=20
+>> b/tests/acceptance/boot_linux_console.py
+>> index 9c6aa2040a..4643f60e37 100644
+>> --- a/tests/acceptance/boot_linux_console.py
+>> +++ b/tests/acceptance/boot_linux_console.py
+>> @@ -400,6 +400,47 @@ class BootLinuxConsole(Test):
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.wait_for_con=
+sole_pattern('Boot successful.')
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 # TODO user comma=
+nd, for now the uart is stuck
+>> +=C2=A0=C2=A0=C2=A0 def test_arm_cubieboard_initrd(self):
+>=20
+> Unless you have two tests, one with and without initrd (not the case=20
+> though) the suffix '_initrd' is useless. So I suggest to remove it.
 
-On 12/30/19 9:09 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> This test boots a Linux kernel on a CubieBoard and verify
-> the serial output is working.
->
-> The kernel image and DeviceTree blob are built by the Armbian
-> project (based on Debian):
-> https://docs.armbian.com/Developer-Guide_Build-Preparation/
->
-> The cpio image used comes from the linux-build-test project:
-> https://github.com/groeck/linux-build-test
->
-> If ARM is a target being built, "make check-acceptance" will
-> automatically include this test by the use of the "arch:arm" tags.
->
-> Alternatively, this test can be run using:
->
->    $ avocado --show=3Dconsole run -t machine:cubieboard tests/acceptance/=
-boot_linux_console.py
->    console: Uncompressing Linux... done, booting the kernel.
->    console: Booting Linux on physical CPU 0x0
->    console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.=
-2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 201=
-9
->    console: CPU: ARMv7 Processor [410fc080] revision 0 (ARMv7), cr=3D50c5=
-387d
->    console: CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing ins=
-truction cache
->    console: OF: fdt: Machine model: Cubietech Cubieboard
->    [...]
->    console: Boot successful.
->    console: cat /proc/cpuinfo
->    console: / # cat /proc/cpuinfo
->    console: processor      : 0
->    console: model name     : ARMv7 Processor rev 0 (v7l)
->    console: BogoMIPS       : 832.51
->    [...]
->    console: Hardware       : Allwinner sun4i/sun5i Families
->    console: Revision       : 0000
->    console: Serial         : 0000000000000000
->    console: cat /proc/iomem
->    console: / # cat /proc/iomem
->    console: 01c00000-01c0002f : system-control@1c00000
->    console: 01c02000-01c02fff : dma-controller@1c02000
->    console: 01c05000-01c05fff : spi@1c05000
->    console: 01c0b080-01c0b093 : mdio@1c0b080
->    console: 01c0c000-01c0cfff : lcd-controller@1c0c000
->    console: 01c0d000-01c0dfff : lcd-controller@1c0d000
->    console: 01c0f000-01c0ffff : mmc@1c0f000
->    [...]
->    PASS (54.35 s)
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->   tests/acceptance/boot_linux_console.py | 41 ++++++++++++++++++++++++++
->   1 file changed, 41 insertions(+)
->
-> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
-ot_linux_console.py
-> index 9c6aa2040a..4643f60e37 100644
-> --- a/tests/acceptance/boot_linux_console.py
-> +++ b/tests/acceptance/boot_linux_console.py
-> @@ -400,6 +400,47 @@ class BootLinuxConsole(Test):
->           self.wait_for_console_pattern('Boot successful.')
->           # TODO user command, for now the uart is stuck
->  =20
-> +    def test_arm_cubieboard_initrd(self):
+The next patch adds a SD card test:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg667628.html
 
-Unless you have two tests, one with and without initrd (not the case=20
-though) the suffix '_initrd' is useless. So I suggest to remove it.
+If one developer has other tests in progress, but one done, I think it=20
+might sense to add the full test name when the first patch is merged, so=20
+next tests don't have to modify the first test name.
 
-> +        """
-> +        :avocado: tags=3Darch:arm
-> +        :avocado: tags=3Dmachine:cubieboard
-> +        """
-> +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
-> +                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.=
-deb')
-> +        deb_hash =3D '1334c29c44d984ffa05ed10de8c3361f33d78315'
-> +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
-> +        kernel_path =3D self.extract_from_deb(deb_path,
-> +                                            '/boot/vmlinuz-4.20.7-sunxi'=
-)
-> +        dtb_path =3D '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboar=
-d.dtb'
-> +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
-> +        initrd_url =3D ('https://github.com/groeck/linux-build-test/raw/=
-'
-> +                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
-> +                      'arm/rootfs-armv5.cpio.gz')
-> +        initrd_hash =3D '2b50f1873e113523967806f4da2afe385462ff9b'
-> +        initrd_path_gz =3D self.fetch_asset(initrd_url, asset_hash=3Dini=
-trd_hash)
-> +        initrd_path =3D os.path.join(self.workdir, 'rootfs.cpio')
-> +        archive.gzip_uncompress(initrd_path_gz, initrd_path)
-> +
-> +        self.vm.set_console()
-> +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
-> +                               'console=3DttyS0,115200 '
-> +                               'usbcore.nousb '
-> +                               'panic=3D-1 noreboot')
-> +        self.vm.add_args('-kernel', kernel_path,
-> +                         '-dtb', dtb_path,
-> +                         '-initrd', initrd_path,
-> +                         '-append', kernel_command_line,
-> +                         '-no-reboot')
-> +        self.vm.launch()
-> +        self.wait_for_console_pattern('Boot successful.')
-> +
-> +        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-> +                                                'Allwinner sun4i/sun5i')
-> +        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
-> +                                                'system-control@1c00000'=
-)
-> +        exec_command_and_wait_for_pattern(self, 'reboot',
-> +                                                'reboot: Restarting syst=
-em')
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Darch:arm
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dmachine:cub=
+ieboard
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_url =3D ('https://apt.ar=
+mbian.com/pool/main/l/'
+>> +                  =20
+>> 'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_hash =3D '1334c29c44d984=
+ffa05ed10de8c3361f33d78315'
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_path =3D self.fetch_asse=
+t(deb_url, asset_hash=3Ddeb_hash)
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_path =3D self.extract=
+_from_deb(deb_path,
+>> +                                           =20
+>> '/boot/vmlinuz-4.20.7-sunxi')
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dtb_path =3D=20
+>> '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dtb_path =3D self.extract_fr=
+om_deb(deb_path, dtb_path)
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_url =3D ('https://git=
+hub.com/groeck/linux-build-test/raw/'
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 '2eb0a73b5d5a28df=
+3170c546ddaaa9757e1e0848/rootfs/'
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'arm/rootfs-armv5=
+.cpio.gz')
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_hash =3D '2b50f1873e1=
+13523967806f4da2afe385462ff9b'
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_path_gz =3D self.fetc=
+h_asset(initrd_url,=20
+>> asset_hash=3Dinitrd_hash)
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_path =3D os.path.join=
+(self.workdir, 'rootfs.cpio')
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 archive.gzip_uncompress(init=
+rd_path_gz, initrd_path)
+>> +
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.set_console()
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_command_line =3D (sel=
+f.KERNEL_COMMON_COMMAND_LINE +
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'console=3DttyS0,115200 '
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'usbcore.nousb '
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'panic=3D-1 noreboot')
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.add_args('-kernel', =
+kernel_path,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ '-dtb', dtb_path,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ '-initrd', initrd_path,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ '-append', kernel_command_line,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ '-no-reboot')
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.launch()
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.wait_for_console_patter=
+n('Boot successful.')
+>> +
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_pa=
+ttern(self, 'cat /proc/cpuinfo',
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'Allwinner =
+sun4i/sun5i')
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_pa=
+ttern(self, 'cat /proc/iomem',
+>> +                                               =20
+>> 'system-control@1c00000')
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_pa=
+ttern(self, 'reboot',
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'reboot: Re=
+starting=20
+>> system')
+>=20
+>=20
+> I ran this test case with success, so:
+>=20
+> Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
 
+Thanks Wainer!
 
-I ran this test case with success, so:
-
-Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-
-With the comment regarding the _initrd suffix:
-
-Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-
-
-> +
->       def test_s390x_s390_ccw_virtio(self):
->           """
->           :avocado: tags=3Darch:s390x
+>=20
+> With the comment regarding the _initrd suffix:
+>=20
+> Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+>=20
+>=20
+>> +
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 def test_s390x_s390_ccw_virtio(self):
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3D=
+arch:s390x
+>=20
+>=20
 

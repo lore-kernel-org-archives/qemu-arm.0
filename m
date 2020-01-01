@@ -1,122 +1,99 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp16545927lff;
-        Tue, 31 Dec 2019 03:41:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqycJlbKH3upRy0Z1yXra9ydu8unDzG9AohA1ICB9dZNxCAl2987gnbXfeyd1cc7FhSBXmeC
-X-Received: by 2002:a9d:5e93:: with SMTP id f19mr22515000otl.121.1577792516883;
-        Tue, 31 Dec 2019 03:41:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1577792516; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp17755005lff;
+        Wed, 1 Jan 2020 03:24:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyiSEtdVSEMM8yML7oPQ/rBD6lPcwDJr7/Bi/QaISCccb/9urq1NItUspYLkp/xcEGb/dll
+X-Received: by 2002:ae9:dc85:: with SMTP id q127mr60188101qkf.460.1577877843516;
+        Wed, 01 Jan 2020 03:24:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1577877843; cv=none;
         d=google.com; s=arc-20160816;
-        b=ijxkami/f35m8MVN3ZmP65FDYeoPDVq0GK9Kb9VawODFAUJsR+NY1tE7QZ0DmTAQG8
-         VMFV49V8plaLDsFi1gtaIuYOyq1gw3JD3x5SvCFumvlcYKov6K4HfKCQvS9WBH80Vn/2
-         KArZ0gUPtykEsoj+TS4EuehHKcTeD1qU0dViH3tiR0vOH+Mzh+6OWgbOV4nZR+Vsp6ue
-         QBtHv1BbGODvmUZQumGoy92+/3b++exA5eNMrPeLi11VEYvEk6qjm1ljoLsKioS2ccT0
-         ECo7g7VhphCsH98hsPfyRr+L1HvDHU7yUCroCVGnVtE0BMMDBz/QEIfkn2inK9Di/GHx
-         bCxg==
+        b=UbzCyIUJnJ/czAxE40iQSqPIdvWlRUaiywqFRXofMcJbznsmf+wESYnpO5aFGjhFZT
+         MSDujT7Y1QyrDgfAypkXTBmqJfbQQr4+eX7kCWPvtAz1aDl7k1zkmW0h3qaRVP034qH8
+         tp31Y3CBRNbeFIQuWIV4ycv72Xx5J0MLdrSURPt+hji20xuS9e560b37UlE+Nfk36bPz
+         NP5Qr5T7VUsoqFSgcPcWkz+t4dfOJo1TD3vnAlEchT2UHX9Za+eiwc6bURvx8ovMMLBX
+         +8jDpQgvdbsiLTWx+dNtJL0nQIyhkfA8HkdFPSAHHRdiJZcWwiLtQqwQdt8XqKgdmuM+
+         2/gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=1RvyXRVN8X1RUdnsihcJMYirHo2YGnLEsA3LPXm12ho=;
-        b=hIPinfoY+iI10LkYJZnRu4JbmVVZeRzHWdJ49RU8bZdeNwrY7H0I6JmVmr3/fYmpW2
-         nBxLHWCLtoYd6ewwTH0/VVi5uFBTaoEXmtH9jBlRzNxDkprw2qtwfrfA0lbCcMt4/5Lu
-         fJoKEn4+mkY60nKCJ+K+HoniFi721jW6WUPrET5AxNX/ETzA95T2jEgZEuRZw8xBweYP
-         riPR93dc6fXyqbffaGOh5dwzFX3doP9V1q2Qq5s45NL1wtgPsC6/PqYZe7G+pox8goKi
-         QlmgFiePvjcyPeVS1i5TpbHd53g91RZHDBzPZBe1W7EOnO+O5zmSrFrEk9TulhgoLzmv
-         P1KA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=kMbpgAVSPVenMOZC7CUCklS/YKMCXNycnc3R2IzxXeY=;
+        b=X6mfmbuhg+WbQM1qeA0UjFuCORf6xgjXBF5PBETUS38BOq4juQ74fKglXqgAea8dRK
+         nTC6n167Eupni3a3x0pXo7YCTR7IpZnKtndJRi90JBYGcFH7lgSDcUTAkxxb88snWqyc
+         viLN4iI5JzKtJI2X+85t6KYZ5iYTpyCFGAln6Iid0UjOC/WgYztfQ50j8BRjb4rE2TaW
+         ylfETb1Cei4ZCs7D36fWeWBtiCrqFWbT3xAaGN4GNJVaDMy2ADidnjyBRATzRkfBza+R
+         Q09K9Wq/sUUlsUikS7dPUyHeZVTSzKn1yUJyT4YtPcu4MILwPbTtC7vVtsX7JMlo1uRU
+         KMBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FgupTo+g;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X8+WtyiA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1si22006336oia.169.2019.12.31.03.41.56
+        by mx.google.com with ESMTPS id q204si20567883qke.178.2020.01.01.03.24.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Dec 2019 03:41:56 -0800 (PST)
+        Wed, 01 Jan 2020 03:24:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FgupTo+g;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X8+WtyiA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41436 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57562 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1imFuO-0006uY-2v
-	for alex.bennee@linaro.org; Tue, 31 Dec 2019 06:41:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52686)
+	id 1imc6c-0002fe-7r
+	for alex.bennee@linaro.org; Wed, 01 Jan 2020 06:24:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58898)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1imFu7-0006uE-M0
- for qemu-arm@nongnu.org; Tue, 31 Dec 2019 06:41:41 -0500
+ (envelope-from <philmd@redhat.com>) id 1imc6K-0002W3-5E
+ for qemu-arm@nongnu.org; Wed, 01 Jan 2020 06:23:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1imFu4-0005Vm-HZ
- for qemu-arm@nongnu.org; Tue, 31 Dec 2019 06:41:38 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:44223
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1imc6G-0007LS-SF
+ for qemu-arm@nongnu.org; Wed, 01 Jan 2020 06:23:44 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33547
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1imFu4-0005Pn-3t
- for qemu-arm@nongnu.org; Tue, 31 Dec 2019 06:41:36 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1imc6G-0007JD-NZ
+ for qemu-arm@nongnu.org; Wed, 01 Jan 2020 06:23:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1577792495;
+ s=mimecast20190719; t=1577877820;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1RvyXRVN8X1RUdnsihcJMYirHo2YGnLEsA3LPXm12ho=;
- b=FgupTo+gJdk4dw7jx2uVZSxmCoN9cCAKznoBdFKVpbhlL+DspzaoKANbh5ZFoPfTAj/AXc
- BxA03GO8wxgRTT0QC2rWwgjEPe7rMbyA3c05TDyK7Mz6QwbqCJ1oqM/IYbtcMbyVO/uBXw
- hkUY+tAN7PErq9+xPE7vxPTXS7oh0yA=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-351-bvJ_f1ZUN_u4JGgdkQI9gQ-1; Tue, 31 Dec 2019 06:41:32 -0500
-Received: by mail-wr1-f70.google.com with SMTP id 90so18910073wrq.6
- for <qemu-arm@nongnu.org>; Tue, 31 Dec 2019 03:41:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=OB0+M/UOk5U9g3VP04qpBqnq+CMtYavMNojlSVI60Cc=;
- b=CBzCQ/1pWNs9JyuKjOfDBWr3v6yZkzpXs8c6ctfU/CXoBbz8jtVS6G02UTgw8O9um0
- or+I1AHwZ8eBmkVFRmQorgwSANa2xz8evMTyroW2P6+EcRtft5tidB+JVlqKW1Pd9/Bn
- J4sV0/RXqZsYvkl5WIDkNKWVFIrR/dt4aZUbs0fIqRK26c+caIXv36GSx7FE1nGZVvSE
- 1OzsDvywvUENwLRc9uo11qmxuIFQNafUxUKlFai92URKxJxTakRd1OEpQ0ZGA3Vz7Pzc
- Uzp+SBbtOM8QAwqduNgBmZwaZG5SYGdRtVYDPr9YHv3uYuYzQQvGFSBxNGBocgRpVIfb
- eb3w==
-X-Gm-Message-State: APjAAAUYnk99vxN+UGroiHQqCLZ0D/RpmN9njWA5b9lVt+G2/P0wNfR8
- SOj8YvFjOc3M2fg+NUKgfl0zdFWxeZjnHuXDjW00OG7No2wEYws5Pc+mzaKTLrjzKHq3GFsF/Vg
- iUEALl0Yx5twH
-X-Received: by 2002:a7b:c416:: with SMTP id k22mr3700412wmi.10.1577792490788; 
- Tue, 31 Dec 2019 03:41:30 -0800 (PST)
-X-Received: by 2002:a7b:c416:: with SMTP id k22mr3700389wmi.10.1577792490458; 
- Tue, 31 Dec 2019 03:41:30 -0800 (PST)
-Received: from [192.168.1.25] (abayonne-654-1-140-248.w86-222.abo.wanadoo.fr.
- [86.222.91.248])
- by smtp.gmail.com with ESMTPSA id g21sm52605250wrb.48.2019.12.31.03.41.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 31 Dec 2019 03:41:29 -0800 (PST)
-Subject: Re: [PATCH 1/6] tests/boot_linux_console: Add initrd test for the
- CubieBoard
-To: Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20191230110953.25496-1-f4bug@amsat.org>
- <20191230110953.25496-2-f4bug@amsat.org>
- <31147d48-2f31-9fce-b8a4-1a270f114a45@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d7abcb92-4405-2ba8-b524-281d5913f980@redhat.com>
-Date: Tue, 31 Dec 2019 12:41:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ bh=kMbpgAVSPVenMOZC7CUCklS/YKMCXNycnc3R2IzxXeY=;
+ b=X8+WtyiA/K7GQPRrT5DRqyruIfabSwNJUCz6K/inVBzxskCQyzTrc64ALczZrnWJlVdvJi
+ BVE016e/C0Lht08zMQUPEXYCMXIy2PBm650Ry4rtO6UrufBDZHp6/HHRuTCXILQiE3wx33
+ lt+anVapsLEx7mNKFNPi8LmNq3tLJFU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-301-oeqe4A3fMpifsMnXFnkcUA-1; Wed, 01 Jan 2020 06:23:38 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2F1C9477;
+ Wed,  1 Jan 2020 11:23:33 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-116-36.ams2.redhat.com [10.36.116.36])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 66B8C5D9E2;
+ Wed,  1 Jan 2020 11:23:24 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 1/4] tcg: Search includes from the project root source
+ directory
+Date: Wed,  1 Jan 2020 12:23:00 +0100
+Message-Id: <20200101112303.20724-2-philmd@redhat.com>
+In-Reply-To: <20200101112303.20724-1-philmd@redhat.com>
+References: <20200101112303.20724-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <31147d48-2f31-9fce-b8a4-1a270f114a45@redhat.com>
-Content-Language: en-US
-X-MC-Unique: bvJ_f1ZUN_u4JGgdkQI9gQ-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: oeqe4A3fMpifsMnXFnkcUA-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -128,209 +105,752 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Willian Rampazzo <wrampazz@redhat.com>, Cleber Rosa <crosa@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Riku Voipio <riku.voipio@iki.fi>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Claudio Fontana <claudio.fontana@huawei.com>,
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MnqF2UN0yZEb
+X-TUID: Qd6GKp8RBf8S
 
-On 12/30/19 9:52 PM, Wainer dos Santos Moschetta wrote:
-> On 12/30/19 9:09 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->> This test boots a Linux kernel on a CubieBoard and verify
->> the serial output is working.
->>
->> The kernel image and DeviceTree blob are built by the Armbian
->> project (based on Debian):
->> https://docs.armbian.com/Developer-Guide_Build-Preparation/
->>
->> The cpio image used comes from the linux-build-test project:
->> https://github.com/groeck/linux-build-test
->>
->> If ARM is a target being built, "make check-acceptance" will
->> automatically include this test by the use of the "arch:arm" tags.
->>
->> Alternatively, this test can be run using:
->>
->> =C2=A0=C2=A0 $ avocado --show=3Dconsole run -t machine:cubieboard=20
->> tests/acceptance/boot_linux_console.py
->> =C2=A0=C2=A0 console: Uncompressing Linux... done, booting the kernel.
->> =C2=A0=C2=A0 console: Booting Linux on physical CPU 0x0
->> =C2=A0=C2=A0 console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc=
- version=20
->> 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10=20
->> CET 2019
->> =C2=A0=C2=A0 console: CPU: ARMv7 Processor [410fc080] revision 0 (ARMv7)=
-,=20
->> cr=3D50c5387d
->> =C2=A0=C2=A0 console: CPU: PIPT / VIPT nonaliasing data cache, VIPT nona=
-liasing=20
->> instruction cache
->> =C2=A0=C2=A0 console: OF: fdt: Machine model: Cubietech Cubieboard
->> =C2=A0=C2=A0 [...]
->> =C2=A0=C2=A0 console: Boot successful.
->> =C2=A0=C2=A0 console: cat /proc/cpuinfo
->> =C2=A0=C2=A0 console: / # cat /proc/cpuinfo
->> =C2=A0=C2=A0 console: processor=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 0
->> =C2=A0=C2=A0 console: model name=C2=A0=C2=A0=C2=A0=C2=A0 : ARMv7 Process=
-or rev 0 (v7l)
->> =C2=A0=C2=A0 console: BogoMIPS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 832=
-.51
->> =C2=A0=C2=A0 [...]
->> =C2=A0=C2=A0 console: Hardware=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : All=
-winner sun4i/sun5i Families
->> =C2=A0=C2=A0 console: Revision=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 000=
-0
->> =C2=A0=C2=A0 console: Serial=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 : 0000000000000000
->> =C2=A0=C2=A0 console: cat /proc/iomem
->> =C2=A0=C2=A0 console: / # cat /proc/iomem
->> =C2=A0=C2=A0 console: 01c00000-01c0002f : system-control@1c00000
->> =C2=A0=C2=A0 console: 01c02000-01c02fff : dma-controller@1c02000
->> =C2=A0=C2=A0 console: 01c05000-01c05fff : spi@1c05000
->> =C2=A0=C2=A0 console: 01c0b080-01c0b093 : mdio@1c0b080
->> =C2=A0=C2=A0 console: 01c0c000-01c0cfff : lcd-controller@1c0c000
->> =C2=A0=C2=A0 console: 01c0d000-01c0dfff : lcd-controller@1c0d000
->> =C2=A0=C2=A0 console: 01c0f000-01c0ffff : mmc@1c0f000
->> =C2=A0=C2=A0 [...]
->> =C2=A0=C2=A0 PASS (54.35 s)
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->> =C2=A0 tests/acceptance/boot_linux_console.py | 41 +++++++++++++++++++++=
-+++++
->> =C2=A0 1 file changed, 41 insertions(+)
->>
->> diff --git a/tests/acceptance/boot_linux_console.py=20
->> b/tests/acceptance/boot_linux_console.py
->> index 9c6aa2040a..4643f60e37 100644
->> --- a/tests/acceptance/boot_linux_console.py
->> +++ b/tests/acceptance/boot_linux_console.py
->> @@ -400,6 +400,47 @@ class BootLinuxConsole(Test):
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.wait_for_con=
-sole_pattern('Boot successful.')
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 # TODO user comma=
-nd, for now the uart is stuck
->> +=C2=A0=C2=A0=C2=A0 def test_arm_cubieboard_initrd(self):
->=20
-> Unless you have two tests, one with and without initrd (not the case=20
-> though) the suffix '_initrd' is useless. So I suggest to remove it.
+We currently search both the root and the tcg/ directories for tcg
+files:
 
-The next patch adds a SD card test:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg667628.html
+  $ git grep '#include "tcg/' | wc -l
+  28
 
-If one developer has other tests in progress, but one done, I think it=20
-might sense to add the full test name when the first patch is merged, so=20
-next tests don't have to modify the first test name.
+  $ git grep '#include "tcg[^/]' | wc -l
+  94
 
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Darch:arm
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dmachine:cub=
-ieboard
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_url =3D ('https://apt.ar=
-mbian.com/pool/main/l/'
->> +                  =20
->> 'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_hash =3D '1334c29c44d984=
-ffa05ed10de8c3361f33d78315'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_path =3D self.fetch_asse=
-t(deb_url, asset_hash=3Ddeb_hash)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_path =3D self.extract=
-_from_deb(deb_path,
->> +                                           =20
->> '/boot/vmlinuz-4.20.7-sunxi')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dtb_path =3D=20
->> '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dtb_path =3D self.extract_fr=
-om_deb(deb_path, dtb_path)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_url =3D ('https://git=
-hub.com/groeck/linux-build-test/raw/'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 '2eb0a73b5d5a28df=
-3170c546ddaaa9757e1e0848/rootfs/'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'arm/rootfs-armv5=
-.cpio.gz')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_hash =3D '2b50f1873e1=
-13523967806f4da2afe385462ff9b'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_path_gz =3D self.fetc=
-h_asset(initrd_url,=20
->> asset_hash=3Dinitrd_hash)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_path =3D os.path.join=
-(self.workdir, 'rootfs.cpio')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 archive.gzip_uncompress(init=
-rd_path_gz, initrd_path)
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.set_console()
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_command_line =3D (sel=
-f.KERNEL_COMMON_COMMAND_LINE +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'console=3DttyS0,115200 '
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'usbcore.nousb '
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'panic=3D-1 noreboot')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.add_args('-kernel', =
-kernel_path,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-dtb', dtb_path,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-initrd', initrd_path,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-append', kernel_command_line,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-no-reboot')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.launch()
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.wait_for_console_patter=
-n('Boot successful.')
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_pa=
-ttern(self, 'cat /proc/cpuinfo',
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'Allwinner =
-sun4i/sun5i')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_pa=
-ttern(self, 'cat /proc/iomem',
->> +                                               =20
->> 'system-control@1c00000')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_pa=
-ttern(self, 'reboot',
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'reboot: Re=
-starting=20
->> system')
->=20
->=20
-> I ran this test case with success, so:
->=20
-> Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+To simplify the preprocessor search path, unify by expliciting the
+tcg/ directory.
 
-Thanks Wainer!
+Patch created mechanically by running:
 
->=20
-> With the comment regarding the _initrd suffix:
->=20
-> Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
->=20
->=20
->> +
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 def test_s390x_s390_ccw_virtio(self):
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3D=
-arch:s390x
->=20
->=20
+  $ for x in \
+      tcg.h tcg-mo.h tcg-op.h tcg-opc.h \
+      tcg-op-gvec.h tcg-gvec-desc.h; do \
+    sed -i "s,#include \"$x\",#include \"tcg/$x\"," \
+      $(git grep -l "#include \"$x\""); \
+    done
+
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ include/exec/cpu_ldst.h       | 2 +-
+ tcg/i386/tcg-target.h         | 2 +-
+ tcg/tcg-op.h                  | 2 +-
+ tcg/tcg.h                     | 4 ++--
+ accel/tcg/cpu-exec.c          | 2 +-
+ accel/tcg/tcg-runtime-gvec.c  | 2 +-
+ accel/tcg/translate-all.c     | 2 +-
+ accel/tcg/user-exec.c         | 2 +-
+ bsd-user/main.c               | 2 +-
+ cpus.c                        | 2 +-
+ exec.c                        | 2 +-
+ linux-user/main.c             | 2 +-
+ target/alpha/translate.c      | 2 +-
+ target/arm/helper-a64.c       | 2 +-
+ target/arm/translate-a64.c    | 4 ++--
+ target/arm/translate-sve.c    | 6 +++---
+ target/arm/translate.c        | 4 ++--
+ target/cris/translate.c       | 2 +-
+ target/hppa/translate.c       | 2 +-
+ target/i386/mem_helper.c      | 2 +-
+ target/i386/translate.c       | 2 +-
+ target/lm32/translate.c       | 2 +-
+ target/m68k/translate.c       | 2 +-
+ target/microblaze/translate.c | 2 +-
+ target/mips/translate.c       | 2 +-
+ target/moxie/translate.c      | 2 +-
+ target/nios2/translate.c      | 2 +-
+ target/openrisc/translate.c   | 2 +-
+ target/ppc/mem_helper.c       | 2 +-
+ target/ppc/translate.c        | 4 ++--
+ target/riscv/cpu_helper.c     | 2 +-
+ target/riscv/translate.c      | 2 +-
+ target/s390x/translate.c      | 4 ++--
+ target/sh4/translate.c        | 2 +-
+ target/sparc/ldst_helper.c    | 2 +-
+ target/sparc/translate.c      | 2 +-
+ target/tilegx/translate.c     | 2 +-
+ target/tricore/translate.c    | 2 +-
+ target/unicore32/translate.c  | 2 +-
+ target/xtensa/translate.c     | 2 +-
+ tcg/optimize.c                | 2 +-
+ tcg/tcg-common.c              | 2 +-
+ tcg/tcg-op-gvec.c             | 8 ++++----
+ tcg/tcg-op-vec.c              | 6 +++---
+ tcg/tcg-op.c                  | 6 +++---
+ tcg/tcg.c                     | 2 +-
+ tcg/tci.c                     | 2 +-
+ 47 files changed, 61 insertions(+), 61 deletions(-)
+
+diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+index fd499f7e2f..9c637f6e89 100644
+--- a/include/exec/cpu_ldst.h
++++ b/include/exec/cpu_ldst.h
+@@ -153,7 +153,7 @@ static inline void clear_helper_retaddr(void)
+ #else
+=20
+ /* The memory helpers for tcg-generated code need tcg_target_long etc.  */
+-#include "tcg.h"
++#include "tcg/tcg.h"
+=20
+ static inline target_ulong tlb_addr_write(const CPUTLBEntry *entry)
+ {
+diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
+index 928e8b87bb..bfb3f5f6e9 100644
+--- a/tcg/i386/tcg-target.h
++++ b/tcg/i386/tcg-target.h
+@@ -223,7 +223,7 @@ static inline void tb_target_set_jmp_target(uintptr_t t=
+c_ptr,
+  * The x86 has a pretty strong memory ordering which only really
+  * allows for some stores to be re-ordered after loads.
+  */
+-#include "tcg-mo.h"
++#include "tcg/tcg-mo.h"
+=20
+ #define TCG_TARGET_DEFAULT_MO (TCG_MO_ALL & ~TCG_MO_ST_LD)
+=20
+diff --git a/tcg/tcg-op.h b/tcg/tcg-op.h
+index 4af272daa5..230db6e022 100644
+--- a/tcg/tcg-op.h
++++ b/tcg/tcg-op.h
+@@ -25,7 +25,7 @@
+ #ifndef TCG_TCG_OP_H
+ #define TCG_TCG_OP_H
+=20
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+=20
+diff --git a/tcg/tcg.h b/tcg/tcg.h
+index 92ca10dffc..bb59027240 100644
+--- a/tcg/tcg.h
++++ b/tcg/tcg.h
+@@ -31,7 +31,7 @@
+ #include "qemu/bitops.h"
+ #include "qemu/plugin.h"
+ #include "qemu/queue.h"
+-#include "tcg-mo.h"
++#include "tcg/tcg-mo.h"
+ #include "tcg-target.h"
+ #include "qemu/int128.h"
+=20
+@@ -211,7 +211,7 @@ typedef uint64_t TCGRegSet;
+=20
+ typedef enum TCGOpcode {
+ #define DEF(name, oargs, iargs, cargs, flags) INDEX_op_ ## name,
+-#include "tcg-opc.h"
++#include "tcg/tcg-opc.h"
+ #undef DEF
+     NB_OPS,
+ } TCGOpcode;
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 62068d10c3..2560c90eec 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -23,7 +23,7 @@
+ #include "trace.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "qemu/atomic.h"
+ #include "sysemu/qtest.h"
+ #include "qemu/timer.h"
+diff --git a/accel/tcg/tcg-runtime-gvec.c b/accel/tcg/tcg-runtime-gvec.c
+index 51cb29ca79..5b1902d591 100644
+--- a/accel/tcg/tcg-runtime-gvec.c
++++ b/accel/tcg/tcg-runtime-gvec.c
+@@ -21,7 +21,7 @@
+ #include "qemu/host-utils.h"
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
+-#include "tcg-gvec-desc.h"
++#include "tcg/tcg-gvec-desc.h"
+=20
+=20
+ /* Virtually all hosts support 16-byte vectors.  Those that don't can emul=
+ate
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index bb325a2bc4..a08ab11f65 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -25,7 +25,7 @@
+ #include "trace.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #if defined(CONFIG_USER_ONLY)
+ #include "qemu.h"
+ #if defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index b09f7a1577..2d45613231 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -20,7 +20,7 @@
+ #include "cpu.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "qemu/bitops.h"
+ #include "exec/cpu_ldst.h"
+ #include "translate-all.h"
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 7f4e3cd627..770c2b267a 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -33,7 +33,7 @@
+ #include "qemu/module.h"
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "qemu/timer.h"
+ #include "qemu/envlist.h"
+ #include "exec/log.h"
+diff --git a/cpus.c b/cpus.c
+index b472378b70..18f56572fa 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -53,7 +53,7 @@
+ #include "qemu/bitmap.h"
+ #include "qemu/seqlock.h"
+ #include "qemu/guest-random.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "hw/nmi.h"
+ #include "sysemu/replay.h"
+ #include "sysemu/runstate.h"
+diff --git a/exec.c b/exec.c
+index d4b769d0d4..0f6b087f57 100644
+--- a/exec.c
++++ b/exec.c
+@@ -25,7 +25,7 @@
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+ #include "exec/target_page.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "hw/qdev-core.h"
+ #include "hw/qdev-properties.h"
+ #if !defined(CONFIG_USER_ONLY)
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 8718d03ee2..fba833aac9 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -37,7 +37,7 @@
+ #include "qemu/plugin.h"
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "qemu/timer.h"
+ #include "qemu/envlist.h"
+ #include "qemu/guest-random.h"
+diff --git a/target/alpha/translate.c b/target/alpha/translate.c
+index f7f1ed0f41..8870284f57 100644
+--- a/target/alpha/translate.c
++++ b/target/alpha/translate.c
+@@ -23,7 +23,7 @@
+ #include "disas/disas.h"
+ #include "qemu/host-utils.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/cpu_ldst.h"
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index b4cd680fc4..36aa6badfd 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -31,7 +31,7 @@
+ #include "exec/cpu_ldst.h"
+ #include "qemu/int128.h"
+ #include "qemu/atomic128.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "fpu/softfloat.h"
+ #include <zlib.h> /* For crc32 */
+=20
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index d4bebbe629..a1d4dce4fa 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -20,8 +20,8 @@
+=20
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
+-#include "tcg-op-gvec.h"
++#include "tcg/tcg-op.h"
++#include "tcg/tcg-op-gvec.h"
+ #include "qemu/log.h"
+ #include "arm_ldst.h"
+ #include "translate.h"
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 5d7edd0907..b35bad245e 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -20,9 +20,9 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
+-#include "tcg-op-gvec.h"
+-#include "tcg-gvec-desc.h"
++#include "tcg/tcg-op.h"
++#include "tcg/tcg-op-gvec.h"
++#include "tcg/tcg-gvec-desc.h"
+ #include "qemu/log.h"
+ #include "arm_ldst.h"
+ #include "translate.h"
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 2b6c1f91bf..39821d040b 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -24,8 +24,8 @@
+ #include "internals.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
+-#include "tcg-op-gvec.h"
++#include "tcg/tcg-op.h"
++#include "tcg/tcg-op-gvec.h"
+ #include "qemu/log.h"
+ #include "qemu/bitops.h"
+ #include "arm_ldst.h"
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index cb57516a44..aaa46b5bca 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -27,7 +27,7 @@
+ #include "cpu.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/helper-proto.h"
+ #include "mmu.h"
+ #include "exec/cpu_ldst.h"
+diff --git a/target/hppa/translate.c b/target/hppa/translate.c
+index 2f8d407a82..f25927aeca 100644
+--- a/target/hppa/translate.c
++++ b/target/hppa/translate.c
+@@ -22,7 +22,7 @@
+ #include "disas/disas.h"
+ #include "qemu/host-utils.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/cpu_ldst.h"
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+diff --git a/target/i386/mem_helper.c b/target/i386/mem_helper.c
+index d50d4b0c40..acf41f8885 100644
+--- a/target/i386/mem_helper.c
++++ b/target/i386/mem_helper.c
+@@ -24,7 +24,7 @@
+ #include "exec/cpu_ldst.h"
+ #include "qemu/int128.h"
+ #include "qemu/atomic128.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+=20
+ void helper_cmpxchg8b_unlocked(CPUX86State *env, target_ulong a0)
+ {
+diff --git a/target/i386/translate.c b/target/i386/translate.c
+index 7c99ef1385..d9af8f4078 100644
+--- a/target/i386/translate.c
++++ b/target/i386/translate.c
+@@ -22,7 +22,7 @@
+ #include "cpu.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/cpu_ldst.h"
+ #include "exec/translator.h"
+=20
+diff --git a/target/lm32/translate.c b/target/lm32/translate.c
+index 73db9654d6..e583d52d03 100644
+--- a/target/lm32/translate.c
++++ b/target/lm32/translate.c
+@@ -23,7 +23,7 @@
+ #include "exec/helper-proto.h"
+ #include "exec/exec-all.h"
+ #include "exec/translator.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "qemu/qemu-print.h"
+=20
+ #include "exec/cpu_ldst.h"
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index fcdb7bc8e4..31b743717e 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -22,7 +22,7 @@
+ #include "cpu.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "qemu/log.h"
+ #include "qemu/qemu-print.h"
+ #include "exec/cpu_ldst.h"
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index 525115b041..37a844db99 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
+@@ -22,7 +22,7 @@
+ #include "cpu.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/helper-proto.h"
+ #include "microblaze-decode.h"
+ #include "exec/cpu_ldst.h"
+diff --git a/target/mips/translate.c b/target/mips/translate.c
+index 4bff585bd6..efe75e6be0 100644
+--- a/target/mips/translate.c
++++ b/target/mips/translate.c
+@@ -26,7 +26,7 @@
+ #include "internal.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/cpu_ldst.h"
+ #include "hw/mips/cpudevs.h"
+=20
+diff --git a/target/moxie/translate.c b/target/moxie/translate.c
+index c87e9ec2b1..d5fb27dfb8 100644
+--- a/target/moxie/translate.c
++++ b/target/moxie/translate.c
+@@ -26,7 +26,7 @@
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+ #include "disas/disas.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/cpu_ldst.h"
+ #include "qemu/qemu-print.h"
+=20
+diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+index 82107bf270..6c34cd3193 100644
+--- a/target/nios2/translate.c
++++ b/target/nios2/translate.c
+@@ -23,7 +23,7 @@
+=20
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/exec-all.h"
+ #include "disas/disas.h"
+ #include "exec/helper-proto.h"
+diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+index 8dd28d6cf1..52323a16df 100644
+--- a/target/openrisc/translate.c
++++ b/target/openrisc/translate.c
+@@ -22,7 +22,7 @@
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+ #include "disas/disas.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "qemu/log.h"
+ #include "qemu/bitops.h"
+ #include "qemu/qemu-print.h"
+diff --git a/target/ppc/mem_helper.c b/target/ppc/mem_helper.c
+index 1351b53f28..7404b14bed 100644
+--- a/target/ppc/mem_helper.c
++++ b/target/ppc/mem_helper.c
+@@ -25,7 +25,7 @@
+ #include "exec/helper-proto.h"
+ #include "helper_regs.h"
+ #include "exec/cpu_ldst.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "internal.h"
+ #include "qemu/atomic128.h"
+=20
+diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+index f5fe5d0611..9dcf8dc261 100644
+--- a/target/ppc/translate.c
++++ b/target/ppc/translate.c
+@@ -23,8 +23,8 @@
+ #include "internal.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
+-#include "tcg-op-gvec.h"
++#include "tcg/tcg-op.h"
++#include "tcg/tcg-op-gvec.h"
+ #include "qemu/host-utils.h"
+ #include "qemu/main-loop.h"
+ #include "exec/cpu_ldst.h"
+diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+index 767c8762ac..85403da9c8 100644
+--- a/target/riscv/cpu_helper.c
++++ b/target/riscv/cpu_helper.c
+@@ -22,7 +22,7 @@
+ #include "qemu/main-loop.h"
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "trace.h"
+=20
+ int riscv_cpu_mmu_index(CPURISCVState *env, bool ifetch)
+diff --git a/target/riscv/translate.c b/target/riscv/translate.c
+index ab6a891dc3..56b1b1fe7b 100644
+--- a/target/riscv/translate.c
++++ b/target/riscv/translate.c
+@@ -19,7 +19,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "cpu.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "disas/disas.h"
+ #include "exec/cpu_ldst.h"
+ #include "exec/exec-all.h"
+diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+index 4292bb0dd0..b764ec3140 100644
+--- a/target/s390x/translate.c
++++ b/target/s390x/translate.c
+@@ -33,8 +33,8 @@
+ #include "internal.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
+-#include "tcg-op-gvec.h"
++#include "tcg/tcg-op.h"
++#include "tcg/tcg-op-gvec.h"
+ #include "qemu/log.h"
+ #include "qemu/host-utils.h"
+ #include "exec/cpu_ldst.h"
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index 922785e225..6192d83e8c 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -23,7 +23,7 @@
+ #include "cpu.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/cpu_ldst.h"
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+diff --git a/target/sparc/ldst_helper.c b/target/sparc/ldst_helper.c
+index 7345827a96..e91cfdecd3 100644
+--- a/target/sparc/ldst_helper.c
++++ b/target/sparc/ldst_helper.c
+@@ -19,7 +19,7 @@
+=20
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+-#include "tcg.h"
++#include "tcg/tcg.h"
+ #include "exec/helper-proto.h"
+ #include "exec/exec-all.h"
+ #include "exec/cpu_ldst.h"
+diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+index edc23a7c40..9416a551cf 100644
+--- a/target/sparc/translate.c
++++ b/target/sparc/translate.c
+@@ -24,7 +24,7 @@
+ #include "disas/disas.h"
+ #include "exec/helper-proto.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/cpu_ldst.h"
+=20
+ #include "exec/helper-gen.h"
+diff --git a/target/tilegx/translate.c b/target/tilegx/translate.c
+index abce7e1c75..65f1c91f4f 100644
+--- a/target/tilegx/translate.c
++++ b/target/tilegx/translate.c
+@@ -24,7 +24,7 @@
+ #include "exec/log.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/cpu_ldst.h"
+ #include "linux-user/syscall_defs.h"
+=20
+diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+index c574638c9f..609d75ae8a 100644
+--- a/target/tricore/translate.c
++++ b/target/tricore/translate.c
+@@ -22,7 +22,7 @@
+ #include "cpu.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "exec/cpu_ldst.h"
+ #include "qemu/qemu-print.h"
+=20
+diff --git a/target/unicore32/translate.c b/target/unicore32/translate.c
+index 0f6891b8aa..d4b06df672 100644
+--- a/target/unicore32/translate.c
++++ b/target/unicore32/translate.c
+@@ -13,7 +13,7 @@
+ #include "cpu.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "qemu/log.h"
+ #include "exec/cpu_ldst.h"
+ #include "exec/translator.h"
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index a99f5296e2..f5510ef043 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -33,7 +33,7 @@
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+ #include "disas/disas.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+ #include "qemu/log.h"
+ #include "qemu/qemu-print.h"
+ #include "exec/cpu_ldst.h"
+diff --git a/tcg/optimize.c b/tcg/optimize.c
+index f7f4e873c9..53aa8e5329 100644
+--- a/tcg/optimize.c
++++ b/tcg/optimize.c
+@@ -24,7 +24,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+=20
+ #define CASE_OP_32_64(x)                        \
+         glue(glue(case INDEX_op_, x), _i32):    \
+diff --git a/tcg/tcg-common.c b/tcg/tcg-common.c
+index 97305a3efc..7e1992e79e 100644
+--- a/tcg/tcg-common.c
++++ b/tcg/tcg-common.c
+@@ -32,7 +32,7 @@ uintptr_t tci_tb_ptr;
+ TCGOpDef tcg_op_defs[] =3D {
+ #define DEF(s, oargs, iargs, cargs, flags) \
+          { #s, oargs, iargs, cargs, iargs + oargs + cargs, flags },
+-#include "tcg-opc.h"
++#include "tcg/tcg-opc.h"
+ #undef DEF
+ };
+ const size_t tcg_op_defs_max =3D ARRAY_SIZE(tcg_op_defs);
+diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
+index 5c95ecd51c..41b4a3c661 100644
+--- a/tcg/tcg-op-gvec.c
++++ b/tcg/tcg-op-gvec.c
+@@ -18,11 +18,11 @@
+  */
+=20
+ #include "qemu/osdep.h"
+-#include "tcg.h"
+-#include "tcg-op.h"
+-#include "tcg-op-gvec.h"
++#include "tcg/tcg.h"
++#include "tcg/tcg-op.h"
++#include "tcg/tcg-op-gvec.h"
+ #include "qemu/main-loop.h"
+-#include "tcg-gvec-desc.h"
++#include "tcg/tcg-gvec-desc.h"
+=20
+ #define MAX_UNROLL  4
+=20
+diff --git a/tcg/tcg-op-vec.c b/tcg/tcg-op-vec.c
+index 6714991bf4..b6937e8d64 100644
+--- a/tcg/tcg-op-vec.c
++++ b/tcg/tcg-op-vec.c
+@@ -19,9 +19,9 @@
+=20
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+-#include "tcg.h"
+-#include "tcg-op.h"
+-#include "tcg-mo.h"
++#include "tcg/tcg.h"
++#include "tcg/tcg-op.h"
++#include "tcg/tcg-mo.h"
+=20
+ /* Reduce the number of ifdefs below.  This assumes that all uses of
+    TCGV_HIGH and TCGV_LOW are properly protected by a conditional that
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index c245126f98..7d782002e3 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -25,9 +25,9 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+-#include "tcg.h"
+-#include "tcg-op.h"
+-#include "tcg-mo.h"
++#include "tcg/tcg.h"
++#include "tcg/tcg-op.h"
++#include "tcg/tcg-mo.h"
+ #include "trace-tcg.h"
+ #include "trace/mem.h"
+ #include "exec/plugin-gen.h"
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 4f616ba38b..dd4b3d7684 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -48,7 +48,7 @@
+ #include "hw/boards.h"
+ #endif
+=20
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+=20
+ #if UINTPTR_MAX =3D=3D UINT32_MAX
+ # define ELF_CLASS  ELFCLASS32
+diff --git a/tcg/tci.c b/tcg/tci.c
+index a6208653e8..46fe9ce63f 100644
+--- a/tcg/tci.c
++++ b/tcg/tci.c
+@@ -30,7 +30,7 @@
+ #include "qemu-common.h"
+ #include "tcg/tcg.h"           /* MAX_OPC_PARAM_IARGS */
+ #include "exec/cpu_ldst.h"
+-#include "tcg-op.h"
++#include "tcg/tcg-op.h"
+=20
+ /* Marker for missing code. */
+ #define TODO() \
+--=20
+2.21.0
 

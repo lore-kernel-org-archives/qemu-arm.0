@@ -1,121 +1,101 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp19399292lff;
-        Thu, 2 Jan 2020 13:11:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwTrkp0b77+sWIjCxWD9tXZTwho+6skpebNLUhR9HCnbUgPDoxNDLGMZ3z54xuhVbUHsuMh
-X-Received: by 2002:a05:6830:4d9:: with SMTP id s25mr94332570otd.171.1577999497982;
-        Thu, 02 Jan 2020 13:11:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1577999497; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp19449025lff;
+        Thu, 2 Jan 2020 14:06:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxJiVwGJ5k/kbQ89TZEm7575Lxw8ueJ3dxpihbEskRMwIYiCfHxWQ5T//qEzjmkSmZB1D7W
+X-Received: by 2002:aca:1204:: with SMTP id 4mr3054886ois.143.1578002818600;
+        Thu, 02 Jan 2020 14:06:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578002818; cv=none;
         d=google.com; s=arc-20160816;
-        b=k20i5DS/ejHEBUpirCo3hnSivVCiKqRVz7WTehuz44Xkr8i7yjWIuERNesMFzWek/H
-         ujvSkYNy26MOx94PwrJ8cj75oau6mnT0YYmCQTMOjxI3c1QQNbV5LDXqvHkuAMtzbw6u
-         0ie/uGVwVVNww5xJv7b9l+3jSB/3UGaCJxtdciUa8KP8uuY4eIda4ZQs4709JQuhmrs+
-         FfmgkHSM3Hp91zMBo3YAPxF3q9bu6oeT8SxPA2AuD6bX1FMO02Zv04y5nIuM8qbb261l
-         AvXgDr6rILgnncS25gDFLzYYY3sj9fJNFRwyZf+yKBBpnCpnN/bFiOwthhr3EGRj2L3D
-         nEdw==
+        b=x6uHyEvuWu6vtpoaIMuPoCFYNBi3tEVRR5w3dYYQiIJ7iia1L5W5ZLPsk57qT3QgSL
+         4yvzevwEF4btxpAIyrJG57VdM47C19XHwehwh/bXU15lORlm0UuJPE6H3achXL9JM8rg
+         LDtdb22236ZIGIFYXeq8cwmYe20IjwRynvJQI9ejq25ChedC0m73fRPpq6MnrRDl21Xi
+         DpYjaHtdIiZeiU1pCN/SobgHt91uua17emIhJv4+pqn5AjOcOmYsRwcDbTBkZRQ7dH0Q
+         eG7DPejxqmiyOfeiRWI9FLoy1lw6Z3VcQUP05j+QBxKpYp8r7+xjtKKcXWsdrhcJkzkb
+         Mlaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=S/0Dz23NZsNkH9ZtXW9XOGgGAJBFtD2/MzWmDDvHfz4=;
-        b=z/Ze1Y5XOAOAgg6S6E+Yz+lC5EXVqRYv+ba0a+ux8qdxNKxWjFonqOWEm3HdWYC/F1
-         Q6174VekP7wfL16HXdUFSq8wJ07sHT4h/e5vG3z6SLxgOcQj5RFtrU7l3Igy/sy5M8pK
-         zutGKac7xrZPe+YI3WzjMBRowZTjZ5yMrVFPT3T+MlXxVJZAijnCsyNnwRgQoX8Q0LlZ
-         5bWzJtuYMxP6rJeCQRLUVEuEjN6d/NcJ1IT7U3akZlSD89Fbens3CjGEagKnb0thjnRI
-         My1GExFlYsTbLxHKZAzUzLFcWYkqMhO0uHAlbtFXI224ZKvF4nFzq/8+MrvI+UUkh0EH
-         iA2w==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=R0NxGTQSccVveKz1rKpEw/by0/GKdb9fm1wSFc0d/Gs=;
+        b=T/aRZtaUy0u0j+BRQmORH9D/n/zH46FXSY10gWq4M7nmwjjyA17I4W46DTxAZh4o09
+         EDNacaVz6bsJLkmtYpskLHBIvI5TWjr5V9lIvZ+co4UQhvGMWgeqWGAw/Gvn3hVEaBUF
+         xouqbHG1nxt2QpMNoEYfFEkAeoEwkvpbrroLDASykEgVmTXnGTPG8qI1kAQO06D6tAth
+         gBZOPwId1ZGMS90DL1WaIeZjor2LAPfTYmOfcjxP3+5gfX6yxkdycboo/qs88QqLTXfK
+         uFyIvaowPkmGT4HHtef2Ye09iTdMFAvzRZjhI7kkRUmHM+HbgHgBiMV+Ea2IiMbH6wvV
+         4nhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WHYhwG+X;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Be5RR40F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c126si27708249oib.239.2020.01.02.13.11.37
+        by mx.google.com with ESMTPS id f189si27449696oib.268.2020.01.02.14.06.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jan 2020 13:11:37 -0800 (PST)
+        Thu, 02 Jan 2020 14:06:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WHYhwG+X;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Be5RR40F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45705 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1in7kn-0001G1-3s
-	for alex.bennee@linaro.org; Thu, 02 Jan 2020 16:11:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49657)
+	id 1in8cL-00079t-OQ
+	for alex.bennee@linaro.org; Thu, 02 Jan 2020 17:06:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42496)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1in7kb-0001CG-LL
- for qemu-arm@nongnu.org; Thu, 02 Jan 2020 16:11:27 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1in8c1-00075z-Oj
+ for qemu-arm@nongnu.org; Thu, 02 Jan 2020 17:06:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1in7kU-0004jB-LQ
- for qemu-arm@nongnu.org; Thu, 02 Jan 2020 16:11:20 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:27069
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1in7kT-0004fW-4e
- for qemu-arm@nongnu.org; Thu, 02 Jan 2020 16:11:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1577999475;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=S/0Dz23NZsNkH9ZtXW9XOGgGAJBFtD2/MzWmDDvHfz4=;
- b=WHYhwG+XEYk9Me64sm1hnvpPY4NNaN/jHeXJG/UPM8mP7Jf+UMS1S6mzh4rEUmeUe+EVG4
- 2v5p2Nrzhc79B8AGcbT5VMk3JUuiuzpLxloXjG4Qgu33/Gopr/X+SntAflPEGdUzASt1Zr
- g3UbOLSX/k0HDT8MbZ6ELf03mxB65RQ=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-185-ADGTd8c4N3SSX9O_8SQTdw-1; Thu, 02 Jan 2020 16:11:12 -0500
-Received: by mail-wr1-f71.google.com with SMTP id w6so20927359wrm.16
- for <qemu-arm@nongnu.org>; Thu, 02 Jan 2020 13:11:12 -0800 (PST)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1in8bz-00032W-Es
+ for qemu-arm@nongnu.org; Thu, 02 Jan 2020 17:06:37 -0500
+Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a]:41053)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1in8bq-0002m4-7w; Thu, 02 Jan 2020 17:06:26 -0500
+Received: by mail-il1-x12a.google.com with SMTP id f10so35170942ils.8;
+ Thu, 02 Jan 2020 14:06:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=R0NxGTQSccVveKz1rKpEw/by0/GKdb9fm1wSFc0d/Gs=;
+ b=Be5RR40Faf2BpjDHJIcBNI/JWBjFNx0EHJ/Mi6MJfSBaaqYWZiqvVNeuSNIAp8Hk6d
+ Suiyb00nNr5DyfYtrS2ia7aCvW22LGPGV9dHyTHyVku55ju/qX8p1E5Qvx9lhqzyybeC
+ MZ7ytI+SXJywrRz3nUpyV19fn/UVNWvDclAGMLx2uWO7rjJWAzd1K1viqcR0a4CX90/r
+ esiYqljmIUiOf7nzAWySiz+0/NQUuZjV08IpGr+lboTSGmd2vH4FnVouncCjhJ5n88Dq
+ zRyOMqy9JN/hpfIvekkW67gzK7ESshvBAPhSwErnZaICw6XXFL/p5RAXWs+4Zm1TIiDR
+ aU6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=jSa6P/zZIAKVc64uPwDWbr46HoPv12sfM0C3MANRI8U=;
- b=TOggoyHv94o6+lWhJNUNHcCUuTpwCE6KDuVPjvz379Cvd4yDi8eKTlPc5pybmM2Fkv
- jOB/S6Kg918Dm504eyzQugZpKwYlqmy7DbBbbt74UDaCHXxdMCXRiBVuY9xvQ4XI8/3j
- BuRFEikEojPWI7EX3QhXWlI2BSbvCk8SD2AEXi2xM5bgRXx7OHSDeKWs//nN6I6B5oGo
- af8+O/P25vBQhmnPCM+Wb4KJ5OzBfi4mR63zPloTIRd2IMxzZoqg7pQyhTC7+QNQ+C/X
- praMgUDO/If9+q9w0L0uEjW2FXzmTKkN640JooB9WfpfDkxFXjIlfKcmaKiVJ/k+dzl/
- rwsw==
-X-Gm-Message-State: APjAAAURRrB+5FrTyV9F/TTw+dln17Dw6rx5ExKYJny8uEmBApC7Xidd
- pscvf+ZOSs6smOhE66Z/oepig1Ebjr8hhpWu9YZ8SKvvJ8O6OR8t6S8crSU8coVSvxcN0HESFdp
- RK3cOTX0J7S9e
-X-Received: by 2002:adf:a746:: with SMTP id e6mr87815156wrd.329.1577999471580; 
- Thu, 02 Jan 2020 13:11:11 -0800 (PST)
-X-Received: by 2002:adf:a746:: with SMTP id e6mr87815138wrd.329.1577999471269; 
- Thu, 02 Jan 2020 13:11:11 -0800 (PST)
-Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.34])
- by smtp.gmail.com with ESMTPSA id z83sm9761562wmg.2.2020.01.02.13.11.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Jan 2020 13:11:10 -0800 (PST)
-Subject: Re: [PATCH v2 00/10] Add Allwinner H3 SoC and Orange Pi PC Machine
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=R0NxGTQSccVveKz1rKpEw/by0/GKdb9fm1wSFc0d/Gs=;
+ b=ihSigAdV1wbDzCw9M60nWj+rUhgv/TFz24CrYBZIUTDeyyZ0l7yEatJyD1W5QXWghA
+ ISOdP36o6UqPGCQKqj2Pkaj4VHZOXSkHJdc6xyVqmQh/0p6+NufZ06LYrOM/DG8ng/8K
+ o/wtg8I0iHfG4nwnBjwsA212tRAHFZlI2kHY5k2N6+QItPrgEUUuRjG45CP/rBwO2Nxg
+ oj9bbcY6n7oNHnu4R/h3soLbJhTRb8yLW/ofjoDtAc0kVsclPnmEEI3xWp5Jwn4W1957
+ kMnUpLmY1x1ht8T3GMcuxKqFmqU9aqeAg94o+3Sh5v9BS1WUtEsSpYNod4jr3oYmGsk1
+ sXTQ==
+X-Gm-Message-State: APjAAAXKme2JF8QVnqhomtCpCQKbmlWJ29RrPJ2lXRCYa1etJcpxjwx7
+ +GQznskqN+/a95khjz1vTa5pcq5PdSPjklXBhyw=
+X-Received: by 2002:a92:7509:: with SMTP id q9mr49545228ilc.67.1578002784160; 
+ Thu, 02 Jan 2020 14:06:24 -0800 (PST)
+MIME-Version: 1.0
 References: <20191216233519.29030-1-nieklinnenbank@gmail.com>
  <CAPan3WpDbWb_cBMJPgokSLKAJndMQLvRdOav6CPpDbFv+ChN0g@mail.gmail.com>
  <9756419b-55bf-23a9-556a-d5bc5fb29331@redhat.com>
  <CAPan3WrYAK+PFtFM7ZDCVsKLc_ksGxZeHEcwB9_FK=4v5p8h=w@mail.gmail.com>
  <CAPan3WoP8MYubKaArOuWVCo65iOYNc2TpQ8KA0f_wRZwLATMAA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <f331fe6e-87ce-4f04-cdc0-981281e53c9b@redhat.com>
-Date: Thu, 2 Jan 2020 22:11:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <CAPan3WoP8MYubKaArOuWVCo65iOYNc2TpQ8KA0f_wRZwLATMAA@mail.gmail.com>
-Content-Language: en-US
-X-MC-Unique: ADGTd8c4N3SSX9O_8SQTdw-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+ <f331fe6e-87ce-4f04-cdc0-981281e53c9b@redhat.com>
+In-Reply-To: <f331fe6e-87ce-4f04-cdc0-981281e53c9b@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Thu, 2 Jan 2020 23:06:13 +0100
+Message-ID: <CAPan3WrhOdaTxKm0nVMa6XByp2VqGg5a9dgv7q4o-4bCbUTk6w@mail.gmail.com>
+Subject: Re: [PATCH v2 00/10] Add Allwinner H3 SoC and Orange Pi PC Machine
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000679261059b2f67d5"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::12a
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -131,170 +111,419 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZE6UuiNbjPMV
+X-TUID: 6z1s74f9zRgE
 
-Hi Niek,
+--000000000000679261059b2f67d5
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 1/2/20 8:52 PM, Niek Linnenbank wrote:
-> Hi Philippe,
->=20
-> I'm almost ready to send out v3 here.
->=20
-> Now for documentation I'm not sure yet what to do:
->=20
-> 1) Where should I place board documentation?
->  =C2=A0=C2=A0=C2=A0 For example, the information that I wrote on the cove=
-r letter with=20
-> instructions on how to get the board up and running,
->  =C2=A0=C2=A0=C2=A0 some description of the design, where to find more in=
-forformation,=20
-> datasheet sources, etc. I don't yet see any documentation
+Hey Philippe,
 
-We usually refer the datasheet in the implementation header, see:
+On Thu, Jan 2, 2020 at 10:11 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+wrote:
 
-$ git grep -F .pdf hw/ | wc -l
-62
+> Hi Niek,
+>
+> On 1/2/20 8:52 PM, Niek Linnenbank wrote:
+> > Hi Philippe,
+> >
+> > I'm almost ready to send out v3 here.
+> >
+> > Now for documentation I'm not sure yet what to do:
+> >
+> > 1) Where should I place board documentation?
+> >      For example, the information that I wrote on the cover letter with
+> > instructions on how to get the board up and running,
+> >      some description of the design, where to find more inforformation,
+> > datasheet sources, etc. I don't yet see any documentation
+>
+> We usually refer the datasheet in the implementation header, see:
+>
+> $ git grep -F .pdf hw/ | wc -l
+> 62
+>
+> You can cite the datasheet globally in hw/arm/allwinner-h3.c, and then
+> the particular chapters or source files in the other hw/*/allwinner-*
+> files.
+>
+> >     for the other boards in the source. In my opinion, it is important
+> > to keep that information somewhere, such that also in the future
+> >     the boards can still be properly maintained. Can I / shall I place =
+a
+> > new file like ./docs/hw/arm/orangepi.txt for that?
+>
+> See docs/microvm.rst which is a recent example of machine documentation,
+> the obvious name is docs/orangepi.rst.
+>
+> Ah great, that is very helpful! I will use the microvm.rst as example and
+add a new file docs/orangepi.rst to document the board.
 
-You can cite the datasheet globally in hw/arm/allwinner-h3.c, and then=20
+
+> Maybe refer to this file in hw/arm/orangepi.c header for completeness.
+>
+> >   2) Is is allowed / encouraged to provide Doxygen-style comments in th=
+e
+> > header files in include/hw/*?
+> >     I see that some of the API's have that, but the boards and devices
+> > mostly are free of Doxygen-style comments.
+> >     It takes some work, but I think it can really help to give more
+> > insight / background info on how things are working
+> >     for the devices and boards. But if it's not preferred for QEMU, I'm
+> > fine with that as well.
+>
+> Documentation is certainly welcome!
+>
+> There are 2 different schools over the codebase, one that document the
+> declarations, and another that documents the implementation/definition.
+>
+> I personally prefer to document the headers, which is where I look when
+> I want to consume an API.
+> The implementation school says this can lead to documentation getting
+> outdated.
+>
+> So if you are willing to document, I'd suggest to document your
+> include/hw/ files.
+>
+
+OK, thanks for clarifying! Yes, I also prefer to have it in the header
+files, it
+makes the most sense indeed.
+
+
+>
+> Happy new year!
+>
+
+And happy new year to you as well Philippe!
+
+Regards,
+Niek
+
+>
+> Phil.
+>
+> > On Mon, Dec 30, 2019 at 9:10 PM Niek Linnenbank
+> > <nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>> wrote:
+> >
+> >
+> >
+> >     On Mon, Dec 30, 2019 at 3:56 PM Philippe Mathieu-Daud=C3=A9
+> >     <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
+> >
+> >         On 12/30/19 12:28 PM, Niek Linnenbank wrote:
+> >          > Hi,
+> >          >
+> >          > Here a short status report of this patch series.
+> >
+> >         Good idea!
+> >
+> >          >
+> >          > For V3 update I already prepared the following:
+> >          >   - reworked all review comments from Philippe, except:
+> >          >     - patch#8: question for the SID, whether command-line
+> >         override is
+> >          > required (and how is the best way for machine-specific cli
+> >         arg?) [1]
+> >
+> >         Answered recently.
+> >
+> >     Thanks!
+> >
+> >
+> >          > - added BootROM support, allows booting with only specifying
+> >         -sd <IMG>
+> >          > - added SDRAM controller driver, for U-Boot SPL
+> >          > - added Allwinner generic RTC driver (for both Cubieboard an=
+d
+> >         OrangePi
+> >          > PC, supports sun4i, sun6i, sun7i)
+> >          > - small fixes for EMAC
+> >          >
+> >          > My current TODO:
+> >          >   - integrate Philips acceptance tests in the series
+> >
+> >         You can queue them in your series, adding your Signed-off-by ta=
+g
+> >         after
+> >         mine. See:
+> >
+> https://www.kernel.org/doc/html/latest/process/submitting-patches.html#si=
+gn-your-work-the-developer-s-certificate-of-origin
+> >
+> >             The sign-off is a simple line at the end of the explanation
+> >         for the
+> >         patch, which certifies that you wrote it or otherwise have the
+> >         right to
+> >         pass it on as an open-source patch.
+> >
+> >         See point (c).
+> >
+> >     Ah that certainly helps. I'll read that page.
+> >
+> >          >   - integrate Philips work for generalizing the Allwinner
+> >         timer, and
+> >          > finish it
+> >
+> >         We can also do that later, and get your work merged first.
+> >
+> >
+> >     Ok that sounds very good! Agreed, lets do the timer work later.
+> >
+> >
+> >          >   - test and fix BSD targets (NetBSD, FreeBSD) [2, 3]
+> >          >   - further generalize the series to cover very similar SoCs=
+:
+> >         H2+, H5
+> >          >
+> >          > Does anyone have more comments/requests for the V3 update?
+> >          >
+> >          > [1]
+> >
+> https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg04049.html
+> >          > [2] https://wiki.netbsd.org/ports/evbarm/allwinner/
+> >          > [3]
+> >          >
+> >
+> https://wiki.freebsd.org/action/show/arm/Allwinner?action=3Dshow&redirect=
+=3DFreeBSD%2Farm%2FAllwinner
+> >
+> >
+> >
+> >     --
+> >     Niek Linnenbank
+> >
+> >
+> >
+> > --
+> > Niek Linnenbank
+> >
+>
+>
+
+--=20
+Niek Linnenbank
+
+--000000000000679261059b2f67d5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hey Philippe,<br></div><br><div class=3D"gmail_quote"=
+><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jan 2, 2020 at 10:11 PM Phil=
+ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
+hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex">Hi Niek,<br>
+<br>
+On 1/2/20 8:52 PM, Niek Linnenbank wrote:<br>
+&gt; Hi Philippe,<br>
+&gt; <br>
+&gt; I&#39;m almost ready to send out v3 here.<br>
+&gt; <br>
+&gt; Now for documentation I&#39;m not sure yet what to do:<br>
+&gt; <br>
+&gt; 1) Where should I place board documentation?<br>
+&gt;=C2=A0 =C2=A0=C2=A0=C2=A0 For example, the information that I wrote on =
+the cover letter with <br>
+&gt; instructions on how to get the board up and running,<br>
+&gt;=C2=A0 =C2=A0=C2=A0=C2=A0 some description of the design, where to find=
+ more inforformation, <br>
+&gt; datasheet sources, etc. I don&#39;t yet see any documentation<br>
+<br>
+We usually refer the datasheet in the implementation header, see:<br>
+<br>
+$ git grep -F .pdf hw/ | wc -l<br>
+62<br>
+<br>
+You can cite the datasheet globally in hw/arm/allwinner-h3.c, and then <br>
 the particular chapters or source files in the other hw/*/allwinner-* files=
-.
+.<br>
+<br>
+&gt;=C2=A0 =C2=A0=C2=A0 for the other boards in the source. In my opinion, =
+it is important <br>
+&gt; to keep that information somewhere, such that also in the future<br>
+&gt;=C2=A0 =C2=A0=C2=A0 the boards can still be properly maintained. Can I =
+/ shall I place a <br>
+&gt; new file like ./docs/hw/arm/orangepi.txt for that?<br>
+<br>
+See docs/microvm.rst which is a recent example of machine documentation,<br=
+>
+the obvious name is docs/orangepi.rst.<br>
+<br></blockquote><div>Ah great, that is very helpful! I will use the microv=
+m.rst as example and</div><div>add a new file docs/orangepi.rst to document=
+ the board.<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
+ng-left:1ex">
+Maybe refer to this file in hw/arm/orangepi.c header for completeness.<br>
+<br>
+&gt;=C2=A0 =C2=A02) Is is allowed / encouraged to provide Doxygen-style com=
+ments in the <br>
+&gt; header files in include/hw/*?<br>
+&gt;=C2=A0 =C2=A0=C2=A0 I see that some of the API&#39;s have that, but the=
+ boards and devices <br>
+&gt; mostly are free of Doxygen-style comments.<br>
+&gt;=C2=A0 =C2=A0=C2=A0 It takes some work, but I think it can really help =
+to give more <br>
+&gt; insight / background info on how things are working<br>
+&gt;=C2=A0 =C2=A0=C2=A0 for the devices and boards. But if it&#39;s not pre=
+ferred for QEMU, I&#39;m <br>
+&gt; fine with that as well.<br>
+<br>
+Documentation is certainly welcome!<br>
+<br>
+There are 2 different schools over the codebase, one that document the <br>
+declarations, and another that documents the implementation/definition.<br>
+<br>
+I personally prefer to document the headers, which is where I look when <br=
+>
+I want to consume an API.<br>
+The implementation school says this can lead to documentation getting <br>
+outdated.<br>
+<br>
+So if you are willing to document, I&#39;d suggest to document your <br>
+include/hw/ files.<br></blockquote><div><br></div><div>OK, thanks for clari=
+fying! Yes, I also prefer to have it in the header files, it</div><div>make=
+s the most sense indeed.<br></div><div>=C2=A0</div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex">
+<br>
+Happy new year!<br></blockquote><div><br></div><div>And happy new year to y=
+ou as well Philippe!</div><div><br></div><div>Regards,</div><div>Niek<br></=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
+der-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+Phil.<br>
+<br>
+&gt; On Mon, Dec 30, 2019 at 9:10 PM Niek Linnenbank <br>
+&gt; &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_blank">niek=
+linnenbank@gmail.com</a> &lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.=
+com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;&gt; wrote:<br>
+&gt; <br>
+&gt; <br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0On Mon, Dec 30, 2019 at 3:56 PM Philippe Mathieu-Da=
+ud=C3=A9<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;<a href=3D"mailto:philmd@redhat.com" target=3D"=
+_blank">philmd@redhat.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.co=
+m" target=3D"_blank">philmd@redhat.com</a>&gt;&gt; wrote:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0On 12/30/19 12:28 PM, Niek Linnenbank=
+ wrote:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Hi,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Here a short status report of t=
+his patch series.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Good idea!<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; For V3 update I already prepare=
+d the following:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0- reworked all revi=
+ew comments from Philippe, except:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0=C2=A0 - patch#8: q=
+uestion for the SID, whether command-line<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0override is<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; required (and how is the best w=
+ay for machine-specific cli<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0arg?) [1]<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Answered recently.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Thanks!<br>
+&gt; <br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; - added BootROM support, allows=
+ booting with only specifying<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-sd &lt;IMG&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; - added SDRAM controller driver=
+, for U-Boot SPL<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; - added Allwinner generic RTC d=
+river (for both Cubieboard and<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0OrangePi<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; PC, supports sun4i, sun6i, sun7=
+i)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; - small fixes for EMAC<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; My current TODO:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0- integrate Philips=
+ acceptance tests in the series<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0You can queue them in your series, ad=
+ding your Signed-off-by tag<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0after<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0mine. See:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"https://www.kernel.org/doc=
+/html/latest/process/submitting-patches.html#sign-your-work-the-developer-s=
+-certificate-of-origin" rel=3D"noreferrer" target=3D"_blank">https://www.ke=
+rnel.org/doc/html/latest/process/submitting-patches.html#sign-your-work-the=
+-developer-s-certificate-of-origin</a><br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0The sign-off is a simpl=
+e line at the end of the explanation<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0for the<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0patch, which certifies that you wrote=
+ it or otherwise have the<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0right to<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pass it on as an open-source patch.<b=
+r>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0See point (c).<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Ah that certainly helps. I&#39;ll read that page.<b=
+r>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0- integrate Philips=
+ work for generalizing the Allwinner<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0timer, and<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; finish it<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0We can also do that later, and get yo=
+ur work merged first.<br>
+&gt; <br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Ok that sounds very good! Agreed, lets do the timer=
+ work later.<br>
+&gt; <br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0- test and fix BSD =
+targets (NetBSD, FreeBSD) [2, 3]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0- further generaliz=
+e the series to cover very similar SoCs:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0H2+, H5<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Does anyone have more comments/=
+requests for the V3 update?<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; [1]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"https://lists.gnu.org/arch=
+ive/html/qemu-devel/2019-12/msg04049.html" rel=3D"noreferrer" target=3D"_bl=
+ank">https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg04049.html</a=
+><br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; [2] <a href=3D"https://wiki.net=
+bsd.org/ports/evbarm/allwinner/" rel=3D"noreferrer" target=3D"_blank">https=
+://wiki.netbsd.org/ports/evbarm/allwinner/</a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; [3]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"https://wiki.freebsd.org/a=
+ction/show/arm/Allwinner?action=3Dshow&amp;redirect=3DFreeBSD%2Farm%2FAllwi=
+nner" rel=3D"noreferrer" target=3D"_blank">https://wiki.freebsd.org/action/=
+show/arm/Allwinner?action=3Dshow&amp;redirect=3DFreeBSD%2Farm%2FAllwinner</=
+a><br>
+&gt; <br>
+&gt; <br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0-- <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Niek Linnenbank<br>
+&gt; <br>
+&gt; <br>
+&gt; <br>
+&gt; -- <br>
+&gt; Niek Linnenbank<br>
+&gt; <br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
 
->  =C2=A0=C2=A0 for the other boards in the source. In my opinion, it is im=
-portant=20
-> to keep that information somewhere, such that also in the future
->  =C2=A0=C2=A0 the boards can still be properly maintained. Can I / shall =
-I place a=20
-> new file like ./docs/hw/arm/orangepi.txt for that?
-
-See docs/microvm.rst which is a recent example of machine documentation,
-the obvious name is docs/orangepi.rst.
-
-Maybe refer to this file in hw/arm/orangepi.c header for completeness.
-
->  =C2=A02) Is is allowed / encouraged to provide Doxygen-style comments in=
- the=20
-> header files in include/hw/*?
->  =C2=A0=C2=A0 I see that some of the API's have that, but the boards and =
-devices=20
-> mostly are free of Doxygen-style comments.
->  =C2=A0=C2=A0 It takes some work, but I think it can really help to give =
-more=20
-> insight / background info on how things are working
->  =C2=A0=C2=A0 for the devices and boards. But if it's not preferred for Q=
-EMU, I'm=20
-> fine with that as well.
-
-Documentation is certainly welcome!
-
-There are 2 different schools over the codebase, one that document the=20
-declarations, and another that documents the implementation/definition.
-
-I personally prefer to document the headers, which is where I look when=20
-I want to consume an API.
-The implementation school says this can lead to documentation getting=20
-outdated.
-
-So if you are willing to document, I'd suggest to document your=20
-include/hw/ files.
-
-Happy new year!
-
-Phil.
-
-> On Mon, Dec 30, 2019 at 9:10 PM Niek Linnenbank=20
-> <nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>> wrote:
->=20
->=20
->=20
->     On Mon, Dec 30, 2019 at 3:56 PM Philippe Mathieu-Daud=C3=A9
->     <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
->=20
->         On 12/30/19 12:28 PM, Niek Linnenbank wrote:
->          > Hi,
->          >
->          > Here a short status report of this patch series.
->=20
->         Good idea!
->=20
->          >
->          > For V3 update I already prepared the following:
->          >=C2=A0 =C2=A0- reworked all review comments from Philippe, exce=
-pt:
->          >=C2=A0 =C2=A0=C2=A0 - patch#8: question for the SID, whether co=
-mmand-line
->         override is
->          > required (and how is the best way for machine-specific cli
->         arg?) [1]
->=20
->         Answered recently.
->=20
->     Thanks!
->=20
->=20
->          > - added BootROM support, allows booting with only specifying
->         -sd <IMG>
->          > - added SDRAM controller driver, for U-Boot SPL
->          > - added Allwinner generic RTC driver (for both Cubieboard and
->         OrangePi
->          > PC, supports sun4i, sun6i, sun7i)
->          > - small fixes for EMAC
->          >
->          > My current TODO:
->          >=C2=A0 =C2=A0- integrate Philips acceptance tests in the series
->=20
->         You can queue them in your series, adding your Signed-off-by tag
->         after
->         mine. See:
->         https://www.kernel.org/doc/html/latest/process/submitting-patches=
-.html#sign-your-work-the-developer-s-certificate-of-origin
->=20
->          =C2=A0 =C2=A0The sign-off is a simple line at the end of the exp=
-lanation
->         for the
->         patch, which certifies that you wrote it or otherwise have the
->         right to
->         pass it on as an open-source patch.
->=20
->         See point (c).
->=20
->     Ah that certainly helps. I'll read that page.
->=20
->          >=C2=A0 =C2=A0- integrate Philips work for generalizing the Allw=
-inner
->         timer, and
->          > finish it
->=20
->         We can also do that later, and get your work merged first.
->=20
->=20
->     Ok that sounds very good! Agreed, lets do the timer work later.
->=20
->=20
->          >=C2=A0 =C2=A0- test and fix BSD targets (NetBSD, FreeBSD) [2, 3=
-]
->          >=C2=A0 =C2=A0- further generalize the series to cover very simi=
-lar SoCs:
->         H2+, H5
->          >
->          > Does anyone have more comments/requests for the V3 update?
->          >
->          > [1]
->         https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg04049.ht=
-ml
->          > [2] https://wiki.netbsd.org/ports/evbarm/allwinner/
->          > [3]
->          >
->         https://wiki.freebsd.org/action/show/arm/Allwinner?action=3Dshow&=
-redirect=3DFreeBSD%2Farm%2FAllwinner
->=20
->=20
->=20
->     --=20
->     Niek Linnenbank
->=20
->=20
->=20
-> --=20
-> Niek Linnenbank
->=20
-
+--000000000000679261059b2f67d5--

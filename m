@@ -1,100 +1,101 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp19706158lff;
-        Thu, 2 Jan 2020 18:42:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyFa/fivEoWVmShoWcIES17JoMrKHlezVAyxQk0wfkplamw+mpcCJadS7mpfvzrX38pwhk2
-X-Received: by 2002:ad4:4f47:: with SMTP id eu7mr65760179qvb.69.1578019344337;
-        Thu, 02 Jan 2020 18:42:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578019344; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp19706956lff;
+        Thu, 2 Jan 2020 18:43:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwCTuuotoKAf6UWb+65pgIK/jDO5SkuTqhJ1fKk+ubgojMvfqWcJTYySneuxAKhTWx8pMvl
+X-Received: by 2002:a05:6830:128e:: with SMTP id z14mr92691252otp.184.1578019404032;
+        Thu, 02 Jan 2020 18:43:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578019404; cv=none;
         d=google.com; s=arc-20160816;
-        b=XmREZ76SLWdr8Xp1cdAADxLLlhBiXHVM5Y1WLU8XOnLGmOCvtAwjpkLqM0BkBDm2yV
-         mxK437vkfLTRoBPGSvb6KGEU5yWWBP4VhbpoNqv9JCcBjiNXm/yhwapwudhVnBKhHmu0
-         /DShkzZrzLxN95jn6ig5YaDP1QuWo1Kkm0trN5jM2ECiJ4jRLA+hNfqlBYo7bL0boffl
-         buIRxUmEFxvH622jT11Me50nvN2HGn9UpjpKwQze4bD+i/D50JDNndL3EPWFxZTj+Xb7
-         xwivaBznui3JmEQqnzCTzkBKynL1y/xtvjPZHvSmUZ8ReN6Eulxu9vmLRDYLSdfrCy33
-         WeVw==
+        b=JEe+49YToXhhwjOx6MTRb3YvCgxf8id1ACWuKv9Wol76L/jhr3KOsxzG2F/LxfFM3e
+         Py/KrfVj2JxEp0hNpncP5Uaf+9xB+9dAe88HUfhALu1xCXHFHbCGXnVXZYIRhNjjmnSV
+         Pk8vDOi1zF72SQNA4BwtEKHly8oYTV+ZWpFNkazNToUjm1H0nOOio46okCsYEVSd3+ob
+         4KYUqgxENG741eL53FbMljq1oE3dFcQs1mVOehTPrQoRq2FZHyV5pKDWApPZrl3pPW7N
+         rjHS6ov/Qisne36Y0g7i3LHpQznSeDA4Q7nYxrgC5kBEdk6PtUwMO0g6dY8auvaWF4Wg
+         1eVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=ms4NaygvNRHvsZd1PAOASNhPz2q6OnH4agnIhRCQ+z8=;
-        b=CT9XvpNzlhQNZM+VaMaIkSV+sHmUcQKSBJ1QQCk0SSEOvSIw9CZV+3n9avFQywjsf0
-         8RaaOvnA25cmYc0UBKj1bEv7dYG95Mdp7X1UjRT0gJK4Lm8hWmkjUs34h+vzxsq2PreK
-         EHn6zWB7zvs4BEubfO9vSw61vkzNj+ZUpMqC7h0Ahg5mXvBCfXGB9KO5fXhUJ6b4hvra
-         cPbZ1GJRBGW6i8Bqq5Vt8FzZCd1K5beUyJjUrFPMDXk1R327QAzT1EQAJVPPNIJSlbfH
-         +Je0dXZ8hMfRwtVihQ89Qh3p3+pOD+W1mRiDXHZpSb6AnQNW3SwUzQZ2msj2GoQ99BIY
-         xpeg==
+        bh=+7cA0d0Hyi5444bKwVYHxmPS0oGCkXfU/S2Nefqv/E4=;
+        b=nbNmgtCiwqG+zTA9U9a3PugfLoXxVJfB0JRDG9QJeHYwIApqSRCvroJRzr4bLwVZyz
+         Koc2J2qN5k1wwpfVHDxDhFA+e/UPxerwGOhPBsY+DStdg10lYTeeCsgC63RnyZ+LQAW1
+         t/J/Fa0uP68hM2SLsU4Ff6CJ3Urp6Tx2pB92488kICO2hhHr3ZlcXZ+7UmR991YDJU3c
+         EaGokO2p2J517fX+snL+CRKCYHSw+ZXpRDacq1aUHfHM154vmvVEx9FqUzD1AxV1Uu23
+         e8ouT5X0iJe1hxtJ4C9vBQBDGSys3pyflHP7U99h/HwT89sqXzOesy4T0tQsIOwxoYl4
+         wjwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UsPDxGf6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sf2Lzd2h;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si23096289qth.367.2020.01.02.18.42.24
+        by mx.google.com with ESMTPS id h17si15994711oih.53.2020.01.02.18.43.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jan 2020 18:42:24 -0800 (PST)
+        Thu, 02 Jan 2020 18:43:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UsPDxGf6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sf2Lzd2h;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48004 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1inCut-0001fF-Lm
-	for alex.bennee@linaro.org; Thu, 02 Jan 2020 21:42:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44536)
+	id 1inCvq-00030w-TP
+	for alex.bennee@linaro.org; Thu, 02 Jan 2020 21:43:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53161)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1inCuk-0001cg-SO
- for qemu-arm@nongnu.org; Thu, 02 Jan 2020 21:42:16 -0500
+ (envelope-from <alistair23@gmail.com>) id 1inCvf-0002wg-Uu
+ for qemu-arm@nongnu.org; Thu, 02 Jan 2020 21:43:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1inCuj-0003ET-1J
- for qemu-arm@nongnu.org; Thu, 02 Jan 2020 21:42:14 -0500
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:46889)
+ (envelope-from <alistair23@gmail.com>) id 1inCve-00055R-Ri
+ for qemu-arm@nongnu.org; Thu, 02 Jan 2020 21:43:11 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:34394)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1inCuc-0002yi-Nc; Thu, 02 Jan 2020 21:42:06 -0500
-Received: by mail-lj1-x244.google.com with SMTP id m26so40106230ljc.13;
- Thu, 02 Jan 2020 18:42:06 -0800 (PST)
+ id 1inCva-0004ve-Ex; Thu, 02 Jan 2020 21:43:06 -0500
+Received: by mail-lj1-x242.google.com with SMTP id z22so37753000ljg.1;
+ Thu, 02 Jan 2020 18:43:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=ms4NaygvNRHvsZd1PAOASNhPz2q6OnH4agnIhRCQ+z8=;
- b=UsPDxGf6jFi6KA4R4irJywbvMgXmKSvshWccQagpGeifxo4NIKYXZtzqpwVBaGvclH
- c3R4V+++mUVPmEEvE9DnHqe0ZBtwP8z7Ey/1S5W09PnADV6JrZ4qH9xC8mxYIdN7pDDr
- oIBfD8Z9VgLr5BIt+GNoEgqNWf1fU2gX4vz1x1t7DjWAqx4Pp4Ef1rb3eGV2XcNp2o8E
- q5ysgJluRv2aFF+VCEDtACYjSAa+W2PWGYOLSX/Dh0RH3HbQhTADvS2CyBW4HuBGET+S
- Q1DabUhLCOs0gCvRzPXVF+iqVlkf/x/5HxYe7DfbJB5TjawwVVwEOMtaSubRX0YjhrIP
- nN+g==
+ bh=+7cA0d0Hyi5444bKwVYHxmPS0oGCkXfU/S2Nefqv/E4=;
+ b=sf2Lzd2hOuHlbhMGyxYZNV5Cvzh+3KLU8lTMbdmKHMjHNh0igsRrL4XjCAk4yRP8vf
+ s/OjWrR6da7a2LVtU5DeediGnZbXeF4F/Dp76/g8PuMr8i2mtdYPg7S9M+ZZeqxXx30p
+ eUi2GAw68sH8XnxlQNcJj5TJ7E1NyzlKLM6xa91OJqT7SYkm84GvPH23zQggZ2daCl0a
+ rjrQ+GkiLEecFyt2uN+r94Qft6M0goUgtbv3NLqccuBOLRS4kibs2CdOTPxFJghJ69Xw
+ DyrwAnU6vA74NzWNMy9eMT/YARCg2dl7x2Qryev3G/6DA+nfrE7iGijvPqyBDAPm6NKl
+ XeyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=ms4NaygvNRHvsZd1PAOASNhPz2q6OnH4agnIhRCQ+z8=;
- b=QdQAGYRZiUFvEhyDutDhtv+UE1meHzmsAYP28Ppi1BRfx0L8NPXygfcV0gx3gk4Fdm
- +IjwPOTkIGb0msdvGikVLRBpEsuCiQqsdXZVQtWbpU+ZztWZ4holttCDDVqN9ihNyyhn
- BIDNnW2caWVZd+8NZENLQh/rWlKK9XMRTFpgHoDv5S4k2W7ZkqDh/ru5QnMDPhdqMD4T
- VEJWYkza/pC3FpZFiF41x7/rmfTrV5ueOlxVszYh36jZQ6M7Xd83FrXIsyYI11o8gL/r
- 4z7wmflQnDJYPe4Wa0pMq66jfSgNC12sLzFXhItOyEG8PXQLXaXmVYa8C1oXQiFo5l7k
- WmAw==
-X-Gm-Message-State: APjAAAXAJzKofh693LcOtep1XF9/sWxkfBkdDWpMAPavXdE692FPZ5iF
- s/QkQVum2vwW5v1GQywbc1ms1QhDiHdGuhSQsCU=
-X-Received: by 2002:a2e:7505:: with SMTP id q5mr38612705ljc.7.1578019325458;
- Thu, 02 Jan 2020 18:42:05 -0800 (PST)
+ bh=+7cA0d0Hyi5444bKwVYHxmPS0oGCkXfU/S2Nefqv/E4=;
+ b=e3W2egTjOhGsXM1pUhCn5zHC0G8DFn+aDLT8iYgW37ho0kjebaqPIORQYh4n2H/9Qt
+ UjVGzpcCqMZ0wCBhItWvSyEOlovucNKb9+Dr3XnOA0TUI3hmWjQK+tYn/WoazkgFaKv9
+ 4F3NWm6E71Tn88Y0x6oNwn3C3Zxj7IO7cL7Xnf0ID2znRcpRtb7PUvGYrO4BT8NzWGY+
+ JEuPJmTQhGEx2F20sBSkreyvvcVB1BRg6FTnxB2WUtsCcsJEpJMmfeqP1cm6bpn8EXQt
+ oGFCoDR6DailBtZq8GMlzwat4XsSs95093XKALiTyrK5FI27uQXTIgnZ9SVEvB1wZdFi
+ dinA==
+X-Gm-Message-State: APjAAAWIpQUv51hk5TuVNyNqdpPVJJsJNRj+xCsD6OJyXwIYNzj4k2zX
+ D4dOnvPesJIVaFvjIDOr5M8xF/ptCbn8mIAJiVQ=
+X-Received: by 2002:a2e:96c6:: with SMTP id d6mr20605277ljj.4.1578019385388;
+ Thu, 02 Jan 2020 18:43:05 -0800 (PST)
 MIME-Version: 1.0
 References: <20200101112303.20724-1-philmd@redhat.com>
- <20200101112303.20724-3-philmd@redhat.com>
-In-Reply-To: <20200101112303.20724-3-philmd@redhat.com>
+ <20200101112303.20724-5-philmd@redhat.com>
+In-Reply-To: <20200101112303.20724-5-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 Jan 2020 18:41:38 -0800
-Message-ID: <CAKmqyKNPyEsiG910oQn3ySNbuFprfBd8p4idEdn=hAXmnoBOeA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/4] tcg: Search includes in the parent source directory
+Date: Thu, 2 Jan 2020 18:42:38 -0800
+Message-ID: <CAKmqyKPGWZh1a6vQk2TF=crN2yK7ZxpAvre55wx_-cuOMLrp9w@mail.gmail.com>
+Subject: Re: [PATCH v2 4/4] configure: Remove tcg/ from the preprocessor
+ include search list
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::244
+X-Received-From: 2a00:1450:4864:20::242
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -129,21 +130,14 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C4ZFA2tFUrFz
+X-TUID: yOa1ON9RW3ho
 
-On Wed, Jan 1, 2020 at 3:24 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+On Wed, Jan 1, 2020 at 3:25 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
 om> wrote:
 >
-> All the *.inc.c files included by tcg/$TARGET/tcg-target.inc.c
-> are in tcg/, their parent directory. To simplify the preprocessor
-> search path, include the relative parent path: '..'.
->
-> Patch created mechanically by running:
->
->   $ for x in tcg-pool.inc.c tcg-ldst.inc.c; do \
->     sed -i "s,#include \"$x\",#include \"../$x\"," \
->       $(git grep -l "#include \"$x\""); \
->     done
+> All tcg includes are relative to the repository root directory,
+> we can safely remove the tcg/ directory from the include search
+> path list.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
@@ -152,181 +146,22 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  tcg/aarch64/tcg-target.inc.c | 4 ++--
->  tcg/arm/tcg-target.inc.c     | 4 ++--
->  tcg/i386/tcg-target.inc.c    | 4 ++--
->  tcg/mips/tcg-target.inc.c    | 2 +-
->  tcg/ppc/tcg-target.inc.c     | 4 ++--
->  tcg/riscv/tcg-target.inc.c   | 4 ++--
->  tcg/s390/tcg-target.inc.c    | 4 ++--
->  tcg/sparc/tcg-target.inc.c   | 2 +-
->  8 files changed, 14 insertions(+), 14 deletions(-)
+>  configure | 1 -
+>  1 file changed, 1 deletion(-)
 >
-> diff --git a/tcg/aarch64/tcg-target.inc.c b/tcg/aarch64/tcg-target.inc.c
-> index 3f921015d3..843fd0ca69 100644
-> --- a/tcg/aarch64/tcg-target.inc.c
-> +++ b/tcg/aarch64/tcg-target.inc.c
-> @@ -10,7 +10,7 @@
->   * See the COPYING file in the top-level directory for details.
->   */
+> diff --git a/configure b/configure
+> index 940bf9e87a..74dad08580 100755
+> --- a/configure
+> +++ b/configure
+> @@ -7436,7 +7436,6 @@ elif test "$ARCH" =3D "riscv32" || test "$ARCH" =3D=
+ "riscv64" ; then
+>  else
+>    QEMU_INCLUDES=3D"-iquote \$(SRC_PATH)/tcg/\$(ARCH) $QEMU_INCLUDES"
+>  fi
+> -QEMU_INCLUDES=3D"-iquote \$(SRC_PATH)/tcg $QEMU_INCLUDES"
 >
-> -#include "tcg-pool.inc.c"
-> +#include "../tcg-pool.inc.c"
->  #include "qemu/bitops.h"
->
->  /* We're going to re-use TCGType in setting of the SF bit, which control=
-s
-> @@ -1541,7 +1541,7 @@ static void tcg_out_cltz(TCGContext *s, TCGType ext=
-, TCGReg d,
->  }
->
->  #ifdef CONFIG_SOFTMMU
-> -#include "tcg-ldst.inc.c"
-> +#include "../tcg-ldst.inc.c"
->
->  /* helper signature: helper_ret_ld_mmu(CPUState *env, target_ulong addr,
->   *                                     TCGMemOpIdx oi, uintptr_t ra)
-> diff --git a/tcg/arm/tcg-target.inc.c b/tcg/arm/tcg-target.inc.c
-> index 94d80d79d1..fffb6611e2 100644
-> --- a/tcg/arm/tcg-target.inc.c
-> +++ b/tcg/arm/tcg-target.inc.c
-> @@ -23,7 +23,7 @@
->   */
->
->  #include "elf.h"
-> -#include "tcg-pool.inc.c"
-> +#include "../tcg-pool.inc.c"
->
->  int arm_arch =3D __ARM_ARCH;
->
-> @@ -1131,7 +1131,7 @@ static TCGCond tcg_out_cmp2(TCGContext *s, const TC=
-GArg *args,
->  }
->
->  #ifdef CONFIG_SOFTMMU
-> -#include "tcg-ldst.inc.c"
-> +#include "../tcg-ldst.inc.c"
->
->  /* helper signature: helper_ret_ld_mmu(CPUState *env, target_ulong addr,
->   *                                     int mmu_idx, uintptr_t ra)
-> diff --git a/tcg/i386/tcg-target.inc.c b/tcg/i386/tcg-target.inc.c
-> index 9d8ed974e0..cdedcb2b25 100644
-> --- a/tcg/i386/tcg-target.inc.c
-> +++ b/tcg/i386/tcg-target.inc.c
-> @@ -22,7 +22,7 @@
->   * THE SOFTWARE.
->   */
->
-> -#include "tcg-pool.inc.c"
-> +#include "../tcg-pool.inc.c"
->
->  #ifdef CONFIG_DEBUG_TCG
->  static const char * const tcg_target_reg_names[TCG_TARGET_NB_REGS] =3D {
-> @@ -1647,7 +1647,7 @@ static void tcg_out_nopn(TCGContext *s, int n)
->  }
->
->  #if defined(CONFIG_SOFTMMU)
-> -#include "tcg-ldst.inc.c"
-> +#include "../tcg-ldst.inc.c"
->
->  /* helper signature: helper_ret_ld_mmu(CPUState *env, target_ulong addr,
->   *                                     int mmu_idx, uintptr_t ra)
-> diff --git a/tcg/mips/tcg-target.inc.c b/tcg/mips/tcg-target.inc.c
-> index 5442167045..1da663ce84 100644
-> --- a/tcg/mips/tcg-target.inc.c
-> +++ b/tcg/mips/tcg-target.inc.c
-> @@ -1107,7 +1107,7 @@ static void tcg_out_call(TCGContext *s, tcg_insn_un=
-it *arg)
->  }
->
->  #if defined(CONFIG_SOFTMMU)
-> -#include "tcg-ldst.inc.c"
-> +#include "../tcg-ldst.inc.c"
->
->  static void * const qemu_ld_helpers[16] =3D {
->      [MO_UB]   =3D helper_ret_ldub_mmu,
-> diff --git a/tcg/ppc/tcg-target.inc.c b/tcg/ppc/tcg-target.inc.c
-> index d308d69aba..ee1f9227c1 100644
-> --- a/tcg/ppc/tcg-target.inc.c
-> +++ b/tcg/ppc/tcg-target.inc.c
-> @@ -23,7 +23,7 @@
->   */
->
->  #include "elf.h"
-> -#include "tcg-pool.inc.c"
-> +#include "../tcg-pool.inc.c"
->
->  #if defined _CALL_DARWIN || defined __APPLE__
->  #define TCG_TARGET_CALL_DARWIN
-> @@ -1845,7 +1845,7 @@ static const uint32_t qemu_exts_opc[4] =3D {
->  };
->
->  #if defined (CONFIG_SOFTMMU)
-> -#include "tcg-ldst.inc.c"
-> +#include "../tcg-ldst.inc.c"
->
->  /* helper signature: helper_ld_mmu(CPUState *env, target_ulong addr,
->   *                                 int mmu_idx, uintptr_t ra)
-> diff --git a/tcg/riscv/tcg-target.inc.c b/tcg/riscv/tcg-target.inc.c
-> index 7018509693..2bc0ba71f2 100644
-> --- a/tcg/riscv/tcg-target.inc.c
-> +++ b/tcg/riscv/tcg-target.inc.c
-> @@ -27,7 +27,7 @@
->   * THE SOFTWARE.
->   */
->
-> -#include "tcg-pool.inc.c"
-> +#include "../tcg-pool.inc.c"
->
->  #ifdef CONFIG_DEBUG_TCG
->  static const char * const tcg_target_reg_names[TCG_TARGET_NB_REGS] =3D {
-> @@ -921,7 +921,7 @@ static void tcg_out_mb(TCGContext *s, TCGArg a0)
->   */
->
->  #if defined(CONFIG_SOFTMMU)
-> -#include "tcg-ldst.inc.c"
-> +#include "../tcg-ldst.inc.c"
->
->  /* helper signature: helper_ret_ld_mmu(CPUState *env, target_ulong addr,
->   *                                     TCGMemOpIdx oi, uintptr_t ra)
-> diff --git a/tcg/s390/tcg-target.inc.c b/tcg/s390/tcg-target.inc.c
-> index 8aaa4cebe8..b07e9ff7d6 100644
-> --- a/tcg/s390/tcg-target.inc.c
-> +++ b/tcg/s390/tcg-target.inc.c
-> @@ -29,7 +29,7 @@
->  #error "unsupported code generation mode"
->  #endif
->
-> -#include "tcg-pool.inc.c"
-> +#include "../tcg-pool.inc.c"
->  #include "elf.h"
->
->  /* ??? The translation blocks produced by TCG are generally small enough=
- to
-> @@ -1536,7 +1536,7 @@ static void tcg_out_qemu_st_direct(TCGContext *s, M=
-emOp opc, TCGReg data,
->  }
->
->  #if defined(CONFIG_SOFTMMU)
-> -#include "tcg-ldst.inc.c"
-> +#include "../tcg-ldst.inc.c"
->
->  /* We're expecting to use a 20-bit negative offset on the tlb memory ops=
-.  */
->  QEMU_BUILD_BUG_ON(TLB_MASK_TABLE_OFS(0) > 0);
-> diff --git a/tcg/sparc/tcg-target.inc.c b/tcg/sparc/tcg-target.inc.c
-> index d7986cda5c..65fddb310d 100644
-> --- a/tcg/sparc/tcg-target.inc.c
-> +++ b/tcg/sparc/tcg-target.inc.c
-> @@ -22,7 +22,7 @@
->   * THE SOFTWARE.
->   */
->
-> -#include "tcg-pool.inc.c"
-> +#include "../tcg-pool.inc.c"
->
->  #ifdef CONFIG_DEBUG_TCG
->  static const char * const tcg_target_reg_names[TCG_TARGET_NB_REGS] =3D {
+>  echo "TOOLS=3D$tools" >> $config_host_mak
+>  echo "ROMS=3D$roms" >> $config_host_mak
 > --
 > 2.21.0
 >

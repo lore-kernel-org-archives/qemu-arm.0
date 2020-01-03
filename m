@@ -1,199 +1,327 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp19707214lff;
-        Thu, 2 Jan 2020 18:43:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqygEokpI2oUXgukijAZAGlxexRSYka2AB72Ukm8cL+ABs6iU5cYslwafZGqhdeqX8yElIiZ
-X-Received: by 2002:ac8:4515:: with SMTP id q21mr60286478qtn.376.1578019428343;
-        Thu, 02 Jan 2020 18:43:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578019428; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp20244797lff;
+        Fri, 3 Jan 2020 05:32:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxIrKzNmQGFJFdDIK8mSU3vn9VOITK51XLXv031uc8h3aQx1JVLE080mrK7+E0axlwVNP6r
+X-Received: by 2002:ac8:3751:: with SMTP id p17mr65353492qtb.9.1578058326471;
+        Fri, 03 Jan 2020 05:32:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578058326; cv=none;
         d=google.com; s=arc-20160816;
-        b=qBssPUj8jpAPQ+PvtgfmgTzThyxxIs1jHG33OSDKVQZpbO4apFHwt3NgkZIvaeI6ZA
-         XmZ3OvFlxNYh5Xvb/ifPHgZRkGwttdAyhnk2uQ+bny6sIoR4cuilkN4W5QkdrzzTks9n
-         xCWdg00ErT8rJ+1qskNZxGNNGOmJ2xWe/BVlSGfLaF8vfO4crc7EhvLtv14/2KA5SZJP
-         EJ4DkWtmR9/9nANAN9+hD4HfX4sH+8aK/DcYbiKVR7JyrG6//x7m9AyE0Uf+UTg3QZta
-         RBt4jLZmq+JAz3gmo4psEOQHqg3clmTwz5IJnEnrmyQaNwV1FPuyfOqbsomc7Qwyogoc
-         FWXA==
+        b=Z155uAvEcFnFaotNqPOTsQYC2iv3xg8olcRTyeAJI61Q5sCP+HgNi/3ovkXtspvl/f
+         NjHQGoL3Oc86ag5tMG6MIzkC4vgb7gaESUYi/jlsl3zY6fs+sUNFm2GkCET16bXv6JSF
+         jK6eKjukUR/SesG5ogBfY3eXsDKbWH70HYu2LmWr5xvoDcxGsUxazs8zMVmX9u+m3wwd
+         Np/+6FjtjeH/IJCTRmUaln/FuwvxzX9dkBjom2lHRSE7cZGhRI3iGqOwPJRyx+KCgOTQ
+         d9rKIprvMEegbvsA14DYbqhwn0Y1I3fsJHMSFsREDVi7ud5wr2s1L0tnSKmedNnnY17Q
+         JrJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=uE7iq03z6c6M4Osq9S5c6hdyiQ+NoJTxkaCnPW5cj6U=;
-        b=lLyNq8DkG7qARRRFQ+XmCmoOHy/VjKNGKHB1codpgDXepHM4lvgeB3q4qQycUNkuBB
-         X1tle6l3eisDBvWDDn4zeDinID5m7aOufyYv2wFzS7l/6QxoNJmG/x8tXBEWjhKiFLQf
-         cQfawsFGA0nGtLPkZ1GIQq/oNbMKNxXFDfVLmJ9eO7EA3IeohaIPOM4Ae5asoxctgOV+
-         afjR8u0CB6MzFb98q2dEqL75ycHucnSr2wQwQeMSUZ4rRal9l6UAViHDHl2AW3Sz2EZf
-         EB5PMCHrOZuf4eu//MSo6iAKuuaBl9/dA5EuPZMLbQbiAsyxd8+Iy3FjqlzLFlEZ2u6t
-         nfAQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=NRET7Eiz2b8xzuJI1K56VUGnMp7jwIBOK4cHI3GKR+c=;
+        b=pPoR2E+a/9Z2efRn1wGjI200+1mzBPtmcXgBg3h9evX84j/Dgp0BLzvKdXKBXtta7x
+         Y7TugmFVB4WY6tQcGhR0yMv3ci9wH8DCyHi3g1fXNfd6EtkV6oX7tOckj9ntpj2L82NT
+         DpkcWm8z9iFZ8aBL7zoQpI2n6FcHVqfNmu1fF4LstuYS+LjInselSF15gAEkkuDRpNw4
+         2DrBxA5IGS1jxn/RENrPAGXgQov/K8Jee9UIhhQD5hC48T40cIO5cIaDTKpemk9DPFKE
+         3XeC02z9Me7+zA857/6hqnY6L+xDibOMVsKQFlR0wutWaiNV4LH3xbHjii6/mw+whF4T
+         Vp/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ceiMdCCF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aRhwQ4wS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b11si23062558qvp.37.2020.01.02.18.43.48
+        by mx.google.com with ESMTPS id t61si22701419qtd.360.2020.01.03.05.32.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jan 2020 18:43:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Jan 2020 05:32:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ceiMdCCF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48030 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aRhwQ4wS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52326 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1inCwF-0003Ev-M5
-	for alex.bennee@linaro.org; Thu, 02 Jan 2020 21:43:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48038)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1inN3d-0001gH-Og
+	for alex.bennee@linaro.org; Fri, 03 Jan 2020 08:32:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51611)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1inCv8-00026O-IQ
- for qemu-devel@nongnu.org; Thu, 02 Jan 2020 21:42:39 -0500
+ (envelope-from <wainersm@redhat.com>) id 1inN2x-0000bm-IE
+ for qemu-arm@nongnu.org; Fri, 03 Jan 2020 08:31:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1inCv7-000409-6l
- for qemu-devel@nongnu.org; Thu, 02 Jan 2020 21:42:38 -0500
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:34390)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1inCv6-0003xf-UN; Thu, 02 Jan 2020 21:42:37 -0500
-Received: by mail-lj1-x242.google.com with SMTP id z22so37752328ljg.1;
- Thu, 02 Jan 2020 18:42:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=uE7iq03z6c6M4Osq9S5c6hdyiQ+NoJTxkaCnPW5cj6U=;
- b=ceiMdCCF8ANz5LvlKA51hDTEK+H7IT4uVVy96PojnOXHMyV65AQuUYZqlu0Gi/ZC2y
- HCk6J9tIyGTRxHliYsyPh8ZVEXdTq/pPMAPNr47zo/nUl8YL5Ef9lKvOszkX6LnwPi1X
- OEyPhWnozMyyNTRMyVzcpUhIWrX2w0LG7UFjPxPdcFlKi3jPVBrTx+OHCdc2hTnlQ/s8
- ZtpYreIAO2zY5lDc2FMkRwMtpmSqNOwcOvMcl5T4wIpGwRbKN8CW/rJ1KEAXwd6ZolpD
- gY5yylh5KQBDDxgQ8A/6G984DuOCw2VMtyle9b/9yJi0BOy5SbpCNolM7aXgCvNE2Rov
- KeXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=uE7iq03z6c6M4Osq9S5c6hdyiQ+NoJTxkaCnPW5cj6U=;
- b=Ct81ADNW9iTwJqKyIA1AUDsOaGI5ZFwjacbYH+/C4FhCJmmXD+ttYfkhwNz2rvXSw+
- 4toVZzjloGFmi5JdC0YlttsRU0WkwIODVtjfLYgBFPSqhyzbfgllgmRMHxiGshP2u8oR
- G49lIK4i6/9MI4atW+DqREwoYWYIrolRiYjqE6a521V0MnC2qXM5snjIKcFzUMry0IrR
- gLnK+fz7MV0vnZ+SBgnKuvVktiwqsIBY4Nk5YTSVa3ZvZeBzrwm+l7T2cTO2Xdq2aWam
- W3EbaMHv3h2H7ZclYMbmiRUIjBfAkhwkEzwXaouYUUIgIZv9Giz4vHhBxf0vsKL5agLk
- izbQ==
-X-Gm-Message-State: APjAAAUZQdHk+ucjWn7qCJ4y7Qz65ZrANh8MURsjwWGz8eq+nVx1sA4m
- yHQSZT81akVWDaOWBwPE/vxzV0vI8EiDmrpgjF4=
-X-Received: by 2002:a2e:3608:: with SMTP id d8mr49686247lja.152.1578019355649; 
- Thu, 02 Jan 2020 18:42:35 -0800 (PST)
+ (envelope-from <wainersm@redhat.com>) id 1inN2u-00023o-Hr
+ for qemu-arm@nongnu.org; Fri, 03 Jan 2020 08:31:22 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:34726
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1inN2u-0001we-Bv
+ for qemu-arm@nongnu.org; Fri, 03 Jan 2020 08:31:20 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578058279;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NRET7Eiz2b8xzuJI1K56VUGnMp7jwIBOK4cHI3GKR+c=;
+ b=aRhwQ4wSIPTDa/z+JGapcwMbSWjR8eziJmZaAZQZMPh/vrPYuYGGI2vUuoS8oZp4Hr+aj6
+ B+4UsJnrLgO+fpCt0848IcacAfSVYZh/IPnRtVJCUf4/iF22zL3GDwnIHndwKP9GpuGwCI
+ JFKxB8qus5HtNBZmXu24M5GyaJEs4zg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-307-Gv15o-zsMkiRnirkqNZAng-1; Fri, 03 Jan 2020 08:31:16 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 301C91883521;
+ Fri,  3 Jan 2020 13:31:15 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-18.gru2.redhat.com
+ [10.97.116.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9D4305D9C9;
+ Fri,  3 Jan 2020 13:31:09 +0000 (UTC)
+Subject: Re: [PATCH 1/6] tests/boot_linux_console: Add initrd test for the
+ CubieBoard
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20191230110953.25496-1-f4bug@amsat.org>
+ <20191230110953.25496-2-f4bug@amsat.org>
+ <31147d48-2f31-9fce-b8a4-1a270f114a45@redhat.com>
+ <d7abcb92-4405-2ba8-b524-281d5913f980@redhat.com>
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-ID: <6453ffc1-4bf6-4501-016d-ef403f742bd6@redhat.com>
+Date: Fri, 3 Jan 2020 11:31:08 -0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20200101112303.20724-1-philmd@redhat.com>
- <20200101112303.20724-4-philmd@redhat.com>
-In-Reply-To: <20200101112303.20724-4-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 Jan 2020 18:42:08 -0800
-Message-ID: <CAKmqyKPvVOWw1_YzhButrc+_DD2mJoAszEE7mWkqs37SGutHvg@mail.gmail.com>
-Subject: Re: [PATCH v2 3/4] tcg: Move TCG headers to include/tcg/
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <d7abcb92-4405-2ba8-b524-281d5913f980@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: Gv15o-zsMkiRnirkqNZAng-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::242
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
- "open list:New World" <qemu-ppc@nongnu.org>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, Riku Voipio <riku.voipio@iki.fi>,
- qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Stafford Horne <shorne@gmail.com>, Richard Henderson <rth@twiddle.net>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Claudio Fontana <claudio.fontana@huawei.com>,
- Laurent Vivier <laurent@vivier.eu>, Michael Walle <michael@walle.cc>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uz6DAUNetpPq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Willian Rampazzo <wrampazz@redhat.com>, Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: x2tBatiqZbZ1
 
-On Wed, Jan 1, 2020 at 3:27 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+On 12/31/19 9:41 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 12/30/19 9:52 PM, Wainer dos Santos Moschetta wrote:
+>> On 12/30/19 9:09 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> This test boots a Linux kernel on a CubieBoard and verify
+>>> the serial output is working.
+>>>
+>>> The kernel image and DeviceTree blob are built by the Armbian
+>>> project (based on Debian):
+>>> https://docs.armbian.com/Developer-Guide_Build-Preparation/
+>>>
+>>> The cpio image used comes from the linux-build-test project:
+>>> https://github.com/groeck/linux-build-test
+>>>
+>>> If ARM is a target being built, "make check-acceptance" will
+>>> automatically include this test by the use of the "arch:arm" tags.
+>>>
+>>> Alternatively, this test can be run using:
+>>>
+>>> =C2=A0=C2=A0 $ avocado --show=3Dconsole run -t machine:cubieboard=20
+>>> tests/acceptance/boot_linux_console.py
+>>> =C2=A0=C2=A0 console: Uncompressing Linux... done, booting the kernel.
+>>> =C2=A0=C2=A0 console: Booting Linux on physical CPU 0x0
+>>> =C2=A0=C2=A0 console: Linux version 4.20.7-sunxi (root@armbian.com) (gc=
+c=20
+>>> version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8=20
+>>> 09:02:10 CET 2019
+>>> =C2=A0=C2=A0 console: CPU: ARMv7 Processor [410fc080] revision 0 (ARMv7=
+),=20
+>>> cr=3D50c5387d
+>>> =C2=A0=C2=A0 console: CPU: PIPT / VIPT nonaliasing data cache, VIPT=20
+>>> nonaliasing instruction cache
+>>> =C2=A0=C2=A0 console: OF: fdt: Machine model: Cubietech Cubieboard
+>>> =C2=A0=C2=A0 [...]
+>>> =C2=A0=C2=A0 console: Boot successful.
+>>> =C2=A0=C2=A0 console: cat /proc/cpuinfo
+>>> =C2=A0=C2=A0 console: / # cat /proc/cpuinfo
+>>> =C2=A0=C2=A0 console: processor=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 0
+>>> =C2=A0=C2=A0 console: model name=C2=A0=C2=A0=C2=A0=C2=A0 : ARMv7 Proces=
+sor rev 0 (v7l)
+>>> =C2=A0=C2=A0 console: BogoMIPS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 83=
+2.51
+>>> =C2=A0=C2=A0 [...]
+>>> =C2=A0=C2=A0 console: Hardware=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : Al=
+lwinner sun4i/sun5i Families
+>>> =C2=A0=C2=A0 console: Revision=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 00=
+00
+>>> =C2=A0=C2=A0 console: Serial=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 : 0000000000000000
+>>> =C2=A0=C2=A0 console: cat /proc/iomem
+>>> =C2=A0=C2=A0 console: / # cat /proc/iomem
+>>> =C2=A0=C2=A0 console: 01c00000-01c0002f : system-control@1c00000
+>>> =C2=A0=C2=A0 console: 01c02000-01c02fff : dma-controller@1c02000
+>>> =C2=A0=C2=A0 console: 01c05000-01c05fff : spi@1c05000
+>>> =C2=A0=C2=A0 console: 01c0b080-01c0b093 : mdio@1c0b080
+>>> =C2=A0=C2=A0 console: 01c0c000-01c0cfff : lcd-controller@1c0c000
+>>> =C2=A0=C2=A0 console: 01c0d000-01c0dfff : lcd-controller@1c0d000
+>>> =C2=A0=C2=A0 console: 01c0f000-01c0ffff : mmc@1c0f000
+>>> =C2=A0=C2=A0 [...]
+>>> =C2=A0=C2=A0 PASS (54.35 s)
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>>> ---
+>>> =C2=A0 tests/acceptance/boot_linux_console.py | 41=20
+>>> ++++++++++++++++++++++++++
+>>> =C2=A0 1 file changed, 41 insertions(+)
+>>>
+>>> diff --git a/tests/acceptance/boot_linux_console.py=20
+>>> b/tests/acceptance/boot_linux_console.py
+>>> index 9c6aa2040a..4643f60e37 100644
+>>> --- a/tests/acceptance/boot_linux_console.py
+>>> +++ b/tests/acceptance/boot_linux_console.py
+>>> @@ -400,6 +400,47 @@ class BootLinuxConsole(Test):
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.wait_for_co=
+nsole_pattern('Boot successful.')
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 # TODO user comm=
+and, for now the uart is stuck
+>>> +=C2=A0=C2=A0=C2=A0 def test_arm_cubieboard_initrd(self):
+>>
+>> Unless you have two tests, one with and without initrd (not the case=20
+>> though) the suffix '_initrd' is useless. So I suggest to remove it.
+>
+> The next patch adds a SD card test:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg667628.html
+>
+> If one developer has other tests in progress, but one done, I think it=20
+> might sense to add the full test name when the first patch is merged,=20
+> so next tests don't have to modify the first test name.
 
-Alistair
 
-> ---
->  {tcg =3D> include/tcg}/tcg-gvec-desc.h | 0
->  {tcg =3D> include/tcg}/tcg-mo.h        | 0
->  {tcg =3D> include/tcg}/tcg-op-gvec.h   | 0
->  {tcg =3D> include/tcg}/tcg-op.h        | 0
->  {tcg =3D> include/tcg}/tcg-opc.h       | 0
->  {tcg =3D> include/tcg}/tcg.h           | 0
->  MAINTAINERS                          | 1 +
->  7 files changed, 1 insertion(+)
->  rename {tcg =3D> include/tcg}/tcg-gvec-desc.h (100%)
->  rename {tcg =3D> include/tcg}/tcg-mo.h (100%)
->  rename {tcg =3D> include/tcg}/tcg-op-gvec.h (100%)
->  rename {tcg =3D> include/tcg}/tcg-op.h (100%)
->  rename {tcg =3D> include/tcg}/tcg-opc.h (100%)
->  rename {tcg =3D> include/tcg}/tcg.h (100%)
+That's right. Disregard my comment.
+
+- Wainer
+
+
 >
-> diff --git a/tcg/tcg-gvec-desc.h b/include/tcg/tcg-gvec-desc.h
-> similarity index 100%
-> rename from tcg/tcg-gvec-desc.h
-> rename to include/tcg/tcg-gvec-desc.h
-> diff --git a/tcg/tcg-mo.h b/include/tcg/tcg-mo.h
-> similarity index 100%
-> rename from tcg/tcg-mo.h
-> rename to include/tcg/tcg-mo.h
-> diff --git a/tcg/tcg-op-gvec.h b/include/tcg/tcg-op-gvec.h
-> similarity index 100%
-> rename from tcg/tcg-op-gvec.h
-> rename to include/tcg/tcg-op-gvec.h
-> diff --git a/tcg/tcg-op.h b/include/tcg/tcg-op.h
-> similarity index 100%
-> rename from tcg/tcg-op.h
-> rename to include/tcg/tcg-op.h
-> diff --git a/tcg/tcg-opc.h b/include/tcg/tcg-opc.h
-> similarity index 100%
-> rename from tcg/tcg-opc.h
-> rename to include/tcg/tcg-opc.h
-> diff --git a/tcg/tcg.h b/include/tcg/tcg.h
-> similarity index 100%
-> rename from tcg/tcg.h
-> rename to include/tcg/tcg.h
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 387879aebc..02e1490895 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2374,6 +2374,7 @@ Common TCG code
->  M: Richard Henderson <rth@twiddle.net>
->  S: Maintained
->  F: tcg/
-> +F: include/tcg/
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Darch:arm
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dmachine:cu=
+bieboard
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_url =3D ('https://apt.a=
+rmbian.com/pool/main/l/'
+>>> + 'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_hash =3D '1334c29c44d98=
+4ffa05ed10de8c3361f33d78315'
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_path =3D self.fetch_ass=
+et(deb_url, asset_hash=3Ddeb_hash)
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_path =3D self.extrac=
+t_from_deb(deb_path,
+>>> + '/boot/vmlinuz-4.20.7-sunxi')
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dtb_path =3D=20
+>>> '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dtb_path =3D self.extract_f=
+rom_deb(deb_path, dtb_path)
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_url =3D=20
+>>> ('https://github.com/groeck/linux-build-test/raw/'
+>>> + '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'arm/rootfs-armv5=
+.cpio.gz')
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_hash =3D '2b50f1873e=
+113523967806f4da2afe385462ff9b'
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_path_gz =3D self.fet=
+ch_asset(initrd_url,=20
+>>> asset_hash=3Dinitrd_hash)
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_path =3D os.path.joi=
+n(self.workdir, 'rootfs.cpio')
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 archive.gzip_uncompress(ini=
+trd_path_gz, initrd_path)
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.set_console()
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_command_line =3D (se=
+lf.KERNEL_COMMON_COMMAND_LINE +
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'console=3DttyS0,115200 '
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'usbcore.nousb '
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'panic=3D-1 noreboot')
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.add_args('-kernel',=
+ kernel_path,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ '-dtb', dtb_path,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ '-initrd', initrd_path,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ '-append', kernel_command_line,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ '-no-reboot')
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.launch()
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.wait_for_console_patte=
+rn('Boot successful.')
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_p=
+attern(self, 'cat /proc/cpuinfo',
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'Allwinner=
+=20
+>>> sun4i/sun5i')
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_p=
+attern(self, 'cat /proc/iomem',
+>>> + 'system-control@1c00000')
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_p=
+attern(self, 'reboot',
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'reboot: Re=
+starting=20
+>>> system')
+>>
+>>
+>> I ran this test case with success, so:
+>>
+>> Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
 >
->  TCG Plugins
->  M: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> --
-> 2.21.0
+> Thanks Wainer!
 >
+>>
+>> With the comment regarding the _initrd suffix:
+>>
+>> Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+>>
+>>
+>>> +
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 def test_s390x_s390_ccw_virtio(self):
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=
+=3Darch:s390x
+>>
+>>
 >
+

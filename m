@@ -1,327 +1,162 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp20244797lff;
-        Fri, 3 Jan 2020 05:32:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxIrKzNmQGFJFdDIK8mSU3vn9VOITK51XLXv031uc8h3aQx1JVLE080mrK7+E0axlwVNP6r
-X-Received: by 2002:ac8:3751:: with SMTP id p17mr65353492qtb.9.1578058326471;
-        Fri, 03 Jan 2020 05:32:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578058326; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp20532187lff;
+        Fri, 3 Jan 2020 10:10:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxsriYtE1JlJglUVMafL6KryC/a/hWL26BSmJqKgSjfvkQ0gUHHpCzInbNDSka0Tlpb2c3w
+X-Received: by 2002:a9d:5786:: with SMTP id q6mr79700598oth.164.1578074999956;
+        Fri, 03 Jan 2020 10:09:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578074999; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z155uAvEcFnFaotNqPOTsQYC2iv3xg8olcRTyeAJI61Q5sCP+HgNi/3ovkXtspvl/f
-         NjHQGoL3Oc86ag5tMG6MIzkC4vgb7gaESUYi/jlsl3zY6fs+sUNFm2GkCET16bXv6JSF
-         jK6eKjukUR/SesG5ogBfY3eXsDKbWH70HYu2LmWr5xvoDcxGsUxazs8zMVmX9u+m3wwd
-         Np/+6FjtjeH/IJCTRmUaln/FuwvxzX9dkBjom2lHRSE7cZGhRI3iGqOwPJRyx+KCgOTQ
-         d9rKIprvMEegbvsA14DYbqhwn0Y1I3fsJHMSFsREDVi7ud5wr2s1L0tnSKmedNnnY17Q
-         JrJA==
+        b=bHywU6cI4cAcWfgqnsvSrvEO55lxTAdOIhzza7pqHlobywwxQ+3VaIRrAXqV0QuhPB
+         PpVMgfKQ0Ow5EHjxlT6/R9JrjQ6rrJBVwZu6PIuWKnsg7QAWV3tNhugpp9msA+xd7jLr
+         agEf8AKNspJICZp0L/PsCfUZPNmTgZ665CRsA3yIqlFWPEIQQ1UD5aobhF5gqAy6Rpuf
+         uRo08pkN03i0B4qf00u/j8YmjdksnGpdSOB1j/iGKG0DLncnXphFhwKFIdeOqNZBbMe9
+         /n2j2uL0uXjq0699bQReEQTfV5GqoTRWuPYMdCRP6BnAeHss7TaFNrA95BOKT+DUrIrU
+         ojog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=NRET7Eiz2b8xzuJI1K56VUGnMp7jwIBOK4cHI3GKR+c=;
-        b=pPoR2E+a/9Z2efRn1wGjI200+1mzBPtmcXgBg3h9evX84j/Dgp0BLzvKdXKBXtta7x
-         Y7TugmFVB4WY6tQcGhR0yMv3ci9wH8DCyHi3g1fXNfd6EtkV6oX7tOckj9ntpj2L82NT
-         DpkcWm8z9iFZ8aBL7zoQpI2n6FcHVqfNmu1fF4LstuYS+LjInselSF15gAEkkuDRpNw4
-         2DrBxA5IGS1jxn/RENrPAGXgQov/K8Jee9UIhhQD5hC48T40cIO5cIaDTKpemk9DPFKE
-         3XeC02z9Me7+zA857/6hqnY6L+xDibOMVsKQFlR0wutWaiNV4LH3xbHjii6/mw+whF4T
-         Vp/Q==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :organization:references:in-reply-to:message-id:subject:cc:to:from
+         :date;
+        bh=rK6MmdqpOu/zk0/hHKO4vPP80AhtGpuCBISaLYVe3iM=;
+        b=Ul/ANd78LwBHiJFKzSL4kjhzhPBDdFatuS0Do/RrUeJrrXE3OVz/ZQIFib52HMOEmZ
+         A1m16hZfn60cv8/qKJkFazWmqV+TQ+EjrzGDNdtMAODZy5UxlrPQ1Ynz0RPlWyT0bAdj
+         bt8N/T/3innXjd3dVpWEeTPLIXZF3y/1B/0LpcnM3mjo5ZogeeX6HnjPFSFrZZ6moz3r
+         nbA/1EQL8kzJtzOifJbbcugBydcA0YQ8CyhtaVcmZoYRdlvf8g15Utmn1hRj3CGW3ihF
+         In++TzWc6/XUNudyfpnBFzLSm6/idfjKwq7j1lVp/j9lt0kaA9rQjsOlwkHEFhmDRSFf
+         sVmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aRhwQ4wS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t61si22701419qtd.360.2020.01.03.05.32.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jan 2020 05:32:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id z4si32308265oti.93.2020.01.03.10.09.59;
+        Fri, 03 Jan 2020 10:09:59 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aRhwQ4wS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52326 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1inN3d-0001gH-Og
-	for alex.bennee@linaro.org; Fri, 03 Jan 2020 08:32:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51611)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wainersm@redhat.com>) id 1inN2x-0000bm-IE
- for qemu-arm@nongnu.org; Fri, 03 Jan 2020 08:31:25 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <wainersm@redhat.com>) id 1inN2u-00023o-Hr
- for qemu-arm@nongnu.org; Fri, 03 Jan 2020 08:31:22 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:34726
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1inN2u-0001we-Bv
- for qemu-arm@nongnu.org; Fri, 03 Jan 2020 08:31:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578058279;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NRET7Eiz2b8xzuJI1K56VUGnMp7jwIBOK4cHI3GKR+c=;
- b=aRhwQ4wSIPTDa/z+JGapcwMbSWjR8eziJmZaAZQZMPh/vrPYuYGGI2vUuoS8oZp4Hr+aj6
- B+4UsJnrLgO+fpCt0848IcacAfSVYZh/IPnRtVJCUf4/iF22zL3GDwnIHndwKP9GpuGwCI
- JFKxB8qus5HtNBZmXu24M5GyaJEs4zg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-307-Gv15o-zsMkiRnirkqNZAng-1; Fri, 03 Jan 2020 08:31:16 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 301C91883521;
- Fri,  3 Jan 2020 13:31:15 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-18.gru2.redhat.com
- [10.97.116.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9D4305D9C9;
- Fri,  3 Jan 2020 13:31:09 +0000 (UTC)
-Subject: Re: [PATCH 1/6] tests/boot_linux_console: Add initrd test for the
- CubieBoard
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20191230110953.25496-1-f4bug@amsat.org>
- <20191230110953.25496-2-f4bug@amsat.org>
- <31147d48-2f31-9fce-b8a4-1a270f114a45@redhat.com>
- <d7abcb92-4405-2ba8-b524-281d5913f980@redhat.com>
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Message-ID: <6453ffc1-4bf6-4501-016d-ef403f742bd6@redhat.com>
-Date: Fri, 3 Jan 2020 11:31:08 -0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728248AbgACSJ6 (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 3 Jan 2020 13:09:58 -0500
+Received: from foss.arm.com ([217.140.110.172]:57502 "EHLO foss.arm.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1728201AbgACSJ6 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 3 Jan 2020 13:09:58 -0500
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+        by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D19F71FB;
+        Fri,  3 Jan 2020 10:09:57 -0800 (PST)
+Received: from donnerap.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+        by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5C84B3F703;
+        Fri,  3 Jan 2020 10:09:56 -0800 (PST)
+Date:   Fri, 3 Jan 2020 18:09:46 +0000
+From:   Andre Przywara <andre.przywara@arm.com>
+To:     Eric Auger <eric.auger@redhat.com>
+Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, drjones@redhat.com,
+        andrew.murray@arm.com, peter.maydell@linaro.org,
+        alexandru.elisei@arm.com
+Subject: Re: [kvm-unit-tests PATCH 02/10] arm: pmu: Let pmu tests take a
+ sub-test parameter
+Message-ID: <20200103180946.06f3c1c3@donnerap.cambridge.arm.com>
+In-Reply-To: <20191216204757.4020-3-eric.auger@redhat.com>
+References: <20191216204757.4020-1-eric.auger@redhat.com>
+        <20191216204757.4020-3-eric.auger@redhat.com>
+Organization: ARM
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; aarch64-unknown-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <d7abcb92-4405-2ba8-b524-281d5913f980@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: Gv15o-zsMkiRnirkqNZAng-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Willian Rampazzo <wrampazz@redhat.com>, Cleber Rosa <crosa@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x2tBatiqZbZ1
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: B922M2MxEcI0
 
+On Mon, 16 Dec 2019 21:47:49 +0100
+Eric Auger <eric.auger@redhat.com> wrote:
 
-On 12/31/19 9:41 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 12/30/19 9:52 PM, Wainer dos Santos Moschetta wrote:
->> On 12/30/19 9:09 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->>> This test boots a Linux kernel on a CubieBoard and verify
->>> the serial output is working.
->>>
->>> The kernel image and DeviceTree blob are built by the Armbian
->>> project (based on Debian):
->>> https://docs.armbian.com/Developer-Guide_Build-Preparation/
->>>
->>> The cpio image used comes from the linux-build-test project:
->>> https://github.com/groeck/linux-build-test
->>>
->>> If ARM is a target being built, "make check-acceptance" will
->>> automatically include this test by the use of the "arch:arm" tags.
->>>
->>> Alternatively, this test can be run using:
->>>
->>> =C2=A0=C2=A0 $ avocado --show=3Dconsole run -t machine:cubieboard=20
->>> tests/acceptance/boot_linux_console.py
->>> =C2=A0=C2=A0 console: Uncompressing Linux... done, booting the kernel.
->>> =C2=A0=C2=A0 console: Booting Linux on physical CPU 0x0
->>> =C2=A0=C2=A0 console: Linux version 4.20.7-sunxi (root@armbian.com) (gc=
-c=20
->>> version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8=20
->>> 09:02:10 CET 2019
->>> =C2=A0=C2=A0 console: CPU: ARMv7 Processor [410fc080] revision 0 (ARMv7=
-),=20
->>> cr=3D50c5387d
->>> =C2=A0=C2=A0 console: CPU: PIPT / VIPT nonaliasing data cache, VIPT=20
->>> nonaliasing instruction cache
->>> =C2=A0=C2=A0 console: OF: fdt: Machine model: Cubietech Cubieboard
->>> =C2=A0=C2=A0 [...]
->>> =C2=A0=C2=A0 console: Boot successful.
->>> =C2=A0=C2=A0 console: cat /proc/cpuinfo
->>> =C2=A0=C2=A0 console: / # cat /proc/cpuinfo
->>> =C2=A0=C2=A0 console: processor=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 0
->>> =C2=A0=C2=A0 console: model name=C2=A0=C2=A0=C2=A0=C2=A0 : ARMv7 Proces=
-sor rev 0 (v7l)
->>> =C2=A0=C2=A0 console: BogoMIPS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 83=
-2.51
->>> =C2=A0=C2=A0 [...]
->>> =C2=A0=C2=A0 console: Hardware=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : Al=
-lwinner sun4i/sun5i Families
->>> =C2=A0=C2=A0 console: Revision=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : 00=
-00
->>> =C2=A0=C2=A0 console: Serial=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 : 0000000000000000
->>> =C2=A0=C2=A0 console: cat /proc/iomem
->>> =C2=A0=C2=A0 console: / # cat /proc/iomem
->>> =C2=A0=C2=A0 console: 01c00000-01c0002f : system-control@1c00000
->>> =C2=A0=C2=A0 console: 01c02000-01c02fff : dma-controller@1c02000
->>> =C2=A0=C2=A0 console: 01c05000-01c05fff : spi@1c05000
->>> =C2=A0=C2=A0 console: 01c0b080-01c0b093 : mdio@1c0b080
->>> =C2=A0=C2=A0 console: 01c0c000-01c0cfff : lcd-controller@1c0c000
->>> =C2=A0=C2=A0 console: 01c0d000-01c0dfff : lcd-controller@1c0d000
->>> =C2=A0=C2=A0 console: 01c0f000-01c0ffff : mmc@1c0f000
->>> =C2=A0=C2=A0 [...]
->>> =C2=A0=C2=A0 PASS (54.35 s)
->>>
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>> ---
->>> =C2=A0 tests/acceptance/boot_linux_console.py | 41=20
->>> ++++++++++++++++++++++++++
->>> =C2=A0 1 file changed, 41 insertions(+)
->>>
->>> diff --git a/tests/acceptance/boot_linux_console.py=20
->>> b/tests/acceptance/boot_linux_console.py
->>> index 9c6aa2040a..4643f60e37 100644
->>> --- a/tests/acceptance/boot_linux_console.py
->>> +++ b/tests/acceptance/boot_linux_console.py
->>> @@ -400,6 +400,47 @@ class BootLinuxConsole(Test):
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.wait_for_co=
-nsole_pattern('Boot successful.')
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 # TODO user comm=
-and, for now the uart is stuck
->>> +=C2=A0=C2=A0=C2=A0 def test_arm_cubieboard_initrd(self):
->>
->> Unless you have two tests, one with and without initrd (not the case=20
->> though) the suffix '_initrd' is useless. So I suggest to remove it.
->
-> The next patch adds a SD card test:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg667628.html
->
-> If one developer has other tests in progress, but one done, I think it=20
-> might sense to add the full test name when the first patch is merged,=20
-> so next tests don't have to modify the first test name.
+> As we intend to introduce more PMU tests, let's add
+> a sub-test parameter that will allow to categorize
+> them. Existing tests are in the cycle-counter category.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
+Reviewed-by: Andre Przywara <andre.przywara@arm.com>
 
-That's right. Disregard my comment.
+Cheers,
+Andre
 
-- Wainer
-
-
->
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Darch:arm
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dmachine:cu=
-bieboard
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_url =3D ('https://apt.a=
-rmbian.com/pool/main/l/'
->>> + 'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_hash =3D '1334c29c44d98=
-4ffa05ed10de8c3361f33d78315'
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_path =3D self.fetch_ass=
-et(deb_url, asset_hash=3Ddeb_hash)
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_path =3D self.extrac=
-t_from_deb(deb_path,
->>> + '/boot/vmlinuz-4.20.7-sunxi')
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dtb_path =3D=20
->>> '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dtb_path =3D self.extract_f=
-rom_deb(deb_path, dtb_path)
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_url =3D=20
->>> ('https://github.com/groeck/linux-build-test/raw/'
->>> + '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'arm/rootfs-armv5=
-.cpio.gz')
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_hash =3D '2b50f1873e=
-113523967806f4da2afe385462ff9b'
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_path_gz =3D self.fet=
-ch_asset(initrd_url,=20
->>> asset_hash=3Dinitrd_hash)
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 initrd_path =3D os.path.joi=
-n(self.workdir, 'rootfs.cpio')
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 archive.gzip_uncompress(ini=
-trd_path_gz, initrd_path)
->>> +
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.set_console()
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_command_line =3D (se=
-lf.KERNEL_COMMON_COMMAND_LINE +
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'console=3DttyS0,115200 '
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'usbcore.nousb '
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'panic=3D-1 noreboot')
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.add_args('-kernel',=
- kernel_path,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-dtb', dtb_path,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-initrd', initrd_path,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-append', kernel_command_line,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-no-reboot')
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.launch()
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.wait_for_console_patte=
-rn('Boot successful.')
->>> +
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_p=
-attern(self, 'cat /proc/cpuinfo',
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'Allwinner=
-=20
->>> sun4i/sun5i')
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_p=
-attern(self, 'cat /proc/iomem',
->>> + 'system-control@1c00000')
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exec_command_and_wait_for_p=
-attern(self, 'reboot',
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'reboot: Re=
-starting=20
->>> system')
->>
->>
->> I ran this test case with success, so:
->>
->> Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
->
-> Thanks Wainer!
->
->>
->> With the comment regarding the _initrd suffix:
->>
->> Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
->>
->>
->>> +
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 def test_s390x_s390_ccw_virtio(self):
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=
-=3Darch:s390x
->>
->>
->
-
+> ---
+>  arm/pmu.c         | 24 +++++++++++++++---------
+>  arm/unittests.cfg |  7 ++++---
+>  2 files changed, 19 insertions(+), 12 deletions(-)
+> 
+> diff --git a/arm/pmu.c b/arm/pmu.c
+> index d5a03a6..e5e012d 100644
+> --- a/arm/pmu.c
+> +++ b/arm/pmu.c
+> @@ -287,22 +287,28 @@ int main(int argc, char *argv[])
+>  {
+>  	int cpi = 0;
+>  
+> -	if (argc > 1)
+> -		cpi = atol(argv[1]);
+> -
+>  	if (!pmu_probe()) {
+>  		printf("No PMU found, test skipped...\n");
+>  		return report_summary();
+>  	}
+>  
+> +	if (argc < 2)
+> +		report_abort("no test specified");
+> +
+>  	report_prefix_push("pmu");
+>  
+> -	report(check_pmcr(), "Control register");
+> -	report(check_cycles_increase(),
+> -	       "Monotonically increasing cycle count");
+> -	report(check_cpi(cpi), "Cycle/instruction ratio");
+> -
+> -	pmccntr64_test();
+> +	if (strcmp(argv[1], "cycle-counter") == 0) {
+> +		report_prefix_push(argv[1]);
+> +		if (argc > 2)
+> +			cpi = atol(argv[2]);
+> +		report(check_pmcr(), "Control register");
+> +		report(check_cycles_increase(),
+> +		       "Monotonically increasing cycle count");
+> +		report(check_cpi(cpi), "Cycle/instruction ratio");
+> +		pmccntr64_test();
+> +	} else {
+> +		report_abort("Unknown sub-test '%s'", argv[1]);
+> +	}
+>  
+>  	return report_summary();
+>  }
+> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
+> index daeb5a0..79f0d7a 100644
+> --- a/arm/unittests.cfg
+> +++ b/arm/unittests.cfg
+> @@ -61,21 +61,22 @@ file = pci-test.flat
+>  groups = pci
+>  
+>  # Test PMU support
+> -[pmu]
+> +[pmu-cycle-counter]
+>  file = pmu.flat
+>  groups = pmu
+> +extra_params = -append 'cycle-counter 0'
+>  
+>  # Test PMU support (TCG) with -icount IPC=1
+>  #[pmu-tcg-icount-1]
+>  #file = pmu.flat
+> -#extra_params = -icount 0 -append '1'
+> +#extra_params = -icount 0 -append 'cycle-counter 1'
+>  #groups = pmu
+>  #accel = tcg
+>  
+>  # Test PMU support (TCG) with -icount IPC=256
+>  #[pmu-tcg-icount-256]
+>  #file = pmu.flat
+> -#extra_params = -icount 8 -append '256'
+> +#extra_params = -icount 8 -append 'cycle-counter 256'
+>  #groups = pmu
+>  #accel = tcg
+>  

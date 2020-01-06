@@ -1,223 +1,200 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp23594381lff;
-        Mon, 6 Jan 2020 08:57:13 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzeepYBM477ChMUBkPBv9sZqqXyqS7CrZhKtltDKs77rEp5pNgKEgcEVzjkDZ4ixlnYDuN2
-X-Received: by 2002:aa7:cd14:: with SMTP id b20mr97075853edw.27.1578329833033;
-        Mon, 06 Jan 2020 08:57:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578329833; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp23612429lff;
+        Mon, 6 Jan 2020 09:12:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwMhHqDU6awOiJgeDcibi11hnHsnzEtCWUVi67bW0bbI1JsNmlACTdR+6vqPdxQQ/R3anuw
+X-Received: by 2002:a05:6214:192f:: with SMTP id es15mr81890434qvb.219.1578330756649;
+        Mon, 06 Jan 2020 09:12:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578330756; cv=none;
         d=google.com; s=arc-20160816;
-        b=DIHJpQfJYS8+vZMSC6oDZg4m92cTYshiPvriBHx79ruooa+S6Rnvtu1x6/xMP5aaF2
-         RE86MePsjQl47kLOGB2vZP9xqtnJtzSfAFrZVbZv6UQvFh893hlRiAU0vubA9Jcw3AXr
-         sZwJ6upHVwkv4J/DOmOBlN+2YWOKWxjgT6IGRiY3wOpgT86weLIANuNJr1UHR48SmuXl
-         IQOkJ5js6xYcGw1kuiADx/iAoLsyG9hz6N4O8nk1uWt1NJVqOOrZUOAyTjmPUEytj2js
-         lbzm6ZKaOOYNK13ujYbAhSmBqYGOCz6ntCsc38vmAWlanmsCT6E+ASasxpGFeocYXaWV
-         11QQ==
+        b=MtG7S4mRtX07tKhwuT9sD8g3gSo/+Q1ItMqRHhz7QVvF1RrdL1W0Dnadb3ebp/cDdR
+         0szr5RBLPQLO9pAcrGTRyhwhDTl5tYTeAkepXqRp9VzQEahQ9385YhtJL5ND8mJX4ZMs
+         FemPJGYs+/6Pc+q9tgaTGxQTnQuSXL+WyJVywzECkiq6W60SG30Vt5alZnEH/08cbzfp
+         puoHXlk2xrR2o665OpG+f8w9pcfuB7KddjXm+1tvBPoFWp6y8EuJUbHCa/TvCyvWM6Nd
+         F0TmBb3dpLZ4JGvuOUnqUEvQ9ctdlK7r+EDlufSDl0miSxhR8XV3e80Wq8YZ6ARHuINX
+         iq1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=02TUdWYuGZFoP948H3QA+6CQ6nzlskfpSUT1h3iutTA=;
-        b=XHD7q/TZbT64R7c4+t4aUspFQoKdLgWqKPEOZJcoUNifmZtYhmnGH6U3T6GtI9Hp2R
-         JXJO7SnlwEt8yiYHNH956tzeUI761t8nJntqRyKqpTByzfzxB3U5OqPF0xkYEhKIGpxX
-         4litjrMp+LlrqT8CMCMXxJS0KRYBNPubP3zjxG0OAEeo2uVA1O6t8j4DtUf+qLeuxrHo
-         LU4BoOMFQWvaMC9PHhdDqnsNRYN01GDN0n7eleFSoqWEd4cm6RJptLnOevMHw3G/TsKv
-         /zVxG//9BHh6PCyQy9mLl4sqWOG1BlDGQlpsfpyWCN+fRm6bUF8sVtSpSdvYystPMfzg
-         YWbw==
+        bh=QwtBdC5pI1sgKCXH6j8cPBwozyzvDybZ4woNY7xn/Cg=;
+        b=jF0CCWRe7AfJyzzgkT4b5hh1xtaJZ/pft1dcsyKD02H7TMwoGqUs+r42/YAoOoiWnU
+         408SWuyixCbKm6tFa3DXBD6/wDHbGSHGPR1wPubmRxmRZJdvNVDxSREu2ySt35nFkuKW
+         F9Emrnn/FjcV/7Psuj5M7ey4RTUfUREJObkoSrnk+U8io3ajtGfeMfgSmSUtIp1DkMEe
+         0ywWYMP2ZQsomf5qWt5pG5VCX4HJZVhN7ZqpZOz2p0EnFNjWkhqWLFDI28FaWjOKXjjz
+         3dbEwaAypXjh0Kia9JoXbdcrgPuHzo7lOKdGG2WrTgRNpjd1RaZQNbUb6VS6IgYaXEK/
+         RhWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DZsECNW6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=pcbrkjEd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kt18si44186824ejb.213.2020.01.06.08.57.12
+        by mx.google.com with ESMTPS id l21si28420567qkl.150.2020.01.06.09.12.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jan 2020 08:57:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Jan 2020 09:12:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DZsECNW6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54960 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=pcbrkjEd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55412 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ioVgl-0008Vv-UF
-	for alex.bennee@linaro.org; Mon, 06 Jan 2020 11:57:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34868)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ioVvg-0005ht-3A
+	for alex.bennee@linaro.org; Mon, 06 Jan 2020 12:12:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44272)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1ioVgc-0008Uo-OQ
- for qemu-arm@nongnu.org; Mon, 06 Jan 2020 11:57:04 -0500
+ (envelope-from <jean-philippe@linaro.org>) id 1ioVq3-00086l-SK
+ for qemu-devel@nongnu.org; Mon, 06 Jan 2020 12:06:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1ioVga-00075r-In
- for qemu-arm@nongnu.org; Mon, 06 Jan 2020 11:57:01 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:28116
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1ioVga-00074f-4f
- for qemu-arm@nongnu.org; Mon, 06 Jan 2020 11:57:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578329819;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=02TUdWYuGZFoP948H3QA+6CQ6nzlskfpSUT1h3iutTA=;
- b=DZsECNW6i411VwnE9IJT0Qd5jgV64noYDfg1IVmbK72chfkgxhuuZeFUYoZaaCSuKiO/VN
- zoQcH1bEbZHH/vobxUEJHzrozxyW4+3Ybc1hYDvdhJoJdEqkuVkMxjxXTkNKhKlwWFVsRj
- WNNmBaU+nQ6lxCUIDDxgZT8UNt+iplI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-320-NwXBIvPPM9KVPYO7qywHXw-1; Mon, 06 Jan 2020 11:56:58 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53ED71005502;
- Mon,  6 Jan 2020 16:56:56 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0DB2C10840F1;
- Mon,  6 Jan 2020 16:56:51 +0000 (UTC)
-Date: Mon, 6 Jan 2020 17:56:50 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Alistair Francis <alistair@alistair23.me>
-Subject: Re: [PATCH v7 4/4] hw/arm: Add the Netduino Plus 2
-Message-ID: <20200106175650.0ddc9bf2@redhat.com>
-In-Reply-To: <dad8d8d47f7625913e35e27a1c00f603a6b08f9a.1576658572.git.alistair@alistair23.me>
-References: <cover.1576658572.git.alistair@alistair23.me>
- <dad8d8d47f7625913e35e27a1c00f603a6b08f9a.1576658572.git.alistair@alistair23.me>
+ (envelope-from <jean-philippe@linaro.org>) id 1ioVq2-0000o5-C9
+ for qemu-devel@nongnu.org; Mon, 06 Jan 2020 12:06:47 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38371)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
+ id 1ioVpy-0000jo-Ff
+ for qemu-devel@nongnu.org; Mon, 06 Jan 2020 12:06:46 -0500
+Received: by mail-wr1-x444.google.com with SMTP id y17so50499114wrh.5
+ for <qemu-devel@nongnu.org>; Mon, 06 Jan 2020 09:06:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=QwtBdC5pI1sgKCXH6j8cPBwozyzvDybZ4woNY7xn/Cg=;
+ b=pcbrkjEd8PM/cmseu4JciD9/I7TRvwC47RtdpnoBoECQA8mNGU45dtKmFlGdMQ/I88
+ HF8eS3sTnxw8ljtJREjRcfSfxte4Wn6N8YH0mzjMmAlrXR/1kWLS0LJheMnA/DhnlVcj
+ Go5pPutKhtIuu4xJ7hslC7Pb9xF5muHxuqxfxr/FlJp64jDDfjYs5UQhFal4+SlDCnwl
+ 3jBlGbIUTeUB9sm9QTvdur8Hw7PtHip3zYb2SJPCuxTqOcOfJ7IXDSWOpmFK73qNIN3Z
+ LLIHSW1/TIkQG6LEtY34/LhPNJgqNtXBc6oos0bG+z4UPpFAg9JVokP2vdquCJaOoc9T
+ raUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=QwtBdC5pI1sgKCXH6j8cPBwozyzvDybZ4woNY7xn/Cg=;
+ b=fkjvejVsRLxGB80l1Vk2cDfJ52llIjHe6l+Biyw/oLr4o06MUlFHAZy3sUAHrOJN6i
+ YUSxuVdtN/mExNKTILKFuaKpJLuDdQyUCbiaryX44sYk+qRQTx+2U6u/1UrxI7JYVAdg
+ 8kJk6wE7e/wFFsuqEtjdGooHBatgKx/7xQriwQ9rrYHQmQYLQ7d3iZFDuKobXQazCCAC
+ Vtpf0BkonJLkTa9S3oaSQrDQSfBl57CkBFTIaeLq6d6/YIdq/HTBwj8qHfMSU0wiqTOz
+ Wrl0U+JQlU8uBU9/reiCNxBRJditt82q9dltubW4ODHixCkL36wICVkmQjYLpaZQApWP
+ vQlA==
+X-Gm-Message-State: APjAAAU6kvsnLM3lin+jhWZR5LZSzOuprnU4fXcU0c16l4Dh3RD+2F/F
+ XJ6OYtEhqDWRPz3nl6NsRdrwyQ==
+X-Received: by 2002:adf:bc87:: with SMTP id g7mr108873928wrh.121.1578330400372; 
+ Mon, 06 Jan 2020 09:06:40 -0800 (PST)
+Received: from myrica (adsl-84-227-176-239.adslplus.ch. [84.227.176.239])
+ by smtp.gmail.com with ESMTPSA id 2sm75044495wrq.31.2020.01.06.09.06.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Jan 2020 09:06:39 -0800 (PST)
+Date: Mon, 6 Jan 2020 18:06:34 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Peter Xu <peterx@redhat.com>
+Subject: Re: [PATCH for-5.0 v11 08/20] virtio-iommu: Implement translate
+Message-ID: <20200106170634.GF2062@myrica>
+References: <20191122182943.4656-1-eric.auger@redhat.com>
+ <20191122182943.4656-9-eric.auger@redhat.com>
+ <20191210193342.GJ3352@xz-x1>
+ <44c0041d-68ad-796f-16cc-4bab7ba0f164@redhat.com>
+ <20191219133308.GA4246@xz-x1>
+ <9d58b293-ada0-353e-bba2-ad1f538dfc62@redhat.com>
+ <20191219144936.GB50561@xz-x1>
+ <9ec9d0d5-062b-f96b-c72c-4d15865ff9a1@redhat.com>
+ <20191220162642.GA2626852@myrica> <20191220165100.GA3780@xz-x1>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: NwXBIvPPM9KVPYO7qywHXw-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191220165100.GA3780@xz-x1>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::444
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- alistair23@gmail.com, Paolo Bonzini <pbonzini@redhat.com>, philmd@redhat.com,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nxlhIB4DDuqJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
+ quintela@redhat.com, qemu-devel@nongnu.org, armbru@redhat.com,
+ Auger Eric <eric.auger@redhat.com>, bharatb.linux@gmail.com,
+ qemu-arm@nongnu.org, dgilbert@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nNVbtFBpyZdh
 
-On Wed, 18 Dec 2019 21:22:55 -0800
-Alistair Francis <alistair@alistair23.me> wrote:
-
-> Signed-off-by: Alistair Francis <alistair@alistair23.me>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  MAINTAINERS            |  6 +++++
->  hw/arm/Makefile.objs   |  1 +
->  hw/arm/netduinoplus2.c | 52 ++++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 59 insertions(+)
->  create mode 100644 hw/arm/netduinoplus2.c
+On Fri, Dec 20, 2019 at 11:51:00AM -0500, Peter Xu wrote:
+> On Fri, Dec 20, 2019 at 05:26:42PM +0100, Jean-Philippe Brucker wrote:
+> > There is at the virtio transport level: the driver sets status to
+> > FEATURES_OK once it accepted the feature bits, and to DRIVER_OK once its
+> > fully operational. The virtio-iommu spec says:
+> > 
+> >   If the driver does not accept the VIRTIO_IOMMU_F_BYPASS feature, the
+> >   device SHOULD NOT let endpoints access the guest-physical address space.
+> > 
+> > So before features negotiation, there is no access. Afterwards it depends
+> > if the VIRTIO_IOMMU_F_BYPASS has been accepted by the driver.
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index bda53628a5..203ced66e0 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -829,6 +829,12 @@ M: Peter Maydell <peter.maydell@linaro.org>
->  S: Maintained
->  F: hw/arm/netduino2.c
->  
-> +Netduino Plus 2
-> +M: Alistair Francis <alistair@alistair23.me>
-> +M: Peter Maydell <peter.maydell@linaro.org>
-> +S: Maintained
-> +F: hw/arm/netduinoplus2.c
-> +
->  SmartFusion2
->  M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->  M: Peter Maydell <peter.maydell@linaro.org>
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index d9d54da7cf..336f6dd374 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -11,6 +11,7 @@ obj-$(CONFIG_MAINSTONE) += mainstone.o
->  obj-$(CONFIG_MICROBIT) += microbit.o
->  obj-$(CONFIG_MUSICPAL) += musicpal.o
->  obj-$(CONFIG_NETDUINO2) += netduino2.o
-> +obj-$(CONFIG_NETDUINOPLUS2) += netduinoplus2.o
->  obj-$(CONFIG_NSERIES) += nseries.o
->  obj-$(CONFIG_SX1) += omap_sx1.o
->  obj-$(CONFIG_CHEETAH) += palm.o
-> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-> new file mode 100644
-> index 0000000000..e5e247edbe
-> --- /dev/null
-> +++ b/hw/arm/netduinoplus2.c
-> @@ -0,0 +1,52 @@
-> +/*
-> + * Netduino Plus 2 Machine Model
-> + *
-> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "hw/boards.h"
-> +#include "hw/qdev-properties.h"
-> +#include "qemu/error-report.h"
-> +#include "hw/arm/stm32f405_soc.h"
-> +#include "hw/arm/boot.h"
-> +
-> +static void netduinoplus2_init(MachineState *machine)
-> +{
-> +    DeviceState *dev;
-> +
-> +    dev = qdev_create(NULL, TYPE_STM32F405_SOC);
-> +    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
-> +    object_property_set_bool(OBJECT(dev), true, "realized", &error_fatal);
-> +
-> +    armv7m_load_kernel(ARM_CPU(first_cpu),
-> +                       machine->kernel_filename,
-> +                       FLASH_SIZE);
-> +}
+> Before enabling virtio-iommu device, should we still let the devices
+> to access the whole system address space?  I believe that's at least
+> what Intel IOMMUs are doing.  From code-wise, its:
+> 
+>     if (likely(s->dmar_enabled)) {
+>         success = vtd_do_iommu_translate(vtd_as, vtd_as->bus, vtd_as->devfn,
+>                                          addr, flag & IOMMU_WO, &iotlb);
+>     } else {
+>         /* DMAR disabled, passthrough, use 4k-page*/
+>         iotlb.iova = addr & VTD_PAGE_MASK_4K;
+>         iotlb.translated_addr = addr & VTD_PAGE_MASK_4K;
+>         iotlb.addr_mask = ~VTD_PAGE_MASK_4K;
+>         iotlb.perm = IOMMU_RW;
+>         success = true;
+>     }
+> 
+> From hardware-wise, an IOMMU should be close to transparent if you
+> never enable it, imho.
 
-I wonder if we should make user provided '-m' a hard error
-for boards that have fixed RAM size. And make '-m' or forthcoming
-"-machine memdev" optin feature for boards that explicitly ask for it?
+For hardware that's not necessarily the best choice. As cited in my
+previous reply it has been shown to introduce vulnerabilities since
+malicious devices can DMA during boot, before the OS takes control of the
+IOMMU. The Arm SMMU allows an implementation to adopt a deny policy by
+default.
 
-PS:
-(I suspect that the most boards with fixed RAM size do not really
-care about numa, mempath/prealloc and other features memdev provides)
+> Otherwise I'm confused on how a guest (with virtio-iommu) could boot
+> with a normal BIOS that does not contain a virtio-iommu driver.  For
+> example, what if the BIOS needs to read some block sectors (as you
+> mentioned)?
 
-> +
-> +static void netduinoplus2_machine_init(MachineClass *mc)
-> +{
-> +    mc->desc = "Netduino Plus 2 Machine";
-> +    mc->init = netduinoplus2_init;
-> +}
-> +
-> +DEFINE_MACHINE("netduinoplus2", netduinoplus2_machine_init)
+Ideally we should aim at supporting the device in both the BIOS and the
+OS. Failing that, there should at least be a way to instantiate a
+virtio-iommu device that is blocking by default, that cannot be bypassed
+unless the controlling software decides to allow it. Could the bypass
+policy be a command-line option to the virtio-iommu device?
 
+[...]
+> > Yes bypass mode assumes that devices and drivers aren't malicious, and the
+> > IOMMU is only used for things like assigning devices to guest userspace,
+> > or having large contiguous DMA buffers.
+> 
+> Yes I agree.  However again when the BYPASS flag was introduced, have
+> you thought of introducing that flag per-device?  IMHO that could be
+> better because you have a finer granularity on controlling all these,
+> so you'll be able to reject malicious devices but at the meantime
+> grant permission to trusted devices.
+
+At the moment that per-device behavior can be emulated by sending an
+ATTACH request followed by identity MAP. It could be a little more
+efficient to add a "bypass" flag to the ATTACH request and avoid setting
+up the identity mapping manually, since the device then wouldn't need to
+look up the mapping on translation, but I don't know how much it would
+improve performance. The device could also cache the fact that the address
+space is identity-mapped, for the same result. The domain lookup has to
+happen in any case, so you can never get the full iommu-free performance
+with these mechanisms.
+
+Thanks,
+Jean

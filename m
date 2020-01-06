@@ -1,101 +1,102 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp23536884lff;
-        Mon, 6 Jan 2020 08:03:17 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwj2CX3HKi2jcxpF9XbvydBhMpBImizW1MkD+aO4Qmvsd4s/a46RKbJByAhgTnCUaeTr69V
-X-Received: by 2002:a05:6214:108a:: with SMTP id o10mr70186157qvr.246.1578326596998;
-        Mon, 06 Jan 2020 08:03:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578326596; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp23543601lff;
+        Mon, 6 Jan 2020 08:08:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw996pm46qj3F83IMT0fsu3TZlSlOHGZ1swXuD992WE0oe/zzQUaIziE40AcOvOrevZJ4u2
+X-Received: by 2002:a05:620a:91c:: with SMTP id v28mr83908913qkv.248.1578326911010;
+        Mon, 06 Jan 2020 08:08:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578326911; cv=none;
         d=google.com; s=arc-20160816;
-        b=OsIHAM0aL7u98vFxLueIHiTbw8UUpa0eWHZKJSb45RoOcjsfHCTOWj/NEW6ijm5iup
-         umZQiMqQUTxLyTcdp1G2q+Q4wsqgOZWmqbCmt/QS0Zm4BDpGRMfP41KB5s1bfB2Y33sq
-         3WvyuNi2Blg1mrXlKDEHfvuXfQRfpcstrfRHUr+Nd1kHUvxBA5lXa3Rl1Dw4asZjT3xC
-         dfu8d6qextmsvLpJOqAEurnBEtWPgNqctMkbTJ5qCfOrGGLyiAO1HMdhhZj/jXuP87CT
-         lu4fVLHxIUqpGXUCQfU6haPbiPCVIMWOeuI+ZX3GBYGAOD5S1oF3y2UGBB7jkIy/G/Il
-         hN+Q==
+        b=FEWiTqxZktszHFDrWxm0npMHANm4XdsgsF0XSgRQQ3tvEtKbA8m7OdTNAyNYF1joro
+         h1ExXLxfozI3W7DwN+GNV+vdKXHBEFQn9JSsjSn1o/EeraPe0bnJyYA2KrgMy+Kx9/+9
+         U1g2xjlEP4no2aQG6HN/U4w/KiYNtQ0qBc5jiWTCrGfQrkZfSjyo3yo0YZ8z5cJXHnRy
+         N0VUVo17kRp3q8SFGBzv4rqGky/hg0JIfMs8o2mc88z2eJ34AAjB2l8KN9DOpkwHFN/Q
+         cdWdESQU4jX+fVwLGpwQJ/UJ3LePADkSg3kw9CMTMXz5ijEcNbhUMsO8IYlFeuu2NHWt
+         Kwng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=MyBoD+GRi5UgrLaTQFGGHT9g8eJIcgDuyxmBDZcx7jA=;
-        b=EnNMrNGpqIQqMyv8/u2KVsbt1viCtbrQoFkQcDW/fUZ4PnMhys393IiTXP5XR0B1DL
-         wEsI5A6Io5t6zJmjpK1dTKdXIACtOhuOrMPNGA6nIbQQdilXCmygi2oqoRdz1IdAld2a
-         XAuOq6Bd/atdGGljzJeh4ABEcR3m5A5ir3PNMWRZYBofJQiXeIZ3wjw0YYckQkxokAAt
-         FFMmmy/lnR7Cof5j8bCRJVJRILx0GMMJOvqqDov2q2TcGOw/sUp0bMOR7iIGpY9btMZe
-         B66rKxEnmhjxwLALBB8wBj3pMoEuyj8SuMrmGw/maZISOomEl9ozaV17Nd3Hb8KZyKuX
-         dRtQ==
+        bh=bdwlrc5shnHF+9VVf7Bnm9NXmem2iH268QCSnX+MexA=;
+        b=zKPtKw6sDckMhsPvsTZq0VWhv9BTOP6mZtQSIOC2TFYwS0dSo6b36jzU0OjobRLkmr
+         ew5glN0giZjA70zbBX5E/MAZ+dqlUIsBp/mMQ9w7lbiVcKBni4HIIFz9Hjr0q3XPBoLx
+         5XKBFlDlvtmSZQPgUkhjcMifkxReOJBQG70eEb9ZG1myNAYSA7kQDG1V7TNhWSEp2z7I
+         U3uopxGin514Z8rBwMDeUs/3M89EJDH63rPmhuHIsMydfU91qxBDyUvA4hzK9DV3ST01
+         ZtqxBx7KEGoFz2lQ8HVshU3/Qy9B9S/yZJyC49PZXdD5TDoBK3D5ft7LqcSTFvBEnv9I
+         GyFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CIT6mdF1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BXblH9DG;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m22si30516070qkg.100.2020.01.06.08.03.16
+        by mx.google.com with ESMTPS id p205si28785906qke.299.2020.01.06.08.08.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jan 2020 08:03:16 -0800 (PST)
+        Mon, 06 Jan 2020 08:08:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CIT6mdF1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BXblH9DG;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54252 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54348 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ioUqZ-00060K-Dc
-	for alex.bennee@linaro.org; Mon, 06 Jan 2020 11:03:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54997)
+	id 1ioUve-0001v6-Dc
+	for alex.bennee@linaro.org; Mon, 06 Jan 2020 11:08:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57231)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1ioUpF-0004wD-Bb
- for qemu-devel@nongnu.org; Mon, 06 Jan 2020 11:01:54 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1ioUuu-0001Lk-Iz
+ for qemu-devel@nongnu.org; Mon, 06 Jan 2020 11:07:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1ioUpE-0004D1-DO
- for qemu-devel@nongnu.org; Mon, 06 Jan 2020 11:01:53 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:35110)
+ (envelope-from <peter.maydell@linaro.org>) id 1ioUut-0008Rf-Fe
+ for qemu-devel@nongnu.org; Mon, 06 Jan 2020 11:07:44 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:44369)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1ioUpE-0004Ca-8Z
- for qemu-devel@nongnu.org; Mon, 06 Jan 2020 11:01:52 -0500
-Received: by mail-ot1-x344.google.com with SMTP id i15so4626975oto.2
- for <qemu-devel@nongnu.org>; Mon, 06 Jan 2020 08:01:52 -0800 (PST)
+ id 1ioUut-0008RF-9C
+ for qemu-devel@nongnu.org; Mon, 06 Jan 2020 11:07:43 -0500
+Received: by mail-oi1-x241.google.com with SMTP id d62so16170670oia.11
+ for <qemu-devel@nongnu.org>; Mon, 06 Jan 2020 08:07:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=MyBoD+GRi5UgrLaTQFGGHT9g8eJIcgDuyxmBDZcx7jA=;
- b=CIT6mdF123mFv3Rae1Tl1KAm4uj9g4wttRix9Uf4C07GxwTqAYg8fLPP+lRtRfC7v8
- wf61FnImqKFAvNH2nBLLayuFpvmPH3cYfTPP65FR3ORAru5a4JjboYpVbKqVBelj7mK6
- ixhUGcEHbaezpoUZDQSGh0Px4zj+RxDI3Tc10THLxoKXHNJCojdF0+OjHlYUuxrNgW/U
- K1VcBTTOCx45xvSCAYcrGtyB51WXUwly9w/Sesu6n+APIazbvgQawsmBXU6e1Q6jflQT
- 6A6wRa5FQxPOQXjc7XebFeCgaP6kwfWR9bIOZU/2wBn/Jsv+4LvuyyaieuAQm8Ss9cEd
- CTMw==
+ bh=bdwlrc5shnHF+9VVf7Bnm9NXmem2iH268QCSnX+MexA=;
+ b=BXblH9DGPDm62TilZeN9vXHnp3bWhh+H3fYBrWT+wQYgtq5QG/qLRf7615VtoNgeTj
+ YjNFVjO666itTTiTB5bVL/fpfPR0UKzMV2EDJC2NWrKnuY+klLZ+MS701gLhR+D4jE8X
+ A5+KvqVgW71qjT9P3ZoPo2bF/HwPL1q8dE5bZRL2tzlVd4caXBQbAiaJ6wAD+42/EqOa
+ c8MHPlh7ECrs/b2A0iojbfV7VKPRK1GSKmMUk2cMXJwE5k8Vu5XU71Ujj520sWfxcPM5
+ 2VcAw8+fqVFKqTCvA+ufQZCwisOp01U1+StCnzruM3/zCnPRhB85tPENiGPdSEHfZ2il
+ +7XA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=MyBoD+GRi5UgrLaTQFGGHT9g8eJIcgDuyxmBDZcx7jA=;
- b=h7pyqDFNay6g9G+kiUW+AxVFjJyNUh/WzyjVhx+VZ1HkRzGdUVUgTdGGqKOvfy2UY+
- IUS1/XkH7jnG4JCbfKTdReFY2Kr0GHouShjsKanQRlWT8VeiZUctgaDjnb7FHxb5exFq
- 2YCPMsA/tmZLPzgoLdp9W0jlWHJq9FRPOa2Dfy93XS0QETbH9WN+Z49jShrP7Nvvf7pd
- LshBzQhTKVRIf9vNWf87S+CE2arrpFsm8ar+ZiA7n0Mxv4A0NB83BUy+lsJnXa4+3Im4
- Fx2GAyr3xF2v1gYhcW/5E+hf1kAGcGYh67z4v0HIze2mwqCM0+QVBCzXWcFDG7zCXdbj
- diIQ==
-X-Gm-Message-State: APjAAAVa+mlCXgQMItzcnYUcOI27pzg2dl563NG/3g1Eo1+AMBL1RGJr
- 51Qu1zKhaP0TLBRc3b/kp259ee8r7pq3xwTKfqNAvg==
-X-Received: by 2002:a9d:644a:: with SMTP id m10mr12895009otl.97.1578326511606; 
- Mon, 06 Jan 2020 08:01:51 -0800 (PST)
+ bh=bdwlrc5shnHF+9VVf7Bnm9NXmem2iH268QCSnX+MexA=;
+ b=EYIS19r9IBVjFmYpbIGojrnW7qVWVJI+SP/JHfabaSg/ExjXAgRqWUHfWVeeor829k
+ Y2ljpJQHXiRS7w+N1Rnz8V1iRulOkVHhLmgmQmJh+U6gr+8qeuDaUuC2YKtupI++kRrq
+ cxGeV3vu8RSHyXqh43EJUgwFnNWoh+G2bxOClH90SAbzAZyLxbfYefwCbC1wxi9oHkhK
+ LIG33IZZQ3jKu0KJPZk8HzrX5tMlc4PXacxHFbBiJcyX5im/8jwvSEAet2TSlSVuZ+l1
+ kBsO8b0lWJLQRBpjQZze0gZftoeclpngzj+PWBecOeqtUfd+6AkqfaJ1yAFhHXAZOMO4
+ fUjA==
+X-Gm-Message-State: APjAAAXYtYztRTrdqLO9aI1StLM00g5pD7g2ooancuJgSa8vMktP4AOY
+ JfoY9nQgaMHCaOzvqWlIi5vl6bSQF5n7YNUsW04CXg==
+X-Received: by 2002:aca:d78b:: with SMTP id o133mr5991522oig.163.1578326862258; 
+ Mon, 06 Jan 2020 08:07:42 -0800 (PST)
 MIME-Version: 1.0
 References: <20191230110953.25496-1-f4bug@amsat.org>
- <20191230110953.25496-6-f4bug@amsat.org>
-In-Reply-To: <20191230110953.25496-6-f4bug@amsat.org>
+ <20191230110953.25496-7-f4bug@amsat.org>
+In-Reply-To: <20191230110953.25496-7-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Jan 2020 16:01:40 +0000
-Message-ID: <CAFEAcA8VVmU2L9oV73hBVcAZWhbZCKiR4RThcteswMr1_uo6YA@mail.gmail.com>
-Subject: Re: [PATCH 5/6] hw/arm/allwinner-a10: Remove local qemu_irq variables
+Date: Mon, 6 Jan 2020 16:07:31 +0000
+Message-ID: <CAFEAcA_MTPuvHvijgeFkeLu2e96Tn90iAop0Lp5eER=7QnU_Nw@mail.gmail.com>
+Subject: Re: [RFC PATCH 6/6] hw/arm/cubieboard: Disable unsupported M-USB in
+ device tree blob
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,18 +115,33 @@ Cc: QEMU Developers <qemu-devel@nongnu.org>,
  Willian Rampazzo <wrampazz@redhat.com>, Cleber Rosa <crosa@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TAYh/dmnPPje
+X-TUID: R+jZHvwHzywB
 
 On Mon, 30 Dec 2019 at 11:10, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
  wrote:
 >
-> We won't reuse the CPU IRQ/FIQ variables. Simplify by calling
-> qdev_get_gpio_in() in place.
+> We do not model the Sunxi Multipoint USB.
+> The Linux kernel OOPS when booting:
+
+> This is not critical but confusing. To avoid the Linux kernel to
+> probe this device, mark it disabled in the device tree blob.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
+> I'm not sure if this is a QEMU anti-pattern or bad practice.
+> I know we prefer to be as close to the hardware as possible,
+> but here the hardware is not changed, the dtb is. However
+> this makes the guest behave differently. At least we don't
+> have to manually edit the dts. If this is only annoying for
+> acceptance testing, we might consider manually editing the
+> dts in the tests setup().
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+In general I'd definitely prefer it if we avoided editing
+the DTB for things like this (we have very few boards that
+edit the DTB and none of them do it as workarounds for
+buggy/missing device emulation). Is it possible to have
+at least a dummy implementation of the controller that's
+enough to make the probe function fail more cleanly?
 
 thanks
 -- PMM

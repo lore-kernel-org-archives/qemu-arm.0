@@ -1,99 +1,80 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp23606138lff;
-        Mon, 6 Jan 2020 09:07:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxxE0sDBDYO395M3krA0HhqOnOp2HnwSz/5jXxvVB8ptQg9KGeMprImLaA1VY4oW6A2Q01g
-X-Received: by 2002:a17:906:e94:: with SMTP id p20mr109559915ejf.57.1578330434386;
-        Mon, 06 Jan 2020 09:07:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578330434; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp24318810lff;
+        Mon, 6 Jan 2020 23:36:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyO/A5vQqgrj54Gg5xvAVsxMIjJzAWj3ZBdRhCxF90CdpZp0fPMRap4Pt+OZgIOEwj2gBdK
+X-Received: by 2002:ac8:7648:: with SMTP id i8mr77464517qtr.389.1578382606579;
+        Mon, 06 Jan 2020 23:36:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578382606; cv=none;
         d=google.com; s=arc-20160816;
-        b=mGrqzvAhnk6ZOoKdVAnesFXdsnIK/6Doifd+/y2xjZsMjcf5v6W68J23/0kaiHfG//
-         h5Wqc3GzfRSo4kBRaM2Ke2M8zC5goh9FQoca3PTwDBBt+qSUR8vYd3HVeg3o/0DpcFI4
-         omGIpWXyfdpO3HgajKgyy/ZJ8opC6fo3FqLLScEMRY3SyVZJjpB3R9pVLFdtkg74PfZm
-         STB0faOWagljVA2fsqLy+XvqcxiQppOvwOyWtZCsSuUGbnyiEtxlNM5fmiYTWAqUXpfy
-         /Eb9e3Zj5muWITW5bfuoBQ+tEwV7l4kxps/5OdraZodMBX5Lhn89gX+gW2zEhOJvzvvP
-         J9RA==
+        b=XF/RfhzisrtpYl2LzIlLR5uXi/8QmiupgyDxx7YB1mdvZGCSGnr/D84m9xIqAxrxW9
+         mkEcun+Jm6Vq6q0lou77WkF/fSOz3hHlFWqu+/ecK1t/Tu3rN/OYQO8fcEpuanoZJGOA
+         pmlH4TQW/FtP/sg37LB7uzdMl3N+nUuhys29d5IpYlQbjL0uUxn7/Lq8I4PHyl+ROPxU
+         3Z29v1D2brsi+Yt8YikXAyKbvruAd3UpToEFyOP6McI7cTiVgIPg/Ka2vjA3lbWINltZ
+         vUUq3mBjLq5TvehfSNYi7r2zo/1PlLrsnwF8MkoMAroYLH2hT+y749qlvHkD6m7HBFcp
+         MaNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :references:message-id:date:thread-index:thread-topic:subject:to
-         :from;
-        bh=FcPcwSPm7osM1oyLFFFtN9/8/qu2j2zjzQnyX81QJ/E=;
-        b=Q19vJL21d2vy7eWZTVp1C7IvzqZ51vkZuKTpxVLppnG0jKfqdBYa6xL+Jdx/uRUKZY
-         9NzDDLxQLZ2is0rh+WBbVC3cuzClG7B10KLA2cKZtwM4NTxejOibG/ReXkbk11oMe+O8
-         387lh+Ur8l4fB6E4QSIqs/8AeClsxYj5XTG7l4xkb3DUtLG32ikNUBBp43mgt+xHHRRh
-         bHYGPbvgu/Pt6Wk9EuTVdtP6J/RXboFckaxXK3KklRZwnoQm8pkhQTeN7QQCvAUrFfrF
-         IMG5+IX2qDZmLjtwLeItkFcKRQodVsh09QrW8nPcCcLoieDc8GWrmUrJ7THfNShLP7TN
-         Zn/g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=SQr9shXWOqUnlDKwaezagg5sCOFiFAwXkHImBUkGMJA=;
+        b=lokrs4v2G3v4b7w5/AZuFOV91CnntJW5MdtMRnrZDH08Ncwa39FdoISW/tdicn8Wcd
+         VjxPqdUgjnntUhlf46BzztjPbcC9UevZCas/aug+SGrrZ09H2XTJUNqsPlKoIr4ciPLP
+         OcTfNFmdYelZR0sSjG9FVEB10UYg37uQ1SkjoMAqXXcTHXUy+v9foDzK/1+wHrD/pIp+
+         tGzcDc8JHTK46GLNF2xB9dh0uHNYL/dvvg/d9v2mhv2zsZ98PsKQDnU6Ww5T20HpQ7DT
+         F9aJKRkFBSUDmKnrc/169YZnKE0ACIW5tMGN2Xz4BFNaRy+CI9LTT8hHE+Ocs4u24X0U
+         UuBg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id da6si45556999edb.322.2020.01.06.09.07.14
+        by mx.google.com with ESMTPS id x13si28426823qti.48.2020.01.06.23.36.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jan 2020 09:07:14 -0800 (PST)
+        Mon, 06 Jan 2020 23:36:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55348 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ioVqS-0008Kz-UA
-	for alex.bennee@linaro.org; Mon, 06 Jan 2020 12:07:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44441)
+	id 1iojPt-0004W2-Ja
+	for alex.bennee@linaro.org; Tue, 07 Jan 2020 02:36:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51371)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ioVqF-0008G6-LN
- for qemu-arm@nongnu.org; Mon, 06 Jan 2020 12:07:01 -0500
+ (envelope-from <clg@kaod.org>) id 1iojO1-00023u-Bw
+ for qemu-arm@nongnu.org; Tue, 07 Jan 2020 02:34:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ioVqB-0000y3-7c
- for qemu-arm@nongnu.org; Mon, 06 Jan 2020 12:06:59 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2058 helo=huawei.com)
+ (envelope-from <clg@kaod.org>) id 1iojNz-0006ig-HN
+ for qemu-arm@nongnu.org; Tue, 07 Jan 2020 02:34:44 -0500
+Received: from 10.mo69.mail-out.ovh.net ([46.105.73.241]:43456)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1ioVqA-0000oi-TT; Mon, 06 Jan 2020 12:06:55 -0500
-Received: from lhreml703-cah.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id DBAD9F27661A12FACF7E;
- Mon,  6 Jan 2020 17:06:45 +0000 (GMT)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml703-cah.china.huawei.com (10.201.108.44) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Mon, 6 Jan 2020 17:06:32 +0000
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml710-chm.china.huawei.com (10.201.108.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 6 Jan 2020 17:06:32 +0000
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1713.004; Mon, 6 Jan 2020 17:06:32 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>, Jonathan Cameron
- <jonathan.cameron@huawei.com>
-Subject: RE: [PATCH 0/5] ARM virt: Add NVDIMM support
-Thread-Topic: [PATCH 0/5] ARM virt: Add NVDIMM support
-Thread-Index: AQHVeswdQv2zL2ZjnU2+5S1CywnCCKdgnucAgAYn2ECANV3CUIAANK6AgAADjLCAARyUgIADW0wAgBGftACAAodbgIADcKzggCX7GsA=
-Date: Mon, 6 Jan 2020 17:06:32 +0000
-Message-ID: <8562f82b7c0140d3ad0c7f6616cb6f28@huawei.com>
-References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
- <a133d4c4-3f60-2bb1-a7d7-35cdb06af265@redhat.com>
- <441c818f24084b4191315cf2a6267cef@huawei.com>
- <20191125164541.3f0a593f@redhat.com>
- <444efcb441fe42e5aff58b3af3ab14b4@huawei.com>
- <20191126095655.27227f59@redhat.com>
- <c2bb0be09e244ee59d27c7aaab1783a9@huawei.com>
- <20191211085727.1ab9564e@redhat.com> 
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iojNz-0006hb-AW
+ for qemu-arm@nongnu.org; Tue, 07 Jan 2020 02:34:43 -0500
+Received: from player755.ha.ovh.net (unknown [10.108.1.121])
+ by mo69.mail-out.ovh.net (Postfix) with ESMTP id 57D287B105
+ for <qemu-arm@nongnu.org>; Tue,  7 Jan 2020 08:34:41 +0100 (CET)
+Received: from kaod.org (lfbn-tou-1-1227-223.w90-76.abo.wanadoo.fr
+ [90.76.50.223]) (Authenticated sender: clg@kaod.org)
+ by player755.ha.ovh.net (Postfix) with ESMTPSA id A925ADFE0C27;
+ Tue,  7 Jan 2020 07:34:32 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 1/5] hw/sd: Configure number of slots exposed by the ASPEED
+ SDHCI model
+Date: Tue,  7 Jan 2020 08:34:19 +0100
+Message-Id: <20200107073423.30043-2-clg@kaod.org>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200107073423.30043-1-clg@kaod.org>
+References: <20200107073423.30043-1-clg@kaod.org>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 3787808764389329681
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvdehuddguddtlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgsehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdeltddrjeeirdehtddrvddvfeenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeehhedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 185.176.76.210
+X-Received-From: 46.105.73.241
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,231 +86,152 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "drjones@redhat.com" <drjones@redhat.com>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- Auger Eric <eric.auger@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dGwPWl68I6EX
+X-TUID: kBxLMW4q5yG0
 
-Hi Igor,
+From: Andrew Jeffery <andrew@aj.id.au>
 
-> -----Original Message-----
-> From: Shameerali Kolothum Thodi
-> Sent: 13 December 2019 12:52
-> To: 'Igor Mammedov' <imammedo@redhat.com>
-> Cc: xiaoguangrong.eric@gmail.com; peter.maydell@linaro.org;
-> drjones@redhat.com; shannon.zhaosl@gmail.com; qemu-devel@nongnu.org;
-> Linuxarm <linuxarm@huawei.com>; Auger Eric <eric.auger@redhat.com>;
-> qemu-arm@nongnu.org; xuwei (O) <xuwei5@huawei.com>;
-> lersek@redhat.com
-> Subject: RE: [PATCH 0/5] ARM virt: Add NVDIMM support
->=20
+The AST2600 includes a second cut-down version of the SD/MMC controller
+found in the AST2500, named the eMMC controller. It's cut down in the
+sense that it only supports one slot rather than two, but it brings the
+total number of slots supported by the AST2600 to three.
 
-[...]
+The existing code assumed that the SD controller always provided two
+slots. Rework the SDHCI object to expose the number of slots as a
+property to be set by the SoC configuration.
 
->=20
-> Thanks for your help. I did spend some more time debugging this further.
-> I tried to introduce a totally new Buffer field object with different
-> sizes and printing the size after creation.
->=20
-> --- SSDT.dsl	2019-12-12 15:28:21.976986949 +0000
-> +++ SSDT-arm64-dbg.dsl	2019-12-13 12:17:11.026806186 +0000
-> @@ -18,7 +18,7 @@
->   *     Compiler ID      "BXPC"
->   *     Compiler Version 0x00000001 (1)
->   */
-> -DefinitionBlock ("", "SSDT", 1, "BOCHS ", "NVDIMM", 0x00000001)
-> +DefinitionBlock ("", "SSDT", 1, "BOCHS ", "NVDIMM", 0x00000002)
->  {
->      Scope (\_SB)
->      {
-> @@ -48,6 +48,11 @@
->                      RLEN,   32,
->                      ODAT,   32736
->                  }
-> +
-> +                Field (NRAM, DWordAcc, NoLock, Preserve)
-> +                {
-> +                    NBUF,   32768
-> +                }
->=20
->                  If ((Arg4 =3D=3D Zero))
->                  {
-> @@ -87,6 +92,12 @@
->                      Local3 =3D DerefOf (Local2)
->                      FARG =3D Local3
->                  }
-> +
-> +                Local2 =3D 0x2
-> +                printf("AML:NVDIMM Creating TBUF with bytes %o",
-> Local2)
-> +                CreateField (NBUF, Zero, (Local2 << 3), TBUF)
-> +                Concatenate (Buffer (Zero){}, TBUF, Local3)
-> +                printf("AML:NVDIMM Size of TBUF(Local3) %o",
-> SizeOf(Local3))
->=20
->                  NTFI =3D Local6
->                  Local1 =3D (RLEN - 0x04)
->=20
-> And run it by changing Local2 with different values, It looks on ARM64,
->=20
-> For cases where, Local2 <8, the created buffer size is always 8 bytes
->=20
-> "AML:NVDIMM Creating TBUF with bytes 0000000000000002"
-> "AML:NVDIMM Size of TBUF(Local3) 0000000000000008"
->=20
-> ...
-> "AML:NVDIMM Creating TBUF with bytes 0000000000000005"
-> "AML:NVDIMM Size of TBUF(Local3) 0000000000000008"
->=20
-> And once Local2 >=3D8, it gets the correct size,
->=20
-> "AML:NVDIMM Creating TBUF with bytes 0000000000000009"
-> "AML:NVDIMM Size of TBUF(Local3) 0000000000000009"
->=20
->=20
-> But on x86, the behavior is like,
->=20
-> For cases where, Local2 <4, the created buffer size is always 4 bytes
->=20
-> "AML:NVDIMM Creating TBUF with bytes 00000002"
-> "AML:NVDIMM Size of TBUF(Local3) 00000004"
-> ....
-> "AML:NVDIMM Creating TBUF with bytes 00000003"
-> "AML:NVDIMM Size of TBUF(Local3) 00000004"
->=20
-> And once Local2 >=3D 4, it is ok
->=20
-> "AML:NVDIMM Creating TBUF with bytes 00000005"
-> "AML:NVDIMM Size of TBUF(Local3) 00000005"
-> ...
-> "AML:NVDIMM Creating TBUF with bytes 00000009"
-> "AML:NVDIMM Size of TBUF(Local3) 00000009"
->=20
-> This is the reason why it works on x86 and not on ARM64. Because, if you
-> remember on second iteration of the FIT buffer, the requested buffer size=
- is 4 .
->=20
-> I tried changing the AccessType of the below NBUF field from DWordAcc to
-> ByteAcc/BufferAcc, but no luck.
->=20
-> +                Field (NRAM, DWordAcc, NoLock, Preserve)
-> +                {
-> +                    NBUF,   32768
-> +                }
->=20
-> Not sure what we need to change for ARM64 to create buffer object of size=
- 4
-> here. Please let me know if you have any pointers to debug this further.
->=20
-> (I am attaching both x86 and ARM64 SSDT dsl used for reference)
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
+ include/hw/sd/aspeed_sdhci.h |  1 +
+ hw/arm/aspeed.c              |  2 +-
+ hw/arm/aspeed_ast2600.c      |  2 ++
+ hw/arm/aspeed_soc.c          |  2 ++
+ hw/sd/aspeed_sdhci.c         | 11 +++++++++--
+ 5 files changed, 15 insertions(+), 3 deletions(-)
 
-(+Jonathan)
-
-Thanks to Jonathan for taking a fresh look at this issue and spotting this,
-https://elixir.bootlin.com/linux/v5.5-rc5/source/drivers/acpi/acpica/utmisc=
-.c#L109
-
-And, from ACPI 6.3, table 19-419
-
-"If the Buffer Field is smaller than or equal to the size of an Integer (in=
- bits), it
-will be treated as an Integer. Otherwise, it will be treated as a Buffer. T=
-he size
-of an Integer is indicated by the Definition Block table header's Revision =
-field.
-A Revision field value less than 2 indicates that the size of an Integer is=
- 32 bits.
-A value greater than or equal to 2 signifies that the size of an Integer is=
- 64 bits."
-
-It looks like the main reason for the difference in behavior of the buffer =
-object
-size between x86 and ARM/virt, is because of the Revision number used in th=
-e
-DSDT table. On x86 it is 1 and ARM/virt it is 2.
-
-So most likely,
-
->     CreateField (ODAT, Zero, Local1, OBUF)
->     Concatenate (Buffer (Zero){}, OBUF, Local7)
-
-defaults to the minimum integer byte length based on DSDT revision number.
-
-I tried changing the DSDT rev number of x86 code to 2,
+diff --git a/include/hw/sd/aspeed_sdhci.h b/include/hw/sd/aspeed_sdhci.h
+index dfdab4379021..dffbb46946b9 100644
+--- a/include/hw/sd/aspeed_sdhci.h
++++ b/include/hw/sd/aspeed_sdhci.h
+@@ -24,6 +24,7 @@ typedef struct AspeedSDHCIState {
+     SysBusDevice parent;
 =20
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 614e48ff38..2941edab8d 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2257,7 +2257,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-=A0 =A0 =A0g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len)=
-;
-=A0 =A0 =A0build_header(linker, table_data,
-=A0 =A0 =A0 =A0 =A0(void *)(table_data->data + table_data->len - dsdt->buf-=
->len),
-- =A0 =A0 =A0 =A0"DSDT", dsdt->buf->len, 1, NULL, NULL);
-+ =A0 =A0 =A0 =A0"DSDT", dsdt->buf->len, 2, NULL, NULL);
-=A0 =A0 =A0free_aml_allocator();
-=A0}
-
-And the same issue was reported by Guest Kernel,
-
-[ =A0 =A01.636672] nfit ACPI0012:00: found a zero length table '0' parsing =
-nfit
-
-
-With a quick fix to the nvdimm aml code(below) everything seems to work
-now. But again this may not be the right fix/approach for this.
-
-Please take a look and let me know.
-
-Thanks,
-Shameer
-
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 64eacfad08..621f9ffd41 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -1192,15 +1192,18 @@ static void nvdimm_build_fit(Aml *dev)
-=A0 =A0 =A0aml_append(method, ifctx);
-=A0
-=A0 =A0 =A0aml_append(method, aml_store(aml_sizeof(buf), buf_size));
-- =A0 =A0aml_append(method, aml_subtract(buf_size,
-- =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0am=
-l_int(4) /* the size of "STAU" */,
-- =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0bu=
-f_size));
-=A0
-=A0 =A0 =A0/* if we read the end of fit. */
-- =A0 =A0ifctx =3D aml_if(aml_equal(buf_size, aml_int(0)));
-+ =A0 =A0ifctx =3D aml_if(aml_equal(aml_subtract(buf_size,
-+ =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 aml_sizeof(aml_in=
-t(0)), NULL),
-+ =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 aml_int(0)));
-=A0 =A0 =A0aml_append(ifctx, aml_return(aml_buffer(0, NULL)));
-=A0 =A0 =A0aml_append(method, ifctx);
-=A0
-+ =A0 =A0aml_append(method, aml_subtract(buf_size,
-+ =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0am=
-l_int(4) /* the size of "STAU" */,
-+ =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0bu=
-f_size));
+     SDHCIState slots[ASPEED_SDHCI_NUM_SLOTS];
++    uint8_t num_slots;
+=20
+     MemoryRegion iomem;
+     qemu_irq irq;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index cc06af4fbb3e..4174e313cae5 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -263,7 +263,7 @@ static void aspeed_machine_init(MachineState *machine=
+)
+         amc->i2c_init(bmc);
+     }
+=20
+-    for (i =3D 0; i < ARRAY_SIZE(bmc->soc.sdhci.slots); i++) {
++    for (i =3D 0; i < bmc->soc.sdhci.num_slots; i++) {
+         SDHCIState *sdhci =3D &bmc->soc.sdhci.slots[i];
+         DriveInfo *dinfo =3D drive_get_next(IF_SD);
+         BlockBackend *blk;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 89e4b0095041..fb73c4043ea3 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -199,6 +199,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
+     sysbus_init_child_obj(obj, "sdc", OBJECT(&s->sdhci), sizeof(s->sdhci=
+),
+                           TYPE_ASPEED_SDHCI);
+=20
++    object_property_set_int(OBJECT(&s->sdhci), 2, "num-slots", &error_ab=
+ort);
 +
-=A0 =A0 =A0aml_append(method, aml_create_field(buf,
-=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0aml_int(4 * BITS=
-_PER_BYTE), /* offset at byte 4.*/
-=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0aml_shiftleft(bu=
-f_size, aml_int(3)), "BUFF"));
-
-
-
-
+     /* Init sd card slot class here so that they're under the correct pa=
+rent */
+     for (i =3D 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
+         sysbus_init_child_obj(obj, "sdhci[*]", OBJECT(&s->sdhci.slots[i]=
+),
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index a6237e594017..c15ceb683950 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -209,6 +209,8 @@ static void aspeed_soc_init(Object *obj)
+     sysbus_init_child_obj(obj, "sdc", OBJECT(&s->sdhci), sizeof(s->sdhci=
+),
+                           TYPE_ASPEED_SDHCI);
+=20
++    object_property_set_int(OBJECT(&s->sdhci), 2, "num-slots", &error_ab=
+ort);
++
+     /* Init sd card slot class here so that they're under the correct pa=
+rent */
+     for (i =3D 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
+         sysbus_init_child_obj(obj, "sdhci[*]", OBJECT(&s->sdhci.slots[i]=
+),
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+index cff3eb7dd21e..939d1510dedb 100644
+--- a/hw/sd/aspeed_sdhci.c
++++ b/hw/sd/aspeed_sdhci.c
+@@ -13,6 +13,7 @@
+ #include "qapi/error.h"
+ #include "hw/irq.h"
+ #include "migration/vmstate.h"
++#include "hw/qdev-properties.h"
+=20
+ #define ASPEED_SDHCI_INFO            0x00
+ #define  ASPEED_SDHCI_INFO_RESET     0x00030000
+@@ -120,14 +121,14 @@ static void aspeed_sdhci_realize(DeviceState *dev, =
+Error **errp)
+=20
+     /* Create input irqs for the slots */
+     qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_sdhci_set_ir=
+q,
+-                                        sdhci, NULL, ASPEED_SDHCI_NUM_SL=
+OTS);
++                                        sdhci, NULL, sdhci->num_slots);
+=20
+     sysbus_init_irq(sbd, &sdhci->irq);
+     memory_region_init_io(&sdhci->iomem, OBJECT(sdhci), &aspeed_sdhci_op=
+s,
+                           sdhci, TYPE_ASPEED_SDHCI, 0x1000);
+     sysbus_init_mmio(sbd, &sdhci->iomem);
+=20
+-    for (int i =3D 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
++    for (int i =3D 0; i < sdhci->num_slots; ++i) {
+         Object *sdhci_slot =3D OBJECT(&sdhci->slots[i]);
+         SysBusDevice *sbd_slot =3D SYS_BUS_DEVICE(&sdhci->slots[i]);
+=20
+@@ -174,6 +175,11 @@ static const VMStateDescription vmstate_aspeed_sdhci=
+ =3D {
+     },
+ };
+=20
++static Property aspeed_sdhci_properties[] =3D {
++    DEFINE_PROP_UINT8("num-slots", AspeedSDHCIState, num_slots, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(classp);
+@@ -181,6 +187,7 @@ static void aspeed_sdhci_class_init(ObjectClass *clas=
+sp, void *data)
+     dc->realize =3D aspeed_sdhci_realize;
+     dc->reset =3D aspeed_sdhci_reset;
+     dc->vmsd =3D &vmstate_aspeed_sdhci;
++    dc->props =3D aspeed_sdhci_properties;
+ }
+=20
+ static TypeInfo aspeed_sdhci_info =3D {
+--=20
+2.21.1
 

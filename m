@@ -1,171 +1,184 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp24321035lff;
-        Mon, 6 Jan 2020 23:39:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzzHyAvzeLPEznKvYHgKIaJAUWeYPmu/163Uf+sDqaixN5KV1WbAol2c7+EjTbVRKkENYRA
-X-Received: by 2002:a05:6830:1e16:: with SMTP id s22mr108506578otr.340.1578382765194;
-        Mon, 06 Jan 2020 23:39:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578382765; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp24458535lff;
+        Tue, 7 Jan 2020 02:24:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwpaAg+dTNgmagimLeMZF6BlXD/9sODSpX8Q3SA+s+5RjL8AOX6m1GFU5EeG9yx/XV1GrCJ
+X-Received: by 2002:ac8:3463:: with SMTP id v32mr76663461qtb.8.1578392658220;
+        Tue, 07 Jan 2020 02:24:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578392658; cv=none;
         d=google.com; s=arc-20160816;
-        b=L9qsfWqLFB4Pcez0g6zLqR1V4IHLMPIKdVAsQQGjV/sGXGxppfvIgBCcgprZj9lVUn
-         qjx3jsTximVvJYMl7aJAyMjBn1FBgfAEgkiTpqk5kwsCA3brR/3gOWDglAH+WyhS2nMk
-         ZlpAIN1VzClKUIoGXiYVARsU0/AbvYrm5eho6//ld4F74xWSqp62Wdu+dj6JQ5Y8XNIU
-         MBWVLyRtrLrv+DqRujQ0W3Rgkz1Y7X4CRMtY7J5a64wkGmplctHypmGTzw8LLaXO0dVe
-         VYZdAJdPzyfHPQ8YvwWyf7wQ8R768ezhyV/bY1juyEs/Q4ghkoj/4tMhgxbHpQig/Ssm
-         DDjg==
+        b=l4L8tVXg6GOk3TKv48f6oElVt2IQcScaRfGMjGZHIs5lshVQL3D1BqBb0Sj0gBFVsR
+         GixAhQfSB9HoGcpOspcb+zU46C/wUlrmli0wWephbTT7h7CqGXb9DSkto4zQnS0/QF1r
+         eWqKMGLakMNncjM557g4ZNnMuTy0uwBsYJkoFgTMr8AKYK8McTeQsX9KI+H0wvnZfCRd
+         qhi2tv2blX0h1LMyNq6Z7r4RF1DrIW7AZVLOlRYnC+vqbca+n2cXIF01cH59zq/d6YY7
+         XEy+oslDk7ysjSZRflz/G5Dz3zW49rWsQ1tcy/NKHu3WTyJfj47oNNdhRm2SzS/5sAO6
+         37mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:cc:to:subject:dkim-signature;
-        bh=XP6X6jfo2D1Ntt4i7WREXuOToJDDJqraHYyom/OfMhg=;
-        b=Y7V6dc5qTTY1xstIuTnXY3XGd516EM18lmoE86BIAlQsdBF+pzV2+3D86z2uFWygMF
-         Z1VXbn6OWTrORfkcPGKT0i+vLb8eM/8VWgZDZvYGPme60kyO5JGGYCrsoitogBgFN9kJ
-         L05Ocw/+kyROwNJRbS4lbL6a/TvUK73r2p2AiQNQk+SIf37KTAo2xM2DC2Uc+EEhVvyl
-         W94dtezO5jmH0aiIeuPY/03bnFlkFDqrfYQDVNGYBbMsUsgjy4roNVb0cG5vb9c2GV/q
-         A+JtEpgLBFBH4tywmD+ohP2Cv53ZeiXelrzw2YIz6Ie9gLkCqGvgp70F2I6Z9WMHcTWS
-         /glA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=YEFNM/oy8Cq7YUXJMV4fPNXxRE6yOF0JHPTPbwWQ/Wk=;
+        b=mOiyr62pOafobLUXWumtqf8gwKOAh4Bi57fZoM87ffHV5ioY3F6cEh+Qx1HFyvm3hG
+         d5Yc5llYlPCiNZhdL6JDrBCE1JPxG926M1sli31GqjSZ/RDCMB0QKQ0oxJQFx/BWkmSt
+         dMs/tjDPM1RodVsxSGuumufK0nrO8Bv0Ic7r6pkpdv/v1+OxrEq3ZW3LONImMl5IUFbC
+         gU1doGtjVeMAk1zDACJM87TQDuiJhKE/rvGXqh+i7+0iAvPEuLqCFyf/rHRDjIyVELoL
+         6iFPoWwddGZUx6SfwMD6Znd4F2p09BlmUAiJ0anOMGstBkpxgZNkwa+suW0VEL+oJnrP
+         T3RA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fNqETqSF;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id p16si38727695oto.287.2020.01.06.23.39.25;
-        Mon, 06 Jan 2020 23:39:25 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=oVjxiN6p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id df10si30461262qvb.155.2020.01.07.02.24.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 07 Jan 2020 02:24:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fNqETqSF;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726428AbgAGHjY (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 7 Jan 2020 02:39:24 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20888 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1725781AbgAGHjX (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 7 Jan 2020 02:39:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1578382762;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references:openpgp:openpgp;
-        bh=XP6X6jfo2D1Ntt4i7WREXuOToJDDJqraHYyom/OfMhg=;
-        b=fNqETqSFQQZT+C77IEqFUjzPfFv//9JD0kTNfDgSdDbsdcBnhcrgHyJO9DsbbFlNqNS/ut
-        vCXmfO5eA1oU6qba9KR2ZFNrf8z6qm3Dk5zVoYkg5vlQ2RGClfKlQ7nM3Un23SOFksWYai
-        3kGWrub8z6QqFudEo7iwS6VYWBXsJkg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-323-r5ygW_KtMd6V1DRyzLNExQ-1; Tue, 07 Jan 2020 02:39:19 -0500
-X-MC-Unique: r5ygW_KtMd6V1DRyzLNExQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5E214800D4C;
-        Tue,  7 Jan 2020 07:39:17 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-116.ams2.redhat.com [10.36.116.116])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 074FB84672;
-        Tue,  7 Jan 2020 07:39:11 +0000 (UTC)
-Subject: Re: [kvm-unit-tests PATCH 14/16] arm/run: Allow Migration tests
-To:     Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
-        maz@kernel.org, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com
-References: <20191216140235.10751-1-eric.auger@redhat.com>
- <20191216140235.10751-15-eric.auger@redhat.com>
-From:   Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <9b03fb14-008b-549b-9336-d5e91208a54f@redhat.com>
-Date:   Tue, 7 Jan 2020 08:39:10 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+       dkim=fail header.i=@linaro.org header.s=google header.b=oVjxiN6p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45870 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iom24-0003aR-Dh
+	for alex.bennee@linaro.org; Tue, 07 Jan 2020 05:24:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50181)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <jean-philippe@linaro.org>) id 1ioloq-0001kH-5c
+ for qemu-devel@nongnu.org; Tue, 07 Jan 2020 05:10:37 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <jean-philippe@linaro.org>) id 1ioloo-0005xW-MS
+ for qemu-devel@nongnu.org; Tue, 07 Jan 2020 05:10:35 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:52450)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
+ id 1ioloo-0005vp-B7
+ for qemu-devel@nongnu.org; Tue, 07 Jan 2020 05:10:34 -0500
+Received: by mail-wm1-x342.google.com with SMTP id p9so18272089wmc.2
+ for <qemu-devel@nongnu.org>; Tue, 07 Jan 2020 02:10:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=YEFNM/oy8Cq7YUXJMV4fPNXxRE6yOF0JHPTPbwWQ/Wk=;
+ b=oVjxiN6pox1UL+86wboFMZ0EFcCAwlMoRKMJpVZ/r1Pn57cAKc9Ow+bWZrDQeeY8ug
+ o9hBh9lp0gwVmDIG0wR9NtfJvOpxdGZX/lfOQW+uT7Z4/z5maHoIV8q+V2SNGYay1Uh4
+ zvRiP2rx47NtHvoGt7WWw/6dD++f07Xdshaw9fPxHC/AsB26LoRok0l9QlYxbrKvFipm
+ F8uv3iQXYcTanGSoncRJLkiYYCeBBBbsSGfSElNJBbRcWwmcHb388e0mEYJpzn5ZWweT
+ x2dolzPJdGs+iuVgbS6bXhMXZtGcOsng3MW0n/rMCnlYkmzuwMQXd3rgU9wbikvIZKht
+ KT/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=YEFNM/oy8Cq7YUXJMV4fPNXxRE6yOF0JHPTPbwWQ/Wk=;
+ b=TgFEi0eBwzhGQqZwpkNzJr2+iPUNyed5NylBmQTna4ebdL5zdtH7i9nLEAyYj8zaK4
+ 0b88q4Ysfc1P/XZmUVNTqcghB9x3epPrEMHN2F47BtOdbDdx4q8katTpdBPqyyX5LboK
+ 9D1jFQcADBolHr7JH/mxjtFZAnKZJZWJarryQnv5/IWqFeS30RIZXoLblqVSFd7bvkQE
+ OemXZ95jBSA2yvHt8NW/TMg5bJoBs3IUofoJRQ4bmfsk76GFjkKpmRArTR5YTt0Vayok
+ ao2Xf8PWjWwoRzI90sWQ6UUCxQcn0XyOSUQGHT6/lhE/v7WrkoaY9WBE3E+wsG1EF5by
+ cx7A==
+X-Gm-Message-State: APjAAAV/O38Eos3q2B8JY5VLNHGMpl97DfgtyUQxZcDJ0QdPtC4QHm8E
+ 6wZ8+RjimCWYTsZcZywJDS9dJg==
+X-Received: by 2002:a7b:c19a:: with SMTP id y26mr39069782wmi.152.1578391831321; 
+ Tue, 07 Jan 2020 02:10:31 -0800 (PST)
+Received: from myrica (adsl-84-227-176-239.adslplus.ch. [84.227.176.239])
+ by smtp.gmail.com with ESMTPSA id h8sm78750914wrx.63.2020.01.07.02.10.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Jan 2020 02:10:30 -0800 (PST)
+Date: Tue, 7 Jan 2020 11:10:24 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Peter Xu <peterx@redhat.com>
+Subject: Re: [PATCH for-5.0 v11 08/20] virtio-iommu: Implement translate
+Message-ID: <20200107101024.GB832497@myrica>
+References: <20191210193342.GJ3352@xz-x1>
+ <44c0041d-68ad-796f-16cc-4bab7ba0f164@redhat.com>
+ <20191219133308.GA4246@xz-x1>
+ <9d58b293-ada0-353e-bba2-ad1f538dfc62@redhat.com>
+ <20191219144936.GB50561@xz-x1>
+ <9ec9d0d5-062b-f96b-c72c-4d15865ff9a1@redhat.com>
+ <20191220162642.GA2626852@myrica> <20191220165100.GA3780@xz-x1>
+ <20200106170634.GF2062@myrica> <20200106175850.GC219677@xz-x1>
 MIME-Version: 1.0
-In-Reply-To: <20191216140235.10751-15-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: I79YTu0H5q39
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200106175850.GC219677@xz-x1>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::342
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, jean-philippe.brucker@arm.com,
+ quintela@redhat.com, qemu-devel@nongnu.org, armbru@redhat.com,
+ Auger Eric <eric.auger@redhat.com>, bharatb.linux@gmail.com,
+ qemu-arm@nongnu.org, dgilbert@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rK3yPnxVXsYX
 
-On 16/12/2019 15.02, Eric Auger wrote:
-> Let's link getchar.o to use puts and getchar from the
-> tests.
+On Mon, Jan 06, 2020 at 12:58:50PM -0500, Peter Xu wrote:
+> On Mon, Jan 06, 2020 at 06:06:34PM +0100, Jean-Philippe Brucker wrote:
+> > On Fri, Dec 20, 2019 at 11:51:00AM -0500, Peter Xu wrote:
+> > > On Fri, Dec 20, 2019 at 05:26:42PM +0100, Jean-Philippe Brucker wrote:
+> > > > There is at the virtio transport level: the driver sets status to
+> > > > FEATURES_OK once it accepted the feature bits, and to DRIVER_OK once its
+> > > > fully operational. The virtio-iommu spec says:
+> > > > 
+> > > >   If the driver does not accept the VIRTIO_IOMMU_F_BYPASS feature, the
+> > > >   device SHOULD NOT let endpoints access the guest-physical address space.
+> > > > 
+> > > > So before features negotiation, there is no access. Afterwards it depends
+> > > > if the VIRTIO_IOMMU_F_BYPASS has been accepted by the driver.
+> > > 
+> > > Before enabling virtio-iommu device, should we still let the devices
+> > > to access the whole system address space?  I believe that's at least
+> > > what Intel IOMMUs are doing.  From code-wise, its:
+> > > 
+> > >     if (likely(s->dmar_enabled)) {
+> > >         success = vtd_do_iommu_translate(vtd_as, vtd_as->bus, vtd_as->devfn,
+> > >                                          addr, flag & IOMMU_WO, &iotlb);
+> > >     } else {
+> > >         /* DMAR disabled, passthrough, use 4k-page*/
+> > >         iotlb.iova = addr & VTD_PAGE_MASK_4K;
+> > >         iotlb.translated_addr = addr & VTD_PAGE_MASK_4K;
+> > >         iotlb.addr_mask = ~VTD_PAGE_MASK_4K;
+> > >         iotlb.perm = IOMMU_RW;
+> > >         success = true;
+> > >     }
+> > > 
+> > > From hardware-wise, an IOMMU should be close to transparent if you
+> > > never enable it, imho.
+> > 
+> > For hardware that's not necessarily the best choice. As cited in my
+> > previous reply it has been shown to introduce vulnerabilities since
+> > malicious devices can DMA during boot, before the OS takes control of the
+> > IOMMU. The Arm SMMU allows an implementation to adopt a deny policy by
+> > default.
 > 
-> Then allow tests belonging to the migration group to
-> trigger the migration from the test code by putting
-> "migrate" into the uart. Then the code can wait for the
-> migration completion by using getchar().
-> 
-> The __getchar implement is minimalist as it just reads the
-> data register. It is just meant to read the single character
-> emitted at the end of the migration by the runner script.
-> 
-> It is not meant to read more data (FIFOs are not enabled).
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  arm/Makefile.common |  2 +-
->  arm/run             |  2 +-
->  lib/arm/io.c        | 13 +++++++++++++
->  3 files changed, 15 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arm/Makefile.common b/arm/Makefile.common
-> index 7cc0f04..327f112 100644
-> --- a/arm/Makefile.common
-> +++ b/arm/Makefile.common
-> @@ -32,7 +32,7 @@ CFLAGS += -I $(SRCDIR)/lib -I $(SRCDIR)/lib/libfdt -I lib
->  asm-offsets = lib/$(ARCH)/asm-offsets.h
->  include $(SRCDIR)/scripts/asm-offsets.mak
->  
-> -cflatobjs += lib/util.o
-> +cflatobjs += lib/util.o lib/getchar.o
->  cflatobjs += lib/alloc_phys.o
->  cflatobjs += lib/alloc_page.o
->  cflatobjs += lib/vmalloc.o
-> diff --git a/arm/run b/arm/run
-> index 277db9b..a390ca5 100755
-> --- a/arm/run
-> +++ b/arm/run
-> @@ -61,6 +61,6 @@ fi
->  M+=",accel=$ACCEL"
->  command="$qemu -nodefaults $M -cpu $processor $chr_testdev $pci_testdev"
->  command+=" -display none -serial stdio -kernel"
-> -command="$(timeout_cmd) $command"
-> +command="$(migration_cmd) $(timeout_cmd) $command"
->  
->  run_qemu $command "$@"
-> diff --git a/lib/arm/io.c b/lib/arm/io.c
-> index 99fd315..aa9e1b5 100644
-> --- a/lib/arm/io.c
-> +++ b/lib/arm/io.c
-> @@ -87,6 +87,19 @@ void puts(const char *s)
->  	spin_unlock(&uart_lock);
->  }
->  
-> +/*
-> + * Minimalist implementation for migration completion detection.
-> + * Needs to be improved for more advanced Rx cases
-> + */
-> +int __getchar(void)
-> +{
-> +	int ret;
-> +
-> +	ret =  readb(uart0_base);
+> I see.  But then how to read a sector from the block to at least boot
+> an OS if we use a default-deny policy?  Does it still need a mapping
+> that is established somehow by someone before hand?
 
-Duplicated space before "readb"...
+Yes, it looks like EDK II uses IOMMU operations in order to access those
+devices on platforms where the IOMMU isn't default-bypass (AMD SEV support
+is provided by edk2, and a VT-d driver seems provided by edk2-platforms).
+However for OVMF we could just set the bypass feature bit in virtio-iommu
+device, which doesn't even requires setting up the virtqueue.
 
-> +	if (!ret)
-> +		return -1;
-> +	return ret;
-> +}
->  
->  /*
->   * Defining halt to take 'code' as an argument guarantees that it will
-> 
+I'm missing a piece of the puzzle for Arm platforms though, because it
+looks like Trusted Firmware-A sets up the default-deny policy on reset
+even when it wasn't hardwired, but doesn't provide a service to create
+SMMUv3 mappings for the bootloader.
 
-... but apart from that nit:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Thanks,
+Jean

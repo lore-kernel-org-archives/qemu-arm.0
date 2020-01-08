@@ -1,48 +1,48 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp614720lff;
-        Wed, 8 Jan 2020 03:32:42 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzCIROoulHt6H/YJ4PWQ0LekgZ9M3YqZty+TmVOVRCZjtWyVANW4sXXHiQykZhM83RNc25G
-X-Received: by 2002:a9d:ed5:: with SMTP id 79mr3878401otj.72.1578483162001;
-        Wed, 08 Jan 2020 03:32:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578483161; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp614745lff;
+        Wed, 8 Jan 2020 03:32:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx4EWuQRH/pN9GH1TMbqdAGLmezx4qUFynQeUb9HiWl18O9Rs3JjlaCEws4Y28tiq2YC6vW
+X-Received: by 2002:a9d:21f4:: with SMTP id s107mr3949330otb.102.1578483163841;
+        Wed, 08 Jan 2020 03:32:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578483163; cv=none;
         d=google.com; s=arc-20160816;
-        b=km2REqUvvOCk1fvFqT2F1xVOqd4irIqtQQchcj7Dj8Wpwmvv8JlrzVTvcPY0hGXoVE
-         mmGyulkfyObEjArLLKcXXPDDICmej+xGq7RDNyPqrxZ54XAk3lYd6VoucJ8J34CHkydw
-         ruIbBPMUaTCpfw4GBqhAjvLry4otwKUrAfwfi81VL97KZDvQeMQONXnhwVEaidsDrmG7
-         jhYgVz0u1JW4SJC8CHcZX/BsyFrpkapnrrUcE8g2szRM0ISze6o2Oj4rM4dxz/Zs+9Pn
-         9VAyEm4T92fgsXSoV4joNdcPhVfg+KYkV+TP3nbSGlUgI3WVLrtvIGrl3XU32dyYRDoR
-         prhA==
+        b=sKVTzMXAhKxoURA66AYkawNUfNbiT/vRoPsoBolHSIndqUYXFD85saOyHK5Fr1S/ek
+         eaO3D9aWPio6C4pdDsmLJyq8EuJFd1GL3bWBEBIreHmCyI/OS3nlWJEqq7O2SeyK+GIA
+         f5HxnU+AHjk6vq6RtqSxl17cxb0CY97ibONuQR5IdzcL0JnaBzUAjljMwj1BfO5ln0iF
+         Yi2ojnhdujqsTLIGligYVbTCAx1o3NakQJcrNlIDl2ABHushyzfSZBBLObE+esDNqpZn
+         yy8JeuJKJH7wZg+c2JFVLP0v8AAaGt1FObr6j7bgWaMg89sD+3TzsCv7TID3DTPxLLMi
+         PBgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=chDhsELoH4YlkICILoytx5t7k5GgDjaPip0Xh3fqio0=;
-        b=hqw2pCxN3M+4Uqwy1dO+hJrLzBkzgR1NGk7wLgqbiBAYZ2CeIWjc6xIeLvxTW9MGhu
-         qkod0A2G9h6zqE9N/A2/+jrS3KxwwMu7Rffg0O8zJvxDcSTiEzdh6TBYGzo6YyQjW+Qx
-         GynIPRgQ9/gPfpE9E3NMwfhqTS4czy0b39GiUP8/TkzXd/Swe3aMGtjP72g1vCggy295
-         fWnCt3YuV5wVK6g+MhZ98nwT+daq8XFneGajtx0FmPkg2e1Okj2OQKu3TTU1G+D4Y7qe
-         /3P5U0Fn/KhhnRl5nWSl0UcLMy9rOQBHUNgXdmMQ2oC98GvaPWVka5zhvA8VVjGiVEQw
-         tfQA==
+        bh=LOV3w0pg0HIKf4aBi/WkZb5ewekEfiYoyBwFC9oB0bg=;
+        b=zi+V8xDyZb71RbQKzCBq8ap1MNow93Q/2WxSLVtBGqiLqZxdOnAapwDSDaNIuf/Jlf
+         nn4s7Wo4NF1zqiaiNYLeSvInkBFcwy0KFXeUO/flFwhkuGimfoyZQPYIpD/Wh0XhdJjI
+         BBjfVbiom5kHoAEr3IjAaJjFgZK9Ygs5gd5voxV2/YwHN0IvcaWX1EqfGoMLic9qd6mh
+         2XJYKKatyQXvNj/v49PYNOsx8kVoazwKb5YvcONal6qcxzm41df0sWZGFx4ikBp3Dqqf
+         bNSzvKD3h0jwjDl26zd5CvEk+NW3E3pU8kbQo7HZBU5IJ3PHjP8o+8y2L1TczEhHYYny
+         I2rw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a12si1673119oie.87.2020.01.08.03.32.41;
-        Wed, 08 Jan 2020 03:32:41 -0800 (PST)
+        by mx.google.com with ESMTP id a12si1673119oie.87.2020.01.08.03.32.43;
+        Wed, 08 Jan 2020 03:32:43 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727088AbgAHLcl (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Wed, 8 Jan 2020 06:32:41 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:9132 "EHLO huawei.com"
+        id S1727198AbgAHLcm (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Wed, 8 Jan 2020 06:32:42 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:34722 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727158AbgAHLck (ORCPT <rfc822;kvm@vger.kernel.org>);
+        id S1726891AbgAHLck (ORCPT <rfc822;kvm@vger.kernel.org>);
         Wed, 8 Jan 2020 06:32:40 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id AF9E8A0369AD87D797C2;
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id C611F54EA6A0E52F86F0;
         Wed,  8 Jan 2020 19:32:37 +0800 (CST)
 Received: from localhost.localdomain (10.151.151.249) by
  DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
- 14.3.439.0; Wed, 8 Jan 2020 19:32:28 +0800
+ 14.3.439.0; Wed, 8 Jan 2020 19:32:29 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <pbonzini@redhat.com>, <gengdongjiu@huawei.com>, <mst@redhat.com>,
         <imammedo@redhat.com>, <shannon.zhaosl@gmail.com>,
@@ -52,9 +52,9 @@ To:     <pbonzini@redhat.com>, <gengdongjiu@huawei.com>, <mst@redhat.com>,
         <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
         <qemu-arm@nongnu.org>
 CC:     <zhengxiang9@huawei.com>, <linuxarm@huawei.com>
-Subject: [PATCH v22 4/9] ACPI: Build Hardware Error Source Table
-Date:   Wed, 8 Jan 2020 19:32:18 +0800
-Message-ID: <1578483143-14905-5-git-send-email-gengdongjiu@huawei.com>
+Subject: [PATCH v22 5/9] ACPI: Record the Generic Error Status Block address
+Date:   Wed, 8 Jan 2020 19:32:19 +0800
+Message-ID: <1578483143-14905-6-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
 References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
@@ -66,230 +66,168 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: QmMQ9lqDLqCI
+X-TUID: mxFhmrfysZ82
 
-This patch builds Hardware Error Source Table(HEST) via fw_cfg blobs.
-Now it only supports ARMv8 SEA, a type of Generic Hardware Error
-Source version 2(GHESv2) error source. Afterwards, we can extend
-the supported types if needed. For the CPER section, currently it
-is memory section because kernel mainly wants userspace to handle
-the memory errors.
+Record the GHEB address via fw_cfg file, when recording
+a error to CPER, it will use this address to find out
+Generic Error Data Entries and write the error.
 
-This patch follows the spec ACPI 6.2 to build the Hardware Error
-Source table. For more detailed information, please refer to
-document: docs/specs/acpi_hest_ghes.rst
-
-build_append_ghes_notify() will help to add Hardware Error Notification
-to ACPI tables without using packed C structures and avoid endianness
-issues as API doesn't need explicit conversion.
+Make the HEST GHES to a GED device.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
 ---
- hw/acpi/ghes.c           | 118 ++++++++++++++++++++++++++++++++++++++++++++++-
- hw/arm/virt-acpi-build.c |   2 +
- include/hw/acpi/ghes.h   |  40 ++++++++++++++++
- 3 files changed, 159 insertions(+), 1 deletion(-)
+ hw/acpi/generic_event_device.c         | 15 ++++++++++++++-
+ hw/acpi/ghes.c                         | 16 ++++++++++++++++
+ hw/arm/virt-acpi-build.c               | 13 ++++++++++++-
+ include/hw/acpi/generic_event_device.h |  2 ++
+ include/hw/acpi/ghes.h                 |  6 ++++++
+ 5 files changed, 50 insertions(+), 2 deletions(-)
 
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 9cee90c..9bf37e4 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -234,12 +234,25 @@ static const VMStateDescription vmstate_ged_state = {
+     }
+ };
+ 
++static const VMStateDescription vmstate_ghes_state = {
++    .name = "acpi-ghes-state",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields      = (VMStateField[]) {
++        VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_acpi_ged = {
+     .name = "acpi-ged",
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .fields = (VMStateField[]) {
+-        VMSTATE_STRUCT(ged_state, AcpiGedState, 1, vmstate_ged_state, GEDState),
++        VMSTATE_STRUCT(ged_state, AcpiGedState, 1,
++                       vmstate_ged_state, GEDState),
++        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
++                       vmstate_ghes_state, AcpiGhesState),
+         VMSTATE_END_OF_LIST(),
+     },
+     .subsections = (const VMStateDescription * []) {
 diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index b7fdbbb..9d37798 100644
+index 9d37798..68f4abf 100644
 --- a/hw/acpi/ghes.c
 +++ b/hw/acpi/ghes.c
-@@ -34,9 +34,42 @@
- 
- /* The max size in bytes for one error block */
- #define ACPI_GHES_MAX_RAW_DATA_LENGTH       0x400
--
- /* Now only support ARMv8 SEA notification type error source */
- #define ACPI_GHES_ERROR_SOURCE_COUNT        1
-+/* Generic Hardware Error Source version 2 */
-+#define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
-+/* Address offset in Generic Address Structure(GAS) */
-+#define GAS_ADDR_OFFSET 4
-+
-+/*
-+ * Hardware Error Notification
-+ * ACPI 4.0: 17.3.2.7 Hardware Error Notification
-+ * Composes dummy Hardware Error Notification descriptor of specified type
-+ */
-+static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
-+{
-+    /* Type */
-+    build_append_int_noprefix(table, type, 1);
-+    /*
-+     * Length:
-+     * Total length of the structure in bytes
-+     */
-+    build_append_int_noprefix(table, 28, 1);
-+    /* Configuration Write Enable */
-+    build_append_int_noprefix(table, 0, 2);
-+    /* Poll Interval */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Vector */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Switch To Polling Threshold Value */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Switch To Polling Threshold Window */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Error Threshold Value */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Error Threshold Window */
-+    build_append_int_noprefix(table, 0, 4);
-+}
- 
- /*
-  * Build table for the hardware error fw_cfg blob.
-@@ -92,3 +125,86 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
-     bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_FILE,
-         0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
+@@ -23,6 +23,7 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/ghes.h"
+ #include "hw/acpi/aml-build.h"
++#include "hw/acpi/generic_event_device.h"
+ #include "hw/nvram/fw_cfg.h"
+ #include "sysemu/sysemu.h"
+ #include "qemu/error-report.h"
+@@ -208,3 +209,18 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+     build_header(linker, table_data, (void *)(table_data->data + hest_start),
+         "HEST", table_data->len - hest_start, 1, NULL, "");
  }
 +
-+/* Build Generic Hardware Error Source version 2 (GHESv2) */
-+static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
++void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
++                            GArray *hardware_error)
 +{
-+    uint64_t address_offset;
-+    /*
-+     * Type:
-+     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
-+     */
-+    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
-+    /* Source Id */
-+    build_append_int_noprefix(table_data, source_id, 2);
-+    /* Related Source Id */
-+    build_append_int_noprefix(table_data, 0xffff, 2);
-+    /* Flags */
-+    build_append_int_noprefix(table_data, 0, 1);
-+    /* Enabled */
-+    build_append_int_noprefix(table_data, 1, 1);
++    size_t size = 2 * sizeof(uint64_t) + ACPI_GHES_MAX_RAW_DATA_LENGTH;
++    size_t request_block_size = ACPI_GHES_ERROR_SOURCE_COUNT * size;
 +
-+    /* Number of Records To Pre-allocate */
-+    build_append_int_noprefix(table_data, 1, 4);
-+    /* Max Sections Per Record */
-+    build_append_int_noprefix(table_data, 1, 4);
-+    /* Max Raw Data Length */
-+    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
++    /* Create a read-only fw_cfg file for GHES */
++    fw_cfg_add_file(s, ACPI_GHES_ERRORS_FW_CFG_FILE, hardware_error->data,
++                    request_block_size);
 +
-+    address_offset = table_data->len;
-+    /* Error Status Address */
-+    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-+                     4 /* QWord access */, 0);
-+    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-+        address_offset + GAS_ADDR_OFFSET,
-+        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
-+
-+    /*
-+     * Notification Structure
-+     * Now only enable ARMv8 SEA notification type
-+     */
-+    build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
-+
-+    /* Error Status Block Length */
-+    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-+
-+    /*
-+     * Read Ack Register
-+     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
-+     * version 2 (GHESv2 - Type 10)
-+     */
-+    address_offset = table_data->len;
-+    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-+                     4 /* QWord access */, 0);
-+    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-+        address_offset + GAS_ADDR_OFFSET,
-+        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
-+        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t));
-+
-+    /*
-+     * Read Ack Preserve
-+     * We only provide the first bit in Read Ack Register to OSPM to write
-+     * while the other bits are preserved.
-+     */
-+    build_append_int_noprefix(table_data, ~0x1ULL, 8);
-+    /* Read Ack Write */
-+    build_append_int_noprefix(table_data, 0x1, 8);
-+}
-+
-+/* Build Hardware Error Source Table */
-+void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
-+                          BIOSLinker *linker)
-+{
-+    uint64_t hest_start = table_data->len;
-+
-+    /* Hardware Error Source Table header*/
-+    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-+
-+    /* Error Source Count */
-+    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
-+
-+    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
-+
-+    build_header(linker, table_data, (void *)(table_data->data + hest_start),
-+        "HEST", table_data->len - hest_start, 1, NULL, "");
++    /* Create a read-write fw_cfg file for Address */
++    fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
++        NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
 +}
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6819fcf..837bbf9 100644
+index 837bbf9..c8aa94d 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -834,6 +834,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     if (vms->ras) {
+@@ -797,6 +797,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     unsigned dsdt, xsdt;
+     GArray *tables_blob = tables->table_data;
+     MachineState *ms = MACHINE(vms);
++    AcpiGedState *acpi_ged_state;
+ 
+     table_offsets = g_array_new(false, true /* clear */,
+                                         sizeof(uint32_t));
+@@ -831,7 +832,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_spcr(tables_blob, tables->linker, vms);
+ 
+-    if (vms->ras) {
++    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
++                                                       NULL));
++    if (acpi_ged_state &&  vms->ras) {
          acpi_add_table(table_offsets, tables_blob);
          build_ghes_error_table(tables->hardware_errors, tables->linker);
-+        acpi_build_hest(tables_blob, tables->hardware_errors,
-+                             tables->linker);
-     }
+         acpi_build_hest(tables_blob, tables->hardware_errors,
+@@ -925,6 +928,7 @@ void virt_acpi_setup(VirtMachineState *vms)
+ {
+     AcpiBuildTables tables;
+     AcpiBuildState *build_state;
++    AcpiGedState *acpi_ged_state;
  
-     if (ms->numa_state->num_nodes > 0) {
+     if (!vms->fw_cfg) {
+         trace_virt_acpi_setup();
+@@ -955,6 +959,13 @@ void virt_acpi_setup(VirtMachineState *vms)
+     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+                     acpi_data_len(tables.tcpalog));
+ 
++    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
++                                                       NULL));
++    if (acpi_ged_state && vms->ras) {
++        acpi_ghes_add_fw_cfg(&acpi_ged_state->ghes_state,
++                             vms->fw_cfg, tables.hardware_errors);
++    }
++
+     build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
+                                              build_state, tables.rsdp,
+                                              ACPI_BUILD_RSDP_FILE, 0);
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index d157eac..037d2b5 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -61,6 +61,7 @@
+ 
+ #include "hw/sysbus.h"
+ #include "hw/acpi/memory_hotplug.h"
++#include "hw/acpi/ghes.h"
+ 
+ #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+ 
+@@ -95,6 +96,7 @@ typedef struct AcpiGedState {
+     GEDState ged_state;
+     uint32_t ged_event_bitmap;
+     qemu_irq irq;
++    AcpiGhesState ghes_state;
+ } AcpiGedState;
+ 
+ void build_ged_aml(Aml *table, const char* name, HotplugHandler *hotplug_dev,
 diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 3dbda3f..09a7f86 100644
+index 09a7f86..a6761e6 100644
 --- a/include/hw/acpi/ghes.h
 +++ b/include/hw/acpi/ghes.h
-@@ -22,5 +22,45 @@
- #ifndef ACPI_GHES_H
- #define ACPI_GHES_H
+@@ -60,7 +60,13 @@ enum {
+     ACPI_HEST_SRC_ID_RESERVED,
+ };
  
-+/*
-+ * Values for Hardware Error Notification Type field
-+ */
-+enum AcpiGhesNotifyType {
-+    /* Polled */
-+    ACPI_GHES_NOTIFY_POLLED = 0,
-+    /* External Interrupt */
-+    ACPI_GHES_NOTIFY_EXTERNAL = 1,
-+    /* Local Interrupt */
-+    ACPI_GHES_NOTIFY_LOCAL = 2,
-+    /* SCI */
-+    ACPI_GHES_NOTIFY_SCI = 3,
-+    /* NMI */
-+    ACPI_GHES_NOTIFY_NMI = 4,
-+    /* CMCI, ACPI 5.0: 18.3.2.7, Table 18-290 */
-+    ACPI_GHES_NOTIFY_CMCI = 5,
-+    /* MCE, ACPI 5.0: 18.3.2.7, Table 18-290 */
-+    ACPI_GHES_NOTIFY_MCE = 6,
-+    /* GPIO-Signal, ACPI 6.0: 18.3.2.7, Table 18-332 */
-+    ACPI_GHES_NOTIFY_GPIO = 7,
-+    /* ARMv8 SEA, ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_GHES_NOTIFY_SEA = 8,
-+    /* ARMv8 SEI, ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_GHES_NOTIFY_SEI = 9,
-+    /* External Interrupt - GSIV, ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_GHES_NOTIFY_GSIV = 10,
-+    /* Software Delegated Exception, ACPI 6.2: 18.3.2.9, Table 18-383 */
-+    ACPI_GHES_NOTIFY_SDEI = 11,
-+    /* 12 and greater are reserved */
-+    ACPI_GHES_NOTIFY_RESERVED = 12
-+};
-+
-+enum {
-+    ACPI_HEST_SRC_ID_SEA = 0,
-+    /* future ids go here */
-+    ACPI_HEST_SRC_ID_RESERVED,
-+};
++typedef struct AcpiGhesState {
++    uint64_t ghes_addr_le;
++} AcpiGhesState;
 +
  void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
-+void acpi_build_hest(GArray *table_data, GArray *hardware_error,
-+                          BIOSLinker *linker);
+ void acpi_build_hest(GArray *table_data, GArray *hardware_error,
+                           BIOSLinker *linker);
++void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
++                          GArray *hardware_errors);
  #endif
 -- 
 1.8.3.1

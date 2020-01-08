@@ -1,101 +1,105 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1188428lff;
-        Wed, 8 Jan 2020 12:04:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz5WN91DHcy9miR3rwHj+Nusry7PAeM1kU2PdNAjJT6i+keL1L8svnQsX9mBVmJDpvmcgyZ
-X-Received: by 2002:aa7:da52:: with SMTP id w18mr7273903eds.92.1578513841548;
-        Wed, 08 Jan 2020 12:04:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578513841; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1189008lff;
+        Wed, 8 Jan 2020 12:04:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwDVhZtPjyoDrvF7DUq2jLkpHzOjWfD3qYiAzhRLcaPXIlNFrDQXMvkHbgSNxgEy1pmQMpm
+X-Received: by 2002:a05:6402:1694:: with SMTP id a20mr7413234edv.211.1578513872482;
+        Wed, 08 Jan 2020 12:04:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578513872; cv=none;
         d=google.com; s=arc-20160816;
-        b=gWD1AX9rt85MuGdSfDEdiPMvSvhHfS+D2MZ6t5XTY1eC5DFYin6uVqk/dBUOk/G1Rk
-         gt/7nkKf3Zvn6mpOtRMB+xUTGZcdvkg454c80sXz80SG9a3h9Ld1HNCRLCy0fjuiWnDQ
-         AyRbNrVfwLFnt17EfZDSKD2yJOcrMoAkOEnnC4Bjt+zFy14bjh9KDd++FmZao5IbKKAJ
-         UWfccC5+YSQjOXLsHMNs1WVekSChxNNeYBExCoY0EicgFihIiZOEJQcOvofrZrvplh4w
-         o+JqEVnw/NAen83wnMuykCS9fsqV0fb/b7GhORaOBe9NJ+M376yOc1FCZG/W/4aX5VTF
-         NKNQ==
+        b=zKA1G5x5vUczDYpUbDTtoNku5PmksvttNW6V0dNaGAkxPdwu6ngQvIAvoUOuAFevC4
+         wBMWXi4oiDqLF4/5W9FUK5if7tBYjhPyF2MSouFB+6kfgkzimmRNNZbOY3n3WV7B6C58
+         7uDrG0kz8WmaJcqBz7FRIMBaHyqTMW/Lk0g5xnhfpwgqllItk7ypstb9j1kmThXV+UxP
+         PJo2O4FmaxmgfV9J1vp45146lAqziDgaiIOqCkY59IRXRXe8xiP//N9uMGh6z7jUpLkM
+         vGSeUTcE+JGzlWyUR5K+JVrqskgPXaRcB2A3nEjmLt77LJlg53O9LclJBOqsjeTCjmDY
+         OdiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=tJ0nI7Fpsu0bji0D+Ii0nNgAGdbc+5tgc+UAyNq0LSg=;
-        b=Xp1fNiFkX7QJJRt+gzld5Fu9T0dfU6SdyYRKmfY3PvKiVQRwS5l1jS9a3pOarGDJVb
-         9tUEPBEQI3dWQMF+J5zUUVJ8e8d/0k6rOJMlP+cnEYmbtPPFZbZr1BiMlp/Aw0M/JGXL
-         b7vuc4wMWQ1q0+YM8UP6JUap3FskSXm8b0MzNdwI/iWJEitSKiE9YLCIsgirr7Ss7LQo
-         E/yM0HXr5dyr5i4+RgVlQU2aJ6xgu1S0i2wgxVgcAnFG1sNfYoZBRPTX272uG3b378oV
-         Go9maP8QFhWsC+h6CBF+zf7OtYrol8Ci4oBAyMkzrhUJ4jg42UiQS+x9P1ffLgrz0hd7
-         icUA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Eqa4YpaNfuc48h2bwSMiKBQFwH8msqFwuM/LkfTRkog=;
+        b=GbHFR2J+PbWDPoAE3b/gkNNVhZh6ta0P2tNe2bMeNGGWCmFNZat/W8YmkItiKbJ4eq
+         U8Uo0oPEY+hQMRxWklsLaui1PwBTRtsvuvYAwDekw1U67mN2IskxxVRXqhhwdzAQ4TKk
+         ToObBjEYxRYeqQBoMREG7I1mv4G3LubuFHQFkUHDMIDdwLtdL9PC7D2Rigcm37xGvMc6
+         cZZNGjV9QFw4WoJ/AwHCddBg2yWmykmIOHe2PEx0V2oxo7QNbOi3K6HsUSdlSAEcKdlw
+         1F9UADHfgun+jxPuXv0WXjdcQBuYYAI1Nm1a009zRanS0Zk86Rs2viKBlOxaNUku56b1
+         5sIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y+1rqHDT;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oEFVFgfg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gx14si2948298ejb.114.2020.01.08.12.04.01
+        by mx.google.com with ESMTPS id m10si2857280ejb.242.2020.01.08.12.04.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2020 12:04:01 -0800 (PST)
+        Wed, 08 Jan 2020 12:04:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y+1rqHDT;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oEFVFgfg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48688 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipHYe-0003yy-6h
-	for alex.bennee@linaro.org; Wed, 08 Jan 2020 15:04:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35278)
+	id 1ipHZ8-0004c5-Ii
+	for alex.bennee@linaro.org; Wed, 08 Jan 2020 15:04:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35554)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ipHVP-0001HC-8Y
- for qemu-devel@nongnu.org; Wed, 08 Jan 2020 15:00:41 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ipHVb-0001QJ-KR
+ for qemu-devel@nongnu.org; Wed, 08 Jan 2020 15:00:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ipHVN-0002SU-BL
- for qemu-devel@nongnu.org; Wed, 08 Jan 2020 15:00:39 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:34277)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ipHVZ-0002fq-V1
+ for qemu-devel@nongnu.org; Wed, 08 Jan 2020 15:00:51 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55532)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ipHVM-0002R1-Ck; Wed, 08 Jan 2020 15:00:36 -0500
-Received: by mail-wr1-x441.google.com with SMTP id t2so4808715wrr.1;
- Wed, 08 Jan 2020 12:00:36 -0800 (PST)
+ id 1ipHVZ-0002e5-NS; Wed, 08 Jan 2020 15:00:49 -0500
+Received: by mail-wm1-x343.google.com with SMTP id q9so229435wmj.5;
+ Wed, 08 Jan 2020 12:00:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tJ0nI7Fpsu0bji0D+Ii0nNgAGdbc+5tgc+UAyNq0LSg=;
- b=Y+1rqHDT2oAyzhoPOu+ynFRzWKzz9f4WB9Roo0vGIY5jIqSTiNwQpYpEYhkZOF73To
- xorUXQZ053iey1Yj5rg3kXQLXJggwpGr2DMDHVaKCxgjbjq6es6sLbbHewAjFuXWK8g+
- kHI+jU5bHxPWeuPdhYEEPOyCUNmIQpXAeWG/UuqWFwX08rXvyZqK85+6K4oizUZ2Z7N8
- /EVnwqCQVakmvGa4YrCI/v/hEF87uJ74RyUFx5vHDBopRCTh0pF53hj/pLqInQk2FqOB
- MenY95d9cKTyD5D2UldvMxoT/adOuRZ+7oK4lowFZcdkYFh9+4EpHwgFkvqbEHevI9QK
- JxUQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Eqa4YpaNfuc48h2bwSMiKBQFwH8msqFwuM/LkfTRkog=;
+ b=oEFVFgfgKLQK3ve6J9pSUn0r9tHrWERYh/fRbhuuOivm67Ka0QF7syh/gNNhvSH8Zi
+ 82IfR4tx7kJPFjOmDAu+FbWuzhEBHdqR98DZTQwE6zccGc7sLsV1SAUgXjl2dWZOYxz1
+ C5ldyzQqiRc6UFXkkF9l5W4pjN5pOCiT+ECXXkWY5/H7dhUqREiiwBroZxPXs2CtuNYf
+ jfy+2KDz20MnvzraM3ucYIW58rEl+HFQCVUyuTVuapd4Pkyxbp8LsMk6k5b2W+LGjhGU
+ k3anIY/7izHGuVxyg//dMGs3BKWrcFQJSFfLzc5FaNkk+kzJ9khUk+UtqmEvGqlsjfsq
+ QScA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tJ0nI7Fpsu0bji0D+Ii0nNgAGdbc+5tgc+UAyNq0LSg=;
- b=jaNRggGhNRBjD3P6U/kCaR6jVtivhmP2mJFv7IFl56lBJ0iwP/HXpBlHisGCZqtRll
- tDxM5E1gRt1Z2urEw3akf8vHMM3OjNrCZFxQTr3VgAQPgZE7gBRtrYJpY3Mq1MaIXwBu
- bzrFTkgRKesaHp4gcc2p9I5PccBKIZ0VQC85Sj0ek2LKhROFQQsHK3OH3wJD5P0LGgqT
- GJzwM9P5KRwZpZIFGbdPbArqGkzX8G9I+/cm9bg7VuT17y0cXpLvsV05JVOvOy9JZEiO
- a4PvGWNtnl+fYbPizfNwpWGfe1GbqdhCDw1hmhn/Y+NmeljoD0ecn2j57WQwseQOaWi1
- moPg==
-X-Gm-Message-State: APjAAAVyunk8im7kfnL7VpgdUnYTCInLgzJpdpSaPkhWiXCEqjx8cqf7
- JVx7PAzYtu/8Xx/d0IzSHCrhPj48
-X-Received: by 2002:a5d:6a0f:: with SMTP id m15mr6540776wru.40.1578513634432; 
- Wed, 08 Jan 2020 12:00:34 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Eqa4YpaNfuc48h2bwSMiKBQFwH8msqFwuM/LkfTRkog=;
+ b=Nyb6guUNHXEVGeuRMD+pOhJehx+QQdWtOFogWHz735ueZAiU4qcHT5R5yZqrnq2MvP
+ i3QnY+aWNbbjkX8tsmLYmrwQa3O7ywoJU3ShLixbY+afyHSZiquzTPzhVihIzOC8iyTq
+ g2sCJkiZEjvm21dqdVywJeSwgQjRml3ZvG0n1mjcZf3+RXiptFMNysDKy9+2BGv+YXuo
+ 7Q9ESnkFHUa+4g0r4T25Pvmj10gZ9pwbXaxj+/JDa7q3SZuBJGwk9/rm4f7djUeP1oxA
+ iZZsk7u3B9seFB050t7+kxbR8W+uHaXCdsbPI0/c49UYg/5H/fvqVS0tKmJ2MfPhJ/4K
+ 04JQ==
+X-Gm-Message-State: APjAAAUcrhJ+SgOLIUFfz2sHf9s35P4TUoQHOKpcB5hTOXMwP/wThacK
+ Mg0OxW9ok8ioQZdnNkWjlMsOh8ka
+X-Received: by 2002:a1c:6a07:: with SMTP id f7mr312441wmc.171.1578513648464;
+ Wed, 08 Jan 2020 12:00:48 -0800 (PST)
 Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
- by smtp.gmail.com with ESMTPSA id u18sm4970099wrt.26.2020.01.08.12.00.33
+ by smtp.gmail.com with ESMTPSA id u18sm4970099wrt.26.2020.01.08.12.00.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Jan 2020 12:00:33 -0800 (PST)
+ Wed, 08 Jan 2020 12:00:48 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 00/17] Add Allwinner H3 SoC and Orange Pi PC Machine
-Date: Wed,  8 Jan 2020 21:00:03 +0100
-Message-Id: <20200108200020.4745-1-nieklinnenbank@gmail.com>
+Subject: [PATCH v3 13/17] tests/boot_linux_console: Add a quick test for the
+ OrangePi PC board
+Date: Wed,  8 Jan 2020 21:00:16 +0100
+Message-Id: <20200108200020.4745-14-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200108200020.4745-1-nieklinnenbank@gmail.com>
+References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
+X-Received-From: 2a00:1450:4864:20::343
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,180 +112,96 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, Niek Linnenbank <nieklinnenbank@gmail.com>,
- qemu-arm@nongnu.org, philmd@redhat.com
+ qemu-arm@nongnu.org, philmd@redhat.com,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m0YW+4r4LYlA
+X-TUID: wMZjflwmxQN1
 
-Dear QEMU developers,
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Hereby I would like to contribute the following set of patches to QEMU
-which add support for the Allwinner H3 System on Chip and the
-Orange Pi PC machine. The following features and devices are supported:
+This test boots a Linux kernel on a OrangePi PC board and verify
+the serial output is working.
 
- * SMP (Quad Core Cortex A7)
- * Generic Interrupt Controller configuration
- * SRAM mappings
- * SDRAM controller
- * Real Time Clock
- * Timer device (re-used from Allwinner A10)
- * UART
- * SD/MMC storage controller
- * EMAC ethernet connectivity
- * USB 2.0 interfaces
- * Clock Control Unit
- * System Control module
- * Security Identifier device
+The kernel image and DeviceTree blob are built by the Armbian
+project (based on Debian):
+https://www.armbian.com/orange-pi-pc/
 
-Functionality related to graphical output such as HDMI, GPU,
-Display Engine and audio are not included. Recently released
-mainline Linux kernels (4.19 up to latest master), mainline U-Boot
-and NetBSD 9.0-RC1 are known to work.
+If ARM is a target being built, "make check-acceptance" will
+automatically include this test by the use of the "arch:arm" tags.
 
-For full details on how to use the Orange Pi PC machine, see the file
-docs/orangepi.rst which is included as a patch in this series.
+Alternatively, this test can be run using:
 
-The contents of this patch series is available on Github at:
+  $ make check-venv
+  $ ./tests/venv/bin/avocado --show=console,app run -t machine:orangepi-pc tests/acceptance/boot_linux_console.py
+  JOB ID     : 2e4d15eceb13c33672af406f08171e6e9de1414a
+  JOB LOG    : ~/job-results/job-2019-12-17T05.46-2e4d15e/job.log
+  (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi:
+  console: Uncompressing Linux... done, booting the kernel.
+  console: Booting Linux on physical CPU 0x0
+  console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
+  console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+  console: CPU: div instructions available: patching division code
+  console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+  console: OF: fdt: Machine model: Xunlong Orange Pi PC
+  console: Memory policy: Data cache writealloc
+  console: OF: reserved mem: failed to allocate memory for node 'cma@4a000000'
+  console: cma: Failed to reserve 128 MiB
+  console: psci: probing for conduit method from DT.
+  console: psci: PSCIv0.2 detected in firmware.
+  console: psci: Using standard PSCI v0.2 function IDs
+  console: psci: Trusted OS migration not required
+  console: random: get_random_bytes called from start_kernel+0x8d/0x3c2 with crng_init=0
+  console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r8192 d24308 u73728
+  console: Built 1 zonelists, mobility grouping on.  Total pages: 32480
+  console: Kernel command line: printk.time=0 console=ttyS0,115200
+  PASS (8.59 s)
+  JOB TIME   : 8.81 s
 
-  https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v3
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+[NL: rename in commit message Raspbian to Armbian]
+Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+---
+ tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-The followings are currently known issues in this series:
-
-  - NetBSD 9.0-RC1 reads out year 2050 from RTC, while Linux works fine
-  - boot0 custom Allwinner bootloader not yet working
-  - Watchdog not yet implemented, affects U-Boot 'reset' and shutdown/reboot
-     -> This is part of the existing A10 timer that needs to be generalized first
-
-Looking forward to your review comments. I will do my best
-to update the patches where needed.
-
-===== CHANGELOG =====
-v3:
- * hw/rtc/allwinner-rtc.c: add Allwinner RTC device
- * hw/misc/allwinner-h3-dramc.c: add SDRAM Controller device
- * hw/sd/allwinner-h3-sdhost.c: rename to allwinner-sdhost.c and re-use in A10/cubieboard
- * hw/arm/allwinner-h3.c: add Boot ROM support (for starting without -kernel)
- * hw/arm/allwinner-h3.c: add property alias clk0-freq/clk1-freq to the timer
- * hw/arm/allwinner-h3.c: remove unneccessary checks for error_abort != NULL
- * docs/orangepi.rst: add Orange Pi PC documentation
- * hw/arm/orangepi.c: restrict allowed machine->ram_size to 1GiB only
- * hw/arm/orangepi.c: set mc->default_ram_size to 1GiB
- * hw/arm/orangepi.c: renamed memory region identifier to "sdram"
- * hw/arm/orangepi.c: remove unneccessary checks for error_abort != NULL
- * hw/arm/orangepi.c: move adding mc->units_per_default_bus = 1 to patch 0009 (add SD/MMC host controller)
- * hw/arm/orangepi.c: report error when providing unsupported '-bios' argument
- * hw/net/allwinner-h3-emac.c: add missing MII registers: advertised abilities, linked partner abilities
- * hw/net/allwinner-h3-emac.c: add REG_RGMII_STA to read handler
- * hw/net/allwinner-h3-emac.c: use REG_BASIC_CTL_0_RST in reset function
- * hw/net/allwinner-h3-emac.c: add mii_cr, mii_st to VMState
- * hw/misc/allwinner-h3-sid.c: renamed to allwinner-sid.c/.h (generic module)
- * hw/misc/allwinner-h3-sid.c: removed unnecessary call to zero UUID field in init function
- * hw/misc/allwinner-h3-clk.c: add REG_DRAM_CFG register
- * hw/misc/allwinner-h3-clk.c: renamed to allwinner-h3-ccu.c/.h
- * hw/misc/allwinner-h3-cpucfg.c: renamed to allwinner-cpucfg.c/.h (generic module)
- * hw/misc/allwinner-h3-syscon.c: renamed to allwinner-h3-sysctrl.c (and all others)
- * hw/misc/trace-events: remove "*H3" prefixes from trace output
- * hw/*/allwinner-h3-*.c: remove .unaligned = true from MemoryRegionOps
- * hw/*/allwinner-h3-*.c: remove unused realize function
- * hw/*/allwinner-h3-*.c: use AW_H3_*() macro for all opaque variables
- * hw/*/allwinner-h3-*.c: each patch adds new device to enum in allwinner-h3.h and removes from unimpl list
- * hw/*/allwinner-h3-*.c: each patch adds new entry to AW_H3_GIC_SPI_* enum (if applicable)
- * hw/*/allwinner-h3-*.c: rename functions from short aw_h3_*() form to full form (e.g. allwinner-h3-*())
- * include/hw/*/allwinner-h3*.h: provide Doxygen style code comments
-
-v2: https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg03265.html
-    https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v2
-
-v1: https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg00320.html
-    https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v1
-
-With kind regards,
-
-Niek Linnenbank
-
-Niek Linnenbank (13):
-  hw/arm: add Allwinner H3 System-on-Chip
-  hw/arm: add Xunlong Orange Pi PC machine
-  hw/arm/allwinner-h3: add Clock Control Unit
-  hw/arm/allwinner-h3: add USB host controller
-  hw/arm/allwinner-h3: add System Control module
-  hw/arm/allwinner: add CPU Configuration module
-  hw/arm/allwinner: add Security Identifier device
-  hw/arm/allwinner: add SD/MMC host controller
-  hw/arm/allwinner-h3: add EMAC ethernet device
-  hw/arm/allwinner-h3: add Boot ROM support
-  hw/arm/allwinner-h3: add SDRAM controller device
-  hw/arm/allwinner: add RTC device support
-  docs: add Orange Pi PC document
-
-Philippe Mathieu-Daudé (4):
-  tests/boot_linux_console: Add a quick test for the OrangePi PC board
-  tests/boot_linux_console: Add initrd test for the Orange Pi PC board
-  tests/boot_linux_console: Add a SD card test for the OrangePi PC board
-  tests/boot_linux_console: Add a SLOW test booting Ubuntu on OrangePi
-    PC
-
- docs/orangepi.rst                      | 200 ++++++
- default-configs/arm-softmmu.mak        |   1 +
- hw/usb/hcd-ehci.h                      |   1 +
- include/hw/arm/allwinner-a10.h         |   8 +-
- include/hw/arm/allwinner-h3.h          | 164 +++++
- include/hw/misc/allwinner-cpucfg.h     |  54 ++
- include/hw/misc/allwinner-h3-ccu.h     |  67 ++
- include/hw/misc/allwinner-h3-dramc.h   | 107 +++
- include/hw/misc/allwinner-h3-sysctrl.h |  68 ++
- include/hw/misc/allwinner-sid.h        |  61 ++
- include/hw/net/allwinner-sun8i-emac.h  | 103 +++
- include/hw/rtc/allwinner-rtc.h         | 129 ++++
- include/hw/sd/allwinner-sdhost.h       | 136 ++++
- hw/arm/allwinner-a10.c                 |  17 +
- hw/arm/allwinner-h3.c                  | 477 ++++++++++++++
- hw/arm/cubieboard.c                    |  15 +
- hw/arm/orangepi.c                      | 125 ++++
- hw/misc/allwinner-cpucfg.c             | 282 ++++++++
- hw/misc/allwinner-h3-ccu.c             | 243 +++++++
- hw/misc/allwinner-h3-dramc.c           | 358 ++++++++++
- hw/misc/allwinner-h3-sysctrl.c         | 140 ++++
- hw/misc/allwinner-sid.c                | 170 +++++
- hw/net/allwinner-sun8i-emac.c          | 871 +++++++++++++++++++++++++
- hw/rtc/allwinner-rtc.c                 | 386 +++++++++++
- hw/sd/allwinner-sdhost.c               | 848 ++++++++++++++++++++++++
- hw/usb/hcd-ehci-sysbus.c               |  17 +
- MAINTAINERS                            |   9 +
- hw/arm/Kconfig                         |   9 +
- hw/arm/Makefile.objs                   |   1 +
- hw/misc/Makefile.objs                  |   5 +
- hw/misc/trace-events                   |  19 +
- hw/net/Kconfig                         |   3 +
- hw/net/Makefile.objs                   |   1 +
- hw/net/trace-events                    |  10 +
- hw/rtc/Makefile.objs                   |   1 +
- hw/rtc/trace-events                    |   4 +
- hw/sd/Makefile.objs                    |   1 +
- hw/sd/trace-events                     |   7 +
- tests/acceptance/boot_linux_console.py | 151 +++++
- 39 files changed, 5267 insertions(+), 2 deletions(-)
- create mode 100644 docs/orangepi.rst
- create mode 100644 include/hw/arm/allwinner-h3.h
- create mode 100644 include/hw/misc/allwinner-cpucfg.h
- create mode 100644 include/hw/misc/allwinner-h3-ccu.h
- create mode 100644 include/hw/misc/allwinner-h3-dramc.h
- create mode 100644 include/hw/misc/allwinner-h3-sysctrl.h
- create mode 100644 include/hw/misc/allwinner-sid.h
- create mode 100644 include/hw/net/allwinner-sun8i-emac.h
- create mode 100644 include/hw/rtc/allwinner-rtc.h
- create mode 100644 include/hw/sd/allwinner-sdhost.h
- create mode 100644 hw/arm/allwinner-h3.c
- create mode 100644 hw/arm/orangepi.c
- create mode 100644 hw/misc/allwinner-cpucfg.c
- create mode 100644 hw/misc/allwinner-h3-ccu.c
- create mode 100644 hw/misc/allwinner-h3-dramc.c
- create mode 100644 hw/misc/allwinner-h3-sysctrl.c
- create mode 100644 hw/misc/allwinner-sid.c
- create mode 100644 hw/net/allwinner-sun8i-emac.c
- create mode 100644 hw/rtc/allwinner-rtc.c
- create mode 100644 hw/sd/allwinner-sdhost.c
-
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+index 9c6aa2040a..b58308d724 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -400,6 +400,32 @@ class BootLinuxConsole(Test):
+         self.wait_for_console_pattern('Boot successful.')
+         # TODO user command, for now the uart is stuck
+ 
++    def test_arm_orangepi(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:orangepi-pc
++        """
++        deb_url = ('https://apt.armbian.com/pool/main/l/'
++                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path,
++                                            '/boot/vmlinuz-4.20.7-sunxi')
++        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
++        dtb_path = self.extract_from_deb(deb_path, dtb_path)
++
++        self.vm.set_machine('orangepi-pc')
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyS0,115200n8 '
++                               'earlycon=uart,mmio32,0x1c28000')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-append', kernel_command_line)
++        self.vm.launch()
++        console_pattern = 'Kernel command line: %s' % kernel_command_line
++        self.wait_for_console_pattern(console_pattern)
++
+     def test_s390x_s390_ccw_virtio(self):
+         """
+         :avocado: tags=arch:s390x
 -- 
 2.17.1
 

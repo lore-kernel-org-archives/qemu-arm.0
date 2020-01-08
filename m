@@ -1,108 +1,187 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id z21sm3922551wml.5.2020.01.08.07.02.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jan 2020 07:02:57 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 58E2E1FF91;
-	Wed,  8 Jan 2020 15:02:53 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	keithp@keithp.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v3 4/6] tests/tcg: add a dumb-as-bricks semihosting console test
-Date: Wed,  8 Jan 2020 15:02:50 +0000
-Message-Id: <20200108150252.6216-5-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200108150252.6216-1-alex.bennee@linaro.org>
-References: <20200108150252.6216-1-alex.bennee@linaro.org>
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp859873lff;
+        Wed, 8 Jan 2020 07:11:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxkles4EotPdCZDam2X6W6umxAjt/pMK0lSQCsuWrt0+g8fL2xMLtTzckype/HsdjkAQxBb
+X-Received: by 2002:a17:906:3793:: with SMTP id n19mr5263939ejc.85.1578496281089;
+        Wed, 08 Jan 2020 07:11:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578496281; cv=none;
+        d=google.com; s=arc-20160816;
+        b=P/FrxbY51gqPTB0eDqdaucBfAFxb/Fx7G60nltdZi9c1XuXN8FuKmIGrLkI/aE++MZ
+         TmRIDBiJrlMTZALFLNSuvrk56Wxpul3yWeJ+FjNyOyBM0C1kgjcDw2vfE9ooykbl+oYj
+         lqIpWplFlCJx+U6LAjY4JEDnLosy3koebl0fPtaQSrSsgX8tZHnCgspfDtYpZXn1WBw8
+         UeDVlLaqux0psHYBNhxK1p6UlyhbT+5h3t3G+aRVnaKOZRfy3cez5H9Qomyr3dT4u2fj
+         WOWFcluSo2fO2JQbd/zyRJk0YGv19LdC34eJfFsenkhl0eeW0PSzE3tHYn3vV4y7AHu6
+         Zz7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject;
+        bh=m1li1OfNM09Rl5fr8wAPpRSvyLt2peMYcRHnfBLnInY=;
+        b=EHrPMWyOag8kRp4rbcaL5UPfclI50rTIT9xxOkktOTnRit/6jBITd76+Npi2mak3S3
+         ZhmOAsKTlmTfIWWs242MYkxrovLund0USvyY10MILc7KgV32wE35iV/gXiCbgzJXkXYP
+         zFht61e9uSCisFFbu37NbxOiWhOor5JEIl94c0vVdhfRzcT3Gq3JuPSZ5wCpWv2lD16A
+         pxRm0nC4Jh7D1PQ1yEytOFrVxtn4Nc1yuqA3rPYTSLgwEzi+PWFf2HWj0oN4OaqHfEiT
+         B6/7wjuu67xqyYOS3hvXPaLU0rfUgffW4cHFJU1OOBm4SIPlgKiz5guh9UmOPnG1h/H1
+         y9/w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h19si2306782ejx.31.2020.01.08.07.11.20
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 08 Jan 2020 07:11:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45504 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ipCzP-00010s-KD
+	for alex.bennee@linaro.org; Wed, 08 Jan 2020 10:11:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50363)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <laurent@vivier.eu>) id 1ipCz3-0000hI-U7
+ for qemu-arm@nongnu.org; Wed, 08 Jan 2020 10:10:58 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <laurent@vivier.eu>) id 1ipCz2-0007Ec-Mu
+ for qemu-arm@nongnu.org; Wed, 08 Jan 2020 10:10:57 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:44017)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1ipCyi-00075H-Qq; Wed, 08 Jan 2020 10:10:56 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MatZt-1jQkqz3nFz-00cRhy; Wed, 08 Jan 2020 16:10:31 +0100
+Subject: Re: [PATCH v2] arm/translate-a64: fix uninitialized variable warning
+To: pannengyuan@huawei.com, peter.maydell@linaro.org
+References: <20200108023915.52288-1-pannengyuan@huawei.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <4274ef7b-8a2d-cb4f-c002-97d06211e744@vivier.eu>
+Date: Wed, 8 Jan 2020 16:10:29 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20200108023915.52288-1-pannengyuan@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-TUID: Zw824hct7+r+
+X-Provags-ID: V03:K1:EXRRJFu6b3cCD7Ongt0goDgiAyC/7vEBVFleNuALvlgtiX2SoyD
+ hq4XxKpNSSoV/mAC9A5+cNcd5mkbzFUgcvilaz8EAGKUyRDudz3Ub9g13wYNbmAKG0lOje+
+ fiR7ZF00ikwzC+Ra28GQfqdTR7q3iLZdYo0IjZcIwy6L6AxeBoR1V7u29dGUh+w3n+x6dPB
+ 7t72eddL2yYVvQFASoT2Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WSoWEOtO0UU=:qaR+bzvh3rTjjV2KfKBJhq
+ 4XDdbbQPBACeJlR65iSkdOCDMSfcy4i/oVzjARp8o3CGPAEoEey72r+HPcAUhzpW+aMbhszd8
+ 7Xi4r84fPU6Du1OjxUpkM4YileEWD7JOFcxImNZaMlsBiWC2c5CBOTfIC7qfj8KPgrErqDtwP
+ 119OpXKibv65uSDefpV5tcUoRnP9Q3Oxz1/oqHJy0fQW6nodKZaZ/z0RrScH7Vev8eTWF1gEy
+ Yek2jR6OuSI60Cm+7c/+QrZGtAjpY7YedJKBBO3FSGYmftBlYZOXbNaNgXnM9pUAQ/lz2z4sG
+ qMWK80emr9g6QZawRWUQ8/uxHOaTYQcAw35eXJm/y+rClG4dv5E8OgaRgifqJZK0wV1+MFO46
+ 5L2uLSFvxeq2B/BZtl4AbxwStN7VA/DWP1krlJkl0Rzs0D6CzIO9gtpGwnK3RREPgW5pV6qfH
+ BNAPzu+7D2jkTSnK5ogHxgA349UAUF8XAqTp5xtXz/uoSWz4DptYx6oZzKJO/2UGbd7j7Smgm
+ lWdvq3CLWfHDwIacmKI0tiHxN47BIE/NDk3vsTOlOa4FIETmvwQgJtMOMx7dnvNRoMk+HBBnE
+ OjhueJwZpE8ihu7lgg/HgLWAbk1vFC4NSFkFMw65rkOs0fhKZRl4wBIjVntZsuPnlk+Xj/CJI
+ gvhFt+KwVf+KBbIHAjwbhJXxqLyL9e7CUOWcA+TxxbiRgas/D4pinuoTRcGaa3oNc/mrDUEnU
+ WHDDq0zWI+m18+ctyFRly9iQRBHX9bkhEA8017AAypCpth7T2nFLTBJharK/gi1qvbaAuwwYG
+ CDsLt+PfgFbmvqQhLIwcw5dHljDPIAQBrRUBjmT7OR411jBnRJAISaeZ2c2V+r2dF4C5MZLGT
+ 4YUIzLbqz7j1byF1lATA==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 217.72.192.73
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, Euler Robot <euler.robot@huawei.com>,
+ qemu-arm@nongnu.org, zhang.zhanghailiang@huawei.com, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: djFytJY0Gtva
 
-We don't run this during check-tcg as we would need to check stuff is
-echoed back. However we can still build the binary so people can test
-it manually.
+Le 08/01/2020 à 03:39, pannengyuan@huawei.com a écrit :
+> From: Pan Nengyuan <pannengyuan@huawei.com>
+> 
+> Fixes:
+> target/arm/translate-a64.c: In function 'disas_crypto_three_reg_sha512':
+> target/arm/translate-a64.c:13625:9: error: 'genfn' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>     genfn(tcg_rd_ptr, tcg_rn_ptr, tcg_rm_ptr);
+>     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> qemu/target/arm/translate-a64.c:13609:8: error: 'feature' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>     if (!feature) {
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> ---
+> Changes v2 to v1:
+> - add a default label to fix uninitialized warnings(suggested by Richard Henderson)
+> ---
+>  target/arm/translate-a64.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index d4bebbe629..63a3d26687 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -13585,6 +13585,8 @@ static void disas_crypto_three_reg_sha512(DisasContext *s, uint32_t insn)
+>              feature = dc_isar_feature(aa64_sha3, s);
+>              genfn = NULL;
+>              break;
+> +        default:
+> +            g_assert_not_reached();
+>          }
+>      } else {
+>          switch (opcode) {
+> 
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Applied to my trivial-patches branch.
 
----
-v8
-  - actually return the result!
----
- tests/tcg/aarch64/system/semiconsole.c    | 38 +++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.softmmu-target |  9 +++++-
- 2 files changed, 46 insertions(+), 1 deletion(-)
- create mode 100644 tests/tcg/aarch64/system/semiconsole.c
-
-diff --git a/tests/tcg/aarch64/system/semiconsole.c b/tests/tcg/aarch64/system/semiconsole.c
-new file mode 100644
-index 00000000000..bfe7c9e26b4
---- /dev/null
-+++ b/tests/tcg/aarch64/system/semiconsole.c
-@@ -0,0 +1,38 @@
-+/*
-+ * Semihosting Console Test
-+ *
-+ * Copyright (c) 2019 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include <inttypes.h>
-+#include <minilib.h>
-+
-+#define SYS_READC 0x7
-+
-+uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-+{
-+    register uintptr_t t asm("x0") = type;
-+    register uintptr_t a0 asm("x1") = arg0;
-+    asm("hlt 0xf000"
-+        : "=r" (t)
-+        : "r" (t), "r" (a0));
-+
-+    return t;
-+}
-+
-+int main(void)
-+{
-+    char c;
-+
-+    ml_printf("Semihosting Console Test\n");
-+    ml_printf("hit X to exit:");
-+
-+    do {
-+        c = __semi_call(SYS_READC, 0);
-+        __sys_outc(c);
-+    } while (c != 'X');
-+
-+    return 0;
-+}
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index 950dbb4bac2..9bdcfd9e7e4 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -31,7 +31,14 @@ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- memory: CFLAGS+=-DCHECK_UNALIGNED=1
- 
- # Running
--QEMU_OPTS+=-M virt -cpu max -display none -semihosting-config enable=on,target=native,chardev=output -kernel
-+QEMU_BASE_MACHINE=-M virt -cpu max -display none
-+QEMU_OPTS+=$(QEMU_BASE_MACHINE) -semihosting-config enable=on,target=native,chardev=output -kernel
-+
-+# console test is manual only
-+QEMU_SEMIHOST=-chardev stdio,mux=on,id=stdio0 -semihosting-config enable=on,chardev=stdio0 -mon chardev=stdio0,mode=readline
-+run-semiconsole: QEMU_OPTS=$(QEMU_BASE_MACHINE) $(QEMU_SEMIHOST)  -kernel
-+run-semiconsole: semiconsole
-+	$(call skip-test, $<, "MANUAL ONLY")
- 
- # Simple Record/Replay Test
- .PHONY: memory-record
--- 
-2.20.1
+Thanks,
+Laurent

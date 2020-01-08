@@ -1,159 +1,305 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1344760lff;
-        Wed, 8 Jan 2020 14:46:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz62JLl+xfzASx0B5iIKdaIx6hLWWxnfxZL30v3yDaInPTu2/+EdQEBIi3CknzuL11Xh8LS
-X-Received: by 2002:a17:906:229b:: with SMTP id p27mr7227660eja.21.1578523591203;
-        Wed, 08 Jan 2020 14:46:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578523591; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1370533lff;
+        Wed, 8 Jan 2020 15:14:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyVM6iMXjAAWhOQ9vtcbBODQdQaPLnwtpOZDLCf3GlBRF6eQNEpxccoTp8g9I37fLXBKnmI
+X-Received: by 2002:a05:6402:363:: with SMTP id s3mr8105942edw.245.1578525242767;
+        Wed, 08 Jan 2020 15:14:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578525242; cv=none;
         d=google.com; s=arc-20160816;
-        b=gxLpgEVhSGMBu4AtqNrO2iAdOuTmh7ZrRupz/nHe1XeMdifODFvB+luqPN0mem/jzv
-         vLArBRiUOP1h9JBdKh6ZlEa/QimsLkgXVNv5hMJEnMerqn6RTLhWkCUv1dDOGu8ukCKQ
-         twKJbdpWBGWufXwKMtFgBzGNnZpAa0xE4oHkF6SyHwlfgvjkYfr313lt4xFAUAx/Juav
-         pUbxipTzFAl5YhX0qpWWjaVcBm049H/BfAkJ+8byM8jFxrMkdEipr6oBeyD2iMk7kqMc
-         9Nio8nLYZpYCbSglwsv+LLmB1k23O2bAImpC3RszXT3L3L7vk8up1+NtHwtXj5zY677M
-         Y2wg==
+        b=mYxQ2WiIO8u6hXPXiaskkwnJrH+iOYFYC/0XIrGCJatfSR9K3g3RXwOW1EF+8FmRMv
+         P0yCFd2/pPPo5vmo4lzZpjB6I3n3WcegW85YTJ3Uv+gfwdYmbbCBsi1XdlhQGdegnyQ0
+         tGXf9Ofab2zG/9JJHu/DJCsik4hKfqqwWMlIrP+BvkamS3P50Yg8oRUgq2TKt6wUOYUo
+         6uV6ywFp1VJ7q72D41X9lkqDIl3KoAsMtxb/jr3X+p0UVrT4KaZZPMYhqJWt4pZfHYRh
+         gl2YQygLjRizflJCGlf4jWWEbcSFErWJJ7LMjFAwU7kL0gSxQ8h9mW59967uq8AHRqI0
+         GROQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=c71nBxylHzZYuZ8vIDD7+D96UGKhe4+R058NoEMUCKk=;
-        b=ha4PdsVv81F62zXNjD0q9OywVOsjf12XXsk0dxZj9PVRJUZPs0BouZ5EC1643a70cC
-         +zZY1zjNAzCrJIqsfaXLXy5pLJS+5OrtuoVVfdVrOLu1Dg/gEfui0Ram7axGkviIIZZB
-         2BzcOl3FhOfzGOEZFAAtjlRICF2R6YSWYDjgjAi6IQawW1nIY4vuGrA0fzI6RqKDy1qO
-         IJb2aWV5m+GUsv00a1H9A3SVt+CMoTVnUmhkcrVpUNcchVT3rQeQP+99xoSn9kqTjofL
-         GH/OYRz88D7YcddcwX84ySgvOlp0gc17wlzFtjGnbFEHNECP2U6/Pqb7ZMrniunbpUyh
-         dqUQ==
+        bh=Zb9EpEUaEHaEMuc+ltdJ+aur1vTtFUsc3g+Taigajj4=;
+        b=k4dNQWGw+egL+Uoe8y19L8/sNrf0tfQN1Ugpjx3Y+rg5Jvz1gkfFDDtuhfNj1a4Qwj
+         +Y6cu1e4jxeUcP6kHlECW8VRpD41I4PPylVXGnvTD/pZRRO2izMgmrwOTYw1YT75Pdhz
+         T0Ke6NVTNfYa9vx2G1AQ8RZCHd4qtwf3PSHsxmnn6S4M6le4+I6x3aSM91bgd+lBHabr
+         zIKxehWB2rkt2ywdYGOlsORZNSDTP6XvzM+pyBGnqK7UBn32nU8GcUnYXrpbUN6DLZxJ
+         d0Qi9IM52QS8rF8J3/27bWH3QQtGyV/kQPEYMiFBOzAjH59giiBu7NEm++yblVtk7mVr
+         x1Xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bPFTqHe8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VuFYZ3Mx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g10si3179924edq.124.2020.01.08.14.46.31
+        by mx.google.com with ESMTPS id v8si3195550eja.49.2020.01.08.15.14.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2020 14:46:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 Jan 2020 15:14:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bPFTqHe8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VuFYZ3Mx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50118 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50366 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipK5t-0007B7-SW
-	for alex.bennee@linaro.org; Wed, 08 Jan 2020 17:46:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47797)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ipKWX-0006gE-Li
+	for alex.bennee@linaro.org; Wed, 08 Jan 2020 18:14:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36322)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ipK4H-00062Y-7a
- for qemu-devel@nongnu.org; Wed, 08 Jan 2020 17:44:50 -0500
+ (envelope-from <philmd@redhat.com>) id 1ipKWC-0006Zj-JW
+ for qemu-arm@nongnu.org; Wed, 08 Jan 2020 18:13:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ipK4F-0006dS-CJ
- for qemu-devel@nongnu.org; Wed, 08 Jan 2020 17:44:49 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:26092
+ (envelope-from <philmd@redhat.com>) id 1ipKW8-0000eF-W9
+ for qemu-arm@nongnu.org; Wed, 08 Jan 2020 18:13:39 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:38819
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ipK4F-0006br-8R
- for qemu-devel@nongnu.org; Wed, 08 Jan 2020 17:44:47 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ipKW8-0000bh-MB
+ for qemu-arm@nongnu.org; Wed, 08 Jan 2020 18:13:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578523486;
+ s=mimecast20190719; t=1578525215;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=c71nBxylHzZYuZ8vIDD7+D96UGKhe4+R058NoEMUCKk=;
- b=bPFTqHe84p24oavHJtdd/+iU+7oUJ5DFGPZ92MAkbfA2g1YJOxsBV1UT5sP5pscaNBCtaL
- A4yNbsnQ81O7zLtQs/cBpqs5+lVhjBRMODksIRc+1LSxe4/95CYWEG1UB8oYggRFWnw8pN
- S2h/RGiHeOP1Jh/dqYpT0STWsrzooD4=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-137-AERF7iIaO7GoOOHf_HI2bQ-1; Wed, 08 Jan 2020 17:44:44 -0500
-Received: by mail-wr1-f69.google.com with SMTP id t3so2004406wrm.23
- for <qemu-devel@nongnu.org>; Wed, 08 Jan 2020 14:44:44 -0800 (PST)
+ bh=Zb9EpEUaEHaEMuc+ltdJ+aur1vTtFUsc3g+Taigajj4=;
+ b=VuFYZ3MxPmQuQJdncLnwpCsMFpd5W8Nrfh0ZaMQkaCz7eEoRaH577AHRjzkUxN1oKNrujf
+ PPvM+/V91t8R8hS/y0tWGaMv3JjbUJMclIuNW/sxtX4ysd2jRANbnIsJBJAGQGXo3+GXBt
+ 0CCNvKE3cmmSHP7MyKB8yjTBd5XvVzs=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-8-Plqpgoe6On2lS5wTshlgSA-1; Wed, 08 Jan 2020 18:13:30 -0500
+Received: by mail-wm1-f69.google.com with SMTP id s25so57703wmj.3
+ for <qemu-arm@nongnu.org>; Wed, 08 Jan 2020 15:13:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=aMfzobTzZlw3/yKsPC6q6tLJaCo/BlLxYCg7dNg72Zs=;
- b=BXGfjFEFiT6N90OCqgAanYwRefMZ+UX5vGxUWyIkRqaHVjUCl6EBQDdj4Y4Lq3W2Z0
- vGD0XF6ebsA4f9GNWvqd0OSpaGeaKmIDvOzi65+U3gMvAnADkN/y9C+lV6i1pKfIoAiH
- Vfz+wmx5WFb97aLZ7cqUVeA7kI3k/7RMPRirGUVsb2b6Szw1/jAUVQv4ZF1lgZwF/KcY
- CWvvg037Vy8YpNQl0xecjL5i+A+peZWRdKx23SvjuBKNXBsRpixznSVts4cReG/vuJjy
- PWHsSvYq9MhvE/xSNkbjoypaD2q/yYE3ocjNXMy4cop07QMedWiL4Bjx7m3E7H09KY9K
- aCrw==
-X-Gm-Message-State: APjAAAX47rGjx3XS97x0xlQY0XPYoHQ9fFpX6yo1VzpaleQG6+5knubq
- 7zRAt7G/tQm7t0RKKpZf1wgrdclXCb5dDuCx6fjkOoL2Y9YXy0WeJS2oGPN91EKk0KIOjVkyM/+
- 3oB/4EAPBLgeMZgE=
-X-Received: by 2002:a1c:f719:: with SMTP id v25mr958960wmh.116.1578523483503; 
- Wed, 08 Jan 2020 14:44:43 -0800 (PST)
-X-Received: by 2002:a1c:f719:: with SMTP id v25mr958947wmh.116.1578523483185; 
- Wed, 08 Jan 2020 14:44:43 -0800 (PST)
+ bh=Zb9EpEUaEHaEMuc+ltdJ+aur1vTtFUsc3g+Taigajj4=;
+ b=ABPaULtj71FlVsCKb7Hrh1xBF6SJonHJzMNtXjhudJsx7ZXvuZErAZWgyDwepZLNAC
+ eKP0DsuhcPdPpevmbCbNuXJbs+d+gwAoEmHpqVsvzYHwTCUvnTXX7jf2RqvJ+oc/OwVD
+ LBRgLRT0u42RMYuPxlVlRNqYE4UwCBEwgw69StgMhFS43dPsAV8dp+0s2t7dtnYZvFqC
+ gmNpb6hOIprhMXI+YqwqBK8TLFRPwstRmZ8e/UuJ7w6Rh7fWkCe9MlGxupXq4JDmDVXi
+ rs7TI1KtLf8mVmsN0E1nnCmsvkoUtuR7Dj1qJ751/yIzFVKPt9lWYoZR0h50L41r1y87
+ uq9w==
+X-Gm-Message-State: APjAAAUzX2pBT2ZhdGKnP79Vle1PI0mC3o+81S/v5m5Q7kIgGQirdwgx
+ XydVN7/EgkVgstbaraUoR4PLtDUdxDFSXccekVtTVOBrW5Bz+8ZBlioip7aowekIQHLoluuzy2p
+ 4tHwlRhvNHoA5
+X-Received: by 2002:a1c:4d18:: with SMTP id o24mr1018674wmh.35.1578525209215; 
+ Wed, 08 Jan 2020 15:13:29 -0800 (PST)
+X-Received: by 2002:a1c:4d18:: with SMTP id o24mr1018643wmh.35.1578525208785; 
+ Wed, 08 Jan 2020 15:13:28 -0800 (PST)
 Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
  [83.57.172.113])
- by smtp.gmail.com with ESMTPSA id s15sm5924629wrp.4.2020.01.08.14.44.42
+ by smtp.gmail.com with ESMTPSA id e8sm5856306wrt.7.2020.01.08.15.13.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jan 2020 14:44:42 -0800 (PST)
-Subject: Re: [PATCH v3 02/17] hw/arm: add Xunlong Orange Pi PC machine
+ Wed, 08 Jan 2020 15:13:28 -0800 (PST)
+Subject: Re: [PATCH v3 01/17] hw/arm: add Allwinner H3 System-on-Chip
 To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
 References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-3-nieklinnenbank@gmail.com>
+ <20200108200020.4745-2-nieklinnenbank@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <c41068dc-7684-3da2-e53e-649e3e4aded1@redhat.com>
-Date: Wed, 8 Jan 2020 23:44:41 +0100
+Message-ID: <d1a13b5c-1308-17b3-601c-429a645ae7ec@redhat.com>
+Date: Thu, 9 Jan 2020 00:13:27 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200108200020.4745-3-nieklinnenbank@gmail.com>
+In-Reply-To: <20200108200020.4745-2-nieklinnenbank@gmail.com>
 Content-Language: en-US
-X-MC-Unique: AERF7iIaO7GoOOHf_HI2bQ-1
+X-MC-Unique: Plqpgoe6On2lS5wTshlgSA-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DwnKenQVH3HG
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VgNAfOiT4x5B
 
 On 1/8/20 9:00 PM, Niek Linnenbank wrote:
-> The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
-> based embedded computer with mainline support in both U-Boot
-> and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
-> 512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
-> various other I/O. This commit add support for the Xunlong
-> Orange Pi PC machine.
->=20
+> The Allwinner H3 is a System on Chip containing four ARM Cortex A7
+> processor cores. Features and specifications include DDR2/DDR3 memory,
+> SD/MMC storage cards, 10/100/1000Mbit ethernet, USB 2.0, HDMI and
+
+"Ethernet"
+
+> various I/O modules. This commit adds support for the Allwinner H3
+> System on Chip.
+> 
 > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
 > ---
->   hw/arm/orangepi.c    | 93 ++++++++++++++++++++++++++++++++++++++++++++
->   MAINTAINERS          |  1 +
->   hw/arm/Makefile.objs |  2 +-
->   3 files changed, 95 insertions(+), 1 deletion(-)
->   create mode 100644 hw/arm/orangepi.c
->=20
-> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+>   default-configs/arm-softmmu.mak |   1 +
+>   include/hw/arm/allwinner-h3.h   | 107 +++++++++++
+>   hw/arm/allwinner-h3.c           | 328 ++++++++++++++++++++++++++++++++
+>   MAINTAINERS                     |   7 +
+>   hw/arm/Kconfig                  |   8 +
+>   hw/arm/Makefile.objs            |   1 +
+>   6 files changed, 452 insertions(+)
+>   create mode 100644 include/hw/arm/allwinner-h3.h
+>   create mode 100644 hw/arm/allwinner-h3.c
+> 
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 1f2e0e7fde..d75a239c2c 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -40,3 +40,4 @@ CONFIG_FSL_IMX25=y
+>   CONFIG_FSL_IMX7=y
+>   CONFIG_FSL_IMX6UL=y
+>   CONFIG_SEMIHOSTING=y
+> +CONFIG_ALLWINNER_H3=y
+> diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
 > new file mode 100644
-> index 0000000000..051184f14f
+> index 0000000000..4e2e6202a9
 > --- /dev/null
-> +++ b/hw/arm/orangepi.c
-> @@ -0,0 +1,93 @@
+> +++ b/include/hw/arm/allwinner-h3.h
+> @@ -0,0 +1,107 @@
 > +/*
-> + * Orange Pi emulation
+> + * Allwinner H3 System on Chip emulation
+> + *
+> + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
+> + *
+> + * This program is free software: you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation, either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +/*
+> + * The Allwinner H3 is a System on Chip containing four ARM Cortex A7
+> + * processor cores. Features and specifications include DDR2/DDR3 memory,
+> + * SD/MMC storage cards, 10/100/1000Mbit ethernet, USB 2.0, HDMI and
+> + * various I/O modules.
+> + *
+> + * This implementation is based on the following datasheet:
+> + *
+> + *   https://linux-sunxi.org/File:Allwinner_H3_Datasheet_V1.2.pdf
+> + *
+> + * The latest datasheet and more info can be found on the Linux Sunxi wiki:
+> + *
+> + *   https://linux-sunxi.org/H3
+> + */
+> +
+> +#ifndef HW_ARM_ALLWINNER_H3_H
+> +#define HW_ARM_ALLWINNER_H3_H
+> +
+> +#include "qemu/osdep.h"
+
+Check CODING_STYLE.rst:
+
+   Do not include "qemu/osdep.h" from header files since
+   the .c file will have already included it.
+
+> +#include "qom/object.h"
+> +#include "qemu/error-report.h"
+> +#include "qemu/units.h"
+> +#include "hw/qdev-core.h"
+> +#include "hw/arm/boot.h"
+
+Please only keep the minimum required headers here, move the rest to the 
+source files.
+
+> +#include "hw/timer/allwinner-a10-pit.h"
+> +#include "hw/intc/arm_gic.h"
+> +#include "target/arm/cpu.h"
+
+These looks OK in this header.
+
+> +
+> +/**
+> + * Allwinner H3 device list
+> + *
+> + * This enumeration is can be used refer to a particular device in the
+> + * Allwinner H3 SoC. For example, the physical memory base address for
+> + * each device can be found in the AwH3State object in the memmap member
+> + * using the device enum value as index.
+> + *
+> + * @see AwH3State
+> + */
+> +enum {
+> +    AW_H3_SRAM_A1,
+> +    AW_H3_SRAM_A2,
+> +    AW_H3_SRAM_C,
+> +    AW_H3_PIT,
+> +    AW_H3_UART0,
+> +    AW_H3_UART1,
+> +    AW_H3_UART2,
+> +    AW_H3_UART3,
+> +    AW_H3_GIC_DIST,
+> +    AW_H3_GIC_CPU,
+> +    AW_H3_GIC_HYP,
+> +    AW_H3_GIC_VCPU,
+> +    AW_H3_SDRAM
+> +};
+> +
+> +/** Total number of CPU cores in the SoC */
+
+"the H3 SoC"
+
+> +#define AW_H3_NUM_CPUS      (4)
+> +
+> +/**
+> + * Allwinner H3 object model
+> + * @{
+> + */
+> +
+> +/** Object type for the Allwinner H3 SoC */
+> +#define TYPE_AW_H3 "allwinner-h3"
+> +
+> +/** Convert input object to Allwinner H3 state object */
+> +#define AW_H3(obj) OBJECT_CHECK(AwH3State, (obj), TYPE_AW_H3)
+> +
+> +/** @} */
+> +
+> +/**
+> + * Allwinner H3 object instance state
+
+I find this comment more noisy than helpful.
+
+> + */
+> +typedef struct AwH3State {
+> +    /*< private >*/
+> +    DeviceState parent_obj;
+> +    /*< public >*/
+> +
+> +    ARMCPU cpus[AW_H3_NUM_CPUS];
+> +    const hwaddr *memmap;
+> +    AwA10PITState timer;
+> +    GICState gic;
+> +    MemoryRegion sram_a1;
+> +    MemoryRegion sram_a2;
+> +    MemoryRegion sram_c;
+> +} AwH3State;
+> +
+> +#endif /* HW_ARM_ALLWINNER_H3_H */
+> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> new file mode 100644
+> index 0000000000..c1ef31e875
+> --- /dev/null
+> +++ b/hw/arm/allwinner-h3.c
+> @@ -0,0 +1,328 @@
+> +/*
+> + * Allwinner H3 System on Chip emulation
 > + *
 > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
 > + *
@@ -174,129 +320,394 @@ On 1/8/20 9:00 PM, Niek Linnenbank wrote:
 > +#include "qemu/osdep.h"
 > +#include "exec/address-spaces.h"
 > +#include "qapi/error.h"
+> +#include "qemu/module.h"
+> +#include "qemu/units.h"
 > +#include "cpu.h"
 > +#include "hw/sysbus.h"
-> +#include "hw/boards.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/arm/allwinner-h3.h"
+> +#include "hw/char/serial.h"
+> +#include "hw/misc/unimp.h"
 > +#include "sysemu/sysemu.h"
+> +#include "hw/arm/allwinner-h3.h"
 > +
-> +static struct arm_boot_info orangepi_binfo =3D {
-> +    .board_id =3D -1,
-
-Since you use a dtb, I suppose Linux ignores this board_id.
-
-Nitpick, you can set this here:
-
-        .nb_cpus =3D AW_H3_NUM_CPUS,
-
+> +/* Memory map */
+> +const hwaddr allwinner_h3_memmap[] = {
+> +    [AW_H3_SRAM_A1]    = 0x00000000,
+> +    [AW_H3_SRAM_A2]    = 0x00044000,
+> +    [AW_H3_SRAM_C]     = 0x00010000,
+> +    [AW_H3_PIT]        = 0x01c20c00,
+> +    [AW_H3_UART0]      = 0x01c28000,
+> +    [AW_H3_UART1]      = 0x01c28400,
+> +    [AW_H3_UART2]      = 0x01c28800,
+> +    [AW_H3_UART3]      = 0x01c28c00,
+> +    [AW_H3_GIC_DIST]   = 0x01c81000,
+> +    [AW_H3_GIC_CPU]    = 0x01c82000,
+> +    [AW_H3_GIC_HYP]    = 0x01c84000,
+> +    [AW_H3_GIC_VCPU]   = 0x01c86000,
+> +    [AW_H3_SDRAM]      = 0x40000000
 > +};
 > +
-> +typedef struct OrangePiState {
-> +    AwH3State *h3;
-> +    MemoryRegion sdram;
-> +} OrangePiState;
+> +/* List of unimplemented devices */
+> +struct AwH3Unimplemented {
+> +    const char *device_name;
+> +    hwaddr base;
+> +    hwaddr size;
+> +} unimplemented[] = {
+> +    { "d-engine",  0x01000000, 4 * MiB },
+> +    { "d-inter",   0x01400000, 128 * KiB },
+> +    { "syscon",    0x01c00000, 4 * KiB },
+> +    { "dma",       0x01c02000, 4 * KiB },
+> +    { "nfdc",      0x01c03000, 4 * KiB },
+> +    { "ts",        0x01c06000, 4 * KiB },
+> +    { "keymem",    0x01c0b000, 4 * KiB },
+> +    { "lcd0",      0x01c0c000, 4 * KiB },
+> +    { "lcd1",      0x01c0d000, 4 * KiB },
+> +    { "ve",        0x01c0e000, 4 * KiB },
+> +    { "mmc0",      0x01c0f000, 4 * KiB },
+> +    { "mmc1",      0x01c10000, 4 * KiB },
+> +    { "mmc2",      0x01c11000, 4 * KiB },
+> +    { "sid",       0x01c14000, 1 * KiB },
+> +    { "crypto",    0x01c15000, 4 * KiB },
+> +    { "msgbox",    0x01c17000, 4 * KiB },
+> +    { "spinlock",  0x01c18000, 4 * KiB },
+> +    { "usb0-otg",  0x01c19000, 4 * KiB },
+> +    { "usb0",      0x01c1a000, 4 * KiB },
+> +    { "usb1",      0x01c1b000, 4 * KiB },
+> +    { "usb2",      0x01c1c000, 4 * KiB },
+> +    { "usb3",      0x01c1d000, 4 * KiB },
+
+To avoid the churn in patch #4, directly name them usb-phy:
+
+        { "usb0-phy",  0x01c1a000, 4 * KiB },
+        { "usb1-phy",  0x01c1b000, 4 * KiB },
+        { "usb2-phy",  0x01c1c000, 4 * KiB },
+        { "usb3-phy",  0x01c1d000, 4 * KiB },
+
+> +    { "smc",       0x01c1e000, 4 * KiB },
+> +    { "ccu",       0x01c20000, 1 * KiB },
+> +    { "pio",       0x01c20800, 1 * KiB },
+> +    { "owa",       0x01c21000, 1 * KiB },
+> +    { "pwm",       0x01c21400, 1 * KiB },
+> +    { "keyadc",    0x01c21800, 1 * KiB },
+> +    { "pcm0",      0x01c22000, 1 * KiB },
+> +    { "pcm1",      0x01c22400, 1 * KiB },
+> +    { "pcm2",      0x01c22800, 1 * KiB },
+> +    { "audio",     0x01c22c00, 2 * KiB },
+> +    { "smta",      0x01c23400, 1 * KiB },
+> +    { "ths",       0x01c25000, 1 * KiB },
+> +    { "uart0",     0x01c28000, 1 * KiB },
+> +    { "uart1",     0x01c28400, 1 * KiB },
+> +    { "uart2",     0x01c28800, 1 * KiB },
+> +    { "uart3",     0x01c28c00, 1 * KiB },
+> +    { "twi0",      0x01c2ac00, 1 * KiB },
+> +    { "twi1",      0x01c2b000, 1 * KiB },
+> +    { "twi2",      0x01c2b400, 1 * KiB },
+> +    { "scr",       0x01c2c400, 1 * KiB },
+> +    { "emac",      0x01c30000, 64 * KiB },
+> +    { "gpu",       0x01c40000, 64 * KiB },
+> +    { "hstmr",     0x01c60000, 4 * KiB },
+> +    { "dramcom",   0x01c62000, 4 * KiB },
+> +    { "dramctl0",  0x01c63000, 4 * KiB },
+> +    { "dramphy0",  0x01c65000, 4 * KiB },
+> +    { "spi0",      0x01c68000, 4 * KiB },
+> +    { "spi1",      0x01c69000, 4 * KiB },
+> +    { "csi",       0x01cb0000, 320 * KiB },
+> +    { "tve",       0x01e00000, 64 * KiB },
+> +    { "hdmi",      0x01ee0000, 128 * KiB },
+> +    { "rtc",       0x01f00000, 1 * KiB },
+> +    { "r_timer",   0x01f00800, 1 * KiB },
+> +    { "r_intc",    0x01f00c00, 1 * KiB },
+> +    { "r_wdog",    0x01f01000, 1 * KiB },
+> +    { "r_prcm",    0x01f01400, 1 * KiB },
+> +    { "r_twd",     0x01f01800, 1 * KiB },
+> +    { "r_cpucfg",  0x01f01c00, 1 * KiB },
+> +    { "r_cir-rx",  0x01f02000, 1 * KiB },
+> +    { "r_twi",     0x01f02400, 1 * KiB },
+> +    { "r_uart",    0x01f02800, 1 * KiB },
+> +    { "r_pio",     0x01f02c00, 1 * KiB },
+> +    { "r_pwm",     0x01f03800, 1 * KiB },
+> +    { "core-dbg",  0x3f500000, 128 * KiB },
+> +    { "tsgen-ro",  0x3f506000, 4 * KiB },
+> +    { "tsgen-ctl", 0x3f507000, 4 * KiB },
+> +    { "ddr-mem",   0x40000000, 2 * GiB },
+> +    { "n-brom",    0xffff0000, 32 * KiB },
+> +    { "s-brom",    0xffff0000, 64 * KiB }
+> +};
 > +
-> +static void orangepi_init(MachineState *machine)
+> +/* Per Processor Interrupts */
+> +enum {
+> +    AW_H3_GIC_PPI_MAINT     =  9,
+> +    AW_H3_GIC_PPI_HYPTIMER  = 10,
+> +    AW_H3_GIC_PPI_VIRTTIMER = 11,
+> +    AW_H3_GIC_PPI_SECTIMER  = 13,
+> +    AW_H3_GIC_PPI_PHYSTIMER = 14
+> +};
+> +
+> +/* Shared Processor Interrupts */
+> +enum {
+> +    AW_H3_GIC_SPI_UART0     =  0,
+> +    AW_H3_GIC_SPI_UART1     =  1,
+> +    AW_H3_GIC_SPI_UART2     =  2,
+> +    AW_H3_GIC_SPI_UART3     =  3,
+> +    AW_H3_GIC_SPI_TIMER0    = 18,
+> +    AW_H3_GIC_SPI_TIMER1    = 19,
+> +};
+> +
+> +/* Allwinner H3 constants */
+
+Another not very useful comment.
+
+> +enum {
+> +    AW_H3_GIC_NUM_SPI       = 128
+> +};
+> +
+> +static void allwinner_h3_init(Object *obj)
 > +{
-> +    OrangePiState *s =3D g_new(OrangePiState, 1);
+> +    AwH3State *s = AW_H3(obj);
 > +
-
-I'd do the bios check first, as it is cheap and avoid allocating RAM + H3:
-
-        /* Load target kernel or start using BootROM */
-        if (bios_name) {
-            error_report("BIOS not supported for this machine");
-            exit(1);
-        }
-
-> +    /* Only allow Cortex-A7 for this board */
-> +    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a7")) !=3D 0=
-) {
-> +        error_report("This board can only be used with cortex-a7 CPU");
-> +        exit(1);
+> +    s->memmap = allwinner_h3_memmap;
+> +
+> +    for (int i = 0; i < AW_H3_NUM_CPUS; i++) {
+> +        object_initialize_child(obj, "cpu[*]", &s->cpus[i], sizeof(s->cpus[i]),
+> +                                ARM_CPU_TYPE_NAME("cortex-a7"),
+> +                                &error_abort, NULL);
 > +    }
 > +
-> +    s->h3 =3D AW_H3(object_new(TYPE_AW_H3));
+> +    sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
+> +                          TYPE_ARM_GIC);
 > +
-> +    /* Setup timer properties */
-> +    object_property_set_int(OBJECT(s->h3), 32768, "clk0-freq",
-> +                            &error_abort);
-> +    object_property_set_int(OBJECT(s->h3), 24000000, "clk1-freq",
-
-I find 24 * 1000 * 1000 easier to review.
-
-> +                            &error_abort);
-> +
-> +    /* Mark H3 object realized */
-> +    object_property_set_bool(OBJECT(s->h3), true, "realized", &error_abo=
-rt);
-> +
-> +    /* SDRAM */
-> +    if (machine->ram_size !=3D 1 * GiB) {
-> +        error_report("Requested ram size is not supported for this machi=
-ne: "
-> +                     "restricted to 1GiB");
-
-Maybe easier as "This machine can only be used with 1GiB of RAM"
-
-> +        exit(1);
-> +    }
-> +    memory_region_allocate_system_memory(&s->sdram, NULL, "sdram",
-> +                                         machine->ram_size);
-> +    memory_region_add_subregion(get_system_memory(), s->h3->memmap[AW_H3=
-_SDRAM],
-> +                                &s->sdram);
-> +
-> +    /* Load target kernel or start using BootROM */
-> +    if (bios_name) {
-> +        error_report("BIOS not supported for this machine");
-> +        exit(1);
-> +    }
-> +    orangepi_binfo.loader_start =3D s->h3->memmap[AW_H3_SDRAM];
-> +    orangepi_binfo.ram_size =3D machine->ram_size;
-> +    orangepi_binfo.nb_cpus  =3D AW_H3_NUM_CPUS;
-> +    arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
+> +    sysbus_init_child_obj(obj, "timer", &s->timer, sizeof(s->timer),
+> +                          TYPE_AW_A10_PIT);
+> +    object_property_add_alias(obj, "clk0-freq", OBJECT(&s->timer),
+> +                              "clk0-freq", &error_abort);
+> +    object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
+> +                              "clk1-freq", &error_abort);
 > +}
 > +
-> +static void orangepi_machine_init(MachineClass *mc)
+> +static void allwinner_h3_realize(DeviceState *dev, Error **errp)
 > +{
-> +    mc->desc =3D "Orange Pi PC";
-> +    mc->init =3D orangepi_init;
-> +    mc->min_cpus =3D AW_H3_NUM_CPUS;
-> +    mc->max_cpus =3D AW_H3_NUM_CPUS;
-> +    mc->default_cpus =3D AW_H3_NUM_CPUS;
-> +    mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a7");
-> +    mc->default_ram_size =3D 1 * GiB;
+> +    AwH3State *s = AW_H3(dev);
+> +    unsigned i = 0;
+
+No need to initialize i since you re-init it in the for().
+
+> +
+> +    /* CPUs */
+> +    for (i = 0; i < AW_H3_NUM_CPUS; i++) {
+> +
+> +        /* Provide Power State Coordination Interface */
+> +        object_property_set_int(OBJECT(&s->cpus[i]), QEMU_PSCI_CONDUIT_HVC,
+> +                                "psci-conduit", &error_abort);
+> +
+> +        /* Disable secondary CPUs */
+> +        object_property_set_bool(OBJECT(&s->cpus[i]), i > 0,
+> +                                "start-powered-off", &error_abort);
+> +
+> +        /* All exception levels required */
+> +        object_property_set_bool(OBJECT(&s->cpus[i]),
+> +                                 true, "has_el3", &error_abort);
+> +
+> +        object_property_set_bool(OBJECT(&s->cpus[i]),
+> +                                 true, "has_el2", &error_abort);
+
+You previously used the object API, ...
+
+> +
+> +        /* Mark realized */
+> +        qdev_init_nofail(DEVICE(&s->cpus[i]));
+
+... and here switch to the qdev API. Odd.
+
+> +    }
+> +
+> +    /* Generic Interrupt Controller */
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", AW_H3_GIC_NUM_SPI +
+> +                                                     GIC_INTERNAL);
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", AW_H3_NUM_CPUS);
+> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", false);
+> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-virtualization-extensions", true);
+> +    qdev_init_nofail(DEVICE(&s->gic));
+> +
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0, s->memmap[AW_H3_GIC_DIST]);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1, s->memmap[AW_H3_GIC_CPU]);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2, s->memmap[AW_H3_GIC_HYP]);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3, s->memmap[AW_H3_GIC_VCPU]);
+> +
+> +    /*
+> +     * Wire the outputs from each CPU's generic timer and the GICv3
+> +     * maintenance interrupt signal to the appropriate GIC PPI inputs,
+> +     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
+> +     */
+> +    for (i = 0; i < AW_H3_NUM_CPUS; i++) {
+> +        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
+
+Why not use DEVICE(&s->cpus[i])?
+
+> +        int ppibase = AW_H3_GIC_NUM_SPI + i * GIC_INTERNAL + GIC_NR_SGIS;
+> +        int irq;
+> +        /*
+> +         * Mapping from the output timer irq lines from the CPU to the
+> +         * GIC PPI inputs used for this board.
+> +         */
+> +        const int timer_irq[] = {
+> +            [GTIMER_PHYS] = AW_H3_GIC_PPI_PHYSTIMER,
+> +            [GTIMER_VIRT] = AW_H3_GIC_PPI_VIRTTIMER,
+> +            [GTIMER_HYP]  = AW_H3_GIC_PPI_HYPTIMER,
+> +            [GTIMER_SEC]  = AW_H3_GIC_PPI_SECTIMER,
+> +        };
+> +
+> +        /* Connect CPU timer outputs to GIC PPI inputs */
+> +        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
+> +            qdev_connect_gpio_out(cpudev, irq,
+> +                                  qdev_get_gpio_in(DEVICE(&s->gic),
+> +                                                   ppibase + timer_irq[irq]));
+> +        }
+> +
+> +        /* Connect GIC outputs to CPU interrupt inputs */
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + AW_H3_NUM_CPUS,
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (2 * AW_H3_NUM_CPUS),
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (3 * AW_H3_NUM_CPUS),
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+> +
+> +        /* GIC maintenance signal */
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (4 * AW_H3_NUM_CPUS),
+> +                           qdev_get_gpio_in(DEVICE(&s->gic),
+> +                                            ppibase + AW_H3_GIC_PPI_MAINT));
+> +    }
+> +
+> +    /* Timer */
+> +    qdev_init_nofail(DEVICE(&s->timer));
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer), 0, s->memmap[AW_H3_PIT]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 0,
+> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_TIMER0));
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 1,
+> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_TIMER1));
+> +
+> +    /* SRAM */
+> +    memory_region_init_ram(&s->sram_a1, OBJECT(dev), "sram A1",
+> +                            64 * KiB, &error_abort);
+> +    memory_region_init_ram(&s->sram_a2, OBJECT(dev), "sram A2",
+> +                            32 * KiB, &error_abort);
+> +    memory_region_init_ram(&s->sram_c, OBJECT(dev), "sram C",
+> +                            44 * KiB, &error_abort);
+
+This looks like an ECC SRAM layout, but no info about this in the 
+datasheet...
+
+> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_A1],
+> +                                &s->sram_a1);
+> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_A2],
+> +                                &s->sram_a2);
+> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_C],
+> +                                &s->sram_c);
+> +
+> +    /* UART0 */
+> +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART0], 2,
+> +                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART0),
+> +                   115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
+
+This is APB2_CLK / 16. Can you add a comment, so it will be easier to 
+adapt to the future clocktree API?
+
+> +    /* UART1 */
+> +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART1], 2,
+> +                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART1),
+> +                   115200, serial_hd(1), DEVICE_NATIVE_ENDIAN);
+> +    /* UART2 */
+> +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART2], 2,
+> +                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART2),
+> +                   115200, serial_hd(2), DEVICE_NATIVE_ENDIAN);
+> +    /* UART3 */
+> +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART3], 2,
+> +                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART3),
+> +                   115200, serial_hd(3), DEVICE_NATIVE_ENDIAN);
+> +
+> +    /* Unimplemented devices */
+> +    for (int i = 0; i < ARRAY_SIZE(unimplemented); i++) {
+
+You already declared i, earlier.
+
+> +        create_unimplemented_device(unimplemented[i].device_name,
+> +                                    unimplemented[i].base,
+> +                                    unimplemented[i].size);
+> +    }
 > +}
 > +
-> +DEFINE_MACHINE("orangepi-pc", orangepi_machine_init)
+> +static void allwinner_h3_class_init(ObjectClass *oc, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(oc);
+> +
+> +    dc->realize = allwinner_h3_realize;
+> +    /* Reason: uses serial_hds and nd_table */
+> +    dc->user_creatable = false;
+> +}
+> +
+> +static const TypeInfo allwinner_h3_type_info = {
+> +    .name = TYPE_AW_H3,
+> +    .parent = TYPE_DEVICE,
+> +    .instance_size = sizeof(AwH3State),
+> +    .instance_init = allwinner_h3_init,
+> +    .class_init = allwinner_h3_class_init,
+> +};
+> +
+> +static void allwinner_h3_register_types(void)
+> +{
+> +    type_register_static(&allwinner_h3_type_info);
+> +}
+> +
+> +type_init(allwinner_h3_register_types)
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index dc2d7991bf..6e1b92b5fa 100644
+> index cd2dc137a3..dc2d7991bf 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -487,6 +487,7 @@ L: qemu-arm@nongnu.org
->   S: Maintained
->   F: hw/*/allwinner-h3*
->   F: include/hw/*/allwinner-h3*
-> +F: hw/arm/orangepi.c
->  =20
+> @@ -481,6 +481,13 @@ F: hw/*/allwinner*
+>   F: include/hw/*/allwinner*
+>   F: hw/arm/cubieboard.c
+>   
+> +Allwinner-h3
+> +M: Niek Linnenbank <nieklinnenbank@gmail.com>
+> +L: qemu-arm@nongnu.org
+> +S: Maintained
+> +F: hw/*/allwinner-h3*
+> +F: include/hw/*/allwinner-h3*
+> +
 >   ARM PrimeCell and CMSDK devices
 >   M: Peter Maydell <peter.maydell@linaro.org>
+>   L: qemu-arm@nongnu.org
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index c6e7782580..ebf8d2325f 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -291,6 +291,14 @@ config ALLWINNER_A10
+>       select SERIAL
+>       select UNIMP
+>   
+> +config ALLWINNER_H3
+> +    bool
+> +    select ALLWINNER_A10_PIT
+> +    select SERIAL
+> +    select ARM_TIMER
+> +    select ARM_GIC
+> +    select UNIMP
+> +
+>   config RASPI
+>       bool
+>       select FRAMEBUFFER
 > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index 956e496052..8d5ea453d5 100644
+> index fe749f65fd..956e496052 100644
 > --- a/hw/arm/Makefile.objs
 > +++ b/hw/arm/Makefile.objs
-> @@ -34,7 +34,7 @@ obj-$(CONFIG_DIGIC) +=3D digic.o
->   obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o
->   obj-$(CONFIG_STRONGARM) +=3D strongarm.o
->   obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboard.o
-> -obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o
-> +obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o orangepi.o
->   obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o raspi.o
->   obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o
->   obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=3D xlnx-zynqmp.o xlnx-zcu102.o
->=20
-
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> @@ -34,6 +34,7 @@ obj-$(CONFIG_DIGIC) += digic.o
+>   obj-$(CONFIG_OMAP) += omap1.o omap2.o
+>   obj-$(CONFIG_STRONGARM) += strongarm.o
+>   obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
+> +obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3.o
+>   obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
+>   obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+>   obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zynqmp.o xlnx-zcu102.o
+> 
 

@@ -1,288 +1,231 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1185719lff;
-        Wed, 8 Jan 2020 12:01:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyzt9qIRUbCgTj9WZwsdhaKAXwgXRoVnBnyX9nWfy3INYyfbrA8OFeJ5Si1Vy5ZYehOtDzk
-X-Received: by 2002:a05:6214:b90:: with SMTP id fe16mr5843732qvb.83.1578513706995;
-        Wed, 08 Jan 2020 12:01:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578513706; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1188049lff;
+        Wed, 8 Jan 2020 12:03:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz3a48fQYfw+5O2wihLIwLSn3/EZJCsn4fx5eI7RNu6qgM06aiQ+08Rc+YYY9e35cBLFFgi
+X-Received: by 2002:a50:f982:: with SMTP id q2mr7707233edn.55.1578513821853;
+        Wed, 08 Jan 2020 12:03:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578513821; cv=none;
         d=google.com; s=arc-20160816;
-        b=eQj06jsQlTFMt4+59nxihO0bV8eS4EIngZC6qhh4PK11PgUy8GC5F3uafA63YwtFLI
-         Ee4E1Pxw8lAygvzVs1NC4Xrp8/ScXPBcibISK+daO7/5VgMwpBwgUW9QYtvWUWFnsyub
-         zC1XCIU+PC1Wcup7WMXNB465gvKUTB6RTR0VbfUiQeXPPhSOeLNacHcm7lgoAJg03M06
-         pmAgTBJkIeXZjFpGcEfJQxSTpGSoL1hY4sFEWAHJcEGaBG/c1QDI8WnHwmvjs4HtNfze
-         niFHP8Tn9u9AJ4s6+mT6sBDxv8Df/e471SxdtaALAr3VIC99r2NNKF1mwkmuJzXp+Wrp
-         rUvw==
+        b=N/gfxTQtIvrGPT18Bns5h1aoEY+D1lfsKn/7XGLVpNrhRd7kg4A2V462kdJjoi7+RN
+         1j9lvOrsY2ye/eIBaOOwM+OXpYfY5EA9nK4GeZXst2MC8UsDb+dbh2KgYivyp6asChT6
+         Sbn9ja5Qdt0X68B2+dPgXVjrFIDcl0hTDY/pbyITjvnY+VPGW7y6u3g0OjVhGUHVBtz4
+         olFYjaOuPITDZQc7O4IV53zczRgRS1lPOX3dZW5MwQKRAgSo+SeBLag1f+N5uOE9kNNN
+         cNIFNfa2wA/3HJSgj4XOK5JDYa4Of2oFxy08XWJuLvBDdPB8WedjnDIL4eb7X5CiLmGt
+         +NrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=fHH6DgmLJkiSaZwTfEnCvDBqi+9qRJn0N0Z2l2a/qS4=;
-        b=MLQ51csx8tSHkKl4pqa7ozKulXKCr2wzVs1x5FL3iREtTdX7/n87cvjBm92TR5h0UN
-         PnY1QDk186/OXFvJ4GbHGtqhMGACv75qE2l6PCIRWRH9kJrLEYGSMsUYmwMf1IXPliN8
-         5SySF200UQl3Ux1YnuTEqK6FVyC+oMFAzv/Y1ZERfbKnNhHfBCV5/9Vtq2Fdyi3rGCbb
-         AxQBFLVcW7djRHtpa0gA/qYkAF2lkdKGZFhE9+zGh6leX79c3RPiJOdPrihDspGDR/Xj
-         YBQ0raw5cQ4VHeauZRKrbg9laJgFe/2Chl3jPbHQbsqRYkUQ62nvmSw13E9nMAbrdc0b
-         cKdw==
+        bh=0WghLTvRQ8IcOw+NJuPyW+dwIBsiVMYEMjDtLCTg2F4=;
+        b=onDxocaP7Bbzj8apSRjeuKx/RQZgsw5UOdtIhKTkQ8Qb1PA8z6LNmErvApK2RV4XDJ
+         uw2kO6KsDAUe2yQB6gLSBQbNZ+CB1KvUl8+IJBowZWeQ/D5e4/Exn3/3AqK73H+PieiU
+         ryCrhGVzfRfjHuFNLUpXLmp1XXgr380oursjquU4dUS5W7MZxVc4V8UMIADPKS959WLm
+         8INf1P64hrLGF1BXABULIae4w+7NiRcih7XSIkm0sYz7vX7kIPZ9wbkLFnyVyng9yucN
+         6xB9uBwf2KGdbXAGsKTTQeMOuLJGSu0X41D88SeR1fSDmkRkMsZ7I80VXmIgJp9WPLJ6
+         RwAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y9wIpcHF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="A3cVL/WD";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m30si2070903qtc.120.2020.01.08.12.01.46
+        by mx.google.com with ESMTPS id sa8si3117366ejb.279.2020.01.08.12.03.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2020 12:01:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 Jan 2020 12:03:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y9wIpcHF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="A3cVL/WD";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48664 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipHWT-0001yC-Os
-	for alex.bennee@linaro.org; Wed, 08 Jan 2020 15:01:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35477)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ipHYK-0003Xm-8m
+	for alex.bennee@linaro.org; Wed, 08 Jan 2020 15:03:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35496)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ipHVY-0001MK-IQ
- for qemu-arm@nongnu.org; Wed, 08 Jan 2020 15:00:50 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ipHVZ-0001NP-9p
+ for qemu-devel@nongnu.org; Wed, 08 Jan 2020 15:00:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1ipHVW-0002bT-T4
- for qemu-arm@nongnu.org; Wed, 08 Jan 2020 15:00:48 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:44699)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1ipHVX-0002cI-HZ
+ for qemu-devel@nongnu.org; Wed, 08 Jan 2020 15:00:49 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:39129)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ipHVR-0002V9-9R; Wed, 08 Jan 2020 15:00:42 -0500
-Received: by mail-wr1-x441.google.com with SMTP id q10so4722844wrm.11;
- Wed, 08 Jan 2020 12:00:41 -0800 (PST)
+ id 1ipHVX-0002bF-AF; Wed, 08 Jan 2020 15:00:47 -0500
+Received: by mail-wm1-x343.google.com with SMTP id 20so209800wmj.4;
+ Wed, 08 Jan 2020 12:00:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=fHH6DgmLJkiSaZwTfEnCvDBqi+9qRJn0N0Z2l2a/qS4=;
- b=Y9wIpcHFF7lzGNAtPVv1J5pzctmoIcFJvub9HPskz4zHpmBatGsrwZB7I1RS7U5suS
- 53kvI/qadmH+pSSPOqrRdKEbONBYx4c0m28XytnTUJrdOFhbExreWSDEwaSZvXy+VRRD
- iRoLa72D0Cuo/bnUL2zCBT9Kd2yLge9D83RDktRaSLz/cxCm/DGl90oeG4jdaWtPGUqk
- iRujNdhWbiGq16Mj4VAZ2Bn/WHnkq85gUiVOVM932BRyNMqJ4AR0KtuqAoTZUYEZo6jU
- uCLigF26Xp2iXuLrLC3MuPjaI0ZhjwkRDMqo2IPDsnEUbaWEEGLl/c7f/1fT3wQv/uoM
- tEEQ==
+ bh=0WghLTvRQ8IcOw+NJuPyW+dwIBsiVMYEMjDtLCTg2F4=;
+ b=A3cVL/WDUY9DsfaGrEP5KLWWrQxObeQqUjo3DFYnb+FNr9ju7LLU5emV5WIX/dOhfb
+ qaGdQeCHevhFl00w8TccvTblprumxTxI9H+incSNlAFdkyj3bavFGv4MM64JPX7ZBXVM
+ QMM4PGHaQu4SJgzCDNgfhsYy0Th9lodHG08aZ+8CZBzLpoISvLiNMP+0PoI4U3All0w9
+ djyQIRBpfz8BasmBVGvYI/T2C0N1osw4TgHX41/bnKCK+95AfB1D5N8VfvUZPYI5CLyx
+ LHqhBa5WhdY40rdKEteqqf83gzSiUWcq6Juf6Dx2c+Xn38KDIuWNwYFMMhcrL0EIPmbm
+ 4VSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=fHH6DgmLJkiSaZwTfEnCvDBqi+9qRJn0N0Z2l2a/qS4=;
- b=ucujr+gGIetigt7GKjh6Ye01OujteukC9/GmcaMXHOUzPyjSU/zoGKSUbofMR5I0d3
- /gbakrlugnEILTnnv6BidDNEUy9Xp0GbsW2i0VRlxnr7559MRAN9WyXAOsIy8sE8qZLL
- RhM+niIZBM8ioB5x9vuiAzdzeoocIDB/8gLLbwXtDWMn289N06Obm2z3YYOrkSyIwdYn
- bTsbPL0bryCblUH3+CNJjo9yKHWdPSS2tyeBRAz3bx6m5KzegjLH6dSm4jUoc5LPGG5A
- CX4DARdRuSkNDBnubtop/ob+V/vNBMQ+/NN5sxgbJQ6RgzUxWl3KgeyG7AYl0S8Ow9AG
- 1eSg==
-X-Gm-Message-State: APjAAAXRJbRdlWU5E/yCuNnpWoMLpfeSVJfYHXnsiO7fdHdCxWypAs7/
- AXQP6GA/lkSO+w+NGaIrqFh7LzT/
-X-Received: by 2002:adf:e5ce:: with SMTP id a14mr6416050wrn.214.1578513639948; 
- Wed, 08 Jan 2020 12:00:39 -0800 (PST)
+ bh=0WghLTvRQ8IcOw+NJuPyW+dwIBsiVMYEMjDtLCTg2F4=;
+ b=QZm1cy8iiHVREcRlhCQhu7jP1zwHUIIsAEGOufiYG4q8LHWle2RQVPOgTWtuISkwZU
+ sg2jpeLt52mt7uDjxggg6I0SKj5y6ZTjTP/c08F3THLr7pQVHpy3XGCLOsFgtuwjaUfz
+ pM1XHqL/yROhhKmqpgEa2XZ2Rx7da7NkvFLCq7dHu77saQ7F+xMMQLD7dd2NVyba62UV
+ TK6GBHAfCqsGMqj3W7EoWP40ORkDIMkZuR/wks+r2LMwd0r02m3chK4SiR9lGPkUeDX5
+ cK0f7I7KkWiB2NCr7ER1XhIWaq2Gfm5MdfU+uYxzkgz14DOhugENp/kRl925raVMbV/W
+ bo2Q==
+X-Gm-Message-State: APjAAAWpQZZY1HFMEwld4d50HocZZgGwttDe9gCkaSMzyac83+1Do8Xv
+ Qgc2urM2OJInSDafdKuc/u/pVN9d
+X-Received: by 2002:a05:600c:108a:: with SMTP id
+ e10mr354753wmd.38.1578513646091; 
+ Wed, 08 Jan 2020 12:00:46 -0800 (PST)
 Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
- by smtp.gmail.com with ESMTPSA id u18sm4970099wrt.26.2020.01.08.12.00.38
+ by smtp.gmail.com with ESMTPSA id u18sm4970099wrt.26.2020.01.08.12.00.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Jan 2020 12:00:39 -0800 (PST)
+ Wed, 08 Jan 2020 12:00:45 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 04/17] hw/arm/allwinner-h3: add USB host controller
-Date: Wed,  8 Jan 2020 21:00:07 +0100
-Message-Id: <20200108200020.4745-5-nieklinnenbank@gmail.com>
+Subject: [PATCH v3 10/17] hw/arm/allwinner-h3: add Boot ROM support
+Date: Wed,  8 Jan 2020 21:00:13 +0100
+Message-Id: <20200108200020.4745-11-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200108200020.4745-1-nieklinnenbank@gmail.com>
 References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::343
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, Niek Linnenbank <nieklinnenbank@gmail.com>,
  qemu-arm@nongnu.org, philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ng//0rMKOiUJ
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: coOVHtEmcz6E
 
-The Allwinner H3 System on Chip contains multiple USB 2.0 bus
-connections which provide software access using the Enhanced
-Host Controller Interface (EHCI) and Open Host Controller
-Interface (OHCI) interfaces. This commit adds support for
-both interfaces in the Allwinner H3 System on Chip.
+A real Allwinner H3 SoC contains a Boot ROM which is the
+first code that runs right after the SoC is powered on.
+The Boot ROM is responsible for loading user code (e.g. a bootloader)
+from any of the supported external devices and writing the downloaded
+code to internal SRAM. After loading the SoC begins executing the code
+written to SRAM. This commits adds emulation of the Boot ROM firmware
+setup functionality by loading user code from SD card.
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/usb/hcd-ehci.h             |  1 +
- include/hw/arm/allwinner-h3.h |  8 ++++++
- hw/arm/allwinner-h3.c         | 52 ++++++++++++++++++++++++++++++++---
- hw/usb/hcd-ehci-sysbus.c      | 17 ++++++++++++
- 4 files changed, 74 insertions(+), 4 deletions(-)
+ include/hw/arm/allwinner-h3.h | 23 +++++++++++++++++++++++
+ hw/arm/allwinner-h3.c         | 28 ++++++++++++++++++++++++++++
+ hw/arm/orangepi.c             |  3 +++
+ 3 files changed, 54 insertions(+)
 
-diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
-index 0298238f0b..edb59311c4 100644
---- a/hw/usb/hcd-ehci.h
-+++ b/hw/usb/hcd-ehci.h
-@@ -342,6 +342,7 @@ typedef struct EHCIPCIState {
- #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
- #define TYPE_PLATFORM_EHCI "platform-ehci-usb"
- #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
-+#define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
- #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
- #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
- #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
 diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-index 0dc18b927a..e03d3f318f 100644
+index 5d74cca28e..4b66227ac4 100644
 --- a/include/hw/arm/allwinner-h3.h
 +++ b/include/hw/arm/allwinner-h3.h
-@@ -60,6 +60,14 @@ enum {
-     AW_H3_SRAM_A1,
-     AW_H3_SRAM_A2,
-     AW_H3_SRAM_C,
-+    AW_H3_EHCI0,
-+    AW_H3_OHCI0,
-+    AW_H3_EHCI1,
-+    AW_H3_OHCI1,
-+    AW_H3_EHCI2,
-+    AW_H3_OHCI2,
-+    AW_H3_EHCI3,
-+    AW_H3_OHCI3,
-     AW_H3_CCU,
-     AW_H3_PIT,
-     AW_H3_UART0,
+@@ -50,6 +50,7 @@
+ #include "hw/sd/allwinner-sdhost.h"
+ #include "hw/net/allwinner-sun8i-emac.h"
+ #include "target/arm/cpu.h"
++#include "sysemu/block-backend.h"
+ 
+ /**
+  * Allwinner H3 device list
+@@ -130,4 +131,26 @@ typedef struct AwH3State {
+     MemoryRegion sram_c;
+ } AwH3State;
+ 
++/**
++ * Emulate Boot ROM firmware setup functionality.
++ *
++ * A real Allwinner H3 SoC contains a Boot ROM
++ * which is the first code that runs right after
++ * the SoC is powered on. The Boot ROM is responsible
++ * for loading user code (e.g. a bootloader) from any
++ * of the supported external devices and writing the
++ * downloaded code to internal SRAM. After loading the SoC
++ * begins executing the code written to SRAM.
++ *
++ * This function emulates the Boot ROM by copying 32 KiB
++ * of data from the given block device and writes it to
++ * the start of the first internal SRAM memory.
++ *
++ * @s: Allwinner H3 state object pointer
++ * @blk: Block backend device object pointer
++ * @errp: Error object pointer for raising errors
++ */
++void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk,
++                                Error **errp);
++
+ #endif /* HW_ARM_ALLWINNER_H3_H */
 diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index b85edaea85..1dc3209c03 100644
+index e692432b4e..e7b768ad5b 100644
 --- a/hw/arm/allwinner-h3.c
 +++ b/hw/arm/allwinner-h3.c
-@@ -26,6 +26,7 @@
- #include "hw/sysbus.h"
+@@ -27,6 +27,7 @@
  #include "hw/char/serial.h"
  #include "hw/misc/unimp.h"
-+#include "hw/usb/hcd-ehci.h"
+ #include "hw/usb/hcd-ehci.h"
++#include "hw/loader.h"
  #include "sysemu/sysemu.h"
  #include "hw/arm/allwinner-h3.h"
  
-@@ -34,6 +35,14 @@ const hwaddr allwinner_h3_memmap[] = {
-     [AW_H3_SRAM_A1]    = 0x00000000,
-     [AW_H3_SRAM_A2]    = 0x00044000,
-     [AW_H3_SRAM_C]     = 0x00010000,
-+    [AW_H3_EHCI0]      = 0x01c1a000,
-+    [AW_H3_OHCI0]      = 0x01c1a400,
-+    [AW_H3_EHCI1]      = 0x01c1b000,
-+    [AW_H3_OHCI1]      = 0x01c1b400,
-+    [AW_H3_EHCI2]      = 0x01c1c000,
-+    [AW_H3_OHCI2]      = 0x01c1c400,
-+    [AW_H3_EHCI3]      = 0x01c1d000,
-+    [AW_H3_OHCI3]      = 0x01c1d400,
-     [AW_H3_CCU]        = 0x01c20000,
-     [AW_H3_PIT]        = 0x01c20c00,
-     [AW_H3_UART0]      = 0x01c28000,
-@@ -71,10 +80,10 @@ struct AwH3Unimplemented {
-     { "msgbox",    0x01c17000, 4 * KiB },
-     { "spinlock",  0x01c18000, 4 * KiB },
-     { "usb0-otg",  0x01c19000, 4 * KiB },
--    { "usb0",      0x01c1a000, 4 * KiB },
--    { "usb1",      0x01c1b000, 4 * KiB },
--    { "usb2",      0x01c1c000, 4 * KiB },
--    { "usb3",      0x01c1d000, 4 * KiB },
-+    { "usb0-phy",  0x01c1a000, 4 * KiB },
-+    { "usb1-phy",  0x01c1b000, 4 * KiB },
-+    { "usb2-phy",  0x01c1c000, 4 * KiB },
-+    { "usb3-phy",  0x01c1d000, 4 * KiB },
-     { "smc",       0x01c1e000, 4 * KiB },
-     { "pio",       0x01c20800, 1 * KiB },
-     { "owa",       0x01c21000, 1 * KiB },
-@@ -142,6 +151,14 @@ enum {
-     AW_H3_GIC_SPI_UART3     =  3,
-     AW_H3_GIC_SPI_TIMER0    = 18,
-     AW_H3_GIC_SPI_TIMER1    = 19,
-+    AW_H3_GIC_SPI_EHCI0     = 72,
-+    AW_H3_GIC_SPI_OHCI0     = 73,
-+    AW_H3_GIC_SPI_EHCI1     = 74,
-+    AW_H3_GIC_SPI_OHCI1     = 75,
-+    AW_H3_GIC_SPI_EHCI2     = 76,
-+    AW_H3_GIC_SPI_OHCI2     = 77,
-+    AW_H3_GIC_SPI_EHCI3     = 78,
-+    AW_H3_GIC_SPI_OHCI3     = 79,
+@@ -168,6 +169,33 @@ enum {
+     AW_H3_GIC_NUM_SPI       = 128
  };
  
- /* Allwinner H3 constants */
-@@ -285,6 +302,33 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-     qdev_init_nofail(DEVICE(&s->ccu));
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_H3_CCU]);
- 
-+    /* Universal Serial Bus */
-+    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
-+                         qdev_get_gpio_in(DEVICE(&s->gic),
-+                                          AW_H3_GIC_SPI_EHCI0));
-+    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI1],
-+                         qdev_get_gpio_in(DEVICE(&s->gic),
-+                                          AW_H3_GIC_SPI_EHCI1));
-+    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI2],
-+                         qdev_get_gpio_in(DEVICE(&s->gic),
-+                                          AW_H3_GIC_SPI_EHCI2));
-+    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI3],
-+                         qdev_get_gpio_in(DEVICE(&s->gic),
-+                                          AW_H3_GIC_SPI_EHCI3));
-+
-+    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI0],
-+                         qdev_get_gpio_in(DEVICE(&s->gic),
-+                                          AW_H3_GIC_SPI_OHCI0));
-+    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI1],
-+                         qdev_get_gpio_in(DEVICE(&s->gic),
-+                                          AW_H3_GIC_SPI_OHCI1));
-+    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI2],
-+                         qdev_get_gpio_in(DEVICE(&s->gic),
-+                                          AW_H3_GIC_SPI_OHCI2));
-+    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI3],
-+                         qdev_get_gpio_in(DEVICE(&s->gic),
-+                                          AW_H3_GIC_SPI_OHCI3));
-+
-     /* UART0 */
-     serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART0], 2,
-                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART0),
-diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
-index 020211fd10..174c3446ef 100644
---- a/hw/usb/hcd-ehci-sysbus.c
-+++ b/hw/usb/hcd-ehci-sysbus.c
-@@ -145,6 +145,22 @@ static const TypeInfo ehci_exynos4210_type_info = {
-     .class_init    = ehci_exynos4210_class_init,
- };
- 
-+static void ehci_aw_h3_class_init(ObjectClass *oc, void *data)
++void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk, Error **errp)
 +{
-+    SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
-+    DeviceClass *dc = DEVICE_CLASS(oc);
++    uint8_t *buffer;
++    int64_t rom_size = 32 * KiB;
 +
-+    sec->capsbase = 0x0;
-+    sec->opregbase = 0x10;
-+    set_bit(DEVICE_CATEGORY_USB, dc->categories);
++    int64_t blk_size = blk_getlength(blk);
++    if (blk_size <= 0) {
++        error_setg(errp, "%s: failed to get BlockBackend size", __func__);
++        return;
++    }
++
++    if (rom_size > blk_size) {
++        rom_size = blk_size;
++    }
++
++    buffer = g_new0(uint8_t, rom_size);
++    if (blk_pread(blk, 8 * KiB, buffer, rom_size) < 0) {
++        error_setg(errp, "%s: failed to read BlockBackend data", __func__);
++        return;
++    }
++
++    rom_add_blob("allwinner-h3.bootrom", buffer, rom_size,
++                  rom_size, s->memmap[AW_H3_SRAM_A1],
++                  NULL, NULL, NULL, NULL, false);
++    g_free(buffer);
 +}
 +
-+static const TypeInfo ehci_aw_h3_type_info = {
-+    .name          = TYPE_AW_H3_EHCI,
-+    .parent        = TYPE_SYS_BUS_EHCI,
-+    .class_init    = ehci_aw_h3_class_init,
-+};
-+
- static void ehci_tegra2_class_init(ObjectClass *oc, void *data)
+ static void allwinner_h3_init(Object *obj)
  {
-     SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
-@@ -267,6 +283,7 @@ static void ehci_sysbus_register_types(void)
-     type_register_static(&ehci_platform_type_info);
-     type_register_static(&ehci_xlnx_type_info);
-     type_register_static(&ehci_exynos4210_type_info);
-+    type_register_static(&ehci_aw_h3_type_info);
-     type_register_static(&ehci_tegra2_type_info);
-     type_register_static(&ehci_ppc4xx_type_info);
-     type_register_static(&ehci_fusbh200_type_info);
+     AwH3State *s = AW_H3(obj);
+diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+index 0eb52eb813..b722f49485 100644
+--- a/hw/arm/orangepi.c
++++ b/hw/arm/orangepi.c
+@@ -93,6 +93,9 @@ static void orangepi_init(MachineState *machine)
+     if (bios_name) {
+         error_report("BIOS not supported for this machine");
+         exit(1);
++    } else if (!machine->kernel_filename && blk_is_available(blk)) {
++        /* Use Boot ROM to copy data from SD card to SRAM */
++        allwinner_h3_bootrom_setup(s->h3, blk, &error_fatal);
+     }
+     orangepi_binfo.loader_start = s->h3->memmap[AW_H3_SDRAM];
+     orangepi_binfo.ram_size = machine->ram_size;
 -- 
 2.17.1
 

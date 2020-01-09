@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id y7sm4022013wmd.1.2020.01.09.06.19.06
+        by smtp.gmail.com with ESMTPSA id q15sm8326055wrr.11.2020.01.09.06.19.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 09 Jan 2020 06:19:08 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 445081FF9E;
+	by zen.linaroharston (Postfix) with ESMTP id 2CCA01FF9D;
 	Thu,  9 Jan 2020 14:19:00 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
@@ -12,31 +12,31 @@ Cc: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL v2 14/14] tests/tcg: add user version of dumb-as-bricks semiconsole test
-Date: Thu,  9 Jan 2020 14:18:58 +0000
-Message-Id: <20200109141858.14376-15-alex.bennee@linaro.org>
+Subject: [PULL v2 13/14] tests/tcg: extract __semi_call into a header and expand
+Date: Thu,  9 Jan 2020 14:18:57 +0000
+Message-Id: <20200109141858.14376-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200109141858.14376-1-alex.bennee@linaro.org>
 References: <20200109141858.14376-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8sj1bNvDJmmD
+X-TUID: fkhpaBAW2JXm
 
-There are linux-user users of semihosting so we'd better check things
-work for them as well.
+There are two types of ARM semicall - lets test them both. Putting the
+logic in a header will make re-using the functions easier later.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/tests/tcg/arm/semiconsole.c b/tests/tcg/arm/semiconsole.c
+diff --git a/tests/tcg/arm/semicall.h b/tests/tcg/arm/semicall.h
 new file mode 100644
-index 00000000000..6ef0bd24500
+index 00000000000..d4f6818192d
 --- /dev/null
-+++ b/tests/tcg/arm/semiconsole.c
-@@ -0,0 +1,27 @@
++++ b/tests/tcg/arm/semicall.h
+@@ -0,0 +1,35 @@
 +/*
-+ * linux-user semihosting console
++ * Semihosting Tests
 + *
 + * Copyright (c) 2019
 + * Written by Alex Bennée <alex.bennee@linaro.org>
@@ -44,69 +44,86 @@ index 00000000000..6ef0bd24500
 + * SPDX-License-Identifier: GPL-3.0-or-later
 + */
 +
-+#include <stdio.h>
-+#include <stdint.h>
-+#include "semicall.h"
++#define SYS_WRITE0      0x04
++#define SYS_READC       0x07
++#define SYS_REPORTEXC   0x18
 +
-+int main(void)
++uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
 +{
-+    char c;
++#if defined(__arm__)
++    register uintptr_t t asm("r0") = type;
++    register uintptr_t a0 asm("r1") = arg0;
++#ifdef __thumb__
++#  define SVC  "svc 0xab"
++#else
++#  define SVC  "svc 0x123456"
++#endif
++    asm(SVC : "=r" (t)
++        : "r" (t), "r" (a0));
++#else
++    register uintptr_t t asm("x0") = type;
++    register uintptr_t a0 asm("x1") = arg0;
++    asm("hlt 0xf000"
++        : "=r" (t)
++        : "r" (t), "r" (a0));
++#endif
 +
-+    printf("Semihosting Console Test\n");
-+    printf("hit X to exit:");
-+
-+    do {
-+        c = __semi_call(SYS_READC, 0);
-+        printf("got '%c'\n", c);
-+    } while (c != 'X');
-+
-+    return 0;
++    return t;
 +}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 96d2321045a..df3fe8032c3 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -32,4 +32,11 @@ run-plugin-semihosting-with-%:
- 		 $(call strip-plugin,$<) 2> $<.err, \
- 		"$< on $(TARGET_NAME) with $*")
+diff --git a/tests/tcg/arm/semihosting.c b/tests/tcg/arm/semihosting.c
+index 09c89cb481a..33faac9916e 100644
+--- a/tests/tcg/arm/semihosting.c
++++ b/tests/tcg/arm/semihosting.c
+@@ -8,26 +8,7 @@
+  */
  
-+AARCH64_TESTS += semiconsole
-+run-semiconsole: semiconsole
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+run-plugin-semiconsole-with-%:
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
- TESTS += $(AARCH64_TESTS)
+ #include <stdint.h>
+-
+-#define SYS_WRITE0      0x04
+-#define SYS_REPORTEXC   0x18
+-
+-void __semi_call(uintptr_t type, uintptr_t arg0)
+-{
+-#if defined(__arm__)
+-    register uintptr_t t asm("r0") = type;
+-    register uintptr_t a0 asm("r1") = arg0;
+-    asm("svc 0xab"
+-        : /* no return */
+-        : "r" (t), "r" (a0));
+-#else
+-    register uintptr_t t asm("x0") = type;
+-    register uintptr_t a0 asm("x1") = arg0;
+-    asm("hlt 0xf000"
+-        : /* no return */
+-        : "r" (t), "r" (a0));
+-#endif
+-}
++#include "semicall.h"
+ 
+ int main(int argc, char *argv[argc])
+ {
 diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index 41aa26f4e17..11c39c601ea 100644
+index 0765f37ff04..41aa26f4e17 100644
 --- a/tests/tcg/arm/Makefile.target
 +++ b/tests/tcg/arm/Makefile.target
-@@ -49,6 +49,25 @@ run-plugin-semihosting-with-%:
- 		 $(call strip-plugin,$<) 2> $<.err, \
- 		"$< on $(TARGET_NAME) with $*")
+@@ -31,9 +31,18 @@ run-fcvt: fcvt
  
-+ARM_TESTS += semiconsole semiconsole-arm
-+
-+semiconsole: CFLAGS += -mthumb
-+run-semiconsole: semiconsole
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+run-plugin-semiconsole-with-%:
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+semiconsole-arm: CFLAGS += -marm
-+semiconsole-arm: semiconsole.c
+ # Semihosting smoke test for linux-user
+ ARM_TESTS += semihosting
++semihosting: CFLAGS += -mthumb
+ run-semihosting: semihosting
+ 	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
+ 
++ARM_TESTS += semihosting-arm
++semihosting-arm: CFLAGS += -marm
++semihosting-arm: semihosting.c
 +	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
 +
-+run-semiconsole-arm: semiconsole-arm
-+	$(call skip-test, $<, "MANUAL ONLY")
++run-semihosting-arm: semihosting-arm
++	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
 +
-+run-plugin-semiconsole-arm-with-%:
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
- TESTS += $(ARM_TESTS)
- 
- # On ARM Linux only supports 4k pages
+ run-plugin-semihosting-with-%:
+ 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+ 		-plugin $(PLUGIN_DIR)/$(call extract-plugin,$@) \
 -- 
 2.20.1

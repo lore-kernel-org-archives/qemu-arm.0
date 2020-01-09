@@ -1,110 +1,112 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1861023lff;
-        Thu, 9 Jan 2020 00:59:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyA6L8tZEaoufw5XAVU5L9vgda29SuwHz1v10z8Rqwn5zkRZWazMP1vMj4o7XrKLf7+7srt
-X-Received: by 2002:ac8:742:: with SMTP id k2mr7094285qth.302.1578560364880;
-        Thu, 09 Jan 2020 00:59:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578560364; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1954209lff;
+        Thu, 9 Jan 2020 02:40:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx9YVUBK4qgzexo4H1dDexMQHSjCcLCGGkvR+p4FS1QsfHkJ/5z0LO0w62C3gvcyZ51z/be
+X-Received: by 2002:a50:eacb:: with SMTP id u11mr10267470edp.181.1578566453670;
+        Thu, 09 Jan 2020 02:40:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578566453; cv=none;
         d=google.com; s=arc-20160816;
-        b=oTgT+m+WW9LhvCO/AF73Vmc+6wLMqmhjMLgAWI+zU40Q0neHEnrj+tIeqfo4V3Mt6t
-         XlHse5Z0AvaZgKNrxSyRRvTmEg4OKl27lAl0ggdJ7bJGdD0NYE4od7pk5+PGbSSakgXg
-         YmrQ/UQeJjeptNh4kyrT0NgOiuTZiem5TMcdZfJqZKwf64KFeqIjePOAq+R98h3I4cvV
-         jYeT3Dle0Gtavq76U+ABtPwg/OBroHd9V/SYKYgX28/OJkUSd5yu3Jb3D/ryhTljNtat
-         o70Hr1NnysPf1FnsDAJcrlRdAPuYzsdVIWjY93cDYkm3F1Ado93srG1PlIvEC41EigZr
-         LqWQ==
+        b=UKjQTs00FMwfXhx1Q4Rao9Wgv2swbBpm53CGkkpvxm3Ax/TEsr1FuENke/bgd7THY6
+         DeaEBrIDLCU6jw7mEP3tcF5Zg/7LoRAFx4yvJFWcD6eLN2KpbIjeR7DCOV0HUc5XUXa4
+         42XATm6lBZb5O00gTuWYPNocWyvk/yOq51aNc9vijYT1/JgDN4eUE6fMjMQjHg8jujQR
+         1x0ZaNDI1l9vXHx3tOYLfeuosJnTSNtLEoIUf/CmGyPaEpGwqdiWPBlh5NAvZUfW77qc
+         ab42v2iegl++UmQ/gk4FH8MFuISvHBy1ZlwSVNhhZXJEk4fBnSXiHHYLVbF/B9RBZLQB
+         4W7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=4QnuN8reEM91WflBdVipleY2ZFCB2LuFKUd0ENMYFyU=;
-        b=C5T83dbyUowEnhMpByMAQxk8TQQXCL2dblzJS/U8tc8l+RW9A6LhWUE5X1K333KN7z
-         7An02pAjdI9ASTkBkjuLl1VoggZhcgYvasBmf+JJ/K4ZHDom7eFt0zae0o4nRKq2yS7r
-         P9baspsRNwAlqefJHW9CIVCjAWDW0z+oq788AZTgtJDpfDl1oPMTnc1xMtGg15BO0rsk
-         aWdjJ4Og7naCHS7fH7n9fSlfBe/utO5gpv5F/NpFmXKkrB9NLkuwv3yiW+O393ql51Ey
-         VW9X1o0P477gUSNPCDesQbsAj7s8+idI2E0cVrsnT/3U95e1sOynmypFYGVqyHp0ShyA
-         Ldfw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=j0VIeGAp1BrnGHM7FD0UC10bMu2XPsedlX8Zb3gIIJs=;
+        b=ygI8yoyN97zyMBmwwIvOcLlVcCIXug/UfWFFlG6mRGTuDpFojuF49tDv9f/qrwhJ1R
+         Qspufa33AuVrwVigsVc7jjXRwTI6mMqvQcTSsgnPSC2+Bq5v1JopxOdhSGeRYKdYRKWM
+         04+cRRm0ndkiuwPNupBlilu0Z24bhHSVXefJxvqusg7RLzOJXABQFii0QAuvIaeX1YN9
+         lq7T1bhE16hE3oEOfqNG5fokN/VJrOCYzOMnqy0y+J/djI8xsRLAg3Xc1VVom3/4LbgA
+         8HzpSSUCPrEswmFjnm5YmFI5tVNfK9hKYqsT7+HfExKOncqudoWX3kH594bLgY0hEdwq
+         NI+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ATDG9sxJ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=zvksNLeu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ba4si2651391qvb.200.2020.01.09.00.59.24
+        by mx.google.com with ESMTPS id c9si3955353edt.135.2020.01.09.02.40.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2020 00:59:24 -0800 (PST)
+        Thu, 09 Jan 2020 02:40:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ATDG9sxJ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=zvksNLeu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57200 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58036 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipTf1-0006tc-WA
-	for alex.bennee@linaro.org; Thu, 09 Jan 2020 03:59:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45278)
+	id 1ipVFE-0006vK-K7
+	for alex.bennee@linaro.org; Thu, 09 Jan 2020 05:40:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38001)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1ipTen-0006nb-Dn
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 03:59:11 -0500
+ (envelope-from <jean-philippe@linaro.org>) id 1ipVF4-0006v1-OP
+ for qemu-arm@nongnu.org; Thu, 09 Jan 2020 05:40:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1ipTek-0000Zf-7K
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 03:59:07 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:51142
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1ipTej-0000TV-Rw
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 03:59:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578560344;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4QnuN8reEM91WflBdVipleY2ZFCB2LuFKUd0ENMYFyU=;
- b=ATDG9sxJEzhJ1POCLU5T97SHvVb5fa7T6s7lj6gu1TqlxbhR8EBemqqpuTz8/ZSFbJ0EFe
- 2i6B69IDlK333NnerHOyYJ0cBgUyIBKMC2+W2ftxdeAlq9z2QvuwG+282Rcl3tu9p7tQ4Z
- ATuj8MNZHXo3H6A/QNFn6Z8x8/Rrbi0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-208-6OwTdAzTPOCJOXIV5WidcQ-1; Thu, 09 Jan 2020 03:59:01 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B6554107ACC4;
- Thu,  9 Jan 2020 08:58:59 +0000 (UTC)
-Received: from [10.36.117.108] (ovpn-117-108.ams2.redhat.com [10.36.117.108])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6C2877C3B3;
- Thu,  9 Jan 2020 08:58:51 +0000 (UTC)
+ (envelope-from <jean-philippe@linaro.org>) id 1ipVF3-0000Fl-7F
+ for qemu-arm@nongnu.org; Thu, 09 Jan 2020 05:40:42 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54146)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
+ id 1ipVF2-0000BH-VJ
+ for qemu-arm@nongnu.org; Thu, 09 Jan 2020 05:40:41 -0500
+Received: by mail-wm1-x342.google.com with SMTP id m24so2329597wmc.3
+ for <qemu-arm@nongnu.org>; Thu, 09 Jan 2020 02:40:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=j0VIeGAp1BrnGHM7FD0UC10bMu2XPsedlX8Zb3gIIJs=;
+ b=zvksNLeuJvnwYho66axt16D+BITBNZgNgXSacM7ISI4yHBDovfzxQuaZRTXrkbPDyp
+ fOYgI62wKt1/inltNH5lLsZCl8L4msDYEVT0de9VcsnH9BpuOgDiM8iT4Vwn9+QAa1Iv
+ KWaYpWyFyKzFouwDWIadPiNGS7oNPJftxDIGnHdGp8M4upaQjNe44TD82IpRnuuQG2af
+ L8kPX33QYvlC76g2aDfpzV6ysyBWsQsEB4xjAdwfEuWdLJU+pwhHA+61iJb1gVcoAJqZ
+ tY/WAoCkQj5rANyZW0eDxwP9ofFR9icTnDwgANvuiit3hLXGwoEDg2qnYzaptCAYCJzl
+ zX7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=j0VIeGAp1BrnGHM7FD0UC10bMu2XPsedlX8Zb3gIIJs=;
+ b=IZgdS8GW6tjDB1AgBu4S+u8aetQNDCoMvW7J8zbbr8k2QdEEs6E45jl7zzbtAQ96i3
+ aDYYY0QZVBmFjFHcclKxV8zW/hP30dPL1Bf7nBVSzYSXxfG5qqZyscH39TYfZ88C+GX9
+ 1xUDXB7BjYl+F9wlWTHndgFFzA3RMA0fhCqbzLq/lbEb7tLC06Q8Nmt49XZO/0I8QOna
+ MVgF/8XiuyCnzlWv1KSmSMRGC26vaHuuXjhVR8y/xcxfRmsqWgxisBk8saIK/Bsm6ts3
+ uq9LxuJnQ5us0bHgMmrsIv7ECmqogEzR/o0Vkb7e0pP6/WD3epEs0Rf4wyouwf/GQLjJ
+ TAFA==
+X-Gm-Message-State: APjAAAWrQNgB7A+ew4DMwXcVxalkL+gvRLuVpbYZVUdHWcAFy8IufwEJ
+ gspPmYqa1JIT1MaLPGAkIJ729g==
+X-Received: by 2002:a05:600c:10cd:: with SMTP id
+ l13mr4274474wmd.102.1578566439546; 
+ Thu, 09 Jan 2020 02:40:39 -0800 (PST)
+Received: from myrica (adsl-84-227-176-239.adslplus.ch. [84.227.176.239])
+ by smtp.gmail.com with ESMTPSA id 16sm2421082wmi.0.2020.01.09.02.40.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 09 Jan 2020 02:40:38 -0800 (PST)
+Date: Thu, 9 Jan 2020 11:40:32 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Auger Eric <eric.auger@redhat.com>
 Subject: Re: [PATCH for-5.0 v11 08/20] virtio-iommu: Implement translate
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20191219133308.GA4246@xz-x1>
- <9d58b293-ada0-353e-bba2-ad1f538dfc62@redhat.com>
- <20191219144936.GB50561@xz-x1>
+Message-ID: <20200109104032.GA937123@myrica>
+References: <20191219144936.GB50561@xz-x1>
  <9ec9d0d5-062b-f96b-c72c-4d15865ff9a1@redhat.com>
  <20191220162642.GA2626852@myrica> <20191220165100.GA3780@xz-x1>
  <20200106170634.GF2062@myrica> <20200106175850.GC219677@xz-x1>
  <20200107101024.GB832497@myrica>
  <aa5fa9e6-6efd-e1a3-96c6-d02ba8eab4c8@redhat.com>
  <20200109084700.GA934975@myrica>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <0beb9d61-05b8-3152-e967-64413def6ab7@redhat.com>
-Date: Thu, 9 Jan 2020 09:58:49 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ <0beb9d61-05b8-3152-e967-64413def6ab7@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200109084700.GA934975@myrica>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: 6OwTdAzTPOCJOXIV5WidcQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <0beb9d61-05b8-3152-e967-64413def6ab7@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::342
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,112 +125,46 @@ Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
  dgilbert@redhat.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H8+WOURaYk8S
+X-TUID: 4Xz5AiWd3ZJm
 
-Hi Jean,
-
-On 1/9/20 9:47 AM, Jean-Philippe Brucker wrote:
-> On Wed, Jan 08, 2020 at 05:55:52PM +0100, Auger Eric wrote:
->> Hi Jean-Philippe, Peter,
->>
->> On 1/7/20 11:10 AM, Jean-Philippe Brucker wrote:
->>> On Mon, Jan 06, 2020 at 12:58:50PM -0500, Peter Xu wrote:
->>>> On Mon, Jan 06, 2020 at 06:06:34PM +0100, Jean-Philippe Brucker wrote:
->>>>> On Fri, Dec 20, 2019 at 11:51:00AM -0500, Peter Xu wrote:
->>>>>> On Fri, Dec 20, 2019 at 05:26:42PM +0100, Jean-Philippe Brucker wrote:
->>>>>>> There is at the virtio transport level: the driver sets status to
->>>>>>> FEATURES_OK once it accepted the feature bits, and to DRIVER_OK once its
->>>>>>> fully operational. The virtio-iommu spec says:
->>>>>>>
->>>>>>>   If the driver does not accept the VIRTIO_IOMMU_F_BYPASS feature, the
->>>>>>>   device SHOULD NOT let endpoints access the guest-physical address space.
->>>>>>>
->>>>>>> So before features negotiation, there is no access. Afterwards it depends
->>>>>>> if the VIRTIO_IOMMU_F_BYPASS has been accepted by the driver.
->>>>>>
->>>>>> Before enabling virtio-iommu device, should we still let the devices
->>>>>> to access the whole system address space?  I believe that's at least
->>>>>> what Intel IOMMUs are doing.  From code-wise, its:
->>>>>>
->>>>>>     if (likely(s->dmar_enabled)) {
->>>>>>         success = vtd_do_iommu_translate(vtd_as, vtd_as->bus, vtd_as->devfn,
->>>>>>                                          addr, flag & IOMMU_WO, &iotlb);
->>>>>>     } else {
->>>>>>         /* DMAR disabled, passthrough, use 4k-page*/
->>>>>>         iotlb.iova = addr & VTD_PAGE_MASK_4K;
->>>>>>         iotlb.translated_addr = addr & VTD_PAGE_MASK_4K;
->>>>>>         iotlb.addr_mask = ~VTD_PAGE_MASK_4K;
->>>>>>         iotlb.perm = IOMMU_RW;
->>>>>>         success = true;
->>>>>>     }
->>>>>>
->>>>>> From hardware-wise, an IOMMU should be close to transparent if you
->>>>>> never enable it, imho.
->>>>>
->>>>> For hardware that's not necessarily the best choice. As cited in my
->>>>> previous reply it has been shown to introduce vulnerabilities since
->>>>> malicious devices can DMA during boot, before the OS takes control of the
->>>>> IOMMU. The Arm SMMU allows an implementation to adopt a deny policy by
->>>>> default.
->>>>
->>>> I see.  But then how to read a sector from the block to at least boot
->>>> an OS if we use a default-deny policy?  Does it still need a mapping
->>>> that is established somehow by someone before hand?
->>>
->>> Yes, it looks like EDK II uses IOMMU operations in order to access those
->>> devices on platforms where the IOMMU isn't default-bypass (AMD SEV support
->>> is provided by edk2, and a VT-d driver seems provided by edk2-platforms).
->>> However for OVMF we could just set the bypass feature bit in virtio-iommu
->>> device, which doesn't even requires setting up the virtqueue.
->>>
->>> I'm missing a piece of the puzzle for Arm platforms though, because it
->>> looks like Trusted Firmware-A sets up the default-deny policy on reset
->>> even when it wasn't hardwired, but doesn't provide a service to create
->>> SMMUv3 mappings for the bootloader.
->>>
->>> Thanks,
->>> Jean
->>>
->>
->> I think we have a concrete example for the above discussion. The AHCI.
->> When running the virtio-iommu on x86 I get messages like:
->>
->> virtio_iommu_translate sid=250 is not known!!
->> no buffer available in event queue to report event
->>
->> and a bunch of "AHCI: Failed to start FIS receive engine: bad FIS
->> receive buffer address" messages (For each port)
->>
->> This was reported in my cover letter (*). This happens very early in the
->> boot process, before the OS get the hand and before the virtio-iommu
->> driver creates any mapping. It does not prevent the guest from booting
->> though.
->>
->> Currently the virtio-iommu device checks the VIRTIO_IOMMU_F_BYPASS. If I
->> overwrite it to true in the device, then, the guest boots without those
->> messages.
+On Thu, Jan 09, 2020 at 09:58:49AM +0100, Auger Eric wrote:
+> >> I share Peter's concern about having a different default policy than x86.
+> > 
+> > Yes I'd say just align with whatever policy is already in place. Do you
+> > think we could add a command-line option to let people disable
+> > default-bypass, though?  That would be a convenient way to make the IOMMU
+> > protection airtight for those who need it.
+> Yes I could easily add a device option to disable the default bypass.
 > 
-> Oh that's good, I was afraid it was an issue in Linux.
-> 
->> I share Peter's concern about having a different default policy than x86.
-> 
-> Yes I'd say just align with whatever policy is already in place. Do you
-> think we could add a command-line option to let people disable
-> default-bypass, though?  That would be a convenient way to make the IOMMU
-> protection airtight for those who need it.
-Yes I could easily add a device option to disable the default bypass.
+> Shall we change the meaning of the F_BYPASS feature then? If exposed by
+> the device, the device does bypass by default, otherwise it doesn't.
+> This would be controlled by the device option.
 
-Shall we change the meaning of the F_BYPASS feature then? If exposed by
-the device, the device does bypass by default, otherwise it doesn't.
-This would be controlled by the device option.
+For a device that doesn't do bypass by default, the driver wouldn't have
+the ability to enable bypass (feature bit not offered, not negotiable).
 
-The driver then could have means to overwrite this behavior once loaded?
+> The driver then could have means to overwrite this behavior once loaded?
 
-Thanks
+Let's keep the bypass feature bit for this. If the bit is offered, the
+driver chooses to enable or disable it. If the bit is not offered or not
+negotiated, then the behavior is deny. If the bit is offered and
+negotiated then the behavior is allow.
 
-Eric
-> 
-> Thanks,
-> Jean
-> 
+We can say that before features negotiation (latched at features register
+write, I think, in practice?) the behavior is platform dependent. The
+current wording about bypass intends to discourage unsafe choices but
+makes a strong statement only about the device behavior after features
+negotiation. 
+
+We could add a second feature bit specifically for the boot bypass
+behavior. It wouldn't be useful to the OS (the driver doesn't have a
+choice) but could present a bit in config space that allows a firmware to
+disable boot-bypass in a way that is sticky across reset. So when the OS
+resets the device after taking it over, it doesn't accidentally enable
+bypass. I wouldn't bother though. If a FW/bootloader is able to support
+virtio-iommu, the user might as well instantiate the device with the
+default-deny option.
+
+Thanks,
+Jean
 

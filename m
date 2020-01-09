@@ -1,366 +1,278 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2224833lff;
-        Thu, 9 Jan 2020 06:50:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyHXyeTlqPkCXQ1ZMcriiA2SxOIOkQ1oSLi91VrI7Odd0QC8pFQEnzS7Y9EfKTlGwTWsR8e
-X-Received: by 2002:a37:e50a:: with SMTP id e10mr9723903qkg.46.1578581456948;
-        Thu, 09 Jan 2020 06:50:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578581456; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2226429lff;
+        Thu, 9 Jan 2020 06:52:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxSmUrjqZqu9PB2OkC4yOLVmlNmg1fhUByqAaHXeb3wOgAYgdY5FeWM/JqDYf0n7Fuv1MWF
+X-Received: by 2002:a05:6214:1090:: with SMTP id o16mr9247565qvr.105.1578581546003;
+        Thu, 09 Jan 2020 06:52:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578581545; cv=none;
         d=google.com; s=arc-20160816;
-        b=WqN8uezsgajG66H4KFkeDpuoGaBtm7XlxRV9ZUz7aq5qsd95uXlDj6bQHjnqekDHrJ
-         7ye58b7L2fIgc8598pPc1SxkY8NhA9dMRTRI2nDv4SOc9LDmbFeAhGUf4JwnciigQuR4
-         iwAByhcxs4zKTvXwP1nwx3pOyIcX39YIAtNjkhu3uOEFpv8abScKOP/+ZOQSj9dY1hC1
-         EofSL+9aXj4+B2ssAipHlkq21cDV6Plfgytj55VzRwa2PtTQDqN5Tp7bwcWqXdiea5L1
-         HNcPbeBxZJE6QpFQlwY5jDLzkBiXFiM0ohrysc4ELgHtfdGJbHHlanm9fJNR51jI78wV
-         WuQg==
+        b=ahqIrMQO+0dWWcc2oUYpOCKyZcM6vzE27tq59J/VFexTg4TgIV8HsBFs9d8vKfM+i2
+         aPhYiChYvQhc+2K6lMuFfavwmcg+pvOx9JBbONeIUeNR6K+L/dnLZayihbwVW+lU9NOJ
+         N5DfuhKNkwneHZyU1itir1AvBhI3ogAW2M/wmdXHkoFD6gYMuMh6uP0Ch5C8oivPdhDh
+         OZeZF0MD2DSf6u0McUb8GOeVF0LCYGob3jGXP5QPnemeCur+WVp8DVRwXYvBKBF6ZUzU
+         0ieaiaaF3LTj9s5gXrlGIfQbTp5+RMxQ7yXDfByapgDph87W7ZZqoft1heDU1bAxzI8M
+         WX5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=38N4qcJYR95yRipoU5JW40H01C77jDEOmw1BbBYXpuw=;
-        b=bUd5JQ3vWlR23v0+9ZmOp/1DD1AGnzXisbQqlLQNFkPSp+hRlJxdhPpKb42ZkG/iml
-         Us1jrnQULaLEiS3kyVUzhAYYRGDStGme2kQFrTgMJ6N/auYwCwoSlB1QpoOEWJ2XWt1g
-         DewQZtUWEyPapxJGKKhvHNFnO+lG4KABaFwypmtjMQg/V2vObTS5FGh8bYZ02qdUaot5
-         qzKCi1SkxtaYkz8k5ig+40VoMHs4SkbemGTB4qDiBlreQO92MKFVhKGWGxA1X30eagMh
-         jiouo0Qsd3spzezZoW4VEwoGGb/wQb+QWGOo8SpstQxYLySgUMn6qsCqtV88lwLjEN8D
-         vhug==
+        bh=MQ/sFE7Qfd2ahndqfZ8IPJWnzqpw0qRbrgh4mNdSRT8=;
+        b=m5uEvCV8KJSN9Rm56rqcQXTdVxbMzZV3eUQPzXCubtIOBDLdj2E78YrGzM6C49dSMf
+         wj3sQy1RuE0r1x8aFjC4N7ftOWE2dtwHCMldIm5qPZBFIzx6JUGV1Qahbh2acFNLmyBR
+         zwxrQBTFPm5y2E0C413hDnyQiSRvDNvSIKSV8clFEvVImDZeEuZXVDrIEjXCTkCvRu2L
+         xWZ1fUZRutu9Kz3I1BoP0YReNi3FndCaxNFAbLstoF68qG+zpFOiXS/XXaBF+KT7+0Uo
+         0bpKwq0uGv80NT3ETV4Tl06KiZ4MvhwBJ9+8mV65JVpGGB+AcNzRzqPkm1UhYkmHEi/h
+         qSKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Yym0ODU9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cObnf7dc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t185si3627231qkb.213.2020.01.09.06.50.56
+        by mx.google.com with ESMTPS id w8si3321429qth.81.2020.01.09.06.52.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2020 06:50:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 09 Jan 2020 06:52:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Yym0ODU9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cObnf7dc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33640 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33652 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipZ9E-0000GP-1z
-	for alex.bennee@linaro.org; Thu, 09 Jan 2020 09:50:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38188)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ipZAf-0001n5-Bf
+	for alex.bennee@linaro.org; Thu, 09 Jan 2020 09:52:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41903)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1ipZ2h-0007Fm-0i
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 09:44:12 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1ipZ3L-0008JE-ND
+ for qemu-devel@nongnu.org; Thu, 09 Jan 2020 09:44:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1ipZ2f-0007Qw-8L
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 09:44:10 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:52646
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1ipZ3K-0002K3-05
+ for qemu-devel@nongnu.org; Thu, 09 Jan 2020 09:44:51 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:37901
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1ipZ2f-0007Nd-1y
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 09:44:09 -0500
+ id 1ipZ3J-0002I0-RI
+ for qemu-devel@nongnu.org; Thu, 09 Jan 2020 09:44:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578581048;
+ s=mimecast20190719; t=1578581089;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=38N4qcJYR95yRipoU5JW40H01C77jDEOmw1BbBYXpuw=;
- b=Yym0ODU9bijMYn8ED5XRhGwzjYCKnOdrs6A9tHgPraF3UUlQ5w9Y7IBRpSs/MXC0/5Q6bm
- 453WNrgyT/Tr8kZc4RhsydPuCmygZA9ps2YzdS/ouPbYichsNTvphkkNz/Dva2cFYiDTvn
- L5RpIeyTezpWO8/hkJf0PIgw1XUPmk0=
+ bh=MQ/sFE7Qfd2ahndqfZ8IPJWnzqpw0qRbrgh4mNdSRT8=;
+ b=cObnf7dc5CNVUuPAZjWx0LH4RvI76HJF+fwWiwRUwnQ9NTHZpJxM1VKO86nmHCP8rEULG9
+ oUP4VGsIad8MfFRI/+NqZZXXDqW3auckFfGKnYUz8PuUUmdYD20/8vwhbCX0GI62CDb8/I
+ yNaHjO0MeWk1ny/hcXrqx9ZRpSb1BU8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-268-43D7waCVOeasnjvWZY19PQ-1; Thu, 09 Jan 2020 09:44:07 -0500
+ us-mta-421-HN8jvO8fMGKWJ9ns1_c6wA-1; Thu, 09 Jan 2020 09:44:48 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 09F8D107ACC4;
- Thu,  9 Jan 2020 14:44:06 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B27D0800583;
+ Thu,  9 Jan 2020 14:44:46 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-108.ams2.redhat.com [10.36.117.108])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DF25B60FC6;
- Thu,  9 Jan 2020 14:43:59 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 51B4960FC6;
+ Thu,  9 Jan 2020 14:44:25 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, jean-philippe@linaro.org,
  dgilbert@redhat.com, quintela@redhat.com, mst@redhat.com, peterx@redhat.com
-Subject: [PATCH v12 05/13] virtio-iommu: Endpoint and domains structs and
- helpers
-Date: Thu,  9 Jan 2020 15:43:11 +0100
-Message-Id: <20200109144319.15912-6-eric.auger@redhat.com>
+Subject: [PATCH v12 09/13] virtio-iommu: Implement fault reporting
+Date: Thu,  9 Jan 2020 15:43:15 +0100
+Message-Id: <20200109144319.15912-10-eric.auger@redhat.com>
 In-Reply-To: <20200109144319.15912-1-eric.auger@redhat.com>
 References: <20200109144319.15912-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: 43D7waCVOeasnjvWZY19PQ-1
+X-MC-Unique: HN8jvO8fMGKWJ9ns1_c6wA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: kevin.tian@intel.com, bharatb.linux@gmail.com, tnowicki@marvell.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0JDkrPWB8Kij
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: W4vR2lR+O6+A
 
-This patch introduce domain and endpoint internal
-datatypes. Both are stored in RB trees. The domain
-owns a list of endpoints attached to it.
-
-Helpers to get/put end points and domains are introduced.
-get() helpers will become static in subsequent patches.
+The event queue allows to report asynchronous errors.
+The translate function now injects faults when relevant.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
 v11 -> v12:
-- s/uint/guint (docker-mingw@fedora build test failure)
-- s/viommu_/VirtIOIOMMU + CamelCase
-- Before creating an endpoint, check the sid is one from a
-  device protected by the iommu, otherwise returns NULL
-- add assert of endpoint put to check the endpoint was detached
-  from any domain
-- destroy and re-allocate the trees on reset
+- reporting the addr associated with the fault and set the
+  VIRTIO_IOMMU_FAULT_F_ADDRESS flag.
+- added cpu_to_le<n>
 
 v10 -> v11:
-- fixed interval_cmp (<=3D -> < and >=3D -> >)
-- removed unused viommu field from endpoint
-- removed Bharat's R-b
-
-v9 -> v10:
-- added Bharat's R-b
-
-v6 -> v7:
-- on virtio_iommu_find_add_as the bus number computation may
-  not be finalized yet so we cannot register the EPs at that time.
-  Hence, let's remove the get_endpoint and also do not use the
-  bus number for building the memory region name string (only
-  used for debug though).
-
-v4 -> v5:
-- initialize as->endpoint_list
-
-v3 -> v4:
-- new separate patch
+- change a virtio_error into an error_report_once
+  (no buffer available for output faults)
 ---
- hw/virtio/trace-events   |   4 ++
- hw/virtio/virtio-iommu.c | 128 ++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 130 insertions(+), 2 deletions(-)
+ hw/virtio/trace-events   |  1 +
+ hw/virtio/virtio-iommu.c | 73 +++++++++++++++++++++++++++++++++++++---
+ 2 files changed, 69 insertions(+), 5 deletions(-)
 
 diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index 10a2b120f3..15595f8cd7 100644
+index 095aa8b509..e83500bee9 100644
 --- a/hw/virtio/trace-events
 +++ b/hw/virtio/trace-events
-@@ -66,3 +66,7 @@ virtio_iommu_map(uint32_t domain_id, uint64_t virt_start,=
- uint64_t virt_end, uin
- virtio_iommu_unmap(uint32_t domain_id, uint64_t virt_start, uint64_t virt_=
-end) "domain=3D%d virt_start=3D0x%"PRIx64" virt_end=3D0x%"PRIx64
- virtio_iommu_translate(const char *name, uint32_t rid, uint64_t iova, int =
-flag) "mr=3D%s rid=3D%d addr=3D0x%"PRIx64" flag=3D%d"
- virtio_iommu_init_iommu_mr(char *iommu_mr) "init %s"
-+virtio_iommu_get_endpoint(uint32_t ep_id) "Alloc endpoint=3D%d"
-+virtio_iommu_put_endpoint(uint32_t ep_id) "Free endpoint=3D%d"
-+virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=3D%d"
-+virtio_iommu_put_domain(uint32_t domain_id) "Free domain=3D%d"
+@@ -72,3 +72,4 @@ virtio_iommu_put_endpoint(uint32_t ep_id) "Free endpoint=
+=3D%d"
+ virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=3D%d"
+ virtio_iommu_put_domain(uint32_t domain_id) "Free domain=3D%d"
+ virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint32_=
+t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=3D%d"
++virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t endpoin=
+t, uint64_t addr) "FAULT reason=3D%d flags=3D%d endpoint=3D%d address =3D0x=
+%"PRIx64
 diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index acc939f334..6a03c3d7ae 100644
+index d192bcb505..09193970ee 100644
 --- a/hw/virtio/virtio-iommu.c
 +++ b/hw/virtio/virtio-iommu.c
-@@ -32,10 +32,29 @@
- #include "hw/virtio/virtio-bus.h"
- #include "hw/virtio/virtio-access.h"
- #include "hw/virtio/virtio-iommu.h"
-+#include "hw/pci/pci_bus.h"
-+#include "hw/pci/pci.h"
-=20
- /* Max size */
- #define VIOMMU_DEFAULT_QUEUE_SIZE 256
-=20
-+typedef struct VirtIOIOMMUDomain {
-+    uint32_t id;
-+    GTree *mappings;
-+    QLIST_HEAD(, VirtIOIOMMUEndpoint) endpoint_list;
-+} VirtIOIOMMUDomain;
-+
-+typedef struct VirtIOIOMMUEndpoint {
-+    uint32_t id;
-+    VirtIOIOMMUDomain *domain;
-+    QLIST_ENTRY(VirtIOIOMMUEndpoint) next;
-+} VirtIOIOMMUEndpoint;
-+
-+typedef struct VirtIOIOMMUInterval {
-+    uint64_t low;
-+    uint64_t high;
-+} VirtIOIOMMUInterval;
-+
- static inline uint16_t virtio_iommu_get_sid(IOMMUDevice *dev)
- {
-     return PCI_BUILD_BDF(pci_bus_num(dev->bus), dev->devfn);
-@@ -65,8 +84,7 @@ static IOMMUPciBus *iommu_find_iommu_pcibus(VirtIOIOMMU *=
-s, uint8_t bus_num)
-     return iommu_pci_bus;
+@@ -477,6 +477,51 @@ out:
+     }
  }
 =20
--IOMMUMemoryRegion *virtio_iommu_mr(VirtIOIOMMU *s, uint32_t sid);
--IOMMUMemoryRegion *virtio_iommu_mr(VirtIOIOMMU *s, uint32_t sid)
-+static IOMMUMemoryRegion *virtio_iommu_mr(VirtIOIOMMU *s, uint32_t sid)
- {
-     uint8_t bus_n, devfn;
-     IOMMUPciBus *iommu_pci_bus;
-@@ -84,6 +102,88 @@ IOMMUMemoryRegion *virtio_iommu_mr(VirtIOIOMMU *s, uint=
-32_t sid)
-     return NULL;
- }
++static void virtio_iommu_report_fault(VirtIOIOMMU *viommu, uint8_t reason,
++                                      int flags, uint32_t endpoint,
++                                      uint64_t address)
++{
++    VirtIODevice *vdev =3D &viommu->parent_obj;
++    VirtQueue *vq =3D viommu->event_vq;
++    struct virtio_iommu_fault fault;
++    VirtQueueElement *elem;
++    size_t sz;
++
++    memset(&fault, 0, sizeof(fault));
++    fault.reason =3D reason;
++    fault.flags =3D cpu_to_le32(flags);
++    fault.endpoint =3D cpu_to_le32(endpoint);
++    fault.address =3D cpu_to_le64(address);
++
++    for (;;) {
++        elem =3D virtqueue_pop(vq, sizeof(VirtQueueElement));
++
++        if (!elem) {
++            error_report_once(
++                "no buffer available in event queue to report event");
++            return;
++        }
++
++        if (iov_size(elem->in_sg, elem->in_num) < sizeof(fault)) {
++            virtio_error(vdev, "error buffer of wrong size");
++            virtqueue_detach_element(vq, elem, 0);
++            g_free(elem);
++            continue;
++        }
++        break;
++    }
++    /* we have a buffer to fill in */
++    sz =3D iov_from_buf(elem->in_sg, elem->in_num, 0,
++                      &fault, sizeof(fault));
++    assert(sz =3D=3D sizeof(fault));
++
++    trace_virtio_iommu_report_fault(reason, flags, endpoint, address);
++    virtqueue_push(vq, elem, sz);
++    virtio_notify(vdev, vq);
++    g_free(elem);
++
++}
++
+ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr =
+addr,
+                                             IOMMUAccessFlags flag,
+                                             int iommu_idx)
+@@ -485,9 +530,10 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemor=
+yRegion *mr, hwaddr addr,
+     VirtIOIOMMUInterval interval, *mapping_key;
+     VirtIOIOMMUMapping *mapping_value;
+     VirtIOIOMMU *s =3D sdev->viommu;
++    bool read_fault, write_fault;
+     VirtIOIOMMUEndpoint *ep;
++    uint32_t sid, flags;
+     bool bypass_allowed;
+-    uint32_t sid;
+     bool found;
 =20
-+static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer user_d=
-ata)
-+{
-+    VirtIOIOMMUInterval *inta =3D (VirtIOIOMMUInterval *)a;
-+    VirtIOIOMMUInterval *intb =3D (VirtIOIOMMUInterval *)b;
-+
-+    if (inta->high < intb->low) {
-+        return -1;
-+    } else if (intb->high < inta->low) {
-+        return 1;
-+    } else {
-+        return 0;
-+    }
-+}
-+
-+static void virtio_iommu_detach_endpoint_from_domain(VirtIOIOMMUEndpoint *=
-ep)
-+{
-+    QLIST_REMOVE(ep, next);
-+    ep->domain =3D NULL;
-+}
-+
-+VirtIOIOMMUEndpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep=
-_id);
-+VirtIOIOMMUEndpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep=
-_id)
-+{
-+    VirtIOIOMMUEndpoint *ep;
-+
-+    ep =3D g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
-+    if (ep) {
-+        return ep;
-+    }
-+    if (!virtio_iommu_mr(s, ep_id)) {
-+        return NULL;
-+    }
-+    ep =3D g_malloc0(sizeof(*ep));
-+    ep->id =3D ep_id;
-+    trace_virtio_iommu_get_endpoint(ep_id);
-+    g_tree_insert(s->endpoints, GUINT_TO_POINTER(ep_id), ep);
-+    return ep;
-+}
-+
-+static void virtio_iommu_put_endpoint(gpointer data)
-+{
-+    VirtIOIOMMUEndpoint *ep =3D (VirtIOIOMMUEndpoint *)data;
-+
-+    assert(!ep->domain);
-+
-+    trace_virtio_iommu_put_endpoint(ep->id);
-+    g_free(ep);
-+}
-+
-+VirtIOIOMMUDomain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain=
-_id);
-+VirtIOIOMMUDomain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain=
-_id)
-+{
-+    VirtIOIOMMUDomain *domain;
-+
-+    domain =3D g_tree_lookup(s->domains, GUINT_TO_POINTER(domain_id));
-+    if (domain) {
-+        return domain;
-+    }
-+    domain =3D g_malloc0(sizeof(*domain));
-+    domain->id =3D domain_id;
-+    domain->mappings =3D g_tree_new_full((GCompareDataFunc)interval_cmp,
-+                                   NULL, (GDestroyNotify)g_free,
-+                                   (GDestroyNotify)g_free);
-+    g_tree_insert(s->domains, GUINT_TO_POINTER(domain_id), domain);
-+    QLIST_INIT(&domain->endpoint_list);
-+    trace_virtio_iommu_get_domain(domain_id);
-+    return domain;
-+}
-+
-+static void virtio_iommu_put_domain(gpointer data)
-+{
-+    VirtIOIOMMUDomain *domain =3D (VirtIOIOMMUDomain *)data;
-+    VirtIOIOMMUEndpoint *iter, *tmp;
-+
-+    QLIST_FOREACH_SAFE(iter, &domain->endpoint_list, next, tmp) {
-+        virtio_iommu_detach_endpoint_from_domain(iter);
-+    }
-+    g_tree_destroy(domain->mappings);
-+    trace_virtio_iommu_put_domain(domain->id);
-+    g_free(domain);
-+}
-+
- static AddressSpace *virtio_iommu_find_add_as(PCIBus *bus, void *opaque,
-                                               int devfn)
- {
-@@ -328,6 +428,13 @@ static const VMStateDescription vmstate_virtio_iommu_d=
-evice =3D {
-     .unmigratable =3D 1,
- };
+     interval.low =3D addr;
+@@ -513,6 +559,9 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemory=
+Region *mr, hwaddr addr,
+     if (!ep) {
+         if (!bypass_allowed) {
+             error_report_once("%s sid=3D%d is not known!!", __func__, sid)=
+;
++            virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_UNKNOWN,
++                                      VIRTIO_IOMMU_FAULT_F_ADDRESS,
++                                      sid, addr);
+         } else {
+             entry.perm =3D flag;
+         }
+@@ -524,6 +573,9 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemory=
+Region *mr, hwaddr addr,
+             error_report_once("%s %02x:%02x.%01x not attached to any domai=
+n",
+                               __func__, PCI_BUS_NUM(sid),
+                               PCI_SLOT(sid), PCI_FUNC(sid));
++            virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_DOMAIN,
++                                      VIRTIO_IOMMU_FAULT_F_ADDRESS,
++                                      sid, addr);
+         } else {
+             entry.perm =3D flag;
+         }
+@@ -536,15 +588,26 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemo=
+ryRegion *mr, hwaddr addr,
+     if (!found) {
+         error_report_once("%s no mapping for 0x%"PRIx64" for sid=3D%d",
+                           __func__, addr, sid);
++        virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_MAPPING,
++                                  VIRTIO_IOMMU_FAULT_F_ADDRESS,
++                                  sid, addr);
+         goto unlock;
+     }
 =20
-+static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
-+{
-+    guint ua =3D GPOINTER_TO_UINT(a);
-+    guint ub =3D GPOINTER_TO_UINT(b);
-+    return (ua > ub) - (ua < ub);
-+}
+-    if (((flag & IOMMU_RO) &&
+-            !(mapping_value->flags & VIRTIO_IOMMU_MAP_F_READ)) ||
+-        ((flag & IOMMU_WO) &&
+-            !(mapping_value->flags & VIRTIO_IOMMU_MAP_F_WRITE))) {
++    read_fault =3D (flag & IOMMU_RO) &&
++                    !(mapping_value->flags & VIRTIO_IOMMU_MAP_F_READ);
++    write_fault =3D (flag & IOMMU_WO) &&
++                    !(mapping_value->flags & VIRTIO_IOMMU_MAP_F_WRITE);
 +
- static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
- {
-     VirtIODevice *vdev =3D VIRTIO_DEVICE(dev);
-@@ -369,13 +476,30 @@ static void virtio_iommu_device_realize(DeviceState *=
-dev, Error **errp)
- static void virtio_iommu_device_unrealize(DeviceState *dev, Error **errp)
- {
-     VirtIODevice *vdev =3D VIRTIO_DEVICE(dev);
-+    VirtIOIOMMU *s =3D VIRTIO_IOMMU(dev);
-+
-+    g_tree_destroy(s->domains);
-+    g_tree_destroy(s->endpoints);
-=20
-     virtio_cleanup(vdev);
- }
-=20
- static void virtio_iommu_device_reset(VirtIODevice *vdev)
- {
-+    VirtIOIOMMU *s =3D VIRTIO_IOMMU(vdev);
-+
-     trace_virtio_iommu_device_reset();
-+
-+    if (s->domains) {
-+        g_tree_destroy(s->domains);
-+    }
-+    if (s->endpoints) {
-+        g_tree_destroy(s->endpoints);
-+    }
-+    s->domains =3D g_tree_new_full((GCompareDataFunc)int_cmp,
-+                                 NULL, NULL, virtio_iommu_put_domain);
-+    s->endpoints =3D g_tree_new_full((GCompareDataFunc)int_cmp,
-+                                   NULL, NULL, virtio_iommu_put_endpoint);
- }
-=20
- static void virtio_iommu_set_status(VirtIODevice *vdev, uint8_t status)
++    flags =3D read_fault ? VIRTIO_IOMMU_FAULT_F_READ : 0;
++    flags |=3D write_fault ? VIRTIO_IOMMU_FAULT_F_WRITE : 0;
++    if (flags) {
+         error_report_once("%s permission error on 0x%"PRIx64"(%d): allowed=
+=3D%d",
+                           __func__, addr, flag, mapping_value->flags);
++        flags |=3D VIRTIO_IOMMU_FAULT_F_ADDRESS;
++        virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_MAPPING,
++                                  flags | VIRTIO_IOMMU_FAULT_F_ADDRESS,
++                                  sid, addr);
+         goto unlock;
+     }
+     entry.translated_addr =3D addr - mapping_key->low + mapping_value->phy=
+s_addr;
 --=20
 2.20.1
 

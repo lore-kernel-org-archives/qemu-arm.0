@@ -1,96 +1,85 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1851220lff;
-        Thu, 9 Jan 2020 00:47:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqymJEOdUfj85NXnFphGXX6lDPnQYu3i2djuQ/B2aephiS5w4/qR1SKfHjG1Br8lPEtMyn09
-X-Received: by 2002:a05:6402:2042:: with SMTP id bc2mr9641399edb.300.1578559640797;
-        Thu, 09 Jan 2020 00:47:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578559640; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1861023lff;
+        Thu, 9 Jan 2020 00:59:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyA6L8tZEaoufw5XAVU5L9vgda29SuwHz1v10z8Rqwn5zkRZWazMP1vMj4o7XrKLf7+7srt
+X-Received: by 2002:ac8:742:: with SMTP id k2mr7094285qth.302.1578560364880;
+        Thu, 09 Jan 2020 00:59:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578560364; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lo5W7Ky/bOY71kFYBLD5RzrsHENwDlm8d5p68eqFTyXf48D2EVvWww+9nuJOYTmdyR
-         u2K9lOzbX8OvUcnZ/o6ByRTJC+jN8DS11qJijZFmu4exzpyxYOutsrgR3QhXBU2wQ12k
-         lbkh2gMJR4LT4fsPUZ/86QPDWh1jT/fUJHzb6KwF4V8oQemsUTm2uUFtUYGcUmXuASes
-         r4uW5YLpMAAKOoAW+Uu1ZG2gbYYNjo+swRaUFT6CzaLUSMtghLgzi6KmUwf/0o9KBe28
-         4vqj8EtTmM5ng96TR6t2YKaeDGJPHFZ+mipI/mfVbHzUH0gBfeMxfVVV+W4Mu+yFScjZ
-         dkYA==
+        b=oTgT+m+WW9LhvCO/AF73Vmc+6wLMqmhjMLgAWI+zU40Q0neHEnrj+tIeqfo4V3Mt6t
+         XlHse5Z0AvaZgKNrxSyRRvTmEg4OKl27lAl0ggdJ7bJGdD0NYE4od7pk5+PGbSSakgXg
+         YmrQ/UQeJjeptNh4kyrT0NgOiuTZiem5TMcdZfJqZKwf64KFeqIjePOAq+R98h3I4cvV
+         jYeT3Dle0Gtavq76U+ABtPwg/OBroHd9V/SYKYgX28/OJkUSd5yu3Jb3D/ryhTljNtat
+         o70Hr1NnysPf1FnsDAJcrlRdAPuYzsdVIWjY93cDYkm3F1Ado93srG1PlIvEC41EigZr
+         LqWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=gpSRAQfJfeKKZ93LqY3GL5Wc3kKXc5o+oUtpcCD6J6w=;
-        b=uKod+zxxaK5mAz+5cOd6b62AbYCjGHYZFGhdFb2PQBlM1C/iGGs3IDZU+jb/EUoGVg
-         7+LHY8viIgd+IC2/pYTjBXqKUEkRdTQiYvTUBxGT8MxCEn2CIEFiDJKHTIb8eZ4/Ur/3
-         LeBs14w2i3aofgFGi8z6zWxzlmcIis3aBMMpfATNK3HA22DSFrQEFPcU8BqMmyhxo3WQ
-         iQny9i1P/xid8jMj+YxYKQ4489dExc6yOiljAUtea1+Fj4WTW3dl3ytIxxL6ZRyGjwvx
-         48PM6DnyrS2phtl6l07B6FW/wtmt32ww8YqexY3YmhbMeayv8kUZ0BycgB5dXainANzW
-         F3+Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=4QnuN8reEM91WflBdVipleY2ZFCB2LuFKUd0ENMYFyU=;
+        b=C5T83dbyUowEnhMpByMAQxk8TQQXCL2dblzJS/U8tc8l+RW9A6LhWUE5X1K333KN7z
+         7An02pAjdI9ASTkBkjuLl1VoggZhcgYvasBmf+JJ/K4ZHDom7eFt0zae0o4nRKq2yS7r
+         P9baspsRNwAlqefJHW9CIVCjAWDW0z+oq788AZTgtJDpfDl1oPMTnc1xMtGg15BO0rsk
+         aWdjJ4Og7naCHS7fH7n9fSlfBe/utO5gpv5F/NpFmXKkrB9NLkuwv3yiW+O393ql51Ey
+         VW9X1o0P477gUSNPCDesQbsAj7s8+idI2E0cVrsnT/3U95e1sOynmypFYGVqyHp0ShyA
+         Ldfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eWdA4ary;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ATDG9sxJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r7si4162868ejj.227.2020.01.09.00.47.20
+        by mx.google.com with ESMTPS id ba4si2651391qvb.200.2020.01.09.00.59.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2020 00:47:20 -0800 (PST)
+        Thu, 09 Jan 2020 00:59:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eWdA4ary;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ATDG9sxJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57132 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57200 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipTTL-0001ZT-Ke
-	for alex.bennee@linaro.org; Thu, 09 Jan 2020 03:47:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39055)
+	id 1ipTf1-0006tc-WA
+	for alex.bennee@linaro.org; Thu, 09 Jan 2020 03:59:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45278)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jean-philippe@linaro.org>) id 1ipTTC-0001YE-IR
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 03:47:11 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1ipTen-0006nb-Dn
+ for qemu-arm@nongnu.org; Thu, 09 Jan 2020 03:59:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jean-philippe@linaro.org>) id 1ipTTB-000442-1I
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 03:47:10 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:55697)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
- id 1ipTTA-0003yF-MD
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 03:47:08 -0500
-Received: by mail-wm1-x342.google.com with SMTP id q9so1895704wmj.5
- for <qemu-arm@nongnu.org>; Thu, 09 Jan 2020 00:47:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=gpSRAQfJfeKKZ93LqY3GL5Wc3kKXc5o+oUtpcCD6J6w=;
- b=eWdA4aryHboefFwAe9I/qHO+XoWD7hr78KArKePtWtuntA+eXQ6hw9441qE4eyn20s
- V88No0spFygp7X+YZpT4ejtUTFk1kpOVcORW0m2A5S4aOMJhdzP37pXCurAYldCH7I8A
- 0efGdmsvKShhGOiJL4Yo3bmK/6m0KMCO/G49zoEmrtoOKHS/5hjk+C8ZGnWTOJhUVVmw
- R9u6l1kdOnbIDbPDaxtGGBXr3v/STwqvExHWrNDZesY4tclIFvPQC3tmiUTb9x5uXUfS
- XCJ8Zqy4zDDY7+kP9cmTPoPYM22McdWr9UN3GiGbe+dCUnEsLTjAqlna9E1IE05z2vzp
- 4Gzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=gpSRAQfJfeKKZ93LqY3GL5Wc3kKXc5o+oUtpcCD6J6w=;
- b=chrOEDGUSvnNa6oIHeGOZdeJ5SY0da6CfDs4DLngXyW5GSNe8+tzGxI9ZNiLcuKKTe
- klRz2ZxyMzZDlTxt0C8dPjamMN+UzLXUCSi7Xjd9NRBes2b/xBqaw2Yui06qYsHT+Rz7
- YTfGx0cr9KwWRsDKrphKvUNagAIrJzRSnYwjHfIDVhL8Ag4xuOzqzok0NwnA/EmflWBx
- /F/quiiakhWEMDJJ8IOMlRRxC0qnncWZN9x9PkbASuVOz4R2vy+Xz0/RpNXhSBDJrLRq
- yPcH6HWVsbF+ExlBz3Q9uLtu3UkimEXmh9xrZfjWLifizbaKUaVmy/rl92lkJB9m2AQH
- 0Xqg==
-X-Gm-Message-State: APjAAAWQJyAiWnV6mQQ3Bq2woVN411HCHj7vQVsdQ++q7+yFI2kWePf1
- g87nRs8S7DMrgBTN0mk0P/lh6Q==
-X-Received: by 2002:a1c:6809:: with SMTP id d9mr3461873wmc.70.1578559627288;
- Thu, 09 Jan 2020 00:47:07 -0800 (PST)
-Received: from myrica (adsl-84-227-176-239.adslplus.ch. [84.227.176.239])
- by smtp.gmail.com with ESMTPSA id s15sm7442925wrp.4.2020.01.09.00.47.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Jan 2020 00:47:06 -0800 (PST)
-Date: Thu, 9 Jan 2020 09:47:00 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Auger Eric <eric.auger@redhat.com>
+ (envelope-from <eric.auger@redhat.com>) id 1ipTek-0000Zf-7K
+ for qemu-arm@nongnu.org; Thu, 09 Jan 2020 03:59:07 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:51142
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1ipTej-0000TV-Rw
+ for qemu-arm@nongnu.org; Thu, 09 Jan 2020 03:59:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578560344;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4QnuN8reEM91WflBdVipleY2ZFCB2LuFKUd0ENMYFyU=;
+ b=ATDG9sxJEzhJ1POCLU5T97SHvVb5fa7T6s7lj6gu1TqlxbhR8EBemqqpuTz8/ZSFbJ0EFe
+ 2i6B69IDlK333NnerHOyYJ0cBgUyIBKMC2+W2ftxdeAlq9z2QvuwG+282Rcl3tu9p7tQ4Z
+ ATuj8MNZHXo3H6A/QNFn6Z8x8/Rrbi0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-208-6OwTdAzTPOCJOXIV5WidcQ-1; Thu, 09 Jan 2020 03:59:01 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B6554107ACC4;
+ Thu,  9 Jan 2020 08:58:59 +0000 (UTC)
+Received: from [10.36.117.108] (ovpn-117-108.ams2.redhat.com [10.36.117.108])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6C2877C3B3;
+ Thu,  9 Jan 2020 08:58:51 +0000 (UTC)
 Subject: Re: [PATCH for-5.0 v11 08/20] virtio-iommu: Implement translate
-Message-ID: <20200109084700.GA934975@myrica>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
 References: <20191219133308.GA4246@xz-x1>
  <9d58b293-ada0-353e-bba2-ad1f538dfc62@redhat.com>
  <20191219144936.GB50561@xz-x1>
@@ -99,13 +88,23 @@ References: <20191219133308.GA4246@xz-x1>
  <20200106170634.GF2062@myrica> <20200106175850.GC219677@xz-x1>
  <20200107101024.GB832497@myrica>
  <aa5fa9e6-6efd-e1a3-96c6-d02ba8eab4c8@redhat.com>
+ <20200109084700.GA934975@myrica>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <0beb9d61-05b8-3152-e967-64413def6ab7@redhat.com>
+Date: Thu, 9 Jan 2020 09:58:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aa5fa9e6-6efd-e1a3-96c6-d02ba8eab4c8@redhat.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::342
+In-Reply-To: <20200109084700.GA934975@myrica>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: 6OwTdAzTPOCJOXIV5WidcQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,96 +123,112 @@ Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
  dgilbert@redhat.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZXvzCzsC7kyA
+X-TUID: H8+WOURaYk8S
 
-On Wed, Jan 08, 2020 at 05:55:52PM +0100, Auger Eric wrote:
-> Hi Jean-Philippe, Peter,
-> 
-> On 1/7/20 11:10 AM, Jean-Philippe Brucker wrote:
-> > On Mon, Jan 06, 2020 at 12:58:50PM -0500, Peter Xu wrote:
-> >> On Mon, Jan 06, 2020 at 06:06:34PM +0100, Jean-Philippe Brucker wrote:
-> >>> On Fri, Dec 20, 2019 at 11:51:00AM -0500, Peter Xu wrote:
-> >>>> On Fri, Dec 20, 2019 at 05:26:42PM +0100, Jean-Philippe Brucker wrote:
-> >>>>> There is at the virtio transport level: the driver sets status to
-> >>>>> FEATURES_OK once it accepted the feature bits, and to DRIVER_OK once its
-> >>>>> fully operational. The virtio-iommu spec says:
-> >>>>>
-> >>>>>   If the driver does not accept the VIRTIO_IOMMU_F_BYPASS feature, the
-> >>>>>   device SHOULD NOT let endpoints access the guest-physical address space.
-> >>>>>
-> >>>>> So before features negotiation, there is no access. Afterwards it depends
-> >>>>> if the VIRTIO_IOMMU_F_BYPASS has been accepted by the driver.
-> >>>>
-> >>>> Before enabling virtio-iommu device, should we still let the devices
-> >>>> to access the whole system address space?  I believe that's at least
-> >>>> what Intel IOMMUs are doing.  From code-wise, its:
-> >>>>
-> >>>>     if (likely(s->dmar_enabled)) {
-> >>>>         success = vtd_do_iommu_translate(vtd_as, vtd_as->bus, vtd_as->devfn,
-> >>>>                                          addr, flag & IOMMU_WO, &iotlb);
-> >>>>     } else {
-> >>>>         /* DMAR disabled, passthrough, use 4k-page*/
-> >>>>         iotlb.iova = addr & VTD_PAGE_MASK_4K;
-> >>>>         iotlb.translated_addr = addr & VTD_PAGE_MASK_4K;
-> >>>>         iotlb.addr_mask = ~VTD_PAGE_MASK_4K;
-> >>>>         iotlb.perm = IOMMU_RW;
-> >>>>         success = true;
-> >>>>     }
-> >>>>
-> >>>> From hardware-wise, an IOMMU should be close to transparent if you
-> >>>> never enable it, imho.
-> >>>
-> >>> For hardware that's not necessarily the best choice. As cited in my
-> >>> previous reply it has been shown to introduce vulnerabilities since
-> >>> malicious devices can DMA during boot, before the OS takes control of the
-> >>> IOMMU. The Arm SMMU allows an implementation to adopt a deny policy by
-> >>> default.
-> >>
-> >> I see.  But then how to read a sector from the block to at least boot
-> >> an OS if we use a default-deny policy?  Does it still need a mapping
-> >> that is established somehow by someone before hand?
-> > 
-> > Yes, it looks like EDK II uses IOMMU operations in order to access those
-> > devices on platforms where the IOMMU isn't default-bypass (AMD SEV support
-> > is provided by edk2, and a VT-d driver seems provided by edk2-platforms).
-> > However for OVMF we could just set the bypass feature bit in virtio-iommu
-> > device, which doesn't even requires setting up the virtqueue.
-> > 
-> > I'm missing a piece of the puzzle for Arm platforms though, because it
-> > looks like Trusted Firmware-A sets up the default-deny policy on reset
-> > even when it wasn't hardwired, but doesn't provide a service to create
-> > SMMUv3 mappings for the bootloader.
-> > 
-> > Thanks,
-> > Jean
-> > 
-> 
-> I think we have a concrete example for the above discussion. The AHCI.
-> When running the virtio-iommu on x86 I get messages like:
-> 
-> virtio_iommu_translate sid=250 is not known!!
-> no buffer available in event queue to report event
-> 
-> and a bunch of "AHCI: Failed to start FIS receive engine: bad FIS
-> receive buffer address" messages (For each port)
-> 
-> This was reported in my cover letter (*). This happens very early in the
-> boot process, before the OS get the hand and before the virtio-iommu
-> driver creates any mapping. It does not prevent the guest from booting
-> though.
-> 
-> Currently the virtio-iommu device checks the VIRTIO_IOMMU_F_BYPASS. If I
-> overwrite it to true in the device, then, the guest boots without those
-> messages.
+Hi Jean,
 
-Oh that's good, I was afraid it was an issue in Linux.
+On 1/9/20 9:47 AM, Jean-Philippe Brucker wrote:
+> On Wed, Jan 08, 2020 at 05:55:52PM +0100, Auger Eric wrote:
+>> Hi Jean-Philippe, Peter,
+>>
+>> On 1/7/20 11:10 AM, Jean-Philippe Brucker wrote:
+>>> On Mon, Jan 06, 2020 at 12:58:50PM -0500, Peter Xu wrote:
+>>>> On Mon, Jan 06, 2020 at 06:06:34PM +0100, Jean-Philippe Brucker wrote:
+>>>>> On Fri, Dec 20, 2019 at 11:51:00AM -0500, Peter Xu wrote:
+>>>>>> On Fri, Dec 20, 2019 at 05:26:42PM +0100, Jean-Philippe Brucker wrote:
+>>>>>>> There is at the virtio transport level: the driver sets status to
+>>>>>>> FEATURES_OK once it accepted the feature bits, and to DRIVER_OK once its
+>>>>>>> fully operational. The virtio-iommu spec says:
+>>>>>>>
+>>>>>>>   If the driver does not accept the VIRTIO_IOMMU_F_BYPASS feature, the
+>>>>>>>   device SHOULD NOT let endpoints access the guest-physical address space.
+>>>>>>>
+>>>>>>> So before features negotiation, there is no access. Afterwards it depends
+>>>>>>> if the VIRTIO_IOMMU_F_BYPASS has been accepted by the driver.
+>>>>>>
+>>>>>> Before enabling virtio-iommu device, should we still let the devices
+>>>>>> to access the whole system address space?  I believe that's at least
+>>>>>> what Intel IOMMUs are doing.  From code-wise, its:
+>>>>>>
+>>>>>>     if (likely(s->dmar_enabled)) {
+>>>>>>         success = vtd_do_iommu_translate(vtd_as, vtd_as->bus, vtd_as->devfn,
+>>>>>>                                          addr, flag & IOMMU_WO, &iotlb);
+>>>>>>     } else {
+>>>>>>         /* DMAR disabled, passthrough, use 4k-page*/
+>>>>>>         iotlb.iova = addr & VTD_PAGE_MASK_4K;
+>>>>>>         iotlb.translated_addr = addr & VTD_PAGE_MASK_4K;
+>>>>>>         iotlb.addr_mask = ~VTD_PAGE_MASK_4K;
+>>>>>>         iotlb.perm = IOMMU_RW;
+>>>>>>         success = true;
+>>>>>>     }
+>>>>>>
+>>>>>> From hardware-wise, an IOMMU should be close to transparent if you
+>>>>>> never enable it, imho.
+>>>>>
+>>>>> For hardware that's not necessarily the best choice. As cited in my
+>>>>> previous reply it has been shown to introduce vulnerabilities since
+>>>>> malicious devices can DMA during boot, before the OS takes control of the
+>>>>> IOMMU. The Arm SMMU allows an implementation to adopt a deny policy by
+>>>>> default.
+>>>>
+>>>> I see.  But then how to read a sector from the block to at least boot
+>>>> an OS if we use a default-deny policy?  Does it still need a mapping
+>>>> that is established somehow by someone before hand?
+>>>
+>>> Yes, it looks like EDK II uses IOMMU operations in order to access those
+>>> devices on platforms where the IOMMU isn't default-bypass (AMD SEV support
+>>> is provided by edk2, and a VT-d driver seems provided by edk2-platforms).
+>>> However for OVMF we could just set the bypass feature bit in virtio-iommu
+>>> device, which doesn't even requires setting up the virtqueue.
+>>>
+>>> I'm missing a piece of the puzzle for Arm platforms though, because it
+>>> looks like Trusted Firmware-A sets up the default-deny policy on reset
+>>> even when it wasn't hardwired, but doesn't provide a service to create
+>>> SMMUv3 mappings for the bootloader.
+>>>
+>>> Thanks,
+>>> Jean
+>>>
+>>
+>> I think we have a concrete example for the above discussion. The AHCI.
+>> When running the virtio-iommu on x86 I get messages like:
+>>
+>> virtio_iommu_translate sid=250 is not known!!
+>> no buffer available in event queue to report event
+>>
+>> and a bunch of "AHCI: Failed to start FIS receive engine: bad FIS
+>> receive buffer address" messages (For each port)
+>>
+>> This was reported in my cover letter (*). This happens very early in the
+>> boot process, before the OS get the hand and before the virtio-iommu
+>> driver creates any mapping. It does not prevent the guest from booting
+>> though.
+>>
+>> Currently the virtio-iommu device checks the VIRTIO_IOMMU_F_BYPASS. If I
+>> overwrite it to true in the device, then, the guest boots without those
+>> messages.
+> 
+> Oh that's good, I was afraid it was an issue in Linux.
+> 
+>> I share Peter's concern about having a different default policy than x86.
+> 
+> Yes I'd say just align with whatever policy is already in place. Do you
+> think we could add a command-line option to let people disable
+> default-bypass, though?  That would be a convenient way to make the IOMMU
+> protection airtight for those who need it.
+Yes I could easily add a device option to disable the default bypass.
 
-> I share Peter's concern about having a different default policy than x86.
+Shall we change the meaning of the F_BYPASS feature then? If exposed by
+the device, the device does bypass by default, otherwise it doesn't.
+This would be controlled by the device option.
 
-Yes I'd say just align with whatever policy is already in place. Do you
-think we could add a command-line option to let people disable
-default-bypass, though?  That would be a convenient way to make the IOMMU
-protection airtight for those who need it.
+The driver then could have means to overwrite this behavior once loaded?
 
-Thanks,
-Jean
+Thanks
+
+Eric
+> 
+> Thanks,
+> Jean
+> 
+

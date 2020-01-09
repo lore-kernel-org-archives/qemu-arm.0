@@ -1,66 +1,102 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2253348lff;
-        Thu, 9 Jan 2020 07:13:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwl8y1JBdI13nYqWKrO7ZcJZA5qtffs4mRXklbgH3SJ0UFPgDOzPe0v21YIrdO0Z2diSCPT
-X-Received: by 2002:a17:906:19ca:: with SMTP id h10mr10890792ejd.282.1578582819912;
-        Thu, 09 Jan 2020 07:13:39 -0800 (PST)
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2316446lff;
+        Thu, 9 Jan 2020 08:08:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw7jv3UPmNXK3+VXMtcpAqkt+P6M2Hoot/FgrVbGyNYGh0y2x+HuuSti1fVvDFBzxIcSBKE
+X-Received: by 2002:a17:906:27d5:: with SMTP id k21mr11069926ejc.328.1578586100982;
+        Thu, 09 Jan 2020 08:08:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578586100; cv=none;
+        d=google.com; s=arc-20160816;
+        b=S15VnPJEpETKF5Isxo2JRUwygaitjo7TEYhbSSrBZkLu7XnQyeORBS/3KogcYyWz2/
+         8SvdtN1hMME+iKsCyNHkRXDKqqRh7H8HC8w8WrfHDIyNS+TUiuLEOYlz5ZcEvNqPyBym
+         ZlLTx2aw4lKQr95+sefzIwfTmsNk/CwwacIwtOnF4ObGftzk9HF9ElIZ/ih/Yl5nNmYc
+         VWxmz+4aV0jTxN563lqHCgRMRrVnBJNSp6ZlwkPzr9GOcOAf3NMG/gqRKrayK5fHpbPx
+         36JPF0cLSy92lSFxlPeMkKqmKCUpmXsycVQVcxDOEhDU7YCJJKXfe+xW/MLNwjz1idXz
+         1qKw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=9n3MIJ2DeLD98iErPP6o0avcoWZGXc9nCEUOvuizaxE=;
+        b=X4fz/LVJakVEZ8JOEwPsuO0cc63oLHLehb7qfx1klnODJmaKYZDeg4khUsZDhQDmhu
+         7wcgVoMUqZSSZliEKJQaKhyYtFbnhLzoPjiLrXdczBDJv9JohlrBCqmd1gc3gnhf10cf
+         97i9dIoW/8jk/DRKws/K1CJFTc1fmCxR4KcsccSf0+owE6GtMNjUdKmuRknOgZ8opcrQ
+         PVgHoYxamdys6OnMyQursiJ71lNodQhhkym60XPFYjHcAMIWjMsG0AH3otC+kg2i0LDF
+         XTgeX5c2mpA9545VRjmqOIa3pDp8ut6eGiroPYgdlshfL/6Q3l1mdcrclj1Zq7AeLT+E
+         D7Kw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J5P7Hc6i;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 92si4979173edo.140.2020.01.09.07.13.39
+        by mx.google.com with ESMTPS id bf7si5210086edb.240.2020.01.09.08.08.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2020 07:13:39 -0800 (PST)
+        Thu, 09 Jan 2020 08:08:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33896 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J5P7Hc6i;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34680 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipZVC-0001qk-UJ
-	for alex.bennee@linaro.org; Thu, 09 Jan 2020 10:13:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55343)
+	id 1ipaM7-0002x2-T2
+	for alex.bennee@linaro.org; Thu, 09 Jan 2020 11:08:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51401)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1ipZV4-0001ob-0u
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 10:13:31 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1ipaLx-0002vJ-Tf
+ for qemu-arm@nongnu.org; Thu, 09 Jan 2020 11:08:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1ipZV2-0002XM-Nw
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 10:13:29 -0500
-Resent-Date: Thu, 09 Jan 2020 10:13:29 -0500
-Resent-Message-Id: <E1ipZV2-0002XM-Nw@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21192)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1ipZUy-00026H-Fw; Thu, 09 Jan 2020 10:13:24 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1578582782; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=kBS7/GQYz5gC0+ZbFbiAlHdw1SAUqGrN585N2B3A15EeDZuMnH0O+huUbYr8Np8VT2pmlRe/cGRY2k10lZkNY07j9DL6URzzd3NbOCaW6vLBMefa0iVgiJhbJbZBX1RuAURez3oXX6Qypo1+BCO4lK4iLW79IaiTe4sy822LW00=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1578582782;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=ddVp8ND7Kl/wMUaqnHDncxX4FWAN1DQjdQPag2p8LIE=; 
- b=cK5/FW+ypCK2dOQKutFQfIZp7EUudTFUtuZ8nEveha51g8coZ3KGrJ/aqcfrw7NxHmqPlW4J+cKepR8U9L+9IJNfzqotOzlU3AgqqW4x0Bb2+WbDgOPXsF66eo+Jl7iqBpJaCptAdFc8EnpqvE/sImYF8/axnHUdbdmJ97HE+b4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1578582777749657.5808867795997;
- Thu, 9 Jan 2020 07:12:57 -0800 (PST)
-In-Reply-To: <20200109144319.15912-1-eric.auger@redhat.com>
+ (envelope-from <eric.auger@redhat.com>) id 1ipaLu-00051l-SA
+ for qemu-arm@nongnu.org; Thu, 09 Jan 2020 11:08:08 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:55582
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1ipaLu-0004vF-E1
+ for qemu-arm@nongnu.org; Thu, 09 Jan 2020 11:08:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578586085;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9n3MIJ2DeLD98iErPP6o0avcoWZGXc9nCEUOvuizaxE=;
+ b=J5P7Hc6i0r3N4+Ielpo6pGzvL2mSSbYNeYsYXSF/Ef4urWPM15PhUO9VTLQkUjGLQDff/a
+ DX59GmNnFDIj/tu1/U4wujikQBB2LfnRHRgGuSCbizA4hzLlHusXF9TF97CMAxlGgRxoV/
+ CQ8JKKNG/2e68Im9DjGNITB6eVlGeO0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-139-UbczhdzpO7SEBFja513NLQ-1; Thu, 09 Jan 2020 11:08:03 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19E6D19AD4E8;
+ Thu,  9 Jan 2020 16:08:02 +0000 (UTC)
+Received: from [10.36.117.108] (ovpn-117-108.ams2.redhat.com [10.36.117.108])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B64D97C3E1;
+ Thu,  9 Jan 2020 16:07:54 +0000 (UTC)
 Subject: Re: [PATCH v12 00/13] VIRTIO-IOMMU device
-Message-ID: <157858277631.10632.10417491075155237341@37313f22b938>
+To: qemu-devel@nongnu.org
+References: <157858277631.10632.10417491075155237341@37313f22b938>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <0701f56d-bcba-3c17-d894-f52254f06c2e@redhat.com>
+Date: Thu, 9 Jan 2020 17:07:53 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: eric.auger@redhat.com
-Date: Thu, 9 Jan 2020 07:12:57 -0800 (PST)
-X-ZohoMailClient: External
+In-Reply-To: <157858277631.10632.10417491075155237341@37313f22b938>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: UbczhdzpO7SEBFja513NLQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 136.143.188.51
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,53 +108,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
- peterx@redhat.com, dgilbert@redhat.com, eric.auger@redhat.com,
- bharatb.linux@gmail.com, qemu-arm@nongnu.org, mst@redhat.com,
- eric.auger.pro@gmail.com
+ jean-philippe@linaro.org, quintela@redhat.com, dgilbert@redhat.com,
+ peterx@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ mst@redhat.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IcMibJt0DR1A
+X-TUID: Mbdpq9EFLih7
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDEwOTE0NDMxOS4xNTkx
-Mi0xLWVyaWMuYXVnZXJAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhl
-IGRvY2tlci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5n
-IGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0
-YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBT
-Q1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcgVj0x
-IE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VOVj0x
-IEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIFRFU1QgICAgY2hlY2st
-cXRlc3QteDg2XzY0OiB0ZXN0cy90ZXN0LWhtcAogIFRFU1QgICAgY2hlY2stcXRlc3QteDg2XzY0
-OiB0ZXN0cy9xb3MtdGVzdAoqKgpFUlJPUjovdG1wL3FlbXUtdGVzdC9zcmMvdGVzdHMvdmlydGlv
-LWlvbW11LXRlc3QuYzo0NjpwY2lfY29uZmlnOiBhc3NlcnRpb24gZmFpbGVkIChwcm9iZV9zaXpl
-ID09IDB4MjAwKTogKDB4MDAwMDAwMDAgPT0gMHgwMDAwMDIwMCkKRVJST1IgLSBCYWlsIG91dCEg
-RVJST1I6L3RtcC9xZW11LXRlc3Qvc3JjL3Rlc3RzL3ZpcnRpby1pb21tdS10ZXN0LmM6NDY6cGNp
-X2NvbmZpZzogYXNzZXJ0aW9uIGZhaWxlZCAocHJvYmVfc2l6ZSA9PSAweDIwMCk6ICgweDAwMDAw
-MDAwID09IDB4MDAwMDAyMDApCm1ha2U6ICoqKiBbY2hlY2stcXRlc3QteDg2XzY0XSBFcnJvciAx
-Cm1ha2U6ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uCiAgVEVTVCAgICBjaGVj
-ay1xdGVzdC1hYXJjaDY0OiB0ZXN0cy90ZXN0LWhtcAogIFRFU1QgICAgaW90ZXN0LXFjb3cyOiAy
-MjAKLS0tCiAgICByYWlzZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9j
-ZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcics
-ICdydW4nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPWRlMjE1NDE2MWNjZjQ0
-NjhhZjVlYmQzNWNiY2JkYzAzJywgJy11JywgJzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2Vj
-Y29tcD11bmNvbmZpbmVkJywgJy0tcm0nLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VY
-VFJBX0NPTkZJR1VSRV9PUFRTPScsICctZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RF
-QlVHPScsICctZScsICdTSE9XX0VOVj0xJywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2Nh
-Y2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zh
-ci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLV9hcDZ1
-bGNoL3NyYy9kb2NrZXItc3JjLjIwMjAtMDEtMDktMTAuMDEuMDUuMzI0NzI6L3Zhci90bXAvcWVt
-dTp6LHJvJywgJ3FlbXU6Y2VudG9zNycsICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LXF1aWNr
-J10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJl
-bD1jb20ucWVtdS5pbnN0YW5jZS51dWlkPWRlMjE1NDE2MWNjZjQ0NjhhZjVlYmQzNWNiY2JkYzAz
-Cm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRpcmVj
-dG9yeSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLV9hcDZ1bGNoL3NyYycKbWFrZTogKioq
-IFtkb2NrZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10gRXJyb3IgMgoKcmVhbCAgICAxMW01MC44
-OThzCnVzZXIgICAgMG04LjAyM3MKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6
-Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwMTA5MTQ0MzE5LjE1OTEyLTEtZXJpYy5hdWdlckByZWRo
-YXQuY29tL3Rlc3RpbmcuZG9ja2VyLXF1aWNrQGNlbnRvczcvP3R5cGU9bWVzc2FnZS4KLS0tCkVt
-YWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5v
-cmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5j
-b20=
+Hi,
+
+On 1/9/20 4:12 PM, no-reply@patchew.org wrote:
+> Patchew URL: https://patchew.org/QEMU/20200109144319.15912-1-eric.auger@redhat.com/
+> 
+> 
+> 
+> Hi,
+> 
+> This series failed the docker-quick@centos7 build test. Please find the testing commands and
+> their output below. If you have Docker installed, you can probably reproduce it
+> locally.
+> 
+> === TEST SCRIPT BEGIN ===
+> #!/bin/bash
+> make docker-image-centos7 V=1 NETWORK=1
+> time make docker-test-quick@centos7 SHOW_ENV=1 J=14 NETWORK=1
+> === TEST SCRIPT END ===
+> 
+>   TEST    check-qtest-x86_64: tests/test-hmp
+>   TEST    check-qtest-x86_64: tests/qos-test
+> **
+> ERROR:/tmp/qemu-test/src/tests/virtio-iommu-test.c:46:pci_config: assertion failed (probe_size == 0x200): (0x00000000 == 0x00000200)
+> ERROR - Bail out! ERROR:/tmp/qemu-test/src/tests/virtio-iommu-test.c:46:pci_config: assertion failed (probe_size == 0x200): (0x00000000 == 0x00000200)
+
+OK sorry that's because I eventually removed "virtio-iommu: Implement
+probe request" patch from the sent series. I will remove that probe_size
+field test on next round.
+
+Thanks
+
+Eric
+> make: *** [check-qtest-x86_64] Error 1
+> make: *** Waiting for unfinished jobs....
+>   TEST    check-qtest-aarch64: tests/test-hmp
+>   TEST    iotest-qcow2: 220
+> ---
+>     raise CalledProcessError(retcode, cmd)
+> subprocess.CalledProcessError: Command '['sudo', '-n', 'docker', 'run', '--label', 'com.qemu.instance.uuid=de2154161ccf4468af5ebd35cbcbdc03', '-u', '1003', '--security-opt', 'seccomp=unconfined', '--rm', '-e', 'TARGET_LIST=', '-e', 'EXTRA_CONFIGURE_OPTS=', '-e', 'V=', '-e', 'J=14', '-e', 'DEBUG=', '-e', 'SHOW_ENV=1', '-e', 'CCACHE_DIR=/var/tmp/ccache', '-v', '/home/patchew2/.cache/qemu-docker-ccache:/var/tmp/ccache:z', '-v', '/var/tmp/patchew-tester-tmp-_ap6ulch/src/docker-src.2020-01-09-10.01.05.32472:/var/tmp/qemu:z,ro', 'qemu:centos7', '/var/tmp/qemu/run', 'test-quick']' returned non-zero exit status 2.
+> filter=--filter=label=com.qemu.instance.uuid=de2154161ccf4468af5ebd35cbcbdc03
+> make[1]: *** [docker-run] Error 1
+> make[1]: Leaving directory `/var/tmp/patchew-tester-tmp-_ap6ulch/src'
+> make: *** [docker-run-test-quick@centos7] Error 2
+> 
+> real    11m50.898s
+> user    0m8.023s
+> 
+> 
+> The full log is available at
+> http://patchew.org/logs/20200109144319.15912-1-eric.auger@redhat.com/testing.docker-quick@centos7/?type=message.
+> ---
+> Email generated automatically by Patchew [https://patchew.org/].
+> Please send your feedback to patchew-devel@redhat.com
+> 
 

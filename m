@@ -1,69 +1,69 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2265087lff;
-        Thu, 9 Jan 2020 07:23:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzJCFQFoumh480dx8CbJTMzgC119Q0jlyiEZ14Ys64yYIhGCmfoJ080PqdKMAPWq2SI6Kc6
-X-Received: by 2002:a9d:2de5:: with SMTP id g92mr8781086otb.217.1578583405905;
-        Thu, 09 Jan 2020 07:23:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578583405; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2265184lff;
+        Thu, 9 Jan 2020 07:23:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwEPw50PTQtdrLnt7aWVTWPAxBK0mIoFM95/1ovv5XiCmnmX3QAJEZ4XYmOprd4ikLCTFUg
+X-Received: by 2002:aca:cd92:: with SMTP id d140mr3420350oig.68.1578583412388;
+        Thu, 09 Jan 2020 07:23:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578583412; cv=none;
         d=google.com; s=arc-20160816;
-        b=miOmRAdm3LxOniyOdIElyYeRLFpki/cKz+3kR1dSEUnFV4USthC3cxNsjjSLTyUY83
-         427EfsKEDPnDdF7lwMdSnYle6v/e0oPDcL8pu2/ced4eIVE34vN6cK/n7oQ4CSJpnRc6
-         HL/6y0tGhhY8RcNloSkDDk6hh9Xa29JhIisyACqBbgr/juJCK59KwFCOkcNIuV0ho9xD
-         PLtibiLfSd8YgfUObtCfiBKiY9qU+4PmxEFtOdm8C14TcMXilTSObWHrgmRnis19jaU3
-         my8Mv67mf9v9fmTd/N/azOFR8rZ8dqlRa47hEoGpkB4vc4IyGNDkrc1b5MbUz4VBJvzL
-         JMOw==
+        b=spzNwbrD1ZAsLr4Xh6qktSRqIPoZAqhYNDGZJAkTCS9frHLqclyTnZ7Blep2XWRgHx
+         6dSs6fC4JWA6kGuRZGdmlABxH09Ney7GvT9/9xzyEeFzm0Sxy+v+F5xGV34vEKK/rRgU
+         PhKZFjfEQtVtPacY0pdeartZ0UkD+XYQ8eju68qG5yF5OKst18R73KO3FxxTocWR8yk/
+         g3Adkxy/4rt5gNf5NCnhCYCgVZvQUd+MM1VaOcWGrZeUzCn8UfD7n4li0WLrrI5xGMPa
+         1KltpvMY/YxLT+MeORqTL5KQkDGhvChJQhF3X3DpIdQHwq8SWM3NfIn/aRxWRg0OGVcU
+         fomA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=EA7clJKJ1RuwQZV3nJY9EmgysBuWFpNyPg81lJP16ic=;
-        b=s7dRR0NrnUzHmBmaOzNlqum6UFImgBV6/y6JtnhZFKSnYCpf6IaobFJfDQFYKRc9LO
-         KWQ8M5ZfcFFtoUqBGo39C5aED+bNIWLJUqOjILjEGcwtQA91Z0CGYw9WW0wKTvMnVMHE
-         ztLOP5c0bRz/dYZV36FdedraGCXbgH4RohzQ2nHVuKqqe40+Ro2J0TvRRbJFXAv7PX6i
-         q+6oZqrst68iXAVeIYoC0t3x7K67onckl0Ni60Jyrc1PsODcHHikQ7XIlxeBhGJJgmbU
-         x0K6qIp20Xu6FRMgqwqODP+l0wZRe3wr/h2yrsvE3Mt3shpYcw0k8EuhDbpUbRnsO8nF
-         ewhQ==
+        bh=qEB5J+exbJGBcgBu1CXxgeJ3mLfk648Rs1grVXpU7U4=;
+        b=uJWOmuTt/pHbZ52aVdxe9Xki4FChfD2WlIwY8J1J9kFOfyaVHtnFF7eZm3Ud//Gp8x
+         YA4gUSe0Q5DApB5Z3M5z5/4xCaC78XaJ1snQfxlHrTM0YH05O20Ng0ToLGKBDPnbZrcP
+         V8ifc/unO2V80tZe0Fb9hqQfLIfMccx35q59USgo98oPN/1t+w86Uy1TYgJ3mm1PgTRi
+         pvnZvoIAh0brcPaxwsVfCD8+tgopzdnD3LrRd18Qj+0WRkZewBJtT3ztqF44gSLBXqmz
+         kNI51jYKEaQwZ/nRCEF0U70gJlAqa+5cryAmXyQEZYbKN2Tc22rXH0wvfbWR+CwGhvqH
+         K96g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CLfFxVAL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UHk7tShc;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id c10si4241517otr.88.2020.01.09.07.23.25;
-        Thu, 09 Jan 2020 07:23:25 -0800 (PST)
+        by mx.google.com with ESMTP id c10si4241517otr.88.2020.01.09.07.23.32;
+        Thu, 09 Jan 2020 07:23:32 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CLfFxVAL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UHk7tShc;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732358AbgAIPXZ (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Thu, 9 Jan 2020 10:23:25 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:56279 "EHLO
+        id S1732365AbgAIPXb (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Thu, 9 Jan 2020 10:23:31 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:60738 "EHLO
         us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1731096AbgAIPXY (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 9 Jan 2020 10:23:24 -0500
+        by vger.kernel.org with ESMTP id S1732355AbgAIPXb (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Thu, 9 Jan 2020 10:23:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1578583403;
+        s=mimecast20190719; t=1578583410;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=EA7clJKJ1RuwQZV3nJY9EmgysBuWFpNyPg81lJP16ic=;
-        b=CLfFxVALDOunx+OFI+P+RX5LQd3qBu88lOVf/PRqUIwe63q+kPlMGG+/Ucr3F+irQjz3Tr
-        cr2Z8+vpDZqLIU/8BC5mPRc4+AVvG3sv7Wma5d99yRvxswH5uRfr8VDHmRKjsdBnZSB8bm
-        g8X9znrG5TT5ESbbqpID/kWOReuYk9k=
+        bh=qEB5J+exbJGBcgBu1CXxgeJ3mLfk648Rs1grVXpU7U4=;
+        b=UHk7tShcqRPOGcpAYfO3CVDACPnFahwf6vrwt40NbPthSNXJfGsfr4DD/+pO0uD1Unx02f
+        GPWxC1838fplpFpfDnpr3NZ47FxA7h/DqTnoGmVFgk2u5yBq2kEgv9Xlz/b2fEpdoS15nV
+        1s8azLvgrVMgHUt0DCXcwrd5yrpwbH8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-317-Bssf6NODNKGQ5QTbYx0F5Q-1; Thu, 09 Jan 2020 10:23:22 -0500
-X-MC-Unique: Bssf6NODNKGQ5QTbYx0F5Q-1
+ us-mta-247-GrJTMZRwNw-0xA4bX3RZSQ-1; Thu, 09 Jan 2020 10:23:29 -0500
+X-MC-Unique: GrJTMZRwNw-0xA4bX3RZSQ-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 93700107ACC4;
-        Thu,  9 Jan 2020 15:23:20 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 79BB0800D48;
+        Thu,  9 Jan 2020 15:23:27 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-180.brq.redhat.com [10.40.204.180])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id B76B61CB;
-        Thu,  9 Jan 2020 15:23:14 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 496647FB5C;
+        Thu,  9 Jan 2020 15:23:21 +0000 (UTC)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To:     qemu-devel@nongnu.org
 Cc:     Marcelo Tosatti <mtosatti@redhat.com>,
@@ -78,9 +78,9 @@ Cc:     Marcelo Tosatti <mtosatti@redhat.com>,
         Richard Henderson <rth@twiddle.net>,
         David Gibson <david@gibson.dropbear.id.au>,
         =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH 12/15] accel: Introduce the current_accel() method
-Date:   Thu,  9 Jan 2020 16:21:30 +0100
-Message-Id: <20200109152133.23649-13-philmd@redhat.com>
+Subject: [PATCH 13/15] accel: Replace current_machine->accelerator by current_accel() method
+Date:   Thu,  9 Jan 2020 16:21:31 +0100
+Message-Id: <20200109152133.23649-14-philmd@redhat.com>
 In-Reply-To: <20200109152133.23649-1-philmd@redhat.com>
 References: <20200109152133.23649-1-philmd@redhat.com>
 MIME-Version: 1.0
@@ -91,47 +91,136 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: QQ5Hc6APD7fF
+X-TUID: +PNu5583vdWD
 
-We want to remove the global current_machine. The accel/
-code access few times current_machine->accelerator. Introduce
-the current_accel() method first, it will then be easier to
-replace 'current_machine' by MACHINE(qdev_get_machine()).
+As we want to remove the global current_machine,
+replace 'current_machine->accelerator' by current_accel().
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- include/sysemu/accel.h | 2 ++
- accel/accel.c          | 5 +++++
- 2 files changed, 7 insertions(+)
+ accel/kvm/kvm-all.c | 4 ++--
+ accel/tcg/tcg-all.c | 2 +-
+ memory.c            | 2 +-
+ target/arm/kvm64.c  | 4 ++--
+ target/i386/kvm.c   | 2 +-
+ target/ppc/kvm.c    | 2 +-
+ vl.c                | 2 +-
+ 7 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/include/sysemu/accel.h b/include/sysemu/accel.h
-index d4c1429711..47e5788530 100644
---- a/include/sysemu/accel.h
-+++ b/include/sysemu/accel.h
-@@ -70,4 +70,6 @@ int accel_init_machine(AccelState *accel, MachineState =
-*ms);
- /* Called just before os_setup_post (ie just before drop OS privs) */
- void accel_setup_post(MachineState *ms);
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index b2f1a5bcb5..be1980f250 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -164,7 +164,7 @@ static NotifierList kvm_irqchip_change_notifiers =3D
 =20
-+AccelState *current_accel(void);
-+
- #endif
-diff --git a/accel/accel.c b/accel/accel.c
-index 1c5c3a6abb..cb555e3b06 100644
---- a/accel/accel.c
-+++ b/accel/accel.c
-@@ -63,6 +63,11 @@ int accel_init_machine(AccelState *accel, MachineState=
- *ms)
-     return ret;
+ int kvm_get_max_memslots(void)
+ {
+-    KVMState *s =3D KVM_STATE(current_machine->accelerator);
++    KVMState *s =3D KVM_STATE(current_accel());
+=20
+     return s->nr_slots;
+ }
+@@ -1847,7 +1847,7 @@ static int kvm_max_vcpu_id(KVMState *s)
+=20
+ bool kvm_vcpu_id_is_valid(int vcpu_id)
+ {
+-    KVMState *s =3D KVM_STATE(current_machine->accelerator);
++    KVMState *s =3D KVM_STATE(current_accel());
+     return vcpu_id >=3D 0 && vcpu_id < kvm_max_vcpu_id(s);
  }
 =20
-+AccelState *current_accel(void)
-+{
-+    return current_machine->accelerator;
-+}
-+
- void accel_setup_post(MachineState *ms)
+diff --git a/accel/tcg/tcg-all.c b/accel/tcg/tcg-all.c
+index 1dc384c8d2..1802ce02f6 100644
+--- a/accel/tcg/tcg-all.c
++++ b/accel/tcg/tcg-all.c
+@@ -124,7 +124,7 @@ static void tcg_accel_instance_init(Object *obj)
+=20
+ static int tcg_init(MachineState *ms)
  {
-     AccelState *accel =3D ms->accelerator;
+-    TCGState *s =3D TCG_STATE(current_machine->accelerator);
++    TCGState *s =3D TCG_STATE(current_accel());
+=20
+     tcg_exec_init(s->tb_size * 1024 * 1024);
+     cpu_interrupt_handler =3D tcg_handle_interrupt;
+diff --git a/memory.c b/memory.c
+index 57e38b1f50..60e8993499 100644
+--- a/memory.c
++++ b/memory.c
+@@ -3106,7 +3106,7 @@ void mtree_info(bool flatview, bool dispatch_tree, =
+bool owner)
+         };
+         GArray *fv_address_spaces;
+         GHashTable *views =3D g_hash_table_new(g_direct_hash, g_direct_e=
+qual);
+-        AccelClass *ac =3D ACCEL_GET_CLASS(current_machine->accelerator)=
+;
++        AccelClass *ac =3D ACCEL_GET_CLASS(current_accel());
+=20
+         if (ac->has_memory) {
+             fvi.ac =3D ac;
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 876184b8fe..f677877a1e 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -613,14 +613,14 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatur=
+es *ahcf)
+=20
+ bool kvm_arm_aarch32_supported(CPUState *cpu)
+ {
+-    KVMState *s =3D KVM_STATE(current_machine->accelerator);
++    KVMState *s =3D KVM_STATE(current_accel());
+=20
+     return kvm_check_extension(s, KVM_CAP_ARM_EL1_32BIT);
+ }
+=20
+ bool kvm_arm_sve_supported(CPUState *cpu)
+ {
+-    KVMState *s =3D KVM_STATE(current_machine->accelerator);
++    KVMState *s =3D KVM_STATE(current_accel());
+=20
+     return kvm_check_extension(s, KVM_CAP_ARM_SVE);
+ }
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 0b511906e3..2ed15814dc 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -147,7 +147,7 @@ bool kvm_allows_irq0_override(void)
+=20
+ static bool kvm_x2apic_api_set_flags(uint64_t flags)
+ {
+-    KVMState *s =3D KVM_STATE(current_machine->accelerator);
++    KVMState *s =3D KVM_STATE(current_accel());
+=20
+     return !kvm_vm_enable_cap(s, KVM_CAP_X2APIC_API, 0, flags);
+ }
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index d1c334f0e3..2d011308e0 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -258,7 +258,7 @@ static void kvm_get_smmu_info(struct kvm_ppc_smmu_inf=
+o *info, Error **errp)
+=20
+ struct ppc_radix_page_info *kvm_get_radix_page_info(void)
+ {
+-    KVMState *s =3D KVM_STATE(current_machine->accelerator);
++    KVMState *s =3D KVM_STATE(current_accel());
+     struct ppc_radix_page_info *radix_page_info;
+     struct kvm_ppc_rmmu_info rmmu_info;
+     int i;
+diff --git a/vl.c b/vl.c
+index 86474a55c9..3ff3548183 100644
+--- a/vl.c
++++ b/vl.c
+@@ -2804,7 +2804,7 @@ static void configure_accelerators(const char *prog=
+name)
+     }
+=20
+     if (init_failed) {
+-        AccelClass *ac =3D ACCEL_GET_CLASS(current_machine->accelerator)=
+;
++        AccelClass *ac =3D ACCEL_GET_CLASS(current_accel());
+         error_report("falling back to %s", ac->name);
+     }
+=20
 --=20
 2.21.1

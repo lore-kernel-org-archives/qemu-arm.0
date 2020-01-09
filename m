@@ -1,713 +1,428 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1370533lff;
-        Wed, 8 Jan 2020 15:14:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyVM6iMXjAAWhOQ9vtcbBODQdQaPLnwtpOZDLCf3GlBRF6eQNEpxccoTp8g9I37fLXBKnmI
-X-Received: by 2002:a05:6402:363:: with SMTP id s3mr8105942edw.245.1578525242767;
-        Wed, 08 Jan 2020 15:14:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578525242; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1598287lff;
+        Wed, 8 Jan 2020 19:38:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyvowbSH7kyx7ogxlJX53tAYKZudlVyQ7L+DJSOkJysj+9C/6fLgICyiXeFBmGv82gNNeCa
+X-Received: by 2002:a05:6830:10c6:: with SMTP id z6mr7128076oto.203.1578541099407;
+        Wed, 08 Jan 2020 19:38:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578541099; cv=none;
         d=google.com; s=arc-20160816;
-        b=mYxQ2WiIO8u6hXPXiaskkwnJrH+iOYFYC/0XIrGCJatfSR9K3g3RXwOW1EF+8FmRMv
-         P0yCFd2/pPPo5vmo4lzZpjB6I3n3WcegW85YTJ3Uv+gfwdYmbbCBsi1XdlhQGdegnyQ0
-         tGXf9Ofab2zG/9JJHu/DJCsik4hKfqqwWMlIrP+BvkamS3P50Yg8oRUgq2TKt6wUOYUo
-         6uV6ywFp1VJ7q72D41X9lkqDIl3KoAsMtxb/jr3X+p0UVrT4KaZZPMYhqJWt4pZfHYRh
-         gl2YQygLjRizflJCGlf4jWWEbcSFErWJJ7LMjFAwU7kL0gSxQ8h9mW59967uq8AHRqI0
-         GROQ==
+        b=mw6AFwWE/eI/dLYth8Q/n14Z+9arcsUWdUdB7G94naaPmULFTTY/9KZyx1UiiHVfsp
+         Ri3HZl3Ml8SiA3fGwiHKbP/BrsadZW8Q6e4XF/UmZR4v9hc/EpjO/3/28GzB2dU+pwjN
+         ZE5bcGtYHMIKKWdaSIScRmaO1WShcWNrZGYfbPJ0gxVasGBnFPFgsHoDxvXnfQmFrP4P
+         N20xQ9ti5JUvis1TlvwHiksJl63lBJfMj6/t6RupoayQrIRMOLirHCdaiidtrXcxhSY7
+         5Kz9sh40SmXI9X9MkaEMquF4454BRY13Mex07bYp7/T6AIg37CCIJzOv1R7cTAJpVJ1f
+         3YoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+        h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Zb9EpEUaEHaEMuc+ltdJ+aur1vTtFUsc3g+Taigajj4=;
-        b=k4dNQWGw+egL+Uoe8y19L8/sNrf0tfQN1Ugpjx3Y+rg5Jvz1gkfFDDtuhfNj1a4Qwj
-         +Y6cu1e4jxeUcP6kHlECW8VRpD41I4PPylVXGnvTD/pZRRO2izMgmrwOTYw1YT75Pdhz
-         T0Ke6NVTNfYa9vx2G1AQ8RZCHd4qtwf3PSHsxmnn6S4M6le4+I6x3aSM91bgd+lBHabr
-         zIKxehWB2rkt2ywdYGOlsORZNSDTP6XvzM+pyBGnqK7UBn32nU8GcUnYXrpbUN6DLZxJ
-         d0Qi9IM52QS8rF8J3/27bWH3QQtGyV/kQPEYMiFBOzAjH59giiBu7NEm++yblVtk7mVr
-         x1Xw==
+         :message-id:from:references:cc:to:subject;
+        bh=LIncZrV8pT9PJ0uLV9baDe++Cv1JIHRVzEjEV+RM/V4=;
+        b=lKs4CYhIr6jN9NuTKocue1KE2kuR8cT8XS/uX96sbqLJpDHwap6frs2JVg5vI+ShIZ
+         8H3tgtVKO5n4eGLbFkKFfIv7iaz8l+aylulTFN7xQm1372oE4f+om76LBv6w2L3rpwQm
+         RRZ5QYovDOIEw62+IIh6ljl4kTmWldXoR7ObDiSm/KVsYQCNkYgG0rwWvXUbiEtgJhyG
+         X01JYqYNL8c7LFYxbJv6djB3FSdgEy3IC8nxZXs/KHOTWNYfnatXHkqczX+Q2ikzRyfJ
+         ndA5zqVSphELFlssS0ODG+dnhStupqCMFIN88EUYfRnF9CeY9oYbzLvGsK619bvDs6ib
+         CnEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VuFYZ3Mx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v8si3195550eja.49.2020.01.08.15.14.02
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2020 15:14:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id d12si3015309otf.141.2020.01.08.19.38.19;
+        Wed, 08 Jan 2020 19:38:19 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VuFYZ3Mx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50366 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipKWX-0006gE-Li
-	for alex.bennee@linaro.org; Wed, 08 Jan 2020 18:14:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36322)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ipKWC-0006Zj-JW
- for qemu-arm@nongnu.org; Wed, 08 Jan 2020 18:13:43 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ipKW8-0000eF-W9
- for qemu-arm@nongnu.org; Wed, 08 Jan 2020 18:13:39 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:38819
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ipKW8-0000bh-MB
- for qemu-arm@nongnu.org; Wed, 08 Jan 2020 18:13:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578525215;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Zb9EpEUaEHaEMuc+ltdJ+aur1vTtFUsc3g+Taigajj4=;
- b=VuFYZ3MxPmQuQJdncLnwpCsMFpd5W8Nrfh0ZaMQkaCz7eEoRaH577AHRjzkUxN1oKNrujf
- PPvM+/V91t8R8hS/y0tWGaMv3JjbUJMclIuNW/sxtX4ysd2jRANbnIsJBJAGQGXo3+GXBt
- 0CCNvKE3cmmSHP7MyKB8yjTBd5XvVzs=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-8-Plqpgoe6On2lS5wTshlgSA-1; Wed, 08 Jan 2020 18:13:30 -0500
-Received: by mail-wm1-f69.google.com with SMTP id s25so57703wmj.3
- for <qemu-arm@nongnu.org>; Wed, 08 Jan 2020 15:13:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Zb9EpEUaEHaEMuc+ltdJ+aur1vTtFUsc3g+Taigajj4=;
- b=ABPaULtj71FlVsCKb7Hrh1xBF6SJonHJzMNtXjhudJsx7ZXvuZErAZWgyDwepZLNAC
- eKP0DsuhcPdPpevmbCbNuXJbs+d+gwAoEmHpqVsvzYHwTCUvnTXX7jf2RqvJ+oc/OwVD
- LBRgLRT0u42RMYuPxlVlRNqYE4UwCBEwgw69StgMhFS43dPsAV8dp+0s2t7dtnYZvFqC
- gmNpb6hOIprhMXI+YqwqBK8TLFRPwstRmZ8e/UuJ7w6Rh7fWkCe9MlGxupXq4JDmDVXi
- rs7TI1KtLf8mVmsN0E1nnCmsvkoUtuR7Dj1qJ751/yIzFVKPt9lWYoZR0h50L41r1y87
- uq9w==
-X-Gm-Message-State: APjAAAUzX2pBT2ZhdGKnP79Vle1PI0mC3o+81S/v5m5Q7kIgGQirdwgx
- XydVN7/EgkVgstbaraUoR4PLtDUdxDFSXccekVtTVOBrW5Bz+8ZBlioip7aowekIQHLoluuzy2p
- 4tHwlRhvNHoA5
-X-Received: by 2002:a1c:4d18:: with SMTP id o24mr1018674wmh.35.1578525209215; 
- Wed, 08 Jan 2020 15:13:29 -0800 (PST)
-X-Received: by 2002:a1c:4d18:: with SMTP id o24mr1018643wmh.35.1578525208785; 
- Wed, 08 Jan 2020 15:13:28 -0800 (PST)
-Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
- [83.57.172.113])
- by smtp.gmail.com with ESMTPSA id e8sm5856306wrt.7.2020.01.08.15.13.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jan 2020 15:13:28 -0800 (PST)
-Subject: Re: [PATCH v3 01/17] hw/arm: add Allwinner H3 System-on-Chip
-To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
-References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-2-nieklinnenbank@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d1a13b5c-1308-17b3-601c-429a645ae7ec@redhat.com>
-Date: Thu, 9 Jan 2020 00:13:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727837AbgAIDiS (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Wed, 8 Jan 2020 22:38:18 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:34020 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726913AbgAIDiR (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 8 Jan 2020 22:38:17 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id 76138863EC7918525871;
+        Thu,  9 Jan 2020 11:38:15 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.439.0; Thu, 9 Jan 2020
+ 11:38:08 +0800
+Subject: Re: [PATCH v22 0/9] Add ARMv8 RAS virtualization support in QEMU
+To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <mtosatti@redhat.com>, <xuwei5@huawei.com>,
+        <jonathan.cameron@huawei.com>, <james.morse@arm.com>,
+        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
+        <qemu-arm@nongnu.org>
+CC:     <zhengxiang9@huawei.com>, <linuxarm@huawei.com>
+References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <f56cd9fd-5e40-fbad-a6e6-1233262ed1ca@huawei.com>
+Date:   Thu, 9 Jan 2020 11:38:00 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20200108200020.4745-2-nieklinnenbank@gmail.com>
+In-Reply-To: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-X-MC-Unique: Plqpgoe6On2lS5wTshlgSA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VgNAfOiT4x5B
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: AWcg5Sgdqezw
 
-On 1/8/20 9:00 PM, Niek Linnenbank wrote:
-> The Allwinner H3 is a System on Chip containing four ARM Cortex A7
-> processor cores. Features and specifications include DDR2/DDR3 memory,
-> SD/MMC storage cards, 10/100/1000Mbit ethernet, USB 2.0, HDMI and
+1. How to enable this feature:
+(a) In KVM mode: ./qemu-system-aarch64 --enable-kvm -cpu host --bios QEMU_EFI.fd_new  -machine virt,gic-version=3,ras,kernel-irqchip=on  -smp 4 -nographic -kernel Image  -append "rdinit=/init console=ttyAMA0 mem=512M root=/dev/ram0" -initrd guestfs_new.cpio.gz
+(b）In TCG mode: ./qemu-system-aarch64 -cpu cortex-a57 -bios QEMU_EFI.fd_new  -machine virt,gic-version=3,ras  -smp 4 -nographic -kernel Image  -append "rdinit=/init console=ttyAMA0 mem=512M root=/dev/ram0 earlycon=pl011,0x9000000 rw" -initrd guestfs_new.cpio.gz
 
-"Ethernet"
+2. How to quickly test this series patches:
+（a）hack some code as shown in [1].
+ (b) build and run the qemu: ./qemu-system-aarch64 -cpu cortex-a57 -bios QEMU_EFI.fd_new  -machine virt,gic-version=3,ras  -smp 4 -nographic -kernel Image  -append "rdinit=/init console=ttyAMA0 mem=512M root=/dev/ram0 earlycon=pl011,0x9000000 rw" -initrd guestfs_new.cpio.gz
+ (c) find the process id(PID) of "qemu-system-aarch64": $ ps -aux | grep "qemu
+ (d) then send SIGBUS to qemu process: kill -s SIGBUS PID
 
-> various I/O modules. This commit adds support for the Allwinner H3
-> System on Chip.
+
+[1]:
+diff --git a/cpus.c b/cpus.c
+index b472378b70..a0b67f5947 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -1087,6 +1087,8 @@ static void sigbus_reraise(void)
+
+ static void sigbus_handler(int n, siginfo_t *siginfo, void *ctx)
+ {
++    siginfo->si_code = BUS_MCEERR_AO;
++
+     if (siginfo->si_code != BUS_MCEERR_AO && siginfo->si_code != BUS_MCEERR_AR) {
+         sigbus_reraise();
+     }
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index f3b05c1977..03e8e20f4a 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -1323,17 +1323,23 @@ int kvm_arch_get_registers(CPUState *cs)
+
+ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+ {
++#if 0
+     ram_addr_t ram_addr;
+     hwaddr paddr;
+
+     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+-
+-    if (acpi_enabled && addr &&
++#else
++    hwaddr paddr = 0x400a1000;
++    code = BUS_MCEERR_AR;
++#endif
++    if (acpi_enabled && paddr &&
+             object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
++#if 0
+         ram_addr = qemu_ram_addr_from_host(addr);
+         if (ram_addr != RAM_ADDR_INVALID &&
+             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+             kvm_hwpoison_page_add(ram_addr);
++#endif
+             /*
+              * Asynchronous signal will be masked by main thread, so
+              * only handle synchronous signal.
+@@ -1348,11 +1354,13 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+                 }
+             }
+             return;
++#if 0
+         }
+         if (code == BUS_MCEERR_AO) {
+             error_report("Hardware memory error at addr %p for memory used by "
+                 "QEMU itself instead of guest system!", addr);
+         }
++#endif
+     }
+
+     if (code == BUS_MCEERR_AR) {
+
+
+
+On 2020/1/8 19:32, Dongjiu Geng wrote:
+> In the ARMv8 platform, the CPU error types are synchronous external abort(SEA)
+> and SError Interrupt (SEI). If exception happens in guest, sometimes it's better
+> for guest to perform the recovery, because host does not know the detailed
+> information of guest. For example, if an exception happens in a user-space
+> application within guest, host does not know which application encounters
+> errors.
 > 
-> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> For the ARMv8 SEA/SEI, KVM or host kernel delivers SIGBUS to notify userspace.
+> After user space gets the notification, it will record the CPER into guest GHES
+> buffer and inject an exception or IRQ into guest.
+> 
+> In the current implementation, if the type of SIGBUS is BUS_MCEERR_AR, we will
+> treat it as a synchronous exception, and notify guest with ARMv8 SEA
+> notification type after recording CPER into guest.
+> 
+> This series of patches are based on Qemu 4.2, which include two parts:
+> 1. Generate APEI/GHES table.
+> 2. Handle the SIGBUS signal, record the CPER in runtime and fill it into guest
+>    memory, then notify guest according to the type of SIGBUS.
+> 
+> The whole solution was suggested by James(james.morse@arm.com); The solution of
+> APEI section was suggested by Laszlo(lersek@redhat.com).
+> Show some discussions in [1].
+> 
+> This series of patches have already been tested on ARM64 platform with RAS
+> feature enabled:
+> Show the APEI part verification result in [2].
+> Show the BUS_MCEERR_AR SIGBUS handling verification result in [3].
+> 
 > ---
->   default-configs/arm-softmmu.mak |   1 +
->   include/hw/arm/allwinner-h3.h   | 107 +++++++++++
->   hw/arm/allwinner-h3.c           | 328 ++++++++++++++++++++++++++++++++
->   MAINTAINERS                     |   7 +
->   hw/arm/Kconfig                  |   8 +
->   hw/arm/Makefile.objs            |   1 +
->   6 files changed, 452 insertions(+)
->   create mode 100644 include/hw/arm/allwinner-h3.h
->   create mode 100644 hw/arm/allwinner-h3.c
+> Change since v21:
+> 1. Make the user-facing 'ras' option description more clearly to address Peter's comments.
+> 2. Update the doc description in "docs/specs/acpi_hest_ghes.rst"
+> 3. Split HEST/GHES patches to more patches to make the review easily
+> 4. Using source_id to index the location to save the CPER.
+> 5. Optimize and simplify the logic to build HEST/GHES table to address Igor/Michael/Beata comments.
+> 6. make ghes_addr_le a part of GED device.
 > 
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 1f2e0e7fde..d75a239c2c 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -40,3 +40,4 @@ CONFIG_FSL_IMX25=y
->   CONFIG_FSL_IMX7=y
->   CONFIG_FSL_IMX6UL=y
->   CONFIG_SEMIHOSTING=y
-> +CONFIG_ALLWINNER_H3=y
-> diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-> new file mode 100644
-> index 0000000000..4e2e6202a9
-> --- /dev/null
-> +++ b/include/hw/arm/allwinner-h3.h
-> @@ -0,0 +1,107 @@
-> +/*
-> + * Allwinner H3 System on Chip emulation
-> + *
-> + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> + *
-> + * This program is free software: you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation, either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +/*
-> + * The Allwinner H3 is a System on Chip containing four ARM Cortex A7
-> + * processor cores. Features and specifications include DDR2/DDR3 memory,
-> + * SD/MMC storage cards, 10/100/1000Mbit ethernet, USB 2.0, HDMI and
-> + * various I/O modules.
-> + *
-> + * This implementation is based on the following datasheet:
-> + *
-> + *   https://linux-sunxi.org/File:Allwinner_H3_Datasheet_V1.2.pdf
-> + *
-> + * The latest datasheet and more info can be found on the Linux Sunxi wiki:
-> + *
-> + *   https://linux-sunxi.org/H3
-> + */
-> +
-> +#ifndef HW_ARM_ALLWINNER_H3_H
-> +#define HW_ARM_ALLWINNER_H3_H
-> +
-> +#include "qemu/osdep.h"
-
-Check CODING_STYLE.rst:
-
-   Do not include "qemu/osdep.h" from header files since
-   the .c file will have already included it.
-
-> +#include "qom/object.h"
-> +#include "qemu/error-report.h"
-> +#include "qemu/units.h"
-> +#include "hw/qdev-core.h"
-> +#include "hw/arm/boot.h"
-
-Please only keep the minimum required headers here, move the rest to the 
-source files.
-
-> +#include "hw/timer/allwinner-a10-pit.h"
-> +#include "hw/intc/arm_gic.h"
-> +#include "target/arm/cpu.h"
-
-These looks OK in this header.
-
-> +
-> +/**
-> + * Allwinner H3 device list
-> + *
-> + * This enumeration is can be used refer to a particular device in the
-> + * Allwinner H3 SoC. For example, the physical memory base address for
-> + * each device can be found in the AwH3State object in the memmap member
-> + * using the device enum value as index.
-> + *
-> + * @see AwH3State
-> + */
-> +enum {
-> +    AW_H3_SRAM_A1,
-> +    AW_H3_SRAM_A2,
-> +    AW_H3_SRAM_C,
-> +    AW_H3_PIT,
-> +    AW_H3_UART0,
-> +    AW_H3_UART1,
-> +    AW_H3_UART2,
-> +    AW_H3_UART3,
-> +    AW_H3_GIC_DIST,
-> +    AW_H3_GIC_CPU,
-> +    AW_H3_GIC_HYP,
-> +    AW_H3_GIC_VCPU,
-> +    AW_H3_SDRAM
-> +};
-> +
-> +/** Total number of CPU cores in the SoC */
-
-"the H3 SoC"
-
-> +#define AW_H3_NUM_CPUS      (4)
-> +
-> +/**
-> + * Allwinner H3 object model
-> + * @{
-> + */
-> +
-> +/** Object type for the Allwinner H3 SoC */
-> +#define TYPE_AW_H3 "allwinner-h3"
-> +
-> +/** Convert input object to Allwinner H3 state object */
-> +#define AW_H3(obj) OBJECT_CHECK(AwH3State, (obj), TYPE_AW_H3)
-> +
-> +/** @} */
-> +
-> +/**
-> + * Allwinner H3 object instance state
-
-I find this comment more noisy than helpful.
-
-> + */
-> +typedef struct AwH3State {
-> +    /*< private >*/
-> +    DeviceState parent_obj;
-> +    /*< public >*/
-> +
-> +    ARMCPU cpus[AW_H3_NUM_CPUS];
-> +    const hwaddr *memmap;
-> +    AwA10PITState timer;
-> +    GICState gic;
-> +    MemoryRegion sram_a1;
-> +    MemoryRegion sram_a2;
-> +    MemoryRegion sram_c;
-> +} AwH3State;
-> +
-> +#endif /* HW_ARM_ALLWINNER_H3_H */
-> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> new file mode 100644
-> index 0000000000..c1ef31e875
-> --- /dev/null
-> +++ b/hw/arm/allwinner-h3.c
-> @@ -0,0 +1,328 @@
-> +/*
-> + * Allwinner H3 System on Chip emulation
-> + *
-> + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> + *
-> + * This program is free software: you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation, either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "exec/address-spaces.h"
-> +#include "qapi/error.h"
-> +#include "qemu/module.h"
-> +#include "qemu/units.h"
-> +#include "cpu.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/char/serial.h"
-> +#include "hw/misc/unimp.h"
-> +#include "sysemu/sysemu.h"
-> +#include "hw/arm/allwinner-h3.h"
-> +
-> +/* Memory map */
-> +const hwaddr allwinner_h3_memmap[] = {
-> +    [AW_H3_SRAM_A1]    = 0x00000000,
-> +    [AW_H3_SRAM_A2]    = 0x00044000,
-> +    [AW_H3_SRAM_C]     = 0x00010000,
-> +    [AW_H3_PIT]        = 0x01c20c00,
-> +    [AW_H3_UART0]      = 0x01c28000,
-> +    [AW_H3_UART1]      = 0x01c28400,
-> +    [AW_H3_UART2]      = 0x01c28800,
-> +    [AW_H3_UART3]      = 0x01c28c00,
-> +    [AW_H3_GIC_DIST]   = 0x01c81000,
-> +    [AW_H3_GIC_CPU]    = 0x01c82000,
-> +    [AW_H3_GIC_HYP]    = 0x01c84000,
-> +    [AW_H3_GIC_VCPU]   = 0x01c86000,
-> +    [AW_H3_SDRAM]      = 0x40000000
-> +};
-> +
-> +/* List of unimplemented devices */
-> +struct AwH3Unimplemented {
-> +    const char *device_name;
-> +    hwaddr base;
-> +    hwaddr size;
-> +} unimplemented[] = {
-> +    { "d-engine",  0x01000000, 4 * MiB },
-> +    { "d-inter",   0x01400000, 128 * KiB },
-> +    { "syscon",    0x01c00000, 4 * KiB },
-> +    { "dma",       0x01c02000, 4 * KiB },
-> +    { "nfdc",      0x01c03000, 4 * KiB },
-> +    { "ts",        0x01c06000, 4 * KiB },
-> +    { "keymem",    0x01c0b000, 4 * KiB },
-> +    { "lcd0",      0x01c0c000, 4 * KiB },
-> +    { "lcd1",      0x01c0d000, 4 * KiB },
-> +    { "ve",        0x01c0e000, 4 * KiB },
-> +    { "mmc0",      0x01c0f000, 4 * KiB },
-> +    { "mmc1",      0x01c10000, 4 * KiB },
-> +    { "mmc2",      0x01c11000, 4 * KiB },
-> +    { "sid",       0x01c14000, 1 * KiB },
-> +    { "crypto",    0x01c15000, 4 * KiB },
-> +    { "msgbox",    0x01c17000, 4 * KiB },
-> +    { "spinlock",  0x01c18000, 4 * KiB },
-> +    { "usb0-otg",  0x01c19000, 4 * KiB },
-> +    { "usb0",      0x01c1a000, 4 * KiB },
-> +    { "usb1",      0x01c1b000, 4 * KiB },
-> +    { "usb2",      0x01c1c000, 4 * KiB },
-> +    { "usb3",      0x01c1d000, 4 * KiB },
-
-To avoid the churn in patch #4, directly name them usb-phy:
-
-        { "usb0-phy",  0x01c1a000, 4 * KiB },
-        { "usb1-phy",  0x01c1b000, 4 * KiB },
-        { "usb2-phy",  0x01c1c000, 4 * KiB },
-        { "usb3-phy",  0x01c1d000, 4 * KiB },
-
-> +    { "smc",       0x01c1e000, 4 * KiB },
-> +    { "ccu",       0x01c20000, 1 * KiB },
-> +    { "pio",       0x01c20800, 1 * KiB },
-> +    { "owa",       0x01c21000, 1 * KiB },
-> +    { "pwm",       0x01c21400, 1 * KiB },
-> +    { "keyadc",    0x01c21800, 1 * KiB },
-> +    { "pcm0",      0x01c22000, 1 * KiB },
-> +    { "pcm1",      0x01c22400, 1 * KiB },
-> +    { "pcm2",      0x01c22800, 1 * KiB },
-> +    { "audio",     0x01c22c00, 2 * KiB },
-> +    { "smta",      0x01c23400, 1 * KiB },
-> +    { "ths",       0x01c25000, 1 * KiB },
-> +    { "uart0",     0x01c28000, 1 * KiB },
-> +    { "uart1",     0x01c28400, 1 * KiB },
-> +    { "uart2",     0x01c28800, 1 * KiB },
-> +    { "uart3",     0x01c28c00, 1 * KiB },
-> +    { "twi0",      0x01c2ac00, 1 * KiB },
-> +    { "twi1",      0x01c2b000, 1 * KiB },
-> +    { "twi2",      0x01c2b400, 1 * KiB },
-> +    { "scr",       0x01c2c400, 1 * KiB },
-> +    { "emac",      0x01c30000, 64 * KiB },
-> +    { "gpu",       0x01c40000, 64 * KiB },
-> +    { "hstmr",     0x01c60000, 4 * KiB },
-> +    { "dramcom",   0x01c62000, 4 * KiB },
-> +    { "dramctl0",  0x01c63000, 4 * KiB },
-> +    { "dramphy0",  0x01c65000, 4 * KiB },
-> +    { "spi0",      0x01c68000, 4 * KiB },
-> +    { "spi1",      0x01c69000, 4 * KiB },
-> +    { "csi",       0x01cb0000, 320 * KiB },
-> +    { "tve",       0x01e00000, 64 * KiB },
-> +    { "hdmi",      0x01ee0000, 128 * KiB },
-> +    { "rtc",       0x01f00000, 1 * KiB },
-> +    { "r_timer",   0x01f00800, 1 * KiB },
-> +    { "r_intc",    0x01f00c00, 1 * KiB },
-> +    { "r_wdog",    0x01f01000, 1 * KiB },
-> +    { "r_prcm",    0x01f01400, 1 * KiB },
-> +    { "r_twd",     0x01f01800, 1 * KiB },
-> +    { "r_cpucfg",  0x01f01c00, 1 * KiB },
-> +    { "r_cir-rx",  0x01f02000, 1 * KiB },
-> +    { "r_twi",     0x01f02400, 1 * KiB },
-> +    { "r_uart",    0x01f02800, 1 * KiB },
-> +    { "r_pio",     0x01f02c00, 1 * KiB },
-> +    { "r_pwm",     0x01f03800, 1 * KiB },
-> +    { "core-dbg",  0x3f500000, 128 * KiB },
-> +    { "tsgen-ro",  0x3f506000, 4 * KiB },
-> +    { "tsgen-ctl", 0x3f507000, 4 * KiB },
-> +    { "ddr-mem",   0x40000000, 2 * GiB },
-> +    { "n-brom",    0xffff0000, 32 * KiB },
-> +    { "s-brom",    0xffff0000, 64 * KiB }
-> +};
-> +
-> +/* Per Processor Interrupts */
-> +enum {
-> +    AW_H3_GIC_PPI_MAINT     =  9,
-> +    AW_H3_GIC_PPI_HYPTIMER  = 10,
-> +    AW_H3_GIC_PPI_VIRTTIMER = 11,
-> +    AW_H3_GIC_PPI_SECTIMER  = 13,
-> +    AW_H3_GIC_PPI_PHYSTIMER = 14
-> +};
-> +
-> +/* Shared Processor Interrupts */
-> +enum {
-> +    AW_H3_GIC_SPI_UART0     =  0,
-> +    AW_H3_GIC_SPI_UART1     =  1,
-> +    AW_H3_GIC_SPI_UART2     =  2,
-> +    AW_H3_GIC_SPI_UART3     =  3,
-> +    AW_H3_GIC_SPI_TIMER0    = 18,
-> +    AW_H3_GIC_SPI_TIMER1    = 19,
-> +};
-> +
-> +/* Allwinner H3 constants */
-
-Another not very useful comment.
-
-> +enum {
-> +    AW_H3_GIC_NUM_SPI       = 128
-> +};
-> +
-> +static void allwinner_h3_init(Object *obj)
-> +{
-> +    AwH3State *s = AW_H3(obj);
-> +
-> +    s->memmap = allwinner_h3_memmap;
-> +
-> +    for (int i = 0; i < AW_H3_NUM_CPUS; i++) {
-> +        object_initialize_child(obj, "cpu[*]", &s->cpus[i], sizeof(s->cpus[i]),
-> +                                ARM_CPU_TYPE_NAME("cortex-a7"),
-> +                                &error_abort, NULL);
-> +    }
-> +
-> +    sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
-> +                          TYPE_ARM_GIC);
-> +
-> +    sysbus_init_child_obj(obj, "timer", &s->timer, sizeof(s->timer),
-> +                          TYPE_AW_A10_PIT);
-> +    object_property_add_alias(obj, "clk0-freq", OBJECT(&s->timer),
-> +                              "clk0-freq", &error_abort);
-> +    object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
-> +                              "clk1-freq", &error_abort);
-> +}
-> +
-> +static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-> +{
-> +    AwH3State *s = AW_H3(dev);
-> +    unsigned i = 0;
-
-No need to initialize i since you re-init it in the for().
-
-> +
-> +    /* CPUs */
-> +    for (i = 0; i < AW_H3_NUM_CPUS; i++) {
-> +
-> +        /* Provide Power State Coordination Interface */
-> +        object_property_set_int(OBJECT(&s->cpus[i]), QEMU_PSCI_CONDUIT_HVC,
-> +                                "psci-conduit", &error_abort);
-> +
-> +        /* Disable secondary CPUs */
-> +        object_property_set_bool(OBJECT(&s->cpus[i]), i > 0,
-> +                                "start-powered-off", &error_abort);
-> +
-> +        /* All exception levels required */
-> +        object_property_set_bool(OBJECT(&s->cpus[i]),
-> +                                 true, "has_el3", &error_abort);
-> +
-> +        object_property_set_bool(OBJECT(&s->cpus[i]),
-> +                                 true, "has_el2", &error_abort);
-
-You previously used the object API, ...
-
-> +
-> +        /* Mark realized */
-> +        qdev_init_nofail(DEVICE(&s->cpus[i]));
-
-... and here switch to the qdev API. Odd.
-
-> +    }
-> +
-> +    /* Generic Interrupt Controller */
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", AW_H3_GIC_NUM_SPI +
-> +                                                     GIC_INTERNAL);
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", AW_H3_NUM_CPUS);
-> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", false);
-> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-virtualization-extensions", true);
-> +    qdev_init_nofail(DEVICE(&s->gic));
-> +
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0, s->memmap[AW_H3_GIC_DIST]);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1, s->memmap[AW_H3_GIC_CPU]);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2, s->memmap[AW_H3_GIC_HYP]);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3, s->memmap[AW_H3_GIC_VCPU]);
-> +
-> +    /*
-> +     * Wire the outputs from each CPU's generic timer and the GICv3
-> +     * maintenance interrupt signal to the appropriate GIC PPI inputs,
-> +     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-> +     */
-> +    for (i = 0; i < AW_H3_NUM_CPUS; i++) {
-> +        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-
-Why not use DEVICE(&s->cpus[i])?
-
-> +        int ppibase = AW_H3_GIC_NUM_SPI + i * GIC_INTERNAL + GIC_NR_SGIS;
-> +        int irq;
-> +        /*
-> +         * Mapping from the output timer irq lines from the CPU to the
-> +         * GIC PPI inputs used for this board.
-> +         */
-> +        const int timer_irq[] = {
-> +            [GTIMER_PHYS] = AW_H3_GIC_PPI_PHYSTIMER,
-> +            [GTIMER_VIRT] = AW_H3_GIC_PPI_VIRTTIMER,
-> +            [GTIMER_HYP]  = AW_H3_GIC_PPI_HYPTIMER,
-> +            [GTIMER_SEC]  = AW_H3_GIC_PPI_SECTIMER,
-> +        };
-> +
-> +        /* Connect CPU timer outputs to GIC PPI inputs */
-> +        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
-> +            qdev_connect_gpio_out(cpudev, irq,
-> +                                  qdev_get_gpio_in(DEVICE(&s->gic),
-> +                                                   ppibase + timer_irq[irq]));
-> +        }
-> +
-> +        /* Connect GIC outputs to CPU interrupt inputs */
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + AW_H3_NUM_CPUS,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (2 * AW_H3_NUM_CPUS),
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (3 * AW_H3_NUM_CPUS),
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-> +
-> +        /* GIC maintenance signal */
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (4 * AW_H3_NUM_CPUS),
-> +                           qdev_get_gpio_in(DEVICE(&s->gic),
-> +                                            ppibase + AW_H3_GIC_PPI_MAINT));
-> +    }
-> +
-> +    /* Timer */
-> +    qdev_init_nofail(DEVICE(&s->timer));
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer), 0, s->memmap[AW_H3_PIT]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 0,
-> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_TIMER0));
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 1,
-> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_TIMER1));
-> +
-> +    /* SRAM */
-> +    memory_region_init_ram(&s->sram_a1, OBJECT(dev), "sram A1",
-> +                            64 * KiB, &error_abort);
-> +    memory_region_init_ram(&s->sram_a2, OBJECT(dev), "sram A2",
-> +                            32 * KiB, &error_abort);
-> +    memory_region_init_ram(&s->sram_c, OBJECT(dev), "sram C",
-> +                            44 * KiB, &error_abort);
-
-This looks like an ECC SRAM layout, but no info about this in the 
-datasheet...
-
-> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_A1],
-> +                                &s->sram_a1);
-> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_A2],
-> +                                &s->sram_a2);
-> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_C],
-> +                                &s->sram_c);
-> +
-> +    /* UART0 */
-> +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART0], 2,
-> +                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART0),
-> +                   115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
-
-This is APB2_CLK / 16. Can you add a comment, so it will be easier to 
-adapt to the future clocktree API?
-
-> +    /* UART1 */
-> +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART1], 2,
-> +                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART1),
-> +                   115200, serial_hd(1), DEVICE_NATIVE_ENDIAN);
-> +    /* UART2 */
-> +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART2], 2,
-> +                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART2),
-> +                   115200, serial_hd(2), DEVICE_NATIVE_ENDIAN);
-> +    /* UART3 */
-> +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART3], 2,
-> +                   qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART3),
-> +                   115200, serial_hd(3), DEVICE_NATIVE_ENDIAN);
-> +
-> +    /* Unimplemented devices */
-> +    for (int i = 0; i < ARRAY_SIZE(unimplemented); i++) {
-
-You already declared i, earlier.
-
-> +        create_unimplemented_device(unimplemented[i].device_name,
-> +                                    unimplemented[i].base,
-> +                                    unimplemented[i].size);
-> +    }
-> +}
-> +
-> +static void allwinner_h3_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +
-> +    dc->realize = allwinner_h3_realize;
-> +    /* Reason: uses serial_hds and nd_table */
-> +    dc->user_creatable = false;
-> +}
-> +
-> +static const TypeInfo allwinner_h3_type_info = {
-> +    .name = TYPE_AW_H3,
-> +    .parent = TYPE_DEVICE,
-> +    .instance_size = sizeof(AwH3State),
-> +    .instance_init = allwinner_h3_init,
-> +    .class_init = allwinner_h3_class_init,
-> +};
-> +
-> +static void allwinner_h3_register_types(void)
-> +{
-> +    type_register_static(&allwinner_h3_type_info);
-> +}
-> +
-> +type_init(allwinner_h3_register_types)
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index cd2dc137a3..dc2d7991bf 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -481,6 +481,13 @@ F: hw/*/allwinner*
->   F: include/hw/*/allwinner*
->   F: hw/arm/cubieboard.c
->   
-> +Allwinner-h3
-> +M: Niek Linnenbank <nieklinnenbank@gmail.com>
-> +L: qemu-arm@nongnu.org
-> +S: Maintained
-> +F: hw/*/allwinner-h3*
-> +F: include/hw/*/allwinner-h3*
-> +
->   ARM PrimeCell and CMSDK devices
->   M: Peter Maydell <peter.maydell@linaro.org>
->   L: qemu-arm@nongnu.org
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index c6e7782580..ebf8d2325f 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -291,6 +291,14 @@ config ALLWINNER_A10
->       select SERIAL
->       select UNIMP
->   
-> +config ALLWINNER_H3
-> +    bool
-> +    select ALLWINNER_A10_PIT
-> +    select SERIAL
-> +    select ARM_TIMER
-> +    select ARM_GIC
-> +    select UNIMP
-> +
->   config RASPI
->       bool
->       select FRAMEBUFFER
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index fe749f65fd..956e496052 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -34,6 +34,7 @@ obj-$(CONFIG_DIGIC) += digic.o
->   obj-$(CONFIG_OMAP) += omap1.o omap2.o
->   obj-$(CONFIG_STRONGARM) += strongarm.o
->   obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
-> +obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3.o
->   obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
->   obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
->   obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zynqmp.o xlnx-zcu102.o
+> Change since v20:
+> 1. Move some implementation details from acpi_ghes.h to acpi_ghes.c
+> 2. Add the reviewers for the ACPI/APEI/GHES part
 > 
-
+> Change since v19:
+> 1. Fix clang compile error
+> 2. Fix sphinx build error
+> 
+> Change since v18:
+> 1. Fix some code-style and typo/grammar problems.
+> 2. Remove no_ras in the VirtMachineClass struct.
+> 3. Convert documentation to rst format.
+> 4. Simplize the code and add comments for some magic value.
+> 5. Move kvm_inject_arm_sea() function into the patch where it's used.
+> 6. Register the reset handler(kvm_unpoison_all()) in the kvm_init() function.
+> 
+> Change since v17:
+> 1. Improve some commit messages and comments.
+> 2. Fix some code-style problems.
+> 3. Add a *ras* machine option.
+> 4. Move HEST/GHES related structures and macros into "hw/acpi/acpi_ghes.*".
+> 5. Move HWPoison page functions into "include/sysemu/kvm_int.h".
+> 6. Fix some bugs.
+> 7. Improve the design document.
+> 
+> Change since v16:
+> 1. check whether ACPI table is enabled when handling the memory error in the SIGBUS handler.
+> 
+> Change since v15:
+> 1. Add a doc-comment in the proper format for 'include/exec/ram_addr.h'
+> 2. Remove write_part_cpustate_to_list() because there is another bug fix patch
+>    has been merged "arm: Allow system registers for KVM guests to be changed by QEMU code"
+> 3. Add some comments for kvm_inject_arm_sea() in 'target/arm/kvm64.c'
+> 4. Compare the arm_current_el() return value to 0,1,2,3, not to PSTATE_MODE_* constants.
+> 5. Change the RAS support wasn't introduced before 4.1 QEMU version.
+> 6. Move the no_ras flag  patch to begin in this series
+> 
+> Change since v14:
+> 1. Remove the BUS_MCEERR_AO handling logic because this asynchronous signal was masked by main thread
+> 2. Address some Igor Mammedov's comments(ACPI part)
+>    1) change the comments for the enum AcpiHestNotifyType definition and remove ditto in patch 1
+>    2) change some patch commit messages and separate "APEI GHES table generation" patch to more patches.
+> 3. Address some peter's comments(arm64 Synchronous External Abort injection)
+>    1) change some code notes
+>    2) using arm_current_el() for current EL
+>    2) use the helper functions for those (syn_data_abort_*).
+> 
+> Change since v13:
+> 1. Move the patches that set guest ESR and inject virtual SError out of this series
+> 2. Clean and optimize the APEI part patches
+> 3. Update the commit messages and add some comments for the code
+> 
+> Change since v12:
+> 1. Address Paolo's comments to move HWPoisonPage definition to accel/kvm/kvm-all.c
+> 2. Only call kvm_cpu_synchronize_state() when get the BUS_MCEERR_AR signal
+> 3. Only add and enable GPIO-Signal and ARMv8 SEA two hardware error sources
+> 4. Address Michael's comments to not sync SPDX from Linux kernel header file
+> 
+> Change since v11:
+> Address James's comments(james.morse@arm.com)
+> 1. Check whether KVM has the capability to to set ESR instead of detecting host CPU RAS capability
+> 2. For SIGBUS_MCEERR_AR SIGBUS, use Synchronous-External-Abort(SEA) notification type
+>    for SIGBUS_MCEERR_AO SIGBUS, use GPIO-Signal notification
+> 
+> 
+> Address Shannon's comments(for ACPI part):
+> 1. Unify hest_ghes.c and hest_ghes.h license declaration
+> 2. Remove unnecessary including "qmp-commands.h" in hest_ghes.c
+> 3. Unconditionally add guest APEI table based on James's comments(james.morse@arm.com)
+> 4. Add a option to virt machine for migration compatibility. On new virt machine it's on
+>    by default while off for old ones, we enabled it since 2.12
+> 5. Refer to the ACPI spec version which introduces Hardware Error Notification first time
+> 6. Add ACPI_HEST_NOTIFY_RESERVED notification type
+> 
+> Address Igor's comments(for ACPI part):
+> 1. Add doc patch first which will describe how it's supposed to work between QEMU/firmware/guest
+>    OS with expected flows.
+> 2. Move APEI diagrams into doc/spec patch
+> 3. Remove redundant g_malloc in ghes_record_cper()
+> 4. Use build_append_int_noprefix() API to compose whole error status block and whole APEI table,
+>    and try to get rid of most structures in patch 1, as they will be left unused after that
+> 5. Reuse something like https://github.com/imammedo/qemu/commit/3d2fd6d13a3ea298d2ee814835495ce6241d085c
+>    to build GAS
+> 6. Remove much offsetof() in the function
+> 7. Build independent tables first and only then build dependent tables passing to it pointers
+>    to previously build table if necessary.
+> 8. Redefine macro GHES_ACPI_HEST_NOTIFY_RESERVED to ACPI_HEST_ERROR_SOURCE_COUNT to avoid confusion
+> 
+> 
+> Address Peter Maydell's comments
+> 1. linux-headers is done as a patch of their own created using scripts/update-linux-headers.sh run against a
+>    mainline kernel tree
+> 2. Tested whether this patchset builds OK on aarch32
+> 3. Abstract Hwpoison page adding code  out properly into a cpu-independent source file from target/i386/kvm.c,
+>    such as kvm-all.c
+> 4. Add doc-comment formatted documentation comment for new globally-visible function prototype in a header
+> 
+> ---
+> [1]:
+> https://lkml.org/lkml/2017/2/27/246
+> https://patchwork.kernel.org/patch/9633105/
+> https://patchwork.kernel.org/patch/9925227/
+> 
+> [2]:
+> Note: the UEFI(QEMU_EFI.fd) is needed if guest want to use ACPI table.
+> 
+> After guest boot up, dump the APEI table, then can see the initialized table
+> (1) # iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST
+> (2) # cat HEST.dsl
+>     /*
+>      * Intel ACPI Component Architecture
+>      * AML/ASL+ Disassembler version 20170728 (64-bit version)
+>      * Copyright (c) 2000 - 2017 Intel Corporation
+>      *
+>      * Disassembly of /sys/firmware/acpi/tables/HEST, Mon Sep  5 07:59:17 2016
+>      *
+>      * ACPI Data Table [HEST]
+>      *
+>      * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
+>      */
+> 
+>     ..................................................................................
+>     [308h 0776   2]                Subtable Type : 000A [Generic Hardware Error Source V2]
+>     [30Ah 0778   2]                    Source Id : 0001
+>     [30Ch 0780   2]            Related Source Id : FFFF
+>     [30Eh 0782   1]                     Reserved : 00
+>     [30Fh 0783   1]                      Enabled : 01
+>     [310h 0784   4]       Records To Preallocate : 00000001
+>     [314h 0788   4]      Max Sections Per Record : 00000001
+>     [318h 0792   4]          Max Raw Data Length : 00001000
+> 
+>     [31Ch 0796  12]         Error Status Address : [Generic Address Structure]
+>     [31Ch 0796   1]                     Space ID : 00 [SystemMemory]
+>     [31Dh 0797   1]                    Bit Width : 40
+>     [31Eh 0798   1]                   Bit Offset : 00
+>     [31Fh 0799   1]         Encoded Access Width : 04 [QWord Access:64]
+>     [320h 0800   8]                      Address : 00000000785D0040
+> 
+>     [328h 0808  28]                       Notify : [Hardware Error Notification Structure]
+>     [328h 0808   1]                  Notify Type : 08 [SEA]
+>     [329h 0809   1]                Notify Length : 1C
+>     [32Ah 0810   2]   Configuration Write Enable : 0000
+>     [32Ch 0812   4]                 PollInterval : 00000000
+>     [330h 0816   4]                       Vector : 00000000
+>     [334h 0820   4]      Polling Threshold Value : 00000000
+>     [338h 0824   4]     Polling Threshold Window : 00000000
+>     [33Ch 0828   4]        Error Threshold Value : 00000000
+>     [340h 0832   4]       Error Threshold Window : 00000000
+> 
+>     [344h 0836   4]    Error Status Block Length : 00001000
+>     [348h 0840  12]            Read Ack Register : [Generic Address Structure]
+>     [348h 0840   1]                     Space ID : 00 [SystemMemory]
+>     [349h 0841   1]                    Bit Width : 40
+>     [34Ah 0842   1]                   Bit Offset : 00
+>     [34Bh 0843   1]         Encoded Access Width : 04 [QWord Access:64]
+>     [34Ch 0844   8]                      Address : 00000000785D0098
+> 
+>     [354h 0852   8]            Read Ack Preserve : 00000000FFFFFFFE
+>     [35Ch 0860   8]               Read Ack Write : 0000000000000001
+> 
+>     .....................................................................................
+> 
+> (3) After a synchronous external abort(SEA) happen, Qemu receive a SIGBUS and 
+>     filled the CPER into guest GHES memory.  For example, according to above table,
+>     the address that contains the physical address of a block of memory that holds
+>     the error status data for this abort is 0x00000000785D0040
+> (4) the address for SEA notification error source is 0x785d80b0
+>     (qemu) xp /1 0x00000000785D0040
+>     00000000785d0040: 0x785d80b0
+> 
+> (5) check the content of generic error status block and generic error data entry
+>     (qemu) xp /100x 0x785d80b0
+>     00000000785d80b0: 0x00000001 0x00000000 0x00000000 0x00000098
+>     00000000785d80c0: 0x00000000 0xa5bc1114 0x4ede6f64 0x833e63b8
+>     00000000785d80d0: 0xb1837ced 0x00000000 0x00000300 0x00000050
+>     00000000785d80e0: 0x00000000 0x00000000 0x00000000 0x00000000
+>     00000000785d80f0: 0x00000000 0x00000000 0x00000000 0x00000000
+>     00000000785d8100: 0x00000000 0x00000000 0x00000000 0x00004002
+> (6) check the OSPM's ACK value(for example SEA)
+>     /* Before OSPM acknowledges the error, check the ACK value */
+>     (qemu) xp /1 0x00000000785D0098
+>     00000000785d00f0: 0x00000000
+> 
+>     /* After OSPM acknowledges the error, check the ACK value, it change to 1 from 0 */
+>     (qemu) xp /1 0x00000000785D0098
+>     00000000785d00f0: 0x00000001
+> 
+> [3]: KVM deliver "BUS_MCEERR_AR" to Qemu, Qemu record the guest CPER and inject
+>     synchronous external abort to notify guest, then guest do the recovery.
+> 
+> [ 1552.516170] Synchronous External Abort: synchronous external abort (0x92000410) at 0x000000003751c6b4
+> [ 1553.074073] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 8
+> [ 1553.081654] {1}[Hardware Error]: event severity: recoverable
+> [ 1554.034191] {1}[Hardware Error]:  Error 0, type: recoverable
+> [ 1554.037934] {1}[Hardware Error]:   section_type: memory error
+> [ 1554.513261] {1}[Hardware Error]:   physical_address: 0x0000000040fa6000
+> [ 1554.513944] {1}[Hardware Error]:   error_type: 0, unknown
+> [ 1555.041451] Memory failure: 0x40fa6: Killing mca-recover:1296 due to hardware memory corruption
+> [ 1555.373116] Memory failure: 0x40fa6: recovery action for dirty LRU page: Recovered
+> 
+> Dongjiu Geng (9):
+>   hw/arm/virt: Introduce a RAS machine option
+>   docs: APEI GHES generation and CPER record description
+>   ACPI: Build related register address fields via hardware error fw_cfg
+>     blob
+>   ACPI: Build Hardware Error Source Table
+>   ACPI: Record the Generic Error Status Block address
+>   KVM: Move hwpoison page related functions into kvm-all.c
+>   ACPI: Record Generic Error Status Block(GESB) table
+>   target-arm: kvm64: handle SIGBUS signal from kernel or KVM
+>   MAINTAINERS: Add ACPI/HEST/GHES entries
+> 
+>  MAINTAINERS                            |   9 +
+>  accel/kvm/kvm-all.c                    |  36 +++
+>  default-configs/arm-softmmu.mak        |   1 +
+>  docs/specs/acpi_hest_ghes.rst          | 110 ++++++++
+>  docs/specs/index.rst                   |   1 +
+>  hw/acpi/Kconfig                        |   4 +
+>  hw/acpi/Makefile.objs                  |   1 +
+>  hw/acpi/aml-build.c                    |   2 +
+>  hw/acpi/generic_event_device.c         |  15 +-
+>  hw/acpi/ghes.c                         | 446 +++++++++++++++++++++++++++++++++
+>  hw/arm/virt-acpi-build.c               |  19 ++
+>  hw/arm/virt.c                          |  23 ++
+>  include/hw/acpi/aml-build.h            |   1 +
+>  include/hw/acpi/generic_event_device.h |   2 +
+>  include/hw/acpi/ghes.h                 |  75 ++++++
+>  include/hw/arm/virt.h                  |   1 +
+>  include/qemu/uuid.h                    |   5 +
+>  include/sysemu/kvm.h                   |   3 +-
+>  include/sysemu/kvm_int.h               |  12 +
+>  target/arm/cpu.h                       |   4 +
+>  target/arm/helper.c                    |   2 +-
+>  target/arm/internals.h                 |   5 +-
+>  target/arm/kvm64.c                     |  66 +++++
+>  target/arm/tlb_helper.c                |   2 +-
+>  target/i386/cpu.h                      |   2 +
+>  target/i386/kvm.c                      |  36 ---
+>  26 files changed, 840 insertions(+), 43 deletions(-)
+>  create mode 100644 docs/specs/acpi_hest_ghes.rst
+>  create mode 100644 hw/acpi/ghes.c
+>  create mode 100644 include/hw/acpi/ghes.h
+> 

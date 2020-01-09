@@ -1,159 +1,102 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2297696lff;
-        Thu, 9 Jan 2020 07:52:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzc8akqoX70Ixta+I1mu5ReVgafRL0bJau6P3ZIu2lST6uxAtZNe7F3dMKijmhQ5mcm/OFH
-X-Received: by 2002:aca:cdca:: with SMTP id d193mr3679985oig.152.1578585175075;
-        Thu, 09 Jan 2020 07:52:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578585175; cv=none;
-        d=google.com; s=arc-20160816;
-        b=AmuvsM2ED0DjZMpXSpNOZIg3ywqlddorVT4j791wgeWE6vUlftkomOhilvX9YOX+Z6
-         h9dx22CSpYiePpnvWrqZyoBqmmUUUF/KjfJhOAEvZdNyZ5e6KX4nZDBZP563ipk8Olx7
-         ZgLJPZrn6Gix8UyeOJ5tvHJZ5hgGZwFSZh7NkHHyAbZ9EcJWkHWNPo327hgJd6W0jtvS
-         fbToaeupZSU7ZvF50hqpASxKtJaNiAeHSad5En56ygMPFY+d5poo2F06yOSHr10nKvZW
-         xmsWKbG7ikmgY++naeqOeAdRtOVxxCjIP3LmXMSVzJzxP3d7+gXlvVjHqIKBg6axYRjM
-         zY2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=zdpsRvVV+rWRsUq3Er8dozQIkuoysYx4uKpmTNPoOUA=;
-        b=Ok6TpVUNvr33zdUN+u1jQv5M0XTHWvJzXLhWoHhXKN2xEtfUzZGI0et1hhJGc9LY38
-         g6MjVs/f6CQmeNth7Y4D2t4XZ3zjHkMptDr7eYdsvYN3il6Fe+o0Rso73oxClsnFIWcd
-         uoBXpPxqZVfxfqM0Aag1fF+c/+mJFnsb03SpQi7uUjb2ufyCsgqCOw+AoWKyHl/KHqfj
-         TJlOdZ5aGYqX6qC9JrWp8CUGR5ag0aTpuXw+7jQxOVfpAkOCmsBUBQRWjO7V84rByokq
-         Y7s/sTkHDfvQVML6w0YS+FTryzu4RfHbYmTuZdpl23txmt8x/6XbJr5fbAn3UcOBYwEk
-         tyRg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kcd3vzhB;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id t14si4139911otp.210.2020.01.09.07.52.54;
-        Thu, 09 Jan 2020 07:52:55 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kcd3vzhB;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732649AbgAIPwy (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Thu, 9 Jan 2020 10:52:54 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57880 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1732608AbgAIPwx (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 9 Jan 2020 10:52:53 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1578585172;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=zdpsRvVV+rWRsUq3Er8dozQIkuoysYx4uKpmTNPoOUA=;
-        b=Kcd3vzhBO+N7P12vlfs1mdyIxBhxFV20Mt/k3Rf+hnUETC6gxrpqrNkC0EZGV51o+yOQSt
-        YVW4VO82pOHw97uDcbRJAgqwEtJb3YOApcq91AxgfhcrobJIzyfMGwf2vbLAhRcAOha5y6
-        dtJXh2Gmq3WXpcjQC9MnkLPZSKB+f58=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-293-FRT1QSlLOnmD2luXA1AkkA-1; Thu, 09 Jan 2020 10:52:48 -0500
-X-MC-Unique: FRT1QSlLOnmD2luXA1AkkA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EBF6E802C96;
-        Thu,  9 Jan 2020 15:52:46 +0000 (UTC)
-Received: from work-vm (unknown [10.36.118.29])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id AF1565F700;
-        Thu,  9 Jan 2020 15:52:40 +0000 (UTC)
-Date:   Thu, 9 Jan 2020 15:52:38 +0000
-From:   "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To:     Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc:     qemu-devel@nongnu.org, Marcelo Tosatti <mtosatti@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Juan Quintela <quintela@redhat.com>, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Alistair Francis <alistair.francis@wdc.com>,
-        qemu-ppc@nongnu.org, Richard Henderson <rth@twiddle.net>,
-        David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [PATCH 06/15] migration/savevm: Replace current_machine by
- qdev_get_machine()
-Message-ID: <20200109155238.GK6795@work-vm>
-References: <20200109152133.23649-1-philmd@redhat.com>
- <20200109152133.23649-7-philmd@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id y7sm4353442wmd.1.2020.01.09.08.25.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Jan 2020 08:25:54 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 814761FF87;
+	Thu,  9 Jan 2020 16:25:53 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: 1859021@bugs.launchpad.net,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC PATCH] tests/tcg: add a vtimer test for aarch64
+Date: Thu,  9 Jan 2020 16:25:45 +0000
+Message-Id: <20200109162545.1970-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <157857629827.5165.2496570379985305724.malonedeb@gac.canonical.com>
+References: <157857629827.5165.2496570379985305724.malonedeb@gac.canonical.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20200109152133.23649-7-philmd@redhat.com>
-User-Agent: Mutt/1.13.0 (2019-11-30)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: JWYT2BzuefTe
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: p7zGNMUFAl2j
 
-* Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
-> As we want to remove the global current_machine,
-> replace MACHINE_GET_CLASS(current_machine) by
-> MACHINE_GET_CLASS(qdev_get_machine()).
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> ---
->  migration/savevm.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->=20
-> diff --git a/migration/savevm.c b/migration/savevm.c
-> index 59efc1981d..0e8b6a4715 100644
-> --- a/migration/savevm.c
-> +++ b/migration/savevm.c
-> @@ -292,7 +292,8 @@ static uint32_t get_validatable_capabilities_count(=
-void)
->  static int configuration_pre_save(void *opaque)
->  {
->      SaveState *state =3D opaque;
-> -    const char *current_name =3D MACHINE_GET_CLASS(current_machine)->n=
-ame;
-> +    MachineClass *mc =3D MACHINE_GET_CLASS(qdev_get_machine());
-> +    const char *current_name =3D mc->name;
+Bug: https://bugs.launchpad.net/bugs/1859021
 
-For migration:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/tcg/aarch64/system/vtimer.c         | 48 +++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.softmmu-target |  4 ++
+ 2 files changed, 52 insertions(+)
+ create mode 100644 tests/tcg/aarch64/system/vtimer.c
 
-Acked-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-
-(Personally I'd keep it on one line, but that's just taste)
-
-
->      MigrationState *s =3D migrate_get_current();
->      int i, j;
-> =20
-> @@ -362,7 +363,8 @@ static bool configuration_validate_capabilities(Sav=
-eState *state)
->  static int configuration_post_load(void *opaque, int version_id)
->  {
->      SaveState *state =3D opaque;
-> -    const char *current_name =3D MACHINE_GET_CLASS(current_machine)->n=
-ame;
-> +    MachineClass *mc =3D MACHINE_GET_CLASS(qdev_get_machine());
-> +    const char *current_name =3D mc->name;
-> =20
->      if (strncmp(state->name, current_name, state->len) !=3D 0) {
->          error_report("Machine type received is '%.*s' and local is '%s=
-'",
-> @@ -615,9 +617,7 @@ static void dump_vmstate_vmsd(FILE *out_file,
-> =20
->  static void dump_machine_type(FILE *out_file)
->  {
-> -    MachineClass *mc;
-> -
-> -    mc =3D MACHINE_GET_CLASS(current_machine);
-> +    MachineClass *mc =3D MACHINE_GET_CLASS(qdev_get_machine());
-> =20
->      fprintf(out_file, "  \"vmschkmachine\": {\n");
->      fprintf(out_file, "    \"Name\": \"%s\"\n", mc->name);
-> --=20
-> 2.21.1
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+diff --git a/tests/tcg/aarch64/system/vtimer.c b/tests/tcg/aarch64/system/vtimer.c
+new file mode 100644
+index 00000000000..42f2f7796c7
+--- /dev/null
++++ b/tests/tcg/aarch64/system/vtimer.c
+@@ -0,0 +1,48 @@
++/*
++ * Simple Virtual Timer Test
++ *
++ * Copyright (c) 2020 Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include <inttypes.h>
++#include <minilib.h>
++
++/* grabbed from Linux */
++#define __stringify_1(x...) #x
++#define __stringify(x...)   __stringify_1(x)
++
++#define read_sysreg(r) ({                                           \
++            uint64_t __val;                                         \
++            asm volatile("mrs %0, " __stringify(r) : "=r" (__val)); \
++            __val;                                                  \
++})
++
++#define write_sysreg(r, v) do {                     \
++        uint64_t __val = (uint64_t)(v);             \
++        asm volatile("msr " __stringify(r) ", %x0"  \
++                 : : "rZ" (__val));                 \
++} while (0)
++
++int main(void)
++{
++    int i;
++
++    ml_printf("VTimer Test\n");
++
++    write_sysreg(cntvoff_el2, 1);
++    write_sysreg(cntv_cval_el0, -1);
++    write_sysreg(cntv_ctl_el0, 1);
++
++    ml_printf("cntvoff_el2=%lx\n", read_sysreg(cntvoff_el2));
++    ml_printf("cntv_cval_el0=%lx\n", read_sysreg(cntv_cval_el0));
++    ml_printf("cntv_ctl_el0=%lx\n", read_sysreg(cntv_ctl_el0));
++
++    /* Now read cval a few times */
++    for (i = 0; i < 10; i++) {
++        ml_printf("%d: cntv_cval_el0=%lx\n", i, read_sysreg(cntv_cval_el0));
++    }
++
++    return 0;
++}
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index 7b4eede3f07..62cdddbb215 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -62,3 +62,7 @@ run-memory-replay: memory-replay run-memory-record
+ 	  "$< on $(TARGET_NAME)")
+ 
+ EXTRA_TESTS+=memory-record memory-replay
++
++# vtimer test
++QEMU_EL2_MACHINE=-machine virt,virtualization=on,gic-version=2 -cpu cortex-a57 -smp 4
++run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_SEMIHOST)  -kernel
+-- 
+2.20.1

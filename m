@@ -1,324 +1,124 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1911506lff;
-        Thu, 9 Jan 2020 01:54:51 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxUgJmFhvxCqzE7b6A3L81CKehCbhoyXJw7OHhiUoNoRU3JHk2N77xxnDGYW7KMJRHviCwn
-X-Received: by 2002:a17:906:5358:: with SMTP id j24mr9753131ejo.44.1578563691065;
-        Thu, 09 Jan 2020 01:54:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578563691; cv=none;
-        d=google.com; s=arc-20160816;
-        b=1GNAR4SNeFZkOOCsuR4EYM7Zf0QrEbSj97LzZZl8yrbrChGGBgPY6F79tRQuBNmKdz
-         BvnX/4U4Xlle1jJuK1HHRojkVBUVjSL64jQyk7MTdZMPrxEDv6VvXL0yywtgjn/gnvrm
-         Y2oah7CQ82l41c429a2uhAJ7tH54OJ/RadXAlCYelgykNXepSOwFANaASmTPUjidS3kK
-         JCX6ZNTjPqjMeXtd6fbV9pBnSvQn4nSUn8g4ukaKquMjfgW6i3d3zzf4lRr2rMmrqwLX
-         qbPt3yh3PRfKbh3IMMDrezDQRWQlf9vk2kAM8+0ubOsvou0wpSVnkwPDQ7+K65l5mK4p
-         84Qg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=WHrti+oi0PWS6PL6/3+AmKzs3oZp/cyYsqebZKGl6Bg=;
-        b=d6tYeqjqomWOoIyDck/6oimeM0dHRwWt8td99vavCQYu1YJJd8gbp0AYEZ7vcXvWA9
-         OdfcvuVKSvITkuy6dtXA7SDWeQsZ0q5gRij5NCVOnj7cNwn2klnbAjr/8JvHOyAr9YsM
-         iUF6fVGhYck5Fg1UY33DxXjc7EAPffxmAQ/VJSzfilgKtGoBR5HGL3LF+djdRQZ0XvY4
-         SnYsKh98QQD1NW0pVhVYLHi1CzzZXaSbaJwaJN8f6lt4sMORIQUMuT8Rz0DjCHHm25OV
-         XBQevLVyArdTHGs/5Y/ZSkoUv21Js4VPcXRqgCoRVjxlVLT21Ih9Q+ryLELuRx81Gx2P
-         q3Xg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NthiUDk8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g16si3954645edp.132.2020.01.09.01.54.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2020 01:54:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NthiUDk8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57576 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipUWf-0000nz-TF
-	for alex.bennee@linaro.org; Thu, 09 Jan 2020 04:54:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57281)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1ipUVh-0007lR-Qu
- for qemu-devel@nongnu.org; Thu, 09 Jan 2020 04:53:51 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1ipUVg-0008Ve-57
- for qemu-devel@nongnu.org; Thu, 09 Jan 2020 04:53:49 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:59037
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1ipUVf-0008Th-W5
- for qemu-devel@nongnu.org; Thu, 09 Jan 2020 04:53:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578563627;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WHrti+oi0PWS6PL6/3+AmKzs3oZp/cyYsqebZKGl6Bg=;
- b=NthiUDk80+EKJqIzN5cGz2pajie0A9eorDt1ZAbYDncos18e8pWOS5NRZ0lkiKyUdMtFCS
- tvRFvmc9Gkp44TvNWqa5p2Ny3W0LkA5lyWt10m2hTWIXT75NcMem7BJec/aOx1gnPP1TuP
- TTvsfxGIZECK3zohDrH6z74vc6nCpcI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-259-pqSkHHwRO_yS6AS7IDr2bQ-1; Thu, 09 Jan 2020 04:53:44 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D87B4184B1E0;
- Thu,  9 Jan 2020 09:53:42 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BD5F386C54;
- Thu,  9 Jan 2020 09:53:38 +0000 (UTC)
-Date: Thu, 9 Jan 2020 10:53:36 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: "Zengtao (B)" <prime.zeng@hisilicon.com>
-Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
- node_id ascending order
-Message-ID: <20200109105336.4932267b@redhat.com>
-In-Reply-To: <678F3D1BB717D949B966B68EAEB446ED340BD19F@dggemm526-mbx.china.huawei.com>
-References: <1578388729-55540-1-git-send-email-prime.zeng@hisilicon.com>
- <20200107042918-mutt-send-email-mst@kernel.org>
- <678F3D1BB717D949B966B68EAEB446ED340B608D@dggemm526-mbx.china.huawei.com>
- <20200107164958.7811777d@redhat.com>
- <678F3D1BB717D949B966B68EAEB446ED340B8B24@dggemm526-mbx.china.huawei.com>
- <20200108173832.61508f8b@redhat.com>
- <678F3D1BB717D949B966B68EAEB446ED340BD19F@dggemm526-mbx.china.huawei.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id q6sm8325699wrx.72.2020.01.09.04.08.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Jan 2020 04:08:24 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 31C531FF87;
+	Thu,  9 Jan 2020 12:08:24 +0000 (GMT)
+References: <20191211170520.7747-1-alex.bennee@linaro.org>
+ <20191211170520.7747-13-alex.bennee@linaro.org>
+ <69e10c48-8bdf-cbe0-3372-815b647f8312@linaro.org>
+ <87k16sdt4d.fsf@linaro.org>
+ <5c6dd0a9-23ba-63ff-5738-8bac11aad810@linaro.org>
+ <87eewzdtqg.fsf@linaro.org>
+ <81e43d43-29f8-ec56-5270-bb90dd1bc077@linaro.org>
+ <889CE29C-C705-4EB4-B52A-62F88A6121A2@arm.com>
+User-agent: mu4e 1.3.6; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Alan Hayward <Alan.Hayward@arm.com>
+Cc: Luis Machado <luis.machado@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "damien.hedde@greensocs.com"
+ <damien.hedde@greensocs.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "open
+ list:ARM TCG CPUs" <qemu-arm@nongnu.org>, nd <nd@arm.com>
+Subject: Re: [PATCH v3 12/20] target/arm: generate xml description of our
+ SVE registers
+In-reply-to: <889CE29C-C705-4EB4-B52A-62F88A6121A2@arm.com>
+Date: Thu, 09 Jan 2020 12:08:24 +0000
+Message-ID: <87muawj0hz.fsf@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: pqSkHHwRO_yS6AS7IDr2bQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ergSBvECoYoi
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: fz2Qx3pzz+Lt
 
-On Thu, 9 Jan 2020 02:45:58 +0000
-"Zengtao (B)" <prime.zeng@hisilicon.com> wrote:
 
-> > -----Original Message-----
-> > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > Sent: Thursday, January 09, 2020 12:39 AM
-> > To: Zengtao (B)
-> > Cc: Michael S. Tsirkin; qemu-devel@nongnu.org; qemu-trivial@nongnu.org;
-> > Shannon Zhao; Peter Maydell; qemu-arm@nongnu.org
-> > Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
-> > node_id ascending order
-> > 
-> > On Wed, 8 Jan 2020 04:02:10 +0000
-> > "Zengtao (B)" <prime.zeng@hisilicon.com> wrote:
-> >   
-> > > > -----Original Message-----
-> > > > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > > > Sent: Tuesday, January 07, 2020 11:50 PM
-> > > > To: Zengtao (B)
-> > > > Cc: Michael S. Tsirkin; qemu-devel@nongnu.org;  
-> > qemu-trivial@nongnu.org;  
-> > > > Shannon Zhao; Peter Maydell; qemu-arm@nongnu.org
-> > > > Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors structure  
-> > by  
-> > > > node_id ascending order
-> > > >
-> > > > On Tue, 7 Jan 2020 10:29:22 +0000
-> > > > "Zengtao (B)" <prime.zeng@hisilicon.com> wrote:
-> > > >  
-> > > > > > -----Original Message-----
-> > > > > > From: Michael S. Tsirkin [mailto:mst@redhat.com]
-> > > > > > Sent: Tuesday, January 07, 2020 5:33 PM
-> > > > > > To: Zengtao (B)
-> > > > > > Cc: qemu-devel@nongnu.org; qemu-trivial@nongnu.org; Shannon  
-> > > > Zhao;  
-> > > > > > Peter Maydell; Igor Mammedov; qemu-arm@nongnu.org
-> > > > > > Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors  
-> > structure  
-> > > > by  
-> > > > > > node_id ascending order
-> > > > > >
-> > > > > > On Tue, Jan 07, 2020 at 05:18:49PM +0800, Zeng Tao wrote:  
-> > > > > > > When booting the guest linux with the following numa  
-> > configuration:  
-> > > > > > > -numa node,node_id=1,cpus=0-3
-> > > > > > > -numa node,node_id=0,cpus=4-7
-> > > > > > > We can get the following numa topology in the guest system:
-> > > > > > > Architecture:          aarch64
-> > > > > > > Byte Order:            Little Endian
-> > > > > > > CPU(s):                8
-> > > > > > > On-line CPU(s) list:   0-7
-> > > > > > > Thread(s) per core:    1
-> > > > > > > Core(s) per socket:    8
-> > > > > > > Socket(s):             1
-> > > > > > > NUMA node(s):          2
-> > > > > > > L1d cache:             unknown size
-> > > > > > > L1i cache:             unknown size
-> > > > > > > L2 cache:              unknown size
-> > > > > > > NUMA node0 CPU(s):     0-3
-> > > > > > > NUMA node1 CPU(s):     4-7
-> > > > > > > The Cpus 0-3 is assigned with NUMA node 1 in QEMU while it get  
-> > > > NUMA  
-> > > > > > node  
-> > > > > > > 0 in the guest.
-> > > > > > >
-> > > > > > > In fact, In the linux kernel, numa_node_id is allocated per the  
-> > ACPI  
-> > > > > > > SRAT processors structure order,so the cpu 0 will be the first one  
-> > to  
-> > > > > > > allocate its NUMA node id, so it gets the NUMA node 0.
-> > > > > > >
-> > > > > > > To fix this issue, we pack the SRAT processors structure in numa  
-> > node  
-> > > > id  
-> > > > > > > order but not the default cpu number order.
-> > > > > > >
-> > > > > > > Signed-off-by: Zeng Tao <prime.zeng@hisilicon.com>  
-> > > > > >
-> > > > > >
-> > > > > > Does this matter? If yes fixing linux to take node id from proximity
-> > > > > > field in ACPI seems cleaner ...
-> > > > > >  
-> > > > >
-> > > > > In fact, I just want to align the node_id concept in QEMU and Linux.
-> > > > > If we fix the kernel side, we need to align with all platforms.
-> > > > > i think maybe not a good idea.  
-> > > > if linux makes up node ID's on it's own, it would be hard for it to
-> > > > map SRAT entries to other tables that use proximity id as well.
-> > > >
-> > > > So it would need to maintain map of [proximity id] -> [node id] (and  
-> > reverse)  
-> > > > somewhere to resolve mappings on other tables.
-> > > > If it doesn't do this then it's broken and works just by accident,
-> > > > if it does the fix probably should be in that code and not in QEMU.
-> > > >  
-> > >
-> > > Hmm, the problem is how to understand the concept of node id.
-> > > 1. In dts, there is node id. Both the QEMU and Linux can use it
-> > > directly, so no conflict.
-> > > 2. In ACPI, there is only proximity domain, but no node id, there
-> > >  should be a mapping between them, while kernel and QEMU maintain
-> > >  their own rule, and unfortunately they conflict with each other
-> > >  sometimes.
-> > >
-> > > There is no specification to indicate what we should do to maintain the
-> > > mapping, so it's hard to align the QEMU and Linux.
-> > >
-> > > Any suggestion, or we just accept it as a rule since it don't affect much?  
-> > 
-> > If node id generation is driven by SRAT content, it might be reasonable to
-> > ask for SRAT parser in kernel to create node ids using proximity value
-> > instead of the order ACPI_SRAT_PROCESSOR_GICC structures are
-> > enumerated.
-> > That way node id would match ACPI spec.
-> >   
-> 
-> I don't quite understand "That way node id would match ACPI spec."
-> I check the ACPI 6.3 spec, I didn't find any description that node id should
-> be equal to proximity value, in section 6.2.15, there is indeed an example
-> which node numbers equals to proximity value. 
+Alan Hayward <Alan.Hayward@arm.com> writes:
 
-There is only proximity id in spec (which conceptually is the same as node id).
-What I'm saying is that linux kernel ACPI parser could use it as node id
-instead of using counter for making up node ids.
+>> On 20 Dec 2019, at 13:18, Luis Machado <luis.machado@linaro.org> wrote:
+>>=20
+>> On 12/20/19 10:14 AM, Alex Benn=C3=A9e wrote:
+>>> Luis Machado <luis.machado@linaro.org> writes:
+>>>> On 12/19/19 4:15 PM, Alex Benn=C3=A9e wrote:
+>>>>> Richard Henderson <richard.henderson@linaro.org> writes:
+>>>>>=20
+>>>>>> On 12/11/19 9:05 AM, Alex Benn=C3=A9e wrote:
+>>>>>>> +static struct TypeSize vec_lanes[] =3D {
+>>>>>>=20
+>>>>>> const.
+>>>>>>=20
+>>>>>>> +    case 51:
+>>>>>>> +        return gdb_get_reg64(buf, (cpu->env.vfp.zcr_el[1] & 0xf) +=
+ 1);
+>>>>>>=20
+>>>>>> You need to use sve_zcr_len_for_el to get the effective vq.
+>>>>>> Also, I thought vg =3D=3D 2 * vq.
+>>>>>>   > +    case 51:
+>>>>>>> +    {
+>>>>>>> +        uint64_t val =3D *(uint64_t *) buf;
+>>>>>>> +        cpu->env.vfp.zcr_el[1] =3D (val - 1) & 0xf;
+>>>>>>=20
+>>>>>> You cannot hard-code EL1 without ifdef CONFIG_USER_ONLY.  If the eff=
+ective vq
+>>>>>> decreases, you must call aarch64_sve_narrow_vq.  You must call arm_r=
+ebuild_hflags.
+>>>>> I'm just going to drop vg (and therefor the ability to set it) from
+>>>>> the
+>>>>> regset. It was only meant to be an indicator and gdb doesn't actually
+>>>>> look to it to size it's output. The likely dynamic extension will just
+>>>>> re-transmit the whole XML when a change occurs.
+>>>>>=20
+>
+> [...rebooting self after festive break]
+>
+> Yes, when using a gdb stub, changes to the VG value should be silently ig=
+nored by the
+> stub.
+> In addition, if the vector length on the system does magically change whi=
+lst the program
+> is running, then the stub should continue to use the register sizes for t=
+he originally
+> transmitted XML, truncating/extending the register values as required.
+>
+> Why? Because once the stub has sent the XML description to GDB on program=
+ start, then GDB
+> assumes the XML description will never change. GDB will error if sent pac=
+kets with different
+> register lengths.
 
-(issue with it is that proximity values could be sparse, so one
-would need to audit current node id users to make sure that using
-proximity id won't break anything)
+Ack. The test "test-sve-ioctl.py" covers this and works as expected.
 
-> Thanks
-> 
-> > But even with that I'd wouldn't expect cpu ids match as its basically
-> > arbitrary numbers on both sided. One would need to use arch specific ids
-> > to reliably match cpus on both sides (MPIDR in ARM case or APICID in x86).
-> >.   
-> > > > >  
-> > > > > > > ---
-> > > > > > >  hw/arm/virt-acpi-build.c | 23 +++++++++++++++--------
-> > > > > > >  1 file changed, 15 insertions(+), 8 deletions(-)
-> > > > > > >
-> > > > > > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > > > > > > index bd5f771..497192b 100644
-> > > > > > > --- a/hw/arm/virt-acpi-build.c
-> > > > > > > +++ b/hw/arm/virt-acpi-build.c
-> > > > > > > @@ -520,7 +520,8 @@ build_srat(GArray *table_data,  
-> > BIOSLinker  
-> > > > > > *linker, VirtMachineState *vms)  
-> > > > > > >      AcpiSystemResourceAffinityTable *srat;
-> > > > > > >      AcpiSratProcessorGiccAffinity *core;
-> > > > > > >      AcpiSratMemoryAffinity *numamem;
-> > > > > > > -    int i, srat_start;
-> > > > > > > +    int i, j, srat_start;
-> > > > > > > +    uint32_t node_id;
-> > > > > > >      uint64_t mem_base;
-> > > > > > >      MachineClass *mc = MACHINE_GET_CLASS(vms);
-> > > > > > >      MachineState *ms = MACHINE(vms);
-> > > > > > > @@ -530,13 +531,19 @@ build_srat(GArray *table_data,  
-> > BIOSLinker  
-> > > > > > *linker, VirtMachineState *vms)  
-> > > > > > >      srat = acpi_data_push(table_data, sizeof(*srat));
-> > > > > > >      srat->reserved1 = cpu_to_le32(1);
-> > > > > > >
-> > > > > > > -    for (i = 0; i < cpu_list->len; ++i) {
-> > > > > > > -        core = acpi_data_push(table_data, sizeof(*core));
-> > > > > > > -        core->type = ACPI_SRAT_PROCESSOR_GICC;
-> > > > > > > -        core->length = sizeof(*core);
-> > > > > > > -        core->proximity =  
-> > > > > > cpu_to_le32(cpu_list->cpus[i].props.node_id);  
-> > > > > > > -        core->acpi_processor_uid = cpu_to_le32(i);
-> > > > > > > -        core->flags = cpu_to_le32(1);
-> > > > > > > +    for (i = 0; i < ms->numa_state->num_nodes; ++i) {
-> > > > > > > +        for (j = 0; j < cpu_list->len; ++j) {  
-> > > > > >
-> > > > > > Hmm O(n ^2) isn't great ...  
-> > > > > Good suggestion, 3Q.  
-> > > > > >  
-> > > > > > > +            node_id =  
-> > > > cpu_to_le32(cpu_list->cpus[j].props.node_id);  
-> > > > > > > +            if (node_id != i) {
-> > > > > > > +                continue;
-> > > > > > > +            }
-> > > > > > > +            core = acpi_data_push(table_data, sizeof(*core));
-> > > > > > > +            core->type = ACPI_SRAT_PROCESSOR_GICC;
-> > > > > > > +            core->length = sizeof(*core);
-> > > > > > > +            core->proximity = node_id;
-> > > > > > > +            core->acpi_processor_uid = cpu_to_le32(j);
-> > > > > > > +            core->flags = cpu_to_le32(1);
-> > > > > > > +        }
-> > > > > > >      }  
-> > > > > >
-> > > > > > is the issue arm specific? wouldn't it affect x86 too?
-> > > > > >  
-> > > > > Good question, I think it will affect x86, but I need to confirm.
-> > > > >  
-> > > > > > >      mem_base = vms->memmap[VIRT_MEM].base;
-> > > > > > > --
-> > > > > > > 2.8.1  
-> > > > >  
-> > >  
-> 
+<snip>
+>
+> When using GDB a real SVE Linux box without a stub/gdbserver, then:
+>
+<snip>
+>
+> Blindly enabling the above when using a stub results in in GDB *constantl=
+y* asking the
+> stub for a new XML description, spamming the pipe, so this needs somethin=
+g more nuanced.=20
+>
+> I plan on sending Luis my ideas I had for VG changing when using a
+> stub.
 
+Is this going to be a more general solution because I'm sure there are
+other cases where the XML description is out of date. A big one is
+execution modes (thumb/32/64 bit) and I think x86 runs into similar
+problems with it's various mode changes in early boot-up.
+
+For now I'll just let qemu provide it's own xml without vg shenanigans.
+
+>>> But this is all special casing for feature
+>>> name=3D"org.gnu.gdb.aarch64.sve" right?
+>>=20
+>> Yes, vg is only available if feature org.gnu.gdb.aarch64.sve is availabl=
+e.
+>
+> Nod.
+
+Thanks and hi ;-)
+
+--=20
+Alex Benn=C3=A9e

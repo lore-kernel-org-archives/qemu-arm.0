@@ -1,69 +1,69 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2264759lff;
-        Thu, 9 Jan 2020 07:23:05 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwxl1IeLhL26hEaE7uNyG4Wxpy56nzpHUDqs9DUAc64SqWXDy6ylGDeC2p+ajcdKcfBnRi+
-X-Received: by 2002:a9d:4c94:: with SMTP id m20mr9195420otf.341.1578583385651;
-        Thu, 09 Jan 2020 07:23:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578583385; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2264801lff;
+        Thu, 9 Jan 2020 07:23:08 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwuFVlmSDx4ggQZwLv/TFRURVPcFv2vOxIJ6wrsoBr6qruDufn5dOr97AqaCAXsLWW55kWA
+X-Received: by 2002:a9d:7984:: with SMTP id h4mr9022237otm.297.1578583388720;
+        Thu, 09 Jan 2020 07:23:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578583388; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ej7jIXOgLKB2KB1lopAbQQCL+UUEmpk2ol+BTtvBLKdGljCknzvweI9CZ+hKkc9cHB
-         FeiD4sRRoXZC/Lr+MITjx7QMcWOJ30Tp7ZsFVx45nTjkL2xqAtgRpbMFadIp26B2VZmy
-         9RHcHkUPK6xKQVzyGotbzmFlf81roL04vqDxrWcI2GSe186dsJabtGWbfx/S/72Xx/1i
-         G58Imo4XFQ7b+udWveEJnQ7ruPxdmp62yHVTYTMqdPLlHwYzQQOeh8ebtoksM+OH1tt9
-         6ebyVtH+Arx7Ui87R49nVyr5VrYpPL7bEmkCFQo35fneFkPnrrB2kBlXfoIAK3acGZcR
-         LXQg==
+        b=dbdqIy+04ripDpJadUOhO/HLWIrr75mT9IVe0ihitwzY4AzGZOfXNXOU6FErwMU44T
+         xyXRMhwXzAlobqHWnXgpUCalo2/lOonAfO0AMV0bQ7kt6UVbtrVWrCAqPX5Q3BViZx8A
+         fKkeqOxkXu59WCenCB6DOL6fmVOgsyjh+cMJpyTOXUB6oBJ5jU1phiWmpmhYaXRZ07ep
+         w4Z8YX238BxBXIp7fScv3os2JuxBxhulqsDaYdM1MsPnLPlBHG/xu/OhHsomD5cg6daw
+         7gEXoyNhOS1Swx6CGyYXvlkpjoYEVhEQM9GhGUfpiYgvfFdQuxW9xy3bSsNvf+zWApk9
+         gOLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=hzr8Edx5jAryfh/huxiAkUz4zCXuFwzT7om8QEdCtyk=;
-        b=mNFDPrPDhNh6sH3QAnWBK0E7kYv10sRDBSkDsrfYrGKN2aFSz8MYmzZeqyraF7k0n0
-         ODjKRGqTAvCTdlmpPHlauP5jRhPxM5jJXgoase9O78/jhcUH/6xkZ2zi3bCPXBbUAjXg
-         oIsGRVxVuEtcHLZIdtUPFcAXZfDloDvPxkelQZkZrYDnQljlBAnge67LEkW4jiwNE6oa
-         hf+pDqVEG2cKHa3oLzfiXzFr6mtSKJGucRxzKWpZJY/DFLQrCGMc9PYZJFO8gkTPNh4i
-         URn/mBCg++YAOGJQqwNs+wZHE3pSZyeYwAZ7WbnWL4C2W22O/qOTL6FBVuWRaOa8HySJ
-         Jy+A==
+        bh=ZEMOGD26t+fMYjJ4LobtAf8vZNWvIS3QswsuquGMzqE=;
+        b=G3+XFMngWe/ZcNjnJ+HY9k3ubTRntBM8e2R7zv+CAyHkgHbMr1poTus2xF85+tvRdP
+         /TuanbUBXDGWt3Mycx9E2HwCBsHgjN9VqJIN16BcU4KjdGmFtBOFb+Es///YPV62girS
+         Ivyvj0r13o3betd6NTRGegtxBDJ/keSE+W+z+Utt1WC6/qRLUurkcV45ywegWMxnEvVq
+         hxjNTNn0oyvelmTOnWvIxMQ6FK8X39fC5kz8n05PDX6rUezes1KW1jVgkj0pcNge/2MU
+         dxAExf9yDNjAtpzq2Tn3VdxEGkcnsPedlculUQzhN5eIH0COZE4mCLWeBg9MhNScUOZQ
+         k5kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C+6R538t;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XUPBzeEr;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id s3si3502134oic.108.2020.01.09.07.23.05;
-        Thu, 09 Jan 2020 07:23:05 -0800 (PST)
+        by mx.google.com with ESMTP id s3si3502134oic.108.2020.01.09.07.23.08;
+        Thu, 09 Jan 2020 07:23:08 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C+6R538t;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XUPBzeEr;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732341AbgAIPXE (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Thu, 9 Jan 2020 10:23:04 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:49498 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1732321AbgAIPXE (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 9 Jan 2020 10:23:04 -0500
+        id S1732347AbgAIPXH (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Thu, 9 Jan 2020 10:23:07 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:37125 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1732344AbgAIPXH (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Thu, 9 Jan 2020 10:23:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1578583383;
+        s=mimecast20190719; t=1578583386;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=hzr8Edx5jAryfh/huxiAkUz4zCXuFwzT7om8QEdCtyk=;
-        b=C+6R538tDUSlBZEE7nrT6P9s3jlyEutfO1g38dDT/PTqgTKT+y6wWQG51jRT2ucriHHgww
-        3KZBVI3WjSYswOTiulbnn5gvKBihqRVDmgls9ZNti2MJHV0MYTcsjoIv94HiwKaFgUs+JM
-        Wd8jqtzLX3OjySffPMp8T1VjP5jckcw=
+        bh=ZEMOGD26t+fMYjJ4LobtAf8vZNWvIS3QswsuquGMzqE=;
+        b=XUPBzeErMU4voED02hCBgbSNJbEX5rPbNJdT3z+AgyeVO84x5TvQciFuNx61X2TxPArZcf
+        No6DIR1wlg5Jnn+yXA0snHobfINsnKxvZ6EqHPlpFOf3JGakg7sOgSOKaswc8N8tkAnmXE
+        NlreojCh8ndelr5G0iFedjeM9ZNriyM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-275-_7PA0sDLPwqBnL2Z-1DRkA-1; Thu, 09 Jan 2020 10:22:59 -0500
-X-MC-Unique: _7PA0sDLPwqBnL2Z-1DRkA-1
+ us-mta-440-wgHZV1PxPwGTHcuUwuI7bA-1; Thu, 09 Jan 2020 10:23:05 -0500
+X-MC-Unique: wgHZV1PxPwGTHcuUwuI7bA-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 18ED985EE6A;
-        Thu,  9 Jan 2020 15:22:58 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C6C531005513;
+        Thu,  9 Jan 2020 15:23:03 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-180.brq.redhat.com [10.40.204.180])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 1FD0280608;
-        Thu,  9 Jan 2020 15:22:52 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 9CF5F1CB;
+        Thu,  9 Jan 2020 15:22:58 +0000 (UTC)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To:     qemu-devel@nongnu.org
 Cc:     Marcelo Tosatti <mtosatti@redhat.com>,
@@ -78,9 +78,9 @@ Cc:     Marcelo Tosatti <mtosatti@redhat.com>,
         Richard Henderson <rth@twiddle.net>,
         David Gibson <david@gibson.dropbear.id.au>,
         =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH 09/15] device_tree: Replace current_machine by qdev_get_machine()
-Date:   Thu,  9 Jan 2020 16:21:27 +0100
-Message-Id: <20200109152133.23649-10-philmd@redhat.com>
+Subject: [PATCH 10/15] memory: Replace current_machine by qdev_get_machine()
+Date:   Thu,  9 Jan 2020 16:21:28 +0100
+Message-Id: <20200109152133.23649-11-philmd@redhat.com>
 In-Reply-To: <20200109152133.23649-1-philmd@redhat.com>
 References: <20200109152133.23649-1-philmd@redhat.com>
 MIME-Version: 1.0
@@ -91,30 +91,49 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: hbouTgIL91f/
+X-TUID: PRhFVrLH3qzc
 
 As we want to remove the global current_machine,
 replace 'current_machine' by MACHINE(qdev_get_machine()).
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- device_tree.c | 4 +++-
+ memory.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/device_tree.c b/device_tree.c
-index f8b46b3c73..665ea2f586 100644
---- a/device_tree.c
-+++ b/device_tree.c
-@@ -466,7 +466,9 @@ uint32_t qemu_fdt_alloc_phandle(void *fdt)
-      * which phandle id to start allocating phandles.
-      */
-     if (!phandle) {
--        phandle =3D machine_phandle_start(current_machine);
-+        MachineState *ms =3D MACHINE(qdev_get_machine());
-+
-+        phandle =3D machine_phandle_start(ms);
+diff --git a/memory.c b/memory.c
+index d7b9bb6951..57e38b1f50 100644
+--- a/memory.c
++++ b/memory.c
+@@ -3004,6 +3004,7 @@ static void mtree_print_flatview(gpointer key, gpoi=
+nter value,
+     int n =3D view->nr;
+     int i;
+     AddressSpace *as;
++    MachineState *ms;
+=20
+     qemu_printf("FlatView #%d\n", fvi->counter);
+     ++fvi->counter;
+@@ -3026,6 +3027,7 @@ static void mtree_print_flatview(gpointer key, gpoi=
+nter value,
+         return;
      }
 =20
-     if (!phandle) {
++    ms =3D MACHINE(qdev_get_machine());
+     while (n--) {
+         mr =3D range->mr;
+         if (range->offset_in_region) {
+@@ -3057,7 +3059,7 @@ static void mtree_print_flatview(gpointer key, gpoi=
+nter value,
+         if (fvi->ac) {
+             for (i =3D 0; i < fv_address_spaces->len; ++i) {
+                 as =3D g_array_index(fv_address_spaces, AddressSpace*, i=
+);
+-                if (fvi->ac->has_memory(current_machine, as,
++                if (fvi->ac->has_memory(ms, as,
+                                         int128_get64(range->addr.start),
+                                         MR_SIZE(range->addr.size) + 1)) =
+{
+                     qemu_printf(" %s", fvi->ac->name);
 --=20
 2.21.1

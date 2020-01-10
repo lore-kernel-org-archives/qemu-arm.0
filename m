@@ -1,75 +1,94 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1094399lff;
-        Fri, 10 Jan 2020 11:21:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw+hSIVwWHovPW7RnbGxVyrURRry2qaTX9fp0ehFPwBRg0zIUQw6zRuRRrE0mzm4m5y88tw
-X-Received: by 2002:aa7:c2cb:: with SMTP id m11mr5148116edp.89.1578684061017;
-        Fri, 10 Jan 2020 11:21:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578684061; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1174229lff;
+        Fri, 10 Jan 2020 12:40:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyIKkQMVkFipOQ0XsxTuCEWW0N/NvUZgieFFCbYbmvIjWFtRtmuLL1pIEZbxaqnSvg7VFV+
+X-Received: by 2002:aa7:d6d1:: with SMTP id x17mr5627649edr.57.1578688800435;
+        Fri, 10 Jan 2020 12:40:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578688800; cv=none;
         d=google.com; s=arc-20160816;
-        b=AbJhizwRfuj/UvrDnYzxLP6Nnvf9HudoI3hzC5huzWv4UtWUPH8nb9rgZfHaFwPt2R
-         tC8Ce6kdrM81IWVLrCMVGH67MJxxDsGzmQRTmGzknfrewkGj9HBsbpjxfvnOzsHOSWdT
-         PsMo/gDG7Ra4weNanmZVRJT63gWHidWrdeLTuFvyNJhEAqNxJnjE4J8HkELjBvjwWRQD
-         219/QZHAFi99ngnLIOxDQYXPyOPqcuj/90Yy1AR+s92t64fXUotKtLw7IsesskjnaqgD
-         tZFM6m/lVr9vjv+ImKs0YxfBQrzYy8XyPs/5YTjZWG8wJKioakhAxfqBDoYXw/SUiAEK
-         m1fw==
+        b=CsfZ5UGA6HzVd/2Ti3CWi/wwNFHvDEBMhjEtthPtsQELEvdSdkXHR0AMT26E4166Qz
+         ozGTqP5+UBjCeesey4Hq+S2UEv8Lve3tBJrWU8duMoceV0vwk6/m29RO2+K/okp5C1rD
+         eopfp3H+cFc1H31i29s+tS9isz4Cpph/ghUdYo6yun+ds5nZILJnv0YUzJhtNtuvqQst
+         VLXu5ZopoTQFcfz1R5fsgj3ELAWqFW5Enk9nBdtzKdddj+BSBAS5FiWTiWBdV24iU/4y
+         rpAwvxF5PBsn/2ctq2Rnexo1DPdbWimQDIwuoWarxu+38BrUASdTw2ZPxGBphjpXcxAu
+         9hTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:date:to:from
-         :resent-from:content-transfer-encoding:mime-version:message-id
-         :subject:in-reply-to:resent-message-id:resent-date;
-        bh=1NuYbLP0Y6ezILHhpga1RnIGoC9nuL8IQHfAF89xc70=;
-        b=Gk/aUXNhN3PLcUXdrIBujv7kSJgQDh2AnbY/uibRcBFQzV9yuPaKrgW0yKv7eFRY5o
-         wlH7CofSV1ul2Ar2xzCrxZr729F6K2RUqQyspVRPY3fqZ3dYLdSsTy0bSTw3v7s8Ya0Z
-         ahzDVkK0/uDjcMe0c7xi8S3CyO2ZgJw2+g84cchHbWMhK4E7skC9qqrmCwbmAokL59By
-         Yyw3NvKP050/AVDo7zMQE+sRQA5yWg+fEfKJUM0lq/zTGaJ4Nfoc6/zLVpBPYo07LM/A
-         cAsG+V5dqHNiTRbjDtjbgJ6wQu+tpN1BMDgApHkH/ScZozTgIIFaV7dVb2uK293ZQ5yu
-         T5kw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=irep/+RfcBft4z9KkuKqHnhbPXbWLZRDw3qHnl922SQ=;
+        b=IhGtjR9QUQfndgNwu25ogPRUUJRINZcQUGqHLMuPBv8nhb73kM6QDRhyrBc4Cls2lL
+         5c1VtMbmDRAgoBrhVtM7qP/UPzxQHItw5Y6RRho1UyvZVT4l6ZAkF7zJeGMEY9LkErqU
+         XOqls2CUvurXC9HWf9+T1exH5itRJEwbaT8/8UNxi19lFuDK5kWhB1a6+6XRb3HUyNzY
+         0MBmDwMeOAuzqJ/8aUEarcx9YXyrBUlIglhZ3/vSUF4/X3nyovIrTBFSwH1uo9VMklr0
+         Qh6xgMxhj3U4bdD2lucQFZzkqSCzmA73hCHOSdZGH9LHEw0T4H2yjxU2sbVOAHlBXQUJ
+         a3NQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l6K9Dwmz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13si2221939eds.297.2020.01.10.11.21.00
+        by mx.google.com with ESMTPS id gy21si2145581ejb.38.2020.01.10.12.40.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jan 2020 11:21:01 -0800 (PST)
+        Fri, 10 Jan 2020 12:40:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l6K9Dwmz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50840 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51482 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipzq7-0008ME-TV
-	for alex.bennee@linaro.org; Fri, 10 Jan 2020 14:20:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51436)
+	id 1iq14Y-0000Rs-IT
+	for alex.bennee@linaro.org; Fri, 10 Jan 2020 15:39:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33391)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1ipzob-0006gW-Vn
- for qemu-arm@nongnu.org; Fri, 10 Jan 2020 14:19:27 -0500
+ (envelope-from <groeck7@gmail.com>) id 1iq14N-0000RL-Fw
+ for qemu-arm@nongnu.org; Fri, 10 Jan 2020 15:39:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1ipzoa-0003FP-5z
- for qemu-arm@nongnu.org; Fri, 10 Jan 2020 14:19:25 -0500
-Resent-Date: Fri, 10 Jan 2020 14:19:25 -0500
-Resent-Message-Id: <E1ipzoa-0003FP-5z@eggs.gnu.org>
-Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21435)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1ipzoZ-00034H-UZ; Fri, 10 Jan 2020 14:19:24 -0500
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1578683951050703.0312374367402;
- Fri, 10 Jan 2020 11:19:11 -0800 (PST)
-In-Reply-To: <20200110180211.29025-1-jeff.kubascik@dornerworks.com>
-Subject: Re: [PATCH] target/arm: adjust program counter for wfi exception in
- AArch32
-Message-ID: <157868394996.15422.12153523141237065812@37313f22b938>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: jeff.kubascik@dornerworks.com
-Date: Fri, 10 Jan 2020 11:19:11 -0800 (PST)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.54
+ (envelope-from <groeck7@gmail.com>) id 1iq14M-0006jI-Kv
+ for qemu-arm@nongnu.org; Fri, 10 Jan 2020 15:39:47 -0500
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:44522)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1iq14M-0006fj-EV; Fri, 10 Jan 2020 15:39:46 -0500
+Received: by mail-pg1-x543.google.com with SMTP id x7so1510195pgl.11;
+ Fri, 10 Jan 2020 12:39:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id;
+ bh=irep/+RfcBft4z9KkuKqHnhbPXbWLZRDw3qHnl922SQ=;
+ b=l6K9DwmzWHnqBskAFfjR+ffdwh5+5vQv2KtGULyyDCcX7Imzv3WxmP87YLQuRH0s2J
+ iGKWGttMiRJ80eKQ6LnhcmTW84G92pcvOxvhZGwRGcWJefBBSmGftFv5XK/iVtDQpndv
+ rlECQ4VbVpJqVeAHy/0Q7FfY3HHQnsD7pbx424y0wjosdZkeL1TIth4hrg6AJlWKoMwJ
+ XWMyHtzKQa2cTXsN954ETfBLB3FhAmHI4D0n3DnPzfjFK+46koc999X6esMEAiNA/m/V
+ 55Dk6bwbqXCxBuQHOzHj8TAeiZknXr83uiBdkSI3Nk0rLW4nXHW3dXKxIbuw97yElfuX
+ pBmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+ bh=irep/+RfcBft4z9KkuKqHnhbPXbWLZRDw3qHnl922SQ=;
+ b=IVjgqtuEXLb33yLB34W9qXs389fipEdFA/ws8ARNwUDTX8P+NEm8OvM1T92lT2QGUh
+ bLbybmbKxMxRYQu8ZqKaACzaAByewwXhyMU+PfZlyjExGNB5uwUGg23TIGgFnrMPpNi7
+ dGNlGotD7hDu7WFMXmwY7s24plRIOJPkVJeqEJNM8VTTOfCCfPwpUerqce8nrq5BmQtB
+ 7d/SEpAsepfleSOXf0YNKW4Ef3jTxyOt7OVwYmvpldyrkE3Nd3cQOH0fMGaPiWeHV52j
+ jDeHs92CkxtzFeilUMEpTu0qR8DnUNGinfp5Mp0Twlq2iqJgAWmeGgqnTAYT3nS9EczN
+ O01Q==
+X-Gm-Message-State: APjAAAVx323NClJGjj3sT7iR0638/hk9ksJZIZAFNuFUM8We9g9k27xQ
+ 4sPkacQzVFrY9G1z1bWHvHE=
+X-Received: by 2002:a65:6451:: with SMTP id s17mr6537898pgv.188.1578688785360; 
+ Fri, 10 Jan 2020 12:39:45 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id w6sm4321454pfq.99.2020.01.10.12.39.43
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 10 Jan 2020 12:39:44 -0800 (PST)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Igor Mitsyanko <i.mitsyanko@gmail.com>
+Subject: [PATCH 0/6] Fix Exynos4210 DMA support
+Date: Fri, 10 Jan 2020 12:39:36 -0800
+Message-Id: <20200110203942.5745-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::543
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,38 +100,14 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: Stewart.Hildebrand@dornerworks.com, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Jarvis.Roach@dornerworks.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LrOb1/YkUfwa
+X-TUID: ZPJyTSF3MslC
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDExMDE4MDIxMS4yOTAy
-NS0xLWplZmYua3ViYXNjaWtAZG9ybmVyd29ya3MuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNl
-ZW1zIHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cg
-Zm9yCm1vcmUgaW5mb3JtYXRpb246CgpTdWJqZWN0OiBbUEFUQ0hdIHRhcmdldC9hcm06IGFkanVz
-dCBwcm9ncmFtIGNvdW50ZXIgZm9yIHdmaSBleGNlcHRpb24gaW4gQUFyY2gzMgpUeXBlOiBzZXJp
-ZXMKTWVzc2FnZS1pZDogMjAyMDAxMTAxODAyMTEuMjkwMjUtMS1qZWZmLmt1YmFzY2lrQGRvcm5l
-cndvcmtzLmNvbQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2
-LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZm
-LnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBj
-b25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0
-Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClN3aXRjaGVk
-IHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKODAwMzM5YyB0YXJnZXQvYXJtOiBhZGp1c3QgcHJvZ3Jh
-bSBjb3VudGVyIGZvciB3ZmkgZXhjZXB0aW9uIGluIEFBcmNoMzIKCj09PSBPVVRQVVQgQkVHSU4g
-PT09CkVSUk9SOiBicmFjZXMge30gYXJlIG5lY2Vzc2FyeSBmb3IgYWxsIGFybXMgb2YgdGhpcyBz
-dGF0ZW1lbnQKIzMwOiBGSUxFOiB0YXJnZXQvYXJtL29wX2hlbHBlci5jOjI5ODoKKyAgICAgICAg
-aWYgKGVudi0+YWFyY2g2NCkKWy4uLl0KKyAgICAgICAgZWxzZQpbLi4uXQoKdG90YWw6IDEgZXJy
-b3JzLCAwIHdhcm5pbmdzLCAxMiBsaW5lcyBjaGVja2VkCgpDb21taXQgODAwMzM5YzdhYWViICh0
-YXJnZXQvYXJtOiBhZGp1c3QgcHJvZ3JhbSBjb3VudGVyIGZvciB3ZmkgZXhjZXB0aW9uIGluIEFB
-cmNoMzIpIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVz
-ZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5l
-ciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCj09PSBPVVRQVVQgRU5EID09PQoKVGVz
-dCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxl
-IGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwMTEwMTgwMjExLjI5MDI1LTEtamVmZi5r
-dWJhc2Npa0Bkb3JuZXJ3b3Jrcy5jb20vdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2Uu
-Ci0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3Bh
-dGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBy
-ZWRoYXQuY29t
-
+Commit 59520dc65e ("hw/arm/exynos4210: Add DMA support for the Exynos4210")
+introduced DMA support for Exynos4210. Unfortunately, it never really
+worked. DMA interrupt line and polarity was wrong, and the serial port
+needs extra code to support DMA. This patch series fixes the problem.

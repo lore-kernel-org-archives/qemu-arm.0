@@ -1,259 +1,157 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp794580lff;
-        Fri, 10 Jan 2020 06:55:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzaxpBKaN+MTLcGATm/R4988dS+UfT+5RPJjjoOfv5clzxDTLfBLhksVFBoz0qYYQbeHprr
-X-Received: by 2002:a37:6706:: with SMTP id b6mr3298699qkc.461.1578668101084;
-        Fri, 10 Jan 2020 06:55:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578668101; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp794650lff;
+        Fri, 10 Jan 2020 06:55:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxtzwk/WTF3kUdnZf6PtVtI21sJoYbESQm7MWzEIcadz+YDcrp/2KXRvwSQq27YuP/MF21G
+X-Received: by 2002:a9d:7757:: with SMTP id t23mr3077494otl.315.1578668105340;
+        Fri, 10 Jan 2020 06:55:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578668105; cv=none;
         d=google.com; s=arc-20160816;
-        b=YIJ3iTYKeU3oWRzstjh1pe1LH+Pon00Gul5e7Rx6eqqn7ySPDrSq+woc7ZkcGCmdPO
-         wuPGWCSZ/vWjBHpqonDYrbhOk9+MtkYHKjjRWoHyPoy9iT/e8aq5qvxl8bKP4eFNDXkc
-         1qMbcURkvOczlyUQrnnJGkbprTHhZbSxAbauVOUn/Xw8blDbAI3NxdzTz5GF77jzOh1Z
-         eZ/kZ1v9Z1rpO/8XDJzSQt+aHRPMsmbHpC5w0fFMdTR6cgQC+17xNGTSwS/GR5kIt5nb
-         DC9So6n6e1yLNCUOPHpLXnGlZwY1TvWm/YGFF9IAMU0f6ab3zfvL9v7ibUSlIHNeCBEQ
-         hsjg==
+        b=AK8LaF2tIbGhCyHtobDfjxlM5uDxJVCzW/zVkZqoMzManRqnqkVik4/8eRt7nmfWtk
+         CM/EvZVsOlYfCjyXqSQ50kHZu/01+8fVhbwbDsUJP2x0fzNmcVjxe4U3RY/SQ12w/o8N
+         80CfULyiMi0K1Mn+8Rru2S3XHRKA+NYL9BzgVc0vRIFhColKR/29C7LgX9nJPGGAxto4
+         hZGLyDwmk77FvFx4M+H+TgjQB7aLeRxtEnAgHRlVFsm3IAPGnAjn2wwNa5Nj89m3oSr6
+         NC9wc3JAUEViMEftrI7kXfSympeLtvgn3UHs3GCBjv2sar6U4Vc2cBEX25WkkfF/AFZI
+         IzOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=bytVURlKUFv7ucXkxCG9iQPMIHkm8T7+JMCuv+SFHG8=;
-        b=PIe/bOh7otxy+UPWwgqn6z8BOGNCvECpqIOnd0XkZOwev/GqUcuomrIY2pyWkHwKzo
-         SqyFXzg1+d1GyxBNBht91FH4SFZXWR5+6urI56ElWzl97UGi7JEAUExJEuWYcRDCw6AN
-         N9FOgdAWCN5C+hsxjARm2kH/Qa/xRixRC3+EuhY+L78ANHds3QlBo/7q2ppzMlk8QzL0
-         jAQmIEUYckl27MoM/3mPVQw4T/cC3OQfyaxHWSp4HMRcDiuRCoNzZ/szKSQ5B0HIgkSO
-         3NbasYsPcaylz8VzAOOUXnwnjIdxwvlH40StUJYJFj0pyJecVKIejfLn2BkOL3zhNcAd
-         8kQA==
+        bh=uDvgNibxatEEV/F+WDrLb9KYif/63RzRdW4qJaHm4B8=;
+        b=GVUHjvWnQYDIHO/uDLfWPjKgv92GJ0L/B93PSkQKGUJqGaqhviuUZiXx0CNo/2HUuU
+         5QtridgSHpZwkwEJzdEWpol0nnmCpttAp8e4HFML3n5n/Q8/dt1kA1YcmxfwP7D2Fe9X
+         jhkNUg47wxTEStaNQnB7zDBu8DBrXD3BciLml7ikq9zh98mCoBUNml56ml7GyBYRgnTj
+         WzlXxGvSyl3IGRpu6oErKmieAJ8hifiHedifujdVRnRcO87Cfuz1tuf0zFNRM3RFn56C
+         4t20vDnWqfEeK6ZnMJcGhapOsR+9BvZveRMeJNuudZ7tfY06zFHsdCl/lmqB1sh2DRbE
+         pMMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=dTiq6sRM;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id r5si1282958qta.383.2020.01.10.06.55.00;
-        Fri, 10 Jan 2020 06:55:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K8BdgWup;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id c2si1266985oig.255.2020.01.10.06.55.05;
+        Fri, 10 Jan 2020 06:55:05 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=dTiq6sRM;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id C6CDF4B19E;
-	Fri, 10 Jan 2020 09:55:00 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qmfOchM4uOq0; Fri, 10 Jan 2020 09:54:59 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8BC0A4B1A1;
-	Fri, 10 Jan 2020 09:54:59 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 09F574B179
- for <kvmarm@lists.cs.columbia.edu>; Fri, 10 Jan 2020 09:54:58 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 584Y5YznZYuW for <kvmarm@lists.cs.columbia.edu>;
- Fri, 10 Jan 2020 09:54:56 -0500 (EST)
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id BA2054B1C5
- for <kvmarm@lists.cs.columbia.edu>; Fri, 10 Jan 2020 09:54:56 -0500 (EST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K8BdgWup;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728398AbgAJOzD (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 10 Jan 2020 09:55:03 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:52228 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1728422AbgAJOzC (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Fri, 10 Jan 2020 09:55:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578668096;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hnzALuqyh0uZ601oQnRmWo1hHMGDJqgYfkqYRybw578=;
- b=dTiq6sRM+EpnTaav4mR8F2LEqwoi2QL60RXCksdtSroJEsVcnqc/cl/rE5vME8147whV3y
- jfgURfQ/NB3VcnaJot8RBYXDhXYALs6fP3iVb6xQdGNSCn9ArqUPv9XaVhkNyXUDTW1VEx
- 2/5svbpNJJo99585GmFnNlSSI7RR81E=
+        s=mimecast20190719; t=1578668101;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=uDvgNibxatEEV/F+WDrLb9KYif/63RzRdW4qJaHm4B8=;
+        b=K8BdgWuptBdYE63G3iqJD0xUVK+55fFiMNY3cb5QeXGzqdkHoCtTuOnMup+u/NfdX++aZ0
+        6BxadmuhF1hyPkRzRughHJguWLS2MMb5Sr3MWZZLj/AOaaUDP3CHeqvVVam+SgH8yDbiLZ
+        53cpcB3Zb7g6D/0UDY4+bekf/uzlqDc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-33-L6q4vxrGMBe3EPeq3xolFw-1; Fri, 10 Jan 2020 09:54:55 -0500
-X-MC-Unique: L6q4vxrGMBe3EPeq3xolFw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 408CE2F63;
- Fri, 10 Jan 2020 14:54:53 +0000 (UTC)
+ us-mta-208-DYg8o0oeNLOx-mCafe7VpQ-1; Fri, 10 Jan 2020 09:55:00 -0500
+X-MC-Unique: DYg8o0oeNLOx-mCafe7VpQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 068151085984;
+        Fri, 10 Jan 2020 14:54:59 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-108.ams2.redhat.com [10.36.117.108])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 520987BA5F;
- Fri, 10 Jan 2020 14:54:50 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
- kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Subject: [kvm-unit-tests PATCH v2 07/16] arm/arm64: ITS: Set the LPI config
- and pending tables
-Date: Fri, 10 Jan 2020 15:54:03 +0100
-Message-Id: <20200110145412.14937-8-eric.auger@redhat.com>
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 989097BA5F;
+        Fri, 10 Jan 2020 14:54:53 +0000 (UTC)
+From:   Eric Auger <eric.auger@redhat.com>
+To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     drjones@redhat.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org, yuzenghui@huawei.com,
+        alexandru.elisei@arm.com, thuth@redhat.com
+Subject: [kvm-unit-tests PATCH v2 08/16] arm/arm64: ITS: Init the command queue
+Date:   Fri, 10 Jan 2020 15:54:04 +0100
+Message-Id: <20200110145412.14937-9-eric.auger@redhat.com>
 In-Reply-To: <20200110145412.14937-1-eric.auger@redhat.com>
 References: <20200110145412.14937-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Cc: andre.przywara@arm.com, thuth@redhat.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: cJINqDUZWXIz
+Content-Transfer-Encoding: quoted-printable
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: umcYGwFs+8r5
 
-Allocate the LPI configuration and per re-distributor pending table.
-Set redistributor's PROPBASER and PENDBASER. The LPIs are enabled
-by default in the config table.
+Allocate the command queue and initialize related registers:
+CBASER, CREADR, CWRITER.
 
-Also introduce a helper routine that allows to set the pending table
-bit for a given LPI.
+The command queue is 64kB. This aims at not bothing with fullness.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
-v1 -> v2:
-- remove memory attributes
+v2 -> v3:
+- removed readr
 ---
- lib/arm/asm/gic-v3-its.h |  3 ++
- lib/arm/asm/gic-v3.h     | 12 ++++++++
- lib/arm/gic-v3-its.c     | 60 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 75 insertions(+)
+ lib/arm/asm/gic-v3-its.h |  6 ++++++
+ lib/arm/gic-v3-its.c     | 22 ++++++++++++++++++++++
+ 2 files changed, 28 insertions(+)
 
 diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-index 5a4dfe9..2f8b8f1 100644
+index 2f8b8f1..93814f7 100644
 --- a/lib/arm/asm/gic-v3-its.h
 +++ b/lib/arm/asm/gic-v3-its.h
-@@ -90,6 +90,9 @@ extern void its_init(void);
- extern int its_parse_baser(int i, struct its_baser *baser);
- extern void its_setup_baser(int i, struct its_baser *baser);
- extern struct its_baser *its_lookup_baser(int type);
-+extern void set_lpi_config(int n, u8 val);
-+extern u8 get_lpi_config(int n);
-+extern void set_pending_table_bit(int rdist, int n, bool set);
- 
- #endif /* !__ASSEMBLY__ */
- #endif /* _ASMARM_GIC_V3_ITS_H_ */
-diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
-index ffb2e26..90a7304 100644
---- a/lib/arm/asm/gic-v3.h
-+++ b/lib/arm/asm/gic-v3.h
-@@ -48,6 +48,16 @@
- #define MPIDR_TO_SGI_AFFINITY(cluster_id, level) \
- 	(MPIDR_AFFINITY_LEVEL(cluster_id, level) << ICC_SGI1R_AFFINITY_## level ## _SHIFT)
- 
-+#define GICR_PROPBASER_IDBITS_MASK                      (0x1f)
-+
-+#define GICR_PENDBASER_PTZ                              BIT_ULL(62)
-+
-+#define LPI_PROP_GROUP1		(1 << 1)
-+#define LPI_PROP_ENABLED	(1 << 0)
-+#define LPI_PROP_DEFAULT_PRIO   0xa0
-+#define LPI_PROP_DEFAULT	(LPI_PROP_DEFAULT_PRIO | LPI_PROP_GROUP1 | \
-+				 LPI_PROP_ENABLED)
-+
- #include <asm/arch_gicv3.h>
- 
- #ifndef __ASSEMBLY__
-@@ -64,6 +74,8 @@ struct gicv3_data {
- 	void *dist_base;
- 	void *redist_bases[GICV3_NR_REDISTS];
- 	void *redist_base[NR_CPUS];
-+	void *lpi_prop;
-+	void *lpi_pend[NR_CPUS];
- 	unsigned int irq_nr;
+@@ -75,10 +75,16 @@ struct its_baser {
+ 	int esz;
  };
- extern struct gicv3_data gicv3_data;
+=20
++struct its_cmd_block {
++	u64     raw_cmd[4];
++};
++
+ struct its_data {
+ 	void *base;
+ 	struct its_typer typer;
+ 	struct its_baser baser[GITS_BASER_NR_REGS];
++	struct its_cmd_block *cmd_base;
++	struct its_cmd_block *cmd_write;
+ };
+=20
+ extern struct its_data its_data;
 diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
-index 79946c3..6c97569 100644
+index 6c97569..3037c84 100644
 --- a/lib/arm/gic-v3-its.c
 +++ b/lib/arm/gic-v3-its.c
-@@ -117,3 +117,63 @@ void its_setup_baser(int i, struct its_baser *baser)
- 	writeq(val, gicv3_its_base() + GITS_BASER + i * 8);
+@@ -177,3 +177,25 @@ void set_pending_table_bit(int rdist, int n, bool se=
+t)
+ 		byte &=3D ~mask;
+ 	*ptr =3D byte;
  }
- 
-+inline void set_lpi_config(int n, u8 value)
++
++/**
++ * init_cmd_queue: Allocate the command queue and initialize
++ * CBASER, CREADR, CWRITER
++ */
++void init_cmd_queue(void);
++void init_cmd_queue(void)
 +{
-+	u8 *entry = (u8 *)(gicv3_data.lpi_prop + (n - 8192));
-+	*entry = value;
++	unsigned long n =3D SZ_64K >> PAGE_SHIFT;
++	unsigned long order =3D fls(n);
++	u64 cbaser;
++
++	its_data.cmd_base =3D (void *)virt_to_phys(alloc_pages(order));
++
++	cbaser =3D ((u64)its_data.cmd_base | (SZ_64K / SZ_4K - 1)	|
++			GITS_CBASER_VALID);
++
++	writeq(cbaser, its_data.base + GITS_CBASER);
++
++	its_data.cmd_write =3D its_data.cmd_base;
++	writeq(0, its_data.base + GITS_CWRITER);
 +}
-+
-+inline u8 get_lpi_config(int n)
-+{
-+	u8 *entry = (u8 *)(gicv3_data.lpi_prop + (n - 8192));
-+	return *entry;
-+}
-+
-+/* alloc_lpi_tables: Allocate LPI config and pending tables */
-+void alloc_lpi_tables(void);
-+void alloc_lpi_tables(void)
-+{
-+	unsigned long n = SZ_64K >> PAGE_SHIFT;
-+	unsigned long order = fls(n);
-+	u64 prop_val;
-+	int cpu;
-+
-+	gicv3_data.lpi_prop = (void *)virt_to_phys(alloc_pages(order));
-+
-+	/* ID bits = 13, ie. up to 14b LPI INTID */
-+	prop_val = (u64)gicv3_data.lpi_prop | 13;
-+
-+	/*
-+	 * Allocate pending tables for each redistributor
-+	 * and set PROPBASER and PENDBASER
-+	 */
-+	for_each_present_cpu(cpu) {
-+		u64 pend_val;
-+		void *ptr;
-+
-+		ptr = gicv3_data.redist_base[cpu];
-+
-+		writeq(prop_val, ptr + GICR_PROPBASER);
-+
-+		gicv3_data.lpi_pend[cpu] =
-+			(void *)virt_to_phys(alloc_pages(order));
-+
-+		pend_val = (u64)gicv3_data.lpi_pend[cpu];
-+
-+		writeq(pend_val, ptr + GICR_PENDBASER);
-+	}
-+}
-+
-+void set_pending_table_bit(int rdist, int n, bool set)
-+{
-+	u8 *ptr = phys_to_virt((phys_addr_t)gicv3_data.lpi_pend[rdist]);
-+	u8 mask = 1 << (n % 8), byte;
-+
-+	ptr += (n / 8);
-+	byte = *ptr;
-+	if (set)
-+		byte |=  mask;
-+	else
-+		byte &= ~mask;
-+	*ptr = byte;
-+}
--- 
+--=20
 2.20.1
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

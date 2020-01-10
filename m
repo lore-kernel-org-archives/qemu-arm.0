@@ -1,44 +1,44 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp794263lff;
-        Fri, 10 Jan 2020 06:54:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx4S1AC+Eun7e59pXvfPbvVRlyuMOiic+vVZdZvyuFWl7aWDwXnKKPN0pT3Ltayr9iRL2tR
-X-Received: by 2002:ac8:4689:: with SMTP id g9mr2692842qto.121.1578668081113;
-        Fri, 10 Jan 2020 06:54:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578668081; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp794285lff;
+        Fri, 10 Jan 2020 06:54:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx4m62TzY/BOL8DmUAKj1yA8d5HJbLkW9wKuz5HfzZctE56A9eBUQPuegZchupucwoiBcGo
+X-Received: by 2002:a37:a18b:: with SMTP id k133mr3565756qke.83.1578668082452;
+        Fri, 10 Jan 2020 06:54:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578668082; cv=none;
         d=google.com; s=arc-20160816;
-        b=bz53auo6Te3lKzRBWk2L22UzXVzbHUG0pL1c7BxrxOT4cKziHBEdspaezoPSGxznn9
-         0wuGfgkeqize7ujmDOxCEu6Jlp5bPH1cbeK7SMnTYeS0ScXQBnKf02xDOpD94LB+GKAQ
-         8gvqWDuyP6Xdczdsk32UT204SkQyJzRmBAWnJSNYxNDFb0i51+WdM1pxOtquuJNRR72i
-         rkvP1YoD+EDpKEBPQ+0qb5l8V/rap8TYPR+Fb9Yl4oAQFeXMugqYjpLbNP/gSk0xxxtu
-         H1e2A9L/xbD/NPg/hxq37u8jaEMWbkHn10zS//UYSFtlPOeES+7ClLoQ5jEN4SS3e8p2
-         Qj2Q==
+        b=zlDY4F6wyuw2B59B0V7VusMb6NpQZTtcg/bva5hFGUgybGlhBPeTrYx+H7Z95rmisW
+         BGfYbRB4203lQjwVqQABnhDeJwycru6pAQdxQ4GOGK8FMzueREfYP6OWUICQbbj28GZK
+         OfdwszwF6WlyjLe8E5PK9tydmX5MoAZboGkpaCK0A3Qor4xqIGV6p0ekYp7imNIW0X1Z
+         eJMvcg/7Pgf894wBU8DzEEImkHVWVDzPFtmVta+P2l3uwfkKssWkSk5X+8q1G1JM5Vtv
+         g3VRpoH5hUqdJ23yiELzxDpBMPv9WN/z6Bca37BlzqVUZNleEsMRFtPryp1lnmcocxEx
+         uNXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=7++QamQUhMiwQnHCrpInNehIYKfWNApBSuxFQSzhzZs=;
-        b=LqveGVjqHQMSh1g5GgZbcH/5q+jqsfLnE5985iS5so69lSvPDg5UI+cIdVXeojeRTq
-         uG8KAbf+4tBubXTjAkwET6/v0bHrjRKoCi1DoFudFKFVxHFKLkvERptl0QNn+u8nfjGv
-         BU9MPQZ30yWZwjRtd6RYU49wOYi/39zjO//OvnOyOqcGbfWbGF7wP0CrjfVIqJZGv4KL
-         j1Rn08dUXeH9uRhzCkLAsfPwdhcbDeNyHoO04CrUTA5xFkshDokR7tmd5G8I/96qRu8I
-         zoYJ/1OUTl4c03aOhE6YZ760eFB4vzLPk/HbQB1NRPFrYnJ9WrrA8deR/RobMlVO49mU
-         a62A==
+        bh=4PcwI7HDxWrxX9/3qoP0l23TxsKmweJzoF3YXlJtfAQ=;
+        b=q9UVEZQvEc+g0ZEeuhEMLf2aQ61e9XzvIp4CVGGRuwhyVsJPjYuBHa+5KtSED9XyQn
+         08q2uCEUL/DWu9roKEd8VvStJed+dzcToZAtlKJ8PtQtyixIXtS//1wGdCeYq0Kh6Wdl
+         p2TPYuF+dcTk6Vc2qn9JIajCdP4bm4LrikucxJwPa7dnw06iNLxyNLzB7ke59nhnFqcJ
+         yL8QGoGzAk8lCTBEaisHievB0UjBlRbDlUI71f8FZOHfHGsip3mDIxfB7eN8YT+0kDmf
+         JSXo2rRxfTl5EovhM2qWQSw+BrzKKkH6V6FBHOm3eyE8RSmrBcsAHGAR+3sU8mSoEnbZ
+         z0Gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=TWwPaLqN;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=SkPJEeaV;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id i17si1259670qtv.65.2020.01.10.06.54.40;
-        Fri, 10 Jan 2020 06:54:41 -0800 (PST)
+        by mx.google.com with ESMTP id y11si1299205qto.3.2020.01.10.06.54.42;
+        Fri, 10 Jan 2020 06:54:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=TWwPaLqN;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=SkPJEeaV;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id CEC964B17F;
-	Fri, 10 Jan 2020 09:54:40 -0500 (EST)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1CB6F4B180;
+	Fri, 10 Jan 2020 09:54:42 -0500 (EST)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.909
@@ -50,52 +50,53 @@ Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
 	(fail, message has been altered) header.i=@redhat.com
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kfo-5MMqKn8Q; Fri, 10 Jan 2020 09:54:39 -0500 (EST)
+	with ESMTP id kDEw6nbdLXHO; Fri, 10 Jan 2020 09:54:41 -0500 (EST)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id B68344B17A;
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id D4FCD4B197;
 	Fri, 10 Jan 2020 09:54:39 -0500 (EST)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id E45AE4B17F
- for <kvmarm@lists.cs.columbia.edu>; Fri, 10 Jan 2020 09:54:38 -0500 (EST)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 225A64AEFF
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 10 Jan 2020 09:54:39 -0500 (EST)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C89CjzD3uMM7 for <kvmarm@lists.cs.columbia.edu>;
- Fri, 10 Jan 2020 09:54:37 -0500 (EST)
-Received: from us-smtp-1.mimecast.com (us-smtp-1.mimecast.com [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id DA0094AEFF
- for <kvmarm@lists.cs.columbia.edu>; Fri, 10 Jan 2020 09:54:37 -0500 (EST)
+ with ESMTP id Mtg6QBZUmQkE for <kvmarm@lists.cs.columbia.edu>;
+ Fri, 10 Jan 2020 09:54:38 -0500 (EST)
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [205.139.110.61])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 2FFCA4AF0C
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 10 Jan 2020 09:54:38 -0500 (EST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578668077;
+ s=mimecast20190719; t=1578668078;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hksWhfx/qjqLBl2kwSG6HIa1DnV2Yh8CnWY4dayzAHc=;
- b=TWwPaLqNjuisTNHbR4U+BXIxgzDnwYdd94Z3tY8iFkJZL8ACl5RLakr91MVo9f6F5ofi3V
- xXVmTPtLfmq4D+6epSFQOtxIF/zoQlxzoqxH3rYzIfDMh9qi41OqvQCq/SYmuPbpgexSl6
- uPMoxWX2pl9TbEsdT2/z6VPN1umEDwI=
+ bh=wIBn80+V74amPBupfe+F9anDq8XfKyQu39ZmejTiR10=;
+ b=SkPJEeaVpuM9KafeQH5UEFp02+cn6PF5jLOb6pLIExlqrBT7y+uGAdv9FTks3bYgdJlylV
+ vgoQz7YKLiaFHdqDHBZZ2dtmWrD1c/4NDrnZ//XSTnYoME9vrmcT5ceiOwnzMtI3dCenhC
+ ALll3Liz/uAHYONxmEjDdguPqbLfQgA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-22-sLHCnH1HO6O3PHQlEJkQ_A-1; Fri, 10 Jan 2020 09:54:33 -0500
-X-MC-Unique: sLHCnH1HO6O3PHQlEJkQ_A-1
+ us-mta-330-dD7pm_VSNa65W5p0dmyYfQ-1; Fri, 10 Jan 2020 09:54:37 -0500
+X-MC-Unique: dD7pm_VSNa65W5p0dmyYfQ-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 328261AEEF5;
- Fri, 10 Jan 2020 14:54:32 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 705A818B9FF3;
+ Fri, 10 Jan 2020 14:54:35 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-108.ams2.redhat.com [10.36.117.108])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D26397C407;
- Fri, 10 Jan 2020 14:54:25 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 89C577BA5F;
+ Fri, 10 Jan 2020 14:54:32 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
  kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
-Subject: [kvm-unit-tests PATCH v2 02/16] arm: gic: Provide per-IRQ helper
- functions
-Date: Fri, 10 Jan 2020 15:53:58 +0100
-Message-Id: <20200110145412.14937-3-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH v2 03/16] arm/arm64: gic: Introduce setup_irq()
+ helper
+Date: Fri, 10 Jan 2020 15:53:59 +0100
+Message-Id: <20200110145412.14937-4-eric.auger@redhat.com>
 In-Reply-To: <20200110145412.14937-1-eric.auger@redhat.com>
 References: <20200110145412.14937-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -116,164 +117,102 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: bPJlec1stRBW
+X-TUID: q/+ygbyu8QuX
 
-From: Andre Przywara <andre.przywara@arm.com>
+ipi_enable() code would be reusable for other interrupts
+than IPI. Let's rename it setup_irq() and pass an interrupt
+handler pointer. We also export it to use it in other tests
+such as the PMU's one.
 
-A common theme when accessing per-IRQ parameters in the GIC distributor
-is to set fields of a certain bit width in a range of MMIO registers.
-Examples are the enabled status (one bit per IRQ), the level/edge
-configuration (2 bits per IRQ) or the priority (8 bits per IRQ).
-
-Add a generic helper function which is able to mask and set the
-respective number of bits, given the IRQ number and the MMIO offset.
-Provide wrappers using this function to easily allow configuring an IRQ.
-
-For now assume that private IRQ numbers always refer to the current CPU.
-In a GICv2 accessing the "other" private IRQs is not easily doable (the
-registers are banked per CPU on the same MMIO address), so we impose the
-same limitation on GICv3, even though those registers are not banked
-there anymore.
-
-Signed-off-by: Andre Przywara <andre.przywara@arm.com>
-
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
+ arm/gic.c         | 24 +++---------------------
+ lib/arm/asm/gic.h |  3 +++
+ lib/arm/gic.c     | 11 +++++++++++
+ 3 files changed, 17 insertions(+), 21 deletions(-)
 
-initialize reg
----
- lib/arm/asm/gic-v3.h |  2 +
- lib/arm/asm/gic.h    |  8 ++++
- lib/arm/gic.c        | 90 ++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 100 insertions(+)
-
-diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
-index 0dc838b..6beeab6 100644
---- a/lib/arm/asm/gic-v3.h
-+++ b/lib/arm/asm/gic-v3.h
-@@ -23,6 +23,8 @@
- #define GICD_CTLR_ENABLE_G1A		(1U << 1)
- #define GICD_CTLR_ENABLE_G1		(1U << 0)
+diff --git a/arm/gic.c b/arm/gic.c
+index fcf4c1f..ba43ae5 100644
+--- a/arm/gic.c
++++ b/arm/gic.c
+@@ -215,20 +215,9 @@ static void ipi_test_smp(void)
+ 	report_prefix_pop();
+ }
  
-+#define GICD_IROUTER			0x6000
-+
- /* Re-Distributor registers, offsets from RD_base */
- #define GICR_TYPER			0x0008
+-static void ipi_enable(void)
+-{
+-	gic_enable_defaults();
+-#ifdef __arm__
+-	install_exception_handler(EXCPTN_IRQ, ipi_handler);
+-#else
+-	install_irq_handler(EL1H_IRQ, ipi_handler);
+-#endif
+-	local_irq_enable();
+-}
+-
+ static void ipi_send(void)
+ {
+-	ipi_enable();
++	setup_irq(ipi_handler);
+ 	wait_on_ready();
+ 	ipi_test_self();
+ 	ipi_test_smp();
+@@ -238,7 +227,7 @@ static void ipi_send(void)
  
+ static void ipi_recv(void)
+ {
+-	ipi_enable();
++	setup_irq(ipi_handler);
+ 	cpumask_set_cpu(smp_processor_id(), &ready);
+ 	while (1)
+ 		wfi();
+@@ -295,14 +284,7 @@ static void ipi_clear_active_handler(struct pt_regs *regs __unused)
+ static void run_active_clear_test(void)
+ {
+ 	report_prefix_push("active");
+-	gic_enable_defaults();
+-#ifdef __arm__
+-	install_exception_handler(EXCPTN_IRQ, ipi_clear_active_handler);
+-#else
+-	install_irq_handler(EL1H_IRQ, ipi_clear_active_handler);
+-#endif
+-	local_irq_enable();
+-
++	setup_irq(ipi_clear_active_handler);
+ 	ipi_test_self();
+ 	report_prefix_pop();
+ }
 diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
-index 09826fd..21cdb58 100644
+index 21cdb58..55dd84b 100644
 --- a/lib/arm/asm/gic.h
 +++ b/lib/arm/asm/gic.h
-@@ -74,5 +74,13 @@ extern void gic_write_eoir(u32 irqstat);
- extern void gic_ipi_send_single(int irq, int cpu);
- extern void gic_ipi_send_mask(int irq, const cpumask_t *dest);
+@@ -82,5 +82,8 @@ void gic_set_irq_target(int irq, int cpu);
+ void gic_set_irq_group(int irq, int group);
+ int gic_get_irq_group(int irq);
  
-+void gic_set_irq_bit(int irq, int offset);
-+void gic_enable_irq(int irq);
-+void gic_disable_irq(int irq);
-+void gic_set_irq_priority(int irq, u8 prio);
-+void gic_set_irq_target(int irq, int cpu);
-+void gic_set_irq_group(int irq, int group);
-+int gic_get_irq_group(int irq);
++typedef void (*handler_t)(struct pt_regs *regs __unused);
++extern void setup_irq(handler_t handler);
 +
  #endif /* !__ASSEMBLY__ */
  #endif /* _ASMARM_GIC_H_ */
 diff --git a/lib/arm/gic.c b/lib/arm/gic.c
-index 9430116..aa9cb86 100644
+index aa9cb86..8416dde 100644
 --- a/lib/arm/gic.c
 +++ b/lib/arm/gic.c
-@@ -146,3 +146,93 @@ void gic_ipi_send_mask(int irq, const cpumask_t *dest)
- 	assert(gic_common_ops && gic_common_ops->ipi_send_mask);
- 	gic_common_ops->ipi_send_mask(irq, dest);
+@@ -236,3 +236,14 @@ int gic_get_irq_group(int irq)
+ {
+ 	return gic_masked_irq_bits(irq, GICD_IGROUPR, 1, 0, ACCESS_READ);
  }
 +
-+enum gic_bit_access {
-+	ACCESS_READ,
-+	ACCESS_SET,
-+	ACCESS_RMW
-+};
-+
-+static u8 gic_masked_irq_bits(int irq, int offset, int bits, u8 value,
-+			      enum gic_bit_access access)
++void setup_irq(handler_t handler)
 +{
-+	void *base;
-+	int split = 32 / bits;
-+	int shift = (irq % split) * bits;
-+	u32 reg = 0, mask = ((1U << bits) - 1) << shift;
-+
-+	switch (gic_version()) {
-+	case 2:
-+		base = gicv2_dist_base();
-+		break;
-+	case 3:
-+		if (irq < 32)
-+			base = gicv3_sgi_base();
-+		else
-+			base = gicv3_dist_base();
-+		break;
-+	default:
-+		return 0;
-+	}
-+	base += offset + (irq / split) * 4;
-+
-+	switch (access) {
-+	case ACCESS_READ:
-+		return (readl(base) & mask) >> shift;
-+	case ACCESS_SET:
-+		reg = 0;
-+		break;
-+	case ACCESS_RMW:
-+		reg = readl(base) & ~mask;
-+		break;
-+	}
-+
-+	writel(reg | ((u32)value << shift), base);
-+
-+	return 0;
-+}
-+
-+void gic_set_irq_bit(int irq, int offset)
-+{
-+	gic_masked_irq_bits(irq, offset, 1, 1, ACCESS_SET);
-+}
-+
-+void gic_enable_irq(int irq)
-+{
-+	gic_set_irq_bit(irq, GICD_ISENABLER);
-+}
-+
-+void gic_disable_irq(int irq)
-+{
-+	gic_set_irq_bit(irq, GICD_ICENABLER);
-+}
-+
-+void gic_set_irq_priority(int irq, u8 prio)
-+{
-+	gic_masked_irq_bits(irq, GICD_IPRIORITYR, 8, prio, ACCESS_RMW);
-+}
-+
-+void gic_set_irq_target(int irq, int cpu)
-+{
-+	if (irq < 32)
-+		return;
-+
-+	if (gic_version() == 2) {
-+		gic_masked_irq_bits(irq, GICD_ITARGETSR, 8, 1U << cpu,
-+				    ACCESS_RMW);
-+
-+		return;
-+	}
-+
-+	writeq(cpus[cpu], gicv3_dist_base() + GICD_IROUTER + irq * 8);
-+}
-+
-+void gic_set_irq_group(int irq, int group)
-+{
-+	gic_masked_irq_bits(irq, GICD_IGROUPR, 1, group, ACCESS_RMW);
-+}
-+
-+int gic_get_irq_group(int irq)
-+{
-+	return gic_masked_irq_bits(irq, GICD_IGROUPR, 1, 0, ACCESS_READ);
++	gic_enable_defaults();
++#ifdef __arm__
++	install_exception_handler(EXCPTN_IRQ, handler);
++#else
++	install_irq_handler(EL1H_IRQ, handler);
++#endif
++	local_irq_enable();
 +}
 -- 
 2.20.1

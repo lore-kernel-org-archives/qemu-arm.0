@@ -1,194 +1,135 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp466011lff;
-        Fri, 10 Jan 2020 01:55:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzWcFfAWScrC5Rc3W5kpqwjsemVK9cWtWS8QaQOqYflCL1uZYssklEsfu2Uew6MUwXpz8VZ
-X-Received: by 2002:a05:620a:94f:: with SMTP id w15mr2212811qkw.380.1578650146967;
-        Fri, 10 Jan 2020 01:55:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578650146; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp469296lff;
+        Fri, 10 Jan 2020 01:59:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzys2h8PibpRATpOgue2obW0FeexwuEMBTZqo+gLTPff4DYMoS0pc6RqQVOPsEabYBlYIcM
+X-Received: by 2002:a05:6830:1615:: with SMTP id g21mr1937301otr.49.1578650370523;
+        Fri, 10 Jan 2020 01:59:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578650370; cv=none;
         d=google.com; s=arc-20160816;
-        b=0fVJ3dzVlsBht6NZp0F+h/PmrwzAnLWLGHdHN7DFMLVeE43lXQCj7IffeRktw7eMao
-         wVMPRV5JD7kp4sHYfOmkPhJPm6nSjMqgEzKhWY9zS6jTKkYoWq0oZ7bKj18RW5c8X0KS
-         lbBqOX0An8FbHnwrGWHbg/agbSWvCBue4p+TTexTohh1Zjst7Ts8mwQxiu2zl+NPbQTS
-         YvBjZe/gBeFki/eJguAFV3sisB06n08ZRGlXm7VX9u6+FoCNcOQwNIGPqu5X0DdVEnud
-         z4e9j95faFU9Ie5WOCGq029rVVc94goT1Cht5vFPil76qFCBTtqwo08mBZck0IdBQyga
-         cg/w==
+        b=maD1EStt9EoVD5utejfJ5AwmyaCoHep/xhKlWuFj5lo2FczslXIZnDq0P8CZ1POBjH
+         +RTsWJ9o3baVS9Tnrn2r4KMoXralvulNN4I1h4M2TmQ5GSWqHSSLei33uwnQOnGgxEOi
+         XXs6wJN+lwfJ0o2RbMCiySpw4GOHqDys1P+3iBzp5k3x1VFs7QvYABQMbKp4+BhzvHcT
+         FD9O6b1tUcr2+qM1yVvTvdBaWGxCv3AWFdfovVjVXXOEXcIOpAgvHrbvLS/KD+TROHMI
+         1+hOF1mCq27vs55ogeIprCS4Qo2Or8sfjg7tff9kjnMQBY2UOoC/kIiiq3nKa/+0t4AY
+         z4SQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
-        bh=sjgaK5Nf8CITr4GL8zt/M9qgdjoSbjuiJIOUgcZDbSw=;
-        b=IWDSDulfFCXFlFwPvN553DbI3NX0DZExJjfA4nAg9C+Zz5fQTKlGViKGL2uKjVVHdF
-         GZUr13eX1HoVN+T1LVKuY+iBDpI1n5ZpRfDGnE48E1jHxcHjb8EaG13PkTN4KWpeU3rM
-         acfKiti78RO1EN/9bsJSf79xeWp2fqbqEF36ZQe3YdIkcKcLAFwTvYKcAEBXIBJVBvkR
-         LEzLhgTB11wDnHmv4Yrh55Xq9JM/3n16IQyJZ+NbKW6VNSUY9WH6QoZpnrGn0Eo7PBmb
-         H36znbseBZd2SQiAkaVbrPWcjM8eIeRBYUvFAgOBz0+vjBdFsh0HvE52E0USNYESAjhR
-         c9hQ==
+        h=list-id:precedence:sender:content-transfer-encoding:cc:to:subject
+         :message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=7JlzPibRcf0IgPM6L/pRPXmRhZqX6hDwJe/LfcYdab8=;
+        b=ON2Fqo0DMyDuqkhHIb8pE//0Y31AwMh0VlMCyNkp3GdV4fDcXcflJUdlPkXN/zGZNJ
+         wFMNTxd8QwxvdKYi+DMgNM8Rz3Pe3VD9OGCx1kOYKrb92tJbK9hE87OVEMi/2y26Yo1Q
+         pQ8m7DIDIgodR29q2KnqGRiMdSPo6bUb9zw62jp7IjgNytN8ja673mIc3DbApGv185FS
+         0PdiPnGBVU6wCHLhncsofZOXlRwjT9S3DAOeI8C9AaSaLNjpSuEnx9rURfRQ9qwEsWLA
+         HedRORXEehRMKsVRfaxrPPSaN14dfO1gskkLkDVc6A078PmnIQ7uCAvrIuiuR4ZEh6Eu
+         h+cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z9si909109qkz.378.2020.01.10.01.55.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jan 2020 01:55:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K7Y72Csl;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 65si798427oif.14.2020.01.10.01.59.30;
+        Fri, 10 Jan 2020 01:59:30 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43306 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipr18-0003rJ-BX
-	for alex.bennee@linaro.org; Fri, 10 Jan 2020 04:55:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44877)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groug@kaod.org>) id 1ipqwv-00066V-00
- for qemu-devel@nongnu.org; Fri, 10 Jan 2020 04:51:26 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groug@kaod.org>) id 1ipqwt-0007u1-9b
- for qemu-devel@nongnu.org; Fri, 10 Jan 2020 04:51:24 -0500
-Received: from 4.mo6.mail-out.ovh.net ([87.98.184.159]:34876)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <groug@kaod.org>) id 1ipqwt-0007kx-1T
- for qemu-devel@nongnu.org; Fri, 10 Jan 2020 04:51:23 -0500
-Received: from player688.ha.ovh.net (unknown [10.108.16.42])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id E5FB01F8BE2
- for <qemu-devel@nongnu.org>; Fri, 10 Jan 2020 10:51:20 +0100 (CET)
-Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
- [82.253.208.248]) (Authenticated sender: groug@kaod.org)
- by player688.ha.ovh.net (Postfix) with ESMTPSA id 56885DFACE0A;
- Fri, 10 Jan 2020 09:50:58 +0000 (UTC)
-Date: Fri, 10 Jan 2020 10:50:55 +0100
-From: Greg Kurz <groug@kaod.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: [PATCH 04/15] hw/ppc/spapr_rtas: Restrict variables scope to
- single switch case
-Message-ID: <20200110105055.3e72ddf4@bahia.lan>
-In-Reply-To: <9870f8ed-3fa0-1deb-860d-7481cb3db556@redhat.com>
-References: <20200109152133.23649-1-philmd@redhat.com>
- <20200109152133.23649-5-philmd@redhat.com>
- <20200109184349.1aefa074@bahia.lan>
- <9870f8ed-3fa0-1deb-860d-7481cb3db556@redhat.com>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K7Y72Csl;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727367AbgAJJ73 (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 10 Jan 2020 04:59:29 -0500
+Received: from mail-lj1-f193.google.com ([209.85.208.193]:34282 "EHLO
+        mail-lj1-f193.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1727320AbgAJJ73 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 10 Jan 2020 04:59:29 -0500
+Received: by mail-lj1-f193.google.com with SMTP id z22so1525902ljg.1
+        for <kvm@vger.kernel.org>; Fri, 10 Jan 2020 01:59:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=7JlzPibRcf0IgPM6L/pRPXmRhZqX6hDwJe/LfcYdab8=;
+        b=K7Y72Csly7MWqJMzL3CkWbTrMW2/2vhNHffTGbrtgJOr8gPUiGjGjQdP0tTmzV3E0W
+         A927SweuQJqAzR2mrjN7uAfYmNhfWOTwNpnxNCla+S+3hAUTSd1bghy3J3Eq+Oj5Tc/t
+         dFHrgnGrdy96RqRknK4r6Q+9U1A11UenbliYexZsT/0+Mfpb+4xyhxTpjMzkoSNuxSsI
+         iZItbxMB3wNzTmJZBVg5WdFOJrTD67BRpKMjl5DQWe+KYfrC0XnUt0itnkYHzFox2ZJ8
+         Rxn8L0arRJ8E4EkbpshAsBDkmctDgCjcyd/XMuk6qEKmIDMx3+2eZ8/473mN98+V/Fla
+         8SNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=7JlzPibRcf0IgPM6L/pRPXmRhZqX6hDwJe/LfcYdab8=;
+        b=S1Z188KNJat5K3p4nder3cHjV1CVeHAk2fQOPxQxR4xEwk1s36JpNOQFnKvKoSOgyK
+         v9mide6oFa0QHkkUhSnyfUDPQMBJ/Ex/zIF5uZ4XzV1sIFFIzZWGORZ0vkiPCtEOlZCO
+         YljaohSysBCBpPs0fGlppHKU3wpH88gUVcYMWflh9BwPdnbHG7nNSaO59F0at7uoK6d4
+         RjOEdRLw5HHHSiX8rkxXSmMe5oIWbbo9FY15QIVgEKQay9HH2skP3SQfRvS1sdPLQ1up
+         7jLSd2mV8HiZyqFaLH9I0NmQRIcaJd63QspY7DGEPXOSIyn55tlduFSC55UEOWnxq5e1
+         vIjA==
+X-Gm-Message-State: APjAAAX1qdjw0DLN+Il+6U9sq/oKNYtVT1zwxg7/7Uujp2gOKBDMzi4H
+        3Hif/vQihurjz1fO68SwDsZumXoJAuj2Jc+u0/0=
+X-Received: by 2002:a2e:3a13:: with SMTP id h19mr2127868lja.16.1578650367261;
+ Fri, 10 Jan 2020 01:59:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+References: <20200109152133.23649-1-philmd@redhat.com> <20200109152133.23649-2-philmd@redhat.com>
+In-Reply-To: <20200109152133.23649-2-philmd@redhat.com>
+From:   Alistair Francis <alistair23@gmail.com>
+Date:   Fri, 10 Jan 2020 17:59:00 +0800
+Message-ID: <CAKmqyKPe-K5omNe2wJC-vb35YQ2iiH4yJUTDgydDna+7ONnvuw@mail.gmail.com>
+Subject: Re: [PATCH 01/15] target/arm/kvm: Use CPUState::kvm_state in kvm_arm_pmu_supported()
+To:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc:     "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        "open list:Overall" <kvm@vger.kernel.org>,
+        Juan Quintela <quintela@redhat.com>,
+        "open list:New World" <qemu-ppc@nongnu.org>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        Alistair Francis <alistair.francis@wdc.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Ovh-Tracer-Id: 5266959766281034019
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvdeifedgtdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfesthhqredtredtjeenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrvdehfedrvddtkedrvdegkeenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieekkedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 87.98.184.159
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
- Juan Quintela <quintela@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Richard Henderson <rth@twiddle.net>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C8Ztl750ILwA
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 4HdpMhGLamZg
 
-On Fri, 10 Jan 2020 10:34:07 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On Thu, Jan 9, 2020 at 11:22 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> KVMState is already accessible via CPUState::kvm_state, use it.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-> On 1/9/20 6:43 PM, Greg Kurz wrote:
-> > On Thu,  9 Jan 2020 16:21:22 +0100
-> > Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
-> >=20
-> >> We only access these variables in RTAS_SYSPARM_SPLPAR_CHARACTERISTICS
-> >> case, restrict their scope to avoid unnecessary initialization.
-> >>
-> >=20
-> > I guess a decent compiler can be smart enough detect that the initializ=
-ation
-> > isn't needed outside of the RTAS_SYSPARM_SPLPAR_CHARACTERISTICS branch.=
-..
-> > Anyway, reducing scope isn't bad. The only hitch I could see is that so=
-me
-> > people do prefer to have all variables declared upfront, but there's a =
-nested
-> > param_val variable already so I guess it's okay.
->=20
-> I don't want to outsmart compilers :)
->=20
-> The MACHINE() macro is not a simple cast, it does object introspection=20
-> with OBJECT_CHECK(), thus is not free. Since=20
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Sure, I understand the motivation in avoiding an unneeded call
-to calling object_dynamic_cast_assert().
+Alistair
 
-> object_dynamic_cast_assert() argument is not const, I'm not sure the=20
-> compiler can remove the call.
->=20
-
-Not remove the call, but delay it to the branch that uses it,
-ie. parameter =3D=3D RTAS_SYSPARM_SPLPAR_CHARACTERISTICS.
-
-> Richard, Eric, do you know?
->=20
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >> ---
-> >>   hw/ppc/spapr_rtas.c | 4 ++--
-> >>   1 file changed, 2 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
-> >> index 6f06e9d7fe..7237e5ebf2 100644
-> >> --- a/hw/ppc/spapr_rtas.c
-> >> +++ b/hw/ppc/spapr_rtas.c
-> >> @@ -267,8 +267,6 @@ static void rtas_ibm_get_system_parameter(PowerPCC=
-PU *cpu,
-> >>                                             uint32_t nret, target_ulon=
-g rets)
-> >>   {
-> >>       PowerPCCPUClass *pcc =3D POWERPC_CPU_GET_CLASS(cpu);
-> >> -    MachineState *ms =3D MACHINE(spapr);
-> >> -    unsigned int max_cpus =3D ms->smp.max_cpus;
-> >>       target_ulong parameter =3D rtas_ld(args, 0);
-> >>       target_ulong buffer =3D rtas_ld(args, 1);
-> >>       target_ulong length =3D rtas_ld(args, 2);
-> >> @@ -276,6 +274,8 @@ static void rtas_ibm_get_system_parameter(PowerPCC=
-PU *cpu,
-> >>  =20
-> >>       switch (parameter) {
-> >>       case RTAS_SYSPARM_SPLPAR_CHARACTERISTICS: {
-> >> +        MachineState *ms =3D MACHINE(spapr);
-> >> +        unsigned int max_cpus =3D ms->smp.max_cpus;
-> >=20
-> > The max_cpus variable used to be a global. Now that it got moved
-> > below ms->smp, I'm not sure it's worth keeping it IMHO. What about
-> > dropping it completely and do:
-> >=20
-> >          char *param_val =3D g_strdup_printf("MaxEntCap=3D%d,"
-> >                                            "DesMem=3D%" PRIu64 ","
-> >                                            "DesProcs=3D%d,"
-> >                                            "MaxPlatProcs=3D%d",
-> >                                            ms->smp.max_cpus,
-> >                                            current_machine->ram_size / =
-MiB,
-> >                                            ms->smp.cpus,
-> >                                            ms->smp.max_cpus);
->=20
-> OK, good idea.
->=20
-> > And maybe insert an empty line between the declaration of param_val
-> > and the code for a better readability ?
-> >=20
-> >>           char *param_val =3D g_strdup_printf("MaxEntCap=3D%d,"
-> >>                                             "DesMem=3D%" PRIu64 ","
-> >>                                             "DesProcs=3D%d,"
-> >=20
->=20
-
+> ---
+>  target/arm/kvm.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index b87b59a02a..8d82889150 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -181,9 +181,7 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+>
+>  bool kvm_arm_pmu_supported(CPUState *cpu)
+>  {
+> -    KVMState *s =3D KVM_STATE(current_machine->accelerator);
+> -
+> -    return kvm_check_extension(s, KVM_CAP_ARM_PMU_V3);
+> +    return kvm_check_extension(cpu->kvm_state, KVM_CAP_ARM_PMU_V3);
+>  }
+>
+>  int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+> --
+> 2.21.1
+>
+>

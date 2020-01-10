@@ -1,93 +1,93 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp998070lff;
-        Fri, 10 Jan 2020 09:45:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqydbPwb7onNhbdlTHUc5qZf6k8HXgE0djzrzae0Vb1c21tbsVdB/01kw7M2Cxs24gIcIKCt
-X-Received: by 2002:a0c:fac7:: with SMTP id p7mr3965770qvo.46.1578678354724;
-        Fri, 10 Jan 2020 09:45:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578678354; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp999311lff;
+        Fri, 10 Jan 2020 09:47:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw6awwa0owWnPqgkVeN+Pr/4Dx3PY0DpnCSzzNe5tyeRTzgEGFUh1/QwFeQmhMMgNNTFPNi
+X-Received: by 2002:a05:620a:143a:: with SMTP id k26mr4387229qkj.450.1578678432493;
+        Fri, 10 Jan 2020 09:47:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578678432; cv=none;
         d=google.com; s=arc-20160816;
-        b=PIJza6/8j0t/VOy81Un7TmWiwvE5ZNO/5saWcxb1vEP4FIDPV8x4FeGFgDpBKZ4c9y
-         Yoy4LbGXfeHJv/1u27FfeOkRLtVA6TbIUUTSuM2c4bKa0OWYooD+HP1mWT9Gsdjzl7/V
-         It7hbjTTgeof/b9zX6eCnf1hJaRFlBS/j6O40ajgKYLb3pRn8Ww2wgQhtyicCPRdfGaX
-         YvBHjcA6OquqA3TrdCg7ZOH8uYIJkxkslNYMDpSYgD+LeAgFX0+BQ0Z1ZNdGEv6WwOXQ
-         X4kUTOnGE6jMKdWNUNplcqkiBJiHdcGZPt5B/9+S53NmDYR7UmPSk4JBOHE6jxB8XW27
-         INrw==
+        b=Z/Lv/yFjtFLE9SUj/+CLWbalI+Sds/k6hYfaIDI6G38c97TR1By//jGBnudfxztp31
+         JkldNetdpQ6aUKSpkM8ZeQWMtvaSWJavOh0UVH3+ZDDO1VcqG9P3LbQlT0TIAdmqe/pF
+         W7IcoQVQmLc7fZsRowLeQiKGVfc0UlPriSBYhFMF6GTNtvEseb0gVOE375WxmlfT+A0g
+         6+ZsRJTZ3jv54bRQGoh+hZemWBfZujlv0r5Laq9QUVXMiTBBwCyY4Qn0OjARWEsjU647
+         jM7plmUHsSOJp2EUiEQhpDyLEAUIPCY0PqizuPMt+IEW4LKsd22yunXmjyCAnqz0aFBI
+         JFAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=IK9e0vaf6oFJwdDH1Z3FkKjQHviZuSu3zT8Gr5xF4kk=;
-        b=ECcb/ZjnzcTo2K2VDv6o0Qg4Hrpqoy1amkvj4W650J/5nSSdU+7DX98LpgtBP8W1Hd
-         1aH4xKCX1iXhjsx9DJTC16RsQZfSr34URUli23vpN/StWo2wwkF+3oSfcXyx9Hh+O6IU
-         euCKhBdD2i0lQWiYb+1uM/Cedh2N+leIXbIbhLZ2B394ftgPQLXtTn4nmSo3x9a4heqk
-         dm4mAwynGYPwWe3yIPmWi4XHp1j2WcrSdHky/ERDQS/df5jHMUHQ40s4XohnvEHmPGXv
-         v5Mkfx+3Nc3IqZ8lsx+DgFmWP7JsU0JSKHp8vu70WK2SPdHhvbvw1GCCok1KpTHS2kqQ
-         MqFg==
+        bh=EQALvcPXzFFV1dUEGEEm7mAMYA5rBk0OVau7kpARh/c=;
+        b=Asgkna5IDtqZlVjUqDyRLUkYefw1rySbwarsu1J5dqTWC+AcBLxkfnZmT65qAXk/ms
+         q4xHoMVCSmWGPS8JKdOaSHp3HdoAx3UcS/aCVwb2IdgHtZkkW5JQZVHNAzgyrKeB/Bbt
+         Y3efuwR7ALE6ERnYSkeFZJV0HuSmaoreXzATaGsA8R+1haDJvsRcga1NMlu6hcXDkrMm
+         Kpv3XrSDN28UQFJX/jfue2qdfkBvjE+Z+iJGyA2rHAK7rrPjXOXTOx3S0h6+pG1tdnb9
+         ka9xyKZI3YNwL1/Hqv8rMuKh9MWXMdhvpVhElQssMS0TPg/HSN2rDoWhf7AnUL8twtpX
+         hbTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XpvbLD8o;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XMiaae0s;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6si1627012qkm.91.2020.01.10.09.45.54
+        by mx.google.com with ESMTPS id l14si1710383qkl.1.2020.01.10.09.47.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jan 2020 09:45:54 -0800 (PST)
+        Fri, 10 Jan 2020 09:47:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XpvbLD8o;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XMiaae0s;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49950 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49976 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipyM5-0003Zk-K4
-	for alex.bennee@linaro.org; Fri, 10 Jan 2020 12:45:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48088)
+	id 1ipyNL-00050C-Ae
+	for alex.bennee@linaro.org; Fri, 10 Jan 2020 12:47:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50838)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1ipyAh-0004qI-Oh
- for qemu-devel@nongnu.org; Fri, 10 Jan 2020 12:34:08 -0500
+ (envelope-from <quintela@redhat.com>) id 1ipyBq-0006bM-8E
+ for qemu-devel@nongnu.org; Fri, 10 Jan 2020 12:35:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1ipyAg-0003j6-LP
- for qemu-devel@nongnu.org; Fri, 10 Jan 2020 12:34:07 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:22487
+ (envelope-from <quintela@redhat.com>) id 1ipyBo-0006IJ-FO
+ for qemu-devel@nongnu.org; Fri, 10 Jan 2020 12:35:18 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32701
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1ipyAg-0003hK-GM
- for qemu-devel@nongnu.org; Fri, 10 Jan 2020 12:34:06 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1ipyBo-0006Gt-7M
+ for qemu-devel@nongnu.org; Fri, 10 Jan 2020 12:35:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578677646;
+ s=mimecast20190719; t=1578677715;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IK9e0vaf6oFJwdDH1Z3FkKjQHviZuSu3zT8Gr5xF4kk=;
- b=XpvbLD8oCwHGgAWNRe+4aOkn+Ndz6uBb5cTfHTFg0xH2FY7S9gEKYYyYa/gjeJxDBt+m+m
- MkXtfAhtTcSOrAoGpWhzp/JFfEu6Gafjj6wzCOiHKlkRDkFCdox2GFZ1d58vidPOmBawz9
- fL2IHiISLIS791lXhaldmI8VqsiccNE=
+ bh=EQALvcPXzFFV1dUEGEEm7mAMYA5rBk0OVau7kpARh/c=;
+ b=XMiaae0s9M70Zm9M1h3YMyXOkPPqwQpGTwKBTJamtgA/FISSBwFok39JMi5MHJYDq+Puym
+ VEDhegoI3bx6S9eF1k83m+7bKKOcooJMjvITvqny9+zKkP/OPEBT3mlYCJctlayYT0tkzK
+ jsy5HqDHGiRDUB6WuHbpNLD9CaFR33I=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-343-N9qKbkM6P3-YkKeEKJdSYg-1; Fri, 10 Jan 2020 12:34:04 -0500
+ us-mta-399-YjNmZRo7NbOgheaYLYTEXQ-1; Fri, 10 Jan 2020 12:35:14 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D8731800D6B;
- Fri, 10 Jan 2020 17:33:46 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 344A4100550E;
+ Fri, 10 Jan 2020 17:35:12 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-240.ams2.redhat.com [10.36.116.240])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B55A419C4F;
- Fri, 10 Jan 2020 17:33:38 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3A18519C4F;
+ Fri, 10 Jan 2020 17:35:05 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 10/28] migration: Fix the re-run check of the migrate-incoming
- command
-Date: Fri, 10 Jan 2020 18:31:57 +0100
-Message-Id: <20200110173215.3865-11-quintela@redhat.com>
+Subject: [PULL 17/28] migration/postcopy: count target page number to decide
+ the place_needed
+Date: Fri, 10 Jan 2020 18:32:04 +0100
+Message-Id: <20200110173215.3865-18-quintela@redhat.com>
 In-Reply-To: <20200110173215.3865-1-quintela@redhat.com>
 References: <20200110173215.3865-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: N9qKbkM6P3-YkKeEKJdSYg-1
+X-MC-Unique: YjNmZRo7NbOgheaYLYTEXQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
@@ -105,50 +105,79 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Juan Quintela <quintela@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yury Kotov <yury-kotov@yandex-team.ru>, Darren Kenny <darren.kenny@oracle.com>,
- qemu-arm@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+Cc: Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
+ Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Stefan Berger <stefanb@linux.ibm.com>
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
+ Jason Wang <jasowang@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Wei Yang <richardw.yang@linux.intel.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>,
+ Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WL3kACWNH90H
+X-TUID: ASSvW+kQlljW
 
-From: Yury Kotov <yury-kotov@yandex-team.ru>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-The current check sets an error but doesn't fail the command.
-This may cause a problem if new connection attempt by the same URI
-affects the first connection.
+In postcopy, it requires to place whole host page instead of target
+page.
 
-Signed-off-by: Yury Kotov <yury-kotov@yandex-team.ru>
+Currently, it relies on the page offset to decide whether this is the
+last target page. We also can count the target page number during the
+iteration. When the number of target page equals
+(host page size / target page size), this means it is the last target
+page in the host page.
+
+This is a preparation for non-ordered target page transmission.
+
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/migration.c | 1 +
- 1 file changed, 1 insertion(+)
+ migration/ram.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index f79d0bf89a..e55edee606 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -1784,6 +1784,7 @@ void qmp_migrate_incoming(const char *uri, Error **er=
-rp)
-     }
-     if (!once) {
-         error_setg(errp, "The incoming migration has already been started"=
-);
-+        return;
-     }
+diff --git a/migration/ram.c b/migration/ram.c
+index f9e6f20024..f20dfc3b68 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -4052,6 +4052,7 @@ static int ram_load_postcopy(QEMUFile *f)
+     void *postcopy_host_page =3D mis->postcopy_tmp_page;
+     void *last_host =3D NULL;
+     bool all_zero =3D false;
++    int target_pages =3D 0;
 =20
-     qemu_start_incoming_migration(uri, &local_err);
+     while (!ret && !(flags & RAM_SAVE_FLAG_EOS)) {
+         ram_addr_t addr;
+@@ -4086,6 +4087,7 @@ static int ram_load_postcopy(QEMUFile *f)
+                 ret =3D -EINVAL;
+                 break;
+             }
++            target_pages++;
+             matches_target_page_size =3D block->page_size =3D=3D TARGET_PA=
+GE_SIZE;
+             /*
+              * Postcopy requires that we place whole host pages atomically=
+;
+@@ -4117,8 +4119,10 @@ static int ram_load_postcopy(QEMUFile *f)
+              * If it's the last part of a host page then we place the host
+              * page
+              */
+-            place_needed =3D (((uintptr_t)host + TARGET_PAGE_SIZE) &
+-                                     (block->page_size - 1)) =3D=3D 0;
++            if (target_pages =3D=3D (block->page_size / TARGET_PAGE_SIZE))=
+ {
++                place_needed =3D true;
++                target_pages =3D 0;
++            }
+             place_source =3D postcopy_host_page;
+         }
+         last_host =3D host;
 --=20
 2.24.1
 

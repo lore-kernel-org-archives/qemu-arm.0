@@ -1,98 +1,98 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1177108lff;
-        Fri, 10 Jan 2020 12:43:19 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxf04TzL88P+pJ/MnZr15h/BpDDFRi4D9FkhEttvz9hEZY2mAfCASCiOHmp/8nvZJh5gTWV
-X-Received: by 2002:ac8:602:: with SMTP id d2mr307290qth.245.1578688999676;
-        Fri, 10 Jan 2020 12:43:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578688999; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1216767lff;
+        Fri, 10 Jan 2020 13:21:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzvIdctm5XTzord47C90qpTsR1rPZsudjamK+PerAYQsZI0btY9YjSNtMfYdczeCkA53oGA
+X-Received: by 2002:a37:aa4d:: with SMTP id t74mr5000166qke.406.1578691289673;
+        Fri, 10 Jan 2020 13:21:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578691289; cv=none;
         d=google.com; s=arc-20160816;
-        b=xqwe4hhTDz9ovGi+gE4aOUwUTcQwQrHbEFy3SBtUTyqGuqf6wCSoS4IZFW26LlLiZZ
-         b5bs4b1QzBzHxoX4vi04wcL/UpxvzqARsvJU3nMLRUUw5ZjSHsmUYe4lzY/E57wRW+om
-         a9IdhOHNSyNB4FjqzE42TU5yhtmidWvHQvWb1lq1QxmMN6adHhee7O6tVErkY7OEsHzb
-         zSsKTT8r06aHROv+Bk7gRt+98naapbgwbEmuxvSYeoTbaVLMwqi4VRLT/FYfOv7kkKXW
-         bmEEo7XP2xshP11rjVTXfnZb7JnDXL9Arh4MsLbssVXci0F755G7VdYvHio+ci1DJ5LV
-         f9hA==
+        b=YPWtRhrpNyM1mV+K+asptf1n4OGcCXIzWL+/+GoERFUCwO5r/nmyQQiDbpRdXuwFKk
+         GxynNx4PGLPmT7KXr/xzM46aPxF7qThB+ptm1cUTlGTteK79MgXYp32pz7bNLUV/NSyo
+         2r4ixIgu9noa4roAWoTXj2uubaiRMzfK5Vw9o/4KZ9ontTV1HIrDjGy0b5BYQAMJPVyH
+         urKwMNsQg9V5fb7J+ZT95D5m2HC86QAS0r887zfuu75BiqsxjI+pmeC7G67729kREtZz
+         H9YmdL3B3NSsdhRPAXY3WThZbBGOdqyR2mLfxl4+d2EEdbqNkY0+X3zlQfifnlhGf87e
+         QN8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=kJL6D43Lk44GZABLgzICULfdZGP31GnZA6iTy8OUmgw=;
-        b=PIajJazCOatzpUJY9YqiMGQzaqy8EZyx3oduk6gCyvi0yDreNwFdaF6FzP3RyZAzHp
-         bOa6zNtfehaYcBzQsJ6iuY+XD/vjivT+k1DGUMUlEdVYqjjebWsZteBVbFX/RDyDNRGD
-         uUNf6p1jhCHazVImQzw92vsnKUaqOS2EFCLPmI9DtgA95/C8GjiXJRogmQfsFxWxcybH
-         IO/dW/l7Ssjzd9d4jEo4f/xMdhFfmyU+lM5nPTWpcysAO4Cnv8PI3cTaJoo31fCRx6lv
-         bc9ADx2w7k2xyk2lsy/VQyfbC66W7V7IxC7VxXDxhcMOfQyMphxZEynHPJJGCZnUX2Fz
-         KJjw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=zGViK/4t2XByOYwKHjaIFhYhH44jNeUXKn2puVX+wvM=;
+        b=EQnkXIGrdXjQZ7Fv3HGiggnG3fveK/IJqnCpfcKSp+N4KzU8jswcfBScQddVNuM2UN
+         vfV5g+CDjcThwi/N368Z5yLHyq+tv/fn82frjfdxATsK/f0dZJ7Ven1GOYINHqAgOnXE
+         C35ToA0fPDF7XH0s7CubxCnGoMnjuUEJO4tmlEBfxsDsHVuiTbl39Eha5RW+J4FZP0C4
+         ASLTtYy0fTP5fRehrb8kbdY2qu6sOQ/e4Oe2FS68utwwVcFXlfzHHH/5HelyV3vkP66G
+         tMbruXyDwkzVKQERonmJtNnHZrZXLL7HMOZd502s18nv127WDL/xnnCNFyoO9MEZE+Hh
+         UMeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BsCNWbxR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DuVRIdIy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n6si1783911qtr.106.2020.01.10.12.43.19
+        by mx.google.com with ESMTPS id m13si1849277qtg.79.2020.01.10.13.21.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jan 2020 12:43:19 -0800 (PST)
+        Fri, 10 Jan 2020 13:21:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BsCNWbxR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51542 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DuVRIdIy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51814 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iq17m-0005Sx-GZ
-	for alex.bennee@linaro.org; Fri, 10 Jan 2020 15:43:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33808)
+	id 1iq1ih-00044H-UO
+	for alex.bennee@linaro.org; Fri, 10 Jan 2020 16:21:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52176)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1iq14W-0000bk-5g
- for qemu-arm@nongnu.org; Fri, 10 Jan 2020 15:39:57 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iq1iX-00041X-4v
+ for qemu-arm@nongnu.org; Fri, 10 Jan 2020 16:21:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1iq14U-00078O-Tr
- for qemu-arm@nongnu.org; Fri, 10 Jan 2020 15:39:56 -0500
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:45075)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iq1iU-0006SY-3S
+ for qemu-arm@nongnu.org; Fri, 10 Jan 2020 16:21:17 -0500
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:44357)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1iq14U-00076A-NW; Fri, 10 Jan 2020 15:39:54 -0500
-Received: by mail-pf1-x441.google.com with SMTP id 2so1657503pfg.12;
- Fri, 10 Jan 2020 12:39:54 -0800 (PST)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1iq1iP-00063i-Et; Fri, 10 Jan 2020 16:21:09 -0500
+Received: by mail-il1-x144.google.com with SMTP id z12so2883056iln.11;
+ Fri, 10 Jan 2020 13:21:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=kJL6D43Lk44GZABLgzICULfdZGP31GnZA6iTy8OUmgw=;
- b=BsCNWbxRViMev+a4DX4+9xeUa52wF6S1322fYGoJDlQzZsEJ3l+GxXET57BfH3m+8R
- fwaS13ZcNn1CWoMdPojoFz1kZ8rKizegtU/0iAbVzdWHFtGB/2Si0mD/mkFzHnf23OgI
- psisQthE6QJm2Ep7sCFEfjWyfTR6wIF02zYwDeOIJ3Pjzn6+5OgS7tYVGd504DGtORAq
- eDjU4OquxYOMgCkMU3vatfjLBE0DxSCc9tWtH+H5gEMRrcrqaEOpuYbaJNuuooUMGnu/
- xmBd6VkAR/z3H41BSpgqN1f3vVDFdlO4TKU/6AZ9uViwd2+cMXOzoDR6zjxfSmxNz4L8
- ocjg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=zGViK/4t2XByOYwKHjaIFhYhH44jNeUXKn2puVX+wvM=;
+ b=DuVRIdIyu2M9dSqtBwkuYH4tnVNm/Xj9Dd6JKBgTDpuHMB89GHgesLxn3VKhsbRxDy
+ RibfGbpbxXHWUetjUlAKc9KIYvHf6CgI4X1UFb1TA3GkcIcQ50y1sE2uAxLJYbtAA5EY
+ dIVnKW9YNOhKvvAqChtZAiNwvPpkBxfP6NyJLlAX5FDeSQYslaLRb2QQvfJgeNxFob0d
+ InBqYea9cT4T2a4LYnNdc8HnsbQh4yWXHw08hxINRcmfqtkddXHmyrbGxaYZH160mEp5
+ BA/MPDg77TdMramLoLDB3PxG8A1RiTRxuVkZOGafGD72QlYXMc1X3eOTOHIHEQIIjNMD
+ JKyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references;
- bh=kJL6D43Lk44GZABLgzICULfdZGP31GnZA6iTy8OUmgw=;
- b=CmQ1su3Y8XWskNIu2NKim+Z4XdOvxoW8XUOAKH/cAPxzi6L0AomfQEnwzim45JJ+vd
- VuY7QOLu64CfkYdMACUTN5zYUFsAKGUQdk33JopGoefUnsc/TnuIjoXG65KJ/EJZBRyJ
- JBClb09LqG8P/B64edmtGaZJf9MXHSDAi6t7cdt96OdlCvraQGF0jWx26xIzrXZtPs8a
- zHtKp7oeLzkifLxcEP+a2y3ZREA4b5HJQjP20JbJTLEVGDSRz68erJ8VnocCG6MFqF3d
- 4cE1dkl6z06wGG7rRRpbCfYvLcuu73qNRwExh1hyHSKK+sBF925loMTbNvR6NC0fECYo
- LuXg==
-X-Gm-Message-State: APjAAAVW0B6lvQeTxhrM94gNiImX5v9p95kC867SjL63G0o7BEyv4XrV
- 8SGQRcEhWJhe/b6ho+EVL80=
-X-Received: by 2002:a62:788a:: with SMTP id t132mr6234013pfc.134.1578688793976; 
- Fri, 10 Jan 2020 12:39:53 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id d3sm3826240pfn.113.2020.01.10.12.39.53
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 10 Jan 2020 12:39:53 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Igor Mitsyanko <i.mitsyanko@gmail.com>
-Subject: [PATCH 6/6] hw/arm/exynos4210: Connect serial port DMA busy signals
- with pl330
-Date: Fri, 10 Jan 2020 12:39:42 -0800
-Message-Id: <20200110203942.5745-7-linux@roeck-us.net>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200110203942.5745-1-linux@roeck-us.net>
-References: <20200110203942.5745-1-linux@roeck-us.net>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=zGViK/4t2XByOYwKHjaIFhYhH44jNeUXKn2puVX+wvM=;
+ b=bnKvS8cZ73RZRIMGCOEDt147u8yo44mOaG6avJy61GgaANxPhtefx6dchVdSdi/O96
+ buwGfCqbkILai3zozrWKbyqz1kFVzFnQOnslbbCW02zFTzKOgfj5b1gzIvd3oVmG7eW0
+ r8vJP7PbTDuCmWUecrIGAdE5auB95eFmBHOiZ/1mvocAkJGr9liYRIXfW2FMSi6ACVCc
+ 8L2r4y9zUg7Fm/DVmBEUvw4t7QyPFEoSJknMeC6sF51AuTUVRFJUGuA/GEGSH3pBA1zc
+ 0OGbRlpnRzKbIMkp5x1JxWHqHPeoiUxrBXR+jaQyMcJNZl8TtiDMbBAiuarRN1nkEeey
+ FtzA==
+X-Gm-Message-State: APjAAAUjXReu5wLDXFLLw306DxgdJe/87CaVzVIvn1zqt0HZ/ZIk+l1D
+ r5pWpfORPrgkgfmwXZEJcXce5UWyccesmNdcVhQ=
+X-Received: by 2002:a92:d5cf:: with SMTP id d15mr4301514ilq.306.1578691267833; 
+ Fri, 10 Jan 2020 13:21:07 -0800 (PST)
+MIME-Version: 1.0
+References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
+ <20200108200020.4745-3-nieklinnenbank@gmail.com>
+ <c41068dc-7684-3da2-e53e-649e3e4aded1@redhat.com>
+In-Reply-To: <c41068dc-7684-3da2-e53e-649e3e4aded1@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Fri, 10 Jan 2020 22:20:56 +0100
+Message-ID: <CAPan3WohW3fPFvGT62c_+3XmP59Zps74=32=5w4GFu9BVxNDCA@mail.gmail.com>
+Subject: Re: [PATCH v3 02/17] hw/arm: add Xunlong Orange Pi PC machine
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="0000000000003ab315059bcfb4e8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::441
+X-Received-From: 2607:f8b0:4864:20::144
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,109 +104,426 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z9xmcQddJM47
+X-TUID: hTGX9pguZtJ/
 
-The Exynos4210 serial driver uses an interrupt line to signal if receive
-data is available. Connect that interrupt with the DMA controller's
-'peripheral busy' gpio pin.
+--0000000000003ab315059bcfb4e8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
- hw/arm/exynos4210.c | 39 ++++++++++++++++++++++++++-------------
- 1 file changed, 26 insertions(+), 13 deletions(-)
+On Wed, Jan 8, 2020 at 11:44 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+wrote:
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index c7b5c587b1..498d79ebb2 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -166,8 +166,8 @@ static uint64_t exynos4210_calc_affinity(int cpu)
-     return (0x9 << ARM_AFF1_SHIFT) | cpu;
- }
- 
--static void pl330_create(uint32_t base, qemu_irq irq, int nreq, int nevents,
--                         int width)
-+static DeviceState *pl330_create(uint32_t base, qemu_irq irq, int nreq,
-+                                 int nevents, int width)
- {
-     SysBusDevice *busdev;
-     DeviceState *dev;
-@@ -191,6 +191,7 @@ static void pl330_create(uint32_t base, qemu_irq irq, int nreq, int nevents,
-     for (i = 0; i < nevents; i++) {
-         sysbus_connect_irq(busdev, i + 1, irq); /* event irq lines */
-     }
-+    return dev;
- }
- 
- static void exynos4210_realize(DeviceState *socdev, Error **errp)
-@@ -199,7 +200,7 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
-     MemoryRegion *system_mem = get_system_memory();
-     qemu_irq gate_irq[EXYNOS4210_NCPUS][EXYNOS4210_IRQ_GATE_NINPUTS];
-     SysBusDevice *busdev;
--    DeviceState *dev;
-+    DeviceState *dev, *uart[4], *pl330[3];
-     int i, n;
- 
-     for (n = 0; n < EXYNOS4210_NCPUS; n++) {
-@@ -385,19 +386,19 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
- 
- 
-     /*** UARTs ***/
--    exynos4210_uart_create(EXYNOS4210_UART0_BASE_ADDR,
-+    uart[0] = exynos4210_uart_create(EXYNOS4210_UART0_BASE_ADDR,
-                            EXYNOS4210_UART0_FIFO_SIZE, 0, serial_hd(0),
-                   s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 0)]);
- 
--    exynos4210_uart_create(EXYNOS4210_UART1_BASE_ADDR,
-+    uart[1] = exynos4210_uart_create(EXYNOS4210_UART1_BASE_ADDR,
-                            EXYNOS4210_UART1_FIFO_SIZE, 1, serial_hd(1),
-                   s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 1)]);
- 
--    exynos4210_uart_create(EXYNOS4210_UART2_BASE_ADDR,
-+    uart[2] = exynos4210_uart_create(EXYNOS4210_UART2_BASE_ADDR,
-                            EXYNOS4210_UART2_FIFO_SIZE, 2, serial_hd(2),
-                   s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 2)]);
- 
--    exynos4210_uart_create(EXYNOS4210_UART3_BASE_ADDR,
-+    uart[3] = exynos4210_uart_create(EXYNOS4210_UART3_BASE_ADDR,
-                            EXYNOS4210_UART3_FIFO_SIZE, 3, serial_hd(3),
-                   s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 3)]);
- 
-@@ -445,12 +446,24 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
-             s->irq_table[exynos4210_get_irq(28, 3)]);
- 
-     /*** DMA controllers ***/
--    pl330_create(EXYNOS4210_PL330_BASE0_ADDR,
--                 s->irq_table[exynos4210_get_irq(21, 0)], 32, 32, 32);
--    pl330_create(EXYNOS4210_PL330_BASE1_ADDR,
--                 s->irq_table[exynos4210_get_irq(21, 1)], 32, 32, 32);
--    pl330_create(EXYNOS4210_PL330_BASE2_ADDR,
--                 s->irq_table[exynos4210_get_irq(20, 1)], 1, 31, 64);
-+    pl330[0] = pl330_create(EXYNOS4210_PL330_BASE0_ADDR,
-+                            s->irq_table[exynos4210_get_irq(21, 0)],
-+                            32, 32, 32);
-+    pl330[1] = pl330_create(EXYNOS4210_PL330_BASE1_ADDR,
-+                            s->irq_table[exynos4210_get_irq(21, 1)],
-+                            32, 32, 32);
-+    pl330[2] = pl330_create(EXYNOS4210_PL330_BASE2_ADDR,
-+                            s->irq_table[exynos4210_get_irq(20, 1)],
-+                            1, 31, 64);
+> On 1/8/20 9:00 PM, Niek Linnenbank wrote:
+> > The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
+> > based embedded computer with mainline support in both U-Boot
+> > and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
+> > 512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
+> > various other I/O. This commit add support for the Xunlong
+> > Orange Pi PC machine.
+> >
+> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> > Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
+> > ---
+> >   hw/arm/orangepi.c    | 93 +++++++++++++++++++++++++++++++++++++++++++=
 +
-+    sysbus_connect_irq(SYS_BUS_DEVICE(uart[0]), 1,
-+                       qdev_get_gpio_in(pl330[0], 15));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(uart[1]), 1,
-+                       qdev_get_gpio_in(pl330[1], 15));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(uart[2]), 1,
-+                       qdev_get_gpio_in(pl330[0], 17));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(uart[3]), 1,
-+                       qdev_get_gpio_in(pl330[1], 17));
- }
- 
- static void exynos4210_class_init(ObjectClass *klass, void *data)
--- 
-2.17.1
+> >   MAINTAINERS          |  1 +
+> >   hw/arm/Makefile.objs |  2 +-
+> >   3 files changed, 95 insertions(+), 1 deletion(-)
+> >   create mode 100644 hw/arm/orangepi.c
+> >
+> > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+> > new file mode 100644
+> > index 0000000000..051184f14f
+> > --- /dev/null
+> > +++ b/hw/arm/orangepi.c
+> > @@ -0,0 +1,93 @@
+> > +/*
+> > + * Orange Pi emulation
+> > + *
+> > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
+> > + *
+> > + * This program is free software: you can redistribute it and/or modif=
+y
+> > + * it under the terms of the GNU General Public License as published b=
+y
+> > + * the Free Software Foundation, either version 2 of the License, or
+> > + * (at your option) any later version.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + *
+> > + * You should have received a copy of the GNU General Public License
+> > + * along with this program.  If not, see <http://www.gnu.org/licenses/
+> >.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "exec/address-spaces.h"
+> > +#include "qapi/error.h"
+> > +#include "cpu.h"
+> > +#include "hw/sysbus.h"
+> > +#include "hw/boards.h"
+> > +#include "hw/qdev-properties.h"
+> > +#include "hw/arm/allwinner-h3.h"
+> > +#include "sysemu/sysemu.h"
+> > +
+> > +static struct arm_boot_info orangepi_binfo =3D {
+> > +    .board_id =3D -1,
+>
+> Since you use a dtb, I suppose Linux ignores this board_id.
+>
+> Nitpick, you can set this here:
+>
+>         .nb_cpus =3D AW_H3_NUM_CPUS,
+>
+> > +};
+> > +
+> > +typedef struct OrangePiState {
+> > +    AwH3State *h3;
+> > +    MemoryRegion sdram;
+> > +} OrangePiState;
+> > +
+> > +static void orangepi_init(MachineState *machine)
+> > +{
+> > +    OrangePiState *s =3D g_new(OrangePiState, 1);
+> > +
+>
+> I'd do the bios check first, as it is cheap and avoid allocating RAM + H3=
+:
+>
+>         /* Load target kernel or start using BootROM */
+>         if (bios_name) {
+>             error_report("BIOS not supported for this machine");
+>             exit(1);
+>         }
+>
+> > +    /* Only allow Cortex-A7 for this board */
+> > +    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a7")) !=3D=
+ 0)
+> {
+> > +        error_report("This board can only be used with cortex-a7 CPU")=
+;
+> > +        exit(1);
+> > +    }
+> > +
+> > +    s->h3 =3D AW_H3(object_new(TYPE_AW_H3));
+> > +
+> > +    /* Setup timer properties */
+> > +    object_property_set_int(OBJECT(s->h3), 32768, "clk0-freq",
+> > +                            &error_abort);
+> > +    object_property_set_int(OBJECT(s->h3), 24000000, "clk1-freq",
+>
+> I find 24 * 1000 * 1000 easier to review.
+>
+> > +                            &error_abort);
+> > +
+> > +    /* Mark H3 object realized */
+> > +    object_property_set_bool(OBJECT(s->h3), true, "realized",
+> &error_abort);
+> > +
+> > +    /* SDRAM */
+> > +    if (machine->ram_size !=3D 1 * GiB) {
+> > +        error_report("Requested ram size is not supported for this
+> machine: "
+> > +                     "restricted to 1GiB");
+>
+> Maybe easier as "This machine can only be used with 1GiB of RAM"
+>
+> > +        exit(1);
+> > +    }
+> > +    memory_region_allocate_system_memory(&s->sdram, NULL, "sdram",
+> > +                                         machine->ram_size);
+> > +    memory_region_add_subregion(get_system_memory(),
+> s->h3->memmap[AW_H3_SDRAM],
+> > +                                &s->sdram);
+> > +
+> > +    /* Load target kernel or start using BootROM */
+> > +    if (bios_name) {
+> > +        error_report("BIOS not supported for this machine");
+> > +        exit(1);
+> > +    }
+> > +    orangepi_binfo.loader_start =3D s->h3->memmap[AW_H3_SDRAM];
+> > +    orangepi_binfo.ram_size =3D machine->ram_size;
+> > +    orangepi_binfo.nb_cpus  =3D AW_H3_NUM_CPUS;
+> > +    arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
+> > +}
+> > +
+> > +static void orangepi_machine_init(MachineClass *mc)
+> > +{
+> > +    mc->desc =3D "Orange Pi PC";
+> > +    mc->init =3D orangepi_init;
+> > +    mc->min_cpus =3D AW_H3_NUM_CPUS;
+> > +    mc->max_cpus =3D AW_H3_NUM_CPUS;
+> > +    mc->default_cpus =3D AW_H3_NUM_CPUS;
+> > +    mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a7");
+> > +    mc->default_ram_size =3D 1 * GiB;
+> > +}
+> > +
+> > +DEFINE_MACHINE("orangepi-pc", orangepi_machine_init)
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index dc2d7991bf..6e1b92b5fa 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -487,6 +487,7 @@ L: qemu-arm@nongnu.org
+> >   S: Maintained
+> >   F: hw/*/allwinner-h3*
+> >   F: include/hw/*/allwinner-h3*
+> > +F: hw/arm/orangepi.c
+> >
+> >   ARM PrimeCell and CMSDK devices
+> >   M: Peter Maydell <peter.maydell@linaro.org>
+> > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> > index 956e496052..8d5ea453d5 100644
+> > --- a/hw/arm/Makefile.objs
+> > +++ b/hw/arm/Makefile.objs
+> > @@ -34,7 +34,7 @@ obj-$(CONFIG_DIGIC) +=3D digic.o
+> >   obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o
+> >   obj-$(CONFIG_STRONGARM) +=3D strongarm.o
+> >   obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboard.o
+> > -obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o
+> > +obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o orangepi.o
+> >   obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o raspi.o
+> >   obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o
+> >   obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=3D xlnx-zynqmp.o xlnx-zcu102.o
+> >
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>
+> Thanks Philippe! I will update the file with your comments and add the
+reviewed by.
 
+Regards
+Niek
+
+--=20
+Niek Linnenbank
+
+--0000000000003ab315059bcfb4e8
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jan 8, 2020 at 11:44 PM Phili=
+ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
+at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On 1/8/20 9:00 PM, Niek Linnenbank wrote:<br>
+&gt; The Xunlong Orange Pi PC is an Allwinner H3 System on Chip<br>
+&gt; based embedded computer with mainline support in both U-Boot<br>
+&gt; and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,<br>
+&gt; 512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and<br>
+&gt; various other I/O. This commit add support for the Xunlong<br>
+&gt; Orange Pi PC machine.<br>
+&gt; <br>
+&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
+ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&gt; Tested-by: KONRAD Frederic &lt;<a href=3D"mailto:frederic.konrad@adaco=
+re.com" target=3D"_blank">frederic.konrad@adacore.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 | 93 ++++++++++++++++++++++=
+++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 1 +<=
+br>
+&gt;=C2=A0 =C2=A0hw/arm/Makefile.objs |=C2=A0 2 +-<br>
+&gt;=C2=A0 =C2=A03 files changed, 95 insertions(+), 1 deletion(-)<br>
+&gt;=C2=A0 =C2=A0create mode 100644 hw/arm/orangepi.c<br>
+&gt; <br>
+&gt; diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
+&gt; new file mode 100644<br>
+&gt; index 0000000000..051184f14f<br>
+&gt; --- /dev/null<br>
+&gt; +++ b/hw/arm/orangepi.c<br>
+&gt; @@ -0,0 +1,93 @@<br>
+&gt; +/*<br>
+&gt; + * Orange Pi emulation<br>
+&gt; + *<br>
+&gt; + * Copyright (C) 2019 Niek Linnenbank &lt;<a href=3D"mailto:nieklinne=
+nbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&gt; + *<br>
+&gt; + * This program is free software: you can redistribute it and/or modi=
+fy<br>
+&gt; + * it under the terms of the GNU General Public License as published =
+by<br>
+&gt; + * the Free Software Foundation, either version 2 of the License, or<=
+br>
+&gt; + * (at your option) any later version.<br>
+&gt; + *<br>
+&gt; + * This program is distributed in the hope that it will be useful,<br=
+>
+&gt; + * but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+&gt; + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the=
+<br>
+&gt; + * GNU General Public License for more details.<br>
+&gt; + *<br>
+&gt; + * You should have received a copy of the GNU General Public License<=
+br>
+&gt; + * along with this program.=C2=A0 If not, see &lt;<a href=3D"http://w=
+ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
+rg/licenses/</a>&gt;.<br>
+&gt; + */<br>
+&gt; +<br>
+&gt; +#include &quot;qemu/osdep.h&quot;<br>
+&gt; +#include &quot;exec/address-spaces.h&quot;<br>
+&gt; +#include &quot;qapi/error.h&quot;<br>
+&gt; +#include &quot;cpu.h&quot;<br>
+&gt; +#include &quot;hw/sysbus.h&quot;<br>
+&gt; +#include &quot;hw/boards.h&quot;<br>
+&gt; +#include &quot;hw/qdev-properties.h&quot;<br>
+&gt; +#include &quot;hw/arm/allwinner-h3.h&quot;<br>
+&gt; +#include &quot;sysemu/sysemu.h&quot;<br>
+&gt; +<br>
+&gt; +static struct arm_boot_info orangepi_binfo =3D {<br>
+&gt; +=C2=A0 =C2=A0 .board_id =3D -1,<br>
+<br>
+Since you use a dtb, I suppose Linux ignores this board_id.<br>
+<br>
+Nitpick, you can set this here:<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .nb_cpus =3D AW_H3_NUM_CPUS,<br>
+<br>
+&gt; +};<br>
+&gt; +<br>
+&gt; +typedef struct OrangePiState {<br>
+&gt; +=C2=A0 =C2=A0 AwH3State *h3;<br>
+&gt; +=C2=A0 =C2=A0 MemoryRegion sdram;<br>
+&gt; +} OrangePiState;<br>
+&gt; +<br>
+&gt; +static void orangepi_init(MachineState *machine)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 OrangePiState *s =3D g_new(OrangePiState, 1);<br>
+&gt; +<br>
+<br>
+I&#39;d do the bios check first, as it is cheap and avoid allocating RAM + =
+H3:<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Load target kernel or start using BootROM */=
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (bios_name) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;BIOS not suppo=
+rted for this machine&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+<br>
+&gt; +=C2=A0 =C2=A0 /* Only allow Cortex-A7 for this board */<br>
+&gt; +=C2=A0 =C2=A0 if (strcmp(machine-&gt;cpu_type, ARM_CPU_TYPE_NAME(&quo=
+t;cortex-a7&quot;)) !=3D 0) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;This board can only be=
+ used with cortex-a7 CPU&quot;);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 s-&gt;h3 =3D AW_H3(object_new(TYPE_AW_H3));<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 /* Setup timer properties */<br>
+&gt; +=C2=A0 =C2=A0 object_property_set_int(OBJECT(s-&gt;h3), 32768, &quot;=
+clk0-freq&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_abort);<br>
+&gt; +=C2=A0 =C2=A0 object_property_set_int(OBJECT(s-&gt;h3), 24000000, &qu=
+ot;clk1-freq&quot;,<br>
+<br>
+I find 24 * 1000 * 1000 easier to review.<br>
+<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_abort);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 /* Mark H3 object realized */<br>
+&gt; +=C2=A0 =C2=A0 object_property_set_bool(OBJECT(s-&gt;h3), true, &quot;=
+realized&quot;, &amp;error_abort);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 /* SDRAM */<br>
+&gt; +=C2=A0 =C2=A0 if (machine-&gt;ram_size !=3D 1 * GiB) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;Requested ram size is =
+not supported for this machine: &quot;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0&quot;restricted to 1GiB&quot;);<br>
+<br>
+Maybe easier as &quot;This machine can only be used with 1GiB of RAM&quot;<=
+br>
+<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 memory_region_allocate_system_memory(&amp;s-&gt;sdram, =
+NULL, &quot;sdram&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0machine-&gt;ram_size);<br>
+&gt; +=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), s-&gt;=
+h3-&gt;memmap[AW_H3_SDRAM],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;s-&gt;sdram);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 /* Load target kernel or start using BootROM */<br>
+&gt; +=C2=A0 =C2=A0 if (bios_name) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;BIOS not supported for=
+ this machine&quot;);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 orangepi_binfo.loader_start =3D s-&gt;h3-&gt;memmap[AW_=
+H3_SDRAM];<br>
+&gt; +=C2=A0 =C2=A0 orangepi_binfo.ram_size =3D machine-&gt;ram_size;<br>
+&gt; +=C2=A0 =C2=A0 orangepi_binfo.nb_cpus=C2=A0 =3D AW_H3_NUM_CPUS;<br>
+&gt; +=C2=A0 =C2=A0 arm_load_kernel(ARM_CPU(first_cpu), machine, &amp;orang=
+epi_binfo);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static void orangepi_machine_init(MachineClass *mc)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;desc =3D &quot;Orange Pi PC&quot;;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;init =3D orangepi_init;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;min_cpus =3D AW_H3_NUM_CPUS;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;max_cpus =3D AW_H3_NUM_CPUS;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;default_cpus =3D AW_H3_NUM_CPUS;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;default_cpu_type =3D ARM_CPU_TYPE_NAME(&quot;cor=
+tex-a7&quot;);<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;default_ram_size =3D 1 * GiB;<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +DEFINE_MACHINE(&quot;orangepi-pc&quot;, orangepi_machine_init)<br>
+&gt; diff --git a/MAINTAINERS b/MAINTAINERS<br>
+&gt; index dc2d7991bf..6e1b92b5fa 100644<br>
+&gt; --- a/MAINTAINERS<br>
+&gt; +++ b/MAINTAINERS<br>
+&gt; @@ -487,6 +487,7 @@ L: <a href=3D"mailto:qemu-arm@nongnu.org" target=
+=3D"_blank">qemu-arm@nongnu.org</a><br>
+&gt;=C2=A0 =C2=A0S: Maintained<br>
+&gt;=C2=A0 =C2=A0F: hw/*/allwinner-h3*<br>
+&gt;=C2=A0 =C2=A0F: include/hw/*/allwinner-h3*<br>
+&gt; +F: hw/arm/orangepi.c<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0ARM PrimeCell and CMSDK devices<br>
+&gt;=C2=A0 =C2=A0M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
+o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+&gt; diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs<br>
+&gt; index 956e496052..8d5ea453d5 100644<br>
+&gt; --- a/hw/arm/Makefile.objs<br>
+&gt; +++ b/hw/arm/Makefile.objs<br>
+&gt; @@ -34,7 +34,7 @@ obj-$(CONFIG_DIGIC) +=3D digic.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_STRONGARM) +=3D strongarm.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboar=
+d.o<br>
+&gt; -obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o<br>
+&gt; +obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o orangepi.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o r=
+aspi.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=3D xlnx-zynqmp.o xlnx-zcu1=
+02.o<br>
+&gt; <br>
+<br>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redha=
+t.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br>
+<br></blockquote><div>Thanks Philippe! I will update the file with your com=
+ments and add the reviewed by. <br></div></div><div><br></div><div>Regards<=
+/div><div>Niek<br></div><br>-- <br><div dir=3D"ltr" class=3D"gmail_signatur=
+e"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
+
+--0000000000003ab315059bcfb4e8--

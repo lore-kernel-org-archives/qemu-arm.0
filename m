@@ -1,164 +1,186 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2629685lff;
-        Thu, 9 Jan 2020 13:07:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwiDs8vEPLorO2+5XsqSIeo1qgZ9Hra/PdqbCDCqJ9bH3UEUQZSh2zTYC4UlUY/aPyrMufB
-X-Received: by 2002:a05:6402:155a:: with SMTP id p26mr13316711edx.222.1578604040510;
-        Thu, 09 Jan 2020 13:07:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578604040; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp446304lff;
+        Fri, 10 Jan 2020 01:34:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxDXWkanEafYIitEK1zcFdS6AxSzazlqO6r5QQJB3YVAXKiklpJWX9kOEeWW+nS3DdzOQqf
+X-Received: by 2002:a05:6830:1116:: with SMTP id w22mr1855736otq.63.1578648860637;
+        Fri, 10 Jan 2020 01:34:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578648860; cv=none;
         d=google.com; s=arc-20160816;
-        b=cD2O1NWfxRUgthHy2U6Z8sawqH1zx3kjQ+OUJCWIyCCUs4HX1n+kdE9WGG3rvmerj0
-         mUghdl7kMnnRlBPQJm5UFHjoq0ZHWs0kB4z7hiXGUtecLnaPDwZrR2LgiUklx1R65c3s
-         62xCd/2fFe/zoC2cua2+er6FKAOyiKOnIxmIn8VEHVuZ2bV7tQDI775+W9RUtbBQhGec
-         oOWG6L1YuEPobBsy27xUVgwTFMRErU+N51Olyq8TKzE3AFhF0QNaJWVBm9DpwZ+FByQ6
-         caCwdH2IY75Q6HhNb/i7yztZvc8IQY5z+AgJPlNNX12QxcKGxyYdFSbLSYzJZOthxBkI
-         Dn7g==
+        b=Wyw91MHupBh6Kmci8IbXkOQ39H5heD9G3FSt8K6NB9mm6x0YsqCKp4oVZXkERHIov+
+         JDfhjAaxUye6vwgSpxqxMs2BR1ECtniewrPaBVPeWbnnymMLVRe8Uhg28Z3rv147dzE3
+         4QBcBH11Dr5unrHpAcMNjMzEesjQ8mlPPsVGXSnLZxou4jxXc0BZaBcT1zP11Gh9SXD1
+         yHy7SrZTmCN7ZK9PLJoWyDkeZNPdgZEV7EXrsZ8mbm7t/yiVf1TbCul1+7OMwsKUjlAW
+         agVVca8CgECN/sz0LgGa7nqSsg8klazIAbmNSvlLwbJjVyJBXUJgMgvtdp8MIBAf0rk+
+         yNyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+        h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=TtHYgZVm5surxo1DzQJ0vQ5yPpHhCV88mWsDEOv4xmQ=;
-        b=uC+56PQ+e8bKGlrhJRcwvfWrdnPN/0BAxw3bcy7Vl14A2O9Wr9CDH5r2MwTd0DTTTA
-         BNd1U9hU8c5BYSQykElqMuMos1clhjlaSBSQpBS5BT7pcryunv5v6X6TwZo5PQFLuy7K
-         IWkjQY2c34v7lFi4eWD1AKlkMzJQhDThlOQp4enIWYM7fI9A23CLQ9J5Rz0T7G6pv6gv
-         yGHqK4Sptx7k2swAH50C0NZV7GUMpxBoVVPUONFil5bjEr2imOMkBWSRwhVgufhgv+ZS
-         FsxzEomNclNsLsvY3yRAVAK16bW5ilQ6etl4gL5zfObvY0i2JDf3kQUTUWehsnXVjNEw
-         IJqw==
+         :message-id:from:references:cc:to:subject:dkim-signature;
+        bh=ukap/D6uM+tm5XLlP0CcTaHbFa/qulLkLeaGy/Fleuc=;
+        b=vlqsJ0npqTDqFEvAvbrGFJM3xRZBlrEBJinLjAjl5PorWIdTtBO/mz8j76cZdTvtEr
+         HKTM33InKCW7B/8kB5xmmXtfxbLb3aRollkPZ+h//mUqHvjnpGyvY5ReV5bCjGho3L13
+         mT01NJv7MIY4aedRoxpybxrO2ZrtDuRR04f+fSqC7ceRZyXWNpI3N7cSd8noA9W+U0h3
+         S5fzAAW2Tnj9T7UDSYnFWmfnMy5J57Q/D9VqPDPFEILiZEzXHwRg5sirB0LgCRjTh+35
+         i9ObmzIXe5gUfhSQxkd1ENuI0vd8tJX1elDuP4yvCAE/w/JHJ9G9gDItfhTzvXKVJye1
+         S+Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Vs5Q41GU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11si5834193eji.118.2020.01.09.13.07.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2020 13:07:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MqI4v4Xw;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id l131si732976oig.120.2020.01.10.01.34.20;
+        Fri, 10 Jan 2020 01:34:20 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Vs5Q41GU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37280 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ipf1T-0002E3-AX
-	for alex.bennee@linaro.org; Thu, 09 Jan 2020 16:07:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33494)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1ipf1H-0002Cc-Ud
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 16:07:10 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1ipf1G-0001pr-Mf
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 16:07:07 -0500
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:38790)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1ipf1G-0001jM-Bb
- for qemu-arm@nongnu.org; Thu, 09 Jan 2020 16:07:06 -0500
-Received: by mail-pg1-x541.google.com with SMTP id a33so3801748pgm.5
- for <qemu-arm@nongnu.org>; Thu, 09 Jan 2020 13:07:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=TtHYgZVm5surxo1DzQJ0vQ5yPpHhCV88mWsDEOv4xmQ=;
- b=Vs5Q41GUw3neUV66YXUaJK5x2qI66837BzCJ7zn71LLeGYFjTViJMf8Ah0QiHdjVYr
- cla8JNcIriSsNGcWth1Ka2uQPWKn8JpBZ1WAIj6IlJWzYqt4zlcMek3dKfhIZUWRBhQF
- /gUfC4bSku2KC1ykET56bE78GU5V5SCGYfMmCK5f+1tVLgHbQsDcumUHyiueBmZR9FDc
- ruG3ifOCq0ROMfS58Q14RTxWt6Tyzz5HGdrFQOyQwifr9DI/680RML/lJCFq4STEic2c
- XKnKinDa40+3IUzyI8GkIzxgaDLF/UnQIFutfBT7RpAen9o0g968WEMsueOSRBemV3V+
- 4hNQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MqI4v4Xw;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727145AbgAJJeT (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 10 Jan 2020 04:34:19 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:39240 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1726759AbgAJJeT (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 10 Jan 2020 04:34:19 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1578648857;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=ukap/D6uM+tm5XLlP0CcTaHbFa/qulLkLeaGy/Fleuc=;
+        b=MqI4v4Xw37QgD+tuGZFlmKk36cRNwKLvz6bJ3mDxz3rSwa75W7r7mVjNweT4nPWWtCMLbp
+        khpKhjR5CJGw79uDG5DFusnDXH2O7StwuhiDVcC96LtdszIBBFPynfFCsavsKYPS+N8OOB
+        zZS7V8hYJ76EJrYT2VLzCUIyXj+fHpU=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-339-DYuQw0mEPhW5MF6e64jnGQ-1; Fri, 10 Jan 2020 04:34:16 -0500
+X-MC-Unique: DYuQw0mEPhW5MF6e64jnGQ-1
+Received: by mail-wr1-f69.google.com with SMTP id y7so654307wrm.3
+        for <kvm@vger.kernel.org>; Fri, 10 Jan 2020 01:34:16 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=TtHYgZVm5surxo1DzQJ0vQ5yPpHhCV88mWsDEOv4xmQ=;
- b=P4rYzdcsjJgUMssWxuz4S9URoNOwKhuBJZNxz0UaZPP+81HwkKzff/108jwhJLY59B
- 4vI0vGeqCTbwW+63Ha+YlN2xnZDbSwKDfoXbZsS18NXBVw2Q1f20NivNJfmAaoCDyJBp
- olU8eSM43y2dBIQH8Q/eYXPyCiFK4gR5h3YmpAgsPERO7M3yVGFQwlEncilMZyWG9+0y
- nbXbn7rXpG0WwTV405dk69+y60EqxKaJ+68Z3NocGABAJL460hid+OHtBMrtJOa1QnXX
- 3jyA4pEgk44+ZpoVJt8ROxga0afHGHcwX3oDLNeHpzQSPMkG9+xLXOJgJGkNJX8e+ImD
- sIOQ==
-X-Gm-Message-State: APjAAAUgU2hIUTMkRqtK4dIFFsWE+WsERuqqPbs5vT1rE8eW8eKSkqU5
- CBSAFXg6nvm3ETC1zQOzKnJtDg==
-X-Received: by 2002:a63:62c2:: with SMTP id w185mr639182pgb.271.1578604025029; 
- Thu, 09 Jan 2020 13:07:05 -0800 (PST)
-Received: from [192.168.15.12] (alanje.lnk.telstra.net. [120.151.179.201])
- by smtp.gmail.com with ESMTPSA id q22sm9241844pfg.170.2020.01.09.13.07.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Jan 2020 13:07:04 -0800 (PST)
-Subject: Re: [PATCH] target/arm/arm-semi: fix SYS_OPEN to return nonzero
- filehandle
-To: Masahiro Yamada <masahiroy@kernel.org>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20200109041228.10131-1-masahiroy@kernel.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <5c6f6bae-2201-6e7a-f965-d75d70cc86e7@linaro.org>
-Date: Fri, 10 Jan 2020 08:06:59 +1100
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=ukap/D6uM+tm5XLlP0CcTaHbFa/qulLkLeaGy/Fleuc=;
+        b=g9ugIFQB+rbQXCpWXnoD2LYvjwhs/o18Jjt2vgxZicw1C0dqtHMixEBUK5olWnlKU9
+         ow29bDqQxSu25CES1yYg6aWR7m/QMfHzl8d3fiKZRNdbNQpGhRi95Xj530pjM1RsMoPA
+         ukxk8ni9e0w2TPf1AWB37VE/sGWVAXrDOEuZbyExo79W2/9Tv9FQsyPRTJpsWRkUMfgY
+         tgncmwiT+8rNJ2SgW6dPLCE3vUIIqm4FCytMbtd8DDI5BmAMCO4OuAJGKJkp00y9kta8
+         mvfo2NaWe5BZLIOCLSrHq4JQFQRtoxA6Rhns1YfBgq0FBobL4Y6ZW9L7Mvr5yYfV962y
+         m6hw==
+X-Gm-Message-State: APjAAAUR91qVkyHEjis1ERXkmcI1W/R5za2bTVfgoO8H4No8gVR5wfky
+        CtxaNaXioeOhLm3wj+c3rdV3I933u/nnPgAWUtZ7XdjWPjWsmtwTvBEXNTMpV/yVlvByf6D261n
+        yihpmrNr3cZHq
+X-Received: by 2002:adf:f789:: with SMTP id q9mr2461809wrp.103.1578648855096;
+        Fri, 10 Jan 2020 01:34:15 -0800 (PST)
+X-Received: by 2002:adf:f789:: with SMTP id q9mr2461773wrp.103.1578648854833;
+        Fri, 10 Jan 2020 01:34:14 -0800 (PST)
+Received: from [10.101.1.81] ([176.12.107.132])
+        by smtp.gmail.com with ESMTPSA id v3sm1510233wru.32.2020.01.10.01.34.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 Jan 2020 01:34:14 -0800 (PST)
+Subject: Re: [PATCH 04/15] hw/ppc/spapr_rtas: Restrict variables scope to
+ single switch case
+To:     Greg Kurz <groug@kaod.org>
+Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+        Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
+        Juan Quintela <quintela@redhat.com>, qemu-ppc@nongnu.org,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Richard Henderson <rth@twiddle.net>,
+        Eric Blake <eblake@redhat.com>
+References: <20200109152133.23649-1-philmd@redhat.com>
+ <20200109152133.23649-5-philmd@redhat.com>
+ <20200109184349.1aefa074@bahia.lan>
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <9870f8ed-3fa0-1deb-860d-7481cb3db556@redhat.com>
+Date:   Fri, 10 Jan 2020 10:34:07 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200109041228.10131-1-masahiroy@kernel.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200109184349.1aefa074@bahia.lan>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::541
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /OnfM/Z4nib/
+Content-Transfer-Encoding: 8bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: bcUoeaztnzAR
 
-On 1/9/20 3:12 PM, Masahiro Yamada wrote:
-> According to the specification "Semihosting for AArch32 and Aarch64",
-> the SYS_OPEN operation should return:
+On 1/9/20 6:43 PM, Greg Kurz wrote:
+> On Thu,  9 Jan 2020 16:21:22 +0100
+> Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
 > 
->  - A nonzero handle if the call is successful
->  - -1 if the call is not successful
+>> We only access these variables in RTAS_SYSPARM_SPLPAR_CHARACTERISTICS
+>> case, restrict their scope to avoid unnecessary initialization.
+>>
 > 
-> So, it should never return 0.
-> 
-> Prior to commit 35e9a0a8ce4b ("target/arm/arm-semi: Make semihosting
-> code hand out its own file descriptors"), the guest fd matched to the
-> host fd. It returned a nonzero handle on success since the fd 0 is
-> already used for stdin.
-> 
-> Now that the guest fd is the index of guestfd_array, it starts from 0.
-> 
-> I noticed this issue particularly because Trusted Firmware-A built with
-> PLAT=qemu is no longer working. Its io_semihosting driver only handles
-> a positive return value as a valid filehandle.
-> 
-> Basically, there are two ways to fix this:
-> 
->   - Use (guestfd - 1) as the index of guestfs_arrary. We need to insert
->     increment/decrement to convert the guestfd and the array index back
->     and forth.
-> 
->   - Keep using guestfd as the index of guestfs_array. The first entry
->     of guestfs_array is left unused.
-> 
-> I thought the latter is simpler. We end up with wasting a small piece
-> of memory for the unused first entry of guestfd_array, but this is
-> probably not a big deal.
-> 
-> Fixes: 35e9a0a8ce4b ("target/arm/arm-semi: Make semihosting code hand out its own file descriptors")
-> Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
-> ---
+> I guess a decent compiler can be smart enough detect that the initialization
+> isn't needed outside of the RTAS_SYSPARM_SPLPAR_CHARACTERISTICS branch...
+> Anyway, reducing scope isn't bad. The only hitch I could see is that some
+> people do prefer to have all variables declared upfront, but there's a nested
+> param_val variable already so I guess it's okay.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I don't want to outsmart compilers :)
 
+The MACHINE() macro is not a simple cast, it does object introspection 
+with OBJECT_CHECK(), thus is not free. Since 
+object_dynamic_cast_assert() argument is not const, I'm not sure the 
+compiler can remove the call.
 
-r~
+Richard, Eric, do you know?
+
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>   hw/ppc/spapr_rtas.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
+>> index 6f06e9d7fe..7237e5ebf2 100644
+>> --- a/hw/ppc/spapr_rtas.c
+>> +++ b/hw/ppc/spapr_rtas.c
+>> @@ -267,8 +267,6 @@ static void rtas_ibm_get_system_parameter(PowerPCCPU *cpu,
+>>                                             uint32_t nret, target_ulong rets)
+>>   {
+>>       PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
+>> -    MachineState *ms = MACHINE(spapr);
+>> -    unsigned int max_cpus = ms->smp.max_cpus;
+>>       target_ulong parameter = rtas_ld(args, 0);
+>>       target_ulong buffer = rtas_ld(args, 1);
+>>       target_ulong length = rtas_ld(args, 2);
+>> @@ -276,6 +274,8 @@ static void rtas_ibm_get_system_parameter(PowerPCCPU *cpu,
+>>   
+>>       switch (parameter) {
+>>       case RTAS_SYSPARM_SPLPAR_CHARACTERISTICS: {
+>> +        MachineState *ms = MACHINE(spapr);
+>> +        unsigned int max_cpus = ms->smp.max_cpus;
+> 
+> The max_cpus variable used to be a global. Now that it got moved
+> below ms->smp, I'm not sure it's worth keeping it IMHO. What about
+> dropping it completely and do:
+> 
+>          char *param_val = g_strdup_printf("MaxEntCap=%d,"
+>                                            "DesMem=%" PRIu64 ","
+>                                            "DesProcs=%d,"
+>                                            "MaxPlatProcs=%d",
+>                                            ms->smp.max_cpus,
+>                                            current_machine->ram_size / MiB,
+>                                            ms->smp.cpus,
+>                                            ms->smp.max_cpus);
+
+OK, good idea.
+
+> And maybe insert an empty line between the declaration of param_val
+> and the code for a better readability ?
+> 
+>>           char *param_val = g_strdup_printf("MaxEntCap=%d,"
+>>                                             "DesMem=%" PRIu64 ","
+>>                                             "DesProcs=%d,"
+> 

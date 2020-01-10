@@ -1,113 +1,284 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp794120lff;
-        Fri, 10 Jan 2020 06:54:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzvoGOJlmIIHFgGCmhGj6c6yQNM5nxwQ9fiw6dpp0rDwQKkMd0SCN4AyqmVnAs1GSoyaup9
-X-Received: by 2002:aca:4782:: with SMTP id u124mr2499580oia.93.1578668071204;
-        Fri, 10 Jan 2020 06:54:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578668071; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp794263lff;
+        Fri, 10 Jan 2020 06:54:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx4S1AC+Eun7e59pXvfPbvVRlyuMOiic+vVZdZvyuFWl7aWDwXnKKPN0pT3Ltayr9iRL2tR
+X-Received: by 2002:ac8:4689:: with SMTP id g9mr2692842qto.121.1578668081113;
+        Fri, 10 Jan 2020 06:54:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578668081; cv=none;
         d=google.com; s=arc-20160816;
-        b=w7PWyGx+vLym4GzTv2pMGhpQrwieEJvv+1UaegOoX2hEHNE1iL064AomDjUlOQg+Rw
-         6GcvoxEJaBi2tMz3qyhVEISboVzkcdy6KuBtiO1PLAY69zV6imy090HwMhmKVHu178Kg
-         UfruRSEEqub6vB9kfILdQz2GqP6zdWW14RIR1TwQh2tD4rxIqPl8ug0G94wZgYVhiNPY
-         sgMXTiUbCswsfTjL0uxYaD7gXgYUo0R9mrlgn0/vW4hrolakILa9hFW5QrKmsO5Deu23
-         YCy4mZEBZHBqMrNxDKvctolvnwp79RF2Vw+IZTDbbtN8OierJKv3PCgF9fJHC1lXQTKz
-         CrnQ==
+        b=bz53auo6Te3lKzRBWk2L22UzXVzbHUG0pL1c7BxrxOT4cKziHBEdspaezoPSGxznn9
+         0wuGfgkeqize7ujmDOxCEu6Jlp5bPH1cbeK7SMnTYeS0ScXQBnKf02xDOpD94LB+GKAQ
+         8gvqWDuyP6Xdczdsk32UT204SkQyJzRmBAWnJSNYxNDFb0i51+WdM1pxOtquuJNRR72i
+         rkvP1YoD+EDpKEBPQ+0qb5l8V/rap8TYPR+Fb9Yl4oAQFeXMugqYjpLbNP/gSk0xxxtu
+         H1e2A9L/xbD/NPg/hxq37u8jaEMWbkHn10zS//UYSFtlPOeES+7ClLoQ5jEN4SS3e8p2
+         Qj2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=g1Y7SAIkQ6YKL70iv+PevVOHVnPkk+5bW/+E3fVVoME=;
-        b=o3saQ4MTM8RByQOV+jYZtPEaZNwnWdI1YzEOBBx5jcFSBhUUKjwXNlwvQVA6+xfmZc
-         zSB7HFi93CJpxOiUOt0kT4SuU6vcx209mfRF6Fcro05ZvUF1UZJKHGVMKzEOGEKJX//O
-         WIKPz6ztcC1HDPbBELLo7XWFrtKTFWM4PBptRYwn1CsJYiZQFjpQ9S0NXU7AalFsLwPH
-         XWWkmFvx1SledFrIv+4EmtMCdF85gEbnBI5MYC2RuTagZAYZ9+w+0f297JH0GOOoaLNH
-         ei7NWYMH3R1oOvgZxpgOxU/yEdGCF3OMkdRC10+5Q/Fhdw+3oSwXzP6O1sSj8lsMVS6c
-         WGwQ==
+        bh=7++QamQUhMiwQnHCrpInNehIYKfWNApBSuxFQSzhzZs=;
+        b=LqveGVjqHQMSh1g5GgZbcH/5q+jqsfLnE5985iS5so69lSvPDg5UI+cIdVXeojeRTq
+         uG8KAbf+4tBubXTjAkwET6/v0bHrjRKoCi1DoFudFKFVxHFKLkvERptl0QNn+u8nfjGv
+         BU9MPQZ30yWZwjRtd6RYU49wOYi/39zjO//OvnOyOqcGbfWbGF7wP0CrjfVIqJZGv4KL
+         j1Rn08dUXeH9uRhzCkLAsfPwdhcbDeNyHoO04CrUTA5xFkshDokR7tmd5G8I/96qRu8I
+         zoYJ/1OUTl4c03aOhE6YZ760eFB4vzLPk/HbQB1NRPFrYnJ9WrrA8deR/RobMlVO49mU
+         a62A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SvFGWpfp;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 11si1538069otu.301.2020.01.10.06.54.31;
-        Fri, 10 Jan 2020 06:54:31 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=TWwPaLqN;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id i17si1259670qtv.65.2020.01.10.06.54.40;
+        Fri, 10 Jan 2020 06:54:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SvFGWpfp;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728209AbgAJOy3 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 10 Jan 2020 09:54:29 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:60680 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1728137AbgAJOy3 (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Fri, 10 Jan 2020 09:54:29 -0500
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=TWwPaLqN;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id CEC964B17F;
+	Fri, 10 Jan 2020 09:54:40 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Kfo-5MMqKn8Q; Fri, 10 Jan 2020 09:54:39 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id B68344B17A;
+	Fri, 10 Jan 2020 09:54:39 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id E45AE4B17F
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 10 Jan 2020 09:54:38 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id C89CjzD3uMM7 for <kvmarm@lists.cs.columbia.edu>;
+ Fri, 10 Jan 2020 09:54:37 -0500 (EST)
+Received: from us-smtp-1.mimecast.com (us-smtp-1.mimecast.com [205.139.110.61])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id DA0094AEFF
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 10 Jan 2020 09:54:37 -0500 (EST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1578668068;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=g1Y7SAIkQ6YKL70iv+PevVOHVnPkk+5bW/+E3fVVoME=;
-        b=SvFGWpfp3DVBDZfD4bM3aH/YFOrFPI6GT1BxVzDUMtp4MqSc96m5XvVWmenZhHsON659sC
-        XLvKJzI05Cddvh2ajlWClozArJZTumC1AQn4DLAdK7K6vgY2hfSMdrYPPNZF/TxMpna2F3
-        3OB5xvJCGAlk7iC662MCE8jhFXqe5Eo=
+ s=mimecast20190719; t=1578668077;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hksWhfx/qjqLBl2kwSG6HIa1DnV2Yh8CnWY4dayzAHc=;
+ b=TWwPaLqNjuisTNHbR4U+BXIxgzDnwYdd94Z3tY8iFkJZL8ACl5RLakr91MVo9f6F5ofi3V
+ xXVmTPtLfmq4D+6epSFQOtxIF/zoQlxzoqxH3rYzIfDMh9qi41OqvQCq/SYmuPbpgexSl6
+ uPMoxWX2pl9TbEsdT2/z6VPN1umEDwI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-364-H6w6yrkENFmG85vKwnY_Qg-1; Fri, 10 Jan 2020 09:54:27 -0500
-X-MC-Unique: H6w6yrkENFmG85vKwnY_Qg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B37618B9FEF;
-        Fri, 10 Jan 2020 14:54:25 +0000 (UTC)
+ us-mta-22-sLHCnH1HO6O3PHQlEJkQ_A-1; Fri, 10 Jan 2020 09:54:33 -0500
+X-MC-Unique: sLHCnH1HO6O3PHQlEJkQ_A-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 328261AEEF5;
+ Fri, 10 Jan 2020 14:54:32 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-108.ams2.redhat.com [10.36.117.108])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id B178A7BA5F;
-        Fri, 10 Jan 2020 14:54:20 +0000 (UTC)
-From:   Eric Auger <eric.auger@redhat.com>
-To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, thuth@redhat.com
-Subject: [kvm-unit-tests PATCH v2 01/16] libcflat: Add other size defines
-Date:   Fri, 10 Jan 2020 15:53:57 +0100
-Message-Id: <20200110145412.14937-2-eric.auger@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D26397C407;
+ Fri, 10 Jan 2020 14:54:25 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+ kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: [kvm-unit-tests PATCH v2 02/16] arm: gic: Provide per-IRQ helper
+ functions
+Date: Fri, 10 Jan 2020 15:53:58 +0100
+Message-Id: <20200110145412.14937-3-eric.auger@redhat.com>
 In-Reply-To: <20200110145412.14937-1-eric.auger@redhat.com>
 References: <20200110145412.14937-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: PbUc2kTEfDMq
+Cc: andre.przywara@arm.com, thuth@redhat.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: bPJlec1stRBW
 
-Introduce additional SZ_256, SZ_8K, SZ_16K macros that will
-be used by ITS tests.
+From: Andre Przywara <andre.przywara@arm.com>
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+A common theme when accessing per-IRQ parameters in the GIC distributor
+is to set fields of a certain bit width in a range of MMIO registers.
+Examples are the enabled status (one bit per IRQ), the level/edge
+configuration (2 bits per IRQ) or the priority (8 bits per IRQ).
+
+Add a generic helper function which is able to mask and set the
+respective number of bits, given the IRQ number and the MMIO offset.
+Provide wrappers using this function to easily allow configuring an IRQ.
+
+For now assume that private IRQ numbers always refer to the current CPU.
+In a GICv2 accessing the "other" private IRQs is not easily doable (the
+registers are banked per CPU on the same MMIO address), so we impose the
+same limitation on GICv3, even though those registers are not banked
+there anymore.
+
+Signed-off-by: Andre Przywara <andre.przywara@arm.com>
+
 ---
- lib/libcflat.h | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/lib/libcflat.h b/lib/libcflat.h
-index ea19f61..7092af2 100644
---- a/lib/libcflat.h
-+++ b/lib/libcflat.h
-@@ -36,7 +36,10 @@
- #define ALIGN(x, a)		__ALIGN((x), (a))
- #define IS_ALIGNED(x, a)	(((x) & ((typeof(x))(a) - 1)) =3D=3D 0)
-=20
-+#define SZ_256			(1 << 8)
- #define SZ_4K			(1 << 12)
-+#define SZ_8K			(1 << 13)
-+#define SZ_16K			(1 << 14)
- #define SZ_64K			(1 << 16)
- #define SZ_2M			(1 << 21)
- #define SZ_1G			(1 << 30)
---=20
+initialize reg
+---
+ lib/arm/asm/gic-v3.h |  2 +
+ lib/arm/asm/gic.h    |  8 ++++
+ lib/arm/gic.c        | 90 ++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 100 insertions(+)
+
+diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
+index 0dc838b..6beeab6 100644
+--- a/lib/arm/asm/gic-v3.h
++++ b/lib/arm/asm/gic-v3.h
+@@ -23,6 +23,8 @@
+ #define GICD_CTLR_ENABLE_G1A		(1U << 1)
+ #define GICD_CTLR_ENABLE_G1		(1U << 0)
+ 
++#define GICD_IROUTER			0x6000
++
+ /* Re-Distributor registers, offsets from RD_base */
+ #define GICR_TYPER			0x0008
+ 
+diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
+index 09826fd..21cdb58 100644
+--- a/lib/arm/asm/gic.h
++++ b/lib/arm/asm/gic.h
+@@ -74,5 +74,13 @@ extern void gic_write_eoir(u32 irqstat);
+ extern void gic_ipi_send_single(int irq, int cpu);
+ extern void gic_ipi_send_mask(int irq, const cpumask_t *dest);
+ 
++void gic_set_irq_bit(int irq, int offset);
++void gic_enable_irq(int irq);
++void gic_disable_irq(int irq);
++void gic_set_irq_priority(int irq, u8 prio);
++void gic_set_irq_target(int irq, int cpu);
++void gic_set_irq_group(int irq, int group);
++int gic_get_irq_group(int irq);
++
+ #endif /* !__ASSEMBLY__ */
+ #endif /* _ASMARM_GIC_H_ */
+diff --git a/lib/arm/gic.c b/lib/arm/gic.c
+index 9430116..aa9cb86 100644
+--- a/lib/arm/gic.c
++++ b/lib/arm/gic.c
+@@ -146,3 +146,93 @@ void gic_ipi_send_mask(int irq, const cpumask_t *dest)
+ 	assert(gic_common_ops && gic_common_ops->ipi_send_mask);
+ 	gic_common_ops->ipi_send_mask(irq, dest);
+ }
++
++enum gic_bit_access {
++	ACCESS_READ,
++	ACCESS_SET,
++	ACCESS_RMW
++};
++
++static u8 gic_masked_irq_bits(int irq, int offset, int bits, u8 value,
++			      enum gic_bit_access access)
++{
++	void *base;
++	int split = 32 / bits;
++	int shift = (irq % split) * bits;
++	u32 reg = 0, mask = ((1U << bits) - 1) << shift;
++
++	switch (gic_version()) {
++	case 2:
++		base = gicv2_dist_base();
++		break;
++	case 3:
++		if (irq < 32)
++			base = gicv3_sgi_base();
++		else
++			base = gicv3_dist_base();
++		break;
++	default:
++		return 0;
++	}
++	base += offset + (irq / split) * 4;
++
++	switch (access) {
++	case ACCESS_READ:
++		return (readl(base) & mask) >> shift;
++	case ACCESS_SET:
++		reg = 0;
++		break;
++	case ACCESS_RMW:
++		reg = readl(base) & ~mask;
++		break;
++	}
++
++	writel(reg | ((u32)value << shift), base);
++
++	return 0;
++}
++
++void gic_set_irq_bit(int irq, int offset)
++{
++	gic_masked_irq_bits(irq, offset, 1, 1, ACCESS_SET);
++}
++
++void gic_enable_irq(int irq)
++{
++	gic_set_irq_bit(irq, GICD_ISENABLER);
++}
++
++void gic_disable_irq(int irq)
++{
++	gic_set_irq_bit(irq, GICD_ICENABLER);
++}
++
++void gic_set_irq_priority(int irq, u8 prio)
++{
++	gic_masked_irq_bits(irq, GICD_IPRIORITYR, 8, prio, ACCESS_RMW);
++}
++
++void gic_set_irq_target(int irq, int cpu)
++{
++	if (irq < 32)
++		return;
++
++	if (gic_version() == 2) {
++		gic_masked_irq_bits(irq, GICD_ITARGETSR, 8, 1U << cpu,
++				    ACCESS_RMW);
++
++		return;
++	}
++
++	writeq(cpus[cpu], gicv3_dist_base() + GICD_IROUTER + irq * 8);
++}
++
++void gic_set_irq_group(int irq, int group)
++{
++	gic_masked_irq_bits(irq, GICD_IGROUPR, 1, group, ACCESS_RMW);
++}
++
++int gic_get_irq_group(int irq)
++{
++	return gic_masked_irq_bits(irq, GICD_IGROUPR, 1, 0, ACCESS_READ);
++}
+-- 
 2.20.1
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

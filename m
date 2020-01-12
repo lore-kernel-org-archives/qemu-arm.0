@@ -1,101 +1,101 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2861721lff;
-        Sun, 12 Jan 2020 01:43:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzAWhTAkZsKD8TaUD3yTAaoCJquokSolSTkJSW3hMQ1rmvDDvBwJKYKBqmEfwBCFDEVFlJh
-X-Received: by 2002:a05:6402:1d0d:: with SMTP id dg13mr11783967edb.104.1578822213813;
-        Sun, 12 Jan 2020 01:43:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578822213; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2862473lff;
+        Sun, 12 Jan 2020 01:44:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz1sSO5Sho3OIoiXCmB0eJi8vSQf8szWqd3RvLMhttcaCHBXbNu1cQRpK4cbRSMxyZ2N0G5
+X-Received: by 2002:a17:906:bcf5:: with SMTP id op21mr11521837ejb.160.1578822276847;
+        Sun, 12 Jan 2020 01:44:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578822276; cv=none;
         d=google.com; s=arc-20160816;
-        b=vuQmhJaoWdyB3hzsFoXg23B9Q+blEGUUcg4Z22ODHkhNB8pOfBFhKdIGgfJ9XnyxHW
-         7vsOfBnlLTg8de3fv0sGa79tSjjm1wIxsFSxECZcMhRMKCVrA8SZfH4CsWQ6U44PbE/5
-         xZtxsnATtqlSnK0QMtmSlqdFLuz3InNOPc8/oy/UhZo1z5msLEfFE7a3ehwE6u3evhYJ
-         LKHDsHULxcu7yCJf/RA5vDJxRSsEQrfQ1+EXV9x5Il3YwUUh87I/urSWAzR8vfRv+3S2
-         QXcCKqhBmdjlU3iG+PEDXo51kQVvRcJ458ht9VqB250nIKWTiiWCZsn6y64xQZTzCgRJ
-         vKag==
+        b=EfgJtluYaZx8VfdVPqJjXtiYrYQb2PR4LBIRwDBMiBNAuk3jykrKSdw+JABGHzQOIa
+         AorZ8vOvzMysNkj69WsItDU8BXs8yM+ObWdRu5XLfwESFI2pbwgY4dWzq1U82ysoJxLk
+         Gwc2JHEmu5T20fjEHVHsqPDmEiOtIv7ZDzOUm+vsVDqLnvrOBorRc2lPSbd9TLwRnnwS
+         FN7Jt0oF6tXEAuJ/upTOrZGOsSWEPQD+o4wC7PBv6pTS5A60A3hW2gQMRU/FB//8r2zo
+         AwNIdLMAfZjsQDRbmjtFyc4EGbwAS07PLzs4vA5hbjq1UbHSf5OQI/VM8lXYYzK4WjBh
+         hRLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=uQmpwxVEj1cR4VjtZn7xRR3NzxiwsRUjQ/Q0ih7Ijuw=;
-        b=DvwjScBY9vndKFu3RCyv7oOFjyF4z4TBuh1jvDF5aBlF/i4njtX+upI6OPxtekZ5lE
-         tjg4aveVSrIdjAx8AtXURoxAVnMxDmYwRcYY96tp0XLUaA4zVbRyeIpFWM0ThsbgspbD
-         SisXsGrjFEVpYagSz+iZ9WgYKQpIFRYh11WaxIBVHqiVf4U35SIkOZVS6wrMretlOJ+p
-         7GeDYUq0VROiWfzkxgMYjFTkNtmhj69AH1mcO9tTaaIZXV5nA5gWJCR9kLQUdgLXJXwq
-         XwmVCgMb+RGyT7cuocG3GMFfvn+ilM2qoVJesflTsfi4WyRwSt9kQCz+0e9oisBfNtoi
-         Rixg==
+        bh=A5r5kQmyydbNcxW0sdL6UsroI3lvbIoMVRcAXoxkjxE=;
+        b=DzQUxsTjsqsdZztSVZLPE9obt2+MXxYfVrNkNQnG4tikf0gE9ZsS41EOW3MDuqXzpq
+         9Xb35ugA6RH68DCpfyfTRdZQZXfAlil/ybMQ8CbBWTwnXHoKQOdM4vNsOxdLRP9Qh7O6
+         Y9NRNtrn4ukDhXQv/WxShF81HioJi3YYISaFfweExEjbxXaC6CO26BncNAS9u8BgWvEP
+         NQ71W1Xj6qKe0I9F9qdh7uPpzUv4X1nqd/gqHhHb54/EV059tCLS5h8T4pQU1VGGOIbf
+         Z26jiSM2zMUpuEGyuwOv11hzVp8+itgrFF6fz3z+71RmYCeO/ePps5KUI+A1sDnw+473
+         SBHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="lz/w3v3F";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W2uztqtC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a3si5362340edq.161.2020.01.12.01.43.33
+        by mx.google.com with ESMTPS id cf24si5042645ejb.286.2020.01.12.01.44.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Jan 2020 01:43:33 -0800 (PST)
+        Sun, 12 Jan 2020 01:44:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="lz/w3v3F";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W2uztqtC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36474 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36482 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iqZmO-0000xM-Mm
-	for alex.bennee@linaro.org; Sun, 12 Jan 2020 04:43:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52619)
+	id 1iqZnP-0001yw-Dq
+	for alex.bennee@linaro.org; Sun, 12 Jan 2020 04:44:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54240)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iqZmC-0000tb-GO
- for qemu-arm@nongnu.org; Sun, 12 Jan 2020 04:43:21 -0500
+ (envelope-from <alistair23@gmail.com>) id 1iqZn1-0001gu-C3
+ for qemu-arm@nongnu.org; Sun, 12 Jan 2020 04:44:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iqZmB-0005BW-HM
- for qemu-arm@nongnu.org; Sun, 12 Jan 2020 04:43:20 -0500
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:34466)
+ (envelope-from <alistair23@gmail.com>) id 1iqZmz-0000ck-DI
+ for qemu-arm@nongnu.org; Sun, 12 Jan 2020 04:44:11 -0500
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:39166)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iqZm7-0004bu-5T; Sun, 12 Jan 2020 04:43:15 -0500
-Received: by mail-lj1-x241.google.com with SMTP id z22so6753275ljg.1;
- Sun, 12 Jan 2020 01:43:14 -0800 (PST)
+ id 1iqZms-0000K0-MA; Sun, 12 Jan 2020 04:44:02 -0500
+Received: by mail-lf1-x142.google.com with SMTP id y1so4706294lfb.6;
+ Sun, 12 Jan 2020 01:44:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=uQmpwxVEj1cR4VjtZn7xRR3NzxiwsRUjQ/Q0ih7Ijuw=;
- b=lz/w3v3FvAImk7GIfeLMkjq7yFJEO27+zK0Trfs/b6YTLzlbx4zyrGmcYD5lup1nyi
- hdf54ZKtgUWMHwcA0ZCauN1r7BGXb6sRsJpw3sc2lLdV84h+oDivN4YzY2GdJWcD5NF9
- LCPlvrzEl/MnPz6qdIEt4MUWdwQLVWLs2e0+L+imOZHL1QBd9Q1RiURQ1Z7G3bVESAKX
- xvWR8jjK6XeaCb6+QObz4P49sgddj7H8lfmdPdysgvTLtuc0nfea0P9EaAptRhhP86KQ
- EwArp9tWLTwNvdSjCwwcbGNfG/uVQmNGZCefwAQFRAtttELBxu22e/W1/EXG2/jNkH9J
- kmqQ==
+ bh=A5r5kQmyydbNcxW0sdL6UsroI3lvbIoMVRcAXoxkjxE=;
+ b=W2uztqtCCOsZvughBCHSR7Y+yQr1mxzDn1SFDI/rWwPWFtLXZFMbLggsMh8BhdNUGK
+ 3DKBY7SeDxtbN6j4hgyKCM5XORMj8s7TsXhBBN7Oe1YdVna7cpkmv1eUw7WtE1slV4rM
+ YXDYcoU8dmMIfv6qoDuY1y77XNYwXYBIh5L2OhvmIz21gFsKI5l73QU7NRXlAMW1avSS
+ cwECYjHgLZE7j6QRDqSOobx6NFJBLSTC6L2l4xU23ru4U4UVFnryMejhwtLsIw8KGd8T
+ aP1rcE1AsHitYur54ayIPaxs6vpXkYRMYfwbXl3YuCMRpqqZlSN3dMyI2s09n+imtO8K
+ ivcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=uQmpwxVEj1cR4VjtZn7xRR3NzxiwsRUjQ/Q0ih7Ijuw=;
- b=kFk2iaOApoDgJCY1yJT2+4vq90RUWwIPv7jiY70UKtgnrHI4oQq+HrZMa6oGcuFZvd
- vUD4RIG8+fIjuV6jgUNC9SyL0IHy1bYdXikb1MwEISwvSA3ZtL2lY1GnTuiF97QvJRaH
- /s7p5TH6QOGFy0KmVzie/faokEb+J3PHB30t7Gy7q8BbQoPnpFWig862sdExtH/AX3v4
- MC3Wr3zOZu+iBJmooRh3/zwwN5Q/NJzReHAGIwpL+vimmBD2jkPKjMPdQFVNg1Fu9HmU
- gd2YQdp5oX6pFdM91vlFZAvBXJ9HdYWX2grgrz2UBLxgG2KMrkg9who0OMzJYlDuI0Kd
- D/1Q==
-X-Gm-Message-State: APjAAAW96GAcbFfNbDgwl9CHSMziSNmNwl6/CApM8O+jqwaWP3x+26vv
- xgx9cW8xqy2NJXebd/Sp0EzzjXBCyO/1HFOjDZE=
-X-Received: by 2002:a2e:9b03:: with SMTP id u3mr7679182lji.87.1578822193085;
- Sun, 12 Jan 2020 01:43:13 -0800 (PST)
+ bh=A5r5kQmyydbNcxW0sdL6UsroI3lvbIoMVRcAXoxkjxE=;
+ b=Rp87kQ8svPUnQywqnRbvnceuqJeYvnuiSuBhhv6STlxOf+cVhyWcZOEz6cN994clC6
+ CzbtWP/1Z5zi1TyDA/+eVA8ErKNKpLKjzJlP572JPFPfktDCMrqtFYBfyhXbXjCE/W4y
+ bVgl48sOSuSjQDOQNKK0gOHKA0LpdaC+Vhnb9ruZy+EgS+obUjNWQKzNo/BGoKzZyWmE
+ AyHUJ/0v3JD/aVZmgR1E5zEQOx+hzRc1+c46q3G7u3FSvtZjkXaOjIpnNZ9bUJJKPEkc
+ r9HmCbYmDpo4gfdecsGNhYIpILckJW+dT/QPrkIwZaYZcDGcMt9mHmkR2GZVyT9YHoIj
+ yMBg==
+X-Gm-Message-State: APjAAAVcidQ1mNRSIVVpyou9wbMb8678Te7121W5tI1LCV0kwLNq4G2g
+ 8gGa69SZoda3gh9EBvUzzRcINUk8E9HyA+FyEko=
+X-Received: by 2002:ac2:5f68:: with SMTP id c8mr4913919lfc.196.1578822241492; 
+ Sun, 12 Jan 2020 01:44:01 -0800 (PST)
 MIME-Version: 1.0
 References: <20200109152133.23649-1-philmd@redhat.com>
- <20200109152133.23649-6-philmd@redhat.com>
-In-Reply-To: <20200109152133.23649-6-philmd@redhat.com>
+ <20200109152133.23649-7-philmd@redhat.com>
+In-Reply-To: <20200109152133.23649-7-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Sun, 12 Jan 2020 17:42:45 +0800
-Message-ID: <CAKmqyKMOznT5OspQYB41+xYNWK6BnxYeYT7qUWk=KJLv7i6XmQ@mail.gmail.com>
-Subject: Re: [PATCH 05/15] device-hotplug: Replace current_machine by
+Date: Sun, 12 Jan 2020 17:43:33 +0800
+Message-ID: <CAKmqyKN9nEEJW3Jvw6b-4nT=oqHF3DkkReEZa2GGfjFu=7qWaw@mail.gmail.com>
+Subject: Re: [PATCH 06/15] migration/savevm: Replace current_machine by
  qdev_get_machine()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::241
+X-Received-From: 2a00:1450:4864:20::142
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,9 +120,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HN/7kIkdkKAv
+X-TUID: uAYVs7WDSr9G
 
-On Thu, Jan 9, 2020 at 11:27 PM Philippe Mathieu-Daud=C3=A9
+On Thu, Jan 9, 2020 at 11:30 PM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
 > As we want to remove the global current_machine,
@@ -136,22 +136,49 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  device-hotplug.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  migration/savevm.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 >
-> diff --git a/device-hotplug.c b/device-hotplug.c
-> index f01d53774b..44d687f254 100644
-> --- a/device-hotplug.c
-> +++ b/device-hotplug.c
-> @@ -45,7 +45,7 @@ static DriveInfo *add_init_drive(const char *optstr)
->      if (!opts)
->          return NULL;
+> diff --git a/migration/savevm.c b/migration/savevm.c
+> index 59efc1981d..0e8b6a4715 100644
+> --- a/migration/savevm.c
+> +++ b/migration/savevm.c
+> @@ -292,7 +292,8 @@ static uint32_t get_validatable_capabilities_count(vo=
+id)
+>  static int configuration_pre_save(void *opaque)
+>  {
+>      SaveState *state =3D opaque;
+> -    const char *current_name =3D MACHINE_GET_CLASS(current_machine)->nam=
+e;
+> +    MachineClass *mc =3D MACHINE_GET_CLASS(qdev_get_machine());
+> +    const char *current_name =3D mc->name;
+>      MigrationState *s =3D migrate_get_current();
+>      int i, j;
 >
+> @@ -362,7 +363,8 @@ static bool configuration_validate_capabilities(SaveS=
+tate *state)
+>  static int configuration_post_load(void *opaque, int version_id)
+>  {
+>      SaveState *state =3D opaque;
+> -    const char *current_name =3D MACHINE_GET_CLASS(current_machine)->nam=
+e;
+> +    MachineClass *mc =3D MACHINE_GET_CLASS(qdev_get_machine());
+> +    const char *current_name =3D mc->name;
+>
+>      if (strncmp(state->name, current_name, state->len) !=3D 0) {
+>          error_report("Machine type received is '%.*s' and local is '%s'"=
+,
+> @@ -615,9 +617,7 @@ static void dump_vmstate_vmsd(FILE *out_file,
+>
+>  static void dump_machine_type(FILE *out_file)
+>  {
+> -    MachineClass *mc;
+> -
 > -    mc =3D MACHINE_GET_CLASS(current_machine);
-> +    mc =3D MACHINE_GET_CLASS(qdev_get_machine());
->      dinfo =3D drive_new(opts, mc->block_default_type, &err);
->      if (err) {
->          error_report_err(err);
+> +    MachineClass *mc =3D MACHINE_GET_CLASS(qdev_get_machine());
+>
+>      fprintf(out_file, "  \"vmschkmachine\": {\n");
+>      fprintf(out_file, "    \"Name\": \"%s\"\n", mc->name);
 > --
 > 2.21.1
 >

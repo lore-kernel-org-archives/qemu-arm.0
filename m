@@ -1,83 +1,89 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp2865720lff;
-        Sun, 12 Jan 2020 01:49:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzn88mqR0CdN3aEDgx60Mdz1dFxFFM+4q9xdEufJJMeuMDxzqdTE75TGk0+J4PrDyXilzjx
-X-Received: by 2002:a05:6830:1c81:: with SMTP id v1mr9633762otf.83.1578822570633;
-        Sun, 12 Jan 2020 01:49:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578822570; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3045221lff;
+        Sun, 12 Jan 2020 05:45:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx28C3UC+LE3FMNQ8WD6niXIuZIwY2ZzOULThIAOjdzNEG7vHaCNFg94UHDzcMmuL3Xljdp
+X-Received: by 2002:a54:4086:: with SMTP id i6mr9444985oii.65.1578836722612;
+        Sun, 12 Jan 2020 05:45:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578836722; cv=none;
         d=google.com; s=arc-20160816;
-        b=PT36xFRhoAMcJUG9zanfZeBaIk4n/MbYgk4s3kWqij9bf3K1aLXwxtXjDb/Sr9XrA1
-         2coGcfpeZIKliOj/DLbAZ24UlHle38SqKyBzNvCkHnd2f9VodBBM5TdeC9QxAWsZAFSJ
-         +kuJcliPfbq/aMVgr3QpsqduZcPdTpfIAc1Q/AgV8VQ56ZSEai4h8X8c3yRdTRapxjR7
-         tO9TquwP/fWahgrSa3r9wUKDWEitiul+lDPyRayndhtOSym3yrDKQV02stw8vgad8Eq5
-         uelYR8OSaB9zKT50KiXAH+wG7fYhPJT3HLhh5Q3dnQsdOWjcYyUZxf6PXmlcHNBayNPJ
-         MljQ==
+        b=w3IYo47OSChIQtBLdbIWE5Wnf5a2v7eBm75Qx56TUEqywguTGkdU0fX9/zwwao0R4u
+         YrG2BzpZyPpT4v/oX0a3cAGjYjH5CuSotObz868dKr8bAcr+J5jEO5XmVTQbPKl3ysZn
+         +/OUFyn3pgkQSFL6WKV8f7bao7V1g12vUha0QdyE2+5CgxyxpMCYC6A2kc0e0IOWjgch
+         DZoApHTEvJrgkEsZzLwDCP/wTW7Yu/Pxdt87MkhK98bwJPSNgcOJGqNlf46HRkSKOvNK
+         oXej9qwUTTOd4r/SztSKuCTbmC6L5fUXLog8mYMAARDq8FvMBgvXCJh8pKxAHpz/xVKj
+         bU1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:cc:to:subject
-         :message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=gFJu0ECQYPDpnOY6gf8MGQ1UvMvuAoTJib9HaOc9GXQ=;
-        b=OVWF5IUOQUb2ZTb19fjPJxFhjKN9o/TSyWOCxfeY25K/+Rb3b23dLqYIACBi24s0G2
-         DLqzMz9DJQ+XPse8GV6g8a2NSIuy21yAu+TCzVCE/nG4T8eXzYC/pjv+vR07LhG5V4JO
-         VH5MLz4W6qYRaQ7JzA127dF4RishipogwoQlKyRJQ4DGSA+z+4RCoH/kGGP9coGBT0oe
-         5rq9cRmWFf1mICMpkmQiBpKzNVTFjmYryf5CMvYJeR05GSiC481E1HgpBag8yCzTQHdR
-         61YyQS06cyu3h7CzabgblV3TG5BuSPRHvYnn+THR0RBw8b/EXTHsIej87JIUPyfRqteb
-         hP9Q==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:dkim-signature;
+        bh=JFL2PZFkYCUq9EBkZ1f9ZZgtG4mRI3t6MhkcDGaPmQA=;
+        b=MZbLneqg+HGlh69lo0dY40fPQ9VchpJSWZ8CP1h/aWMo0tvLjPm8gbvFfZKu+XdJRu
+         0+Lk7eQzU+H/sd7fA4Td7e+TIHleUsLC3L7a8hKe55M7fda2JBYAUkc6t2C0+CagSDje
+         yB+NQmtuzGHsj5zvm+a/EF5Uvem/uio6nsmPDdP81H3uE71CbFL0HuDEXyih8XLM881h
+         HNSlamjAnVeGuRvkMKir0hYG3mvoEOAugKuxsxfZYRGQFF5evyxKNpOgSKgFqbObnlNW
+         xOkFnkaqp0xRloXIoW5g1rewB2WlUqPC89dI+O4GMqR2VF6YKQv2nnDd1wVUv5vUx5HO
+         mA3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cpWz+GXZ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YM6skxc6;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id z12si5486474otm.189.2020.01.12.01.49.30;
-        Sun, 12 Jan 2020 01:49:30 -0800 (PST)
+        by mx.google.com with ESMTP id h14si5236311otn.6.2020.01.12.05.45.22;
+        Sun, 12 Jan 2020 05:45:22 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cpWz+GXZ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YM6skxc6;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732533AbgALJt3 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Sun, 12 Jan 2020 04:49:29 -0500
-Received: from mail-lf1-f66.google.com ([209.85.167.66]:45650 "EHLO
-        mail-lf1-f66.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1732381AbgALJt3 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sun, 12 Jan 2020 04:49:29 -0500
-Received: by mail-lf1-f66.google.com with SMTP id 203so4692055lfa.12
-        for <kvm@vger.kernel.org>; Sun, 12 Jan 2020 01:49:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=gFJu0ECQYPDpnOY6gf8MGQ1UvMvuAoTJib9HaOc9GXQ=;
-        b=cpWz+GXZHIjC9AHIUR8spRUWa7LF2oEfJYja5QUKfDA21ScagU0gJWDXznfVZiwP6Z
-         i6d7yYztKEm5VOY1zAobQ2PJP4wiIWY1CEej3HOp4jix6w1pSFWEGv0BuKmh4r2NssGI
-         PtDNX3+KJ4aEG90UZ69Hnzs4K0UCR8MfW1mdhTYX1zYEJxcK6q/xcbAwWtd/zP4Q0yIq
-         cv6Pxh1fbV6rOykH8J9ojGIERfWXdSBdwL32gKpqz5as5oBdrkTeGwwaIjinXMp4bPPC
-         sdjqrdakNAec54187FCuKHuAOlQeghe2sbhPFS0d/7U717ljqVO9coZMakqNPQlycQ2f
-         IEGw==
+        id S1732922AbgALNpR (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Sun, 12 Jan 2020 08:45:17 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:57490 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1732915AbgALNpR (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sun, 12 Jan 2020 08:45:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1578836714;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=JFL2PZFkYCUq9EBkZ1f9ZZgtG4mRI3t6MhkcDGaPmQA=;
+        b=YM6skxc6rKUqoDm45mFzoeLNFFTPcYTOBndf4+gjBTcMsv4QvwJ9eI4sCBbvzyThK3w8Tw
+        uGWEu0jJuqJDq853XG7mXsLL5hF9hXsQ5LfS52OaFaAQ+A/mK8AiLEHuGdlzt9DFC+moQ+
+        /TLr/5g+qU1QBX/UQ+b8dRv7TJ+dl6o=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-426-CCJ1efMPMbi2qFdL2uPspg-1; Sun, 12 Jan 2020 08:45:12 -0500
+X-MC-Unique: CCJ1efMPMbi2qFdL2uPspg-1
+Received: by mail-wr1-f71.google.com with SMTP id f15so3692975wrr.2
+        for <kvm@vger.kernel.org>; Sun, 12 Jan 2020 05:45:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=gFJu0ECQYPDpnOY6gf8MGQ1UvMvuAoTJib9HaOc9GXQ=;
-        b=FgHYvKqYX51eLXY4cRcTtniAk4K/96sCMsWlzcN8hS0zL4Y6+F6cK0E+TDI6drBp5f
-         ACSs9foxUJI+Mc6Ng75w+/TnZjQJodgogwkTrlDbJGM4SSsRg3nsljUgLwUnE9KT/qyK
-         DQTrD1YPoPErPycSx8kOjDIOuiPvryro1egYM9A+Stc2KwIj6W41ERQIKVMaLJbh0ASM
-         /zrCACCmzIosj9cFTuEBKeFPwkZson+VzQ28RGQY+FhJAp+xpepmyYlMNiDwSOt8PC9L
-         9FnsRIVymHMhGpLjikK71s64YxU3wvhN56IUzRJtHOqj/KZvdM+iL7kKpjeRXtBF42My
-         oLXA==
-X-Gm-Message-State: APjAAAV4XUivR931eq9ZfBCusA7RpoxRFdqRDaM31waj0ZjGce79i1CB
-        HD2ZMlAEjjeFg5Sd6lBfxaYPXkyxAhdiJ/Pix0w=
-X-Received: by 2002:ac2:4834:: with SMTP id 20mr6382556lft.166.1578822566702;
- Sun, 12 Jan 2020 01:49:26 -0800 (PST)
-MIME-Version: 1.0
-References: <20200109152133.23649-1-philmd@redhat.com> <20200109152133.23649-11-philmd@redhat.com>
-In-Reply-To: <20200109152133.23649-11-philmd@redhat.com>
-From:   Alistair Francis <alistair23@gmail.com>
-Date:   Sun, 12 Jan 2020 17:48:58 +0800
-Message-ID: <CAKmqyKNrgTbiipNK1wrwCMqk_=7cJmc4rBwO1zxjFiVV+TRSgQ@mail.gmail.com>
-Subject: Re: [PATCH 10/15] memory: Replace current_machine by qdev_get_machine()
-To:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=JFL2PZFkYCUq9EBkZ1f9ZZgtG4mRI3t6MhkcDGaPmQA=;
+        b=sdZUhf836ms9ZSaINFH5OJ/1rFLRTsDOMkBrRK/BFI70ZVhTQuoLs5Fg9KNoZGPNGJ
+         Q7psGgDkW6nIKQT0RPrdfjMGbkoFArV/yuE4bIw+ZMwSgYXP/Yectzipo4fCutadiiOd
+         IzB8vPHpfNQTCSMx75r/7iD2aFCT3utJLcqP5z/l+IPbSk/6bB17xCjSbu5TR93bQicW
+         gh9gWPqnLsjS5/sUIASQBAjJoHPwW+aT2RYRp8uHc9IXBanRSwK7VA+gfbvtninufLDv
+         gJWO19THNw6J2xHEN2FT7SufKtmsVKYDNxArjNjyzeHQfT08vg5LchX7brM7/q+QrycU
+         4jqg==
+X-Gm-Message-State: APjAAAW7DJwqBCa8eaa1kSFqT4e6vWVnbqb74J7FIC4YZzVQ/NNpCwxS
+        i3otV2xv0il0SFy6Sk6JfKPw+OML4vc0x2EE39sK0OHMceARxpsjhkkG2UM5SWd5odWxQEzOS4p
+        llwm75L4fYOAc
+X-Received: by 2002:adf:e3cd:: with SMTP id k13mr13027056wrm.338.1578836711149;
+        Sun, 12 Jan 2020 05:45:11 -0800 (PST)
+X-Received: by 2002:adf:e3cd:: with SMTP id k13mr13027042wrm.338.1578836710928;
+        Sun, 12 Jan 2020 05:45:10 -0800 (PST)
+Received: from ?IPv6:2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9? ([2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9])
+        by smtp.gmail.com with ESMTPSA id q6sm11096257wrx.72.2020.01.12.05.45.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 12 Jan 2020 05:45:10 -0800 (PST)
+Subject: Re: [PATCH 10/15] memory: Replace current_machine by
+ qdev_get_machine()
+To:     Alistair Francis <alistair23@gmail.com>
 Cc:     "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
         Peter Maydell <peter.maydell@linaro.org>,
         Eduardo Habkost <ehabkost@redhat.com>,
@@ -91,65 +97,77 @@ Cc:     "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
         Paolo Bonzini <pbonzini@redhat.com>,
         David Gibson <david@gibson.dropbear.id.au>,
         Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+References: <20200109152133.23649-1-philmd@redhat.com>
+ <20200109152133.23649-11-philmd@redhat.com>
+ <CAKmqyKNrgTbiipNK1wrwCMqk_=7cJmc4rBwO1zxjFiVV+TRSgQ@mail.gmail.com>
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <f7e3539a-4506-0df1-ee66-f3d8a6aa8fce@redhat.com>
+Date:   Sun, 12 Jan 2020 14:45:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <CAKmqyKNrgTbiipNK1wrwCMqk_=7cJmc4rBwO1zxjFiVV+TRSgQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: akaDGWh8c8oK
+X-TUID: EYGGSCB//Zd9
 
-On Thu, Jan 9, 2020 at 11:29 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> As we want to remove the global current_machine,
-> replace 'current_machine' by MACHINE(qdev_get_machine()).
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  memory.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/memory.c b/memory.c
-> index d7b9bb6951..57e38b1f50 100644
-> --- a/memory.c
-> +++ b/memory.c
-> @@ -3004,6 +3004,7 @@ static void mtree_print_flatview(gpointer key, gpoi=
-nter value,
->      int n =3D view->nr;
->      int i;
->      AddressSpace *as;
-> +    MachineState *ms;
->
->      qemu_printf("FlatView #%d\n", fvi->counter);
->      ++fvi->counter;
-> @@ -3026,6 +3027,7 @@ static void mtree_print_flatview(gpointer key, gpoi=
-nter value,
->          return;
->      }
->
-> +    ms =3D MACHINE(qdev_get_machine());
+On 1/12/20 10:48 AM, Alistair Francis wrote:
+> On Thu, Jan 9, 2020 at 11:29 PM Philippe Mathieu-Daudé
+> <philmd@redhat.com> wrote:
+>>
+>> As we want to remove the global current_machine,
+>> replace 'current_machine' by MACHINE(qdev_get_machine()).
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>   memory.c | 4 +++-
+>>   1 file changed, 3 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/memory.c b/memory.c
+>> index d7b9bb6951..57e38b1f50 100644
+>> --- a/memory.c
+>> +++ b/memory.c
+>> @@ -3004,6 +3004,7 @@ static void mtree_print_flatview(gpointer key, gpointer value,
+>>       int n = view->nr;
+>>       int i;
+>>       AddressSpace *as;
+>> +    MachineState *ms;
+>>
+>>       qemu_printf("FlatView #%d\n", fvi->counter);
+>>       ++fvi->counter;
+>> @@ -3026,6 +3027,7 @@ static void mtree_print_flatview(gpointer key, gpointer value,
+>>           return;
+>>       }
+>>
+>> +    ms = MACHINE(qdev_get_machine());
+> 
+> Why not set this at the top?
 
-Why not set this at the top?
+Calling qdev_get_machine() is not free as it does some introspection 
+checks. Since we can return earlier if there are no rendered FlatView, I 
+placed the machinestate initialization just before it we need to access it.
 
-Alistair
-
->      while (n--) {
->          mr =3D range->mr;
->          if (range->offset_in_region) {
-> @@ -3057,7 +3059,7 @@ static void mtree_print_flatview(gpointer key, gpoi=
-nter value,
->          if (fvi->ac) {
->              for (i =3D 0; i < fv_address_spaces->len; ++i) {
->                  as =3D g_array_index(fv_address_spaces, AddressSpace*, i=
-);
-> -                if (fvi->ac->has_memory(current_machine, as,
-> +                if (fvi->ac->has_memory(ms, as,
->                                          int128_get64(range->addr.start),
->                                          MR_SIZE(range->addr.size) + 1)) =
-{
->                      qemu_printf(" %s", fvi->ac->name);
-> --
-> 2.21.1
->
->
+> Alistair
+> 
+>>       while (n--) {
+>>           mr = range->mr;
+>>           if (range->offset_in_region) {
+>> @@ -3057,7 +3059,7 @@ static void mtree_print_flatview(gpointer key, gpointer value,
+>>           if (fvi->ac) {
+>>               for (i = 0; i < fv_address_spaces->len; ++i) {
+>>                   as = g_array_index(fv_address_spaces, AddressSpace*, i);
+>> -                if (fvi->ac->has_memory(current_machine, as,
+>> +                if (fvi->ac->has_memory(ms, as,
+>>                                           int128_get64(range->addr.start),
+>>                                           MR_SIZE(range->addr.size) + 1)) {
+>>                       qemu_printf(" %s", fvi->ac->name);
+>> --
+>> 2.21.1
+>>
+>>
+> 

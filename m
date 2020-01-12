@@ -1,173 +1,157 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3045221lff;
-        Sun, 12 Jan 2020 05:45:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx28C3UC+LE3FMNQ8WD6niXIuZIwY2ZzOULThIAOjdzNEG7vHaCNFg94UHDzcMmuL3Xljdp
-X-Received: by 2002:a54:4086:: with SMTP id i6mr9444985oii.65.1578836722612;
-        Sun, 12 Jan 2020 05:45:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578836722; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3457220lff;
+        Sun, 12 Jan 2020 15:19:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyTG0PR4PUAU5Gl/h0wWMDk2CaxyisLrWaVawMXoS8MBlyBnKt8ffl16yv1d+MsmAzyuBwB
+X-Received: by 2002:a05:6402:1a5b:: with SMTP id bf27mr14764200edb.243.1578871151985;
+        Sun, 12 Jan 2020 15:19:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578871151; cv=none;
         d=google.com; s=arc-20160816;
-        b=w3IYo47OSChIQtBLdbIWE5Wnf5a2v7eBm75Qx56TUEqywguTGkdU0fX9/zwwao0R4u
-         YrG2BzpZyPpT4v/oX0a3cAGjYjH5CuSotObz868dKr8bAcr+J5jEO5XmVTQbPKl3ysZn
-         +/OUFyn3pgkQSFL6WKV8f7bao7V1g12vUha0QdyE2+5CgxyxpMCYC6A2kc0e0IOWjgch
-         DZoApHTEvJrgkEsZzLwDCP/wTW7Yu/Pxdt87MkhK98bwJPSNgcOJGqNlf46HRkSKOvNK
-         oXej9qwUTTOd4r/SztSKuCTbmC6L5fUXLog8mYMAARDq8FvMBgvXCJh8pKxAHpz/xVKj
-         bU1w==
+        b=Tt515dj0o8eGDD1FZcBMFeb6nxCZnOqopTCYwV/tcnXYlte1PvadfA/FYumy0fHQ6f
+         4XptSWx8GeAP+wCqHSVVgn258f1sToVJVaLG+9xqvwjUbry3f5NwjuCTTyi4AZOkx/gp
+         oDQgfICemjZdUWkJAAz2irNE7zlWqfl9BPRe9SPm7cP0KpWpM2SJBSDN7JT5adN1H6U2
+         HsA0aHffQ1S+z8m0s7T79uwaS+dlYxLBcS0eiJ9mKxz7oPyjJ2DRyUSzVC55Z9IRphOw
+         z6eiOuOJs3jMHWZYSMTH08FhbO2Tos1ETLG5LCRunQAu0XISNpjSTEVFZUqOFQOu1ew+
+         oGXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=JFL2PZFkYCUq9EBkZ1f9ZZgtG4mRI3t6MhkcDGaPmQA=;
-        b=MZbLneqg+HGlh69lo0dY40fPQ9VchpJSWZ8CP1h/aWMo0tvLjPm8gbvFfZKu+XdJRu
-         0+Lk7eQzU+H/sd7fA4Td7e+TIHleUsLC3L7a8hKe55M7fda2JBYAUkc6t2C0+CagSDje
-         yB+NQmtuzGHsj5zvm+a/EF5Uvem/uio6nsmPDdP81H3uE71CbFL0HuDEXyih8XLM881h
-         HNSlamjAnVeGuRvkMKir0hYG3mvoEOAugKuxsxfZYRGQFF5evyxKNpOgSKgFqbObnlNW
-         xOkFnkaqp0xRloXIoW5g1rewB2WlUqPC89dI+O4GMqR2VF6YKQv2nnDd1wVUv5vUx5HO
-         mA3w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :subject:to:from:date:references:in-reply-to:message-id:mime-version
+         :user-agent:dkim-signature:dkim-signature;
+        bh=zx26KD5Pz02YJ+yg8O2oz5kKMQr/WceSgZS/j9AYF68=;
+        b=Nm3YXBk/RlA2z6Ybhnu7mFARUfXT8/h2Si0lIBR1revuAEeww901ZwCSXMfMhiqs7D
+         HhmC7OMTAkYSiGWNtpEycGXcgeZ0pMQ4NitKaabZn/1bQn5bf6m6RG0QIgRU2LrPzPAL
+         YO315ou8ORACgil9XiN+grjhGSZfRG8Jw2718mQ2u/udu5fff+QdhgkPaVEaPkS97fvn
+         AhFBvX6FYPoTuVEUmFbjiyH0V3PowyH1sXfkv+wIqGyYePZQPBTCn5RwUDvEnfsGv9QF
+         vbD9YuG1IAFIfbitawxjEHBMjZgxRFvXJPXtt/EnKzfNcCJ0jFObGpIJB+vchAtCpS3z
+         OE8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YM6skxc6;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h14si5236311otn.6.2020.01.12.05.45.22;
-        Sun, 12 Jan 2020 05:45:22 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b="KcW/XsGE";
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=LAm65t9F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m22si4539726edv.509.2020.01.12.15.19.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 12 Jan 2020 15:19:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YM6skxc6;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732922AbgALNpR (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Sun, 12 Jan 2020 08:45:17 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:57490 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1732915AbgALNpR (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sun, 12 Jan 2020 08:45:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1578836714;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=JFL2PZFkYCUq9EBkZ1f9ZZgtG4mRI3t6MhkcDGaPmQA=;
-        b=YM6skxc6rKUqoDm45mFzoeLNFFTPcYTOBndf4+gjBTcMsv4QvwJ9eI4sCBbvzyThK3w8Tw
-        uGWEu0jJuqJDq853XG7mXsLL5hF9hXsQ5LfS52OaFaAQ+A/mK8AiLEHuGdlzt9DFC+moQ+
-        /TLr/5g+qU1QBX/UQ+b8dRv7TJ+dl6o=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-426-CCJ1efMPMbi2qFdL2uPspg-1; Sun, 12 Jan 2020 08:45:12 -0500
-X-MC-Unique: CCJ1efMPMbi2qFdL2uPspg-1
-Received: by mail-wr1-f71.google.com with SMTP id f15so3692975wrr.2
-        for <kvm@vger.kernel.org>; Sun, 12 Jan 2020 05:45:12 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=JFL2PZFkYCUq9EBkZ1f9ZZgtG4mRI3t6MhkcDGaPmQA=;
-        b=sdZUhf836ms9ZSaINFH5OJ/1rFLRTsDOMkBrRK/BFI70ZVhTQuoLs5Fg9KNoZGPNGJ
-         Q7psGgDkW6nIKQT0RPrdfjMGbkoFArV/yuE4bIw+ZMwSgYXP/Yectzipo4fCutadiiOd
-         IzB8vPHpfNQTCSMx75r/7iD2aFCT3utJLcqP5z/l+IPbSk/6bB17xCjSbu5TR93bQicW
-         gh9gWPqnLsjS5/sUIASQBAjJoHPwW+aT2RYRp8uHc9IXBanRSwK7VA+gfbvtninufLDv
-         gJWO19THNw6J2xHEN2FT7SufKtmsVKYDNxArjNjyzeHQfT08vg5LchX7brM7/q+QrycU
-         4jqg==
-X-Gm-Message-State: APjAAAW7DJwqBCa8eaa1kSFqT4e6vWVnbqb74J7FIC4YZzVQ/NNpCwxS
-        i3otV2xv0il0SFy6Sk6JfKPw+OML4vc0x2EE39sK0OHMceARxpsjhkkG2UM5SWd5odWxQEzOS4p
-        llwm75L4fYOAc
-X-Received: by 2002:adf:e3cd:: with SMTP id k13mr13027056wrm.338.1578836711149;
-        Sun, 12 Jan 2020 05:45:11 -0800 (PST)
-X-Received: by 2002:adf:e3cd:: with SMTP id k13mr13027042wrm.338.1578836710928;
-        Sun, 12 Jan 2020 05:45:10 -0800 (PST)
-Received: from ?IPv6:2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9? ([2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9])
-        by smtp.gmail.com with ESMTPSA id q6sm11096257wrx.72.2020.01.12.05.45.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 12 Jan 2020 05:45:10 -0800 (PST)
-Subject: Re: [PATCH 10/15] memory: Replace current_machine by
- qdev_get_machine()
-To:     Alistair Francis <alistair23@gmail.com>
-Cc:     "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        "open list:Overall" <kvm@vger.kernel.org>,
-        Juan Quintela <quintela@redhat.com>,
-        "open list:New World" <qemu-ppc@nongnu.org>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        Alistair Francis <alistair.francis@wdc.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        Richard Henderson <rth@twiddle.net>
-References: <20200109152133.23649-1-philmd@redhat.com>
- <20200109152133.23649-11-philmd@redhat.com>
- <CAKmqyKNrgTbiipNK1wrwCMqk_=7cJmc4rBwO1zxjFiVV+TRSgQ@mail.gmail.com>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <f7e3539a-4506-0df1-ee66-f3d8a6aa8fce@redhat.com>
-Date:   Sun, 12 Jan 2020 14:45:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <CAKmqyKNrgTbiipNK1wrwCMqk_=7cJmc4rBwO1zxjFiVV+TRSgQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: EYGGSCB//Zd9
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b="KcW/XsGE";
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=LAm65t9F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42784 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iqmVi-0006As-T6
+	for alex.bennee@linaro.org; Sun, 12 Jan 2020 18:19:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54046)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <andrew@aj.id.au>) id 1iqmVS-0006Ad-VN
+ for qemu-arm@nongnu.org; Sun, 12 Jan 2020 18:18:55 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <andrew@aj.id.au>) id 1iqmVR-0000S2-Vo
+ for qemu-arm@nongnu.org; Sun, 12 Jan 2020 18:18:54 -0500
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:37379)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <andrew@aj.id.au>)
+ id 1iqmVR-0000HR-IB; Sun, 12 Jan 2020 18:18:53 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 6817A2015D;
+ Sun, 12 Jan 2020 18:18:51 -0500 (EST)
+Received: from imap2 ([10.202.2.52])
+ by compute4.internal (MEProxy); Sun, 12 Jan 2020 18:18:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type:content-transfer-encoding; s=fm1; bh=zx26K
+ D5Pz02YJ+yg8O2oz5kKMQr/WceSgZS/j9AYF68=; b=KcW/XsGEt0FCMmLJiEYN4
+ 91vO/qsCjwaqId83f4EtJ1ttPfWFoL7WvI2Imv6Le8kWOj6eNqfro6iRBP48yGQz
+ dql4fQSkhEea4PAIXPPqtpbb9tkfNQf766CFUtYsIT4dtBHmOhDpbW46xNkEaWG0
+ 57JksM/x3maOjtqM2AYrrVHgn7TkGI04u2wJLCpo9g0PbZsaT1BfYrGLgkvEIhPQ
+ C7x9ZMrw/0N9LnUW89ZVMwCNgeJ5RKKshGgsqjhA4StgWKjI9OBX34Y+kwtLq/JA
+ jYHNGpV5xDKPjKp8CeBp5pTGZt8MjcPVznuIxr8dovy0RRnqnqTdGFvrzHj3hQwc
+ A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; bh=zx26KD5Pz02YJ+yg8O2oz5kKMQr/WceSgZS/j9AYF
+ 68=; b=LAm65t9FtOdokN5o5SO3VP4eBJ8f3+gtDgGq0yq8ax3USZ+R860GvTtxt
+ JKas0KABzEeZueublkI+j/7ilu6MNuDX/CQB6LOEbkFFJsmXGFR4z92FWiOtQC4D
+ dBjHKIxGhIM1EAMJJRumkQMLoIDsuwKcKH6DYLyE/wm06C1N3tFhtIOfOMcAjgh/
+ RZ8LDEmUWPbA4c9YJ4JBMLLgNeGmBqCEwlnhVHnE9ie3I7mZ6ppJOQQITiRQa3MN
+ WQXTlaD4/WsiV8fVKMQhhdu570y3Td0sAOCJmyIE0J3eE0XOI+70Vc5X9dvIc29Z
+ pzL2rZWcgG9P6H1g9aWLV4VyLkdLQ==
+X-ME-Sender: <xms:WqkbXqH3MtBqPHeKol5Y8SmMuYOMnm_1TbDJroXgtN-EQ4QTo-NbHQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrvdeiledgudduucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
+ ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucfrrg
+ hrrghmpehmrghilhhfrhhomheprghnughrvgifsegrjhdrihgurdgruhenucevlhhushht
+ vghrufhiiigvpedt
+X-ME-Proxy: <xmx:WqkbXnoCRRhH4AizuF5xBoSICJ4nJlJy8mw5z2_U5sB7dc5Mmb-gxg>
+ <xmx:WqkbXm6zEnmBrhyyXuCipCY9JRqEuHlhB2L5tGXQNzISlleR1BSmbw>
+ <xmx:WqkbXl7ZJgAfHoL-ADMPRFYtfAXZebkPm2MGA06SJDfjIrHqrwFfyw>
+ <xmx:W6kbXt9pZlGI1kky6NvHOHb89Ki_bmDeQB9a_FLKo86Djbz2Fv1NUw>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 97B0AE00A2; Sun, 12 Jan 2020 18:18:50 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.1.7-740-g7d9d84e-fmstable-20200109v1
+Mime-Version: 1.0
+Message-Id: <114b0ca0-3e98-43f5-818d-f69df5a0c5c9@www.fastmail.com>
+In-Reply-To: <901d2dc7-f8ed-bbca-b587-19fce5fed631@kaod.org>
+References: <20200107073423.30043-1-clg@kaod.org>
+ <20200107073423.30043-3-clg@kaod.org>
+ <a7c45303-e624-d7aa-df6f-e03f26b3cba7@redhat.com>
+ <901d2dc7-f8ed-bbca-b587-19fce5fed631@kaod.org>
+Date: Mon, 13 Jan 2020 09:50:53 +1030
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ "Peter Maydell" <peter.maydell@linaro.org>
+Subject: Re: [PATCH 2/5] hw/arm: ast2600: Wire up the eMMC controller
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 66.111.4.25
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3BMmf10W6l1n
 
-On 1/12/20 10:48 AM, Alistair Francis wrote:
-> On Thu, Jan 9, 2020 at 11:29 PM Philippe Mathieu-Daudé
-> <philmd@redhat.com> wrote:
->>
->> As we want to remove the global current_machine,
->> replace 'current_machine' by MACHINE(qdev_get_machine()).
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>   memory.c | 4 +++-
->>   1 file changed, 3 insertions(+), 1 deletion(-)
->>
->> diff --git a/memory.c b/memory.c
->> index d7b9bb6951..57e38b1f50 100644
->> --- a/memory.c
->> +++ b/memory.c
->> @@ -3004,6 +3004,7 @@ static void mtree_print_flatview(gpointer key, gpointer value,
->>       int n = view->nr;
->>       int i;
->>       AddressSpace *as;
->> +    MachineState *ms;
->>
->>       qemu_printf("FlatView #%d\n", fvi->counter);
->>       ++fvi->counter;
->> @@ -3026,6 +3027,7 @@ static void mtree_print_flatview(gpointer key, gpointer value,
->>           return;
->>       }
->>
->> +    ms = MACHINE(qdev_get_machine());
-> 
-> Why not set this at the top?
 
-Calling qdev_get_machine() is not free as it does some introspection 
-checks. Since we can return earlier if there are no rendered FlatView, I 
-placed the machinestate initialization just before it we need to access it.
 
-> Alistair
-> 
->>       while (n--) {
->>           mr = range->mr;
->>           if (range->offset_in_region) {
->> @@ -3057,7 +3059,7 @@ static void mtree_print_flatview(gpointer key, gpointer value,
->>           if (fvi->ac) {
->>               for (i = 0; i < fv_address_spaces->len; ++i) {
->>                   as = g_array_index(fv_address_spaces, AddressSpace*, i);
->> -                if (fvi->ac->has_memory(current_machine, as,
->> +                if (fvi->ac->has_memory(ms, as,
->>                                           int128_get64(range->addr.start),
->>                                           MR_SIZE(range->addr.size) + 1)) {
->>                       qemu_printf(" %s", fvi->ac->name);
->> --
->> 2.21.1
->>
->>
-> 
+On Fri, 10 Jan 2020, at 22:26, C=C3=A9dric Le Goater wrote:
+> >> +
+> >> +=C2=A0=C2=A0=C2=A0 sysbus_init_child_obj(obj, "emmc", OBJECT(&s->e=
+mmc), sizeof(s->emmc),
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 TYPE_ASPEED_SDHCI);
+> >> +
+> >> +=C2=A0=C2=A0=C2=A0 object_property_set_int(OBJECT(&s->emmc), 1, "n=
+um-slots", &error_abort);
+> >> +
+> >> +=C2=A0=C2=A0=C2=A0 sysbus_init_child_obj(obj, "emmc[*]", OBJECT(&s=
+->emmc.slots[0]),
+> >=20
+> > Single block, so use "emmc" instead.
+>=20
+> Andrew, how should we call the objects in the slots ? "sdhci" ?=20
+
+I think that's the right way to go, but maybe we need to rethink the nam=
+ing at the
+controller level.
+
+Andrew

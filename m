@@ -1,101 +1,100 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4225557lff;
-        Mon, 13 Jan 2020 06:53:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx6ku5Lir6niBmSBULw8dWqppDNNHzahOe605hqU6HZtJgxf1mjNfEl0glaqGojaxCn01Vw
-X-Received: by 2002:aa7:c591:: with SMTP id g17mr13421538edq.341.1578927211875;
-        Mon, 13 Jan 2020 06:53:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578927211; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4267406lff;
+        Mon, 13 Jan 2020 07:26:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzhaSP8MuHSgefHxvtuVRlU7QcDAxKFLzv7Rcs3+WD+2RDpXWi2dHptyx3c0Mv23jTQSCDt
+X-Received: by 2002:a37:7cc7:: with SMTP id x190mr16533614qkc.10.1578929216529;
+        Mon, 13 Jan 2020 07:26:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578929216; cv=none;
         d=google.com; s=arc-20160816;
-        b=DViaiNAfbt0bkXCxCg/ackyMxyZbjaftjHczuwsZb/93kBKWe++Eg70fNuq2FsycMF
-         d5x3h1udNntMtm/xK8Mv4mLe6tyUOgVRUMhej+b0WBznF5ixv+OX93gdAL9rtbg5o7k0
-         bazrsMrgJu9sDZ7ryrdHPUkTH+SXmTw37eZT0Is2kxeL3mwfbIv5QHmRfxzCIby0GmJH
-         0E4ZxoG4HtfLpFSdXVLHmsBI8TiI0Qdnk2tR3k+26eayesf3UX7RUGpkuitrlNpiZhme
-         91FYAI67JH4+uLNke9hewZIEa3mBiPz4MDycvS4KtJn18MgLudBj0ATHoGRSQXSGJrOk
-         1csQ==
+        b=D5CZoecfNXASPm8dj/ra2mdLAiXAx33UyBqv6EFryGCNl/ivvomzlwRZnwwMDit7ys
+         F9gTnCDbInft+EwvU9cjOZYJwELI60Ao7l7VRgWw29Kc5NorclZo8Ji4YTW852o57sWQ
+         OMy3qb9QFwnOc4TMdoO4NBFSv0o3j+PkYoREFK1cQR1myxiXowCsO1Q9YG5bnx/q/vvW
+         rILWWj8gsnBckGSqyJrYiUx0Dgh7nomydxWOi5B+pr3g0gdT9GGorx0l4s9JZn7XugnJ
+         Hy1kpeM1utUaogA+5Pt0t8Tznkqu8omZ7mJbNYuWUYytaHEPMNHmp68X/JUTmYiJNV8W
+         hJIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:in-reply-to:subject:to:from:dkim-signature;
-        bh=c8gJ8Vjw2GM971v7+eY/mXlqOnqJ53ZXdglBXcMK7eo=;
-        b=g2ntzSoatbGnceIl77nNXJ5Nz2pgXTpTgsiBHuGN3jWnh+kHAAJ8zx5qaepCmb8sBf
-         /IECnqu3dqGuaDS+3dQi8qPgCpIafrXbBvFaCaktZJFqAsZl3f7LEMbqrElpO23GgzKN
-         dyhxyLfzmd7Y8I3ZVwSbeYsYeigykiY/ywruOlr8Ztuv+VYVQjg54xcJbYl84Fu8J2hU
-         CidL89E5SrxypUGf3GFYOcJoIpsT8VRIbU0Xpj9XKy01NIImmAZ5qUx7IWiI33VKwQup
-         sxGUjLKG9ftYVqMWMMnaaMeEFJ7iJijpSdysfyR8PNcIFwoa4MqyivmRayxUTLEtg46K
-         f7zg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=WWizalQdJGQ8N1MyFx3a6nKtDNdyNDhlC51+PgmN+fM=;
+        b=gArLSuzRAJrGt0YCov3wD1ufozbDD67bZUROCuSGQAqvErQJeC9LgPs0JNPpi4/bYX
+         VwmiNzM/FeGKQf2uiKq7CZxrpDT9pLBD7SPcUnxtTi+UcF2aydfPN4nBxj9DzP4+Vngg
+         VvT/+1QaLd1i7IcV/m5vy49AvRL62dQKxuBb+FtbDV182ZQg0/EDMQQIvjNqjWxThm7g
+         xNiBEEIoke9o7soDDLCBsxMOE2fPvvFOyVrfEIQEFs0IIjbd+IxEtiZGcJeU/qEAtWhg
+         Ww4xUCSjmmhYFLpWwv2eIS74GFtRrcSCb+D3MXGJEF+Fuav7Ja083bFooWsJ0dw2uHvG
+         P+YQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gHW6t3bo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NiFrtcQ+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id nk7si7046940ejb.76.2020.01.13.06.53.31
+        by mx.google.com with ESMTPS id x27si7050127qtm.363.2020.01.13.07.26.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jan 2020 06:53:31 -0800 (PST)
+        Mon, 13 Jan 2020 07:26:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gHW6t3bo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NiFrtcQ+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51436 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ir15u-0004by-GO
-	for alex.bennee@linaro.org; Mon, 13 Jan 2020 09:53:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44799)
+	id 1ir1cF-0001BP-12
+	for alex.bennee@linaro.org; Mon, 13 Jan 2020 10:26:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57962)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1ir15k-0004bg-6M
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 09:53:21 -0500
+ (envelope-from <drjones@redhat.com>) id 1ir1by-00012G-Hq
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 10:26:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1ir15i-0003X2-Ui
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 09:53:20 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32540
+ (envelope-from <drjones@redhat.com>) id 1ir1bw-0003l1-C1
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 10:26:37 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:29499
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1ir15i-0003Vh-Rn
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 09:53:18 -0500
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1ir1bw-0003jg-7S
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 10:26:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578927197;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1578929194;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=c8gJ8Vjw2GM971v7+eY/mXlqOnqJ53ZXdglBXcMK7eo=;
- b=gHW6t3bojG/GYNz4rMZhkBJIY8sfaeungq0GV0ncWOs5MFmW0dZj/DJRwY8/0FQtaR0ROJ
- 5+bRC632gC7tLcSuUg3ML98SDXpwOTc17tAujyY/8XDwphLvByY+P089AKP4277Kwf6yio
- piov1GaYUEZg+9nZMP2JcqGvnRdavE4=
+ bh=WWizalQdJGQ8N1MyFx3a6nKtDNdyNDhlC51+PgmN+fM=;
+ b=NiFrtcQ++eT4t2PIvVa4FkqIDgbiWvjqD3cPT9G3H1H+OVY+9qVN5i/BTQNABpyi2gaHdf
+ UcnTzQ5QMAq+QsWC21PnAnteBFpTtIkicea/6iOYa7Fjp5TT+Xt3/5ZRaMYzUwvTMLupO3
+ wkYYTVP4v6WxNPSX6CI07k02BYlgOd4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-255-PgTAkRagMZix3UAdvFZTzQ-1; Mon, 13 Jan 2020 09:53:15 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-377-m8NB10pGNcmJ_Tic4TFrxA-1; Mon, 13 Jan 2020 10:26:31 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8C4238024E2;
- Mon, 13 Jan 2020 14:53:13 +0000 (UTC)
-Received: from redhat.com (ovpn-116-99.ams2.redhat.com [10.36.116.99])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5803B60FC4;
- Mon, 13 Jan 2020 14:53:01 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Subject: Re: [PULL 00/28] Migration pull patches
-In-Reply-To: <20200113132632.GD4033206@redhat.com> ("Daniel P. =?utf-8?Q?B?=
- =?utf-8?Q?errang=C3=A9=22's?=
- message of "Mon, 13 Jan 2020 13:26:32 +0000")
-References: <20200110173215.3865-1-quintela@redhat.com>
- <CAFEAcA97ZqynDV6b6YUL_7iF=zsmB2Mwogi0k4ViAUAFTwsTnA@mail.gmail.com>
- <20200113132632.GD4033206@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
-Date: Mon, 13 Jan 2020 15:53:00 +0100
-Message-ID: <878smbxvar.fsf@secure.laptop>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 52F04107ACC4;
+ Mon, 13 Jan 2020 15:26:30 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EAD6A19C5B;
+ Mon, 13 Jan 2020 15:26:25 +0000 (UTC)
+Date: Mon, 13 Jan 2020 16:26:23 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Guoheyi <guoheyi@huawei.com>
+Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified
+ by _HID
+Message-ID: <20200113152623.dlkxsrs7nr6uriyn@kamzik.brq.redhat.com>
+References: <20191219064759.35053-1-guoheyi@huawei.com>
+ <20191219064759.35053-3-guoheyi@huawei.com>
+ <20200113130802.5a961482@redhat.com>
+ <b5d91ae3-bf37-d27e-264d-ea21ef23776b@huawei.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: PgTAkRagMZix3UAdvFZTzQ-1
+In-Reply-To: <b5d91ae3-bf37-d27e-264d-ea21ef23776b@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: m8NB10pGNcmJ_Tic4TFrxA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.120
@@ -110,92 +109,161 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Jason Wang <jasowang@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- "Dr.
- David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Corey Minyard <cminyard@mvista.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-ppc <qemu-ppc@nongnu.org>, Stefan Berger <stefanb@linux.ibm.com>,
- Richard Henderson <rth@twiddle.net>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ wanghaibin.wang@huawei.com, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uhsZcRU/EIPH
+X-TUID: YCQHuZbNvaqL
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
->> I also saw this on aarch32 host (more precisely, on the
->> aarch32-environment-in-aarch64-chroot setup I use for aarch32 build
->> and test):
->>=20
->> malloc_consolidate(): invalid chunk size
->> Broken pipe
->> qemu-system-i386: check_section_footer: Read section footer failed: -5
->> qemu-system-i386: load of migration failed: Invalid argument
->> /home/peter.maydell/qemu/tests/libqtest.c:140: kill_qemu() tried to
->> terminate QEMU process but encountered exit status 1 (expected 0)
->> Aborted
->> ERROR - too few tests run (expected 14, got 13)
->>=20
->> The memory corruption is reproducible running just the
->> /x86_64/migration/multifd/tcp subtest:
->>=20
->> (armhf)pmaydell@mustang-maydell:~/qemu/build/all-a32$
->> QTEST_QEMU_BINARY=3Dx86_64-softmmu/qemu-system-x86_64
->> tests/migration-test -p /x86_64/migration/multifd/tcp
->> /x86_64/migration/multifd/tcp: qemu-system-x86_64: -accel kvm: invalid
->> accelerator kvm
->> qemu-system-x86_64: falling back to tcg
->> qemu-system-x86_64: -accel kvm: invalid accelerator kvm
->> qemu-system-x86_64: falling back to tcg
->> qemu-system-x86_64: multifd_send_sync_main: multifd_send_pages fail
->> qemu-system-x86_64: failed to save SaveStateEntry with id(name): 3(ram)
->> double free or corruption (!prev)
->> Broken pipe
->> qemu-system-x86_64: Unknown combination of migration flags: 0
->> qemu-system-x86_64: error while loading state section id 3(ram)
->> qemu-system-x86_64: load of migration failed: Invalid argument
->> /home/peter.maydell/qemu/tests/libqtest.c:140: kill_qemu() tried to
->> terminate QEMU process but encountered exit status 1 (expected 0)
->> Aborted
->>=20
->> Here's what a valgrind run in that aarch32 setup produces:
->>=20
->
-> Missing initialization of     MultiFDInit_t msg; to all zeros
+On Mon, Jan 13, 2020 at 09:57:55PM +0800, Guoheyi wrote:
+>=20
+> =E5=9C=A8 2020/1/13 20:08, Igor Mammedov =E5=86=99=E9=81=93:
+> > On Thu, 19 Dec 2019 14:47:59 +0800
+> > Heyi Guo <guoheyi@huawei.com> wrote:
+> >=20
+> > > According to ACPI spec, _ADR should be used for device which is on a
+> > > bus that has a standard enumeration algorithm. It does not make sense
+> > > to have a _ADR object for devices which already have _HID and will be
+> > > enumerated by OSPM.
+> > >=20
+> > > Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+> > Are you sure it's does not make sense?
+> > Have you checked commit f264d51d8, that added _ADR?
+>=20
+> I searched in SPCR spec and ACPI spec, but didn't find such requirement f=
+or
+> serial port device description.
+>=20
+> Hi Andrew,
+>=20
+> Could you help to explain the reason?
 
-I *thought* it was in.  Sorry.
+tl;dr: It was a mistake and I agree with removing _ADR from SPCR.
 
->
->> =3D=3D12102=3D=3D
->> =3D=3D12102=3D=3D Thread 6 multifdsend_1:
->> =3D=3D12102=3D=3D Invalid write of size 4
->> =3D=3D12102=3D=3D    at 0x25CC08: multifd_send_fill_packet (ram.c:806)
->> =3D=3D12102=3D=3D    by 0x25CC08: multifd_send_thread (ram.c:1157)
->> =3D=3D12102=3D=3D    by 0x557551: qemu_thread_start (qemu-thread-posix.c=
-:519)
->> =3D=3D12102=3D=3D    by 0x53BE613: start_thread (pthread_create.c:463)
->> =3D=3D12102=3D=3D    by 0x54767FB: ??? (clone.S:73)
->> =3D=3D12102=3D=3D  Address 0x1d89c470 is 0 bytes after a block of size 8=
-32 alloc'd
->> =3D=3D12102=3D=3D    at 0x4841BC4: calloc (vg_replace_malloc.c:711)
->> =3D=3D12102=3D=3D    by 0x49EE269: g_malloc0 (in
->> /usr/lib/arm-linux-gnueabihf/libglib-2.0.so.0.5600.4)
->
-> This is the same issue that was reported last time this mulitfd unit
-> test was proposed for merge. Back then I pointed out the likely cause.
-> We were allocating  ram_addr_t sized quantity for an array which is
-> uint64_t, and ram_addr_t is probably 32-bit on this particular build.
->
->   https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg03428.html
->
-> That suggested fix doesn't seem to have been included
+The long version is that ACPI support for ARM took a long time to get
+merged upstream. In the meantime Linaro and Red Hat had ACPI support
+in their downstream trees. The initial, never upstreamed implementation
+of Linux SPCR support used _ADR to find the console UART (probably
+because some vendor hacked their ACPI tables that way). I made the
+mistake of using the out-of-tree Linux kernel code as my "specification".
 
-Thanks again.
+Upstream kernels never had this problem and I don't think we need to
+worry about any of those downstream kernels which did. They'd be five
+years old by now anyway.
 
-And sorry for the disturbance.
+Thanks,
+drew
+
+>=20
+> Thanks,
+>=20
+> Heyi
+>=20
+>=20
+>=20
+> >=20
+> > > ---
+> > > Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> > > Cc: Peter Maydell <peter.maydell@linaro.org>
+> > > Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> > > Cc: Igor Mammedov <imammedo@redhat.com>
+> > > Cc: qemu-arm@nongnu.org
+> > > Cc: qemu-devel@nongnu.org
+> > > ---
+> > >   hw/arm/virt-acpi-build.c          |   8 --------
+> > >   tests/data/acpi/virt/DSDT         | Bin 18449 -> 18426 bytes
+> > >   tests/data/acpi/virt/DSDT.memhp   | Bin 19786 -> 19763 bytes
+> > >   tests/data/acpi/virt/DSDT.numamem | Bin 18449 -> 18426 bytes
+> > >   4 files changed, 8 deletions(-)
+> > >=20
+> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > index 9f4c7d1889..be752c0ad8 100644
+> > > --- a/hw/arm/virt-acpi-build.c
+> > > +++ b/hw/arm/virt-acpi-build.c
+> > > @@ -78,11 +78,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const M=
+emMapEntry *uart_memmap,
+> > >                                AML_EXCLUSIVE, &uart_irq, 1));
+> > >       aml_append(dev, aml_name_decl("_CRS", crs));
+> > > -    /* The _ADR entry is used to link this device to the UART descri=
+bed
+> > > -     * in the SPCR table, i.e. SPCR.base_address.address =3D=3D _ADR=
+.
+> > > -     */
+> > > -    aml_append(dev, aml_name_decl("_ADR", aml_int(uart_memmap->base)=
+));
+> > > -
+> > >       aml_append(scope, dev);
+> > >   }
+> > > @@ -170,7 +165,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const M=
+emMapEntry *memmap,
+> > >       aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
+> > >       aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
+> > >       aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
+> > > -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
+> > >       aml_append(dev, aml_name_decl("_UID", aml_string("PCI0")));
+> > >       aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Devic=
+e")));
+> > >       aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+> > > @@ -334,7 +328,6 @@ static void acpi_dsdt_add_gpio(Aml *scope, const =
+MemMapEntry *gpio_memmap,
+> > >   {
+> > >       Aml *dev =3D aml_device("GPO0");
+> > >       aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0061")));
+> > > -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
+> > >       aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> > >       Aml *crs =3D aml_resource_template();
+> > > @@ -364,7 +357,6 @@ static void acpi_dsdt_add_power_button(Aml *scope=
+)
+> > >   {
+> > >       Aml *dev =3D aml_device(ACPI_POWER_BUTTON_DEVICE);
+> > >       aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C0C")));
+> > > -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
+> > >       aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> > >       aml_append(scope, dev);
+> > >   }
+> > > diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
+> > > index b5895cb22446860a0b9be3d32ec856feb388be4c..a759ff739a071d5fbf505=
+19a6aea296e5e0f1e0c 100644
+> > > GIT binary patch
+> > > delta 72
+> > > zcmbO@f$>*ABbQ6COUN&G1_q{66S<_BT5Bh&t1wzk^tIeLL4lL8ZSqD=3DgU!!5x$Pt+
+> > > c1HyxxIO07#U3dfh0t}oDoEbRcLp@y>07w882mk;8
+> > >=20
+> > > delta 94
+> > > zcmey>&p2@cBbQ6CONgKc0|V26iCof5J#`b+RhV2^Ci+-%al|{i1o1F1FmP^cRp4ao
+> > > tnY@hCfEg&X`7$S;oxFTNc#soEyoaX?Z-8HbfwO@#16Tu)4E1zj005fm7mWY_
+> > >=20
+> > > diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/D=
+SDT.memhp
+> > > index 69ad844f65d047973a3e55198beecd45a35b8fce..6e5cc61977e4cd24f765f=
+ec0693f75a528c144c1 100644
+> > > GIT binary patch
+> > > delta 72
+> > > zcmX>#i*fTTMlP3Nmk?uL1_q|eiCof5eHSLGt1wzk^tIeLL4lL8ZSqD=3DgU!!5U7RH)
+> > > c1HyxxIO07#U3dfh0t}oDoEbRcLp@y>03)CjmjD0&
+> > >=20
+> > > delta 94
+> > > zcmdlyi}BPfMlP3Nmk=3D*s1_q}3iCof5t(PXMt1!8;O!Tqj;)r*23F2X3VBp-?s=3D&$=
+E
+> > > tGkF=3DO0W(l&^JPwVXL<R6@E|9Scn?n(-T=3DP<17`zg2CxPo8S3f6006qZ7#siq
+> > >=20
+> > > diff --git a/tests/data/acpi/virt/DSDT.numamem b/tests/data/acpi/virt=
+/DSDT.numamem
+> > > index b5895cb22446860a0b9be3d32ec856feb388be4c..a759ff739a071d5fbf505=
+19a6aea296e5e0f1e0c 100644
+> > > GIT binary patch
+> > > delta 72
+> > > zcmbO@f$>*ABbQ6COUN&G1_q{66S<_BT5Bh&t1wzk^tIeLL4lL8ZSqD=3DgU!!5x$Pt+
+> > > c1HyxxIO07#U3dfh0t}oDoEbRcLp@y>07w882mk;8
+> > >=20
+> > > delta 94
+> > > zcmey>&p2@cBbQ6CONgKc0|V26iCof5J#`b+RhV2^Ci+-%al|{i1o1F1FmP^cRp4ao
+> > > tnY@hCfEg&X`7$S;oxFTNc#soEyoaX?Z-8HbfwO@#16Tu)4E1zj005fm7mWY_
+> > >=20
+> >=20
+> > .
+>=20
+>=20
 

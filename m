@@ -1,138 +1,200 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4290659lff;
-        Mon, 13 Jan 2020 07:46:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz6PZn729SVozKmAvEDAwaDUBFb4eAaU13ikG+gJPT/KUslQf07s1cmS0KnPrKBeipSLJUH
-X-Received: by 2002:a50:9e29:: with SMTP id z38mr18141131ede.62.1578930408273;
-        Mon, 13 Jan 2020 07:46:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578930408; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4384727lff;
+        Mon, 13 Jan 2020 09:08:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzrelahSDJKiU/dGfPRkJQHGc0OpZ7CnbRKy0A670zcp7YCkZvD6UtJ3Fbnh1jwCtDLJ7J9
+X-Received: by 2002:ac8:27ed:: with SMTP id x42mr11344756qtx.299.1578935326308;
+        Mon, 13 Jan 2020 09:08:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578935326; cv=none;
         d=google.com; s=arc-20160816;
-        b=n5u90tLMkYv0LT/o9JKtF70zEpcRWGI4z5QjOSWXB+H+WnJqeQISwUx3UNJKx+zGxa
-         x1c0ynK8OHl8rulip3j19iA5LP6eWqPZFl7pvpX7MEBr56il117kCuwqzuwWS4Bpp5cQ
-         Dzc3GlSYrTA+6oTQIzGyDJuJid+fmSWrH/j6kKr1CKeYZjLAUdPPtjf5p9Bl1A0aw1Hi
-         n83pl0kSsMcZn+QqmWDkhzAvjsY0557Mts0Z5/zvHLdcsvLAAbhk4qplmOUWPur4xUL1
-         ZRmOMTYZwqDkp2Btz3lSAc1i/0/qY72oRLEO53Q943hFjtnRl7eP8yVRtmHCPAap7GMo
-         JiYA==
+        b=exz/BQ9RRf3T05YcfeaocHCXn668QRi3jz3VIkjOyTSO/Z5neB4vPj4GwBlPNWHbD3
+         sMRmy2b9GWjdUa2ejxuvrym7FpsWcR+AIDdzKOidUJfmr8S+uulJtZA1O9wBzp/cmQCr
+         QGYQpBG61UCxam2qfKXPX8x3RSfoF9i4jsghrNf4wNQn56p14Z8ivvHJV2ZHIIuf8PL8
+         Qg8NlwlY/zqSV8stADSjPqqkNuQTO8oo5TWBOtkrN3sbW7kQCNS8Qel/ZWiYDoUAgFtL
+         g/X0wgItjBImgvQyXOaJtXODVVrqoILIkztpTqeHIlg4nAu/Wu8GzFsjGh/PhnOUpWrP
+         uyeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=UvV51rWqqElFPDA6dsEY2dah0Ws/5wZ1besb3EOGmoo=;
-        b=PYdxI1arai9eqZ3C7hQ0hAfqM2zECBJfWekfNSfimtbc3oJzs4ynC6K8bvKXiaAn9Z
-         nGiPjNNgqrcD/MTJ2U4N8QM8+GncM04XemvLkHY82uxpYwkljQ9O5SPnIUD5jw7qA6IK
-         zwfDjUvrTa1RkiDZUtu3S8fx4lTp1Wuchti4jgT1hsZsUEErNt12Z8DpS8bY+p1MX5Zw
-         ZSLtvQS4uTZD7DGz0Mz4jZmxrifRH0BQGBrWpK/HXX8u23jvu/lgjSD0I8eaJHrtj+9Y
-         aA48DIdcJ9WRohGp8bPDQmK223sllJQMTzhwIVkMraIR2hjm5lHiobYv//Rr/Cq3DSrq
-         WBBw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=8akm5y2JIK+SIsf38zIVKEGwGAeiQntPbaAnvyKf3TU=;
+        b=YOpaYWK3mJAO1bKb81IsdpTbOgwAJuQt6R0uGb9bDij9duRRZmg689PjcUsMbfuVNa
+         hc/r0h0Z5gvimoH8/3OQuaaGLXFTZhf879Q6LLyxBhMEj5jWz3MoVwxPuc2DEpxmmXeX
+         3YHwioUeTuedidJyxyjcbbE/WpqGi7SM0HBoxywemExqbJc+4/u2SEalvV/Y1U0tdO7u
+         M4GqfnODfxzeqd/baVlL2zb5LTZcKbM4W44Xj0oq44iSX4yrDjhfumZuBA9MIwUVCinc
+         LHVc8H63OvfjLUz4Syc/GtP+S1vdU75OFAihnupW0mS9MRDNwdUwIDE23xrCHYAqX7fI
+         LEFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DrFHhbyg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7si5460156ejk.476.2020.01.13.07.46.48
+        by mx.google.com with ESMTPS id d139si6686565qkb.257.2020.01.13.09.08.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jan 2020 07:46:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Jan 2020 09:08:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52046 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DrFHhbyg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53356 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ir1vS-0001WF-Sq
-	for alex.bennee@linaro.org; Mon, 13 Jan 2020 10:46:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36032)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ir3Cn-0000yz-M4
+	for alex.bennee@linaro.org; Mon, 13 Jan 2020 12:08:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32920)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <Jeff.Kubascik@dornerworks.com>) id 1ir1v0-00018M-Nq
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 10:46:19 -0500
+ (envelope-from <philmd@redhat.com>) id 1ir39o-0004yW-SW
+ for qemu-devel@nongnu.org; Mon, 13 Jan 2020 12:05:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <Jeff.Kubascik@dornerworks.com>) id 1ir1uz-0001g5-K8
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 10:46:18 -0500
-Received: from mail.dornerworks.com ([12.207.209.150]:20480
- helo=webmail.dornerworks.com) by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <Jeff.Kubascik@dornerworks.com>)
- id 1ir1uz-0001ZO-Fx; Mon, 13 Jan 2020 10:46:17 -0500
-From: Jeff Kubascik <jeff.kubascik@dornerworks.com>
-To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-Subject: [PATCH] arm/gicv3: update virtual irq state after IAR register read
-Date: Mon, 13 Jan 2020 10:46:07 -0500
-Message-ID: <20200113154607.97032-1-jeff.kubascik@dornerworks.com>
-X-Mailer: git-send-email 2.17.1
+ (envelope-from <philmd@redhat.com>) id 1ir39l-0004lr-Hs
+ for qemu-devel@nongnu.org; Mon, 13 Jan 2020 12:05:38 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:41188
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ir39l-0004jv-7W
+ for qemu-devel@nongnu.org; Mon, 13 Jan 2020 12:05:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578935136;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8akm5y2JIK+SIsf38zIVKEGwGAeiQntPbaAnvyKf3TU=;
+ b=DrFHhbygzS0OCRSTDCEzkJvfDaOKL4UpHgnfZ8p6sEQr2A+SWRA/ItALTtxw3uXuoiKTcJ
+ 8wHWwLkzzd8Ahp4/Jptg+cszrOyRszAAhQW44lD+HxOEvAU1QrtzaK5QlHQf+rfX3+sw+v
+ P7j+COTchXvY9JUJpWWhLSXaqcBYYPI=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-387-C3HcSvHDPxO3xxvuBWX8Ww-1; Mon, 13 Jan 2020 12:05:34 -0500
+Received: by mail-wm1-f72.google.com with SMTP id g26so1386388wmk.6
+ for <qemu-devel@nongnu.org>; Mon, 13 Jan 2020 09:05:34 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=3eLu5EnOB+WxW6gFtG3qisQpnTYPKy0enAl1ThZM8Wc=;
+ b=k8dPKC4VWaTyrFA5R+GAdt6KqL0CaUVyroc7HErKzLpoDiO6ctT9DJLAiQC91BtGX3
+ yzcbB1jbiLdHKxX2GR5dnfi5RNVZRNRh8SfyB1YExw3LUKjGSW5AZZY1M4H33+iIQhpU
+ EvNt6Mt1V4qM/gdSTFWk6wIa3YSGcXbAwCINr6esqdaeowfPj1kOw50AmjBj7YWVm1Z+
+ xAvgWwbsNgcKORPtDusSiP84cFPyFmJW5lG4KxgL3vNjAtpfSaYzpn3u3xFpRIQ6paQQ
+ 6bY6eM89wpT24yXqb4jrELcDqeFX8FzhsEfBjVJgL/oMfVoN23iwNGELoHtraYeB883z
+ pcrA==
+X-Gm-Message-State: APjAAAUqxfpM2QfUx2oTZP6zu3oBGJadi2gpJOas2MY8TA+fLRkr694F
+ 0VuHeH0YHaVBqiuO+UzAPHqi8D5r10YkGp5/8zM7OwFAGZGZ9jpfvuBD0EzLs20kOMQvt5F9fDC
+ YOZJvEypWKBlWRw0=
+X-Received: by 2002:a1c:7203:: with SMTP id n3mr20531533wmc.119.1578935133678; 
+ Mon, 13 Jan 2020 09:05:33 -0800 (PST)
+X-Received: by 2002:a1c:7203:: with SMTP id n3mr20531490wmc.119.1578935133375; 
+ Mon, 13 Jan 2020 09:05:33 -0800 (PST)
+Received: from [192.168.1.24] (lfbn-mon-1-1519-115.w92-167.abo.wanadoo.fr.
+ [92.167.83.115])
+ by smtp.gmail.com with ESMTPSA id h8sm16523814wrx.63.2020.01.13.09.05.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Jan 2020 09:05:32 -0800 (PST)
+Subject: Re: [PATCH] arm/gicv3: update virtual irq state after IAR register
+ read
+To: Jeff Kubascik <jeff.kubascik@dornerworks.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200113154607.97032-1-jeff.kubascik@dornerworks.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <7260d4ef-7d51-44c3-95d0-2c88c6e2eb63@redhat.com>
+Date: Mon, 13 Jan 2020 18:05:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [172.27.13.179]
-X-ClientProxiedBy: Mcbain.dw.local (172.27.1.45) To Mcbain.dw.local
- (172.27.1.45)
+In-Reply-To: <20200113154607.97032-1-jeff.kubascik@dornerworks.com>
+Content-Language: en-US
+X-MC-Unique: C3HcSvHDPxO3xxvuBWX8Ww-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 12.207.209.150
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>,
  Jarvis Roach <Jarvis.Roach@dornerworks.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N88NnykqPrRu
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gdLgTQNQlRot
 
-The IAR0/IAR1 register is used to acknowledge an interrupt - a read of the
-register activates the highest priority pending interrupt and provides its
-interrupt ID. Activating an interrupt can change the CPU's virtual interrupt
-state - this change makes sure the virtual irq state is updated.
+On 1/13/20 4:46 PM, Jeff Kubascik wrote:
+> The IAR0/IAR1 register is used to acknowledge an interrupt - a read of th=
+e
+> register activates the highest priority pending interrupt and provides it=
+s
+> interrupt ID. Activating an interrupt can change the CPU's virtual interr=
+upt
+> state - this change makes sure the virtual irq state is updated.
+>=20
+> Signed-off-by: Jeff Kubascik <jeff.kubascik@dornerworks.com>
+> ---
+> Hello,
+>=20
+> I am using the ARMv8 version of QEMU configured with the gicv3 interrupt
+> controller to run the Xen hypervisor with RTEMS as a guest VM (AArch32). =
+I
+> have noticed that when Xen injects a virtual irq to the guest VM, the gue=
+st
+> gets stuck in the interrupt handler.
+>=20
+> The guest's interrupt handler does the following in order:
+>    - Reads IAR1 to acknowledge the interrupt and get the INTID
+>    - Unmasks interrupts by clearing the I bit in the CPSR register
+>    - Dispatches the interrupt to the appropriate driver
+>    - Restores the I bit in the CPSR state
+>    - Writes the INTID to EOIR1 to drop priority and deactivate the interr=
+upt
+>=20
+> However, when the I bit was cleared, QEMU immediately raised the same
+> virtual interrupt again. This process repeated itself indefinitely.
+>=20
+> The read of the IAR1 register should activate the interrupt and prevent i=
+t
+> from firing again. However, the gicv3 device code wasn't updating the
+> irq_line_state, so the CPU_INTERRUPT_VIRQ flag remained set. Therefore, w=
+hen
+> I bit was cleared, the CPU immediately switched to the exception handler.
+>=20
+> I have tested this patch, and it works for Xen with both an AArch64 Linux
+> guest and an AArch32 RTEMS guest.
+>=20
+> Sincerely,
+> Jeff Kubascik
+> ---
+>   hw/intc/arm_gicv3_cpuif.c | 3 +++
+>   1 file changed, 3 insertions(+)
+>=20
+> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+> index a254b0ce87..08e000e33c 100644
+> --- a/hw/intc/arm_gicv3_cpuif.c
+> +++ b/hw/intc/arm_gicv3_cpuif.c
+> @@ -664,6 +664,9 @@ static uint64_t icv_iar_read(CPUARMState *env, const =
+ARMCPRegInfo *ri)
+>  =20
+>       trace_gicv3_icv_iar_read(ri->crm =3D=3D 8 ? 0 : 1,
+>                                gicv3_redist_affid(cs), intid);
+> +
+> +    gicv3_cpuif_virt_update(cs);
+> +
+>       return intid;
+>   }
+>  =20
+>=20
 
-Signed-off-by: Jeff Kubascik <jeff.kubascik@dornerworks.com>
----
-Hello,
-
-I am using the ARMv8 version of QEMU configured with the gicv3 interrupt
-controller to run the Xen hypervisor with RTEMS as a guest VM (AArch32). I
-have noticed that when Xen injects a virtual irq to the guest VM, the guest
-gets stuck in the interrupt handler.
-
-The guest's interrupt handler does the following in order:
-  - Reads IAR1 to acknowledge the interrupt and get the INTID
-  - Unmasks interrupts by clearing the I bit in the CPSR register
-  - Dispatches the interrupt to the appropriate driver
-  - Restores the I bit in the CPSR state
-  - Writes the INTID to EOIR1 to drop priority and deactivate the interrupt
-
-However, when the I bit was cleared, QEMU immediately raised the same
-virtual interrupt again. This process repeated itself indefinitely.
-
-The read of the IAR1 register should activate the interrupt and prevent it
-from firing again. However, the gicv3 device code wasn't updating the
-irq_line_state, so the CPU_INTERRUPT_VIRQ flag remained set. Therefore, when
-I bit was cleared, the CPU immediately switched to the exception handler.
-
-I have tested this patch, and it works for Xen with both an AArch64 Linux
-guest and an AArch32 RTEMS guest.
-
-Sincerely,
-Jeff Kubascik
----
- hw/intc/arm_gicv3_cpuif.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index a254b0ce87..08e000e33c 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -664,6 +664,9 @@ static uint64_t icv_iar_read(CPUARMState *env, const ARMCPRegInfo *ri)
- 
-     trace_gicv3_icv_iar_read(ri->crm == 8 ? 0 : 1,
-                              gicv3_redist_affid(cs), intid);
-+
-+    gicv3_cpuif_virt_update(cs);
-+
-     return intid;
- }
- 
--- 
-2.17.1
+Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 

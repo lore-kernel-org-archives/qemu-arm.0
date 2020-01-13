@@ -1,162 +1,112 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3787342lff;
-        Sun, 12 Jan 2020 23:17:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwVHDqOdcfVVR+xdlgzvRIjJbycyxM6/OizJivJFMxCGt1Kbdg1r9i1jCKkCLvLHcGwDeMn
-X-Received: by 2002:aca:481:: with SMTP id 123mr11867004oie.110.1578899844212;
-        Sun, 12 Jan 2020 23:17:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578899844; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp3808636lff;
+        Sun, 12 Jan 2020 23:45:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx1sjkvrQh7IH6SLUCsrtY2Q51AtVc1C2PbAnf0Kfn9JjtSoqvkeeBtG8kZlnOe4DFBbWHb
+X-Received: by 2002:a05:620a:997:: with SMTP id x23mr10481435qkx.143.1578901513492;
+        Sun, 12 Jan 2020 23:45:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578901513; cv=none;
         d=google.com; s=arc-20160816;
-        b=BhsuePm7njyS1awBbeK+aqVWPUIdXkPYWu7Zr/sxmRuxHpXxn8VGIdTcrP529I88mg
-         +HmxNhSlRP0KbOGFa6hRGzLfwcg82qyHSmbDrWMxBRHw7nV+euZUNTEzB4pPXrY2kwBV
-         5+3TQXR1sze9sqNZDgmfUM8Qdg/L8P3sgxnvOmTklDMB3B7rg5yYc6lrYGFCDA75opZd
-         yOm6V5TvU+AjfR1p+Oih+tu5d0qtu0m4K7uTWHM33aoB85pXe3gKJZ4UMk8G23KS3QHK
-         u/v0FAYjpYWERmkOkUhaSKViE3dA8uiarlKkhkcdeUNh5bHGmTqHDo9llHjPsJtqFwX/
-         YDWg==
+        b=Z9Xjjxh79DlIKY3qQHRbMHSWTzLlkLy/KAgiMXzDmvQmwVikCyp03KZDCcbDjnUts/
+         FFcMvVV2aJvItcx7do0aSLX8dwerzs/PQdCZ+xbrL5xlTve8IQgmc/qLKx0ICkpHwkPS
+         usRvOm8g+eJSiO5xuFWuZ7JjiiCoUZ1UcO2Fro3QIK0ohjQOETLm6sLnOaAh4ZOeSJaV
+         +AOg2VRUTzGEwriUAA7acd+6galYaK+idE0eZDsvhPFzewGwv03Qb0+nhflxqhdWW9da
+         wGqgm+aNwfY0aYz/+MHAJzEO4TQZyznsVZhWzYqRjjcifwKHZHdTGvdC5+k3C+8+N5VF
+         Gjxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=ZNS+Y4j5xaHzZyLNm/Up0HYOeBmor+c+SYErPyrtn6I=;
-        b=VHapMKGGiDQaTLDo/H5BZueC+EsEaK/SdFd056WgF3hVIqm0cKXjy6QxgEd7uGeb70
-         ha4K8QKAQf0BK/YiAFR5L7MBh+bV1/Hep+V/XXyPtlaVUeWY4oj+iAwd89Kf9e2v6VPK
-         7ZD2xE2zk5lRl5L3zROcHTzTVUKdmV9Tbz115ErUie7/1Hh3UwtbycAgmfg/HKRZqcZ3
-         AFD7H9eri9C9vikvjhFIoQQl5QcytmB23mfKkUd/0hbUEepGhSZx/vpdTMkvKvvnHoUY
-         XqPhfke5TGzNzbLV1IJqii7+RoCelzxSWhth1f2tNgjR9U4TxtNhNvsyUfwd5JXGSryb
-         AhUw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=1LWKqwMJFdgIsU1VPyBlOm1kjcK79ysv51DJSjQBvs4=;
+        b=qs0eWdAFNwsFbn4am1Z6SXuELm/BuNcKQiywxOo8C/ndrPp5j++Sidf4tAcs4sh9fS
+         ZiuZ0ysZDpRuNk4XZyQDu+6wL+nvb05/Y9UI5n8iuDg67YYBZnMC/oB3AvKZnxBspO2t
+         DQsF2Xd+bvsDQbSdGLCrMwFIl4BEEfqUfqvFAIV0ShLa/7XEUGXFP4zGngUJ1ERRyM00
+         Vq88LSFAeiYNSrrrNbSA4Jr7es33TiaCh4Gr98ybBUnTTpxi93edsW6bqr+px0hNEI54
+         hUy09dYOEW7DDBCMYSlHXw+fmsohxRHl6bov/+HF7CFsuSsdXSHIoIp4aELx49c/IdKh
+         ko+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b="W71Totl/";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id d140si5438561oig.269.2020.01.12.23.17.23;
-        Sun, 12 Jan 2020 23:17:24 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v29si6054132qth.396.2020.01.12.23.45.13
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 12 Jan 2020 23:45:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b="W71Totl/";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728598AbgAMHRW (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 13 Jan 2020 02:17:22 -0500
-Received: from ozlabs.org ([203.11.71.1]:39785 "EHLO ozlabs.org"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1725954AbgAMHRW (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 13 Jan 2020 02:17:22 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-        id 47x4fS2FYbz9sPn; Mon, 13 Jan 2020 18:17:20 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-        d=gibson.dropbear.id.au; s=201602; t=1578899840;
-        bh=aaWWOD+aHSxJEi2O2Vs9dFgm1buPigAQBFB1/1ut62Q=;
-        h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-        b=W71Totl//cINFjtMhIVRW6WMNQdvRrfxqhdWTzrYsJxfbAzzNzvD4PvtMsoMFIKl/
-         MI9mVhwOiw3rboglPy3O6t/L/rI2O37XWGyvdWRH+bsw70W9/tM1Vlp/ancQQqskw+
-         CgBVkElofU9uX4u2vscodtQKhBozqp39VCk/tApg=
-Date:   Mon, 13 Jan 2020 17:16:48 +1000
-From:   David Gibson <david@gibson.dropbear.id.au>
-To:     Greg Kurz <groug@kaod.org>
-Cc:     Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-        qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
-        Juan Quintela <quintela@redhat.com>, qemu-ppc@nongnu.org,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Eric Blake <eblake@redhat.com>
-Subject: Re: [PATCH 04/15] hw/ppc/spapr_rtas: Restrict variables scope to
- single switch case
-Message-ID: <20200113071648.GF19995@umbus>
-References: <20200109152133.23649-1-philmd@redhat.com>
- <20200109152133.23649-5-philmd@redhat.com>
- <20200109184349.1aefa074@bahia.lan>
- <9870f8ed-3fa0-1deb-860d-7481cb3db556@redhat.com>
- <20200110105055.3e72ddf4@bahia.lan>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46750 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iquPQ-0004HC-QD
+	for alex.bennee@linaro.org; Mon, 13 Jan 2020 02:45:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53327)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <clg@kaod.org>) id 1iquPG-0004F6-B6
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 02:45:03 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <clg@kaod.org>) id 1iquPF-0002fL-DL
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 02:45:02 -0500
+Received: from 7.mo2.mail-out.ovh.net ([188.165.48.182]:58669)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iquPF-0002P3-86
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 02:45:01 -0500
+Received: from player729.ha.ovh.net (unknown [10.109.143.145])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTP id EED271BE85F
+ for <qemu-arm@nongnu.org>; Mon, 13 Jan 2020 08:44:51 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player729.ha.ovh.net (Postfix) with ESMTPSA id 005A1E45ECCB;
+ Mon, 13 Jan 2020 07:44:44 +0000 (UTC)
+Subject: Re: [PATCH 0/5] aspeed: extensions and fixes
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200107073423.30043-1-clg@kaod.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <c059d9c9-a04b-a7ce-7738-62ee88f23463@kaod.org>
+Date: Mon, 13 Jan 2020 08:44:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="XIiC+We3v3zHqZ6Z"
-Content-Disposition: inline
-In-Reply-To: <20200110105055.3e72ddf4@bahia.lan>
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: aOdRxOIkJrHf
-
-
---XIiC+We3v3zHqZ6Z
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <20200107073423.30043-1-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 2302183835244858147
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvdeiledguddufecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejvdelrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
 Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 188.165.48.182
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OHQOXVytlkRY
 
-On Fri, Jan 10, 2020 at 10:50:55AM +0100, Greg Kurz wrote:
-> On Fri, 10 Jan 2020 10:34:07 +0100
-> Philippe Mathieu-Daud=E9 <philmd@redhat.com> wrote:
+On 1/7/20 8:34 AM, C=C3=A9dric Le Goater wrote:
+> Hi,
 >=20
-> > On 1/9/20 6:43 PM, Greg Kurz wrote:
-> > > On Thu,  9 Jan 2020 16:21:22 +0100
-> > > Philippe Mathieu-Daud=E9 <philmd@redhat.com> wrote:
-> > >=20
-> > >> We only access these variables in RTAS_SYSPARM_SPLPAR_CHARACTERISTICS
-> > >> case, restrict their scope to avoid unnecessary initialization.
-> > >>
-> > >=20
-> > > I guess a decent compiler can be smart enough detect that the initial=
-ization
-> > > isn't needed outside of the RTAS_SYSPARM_SPLPAR_CHARACTERISTICS branc=
-h...
-> > > Anyway, reducing scope isn't bad. The only hitch I could see is that =
-some
-> > > people do prefer to have all variables declared upfront, but there's =
-a nested
-> > > param_val variable already so I guess it's okay.
-> >=20
-> > I don't want to outsmart compilers :)
-> >=20
-> > The MACHINE() macro is not a simple cast, it does object introspection=
-=20
-> > with OBJECT_CHECK(), thus is not free. Since=20
+> Here is a short series adding :
 >=20
-> Sure, I understand the motivation in avoiding an unneeded call
-> to calling object_dynamic_cast_assert().
->=20
-> > object_dynamic_cast_assert() argument is not const, I'm not sure the=20
-> > compiler can remove the call.
-> >=20
->=20
-> Not remove the call, but delay it to the branch that uses it,
-> ie. parameter =3D=3D RTAS_SYSPARM_SPLPAR_CHARACTERISTICS.
+>  - a new eMMC controller model for the AST2600 SoC (Andrew)
+>  - accessors to control the led state of the pca9552 device (Joel)
+>  - a 'execute-in-place' property to boot directly from CE0
 
-I think any performance consideration here is a red herring.  This
-particular RTAS call is a handful-of-times-per-boot thing, and only
-AFAIK used by AIX guests.
+There is a naming issue with the eMMC model. I will let Andrew resend.
+We can drop this patchset for now.
 
-I'm in favour of the change on the grounds of code locality and
-readability.
+Thanks,
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---XIiC+We3v3zHqZ6Z
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl4cGWAACgkQbDjKyiDZ
-s5IRhxAAgjwTfn6oDce64WmxrtSzdp5v8NnkSL1fO3d3+2xEQyjHrPoCNGPjgsqG
-s05hIyZ+0BwiAKsdwmFtqnxsMdtwpNWDgzESv9t7aY3qRy3hZWj7b12sVkhio7nv
-5LZ5VI0Brp0fGRv6Kw6/4KczI/rvWUKYYchMv027IyOdnK01hBLL0Le06RY4gUo4
-ouZOKyF3NolvtBSxotq72UDJzlUeCACieg/xQuYo3DB2KT3HeerdYv4ijsF/vXpe
-yHgxJleALbk8XXfVGM2iXODKOuhbPE0Q1xovdzLZtw8Gc6LyRHlqS0PB4QVqu2pN
-2W2ykFzPV52O5apL+Ythb03YgsbA15V02thgPWJgs8h3MEWaUOkkwuwmguJuZQnH
-4jYeXOIY58Lwksts5+N8TiyuSAuepQiFTXFvysM9GUjt7aSDqW05Gg0b+heDyzyJ
-C00cQD+AzUJzFeRR75A8/bBzoeA2xTG8N2+CH2uinY2H3CBMHfy9V2DnzJChDwEL
-zkPr/tk2KT00dioTwNJFTyVivvZOzTWR8GbHxsM6+uOBiF/UwvyOQiJEHYcj2g/4
-KFl9FaakjOqsjd3+tEOwyTmmIxlNNBBpphHYt+8ZKoYu344+Qp/E7brigCvhpC6+
-x/YqfPajq/dqVh2mWqGNfEZyepvxWhQO2OglVhpd5WdTGP1x99U=
-=x52C
------END PGP SIGNATURE-----
-
---XIiC+We3v3zHqZ6Z--
+C.

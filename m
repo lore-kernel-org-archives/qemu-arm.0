@@ -1,118 +1,118 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4731962lff;
-        Mon, 13 Jan 2020 14:58:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxNFBiwB5y2IDYuZOVGbXKPXy5XuphZHLNJ1j/FxcHLN1QOBO3QCmxhnXq9XG91ISf6XC2a
-X-Received: by 2002:aa7:cf81:: with SMTP id z1mr20171924edx.157.1578956291187;
-        Mon, 13 Jan 2020 14:58:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578956291; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4749238lff;
+        Mon, 13 Jan 2020 15:14:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzXweKRiVjHzz2bLPmqOiGojAWYEcEjWweirYeG6XrsIZ+W2WwAtbTmjOUL296cjIPySVKJ
+X-Received: by 2002:a37:c449:: with SMTP id h9mr13758753qkm.124.1578957295914;
+        Mon, 13 Jan 2020 15:14:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578957295; cv=none;
         d=google.com; s=arc-20160816;
-        b=ShtAPUOcwA5KmLqldrqicVMMXhxd8B/TayZtoZAWJ9fhZr+hLPWzHRqi3Agp9Qt/IH
-         SRYcgcZm7nURxDsoqC8PLJA0LFfk3KoefVR18+3YOxMsvEmaUHlHWJ0h0YuDLTtEwiFW
-         SXciVJ97rLYFsA+A3YooBMrr70/RPVDEKdMiTnGb/WB8rFvEiJ3ga04Q1xIQHmUotfT4
-         pAGs0EgC0WaW3q+/TK/v3bfDw00paaLs1TeEDTMy9iEQx8CXPP9Xjn007tADnHseb7GG
-         7h2YGhZoVAfc7zPopDrPoqTe3uGBuIRwYs08MSeBo5I0lhhhZNJrNRmNvVafdEqi34Ui
-         yQyw==
+        b=zReth86PsqgO0iMu+rkN7dfsSNN66YQsJ73UTIA6v/WJA2PXI8pNwj2d8DYJKlD0XX
+         bp2Zm/TStMCBNuaStcyncM2eEqZ1ffXbUP55kaRoIIqcnxN6SI3A+3mF/IEkzw636i+o
+         KmqdWn4lCJGGjQB85AhNJ8OQBFXy/76RcHFzrrHIWJz4n9yQ7/wod6yBem5NLRJD/xKH
+         4HwZ/Zxl5ch1hfKkF0GNuRpgnVSuBG25ojCdJpj0UDDvm0TZEcJDuEZ1GEiL9d2c1BdL
+         1RzwUQyhXV8b1g+3QaTX5j5PxSfHeojATE6Hen007Inz00yE/AVXYqCtCNydaFR7+1Ai
+         Macw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Gn9Iu6fGxnBgwQmzqtj7cOWHnnGrS5RAUseTtt7bK7c=;
-        b=uYm3MMkxeD2KHieh8P1PzEF4GjwkEHVx1N6taS/w2AIKAQmEnkAAnJVHuBsiFlTuVO
-         9ZLQ4LJPKFUcKu4Y8kUPZMS5wreSBqW58n+LsaG+OYf0DlHpLhdElcezajRYbi0o/0Ug
-         DPaRVY1537k6weFV7xEqcUPcmBgiKCOXgE8qcpzi1zoeJXdtGRbcCLLznS0tfupwz3zW
-         CsMKodj2hXBcV7TGJPPTeNL5sKHs30tGQpRLvs+Ok8e6ol/es2/8eVpX8LrJRrP8F1ch
-         KFNOh7od1beS9Fq+ZgWzrp4RQGZlj9AlDuVp+jhdyPAmW7+oa/hXwbIn1R4Xf+BELDOc
-         qNVw==
+        bh=j+00JJXYt9dx1V6cwbYJ1fZASKH4n8RGtMomVwp8jVs=;
+        b=eCPRETw0TRWqO06FFTmiVCtWywLCd1IJi6dvqj//bx8RPimVZX5Q/z6cSesHJlYIL3
+         LDRYmGtq6+iKOEJEGsmzLmKi6XoRZCo5SPgUoKzNZRyw745INaasiPpulZM9blgyI5xm
+         5Uz6alrfl9h8diOlFm7lwV96ygrZKapx1JR1x2T1f9Qp379aV50lM826NQASdz2rhhFQ
+         8XltDSjYydEbrnActEjAxcn+qrf5X1lHa+QYRjKSK3iFhx4ICp3Wc2iGZhtPi8rK6/j9
+         kQHawJ7vSPG6QrjaP8Fs/tIIkEOHSZq7j4rujkKdsCyzlzKZBKG4FRhpjcGJFvNRNBQ6
+         qggw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ie02Qmxh;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UNa52pzH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d25si8067763edx.119.2020.01.13.14.58.10
+        by mx.google.com with ESMTPS id s10si7194018qvm.78.2020.01.13.15.14.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jan 2020 14:58:11 -0800 (PST)
+        Mon, 13 Jan 2020 15:14:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ie02Qmxh;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UNa52pzH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56776 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ir8ev-0005aV-Lu
-	for alex.bennee@linaro.org; Mon, 13 Jan 2020 17:58:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49036)
+	id 1ir8v9-00088G-98
+	for alex.bennee@linaro.org; Mon, 13 Jan 2020 18:14:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51430)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ir8eb-0005W6-Al
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 17:57:52 -0500
+ (envelope-from <philmd@redhat.com>) id 1ir8uz-00087z-5t
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 18:14:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ir8eY-0005gz-BO
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 17:57:49 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:51888
+ (envelope-from <philmd@redhat.com>) id 1ir8uv-0006DE-KO
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 18:14:43 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48208
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ir8eY-0005gn-5g
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 17:57:46 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ir8uv-0006Cs-By
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 18:14:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578956265;
+ s=mimecast20190719; t=1578957280;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Gn9Iu6fGxnBgwQmzqtj7cOWHnnGrS5RAUseTtt7bK7c=;
- b=Ie02QmxhWigIq2r4aHaVb1Uu3vo5zbeQGm7nJqBUSQECCFmFFu0gPH4LhjIKh4A6BaTjN7
- uh6HRmvROrAvvIbpTWeDir59xUsAGKb5m1nmgGN+zNH1O9jjaYu8dM64Bq7bhp+jAlta44
- acwCVcDObFWgkfWA8ptV9E/MpE8/n90=
+ bh=j+00JJXYt9dx1V6cwbYJ1fZASKH4n8RGtMomVwp8jVs=;
+ b=UNa52pzH1vOL41elvXZcWAL9FB7BXr5MX92G1eSi+iqRjTQenxXVVLlbYqNZ0wXUABTNDD
+ JezWWGBwSENkfE4nGR5C0LEWIGxI/+lZT4QV3fEBzWahhqImGxd4m3n70KgTEaO+9RiqGq
+ DRs5SekNR+JwanWsQmnoXzFuUUmpIow=
 Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
  [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-31-74ViAccYOX636T5lHXN2tQ-1; Mon, 13 Jan 2020 17:57:42 -0500
-Received: by mail-wr1-f72.google.com with SMTP id y7so5684824wrm.3
- for <qemu-arm@nongnu.org>; Mon, 13 Jan 2020 14:57:42 -0800 (PST)
+ us-mta-212-lWwVx8ANNweBHkRTSIhZuQ-1; Mon, 13 Jan 2020 18:14:38 -0500
+Received: by mail-wr1-f72.google.com with SMTP id y7so5704415wrm.3
+ for <qemu-arm@nongnu.org>; Mon, 13 Jan 2020 15:14:38 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Gn9Iu6fGxnBgwQmzqtj7cOWHnnGrS5RAUseTtt7bK7c=;
- b=pG7dAzuiXuz4ucugMGhy5tBiJvSg6fIrxO71npJZ0Bzf6AhdbwMm4R1bJ+Px100Blq
- aCK6ecD+uhZMeWLjECdPxVM6m9B8BA/YRTSlWRIbru6xWz6ekDVgvHJm/cdC8/313HdT
- l4y8iZzY2/M4bi/dCT5tGG+D6QlxkVwmnkJqhxEf94h6Rkkkr0cU3llp4C9k2DdmzieM
- u2s3+OdxK5cJmbMBj0PpY/RJbSoNcTxWiyqCyyXhLfIDfovkAsl+hkDFPOAE7gDxYngN
- 6Nb04imh1iXfR8wDb1aaicnqPNCk7wk6wUYhZjZHF6DaCF/eYHbtTPCOcu6vkEHrD7L+
- LroA==
-X-Gm-Message-State: APjAAAVx6eu495kuVtckamcbnpfVUz8BlNyHXjz/OcmC7Oygq3JlzlbJ
- Budqjmt9gyRYJXOg2D36CdQUIU1ZMfhZKJ+fKRg6sG2JkVJfA9cYx/3R57xLGTUDOumxE6nsbnz
- 8PQYkyu95O0rU
-X-Received: by 2002:a5d:4749:: with SMTP id o9mr20629370wrs.242.1578956261051; 
- Mon, 13 Jan 2020 14:57:41 -0800 (PST)
-X-Received: by 2002:a5d:4749:: with SMTP id o9mr20629331wrs.242.1578956260588; 
- Mon, 13 Jan 2020 14:57:40 -0800 (PST)
+ bh=j+00JJXYt9dx1V6cwbYJ1fZASKH4n8RGtMomVwp8jVs=;
+ b=DTS+KwwyPBYs+SsQWcDwkjewuxanC29JnWpYwjeSShBG1P5IO8dq3laV7KiJLKSayb
+ 30HP9+4yTw/sNxkelO38/9b9ZL+qe9QgKJbXZSCKqW/C1XLaC7ojM699F9dnB/EYWBbS
+ TMI3PE+oSNc6Yl8+/9RZtak/7hEV1vGt81IKa14ihs2a3a3l2NpR8BCg9SojYrkAsYwO
+ up+LZj5ELSjaOqgve2WUkaERjMe6rWSu0Yfp0ij+xT+Q70R+KWVfz3EsYcg0tf+wHQsi
+ GH2NiX1dBhTyjV5Q4q+rWkPVezn5w2SAvki1v6rhHpovDgHqKUgPDhDdWKg0kL1wdJ/d
+ dDlQ==
+X-Gm-Message-State: APjAAAXePPbaA1wFIS6AODlv74xIQ+fCT0aPw9FS7sSWCsiIZpqHyrGL
+ GgaU55ubbLrfTLuQImjK/q5CDqrOLbiphEku2psmF2vfuQLtBh/VPDdFhLWiRCylP/qXeCIzVES
+ YHQEIKqvO7rTy
+X-Received: by 2002:adf:e70d:: with SMTP id c13mr21419478wrm.248.1578957277406; 
+ Mon, 13 Jan 2020 15:14:37 -0800 (PST)
+X-Received: by 2002:adf:e70d:: with SMTP id c13mr21419443wrm.248.1578957276903; 
+ Mon, 13 Jan 2020 15:14:36 -0800 (PST)
 Received: from [192.168.1.24] (lfbn-mon-1-1519-115.w92-167.abo.wanadoo.fr.
  [92.167.83.115])
- by smtp.gmail.com with ESMTPSA id d8sm16519614wrx.71.2020.01.13.14.57.39
+ by smtp.gmail.com with ESMTPSA id 124sm16930663wmc.29.2020.01.13.15.14.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Jan 2020 14:57:40 -0800 (PST)
-Subject: Re: [PATCH v3 12/17] hw/arm/allwinner: add RTC device support
+ Mon, 13 Jan 2020 15:14:36 -0800 (PST)
+Subject: Re: [PATCH v3 06/17] hw/arm/allwinner: add CPU Configuration module
 To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
 References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-13-nieklinnenbank@gmail.com>
+ <20200108200020.4745-7-nieklinnenbank@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <cca7b552-ed09-fdc4-e80e-fc172e30e9bf@redhat.com>
-Date: Mon, 13 Jan 2020 23:57:39 +0100
+Message-ID: <8bbf88b2-867a-c95d-a3ae-e819f7dd08ac@redhat.com>
+Date: Tue, 14 Jan 2020 00:14:35 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200108200020.4745-13-nieklinnenbank@gmail.com>
+In-Reply-To: <20200108200020.4745-7-nieklinnenbank@gmail.com>
 Content-Language: en-US
-X-MC-Unique: 74ViAccYOX636T5lHXN2tQ-1
+X-MC-Unique: lWwVx8ANNweBHkRTSIhZuQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -127,103 +127,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n3zSNArm6aWt
+X-TUID: mmTog+Om5Zy2
 
 On 1/8/20 9:00 PM, Niek Linnenbank wrote:
-> Allwinner System-on-Chips usually contain a Real Time Clock (RTC)
-> for non-volatile system date and time keeping. This commit adds a generic
-> Allwinner RTC device that supports the RTC devices found in Allwinner SoC
-> family sun4i (A10), sun7i (A20) and sun6i and newer (A31, H2+, H3, etc).
-> The following RTC functionality and features are implemented:
+> Various Allwinner System on Chip designs contain multiple processors
+> that can be configured and reset using the generic CPU Configuration
+> module interface. This commit adds support for the Allwinner CPU
+> configuration interface which emulates the following features:
 > 
->   * Year-Month-Day read/write
->   * Hour-Minute-Second read/write
->   * General Purpose storage
-> 
-> The following boards are extended with the RTC device:
-> 
->   * Cubieboard (hw/arm/cubieboard.c)
->   * Orange Pi PC (hw/arm/orangepi.c)
+>   * CPU reset
+>   * CPU status
+>   * Shared 64-bit timer
 > 
 > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 > ---
->   include/hw/arm/allwinner-a10.h |   4 +-
->   include/hw/arm/allwinner-h3.h  |   3 +
->   include/hw/rtc/allwinner-rtc.h | 129 +++++++++++
->   hw/arm/allwinner-a10.c         |   7 +
->   hw/arm/allwinner-h3.c          |   9 +-
->   hw/rtc/allwinner-rtc.c         | 386 +++++++++++++++++++++++++++++++++
->   hw/rtc/Makefile.objs           |   1 +
->   hw/rtc/trace-events            |   4 +
->   8 files changed, 541 insertions(+), 2 deletions(-)
->   create mode 100644 include/hw/rtc/allwinner-rtc.h
->   create mode 100644 hw/rtc/allwinner-rtc.c
+>   include/hw/arm/allwinner-h3.h      |   3 +
+>   include/hw/misc/allwinner-cpucfg.h |  54 ++++++
+>   hw/arm/allwinner-h3.c              |   9 +-
+>   hw/misc/allwinner-cpucfg.c         | 282 +++++++++++++++++++++++++++++
+>   hw/misc/Makefile.objs              |   1 +
+>   hw/misc/trace-events               |   5 +
+>   6 files changed, 353 insertions(+), 1 deletion(-)
+>   create mode 100644 include/hw/misc/allwinner-cpucfg.h
+>   create mode 100644 hw/misc/allwinner-cpucfg.c
 > 
-> diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-> index 0e8250b244..81a16092e7 100644
-> --- a/include/hw/arm/allwinner-a10.h
-> +++ b/include/hw/arm/allwinner-a10.h
-> @@ -9,6 +9,7 @@
->   #include "hw/net/allwinner_emac.h"
->   #include "hw/sd/allwinner-sdhost.h"
->   #include "hw/ide/ahci.h"
-> +#include "hw/rtc/allwinner-rtc.h"
->   
->   #include "target/arm/cpu.h"
->   
-> @@ -18,7 +19,7 @@
->   #define AW_A10_UART0_REG_BASE   0x01c28000
->   #define AW_A10_EMAC_BASE        0x01c0b000
->   #define AW_A10_SATA_BASE        0x01c18000
-> -
-> +#define AW_A10_RTC_BASE         0x01c20d00
->   #define AW_A10_SDRAM_BASE       0x40000000
->   
->   #define TYPE_AW_A10 "allwinner-a10"
-> @@ -36,6 +37,7 @@ typedef struct AwA10State {
->       AwEmacState emac;
->       AllwinnerAHCIState sata;
->       AwSdHostState mmc0;
-> +    AwRtcState rtc;
->       MemoryRegion sram_a;
->   } AwA10State;
->   
 > diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-> index d1b3d7ca67..1c275a34ed 100644
+> index 26706f4fa6..5a25a92eae 100644
 > --- a/include/hw/arm/allwinner-h3.h
 > +++ b/include/hw/arm/allwinner-h3.h
-> @@ -50,6 +50,7 @@
->   #include "hw/misc/allwinner-sid.h"
->   #include "hw/sd/allwinner-sdhost.h"
->   #include "hw/net/allwinner-sun8i-emac.h"
-> +#include "hw/rtc/allwinner-rtc.h"
+> @@ -44,6 +44,7 @@
+>   #include "hw/timer/allwinner-a10-pit.h"
+>   #include "hw/intc/arm_gic.h"
+>   #include "hw/misc/allwinner-h3-ccu.h"
+> +#include "hw/misc/allwinner-cpucfg.h"
+>   #include "hw/misc/allwinner-h3-sysctrl.h"
 >   #include "target/arm/cpu.h"
->   #include "sysemu/block-backend.h"
 >   
-> @@ -92,6 +93,7 @@ enum {
+> @@ -80,6 +81,7 @@ enum {
 >       AW_H3_GIC_CPU,
 >       AW_H3_GIC_HYP,
 >       AW_H3_GIC_VCPU,
-> +    AW_H3_RTC,
->       AW_H3_CPUCFG,
+> +    AW_H3_CPUCFG,
 >       AW_H3_SDRAM
 >   };
-> @@ -130,6 +132,7 @@ typedef struct AwH3State {
->       AwSidState sid;
->       AwSdHostState mmc0;
->       AwSun8iEmacState emac;
-> +    AwRtcState rtc;
+>   
+> @@ -111,6 +113,7 @@ typedef struct AwH3State {
+>       const hwaddr *memmap;
+>       AwA10PITState timer;
+>       AwH3ClockCtlState ccu;
+> +    AwCpuCfgState cpucfg;
+>       AwH3SysCtrlState sysctrl;
 >       GICState gic;
 >       MemoryRegion sram_a1;
->       MemoryRegion sram_a2;
-> diff --git a/include/hw/rtc/allwinner-rtc.h b/include/hw/rtc/allwinner-rtc.h
+> diff --git a/include/hw/misc/allwinner-cpucfg.h b/include/hw/misc/allwinner-cpucfg.h
 > new file mode 100644
-> index 0000000000..e29dfc775f
+> index 0000000000..2c0e5b7e03
 > --- /dev/null
-> +++ b/include/hw/rtc/allwinner-rtc.h
-> @@ -0,0 +1,129 @@
+> +++ b/include/hw/misc/allwinner-cpucfg.h
+> @@ -0,0 +1,54 @@
 > +/*
-> + * Allwinner Real Time Clock emulation
+> + * Allwinner CPU Configuration Module emulation
 > + *
 > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
 > + *
@@ -241,202 +204,90 @@ On 1/8/20 9:00 PM, Niek Linnenbank wrote:
 > + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 > + */
 > +
-> +#ifndef HW_MISC_ALLWINNER_RTC_H
-> +#define HW_MISC_ALLWINNER_RTC_H
+> +#ifndef HW_MISC_ALLWINNER_CPUCFG_H
+> +#define HW_MISC_ALLWINNER_CPUCFG_H
 > +
 > +#include "qemu/osdep.h"
 > +#include "qom/object.h"
 > +#include "hw/sysbus.h"
 > +
 > +/**
-> + * Constants
+> + * Object model
 > + * @{
 > + */
 > +
-> +/** Highest register address used by RTC device */
-> +#define AW_RTC_REGS_MAXADDR     (0x1F4)
-
-I'd start using 0x200 here so in case new SoC use registers in this 
-block range (or undocumented reg) so we don't have to modify 
-allwinner_rtc_vmstate.
-
-> +
-> +/** Total number of known registers */
-> +#define AW_RTC_REGS_NUM         (AW_RTC_REGS_MAXADDR / sizeof(uint32_t))
+> +#define TYPE_AW_CPUCFG   "allwinner-cpucfg"
+> +#define AW_CPUCFG(obj) \
+> +    OBJECT_CHECK(AwCpuCfgState, (obj), TYPE_AW_CPUCFG)
 > +
 > +/** @} */
 > +
 > +/**
-> + * Object model types
-> + * @{
+> + * Allwinner CPU Configuration Module instance state
 > + */
-> +
-> +/** Generic Allwinner RTC device (abstract) */
-> +#define TYPE_AW_RTC          "allwinner-rtc"
-> +
-> +/** Allwinner RTC sun4i family (A10, A12) */
-> +#define TYPE_AW_RTC_SUN4I    TYPE_AW_RTC "-sun4i"
-> +
-> +/** Allwinner RTC sun6i family and newer (A31, H2+, H3, etc) */
-> +#define TYPE_AW_RTC_SUN6I    TYPE_AW_RTC "-sun6i"
-> +
-> +/** Allwinner RTC sun7i family (A20) */
-> +#define TYPE_AW_RTC_SUN7I    TYPE_AW_RTC "-sun7i"
-> +
-> +/** @} */
-> +
-> +/**
-> + * Object model macros
-> + * @{
-> + */
-> +
-> +#define AW_RTC(obj) \
-> +    OBJECT_CHECK(AwRtcState, (obj), TYPE_AW_RTC)
-> +#define AW_RTC_CLASS(klass) \
-> +     OBJECT_CLASS_CHECK(AwRtcClass, (klass), TYPE_AW_RTC)
-> +#define AW_RTC_GET_CLASS(obj) \
-> +     OBJECT_GET_CLASS(AwRtcClass, (obj), TYPE_AW_RTC)
-> +
-> +/** @} */
-> +
-> +/**
-> + * Allwinner RTC per-object instance state.
-> + */
-> +typedef struct AwRtcState {
+> +typedef struct AwCpuCfgState {
 > +    /*< private >*/
 > +    SysBusDevice parent_obj;
 > +    /*< public >*/
 > +
-> +    /** Maps I/O registers in physical memory */
 > +    MemoryRegion iomem;
+> +    uint32_t gen_ctrl;
+> +    uint32_t super_standby;
+> +    uint32_t entry_addr;
+> +    uint32_t counter_ctrl;
 > +
-> +    /** Array of hardware registers */
-> +    uint32_t regs[AW_RTC_REGS_NUM];
+> +} AwCpuCfgState;
 > +
-> +} AwRtcState;
-> +
-> +/**
-> + * Allwinner RTC class-level struct.
-> + *
-> + * This struct is filled by each sunxi device specific code
-> + * such that the generic code can use this struct to support
-> + * all devices.
-> + */
-> +typedef struct AwRtcClass {
-> +    /*< private >*/
-> +    SysBusDeviceClass parent_class;
-> +    /*< public >*/
-> +
-> +    /** Defines device specific register map */
-> +    const uint8_t *regmap;
-> +
-> +    /** Number of entries in regmap */
-> +    size_t regmap_size;
-
-I'd rather call this 'regmap_count'.
-If you don't use this field, can we remove it?
-
-> +
-> +    /** Device offset in years to 1900, for struct tm.tm_year */
-> +    uint8_t year_offset;
-
-struct tm uses 'int' for this field.
-
-> +
-> +    /**
-> +     * Read device specific register
-> +     *
-> +     * @offset: register offset to read
-> +     * @return true if register read successful, false otherwise
-> +     */
-> +    bool (*read)(AwRtcState *s, uint32_t offset);
-> +
-> +    /**
-> +     * Write device specific register
-> +     *
-> +     * @offset: register offset to write
-> +     * @data: value to set in register
-> +     * @return true if register write successful, false otherwise
-> +     */
-> +    bool (*write)(AwRtcState *s, uint32_t offset, uint32_t data);
-> +
-> +} AwRtcClass;
-> +
-> +#endif /* HW_MISC_ALLWINNER_RTC_H */
-> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-> index 61cf3550a6..3f8f9d0d19 100644
-> --- a/hw/arm/allwinner-a10.c
-> +++ b/hw/arm/allwinner-a10.c
-> @@ -46,6 +46,9 @@ static void aw_a10_init(Object *obj)
->   
->       sysbus_init_child_obj(obj, "mmc0", &s->mmc0, sizeof(s->mmc0),
->                             TYPE_AW_SDHOST_SUN4I);
-> +
-> +    sysbus_init_child_obj(obj, "rtc", &s->rtc, sizeof(s->rtc),
-> +                          TYPE_AW_RTC_SUN4I);
->   }
->   
->   static void aw_a10_realize(DeviceState *dev, Error **errp)
-> @@ -128,6 +131,10 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc0), 0, s->irq[32]);
->       object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->mmc0),
->                                 "sd-bus", &error_abort);
-> +
-> +    /* RTC */
-> +    qdev_init_nofail(DEVICE(&s->rtc));
-> +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->rtc), 0, AW_A10_RTC_BASE, 10);
->   }
->   
->   static void aw_a10_class_init(ObjectClass *oc, void *data)
+> +#endif /* HW_MISC_ALLWINNER_CPUCFG_H */
 > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> index 77b823e7d8..caa4d8b196 100644
+> index d261d7b2be..e9ad6d23df 100644
 > --- a/hw/arm/allwinner-h3.c
 > +++ b/hw/arm/allwinner-h3.c
-> @@ -61,6 +61,7 @@ const hwaddr allwinner_h3_memmap[] = {
+> @@ -54,6 +54,7 @@ const hwaddr allwinner_h3_memmap[] = {
 >       [AW_H3_GIC_CPU]    = 0x01c82000,
 >       [AW_H3_GIC_HYP]    = 0x01c84000,
 >       [AW_H3_GIC_VCPU]   = 0x01c86000,
-> +    [AW_H3_RTC]        = 0x01f00000,
->       [AW_H3_CPUCFG]     = 0x01f01c00,
+> +    [AW_H3_CPUCFG]     = 0x01f01c00,
 >       [AW_H3_SDRAM]      = 0x40000000
 >   };
-> @@ -116,7 +117,6 @@ struct AwH3Unimplemented {
->       { "csi",       0x01cb0000, 320 * KiB },
->       { "tve",       0x01e00000, 64 * KiB },
->       { "hdmi",      0x01ee0000, 128 * KiB },
-> -    { "rtc",       0x01f00000, 1 * KiB },
->       { "r_timer",   0x01f00800, 1 * KiB },
->       { "r_intc",    0x01f00c00, 1 * KiB },
+>   
+> @@ -120,7 +121,6 @@ struct AwH3Unimplemented {
 >       { "r_wdog",    0x01f01000, 1 * KiB },
-> @@ -244,6 +244,9 @@ static void allwinner_h3_init(Object *obj)
->                                "ram-addr", &error_abort);
->       object_property_add_alias(obj, "ram-size", OBJECT(&s->dramc),
->                                 "ram-size", &error_abort);
+>       { "r_prcm",    0x01f01400, 1 * KiB },
+>       { "r_twd",     0x01f01800, 1 * KiB },
+> -    { "r_cpucfg",  0x01f01c00, 1 * KiB },
+>       { "r_cir-rx",  0x01f02000, 1 * KiB },
+>       { "r_twi",     0x01f02400, 1 * KiB },
+>       { "r_uart",    0x01f02800, 1 * KiB },
+> @@ -193,6 +193,9 @@ static void allwinner_h3_init(Object *obj)
+>   
+>       sysbus_init_child_obj(obj, "sysctrl", &s->sysctrl, sizeof(s->sysctrl),
+>                             TYPE_AW_H3_SYSCTRL);
 > +
-> +    sysbus_init_child_obj(obj, "rtc", &s->rtc, sizeof(s->rtc),
-> +                          TYPE_AW_RTC_SUN6I);
+> +    sysbus_init_child_obj(obj, "cpucfg", &s->cpucfg, sizeof(s->cpucfg),
+> +                          TYPE_AW_CPUCFG);
 >   }
 >   
 >   static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-> @@ -437,6 +440,10 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
->       sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 1, s->memmap[AW_H3_DRAMCTL]);
->       sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 2, s->memmap[AW_H3_DRAMPHY]);
+> @@ -309,6 +312,10 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+>       qdev_init_nofail(DEVICE(&s->sysctrl));
+>       sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysctrl), 0, s->memmap[AW_H3_SYSCTRL]);
 >   
-> +    /* RTC */
-> +    qdev_init_nofail(DEVICE(&s->rtc));
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, s->memmap[AW_H3_RTC]);
+> +    /* CPU Configuration */
+> +    qdev_init_nofail(DEVICE(&s->cpucfg));
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0, s->memmap[AW_H3_CPUCFG]);
 > +
->       /* Unimplemented devices */
->       for (int i = 0; i < ARRAY_SIZE(unimplemented); i++) {
->           create_unimplemented_device(unimplemented[i].device_name,
-> diff --git a/hw/rtc/allwinner-rtc.c b/hw/rtc/allwinner-rtc.c
+>       /* Universal Serial Bus */
+>       sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
+>                            qdev_get_gpio_in(DEVICE(&s->gic),
+> diff --git a/hw/misc/allwinner-cpucfg.c b/hw/misc/allwinner-cpucfg.c
 > new file mode 100644
-> index 0000000000..812fe7f10b
+> index 0000000000..58c7a1448d
 > --- /dev/null
-> +++ b/hw/rtc/allwinner-rtc.c
-> @@ -0,0 +1,386 @@
+> +++ b/hw/misc/allwinner-cpucfg.c
+> @@ -0,0 +1,282 @@
 > +/*
-> + * Allwinner Real Time Clock emulation
+> + * Allwinner CPU Configuration Module emulation
 > + *
 > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
 > + *
@@ -460,241 +311,226 @@ struct tm uses 'int' for this field.
 > +#include "migration/vmstate.h"
 > +#include "qemu/log.h"
 > +#include "qemu/module.h"
-> +#include "qemu-common.h"
-> +#include "hw/rtc/allwinner-rtc.h"
+> +#include "qemu/error-report.h"
+> +#include "qemu/timer.h"
+> +#include "hw/core/cpu.h"
+> +#include "arm-powerctl.h"
+> +#include "hw/misc/allwinner-cpucfg.h"
 > +#include "trace.h"
 > +
-> +/* RTC registers */
+> +/* CPUCFG register offsets */
 > +enum {
-> +    REG_LOSC = 1,        /* Low Oscillator Control */
-> +    REG_YYMMDD,          /* RTC Year-Month-Day */
-> +    REG_HHMMSS,          /* RTC Hour-Minute-Second */
-> +    REG_ALARM1_WKHHMMSS, /* Alarm1 Week Hour-Minute-Second */
-> +    REG_ALARM1_EN,       /* Alarm1 Enable */
-> +    REG_ALARM1_IRQ_EN,   /* Alarm1 IRQ Enable */
-> +    REG_ALARM1_IRQ_STA,  /* Alarm1 IRQ Status */
-> +    REG_GP0,             /* General Purpose Register 0 */
-> +    REG_GP1,             /* General Purpose Register 1 */
-> +    REG_GP2,             /* General Purpose Register 2 */
-> +    REG_GP3,             /* General Purpose Register 3 */
-> +
-> +    /* sun4i registers */
-> +    REG_ALARM1_DDHHMMSS, /* Alarm1 Day Hour-Minute-Second */
-> +    REG_CPUCFG,          /* CPU Configuration Register */
-> +
-> +    /* sun6i registers */
-> +    REG_LOSC_AUTOSTA,    /* LOSC Auto Switch Status */
-> +    REG_INT_OSC_PRE,     /* Internal OSC Clock Prescaler */
-> +    REG_ALARM0_COUNTER,  /* Alarm0 Counter */
-> +    REG_ALARM0_CUR_VLU,  /* Alarm0 Counter Current Value */
-> +    REG_ALARM0_ENABLE,   /* Alarm0 Enable */
-> +    REG_ALARM0_IRQ_EN,   /* Alarm0 IRQ Enable */
-> +    REG_ALARM0_IRQ_STA,  /* Alarm0 IRQ Status */
-> +    REG_ALARM_CONFIG,    /* Alarm Config */
-> +    REG_LOSC_OUT_GATING, /* LOSC Output Gating Register */
-> +    REG_GP4,             /* General Purpose Register 4 */
-> +    REG_GP5,             /* General Purpose Register 5 */
-> +    REG_GP6,             /* General Purpose Register 6 */
-> +    REG_GP7,             /* General Purpose Register 7 */
-> +    REG_RTC_DBG,         /* RTC Debug Register */
-> +    REG_GPL_HOLD_OUT,    /* GPL Hold Output Register */
-> +    REG_VDD_RTC,         /* VDD RTC Regulate Register */
-> +    REG_IC_CHARA,        /* IC Characteristics Register */
+> +    REG_CPUS_RST_CTRL       = 0x0000, /* CPUs Reset Control */
+> +    REG_CPU0_RST_CTRL       = 0x0040, /* CPU#0 Reset Control */
+> +    REG_CPU0_CTRL           = 0x0044, /* CPU#0 Control */
+> +    REG_CPU0_STATUS         = 0x0048, /* CPU#0 Status */
+> +    REG_CPU1_RST_CTRL       = 0x0080, /* CPU#1 Reset Control */
+> +    REG_CPU1_CTRL           = 0x0084, /* CPU#1 Control */
+> +    REG_CPU1_STATUS         = 0x0088, /* CPU#1 Status */
+> +    REG_CPU2_RST_CTRL       = 0x00C0, /* CPU#2 Reset Control */
+> +    REG_CPU2_CTRL           = 0x00C4, /* CPU#2 Control */
+> +    REG_CPU2_STATUS         = 0x00C8, /* CPU#2 Status */
+> +    REG_CPU3_RST_CTRL       = 0x0100, /* CPU#3 Reset Control */
+> +    REG_CPU3_CTRL           = 0x0104, /* CPU#3 Control */
+> +    REG_CPU3_STATUS         = 0x0108, /* CPU#3 Status */
+> +    REG_CPU_SYS_RST         = 0x0140, /* CPU System Reset */
+> +    REG_CLK_GATING          = 0x0144, /* CPU Clock Gating */
+> +    REG_GEN_CTRL            = 0x0184, /* General Control */
+> +    REG_SUPER_STANDBY       = 0x01A0, /* Super Standby Flag */
+> +    REG_ENTRY_ADDR          = 0x01A4, /* Reset Entry Address */
+> +    REG_DBG_EXTERN          = 0x01E4, /* Debug External */
+> +    REG_CNT64_CTRL          = 0x0280, /* 64-bit Counter Control */
+> +    REG_CNT64_LOW           = 0x0284, /* 64-bit Counter Low */
+> +    REG_CNT64_HIGH          = 0x0288, /* 64-bit Counter High */
 > +};
 > +
-> +/* RTC register flags */
+> +/* CPUCFG register flags */
 > +enum {
-> +    REG_LOSC_YMD   = (1 << 7),
-> +    REG_LOSC_HMS   = (1 << 8),
+> +    CPUX_RESET_RELEASED     = ((1 << 1) | (1 << 0)),
+> +    CPUX_STATUS_SMP         = (1 << 0),
+> +    CPU_SYS_RESET_RELEASED  = (1 << 0),
+> +    CLK_GATING_ENABLE       = ((1 << 8) | 0xF),
 > +};
 > +
-> +/* RTC sun4i register map (offset to name) */
-> +const uint8_t allwinner_rtc_sun4i_regmap[] = {
-> +    [0x0000] = REG_LOSC,
-> +    [0x0004] = REG_YYMMDD,
-> +    [0x0008] = REG_HHMMSS,
-> +    [0x000C] = REG_ALARM1_DDHHMMSS,
-> +    [0x0010] = REG_ALARM1_WKHHMMSS,
-> +    [0x0014] = REG_ALARM1_EN,
-> +    [0x0018] = REG_ALARM1_IRQ_EN,
-> +    [0x001C] = REG_ALARM1_IRQ_STA,
-> +    [0x0020] = REG_GP0,
-> +    [0x0024] = REG_GP1,
-> +    [0x0028] = REG_GP2,
-> +    [0x002C] = REG_GP3,
-> +    [0x003C] = REG_CPUCFG,
+> +/* CPUCFG register reset values */
+> +enum {
+> +    REG_CLK_GATING_RST      = 0x0000010F,
+> +    REG_GEN_CTRL_RST        = 0x00000020,
+> +    REG_SUPER_STANDBY_RST   = 0x0,
+> +    REG_CNT64_CTRL_RST      = 0x0,
 > +};
 > +
-> +/* RTC sun6i register map (offset to name) */
-> +const uint8_t allwinner_rtc_sun6i_regmap[] = {
-> +    [0x0000] = REG_LOSC,
-> +    [0x0004] = REG_LOSC_AUTOSTA,
-> +    [0x0008] = REG_INT_OSC_PRE,
-> +    [0x0010] = REG_YYMMDD,
-> +    [0x0014] = REG_HHMMSS,
-> +    [0x0020] = REG_ALARM0_COUNTER,
-> +    [0x0024] = REG_ALARM0_CUR_VLU,
-> +    [0x0028] = REG_ALARM0_ENABLE,
-> +    [0x002C] = REG_ALARM0_IRQ_EN,
-> +    [0x0030] = REG_ALARM0_IRQ_STA,
-> +    [0x0040] = REG_ALARM1_WKHHMMSS,
-> +    [0x0044] = REG_ALARM1_EN,
-> +    [0x0048] = REG_ALARM1_IRQ_EN,
-> +    [0x004C] = REG_ALARM1_IRQ_STA,
-> +    [0x0050] = REG_ALARM_CONFIG,
-> +    [0x0060] = REG_LOSC_OUT_GATING,
-> +    [0x0100] = REG_GP0,
-> +    [0x0104] = REG_GP1,
-> +    [0x0108] = REG_GP2,
-> +    [0x010C] = REG_GP3,
-> +    [0x0110] = REG_GP4,
-> +    [0x0114] = REG_GP5,
-> +    [0x0118] = REG_GP6,
-> +    [0x011C] = REG_GP7,
-> +    [0x0170] = REG_RTC_DBG,
-> +    [0x0180] = REG_GPL_HOLD_OUT,
-> +    [0x0190] = REG_VDD_RTC,
-> +    [0x01F0] = REG_IC_CHARA,
-> +};
-> +
-> +static bool allwinner_rtc_sun4i_read(AwRtcState *s, uint32_t offset)
+> +static void allwinner_cpucfg_cpu_reset(AwCpuCfgState *s, uint8_t cpu_id)
 > +{
-> +    /* no sun4i specific registers currently implemented */
-> +    return false;
-> +}
+> +    int ret;
 > +
-> +static bool allwinner_rtc_sun4i_write(AwRtcState *s, uint32_t offset,
-> +                                      uint32_t data)
-> +{
-> +    /* no sun4i specific registers currently implemented */
-> +    return false;
-> +}
+> +    trace_allwinner_cpucfg_cpu_reset(cpu_id, s->entry_addr);
 > +
-> +static bool allwinner_rtc_sun6i_read(AwRtcState *s, uint32_t offset)
-> +{
-> +    const AwRtcClass *c = AW_RTC_GET_CLASS(s);
-> +
-> +    switch (c->regmap[offset]) {
-> +    case REG_GP4:             /* General Purpose Register 4 */
-> +    case REG_GP5:             /* General Purpose Register 5 */
-> +    case REG_GP6:             /* General Purpose Register 6 */
-> +    case REG_GP7:             /* General Purpose Register 7 */
-> +        return true;
-> +    default:
-> +        break;
+> +    ret = arm_set_cpu_on(cpu_id, s->entry_addr, 0, 3, false);
+
+Can you add a definition for 3?
+
+#define CPU_EXCEPTION_LEVEL_ON_RESET 3 /* EL3 */
+
+> +    if (ret != QEMU_ARM_POWERCTL_RET_SUCCESS) {
+> +        error_report("%s: failed to bring up CPU %d: err %d",
+> +                     __func__, cpu_id, ret);
+> +        return;
 > +    }
-> +    return false;
 > +}
 > +
-> +static bool allwinner_rtc_sun6i_write(AwRtcState *s, uint32_t offset,
-> +                                      uint32_t data)
+> +static uint64_t allwinner_cpucfg_read(void *opaque, hwaddr offset,
+> +                                      unsigned size)
 > +{
-> +    const AwRtcClass *c = AW_RTC_GET_CLASS(s);
-> +
-> +    switch (c->regmap[offset]) {
-> +    case REG_GP4:             /* General Purpose Register 4 */
-> +    case REG_GP5:             /* General Purpose Register 5 */
-> +    case REG_GP6:             /* General Purpose Register 6 */
-> +    case REG_GP7:             /* General Purpose Register 7 */
-> +        return true;
-> +    default:
-> +        break;
-> +    }
-> +    return false;
-> +}
-> +
-> +static uint64_t allwinner_rtc_read(void *opaque, hwaddr offset,
-> +                                   unsigned size)
-> +{
-> +    AwRtcState *s = AW_RTC(opaque);
-> +    const AwRtcClass *c = AW_RTC_GET_CLASS(s);
+> +    const AwCpuCfgState *s = AW_CPUCFG(opaque);
 > +    uint64_t val = 0;
 > +
-> +    if (offset >= AW_RTC_REGS_MAXADDR) {
+> +    switch (offset) {
+> +    case REG_CPUS_RST_CTRL:     /* CPUs Reset Control */
+> +    case REG_CPU_SYS_RST:       /* CPU System Reset */
+> +        val = CPU_SYS_RESET_RELEASED;
+> +        break;
+> +    case REG_CPU0_RST_CTRL:     /* CPU#0 Reset Control */
+> +    case REG_CPU1_RST_CTRL:     /* CPU#1 Reset Control */
+> +    case REG_CPU2_RST_CTRL:     /* CPU#2 Reset Control */
+> +    case REG_CPU3_RST_CTRL:     /* CPU#3 Reset Control */
+> +        val = CPUX_RESET_RELEASED;
+> +        break;
+> +    case REG_CPU0_CTRL:         /* CPU#0 Control */
+> +    case REG_CPU1_CTRL:         /* CPU#1 Control */
+> +    case REG_CPU2_CTRL:         /* CPU#2 Control */
+> +    case REG_CPU3_CTRL:         /* CPU#3 Control */
+> +        val = 0;
+> +        break;
+> +    case REG_CPU0_STATUS:       /* CPU#0 Status */
+> +    case REG_CPU1_STATUS:       /* CPU#1 Status */
+> +    case REG_CPU2_STATUS:       /* CPU#2 Status */
+> +    case REG_CPU3_STATUS:       /* CPU#3 Status */
+> +        val = CPUX_STATUS_SMP;
+> +        break;
+> +    case REG_CLK_GATING:        /* CPU Clock Gating */
+> +        val = CLK_GATING_ENABLE;
+> +        break;
+> +    case REG_GEN_CTRL:          /* General Control */
+> +        val = s->gen_ctrl;
+> +        break;
+> +    case REG_SUPER_STANDBY:     /* Super Standby Flag */
+> +        val = s->super_standby;
+> +        break;
+> +    case REG_ENTRY_ADDR:        /* Reset Entry Address */
+> +        val = s->entry_addr;
+> +        break;
+> +    case REG_DBG_EXTERN:        /* Debug External */
+> +        break;
+> +    case REG_CNT64_CTRL:        /* 64-bit Counter Control */
+> +        val = s->counter_ctrl;
+> +        break;
+> +    case REG_CNT64_LOW:         /* 64-bit Counter Low */
+> +        val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) & 0xffffffff;
+> +        break;
+> +    case REG_CNT64_HIGH:        /* 64-bit Counter High */
+> +        val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) >> 32;
+
+Consider extract64(), but that's OK too.
+
+> +        break;
+> +    default:
 > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
 > +                      __func__, (uint32_t)offset);
 > +        return 0;
+
+Please break instead, so we can see these calls when tracing.
+
 > +    }
 > +
-> +    if (!c->regmap[offset]) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid register 0x%04x\n",
-> +                          __func__, (uint32_t)offset);
-> +        return 0;
-> +    }
+> +    trace_allwinner_cpucfg_read(offset, val, size);
 > +
-> +    switch (c->regmap[offset]) {
-> +    case REG_LOSC:       /* Low Oscillator Control */
-> +        val = s->regs[REG_LOSC];
-> +        s->regs[REG_LOSC] &= ~(REG_LOSC_YMD | REG_LOSC_HMS);
-> +        break;
-> +    case REG_YYMMDD:     /* RTC Year-Month-Day */
-> +    case REG_HHMMSS:     /* RTC Hour-Minute-Second */
-> +    case REG_GP0:        /* General Purpose Register 0 */
-> +    case REG_GP1:        /* General Purpose Register 1 */
-> +    case REG_GP2:        /* General Purpose Register 2 */
-> +    case REG_GP3:        /* General Purpose Register 3 */
-> +        val = s->regs[c->regmap[offset]];
-> +        break;
-> +    default:
-> +        if (!c->read(s, offset)) {
-> +            qemu_log_mask(LOG_UNIMP, "%s: unimplemented register 0x%04x\n",
-> +                          __func__, (uint32_t)offset);
-> +        }
-> +        val = s->regs[c->regmap[offset]];
-> +        break;
-> +    }
-> +
-> +    trace_allwinner_rtc_read(offset, val);
 > +    return val;
 > +}
 > +
-> +static void allwinner_rtc_write(void *opaque, hwaddr offset,
-> +                                uint64_t val, unsigned size)
+> +static void allwinner_cpucfg_write(void *opaque, hwaddr offset,
+> +                                   uint64_t val, unsigned size)
 > +{
-> +    AwRtcState *s = AW_RTC(opaque);
-> +    const AwRtcClass *c = AW_RTC_GET_CLASS(s);
+> +    AwCpuCfgState *s = AW_CPUCFG(opaque);
 > +
-> +    if (offset >= AW_RTC_REGS_MAXADDR) {
+> +    trace_allwinner_cpucfg_write(offset, val, size);
+> +
+> +    switch (offset) {
+> +    case REG_CPUS_RST_CTRL:     /* CPUs Reset Control */
+> +    case REG_CPU_SYS_RST:       /* CPU System Reset */
+> +        break;
+> +    case REG_CPU0_RST_CTRL:     /* CPU#0 Reset Control */
+> +        if (val) {
+> +            allwinner_cpucfg_cpu_reset(s, 0);
+> +        }
+> +        break;
+> +    case REG_CPU1_RST_CTRL:     /* CPU#1 Reset Control */
+> +        if (val) {
+> +            allwinner_cpucfg_cpu_reset(s, 1);
+> +        }
+> +        break;
+> +    case REG_CPU2_RST_CTRL:     /* CPU#2 Reset Control */
+> +        if (val) {
+> +            allwinner_cpucfg_cpu_reset(s, 2);
+> +        }
+> +        break;
+> +    case REG_CPU3_RST_CTRL:     /* CPU#3 Reset Control */
+> +        if (val) {
+> +            allwinner_cpucfg_cpu_reset(s, 3);
+> +        }
+> +        break;
+
+       case REG_CPU0_RST_CTRL .,. REG_CPU3_RST_CTRL: /* CPU Reset Control */
+            if (val) {
+                allwinner_cpucfg_cpu_reset(s, (offset - 
+REG_CPU0_RST_CTRL) >> 6);
+            }
+            break;
+
+> +    case REG_CPU0_CTRL:         /* CPU#0 Control */
+> +    case REG_CPU1_CTRL:         /* CPU#1 Control */
+> +    case REG_CPU2_CTRL:         /* CPU#2 Control */
+> +    case REG_CPU3_CTRL:         /* CPU#3 Control */
+> +    case REG_CPU0_STATUS:       /* CPU#0 Status */
+> +    case REG_CPU1_STATUS:       /* CPU#1 Status */
+> +    case REG_CPU2_STATUS:       /* CPU#2 Status */
+> +    case REG_CPU3_STATUS:       /* CPU#3 Status */
+> +    case REG_CLK_GATING:        /* CPU Clock Gating */
+> +    case REG_GEN_CTRL:          /* General Control */
+> +        s->gen_ctrl = val;
+> +        break;
+> +    case REG_SUPER_STANDBY:     /* Super Standby Flag */
+> +        s->super_standby = val;
+> +        break;
+> +    case REG_ENTRY_ADDR:        /* Reset Entry Address */
+> +        s->entry_addr = val;
+> +        break;
+> +    case REG_DBG_EXTERN:        /* Debug External */
+> +        break;
+> +    case REG_CNT64_CTRL:        /* 64-bit Counter Control */
+> +        s->counter_ctrl = val;
+> +        break;
+> +    case REG_CNT64_LOW:         /* 64-bit Counter Low */
+> +    case REG_CNT64_HIGH:        /* 64-bit Counter High */
+
+You forgot to set these. Maybe you can add a int64_t cnt64_diff, set it 
+here to the difference with qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), and 
+in the read() function return cnt64_diff + 
+qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL).
+
+Rest looks good.
+
+> +        break;
+> +    default:
 > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
 > +                      __func__, (uint32_t)offset);
 > +        return;
 > +    }
-> +
-> +    if (!c->regmap[offset]) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid register 0x%04x\n",
-> +                          __func__, (uint32_t)offset);
-> +        return;
-> +    }
-> +
-> +    trace_allwinner_rtc_write(offset, val);
-> +
-> +    switch (c->regmap[offset]) {
-> +    case REG_YYMMDD:     /* RTC Year-Month-Day */
-> +        s->regs[REG_YYMMDD] = val;
-> +        s->regs[REG_LOSC]  |= REG_LOSC_YMD;
-> +        break;
-> +    case REG_HHMMSS:     /* RTC Hour-Minute-Second */
-> +        s->regs[REG_HHMMSS] = val;
-> +        s->regs[REG_LOSC]  |= REG_LOSC_HMS;
-> +        break;
-> +    case REG_GP0:        /* General Purpose Register 0 */
-> +    case REG_GP1:        /* General Purpose Register 1 */
-> +    case REG_GP2:        /* General Purpose Register 2 */
-> +    case REG_GP3:        /* General Purpose Register 3 */
-> +        s->regs[c->regmap[offset]] = val;
-> +        break;
-> +    default:
-> +        if (!c->write(s, offset, val)) {
-> +            qemu_log_mask(LOG_UNIMP, "%s: unimplemented register 0x%04x\n",
-> +                          __func__, (uint32_t)offset);
-> +        }
-> +        break;
-> +    }
 > +}
 > +
-> +static const MemoryRegionOps allwinner_rtc_ops = {
-> +    .read = allwinner_rtc_read,
-> +    .write = allwinner_rtc_write,
+> +static const MemoryRegionOps allwinner_cpucfg_ops = {
+> +    .read = allwinner_cpucfg_read,
+> +    .write = allwinner_cpucfg_write,
 > +    .endianness = DEVICE_NATIVE_ENDIAN,
 > +    .valid = {
 > +        .min_access_size = 4,
@@ -703,159 +539,88 @@ struct tm uses 'int' for this field.
 > +    .impl.min_access_size = 4,
 > +};
 > +
-> +static void allwinner_rtc_reset(DeviceState *dev)
+> +static void allwinner_cpucfg_reset(DeviceState *dev)
 > +{
-> +    AwRtcState *s = AW_RTC(dev);
-> +    const AwRtcClass *c = AW_RTC_GET_CLASS(dev);
-> +    struct tm now;
+> +    AwCpuCfgState *s = AW_CPUCFG(dev);
 > +
-> +    /* Clear registers */
-> +    memset(s->regs, 0, sizeof(s->regs));
-> +
-> +    /* Get current datetime */
-> +    qemu_get_timedate(&now, 0);
-> +
-> +    /* Set RTC with current datetime */
-> +    s->regs[REG_YYMMDD] =  ((now.tm_year - c->year_offset) << 16) |
-> +                           ((now.tm_mon + 1) << 8) |
-> +                             now.tm_mday;
-> +    s->regs[REG_HHMMSS] = (((now.tm_wday + 6) % 7) << 29) |
-> +                              (now.tm_hour << 16) |
-> +                              (now.tm_min << 8) |
-> +                               now.tm_sec;
-
-This doesn't look correct.
-
- From H3 Datasheet (Rev1.2):
-   4.8.3.4. RTC YY-MM-DD Register (Default Value: 0x00000000)
-   4.8.3.5. RTC HH-MM-SS Register (Default Value: 0x00000000)
-
-I'm not sure what is the proper to model this, maybe set this value in 
-init()? If we suspend a machine, migrate it, and resume it, what RTC are 
-we expecting?
-
-Rest of the patch looks good.
-
+> +    /* Set default values for registers */
+> +    s->gen_ctrl = REG_GEN_CTRL_RST;
+> +    s->super_standby = REG_SUPER_STANDBY_RST;
+> +    s->entry_addr = 0;
+> +    s->counter_ctrl = REG_CNT64_CTRL_RST;
 > +}
 > +
-> +static void allwinner_rtc_init(Object *obj)
+> +static void allwinner_cpucfg_init(Object *obj)
 > +{
 > +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +    AwRtcState *s = AW_RTC(obj);
+> +    AwCpuCfgState *s = AW_CPUCFG(obj);
 > +
 > +    /* Memory mapping */
-> +    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_rtc_ops, s,
-> +                          TYPE_AW_RTC, 1 * KiB);
+> +    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_cpucfg_ops, s,
+> +                          TYPE_AW_CPUCFG, 1 * KiB);
 > +    sysbus_init_mmio(sbd, &s->iomem);
 > +}
 > +
-> +static const VMStateDescription allwinner_rtc_vmstate = {
-> +    .name = "allwinner-rtc",
+> +static const VMStateDescription allwinner_cpucfg_vmstate = {
+> +    .name = "allwinner-cpucfg",
 > +    .version_id = 1,
 > +    .minimum_version_id = 1,
 > +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(regs, AwRtcState, AW_RTC_REGS_NUM),
+> +        VMSTATE_UINT32(gen_ctrl, AwCpuCfgState),
+> +        VMSTATE_UINT32(super_standby, AwCpuCfgState),
+> +        VMSTATE_UINT32(counter_ctrl, AwCpuCfgState),
 > +        VMSTATE_END_OF_LIST()
 > +    }
 > +};
 > +
-> +static void allwinner_rtc_class_init(ObjectClass *klass, void *data)
+> +static void allwinner_cpucfg_class_init(ObjectClass *klass, void *data)
 > +{
 > +    DeviceClass *dc = DEVICE_CLASS(klass);
 > +
-> +    dc->reset = allwinner_rtc_reset;
-> +    dc->vmsd = &allwinner_rtc_vmstate;
+> +    dc->reset = allwinner_cpucfg_reset;
+> +    dc->vmsd = &allwinner_cpucfg_vmstate;
 > +}
 > +
-> +static void allwinner_rtc_sun4i_class_init(ObjectClass *klass, void *data)
-> +{
-> +    AwRtcClass *arc = AW_RTC_CLASS(klass);
-> +
-> +    arc->regmap = allwinner_rtc_sun4i_regmap;
-> +    arc->regmap_size = ARRAY_SIZE(allwinner_rtc_sun4i_regmap);
-> +    arc->year_offset = 110;
-> +    arc->read = allwinner_rtc_sun4i_read;
-> +    arc->write = allwinner_rtc_sun4i_write;
-> +}
-> +
-> +static void allwinner_rtc_sun6i_class_init(ObjectClass *klass, void *data)
-> +{
-> +    AwRtcClass *arc = AW_RTC_CLASS(klass);
-> +
-> +    arc->regmap = allwinner_rtc_sun6i_regmap;
-> +    arc->regmap_size = ARRAY_SIZE(allwinner_rtc_sun6i_regmap);
-> +    arc->year_offset = 70;
-> +    arc->read = allwinner_rtc_sun6i_read;
-> +    arc->write = allwinner_rtc_sun6i_write;
-> +}
-> +
-> +static void allwinner_rtc_sun7i_class_init(ObjectClass *klass, void *data)
-> +{
-> +    AwRtcClass *arc = AW_RTC_CLASS(klass);
-> +
-> +    allwinner_rtc_sun4i_class_init(klass, arc);
-> +    arc->year_offset = 70;
-> +}
-> +
-> +static const TypeInfo allwinner_rtc_info = {
-> +    .name          = TYPE_AW_RTC,
+> +static const TypeInfo allwinner_cpucfg_info = {
+> +    .name          = TYPE_AW_CPUCFG,
 > +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_init = allwinner_rtc_init,
-> +    .instance_size = sizeof(AwRtcState),
-> +    .class_init    = allwinner_rtc_class_init,
-> +    .class_size    = sizeof(AwRtcClass),
-> +    .abstract      = true,
+> +    .instance_init = allwinner_cpucfg_init,
+> +    .instance_size = sizeof(AwCpuCfgState),
+> +    .class_init    = allwinner_cpucfg_class_init,
 > +};
 > +
-> +static const TypeInfo allwinner_rtc_sun4i_info = {
-> +    .name          = TYPE_AW_RTC_SUN4I,
-> +    .parent        = TYPE_AW_RTC,
-> +    .class_init    = allwinner_rtc_sun4i_class_init,
-> +};
-> +
-> +static const TypeInfo allwinner_rtc_sun6i_info = {
-> +    .name          = TYPE_AW_RTC_SUN6I,
-> +    .parent        = TYPE_AW_RTC,
-> +    .class_init    = allwinner_rtc_sun6i_class_init,
-> +};
-> +
-> +static const TypeInfo allwinner_rtc_sun7i_info = {
-> +    .name          = TYPE_AW_RTC_SUN7I,
-> +    .parent        = TYPE_AW_RTC,
-> +    .class_init    = allwinner_rtc_sun7i_class_init,
-> +};
-> +
-> +static void allwinner_rtc_register(void)
+> +static void allwinner_cpucfg_register(void)
 > +{
-> +    type_register_static(&allwinner_rtc_info);
-> +    type_register_static(&allwinner_rtc_sun4i_info);
-> +    type_register_static(&allwinner_rtc_sun6i_info);
-> +    type_register_static(&allwinner_rtc_sun7i_info);
+> +    type_register_static(&allwinner_cpucfg_info);
 > +}
 > +
-> +type_init(allwinner_rtc_register)
-> diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-> index 8dc9fcd3a9..12d92feebf 100644
-> --- a/hw/rtc/Makefile.objs
-> +++ b/hw/rtc/Makefile.objs
-> @@ -11,3 +11,4 @@ common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
->   obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
->   common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
->   common-obj-$(CONFIG_ASPEED_SOC) += aspeed_rtc.o
-> +common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-rtc.o
-> diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-> index d6749f4616..eb57de3bd6 100644
-> --- a/hw/rtc/trace-events
-> +++ b/hw/rtc/trace-events
-> @@ -1,5 +1,9 @@
+> +type_init(allwinner_cpucfg_register)
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index 2d6b1a4257..12c2c306b5 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -29,6 +29,7 @@ common-obj-$(CONFIG_MACIO) += macio/
+>   common-obj-$(CONFIG_IVSHMEM_DEVICE) += ivshmem.o
+>   
+>   common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-ccu.o
+> +obj-$(CONFIG_ALLWINNER_H3) += allwinner-cpucfg.o
+>   common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-sysctrl.o
+>   common-obj-$(CONFIG_REALVIEW) += arm_sysctl.o
+>   common-obj-$(CONFIG_NSERIES) += cbus.o
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index 2e0c820834..d3e0952429 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -1,5 +1,10 @@
 >   # See docs/devel/tracing.txt for syntax documentation.
 >   
-> +# allwinner-rtc.c
-> +allwinner_rtc_read(uint64_t addr, uint64_t value) "addr 0x%" PRIx64 " value 0x%" PRIx64
-> +allwinner_rtc_write(uint64_t addr, uint64_t value) "addr 0x%" PRIx64 " value 0x%" PRIx64
+> +# allwinner-cpucfg.c
+> +allwinner_cpucfg_cpu_reset(uint8_t cpu_id, uint32_t reset_addr) "id %u, reset_addr 0x%" PRIu32
+> +allwinner_cpucfg_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+> +allwinner_cpucfg_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
 > +
->   # sun4v-rtc.c
->   sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " value 0x%" PRIx64
->   sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 " value 0x%" PRIx64
+>   # eccmemctl.c
+>   ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
+>   ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
 > 
 

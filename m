@@ -1,97 +1,101 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4100885lff;
-        Mon, 13 Jan 2020 05:05:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyBprT/kh0l/aTgbLklgpISckEgV5D4oAjiIBP+69BKb5DuaFk8JTbuLjkV1LlY8DHK+LxI
-X-Received: by 2002:a50:ec1a:: with SMTP id g26mr16839089edr.164.1578920752179;
-        Mon, 13 Jan 2020 05:05:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578920752; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4108471lff;
+        Mon, 13 Jan 2020 05:12:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzbMJ++maY5PZV61oym8e/hcuny7x5VNUwuZYiKijKiA1apVRr/8mF8643g5OaoHuTYY21H
+X-Received: by 2002:aa7:cd14:: with SMTP id b20mr16687112edw.27.1578921131666;
+        Mon, 13 Jan 2020 05:12:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578921131; cv=none;
         d=google.com; s=arc-20160816;
-        b=irspfTGMqi6rEWegUKlcfaX0jTBkhWW301Ck38DDEk9KuTNYrhC6x9tKulcrpjR1lE
-         vlxtPNow/Kvc0VzFGV+3Jtusn1EEE+U0GuWH6P5npyoDTUFgoannMjYY0GMSbgw5Rhtg
-         MKRgmtXFuvXIt51NWFZjtKzY8WLkS1kncwLh+dbfPHbI6M6mBXQgKWH2JSbONX3gKwJx
-         raUT6SfpYd4Ati8rx6V2uVoZhKW3fPnRbfl3akGdJhnG4nNHejNawCa3BRsHeNPHnj3h
-         gRcQnRzq8e+8fZAgORCZE5S0VHkNMGEMWQJNIFc0UO274ho2Uy1R1fLEE4v6n7fpgMlz
-         Fhjw==
+        b=ZejdbKhe95hL5ZdqtgnjaoPGxqTxTiOPWuZeJgXwyhzKgfyNHIjkSxiuPsHyRpHMXW
+         WXTpdxu5htbOMzGxAZg91vKc/VUI2fRIs3hZexST2LWMe0EIF4rOW2HE0FKw1XQlsKuh
+         X6SNwXuBGF8WPGtCcxyTLxaYcKRwzXVzVIevqAq7rvO0r7eNbl1nVe+ahSCvPXMIaq6o
+         SH25egyl9+VYb2KWGADeQtTN9xRcihhDC9j28Z447blzzgqWSD1iY/EE60Vo0Hz1e0va
+         EOl2oNOFlpQ5kU9reVtJ/Cf0BYLdqFuuuSI+OCE5GoALFXgTpkuEsVxoVuWrmQpelPOk
+         Vo2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=vKHDTb6O2diewfOEKXpKeyY85QV23wpT+uMQdQmibek=;
-        b=chN8m2/TKr6LZpWtiBg8XyRNbdUM8fkEUnHftxVoUFOd2b9hSG9pFH8DfauUdcUCIS
-         WLf9WOCdtz4cBOA8LJgSZSBfK8k6SizVwz6SnDQUOk7z6PJ0a56HdafePOvhRK59LOel
-         WW0y/ozeFECcYd2+9tFIefQCz7roAf8pmGPyyZKU2IS33vbPj4S/MK9wlofVYNob/Nsk
-         ZtA5qTinK9KRrmTJk8tuMlmisH+F5Z4u3vC8Uy5oeCdfyqz4h5DxwEmZp4HkH3zDsxGn
-         qbBXZCiPIJTYyP4kEaEf5118BAmTbbxZ17cvyvj6tXlvJfzWUzgF8ebaEdfWqK94hZC8
-         eRHw==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=sdHq66qGLPKSJLcYiwvRUX52c5lhhp2hmPWJzGaiKm0=;
+        b=mMUMCqHkqnrsl6PUGvJhnU2gnb3p+QGPkj04zoh4KdFizvqO0PNyo374jQX9P6bn6x
+         4HCTVBWE5EnM9a+ZXoCKJadd4B2QznGmN6m0B1ec31XAudSIjTGSpQxqSRqnKOUZS4tI
+         NugCUb4gr3VvHFOFScv9sBjzcw5sxTyLO4jN+kftcCmWD6kXnhpXZCUVaKi/odiEwLzZ
+         Q2IZV2Nc9yVGIXfi//r7/oYnuKgHKPuIJrwr620zqjf1+yq1E+BGDLjwawRpi7I33wHq
+         2PqEmBVSNsBRkWrpHGWwV3wEp+tYUBwK3kSbu7bFNiEc4Lu/1Zp+NupDu0mHuHzd3MH5
+         lq3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=skW1CBry;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a21si7148426edv.438.2020.01.13.05.05.52
+        by mx.google.com with ESMTPS id y21si6257283ejp.88.2020.01.13.05.12.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jan 2020 05:05:52 -0800 (PST)
+        Mon, 13 Jan 2020 05:12:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=skW1CBry;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50252 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50358 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iqzPj-0002ba-0g
-	for alex.bennee@linaro.org; Mon, 13 Jan 2020 08:05:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42892)
+	id 1iqzVp-0001cK-LI
+	for alex.bennee@linaro.org; Mon, 13 Jan 2020 08:12:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44127)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iqzPV-0002aP-0t
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 08:05:39 -0500
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1iqzVi-0001cC-Gq
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 08:12:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iqzPS-0005c6-S7
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 08:05:36 -0500
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233]:40258)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iqzPS-0005b9-Kr
- for qemu-arm@nongnu.org; Mon, 13 Jan 2020 08:05:34 -0500
-Received: by mail-oi1-x233.google.com with SMTP id c77so8122332oib.7
- for <qemu-arm@nongnu.org>; Mon, 13 Jan 2020 05:05:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vKHDTb6O2diewfOEKXpKeyY85QV23wpT+uMQdQmibek=;
- b=skW1CBryGHEweoXfy0wF58k+zoscZaTF7ITOQTndA8AdH4evXEqXg2VE5MCJhT3CjR
- ecxWdnwtE/3sEJY30vIDVOT9/TgKSY1RCQupiTY2ZQdtH695I4+PQuzBnldpCokgdoBZ
- uja599V/3IA4U2GolL0IHNSYiWhDR1wTpp4CIf3gSOM0Nif3mck49rRCCSY0uzPlBnvC
- kOggs1fFO8gF64WdDbiwnGgfpGuRD8Fw28cywaPtxxjv4g0JQG03Uoc4FWcF35T3ZrT8
- OGeb8SwXbF2vZGuY9DIzKJXOjExYQB7It5ll8mKyKTmDKmn4copJq38FSYjG6uRVFg8K
- 8F4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=vKHDTb6O2diewfOEKXpKeyY85QV23wpT+uMQdQmibek=;
- b=O95d1jF2V9rs+oP6LcBq8GdDouFtTidjRdIqSgYcYGnqsU1YADdE25p1huWIvh9gAn
- 423oZW3e19GJeAL61mmQEycK6d+MCTGG269AWmgmHyf5JpJ8dfWuznchRsDalH40Uyp0
- J1IXzHn81MOeDg6WfsTj18McsjwUFN+uC3chseHG9u3A5Rg4Tm2ecbgB69Egz00mosEu
- 8lx5lptyndUOzRlywcCMMm43NhWrn3EWes6GEE02lqjYFtj1Oj8AD12zjbjXAx3CK8kz
- BgOwf9BIngmAAh/LZdaGmcXfZ44h5IVqQcCtWeFBGIL9yGmoqw6NWZaWhlP+fHDlgjcV
- /n6g==
-X-Gm-Message-State: APjAAAUaobJjmR4CZ4tEBqZxcV32eB2UWzuziIurwoA16HMAABm1vO89
- GKjhEKCTCKv2WYlxV8wAuB6CpFHM0FLkoNDSSCyQhA==
-X-Received: by 2002:aca:3d7:: with SMTP id 206mr12774707oid.98.1578920733413; 
- Mon, 13 Jan 2020 05:05:33 -0800 (PST)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1iqzVg-0001kW-QF
+ for qemu-arm@nongnu.org; Mon, 13 Jan 2020 08:12:02 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2059 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1iqzVg-0001fF-Hb; Mon, 13 Jan 2020 08:12:00 -0500
+Received: from LHREML710-CAH.china.huawei.com (unknown [172.18.7.108])
+ by Forcepoint Email with ESMTP id B463715E12985488EBCC;
+ Mon, 13 Jan 2020 13:11:53 +0000 (GMT)
+Received: from lhreml707-chm.china.huawei.com (10.201.108.56) by
+ LHREML710-CAH.china.huawei.com (10.201.108.33) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Mon, 13 Jan 2020 13:11:53 +0000
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml707-chm.china.huawei.com (10.201.108.56) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1713.5; Mon, 13 Jan 2020 13:11:53 +0000
+Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
+ lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
+ 15.01.1713.004; Mon, 13 Jan 2020 13:11:53 +0000
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: RE: [PATCH 0/5] ARM virt: Add NVDIMM support
+Thread-Topic: [PATCH 0/5] ARM virt: Add NVDIMM support
+Thread-Index: AQHVeswdQv2zL2ZjnU2+5S1CywnCCKdgnucAgAYn2ECANV3CUIAANK6AgAADjLCAARyUgIADW0wAgBGftACAAodbgIADcKzggCX7GsCABMMOAIAGBKlA
+Date: Mon, 13 Jan 2020 13:11:53 +0000
+Message-ID: <5db1e82970fc4e82a32e9ede4d8d40d0@huawei.com>
+References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
+ <a133d4c4-3f60-2bb1-a7d7-35cdb06af265@redhat.com>
+ <441c818f24084b4191315cf2a6267cef@huawei.com>
+ <20191125164541.3f0a593f@redhat.com>
+ <444efcb441fe42e5aff58b3af3ab14b4@huawei.com>
+ <20191126095655.27227f59@redhat.com>
+ <c2bb0be09e244ee59d27c7aaab1783a9@huawei.com>
+ <20191211085727.1ab9564e@redhat.com>
+ <8562f82b7c0140d3ad0c7f6616cb6f28@huawei.com>
+ <20200109181300.00238828@redhat.com>
+In-Reply-To: <20200109181300.00238828@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20200110173215.3865-1-quintela@redhat.com>
-In-Reply-To: <20200110173215.3865-1-quintela@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Jan 2020 13:05:22 +0000
-Message-ID: <CAFEAcA97ZqynDV6b6YUL_7iF=zsmB2Mwogi0k4ViAUAFTwsTnA@mail.gmail.com>
-Subject: Re: [PULL 00/28] Migration pull patches
-To: Juan Quintela <quintela@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::233
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 185.176.76.210
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,245 +107,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, David Gibson <david@gibson.dropbear.id.au>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>,
- Andrzej Zaborowski <balrogg@gmail.com>, Richard Henderson <rth@twiddle.net>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "drjones@redhat.com" <drjones@redhat.com>,
+ "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>, Auger Eric <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "lersek@redhat.com" <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DHYeV5CcMuaC
+X-TUID: ptztbZQ1F8WH
 
-On Fri, 10 Jan 2020 at 17:32, Juan Quintela <quintela@redhat.com> wrote:
->
-> The following changes since commit f38a71b01f839c7b65ea73ddd507903cb9489ed6:
->
->   Merge remote-tracking branch 'remotes/stsquad/tags/pull-testing-and-semihosting-090120-2' into staging (2020-01-10 13:19:34 +0000)
->
-> are available in the Git repository at:
->
->   https://github.com/juanquintela/qemu.git tags/migration-pull-pull-request
->
-> for you to fetch changes up to cc708d2411d3ed2ab4a428c996b778c7c7a47a04:
->
->   apic: Use 32bit APIC ID for migration instance ID (2020-01-10 18:19:18 +0100)
->
-> ----------------------------------------------------------------
-> Migration pull request
->
-> - several multifd mixes (jiahui, me)
-> - rate limit host pages (david)
-> - remove unneeded labels (daniel)
-> - several multifd fixes (wei)
-> - improve handler insert (scott)
-> - qlist migration (eric)
-> - power fixes (laurent)
-> - migration improvemests (yury)
-> - lots of fixes (wei)
-
-Hi. This causes a new compile warning for the netbsd VM:
-
-In file included from
-/home/qemu/qemu-test.tqjNTZ/src/include/hw/qdev-core.h:4:0,
-                 from
-/home/qemu/qemu-test.tqjNTZ/src/tests/../migration/migration.h:18,
-                 from /home/qemu/qemu-test.tqjNTZ/src/tests/test-vmstate.c:27:
-/home/qemu/qemu-test.tqjNTZ/src/tests/test-vmstate.c: In function
-'manipulate_container':
-/home/qemu/qemu-test.tqjNTZ/src/include/qemu/queue.h:130:34: warning:
-'prev' may be used uninitialized in this function
-[-Wmaybe-uninitialized]
-         (listelm)->field.le_prev = &(elm)->field.le_next;               \
-                                  ^
-/home/qemu/qemu-test.tqjNTZ/src/tests/test-vmstate.c:1337:24: note:
-'prev' was declared here
-      TestQListElement *prev, *iter = QLIST_FIRST(&c->list);
-                        ^
-
-
-I also saw this on aarch32 host (more precisely, on the
-aarch32-environment-in-aarch64-chroot setup I use for aarch32 build
-and test):
-
-malloc_consolidate(): invalid chunk size
-Broken pipe
-qemu-system-i386: check_section_footer: Read section footer failed: -5
-qemu-system-i386: load of migration failed: Invalid argument
-/home/peter.maydell/qemu/tests/libqtest.c:140: kill_qemu() tried to
-terminate QEMU process but encountered exit status 1 (expected 0)
-Aborted
-ERROR - too few tests run (expected 14, got 13)
-
-The memory corruption is reproducible running just the
-/x86_64/migration/multifd/tcp subtest:
-
-(armhf)pmaydell@mustang-maydell:~/qemu/build/all-a32$
-QTEST_QEMU_BINARY=x86_64-softmmu/qemu-system-x86_64
-tests/migration-test -p /x86_64/migration/multifd/tcp
-/x86_64/migration/multifd/tcp: qemu-system-x86_64: -accel kvm: invalid
-accelerator kvm
-qemu-system-x86_64: falling back to tcg
-qemu-system-x86_64: -accel kvm: invalid accelerator kvm
-qemu-system-x86_64: falling back to tcg
-qemu-system-x86_64: multifd_send_sync_main: multifd_send_pages fail
-qemu-system-x86_64: failed to save SaveStateEntry with id(name): 3(ram)
-double free or corruption (!prev)
-Broken pipe
-qemu-system-x86_64: Unknown combination of migration flags: 0
-qemu-system-x86_64: error while loading state section id 3(ram)
-qemu-system-x86_64: load of migration failed: Invalid argument
-/home/peter.maydell/qemu/tests/libqtest.c:140: kill_qemu() tried to
-terminate QEMU process but encountered exit status 1 (expected 0)
-Aborted
-
-Here's what a valgrind run in that aarch32 setup produces:
-
-(armhf)pmaydell@mustang-maydell:~/qemu/build/all-a32$
-QTEST_QEMU_BINARY='valgrind --smc-check=all-non-file
-x86_64-softmmu/qemu-system-x86_64' tests/migration-test -p
-/x86_64/migration/multifd/tcp
-/x86_64/migration/multifd/tcp: ==12102== Memcheck, a memory error detector
-==12102== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==12102== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==12102== Command: x86_64-softmmu/qemu-system-x86_64 -qtest
-unix:/tmp/qtest-12100.sock -qtest-log /dev/null -chardev
-socket,path=/tmp/qtest-12100.qmp,id=char0 -mon
-chardev=char0,mode=control -display none -accel kvm -accel tcg -name
-source,debug-threads=on -m 150M -serial
-file:/tmp/migration-test-UlotFX/src_serial -drive
-file=/tmp/migration-test-UlotFX/bootsect,format=raw -accel qtest
-==12102==
-qemu-system-x86_64: -accel kvm: invalid accelerator kvm
-qemu-system-x86_64: falling back to tcg
-==12108== Memcheck, a memory error detector
-==12108== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==12108== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==12108== Command: x86_64-softmmu/qemu-system-x86_64 -qtest
-unix:/tmp/qtest-12100.sock -qtest-log /dev/null -chardev
-socket,path=/tmp/qtest-12100.qmp,id=char0 -mon
-chardev=char0,mode=control -display none -accel kvm -accel tcg -name
-target,debug-threads=on -m 150M -serial
-file:/tmp/migration-test-UlotFX/dest_serial -incoming defer -drive
-file=/tmp/migration-test-UlotFX/bootsect,format=raw -accel qtest
-==12108==
-qemu-system-x86_64: -accel kvm: invalid accelerator kvm
-qemu-system-x86_64: falling back to tcg
-==12102== Thread 22 multifdsend_15:
-==12102== Syscall param sendmsg(msg.msg_iov[0]) points to uninitialised byte(s)
-==12102==    at 0x53C7F06: __libc_do_syscall (libc-do-syscall.S:47)
-==12102==    by 0x53C6FCB: sendmsg (sendmsg.c:28)
-==12102==    by 0x51B9A9: qio_channel_socket_writev (channel-socket.c:561)
-==12102==    by 0x519FCD: qio_channel_writev (channel.c:207)
-==12102==    by 0x519FCD: qio_channel_writev_all (channel.c:171)
-==12102==    by 0x51A047: qio_channel_write_all (channel.c:257)
-==12102==    by 0x25CB17: multifd_send_initial_packet (ram.c:714)
-==12102==    by 0x25CB17: multifd_send_thread (ram.c:1136)
-==12102==    by 0x557551: qemu_thread_start (qemu-thread-posix.c:519)
-==12102==    by 0x53BE613: start_thread (pthread_create.c:463)
-==12102==    by 0x54767FB: ??? (clone.S:73)
-==12102==  Address 0x262103fd is on thread 22's stack
-==12102==  in frame #5, created by multifd_send_thread (ram.c:1127)
-==12102==
-==12102== Thread 6 multifdsend_1:
-==12102== Invalid write of size 4
-==12102==    at 0x25CC08: multifd_send_fill_packet (ram.c:806)
-==12102==    by 0x25CC08: multifd_send_thread (ram.c:1157)
-==12102==    by 0x557551: qemu_thread_start (qemu-thread-posix.c:519)
-==12102==    by 0x53BE613: start_thread (pthread_create.c:463)
-==12102==    by 0x54767FB: ??? (clone.S:73)
-==12102==  Address 0x1d89c470 is 0 bytes after a block of size 832 alloc'd
-==12102==    at 0x4841BC4: calloc (vg_replace_malloc.c:711)
-==12102==    by 0x49EE269: g_malloc0 (in
-/usr/lib/arm-linux-gnueabihf/libglib-2.0.so.0.5600.4)
-==12102==
-==12102== Invalid write of size 4
-==12102==    at 0x25CC0E: multifd_send_fill_packet (ram.c:806)
-==12102==    by 0x25CC0E: multifd_send_thread (ram.c:1157)
-==12102==    by 0x557551: qemu_thread_start (qemu-thread-posix.c:519)
-==12102==    by 0x53BE613: start_thread (pthread_create.c:463)
-==12102==    by 0x54767FB: ??? (clone.S:73)
-==12102==  Address 0x1d89c474 is 4 bytes after a block of size 832 alloc'd
-==12102==    at 0x4841BC4: calloc (vg_replace_malloc.c:711)
-==12102==    by 0x49EE269: g_malloc0 (in
-/usr/lib/arm-linux-gnueabihf/libglib-2.0.so.0.5600.4)
-==12102==
-==12102== Invalid read of size 4
-==12102==    at 0x519812: qio_channel_writev_full (channel.c:86)
-==12102==    by 0x519FCD: qio_channel_writev (channel.c:207)
-==12102==    by 0x519FCD: qio_channel_writev_all (channel.c:171)
-==12102==    by 0x51A047: qio_channel_write_all (channel.c:257)
-==12102==    by 0x25CC6D: multifd_send_thread (ram.c:1168)
-==12102==    by 0x557551: qemu_thread_start (qemu-thread-posix.c:519)
-==12102==    by 0x53BE613: start_thread (pthread_create.c:463)
-==12102==    by 0x54767FB: ??? (clone.S:73)
-==12102==  Address 0x30 is not stack'd, malloc'd or (recently) free'd
-==12102==
-==12102==
-==12102== Process terminating with default action of signal 11 (SIGSEGV)
-==12102==  Access not within mapped region at address 0x30
-==12102==    at 0x519812: qio_channel_writev_full (channel.c:86)
-==12102==    by 0x519FCD: qio_channel_writev (channel.c:207)
-==12102==    by 0x519FCD: qio_channel_writev_all (channel.c:171)
-==12102==    by 0x51A047: qio_channel_write_all (channel.c:257)
-==12102==    by 0x25CC6D: multifd_send_thread (ram.c:1168)
-==12102==    by 0x557551: qemu_thread_start (qemu-thread-posix.c:519)
-==12102==    by 0x53BE613: start_thread (pthread_create.c:463)
-==12102==    by 0x54767FB: ??? (clone.S:73)
-==12102==  If you believe this happened as a result of a stack
-==12102==  overflow in your program's main thread (unlikely but
-==12102==  possible), you can try to increase the size of the
-==12102==  main thread stack using the --main-stacksize= flag.
-==12102==  The main thread stack size used in this run was 8388608.
-==12102==
-==12102== HEAP SUMMARY:
-==12102==     in use at exit: 7,159,914 bytes in 28,035 blocks
-==12102==   total heap usage: 370,889 allocs, 342,854 frees,
-34,875,720 bytes allocated
-==12102==
-==12102== LEAK SUMMARY:
-==12102==    definitely lost: 56 bytes in 1 blocks
-==12102==    indirectly lost: 64 bytes in 2 blocks
-==12102==      possibly lost: 5,916 bytes in 58 blocks
-==12102==    still reachable: 7,153,878 bytes in 27,974 blocks
-==12102==                       of which reachable via heuristic:
-==12102==                         newarray           : 832 bytes in 16 blocks
-==12102==         suppressed: 0 bytes in 0 blocks
-==12102== Rerun with --leak-check=full to see details of leaked memory
-==12102==
-==12102== For counts of detected and suppressed errors, rerun with: -v
-==12102== Use --track-origins=yes to see where uninitialised values come from
-==12102== ERROR SUMMARY: 80 errors from 4 contexts (suppressed: 6 from 3)
-Broken pipe
-qemu-system-x86_64: load of migration failed: Input/output error
-==12108==
-==12108== HEAP SUMMARY:
-==12108==     in use at exit: 6,321,388 bytes in 21,290 blocks
-==12108==   total heap usage: 59,082 allocs, 37,792 frees, 23,874,965
-bytes allocated
-==12108==
-==12108== LEAK SUMMARY:
-==12108==    definitely lost: 0 bytes in 0 blocks
-==12108==    indirectly lost: 0 bytes in 0 blocks
-==12108==      possibly lost: 5,440 bytes in 37 blocks
-==12108==    still reachable: 6,315,948 bytes in 21,253 blocks
-==12108==                       of which reachable via heuristic:
-==12108==                         newarray           : 832 bytes in 16 blocks
-==12108==         suppressed: 0 bytes in 0 blocks
-==12108== Rerun with --leak-check=full to see details of leaked memory
-==12108==
-==12108== For counts of detected and suppressed errors, rerun with: -v
-==12108== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 3)
-/home/peter.maydell/qemu/tests/libqtest.c:140: kill_qemu() tried to
-terminate QEMU process but encountered exit status 1 (expected 0)
-Aborted
-
-
-thanks
--- PMM
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUWVtdS1kZXZlbA0KPiBb
+bWFpbHRvOnFlbXUtZGV2ZWwtYm91bmNlcytzaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpPWh1YXdl
+aS5jb21Abm9uZ24NCj4gdS5vcmddIE9uIEJlaGFsZiBPZiBJZ29yIE1hbW1lZG92DQo+IFNlbnQ6
+IDA5IEphbnVhcnkgMjAyMCAxNzoxMw0KPiBUbzogU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaSA8
+c2hhbWVlcmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tPg0KPiBDYzogcGV0ZXIubWF5ZGVs
+bEBsaW5hcm8ub3JnOyBkcmpvbmVzQHJlZGhhdC5jb207DQo+IHhpYW9ndWFuZ3JvbmcuZXJpY0Bn
+bWFpbC5jb207IEF1Z2VyIEVyaWMgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT47DQo+IHFlbXUtZGV2
+ZWxAbm9uZ251Lm9yZzsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5jb20+Ow0KPiBzaGFubm9u
+LnpoYW9zbEBnbWFpbC5jb207IHFlbXUtYXJtQG5vbmdudS5vcmc7IHh1d2VpIChPKQ0KPiA8eHV3
+ZWk1QGh1YXdlaS5jb20+OyBKb25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1lcm9uQGh1
+YXdlaS5jb20+OyBsZXJzZWtAcmVkaGF0LmNvbQ0KPiBTdWJqZWN0OiBSZTogW1BBVENIIDAvNV0g
+QVJNIHZpcnQ6IEFkZCBOVkRJTU0gc3VwcG9ydA0KPiANCj4gT24gTW9uLCA2IEphbiAyMDIwIDE3
+OjA2OjMyICswMDAwDQo+IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkgPHNoYW1lZXJhbGkua29s
+b3RodW0udGhvZGlAaHVhd2VpLmNvbT4gd3JvdGU6DQo+IA0KPiA+IEhpIElnb3IsDQoNClsuLi5d
+DQoNCj4gPiAoK0pvbmF0aGFuKQ0KPiA+DQo+ID4gVGhhbmtzIHRvIEpvbmF0aGFuIGZvciB0YWtp
+bmcgYSBmcmVzaCBsb29rIGF0IHRoaXMgaXNzdWUgYW5kIHNwb3R0aW5nIHRoaXMsDQo+ID4NCj4g
+aHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5jb20vbGludXgvdjUuNS1yYzUvc291cmNlL2RyaXZlcnMv
+YWNwaS9hY3BpY2EvdXRtaXNjLmMjTA0KPiAxMDkNCj4gPg0KPiA+IEFuZCwgZnJvbSBBQ1BJIDYu
+MywgdGFibGUgMTktNDE5DQo+ID4NCj4gPiAiSWYgdGhlIEJ1ZmZlciBGaWVsZCBpcyBzbWFsbGVy
+IHRoYW4gb3IgZXF1YWwgdG8gdGhlIHNpemUgb2YgYW4gSW50ZWdlciAoaW4gYml0cyksIGl0DQo+
+ID4gd2lsbCBiZSB0cmVhdGVkIGFzIGFuIEludGVnZXIuIE90aGVyd2lzZSwgaXQgd2lsbCBiZSB0
+cmVhdGVkIGFzIGEgQnVmZmVyLiBUaGUNCj4gc2l6ZQ0KPiA+IG9mIGFuIEludGVnZXIgaXMgaW5k
+aWNhdGVkIGJ5IHRoZSBEZWZpbml0aW9uIEJsb2NrIHRhYmxlIGhlYWRlcidzIFJldmlzaW9uIGZp
+ZWxkLg0KPiA+IEEgUmV2aXNpb24gZmllbGQgdmFsdWUgbGVzcyB0aGFuIDIgaW5kaWNhdGVzIHRo
+YXQgdGhlIHNpemUgb2YgYW4gSW50ZWdlciBpcyAzMg0KPiBiaXRzLg0KPiA+IEEgdmFsdWUgZ3Jl
+YXRlciB0aGFuIG9yIGVxdWFsIHRvIDIgc2lnbmlmaWVzIHRoYXQgdGhlIHNpemUgb2YgYW4gSW50
+ZWdlciBpcyA2NA0KPiBiaXRzLiINCj4gPg0KPiA+IEl0IGxvb2tzIGxpa2UgdGhlIG1haW4gcmVh
+c29uIGZvciB0aGUgZGlmZmVyZW5jZSBpbiBiZWhhdmlvciBvZiB0aGUgYnVmZmVyIG9iamVjdA0K
+PiA+IHNpemUgYmV0d2VlbiB4ODYgYW5kIEFSTS92aXJ0LCBpcyBiZWNhdXNlIG9mIHRoZSBSZXZp
+c2lvbiBudW1iZXIgdXNlZCBpbg0KPiB0aGUNCj4gPiBEU0RUIHRhYmxlLiBPbiB4ODYgaXQgaXMg
+MSBhbmQgQVJNL3ZpcnQgaXQgaXMgMi4NCj4gPg0KPiA+IFNvIG1vc3QgbGlrZWx5LA0KPiA+DQo+
+ID4gPiAgICAgQ3JlYXRlRmllbGQgKE9EQVQsIFplcm8sIExvY2FsMSwgT0JVRikNCj4gDQo+IFlv
+dSBhcmUgcmlnaHQsIHRoYXQncyB3aGVyZSBpdCBnb2VzIHdyb25nLCBzaW5jZSBPQlVGDQo+IGlz
+IGltcGxpY2l0bHkgY29udmVydGVkIHRvIGludGVnZXIgaWYgc2l6ZSBpcyBsZXNzIHRoYW4gNjRi
+aXRzLg0KPiANCj4gPiA+ICAgICBDb25jYXRlbmF0ZSAoQnVmZmVyIChaZXJvKXt9LCBPQlVGLCBM
+b2NhbDcpDQo+IA0KPiBzZWUgbW9yZSBiZWxvdw0KPiANCj4gWy4uLl0NCj4gDQo+ID4NCj4gPiBk
+aWZmIC0tZ2l0IGEvaHcvYWNwaS9udmRpbW0uYyBiL2h3L2FjcGkvbnZkaW1tLmMNCj4gPiBpbmRl
+eCA2NGVhY2ZhZDA4Li42MjFmOWZmZDQxIDEwMDY0NA0KPiA+IC0tLSBhL2h3L2FjcGkvbnZkaW1t
+LmMNCj4gPiArKysgYi9ody9hY3BpL252ZGltbS5jDQo+ID4gQEAgLTExOTIsMTUgKzExOTIsMTgg
+QEAgc3RhdGljIHZvaWQgbnZkaW1tX2J1aWxkX2ZpdChBbWwgKmRldikNCj4gPiDCoCDCoCDCoGFt
+bF9hcHBlbmQobWV0aG9kLCBpZmN0eCk7DQo+ID4NCj4gPiDCoCDCoCDCoGFtbF9hcHBlbmQobWV0
+aG9kLCBhbWxfc3RvcmUoYW1sX3NpemVvZihidWYpLCBidWZfc2l6ZSkpOw0KPiA+IC0gwqAgwqBh
+bWxfYXBwZW5kKG1ldGhvZCwgYW1sX3N1YnRyYWN0KGJ1Zl9zaXplLA0KPiA+IC0gwqAgwqAgwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBhbWxfaW50KDQpIC8q
+IHRoZSBzaXplIG9mDQo+ICJTVEFVIiAqLywNCj4gPiAtIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgYnVmX3NpemUpKTsNCj4gPg0KPiA+IMKgIMKg
+IMKgLyogaWYgd2UgcmVhZCB0aGUgZW5kIG9mIGZpdC4gKi8NCj4gPiAtIMKgIMKgaWZjdHggPSBh
+bWxfaWYoYW1sX2VxdWFsKGJ1Zl9zaXplLCBhbWxfaW50KDApKSk7DQo+ID4gKyDCoCDCoGlmY3R4
+ID0gYW1sX2lmKGFtbF9lcXVhbChhbWxfc3VidHJhY3QoYnVmX3NpemUsDQo+ID4gKyDCoCDCoCDC
+oCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCBhbWxfc2l6ZW9mKGFtbF9pbnQoMCkp
+LCBOVUxMKSwNCj4gPiArIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IGFtbF9pbnQoMCkpKTsNCj4gPiDCoCDCoCDCoGFtbF9hcHBlbmQoaWZjdHgsIGFtbF9yZXR1cm4o
+YW1sX2J1ZmZlcigwLCBOVUxMKSkpOw0KPiA+IMKgIMKgIMKgYW1sX2FwcGVuZChtZXRob2QsIGlm
+Y3R4KTsNCj4gPg0KPiA+ICsgwqAgwqBhbWxfYXBwZW5kKG1ldGhvZCwgYW1sX3N1YnRyYWN0KGJ1
+Zl9zaXplLA0KPiA+ICsgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAg
+wqAgwqAgwqAgwqBhbWxfaW50KDQpIC8qIHRoZSBzaXplIG9mDQo+ICJTVEFVIiAqLywNCj4gPiAr
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgYnVm
+X3NpemUpKTsNCj4gPiArDQo+ID4gwqAgwqAgwqBhbWxfYXBwZW5kKG1ldGhvZCwgYW1sX2NyZWF0
+ZV9maWVsZChidWYsDQo+ID4gwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAg
+wqAgwqBhbWxfaW50KDQgKiBCSVRTX1BFUl9CWVRFKSwgLyogb2Zmc2V0DQo+IGF0IGJ5dGUgNC4q
+Lw0KPiA+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgYW1sX3No
+aWZ0bGVmdChidWZfc2l6ZSwgYW1sX2ludCgzKSksDQo+ICJCVUZGIikpOw0KPiANCj4gSW5zdGVh
+ZCBvZiBjb3ZlcmluZyB1cCBlcnJvciBpbiBOQ0FMLCBJJ2QgcHJlZmVyIG9yaWdpbmFsIGlzc3Vl
+IGZpeGVkLg0KPiBIb3cgYWJvdXQgc29tZXRoaW5nIGxpa2UgdGhpcyBwc2V1ZG9jb2RlOg0KPiAN
+Cj4gICAgICAgICAgICAgICAgIE5URkkgPSBMb2NhbDYNCj4gICAgICAgICAgICAgICAgIExvY2Fs
+MSA9IChSTEVOIC0gMHgwNCkNCj4gLSAgICAgICAgICAgICAgICBMb2NhbDEgPSAoTG9jYWwxIDw8
+IDB4MDMpDQo+IC0gICAgICAgICAgICAgICAgQ3JlYXRlRmllbGQgKE9EQVQsIFplcm8sIExvY2Fs
+MSwgT0JVRikNCj4gLSAgICAgICAgICAgICAgICBDb25jYXRlbmF0ZSAoQnVmZmVyIChaZXJvKSB7
+fSwgT0JVRiwgTG9jYWw3KQ0KPiANCj4gICAgICAgICAgICAgICAgIElmIChMb2NhbDEgPCBJbnRl
+Z2VyU2l6ZSkNCj4gICAgICAgICAgICAgICAgIHsNCj4gICAgICAgICAgICAgICAgICAgICBMb2Nh
+bDcgPSBCdWZmZXIoMCkgLy8gb3V0cHV0IGJ1ZmZlcg0KPiAgICAgICAgICAgICAgICAgICAgIExv
+Y2FsOCA9IDAgLy8gaW5kZXggZm9yIGJlaW5nIGNvcGllZCBieXRlDQo+ICAgICAgICAgICAgICAg
+ICAgICAgLy8gYnVpbGQgYnl0ZSBieSBieXRlIG91dHB1dCBidWZmZXINCj4gICAgICAgICAgICAg
+ICAgICAgICB3aGlsZSAoTG9jYWw4IDwgTG9jYWwxKSB7DQo+ICAgICAgICAgICAgICAgICAgICAg
+ICAgTG9jYWw5ID0gQnVmZmVyKDEpDQo+ICAgICAgICAgICAgICAgICAgICAgICAgLy8gY29weSAx
+IGJ5dGUgYXQgTG9jYWw4IG9mZnNldCBmcm9tIE9EQVQgdG8NCj4gdGVtcG9yYXJ5IGJ1ZmZlciBM
+b2NhbDkNCj4gICAgICAgICAgICAgICAgICAgICAgICBTdG9yZShEZVJlZihJbmRleChPREFULCBM
+b2NhbDgpKSwgSW5kZXgoTG9jYWw5LA0KPiAwKSkNCj4gICAgICAgICAgICAgICAgICAgICAgICBD
+b25jYXRlbmF0ZSAoTG9jYWw3LCBMb2NhbDksIExvY2FsNykNCj4gICAgICAgICAgICAgICAgICAg
+ICAgICBJbmNyZW1lbnQoTG9jYWw4KQ0KPiAgICAgICAgICAgICAgICAgICAgIH0NCj4gICAgICAg
+ICAgICAgICAgICAgICByZXR1cm4gTG9jYWw3DQo+ICAgICAgICAgICAgICAgICB9IGVsc2Ugew0K
+PiAgICAgICAgICAgICAgICAgICAgIENyZWF0ZUZpZWxkIChPREFULCBaZXJvLCBMb2NhbDEsIE9C
+VUYpDQo+ICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIE9CVUYNCj4gICAgICAgICAgICAgICAg
+IH0NCj4gDQoNCk9rLiBUaGlzIGxvb2tzIG11Y2ggYmV0dGVyLiBJIHdpbGwgdGVzdCB0aGlzIGFu
+ZCBzZW50IG91dCBhIHYyIHNvb24gYWRkcmVzc2luZyBvdGhlcg0KY29tbWVudHMgb24gdGhpcyBz
+ZXJpZXMgYXMgd2VsbC4NCg0KVGhhbmtzLA0KU2hhbWVlcg0K

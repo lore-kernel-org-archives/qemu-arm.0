@@ -1,652 +1,440 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4440568lff;
-        Mon, 13 Jan 2020 10:00:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyxSTfW4P7SaPpPDxuERQLIeFnHgpIyLdkXjN/2SOnvdnQBNLkggYAeMaqqdt58G6uQWrf/
-X-Received: by 2002:a05:6808:64d:: with SMTP id z13mr13842004oih.104.1578938457470;
-        Mon, 13 Jan 2020 10:00:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578938457; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4460500lff;
+        Mon, 13 Jan 2020 10:17:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw+87krigCFTP64kFdZ+T1x6hsb3Xh8KHD7JS5A//glmzDIuKJqH27dm3Axv1sRiGvftxs9
+X-Received: by 2002:a0c:e4c1:: with SMTP id g1mr13019281qvm.45.1578939454164;
+        Mon, 13 Jan 2020 10:17:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578939454; cv=none;
         d=google.com; s=arc-20160816;
-        b=LKC0X7DJd8NLJMp2GJihTuLZMd4qyI7cUvPJrgPJAwn22K0BcWVNFlKQfLV+jqqvlH
-         /YcO+qlXYTY/5yxg08azelxU3b/HIYU4XqrYxkO+s5xSMBBl2IahMc4D05bw7yuGFL7r
-         SoI8nAXrdz3bOSRR65OQk7ypl2C2ODC5D9/hpf9wo7vt/jR+HNS16Pbmgh22OM8K5d5+
-         uSguyKrAW2DvHK9O0bSg9TBzIQh9Y/6zhxVSLmcBoNT09Kmhbejl3nn9zmy0zFEj9Knn
-         g5tOE/eTHHTxlLAwR9nDLM6fL8nKH5JyVu0E7M1sKpFvtdCNnzOlcv/kYy4o9ccFVcMF
-         VXlg==
+        b=jC7f+jT8DC0M+ga6fRUIz4u3yck8jy+/4fyw1Y4Ydb2p5yGs/52CljGVTT7eEMwLgS
+         OE4JSSwUcOJ0S9b7rvAMgRL9tvSuZEJPSOn3DOGzpjvnsiCQg3DJYTZbB+FxkTkJawN9
+         II/zT4fAaNw+GDDaTyvHc/FUxlQLYlgx7a2AI5wU3S5bmmTNG5auXvA1EHgf0HmL0QWc
+         4pSKDVx9MTz73ksiUVrkAsQmIk+bcN6k8+9P0NOh0rvFuNFuMeUusphRMchHiOmBLpBi
+         HoQffwKGpt0h8m7goyYt3lmluHyj/urqFn93n1BooRVU0NaZXvDvjiNDANPNS7SBp8JM
+         3QBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=JPRMEcKUD3pcM4flUSRiwUZ2m0BIQ5vP62fsD3i2enY=;
-        b=tq2ucnxDM1WrqKPE6oJM8qDttDCSiPcG7dSK41KdaJo8q7FArtYT8hc619VXT9HfrF
-         tDcpl7iBTJoQ9+1UPPwp3wRNejJpR9j4jAXdaHugX5VTkD1qmQgOlxJpCmaQM75axUdM
-         mLea3eiZxzODa0VokZ4h4WN+Abzn/24cI2VnfBOHIvhh2l6Ay3uFplp46X+XSDCmYUiZ
-         KuWz/E/fRRG03AAvcyfsuZXPeVsY4fEDqMujfrfk9uObIVWpsZsF7e8sS8Q2nAux5X2+
-         lyW8V1zri7fGCbylNr5PU5DXKhDsucAz8/MpxaGLXjOO05mVAoVkTN8HkPnvSbAt4lpT
-         Q56w==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=Od5vn76diVqFgf3mAYeFIlapWPm7yZk5ljgB12JTcWA=;
+        b=tugE+CzEHTiXYxWc1r19oLRWmI1z1cCf8b7Ery/pYkCe9sxkfUCn37MIGMYI7K/kCi
+         iEZI17wFZs/lp5B65I007GMTjfHIiRX0F0PJuD1kVd9Owk2pLMRJjbuGhklSYYKen8zF
+         PJX2zfwV0CjcxO9C1a3ynEpDbvdrbVYGbcJhwHydRb81ThpXWLpTPcT/LDpJ7ebrhxhW
+         o4Kn1hYPxihAJa0aFf3GlDCPhgMaWhm+ov09jgttxUKq/Xeqx0KmrvlyTg4007TLLslM
+         QyrASXyJukbl0fWDL/ZR5NNG71yUsajukM/xszu/h5XbrrqxMUwFpg4hRMT2IQXJtGKI
+         XEMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NXVeQQff;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b24si7236265otf.34.2020.01.13.10.00.57;
-        Mon, 13 Jan 2020 10:00:57 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=XVmZWuuS;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id q139si6849053qke.191.2020.01.13.10.17.33;
+        Mon, 13 Jan 2020 10:17:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NXVeQQff;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728689AbgAMSA4 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 13 Jan 2020 13:00:56 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23672 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1728633AbgAMSA4 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 13 Jan 2020 13:00:56 -0500
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=XVmZWuuS;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id A10554AF1D;
+	Mon, 13 Jan 2020 13:17:33 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Cr0+nmDLmJ0V; Mon, 13 Jan 2020 13:17:32 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 169924AED2;
+	Mon, 13 Jan 2020 13:17:32 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id B972E4AED2
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 13 Jan 2020 13:17:30 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WNE+UcaJbM8C for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 13 Jan 2020 13:17:29 -0500 (EST)
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 7AF654A49C
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 13 Jan 2020 13:17:29 -0500 (EST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1578938453;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=JPRMEcKUD3pcM4flUSRiwUZ2m0BIQ5vP62fsD3i2enY=;
-        b=NXVeQQffM0w3XabaMz+ugHK0z24WgAsXNLvPyidrbvLJfrfd83X6bxgFGHJlUY28So37xz
-        R1rUv4+PtWV3gXxumBCkAbKZhNTz5cC+BT+dZfxdW+0JhKwKpBbCoRdbBl1J42HDt/MPOo
-        dfkESQ7APNJZanGCu3NNDPWHypwKl3c=
+ s=mimecast20190719; t=1578939449;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=NVOt3uPB3bNYXtjl/TISmv0wLIUaJFh46hUcER/78I0=;
+ b=XVmZWuuS4XUEslGmips9wd5NhFxiyHKCOXtKFczpXBnK4BHMUXLKRgpFoBikfHX4ZK93bz
+ 3NQjNWk9/lOxYFhrKJeuJKVi+K9mw2QKfBBrK5Y1YQbcgkVJIL2fWUyM+8MJuAV0VoTA2H
+ BFMgJCTlgnKEP+9L9SqVW/XDb5OB9JQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-274-v5RqMEhwOZ2ey7MF6qjkUQ-1; Mon, 13 Jan 2020 13:00:52 -0500
-X-MC-Unique: v5RqMEhwOZ2ey7MF6qjkUQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4FC481856A8E;
-        Mon, 13 Jan 2020 18:00:50 +0000 (UTC)
+ us-mta-105-I8jANf8XOF2N3UE0mnkLQw-1; Mon, 13 Jan 2020 13:17:11 -0500
+X-MC-Unique: I8jANf8XOF2N3UE0mnkLQw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6252D107ACC4;
+ Mon, 13 Jan 2020 18:17:09 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 719885DA70;
-        Mon, 13 Jan 2020 18:00:44 +0000 (UTC)
-Date:   Mon, 13 Jan 2020 19:00:42 +0100
-From:   Andrew Jones <drjones@redhat.com>
-To:     Eric Auger <eric.auger@redhat.com>
-Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, thuth@redhat.com
-Subject: Re: [kvm-unit-tests PATCH v2 12/16] arm/arm64: ITS: commands
-Message-ID: <20200113180042.ud53um575jsra2uf@kamzik.brq.redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6F56510841A8;
+ Mon, 13 Jan 2020 18:17:03 +0000 (UTC)
+Date: Mon, 13 Jan 2020 19:17:01 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [kvm-unit-tests PATCH v2 13/16] arm/arm64: ITS: INT functional
+ tests
+Message-ID: <20200113181701.jit3ywxoifduipew@kamzik.brq.redhat.com>
 References: <20200110145412.14937-1-eric.auger@redhat.com>
- <20200110145412.14937-13-eric.auger@redhat.com>
+ <20200110145412.14937-14-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200110145412.14937-13-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: qSlJ0MTHgPY4
+In-Reply-To: <20200110145412.14937-14-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: cLN+n8jvFvhh
 
-On Fri, Jan 10, 2020 at 03:54:08PM +0100, Eric Auger wrote:
-> Implement main ITS commands. The code is largely inherited from
-> the ITS driver.
+On Fri, Jan 10, 2020 at 03:54:09PM +0100, Eric Auger wrote:
+> Triggers LPIs through the INT command.
+> 
+> the test checks the LPI hits the right CPU and triggers
+> the right LPI intid, ie. the translation is correct.
+> 
+> Updates to the config table also are tested, along with inv
+> and invall commands.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
 > ---
+>  arm/gic.c                | 174 +++++++++++++++++++++++++++++++++++++++
+>  arm/unittests.cfg        |   6 ++
+>  lib/arm/asm/gic-v3-its.h |  14 ++++
+>  3 files changed, 194 insertions(+)
 > 
-> v1 -> v2:
-> - removed its_print_cmd_state
-> ---
->  arm/Makefile.common      |   2 +-
->  lib/arm/asm/gic-v3-its.h |  35 +++
->  lib/arm/gic-v3-its-cmd.c | 453 +++++++++++++++++++++++++++++++++++++++
->  3 files changed, 489 insertions(+), 1 deletion(-)
->  create mode 100644 lib/arm/gic-v3-its-cmd.c
-> 
-> diff --git a/arm/Makefile.common b/arm/Makefile.common
-> index 1aae5a3..7cc0f04 100644
-> --- a/arm/Makefile.common
-> +++ b/arm/Makefile.common
-> @@ -52,7 +52,7 @@ cflatobjs += lib/arm/psci.o
->  cflatobjs += lib/arm/smp.o
->  cflatobjs += lib/arm/delay.o
->  cflatobjs += lib/arm/gic.o lib/arm/gic-v2.o lib/arm/gic-v3.o
-> -cflatobjs += lib/arm/gic-v3-its.o
-> +cflatobjs += lib/arm/gic-v3-its.o lib/arm/gic-v3-its-cmd.o
+> diff --git a/arm/gic.c b/arm/gic.c
+> index 3597ac3..7f701a1 100644
+> --- a/arm/gic.c
+> +++ b/arm/gic.c
+> @@ -34,6 +34,7 @@ static struct gic *gic;
+>  static int acked[NR_CPUS], spurious[NR_CPUS];
+>  static int bad_sender[NR_CPUS], bad_irq[NR_CPUS];
+>  static cpumask_t ready;
+> +static struct its_stats lpi_stats;
 >  
->  OBJDIRS += lib/arm
+>  static void nr_cpu_check(int nr)
+>  {
+> @@ -158,6 +159,54 @@ static void ipi_handler(struct pt_regs *regs __unused)
+>  	}
+>  }
 >  
-> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-> index 0497a78..463174f 100644
-> --- a/lib/arm/asm/gic-v3-its.h
-> +++ b/lib/arm/asm/gic-v3-its.h
-> @@ -58,6 +58,24 @@
->  #define GITS_MAX_DEVICES		8
->  #define GITS_MAX_COLLECTIONS		8
->  
-> +/*
-> + * ITS commands
-> + */
-> +#define GITS_CMD_MAPD                   0x08
-> +#define GITS_CMD_MAPC                   0x09
-> +#define GITS_CMD_MAPTI                  0x0a
-> +/* older GIC documentation used MAPVI for this command */
-> +#define GITS_CMD_MAPVI                  GITS_CMD_MAPTI
-> +#define GITS_CMD_MAPI                   0x0b
-> +#define GITS_CMD_MOVI                   0x01
-> +#define GITS_CMD_DISCARD                0x0f
-> +#define GITS_CMD_INV                    0x0c
-> +#define GITS_CMD_MOVALL                 0x0e
-> +#define GITS_CMD_INVALL                 0x0d
-> +#define GITS_CMD_INT                    0x03
-> +#define GITS_CMD_CLEAR                  0x04
-> +#define GITS_CMD_SYNC                   0x05
-> +
->  struct its_typer {
->  	unsigned int ite_size;
->  	unsigned int eventid_bits;
-> @@ -122,5 +140,22 @@ extern void its_enable_defaults(void);
->  extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
->  extern struct its_collection *its_create_collection(u32 col_id, u32 target_pe);
->  
-> +extern void its_send_mapd(struct its_device *dev, int valid);
-> +extern void its_send_mapc(struct its_collection *col, int valid);
-> +extern void its_send_mapti(struct its_device *dev, u32 irq_id,
-> +			   u32 event_id, struct its_collection *col);
-> +extern void its_send_int(struct its_device *dev, u32 event_id);
-> +extern void its_send_inv(struct its_device *dev, u32 event_id);
-> +extern void its_send_discard(struct its_device *dev, u32 event_id);
-> +extern void its_send_clear(struct its_device *dev, u32 event_id);
-> +extern void its_send_invall(struct its_collection *col);
-> +extern void its_send_movi(struct its_device *dev,
-> +			  struct its_collection *col, u32 id);
-> +extern void its_send_sync(struct its_collection *col);
-> +
-> +#define ITS_FLAGS_CMDQ_NEEDS_FLUSHING           (1ULL << 0)
-> +#define ITS_FLAGS_WORKAROUND_CAVIUM_22375       (1ULL << 1)
-> +#define ITS_FLAGS_WORKAROUND_CAVIUM_23144       (1ULL << 2)
-> +
->  #endif /* !__ASSEMBLY__ */
->  #endif /* _ASMARM_GIC_V3_ITS_H_ */
-> diff --git a/lib/arm/gic-v3-its-cmd.c b/lib/arm/gic-v3-its-cmd.c
-> new file mode 100644
-> index 0000000..9c6cbc6
-> --- /dev/null
-> +++ b/lib/arm/gic-v3-its-cmd.c
-> @@ -0,0 +1,453 @@
-> +/*
-> + * Copyright (C) 2016, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
-
-2016?
-
-> + *
-> + * Most of the code is copy-pasted from:
-> + * drivers/irqchip/irq-gic-v3-its.c
-> + * This work is licensed under the terms of the GNU LGPL, version 2.
-> + */
-> +#include <asm/io.h>
-> +#include <asm/gic.h>
-> +
-> +#define ITS_ITT_ALIGN           SZ_256
-> +
-> +static const char * const its_cmd_string[] = {
-> +	[GITS_CMD_MAPD]		= "MAPD",
-> +	[GITS_CMD_MAPC]		= "MAPC",
-> +	[GITS_CMD_MAPTI]	= "MAPTI",
-> +	[GITS_CMD_MAPI]		= "MAPI",
-> +	[GITS_CMD_MOVI]		= "MOVI",
-> +	[GITS_CMD_DISCARD]	= "DISCARD",
-> +	[GITS_CMD_INV]		= "INV",
-> +	[GITS_CMD_MOVALL]	= "MOVALL",
-> +	[GITS_CMD_INVALL]	= "INVALL",
-> +	[GITS_CMD_INT]		= "INT",
-> +	[GITS_CMD_CLEAR]	= "CLEAR",
-> +	[GITS_CMD_SYNC]		= "SYNC",
-> +};
-> +
-> +struct its_cmd_desc {
-> +	union {
-> +		struct {
-> +			struct its_device *dev;
-> +			u32 event_id;
-> +		} its_inv_cmd;
-> +
-> +		struct {
-> +			struct its_device *dev;
-> +			u32 event_id;
-> +		} its_int_cmd;
-> +
-> +		struct {
-> +			struct its_device *dev;
-> +			bool valid;
-> +		} its_mapd_cmd;
-> +
-> +		struct {
-> +			struct its_collection *col;
-> +			bool valid;
-> +		} its_mapc_cmd;
-> +
-> +		struct {
-> +			struct its_device *dev;
-> +			u32 phys_id;
-> +			u32 event_id;
-> +			u32 col_id;
-> +		} its_mapti_cmd;
-> +
-> +		struct {
-> +			struct its_device *dev;
-> +			struct its_collection *col;
-> +			u32 event_id;
-> +		} its_movi_cmd;
-> +
-> +		struct {
-> +			struct its_device *dev;
-> +			u32 event_id;
-> +		} its_discard_cmd;
-> +
-> +		struct {
-> +			struct its_device *dev;
-> +			u32 event_id;
-> +		} its_clear_cmd;
-> +
-> +		struct {
-> +			struct its_collection *col;
-> +		} its_invall_cmd;
-> +
-> +		struct {
-> +			struct its_collection *col;
-> +		} its_sync_cmd;
-> +	};
-> +};
-> +
-> +typedef void (*its_cmd_builder_t)(struct its_cmd_block *,
-> +				  struct its_cmd_desc *);
-> +
-> +/* ITS COMMANDS */
-> +
-> +static void its_encode_cmd(struct its_cmd_block *cmd, u8 cmd_nr)
+> +static void lpi_handler(struct pt_regs *regs __unused)
 > +{
-> +	cmd->raw_cmd[0] &= ~0xffUL;
-> +	cmd->raw_cmd[0] |= cmd_nr;
+> +	u32 irqstat = gic_read_iar();
+> +	int irqnr = gic_iar_irqnr(irqstat);
+> +
+> +	gic_write_eoir(irqstat);
+> +	if (irqnr < 8192)
+> +		report(false, "Unexpected non LPI interrupt received");
+> +	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
+> +	lpi_stats.observed.cpu_id = smp_processor_id();
+> +	lpi_stats.observed.lpi_id = irqnr;
+> +	smp_wmb(); /* pairs with rmb in check_lpi_stats */
 > +}
 > +
-> +static void its_encode_devid(struct its_cmd_block *cmd, u32 devid)
+> +static void lpi_stats_expect(int exp_cpu_id, int exp_lpi_id)
 > +{
-> +	cmd->raw_cmd[0] &= BIT_ULL(32) - 1;
-> +	cmd->raw_cmd[0] |= ((u64)devid) << 32;
+> +	lpi_stats.expected.cpu_id = exp_cpu_id;
+> +	lpi_stats.expected.lpi_id = exp_lpi_id;
+> +	lpi_stats.observed.cpu_id = -1;
+> +	lpi_stats.observed.lpi_id = -1;
+> +	smp_wmb(); /* pairs with rmb in handler */
 > +}
 > +
-> +static void its_encode_event_id(struct its_cmd_block *cmd, u32 id)
+> +static void check_lpi_stats(void)
 > +{
-> +	cmd->raw_cmd[1] &= ~0xffffffffUL;
-> +	cmd->raw_cmd[1] |= id;
-> +}
-> +
-> +static void its_encode_phys_id(struct its_cmd_block *cmd, u32 phys_id)
-> +{
-> +	cmd->raw_cmd[1] &= 0xffffffffUL;
-> +	cmd->raw_cmd[1] |= ((u64)phys_id) << 32;
-> +}
-> +
-> +static void its_encode_size(struct its_cmd_block *cmd, u8 size)
-> +{
-> +	cmd->raw_cmd[1] &= ~0x1fUL;
-> +	cmd->raw_cmd[1] |= size & 0x1f;
-> +}
-> +
-> +static void its_encode_itt(struct its_cmd_block *cmd, u64 itt_addr)
-> +{
-> +	cmd->raw_cmd[2] &= ~0xffffffffffffUL;
-> +	cmd->raw_cmd[2] |= itt_addr & 0xffffffffff00UL;
-> +}
-> +
-> +static void its_encode_valid(struct its_cmd_block *cmd, int valid)
-> +{
-> +	cmd->raw_cmd[2] &= ~(1UL << 63);
-> +	cmd->raw_cmd[2] |= ((u64)!!valid) << 63;
-> +}
-> +
-> +static void its_encode_target(struct its_cmd_block *cmd, u64 target_addr)
-> +{
-> +	cmd->raw_cmd[2] &= ~(0xfffffffffUL << 16);
-> +	cmd->raw_cmd[2] |= (target_addr & (0xffffffffUL << 16));
-> +}
-
-Did you trying compiling arm (as opposed to arm64)? I see this file and
-the other ITS files are added to arm/Makefile.common, but I'd expect this
-to be a problem here, since it's UL instead of ULL.
-
-> +
-> +static void its_encode_collection(struct its_cmd_block *cmd, u16 col)
-> +{
-> +	cmd->raw_cmd[2] &= ~0xffffUL;
-> +	cmd->raw_cmd[2] |= col;
-> +}
-> +
-> +static inline void its_fixup_cmd(struct its_cmd_block *cmd)
-> +{
-> +	/* Let's fixup BE commands */
-> +	cmd->raw_cmd[0] = cpu_to_le64(cmd->raw_cmd[0]);
-> +	cmd->raw_cmd[1] = cpu_to_le64(cmd->raw_cmd[1]);
-> +	cmd->raw_cmd[2] = cpu_to_le64(cmd->raw_cmd[2]);
-> +	cmd->raw_cmd[3] = cpu_to_le64(cmd->raw_cmd[3]);
-> +}
-> +
-> +static u64 its_cmd_ptr_to_offset(struct its_cmd_block *ptr)
-> +{
-> +	return (ptr - its_data.cmd_base) * sizeof(*ptr);
-> +}
-> +
-> +static struct its_cmd_block *its_post_commands(void)
-> +{
-> +	u64 wr = its_cmd_ptr_to_offset(its_data.cmd_write);
-> +
-> +	writeq(wr, its_data.base + GITS_CWRITER);
-> +	return its_data.cmd_write;
-> +}
-> +
-> +
-> +/* We just assume the queue is large enough */
-
-Assert when the assuming is wrong?
-
-> +static struct its_cmd_block *its_allocate_entry(void)
-> +{
-> +	struct its_cmd_block *cmd;
-> +
-> +	cmd = its_data.cmd_write++;
-> +	return cmd;
-> +}
-> +
-> +static void its_wait_for_range_completion(struct its_cmd_block *from,
-> +					  struct its_cmd_block *to)
-> +{
-> +	u64 rd_idx, from_idx, to_idx;
-> +	u32 count = 1000000;    /* 1s! */
-> +
-> +	from_idx = its_cmd_ptr_to_offset(from);
-> +	to_idx = its_cmd_ptr_to_offset(to);
-> +	while (1) {
-> +		rd_idx = readq(its_data.base + GITS_CREADR);
-> +		if (rd_idx >= to_idx || rd_idx < from_idx)
-> +			break;
-> +
-> +		count--;
-> +		if (!count) {
-> +			unsigned int cmd_id = from->raw_cmd[0] & 0xFF;
-> +
-> +			report(false, "%s timeout!",
-> +			       cmd_id <= 0xF ? its_cmd_string[cmd_id] :
-> +			       "Unexpected");
-
-assert_msg, not report
-
-> +			return;
+> +	mdelay(100);
+> +	smp_rmb(); /* pairs with wmb in lpi_handler */
+> +	if ((lpi_stats.observed.cpu_id != lpi_stats.expected.cpu_id) ||
+> +	    (lpi_stats.observed.lpi_id != lpi_stats.expected.lpi_id)) {
+> +		if (lpi_stats.observed.cpu_id == -1 &&
+> +		    lpi_stats.observed.lpi_id == -1) {
+> +			report(false,
+> +			       "No LPI received whereas (cpuid=%d, intid=%d) "
+> +			       "was expected", lpi_stats.expected.cpu_id,
+> +			       lpi_stats.expected.lpi_id);
+> +		} else {
+> +			report(false, "Unexpected LPI (cpuid=%d, intid=%d)",
+> +			       lpi_stats.observed.cpu_id,
+> +			       lpi_stats.observed.lpi_id);
 > +		}
-> +		cpu_relax();
-> +		udelay(1);
+> +	} else if (lpi_stats.expected.lpi_id != -1) {
+> +		report(true, "LPI %d on CPU %d", lpi_stats.observed.lpi_id,
+> +		       lpi_stats.observed.cpu_id);
+> +	} else {
+> +		report(true, "no LPI received, as expected");
 > +	}
 > +}
 > +
-> +static void its_send_single_command(its_cmd_builder_t builder,
-> +				    struct its_cmd_desc *desc)
+>  static void gicv2_ipi_send_self(void)
+>  {
+>  	writel(2 << 24 | IPI_IRQ, gicv2_dist_base() + GICD_SGIR);
+> @@ -241,6 +290,14 @@ static void ipi_test(void *data __unused)
+>  		ipi_recv();
+>  }
+>  
+> +static void secondary_lpi_test(void)
 > +{
-> +	struct its_cmd_block *cmd, *next_cmd;
-> +
-> +	cmd = its_allocate_entry();
-> +	builder(cmd, desc);
-> +	next_cmd = its_post_commands();
-> +
-> +	its_wait_for_range_completion(cmd, next_cmd);
+> +	setup_irq(lpi_handler);
+> +	cpumask_set_cpu(smp_processor_id(), &ready);
+> +	while (1)
+> +		wfi();
 > +}
 > +
-> +
-> +static void its_build_mapd_cmd(struct its_cmd_block *cmd,
-> +			       struct its_cmd_desc *desc)
+>  static struct gic gicv2 = {
+>  	.ipi = {
+>  		.send_self = gicv2_ipi_send_self,
+> @@ -551,6 +608,120 @@ static void test_its_baser(void)
+>  	report_info("collection baser entry_size = 0x%x", coll_baser->esz);
+>  }
+>  
+> +static int its_prerequisites(int nb_cpus)
 > +{
-> +	unsigned long itt_addr;
-> +	u8 size = 12; //TODO ilog2(desc->its_mapd_cmd.dev->nr_ites);
+> +	int cpu;
 > +
-> +	itt_addr = (unsigned long)desc->its_mapd_cmd.dev->itt;
-> +	itt_addr = ALIGN(itt_addr, ITS_ITT_ALIGN);
+> +	if (!gicv3_its_base()) {
+> +		report_skip("No ITS, skip ...");
+> +		return -1;
+> +	}
 > +
-> +	its_encode_cmd(cmd, GITS_CMD_MAPD);
-> +	its_encode_devid(cmd, desc->its_mapd_cmd.dev->device_id);
-> +	its_encode_size(cmd, size - 1);
-> +	its_encode_itt(cmd, itt_addr);
-> +	its_encode_valid(cmd, desc->its_mapd_cmd.valid);
-> +
-> +	its_fixup_cmd(cmd);
-> +	report_info("MAPD devid=%d size = 0x%x itt=0x%lx valid=%d",
-> +		    desc->its_mapd_cmd.dev->device_id,
-> +		    size, itt_addr, desc->its_mapd_cmd.valid);
+> +	if (nr_cpus < 4) {
+> +		report_skip("Test requires at least %d vcpus", nb_cpus);
+> +		return -1;
 
-printf("ITS: ...\n", ...), not report_info
+We have nr_cpu_check() in arm/gic.c that does a report_abort for this
+case. Is there a reason to do report_skip instead of report_abort?
+
+Also do you plan to return more than 0 - success, -1 - failure? If not,
+then this could be a bool function.
+
+> +	}
+> +
+> +	stats_reset();
+> +
+> +	setup_irq(lpi_handler);
+> +
+> +	for_each_present_cpu(cpu) {
+> +		if (cpu == 0)
+> +			continue;
+> +		smp_boot_secondary(cpu, secondary_lpi_test);
+> +	}
+> +	wait_on_ready();
+> +
+> +	its_enable_defaults();
+> +
+> +	lpi_stats_expect(-1, -1);
+> +	check_lpi_stats();
+> +
+> +	return 0;
+> +}
+> +
+> +static void test_its_trigger(void)
+> +{
+> +	struct its_collection *col3, *col2;
+> +	struct its_device *dev2, *dev7;
+> +
+> +	if (its_prerequisites(4))
+> +		return;
+> +
+> +	dev2 = its_create_device(2 /* dev id */, 8 /* nb_ites */);
+> +	dev7 = its_create_device(7 /* dev id */, 8 /* nb_ites */);
+> +
+> +	col3 = its_create_collection(3 /* col id */, 3/* target PE */);
+> +	col2 = its_create_collection(2 /* col id */, 2/* target PE */);
+> +
+> +	set_lpi_config(8195, LPI_PROP_DEFAULT);
+> +	set_lpi_config(8196, LPI_PROP_DEFAULT);
+> +
+> +	its_send_invall(col2);
+> +	its_send_invall(col3);
+> +
+> +	report_prefix_push("int");
+> +
+> +	its_send_mapd(dev2, true);
+> +	its_send_mapd(dev7, true);
+> +
+> +	its_send_mapc(col3, true);
+> +	its_send_mapc(col2, true);
+> +
+> +	its_send_mapti(dev2, 8195 /* lpi id */,
+> +		       20 /* event id */, col3);
+> +	its_send_mapti(dev7, 8196 /* lpi id */,
+> +		       255 /* event id */, col2);
+> +
+> +	lpi_stats_expect(3, 8195);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +
+> +	lpi_stats_expect(2, 8196);
+> +	its_send_int(dev7, 255);
+> +	check_lpi_stats();
+> +
+> +	report_prefix_pop();
+> +
+> +	report_prefix_push("inv/invall");
+> +
+> +	/* disable 8195 */
+> +	set_lpi_config(8195, LPI_PROP_DEFAULT & ~0x1);
+> +	its_send_inv(dev2, 20);
+> +
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +
+> +	set_lpi_config(8195, LPI_PROP_DEFAULT);
+> +	/* willingly forget the INVALL*/
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +
+> +	its_send_invall(col3);
+> +	lpi_stats_expect(3, 8195);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +
+> +	report_prefix_pop();
+> +
+> +	report_prefix_push("mapd valid=false");
+> +	its_send_mapd(dev2, false);
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +	report_prefix_pop();
+> +
+> +	report_prefix_push("mapc valid=false");
+> +	its_send_mapc(col2, false);
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev7, 255);
+> +	check_lpi_stats();
+
+Missing prefix pop here
+
+> +}
+> +
+> +
+
+Extra blank line
+
+>  int main(int argc, char **argv)
+>  {
+>  	if (!gic_init()) {
+> @@ -581,6 +752,9 @@ int main(int argc, char **argv)
+>  	} else if (strcmp(argv[1], "mmio") == 0) {
+>  		report_prefix_push(argv[1]);
+>  		gic_test_mmio();
+> +	} else if (!strcmp(argv[1], "its-trigger")) {
+> +		report_prefix_push(argv[1]);
+> +		test_its_trigger();
+>  		report_prefix_pop();
+
+You stole the report_prefix_pop from the mmio tests above.
+
+>  	} else if (strcmp(argv[1], "its-introspection") == 0) {
+>  		report_prefix_push(argv[1]);
+> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
+> index 2234a0f..80a1d27 100644
+> --- a/arm/unittests.cfg
+> +++ b/arm/unittests.cfg
+> @@ -134,6 +134,12 @@ smp = $MAX_SMP
+>  extra_params = -machine gic-version=3 -append 'its-baser'
+>  groups = its
+>  
+> +[its-trigger]
+> +file = gic.flat
+> +smp = $MAX_SMP
+> +extra_params = -machine gic-version=3 -append 'its-trigger'
+> +groups = its
+> +
+>  # Test PSCI emulation
+>  [psci]
+>  file = psci.flat
+> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
+> index 463174f..7d6f8fd 100644
+> --- a/lib/arm/asm/gic-v3-its.h
+> +++ b/lib/arm/asm/gic-v3-its.h
+> @@ -123,6 +123,16 @@ struct its_data {
+>  	u32 nr_collections;	/* Allocated Collections */
+>  };
+>  
+> +struct its_event {
+> +	int cpu_id;
+> +	int lpi_id;
+> +};
+> +
+> +struct its_stats {
+> +	struct its_event expected;
+> +	struct its_event observed;
+> +};
+
+These structures belong in arm/gic.c as they are unit test structions and
+driver structures.
 
 > +
-> +}
+>  extern struct its_data its_data;
+>  
+>  #define gicv3_its_base()		(its_data.base)
+> @@ -139,6 +149,10 @@ extern void gicv3_rdist_ctrl_lpi(u32 redist, bool set);
+>  extern void its_enable_defaults(void);
+>  extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
+>  extern struct its_collection *its_create_collection(u32 col_id, u32 target_pe);
+> +extern struct its_collection *its_create_collection(u32 col_id, u32 target);
+
+Extra definition of its_create_collection?
+
 > +
-> +static void its_build_mapc_cmd(struct its_cmd_block *cmd,
-> +			       struct its_cmd_desc *desc)
-> +{
-> +	its_encode_cmd(cmd, GITS_CMD_MAPC);
-> +	its_encode_collection(cmd, desc->its_mapc_cmd.col->col_id);
-> +	its_encode_target(cmd, desc->its_mapc_cmd.col->target_address);
-> +	its_encode_valid(cmd, desc->its_mapc_cmd.valid);
-> +
-> +	its_fixup_cmd(cmd);
-> +	report_info("MAPC col_id=%d target_addr = 0x%lx valid=%d",
-> +		    desc->its_mapc_cmd.col->col_id,
-> +		    desc->its_mapc_cmd.col->target_address,
-> +		    desc->its_mapc_cmd.valid);
-> +}
-> +
-> +static void its_build_mapti_cmd(struct its_cmd_block *cmd,
-> +				struct its_cmd_desc *desc)
-> +{
-> +	its_encode_cmd(cmd, GITS_CMD_MAPTI);
-> +	its_encode_devid(cmd, desc->its_mapti_cmd.dev->device_id);
-> +	its_encode_event_id(cmd, desc->its_mapti_cmd.event_id);
-> +	its_encode_phys_id(cmd, desc->its_mapti_cmd.phys_id);
-> +	its_encode_collection(cmd, desc->its_mapti_cmd.col_id);
-> +
-> +	its_fixup_cmd(cmd);
-> +	report_info("MAPTI dev_id=%d event_id=%d -> phys_id=%d, col_id=%d",
-> +		    desc->its_mapti_cmd.dev->device_id,
-> +		    desc->its_mapti_cmd.event_id,
-> +		    desc->its_mapti_cmd.phys_id,
-> +		    desc->its_mapti_cmd.col_id);
-> +}
-> +
-> +static void its_build_invall_cmd(struct its_cmd_block *cmd,
-> +			      struct its_cmd_desc *desc)
-> +{
-> +	its_encode_cmd(cmd, GITS_CMD_INVALL);
-> +	its_encode_collection(cmd, desc->its_invall_cmd.col->col_id);
-> +
-> +	its_fixup_cmd(cmd);
-> +	report_info("INVALL col_id=%d", desc->its_invall_cmd.col->col_id);
-> +}
-> +
-> +static void its_build_clear_cmd(struct its_cmd_block *cmd,
-> +				struct its_cmd_desc *desc)
-> +{
-> +	its_encode_cmd(cmd, GITS_CMD_CLEAR);
-> +	its_encode_devid(cmd, desc->its_clear_cmd.dev->device_id);
-> +	its_encode_event_id(cmd, desc->its_clear_cmd.event_id);
-> +
-> +	its_fixup_cmd(cmd);
-> +	report_info("CLEAR col_id=%d", desc->its_invall_cmd.col->col_id);
-> +}
-> +
-> +static void its_build_discard_cmd(struct its_cmd_block *cmd,
-> +				  struct its_cmd_desc *desc)
-> +{
-> +	its_encode_cmd(cmd, GITS_CMD_DISCARD);
-> +	its_encode_devid(cmd, desc->its_discard_cmd.dev->device_id);
-> +	its_encode_event_id(cmd, desc->its_discard_cmd.event_id);
-> +
-> +	its_fixup_cmd(cmd);
-> +	report_info("DISCARD col_id=%d", desc->its_invall_cmd.col->col_id);
-> +}
-> +
-> +static void its_build_inv_cmd(struct its_cmd_block *cmd,
-> +			      struct its_cmd_desc *desc)
-> +{
-> +	its_encode_cmd(cmd, GITS_CMD_INV);
-> +	its_encode_devid(cmd, desc->its_inv_cmd.dev->device_id);
-> +	its_encode_event_id(cmd, desc->its_inv_cmd.event_id);
-> +
-> +	its_fixup_cmd(cmd);
-> +	report_info("INV dev_id=%d event_id=%d",
-> +		    desc->its_inv_cmd.dev->device_id,
-> +		    desc->its_inv_cmd.event_id);
-> +}
-> +
-> +static void its_build_int_cmd(struct its_cmd_block *cmd,
-> +			      struct its_cmd_desc *desc)
-> +{
-> +	its_encode_cmd(cmd, GITS_CMD_INT);
-> +	its_encode_devid(cmd, desc->its_int_cmd.dev->device_id);
-> +	its_encode_event_id(cmd, desc->its_int_cmd.event_id);
-> +
-> +	its_fixup_cmd(cmd);
-> +	report_info("INT dev_id=%d event_id=%d",
-> +		    desc->its_int_cmd.dev->device_id,
-> +		    desc->its_int_cmd.event_id);
-> +}
-> +
-> +static void its_build_sync_cmd(struct its_cmd_block *cmd,
-> +			       struct its_cmd_desc *desc)
-> +{
-> +	its_encode_cmd(cmd, GITS_CMD_SYNC);
-> +	its_encode_target(cmd, desc->its_sync_cmd.col->target_address);
-> +	its_fixup_cmd(cmd);
-> +	report_info("SYNC target_addr = 0x%lx",
-> +		    desc->its_sync_cmd.col->target_address);
-> +}
-> +
-> +static void its_build_movi_cmd(struct its_cmd_block *cmd,
-> +			       struct its_cmd_desc *desc)
-> +{
-> +	its_encode_cmd(cmd, GITS_CMD_MOVI);
-> +	its_encode_devid(cmd, desc->its_movi_cmd.dev->device_id);
-> +	its_encode_event_id(cmd, desc->its_movi_cmd.event_id);
-> +	its_encode_collection(cmd, desc->its_movi_cmd.col->col_id);
-> +
-> +	its_fixup_cmd(cmd);
-> +	report_info("MOVI dev_id=%d event_id = %d col_id=%d",
-> +		    desc->its_movi_cmd.dev->device_id,
-> +		    desc->its_movi_cmd.event_id,
-> +		    desc->its_movi_cmd.col->col_id);
-> +}
-> +
-> +void its_send_mapd(struct its_device *dev, int valid)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_mapd_cmd.dev = dev;
-> +	desc.its_mapd_cmd.valid = !!valid;
-> +
-> +	its_send_single_command(its_build_mapd_cmd, &desc);
-> +}
-> +
-> +void its_send_mapc(struct its_collection *col, int valid)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_mapc_cmd.col = col;
-> +	desc.its_mapc_cmd.valid = !!valid;
-> +
-> +	its_send_single_command(its_build_mapc_cmd, &desc);
-> +}
-> +
-> +void its_send_mapti(struct its_device *dev, u32 irq_id,
-> +		    u32 event_id, struct its_collection *col)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_mapti_cmd.dev = dev;
-> +	desc.its_mapti_cmd.phys_id = irq_id;
-> +	desc.its_mapti_cmd.event_id = event_id;
-> +	desc.its_mapti_cmd.col_id = col->col_id;
-> +
-> +	its_send_single_command(its_build_mapti_cmd, &desc);
-> +}
-> +
-> +void its_send_int(struct its_device *dev, u32 event_id)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_int_cmd.dev = dev;
-> +	desc.its_int_cmd.event_id = event_id;
-> +
-> +	its_send_single_command(its_build_int_cmd, &desc);
-> +}
-> +
-> +void its_send_movi(struct its_device *dev,
-> +		   struct its_collection *col, u32 id)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_movi_cmd.dev = dev;
-> +	desc.its_movi_cmd.col = col;
-> +	desc.its_movi_cmd.event_id = id;
-> +
-> +	its_send_single_command(its_build_movi_cmd, &desc);
-> +}
-> +
-> +void its_send_invall(struct its_collection *col)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_invall_cmd.col = col;
-> +
-> +	its_send_single_command(its_build_invall_cmd, &desc);
-> +}
-> +
-> +void its_send_inv(struct its_device *dev, u32 event_id)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_inv_cmd.dev = dev;
-> +	desc.its_inv_cmd.event_id = event_id;
-> +
-> +	its_send_single_command(its_build_inv_cmd, &desc);
-> +}
-> +
-> +void its_send_discard(struct its_device *dev, u32 event_id)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_discard_cmd.dev = dev;
-> +	desc.its_discard_cmd.event_id = event_id;
-> +
-> +	its_send_single_command(its_build_discard_cmd, &desc);
-> +}
-> +
-> +void its_send_clear(struct its_device *dev, u32 event_id)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_clear_cmd.dev = dev;
-> +	desc.its_clear_cmd.event_id = event_id;
-> +
-> +	its_send_single_command(its_build_clear_cmd, &desc);
-> +}
-> +
-> +void its_send_sync(struct its_collection *col)
-> +{
-> +	struct its_cmd_desc desc;
-> +
-> +	desc.its_sync_cmd.col = col;
-> +
-> +	its_send_single_command(its_build_sync_cmd, &desc);
-> +}
-> +
+> +extern void set_lpi_config(int n, u8 val);
+
+Please rename: lpi_set_config
+
+> +extern u8 get_lpi_config(int n);
+
+get_lpi_config doesn't seem to exist.
+
+>  
+>  extern void its_send_mapd(struct its_device *dev, int valid);
+>  extern void its_send_mapc(struct its_collection *col, int valid);
 > -- 
 > 2.20.1
 >
 
 Thanks,
 drew 
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

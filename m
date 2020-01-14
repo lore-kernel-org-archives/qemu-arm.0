@@ -1,180 +1,273 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5270695lff;
-        Tue, 14 Jan 2020 01:30:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxdFH9hkQlXjTlbFsa5iYKwnXYCGMnjbBlpupkuL2OiKT09Menbmc2tsen5hQ64yTr8bto5
-X-Received: by 2002:a17:906:4749:: with SMTP id j9mr20775027ejs.132.1578994256280;
-        Tue, 14 Jan 2020 01:30:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578994256; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5271965lff;
+        Tue, 14 Jan 2020 01:32:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzSkDmtvUeDZLjisK9yBtdWjbfsDARmRT49ijyRPPaVLb4a8mEmMQ5OzFbJc7zuLgvQJUv2
+X-Received: by 2002:ad4:4912:: with SMTP id bh18mr16125296qvb.50.1578994328980;
+        Tue, 14 Jan 2020 01:32:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578994328; cv=none;
         d=google.com; s=arc-20160816;
-        b=QdqFSX22RmnxcKdZq1tELCZZFNMeHolXkj74D+JRvy7MKDoolhpW4AizfLgXkdToJC
-         plLj728rqyfquy8a+raH2VOdZfj17IizGe3u1hNkspDN2HpSqIP1iQhGFDwTIB+u9EcP
-         7UbkblL4VVMcU+M3MDvzm2Np16AZ4rYgQMyDH49gjIF8e9Yl5hvQzRUxc/o665Q8+AOc
-         QIt2QKhBEv25+9cw5oiLLHqB3x6UE7V9f8FCUh6KcVMMR6MU8x3WuoX6rKYe1ivUbofd
-         b9SWxiV4Xsk1lx9k4/Zlj5O7OQTT5sQkJ01QFxAIeCObZONRhCX//4cE3vuJsFWjMQ44
-         kNbw==
+        b=SA+X/L8UiXJITkfpBcteZ9Cxc4eAha4HVez8DoSOmxkBDluY8rhYv4A4qH1RYkT7/3
+         mCMERgTKh3lipfZzxCmooClesASYRDYT/BTAwtw/0x7PX/41OJ/TvsOJoaXsxnISJ8KL
+         VeydsrLter/CiemTZTclxzgE7qwkHp3PzDIcbDySlplKM81rCmG1KZ8Vm7rctQc1zgbD
+         BL56Ca+54r0AIfZDza07rz8bV2cOizgrm2mbXL/vVahp571sy80ULShAkGfhJAno71Ay
+         9LfpHvCks2Y9J83hj5isFEQsN1/tMl0VMKdejyk8F2okicbi7pcH/itmPiwHhYuQ7LbD
+         v+Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8PL3njRMZwxs9uKSpCL5NJoIzl7l80qAcMLLGRwuXdY=;
-        b=Ht22XDr9VNnL+NIthbSATkwjnvL84zAmAFS63ks+XfUJ2BSjSQOqIP8DHVdtyxEpD+
-         y20M50aj3VM1OdKmaMGxQ4mDDScavcErqoDVHrXrV0iG4143rVN2bD+M1Zuvo+wzeQuh
-         aZXYnCjVoddzOzKtNOzNnFKQHHh9v4j+yzEhl1AIfRc5txksKKVEx1ZuOBjoOy/u/rXS
-         SpfPSS41YfP8vT7/f+nzHHAyebNXM+A1cjOxLNK3lI54ZdeQfTOxHoRTbOx9JvppGBTd
-         YrFkJN1KZ1MnIkVgOEMRAi7/RqpZxrAqgB+1LOq21eA2iSDJYB0V93z58+GuowoTtbg4
-         2UlQ==
+        bh=LsOB1plsrf+L0MjZkIhW9gkC1Fbo6Je4OwCPKg11rHk=;
+        b=camGOUw7oHyTUAWac2jAfbMGojetE/oB1HAtKIi/hMvru2OMST21t7V2N6FyYbyVSo
+         U/bLQBNqbofuWQQ/a4oRp7jttz+FTHYfRwkBN10rDRKvz1s+m8Z+NqbZGIVIL/CTG1HZ
+         m0WUNYa+VSqrfx4NEwQ60j52uXoKVbzgPSpQbECTQrvVFWRHSBLfoE2feNpBZlOLAs5y
+         ezIDUXkcoOvbfVDuL1RFBWAe9H2sgIB5zA2blpRvJ9VAdaazeWASl1oQ5X+qPQvts/rD
+         ZOYXoxXjZ8HTw1dcAMvO2ToB31LOwnd5BCpC6Y9ZM/DXEJJhDJR7tde0BBYCGEuwawTi
+         1MKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=URtAKKJV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KCbDkXro;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u2si9371370edy.95.2020.01.14.01.30.56
+        by mx.google.com with ESMTPS id d10si7734681qtk.352.2020.01.14.01.32.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 01:30:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Jan 2020 01:32:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=URtAKKJV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KCbDkXro;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35192 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irIXG-0001x5-Hz
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 04:30:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57620)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irIYR-00037k-J8
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 04:32:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57422)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irIUL-0006R6-A7
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 04:27:54 -0500
+ (envelope-from <quintela@redhat.com>) id 1irITq-0005nC-5j
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:27:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irIUK-0006a9-6i
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 04:27:53 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:34457
+ (envelope-from <quintela@redhat.com>) id 1irITo-0006Tb-N5
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:27:22 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:52281
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irIUK-0006Zm-1f
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 04:27:52 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irITo-0006TL-IO
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:27:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578994071;
+ s=mimecast20190719; t=1578994040;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8PL3njRMZwxs9uKSpCL5NJoIzl7l80qAcMLLGRwuXdY=;
- b=URtAKKJVfwjAFr7BcsB7aHHdbrqLEZlOrs/QKl/Xa6m71H1UFQrrDAk2b9yJNLeezPg2ce
- 8c7PncoLg6zSgIrEeePfLB9+01kAwvNlsC6tl33FpYLm48q3VbO+clR09UentYG90kAH6K
- 4vIsBuLKBq/4IN+gvwaMCcEOZcyORpM=
+ bh=LsOB1plsrf+L0MjZkIhW9gkC1Fbo6Je4OwCPKg11rHk=;
+ b=KCbDkXro6PYVoLhvpMA23bXVPbqf6JgQUq5QR8o17D7Nk4pQ7q0iO9ZygHgD9Lw8R9OMO1
+ ervvPorSFZr7/wS3kuNW5C0xHbUdc7HK29MO4tsYDAhB+XMwhYRn6NdR9QBJzBg5SaEeMG
+ pDJWJuYqV1YXnTe0elVGrNhHcYnvUZ0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-59-V8m4RVr7NXyD9i9prgXVDg-1; Tue, 14 Jan 2020 04:27:50 -0500
+ us-mta-285-ENoeIc8DNPCn29fr3Ms_JA-1; Tue, 14 Jan 2020 04:27:13 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 14E55801E6C;
- Tue, 14 Jan 2020 09:27:48 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 984B1107ACC4;
+ Tue, 14 Jan 2020 09:27:11 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7E4B3384;
- Tue, 14 Jan 2020 09:27:43 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5566E26181;
+ Tue, 14 Jan 2020 09:27:02 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 12/29] migration: add savevm_state_handler_remove()
-Date: Tue, 14 Jan 2020 10:25:49 +0100
-Message-Id: <20200114092606.1761-13-quintela@redhat.com>
+Subject: [PULL 08/29] migration: Rate limit inside host pages
+Date: Tue, 14 Jan 2020 10:25:45 +0100
+Message-Id: <20200114092606.1761-9-quintela@redhat.com>
 In-Reply-To: <20200114092606.1761-1-quintela@redhat.com>
 References: <20200114092606.1761-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: V8m4RVr7NXyD9i9prgXVDg-1
+X-MC-Unique: ENoeIc8DNPCn29fr3Ms_JA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
- Jason Wang <jasowang@redhat.com>, Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Scott Cheloha <cheloha@linux.vnet.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Andrzej Zaborowski <balrogg@gmail.com>, Richard Henderson <rth@twiddle.net>,
- Stefan Berger <stefanb@linux.ibm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yXKrYYMZosto
+ Richard Henderson <rth@twiddle.net>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ qemu-arm@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc@nongnu.org, Lin Ma <LMa@suse.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: po7VuDHzMUq/
 
-From: Scott Cheloha <cheloha@linux.vnet.ibm.com>
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-Create a function to abstract common logic needed when removing a
-SaveStateEntry element from the savevm_state.handlers queue.
+When using hugepages, rate limiting is necessary within each huge
+page, since a 1G huge page can take a significant time to send, so
+you end up with bursty behaviour.
 
-For now we just remove the element.  Soon it will involve additional
-cleanup.
-
-Signed-off-by: Scott Cheloha <cheloha@linux.vnet.ibm.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Fixes: 4c011c37ecb3 ("postcopy: Send whole huge pages")
+Reported-by: Lin Ma <LMa@suse.com>
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Peter Xu <peterx@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/savevm.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ migration/migration.c  | 57 ++++++++++++++++++++++++------------------
+ migration/migration.h  |  1 +
+ migration/ram.c        |  2 ++
+ migration/trace-events |  4 +--
+ 4 files changed, 37 insertions(+), 27 deletions(-)
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 59efc1981d..30d980caa2 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -725,6 +725,11 @@ static void savevm_state_handler_insert(SaveStateEntry=
- *nse)
-     }
+diff --git a/migration/migration.c b/migration/migration.c
+index 354ad072fa..27500d09a9 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -3224,6 +3224,37 @@ void migration_consume_urgent_request(void)
+     qemu_sem_wait(&migrate_get_current()->rate_limit_sem);
  }
 =20
-+static void savevm_state_handler_remove(SaveStateEntry *se)
++/* Returns true if the rate limiting was broken by an urgent request */
++bool migration_rate_limit(void)
 +{
-+    QTAILQ_REMOVE(&savevm_state.handlers, se, entry);
++    int64_t now =3D qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
++    MigrationState *s =3D migrate_get_current();
++
++    bool urgent =3D false;
++    migration_update_counters(s, now);
++    if (qemu_file_rate_limit(s->to_dst_file)) {
++        /*
++         * Wait for a delay to do rate limiting OR
++         * something urgent to post the semaphore.
++         */
++        int ms =3D s->iteration_start_time + BUFFER_DELAY - now;
++        trace_migration_rate_limit_pre(ms);
++        if (qemu_sem_timedwait(&s->rate_limit_sem, ms) =3D=3D 0) {
++            /*
++             * We were woken by one or more urgent things but
++             * the timedwait will have consumed one of them.
++             * The service routine for the urgent wake will dec
++             * the semaphore itself for each item it consumes,
++             * so add this one we just eat back.
++             */
++            qemu_sem_post(&s->rate_limit_sem);
++            urgent =3D true;
++        }
++        trace_migration_rate_limit_post(urgent);
++    }
++    return urgent;
 +}
 +
- /* TODO: Individual devices generally have very little idea about the rest
-    of the system, so instance_id should be removed/replaced.
-    Meanwhile pass -1 as instance_id if you do not already have a clearly
-@@ -777,7 +782,7 @@ void unregister_savevm(VMStateIf *obj, const char *idst=
-r, void *opaque)
+ /*
+  * Master migration thread on the source VM.
+  * It drives the migration and pumps the data down the outgoing channel.
+@@ -3290,8 +3321,6 @@ static void *migration_thread(void *opaque)
+     trace_migration_thread_setup_complete();
 =20
-     QTAILQ_FOREACH_SAFE(se, &savevm_state.handlers, entry, new_se) {
-         if (strcmp(se->idstr, id) =3D=3D 0 && se->opaque =3D=3D opaque) {
--            QTAILQ_REMOVE(&savevm_state.handlers, se, entry);
-+            savevm_state_handler_remove(se);
-             g_free(se->compat);
-             g_free(se);
+     while (migration_is_active(s)) {
+-        int64_t current_time;
+-
+         if (urgent || !qemu_file_rate_limit(s->to_dst_file)) {
+             MigIterateState iter_state =3D migration_iteration_run(s);
+             if (iter_state =3D=3D MIG_ITERATE_SKIP) {
+@@ -3318,29 +3347,7 @@ static void *migration_thread(void *opaque)
+             update_iteration_initial_status(s);
          }
-@@ -841,7 +846,7 @@ void vmstate_unregister(VMStateIf *obj, const VMStateDe=
-scription *vmsd,
 =20
-     QTAILQ_FOREACH_SAFE(se, &savevm_state.handlers, entry, new_se) {
-         if (se->vmsd =3D=3D vmsd && se->opaque =3D=3D opaque) {
--            QTAILQ_REMOVE(&savevm_state.handlers, se, entry);
-+            savevm_state_handler_remove(se);
-             g_free(se->compat);
-             g_free(se);
-         }
+-        current_time =3D qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
+-
+-        migration_update_counters(s, current_time);
+-
+-        urgent =3D false;
+-        if (qemu_file_rate_limit(s->to_dst_file)) {
+-            /* Wait for a delay to do rate limiting OR
+-             * something urgent to post the semaphore.
+-             */
+-            int ms =3D s->iteration_start_time + BUFFER_DELAY - current_ti=
+me;
+-            trace_migration_thread_ratelimit_pre(ms);
+-            if (qemu_sem_timedwait(&s->rate_limit_sem, ms) =3D=3D 0) {
+-                /* We were worken by one or more urgent things but
+-                 * the timedwait will have consumed one of them.
+-                 * The service routine for the urgent wake will dec
+-                 * the semaphore itself for each item it consumes,
+-                 * so add this one we just eat back.
+-                 */
+-                qemu_sem_post(&s->rate_limit_sem);
+-                urgent =3D true;
+-            }
+-            trace_migration_thread_ratelimit_post(urgent);
+-        }
++        urgent =3D migration_rate_limit();
+     }
+=20
+     trace_migration_thread_after_loop();
+diff --git a/migration/migration.h b/migration/migration.h
+index 79b3dda146..aa9ff6f27b 100644
+--- a/migration/migration.h
++++ b/migration/migration.h
+@@ -341,5 +341,6 @@ int foreach_not_ignored_block(RAMBlockIterFunc func, vo=
+id *opaque);
+=20
+ void migration_make_urgent_request(void);
+ void migration_consume_urgent_request(void);
++bool migration_rate_limit(void);
+=20
+ #endif
+diff --git a/migration/ram.c b/migration/ram.c
+index 17cd8d524b..1ec5c10561 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -2639,6 +2639,8 @@ static int ram_save_host_page(RAMState *rs, PageSearc=
+hStatus *pss,
+=20
+         pages +=3D tmppages;
+         pss->page++;
++        /* Allow rate limiting to happen in the middle of huge pages */
++        migration_rate_limit();
+     } while ((pss->page & (pagesize_bits - 1)) &&
+              offset_in_ramblock(pss->block, pss->page << TARGET_PAGE_BITS)=
+);
+=20
+diff --git a/migration/trace-events b/migration/trace-events
+index 6dee7b5389..2f9129e213 100644
+--- a/migration/trace-events
++++ b/migration/trace-events
+@@ -138,12 +138,12 @@ migrate_send_rp_recv_bitmap(char *name, int64_t size)=
+ "block '%s' size 0x%"PRIi6
+ migration_completion_file_err(void) ""
+ migration_completion_postcopy_end(void) ""
+ migration_completion_postcopy_end_after_complete(void) ""
++migration_rate_limit_pre(int ms) "%d ms"
++migration_rate_limit_post(int urgent) "urgent: %d"
+ migration_return_path_end_before(void) ""
+ migration_return_path_end_after(int rp_error) "%d"
+ migration_thread_after_loop(void) ""
+ migration_thread_file_err(void) ""
+-migration_thread_ratelimit_pre(int ms) "%d ms"
+-migration_thread_ratelimit_post(int urgent) "urgent: %d"
+ migration_thread_setup_complete(void) ""
+ open_return_path_on_source(void) ""
+ open_return_path_on_source_continue(void) ""
 --=20
 2.24.1
 

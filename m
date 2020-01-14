@@ -1,191 +1,165 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5412761lff;
-        Tue, 14 Jan 2020 04:01:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy5aIeqPE/bc1G9S7Z49paLd7zG6e16ODmdK47ZsHXBtHvC8OJoONbtW9Oyph/elD2UiuEE
-X-Received: by 2002:ae9:e40d:: with SMTP id q13mr21719099qkc.2.1579003296453;
-        Tue, 14 Jan 2020 04:01:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579003296; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5412983lff;
+        Tue, 14 Jan 2020 04:01:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzAQnFoe70yPRxiPfDJwfQ4+ZxeGliJ1C+yxt4uWaVbdrFbSP2vqDElVmExDwfRuxIBsu4S
+X-Received: by 2002:ae9:e41a:: with SMTP id q26mr21328334qkc.288.1579003305563;
+        Tue, 14 Jan 2020 04:01:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579003305; cv=none;
         d=google.com; s=arc-20160816;
-        b=LXJ7sl5ysygZWeGftL2Mc5g+PHDzMT728wc4Wyf2O9hpVZc5L9ttGZB0ixmAeoALug
-         8vxPh+/RljGbGnXGrHhowrDhv4XG7k7tsXa9Tkqk+qMFePatSG8gFpuRNtrDseLBD7/b
-         l3NF9o/XWTzBhNUoFB8xH9tnmw+9/dkhsPerKFAj5q7DWgXqMbBxU+w/BKJSkz6r0oTr
-         e7oGXmz6BIVxuxrMOMjbdCaFweUAvC6cu5/alto7Io+8vhtr8A262tdCp74rjgRYlNGO
-         hsGyGYKmuaNJ1ndVEj6t7+5rlb/ouver5wEriVgTR8TJAVp5tDx67otNNEQOCAghYDPK
-         vM4g==
+        b=oah+DE43njUyErylM6zhR13ThMwa8DAnXu+0DS+MYsQw5/AHwJwfz55xYn2Zh/PODR
+         3SeMBAeLaBbHYLy5NyiIW7+JFMbd2cCfO/yaOg/hzxzaPXfMOvHzGpYBFoXLrstgJWPI
+         Qs0lXMWoh8B9Is1sTlP63AUrHSO0YwE2srlr2A2JCgrkDgopmIh2gjp+Ty1RCb0zhXci
+         /W9/r/F0dvB1WKfbjnc4S92jeE4JOoCsocQ4CaNx366BeZJm1037wM+OZhbDnL1yQX4s
+         9RkgRyGyWO63bq89wbtNSpgxrK22cO1LHU4wWj2vFy/iIid7RzHfTeGPN9MAHdD4fklp
+         MWBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WBzhg+5JJy6m9TZjuc8ccJtIryAwYcan58WTVlhEz18=;
-        b=wI3J3OMaDBqyHFzXLKv62sgcS80rqSqW9ZZTlRcccKd00wLEWNJCb/of1gZrg6tVH5
-         elRiyARy6cldMrOx/S6gqsc97L1EyRM/s82ODcsoydft6LZt81iLtjbB9YELwwwT8EJE
-         dLTpy7BU03/nX4IDxoTM1TklCgujlWsmzVKaSoMVtszHPqhSZ5+Myoa7VkBU5wKueHXu
-         yEC1SIF9GW+/xUblzSCOykCRUgrfIV/mxooqCItJzh++l2P04xfONUZV125eDVUZC770
-         DdKgse+EPTIdUilZLnY7awo8/XwF14eahahSRyZvVKUA9FhY8OmkEbkIEGUpfc9UBfJg
-         PgQA==
+        bh=iprvAOa2cyTKcfIq8nOi5Ry3fqn5kNfZVkcEZq0n1vM=;
+        b=iYO4S2aE2BygSW16ohdawcOowPMWLTfoY4TUTNmnNopc+2uIXD9LkhquU8HX/LR3ky
+         ngUpPCdpjfy2TssJ6BDM2+9zdFf6oAq1J8Rdh3Gyqy0wKVBIcD4FRtSqajLMgbX6eTJk
+         Yd5GfEDS/PEwShT+nSzr7YZfbHiNkfApSOsua0qpCC939rCflYwjP+LIE6z21aSmSVMz
+         dVh34BpyLtWwmJxV40Btauj0FObWee8QYTK3EIzrbYoRcSyYRJRXwMQ37tyyqaooY11i
+         NhecYx1Hiz6XAG7HjUiLnxEb6hd8PLEH0cpNbDCl8uZfChTmcqj6z6uLngZoiStQcJnA
+         QB2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EpzVXKPA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FyeLFEon;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2si8664323qka.48.2020.01.14.04.01.35
+        by mx.google.com with ESMTPS id t2si8627450qkf.254.2020.01.14.04.01.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 04:01:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Jan 2020 04:01:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EpzVXKPA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FyeLFEon;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38068 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38086 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irKt5-0005aR-10
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 07:01:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56384)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irKtE-0006QT-Nh
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 07:01:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56345)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irKac-00087D-M2
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 06:42:34 -0500
+ (envelope-from <quintela@redhat.com>) id 1irKaX-0007vM-3Y
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:42:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irKaY-0003go-KS
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 06:42:30 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53570
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <quintela@redhat.com>) id 1irKaT-0003fX-DA
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:42:24 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:37551
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irKaY-0003gU-GZ
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 06:42:26 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irKaT-0003fL-8O
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:42:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579002146;
+ s=mimecast20190719; t=1579002140;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WBzhg+5JJy6m9TZjuc8ccJtIryAwYcan58WTVlhEz18=;
- b=EpzVXKPANehxNLQRmi0gXpfYhhkb4nciQMdcChIZ8Dy6/SXAUZBKvLqYFDmU4ulPJVEPRR
- Xy5a6J+1D/hUinBi5k7tcFu57Z+Z7lT1vlQKCQU6qIrmkFKsEgN6IIwevyCkisM0sJHFtO
- H/TbbDjxSfIKbLGaAjGGpjkLx+kdg1I=
+ bh=iprvAOa2cyTKcfIq8nOi5Ry3fqn5kNfZVkcEZq0n1vM=;
+ b=FyeLFEonRqP3WnhWoLqw4/PTTWciLlM14RDh0mo9lZfHDAEWUV+mUGgqHKV3DoUvlFi4nM
+ vr4WfJLycGV6rg8zHK4YPfxHTfv8aIPOOddeqED6glhQ2vx/KgqnQ8mHMo/0rEqzBGD+tt
+ izqsUMuoKbIpGwd0+T8e3bYem0aIICQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-312-E1gc8R09NzWy2FDyzEX3GQ-1; Tue, 14 Jan 2020 06:42:24 -0500
+ us-mta-211--LqWf3sYMiq1Di-ceF2-zA-1; Tue, 14 Jan 2020 06:42:19 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 98F54107ACC4;
- Tue, 14 Jan 2020 11:42:22 +0000 (UTC)
-Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EBC115DA70;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9689F800D48;
  Tue, 14 Jan 2020 11:42:17 +0000 (UTC)
+Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A155D5DA70;
+ Tue, 14 Jan 2020 11:42:08 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 23/30] migration/multifd: fix nullptr access in terminating
- multifd threads
-Date: Tue, 14 Jan 2020 12:39:19 +0100
-Message-Id: <20200114113926.3556-24-quintela@redhat.com>
+Subject: [PULL 22/30] migration/multifd: not use multifd during postcopy
+Date: Tue, 14 Jan 2020 12:39:18 +0100
+Message-Id: <20200114113926.3556-23-quintela@redhat.com>
 In-Reply-To: <20200114113926.3556-1-quintela@redhat.com>
 References: <20200114113926.3556-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: E1gc8R09NzWy2FDyzEX3GQ-1
+X-MC-Unique: -LqWf3sYMiq1Di-ceF2-zA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>, Jason Wang <jasowang@redhat.com>,
- Jiahui Cen <cenjiahui@huawei.com>, Juan Quintela <quintela@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ying Fang <fangying1@huawei.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Richard Henderson <rth@twiddle.net>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Corey Minyard <cminyard@mvista.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Richard Henderson <rth@twiddle.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Jason Wang <jasowang@redhat.com>,
  Stefan Berger <stefanb@linux.ibm.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p9ilAWvpht+8
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hQ5YfV7iw6g1
 
-From: Jiahui Cen <cenjiahui@huawei.com>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-One multifd channel will shutdown all the other multifd's IOChannel when it
-fails to receive an IOChannel. In this senario, if some multifds had not
-received its IOChannel yet, it would try to shutdown its IOChannel which co=
-uld
-cause nullptr access at qio_channel_shutdown.
+We don't support multifd during postcopy, but user still could enable
+both multifd and postcopy. This leads to migration failure.
 
-Here is the coredump stack:
-    #0  object_get_class (obj=3Dobj@entry=3D0x0) at qom/object.c:908
-    #1  0x00005563fdbb8f4a in qio_channel_shutdown (ioc=3D0x0, how=3DQIO_CH=
-ANNEL_SHUTDOWN_BOTH, errp=3D0x0) at io/channel.c:355
-    #2  0x00005563fd7b4c5f in multifd_recv_terminate_threads (err=3D<optimi=
-zed out>) at migration/ram.c:1280
-    #3  0x00005563fd7bc019 in multifd_recv_new_channel (ioc=3Dioc@entry=3D0=
-x556400255610, errp=3Derrp@entry=3D0x7ffec07dce00) at migration/ram.c:1478
-    #4  0x00005563fda82177 in migration_ioc_process_incoming (ioc=3Dioc@ent=
-ry=3D0x556400255610, errp=3Derrp@entry=3D0x7ffec07dce30) at migration/migra=
-tion.c:605
-    #5  0x00005563fda8567d in migration_channel_process_incoming (ioc=3D0x5=
-56400255610) at migration/channel.c:44
-    #6  0x00005563fda83ee0 in socket_accept_incoming_migration (listener=3D=
-0x5563fff6b920, cioc=3D0x556400255610, opaque=3D<optimized out>) at migrati=
-on/socket.c:166
-    #7  0x00005563fdbc25cd in qio_net_listener_channel_func (ioc=3D<optimiz=
-ed out>, condition=3D<optimized out>, opaque=3D<optimized out>) at io/net-l=
-istener.c:54
-    #8  0x00007f895b6fe9a9 in g_main_context_dispatch () from /usr/lib64/li=
-bglib-2.0.so.0
-    #9  0x00005563fdc18136 in glib_pollfds_poll () at util/main-loop.c:218
-    #10 0x00005563fdc181b5 in os_host_main_loop_wait (timeout=3D1000000000)=
- at util/main-loop.c:241
-    #11 0x00005563fdc183a2 in main_loop_wait (nonblocking=3Dnonblocking@ent=
-ry=3D0) at util/main-loop.c:517
-    #12 0x00005563fd8edb37 in main_loop () at vl.c:1791
-    #13 0x00005563fd74fd45 in main (argc=3D<optimized out>, argv=3D<optimiz=
-ed out>, envp=3D<optimized out>) at vl.c:4473
+Skip multifd during postcopy.
 
-To fix it up, let's check p->c before calling qio_channel_shutdown.
-
-Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
-Signed-off-by: Ying Fang <fangying1@huawei.com>
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ migration/ram.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/migration/ram.c b/migration/ram.c
-index d4f33a4f2f..278b2ff87a 100644
+index a05448c0c9..d4f33a4f2f 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -1308,7 +1308,9 @@ static void multifd_recv_terminate_threads(Error *err=
-)
-            - normal quit, i.e. everything went fine, just finished
-            - error quit: We close the channels so the channel threads
-              finish the qio_channel_read_all_eof() */
--        qio_channel_shutdown(p->c, QIO_CHANNEL_SHUTDOWN_BOTH, NULL);
-+        if (p->c) {
-+            qio_channel_shutdown(p->c, QIO_CHANNEL_SHUTDOWN_BOTH, NULL);
-+        }
-         qemu_mutex_unlock(&p->mutex);
+@@ -2587,10 +2587,13 @@ static int ram_save_target_page(RAMState *rs, PageS=
+earchStatus *pss,
      }
- }
+=20
+     /*
+-     * do not use multifd for compression as the first page in the new
+-     * block should be posted out before sending the compressed page
++     * Do not use multifd for:
++     * 1. Compression as the first page in the new block should be posted =
+out
++     *    before sending the compressed page
++     * 2. In postcopy as one whole host page should be placed
+      */
+-    if (!save_page_use_compression(rs) && migrate_use_multifd()) {
++    if (!save_page_use_compression(rs) && migrate_use_multifd()
++        && !migration_in_postcopy()) {
+         return ram_save_multifd_page(rs, block, offset);
+     }
+=20
 --=20
 2.24.1
 

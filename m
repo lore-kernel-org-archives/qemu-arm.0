@@ -1,98 +1,98 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5469205lff;
-        Tue, 14 Jan 2020 04:55:17 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwfjHRCdGD34X/TFvqnGGYqd3EuYstxVQygtXc0q9yti0R8Ym9MdUcGIevW8vlXJztjXe37
-X-Received: by 2002:ad4:40c7:: with SMTP id x7mr16923723qvp.176.1579006517537;
-        Tue, 14 Jan 2020 04:55:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579006517; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5470480lff;
+        Tue, 14 Jan 2020 04:56:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyuGk6jYmm+85h/g+9S+CqGiftGuPfbrWa4BbVgo5SlsdJCdxcnSCy8DPs28st9Rqu1U892
+X-Received: by 2002:aed:2a54:: with SMTP id k20mr3475891qtf.363.1579006616581;
+        Tue, 14 Jan 2020 04:56:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579006616; cv=none;
         d=google.com; s=arc-20160816;
-        b=PnX04pBKq/F1lpNpSCfwiwGCuzf8svDoNvmom0N0X52u7mcYJUC40YpnM+PHJ81Eoa
-         Y1QLyHwSXuT0h2kwR10XuRyDGteK8tJSrVYE2XdOK1Yt49DAycGdHuqxGYpzVHFTtnXw
-         4b9Vier65d3yquyjQOuPTYG+HR9p+MSKlf14yJz800KsNMSwmXsp8QUuZ0gQsudL5PWd
-         4XmsdDKGW2U0FMB9Rdq4i3gVoh9eqGvJOZ9uspCrIQsvm0sHvNAw+yjlJbANO62djkoi
-         OHEdCZqEMbs5MPJG3UjfbU+3efAYLC+F5zZSdZ+ypnctMUV8yXsTjOUqs+6fhENeY3ma
-         dRpA==
+        b=0ngFhVMFJophLksXdp0F3nkU8ww3uOTlLJk1pNa0dT4FLJiH7ihAb9V//lSVIGVbWj
+         Pl96fTmkdTvAOONy7yEA521q9CY4hgt8nqSXcqDL6ZoLWWfBvZxN/eZqSAmhVXvbg6Ve
+         vwHaOa1Rj0fDphAYdz02sZldenLtH4WH/6PEm7TndDfLvxPOo9RhjLXvqYjfiRXB8hmw
+         6OriCZZQUHHEkhXl1OGemZfAN+D8AGXa8UBOMwQ20mDMApgqiM6FK4dFlGZv/1G8v2nN
+         hmy5g6cyxexU6RER91CjSYEtOtqjtW0NKMjyOiFHz6v5nO5XfCLUMcB0SEXuDkCQtl4w
+         UGVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=BrX1W4PqQfRCqbcGSErGINbVpX+XYhnN1Q3v/xMRPg4=;
-        b=RAjTDIpsWMyO7Cv6AYdLC/aZsrz96M4qFcfFNQfUfa6MIs7En7SXnw/z8lwi2SJ/03
-         Z6HP9jbW1UMS31JF7vpINS9IDz4MZ8venfSF3PXg8taWNg+pe0KUmnRXptjpZICl4IoR
-         tXnghHy75TCAa+UmEMyjgIBuEpk/R8+43xpkar5EmHxt8SnPbUoBPXiKy81pzPowJ2vA
-         qHvHtqQUN4XU5bEDJyO38Trv+UznpUkY2aboOLviu153yGicbSkr/pn8+v3fLJyEv+7Z
-         /5r3ejQimsp9ADYMmV3xrj2TyjDHz4dRTK6sY5RHCMJwFyErknkFd7bV2PthRFYi+tHw
-         s+Wg==
+        bh=c7WNsWxyp42yO9QERGARx6XOOlE/u8t3t0eSsw+Cvvk=;
+        b=AoLHvbqJbdsxTcQDVEqXVUVyLw01CHdgTt1KLsB/GJ1C7QbkZ5QqrYeJuZ1wSrgtxV
+         CNkqc9B0retX6HlCcbpobkZFlKr8wtCxzTriVs/FiiP2Pp+Wo8YClKxxco0d0yLSeDDW
+         MWBNNRyWfClWpGsNYAo+p1wcVLXzF5qWwl9gL4fAzB4RU3fjl+Hmb0sqLerzfbIgXTE1
+         gkHgUShqJ1gIOEaIC7zZaC/EWclmS/s6QlbXXU/ti4EFRInU4ykpSzzIu2Yc9hE3mEEx
+         dFvZ4wZ0X1Jk8zfHk6Y5kvTf5IV0wcitTLGCUTaB/zHUNC5KB5ZH3aEXxKtH9GVUlElG
+         GMJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bYzbLCIy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jIj2n9M4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w37si8239303qtb.170.2020.01.14.04.55.17
+        by mx.google.com with ESMTPS id z72si8656857qka.360.2020.01.14.04.56.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 04:55:17 -0800 (PST)
+        Tue, 14 Jan 2020 04:56:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bYzbLCIy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jIj2n9M4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38744 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38856 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irLj2-0002X2-FP
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 07:55:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40757)
+	id 1irLkd-0004F9-AJ
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 07:56:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40506)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irLi0-0001ax-Vb
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:54:16 -0500
+ (envelope-from <quintela@redhat.com>) id 1irLh6-00008u-OW
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:53:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irLhw-0001Xa-AB
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:54:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:50813
+ (envelope-from <quintela@redhat.com>) id 1irLh2-0001MX-O1
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:53:16 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20325
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLhw-0001XO-74
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:54:08 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLh2-0001M9-Kc
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:53:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579006447;
+ s=mimecast20190719; t=1579006392;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BrX1W4PqQfRCqbcGSErGINbVpX+XYhnN1Q3v/xMRPg4=;
- b=bYzbLCIyXH1UC3yJVRF5KE6qHwPjvXZiYpwmZt/rxTGpkjXGHLXpYwwrTGJo0uVYRMqjj9
- v59VIKxi+LOPe2u4joQC+y5j/2DVj6WUCUBvkpjULo5qvE0IDiGmO5yeEFSESE5gav/OOv
- Lgr7VcLU0w26c8Ffm3Qz0hjv1neuYlU=
+ bh=c7WNsWxyp42yO9QERGARx6XOOlE/u8t3t0eSsw+Cvvk=;
+ b=jIj2n9M4gaZofR91PEb6GWBU0+2KqLAmQi1EBp2KJ1hubhgM24YGhy7fjGrhsrP2850s1A
+ USS2pmJU/2S8nh0cZPKcHbPH3/lmLu6N43P3M+kXAitrpsvCo+TCGt+jhVaR6ixYGlbeM5
+ 8AANDe14QXUXhqqnFh2yXMiar3DP9Z8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-211-hHF51gW1OHyAWdDl-MgE8Q-1; Tue, 14 Jan 2020 07:54:06 -0500
+ us-mta-202-qfxjeemzNRKos2vIunwP_w-1; Tue, 14 Jan 2020 07:53:11 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 95DB5189CD13;
- Tue, 14 Jan 2020 12:54:04 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2F640477;
+ Tue, 14 Jan 2020 12:53:09 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BE94E5D9E5;
- Tue, 14 Jan 2020 12:53:57 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 87B0F5D9E5;
+ Tue, 14 Jan 2020 12:53:04 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 06/30] migration-test: ppc64: fix FORTH test program
-Date: Tue, 14 Jan 2020 13:52:30 +0100
-Message-Id: <20200114125254.4515-7-quintela@redhat.com>
+Subject: [PULL 01/30] multifd: Initialize local variable
+Date: Tue, 14 Jan 2020 13:52:25 +0100
+Message-Id: <20200114125254.4515-2-quintela@redhat.com>
 In-Reply-To: <20200114125254.4515-1-quintela@redhat.com>
 References: <20200114125254.4515-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: hHF51gW1OHyAWdDl-MgE8Q-1
+X-MC-Unique: qfxjeemzNRKos2vIunwP_w-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,61 +120,29 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sAfRdK/YCebO
+X-TUID: ewROO4AGgp+k
 
-From: Laurent Vivier <lvivier@redhat.com>
+Fill everything with zero, so the padding fields are also initialized.
 
-Commit e51e711b1bef has moved the initialization of start_address and
-end_address after the definition of the command line argument,
-where the nvramrc is initialized, and thus the loop is between 0 and 0
-rather than 1 MiB and 100 MiB.
-
-It doesn't affect the result of the test if all the tests are run in
-sequence because the two first tests don't run the loop, so the
-values are correctly initialized when we actually need them.
-
-But it hangs when we ask to run only one test, for instance:
-
-    QTEST_QEMU_BINARY=3Dppc64-softmmu/qemu-system-ppc64 \
-    tests/migration-test -m=3Dquick -p /ppc64/migration/validate_uuid_error
-
-Fixes: e51e711b1bef ("tests/migration: Add migration-test header file")
-Cc: wei@redhat.com
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
 ---
- tests/qtest/migration-test.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ migration/ram.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-index b0580dd541..26e2e77289 100644
---- a/tests/qtest/migration-test.c
-+++ b/tests/qtest/migration-test.c
-@@ -517,14 +517,14 @@ static int test_migrate_start(QTestState **from, QTes=
-tState **to,
-     } else if (strcmp(arch, "ppc64") =3D=3D 0) {
-         machine_opts =3D "vsmt=3D8";
-         memory_size =3D "256M";
-+        start_address =3D PPC_TEST_MEM_START;
-+        end_address =3D PPC_TEST_MEM_END;
-         arch_source =3D g_strdup_printf("-nodefaults "
-                                       "-prom-env 'use-nvramrc?=3Dtrue' -pr=
-om-env "
-                                       "'nvramrc=3Dhex .\" _\" begin %x %x =
-"
-                                       "do i c@ 1 + i c! 1000 +loop .\" B\"=
- 0 "
-                                       "until'", end_address, start_address=
-);
-         arch_target =3D g_strdup("");
--        start_address =3D PPC_TEST_MEM_START;
--        end_address =3D PPC_TEST_MEM_END;
-     } else if (strcmp(arch, "aarch64") =3D=3D 0) {
-         init_bootfile(bootpath, aarch64_kernel, sizeof(aarch64_kernel));
-         machine_opts =3D "virt,gic-version=3Dmax";
+diff --git a/migration/ram.c b/migration/ram.c
+index 96feb4062c..b9147bcca3 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -703,7 +703,7 @@ typedef struct {
+=20
+ static int multifd_send_initial_packet(MultiFDSendParams *p, Error **errp)
+ {
+-    MultiFDInit_t msg;
++    MultiFDInit_t msg =3D {};
+     int ret;
+=20
+     msg.magic =3D cpu_to_be32(MULTIFD_MAGIC);
 --=20
 2.24.1
 

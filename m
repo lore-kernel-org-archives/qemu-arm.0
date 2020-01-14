@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id o4sm19441416wrx.25.2020.01.14.07.09.54
+        by smtp.gmail.com with ESMTPSA id e16sm20115962wrs.73.2020.01.14.07.09.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2020 07:09:54 -0800 (PST)
+        Tue, 14 Jan 2020 07:09:56 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A72A51FF8C;
-	Tue, 14 Jan 2020 15:09:53 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 3643D1FF91;
+	Tue, 14 Jan 2020 15:09:54 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -13,442 +13,209 @@ Cc: qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Damien Hedde <damien.hedde@greensocs.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH  v5 01/22] gdbstub: make GDBState static and have common init function
-Date: Tue, 14 Jan 2020 15:09:32 +0000
-Message-Id: <20200114150953.27659-2-alex.bennee@linaro.org>
+Subject: [PATCH  v5 04/22] gdbstub: move mem_buf to GDBState and use GByteArray
+Date: Tue, 14 Jan 2020 15:09:35 +0000
+Message-Id: <20200114150953.27659-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200114150953.27659-1-alex.bennee@linaro.org>
 References: <20200114150953.27659-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: iDXEU9rvrlhn
+X-TUID: qUqbq2EgZH6s
 
-Instead of allocating make this entirely static. We shall reduce the
-size of the structure in later commits and dynamically allocate parts
-of it. We introduce an init and reset helper function to keep all the
-manipulation in one place.
+This is in preparation for further re-factoring of the register API
+with the rest of the code. Theoretically the read register function
+could overwrite the MAX_PACKET_LENGTH buffer although currently all
+registers are well within the size range.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+Tested-by: Damien Hedde <damien.hedde@greensocs.com>
 
 ---
-v2
-  - made entirely static, dropped dh/rth r-b tags due to changes
+v4
+  - don't set_set to len on rcmd (it's zeroed before we get here)
+v3
+  - fixed up email on Damien's tags
 ---
- gdbstub.c | 168 ++++++++++++++++++++++++++----------------------------
- 1 file changed, 81 insertions(+), 87 deletions(-)
+ gdbstub.c | 56 ++++++++++++++++++++++++++++++++++---------------------
+ 1 file changed, 35 insertions(+), 21 deletions(-)
 
 diff --git a/gdbstub.c b/gdbstub.c
-index ce304ff482..3bc90cbde5 100644
+index b6dfeac5d1..49abd2bdc7 100644
 --- a/gdbstub.c
 +++ b/gdbstub.c
-@@ -342,6 +342,7 @@ enum RSState {
-     RS_CHKSUM2,
- };
- typedef struct GDBState {
-+    bool init;       /* have we been initialised? */
-     CPUState *c_cpu; /* current CPU for step/continue ops */
-     CPUState *g_cpu; /* current CPU for other ops */
-     CPUState *query_cpu; /* for q{f|s}ThreadInfo */
-@@ -372,7 +373,23 @@ typedef struct GDBState {
-  */
- static int sstep_flags = SSTEP_ENABLE|SSTEP_NOIRQ|SSTEP_NOTIMER;
+@@ -367,6 +367,7 @@ typedef struct GDBState {
+     char syscall_buf[256];
+     gdb_syscall_complete_cb current_syscall_cb;
+     GString *str_buf;
++    GByteArray *mem_buf;
+ } GDBState;
  
--static GDBState *gdbserver_state;
-+static GDBState gdbserver_state;
-+
-+static void init_gdbserver_state(void)
-+{
-+    g_assert(!gdbserver_state.init);
-+    memset(&gdbserver_state, 0, sizeof(GDBState));
-+    gdbserver_state.init = true;
-+}
-+
-+#ifndef CONFIG_USER_ONLY
-+static void reset_gdbserver_state(void)
-+{
-+    g_free(gdbserver_state.processes);
-+    gdbserver_state.processes = NULL;
-+    gdbserver_state.process_num = 0;
-+}
-+#endif
- 
- bool gdb_has_xml;
- 
-@@ -425,8 +442,8 @@ int use_gdb_syscalls(void)
-     /* -semihosting-config target=auto */
-     /* On the first call check if gdb is connected and remember. */
-     if (gdb_syscall_mode == GDB_SYS_UNKNOWN) {
--        gdb_syscall_mode = (gdbserver_state ? GDB_SYS_ENABLED
--                                            : GDB_SYS_DISABLED);
-+        gdb_syscall_mode = gdbserver_state.init ?
-+            GDB_SYS_ENABLED : GDB_SYS_DISABLED;
-     }
-     return gdb_syscall_mode == GDB_SYS_ENABLED;
- }
-@@ -984,7 +1001,7 @@ static int gdb_breakpoint_insert(int type, target_ulong addr, target_ulong len)
-     int err = 0;
- 
-     if (kvm_enabled()) {
--        return kvm_insert_breakpoint(gdbserver_state->c_cpu, addr, len, type);
-+        return kvm_insert_breakpoint(gdbserver_state.c_cpu, addr, len, type);
-     }
- 
-     switch (type) {
-@@ -1021,7 +1038,7 @@ static int gdb_breakpoint_remove(int type, target_ulong addr, target_ulong len)
-     int err = 0;
- 
-     if (kvm_enabled()) {
--        return kvm_remove_breakpoint(gdbserver_state->c_cpu, addr, len, type);
-+        return kvm_remove_breakpoint(gdbserver_state.c_cpu, addr, len, type);
-     }
- 
-     switch (type) {
-@@ -1074,7 +1091,7 @@ static void gdb_breakpoint_remove_all(void)
-     CPUState *cpu;
- 
-     if (kvm_enabled()) {
--        kvm_remove_all_breakpoints(gdbserver_state->c_cpu);
-+        kvm_remove_all_breakpoints(gdbserver_state.c_cpu);
-         return;
-     }
- 
-@@ -2601,7 +2618,7 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
- 
- void gdb_set_stop_cpu(CPUState *cpu)
- {
--    GDBProcess *p = gdb_get_cpu_process(gdbserver_state, cpu);
-+    GDBProcess *p = gdb_get_cpu_process(&gdbserver_state, cpu);
- 
-     if (!p->attached) {
-         /*
-@@ -2611,14 +2628,14 @@ void gdb_set_stop_cpu(CPUState *cpu)
-         return;
-     }
- 
--    gdbserver_state->c_cpu = cpu;
--    gdbserver_state->g_cpu = cpu;
-+    gdbserver_state.c_cpu = cpu;
-+    gdbserver_state.g_cpu = cpu;
+ /* By default use no IRQs and no timers while single stepping so as to
+@@ -382,6 +383,7 @@ static void init_gdbserver_state(void)
+     memset(&gdbserver_state, 0, sizeof(GDBState));
+     gdbserver_state.init = true;
+     gdbserver_state.str_buf = g_string_new(NULL);
++    gdbserver_state.mem_buf = g_byte_array_sized_new(MAX_PACKET_LENGTH);
  }
  
  #ifndef CONFIG_USER_ONLY
- static void gdb_vm_state_change(void *opaque, int running, RunState state)
- {
--    GDBState *s = gdbserver_state;
-+    GDBState *s = &gdbserver_state;
-     CPUState *cpu = s->c_cpu;
-     char buf[256];
-     char thread_id[16];
-@@ -2722,17 +2739,16 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
-     char *p_end;
-     target_ulong addr;
-     uint64_t i64;
--    GDBState *s;
- 
--    s = gdbserver_state;
--    if (!s)
-+    if (!gdbserver_state.init)
-         return;
--    s->current_syscall_cb = cb;
-+
-+    gdbserver_state.current_syscall_cb = cb;
- #ifndef CONFIG_USER_ONLY
-     vm_stop(RUN_STATE_DEBUG);
- #endif
--    p = s->syscall_buf;
--    p_end = &s->syscall_buf[sizeof(s->syscall_buf)];
-+    p = &gdbserver_state.syscall_buf[0];
-+    p_end = &gdbserver_state.syscall_buf[sizeof(gdbserver_state.syscall_buf)];
-     *(p++) = 'F';
-     while (*fmt) {
-         if (*fmt == '%') {
-@@ -2765,14 +2781,14 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
-     }
-     *p = 0;
- #ifdef CONFIG_USER_ONLY
--    put_packet(s, s->syscall_buf);
-+    put_packet(&gdbserver_state, gdbserver_state.syscall_buf);
-     /* Return control to gdb for it to process the syscall request.
-      * Since the protocol requires that gdb hands control back to us
-      * using a "here are the results" F packet, we don't need to check
-      * gdb_handlesig's return value (which is the signal to deliver if
-      * execution was resumed via a continue packet).
-      */
--    gdb_handlesig(s->c_cpu, 0);
-+    gdb_handlesig(gdbserver_state.c_cpu, 0);
- #else
-     /* In this case wait to send the syscall packet until notification that
-        the CPU has stopped.  This must be done because if the packet is sent
-@@ -2780,7 +2796,7 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
-        is still in the running state, which can cause packets to be dropped
-        and state transition 'T' packets to be sent while the syscall is still
-        being processed.  */
--    qemu_cpu_kick(s->c_cpu);
-+    qemu_cpu_kick(gdbserver_state.c_cpu);
- #endif
+@@ -576,12 +578,13 @@ static void memtohex(GString *buf, const uint8_t *mem, int len)
+     g_string_append_c(buf, '\0');
  }
  
-@@ -2941,15 +2957,13 @@ static void gdb_read_byte(GDBState *s, uint8_t ch)
- /* Tell the remote gdb that the process has exited.  */
- void gdb_exit(CPUArchState *env, int code)
+-static void hextomem(uint8_t *mem, const char *buf, int len)
++static void hextomem(GByteArray *mem, const char *buf, int len)
  {
--  GDBState *s;
-   char buf[4];
- 
--  s = gdbserver_state;
--  if (!s) {
-+  if (!gdbserver_state.init) {
-       return;
-   }
- #ifdef CONFIG_USER_ONLY
--  if (gdbserver_fd < 0 || s->fd < 0) {
-+  if (gdbserver_fd < 0 || gdbserver_state.fd < 0) {
-       return;
-   }
- #endif
-@@ -2957,10 +2971,10 @@ void gdb_exit(CPUArchState *env, int code)
-   trace_gdbstub_op_exiting((uint8_t)code);
- 
-   snprintf(buf, sizeof(buf), "W%02x", (uint8_t)code);
--  put_packet(s, buf);
-+  put_packet(&gdbserver_state, buf);
- 
- #ifndef CONFIG_USER_ONLY
--  qemu_chr_fe_deinit(&s->chr, true);
-+  qemu_chr_fe_deinit(&gdbserver_state.chr, true);
- #endif
- }
- 
-@@ -2993,12 +3007,10 @@ static void create_default_process(GDBState *s)
- int
- gdb_handlesig(CPUState *cpu, int sig)
- {
--    GDBState *s;
-     char buf[256];
-     int n;
- 
--    s = gdbserver_state;
--    if (gdbserver_fd < 0 || s->fd < 0) {
-+    if (gdbserver_fd < 0 || gdbserver_state.fd < 0) {
-         return sig;
-     }
- 
-@@ -3008,58 +3020,55 @@ gdb_handlesig(CPUState *cpu, int sig)
- 
-     if (sig != 0) {
-         snprintf(buf, sizeof(buf), "S%02x", target_signal_to_gdb(sig));
--        put_packet(s, buf);
-+        put_packet(&gdbserver_state, buf);
-     }
-     /* put_packet() might have detected that the peer terminated the
-        connection.  */
--    if (s->fd < 0) {
-+    if (gdbserver_state.fd < 0) {
-         return sig;
-     }
- 
-     sig = 0;
--    s->state = RS_IDLE;
--    s->running_state = 0;
--    while (s->running_state == 0) {
--        n = read(s->fd, buf, 256);
-+    gdbserver_state.state = RS_IDLE;
-+    gdbserver_state.running_state = 0;
-+    while (gdbserver_state.running_state == 0) {
-+        n = read(gdbserver_state.fd, buf, 256);
-         if (n > 0) {
-             int i;
- 
-             for (i = 0; i < n; i++) {
--                gdb_read_byte(s, buf[i]);
-+                gdb_read_byte(&gdbserver_state, buf[i]);
-             }
-         } else {
-             /* XXX: Connection closed.  Should probably wait for another
-                connection before continuing.  */
-             if (n == 0) {
--                close(s->fd);
-+                close(gdbserver_state.fd);
-             }
--            s->fd = -1;
-+            gdbserver_state.fd = -1;
-             return sig;
-         }
-     }
--    sig = s->signal;
--    s->signal = 0;
-+    sig = gdbserver_state.signal;
-+    gdbserver_state.signal = 0;
-     return sig;
- }
- 
- /* Tell the remote gdb that the process has exited due to SIG.  */
- void gdb_signalled(CPUArchState *env, int sig)
- {
--    GDBState *s;
-     char buf[4];
- 
--    s = gdbserver_state;
--    if (gdbserver_fd < 0 || s->fd < 0) {
-+    if (gdbserver_fd < 0 || gdbserver_state.fd < 0) {
-         return;
-     }
- 
-     snprintf(buf, sizeof(buf), "X%02x", target_signal_to_gdb(sig));
--    put_packet(s, buf);
-+    put_packet(&gdbserver_state, buf);
- }
- 
- static bool gdb_accept(void)
- {
--    GDBState *s;
-     struct sockaddr_in sockaddr;
-     socklen_t len;
-     int fd;
-@@ -3083,15 +3092,13 @@ static bool gdb_accept(void)
-         return false;
-     }
- 
--    s = g_malloc0(sizeof(GDBState));
--    create_default_process(s);
--    s->processes[0].attached = true;
--    s->c_cpu = gdb_first_attached_cpu(s);
--    s->g_cpu = s->c_cpu;
--    s->fd = fd;
-+    init_gdbserver_state();
-+    create_default_process(&gdbserver_state);
-+    gdbserver_state.processes[0].attached = true;
-+    gdbserver_state.c_cpu = gdb_first_attached_cpu(&gdbserver_state);
-+    gdbserver_state.g_cpu = gdbserver_state.c_cpu;
-+    gdbserver_state.fd = fd;
-     gdb_has_xml = false;
--
--    gdbserver_state = s;
-     return true;
- }
- 
-@@ -3144,13 +3151,11 @@ int gdbserver_start(int port)
- /* Disable gdb stub for child processes.  */
- void gdbserver_fork(CPUState *cpu)
- {
--    GDBState *s = gdbserver_state;
--
--    if (gdbserver_fd < 0 || s->fd < 0) {
-+    if (gdbserver_fd < 0 || gdbserver_state.fd < 0) {
-         return;
-     }
--    close(s->fd);
--    s->fd = -1;
-+    close(gdbserver_state.fd);
-+    gdbserver_state.fd = -1;
-     cpu_breakpoint_remove_all(cpu, BP_GDB);
-     cpu_watchpoint_remove_all(cpu, BP_GDB);
- }
-@@ -3167,7 +3172,7 @@ static void gdb_chr_receive(void *opaque, const uint8_t *buf, int size)
      int i;
  
-     for (i = 0; i < size; i++) {
--        gdb_read_byte(gdbserver_state, buf[i]);
-+        gdb_read_byte(&gdbserver_state, buf[i]);
+     for(i = 0; i < len; i++) {
+-        mem[i] = (fromhex(buf[0]) << 4) | fromhex(buf[1]);
++        guint8 byte = fromhex(buf[0]) << 4 | fromhex(buf[1]);
++        g_byte_array_append(mem, &byte, 1);
+         buf += 2;
      }
  }
+@@ -1412,7 +1415,6 @@ static int cmd_parse_params(const char *data, const char *schema,
+ typedef struct GdbCmdContext {
+     GdbCmdVariant *params;
+     int num_params;
+-    uint8_t mem_buf[MAX_PACKET_LENGTH];
+ } GdbCmdContext;
  
-@@ -3210,13 +3215,13 @@ static int gdb_monitor_write(Chardev *chr, const uint8_t *buf, int len)
-     const char *p = (const char *)buf;
-     int max_sz;
- 
--    max_sz = (sizeof(gdbserver_state->last_packet) - 2) / 2;
-+    max_sz = (sizeof(gdbserver_state.last_packet) - 2) / 2;
-     for (;;) {
-         if (len <= max_sz) {
--            gdb_monitor_output(gdbserver_state, p, len);
-+            gdb_monitor_output(&gdbserver_state, p, len);
-             break;
-         }
--        gdb_monitor_output(gdbserver_state, p, max_sz);
-+        gdb_monitor_output(&gdbserver_state, p, max_sz);
-         p += max_sz;
-         len -= max_sz;
+ typedef void (*GdbCmdHandler)(GdbCmdContext *gdb_ctx, void *user_ctx);
+@@ -1503,6 +1505,7 @@ static void run_cmd_parser(const char *data, const GdbCmdParseEntry *cmd)
      }
-@@ -3308,18 +3313,10 @@ static void create_processes(GDBState *s)
-     create_default_process(s);
+ 
+     g_string_set_size(gdbserver_state.str_buf, 0);
++    g_byte_array_set_size(gdbserver_state.mem_buf, 0);
+ 
+     /* In case there was an error during the command parsing we must
+     * send a NULL packet to indicate the command is not supported */
+@@ -1715,8 +1718,8 @@ static void handle_set_reg(GdbCmdContext *gdb_ctx, void *user_ctx)
+     }
+ 
+     reg_size = strlen(gdb_ctx->params[1].data) / 2;
+-    hextomem(gdb_ctx->mem_buf, gdb_ctx->params[1].data, reg_size);
+-    gdb_write_register(gdbserver_state.g_cpu, gdb_ctx->mem_buf,
++    hextomem(gdbserver_state.mem_buf, gdb_ctx->params[1].data, reg_size);
++    gdb_write_register(gdbserver_state.g_cpu, gdbserver_state.mem_buf->data,
+                        gdb_ctx->params[0].val_ull);
+     put_packet("OK");
+ }
+@@ -1735,14 +1738,17 @@ static void handle_get_reg(GdbCmdContext *gdb_ctx, void *user_ctx)
+         return;
+     }
+ 
+-    reg_size = gdb_read_register(gdbserver_state.g_cpu, gdb_ctx->mem_buf,
++    reg_size = gdb_read_register(gdbserver_state.g_cpu,
++                                 gdbserver_state.mem_buf->data,
+                                  gdb_ctx->params[0].val_ull);
+     if (!reg_size) {
+         put_packet("E14");
+         return;
++    } else {
++        g_byte_array_set_size(gdbserver_state.mem_buf, reg_size);
+     }
+ 
+-    memtohex(gdbserver_state.str_buf, gdb_ctx->mem_buf, reg_size);
++    memtohex(gdbserver_state.str_buf, gdbserver_state.mem_buf->data, reg_size);
+     put_strbuf();
  }
  
--static void cleanup_processes(GDBState *s)
--{
--    g_free(s->processes);
--    s->process_num = 0;
--    s->processes = NULL;
--}
+@@ -1759,11 +1765,11 @@ static void handle_write_mem(GdbCmdContext *gdb_ctx, void *user_ctx)
+         return;
+     }
+ 
+-    hextomem(gdb_ctx->mem_buf, gdb_ctx->params[2].data,
++    hextomem(gdbserver_state.mem_buf, gdb_ctx->params[2].data,
+              gdb_ctx->params[1].val_ull);
+     if (target_memory_rw_debug(gdbserver_state.g_cpu, gdb_ctx->params[0].val_ull,
+-                               gdb_ctx->mem_buf,
+-                               gdb_ctx->params[1].val_ull, true)) {
++                               gdbserver_state.mem_buf->data,
++                               gdbserver_state.mem_buf->len, true)) {
+         put_packet("E14");
+         return;
+     }
+@@ -1784,14 +1790,17 @@ static void handle_read_mem(GdbCmdContext *gdb_ctx, void *user_ctx)
+         return;
+     }
+ 
++    g_byte_array_set_size(gdbserver_state.mem_buf, gdb_ctx->params[1].val_ull);
++
+     if (target_memory_rw_debug(gdbserver_state.g_cpu, gdb_ctx->params[0].val_ull,
+-                               gdb_ctx->mem_buf,
+-                               gdb_ctx->params[1].val_ull, false)) {
++                               gdbserver_state.mem_buf->data,
++                               gdbserver_state.mem_buf->len, false)) {
+         put_packet("E14");
+         return;
+     }
+ 
+-    memtohex(gdbserver_state.str_buf, gdb_ctx->mem_buf, gdb_ctx->params[1].val_ull);
++    memtohex(gdbserver_state.str_buf, gdbserver_state.mem_buf->data,
++             gdbserver_state.mem_buf->len);
+     put_strbuf();
+ }
+ 
+@@ -1806,9 +1815,9 @@ static void handle_write_all_regs(GdbCmdContext *gdb_ctx, void *user_ctx)
+     }
+ 
+     cpu_synchronize_state(gdbserver_state.g_cpu);
+-    registers = gdb_ctx->mem_buf;
+     len = strlen(gdb_ctx->params[0].data) / 2;
+-    hextomem(registers, gdb_ctx->params[0].data, len);
++    hextomem(gdbserver_state.mem_buf, gdb_ctx->params[0].data, len);
++    registers = gdbserver_state.mem_buf->data;
+     for (addr = 0; addr < gdbserver_state.g_cpu->gdb_num_g_regs && len > 0;
+          addr++) {
+         reg_size = gdb_write_register(gdbserver_state.g_cpu, registers, addr);
+@@ -1825,11 +1834,14 @@ static void handle_read_all_regs(GdbCmdContext *gdb_ctx, void *user_ctx)
+     cpu_synchronize_state(gdbserver_state.g_cpu);
+     len = 0;
+     for (addr = 0; addr < gdbserver_state.g_cpu->gdb_num_g_regs; addr++) {
+-        len += gdb_read_register(gdbserver_state.g_cpu, gdb_ctx->mem_buf + len,
++        len += gdb_read_register(gdbserver_state.g_cpu,
++                                 gdbserver_state.mem_buf->data + len,
+                                  addr);
+     }
++    /* FIXME: This is after the fact sizing */
++    g_byte_array_set_size(gdbserver_state.mem_buf, len);
+ 
+-    memtohex(gdbserver_state.str_buf, gdb_ctx->mem_buf, len);
++    memtohex(gdbserver_state.str_buf, gdbserver_state.mem_buf->data, len);
+     put_strbuf();
+ }
+ 
+@@ -2078,6 +2090,7 @@ static void handle_query_offsets(GdbCmdContext *gdb_ctx, void *user_ctx)
+ #else
+ static void handle_query_rcmd(GdbCmdContext *gdb_ctx, void *user_ctx)
+ {
++    const guint8 zero = 0;
+     int len;
+ 
+     if (!gdb_ctx->num_params) {
+@@ -2091,12 +2104,13 @@ static void handle_query_rcmd(GdbCmdContext *gdb_ctx, void *user_ctx)
+         return;
+     }
+ 
++    g_assert(gdbserver_state.mem_buf->len == 0);
+     len = len / 2;
+-    hextomem(gdb_ctx->mem_buf, gdb_ctx->params[0].data, len);
+-    gdb_ctx->mem_buf[len++] = 0;
+-    qemu_chr_be_write(gdbserver_state.mon_chr, gdb_ctx->mem_buf, len);
++    hextomem(gdbserver_state.mem_buf, gdb_ctx->params[0].data, len);
++    g_byte_array_append(gdbserver_state.mem_buf, &zero, 1);
++    qemu_chr_be_write(gdbserver_state.mon_chr, gdbserver_state.mem_buf->data,
++                      gdbserver_state.mem_buf->len);
+     put_packet("OK");
 -
- int gdbserver_start(const char *device)
- {
-     trace_gdbstub_op_start(device);
- 
--    GDBState *s;
-     char gdbstub_device_name[128];
-     Chardev *chr = NULL;
-     Chardev *mon_chr;
-@@ -3357,10 +3354,8 @@ int gdbserver_start(const char *device)
-             return -1;
-     }
- 
--    s = gdbserver_state;
--    if (!s) {
--        s = g_malloc0(sizeof(GDBState));
--        gdbserver_state = s;
-+    if (!gdbserver_state.init) {
-+        init_gdbserver_state();
- 
-         qemu_add_vm_change_state_handler(gdb_vm_state_change, NULL);
- 
-@@ -3369,31 +3364,30 @@ int gdbserver_start(const char *device)
-                                    NULL, NULL, &error_abort);
-         monitor_init_hmp(mon_chr, false);
-     } else {
--        qemu_chr_fe_deinit(&s->chr, true);
--        mon_chr = s->mon_chr;
--        cleanup_processes(s);
--        memset(s, 0, sizeof(GDBState));
--        s->mon_chr = mon_chr;
-+        qemu_chr_fe_deinit(&gdbserver_state.chr, true);
-+        mon_chr = gdbserver_state.mon_chr;
-+        reset_gdbserver_state();
-     }
- 
--    create_processes(s);
-+    create_processes(&gdbserver_state);
- 
-     if (chr) {
--        qemu_chr_fe_init(&s->chr, chr, &error_abort);
--        qemu_chr_fe_set_handlers(&s->chr, gdb_chr_can_receive, gdb_chr_receive,
--                                 gdb_chr_event, NULL, s, NULL, true);
-+        qemu_chr_fe_init(&gdbserver_state.chr, chr, &error_abort);
-+        qemu_chr_fe_set_handlers(&gdbserver_state.chr, gdb_chr_can_receive,
-+                                 gdb_chr_receive, gdb_chr_event,
-+                                 NULL, &gdbserver_state, NULL, true);
-     }
--    s->state = chr ? RS_IDLE : RS_INACTIVE;
--    s->mon_chr = mon_chr;
--    s->current_syscall_cb = NULL;
-+    gdbserver_state.state = chr ? RS_IDLE : RS_INACTIVE;
-+    gdbserver_state.mon_chr = mon_chr;
-+    gdbserver_state.current_syscall_cb = NULL;
- 
-     return 0;
  }
- 
- void gdbserver_cleanup(void)
- {
--    if (gdbserver_state) {
--        put_packet(gdbserver_state, "W00");
-+    if (gdbserver_state.init) {
-+        put_packet(&gdbserver_state, "W00");
-     }
- }
+ #endif
  
 -- 
 2.20.1

@@ -1,200 +1,175 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4384727lff;
-        Mon, 13 Jan 2020 09:08:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzrelahSDJKiU/dGfPRkJQHGc0OpZ7CnbRKy0A670zcp7YCkZvD6UtJ3Fbnh1jwCtDLJ7J9
-X-Received: by 2002:ac8:27ed:: with SMTP id x42mr11344756qtx.299.1578935326308;
-        Mon, 13 Jan 2020 09:08:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578935326; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4906250lff;
+        Mon, 13 Jan 2020 18:02:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwMbsYd+swQ/56XwLnDQup66+Gx8JJb553Ll/7CjBeag2iUHaG8qYlhdCqH9n/Gj87Jz17j
+X-Received: by 2002:aca:1a17:: with SMTP id a23mr14228738oia.84.1578967353075;
+        Mon, 13 Jan 2020 18:02:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578967353; cv=none;
         d=google.com; s=arc-20160816;
-        b=exz/BQ9RRf3T05YcfeaocHCXn668QRi3jz3VIkjOyTSO/Z5neB4vPj4GwBlPNWHbD3
-         sMRmy2b9GWjdUa2ejxuvrym7FpsWcR+AIDdzKOidUJfmr8S+uulJtZA1O9wBzp/cmQCr
-         QGYQpBG61UCxam2qfKXPX8x3RSfoF9i4jsghrNf4wNQn56p14Z8ivvHJV2ZHIIuf8PL8
-         Qg8NlwlY/zqSV8stADSjPqqkNuQTO8oo5TWBOtkrN3sbW7kQCNS8Qel/ZWiYDoUAgFtL
-         g/X0wgItjBImgvQyXOaJtXODVVrqoILIkztpTqeHIlg4nAu/Wu8GzFsjGh/PhnOUpWrP
-         uyeA==
+        b=yexSF1IBz/SV8uXqsAwj2s8e4Y9jpSO9TFF6ldw/jppJhsDqkJuvhY6AKwfeXIox7w
+         KcojYLjp0GoGV37H6Ryu2SXNc5q+CIXkjC2v+wuOb9lY3sn8ixyiT1P8GQqkpkUN/YOO
+         s48jKYsemGJmBE76jqoX/Bk89fqXXBQp3Zf1Fmys+Sjln4t6cLcy8ot/VPE73eojJ5Ef
+         gfjotUEOsOOnQ+cw9wexzOAmsjZip+6w4Se1MgR07clu9ZA7SNnDKjSTi9ULUJxypVwn
+         wl+FA0WUY96noWM8pl4Rpgtu9DlbQivAn+zkr8gU4LyxGRFO7mPVr1r+95bGbxkMUepA
+         mvxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=8akm5y2JIK+SIsf38zIVKEGwGAeiQntPbaAnvyKf3TU=;
-        b=YOpaYWK3mJAO1bKb81IsdpTbOgwAJuQt6R0uGb9bDij9duRRZmg689PjcUsMbfuVNa
-         hc/r0h0Z5gvimoH8/3OQuaaGLXFTZhf879Q6LLyxBhMEj5jWz3MoVwxPuc2DEpxmmXeX
-         3YHwioUeTuedidJyxyjcbbE/WpqGi7SM0HBoxywemExqbJc+4/u2SEalvV/Y1U0tdO7u
-         M4GqfnODfxzeqd/baVlL2zb5LTZcKbM4W44Xj0oq44iSX4yrDjhfumZuBA9MIwUVCinc
-         LHVc8H63OvfjLUz4Syc/GtP+S1vdU75OFAihnupW0mS9MRDNwdUwIDE23xrCHYAqX7fI
-         LEFw==
+        h=list-id:precedence:sender:content-transfer-encoding:cc:to:subject
+         :message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=wUZSPSo0jt960buXgMC7KYm3AgJo4uzvA53Zew/Py5Q=;
+        b=LGmiAQB/H2gTk9nGwNnI1dtD8T/yotWy6GOD3kgV4Fh1rpyognZ+HGr8QjShI6mqQ+
+         vTlRCh96DWgkp0Xd92XZ/NJuy8NiWlwzUl3aejxqDC8dDUpnRiwquQ5pE879LEY5c034
+         fLvvdKVRT4DjiROkbFsSNr8CcZlILXXL0vwFmm49xviua2cWwF415DAcltgRxNGzlztk
+         dOH6AqJrgLFc0tWRQRMKIfdggEyZjktgK9jyNiYcUn2tvraBxi+lVksqWsy92xT2WAqd
+         3kbwfHEbvIIhgnPQB71rmXlfaZtMgolsPZL5VKW02pMQ9ve9I8zBGVvUQ6SDVMAGXlrA
+         U5bQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DrFHhbyg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d139si6686565qkb.257.2020.01.13.09.08.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jan 2020 09:08:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J0CWiR4R;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id v21si9916393otf.87.2020.01.13.18.02.32;
+        Mon, 13 Jan 2020 18:02:33 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DrFHhbyg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53356 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ir3Cn-0000yz-M4
-	for alex.bennee@linaro.org; Mon, 13 Jan 2020 12:08:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32920)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ir39o-0004yW-SW
- for qemu-devel@nongnu.org; Mon, 13 Jan 2020 12:05:42 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ir39l-0004lr-Hs
- for qemu-devel@nongnu.org; Mon, 13 Jan 2020 12:05:38 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:41188
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ir39l-0004jv-7W
- for qemu-devel@nongnu.org; Mon, 13 Jan 2020 12:05:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578935136;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8akm5y2JIK+SIsf38zIVKEGwGAeiQntPbaAnvyKf3TU=;
- b=DrFHhbygzS0OCRSTDCEzkJvfDaOKL4UpHgnfZ8p6sEQr2A+SWRA/ItALTtxw3uXuoiKTcJ
- 8wHWwLkzzd8Ahp4/Jptg+cszrOyRszAAhQW44lD+HxOEvAU1QrtzaK5QlHQf+rfX3+sw+v
- P7j+COTchXvY9JUJpWWhLSXaqcBYYPI=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-387-C3HcSvHDPxO3xxvuBWX8Ww-1; Mon, 13 Jan 2020 12:05:34 -0500
-Received: by mail-wm1-f72.google.com with SMTP id g26so1386388wmk.6
- for <qemu-devel@nongnu.org>; Mon, 13 Jan 2020 09:05:34 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J0CWiR4R;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1729427AbgANCCc (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Mon, 13 Jan 2020 21:02:32 -0500
+Received: from mail-lf1-f66.google.com ([209.85.167.66]:33950 "EHLO
+        mail-lf1-f66.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1728802AbgANCCb (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 13 Jan 2020 21:02:31 -0500
+Received: by mail-lf1-f66.google.com with SMTP id l18so8493483lfc.1
+        for <kvm@vger.kernel.org>; Mon, 13 Jan 2020 18:02:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=wUZSPSo0jt960buXgMC7KYm3AgJo4uzvA53Zew/Py5Q=;
+        b=J0CWiR4RfUBEtaiY+wnwC0FHHmZ47a8ntwx3gMaRqap2PHYZWw43nZ7+I2tAerRtM3
+         6jeyoaZwoS7bsoBMuSOviZyLV/Jgja1civsWdB5w6EWruAONPpe2MZliTNTbJ/3J6pEa
+         ocvpegu6AGHuLT3pMi0K9m+OFtmJ6Wu9BP6cj+o9X7EiUJpBfNBzwJqivZsfCiSIAY34
+         zy7NygsFLlI9qmRFgQZSdcs/iFiKSPMLXJRMHX19jrRx4qKDeIF2prWW3p0M3dZKeQsV
+         qXFEf2CTXrX7J1LdEyiykv3IDQ8a+sh02m4PCxIkhnIVj+LLDeNLeS9DwYQWI5oPQ43n
+         yICw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=3eLu5EnOB+WxW6gFtG3qisQpnTYPKy0enAl1ThZM8Wc=;
- b=k8dPKC4VWaTyrFA5R+GAdt6KqL0CaUVyroc7HErKzLpoDiO6ctT9DJLAiQC91BtGX3
- yzcbB1jbiLdHKxX2GR5dnfi5RNVZRNRh8SfyB1YExw3LUKjGSW5AZZY1M4H33+iIQhpU
- EvNt6Mt1V4qM/gdSTFWk6wIa3YSGcXbAwCINr6esqdaeowfPj1kOw50AmjBj7YWVm1Z+
- xAvgWwbsNgcKORPtDusSiP84cFPyFmJW5lG4KxgL3vNjAtpfSaYzpn3u3xFpRIQ6paQQ
- 6bY6eM89wpT24yXqb4jrELcDqeFX8FzhsEfBjVJgL/oMfVoN23iwNGELoHtraYeB883z
- pcrA==
-X-Gm-Message-State: APjAAAUqxfpM2QfUx2oTZP6zu3oBGJadi2gpJOas2MY8TA+fLRkr694F
- 0VuHeH0YHaVBqiuO+UzAPHqi8D5r10YkGp5/8zM7OwFAGZGZ9jpfvuBD0EzLs20kOMQvt5F9fDC
- YOZJvEypWKBlWRw0=
-X-Received: by 2002:a1c:7203:: with SMTP id n3mr20531533wmc.119.1578935133678; 
- Mon, 13 Jan 2020 09:05:33 -0800 (PST)
-X-Received: by 2002:a1c:7203:: with SMTP id n3mr20531490wmc.119.1578935133375; 
- Mon, 13 Jan 2020 09:05:33 -0800 (PST)
-Received: from [192.168.1.24] (lfbn-mon-1-1519-115.w92-167.abo.wanadoo.fr.
- [92.167.83.115])
- by smtp.gmail.com with ESMTPSA id h8sm16523814wrx.63.2020.01.13.09.05.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Jan 2020 09:05:32 -0800 (PST)
-Subject: Re: [PATCH] arm/gicv3: update virtual irq state after IAR register
- read
-To: Jeff Kubascik <jeff.kubascik@dornerworks.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200113154607.97032-1-jeff.kubascik@dornerworks.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <7260d4ef-7d51-44c3-95d0-2c88c6e2eb63@redhat.com>
-Date: Mon, 13 Jan 2020 18:05:31 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=wUZSPSo0jt960buXgMC7KYm3AgJo4uzvA53Zew/Py5Q=;
+        b=eSwOZCPf9WMpOzlHaSar7W/gc2JsgL8DTTJLlJn6UmYZdZTehplcpl9CDQ5bBqEGZi
+         pbvOtWS4nVABLjZ4NWFK6n7RUmNvoWPC/cdBEkIlmDT3/Frmu+uOI6abSEO8HQDhvH1V
+         dPRs8BGPGJeCDSf92NnqYBa6VrRw34fqkG3S/yCQ9pg8VV1nABOqVqzmOMx+6KekNBX7
+         STILC2XbvAvzup3zUs4K9vyoNCFcpTCJzj1R3X+7RrqXbXOZkg8/+Be5OnUNerdsGDvP
+         uOERY8XY7gLJ75idhd0HbRoKa9pBoAI/WRdrJD9zX3oapL0w3rhjBzA5hkETRMf+zIkc
+         xUMA==
+X-Gm-Message-State: APjAAAUELftWOgMdHJJtdT47+H7x92pxYHnM/UcuBWfYiteT380PbqIw
+        3baDbBsVzuIYab3r91qKp8EwpPRPOeRDhFjxsl8=
+X-Received: by 2002:a19:e30b:: with SMTP id a11mr249814lfh.48.1578967349135;
+ Mon, 13 Jan 2020 18:02:29 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200113154607.97032-1-jeff.kubascik@dornerworks.com>
-Content-Language: en-US
-X-MC-Unique: C3HcSvHDPxO3xxvuBWX8Ww-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
+References: <20200109152133.23649-1-philmd@redhat.com> <20200109152133.23649-11-philmd@redhat.com>
+ <CAKmqyKNrgTbiipNK1wrwCMqk_=7cJmc4rBwO1zxjFiVV+TRSgQ@mail.gmail.com> <f7e3539a-4506-0df1-ee66-f3d8a6aa8fce@redhat.com>
+In-Reply-To: <f7e3539a-4506-0df1-ee66-f3d8a6aa8fce@redhat.com>
+From:   Alistair Francis <alistair23@gmail.com>
+Date:   Tue, 14 Jan 2020 12:02:02 +1000
+Message-ID: <CAKmqyKNxNE0nCODQp37T4eKcq+0cDTCpW9SJkbby+q6Q99vg7g@mail.gmail.com>
+Subject: Re: [PATCH 10/15] memory: Replace current_machine by qdev_get_machine()
+To:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc:     "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        "open list:Overall" <kvm@vger.kernel.org>,
+        Juan Quintela <quintela@redhat.com>,
+        "open list:New World" <qemu-ppc@nongnu.org>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        Alistair Francis <alistair.francis@wdc.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>,
- Jarvis Roach <Jarvis.Roach@dornerworks.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gdLgTQNQlRot
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 1rjuXNheiuYw
 
-On 1/13/20 4:46 PM, Jeff Kubascik wrote:
-> The IAR0/IAR1 register is used to acknowledge an interrupt - a read of th=
-e
-> register activates the highest priority pending interrupt and provides it=
-s
-> interrupt ID. Activating an interrupt can change the CPU's virtual interr=
-upt
-> state - this change makes sure the virtual irq state is updated.
->=20
-> Signed-off-by: Jeff Kubascik <jeff.kubascik@dornerworks.com>
-> ---
-> Hello,
->=20
-> I am using the ARMv8 version of QEMU configured with the gicv3 interrupt
-> controller to run the Xen hypervisor with RTEMS as a guest VM (AArch32). =
-I
-> have noticed that when Xen injects a virtual irq to the guest VM, the gue=
-st
-> gets stuck in the interrupt handler.
->=20
-> The guest's interrupt handler does the following in order:
->    - Reads IAR1 to acknowledge the interrupt and get the INTID
->    - Unmasks interrupts by clearing the I bit in the CPSR register
->    - Dispatches the interrupt to the appropriate driver
->    - Restores the I bit in the CPSR state
->    - Writes the INTID to EOIR1 to drop priority and deactivate the interr=
-upt
->=20
-> However, when the I bit was cleared, QEMU immediately raised the same
-> virtual interrupt again. This process repeated itself indefinitely.
->=20
-> The read of the IAR1 register should activate the interrupt and prevent i=
-t
-> from firing again. However, the gicv3 device code wasn't updating the
-> irq_line_state, so the CPU_INTERRUPT_VIRQ flag remained set. Therefore, w=
-hen
-> I bit was cleared, the CPU immediately switched to the exception handler.
->=20
-> I have tested this patch, and it works for Xen with both an AArch64 Linux
-> guest and an AArch32 RTEMS guest.
->=20
-> Sincerely,
-> Jeff Kubascik
-> ---
->   hw/intc/arm_gicv3_cpuif.c | 3 +++
->   1 file changed, 3 insertions(+)
->=20
-> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-> index a254b0ce87..08e000e33c 100644
-> --- a/hw/intc/arm_gicv3_cpuif.c
-> +++ b/hw/intc/arm_gicv3_cpuif.c
-> @@ -664,6 +664,9 @@ static uint64_t icv_iar_read(CPUARMState *env, const =
-ARMCPRegInfo *ri)
->  =20
->       trace_gicv3_icv_iar_read(ri->crm =3D=3D 8 ? 0 : 1,
->                                gicv3_redist_affid(cs), intid);
-> +
-> +    gicv3_cpuif_virt_update(cs);
-> +
->       return intid;
->   }
->  =20
->=20
+On Sun, Jan 12, 2020 at 11:45 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> On 1/12/20 10:48 AM, Alistair Francis wrote:
+> > On Thu, Jan 9, 2020 at 11:29 PM Philippe Mathieu-Daud=C3=A9
+> > <philmd@redhat.com> wrote:
+> >>
+> >> As we want to remove the global current_machine,
+> >> replace 'current_machine' by MACHINE(qdev_get_machine()).
+> >>
+> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> >> ---
+> >>   memory.c | 4 +++-
+> >>   1 file changed, 3 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/memory.c b/memory.c
+> >> index d7b9bb6951..57e38b1f50 100644
+> >> --- a/memory.c
+> >> +++ b/memory.c
+> >> @@ -3004,6 +3004,7 @@ static void mtree_print_flatview(gpointer key, g=
+pointer value,
+> >>       int n =3D view->nr;
+> >>       int i;
+> >>       AddressSpace *as;
+> >> +    MachineState *ms;
+> >>
+> >>       qemu_printf("FlatView #%d\n", fvi->counter);
+> >>       ++fvi->counter;
+> >> @@ -3026,6 +3027,7 @@ static void mtree_print_flatview(gpointer key, g=
+pointer value,
+> >>           return;
+> >>       }
+> >>
+> >> +    ms =3D MACHINE(qdev_get_machine());
+> >
+> > Why not set this at the top?
+>
+> Calling qdev_get_machine() is not free as it does some introspection
+> checks. Since we can return earlier if there are no rendered FlatView, I
+> placed the machinestate initialization just before it we need to access i=
+t.
 
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+Works for me, maybe worth putting this in the commit?
 
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+>
+> > Alistair
+> >
+> >>       while (n--) {
+> >>           mr =3D range->mr;
+> >>           if (range->offset_in_region) {
+> >> @@ -3057,7 +3059,7 @@ static void mtree_print_flatview(gpointer key, g=
+pointer value,
+> >>           if (fvi->ac) {
+> >>               for (i =3D 0; i < fv_address_spaces->len; ++i) {
+> >>                   as =3D g_array_index(fv_address_spaces, AddressSpace=
+*, i);
+> >> -                if (fvi->ac->has_memory(current_machine, as,
+> >> +                if (fvi->ac->has_memory(ms, as,
+> >>                                           int128_get64(range->addr.sta=
+rt),
+> >>                                           MR_SIZE(range->addr.size) + =
+1)) {
+> >>                       qemu_printf(" %s", fvi->ac->name);
+> >> --
+> >> 2.21.1
+> >>
+> >>
+> >
+>

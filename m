@@ -1,110 +1,109 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5491835lff;
-        Tue, 14 Jan 2020 05:14:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzh8lbQFBcMo4I0dEYVnh04RR4SNGgCDcFlchr1DO8uwAP8js4dXISU6c9ibctvVIE0ug1Z
-X-Received: by 2002:a17:906:d7a6:: with SMTP id pk6mr22575253ejb.234.1579007687931;
-        Tue, 14 Jan 2020 05:14:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579007687; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5492053lff;
+        Tue, 14 Jan 2020 05:14:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzsEBQr12Q9MTNYnnTYg/dGDoxS9e9BCQhPezLWabdfH75nEKTS3NSpAIWmEu0FLycCcZ7c
+X-Received: by 2002:aa7:d294:: with SMTP id w20mr22820747edq.134.1579007699771;
+        Tue, 14 Jan 2020 05:14:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579007699; cv=none;
         d=google.com; s=arc-20160816;
-        b=R/IK0Qmj/78QZcACef922WQNJFEQbVhq1KxQlvSRpQX068QMnyT2ifnIc9fCHh5r9r
-         4y1Vo6b0MBPn/xHgf9rQA4ERbx/YMgCf/Vt7SabC9eUTCty3DeUnq7RNAz//j2wyNov3
-         Af5rcKqewuOHM7AQtB9bc7xLqUlB7c1SzwZXGoSx7ap5xlsEAPOYThoIVgY23CbACnHr
-         3AsHqw8ejTXXBXcip9X16/SVSJD8+oHUtMBMRTv+2PZ0XekZPQlss2yVa3lqNsa6mn7Q
-         g9hOMeY33nSqQlzp86FMcUCR5bjr+dDVgDn+TQ8XlW0/anCLUUbs452dEL9oiUV3nxdN
-         PFog==
+        b=dS72cVo7uh6KAm02oWD5OsuY55mwqlnNNmLWk+O+0OwThUbZONRHenP5t9XIeOg69U
+         IRsI/jsGzvwZs7J1mA1iQC940uvwbg9JK15V2FPvd5IBvS0Kk5SVTw846uVCQ2ex2vFj
+         zAxe/C1KfrgTqqerfbts//DWW4UFOlfAEG6+3fIGf3GnHrJoqJdTFBvlGjFloQmBN7TT
+         k8RCsst+l/NJiqcyUjMyPA5kAuZ8WYVcTvO/YcFqIDKgZjK8HuWcia5AmHj+kRLZZ10T
+         UQKvntLuruOqEz4fWptW1zFIPgi+IMt02Q01PwSMkB0L3WJm2wKsV7sYhaCVZz+ss9kG
+         U7Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dsd8GjCW5JufmDMdCUSgML54euu3q/B4ZPKHuX8cV3A=;
-        b=brfeNZnm60pom9L64U8x/aAu+xz1wrWe745tBCGeWyaGLND0238FS2T+P5pTYH6v7r
-         oif+0f2eusjQm26hP7aDpbNRQpnX1InAAxsdjhlSTVfgaJkOg7Tj1HHLOrmFfAatDsgI
-         eZevEFIMdyDOs5+DecDBOP/L18NkzRlafWJ+ygn9SgAi84UwUTrU7ysnERuxC3PsNOFC
-         O4nm/77iMStnZOoIR5MfSJYCcDELKK+tzrAAH3f5Zy1pk6RjTF4FT7nA2WmH9WTYHWlb
-         oax7E9gEwJqAM1uopxPEQ9DBuHzNVhHFRzuXVPv1/rocC7Ne7uXbtF0WgdT2CMh242L4
-         pocA==
+        bh=XK5ACN6K3OKAgei9Uux+P4frL0jlH3g3VMOxRzWVmRg=;
+        b=0djC7P7pK5SXfszFnmbFuLB3PqW25X/eZosAIeBu2YI9dPTFxKPZ1uVa2LUzdtRQv5
+         fmuy4pZ1daIxkt/lCcWQYWa3i0uKKc2dhXrTOpiSzI+lERdDtEt5nQ53Jdx5uSBvBpgI
+         r+vampSrIWA78G4tx1CO7f1jMaPcQJlkvqoCrJEnk5CZQtbRS3r9mvpC7QVF0udU/4b5
+         JWFg4luhMJE5D0Q4cchNk5GFoHm1/2EM3epuQy7wQy0titlN+C0BVc6/hziX7qNjlMr8
+         T/sEcyUbAdJLqNmFccbtvqgdI2f+rU+jFKpl3Nv/p9S8GdnLDfJVt12PMZboiS4/bSTn
+         3kGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jGEh2MMG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UNsZVfsq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i26si9004351ejh.159.2020.01.14.05.14.47
+        by mx.google.com with ESMTPS id g26si9298736edm.328.2020.01.14.05.14.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 05:14:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Jan 2020 05:14:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jGEh2MMG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UNsZVfsq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39184 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irM1u-0002In-FX
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 08:14:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41884)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irM26-00039J-BA
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 08:14:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41651)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irLkg-0004h5-Kh
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:57:00 -0500
+ (envelope-from <quintela@redhat.com>) id 1irLk3-0003vZ-Rr
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:56:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irLkf-0002Pc-2g
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:58 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:28256
+ (envelope-from <quintela@redhat.com>) id 1irLk0-0002Dm-7g
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:56:19 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:33627
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLke-0002PP-Vn
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:57 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLk0-0002DX-4Y
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:56:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579006616;
+ s=mimecast20190719; t=1579006575;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dsd8GjCW5JufmDMdCUSgML54euu3q/B4ZPKHuX8cV3A=;
- b=jGEh2MMGk8jCWQVe3bLPtqVSlhZAU+yQ5kPQqp9C/n17xGUR4sMiYSEAqn+yJYBuKWCvcJ
- t6x4b89K2w6tMzxb5aw1jDXy5PPU78PKcKcoMpkitzbAHZL71Ik8uh46qEuBinZJgB0FKu
- D7k9OqZyZYe3ApkUcDopmJ9XT3bY0Ck=
+ bh=XK5ACN6K3OKAgei9Uux+P4frL0jlH3g3VMOxRzWVmRg=;
+ b=UNsZVfsqMlOU3674GNO+Us9mg2K5056PQiYFz636HxLs9rXABsvaw9Ue5ccoiyMjzH8ZdR
+ Ogp5DLVYd7CILZ9bJadqdOuu7CCfWW03/Soh62dAIgaC733m21Mfbev2KZDYwqXZBR7jvd
+ Jmgh+p1oNhzpImGZmUE72UGYkINpHaY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-335-UclLMH50NFKGIUnvUxD3Jg-1; Tue, 14 Jan 2020 07:56:55 -0500
+ us-mta-117-V-4i7RvKOn6pcCaUYKAg_w-1; Tue, 14 Jan 2020 07:56:14 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 36B801005502;
- Tue, 14 Jan 2020 12:56:53 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 68817189DF40;
+ Tue, 14 Jan 2020 12:56:12 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BADDE5E240;
- Tue, 14 Jan 2020 12:56:48 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F2D985D9E5;
+ Tue, 14 Jan 2020 12:56:07 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 28/30] migration: Change SaveStateEntry.instance_id into
- uint32_t
-Date: Tue, 14 Jan 2020 13:52:52 +0100
-Message-Id: <20200114125254.4515-29-quintela@redhat.com>
+Subject: [PULL 23/30] migration/multifd: not use multifd during postcopy
+Date: Tue, 14 Jan 2020 13:52:47 +0100
+Message-Id: <20200114125254.4515-24-quintela@redhat.com>
 In-Reply-To: <20200114125254.4515-1-quintela@redhat.com>
 References: <20200114125254.4515-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: UclLMH50NFKGIUnvUxD3Jg-1
+X-MC-Unique: V-4i7RvKOn6pcCaUYKAg_w-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Corey Minyard <cminyard@mvista.com>,
@@ -112,174 +111,55 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
  Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Peter Xu <peterx@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Stefan Berger <stefanb@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org,
+ qemu-ppc@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrzej Zaborowski <balrogg@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aDAtkPvz+XOg
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BZDNLdnBieCO
 
-From: Peter Xu <peterx@redhat.com>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-It was always used as 32bit, so define it as used to be clear.
-Instead of using -1 as the auto-gen magic value, we switch to
-UINT32_MAX.  We also make sure that we don't auto-gen this value to
-avoid overflowed instance IDs without being noticed.
+We don't support multifd during postcopy, but user still could enable
+both multifd and postcopy. This leads to migration failure.
 
-Suggested-by: Juan Quintela <quintela@redhat.com>
-Signed-off-by: Peter Xu <peterx@redhat.com>
+Skip multifd during postcopy.
+
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- hw/intc/apic_common.c        |  2 +-
- include/migration/register.h |  2 +-
- include/migration/vmstate.h  |  2 +-
- migration/savevm.c           | 18 ++++++++++--------
- stubs/vmstate.c              |  2 +-
- 5 files changed, 14 insertions(+), 12 deletions(-)
+ migration/ram.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
-index f2c3a7f309..54b8731fca 100644
---- a/hw/intc/apic_common.c
-+++ b/hw/intc/apic_common.c
-@@ -268,7 +268,7 @@ static void apic_common_realize(DeviceState *dev, Error=
- **errp)
-     APICCommonState *s =3D APIC_COMMON(dev);
-     APICCommonClass *info;
-     static DeviceState *vapic;
--    int instance_id =3D s->id;
-+    uint32_t instance_id =3D s->id;
-=20
-     info =3D APIC_COMMON_GET_CLASS(s);
-     info->realize(dev, errp);
-diff --git a/include/migration/register.h b/include/migration/register.h
-index 00c38ebe9f..c1dcff0f90 100644
---- a/include/migration/register.h
-+++ b/include/migration/register.h
-@@ -71,7 +71,7 @@ typedef struct SaveVMHandlers {
- } SaveVMHandlers;
-=20
- int register_savevm_live(const char *idstr,
--                         int instance_id,
-+                         uint32_t instance_id,
-                          int version_id,
-                          const SaveVMHandlers *ops,
-                          void *opaque);
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index ed74dd5624..01790b8d9b 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -1160,7 +1160,7 @@ bool vmstate_save_needed(const VMStateDescription *vm=
-sd, void *opaque);
- #define  VMSTATE_INSTANCE_ID_ANY  -1
-=20
- /* Returns: 0 on success, -1 on failure */
--int vmstate_register_with_alias_id(VMStateIf *obj, int instance_id,
-+int vmstate_register_with_alias_id(VMStateIf *obj, uint32_t instance_id,
-                                    const VMStateDescription *vmsd,
-                                    void *base, int alias_id,
-                                    int required_for_version,
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 8dab99efc4..adfdca26ac 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -233,7 +233,7 @@ typedef struct CompatEntry {
- typedef struct SaveStateEntry {
-     QTAILQ_ENTRY(SaveStateEntry) entry;
-     char idstr[256];
--    int instance_id;
-+    uint32_t instance_id;
-     int alias_id;
-     int version_id;
-     /* version id read from the stream */
-@@ -667,10 +667,10 @@ void dump_vmstate_json_to_file(FILE *out_file)
-     fclose(out_file);
- }
-=20
--static int calculate_new_instance_id(const char *idstr)
-+static uint32_t calculate_new_instance_id(const char *idstr)
- {
-     SaveStateEntry *se;
--    int instance_id =3D 0;
-+    uint32_t instance_id =3D 0;
-=20
-     QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
-         if (strcmp(idstr, se->idstr) =3D=3D 0
-@@ -678,6 +678,8 @@ static int calculate_new_instance_id(const char *idstr)
-             instance_id =3D se->instance_id + 1;
-         }
+diff --git a/migration/ram.c b/migration/ram.c
+index 561961ef24..aee057f7da 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -2587,10 +2587,13 @@ static int ram_save_target_page(RAMState *rs, PageS=
+earchStatus *pss,
      }
-+    /* Make sure we never loop over without being noticed */
-+    assert(instance_id !=3D VMSTATE_INSTANCE_ID_ANY);
-     return instance_id;
- }
 =20
-@@ -755,7 +757,7 @@ static void savevm_state_handler_remove(SaveStateEntry =
-*se)
-    Meanwhile pass -1 as instance_id if you do not already have a clearly
-    distinguishing id for all instances of your device class. */
- int register_savevm_live(const char *idstr,
--                         int instance_id,
-+                         uint32_t instance_id,
-                          int version_id,
-                          const SaveVMHandlers *ops,
-                          void *opaque)
-@@ -809,7 +811,7 @@ void unregister_savevm(VMStateIf *obj, const char *idst=
-r, void *opaque)
+     /*
+-     * do not use multifd for compression as the first page in the new
+-     * block should be posted out before sending the compressed page
++     * Do not use multifd for:
++     * 1. Compression as the first page in the new block should be posted =
+out
++     *    before sending the compressed page
++     * 2. In postcopy as one whole host page should be placed
+      */
+-    if (!save_page_use_compression(rs) && migrate_use_multifd()) {
++    if (!save_page_use_compression(rs) && migrate_use_multifd()
++        && !migration_in_postcopy()) {
+         return ram_save_multifd_page(rs, block, offset);
      }
- }
 =20
--int vmstate_register_with_alias_id(VMStateIf *obj, int instance_id,
-+int vmstate_register_with_alias_id(VMStateIf *obj, uint32_t instance_id,
-                                    const VMStateDescription *vmsd,
-                                    void *opaque, int alias_id,
-                                    int required_for_version,
-@@ -1625,7 +1627,7 @@ int qemu_save_device_state(QEMUFile *f)
-     return qemu_file_get_error(f);
- }
-=20
--static SaveStateEntry *find_se(const char *idstr, int instance_id)
-+static SaveStateEntry *find_se(const char *idstr, uint32_t instance_id)
- {
-     SaveStateEntry *se;
-=20
-@@ -2292,7 +2294,7 @@ qemu_loadvm_section_start_full(QEMUFile *f, Migration=
-IncomingState *mis)
-     /* Find savevm section */
-     se =3D find_se(idstr, instance_id);
-     if (se =3D=3D NULL) {
--        error_report("Unknown savevm section or instance '%s' %d. "
-+        error_report("Unknown savevm section or instance '%s' %"PRIu32". "
-                      "Make sure that your current VM setup matches your "
-                      "saved VM setup, including any hotplugged devices",
-                      idstr, instance_id);
-@@ -2316,7 +2318,7 @@ qemu_loadvm_section_start_full(QEMUFile *f, Migration=
-IncomingState *mis)
-=20
-     ret =3D vmstate_load(f, se);
-     if (ret < 0) {
--        error_report("error while loading state for instance 0x%x of"
-+        error_report("error while loading state for instance 0x%"PRIx32" o=
-f"
-                      " device '%s'", instance_id, idstr);
-         return ret;
-     }
-diff --git a/stubs/vmstate.c b/stubs/vmstate.c
-index 6951d9fdc5..cc4fe41dfc 100644
---- a/stubs/vmstate.c
-+++ b/stubs/vmstate.c
-@@ -4,7 +4,7 @@
- const VMStateDescription vmstate_dummy =3D {};
-=20
- int vmstate_register_with_alias_id(VMStateIf *obj,
--                                   int instance_id,
-+                                   uint32_t instance_id,
-                                    const VMStateDescription *vmsd,
-                                    void *base, int alias_id,
-                                    int required_for_version,
 --=20
 2.24.1
 

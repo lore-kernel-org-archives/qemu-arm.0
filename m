@@ -1,159 +1,174 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp4904655lff;
-        Mon, 13 Jan 2020 18:00:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwxGrHMStpzYywfiLVqHlM6xrvOjNqNJTDErNHU6C0NIGIto7Fm2jXevNyfuPHA7otEpMrT
-X-Received: by 2002:a9d:21f4:: with SMTP id s107mr16192606otb.102.1578967259583;
-        Mon, 13 Jan 2020 18:00:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578967259; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5224990lff;
+        Tue, 14 Jan 2020 00:38:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzEJ2cob5Q6oCgFeEaNk+Kiwm695WKvqFcgVZgwKgXoAEEfe5jMdUqQEoSeqJEsTxSXNwwN
+X-Received: by 2002:ad4:48c6:: with SMTP id v6mr15346061qvx.207.1578991106777;
+        Tue, 14 Jan 2020 00:38:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578991106; cv=none;
         d=google.com; s=arc-20160816;
-        b=wCDO0QX0B6IOldtMEyD39LVjAeovaCgTQvF/HEE9aXvD77yPl4koM7ZnlL48cT0z24
-         HlOeIZYOtaZMRalgJOJOrBh+wFH7l+ScgpAdQzhSqzWW1kkbwD+w7NzpgTI9DQik4ANP
-         Zl2hhRQMbjxZmVkuog5qvcl5rDden6omPSb/TILSr0+E8yCsYs/Vyi2rYCNYmFyvVmg/
-         7C0ZXzvDyuKFRVrXg0OHZVNg6ala7S9NdX3GrAg4XHcvkOK4sRihiJaCgLD2JrMyl11+
-         reUzadS95UpaTfa9L/Qf5sn+6dbGMlOFmATT28AsyRU6OGIon2s2+DWuDnqkhgNSxqnU
-         qqtw==
+        b=SzOo6BoaX3Yi9tw7Ss/oGzjjBhC1zjOY3u/2X2jb51PavSdhu1ucWSCgwLGPbYYVQc
+         3DzDam6JbGie+Mtk8TRWd89YSCbx7uuLl/iU1y1frVdeutxv0aRc/HZl6ByHIpKUugRw
+         rEjER26lLPH6A0CUZdFcQflmZRUOoDHb3gA+MrjC6UP4OhA8qhZpZuLST3oOdl3Zvcnj
+         DGEP1dJni4KL1JDqUF0hW7mmxz8n5nVhj5slbRw/c7zJT6TvtoLJqvpQiVYpY1VmGtWp
+         6m2hAr0casLq2dTWSfp5ElCqQwNS3y5Jm/qbxsQ1dgufysywjkCZcjDuwSHX0r39/9v4
+         4iNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:cc:to:subject
-         :message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=jIOw/CbzXybkeMH1o84BTHPma96iahA5s5mXf7EbPk0=;
-        b=hkFARasO+vpyQGa5A7K569aVfeKDV0KzjRNPycaM6nKaqwMa8VXZkcDTlJw/Tzpipp
-         4VT/Qjkq18LzBd4K0q1yPkk/e5cpae+LW0YaB+7gS58L/hKqHp8s+RqO3IsuNu/or4On
-         32G5C1FO7xmi9gz8AIIjk/LKFGnpgvpuUzDYxB8DWGHdFUj7cR0oe65yRSi61yTOD2KZ
-         YRG6faCe/vAF/3lzLPv/59DpRc9NhHENCo1eJ6nlfoSADrUUHun6B0+Q/bhUzmYmtU54
-         aY/KT0qJakR7VCOCzNTvUXKiipuErGf7ucuK/MVqDV8HqfGQEhjgbWv94pVkdh2gO7Zi
-         xkeQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=vAfuzXcORhJGj7N7nwgX3YkYyibtDeg5vqOVloQ0W1I=;
+        b=fTkiQj29p3GZPdXheGbgv7ykmnUSA2a39Ao7MGd9uol8C9fLZTXmassvH9HeNneiXS
+         BOTh3ekQ0WdfkesqwKRFX09T/eOV0Mws6G8ijuK3ZA9VCNaCEEIEyoL8DPgH5+8wMkBf
+         ysi5cnm+CA9m3dtPAofIElBZrJAQZXUwl9EtTteH/yRNHOJYwDSE3EnIz7kAB8jPKNwF
+         FdAC/no1SoaduXHQ/oORoN05SEznHuvDefk/qLL13gjtdB84rY+ddcCivQajwGL1kLec
+         knshM0lCF/yjzwFWvO6Ccg6TnHCHv/QyZKt3rmMej1tTd7qa1CIkuJQiQuXN3dddQtHr
+         dXVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="F/2EGDDC";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v21si9916393otf.87.2020.01.13.18.00.59;
-        Mon, 13 Jan 2020 18:00:59 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GFrMAqPA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h55si8542917qtb.87.2020.01.14.00.38.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 14 Jan 2020 00:38:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="F/2EGDDC";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729470AbgANCA6 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 13 Jan 2020 21:00:58 -0500
-Received: from mail-lf1-f67.google.com ([209.85.167.67]:44273 "EHLO
-        mail-lf1-f67.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1729427AbgANCA6 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 13 Jan 2020 21:00:58 -0500
-Received: by mail-lf1-f67.google.com with SMTP id v201so8465738lfa.11
-        for <kvm@vger.kernel.org>; Mon, 13 Jan 2020 18:00:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=jIOw/CbzXybkeMH1o84BTHPma96iahA5s5mXf7EbPk0=;
-        b=F/2EGDDC2WMeINqtbvPOP6hek9GQs8wGt5hGy2hjzrUb+9ElYoc0NdDXkcStJx3NUM
-         dY+yg5+BJY9/galzSJ6/BnzwwDlHVHm7vY+3lCjUlap+A/NRZyB8XrhB2CbucKLr2ICo
-         NXi6qbwodf9FCH/h1Rgs5hAULbEk5h+wWwdJXAffR9ukxUykbQ0ClU687A0xvKGB0dxM
-         3GCEOgcMaPrcOjCyPGKR7kooF/lagCH882ycJtKvvAY2qhCQ1V9UdwNECGVZffPyZRqc
-         XGxqgretv6V6c/cs1s/DYMUqTDmAyTXxO6CZvHp4yBtmdAThPBr7BjDDZBwAIrbjY8Ug
-         XBNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=jIOw/CbzXybkeMH1o84BTHPma96iahA5s5mXf7EbPk0=;
-        b=FBIzndNjcafHvOWCyQ2HelFxeK9l/6vFqUPlsBVZJOhlksgq2QnPva86/0llg+d7OW
-         2YedV36LjAc8sOfbiTmUiuoXESGy5NpZeNm0pSXtte30v7kkbS6rlS87B1WeIlpABDvj
-         mTB1xPLV0rTTgZJ9IQux0Dynw9HSuimKWfDQvM8frG/8J4xIXX46M+9awvVDP6EMjMRq
-         kqXllQwxo5gdgxno2CVzSV9/BjQmxyU7KwRy3+M9W5v5VtCS119n5EY7vgvbNs+zeWxS
-         dj+S36liJNsYueEi2oSxmLdHxkkR8pUpT5eIUh055oxu2CZdHrDXPvf0WZRwy6fwnVkv
-         bQPA==
-X-Gm-Message-State: APjAAAUKPm/KUyZydym7l1ejqNpa8EmbbVsovMozvNI0Texblo5BZVls
-        bg6r9iAjpepSXu7XgT3G6jmsjwA+nEQIjgGkWHI=
-X-Received: by 2002:a19:4ac2:: with SMTP id x185mr215459lfa.131.1578967256625;
- Mon, 13 Jan 2020 18:00:56 -0800 (PST)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GFrMAqPA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34508 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irHiT-0003YM-TX
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 03:38:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50134)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <eric.auger@redhat.com>) id 1irHiF-0003Ve-VW
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 03:38:15 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <eric.auger@redhat.com>) id 1irHiE-0001u2-Pa
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 03:38:11 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:57085
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1irHiE-0001tr-Lb
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 03:38:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578991089;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vAfuzXcORhJGj7N7nwgX3YkYyibtDeg5vqOVloQ0W1I=;
+ b=GFrMAqPAW6jwE2v+o8VtKXAuUVxuPHVj7oEf9R+v3LtdHsJQ3/WftYLuGof0hMj2rL0ghR
+ xl88uNB/qQx6iSH0nrf+6M3N5NIdk8xRDkl0+KGQeU9t3sMQcWBSTv3g1hMNisegxm3DrU
+ yZ96Npd/5AfnEzHOeOdAKT0urjXaXjE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-113-QtSltDaUPJa2129SIiahiw-1; Tue, 14 Jan 2020 03:38:03 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9AB95107ACC5;
+ Tue, 14 Jan 2020 08:38:01 +0000 (UTC)
+Received: from [10.36.117.108] (ovpn-117-108.ams2.redhat.com [10.36.117.108])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 757FA5DA32;
+ Tue, 14 Jan 2020 08:37:53 +0000 (UTC)
+Subject: Re: [PATCH v12 04/13] virtio-iommu: Add the iommu regions
+To: Peter Xu <peterx@redhat.com>
+References: <20200109144319.15912-1-eric.auger@redhat.com>
+ <20200109144319.15912-5-eric.auger@redhat.com>
+ <20200113195344.GA201624@xz-x1>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <779fc8b2-93c1-e3c2-9feb-b2552de2c5d3@redhat.com>
+Date: Tue, 14 Jan 2020 09:37:51 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20200109152133.23649-1-philmd@redhat.com> <20200109152133.23649-16-philmd@redhat.com>
-In-Reply-To: <20200109152133.23649-16-philmd@redhat.com>
-From:   Alistair Francis <alistair23@gmail.com>
-Date:   Tue, 14 Jan 2020 12:00:30 +1000
-Message-ID: <CAKmqyKPZ-=Njnv9KhS7yN_UE_Cij_eD=uUxdKhB5r8+dddiCyg@mail.gmail.com>
-Subject: Re: [PATCH 15/15] vl: Make current_machine a local variable
-To:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc:     "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        "open list:Overall" <kvm@vger.kernel.org>,
-        Juan Quintela <quintela@redhat.com>,
-        "open list:New World" <qemu-ppc@nongnu.org>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        Alistair Francis <alistair.francis@wdc.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: xmGsRX5uFnZp
+In-Reply-To: <20200113195344.GA201624@xz-x1>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: QtSltDaUPJa2129SIiahiw-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
+ dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ mst@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LFfvHq068bDe
 
-On Fri, Jan 10, 2020 at 1:34 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Since we now only use current_machine in vl.c, stop exporting
-> it as a global variable in "hw/board.h", and make it static
-> to vl.c.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Hi Peter,
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+On 1/13/20 8:53 PM, Peter Xu wrote:
+> On Thu, Jan 09, 2020 at 03:43:10PM +0100, Eric Auger wrote:
+>> Implement a callback called on PCI bus enumeration that
+>> initializes for a given device on the bus hierarchy
+>> an IOMMU memory region. The PCI bus hierarchy is stored
+>> locally in IOMMUPciBus and IOMMUDevice objects.
+>>
+>> At the time of the enumeration, the bus number may not be
+>> computed yet.
+>>
+>> So operations that will need to retrieve the IOMMUdevice
+>> and its IOMMU memory region from the bus number and devfn,
+>> once the bus number is garanteed to be frozen,
+>> use an array of IOMMUPciBus, lazily populated.
+>>
+>> virtio_iommu_mr() is the top helper that allows to retrieve
+>> the IOMMU memory region from the requester ID.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>> v11 -> v12:
+>> - add the iommu_find_iommu_pcibus() mechanics. Without it,
+>>   when attaching t device to a domain we could not check
+>>   the device is effectively protected by this IOMMU
+> 
+> Sorry I probably lost the context again after read the previous
+> version...  Could you hint me what does this used for?
+In v11 Jean pointed out that as_by_bus_num was not used in my series. I
+first planned to remove it and then noticed that it could be useful to
+test on "attach" whether the RID of the device effectively corresponds
+to a device protected by the IOMMU and in the negative, return an error.
 
-Alistair
+In https://patchwork.kernel.org/patch/11258269/#23067995
 
-> ---
->  include/hw/boards.h | 2 --
->  vl.c                | 4 ++--
->  2 files changed, 2 insertions(+), 4 deletions(-)
->
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 61f8bb8e5a..b0c0d4376d 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -59,8 +59,6 @@ void memory_region_allocate_system_memory(MemoryRegion =
-*mr, Object *owner,
->  #define MACHINE_CLASS(klass) \
->      OBJECT_CLASS_CHECK(MachineClass, (klass), TYPE_MACHINE)
->
-> -extern MachineState *current_machine;
-> -
->  void machine_run_board_init(MachineState *machine);
->  bool machine_usb(MachineState *machine);
->  int machine_phandle_start(MachineState *machine);
-> diff --git a/vl.c b/vl.c
-> index 3ff3548183..7a69af4bef 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -214,6 +214,8 @@ static int default_sdcard =3D 1;
->  static int default_vga =3D 1;
->  static int default_net =3D 1;
->
-> +static MachineState *current_machine;
-> +
->  static struct {
->      const char *driver;
->      int *flag;
-> @@ -1164,8 +1166,6 @@ static int usb_parse(const char *cmdline)
->  /***********************************************************/
->  /* machine registration */
->
-> -MachineState *current_machine;
-> -
->  static MachineClass *find_machine(const char *name, GSList *machines)
->  {
->      GSList *el;
-> --
-> 2.21.1
->
->
+This is the same mechanics used in intel_iommu/smmu.
+
+
+> 
+> In all cases, I see that virtio_iommu_mr() is introduced but not used.
+> Would be good to put it into the patch where it's firstly used.
+OK fair enough, I will put the helper in the same patch as the user as
+you have requested that since the beginning ;-) The resulting patch may
+be huge. Just hope nobody will request me to split it back ;-)
+
+Thanks
+
+Eric
+> 
+> Thanks,
+> 
+

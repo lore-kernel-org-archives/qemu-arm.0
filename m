@@ -1,93 +1,92 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5402818lff;
-        Tue, 14 Jan 2020 03:50:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz+Q+Itt26QcAD5S2z89CDzkJ5W4zDcxotVI4U2XKc2gm0kVdMCQgY6csbUh22yeiiI5VF1
-X-Received: by 2002:ad4:4912:: with SMTP id bh18mr16590337qvb.50.1579002638173;
-        Tue, 14 Jan 2020 03:50:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579002638; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5403418lff;
+        Tue, 14 Jan 2020 03:51:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwC8oNC5s3bssXPcTfM3ZTn/GFEwzyfELfMkr+vznW/hktCBCeaLa5a6kA8YlVPf/N8PWqJ
+X-Received: by 2002:ae9:e649:: with SMTP id x9mr20427596qkl.405.1579002678217;
+        Tue, 14 Jan 2020 03:51:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579002678; cv=none;
         d=google.com; s=arc-20160816;
-        b=eFlfkQIOWRoNdQU6Ledv+8oIaz6XL80SVHpw2FC4L5mYvhvQ+LUOyN2Wli2zEY05gt
-         3HwPbga+0v7sGZJnr6bUeIvt5olw7sI0bRHxJvXGrrGEVXA2lRGgKQhYm5sq2lRiZqdU
-         25wHcaZI2eI7WiKFzCnf6F/fZ+TTZmPBsbH0PoaGFrmF9hvWAL5nqpgxcPPdOipqtvVX
-         aa9Ea34tg/w8b8QVMP94HYrmBuC6YWWAqZ4y5VrJ5RA/LcDEsKRPYp3bPzqOZIeVpcpr
-         +2zgJU1aVhMudtA1AiqIbr65IudgUIqOkaF1jbAmBOzOtXw+CQdYE+MTk7zRAFPgEHJY
-         ujaQ==
+        b=IA5poKpWUs0JWfSVqneZ7vk7/Cy0v1lWwesSoxiOiIIcppAJJf726O02pL/90INBpo
+         wXa6gj0nH4BgWXcMi+KQKbOmzd+nqsc39uFnBv13w/6oRd3o2rMLSFZW9pTreSfqjY3i
+         ZA1JjFARcj0JeuSmkgldAU7nKsKuxpBMuoEwKpVqhJJSoxBPwHCQ8kLG2wVe+nddwt2p
+         pA+ZwObyOUUK9H7YnQrx0BptsMAoRWI9tO3Cs/jsYVMq1sROq1wat5+1pu3FMzeaIOQ0
+         a66JvALNBt87hVY55pvwovtU+A51Bb9zSSb2qpastK8XFI1ufceitLxQRzdQpZb3F1vW
+         3DhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=52j2mgmiA4z5vA2yqyRSfUxDIXdlaCqV+gsG8XIQ6+k=;
-        b=v93PMfyJxwk9CiHUIDK8/1w6mpi3av/Pjqot2Xh3FNOcn0SZX6tNr9UiXXcDJYD0jr
-         uLycshos7I/bL3uj4bQnW2E7c3bTHG9pUiGTrR/Emr1HmAMAss9tUM6azGN5NZGBOQbS
-         cb5hGSNhY1VyuzLkNBFVCJZCR4FBkVv9FJ8dyOAuTcrhEYvM7WvV48Ya2+rnaaq4Zn00
-         8OA3puB+J+OTxF6nbBRUKGC2aJF324cKPmfhW+KWeKkVqfv9i9JTMlNHJwj7JZAORGsM
-         4SkySyjwJ5XL5tBtQqkeCHONpEUNEB0IqT7NfkQKkUdqXTYHOIr3HsBlqY+EjRyjsAX9
-         0FQg==
+        bh=ynLvDJfV4kUr7Pu6PZ24xc1KIuICA5kAdzwdWYoRAQo=;
+        b=droIbYaFUpLJHwBKaGg3j3ro+7DiDU2fZOPVz8ZxRlUCU33+1V2qcvnqW+iNDDd2Ji
+         qI4U3Glx+Ko4c0z+r41HBoOrPZmDyHahBDxC/aVOtpj1QYupqjrscUIWNyVTsQ0/4Grp
+         Ltl+42IjuW5ViI5pS3jYxQVPXlVDU2waqEPD93oXv8njuRItoMx4qDU8z/vtbNoZxW7+
+         5yWCAiAKVPuBR62rOgiwMDqGgxixHF4pPxQI/quZ2OdVOEH7c5Mva75/qlp1qpNyGjai
+         ryKY+VGJnjRbko+qWZTt1D6+FSgAi7Bh2Yc4xANdmIMJ8gJmYGAUGb9X8eozljqbpWcN
+         z4gA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BeMwiKnE;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iEop8WqO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4si7970151qtd.145.2020.01.14.03.50.38
+        by mx.google.com with ESMTPS id q1si8651787qtl.374.2020.01.14.03.51.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 03:50:38 -0800 (PST)
+        Tue, 14 Jan 2020 03:51:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BeMwiKnE;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iEop8WqO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37904 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irKiT-0000ai-8c
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 06:50:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55963)
+	id 1irKj7-0001bm-9x
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 06:51:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55985)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irKZa-0006Nn-GL
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:41:30 -0500
+ (envelope-from <quintela@redhat.com>) id 1irKZc-0006RQ-Rs
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:41:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irKZW-0003Mw-H8
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:41:26 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:45866
+ (envelope-from <quintela@redhat.com>) id 1irKZZ-0003OX-4d
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:41:28 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:45598
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irKZW-0003MV-De
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:41:22 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irKZZ-0003OH-0o
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:41:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579002082;
+ s=mimecast20190719; t=1579002084;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=52j2mgmiA4z5vA2yqyRSfUxDIXdlaCqV+gsG8XIQ6+k=;
- b=BeMwiKnE+TUZfqZuMWRCGP+M+omyYao6hsYQLFQC2I6JtJtZ8+YjtZ4rSvRSsNB75/7T/f
- iHqRJ6iNgO1qx40/i09jxs7FYuBsOEAOqcMO3HZJejpv/zW16V9O20Kiq9DtLwvRgscq7R
- 2I/Z0GSBU7Fw0T6UZTVIQLtsi5llZs8=
+ bh=ynLvDJfV4kUr7Pu6PZ24xc1KIuICA5kAdzwdWYoRAQo=;
+ b=iEop8WqOx/33r+lo6NyYVKMfuEanLUv9R284UqhYPLQp4kbx25CiDQE013VhFL0u8oCmzM
+ AMx0uDoM6GP63L93B3gkSwLfXEdfBVGqN7gikEBxgnd1ZfmJc17A3q1z2ni4aozp0Az7CY
+ GeMa2IkZAqqiSGxmaPcNqiOcECkjZKs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-102-hiB7a0nkMUe_0QceA0_O0g-1; Tue, 14 Jan 2020 06:41:16 -0500
+ us-mta-244-FSkbqH-6OlWqOvzXcJrpdw-1; Tue, 14 Jan 2020 06:41:22 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19EC9801E7A;
- Tue, 14 Jan 2020 11:41:15 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E1D55DB64;
+ Tue, 14 Jan 2020 11:41:19 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E62D35DA70;
- Tue, 14 Jan 2020 11:41:05 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6C7E75DA7B;
+ Tue, 14 Jan 2020 11:41:15 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 13/30] migration: savevm_state_handler_insert: constant-time
- element insertion
-Date: Tue, 14 Jan 2020 12:39:09 +0100
-Message-Id: <20200114113926.3556-14-quintela@redhat.com>
+Subject: [PULL 14/30] migration/ram: Yield periodically to the main loop
+Date: Tue, 14 Jan 2020 12:39:10 +0100
+Message-Id: <20200114113926.3556-15-quintela@redhat.com>
 In-Reply-To: <20200114113926.3556-1-quintela@redhat.com>
 References: <20200114113926.3556-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: hiB7a0nkMUe_0QceA0_O0g-1
+X-MC-Unique: FSkbqH-6OlWqOvzXcJrpdw-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
@@ -112,9 +111,9 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
  Stefan Weil <sw@weilnetz.de>, Richard Henderson <rth@twiddle.net>,
  "Michael S. Tsirkin" <mst@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Scott Cheloha <cheloha@linux.vnet.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Yury Kotov <yury-kotov@yandex-team.ru>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
@@ -122,100 +121,58 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3E4UJNQtdCuO
+X-TUID: hP2gJK+12KOi
 
-From: Scott Cheloha <cheloha@linux.vnet.ibm.com>
+From: Yury Kotov <yury-kotov@yandex-team.ru>
 
-savevm_state's SaveStateEntry TAILQ is a priority queue.  Priority
-sorting is maintained by searching from head to tail for a suitable
-insertion spot.  Insertion is thus an O(n) operation.
+Usually, incoming migration coroutine yields to the main loop
+while its IO-channel is waiting for data to receive. But there is a case
+when RAM migration and data receive have the same speed: VM with huge
+zeroed RAM. In this case, IO-channel won't read and thus the main loop
+is stuck and for instance, it doesn't respond to QMP commands.
 
-If we instead keep track of the head of each priority's subqueue
-within that larger queue we can reduce this operation to O(1) time.
+For this case, yield periodically, but not too often, so as not to
+affect the speed of migration.
 
-savevm_state_handler_remove() becomes slightly more complex to
-accomodate these gains: we need to replace the head of a priority's
-subqueue when removing it.
-
-With O(1) insertion, booting VMs with many SaveStateEntry objects is
-more plausible.  For example, a ppc64 VM with maxmem=3D8T has 40000 such
-objects to insert.
-
-Signed-off-by: Scott Cheloha <cheloha@linux.vnet.ibm.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Yury Kotov <yury-kotov@yandex-team.ru>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/savevm.c | 26 +++++++++++++++++++++++---
- 1 file changed, 23 insertions(+), 3 deletions(-)
+ migration/ram.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 30d980caa2..e57686bca7 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -250,6 +250,7 @@ typedef struct SaveStateEntry {
-=20
- typedef struct SaveState {
-     QTAILQ_HEAD(, SaveStateEntry) handlers;
-+    SaveStateEntry *handler_pri_head[MIG_PRI_MAX + 1];
-     int global_section_id;
-     uint32_t len;
-     const char *name;
-@@ -261,6 +262,7 @@ typedef struct SaveState {
-=20
- static SaveState savevm_state =3D {
-     .handlers =3D QTAILQ_HEAD_INITIALIZER(savevm_state.handlers),
-+    .handler_pri_head =3D { [MIG_PRI_DEFAULT ... MIG_PRI_MAX] =3D NULL },
-     .global_section_id =3D 0,
- };
-=20
-@@ -709,24 +711,42 @@ static void savevm_state_handler_insert(SaveStateEntr=
-y *nse)
+diff --git a/migration/ram.c b/migration/ram.c
+index 1ec5c10561..5cd066467c 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -4246,7 +4246,7 @@ static void colo_flush_ram_cache(void)
+  */
+ static int ram_load_precopy(QEMUFile *f)
  {
-     MigrationPriority priority =3D save_state_priority(nse);
-     SaveStateEntry *se;
-+    int i;
+-    int flags =3D 0, ret =3D 0, invalid_flags =3D 0, len =3D 0;
++    int flags =3D 0, ret =3D 0, invalid_flags =3D 0, len =3D 0, i =3D 0;
+     /* ADVISE is earlier, it shows the source has the postcopy capability =
+on */
+     bool postcopy_advised =3D postcopy_is_advised();
+     if (!migrate_use_compression()) {
+@@ -4258,6 +4258,17 @@ static int ram_load_precopy(QEMUFile *f)
+         void *host =3D NULL;
+         uint8_t ch;
 =20
-     assert(priority <=3D MIG_PRI_MAX);
-=20
--    QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
--        if (save_state_priority(se) < priority) {
-+    for (i =3D priority - 1; i >=3D 0; i--) {
-+        se =3D savevm_state.handler_pri_head[i];
-+        if (se !=3D NULL) {
-+            assert(save_state_priority(se) < priority);
-             break;
-         }
-     }
-=20
--    if (se) {
-+    if (i >=3D 0) {
-         QTAILQ_INSERT_BEFORE(se, nse, entry);
-     } else {
-         QTAILQ_INSERT_TAIL(&savevm_state.handlers, nse, entry);
-     }
-+
-+    if (savevm_state.handler_pri_head[priority] =3D=3D NULL) {
-+        savevm_state.handler_pri_head[priority] =3D nse;
-+    }
- }
-=20
- static void savevm_state_handler_remove(SaveStateEntry *se)
- {
-+    SaveStateEntry *next;
-+    MigrationPriority priority =3D save_state_priority(se);
-+
-+    if (se =3D=3D savevm_state.handler_pri_head[priority]) {
-+        next =3D QTAILQ_NEXT(se, entry);
-+        if (next !=3D NULL && save_state_priority(next) =3D=3D priority) {
-+            savevm_state.handler_pri_head[priority] =3D next;
-+        } else {
-+            savevm_state.handler_pri_head[priority] =3D NULL;
++        /*
++         * Yield periodically to let main loop run, but an iteration of
++         * the main loop is expensive, so do it each some iterations
++         */
++        if ((i & 32767) =3D=3D 0 && qemu_in_coroutine()) {
++            aio_co_schedule(qemu_get_current_aio_context(),
++                            qemu_coroutine_self());
++            qemu_coroutine_yield();
 +        }
-+    }
-     QTAILQ_REMOVE(&savevm_state.handlers, se, entry);
- }
-=20
++        i++;
++
+         addr =3D qemu_get_be64(f);
+         flags =3D addr & ~TARGET_PAGE_MASK;
+         addr &=3D TARGET_PAGE_MASK;
 --=20
 2.24.1
 

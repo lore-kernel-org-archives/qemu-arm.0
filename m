@@ -1,98 +1,98 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5488061lff;
-        Tue, 14 Jan 2020 05:11:42 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwqR1rYygwbLaG568OGTdud4iz4TV1aHg42wkLch/OcYxpaL/KHCe/cYfgXWzEV6UCFgB0n
-X-Received: by 2002:a37:52d5:: with SMTP id g204mr22240846qkb.215.1579007502179;
-        Tue, 14 Jan 2020 05:11:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579007502; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5488645lff;
+        Tue, 14 Jan 2020 05:12:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxMVKM5wTWuc1AXjX8kAxeTzYasy8pu6gPI8LBGFNbEHEUlCT6AJeXe3iU6Yix1kMAmFma7
+X-Received: by 2002:a37:a685:: with SMTP id p127mr17600642qke.449.1579007533226;
+        Tue, 14 Jan 2020 05:12:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579007533; cv=none;
         d=google.com; s=arc-20160816;
-        b=fMY7bOoF94zC1qBs7cAOvX2EdgxkgV+V0yGSIPo9TKBQdd/1WCKBj5owG1tdbktHUW
-         TJEcdsr8mHbL4a9WTt16+s2TywRztj4K/QtIMzCQglE0ZunvnRzwSXOQgQ+7T+Pu9q2U
-         AzJMd/Yv9qO5pki1j7g9Nz+5ICqf3j1CTvMvSsxtAoYNAnxg3Gc1afgvKxP1SyUbmWyz
-         rBCy+8lDgCuzGk7UENuq4Nztuefvgf9JL32ZXY6Vgt9TQ2mpHHuPkSCvYvccEo0WXHtb
-         Ir5QwmC3ZdBGNJRq8h7J4fj1StvKwZ6f0b9nMCYVyKvVBKgWy04vUvb7GRQRnZLYw4lt
-         TX/w==
+        b=rRbAoxizTXq07ofdSwf/fB9nfu/v8E8XeveEAfRPExWQcMiSXvdzHfzTOUJX3YlFWS
+         PSmlPLQvFSddGAk8xAsztkgZvJY4/4wXHOsJWptGBJH/iya47P/nqL7vfyi6w2x7aT/4
+         I8tKBI80bUOiRYl7Xcws95R7o5QGLrAT3CKvdhOBAVh2A5n0nCt1ZZeBmgqHxjtktKK6
+         jKGExzgW1K9kVQaPzFqwQNnw9q4JpSWYEDWS6WNtXIRZ5vC6rbKCStNhr4UOTpNaNGWy
+         eP5gA7ZE784jl+sxxw9oGdojOQgXCxLXGpkb0kzxCuvEadpXVDmzR/zKmQinOo9hGxyO
+         /zhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=oe58z+C2bpPm4Fcg7P0TTleKqyKaDn7LOjM/RsnZovA=;
-        b=YTURRGwkZr+w63Xpd5or2LHpG6ptO8kvBLANLuLbM5u1K0mXH3m/K6ysQG9C67aELx
-         DLKiCydy75d0B0IOUjj1cx6Xsvas2eKD0AoZUh9cjKsiml0GKXDck0q7/HaOvpW/1mBu
-         N1Kdqsx3XuT16Ooo5aOTO8wP1Kzc8HUSAJftpPVSxDzU4Oz8AlbU9ZgfyHMCwEpXZhcF
-         K5QG9vr1ewQeHdbhnyDuTV2ItjkZY0JDCdqZQaMNd4Jq40+QBvaWuPYgm1ZI4hwOW5XT
-         aW4/ozjT7rQ8lk5QDCe6v2xlza+oV5XI3Jni78cdsWPJQIQHk7SzCdN4aRZwJqMvIISg
-         X+QQ==
+        bh=A9ILjMmGuIyM1P2hRnpWbTP5WXqnScSgd+A/btvZYmk=;
+        b=UaJkKZenz3msCItGSfzQsP0TfGNNCv0b6ZYpdvACWQiOWod3nMKO86AYBKAPvf5f97
+         CWSHTtcvi4rbvxcHyAvm/bT1zP/3/dG7mCXduoMPu/ELlChnCxcCDg613toJV4fI53t2
+         tPgqlZASO22BUGl9alCWIpuUgD2sWNlCNKDrmqrYey2bFHKjZLqZz4UAipKoIJV33OWi
+         hMvE4dES6nq2VIRGyqejQl1hhwifHv+8nxwZYYlG4Lh+ABQo41A2DhZFoO2Ki0I96NZH
+         XbTfSQMPMv64pm/2lIR8OgVx841j1j7W3XTZDxk4AeEKD1dXNZBWn/M/0un0g+E8s5WC
+         Wsww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D4q9RsT3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Nu+TJRyV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 4si8276373qtv.217.2020.01.14.05.11.41
+        by mx.google.com with ESMTPS id fb19si7921744qvb.115.2020.01.14.05.12.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 05:11:42 -0800 (PST)
+        Tue, 14 Jan 2020 05:12:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D4q9RsT3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Nu+TJRyV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39154 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39166 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irLyv-00079j-41
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 08:11:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41535)
+	id 1irLzQ-0007zA-Aw
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 08:12:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41845)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irLjs-0003g3-14
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:56:09 -0500
+ (envelope-from <quintela@redhat.com>) id 1irLkb-0004ZT-Tl
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:56:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irLjh-00027b-Ti
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:56:02 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:49903
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <quintela@redhat.com>) id 1irLka-0002O2-2D
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:56:53 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:59918
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLjh-00027Q-PG
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:55:57 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLkZ-0002NS-UM
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:56:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579006557;
+ s=mimecast20190719; t=1579006611;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oe58z+C2bpPm4Fcg7P0TTleKqyKaDn7LOjM/RsnZovA=;
- b=D4q9RsT3X0FSvsQ+byQn8kEmYl3GYTRCpkaJHabcuJVBXF2RrajyD452r+jDuIvdvOBKhN
- ccFsdk+GeqGwaguR4HIPwdBZDp3sHR/t6arRgufkQYYfl9TseNMaY8suB9vS473hXgIGjW
- h+MnHMP3znVYWrFcraccAov7Jm7qH/o=
+ bh=A9ILjMmGuIyM1P2hRnpWbTP5WXqnScSgd+A/btvZYmk=;
+ b=Nu+TJRyVdCgoPONg/yBy9e2pI0R5CKAHLDHR881fpedDURf231Z/GkKWV2Qp4dBkc3mEAg
+ x2dc4TpshpZ37LtBu67QeGieMKPoTjXaQvOpfTRDzsz+ZlG54apV3rguh3ydCAxRNtMNOr
+ tPM4aH6AYIKdhybe24CX8J0Vmc0Cjkk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-151-nsBCqY-9PX6bvTFUcUd0Fw-1; Tue, 14 Jan 2020 07:55:56 -0500
+ us-mta-403-ct9GR9yINdSwSFjUmuvLYg-1; Tue, 14 Jan 2020 07:56:50 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 336001005512;
- Tue, 14 Jan 2020 12:55:54 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 665D58024CE;
+ Tue, 14 Jan 2020 12:56:48 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id ABE5E5D9E5;
- Tue, 14 Jan 2020 12:55:49 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 73F525D9E5;
+ Tue, 14 Jan 2020 12:56:34 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 21/30] migration/postcopy: enable compress during postcopy
-Date: Tue, 14 Jan 2020 13:52:45 +0100
-Message-Id: <20200114125254.4515-22-quintela@redhat.com>
+Subject: [PULL 27/30] migration: Define VMSTATE_INSTANCE_ID_ANY
+Date: Tue, 14 Jan 2020 13:52:51 +0100
+Message-Id: <20200114125254.4515-28-quintela@redhat.com>
 In-Reply-To: <20200114125254.4515-1-quintela@redhat.com>
 References: <20200114125254.4515-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: nsBCqY-9PX6bvTFUcUd0Fw-1
+X-MC-Unique: ct9GR9yINdSwSFjUmuvLYg-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,139 +111,281 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
  Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Peter Xu <peterx@redhat.com>,
  Stefan Berger <stefanb@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
  Andrzej Zaborowski <balrogg@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nxS8J61FZEvE
+X-TUID: iHpvETM+2gJe
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+From: Peter Xu <peterx@redhat.com>
 
-postcopy requires to place a whole host page, while migration thread
-migrate memory in target page size. This makes postcopy need to collect
-all target pages in one host page before placing via userfaultfd.
+Define the new macro VMSTATE_INSTANCE_ID_ANY for callers who wants to
+auto-generate the vmstate instance ID.  Previously it was hard coded
+as -1 instead of this macro.  It helps to change this default value in
+the follow up patches.  No functional change.
 
-To enable compress during postcopy, there are two problems to solve:
-
-    1. Random order for target page arrival
-    2. Target pages in one host page arrives without interrupt by target
-       page from other host page
-
-The first one is handled by previous cleanup patch.
-
-This patch handles the second one by:
-
-    1. Flush compress thread for each host page
-    2. Wait for decompress thread for before placing host page
-
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/migration.c | 11 -----------
- migration/ram.c       | 28 +++++++++++++++++++++++++++-
- 2 files changed, 27 insertions(+), 12 deletions(-)
+ backends/dbus-vmstate.c     | 3 ++-
+ hw/arm/stellaris.c          | 2 +-
+ hw/core/qdev.c              | 3 ++-
+ hw/display/ads7846.c        | 2 +-
+ hw/i2c/core.c               | 2 +-
+ hw/input/stellaris_input.c  | 3 ++-
+ hw/intc/apic_common.c       | 2 +-
+ hw/misc/max111x.c           | 3 ++-
+ hw/net/eepro100.c           | 3 ++-
+ hw/pci/pci.c                | 2 +-
+ hw/ppc/spapr.c              | 2 +-
+ hw/timer/arm_timer.c        | 2 +-
+ hw/tpm/tpm_emulator.c       | 3 ++-
+ include/migration/vmstate.h | 2 ++
+ migration/savevm.c          | 8 ++++----
+ 15 files changed, 25 insertions(+), 17 deletions(-)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index e55edee606..990bff00c0 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -1005,17 +1005,6 @@ static bool migrate_caps_check(bool *cap_list,
- #endif
+diff --git a/backends/dbus-vmstate.c b/backends/dbus-vmstate.c
+index 56b482a7d6..cc594a722e 100644
+--- a/backends/dbus-vmstate.c
++++ b/backends/dbus-vmstate.c
+@@ -412,7 +412,8 @@ dbus_vmstate_complete(UserCreatable *uc, Error **errp)
+         return;
+     }
 =20
-     if (cap_list[MIGRATION_CAPABILITY_POSTCOPY_RAM]) {
--        if (cap_list[MIGRATION_CAPABILITY_COMPRESS]) {
--            /* The decompression threads asynchronously write into RAM
--             * rather than use the atomic copies needed to avoid
--             * userfaulting.  It should be possible to fix the decompressi=
-on
--             * threads for compatibility in future.
--             */
--            error_setg(errp, "Postcopy is not currently compatible "
--                       "with compression");
--            return false;
--        }
--
-         /* This check is reasonably expensive, so only when it's being
-          * set the first time, also it's only the destination that needs
-          * special support.
-diff --git a/migration/ram.c b/migration/ram.c
-index cbf8ab6a51..fd1155f735 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -3469,6 +3469,14 @@ static int ram_save_iterate(QEMUFile *f, void *opaqu=
+-    if (vmstate_register(VMSTATE_IF(self), -1, &dbus_vmstate, self) < 0) {
++    if (vmstate_register(VMSTATE_IF(self), VMSTATE_INSTANCE_ID_ANY,
++                         &dbus_vmstate, self) < 0) {
+         error_setg(errp, "Failed to register vmstate");
+     }
+ }
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index b198066b54..bb025e0bd0 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -708,7 +708,7 @@ static int stellaris_sys_init(uint32_t base, qemu_irq i=
+rq,
+     memory_region_init_io(&s->iomem, NULL, &ssys_ops, s, "ssys", 0x0000100=
+0);
+     memory_region_add_subregion(get_system_memory(), base, &s->iomem);
+     ssys_reset(s);
+-    vmstate_register(NULL, -1, &vmstate_stellaris_sys, s);
++    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_stellaris_sys=
+, s);
+     return 0;
+ }
+=20
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 9f1753f5cf..58e87d336d 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -879,7 +879,8 @@ static void device_set_realized(Object *obj, bool value=
+, Error **errp)
+=20
+         if (qdev_get_vmsd(dev)) {
+             if (vmstate_register_with_alias_id(VMSTATE_IF(dev),
+-                                               -1, qdev_get_vmsd(dev), dev=
+,
++                                               VMSTATE_INSTANCE_ID_ANY,
++                                               qdev_get_vmsd(dev), dev,
+                                                dev->instance_id_alias,
+                                                dev->alias_required_for_ver=
+sion,
+                                                &local_err) < 0) {
+diff --git a/hw/display/ads7846.c b/hw/display/ads7846.c
+index c12272ae72..9228b40b1a 100644
+--- a/hw/display/ads7846.c
++++ b/hw/display/ads7846.c
+@@ -154,7 +154,7 @@ static void ads7846_realize(SSISlave *d, Error **errp)
+=20
+     ads7846_int_update(s);
+=20
+-    vmstate_register(NULL, -1, &vmstate_ads7846, s);
++    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_ads7846, s);
+ }
+=20
+ static void ads7846_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index 92cd489069..d770035ba0 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -61,7 +61,7 @@ I2CBus *i2c_init_bus(DeviceState *parent, const char *nam=
 e)
 =20
-             rs->target_page_count +=3D pages;
+     bus =3D I2C_BUS(qbus_create(TYPE_I2C_BUS, parent, name));
+     QLIST_INIT(&bus->current_devs);
+-    vmstate_register(NULL, -1, &vmstate_i2c_bus, bus);
++    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_i2c_bus, bus)=
+;
+     return bus;
+ }
 =20
-+            /*
-+             * During postcopy, it is necessary to make sure one whole hos=
-t
-+             * page is sent in one chunk.
-+             */
-+            if (migrate_postcopy_ram()) {
-+                flush_compressed_data(rs);
-+            }
+diff --git a/hw/input/stellaris_input.c b/hw/input/stellaris_input.c
+index 59892b07fc..e6ee5e11f1 100644
+--- a/hw/input/stellaris_input.c
++++ b/hw/input/stellaris_input.c
+@@ -88,5 +88,6 @@ void stellaris_gamepad_init(int n, qemu_irq *irq, const i=
+nt *keycode)
+     }
+     s->num_buttons =3D n;
+     qemu_add_kbd_event_handler(stellaris_gamepad_put_key, s);
+-    vmstate_register(NULL, -1, &vmstate_stellaris_gamepad, s);
++    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY,
++                     &vmstate_stellaris_gamepad, s);
+ }
+diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
+index 375cb6abe9..f2c3a7f309 100644
+--- a/hw/intc/apic_common.c
++++ b/hw/intc/apic_common.c
+@@ -284,7 +284,7 @@ static void apic_common_realize(DeviceState *dev, Error=
+ **errp)
+     }
+=20
+     if (s->legacy_instance_id) {
+-        instance_id =3D -1;
++        instance_id =3D VMSTATE_INSTANCE_ID_ANY;
+     }
+     vmstate_register_with_alias_id(NULL, instance_id, &vmstate_apic_common=
+,
+                                    s, -1, 0, NULL);
+diff --git a/hw/misc/max111x.c b/hw/misc/max111x.c
+index 211008ce02..2b87bdee5b 100644
+--- a/hw/misc/max111x.c
++++ b/hw/misc/max111x.c
+@@ -146,7 +146,8 @@ static int max111x_init(SSISlave *d, int inputs)
+     s->input[7] =3D 0x80;
+     s->com =3D 0;
+=20
+-    vmstate_register(VMSTATE_IF(dev), -1, &vmstate_max111x, s);
++    vmstate_register(VMSTATE_IF(dev), VMSTATE_INSTANCE_ID_ANY,
++                     &vmstate_max111x, s);
+     return 0;
+ }
+=20
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index cc71a7a036..6cc97769d9 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -1874,7 +1874,8 @@ static void e100_nic_realize(PCIDevice *pci_dev, Erro=
+r **errp)
+=20
+     s->vmstate =3D g_memdup(&vmstate_eepro100, sizeof(vmstate_eepro100));
+     s->vmstate->name =3D qemu_get_queue(s->nic)->model;
+-    vmstate_register(VMSTATE_IF(&pci_dev->qdev), -1, s->vmstate, s);
++    vmstate_register(VMSTATE_IF(&pci_dev->qdev), VMSTATE_INSTANCE_ID_ANY,
++                     s->vmstate, s);
+ }
+=20
+ static void eepro100_instance_init(Object *obj)
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index e3d310365d..3ac7961451 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -122,7 +122,7 @@ static void pci_bus_realize(BusState *qbus, Error **err=
+p)
+     bus->machine_done.notify =3D pcibus_machine_done;
+     qemu_add_machine_init_done_notifier(&bus->machine_done);
+=20
+-    vmstate_register(NULL, -1, &vmstate_pcibus, bus);
++    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_pcibus, bus);
+ }
+=20
+ static void pcie_bus_realize(BusState *qbus, Error **errp)
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 30a5fbd3be..02cf53fc5b 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -2948,7 +2948,7 @@ static void spapr_machine_init(MachineState *machine)
+      * interface, this is a legacy from the sPAPREnvironment structure
+      * which predated MachineState but had a similar function */
+     vmstate_register(NULL, 0, &vmstate_spapr, spapr);
+-    register_savevm_live("spapr/htab", -1, 1,
++    register_savevm_live("spapr/htab", VMSTATE_INSTANCE_ID_ANY, 1,
+                          &savevm_htab_handlers, spapr);
+=20
+     qbus_set_hotplug_handler(sysbus_get_default(), OBJECT(machine),
+diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
+index af524fabf7..beaa285685 100644
+--- a/hw/timer/arm_timer.c
++++ b/hw/timer/arm_timer.c
+@@ -180,7 +180,7 @@ static arm_timer_state *arm_timer_init(uint32_t freq)
+     s->control =3D TIMER_CTRL_IE;
+=20
+     s->timer =3D ptimer_init(arm_timer_tick, s, PTIMER_POLICY_DEFAULT);
+-    vmstate_register(NULL, -1, &vmstate_arm_timer, s);
++    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_arm_timer, s)=
+;
+     return s;
+ }
+=20
+diff --git a/hw/tpm/tpm_emulator.c b/hw/tpm/tpm_emulator.c
+index 10d587ed40..3a0fc442f3 100644
+--- a/hw/tpm/tpm_emulator.c
++++ b/hw/tpm/tpm_emulator.c
+@@ -914,7 +914,8 @@ static void tpm_emulator_inst_init(Object *obj)
+     tpm_emu->cur_locty_number =3D ~0;
+     qemu_mutex_init(&tpm_emu->mutex);
+=20
+-    vmstate_register(NULL, -1, &vmstate_tpm_emulator, obj);
++    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY,
++                     &vmstate_tpm_emulator, obj);
+ }
+=20
+ /*
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 4aef72c426..ed74dd5624 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -1157,6 +1157,8 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDe=
+scription *vmsd,
+=20
+ bool vmstate_save_needed(const VMStateDescription *vmsd, void *opaque);
+=20
++#define  VMSTATE_INSTANCE_ID_ANY  -1
 +
-             /*
-              * we want to check in the 1st loop, just in case it was the 1=
-st
-              * time and we had to sync the dirty bitmap.
-@@ -4061,6 +4069,7 @@ static int ram_load_postcopy(QEMUFile *f)
-         void *place_source =3D NULL;
-         RAMBlock *block =3D NULL;
-         uint8_t ch;
-+        int len;
+ /* Returns: 0 on success, -1 on failure */
+ int vmstate_register_with_alias_id(VMStateIf *obj, int instance_id,
+                                    const VMStateDescription *vmsd,
+diff --git a/migration/savevm.c b/migration/savevm.c
+index e57686bca7..8dab99efc4 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -775,7 +775,7 @@ int register_savevm_live(const char *idstr,
 =20
-         addr =3D qemu_get_be64(f);
+     pstrcat(se->idstr, sizeof(se->idstr), idstr);
 =20
-@@ -4078,7 +4087,8 @@ static int ram_load_postcopy(QEMUFile *f)
+-    if (instance_id =3D=3D -1) {
++    if (instance_id =3D=3D VMSTATE_INSTANCE_ID_ANY) {
+         se->instance_id =3D calculate_new_instance_id(se->idstr);
+     } else {
+         se->instance_id =3D instance_id;
+@@ -842,14 +842,14 @@ int vmstate_register_with_alias_id(VMStateIf *obj, in=
+t instance_id,
 =20
-         trace_ram_load_postcopy_loop((uint64_t)addr, flags);
-         place_needed =3D false;
--        if (flags & (RAM_SAVE_FLAG_ZERO | RAM_SAVE_FLAG_PAGE)) {
-+        if (flags & (RAM_SAVE_FLAG_ZERO | RAM_SAVE_FLAG_PAGE |
-+                     RAM_SAVE_FLAG_COMPRESS_PAGE)) {
-             block =3D ram_block_from_stream(f, flags);
-=20
-             host =3D host_from_ram_block_offset(block, addr);
-@@ -4161,6 +4171,17 @@ static int ram_load_postcopy(QEMUFile *f)
-                                          TARGET_PAGE_SIZE);
-             }
-             break;
-+        case RAM_SAVE_FLAG_COMPRESS_PAGE:
-+            all_zero =3D false;
-+            len =3D qemu_get_be32(f);
-+            if (len < 0 || len > compressBound(TARGET_PAGE_SIZE)) {
-+                error_report("Invalid compressed data length: %d", len);
-+                ret =3D -EINVAL;
-+                break;
-+            }
-+            decompress_data_with_multi_threads(f, page_buffer, len);
-+            break;
-+
-         case RAM_SAVE_FLAG_EOS:
-             /* normal exit */
-             multifd_recv_sync_main();
-@@ -4172,6 +4193,11 @@ static int ram_load_postcopy(QEMUFile *f)
-             break;
+             se->compat =3D g_new0(CompatEntry, 1);
+             pstrcpy(se->compat->idstr, sizeof(se->compat->idstr), vmsd->na=
+me);
+-            se->compat->instance_id =3D instance_id =3D=3D -1 ?
++            se->compat->instance_id =3D instance_id =3D=3D VMSTATE_INSTANC=
+E_ID_ANY ?
+                          calculate_compat_instance_id(vmsd->name) : instan=
+ce_id;
+-            instance_id =3D -1;
++            instance_id =3D VMSTATE_INSTANCE_ID_ANY;
          }
+     }
+     pstrcat(se->idstr, sizeof(se->idstr), vmsd->name);
 =20
-+        /* Got the whole host page, wait for decompress before placing. */
-+        if (place_needed) {
-+            ret |=3D wait_for_decompress_done();
-+        }
-+
-         /* Detect for any possible file errors */
-         if (!ret && qemu_file_get_error(f)) {
-             ret =3D qemu_file_get_error(f);
+-    if (instance_id =3D=3D -1) {
++    if (instance_id =3D=3D VMSTATE_INSTANCE_ID_ANY) {
+         se->instance_id =3D calculate_new_instance_id(se->idstr);
+     } else {
+         se->instance_id =3D instance_id;
 --=20
 2.24.1
 

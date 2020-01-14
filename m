@@ -1,94 +1,98 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5467805lff;
-        Tue, 14 Jan 2020 04:53:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyun98w1U0jqC0z3S5wthskys31XItFN+X8fvXJ0L02lt0OFi8iUw0cCuVR6jNwSglnlEjT
-X-Received: by 2002:a37:9647:: with SMTP id y68mr21242689qkd.300.1579006424552;
-        Tue, 14 Jan 2020 04:53:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579006424; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5468083lff;
+        Tue, 14 Jan 2020 04:54:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzGpSQ+SaK0HAo6xpgabvTfbfn9OL3lqDCY4RpO0w1hmK18mZLvPoPsicgAWXUGJEBCAloL
+X-Received: by 2002:ae9:e206:: with SMTP id c6mr22156178qkc.105.1579006443906;
+        Tue, 14 Jan 2020 04:54:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579006443; cv=none;
         d=google.com; s=arc-20160816;
-        b=wy6MtoBxJ76jnFpDelHse+uPbjVaOUlQKcFl+KnGLfrU3G9nozwaIixX+bbcTZRJfP
-         ojI0GhdMZHakG7pcby92Fgp6X5hDH5i15K8vTeU6QnZSlNqUuDvJgAbJOEPkaqFTnkQS
-         7lpfBLteSujPxMFXDtL9ChrMdq1eXDW16VGLCKEinwVebT/JAMD6DoyqYompUf3XbuOO
-         5SMMJSoPxsEi1zVTh0his1Dd6uNmhkw//n1Yoqh9Ae0NSHoEafLaazJQVMEknFFYEqfM
-         hI7/hOeFTBpfkaJdbSdwkRP0WObtQx62lKIw2HMmaN47FCqfc+UGAiCMdKBZcSZgcrXs
-         68kg==
+        b=B0zqfkMDlo/J3oJMouEsajfbtC3vQ2+CJsb7CkJgq5Tzyl9OOCUYsFyl59USMYbHow
+         m354dBTTB10vEQzJ5mXDR1HnhUqN+9Bf6xvgM6slZVbI+mjsVmGx+isLZVsaUmicpasw
+         VjPA2c9IdY/RcWQ7QiHZ21Pqf7hi9o/dzwdXBdYgr/IA2WaW7YBfvdrK0dEEB3C7VTSy
+         8T3N4drOWJ9uItKyNVhb04UHxH9Ym8bre+YRpAYigOCU/oW9hhxesK3smHtTXBCWVdJl
+         wjsRar8pPEjg3NY/pfs3ZUIL2GY4lrqniTDXArMKAUTOW3khyLorFsLz73gjHYTiNrho
+         hbQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=IEHxBRqKf6XjgLikiciQ39X3TILgeZdaCu/M3isGJZU=;
-        b=K059GowsW2i8NbM9XNHAKRiwsGzanwQIYDa4hvokjDfr1BHal7io25tEw67Ty/cVaA
-         AGZYFzmqaaRPl5aGdMkD92bR3B/WtOpD13HwoM7o48epWWeslzpVoHFW9rp2RQf6bfva
-         Zg37dt2pb85h3hICwxa1BRpIn0u+I9a3m7bgUupWH802WQrLb5w2B3dg35ckM7oKE/oX
-         MiJgTdwljW3ax6q2tgUOXY9eFSS7hGydYJxqGNbnuo1CH3GaK2YTf3U29KYJhpOuh138
-         D51eIa/DTEQD3DqwOYEDsbBV7fR/2mBJZXKqteOYH5BuAkYVpwkx8MsiLhqjMdlETtlE
-         YlHQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=OFbuBsfI2hdknoUqcqxf7Pz5nXpd3viWe9nVgMcqFyk=;
+        b=gdQHPx66sDlkCaVM3AW4APfi5DkmvfIZOmQ+YJz3WtS+o+KoR/MV17dmm5VpYqQ79t
+         J6rXP0tkevKSDxN2uoFJUfnRdRo9+AHB7ef+23gXDZkBTMvxxgEBTMdBYvsvZZUgm0kV
+         O0uUa5UsFVWY2ejlnbv7TFmw0HwdDlkxapidchdLHi7rJfkp21WUhw5UO6zATSu6stOy
+         QZPaNl9d/nrdrIw97xgXnGBMTRiMjs28hYeREZhptH5e3d8W4DUqrY50T2Q7YqHRrQL/
+         vgeaZKUHIl55cbpDcrqCVqNUO+GUDkhR5fEyPFASBb7jFcc1RqOev4QoMwP3Dtd6pepq
+         iGHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fde65Gv0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CiDeFvbw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x27si9011045qtm.363.2020.01.14.04.53.44
+        by mx.google.com with ESMTPS id a23si8736978qkn.339.2020.01.14.04.54.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 04:53:44 -0800 (PST)
+        Tue, 14 Jan 2020 04:54:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fde65Gv0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CiDeFvbw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38668 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38684 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irLhX-0000V6-49
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 07:53:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40452)
+	id 1irLhq-0000zW-M5
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 07:54:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40587)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irLh1-0008U7-MS
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:53:15 -0500
+ (envelope-from <quintela@redhat.com>) id 1irLhK-0000UP-9Y
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:53:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irLgx-0001L9-QC
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:53:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38265
+ (envelope-from <quintela@redhat.com>) id 1irLhI-0001Pf-Pe
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:53:30 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35696
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLgx-0001Kn-NA
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:53:07 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLhI-0001PR-Ab
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 07:53:28 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579006387;
+ s=mimecast20190719; t=1579006407;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=IEHxBRqKf6XjgLikiciQ39X3TILgeZdaCu/M3isGJZU=;
- b=fde65Gv0m8+KUYlUv4YjIyU2EwmwDvbOtQs5UeNByiLAkMoEzkItQ2ys3JGpjSapTEPPH0
- qGlky2wpUKAzYGAMY5wrZNaLL1C3pDdF4IZYenFbyM2Ukrt/oc6U6SYiNzrEVmwQB7f60x
- UjvKQMd/+k9EHQqYPojbdTxQoNmqYjo=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OFbuBsfI2hdknoUqcqxf7Pz5nXpd3viWe9nVgMcqFyk=;
+ b=CiDeFvbwH08EVz+xotrW1KGItgj2sXKmAOThYIMAXZgzRgSWu2mctg31H/T48tVprq4mlp
+ Y0hEt4hHIWyepd08h/6WzP4s6ViS/EGtv9keh6P8VunOMCQHoOs5PzJ62jJnEtnJjcNFzT
+ 5eYfc9h3BhnhE0GfcRYn8v0zp22rXRo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-255-26yaF45QMbS3gIwxXGrXvw-1; Tue, 14 Jan 2020 07:53:06 -0500
+ us-mta-362-rtLsel4uMG6elYtC9xo37g-1; Tue, 14 Jan 2020 07:53:25 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 31328801E7A;
- Tue, 14 Jan 2020 12:53:04 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 64B2CDBAB;
+ Tue, 14 Jan 2020 12:53:23 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F2F855DA70;
- Tue, 14 Jan 2020 12:52:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2858C5D9E5;
+ Tue, 14 Jan 2020 12:53:13 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 00/30] Migration pull patches (take 4)
-Date: Tue, 14 Jan 2020 13:52:24 +0100
-Message-Id: <20200114125254.4515-1-quintela@redhat.com>
+Subject: [PULL 03/30] migration-test: Add migration multifd test
+Date: Tue, 14 Jan 2020 13:52:27 +0100
+Message-Id: <20200114125254.4515-4-quintela@redhat.com>
+In-Reply-To: <20200114125254.4515-1-quintela@redhat.com>
+References: <20200114125254.4515-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: 26yaF45QMbS3gIwxXGrXvw-1
+X-MC-Unique: rtLsel4uMG6elYtC9xo37g-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,128 +113,102 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Stefan Berger <stefanb@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ qemu-ppc@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
  Andrzej Zaborowski <balrogg@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0KdlTfI7cASg
+X-TUID: J+0KsalXKSU2
 
-The following changes since commit 3c8a6575985b1652b45bfa670b5e1907d642cfa0=
-:
+We set multifd-channels.
 
-  Merge remote-tracking branch 'remotes/kraxel/tags/usb-20200113-pull-reque=
-st' into staging (2020-01-13 14:19:57 +0000)
+Signed-off-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Tested-by: Wei Yang <richardw.yang@linux.intel.com>
+---
+ tests/qtest/migration-test.c | 56 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
-are available in the Git repository at:
-
-  https://github.com/juanquintela/qemu.git tags/migration-pull-pull-request
-
-for you to fetch changes up to b039b02c25d1725cf0296721d98e35e024468b20:
-
-  migration: Support QLIST migration (2020-01-14 13:45:29 +0100)
-
-----------------------------------------------------------------
-Migration pull request (take 4)
-
-- both patches for x32 archs in
-- reorder the pages to make git bisect happy
-
-Thanks a lot to Daniel for helping with the bugs.  Twice.
-
-----------------------------------------------------------------
-
-Alexey Romko (1):
-  Bug #1829242 correction.
-
-Daniel Henrique Barboza (1):
-  ram.c: remove unneeded labels
-
-Dr. David Alan Gilbert (1):
-  migration: Rate limit inside host pages
-
-Eric Auger (1):
-  migration: Support QLIST migration
-
-Fangrui Song (1):
-  migration: Fix incorrect integer->float conversion caught by clang
-
-Jiahui Cen (2):
-  migration/multifd: fix nullptr access in terminating multifd threads
-  migration/multifd: fix destroyed mutex access in terminating multifd
-    threads
-
-Juan Quintela (5):
-  multifd: Initialize local variable
-  multifd: Allocate uint64_t instead of ram_addr_t
-  migration-test: Add migration multifd test
-  migration: Make sure that we don't call write() in case of error
-  migration-test: introduce functions to handle string parameters
-
-Laurent Vivier (2):
-  migration-test: ppc64: fix FORTH test program
-  runstate: ignore finishmigrate -> prelaunch transition
-
-Marc-Andr=C3=A9 Lureau (1):
-  misc: use QEMU_IS_ALIGNED
-
-Peter Xu (3):
-  migration: Define VMSTATE_INSTANCE_ID_ANY
-  migration: Change SaveStateEntry.instance_id into uint32_t
-  apic: Use 32bit APIC ID for migration instance ID
-
-Scott Cheloha (2):
-  migration: add savevm_state_handler_remove()
-  migration: savevm_state_handler_insert: constant-time element
-    insertion
-
-Wei Yang (8):
-  migration/postcopy: reduce memset when it is zero page and
-    matches_target_page_size
-  migration/postcopy: wait for decompress thread in precopy
-  migration/postcopy: count target page number to decide the
-    place_needed
-  migration/postcopy: set all_zero to true on the first target page
-  migration/postcopy: enable random order target page arrival
-  migration/postcopy: enable compress during postcopy
-  migration/multifd: clean pages after filling packet
-  migration/multifd: not use multifd during postcopy
-
-Yury Kotov (2):
-  migration: Fix the re-run check of the migrate-incoming command
-  migration/ram: Yield periodically to the main loop
-
- backends/dbus-vmstate.c      |   3 +-
- exec.c                       |   4 +-
- hw/arm/stellaris.c           |   2 +-
- hw/core/qdev.c               |   3 +-
- hw/display/ads7846.c         |   2 +-
- hw/i2c/core.c                |   2 +-
- hw/input/stellaris_input.c   |   3 +-
- hw/intc/apic_common.c        |   7 +-
- hw/misc/max111x.c            |   3 +-
- hw/net/eepro100.c            |   3 +-
- hw/pci/pci.c                 |   2 +-
- hw/ppc/spapr.c               |   2 +-
- hw/timer/arm_timer.c         |   2 +-
- hw/tpm/tpm_emulator.c        |   3 +-
- include/migration/register.h |   2 +-
- include/migration/vmstate.h  |  25 ++++-
- include/qemu/queue.h         |  39 ++++++++
- migration/migration.c        |  72 +++++++-------
- migration/migration.h        |   1 +
- migration/ram.c              | 185 ++++++++++++++++++++++++++---------
- migration/savevm.c           |  61 ++++++++----
- migration/trace-events       |   9 +-
- migration/vmstate-types.c    |  70 +++++++++++++
- stubs/vmstate.c              |   2 +-
- tests/qtest/migration-test.c |  97 +++++++++++++++++-
- tests/test-vmstate.c         | 170 ++++++++++++++++++++++++++++++++
- vl.c                         |  10 +-
- 27 files changed, 654 insertions(+), 130 deletions(-)
-
+diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+index 53afec4395..fb70214f44 100644
+--- a/tests/qtest/migration-test.c
++++ b/tests/qtest/migration-test.c
+@@ -1202,6 +1202,61 @@ static void test_migrate_auto_converge(void)
+     test_migrate_end(from, to, true);
+ }
+=20
++static void test_multifd_tcp(void)
++{
++    MigrateStart *args =3D migrate_start_new();
++    QTestState *from, *to;
++    QDict *rsp;
++    char *uri;
++
++    if (test_migrate_start(&from, &to, "defer", args)) {
++        return;
++    }
++
++    /*
++     * We want to pick a speed slow enough that the test completes
++     * quickly, but that it doesn't complete precopy even on a slow
++     * machine, so also set the downtime.
++     */
++    /* 1 ms should make it not converge*/
++    migrate_set_parameter_int(from, "downtime-limit", 1);
++    /* 1GB/s */
++    migrate_set_parameter_int(from, "max-bandwidth", 1000000000);
++
++    migrate_set_parameter_int(from, "multifd-channels", 16);
++    migrate_set_parameter_int(to, "multifd-channels", 16);
++
++    migrate_set_capability(from, "multifd", "true");
++    migrate_set_capability(to, "multifd", "true");
++
++    /* Start incoming migration from the 1st socket */
++    rsp =3D wait_command(to, "{ 'execute': 'migrate-incoming',"
++                           "  'arguments': { 'uri': 'tcp:127.0.0.1:0' }}")=
+;
++    qobject_unref(rsp);
++
++    /* Wait for the first serial output from the source */
++    wait_for_serial("src_serial");
++
++    uri =3D migrate_get_socket_address(to, "socket-address");
++
++    migrate_qmp(from, uri, "{}");
++
++    wait_for_migration_pass(from);
++
++    /* 300ms it should converge */
++    migrate_set_parameter_int(from, "downtime-limit", 300);
++
++    if (!got_stop) {
++        qtest_qmp_eventwait(from, "STOP");
++    }
++    qtest_qmp_eventwait(to, "RESUME");
++
++    wait_for_serial("dest_serial");
++    wait_for_migration_complete(from);
++    test_migrate_end(from, to, true);
++    free(uri);
++}
++
+ int main(int argc, char **argv)
+ {
+     char template[] =3D "/tmp/migration-test-XXXXXX";
+@@ -1266,6 +1321,7 @@ int main(int argc, char **argv)
+                    test_validate_uuid_dst_not_set);
+=20
+     qtest_add_func("/migration/auto_converge", test_migrate_auto_converge)=
+;
++    qtest_add_func("/migration/multifd/tcp", test_multifd_tcp);
+=20
+     ret =3D g_test_run();
+=20
 --=20
 2.24.1
 

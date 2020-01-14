@@ -1,171 +1,454 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5503032lff;
-        Tue, 14 Jan 2020 05:24:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzTmPAr4ySx/f9mrDPc4XadwqAzCp1SN/4fAmX1C7aLwm/y821LrOgfm6YZrQFKrG0Dz8FO
-X-Received: by 2002:a37:27cf:: with SMTP id n198mr21645334qkn.188.1579008270901;
-        Tue, 14 Jan 2020 05:24:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579008270; cv=none;
-        d=google.com; s=arc-20160816;
-        b=cCQKqZr13K4ZPcQh8AW6wMA5GjcoUC2T0ucQC5QQoBYbAPyfp6CUGSt6WXhcx3lOtl
-         77y9zUAaFNBlv2xnS1TAUe3+h4gBBZ0miR9iZqClWmmKu+FU+xpnsghRGBl7KH4Ta1+s
-         MkGFWO4noGYsmnukz+/dkDPkuQ1UcVsksL+eq/eKl4CAt+sxVLBCh1spMI9d2WF6l5Ce
-         QKsUqIOeuZK7CrnZsK4XIL2z0NuA9avbtXq6FlsZ9bZNAMTluPCKpWC9G7VmRX+D9l2I
-         48EvLPuDmgF9E9U7yw0KfEowRzNJeruBrnhe3AyK+CACJtUWEu0xiAm25ZYE5GktzgH9
-         D+dQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=/qRvnKikU/zZW4H4BQbW8b5TjzE8O1lK0e+sh7nSqVM=;
-        b=sO5Sv6Eg4a36zWyk2cKhUM5IWkBrmHajKGquAov/NwDXSrLVPV0TipxD3LoGFpeNLy
-         5VmnUNGfaxWY6eJTL8EbwCcNvTMGtEyY+m7K37QvZhIX/yd+RC8EXI40dV3+RnOhIacL
-         ReET/pRvGd+IbqKjlD/6c+A3Ga08ljnQzeQtCAXVwpCM8ylxT+QXokLPSoXXGPluDLrZ
-         iXrfSkjj/7zERRmKjJBM9x4gxnDn7JBtVriCAsIZBr3lBG2ACwiHyCMztVYqbObspUZ+
-         v8whicAy5GOxo+pGcjdYM81c7WS+SvRRTUrmrdDCFIxX9mhybeBzatEh3BAP/pr6/oGv
-         aQVA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OIdMvT6x;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v23si8334572qtk.131.2020.01.14.05.24.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 05:24:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OIdMvT6x;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39486 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irMBJ-0006zg-US
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 08:24:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41917)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irLkl-0004og-7U
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:57:04 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irLkk-0002RG-2Q
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:57:03 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48472
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLkj-0002R0-Uw
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:57:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579006621;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/qRvnKikU/zZW4H4BQbW8b5TjzE8O1lK0e+sh7nSqVM=;
- b=OIdMvT6xYk5tbWo4o/BOAlaboDfZEQ3hXKJdaALZQ+i99dNSXwMDm2H98QdTu2xEZYSwnG
- 84/0P2xk/u8l4uYL6+6naZnRNFapbKgDu+QmJiXwAJ2nQQHuztxkSKvUQReH/Ole0kxcsJ
- fzxckVGyTZ6eQ+y7HF2za7zcTWz7UnI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-176-eu_y-ZhUOB6BQ1OrlV706Q-1; Tue, 14 Jan 2020 07:57:00 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 067A8801E72;
- Tue, 14 Jan 2020 12:56:58 +0000 (UTC)
-Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8A4555DA70;
- Tue, 14 Jan 2020 12:56:53 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id o4sm19441416wrx.25.2020.01.14.07.09.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Jan 2020 07:09:54 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id A72A51FF8C;
+	Tue, 14 Jan 2020 15:09:53 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PULL 29/30] apic: Use 32bit APIC ID for migration instance ID
-Date: Tue, 14 Jan 2020 13:52:53 +0100
-Message-Id: <20200114125254.4515-30-quintela@redhat.com>
-In-Reply-To: <20200114125254.4515-1-quintela@redhat.com>
-References: <20200114125254.4515-1-quintela@redhat.com>
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Damien Hedde <damien.hedde@greensocs.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH  v5 01/22] gdbstub: make GDBState static and have common init function
+Date: Tue, 14 Jan 2020 15:09:32 +0000
+Message-Id: <20200114150953.27659-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200114150953.27659-1-alex.bennee@linaro.org>
+References: <20200114150953.27659-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: eu_y-ZhUOB6BQ1OrlV706Q-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Corey Minyard <cminyard@mvista.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Peter Xu <peterx@redhat.com>,
- Stefan Berger <stefanb@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KfNfOICMNRBv
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: iDXEU9rvrlhn
 
-From: Peter Xu <peterx@redhat.com>
+Instead of allocating make this entirely static. We shall reduce the
+size of the structure in later commits and dynamically allocate parts
+of it. We introduce an init and reset helper function to keep all the
+manipulation in one place.
 
-Migration is silently broken now with x2apic config like this:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
 
-     -smp 200,maxcpus=3D288,sockets=3D2,cores=3D72,threads=3D2 \
-     -device intel-iommu,intremap=3Don,eim=3Don
-
-After migration, the guest kernel could hang at anything, due to
-x2apic bit not migrated correctly in IA32_APIC_BASE on some vcpus, so
-any operations related to x2apic could be broken then (e.g., RDMSR on
-x2apic MSRs could fail because KVM would think that the vcpu hasn't
-enabled x2apic at all).
-
-The issue is that the x2apic bit was never applied correctly for vcpus
-whose ID > 255 when migrate completes, and that's because when we
-migrate APIC we use the APICCommonState.id as instance ID of the
-migration stream, while that's too short for x2apic.
-
-Let's use the newly introduced initial_apic_id for that.
-
-Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
-Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- hw/intc/apic_common.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+v2
+  - made entirely static, dropped dh/rth r-b tags due to changes
+---
+ gdbstub.c | 168 ++++++++++++++++++++++++++----------------------------
+ 1 file changed, 81 insertions(+), 87 deletions(-)
 
-diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
-index 54b8731fca..b5dbeb6206 100644
---- a/hw/intc/apic_common.c
-+++ b/hw/intc/apic_common.c
-@@ -268,7 +268,10 @@ static void apic_common_realize(DeviceState *dev, Erro=
-r **errp)
-     APICCommonState *s =3D APIC_COMMON(dev);
-     APICCommonClass *info;
-     static DeviceState *vapic;
--    uint32_t instance_id =3D s->id;
-+    uint32_t instance_id =3D s->initial_apic_id;
+diff --git a/gdbstub.c b/gdbstub.c
+index ce304ff482..3bc90cbde5 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -342,6 +342,7 @@ enum RSState {
+     RS_CHKSUM2,
+ };
+ typedef struct GDBState {
++    bool init;       /* have we been initialised? */
+     CPUState *c_cpu; /* current CPU for step/continue ops */
+     CPUState *g_cpu; /* current CPU for other ops */
+     CPUState *query_cpu; /* for q{f|s}ThreadInfo */
+@@ -372,7 +373,23 @@ typedef struct GDBState {
+  */
+ static int sstep_flags = SSTEP_ENABLE|SSTEP_NOIRQ|SSTEP_NOTIMER;
+ 
+-static GDBState *gdbserver_state;
++static GDBState gdbserver_state;
 +
-+    /* Normally initial APIC ID should be no more than hundreds */
-+    assert(instance_id !=3D VMSTATE_INSTANCE_ID_ANY);
-=20
-     info =3D APIC_COMMON_GET_CLASS(s);
-     info->realize(dev, errp);
---=20
-2.24.1
-
++static void init_gdbserver_state(void)
++{
++    g_assert(!gdbserver_state.init);
++    memset(&gdbserver_state, 0, sizeof(GDBState));
++    gdbserver_state.init = true;
++}
++
++#ifndef CONFIG_USER_ONLY
++static void reset_gdbserver_state(void)
++{
++    g_free(gdbserver_state.processes);
++    gdbserver_state.processes = NULL;
++    gdbserver_state.process_num = 0;
++}
++#endif
+ 
+ bool gdb_has_xml;
+ 
+@@ -425,8 +442,8 @@ int use_gdb_syscalls(void)
+     /* -semihosting-config target=auto */
+     /* On the first call check if gdb is connected and remember. */
+     if (gdb_syscall_mode == GDB_SYS_UNKNOWN) {
+-        gdb_syscall_mode = (gdbserver_state ? GDB_SYS_ENABLED
+-                                            : GDB_SYS_DISABLED);
++        gdb_syscall_mode = gdbserver_state.init ?
++            GDB_SYS_ENABLED : GDB_SYS_DISABLED;
+     }
+     return gdb_syscall_mode == GDB_SYS_ENABLED;
+ }
+@@ -984,7 +1001,7 @@ static int gdb_breakpoint_insert(int type, target_ulong addr, target_ulong len)
+     int err = 0;
+ 
+     if (kvm_enabled()) {
+-        return kvm_insert_breakpoint(gdbserver_state->c_cpu, addr, len, type);
++        return kvm_insert_breakpoint(gdbserver_state.c_cpu, addr, len, type);
+     }
+ 
+     switch (type) {
+@@ -1021,7 +1038,7 @@ static int gdb_breakpoint_remove(int type, target_ulong addr, target_ulong len)
+     int err = 0;
+ 
+     if (kvm_enabled()) {
+-        return kvm_remove_breakpoint(gdbserver_state->c_cpu, addr, len, type);
++        return kvm_remove_breakpoint(gdbserver_state.c_cpu, addr, len, type);
+     }
+ 
+     switch (type) {
+@@ -1074,7 +1091,7 @@ static void gdb_breakpoint_remove_all(void)
+     CPUState *cpu;
+ 
+     if (kvm_enabled()) {
+-        kvm_remove_all_breakpoints(gdbserver_state->c_cpu);
++        kvm_remove_all_breakpoints(gdbserver_state.c_cpu);
+         return;
+     }
+ 
+@@ -2601,7 +2618,7 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+ 
+ void gdb_set_stop_cpu(CPUState *cpu)
+ {
+-    GDBProcess *p = gdb_get_cpu_process(gdbserver_state, cpu);
++    GDBProcess *p = gdb_get_cpu_process(&gdbserver_state, cpu);
+ 
+     if (!p->attached) {
+         /*
+@@ -2611,14 +2628,14 @@ void gdb_set_stop_cpu(CPUState *cpu)
+         return;
+     }
+ 
+-    gdbserver_state->c_cpu = cpu;
+-    gdbserver_state->g_cpu = cpu;
++    gdbserver_state.c_cpu = cpu;
++    gdbserver_state.g_cpu = cpu;
+ }
+ 
+ #ifndef CONFIG_USER_ONLY
+ static void gdb_vm_state_change(void *opaque, int running, RunState state)
+ {
+-    GDBState *s = gdbserver_state;
++    GDBState *s = &gdbserver_state;
+     CPUState *cpu = s->c_cpu;
+     char buf[256];
+     char thread_id[16];
+@@ -2722,17 +2739,16 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
+     char *p_end;
+     target_ulong addr;
+     uint64_t i64;
+-    GDBState *s;
+ 
+-    s = gdbserver_state;
+-    if (!s)
++    if (!gdbserver_state.init)
+         return;
+-    s->current_syscall_cb = cb;
++
++    gdbserver_state.current_syscall_cb = cb;
+ #ifndef CONFIG_USER_ONLY
+     vm_stop(RUN_STATE_DEBUG);
+ #endif
+-    p = s->syscall_buf;
+-    p_end = &s->syscall_buf[sizeof(s->syscall_buf)];
++    p = &gdbserver_state.syscall_buf[0];
++    p_end = &gdbserver_state.syscall_buf[sizeof(gdbserver_state.syscall_buf)];
+     *(p++) = 'F';
+     while (*fmt) {
+         if (*fmt == '%') {
+@@ -2765,14 +2781,14 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
+     }
+     *p = 0;
+ #ifdef CONFIG_USER_ONLY
+-    put_packet(s, s->syscall_buf);
++    put_packet(&gdbserver_state, gdbserver_state.syscall_buf);
+     /* Return control to gdb for it to process the syscall request.
+      * Since the protocol requires that gdb hands control back to us
+      * using a "here are the results" F packet, we don't need to check
+      * gdb_handlesig's return value (which is the signal to deliver if
+      * execution was resumed via a continue packet).
+      */
+-    gdb_handlesig(s->c_cpu, 0);
++    gdb_handlesig(gdbserver_state.c_cpu, 0);
+ #else
+     /* In this case wait to send the syscall packet until notification that
+        the CPU has stopped.  This must be done because if the packet is sent
+@@ -2780,7 +2796,7 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
+        is still in the running state, which can cause packets to be dropped
+        and state transition 'T' packets to be sent while the syscall is still
+        being processed.  */
+-    qemu_cpu_kick(s->c_cpu);
++    qemu_cpu_kick(gdbserver_state.c_cpu);
+ #endif
+ }
+ 
+@@ -2941,15 +2957,13 @@ static void gdb_read_byte(GDBState *s, uint8_t ch)
+ /* Tell the remote gdb that the process has exited.  */
+ void gdb_exit(CPUArchState *env, int code)
+ {
+-  GDBState *s;
+   char buf[4];
+ 
+-  s = gdbserver_state;
+-  if (!s) {
++  if (!gdbserver_state.init) {
+       return;
+   }
+ #ifdef CONFIG_USER_ONLY
+-  if (gdbserver_fd < 0 || s->fd < 0) {
++  if (gdbserver_fd < 0 || gdbserver_state.fd < 0) {
+       return;
+   }
+ #endif
+@@ -2957,10 +2971,10 @@ void gdb_exit(CPUArchState *env, int code)
+   trace_gdbstub_op_exiting((uint8_t)code);
+ 
+   snprintf(buf, sizeof(buf), "W%02x", (uint8_t)code);
+-  put_packet(s, buf);
++  put_packet(&gdbserver_state, buf);
+ 
+ #ifndef CONFIG_USER_ONLY
+-  qemu_chr_fe_deinit(&s->chr, true);
++  qemu_chr_fe_deinit(&gdbserver_state.chr, true);
+ #endif
+ }
+ 
+@@ -2993,12 +3007,10 @@ static void create_default_process(GDBState *s)
+ int
+ gdb_handlesig(CPUState *cpu, int sig)
+ {
+-    GDBState *s;
+     char buf[256];
+     int n;
+ 
+-    s = gdbserver_state;
+-    if (gdbserver_fd < 0 || s->fd < 0) {
++    if (gdbserver_fd < 0 || gdbserver_state.fd < 0) {
+         return sig;
+     }
+ 
+@@ -3008,58 +3020,55 @@ gdb_handlesig(CPUState *cpu, int sig)
+ 
+     if (sig != 0) {
+         snprintf(buf, sizeof(buf), "S%02x", target_signal_to_gdb(sig));
+-        put_packet(s, buf);
++        put_packet(&gdbserver_state, buf);
+     }
+     /* put_packet() might have detected that the peer terminated the
+        connection.  */
+-    if (s->fd < 0) {
++    if (gdbserver_state.fd < 0) {
+         return sig;
+     }
+ 
+     sig = 0;
+-    s->state = RS_IDLE;
+-    s->running_state = 0;
+-    while (s->running_state == 0) {
+-        n = read(s->fd, buf, 256);
++    gdbserver_state.state = RS_IDLE;
++    gdbserver_state.running_state = 0;
++    while (gdbserver_state.running_state == 0) {
++        n = read(gdbserver_state.fd, buf, 256);
+         if (n > 0) {
+             int i;
+ 
+             for (i = 0; i < n; i++) {
+-                gdb_read_byte(s, buf[i]);
++                gdb_read_byte(&gdbserver_state, buf[i]);
+             }
+         } else {
+             /* XXX: Connection closed.  Should probably wait for another
+                connection before continuing.  */
+             if (n == 0) {
+-                close(s->fd);
++                close(gdbserver_state.fd);
+             }
+-            s->fd = -1;
++            gdbserver_state.fd = -1;
+             return sig;
+         }
+     }
+-    sig = s->signal;
+-    s->signal = 0;
++    sig = gdbserver_state.signal;
++    gdbserver_state.signal = 0;
+     return sig;
+ }
+ 
+ /* Tell the remote gdb that the process has exited due to SIG.  */
+ void gdb_signalled(CPUArchState *env, int sig)
+ {
+-    GDBState *s;
+     char buf[4];
+ 
+-    s = gdbserver_state;
+-    if (gdbserver_fd < 0 || s->fd < 0) {
++    if (gdbserver_fd < 0 || gdbserver_state.fd < 0) {
+         return;
+     }
+ 
+     snprintf(buf, sizeof(buf), "X%02x", target_signal_to_gdb(sig));
+-    put_packet(s, buf);
++    put_packet(&gdbserver_state, buf);
+ }
+ 
+ static bool gdb_accept(void)
+ {
+-    GDBState *s;
+     struct sockaddr_in sockaddr;
+     socklen_t len;
+     int fd;
+@@ -3083,15 +3092,13 @@ static bool gdb_accept(void)
+         return false;
+     }
+ 
+-    s = g_malloc0(sizeof(GDBState));
+-    create_default_process(s);
+-    s->processes[0].attached = true;
+-    s->c_cpu = gdb_first_attached_cpu(s);
+-    s->g_cpu = s->c_cpu;
+-    s->fd = fd;
++    init_gdbserver_state();
++    create_default_process(&gdbserver_state);
++    gdbserver_state.processes[0].attached = true;
++    gdbserver_state.c_cpu = gdb_first_attached_cpu(&gdbserver_state);
++    gdbserver_state.g_cpu = gdbserver_state.c_cpu;
++    gdbserver_state.fd = fd;
+     gdb_has_xml = false;
+-
+-    gdbserver_state = s;
+     return true;
+ }
+ 
+@@ -3144,13 +3151,11 @@ int gdbserver_start(int port)
+ /* Disable gdb stub for child processes.  */
+ void gdbserver_fork(CPUState *cpu)
+ {
+-    GDBState *s = gdbserver_state;
+-
+-    if (gdbserver_fd < 0 || s->fd < 0) {
++    if (gdbserver_fd < 0 || gdbserver_state.fd < 0) {
+         return;
+     }
+-    close(s->fd);
+-    s->fd = -1;
++    close(gdbserver_state.fd);
++    gdbserver_state.fd = -1;
+     cpu_breakpoint_remove_all(cpu, BP_GDB);
+     cpu_watchpoint_remove_all(cpu, BP_GDB);
+ }
+@@ -3167,7 +3172,7 @@ static void gdb_chr_receive(void *opaque, const uint8_t *buf, int size)
+     int i;
+ 
+     for (i = 0; i < size; i++) {
+-        gdb_read_byte(gdbserver_state, buf[i]);
++        gdb_read_byte(&gdbserver_state, buf[i]);
+     }
+ }
+ 
+@@ -3210,13 +3215,13 @@ static int gdb_monitor_write(Chardev *chr, const uint8_t *buf, int len)
+     const char *p = (const char *)buf;
+     int max_sz;
+ 
+-    max_sz = (sizeof(gdbserver_state->last_packet) - 2) / 2;
++    max_sz = (sizeof(gdbserver_state.last_packet) - 2) / 2;
+     for (;;) {
+         if (len <= max_sz) {
+-            gdb_monitor_output(gdbserver_state, p, len);
++            gdb_monitor_output(&gdbserver_state, p, len);
+             break;
+         }
+-        gdb_monitor_output(gdbserver_state, p, max_sz);
++        gdb_monitor_output(&gdbserver_state, p, max_sz);
+         p += max_sz;
+         len -= max_sz;
+     }
+@@ -3308,18 +3313,10 @@ static void create_processes(GDBState *s)
+     create_default_process(s);
+ }
+ 
+-static void cleanup_processes(GDBState *s)
+-{
+-    g_free(s->processes);
+-    s->process_num = 0;
+-    s->processes = NULL;
+-}
+-
+ int gdbserver_start(const char *device)
+ {
+     trace_gdbstub_op_start(device);
+ 
+-    GDBState *s;
+     char gdbstub_device_name[128];
+     Chardev *chr = NULL;
+     Chardev *mon_chr;
+@@ -3357,10 +3354,8 @@ int gdbserver_start(const char *device)
+             return -1;
+     }
+ 
+-    s = gdbserver_state;
+-    if (!s) {
+-        s = g_malloc0(sizeof(GDBState));
+-        gdbserver_state = s;
++    if (!gdbserver_state.init) {
++        init_gdbserver_state();
+ 
+         qemu_add_vm_change_state_handler(gdb_vm_state_change, NULL);
+ 
+@@ -3369,31 +3364,30 @@ int gdbserver_start(const char *device)
+                                    NULL, NULL, &error_abort);
+         monitor_init_hmp(mon_chr, false);
+     } else {
+-        qemu_chr_fe_deinit(&s->chr, true);
+-        mon_chr = s->mon_chr;
+-        cleanup_processes(s);
+-        memset(s, 0, sizeof(GDBState));
+-        s->mon_chr = mon_chr;
++        qemu_chr_fe_deinit(&gdbserver_state.chr, true);
++        mon_chr = gdbserver_state.mon_chr;
++        reset_gdbserver_state();
+     }
+ 
+-    create_processes(s);
++    create_processes(&gdbserver_state);
+ 
+     if (chr) {
+-        qemu_chr_fe_init(&s->chr, chr, &error_abort);
+-        qemu_chr_fe_set_handlers(&s->chr, gdb_chr_can_receive, gdb_chr_receive,
+-                                 gdb_chr_event, NULL, s, NULL, true);
++        qemu_chr_fe_init(&gdbserver_state.chr, chr, &error_abort);
++        qemu_chr_fe_set_handlers(&gdbserver_state.chr, gdb_chr_can_receive,
++                                 gdb_chr_receive, gdb_chr_event,
++                                 NULL, &gdbserver_state, NULL, true);
+     }
+-    s->state = chr ? RS_IDLE : RS_INACTIVE;
+-    s->mon_chr = mon_chr;
+-    s->current_syscall_cb = NULL;
++    gdbserver_state.state = chr ? RS_IDLE : RS_INACTIVE;
++    gdbserver_state.mon_chr = mon_chr;
++    gdbserver_state.current_syscall_cb = NULL;
+ 
+     return 0;
+ }
+ 
+ void gdbserver_cleanup(void)
+ {
+-    if (gdbserver_state) {
+-        put_packet(gdbserver_state, "W00");
++    if (gdbserver_state.init) {
++        put_packet(&gdbserver_state, "W00");
+     }
+ }
+ 
+-- 
+2.20.1

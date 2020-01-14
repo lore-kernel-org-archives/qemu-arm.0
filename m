@@ -1,98 +1,98 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5501717lff;
-        Tue, 14 Jan 2020 05:23:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxXW6qzRp/+wM3dHRHtcI261RGufPnH6DfEK2T4jG7SH2n2ulcQR+Dk39aePjYSBAwq+MaV
-X-Received: by 2002:a37:ae07:: with SMTP id x7mr21420392qke.28.1579008201373;
-        Tue, 14 Jan 2020 05:23:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579008201; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5503032lff;
+        Tue, 14 Jan 2020 05:24:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzTmPAr4ySx/f9mrDPc4XadwqAzCp1SN/4fAmX1C7aLwm/y821LrOgfm6YZrQFKrG0Dz8FO
+X-Received: by 2002:a37:27cf:: with SMTP id n198mr21645334qkn.188.1579008270901;
+        Tue, 14 Jan 2020 05:24:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579008270; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uv6kKVK0SDLBKtP3MTH911uj67s0Brm58O/oMuBeMnBwm+kjUpRQjrnOyRBvlX6ZLS
-         kYTKxWmaufGHm34kLXDuERNX2OePsD8wcTBzZn0dxc+K5VlH2KtKvjBLTY3mXS11AxWy
-         mLDmG039+E458P8TazlPPNh+cwoFBCByt3rW1XaKDExe5HIt4sAX7eA+9zfWvBpbf9tL
-         gw/DkFplxHCU+m1akM+XOyG7VIo3UKFGbwcoRrzt6lfTHhPL7EeoMgxZrlDE6f5uDSoh
-         TrFNIziZkfou9gKjOqdVRzewN9BQGgOZslu8DwYk/VPih8ONK2ghDh+xNjSrESdoUssw
-         7Agw==
+        b=cCQKqZr13K4ZPcQh8AW6wMA5GjcoUC2T0ucQC5QQoBYbAPyfp6CUGSt6WXhcx3lOtl
+         77y9zUAaFNBlv2xnS1TAUe3+h4gBBZ0miR9iZqClWmmKu+FU+xpnsghRGBl7KH4Ta1+s
+         MkGFWO4noGYsmnukz+/dkDPkuQ1UcVsksL+eq/eKl4CAt+sxVLBCh1spMI9d2WF6l5Ce
+         QKsUqIOeuZK7CrnZsK4XIL2z0NuA9avbtXq6FlsZ9bZNAMTluPCKpWC9G7VmRX+D9l2I
+         48EvLPuDmgF9E9U7yw0KfEowRzNJeruBrnhe3AyK+CACJtUWEu0xiAm25ZYE5GktzgH9
+         D+dQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WKNiJnjAFJa2vhNGxGRB9XZG1JZ0UkZB55Yk7BZwoSE=;
-        b=o05fkIcEy6dywLcXOw8N2lSMPQRqurZEX78CQVxlHbkiQekxaku2032fSJZgZeoC37
-         tbv1/un8S/588c1Iysn0we+GPKhtPyqdvEvOkragu65tb/dp5lzH6/eNOqw7OmTfZB3y
-         DN/XFrjmIEPj7aV0XNhK18061nYnl1VaIb1o19/PpGXR2Biw+iqvBdMgp/PeuwjJWNa7
-         x7N/CEO1zMeQNxNaYc7QPqxfltN1MJ3Ej1Xc9wJ70agj74chvIU6e4AfmONPsuix1PP2
-         UQTIID1skmSZ5HVVPd4VKlvRGwJN0eCw+AD2BAGxrvDnp+M4VEXFspbcGZ6XrBVBSjdU
-         tKwQ==
+        bh=/qRvnKikU/zZW4H4BQbW8b5TjzE8O1lK0e+sh7nSqVM=;
+        b=sO5Sv6Eg4a36zWyk2cKhUM5IWkBrmHajKGquAov/NwDXSrLVPV0TipxD3LoGFpeNLy
+         5VmnUNGfaxWY6eJTL8EbwCcNvTMGtEyY+m7K37QvZhIX/yd+RC8EXI40dV3+RnOhIacL
+         ReET/pRvGd+IbqKjlD/6c+A3Ga08ljnQzeQtCAXVwpCM8ylxT+QXokLPSoXXGPluDLrZ
+         iXrfSkjj/7zERRmKjJBM9x4gxnDn7JBtVriCAsIZBr3lBG2ACwiHyCMztVYqbObspUZ+
+         v8whicAy5GOxo+pGcjdYM81c7WS+SvRRTUrmrdDCFIxX9mhybeBzatEh3BAP/pr6/oGv
+         aQVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TDUylQMH;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OIdMvT6x;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p21si7762897qtj.96.2020.01.14.05.23.21
+        by mx.google.com with ESMTPS id v23si8334572qtk.131.2020.01.14.05.24.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 05:23:21 -0800 (PST)
+        Tue, 14 Jan 2020 05:24:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TDUylQMH;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OIdMvT6x;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39460 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39486 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irMAC-0005KM-HC
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 08:23:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41630)
+	id 1irMBJ-0006zg-US
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 08:24:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41917)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irLk2-0003sn-6j
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:21 -0500
+ (envelope-from <quintela@redhat.com>) id 1irLkl-0004og-7U
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:57:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irLjy-0002Cq-FW
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:18 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23167
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <quintela@redhat.com>) id 1irLkk-0002RG-2Q
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:57:03 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48472
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLjv-0002CU-F9
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:11 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLkj-0002R0-Uw
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:57:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579006571;
+ s=mimecast20190719; t=1579006621;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WKNiJnjAFJa2vhNGxGRB9XZG1JZ0UkZB55Yk7BZwoSE=;
- b=TDUylQMHJLcEHDBtBH11iMbmbHUTOFW2d1jlt2uGxIGlhKuvp1BDoh4EBj8Kxb91Cd/y9q
- /xNm174O/CjzvIafh3a87imgFEwzWyIBmv0DJUC9PdLCW4Tg7e9+PK5hPYJRspOoKV2u9+
- 5ncJaPvGpppGY1XGyCS52MRUdsYXWlo=
+ bh=/qRvnKikU/zZW4H4BQbW8b5TjzE8O1lK0e+sh7nSqVM=;
+ b=OIdMvT6xYk5tbWo4o/BOAlaboDfZEQ3hXKJdaALZQ+i99dNSXwMDm2H98QdTu2xEZYSwnG
+ 84/0P2xk/u8l4uYL6+6naZnRNFapbKgDu+QmJiXwAJ2nQQHuztxkSKvUQReH/Ole0kxcsJ
+ fzxckVGyTZ6eQ+y7HF2za7zcTWz7UnI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-72-Ktts2onxOGG8-Gr9j2VFlw-1; Tue, 14 Jan 2020 07:56:09 -0500
+ us-mta-176-eu_y-ZhUOB6BQ1OrlV706Q-1; Tue, 14 Jan 2020 07:57:00 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E01C107ACCC;
- Tue, 14 Jan 2020 12:56:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 067A8801E72;
+ Tue, 14 Jan 2020 12:56:58 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 853E55D9E5;
- Tue, 14 Jan 2020 12:55:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8A4555DA70;
+ Tue, 14 Jan 2020 12:56:53 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 22/30] migration/multifd: clean pages after filling packet
-Date: Tue, 14 Jan 2020 13:52:46 +0100
-Message-Id: <20200114125254.4515-23-quintela@redhat.com>
+Subject: [PULL 29/30] apic: Use 32bit APIC ID for migration instance ID
+Date: Tue, 14 Jan 2020 13:52:53 +0100
+Message-Id: <20200114125254.4515-30-quintela@redhat.com>
 In-Reply-To: <20200114125254.4515-1-quintela@redhat.com>
 References: <20200114125254.4515-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: Ktts2onxOGG8-Gr9j2VFlw-1
+X-MC-Unique: eu_y-ZhUOB6BQ1OrlV706Q-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,63 +111,61 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
  Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Peter Xu <peterx@redhat.com>,
  Stefan Berger <stefanb@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
+ qemu-ppc@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nBRlbm6od0L3
+X-TUID: KfNfOICMNRBv
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+From: Peter Xu <peterx@redhat.com>
 
-This is a preparation for the next patch:
+Migration is silently broken now with x2apic config like this:
 
-    not use multifd during postcopy.
+     -smp 200,maxcpus=3D288,sockets=3D2,cores=3D72,threads=3D2 \
+     -device intel-iommu,intremap=3Don,eim=3Don
 
-Without enabling postcopy, everything looks good. While after enabling
-postcopy, migration may fail even not use multifd during postcopy. The
-reason is the pages is not properly cleared and *old* target page will
-continue to be transferred.
+After migration, the guest kernel could hang at anything, due to
+x2apic bit not migrated correctly in IA32_APIC_BASE on some vcpus, so
+any operations related to x2apic could be broken then (e.g., RDMSR on
+x2apic MSRs could fail because KVM would think that the vcpu hasn't
+enabled x2apic at all).
 
-After clean pages, migration succeeds.
+The issue is that the x2apic bit was never applied correctly for vcpus
+whose ID > 255 when migrate completes, and that's because when we
+migrate APIC we use the APICCommonState.id as instance ID of the
+migration stream, while that's too short for x2apic.
 
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Let's use the newly introduced initial_apic_id for that.
+
+Signed-off-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ hw/intc/apic_common.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/migration/ram.c b/migration/ram.c
-index fd1155f735..561961ef24 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -955,10 +955,10 @@ static int multifd_send_pages(RAMState *rs)
-         }
-         qemu_mutex_unlock(&p->mutex);
-     }
--    p->pages->used =3D 0;
-+    assert(!p->pages->used);
-+    assert(!p->pages->block);
+diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
+index 54b8731fca..b5dbeb6206 100644
+--- a/hw/intc/apic_common.c
++++ b/hw/intc/apic_common.c
+@@ -268,7 +268,10 @@ static void apic_common_realize(DeviceState *dev, Erro=
+r **errp)
+     APICCommonState *s =3D APIC_COMMON(dev);
+     APICCommonClass *info;
+     static DeviceState *vapic;
+-    uint32_t instance_id =3D s->id;
++    uint32_t instance_id =3D s->initial_apic_id;
++
++    /* Normally initial APIC ID should be no more than hundreds */
++    assert(instance_id !=3D VMSTATE_INSTANCE_ID_ANY);
 =20
-     p->packet_num =3D multifd_send_state->packet_num++;
--    p->pages->block =3D NULL;
-     multifd_send_state->pages =3D p->pages;
-     p->pages =3D pages;
-     transferred =3D ((uint64_t) pages->used) * TARGET_PAGE_SIZE + p->packe=
-t_len;
-@@ -1154,6 +1154,8 @@ static void *multifd_send_thread(void *opaque)
-             p->flags =3D 0;
-             p->num_packets++;
-             p->num_pages +=3D used;
-+            p->pages->used =3D 0;
-+            p->pages->block =3D NULL;
-             qemu_mutex_unlock(&p->mutex);
-=20
-             trace_multifd_send(p->id, packet_num, used, flags,
+     info =3D APIC_COMMON_GET_CLASS(s);
+     info->realize(dev, errp);
 --=20
 2.24.1
 

@@ -1,98 +1,99 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5271965lff;
-        Tue, 14 Jan 2020 01:32:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzSkDmtvUeDZLjisK9yBtdWjbfsDARmRT49ijyRPPaVLb4a8mEmMQ5OzFbJc7zuLgvQJUv2
-X-Received: by 2002:ad4:4912:: with SMTP id bh18mr16125296qvb.50.1578994328980;
-        Tue, 14 Jan 2020 01:32:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578994328; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5272562lff;
+        Tue, 14 Jan 2020 01:32:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw7dpF3oWu3m4Xc4AmxETxQWoSkkpMYASpVYew412qkqjxf0fKBO4OLbjc5QIKN9wPQaaia
+X-Received: by 2002:a50:eacb:: with SMTP id u11mr22425102edp.181.1578994366762;
+        Tue, 14 Jan 2020 01:32:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578994366; cv=none;
         d=google.com; s=arc-20160816;
-        b=SA+X/L8UiXJITkfpBcteZ9Cxc4eAha4HVez8DoSOmxkBDluY8rhYv4A4qH1RYkT7/3
-         mCMERgTKh3lipfZzxCmooClesASYRDYT/BTAwtw/0x7PX/41OJ/TvsOJoaXsxnISJ8KL
-         VeydsrLter/CiemTZTclxzgE7qwkHp3PzDIcbDySlplKM81rCmG1KZ8Vm7rctQc1zgbD
-         BL56Ca+54r0AIfZDza07rz8bV2cOizgrm2mbXL/vVahp571sy80ULShAkGfhJAno71Ay
-         9LfpHvCks2Y9J83hj5isFEQsN1/tMl0VMKdejyk8F2okicbi7pcH/itmPiwHhYuQ7LbD
-         v+Ig==
+        b=0UrVSpgcJ+zQ24BAYlWDHVx//Vclq8E+jsPxvBbpjOQ1Qb8exHq2os/9kEwIQz+IOK
+         sYM2VjaIcRD+B4DooHebztYcsBaS5s/FHeaTEbCAJeEzoqvD5zRnnT+SAwrXe5MAmwse
+         deUKpqSLx0f1QIdX8aMXfvXitzbOS9Kv/r8600SdjXEFQ8ICnWec/OcigunJ5+fdWWQL
+         rzdOcxgFD+uPUTt+Nkd2vHbq0LS48AES5yA8IN5JQKbSoHzffU5ngzlec1imnmntmQow
+         cLvfR5/s3WNC3F3jt2YPvXBy+X0eYlcMvVeXOojWOuShmuiSRIDB2hcqaElcFfic3Hdd
+         Y+ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LsOB1plsrf+L0MjZkIhW9gkC1Fbo6Je4OwCPKg11rHk=;
-        b=camGOUw7oHyTUAWac2jAfbMGojetE/oB1HAtKIi/hMvru2OMST21t7V2N6FyYbyVSo
-         U/bLQBNqbofuWQQ/a4oRp7jttz+FTHYfRwkBN10rDRKvz1s+m8Z+NqbZGIVIL/CTG1HZ
-         m0WUNYa+VSqrfx4NEwQ60j52uXoKVbzgPSpQbECTQrvVFWRHSBLfoE2feNpBZlOLAs5y
-         ezIDUXkcoOvbfVDuL1RFBWAe9H2sgIB5zA2blpRvJ9VAdaazeWASl1oQ5X+qPQvts/rD
-         ZOYXoxXjZ8HTw1dcAMvO2ToB31LOwnd5BCpC6Y9ZM/DXEJJhDJR7tde0BBYCGEuwawTi
-         1MKA==
+        bh=KP4JOgx0MH3utU/6sKW0BXPz8/EvSkOonQGNpzhU5Ck=;
+        b=iKH/536c5vGGnSsHU2PV3THeNST1T9Nh/hzrr22g/pNimw+of8Jlq6u0Qm5D/YOfLx
+         d266ggPDGpukVImgeD2LH+vF2rAKEul14hUrL5SheFgWUQPQngEFSxBjvBN6jTRCtzee
+         I9DL00rG1c7Fje9aTG8a8KXeJ+aNAI1YZDotPZD4IxLf1srJfpEROllzpSwHSFibb4/U
+         ZKFGHorc5LR2yya5kNJtaf+X8pZrVG7n29zuKXgRKE3SB9AhPuSkOuHgzdjp14lb/PwO
+         2ngcPyu5ZXuooUNUCKj1kQD/GlbhUsXWX5k4IzRDanXy9sOfTJySdM8Q0ts/6rOkh+qL
+         i6OQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KCbDkXro;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jo8tlm4V;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10si7734681qtk.352.2020.01.14.01.32.08
+        by mx.google.com with ESMTPS id ch4si8656979ejb.125.2020.01.14.01.32.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 01:32:08 -0800 (PST)
+        Tue, 14 Jan 2020 01:32:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KCbDkXro;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jo8tlm4V;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35212 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35215 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irIYR-00037k-J8
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 04:32:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57422)
+	id 1irIZ3-0003dP-Aj
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 04:32:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57233)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irITq-0005nC-5j
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:27:23 -0500
+ (envelope-from <quintela@redhat.com>) id 1irITF-0004rh-V3
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:26:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irITo-0006Tb-N5
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:27:22 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:52281
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <quintela@redhat.com>) id 1irITE-0006Lc-CA
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:26:45 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:47547
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irITo-0006TL-IO
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:27:20 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irITE-0006LF-8u
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:26:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578994040;
+ s=mimecast20190719; t=1578994003;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LsOB1plsrf+L0MjZkIhW9gkC1Fbo6Je4OwCPKg11rHk=;
- b=KCbDkXro6PYVoLhvpMA23bXVPbqf6JgQUq5QR8o17D7Nk4pQ7q0iO9ZygHgD9Lw8R9OMO1
- ervvPorSFZr7/wS3kuNW5C0xHbUdc7HK29MO4tsYDAhB+XMwhYRn6NdR9QBJzBg5SaEeMG
- pDJWJuYqV1YXnTe0elVGrNhHcYnvUZ0=
+ bh=KP4JOgx0MH3utU/6sKW0BXPz8/EvSkOonQGNpzhU5Ck=;
+ b=Jo8tlm4VKFQSUw5TSjnLIgE2lv1HhYv3o/kj+gpx8sgtTo5nt9EH4Cw5IYluHKnu75Odos
+ 87HQu55HTpKxgj4sgIBThGtvYsCJeKePYsrZHwCF8WbKipWNIr8R1GWWXDINNODKSa//2L
+ afYLLcLWwB/NkaIYEJ7iIZm+xONbElQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-285-ENoeIc8DNPCn29fr3Ms_JA-1; Tue, 14 Jan 2020 04:27:13 -0500
+ us-mta-21-qOq3OrIYMoK77FdzsY6GQg-1; Tue, 14 Jan 2020 04:26:37 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 984B1107ACC4;
- Tue, 14 Jan 2020 09:27:11 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EA3A6107ACC4;
+ Tue, 14 Jan 2020 09:26:35 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5566E26181;
- Tue, 14 Jan 2020 09:27:02 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0DA2019757;
+ Tue, 14 Jan 2020 09:26:26 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 08/29] migration: Rate limit inside host pages
-Date: Tue, 14 Jan 2020 10:25:45 +0100
-Message-Id: <20200114092606.1761-9-quintela@redhat.com>
+Subject: [PULL 03/29] migration: Make sure that we don't call write() in case
+ of error
+Date: Tue, 14 Jan 2020 10:25:40 +0100
+Message-Id: <20200114092606.1761-4-quintela@redhat.com>
 In-Reply-To: <20200114092606.1761-1-quintela@redhat.com>
 References: <20200114092606.1761-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: ENoeIc8DNPCn29fr3Ms_JA-1
+X-MC-Unique: qOq3OrIYMoK77FdzsY6GQg-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,170 +105,98 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Peter Xu <peterx@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- qemu-arm@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+Cc: Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
+ Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-ppc@nongnu.org, Lin Ma <LMa@suse.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
+ Jason Wang <jasowang@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Richard Henderson <rth@twiddle.net>, Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: po7VuDHzMUq/
+X-TUID: mbgduTTRyGPe
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+If we are exiting due to an error/finish/.... Just don't try to even
+touch the channel with one IO operation.
 
-When using hugepages, rate limiting is necessary within each huge
-page, since a 1G huge page can take a significant time to send, so
-you end up with bursty behaviour.
-
-Fixes: 4c011c37ecb3 ("postcopy: Send whole huge pages")
-Reported-by: Lin Ma <LMa@suse.com>
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Peter Xu <peterx@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 ---
- migration/migration.c  | 57 ++++++++++++++++++++++++------------------
- migration/migration.h  |  1 +
- migration/ram.c        |  2 ++
- migration/trace-events |  4 +--
- 4 files changed, 37 insertions(+), 27 deletions(-)
+ migration/ram.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index 354ad072fa..27500d09a9 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -3224,6 +3224,37 @@ void migration_consume_urgent_request(void)
-     qemu_sem_wait(&migrate_get_current()->rate_limit_sem);
- }
-=20
-+/* Returns true if the rate limiting was broken by an urgent request */
-+bool migration_rate_limit(void)
-+{
-+    int64_t now =3D qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
-+    MigrationState *s =3D migrate_get_current();
-+
-+    bool urgent =3D false;
-+    migration_update_counters(s, now);
-+    if (qemu_file_rate_limit(s->to_dst_file)) {
-+        /*
-+         * Wait for a delay to do rate limiting OR
-+         * something urgent to post the semaphore.
-+         */
-+        int ms =3D s->iteration_start_time + BUFFER_DELAY - now;
-+        trace_migration_rate_limit_pre(ms);
-+        if (qemu_sem_timedwait(&s->rate_limit_sem, ms) =3D=3D 0) {
-+            /*
-+             * We were woken by one or more urgent things but
-+             * the timedwait will have consumed one of them.
-+             * The service routine for the urgent wake will dec
-+             * the semaphore itself for each item it consumes,
-+             * so add this one we just eat back.
-+             */
-+            qemu_sem_post(&s->rate_limit_sem);
-+            urgent =3D true;
-+        }
-+        trace_migration_rate_limit_post(urgent);
-+    }
-+    return urgent;
-+}
-+
- /*
-  * Master migration thread on the source VM.
-  * It drives the migration and pumps the data down the outgoing channel.
-@@ -3290,8 +3321,6 @@ static void *migration_thread(void *opaque)
-     trace_migration_thread_setup_complete();
-=20
-     while (migration_is_active(s)) {
--        int64_t current_time;
--
-         if (urgent || !qemu_file_rate_limit(s->to_dst_file)) {
-             MigIterateState iter_state =3D migration_iteration_run(s);
-             if (iter_state =3D=3D MIG_ITERATE_SKIP) {
-@@ -3318,29 +3347,7 @@ static void *migration_thread(void *opaque)
-             update_iteration_initial_status(s);
-         }
-=20
--        current_time =3D qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
--
--        migration_update_counters(s, current_time);
--
--        urgent =3D false;
--        if (qemu_file_rate_limit(s->to_dst_file)) {
--            /* Wait for a delay to do rate limiting OR
--             * something urgent to post the semaphore.
--             */
--            int ms =3D s->iteration_start_time + BUFFER_DELAY - current_ti=
-me;
--            trace_migration_thread_ratelimit_pre(ms);
--            if (qemu_sem_timedwait(&s->rate_limit_sem, ms) =3D=3D 0) {
--                /* We were worken by one or more urgent things but
--                 * the timedwait will have consumed one of them.
--                 * The service routine for the urgent wake will dec
--                 * the semaphore itself for each item it consumes,
--                 * so add this one we just eat back.
--                 */
--                qemu_sem_post(&s->rate_limit_sem);
--                urgent =3D true;
--            }
--            trace_migration_thread_ratelimit_post(urgent);
--        }
-+        urgent =3D migration_rate_limit();
-     }
-=20
-     trace_migration_thread_after_loop();
-diff --git a/migration/migration.h b/migration/migration.h
-index 79b3dda146..aa9ff6f27b 100644
---- a/migration/migration.h
-+++ b/migration/migration.h
-@@ -341,5 +341,6 @@ int foreach_not_ignored_block(RAMBlockIterFunc func, vo=
-id *opaque);
-=20
- void migration_make_urgent_request(void);
- void migration_consume_urgent_request(void);
-+bool migration_rate_limit(void);
-=20
- #endif
 diff --git a/migration/ram.c b/migration/ram.c
-index 17cd8d524b..1ec5c10561 100644
+index b9147bcca3..f946282adb 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -2639,6 +2639,8 @@ static int ram_save_host_page(RAMState *rs, PageSearc=
-hStatus *pss,
+@@ -900,6 +900,12 @@ struct {
+     uint64_t packet_num;
+     /* send channels ready */
+     QemuSemaphore channels_ready;
++    /*
++     * Have we already run terminate threads.  There is a race when it
++     * happens that we got one error while we are exiting.
++     * We will use atomic operations.  Only valid values are 0 and 1.
++     */
++    int exiting;
+ } *multifd_send_state;
 =20
-         pages +=3D tmppages;
-         pss->page++;
-+        /* Allow rate limiting to happen in the middle of huge pages */
-+        migration_rate_limit();
-     } while ((pss->page & (pagesize_bits - 1)) &&
-              offset_in_ramblock(pss->block, pss->page << TARGET_PAGE_BITS)=
-);
+ /*
+@@ -928,6 +934,10 @@ static int multifd_send_pages(RAMState *rs)
+     MultiFDPages_t *pages =3D multifd_send_state->pages;
+     uint64_t transferred;
 =20
-diff --git a/migration/trace-events b/migration/trace-events
-index 6dee7b5389..2f9129e213 100644
---- a/migration/trace-events
-+++ b/migration/trace-events
-@@ -138,12 +138,12 @@ migrate_send_rp_recv_bitmap(char *name, int64_t size)=
- "block '%s' size 0x%"PRIi6
- migration_completion_file_err(void) ""
- migration_completion_postcopy_end(void) ""
- migration_completion_postcopy_end_after_complete(void) ""
-+migration_rate_limit_pre(int ms) "%d ms"
-+migration_rate_limit_post(int urgent) "urgent: %d"
- migration_return_path_end_before(void) ""
- migration_return_path_end_after(int rp_error) "%d"
- migration_thread_after_loop(void) ""
- migration_thread_file_err(void) ""
--migration_thread_ratelimit_pre(int ms) "%d ms"
--migration_thread_ratelimit_post(int urgent) "urgent: %d"
- migration_thread_setup_complete(void) ""
- open_return_path_on_source(void) ""
- open_return_path_on_source_continue(void) ""
++    if (atomic_read(&multifd_send_state->exiting)) {
++        return -1;
++    }
++
+     qemu_sem_wait(&multifd_send_state->channels_ready);
+     for (i =3D next_channel;; i =3D (i + 1) % migrate_multifd_channels()) =
+{
+         p =3D &multifd_send_state->params[i];
+@@ -1009,6 +1019,16 @@ static void multifd_send_terminate_threads(Error *er=
+r)
+         }
+     }
+=20
++    /*
++     * We don't want to exit each threads twice.  Depending on where
++     * we get the error, or if there are two independent errors in two
++     * threads at the same time, we can end calling this function
++     * twice.
++     */
++    if (atomic_xchg(&multifd_send_state->exiting, 1)) {
++        return;
++    }
++
+     for (i =3D 0; i < migrate_multifd_channels(); i++) {
+         MultiFDSendParams *p =3D &multifd_send_state->params[i];
+=20
+@@ -1118,6 +1138,10 @@ static void *multifd_send_thread(void *opaque)
+=20
+     while (true) {
+         qemu_sem_wait(&p->sem);
++
++        if (atomic_read(&multifd_send_state->exiting)) {
++            break;
++        }
+         qemu_mutex_lock(&p->mutex);
+=20
+         if (p->pending_job) {
+@@ -1224,6 +1248,7 @@ int multifd_save_setup(void)
+     multifd_send_state->params =3D g_new0(MultiFDSendParams, thread_count)=
+;
+     multifd_send_state->pages =3D multifd_pages_init(page_count);
+     qemu_sem_init(&multifd_send_state->channels_ready, 0);
++    atomic_set(&multifd_send_state->exiting, 0);
+=20
+     for (i =3D 0; i < thread_count; i++) {
+         MultiFDSendParams *p =3D &multifd_send_state->params[i];
 --=20
 2.24.1
 

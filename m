@@ -1,162 +1,170 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5279278lff;
-        Tue, 14 Jan 2020 01:40:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx3ktpJPQ5eoyBC/jHaML3xDsK5PvY0fUaWrY8jDwg20UyhvLOlkTGqZyArmu/4YjQyJk0n
-X-Received: by 2002:a37:a5d7:: with SMTP id o206mr20706049qke.227.1578994800247;
-        Tue, 14 Jan 2020 01:40:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578994800; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5279641lff;
+        Tue, 14 Jan 2020 01:40:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx1M0VjTXyADhVOV+ydR4zssp5LbBBFxC0Yx78QZy8Ro/hfQuIP2dK7gTDHRnpqbXcJr1r5
+X-Received: by 2002:a05:6402:1cbb:: with SMTP id cz27mr22731936edb.227.1578994826294;
+        Tue, 14 Jan 2020 01:40:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578994826; cv=none;
         d=google.com; s=arc-20160816;
-        b=e/cM4oHLS27kztnK77nz59C1Hz96uhekAxibrrJx9Pl78ciaZRyeqIJjcjHY6RTYSX
-         tCIrLCMic9El+6IdjYXAUiLKCmNlPnDUFPiIiTRqqP9Gigs+dfkeJHyL9ZETh8K3Tj9U
-         vwPUZgY3fz0gTOHG8Bm+4aGuzaLLKDhWAKdSDUqH12yzQ1A5OzrT2ZrRcnd6VQOyz7NL
-         haX/tlS7feTDvpwXgejaHcO5LgwkITrLr71vljMLVibexoDWcdaWBhgaPjfaozcfnB3n
-         Jjh7OBSXjxzd+yNHENkgdlL+SqKzayqPg9eza+s26uQreKNEfas2eVohWa0XHa5zZ2Nf
-         oZ1w==
+        b=sbnm5ompF6CQ/z/Vn2ryk9Mjiv26/qQehvTiyTPzRV9IyBDga6ecSk1tqQcXpYXOvX
+         wnWNp2HX/PF9S9CLGHuTmzv1Tb0p82EHUm/UZV1a5vTbtVff2jpHOvJiBhdzIsmlrfZU
+         i3XP2vRGyymO9rY+yr/SAecVkp0YE1fklJp0UsOHYF1e+vnyw78ZpcE9OIQPsbzQUJ/4
+         PaWcHCipgxSyGe619vJ+JGfaRoUak7usVvoA9r/SnNoFuPSVQ7yVIBinaMYCOHdwXRH/
+         JxqlSm1pyz7IE9oSEI/pGAAln15+IAGZZe2epvNIdzkKvf2/vzIIp7eWyrT1hgkE+jjs
+         0pUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8qROkM+rasi7lNorWAKRMCcUO5bof/IxBRI/hTT2Oxs=;
-        b=ZH1Nvl+rmj7n1+fWLGo1sLua66G3L7xiQtc9HWnclOMmzTLmLkglkg0bGKXrwCXah+
-         cd8e2t+Guib52vvPVYFGUDuNV0rlDvE/1h78tL8SwpcsJ8rDmDd5+g+gSFMIqPzP9466
-         IcRrVeqwQT+ziTUhr7cvJdyFB8rl+WeZfNsD0n9ocjdXEca5sqQd92YHMARL90fLxnRp
-         HSCfal8nlz2FDkqZy4pmsLvNDbf7HUhZYEhyIo24W9T8GthwpIncbJS3MyBcq675YIX0
-         GRPwc3dfnr+3I/iT7J8ijNejZ/RmgOY8eLyamLlLBld4y/uJ/PSfwJd0Oeht/Xn7Dy6r
-         cnMA==
+        bh=/qRvnKikU/zZW4H4BQbW8b5TjzE8O1lK0e+sh7nSqVM=;
+        b=ObkrwUcu1qrASIg0EeJuUaxifkriJhkXpraI4COLOo8Jreje8PrBr7fV4EkVdnqKn4
+         TaokNS8HmfE00B3hegs0u8DvJ+4O7F1Ujdi+sL605W2D8xe54IivXsGZ8ruWZExc8waq
+         rMYtW6jrvhGzJUg9FSDg/0TNudzJxpIe9Qdriv9lf2QWaoYqiuKiH8n/6bK/1Fr8xQ+/
+         2IvrtMuw/NRmzLWvBuNn1cCAkILmrgvkpr8+kfDManPm5PCgnjDb2rNe0GxXCsC9F/KH
+         +96RvTY0DrBNHQtlwuQw6OIOAO94VvAhsCqnP7szSyH0veeGYXpAyS5aCppsEvUyjnEa
+         2Vbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dWuZY7qA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ThuxC087;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g32si7752838qtd.253.2020.01.14.01.40.00
+        by mx.google.com with ESMTPS id s6si7956480ejx.312.2020.01.14.01.40.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 01:40:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Jan 2020 01:40:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dWuZY7qA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ThuxC087;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35348 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35350 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irIg3-0005iD-2c
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 04:39:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57777)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irIgS-0005k0-Jy
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 04:40:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58434)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irIUf-0006wy-5c
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 04:28:14 -0500
+ (envelope-from <quintela@redhat.com>) id 1irIWI-00012X-QO
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:29:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irIUd-0006ga-2m
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 04:28:12 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:54905
+ (envelope-from <quintela@redhat.com>) id 1irIWH-00073C-Kq
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:29:54 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:26582
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irIUc-0006gO-Vm
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 04:28:11 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irIWH-00072u-Fb
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 04:29:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578994090;
+ s=mimecast20190719; t=1578994191;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8qROkM+rasi7lNorWAKRMCcUO5bof/IxBRI/hTT2Oxs=;
- b=dWuZY7qAyg5yTFZjDvP8PzNyg5ys+4TmnnBrY2H3l4METW/XHrrH9HEE8wv/hmnkO7evfG
- fpnVDDuJHLCw351GMXdLyrEOToQLIBv6mqvO080HHnrscYolAGE0qILQOKhTVRjZ5Z4vbI
- eGhPlHIjCBn2fR5vroIhnJmwzp1mOPA=
+ bh=/qRvnKikU/zZW4H4BQbW8b5TjzE8O1lK0e+sh7nSqVM=;
+ b=ThuxC087IEMfHJy3ls1gx47jT6vOV9YDEH8F4+tjRsIUGnazepaVEssfeKs2KgmIDsfln9
+ dGu3kVmyRNHrpprgMBmqnaICl7gMzm11U++OZY60Nkgn/ecTLwy0OHFOYunLNdBr48scFJ
+ ECwYSnde8itfMGj8moIucCB2NA+PZ9s=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-83-OWPVwAgSPDuN590HxxzBGQ-1; Tue, 14 Jan 2020 04:28:09 -0500
+ us-mta-256-zJGkoKT3P_CcxqHYqR9lpg-1; Tue, 14 Jan 2020 04:29:48 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 42705107ACCD;
- Tue, 14 Jan 2020 09:28:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0025D800D41;
+ Tue, 14 Jan 2020 09:29:47 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B5B9F26181;
- Tue, 14 Jan 2020 09:28:02 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E7B73381;
+ Tue, 14 Jan 2020 09:29:37 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 15/29] migration/postcopy: reduce memset when it is zero page
- and matches_target_page_size
-Date: Tue, 14 Jan 2020 10:25:52 +0100
-Message-Id: <20200114092606.1761-16-quintela@redhat.com>
+Subject: [PULL 28/29] apic: Use 32bit APIC ID for migration instance ID
+Date: Tue, 14 Jan 2020 10:26:05 +0100
+Message-Id: <20200114092606.1761-29-quintela@redhat.com>
 In-Reply-To: <20200114092606.1761-1-quintela@redhat.com>
 References: <20200114092606.1761-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: OWPVwAgSPDuN590HxxzBGQ-1
+X-MC-Unique: zJGkoKT3P_CcxqHYqR9lpg-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
  Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
  Jason Wang <jasowang@redhat.com>, Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Peter Xu <peterx@redhat.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
- Andrzej Zaborowski <balrogg@gmail.com>, Richard Henderson <rth@twiddle.net>,
- Stefan Berger <stefanb@linux.ibm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M6CUtYYKzOah
+ Richard Henderson <rth@twiddle.net>, Stefan Berger <stefanb@linux.ibm.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: B4aNIDSdfitQ
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+From: Peter Xu <peterx@redhat.com>
 
-In this case, page_buffer content would not be used.
+Migration is silently broken now with x2apic config like this:
 
-Skip this to save some time.
+     -smp 200,maxcpus=3D288,sockets=3D2,cores=3D72,threads=3D2 \
+     -device intel-iommu,intremap=3Don,eim=3Don
 
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+After migration, the guest kernel could hang at anything, due to
+x2apic bit not migrated correctly in IA32_APIC_BASE on some vcpus, so
+any operations related to x2apic could be broken then (e.g., RDMSR on
+x2apic MSRs could fail because KVM would think that the vcpu hasn't
+enabled x2apic at all).
+
+The issue is that the x2apic bit was never applied correctly for vcpus
+whose ID > 255 when migrate completes, and that's because when we
+migrate APIC we use the APICCommonState.id as instance ID of the
+migration stream, while that's too short for x2apic.
+
+Let's use the newly introduced initial_apic_id for that.
+
+Signed-off-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ hw/intc/apic_common.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/migration/ram.c b/migration/ram.c
-index 5cd066467c..bdb0316892 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -4126,7 +4126,13 @@ static int ram_load_postcopy(QEMUFile *f)
-         switch (flags & ~RAM_SAVE_FLAG_CONTINUE) {
-         case RAM_SAVE_FLAG_ZERO:
-             ch =3D qemu_get_byte(f);
--            memset(page_buffer, ch, TARGET_PAGE_SIZE);
-+            /*
-+             * Can skip to set page_buffer when
-+             * this is a zero page and (block->page_size =3D=3D TARGET_PAG=
-E_SIZE).
-+             */
-+            if (ch || !matches_target_page_size) {
-+                memset(page_buffer, ch, TARGET_PAGE_SIZE);
-+            }
-             if (ch) {
-                 all_zero =3D false;
-             }
+diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
+index 54b8731fca..b5dbeb6206 100644
+--- a/hw/intc/apic_common.c
++++ b/hw/intc/apic_common.c
+@@ -268,7 +268,10 @@ static void apic_common_realize(DeviceState *dev, Erro=
+r **errp)
+     APICCommonState *s =3D APIC_COMMON(dev);
+     APICCommonClass *info;
+     static DeviceState *vapic;
+-    uint32_t instance_id =3D s->id;
++    uint32_t instance_id =3D s->initial_apic_id;
++
++    /* Normally initial APIC ID should be no more than hundreds */
++    assert(instance_id !=3D VMSTATE_INSTANCE_ID_ANY);
+=20
+     info =3D APIC_COMMON_GET_CLASS(s);
+     info->realize(dev, errp);
 --=20
 2.24.1
 

@@ -1,99 +1,99 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5400722lff;
-        Tue, 14 Jan 2020 03:48:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwiKa5zFl05dV5Wq13n6sgnGi11wLya41XHKyr68JzwvSkt5KmsMuLdzCwCph+vntqm2PCX
-X-Received: by 2002:ac8:328a:: with SMTP id z10mr3256840qta.355.1579002489704;
-        Tue, 14 Jan 2020 03:48:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579002489; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5402818lff;
+        Tue, 14 Jan 2020 03:50:38 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz+Q+Itt26QcAD5S2z89CDzkJ5W4zDcxotVI4U2XKc2gm0kVdMCQgY6csbUh22yeiiI5VF1
+X-Received: by 2002:ad4:4912:: with SMTP id bh18mr16590337qvb.50.1579002638173;
+        Tue, 14 Jan 2020 03:50:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579002638; cv=none;
         d=google.com; s=arc-20160816;
-        b=NHeMxVaRB7HJlMzAumNC0kWJlWneFGRMKA1eNa0HvFhPE449sxMm8091GD6rAM2+sQ
-         oj/ijZZQ+DyhC9xhD9qFUotW7CwyBdvOEhQBl3rIsZxBnIVXllj8NIIIMpR+fMn/+DUv
-         QOz0D3CdH1qIxzqpb551gjI1Z+ik2kntxoe8sjzJbGgC5XeQul76zUU2NAlGztS07XO2
-         4OyACX+xLJEMdoQHu+f8o8rjJwqPEMot+nbTEWSHWxX7uWh+g4BzscWu1CHPk4tv0LLb
-         JUWOlPebDdrOOXhUcxraQbmXpGhG7tHtxS7RaSQaGaJZ5DqhGACbNfiQet+UsVU4Wz8W
-         A2NQ==
+        b=eFlfkQIOWRoNdQU6Ledv+8oIaz6XL80SVHpw2FC4L5mYvhvQ+LUOyN2Wli2zEY05gt
+         3HwPbga+0v7sGZJnr6bUeIvt5olw7sI0bRHxJvXGrrGEVXA2lRGgKQhYm5sq2lRiZqdU
+         25wHcaZI2eI7WiKFzCnf6F/fZ+TTZmPBsbH0PoaGFrmF9hvWAL5nqpgxcPPdOipqtvVX
+         aa9Ea34tg/w8b8QVMP94HYrmBuC6YWWAqZ4y5VrJ5RA/LcDEsKRPYp3bPzqOZIeVpcpr
+         +2zgJU1aVhMudtA1AiqIbr65IudgUIqOkaF1jbAmBOzOtXw+CQdYE+MTk7zRAFPgEHJY
+         ujaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=YenyR+cDlGnKbLpY/elkWxAa8k3PezuARzjo1X24+Yw=;
-        b=M3BH+F/gwr0gvkYyGYatLNZJrfs5a85TjUdwwibHGLifzoFKuTXPUFiOKclP9UwXzV
-         MzGCm2fvB2XO5U+gEzk2kdRcXZ6CUgZS35Mu3gxmsN9Un7YCqDQD5drlxMTAN5yIjqZJ
-         7C4PbvTNmn40Fh34/6HftkTz24i0BaDqAGkT2SQO+PJYtdKBuZJ2ZwQGABqRojhJiAPv
-         1RDw/RAqSFN944iYN91VJyTIfG66cRh4YbJk+HDDxp/+LedqsDMNxAv5HVRSU8TH5wC/
-         5fpL0PuStTbVqZTSQd9DSS0mETOPSS9Gphuy0aLlRNf0NhCGpWxYJOO4+0ApAYlEZd2I
-         ovLw==
+        bh=52j2mgmiA4z5vA2yqyRSfUxDIXdlaCqV+gsG8XIQ6+k=;
+        b=v93PMfyJxwk9CiHUIDK8/1w6mpi3av/Pjqot2Xh3FNOcn0SZX6tNr9UiXXcDJYD0jr
+         uLycshos7I/bL3uj4bQnW2E7c3bTHG9pUiGTrR/Emr1HmAMAss9tUM6azGN5NZGBOQbS
+         cb5hGSNhY1VyuzLkNBFVCJZCR4FBkVv9FJ8dyOAuTcrhEYvM7WvV48Ya2+rnaaq4Zn00
+         8OA3puB+J+OTxF6nbBRUKGC2aJF324cKPmfhW+KWeKkVqfv9i9JTMlNHJwj7JZAORGsM
+         4SkySyjwJ5XL5tBtQqkeCHONpEUNEB0IqT7NfkQKkUdqXTYHOIr3HsBlqY+EjRyjsAX9
+         0FQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=K71XJiIi;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BeMwiKnE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f13si937973qtp.113.2020.01.14.03.48.09
+        by mx.google.com with ESMTPS id t4si7970151qtd.145.2020.01.14.03.50.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 03:48:09 -0800 (PST)
+        Tue, 14 Jan 2020 03:50:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=K71XJiIi;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BeMwiKnE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37880 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37904 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irKg4-00066y-Jo
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 06:48:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55739)
+	id 1irKiT-0000ai-8c
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 06:50:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55963)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irKZ4-0005eI-BL
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:40:57 -0500
+ (envelope-from <quintela@redhat.com>) id 1irKZa-0006Nn-GL
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:41:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irKZ0-0003D5-MU
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:40:54 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45934
+ (envelope-from <quintela@redhat.com>) id 1irKZW-0003Mw-H8
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:41:26 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:45866
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irKZ0-0003Cg-Id
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:40:50 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irKZW-0003MV-De
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:41:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579002049;
+ s=mimecast20190719; t=1579002082;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YenyR+cDlGnKbLpY/elkWxAa8k3PezuARzjo1X24+Yw=;
- b=K71XJiIi+sXJdeF14lapyl97nH0ZNjPUF5S1L5bET1Z1CRFjT3DU7hJq2YQb1ZEsPBr8Ej
- gL9Rw235NI3Dinhx36alLZ1ItbfKXfVfIuti72cev951Oy6hBYMS0EWcx6kqBx8hHc2z5V
- Md9MGElMERM6NBxab1FJlNff9QtFnGQ=
+ bh=52j2mgmiA4z5vA2yqyRSfUxDIXdlaCqV+gsG8XIQ6+k=;
+ b=BeMwiKnE+TUZfqZuMWRCGP+M+omyYao6hsYQLFQC2I6JtJtZ8+YjtZ4rSvRSsNB75/7T/f
+ iHqRJ6iNgO1qx40/i09jxs7FYuBsOEAOqcMO3HZJejpv/zW16V9O20Kiq9DtLwvRgscq7R
+ 2I/Z0GSBU7Fw0T6UZTVIQLtsi5llZs8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-25-8fGRtCwAMV2KM030GiCjDA-1; Tue, 14 Jan 2020 06:40:48 -0500
+ us-mta-102-hiB7a0nkMUe_0QceA0_O0g-1; Tue, 14 Jan 2020 06:41:16 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33A5E18CA240;
- Tue, 14 Jan 2020 11:40:46 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19EC9801E7A;
+ Tue, 14 Jan 2020 11:41:15 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D6FB65DA70;
- Tue, 14 Jan 2020 11:40:38 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E62D35DA70;
+ Tue, 14 Jan 2020 11:41:05 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 09/30] migration: Fix incorrect integer->float conversion
- caught by clang
-Date: Tue, 14 Jan 2020 12:39:05 +0100
-Message-Id: <20200114113926.3556-10-quintela@redhat.com>
+Subject: [PULL 13/30] migration: savevm_state_handler_insert: constant-time
+ element insertion
+Date: Tue, 14 Jan 2020 12:39:09 +0100
+Message-Id: <20200114113926.3556-14-quintela@redhat.com>
 In-Reply-To: <20200114113926.3556-1-quintela@redhat.com>
 References: <20200114113926.3556-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: 8fGRtCwAMV2KM030GiCjDA-1
+X-MC-Unique: hiB7a0nkMUe_0QceA0_O0g-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,73 +105,117 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>, Jason Wang <jasowang@redhat.com>,
- Juan Quintela <quintela@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Corey Minyard <cminyard@mvista.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Richard Henderson <rth@twiddle.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Scott Cheloha <cheloha@linux.vnet.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
- Andrzej Zaborowski <balrogg@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, Richard Henderson <richard.henderson@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Fangrui Song <i@maskray.me>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+ Andrzej Zaborowski <balrogg@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZE+2AJBE8cIp
+X-TUID: 3E4UJNQtdCuO
 
-From: Fangrui Song <i@maskray.me>
+From: Scott Cheloha <cheloha@linux.vnet.ibm.com>
 
-Clang does not like qmp_migrate_set_downtime()'s code to clamp double
-@value to 0..INT64_MAX:
+savevm_state's SaveStateEntry TAILQ is a priority queue.  Priority
+sorting is maintained by searching from head to tail for a suitable
+insertion spot.  Insertion is thus an O(n) operation.
 
-    qemu/migration/migration.c:2038:24: error: implicit conversion from 'lo=
-ng' to 'double' changes value from 9223372036854775807 to 92233720368547758=
-08 [-Werror,-Wimplicit-int-float-conversion]
+If we instead keep track of the head of each priority's subqueue
+within that larger queue we can reduce this operation to O(1) time.
 
-The warning will be enabled by default in clang 10. It is not
-available for clang <=3D 9.
+savevm_state_handler_remove() becomes slightly more complex to
+accomodate these gains: we need to replace the head of a priority's
+subqueue when removing it.
 
-The clamp is actually useless; @value is checked to be within
-0..MAX_MIGRATE_DOWNTIME_SECONDS immediately before.  Delete it.
+With O(1) insertion, booting VMs with many SaveStateEntry objects is
+more plausible.  For example, a ppc64 VM with maxmem=3D8T has 40000 such
+objects to insert.
 
-While there, make the conversion from double to int64_t explicit.
-
-Signed-off-by: Fangrui Song <i@maskray.me>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Scott Cheloha <cheloha@linux.vnet.ibm.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-[Patch split, commit message improved]
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/migration.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ migration/savevm.c | 26 +++++++++++++++++++++++---
+ 1 file changed, 23 insertions(+), 3 deletions(-)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index 27500d09a9..f79d0bf89a 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -2035,11 +2035,10 @@ void qmp_migrate_set_downtime(double value, Error *=
-*errp)
+diff --git a/migration/savevm.c b/migration/savevm.c
+index 30d980caa2..e57686bca7 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -250,6 +250,7 @@ typedef struct SaveStateEntry {
+=20
+ typedef struct SaveState {
+     QTAILQ_HEAD(, SaveStateEntry) handlers;
++    SaveStateEntry *handler_pri_head[MIG_PRI_MAX + 1];
+     int global_section_id;
+     uint32_t len;
+     const char *name;
+@@ -261,6 +262,7 @@ typedef struct SaveState {
+=20
+ static SaveState savevm_state =3D {
+     .handlers =3D QTAILQ_HEAD_INITIALIZER(savevm_state.handlers),
++    .handler_pri_head =3D { [MIG_PRI_DEFAULT ... MIG_PRI_MAX] =3D NULL },
+     .global_section_id =3D 0,
+ };
+=20
+@@ -709,24 +711,42 @@ static void savevm_state_handler_insert(SaveStateEntr=
+y *nse)
+ {
+     MigrationPriority priority =3D save_state_priority(nse);
+     SaveStateEntry *se;
++    int i;
+=20
+     assert(priority <=3D MIG_PRI_MAX);
+=20
+-    QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
+-        if (save_state_priority(se) < priority) {
++    for (i =3D priority - 1; i >=3D 0; i--) {
++        se =3D savevm_state.handler_pri_head[i];
++        if (se !=3D NULL) {
++            assert(save_state_priority(se) < priority);
+             break;
+         }
      }
 =20
-     value *=3D 1000; /* Convert to milliseconds */
--    value =3D MAX(0, MIN(INT64_MAX, value));
+-    if (se) {
++    if (i >=3D 0) {
+         QTAILQ_INSERT_BEFORE(se, nse, entry);
+     } else {
+         QTAILQ_INSERT_TAIL(&savevm_state.handlers, nse, entry);
+     }
++
++    if (savevm_state.handler_pri_head[priority] =3D=3D NULL) {
++        savevm_state.handler_pri_head[priority] =3D nse;
++    }
+ }
 =20
-     MigrateSetParameters p =3D {
-         .has_downtime_limit =3D true,
--        .downtime_limit =3D value,
-+        .downtime_limit =3D (int64_t)value,
-     };
+ static void savevm_state_handler_remove(SaveStateEntry *se)
+ {
++    SaveStateEntry *next;
++    MigrationPriority priority =3D save_state_priority(se);
++
++    if (se =3D=3D savevm_state.handler_pri_head[priority]) {
++        next =3D QTAILQ_NEXT(se, entry);
++        if (next !=3D NULL && save_state_priority(next) =3D=3D priority) {
++            savevm_state.handler_pri_head[priority] =3D next;
++        } else {
++            savevm_state.handler_pri_head[priority] =3D NULL;
++        }
++    }
+     QTAILQ_REMOVE(&savevm_state.handlers, se, entry);
+ }
 =20
-     qmp_migrate_set_parameters(&p, errp);
 --=20
 2.24.1
 

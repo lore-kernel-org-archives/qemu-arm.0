@@ -1,99 +1,98 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5495668lff;
-        Tue, 14 Jan 2020 05:18:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqydxP5Y9HdE6efAKP6WA6TsY2Ps7i42vuCis+ZlPpPaBMaUWgVBkGLh2S9Fy1x0BiEjwBUq
-X-Received: by 2002:ad4:59c2:: with SMTP id el2mr16070621qvb.152.1579007883462;
-        Tue, 14 Jan 2020 05:18:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579007883; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5498700lff;
+        Tue, 14 Jan 2020 05:20:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyc9RzXcfCBfH01ZHdihDZUeduYUPh2b8EwMeXCMYkt2mEI+LTO/N7Ip6ytYHmf1FjiyY1H
+X-Received: by 2002:a17:906:2885:: with SMTP id o5mr22409105ejd.154.1579008048387;
+        Tue, 14 Jan 2020 05:20:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579008048; cv=none;
         d=google.com; s=arc-20160816;
-        b=u7XIYZyo9U+kNUr1u1/Zs8ld3/tQqGc0GqkDXT+RXbocv8ZRmXScnMLyRv4K6rMrB1
-         7B7sqJuNgEEzoTEpPEIM/LAIEFMF6HkPdn3NBo4uH7glWc4cJ97yHl7zsY/V/zL2v6hB
-         6UDDf3bDZ/tFYWinqgLx3JwjYyWNApaNnCh8H0KXeUqVJsh8Vm+EmodANsEznkfiIHr1
-         Mal/wdF5npglFEfzMaDZQsTbYqpxtTvdQF9ADoFutkaQLlCBlQne9dJYkgxihYEy1RiA
-         0C9F1F32ZBm5YrsJKjUrwUvSbdzWBsJ6EbVz9/qNPMoaOvWAwZNJYlGIgnOO+vNc6lvq
-         R89Q==
+        b=yc2J4jlmo6nZGDZ0cJqH9gHvWMr+9gPqj25+RV2SEBD9e9njeZ66A1cC+/MBJeNHe1
+         qFSAopljoxZDka8PQqoIcPFfzSuSoRRoCdayAVI8uOz6j1CPGxRWg9snJhJyIjhWwheB
+         t6Cnh6xii+9DzA2dRMuBJgafMG4vWt+9uDMK7cLY57evSLxY6ioNKItDKLR++IXWGZ/n
+         Dfa9NJh9UtT2KjJwurqTGcY2tM454AaI+inYkpBDtssu+c74ckDz8mYHNgp9G2GmWEtE
+         vPQ/macySFLkMPBYSSCclID3vBySvf9E8/nHY08O0zoWOSyDqz8bkj3ML0JTb6+A1h6o
+         t0QA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=azmff3g63Gao3cs+yHo3xGmhj/W5RQxUAEcQQoDb+6Q=;
-        b=hy5EhpMltb+HA9aJt8jamX+lVaGEKZkW3zPEKd74mCRB+ATyETzGrZ6nJFdwidKipo
-         w7vEpDBYrSnmlgmhmTkSGOfRsQ/12/gFsuJUXkeZllfxmQZEXD2MqIva53Y97vl/1cJc
-         vGcxX6FO6QJ2xFg2NAnLE8A4aI2c2xn/Owkc/o+0CcVQtypV1SJrNpRwDuZmQcAkx6PD
-         86GTmNsksilr6zdVGw1Lt9NxXOsD+r18fqj0iYuol9nZEh+k13jwFSAg8/ani+0S+wRI
-         Wq9QrnROrN5I5zaOawUpTxNJDV+zgIP4RpyHXKdUx8HGDEF8SqCXnXNf7TEMLSVDpSjt
-         6amg==
+        bh=pWrM4tTgAcr3IjSP+Dc3j+8p78JiYlrCeLYCKUIobhM=;
+        b=FB3AnRhrcPjWBmc8eGTFHFbLir2L6PtE2wc7NKI+uhKBAoq+3EDF8AIJBEe8UWL1xK
+         XpC+GGwaaVmQQRtKqUuXHz/R8W8yi0BO23/MIMc3AalnC1DS8I4yWcGOMz11CHqycfZR
+         vlaE7xx35lnGpVDzG85atB98QU9nLo9pegXoCjs36GxwQiPs//0OrNT6hZMu9r6JQBou
+         p17h1TEHNlDD+jabKGHT2wnDA8JObTf2+T+ldwZnedh/JNJvC0tR2i/tff8eAzqryAqU
+         zjExTHOT9O2j0YmCWYZZeR+Z9FJOyrM9Y3PqgjhD4ZQjRKB7tf8tJhPwtJrqt7bXd7wd
+         292A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=C+djihjV;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KceVoNVE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g18si8287415qto.228.2020.01.14.05.18.03
+        by mx.google.com with ESMTPS id h19si9173490ejb.181.2020.01.14.05.20.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 05:18:03 -0800 (PST)
+        Tue, 14 Jan 2020 05:20:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=C+djihjV;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KceVoNVE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39286 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39316 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irM54-00062j-7t
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 08:18:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41726)
+	id 1irM7j-0001bz-10
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 08:20:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41781)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irLkK-0004Fh-5s
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:41 -0500
+ (envelope-from <quintela@redhat.com>) id 1irLkT-0004Os-Jg
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irLkG-0002HX-FI
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:36 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:51242
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <quintela@redhat.com>) id 1irLkP-0002Jn-Iz
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:45 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:57873
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLkG-0002HL-An
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:32 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irLkP-0002JP-Eo
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 07:56:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579006591;
+ s=mimecast20190719; t=1579006598;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=azmff3g63Gao3cs+yHo3xGmhj/W5RQxUAEcQQoDb+6Q=;
- b=C+djihjVl2euExtmyDYP4ZOA0S/IxxqvnHvEG13/UonNmyVu+sxHf6phStx1qOE2lui+JZ
- 9d9vjTVzwOBRRL1uhGQ0lyKWYmUmwZCWTlLt4CTYJOTtiHItEbFb/g9EBnCn8B7TJS4AnR
- Ophl5eKuUE10wPVB/dRz5HQdauCTMqQ=
+ bh=pWrM4tTgAcr3IjSP+Dc3j+8p78JiYlrCeLYCKUIobhM=;
+ b=KceVoNVEul9Brse1pcHtE2SimWRToWyFYd6qPXc5ctShyFonpdq0QO6LPpBCTDv8+aWMCz
+ kYp5S9mKeb/nUrqhhyCrhcXvaMwJjcoTca2IY59UGIeKA+XyGtZ1fSmhw1TtqK/FmMBus1
+ CDpjDmQW2YbjRMJG0tVUV5igOVDrTjA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-352-utxBCeqyM4mRT4l9YtoHlg-1; Tue, 14 Jan 2020 07:56:29 -0500
+ us-mta-87-CR6ExrTCPHGusxRqTBDgxA-1; Tue, 14 Jan 2020 07:56:36 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1EF931005502;
- Tue, 14 Jan 2020 12:56:27 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1D27D800D41;
+ Tue, 14 Jan 2020 12:56:34 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BEBF15D9E5;
- Tue, 14 Jan 2020 12:56:17 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6FD7C5D9E5;
+ Tue, 14 Jan 2020 12:56:27 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 25/30] migration/multifd: fix destroyed mutex access in
- terminating multifd threads
-Date: Tue, 14 Jan 2020 13:52:49 +0100
-Message-Id: <20200114125254.4515-26-quintela@redhat.com>
+Subject: [PULL 26/30] Bug #1829242 correction.
+Date: Tue, 14 Jan 2020 13:52:50 +0100
+Message-Id: <20200114125254.4515-27-quintela@redhat.com>
 In-Reply-To: <20200114125254.4515-1-quintela@redhat.com>
 References: <20200114125254.4515-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: utxBCeqyM4mRT4l9YtoHlg-1
+X-MC-Unique: CR6ExrTCPHGusxRqTBDgxA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,91 +104,144 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>, Jason Wang <jasowang@redhat.com>,
- Jiahui Cen <cenjiahui@huawei.com>, Juan Quintela <quintela@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ying Fang <fangying1@huawei.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Richard Henderson <rth@twiddle.net>,
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Corey Minyard <cminyard@mvista.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Stefan Berger <stefanb@linux.ibm.com>
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Alexey Romko <nevilad@yahoo.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Stefan Berger <stefanb@linux.ibm.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eCNfbBoT+fP4
+X-TUID: OhMJnEoyiOPJ
 
-From: Jiahui Cen <cenjiahui@huawei.com>
+From: Alexey Romko <nevilad@yahoo.com>
 
-One multifd will lock all the other multifds' IOChannel mutex to inform the=
-m
-to quit by setting p->quit or shutting down p->c. In this senario, if some
-multifds had already been terminated and multifd_load_cleanup/multifd_save_=
-cleanup
-had destroyed their mutex, it could cause destroyed mutex access when tryin=
-g
-lock their mutex.
+Added type conversions to ram_addr_t before all left shifts of page
+indexes to TARGET_PAGE_BITS, to correct overflows when the page
+address was 4Gb and more.
 
-Here is the coredump stack:
-    #0  0x00007f81a2794437 in raise () from /usr/lib64/libc.so.6
-    #1  0x00007f81a2795b28 in abort () from /usr/lib64/libc.so.6
-    #2  0x00007f81a278d1b6 in __assert_fail_base () from /usr/lib64/libc.so=
-.6
-    #3  0x00007f81a278d262 in __assert_fail () from /usr/lib64/libc.so.6
-    #4  0x000055eb1bfadbd3 in qemu_mutex_lock_impl (mutex=3D0x55eb1e2d1988,=
- file=3D<optimized out>, line=3D<optimized out>) at util/qemu-thread-posix.=
-c:64
-    #5  0x000055eb1bb4564a in multifd_send_terminate_threads (err=3D<optimi=
-zed out>) at migration/ram.c:1015
-    #6  0x000055eb1bb4bb7f in multifd_send_thread (opaque=3D0x55eb1e2d19f8)=
- at migration/ram.c:1171
-    #7  0x000055eb1bfad628 in qemu_thread_start (args=3D0x55eb1e170450) at =
-util/qemu-thread-posix.c:502
-    #8  0x00007f81a2b36df5 in start_thread () from /usr/lib64/libpthread.so=
-.0
-    #9  0x00007f81a286048d in clone () from /usr/lib64/libc.so.6
-
-To fix it up, let's destroy the mutex after all the other multifd threads h=
-ad
-been terminated.
-
-Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
-Signed-off-by: Ying Fang <fangying1@huawei.com>
+Signed-off-by: Alexey Romko <nevilad@yahoo.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ migration/ram.c | 29 ++++++++++++++++++-----------
+ 1 file changed, 18 insertions(+), 11 deletions(-)
 
 diff --git a/migration/ram.c b/migration/ram.c
-index e7cd522173..0e1d95cd73 100644
+index 0e1d95cd73..ba6e0eea15 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -1053,6 +1053,10 @@ void multifd_save_cleanup(void)
-         if (p->running) {
-             qemu_thread_join(&p->thread);
+@@ -1768,7 +1768,7 @@ static inline bool migration_bitmap_clear_dirty(RAMSt=
+ate *rs,
+     if (rb->clear_bmap && clear_bmap_test_and_clear(rb, page)) {
+         uint8_t shift =3D rb->clear_bmap_shift;
+         hwaddr size =3D 1ULL << (TARGET_PAGE_BITS + shift);
+-        hwaddr start =3D (page << TARGET_PAGE_BITS) & (-size);
++        hwaddr start =3D (((ram_addr_t)page) << TARGET_PAGE_BITS) & (-size=
+);
+=20
+         /*
+          * CLEAR_BITMAP_SHIFT_MIN should always guarantee this... this
+@@ -2005,7 +2005,7 @@ static void ram_release_pages(const char *rbname, uin=
+t64_t offset, int pages)
+         return;
+     }
+=20
+-    ram_discard_range(rbname, offset, pages << TARGET_PAGE_BITS);
++    ram_discard_range(rbname, offset, ((ram_addr_t)pages) << TARGET_PAGE_B=
+ITS);
+ }
+=20
+ /*
+@@ -2093,7 +2093,7 @@ static int ram_save_page(RAMState *rs, PageSearchStat=
+us *pss, bool last_stage)
+     uint8_t *p;
+     bool send_async =3D true;
+     RAMBlock *block =3D pss->block;
+-    ram_addr_t offset =3D pss->page << TARGET_PAGE_BITS;
++    ram_addr_t offset =3D ((ram_addr_t)pss->page) << TARGET_PAGE_BITS;
+     ram_addr_t current_addr =3D block->offset + offset;
+=20
+     p =3D block->host + offset;
+@@ -2280,7 +2280,8 @@ static bool find_dirty_block(RAMState *rs, PageSearch=
+Status *pss, bool *again)
+         *again =3D false;
+         return false;
+     }
+-    if ((pss->page << TARGET_PAGE_BITS) >=3D pss->block->used_length) {
++    if ((((ram_addr_t)pss->page) << TARGET_PAGE_BITS)
++        >=3D pss->block->used_length) {
+         /* Didn't find anything in this RAM Block */
+         pss->page =3D 0;
+         pss->block =3D QLIST_NEXT_RCU(pss->block, next);
+@@ -2571,7 +2572,7 @@ static int ram_save_target_page(RAMState *rs, PageSea=
+rchStatus *pss,
+                                 bool last_stage)
+ {
+     RAMBlock *block =3D pss->block;
+-    ram_addr_t offset =3D pss->page << TARGET_PAGE_BITS;
++    ram_addr_t offset =3D ((ram_addr_t)pss->page) << TARGET_PAGE_BITS;
+     int res;
+=20
+     if (control_save_page(rs, block, offset, &res)) {
+@@ -2657,7 +2658,8 @@ static int ram_save_host_page(RAMState *rs, PageSearc=
+hStatus *pss,
+         /* Allow rate limiting to happen in the middle of huge pages */
+         migration_rate_limit();
+     } while ((pss->page & (pagesize_bits - 1)) &&
+-             offset_in_ramblock(pss->block, pss->page << TARGET_PAGE_BITS)=
+);
++             offset_in_ramblock(pss->block,
++                                ((ram_addr_t)pss->page) << TARGET_PAGE_BIT=
+S));
+=20
+     /* The offset we leave with is the last one we looked at */
+     pss->page--;
+@@ -2874,8 +2876,10 @@ void ram_postcopy_migrated_memory_release(MigrationS=
+tate *ms)
+=20
+         while (run_start < range) {
+             unsigned long run_end =3D find_next_bit(bitmap, range, run_sta=
+rt + 1);
+-            ram_discard_range(block->idstr, run_start << TARGET_PAGE_BITS,
+-                              (run_end - run_start) << TARGET_PAGE_BITS);
++            ram_discard_range(block->idstr,
++                              ((ram_addr_t)run_start) << TARGET_PAGE_BITS,
++                              ((ram_addr_t)(run_end - run_start))
++                                << TARGET_PAGE_BITS);
+             run_start =3D find_next_zero_bit(bitmap, range, run_end + 1);
          }
-+    }
-+    for (i =3D 0; i < migrate_multifd_channels(); i++) {
-+        MultiFDSendParams *p =3D &multifd_send_state->params[i];
-+
-         socket_send_channel_destroy(p->c);
-         p->c =3D NULL;
-         qemu_mutex_destroy(&p->mutex);
-@@ -1336,6 +1340,10 @@ int multifd_load_cleanup(Error **errp)
-             qemu_sem_post(&p->sem_sync);
-             qemu_thread_join(&p->thread);
+     }
+@@ -4273,13 +4277,16 @@ static void colo_flush_ram_cache(void)
+         while (block) {
+             offset =3D migration_bitmap_find_dirty(ram_state, block, offse=
+t);
+=20
+-            if (offset << TARGET_PAGE_BITS >=3D block->used_length) {
++            if (((ram_addr_t)offset) << TARGET_PAGE_BITS
++                >=3D block->used_length) {
+                 offset =3D 0;
+                 block =3D QLIST_NEXT_RCU(block, next);
+             } else {
+                 migration_bitmap_clear_dirty(ram_state, block, offset);
+-                dst_host =3D block->host + (offset << TARGET_PAGE_BITS);
+-                src_host =3D block->colo_cache + (offset << TARGET_PAGE_BI=
+TS);
++                dst_host =3D block->host
++                         + (((ram_addr_t)offset) << TARGET_PAGE_BITS);
++                src_host =3D block->colo_cache
++                         + (((ram_addr_t)offset) << TARGET_PAGE_BITS);
+                 memcpy(dst_host, src_host, TARGET_PAGE_SIZE);
+             }
          }
-+    }
-+    for (i =3D 0; i < migrate_multifd_channels(); i++) {
-+        MultiFDRecvParams *p =3D &multifd_recv_state->params[i];
-+
-         object_unref(OBJECT(p->c));
-         p->c =3D NULL;
-         qemu_mutex_destroy(&p->mutex);
 --=20
 2.24.1
 

@@ -1,110 +1,150 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5295109lff;
-        Tue, 14 Jan 2020 01:59:30 -0800 (PST)
-X-Received: by 2002:a9d:198b:: with SMTP id k11mr17031894otk.295.1578995969849;
-        Tue, 14 Jan 2020 01:59:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578995969; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5371332lff;
+        Tue, 14 Jan 2020 03:17:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzA2kwhoDDJA3g2VTDLlgoiseuY5VYziqkODLhudH/8pLJNqDKrMFjoJdhNEfqG6X/fVd6H
+X-Received: by 2002:a37:454d:: with SMTP id s74mr16644994qka.104.1579000643111;
+        Tue, 14 Jan 2020 03:17:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579000643; cv=none;
         d=google.com; s=arc-20160816;
-        b=jOWQxopsoQDbsL8jIvusU6rfCdkWumw4JtCAFUkBCG1DwIndx19tH5CF3NdWAHMqs7
-         8zOUDG/OwfsbcFjCq3vi0jjRmzTQb3AoDJbGHtpqE41169MuCTYvywmWKlRvnKouZDBQ
-         cXnzf+9qi+RxWgqRuHwxA/oqWHH6O6YdLrPiozVIQnSqhWROAh8NHZjPgBgaqmJyy7qa
-         Y47707w/Zsc4DFqOQ0L9yYk4iUZyRP5iF/GDNYDVU8K/uOyONloXbFnRVL397LOS4ZSy
-         1m4/ktCl34lrGaYuHU3XGsGlJq0L2WnVECO8W4q5/ZkYEtmuNUghABdaPha18fkyDo9U
-         K4VA==
+        b=bSdFMvJRgRc/N8k+DAah85G5sKXT0btrx6wPJdRMcnF/rjMoE5SgHiLgpEkMMAfMsF
+         93cl1RUAJNiMHV9ZBIP9SXjsAOUD344Z5xUxM37C8kPPAXhvVl/nShpHNS9Sk/hUtRUl
+         vK+hRTtmCxYCx7xEibVWxMQirhnv736fKtoEn+K79Qr8UzoBvZzKRtimE/hui/EMhVk2
+         3psVdhOYZuorrvKaxEXBdGNzwPAXNws+SdFB/0ZG2yaTnsLqauGTfZHFOm0uv/+w/BRo
+         msCRmR77eROjTjbQOVenwKMWOvdO0BIDIO1hhLMBY0G3/AVx7ur/JvPn4zAbRwgDFNI7
+         NMJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=b2DiuJpfAtGeAoUNzZ4klHYPKsCmGPyrHxskQkSSgUg=;
-        b=cpDhusJGluFRmdAgvTK7cXl9KL1+pnnd4w+nWEDuNSVFbjy7UxRiMydknJnmU8Ru1I
-         pF/3vxlZ/QrnLiUW0/R2EPWd5vY4qsaydYk4tGH++nFozbqso/o6/AAy+DDFV6AkbR1x
-         S3+eWiaoZoUUXzvAqSvWmQNf9xQwzeFBBSNktHE0LHWKNtH+4AYD3D1wowxq73CWOBpp
-         1IDlfZwyAKZc7wrs3YE033f9fxHDkTxFR3RF7pHJS97+p5Zh+R2yM+zL3Py3MSlS0shv
-         zVFP5HGZZM99SFCkjTZZOgsZU/w/y/sijDNQ3fTi1BjkJHNgCzAhV2Sz9HIc0BCDwc0O
-         6OEg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PkanoPOF5W/d/hIfHK4PAFGtwOaU4hbXASfwdt4t1fw=;
+        b=Vv9/9SpAkvJOLNaXrvg6MwOyeSfGK17059zi6yP9Hh/OZV69O2OJ5V2FWONYTm2DTW
+         7TGLR3gaHkknBQeh9vlmuK3Aq5N8Ez5bLEYI/Q/pESXUAnqUVGlOmtb3Z2w19AmUmV1F
+         G8k/BWnTNP5QHUFKoa1+AL74t72cwv2itpTuoZ4nROO5SZQzHp4K8/e/W5T0CZcmpsEn
+         fqScf3kog74Mpt8CNPRPacnKOxn4p3+kmKcHJJmNa6tMC8uROQXIN4orolQkLrmG5lTM
+         969lWVlMKz1ZfTLvYZXJXuohQrro7iAIAAPy7pFo57g69lyT4i6rBNyyjUlcy5SoTM7U
+         2wWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VbWdfXzW;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 16sor7497335otk.0.2020.01.14.01.59.29
+       dkim=fail header.i=@linaro.org header.s=google header.b=YxPC+qVt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i31si7790420qva.142.2020.01.14.03.17.22
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 14 Jan 2020 01:59:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 14 Jan 2020 03:17:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VbWdfXzW;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=b2DiuJpfAtGeAoUNzZ4klHYPKsCmGPyrHxskQkSSgUg=;
-        b=VbWdfXzWosBz2rt7Q96OtBBGxyjJ23tVF22pL0vbVpHsN/sf6yyejPrAGzrRtedjuW
-         ZQHqq2nT/tA64qyWt0KEVT0QgUHMSCiEi1G3yko153Uh8/nFZQdl2Uep832aroOMao2g
-         BVGAUjG/viB/jNfQ8wcC/SodObiyxgQpfhUAQMZZRvdNZEp6RwqFtnL3Cc41Y1zmH3or
-         A65ytUyeEXZ/2i8rlL9dgGLArVbDEVwIlFzEaQcL+sTwgPBZR5MrdyPshQTvWJQEQdak
-         va3VuOc3ZyfPSqDt61Heu+Bw8KvD/rV9i0b8KzIXjuOBu/0X0smWgrOiHVfL8vqkypxa
-         29QQ==
+       dkim=fail header.i=@linaro.org header.s=google header.b=YxPC+qVt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37180 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irKCH-0002Zg-S4
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 06:17:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50801)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1irKAH-00016n-4w
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 06:15:18 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1irKAF-0003k1-N8
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 06:15:16 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:40413)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1irKAF-0003jX-G9
+ for qemu-devel@nongnu.org; Tue, 14 Jan 2020 06:15:15 -0500
+Received: by mail-oi1-x241.google.com with SMTP id c77so11409522oib.7
+ for <qemu-devel@nongnu.org>; Tue, 14 Jan 2020 03:15:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PkanoPOF5W/d/hIfHK4PAFGtwOaU4hbXASfwdt4t1fw=;
+ b=YxPC+qVt6GrgMiu1O8iO+pr+mnGgcEyhNOeRzBmBe5upCK0aFMk9JSclW1Q3f3n7rc
+ AnANnZAtomXAgUCh6D/CMPwd849AQC9fMo2clNn1V0+4HnP88i2E4IYwE+a/dxye+EIJ
+ xaUgxSIlpz/Fgf4bE5qa1GUvse3ZkouljAp4LxavLq/Mwg0hyxWJ/NgIB0eNiFyE7Nr2
+ hX0WKtvkKUue1kHUwetnSIGMV8YtNXRDxVd2e/wAgshGxYnEUfO84gmrMlUYiYL5PzXB
+ ePTU1+k4IOGRSvntsjekyqK6BRDkq1YMKxGE1KEtIVTGOgTlT+SloAU09nOZpOyqI3iE
+ UEsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=b2DiuJpfAtGeAoUNzZ4klHYPKsCmGPyrHxskQkSSgUg=;
-        b=JbONJygNXiU2G/t5A4zoUmGNuvGWnRw/mpyv8ftcV646z6QI0qvinc1jl8+rdljVyr
-         sCQh+yNCl7VgLqC8j4TcGHvL+UAkdGSK6vGutAcKoiip1Pi5MF1ONzi3IELBUQ9fQarO
-         S1ehTVowmqsVRVaUIm2ggg6cyjY1OrjuyvhIU1ndd89vxIIDbpCJWGCzUPIw+CmmTnPj
-         3gWcUNx7S1ETzUFiVI3/o0KxYgUBVBhbUTGPcjgdMp3UdyeVrA2MLa2/TrzgyU6Lt4QZ
-         FOyyj2E7yAp/FzgroROpv8OH/RbzptCf3dPiKgILkoyE6Teu0KyfLRPkZsUfV3LuN0j3
-         VrtA==
-X-Gm-Message-State: APjAAAWB+wdpp5adfTDIedsGpSJpCUFYdZpcHZcD0iDm3PR2N17JCpE7
-	aQNFI8yjyY8KApS56/+nPArZU2/VPzf2HotosLG/USzZ
-X-Google-Smtp-Source: APXvYqztqi7IYRauvmq7P68h1Pbh39F85X1I1e1h+naKZZKMOViZ/q4V76RDrMrKEJu7EOga9JMCLvnITBC03NhBqLE=
-X-Received: by 2002:a05:6830:184:: with SMTP id q4mr16615430ota.232.1578995969450;
- Tue, 14 Jan 2020 01:59:29 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PkanoPOF5W/d/hIfHK4PAFGtwOaU4hbXASfwdt4t1fw=;
+ b=ZJK6Yf5OifvyDe647oCLYQGrsTF37CXqNq1+JbbEgHfRYBzLtdfUOLND2uLZVfLb7T
+ dqzrcGIJSe+eogEOAytiNbSf5KP9uRRhf4h5bfRORwBwRBolnkHELsGNvdRW9rOXe284
+ Uyxrrt9tPeZD6b6IVeqWWkWlq0YdG0hpf5pGpYeiOj7sOcKWlbwZ3kZfhZCAluI819Zl
+ I6RS4iYzdl1I+qgsecH7spiqi/ZXbqPibrfOABT76/Ea3FMzFthe1kmztgfEWbu4RDWf
+ sdBHebWPc8kPnlWo0qpgfLH5mmCi0BfD+j15HZNYZKCaYNv/IDY4svoWDbnXIOmHbdu2
+ GYzA==
+X-Gm-Message-State: APjAAAXMyp3LwAxCH6pojDPmhSLigR4zd/vDL8HIYAXzLv3/fAiVqiN0
+ MrxUA+g6am5sNUWqP42fIzt6/1p240fhXw2FsDyceQ==
+X-Received: by 2002:aca:f484:: with SMTP id s126mr15418659oih.48.1579000514604; 
+ Tue, 14 Jan 2020 03:15:14 -0800 (PST)
 MIME-Version: 1.0
-References: <11d88b2741eac3f634d5aed9e3355c974b533f7b.camel@kernel.crashing.org>
-In-Reply-To: <11d88b2741eac3f634d5aed9e3355c974b533f7b.camel@kernel.crashing.org>
+References: <20200114092606.1761-1-quintela@redhat.com>
+In-Reply-To: <20200114092606.1761-1-quintela@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Jan 2020 09:59:18 +0000
-Message-ID: <CAFEAcA-A_caQgwi5DzExdZChoTg-Qa73hq7Ho7dPLiN633Yj1Q@mail.gmail.com>
-Subject: Re: Semihosting, arm, riscv, ppc and common code
-To: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Keith Packard <keithp@keithp.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Date: Tue, 14 Jan 2020 11:15:03 +0000
+Message-ID: <CAFEAcA-7aLrp4n9gtD=0MzmMDpzNyJCUpOmY2XPxNOun5MKeGA@mail.gmail.com>
+Subject: Re: [PULL 00/29] Migration pull patches (second try)
+To: Juan Quintela <quintela@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: ybRzFT6Q72DT
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Richard Henderson <rth@twiddle.net>, Stefan Berger <stefanb@linux.ibm.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0zmGfo2o3vRq
 
-On Tue, 14 Jan 2020 at 06:29, Benjamin Herrenschmidt
-<benh@kernel.crashing.org> wrote:
+On Tue, 14 Jan 2020 at 09:26, Juan Quintela <quintela@redhat.com> wrote:
 >
-> Hi Folks !
+> The following changes since commit 3c8a6575985b1652b45bfa670b5e1907d642cfa0:
 >
-> So I started "porting" over (read: copying) the arm semihosting code to
-> ppc to mimmic what Keith did for risv (mostly for picolibc support).
+>   Merge remote-tracking branch 'remotes/kraxel/tags/usb-20200113-pull-request' into staging (2020-01-13 14:19:57 +0000)
 >
-> I noticed that the bulk of arm-semi.c (or riscv-semi.c) is trivially
-> made completely generic by doing a couple of changes:
+> are available in the Git repository at:
+>
+>   https://github.com/juanquintela/qemu.git tags/migration-pull-pull-request
+>
+> for you to fetch changes up to 4eafab585c091050b5ae63130f46fe46ac919c3a:
+>
+>   migration: Support QLIST migration (2020-01-14 10:17:12 +0100)
+>
+> ----------------------------------------------------------------
+> Migration pull request
+> - updated QList patch
+> - initialize local msg variable
+>
+> ----------------------------------------------------------------
 
-Note that semihosting is not a "here's a handy QEMU feature"
-thing. It's an architecture-specific API and ABI, which should
-be defined somewhere in a standard external to QEMU.
-You need to start by having a definition for PPC of what
-semihosting is. If you're starting from scratch there, there
-are some important things you should do differently to Arm --
-there is no benefit to repeating the mistakes of API definition
-that we made! Most notably, you want to specify and require
-that any unrecognized semihosting call function fails in a
-clean and detectable way; you also should have a semihosting
-function for "ask for a feature bit mask" so you don't need
-the silly magic-filename approach Arm had to go for. You
-also want to standardize what the errno values are, which Arm
-forgot to do and which makes the errno handling in the spec
-pretty useless.
-
-TLDR: don't start by writing code, start by writing the *API/ABI spec*.
-I tried to push the RISCV folks in this direction as well.
+Still fails on hosts where ram_addr_t is 32 bits.
+Looks like you still haven't got the fix for the problem
+Dan pointed out where multifd_save_setup() is using the
+wrong type when it calculates p->packetlen to allocate the
+data structure.
 
 thanks
 -- PMM

@@ -1,99 +1,98 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5393683lff;
-        Tue, 14 Jan 2020 03:40:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqztx9m7o59q/FibILFJDVnYHNSrdDeNmYQkkqmlV7ZoBAR+A8xOMg/cbktQRYWCULCcNCt4
-X-Received: by 2002:a17:906:f852:: with SMTP id ks18mr22213167ejb.260.1579002025547;
-        Tue, 14 Jan 2020 03:40:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579002025; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5394227lff;
+        Tue, 14 Jan 2020 03:41:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzB+W3GP5uvYnCriBYrVYOeDqiuNEytAEkx+GkQnP257+jS8XAW/3B8bCknhq5O5qN7jO9c
+X-Received: by 2002:a50:c048:: with SMTP id u8mr22600714edd.226.1579002064003;
+        Tue, 14 Jan 2020 03:41:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579002063; cv=none;
         d=google.com; s=arc-20160816;
-        b=B4KRA2px5kx/GYBFvoM5ezN5BYdM8tDcXwQtQLmYlNGzHbVPw2G0Mxu3oDS9ouu2ru
-         x+I7yJ721ZjbaVeapxSS+U/URo8mkqXCKF5DVjb0OqrBH9CUCPo6mj2jmPzOhLseaUs/
-         bmASQpRes3qEHa1wC4d8juFTuxCy+pCw82c9/XynfQFw+spMBTaf2rM6GJLcRHa/hb7D
-         Z1Shrusvq5TLDvUnjoTqUqX9n6XXJeDvfewQC2O33FzP1iPJE6ZwTG9g43yAJRXBOC2d
-         z0k4VPiZvjzkaF+Cjp9UvwpFI5efDa9VD9GY6/70ul0B2woFjM89k8L9VBmpKkiB/NXF
-         j5/A==
+        b=pb/tv9vkOGodAkd+ycV8JFWdIdLA4Y6I8gGJ9PTJ6a/TJcTJOYPAfpXbCEg0jvkO2G
+         sox0hd3l0HMAImK8MSYd7N0tdaCGHioXQmVbop4L7thP0pkEa72uag9+ox5OB97Vjf+0
+         pOqtBS6klx7OseVdYnblgi4WxTegXx6kNNhZwnl8wkj9Xe2PYYEvJw5wr0Y0wIdZathK
+         zSxkRFVjZRyCVWf40nYly2ZSGDZPMNxtaS37Sg68Oz/3trllD6QAWFBVRUjeu0OqZgRJ
+         e3ph4pqe9Dlfh7MBCGa+5f5tzZoaKMRAkMsopR5peKkRu38utFGiCjIb5kkiSNzDdu0F
+         qCKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=KP4JOgx0MH3utU/6sKW0BXPz8/EvSkOonQGNpzhU5Ck=;
-        b=HW9XZjSDbru+6XIkEKnLko+lJA2Brczusc+K/ItobNJmjybP/eFDExDQ34KHAjbTQ/
-         ofteq8TgTvGRtQssZJQxSlrefN2Ufx+bA3fOSNbmi2FXvvihfhc52bH+mB3fDylR3nJA
-         bYviFTIHJWKi2gkLws6cfYAA41NeVHVJJfaZZ/div74yPD+2Fu6k0sR3x4UNN4rRqgSK
-         WH2HJ+BvG+siJ25ZywKQn5azOoz20SaLLiXpc8v6EobDQErf1zox4Nfw/J1AAojuQMZb
-         bFFrTWKe+qC7TPKbhutpTZ+IUSyNR4Q1EibXKHVBpwbWbC2pUnmUma4jhKyHaDz+L5vw
-         CXNA==
+        bh=ep/mdFe58oIx18pwRhWkg/D1I02FCTVyA7jE4yQkeXs=;
+        b=NtvfVb3s/u/k947Pgdi0mTYtvXXbuh5josL+Xo+qNPYYOUmgQsPi32+ylxQLeULRUs
+         lvALtZYleR8QJ9aBFhEKV7OO3pUSXfHy5Rfx+8yun6z8QOuf9u10jP/KEWK7HIer0xmd
+         PT2PyE9rYOq7fJ5+kjCnlLQ7LFZARweOp2eTZtFbDLHKiKtbAh9LSiX+vvIQSo40frne
+         Hse6pSmQQNQN4zzIhnaVexMwngYwFLsCRoOY7NFAJ8EJK2TAqQzcOvXVlmOEMUP4Z/Gv
+         pDsuZi4t1LlErhXzhfddvC93WnFkiasMRc9uGQleQGbU8FSWt3xknKLqCTmEOv3A1kUC
+         1udA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=euIXCE3Q;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iZ4dlH3X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m10si8417703ejb.242.2020.01.14.03.40.25
+        by mx.google.com with ESMTPS id d27si10942308edj.136.2020.01.14.03.41.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 03:40:25 -0800 (PST)
+        Tue, 14 Jan 2020 03:41:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=euIXCE3Q;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iZ4dlH3X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37604 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37644 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irKYa-0004WH-2d
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 06:40:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55370)
+	id 1irKZC-0005Sp-FV
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 06:41:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55529)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1irKYG-0004MK-NH
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:40:08 -0500
+ (envelope-from <quintela@redhat.com>) id 1irKYf-000551-Kg
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:40:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1irKYC-0002o0-P8
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:40:04 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:38835
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <quintela@redhat.com>) id 1irKYb-0002wc-NV
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:40:29 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:51250
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irKYC-0002nc-LV
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:40:00 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irKYb-0002wE-Ik
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:40:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579001999;
+ s=mimecast20190719; t=1579002025;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KP4JOgx0MH3utU/6sKW0BXPz8/EvSkOonQGNpzhU5Ck=;
- b=euIXCE3QCMswE5DgnxNuqVUIAwBeG4esrkj7p4j6dre6YDaoEuvps/HXGK8attE5fxxJJB
- EZEBa0D557ogvjRIg5jwmYJmoyFGid0/yKmZ6pqrXGCbIIKdAb7yDi3HPZbNr+yS1INXGp
- lmL/uVoMptes6L6MKzjzELt1FKnoBZA=
+ bh=ep/mdFe58oIx18pwRhWkg/D1I02FCTVyA7jE4yQkeXs=;
+ b=iZ4dlH3XmMCH5+69MmoM4apzb2XCewYhzNRudDyLFoInrFClt+aekrdRaoSZy5CVZ22dYA
+ Ys8vRY2w1CKthoSyXvrvTBVvBEeRST6RLjeqyn14IhRzLUEePFw0Fz16QI1MBYdDVVA/YJ
+ MFccrIy7x5+suoQiZKB9Q68YUASLJZo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-323-EhzFe_qDN1KDj5-4ZYYqpA-1; Tue, 14 Jan 2020 06:39:58 -0500
+ us-mta-239-QkwOZzIHNzeHKasIWBBh5g-1; Tue, 14 Jan 2020 06:40:23 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 65E2D800D5E;
- Tue, 14 Jan 2020 11:39:56 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EAADC18CA243;
+ Tue, 14 Jan 2020 11:40:21 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7597C5DA32;
- Tue, 14 Jan 2020 11:39:47 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9D8825DA70;
+ Tue, 14 Jan 2020 11:40:17 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 03/30] migration: Make sure that we don't call write() in case
- of error
-Date: Tue, 14 Jan 2020 12:38:59 +0100
-Message-Id: <20200114113926.3556-4-quintela@redhat.com>
+Subject: [PULL 06/30] runstate: ignore finishmigrate -> prelaunch transition
+Date: Tue, 14 Jan 2020 12:39:02 +0100
+Message-Id: <20200114113926.3556-7-quintela@redhat.com>
 In-Reply-To: <20200114113926.3556-1-quintela@redhat.com>
 References: <20200114113926.3556-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: EhzFe_qDN1KDj5-4ZYYqpA-1
+X-MC-Unique: QkwOZzIHNzeHKasIWBBh5g-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -121,84 +120,65 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XV0pMm7JggHh
+X-TUID: bWrpVdtCcloq
 
-If we are exiting due to an error/finish/.... Just don't try to even
-touch the channel with one IO operation.
+From: Laurent Vivier <lvivier@redhat.com>
 
+Commit 1bd71dce4bf2 tries to prevent a finishmigrate -> prelaunch
+transition by exiting at the beginning of the main_loop_should_exit()
+function if the state is already finishmigrate.
+
+As the finishmigrate state is set in the migration thread it can
+happen concurrently to the function. The migration thread and the
+function are normally protected by the iothread mutex and thus the
+state should no evolve between the start of the function and its end.
+
+Unfortunately during the function life the lock is released by
+pause_all_vcpus() just before the point we need to be sure we are
+not in finishmigrate state and if the migration thread is waiting
+for the lock it will take the opportunity to change the state
+to finishmigrate.
+
+The only way to be sure we are not in the finishmigrate state when
+we need is to check the state after the pause_all_vcpus() function.
+
+Fixes: 1bd71dce4bf2 ("runstate: ignore exit request in finish migrate state=
+")
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 ---
- migration/ram.c | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ vl.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/migration/ram.c b/migration/ram.c
-index b9147bcca3..f946282adb 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -900,6 +900,12 @@ struct {
-     uint64_t packet_num;
-     /* send channels ready */
-     QemuSemaphore channels_ready;
-+    /*
-+     * Have we already run terminate threads.  There is a race when it
-+     * happens that we got one error while we are exiting.
-+     * We will use atomic operations.  Only valid values are 0 and 1.
-+     */
-+    int exiting;
- } *multifd_send_state;
+diff --git a/vl.c b/vl.c
+index 158a05ed32..ba3e176094 100644
+--- a/vl.c
++++ b/vl.c
+@@ -1604,9 +1604,6 @@ static bool main_loop_should_exit(void)
+     RunState r;
+     ShutdownCause request;
 =20
- /*
-@@ -928,6 +934,10 @@ static int multifd_send_pages(RAMState *rs)
-     MultiFDPages_t *pages =3D multifd_send_state->pages;
-     uint64_t transferred;
-=20
-+    if (atomic_read(&multifd_send_state->exiting)) {
-+        return -1;
-+    }
-+
-     qemu_sem_wait(&multifd_send_state->channels_ready);
-     for (i =3D next_channel;; i =3D (i + 1) % migrate_multifd_channels()) =
-{
-         p =3D &multifd_send_state->params[i];
-@@ -1009,6 +1019,16 @@ static void multifd_send_terminate_threads(Error *er=
-r)
+-    if (runstate_check(RUN_STATE_FINISH_MIGRATE)) {
+-        return false;
+-    }
+     if (preconfig_exit_requested) {
+         if (runstate_check(RUN_STATE_PRECONFIG)) {
+             runstate_set(RUN_STATE_PRELAUNCH);
+@@ -1635,8 +1632,13 @@ static bool main_loop_should_exit(void)
+         pause_all_vcpus();
+         qemu_system_reset(request);
+         resume_all_vcpus();
++        /*
++         * runstate can change in pause_all_vcpus()
++         * as iothread mutex is unlocked
++         */
+         if (!runstate_check(RUN_STATE_RUNNING) &&
+-                !runstate_check(RUN_STATE_INMIGRATE)) {
++                !runstate_check(RUN_STATE_INMIGRATE) &&
++                !runstate_check(RUN_STATE_FINISH_MIGRATE)) {
+             runstate_set(RUN_STATE_PRELAUNCH);
          }
      }
-=20
-+    /*
-+     * We don't want to exit each threads twice.  Depending on where
-+     * we get the error, or if there are two independent errors in two
-+     * threads at the same time, we can end calling this function
-+     * twice.
-+     */
-+    if (atomic_xchg(&multifd_send_state->exiting, 1)) {
-+        return;
-+    }
-+
-     for (i =3D 0; i < migrate_multifd_channels(); i++) {
-         MultiFDSendParams *p =3D &multifd_send_state->params[i];
-=20
-@@ -1118,6 +1138,10 @@ static void *multifd_send_thread(void *opaque)
-=20
-     while (true) {
-         qemu_sem_wait(&p->sem);
-+
-+        if (atomic_read(&multifd_send_state->exiting)) {
-+            break;
-+        }
-         qemu_mutex_lock(&p->mutex);
-=20
-         if (p->pending_job) {
-@@ -1224,6 +1248,7 @@ int multifd_save_setup(void)
-     multifd_send_state->params =3D g_new0(MultiFDSendParams, thread_count)=
-;
-     multifd_send_state->pages =3D multifd_pages_init(page_count);
-     qemu_sem_init(&multifd_send_state->channels_ready, 0);
-+    atomic_set(&multifd_send_state->exiting, 0);
-=20
-     for (i =3D 0; i < thread_count; i++) {
-         MultiFDSendParams *p =3D &multifd_send_state->params[i];
 --=20
 2.24.1
 

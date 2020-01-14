@@ -1,74 +1,94 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5372865lff;
-        Tue, 14 Jan 2020 03:18:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy9fieD+esYV/sh2msPAEvT9hok+ZNdGUouz4EOk76Ywo71O53KBrfDX/e3fV4/QFOUvFcP
-X-Received: by 2002:aa7:da03:: with SMTP id r3mr23027591eds.163.1579000729607;
-        Tue, 14 Jan 2020 03:18:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579000729; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5393356lff;
+        Tue, 14 Jan 2020 03:40:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyULI4kStZ9HV9O6hCT1c03/tqA/pPv9X9fPcdFCLU8CHqp2uV4CFBQtoqdMBK8GJa5UVbg
+X-Received: by 2002:aa7:df09:: with SMTP id c9mr22559339edy.133.1579002005277;
+        Tue, 14 Jan 2020 03:40:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579002005; cv=none;
         d=google.com; s=arc-20160816;
-        b=MnQCHb4/NI65mGaE8Co80tzgqzhDTyGfO8LGVts3IUko49eU/jn614lo6mt3nY7foc
-         GLHKpF66sgwVvKmPfboyi5ubd/c9BtQfovC6xtI9+QpfnmfQbZr0T/9JnRxtDBYs0jTG
-         iK04RDIQuds55xE1gfELibQT/aSwlc1hAqlQoFgb2IoNQ+w8okZE9hlQ6Dza497pzhTe
-         Jk14UED5QhP7pKv6nzoFhceVDGThc0NHmhpn3gffzOh9sMOMoVA8yBqjtHFGovQzWW7N
-         BUtlso23rNLjKWMJguEP8FgkqOnvF5dxys4zWg58Sf4zUlDS9d8fQHQESGMvM0I538tG
-         03/w==
+        b=H9PrXi5/pfIMJhQyN+3ySK+mgQ29ecCUxMZeRPKrw9jEJNWe4u/aEF/KkfxrKpxZ9I
+         ZwD6dko9wdvI66mVZ/ifZ//KLs7LbOQZs8r4eMkvPaHASf3VVrhl8GaBKVB1Gb8G6xld
+         ynz+RWZWIxt7ipgmZN9HCkOne/7vbH09Ni/qt9HNJgWlVt4XRxitHQFFvZjFFGHu9W4f
+         G6P7fdtZhH4uY3kVCVNNlOhmHEwg5wddvrzBPhjyMwOopNaZ9SEO/hLLuOuMj1bEoSfu
+         hkuGd4xhMM6DZzs//qW/imhC8KOi8nY3ahr1d1vIZWKy80s3c17LBNrlnp6K3yUJOnqm
+         263w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:date:to:from
-         :resent-from:content-transfer-encoding:mime-version:message-id
-         :subject:in-reply-to:resent-message-id:resent-date;
-        bh=DnUOrKG/xyj6AsKDexKWGv+Ba/O/YBwDl/1x4LhkRcA=;
-        b=sktIM8c2Oar7oNO+Daui5SAJp7AThHTboWD82kMUdpdvVRLUiL1L16g3YZ8SveqJlu
-         EAkeZGAmY7sI4ounbRw75N6VAC6Va9APvNVnOQIa8r3YNBtdxNoYkGm/qJT94CPzh2Km
-         b7vyCUWr+1+a1tlPflFyt8wY43OCZ5U5RJyXUg2cyNGSXuApqLnUebO6Q7DM/YVVfmxw
-         m3si8kdtM3f5dAYJgpDwSbv3DW6Qs5IiWSOrw9S2oC0xbHPNEq0N1HZdrGVvMcns1LAY
-         nUtsoK10gQmB1Gh1xYyr/Xog7LyPv2NVt2ulaJTh7TxtcNmBNolzqKloROcjX90IYQHI
-         9bng==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=s8kSibyGHEuvaMxZof1NYWLNsdwJUdVoF7uKbNL5N60=;
+        b=soYzglY7Qvet/YxNiLnVZWTa8VhaaPZGtSdFuYy/l4oFpNbTQQ3MbJlRxyFwBUhXxY
+         gP9tXEdGek7MPJ6sus4iZT9WP/VWhdREpgI0+YgD4061jagm+pJxnmSL0bosjCCRjAcp
+         gZ2jxfLB73S7/KtOLmgv0ni7bC2L94BIa9Iod0tPawFUJUMiiOD4BWNt4YYmngeeRd5O
+         fVj0cVr/vaZujT5wA9zydhgbZwnTnRtCkF1jOgWCNRQQLIznIeNNfXsstn5+TxalHq0D
+         GZJ4WPl0qCA8PmJ3B0IBOrD1z5BzDKFQ96Px1axw37Cf5p/8oT2HeIHNqFmL7jv8UoMP
+         xiIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WxzKwGAa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9si9477736edn.351.2020.01.14.03.18.49
+        by mx.google.com with ESMTPS id bi20si10553183edb.430.2020.01.14.03.40.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 03:18:49 -0800 (PST)
+        Tue, 14 Jan 2020 03:40:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37208 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WxzKwGAa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37578 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irKDg-0004ML-39
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 06:18:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51246)
+	id 1irKYF-00042x-Rh
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 06:40:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55273)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1irKDL-0004Kf-Gw
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:18:29 -0500
+ (envelope-from <quintela@redhat.com>) id 1irKXy-00040G-UD
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:39:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1irKDK-0004Q6-0u
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:18:27 -0500
-Resent-Date: Tue, 14 Jan 2020 06:18:27 -0500
-Resent-Message-Id: <E1irKDK-0004Q6-0u@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21111)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1irKDE-0004P0-Nn; Tue, 14 Jan 2020 06:18:20 -0500
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1579000609985470.20307218251764;
- Tue, 14 Jan 2020 03:16:49 -0800 (PST)
-In-Reply-To: <20200114092606.1761-1-quintela@redhat.com>
-Subject: Re: [PULL 00/29] Migration pull patches (second try)
-Message-ID: <157900060806.1076.17102990904117679715@37313f22b938>
+ (envelope-from <quintela@redhat.com>) id 1irKXt-0002jG-Qn
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:39:46 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:51749
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1irKXt-0002iu-NG
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 06:39:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579001980;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=s8kSibyGHEuvaMxZof1NYWLNsdwJUdVoF7uKbNL5N60=;
+ b=WxzKwGAaPoDUj+tXut5EHe1nlPrsOx0ZYxsmnZMC0A0uKBh8YDiej1nZa+SPIa4oxxHYHZ
+ AtJoStcJGhZH/HENp/dwnhRqOLxrbQEtn08nYPngxSGoP2wbP/xp0fW/wYrO/XneqHxP6p
+ EDVpdsuhXZtKG+9S3bAIVwoCZ55u9is=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-388-3bRa8E_2PZiXq7t-_DdOkg-1; Tue, 14 Jan 2020 06:39:39 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A2905800D4C;
+ Tue, 14 Jan 2020 11:39:37 +0000 (UTC)
+Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 07BB15DA32;
+ Tue, 14 Jan 2020 11:39:27 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 00/30] Migration pull patches (3rd try)
+Date: Tue, 14 Jan 2020 12:38:56 +0100
+Message-Id: <20200114113926.3556-1-quintela@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: quintela@redhat.com
-Date: Tue, 14 Jan 2020 03:16:49 -0800 (PST)
-X-ZohoMailClient: External
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: 3bRa8E_2PZiXq7t-_DdOkg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 136.143.188.51
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,114 +100,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: lvivier@redhat.com, cminyard@mvista.com, thuth@redhat.com,
- berrange@redhat.com, ehabkost@redhat.com, mst@redhat.com,
- peter.maydell@linaro.org, sw@weilnetz.de, jasowang@redhat.com,
- quintela@redhat.com, qemu-devel@nongnu.org, dgilbert@redhat.com,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, pbonzini@redhat.com,
- marcandre.lureau@redhat.com, stefanb@linux.ibm.com, rth@twiddle.net,
- david@gibson.dropbear.id.au
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Corey Minyard <cminyard@mvista.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Richard Henderson <rth@twiddle.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GOZVcbz/eBcW
+X-TUID: YiTQmnpVNWuh
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDExNDA5MjYwNi4xNzYx
-LTEtcXVpbnRlbGFAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZl
-IHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGlu
-Zm9ybWF0aW9uOgoKU3ViamVjdDogW1BVTEwgMDAvMjldIE1pZ3JhdGlvbiBwdWxsIHBhdGNoZXMg
-KHNlY29uZCB0cnkpClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMDExNDA5MjYwNi4xNzYx
-LTEtcXVpbnRlbGFAcmVkaGF0LmNvbQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4v
-YmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcg
-LS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1l
-cyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3Jp
-cHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9
-PT0KClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKMGMzMzk0YiBtaWdyYXRpb246IFN1
-cHBvcnQgUUxJU1QgbWlncmF0aW9uCjlmODQzM2UgYXBpYzogVXNlIDMyYml0IEFQSUMgSUQgZm9y
-IG1pZ3JhdGlvbiBpbnN0YW5jZSBJRApiMjljODQzIG1pZ3JhdGlvbjogQ2hhbmdlIFNhdmVTdGF0
-ZUVudHJ5Lmluc3RhbmNlX2lkIGludG8gdWludDMyX3QKZWZkMDBmYSBtaWdyYXRpb246IERlZmlu
-ZSBWTVNUQVRFX0lOU1RBTkNFX0lEX0FOWQpjOWU2MTVmIEJ1ZyAjMTgyOTI0MiBjb3JyZWN0aW9u
-Lgo5MGUxN2FmIG1pZ3JhdGlvbi9tdWx0aWZkOiBmaXggZGVzdHJveWVkIG11dGV4IGFjY2VzcyBp
-biB0ZXJtaW5hdGluZyBtdWx0aWZkIHRocmVhZHMKNDBkODk2MiBtaWdyYXRpb24vbXVsdGlmZDog
-Zml4IG51bGxwdHIgYWNjZXNzIGluIHRlcm1pbmF0aW5nIG11bHRpZmQgdGhyZWFkcwozMjkxZDkz
-IG1pZ3JhdGlvbi9tdWx0aWZkOiBub3QgdXNlIG11bHRpZmQgZHVyaW5nIHBvc3Rjb3B5CmFjNWYw
-ZTUgbWlncmF0aW9uL211bHRpZmQ6IGNsZWFuIHBhZ2VzIGFmdGVyIGZpbGxpbmcgcGFja2V0CjNm
-OWYzZTAgbWlncmF0aW9uL3Bvc3Rjb3B5OiBlbmFibGUgY29tcHJlc3MgZHVyaW5nIHBvc3Rjb3B5
-CmI1MzNmZDYgbWlncmF0aW9uL3Bvc3Rjb3B5OiBlbmFibGUgcmFuZG9tIG9yZGVyIHRhcmdldCBw
-YWdlIGFycml2YWwKNTFhOTEyZCBtaWdyYXRpb24vcG9zdGNvcHk6IHNldCBhbGxfemVybyB0byB0
-cnVlIG9uIHRoZSBmaXJzdCB0YXJnZXQgcGFnZQoxZDc5NjQwIG1pZ3JhdGlvbi9wb3N0Y29weTog
-Y291bnQgdGFyZ2V0IHBhZ2UgbnVtYmVyIHRvIGRlY2lkZSB0aGUgcGxhY2VfbmVlZGVkCjFiYjA2
-NjAgbWlncmF0aW9uL3Bvc3Rjb3B5OiB3YWl0IGZvciBkZWNvbXByZXNzIHRocmVhZCBpbiBwcmVj
-b3B5CjJkOWVlNzMgbWlncmF0aW9uL3Bvc3Rjb3B5OiByZWR1Y2UgbWVtc2V0IHdoZW4gaXQgaXMg
-emVybyBwYWdlIGFuZCBtYXRjaGVzX3RhcmdldF9wYWdlX3NpemUKMTY1NjEyOSBtaWdyYXRpb24v
-cmFtOiBZaWVsZCBwZXJpb2RpY2FsbHkgdG8gdGhlIG1haW4gbG9vcAozNGU5YTI3IG1pZ3JhdGlv
-bjogc2F2ZXZtX3N0YXRlX2hhbmRsZXJfaW5zZXJ0OiBjb25zdGFudC10aW1lIGVsZW1lbnQgaW5z
-ZXJ0aW9uCmVlY2M0ZmIgbWlncmF0aW9uOiBhZGQgc2F2ZXZtX3N0YXRlX2hhbmRsZXJfcmVtb3Zl
-KCkKNWVhZjgwMyBtaXNjOiB1c2UgUUVNVV9JU19BTElHTkVECjEyNjJkOWQgbWlncmF0aW9uOiBG
-aXggdGhlIHJlLXJ1biBjaGVjayBvZiB0aGUgbWlncmF0ZS1pbmNvbWluZyBjb21tYW5kCmJkYTkw
-NjQgbWlncmF0aW9uOiBGaXggaW5jb3JyZWN0IGludGVnZXItPmZsb2F0IGNvbnZlcnNpb24gY2F1
-Z2h0IGJ5IGNsYW5nCmFmMzY2ZDggbWlncmF0aW9uOiBSYXRlIGxpbWl0IGluc2lkZSBob3N0IHBh
-Z2VzCmI3MGYzMjYgcmFtLmM6IHJlbW92ZSB1bm5lZWRlZCBsYWJlbHMKMDc2ZmE3YyBydW5zdGF0
-ZTogaWdub3JlIGZpbmlzaG1pZ3JhdGUgLT4gcHJlbGF1bmNoIHRyYW5zaXRpb24KMTM5YjIxNyBt
-aWdyYXRpb24tdGVzdDogcHBjNjQ6IGZpeCBGT1JUSCB0ZXN0IHByb2dyYW0KZjgyMTA0OSBtaWdy
-YXRpb24tdGVzdDogaW50cm9kdWNlIGZ1bmN0aW9ucyB0byBoYW5kbGUgc3RyaW5nIHBhcmFtZXRl
-cnMKNzBkZTEzMyBtaWdyYXRpb246IE1ha2Ugc3VyZSB0aGF0IHdlIGRvbid0IGNhbGwgd3JpdGUo
-KSBpbiBjYXNlIG9mIGVycm9yCjM5N2NhZWMgbWlncmF0aW9uLXRlc3Q6IEFkZCBtaWdyYXRpb24g
-bXVsdGlmZCB0ZXN0CjlhODk4ZWYgbXVsdGlmZDogSW5pdGlhbGl6ZSBsb2NhbCB2YXJpYWJsZQoK
-PT09IE9VVFBVVCBCRUdJTiA9PT0KMS8yOSBDaGVja2luZyBjb21taXQgOWE4OThlZmE4Y2RkICht
-dWx0aWZkOiBJbml0aWFsaXplIGxvY2FsIHZhcmlhYmxlKQpFUlJPUjogTWlzc2luZyBTaWduZWQt
-b2ZmLWJ5OiBsaW5lKHMpCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDggbGluZXMgY2hl
-Y2tlZAoKUGF0Y2ggMS8yOSBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBh
-bnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhl
-IG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKMi8yOSBDaGVja2lu
-ZyBjb21taXQgMzk3Y2FlYzI1YzZkIChtaWdyYXRpb24tdGVzdDogQWRkIG1pZ3JhdGlvbiBtdWx0
-aWZkIHRlc3QpCjMvMjkgQ2hlY2tpbmcgY29tbWl0IDcwZGUxMzM1NGNmNyAobWlncmF0aW9uOiBN
-YWtlIHN1cmUgdGhhdCB3ZSBkb24ndCBjYWxsIHdyaXRlKCkgaW4gY2FzZSBvZiBlcnJvcikKNC8y
-OSBDaGVja2luZyBjb21taXQgZjgyMTA0OTZiYTc2IChtaWdyYXRpb24tdGVzdDogaW50cm9kdWNl
-IGZ1bmN0aW9ucyB0byBoYW5kbGUgc3RyaW5nIHBhcmFtZXRlcnMpCjUvMjkgQ2hlY2tpbmcgY29t
-bWl0IDEzOWIyMTc5NjBlZiAobWlncmF0aW9uLXRlc3Q6IHBwYzY0OiBmaXggRk9SVEggdGVzdCBw
-cm9ncmFtKQo2LzI5IENoZWNraW5nIGNvbW1pdCAwNzZmYTdjYzc2N2UgKHJ1bnN0YXRlOiBpZ25v
-cmUgZmluaXNobWlncmF0ZSAtPiBwcmVsYXVuY2ggdHJhbnNpdGlvbikKNy8yOSBDaGVja2luZyBj
-b21taXQgYjcwZjMyNmNhZDNlIChyYW0uYzogcmVtb3ZlIHVubmVlZGVkIGxhYmVscykKOC8yOSBD
-aGVja2luZyBjb21taXQgYWYzNjZkOGQ0YWEzIChtaWdyYXRpb246IFJhdGUgbGltaXQgaW5zaWRl
-IGhvc3QgcGFnZXMpCjkvMjkgQ2hlY2tpbmcgY29tbWl0IGJkYTkwNjQxOGQ5NCAobWlncmF0aW9u
-OiBGaXggaW5jb3JyZWN0IGludGVnZXItPmZsb2F0IGNvbnZlcnNpb24gY2F1Z2h0IGJ5IGNsYW5n
-KQoxMC8yOSBDaGVja2luZyBjb21taXQgMTI2MmQ5ZGY2YWY3IChtaWdyYXRpb246IEZpeCB0aGUg
-cmUtcnVuIGNoZWNrIG9mIHRoZSBtaWdyYXRlLWluY29taW5nIGNvbW1hbmQpCjExLzI5IENoZWNr
-aW5nIGNvbW1pdCA1ZWFmODAzNGUxOGUgKG1pc2M6IHVzZSBRRU1VX0lTX0FMSUdORUQpCjEyLzI5
-IENoZWNraW5nIGNvbW1pdCBlZWNjNGZiMTJmZTQgKG1pZ3JhdGlvbjogYWRkIHNhdmV2bV9zdGF0
-ZV9oYW5kbGVyX3JlbW92ZSgpKQoxMy8yOSBDaGVja2luZyBjb21taXQgMzRlOWEyN2M1MzUyICht
-aWdyYXRpb246IHNhdmV2bV9zdGF0ZV9oYW5kbGVyX2luc2VydDogY29uc3RhbnQtdGltZSBlbGVt
-ZW50IGluc2VydGlvbikKMTQvMjkgQ2hlY2tpbmcgY29tbWl0IDE2NTYxMjkzM2E4YSAobWlncmF0
-aW9uL3JhbTogWWllbGQgcGVyaW9kaWNhbGx5IHRvIHRoZSBtYWluIGxvb3ApCjE1LzI5IENoZWNr
-aW5nIGNvbW1pdCAyZDllZTczZGMxMjAgKG1pZ3JhdGlvbi9wb3N0Y29weTogcmVkdWNlIG1lbXNl
-dCB3aGVuIGl0IGlzIHplcm8gcGFnZSBhbmQgbWF0Y2hlc190YXJnZXRfcGFnZV9zaXplKQoxNi8y
-OSBDaGVja2luZyBjb21taXQgMWJiMDY2MDhiZTUwIChtaWdyYXRpb24vcG9zdGNvcHk6IHdhaXQg
-Zm9yIGRlY29tcHJlc3MgdGhyZWFkIGluIHByZWNvcHkpCjE3LzI5IENoZWNraW5nIGNvbW1pdCAx
-ZDc5NjQwMDFlNDMgKG1pZ3JhdGlvbi9wb3N0Y29weTogY291bnQgdGFyZ2V0IHBhZ2UgbnVtYmVy
-IHRvIGRlY2lkZSB0aGUgcGxhY2VfbmVlZGVkKQoxOC8yOSBDaGVja2luZyBjb21taXQgNTFhOTEy
-ZDE0Mjk2IChtaWdyYXRpb24vcG9zdGNvcHk6IHNldCBhbGxfemVybyB0byB0cnVlIG9uIHRoZSBm
-aXJzdCB0YXJnZXQgcGFnZSkKMTkvMjkgQ2hlY2tpbmcgY29tbWl0IGI1MzNmZDYyYzRmMiAobWln
-cmF0aW9uL3Bvc3Rjb3B5OiBlbmFibGUgcmFuZG9tIG9yZGVyIHRhcmdldCBwYWdlIGFycml2YWwp
-CjIwLzI5IENoZWNraW5nIGNvbW1pdCAzZjlmM2UwMTBmYzAgKG1pZ3JhdGlvbi9wb3N0Y29weTog
-ZW5hYmxlIGNvbXByZXNzIGR1cmluZyBwb3N0Y29weSkKMjEvMjkgQ2hlY2tpbmcgY29tbWl0IGFj
-NWYwZTViNDIxNiAobWlncmF0aW9uL211bHRpZmQ6IGNsZWFuIHBhZ2VzIGFmdGVyIGZpbGxpbmcg
-cGFja2V0KQoyMi8yOSBDaGVja2luZyBjb21taXQgMzI5MWQ5MzlhY2NmIChtaWdyYXRpb24vbXVs
-dGlmZDogbm90IHVzZSBtdWx0aWZkIGR1cmluZyBwb3N0Y29weSkKMjMvMjkgQ2hlY2tpbmcgY29t
-bWl0IDQwZDg5NjJjNTMzOSAobWlncmF0aW9uL211bHRpZmQ6IGZpeCBudWxscHRyIGFjY2VzcyBp
-biB0ZXJtaW5hdGluZyBtdWx0aWZkIHRocmVhZHMpCjI0LzI5IENoZWNraW5nIGNvbW1pdCA5MGUx
-N2FmZjY1ZTIgKG1pZ3JhdGlvbi9tdWx0aWZkOiBmaXggZGVzdHJveWVkIG11dGV4IGFjY2VzcyBp
-biB0ZXJtaW5hdGluZyBtdWx0aWZkIHRocmVhZHMpCjI1LzI5IENoZWNraW5nIGNvbW1pdCBjOWU2
-MTVmNjAzYzkgKEJ1ZyAjMTgyOTI0MiBjb3JyZWN0aW9uLikKMjYvMjkgQ2hlY2tpbmcgY29tbWl0
-IGVmZDAwZmFjZTFlOCAobWlncmF0aW9uOiBEZWZpbmUgVk1TVEFURV9JTlNUQU5DRV9JRF9BTlkp
-CjI3LzI5IENoZWNraW5nIGNvbW1pdCBiMjljODQzMjJhY2MgKG1pZ3JhdGlvbjogQ2hhbmdlIFNh
-dmVTdGF0ZUVudHJ5Lmluc3RhbmNlX2lkIGludG8gdWludDMyX3QpCjI4LzI5IENoZWNraW5nIGNv
-bW1pdCA5Zjg0MzNlNzQ2MjggKGFwaWM6IFVzZSAzMmJpdCBBUElDIElEIGZvciBtaWdyYXRpb24g
-aW5zdGFuY2UgSUQpCjI5LzI5IENoZWNraW5nIGNvbW1pdCAwYzMzOTRiMDgzNjUgKG1pZ3JhdGlv
-bjogU3VwcG9ydCBRTElTVCBtaWdyYXRpb24pCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21t
-YW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0
-dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwMTE0MDkyNjA2LjE3NjEtMS1xdWludGVsYUByZWRo
-YXQuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJh
-dGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVh
-c2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+The following changes since commit 3c8a6575985b1652b45bfa670b5e1907d642cfa0=
+:
+
+  Merge remote-tracking branch 'remotes/kraxel/tags/usb-20200113-pull-reque=
+st' into staging (2020-01-13 14:19:57 +0000)
+
+are available in the Git repository at:
+
+  https://github.com/juanquintela/qemu.git tags/migration-pull-pull-request
+
+for you to fetch changes up to c3ff7ba64b1bb484a0b6339165627a196045a8c1:
+
+  multifd: Allocate uint64_t instead of ram_addr_t (2020-01-14 12:28:07 +01=
+00)
+
+----------------------------------------------------------------
+Migration pull request (take 3)
+
+Fix (yet more) places where ram_addr_t is not 64 bits.
+
+----------------------------------------------------------------
+
+Alexey Romko (1):
+  Bug #1829242 correction.
+
+Daniel Henrique Barboza (1):
+  ram.c: remove unneeded labels
+
+Dr. David Alan Gilbert (1):
+  migration: Rate limit inside host pages
+
+Eric Auger (1):
+  migration: Support QLIST migration
+
+Fangrui Song (1):
+  migration: Fix incorrect integer->float conversion caught by clang
+
+Jiahui Cen (2):
+  migration/multifd: fix nullptr access in terminating multifd threads
+  migration/multifd: fix destroyed mutex access in terminating multifd
+    threads
+
+Juan Quintela (5):
+  multifd: Initialize local variable
+  migration-test: Add migration multifd test
+  migration: Make sure that we don't call write() in case of error
+  migration-test: introduce functions to handle string parameters
+  multifd: Allocate uint64_t instead of ram_addr_t
+
+Laurent Vivier (2):
+  migration-test: ppc64: fix FORTH test program
+  runstate: ignore finishmigrate -> prelaunch transition
+
+Marc-Andr=C3=A9 Lureau (1):
+  misc: use QEMU_IS_ALIGNED
+
+Peter Xu (3):
+  migration: Define VMSTATE_INSTANCE_ID_ANY
+  migration: Change SaveStateEntry.instance_id into uint32_t
+  apic: Use 32bit APIC ID for migration instance ID
+
+Scott Cheloha (2):
+  migration: add savevm_state_handler_remove()
+  migration: savevm_state_handler_insert: constant-time element
+    insertion
+
+Wei Yang (8):
+  migration/postcopy: reduce memset when it is zero page and
+    matches_target_page_size
+  migration/postcopy: wait for decompress thread in precopy
+  migration/postcopy: count target page number to decide the
+    place_needed
+  migration/postcopy: set all_zero to true on the first target page
+  migration/postcopy: enable random order target page arrival
+  migration/postcopy: enable compress during postcopy
+  migration/multifd: clean pages after filling packet
+  migration/multifd: not use multifd during postcopy
+
+Yury Kotov (2):
+  migration: Fix the re-run check of the migrate-incoming command
+  migration/ram: Yield periodically to the main loop
+
+ backends/dbus-vmstate.c      |   3 +-
+ exec.c                       |   4 +-
+ hw/arm/stellaris.c           |   2 +-
+ hw/core/qdev.c               |   3 +-
+ hw/display/ads7846.c         |   2 +-
+ hw/i2c/core.c                |   2 +-
+ hw/input/stellaris_input.c   |   3 +-
+ hw/intc/apic_common.c        |   7 +-
+ hw/misc/max111x.c            |   3 +-
+ hw/net/eepro100.c            |   3 +-
+ hw/pci/pci.c                 |   2 +-
+ hw/ppc/spapr.c               |   2 +-
+ hw/timer/arm_timer.c         |   2 +-
+ hw/tpm/tpm_emulator.c        |   3 +-
+ include/migration/register.h |   2 +-
+ include/migration/vmstate.h  |  25 ++++-
+ include/qemu/queue.h         |  39 ++++++++
+ migration/migration.c        |  72 +++++++-------
+ migration/migration.h        |   1 +
+ migration/ram.c              | 185 ++++++++++++++++++++++++++---------
+ migration/savevm.c           |  61 ++++++++----
+ migration/trace-events       |   9 +-
+ migration/vmstate-types.c    |  70 +++++++++++++
+ stubs/vmstate.c              |   2 +-
+ tests/qtest/migration-test.c |  97 +++++++++++++++++-
+ tests/test-vmstate.c         | 170 ++++++++++++++++++++++++++++++++
+ vl.c                         |  10 +-
+ 27 files changed, 654 insertions(+), 130 deletions(-)
+
+--=20
+2.24.1
 

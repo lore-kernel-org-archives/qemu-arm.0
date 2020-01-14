@@ -1,109 +1,124 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5506601lff;
-        Tue, 14 Jan 2020 05:27:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwf2QPU5yXDcrQCJq1NfC6rY68Xr1DeAeqATQjqCw86F+C0pa2LlM65BIjjynb43UGttuiQ
-X-Received: by 2002:a9d:66ca:: with SMTP id t10mr16758574otm.352.1579008467876;
-        Tue, 14 Jan 2020 05:27:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579008467; cv=none;
-        d=google.com; s=arc-20160816;
-        b=n5QZAJ7OYcDGb9MreN1YiPGX0+vsJAJAsjUP14I3XcxpivSJf+XrT59y3wELTxGWXi
-         sK3j9axr5cOiBlfdik00G6ulxEhr6pR4nlZ1ymRyKwtL5Fx3NrbnhTqz6Ik06jc7Et5a
-         AVteQ65F/1vZDQmlz3YuMJYBnVsYX37f1C3BgPMoeS4mi5vVMoqX4nIn4U9It62lEOvK
-         AyF/xFOK5aRWu51nDnnyBEp6l41+FlL1kW+nS5WG2lg9BX5BRfFoAd2Lt4T1/imECACO
-         YKS10XaaznW3J7auWzL63v4eUYrq9+TJkqE9zQF20639rTx0H6SUrLEmRbzv4Nl9zuNJ
-         Q7CQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :message-id:date:reply-to:user-agent:references:in-reply-to:subject
-         :cc:to:from:dkim-signature;
-        bh=EhhtFILhKtdjWEYXn99X1dEASzhcaptVYqZRtT+cK+4=;
-        b=qbLoquBTCD5js+1+a3p+kuNuqzWVeb/VMcW7YF2sVfvGDPK4uBxggBIGoBdsneOTRb
-         mjNOB5f5yrpMH44ewD/ZlEuAqzj+fVF2wj8aJZFB71j58a8vust1rQVH39gOzURydfI3
-         ym30YPS70TU6z9TASPLs9BMXctF2Ly2cbAPpHjqB4wsnOwP4Ss503v5AmDfsVF2mVZwB
-         OwOaKJXfK6rY7YnlyRvgQ0i8PJF1zdKT+Cs/6M4yadStAAkL0BElhktjekI4CELt7+ch
-         awP/kYBy3PF+paq/hWOiFV/MN+nWUXsOg7MpRYFWyRJ8R8JuA7mvfoO1xvD3wdTiIF4h
-         mpHw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gF2gbEXE;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h14si8849349otn.6.2020.01.14.05.27.47;
-        Tue, 14 Jan 2020 05:27:47 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gF2gbEXE;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728816AbgANN1q (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 14 Jan 2020 08:27:46 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:32002 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1727289AbgANN1q (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Tue, 14 Jan 2020 08:27:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1579008465;
-        h=from:from:reply-to:reply-to:subject:subject:date:date:
-         message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-         content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=EhhtFILhKtdjWEYXn99X1dEASzhcaptVYqZRtT+cK+4=;
-        b=gF2gbEXE/SLmtSR+QiFlcJEsaRCUnuCOwSrvWXe4gT3BNDyGJuWLsLKcCmmDr8Oj9+7a3A
-        DkMuq37kXBGB0q8HtGSbX7NlpjXuHYLKoq+v/WM4WHl4YqOYkECrzkFj3oefGCTgOifqXW
-        xP2je6D/lDEMMmNWcKbFihh0FiVbY24=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-273-K2y3wvQDPTyUR5TpzpjyeA-1; Tue, 14 Jan 2020 08:27:42 -0500
-X-MC-Unique: K2y3wvQDPTyUR5TpzpjyeA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 205081014DE0;
-        Tue, 14 Jan 2020 13:27:40 +0000 (UTC)
-Received: from redhat.com (unknown [10.36.118.29])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 4CC4160BF1;
-        Tue, 14 Jan 2020 13:27:36 +0000 (UTC)
-From:   Juan Quintela <quintela@redhat.com>
-To:     Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc:     qemu-devel@nongnu.org, Marcelo Tosatti <mtosatti@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-        Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Alistair Francis <alistair.francis@wdc.com>,
-        qemu-ppc@nongnu.org,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [PATCH 06/15] migration/savevm: Replace current_machine by qdev_get_machine()
-In-Reply-To: <20200109152133.23649-7-philmd@redhat.com> ("Philippe
-        =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 9 Jan 2020 16:21:24
- +0100")
-References: <20200109152133.23649-1-philmd@redhat.com>
-        <20200109152133.23649-7-philmd@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date:   Tue, 14 Jan 2020 14:27:34 +0100
-Message-ID: <871rs2dv7d.fsf@secure.laptop>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id r62sm20452599wma.32.2020.01.14.07.09.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Jan 2020 07:09:54 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 7F6CC1FF87;
+	Tue, 14 Jan 2020 15:09:53 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH  v5 00/22] gdbstub refactor and SVE support (+check-tcg tweaks)
+Date: Tue, 14 Jan 2020 15:09:31 +0000
+Message-Id: <20200114150953.27659-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ZeSpHHZkrivI
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 1LktMT8MtZaw
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
-> As we want to remove the global current_machine,
-> replace MACHINE_GET_CLASS(current_machine) by
-> MACHINE_GET_CLASS(qdev_get_machine()).
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Hi,
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+The main fixes are correcting the maths of the PPC re-swap code. I've
+also finally plumbed in the gdbstub tests for SVE. These will also be
+useful for adding tests for reverse-replay debug.
 
-by the migration bits.
+The following patches need review
+  09 - target arm prepare for multiple dynamic XMLs
+  12 - target arm generate xml description of our SVE re
+  13 - tests tcg add a configure compiler check for ARMv
+  15 - tests tcg aarch64 userspace system register test
+  16 - configure allow user to specify what gdb to use
+  17 - tests guest debug add a simple test runner
+  18 - tests tcg aarch64 add a gdbstub testcase for SVE 
+  19 - tests tcg aarch64 add SVE iotcl test
+  20 - tests tcg aarch64 add test sve ioctl guest debug 
+
+Alex Bennée (20):
+  gdbstub: make GDBState static and have common init function
+  gdbstub: stop passing GDBState * around and use global
+  gdbstub: move str_buf to GDBState and use GString
+  gdbstub: move mem_buf to GDBState and use GByteArray
+  gdbstub: add helper for 128 bit registers
+  target/arm: use gdb_get_reg helpers
+  target/m68k: use gdb_get_reg helpers
+  gdbstub: extend GByteArray to read register helpers
+  target/arm: prepare for multiple dynamic XMLs
+  target/arm: explicitly encode regnum in our XML
+  target/arm: default SVE length to 64 bytes for linux-user
+  target/arm: generate xml description of our SVE registers
+  tests/tcg: add a configure compiler check for ARMv8.1 and SVE
+  target/arm: don't bother with id_aa64pfr0_read for USER_ONLY
+  tests/tcg/aarch64: userspace system register test
+  configure: allow user to specify what gdb to use
+  tests/guest-debug: add a simple test runner
+  tests/tcg/aarch64: add a gdbstub testcase for SVE registers
+  tests/tcg/aarch64: add SVE iotcl test
+  tests/tcg/aarch64: add test-sve-ioctl guest-debug test
+
+Damien Hedde (2):
+  gdbstub: change GDBState.last_packet to GByteArray
+  gdbstub: do not split gdb_monitor_write payload
+
+ configure                                   |   9 +
+ include/exec/gdbstub.h                      |  62 +-
+ include/hw/core/cpu.h                       |   2 +-
+ target/alpha/cpu.h                          |   2 +-
+ target/arm/cpu.h                            |  31 +-
+ target/cris/cpu.h                           |   4 +-
+ target/hppa/cpu.h                           |   2 +-
+ target/i386/cpu.h                           |   2 +-
+ target/lm32/cpu.h                           |   2 +-
+ target/m68k/cpu.h                           |   2 +-
+ target/microblaze/cpu.h                     |   2 +-
+ target/mips/internal.h                      |   2 +-
+ target/openrisc/cpu.h                       |   2 +-
+ target/ppc/cpu.h                            |   4 +-
+ target/riscv/cpu.h                          |   2 +-
+ target/s390x/internal.h                     |   2 +-
+ target/sh4/cpu.h                            |   2 +-
+ target/sparc/cpu.h                          |   2 +-
+ target/xtensa/cpu.h                         |   2 +-
+ gdbstub.c                                   | 936 ++++++++++----------
+ hw/core/cpu.c                               |   2 +-
+ target/alpha/gdbstub.c                      |   2 +-
+ target/arm/cpu.c                            |   4 +-
+ target/arm/gdbstub.c                        | 168 +++-
+ target/arm/gdbstub64.c                      |   2 +-
+ target/arm/helper.c                         | 174 +++-
+ target/cris/gdbstub.c                       |   4 +-
+ target/hppa/gdbstub.c                       |   2 +-
+ target/i386/gdbstub.c                       |   2 +-
+ target/lm32/gdbstub.c                       |   2 +-
+ target/m68k/gdbstub.c                       |   2 +-
+ target/m68k/helper.c                        |  33 +-
+ target/microblaze/gdbstub.c                 |   2 +-
+ target/mips/gdbstub.c                       |   2 +-
+ target/nios2/cpu.c                          |   2 +-
+ target/openrisc/gdbstub.c                   |   2 +-
+ target/ppc/gdbstub.c                        |  48 +-
+ target/ppc/translate_init.inc.c             |  54 +-
+ target/riscv/gdbstub.c                      |  18 +-
+ target/s390x/gdbstub.c                      |  30 +-
+ target/sh4/gdbstub.c                        |   2 +-
+ target/sparc/gdbstub.c                      |   2 +-
+ target/xtensa/gdbstub.c                     |   2 +-
+ tests/tcg/aarch64/sve-ioctls.c              |  77 ++
+ tests/tcg/aarch64/sysregs.c                 | 172 ++++
+ tests/.gitignore                            |   1 +
+ tests/guest-debug/run-test.py               |  57 ++
+ tests/tcg/aarch64/Makefile.target           |  32 +
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py |  79 ++
+ tests/tcg/aarch64/gdbstub/test-sve.py       |  81 ++
+ tests/tcg/configure.sh                      |  14 +
+ 51 files changed, 1468 insertions(+), 680 deletions(-)
+ create mode 100644 tests/tcg/aarch64/sve-ioctls.c
+ create mode 100644 tests/tcg/aarch64/sysregs.c
+ create mode 100755 tests/guest-debug/run-test.py
+ create mode 100644 tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+ create mode 100644 tests/tcg/aarch64/gdbstub/test-sve.py
+
+-- 
+2.20.1

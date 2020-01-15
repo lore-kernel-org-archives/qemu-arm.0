@@ -1,450 +1,81 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6069479lff;
-        Tue, 14 Jan 2020 13:51:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw2qKInSTSdzVAwBWmTu4tXVLvqYLACsHHL0Q2VLiyR8GuKeots2Cf/LBwSWF2H1PvAjVwm
-X-Received: by 2002:a17:906:6014:: with SMTP id o20mr24671882ejj.100.1579038681664;
-        Tue, 14 Jan 2020 13:51:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579038681; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6278666lff;
+        Tue, 14 Jan 2020 17:15:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzpi1rIL50vbDPWojatngeqj0Utgu5C42tkPFE36OeHrdmmOG43OLr2fSosaEj4x1ZHujGM
+X-Received: by 2002:a0d:d48b:: with SMTP id w133mr20581417ywd.61.1579050919306;
+        Tue, 14 Jan 2020 17:15:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579050919; cv=none;
         d=google.com; s=arc-20160816;
-        b=OSx5uMN2ds3DfQ8HK76u/oX4iCV66BPyEicSxZ+CSHdRUhASzjHHrrZHFZNJLkJHj8
-         FFbZ8HNxD7zKWSLd2IaTsH/DInzTJsxmWEwom3iaAPQuOCYgzxjqz/A61MmbGkfsdc1J
-         ZFCaLi7mA0z7kukRKPfPlWPujT2c1YeNhu9YOxEoBxneyQjrl7RuyrgEhz9eNsymMAFR
-         QqZPcZQhP2PlnumJcfZHWVZ/XLZQu2OEUzT2GJiDpOBi/1AsXgkqeU8RlpSSwDdXN1xB
-         DjhedLPL8s5lpj4/8u8cRtwFrk/+ATCKCaCWtrfRRRA5tHvGYCDjX0/1hhLGn4A+nZRF
-         xfsg==
+        b=tYsVJP8tDZ+Z0GO5HY2qJa44794JsQGMo+yOIuJpX/HRFN16OhTz+LGLP74/vQ3XyJ
+         xO/oMgzaBlTbK4D2y4DOxep+quHV5P2lIHewISy8Px2HCjM9OvIXY+pHAS3M4+1M+wVj
+         yllb9eqJn8gTGzqm3Lac2awFmka/7rxsx2Qrz+8nHo9ZpGO3NW8ASc3XEXegb911T6o6
+         8vjOzsbRdrGGiRcvIAF7GZtqzjHS78iNFdbTQPPE9jkIwCNZElbYPR0k9+gp8txyO0ki
+         yjybO8IpnHbgkpBriIdXG+cZTDKo71/zRGdyO7Ywa9CV2Lsss/+mRNkxfWwGPmDWrs3C
+         P37w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=uK8HX/UdvDVEyWjVStrjsl6hqfGO/hXztn3ZIglDxJs=;
-        b=KUNLBuDthm3ChS3r7g+n+he74Lflrnn4a9EU4fFWopxQXTdKDePNLiDuHyoNfB0IEP
-         fwhHN1BapRzo013tTz1KKhBznL/KKGpMJgxvtBzT3ftH/mnafnj1WVYzCIARk0LiJpBZ
-         7rNOILOkHRYnegvTVysXuRhOauff83b9zNWDQ9nKyjzCGBg39+5GRoTeqApH5xS9XAXM
-         EenpfPdwr+KP/AkihxLRoToLc/aqU3vD7PWZ5tQeRdfw6G5SGUo21ND6Nwm4GDMriHKi
-         l5jbcJhmK6ReILF4Y0Vr1QyDxf+YTVu7ZXuUPJ/YkrkH1+Aara2eAKJ2/nFrgCu4FOvX
-         miqg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to:date
+         :cc:to:from:subject:message-id;
+        bh=CKZmMHMeukb81O4pvo2KvokLrxDXWUWPoq2uyoZe7rI=;
+        b=ggKncAZvxYKt/yyN3muLI+993sK+ONn6GbWxFuUEfUiWg6LL0TakoGNZtn/vXHfQ1p
+         4QYMMC5zHv4EPd3o8EfxPYehe7M7NJsX9V2aJYmcZ9VYrELD5lZL0l6rA8qWwwmW6kEX
+         HUe0+8ykbtmNYxj0m1VMYZ9xUPQyqQYob+FaYSOZ8UFQ22tTurJoKGxEObr6307G6mbx
+         F/F/lWna1wHNdhxWPIhSsiBBeiA65/IIR2p2FUqJwss0uKxABKJjheTYZ3gZ6adQQrjJ
+         2ijbC/ZoiFQrujQkyzkgzZZP+F2WUni0ibm7g9AWdDYUCiOK/4V7X+JRPuTwAcE3koeU
+         z8Zg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AOSJjHsV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qn23si10190979ejb.385.2020.01.14.13.51.21
+       spf=pass (google.com: domain of benh@kernel.crashing.org designates 76.164.61.194 as permitted sender) smtp.mailfrom=benh@kernel.crashing.org
+Return-Path: <benh@kernel.crashing.org>
+Received: from kernel.crashing.org (kernel.crashing.org. [76.164.61.194])
+        by mx.google.com with ESMTPS id z133si10163428ywb.394.2020.01.14.17.15.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 13:51:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 14 Jan 2020 17:15:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of benh@kernel.crashing.org designates 76.164.61.194 as permitted sender) client-ip=76.164.61.194;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AOSJjHsV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46434 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irU5o-0000QO-K9
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 16:51:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56956)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1irU5Y-0000Pd-Ou
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 16:51:08 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1irU5P-0007YI-TU
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 16:51:03 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:48577
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1irU5P-0007Wh-CY
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 16:50:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579038654;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uK8HX/UdvDVEyWjVStrjsl6hqfGO/hXztn3ZIglDxJs=;
- b=AOSJjHsVOR7vxfveQa2Hec7UQkE8no5TlTmWIT6Zs6M5gDN+miZ8RB3j+XtiAeWCGRMj/o
- /MaSDNoEvbmDAvi2n96bb+Ql63EGyIi+yJqT9RtO+571Fb4EfIeDXRFOQmRMP00Lo5ozbC
- WA/xwQBf6RUSyABKLcvT2MVUP3KOD/8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-87-UCq4dJwWNBC_IZ0WX48SEw-1; Tue, 14 Jan 2020 16:50:52 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8C5EC800D41;
- Tue, 14 Jan 2020 21:50:51 +0000 (UTC)
-Received: from localhost.localdomain (vpn2-54-21.bne.redhat.com [10.64.54.21])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 41774842A7;
- Tue, 14 Jan 2020 21:50:46 +0000 (UTC)
-Subject: Re: [RFC PATCH] hw/arm/virt: Support NMI injection
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-References: <20191219040612.28431-1-gshan@redhat.com>
-Message-ID: <cfe51b6c-2af1-5c43-f045-29eb2fba6822@redhat.com>
-Date: Wed, 15 Jan 2020 08:50:44 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
-MIME-Version: 1.0
-In-Reply-To: <20191219040612.28431-1-gshan@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: UCq4dJwWNBC_IZ0WX48SEw-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
- eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V1IUhLHTTb0h
+       spf=pass (google.com: domain of benh@kernel.crashing.org designates 76.164.61.194 as permitted sender) smtp.mailfrom=benh@kernel.crashing.org
+Received: from localhost (gate.crashing.org [63.228.1.57])
+	(authenticated bits=0)
+	by kernel.crashing.org (8.14.7/8.14.7) with ESMTP id 00F1F0ku009176
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+	Tue, 14 Jan 2020 19:15:09 -0600
+Message-ID: <1309ca0ab6405d88cfd949c73130ad0f2af944a6.camel@kernel.crashing.org>
+Subject: Re: Semihosting, arm, riscv, ppc and common code
+From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+To: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: Liviu Ionescu <ilg@livius.net>, qemu-devel@nongnu.org,
+        Paolo Bonzini
+	 <pbonzini@redhat.com>, keithp@keithp.com,
+        qemu-arm@nongnu.org
+Date: Wed, 15 Jan 2020 12:14:59 +1100
+In-Reply-To: <87sgkimkma.fsf@linaro.org>
+References: 
+	<11d88b2741eac3f634d5aed9e3355c974b533f7b.camel@kernel.crashing.org>
+	 <AE7841A1-B4D6-4D6D-9AFD-01C4604D7BC4@livius.net>
+	 <cd9a2de94700a2781f176247131dceba690d8f31.camel@kernel.crashing.org>
+	 <87sgkimkma.fsf@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TUID: NbRN9QFP9m7T
 
-On 12/19/19 3:06 PM, Gavin Shan wrote:
-> This supports NMI injection for virtual machine and currently it's only
-> supported on GICv3 controller, which is emulated by qemu or host kernel.
-> The design is highlighted as below:
+On Tue, 2020-01-14 at 09:51 +0000, Alex Bennée wrote:
+> > Well, one of the LCA talks wasn't that interesting so I started
+> > doing
+> > it and am almost done :-)
+> > 
+> > I'll look at doing something for arm, riscv and ppc and send
+> > patches
+> > once I get it working.
 > 
->     * The NMI is identified by its priority (0x20). In the guest (linux)
->       kernel, the GICC_PMR is set to 0x80, to block all interrupts except
->       the NMIs when the external interrupt is disabled. It means the FIQ
->       and IRQ bit in PSTATE isn't touched when the functionality (NMI) is
->       functional.
->     * LPIs aren't considered as NMIs because of their nature. It means NMI
->       is either SPI or PPI. Besides, the NMIs are injected in round-robin
->       fashion is there are multiple NMIs existing.
->     * When the GICv3 controller is emulated by qemu, the interrupt states
->       (e.g. enabled, priority) is fetched from the corresponding data struct
->       directly. However, we have to pause all CPUs to fetch the interrupt
->       states from host in advance if the GICv3 controller is emulated by
->       host.
-> 
-> The testing scenario is to tweak guest (linux) kernel where the pl011 SPI
-> can be enabled as NMI by request_nmi(). Check "/proc/interrupts" after injecting
-> several NMIs, to see if the interrupt count is increased or not. The result
-> is just as expected.
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->   hw/arm/virt.c                      | 24 ++++++++
->   hw/intc/arm_gicv3.c                | 76 ++++++++++++++++++++++++
->   hw/intc/arm_gicv3_kvm.c            | 92 ++++++++++++++++++++++++++++++
->   include/hw/intc/arm_gicv3_common.h |  2 +
->   4 files changed, 194 insertions(+)
-> 
+> Cool. Are you considering linux-user as well or are these only things
+> that make sense for system emulation?
 
-Peter, could you please take a look when you have free time? Thanks in advance
-for your comments :)
+There seem to be some linux-user stuff in there, I'm mostly considering
+whatever ARM does today but we can certainly extend later.
 
-Thanks,
-Gavin
+The idea is to make sure ARM, RiscV and POWER use the same protocol and
+code base to make picolibc (and others) life easier. Bug compatible :-)
 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 39ab5f47e0..fc58ee70b4 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -71,6 +71,8 @@
->   #include "hw/mem/pc-dimm.h"
->   #include "hw/mem/nvdimm.h"
->   #include "hw/acpi/generic_event_device.h"
-> +#include "hw/nmi.h"
-> +#include "hw/intc/arm_gicv3.h"
->   
->   #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->       static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-> @@ -1980,6 +1982,25 @@ static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
->                  " type: %s", object_get_typename(OBJECT(dev)));
->   }
->   
-> +static void virt_nmi(NMIState *n, int cpu_index, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(n);
-> +    ARMGICv3CommonClass *agcc;
-> +
-> +    if (vms->gic_version != 3) {
-> +        error_setg(errp, "NMI is only supported by GICv3");
-> +        return;
-> +    }
-> +
-> +    agcc = ARM_GICV3_COMMON_GET_CLASS(vms->gic);
-> +    if (agcc->inject_nmi) {
-> +        agcc->inject_nmi(vms->gic, cpu_index, errp);
-> +    } else {
-> +        error_setg(errp, "NMI injection isn't supported by %s",
-> +                   object_get_typename(OBJECT(vms->gic)));
-> +    }
-> +}
-> +
->   static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
->                                                           DeviceState *dev)
->   {
-> @@ -2025,6 +2046,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->   {
->       MachineClass *mc = MACHINE_CLASS(oc);
->       HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
-> +    NMIClass *nc = NMI_CLASS(oc);
->   
->       mc->init = machvirt_init;
->       /* Start with max_cpus set to 512, which is the maximum supported by KVM.
-> @@ -2051,6 +2073,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->       hc->pre_plug = virt_machine_device_pre_plug_cb;
->       hc->plug = virt_machine_device_plug_cb;
->       hc->unplug_request = virt_machine_device_unplug_request_cb;
-> +    nc->nmi_monitor_handler = virt_nmi;
->       mc->numa_mem_supported = true;
->       mc->auto_enable_numa_with_memhp = true;
->   }
-> @@ -2136,6 +2159,7 @@ static const TypeInfo virt_machine_info = {
->       .instance_init = virt_instance_init,
->       .interfaces = (InterfaceInfo[]) {
->            { TYPE_HOTPLUG_HANDLER },
-> +         { TYPE_NMI },
->            { }
->       },
->   };
-> diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-> index 66eaa97198..d3409cb6ef 100644
-> --- a/hw/intc/arm_gicv3.c
-> +++ b/hw/intc/arm_gicv3.c
-> @@ -338,6 +338,81 @@ static void gicv3_set_irq(void *opaque, int irq, int level)
->       }
->   }
->   
-> +static bool arm_gicv3_inject_nmi_once(GICv3State*s, int start, int end)
-> +{
-> +    GICv3CPUState *cs;
-> +    int irq_count = (s->num_irq + (GIC_INTERNAL * (s->num_cpu - 1)));
-> +    int i, cpu, irq;
-> +
-> +    /* SPIs */
-> +    for (i = start; (i < end) && (i < (s->num_irq - GIC_INTERNAL)); i++) {
-> +        if (gicv3_gicd_enabled_test(s, i + GIC_INTERNAL) &&
-> +            s->gicd_ipriority[i + GIC_INTERNAL] == 0x20) {
-> +
-> +            /*
-> +             * Reset the level and toggling the pending bit will ensure
-> +             * the interrupt is queued.
-> +             */
-> +            if (gicv3_gicd_level_test(s, i + GIC_INTERNAL)) {
-> +                gicv3_set_irq(s, i, false);
-> +            }
-> +
-> +            gicv3_gicd_pending_set(s, i + GIC_INTERNAL);
-> +            gicv3_set_irq(s, i, true);
-> +
-> +            s->last_nmi_index = (i + 1);
-> +            return true;
-> +        }
-> +    }
-> +
-> +    /* PPIs */
-> +    if (start < (s->num_irq - GIC_INTERNAL)) {
-> +        start = (s->num_irq - GIC_INTERNAL);
-> +    }
-> +
-> +    for (i = start; (i < end) && (i < irq_count); i++) {
-> +        cpu = (i - ((s->num_irq - GIC_INTERNAL))) / GIC_INTERNAL;
-> +        irq = (i - ((s->num_irq - GIC_INTERNAL))) % GIC_INTERNAL;
-> +        cs = &s->cpu[cpu];
-> +
-> +        if ((cs->gicr_ienabler0 & (1 << irq)) &&
-> +            cs->gicr_ipriorityr[irq] == 0x20) {
-> +
-> +            if (extract32(cs->level, irq, 1)) {
-> +                gicv3_set_irq(s, i, false);
-> +            }
-> +
-> +            deposit32(cs->gicr_ipendr0, irq, 1, 1);
-> +            gicv3_set_irq(s, i, true);
-> +
-> +            s->last_nmi_index = (i + 1);
-> +            if (s->last_nmi_index > irq_count) {
-> +                s->last_nmi_index = 0;
-> +            }
-> +
-> +            return true;
-> +        }
-> +    }
-> +
-> +    return false;
-> +}
-> +
-> +static void arm_gicv3_inject_nmi(DeviceState *dev, int cpu_index, Error **errp)
-> +{
-> +    GICv3State *s = ARM_GICV3(dev);
-> +    int irq_count = (s->num_irq + (GIC_INTERNAL * (s->num_cpu - 1)));
-> +    bool injected;
-> +
-> +    injected = arm_gicv3_inject_nmi_once(s, s->last_nmi_index, irq_count);
-> +    if (!injected) {
-> +        injected = arm_gicv3_inject_nmi_once(s, 0, s->last_nmi_index);
-> +    }
-> +
-> +    if (!injected) {
-> +        error_setg(errp, "No NMI found");
-> +    }
-> +}
-> +
->   static void arm_gicv3_post_load(GICv3State *s)
->   {
->       /* Recalculate our cached idea of the current highest priority
-> @@ -395,6 +470,7 @@ static void arm_gicv3_class_init(ObjectClass *klass, void *data)
->       ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_CLASS(klass);
->       ARMGICv3Class *agc = ARM_GICV3_CLASS(klass);
->   
-> +    agcc->inject_nmi = arm_gicv3_inject_nmi;
->       agcc->post_load = arm_gicv3_post_load;
->       device_class_set_parent_realize(dc, arm_gic_realize, &agc->parent_realize);
->   }
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index 9c7f4ab871..b076d67c52 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -31,6 +31,7 @@
->   #include "gicv3_internal.h"
->   #include "vgic_common.h"
->   #include "migration/blocker.h"
-> +#include "sysemu/cpus.h"
->   
->   #ifdef DEBUG_GICV3_KVM
->   #define DPRINTF(fmt, ...) \
-> @@ -506,6 +507,96 @@ static void kvm_arm_gicv3_put(GICv3State *s)
->       }
->   }
->   
-> +static bool kvm_arm_gicv3_inject_nmi_once(GICv3State *s, int start, int end)
-> +{
-> +    GICv3CPUState *cs;
-> +    int irq_count = (s->num_irq + (GIC_INTERNAL * (s->num_cpu - 1)));
-> +    int i, cpu, irq;
-> +
-> +    /* SPIs */
-> +    for (i = start; (i < end) && (i < (s->num_irq - GIC_INTERNAL)); i++) {
-> +        if (gicv3_gicd_enabled_test(s, i + GIC_INTERNAL) &&
-> +            s->gicd_ipriority[i + GIC_INTERNAL] == 0x20) {
-> +            kvm_arm_gicv3_set_irq(s, i, true);
-> +
-> +            s->last_nmi_index = (i + 1);
-> +            return true;
-> +        }
-> +    }
-> +
-> +    /* PPIs */
-> +    if (start < (s->num_irq - GIC_INTERNAL)) {
-> +        start = (s->num_irq - GIC_INTERNAL);
-> +    }
-> +
-> +    for (i = start; (i < end) && (i < irq_count); i++) {
-> +        cpu = (i - ((s->num_irq - GIC_INTERNAL))) / GIC_INTERNAL;
-> +        irq = (i - ((s->num_irq - GIC_INTERNAL))) % GIC_INTERNAL;
-> +        cs = &s->cpu[cpu];
-> +
-> +        if ((cs->gicr_ienabler0 & (1 << irq)) &&
-> +            cs->gicr_ipriorityr[irq] == 0x20) {
-> +            kvm_arm_gicv3_set_irq(s, i, true);
-> +
-> +            s->last_nmi_index = (i + 1);
-> +            if (s->last_nmi_index > irq_count) {
-> +                s->last_nmi_index = 0;
-> +            }
-> +
-> +            return true;
-> +        }
-> +    }
-> +
-> +    return false;
-> +}
-> +
-> +static void kvm_arm_gicv3_snapshot(GICv3State *s)
-> +{
-> +    GICv3CPUState *c;
-> +    uint32_t val;
-> +    int i, j;
-> +
-> +    pause_all_vcpus();
-> +
-> +    kvm_dist_getbmp(s, GICD_ISENABLER, s->enabled);
-> +    kvm_dist_get_priority(s, GICD_IPRIORITYR, s->gicd_ipriority);
-> +    for (i = 0; i < s->num_cpu; i++) {
-> +        c = &s->cpu[i];
-> +
-> +        kvm_gicr_access(s, GICR_ISENABLER0, i, &val, false);
-> +        c->gicr_ienabler0 = val;
-> +
-> +        for (j = 0; j < GIC_INTERNAL; j += 4) {
-> +            kvm_gicr_access(s, GICR_IPRIORITYR + j, i, &val, false);
-> +            c->gicr_ipriorityr[j] = extract32(val, 0, 8);
-> +            c->gicr_ipriorityr[j + 1] = extract32(val, 8, 8);
-> +            c->gicr_ipriorityr[j + 2] = extract32(val, 16, 8);
-> +            c->gicr_ipriorityr[j + 3] = extract32(val, 24, 8);
-> +        }
-> +    }
-> +
-> +    resume_all_vcpus();
-> +}
-> +
-> +static void kvm_arm_gicv3_inject_nmi(DeviceState *dev,
-> +                                     int cpu_index, Error **errp)
-> +{
-> +    GICv3State *s = KVM_ARM_GICV3(dev);
-> +    int irq_count = (s->num_irq + (GIC_INTERNAL * (s->num_cpu - 1)));
-> +    bool injected;
-> +
-> +    kvm_arm_gicv3_snapshot(s);
-> +
-> +    injected = kvm_arm_gicv3_inject_nmi_once(s, s->last_nmi_index, irq_count);
-> +    if (!injected) {
-> +        injected = kvm_arm_gicv3_inject_nmi_once(s, 0, s->last_nmi_index);
-> +    }
-> +
-> +    if (!injected) {
-> +        error_setg(errp, "No NMI found");
-> +    }
-> +}
-> +
->   static void kvm_arm_gicv3_get(GICv3State *s)
->   {
->       uint32_t regl, regh, reg;
-> @@ -882,6 +973,7 @@ static void kvm_arm_gicv3_class_init(ObjectClass *klass, void *data)
->       ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_CLASS(klass);
->       KVMARMGICv3Class *kgc = KVM_ARM_GICV3_CLASS(klass);
->   
-> +    agcc->inject_nmi = kvm_arm_gicv3_inject_nmi;
->       agcc->pre_save = kvm_arm_gicv3_get;
->       agcc->post_load = kvm_arm_gicv3_put;
->       device_class_set_parent_realize(dc, kvm_arm_gicv3_realize,
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index 31ec9a1ae4..0ae9c45aa2 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -225,6 +225,7 @@ struct GICv3State {
->   
->       int dev_fd; /* kvm device fd if backed by kvm vgic support */
->       Error *migration_blocker;
-> +    int last_nmi_index;
->   
->       /* Distributor */
->   
-> @@ -291,6 +292,7 @@ typedef struct ARMGICv3CommonClass {
->       SysBusDeviceClass parent_class;
->       /*< public >*/
->   
-> +    void (*inject_nmi)(DeviceState *dev, int cpu_index, Error **errp);
->       void (*pre_save)(GICv3State *s);
->       void (*post_load)(GICv3State *s);
->   } ARMGICv3CommonClass;
-> 
+Cheers,
+Ben.
 

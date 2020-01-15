@@ -1,98 +1,99 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7078038lff;
-        Wed, 15 Jan 2020 07:40:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwjbMcWbebVwULhX/CdFtvLjICXaCuLxax5+qSA6G7pvQoy3J9z8Pkien/In6Pqzh2pKNZE
-X-Received: by 2002:a0c:ed22:: with SMTP id u2mr22798378qvq.13.1579102852993;
-        Wed, 15 Jan 2020 07:40:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579102852; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7095448lff;
+        Wed, 15 Jan 2020 07:56:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyQPQhE98iOpY5es8/nszT2/OrM1WwubVQVMKIETs7vCD532jlDt3ijG3xrGVUkAVDQzP4g
+X-Received: by 2002:a17:906:9511:: with SMTP id u17mr28223135ejx.13.1579103765663;
+        Wed, 15 Jan 2020 07:56:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579103765; cv=none;
         d=google.com; s=arc-20160816;
-        b=E6GP/UgAn/yCSTvvuGR2CJB7Zy5KhXJVHMYvgHZKRZ63AgwjHuHgIy2mxpep6xmERL
-         CMBUTnFM7gl5w/pHIDoNdHnktcrvyBPtu+DpwL85pQn8sL3jfBPOMFz7rwgnpLHSHZQl
-         sTIBsWulLJJfdraqvOIiHPVsle+LoNqslW0SdvuNCXjRbHdWoNvENJ+FKYqneZrf73+J
-         pWqVJlWt/kAV1HkRqMG+2iHTER9YvaCq0eBnYsMsmp5V/NG4YqUGBRFPhyFXghpeXOKb
-         XtJyaWfNZQM09Szwl/7sZP7zjfv1jHGUhZixpkTUEg10XOlYjJREbdI/vo0Oo3i5m8Y/
-         Oj5w==
+        b=QTuujQvwZEGjjoG5pLKNicgJ3+NPBgFYurdtlLqHpjTWQuAOZS/y6QX0HBNticsirM
+         uFGNj4Dx1zn0Krat+j4grIi4a35+gRHYXGpG3IUQaaOlGlyICWs1r20LXHxM6pK8YpXs
+         qrk92B5ERwqNJDEKXEOm3zpbYL9hsAe3ZdtED5il1e1lIVAlUvhFgflmBw8ChphMF/8q
+         wN2LLzb/sNo3gCUX0vRryTvoJ2mO2MrVDozSrqS/L5sIdzcIfEKlO9XEsKxjWzrKAfm0
+         REneD13oiMJMgNIwjPnqs6cSYATwmKUCvmXalfhh23+hxi8x6gYoVcOxlClIxfBi9nKw
+         rP2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VnSLCb8d4GMvgv+9Tr4yBftBhi1fN4ZNqZmZal2yxY8=;
-        b=ZIuNRkNXPnG+fS0cP6uaIVyeLVZuAc5aRA6svGfx4q1K2a8Jw56ShW7LIwP3yxQVPY
-         zMleKjJkGF9ISw+qLIYHNDux/jSyU64Xyc5TTGhC89beOU27spZKJ3FWOTOdDFxDkPTz
-         vfd6IKQhnOcZyuxJzbwDxtsKnN4dmLK2/Zyz4l0qUlR0LAZGXopU8Aw404jZXQ+0FmxW
-         hfPo5Cd10jxCTflOHlU8JLKqIPAIicKC+jIJqoNk/onIaZ476NrXVBJkRJ+nHpZLVoha
-         iFBnHdaitkFvbEwTObCBikBEKbM3mGcSpGcX6Kt5EjMmXj4HqrYPbJQZoyeNZiVBOT6X
-         BpSQ==
+        bh=PJlCD2JradsghflyEMq7rSMnpFDz8KzEvNJhvIgn0qw=;
+        b=CW6ErnuIbN+JPQFHEmgGIz1xZPVQ/hbZjTSwvrGuAq6QlreBBdj7Eqos/n1ft69LhP
+         WW2oxfUtz3IvitX7vzNOTu7pAI2bhi8mqVjPJeMiT38KlqaXdIAZdRJhBJoCiaxZI2gl
+         7X1XjPy+v4V6e8V76G+G3VKMNMaHHTuaKHeQKHO5xHXEAvNzUZbHA4m3l6OIOoXWNQDi
+         vRVWYU2zKiYWaUR3KziGioumi8Nh5wjHc90VK97P93w8Ir5tU+zccl2cuEozTOezmOpu
+         FYOvPh5IzYSGFnpPq004TyeWsPmCOnTI/R/jmzI5eJS4bNIXvEshCsTZ5U5QMun1ofUV
+         9rUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BqVDNLfz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fxI8ltNK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3si11109167qkm.183.2020.01.15.07.40.52
+        by mx.google.com with ESMTPS id g20si11797050edm.150.2020.01.15.07.56.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2020 07:40:52 -0800 (PST)
+        Wed, 15 Jan 2020 07:56:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BqVDNLfz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fxI8ltNK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55980 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56170 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irkmq-0000O7-4Z
-	for alex.bennee@linaro.org; Wed, 15 Jan 2020 10:40:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49360)
+	id 1irl1Y-0006X7-5J
+	for alex.bennee@linaro.org; Wed, 15 Jan 2020 10:56:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50135)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1irkKQ-0008K6-MV
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:11:31 -0500
+ (envelope-from <imammedo@redhat.com>) id 1irkLN-0001fM-GH
+ for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:12:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1irkKO-0008V2-CA
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:11:30 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:34469
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <imammedo@redhat.com>) id 1irkLL-0000h6-OM
+ for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:12:29 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:46002
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1irkKO-0008Ui-8e
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:11:28 -0500
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1irkLL-0000gl-JZ
+ for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:12:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579101087;
+ s=mimecast20190719; t=1579101147;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VnSLCb8d4GMvgv+9Tr4yBftBhi1fN4ZNqZmZal2yxY8=;
- b=BqVDNLfzVI+CNzm7iq82G6k1d7PRejZXvUdu8w4u9inAjH65NE3Lx11KrAc8rLdtKXl81Z
- Zr2ulrLpQOm82uEVmxOKUqoRLM6Go6pIPBzGUFVuFopwzUoHyYFvaApfViBxQIy9C7vkjE
- fmSFHuKurjApiRf9aXenui7zpLHjW2k=
+ bh=PJlCD2JradsghflyEMq7rSMnpFDz8KzEvNJhvIgn0qw=;
+ b=fxI8ltNKwc83lsW85akfmhAnGVi4NALb/j4DX//tKiY2ZW3ZI+VjkHa5Cv/yrUYL1ilIh1
+ dpMYeaM4OFhitwriNUJ8mpMZ8mm32mnQzO91bMWaLYEPg2+v4ia2k+H5JpkEgjPMRV7C1/
+ czaBQ1q3ZT+GSZ/41CHTP+3H7T6PeMQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-275-woQTO_2_P8u5U_YgfaH6SQ-1; Wed, 15 Jan 2020 10:11:24 -0500
+ us-mta-358-PX7tDXq-Mrm36JZDvXVhgg-1; Wed, 15 Jan 2020 10:12:25 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3C1C01135763;
- Wed, 15 Jan 2020 15:11:23 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 112471005527;
+ Wed, 15 Jan 2020 15:12:24 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq.redhat.com
  (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 17E3819757;
- Wed, 15 Jan 2020 15:11:21 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 197F4194B2;
+ Wed, 15 Jan 2020 15:12:16 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 37/86] arm:xlnx-zcu102: use memdev for RAM
-Date: Wed, 15 Jan 2020 16:06:52 +0100
-Message-Id: <1579100861-73692-38-git-send-email-imammedo@redhat.com>
+Subject: [PATCH v2 82/86] numa: forbid '-numa node,
+ mem' for 5.0 and newer machine types
+Date: Wed, 15 Jan 2020 16:07:37 +0100
+Message-Id: <1579100861-73692-83-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
 References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: woQTO_2_P8u5U_YgfaH6SQ-1
+X-MC-Unique: PX7tDXq-Mrm36JZDvXVhgg-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,67 +105,202 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@gmail.com, alistair@alistair23.me, qemu-arm@nongnu.org,
- peter.maydell@linaro.org
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+ libvir-list@redhat.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ pbonzini@redhat.com, david@gibson.dropbear.id.au, rth@twiddle.net
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7eOCl3YXiAat
+X-TUID: 5et/LxZTXZ2E
 
-memory_region_allocate_system_memory() API is going away, so
-replace it with memdev allocated MemoryRegion. The later is
-initialized by generic code, so board only needs to opt in
-to memdev scheme by providing
-  MachineClass::default_ram_id
-and using MachineState::ram instead of manually initializing
-RAM memory region.
+Deprecation period is ran out and it's a time to flip the switch
+introduced by cd5ff8333a.
+Disable legacy option for new machine types and amend documentation.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
-CC: alistair@alistair23.me
-CC: edgar.iglesias@gmail.com
 CC: peter.maydell@linaro.org
+CC: ehabkost@redhat.com
+CC: marcel.apfelbaum@gmail.com
+CC: mst@redhat.com
+CC: pbonzini@redhat.com
+CC: rth@twiddle.net
+CC: david@gibson.dropbear.id.au
+CC: libvir-list@redhat.com
 CC: qemu-arm@nongnu.org
+CC: qemu-ppc@nongnu.org
 ---
- hw/arm/xlnx-zcu102.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ hw/arm/virt.c        |  2 +-
+ hw/core/numa.c       |  6 ++++++
+ hw/i386/pc.c         |  1 -
+ hw/i386/pc_piix.c    |  1 +
+ hw/i386/pc_q35.c     |  1 +
+ hw/ppc/spapr.c       |  2 +-
+ qemu-deprecated.texi | 16 ----------------
+ qemu-options.hx      |  8 ++++----
+ 8 files changed, 14 insertions(+), 23 deletions(-)
 
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index 53cfe7c..bd645ad 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -28,7 +28,6 @@ typedef struct XlnxZCU102 {
-     MachineState parent_obj;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index e2fbca3..49de0d8 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2049,7 +2049,6 @@ static void virt_machine_class_init(ObjectClass *oc, =
+void *data)
+     hc->pre_plug =3D virt_machine_device_pre_plug_cb;
+     hc->plug =3D virt_machine_device_plug_cb;
+     hc->unplug_request =3D virt_machine_device_unplug_request_cb;
+-    mc->numa_mem_supported =3D true;
+     mc->auto_enable_numa_with_memhp =3D true;
+     mc->default_ram_id =3D "mach-virt.ram";
+ }
+@@ -2153,6 +2152,7 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
+ static void virt_machine_4_2_options(MachineClass *mc)
+ {
+     compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
++    mc->numa_mem_supported =3D true;
+ }
+ DEFINE_VIRT_MACHINE(4, 2)
 =20
-     XlnxZynqMPState soc;
--    MemoryRegion ddr_ram;
-=20
-     bool secure;
-     bool virt;
-@@ -87,13 +86,10 @@ static void xlnx_zcu102_init(MachineState *machine)
-                  ram_size);
+diff --git a/hw/core/numa.c b/hw/core/numa.c
+index 0970a30..3177066 100644
+--- a/hw/core/numa.c
++++ b/hw/core/numa.c
+@@ -117,6 +117,12 @@ static void parse_numa_node(MachineState *ms, NumaNode=
+Options *node,
      }
 =20
--    memory_region_allocate_system_memory(&s->ddr_ram, NULL, "ddr-ram",
--                                         ram_size);
--
-     object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc=
-),
-                             TYPE_XLNX_ZYNQMP, &error_abort, NULL);
+     if (node->has_mem) {
++        if (!mc->numa_mem_supported) {
++            error_setg(errp, "Parameter -numa node,mem is not supported by=
+ this"
++                      " machine type. Use -numa node,memdev instead");
++            return;
++        }
++
+         numa_info[nodenr].node_mem =3D node->mem;
+         if (!qtest_enabled()) {
+             warn_report("Parameter -numa node,mem is deprecated,"
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 21b8290..fa8d024 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1947,7 +1947,6 @@ static void pc_machine_class_init(ObjectClass *oc, vo=
+id *data)
+     hc->unplug =3D pc_machine_device_unplug_cb;
+     mc->default_cpu_type =3D TARGET_DEFAULT_CPU_TYPE;
+     mc->nvdimm_supported =3D true;
+-    mc->numa_mem_supported =3D true;
+     mc->default_ram_id =3D "pc.ram";
 =20
--    object_property_set_link(OBJECT(&s->soc), OBJECT(&s->ddr_ram),
-+    object_property_set_link(OBJECT(&s->soc), OBJECT(machine->ram),
-                          "ddr-ram", &error_abort);
-     object_property_set_bool(OBJECT(&s->soc), s->secure, "secure",
-                              &error_fatal);
-@@ -211,6 +207,7 @@ static void xlnx_zcu102_machine_class_init(ObjectClass =
-*oc, void *data)
-     mc->ignore_memory_transaction_failures =3D true;
-     mc->max_cpus =3D XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
-     mc->default_cpus =3D XLNX_ZYNQMP_NUM_APU_CPUS;
-+    mc->default_ram_id =3D "ddr-ram";
+     object_class_property_add(oc, PC_MACHINE_DEVMEM_REGION_SIZE, "int",
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index fa12203..0a9b9e0 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -435,6 +435,7 @@ static void pc_i440fx_4_2_machine_options(MachineClass =
+*m)
+     pc_i440fx_5_0_machine_options(m);
+     m->alias =3D NULL;
+     m->is_default =3D 0;
++    m->numa_mem_supported =3D true;
+     compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+     compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
+ }
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 84cf925..4d6e2be 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -363,6 +363,7 @@ static void pc_q35_4_2_machine_options(MachineClass *m)
+ {
+     pc_q35_5_0_machine_options(m);
+     m->alias =3D NULL;
++    m->numa_mem_supported =3D true;
+     compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+     compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
+ }
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index bcbe1f1..2686b73 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -4383,7 +4383,6 @@ static void spapr_machine_class_init(ObjectClass *oc,=
+ void *data)
+      * in which LMBs are represented and hot-added
+      */
+     mc->numa_mem_align_shift =3D 28;
+-    mc->numa_mem_supported =3D true;
+     mc->auto_enable_numa =3D true;
+=20
+     smc->default_caps.caps[SPAPR_CAP_HTM] =3D SPAPR_CAP_OFF;
+@@ -4465,6 +4464,7 @@ static void spapr_machine_4_2_class_options(MachineCl=
+ass *mc)
+ {
+     spapr_machine_5_0_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
++    mc->numa_mem_supported =3D true;
  }
 =20
- static const TypeInfo xlnx_zcu102_machine_init_typeinfo =3D {
+ DEFINE_SPAPR_MACHINE(4_2, "4.2", false);
+diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
+index 982af95..17a0e1d 100644
+--- a/qemu-deprecated.texi
++++ b/qemu-deprecated.texi
+@@ -89,22 +89,6 @@ error in the future.
+ The @code{-realtime mlock=3Don|off} argument has been replaced by the
+ @code{-overcommit mem-lock=3Don|off} argument.
+=20
+-@subsection -numa node,mem=3D@var{size} (since 4.1)
+-
+-The parameter @option{mem} of @option{-numa node} is used to assign a part=
+ of
+-guest RAM to a NUMA node. But when using it, it's impossible to manage spe=
+cified
+-RAM chunk on the host side (like bind it to a host node, setting bind poli=
+cy, ...),
+-so guest end-ups with the fake NUMA configuration with suboptiomal perform=
+ance.
+-However since 2014 there is an alternative way to assign RAM to a NUMA nod=
+e
+-using parameter @option{memdev}, which does the same as @option{mem} and a=
+dds
+-means to actualy manage node RAM on the host side. Use parameter @option{m=
+emdev}
+-with @var{memory-backend-ram} backend as an replacement for parameter @opt=
+ion{mem}
+-to achieve the same fake NUMA effect or a properly configured
+-@var{memory-backend-file} backend to actually benefit from NUMA configurat=
+ion.
+-In future new machine versions will not accept the option but it will stil=
+l
+-work with old machine types. User can check QAPI schema to see if the lega=
+cy
+-option is supported by looking at MachineInfo::numa-mem-supported property=
+.
+-
+ @subsection -numa node (without memory specified) (since 4.1)
+=20
+ Splitting RAM by default between NUMA nodes has the same issues as @option=
+{mem}
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 709162c..55500bd 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -223,10 +223,10 @@ For example:
+ -numa cpu,node-id=3D0,socket-id=3D0 -numa cpu,node-id=3D1,socket-id=3D1
+ @end example
+=20
+-@samp{mem} assigns a given RAM amount to a node. @samp{memdev}
+-assigns RAM from a given memory backend device to a node. If
+-@samp{mem} and @samp{memdev} are omitted in all nodes, RAM is
+-split equally between them.
++Legacy @samp{mem} assigns a given RAM amount to a node (not supported for =
+5.0
++and newer machine types). @samp{memdev} assigns RAM from a given memory ba=
+ckend
++device to a node. If @samp{mem} and @samp{memdev} are omitted in all nodes=
+, RAM
++is split equally between them.
+=20
+ @samp{mem} and @samp{memdev} are mutually exclusive. Furthermore,
+ if one node uses @samp{memdev}, all of them have to use it.
 --=20
 2.7.4
 

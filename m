@@ -1,109 +1,96 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7535850lff;
-        Wed, 15 Jan 2020 14:30:20 -0800 (PST)
-X-Received: by 2002:a17:902:61:: with SMTP id 88mr28322689pla.17.1579127420361;
-        Wed, 15 Jan 2020 14:30:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579127420; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7536729lff;
+        Wed, 15 Jan 2020 14:31:13 -0800 (PST)
+X-Received: by 2002:a17:902:7896:: with SMTP id q22mr278792pll.57.1579127473485;
+        Wed, 15 Jan 2020 14:31:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579127473; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y4qsVN6ONtPAlTt7HuqELVA7wkWuAOrsG7Du3klPVLWQJoc2dtt8LirZ56HOsyZCCa
-         wS8guM95Wt8U95k1YB5FXHiWNJvXt+rf2NeSuXdAhFxaDc3uMm9H/YzrAmwJaLabw3bZ
-         2eBLeJBmv1DfMBOx4eMIcjhpfKhrTiMnpGC6hoaoSF1zFEB9ksjPy3qkTx27O5rmZImt
-         +I74my5JpetLXoIvBFfb+IS9F1XdZIb6CZ9yuHyZap+yqixS9a6oVzsr4KtgKI7Svzit
-         kWKMDvDb9uZICHqRLeDs4/iGKE2MdsIdFclFTK5bH8kNJEXTI6NXynnJq3ZG6mjD8U1B
-         iIRA==
+        b=rjAEFVy+1TPAdjuSjwwItWfets18yHiCIFhVEjKwKai9vifKc8+gIMfJLYeKdUSeB0
+         611tyPSpi403JWlQU/V3bBJWMCZIbvLqzjt5pr1N3uNIAGNBo+ef5fi+tPqVtz6RT0yI
+         ZSJ+0edK+tMtT/xtcscIZRHktjU27JlLzvLXvwzD6D0wCcuEiuPMSzVCK1cXeyUma4GC
+         GjzRe7JS1Et/p0c6sbuQzyoe7A6WrjwEXTeG3EYIip3yIk+KWQNxNrdgJ+gYWekbVt3t
+         hHO2PARsFzWr/YfXwODnfhayUh355541gOU1qg0um4UDWmoenTNg8DYA8lGRlhhrq3Bv
+         oyLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=F2YM0coMho0zfyacZVauDRrmmDVgAwf1jpXRKiD3Q0s=;
-        b=e3kS8LL/NujRjtA15UrWflMjwicJIfOI0pwxhWLIbzL9XCzoSil+KSn9+xiqwFCXhX
-         BZx8dRh8AIs4SEMhfrn+2J1aZkw9rR+mXWBvjxs84BkWWK762ZU4lXwOhjLbOYN8lc3G
-         xumAvpQYIJMjdEpY772IVVkhQB7zqwHj2evgaTNU4vUemPRbo64iHTwqjn+hfvWYhJyd
-         GKq4RyJoFJX4UG38ObQMea2kcCCd6Vo7De2fWSgU13TRf4tVs69K35C01CpS2piP3zDz
-         NWOhl6WvcZtp+IbFlORfw8JFWRzNKtrw0Q0ziWfeFD+4t4PC2m60qr0flDl9+AiX6Fqm
-         W4XA==
+        bh=pVPBsqE8MJvYXtbTzgz0iptqaOAX+Rr+QBlHSf1JYjQ=;
+        b=wxkS+GW70/kv8K7uX2ZfAvoA5o+n62Nugfpef6MwATiRp5sJwOqdnRrEgnFmdcV7KY
+         zxR0LPLsxjplFTr3VlBWeXUU0r9ZXeIJf2gc+SG1hKuVVkqT3SuRMNBp2LlrCOn/kIHH
+         YdM9Dgo9upRrmGnND7ATdZi8U153Qd6Gwe49WyJgh0JVARF9JseVDwnpqzXo6q1JACDn
+         H9qntOJFyiYyEJX4znf2i08Y2BdMEv5yibetHRDy/HzHP0Ya9GOwIpUF7tzBFJ9hnDni
+         CEeZIP6OgZ8d8DYv9ngdzOVbvDFNGPToORKHl2omme4dPJN2uQT3mg/vOwo8rFw5VHg/
+         D5ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WBDH8Zhh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HVSjk8S6;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id u64sor22505077pfu.42.2020.01.15.14.30.20
+        by mx.google.com with SMTPS id g26sor22096404pge.37.2020.01.15.14.31.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 15 Jan 2020 14:30:20 -0800 (PST)
+        Wed, 15 Jan 2020 14:31:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WBDH8Zhh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HVSjk8S6;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=F2YM0coMho0zfyacZVauDRrmmDVgAwf1jpXRKiD3Q0s=;
-        b=WBDH8ZhhRhPwfZXWeN4r5ehaFjmF5O/LRya0wmV0RYui2nkS6kkGlabM6V2S2PTLjm
-         /2nHF4GfLYOtEc8i1nw9AJ632brjGN7Gk99z024ai9aIOjI3jyoBMhxBUaK95/IBhBhg
-         2VQo3imWwz8Nlq/+S4sm4nT1CjUq25GjWmVSVHBgx/cMxA/PYd///z5qNQEVeB3NJGMs
-         kgUF3uIQ7Zj5TUiFR0gvoxPBc+q/cSMViSctFiA4YI3IA3W/R5SfCu0b/9g7L4+JZA8V
-         uJ/STblN79HkhNzEjAv0ZDpbEposFQQrNDIRIk+qieY41MgVT9AAauaQfyMEsQRRkgIH
-         XH4Q==
+        bh=pVPBsqE8MJvYXtbTzgz0iptqaOAX+Rr+QBlHSf1JYjQ=;
+        b=HVSjk8S6IlsJeApEbJtMDD2g5qytnvudBV4F+m0l09OF99q85gJQhGbfWi/rjoi0vZ
+         z9QSaCKixz563Tr+nEigxdPbuCGLbSkx6NheqWFmD+IJ7BYz1L/NjWeG3uViLzMa8ETC
+         5vIzIYbvV+mcuxc+dSOjs3o6HhR1E/S0HLhnb6+NAHck+D74Oy1FACgCWEitIEHG2HFA
+         AIUR3GUfnlFwIF0V9pVJGd21hXhJUxHnRgfMppzjv5qvZPaWY+rh8/aVVmZkEmvm/EtG
+         WH5PfcMVmZiEtjYG0/0QbZtwp8/57qdYjKd7p88NMUKEsLpZLpX2sG7WvDnE4RxvSOyo
+         eFnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=F2YM0coMho0zfyacZVauDRrmmDVgAwf1jpXRKiD3Q0s=;
-        b=ABDZeDcnLQJETvIZNQ89va085JKQnFv7WzCwxlPznw4L39ijGSufUsyCM4ubE90QEE
-         I4vSilFXn3/wVRzz8SaMj3GKqYZxx9I/eqL8ZUYcaHzknP0rWPAtJba6ZVjw1Mkc4A3E
-         lKCPFwsJ1Nz3ia+2wn6RVAbcgv2eOH+90nRPB1sOa6ytQjbBb1lOkEZfBfOmV7D/9yrM
-         3miUmnjqsP2IRiaXZIUzqdUJT/m7IXFxst7G8XI23zVP0eOB3i5fJwrO9eIoABQIprwc
-         +Txpjc+IIOmDsKDngruCs+1cE3iFRqMKIGb6pjiaTEj97eZ2gvyjZo+GyZaJl+Mr4Kjz
-         epgA==
-X-Gm-Message-State: APjAAAWnLKyPFZIYtPXQiV/kZEEU8rwFoJFkdVNwRwDGZ8HXID2ZqiCa
-	3JU7iOJo5Vq2t3xCgzjLT5FOnRVh
-X-Google-Smtp-Source: APXvYqx8k2Azsxe2t0C1unLgYeII6ednCZV2fg6hJ3gdK/DconTDmpGuS4kL+5GaImYPyAcgztGiaw==
-X-Received: by 2002:a62:19d1:: with SMTP id 200mr32504405pfz.26.1579127419973;
-        Wed, 15 Jan 2020 14:30:19 -0800 (PST)
+        bh=pVPBsqE8MJvYXtbTzgz0iptqaOAX+Rr+QBlHSf1JYjQ=;
+        b=G5H5cTZm4dnPEKK5x+dG0MWxT4jUlecTdUv3zmRKRwCavROyYW09Zsstc+GKQwREjS
+         a93cAwVeZs6bitOZnVJjuQI+8J2pHFkaknbjsegtoThUxCkprj1PmAtlSW+UQ+vA6Bt5
+         iPvXq7rPsBo1Qui+Xiix2oSq6sXz5+SIQoI6/xi+tNwwY3eyfGY1tgTL+328queek9XZ
+         zzG+dle5X0P0Jrv+PLYTtPHh0vW8YxX42E4XBKW0xt+CC6XElAuToUcLGX6N0PkJPT+I
+         vcGBGo7jFVLSpLbgmYqfz7fro3fZK0Vn6CK1nbMyOSjDPP6nL08FiX9JEfY03MLzqvr7
+         SUtg==
+X-Gm-Message-State: APjAAAW6LfZDqlwmiCwr4JrbUN5Wk+1/bFWj1PGsavWp8gctYyNME/KQ
+	84mCCJ4hXvJENBvS5hHQoS9ARSmZq0kFyQ==
+X-Google-Smtp-Source: APXvYqwXN1FGfCj/HRciISFsBdrvE4/WHeYaFGhcJHRr5+egvGJYfvPD5v1CV8rTkbdQZvDXWWtspA==
+X-Received: by 2002:a65:5ccc:: with SMTP id b12mr35171139pgt.124.1579127472984;
+        Wed, 15 Jan 2020 14:31:12 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.3.43] (rrcs-66-91-136-155.west.biz.rr.com. [66.91.136.155])
-        by smtp.gmail.com with ESMTPSA id z4sm22548739pfn.42.2020.01.15.14.30.18
+        by smtp.gmail.com with ESMTPSA id b15sm22846927pft.58.2020.01.15.14.31.10
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Jan 2020 14:30:19 -0800 (PST)
-Subject: Re: [PATCH v5 15/22] tests/tcg/aarch64: userspace system register
- test
+        Wed, 15 Jan 2020 14:31:12 -0800 (PST)
+Subject: Re: [PATCH v5 16/22] configure: allow user to specify what gdb to use
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org
 References: <20200114150953.27659-1-alex.bennee@linaro.org>
- <20200114150953.27659-16-alex.bennee@linaro.org>
+ <20200114150953.27659-17-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <d0cc21da-aa30-bc6e-34f9-c922ba5d8cba@linaro.org>
-Date: Wed, 15 Jan 2020 12:30:14 -1000
+Message-ID: <2b0acf88-131e-5145-03ab-b33bc13a85bc@linaro.org>
+Date: Wed, 15 Jan 2020 12:31:08 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200114150953.27659-16-alex.bennee@linaro.org>
+In-Reply-To: <20200114150953.27659-17-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 0YJpMPKd37eF
+X-TUID: xYT3qZR00OWB
 
 On 1/14/20 5:09 AM, Alex Bennée wrote:
-> This tests a bunch of registers that the kernel allows userspace to
-> read including the CPUID registers. We need a SVE aware compiler as we
-> are testing the id_aa64zfr0_el1 register in the set.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20190205190224.2198-7-alex.bennee@linaro.org>
-> 
-> ---
-> vgdbstub
->   - don't build unless using docker or CROSS_CC_HAS_SVE
-> ---
->  tests/tcg/aarch64/sysregs.c       | 172 ++++++++++++++++++++++++++++++
->  tests/tcg/aarch64/Makefile.target |   6 ++
->  2 files changed, 178 insertions(+)
->  create mode 100644 tests/tcg/aarch64/sysregs.c
+> +  --with-gdb=GBB-path      gdb to use for gdbstub tests [$gdb_bin]
+
+s/GBB/GDB/
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

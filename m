@@ -1,185 +1,191 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7196832lff;
-        Wed, 15 Jan 2020 09:16:17 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyDiZI9F3wl/sG2lOW3LVCF4gbiEl5dy6H/LckJTB2YD+O8kU6FNcvVbA9pzXr4Xk7611mM
-X-Received: by 2002:a05:6830:1d4c:: with SMTP id p12mr3644595oth.198.1579108577265;
-        Wed, 15 Jan 2020 09:16:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579108577; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7312361lff;
+        Wed, 15 Jan 2020 10:58:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx+6RVwfpDWWfJo+8mG/VniuDAU1B/uxdTq/8VS99AM8Yh0XeDa1ucJ8tHz3KXigiWa5zk1
+X-Received: by 2002:aed:3f32:: with SMTP id p47mr43336qtf.374.1579114686504;
+        Wed, 15 Jan 2020 10:58:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579114686; cv=none;
         d=google.com; s=arc-20160816;
-        b=rgt2BWyP36+ifiFKPIUiTivdgVRi5I7iUjgVWOnOJydnAr3mOGhoY058RGasyYS54o
-         SQZeA/qLYBkOeseiMEdtB1gEwQMqCrwKxuivYLFXn526wAjeCL96KVLqFJlh78Vc4bBp
-         jCndwkHQQevUHqYfu8Fm092LYK5CkeRRUlxur9irq28vBRIfAVfTdsdlhRGWAWEPatfs
-         lCZdD4/OU2oRmLtzTAnuE42EtiHXSeQDjzirXyPA/7z2bZIeHKknQGjsibrMha1g8q70
-         vQ1r19XqggiZdUpAj4kV7TTx81on2s8UaDBIetQlfiiEmYNPPbx+PCu+AJgTQ6DND/Eq
-         Jqlw==
+        b=0dAyAej2NDXFMH5l1h3VTLlnh3FPBFu/+8sP+SktBXeq1f+obZhGy5r2cLYBPeHz8S
+         vD3dxshRMGJ7pepSp47sQp9zTsFC94EUchPLOXQt22Q+qz/eGRHmdLyFhS1YlMROtJw+
+         Jwy8e2bzsSq8+hnUCHRHrF2VU1NQQirYKisTAzmXFAnvkgbnqtzhEelCg7ArNfG6mQiY
+         BA9yi/i8zCXVV0gBFtVEEWOLNTJHOHIPVbDnlpVuB4ez4jk0BgwKBqhtqehKvxOnk/tq
+         LRYODPeB0iWQFchJrSs/D+8EaZ2UYm73lcTk/e4Q8+n9TYf4GfRTBSXU4ahknwNmrQaS
+         lvSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=egZNg4z+3DEsO7Uh92E/wohzRqRs+BEyWekqiG5mUKo=;
-        b=nX5N4/DrJEk/HZZNDELCLQdohV38AXeG4OdJa6ypL0NcGBKUcrAZMlWMcWkFFrwrrB
-         ZUUabCPAB+uJ2IHjfXvFzMqNepBqdO/yFq5l4xhHSkktgMNCiyASZ1nRlziLctECCx33
-         y0a62Xde3s6xXbPf3CNgvpMSdoQkhfnjvo3Jt9Zbwjw+1PxINfwkqR9i+j9ZBkY4d0Kx
-         QVA2zZ/KUxV8ZNL+E97Xt5oF4kyizVoBa+KMTo0rnhTpVXWkFLVScNZb7qC/DRlpcrE9
-         CVUqdW/6+muRSWaT+S2Ep2gnBz6BfbozutFcOzoHwxQ9xRbgMUJXs3DHXLw2M1hEmmP9
-         UnsQ==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=rUlKyIyXq9KCkniuMiskK6GLbO+vYx518J5KKmTPi1U=;
+        b=a6ZVMVKNh6h3V3ThT8y/Xtj/7VF9mW9qrEdBfe2figtTsOLP/E+bhes/IrStkIa6+A
+         x4kkFv5tDv/XYcBWRaEOgUAUGZilrHSw/vU3Hj8OKoUIHUyqyYGKL0IgeELIg+MGwGI8
+         jV2YOHBSpiMwE4B7VEjmXoxOzD3039vLjNUa4oYGs1Cv7g02v6CvFrQsxozG8enONC8F
+         rl2NzDk/0Ups3etDer5hkKaE27z8U3gnIU6s+2jnldUJI9c9yzv7xV++GxphHQGrd0lR
+         kCaaVisLmfBO+u+eGKUtgSmrpiCiwvN0gI92M7Y2RgLB1el/pwaRVcPM5Jqbgg1YzE1F
+         tvsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G1q1FRlA;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KdPoAVJs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id r14si8940872oic.12.2020.01.15.09.16.17;
-        Wed, 15 Jan 2020 09:16:17 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r21si10935783qtb.174.2020.01.15.10.58.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 15 Jan 2020 10:58:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G1q1FRlA;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KdPoAVJs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729030AbgAORQP (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Wed, 15 Jan 2020 12:16:15 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48064 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1729011AbgAORQO (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 15 Jan 2020 12:16:14 -0500
+Received: from localhost ([::1]:58986 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irnrh-0005SJ-MW
+	for alex.bennee@linaro.org; Wed, 15 Jan 2020 13:58:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59327)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1irnqk-0004e5-T3
+ for qemu-devel@nongnu.org; Wed, 15 Jan 2020 13:57:07 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1irnqj-0002EQ-S6
+ for qemu-devel@nongnu.org; Wed, 15 Jan 2020 13:57:06 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:31334
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1irnqj-0002EC-Ou
+ for qemu-devel@nongnu.org; Wed, 15 Jan 2020 13:57:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1579108573;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=egZNg4z+3DEsO7Uh92E/wohzRqRs+BEyWekqiG5mUKo=;
-        b=G1q1FRlARb51k+GE+Vev9Nvr/BHsKM84bk6j8VXEM4RxRDYoaTNHYWuccqoIwG4MWfSvOb
-        cscGKlfGDwHODc+ZE2+fnENuPmBkhv4aY8J/QjhZKgn4m6b7auq15WbkxqXKIUAa+nmNBT
-        huVu/473Csb9Q7rLOu+BlNMg8j7wcMk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-285-EnYCrDZIOQ21-_2h5WbbuQ-1; Wed, 15 Jan 2020 12:16:11 -0500
-X-MC-Unique: EnYCrDZIOQ21-_2h5WbbuQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94A881022902;
-        Wed, 15 Jan 2020 17:16:09 +0000 (UTC)
-Received: from [10.36.117.108] (ovpn-117-108.ams2.redhat.com [10.36.117.108])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 946751081318;
-        Wed, 15 Jan 2020 17:16:06 +0000 (UTC)
-Subject: Re: [kvm-unit-tests PATCH v2 06/16] arm/arm64: ITS: Test BASER
-To:     Andrew Jones <drjones@redhat.com>
-Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, thuth@redhat.com
-References: <20200110145412.14937-1-eric.auger@redhat.com>
- <20200110145412.14937-7-eric.auger@redhat.com>
- <20200113172110.27p3bgozit6djf7k@kamzik.brq.redhat.com>
-From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <823a0516-6c20-b1f3-49ca-3c0379c353f3@redhat.com>
-Date:   Wed, 15 Jan 2020 18:16:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ s=mimecast20190719; t=1579114625;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=rUlKyIyXq9KCkniuMiskK6GLbO+vYx518J5KKmTPi1U=;
+ b=KdPoAVJsH4pHDC5ru5U+iNHV1+daEpcFvD9IqzpmJgZ0UXELoivfp/ww3/aQ8B0cMvHbhY
+ xpsu94msiHeOKM4i81kpY7tAM2DozadNTNVWPTcjZrlH5t88vYzNOlIizv6b4B3YKM5zaT
+ B/wZatNoddAm+j3qNGrSBkT0I5tOjCs=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-297-DHAH3k1MNa-aXZI1kYp_8A-1; Wed, 15 Jan 2020 13:57:04 -0500
+Received: by mail-wm1-f71.google.com with SMTP id t16so272481wmt.4
+ for <qemu-devel@nongnu.org>; Wed, 15 Jan 2020 10:57:03 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LyCGHEIQITM/+ovhheawX+GZAUy/lP6kMgd4i75SAiM=;
+ b=tQP9UzKMXA0rJi6t3QO4t3PMFNmHbJUhdshSTyz0/oypnLJ6YqTjy50j+z3IG7iHe4
+ 95cJZyGW7GcOZAfrLG/Kh7nXrg2xsDkMk3hTcL1mxIWoN8JJ4ITrt6W9JdnIBP4X0HvK
+ +BdXXXXQrGJHXxwZlhp1BNgu4nXAAai2vetvCizy4tcqvNI+oItS+qv9ho6zFJ5sfLpr
+ c0B4YFB/4H9JeKAY2TSsJ5rGQDhueEJp61dlIo6dw1yu9R62sxx3Hw6UW9SHFQ7HSAn+
+ x5JmSP2rTuX3k6TEzeOV7cg+3vrJxlHq44m0vBejVKrImPIkaIus5euR5Nufy1xtxQU/
+ WXDg==
+X-Gm-Message-State: APjAAAWwWnjp+xoGpP3t4B89gpk01JrwE29FAyQXXB3qCjaXAkDpEjyk
+ MY7e/ojjc+G6J/ASTeJ25eQM4SIJ6V0brQJeARAJwQ7PDarD9udD1c5HlF+XTBwG87eGpTrEf+o
+ TYx5gavJO7uo950w=
+X-Received: by 2002:a05:6000:50:: with SMTP id
+ k16mr32520239wrx.145.1579114623024; 
+ Wed, 15 Jan 2020 10:57:03 -0800 (PST)
+X-Received: by 2002:a05:6000:50:: with SMTP id
+ k16mr32520208wrx.145.1579114622736; 
+ Wed, 15 Jan 2020 10:57:02 -0800 (PST)
+Received: from ?IPv6:2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9?
+ ([2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9])
+ by smtp.gmail.com with ESMTPSA id p7sm926943wmp.31.2020.01.15.10.57.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 Jan 2020 10:57:02 -0800 (PST)
+Subject: Re: [PATCH v2 33/86] arm:virt: use memdev for RAM
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
+ <1579100861-73692-34-git-send-email-imammedo@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <be80961b-0b2e-2a38-8dc8-a7b06b6064f4@redhat.com>
+Date: Wed, 15 Jan 2020 19:57:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200113172110.27p3bgozit6djf7k@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <1579100861-73692-34-git-send-email-imammedo@redhat.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: RWF74lNv5pi8
+X-MC-Unique: DHAH3k1MNa-aXZI1kYp_8A-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8fc0QBnedbu7
 
-Hi,
+On 1/15/20 4:06 PM, Igor Mammedov wrote:
+> memory_region_allocate_system_memory() API is going away,
+> so replace it with memdev allocated MemoryRegion.
+> The later is initialized by generic code, so board only
+> needs to opt in to memdev scheme by providing
+>    MachineClass::default_ram_id
+> and then map memory region provided by
+>    MachineState::ram_memdev
+>=20
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+> CC: peter.maydell@linaro.org
+> CC: qemu-arm@nongnu.org
+> CC: drjones@redhat.com
+> ---
+>   hw/arm/virt.c | 7 +++----
+>   1 file changed, 3 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 39ab5f4..e2fbca3 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1512,7 +1512,6 @@ static void machvirt_init(MachineState *machine)
+>       MemoryRegion *sysmem =3D get_system_memory();
+>       MemoryRegion *secure_sysmem =3D NULL;
+>       int n, virt_max_cpus;
+> -    MemoryRegion *ram =3D g_new(MemoryRegion, 1);
+>       bool firmware_loaded;
+>       bool aarch64 =3D true;
+>       bool has_ged =3D !vmc->no_ged;
+> @@ -1701,9 +1700,8 @@ static void machvirt_init(MachineState *machine)
+>           }
+>       }
+>  =20
+> -    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
+> -                                         machine->ram_size);
+> -    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram)=
+;
+> +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
+> +                                machine->ram);
+>       if (machine->device_memory) {
+>           memory_region_add_subregion(sysmem, machine->device_memory->bas=
+e,
+>                                       &machine->device_memory->mr);
+> @@ -2053,6 +2051,7 @@ static void virt_machine_class_init(ObjectClass *oc=
+, void *data)
+>       hc->unplug_request =3D virt_machine_device_unplug_request_cb;
+>       mc->numa_mem_supported =3D true;
+>       mc->auto_enable_numa_with_memhp =3D true;
+> +    mc->default_ram_id =3D "mach-virt.ram";
+>   }
+>  =20
+>   static void virt_instance_init(Object *obj)
+>=20
 
-On 1/13/20 6:21 PM, Andrew Jones wrote:
-> On Fri, Jan 10, 2020 at 03:54:02PM +0100, Eric Auger wrote:
->> Add helper routines to parse and set up BASER registers.
->> Add a new test dedicated to BASER<n> accesses.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v2 -> v3:
->> - remove everything related to memory attributes
->> - s/dev_baser/coll_baser/ in report_info
->> - add extra line
->> - removed index filed in its_baser
->> ---
->>  arm/gic.c                | 21 ++++++++++-
->>  arm/unittests.cfg        |  6 +++
->>  lib/arm/asm/gic-v3-its.h | 14 +++++++
->>  lib/arm/gic-v3-its.c     | 80 ++++++++++++++++++++++++++++++++++++++++
->>  4 files changed, 120 insertions(+), 1 deletion(-)
->>
->> diff --git a/arm/gic.c b/arm/gic.c
->> index adeb981..3597ac3 100644
->> --- a/arm/gic.c
->> +++ b/arm/gic.c
->> @@ -531,11 +531,26 @@ static void test_its_introspection(void)
->>  		    typer->collid_bits);
->>  	report(typer->eventid_bits && typer->deviceid_bits &&
->>  	       typer->collid_bits, "ID spaces");
->> -	report(!typer->hw_collections, "collections only in ext memory");
->>  	report_info("Target address format %s",
->>  			typer->pta ? "Redist basse address" : "PE #");
->>  }
->>  
->> +static void test_its_baser(void)
->> +{
->> +	struct its_baser *dev_baser, *coll_baser;
->> +
->> +	if (!gicv3_its_base()) {
->> +		report_skip("No ITS, skip ...");
->> +		return;
->> +	}
->> +
->> +	dev_baser = its_lookup_baser(GITS_BASER_TYPE_DEVICE);
->> +	coll_baser = its_lookup_baser(GITS_BASER_TYPE_COLLECTION);
->> +	report(dev_baser && coll_baser, "detect device and collection BASER");
->> +	report_info("device baser entry_size = 0x%x", dev_baser->esz);
->> +	report_info("collection baser entry_size = 0x%x", coll_baser->esz);
->> +}
->> +
->>  int main(int argc, char **argv)
->>  {
->>  	if (!gic_init()) {
->> @@ -571,6 +586,10 @@ int main(int argc, char **argv)
->>  		report_prefix_push(argv[1]);
->>  		test_its_introspection();
->>  		report_prefix_pop();
->> +	} else if (strcmp(argv[1], "its-baser") == 0) {
->> +		report_prefix_push(argv[1]);
->> +		test_its_baser();
->> +		report_prefix_pop();
->>  	} else {
->>  		report_abort("Unknown subtest '%s'", argv[1]);
->>  	}
->> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
->> index bd20460..2234a0f 100644
->> --- a/arm/unittests.cfg
->> +++ b/arm/unittests.cfg
->> @@ -128,6 +128,12 @@ smp = $MAX_SMP
->>  extra_params = -machine gic-version=3 -append 'its-introspection'
->>  groups = its
->>  
->> +[its-baser]
->> +file = gic.flat
->> +smp = $MAX_SMP
->> +extra_params = -machine gic-version=3 -append 'its-baser'
->> +groups = its
-> 
-> Do these tests need to be run separately from the its-introspection tests
-> for some reason? If not, then I'd combine them.
-Not really. To me it is easier to debug and analyze when the fail
-though. I will merge both.
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Thanks
-
-Eric
-> 
-> Thanks,
-> drew
-> 

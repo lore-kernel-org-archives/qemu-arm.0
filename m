@@ -1,127 +1,118 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6848015lff;
-        Wed, 15 Jan 2020 04:30:19 -0800 (PST)
-X-Received: by 2002:a05:600c:24d1:: with SMTP id 17mr32600708wmu.136.1579091419902;
-        Wed, 15 Jan 2020 04:30:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579091419; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6916879lff;
+        Wed, 15 Jan 2020 05:32:17 -0800 (PST)
+X-Received: by 2002:a05:6830:10d7:: with SMTP id z23mr2722772oto.114.1579095137575;
+        Wed, 15 Jan 2020 05:32:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579095137; cv=none;
         d=google.com; s=arc-20160816;
-        b=UnYJIJ6F+jC1uiTROy0YXc2+N973e85SQ87jiXkx+unF2ihxDGuloRr7teEEowZUzC
-         tTyQptPh86MaxDhjgfeMN3GcnD9/UmoiylwSHgtf0kICKH0f7TkLs3/2S7noNPP22XuL
-         Eac6a7aBASFkntnLpkjNIf35EE6CDFZmaU8L7qopTKtib+GHdcf51tDpKAABj9LGqwX0
-         HDC3FQnjivUsukGGdyCuZeJZxcBJCof0av2RAuBLb+ilRUUqvwCz8mq1jPjvba/annto
-         ZB/+KGAq3OGNYyWtoBoZ0MnFsVK4f0x0N7zVoviCwTgaxs36szQm3bHx4ie3mpFLVMvB
-         by+g==
+        b=Fqp8nV7BMHo3sO4FEH/4CIrXTeWrEBHxwKrbFlFKwxby0SD8GtI7rVBhNIfY8arevl
+         x1oMwi9PLfXeKeSMXX7dv1nxQ1Ojg7jXN1wQM1TVL6QS6N9mhl1jko2GMBlic8UVhJTB
+         wr5SOYppsD6S3+ND/0QA413tBPTP4q9bhbqL+BZV6O+aeHdtkchQzU0B9hiit5Nd21/O
+         ztSOiyIVFQS9Fh80qI3t57tDXUiD2TE8g2nYN8FUAAVB6rFPqAaoH0jMjfe1EMjikv5X
+         9oyqpRF4uHzyeDDlt/A3NqAJrWh2c6zhvGz8tYMHd6CNs04VRslah/fe4H72dWrlt+O6
+         zqtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:dkim-signature;
-        bh=eYNFa5Bhv7qJOtgJ+6RxiiiCas0UwA2leU9uE/w4vwY=;
-        b=yVdCnsBQa4yNMdAW+MrEDy7J4dfWGWc+Yd5bawS+VjV5GMQLWRglUb6korLWdW2WPf
-         lIhkHbg0T1QhPH5+lrwS0Z3yQqln5zMjaOCsJFUac4+HPy8JFcir1XHCYpIBFvO4x063
-         q+dTnfssJjUubvlOkxXf/8xPkGT9ZkDfiWQhnAIDQafhqvuquqhGhq1Cf9w2pTrbT9Sv
-         /ckNTSgnKAXKOq91BW98ywWBfNaOufFc9A46M2WX6GuKhr6BWcvwgn62d9gEYiTQFkCB
-         REFyyH7e4i5Nq4VjLHpSKBjDBZZQQa0Q1kUiQ27fD0Rr5YOJkk/XkFnnm+6lNFEWLheO
-         GuFg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=/qC7LfI0GU9GYF/RzGSxqWfl63MVN3CJgjG7Md3SD2k=;
+        b=nYufxuN8BA3koBEx25KhfhNBhFb83KI4O6AzcNIwY1AsaljFeIlOQzeohR83mlU5LZ
+         DTYZBCxOrNPjGWFASW9DWB3Z/THEUBQhCUo8z8xjGPmXsmcvs/F279JbKYMTk0Mim0mj
+         pIT98+F9ViHEXKimcBXsAT4OKl/VMw/TMC0zbXb3VSovrlDg6T6JwbWUgSy8o1aQoN1+
+         F2pmZ/KU1jIebA1D0tbpp+/fmV7794Rz29kkNo2xCb0ZOOBtaD3FjxiIUho9pJN2uye/
+         B2ltctZO3zTr9vVSCs0EuOpESRB/c+gY0GetW4DTbXTjvcfECE6GmSa1pu77CjUMbW8B
+         1lFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@livius-net.20150623.gappssmtp.com header.s=20150623 header.b=C2AccYPI;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of ilg@livius.net) smtp.mailfrom=ilg@livius.net
-Return-Path: <ilg@livius.net>
+       dkim=pass header.i=@linaro.org header.s=google header.b=fB62mJUG;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 8sor9954551wmn.23.2020.01.15.04.30.19
+        by mx.google.com with SMTPS id g18sor9200664otk.82.2020.01.15.05.32.17
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 15 Jan 2020 04:30:19 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of ilg@livius.net) client-ip=209.85.220.41;
+        Wed, 15 Jan 2020 05:32:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@livius-net.20150623.gappssmtp.com header.s=20150623 header.b=C2AccYPI;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of ilg@livius.net) smtp.mailfrom=ilg@livius.net
+       dkim=pass header.i=@linaro.org header.s=google header.b=fB62mJUG;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=livius-net.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=eYNFa5Bhv7qJOtgJ+6RxiiiCas0UwA2leU9uE/w4vwY=;
-        b=C2AccYPIm40rpRFDdroGPZrPtVU4PQexww4orANUnz5q/JQID5fw3+tYMEU3PRgCLd
-         z2vXghvvfzivNppbf1ngfFykCTukXgoxnycAlmkMrfhqSsCiCl4Ngi298P7v68rfWK+P
-         bTrHG5r8/8WydBMLFFDkpMIFru/tXhPQTNQU/V0yVDMofoKz00AwVqulEonIN0uxWI9X
-         wa7dxgVy1BicqKaJ+6iOiGBUG0zsvBDM7N2hHp9q7rVSi+9FnUeTDSTNJcosCDXD/qp+
-         9epfWSdgkMh8XXm1RTqEznKst5Ed42kpEAvhhzmJYUxC9wVrNFmW8UdEdSijxQQfVTcZ
-         oKlA==
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=/qC7LfI0GU9GYF/RzGSxqWfl63MVN3CJgjG7Md3SD2k=;
+        b=fB62mJUGIxCLCfDTEFnx3mFz9+0c/4Ved8CRsFunCjbUcn8PF6iQjeEvN7awubxuYg
+         3JGDhZAt9ogdv2zcAMQIM8DZCLM3hwkOUiGQREDb8dR8t4pb6j74XJH5rU03Fihw/VYT
+         0TFoqQfgrcCgEzaPa0+kh0nChlzyb6bn9Xto7kkYT2bK04kxljKuC9NwPqD+EBDDUvNl
+         mSc6h+exTEgTh/Y8E3wMRshOVSfRR4ghCafDAX7Eh9C/gZovYcBWK2VjvYaLOR2fVWaN
+         HKXwDner1+GQB1GlN+rkP8L81A/nGp4pdr6dhZBb/W0mvTOVaClbx0l0VgwqjgBirxk/
+         VWaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=eYNFa5Bhv7qJOtgJ+6RxiiiCas0UwA2leU9uE/w4vwY=;
-        b=Wh3MBO1UVu+5ZudwvB2izrENS9uC2nJR7Pd/SuhzDioBURHeaa4siNkn/Bz3YEjK0l
-         fO4lDu5CWGwtBAo1Xhq/Oj8nHvwoTKVFUGN63FWSrIyoIBRa0MrmE6jgGi/TwAyzE8FI
-         ICrj/Bi4kmSmxhFofowj4v0KJvF0cGaWla3TDkmjzjDPOSS+q6hHTDqIdcMYlnvs3aiF
-         /dDSQ/ZH7H1b2B980RoUzF+86CTC8OOE8MGeD8hlWmv4TPSvcTsuKmbIQpaFDY8HdW4a
-         ZTswjfHW93+yZez1P7ufPBo8pvHvEd5cSTKiLEoEtsuzn83/keccKD//75HhRDHPci2R
-         aFaQ==
-X-Gm-Message-State: APjAAAVGZMyqHsJUnLFlF1t6XDQgInmaRftVyi0gdxoqOV3TYpyaMeEW
-	odErcM+pLfKqeY3brlx6IKi+ybqpu7CdKA==
-X-Google-Smtp-Source: APXvYqxStILxOScGAQfctRoXwkjDQsxIAAkEZeLzqQQHTXPk56pPD8OsENdEVjQX4DO8x0kkoypHLQ==
-X-Received: by 2002:a7b:cb01:: with SMTP id u1mr31185594wmj.156.1579091419272;
-        Wed, 15 Jan 2020 04:30:19 -0800 (PST)
-Return-Path: <ilg@livius.net>
-Received: from wks.local ([188.26.232.206])
-        by smtp.gmail.com with ESMTPSA id i16sm24405210wmb.36.2020.01.15.04.30.18
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Jan 2020 04:30:18 -0800 (PST)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 13.0 \(3608.40.2.2.4\))
-Subject: Re: Semihosting, arm, riscv, ppc and common code
-From: Liviu Ionescu <ilg@livius.net>
-In-Reply-To: <87wo9tkjxz.fsf@linaro.org>
-Date: Wed, 15 Jan 2020 14:30:17 +0200
-Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- keithp@keithp.com,
- qemu-arm@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <58DE85E5-2A72-4073-AF02-6B944AB05889@livius.net>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=/qC7LfI0GU9GYF/RzGSxqWfl63MVN3CJgjG7Md3SD2k=;
+        b=KPeDVHexbpgnMMelksm0EnqrV82+BdhkqvzUIsH/Fa6vwD8ctS+lrvE8Rkoq4YeMBS
+         07jLz8ekP67qSJXsm0M5AmSzfpBz7Q61Npe/AujCdXoN+7lMZcMkD14RLI6xispwD2+0
+         t+gGW6yM6ef0Iol9GghEqaI0ksMy1ePfm+A8O0Wy6UZDhja4Ijmo212ltjv9efv4o4KI
+         lZe9qhr2H3NLa6uJs+nAMDgXjCTkpkeikfrx1evF78iF4OG2ZVLyb8YeJ6IAqpHtcTFM
+         UWRzS0090fRqzDl8Y/Mx9EqQdZenPER8May3etaecyM2ColUBFGmsqJXBluWULqIrhq+
+         LLVQ==
+X-Gm-Message-State: APjAAAXSrp9Vf24MmhrHhMTmP5k0bH71Z66a+UdPqUpvcnZH826z52Zi
+	co4C8cY6bOtk62a4vKOaPFjREmexcR7V7OndEdWAuHq9+BAWgw==
+X-Google-Smtp-Source: APXvYqwjaV3uaYdFtLb1OmV40Z+tpi2faV9rWGGcgVvlfd6pscpJAFJs1+9uHWSX6hp8dXNGwT7GrxvUTXij8qaGFrw=
+X-Received: by 2002:a05:6830:184:: with SMTP id q4mr2782901ota.232.1579095136812;
+ Wed, 15 Jan 2020 05:32:16 -0800 (PST)
+MIME-Version: 1.0
 References: <11d88b2741eac3f634d5aed9e3355c974b533f7b.camel@kernel.crashing.org>
- <AE7841A1-B4D6-4D6D-9AFD-01C4604D7BC4@livius.net>
- <cd9a2de94700a2781f176247131dceba690d8f31.camel@kernel.crashing.org>
- <87sgkimkma.fsf@linaro.org>
- <1309ca0ab6405d88cfd949c73130ad0f2af944a6.camel@kernel.crashing.org>
- <87wo9tkjxz.fsf@linaro.org>
-To: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-X-Mailer: Apple Mail (2.3608.40.2.2.4)
-X-TUID: RQ7hiHPCAcAR
+ <CAFEAcA-A_caQgwi5DzExdZChoTg-Qa73hq7Ho7dPLiN633Yj1Q@mail.gmail.com> <3ab2ca1f7a9b37b201a58f3a817edc5193e8b1f4.camel@kernel.crashing.org>
+In-Reply-To: <3ab2ca1f7a9b37b201a58f3a817edc5193e8b1f4.camel@kernel.crashing.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 15 Jan 2020 13:32:05 +0000
+Message-ID: <CAFEAcA8mphBky9Q2HTdOpQHiizd+5-o=yRnBbd_k1y6Uk-h8dA@mail.gmail.com>
+Subject: Re: Semihosting, arm, riscv, ppc and common code
+To: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Keith Packard <keithp@keithp.com>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: qHtfTCtFLMEx
 
+On Wed, 15 Jan 2020 at 01:17, Benjamin Herrenschmidt
+<benh@kernel.crashing.org> wrote:
+> On Tue, 2020-01-14 at 09:59 +0000, Peter Maydell wrote:
+> > Note that semihosting is not a "here's a handy QEMU feature"
+> > thing. It's an architecture-specific API and ABI, which should
+> > be defined somewhere in a standard external to QEMU.
+>
+> There is no such standard for powerpc today that I know of.
 
+So you need to write one down somewhere. You're proposing
+an ABI which will be implemented by multiple implementors
+and used by multiple consumers. That needs a spec, not
+just code. I don't want to see more semihosting implementations
+added to QEMU that don't have a specification written
+down somewhere.
 
-> On 15 Jan 2020, at 14:01, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
->=20
-> ... AFAIK the main users of arm linux user
-> are compiler test cases for M-profile CPUs.=20
+The riscv single paragraph in their arch spec that vaguely
+says "works like arm semihosting" is not sufficient detail, incidentally.
 
-I confirm, generally unit tests.
+> Keith and I are somewhat of a different mind here. From the perspective
+> of the user of that API (picolibc is one), it's easier to deal with a
+> single one and have everybody inherit the same bugs.
+>
+> Now I understand the point of wanting to fix the mistakes made but I
+> would suggest we do so by proposing extensions to the existing one to
+> do so.
 
-But not necessarily, I used QEMU as the main development platform for =
-the Cortex-M port of =C2=B5OS++, a C/C++ framework/RTOS, and it was very =
-convenient.
+The point about the mistakes is that you can't easily fix
+them by adding extensions, because the core of the biggest
+mistake is "we didn't provide a good way to allow extensions to
+be added and probed for by the user". So we had to implement
+an ugly and hard to implement mechanism instead. New
+architectures could mandate providing the good way from the start
+and avoid the painful-to-implement approach entirely.
+(I think RISCV has already missed this window of opportunity,
+which is a shame.)
 
-> ... Is semihosting even
-> going to be a thing on real RiscV/Power silicon?
-
-Even for Arm it is a thing of debuggers and development environments, =
-not of silicon itself, since it requires no special hardware support, a =
-BRK instruction is enough.
-
-=46rom a software point of view it would be beneficial to use the same =
-semihosting protocol on other non-Arm architectures too, even if it is =
-far from perfect.
-
-I pushed hard for adopting the Arm semihosting for RISC-V, and even =
-contributed the semihosting code for OpenOCD RISC-V, but officially the =
-only mention of semihosting in the RISC-V specs is in the notes =
-sections, where it is mentioned how to use the BRK instruction to invoke =
-semihosting calls (RISC-V has a single BREAK instructions, and to make =
-it unique it must be surrounded by some hint NOPs).
-
-
-Regards,
-
-Liviu
+thanks
+-- PMM

@@ -1,216 +1,207 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6826850lff;
-        Wed, 15 Jan 2020 04:09:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyIdfaCudG62pKdi9E4ag7SAB0bDaTiVaZycWPoT/fSMHUcIMZfqU/AKr7uaUZx9mOYo578
-X-Received: by 2002:a05:6402:3d3:: with SMTP id t19mr29671162edw.1.1579090195575;
-        Wed, 15 Jan 2020 04:09:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579090195; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6879793lff;
+        Wed, 15 Jan 2020 05:01:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxpfNA/zNzL4B0wkRBPZK/1wzbvR8fHQNOBfg9uSzDS2ryQvDwL9wLIVdyPsZaojXLk8RKD
+X-Received: by 2002:a50:f396:: with SMTP id g22mr25988383edm.336.1579093280045;
+        Wed, 15 Jan 2020 05:01:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579093280; cv=none;
         d=google.com; s=arc-20160816;
-        b=v6pg/HfNYV1QDbF8+Li90TSiDnZuaEIC1KM7EEZF3zwr3Yxf3PPnpkqU/dCHnYHtd4
-         GWUSUeOjNpAMF5AgN1ygsBVtEqSTW0mO4IB35Lw60Q2uQpwyjlUF6zdl7mbzaPq17RmK
-         6omDeKl83hrBThZ9eeW6ARrXLHVlvliSscWPAMLGScIIW1rmOdwFBli62/0Vu/UDubDc
-         URLIxp1JINtkqLfvA0lZvO0EroXQGpHzUypXPIfalONNP/MjWiZ8d0qXcPrFMBAofT77
-         Ob1knp3iNBXEdteXfL5zdpLoYo23UKoeek7sRrxqB7K62aKBcNk4QRDHmMJOAJy08W2B
-         Ip9w==
+        b=D8hDiM9zR8aUIVq7rqJ0WQmhJjB703T3ZjC9cbYe3dgn18UrX4lF5T3FOeUuG2n464
+         G/vO8/E+VcsckSyy3v347FL9evnroDE/ybgoAzlVF+ncpxt0iJsOMujTbt2lRqZonUFM
+         45LbbBneAGbpRVZ8i1zWyJJngSByJssPOnyjJ9AUFUu4S7DG7fBCIgyAeSQ+0qEmR9ow
+         QsteihTNL3oUHW30yc4DGGw4lCyVsF0drf7gcd7OwRkmM3g2PWZgYhuyf10cBxCU1jkS
+         eEC0IORiOjtYxtgGBPaRhI/ANZNe4w1GwBNqVA6kGhqugJ2PQ5lyKUi41nByacwqnkIN
+         fagQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=u6jrxvxNgWqf8gtvKohqKR5GH2PgnsfIlboycMtUEYs=;
-        b=kr9djQ3uRy4xMUkAZ/zBcHoh0YmVaggUQ0RM+oW6mfGsrRQbUinKIaS/vvgU3x7Xs3
-         2hbrN3BL3stTR2Yx/GwsESADWV8Lvg70l/uqY75ks81kMRhKsaZao9/yoIWtaeITbUnz
-         +m2h5ylWPyg8oQITvYPtrY48OhgkvlCYyZpuEuuni5LKvomBpvwy4JO/9VbfZvW9t1AD
-         JfGE7X9u7T1Dvp55K/74CZCfnE9zGDbN49wClFWnjzFmnfbLZayh5RNnTTxMBvlsgLsq
-         /4Q+UZTfAQHbF8FO14wSQSQA+knI08Bk0NCuqO3W3rjtS/+HYzFzp3Xp/tSeE4Nu9CA/
-         fYAw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=lhHfVSTcsWupZx5t9Q77V1EutuWIjWNixQEVTQNjDXQ=;
+        b=qmJ93U8sOj+2DhYCybVswhszSSZK0RWpRDNXbtE8qGTBRsm35IWxiT1e8ffcsDr4dS
+         TldEnXVpXWbeb/pWPON6taVTKJkibDXMIXYjiw04JtjnnHke2gMWPtL6nkSE/MufUVNY
+         gAMKG8WROpRTSg2GEu+RzE401ir8suwRl/DehkgCvxXQwOi6GXyrOpIkKjuSKn0lHCHE
+         OTC9Ye3hhkNPzDDoY0oF8HJVKbi1d+CHywo1Mp0/DrZiWmP4mbcQKO9nHtHwoACQT8UT
+         wzxJrg8+yY9QBNpdsgyfVTB79UdOYNoxoMqXsa2rmv/f8XGfrRfqmsV8iwSZZn8crtmS
+         2YhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vq7nYAYx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EvKfgq3Y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id rn25si11304301ejb.179.2020.01.15.04.09.55
+        by mx.google.com with ESMTPS id s4si12344824ejq.282.2020.01.15.05.01.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2020 04:09:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Jan 2020 05:01:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vq7nYAYx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EvKfgq3Y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52818 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53626 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irhUg-0006lM-Hq
-	for alex.bennee@linaro.org; Wed, 15 Jan 2020 07:09:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45776)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iriIQ-0003TV-T9
+	for alex.bennee@linaro.org; Wed, 15 Jan 2020 08:01:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53199)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1irhTx-0006KR-8L
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 07:09:10 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iriID-0003S8-0Z
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 08:01:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1irhTw-0001Nd-0T
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 07:09:09 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:54528
+ (envelope-from <eric.auger@redhat.com>) id 1iriI7-0004to-A1
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 08:01:04 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:46026
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1irhTv-0001NB-Sn
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 07:09:07 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1iriI7-0004tO-73
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 08:00:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579090146;
+ s=mimecast20190719; t=1579093258;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=u6jrxvxNgWqf8gtvKohqKR5GH2PgnsfIlboycMtUEYs=;
- b=Vq7nYAYxxvUMGbCEptLgpIrkYz/EQ6svYGiQH8hKYpPwde9eou9HsYvlO48Ob0Uvnp9G7v
- kL0G4Kq+uD3wMDs6TyG9rhIX913zKym/ebmbxY6vQrUhXyEJkilJ4fwoYe+LiZSBUiZ05r
- Q+pnhCaMu0qdpBNVQkp5MGQQuI6dWmo=
+ bh=lhHfVSTcsWupZx5t9Q77V1EutuWIjWNixQEVTQNjDXQ=;
+ b=EvKfgq3Y5rN2zKtIQ8c2oAq0+UFQt/uRMCRj7eJGHwGjk4aGSArI36ENqN2vFZNnrAsNmI
+ s1OhEl/jbrmH6/IoL/gRl+me5FklubZhWd9WmSoi/otKRHpvNAEzwISyWoWHgqjyt2Mv33
+ n6kanUXXK5XLB4S5GueludOOEaIAGJg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-198-LqvdbqMWMYqCJQgwEag7Jg-1; Wed, 15 Jan 2020 07:09:05 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-421-yhqN1cNdPdWu_fbEWrot8Q-1; Wed, 15 Jan 2020 08:00:55 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6D1E7800D41;
- Wed, 15 Jan 2020 12:09:04 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 479E05DA32;
- Wed, 15 Jan 2020 12:09:00 +0000 (UTC)
-Date: Wed, 15 Jan 2020 13:08:58 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Heyi Guo <guoheyi@huawei.com>
-Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified
- by _HID
-Message-ID: <20200115130858.5cb90095@redhat.com>
-In-Reply-To: <20191219064759.35053-3-guoheyi@huawei.com>
-References: <20191219064759.35053-1-guoheyi@huawei.com>
- <20191219064759.35053-3-guoheyi@huawei.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A5235801F74;
+ Wed, 15 Jan 2020 13:00:53 +0000 (UTC)
+Received: from [10.36.117.108] (ovpn-117-108.ams2.redhat.com [10.36.117.108])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B483010841AB;
+ Wed, 15 Jan 2020 13:00:23 +0000 (UTC)
+Subject: Re: [PATCH v12 05/13] virtio-iommu: Endpoint and domains structs and
+ helpers
+To: Peter Xu <peterx@redhat.com>
+References: <20200109144319.15912-1-eric.auger@redhat.com>
+ <20200109144319.15912-6-eric.auger@redhat.com>
+ <20200113202301.GD201624@xz-x1>
+ <51267d84-c805-a4a1-8084-b278721a5b3f@redhat.com>
+ <20200114180734.GB225163@xz-x1>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <f3da181d-094b-a647-31ea-bdb47eab5c1b@redhat.com>
+Date: Wed, 15 Jan 2020 14:00:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: LqvdbqMWMYqCJQgwEag7Jg-1
+In-Reply-To: <20200114180734.GB225163@xz-x1>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: yhqN1cNdPdWu_fbEWrot8Q-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zwt4qNnUUMKL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
+ dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ mst@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6yrwZzv5y4GP
 
-On Thu, 19 Dec 2019 14:47:59 +0800
-Heyi Guo <guoheyi@huawei.com> wrote:
+Hi Peter,
 
-> According to ACPI spec, _ADR should be used for device which is on a
-> bus that has a standard enumeration algorithm. It does not make sense
-> to have a _ADR object for devices which already have _HID and will be
-> enumerated by OSPM.
-> 
-> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-Acked-by: Igor Mammedov <imammedo@redhat.com>
 
-> 
-> ---
-> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
-> ---
->  hw/arm/virt-acpi-build.c          |   8 --------
->  tests/data/acpi/virt/DSDT         | Bin 18449 -> 18426 bytes
->  tests/data/acpi/virt/DSDT.memhp   | Bin 19786 -> 19763 bytes
->  tests/data/acpi/virt/DSDT.numamem | Bin 18449 -> 18426 bytes
->  4 files changed, 8 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 9f4c7d1889..be752c0ad8 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -78,11 +78,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
->                               AML_EXCLUSIVE, &uart_irq, 1));
->      aml_append(dev, aml_name_decl("_CRS", crs));
->  
-> -    /* The _ADR entry is used to link this device to the UART described
-> -     * in the SPCR table, i.e. SPCR.base_address.address == _ADR.
-> -     */
-> -    aml_append(dev, aml_name_decl("_ADR", aml_int(uart_memmap->base)));
-> -
->      aml_append(scope, dev);
->  }
->  
-> @@ -170,7 +165,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
->      aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
->      aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
->      aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
-> -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
->      aml_append(dev, aml_name_decl("_UID", aml_string("PCI0")));
->      aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Device")));
->      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
-> @@ -334,7 +328,6 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
->  {
->      Aml *dev = aml_device("GPO0");
->      aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0061")));
-> -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
->      aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->  
->      Aml *crs = aml_resource_template();
-> @@ -364,7 +357,6 @@ static void acpi_dsdt_add_power_button(Aml *scope)
->  {
->      Aml *dev = aml_device(ACPI_POWER_BUTTON_DEVICE);
->      aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C0C")));
-> -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
->      aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->      aml_append(scope, dev);
->  }
-> diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
-> index b5895cb22446860a0b9be3d32ec856feb388be4c..a759ff739a071d5fbf50519a6aea296e5e0f1e0c 100644
-> GIT binary patch
-> delta 72
-> zcmbO@f$>*ABbQ6COUN&G1_q{66S<_BT5Bh&t1wzk^tIeLL4lL8ZSqD=gU!!5x$Pt+
-> c1HyxxIO07#U3dfh0t}oDoEbRcLp@y>07w882mk;8  
-> 
-> delta 94
-> zcmey>&p2@cBbQ6CONgKc0|V26iCof5J#`b+RhV2^Ci+-%al|{i1o1F1FmP^cRp4ao  
-> tnY@hCfEg&X`7$S;oxFTNc#soEyoaX?Z-8HbfwO@#16Tu)4E1zj005fm7mWY_
-> 
-> diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/DSDT.memhp
-> index 69ad844f65d047973a3e55198beecd45a35b8fce..6e5cc61977e4cd24f765fec0693f75a528c144c1 100644
-> GIT binary patch
-> delta 72
-> zcmX>#i*fTTMlP3Nmk?uL1_q|eiCof5eHSLGt1wzk^tIeLL4lL8ZSqD=gU!!5U7RH)
-> c1HyxxIO07#U3dfh0t}oDoEbRcLp@y>03)CjmjD0&  
-> 
-> delta 94
-> zcmdlyi}BPfMlP3Nmk=*s1_q}3iCof5t(PXMt1!8;O!Tqj;)r*23F2X3VBp-?s=&$E
-> tGkF=O0W(l&^JPwVXL<R6@E|9Scn?n(-T=P<17`zg2CxPo8S3f6006qZ7#siq
-> 
-> diff --git a/tests/data/acpi/virt/DSDT.numamem b/tests/data/acpi/virt/DSDT.numamem
-> index b5895cb22446860a0b9be3d32ec856feb388be4c..a759ff739a071d5fbf50519a6aea296e5e0f1e0c 100644
-> GIT binary patch
-> delta 72
-> zcmbO@f$>*ABbQ6COUN&G1_q{66S<_BT5Bh&t1wzk^tIeLL4lL8ZSqD=gU!!5x$Pt+
-> c1HyxxIO07#U3dfh0t}oDoEbRcLp@y>07w882mk;8  
-> 
-> delta 94
-> zcmey>&p2@cBbQ6CONgKc0|V26iCof5J#`b+RhV2^Ci+-%al|{i1o1F1FmP^cRp4ao  
-> tnY@hCfEg&X`7$S;oxFTNc#soEyoaX?Z-8HbfwO@#16Tu)4E1zj005fm7mWY_
-> 
+On 1/14/20 7:07 PM, Peter Xu wrote:
+> On Tue, Jan 14, 2020 at 09:51:59AM +0100, Auger Eric wrote:
+>> Hi Peter,
+>=20
+> Hi, Eric,
+>=20
+> [...]
+>=20
+>>>
+>>>> +{
+>>>> +    VirtIOIOMMUEndpoint *ep;
+>>>> +
+>>>> +    ep =3D g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
+>>>> +    if (ep) {
+>>>> +        return ep;
+>>>> +    }
+>>>> +    if (!virtio_iommu_mr(s, ep_id)) {
+>>>
+>>> Could I ask when this will trigger?
+>>
+>> This can happen when a device is attached to a domain and its RID does
+>> not correspond to one of the devices protected by the iommu.
+
+>=20
+> So will it happen only because of a kernel driver bug?
+
+Yes, at the moment, because virtio_iommu_mr() only gets called on device
+attach to a domain.
+
+The spec says:
+"If the endpoint identified by endpoint doesn=E2=80=99t exist, the device M=
+UST
+reject the request and set status to VIRTIO_IOMMU_S_NOENT"
+>=20
+> Also, I think the name of "virtio_iommu_mr" is confusing on that it
+> returned explicitly a MemoryRegion however it's never been used:
+
+I use the same prototype as for smmu_iommu_mr(). Returning the iommu mr
+will allow to proceed with further RID based operations like invalidations.
+
+The same logic is used in vtd_context_device_invalidate.
+
+
+>=20
+> (since they're not in the same patch I'm pasting)
+>=20
+> static IOMMUMemoryRegion *virtio_iommu_mr(VirtIOIOMMU *s, uint32_t sid)
+> {
+>     uint8_t bus_n, devfn;
+>     IOMMUPciBus *iommu_pci_bus;
+>     IOMMUDevice *dev;
+>=20
+>     bus_n =3D PCI_BUS_NUM(sid);
+>     iommu_pci_bus =3D iommu_find_iommu_pcibus(s, bus_n);
+>     if (iommu_pci_bus) {
+>         devfn =3D sid & 0xFF;
+>         dev =3D iommu_pci_bus->pbdev[devfn];
+>         if (dev) {
+>             return &dev->iommu_mr;
+>         }
+>     }
+>     return NULL;
+> }
+>=20
+> Maybe "return !!dev" would be enough, then make the return a boolean?
+> Then we can rename it to virtio_iommu_has_device().
+>=20
+> PS. I think we can also drop IOMMU_PCI_DEVFN_MAX (after all you even
+> didn't use it here!) and use PCI_DEVFN_MAX, and replace 0xFF.
+well intel iommu and smmu use a similar constant (PCI_DEVFN_MAX,
+SMMU_PCI_DEVFN_MAX resp.). I use it in virtio_iommu_find_add_as
+
+Thanks
+
+Eric
+
+
+>=20
+> Thanks,
+>=20
 

@@ -1,92 +1,92 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7047424lff;
-        Wed, 15 Jan 2020 07:16:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy8yvihyBCe5VmuutcZj2ife9EkxpHhrit2QouvIi1aRjL4/FDFr0GQli4KZZFedHc2ahqd
-X-Received: by 2002:a37:a4e:: with SMTP id 75mr27520606qkk.411.1579101386477;
-        Wed, 15 Jan 2020 07:16:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579101386; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7049153lff;
+        Wed, 15 Jan 2020 07:17:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzczBzit1olh0/aIQ3Km/MLgi3ExgyNYjQ4TyTkf/QOkzKK6smnINGY4kRtcHqVckWimuZm
+X-Received: by 2002:a17:906:ce38:: with SMTP id sd24mr27190253ejb.237.1579101467310;
+        Wed, 15 Jan 2020 07:17:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579101467; cv=none;
         d=google.com; s=arc-20160816;
-        b=00jV9Pi5uNf83Yj+SKNdDfMlRuoTcUSLgMChhaqytGW2JIGy5Ho3paAvUUGsl8eHZx
-         Ti1vZN76U0DZCCuV1ybyHDlNizZLR4iKD2CGqXp6qRuhzQiCFuIA+3JShKMHMQoCi9qu
-         03sRjwDmze757a/IzgmzHnhShucjURL9VMyrHRfqMIjxfjaBPP15GGQoLoZ0bgAaLYx7
-         hW0C4GF501GdaeQvqaF6P6eePC0mb9CRBUEy2tNLmybQkGVqeeWstIR1TwFLBk+WtVw/
-         7qXKRI2pMlr2BLn/uQ6gbklLHxLRlsix7A7+rfMPz8WUEW2OA+bG8rVFBnuO79zzO7Qs
-         vIrA==
+        b=vip/qhp3hLT9ouHqlsAWKISZBunkfshEF8OzuXRMcQvACO4ZLJN3YxpxnrM/lc2dq6
+         tF8cgW8nayj64aEBC9o0NU2qvn7QCqMQl8D5yGKuRu/pHU9z1Tz0MJ47SaedWKW2MUu3
+         asVMtxPLbTz/AJGf7HLdhVYrMUn8exqnukLAuOlyp6xaJQO33scfEnRz6Y+2OlugJOCZ
+         piwqzdm5bH+/+LEyaiblIdh7qFR840ujgKjugnelwHvYs/NHThXpkRlrMxW/mTf9zdqe
+         X3yJcv02Pq+iIrcVlol0Sea7gNyWe5fmDISAnHyMyje2OjjxVBLPSOxrLH8SgTPfRKxP
+         p4lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=4soJN4twqCsyiZf2IKg4Jq2p25zl6bq/jZfw+9W8Pvs=;
-        b=a6vZGjp5LOLEa3ZXBmAp9FCPK5ATrB8yRLstpHU3ZLBGYNKx+rxRYvBvorCjeudgMz
-         LOPHSaFW7UdhprIppBgQQDLOlt3LwNU26x4sfzQH0FL9nwBlRZphkoQNlp/MMJV28vNU
-         /JR4VsF5FB53voTvhIoezBWun2knlWIxm9DnPrl9kcuRtjCcnrIj6Y35Zu05D6Mqgbq6
-         7eoPIFBUWhw3sYx4bBrrsAROP0WjwZVGWtjGYqNICj5i8O4F1Qy1W1Yz5brsb7Ux/vIt
-         9iUYR+CNIC3w4j5WSExhPcaZ4LcYZATNCiYMPfF2mWyOrCmvI1TjfzqX9//w394hue2a
-         kZnw==
+        bh=rUlnYNueS8jddAQ+SP4gjg91935JfzLTka12JcrM6P0=;
+        b=v0Au2bpmzVATYtz1yI44S0BHjA1s9xRzOY9qSsAX1aklwO/HTDa28M5NYBxHhS1mKX
+         zX0iqMUkZhjcI6PnuuIAROUc83RbL8Swq0IJCR4K8SWND4KqD8XjNyubktzYMSlsIcZh
+         /tWuaRmrJ1lsAbalhwwtD8LS8ioHwaO4CT6Shn+kJm6YcYZu8c6VjSMyMZyT1cl3pu0Y
+         hwMDeJGKg2ypskw3bErfvxt3FnM1g73kPLbLtroZTyDoc+fMTw3oXGDaSqIFoEkmKMZJ
+         35xezhPxFAFHaY+zOQuSI3V1MaV9MFLsqEcGwK9SkzKduAmVodRGgdIbMesO60Ou3M5D
+         x2pQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="dCwRyB/v";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zji1QqJr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p15si11225915qkj.36.2020.01.15.07.16.26
+        by mx.google.com with ESMTPS id f23si12838289edw.272.2020.01.15.07.17.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2020 07:16:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Jan 2020 07:17:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="dCwRyB/v";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55592 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zji1QqJr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55624 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irkPB-0006vt-9h
-	for alex.bennee@linaro.org; Wed, 15 Jan 2020 10:16:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48610)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irkQT-0000Wr-PI
+	for alex.bennee@linaro.org; Wed, 15 Jan 2020 10:17:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48696)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1irkJn-0007JM-W8
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:10:53 -0500
+ (envelope-from <imammedo@redhat.com>) id 1irkJs-0007Qr-Fu
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 10:10:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1irkJm-0007xw-NX
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:10:51 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48934
+ (envelope-from <imammedo@redhat.com>) id 1irkJr-00081a-8v
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 10:10:56 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:45315
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1irkJm-0007xa-JV
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:10:50 -0500
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1irkJr-000814-4w
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 10:10:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579101050;
+ s=mimecast20190719; t=1579101054;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4soJN4twqCsyiZf2IKg4Jq2p25zl6bq/jZfw+9W8Pvs=;
- b=dCwRyB/vLrA88fz/a7PF5Vzypdvqjsde0BQx63qE2T6QVbWI30049ZOEKswe/3HCmW+2U/
- LG8ILv9UCankiPxkeKyHeKO7YnbtYoHtSHABsFm5X6gal5jQNUCPX3bYY9Yt7VswNoUVku
- wy6+6ik8zR25CvsjhK1HjctCjapCHrk=
+ bh=rUlnYNueS8jddAQ+SP4gjg91935JfzLTka12JcrM6P0=;
+ b=Zji1QqJrwElgtDhHL6GLXGGZXygMMprJO5FZLCTjx+Ktj88AaIx+jhZrp/z8GuvYYZuAy4
+ Pfn2XNhOhlnIS8YaHfR2BsZifUBFV0GPgL92nWzG4kiN2WYEepPKpgsOzGt5QhGonLlC4P
+ tM8pmRnaEzoK5tBS/M7FQvNT/ztlKcw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-8-gAbeYznaO9SMa2KIQhLpyw-1; Wed, 15 Jan 2020 10:10:46 -0500
+ us-mta-54-lqhQ8JvyMounTqkBd2ihfQ-1; Wed, 15 Jan 2020 10:10:51 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BA6A410832CC;
- Wed, 15 Jan 2020 15:10:44 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6D2EC8DDCC6;
+ Wed, 15 Jan 2020 15:10:50 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq.redhat.com
  (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 50A3628988;
- Wed, 15 Jan 2020 15:10:42 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 564A6289A3;
+ Wed, 15 Jan 2020 15:10:49 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 08/86] arm:aspeed: actually check RAM size
-Date: Wed, 15 Jan 2020 16:06:23 +0100
-Message-Id: <1579100861-73692-9-git-send-email-imammedo@redhat.com>
+Subject: [PATCH v2 12/86] arm:cubieboard: use memdev for RAM
+Date: Wed, 15 Jan 2020 16:06:27 +0100
+Message-Id: <1579100861-73692-13-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
 References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: gAbeYznaO9SMa2KIQhLpyw-1
+X-MC-Unique: lqhQ8JvyMounTqkBd2ihfQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
@@ -94,116 +94,118 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: andrew@aj.id.au, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- clg@kaod.org, joel@jms.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: grlQNIPKz9+o
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: b.galvani@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +gLTbbXznPfv
 
-It's supposed that SOC will check if "-m" provided
-RAM size is valid by setting "ram-size" property and
-then board would read back valid (possibly corrected
-value) to map RAM MemoryReging with valid size.
-Well it isn't doing so, since check is called only
-indirectly from
-  aspeed_sdmc_reset()->asc->compute_conf()
-or much later when guest writes to configuration
-register.
+memory_region_allocate_system_memory() API is going away, so
+replace it with memdev allocated MemoryRegion. The later is
+initialized by generic code, so board only needs to opt in
+to memdev scheme by providing
+  MachineClass::default_ram_id
+and using MachineState::ram instead of manually initializing
+RAM memory region.
 
-So depending on "-m" value QEMU end-ups with a warning
-and an invalid MemoryRegion size allocated and mapped.
-(examples:
- -M ast2500-evb -m 1M
-    0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
-      0000000080000000-00000000800fffff (prio 0, ram): ram
-      0000000080100000-00000000bfffffff (prio 0, i/o): max_ram
- -M ast2500-evb -m 3G
-    0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
-      0000000080000000-000000013fffffff (prio 0, ram): ram
-      [DETECTED OVERFLOW!] 0000000140000000-00000000bfffffff (prio 0, i/o):=
- max_ram
-)
-On top of that sdmc falls back and reports to guest
-"default" size, it thinks machine should have.
-
-I don't know how hardware is supposed to work so
-I've kept it as is.
-But as for CLI side machine should honor whatever
-user configured or error out to make user fix CLI.
-
-This patch makes ram-size check actually work and
-changes behavior from a warning later on during
-machine reset to error_fatal at the moment SOC is
-realized so user will have to fix RAM size on CLI
-to start machine.
-
-It also gets out of the way mutable ram-size logic,
-so we could consolidate RAM allocation logic around
-pre-allocated hostmem backend (supplied by user or
-auto created by generic machine code depending on
-supplied -m/mem-path/mem-prealloc options.
+PS:
+While at it, get rid of no longer needed CubieBoardState wrapper.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
-CC: clg@kaod.org
+CC: b.galvani@gmail.com
 CC: peter.maydell@linaro.org
-CC: andrew@aj.id.au
-CC: joel@jms.id.au
 CC: qemu-arm@nongnu.org
 ---
- hw/arm/aspeed.c       | 9 +--------
- hw/misc/aspeed_sdmc.c | 5 +++++
- 2 files changed, 6 insertions(+), 8 deletions(-)
+ hw/arm/cubieboard.c | 25 ++++++++-----------------
+ 1 file changed, 8 insertions(+), 17 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index cc06af4..525c547 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -213,14 +213,7 @@ static void aspeed_machine_init(MachineState *machine)
-                                 "hw-prot-key", &error_abort);
-     }
-     object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
--                             &error_abort);
+diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+index 6dc2f1d..089f9a3 100644
+--- a/hw/arm/cubieboard.c
++++ b/hw/arm/cubieboard.c
+@@ -28,52 +28,42 @@ static struct arm_boot_info cubieboard_binfo =3D {
+     .board_id =3D 0x1008,
+ };
+=20
+-typedef struct CubieBoardState {
+-    AwA10State *a10;
+-    MemoryRegion sdram;
+-} CubieBoardState;
 -
--    /*
--     * Allocate RAM after the memory controller has checked the size
--     * was valid. If not, a default value is used.
--     */
--    ram_size =3D object_property_get_uint(OBJECT(&bmc->soc), "ram-size",
--                                        &error_abort);
-+                             &error_fatal);
+ static void cubieboard_init(MachineState *machine)
+ {
+-    CubieBoardState *s =3D g_new(CubieBoardState, 1);
++    AwA10State *a10 =3D AW_A10(object_new(TYPE_AW_A10));
+     Error *err =3D NULL;
 =20
-     memory_region_allocate_system_memory(&bmc->ram, NULL, "ram", ram_size)=
+-    s->a10 =3D AW_A10(object_new(TYPE_AW_A10));
+-
+-    object_property_set_int(OBJECT(&s->a10->emac), 1, "phy-addr", &err);
++    object_property_set_int(OBJECT(&a10->emac), 1, "phy-addr", &err);
+     if (err !=3D NULL) {
+         error_reportf_err(err, "Couldn't set phy address: ");
+         exit(1);
+     }
+=20
+-    object_property_set_int(OBJECT(&s->a10->timer), 32768, "clk0-freq", &e=
+rr);
++    object_property_set_int(OBJECT(&a10->timer), 32768, "clk0-freq", &err)=
 ;
-     memory_region_add_subregion(&bmc->ram_container, 0, &bmc->ram);
-diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-index 3fc80f0..b398e36 100644
---- a/hw/misc/aspeed_sdmc.c
-+++ b/hw/misc/aspeed_sdmc.c
-@@ -165,6 +165,11 @@ static void aspeed_sdmc_realize(DeviceState *dev, Erro=
-r **errp)
-     AspeedSDMCState *s =3D ASPEED_SDMC(dev);
-     AspeedSDMCClass *asc =3D ASPEED_SDMC_GET_CLASS(s);
+     if (err !=3D NULL) {
+         error_reportf_err(err, "Couldn't set clk0 frequency: ");
+         exit(1);
+     }
 =20
-+    if (!g_hash_table_contains(asc->ram2feat,
-+                               GINT_TO_POINTER(s->ram_size >> 20))) {
-+        error_setg(errp, "Invalid RAM size 0x%" PRIx64, s->ram_size);
-+        return;
-+    }
-     s->max_ram_size =3D asc->max_ram_size;
+-    object_property_set_int(OBJECT(&s->a10->timer), 24000000, "clk1-freq",
+-                            &err);
++    object_property_set_int(OBJECT(&a10->timer), 24000000, "clk1-freq", &e=
+rr);
+     if (err !=3D NULL) {
+         error_reportf_err(err, "Couldn't set clk1 frequency: ");
+         exit(1);
+     }
 =20
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
+-    object_property_set_bool(OBJECT(s->a10), true, "realized", &err);
++    object_property_set_bool(OBJECT(a10), true, "realized", &err);
+     if (err !=3D NULL) {
+         error_reportf_err(err, "Couldn't realize Allwinner A10: ");
+         exit(1);
+     }
+=20
+-    memory_region_allocate_system_memory(&s->sdram, NULL, "cubieboard.ram"=
+,
+-                                         machine->ram_size);
+     memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BASE,
+-                                &s->sdram);
++                                machine->ram);
+=20
+     /* TODO create and connect IDE devices for ide_drive_get() */
+=20
+     cubieboard_binfo.ram_size =3D machine->ram_size;
+-    arm_load_kernel(&s->a10->cpu, machine, &cubieboard_binfo);
++    arm_load_kernel(&a10->cpu, machine, &cubieboard_binfo);
+ }
+=20
+ static void cubieboard_machine_init(MachineClass *mc)
+@@ -84,6 +74,7 @@ static void cubieboard_machine_init(MachineClass *mc)
+     mc->block_default_type =3D IF_IDE;
+     mc->units_per_default_bus =3D 1;
+     mc->ignore_memory_transaction_failures =3D true;
++    mc->default_ram_id =3D "cubieboard.ram";
+ }
+=20
+ DEFINE_MACHINE("cubieboard", cubieboard_machine_init)
 --=20
 2.7.4
 

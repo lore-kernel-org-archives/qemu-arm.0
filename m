@@ -1,439 +1,263 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6152837lff;
-        Tue, 14 Jan 2020 15:12:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyB6soMi82MIeagryhx6fKSbUHHuhLNnXR7V9hB5W2MIi26NPPM6WcsINjQFdKXS/fqYmIF
-X-Received: by 2002:ad4:46ce:: with SMTP id g14mr19377219qvw.67.1579043535061;
-        Tue, 14 Jan 2020 15:12:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579043535; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6288678lff;
+        Tue, 14 Jan 2020 17:25:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxAQBTNrXrL2ZsDFdp9Izjtt1pDvsw7MneYxHw3OOB7l0dZ6T9m10ZgsLAjJkc2gLqn14NA
+X-Received: by 2002:aa7:d610:: with SMTP id c16mr23818608edr.323.1579051549356;
+        Tue, 14 Jan 2020 17:25:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579051549; cv=none;
         d=google.com; s=arc-20160816;
-        b=N6PkavcorstRSd0mxbdJzZZ93auCxr/bEyCi0l92JRZL75vcg7BocReBWzNSGGaqul
-         qLLK1S/cEF17Pyj590e37NkZC7SCPcUu2yNYh0DbxmNEJNIqYufETqh5D+99uXPxWKPT
-         z8Hd4bj6evxhV/AYdKB09S1gpds5Cz+6NupdlfPsK4O8i9IxSt5OhW4AWa8eZEn5dZi7
-         0Llt/iVSnT+ub24qZZFgcd1EOZq4+2qJA98RJFx2huGcqYHsHboaWap2HrF2jbhnUJXn
-         XrhAeG83AvYELqRHxGEBsJ+JzVI2Gw1D4yZlQV954D2GJoBJgemTiw7/cEQdtOpy0rjv
-         Ga9g==
+        b=UyqvVIQ8E9aVGbH8+ErBP2UgVUOMfHbMK5TXKXs8VO7//q66Af26NugjdD91Az+3h9
+         2LQLZu/rb0kPgdvtQybGgxYfKM73adJEiPU+qhEid8Ee5As4ZVBu7mnb5iIr782e2mfX
+         u/hOYNpRl3jJk3rzRI6ux6D3XEF1kC8R/AtqBakFS+yTNIdqZf0u8hxEDd3fQqBbOlaD
+         skA8F1xWyDiIHyW8eoBn5JNh4VN6yX85tDltMbn9jfZtuFaHJ26XojmxJezO6jYWE/oV
+         krgBm2CZcCP6dfn3dh9/9uLux28LrxDsjPP5ETsim8ld1ZGpUdXZ7O30y0m+xO5Ei6oh
+         Rs0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=3FFQfPsRFaDHbuXSN67jTud0I4rWP7QwbBCeGw/FhQ4=;
-        b=d+vYs6wqjPl0xqOn5GHlyDo17k1gQXaf5eFhlyp7HaomJRrLKMfpx2P8/aqt/opEKu
-         6T3iyBQab/I507ORc2jysJiwqtlOnh8hsbzGry3cPq7aUV90VqBDDe2i48IbMqURegQt
-         3iP+fG5HRG0TSW+YHMeKvmCsPrjywoUNibUEpGESQ+TBMlz8ysej76f0CbkbEyyLlyIn
-         DsblR9zv/7i8FkMCbdxjLETt1+FjYiiQ95RYHL6kjr0jTG24Wa8Rmq+HPHtYXBfXYB7C
-         Gr7CuF18WIsy8bOmq9l+w7Rhg8hj5PjMmvZkz5vjJQuoguKz8zUEYpuUk5AfOyKLvK9a
-         IZYg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=Bt92fBEFrkzxajDnLsoLtVNs95T6nfLkgrQZbmyH1aE=;
+        b=BGRJKKJ23BURXYpysetYAeyKEuiirYVC48Zdr9+2hQrJ4lyfFm0ncfszFSIuOIMeH9
+         1mUXC5rFCsIZY+CZgWPhuGpBJYRESd/dJwaJNB6i9CqCDnl92BcPoQvvLMjLtXKzhC/v
+         R3fmrBp8AAl/QlX+8105JDUdOl8V4HJ568RsPjw7BYyNFiDR/hNvFyDCxaz0VPbrFqKS
+         sIe6GP8iIlPqkX8ogVunux/OXvHvRlh2RvQRqRrke+OyDBw/YcPyLj5LJYhLl7Nl14Ms
+         9RVSnbBJntllsq4UVpuoKXjk14RFS9ue7nmdbYAx6zkMfVQT/oxOmyAaSocxxGSbJAzg
+         Cpqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GjW3ZMo6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id by16si8949799qvb.159.2020.01.14.15.12.14
+        by mx.google.com with ESMTPS id gz8si11843366ejb.39.2020.01.14.17.25.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 15:12:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Jan 2020 17:25:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GjW3ZMo6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47062 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47982 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irVM6-0002CE-9C
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 18:12:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52605)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irXRM-000364-9q
+	for alex.bennee@linaro.org; Tue, 14 Jan 2020 20:25:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39814)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1irVKb-00010u-0b
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 18:10:43 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1irXRB-00035o-Ox
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 20:25:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1irVKY-0002a1-Oc
- for qemu-devel@nongnu.org; Tue, 14 Jan 2020 18:10:40 -0500
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:37552)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1irVKY-0002YH-Gm; Tue, 14 Jan 2020 18:10:38 -0500
-Received: by mail-il1-x144.google.com with SMTP id t8so13134017iln.4;
- Tue, 14 Jan 2020 15:10:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3FFQfPsRFaDHbuXSN67jTud0I4rWP7QwbBCeGw/FhQ4=;
- b=GjW3ZMo6h6l5AqtNz3Wc/8kJ3KRD3DSTSa2beXqPzvpaTUqp31FpAhESCs+x/azDN1
- bOxUQzneMV2NORir4howqKAiL+cUJrP8WbQgJfLDeBiAWK5ZaRbSV19U0bCqZHibx4pf
- 2YJQuklsv5SB/rly/v/hVdBG5Yj+86DCHH0WFPgIMwxqcA4qjVcJAJZWlbLHs8Jlyd8M
- e8Y0hzL8iVG5l1JMkxYs6iJL1qPFMP1xhQbz8KzWN2/5h+RwL8dl9rWOBy3thLckNIPR
- kzaJIzvxtknlG5vcamy1IGrg0dMvoQ+tK0d6QRed47NGWiYHVb7ky7zXk6sJbXHJXhtj
- G0Zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3FFQfPsRFaDHbuXSN67jTud0I4rWP7QwbBCeGw/FhQ4=;
- b=iIseQJi12kkcGmN+xP9rbMcBOafiKQhFn/FY4JFHXOREDCx6Jp6unuuvDy/y9/nyVb
- mOd//jNHJgP8W9y2r2irfCHDDN06k2gbtTQnA0QMYyN3HCB/RhryrUURm5K15ldg/2BU
- NW9Cu4cfHyhGaV3CGo/J1BDh06hZ4xOwYxw8JRcnLHRL2koaIy0EZtG3dTtLzWxggLv8
- HHGqpRCsId+ZxWz/vxbAWILU4rXD7UbkuN9hwZsw0VLU0cIAOBj8r9uEm+HaUQ713Kkb
- 8OAcTMFauna/axz6tUZNBHZF/hKLJh1xZLESBtyO5wXxLigFhWykj6h3kgBmbzSisOni
- G8Xw==
-X-Gm-Message-State: APjAAAVEblGglfSP2j0V+gzGmBuCDDr/RuDr3CcX1FRvaB9oW8XEKuhc
- aV8Jt28Az0qOdDO3iO7l4nvFwgFoZnEsmTU02z4=
-X-Received: by 2002:a92:c647:: with SMTP id 7mr922065ill.28.1579043437931;
- Tue, 14 Jan 2020 15:10:37 -0800 (PST)
+ (envelope-from <guoheyi@huawei.com>) id 1irXRA-0005jm-3e
+ for qemu-arm@nongnu.org; Tue, 14 Jan 2020 20:25:37 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2731 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1irXR8-0005Vg-Hf; Tue, 14 Jan 2020 20:25:35 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id AFF11D598492DF987BE8;
+ Wed, 15 Jan 2020 09:25:24 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.439.0; Wed, 15 Jan 2020
+ 09:25:17 +0800
+Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified by
+ _HID
+To: Andrew Jones <drjones@redhat.com>
+References: <20191219064759.35053-1-guoheyi@huawei.com>
+ <20191219064759.35053-3-guoheyi@huawei.com>
+ <20200113130802.5a961482@redhat.com>
+ <b5d91ae3-bf37-d27e-264d-ea21ef23776b@huawei.com>
+ <20200113152623.dlkxsrs7nr6uriyn@kamzik.brq.redhat.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <8cbaf4c3-ed40-c386-fd6c-332cc831890f@huawei.com>
+Date: Wed, 15 Jan 2020 09:25:15 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-11-nieklinnenbank@gmail.com>
- <9c878f16-b18c-cc1a-9e82-40dbdd31b823@redhat.com>
-In-Reply-To: <9c878f16-b18c-cc1a-9e82-40dbdd31b823@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 15 Jan 2020 00:10:27 +0100
-Message-ID: <CAPan3WpNxGRfixQp5CwCwTU_boCq4h-BdJgD=KJEhRrGt7S7wg@mail.gmail.com>
-Subject: Re: [PATCH v3 10/17] hw/arm/allwinner-h3: add Boot ROM support
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000033f06d059c21b3b2"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::144
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20200113152623.dlkxsrs7nr6uriyn@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.191
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +q2w2pgPlSQR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ wanghaibin.wang@huawei.com, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: M64kHgyGIA0B
 
---00000000000033f06d059c21b3b2
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Tue, Jan 14, 2020 at 12:28 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-.com>
-wrote:
-
-> On 1/8/20 9:00 PM, Niek Linnenbank wrote:
-> > A real Allwinner H3 SoC contains a Boot ROM which is the
-> > first code that runs right after the SoC is powered on.
-> > The Boot ROM is responsible for loading user code (e.g. a bootloader)
-> > from any of the supported external devices and writing the downloaded
-> > code to internal SRAM. After loading the SoC begins executing the code
-> > written to SRAM. This commits adds emulation of the Boot ROM firmware
-> > setup functionality by loading user code from SD card.
-> >
-> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > ---
-> >   include/hw/arm/allwinner-h3.h | 23 +++++++++++++++++++++++
-> >   hw/arm/allwinner-h3.c         | 28 ++++++++++++++++++++++++++++
-> >   hw/arm/orangepi.c             |  3 +++
-> >   3 files changed, 54 insertions(+)
-> >
-> > diff --git a/include/hw/arm/allwinner-h3.h
-> b/include/hw/arm/allwinner-h3.h
-> > index 5d74cca28e..4b66227ac4 100644
-> > --- a/include/hw/arm/allwinner-h3.h
-> > +++ b/include/hw/arm/allwinner-h3.h
-> > @@ -50,6 +50,7 @@
-> >   #include "hw/sd/allwinner-sdhost.h"
-> >   #include "hw/net/allwinner-sun8i-emac.h"
-> >   #include "target/arm/cpu.h"
-> > +#include "sysemu/block-backend.h"
-> >
-> >   /**
-> >    * Allwinner H3 device list
-> > @@ -130,4 +131,26 @@ typedef struct AwH3State {
-> >       MemoryRegion sram_c;
-> >   } AwH3State;
-> >
-> > +/**
-> > + * Emulate Boot ROM firmware setup functionality.
-> > + *
-> > + * A real Allwinner H3 SoC contains a Boot ROM
-> > + * which is the first code that runs right after
-> > + * the SoC is powered on. The Boot ROM is responsible
-> > + * for loading user code (e.g. a bootloader) from any
-> > + * of the supported external devices and writing the
-> > + * downloaded code to internal SRAM. After loading the SoC
-> > + * begins executing the code written to SRAM.
-> > + *
-> > + * This function emulates the Boot ROM by copying 32 KiB
-> > + * of data from the given block device and writes it to
-> > + * the start of the first internal SRAM memory.
-> > + *
-> > + * @s: Allwinner H3 state object pointer
-> > + * @blk: Block backend device object pointer
-> > + * @errp: Error object pointer for raising errors
-> > + */
-> > +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk,
-> > +                                Error **errp);
-> > +
-> >   #endif /* HW_ARM_ALLWINNER_H3_H */
-> > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> > index e692432b4e..e7b768ad5b 100644
-> > --- a/hw/arm/allwinner-h3.c
-> > +++ b/hw/arm/allwinner-h3.c
-> > @@ -27,6 +27,7 @@
-> >   #include "hw/char/serial.h"
-> >   #include "hw/misc/unimp.h"
-> >   #include "hw/usb/hcd-ehci.h"
-> > +#include "hw/loader.h"
-> >   #include "sysemu/sysemu.h"
-> >   #include "hw/arm/allwinner-h3.h"
-> >
-> > @@ -168,6 +169,33 @@ enum {
-> >       AW_H3_GIC_NUM_SPI       =3D 128
-> >   };
-> >
-> > +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk, Error
-> **errp)
-> > +{
-> > +    uint8_t *buffer;
-> > +    int64_t rom_size =3D 32 * KiB;
+=E5=9C=A8 2020/1/13 23:26, Andrew Jones =E5=86=99=E9=81=93:
+> On Mon, Jan 13, 2020 at 09:57:55PM +0800, Guoheyi wrote:
+>> =E5=9C=A8 2020/1/13 20:08, Igor Mammedov =E5=86=99=E9=81=93:
+>>> On Thu, 19 Dec 2019 14:47:59 +0800
+>>> Heyi Guo <guoheyi@huawei.com> wrote:
+>>>
+>>>> According to ACPI spec, _ADR should be used for device which is on a
+>>>> bus that has a standard enumeration algorithm. It does not make sens=
+e
+>>>> to have a _ADR object for devices which already have _HID and will b=
+e
+>>>> enumerated by OSPM.
+>>>>
+>>>> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+>>> Are you sure it's does not make sense?
+>>> Have you checked commit f264d51d8, that added _ADR?
+>> I searched in SPCR spec and ACPI spec, but didn't find such requiremen=
+t for
+>> serial port device description.
+>>
+>> Hi Andrew,
+>>
+>> Could you help to explain the reason?
+> tl;dr: It was a mistake and I agree with removing _ADR from SPCR.
 >
-> Why restrict to 32K? The A1 SRAM is 64K.
+> The long version is that ACPI support for ARM took a long time to get
+> merged upstream. In the meantime Linaro and Red Hat had ACPI support
+> in their downstream trees. The initial, never upstreamed implementation
+> of Linux SPCR support used _ADR to find the console UART (probably
+> because some vendor hacked their ACPI tables that way). I made the
+> mistake of using the out-of-tree Linux kernel code as my "specification=
+".
 >
-
-The reason is that the actual Boot ROM on the H3 also uses 32K:
-    https://linux-sunxi.org/BROM
-
-See the 'U-Boot SPL Limitations' table at the end of the page.
-
-You can see the comment in the table there regarding the 32 KiB:
-  "Sizes larger than 32 KiB are rejected by the BROM. Exactly 32 KiB is
-fine, as verified by writing a special pattern at the end of the SPL and
-checking it in the SRAM."
-
-Probably it would not harm to increase it to the full size of the SRAM, but
-I tried to model
-the behavior as close to the real hardware as possible.
-
-Regards,
-Niek
-
-
-> > +
-> > +    int64_t blk_size =3D blk_getlength(blk);
-> > +    if (blk_size <=3D 0) {
-> > +        error_setg(errp, "%s: failed to get BlockBackend size",
-> __func__);
-> > +        return;
-> > +    }
-> > +
-> > +    if (rom_size > blk_size) {
-> > +        rom_size =3D blk_size;
-> > +    }
-> > +
-> > +    buffer =3D g_new0(uint8_t, rom_size);
-> > +    if (blk_pread(blk, 8 * KiB, buffer, rom_size) < 0) {
-> > +        error_setg(errp, "%s: failed to read BlockBackend data",
-> __func__);
-> > +        return;
-> > +    }
-> > +
-> > +    rom_add_blob("allwinner-h3.bootrom", buffer, rom_size,
-> > +                  rom_size, s->memmap[AW_H3_SRAM_A1],
-> > +                  NULL, NULL, NULL, NULL, false);
-> > +    g_free(buffer);
-> > +}
-> > +
-> >   static void allwinner_h3_init(Object *obj)
-> >   {
-> >       AwH3State *s =3D AW_H3(obj);
-> > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> > index 0eb52eb813..b722f49485 100644
-> > --- a/hw/arm/orangepi.c
-> > +++ b/hw/arm/orangepi.c
-> > @@ -93,6 +93,9 @@ static void orangepi_init(MachineState *machine)
-> >       if (bios_name) {
-> >           error_report("BIOS not supported for this machine");
-> >           exit(1);
-> > +    } else if (!machine->kernel_filename && blk_is_available(blk)) {
-> > +        /* Use Boot ROM to copy data from SD card to SRAM */
-> > +        allwinner_h3_bootrom_setup(s->h3, blk, &error_fatal);
-> >       }
-> >       orangepi_binfo.loader_start =3D s->h3->memmap[AW_H3_SDRAM];
-> >       orangepi_binfo.ram_size =3D machine->ram_size;
-> >
+> Upstream kernels never had this problem and I don't think we need to
+> worry about any of those downstream kernels which did. They'd be five
+> years old by now anyway.
 >
+> Thanks,
+> drew
+
+Thanks for your confirmation, Andrew.
+
+Hi Igor,
+
+On arm64 physical machine, we didn't have _ADR for SPCR serial port=20
+device attached to system bus either, and we never saw any problem.
+
+Thanks,
+
+Heyi
+
+>> Thanks,
+>>
+>> Heyi
+>>
+>>
+>>
+>>>> ---
+>>>> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+>>>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>>>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+>>>> Cc: Igor Mammedov <imammedo@redhat.com>
+>>>> Cc: qemu-arm@nongnu.org
+>>>> Cc: qemu-devel@nongnu.org
+>>>> ---
+>>>>    hw/arm/virt-acpi-build.c          |   8 --------
+>>>>    tests/data/acpi/virt/DSDT         | Bin 18449 -> 18426 bytes
+>>>>    tests/data/acpi/virt/DSDT.memhp   | Bin 19786 -> 19763 bytes
+>>>>    tests/data/acpi/virt/DSDT.numamem | Bin 18449 -> 18426 bytes
+>>>>    4 files changed, 8 deletions(-)
+>>>>
+>>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>>>> index 9f4c7d1889..be752c0ad8 100644
+>>>> --- a/hw/arm/virt-acpi-build.c
+>>>> +++ b/hw/arm/virt-acpi-build.c
+>>>> @@ -78,11 +78,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const =
+MemMapEntry *uart_memmap,
+>>>>                                 AML_EXCLUSIVE, &uart_irq, 1));
+>>>>        aml_append(dev, aml_name_decl("_CRS", crs));
+>>>> -    /* The _ADR entry is used to link this device to the UART descr=
+ibed
+>>>> -     * in the SPCR table, i.e. SPCR.base_address.address =3D=3D _AD=
+R.
+>>>> -     */
+>>>> -    aml_append(dev, aml_name_decl("_ADR", aml_int(uart_memmap->base=
+)));
+>>>> -
+>>>>        aml_append(scope, dev);
+>>>>    }
+>>>> @@ -170,7 +165,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const =
+MemMapEntry *memmap,
+>>>>        aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")))=
+;
+>>>>        aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
+>>>>        aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
+>>>> -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
+>>>>        aml_append(dev, aml_name_decl("_UID", aml_string("PCI0")));
+>>>>        aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Dev=
+ice")));
+>>>>        aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+>>>> @@ -334,7 +328,6 @@ static void acpi_dsdt_add_gpio(Aml *scope, const=
+ MemMapEntry *gpio_memmap,
+>>>>    {
+>>>>        Aml *dev =3D aml_device("GPO0");
+>>>>        aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0061"))=
+);
+>>>> -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
+>>>>        aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>>>>        Aml *crs =3D aml_resource_template();
+>>>> @@ -364,7 +357,6 @@ static void acpi_dsdt_add_power_button(Aml *scop=
+e)
+>>>>    {
+>>>>        Aml *dev =3D aml_device(ACPI_POWER_BUTTON_DEVICE);
+>>>>        aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C0C")))=
+;
+>>>> -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
+>>>>        aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>>>>        aml_append(scope, dev);
+>>>>    }
+>>>> diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
+>>>> index b5895cb22446860a0b9be3d32ec856feb388be4c..a759ff739a071d5fbf50=
+519a6aea296e5e0f1e0c 100644
+>>>> GIT binary patch
+>>>> delta 72
+>>>> zcmbO@f$>*ABbQ6COUN&G1_q{66S<_BT5Bh&t1wzk^tIeLL4lL8ZSqD=3DgU!!5x$Pt+
+>>>> c1HyxxIO07#U3dfh0t}oDoEbRcLp@y>07w882mk;8
+>>>>
+>>>> delta 94
+>>>> zcmey>&p2@cBbQ6CONgKc0|V26iCof5J#`b+RhV2^Ci+-%al|{i1o1F1FmP^cRp4ao
+>>>> tnY@hCfEg&X`7$S;oxFTNc#soEyoaX?Z-8HbfwO@#16Tu)4E1zj005fm7mWY_
+>>>>
+>>>> diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/=
+DSDT.memhp
+>>>> index 69ad844f65d047973a3e55198beecd45a35b8fce..6e5cc61977e4cd24f765=
+fec0693f75a528c144c1 100644
+>>>> GIT binary patch
+>>>> delta 72
+>>>> zcmX>#i*fTTMlP3Nmk?uL1_q|eiCof5eHSLGt1wzk^tIeLL4lL8ZSqD=3DgU!!5U7RH)
+>>>> c1HyxxIO07#U3dfh0t}oDoEbRcLp@y>03)CjmjD0&
+>>>>
+>>>> delta 94
+>>>> zcmdlyi}BPfMlP3Nmk=3D*s1_q}3iCof5t(PXMt1!8;O!Tqj;)r*23F2X3VBp-?s=3D&=
+$E
+>>>> tGkF=3DO0W(l&^JPwVXL<R6@E|9Scn?n(-T=3DP<17`zg2CxPo8S3f6006qZ7#siq
+>>>>
+>>>> diff --git a/tests/data/acpi/virt/DSDT.numamem b/tests/data/acpi/vir=
+t/DSDT.numamem
+>>>> index b5895cb22446860a0b9be3d32ec856feb388be4c..a759ff739a071d5fbf50=
+519a6aea296e5e0f1e0c 100644
+>>>> GIT binary patch
+>>>> delta 72
+>>>> zcmbO@f$>*ABbQ6COUN&G1_q{66S<_BT5Bh&t1wzk^tIeLL4lL8ZSqD=3DgU!!5x$Pt+
+>>>> c1HyxxIO07#U3dfh0t}oDoEbRcLp@y>07w882mk;8
+>>>>
+>>>> delta 94
+>>>> zcmey>&p2@cBbQ6CONgKc0|V26iCof5J#`b+RhV2^Ci+-%al|{i1o1F1FmP^cRp4ao
+>>>> tnY@hCfEg&X`7$S;oxFTNc#soEyoaX?Z-8HbfwO@#16Tu)4E1zj005fm7mWY_
+>>>>
+>>> .
+>>
 >
+> .
 
---=20
-Niek Linnenbank
-
---00000000000033f06d059c21b3b2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jan 14, 2020 at 12:28 AM Phil=
-ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
-hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">On 1/8/20 9:00 PM, Niek Linnenbank wrote:<br>
-&gt; A real Allwinner H3 SoC contains a Boot ROM which is the<br>
-&gt; first code that runs right after the SoC is powered on.<br>
-&gt; The Boot ROM is responsible for loading user code (e.g. a bootloader)<=
-br>
-&gt; from any of the supported external devices and writing the downloaded<=
-br>
-&gt; code to internal SRAM. After loading the SoC begins executing the code=
-<br>
-&gt; written to SRAM. This commits adds emulation of the Boot ROM firmware<=
-br>
-&gt; setup functionality by loading user code from SD card.<br>
-&gt; <br>
-&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
-ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0include/hw/arm/allwinner-h3.h | 23 +++++++++++++++++++++++=
-<br>
-&gt;=C2=A0 =C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2=
-8 ++++++++++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0|=C2=A0 3 +++<br>
-&gt;=C2=A0 =C2=A03 files changed, 54 insertions(+)<br>
-&gt; <br>
-&gt; diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-=
-h3.h<br>
-&gt; index 5d74cca28e..4b66227ac4 100644<br>
-&gt; --- a/include/hw/arm/allwinner-h3.h<br>
-&gt; +++ b/include/hw/arm/allwinner-h3.h<br>
-&gt; @@ -50,6 +50,7 @@<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/sd/allwinner-sdhost.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/net/allwinner-sun8i-emac.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;target/arm/cpu.h&quot;<br>
-&gt; +#include &quot;sysemu/block-backend.h&quot;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0/**<br>
-&gt;=C2=A0 =C2=A0 * Allwinner H3 device list<br>
-&gt; @@ -130,4 +131,26 @@ typedef struct AwH3State {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0MemoryRegion sram_c;<br>
-&gt;=C2=A0 =C2=A0} AwH3State;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +/**<br>
-&gt; + * Emulate Boot ROM firmware setup functionality.<br>
-&gt; + *<br>
-&gt; + * A real Allwinner H3 SoC contains a Boot ROM<br>
-&gt; + * which is the first code that runs right after<br>
-&gt; + * the SoC is powered on. The Boot ROM is responsible<br>
-&gt; + * for loading user code (e.g. a bootloader) from any<br>
-&gt; + * of the supported external devices and writing the<br>
-&gt; + * downloaded code to internal SRAM. After loading the SoC<br>
-&gt; + * begins executing the code written to SRAM.<br>
-&gt; + *<br>
-&gt; + * This function emulates the Boot ROM by copying 32 KiB<br>
-&gt; + * of data from the given block device and writes it to<br>
-&gt; + * the start of the first internal SRAM memory.<br>
-&gt; + *<br>
-&gt; + * @s: Allwinner H3 state object pointer<br>
-&gt; + * @blk: Block backend device object pointer<br>
-&gt; + * @errp: Error object pointer for raising errors<br>
-&gt; + */<br>
-&gt; +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Error **errp);<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0#endif /* HW_ARM_ALLWINNER_H3_H */<br>
-&gt; diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
-&gt; index e692432b4e..e7b768ad5b 100644<br>
-&gt; --- a/hw/arm/allwinner-h3.c<br>
-&gt; +++ b/hw/arm/allwinner-h3.c<br>
-&gt; @@ -27,6 +27,7 @@<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/char/serial.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/misc/unimp.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/usb/hcd-ehci.h&quot;<br>
-&gt; +#include &quot;hw/loader.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
-&gt;=C2=A0 =C2=A0#include &quot;hw/arm/allwinner-h3.h&quot;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; @@ -168,6 +169,33 @@ enum {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_GIC_NUM_SPI=C2=A0 =C2=A0 =C2=A0 =C2=A0=
-=3D 128<br>
-&gt;=C2=A0 =C2=A0};<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk, Erro=
-r **errp)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 uint8_t *buffer;<br>
-&gt; +=C2=A0 =C2=A0 int64_t rom_size =3D 32 * KiB;<br>
-<br>
-Why restrict to 32K? The A1 SRAM is 64K.<br></blockquote><div><br></div><di=
-v>The reason is that the actual Boot ROM on the H3 also uses 32K:</div><div=
->=C2=A0=C2=A0=C2=A0 <a href=3D"https://linux-sunxi.org/BROM">https://linux-=
-sunxi.org/BROM</a></div><div><br></div><div>See the &#39;U-Boot SPL Limitat=
-ions&#39; table at the end of the page.<br></div><div><br></div><div>You ca=
-n see the comment in the table there regarding the 32 KiB:</div><div>=C2=A0=
- &quot;Sizes larger than 32 KiB are rejected by the BROM. Exactly 32 KiB=20
-is fine, as verified by writing a special pattern at the end of the SPL=20
-and checking it in the SRAM.&quot;</div><div>=C2=A0</div><div>Probably it w=
-ould not harm to increase it to the full size of the SRAM, but I tried to m=
-odel</div><div>the behavior as close to the real hardware as possible.</div=
-><div><br></div><div>Regards,</div><div>Niek<br></div><div><br></div><block=
-quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1=
-px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 int64_t blk_size =3D blk_getlength(blk);<br>
-&gt; +=C2=A0 =C2=A0 if (blk_size &lt;=3D 0) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, &quot;%s: failed to get =
-BlockBackend size&quot;, __func__);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (rom_size &gt; blk_size) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 rom_size =3D blk_size;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 buffer =3D g_new0(uint8_t, rom_size);<br>
-&gt; +=C2=A0 =C2=A0 if (blk_pread(blk, 8 * KiB, buffer, rom_size) &lt; 0) {=
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, &quot;%s: failed to read=
- BlockBackend data&quot;, __func__);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 rom_add_blob(&quot;allwinner-h3.bootrom&quot;, buffer, =
-rom_size,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rom_si=
-ze, s-&gt;memmap[AW_H3_SRAM_A1],<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 NULL, =
-NULL, NULL, NULL, false);<br>
-&gt; +=C2=A0 =C2=A0 g_free(buffer);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0static void allwinner_h3_init(Object *obj)<br>
-&gt;=C2=A0 =C2=A0{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AwH3State *s =3D AW_H3(obj);<br>
-&gt; diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
-&gt; index 0eb52eb813..b722f49485 100644<br>
-&gt; --- a/hw/arm/orangepi.c<br>
-&gt; +++ b/hw/arm/orangepi.c<br>
-&gt; @@ -93,6 +93,9 @@ static void orangepi_init(MachineState *machine)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (bios_name) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_report(&quot;BIOS not su=
-pported for this machine&quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>
-&gt; +=C2=A0 =C2=A0 } else if (!machine-&gt;kernel_filename &amp;&amp; blk_=
-is_available(blk)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Use Boot ROM to copy data from SD card=
- to SRAM */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_h3_bootrom_setup(s-&gt;h3, blk,=
- &amp;error_fatal);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0orangepi_binfo.loader_start =3D s-&gt;h3-&gt=
-;memmap[AW_H3_SDRAM];<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0orangepi_binfo.ram_size =3D machine-&gt;ram_=
-size;<br>
-&gt; <br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---00000000000033f06d059c21b3b2--

@@ -1,136 +1,122 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7507250lff;
-        Wed, 15 Jan 2020 14:02:36 -0800 (PST)
-X-Received: by 2002:a7b:cb0a:: with SMTP id u10mr2171249wmj.165.1579125756775;
-        Wed, 15 Jan 2020 14:02:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579125756; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7522290lff;
+        Wed, 15 Jan 2020 14:16:24 -0800 (PST)
+X-Received: by 2002:a17:90a:222c:: with SMTP id c41mr2540672pje.35.1579126583939;
+        Wed, 15 Jan 2020 14:16:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579126583; cv=none;
         d=google.com; s=arc-20160816;
-        b=wZ/NBTpA20mdK+9thclwkBdFgafpMsp/7fP20iUgU+GbDxfZparSD1CCOLaj8w7h5f
-         3Rbfq05JRrL0Gbleehj7rPJAFGrMOOXKsdLb8ks1iGOLcSlq0yMARpNNBc1D9q8Pz/+g
-         FbQsy7/RdFS0rSBdNye5AU4wr4PjG4MHJ6fe80vLcuKLikoylSOvA+c++IAy5+3GG6vP
-         8y0QS+TN219FsehtnIgeEzr28h1uxXnagR6/YW1wGWelA1yhMbGvKAw2FE2Hoe1YK8Id
-         Lm79OQI2tIzH0l2d+PnEJSIcy/FtOfG6fFbwwVAK3y0+bj3ZPOFYjFTJ03A2dOnbPrF+
-         Ybmw==
+        b=EpFX6rTFTuTUnhx8zK6HeGESmD3KvE7sbtHxE4WzCtuozfQgZFQ8HBL7v0fUgl10KR
+         +mnSgSju4w8VPjeSkm5wayZj8hogdYfKXNKP0Djtk43WZjiuopiaTK8aOPodFIkYLEXV
+         pu4rzioDdLDTUx1OVKj1Y+R8JTr6gpqu1NalvNX/d2uwGjd0DHN9Vwi70Tl0hlcY8/ga
+         NQyRT9przX0xl4A64Z2Cqi06rQ9qSWZOJui9Ax/j2dufg86UFb5QpEmqKpvWi1RPBijj
+         2GZeeN2dOL7pkpOvaO3iZUtHm8fUZrUPFO0KF9GCwUHGTJM6HBQ2Jq9zAszAEE+eFywj
+         Grqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:dkim-signature;
-        bh=BVP4NRhPFSHrJjIPjsLJjDTukdxB17WP9oLbQhCIBco=;
-        b=sm0d1n8EX7rTJu99kr14uuIU2IbVtDUYptujIu8WwNMGj9cJhq7m+cEm4Y5wHVHD/6
-         HGrZAraKUUw51S7bQTytbrbXWCMrIhMzHEai9XAblCHLSXcPc8Pp1Sjx+5jDYpgNGfwV
-         Xc8/4VryftTRggthHbY5haYB8nTUG7362JzAfTQMfBqV6Itk8wM+KwivrTsD2ppAfnUN
-         5jv13DMCDLuCk/7vDBzSPHwNOFvZ/krYqNovDHLtzqreuHCmaX5nhQ98m98yzaPEEVH1
-         PT7yoOl9NVyMx6xSg7A7zcWXSWNuz9HIjh8E9BsZPhW/uFOT5uAw9u6xose5ddaZ3LX5
-         58+w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=k5qTG11cijFjDdtVQH/y0HmKwWbcCvaBtfDANdoeBBw=;
+        b=DssnBaKMUdPYbOLHH3H1p4bPZMOpdYBH9m350dm9ewB5QNaI4nGv8aqbSw00NIRdfX
+         xhFi6RjscPV4Svy/py8CM/zKfNtQERQkL6xSO+kWuHc5umSeUltUwd4IgIwC+ffGMG6t
+         44t8fuNHLgGFllovRetwWLFo4NuFSC0sCrXHbz/W+ARLqiT20oOQXZ+MH0LxCt+PSLlC
+         I8PfCvXT93JuJ0VFnKJ0KMS+MO5197hyk5iNgpvE82dn1G5Xow4o6swODP4HRHZTrSYF
+         xxgVZHjDFle4ueeHbeCIAr4EYDkFMXQyx507mQwvyMkfWrIdSIFn6abMweVm7QO9lVVq
+         bVrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@livius-net.20150623.gappssmtp.com header.s=20150623 header.b=Czam+KsK;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of ilg@livius.net) smtp.mailfrom=ilg@livius.net
-Return-Path: <ilg@livius.net>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g10sor791078wmc.17.2020.01.15.14.02.36
+       dkim=pass header.i=@linaro.org header.s=google header.b=jla1ex8S;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id c15sor22474720pfi.13.2020.01.15.14.16.23
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 15 Jan 2020 14:02:36 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of ilg@livius.net) client-ip=209.85.220.41;
+        Wed, 15 Jan 2020 14:16:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@livius-net.20150623.gappssmtp.com header.s=20150623 header.b=Czam+KsK;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of ilg@livius.net) smtp.mailfrom=ilg@livius.net
+       dkim=pass header.i=@linaro.org header.s=google header.b=jla1ex8S;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=livius-net.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=BVP4NRhPFSHrJjIPjsLJjDTukdxB17WP9oLbQhCIBco=;
-        b=Czam+KsK9C95nTf5qjQT9KAkUSAzIcYuTDwzhpTwj6u9yRv9OyTZYG3l9tTQw3d2x+
-         zMjmX1KW86zl5B39fT73/mSd6Vwp6DYH7n+/zME4sFY3CNz2ikTffFv0/3ZvllRiP6pL
-         KypTnMzXip1BvG22i8d5TglYMtdZE2Xcf9hafFZTU0Ys87+Kkwr5Wbii7fC7c9iUR5bf
-         33WxaoxlIgPgSBdiiQzdHCArFB7A+8l++1yXlVERq2ge34+bcevxQBYqrg9F6OBC3R1I
-         Uz9RMqy9TBIrdT1PdyJTxUbH523xcYqlaPcDN/033v7cxDL3C/a1EBNpGpl06bkc+Lo9
-         +mUQ==
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=k5qTG11cijFjDdtVQH/y0HmKwWbcCvaBtfDANdoeBBw=;
+        b=jla1ex8SdGGmoRMprgceXvRpAwRSylhng5WaLjcX0B6Lj6R0SkIkazbHXFJjxt7Ru2
+         9agZQtRwDQyIEqSEEKJAD9Y1AmqM8UebuCum25XvxNMcHV48we+lVxDHYPahcHXHviNd
+         xw/JPyh0qVKJEY9Gff+66cjvTk9frCCkN787v2gbDEVQ5ih6oHNOGpQBhodPkVUIQoHL
+         yiZgauH0kev9nGPLuwvekWWVSVGu7qXOUN1Acdg8HqQNaQlnPl9ugULD7fUXVr/DHx6o
+         PGGcylp6I/VSfTjR0n9o6i7JZ42XbrWH6A5RPRQDRSRfMrpdRd6h5z9/3LOvRxgg5vFR
+         wORg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=BVP4NRhPFSHrJjIPjsLJjDTukdxB17WP9oLbQhCIBco=;
-        b=IuRPWNomdfDSrA6hMMSAPYRxS9ZSC0C3RNeU4ySNrRAMOtEvpVV2WO5mC3KnGZBeGz
-         p3uxS/ZwDQ8u7xrHHPVRTJe2NvL9OyPwAnpH6z7kB/mXn1vIX+GzuHJsTUyPWmHo6cK3
-         1GXLL3KuKeAsh8fAjJ/85QynwWeezkEq1bYvnLA4PGHRDfH+svhTlmNE4DnPwUrZ0ds8
-         pyKpougK/N7PRsc+PgucXzGKTR789rCzAtK8c0S5kv+4gv+wP3tIsh7cqC157W8TCjre
-         oV9Pzs5EUSaPanMVZP4AgVqvXOJhMRmkLkE34ZoO+/y29DeyxeYdsP9yO214rE1d6tHd
-         a7mA==
-X-Gm-Message-State: APjAAAUoc4jY5oTQJHHHmm2Utj+ZpyZT4T1WKPxmz5YcLZ0DR1rkmp1r
-	Qkp5o97qIKiX7kSO0htMLynpyQ==
-X-Google-Smtp-Source: APXvYqwc6ILREdvaPjw/6hgXNUkja5UGYqX1XBZwxQPckqc9HhSxHwL67CkmahIVcr4JRhvxsikXEA==
-X-Received: by 2002:a05:600c:211:: with SMTP id 17mr2294170wmi.60.1579125756350;
-        Wed, 15 Jan 2020 14:02:36 -0800 (PST)
-Return-Path: <ilg@livius.net>
-Received: from wks.local ([188.26.232.206])
-        by smtp.gmail.com with ESMTPSA id z4sm1665107wma.2.2020.01.15.14.02.35
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Jan 2020 14:02:35 -0800 (PST)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 13.0 \(3608.40.2.2.4\))
-Subject: Re: Semihosting, arm, riscv, ppc and common code
-From: Liviu Ionescu <ilg@livius.net>
-In-Reply-To: <81f25a9e-a52c-ca8d-4d4b-ca36fcee73ed@linaro.org>
-Date: Thu, 16 Jan 2020 00:02:34 +0200
-Cc: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- keithp@keithp.com,
- qemu-arm@nongnu.org,
- qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <C4EE0480-C366-419B-84F1-3BEB794D1598@livius.net>
-References: <11d88b2741eac3f634d5aed9e3355c974b533f7b.camel@kernel.crashing.org>
- <AE7841A1-B4D6-4D6D-9AFD-01C4604D7BC4@livius.net>
- <cd9a2de94700a2781f176247131dceba690d8f31.camel@kernel.crashing.org>
- <87sgkimkma.fsf@linaro.org>
- <1309ca0ab6405d88cfd949c73130ad0f2af944a6.camel@kernel.crashing.org>
- <87wo9tkjxz.fsf@linaro.org> <81f25a9e-a52c-ca8d-4d4b-ca36fcee73ed@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-X-Mailer: Apple Mail (2.3608.40.2.2.4)
-X-TUID: mN5RwsP0fFR8
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=k5qTG11cijFjDdtVQH/y0HmKwWbcCvaBtfDANdoeBBw=;
+        b=AkUlBXjeH629l9fLLd81+Q/qdPJdYLYLIk+bDve4OYyWyFFV9IlE5X6C3JGAtEC7C6
+         OFg1eqA8Efn5Pq70jgvZ2P2zZXvUUojDAjpTiUEoOM3Q5sVnFSPuvYXTeqyNJQiJf9p6
+         6wJRljyZNr0SxHxwYjDbbAX5VtQo79AZ54I8juhHXo9VylIypc7musIlfsMxkEo4ltc0
+         +sB7mkuEa6xl8/nYgBsmMAe6ETsISmhI2aqyGMUrzU9OvVszLBUDG2BvNQaq87v5eUBK
+         gkBDqMwsgT21MDaf8GEa2p7yEBoxh/YQ72F+L2q5xxCGetYFrAqC53Lx+e7mZMVNbSl/
+         Tccg==
+X-Gm-Message-State: APjAAAV0/uHNwk2Ct3/+lVD3YnVn+m3uU1/La+mw2qOBqlLBrYPG3DX4
+	jTYjio/VIE58VD1Z9Ms0q7O/LNRA
+X-Google-Smtp-Source: APXvYqw5hijErwfEPZ+wYjWAVMpXJq6f2iW9FfVWg6uvgv6nSvim2WhuVQeZwThKRBpqQO7FlFvWcA==
+X-Received: by 2002:a62:ee11:: with SMTP id e17mr34252560pfi.48.1579126583547;
+        Wed, 15 Jan 2020 14:16:23 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.3.43] (rrcs-66-91-136-155.west.biz.rr.com. [66.91.136.155])
+        by smtp.gmail.com with ESMTPSA id j9sm22700317pfn.152.2020.01.15.14.16.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Jan 2020 14:16:22 -0800 (PST)
+Subject: Re: [PATCH v5 12/22] target/arm: generate xml description of our SVE
+ registers
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20200114150953.27659-1-alex.bennee@linaro.org>
+ <20200114150953.27659-13-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <8b01b9a0-3fcf-2d17-5f20-182cac6329a2@linaro.org>
+Date: Wed, 15 Jan 2020 12:16:18 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <20200114150953.27659-13-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: gDIYe0JsjONS
+
+On 1/14/20 5:09 AM, Alex Bennée wrote:
+> We also expose a the helpers to read/write the the registers.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> 
+> ---
+> v2
+>   - instead of zNpM expose zN at sve_max_vq width
+>   - wrap union in union q(us), d(usf), s(usf), h(usf), b(us)
+> v3
+>   - add a vg pseudo register for current width
+>   - spacing fixes
+>   - use switch/case for whole group
+>   - drop fpsr_pos marker
+>   - remove unused variables
+> v4
+>   - const-ify vec_lanes
+>   - drop vg
+
+Sigh.  This still feels like we're coding to a gdb bug.
+
+I assert that vg (or equivalent information) is required for the job to be done
+correctly.  It's a per-core and therefore, for user-space, per-thread quantity.
+ We cannot possibly be "changing targets" for the "thread N" command.
+
+I'll give you an
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+
+because I recognize that this is how gdb works today, but I don't like it.
 
 
-
-> On 15 Jan 2020, at 23:28, Richard Henderson =
-<richard.henderson@linaro.org> wrote:
->=20
-> For risc-v, the odd nop-full semi-hosting call sequence
-
-That unfortunate call sequence was the least worst compromise that the =
-RISC-V design team could agree on. :-(
-
-The actual problem was that the RISC-V instruction set has a single =
-BREAK op code, without any way to parametrise it, and they refused to =
-spend another op code for an extra BREAK.
-
-> was chosen to work with
-> jtag debuggers on real silicon.
-
-Yes, I know at least two, SEGGER J-Link of OpenOCD.=20
-
-But again, there is nothing in the silicon related to the odd call =
-sequence or the ABI, everything is implemented in the debuggers. The =
-silicon has only to break to the debugger, then it's up to the debugger =
-to decide if this is a semihosting call or a regular break.
-
-> ... they did have the opportunity to do better, and did not.
-
-I don't know why you present Arm semihosting as a disaster. It is not =
-perfect, but it is functional, and common unit tests use only a small =
-subset of the calls.
-
-And there is no 'window of opportunity', if the RISC-V guys will ever =
-want to reinvent the wheel and come with an official 'RISC-V =
-semihosting' specs, they can do it at any time, and this will have no =
-impact on existing devices, everything will continue to work as before, =
-only the debuggers/emulators will need to be upgraded.
-
-But the only immediate effect such a move will have is that software =
-efforts in test frameworks will be increased, to support another =
-protocol, while the advantages will be minimal.
-
-
-Regards,
-
-Liviu
+r~

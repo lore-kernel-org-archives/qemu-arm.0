@@ -1,191 +1,186 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7312361lff;
-        Wed, 15 Jan 2020 10:58:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx+6RVwfpDWWfJo+8mG/VniuDAU1B/uxdTq/8VS99AM8Yh0XeDa1ucJ8tHz3KXigiWa5zk1
-X-Received: by 2002:aed:3f32:: with SMTP id p47mr43336qtf.374.1579114686504;
-        Wed, 15 Jan 2020 10:58:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579114686; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7316573lff;
+        Wed, 15 Jan 2020 11:01:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw6CXF2STI2E492TGZVuUJNIogA0IN3yxEVcvnrBgxLbrwdaRwadVAkZxQuI458at63J+NA
+X-Received: by 2002:ac8:7297:: with SMTP id v23mr46042qto.135.1579114902514;
+        Wed, 15 Jan 2020 11:01:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579114902; cv=none;
         d=google.com; s=arc-20160816;
-        b=0dAyAej2NDXFMH5l1h3VTLlnh3FPBFu/+8sP+SktBXeq1f+obZhGy5r2cLYBPeHz8S
-         vD3dxshRMGJ7pepSp47sQp9zTsFC94EUchPLOXQt22Q+qz/eGRHmdLyFhS1YlMROtJw+
-         Jwy8e2bzsSq8+hnUCHRHrF2VU1NQQirYKisTAzmXFAnvkgbnqtzhEelCg7ArNfG6mQiY
-         BA9yi/i8zCXVV0gBFtVEEWOLNTJHOHIPVbDnlpVuB4ez4jk0BgwKBqhtqehKvxOnk/tq
-         LRYODPeB0iWQFchJrSs/D+8EaZ2UYm73lcTk/e4Q8+n9TYf4GfRTBSXU4ahknwNmrQaS
-         lvSQ==
+        b=E1mlBG4I/jRDZFPK9iRNR3pd0IG2hRRWKddq7Om6d5C8p2lR9DFlgOo1E/zTxcVvGd
+         l1AI8YF8cXbh3zq+ca9nMwmo8M/Bvmdu4QP2RPaHIiF6Jgbas1FAOqD4Uanh+6T22/8O
+         huxzsPrs+YgGzQJLYcA892VGnIrKJPQu2Q/tf0IDRQoa0hLDXAIK17eb/MShM8YsHv8x
+         ex/nglKH7iRt4BczFHYa+7c0a6dG0ddDcPSapKSYzFPj+OiGBbwANm7xOVo5RX3j9glS
+         n6EMISAHX5Sym7bzPXAlffpzt5zSJEUO9+V6+wvraprYO6S8XmvgLKcw67sfAyqZZkeS
+         h6hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=rUlKyIyXq9KCkniuMiskK6GLbO+vYx518J5KKmTPi1U=;
-        b=a6ZVMVKNh6h3V3ThT8y/Xtj/7VF9mW9qrEdBfe2figtTsOLP/E+bhes/IrStkIa6+A
-         x4kkFv5tDv/XYcBWRaEOgUAUGZilrHSw/vU3Hj8OKoUIHUyqyYGKL0IgeELIg+MGwGI8
-         jV2YOHBSpiMwE4B7VEjmXoxOzD3039vLjNUa4oYGs1Cv7g02v6CvFrQsxozG8enONC8F
-         rl2NzDk/0Ups3etDer5hkKaE27z8U3gnIU6s+2jnldUJI9c9yzv7xV++GxphHQGrd0lR
-         kCaaVisLmfBO+u+eGKUtgSmrpiCiwvN0gI92M7Y2RgLB1el/pwaRVcPM5Jqbgg1YzE1F
-         tvsg==
+        bh=UuQLGzgmKwdYQbCUGfTuunVa5Cdppnywdo26qugUDpk=;
+        b=fbUmVexFeJXsprOAPZHDKcSbUVnN0MkwnYRc/uO/u7sZ1qBGbcg/Jbm6dajVbDJUKD
+         ISZMADWon777xoFdyYa0kqhS8f+6/tRQnw+mmHxzp2roTyIyDblf5EBsRu5AVQm0qEqL
+         f+FkeBOWEoWJL3I11EYjyjLGN4Wj5NeQo3BzNvhMV/Qh4iNPMyQUuwb5jkYtxInj2SCI
+         cMQSmGWqz2Uun5dDwdYdz4Ctm/tvzl59Aeh/51Xyo0f5fxsCzf7Zk6ZrOaackO9NEh8R
+         PRcLTXJUr0l58XlJdWgL+NK3Z7tEshVosGB7PM27OdOTr3979a4TpaU/wZoopE/FgESz
+         vbyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KdPoAVJs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=U4nIOTKk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r21si10935783qtb.174.2020.01.15.10.58.06
+        by mx.google.com with ESMTPS id e12si11969244qtg.186.2020.01.15.11.01.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2020 10:58:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Jan 2020 11:01:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KdPoAVJs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58986 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=U4nIOTKk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irnrh-0005SJ-MW
-	for alex.bennee@linaro.org; Wed, 15 Jan 2020 13:58:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59327)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irnvB-0008WL-3x
+	for alex.bennee@linaro.org; Wed, 15 Jan 2020 14:01:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60537)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1irnqk-0004e5-T3
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 13:57:07 -0500
+ (envelope-from <philmd@redhat.com>) id 1irnut-0008RB-D8
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 14:01:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1irnqj-0002EQ-S6
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 13:57:06 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:31334
+ (envelope-from <philmd@redhat.com>) id 1irnup-00050m-Av
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 14:01:22 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:51617
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1irnqj-0002EC-Ou
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 13:57:05 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1irnup-00050T-7X
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 14:01:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579114625;
+ s=mimecast20190719; t=1579114878;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rUlKyIyXq9KCkniuMiskK6GLbO+vYx518J5KKmTPi1U=;
- b=KdPoAVJsH4pHDC5ru5U+iNHV1+daEpcFvD9IqzpmJgZ0UXELoivfp/ww3/aQ8B0cMvHbhY
- xpsu94msiHeOKM4i81kpY7tAM2DozadNTNVWPTcjZrlH5t88vYzNOlIizv6b4B3YKM5zaT
- B/wZatNoddAm+j3qNGrSBkT0I5tOjCs=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-297-DHAH3k1MNa-aXZI1kYp_8A-1; Wed, 15 Jan 2020 13:57:04 -0500
-Received: by mail-wm1-f71.google.com with SMTP id t16so272481wmt.4
- for <qemu-devel@nongnu.org>; Wed, 15 Jan 2020 10:57:03 -0800 (PST)
+ bh=UuQLGzgmKwdYQbCUGfTuunVa5Cdppnywdo26qugUDpk=;
+ b=U4nIOTKk9zZJQDDGLZ3p1iq/8KwjPxCktuN/tTOwnXddgI4bcjnmhpBHxzj3VGC4nbeGCo
+ eR6TggX9OckRBKgHWO12ElYhiswdPdnGmGwFMaOIyMvzggNfLifkxQYVxE/rR6qi121BPC
+ waIEVUm/xuw36+ynaYca6s8oOaNkPE4=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-147-MpxFYIdbPZyzAtdyjrhfJQ-1; Wed, 15 Jan 2020 14:01:15 -0500
+Received: by mail-wr1-f69.google.com with SMTP id f15so8415594wrr.2
+ for <qemu-arm@nongnu.org>; Wed, 15 Jan 2020 11:01:15 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=LyCGHEIQITM/+ovhheawX+GZAUy/lP6kMgd4i75SAiM=;
- b=tQP9UzKMXA0rJi6t3QO4t3PMFNmHbJUhdshSTyz0/oypnLJ6YqTjy50j+z3IG7iHe4
- 95cJZyGW7GcOZAfrLG/Kh7nXrg2xsDkMk3hTcL1mxIWoN8JJ4ITrt6W9JdnIBP4X0HvK
- +BdXXXXQrGJHXxwZlhp1BNgu4nXAAai2vetvCizy4tcqvNI+oItS+qv9ho6zFJ5sfLpr
- c0B4YFB/4H9JeKAY2TSsJ5rGQDhueEJp61dlIo6dw1yu9R62sxx3Hw6UW9SHFQ7HSAn+
- x5JmSP2rTuX3k6TEzeOV7cg+3vrJxlHq44m0vBejVKrImPIkaIus5euR5Nufy1xtxQU/
- WXDg==
-X-Gm-Message-State: APjAAAWwWnjp+xoGpP3t4B89gpk01JrwE29FAyQXXB3qCjaXAkDpEjyk
- MY7e/ojjc+G6J/ASTeJ25eQM4SIJ6V0brQJeARAJwQ7PDarD9udD1c5HlF+XTBwG87eGpTrEf+o
- TYx5gavJO7uo950w=
-X-Received: by 2002:a05:6000:50:: with SMTP id
- k16mr32520239wrx.145.1579114623024; 
- Wed, 15 Jan 2020 10:57:03 -0800 (PST)
-X-Received: by 2002:a05:6000:50:: with SMTP id
- k16mr32520208wrx.145.1579114622736; 
- Wed, 15 Jan 2020 10:57:02 -0800 (PST)
+ bh=2gUAuuy9ejenWLB4RsCZ6mGR1t6R2WZ7s/fAGzHi2Pk=;
+ b=o+Zaix6cQV2fR+zUw0yLn85BnoaboZtUcd/LT3NjxN4RtSNxYpIfuRXjMcpGS8xyCo
+ +JLDAqzsBfahIevyNR0wPKFQiPdOqwkNWMDFvLFXCJTNesEk4Z+8X+tcTB0LxK/3Q7Uq
+ juHDnB5O6kGgBYupGV3xf8yh1xK8iFUQwNtFIlbKVby72xgyb5RB7brBxo81davyaoxg
+ C/wL6fSukf7SoOYw4tdvpAU+p4mUJs/3pWUKSqdzuBubu6BL2mFwsZzMyfKB6zE3LlaU
+ 8DDXpaixyT0nL6R00IHq+obOPueABVtCAzVnp/LiBPXKqj1wki13ujWTYZQAu6VGsPHz
+ Af7A==
+X-Gm-Message-State: APjAAAV8jM6Uxc8Gka6iEDK7YISk/fiDftJo1j5ODh+R0csk4bbUrDNf
+ 8hjfZVKpnhpRSWR8ob6gCo0GSk2dxi7NKPcZUkWwVWi59hMOYUz1djOgzxwCqJQ6oXY79Dsi3e2
+ KmV6dd7i4oLIr
+X-Received: by 2002:a5d:6211:: with SMTP id y17mr32674671wru.344.1579114874515; 
+ Wed, 15 Jan 2020 11:01:14 -0800 (PST)
+X-Received: by 2002:a5d:6211:: with SMTP id y17mr32674638wru.344.1579114874227; 
+ Wed, 15 Jan 2020 11:01:14 -0800 (PST)
 Received: from ?IPv6:2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9?
  ([2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9])
- by smtp.gmail.com with ESMTPSA id p7sm926943wmp.31.2020.01.15.10.57.01
+ by smtp.gmail.com with ESMTPSA id z123sm1132669wme.18.2020.01.15.11.01.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Jan 2020 10:57:02 -0800 (PST)
-Subject: Re: [PATCH v2 33/86] arm:virt: use memdev for RAM
+ Wed, 15 Jan 2020 11:01:13 -0800 (PST)
+Subject: Re: [PATCH v2 35/86] arm:xilinx_zynq: use memdev for RAM
 To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
 References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
- <1579100861-73692-34-git-send-email-imammedo@redhat.com>
+ <1579100861-73692-36-git-send-email-imammedo@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <be80961b-0b2e-2a38-8dc8-a7b06b6064f4@redhat.com>
-Date: Wed, 15 Jan 2020 19:57:01 +0100
+Message-ID: <2131c7ec-943e-1806-03c4-fe49371caa08@redhat.com>
+Date: Wed, 15 Jan 2020 20:01:12 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <1579100861-73692-34-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1579100861-73692-36-git-send-email-imammedo@redhat.com>
 Content-Language: en-US
-X-MC-Unique: DHAH3k1MNa-aXZI1kYp_8A-1
+X-MC-Unique: MpxFYIdbPZyzAtdyjrhfJQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8fc0QBnedbu7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, alistair@alistair23.me
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Uy0JS96wYEFo
 
 On 1/15/20 4:06 PM, Igor Mammedov wrote:
-> memory_region_allocate_system_memory() API is going away,
-> so replace it with memdev allocated MemoryRegion.
-> The later is initialized by generic code, so board only
-> needs to opt in to memdev scheme by providing
+> memory_region_allocate_system_memory() API is going away, so
+> replace it with memdev allocated MemoryRegion. The later is
+> initialized by generic code, so board only needs to opt in
+> to memdev scheme by providing
 >    MachineClass::default_ram_id
-> and then map memory region provided by
->    MachineState::ram_memdev
+> and using MachineState::ram instead of manually initializing
+> RAM memory region.
 >=20
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > ---
 > CC: peter.maydell@linaro.org
 > CC: qemu-arm@nongnu.org
-> CC: drjones@redhat.com
+> CC: edgar.iglesias@gmail.com
+> CC: alistair@alistair23.me
 > ---
->   hw/arm/virt.c | 7 +++----
->   1 file changed, 3 insertions(+), 4 deletions(-)
+>   hw/arm/xilinx_zynq.c | 6 ++----
+>   1 file changed, 2 insertions(+), 4 deletions(-)
 >=20
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 39ab5f4..e2fbca3 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1512,7 +1512,6 @@ static void machvirt_init(MachineState *machine)
->       MemoryRegion *sysmem =3D get_system_memory();
->       MemoryRegion *secure_sysmem =3D NULL;
->       int n, virt_max_cpus;
-> -    MemoryRegion *ram =3D g_new(MemoryRegion, 1);
->       bool firmware_loaded;
->       bool aarch64 =3D true;
->       bool has_ged =3D !vmc->no_ged;
-> @@ -1701,9 +1700,8 @@ static void machvirt_init(MachineState *machine)
->           }
->       }
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index df950fc..0ef9688 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -160,7 +160,6 @@ static void zynq_init(MachineState *machine)
+>   {
+>       ARMCPU *cpu;
+>       MemoryRegion *address_space_mem =3D get_system_memory();
+> -    MemoryRegion *ext_ram =3D g_new(MemoryRegion, 1);
+>       MemoryRegion *ocm_ram =3D g_new(MemoryRegion, 1);
+>       DeviceState *dev;
+>       SysBusDevice *busdev;
+> @@ -190,9 +189,7 @@ static void zynq_init(MachineState *machine)
+>       object_property_set_bool(OBJECT(cpu), true, "realized", &error_fata=
+l);
 >  =20
-> -    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
+>       /* DDR remapped to address zero.  */
+> -    memory_region_allocate_system_memory(ext_ram, NULL, "zynq.ext_ram",
 > -                                         machine->ram_size);
-> -    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram)=
-;
-> +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
-> +                                machine->ram);
->       if (machine->device_memory) {
->           memory_region_add_subregion(sysmem, machine->device_memory->bas=
-e,
->                                       &machine->device_memory->mr);
-> @@ -2053,6 +2051,7 @@ static void virt_machine_class_init(ObjectClass *oc=
-, void *data)
->       hc->unplug_request =3D virt_machine_device_unplug_request_cb;
->       mc->numa_mem_supported =3D true;
->       mc->auto_enable_numa_with_memhp =3D true;
-> +    mc->default_ram_id =3D "mach-virt.ram";
+> -    memory_region_add_subregion(address_space_mem, 0, ext_ram);
+> +    memory_region_add_subregion(address_space_mem, 0, machine->ram);
+>  =20
+>       /* 256K of on-chip memory */
+>       memory_region_init_ram(ocm_ram, NULL, "zynq.ocm_ram", 256 * KiB,
+> @@ -318,6 +315,7 @@ static void zynq_machine_init(MachineClass *mc)
+>       mc->no_sdcard =3D 1;
+>       mc->ignore_memory_transaction_failures =3D true;
+>       mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a9");
+> +    mc->default_ram_id =3D "zynq.ext_ram";
 >   }
 >  =20
->   static void virt_instance_init(Object *obj)
+>   DEFINE_MACHINE("xilinx-zynq-a9", zynq_machine_init)
 >=20
 
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 

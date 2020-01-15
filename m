@@ -1,210 +1,191 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7394920lff;
-        Wed, 15 Jan 2020 12:11:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxQaX1pZx8mpSTtXwzRyGlnLvpthXfn3NEqYDKm0iz2qIYP01s5Y3y76kcENCKsnKZZujgm
-X-Received: by 2002:a17:906:838c:: with SMTP id p12mr30100969ejx.204.1579119118033;
-        Wed, 15 Jan 2020 12:11:58 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1579119118; cv=pass;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7563195lff;
+        Wed, 15 Jan 2020 15:00:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx9hYigqQ6twnW3dVBPPoIHCRgOyeIS/3+28A+Mn4NQWKfhKHD3B8Ysdk9DIuyvODv6RVRh
+X-Received: by 2002:a05:620a:1403:: with SMTP id d3mr29702260qkj.243.1579129244171;
+        Wed, 15 Jan 2020 15:00:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579129244; cv=none;
         d=google.com; s=arc-20160816;
-        b=rRWRHMuvK1rLt5j7/fD2aOTMySjvlWH9d4ZWsa1NYNBhNIqyPfnip5PEoG/TRIF6/N
-         dm0eum2UlH0PffMmHq6DBy+LzcpbKoMfUzfkGWYEk5U7mEHEtvwljn6JMqlH2JwYG7nn
-         oh/2yW/gIPznTTfu+gjIJQ6bfMWehoWtQG/JFpqveI+Pe5OcheXZcTrZR2ExVr+82I6J
-         OccAbOjj+6tFO4vDQilY7xLghhUqlbRWcRjT3Ydn6xhw8QT47NiLK9vmSeaLuTcZq5pw
-         Y1H9O51Q7I50sXGrcM1dyUnKKse49qLQ7435P1MEsOILfTDXwfPlYEelCAhcqTJ7QQOG
-         lZ8A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=y+7RHuj34Hc123Y+jeFpk3KpK4oUejRAybv8rwOvorCm2z8Sm/lLCylDud3XVot4lY
+         H82LVuL18DeheTFsYccVK+yj8N8ygAYIL1JNgx7NNfJxz7YBvjnJy5ZKN1t5D+1nIaiB
+         dd4AECI5X9/MMa8O8OF7PIh85FMSjKEdnhVjfhl88zfU8Sa0yk+HLaFDO34Cq+bjFgnz
+         E9tmrCI6A0mqg/VsI+P/yUYZWhjtYpHBwFLgvf0Ry/R2l6VmQepF6CmdrEYQY0hFMOX9
+         3lKWqTpPxFZMblQv8YdzjlOA1mISO5K3I8EW+ajc2O0AXW1moG4lq1iz3zWAzNhS/0Em
+         Hlcg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature:ironport-phdr
-         :ironport-sdr:dkim-signature;
-        bh=tNXdb+XemRGIjAOkE6lYlh97mwjZGksRqcl8VBDcaaA=;
-        b=Q42I6xzmA/iN7mbRQ2QYLWl+bLUQhkPYAnOBwqcPyM2iVkiAXInZ7kH8b6mdItTzZG
-         gbI1kbP1DEh7pbynRK9nFHqkwqCY19hmOQSij7YxOJ9tQq1xstzRh5VjpPysUpXFvbpL
-         qEw4TUeUSzO13mDrA71xeBKMcqUHEtG7sVEwUBsBt1DYtuJQjiVh3ZA0c6uCwjgM4EGU
-         jsdbJJXyJ3S7kCYmOTsAziWk6a5YGVbZ5ITrWCiZmvEwNVZLWvLgW7XooxbX7hQTA1lb
-         5JLSbzilKp3nbJtdXEyqUOwqlJ7y4nagzuIs/1yFcZocPearL0JmWYdVouBD2+rTGX6z
-         okaw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=hbpR2wdN;
-       dkim=pass header.i=@CSIROAU.onmicrosoft.com header.s=selector1-CSIROAU-onmicrosoft-com header.b=d+aoVzbY;
-       arc=pass (i=1 spf=pass spfdomain=data61.csiro.au dkim=pass dkdomain=data61.csiro.au dmarc=pass fromdomain=data61.csiro.au);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=rQxx2E+RqsLgZZ3wmjIiPqxTF03UXBdbmbAnvJu02Dg=;
+        b=b9wnLAoQH9Bi+3WJeNXtP9gUPghAOxkdapcf7AvSH6sYVjtmPH5hH9KyHXNzw1eBPL
+         +7xx16YQo/1wS0etvutlmW24He0uG/37ehfpRn0mFfgS3e7ne1XtwnQKos3aOpU3k7v8
+         Oyiw2gTcbL7ut3mXg5flM+n3d3B1/y/WngE5N9eg9idMysM4X0P3gTjrDWTeEiefci4g
+         8bpnja+SCbgN7EG9a1LuNPV9WoOQd2oWsgky7lDoTziYgnTh9lrVui3EEhDQQ9dxUMAc
+         VTR5gH1TXjsGfEhlTBh1lmD1PU7vfJmtDzUbYaiEc+WKIQ3NXfAH3rex5xBjAECTJRzZ
+         XX1A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qDcJczlS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f23si12858892ejb.361.2020.01.15.12.11.57
+        by mx.google.com with ESMTPS id q53si11207162qta.148.2020.01.15.15.00.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2020 12:11:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Jan 2020 15:00:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=hbpR2wdN;
-       dkim=pass header.i=@CSIROAU.onmicrosoft.com header.s=selector1-CSIROAU-onmicrosoft-com header.b=d+aoVzbY;
-       arc=pass (i=1 spf=pass spfdomain=data61.csiro.au dkim=pass dkdomain=data61.csiro.au dmarc=pass fromdomain=data61.csiro.au);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60166 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qDcJczlS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irp1A-00042P-V2
-	for alex.bennee@linaro.org; Wed, 15 Jan 2020 15:11:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42580)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irreV-0001Ca-F6
+	for alex.bennee@linaro.org; Wed, 15 Jan 2020 18:00:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43382)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prvs=27638d3c8=Peter.Chubb@data61.csiro.au>)
- id 1irp0H-0003SW-VU
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 15:11:03 -0500
+ (envelope-from <alistair23@gmail.com>) id 1irreB-0001Ax-KB
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 18:00:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prvs=27638d3c8=Peter.Chubb@data61.csiro.au>)
- id 1irp0G-0001kL-PC
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 15:11:01 -0500
-Received: from act-mtaout4.csiro.au ([2405:b000:e00:257::7:41]:23852)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71)
- (envelope-from <prvs=27638d3c8=Peter.Chubb@data61.csiro.au>)
- id 1irp0F-0001gF-78; Wed, 15 Jan 2020 15:11:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=data61.csiro.au; i=@data61.csiro.au; q=dns/txt;
- s=dkim; t=1579119059; x=1610655059;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=tNXdb+XemRGIjAOkE6lYlh97mwjZGksRqcl8VBDcaaA=;
- b=hbpR2wdNay50RNjxW2sTV/5YPqae+mf2FuaKQHZEeDvHKZ5n+O63uMa5
- Mzx4M1z4JWYlrl7wv7QAFO+GDa3LTsZjmwhgOHFivXQ8iUpXpFBrHsVdW
- HB2VZ1/nRDqNWjPzYAxAYAHFl8XtvZmNMkTsgEByFitgP4ifPvTNngUGv g=;
-IronPort-SDR: Jrn+BPF7JtchN8mKmjC57B0mGk3AqrcpOcYLtlYbcV/Mv3NI4wKiV3Bn9B62cVLd3foakrhBlJ
- E9jwyMTB0HJw==
-X-SBRS: 5.1
-IronPort-PHdr: =?us-ascii?q?9a23=3AsWeVsR1LaYGlStVesmDT+zVfbzU7u7jyIg8e44?=
- =?us-ascii?q?YmjLQLaKm44pD+JxOHt+51ggrPWoPWo7JfhuzavrqoeFRI4I3J8RVgOIdJSw?=
- =?us-ascii?q?dDjMwXmwI6B8vQMUDnIeSsRCwnFs5qWFZ59i/id0NOGdz5IVTP8TW/?=
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A+EcAAA1cR9elwCwBSSwhIATAJKcgDR?=
- =?us-ascii?q?lHQEBAQkBEQUFAYFnCAELAYFTUF6BCwQ1CodLA4Rahh6SRolVgSQDVAkBAQE?=
- =?us-ascii?q?NAS0CAQEChD4CggAkNAkOAgMBAQsBAQUBAQEBAQUEAgIQAQEBAQEeBoVnDIN?=
- =?us-ascii?q?OcQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQUCgQw+AgE?=
- =?us-ascii?q?DEi4BATcBDwIBCA44ECIlAgQOBSKDBIJLAy0BAQICnWUCgTiIYAEBgiaCfwE?=
- =?us-ascii?q?BBYUdGIINCQkBgSwBjBeCGoFHgl0+hEmFbpctmBsHAQKCOJYwG4I3AZg2qVw?=
- =?us-ascii?q?CBAIEBQIOAQEFgVI4gVodT4NAUBgNiAEag1mKU3QCgSeLJQGBDwEB?=
-X-IPAS-Result: =?us-ascii?q?A+EcAAA1cR9elwCwBSSwhIATAJKcgDRlHQEBAQkBEQUFA?=
- =?us-ascii?q?YFnCAELAYFTUF6BCwQ1CodLA4Rahh6SRolVgSQDVAkBAQENAS0CAQEChD4Cg?=
- =?us-ascii?q?gAkNAkOAgMBAQsBAQUBAQEBAQUEAgIQAQEBAQEeBoVnDINOcQEBAQEBAQEBA?=
- =?us-ascii?q?QEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQUCgQw+AgEDEi4BATcBDwIBC?=
- =?us-ascii?q?A44ECIlAgQOBSKDBIJLAy0BAQICnWUCgTiIYAEBgiaCfwEBBYUdGIINCQkBg?=
- =?us-ascii?q?SwBjBeCGoFHgl0+hEmFbpctmBsHAQKCOJYwG4I3AZg2qVwCBAIEBQIOAQEFg?=
- =?us-ascii?q?VI4gVodT4NAUBgNiAEag1mKU3QCgSeLJQGBDwEB?=
-Received: from exch4-cdc.nexus.csiro.au ([IPv6:2405:b000:601:13::247:34])
- by act-ironport-int.csiro.au with ESMTP/TLS/ECDHE-RSA-AES256-SHA384;
- 16 Jan 2020 07:09:27 +1100
-Received: from exch1-cdc.nexus.csiro.au (2405:b000:601:13::247:31) by
- exch4-cdc.nexus.csiro.au (2405:b000:601:13::247:34) with Microsoft SMTP
- Server (TLS) id 15.0.1497.2; Thu, 16 Jan 2020 07:09:26 +1100
-Received: from ExEdge1.csiro.au (150.229.7.34) by exch1-cdc.nexus.csiro.au
- (152.83.247.31) with Microsoft SMTP Server (TLS) id 15.0.1497.2 via Frontend
- Transport; Thu, 16 Jan 2020 07:09:26 +1100
-Received: from AUS01-ME1-obe.outbound.protection.outlook.com (104.47.116.51)
- by ExEdge1.csiro.au (150.229.7.34) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 16 Jan 2020 07:09:22 +1100
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FcqUFG0mahqtxa4VWLsP4shgqdfCnIqU8HxZN3NE2gjMJ1ChLZjPOcPGvwe2Hl8u3GE5kqmBwzEDCNNg6H32Q3r2gTy4T88bgV3Rn4pQg2a0sgon8qTl9podKynPabXTgjIayhJMNhuX6mPO6k1fOtMpxbFofQk1QERh6VgJntoTf0tiKcdo3MohQJHaKNaSSHiUvQVFn+lO6LN8EMFwxzqVNm+PNM6Ta8gv+ig3Oe8wjSpPxD0bIMvtm/yDKzB+6p9qo5BkOdc3/EvsGsNL+2KtGCFia4PcGoJ3ZH3scP0+zsBubhMgDqWRSyUstJTF7xOUDn+720fRRWRpJo78qA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tNXdb+XemRGIjAOkE6lYlh97mwjZGksRqcl8VBDcaaA=;
- b=a/p35zodkOYAwP/PiP2zI7CLA6KXX28sMFu0Lq1diZrJGHqTpTISBv2x7gtGERulHYxTOTNSZLQkw9CFukWOx+nIVwMXk+oj1U2/e7yo6xUp1GM6thrPCIFhH4tBePqI3aCdGiEUrQFVrcxFMgWMVEdx4rWDCZQi81QydEBjn1/Km1bgXOkBpqsVFjOo+OQtheVl+KLLaa3hRYE9Aeh918ae+ZJcm92SlCpUl2jO/57iQ1oZLUsnNoERmp1X/grImcF241DnrpR4lgR0MmEOQaVGubucaRXyi7pJL0hCta+mFVzYaL/vZN0Ok91sBAWSrby/JHdn0Pi150+1vw1hCw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=data61.csiro.au; dmarc=pass action=none
- header.from=data61.csiro.au; dkim=pass header.d=data61.csiro.au; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=CSIROAU.onmicrosoft.com; s=selector1-CSIROAU-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tNXdb+XemRGIjAOkE6lYlh97mwjZGksRqcl8VBDcaaA=;
- b=d+aoVzbY/VR6zsb6zNtRAknSuH07E9mXj3Ar9W7VcUXJJMRFcc+Ul0oSqw1em270zbNV62UDU7Wbni6fZQxZ+ETKQEEGmAzcR2t7XfhCn3wmBgKyEnBOKOd9skJ71C9DW61zuG8hIMcoRZETD2Jj9lZkmdqB3CqspWzDyiexGMw=
-Received: from MEAPR01MB3734.ausprd01.prod.outlook.com (52.134.217.84) by
- MEAPR01MB3494.ausprd01.prod.outlook.com (52.134.216.75) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2623.9; Wed, 15 Jan 2020 20:09:26 +0000
-Received: from MEAPR01MB3734.ausprd01.prod.outlook.com
- ([fe80::195f:37a0:9e0e:2362]) by MEAPR01MB3734.ausprd01.prod.outlook.com
- ([fe80::195f:37a0:9e0e:2362%4]) with mapi id 15.20.2623.017; Wed, 15 Jan 2020
- 20:09:26 +0000
-From: "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: Re: [PATCH v2 19/86] arm:kzm: use memdev for RAM
-Thread-Topic: [PATCH v2 19/86] arm:kzm: use memdev for RAM
-Thread-Index: AQHVy7YGdqUjzmOeW0C6ero1urQrJafsJ++A
-Date: Wed, 15 Jan 2020 20:09:25 +0000
-Message-ID: <87r200v5vw.wl-Peter.Chubb@data61.csiro.au>
-References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
- <1579100861-73692-20-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1579100861-73692-20-git-send-email-imammedo@redhat.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Peter.Chubb@data61.csiro.au; 
-x-originating-ip: [221.199.209.25]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e767de70-be4b-4b91-a6b3-08d799f6d207
-x-ms-traffictypediagnostic: MEAPR01MB3494:
-x-microsoft-antispam-prvs: <MEAPR01MB349488DB37F059D928E119B1BB370@MEAPR01MB3494.ausprd01.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:336;
-x-forefront-prvs: 02830F0362
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(366004)(346002)(376002)(136003)(396003)(39840400004)(189003)(199004)(478600001)(86362001)(558084003)(5660300002)(4326008)(6512007)(71200400001)(186003)(2616005)(54906003)(316002)(6486002)(76116006)(81166006)(8936002)(66446008)(8676002)(64756008)(66556008)(6506007)(26005)(66476007)(66946007)(91956017)(6916009)(2906002)(81156014);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MEAPR01MB3494;
- H:MEAPR01MB3734.ausprd01.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: QI/Xl/KYD47TVUQISEACORnNt/cstTqvbrKyjUFGbVS7SrLrlQtqsXUG6h/Wk2sRTSdDkqWa5c9UGvmFcXf3KjNeDf9dJyzlC6A7Pd8UHr/W94EzypcsRQ9y66jfxe/sx8XYKtmvVhTVG649PZ+N9zM3aPb0SNGwV0/8uzHTjVvtMb/8zv6V1JPEbUmi50+e+i/X/m6jalxsFH64V9fyl56NLv3SbiayPm7oC8RUcRhX4fCgkzydCieFx9IV84ENob9uNp+nQlIbzO/KxkUSPNnJpQ4zaikbBZEjoRAiyVogcqjf47h7cpl14mjvIweaJtt87YzZ8Ax1zID/2H3IgE6et83Y6pJPHm/kdOzcgEHSmYR1CcVugG6Gj4E283DTDvcAlgV9pr9kVqj1hb+Yo+Fk8h503kCH/luyjHpfjKHyu4CEehVMZNaztOFrAttW
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="iso-8859-1"
-Content-ID: <C0C74D552280BF4DAC37D8C6C16A8D92@ausprd01.prod.outlook.com>
-Content-Transfer-Encoding: quoted-printable
+ (envelope-from <alistair23@gmail.com>) id 1irreA-0002tu-DQ
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 18:00:23 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:38730)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1irre7-0002qx-MD; Wed, 15 Jan 2020 18:00:19 -0500
+Received: by mail-lj1-x242.google.com with SMTP id w1so20446123ljh.5;
+ Wed, 15 Jan 2020 15:00:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=rQxx2E+RqsLgZZ3wmjIiPqxTF03UXBdbmbAnvJu02Dg=;
+ b=qDcJczlSEAjf6NqD2mXwpyetH8OOf8tbBIg84oAQoFk+I40eRvbTycetGDkPUlcg8K
+ JpAZkdkvYOMUK18rHJ/FEcFlSw3H48ndnSAvknr1sJMmln9M2YBKK6pq2GQpyoS6l2N5
+ Xur24KYSXWHJA1xSZwzFUt9v+MKdho1y+WXZochp7grq5bMGf1NNMkpZurOkbauCPII4
+ BdhZ5kJjoR9mq1HWkLQBcaEkU2dmX4FcFTuOnZ8oFjn/GFwemVLlJB88VvXjCp5W7qcH
+ UgnV4XK+DLzzA4SQVWbxieq/RxhMDrDpiJRLpt4cGj7JTpEqPXMa4eZjqPALGQWNJl/z
+ tD0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=rQxx2E+RqsLgZZ3wmjIiPqxTF03UXBdbmbAnvJu02Dg=;
+ b=F7stv4qUvm5VaUrnmKv69w7rYtcxNVY1EDegNmV/NLlpufc2CSP0vldT8Q5IeR1+0D
+ r3JsixpDo8SZWpy5wsh9CH+m6rPtl3q71YLylXmqZN2AOrcTcDCFuJfsj+AIF9HRgurS
+ DrcIh+yAfLIfSiQIxx69veMOc1tWBBSy+5gBPwm4QgCwMM7zsOBO40JVz4JaHR2gyfDP
+ /o+xyc+ddb7grmoDOFgj60mNo6hqrRSf+2Tdty3FSEmUfgGm8yr5CY++9W+tZuIcNF4W
+ 3HjNX+7llwk4sDhdIF2nTGsjrwdKtTEN1aO1Ltv5TYJCrNzfvlj++T0n1p3lW6kRzOQq
+ 3Y3Q==
+X-Gm-Message-State: APjAAAWwvYMTV0SkkAUFbeYJjXOUFpgW/3cOr0Ra56imDSJHOTV/+kE/
+ 48RldbTJ17w6RKpG/vAuW5pMTbH86oiEOMO3VJg=
+X-Received: by 2002:a2e:461a:: with SMTP id t26mr417496lja.204.1579129217904; 
+ Wed, 15 Jan 2020 15:00:17 -0800 (PST)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: e767de70-be4b-4b91-a6b3-08d799f6d207
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jan 2020 20:09:25.9186 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 0fe05593-19ac-4f98-adbf-0375fce7f160
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Mp4sGDbuo7pG/egGB+CVWv9sdbX8tjHfJA4ZtcbfrXphTX3pXgQ24d/3e/OAmbYT
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MEAPR01MB3494
-X-OriginatorOrg: data61.csiro.au
+References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
+ <1579100861-73692-35-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1579100861-73692-35-git-send-email-imammedo@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 16 Jan 2020 08:59:50 +1000
+Message-ID: <CAKmqyKO2Y5kZsJ3h7Ezpv-bmPhQyueGR-rpSRyLqBhuMXOkjxg@mail.gmail.com>
+Subject: Re: [PATCH v2 34/86] arm:xilinx_zynq: drop RAM size fixup
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2405:b000:e00:257::7:41
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::242
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "peter.chubb@nicta.com.au" <peter.chubb@nicta.com.au>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jRdFmxhCL/5S
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: B7YUJtQ8uY2X
 
->>>>> "Igor" =3D=3D Igor Mammedov <imammedo@redhat.com> writes:
+On Thu, Jan 16, 2020 at 1:25 AM Igor Mammedov <imammedo@redhat.com> wrote:
+>
+> If user provided non-sense RAM size, board will complain and
+> continue running with max RAM size supported.
+> Also RAM is going to be allocated by generic code, so it won't be
+> possible for board to fix things up for user.
+>
+> Make it error message and exit to force user fix CLI,
+> instead of accepting non-sense CLI values.
+>
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 
-Igor> memory region.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Igor> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Igor> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-Igor> ---
-Igor> CC: peter.chubb@nicta.com.au
+Alistair
 
-You can add:
-Reviewed-by: Peter Chubb <peter.chubb@data61.csiro.au>
-
-Igor> CC: peter.maydell@linaro.org
-Igor> CC: qemu-arm@nongnu.org
-
-Peter C=
+> ---
+> CC: peter.maydell@linaro.org
+> CC: qemu-arm@nongnu.org
+> CC: edgar.iglesias@gmail.com
+> CC: alistair@alistair23.me
+> ---
+>  hw/arm/xilinx_zynq.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index 3a0fa5b..df950fc 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -158,7 +158,6 @@ static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+>
+>  static void zynq_init(MachineState *machine)
+>  {
+> -    ram_addr_t ram_size = machine->ram_size;
+>      ARMCPU *cpu;
+>      MemoryRegion *address_space_mem = get_system_memory();
+>      MemoryRegion *ext_ram = g_new(MemoryRegion, 1);
+> @@ -168,6 +167,12 @@ static void zynq_init(MachineState *machine)
+>      qemu_irq pic[64];
+>      int n;
+>
+> +    /* max 2GB ram */
+> +    if (machine->ram_size > 0x80000000) {
+> +        error_report("RAM size more than %d is not supported", 0x80000000);
+> +        exit(EXIT_FAILURE);
+> +    }
+> +
+>      cpu = ARM_CPU(object_new(machine->cpu_type));
+>
+>      /* By default A9 CPUs have EL3 enabled.  This board does not
+> @@ -184,14 +189,9 @@ static void zynq_init(MachineState *machine)
+>                              &error_fatal);
+>      object_property_set_bool(OBJECT(cpu), true, "realized", &error_fatal);
+>
+> -    /* max 2GB ram */
+> -    if (ram_size > 0x80000000) {
+> -        ram_size = 0x80000000;
+> -    }
+> -
+>      /* DDR remapped to address zero.  */
+>      memory_region_allocate_system_memory(ext_ram, NULL, "zynq.ext_ram",
+> -                                         ram_size);
+> +                                         machine->ram_size);
+>      memory_region_add_subregion(address_space_mem, 0, ext_ram);
+>
+>      /* 256K of on-chip memory */
+> @@ -300,7 +300,7 @@ static void zynq_init(MachineState *machine)
+>      sysbus_connect_irq(busdev, 0, pic[40 - IRQ_OFFSET]);
+>      sysbus_mmio_map(busdev, 0, 0xF8007000);
+>
+> -    zynq_binfo.ram_size = ram_size;
+> +    zynq_binfo.ram_size = machine->ram_size;
+>      zynq_binfo.nb_cpus = 1;
+>      zynq_binfo.board_id = 0xd32;
+>      zynq_binfo.loader_start = 0;
+> --
+> 2.7.4
+>
+>

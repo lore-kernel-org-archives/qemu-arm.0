@@ -1,186 +1,225 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6669472lff;
-        Wed, 15 Jan 2020 01:26:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwdXdV1KxncZdD0U+mY/Rnr0BQezu2C7oUja1QL29M5o6SvKWuXIUG9l91oXiI0Pjv0EscI
-X-Received: by 2002:ae9:efc5:: with SMTP id d188mr26329524qkg.178.1579080381926;
-        Wed, 15 Jan 2020 01:26:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579080381; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6749675lff;
+        Wed, 15 Jan 2020 02:55:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzE7xgeaCp+6S5y92tGGRaOITx9QPzURDnQb1MhgYjOJDSqaBwytSKHLFICbc/GU/F+VHBR
+X-Received: by 2002:ae9:e910:: with SMTP id x16mr26115710qkf.90.1579085707358;
+        Wed, 15 Jan 2020 02:55:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579085707; cv=none;
         d=google.com; s=arc-20160816;
-        b=b1ib7w6nrh21gsq9RK1NA5qaw0fRqNq8Wnjnf4/AK8XTMiYvliReFIZZD3vmKw1yTy
-         0yZAbTXgRXiclrIRLDbd1eTuBB0N9B7ylCe66dbQeYUcJHb778ltwXshk+tdD6bnJmPJ
-         ZNGfNanZFgWAMm2X/eVcxhBfvpyy3KqvQ+cnFcZ1EtvG60s8UGeUpu7pehyxnbyHVPII
-         fwU/2Bs13HgyF7s1K/xwqpbkWA2mTapkaFMtmH7oCN/vla/ofcUR7s/p2MSJwu+wbM3N
-         rRQPO7GrUb4xwlb514MXYixPxcVEUIw7VrOitxKjiMN56c/rHmohUfntSr8afSzYEBzy
-         ETsQ==
+        b=lptrN6N+YHQqhL+YigpYkhji+htTdWI7yrYhh/9axT1/iNqW9BGyIU2XHO1eA0HTSs
+         7o53OFf4vm8pOhhTK+VZK/BRHkcraQriRc0RtdrJrCqDSl1TpqgTRnZBy2xkwurgr1J8
+         TGymSS44WKUSRJX3H4Za0fdUTlqd+DPvl7VOboo4bKwsvSe40KpdaEGV4XkFBYWw/Wei
+         rZ5CVlfY57uRHZWN10Lo7iDjA3caQjRK26isJCc+MJxH0Bgw76gKjh6LrYclcvNkgcV9
+         +0S6G44yVr5PV9OEgTf0KrJycUJUQoXspDufYf+yYm/Kzo20E6nsnOR9IBJ3TaDNzdiW
+         CiKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=rZ61tswPR0e94vSbrrIsJYwcdGYHSuqvkgYiq3Wa9C0=;
-        b=GDAmhTy/A3zeHBhxAa2ScgWRZn+v99KGtcFvrEasmpfHl5Po93tt27VrArlrI4zQU3
-         viXGFHXs9cHqc1A30NPbPFjhADtmZSIbgOdcSm++cligYehdLIhO76iVAgtw6av8+nAS
-         HrVfUNB7RyrlZDr2M5rzBfegQYRIELYPCsat3tHCeNPEx5DOcfmBnoz6tehFQh/AePbf
-         UXkJj0ZSti36E+gxplm32dxqw5XUzli5XDs6w92Bg9BJmHajbyHfGgo9yUodApsUyMfu
-         2qptSE5XAeJczOD63hFvPsM9Xj4JTWQ0O5GrI/riTSI71Os40TwAG0eEag4aps9J3PXG
-         GSbA==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=NksUM4hspacjK/4iMmj7Sa/7sbBwnQesBUxmJw1Bnh4=;
+        b=rhx4xibvpRqlsVACkOXFqVPw78lcY3taQLDy6KFzdrHwZnikExDi9LZUFGOB8qQrvZ
+         2Cp9v2HyVjWBWs0h2E01NYVmPg0RRs1L+nHj5gD+aNrFO49WKaTabMlWXpZgLxgzHBPs
+         PHqR7o6JYBUKfYYaSin84QKfk4nnsTdpMdgIbxIWC8Wb8MrCAHeTkxCviR4pXlq55kcL
+         lLsFU1vH270/WjM0u9rCEebGyFlINBF33ef82rsTijJsViqU10J881UbXusIatvxSQZa
+         Sx3utYfCCiMczbFJ8TQKOBxWIFanTEr7qRm1Tsl1E14uaVuBdTo8mFAIvOW32hvpqWAW
+         oXJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gNV09hjY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a6si9812556qvl.116.2020.01.15.01.26.21
+        by mx.google.com with ESMTPS id s34si10334182qtk.212.2020.01.15.02.55.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2020 01:26:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Jan 2020 02:55:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51306 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gNV09hjY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irewP-0006Fw-6T
-	for alex.bennee@linaro.org; Wed, 15 Jan 2020 04:26:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53296)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irgKI-00048k-QZ
+	for alex.bennee@linaro.org; Wed, 15 Jan 2020 05:55:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35098)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1irewE-00066V-U4
- for qemu-arm@nongnu.org; Wed, 15 Jan 2020 04:26:12 -0500
+ (envelope-from <mst@redhat.com>) id 1irgJK-0002vi-Vw
+ for qemu-devel@nongnu.org; Wed, 15 Jan 2020 05:54:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1irewA-00038Q-QI
- for qemu-arm@nongnu.org; Wed, 15 Jan 2020 04:26:10 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:39768 helo=huawei.com)
+ (envelope-from <mst@redhat.com>) id 1irgJH-0008FK-Tc
+ for qemu-devel@nongnu.org; Wed, 15 Jan 2020 05:54:05 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56402
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1irewA-00032s-1L; Wed, 15 Jan 2020 04:26:06 -0500
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 3E092B4B3E2F8B50203F;
- Wed, 15 Jan 2020 17:26:00 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Wed, 15 Jan 2020
- 17:25:51 +0800
-Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified by
- _HID
-To: "Michael S. Tsirkin" <mst@redhat.com>
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1irgJH-0008Ef-P2
+ for qemu-devel@nongnu.org; Wed, 15 Jan 2020 05:54:03 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579085643;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NksUM4hspacjK/4iMmj7Sa/7sbBwnQesBUxmJw1Bnh4=;
+ b=gNV09hjYk9DVGZk0OZjowSid3lfbh/XlhXo7av55LCyLhEWbHF4whVLZ8UI/KB2tYmRF96
+ IRMJdrLYOxcPoKQGx6gJQ+Z2QciEMEZE0RuMuntINgUttHFeXGGyHUu0JnX/osutSgjYvv
+ +TtotmMg1O+iPuxugcBFqxFH0HqIyfM=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-436-4VWE11h6N3qakQeVtcp-hQ-1; Wed, 15 Jan 2020 05:54:01 -0500
+Received: by mail-qt1-f200.google.com with SMTP id m15so10965530qtc.18
+ for <qemu-devel@nongnu.org>; Wed, 15 Jan 2020 02:54:01 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=BPyZXE8Eq7PsP1cXF8jGmH30gmdfC6rjgvJvdpXsPrw=;
+ b=oUypF1AFilmguPMDQRngCz0Fm75YcMav/S/Aw+q7RjkMSnksmxEmK91e0x7OL6BUO6
+ lRVHJczqkCXMsrddxcKe1AMRK2yFvDIJtxOmNa5tNWm4NBU6PFBmxaasr8hE6zMGNViu
+ df/6UVPZLjF88itzddFuhVRDVLo9XFhoqa7+/HdkjGy5LIVXtYy6UtONBaTgmmjpo60w
+ yq9YzkQNdRU7a77bLz0eXUhaQ5a5fgUPsVI1F8PTRPSBQC+99ZdcSqUnCoaXPphtE7lx
+ X513rkT3tADJMIxLqPqgQk7x1koLyKMSO/y4cxCq4/shq/8WU2VLOoqDmSnQVQtej8oW
+ apuw==
+X-Gm-Message-State: APjAAAWgID41RAjDxaER4cYl343k8nQD6b7+nKeQ9u6yCk8LjPdwQGPn
+ daLCuKDWkQo5ddGPWL7whr/cKqudK9gPdKcmp5u/mKt/krZdFqBq9EPBPB7GmPG52Ujvp1M2GEL
+ iXW8kZJ4Plt4fRoo=
+X-Received: by 2002:ac8:5513:: with SMTP id j19mr2881927qtq.143.1579085640814; 
+ Wed, 15 Jan 2020 02:54:00 -0800 (PST)
+X-Received: by 2002:ac8:5513:: with SMTP id j19mr2881913qtq.143.1579085640579; 
+ Wed, 15 Jan 2020 02:54:00 -0800 (PST)
+Received: from redhat.com (bzq-79-183-34-164.red.bezeqint.net. [79.183.34.164])
+ by smtp.gmail.com with ESMTPSA id u5sm8249255qkj.127.2020.01.15.02.53.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 Jan 2020 02:53:59 -0800 (PST)
+Date: Wed, 15 Jan 2020 05:53:54 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Guoheyi <guoheyi@huawei.com>
+Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified
+ by _HID
+Message-ID: <20200115043355-mutt-send-email-mst@kernel.org>
 References: <20191219064759.35053-1-guoheyi@huawei.com>
  <20191219064759.35053-3-guoheyi@huawei.com>
  <20200105072504-mutt-send-email-mst@kernel.org>
  <CAFEAcA-sduqVO3rrG2V1VsysE2chgd0SnSySvEXFfue-aZN8dg@mail.gmail.com>
  <bbf347fe-c4a4-c5bb-19c2-3a18571b658f@huawei.com>
  <20200115011412-mutt-send-email-mst@kernel.org>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <7732900c-5490-6483-ca10-71c565e81945@huawei.com>
-Date: Wed, 15 Jan 2020 17:25:50 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ <7732900c-5490-6483-ca10-71c565e81945@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200115011412-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset="gbk"; format=flowed
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
+In-Reply-To: <7732900c-5490-6483-ca10-71c565e81945@huawei.com>
+X-MC-Unique: 4VWE11h6N3qakQeVtcp-hQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Corey Minyard <cminyard@mvista.com>, QEMU Developers <qemu-devel@nongnu.org>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
  wanghaibin.wang@huawei.com, Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ncKTrp7cS9K4
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oBTRa7ld39BU
 
-
-=D4=DA 2020/1/15 14:30, Michael S. Tsirkin =D0=B4=B5=C0:
-> Problem is IASL disassembler still doesn't work on all hosts
-> we want to support. And its output isn't really stable enough
-> to act as a golden master.
->
-> Until we have a better tool, I propose the contributor just follows all
-> steps 1-6.  The reason they have been listed as maintainer action items
-> is really just so that multiple patches affecting same ACPI table
-> can be applied, with maintainer resolving conflicts himself.
-> But this job can be pushed to contributors if as in the case of ARM
-> maintainer isn't really interested in reading ACPI code anyway.
->
-> So I propose the following patch - comments?
->
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
->
->
-> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-t=
+On Wed, Jan 15, 2020 at 05:25:50PM +0800, Guoheyi wrote:
+>=20
+> =E5=9C=A8 2020/1/15 14:30, Michael S. Tsirkin =E5=86=99=E9=81=93:
+> > Problem is IASL disassembler still doesn't work on all hosts
+> > we want to support. And its output isn't really stable enough
+> > to act as a golden master.
+> >=20
+> > Until we have a better tool, I propose the contributor just follows all
+> > steps 1-6.  The reason they have been listed as maintainer action items
+> > is really just so that multiple patches affecting same ACPI table
+> > can be applied, with maintainer resolving conflicts himself.
+> > But this job can be pushed to contributors if as in the case of ARM
+> > maintainer isn't really interested in reading ACPI code anyway.
+> >=20
+> > So I propose the following patch - comments?
+> >=20
+> > Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+> >=20
+> >=20
+> > diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-t=
 est.c
-> index f1ac2d7e96..3a6a3e7257 100644
-> --- a/tests/qtest/bios-tables-test.c
-> +++ b/tests/qtest/bios-tables-test.c
-> @@ -16,7 +16,10 @@
->    * 1. add empty files for new tables, if any, under tests/data/acpi
->    * 2. list any changed files in tests/bios-tables-test-allowed-diff.h
->    * 3. commit the above *before* making changes that affect the tables
-> - * Maintainer:
-> + *
-> + * Contributor or ACPI Maintainer (steps 4-7 need to be redone to reso=
+> > index f1ac2d7e96..3a6a3e7257 100644
+> > --- a/tests/qtest/bios-tables-test.c
+> > +++ b/tests/qtest/bios-tables-test.c
+> > @@ -16,7 +16,10 @@
+> >    * 1. add empty files for new tables, if any, under tests/data/acpi
+> >    * 2. list any changed files in tests/bios-tables-test-allowed-diff.h
+> >    * 3. commit the above *before* making changes that affect the tables
+> > - * Maintainer:
+> > + *
+> > + * Contributor or ACPI Maintainer (steps 4-7 need to be redone to reso=
 lve conflicts
-> + * in binary commit created in step 6):
-> + *
->    * After 1-3 above tests will pass but ignore differences with the ex=
+> > + * in binary commit created in step 6):
+> > + *
+> >    * After 1-3 above tests will pass but ignore differences with the ex=
 pected files.
->    * You will also notice that tests/bios-tables-test-allowed-diff.h li=
+> >    * You will also notice that tests/bios-tables-test-allowed-diff.h li=
 sts
->    * a bunch of files. This is your hint that you need to do the below:
-> @@ -28,13 +31,17 @@
->    * output. If not - disassemble them yourself in any way you like.
->    * Look at the differences - make sure they make sense and match what=
+> >    * a bunch of files. This is your hint that you need to do the below:
+> > @@ -28,13 +31,17 @@
+> >    * output. If not - disassemble them yourself in any way you like.
+> >    * Look at the differences - make sure they make sense and match what=
  the
->    * changes you are merging are supposed to do.
-> + * Save the changes, preferably in form of ASL diff for the the commit=
+> >    * changes you are merging are supposed to do.
+> > + * Save the changes, preferably in form of ASL diff for the the commit=
  log in
-NIT: 2 "the" before commit log
-> + * step 6.
->    *
->    * 5. From build directory, run:
->    *      $(SRC_PATH)/tests/data/acpi/rebuild-expected-aml.sh
-> - * 6. Now commit any changes.
-> - * 7. Before doing a pull request, make sure tests/bios-tables-test-al=
+> NIT: 2 "the" before commit log
+> > + * step 6.
+> >    *
+> >    * 5. From build directory, run:
+> >    *      $(SRC_PATH)/tests/data/acpi/rebuild-expected-aml.sh
+> > - * 6. Now commit any changes.
+> > - * 7. Before doing a pull request, make sure tests/bios-tables-test-al=
 lowed-diff.h
-> - *    is empty - this will ensure following changes to ACPI tables wil=
+> > - *    is empty - this will ensure following changes to ACPI tables wil=
 l
-> - *    be noticed.
-> + * 6. Now commit any changes to the expected binary, include diff from=
+> > - *    be noticed.
+> > + * 6. Now commit any changes to the expected binary, include diff from=
  step 4
-> + *    in commit log.
-> + * 7. Before sending patches to the list (Contributor)
-> + *    or before doing a pull request (Maintainer), make sure
-> + *    tests/bios-tables-test-allowed-diff.h is empty - this will ensur=
+> > + *    in commit log.
+> > + * 7. Before sending patches to the list (Contributor)
+> > + *    or before doing a pull request (Maintainer), make sure
+> > + *    tests/bios-tables-test-allowed-diff.h is empty - this will ensur=
 e
-> + *    following changes to ACPI tables will be noticed.
->    */
+> > + *    following changes to ACPI tables will be noticed.
+> >    */
+>=20
+> For contributors doing the full work, does that mean the patchset sent to
+> the list contains the following parts?
+>=20
+> 1. patch 1: list changed files in tests/bios-tables-test-allowed-diff.h.
+>=20
+> 2. patches 2-n: real changes, may contain multiple patches.
+>=20
+> 3. patch n+1: update golden master binaries and empty
+> tests/bios-tables-test-allowed-diff.h
+>=20
+> Thanks,
+>=20
+> Heyi
 
-For contributors doing the full work, does that mean the patchset sent=20
-to the list contains the following parts?
+Yes.
 
-1. patch 1: list changed files in tests/bios-tables-test-allowed-diff.h.
-
-2. patches 2-n: real changes, may contain multiple patches.
-
-3. patch n+1: update golden master binaries and empty=20
-tests/bios-tables-test-allowed-diff.h
-
-Thanks,
-
-Heyi
-
->  =20
->   #include "qemu/osdep.h"
->
->
-> .
+> >   #include "qemu/osdep.h"
+> >=20
+> >=20
+> > .
 

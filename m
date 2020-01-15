@@ -1,118 +1,108 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp6916879lff;
-        Wed, 15 Jan 2020 05:32:17 -0800 (PST)
-X-Received: by 2002:a05:6830:10d7:: with SMTP id z23mr2722772oto.114.1579095137575;
-        Wed, 15 Jan 2020 05:32:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579095137; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7473726lff;
+        Wed, 15 Jan 2020 13:28:20 -0800 (PST)
+X-Received: by 2002:a17:90a:30a4:: with SMTP id h33mr2401994pjb.50.1579123700729;
+        Wed, 15 Jan 2020 13:28:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579123700; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fqp8nV7BMHo3sO4FEH/4CIrXTeWrEBHxwKrbFlFKwxby0SD8GtI7rVBhNIfY8arevl
-         x1oMwi9PLfXeKeSMXX7dv1nxQ1Ojg7jXN1wQM1TVL6QS6N9mhl1jko2GMBlic8UVhJTB
-         wr5SOYppsD6S3+ND/0QA413tBPTP4q9bhbqL+BZV6O+aeHdtkchQzU0B9hiit5Nd21/O
-         ztSOiyIVFQS9Fh80qI3t57tDXUiD2TE8g2nYN8FUAAVB6rFPqAaoH0jMjfe1EMjikv5X
-         9oyqpRF4uHzyeDDlt/A3NqAJrWh2c6zhvGz8tYMHd6CNs04VRslah/fe4H72dWrlt+O6
-         zqtA==
+        b=fp3yk2w1YP3q6tHNeKPQwkplNkansAlX7QX3f7dUypnlWbNdcARDlP5nT5CvMGxn46
+         Pmru4fmWfxzYZgcgSN8Is3n6tLiZI0EupzAmTSvm5ARSq1mBuvkUbUPs+OmOsTDVmwfh
+         PbUfD9hbMqCYLUtU0trs2olgaNPbXt61t4HViJA8rZMmVnmbXTcSSJITKSjMTKvi+H3p
+         kGg22BBN1pLBaAiwARH02bpPcIMxuqQhvx9Cj1W9Bep70O5dSZZC91vCUgGicK2DYmzZ
+         rWy3n3Wc7EFeKyIudK077sJxXusgEqsu5l+Nc93+mEt4Cb0KZ6rOa4Z1GuGnkUoOAvP5
+         6RNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=/qC7LfI0GU9GYF/RzGSxqWfl63MVN3CJgjG7Md3SD2k=;
-        b=nYufxuN8BA3koBEx25KhfhNBhFb83KI4O6AzcNIwY1AsaljFeIlOQzeohR83mlU5LZ
-         DTYZBCxOrNPjGWFASW9DWB3Z/THEUBQhCUo8z8xjGPmXsmcvs/F279JbKYMTk0Mim0mj
-         pIT98+F9ViHEXKimcBXsAT4OKl/VMw/TMC0zbXb3VSovrlDg6T6JwbWUgSy8o1aQoN1+
-         F2pmZ/KU1jIebA1D0tbpp+/fmV7794Rz29kkNo2xCb0ZOOBtaD3FjxiIUho9pJN2uye/
-         B2ltctZO3zTr9vVSCs0EuOpESRB/c+gY0GetW4DTbXTjvcfECE6GmSa1pu77CjUMbW8B
-         1lFQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=GjlaLraBKsptUGCtLv6cppvVT81pJhdKQc7NnUI8J5U=;
+        b=pDw5AO4qEstUQVh0Rd+M7OhJKVStiMZmFwaZyVop4y/4kwzLV0X1WVY2tm9GDlKN5b
+         0d7ako5zBPn219g/pdrYeEh21nHDk6CRhLwXNbFg3hfWrEx+vJs5Q57kDgav9g/FLZ2G
+         bM3Nsn2hQzjk2ipmJfgHpSDCHwIdmb5XvrPmdm9elEnWcyS6yUmQoRGKKno51JG1sL91
+         zmKLwrPx5GQF6aDleq0Gg0WOWdFKvRyhKANY4KLf6/yjTm/znEhIxndGGgWFwWtn8TI1
+         TQRNJVAyg7F6HStPOQTwh9j1XdmXlj+v90D9XBbGN51z6CzWWAaNCnRtEi9rB/mSHvTz
+         QkWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fB62mJUG;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RgW4x10a;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g18sor9200664otk.82.2020.01.15.05.32.17
+        by mx.google.com with SMTPS id l14sor21875658pgm.16.2020.01.15.13.28.20
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 15 Jan 2020 05:32:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 15 Jan 2020 13:28:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fB62mJUG;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RgW4x10a;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=/qC7LfI0GU9GYF/RzGSxqWfl63MVN3CJgjG7Md3SD2k=;
-        b=fB62mJUGIxCLCfDTEFnx3mFz9+0c/4Ved8CRsFunCjbUcn8PF6iQjeEvN7awubxuYg
-         3JGDhZAt9ogdv2zcAMQIM8DZCLM3hwkOUiGQREDb8dR8t4pb6j74XJH5rU03Fihw/VYT
-         0TFoqQfgrcCgEzaPa0+kh0nChlzyb6bn9Xto7kkYT2bK04kxljKuC9NwPqD+EBDDUvNl
-         mSc6h+exTEgTh/Y8E3wMRshOVSfRR4ghCafDAX7Eh9C/gZovYcBWK2VjvYaLOR2fVWaN
-         HKXwDner1+GQB1GlN+rkP8L81A/nGp4pdr6dhZBb/W0mvTOVaClbx0l0VgwqjgBirxk/
-         VWaQ==
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=GjlaLraBKsptUGCtLv6cppvVT81pJhdKQc7NnUI8J5U=;
+        b=RgW4x10a8OB0jZ4sxX600KFHr8Ds2KuihfKHpPVpDEX2LGqMRONKwNEntfKZ+VaHGd
+         9FUQ3FQZD6uTlNd5i3VMH0+pc58GYCT9Y0eRMUcL2TIienFAYwEihViT8xUt06pDQjlM
+         a4KST5d9VLGH25rqmTXB58DxJIfy/w0Y7bReVNMiVduYlZ7Yjphk9arkN2bG7TsIw6xv
+         UF/7oMajR/J17rnv4H11HrhUcTfGZuE43d+JgEQo4Ez9kki6+qFiXHPOXJBSFgbVNrwH
+         XbJJgULslw2AWfodZdLXuVeGkDEifd1TBXhjxzHVf3U9BJMVrFEJtvWTH6cfDL8nxOOP
+         Kmfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=/qC7LfI0GU9GYF/RzGSxqWfl63MVN3CJgjG7Md3SD2k=;
-        b=KPeDVHexbpgnMMelksm0EnqrV82+BdhkqvzUIsH/Fa6vwD8ctS+lrvE8Rkoq4YeMBS
-         07jLz8ekP67qSJXsm0M5AmSzfpBz7Q61Npe/AujCdXoN+7lMZcMkD14RLI6xispwD2+0
-         t+gGW6yM6ef0Iol9GghEqaI0ksMy1ePfm+A8O0Wy6UZDhja4Ijmo212ltjv9efv4o4KI
-         lZe9qhr2H3NLa6uJs+nAMDgXjCTkpkeikfrx1evF78iF4OG2ZVLyb8YeJ6IAqpHtcTFM
-         UWRzS0090fRqzDl8Y/Mx9EqQdZenPER8May3etaecyM2ColUBFGmsqJXBluWULqIrhq+
-         LLVQ==
-X-Gm-Message-State: APjAAAXSrp9Vf24MmhrHhMTmP5k0bH71Z66a+UdPqUpvcnZH826z52Zi
-	co4C8cY6bOtk62a4vKOaPFjREmexcR7V7OndEdWAuHq9+BAWgw==
-X-Google-Smtp-Source: APXvYqwjaV3uaYdFtLb1OmV40Z+tpi2faV9rWGGcgVvlfd6pscpJAFJs1+9uHWSX6hp8dXNGwT7GrxvUTXij8qaGFrw=
-X-Received: by 2002:a05:6830:184:: with SMTP id q4mr2782901ota.232.1579095136812;
- Wed, 15 Jan 2020 05:32:16 -0800 (PST)
-MIME-Version: 1.0
-References: <11d88b2741eac3f634d5aed9e3355c974b533f7b.camel@kernel.crashing.org>
- <CAFEAcA-A_caQgwi5DzExdZChoTg-Qa73hq7Ho7dPLiN633Yj1Q@mail.gmail.com> <3ab2ca1f7a9b37b201a58f3a817edc5193e8b1f4.camel@kernel.crashing.org>
-In-Reply-To: <3ab2ca1f7a9b37b201a58f3a817edc5193e8b1f4.camel@kernel.crashing.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 15 Jan 2020 13:32:05 +0000
-Message-ID: <CAFEAcA8mphBky9Q2HTdOpQHiizd+5-o=yRnBbd_k1y6Uk-h8dA@mail.gmail.com>
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=GjlaLraBKsptUGCtLv6cppvVT81pJhdKQc7NnUI8J5U=;
+        b=ACOwfo9jZDO7XIwhkoGraH2TBlpSlPNZ2d6WNuxk12G+85N5U2+sDK4HD+Iu8FA/NX
+         ytJqV1ZuBiWbcejVngj37rz3Q+4MAE/vbjzAiKFAlqt1f5iqAD4ckOfE1zQeZyPAWSel
+         pejatYXsrT7p8Ca1fqdIvnfbzsmdnLlHTDp2SFPUYjr1YgWLwZ085hoAZf+jupC+FWnE
+         QJXUVVGnRF9S2gxR+WxlGQkvqWHFfoTVphL6OSxepJ7xpZU9Eg3M0QcKk+Vff7eo5FLi
+         MtfVdEcj2MQY/X1cRlXGp0m4L58lPUIZvut4RlXVZdVWHFBHX/bsCp17WFSHJJcSsC8q
+         /l8w==
+X-Gm-Message-State: APjAAAXzaWwu53jkIR51K807mYJzvbIm2Mynj16DTYA0SAFM42H/QxmM
+	ZOSJdE8b7MTXzptrMPS6/j8DptxDmQ1/uQ==
+X-Google-Smtp-Source: APXvYqykKFIci5e1pFUm9V0MfNzpNC8l0HY+e7b2U4fuCJoqtBReNv1b5wQr94qkKcdm31R5kJTacA==
+X-Received: by 2002:a63:2a49:: with SMTP id q70mr34564054pgq.265.1579123700176;
+        Wed, 15 Jan 2020 13:28:20 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.3.43] (rrcs-66-91-136-155.west.biz.rr.com. [66.91.136.155])
+        by smtp.gmail.com with ESMTPSA id s7sm746379pjk.22.2020.01.15.13.28.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Jan 2020 13:28:19 -0800 (PST)
 Subject: Re: Semihosting, arm, riscv, ppc and common code
-To: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Keith Packard <keithp@keithp.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: qHtfTCtFLMEx
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Cc: Liviu Ionescu <ilg@livius.net>, keithp@keithp.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <11d88b2741eac3f634d5aed9e3355c974b533f7b.camel@kernel.crashing.org>
+ <AE7841A1-B4D6-4D6D-9AFD-01C4604D7BC4@livius.net>
+ <cd9a2de94700a2781f176247131dceba690d8f31.camel@kernel.crashing.org>
+ <87sgkimkma.fsf@linaro.org>
+ <1309ca0ab6405d88cfd949c73130ad0f2af944a6.camel@kernel.crashing.org>
+ <87wo9tkjxz.fsf@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <81f25a9e-a52c-ca8d-4d4b-ca36fcee73ed@linaro.org>
+Date: Wed, 15 Jan 2020 11:28:14 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <87wo9tkjxz.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: uIfqAxLrf302
 
-On Wed, 15 Jan 2020 at 01:17, Benjamin Herrenschmidt
-<benh@kernel.crashing.org> wrote:
-> On Tue, 2020-01-14 at 09:59 +0000, Peter Maydell wrote:
-> > Note that semihosting is not a "here's a handy QEMU feature"
-> > thing. It's an architecture-specific API and ABI, which should
-> > be defined somewhere in a standard external to QEMU.
->
-> There is no such standard for powerpc today that I know of.
+On 1/15/20 2:01 AM, Alex Bennée wrote:
+> Hmm, I'm not so sure. QEMU tries to emulate real HW although I
+> appreciate that is a somewhat loose definition once you get to things
+> like -M virt and other such SW like abstractions. Is semihosting even
+> going to be a thing on real RiscV/Power silicon?
 
-So you need to write one down somewhere. You're proposing
-an ABI which will be implemented by multiple implementors
-and used by multiple consumers. That needs a spec, not
-just code. I don't want to see more semihosting implementations
-added to QEMU that don't have a specification written
-down somewhere.
+For risc-v, the odd nop-full semi-hosting call sequence was chosen to work with
+jtag debuggers on real silicon.
 
-The riscv single paragraph in their arch spec that vaguely
-says "works like arm semihosting" is not sufficient detail, incidentally.
+As for the rest of the abi, the stuff after the debugger/emulator has gotten
+control, they did have the opportunity to do better, and did not.
 
-> Keith and I are somewhat of a different mind here. From the perspective
-> of the user of that API (picolibc is one), it's easier to deal with a
-> single one and have everybody inherit the same bugs.
->
-> Now I understand the point of wanting to fix the mistakes made but I
-> would suggest we do so by proposing extensions to the existing one to
-> do so.
 
-The point about the mistakes is that you can't easily fix
-them by adding extensions, because the core of the biggest
-mistake is "we didn't provide a good way to allow extensions to
-be added and probed for by the user". So we had to implement
-an ugly and hard to implement mechanism instead. New
-architectures could mandate providing the good way from the start
-and avoid the painful-to-implement approach entirely.
-(I think RISCV has already missed this window of opportunity,
-which is a shame.)
-
-thanks
--- PMM
+r~

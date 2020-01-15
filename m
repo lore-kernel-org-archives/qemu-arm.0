@@ -1,306 +1,152 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7095448lff;
-        Wed, 15 Jan 2020 07:56:05 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyQPQhE98iOpY5es8/nszT2/OrM1WwubVQVMKIETs7vCD532jlDt3ijG3xrGVUkAVDQzP4g
-X-Received: by 2002:a17:906:9511:: with SMTP id u17mr28223135ejx.13.1579103765663;
-        Wed, 15 Jan 2020 07:56:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579103765; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7099983lff;
+        Wed, 15 Jan 2020 08:00:15 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw07shevmpRjEzc/1P+inZCJU8SrTGvYAsFEQnlmu+DdXCq+TwkzFmJicisnVs4hs7mWW3S
+X-Received: by 2002:ae9:e115:: with SMTP id g21mr27363924qkm.187.1579104015568;
+        Wed, 15 Jan 2020 08:00:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579104015; cv=none;
         d=google.com; s=arc-20160816;
-        b=QTuujQvwZEGjjoG5pLKNicgJ3+NPBgFYurdtlLqHpjTWQuAOZS/y6QX0HBNticsirM
-         uFGNj4Dx1zn0Krat+j4grIi4a35+gRHYXGpG3IUQaaOlGlyICWs1r20LXHxM6pK8YpXs
-         qrk92B5ERwqNJDEKXEOm3zpbYL9hsAe3ZdtED5il1e1lIVAlUvhFgflmBw8ChphMF/8q
-         wN2LLzb/sNo3gCUX0vRryTvoJ2mO2MrVDozSrqS/L5sIdzcIfEKlO9XEsKxjWzrKAfm0
-         REneD13oiMJMgNIwjPnqs6cSYATwmKUCvmXalfhh23+hxi8x6gYoVcOxlClIxfBi9nKw
-         rP2w==
+        b=B6zV3VtCBNb3USwCu4iJZcBf5hcb9DOK46JD14tEoJ0/RZOymoTet+vTqK8TgadvDQ
+         cwngoJZPGCboIZa/bAnY+cDIM2tHqBDwnO8Vg3iKo/tZNCIH+pgzdrt+B2eErsIzYMo6
+         ox6uR1J7/M6nevKDBfzAwKWUk76r/7WDZG98lUKZZLUwWWYEjEMpeZonltiSAGDRjBGv
+         DqzXUguYYYpU6p2KOo3SvnD8sTJOTKzA7arjbXX/8ucGDR+Uf5VD9z9+v+0Ajl8v3U9Q
+         hbhiHtpI2SwJs4fchbMoiAWFSK6nx4igs8k7KL4lw4kx3LI2CRq7fJVwRFXXxV21ojsI
+         Cy5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=PJlCD2JradsghflyEMq7rSMnpFDz8KzEvNJhvIgn0qw=;
-        b=CW6ErnuIbN+JPQFHEmgGIz1xZPVQ/hbZjTSwvrGuAq6QlreBBdj7Eqos/n1ft69LhP
-         WW2oxfUtz3IvitX7vzNOTu7pAI2bhi8mqVjPJeMiT38KlqaXdIAZdRJhBJoCiaxZI2gl
-         7X1XjPy+v4V6e8V76G+G3VKMNMaHHTuaKHeQKHO5xHXEAvNzUZbHA4m3l6OIOoXWNQDi
-         vRVWYU2zKiYWaUR3KziGioumi8Nh5wjHc90VK97P93w8Ir5tU+zccl2cuEozTOezmOpu
-         FYOvPh5IzYSGFnpPq004TyeWsPmCOnTI/R/jmzI5eJS4bNIXvEshCsTZ5U5QMun1ofUV
-         9rUQ==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=9/uTMn24Zke4DRuhEw7wyZIybd89ak3R1ZI5+FRteL8=;
+        b=WYlDs5rM51Gtwa+ftzpOcjgC8XyM57r8XRhBtLt64VHeiPFfPbEaPgPsTLQkq+jgK7
+         a0mz0VvqIoIax2yvEgnmB0No0UWXAvCwU31sMhDx62Z7BLITWD/9PoDCsKBftbWZMtPp
+         +lXMmINwKc03NT0JDGg8oNfpu0ILYjeQZaUQqLYrDYNvVKdgF0UGK4QQTQWQh3cPZdMe
+         GhcGgo+G917Nd7g74H64g8NgVi5HwGVOZNXq0ZX2oW2lGB7UU3ECUzmRKdeJYjVRoly2
+         OYHyAdqkNV1ZTtTpKVSmwv5z+ob3sTS+8a71T1JiZUP6XJzSTDDDXGxGOY0xZJRUEjDX
+         S1bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fxI8ltNK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="X6DnYPh/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g20si11797050edm.150.2020.01.15.07.56.05
+        by mx.google.com with ESMTPS id c23si11368139qtq.320.2020.01.15.08.00.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2020 07:56:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Jan 2020 08:00:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fxI8ltNK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="X6DnYPh/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56170 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56266 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irl1Y-0006X7-5J
-	for alex.bennee@linaro.org; Wed, 15 Jan 2020 10:56:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50135)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1irl5a-0004dc-6I
+	for alex.bennee@linaro.org; Wed, 15 Jan 2020 11:00:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53505)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1irkLN-0001fM-GH
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:12:31 -0500
+ (envelope-from <pkrempa@redhat.com>) id 1irkhS-0000xZ-3a
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 10:35:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1irkLL-0000h6-OM
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:12:29 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:46002
+ (envelope-from <pkrempa@redhat.com>) id 1irkhO-0005q3-J9
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 10:35:17 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:49634
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1irkLL-0000gl-JZ
- for qemu-devel@nongnu.org; Wed, 15 Jan 2020 10:12:27 -0500
+ (Exim 4.71) (envelope-from <pkrempa@redhat.com>) id 1irkhN-0005oB-26
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 10:35:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579101147;
+ s=mimecast20190719; t=1579102512;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=PJlCD2JradsghflyEMq7rSMnpFDz8KzEvNJhvIgn0qw=;
- b=fxI8ltNKwc83lsW85akfmhAnGVi4NALb/j4DX//tKiY2ZW3ZI+VjkHa5Cv/yrUYL1ilIh1
- dpMYeaM4OFhitwriNUJ8mpMZ8mm32mnQzO91bMWaLYEPg2+v4ia2k+H5JpkEgjPMRV7C1/
- czaBQ1q3ZT+GSZ/41CHTP+3H7T6PeMQ=
+ bh=9/uTMn24Zke4DRuhEw7wyZIybd89ak3R1ZI5+FRteL8=;
+ b=X6DnYPh/lpFiUVhDNsafA10R8XCBd1hS3TldemyxxNIXpY5N8d0MitlVO5vrqBCG6z6TUo
+ PdAN5dOG4BRQzHFWS84lRrbnn3gEJ+A6WynJY5Jb7LuGGmXsUqVutFk1KHi2HwTVDGcPgi
+ 3URailnTVVsBm+NRMc6Y6ntj/UiWoDQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-358-PX7tDXq-Mrm36JZDvXVhgg-1; Wed, 15 Jan 2020 10:12:25 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-203-VBWK8jUzPMWpm1R8SUoEOQ-1; Wed, 15 Jan 2020 10:35:09 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 112471005527;
- Wed, 15 Jan 2020 15:12:24 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
- (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 197F4194B2;
- Wed, 15 Jan 2020 15:12:16 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 82/86] numa: forbid '-numa node,
- mem' for 5.0 and newer machine types
-Date: Wed, 15 Jan 2020 16:07:37 +0100
-Message-Id: <1579100861-73692-83-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4C3F6928C3C;
+ Wed, 15 Jan 2020 15:35:07 +0000 (UTC)
+Received: from angien.pipo.sk (unknown [10.43.2.48])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 063EC675AF;
+ Wed, 15 Jan 2020 15:34:55 +0000 (UTC)
+Date: Wed, 15 Jan 2020 16:34:53 +0100
+From: Peter Krempa <pkrempa@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: Re: [libvirt] [PATCH v2 82/86] numa: forbid '-numa node, mem' for
+ 5.0 and newer machine types
+Message-ID: <20200115153453.GL3243410@angien.pipo.sk>
 References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: PX7tDXq-Mrm36JZDvXVhgg-1
+ <1579100861-73692-83-git-send-email-imammedo@redhat.com>
+MIME-Version: 1.0
+In-Reply-To: <1579100861-73692-83-git-send-email-imammedo@redhat.com>
+X-PGP-Key-ID: 0xD018682B
+X-PGP-Key-Fingerprint: D294 FF38 A6A2 BF40 6C75  5DEF 36EC 16AC D018 682B
+User-Agent: Mutt/1.13.0 (2019-11-30)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: VBWK8jUzPMWpm1R8SUoEOQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- libvir-list@redhat.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- pbonzini@redhat.com, david@gibson.dropbear.id.au, rth@twiddle.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5et/LxZTXZ2E
+ libvir-list@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
+ rth@twiddle.net, david@gibson.dropbear.id.au
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tcUZy/NdMcox
 
-Deprecation period is ran out and it's a time to flip the switch
-introduced by cd5ff8333a.
-Disable legacy option for new machine types and amend documentation.
+On Wed, Jan 15, 2020 at 16:07:37 +0100, Igor Mammedov wrote:
+> Deprecation period is ran out and it's a time to flip the switch
+> introduced by cd5ff8333a.
+> Disable legacy option for new machine types and amend documentation.
+>=20
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+> CC: peter.maydell@linaro.org
+> CC: ehabkost@redhat.com
+> CC: marcel.apfelbaum@gmail.com
+> CC: mst@redhat.com
+> CC: pbonzini@redhat.com
+> CC: rth@twiddle.net
+> CC: david@gibson.dropbear.id.au
+> CC: libvir-list@redhat.com
+> CC: qemu-arm@nongnu.org
+> CC: qemu-ppc@nongnu.org
+> ---
+>  hw/arm/virt.c        |  2 +-
+>  hw/core/numa.c       |  6 ++++++
+>  hw/i386/pc.c         |  1 -
+>  hw/i386/pc_piix.c    |  1 +
+>  hw/i386/pc_q35.c     |  1 +
+>  hw/ppc/spapr.c       |  2 +-
+>  qemu-deprecated.texi | 16 ----------------
+>  qemu-options.hx      |  8 ++++----
+>  8 files changed, 14 insertions(+), 23 deletions(-)
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
-CC: peter.maydell@linaro.org
-CC: ehabkost@redhat.com
-CC: marcel.apfelbaum@gmail.com
-CC: mst@redhat.com
-CC: pbonzini@redhat.com
-CC: rth@twiddle.net
-CC: david@gibson.dropbear.id.au
-CC: libvir-list@redhat.com
-CC: qemu-arm@nongnu.org
-CC: qemu-ppc@nongnu.org
----
- hw/arm/virt.c        |  2 +-
- hw/core/numa.c       |  6 ++++++
- hw/i386/pc.c         |  1 -
- hw/i386/pc_piix.c    |  1 +
- hw/i386/pc_q35.c     |  1 +
- hw/ppc/spapr.c       |  2 +-
- qemu-deprecated.texi | 16 ----------------
- qemu-options.hx      |  8 ++++----
- 8 files changed, 14 insertions(+), 23 deletions(-)
+I'm afraid nobody bothered to fix it yet:
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index e2fbca3..49de0d8 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2049,7 +2049,6 @@ static void virt_machine_class_init(ObjectClass *oc, =
-void *data)
-     hc->pre_plug =3D virt_machine_device_pre_plug_cb;
-     hc->plug =3D virt_machine_device_plug_cb;
-     hc->unplug_request =3D virt_machine_device_unplug_request_cb;
--    mc->numa_mem_supported =3D true;
-     mc->auto_enable_numa_with_memhp =3D true;
-     mc->default_ram_id =3D "mach-virt.ram";
- }
-@@ -2153,6 +2152,7 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
- static void virt_machine_4_2_options(MachineClass *mc)
- {
-     compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
-+    mc->numa_mem_supported =3D true;
- }
- DEFINE_VIRT_MACHINE(4, 2)
-=20
-diff --git a/hw/core/numa.c b/hw/core/numa.c
-index 0970a30..3177066 100644
---- a/hw/core/numa.c
-+++ b/hw/core/numa.c
-@@ -117,6 +117,12 @@ static void parse_numa_node(MachineState *ms, NumaNode=
-Options *node,
-     }
-=20
-     if (node->has_mem) {
-+        if (!mc->numa_mem_supported) {
-+            error_setg(errp, "Parameter -numa node,mem is not supported by=
- this"
-+                      " machine type. Use -numa node,memdev instead");
-+            return;
-+        }
-+
-         numa_info[nodenr].node_mem =3D node->mem;
-         if (!qtest_enabled()) {
-             warn_report("Parameter -numa node,mem is deprecated,"
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 21b8290..fa8d024 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1947,7 +1947,6 @@ static void pc_machine_class_init(ObjectClass *oc, vo=
-id *data)
-     hc->unplug =3D pc_machine_device_unplug_cb;
-     mc->default_cpu_type =3D TARGET_DEFAULT_CPU_TYPE;
-     mc->nvdimm_supported =3D true;
--    mc->numa_mem_supported =3D true;
-     mc->default_ram_id =3D "pc.ram";
-=20
-     object_class_property_add(oc, PC_MACHINE_DEVMEM_REGION_SIZE, "int",
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index fa12203..0a9b9e0 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -435,6 +435,7 @@ static void pc_i440fx_4_2_machine_options(MachineClass =
-*m)
-     pc_i440fx_5_0_machine_options(m);
-     m->alias =3D NULL;
-     m->is_default =3D 0;
-+    m->numa_mem_supported =3D true;
-     compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
-     compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
- }
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 84cf925..4d6e2be 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -363,6 +363,7 @@ static void pc_q35_4_2_machine_options(MachineClass *m)
- {
-     pc_q35_5_0_machine_options(m);
-     m->alias =3D NULL;
-+    m->numa_mem_supported =3D true;
-     compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
-     compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
- }
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index bcbe1f1..2686b73 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4383,7 +4383,6 @@ static void spapr_machine_class_init(ObjectClass *oc,=
- void *data)
-      * in which LMBs are represented and hot-added
-      */
-     mc->numa_mem_align_shift =3D 28;
--    mc->numa_mem_supported =3D true;
-     mc->auto_enable_numa =3D true;
-=20
-     smc->default_caps.caps[SPAPR_CAP_HTM] =3D SPAPR_CAP_OFF;
-@@ -4465,6 +4464,7 @@ static void spapr_machine_4_2_class_options(MachineCl=
-ass *mc)
- {
-     spapr_machine_5_0_class_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
-+    mc->numa_mem_supported =3D true;
- }
-=20
- DEFINE_SPAPR_MACHINE(4_2, "4.2", false);
-diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
-index 982af95..17a0e1d 100644
---- a/qemu-deprecated.texi
-+++ b/qemu-deprecated.texi
-@@ -89,22 +89,6 @@ error in the future.
- The @code{-realtime mlock=3Don|off} argument has been replaced by the
- @code{-overcommit mem-lock=3Don|off} argument.
-=20
--@subsection -numa node,mem=3D@var{size} (since 4.1)
--
--The parameter @option{mem} of @option{-numa node} is used to assign a part=
- of
--guest RAM to a NUMA node. But when using it, it's impossible to manage spe=
-cified
--RAM chunk on the host side (like bind it to a host node, setting bind poli=
-cy, ...),
--so guest end-ups with the fake NUMA configuration with suboptiomal perform=
-ance.
--However since 2014 there is an alternative way to assign RAM to a NUMA nod=
-e
--using parameter @option{memdev}, which does the same as @option{mem} and a=
-dds
--means to actualy manage node RAM on the host side. Use parameter @option{m=
-emdev}
--with @var{memory-backend-ram} backend as an replacement for parameter @opt=
-ion{mem}
--to achieve the same fake NUMA effect or a properly configured
--@var{memory-backend-file} backend to actually benefit from NUMA configurat=
-ion.
--In future new machine versions will not accept the option but it will stil=
-l
--work with old machine types. User can check QAPI schema to see if the lega=
-cy
--option is supported by looking at MachineInfo::numa-mem-supported property=
-.
--
- @subsection -numa node (without memory specified) (since 4.1)
-=20
- Splitting RAM by default between NUMA nodes has the same issues as @option=
-{mem}
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 709162c..55500bd 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -223,10 +223,10 @@ For example:
- -numa cpu,node-id=3D0,socket-id=3D0 -numa cpu,node-id=3D1,socket-id=3D1
- @end example
-=20
--@samp{mem} assigns a given RAM amount to a node. @samp{memdev}
--assigns RAM from a given memory backend device to a node. If
--@samp{mem} and @samp{memdev} are omitted in all nodes, RAM is
--split equally between them.
-+Legacy @samp{mem} assigns a given RAM amount to a node (not supported for =
-5.0
-+and newer machine types). @samp{memdev} assigns RAM from a given memory ba=
-ckend
-+device to a node. If @samp{mem} and @samp{memdev} are omitted in all nodes=
-, RAM
-+is split equally between them.
-=20
- @samp{mem} and @samp{memdev} are mutually exclusive. Furthermore,
- if one node uses @samp{memdev}, all of them have to use it.
---=20
-2.7.4
+https://bugzilla.redhat.com/show_bug.cgi?id=3D1783355
 

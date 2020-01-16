@@ -1,106 +1,106 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8193833lff;
-        Thu, 16 Jan 2020 02:42:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxR7cW5I8ztGXPYLGXIfMmSAQa6Y3cqBmnnjDC5DH442OIo6Wy/OhP7ETLCdQtY+QiSZUzA
-X-Received: by 2002:a37:4dc1:: with SMTP id a184mr32634863qkb.62.1579171370092;
-        Thu, 16 Jan 2020 02:42:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579171370; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8299296lff;
+        Thu, 16 Jan 2020 04:26:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzpO2Nmsm89pNW/0P+VYV1/145sRAqQ4ALTVBgN6i4bLrZa1zr5qtwBJX/AHMor4+pwDEgY
+X-Received: by 2002:a37:4047:: with SMTP id n68mr33009036qka.258.1579177584152;
+        Thu, 16 Jan 2020 04:26:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579177584; cv=none;
         d=google.com; s=arc-20160816;
-        b=yRIXnPRkw7yRUQRX8mxW/QBIhO1GcVXTHvxEtuF2Zzq32vQ1IWvlWb9P/NKUfq9mEB
-         jNKdbq5vcty7cY+WYIasCQzbYoqXRkP4zGV6QSqeix1S9hZDR34JVzQLeWRcyQneYxH3
-         OC66nO/uZq9/cGYIaQPtNIZ2mbPOSp1IrVMJvzjNDZDbr/99dXRkW0THjYg6PmABueUe
-         b3rSnVPaj1+ek6+3HGzFMlziD3rem79Owh7Wxdty4CKGqT69T3BKH+r/zcE0mvotg+dv
-         v8Qun24KovK9fC1YZj7j3c6eQBDhHhtKg+Ohg2Am5Fg+zQK2EEhJ70zwDmJ0Ch3ol1tb
-         awlQ==
+        b=quhcI48hlbbP4QUZ/uepGIklLbiYDngHi3uf/QqEm0ENpg4xkKgZ1lFUMNoP6ogPgU
+         hJsRhF4WRlYzqScgc3VPjCXBGdnUkxyZ12V6cDtM17BCuLggEzz1TbcDofFY7IQ3nsBQ
+         oorShEWXSWIz9PAkfn6wr6KaaEi0gwSXxmD/YJo+lwie/YBSu+1TvS56eHt9cXYsjn03
+         X5KCc1TL8tWPrCIHbboOuxwnX2Dklf8pgFvcflHoFBkcSoqOlXF/8XWS3jBzRvRE5Ph6
+         Br96l9i7CrqQoSK1jjNuO/fI5w4qHzKIAwhyEnGsmBFUtG1TFEk2N9wcyXg/+1pXoVxA
+         gmPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=NLLo3ClTCfYupTw8b+mbsY6ZFKgrkR58WKCRiZyYhYc=;
-        b=j6hDvsurax0x1GOfPHAnuqHBjPskMOv7FbrOSRIdiV+9gtzHyO932d1pAhQAtJHkeH
-         6it7XyUHhl+Gz+n7oL2hSmZP/U8DGfKAy8Mdw2RVMQQKz+8tpvYz6iMIQMMZDy85bSVM
-         RPVwsV3oRWKZMJtsqD0teOVyqFEdXKoWgRT7hbQwovQgboyoUBBGru50y3/1db0Eslhe
-         rKHkEyB3V4JE6qirK3I5FWaaa3JGmzwkr2XKxcewHAxVuGlUEsbiwIHB7LDgOT92768d
-         XZsW0bSaQSioa+fidnHFVFPc9zos6AXhDZ92s+EDGVar/HL9krPaUORaKHxwTAKF3L6+
-         oPSQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=qC7hBoaIL8oUCA1xX16AOy/PcPLtnMR4zhXz9UbIBh8=;
+        b=u9+HnI5ht+qgUFwOkNFmW8zJfaXN+Gd1QMLZSXJrxaThBJ2QlDLAb9/vFyJXfJAAZ3
+         Pcr5JAO2pHIMiLlXTyvyJDC/b4i9x1uF22bPO8HzuEvlyIVmE3OKcGTglX7yXdc9vPN4
+         mDQdiTmRedkAXHMXRNcUf57/UXxfRrQbFWB1VhzSMk81SOCEecj9HrRo5X2kptMFoub3
+         wKseb6BVPGffmbRiTSoNxi+LUq6TNedGO7wNe4KsTnWAvIZ2nYtQT5Fe9rACaqiDnFQD
+         YH09ZnNu3XxT92sU5wtlXXDzwgtUwhpdwGXwGP2GNehVU4LpgsUYoXC3lCVUH6bUqUdA
+         O17A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WJI6d5Kn;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LWCkTYNs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z72si13175258qka.360.2020.01.16.02.42.49
+        by mx.google.com with ESMTPS id i5si12257574qkh.376.2020.01.16.04.26.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 02:42:50 -0800 (PST)
+        Thu, 16 Jan 2020 04:26:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WJI6d5Kn;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LWCkTYNs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39620 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1is2bx-0002st-HB
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 05:42:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48219)
+	id 1is4EB-0006AN-Id
+	for alex.bennee@linaro.org; Thu, 16 Jan 2020 07:26:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33855)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mprivozn@redhat.com>) id 1is2bZ-0002p3-BR
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 05:42:28 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1is4Cn-0004fT-3F
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 07:24:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mprivozn@redhat.com>) id 1is2bV-0005VW-VW
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 05:42:25 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:39729
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mprivozn@redhat.com>) id 1is2bV-0005Ue-RI
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 05:42:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579171341;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NLLo3ClTCfYupTw8b+mbsY6ZFKgrkR58WKCRiZyYhYc=;
- b=WJI6d5KnGV+n/TFDa8Y7awCsKxA8ZhMrezu5Z6maOFI2UnvR8gtPDtQdRvxyCUTEZtHwK+
- coVhvplGAo9sd0yqriMcbJdPK2uFWcjhKTz9UXASEvrFHWTcuBhFsqTiqZ4xv0KVF3jDn3
- DKii/kDtPozLL2B5Oz/NjzqVloVozQI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-225-CCspmgHUNv6FQtY0xwlLiw-1; Thu, 16 Jan 2020 05:42:20 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E6CA100550E;
- Thu, 16 Jan 2020 10:42:18 +0000 (UTC)
-Received: from [10.43.2.30] (unknown [10.43.2.30])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0720C84345;
- Thu, 16 Jan 2020 10:42:10 +0000 (UTC)
-Subject: Re: [libvirt] [PATCH v2 82/86] numa: forbid '-numa node, mem' for 5.0
- and newer machine types
-To: Igor Mammedov <imammedo@redhat.com>, Peter Krempa <pkrempa@redhat.com>
-References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
- <1579100861-73692-83-git-send-email-imammedo@redhat.com>
- <20200115153453.GL3243410@angien.pipo.sk>
- <20200115175237.325055f3@redhat.com>
-From: Michal Privoznik <mprivozn@redhat.com>
-Message-ID: <8b9be103-d550-853a-86ff-1dc504daab64@redhat.com>
-Date: Thu, 16 Jan 2020 11:42:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <peter.maydell@linaro.org>) id 1is4Ch-0000w0-M3
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 07:24:56 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:44979)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1is4Ch-0000uq-Hs
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 07:24:51 -0500
+Received: by mail-ot1-x343.google.com with SMTP id h9so19107916otj.11
+ for <qemu-arm@nongnu.org>; Thu, 16 Jan 2020 04:24:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qC7hBoaIL8oUCA1xX16AOy/PcPLtnMR4zhXz9UbIBh8=;
+ b=LWCkTYNsBWjgaf7cJPj8Ofy+vDMVLYHWW5kgTp/vzPLycGQXNGJF+eRm1pcEZ/l+AK
+ tRE7RVfcY5zEBKCgF1on24P6HMv6dLnm667MlZ+4lSJvP7iKylp618O1bvtP5UZWntcx
+ URlQUeO/9sWMFyhoWnEEOlohN1GE5+igbYcjLxlFhQlpHfb/pWcKSPt0wnTvjGJBHpLw
+ jnpQB1OzeONRvfPK5DvcY1eo08AWd5dKluEn3CfyzkOeKV1WqaJryy5h09/6I1SJt4Nf
+ W8hqUNQiPcOiP4O3zzOTs3TBJzrajqA1kRGClHPlBVvZMMLUpChywGBwn93b+aS3MaPM
+ CkYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qC7hBoaIL8oUCA1xX16AOy/PcPLtnMR4zhXz9UbIBh8=;
+ b=VNOqHzhigfnyFodt3895Sj6FwGRjHiowKuEQ4ODBCiYtCyyVZYWCN2lPneUNU22EJY
+ Hi14AMQNVUlRye82oXHfWdhir4BRIi2UuXkUzmCuOuCeytELHh9AN/rUjyFt03jKXhQc
+ ggPgfEnnt4kqwyRNVBZdAXkcepyhqw0gujrOW9FpxNWCnOnTuH0H6q162mr9Qwoc+75j
+ EZVkhQjgWbg91ESUZBrp0ev+tmgiCJ0pR6ypv4ci4OPwXpdF+ndjkU3jGCKBYvxUNAAj
+ pw1xwGTf7QTktHNjIg9NpccE+mYW9daUl6oRoEWF/1Dyh5y1GE+oMTqRoensIMf1TebN
+ +omQ==
+X-Gm-Message-State: APjAAAXWFfxDOnxao6lVo/S7LS9+x2qilhlLm/doHWcKtEvcr0xF655f
+ 5T7UMmoQtQ7gUU/JTj0/9ChUbg75Owza4G/vxWlcTA==
+X-Received: by 2002:a05:6830:184:: with SMTP id
+ q4mr1741706ota.232.1579177490204; 
+ Thu, 16 Jan 2020 04:24:50 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200115175237.325055f3@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: CCspmgHUNv6FQtY0xwlLiw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+References: <20191219064759.35053-1-guoheyi@huawei.com>
+ <20191219064759.35053-3-guoheyi@huawei.com>
+ <20200105072504-mutt-send-email-mst@kernel.org>
+ <CAFEAcA-sduqVO3rrG2V1VsysE2chgd0SnSySvEXFfue-aZN8dg@mail.gmail.com>
+ <bbf347fe-c4a4-c5bb-19c2-3a18571b658f@huawei.com>
+ <20200115011412-mutt-send-email-mst@kernel.org>
+ <7732900c-5490-6483-ca10-71c565e81945@huawei.com>
+ <20200115055408-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20200115055408-mutt-send-email-mst@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Jan 2020 12:24:38 +0000
+Message-ID: <CAFEAcA9AZS=aNBYNntTDNB0k4kORjMFJ6qOimASVV9JWs4VzTA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified by
+ _HID
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,59 +112,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- libvir-list@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
- rth@twiddle.net, david@gibson.dropbear.id.au
+Cc: Corey Minyard <cminyard@mvista.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Igor Mammedov <imammedo@redhat.com>, Guoheyi <guoheyi@huawei.com>,
+ wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qmlNFgbBou0N
+X-TUID: fg8OxeUeAECf
 
-On 1/15/20 5:52 PM, Igor Mammedov wrote:
-> On Wed, 15 Jan 2020 16:34:53 +0100
-> Peter Krempa <pkrempa@redhat.com> wrote:
-> 
->> On Wed, Jan 15, 2020 at 16:07:37 +0100, Igor Mammedov wrote:
->>> Deprecation period is ran out and it's a time to flip the switch
->>> introduced by cd5ff8333a.
->>> Disable legacy option for new machine types and amend documentation.
->>>
->>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
->>> ---
->>> CC: peter.maydell@linaro.org
->>> CC: ehabkost@redhat.com
->>> CC: marcel.apfelbaum@gmail.com
->>> CC: mst@redhat.com
->>> CC: pbonzini@redhat.com
->>> CC: rth@twiddle.net
->>> CC: david@gibson.dropbear.id.au
->>> CC: libvir-list@redhat.com
->>> CC: qemu-arm@nongnu.org
->>> CC: qemu-ppc@nongnu.org
->>> ---
->>>   hw/arm/virt.c        |  2 +-
->>>   hw/core/numa.c       |  6 ++++++
->>>   hw/i386/pc.c         |  1 -
->>>   hw/i386/pc_piix.c    |  1 +
->>>   hw/i386/pc_q35.c     |  1 +
->>>   hw/ppc/spapr.c       |  2 +-
->>>   qemu-deprecated.texi | 16 ----------------
->>>   qemu-options.hx      |  8 ++++----
->>>   8 files changed, 14 insertions(+), 23 deletions(-)
->>
->> I'm afraid nobody bothered to fix it yet:
->>
->> https://bugzilla.redhat.com/show_bug.cgi?id=1783355
-> 
-> It's time to start working on it :)
-> (looks like just deprecating stuff isn't sufficient motivation,
-> maybe actual switch flipping would work out better)
-> 
+On Wed, 15 Jan 2020 at 10:55, Michael S. Tsirkin <mst@redhat.com> wrote:
+>
+> Here's a hopefully better patch. Peter does this address the issue?
+>
+> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+>
+>
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index f1ac2d7e96..3ab4872bd7 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -16,7 +16,10 @@
+>   * 1. add empty files for new tables, if any, under tests/data/acpi
+>   * 2. list any changed files in tests/bios-tables-test-allowed-diff.h
+>   * 3. commit the above *before* making changes that affect the tables
+> - * Maintainer:
+> + *
+> + * Contributor or ACPI Maintainer (steps 4-7 need to be redone to resolve conflicts
+> + * in binary commit created in step 6):
+> + *
+>   * After 1-3 above tests will pass but ignore differences with the expected files.
+>   * You will also notice that tests/bios-tables-test-allowed-diff.h lists
+>   * a bunch of files. This is your hint that you need to do the below:
+> @@ -28,13 +31,23 @@
+>   * output. If not - disassemble them yourself in any way you like.
+>   * Look at the differences - make sure they make sense and match what the
+>   * changes you are merging are supposed to do.
+> + * Save the changes, preferably in form of ASL diff for the commit log in
+> + * step 6.
+>   *
+>   * 5. From build directory, run:
+>   *      $(SRC_PATH)/tests/data/acpi/rebuild-expected-aml.sh
+> - * 6. Now commit any changes.
+> - * 7. Before doing a pull request, make sure tests/bios-tables-test-allowed-diff.h
+> - *    is empty - this will ensure following changes to ACPI tables will
+> - *    be noticed.
+> + * 6. Now commit any changes to the expected binary, include diff from step 4
+> + *    in commit log.
+> + * 7. Before sending patches to the list (Contributor)
+> + *    or before doing a pull request (Maintainer), make sure
+> + *    tests/bios-tables-test-allowed-diff.h is empty - this will ensure
+> + *    following changes to ACPI tables will be noticed.
+> + *
+> + * The resulting patchset/pull request then looks like this:
+> + * - patch 1: list changed files in tests/bios-tables-test-allowed-diff.h.
+> + * - patches 2 - n: real changes, may contain multiple patches.
+> + * - patch n + 1: update golden master binaries and empty
+> + *   tests/bios-tables-test-allowed-diff.h
+>   */
 
-So how was the upgrade from older to newer version resolved? I mean, if 
-the old qemu used -numa node,mem=XXX and it is migrated to a host with 
-newer qemu, the cmd line can't be switched to -numa node,memdev=node0, 
-can it? I'm asking because I've just started working on this.
+I think that seems reasonable, but you're the ACPI expert.
+As long as the patches on list:
+ * can be reviewed by somebody for whether their ACPI changes
+   are correct, including whether the golden-master changes are right
+ * can be applied by a maintainer without having to do anything
+   special
+ * don't break bisection
 
-Michal
+then I'm happy. It sounds like those steps will work for that.
 
+> diff --git a/roms/seabios b/roms/seabios
+> index f21b5a4aeb..c9ba5276e3 160000
+> --- a/roms/seabios
+> +++ b/roms/seabios
+> @@ -1 +1 @@
+> -Subproject commit f21b5a4aeb020f2a5e2c6503f906a9349dd2f069
+> +Subproject commit c9ba5276e3217ac6a1ec772dbebf568ba3a8a55d
+
+You have a stray submodule update in your patch, though :-)
+
+thanks
+-- PMM

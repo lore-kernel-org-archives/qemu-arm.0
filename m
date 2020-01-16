@@ -1,117 +1,192 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8489706lff;
-        Thu, 16 Jan 2020 07:08:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxQffUSqdIn97rJOncopdS5BbYxxbb+sZTtel3GVV/HkvsblEqb+RGN2Rc08x3KMPWmGt15
-X-Received: by 2002:a50:ef1a:: with SMTP id m26mr36873933eds.289.1579187283082;
-        Thu, 16 Jan 2020 07:08:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579187283; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8590855lff;
+        Thu, 16 Jan 2020 08:28:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzNRXyqf96QnIpP8wmofpRw7o5i2V3jjeR8hLfpd3z8qJEljIFs3xCbXUus3FBzmHA1YN2R
+X-Received: by 2002:a9d:461b:: with SMTP id y27mr2845983ote.280.1579192127533;
+        Thu, 16 Jan 2020 08:28:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579192127; cv=none;
         d=google.com; s=arc-20160816;
-        b=g96hqt1xQxP8LzOFhus0AVEJCltEfZDutfwTQlPDQFkQ6RacoeEJ1Fo5VAGR7FNkUE
-         qmvY/R7NC2Y+7/OFzpshqmdqzqAWpdMUu59lZL/zGLdjaxYXKwYDm6GIy0Eqg3a9tstj
-         snRnfP3gDbmhFw/sixs0r8+cis2JBzkk2B44lcKRCVg3Z1cGqrMUaJFUHfRIMcLgQ3SU
-         Bi9EkSwHUeBQuglDtPDrlE1XslBQuC24PUZ2KWCJEmTHZybyrSONZeZ6E6Z/WxuDSF57
-         sBElmWkEfW+XJd7q9IjBYVZoZfRUgXxxI9GW+ADFj5bwNOi55E/zB90CcKmPvyCWtGbH
-         yPCA==
+        b=bYmvX2yQqd75kNzFPyyaY9BncGCtpYS15Y3dKBirP2Ql7eZODZkNPj28+fC/lrrGNw
+         w96mwnvBydwc+juhVafqLC6bLO1JZYewc+yAA1/fsJQf672+bLED+gT721ynDtEHkFY/
+         XcWSS8Oc4mFlOf83Z+ALr7XNm9WlXTWvXRzqS+3SF30HJW4quy3LNij6l3GW/km27MaN
+         iSkOgEqct2giCnmYtddgp8ae8Exn7rWC7yFZjEGX/vafJPR/BRdwVs+4m/pSTfqbyBYl
+         pWnDrwRT9tuVVy0umoshgOpvu+otB4WVBPucT1sQLkRIYgVKsYLquER4h1MfSiRxu2u7
+         WTNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=xqx8onJkFwRaxbtn/yTJuM8dq8+DussPiH5hqaBh7mg=;
-        b=eDDPLe+QQGp+wjq3+E2jk9FXTloNY8x/iRSuTcV1avzLVjhu5qHQ8FBXx020YGwYdP
-         vu3BmALNQS/2HM0NDeeOMVOBJlDTd27YQxdiJfCRvQEEapL6fjJpaS5xzVhGpQgJPk0h
-         V+vip7QNhLL1upKNzYIRvZW/VbM2FuUDtlUIaQjWoCzI6uYhEJrmh+UUUSMSCXN1efaH
-         XlFsCTQohmLC54yxj/Ei11WUtPFtnML93IcnFH8cGzhitJAETGEING4qxCh0nByRizlv
-         oQdNEAYi1a20ZcQWdVXL1IROsLLYwpsReDMOKf4AB0F9StpIzwFlsF6npzvGX3Ltf8Ch
-         Ewtg==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=8WJbhTsTM0l8OxSV/uIB4OR8tInBfjFfl18OnoFr1k8=;
+        b=Xahav1oN+/P+fUYiw48YTYynTQqnPTU9eeuIOTBuhGtPq19dpTu6kffqdUsGoqHJSr
+         52JEb4cTS0x6adpcE5P+6vi0K+41QR6VvOdw/5u4eTXeqfqpR6cSBDKOJSCOHnQuLCU5
+         XYo1Ir5Lapr6Vk6NXhSarCYFei0Q09HJ6Tlv4zjRXVmvHQrkxOiZQbq5GLntZ3dtMDNI
+         F87GCNgE6kQyx3b2FKOhlyjV1vzVmYzZZqA9xIDPVZmcqEzXMxnUh6b3cmOi/MMc7VUv
+         baAqYMRam3CyPY6jUWdcrAyguO60SxkkBSBbcx6AMXIH7V9FzI7crKJWmAY5LFdXG0+Z
+         ohhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OL4ut5C0;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id z60si163412ede.566.2020.01.16.07.08.02
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Jan 2020 07:08:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CZIpFWNK;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id w23si12906284otp.109.2020.01.16.08.28.47;
+        Thu, 16 Jan 2020 08:28:47 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OL4ut5C0;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1579187282;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xqx8onJkFwRaxbtn/yTJuM8dq8+DussPiH5hqaBh7mg=;
-	b=OL4ut5C0pKJ7okxIxrTKbn5BslRdRU2Y+XmawqU4bvhiu+p5LoZnJvqTU0ncegnduIPNwf
-	2w9tL2e12Fw6jkjpy3o0Mj928AX41D98mJiPpEuTTvtpYngbfgu9fLJGo+7igQTYpcIe5j
-	xgi3rwVSXHkpIYerz06h9Jbb/1TnfDE=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-203-DC-RNGOmOqaQt3WmVGWTLg-1; Thu, 16 Jan 2020 10:08:00 -0500
-Received: by mail-wr1-f70.google.com with SMTP id z14so9455472wrs.4
-        for <alex.bennee@linaro.org>; Thu, 16 Jan 2020 07:08:00 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=CZIpFWNK;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726812AbgAPQ2q (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Thu, 16 Jan 2020 11:28:46 -0500
+Received: from mail-ot1-f67.google.com ([209.85.210.67]:41817 "EHLO
+        mail-ot1-f67.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1726370AbgAPQ2q (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 16 Jan 2020 11:28:46 -0500
+Received: by mail-ot1-f67.google.com with SMTP id r27so19878729otc.8
+        for <kvm@vger.kernel.org>; Thu, 16 Jan 2020 08:28:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=8WJbhTsTM0l8OxSV/uIB4OR8tInBfjFfl18OnoFr1k8=;
+        b=CZIpFWNKSSkddyHn0xfkX3f+epSDDAvMbHfRBWgvdlTV3XTp32GimGfWhltlCnH5dg
+         zwNWVLC8ODcUw0hnJ7BUb6N/6WFyzmvmTI4fxkj6+kAucL0VINZBHy/ZQPRa5LDRCIFg
+         5tTMkPMIYlWcxAD/Fa1hh4uMi7e5Dzy7Tmgd0XWPEWSa8yrwHLIxEBAUGYLzgCZmU2MD
+         o7p5q+c1i/Pv/OHbR9HGRgLomkRrfxiEjzMOZ6xHSbvpdYxzsDEO+Unn7aisMtITaPVf
+         j0KgID6jEvnxsROKVz3yvnET9ScJc4RjaFDEsB2os6A93rD2YXDjXzFxcqBIp/2HRM2v
+         Kn5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=utdWfp7ymQUKhwO0mN+1Ng1mKtF6uE+xQ50My6J3OQw=;
-        b=W0AWWdvhX2ZPF3eFccCeozsPs/br9z8ckP8Bk+rR44GwHjiFT2uT8RK+MpvC5zpNeL
-         r5tH8eizLgGBw4GOvwCE6qBTk6hfeNvSE2E8bI/liXit/VNj1dypfeDySITwyorWQwsJ
-         I97vDFHldkqUljgkQdF8ppTCSn2vCiB9gVtiv1rITEa67TIU4rZl3Y+xKjKoqXW1iXN8
-         YEefLY3kalUl74mVirrNBI/9eer2206WgKFqQZL5jzjqlUa3UYkriQdmLMiCODEB3d6X
-         iU5Ueh+ZDETq4q1VEfMpFw+IC5o8NVCNMUgsYOV+xqz200wjRaKyh00yUEJxK6atQh+/
-         SAqg==
-X-Gm-Message-State: APjAAAXQq/TE+cjg2l5ByGZK4ZQ80yvy8gJSF5szQdGh/V/Bwh72MVvi
-	AXwIflmfqbVvCvMvtCTH5/dW9JbOVMkJ7ZhDrSbbH4LPHdzzlVu6MFE+5B5wayA+QyHgcPnrCZJ
-	wTVs/+XBAYO7aWstt
-X-Received: by 2002:a7b:c3d2:: with SMTP id t18mr6801457wmj.90.1579187279243;
-        Thu, 16 Jan 2020 07:07:59 -0800 (PST)
-X-Received: by 2002:a7b:c3d2:: with SMTP id t18mr6801451wmj.90.1579187279117;
-        Thu, 16 Jan 2020 07:07:59 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [10.101.1.81] ([176.12.107.132])
-        by smtp.gmail.com with ESMTPSA id w8sm369250wmd.2.2020.01.16.07.07.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Jan 2020 07:07:58 -0800 (PST)
-Subject: Re: [PATCH v5 02/22] gdbstub: stop passing GDBState * around and use
- global
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-References: <20200114150953.27659-1-alex.bennee@linaro.org>
- <20200114150953.27659-3-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <e8625a1b-3264-b6a6-21bf-82a11d0fdcef@redhat.com>
-Date: Thu, 16 Jan 2020 16:07:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=8WJbhTsTM0l8OxSV/uIB4OR8tInBfjFfl18OnoFr1k8=;
+        b=WCNR2WP+Wcq8baqWavwGBcuSYCg9NdnN9frW86toVsEKRatMGB0hKRqoweOZ6IQqqt
+         2dCViQoK0kekkKkCsnqMxi1OPHdD5IqTq4O9jn2lcxgl9+ma+qxRi+gLRZx5stRhpnhA
+         1/bt5BbuoHYtceLJFjXfBwkZ3d/gGy7ptSPk8Pt75wIUp9kr0BJFkFsVuCS+eDGIirPl
+         Q0jRBoB0Dt/ngSmou4CIIQD2E5iyJOlsyrcWYu4oJ/rkMJf4TyoYmBcU2ufDM1BJS5pZ
+         BAMlKU+iKyw6K5l1u32VmAallsY6hNpPThiMRozhjdVC8kRG59dGlFilQyRoswHB0TXM
+         NsUg==
+X-Gm-Message-State: APjAAAVayntZjaRRE5iBQzdJkkMcP1Lp5rX/E2dWZft2GZHtQAJ9oYBB
+        l/lIyxIb0OgldYAfmGnGIKvHNvDKWhtIroQ3+TmW3Q==
+X-Received: by 2002:a05:6830:1586:: with SMTP id i6mr2528446otr.221.1579192125156;
+ Thu, 16 Jan 2020 08:28:45 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200114150953.27659-3-alex.bennee@linaro.org>
-Content-Language: en-US
-X-MC-Unique: DC-RNGOmOqaQt3WmVGWTLg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-TUID: BWMl2WJIc5tp
+References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com> <1578483143-14905-9-git-send-email-gengdongjiu@huawei.com>
+In-Reply-To: <1578483143-14905-9-git-send-email-gengdongjiu@huawei.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Thu, 16 Jan 2020 16:28:34 +0000
+Message-ID: <CAFEAcA_=PgkrWjwPxD89fCi85XPpcTHssXkSmE04Ctoj7AX0kA@mail.gmail.com>
+Subject: Re: [PATCH v22 8/9] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Fam Zheng <fam@euphon.net>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        "xuwei (O)" <xuwei5@huawei.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        James Morse <james.morse@arm.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+        Zheng Xiang <zhengxiang9@huawei.com>,
+        Linuxarm <linuxarm@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: s8Aft3NBQ+UE
 
-On 1/14/20 4:09 PM, Alex Benn=C3=A9e wrote:
-> We only have one GDBState which should be allocated at the time we
-> process any commands. This will make further clean-up a bit easier.
->=20
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->=20
-> ---
-> v3
->    - remove final *s paramters from function calls
-> v4
->    - a few fixups for coding style
-> ---
->   gdbstub.c | 561 +++++++++++++++++++++++++++---------------------------
->   1 file changed, 278 insertions(+), 283 deletions(-)
+On Wed, 8 Jan 2020 at 11:33, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> +{
+> +    ram_addr_t ram_addr;
+> +    hwaddr paddr;
+> +
+> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+> +
+> +    if (acpi_enabled && addr &&
+> +            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
+> +        ram_addr = qemu_ram_addr_from_host(addr);
+> +        if (ram_addr != RAM_ADDR_INVALID &&
+> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+> +            kvm_hwpoison_page_add(ram_addr);
+> +            /*
+> +             * Asynchronous signal will be masked by main thread, so
+> +             * only handle synchronous signal.
+> +             */
+
+I don't understand this comment. (I think we've had discussions
+about it before, but it's still not clear to me.)
+
+This function (kvm_arch_on_sigbus_vcpu()) will be called in two contexts:
+
+(1) in the vcpu thread:
+  * the real SIGBUS handler sigbus_handler() sets a flag and arranges
+    for an immediate vcpu exit
+  * the vcpu thread reads the flag on exit from KVM_RUN and
+    calls kvm_arch_on_sigbus_vcpu() directly
+  * the error could be MCEERR_AR or MCEERR_AO
+(2) MCE errors on other threads:
+  * here SIGBUS is blocked, so MCEERR_AR (action-required)
+    errors will cause the kernel to just kill the QEMU process
+  * MCEERR_AO errors will be handled via the iothread's use
+    of signalfd(), so kvm_on_sigbus() will get called from
+    the main thread, and it will call kvm_arch_on_sigbus_vcpu()
+  * in this case the passed in CPUState will (arbitrarily) be that
+    for the first vCPU
+
+For MCEERR_AR, the code here looks correct -- we know this is
+only going to happen for the relevant vCPU so we can go ahead
+and do the "record it in the ACPI table and tell the guest" bit.
+
+But shouldn't we be doing something with the MCEERR_AO too?
+That of course will be trickier because we're not necessarily
+in the vcpu thread, but it would be nice to let the guest
+know about it.
+
+One comment that would work with the current code would be:
+
+/*
+ * If this is a BUS_MCEERR_AR, we know we have been called
+ * synchronously from the vCPU thread, so we can easily
+ * synchronize the state and inject an error.
+ *
+ * TODO: we currently don't tell the guest at all about BUS_MCEERR_AO.
+ * In that case we might either be being called synchronously from
+ * the vCPU thread, or a bit later from the main thread, so doing
+ * the injection of the error would be more complicated.
+ */
+
+but I don't know if that's what you meant to say/implement...
+
+> +            if (code == BUS_MCEERR_AR) {
+> +                kvm_cpu_synchronize_state(c);
+> +                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
+> +                    kvm_inject_arm_sea(c);
+> +                } else {
+> +                    error_report("failed to record the error");
+> +                    abort();
+> +                }
+> +            }
+> +            return;
+> +        }
+> +        if (code == BUS_MCEERR_AO) {
+> +            error_report("Hardware memory error at addr %p for memory used by "
+> +                "QEMU itself instead of guest system!", addr);
+> +        }
+> +    }
+> +
+> +    if (code == BUS_MCEERR_AR) {
+> +        error_report("Hardware memory error!");
+> +        exit(1);
+> +    }
+> +}
+>
+
+thanks
+-- PMM

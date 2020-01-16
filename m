@@ -1,101 +1,99 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8683591lff;
-        Thu, 16 Jan 2020 09:44:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyX9oxtLYafZuUdpWmOougmwYIeLFFGYSdQ/Q/pX/QKLZyIKnOOyB76iaNjboNdsRdRnO9e
-X-Received: by 2002:a17:906:19c8:: with SMTP id h8mr4181203ejd.250.1579196644272;
-        Thu, 16 Jan 2020 09:44:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579196644; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8707629lff;
+        Thu, 16 Jan 2020 10:05:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwDxEIbbQwDVawir4ny90zHkOahV3dnlcXzCx59YkG1eILWdA4LzkQ+kATVumqOmme+gmfw
+X-Received: by 2002:a17:907:2071:: with SMTP id qp17mr4111045ejb.176.1579197927745;
+        Thu, 16 Jan 2020 10:05:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579197927; cv=none;
         d=google.com; s=arc-20160816;
-        b=B7eNdwlp0hwGCZAMywuaGSYE6WoOinANN4mPWdVMdBuct05NiG9YxS3q4WYTvyVgFh
-         SxDuIhytR2ESaPYUcLO8uvpo54TzIOZUOWav/Cvyfh3YvkIjWRi7xbbvkHhM936Gv50f
-         CpcDUbXPTZ2lZN3xykReF9SRZj+0i2sAOA7DvI/Ko9qBYQRPTFNRK2Zm0cCzkSfMKspJ
-         r8X8gOVGmCzWpb6WVIAXxkr8knZt/ITYvpimtgjxjVPYO08sbbKGnpgLefe4JvoVOXf9
-         lteuKbTNcEKU1LGfVivgxEcoN/sBgFjcUJD4YyqY3VD4FGfFI1DX4ad4IIgrI4Iig0ew
-         Frsw==
+        b=Ic+enyH5/Pv77S128U26wvsBIXm7aMb0rY2cp1hH4MA0cLYBUKzIkNB4TYf+poAQ81
+         pArLtalq7Cg5yGjd2HiEcpuvv/5SnR8Ij7OhBgCBt4IkmRmxFSAAZSUKVCCl94hYs1J0
+         CHXKitdTNsPe70rO4ef3Jq5nMg8F3JKthE5sU6vE/ux8kUJYN0ll5kWv33NpRN6BlvC+
+         bsX/vMRi86ovPedEqUxgwvQz4BLWvDcAgeTTjMDmcekv6CsuXZ7SEJOi5ZZbkRFFEAE6
+         fqzW1vi32J9D7Nimf0tUe0KIp+/ElIFaUHi/4F8v8ss48g7dPUBdFcvH86IBa6fit8AZ
+         SDHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=rotpn64p7f0JzbmAl5UYYA83qOj/egKaEQ0Cnoo5p4U=;
-        b=U8E5Ga8FuiRlbfvL2lnobTR308yd/ArelUf0jQz0RLkbAqPx5fvUP3KXN+k2b5SVe7
-         Ibv2PmxPqNEKjDKpeVkM9tDBrHfi45cp8j+ttn9gajtSghMyLsS/Edp2+fVM7Zamv3/B
-         0/jC20CcbvRPS8bmJIw/Yy4XmhkvpPunGwhagywrX2Dhdm/mVco1asJcZXG4+y2F/cVj
-         W7yNldMXMBlzOpdhBJspr45omM6+kMh1GhsHPR0WgwZwZj8zoiQPRmRGKD7zHyzA5vaj
-         feoMozNuJYlp6cIB8KLmW8QwcuowcMZulglVhJUMcaRiHBMoZnj4urFoQNmSbhSV7/1s
-         bOvA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=yRA7wz5NRRjS6oPC39LgwC/mStA7rG3T1ZcYLU8etI0=;
+        b=jITHoATt7sam+4l5GIYU+8XVrl4rjjS79h6bvi01ZPGYNg7EF2yMWW/0RkYPqcTHv+
+         4MFv7Vj8nhNQNW0iEYN61Tk24EoXn9sMqDykhsc7RbdN8gY++sw+3fw/VVsJodDCryfn
+         du+cWSEeQ17aQEXZ5IXwZEahBcsaDGyrpH0ChExBcUP/iVruWV39g3hDurccML0OSK9K
+         Wr1FJGkBM06B+XazGdJLhUmv+5ZxNFTqvxnVdUwC6w6JpJSn/KoNKMdJpWyBLou2GLTC
+         6Jfx23EfuDWdzOtrNLj+vyG329JRDc1vInNBwegg4Ou+ikf80+P7+FJUs6XaWSMdsg6F
+         00fQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=U63FYOnI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=gOekvbUI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bo19si13322786edb.511.2020.01.16.09.44.04
+        by mx.google.com with ESMTPS id c24si14181112ejx.420.2020.01.16.10.05.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 09:44:04 -0800 (PST)
+        Thu, 16 Jan 2020 10:05:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=U63FYOnI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46062 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=gOekvbUI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1is9Bb-0004MV-56
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 12:44:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59391)
+	id 1is9WI-0001vJ-Fc
+	for alex.bennee@linaro.org; Thu, 16 Jan 2020 13:05:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34020)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <leif@nuviainc.com>) id 1is9AS-0003az-2R
- for qemu-devel@nongnu.org; Thu, 16 Jan 2020 12:42:53 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1is9V0-000137-CM
+ for qemu-devel@nongnu.org; Thu, 16 Jan 2020 13:04:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <leif@nuviainc.com>) id 1is9AR-0005gR-1v
- for qemu-devel@nongnu.org; Thu, 16 Jan 2020 12:42:51 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42096)
+ (envelope-from <peter.maydell@linaro.org>) id 1is9Uz-0005Zy-D2
+ for qemu-devel@nongnu.org; Thu, 16 Jan 2020 13:04:06 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35030)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <leif@nuviainc.com>) id 1is9AQ-0005fL-M1
- for qemu-devel@nongnu.org; Thu, 16 Jan 2020 12:42:51 -0500
-Received: by mail-wr1-x441.google.com with SMTP id q6so19964352wro.9
- for <qemu-devel@nongnu.org>; Thu, 16 Jan 2020 09:42:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rotpn64p7f0JzbmAl5UYYA83qOj/egKaEQ0Cnoo5p4U=;
- b=U63FYOnIwARwZjUm+R3MDuycOhA+tqE998VEqgSaErxVtnsIb2/sFo5ezWM5SACX1k
- EhrdZWadmOv/uZzhT1FRsN5aD5CHOfGLscCPsRxCq/8H1JTgqED1eJInUfXwK7PXf+Yh
- 88X6xFrO8wMCD8PlnG9LhXZxrMRtTFA+HfhWOGBwRZJ4nmKGg6jmQCJSGVFlJA0mXvHe
- 8QUy1PvW1Z2cwgnGb1L02m9RhO06ei6ScWz+dxUE5gclA/zkg6D/iNQYy/9KHDlLsAxE
- OK3qaY7P0bM3tXlmGezYZwa127umpFIAQypr1rfiSQGIiJ7c/gE2wfDPUrRbe4TMChJW
- HF5Q==
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1is9Uz-0005ZP-7A
+ for qemu-devel@nongnu.org; Thu, 16 Jan 2020 13:04:05 -0500
+Received: by mail-ot1-x343.google.com with SMTP id i15so20220176oto.2
+ for <qemu-devel@nongnu.org>; Thu, 16 Jan 2020 10:04:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=yRA7wz5NRRjS6oPC39LgwC/mStA7rG3T1ZcYLU8etI0=;
+ b=gOekvbUIGrG5y4LcrTMcaDUL2I6iSaIHkC8hVtDTkn0sYAZcPy/VEqVH1B3/g+2YL3
+ yBeB3jNfoHJLh8evrVYcZxX0VPC4dXw08BvC390BAz2ATaxP4cRNwbm0N7kupsqnpmkj
+ z2GdUJ5gTLRsfXlueNeGwdESN5cUKt9pXhYpMa6XQKhgM7mgHa68b7GqDWL3DlJv4AoT
+ J7o/q7XJVpZLTpAJ+eQx+uAw6YJW1tknwHRwPS9YfQDO/LXHVTtOn+EYRNXVKMRZN9GH
+ Afy4RUFliBh1Op4Ip+YEDFbhIYPMP8PUD4J2tEgnlPqmPFVks2ZfYmIGnTs/pn07hU7V
+ SBJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rotpn64p7f0JzbmAl5UYYA83qOj/egKaEQ0Cnoo5p4U=;
- b=qPqRLn/K66EhMVC8Xb0IH2Fze0Bp6BX1LAzFgcQjBEWMMgZuuhVtcHk6mmvbAoK6XR
- jUbkUiWGjXCAPLMCi+oaD4sw5nNKbJJ4EgXATHq1ydkav1j9wnvTOBgRhJrmFy+gZOn1
- 1EJNtuLaiRgi6uZ0a4iVuLbhFXl7c7BgTTVSKWVisLjsCC5GCLicLBIxxbsU3lZWzb83
- b2R6lwiPEl6GWlBVVJ36zIpsnqQDdkQMdC57R9425glnDacvu2HrLPcIi5h48uYdMzlO
- QoeybII6ZvBjbSJMDE58wfnaCz0DuVcocBj1IelDbEvtyQbMH0OoeU8kTZbMGVl7Fxz6
- 3fLA==
-X-Gm-Message-State: APjAAAV6znis6hf/7+dgF4rDR4IeBF8MKTEGL06qMka0yIgQ7FrFj+Vj
- GVNMWBXz79ovscISLNW+w3Sx/HRatqyddlfZC/3Zc/xYFSQlI75v9yG9FAwmQoMoQsqLF//Oc5/
- 9fk7k+PsOniYytj6Msp5yNydiI9APdb41jBimDEOz9lalQ+C6re2rhijk8V8zYfrY
-X-Received: by 2002:a5d:5091:: with SMTP id a17mr4467664wrt.362.1579196568415; 
- Thu, 16 Jan 2020 09:42:48 -0800 (PST)
-Received: from urvogel.hemma.eciton.net
- (cpc92302-cmbg19-2-0-cust304.5-4.cable.virginm.net. [82.1.209.49])
- by smtp.gmail.com with ESMTPSA id r68sm124384wmr.43.2020.01.16.09.42.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Jan 2020 09:42:47 -0800 (PST)
-From: Leif Lindholm <leif@nuviainc.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] MAINTAINERS: update Leif Lindholm's address
-Date: Thu, 16 Jan 2020 17:42:26 +0000
-Message-Id: <20200116174226.4780-1-leif@nuviainc.com>
-X-Mailer: git-send-email 2.20.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=yRA7wz5NRRjS6oPC39LgwC/mStA7rG3T1ZcYLU8etI0=;
+ b=Ujk99I4hnQ7+tLpQrL16CRUaW5P+Gh+OK8GZB2eaQqEn6NA7WUTAJP7QgdXdepuWgN
+ 5v9WnfhSkF/Hc/PxCuV5XSO3ORK7j2ggmAsvswXuaKMT1o2b9ujPVxBdWHC7FrBWLy5R
+ 4tzZE1fyQpzKI1UIFMwmeIOhmVX5i97FyT95cvyeBszhUUmbxgxgZ2D5yyYofiNSogdX
+ ihro7yyp1xbQOj9b7XhvFzr5uphDAChaOVA0W+vdWSiexfh2uie6TPqMMFQUM3p1IewZ
+ s2Q+AK4laZIh5+Bpj51WCmwcKyPcIYUAEy/fFiMUq7Ef4813SMMv85Ur2GzSMx7MyKRo
+ yRGg==
+X-Gm-Message-State: APjAAAUHDhyYbSj97lwdYQS33PX2eWQYlM6eSlySMq7na5vwuDn/Sl+0
+ 7bTgzb0hOIiuA9+4JuqIfcjn3r+xDlkuLj8vEKFrvg==
+X-Received: by 2002:a05:6830:13d3:: with SMTP id
+ e19mr3014621otq.135.1579197844448; 
+ Thu, 16 Jan 2020 10:04:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20200113154607.97032-1-jeff.kubascik@dornerworks.com>
+In-Reply-To: <20200113154607.97032-1-jeff.kubascik@dornerworks.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Jan 2020 18:03:53 +0000
+Message-ID: <CAFEAcA-Y5EL5ty_9b1E8OwKEncxsZnyh24stnYVOnUQrrdjsSQ@mail.gmail.com>
+Subject: Re: [PATCH] arm/gicv3: update virtual irq state after IAR register
+ read
+To: Jeff Kubascik <jeff.kubascik@dornerworks.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,33 +105,26 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Leif Lindholm <leif.lindholm@linaro.org>
+Cc: Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Jarvis Roach <Jarvis.Roach@dornerworks.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PIc88uFVSYpo
+X-TUID: myJ3NvFCb5Mc
 
-Update address to reflect new employer.
+On Mon, 13 Jan 2020 at 15:46, Jeff Kubascik
+<jeff.kubascik@dornerworks.com> wrote:
+>
+> The IAR0/IAR1 register is used to acknowledge an interrupt - a read of the
+> register activates the highest priority pending interrupt and provides its
+> interrupt ID. Activating an interrupt can change the CPU's virtual interrupt
+> state - this change makes sure the virtual irq state is updated.
+>
+> Signed-off-by: Jeff Kubascik <jeff.kubascik@dornerworks.com>
+> ---
 
-Signed-off-by: Leif Lindholm <leif@nuviainc.com>
----
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 483edfbc0b..3c8653f26f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -735,7 +735,7 @@ F: include/hw/ssi/imx_spi.h
- SBSA-REF
- M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
- M: Peter Maydell <peter.maydell@linaro.org>
--R: Leif Lindholm <leif.lindholm@linaro.org>
-+R: Leif Lindholm <leif@nuviainc.com>
- L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/sbsa-ref.c
--- 
-2.20.1
 
+Applied to target-arm.next, thanks.
+
+-- PMM

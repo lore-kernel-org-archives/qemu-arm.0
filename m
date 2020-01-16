@@ -1,92 +1,82 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7725770lff;
-        Wed, 15 Jan 2020 17:46:19 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzpZDfOlcf376V3BlLaKNlaUWlY4N/7T0EnoHsq1BbqKy+fVO1sCqzj8CWuAZjEhwf4ZCDB
-X-Received: by 2002:a50:f982:: with SMTP id q2mr32879350edn.55.1579139179834;
-        Wed, 15 Jan 2020 17:46:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579139179; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7864810lff;
+        Wed, 15 Jan 2020 20:39:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyEK9XC2FP0xYkNiL/pzv8V0xe76D6/FnR51D/FGE8DdYAJbnyi3aTUbpTyuJisnbSTqba+
+X-Received: by 2002:a05:6214:42c:: with SMTP id a12mr782015qvy.172.1579149558502;
+        Wed, 15 Jan 2020 20:39:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579149558; cv=none;
         d=google.com; s=arc-20160816;
-        b=j/HKb/xd7pfGUeTNBG6/OuMiVVfRfG12+YcaH03GMNSDy4ziP9vttujKgeUc6b/hWI
-         c1Y+8GCHLIm7K2QiLuX1t+q+dzdWEMOHGJtLrMmNkN+uZM/kDb1nuM0s2923XrDf76ui
-         9u2XKqbq3JekZMnaotQhPz3PfUK1ohDgu68DIKbD74MYNgQeDzNBH3cOtUT/3QJSS9eT
-         D6qesP5iR/EjmRcSZmGLQ9U6/sGbAD1F+IxDIamhwujhEtlL5B6UYu8d34PS0r6rx6d/
-         z1YQbGpyhWtuiBu/hZpuwEKx4JtINFfFuSdD5SGVoQDZWYdt+Fn3ZpLMSHUHYqMGB3MB
-         upFw==
+        b=Wpr2EKT4yMSaGAawEvgC03LzH7mae5whK85RFE/zDzPot2Th3P2HrUX+Fx3gczEPCx
+         5SB8rQuFRhezqO+TfOJuNFmz+HmcOfvyq4OP5q0tCv7/arGx2uRDMgHz1lTUE28EzEdR
+         BSyNoqdc98dAriT8yCxSRDXzP0dshVjjGDG6j+0dOae07ToVHde1L46Ljsipm7y9vtA/
+         28MJt30prGF4JF1tgjuN91KoIIxR7ZNKo+RWBFbs1t7f9W0ldkJvhGMyHAAg0+oLvW+9
+         0Wdm9R/TeJPXt6g+6UpGAJi/BRPQiK0paXzCbk+63SSk55L0Wf01QPJADjr4mN4ONvop
+         EPaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Ua8duYP8yA9XTvJJ75SbTiBbb4oyC0VTSk6idRgcdRc=;
-        b=J9V4/VMmFZ5EFG1SYinXJjK3lITZ/Gj4TRSCwJpuxa1rlazEWVCHfqSnNCRm27Y8d4
-         CMxhcpD3s++7y+pTqPHqU8BDuYMO8I1BKOz6Gban+ssYyeeNRDkMUSmWc9lDO4X4eLbm
-         HnhZOX/L8Xo8McOoDkX0lXB7f6i+dFGjTMtVWMjtFF8MuIRX2KNnmQ0DQ/TnQ3x7Ubsh
-         dTSkhgUUHzYFtV5ZuZXrsvBfF+DHYdFiTZ+l1VB7OiQhSQYE0nqgld/fu87fURv1HZNM
-         lT8XWDWwJsjqxClxFHLYQ6AHdjJbxzcKerCSvr551i47oXIYQFNkic4dhffpnFfMGZb8
-         7kIQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=5+NVGs8zotzaK5hUb65wQR1qLr32LDnugPeLn/PE17A=;
+        b=TRjTVkF+H9sDcLSZGI0Sgn+rwW08tYBCk8FE+SxkI+YgE0HHy39kFMlg/yM6MgWcrW
+         8z3S0h6I5kNtv1X4/t7Lfq0Hpi0nysO7f0ay06Hv9m9gkjqbvnIinHcmqU1Ne7yBd3d+
+         dwi6pcHrVdObbGzwZPJwSDdcyd1vDCm8KgNE+Eux9Hd45P2xvVNvnK6B5wN2O3WKAqiB
+         csuWr7vPtgLUGzzjS28BDfi1t0v4y195C10MPlQHlgRzJ1mR86u0P9qag0bhXowNQvo+
+         JzdXZ+daLHb/3JI6pJ4sb49xOot4Qbyo0pNOlZRrIbAmD5cTldpiJdSzCJWc0/RwVR4c
+         B2SA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=aWr3SRO3;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=ZcYG8Wox;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pw3si12499216ejb.244.2020.01.15.17.46.19
+        by mx.google.com with ESMTPS id t5si11786628qvk.147.2020.01.15.20.39.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2020 17:46:19 -0800 (PST)
+        Wed, 15 Jan 2020 20:39:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=aWr3SRO3;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=ZcYG8Wox;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35072 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iruEk-0004y1-B9
-	for alex.bennee@linaro.org; Wed, 15 Jan 2020 20:46:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39457)
+	id 1irww9-0004Qt-RV
+	for alex.bennee@linaro.org; Wed, 15 Jan 2020 23:39:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58239)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <joel.stan@gmail.com>) id 1iruED-0004vX-R6
- for qemu-arm@nongnu.org; Wed, 15 Jan 2020 20:45:47 -0500
+ (envelope-from <dgibson@ozlabs.org>) id 1irwvs-0004QA-EE
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 23:39:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1iruEB-0001KM-Ju
- for qemu-arm@nongnu.org; Wed, 15 Jan 2020 20:45:45 -0500
-Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44]:36348)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1iruE5-0001HD-VU; Wed, 15 Jan 2020 20:45:38 -0500
-Received: by mail-qv1-xf44.google.com with SMTP id m14so8372733qvl.3;
- Wed, 15 Jan 2020 17:45:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Ua8duYP8yA9XTvJJ75SbTiBbb4oyC0VTSk6idRgcdRc=;
- b=aWr3SRO3XG1R+GPRfzKkZoE5YCouEgAf/F3RVdHXHXHpFQwUR5Qia/+mBHMzK+IWVZ
- 8cqEXpfB3KT/1kGP7nQz7tGn19+JcZ9FnwgQBFcDaepzJem2rj4hTjYB2MvbvEInoO5T
- HHVowSTSVyKVgfrB4ZTMh36HzMGw871Mv5iu4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Ua8duYP8yA9XTvJJ75SbTiBbb4oyC0VTSk6idRgcdRc=;
- b=fEhPeYqtpqS4R+IrB/LUpqmxjy1ORpXEx2qaGZwK4iCoWRTxcxmmedSdPrRAR9k3f4
- XLVJbrBuRWAJmDe6lHngDfOzG7LiPyZf12Zke4z6NwVdAHE1taBCpz0UqIMgDL7nIynd
- lsHfFLshLbLcX/tyvpoTYhHhjUqhWKsaoCPadcML54i5Wo+PNVXrhZcNO1QIzHw85IVE
- ZfDLWfwStCriH7DTJrpf0Ni52Tb1ssrBMAbed3iTKEczGDiFZbjXHTXrcwVoY3baJCvo
- 7oFix00WNndYOniMHH2K0yn6ggPSQoyFN6U5uKh/bXpTbtWR7tkScsUurboHyo+OInMe
- PImg==
-X-Gm-Message-State: APjAAAX0jc3UGMpZUPZmDr7fP1+PP6xrI0MGxhInAnP/KqRZrwVoc8B+
- mfGE0q2WmBmca9O6VgcpmfxeuZSniPLWnsvWZrU=
-X-Received: by 2002:a0c:b2c7:: with SMTP id d7mr286380qvf.111.1579139136269;
- Wed, 15 Jan 2020 17:45:36 -0800 (PST)
-MIME-Version: 1.0
-References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
- <1579100861-73692-8-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1579100861-73692-8-git-send-email-imammedo@redhat.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Thu, 16 Jan 2020 01:45:24 +0000
-Message-ID: <CACPK8XfqZQ+6D=XJ8h2jb_LCPW=8OVSqnrRWVAUXGywJManA9g@mail.gmail.com>
-Subject: Re: [PATCH v2 07/86] arm:aspeed: convert valid RAM sizes to data
+ (envelope-from <dgibson@ozlabs.org>) id 1irwvq-00057A-Hx
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2020 23:39:00 -0500
+Received: from ozlabs.org ([203.11.71.1]:42807)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1irwvp-00054E-GM; Wed, 15 Jan 2020 23:38:58 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 47ys0G2ZNFz9sRQ; Thu, 16 Jan 2020 15:38:54 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1579149534;
+ bh=uXHXnxQ6z4+rqzdt+wC4wGT9VHSh7NbeJd8FvrssXew=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZcYG8WoxUTmhcOm9PBTFEWYB2aOSyNz5iqsK5Z9k8J+HFI965CSi4XRlAll/j+F2l
+ ovPlSwYbvqflXe6n5O684hgei1b5TDwsynmYErTgfAjESLuOPXbjDH93eL88bvkR+F
+ jeJ3UoiibtPXc3U4O16YTJ7h62btY3NDyf/98BI0=
+Date: Thu, 16 Jan 2020 14:36:08 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
 To: Igor Mammedov <imammedo@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::f44
+Subject: Re: [PATCH v2 82/86] numa: forbid '-numa node, mem' for 5.0 and newer
+ machine types
+Message-ID: <20200116043608.GP54439@umbus>
+References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
+ <1579100861-73692-83-git-send-email-imammedo@redhat.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="aC33ObtQAkNdOZ6b"
+Content-Disposition: inline
+In-Reply-To: <1579100861-73692-83-git-send-email-imammedo@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 203.11.71.1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,250 +88,240 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+ libvir-list@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
+ rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NYV3358Vd3ju
+X-TUID: VWxUIMJMOfIc
 
-On Wed, 15 Jan 2020 at 15:10, Igor Mammedov <imammedo@redhat.com> wrote:
->
-> various foo_rambits() hardcode mapping of RAM sizes to RAM feature bits,
-> which is hard to reuse and repeats over and over.
->
-> Convert maps into GLib's hash tables and perform mapping using
-> common mapping function.
 
-Thanks for the patch.
+--aC33ObtQAkNdOZ6b
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I find the existing code straight forward to understand, and for this
-reason I would prefer to leave it as it is. Would you mind dropping
-this patch from your series?
-
->
-> Follow up patch will reuse tables for actually checking ram-size
-> property.
->
+On Wed, Jan 15, 2020 at 04:07:37PM +0100, Igor Mammedov wrote:
+> Deprecation period is ran out and it's a time to flip the switch
+> introduced by cd5ff8333a.
+> Disable legacy option for new machine types and amend documentation.
+>=20
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+
+ppc parts
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
-> CC: clg@kaod.org
 > CC: peter.maydell@linaro.org
-> CC: andrew@aj.id.au
-> CC: joel@jms.id.au
+> CC: ehabkost@redhat.com
+> CC: marcel.apfelbaum@gmail.com
+> CC: mst@redhat.com
+> CC: pbonzini@redhat.com
+> CC: rth@twiddle.net
+> CC: david@gibson.dropbear.id.au
+> CC: libvir-list@redhat.com
 > CC: qemu-arm@nongnu.org
+> CC: qemu-ppc@nongnu.org
 > ---
->  include/hw/misc/aspeed_sdmc.h |   2 +
->  hw/misc/aspeed_sdmc.c         | 116 ++++++++++++++++--------------------------
->  2 files changed, 47 insertions(+), 71 deletions(-)
->
-> diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdmc.h
-> index 5dbde59..de1501f 100644
-> --- a/include/hw/misc/aspeed_sdmc.h
-> +++ b/include/hw/misc/aspeed_sdmc.h
-> @@ -39,6 +39,8 @@ typedef struct AspeedSDMCState {
->  typedef struct AspeedSDMCClass {
->      SysBusDeviceClass parent_class;
->
-> +    GHashTable *ram2feat;
-> +    int fallback_ram_size;
->      uint64_t max_ram_size;
->      uint32_t (*compute_conf)(AspeedSDMCState *s, uint32_t data);
->      void (*write)(AspeedSDMCState *s, uint32_t reg, uint32_t data);
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index 2df3244..3fc80f0 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -148,72 +148,6 @@ static const MemoryRegionOps aspeed_sdmc_ops = {
->      .valid.max_access_size = 4,
->  };
->
-> -static int ast2400_rambits(AspeedSDMCState *s)
-> -{
-> -    switch (s->ram_size >> 20) {
-> -    case 64:
-> -        return ASPEED_SDMC_DRAM_64MB;
-> -    case 128:
-> -        return ASPEED_SDMC_DRAM_128MB;
-> -    case 256:
-> -        return ASPEED_SDMC_DRAM_256MB;
-> -    case 512:
-> -        return ASPEED_SDMC_DRAM_512MB;
-> -    default:
-> -        break;
-> -    }
-> -
-> -    /* use a common default */
-> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 256M",
-> -                s->ram_size);
-> -    s->ram_size = 256 << 20;
-> -    return ASPEED_SDMC_DRAM_256MB;
-> -}
-> -
-> -static int ast2500_rambits(AspeedSDMCState *s)
-> -{
-> -    switch (s->ram_size >> 20) {
-> -    case 128:
-> -        return ASPEED_SDMC_AST2500_128MB;
-> -    case 256:
-> -        return ASPEED_SDMC_AST2500_256MB;
-> -    case 512:
-> -        return ASPEED_SDMC_AST2500_512MB;
-> -    case 1024:
-> -        return ASPEED_SDMC_AST2500_1024MB;
-> -    default:
-> -        break;
-> -    }
-> -
-> -    /* use a common default */
-> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 512M",
-> -                s->ram_size);
-> -    s->ram_size = 512 << 20;
-> -    return ASPEED_SDMC_AST2500_512MB;
-> -}
-> -
-> -static int ast2600_rambits(AspeedSDMCState *s)
-> -{
-> -    switch (s->ram_size >> 20) {
-> -    case 256:
-> -        return ASPEED_SDMC_AST2600_256MB;
-> -    case 512:
-> -        return ASPEED_SDMC_AST2600_512MB;
-> -    case 1024:
-> -        return ASPEED_SDMC_AST2600_1024MB;
-> -    case 2048:
-> -        return ASPEED_SDMC_AST2600_2048MB;
-> -    default:
-> -        break;
-> -    }
-> -
-> -    /* use a common default */
-> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 1024M",
-> -                s->ram_size);
-> -    s->ram_size = 1024 << 20;
-> -    return ASPEED_SDMC_AST2600_1024MB;
-> -}
-> -
->  static void aspeed_sdmc_reset(DeviceState *dev)
->  {
->      AspeedSDMCState *s = ASPEED_SDMC(dev);
-> @@ -257,11 +191,14 @@ static Property aspeed_sdmc_properties[] = {
->  static void aspeed_sdmc_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
-> +
->      dc->realize = aspeed_sdmc_realize;
->      dc->reset = aspeed_sdmc_reset;
->      dc->desc = "ASPEED SDRAM Memory Controller";
->      dc->vmsd = &vmstate_aspeed_sdmc;
->      dc->props = aspeed_sdmc_properties;
-> +    asc->ram2feat = g_hash_table_new(g_direct_hash, g_direct_equal);
+>  hw/arm/virt.c        |  2 +-
+>  hw/core/numa.c       |  6 ++++++
+>  hw/i386/pc.c         |  1 -
+>  hw/i386/pc_piix.c    |  1 +
+>  hw/i386/pc_q35.c     |  1 +
+>  hw/ppc/spapr.c       |  2 +-
+>  qemu-deprecated.texi | 16 ----------------
+>  qemu-options.hx      |  8 ++++----
+>  8 files changed, 14 insertions(+), 23 deletions(-)
+>=20
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index e2fbca3..49de0d8 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2049,7 +2049,6 @@ static void virt_machine_class_init(ObjectClass *oc=
+, void *data)
+>      hc->pre_plug =3D virt_machine_device_pre_plug_cb;
+>      hc->plug =3D virt_machine_device_plug_cb;
+>      hc->unplug_request =3D virt_machine_device_unplug_request_cb;
+> -    mc->numa_mem_supported =3D true;
+>      mc->auto_enable_numa_with_memhp =3D true;
+>      mc->default_ram_id =3D "mach-virt.ram";
 >  }
->
->  static const TypeInfo aspeed_sdmc_info = {
-> @@ -273,10 +210,28 @@ static const TypeInfo aspeed_sdmc_info = {
->      .abstract   = true,
->  };
->
-> +static int aspeed_get_ram_feat(AspeedSDMCState *s)
-> +{
-> +    AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
-> +    int ram_mb = s->ram_size >> 20;
-> +    gpointer val;
-> +
-> +    if (g_hash_table_contains(asc->ram2feat, GINT_TO_POINTER(ram_mb))) {
-> +        val = g_hash_table_lookup(asc->ram2feat, GINT_TO_POINTER(ram_mb));
-> +        return GPOINTER_TO_INT(val);
-> +    }
-> +
-> +    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default %dM",
-> +                 s->ram_size, asc->fallback_ram_size);
-> +    s->ram_size = asc->fallback_ram_size << 20;
-> +    val = g_hash_table_lookup(asc->ram2feat, &asc->fallback_ram_size);
-> +    return GPOINTER_TO_INT(val);
-> +}
-> +
->  static uint32_t aspeed_2400_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
+> @@ -2153,6 +2152,7 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
+>  static void virt_machine_4_2_options(MachineClass *mc)
 >  {
-> -    uint32_t fixed_conf = ASPEED_SDMC_VGA_COMPAT |
-> -        ASPEED_SDMC_DRAM_SIZE(ast2400_rambits(s));
-> +    int ram_f = aspeed_get_ram_feat(s);
-> +    uint32_t fixed_conf = ASPEED_SDMC_VGA_COMPAT | ASPEED_SDMC_DRAM_SIZE(ram_f);
->
->      /* Make sure readonly bits are kept */
->      data &= ~ASPEED_SDMC_READONLY_MASK;
-> @@ -298,6 +253,9 @@ static void aspeed_2400_sdmc_write(AspeedSDMCState *s, uint32_t reg,
->      s->regs[reg] = data;
+>      compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+> +    mc->numa_mem_supported =3D true;
 >  }
->
-> +#define REGISTER_RAM_SIZE(h, k, v) \
-> +    g_hash_table_insert(h->ram2feat, GINT_TO_POINTER(k), GINT_TO_POINTER(v))
+>  DEFINE_VIRT_MACHINE(4, 2)
+> =20
+> diff --git a/hw/core/numa.c b/hw/core/numa.c
+> index 0970a30..3177066 100644
+> --- a/hw/core/numa.c
+> +++ b/hw/core/numa.c
+> @@ -117,6 +117,12 @@ static void parse_numa_node(MachineState *ms, NumaNo=
+deOptions *node,
+>      }
+> =20
+>      if (node->has_mem) {
+> +        if (!mc->numa_mem_supported) {
+> +            error_setg(errp, "Parameter -numa node,mem is not supported =
+by this"
+> +                      " machine type. Use -numa node,memdev instead");
+> +            return;
+> +        }
 > +
->  static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
-> @@ -307,6 +265,11 @@ static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data)
->      asc->max_ram_size = 512 << 20;
->      asc->compute_conf = aspeed_2400_sdmc_compute_conf;
->      asc->write = aspeed_2400_sdmc_write;
-> +    asc->fallback_ram_size = 256;
-> +    REGISTER_RAM_SIZE(asc, 64, ASPEED_SDMC_DRAM_64MB);
-> +    REGISTER_RAM_SIZE(asc, 128, ASPEED_SDMC_DRAM_128MB);
-> +    REGISTER_RAM_SIZE(asc, 256, ASPEED_SDMC_DRAM_256MB);
-> +    REGISTER_RAM_SIZE(asc, 512, ASPEED_SDMC_DRAM_512MB);
+>          numa_info[nodenr].node_mem =3D node->mem;
+>          if (!qtest_enabled()) {
+>              warn_report("Parameter -numa node,mem is deprecated,"
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 21b8290..fa8d024 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1947,7 +1947,6 @@ static void pc_machine_class_init(ObjectClass *oc, =
+void *data)
+>      hc->unplug =3D pc_machine_device_unplug_cb;
+>      mc->default_cpu_type =3D TARGET_DEFAULT_CPU_TYPE;
+>      mc->nvdimm_supported =3D true;
+> -    mc->numa_mem_supported =3D true;
+>      mc->default_ram_id =3D "pc.ram";
+> =20
+>      object_class_property_add(oc, PC_MACHINE_DEVMEM_REGION_SIZE, "int",
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index fa12203..0a9b9e0 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -435,6 +435,7 @@ static void pc_i440fx_4_2_machine_options(MachineClas=
+s *m)
+>      pc_i440fx_5_0_machine_options(m);
+>      m->alias =3D NULL;
+>      m->is_default =3D 0;
+> +    m->numa_mem_supported =3D true;
+>      compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+>      compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
 >  }
->
->  static const TypeInfo aspeed_2400_sdmc_info = {
-> @@ -317,10 +280,10 @@ static const TypeInfo aspeed_2400_sdmc_info = {
->
->  static uint32_t aspeed_2500_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 84cf925..4d6e2be 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -363,6 +363,7 @@ static void pc_q35_4_2_machine_options(MachineClass *=
+m)
 >  {
-> +    int ram_f = aspeed_get_ram_feat(s);
->      uint32_t fixed_conf = ASPEED_SDMC_HW_VERSION(1) |
->          ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB) |
-> -        ASPEED_SDMC_CACHE_INITIAL_DONE |
-> -        ASPEED_SDMC_DRAM_SIZE(ast2500_rambits(s));
-> +        ASPEED_SDMC_CACHE_INITIAL_DONE | ASPEED_SDMC_DRAM_SIZE(ram_f);
->
->      /* Make sure readonly bits are kept */
->      data &= ~ASPEED_SDMC_AST2500_READONLY_MASK;
-> @@ -360,6 +323,11 @@ static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data)
->      asc->max_ram_size = 1024 << 20;
->      asc->compute_conf = aspeed_2500_sdmc_compute_conf;
->      asc->write = aspeed_2500_sdmc_write;
-> +    asc->fallback_ram_size = 512;
-> +    REGISTER_RAM_SIZE(asc, 128, ASPEED_SDMC_AST2500_128MB);
-> +    REGISTER_RAM_SIZE(asc, 256, ASPEED_SDMC_AST2500_256MB);
-> +    REGISTER_RAM_SIZE(asc, 512, ASPEED_SDMC_AST2500_512MB);
-> +    REGISTER_RAM_SIZE(asc, 1024, ASPEED_SDMC_AST2500_1024MB);
+>      pc_q35_5_0_machine_options(m);
+>      m->alias =3D NULL;
+> +    m->numa_mem_supported =3D true;
+>      compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+>      compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
 >  }
->
->  static const TypeInfo aspeed_2500_sdmc_info = {
-> @@ -370,9 +338,10 @@ static const TypeInfo aspeed_2500_sdmc_info = {
->
->  static uint32_t aspeed_2600_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index bcbe1f1..2686b73 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4383,7 +4383,6 @@ static void spapr_machine_class_init(ObjectClass *o=
+c, void *data)
+>       * in which LMBs are represented and hot-added
+>       */
+>      mc->numa_mem_align_shift =3D 28;
+> -    mc->numa_mem_supported =3D true;
+>      mc->auto_enable_numa =3D true;
+> =20
+>      smc->default_caps.caps[SPAPR_CAP_HTM] =3D SPAPR_CAP_OFF;
+> @@ -4465,6 +4464,7 @@ static void spapr_machine_4_2_class_options(Machine=
+Class *mc)
 >  {
-> +    int ram_f = aspeed_get_ram_feat(s);
->      uint32_t fixed_conf = ASPEED_SDMC_HW_VERSION(3) |
->          ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB) |
-> -        ASPEED_SDMC_DRAM_SIZE(ast2600_rambits(s));
-> +        ASPEED_SDMC_DRAM_SIZE(ram_f);
->
->      /* Make sure readonly bits are kept (use ast2500 mask) */
->      data &= ~ASPEED_SDMC_AST2500_READONLY_MASK;
-> @@ -413,6 +382,11 @@ static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data)
->      asc->max_ram_size = 2048 << 20;
->      asc->compute_conf = aspeed_2600_sdmc_compute_conf;
->      asc->write = aspeed_2600_sdmc_write;
-> +    asc->fallback_ram_size = 512;
-> +    REGISTER_RAM_SIZE(asc, 256, ASPEED_SDMC_AST2600_256MB);
-> +    REGISTER_RAM_SIZE(asc, 512, ASPEED_SDMC_AST2600_512MB);
-> +    REGISTER_RAM_SIZE(asc, 1024, ASPEED_SDMC_AST2600_1024MB);
-> +    REGISTER_RAM_SIZE(asc, 2048, ASPEED_SDMC_AST2600_2048MB);
+>      spapr_machine_5_0_class_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+> +    mc->numa_mem_supported =3D true;
 >  }
->
->  static const TypeInfo aspeed_2600_sdmc_info = {
-> --
-> 2.7.4
->
+> =20
+>  DEFINE_SPAPR_MACHINE(4_2, "4.2", false);
+> diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
+> index 982af95..17a0e1d 100644
+> --- a/qemu-deprecated.texi
+> +++ b/qemu-deprecated.texi
+> @@ -89,22 +89,6 @@ error in the future.
+>  The @code{-realtime mlock=3Don|off} argument has been replaced by the
+>  @code{-overcommit mem-lock=3Don|off} argument.
+> =20
+> -@subsection -numa node,mem=3D@var{size} (since 4.1)
+> -
+> -The parameter @option{mem} of @option{-numa node} is used to assign a pa=
+rt of
+> -guest RAM to a NUMA node. But when using it, it's impossible to manage s=
+pecified
+> -RAM chunk on the host side (like bind it to a host node, setting bind po=
+licy, ...),
+> -so guest end-ups with the fake NUMA configuration with suboptiomal perfo=
+rmance.
+> -However since 2014 there is an alternative way to assign RAM to a NUMA n=
+ode
+> -using parameter @option{memdev}, which does the same as @option{mem} and=
+ adds
+> -means to actualy manage node RAM on the host side. Use parameter @option=
+{memdev}
+> -with @var{memory-backend-ram} backend as an replacement for parameter @o=
+ption{mem}
+> -to achieve the same fake NUMA effect or a properly configured
+> -@var{memory-backend-file} backend to actually benefit from NUMA configur=
+ation.
+> -In future new machine versions will not accept the option but it will st=
+ill
+> -work with old machine types. User can check QAPI schema to see if the le=
+gacy
+> -option is supported by looking at MachineInfo::numa-mem-supported proper=
+ty.
+> -
+>  @subsection -numa node (without memory specified) (since 4.1)
+> =20
+>  Splitting RAM by default between NUMA nodes has the same issues as @opti=
+on{mem}
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 709162c..55500bd 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -223,10 +223,10 @@ For example:
+>  -numa cpu,node-id=3D0,socket-id=3D0 -numa cpu,node-id=3D1,socket-id=3D1
+>  @end example
+> =20
+> -@samp{mem} assigns a given RAM amount to a node. @samp{memdev}
+> -assigns RAM from a given memory backend device to a node. If
+> -@samp{mem} and @samp{memdev} are omitted in all nodes, RAM is
+> -split equally between them.
+> +Legacy @samp{mem} assigns a given RAM amount to a node (not supported fo=
+r 5.0
+> +and newer machine types). @samp{memdev} assigns RAM from a given memory =
+backend
+> +device to a node. If @samp{mem} and @samp{memdev} are omitted in all nod=
+es, RAM
+> +is split equally between them.
+> =20
+>  @samp{mem} and @samp{memdev} are mutually exclusive. Furthermore,
+>  if one node uses @samp{memdev}, all of them have to use it.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--aC33ObtQAkNdOZ6b
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl4f6DgACgkQbDjKyiDZ
+s5Jz8hAAtJSEA/OwyWMrBT+QIA/F59pEoz5a8yE9XHxuH8a8WAWR09q0KzMccEfc
+p7YWtWa6UWDszHby+Y7Tj+UsRQ+gpixglKngmlOR6dP33J3HFrM2tM9p6CT7124x
+bKGr5y5VwStsZWhk0lUncy6yRArEY5+wQfb4adLPM+AT+FN9mik2xnKLVPd7XlYp
+bim0/WAPZ7TrUSNslZ+eUE98vuol2Y/tTQNsw5b6LpWktAcQnePEmh5zPJ/A4LsA
+3YTShjc1agPi46hkJYv5XsxHZ33HPrM7bUmJ7eWbdrSf7+/Glx0mUVuWc7/kcVRe
+BPNj75lRHlTyK8Eh3Saoq6LvQnQb5DJrXVuoSeWV/sLNPcK1P/2f7g2tYT+NbvIA
+3ub9BlGVfJF1xsGbBYn+2GCjRMmf/ZY49IwoAvFdYPrESuiqG7wfeW+OJpOXWZvw
+jVC4+2qCut99LXQ3p8DJERztIBH+ElfnnsjQJHe5oUaGvpyIgzkAxVbcuYKNBHcM
+s2PXEQ1CwevdyvBcxyzoIfSq3fohayMD7rF1xy0RZP0iqff+nZ1E5kVyoiaoRTeH
+9HoOzkcZNAjkTq3dlsNQFFO3KqS4dh7ME7QxAW87DDW1Mz5bLZJoaL71bicrlulx
+WLY1QbxsZ+BFxesI/wUdwZg6/ZhqsW96iYGhdw20Vx3ZxJrkWY8=
+=c4bQ
+-----END PGP SIGNATURE-----
+
+--aC33ObtQAkNdOZ6b--

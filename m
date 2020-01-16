@@ -1,191 +1,120 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp5839426lff;
-        Tue, 14 Jan 2020 10:07:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxHSwjf8jSSg8FQJKWeZ0sU/oCbvhdIfMqbPdMSvzlPVDDrOotsuffdiGJwROzcpyluNiv
-X-Received: by 2002:a17:906:c44a:: with SMTP id ck10mr23895806ejb.149.1579025276025;
-        Tue, 14 Jan 2020 10:07:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579025276; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8048636lff;
+        Thu, 16 Jan 2020 00:06:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx6CHrfjf2zWF1uHT8w5yDPhFSXF97G+eGmljrvzYMzfoC36gBkMzTsb8AUnQDiy+eLlqRU
+X-Received: by 2002:aca:f305:: with SMTP id r5mr3255467oih.174.1579161986060;
+        Thu, 16 Jan 2020 00:06:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579161986; cv=none;
         d=google.com; s=arc-20160816;
-        b=T84eT1b+aETCPHIjazUZKTpN7AmZe+WMA8SiXm4dcN5h5W0OH7TIigXq1y+EnNn7q5
-         NgqP4u90st+ibPBgxOD474siOoMn+hehKfkgi+VOHLg2ozGImTHy9EbXVVLm8eYwfIxU
-         O/r3T97EwQessR+aIKogUeFzGuYHY11mqC+eHqv4LvN7bg1oSgxeqiOwbvoFqDGHGF4D
-         JxyYgEsWW68h5QvxXwqZl5+lW4U6K70LUG9MFq70zMl5TxqxB04XeJ0UZTSdZWKXi656
-         vOm8kgSmPfNc6YiJHg35o8+0e0eQi46ePD4l6UER+l5KbpyXag2Bk+DQn5cP+1zrxdc0
-         jnxQ==
+        b=NVA0No5gTKiNSOtYDOe+wT2GbDHbZ2SWwLaaZ+hk1GFB68+lmxARMAGEs4vGAbJShb
+         P33AgGPOc7u1J6HMX81/Cqhhn/gV1VlF0VjxsqgCxedJcJ1c2ySZlC04tzwTGo/bLGCt
+         LDPF1yGdEHOuWxt0YfRG1w//eVwX8/6iaTP7o3MEego42L2JT5qqrXI1+9kcQBSPyirp
+         Ar30d5OM7irXQB2BoqvG+myWT6XYCDqEQts355XYUf652a6HrWn5vPzrP1YXlFccNmYm
+         L0Lk7QfV3cdZbQ7hcbYM7V2Q80FKrjyWCTA3Gx3Y3mFOH7Si/xYH+Y97GisjL/gVoulL
+         mHcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=b0D2Zk5nViE/KJPekemIqHSmsw4Q4A+PCozkh7KIb4M=;
-        b=Uwgd44n9lm96ODaPslMDuti4+bxX0qTa/4Miq1l9uBudTfvuG1xweOn4HQHnF47xJB
-         MP78Ym2B8rneE6mHFzIZD8wH4wI1xa8KilU9Ij+LJbJiKKzyZnLCl/NJlpKg1aDTXb0w
-         8dKAJPuaz3JqnklIyB81ExR6KlbCl6aiVTs7pmJZKEcISMyheX2p+NMgpOwR6gh8xMb/
-         BWcsSoRBTVzeFVIruB0jAgmNtMwmhQoV4uAFwx1DJbC5Fw7soB/uFT5ocu9B0dQmzEPy
-         KFmjq1F7yFWbDKYbKU4aiy1HijvdRbqeeFVfqfookbEAFDaQgt6NMgZiXXzwn9yqvhbr
-         u9Ew==
+        h=list-id:precedence:sender:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=T6hutKtjaQ1lNx4PJ3aLb67/cBy7jWlVyp/OF4XcnLo=;
+        b=O57iCsKg4+LHfLhav14PbljqLaU87xWebCOGef7YYl1FEMnynVBJoxLVNk8ts3wtYb
+         ssB22g8vHuE2WiD0OZUsUBPIdo0/jfzcZ4WQPIviiFMBMi5QcXeMOhXG549HHtEnsIKd
+         ONdW6YrpGSPp4uUPqvQQXh/8aJr7MLxkAdH2ZYOQcAp+iepelYbmf32hlSKIfQeUjZrw
+         8jHuSRLN+88cgn4O3K9hG0UhfwL02v+BdqaK6cbr1cxlyRfeBY3/6I0773f2xUiOXvIB
+         AY+S/HmmLBnPb+9CISBIH93woxkbl2wbCPNojzT6wwqydf5vOyWJvkhJ/Os1/sBLOPDl
+         S/7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRgtXsAD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y22si9987549edr.209.2020.01.14.10.07.55
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jan 2020 10:07:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PUDuyi0l;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id h139si9826925oib.85.2020.01.16.00.06.25;
+        Thu, 16 Jan 2020 00:06:26 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRgtXsAD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44336 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1irQba-0004nN-Uv
-	for alex.bennee@linaro.org; Tue, 14 Jan 2020 13:07:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49866)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1irQbQ-0004n0-Ka
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 13:07:45 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1irQbN-0000Ya-L0
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 13:07:44 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:53887
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1irQbN-0000Y7-HK
- for qemu-arm@nongnu.org; Tue, 14 Jan 2020 13:07:41 -0500
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PUDuyi0l;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726406AbgAPIGZ (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Thu, 16 Jan 2020 03:06:25 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:41264 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1726082AbgAPIGY (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Thu, 16 Jan 2020 03:06:24 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579025260;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=b0D2Zk5nViE/KJPekemIqHSmsw4Q4A+PCozkh7KIb4M=;
- b=BRgtXsADLeywyRw1sYaaycYUFtoAvFmNsdjfsL89ubnGYqjkw0R99/U3u9RyncNeD69NnC
- d1u4o8GFC+TvlJLZFj70pAe/7F3XOw3a0ICyYDIIyR2wRm0DDBbCKmXT3uUG1zIFjH8kbU
- /bjoSG4E+42ueulQIX2mgrZQ0ctgo4s=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-288-qBb4C0QRO0Keo45mwo4iNA-1; Tue, 14 Jan 2020 13:07:37 -0500
-Received: by mail-qt1-f197.google.com with SMTP id d9so9464906qtq.13
- for <qemu-arm@nongnu.org>; Tue, 14 Jan 2020 10:07:37 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=7kAoMg/jig+jnyuJ7iufD/gl40iBEov1qz8zo/twzMg=;
- b=W7WMR8wHvcu7G+yfli+dHBPIXA274Xylwlupg4tXbmPE33bgGDX4meQ1cTc9Aztxg2
- ioxidPblY5VvvRnHxIm7XtfELqAVg8Tce7l2aoZzlT3czMjcDvcKDPD/YKAD92uF7o/B
- EvyO8fdUI7AzmjlT+Qn9KpwDrUmWaShTDRvvfqAE9nqLbiZlpc6BSVdwo1jE3JEOVilL
- 6PT+tUKz49f/N7OAvpm4KctLl6ZPkyq37BKAnmgCAJtJCYXor4M9u3nqAaX3IRlk41GE
- 3J3U1WKTcSPQJ2rNJvz+CxcZCHurylelP027VfUhiB+GSQTlE6aShxKa+7WeFV1x7P58
- P0Wg==
-X-Gm-Message-State: APjAAAVuzKMD42P9yv4g/woZJtx9CeKQDvdG1SMUE4DR+Pd1plFAIHAJ
- B+8nT2BUhzUSg8cTHMI3FGybU+cbFwkaa32YecJrPE1rIKoORQrvRl1FB9X7G+5R0ZQTr6zRSCv
- IBRgRwdXvV2i/
-X-Received: by 2002:ac8:148b:: with SMTP id l11mr4828839qtj.390.1579025256699; 
- Tue, 14 Jan 2020 10:07:36 -0800 (PST)
-X-Received: by 2002:ac8:148b:: with SMTP id l11mr4828815qtj.390.1579025256485; 
- Tue, 14 Jan 2020 10:07:36 -0800 (PST)
-Received: from xz-x1 ([104.156.64.74])
- by smtp.gmail.com with ESMTPSA id d71sm7078517qkg.4.2020.01.14.10.07.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Jan 2020 10:07:35 -0800 (PST)
-Date: Tue, 14 Jan 2020 13:07:34 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Subject: Re: [PATCH v12 05/13] virtio-iommu: Endpoint and domains structs and
- helpers
-Message-ID: <20200114180734.GB225163@xz-x1>
-References: <20200109144319.15912-1-eric.auger@redhat.com>
- <20200109144319.15912-6-eric.auger@redhat.com>
- <20200113202301.GD201624@xz-x1>
- <51267d84-c805-a4a1-8084-b278721a5b3f@redhat.com>
+        s=mimecast20190719; t=1579161983;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references;
+        bh=T6hutKtjaQ1lNx4PJ3aLb67/cBy7jWlVyp/OF4XcnLo=;
+        b=PUDuyi0lXrKtbT6WBYpooyUgCwTW7BX9Of8BcX8x24O4SPVncl8jpq7YFd+RcdZoJ7LD8C
+        eSdzcNMQPExVe42quMABNRklrmP2S+egnFDUU03E4QwPPOI17Nmb8hBdDHPOioZPDZPtOq
+        bDNgxlvbCMhP0lo1S193qhnwt119s5g=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-344-CiYYQcitPImWik046IWKbw-1; Thu, 16 Jan 2020 03:06:18 -0500
+X-MC-Unique: CiYYQcitPImWik046IWKbw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BAA35800D55;
+        Thu, 16 Jan 2020 08:06:16 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id EDB1C5DA70;
+        Thu, 16 Jan 2020 08:06:11 +0000 (UTC)
+Date:   Thu, 16 Jan 2020 09:06:09 +0100
+From:   Andrew Jones <drjones@redhat.com>
+To:     Auger Eric <eric.auger@redhat.com>
+Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+        peter.maydell@linaro.org, yuzenghui@huawei.com,
+        alexandru.elisei@arm.com, thuth@redhat.com
+Subject: Re: [kvm-unit-tests PATCH v2 13/16] arm/arm64: ITS: INT functional
+ tests
+Message-ID: <20200116080609.thwiyi36rttnezxd@kamzik.brq.redhat.com>
+References: <20200110145412.14937-1-eric.auger@redhat.com>
+ <20200110145412.14937-14-eric.auger@redhat.com>
+ <20200113181701.jit3ywxoifduipew@kamzik.brq.redhat.com>
+ <1c046216-b873-a4c1-4a7a-374f10947d59@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <51267d84-c805-a4a1-8084-b278721a5b3f@redhat.com>
-X-MC-Unique: qBb4C0QRO0Keo45mwo4iNA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- mst@redhat.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8tOfJbrwz/pq
+In-Reply-To: <1c046216-b873-a4c1-4a7a-374f10947d59@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: gc4LUHlWIVac
 
-On Tue, Jan 14, 2020 at 09:51:59AM +0100, Auger Eric wrote:
-> Hi Peter,
-
-Hi, Eric,
-
-[...]
-
-> >=20
+On Wed, Jan 15, 2020 at 06:11:23PM +0100, Auger Eric wrote:
+> >> +static int its_prerequisites(int nb_cpus)
 > >> +{
-> >> +    VirtIOIOMMUEndpoint *ep;
+> >> +	int cpu;
 > >> +
-> >> +    ep =3D g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
-> >> +    if (ep) {
-> >> +        return ep;
-> >> +    }
-> >> +    if (!virtio_iommu_mr(s, ep_id)) {
-> >=20
-> > Could I ask when this will trigger?
->=20
-> This can happen when a device is attached to a domain and its RID does
-> not correspond to one of the devices protected by the iommu.
+> >> +	if (!gicv3_its_base()) {
+> >> +		report_skip("No ITS, skip ...");
+> >> +		return -1;
+> >> +	}
+> >> +
+> >> +	if (nr_cpus < 4) {
+> >> +		report_skip("Test requires at least %d vcpus", nb_cpus);
+> >> +		return -1;
+> > 
+> > We have nr_cpu_check() in arm/gic.c that does a report_abort for this
+> > case. Is there a reason to do report_skip instead of report_abort?
+> Why should we mandate 4 vcpus?
 
-So will it happen only because of a kernel driver bug?
+I don't know. It's your test :-) afaict if there aren't 4 vcpus then you
+skip this test and exit, which is the same thing as report_abort'ing.
+If you intend to run multiple tests and only want to skip a few when there
+aren't enough vcpus, then I agree report_skip makes some sense.
 
-Also, I think the name of "virtio_iommu_mr" is confusing on that it
-returned explicitly a MemoryRegion however it's never been used:
-
-(since they're not in the same patch I'm pasting)
-
-static IOMMUMemoryRegion *virtio_iommu_mr(VirtIOIOMMU *s, uint32_t sid)
-{
-    uint8_t bus_n, devfn;
-    IOMMUPciBus *iommu_pci_bus;
-    IOMMUDevice *dev;
-
-    bus_n =3D PCI_BUS_NUM(sid);
-    iommu_pci_bus =3D iommu_find_iommu_pcibus(s, bus_n);
-    if (iommu_pci_bus) {
-        devfn =3D sid & 0xFF;
-        dev =3D iommu_pci_bus->pbdev[devfn];
-        if (dev) {
-            return &dev->iommu_mr;
-        }
-    }
-    return NULL;
-}
-
-Maybe "return !!dev" would be enough, then make the return a boolean?
-Then we can rename it to virtio_iommu_has_device().
-
-PS. I think we can also drop IOMMU_PCI_DEVFN_MAX (after all you even
-didn't use it here!) and use PCI_DEVFN_MAX, and replace 0xFF.
+On a related note, so far I've always tried to write tests that require
+more than one vcpu to be testable with only two, but then test even more
+if more are provided. Do you really need four for this test?
 
 Thanks,
-
---=20
-Peter Xu
-
+drew

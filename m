@@ -1,82 +1,104 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8267206lff;
-        Thu, 16 Jan 2020 03:56:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzKJ6BkBqlVFAe8xpD/TZ594Qkb+rYrxRY05wg5i1e+y3DBKfj+5R8wMvbJURhOeGRAeemm
-X-Received: by 2002:aa7:de15:: with SMTP id h21mr32689019edv.322.1579175808692;
-        Thu, 16 Jan 2020 03:56:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579175808; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8364137lff;
+        Thu, 16 Jan 2020 05:25:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyLGL/A7eu7fozs0XykDxNAcXfhrnMuGjIF0CASWJb5kPEKUW0/GZvyypPFgfrtgCjNuKK7
+X-Received: by 2002:ad4:4e34:: with SMTP id dm20mr2569701qvb.163.1579181129758;
+        Thu, 16 Jan 2020 05:25:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579181129; cv=none;
         d=google.com; s=arc-20160816;
-        b=OPAYKRxdZEACfDrfGoe8B87rMIhRxwTxnBnLEv827mkgVeSA77UO7faN8giYfI6UWL
-         drRtRWAaZD28dUpQA64y6rbysb/kVuUSBMk6XAwKY7iuvkt84MUJ5SYDQYhPoCfy/T+D
-         ye8ePZltNWbF55ITlR9cYuHE8yCvwiaMBC7NLEQPGlikSd73bFlX5HjRWrK5OqUV50d5
-         1eVLQju+odN/5ruNYfFounv34n6ui5y+tCd6GghdIYPcl/+9A++cDjZeppki5KSDds40
-         bifkS7hFAyJTxDKtTBp0vm704q1CvcSMrzabIa1XyK6o3dO5lu7dBjNK8O8hDC6gS6jK
-         4RGA==
+        b=dsmumVM7KRo12sp1qw/WihaA2TrvwkBW7vIgA2dXHHO64q4Jtuaso/qoIxDkGDIgGG
+         pOd/f6ZlJ2GeY2htLPUNOi45hXj0I3WbGgMJQP9NDkyiJO6IcMd8sBruYmq+DewMHdhk
+         +5dyCvzMX4YMETGRBwacn0A7koU6jPGp/judwpkuj71Dvm0ImZiEszuzQluGw/ssvlyJ
+         F5yR9SThm5zETY/bowHa6woWUgeDKnvWzHa8MJQYW+ncggqMpSzl5EvZroXlqrl9KX7h
+         Wxt7PC1jqDJofSSwLwzujUN5Pcgun38Ots9txg1FN0bDKm6EFZRa0YBmpomXjf3JPnwf
+         iiMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=t32cOQeiQisll0N22zRj3y7GF7x45Tykvkg+PN0qPAo=;
-        b=Bi2v+UA8i1oNXr8eJ9eURpdV2zQnvY1GTuvuPKbuUhgvDoFCclB//myBF7hp57+4gB
-         pKei/GkO37fUDhBZ90pu9onobRFAo10NZNRMsLNCk0MieKGelNPV5gUsBGVuKDKG8RNn
-         hJ8eeyCh/PN3tft5sHA5FXaKE2j1bAnY1500l6DvxqXRlwtKsQpKgN+3WT5+HE5YvefW
-         U8v/6JKWWXjymR0KKvXzsO0snzNqRXxJgc+fNrm3hua46mX/SWNVG654VdvfYUfVUYah
-         1Up9XEgS4h6xLcvWxwstcmkL8UykxZuYROWtTAh2zm3cY6qqVvKfQ6pClSETBHRUGDGp
-         PRqg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=Omd1dymP/aA8I6I3SnZ+1r2udZhBpsCMI9jYmRDtIBA=;
+        b=zvOUvpaG3LlAkm140Mm1C/pcVCBbJSOxWLHDI1HqTWWtVJ6e+FLz63kyqP3LknHc5d
+         z7+7CB+04ZjHmZLvCCR1S9sPfuVqdz8te0y/NZaV3P2jVYM6zaQ5XEITPBgSM9IuWBXk
+         gl8tcamSypW3Zw64l9JMwD3Vub9xg+7Sy0ZMDGOh8PRfJrGn14sqRLc2XGhGWPDntu1U
+         mePlR0RHVUhqIblciiNKqLDww1KMfeFDxkxOyiVNbSaYMfsMRdRExzvTLx+fvc+bagi0
+         0aUod/cwa5xSwCiVF+ljnvauI5CF8SYxa5ghQmWXb8l5WsIMPZldlzBN44/lgO3zVoPS
+         Xtvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GnfVp2fO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b4si14702270edf.125.2020.01.16.03.56.48
+        by mx.google.com with ESMTPS id v34si12838147qtb.211.2020.01.16.05.25.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 03:56:48 -0800 (PST)
+        Thu, 16 Jan 2020 05:25:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40526 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GnfVp2fO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1is3lX-00084C-K0
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 06:56:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58388)
+	id 1is59N-0006UJ-3V
+	for alex.bennee@linaro.org; Thu, 16 Jan 2020 08:25:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41957)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1is3lM-00083z-8O
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 06:56:37 -0500
+ (envelope-from <imammedo@redhat.com>) id 1is59D-0006U8-I7
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 08:25:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1is3lK-0007ag-Fm
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 06:56:36 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2734 helo=huawei.com)
+ (envelope-from <imammedo@redhat.com>) id 1is59C-00046C-9U
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 08:25:19 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23511
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1is3lK-0007VO-4G; Thu, 16 Jan 2020 06:56:34 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id BD75186001D17EDC454E;
- Thu, 16 Jan 2020 19:56:27 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS402-HUB.china.huawei.com
- (10.3.19.202) with Microsoft SMTP Server id 14.3.439.0; Thu, 16 Jan 2020
- 19:56:20 +0800
-Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified by
- _HID
-To: "Michael S. Tsirkin" <mst@redhat.com>
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1is59C-00045y-64
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 08:25:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579181117;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Omd1dymP/aA8I6I3SnZ+1r2udZhBpsCMI9jYmRDtIBA=;
+ b=GnfVp2fOIvIdmItLVYIKx2vqGWOGLTWQ/hhwkPn+fIvy0kWT4vr/YPns7AFenXiIpDFG/5
+ fxc+qI3qa9hnDn2bBz0kcZwSUdP/DOtL275mDu/1nlhNDPyI5JJxfKSsn1Azv3zcB3xWvk
+ br7UjwTJNS5ZIHORC3XZDT+EG3pXIcw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-247-nCSoRUIWOliI5kw8TDdvew-1; Thu, 16 Jan 2020 08:25:15 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2FFA21902EA4;
+ Thu, 16 Jan 2020 13:25:14 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 36AD988894;
+ Thu, 16 Jan 2020 13:25:09 +0000 (UTC)
+Date: Thu, 16 Jan 2020 14:25:08 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Guoheyi <guoheyi@huawei.com>
+Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified
+ by _HID
+Message-ID: <20200116142508.1d82af31@redhat.com>
+In-Reply-To: <a4992b63-e8e7-7f54-341e-f7dd3d7e8880@huawei.com>
 References: <20191219064759.35053-1-guoheyi@huawei.com>
  <20191219064759.35053-3-guoheyi@huawei.com>
  <20200105072504-mutt-send-email-mst@kernel.org>
  <20200105074308-mutt-send-email-mst@kernel.org>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <a4992b63-e8e7-7f54-341e-f7dd3d7e8880@huawei.com>
-Date: Thu, 16 Jan 2020 19:56:19 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ <a4992b63-e8e7-7f54-341e-f7dd3d7e8880@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200105074308-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: nCSoRUIWOliI5kw8TDdvew-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.191
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,157 +111,76 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>, qemu-devel@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
+ Corey Minyard <cminyard@mvista.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p3hZ8eMXF42x
+X-TUID: ELkk/mDPxCgr
 
+On Thu, 16 Jan 2020 19:56:19 +0800
+Guoheyi <guoheyi@huawei.com> wrote:
 
-=E5=9C=A8 2020/1/5 20:53, Michael S. Tsirkin =E5=86=99=E9=81=93:
-> On Sun, Jan 05, 2020 at 07:34:01AM -0500, Michael S. Tsirkin wrote:
->> On Thu, Dec 19, 2019 at 02:47:59PM +0800, Heyi Guo wrote:
->>> According to ACPI spec, _ADR should be used for device which is on a
->>> bus that has a standard enumeration algorithm. It does not make sense
->>> to have a _ADR object for devices which already have _HID and will be
->>> enumerated by OSPM.
->>>
->>> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
->> Are you sure? I would think this depends on the ID and the device
->> really. E.g. PCI devices all are expected to have _ADR and some of the=
+> =E5=9C=A8 2020/1/5 20:53, Michael S. Tsirkin =E5=86=99=E9=81=93:
+> > On Sun, Jan 05, 2020 at 07:34:01AM -0500, Michael S. Tsirkin wrote: =20
+> >> On Thu, Dec 19, 2019 at 02:47:59PM +0800, Heyi Guo wrote: =20
+> >>> According to ACPI spec, _ADR should be used for device which is on a
+> >>> bus that has a standard enumeration algorithm. It does not make sense
+> >>> to have a _ADR object for devices which already have _HID and will be
+> >>> enumerated by OSPM.
+> >>>
+> >>> Signed-off-by: Heyi Guo <guoheyi@huawei.com> =20
+> >> Are you sure? I would think this depends on the ID and the device
+> >> really. E.g. PCI devices all are expected to have _ADR and some of the=
 m
->> have a _HID.
->
-> To clarify I am not commenting on patches.
-> The spec says this:
-> 	6.1.5 _HID (Hardware ID)
->
-> 	This object is used to supply OSPM with the device=E2=80=99s PNP ID or=
- ACPI ID. 1
->
-> 	When describing a platform, use of any _HID objects is optional. Howev=
-er, a _HID object must be
->
-> 	used to describe any device that will be enumerated by OSPM. OSPM only=
- enumerates a device
->
-> 	when no bus enumerator can detect the device ID. For example, devices =
-on an ISA bus are
->
-> 	enumerated by OSPM. Use the _ADR object to describe devices enumerated=
- by bus enumerators
->
-> 	other than OSPM.
->
->
-> Note: "detect the device ID" not "enumerate the device" which I think
-> means there's a driver matching this vendor/device ID.
->
-> So it seems fine to have _ADR so device is enumerated, and still have
-> _HID e.g. so ACPI driver can be loaded as fallback if there's
-> no bus driver.
->
->
-> Note I am not saying the patch itself is not correct.
-> Maybe these devices are not on any standard bus and that
-> is why they should not have _ADR? I have not looked.
->
-> I am just saying that spec does not seem to imply _HID and _ADR
-> can't coexist.
+> >> have a _HID. =20
+> >
+> > To clarify I am not commenting on patches.
+> > The spec says this:
+> > =096.1.5 _HID (Hardware ID)
+> >
+> > =09This object is used to supply OSPM with the device=E2=80=99s PNP ID =
+or ACPI ID. 1
+> >
+> > =09When describing a platform, use of any _HID objects is optional. How=
+ever, a _HID object must be
+> >
+> > =09used to describe any device that will be enumerated by OSPM. OSPM on=
+ly enumerates a device
+> >
+> > =09when no bus enumerator can detect the device ID. For example, device=
+s on an ISA bus are
+> >
+> > =09enumerated by OSPM. Use the _ADR object to describe devices enumerat=
+ed by bus enumerators
+> >
+> > =09other than OSPM.
+> >
+> >
+> > Note: "detect the device ID" not "enumerate the device" which I think
+> > means there's a driver matching this vendor/device ID.
+> >
+> > So it seems fine to have _ADR so device is enumerated, and still have
+> > _HID e.g. so ACPI driver can be loaded as fallback if there's
+> > no bus driver.
+> >
+> >
+> > Note I am not saying the patch itself is not correct.
+> > Maybe these devices are not on any standard bus and that
+> > is why they should not have _ADR? I have not looked.
+> >
+> > I am just saying that spec does not seem to imply _HID and _ADR
+> > can't coexist. =20
+>=20
+> More reading on the spec, I found a statement as below=20
+> (https://uefi.org/sites/default/files/resources/ACPI_6_3_May16.pdf,=20
+> section 6.1, on top of page 343):
 
-More reading on the spec, I found a statement as below=20
-(https://uefi.org/sites/default/files/resources/ACPI_6_3_May16.pdf,=20
-section 6.1, on top of page 343):
+I'd replace 'It does not make sense ...' sentence with pointer to spec
+and quote below in commit message.
 
-A device object must contain either an _HID object or an _ADR object,=20
-but should not contain both
+> A device object must contain either an _HID object or an _ADR object,=20
+> but should not contain both
 
-So I think it is at least not recomended to use both _HID and _ADR in a=20
-single device object.
-
-Thanks,
-
-Heyi
-
-
->
->
->> CC Corey who added a device with both HID and ADR to x86 recenly.
->>
->> Apropos Corey, why was HID APP0005 chosen?
->>
->>> ---
->>> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
->>> Cc: Peter Maydell <peter.maydell@linaro.org>
->>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
->>> Cc: Igor Mammedov <imammedo@redhat.com>
->>> Cc: qemu-arm@nongnu.org
->>> Cc: qemu-devel@nongnu.org
->>> ---
->>>   hw/arm/virt-acpi-build.c          |   8 --------
->>>   tests/data/acpi/virt/DSDT         | Bin 18449 -> 18426 bytes
->>>   tests/data/acpi/virt/DSDT.memhp   | Bin 19786 -> 19763 bytes
->>>   tests/data/acpi/virt/DSDT.numamem | Bin 18449 -> 18426 bytes
->>>   4 files changed, 8 deletions(-)
->>>
->>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>> index 9f4c7d1889..be752c0ad8 100644
->>> --- a/hw/arm/virt-acpi-build.c
->>> +++ b/hw/arm/virt-acpi-build.c
->>> @@ -78,11 +78,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const M=
-emMapEntry *uart_memmap,
->>>                                AML_EXCLUSIVE, &uart_irq, 1));
->>>       aml_append(dev, aml_name_decl("_CRS", crs));
->>>  =20
->>> -    /* The _ADR entry is used to link this device to the UART descri=
-bed
->>> -     * in the SPCR table, i.e. SPCR.base_address.address =3D=3D _ADR=
-.
->>> -     */
->>> -    aml_append(dev, aml_name_decl("_ADR", aml_int(uart_memmap->base)=
-));
->>> -
->>>       aml_append(scope, dev);
->>>   }
->>>  =20
->>> @@ -170,7 +165,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const M=
-emMapEntry *memmap,
->>>       aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
->>>       aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
->>>       aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
->>> -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
->>>       aml_append(dev, aml_name_decl("_UID", aml_string("PCI0")));
->>>       aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Devic=
-e")));
->>>       aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
->>> @@ -334,7 +328,6 @@ static void acpi_dsdt_add_gpio(Aml *scope, const =
-MemMapEntry *gpio_memmap,
->>>   {
->>>       Aml *dev =3D aml_device("GPO0");
->>>       aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0061")));
->>> -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
->>>       aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->>>  =20
->>>       Aml *crs =3D aml_resource_template();
->>> @@ -364,7 +357,6 @@ static void acpi_dsdt_add_power_button(Aml *scope=
-)
->>>   {
->>>       Aml *dev =3D aml_device(ACPI_POWER_BUTTON_DEVICE);
->>>       aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C0C")));
->>> -    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
->>>       aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->>>       aml_append(scope, dev);
->>>   }
->>> diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
->>
->> Please do not include binary changes in acpi patches.
->>
->> See comment at the top of tests/bios-tables-test.c for documentation
->> on how to update these.
->>
->> --=20
->> MST
->
-> .
+[...]
 

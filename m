@@ -1,186 +1,117 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8364137lff;
-        Thu, 16 Jan 2020 05:25:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyLGL/A7eu7fozs0XykDxNAcXfhrnMuGjIF0CASWJb5kPEKUW0/GZvyypPFgfrtgCjNuKK7
-X-Received: by 2002:ad4:4e34:: with SMTP id dm20mr2569701qvb.163.1579181129758;
-        Thu, 16 Jan 2020 05:25:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579181129; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8489706lff;
+        Thu, 16 Jan 2020 07:08:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxQffUSqdIn97rJOncopdS5BbYxxbb+sZTtel3GVV/HkvsblEqb+RGN2Rc08x3KMPWmGt15
+X-Received: by 2002:a50:ef1a:: with SMTP id m26mr36873933eds.289.1579187283082;
+        Thu, 16 Jan 2020 07:08:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579187283; cv=none;
         d=google.com; s=arc-20160816;
-        b=dsmumVM7KRo12sp1qw/WihaA2TrvwkBW7vIgA2dXHHO64q4Jtuaso/qoIxDkGDIgGG
-         pOd/f6ZlJ2GeY2htLPUNOi45hXj0I3WbGgMJQP9NDkyiJO6IcMd8sBruYmq+DewMHdhk
-         +5dyCvzMX4YMETGRBwacn0A7koU6jPGp/judwpkuj71Dvm0ImZiEszuzQluGw/ssvlyJ
-         F5yR9SThm5zETY/bowHa6woWUgeDKnvWzHa8MJQYW+ncggqMpSzl5EvZroXlqrl9KX7h
-         Wxt7PC1jqDJofSSwLwzujUN5Pcgun38Ots9txg1FN0bDKm6EFZRa0YBmpomXjf3JPnwf
-         iiMQ==
+        b=g96hqt1xQxP8LzOFhus0AVEJCltEfZDutfwTQlPDQFkQ6RacoeEJ1Fo5VAGR7FNkUE
+         qmvY/R7NC2Y+7/OFzpshqmdqzqAWpdMUu59lZL/zGLdjaxYXKwYDm6GIy0Eqg3a9tstj
+         snRnfP3gDbmhFw/sixs0r8+cis2JBzkk2B44lcKRCVg3Z1cGqrMUaJFUHfRIMcLgQ3SU
+         Bi9EkSwHUeBQuglDtPDrlE1XslBQuC24PUZ2KWCJEmTHZybyrSONZeZ6E6Z/WxuDSF57
+         sBElmWkEfW+XJd7q9IjBYVZoZfRUgXxxI9GW+ADFj5bwNOi55E/zB90CcKmPvyCWtGbH
+         yPCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=Omd1dymP/aA8I6I3SnZ+1r2udZhBpsCMI9jYmRDtIBA=;
-        b=zvOUvpaG3LlAkm140Mm1C/pcVCBbJSOxWLHDI1HqTWWtVJ6e+FLz63kyqP3LknHc5d
-         z7+7CB+04ZjHmZLvCCR1S9sPfuVqdz8te0y/NZaV3P2jVYM6zaQ5XEITPBgSM9IuWBXk
-         gl8tcamSypW3Zw64l9JMwD3Vub9xg+7Sy0ZMDGOh8PRfJrGn14sqRLc2XGhGWPDntu1U
-         mePlR0RHVUhqIblciiNKqLDww1KMfeFDxkxOyiVNbSaYMfsMRdRExzvTLx+fvc+bagi0
-         0aUod/cwa5xSwCiVF+ljnvauI5CF8SYxa5ghQmWXb8l5WsIMPZldlzBN44/lgO3zVoPS
-         Xtvg==
+        bh=xqx8onJkFwRaxbtn/yTJuM8dq8+DussPiH5hqaBh7mg=;
+        b=eDDPLe+QQGp+wjq3+E2jk9FXTloNY8x/iRSuTcV1avzLVjhu5qHQ8FBXx020YGwYdP
+         vu3BmALNQS/2HM0NDeeOMVOBJlDTd27YQxdiJfCRvQEEapL6fjJpaS5xzVhGpQgJPk0h
+         V+vip7QNhLL1upKNzYIRvZW/VbM2FuUDtlUIaQjWoCzI6uYhEJrmh+UUUSMSCXN1efaH
+         XlFsCTQohmLC54yxj/Ei11WUtPFtnML93IcnFH8cGzhitJAETGEING4qxCh0nByRizlv
+         oQdNEAYi1a20ZcQWdVXL1IROsLLYwpsReDMOKf4AB0F9StpIzwFlsF6npzvGX3Ltf8Ch
+         Ewtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GnfVp2fO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v34si12838147qtb.211.2020.01.16.05.25.29
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OL4ut5C0;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id z60si163412ede.566.2020.01.16.07.08.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 05:25:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 16 Jan 2020 07:08:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GnfVp2fO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41930 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1is59N-0006UJ-3V
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 08:25:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41957)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1is59D-0006U8-I7
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 08:25:21 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1is59C-00046C-9U
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 08:25:19 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23511
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1is59C-00045y-64
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 08:25:18 -0500
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OL4ut5C0;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579181117;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Omd1dymP/aA8I6I3SnZ+1r2udZhBpsCMI9jYmRDtIBA=;
- b=GnfVp2fOIvIdmItLVYIKx2vqGWOGLTWQ/hhwkPn+fIvy0kWT4vr/YPns7AFenXiIpDFG/5
- fxc+qI3qa9hnDn2bBz0kcZwSUdP/DOtL275mDu/1nlhNDPyI5JJxfKSsn1Azv3zcB3xWvk
- br7UjwTJNS5ZIHORC3XZDT+EG3pXIcw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-247-nCSoRUIWOliI5kw8TDdvew-1; Thu, 16 Jan 2020 08:25:15 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2FFA21902EA4;
- Thu, 16 Jan 2020 13:25:14 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 36AD988894;
- Thu, 16 Jan 2020 13:25:09 +0000 (UTC)
-Date: Thu, 16 Jan 2020 14:25:08 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Guoheyi <guoheyi@huawei.com>
-Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified
- by _HID
-Message-ID: <20200116142508.1d82af31@redhat.com>
-In-Reply-To: <a4992b63-e8e7-7f54-341e-f7dd3d7e8880@huawei.com>
-References: <20191219064759.35053-1-guoheyi@huawei.com>
- <20191219064759.35053-3-guoheyi@huawei.com>
- <20200105072504-mutt-send-email-mst@kernel.org>
- <20200105074308-mutt-send-email-mst@kernel.org>
- <a4992b63-e8e7-7f54-341e-f7dd3d7e8880@huawei.com>
+	s=mimecast20190719; t=1579187282;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xqx8onJkFwRaxbtn/yTJuM8dq8+DussPiH5hqaBh7mg=;
+	b=OL4ut5C0pKJ7okxIxrTKbn5BslRdRU2Y+XmawqU4bvhiu+p5LoZnJvqTU0ncegnduIPNwf
+	2w9tL2e12Fw6jkjpy3o0Mj928AX41D98mJiPpEuTTvtpYngbfgu9fLJGo+7igQTYpcIe5j
+	xgi3rwVSXHkpIYerz06h9Jbb/1TnfDE=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-203-DC-RNGOmOqaQt3WmVGWTLg-1; Thu, 16 Jan 2020 10:08:00 -0500
+Received: by mail-wr1-f70.google.com with SMTP id z14so9455472wrs.4
+        for <alex.bennee@linaro.org>; Thu, 16 Jan 2020 07:08:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=utdWfp7ymQUKhwO0mN+1Ng1mKtF6uE+xQ50My6J3OQw=;
+        b=W0AWWdvhX2ZPF3eFccCeozsPs/br9z8ckP8Bk+rR44GwHjiFT2uT8RK+MpvC5zpNeL
+         r5tH8eizLgGBw4GOvwCE6qBTk6hfeNvSE2E8bI/liXit/VNj1dypfeDySITwyorWQwsJ
+         I97vDFHldkqUljgkQdF8ppTCSn2vCiB9gVtiv1rITEa67TIU4rZl3Y+xKjKoqXW1iXN8
+         YEefLY3kalUl74mVirrNBI/9eer2206WgKFqQZL5jzjqlUa3UYkriQdmLMiCODEB3d6X
+         iU5Ueh+ZDETq4q1VEfMpFw+IC5o8NVCNMUgsYOV+xqz200wjRaKyh00yUEJxK6atQh+/
+         SAqg==
+X-Gm-Message-State: APjAAAXQq/TE+cjg2l5ByGZK4ZQ80yvy8gJSF5szQdGh/V/Bwh72MVvi
+	AXwIflmfqbVvCvMvtCTH5/dW9JbOVMkJ7ZhDrSbbH4LPHdzzlVu6MFE+5B5wayA+QyHgcPnrCZJ
+	wTVs/+XBAYO7aWstt
+X-Received: by 2002:a7b:c3d2:: with SMTP id t18mr6801457wmj.90.1579187279243;
+        Thu, 16 Jan 2020 07:07:59 -0800 (PST)
+X-Received: by 2002:a7b:c3d2:: with SMTP id t18mr6801451wmj.90.1579187279117;
+        Thu, 16 Jan 2020 07:07:59 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [10.101.1.81] ([176.12.107.132])
+        by smtp.gmail.com with ESMTPSA id w8sm369250wmd.2.2020.01.16.07.07.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Jan 2020 07:07:58 -0800 (PST)
+Subject: Re: [PATCH v5 02/22] gdbstub: stop passing GDBState * around and use
+ global
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+References: <20200114150953.27659-1-alex.bennee@linaro.org>
+ <20200114150953.27659-3-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <e8625a1b-3264-b6a6-21bf-82a11d0fdcef@redhat.com>
+Date: Thu, 16 Jan 2020 16:07:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: nCSoRUIWOliI5kw8TDdvew-1
+In-Reply-To: <20200114150953.27659-3-alex.bennee@linaro.org>
+Content-Language: en-US
+X-MC-Unique: DC-RNGOmOqaQt3WmVGWTLg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Corey Minyard <cminyard@mvista.com>, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ELkk/mDPxCgr
+X-TUID: BWMl2WJIc5tp
 
-On Thu, 16 Jan 2020 19:56:19 +0800
-Guoheyi <guoheyi@huawei.com> wrote:
-
-> =E5=9C=A8 2020/1/5 20:53, Michael S. Tsirkin =E5=86=99=E9=81=93:
-> > On Sun, Jan 05, 2020 at 07:34:01AM -0500, Michael S. Tsirkin wrote: =20
-> >> On Thu, Dec 19, 2019 at 02:47:59PM +0800, Heyi Guo wrote: =20
-> >>> According to ACPI spec, _ADR should be used for device which is on a
-> >>> bus that has a standard enumeration algorithm. It does not make sense
-> >>> to have a _ADR object for devices which already have _HID and will be
-> >>> enumerated by OSPM.
-> >>>
-> >>> Signed-off-by: Heyi Guo <guoheyi@huawei.com> =20
-> >> Are you sure? I would think this depends on the ID and the device
-> >> really. E.g. PCI devices all are expected to have _ADR and some of the=
-m
-> >> have a _HID. =20
-> >
-> > To clarify I am not commenting on patches.
-> > The spec says this:
-> > =096.1.5 _HID (Hardware ID)
-> >
-> > =09This object is used to supply OSPM with the device=E2=80=99s PNP ID =
-or ACPI ID. 1
-> >
-> > =09When describing a platform, use of any _HID objects is optional. How=
-ever, a _HID object must be
-> >
-> > =09used to describe any device that will be enumerated by OSPM. OSPM on=
-ly enumerates a device
-> >
-> > =09when no bus enumerator can detect the device ID. For example, device=
-s on an ISA bus are
-> >
-> > =09enumerated by OSPM. Use the _ADR object to describe devices enumerat=
-ed by bus enumerators
-> >
-> > =09other than OSPM.
-> >
-> >
-> > Note: "detect the device ID" not "enumerate the device" which I think
-> > means there's a driver matching this vendor/device ID.
-> >
-> > So it seems fine to have _ADR so device is enumerated, and still have
-> > _HID e.g. so ACPI driver can be loaded as fallback if there's
-> > no bus driver.
-> >
-> >
-> > Note I am not saying the patch itself is not correct.
-> > Maybe these devices are not on any standard bus and that
-> > is why they should not have _ADR? I have not looked.
-> >
-> > I am just saying that spec does not seem to imply _HID and _ADR
-> > can't coexist. =20
+On 1/14/20 4:09 PM, Alex Benn=C3=A9e wrote:
+> We only have one GDBState which should be allocated at the time we
+> process any commands. This will make further clean-up a bit easier.
 >=20
-> More reading on the spec, I found a statement as below=20
-> (https://uefi.org/sites/default/files/resources/ACPI_6_3_May16.pdf,=20
-> section 6.1, on top of page 343):
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>=20
+> ---
+> v3
+>    - remove final *s paramters from function calls
+> v4
+>    - a few fixups for coding style
+> ---
+>   gdbstub.c | 561 +++++++++++++++++++++++++++---------------------------
+>   1 file changed, 278 insertions(+), 283 deletions(-)
 
-I'd replace 'It does not make sense ...' sentence with pointer to spec
-and quote below in commit message.
-
-> A device object must contain either an _HID object or an _ADR object,=20
-> but should not contain both
-
-[...]
-
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>

@@ -1,204 +1,187 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8310815lff;
-        Thu, 16 Jan 2020 04:38:05 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz+7Lfa3qpzOYDaR1eh8JFaXdlHEXxVca33s0GhtNzSHVhDfOtQcvpXOr6tZQeGHAv0Cst1
-X-Received: by 2002:a50:f382:: with SMTP id g2mr36263482edm.260.1579178285589;
-        Thu, 16 Jan 2020 04:38:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579178285; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8311874lff;
+        Thu, 16 Jan 2020 04:39:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy60Anl0LKs/8LiSEH8knn3URQsQBbIx0xcAGdjSPivniRfNYZ1ELh9lMl4otqQhTHHInH8
+X-Received: by 2002:a50:84ab:: with SMTP id 40mr15580142edq.14.1579178358949;
+        Thu, 16 Jan 2020 04:39:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579178358; cv=none;
         d=google.com; s=arc-20160816;
-        b=U/LpP95wOroVW4q1q8XuI34WeGlz930HMgMhVV7hLY2IS1BNTBGEhcDcVAPEn9QsRx
-         3PdHT5OovpTY6uIs0Z76vSHtXlXFV81jYd4iYshZ74SN1xIdf0A4MLU0DBc0OAcN2Ogx
-         KaxPOl6KUA+mYneE1SJzYxCqKjv8qF3DSwOeZ/aiVsRdqm5QXijKbGQ8LcOL3oWiqJpK
-         46lWckqsVV2xv6vuUXlH0PjFdi+2oYL7u91RbvRDl6p6a2MinF5/N7vN40W4fRu08RUe
-         TDaeE6UDc1a/Nv0XxrRUW6kYzxw5+Dqsr37G05iB5ZMFyr/Aw34ype96sAZ4S+qcRsxW
-         CG4g==
+        b=bOeaCBnYolrb0F5fo+zPHK3dU3Rck/ZDm9wGj6h8wkIgiQ3Fxw894bQcDfUZqRggfd
+         w71mcclX5AInfs+pXnpDdDToGKa1Fk1AyKfktittFxcl7KRSqwflQraNY7/z8bZZD0Aq
+         y8tsUbcAe37HVsOD5FySexbrMnMy/iuRJZ3lqJ+83oczIA0efcNV0nSj6/R4qsLnI6WI
+         8TPX9lw+S5KwRspSgdQG2/ZBIjBPO/fsMAYBtKXNqGfE69MI2xFNCIETLFHueBJFXNJk
+         jwSGccZYybTWWZbCe0BoMLP7Hl0rJnIcklWOLtbfkr/uBM7OfEmTOAgHTppctQVITu/1
+         pcNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=p9+sQuwUvImEm3U8dWONjcope8Kmar7oTAj3AbibbOM=;
-        b=umAo0Deh/FYJcBtdXxrU8pPNhMT0hw8NsTJdVOpX/QZmWIl4ygT5KR8nYa8LIRQKFW
-         WcCQA9z0mFSfA/X1nGogTZ0tSHsnF1lrjhzuxrWW6XZ7anH8fCAz58VqB97InstiPKe4
-         cg3Fo+sY74b/1dmakqdgX4QJ1BX/eRcF/zU0PLvRg4vjRx4H4CaBFf0S/LDKdwlSMiUO
-         AGN7dlJfGp3lUmy8e5oTS1T62sRAlEDrAZ6ktJeikFWRKKQsWp84OSWCzNT3GhYwtEL+
-         zpX92rHcS6FS+M4X1Ek+EhkPjNPnkFtBy9aqRmour+ixLI8thwtSQaKiQ99OgNbf2D/V
-         mnvg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=E2U1XuLTgxp52sKLJtlis6HwlaEIREo1sR0zlgxMg7o=;
+        b=NkHwsz76ZSdzjEdHmEHn6OzfyLHTo6vjWF6v/B9BL7K6QIOsyNve9ZDWVx2o0ZtvOT
+         PBYxQO80vxCdQQ+V4WXalEFnWS5qagiXyM23s4IeTDDWVZ/UGfe4h0nATsQodWom4VNw
+         msmfLmUQ/Ny072Z2dKb1Ehg1abfGMkYgCs1neZwdH6D4kkjKMl/H9zLSQsuWJ6hLtrYU
+         FkSKFWv0BwAO3uCvtNDE2o0zwmbBeZBhyzWX1R3VBO4euz3fr/e9JdiShsvY7vcqKWFb
+         RV7udmp8IW17YlplHudeiY6unf7z5/hPpA8UP3L4nhtxo6wOT6KNt8SNi1jS/bsjlu+b
+         85CQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NtfWrX2g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id us5si13611056ejb.142.2020.01.16.04.38.05
+        by mx.google.com with ESMTPS id i25si13971197edy.18.2020.01.16.04.39.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 04:38:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Jan 2020 04:39:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41134 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NtfWrX2g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41160 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1is4PU-000651-Dg
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 07:38:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35389)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1is4Qf-0000Mn-EY
+	for alex.bennee@linaro.org; Thu, 16 Jan 2020 07:39:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35470)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1is4OE-0004wn-IT
- for qemu-devel@nongnu.org; Thu, 16 Jan 2020 07:36:47 -0500
+ (envelope-from <imammedo@redhat.com>) id 1is4Ol-0005cS-9L
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 07:37:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1is4OA-0006ui-VK
- for qemu-devel@nongnu.org; Thu, 16 Jan 2020 07:36:46 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:51472 helo=huawei.com)
+ (envelope-from <imammedo@redhat.com>) id 1is4Oh-00077i-Ou
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 07:37:19 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:31343
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1is4Ny-0006oL-5j; Thu, 16 Jan 2020 07:36:30 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 72E0A1E0430687E18D8E;
- Thu, 16 Jan 2020 20:36:24 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Thu, 16 Jan 2020
- 20:36:17 +0800
-Subject: Re: [PATCH 1/2] arm/virt/acpi: remove meaningless sub device "PR0"
- from PCI0
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20191219064759.35053-1-guoheyi@huawei.com>
- <20191219064759.35053-2-guoheyi@huawei.com>
- <20200113133702.1dea867b@redhat.com>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <1089b0d5-548e-da54-b59d-484517843411@huawei.com>
-Date: Thu, 16 Jan 2020 20:36:16 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1is4Oh-00077B-ED
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 07:37:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579178235;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=E2U1XuLTgxp52sKLJtlis6HwlaEIREo1sR0zlgxMg7o=;
+ b=NtfWrX2gyMe8HHbzLK8QEYuKHJ4KrsAVSBc4H/RFX8xVLGsSypDiz2tYIvhe98HF+p0p7H
+ 1hiuMW2wr1GcrzX6srLWSwou+d61MFcaVEin9Wu+ugZ491Z/J5sPK3b57BM0iJCKjHDaPw
+ 8OTg0eYP3iZdaPGAIr18tDpMFAnaUtE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-299-NYR5XtZGOVa6DSTXjOTjYA-1; Thu, 16 Jan 2020 07:37:13 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 69408800D55;
+ Thu, 16 Jan 2020 12:37:12 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 00B9060F88;
+ Thu, 16 Jan 2020 12:37:04 +0000 (UTC)
+Date: Thu, 16 Jan 2020 13:37:03 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Michal Privoznik <mprivozn@redhat.com>
+Subject: Re: [libvirt] [PATCH v2 82/86] numa: forbid '-numa node, mem' for
+ 5.0 and newer machine types
+Message-ID: <20200116133703.11248ead@redhat.com>
+In-Reply-To: <8b9be103-d550-853a-86ff-1dc504daab64@redhat.com>
+References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
+ <1579100861-73692-83-git-send-email-imammedo@redhat.com>
+ <20200115153453.GL3243410@angien.pipo.sk>
+ <20200115175237.325055f3@redhat.com>
+ <8b9be103-d550-853a-86ff-1dc504daab64@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200113133702.1dea867b@redhat.com>
-Content-Type: text/plain; charset="gbk"; format=flowed
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: NYR5XtZGOVa6DSTXjOTjYA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Julia Suvorova <jusual@redhat.com>,
- qemu-devel@nongnu.org, Shannon
- Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vBzpUYCUnUCj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Peter Krempa <pkrempa@redhat.com>,
+ ehabkost@redhat.com, mst@redhat.com, libvir-list@redhat.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ marcel.apfelbaum@gmail.com, pbonzini@redhat.com, rth@twiddle.net,
+ david@gibson.dropbear.id.au
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eK9BkTYHId2c
+
+On Thu, 16 Jan 2020 11:42:09 +0100
+Michal Privoznik <mprivozn@redhat.com> wrote:
+
+> On 1/15/20 5:52 PM, Igor Mammedov wrote:
+> > On Wed, 15 Jan 2020 16:34:53 +0100
+> > Peter Krempa <pkrempa@redhat.com> wrote:
+> >   
+> >> On Wed, Jan 15, 2020 at 16:07:37 +0100, Igor Mammedov wrote:  
+> >>> Deprecation period is ran out and it's a time to flip the switch
+> >>> introduced by cd5ff8333a.
+> >>> Disable legacy option for new machine types and amend documentation.
+> >>>
+> >>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> >>> ---
+> >>> CC: peter.maydell@linaro.org
+> >>> CC: ehabkost@redhat.com
+> >>> CC: marcel.apfelbaum@gmail.com
+> >>> CC: mst@redhat.com
+> >>> CC: pbonzini@redhat.com
+> >>> CC: rth@twiddle.net
+> >>> CC: david@gibson.dropbear.id.au
+> >>> CC: libvir-list@redhat.com
+> >>> CC: qemu-arm@nongnu.org
+> >>> CC: qemu-ppc@nongnu.org
+> >>> ---
+> >>>   hw/arm/virt.c        |  2 +-
+> >>>   hw/core/numa.c       |  6 ++++++
+> >>>   hw/i386/pc.c         |  1 -
+> >>>   hw/i386/pc_piix.c    |  1 +
+> >>>   hw/i386/pc_q35.c     |  1 +
+> >>>   hw/ppc/spapr.c       |  2 +-
+> >>>   qemu-deprecated.texi | 16 ----------------
+> >>>   qemu-options.hx      |  8 ++++----
+> >>>   8 files changed, 14 insertions(+), 23 deletions(-)  
+> >>
+> >> I'm afraid nobody bothered to fix it yet:
+> >>
+> >> https://bugzilla.redhat.com/show_bug.cgi?id=1783355  
+> > 
+> > It's time to start working on it :)
+> > (looks like just deprecating stuff isn't sufficient motivation,
+> > maybe actual switch flipping would work out better)
+> >   
+> 
+> So how was the upgrade from older to newer version resolved? I mean, if 
+> the old qemu used -numa node,mem=XXX and it is migrated to a host with 
+> newer qemu, the cmd line can't be switched to -numa node,memdev=node0, 
+> can it? I'm asking because I've just started working on this.
+
+see commit cd5ff8333a3c87 for detailed info.
+Short answer is it's not really resolved [*],
+-numa node,mem will keep working on newer QEMU but only for old machine types
+new machine types will accept only -numa node,memdev.
+
+One can check if "mem=' is supported by using QAPI query-machines
+and checking numa-mem-supported field. That field is flipped to false
+for 5.0 and later machine types in this patch.
 
 
-=D4=DA 2020/1/13 20:37, Igor Mammedov =D0=B4=B5=C0:
-> On Thu, 19 Dec 2019 14:47:58 +0800
-> Heyi Guo <guoheyi@huawei.com> wrote:
->
->> The sub device "PR0" under PCI0 in ACPI/DSDT does not make any sense,
->> so simply remote it.
-> Could you make commit message more concrete so it would say
-> why it doesn't make any sense.
+*) I might give another try to removing 'mem' completely in migration
+compatible manner but that's well beyond the scope of this series
+So far I hasn't been able to convince myself that previous attempts
+to do it were absolutely correct for all corner cases that are there.
 
-The reason I'd like to remove it is that I never see a reason that it=20
-should be there :)
-
-1. I searched through ACPI spec and PCI firmware spec, but didn't find=20
-any reason for its existance (might miss something).
-
-2. We don't have such "PR0" device on PCI host bridge object on physical=20
-arm64 machines and these platforms work well.
-
-3. The VM also works well after removing this device.
-
-4. This device looks strange to only have an identity (_ADR) but not any=20
-other attribute; also this device was introduced in the initial commit=20
-without any special comment.
-
-Thanks,
-
-Heyi
-
-
->
-> It seems to be there to describe root port,
-> I'd rather have PCI folk ack if it's ok to remove it.
-
->
->> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
->>
->> ---
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: "Michael S. Tsirkin" <mst@redhat.com>
->> Cc: Igor Mammedov <imammedo@redhat.com>
->> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
->> Cc: qemu-arm@nongnu.org
->> Cc: qemu-devel@nongnu.org
->> ---
->>   hw/arm/virt-acpi-build.c          |   4 ----
->>   tests/data/acpi/virt/DSDT         | Bin 18462 -> 18449 bytes
->>   tests/data/acpi/virt/DSDT.memhp   | Bin 19799 -> 19786 bytes
->>   tests/data/acpi/virt/DSDT.numamem | Bin 18462 -> 18449 bytes
->>   4 files changed, 4 deletions(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index bd5f771e9b..9f4c7d1889 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -317,10 +317,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const M=
-emMapEntry *memmap,
->>       aml_append(method, aml_return(buf));
->>       aml_append(dev, method);
->>  =20
->> -    Aml *dev_rp0 =3D aml_device("%s", "RP0");
->> -    aml_append(dev_rp0, aml_name_decl("_ADR", aml_int(0)));
->> -    aml_append(dev, dev_rp0);
->> -
->>       Aml *dev_res0 =3D aml_device("%s", "RES0");
->>       aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")=
-));
->>       crs =3D aml_resource_template();
->> diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
->> index d0f3afeb134fdf1c11f64cd06dbcdd30be603b80..b5895cb22446860a0b9be3=
-d32ec856feb388be4c 100644
->> GIT binary patch
->> delta 39
->> vcmbO?fpOvlMlP3Nmk>b@1_q`B6S<_Bdg?Z+cXBfI+}XT|v(|R9jr$`2@RSW)
->>
->> delta 50
->> zcmbO@fpOjhMlP3Nmk>D*1_q{tiCof5o%I{lJ2{y;?{412S!>J19TZ>?&k^tF5;R%I
->> G{V4!>hYx%J
->>
->> diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/DS=
-DT.memhp
->> index 41ccc6431b917252bcbaac86c33b340c796be5ce..69ad844f65d047973a3e55=
-198beecd45a35b8fce 100644
->> GIT binary patch
->> delta 40
->> wcmcaUi}BPfMlP3Nmk=3D*s1_q}3iCof5t(P{ccXBfI+}XT|v(|RAjk`1(02g)*ivR!s
->>
->> delta 51
->> zcmX>#i}Cs_MlP3NmymE@1_mbiiCof5O_w*ScXBdy-rc;3v(}c2J1D>)o+IATC1|sb
->> HyBr$;t7;Fc
->>
->> diff --git a/tests/data/acpi/virt/DSDT.numamem b/tests/data/acpi/virt/=
-DSDT.numamem
->> index d0f3afeb134fdf1c11f64cd06dbcdd30be603b80..b5895cb22446860a0b9be3=
-d32ec856feb388be4c 100644
->> GIT binary patch
->> delta 39
->> vcmbO?fpOvlMlP3Nmk>b@1_q`B6S<_Bdg?Z+cXBfI+}XT|v(|R9jr$`2@RSW)
->>
->> delta 50
->> zcmbO@fpOjhMlP3Nmk>D*1_q{tiCof5o%I{lJ2{y;?{412S!>J19TZ>?&k^tF5;R%I
->> G{V4!>hYx%J
->>
->
-> .
+> Michal
 

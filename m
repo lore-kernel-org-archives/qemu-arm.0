@@ -1,83 +1,83 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8080789lff;
-        Thu, 16 Jan 2020 00:41:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwGGq6euWZTEntc5Jd1/wTrWyXPA+aAiYdrk/Vc2vPjc0bI3aAmOvOoMDtaBWEv0Nxhahtk
-X-Received: by 2002:ac8:4050:: with SMTP id j16mr1267956qtl.171.1579164099571;
-        Thu, 16 Jan 2020 00:41:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579164099; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8120853lff;
+        Thu, 16 Jan 2020 01:24:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqypjdp/K4hr5/an+8/bz9IqE25RuroFCAdqhl7b6O/QO1PXRITK/rbA1vpFw9zqQGGY/6Tt
+X-Received: by 2002:a37:bc04:: with SMTP id m4mr27810695qkf.224.1579166673860;
+        Thu, 16 Jan 2020 01:24:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579166673; cv=none;
         d=google.com; s=arc-20160816;
-        b=EAj8q4jNJKoWah0A3WElLaH4SJ1L8U8mno++vrSsTbYaR7f5HpV9+uxSxMUxr1T8Cc
-         AdIaDfiZsTbWqpvrCcBnpwT/Xev2xofBiETzzvu61RDFgFjpgsCEHl3e5qS9nFTzW5ge
-         z1TtiFBoP4NJe7fZlRzxmazjIWxtdXT6j+iTI3kU4rcoJkPp6exJZuEg/om8LrITuUSg
-         nXJKp6B+iIlKkz/SedKUiUU+4c7NbQA2I0vYO3kfdxO6hAgxpLp6UAL0yQRgrLvegXF3
-         WMfIdfit8bT/tGHYUfoELWjklSWj8kJK1RevNUmSlTQUiiBNh+vdjMvWPm1u07kLJUPc
-         GjDw==
+        b=ns3BObR81XjYrRC66RyuqxazIvWLCcIeWs1oMzEeXuiiJwZcp9nI1aE90ErT6FYCh4
+         YQDpaHYHJNFAce4BTXvpvqQNIUQP8PxWK0XK2BAeJjYfR0WGXbDeBuBR5qRw3SQSBFDT
+         u59vFiyiEsOxum4pJPDQtsRka3jyWeKqYN2QdH2jiSwnoBZrK3G7kZxiyWi1H0RGw7cq
+         wXdEbQhGyl1S7RsxZ5b/cKaN0AWZ8Fsb77JwqnSoL+yEP9PgCeu3iq1pPGjVkv6gh1nO
+         5w9KqTjW9/uqHINTFzUPCnEyHKZxDgNbnis6Kzbr0Ml2nFZjq9hgEX0aB/m+AfGpcZua
+         tFaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=aruIPQU9JKjVoJsAmJBlkRZFdc1lahxMTs1k7Vp/HjM=;
-        b=Kb8IAlaSFdZddi7EuNQw5/5IwwmK8aLSxcvz4bYDo1s31jFhVbYFN7XdkhwWK9co1/
-         ZZJgcZ96erlraI/U3MVMBeSWyeoH06eU74rMvT9WhX4HrdeKOFnWdUnuRugo55PxRZYY
-         0CZSI5Wt0Hcv/oAlxaNvbUW3ioeKIIhgu5uSm7SwSdyrJga7GbAuaX/g26Z6zfdTalTh
-         lfhetoxvDJt/pPyUexfpDTMMqGhbZL9cmW1rCY8w+GrNfClLsOE1lqQ5H5ZGIBW+3RMt
-         U2tn7Becvr5MxVwrFnX31xIsqa1dMujkpMzan8DoF0aEnNCrVpNyOuiQHYU9Na7klgs8
-         eEsQ==
+        bh=rpofKNCKgXUI2vDXOonZ5o5yU0Yp2/ygK6fpmtKzqKg=;
+        b=eCMiMvlKllft8npGzMYnTboQj9JCaCrM+pek6T0b9tn1tRkDbtSJZhHqCCnScCK4Ef
+         OzobjFwT7c6G6gy2Qc+WstTHhdrtEmbM22hwdFzLiTiM/vk915l7xrqrME99w+DdKKSv
+         H12SLMWXDlBxl6yAha00E7cIc4nAeiUFtniL6BjeANioWtuflPtot1ya+P24VORgEJu8
+         W56NL5KhGvyLrrsWtJFhZk5DAO3jS76dF8io2Z7GmLlwGqSltRXEulPB0Cv/sDElbJ9P
+         uXPfbURIIribpiMoiq6pkPV1Lj08OoX8WL4r1bUC0EOzrsBJxJZhfAuvaPcQz5jYJ6WH
+         xv4A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j6si12606950qka.208.2020.01.16.00.41.39
+        by mx.google.com with ESMTPS id t12si12077974qvx.2.2020.01.16.01.24.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 00:41:39 -0800 (PST)
+        Thu, 16 Jan 2020 01:24:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38398 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1is0ig-0005yS-Ub
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 03:41:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59686)
+	id 1is1OD-0002Pu-9F
+	for alex.bennee@linaro.org; Thu, 16 Jan 2020 04:24:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37628)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1is0iM-0005yE-NS
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 03:41:22 -0500
+ (envelope-from <clg@kaod.org>) id 1is1O4-0002PT-9R
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 04:24:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1is0iJ-0007JZ-3K
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 03:41:18 -0500
-Received: from 2.mo179.mail-out.ovh.net ([178.33.250.45]:38448)
+ (envelope-from <clg@kaod.org>) id 1is1O0-0007Wq-RX
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 04:24:23 -0500
+Received: from 3.mo69.mail-out.ovh.net ([188.165.52.203]:42512)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1is0iI-0007IL-Rl
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 03:41:15 -0500
-Received: from player735.ha.ovh.net (unknown [10.108.57.188])
- by mo179.mail-out.ovh.net (Postfix) with ESMTP id 552B31566F0
- for <qemu-arm@nongnu.org>; Thu, 16 Jan 2020 09:41:12 +0100 (CET)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1is1O0-0007Vm-L2
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 04:24:20 -0500
+Received: from player734.ha.ovh.net (unknown [10.108.35.95])
+ by mo69.mail-out.ovh.net (Postfix) with ESMTP id 1B29B7C4B1
+ for <qemu-arm@nongnu.org>; Thu, 16 Jan 2020 10:24:17 +0100 (CET)
 Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
  (Authenticated sender: clg@kaod.org)
- by player735.ha.ovh.net (Postfix) with ESMTPSA id 39B60E10C1F7;
- Thu, 16 Jan 2020 08:41:04 +0000 (UTC)
-Subject: Re: [PATCH v2 08/86] arm:aspeed: actually check RAM size
+ by player734.ha.ovh.net (Postfix) with ESMTPSA id 2CED2E252228;
+ Thu, 16 Jan 2020 09:24:08 +0000 (UTC)
+Subject: Re: [PATCH v2 10/86] arm:aspeed: use memdev for RAM
 To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
 References: <1579100861-73692-1-git-send-email-imammedo@redhat.com>
- <1579100861-73692-9-git-send-email-imammedo@redhat.com>
+ <1579100861-73692-11-git-send-email-imammedo@redhat.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <83481ccb-38e4-d0a2-18b5-66fcd7248521@kaod.org>
-Date: Thu, 16 Jan 2020 09:41:03 +0100
+Message-ID: <8473fe69-36da-35f7-930b-f800bb899732@kaod.org>
+Date: Thu, 16 Jan 2020 10:24:06 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <1579100861-73692-9-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1579100861-73692-11-git-send-email-imammedo@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 2424906926064176048
+X-Ovh-Tracer-Id: 3152801215351720880
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrtdeggdduudelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeefhedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrtdehgddtvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejfeegrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 178.33.250.45
+X-Received-From: 188.165.52.203
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,83 +93,29 @@ Cc: andrew@aj.id.au, peter.maydell@linaro.org, qemu-arm@nongnu.org,
  joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sXCQz+xKOP8i
+X-TUID: 11ClC10dIZvE
 
 On 1/15/20 4:06 PM, Igor Mammedov wrote:
-> It's supposed that SOC will check if "-m" provided
-> RAM size is valid by setting "ram-size" property and
-> then board would read back valid (possibly corrected
-> value) to map RAM MemoryReging with valid size.
-> Well it isn't doing so, since check is called only
-> indirectly from
->   aspeed_sdmc_reset()->asc->compute_conf()
-> or much later when guest writes to configuration
-> register.
-> 
-> So depending on "-m" value QEMU end-ups with a warning
-> and an invalid MemoryRegion size allocated and mapped.
-> (examples:
->  -M ast2500-evb -m 1M
->     0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
->       0000000080000000-00000000800fffff (prio 0, ram): ram
->       0000000080100000-00000000bfffffff (prio 0, i/o): max_ram
->  -M ast2500-evb -m 3G
->     0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
->       0000000080000000-000000013fffffff (prio 0, ram): ram
->       [DETECTED OVERFLOW!] 0000000140000000-00000000bfffffff (prio 0, i/o): max_ram
-> )
-> On top of that sdmc falls back and reports to guest
-> "default" size, it thinks machine should have.>
-> I don't know how hardware is supposed to work so
-> I've kept it as is.
-
-The HW is hardwired and the modeling is trying to accommodate with
-the '-m' option, the machine definition and the SDRAM controller
-limits and register definitions for a given SoC. The result is not 
-that good it seems :/ 
-
-> But as for CLI side machine should honor whatever
-> user configured or error out to make user fix CLI.
-> 
-> This patch makes ram-size check actually work and
-> changes behavior from a warning later on during
-> machine reset to error_fatal at the moment SOC is
-> realized so user will have to fix RAM size on CLI
-> to start machine.
-
-commit 8e00d1a97d1d ("aspeed/sdmc: Introduce an object class per SoC") 
-moved some calls from the realize handler to reset handler and it
-broke the checks on the RAM size.
-
-I think we should introduce get/set handlers on the "ram-size" property
-that would look for a matching size in an AspeedSDMCClass array of valid
-RAM sizes. The default size of the machine would be a valid default and
-bogus user defined sizes would be fatal to QEMU.  
-
-We could get rid of the code :
-
-    /* use a common default */
-    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 512M",
-                s->ram_size);
-    s->ram_size = 512 << 20;
-    return ASPEED_SDMC_AST2500_512MB;
-
-
-'max_ram_size' would be the last entry of the AspeedSDMCClass array
-and, anyhow, we need to check bmc->max_ram is really needed. I am not 
-sure anymore. 
-
-Thanks,
-
-C. 
-
-> It also gets out of the way mutable ram-size logic,
-> so we could consolidate RAM allocation logic around
-> pre-allocated hostmem backend (supplied by user or
-> auto created by generic machine code depending on
-> supplied -m/mem-path/mem-prealloc options.
-> 
+> memory_region_allocate_system_memory() API is going away, so
+> replace it with memdev allocated MemoryRegion. The later is
+> initialized by generic code, so board only needs to opt in
+> to memdev scheme by providing
+>   MachineClass::default_ram_id
+> and using MachineState::ram instead of manually initializing
+> RAM memory region.
+>=20
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+
+We need to check 'max_ram' is still needed. I remember that old firmwares
+were testing the RAM size by doing write/read checks at the top of the RA=
+M.
+This was breaking QEMU sometime ago.
+
+C.
+
 > ---
 > CC: clg@kaod.org
 > CC: peter.maydell@linaro.org
@@ -177,45 +123,52 @@ C.
 > CC: joel@jms.id.au
 > CC: qemu-arm@nongnu.org
 > ---
->  hw/arm/aspeed.c       | 9 +--------
->  hw/misc/aspeed_sdmc.c | 5 +++++
->  2 files changed, 6 insertions(+), 8 deletions(-)
-> 
+>  hw/arm/aspeed.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>=20
 > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index cc06af4..525c547 100644
+> index 525c547..330254b 100644
 > --- a/hw/arm/aspeed.c
 > +++ b/hw/arm/aspeed.c
-> @@ -213,14 +213,7 @@ static void aspeed_machine_init(MachineState *machine)
->                                  "hw-prot-key", &error_abort);
->      }
+> @@ -35,7 +35,6 @@ static struct arm_boot_info aspeed_board_binfo =3D {
+>  struct AspeedBoardState {
+>      AspeedSoCState soc;
+>      MemoryRegion ram_container;
+> -    MemoryRegion ram;
+>      MemoryRegion max_ram;
+>  };
+> =20
+> @@ -184,6 +183,7 @@ static void aspeed_machine_init(MachineState *machi=
+ne)
+> =20
+>      memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-containe=
+r",
+>                         UINT32_MAX);
+> +    memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
+> =20
+>      object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
+>                              (sizeof(bmc->soc)), amc->soc_name, &error_=
+abort,
+> @@ -215,8 +215,6 @@ static void aspeed_machine_init(MachineState *machi=
+ne)
 >      object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
-> -                             &error_abort);
-> -
-> -    /*
-> -     * Allocate RAM after the memory controller has checked the size
-> -     * was valid. If not, a default value is used.
-> -     */
-> -    ram_size = object_property_get_uint(OBJECT(&bmc->soc), "ram-size",
-> -                                        &error_abort);
-> +                             &error_fatal);
->  
->      memory_region_allocate_system_memory(&bmc->ram, NULL, "ram", ram_size);
->      memory_region_add_subregion(&bmc->ram_container, 0, &bmc->ram);
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index 3fc80f0..b398e36 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -165,6 +165,11 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
->      AspeedSDMCState *s = ASPEED_SDMC(dev);
->      AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
->  
-> +    if (!g_hash_table_contains(asc->ram2feat,
-> +                               GINT_TO_POINTER(s->ram_size >> 20))) {
-> +        error_setg(errp, "Invalid RAM size 0x%" PRIx64, s->ram_size);
-> +        return;
-> +    }
->      s->max_ram_size = asc->max_ram_size;
->  
->      memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
-> 
+>                               &error_fatal);
+> =20
+> -    memory_region_allocate_system_memory(&bmc->ram, NULL, "ram", ram_s=
+ize);
+> -    memory_region_add_subregion(&bmc->ram_container, 0, &bmc->ram);
+>      memory_region_add_subregion(get_system_memory(),
+>                                  sc->memmap[ASPEED_SDRAM],
+>                                  &bmc->ram_container);
+> @@ -393,6 +391,7 @@ static void aspeed_machine_class_init(ObjectClass *=
+oc, void *data)
+>      mc->no_floppy =3D 1;
+>      mc->no_cdrom =3D 1;
+>      mc->no_parallel =3D 1;
+> +    mc->default_ram_id =3D "ram";
+>  }
+> =20
+>  static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *=
+data)
+>=20
 

@@ -1,53 +1,52 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7741559lff;
-        Wed, 15 Jan 2020 18:04:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyNadv84JD1lZqe3vUWGXbL5b8lAR55BkJlLhViNSb305pRoOP0FK5W5e2hB6W1ap68rjNL
-X-Received: by 2002:a81:758a:: with SMTP id q132mr24083030ywc.162.1579140283483;
-        Wed, 15 Jan 2020 18:04:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579140283; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7965185lff;
+        Wed, 15 Jan 2020 22:33:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwQ8FR7KcYba/QXYKuVSNoHq9c7p5Z9bM/S4cq/g5ROGeZhc2Hyaxdp77XaAX8JJOA1Rsik
+X-Received: by 2002:a25:618a:: with SMTP id v132mr23001853ybb.95.1579156438393;
+        Wed, 15 Jan 2020 22:33:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579156438; cv=none;
         d=google.com; s=arc-20160816;
-        b=ymOBcHtQw7pJcSG/pCP+HFMUeVKVqVe+Gxp2FbRJoOdvsI3/m3gNkQT0kwbQNuDBUG
-         7FpwqE84VwkbxFSONB+CTXbGg07dBfAQCIOVK94xNOAtoV9Vaek3VzRJYAE4SHv9RzZO
-         x/huLRKBcBoLCqlf9R0AlzW+Y1r4vxRss++VivBmdbSQ812Yiel6qgDZP9Stxx4FPiIh
-         fa6wWN/YrlrK1RKO/mYAIolT4IRQcMaI+IqO8admbyyy8az10NFs2syLahgdOEZmlDUO
-         7xwGC098WPDcTLuQbPx5TApzPTNTEGOgjkM6aQyBkAksx1mZQqj0i5SQi6W+M2VbwCZH
-         03mg==
+        b=HlWL289mw6Ih38xupPTeFVSkDdETZDiPDhNKKlgIMLAEr4a8dbTpkbjPrEsggiOCd1
+         Jc3F6hVrX1N5jCx2UjyBmrG+BcypPHNotZ3t9W70DamFgT2g9/fd5heAVt/lw3nVNBrW
+         BZVB/QRQPTpOUnwuaSTF4PNE71G6i70v4wZ8qNCV0WzvP9o65lrvGruii6F0FMSswu4S
+         wmIpZCiOQrtuk0p1+jzHAq2N/OqxrQskFVozhUDvgkdaadMd6MrB5m6IqL3nirp+pcgY
+         fGRmREnkgzBPDD658usrAqrPhahTD7wBTINtb+sUrRlKtx8hER/W4Gqgg5hAWD1L9ITY
+         OTkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to:date
          :cc:to:from:subject:message-id;
-        bh=1U4fCEFP7p5K6h9C1DtciLw1Bria1qRqPeuoG+d2xa8=;
-        b=iKQIiYSlw8jx01QhyKj1OEm2lLEqkuvw2OPu/Nu/kdyheL4btQSm8MgfmONtLjpTFY
-         GLrVDfiUrgi2uxT4/jZf3s5FNWJGbbbFrXWEwVBCkY0BvvLR2M42wXUv7wtCGt9oIQYE
-         nRAGNpJKo08V6yMjkGn7ubNGedXFKTt5bg7XpT514/quzI+WXPrBkSV1RneDB59pLzLA
-         bTskm/4+zz9g1z/gA4IuU0Cc14p2kUAvoBgq5S4b8dlUysKfLxWBhKPZvUxASUXKUJZZ
-         u0QbN3Tp2Bu24sADzR8o4MYvpiCdTfC5hQKn72ivtAVbvrnVdhzz9R23S9HVvTaZzYoM
-         1yzg==
+        bh=AKt2nHmbupDP1D7rMBG26S5XQ4QHheuKI1RGKLhxQ2A=;
+        b=bwvVmZVJNCXCUQc0K6C6bRw6f5kciDL11eLruT4EvnkZFPPNMiBVHOrCieGgPZaV3I
+         4JnscgWIK6NApMnXEYvXXKucQrq5XePUCK7J4ssrxpfYzhecSJLPLdYIg1SU5ovmJuq7
+         cwDWk4geciUbqqraMON4iR7MrXLkMjhKet8vlJ6Xm6cM9qnkEBKyMphjAL4ufLKTBY1L
+         txcjNKcSvkGeaw4CyVPrG6ApTE9rREPJk5svMVsxj20U9l9JMR+cOjNmj4lV2NFk98s1
+         /yVsk9pZcIf+6OuH7rRsnCZYGtoPSEpoGGwi2zk0qvhHqx8GGQCSjrJgtVuCI1LoBNV5
+         io9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of benh@kernel.crashing.org designates 76.164.61.194 as permitted sender) smtp.mailfrom=benh@kernel.crashing.org
 Return-Path: <benh@kernel.crashing.org>
 Received: from kernel.crashing.org (kernel.crashing.org. [76.164.61.194])
-        by mx.google.com with ESMTPS id d187si13667746ywc.9.2020.01.15.18.04.43
+        by mx.google.com with ESMTPS id o205si13034701ybc.229.2020.01.15.22.33.57
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Jan 2020 18:04:43 -0800 (PST)
+        Wed, 15 Jan 2020 22:33:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of benh@kernel.crashing.org designates 76.164.61.194 as permitted sender) client-ip=76.164.61.194;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of benh@kernel.crashing.org designates 76.164.61.194 as permitted sender) smtp.mailfrom=benh@kernel.crashing.org
 Received: from localhost (gate.crashing.org [63.228.1.57])
 	(authenticated bits=0)
-	by kernel.crashing.org (8.14.7/8.14.7) with ESMTP id 00G24M64024805
+	by kernel.crashing.org (8.14.7/8.14.7) with ESMTP id 00G6XiWk027019
 	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Wed, 15 Jan 2020 20:04:25 -0600
-Message-ID: <1a1cecb5128134e681b9145b9c6bc10a8db00ea9.camel@kernel.crashing.org>
+	Thu, 16 Jan 2020 00:33:48 -0600
+Message-ID: <15ba2e1f782eec69173fe9c0f85a4dcff1d57f14.camel@kernel.crashing.org>
 Subject: Re: Semihosting, arm, riscv, ppc and common code
 From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-To: Liviu Ionescu <ilg@livius.net>,
-        Richard Henderson
-	 <richard.henderson@linaro.org>
-Cc: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, keithp@keithp.com,
-        qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-        Paolo
- Bonzini <pbonzini@redhat.com>
-Date: Thu, 16 Jan 2020 13:04:20 +1100
-In-Reply-To: <C4EE0480-C366-419B-84F1-3BEB794D1598@livius.net>
+To: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: Liviu Ionescu <ilg@livius.net>, qemu-devel@nongnu.org,
+        Paolo Bonzini
+	 <pbonzini@redhat.com>, keithp@keithp.com,
+        qemu-arm@nongnu.org
+Date: Thu, 16 Jan 2020 17:33:41 +1100
+In-Reply-To: <87wo9tkjxz.fsf@linaro.org>
 References: 
 	<11d88b2741eac3f634d5aed9e3355c974b533f7b.camel@kernel.crashing.org>
 	 <AE7841A1-B4D6-4D6D-9AFD-01C4604D7BC4@livius.net>
@@ -55,35 +54,43 @@ References:
 	 <87sgkimkma.fsf@linaro.org>
 	 <1309ca0ab6405d88cfd949c73130ad0f2af944a6.camel@kernel.crashing.org>
 	 <87wo9tkjxz.fsf@linaro.org>
-	 <81f25a9e-a52c-ca8d-4d4b-ca36fcee73ed@linaro.org>
-	 <C4EE0480-C366-419B-84F1-3BEB794D1598@livius.net>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-TUID: kh4zBsd+Dt0A
+Content-Transfer-Encoding: 8bit
+X-TUID: ZB0qgpoRoWGd
 
-On Thu, 2020-01-16 at 00:02 +0200, Liviu Ionescu wrote:
-> > ... they did have the opportunity to do better, and did not.
+On Wed, 2020-01-15 at 12:01 +0000, Alex Bennée wrote:
 > 
-> I don't know why you present Arm semihosting as a disaster. It is not
-> perfect, but it is functional, and common unit tests use only a small
-> subset of the calls.
+> > There seem to be some linux-user stuff in there, I'm mostly considering
+> > whatever ARM does today but we can certainly extend later.
 > 
-> And there is no 'window of opportunity', if the RISC-V guys will ever
-> want to reinvent the wheel and come with an official 'RISC-V
-> semihosting' specs, they can do it at any time, and this will have no
-> impact on existing devices, everything will continue to work as
-> before, only the debuggers/emulators will need to be upgraded.
-> 
-> But the only immediate effect such a move will have is that software
-> efforts in test frameworks will be increased, to support another
-> protocol, while the advantages will be minimal.
+> Depends on if it is to be used. AFAIK the main users of arm linux user
+> are compiler test cases for M-profile CPUs. 
 
-I agree, which is also why I want to use the same interface for
-powerpc, it will simply make life easier for everybody. The calls
-aren't perfect but they do work sufficiently well to be useful and I
-haven't yet been convinced that it can't be extended if necessary.
+For microwatt I was going to implement HW support as well via JTAG
+but the user linux-user bits are less obviously useful to me.
+
+That said, most of that code can trivially be made arch neutral by
+replacing the use of the arch specific CPU type with CPUState as
+the first argument to most functions. There are only a handful of arch
+specific helpers needed from there to extract the op & arg, set the
+result etc..
+
+> > The idea is to make sure ARM, RiscV and POWER use the same protocol and
+> > code base to make picolibc (and others) life easier. Bug compatible
+> > :-)
+> 
+> Hmm, I'm not so sure. QEMU tries to emulate real HW although I
+> appreciate that is a somewhat loose definition once you get to things
+> like -M virt and other such SW like abstractions. Is semihosting even
+> going to be a thing on real RiscV/Power silicon?
+
+It will be on microwatt once I add support for it. We could probably
+make it work on real power9 if the systems give access to the external
+debug facilities of the processor as well. I'm no longer involved with
+powerpc in a professional capacity but I can ask Anton or Paul to help
+there.
 
 Cheers,
 Ben.

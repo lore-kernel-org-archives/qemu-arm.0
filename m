@@ -1,110 +1,106 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7575009lff;
-        Wed, 15 Jan 2020 15:11:16 -0800 (PST)
-X-Received: by 2002:a17:90a:9f04:: with SMTP id n4mr2931194pjp.76.1579129876040;
-        Wed, 15 Jan 2020 15:11:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579129876; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp7738248lff;
+        Wed, 15 Jan 2020 18:01:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzMAcZL4s1/vpFz6/LSkcz3OgB01pfWFKiyyK2yRsR4id0N+UeefgwFTFPhyNL82YHjj7Lv
+X-Received: by 2002:a5e:c907:: with SMTP id z7mr23626810iol.88.1579140099473;
+        Wed, 15 Jan 2020 18:01:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579140099; cv=none;
         d=google.com; s=arc-20160816;
-        b=1DwUvproB6riLeze0P2chL8nf9/7ddeNSeIy1huTvNGfuMsjBcRlIQGD56//EsY/WL
-         DQGjLF6kqpw1ecaJuRZ7pCrHy7aJZqY/e2CjzWpacz2CCcKQIPodTijcnmO+sf474k+k
-         AYZXoY0FpmCp3ASoazQjvYSCcAON0/59sO0c6xkTcjwnY9bhWe4zAWJapY/GGmiCdlCi
-         aLkRkkXND/El7KfsQej6Uqg6Iesk/jPfQCa4LOAru6Rp+O+UpMotiqe9LQbyx0NzcXDj
-         4dR/nN67XAwWq1Vb7PI5h+AlesBMB50Lciw4aPJfob868lU9nnJj2lVODoWk/JkfvLsd
-         tK2Q==
+        b=SdPgcwuQQ3Tsnw4x6cIrhaPtGTAYaJPh/TtBi1huHf1a7QmeXI5dE3CXznZKKcx8VX
+         Oc5eN/bNOIQmf5LG1BH63y4vuPdhbzOemfJcHyxLQD5yXuPRnU2WOxE34qPW/xQ10c/f
+         XwHoYJjSqhUNi1SWsls0YamG9snRuOSeAP/3DXaORXIVPrlgt46TiYpiq6xE0dYiHZY/
+         VJLppe51wpNueNifnQk7C3c1chYecDw8cBtVY42rYEd/p+TnIiMiAB+y5usDfIyrWh/M
+         XmglopAtvrCS/9ekzkMLgqqMWPnULUSbzzov8XB6sBCOihPOc8MYdS8yRZjEV1dt624u
+         +YCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=I4mPk1xFiq8gQFU3P93Y8xgcA4rB7BYe5F5zsE7N3dU=;
-        b=k/LJ1765SgFWJLhMHGeZWdE3uG4vHRAfsXLbYXqTl0uSlvruevBcrJC6GNV9ar6qT3
-         yFqB7bHWVbOVTJRPeMcmo5PhUHFAp0yRdfFBRky8zu271O8/5a6qMDt/5RnO2FnyKuD8
-         iq1PC1P967SjA5U0jYGFMV0cf4gUhYB4DHsSo9AsNqfRQEjvpWZig97N7pyoPs4Y7/T5
-         jtzDmTEZiBGpo08Q2qPbxFbbfQelzGVOC79lMaDmGCCrHj4n8WtLvstDDYYgRNzuICRu
-         aoUU104ficq8JWs30B5XevzLlNOgQXF6YRR+hbLn6oUjRwLqm++fbKjbZ58lb/T+tecm
-         1TIw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to:date
+         :cc:to:from:subject:message-id;
+        bh=zFRMS/C5DfSlN18BBAMpmKFft89B3e25aZ5AltDt59U=;
+        b=K5w9y1qJRpuJbJcRCPNrEbnUsnx54w/VIz5fxFk+M6soP06OPfyExRJLPEjdEfBXjB
+         yoKDXDmBKLYP5rSaIDrNqREQJjvYKwpKgC2l55gn2TRkGUAipX7ieQKRIcMW5BnIsi2y
+         pMlducvcTb1fMRP12nUBRc2tkAZ09rxp84yIIg+SsfLro/5afDXbSpF085uBLMKvKUAd
+         8qWDyvGx102dzsMLQpQU7fXHUTE66IahIWPJlsLqC1QxHtCRwlW1w0qMAxFxhJkPtEvi
+         yVMF+rIvgNy+hw7CDIgPtTDcqvE9Ck9F1dkBOlu0sc6Rr58yQEtyO0dyPs63sNtQ1L9A
+         VsUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DyIaH8FG;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id h17sor22286243pfo.48.2020.01.15.15.11.15
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 15 Jan 2020 15:11:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of benh@kernel.crashing.org designates 76.164.61.194 as permitted sender) smtp.mailfrom=benh@kernel.crashing.org
+Return-Path: <benh@kernel.crashing.org>
+Received: from kernel.crashing.org (kernel.crashing.org. [76.164.61.194])
+        by mx.google.com with ESMTPS id n134si11561060iod.43.2020.01.15.18.01.39
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 15 Jan 2020 18:01:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of benh@kernel.crashing.org designates 76.164.61.194 as permitted sender) client-ip=76.164.61.194;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DyIaH8FG;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=I4mPk1xFiq8gQFU3P93Y8xgcA4rB7BYe5F5zsE7N3dU=;
-        b=DyIaH8FGkhu/CA+uVCXwbRLim9Q7CjinkDB5ERikPasYG+H8tU0MDbESXRkyMY/Rd3
-         23bMzEVcEQJO9+beSpJeHoN9EvFFLG0xiSWLvBmslcPK7RQlAc2KpvhMEJizEvV1KQFv
-         x/0W6C5ivtyD0noIk+YyR/TPNaIlO1fYAhwkGY8QZV7YRcfFCR1Yk0V5Z8PM+huMsqJL
-         HXHxlJ3s+w37RF0NeBFNPFa2CZluPByHCmHncKheGXvbFlKpRp4QQ5Pj2NAUJIC1C5qa
-         z7KOVByKMxfosJFUIduNBaoouUovOYBWOHPRrkjvC/caDLsWbcZJFRfR8eCOhpaGYL2o
-         +0sA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=I4mPk1xFiq8gQFU3P93Y8xgcA4rB7BYe5F5zsE7N3dU=;
-        b=jOCh8iSwRfd4MnDyYIXTkvO1Ccmg5+cJyjz7fL424uX/RF8k1cqr42sclRq8UojJzg
-         yuMgubIdZbWZR3okvxzXb23SQIvCfSu3ZHPW1rRjnHV7Bo83xhff/785goVEACEKkGjo
-         5srf5agkzm8SELRwAKSBFxGcJB7L1j5mhoo/XPcDRA71/zaaBx2XsAqSJWOQgp/mhfJr
-         3Bv7X7UkSnWHAHkGNcAL38uLOHRFRsdkrGhaYSPbKw9ig/uDfGwrl/sIsmtPNeQYS1pB
-         38ACvHsk7p+QM70IG5DatXXc36cfHJYdvALNPXz2Qp3SCsmEcZ5MFgi9wd+kSXXgCshC
-         SsHg==
-X-Gm-Message-State: APjAAAXGnr4bToW4NV3Ht6p7ytRYjonGv/HKWCkqn3namZUB6qbwW9CH
-	E+2aGTiKkccOHEBlygoW2EUWD6SSve8+7A==
-X-Google-Smtp-Source: APXvYqw1qe3S943tSAygc0/NJUhfiBkgsW4BSLbxPyF78qmuGDE02G9dMz7Am6dJMo7ZRekVXFvzGQ==
-X-Received: by 2002:aa7:95a9:: with SMTP id a9mr33392046pfk.15.1579129875682;
-        Wed, 15 Jan 2020 15:11:15 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.3.43] (rrcs-66-91-136-155.west.biz.rr.com. [66.91.136.155])
-        by smtp.gmail.com with ESMTPSA id u11sm485199pjn.2.2020.01.15.15.11.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Jan 2020 15:11:15 -0800 (PST)
-Subject: Re: [PATCH v5 22/22] gdbstub: do not split gdb_monitor_write payload
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-arm@nongnu.org, Luc Michel <luc.michel@greensocs.com>
-References: <20200114150953.27659-1-alex.bennee@linaro.org>
- <20200114150953.27659-23-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <0905799a-eb0c-e64e-eccc-38d9d517b1f6@linaro.org>
-Date: Wed, 15 Jan 2020 13:11:11 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <20200114150953.27659-23-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: 2WpNsSpAmOn+
+       spf=pass (google.com: domain of benh@kernel.crashing.org designates 76.164.61.194 as permitted sender) smtp.mailfrom=benh@kernel.crashing.org
+Received: from localhost (gate.crashing.org [63.228.1.57])
+	(authenticated bits=0)
+	by kernel.crashing.org (8.14.7/8.14.7) with ESMTP id 00G21PXT024767
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+	Wed, 15 Jan 2020 20:01:31 -0600
+Message-ID: <5dabf7d9e2af43d6c01d2e7e51e466616d84a8df.camel@kernel.crashing.org>
+Subject: Re: Semihosting, arm, riscv, ppc and common code
+From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+        Paolo Bonzini
+ <pbonzini@redhat.com>,
+        Keith Packard <keithp@keithp.com>, qemu-arm
+ <qemu-arm@nongnu.org>,
+        Alex =?ISO-8859-1?Q?Benn=E9e?=
+ <alex.bennee@linaro.org>
+Date: Thu, 16 Jan 2020 13:01:23 +1100
+In-Reply-To: <CAFEAcA8mphBky9Q2HTdOpQHiizd+5-o=yRnBbd_k1y6Uk-h8dA@mail.gmail.com>
+References: 
+	<11d88b2741eac3f634d5aed9e3355c974b533f7b.camel@kernel.crashing.org>
+	 <CAFEAcA-A_caQgwi5DzExdZChoTg-Qa73hq7Ho7dPLiN633Yj1Q@mail.gmail.com>
+	 <3ab2ca1f7a9b37b201a58f3a817edc5193e8b1f4.camel@kernel.crashing.org>
+	 <CAFEAcA8mphBky9Q2HTdOpQHiizd+5-o=yRnBbd_k1y6Uk-h8dA@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-TUID: q9yoq34OSw0G
 
-On 1/14/20 5:09 AM, Alex Bennée wrote:
-> From: Damien Hedde <damien.hedde@greensocs.com>
+On Wed, 2020-01-15 at 13:32 +0000, Peter Maydell wrote:
+> On Wed, 15 Jan 2020 at 01:17, Benjamin Herrenschmidt
+> <benh@kernel.crashing.org> wrote:
+> > On Tue, 2020-01-14 at 09:59 +0000, Peter Maydell wrote:
+> > > Note that semihosting is not a "here's a handy QEMU feature"
+> > > thing. It's an architecture-specific API and ABI, which should
+> > > be defined somewhere in a standard external to QEMU.
+> > 
+> > There is no such standard for powerpc today that I know of.
 > 
-> Since we can now send packets of arbitrary length:
-> simplify gdb_monitor_write() and send the whole payload
-> in one packet.
-> 
-> Suggested-by: Luc Michel <luc.michel@greensocs.com>
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20191211160514.58373-3-damien.hedde@greensocs.com>
-> ---
->  gdbstub.c | 23 +++--------------------
->  1 file changed, 3 insertions(+), 20 deletions(-)
+> So you need to write one down somewhere. You're proposing
+> an ABI which will be implemented by multiple implementors
+> and used by multiple consumers. That needs a spec, not
+> just code. I don't want to see more semihosting implementations
+> added to QEMU that don't have a specification written
+> down somewhere.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+That's ok, I can probably get openpower to put a link to the ARM one
+somewhere :-)
 
+> The point about the mistakes is that you can't easily fix
+> them by adding extensions, because the core of the biggest
+> mistake is "we didn't provide a good way to allow extensions to
+> be added and probed for by the user". So we had to implement
+> an ugly and hard to implement mechanism instead.
+>  New
+> architectures could mandate providing the good way from the start
+> and avoid the painful-to-implement approach entirely.
+> (I think RISCV has already missed this window of opportunity,
+> which is a shame.)
 
-r~
+It is done and so now we have two architectures using that standard, I
+think the value in using the same overweight the value in fixing it but
+yes, we should try to agree on a method of extending at least. Is it
+really that hard ?
+
+IE. We could add a new call for capabilities that takes a pointer to
+a region which we pre-zero before calling in the client and if remains
+zero after the call, then the new stuff isn't there for example. That
+sort of stuff is easy, or am I missing something ?
+
+Cheers,
+Ben.
+

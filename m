@@ -1,147 +1,139 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8683500lff;
-        Thu, 16 Jan 2020 09:44:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwchrI75Zn+WC8jp/z+WnCpxOykp4XmdpgNdhKbb7HVJDbFzZouBTPE+pj9e0ZID6736RUE
-X-Received: by 2002:a05:6402:1e1:: with SMTP id i1mr33480654edy.338.1579196640035;
-        Thu, 16 Jan 2020 09:44:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579196640; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8683591lff;
+        Thu, 16 Jan 2020 09:44:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyX9oxtLYafZuUdpWmOougmwYIeLFFGYSdQ/Q/pX/QKLZyIKnOOyB76iaNjboNdsRdRnO9e
+X-Received: by 2002:a17:906:19c8:: with SMTP id h8mr4181203ejd.250.1579196644272;
+        Thu, 16 Jan 2020 09:44:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579196644; cv=none;
         d=google.com; s=arc-20160816;
-        b=bX0KLg6bnx8EYdAs00zOYLq4X4ZLXwgORHFuTcnFIhn0Edutx808eoksS/9BrFD8RL
-         vH0XMA4iDodIZYwm5dj9BwLWyIz8G9lnMqLtwVzOqbo0OmafD1rQpe4/0mpBPvqWWqqe
-         +JmWEDgqVWD41XkEa5AmSulLxEnVxBHECWlWijH05qreW6XIDKCqFTBfJ6K9TCjnvaTX
-         CY0IsZcijHB70E+htbXXlNN3a5yAvkzzDAqD1vOy2Ax3oTF0oHQItHU0X6BPgnY4aHDj
-         qam00wGfP8RcLbmIJWYyiX3TGfB3uZPOKXdCmSPz4JmkRijtF+Jafi9m4ogGcmEiSjOJ
-         U6aw==
+        b=B7eNdwlp0hwGCZAMywuaGSYE6WoOinANN4mPWdVMdBuct05NiG9YxS3q4WYTvyVgFh
+         SxDuIhytR2ESaPYUcLO8uvpo54TzIOZUOWav/Cvyfh3YvkIjWRi7xbbvkHhM936Gv50f
+         CpcDUbXPTZ2lZN3xykReF9SRZj+0i2sAOA7DvI/Ko9qBYQRPTFNRK2Zm0cCzkSfMKspJ
+         r8X8gOVGmCzWpb6WVIAXxkr8knZt/ITYvpimtgjxjVPYO08sbbKGnpgLefe4JvoVOXf9
+         lteuKbTNcEKU1LGfVivgxEcoN/sBgFjcUJD4YyqY3VD4FGfFI1DX4ad4IIgrI4Iig0ew
+         Frsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=2qsPxMUJ4K94ldEbJIVkf7JQnMntDmQYKtoJKrcyxwQ=;
-        b=RE5Janl4dl8TUNU8OoxNT1QNPfpgymfv4QpkVsESwZZKzzd7xdU5+CIPcxJlCStfsf
-         AnwT8ey6/3vA7f9K7C7oB4WJubzJhfx+PumkdY2fATx2b9zc2LXsC2jJY6is6RPx3K+A
-         zbvQGrjrmnfyxecKGEfwQWbQATRaNFE95W7v2BWihCuwbM8JeovXuL2sNRzGhyI9t3Sj
-         ADbcmezm9Nh4PkqYJpyIo5Owj+JR2AlJfyQXcqrMQTObXu+xCjujra1B1c7EBij1QWSt
-         WyFsPD3jhMEwa1PmslOSx38GlmrG4C4MSegiPgPR5nPAxCqb2NKtkomUtbFSM9FMHRAq
-         1ltg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=rotpn64p7f0JzbmAl5UYYA83qOj/egKaEQ0Cnoo5p4U=;
+        b=U8E5Ga8FuiRlbfvL2lnobTR308yd/ArelUf0jQz0RLkbAqPx5fvUP3KXN+k2b5SVe7
+         Ibv2PmxPqNEKjDKpeVkM9tDBrHfi45cp8j+ttn9gajtSghMyLsS/Edp2+fVM7Zamv3/B
+         0/jC20CcbvRPS8bmJIw/Yy4XmhkvpPunGwhagywrX2Dhdm/mVco1asJcZXG4+y2F/cVj
+         W7yNldMXMBlzOpdhBJspr45omM6+kMh1GhsHPR0WgwZwZj8zoiQPRmRGKD7zHyzA5vaj
+         feoMozNuJYlp6cIB8KLmW8QwcuowcMZulglVhJUMcaRiHBMoZnj4urFoQNmSbhSV7/1s
+         bOvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mTgQPW2p;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=U63FYOnI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c1si949563ejs.169.2020.01.16.09.43.59
+        by mx.google.com with ESMTPS id bo19si13322786edb.511.2020.01.16.09.44.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 09:44:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Jan 2020 09:44:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mTgQPW2p;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46076 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=U63FYOnI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1is9BW-0004Xg-Ew
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 12:43:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59570)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1is9Bb-0004MV-56
+	for alex.bennee@linaro.org; Thu, 16 Jan 2020 12:44:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59391)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <leif.lindholm@linaro.org>) id 1is9BH-0004Si-Sk
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 12:43:44 -0500
+ (envelope-from <leif@nuviainc.com>) id 1is9AS-0003az-2R
+ for qemu-devel@nongnu.org; Thu, 16 Jan 2020 12:42:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <leif.lindholm@linaro.org>) id 1is9BG-0006F9-M2
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 12:43:43 -0500
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:35078)
+ (envelope-from <leif@nuviainc.com>) id 1is9AR-0005gR-1v
+ for qemu-devel@nongnu.org; Thu, 16 Jan 2020 12:42:51 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42096)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <leif.lindholm@linaro.org>)
- id 1is9BG-0006CD-AY
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 12:43:42 -0500
-Received: by mail-wm1-x344.google.com with SMTP id p17so4751009wmb.0
- for <qemu-arm@nongnu.org>; Thu, 16 Jan 2020 09:43:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=2qsPxMUJ4K94ldEbJIVkf7JQnMntDmQYKtoJKrcyxwQ=;
- b=mTgQPW2pw5RD2cPGWqVXXtTFi9OFIZMPglHLnd9Gk9ZZ611IXLlombiCb2uOyr0ik8
- FFFWPCCQCSTPqoAJXluAuE6KCo1K7TisyyUH+yl/64AE1aG+dD/bbQBxrsCVKvb/WUrA
- URi26Z/tFBqxVLGuWqV9WOCJaXCzTE9xIbIek6OLajiT4uIcnVJ2uqB3o8T3IDbWX35V
- JXrJP+aNO+2uDyvnJJBvXSD7PkHFNObI2U2FGsUERkWRAvatOkFzQ7XKsD+2sdwOcNj0
- Syjz+c9F66XFqo7vgyCa0a/BoEQvyP1E3LZsw3E993Tk/I2WIwB2+YoE4Li/NNeYwnoh
- 1VNg==
+ (Exim 4.71) (envelope-from <leif@nuviainc.com>) id 1is9AQ-0005fL-M1
+ for qemu-devel@nongnu.org; Thu, 16 Jan 2020 12:42:51 -0500
+Received: by mail-wr1-x441.google.com with SMTP id q6so19964352wro.9
+ for <qemu-devel@nongnu.org>; Thu, 16 Jan 2020 09:42:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rotpn64p7f0JzbmAl5UYYA83qOj/egKaEQ0Cnoo5p4U=;
+ b=U63FYOnIwARwZjUm+R3MDuycOhA+tqE998VEqgSaErxVtnsIb2/sFo5ezWM5SACX1k
+ EhrdZWadmOv/uZzhT1FRsN5aD5CHOfGLscCPsRxCq/8H1JTgqED1eJInUfXwK7PXf+Yh
+ 88X6xFrO8wMCD8PlnG9LhXZxrMRtTFA+HfhWOGBwRZJ4nmKGg6jmQCJSGVFlJA0mXvHe
+ 8QUy1PvW1Z2cwgnGb1L02m9RhO06ei6ScWz+dxUE5gclA/zkg6D/iNQYy/9KHDlLsAxE
+ OK3qaY7P0bM3tXlmGezYZwa127umpFIAQypr1rfiSQGIiJ7c/gE2wfDPUrRbe4TMChJW
+ HF5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=2qsPxMUJ4K94ldEbJIVkf7JQnMntDmQYKtoJKrcyxwQ=;
- b=Clc6zfepWM5+6lMWYFwJlJ99fHLiiwvq8B7bjqd17KvCHfIm1fwtTJibffjuSnk4Ox
- odpT7yEjFuCCvHZDTfzTucEb/7+Lm8j7EzcuwkPgAfn/uAki9aLS9D+4odmmGmuLGvcj
- 40F0F029XPRC+MbAX8qFUrQlMBDxPULq9M4vr6/dUGLZqddsruIDBzrf02exV02uCBpq
- RvXNX/9bJ8ebDfwCVp6n8CchyODDg5jq+FtmLX5GO5kVAlYYCduVYirk4+X0Tx96r2kS
- sP4kPpLkTZzoTQtvIT6mM6MaEtNfZwWcUqANKZsL156QH+zpEAfwF5+NB8JWN/Yhcga/
- o/LQ==
-X-Gm-Message-State: APjAAAXb7D0aMpF6SUo/kHsOYKb+dUw3dPKtYB5WEdYYibZ23qwFcOAF
- ifvAG3kLjmV55QUxX6zMQ+i00Q==
-X-Received: by 2002:a1c:3803:: with SMTP id f3mr203204wma.134.1579196619045;
- Thu, 16 Jan 2020 09:43:39 -0800 (PST)
-Received: from bivouac.eciton.net (bivouac.eciton.net.
- [2a00:1098:0:86:1000:23:0:2])
- by smtp.gmail.com with ESMTPSA id v14sm29993062wrm.28.2020.01.16.09.43.37
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rotpn64p7f0JzbmAl5UYYA83qOj/egKaEQ0Cnoo5p4U=;
+ b=qPqRLn/K66EhMVC8Xb0IH2Fze0Bp6BX1LAzFgcQjBEWMMgZuuhVtcHk6mmvbAoK6XR
+ jUbkUiWGjXCAPLMCi+oaD4sw5nNKbJJ4EgXATHq1ydkav1j9wnvTOBgRhJrmFy+gZOn1
+ 1EJNtuLaiRgi6uZ0a4iVuLbhFXl7c7BgTTVSKWVisLjsCC5GCLicLBIxxbsU3lZWzb83
+ b2R6lwiPEl6GWlBVVJ36zIpsnqQDdkQMdC57R9425glnDacvu2HrLPcIi5h48uYdMzlO
+ QoeybII6ZvBjbSJMDE58wfnaCz0DuVcocBj1IelDbEvtyQbMH0OoeU8kTZbMGVl7Fxz6
+ 3fLA==
+X-Gm-Message-State: APjAAAV6znis6hf/7+dgF4rDR4IeBF8MKTEGL06qMka0yIgQ7FrFj+Vj
+ GVNMWBXz79ovscISLNW+w3Sx/HRatqyddlfZC/3Zc/xYFSQlI75v9yG9FAwmQoMoQsqLF//Oc5/
+ 9fk7k+PsOniYytj6Msp5yNydiI9APdb41jBimDEOz9lalQ+C6re2rhijk8V8zYfrY
+X-Received: by 2002:a5d:5091:: with SMTP id a17mr4467664wrt.362.1579196568415; 
+ Thu, 16 Jan 2020 09:42:48 -0800 (PST)
+Received: from urvogel.hemma.eciton.net
+ (cpc92302-cmbg19-2-0-cust304.5-4.cable.virginm.net. [82.1.209.49])
+ by smtp.gmail.com with ESMTPSA id r68sm124384wmr.43.2020.01.16.09.42.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Jan 2020 09:43:38 -0800 (PST)
-Date: Thu, 16 Jan 2020 17:43:36 +0000
-From: Leif Lindholm <leif.lindholm@linaro.org>
-To: Leif Lindholm <leif@nuviainc.com>
-Subject: Re: [PATCH] MAINTAINERS: update Leif Lindholm's address
-Message-ID: <20200116174336.GD20629@bivouac.eciton.net>
-References: <20200116174226.4780-1-leif@nuviainc.com>
+ Thu, 16 Jan 2020 09:42:47 -0800 (PST)
+From: Leif Lindholm <leif@nuviainc.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] MAINTAINERS: update Leif Lindholm's address
+Date: Thu, 16 Jan 2020 17:42:26 +0000
+Message-Id: <20200116174226.4780-1-leif@nuviainc.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200116174226.4780-1-leif@nuviainc.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::344
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::441
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +hDV69XCHhx8
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Leif Lindholm <leif.lindholm@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PIc88uFVSYpo
 
-On Thu, Jan 16, 2020 at 17:42:26 +0000, Leif Lindholm wrote:
-> Update address to reflect new employer.
-> 
-> Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+Update address to reflect new employer.
 
-Reviewed-by: Leif Lindholm <leif.lindholm@linaro.org>
+Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+---
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  MAINTAINERS | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 483edfbc0b..3c8653f26f 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -735,7 +735,7 @@ F: include/hw/ssi/imx_spi.h
->  SBSA-REF
->  M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
->  M: Peter Maydell <peter.maydell@linaro.org>
-> -R: Leif Lindholm <leif.lindholm@linaro.org>
-> +R: Leif Lindholm <leif@nuviainc.com>
->  L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/arm/sbsa-ref.c
-> -- 
-> 2.20.1
-> 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 483edfbc0b..3c8653f26f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -735,7 +735,7 @@ F: include/hw/ssi/imx_spi.h
+ SBSA-REF
+ M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+ M: Peter Maydell <peter.maydell@linaro.org>
+-R: Leif Lindholm <leif.lindholm@linaro.org>
++R: Leif Lindholm <leif@nuviainc.com>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/sbsa-ref.c
+-- 
+2.20.1
+

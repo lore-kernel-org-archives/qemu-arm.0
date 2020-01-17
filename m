@@ -1,117 +1,74 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8731790lff;
-        Thu, 16 Jan 2020 10:26:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwzYUUrquatA8BHhqMLHjPuwGdnNKbNNCULLxyncPjg088EJPUnJHauJUd4jJpvC95rtbWx
-X-Received: by 2002:a05:6402:282:: with SMTP id l2mr37804384edv.187.1579199183851;
-        Thu, 16 Jan 2020 10:26:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579199183; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9414504lff;
+        Thu, 16 Jan 2020 22:41:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqws7s552z1vYe2EWcdX/9t/LOCsz2WHY5MUyOYpnlPkSspzh+GTxBwL8LojaRg9adilHFg3
+X-Received: by 2002:a05:620a:491:: with SMTP id 17mr36876985qkr.429.1579243281601;
+        Thu, 16 Jan 2020 22:41:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579243281; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ju8r5zeezO6xcfQVElpdUXYgJqLVvcIOMS9OT1ENuBzSm7Q6V5uhR82T+d4xdXhUeU
-         dxge0rZbeKuhLatr4S5ULG0kaqI0s0ceoD19uWnfyfYlZUU03SRd84+OUAyrYkDlNfQh
-         sOhMZga6nvLRrIugU8JPaJleY6jv43WhyqvxrdEwTjoD0Uwaeu29ik+9vCwpDGUG2aRo
-         Tpv2Px1byKJk5HgQnU77y7TqKh8LKuNKtl0uKbdOqu3bBqH+vvpvkcG/nkqEWo9b10Mk
-         GNFOtPKEO+QfX2K6iavPWL+T6xBB+cWYBTX2CYt55HBsQvVrsFN4UF/TBXgIJ/Z+ijw/
-         tDOw==
+        b=qvOCvZISWoqhPXP2EMUjXFeNOqafPIo58f9DygM0WW/AKed7Cm0pp/FDfgGnU3HCUB
+         a7T2GygAS5lsz2EOmQEovnyzDdvHAOeeGO7f6s+UfkzdzdU6NBULuo0IBWvPXPbl0WEv
+         lLYJYsiRyaHjtSDI2Tvn7UAOTLjqhd3tUIJA/4fVq2KmfLrv7u57Lob4DGujFPjN8apV
+         vm4bQZbDp4c+nEKpaiUiVYB69XmO91y3BxI8UC3v9DmPA1Zt99fj3HawrmpPsbu7kzzY
+         ULgw19dpW0ofN/BKDva/lKABZL0iTVIXIWqv8IxDh/JPOofqsyIjIGQaFRrJAQ92EkSe
+         buqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=6wb3uvWE//pbl5HIWjx8Nx0ie/6KPJsZZo9m0HmU93k=;
-        b=Nw1m5ZrT0jR7eBiQKtbWHdWfVcFVP5tCpekaS6qxzkk+0An+xoY2UPGqgK97+x9f6q
-         uRF/F7kOTB1KqbT6C/p2SBGDlrUpD7G04XgwnIh46sNM/HieVIkD7Qp6jS68kAcCol4q
-         GPeCySrSlO5vS0HFW1G8CmCaavIqkEYyj4Oow3SdO4FqMOlI0NtHwnwAHndkF9wxbHrK
-         Z3YHruBGhUHks4KdzGPTWRxxP7pV7XXTlb1BJsAxjOSJn99X/eyxX/lk6ZNT7xKByVYV
-         o9IknWupKteNzFRmypQNX2lu6fankjpi0lo1KJ6GdVBy5tg5i2scdXKAjbRnavINuLo9
-         orsg==
+         :mime-version:message-id:date:subject:to:from;
+        bh=kILSDmMN9iD9Af+qHLXBEZrWfII6z296r04rOq8vi50=;
+        b=j/MZaxIvqUfKmakkMk0/GiGbOrrih8HHzWOxWqU6sWPD5hk0omF3WQk7pkMMvcqoQg
+         TtlhfrGuch0G6JnlriMl5Kfy4PcJn8PFviuuxF7+eLoZfbC7Ev4DGMkRJznZYX9U1FLJ
+         7PvqFQC/NUrm7Wepp4EXU145ZsYr8oRa3IZrdhHfkZl7cMpHB4f+MGab3FpMXqXtFQYw
+         MKLb0QqmeObrtz11xG0HCIbafaLItL6Rjbd50RKHiX6DRaRjYJJKwOSK7Y/uBZSFkNMH
+         62qxl4e2brt09gETnChdA6eziW3pHGPvVYqg/+HK0UBuGhEXQHkrS+QIPyppfqI5npHe
+         aZuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HCwhsc0W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j15si14700391eja.399.2020.01.16.10.26.23
+        by mx.google.com with ESMTPS id o45si14331574qtk.333.2020.01.16.22.41.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 10:26:23 -0800 (PST)
+        Thu, 16 Jan 2020 22:41:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HCwhsc0W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46740 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1is9qY-0003tP-Nj
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 13:26:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36865)
+	id 1isLJo-0003yg-Rd
+	for alex.bennee@linaro.org; Fri, 17 Jan 2020 01:41:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53857)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1is9qH-0003pv-93
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 13:26:08 -0500
+ (envelope-from <zhukeqian1@huawei.com>) id 1isLJY-0003yK-67
+ for qemu-arm@nongnu.org; Fri, 17 Jan 2020 01:41:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1is9qD-0004jf-Sh
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 13:26:05 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:21563
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <zhukeqian1@huawei.com>) id 1isLJT-0003MT-TZ
+ for qemu-arm@nongnu.org; Fri, 17 Jan 2020 01:41:03 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:53562 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1is9qD-0004ir-Pi
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 13:26:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579199161;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6wb3uvWE//pbl5HIWjx8Nx0ie/6KPJsZZo9m0HmU93k=;
- b=HCwhsc0WQ/+7gAmeGnhoMtdD/CK4QlTCScw1ym3J8fjzkz0k+iT5ok3M2IvnenhknAKfsi
- YDn+ChVlRJ1eXwSKojgOBCLCpY1DNnyJp3tdJkM3Hf0G6xAD3IjbRZ1BOOJhFp24SYSXLX
- YSkUNwGS/tCbGMo022L3Do/fuZ2Q+uw=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-429-E5TQbyF-PLqv7LtqFmDnRQ-1; Thu, 16 Jan 2020 13:25:57 -0500
-Received: by mail-wr1-f72.google.com with SMTP id u18so9511353wrn.11
- for <qemu-arm@nongnu.org>; Thu, 16 Jan 2020 10:25:57 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=c/c8V5rf2/aAXQloIrsK2RPGfgbVJD1aae0hGkuaRUc=;
- b=om9Pcgi/OCgsaSm5wODnakxZCvTd2YD9eX6rFCZvS1PtSEhuvkxfogi7ZDIKT2h1up
- vXkmKLQqsMq/H+Bftw577Jo7DI4LOlzD+VvpeNTemO1tiRDYOuRrHieeqRJxoaNnPkUa
- VMFtfVYcR0kSzauZ1Y307cEvVKu73GqFc/yTDLjDrtpgtf2m3/kX2a4ViEKF5jdqgfk2
- CMA9KdwZ43bnFjPeB5ZHQHsLXD6Q8ttfPf0lmENkL8pfA8oex/dXLIAaaKFM5J8hl/Wp
- I+Q/ikW0qdOA4Vr4rEXwwHUeennTprrCWflAgG5rwai7ciwX/X3C3cCtMHGqW5TXqVQT
- DiUw==
-X-Gm-Message-State: APjAAAXuVE5X6IqVUVQeivfuGDAGppuWz5N5Cpt72t4I490m6ij9mrc3
- iey7Q+gEaW9AQ3OAvgvyxJ3Rcpxn5auqD07uOMVjYNSKLb4QQ4XTy21bbD5tFoxdIjUQ+/6nI3a
- HwQRdb2aQBP1F
-X-Received: by 2002:adf:d184:: with SMTP id v4mr4652800wrc.76.1579199156879;
- Thu, 16 Jan 2020 10:25:56 -0800 (PST)
-X-Received: by 2002:adf:d184:: with SMTP id v4mr4652773wrc.76.1579199156615;
- Thu, 16 Jan 2020 10:25:56 -0800 (PST)
-Received: from [10.101.1.81] ([176.12.107.132])
- by smtp.gmail.com with ESMTPSA id v17sm30106941wrt.91.2020.01.16.10.25.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Jan 2020 10:25:55 -0800 (PST)
-Subject: Re: [PATCH] MAINTAINERS: update Leif Lindholm's address
-To: Leif Lindholm <leif@nuviainc.com>, qemu-devel@nongnu.org
-References: <20200116174226.4780-1-leif@nuviainc.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <a2fc8a4f-0b56-7868-0e52-51c2abfd97f7@redhat.com>
-Date: Thu, 16 Jan 2020 19:25:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
+ id 1isLJT-0003Ju-Iz; Fri, 17 Jan 2020 01:40:59 -0500
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id A014D327BFE19E16D2E7;
+ Fri, 17 Jan 2020 14:40:54 +0800 (CST)
+Received: from linux-TFkxOR.huawei.com (10.175.104.212) by
+ DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
+ 14.3.439.0; Fri, 17 Jan 2020 14:40:46 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH v2] hw/arm: Adjust some coding styles about memory hotplug
+Date: Fri, 17 Jan 2020 14:38:22 +0800
+Message-ID: <20200117063822.57918-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-In-Reply-To: <20200116174226.4780-1-leif@nuviainc.com>
-Content-Language: en-US
-X-MC-Unique: E5TQbyF-PLqv7LtqFmDnRQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.212]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,59 +80,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Leif Lindholm <leif.lindholm@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com,
+ zhukeqian <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fO3gMIzksL0M
+X-TUID: fCQNjuxO3Wq/
 
-On 1/16/20 6:42 PM, Leif Lindholm wrote:
-> Update address to reflect new employer.
->=20
-> Signed-off-by: Leif Lindholm <leif@nuviainc.com>
-> ---
->   MAINTAINERS | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 483edfbc0b..3c8653f26f 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -735,7 +735,7 @@ F: include/hw/ssi/imx_spi.h
->   SBSA-REF
->   M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
->   M: Peter Maydell <peter.maydell@linaro.org>
-> -R: Leif Lindholm <leif.lindholm@linaro.org>
-> +R: Leif Lindholm <leif@nuviainc.com>
->   L: qemu-arm@nongnu.org
->   S: Maintained
->   F: hw/arm/sbsa-ref.c
->=20
+From: zhukeqian <zhukeqian1@huawei.com>
 
-You might want to add yourself a .mailmap entry too:
+There is extra indent in ACPI GED plug cb. And we can use
+existing helper function to trigger hotplug handler plug.
 
--- >8 --
-diff --git a/.mailmap b/.mailmap
-index 3816e4effe..a521c17b44 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -44,6 +44,7 @@ Aleksandar Markovic <amarkovic@wavecomp.com>=20
-<aleksandar.markovic@imgtec.com>
-  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com> <arikalo@wavecomp.com>
-  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori=20
-<aliguori@us.ibm.com>
-  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
-+Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
-  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
-  Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
-  Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 ---
 
-If you ack this snippet maybe a maintainer is willing to amend it to=20
-your patch :)
+v1->v2:
+ - Add Igor's R-b
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/acpi/generic_event_device.c | 2 +-
+ hw/arm/virt.c                  | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_devic=
+e.c
+index 9cee90cc70..55eb29d80a 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -175,7 +175,7 @@ static void acpi_ged_device_plug_cb(HotplugHandler *h=
+otplug_dev,
+     AcpiGedState *s =3D ACPI_GED(hotplug_dev);
+=20
+     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+-            acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp)=
+;
++        acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
+     } else {
+         error_setg(errp, "virt: device plug request for unsupported devi=
+ce"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 39ab5f47e0..656b0081c2 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1934,7 +1934,6 @@ static void virt_memory_pre_plug(HotplugHandler *ho=
+tplug_dev, DeviceState *dev,
+ static void virt_memory_plug(HotplugHandler *hotplug_dev,
+                              DeviceState *dev, Error **errp)
+ {
+-    HotplugHandlerClass *hhc;
+     VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+     Error *local_err =3D NULL;
+=20
+@@ -1943,8 +1942,9 @@ static void virt_memory_plug(HotplugHandler *hotplu=
+g_dev,
+         goto out;
+     }
+=20
+-    hhc =3D HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
+-    hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &error_abort);
++    hotplug_handler_plug(HOTPLUG_HANDLER(vms->acpi_dev),
++                         dev, &error_abort);
++
+ out:
+     error_propagate(errp, local_err);
+ }
+--=20
+2.19.1
 

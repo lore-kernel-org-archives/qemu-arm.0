@@ -1,146 +1,121 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9838328lff;
-        Fri, 17 Jan 2020 06:01:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxUu7uLp3x/RMQqRNu1jMJrpTc2142zaJlX3aanRxOCzOxaFY2id+8Q9XHl0sK18i3EKAzO
-X-Received: by 2002:a37:4bc6:: with SMTP id y189mr37990546qka.18.1579269682702;
-        Fri, 17 Jan 2020 06:01:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579269682; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9846898lff;
+        Fri, 17 Jan 2020 06:07:37 -0800 (PST)
+X-Received: by 2002:a05:6808:53:: with SMTP id v19mr3285354oic.169.1579270057272;
+        Fri, 17 Jan 2020 06:07:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579270057; cv=none;
         d=google.com; s=arc-20160816;
-        b=PEwiOnJrrikgCPTU7v29QfaAsik9ZRhBOfRZqEkzvTXnKXsHSYwtH5MYEI90ymK9Cg
-         4H7425YwFDHsNil4ZnRpafid5Sd05wslVT2kWM4T8OIPOgJRFpBvdOhUH7zEtKgr3hqo
-         EKc5rlWUwfd+sPcDPZzMIRekKFOnmkLshoCaM2xMKR3EQMvA9E0eFy6R3+7ZL5jngHOZ
-         HaDJGXjrqxK+2IeFbYVT1xZmQb59dhhYW/1/o6pRaBa+MgoVOtQtnCKGJRWvdxw+3FYr
-         UXLBO1TLXqATNwAkmHPB2aOeEvGlfkbqzFzD+tdfUvYsmmWSJ9kSUcO+QAeRfhQOJJCL
-         lUAA==
+        b=tqNZbAFNFj3/dVTUoD2pN00YB4UxgnQLCdWku32ZwF2uWN4ABjtvlMzYYRB3oXM+pj
+         UK8w+ruRvRqOkiI9UYiwFtCePPRS30A9iWhTjIcjnN+dlLtKDJ3zYiA5Thoa0kX/Lvlx
+         zoB0XXNp0rFBILtYdg22YM0cc/TppBjBTISSwaTJqvgKGJZvrHzdkk02Olb7ID091and
+         H2SJs0LYr9CD3mzO2Ks2RPDQuzSgFAXzqrvsaMSbCMj4TazPLqL/Zbbip3Xx6uEa0fVV
+         BOIDe+mVyyoKBpnr9UO+Yo73R5xh8d+OrR9PDddY+ScgGlpch0Nr7U+wF/RyKmRjI0GL
+         /aAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=ER+LkyNb1e+F6XJEMqagb4//d3ToXFWicQDU9yloNKc=;
-        b=EaJX6eM8SxpC+ODVAcqle4KrIhd/gnbDpq6Ev+Ty321ih2bL8U1baJ8RgYoqBq5r2s
-         vKcK7f6DAusDjbSLZFbwr0hmP9hGKlAJDiQwidpmLgDpOMBXY+UXnCMdVW6aRwYnY9b1
-         NxSyzKIjiRbmE9duJlh42uqJo69h5qDNVQ6kHcP7V1cEcF8iKmzmSex9cU2/R/0O0n04
-         oQTBc1yu+cA7c3p4qNtpRoeqYBS67kjajA78xbOjVkFiGxl1Eot6nPSPXAdOAvB09KOb
-         y6PWEDryPWLpP3l6dKmo+GqfraTPDRDZgwOab7OIZLdUH/UqiUymcSrJZkg2HWWYRoHS
-         l+Lw==
+        bh=RwbD3gvEWa+hMsrQyvQGMC4eF/bJwAhYBiV4S+/BsuU=;
+        b=wZoAJEOmMYrBcsSi0gWldfTjCjHlyiFzI6U/YA3Ybz5kFiiq2EjIgkGLUedf8Iaxry
+         Fn7RA8VILTb4iPHXO3TWVbZd8Mn6ntiKUGELJ0zaHieT/JHrUyZ5G1P4jFHlzCxhTVq9
+         H7JQe8Km5viLiJwgOzZIx65ki0AbUii+AVS8Cg9dSDB7KA7dfuGIMz+tMem6CUq+n8Xq
+         FK/RQ8Ny7ex9VvnHLYKMwq6faahOvQNa2oEx7CLHXX59bzoFPdoTHgwcDJ0xF7SiwdNI
+         uxVIwbIpS3I6QPsSnAdIhOuvAAIAJnPE2f4oyH3N3KFko2nll4fppmdhs6ywTyiPR3xE
+         8Cfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NqzUIRAm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si15099186qkl.3.2020.01.17.06.01.22
+       dkim=pass header.i=@linaro.org header.s=google header.b=dRwLMoYD;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id y63sor12123357oig.74.2020.01.17.06.07.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2020 06:01:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 17 Jan 2020 06:07:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NqzUIRAm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57926 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isSBd-0007U8-Vf
-	for alex.bennee@linaro.org; Fri, 17 Jan 2020 09:01:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53080)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1isSBG-0007Qr-9G
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 09:01:00 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1isSBE-0005uM-QR
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 09:00:57 -0500
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:38902)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1isSBE-0005t1-ER
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 09:00:56 -0500
-Received: by mail-ot1-x342.google.com with SMTP id z9so20457732oth.5
- for <qemu-arm@nongnu.org>; Fri, 17 Jan 2020 06:00:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ER+LkyNb1e+F6XJEMqagb4//d3ToXFWicQDU9yloNKc=;
- b=NqzUIRAmrGKHWKdtnkWYTBCbFS5MTyjnH3GLSZQAOoHDSVjpB+33FHxr034Iden8hs
- 5vTF9egfQuRwy36yWVuAncxW2TsHLTJsL0nDLS2AM9My0cvUVngyyUJzWnVE236gAa3D
- IosqoyrLmp/0h/b/EjhBC1duffmunURwPGwjEj6JMcwleK4tU0GTtcOK7q4bnuFSA8NY
- vgt/aEtz4EX/n1L/V9GVYUtOh30MstwFGP/3Mp77r3acyROZSb1g/+FmUI2zNWyddcP7
- /mrzNjPPlRicHKgR95D1rkuww2F57EH8LfG2Gd9SDwL1ISDnle+UUtut3feShIafnRxJ
- z06w==
+       dkim=pass header.i=@linaro.org header.s=google header.b=dRwLMoYD;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=RwbD3gvEWa+hMsrQyvQGMC4eF/bJwAhYBiV4S+/BsuU=;
+        b=dRwLMoYDSnk5Oeg9kRsxLS2gM/YVtXjFN6QB0B05zD1YXKOE4qNTDUyfAHtcdZV2yR
+         VveNXcphgf47S4eVkTzQs4KatrWOS2OSBxZdjtWNMI1vsNKNvJRJpu4jjYspbwbt/NI6
+         PlwJkk7caNtvwdikWmt6GZCfRPhu8g0hgo25kS8kPVtG7NMqPykdG3HgYbGCM6iYfDGm
+         YzPfJoJsAEKHnuBaVEdaODf8WQUU08Mc0Gu2hq8VIVUC+JWx+1iQrlUoB8HYd5wvcNfW
+         xj3+SDi0qbmxLU40eu1+MFi8489q5CQPPYopijbKzkyfy88obbrUNi2NEVgYPDQGx+FT
+         CvvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ER+LkyNb1e+F6XJEMqagb4//d3ToXFWicQDU9yloNKc=;
- b=apfGQ/+CUIg7JKTRUQQJ3eSW5h4+zUVPT46BRo1GEsq3FfeuofH7CZXeVA0jO+s1nQ
- rJnxbwvuV+r099MkDlkijEe1B2BrpBc/wq3m4NQ1eOVy3Ne4FQ/MV0O2+j3YrT1OSZ0H
- FEg3pVyJtFTQJRNnPRvLcUks3g/izVRoxBxhFUeWc+dBD4nXpQtjEFToFfEQAzEJ3OjE
- SiAoSeWB8IwI/DLy5tw4tlb6JQ5LfHZ0oTGu0AHX5krgHZN+V5FBDLUPw3F4mNsRbXJX
- WRwRJkJkBkKF9wDysJ/2T/zLXEF5vUbeMxC2qsLKTg1yfYrb77ZCanJcYIE9o+RyX8Vu
- DMzg==
-X-Gm-Message-State: APjAAAUAw4kJWr8HijheVCFJxRLTJEupGWYUO9Cj9dSBABTrbttdkFav
- QRXuvmYSOcfWlEs2uHiduW9VIsE1/gjKp1B1gSxAog==
-X-Received: by 2002:a05:6830:13da:: with SMTP id
- e26mr5810406otq.97.1579269654059; 
- Fri, 17 Jan 2020 06:00:54 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=RwbD3gvEWa+hMsrQyvQGMC4eF/bJwAhYBiV4S+/BsuU=;
+        b=XVO83LqkJ7rpHbDge9uCuHhdooAejcEcjyvlOVte8vKvESZIQF3aEEv86zMUln/HNU
+         b/NTMG3wI5ylbFQKFoKaccUCDzZRDjdyuwOhnKEMV+hPbcCdiD4kBBpUAzSoHw5zcUi9
+         rQSsqB+MxiAfeFnTSLqGZak5kFXfOtdCWIMfVqu+CCaaFxowswP+94pEp1hcNTyIxzRv
+         uHAb56zP5+8yFO8DCGCo9iRqMCDxrgMFDUtGMbzqVZdmPqbXDx/WthRkG8YJ6pt8tmnl
+         ZxUrttwI527eU1PKnrziq5iuF355nTOQ9TIqWRhvCiyXlSOMnw79wwm8Pn6rsSbkhZBv
+         Cwww==
+X-Gm-Message-State: APjAAAWeH1LTE5nK+DdwA+IMcsHOsDKUhHzPLKjTH1by7L6zOS30+bvR
+	NSuQ/AjqdSDgVnf0psebZ/urt8WVE95M45IrXdXD9Evka4fD7g==
+X-Google-Smtp-Source: APXvYqzcnA6xnHJUTN7zD+Y/Um0YD0i/IU/jrWhLIuXdM7J0XdG9QPyyy5qyxwzYaiRKbmLnylDZMjtb/dmZt8sCUxs=
+X-Received: by 2002:aca:3182:: with SMTP id x124mr3579334oix.170.1579270056529;
+ Fri, 17 Jan 2020 06:07:36 -0800 (PST)
 MIME-Version: 1.0
-References: <20191219040612.28431-1-gshan@redhat.com>
-In-Reply-To: <20191219040612.28431-1-gshan@redhat.com>
+References: <20200110161626.31943-1-alex.bennee@linaro.org> <20200110161626.31943-3-alex.bennee@linaro.org>
+In-Reply-To: <20200110161626.31943-3-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Jan 2020 14:00:43 +0000
-Message-ID: <CAFEAcA-aucN9anYbhqLMQZTOzhfYaBB0DLV0d16B2HkgEs=ULw@mail.gmail.com>
-Subject: Re: [RFC PATCH] hw/arm/virt: Support NMI injection
-To: Gavin Shan <gshan@redhat.com>
+Date: Fri, 17 Jan 2020 14:07:25 +0000
+Message-ID: <CAFEAcA9H8oNBX4QcKjSB3jFqDq==6tr392yEzJwF2Dxnw9EFcw@mail.gmail.com>
+Subject: Re: [PATCH v1 2/2] tests/tcg: add a vtimer test for aarch64
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, Andrew Jones <drjones@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OaO3ybwg/2oE
+Content-Transfer-Encoding: quoted-printable
+X-TUID: awILs5YFe9P0
 
-On Thu, 19 Dec 2019 at 04:06, Gavin Shan <gshan@redhat.com> wrote:
-> This supports NMI injection for virtual machine and currently it's only
-> supported on GICv3 controller, which is emulated by qemu or host kernel.
-> The design is highlighted as below:
+On Fri, 10 Jan 2020 at 16:16, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
->    * The NMI is identified by its priority (0x20). In the guest (linux)
->      kernel, the GICC_PMR is set to 0x80, to block all interrupts except
->      the NMIs when the external interrupt is disabled. It means the FIQ
->      and IRQ bit in PSTATE isn't touched when the functionality (NMI) is
->      functional.
->    * LPIs aren't considered as NMIs because of their nature. It means NMI
->      is either SPI or PPI. Besides, the NMIs are injected in round-robin
->      fashion is there are multiple NMIs existing.
->    * When the GICv3 controller is emulated by qemu, the interrupt states
->      (e.g. enabled, priority) is fetched from the corresponding data struct
->      directly. However, we have to pause all CPUs to fetch the interrupt
->      states from host in advance if the GICv3 controller is emulated by
->      host.
+> Bug: https://bugs.launchpad.net/bugs/1859021
 >
-> The testing scenario is to tweak guest (linux) kernel where the pl011 SPI
-> can be enabled as NMI by request_nmi(). Check "/proc/interrupts" after injecting
-> several NMIs, to see if the interrupt count is increased or not. The result
-> is just as expected.
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> ---
+>  tests/tcg/aarch64/system/vtimer.c         | 80 +++++++++++++++++++++++
+>  tests/tcg/aarch64/Makefile.softmmu-target |  4 ++
+>  2 files changed, 84 insertions(+)
+>  create mode 100644 tests/tcg/aarch64/system/vtimer.c
+>
+> diff --git a/tests/tcg/aarch64/system/vtimer.c b/tests/tcg/aarch64/system=
+/vtimer.c
+> new file mode 100644
+> index 00000000000..2f6299b5d2c
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/system/vtimer.c
+> @@ -0,0 +1,80 @@
+> +/*
+> + * Simple Virtual Timer Tests
+> + *
+> + * Note: kvm-unit-tests has a much more comprehensive exercising of
+> + * the timer sub-system. However this test case can tweak _EL2 values
+> + * to trigger bugs which can't be done with that.
+> + *
+> + * Copyright (c) 2020 Linaro Ltd
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include <inttypes.h>
+> +#include <minilib.h>
+> +
+> +/* grabbed from Linux */
+> +#define __stringify_1(x...) #x
+> +#define __stringify(x...)   __stringify_1(x)
 
-So, QEMU is trying to emulate actual hardware. None of this
-looks to me like what GICv3 hardware does... If you want to
-have the virt board send an interrupt, do it the usual way
-by wiring up a qemu_irq from some device to the GIC, please.
-(More generally, there is no concept of an "NMI" in the GIC;
-there are just interrupts at varying possible guest-programmable
-priority levels.)
+Code 'grabbed from Linux' is unlikely to be GPL-2-or-later...
+
+QEMU already has a stringify() macro in compiler.h.
 
 thanks
 -- PMM

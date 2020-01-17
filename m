@@ -1,185 +1,215 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9668177lff;
-        Fri, 17 Jan 2020 03:22:42 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxq37NqtZVvR5q5QjOYVnMjp5/gddfJdX9iha/hYFGuHMBUlPHxoJvuipkI0kUiDI5i9ULj
-X-Received: by 2002:aca:cc08:: with SMTP id c8mr2957645oig.42.1579260161920;
-        Fri, 17 Jan 2020 03:22:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579260161; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9713616lff;
+        Fri, 17 Jan 2020 04:06:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxxGdo3aF65MOk5IDG0w9HZgI12WB6N2hcmX7UNrOUUICgTsHc2RD8E+P6s3TQPEi29SP5w
+X-Received: by 2002:ac8:104:: with SMTP id e4mr7011240qtg.37.1579262793138;
+        Fri, 17 Jan 2020 04:06:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579262793; cv=none;
         d=google.com; s=arc-20160816;
-        b=0IpeEUXKpKdgFyKbyWtK3HPvltJt5JfdLJkkmNjvLGcXtFJ/p6hKaydE66ro+CDj+o
-         xfBAsZOHJ7M9kZJRqfskmOTtCyJ2KXTF1qbRRGkEkba752Qmb5a8awh3/DZ85KZpCca0
-         y6xypD1eHoMJLDsLkOCUXNxGS4Xv0plpymnr/FzY/jmGuSH3BpTw9mdB6Hz42oHarDIL
-         GzhGK95tKgo7gU7dPsIZs8iOHFIIMmrZ0R5VyHWd6ikpjm+qwU4bon5jLThiX1ZIAH1j
-         6k9jeE3LhYaBnAsKj90OdsrdShA56S8RBbHGJtM3YFQYgSXvEmSmZCpRORTXDYh8vVx4
-         aDAw==
+        b=p5K5pJB05WI710QaDGf+m27zwopQqnt0bgL/6WUkOiAe9OUPGs1opUPdmeFD6Q6mPP
+         IyRE+kTojRI3y9WZjZ42K3pegtnXMEnGN8YDj+k535ZSdBVKcY4KC6ar93CYd/6NJRmd
+         1tp4hHckXMBL9zod5viwjmFGXxHTXRJqPC1Dj884fB41tdJpGODbqEPqzYZO6I1Mehy3
+         f/Hi0iW023dOgO8yY4hvIqzftSOdiudhoLH37ntW5ecL/xs0Y4/OAy1ALCo8u8Gcrzqi
+         41n8AIl27NlzfvMmI+Ummv9aJjc+D20DHGs5y251uMRdKBDcJwEreh1L+J3YEzZNBxwZ
+         5ovg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=1KvxUNp1KgYZrP3PTc7X6mLhbjCUmF5jCMS907NMjFw=;
-        b=wzW6iNEI3F1R/uiicugAEtZYVuQayxUdkKFPd0NFzyoPy0FEdkskd+xvsVgAj+Q11w
-         w7vJ/oioDJ4ayiw2ZKtNBBQF8i1k7Boikp2cLYaiAJkdpJKau/mUl8aHQmyaURZHuH2L
-         GV7my1HcYbfoA6lHRscJv5dKPoawiB/pQmL+lCrubDvO9NKp4+IHo9eFqn85NZVzObTF
-         WO2vUZNkcYvYhhRJAPzwMh4kGIk/beQHptCWhFAnGbUWuOFMBzfjx+4Pyi0ZJ1irLyRk
-         xgMpcI30YU2m9cpHL/U6LH0gD2fKeFKywXks4A4+kY9wKD0xflJJRBJcUSjOVUxXUeoP
-         AuxA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=M20d0Hf43fKbmuZOZCOH7FvWeOyLBBNIu+LwLx817/Q=;
+        b=aUXQLjHYiGXtNKh0nOG37d+gNCVE09dItZCR2kVkiSvBnBO/oQSIPUWLw/Grt65hbT
+         //RpbwB5jC8eo/xl2Dve/KydnnMHGQLpYtC4VRQxkqozuyCETAbO31njExYjEedfjOk/
+         rViDy2LI0LWdSzSKS5svAAmqHow6k+vWKt69yWlUfIfKkruLK6hXOMS7Bi7aesgS/pUj
+         660fvo1x0BEAI3CbFi5XKULAq7XZyTT8JdzS+gTwmFITu+76A4FOP/C9UaL69jVllsav
+         6NDXaPhVqa/7eSEG4xI3ormZHIu0CJj5qfVhCAv7R9u6XdiuwfKZpshrTcMp41+eXh7I
+         YGbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ehDsMBX1;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id z21si13287949oic.32.2020.01.17.03.22.41;
-        Fri, 17 Jan 2020 03:22:41 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pg9N8Oel;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u18si14325946qtq.36.2020.01.17.04.06.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 17 Jan 2020 04:06:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ehDsMBX1;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726896AbgAQLWk (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 17 Jan 2020 06:22:40 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:55758 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726689AbgAQLWk (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 17 Jan 2020 06:22:40 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1579260159;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=1KvxUNp1KgYZrP3PTc7X6mLhbjCUmF5jCMS907NMjFw=;
-        b=ehDsMBX1YH8bHUAh1j8dibao7r7K3uRJLN2xaPhdEPlqzUah+dqyen1ORhXh0+aohZFTxr
-        yyhBZhGR9zEnHek0QzfjF5OvmvVB8CN190JXhotr2g/ZH8UgnXBlxqVAilBEVeX13fibyk
-        XcXyFNdemz6UuWpsIpBWJR6uDo/sBD8=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-87-Y44E8p4LMWqiD8gwoc2ndA-1; Fri, 17 Jan 2020 06:22:38 -0500
-X-MC-Unique: Y44E8p4LMWqiD8gwoc2ndA-1
-Received: by mail-wm1-f71.google.com with SMTP id s25so1111038wmj.3
-        for <kvm@vger.kernel.org>; Fri, 17 Jan 2020 03:22:38 -0800 (PST)
+       dkim=fail header.i=@linaro.org header.s=google header.b=pg9N8Oel;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56128 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1isQOW-0005QD-HN
+	for alex.bennee@linaro.org; Fri, 17 Jan 2020 07:06:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39021)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1isQNW-0004VA-3g
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2020 07:05:31 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1isQNU-0007nn-F7
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2020 07:05:29 -0500
+Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c]:36103)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1isQNU-0007mj-7D
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2020 07:05:28 -0500
+Received: by mail-ot1-x32c.google.com with SMTP id m2so17489070otq.3
+ for <qemu-devel@nongnu.org>; Fri, 17 Jan 2020 04:05:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=M20d0Hf43fKbmuZOZCOH7FvWeOyLBBNIu+LwLx817/Q=;
+ b=pg9N8OelLR9ZmNcr2BFl3AWVMihNEf1AhxwC02ug4t/xYQZzYWwBD7Ehn3hkqAFiHV
+ Q2cvHdQGTJHeWi/PGypmdUrM3Puje60rRL7i9OukemsE+A5YEFbOokslFyfoZzq2UKMj
+ 3E6L8hAC5DqmH8XNgssrFRjwBJnacirtsy92XpBh7Z4BzZgH1WuLkmyPCipl8ULcYuWM
+ O9TvfugOHOshJOeK5M+YbENGKluC4M02Zpqj0Nqlw05UHsMA+LWsKUHBp4vcFuRYRGta
+ DQ0Q9tNHdyjC3UrwtI9I1Fy8bbRh8MNwQSddOcGFIxksZobovKw1EtVWuHRYLGLvHGBx
+ w0pA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=1KvxUNp1KgYZrP3PTc7X6mLhbjCUmF5jCMS907NMjFw=;
-        b=Rh7ASXO3S43JKeYsKplFsS4GSdDIp3P0FFEvFmKOioAgovv/t81aJ9xwTi11bQrwXM
-         z94up5CMqRb/q5WU8kZD4HLFnhjpi/7W7jmZoZSHpay1xb/zgRXDHXOh174tmQ0/tMts
-         x5IL5/2ptWbK9AsrYHaUocmthOGTN+mB1/IDiTJzJNZfYTQDAYy1KUJ4adPwkuYGu75d
-         z5GmuXnVQIhU72ZCwRrarHcGi8fZkSUC0KoaupGGel3ye6/n+CAhRu6EZpP+p1KFzLv4
-         82g5pxOWx6YwRmNwNfyXrQ06QxOc9MnnLWZuvoUqsAoG8BOQZMOIHqq8HKcRqZU7GRWt
-         HV7g==
-X-Gm-Message-State: APjAAAV8HsMjWuu4XjuvIrwN7/iVXc0/Z8kJdSiCTXU64A+d8PKLrIg/
-        kCDECJFEe8F6fKeXLwwQXZZKjWL6qMdC3vPpqdofBvWEXwCwVKUCZVys3z0br0Y+cbfFzVAQSu3
-        6qGCV9zDupiEL
-X-Received: by 2002:a1c:7d93:: with SMTP id y141mr4010633wmc.111.1579260157341;
-        Fri, 17 Jan 2020 03:22:37 -0800 (PST)
-X-Received: by 2002:a1c:7d93:: with SMTP id y141mr4010613wmc.111.1579260157141;
-        Fri, 17 Jan 2020 03:22:37 -0800 (PST)
-Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net. [83.57.172.113])
-        by smtp.gmail.com with ESMTPSA id 5sm33742050wrh.5.2020.01.17.03.22.35
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 17 Jan 2020 03:22:36 -0800 (PST)
-Subject: Re: [PATCH v22 9/9] MAINTAINERS: Add ACPI/HEST/GHES entries
-To:     Peter Maydell <peter.maydell@linaro.org>
-Cc:     Dongjiu Geng <gengdongjiu@huawei.com>, Fam Zheng <fam@euphon.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Jonathan Cameron <jonathan.cameron@huawei.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        Linuxarm <linuxarm@huawei.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Zheng Xiang <zhengxiang9@huawei.com>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        James Morse <james.morse@arm.com>,
-        "xuwei (O)" <xuwei5@huawei.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Richard Henderson <rth@twiddle.net>
-References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
- <1578483143-14905-10-git-send-email-gengdongjiu@huawei.com>
- <CAFEAcA-mLgD8rQ211ep44nd8oxTKSnxc7YmY+nPtADpKZk5asA@mail.gmail.com>
- <1c45a8b4-1ea4-ddfd-cce3-c42699d2b3b9@redhat.com>
- <CAFEAcA_QO1t10EJySQ5tbOHNuXgzQnJrN28n7fmZt_7aP=hvzA@mail.gmail.com>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <724fbf58-19df-593c-b665-2c2e9fe71189@redhat.com>
-Date:   Fri, 17 Jan 2020 12:22:34 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=M20d0Hf43fKbmuZOZCOH7FvWeOyLBBNIu+LwLx817/Q=;
+ b=Xuhxwlxux0oURPLrtXqRcCc7xgPlbKd1nshofQkezwDtjJAEhIqvyoKUHjWziiZ8zM
+ PniYC6w72uitUG4bMiAUyA9gyjfKlnh9xTjIJTbIFrdvqQjhlbrHQTSrGkktuOwty0oU
+ nimHsKRrmWRgHA+s/8GXoG6NbpoPzwexrhCfVFj9hIpEqgvQYe+Ze5uDuamMg6a1wRR7
+ VsLaKiZQsKOq7GxbMKH47SiDmjqKcINiTy3nNlHAZ4M3GXY4PpTWS7206NQe+bB/BwWN
+ 4XjoDGYhnTFfAP4+9XpQsQ5pRm4R+oR63i6yrNmjlyI5jUMMcjnwoGiLN284WTtFpoBL
+ UFMQ==
+X-Gm-Message-State: APjAAAWrTgowEQyWK4xW8MjRwfBrrCTqQBCb/zpk1Tvwb+0bx5K7UU5H
+ f/IRLUinLn+h2fVp45Ytk8jwhwHC39CEqU6nPCQHgQ==
+X-Received: by 2002:a05:6830:13d3:: with SMTP id
+ e19mr5759167otq.135.1579262726908; 
+ Fri, 17 Jan 2020 04:05:26 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_QO1t10EJySQ5tbOHNuXgzQnJrN28n7fmZt_7aP=hvzA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: NgR9r4vqacWk
+References: <20200114125254.4515-1-quintela@redhat.com>
+In-Reply-To: <20200114125254.4515-1-quintela@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Jan 2020 12:05:16 +0000
+Message-ID: <CAFEAcA_n21bu1gk0fqbzSr7iwurYCVR+wS7-RpDAJWnrYdVQ5g@mail.gmail.com>
+Subject: Re: [PULL 00/30] Migration pull patches (take 4)
+To: Juan Quintela <quintela@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::32c
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>,
+ Richard Henderson <rth@twiddle.net>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UMZkQsqSSLIR
 
-On 1/17/20 12:09 PM, Peter Maydell wrote:
-> On Fri, 17 Jan 2020 at 07:22, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> Hi Peter,
->>
->> On 1/16/20 5:46 PM, Peter Maydell wrote:
->>> On Wed, 8 Jan 2020 at 11:32, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
->>>>
->>>> I and Xiang are willing to review the APEI-related patches and
->>>> volunteer as the reviewers for the HEST/GHES part.
->>>>
->>>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->>>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
->>>> ---
->>>>    MAINTAINERS | 9 +++++++++
->>>>    1 file changed, 9 insertions(+)
->>>>
->>>> diff --git a/MAINTAINERS b/MAINTAINERS
->>>> index 387879a..5af70a5 100644
->>>> --- a/MAINTAINERS
->>>> +++ b/MAINTAINERS
->>>> @@ -1423,6 +1423,15 @@ F: tests/bios-tables-test.c
->>>>    F: tests/acpi-utils.[hc]
->>>>    F: tests/data/acpi/
->>>>
->>>> +ACPI/HEST/GHES
->>>> +R: Dongjiu Geng <gengdongjiu@huawei.com>
->>>> +R: Xiang Zheng <zhengxiang9@huawei.com>
->>>> +L: qemu-arm@nongnu.org
->>>> +S: Maintained
->>>> +F: hw/acpi/ghes.c
->>>> +F: include/hw/acpi/ghes.h
->>>> +F: docs/specs/acpi_hest_ghes.rst
->>>> +
->>>>    ppc4xx
->>>>    M: David Gibson <david@gibson.dropbear.id.au>
->>>>    L: qemu-ppc@nongnu.org
->>>> --
->>>
->>> Michael, Igor: since this new MAINTAINERS section is
->>> moving files out of the 'ACPI/SMBIOS' section that you're
->>> currently responsible for, do you want to provide an
->>> acked-by: that you think this division of files makes sense?
->>
->> The files are not 'moved out', Michael and Igor are still the
->> maintainers of the supported ACPI/SMBIOS subsystem:
-> 
-> Does get_maintainer.pl print the answers for all matching
-> sections, rather than just the most specific, then?
+On Tue, 14 Jan 2020 at 12:53, Juan Quintela <quintela@redhat.com> wrote:
+>
+> The following changes since commit 3c8a6575985b1652b45bfa670b5e1907d642cfa0:
+>
+>   Merge remote-tracking branch 'remotes/kraxel/tags/usb-20200113-pull-request' into staging (2020-01-13 14:19:57 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/juanquintela/qemu.git tags/migration-pull-pull-request
+>
+> for you to fetch changes up to b039b02c25d1725cf0296721d98e35e024468b20:
+>
+>   migration: Support QLIST migration (2020-01-14 13:45:29 +0100)
+>
+> ----------------------------------------------------------------
+> Migration pull request (take 4)
+>
+> - both patches for x32 archs in
+> - reorder the pages to make git bisect happy
+>
+> Thanks a lot to Daniel for helping with the bugs.  Twice.
 
-Yes:
+tests/qtest/migration-test seems to hang in the aarch32 environment:
 
-$ ./scripts/get_maintainer.pl -f hw/acpi/ghes.c
-Dongjiu Geng <gengdongjiu@huawei.com> (reviewer:ACPI/HEST/GHES)
-Xiang Zheng <zhengxiang9@huawei.com> (reviewer:ACPI/HEST/GHES)
-"Michael S. Tsirkin" <mst@redhat.com> (supporter:ACPI/SMBIOS)
-Igor Mammedov <imammedo@redhat.com> (supporter:ACPI/SMBIOS)
-qemu-arm@nongnu.org (open list:ACPI/HEST/GHES)
-qemu-devel@nongnu.org (open list:All patches CC here)
+peter.m+  3380  0.1  0.0  13484 12848 ?        S    11:10   0:03
+                   \_ make -C build/all-a32 check V=1 GCC_COLORS= -j9
+peter.m+  5471  0.0  0.0   1460   388 ?        S    11:11   0:00
+                       \_ /bin/sh -c
+MALLOC_PERTURB_=${MALLOC_PERTURB_:-$(( ${RAND
+peter.m+  5472  0.3  0.0  12984  2228 ?        Sl   11:11   0:09
+                       |   \_ tests/qtest/migration-test -m=quick -k
+--tap
+peter.m+ 17798 99.8  0.9 646064 150512 ?       Sl   11:13  43:04
+                       |   |   \_ aarch64-softmmu/qemu-system-aarch64
+-qtest unix:
+peter.m+ 17814  0.0  0.0      0     0 ?        Z    11:13   0:00
+                       |   |   \_ [qemu-system-aar] <defunct>
+peter.m+  5473  0.0  0.0   8176  6652 ?        S    11:11   0:00
+                       |   \_ perl ./scripts/tap-driver.pl
+--test-name=migration-t
+peter.m+ 17200  0.0  0.0   1460   404 ?        S    11:13   0:00
+                       \_ /bin/sh -c
+MALLOC_PERTURB_=${MALLOC_PERTURB_:-$(( ${RAND
+peter.m+ 17201  0.3  0.0  13080  2340 ?        Sl   11:13   0:08
+                       |   \_ tests/qtest/migration-test -m=quick -k
+--tap
+peter.m+ 24275  100  0.8 549340 144160 ?       Sl   11:15  41:32
+                       |   |   \_ i386-softmmu/qemu-system-i386 -qtest
+unix:/tmp/q
+peter.m+ 24308  0.0  0.0      0     0 ?        Z    11:15   0:00
+                       |   |   \_ [qemu-system-i38] <defunct>
+peter.m+ 17202  0.0  0.0   8172  6772 ?        S    11:13   0:00
+                       |   \_ perl ./scripts/tap-driver.pl
+--test-name=migration-t
+peter.m+ 25399  0.0  0.0   1460   384 ?        S    11:15   0:00
+                       \_ /bin/sh -c
+MALLOC_PERTURB_=${MALLOC_PERTURB_:-$(( ${RAND
+peter.m+ 25400  0.3  0.0  13092  2280 ?        Sl   11:15   0:08
+                           \_ tests/qtest/migration-test -m=quick -k
+--tap
+peter.m+  2755  100  0.8 557600 145696 ?       Sl   11:17  39:20
+                           |   \_ x86_64-softmmu/qemu-system-x86_64
+-qtest unix:/t
+peter.m+  2763  0.0  0.0      0     0 ?        Z    11:17   0:00
+                           |   \_ [qemu-system-x86] <defunct>
+peter.m+ 25401  0.0  0.0   8172  6692 ?        S    11:15   0:00
+                           \_ perl ./scripts/tap-driver.pl
+--test-name=migration-t
 
-> In any case, I'd still like an acked-by from them.
+(processes started 45 mins ago, unreaped processes in zombie state.)
 
-Sure :)
+It looks like the multifd/tcp test fails, but doesn't manage to
+actually turn the failure into the test case exiting:
+
+/i386/migration/multifd/tcp: qemu-system-i386: -accel kvm: invalid
+accelerator kvm
+qemu-system-i386: falling back to tcg
+qemu-system-i386: -accel kvm: invalid accelerator kvm
+qemu-system-i386: falling back to tcg
+qemu-system-i386: multifd_send_sync_main: multifd_send_pages fail
+qemu-system-i386: failed to save SaveStateEntry with id(name): 3(ram)
+qemu-system-i386: Unable to write to socket: Broken pipe
+qemu-system-i386: Unknown combination of migration flags: 0
+qemu-system-i386: error while loading state section id 3(ram)
+qemu-system-i386: load of migration failed: Invalid argument
+[hangs here]
+
+I think you need to find a system which has 32-bit ram_addr_t
+and test this, because this is about the fourth time round
+for this patchset failing on this configuration.
+
+thanks
+-- PMM

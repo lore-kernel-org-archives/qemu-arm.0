@@ -1,182 +1,220 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9575403lff;
-        Fri, 17 Jan 2020 01:47:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwFzeS7STYukhFb07PtgBr2FMHI6mvC5bc+iSd49K6AIInYK1a6uvijtEVTEgY3FYMDCAts
-X-Received: by 2002:a37:c24b:: with SMTP id j11mr36396371qkm.57.1579254453119;
-        Fri, 17 Jan 2020 01:47:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579254453; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9591600lff;
+        Fri, 17 Jan 2020 02:04:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyF4cQWKgJGtcDda40ch2rThjy7gYqpPYSfMH39puizFvW+t3UjDMsXxpiqZ/tNhZvyudfp
+X-Received: by 2002:a9d:4796:: with SMTP id b22mr5299571otf.353.1579255493814;
+        Fri, 17 Jan 2020 02:04:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579255493; cv=none;
         d=google.com; s=arc-20160816;
-        b=cpYxe3Hw/l7s5fVDBQ6rDRPTNQVf+JKY8L3geIFC6LxA1LBi2lE1OmGWTut0vTQ2VI
-         r4+vvulWMw6UOZnFff4vwRgmdctTbLIvGR8sI6YZz6fb6AC5x1tjz26NsmCNpalolkKh
-         T61esjJGB5WDya/t3PD7wbmfqwJqvbtu1CrjcQfjuQwE5rWmV4QZeR/84Md1SXphtt+N
-         O5tqggt0h1EOrXrlaSbfJZ4ZYogBDW/ubRy6MhFPgSW1sEm+vpWPYLm2zf0Rv5OeQR83
-         95mBtRBVth6EW4e8kopL9wxZQJ8xQ0hVtM/JD7RH16GykWs0RnyzkEEERKRF9hasA+3V
-         6p2A==
+        b=nWUcV6B7b4FviF52dnfNdUg7In4DQVEap0S3DIhRva5Sd0xafereWclT/TvCU57dD7
+         No4UsjrFR7MooL0Y+Zqnqgcn9DlJ2Rdvpr4ou9RtG/uJJ58FDmr4h8Ffx+Yxm8vV80p0
+         BUVaE1dKjfrYOwiO0zqEV43dJVoGyVsO+EKENDla6ic4niuPzdY/oRCafkpMTFnHZepW
+         lJFVq1yIVKQW5prWdf4up1jdMgDhnhJk09eGc6kGzyfNA5VTK17hmYDiGqbktFJvBJ5V
+         woyimmPoEGh4a8L4GIwrOuvhCFFDYPbE2u8Fb9xImOFXq0Fxdk/Xi9aJkw6zudOHCxET
+         3vAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=SPkIXciK6E3wUC+dxJgDQm8p/aYfCKeUbCuWsiNqGHg=;
-        b=qcJJYeyMgRKmsvEhOo8gkmIcfFuhse3DWoUlT1g7H0SK7VOW1HC8XKNWS/Xl45VdxL
-         ySf/YWCRYCyTEUnehwfw0Mk9LOfukyrlaQflZvhSkhl8OQPob3tXgKUpGQcEMFLPgkWf
-         vGwrcq9/28cCC5pMFzIhM0ujrckLseZflGijWmU/5uVe9LLg4waLiTArXteaoVKBHUZ8
-         IPYO3/2psRtJks9ZFtN70KCaGl6tbOc8jHBwKDcpNJUKbhZw0P7t7xDHABXP13IRbWla
-         b16ZWhfwNYb183kW/4DD04UVGXJ0AMTuflQBJsUj/gjP7c3S24bacOiny8UtvtThUK1L
-         eHUQ==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=inEw3RzfSVot746L+Yw60Xp5OB+gxf+Ck1QybJt/BSc=;
+        b=mGTbsJe7SrEszJglcL+279zmYrpVRj1p6O7BDbUidDFpZRAz+LglWiYdnSUI5YLZGu
+         iaYtiwRciC6picg/MLHBWP7cEx+o3B3miwz4zWerj0TgboEiWeFOIn92ivDHpdWDzTGr
+         k5hsyreK+0X/iiuoqiDr9tB6T/aYf3fUyL+cyPibDqPHEJ3Q+j44Q38uHypxEM5UWplK
+         zFmG2wrQOYEnAb//GVykLDlHxa6Aq9W6M/lK1h/JDtA6UHzCDvzpb8iWAyEfY3zQQ5YL
+         T/279atLjVibTrnY2Bp9HEbXhCln2tSD8cPnuI68SU8oZfJ2T3R4pKcQGFgdLLvYNhHs
+         WMqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GroLfiWB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m23si13733558qtu.162.2020.01.17.01.47.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2020 01:47:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id i15si15262489otk.120.2020.01.17.02.04.53;
+        Fri, 17 Jan 2020 02:04:53 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GroLfiWB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54620 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isODz-0007oK-VB
-	for alex.bennee@linaro.org; Fri, 17 Jan 2020 04:47:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50642)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1isODg-0007j1-5S
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 04:47:15 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1isODc-0005Bb-HF
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 04:47:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48673
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1isODc-0005B3-DG
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 04:47:08 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579254427;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SPkIXciK6E3wUC+dxJgDQm8p/aYfCKeUbCuWsiNqGHg=;
- b=GroLfiWBke8QcsnBuXYhVNY80KBxj9Vd9UaqFdsFhwWkAlO5BQ6snNfiBDRyxjpGEYb6Nh
- pfstJT+tpdQM2+atmbX22yC6alawlA34CZcc721ajFy8yo6mIsj11Up/+UrgxYOf+SjnCG
- 2mRM5CW0d2vMqEw7rVNZ6EHDO1DN6Pk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-267-kEQZXIRUMZ6lsoqqjxdrbQ-1; Fri, 17 Jan 2020 04:47:04 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28CB518FF660;
- Fri, 17 Jan 2020 09:47:03 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E05505C241;
- Fri, 17 Jan 2020 09:46:58 +0000 (UTC)
-Date: Fri, 17 Jan 2020 10:46:57 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Keqian Zhu <zhukeqian1@huawei.com>
-Subject: Re: [PATCH v2] hw/arm: Adjust some coding styles about memory hotplug
-Message-ID: <20200117104657.583abb3d@redhat.com>
-In-Reply-To: <20200117063822.57918-1-zhukeqian1@huawei.com>
-References: <20200117063822.57918-1-zhukeqian1@huawei.com>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726778AbgAQKEw (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 17 Jan 2020 05:04:52 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:9186 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726220AbgAQKEw (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 17 Jan 2020 05:04:52 -0500
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id EFDA36E91CCDC5E96B4D;
+        Fri, 17 Jan 2020 18:04:49 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS401-HUB.china.huawei.com
+ (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0; Fri, 17 Jan 2020
+ 18:04:42 +0800
+Subject: Re: [PATCH v22 8/9] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+To:     Peter Maydell <peter.maydell@linaro.org>
+CC:     Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Fam Zheng <fam@euphon.net>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        "xuwei (O)" <xuwei5@huawei.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        James Morse <james.morse@arm.com>,
+        "QEMU Developers" <qemu-devel@nongnu.org>,
+        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+        Zheng Xiang <zhengxiang9@huawei.com>,
+        Linuxarm <linuxarm@huawei.com>
+References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
+ <1578483143-14905-9-git-send-email-gengdongjiu@huawei.com>
+ <CAFEAcA_=PgkrWjwPxD89fCi85XPpcTHssXkSmE04Ctoj7AX0kA@mail.gmail.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <c89db331-cb94-8e0b-edf8-25bfb64f826d@huawei.com>
+Date:   Fri, 17 Jan 2020 18:04:39 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: kEQZXIRUMZ6lsoqqjxdrbQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r30083UmrYML
+In-Reply-To: <CAFEAcA_=PgkrWjwPxD89fCi85XPpcTHssXkSmE04Ctoj7AX0kA@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: AL9UHmyPsAVo
 
-On Fri, 17 Jan 2020 14:38:22 +0800
-Keqian Zhu <zhukeqian1@huawei.com> wrote:
+On 2020/1/17 0:28, Peter Maydell wrote:
+> On Wed, 8 Jan 2020 at 11:33, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> 
+>> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+>> +{
+>> +    ram_addr_t ram_addr;
+>> +    hwaddr paddr;
+>> +
+>> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+>> +
+>> +    if (acpi_enabled && addr &&
+>> +            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
+>> +        ram_addr = qemu_ram_addr_from_host(addr);
+>> +        if (ram_addr != RAM_ADDR_INVALID &&
+>> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+>> +            kvm_hwpoison_page_add(ram_addr);
+>> +            /*
+>> +             * Asynchronous signal will be masked by main thread, so
+>> +             * only handle synchronous signal.
+>> +             */
+> 
+> I don't understand this comment. (I think we've had discussions
+> about it before, but it's still not clear to me.)
+> 
+> This function (kvm_arch_on_sigbus_vcpu()) will be called in two contexts:
+> 
+> (1) in the vcpu thread:
+>   * the real SIGBUS handler sigbus_handler() sets a flag and arranges
+>     for an immediate vcpu exit
+>   * the vcpu thread reads the flag on exit from KVM_RUN and
+>     calls kvm_arch_on_sigbus_vcpu() directly
+>   * the error could be MCEERR_AR or MCEERR_AOFor the vcpu thread, the error can be MCEERR_AR or MCEERR_AO,
+but kernel/KVM usually uses MCEERR_AR(action required) instead of MCEERR_AO, because it needs do action immediately. For MCEERR_AO error, the action is optional and the error can be ignored.
+At least I do not find Linux kernel/KVM deliver MCEERR_AO in the vcpu threads.
 
-> From: zhukeqian <zhukeqian1@huawei.com>
-> 
-> There is extra indent in ACPI GED plug cb. And we can use
-> existing helper function to trigger hotplug handler plug.
-> 
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> ---
-> 
-> v1->v2:
->  - Add Igor's R-b
+> (2) MCE errors on other threads:
+>   * here SIGBUS is blocked, so MCEERR_AR (action-required)
+>     errors will cause the kernel to just kill the QEMU process
+>   * MCEERR_AO errors will be handled via the iothread's use
+>     of signalfd(), so kvm_on_sigbus() will get called from
+>     the main thread, and it will call kvm_arch_on_sigbus_vcpu()
+>   * in this case the passed in CPUState will (arbitrarily) be that
+>     for the first vCPU
 
-FYI one does not need to repost v2 for the purpose of
-picking up tags, usually maintainer takes care of that
-when patch is queued 
+For the MCE errors on other threads, it can only handle MCEERR_AO. If it is MCEERR_AR, the QEMU will assert and exit[2].
+
+Case1: Other APP indeed can send MCEERR_AO to QEMU， QEMU handle it via the iothread's use of signalfd() through above path.
+Case2: But if the MCEERR_AO is delivered by kernel, I see QEMU ignore it because SIGBUS is masked in main thread[3], for this case, I do not see QEMU handle it via signalfd() for MCEERR_AO errors from my test.
+
+For Case1，I think we should not let guest know it, because it is not triggered by guest. only other APP send SIGBUS to tell QEMU do somethings.
+For Case2，it does not call call kvm_arch_on_sigbus_vcpu().
+
+
+[1]:
+/* Called synchronously (via signalfd) in main thread.  */
+int kvm_on_sigbus(int code, void *addr)
+{
+#ifdef KVM_HAVE_MCE_INJECTION
+    /* Action required MCE kills the process if SIGBUS is blocked.  Because
+     * that's what happens in the I/O thread, where we handle MCE via signalfd,
+     * we can only get action optional here.
+     */
+[2]: assert(code != BUS_MCEERR_AR);
+    kvm_arch_on_sigbus_vcpu(first_cpu, code, addr);
+    return 0;
+#else
+    return 1;
+#endif
+}
+
+[3]: https://lists.gnu.org/archive/html/qemu-devel/2017-11/msg03575.html
+
 
 > 
-> Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/acpi/generic_event_device.c | 2 +-
->  hw/arm/virt.c                  | 6 +++---
->  2 files changed, 4 insertions(+), 4 deletions(-)
+> For MCEERR_AR, the code here looks correct -- we know this is
+> only going to happen for the relevant vCPU so we can go ahead
+> and do the "record it in the ACPI table and tell the guest" bit.
 > 
-> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> index 9cee90cc70..55eb29d80a 100644
-> --- a/hw/acpi/generic_event_device.c
-> +++ b/hw/acpi/generic_event_device.c
-> @@ -175,7 +175,7 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
->      AcpiGedState *s = ACPI_GED(hotplug_dev);
->  
->      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> -            acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
-> +        acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
->      } else {
->          error_setg(errp, "virt: device plug request for unsupported device"
->                     " type: %s", object_get_typename(OBJECT(dev)));
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 39ab5f47e0..656b0081c2 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1934,7 +1934,6 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->  static void virt_memory_plug(HotplugHandler *hotplug_dev,
->                               DeviceState *dev, Error **errp)
->  {
-> -    HotplugHandlerClass *hhc;
->      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
->      Error *local_err = NULL;
->  
-> @@ -1943,8 +1942,9 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
->          goto out;
->      }
->  
-> -    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-> -    hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &error_abort);
-> +    hotplug_handler_plug(HOTPLUG_HANDLER(vms->acpi_dev),
-> +                         dev, &error_abort);
-> +
->  out:
->      error_propagate(errp, local_err);
->  }
+> But shouldn't we be doing something with the MCEERR_AO too?
 
+Above all, from my test, for MCEERR_AO error which is triggered by guest, it not call kvm_arch_on_sigbus_vcpu().
+so I think currently we can just report error. If afterwards  MCEERR_AO error can call kvm_arch_on_sigbus_vcpu(), we can let the guest know about it.
+
+> That of course will be trickier because we're not necessarily
+> in the vcpu thread, but it would be nice to let the guest
+> know about it.
+> 
+> One comment that would work with the current code would be:
+> 
+> /*
+>  * If this is a BUS_MCEERR_AR, we know we have been called
+>  * synchronously from the vCPU thread, so we can easily
+>  * synchronize the state and inject an error.
+>  *
+>  * TODO: we currently don't tell the guest at all about BUS_MCEERR_AO.
+>  * In that case we might either be being called synchronously from
+>  * the vCPU thread, or a bit later from the main thread, so doing
+At least I do not find Linux kernel/KVM deliver MCEERR_AO in the vcpu threads.
+In the main thread, signalfd() is not called when it is BUS_MCEERR_AO which is triggered by guest.
+
+>  * the injection of the error would be more complicated.
+>  */
+> 
+> but I don't know if that's what you meant to say/implement...
+we can implement MCEERR_AO logic when QEMU can receive MCEERR_AO error which is triggered by guest.
+
+> 
+>> +            if (code == BUS_MCEERR_AR) {
+>> +                kvm_cpu_synchronize_state(c);
+>> +                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
+>> +                    kvm_inject_arm_sea(c);
+>> +                } else {
+>> +                    error_report("failed to record the error");
+>> +                    abort();
+>> +                }
+>> +            }
+>> +            return;
+>> +        }
+>> +        if (code == BUS_MCEERR_AO) {
+>> +            error_report("Hardware memory error at addr %p for memory used by "
+>> +                "QEMU itself instead of guest system!", addr);
+>> +        }
+>> +    }
+>> +
+>> +    if (code == BUS_MCEERR_AR) {
+>> +        error_report("Hardware memory error!");
+>> +        exit(1);
+>> +    }
+>> +}
+>>
+> 
+> thanks
+> -- PMM
+> .
+> 

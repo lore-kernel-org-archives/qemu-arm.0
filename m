@@ -1,183 +1,128 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9652711lff;
-        Fri, 17 Jan 2020 03:08:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwBAS1ZJKpi+Kcx3oZGe1KJs17oH7pMhM1nY4R/Li5zMVC4BKk3lA07JnWjZkhGhmm1xBN/
-X-Received: by 2002:a17:906:a859:: with SMTP id dx25mr7402350ejb.226.1579259280591;
-        Fri, 17 Jan 2020 03:08:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579259280; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9696515lff;
+        Fri, 17 Jan 2020 03:50:45 -0800 (PST)
+X-Received: by 2002:a9d:70d9:: with SMTP id w25mr5971323otj.231.1579261845538;
+        Fri, 17 Jan 2020 03:50:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579261845; cv=none;
         d=google.com; s=arc-20160816;
-        b=CX808h4AfW7Ris/zyPgkJD5h/h4fNm4cfCVNncNbIfWS/OsKRLLw9JPw9PHZOALN8w
-         wTt3DSkRstSXtdi9P7gls2Wj49ZlhHgliUpSnWB1juxFaoAtc2ie3ItHh0Nla6oBg9wQ
-         OipS71cAla4HfxSrZlLwnsF9bkQKkyIoZfQiVUxnHWAiXJwS8p4Dz1vMD2ZRPK0eg2xX
-         AwDezC/m9ss+3mbNUCVyrf6/2OXxHeewWsBxJesJl05P2hlwThzRSLSFPr2q/CmfNkgv
-         x/KTx4rVNgvBLGdh4u7Rbxe/DLQkZWiZwG+wQA2LiyxPY3FTnc+bizfhNxSyHyBpCyQa
-         74Sg==
+        b=OAgGYGpQfpIRWBYZ3x7rUsVXi+50EpME3bKmJDZMnzgO1I8Sq0t6MRqVR630IZd6L5
+         EmfsFMOtQa6SpqcevkpC1rIo1DQ5UqAHF9x691aMMNNYpQ5CcYmanGqWSASoLd9GC0Q1
+         wxHJ8LcShf748Y7Fxfyuqea81iRC/Tiko8vFDrRdw6qA8+h7oAo9K0uGkbTd1HGKgHvi
+         2+wBNMW/WB6zUBwds2v/+JJIwvKtIT5YlUkFoo8RpkSK/02QJYVaElSg6vvPGS1ineFp
+         INntDh44hT5hW4r4KyhUokACa05nGLzOxFAL+5wr65qi+V19JtJiOItDaQ2P4Vvrs30J
+         xpIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=zH/wNJ76wLw/+0fquGdJeT6sWMpTUa+KgeuMJcheKcE=;
-        b=NYzVFMDl7AcFfOUyQfjPFJl+dOKCsDJOV+Kj/iZTLDnaO/pRpys30qxS2UFGPH2m1n
-         Shi8B7Y/Tavrx8sqLlPVdJLFG5gJtdZnt2Ea+qQWBgWJPYvWjIH5UaFuJXxJ34vHwUSB
-         mVKe3iIL/NlWcIXMhHDfEMSSqcRn0lwMu1yy5Rnnap/QPC4D+iQM6/p46Y2hYEdKIazS
-         ogl2IhC3Ppm1+32mIXQcklhyVqD4KUtXyWi3Z0w4QZONOT/7KVRlpjVED1vaw5MotgHP
-         9dhOK4/9Uk/UbG/6dOkIEO2fNHCJTChvetPj0T5tzGtJ10ThYnuTpp3WhHaJWDQ27R/B
-         NklA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=iDytm4TfZbY5oMmfZHzGiEQQcHLYD9MXz+DIQoueERs=;
+        b=V2lugIXa/euxpAMm+twmk43VijNSnSi24p+PjSub1c7lL5XAfStIT7ZJrZIFQjLjWs
+         VaYGL3NG85Vu0OBcDwhpPa0ueUHQR8y8mQZuC2eZ1tro5UObRFivSwxTqvPZbNLRsKKy
+         87+2PAyDfr5NR3rMmracGazBAuFoycZNRer5FUGqJ1ioD51TYyXI9jBx3JVVs48zY/Z1
+         jJV5cbUv1TGYq0rmIVFjYLDeQ0vH1CAgIfMwEaS1USbLG99bwOhkRmvTVDxOv/USdKtt
+         jR/m9BDb2DNPpfbXpIoEeo+IyYbnfJulxF81p9CZI1rpPvUB/6A7FtKUGKlc2cKpL/Xn
+         iw7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="HkeJRwQ/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1si2361010edj.583.2020.01.17.03.08.00
+       dkim=pass header.i=@linaro.org header.s=google header.b=wI0m4sxN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id f2sor12928220otq.42.2020.01.17.03.50.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2020 03:08:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 17 Jan 2020 03:50:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="HkeJRwQ/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55446 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isPTr-0006I3-Jk
-	for alex.bennee@linaro.org; Fri, 17 Jan 2020 06:07:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60232)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1isPTj-0006Gp-7J
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 06:07:52 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1isPTh-0003VW-Re
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 06:07:51 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:34052)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1isPTh-0003Us-Ka
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 06:07:49 -0500
-Received: by mail-ot1-x341.google.com with SMTP id a15so22226324otf.1
- for <qemu-arm@nongnu.org>; Fri, 17 Jan 2020 03:07:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zH/wNJ76wLw/+0fquGdJeT6sWMpTUa+KgeuMJcheKcE=;
- b=HkeJRwQ/uade9ZX3c12JDT4Sm0+bs+Eg0Y9f6vkedd7QIm7J2SP6RYZYwYr7pDfSx+
- ExjMpLbfE7/owQDNxPfl3j9Crhp31N/cL3JwUidh03Cub8kAhsEfxgjXTZ9/csdnhO18
- idLfStA7WuWQGmyvsJnWo4Z6kDcl1ZMeph8o7tbCdQdobTMuKL72qXH/iPX8HbjMJooM
- cjx0Af++DicAdgCAiF8UR46AJE/W8tO8GB8CmqXb3BoQvNsjnncYUc4LbkNNairLw+Ug
- OV8lR8BtGKDCgyTXVYdLi1nKNLuTak2LNCY79/mgVGzPrjbr2+x+eyaa+orN2lRll6Vt
- GhOQ==
+       dkim=pass header.i=@linaro.org header.s=google header.b=wI0m4sxN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=iDytm4TfZbY5oMmfZHzGiEQQcHLYD9MXz+DIQoueERs=;
+        b=wI0m4sxNvbm7kjpw41olUT6lrYS4NLnKwPgFkxnop5WRGY15XoQspOE7HWiTQGN+40
+         Hrc1k9esqY+X+d6lxw9s4DWqlyFWzHGJiDssVEa1rCumYDnZN+yArnFydppCHlp9pHLu
+         YUGkZBw5SLv1EkzGmdvYHk8h/6yiaw3J5xFi6WMxLROQOIRuVOHGn+fgNKRJE3Lswaa+
+         p2EeD2h6WHV30PgGhhlJsLDicjOj17VUO7D55BR9TdAuekdcbSgvS4Toj3rxJCPjdogG
+         TIl4vLn6oOtahbJBFFLmTr79YFdyWKnLmk6KZcbzEAqBALJ7AAj/djPgrWd9qXuUTF9i
+         rUvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zH/wNJ76wLw/+0fquGdJeT6sWMpTUa+KgeuMJcheKcE=;
- b=LoXLzZEWzCTY1MDu80ogIeg51uiqhk+PQNElUUmMha4mdtlPJOBSiFH3JxK1tvrDEe
- VMcwjFrsxIw4z1k9OFYEfX8sLKoECkshpjrsT4YEQJf56FJgdV+N7Jn/DsiD4G/YS4mN
- jpRNp23oluq92Il3vhzHl3ZuIc1GAfjCL5eHs6qBbqKazlsSF5WVuxTqi6Rjj6HQSTjD
- K/n7Y11eCbkfmMXQnpZlE6FuL7pYBGGEsqWAOO1JJJMMqFi4+PkZZdaqmqBNwyAM7aEX
- GYWOmx3YOyXtxLOzBzt1usehd4ySxcQHrCx9+6TCH2LCkRBHfpj4BCl302WYwfLv2Ray
- w6Ng==
-X-Gm-Message-State: APjAAAWbltQP+UA/wVYMjU6K1yV/0e5D6CQYHyeenRpo4PHOlibfaCkC
- AtO9aEMaUcemPUySf9r+agagiOdLth4NVKFyian6uA==
-X-Received: by 2002:a05:6830:1586:: with SMTP id
- i6mr5402453otr.221.1579259268244; 
- Fri, 17 Jan 2020 03:07:48 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=iDytm4TfZbY5oMmfZHzGiEQQcHLYD9MXz+DIQoueERs=;
+        b=NcPi1Ynceot888GVMVKAMPwwsF5hR3g87+97v9zRjKMppCz+mBGDS8qozNscVsQDu8
+         ltpTSiuW6pJGShL8Djg2voPzxJ4z85hA2KUE8Svg3txYI5FSWREXLGUNcn2GHESggaro
+         yCe5cm1l6x4KzxUke+6Q9gXT8V3ayPHZWJe5v6qn2ubVq38OkDmWmv8mQugCBEPTqzwc
+         TPgOafxNGCydOHe7YHoTbAdZFzkqpiNnYhxo1++YQFUR6lmH1lS8t1K4f8r1YIn6vklb
+         Ji6Tc31fMxes/52Ms2uqGmgP3KrN2cL1giK7dm9odxey36vcUqgV0QZeohxcEeMgGUvh
+         8wbw==
+X-Gm-Message-State: APjAAAWzUUgTqneJAwP4VAOsAtAOKKzzj2jC8bDmYhuug2xLJALk1zlw
+	pk+DzrBfPVYUsGqr1RNPJfHP6bSU35Fcx175q4Z/bIaTmhUbpQ==
+X-Google-Smtp-Source: APXvYqznTo3qqyC+aPlCw4uEb42nRqdw3eWjM2c251Vfyx+z2XZp5X708DW4NhrXR2rmaiYu9TXygRzXp36b/v2UO3k=
+X-Received: by 2002:a05:6830:13da:: with SMTP id e26mr5466797otq.97.1579261844377;
+ Fri, 17 Jan 2020 03:50:44 -0800 (PST)
 MIME-Version: 1.0
-References: <20200117063822.57918-1-zhukeqian1@huawei.com>
-In-Reply-To: <20200117063822.57918-1-zhukeqian1@huawei.com>
+References: <20200110161626.31943-1-alex.bennee@linaro.org>
+ <20200110161626.31943-2-alex.bennee@linaro.org> <CAFEAcA9nNH9pu+8E_YYkiNtzePjZdrEBjK_9zJv+XJaSvcnhmA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9nNH9pu+8E_YYkiNtzePjZdrEBjK_9zJv+XJaSvcnhmA@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Jan 2020 11:07:37 +0000
-Message-ID: <CAFEAcA_Cji9poXhv1=cje3r2uwz+X_iYo8TmTxP_wP1CRV-b9g@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm: Adjust some coding styles about memory hotplug
-To: Keqian Zhu <zhukeqian1@huawei.com>
+Date: Fri, 17 Jan 2020 11:50:33 +0000
+Message-ID: <CAFEAcA_0hHjkhKtVsQEsN=Xow=W6vPvGJPJdzHh=O6RG1=_mAQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/2] target/arm: detect 64 bit overflow caused by high
+ cval + voff
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	1859021@bugs.launchpad.net
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm <qemu-arm@nongnu.org>, wanghaibin.wang@huawei.com,
- Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aq07xeVm7WfI
+X-TUID: ocjV9kyiPU8u
 
-On Fri, 17 Jan 2020 at 06:41, Keqian Zhu <zhukeqian1@huawei.com> wrote:
+On Thu, 16 Jan 2020 at 18:45, Peter Maydell <peter.maydell@linaro.org> wrote:
+> There's something odd going on with this code. Adding a bit of context:
 >
-> From: zhukeqian <zhukeqian1@huawei.com>
+>         uint64_t offset = timeridx == GTIMER_VIRT ?
+>                                       cpu->env.cp15.cntvoff_el2 : 0;
+>         uint64_t count = gt_get_countervalue(&cpu->env);
+>         /* Note that this must be unsigned 64 bit arithmetic: */
+>         int istatus = count - offset >= gt->cval;
+>         [...]
+>         if (istatus) {
+>             /* Next transition is when count rolls back over to zero */
+>             nexttick = UINT64_MAX;
+>         } else {
+>             /* Next transition is when we hit cval */
+>             nexttick = gt->cval + offset;
+>         }
 >
-> There is extra indent in ACPI GED plug cb. And we can use
-> existing helper function to trigger hotplug handler plug.
+> I think this patch is correct, in that the 'nexttick' values
+> are all absolute and this cval/offset combination implies
+> that the next timer interrupt is going to be in a future
+> so distant we can't even fit the duration in a uint64_t.
 >
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> ---
->
-> v1->v2:
->  - Add Igor's R-b
->
-> Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/acpi/generic_event_device.c | 2 +-
->  hw/arm/virt.c                  | 6 +++---
->  2 files changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> index 9cee90cc70..55eb29d80a 100644
-> --- a/hw/acpi/generic_event_device.c
-> +++ b/hw/acpi/generic_event_device.c
-> @@ -175,7 +175,7 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
->      AcpiGedState *s = ACPI_GED(hotplug_dev);
->
->      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> -            acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
-> +        acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
->      } else {
->          error_setg(errp, "virt: device plug request for unsupported device"
->                     " type: %s", object_get_typename(OBJECT(dev)));
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 39ab5f47e0..656b0081c2 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1934,7 +1934,6 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->  static void virt_memory_plug(HotplugHandler *hotplug_dev,
->                               DeviceState *dev, Error **errp)
->  {
-> -    HotplugHandlerClass *hhc;
->      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
->      Error *local_err = NULL;
->
-> @@ -1943,8 +1942,9 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
->          goto out;
->      }
->
-> -    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-> -    hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &error_abort);
-> +    hotplug_handler_plug(HOTPLUG_HANDLER(vms->acpi_dev),
-> +                         dev, &error_abort);
-> +
->  out:
->      error_propagate(errp, local_err);
->  }
+> But the other half of the 'if' also looks wrong: that's
+> for the case of "timer has fired, how long until the
+> wraparound causes the interrupt line to go low again?".
+> UINT64_MAX is right for the EL1 case where offset is 0,
+> but the offset might actually be set such that the wrap
+> around happens fairly soon. We want to calculate the
+> tick when (count - offset) hits 0, saturated to
+> UINT64_MAX. It's getting late here and I couldn't figure
+> out what that expression should be with 15 minutes of
+> fiddling around with pen and paper diagrams. I'll have another
+> go tomorrow if nobody else gets there first...
 
-These two changes are unrelated (one is just a whitespace
-fixup, and it's in an entirely different file to the other
-one, which is making an actual code change). I think they
-should not be in the same patch.
+With a fresher brain:
+
+For the if (istatus) branch we want the absolute tick
+when (count - offset) wraps round to 0, saturated to UINT64_MAX.
+I think this is:
+    if (offset <= count) {
+        nexttick = UINT64_MAX;
+    } else {
+        nexttick = offset;
+    }
+
+Should we consider this a separate bugfix to go in its own patch?
 
 thanks
 -- PMM

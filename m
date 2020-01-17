@@ -1,78 +1,105 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp10119535lff;
-        Fri, 17 Jan 2020 09:53:13 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxcTW43MZWFVS2MA7aeAD7TokoXcXY67LaT3UcilWCo9Oz1Kb8CsveFq2ikCCxfWJSIy52s
-X-Received: by 2002:a05:6214:bc5:: with SMTP id ff5mr8832408qvb.31.1579283593606;
-        Fri, 17 Jan 2020 09:53:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579283593; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp10137206lff;
+        Fri, 17 Jan 2020 10:08:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwzOdPqUJZpUTgJI7BWt3TzBGDcIA3mN9PRoqb2OwsJoFP6p2NbLb05LdeumjKy5mZGTgxq
+X-Received: by 2002:a17:906:90c3:: with SMTP id v3mr9183165ejw.30.1579284490226;
+        Fri, 17 Jan 2020 10:08:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579284490; cv=none;
         d=google.com; s=arc-20160816;
-        b=qx3Ye4smaO3kJEPiBzDGHGNf4SibkEoV0QIq8sgoJD6HV2rSEfEOxvcHl/S5j3LVhf
-         8qoYhp71j4aW026CYgHRavjtpZLYiy8skPnd79TizAVdJQhSWeHStE0pwivaPr7BEeF5
-         e5/qCvlXZcQNLt0WgCXrbgdmSz3zB7Ekuvh/thUUY1zFHoM4VKNpifvdoHQfCSMuNp7n
-         w7VelCaPgu8+tnsCBpOsMApRYbqusNBNmoPGgBztI0XCaMli6hoZFSgovh1LrUEvgC3q
-         lXYaH7RGOAlUuP8JBfsnvjWAwFaJwcdTHdj6dD3fcmbodm/VPRHsiZMpJdNtBF7OR4Gg
-         0m3g==
+        b=TByOKcy5SFe7Z3Ibre7EP2BaTaAey0Sc2ezVaAODwcxZRsB2wHTahpCG4jCDE4mH4Z
+         aq/nKRRf53olUyBvNOZOcNiYMCUfJaaGiiEhzwr9/OWFy5Kry1AZVtKO+zIZ9FPDFQH1
+         Hazl2JNprl6Vhb1SaShFkHtv1f80mRtfm1PRsgG0y+mBaGsPAKcb0tkrGp0cfkgIz+eF
+         h2tXcWRDms1h+yne0MvSoAcvwBen7+cbGwL3/TUMFtsYO1jO5ekuWPj0CeC6l2VDryAQ
+         8lfP9F8uiuYxZJLgjUsGHNnvC56ea5guBz5Kgg0En4oUoY+LmgkdxMfQvQwQ1YBI4PDi
+         j2Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=rfZK6f0P/M2o7DyT+klLSfhB7SJ2LY0hMYqYaCeerqg=;
-        b=KoG2U2wxvNwYloGf4rdK81lP9KXqKQ1EOE9Gi7nwqXczLZUq5UrGa7nn9iOMXcx21w
-         A/l0c3MaOhJBgMV9kH44LQR3CuQjbIPcKB3hZVslac+tjiKB9aMUhzgHg7r64lYmBKnq
-         14I34Kvz4WmOnnTKHDbc/daKv9zaasQDn3yHd5uLGAYWEGMMXKtu6oFb1L/LWXXFSJEH
-         HOWqjhXvvv0H5AyFNcibv7epefklOyXorkwkGrmG6npwVJazQzHKSVyhpzKYuQvKgtIk
-         5ZJy/dPyoTW/y7NRXyYXth4cAc4bW/26s2V61I9s/ZiDhAYfbBcuqHV6RaXcy9FQpwlW
-         ju+Q==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=CfeBZOkNIBLGSMR8OHwXQk7PTiY5DFAYi3DjYR6eC7A=;
+        b=aJcaqe90oGUnWYK6ooUYSav2XQ2oaIgyetnseJEsu/DpmxzY3QooDDVdOK+SxYRit1
+         Lbi39B16/cnBXCmfgILpkFCO4Gxb9Q348iNieAGut+xu8QsBfgH3FFT3qgewd3FJ3Zen
+         EGAN25foCFMYDMp8pzlIqrtoGZQW/4ZtSCPWic1QFvL03Dn9oywb5r+Ai+Y22a15TJAp
+         6P7H4G8uLAm46Alz43kUwoQ91gB5oP891UBI3VMrxqiGe3W4UOZymWEtEXngzK1CQy4N
+         Q0JLhdkwoHZ2eB+bkhXLnOs8XTIJrLMiO8vkoCPvU6ouFbAa8G7NmZ4/yKoyEzi+XZfK
+         fBxA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uaZvqR+e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11si15670429qkm.233.2020.01.17.09.53.13
+        by mx.google.com with ESMTPS id fi25si17145755ejb.173.2020.01.17.10.08.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2020 09:53:13 -0800 (PST)
+        Fri, 17 Jan 2020 10:08:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uaZvqR+e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32936 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33104 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isVo0-0001N8-Qa
-	for alex.bennee@linaro.org; Fri, 17 Jan 2020 12:53:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55928)
+	id 1isW2T-0006Ya-8D
+	for alex.bennee@linaro.org; Fri, 17 Jan 2020 13:08:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59095)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1isViG-0002YH-Aw
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 12:47:17 -0500
+ (envelope-from <groeck7@gmail.com>) id 1isW2L-0006YC-0M
+ for qemu-arm@nongnu.org; Fri, 17 Jan 2020 13:08:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1isViE-0007uk-Vp
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 12:47:16 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2742 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1isViE-0007sI-LM; Fri, 17 Jan 2020 12:47:14 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id D8FA28F48DA91834DA0B;
- Sat, 18 Jan 2020 01:47:11 +0800 (CST)
-Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
- DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
- 14.3.439.0; Sat, 18 Jan 2020 01:47:00 +0800
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
- <imammedo@redhat.com>
-Subject: [PATCH v2 7/7] tests/bios-tables-test: Update arm/virt memhp test
-Date: Fri, 17 Jan 2020 17:45:22 +0000
-Message-ID: <20200117174522.22044-8-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
+ (envelope-from <groeck7@gmail.com>) id 1isW2J-0007oJ-PE
+ for qemu-arm@nongnu.org; Fri, 17 Jan 2020 13:08:00 -0500
+Received: from mail-yw1-xc42.google.com ([2607:f8b0:4864:20::c42]:46300)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1isW2J-0007nb-KV; Fri, 17 Jan 2020 13:07:59 -0500
+Received: by mail-yw1-xc42.google.com with SMTP id u139so14712023ywf.13;
+ Fri, 17 Jan 2020 10:07:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=CfeBZOkNIBLGSMR8OHwXQk7PTiY5DFAYi3DjYR6eC7A=;
+ b=uaZvqR+eJM5QowpNg6OarrPr2G/b3xOc62Jo1Ih8h+2GPBEtY0Cf64FdBNMmS3PWro
+ lxiNrqCw6AHzteeLoJN8UIDnyBge7IZIBG1t2KGAWsU3EJT3cXL7S9TOdsI/y3oQEwke
+ /LACkYBf2S6nAkEoAzrQW23zfEjluyQNNIJYF84HXKk7PH7hQw/+JqkhxbqmUmG6ZQXo
+ AJ+38l+yNnaQvIs+IK4xpGZ+c6gksTl363auLh+5N683PuHoHtC82e+DY8FQ1HNUYzl3
+ KVeZM+Rj8yrO5dXQF1WhkscE0RwUHzwlsF0adUEOqDVzyMlm9rmyIYSbWdjYTJU9FTOt
+ GFLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to:user-agent;
+ bh=CfeBZOkNIBLGSMR8OHwXQk7PTiY5DFAYi3DjYR6eC7A=;
+ b=PjEurm5BsWRWfGa1eLMGrIYcfopQaQqcIwNsrlk+VAlcZ+l6o+kyqlNWmA3hyKNqrs
+ QMAw9+PeuCLIpQHYWvnOnHgBNowrh8wsTwzONQBrDbFiAPj/acet5iW1upVu7NhNL84S
+ Curcagf16hKd4j0iXNkkzk9OYPoCgXkgoaPXHoz1tKs3NZdF5aX92m/XqF5PTDp3pLR6
+ irtNMA4ROh/GalshUULSKBf/g7Rb4VXSktnsjH9/x5dwSewx3GrPdR4aoqPLN2C93V0o
+ n0xVi30bqenXin7AK5ggttbQ2BARKVQaEx2nEwsDaq/0Qwl1ZsFdypByn28xTdHzixWP
+ XOig==
+X-Gm-Message-State: APjAAAXfPgq54JpN8OJKMSSQ0EWeU5U2RVahv6uB4lRscy+O/YmZLP/m
+ NMtGyOI2jUFgjbAELffhSjI=
+X-Received: by 2002:a81:a08a:: with SMTP id
+ x132mr29444217ywg.430.1579284478881; 
+ Fri, 17 Jan 2020 10:07:58 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id y9sm11148113ywc.19.2020.01.17.10.07.57
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 17 Jan 2020 10:07:58 -0800 (PST)
+Date: Fri, 17 Jan 2020 10:07:56 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 2/6] hw/arm/exynos4210: Fix DMA initialization
+Message-ID: <20200117180756.GA13396@roeck-us.net>
+References: <20200110203942.5745-1-linux@roeck-us.net>
+ <20200110203942.5745-3-linux@roeck-us.net>
+ <CAFEAcA_CeenDy9cNpQi6YpnT5rV+V10+EwYh=-zJEtjaT_gdDA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.202.227.237]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.191
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_CeenDy9cNpQi6YpnT5rV+V10+EwYh=-zJEtjaT_gdDA@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::c42
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,56 +111,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
- linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
- lersek@redhat.com
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LA/18hZR4pgL
+X-TUID: mzXXz3sQHrr5
 
-Since we now have both pc-dimm and nvdimm support, update
-test_acpi_virt_tcg_memhp() to include those.
+Hi Peter,
 
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- tests/data/acpi/virt/NFIT.memhp | 0
- tests/data/acpi/virt/SSDT.memhp | 0
- tests/qtest/bios-tables-test.c  | 9 +++++++--
- 3 files changed, 7 insertions(+), 2 deletions(-)
- create mode 100644 tests/data/acpi/virt/NFIT.memhp
- create mode 100644 tests/data/acpi/virt/SSDT.memhp
+On Fri, Jan 17, 2020 at 01:30:19PM +0000, Peter Maydell wrote:
+> On Fri, 10 Jan 2020 at 20:39, Guenter Roeck <linux@roeck-us.net> wrote:
+> >
+> > First parameter to exynos4210_get_irq() is not the SPI port number,
+> > but the interrupt group number. Interrupt groups are 20 for mdma
+> > and 21 for pdma. Interrupts are not inverted. Controllers support 32
+> > events (pdma) or 31 events (mdma). Events must all be routed to a single
+> > interrupt line. Set other parameters as documented in Exynos4210 datasheet,
+> > section 8 (DMA controller).
+> >
+> > Fixes: 59520dc65e ("hw/arm/exynos4210: Add DMA support for the Exynos4210")
+> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> > ---
+> >  hw/arm/exynos4210.c | 24 +++++++++++++++++++-----
+> >  1 file changed, 19 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+> > index 77fbe1baab..c7b5c587b1 100644
+> > --- a/hw/arm/exynos4210.c
+> > +++ b/hw/arm/exynos4210.c
+> > @@ -166,17 +166,31 @@ static uint64_t exynos4210_calc_affinity(int cpu)
+> >      return (0x9 << ARM_AFF1_SHIFT) | cpu;
+> >  }
+> >
+> > -static void pl330_create(uint32_t base, qemu_irq irq, int nreq)
+> > +static void pl330_create(uint32_t base, qemu_irq irq, int nreq, int nevents,
+> > +                         int width)
+> >  {
+> >      SysBusDevice *busdev;
+> >      DeviceState *dev;
+> > +    int i;
+> >
+> >      dev = qdev_create(NULL, "pl330");
+> > +    qdev_prop_set_uint8(dev, "num_events", nevents);
+> > +    qdev_prop_set_uint8(dev, "num_chnls",  8);
+> >      qdev_prop_set_uint8(dev, "num_periph_req",  nreq);
+> > +
+> > +    qdev_prop_set_uint8(dev, "wr_cap", 4);
+> > +    qdev_prop_set_uint8(dev, "wr_q_dep", 8);
+> > +    qdev_prop_set_uint8(dev, "rd_cap", 4);
+> > +    qdev_prop_set_uint8(dev, "rd_q_dep", 8);
+> > +    qdev_prop_set_uint8(dev, "data_width", width);
+> > +    qdev_prop_set_uint16(dev, "data_buffer_dep", width);
+> >      qdev_init_nofail(dev);
+> >      busdev = SYS_BUS_DEVICE(dev);
+> >      sysbus_mmio_map(busdev, 0, base);
+> > -    sysbus_connect_irq(busdev, 0, irq);
+> > +    sysbus_connect_irq(busdev, 0, irq);         /* abort irq line */
+> > +    for (i = 0; i < nevents; i++) {
+> > +        sysbus_connect_irq(busdev, i + 1, irq); /* event irq lines */
+> > +    }
+> 
+> It isn't valid to connect multiple qemu_irq outputs to a single
+> input like this. If the hardware logically ORs the irq lines
+> together then you need to instantiate and wire up a TYPE_OR_IRQ
+> device (include/hw/or-irq.h) to do that. Unfortunately QEMU
+> doesn't catch accidental wiring of a qemu_irq to multiple
+> inputs, and it will even sort-of seem to work: the bug is that
+> if two inputs go high, and then one goes low, the destination
+> will get a "signal went low" call even though the first input
+> should still be holding the line high.
+> 
+Makes sense. Unfortunately, it isn't easy for the non-initiated to
+figure out how to wire this up. There are several examples, all
+do it differently, and I am having difficulties understanding it.
+I'll try to do it, but it may take a while.
 
-diff --git a/tests/data/acpi/virt/NFIT.memhp b/tests/data/acpi/virt/NFIT.memhp
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/SSDT.memhp b/tests/data/acpi/virt/SSDT.memhp
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index f1ac2d7e96..695d2e7fac 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -913,12 +913,17 @@ static void test_acpi_virt_tcg_memhp(void)
-     };
- 
-     data.variant = ".memhp";
--    test_acpi_one(" -cpu cortex-a57"
-+    test_acpi_one(" -machine nvdimm=on"
-+                  " -cpu cortex-a57"
-                   " -m 256M,slots=3,maxmem=1G"
-                   " -object memory-backend-ram,id=ram0,size=128M"
-                   " -object memory-backend-ram,id=ram1,size=128M"
-                   " -numa node,memdev=ram0 -numa node,memdev=ram1"
--                  " -numa dist,src=0,dst=1,val=21",
-+                  " -numa dist,src=0,dst=1,val=21"
-+                  " -object memory-backend-ram,id=ram2,size=128M"
-+                  " -object memory-backend-ram,id=nvm0,size=128M"
-+                  " -device pc-dimm,id=dimm0,memdev=ram2,node=0"
-+                  " -device nvdimm,id=dimm1,memdev=nvm0,node=1",
-                   &data);
- 
-     free_test_data(&data);
--- 
-2.17.1
-
-
+Thanks,
+Guenter

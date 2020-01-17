@@ -1,68 +1,69 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp10114125lff;
-        Fri, 17 Jan 2020 09:47:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyIwLVOZi7lhFybmcjkzmG8woqg1D3yHqNNwFWqn6uz6lVoH99ERUL3YovR+0Q4bUyruWms
-X-Received: by 2002:a37:693:: with SMTP id 141mr34220913qkg.134.1579283270451;
-        Fri, 17 Jan 2020 09:47:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579283270; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp10115619lff;
+        Fri, 17 Jan 2020 09:49:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxKIGR7h+2Pa+cqF25h7ot+P7g39w1aPMjx46cTQir1kxcfRGZX0QGvlze4pddiMJbCeqaB
+X-Received: by 2002:ae9:e901:: with SMTP id x1mr36945407qkf.117.1579283362377;
+        Fri, 17 Jan 2020 09:49:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579283362; cv=none;
         d=google.com; s=arc-20160816;
-        b=BmFDEp40wUz5+MtXpmcxX7n1H3I+JhxSXHmLdlo0TDdppfCMx7RmUZjpmUbI6zCtA5
-         GB6a7zuRkKpzRl9rI4g/oF8URVpUb34koc2KGjWrIfjoN7lY8Ce69GWEbq5Gklqt8ZRl
-         qqARBPOCHeeHS2RVWrAaIaZIvQGUNKZe6TBez8MFIpYyK88pUKLnGEGPGpYBcYakJyJd
-         arfIu3x8higy85pqkXOQVGx0e40jT5HuuXfqjVWbL/L9v0L34Dj4mPDBnybgmd6qwwaf
-         NN2DDDsg5R5acuV9wYha47MGRj2hJhzeJT+w2TwPN0IRQF4z7F4fNI1hjixDmsML9RoX
-         zbTw==
+        b=JfG9Kxo3a7qlGbdVvSakakYIioAwIAG4QFOvoalsVQEZ3ChWtLk5NxREi36hW8wDRC
+         7nk8cUuDixSar1PP1fB7Uh1EmZdnYYm1Q5YR4OJoXWVtnczx3WoU8fQQdbGFK0mt/1Fe
+         HxIa+vTGAlfVLsbBSaiseF++UMeRb8NVxLuQrC30vZJ7QOE1Nl1Xsr00SXXVj7UDBeEf
+         0SShoaSLrcbKLlAiSa/TODbJHJTjPY8tIvhX45fS25lX8Y2o9oaWAzWryXYKwfCbNY7Q
+         2+yNLz3ByKViXlHbaXuDhqTzbl5Ko7yydUw00YMbb6FpX3GLLRS+wQdkVjH7r1qhdPi+
+         IQeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=o8VDxzGgP7y5GkC9vBPdWVS+DRRuC2hryUh73+TVkZo=;
-        b=FzdjzxnwiKzNLsM+fvPePZR57RSIZAQXhckpZIG3kJH68TTegRIRjBPwe0yxCFuO/p
-         uxgwfpXqv82DEnkZEkBj7a3P9u8/V6wyEKGBiuG9qDOVxuKDcGkfuunQ+oZ+IwzHpmKS
-         VhDPPrt56/a3oYZ1OBYcJFdXQOt8440RkluadxR8y2Q1oIUwKk+KHMyOe0Kaprr0POVm
-         7wN5oASo7MDLppif1iqAiRr/UHErkibPRUoqq5dVRu3mXopJTi+tKvw1Et4nuct1f34x
-         OL3Tqt8OFpD3lrysrHjbcD60gq4FbuUIvqkDvyR2AS47yGjdGxIrlheC0Hf5xV0jr5Ns
-         RmJQ==
+        bh=CY1kSJsdUIlx2KqncdHsa930Tu3O6KEWkoSKcE5dot0=;
+        b=CW664kcKyorAYc/mVsNsbAp/+4bIjfLhTG64A2Ql6GErRjg3v4QShmwG2Jjs9CXuLK
+         n1ubKDfqu5ZBE0mku22R/xwmtEr+2AWRPrfQzLyCkNbLbvu2hxUrhGUYjrh2uY4Wo6AS
+         0VIJF5v+SRoug+0KbBLarEPykXAReLTMHyqEndrkwSre9+zJ+ujHn3HUCZFQM78g2AtK
+         FLgvi/ibA0iOY4n3DoX8F7kC1eJaD8zELN5QAQjsq7HCJEACqDPYioG/avYwsdE5otAt
+         5MdwuUcjml3mUreGRfzibFdFW96Wp5iw8fRYEJ6ZL5GWMBNDc6FUY+Z3tA2n8HDhiEDz
+         zmDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x38si14752781qtk.251.2020.01.17.09.47.50
+        by mx.google.com with ESMTPS id j1si15421848qkm.174.2020.01.17.09.49.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2020 09:47:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 17 Jan 2020 09:49:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32868 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:32877 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isVin-00030Q-DU
-	for alex.bennee@linaro.org; Fri, 17 Jan 2020 12:47:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55853)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1isVkH-0004WM-C4
+	for alex.bennee@linaro.org; Fri, 17 Jan 2020 12:49:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55913)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1isVi5-0002IM-FJ
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 12:47:06 -0500
+ id 1isViE-0002Vn-OB
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2020 12:47:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1isVi3-0007je-W9
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 12:47:05 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:47266 helo=huawei.com)
+ id 1isViD-0007tM-JY
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2020 12:47:14 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2685 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1isVi3-0007hV-L0; Fri, 17 Jan 2020 12:47:03 -0500
+ id 1isVi9-0007mm-MN; Fri, 17 Jan 2020 12:47:09 -0500
 Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id B288129EE4A26EDCDC6E;
- Sat, 18 Jan 2020 01:47:01 +0800 (CST)
+ by Forcepoint Email with ESMTP id C5B45D4814A9FEF4AEFA;
+ Sat, 18 Jan 2020 01:47:06 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
  DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
- 14.3.439.0; Sat, 18 Jan 2020 01:46:51 +0800
+ 14.3.439.0; Sat, 18 Jan 2020 01:46:57 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Subject: [PATCH v2 4/7] hw/arm/virt: Add nvdimm hot-plug infrastructure
-Date: Fri, 17 Jan 2020 17:45:19 +0000
-Message-ID: <20200117174522.22044-5-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH v2 6/7] tests: Update ACPI tables list for upcoming arm/virt
+ test changes
+Date: Fri, 17 Jan 2020 17:45:21 +0000
+Message-ID: <20200117174522.22044-7-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
 References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
@@ -72,150 +73,45 @@ X-Originating-IP: [10.202.227.237]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 45.249.212.190
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
  linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
  lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rZnkLMr9eKK7
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DfW0edo7LDZP
 
-From: Kwangwoo Lee <kwangwoo.lee@sk.com>
+This is in preparation to update test_acpi_virt_tcg_memhp()
+with pc-dimm and nvdimm. Update the bios-tables-test-allowed-diff.h
+with the affected ACPI tables so that "make check" doesn't fail.
 
-Prepare pre-plug and plug handlers for NVDIMM support.
-Please note nvdimm_support is not yet enabled.
-
-Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- hw/arm/Kconfig           |  1 +
- hw/arm/virt-acpi-build.c |  6 ++++++
- hw/arm/virt.c            | 19 +++++++++++++++++++
- hw/mem/Kconfig           |  2 +-
- include/hw/arm/virt.h    |  1 +
- 5 files changed, 28 insertions(+), 1 deletion(-)
+ tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index c6e7782580..851dd81289 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -24,6 +24,7 @@ config ARM_VIRT
-     select DIMM
-     select ACPI_MEMORY_HOTPLUG
-     select ACPI_HW_REDUCED
-+    select ACPI_NVDIMM
- 
- config CHEETAH
-     bool
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index bd5f771e9b..c51eae549e 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -44,6 +44,7 @@
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
- #include "hw/arm/virt.h"
-+#include "hw/mem/nvdimm.h"
- #include "sysemu/numa.h"
- #include "sysemu/reset.h"
- #include "kvm_arm.h"
-@@ -839,6 +840,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-         }
-     }
- 
-+    if (ms->nvdimms_state->is_enabled) {
-+        nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-+                          ms->nvdimms_state, ms->ram_slots);
-+    }
-+
-     if (its_class_name() && !vmc->no_its) {
-         acpi_add_table(table_offsets, tables_blob);
-         build_iort(tables_blob, tables->linker, vms);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 39ab5f47e0..7987c8f5b8 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -143,6 +143,7 @@ static const MemMapEntry base_memmap[] = {
-     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
-     [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
-     [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
-+    [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-@@ -1749,6 +1750,18 @@ static void machvirt_init(MachineState *machine)
- 
-     create_platform_bus(vms);
- 
-+    if (machine->nvdimms_state->is_enabled) {
-+        const struct AcpiGenericAddress arm_virt_nvdimm_acpi_dsmio = {
-+            .space_id = AML_AS_SYSTEM_MEMORY,
-+            .address = vms->memmap[VIRT_NVDIMM_ACPI].base,
-+            .bit_width = NVDIMM_ACPI_IO_LEN << 3
-+        };
-+
-+        nvdimm_init_acpi_state(machine->nvdimms_state, sysmem,
-+                               arm_virt_nvdimm_acpi_dsmio,
-+                               vms->fw_cfg, OBJECT(vms));
-+    }
-+
-     vms->bootinfo.ram_size = machine->ram_size;
-     vms->bootinfo.nb_cpus = smp_cpus;
-     vms->bootinfo.board_id = -1;
-@@ -1936,6 +1949,8 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
- {
-     HotplugHandlerClass *hhc;
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    MachineState *ms = MACHINE(hotplug_dev);
-+    bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-     Error *local_err = NULL;
- 
-     pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), &local_err);
-@@ -1943,6 +1958,10 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
-         goto out;
-     }
- 
-+    if (is_nvdimm) {
-+        nvdimm_plug(ms->nvdimms_state);
-+    }
-+
-     hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-     hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &error_abort);
- out:
-diff --git a/hw/mem/Kconfig b/hw/mem/Kconfig
-index 620fd4cb59..0d5f8f321a 100644
---- a/hw/mem/Kconfig
-+++ b/hw/mem/Kconfig
-@@ -8,4 +8,4 @@ config MEM_DEVICE
- config NVDIMM
-     bool
-     default y
--    depends on PC
-+    depends on PC || ARM_VIRT
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 38f0c33c77..9c9eaaa89d 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -79,6 +79,7 @@ enum {
-     VIRT_SECURE_MEM,
-     VIRT_PCDIMM_ACPI,
-     VIRT_ACPI_GED,
-+    VIRT_NVDIMM_ACPI,
-     VIRT_LOWMEMMAP_LAST,
- };
- 
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index eb8bae1407..862c49e675 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,3 +1,6 @@
+ /* List of comma-separated changed AML files to ignore */
+ "tests/data/acpi/pc/SSDT.dimmpxm",
+ "tests/data/acpi/q35/SSDT.dimmpxm",
++"tests/data/acpi/virt/DSDT.memhp",
++"tests/data/acpi/virt/SSDT.memhp",
++"tests/data/acpi/virt/NFIT.memhp",
 -- 
 2.17.1
 

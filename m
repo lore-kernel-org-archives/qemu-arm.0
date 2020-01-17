@@ -1,104 +1,118 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp10045525lff;
-        Fri, 17 Jan 2020 08:49:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwucFeSHZqqRZkTzv2atga6VOyqMwpFniF74JKzKLPYKbfQKiPSd4fO9keA3N40gyC4qAje
-X-Received: by 2002:a05:6402:1611:: with SMTP id f17mr4708577edv.266.1579279774181;
-        Fri, 17 Jan 2020 08:49:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579279774; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp10052731lff;
+        Fri, 17 Jan 2020 08:56:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyU9xapcjFjiHv58q+ohoDXweBEllQHhOuQ/r2rwl5h0u6/LM96MJ6tH+UTx13Cx8ymIZnS
+X-Received: by 2002:a17:906:53c9:: with SMTP id p9mr8800269ejo.185.1579280193692;
+        Fri, 17 Jan 2020 08:56:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579280193; cv=none;
         d=google.com; s=arc-20160816;
-        b=YszAZcvCSxrMRcxKFbUgIesbxDjBuV6PiX3Di/Yjw8bddJVpwvDg4+tYiW3QW9bfZ4
-         e3URu2UCX8qLOB0m+PwoKW7M4tkmrGChUN3Ma9nN77Y1eDcFtGeleHWrDWZZxIHyI+hw
-         UQC2lxGFcelMqcNbNHkGESq5t8K2qwlbFE6xtipvRe8CQlbjKEtYelvVKc9bsawq/u2R
-         kBjTc5N3LyR8OLQcwNWntO1iQMcvCEl7AoZKxVfDJLRq6oLKmLWv4IXjhgnR1zzSHuyr
-         ZcA8ycqhYXsBxdNBlfT2AQrEnliGrjpkqbueb1x1py5egNFdZhEWNsCpYxQ9o8eErOBD
-         orNg==
+        b=SZf5+PQzm2553WxNKwXiOwWYs9lVowksN3r/0ksEKXxz6jiXJ+y1cpdAs+QvL/Dh6m
+         X8x1Ry6gyWSIJw5QeWfcdAFP9lFRsz17Hi4IUpnY1wJJV91BM1LWIloq/yd3WJ203smK
+         Bm/Ld+aO0g3uDkEBjMW/rlg87k3HHvXQ/l2R7H9V9V+fHY807yW1+Io1zWXQU+cBXpf0
+         hdUPIrJJtDRqwLJxztsu9/jzFRT7PuSDb3ikP42SKYUrkCHxtQ75cXUVoCRktviIPVfm
+         i6Mo0yI2SkVh5C4XdO6JbTsiNXhhGjuuncel1UIqX3nkiaS/PBTtBMNvNZ7VeweN9WYk
+         ynSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=ajV1/PYLosp7/N6LIdluScNNKiTvqm6he4Yn7gT2BVk=;
-        b=V7lm35baoeFnRXtLO6zLQrW7AxA2GZA8ly4F/q+GyWLQJUb+TPWfgBKVovINDRXhRf
-         LovI3G9dHTHhR2y7YaXwqQvZMg/Octf78U61z51sPFHfJkGxWkIRDEPrHZXvFd3Fti5O
-         ow8dB4WZ4YaCZd5G9I8VqR8/MKwxp9MOcaPVMoUPvQc3ZEi4eC0dwmtUbnVMw8qkYzco
-         +vmMKSrHdX+hoPvq10eFaL9Fxk7YAMiWYPQBuoAKhAKxnexXKjzDkuO/igJJfwdGXpZA
-         qCaNe3BWktnYRcMX7zgcx6cNtJdFStc5CxKm36PKMSfFOXJnJt+MryKMLyrFZo+aHBDr
-         iFsA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Nd0bXqos5it2fsYYHTou3mK1Mjt3pFhpidQ/WPuFGaA=;
+        b=X54VT/rAJVjlcndNaFYixsr7Udlf1gQNem5ESLzDpff52lH6ivoRz6eX+h+vM3C5Uo
+         vPEPA2e3XbMxI30YdLPztSPH8heQjpjCJs93oaZ+BWK4IQxWC7h19WqCllGUsDeHN15c
+         6xuy20DH79y/V7PYuMJWcVOjQZ3ye6B1UGDySUnUDu/hQhAtnfeDOn3k0q5CCteI6wX/
+         X++X2d91XIZJCT2XiCnndn7E0UE+x0xdwFKzv/DNCfNNQG4bds76OgeAkAsYRy6fpslq
+         NoGGj88qPt030PVDwnliy/O45KvB5RLlPqDyo0oLM9NNuz+Bn9Y/x6CO/cIHY4qNJm5Q
+         YfLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="vJc3fUX/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WX4yiDJW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a3si16947768eju.287.2020.01.17.08.49.34
+        by mx.google.com with ESMTPS id y26si17464121edt.22.2020.01.17.08.56.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2020 08:49:34 -0800 (PST)
+        Fri, 17 Jan 2020 08:56:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="vJc3fUX/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60118 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WX4yiDJW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60250 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isUoP-0007YI-1X
-	for alex.bennee@linaro.org; Fri, 17 Jan 2020 11:49:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47872)
+	id 1isUvA-0005xC-M2
+	for alex.bennee@linaro.org; Fri, 17 Jan 2020 11:56:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49060)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1isUlV-00058V-31
- for qemu-devel@nongnu.org; Fri, 17 Jan 2020 11:46:34 -0500
+ (envelope-from <philmd@redhat.com>) id 1isUuH-0005BW-Q8
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2020 11:55:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1isUlT-0004aY-VX
- for qemu-devel@nongnu.org; Fri, 17 Jan 2020 11:46:32 -0500
-Received: from mail-yb1-xb43.google.com ([2607:f8b0:4864:20::b43]:33294)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1isUlR-0004U9-Jp; Fri, 17 Jan 2020 11:46:29 -0500
-Received: by mail-yb1-xb43.google.com with SMTP id n66so6440758ybg.0;
- Fri, 17 Jan 2020 08:46:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=ajV1/PYLosp7/N6LIdluScNNKiTvqm6he4Yn7gT2BVk=;
- b=vJc3fUX/SPC68z1LqhjIEpwwAF515l5Xg+AbNcKbj3bCcTJHWPm1yoONSGD3VTwIIi
- C3KOmR7fhGnn8vOIUP4FF4QhfelSDzlgK1QF4CdeX2vBBCklqPAh8DdgXlqy9pwV+1aK
- ifxhs/sQKt7QcyX9K4FFkAUE93tAqmOASVfNFcrd6akO5oSU75Sri06YHKZ3mpLlB9je
- yKdqsH142zoYjEUjxm4TCFK1AzzBIq11xxrmXOJg+XaBiUF43M9zmovMDuAnbvx2EkuZ
- UGjhukj24rGO60GbMitNk0ScGQXAvnvgPgBoIjrKxEYdGCl8/Cgx5HpMo++I/tZq0eR1
- d39g==
+ (envelope-from <philmd@redhat.com>) id 1isUuE-0004lQ-C2
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2020 11:55:37 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33935
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isUuE-0004l7-87
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2020 11:55:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579280133;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Nd0bXqos5it2fsYYHTou3mK1Mjt3pFhpidQ/WPuFGaA=;
+ b=WX4yiDJWB/ivtv9EGQEb0Olc5tFlL0s0K2sv9wGaJOcDNAhG/4xDq71E3tJGAblnPnk55m
+ djYiHREYGJfYJZ+fCLcaXxoobwww7clmDMBP13Ke4kt8NNZzlaqZLM5HyIRtlAisY23qrX
+ gozq9BfrRNmxHo3TuEf5y55XONDcr5E=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-48--Yp5WEIoNYqm6okZq3_jsw-1; Fri, 17 Jan 2020 11:55:32 -0500
+Received: by mail-wr1-f69.google.com with SMTP id k18so10772398wrw.9
+ for <qemu-devel@nongnu.org>; Fri, 17 Jan 2020 08:55:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=ajV1/PYLosp7/N6LIdluScNNKiTvqm6he4Yn7gT2BVk=;
- b=BpaVdHknOYdK6iEgosGKvW7LJ7A+/veLUx7nVtq9W/apasvmJDhZLL2aGq+rb6JIrg
- 6qKlldbbg4+jDcc9nF4hmxTUlItCtnP3Kwv7NnWbtpnIB+/TTMt4QSEN5VBAMg344fqC
- F/aM5lNTvVMMypksI9bvFXT58NlrOKw/WQnsF6F52yCLJLzq8cAMKJuqNhv3yOSmnq1n
- T1hZnY/qveqD89PgCqB+z546qZ41mMI8RgF5C9matna44fFHd1nz6Z/vjqVDePUO1uFe
- uQ1UwIEUahil9kBzf/Fl6TOgHt0RSnC0qayRPS0gjPkFSZBdMc8UhR8JE+9Aip0S9tsX
- 9p2w==
-X-Gm-Message-State: APjAAAXVtDu2REsrzbfRkuQBlcSCnky6902EHC//E67ESWTdXm+b5HcJ
- WDo8Ld0xPXkjOmh5kIbNzd8=
-X-Received: by 2002:a25:6e04:: with SMTP id j4mr30706909ybc.36.1579279587601; 
- Fri, 17 Jan 2020 08:46:27 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id q185sm11316617ywh.61.2020.01.17.08.46.26
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 17 Jan 2020 08:46:26 -0800 (PST)
-Date: Fri, 17 Jan 2020 08:46:25 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 1/6] dma/pl330: Convert to support tracing
-Message-ID: <20200117164625.GA27197@roeck-us.net>
-References: <20200110203942.5745-1-linux@roeck-us.net>
- <20200110203942.5745-2-linux@roeck-us.net>
- <CAFEAcA_k8xdzmsgMK+m6wSgnBN53UjCNU4nTBx=hnHnHz+Su6g@mail.gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=fyzRTIOREV58jx4vZ8G3KluoMzSIgrPRzuLoPsJGsrM=;
+ b=XAtkOYG4uhHgRh+dyKTFFJiURNQ7F5nmGaUvsBxdCED5M+5EMy9XarndhjpA4y2LrR
+ f0ib5H3HUH8h7CTzZELn+okRuQskNM2Va4vPozjxpUTvsCuiT+qWygkA2B9+h9jOJaTT
+ rKMW9BG9Xbni+lxCl+5t4/tG0VkxU4uKYhxecGCyjc30nybrmutrf/qeZKzWTuJZcFCK
+ LDvnQm5h9TBQ0KRGsb4t/qwX1MXlEAz95DMMALyBHP/k807e6a18WtXC6t5o0h1v/OfM
+ LucLrhXn0Z9PvvHLEE+tmU8K3p7LHy70dJU7q75ZVxuax0js6zcCzyJD72ablnooYVYj
+ AZxg==
+X-Gm-Message-State: APjAAAVLt3cC7XrhLldGQU45N4MVDZ7jUiJT6m9tzzcLia+/SxlH3Jjq
+ jLGOqgyAqAeBYfMfkewAREoZXbGrMTRYiQCazcAnTUqXh/FgGapH19Nu0QzgMqfFuB8h98+DRol
+ dUgKT/EW59voVUTE=
+X-Received: by 2002:a1c:66d6:: with SMTP id a205mr5741988wmc.171.1579280131417; 
+ Fri, 17 Jan 2020 08:55:31 -0800 (PST)
+X-Received: by 2002:a1c:66d6:: with SMTP id a205mr5741958wmc.171.1579280131208; 
+ Fri, 17 Jan 2020 08:55:31 -0800 (PST)
+Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
+ [83.57.172.113])
+ by smtp.gmail.com with ESMTPSA id 16sm9951251wmi.0.2020.01.17.08.55.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Jan 2020 08:55:30 -0800 (PST)
+Subject: Re: [PATCH v2 0/6] Fix more GCC9 -O3 warnings
+To: qemu-devel@nongnu.org
+References: <20191218192526.13845-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <a6eaee52-52fb-3541-fc67-fd2af35ae655@redhat.com>
+Date: Fri, 17 Jan 2020 17:55:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_k8xdzmsgMK+m6wSgnBN53UjCNU4nTBx=hnHnHz+Su6g@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::b43
+In-Reply-To: <20191218192526.13845-1-philmd@redhat.com>
+Content-Language: en-US
+X-MC-Unique: -Yp5WEIoNYqm6okZq3_jsw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,64 +124,60 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Olivier Danet <odanet@caramail.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Joel Stanley <joel@jms.id.au>, Markus Armbruster <armbru@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?B?S8WRdsOhZ8OzLCBab2x0w6Fu?= <dirty.ice.hu@gmail.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vs4nDfAk+ofm
+X-TUID: plPiECGkJ+jj
 
-On Fri, Jan 17, 2020 at 01:23:46PM +0000, Peter Maydell wrote:
-> On Fri, 10 Jan 2020 at 20:39, Guenter Roeck <linux@roeck-us.net> wrote:
-> >
-> > Replace debug logging code with tracing.
-> >
-> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> > ---
-> >  hw/dma/pl330.c      | 88 +++++++++++++++++++++++----------------------
-> >  hw/dma/trace-events | 24 +++++++++++++
-> 
-> > +static void pl330_hexdump(uint8_t *buf, size_t size)
-> > +{
-> > +    unsigned int b, i, len;
-> > +    char tmpbuf[80];
-> > +
-> > +    for (b = 0; b < size; b += 16) {
-> > +        len = size - b;
-> > +        if (len > 16) {
-> > +            len = 16;
-> > +        }
-> > +        tmpbuf[0] = '\0';
-> > +        for (i = 0; i < len; i++) {
-> > +            if ((i % 4) == 0) {
-> > +                strcat(tmpbuf, " ");
-> > +            }
-> > +            sprintf(tmpbuf + strlen(tmpbuf), " %02x", buf[b + i]);
-> > +        }
-> > +        trace_pl330_hexdump(b, tmpbuf);
-> > +    }
-> > +}
-> >
-> 
-> > @@ -1175,11 +1186,8 @@ static int pl330_exec_cycle(PL330Chan *channel)
-> >          int len = q->len - (q->addr & (q->len - 1));
-> >
-> >          dma_memory_read(&address_space_memory, q->addr, buf, len);
-> > -        if (PL330_ERR_DEBUG > 1) {
-> > -            DB_PRINT("PL330 read from memory @%08" PRIx32 " (size = %08x):\n",
-> > -                      q->addr, len);
-> > -            qemu_hexdump((char *)buf, stderr, "", len);
-> > -        }
-> > +        trace_pl330_exec_cycle(q->addr, len);
-> > +        pl330_hexdump(buf, len);
-> 
-> Won't this now do all the work of constructing the hexdump strings,
-> even if tracing is disabled ?
-> 
-That is correct. Can I check
-	if (trace_event_get_state(TRACE_PL330_HEXDUMP) &&
-	    qemu_loglevel_mask(LOG_TRACE)) {
-directly in pl330_hexdump(), or is there some other means to handle
-this kind of situation ?
+Cc'ing qemu-trivial as this series is fully reviewed.
 
-Thanks,
-Guenter
+On 12/18/19 8:25 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Fix some trivial warnings when building with -O3.
+>=20
+> v2:
+> - addressed Thomas and Aleksandar comments
+> - dropped 'hw/scsi/megasas: Silent GCC9 duplicated-cond warning'
+> - dropped 'qemu-io-cmds: Silent GCC9 format-overflow warning'
+>=20
+> Philippe Mathieu-Daud=C3=A9 (6):
+>    audio/audio: Add missing fall through comment
+>    hw/display/tcx: Add missing fall through comments
+>    hw/timer/aspeed_timer: Add a fall through comment
+>    hw/net/imx_fec: Rewrite fall through comments
+>    hw/net/imx_fec: Remove unuseful FALLTHROUGH comments
+>    hw/pci-host/designware: Remove unuseful FALLTHROUGH comment
+>=20
+>   audio/audio.c            | 1 +
+>   hw/display/tcx.c         | 2 ++
+>   hw/net/imx_fec.c         | 7 ++++---
+>   hw/pci-host/designware.c | 2 +-
+>   hw/timer/aspeed_timer.c  | 2 +-
+>   5 files changed, 9 insertions(+), 5 deletions(-)
+>=20
+> Cc: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+> Cc: Andrew Jeffery <andrew@aj.id.au>
+> Cc: Andrey Smirnov <andrew.smirnov@gmail.com>
+> Cc: "C=C3=A9dric Le Goater" <clg@kaod.org>
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
+> Cc: Jason Wang <jasowang@redhat.com>
+> Cc: Joel Stanley <joel@jms.id.au>
+> Cc: "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com>
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Cc: Markus Armbruster <armbru@redhat.com>
+> Cc: Olivier Danet <odanet@caramail.com>
+> Cc: Peter Chubb <peter.chubb@nicta.com.au>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+>=20
+

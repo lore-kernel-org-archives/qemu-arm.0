@@ -1,191 +1,161 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9578711lff;
-        Fri, 17 Jan 2020 01:50:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxcKwSBD/OSkZtHnfBqwMdkd4rDlyoWNeqPPu5HcaLYZqFTfz9yzorc0YXVzRxnyjAIbcTN
-X-Received: by 2002:a50:cb8d:: with SMTP id k13mr2846399edi.284.1579254658572;
-        Fri, 17 Jan 2020 01:50:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579254658; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9603866lff;
+        Fri, 17 Jan 2020 02:17:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz1kXP0s0ekcmaKD3ia+Q6XdMb5o/4xNWeHPeLAVZQkSwP15vgFs7aRcBYKzC9EuahFPcyP
+X-Received: by 2002:a9d:70d9:: with SMTP id w25mr5737119otj.231.1579256225094;
+        Fri, 17 Jan 2020 02:17:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579256225; cv=none;
         d=google.com; s=arc-20160816;
-        b=bXgKZaWonIDoF16Dj7hZdvdR5a97si+H/nh0GmcEEz1vedHcrmjEvzWDUt4Vde62vM
-         47pkLB4FmDBKAsq2AdQPZuxzvQPfHcXJrGtn14CUdG/fmr2hsLbDeccLGA03wLFvFfIK
-         c1n4y7O8sOlsoLDhZ27RjWjsmZQEZJwlmo2qi//YAdhiChSlRh83TAOB3omFrD6pLgfG
-         howrddNLWnZjH9l6PAIMctF5eDL4LCO/rnj9oVnPmMzgfkRYsW1QybtAXGXfRyg16Lnc
-         EFTyulIvBb/esCc3xmRb1z6c418RMSPV3xPAfn1Nayr088I5QUvBTK1BSrrPDtQgsPns
-         Eb1A==
+        b=y0NKiOcHSPZ/onpxg7pFm6AgCcRHjinYzZql5sBG9iwIwUp/tT1gV2M8bV8peUDQqI
+         vQPBJ91PWsaJYbFd7wLFVmUSV+ixQO6dwAq0a/x0eC150UojfYdCUNKX7V+dZb0JEpi5
+         tYQHFPAyjMzXbW2XoZgZECe1CIpPZO1Fi1lVT7+qfmpx1NrwiFFg9x+bEuz6V4gYFTTe
+         TC2F20i5P2x9LDu4DSiJWxNgruC+JAh35+B1yfS7YiqyAHv35MaQ7jDtnPCm7bAuMGTC
+         jGDLfnl/SDVEcCFQ/VeaeHXe90+YSO5ygn+pzHkgc26LC3pAohUEGE+4WVM9CT0TBz/f
+         1tnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=O6W46C2To8bMeKKC6puqI4drhhWBpfh81HVIFggRLJ8=;
-        b=pa4JvzVnKiC8j29YkcBkv9dsjwCMsRve6GI7naQf0NFJZGnGcTF7dLSzzeQ03U+7X3
-         Js9cMfpVR6G1BaoFcvZ4PmolbeA6E9hrexmeRT5nyTGtsCkQm/Uu5GNrSeibNV9Gw7SZ
-         iz0tBeASCxDfeuSjae7H50forcg1CFrhnZm6c1POcqTW63HHCcK230AWY/WwyRlWw69O
-         9SFXriNSwrT/CL7O35hKSy/RR0tPlR9/RHg8mJfxfLGWRE9Esp9+wz2x7/6iiz8Q4tGT
-         rFl8B6CsCDX/zXGzNAeoEZI+xgSORLSdbqt2oCM4/yBToYM/491sYZ3F1ZJ/mU7J+1ii
-         E8qQ==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=7qnZpcFsY7VDcQ3spxhR7fCd1YrNfXhrYbTr8wFLrU0=;
+        b=wiyRn0hPJWl7EMC59e6Qof8fnOI/hGfKEPygrtwrqk8BBXeledFAULNyCZ2SThgsmf
+         cFWfVJiFw/S4NINgloeVaVr1GRIsZwa4FqWJBdBtVT3DjMGRLtBK5Oa4LiW5s3I9jcA7
+         0aFCqMuYfxXrDo2HeJYRLhURSsLIpv6xn2hbkMqsrATp5gLl/SMa/09AnVJB0r4qNZ/q
+         rLv2G8G6Y83uzIJ8w3wrujgU/s8Ct+F58Ndzibvsr5sUB/F9knQ9iehkr+nfm+Kn3EKj
+         nW8HhbIH4nCAs9jvHVOA0TWwfF9TvY5NyRZoTxNMNn85b5wuzprUfiKfYZnBfHgTl9O/
+         IX1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="jLcTBg+/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12si16591969ejd.43.2020.01.17.01.50.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2020 01:50:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id r15si14569185ota.264.2020.01.17.02.17.04;
+        Fri, 17 Jan 2020 02:17:05 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="jLcTBg+/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54664 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isOHJ-00027v-HP
-	for alex.bennee@linaro.org; Fri, 17 Jan 2020 04:50:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51125)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1isOH8-00026O-7k
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 04:50:49 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1isOH4-0007eh-Ih
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 04:50:46 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:45948
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1isOH4-0007ds-Ex
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 04:50:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579254641;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=O6W46C2To8bMeKKC6puqI4drhhWBpfh81HVIFggRLJ8=;
- b=jLcTBg+/qvSpBFaX6RwgYpibtmoZTDEKSXaQOtP0O8XRP1UP2lmx+gTOsi8nQy2c4BMk2z
- SZuB6tgOQeCcy9087Y3Ek9Vx8KkldowDfyIRfZdqYQnRvxsJ5BFb0IfyUSkQUwtBPJBEik
- dDOgl3/ySNbydZu0mCW/le2emCrtHn8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-208-SHBF_-YuO2aKGSawgTozNQ-1; Fri, 17 Jan 2020 04:50:40 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 81841183B54F;
- Fri, 17 Jan 2020 09:50:39 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 60EA819C4F;
- Fri, 17 Jan 2020 09:50:34 +0000 (UTC)
-Date: Fri, 17 Jan 2020 10:50:33 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: [PATCH v3 18/86] arm:kzm: drop RAM size fixup
-Message-ID: <20200117105033.6801593a@redhat.com>
-In-Reply-To: <dc8d8594-0bf8-e6c2-9ce8-94bf5361bca3@redhat.com>
-References: <87sgkgv6dh.wl-Peter.Chubb@data61.csiro.au>
- <1579195564-95459-1-git-send-email-imammedo@redhat.com>
- <dc8d8594-0bf8-e6c2-9ce8-94bf5361bca3@redhat.com>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726409AbgAQKRD (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 17 Jan 2020 05:17:03 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:53360 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726085AbgAQKRD (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 17 Jan 2020 05:17:03 -0500
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 0F497E896FAF0E365F54;
+        Fri, 17 Jan 2020 18:17:02 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.439.0; Fri, 17 Jan 2020
+ 18:16:53 +0800
+Subject: Re: [PATCH v22 9/9] MAINTAINERS: Add ACPI/HEST/GHES entries
+To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>
+CC:     Fam Zheng <fam@euphon.net>, Eduardo Habkost <ehabkost@redhat.com>,
+        kvm-devel <kvm@vger.kernel.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        Linuxarm <linuxarm@huawei.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Zheng Xiang <zhengxiang9@huawei.com>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        James Morse <james.morse@arm.com>,
+        "xuwei (O)" <xuwei5@huawei.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Richard Henderson <rth@twiddle.net>
+References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
+ <1578483143-14905-10-git-send-email-gengdongjiu@huawei.com>
+ <CAFEAcA-mLgD8rQ211ep44nd8oxTKSnxc7YmY+nPtADpKZk5asA@mail.gmail.com>
+ <1c45a8b4-1ea4-ddfd-cce3-c42699d2b3b9@redhat.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <d502bd34-79e4-45f8-e1b7-54265623db15@huawei.com>
+Date:   Fri, 17 Jan 2020 18:16:51 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: SHBF_-YuO2aKGSawgTozNQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter.Chubb@data61.csiro.au, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- peter.chubb@nicta.com.au, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kA7DnDj/8WJV
+In-Reply-To: <1c45a8b4-1ea4-ddfd-cce3-c42699d2b3b9@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: IQ609869acMb
 
-On Thu, 16 Jan 2020 19:22:08 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On 2020/1/17 15:22, Philippe Mathieu-Daudé wrote:
+> Hi Peter,
+> 
+> On 1/16/20 5:46 PM, Peter Maydell wrote:
+>> On Wed, 8 Jan 2020 at 11:32, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+>>>
+>>> I and Xiang are willing to review the APEI-related patches and
+>>> volunteer as the reviewers for the HEST/GHES part.
+>>>
+>>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+>>> ---
+>>>   MAINTAINERS | 9 +++++++++
+>>>   1 file changed, 9 insertions(+)
+>>>
+>>> diff --git a/MAINTAINERS b/MAINTAINERS
+>>> index 387879a..5af70a5 100644
+>>> --- a/MAINTAINERS
+>>> +++ b/MAINTAINERS
+>>> @@ -1423,6 +1423,15 @@ F: tests/bios-tables-test.c
+>>>   F: tests/acpi-utils.[hc]
+>>>   F: tests/data/acpi/
+>>>
+>>> +ACPI/HEST/GHES
+>>> +R: Dongjiu Geng <gengdongjiu@huawei.com>
+>>> +R: Xiang Zheng <zhengxiang9@huawei.com>
+>>> +L: qemu-arm@nongnu.org
+>>> +S: Maintained
+>>> +F: hw/acpi/ghes.c
+>>> +F: include/hw/acpi/ghes.h
+>>> +F: docs/specs/acpi_hest_ghes.rst
+>>> +
+>>>   ppc4xx
+>>>   M: David Gibson <david@gibson.dropbear.id.au>
+>>>   L: qemu-ppc@nongnu.org
+>>> -- 
+>>
+>> Michael, Igor: since this new MAINTAINERS section is
+>> moving files out of the 'ACPI/SMBIOS' section that you're
+>> currently responsible for, do you want to provide an
+>> acked-by: that you think this division of files makes sense?
+> 
+> The files are not 'moved out', Michael and Igor are still the maintainers of the supported ACPI/SMBIOS subsystem:
+> 
+> ACPI/SMBIOS
+> M: Michael S. Tsirkin <mst@redhat.com>
+> M: Igor Mammedov <imammedo@redhat.com>
+> S: Supported
+> F: include/hw/acpi/*
+> F: hw/acpi/*
+> 
+> Dongjiu and Xiang only add themselves as reviewers to get notified on changes on these specific files. The more eyes the better :)
+> 
+> The docs/specs/acpi_hest_ghes.rst document has no maintainer, as these others too:
+If this file has no maintainer, may be it needs a M tag for this file, otherwise when people change this file, and use "./scripts/get_maintainer.pl xxxxx" to get maintainer, it will be empty.
 
-> On 1/16/20 6:26 PM, Igor Mammedov wrote:
-> > If the user provided too large a RAM size, the code used to
-> > complain and trim it to the max size.  Now tht RAM is allocated by
-> > generic code, that's no longer possible, so generate an error and
-> > exit instead.
-> >=20
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> > v3:
-> >   * rephrase commit message in nicer way
-> >     ("Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.=
-au>)
-> >   * reword error message and use size_to_str() to pretty print suggeste=
-d size
-> >     ("Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.=
-au>)
-> >=20
-> > CC: peter.chubb@nicta.com.au
-> > CC: peter.maydell@linaro.org
-> > CC: qemu-arm@nongnu.org
-> > ---
-> >   hw/arm/kzm.c | 9 +++++----
-> >   1 file changed, 5 insertions(+), 4 deletions(-)
-> >=20
-> > diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
-> > index 1d5ef28..94cbac1 100644
-> > --- a/hw/arm/kzm.c
-> > +++ b/hw/arm/kzm.c
-> > @@ -25,6 +25,7 @@
-> >   #include "hw/char/serial.h"
-> >   #include "sysemu/qtest.h"
-> >   #include "sysemu/sysemu.h"
-> > +#include "qemu/cutils.h"
-> >  =20
-> >   /* Memory map for Kzm Emulation Baseboard:
-> >    * 0x00000000-0x7fffffff See i.MX31 SOC for support
-> > @@ -78,10 +79,10 @@ static void kzm_init(MachineState *machine)
-> >  =20
-> >       /* Check the amount of memory is compatible with the SOC */
-> >       if (machine->ram_size > (FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1=
-_SIZE)) {
-> > -        warn_report("RAM size " RAM_ADDR_FMT " above max supported, "
-> > -                    "reduced to %x", machine->ram_size,
-> > -                    FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1_SIZE);
-> > -        machine->ram_size =3D FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1=
-_SIZE;
-> > +        char *sz =3D size_to_str(FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDR=
-AM1_SIZE);
-> > +        error_report("RAM size more than %s is not supported", sz); =
-=20
->=20
-> Yay! Can you use this pattern the other patches too?
-
-I plan to, as it's much neater and I can avoid adding RAM_ADDR_FMT
-
-Would your acks still stand or should I drop your Reviewed-bys
-on changed in such way patches?
-=20
-> You might want to add:
->=20
-> #define FSL_IMX31_SDRAM_SIZE_MAX \
->    (FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1_SIZE)
->=20
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->=20
-> > +        g_free(sz);
-> > +        exit(EXIT_FAILURE);
-> >       }
-> >  =20
-> >       memory_region_allocate_system_memory(&s->ram, NULL, "kzm.ram",
-> >  =20
->=20
-
+> 
+> - docs/specs/acpi_cpu_hotplug.txt
+> - docs/specs/acpi_hw_reduced_hotplug.rst
+> - docs/specs/acpi_mem_hotplug.txt
+> - docs/specs/acpi_nvdimm.txt
+> 
+> The only ACPI file reported as maintained in docs/specs/ is acpi_pci_hotplug.txt, from this entry:
+> 
+> PCI
+> M: Michael S. Tsirkin <mst@redhat.com>
+> M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+> S: Supported
+> F: docs/specs/*pci*
+> 
+> FWIW:
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
+> .
+> 

@@ -1,128 +1,179 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9696515lff;
-        Fri, 17 Jan 2020 03:50:45 -0800 (PST)
-X-Received: by 2002:a9d:70d9:: with SMTP id w25mr5971323otj.231.1579261845538;
-        Fri, 17 Jan 2020 03:50:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579261845; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9790648lff;
+        Fri, 17 Jan 2020 05:18:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzuQupiEJyb9/Fq3Wtz48+8zOuDhsCWLc7zHq5Qbycz7mxjOugamrloKXC/7Mk1/pGTOe8+
+X-Received: by 2002:a17:906:3596:: with SMTP id o22mr7721508ejb.235.1579267099065;
+        Fri, 17 Jan 2020 05:18:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579267099; cv=none;
         d=google.com; s=arc-20160816;
-        b=OAgGYGpQfpIRWBYZ3x7rUsVXi+50EpME3bKmJDZMnzgO1I8Sq0t6MRqVR630IZd6L5
-         EmfsFMOtQa6SpqcevkpC1rIo1DQ5UqAHF9x691aMMNNYpQ5CcYmanGqWSASoLd9GC0Q1
-         wxHJ8LcShf748Y7Fxfyuqea81iRC/Tiko8vFDrRdw6qA8+h7oAo9K0uGkbTd1HGKgHvi
-         2+wBNMW/WB6zUBwds2v/+JJIwvKtIT5YlUkFoo8RpkSK/02QJYVaElSg6vvPGS1ineFp
-         INntDh44hT5hW4r4KyhUokACa05nGLzOxFAL+5wr65qi+V19JtJiOItDaQ2P4Vvrs30J
-         xpIQ==
+        b=VRXpv81S6gvvU+6QhG7Gxp3L9ELEN+NOXzKAyT+T7ckwebhfRcoV2//FltrxUcwJ2B
+         lIn479K5EXEy+TcL99Amu78oe+ndgmTYFSrip3de51CP3ZkiDoslmXp12Q9a5cwsIJYF
+         biY3vMjeyfhESoW6h2DRGTGavBo4v2+4lciLOE1Q0DwxfGvAJ9sAXuArBAdoBP8oesMG
+         AiBoseJavxzTu58bxydPMpURl5OcVxqw5jp3z+rPg5t4XJnyVD7u5b6pMIzvctPkRx+A
+         yKmTiS6ts1+MSHiQ9ro1C7kG7h5PffZxkZ6xxJyOGOsmKbUwhr/EdSwFWkX1gNUm29uU
+         UqUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=iDytm4TfZbY5oMmfZHzGiEQQcHLYD9MXz+DIQoueERs=;
-        b=V2lugIXa/euxpAMm+twmk43VijNSnSi24p+PjSub1c7lL5XAfStIT7ZJrZIFQjLjWs
-         VaYGL3NG85Vu0OBcDwhpPa0ueUHQR8y8mQZuC2eZ1tro5UObRFivSwxTqvPZbNLRsKKy
-         87+2PAyDfr5NR3rMmracGazBAuFoycZNRer5FUGqJ1ioD51TYyXI9jBx3JVVs48zY/Z1
-         jJV5cbUv1TGYq0rmIVFjYLDeQ0vH1CAgIfMwEaS1USbLG99bwOhkRmvTVDxOv/USdKtt
-         jR/m9BDb2DNPpfbXpIoEeo+IyYbnfJulxF81p9CZI1rpPvUB/6A7FtKUGKlc2cKpL/Xn
-         iw7w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=KpZ3QLKUbQJ0Z3RVINWucb9Ndt3JDsMoblKjT9M/9xA=;
+        b=Khfdz0sTg2FZ6q9kTJj7esDN1maAYgA9hg7R2NLL586K7e/yvZwZC6ic3To7FxKeH/
+         ehNlJAcQTfLGc7yse8D0nmm00UY63qi0KXVM2rQ5e7mJ1BWPtIqImscd4GPxZyU3dHXw
+         oZgC/mn0cxIsgnLW78jUa52AAK32z6OOscefaJVv6Axx1b60xioFkxYk7+t0SkKXN+0l
+         rfIgvoJbV9JO0sVdCxMXczmZOKqnXE+klcGnag9yE14CYFTKNkbQvi1ZHtbLOgV4ay1J
+         eWCwDRmBAyy5QNxLfZL10+MGB5fnIaxLO5D5yclZvvP8L9gfbJ1SCtWG4G6JOVqlyrS0
+         k1bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wI0m4sxN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f2sor12928220otq.42.2020.01.17.03.50.45
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="S/mxOHEo";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r15si16144649edw.296.2020.01.17.05.18.19
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 17 Jan 2020 03:50:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 17 Jan 2020 05:18:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wI0m4sxN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="S/mxOHEo";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57100 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1isRVx-0003Bq-Th
+	for alex.bennee@linaro.org; Fri, 17 Jan 2020 08:18:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47111)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <leif@nuviainc.com>) id 1isRVm-00039b-HF
+ for qemu-arm@nongnu.org; Fri, 17 Jan 2020 08:18:07 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <leif@nuviainc.com>) id 1isRVl-00026l-9G
+ for qemu-arm@nongnu.org; Fri, 17 Jan 2020 08:18:06 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35880)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <leif@nuviainc.com>) id 1isRVk-00024H-Rt
+ for qemu-arm@nongnu.org; Fri, 17 Jan 2020 08:18:05 -0500
+Received: by mail-wm1-x343.google.com with SMTP id p17so7613958wma.1
+ for <qemu-arm@nongnu.org>; Fri, 17 Jan 2020 05:18:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=iDytm4TfZbY5oMmfZHzGiEQQcHLYD9MXz+DIQoueERs=;
-        b=wI0m4sxNvbm7kjpw41olUT6lrYS4NLnKwPgFkxnop5WRGY15XoQspOE7HWiTQGN+40
-         Hrc1k9esqY+X+d6lxw9s4DWqlyFWzHGJiDssVEa1rCumYDnZN+yArnFydppCHlp9pHLu
-         YUGkZBw5SLv1EkzGmdvYHk8h/6yiaw3J5xFi6WMxLROQOIRuVOHGn+fgNKRJE3Lswaa+
-         p2EeD2h6WHV30PgGhhlJsLDicjOj17VUO7D55BR9TdAuekdcbSgvS4Toj3rxJCPjdogG
-         TIl4vLn6oOtahbJBFFLmTr79YFdyWKnLmk6KZcbzEAqBALJ7AAj/djPgrWd9qXuUTF9i
-         rUvA==
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=KpZ3QLKUbQJ0Z3RVINWucb9Ndt3JDsMoblKjT9M/9xA=;
+ b=S/mxOHEormBkphE4gQVdY3OX/KaVy/+i1P3gpd1rJKWGtxnz18jzsh4lIjEtadcZkn
+ jZgwdL1xocWEfYj4B/ISgXwo7SBA0ZNW3mJRG33L84OoHQnOP85CJijBqGnr/1gmhwFC
+ rY5rCiJpdhmRNip7fH+La69ZGwxRUfL6830ZYQM/nV1Hn5wV8XZsqvZptRyd34QArBPG
+ tP7NW7/3+1jIOVnja7QtqBS7tw1RxC90IMccEmxp6h3inrbuBwR8te2If+KgNaoVox7W
+ S8A/49I5lw61IdVxDzBnuQKpLf31QAhS1FvcTP17jV8ND3RdNANN4he8WqPbMJzGq2eH
+ Pqyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=iDytm4TfZbY5oMmfZHzGiEQQcHLYD9MXz+DIQoueERs=;
-        b=NcPi1Ynceot888GVMVKAMPwwsF5hR3g87+97v9zRjKMppCz+mBGDS8qozNscVsQDu8
-         ltpTSiuW6pJGShL8Djg2voPzxJ4z85hA2KUE8Svg3txYI5FSWREXLGUNcn2GHESggaro
-         yCe5cm1l6x4KzxUke+6Q9gXT8V3ayPHZWJe5v6qn2ubVq38OkDmWmv8mQugCBEPTqzwc
-         TPgOafxNGCydOHe7YHoTbAdZFzkqpiNnYhxo1++YQFUR6lmH1lS8t1K4f8r1YIn6vklb
-         Ji6Tc31fMxes/52Ms2uqGmgP3KrN2cL1giK7dm9odxey36vcUqgV0QZeohxcEeMgGUvh
-         8wbw==
-X-Gm-Message-State: APjAAAWzUUgTqneJAwP4VAOsAtAOKKzzj2jC8bDmYhuug2xLJALk1zlw
-	pk+DzrBfPVYUsGqr1RNPJfHP6bSU35Fcx175q4Z/bIaTmhUbpQ==
-X-Google-Smtp-Source: APXvYqznTo3qqyC+aPlCw4uEb42nRqdw3eWjM2c251Vfyx+z2XZp5X708DW4NhrXR2rmaiYu9TXygRzXp36b/v2UO3k=
-X-Received: by 2002:a05:6830:13da:: with SMTP id e26mr5466797otq.97.1579261844377;
- Fri, 17 Jan 2020 03:50:44 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=KpZ3QLKUbQJ0Z3RVINWucb9Ndt3JDsMoblKjT9M/9xA=;
+ b=t1p2Q7hSOsqnI277j6HaXx2MnFLsFBtdqryMwiZlJAjLkmYTz20NaW0xdE2wDmGm/f
+ HW/PCgBZDcGZ9EqLVsB7P86/0Swele4olTFpG3+6oTc7esIcaW7VZKLATw16ydUyPrYD
+ ukP4ZJrIUqkUcSJ+up/dh/1zcbmNlbVfzcUiOrCExcjK6n444km03BjGOpjQOl4cwM08
+ gpaR6VD5MPItf91G0YKlCogUgwrhL+CD9al0GWjdZkmmTj4ywbl0QmuwuOTpG0ieR+hy
+ 1CzLLIQviF6c2Hf+kNSJ4Fd3q7vgdgSyVZuI25I+pahgideXPUxyETf32EW9CvioObVC
+ JyhQ==
+X-Gm-Message-State: APjAAAVMrzoZ+QwKMddTdc+47ClqVaMHyh1Gj2LQb0fXw2YHXecADA5w
+ 3GOR/b/i5NZpiPSstgXWUo8Dxw==
+X-Received: by 2002:a7b:c1c7:: with SMTP id a7mr4498500wmj.168.1579267083496; 
+ Fri, 17 Jan 2020 05:18:03 -0800 (PST)
+Received: from bivouac.eciton.net (bivouac.eciton.net.
+ [2a00:1098:0:86:1000:23:0:2])
+ by smtp.gmail.com with ESMTPSA id a9sm7986389wmm.15.2020.01.17.05.18.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 17 Jan 2020 05:18:02 -0800 (PST)
+Date: Fri, 17 Jan 2020 13:18:01 +0000
+From: Leif Lindholm <leif@nuviainc.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [EXTERNAL] Re: [PATCH] MAINTAINERS: update Leif Lindholm's address
+Message-ID: <20200117131801.GI15141@bivouac.eciton.net>
+References: <20200116174226.4780-1-leif@nuviainc.com>
+ <a2fc8a4f-0b56-7868-0e52-51c2abfd97f7@redhat.com>
 MIME-Version: 1.0
-References: <20200110161626.31943-1-alex.bennee@linaro.org>
- <20200110161626.31943-2-alex.bennee@linaro.org> <CAFEAcA9nNH9pu+8E_YYkiNtzePjZdrEBjK_9zJv+XJaSvcnhmA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9nNH9pu+8E_YYkiNtzePjZdrEBjK_9zJv+XJaSvcnhmA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Jan 2020 11:50:33 +0000
-Message-ID: <CAFEAcA_0hHjkhKtVsQEsN=Xow=W6vPvGJPJdzHh=O6RG1=_mAQ@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] target/arm: detect 64 bit overflow caused by high
- cval + voff
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	1859021@bugs.launchpad.net
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: ocjV9kyiPU8u
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <a2fc8a4f-0b56-7868-0e52-51c2abfd97f7@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::343
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+ Leif Lindholm <leif.lindholm@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yVy+xF6XhAnz
 
-On Thu, 16 Jan 2020 at 18:45, Peter Maydell <peter.maydell@linaro.org> wrote:
-> There's something odd going on with this code. Adding a bit of context:
->
->         uint64_t offset = timeridx == GTIMER_VIRT ?
->                                       cpu->env.cp15.cntvoff_el2 : 0;
->         uint64_t count = gt_get_countervalue(&cpu->env);
->         /* Note that this must be unsigned 64 bit arithmetic: */
->         int istatus = count - offset >= gt->cval;
->         [...]
->         if (istatus) {
->             /* Next transition is when count rolls back over to zero */
->             nexttick = UINT64_MAX;
->         } else {
->             /* Next transition is when we hit cval */
->             nexttick = gt->cval + offset;
->         }
->
-> I think this patch is correct, in that the 'nexttick' values
-> are all absolute and this cval/offset combination implies
-> that the next timer interrupt is going to be in a future
-> so distant we can't even fit the duration in a uint64_t.
->
-> But the other half of the 'if' also looks wrong: that's
-> for the case of "timer has fired, how long until the
-> wraparound causes the interrupt line to go low again?".
-> UINT64_MAX is right for the EL1 case where offset is 0,
-> but the offset might actually be set such that the wrap
-> around happens fairly soon. We want to calculate the
-> tick when (count - offset) hits 0, saturated to
-> UINT64_MAX. It's getting late here and I couldn't figure
-> out what that expression should be with 15 minutes of
-> fiddling around with pen and paper diagrams. I'll have another
-> go tomorrow if nobody else gets there first...
+On Thu, Jan 16, 2020 at 19:25:52 +0100, Philippe Mathieu-Daudé wrote:
+> On 1/16/20 6:42 PM, Leif Lindholm wrote:
+> > Update address to reflect new employer.
+> > 
+> > Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+> > ---
+> >   MAINTAINERS | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index 483edfbc0b..3c8653f26f 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -735,7 +735,7 @@ F: include/hw/ssi/imx_spi.h
+> >   SBSA-REF
+> >   M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+> >   M: Peter Maydell <peter.maydell@linaro.org>
+> > -R: Leif Lindholm <leif.lindholm@linaro.org>
+> > +R: Leif Lindholm <leif@nuviainc.com>
+> >   L: qemu-arm@nongnu.org
+> >   S: Maintained
+> >   F: hw/arm/sbsa-ref.c
+> > 
+> 
+> You might want to add yourself a .mailmap entry too:
+> 
+> -- >8 --
+> diff --git a/.mailmap b/.mailmap
+> index 3816e4effe..a521c17b44 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -44,6 +44,7 @@ Aleksandar Markovic <amarkovic@wavecomp.com>
+> <aleksandar.markovic@imgtec.com>
+>  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com> <arikalo@wavecomp.com>
+>  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori
+> <aliguori@us.ibm.com>
+>  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+> +Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+>  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+>  Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+>  Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+> ---
 
-With a fresher brain:
+If that use of .mailmap is common for QEMU, that sounds like a good
+idea. And the comment for that section of the file indeed suggests so,
+so thanks!
 
-For the if (istatus) branch we want the absolute tick
-when (count - offset) wraps round to 0, saturated to UINT64_MAX.
-I think this is:
-    if (offset <= count) {
-        nexttick = UINT64_MAX;
-    } else {
-        nexttick = offset;
-    }
+> 
+> If you ack this snippet maybe a maintainer is willing to amend it to your
+> patch :)
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Should we consider this a separate bugfix to go in its own patch?
-
-thanks
--- PMM
+Acked-by: Leif Lindholm <leif@nuviainc.com>
+(The other guy agrees.)

@@ -1,207 +1,193 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9194522lff;
-        Thu, 16 Jan 2020 18:09:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzbSizXC0KuCRKIX7HJA8QUSHWQq5JfB0l9dgyEWLmP66PDpvEi4PyzM4RifWfmGfz60kJM
-X-Received: by 2002:a17:906:489:: with SMTP id f9mr5828050eja.27.1579226941695;
-        Thu, 16 Jan 2020 18:09:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579226941; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9448993lff;
+        Thu, 16 Jan 2020 23:22:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwGlkT+Ls6W7G4C9KKXAi5W4mIuf7RI0ySlFZoLvO6oYnDAx9QpDMf7o77BqKhF6JQK/dyD
+X-Received: by 2002:aca:4306:: with SMTP id q6mr2459076oia.54.1579245772048;
+        Thu, 16 Jan 2020 23:22:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579245772; cv=none;
         d=google.com; s=arc-20160816;
-        b=crn8kX0Te5sbWGOpr889B5r2AJIdLnuCPlo8qqlUKJ1VdjZxD9fsn61uzHi3afvB3H
-         7Ug5rDpqEhpuBQd85zLTkxu4aYyf6jNwCcWuDww0L0vwWcYGlpKds0llVjnQQCntkSsL
-         4Uv9jthBnWBVyz9a8g6hopdVhuF5PQtMiR5gcF0bp+wWxQ9vkwuff0BqF7M8yDtAewab
-         ocH+4lsA3W7C6INQAGpFGjCR0yrS+TJ0uHUUYR09LPcyMLua3Ov2RGf1iS1cqjwx6SKY
-         TkPHTEYxZlvTxV3doIvddUu+Z8AdZmHQ7kJHHfjz5VsgsoIB7WsI5FqRRrpqS4IMHExE
-         jVCg==
+        b=G2+ylUgyqA5NXKCEBmB8/HmDn214fppkwS4PAWdGhxHWshvUMChUaaBAGKs265aIUX
+         UlWdOH1t0NtAGtSA45O31kXnC3G3/0gOh+OnNx18HqLwPotf8Et9qs4TBYHczGYio4+l
+         eEwLUgcjMr+MZGE5gAp+x52UaJduqSYpKhR7A1zi2M5gVq/nbpxfDTk2DIZfYx3v+abv
+         KFgISHeB3SXTkP8KLvaQkXqxoMdXo4Rh9QsFEV4ZhoN42TpuU610i3+vi6qw32EQI+JO
+         eyUXamCNthiF9s0SfPL0T+ts2CGuiVA9YhkRJ3YaYYMr6c6LDtPm++TbspTuhn6+2vVJ
+         xMtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=4H8hk8pWDoSDZ43IdiKsbPax/Jph/LMcmH4osIfhV2Y=;
-        b=zmvtMoti/CwD1jgi2ZCZCkvSFcUu+7TLQXpBAHxLdQWZNTCo0qLOJ4hDab++ze0GoO
-         lZvTCl/kNL6w2sa7u0SwlOkY8CGi2LWuk1vxYm2fcHxFlOaGGFE1h5srGjxp0EcoYZEv
-         P9OgekEj4SAfWBWcdDaaq8OlJDxZ8sqn+x3zUc+XXbkXJ8CltfBCt2Mme+nzpWkSqIYk
-         7vM0MAfyX3DCt6A79uPhrk60Xqlnb5ldSYE+9S/Vky+eYYjxh9x4ANpD6pK2JxzpH5F7
-         8bCH1jkSynUOmjZyTMrJB3CwQlJJ9bB79gAFSb9S0/7HQhUThtFYYs/mmjFSMb1+19Sb
-         rKlg==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:dkim-signature;
+        bh=y3RcHw06IWFshCmwxf/kgJpylqKRRJYyaQ6ieJjtjws=;
+        b=tfdj1Eis/NbwQzMuMrsZYTFgqjcyaKLPI+9iRj1j/J0EOQIZJ6uv4sYXV+tjy5tcAs
+         GQCiR9G+kheIEeu9b2qoSMk6kLtoZDcFxoCPh3xwb2Cc4d8WSLWU/2g1+8VAYSVqTn0Q
+         ZItoyf7qmjGZlwo0YiLQAD0XQkZ0SwZ9OwQR0RbrjPhTdCiLnxNN0qk780S5QY9bi3M2
+         6anX4p3/ZBybjfJIlfhQt7eX/rU58Yga7dqCPxphJzNsQe3n21kAideLcaVlEAmrG4Fw
+         EruX1IuV25L9J8AsWCwV3TqlB8d11FLigTr5nAL9WRMfrWnSxUOrmcWc4e2FnT15s6xx
+         iLvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e22si16296086eje.68.2020.01.16.18.09.01
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 18:09:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vfv3rfn1;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id h22si15283603otk.18.2020.01.16.23.22.51;
+        Thu, 16 Jan 2020 23:22:52 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51322 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isH4G-0003if-Ig
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 21:09:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48552)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1isH48-0003iR-58
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 21:08:53 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1isH46-0007h0-MM
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 21:08:51 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:59330 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1isH46-0007av-Be; Thu, 16 Jan 2020 21:08:50 -0500
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id E794A5818C760E828BC3;
- Fri, 17 Jan 2020 10:08:43 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS414-HUB.china.huawei.com
- (10.3.19.214) with Microsoft SMTP Server id 14.3.439.0; Fri, 17 Jan 2020
- 10:08:33 +0800
-Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified by
- _HID
-To: Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>
-References: <20191219064759.35053-1-guoheyi@huawei.com>
- <20191219064759.35053-3-guoheyi@huawei.com>
- <20200105072504-mutt-send-email-mst@kernel.org>
- <CAFEAcA-sduqVO3rrG2V1VsysE2chgd0SnSySvEXFfue-aZN8dg@mail.gmail.com>
- <bbf347fe-c4a4-c5bb-19c2-3a18571b658f@huawei.com>
- <20200115011412-mutt-send-email-mst@kernel.org>
- <7732900c-5490-6483-ca10-71c565e81945@huawei.com>
- <20200115055408-mutt-send-email-mst@kernel.org>
- <CAFEAcA9AZS=aNBYNntTDNB0k4kORjMFJ6qOimASVV9JWs4VzTA@mail.gmail.com>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <be48c9ab-6a6a-928a-37b8-e52999a329ca@huawei.com>
-Date: Fri, 17 Jan 2020 10:08:31 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vfv3rfn1;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1729021AbgAQHWv (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 17 Jan 2020 02:22:51 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:32058 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1726675AbgAQHWu (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 17 Jan 2020 02:22:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1579245769;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=y3RcHw06IWFshCmwxf/kgJpylqKRRJYyaQ6ieJjtjws=;
+        b=Vfv3rfn1WqELM74pSMZnOVgqI0avTfc+BpfzF/KISDEgdP6gYDMl7TvUngxbFPpoQYbT+/
+        aRL4rXpB1/X7IkU7/JF6GgiaoNcQ8CYevsv/qbLX2dS+8whhV59WgwU6vNhj3sWqzItN7i
+        e2ci88poh/vpmdep+airE5ber3lN4NU=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-202-38kSFjW8MjuiOC6Jj1vXtg-1; Fri, 17 Jan 2020 02:22:48 -0500
+X-MC-Unique: 38kSFjW8MjuiOC6Jj1vXtg-1
+Received: by mail-wm1-f72.google.com with SMTP id h130so1916364wme.7
+        for <kvm@vger.kernel.org>; Thu, 16 Jan 2020 23:22:48 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=y3RcHw06IWFshCmwxf/kgJpylqKRRJYyaQ6ieJjtjws=;
+        b=H+52vk/pGFJfODzoA2XpoCPILDqrAf4nouWuc3t4kZZ5/TxWfEiJCIhBZr3xghUUwQ
+         SKfy56hAs09ls+HhkabzFo4bEUjztNADjZVhQgCoGMopXAkeVMflL96POssFghoJNh2o
+         A7DcgHKirB7+kevgfnot0tDkJ+nu3d+sUD2q8Bvgif+sXxDV4cbMFP/31jMTEz3hqplO
+         v3Rzve8qJfOGa3Wqf/kTUWHHnQP6yzv66yLVAKase09tJHqAMx3URNsd3UyR/RNx81zb
+         JmYXYy0iMTq7i2Xq9l1sIceGkG0bsGrte+2Yg74cO+Mdq/dDibiSf1NHqiyQPPFcuAAw
+         5HCw==
+X-Gm-Message-State: APjAAAXwxdaNKHdvbMJfnVEzSLxvcsH99cKLU5n+YAv9KKCCF5CVXfIH
+        9UVhw6HA7NKJ6wr6sLCapLcBZLrRHWEvtHHFjZCSYLL+BEiKs29lzOfAdwSfa0rhmH+MoDACmCX
+        aS3LO5gJ+S+27
+X-Received: by 2002:adf:cf12:: with SMTP id o18mr1505118wrj.361.1579245767227;
+        Thu, 16 Jan 2020 23:22:47 -0800 (PST)
+X-Received: by 2002:adf:cf12:: with SMTP id o18mr1505101wrj.361.1579245766968;
+        Thu, 16 Jan 2020 23:22:46 -0800 (PST)
+Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net. [83.57.172.113])
+        by smtp.gmail.com with ESMTPSA id x7sm31918244wrq.41.2020.01.16.23.22.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Jan 2020 23:22:46 -0800 (PST)
+Subject: Re: [PATCH v22 9/9] MAINTAINERS: Add ACPI/HEST/GHES entries
+To:     Peter Maydell <peter.maydell@linaro.org>,
+        Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     Fam Zheng <fam@euphon.net>, Eduardo Habkost <ehabkost@redhat.com>,
+        kvm-devel <kvm@vger.kernel.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        Linuxarm <linuxarm@huawei.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Zheng Xiang <zhengxiang9@huawei.com>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        James Morse <james.morse@arm.com>,
+        "xuwei (O)" <xuwei5@huawei.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Richard Henderson <rth@twiddle.net>
+References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
+ <1578483143-14905-10-git-send-email-gengdongjiu@huawei.com>
+ <CAFEAcA-mLgD8rQ211ep44nd8oxTKSnxc7YmY+nPtADpKZk5asA@mail.gmail.com>
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <1c45a8b4-1ea4-ddfd-cce3-c42699d2b3b9@redhat.com>
+Date:   Fri, 17 Jan 2020 08:22:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9AZS=aNBYNntTDNB0k4kORjMFJ6qOimASVV9JWs4VzTA@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.35
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>, Igor
- Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uXMjRci2uFXa
+In-Reply-To: <CAFEAcA-mLgD8rQ211ep44nd8oxTKSnxc7YmY+nPtADpKZk5asA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: n5suGkZbIOCQ
 
+Hi Peter,
 
-=E5=9C=A8 2020/1/16 20:24, Peter Maydell =E5=86=99=E9=81=93:
-> On Wed, 15 Jan 2020 at 10:55, Michael S. Tsirkin <mst@redhat.com> wrote=
-:
->> Here's a hopefully better patch. Peter does this address the issue?
+On 1/16/20 5:46 PM, Peter Maydell wrote:
+> On Wed, 8 Jan 2020 at 11:32, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 >>
->> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+>> I and Xiang are willing to review the APEI-related patches and
+>> volunteer as the reviewers for the HEST/GHES part.
 >>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+>> ---
+>>   MAINTAINERS | 9 +++++++++
+>>   1 file changed, 9 insertions(+)
 >>
->> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-=
-test.c
->> index f1ac2d7e96..3ab4872bd7 100644
->> --- a/tests/qtest/bios-tables-test.c
->> +++ b/tests/qtest/bios-tables-test.c
->> @@ -16,7 +16,10 @@
->>    * 1. add empty files for new tables, if any, under tests/data/acpi
->>    * 2. list any changed files in tests/bios-tables-test-allowed-diff.=
-h
->>    * 3. commit the above *before* making changes that affect the table=
-s
->> - * Maintainer:
->> + *
->> + * Contributor or ACPI Maintainer (steps 4-7 need to be redone to res=
-olve conflicts
->> + * in binary commit created in step 6):
->> + *
->>    * After 1-3 above tests will pass but ignore differences with the e=
-xpected files.
->>    * You will also notice that tests/bios-tables-test-allowed-diff.h l=
-ists
->>    * a bunch of files. This is your hint that you need to do the below=
-:
->> @@ -28,13 +31,23 @@
->>    * output. If not - disassemble them yourself in any way you like.
->>    * Look at the differences - make sure they make sense and match wha=
-t the
->>    * changes you are merging are supposed to do.
->> + * Save the changes, preferably in form of ASL diff for the commit lo=
-g in
->> + * step 6.
->>    *
->>    * 5. From build directory, run:
->>    *      $(SRC_PATH)/tests/data/acpi/rebuild-expected-aml.sh
->> - * 6. Now commit any changes.
->> - * 7. Before doing a pull request, make sure tests/bios-tables-test-a=
-llowed-diff.h
->> - *    is empty - this will ensure following changes to ACPI tables wi=
-ll
->> - *    be noticed.
->> + * 6. Now commit any changes to the expected binary, include diff fro=
-m step 4
->> + *    in commit log.
->> + * 7. Before sending patches to the list (Contributor)
->> + *    or before doing a pull request (Maintainer), make sure
->> + *    tests/bios-tables-test-allowed-diff.h is empty - this will ensu=
-re
->> + *    following changes to ACPI tables will be noticed.
->> + *
->> + * The resulting patchset/pull request then looks like this:
->> + * - patch 1: list changed files in tests/bios-tables-test-allowed-di=
-ff.h.
->> + * - patches 2 - n: real changes, may contain multiple patches.
->> + * - patch n + 1: update golden master binaries and empty
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 387879a..5af70a5 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -1423,6 +1423,15 @@ F: tests/bios-tables-test.c
+>>   F: tests/acpi-utils.[hc]
+>>   F: tests/data/acpi/
+>>
+>> +ACPI/HEST/GHES
+>> +R: Dongjiu Geng <gengdongjiu@huawei.com>
+>> +R: Xiang Zheng <zhengxiang9@huawei.com>
+>> +L: qemu-arm@nongnu.org
+>> +S: Maintained
+>> +F: hw/acpi/ghes.c
+>> +F: include/hw/acpi/ghes.h
+>> +F: docs/specs/acpi_hest_ghes.rst
+>> +
+>>   ppc4xx
+>>   M: David Gibson <david@gibson.dropbear.id.au>
+>>   L: qemu-ppc@nongnu.org
+>> --
+> 
+> Michael, Igor: since this new MAINTAINERS section is
+> moving files out of the 'ACPI/SMBIOS' section that you're
+> currently responsible for, do you want to provide an
+> acked-by: that you think this division of files makes sense?
 
-Though I drafted the inital text, "2 - n" seems like a expression "2=20
-minus n" for myself after a second glance, especially when we have a "n=20
-+1" just below. Maybe we can use a different notation :)
+The files are not 'moved out', Michael and Igor are still the 
+maintainers of the supported ACPI/SMBIOS subsystem:
 
+ACPI/SMBIOS
+M: Michael S. Tsirkin <mst@redhat.com>
+M: Igor Mammedov <imammedo@redhat.com>
+S: Supported
+F: include/hw/acpi/*
+F: hw/acpi/*
 
->> + *   tests/bios-tables-test-allowed-diff.h
->>    */
-> I think that seems reasonable, but you're the ACPI expert.
-> As long as the patches on list:
->   * can be reviewed by somebody for whether their ACPI changes
->     are correct, including whether the golden-master changes are right
->   * can be applied by a maintainer without having to do anything
->     special
->   * don't break bisection
->
-> then I'm happy. It sounds like those steps will work for that.
->
->> diff --git a/roms/seabios b/roms/seabios
->> index f21b5a4aeb..c9ba5276e3 160000
->> --- a/roms/seabios
->> +++ b/roms/seabios
->> @@ -1 +1 @@
->> -Subproject commit f21b5a4aeb020f2a5e2c6503f906a9349dd2f069
->> +Subproject commit c9ba5276e3217ac6a1ec772dbebf568ba3a8a55d
-> You have a stray submodule update in your patch, though :-)
+Dongjiu and Xiang only add themselves as reviewers to get notified on 
+changes on these specific files. The more eyes the better :)
 
-A file config.mak will be generated in roms/seabios after building qemu,=20
-and we may probably add it in our commit by "git commit -a" :)
+The docs/specs/acpi_hest_ghes.rst document has no maintainer, as these 
+others too:
 
-Thanks,
+- docs/specs/acpi_cpu_hotplug.txt
+- docs/specs/acpi_hw_reduced_hotplug.rst
+- docs/specs/acpi_mem_hotplug.txt
+- docs/specs/acpi_nvdimm.txt
 
-Heyi
+The only ACPI file reported as maintained in docs/specs/ is 
+acpi_pci_hotplug.txt, from this entry:
 
->
-> thanks
-> -- PMM
->
-> .
+PCI
+M: Michael S. Tsirkin <mst@redhat.com>
+M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+S: Supported
+F: docs/specs/*pci*
 
+FWIW:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>

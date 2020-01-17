@@ -1,105 +1,105 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp10137206lff;
-        Fri, 17 Jan 2020 10:08:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwzOdPqUJZpUTgJI7BWt3TzBGDcIA3mN9PRoqb2OwsJoFP6p2NbLb05LdeumjKy5mZGTgxq
-X-Received: by 2002:a17:906:90c3:: with SMTP id v3mr9183165ejw.30.1579284490226;
-        Fri, 17 Jan 2020 10:08:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579284490; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp10152238lff;
+        Fri, 17 Jan 2020 10:21:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxJjsxzRqASCQM5d8oNxJJsFEwc1OxoCNVgiVt1epuUe33ayG6uTPSrPlYTTVWCmh7JSf6A
+X-Received: by 2002:ac8:ff6:: with SMTP id f51mr8713216qtk.60.1579285306360;
+        Fri, 17 Jan 2020 10:21:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579285306; cv=none;
         d=google.com; s=arc-20160816;
-        b=TByOKcy5SFe7Z3Ibre7EP2BaTaAey0Sc2ezVaAODwcxZRsB2wHTahpCG4jCDE4mH4Z
-         aq/nKRRf53olUyBvNOZOcNiYMCUfJaaGiiEhzwr9/OWFy5Kry1AZVtKO+zIZ9FPDFQH1
-         Hazl2JNprl6Vhb1SaShFkHtv1f80mRtfm1PRsgG0y+mBaGsPAKcb0tkrGp0cfkgIz+eF
-         h2tXcWRDms1h+yne0MvSoAcvwBen7+cbGwL3/TUMFtsYO1jO5ekuWPj0CeC6l2VDryAQ
-         8lfP9F8uiuYxZJLgjUsGHNnvC56ea5guBz5Kgg0En4oUoY+LmgkdxMfQvQwQ1YBI4PDi
-         j2Hw==
+        b=It8pBLxRHHqsqQrIa4pEyi+IlEAlDXT+7TGHCorpMdkTAdzBmXSJvLTieRM0m33VPn
+         tHCwKStiwYME+oPY27HjE/3/xP3RUYTv8k+A03smnjFNn2Nk7aHUTGfpvHPIXbGebaj7
+         npW5Ii6tpwJwRsAbFDUA+N94SgSg+H16XW1ThSsA1yEUk+VyEgkbSnyiz+zjQtANDGXY
+         rDEizB0daH4utEvcybh8dtPRRNNfdvQSEEyLa4QvvW9H6IOuv57hq2sPweMvmLZb2H8+
+         /fuT2pIAGoQPZOj5HTQ/vus6Aw2B/sAkEB7wmnroZLPCkL//wuc45A0dOLy4v8IuVLWv
+         JVKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=CfeBZOkNIBLGSMR8OHwXQk7PTiY5DFAYi3DjYR6eC7A=;
-        b=aJcaqe90oGUnWYK6ooUYSav2XQ2oaIgyetnseJEsu/DpmxzY3QooDDVdOK+SxYRit1
-         Lbi39B16/cnBXCmfgILpkFCO4Gxb9Q348iNieAGut+xu8QsBfgH3FFT3qgewd3FJ3Zen
-         EGAN25foCFMYDMp8pzlIqrtoGZQW/4ZtSCPWic1QFvL03Dn9oywb5r+Ai+Y22a15TJAp
-         6P7H4G8uLAm46Alz43kUwoQ91gB5oP891UBI3VMrxqiGe3W4UOZymWEtEXngzK1CQy4N
-         Q0JLhdkwoHZ2eB+bkhXLnOs8XTIJrLMiO8vkoCPvU6ouFbAa8G7NmZ4/yKoyEzi+XZfK
-         fBxA==
+        bh=u9shOCD9O1+12r3IyiFFm4tISZkGsIgPercoRilwGsk=;
+        b=gJMx3TdJ2XdfyOkzrkw2D23Ydmfau+wJ9pxcdvtmkpNQUjRDGhZv5sqW988+JjcB+t
+         GxCRcPb1KFpp99z5ZZcDjvD1zEqI+noTFo/NiWmclSDch/HJE8K8FC5JpKU+0JneDLMg
+         f3vY5i05FPO8MRzQPjkllSxZj6/Ws2s+7AtZW7+CP/nJ/cKV822gkqfFQtgor9qFO33T
+         aq2a49mAjNGEkea+wei+YYuyKDjp/I1IX682YeL7xcMFdccUIuSskq6r9gFp+srAyI/a
+         iXlZwmMDxKvhD8rnr1AzLmTrMf7ijUygTjPiOGKwcTFjU92idqowtsrkmHmMCAIQaEqR
+         W/Gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uaZvqR+e;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Iin/iOB3";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fi25si17145755ejb.173.2020.01.17.10.08.10
+        by mx.google.com with ESMTPS id a125si15681746qkd.262.2020.01.17.10.21.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2020 10:08:10 -0800 (PST)
+        Fri, 17 Jan 2020 10:21:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uaZvqR+e;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Iin/iOB3";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33104 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33220 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isW2T-0006Ya-8D
-	for alex.bennee@linaro.org; Fri, 17 Jan 2020 13:08:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59095)
+	id 1isWFd-0002Wm-EC
+	for alex.bennee@linaro.org; Fri, 17 Jan 2020 13:21:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60885)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1isW2L-0006YC-0M
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 13:08:02 -0500
+ (envelope-from <groeck7@gmail.com>) id 1isWFR-0002TP-4y
+ for qemu-arm@nongnu.org; Fri, 17 Jan 2020 13:21:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1isW2J-0007oJ-PE
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 13:08:00 -0500
-Received: from mail-yw1-xc42.google.com ([2607:f8b0:4864:20::c42]:46300)
+ (envelope-from <groeck7@gmail.com>) id 1isWFQ-000303-4Z
+ for qemu-arm@nongnu.org; Fri, 17 Jan 2020 13:21:33 -0500
+Received: from mail-yb1-xb44.google.com ([2607:f8b0:4864:20::b44]:39761)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1isW2J-0007nb-KV; Fri, 17 Jan 2020 13:07:59 -0500
-Received: by mail-yw1-xc42.google.com with SMTP id u139so14712023ywf.13;
- Fri, 17 Jan 2020 10:07:59 -0800 (PST)
+ id 1isWFQ-0002zT-0c; Fri, 17 Jan 2020 13:21:32 -0500
+Received: by mail-yb1-xb44.google.com with SMTP id x18so6286626ybk.6;
+ Fri, 17 Jan 2020 10:21:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=CfeBZOkNIBLGSMR8OHwXQk7PTiY5DFAYi3DjYR6eC7A=;
- b=uaZvqR+eJM5QowpNg6OarrPr2G/b3xOc62Jo1Ih8h+2GPBEtY0Cf64FdBNMmS3PWro
- lxiNrqCw6AHzteeLoJN8UIDnyBge7IZIBG1t2KGAWsU3EJT3cXL7S9TOdsI/y3oQEwke
- /LACkYBf2S6nAkEoAzrQW23zfEjluyQNNIJYF84HXKk7PH7hQw/+JqkhxbqmUmG6ZQXo
- AJ+38l+yNnaQvIs+IK4xpGZ+c6gksTl363auLh+5N683PuHoHtC82e+DY8FQ1HNUYzl3
- KVeZM+Rj8yrO5dXQF1WhkscE0RwUHzwlsF0adUEOqDVzyMlm9rmyIYSbWdjYTJU9FTOt
- GFLg==
+ bh=u9shOCD9O1+12r3IyiFFm4tISZkGsIgPercoRilwGsk=;
+ b=Iin/iOB3SKzNFH6118zWBmdpqwRqox1lN/pUQaOr0WzKC0uW+e571oN+v/Mg6I94Js
+ EAu4F1yM/+2kvxXgwximMJafM5W/hMtKhWDf2WcwHmL9PWKtfNQ/ChWGB//6VEjTswhp
+ IhiZxUtWsv9B4r6iLw8c1+rVQnVvgbyGp8plgF+ACMOrdm7j6MRKqUYIJqwAnilYx32A
+ gZlKpojdUDjOkIAW0XNAvFpHFMqEa/d8hFTOmlw+NPzfnHh0rgdloIW9MRTxCrrgvt8P
+ A02g5uoaDiTX7o+kv5fBfycDDwV5UeB28PpU98h1+dc9HHKyZ8WdjSvL9pS/ZPa88i6A
+ 2yOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
  :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=CfeBZOkNIBLGSMR8OHwXQk7PTiY5DFAYi3DjYR6eC7A=;
- b=PjEurm5BsWRWfGa1eLMGrIYcfopQaQqcIwNsrlk+VAlcZ+l6o+kyqlNWmA3hyKNqrs
- QMAw9+PeuCLIpQHYWvnOnHgBNowrh8wsTwzONQBrDbFiAPj/acet5iW1upVu7NhNL84S
- Curcagf16hKd4j0iXNkkzk9OYPoCgXkgoaPXHoz1tKs3NZdF5aX92m/XqF5PTDp3pLR6
- irtNMA4ROh/GalshUULSKBf/g7Rb4VXSktnsjH9/x5dwSewx3GrPdR4aoqPLN2C93V0o
- n0xVi30bqenXin7AK5ggttbQ2BARKVQaEx2nEwsDaq/0Qwl1ZsFdypByn28xTdHzixWP
- XOig==
-X-Gm-Message-State: APjAAAXfPgq54JpN8OJKMSSQ0EWeU5U2RVahv6uB4lRscy+O/YmZLP/m
- NMtGyOI2jUFgjbAELffhSjI=
-X-Received: by 2002:a81:a08a:: with SMTP id
- x132mr29444217ywg.430.1579284478881; 
- Fri, 17 Jan 2020 10:07:58 -0800 (PST)
+ bh=u9shOCD9O1+12r3IyiFFm4tISZkGsIgPercoRilwGsk=;
+ b=LdP11CoNcY1pB1nhCO6fqhluLVx7+yjoyQcEuF2gerRYm+82XHZS3vlo2O/b9r6NtL
+ 3+LkCOcrHSoywV5afK1CkJ0eK9qEET07ROCaoJoo7KEz8E3YXZ+Br6CPOBQsja8mNiV3
+ H2VfmIiuBYF/u4KLSaIAl/xgHdY5urcEUXJRokclmTC86gsB3RVG4rBR3RQlymr0XwTP
+ quazyUgxlBqkt3vhfyJtR05G3ruQ818Tsr4SRR9VzyoixiiVONJ9sbes1Z3ztraOw20I
+ fthee9AdFWQLSs9viDjw0eDKC63G8aSJbh0l4g3l2ZwoG2klExc01cJtfjEDU7xyG1z/
+ Wqww==
+X-Gm-Message-State: APjAAAUF6/sbXOIsbg+Wk1fjXgPSmEUQWoPhgswHpLeSm3p+udQ28HnN
+ /F5RWMj/qAm67PI0PWCIgOY=
+X-Received: by 2002:a25:abf2:: with SMTP id
+ v105mr15317290ybi.518.1579285291296; 
+ Fri, 17 Jan 2020 10:21:31 -0800 (PST)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id y9sm11148113ywc.19.2020.01.17.10.07.57
+ by smtp.gmail.com with ESMTPSA id w142sm11782737ywa.87.2020.01.17.10.21.30
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 17 Jan 2020 10:07:58 -0800 (PST)
-Date: Fri, 17 Jan 2020 10:07:56 -0800
+ Fri, 17 Jan 2020 10:21:30 -0800 (PST)
+Date: Fri, 17 Jan 2020 10:21:29 -0800
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 2/6] hw/arm/exynos4210: Fix DMA initialization
-Message-ID: <20200117180756.GA13396@roeck-us.net>
+Subject: Re: [PATCH 4/6] hw/char/exynos4210_uart: Implement receive FIFO
+Message-ID: <20200117182129.GB13396@roeck-us.net>
 References: <20200110203942.5745-1-linux@roeck-us.net>
- <20200110203942.5745-3-linux@roeck-us.net>
- <CAFEAcA_CeenDy9cNpQi6YpnT5rV+V10+EwYh=-zJEtjaT_gdDA@mail.gmail.com>
+ <20200110203942.5745-5-linux@roeck-us.net>
+ <CAFEAcA81V46N8eqTtBo7YZE0kDaqVNz=iAjbqdv8m=GPRsaewg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA_CeenDy9cNpQi6YpnT5rV+V10+EwYh=-zJEtjaT_gdDA@mail.gmail.com>
+In-Reply-To: <CAFEAcA81V46N8eqTtBo7YZE0kDaqVNz=iAjbqdv8m=GPRsaewg@mail.gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::c42
+X-Received-From: 2607:f8b0:4864:20::b44
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,76 +115,63 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mzXXz3sQHrr5
+X-TUID: rWpwiYYdoluR
 
 Hi Peter,
 
-On Fri, Jan 17, 2020 at 01:30:19PM +0000, Peter Maydell wrote:
+On Fri, Jan 17, 2020 at 01:42:54PM +0000, Peter Maydell wrote:
 > On Fri, 10 Jan 2020 at 20:39, Guenter Roeck <linux@roeck-us.net> wrote:
-> >
-> > First parameter to exynos4210_get_irq() is not the SPI port number,
-> > but the interrupt group number. Interrupt groups are 20 for mdma
-> > and 21 for pdma. Interrupts are not inverted. Controllers support 32
-> > events (pdma) or 31 events (mdma). Events must all be routed to a single
-> > interrupt line. Set other parameters as documented in Exynos4210 datasheet,
-> > section 8 (DMA controller).
-> >
-> > Fixes: 59520dc65e ("hw/arm/exynos4210: Add DMA support for the Exynos4210")
+> 
+> The subject just says "implement receive FIFO", but the
+> existing code clearly has an "Exynos4210UartFIFO   rx"
+> which it does some storing and retrieving data from.
+> Could the patch be more accurately described as something
+> like "Implement interrupts for rx FIFO level triggers and
+> timeouts" ?
+> 
+Sure, no problem.
+
 > > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 > > ---
-> >  hw/arm/exynos4210.c | 24 +++++++++++++++++++-----
-> >  1 file changed, 19 insertions(+), 5 deletions(-)
+> >  hw/char/exynos4210_uart.c | 120 ++++++++++++++++++++++++++++++--------
+> >  hw/char/trace-events      |   3 +-
+> >  2 files changed, 97 insertions(+), 26 deletions(-)
 > >
-> > diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-> > index 77fbe1baab..c7b5c587b1 100644
-> > --- a/hw/arm/exynos4210.c
-> > +++ b/hw/arm/exynos4210.c
-> > @@ -166,17 +166,31 @@ static uint64_t exynos4210_calc_affinity(int cpu)
-> >      return (0x9 << ARM_AFF1_SHIFT) | cpu;
-> >  }
+> > diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
+> > index fb7a3ebd09..61134a7bdc 100644
+> > --- a/hw/char/exynos4210_uart.c
+> > +++ b/hw/char/exynos4210_uart.c
+> > @@ -24,6 +24,7 @@
+> >  #include "migration/vmstate.h"
+> >  #include "qemu/error-report.h"
+> >  #include "qemu/module.h"
+> > +#include "qemu/timer.h"
+> >  #include "chardev/char-fe.h"
+> >  #include "chardev/char-serial.h"
 > >
-> > -static void pl330_create(uint32_t base, qemu_irq irq, int nreq)
-> > +static void pl330_create(uint32_t base, qemu_irq irq, int nreq, int nevents,
-> > +                         int width)
-> >  {
-> >      SysBusDevice *busdev;
-> >      DeviceState *dev;
-> > +    int i;
+> > @@ -118,6 +119,7 @@ static const Exynos4210UartReg exynos4210_uart_regs[] = {
+> >  #define ULCON_STOP_BIT_SHIFT  1
 > >
-> >      dev = qdev_create(NULL, "pl330");
-> > +    qdev_prop_set_uint8(dev, "num_events", nevents);
-> > +    qdev_prop_set_uint8(dev, "num_chnls",  8);
-> >      qdev_prop_set_uint8(dev, "num_periph_req",  nreq);
-> > +
-> > +    qdev_prop_set_uint8(dev, "wr_cap", 4);
-> > +    qdev_prop_set_uint8(dev, "wr_q_dep", 8);
-> > +    qdev_prop_set_uint8(dev, "rd_cap", 4);
-> > +    qdev_prop_set_uint8(dev, "rd_q_dep", 8);
-> > +    qdev_prop_set_uint8(dev, "data_width", width);
-> > +    qdev_prop_set_uint16(dev, "data_buffer_dep", width);
-> >      qdev_init_nofail(dev);
-> >      busdev = SYS_BUS_DEVICE(dev);
-> >      sysbus_mmio_map(busdev, 0, base);
-> > -    sysbus_connect_irq(busdev, 0, irq);
-> > +    sysbus_connect_irq(busdev, 0, irq);         /* abort irq line */
-> > +    for (i = 0; i < nevents; i++) {
-> > +        sysbus_connect_irq(busdev, i + 1, irq); /* event irq lines */
-> > +    }
+> >  /* UART Tx/Rx Status */
+> > +#define UTRSTAT_Rx_TIMEOUT              0x8
+> >  #define UTRSTAT_TRANSMITTER_EMPTY       0x4
+> >  #define UTRSTAT_Tx_BUFFER_EMPTY         0x2
+> >  #define UTRSTAT_Rx_BUFFER_DATA_READY    0x1
+> > @@ -147,6 +149,9 @@ typedef struct Exynos4210UartState {
+> >      ";
+> >      Exynos4210UartFIFO   tx;
+> >
+> > +    QEMUTimer *fifo_timeout_timer;
+> > +    uint64_t wordtime;        /* word time in ns */
 > 
-> It isn't valid to connect multiple qemu_irq outputs to a single
-> input like this. If the hardware logically ORs the irq lines
-> together then you need to instantiate and wire up a TYPE_OR_IRQ
-> device (include/hw/or-irq.h) to do that. Unfortunately QEMU
-> doesn't catch accidental wiring of a qemu_irq to multiple
-> inputs, and it will even sort-of seem to work: the bug is that
-> if two inputs go high, and then one goes low, the destination
-> will get a "signal went low" call even though the first input
-> should still be holding the line high.
+> You need to do something on incoming migration to handle
+> the new fields. This probably looks like a .post_load function
+> that calculates the wordtime based on the register values
+> that have been set by the incoming migration and set the
+> QEMUTimer appropriately.
 > 
-Makes sense. Unfortunately, it isn't easy for the non-initiated to
-figure out how to wire this up. There are several examples, all
-do it differently, and I am having difficulties understanding it.
-I'll try to do it, but it may take a while.
+Doesn't that mean that the .post_load function is missing even today,
+and that it should call exynos4210_uart_update_parameters() ?
 
 Thanks,
 Guenter

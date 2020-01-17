@@ -1,118 +1,84 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp8728096lff;
-        Thu, 16 Jan 2020 10:22:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyNi5WvO2RnUq3SoD6dlpWkiyXU3NNPfZsk9zTFrDX0w7Vg5XUvo1D/4NjjCaQOAkjqRaHu
-X-Received: by 2002:a17:906:814a:: with SMTP id z10mr4250352ejw.62.1579198974020;
-        Thu, 16 Jan 2020 10:22:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579198974; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp9182290lff;
+        Thu, 16 Jan 2020 17:55:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx6XZW2gaxJR40uAtSo+8tS3U9X1w74+zN3vUjXCqsOMzkHJ32iD9cVyq8AoEGXvLFDbyxT
+X-Received: by 2002:a0c:f748:: with SMTP id e8mr5605992qvo.233.1579226125728;
+        Thu, 16 Jan 2020 17:55:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579226125; cv=none;
         d=google.com; s=arc-20160816;
-        b=ez/3aFWIv69/qlEXoSgF4/ox8iN9W3nYpK94+EyMpcVO7hY/GTDQ4AIv68HCFgof7t
-         06xi+eEciV7kQSUcJsfahrhsezoBlnbfGCCU5sclDFfQNkSkv5uAF+Xg1UpPKj4VVWgL
-         rnjEpnimO48HyENgLz+VrXNfBd162tKYzCIE8aAX/iFa7enTTTrOFmPxKD6BIHO6MIGA
-         hvT7voZECOUAM++JI7BmFSh7E30XMRPwKeG4fSe0iDe8LmO31De8NQzNzIGcV/4wriu6
-         H1r3mPbx8zfeOVTPShAfJJrNrgk8CcJ6mkq4IiVZUr2vmeEPq2eUZj53LdFOKC9Nu41n
-         9B1w==
+        b=Zcq2Qy8ucN8NwKESRWdMLd4dp6VVBGIrWi7Vr0l2indnmhV4/326eoUQSRf4uyZocZ
+         10ProKm5a+64PS/dc5NGR5lS9WfP5X2d/kq6ORVrGl8v9Cy89KCp2AoZ1R9TEZRx5f3y
+         XGib405U6GNlVfKEiM/i1/gq/52c1dUmgf9EXL0uV6mRk7DFG3tyd8B+ockQ/JR7gU01
+         7AIjk0o3btHXZYyqdhccq5fFbiXaaocfCd7S4ACyPxVg23N2zcu+35rjVaOXMbCE3wpT
+         nmv5hGJPj/fX2FgMPazYWELYPnjVH1DUY4IhA3wItZE6ozpc5tAWbv7VJLI0bKawOYEw
+         rnCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=rhWoR3Ih7/md/kmjJ9inJ8JlkIrkEedEevUNAczPh9M=;
-        b=N83iO0S0E1CuuPDFplpN8lqB1bhTT+/DBXOIlmvaloOnMhuLT2OaBoxQ1OSiqoYp1k
-         r9HxBWZ6HrpyY9t1T6PRKRcSJRqe5spEr1FHZE3fhvAm4ZlDjfBHgLaEs8npwBxfbwlN
-         5IP4FS4VA0MobE551SvHMZAZrR/pmEzr+gtp2s5bUvIcKyNjMHSS9RZAgTm2LKY3+pTW
-         PnkLt5vLq6kGY1kwV+yhi+a/ekOnjX5iR9OsbdhzNEJ80amYZXi5ZlsuWPhq6k2bLtCI
-         m8VmsfjQvGLmZJ7Bmjz7qI1Saypj+XocGixf64sL3MnF9sS9zi9mPodcruTBXaP9fJgg
-         0hSQ==
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=XdbQ4W4L2k6+Q2FcaQtMhpUVgoCo/Fy0uvwcUw8dQ/A=;
+        b=x+9+HBex+XiCoaoEKtv2s9OywvcurXlCp2HahojpKojqy5obegjLv91Xykzmshd6GT
+         aMasvttiLt9p5Xuhw1+rHw0Mux6w9tdX6svFk6h3yy02gDZlR1h0Y5f5b8pZkfzINCUs
+         taRR8ZKM+LeRS45onz+jMqJOR/LuJdDD9xXdElUE81VP+2gRpmj2OyXQE1VsvtyRBGK8
+         M0elte3Cg8NKa7dOKgkgz3iD9c1qIHUUuUVrR+Nc1C1PGFvQnnVQDFhW0WsS/8+lb2jj
+         CBHeWNiL6iq/hF3o/flMXcM26ewuZSs1w8wFPtj65jmhrOvdL8b0GxJ+CyhNzJwznfSk
+         t22A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EOXx0fFm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dh18si16053743edb.400.2020.01.16.10.22.53
+        by mx.google.com with ESMTPS id u39si13959281qth.337.2020.01.16.17.55.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2020 10:22:54 -0800 (PST)
+        Thu, 16 Jan 2020 17:55:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EOXx0fFm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46668 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1is9nA-0001EN-O9
-	for alex.bennee@linaro.org; Thu, 16 Jan 2020 13:22:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36408)
+	id 1isGr6-000789-WB
+	for alex.bennee@linaro.org; Thu, 16 Jan 2020 20:55:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46621)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1is9mc-0000h2-Qg
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 13:22:22 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1isGqy-000780-Ec
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 20:55:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1is9mZ-00013u-Bv
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 13:22:18 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:43513
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <guoheyi@huawei.com>) id 1isGqw-0006x1-Op
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2020 20:55:16 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2736 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1is9mZ-00013C-7r
- for qemu-arm@nongnu.org; Thu, 16 Jan 2020 13:22:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579198934;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rhWoR3Ih7/md/kmjJ9inJ8JlkIrkEedEevUNAczPh9M=;
- b=EOXx0fFmigb+RrCdY9qUNesx0J7B198DPF4/OOVjOJ8WyWkSHdaAl7t9xXjN6MLhp1n72D
- ehHK+kMWA1jr9FHjS0bg4bGe1Uay46rcG64fy00piZC7xDReQI7CNrmeMJ1Zc2tNI7EoMv
- 3AXwldSok1CByeZ9CWG7wIT7Dbl5Qjs=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-230-gpEisMlOO8m-JwLqwylHhw-1; Thu, 16 Jan 2020 13:22:13 -0500
-Received: by mail-wr1-f69.google.com with SMTP id c17so9482431wrp.10
- for <qemu-arm@nongnu.org>; Thu, 16 Jan 2020 10:22:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=qtCklIdwpPVYr8Ly0ddeLirsK2OiFfS7Z5uBy8Fp7LM=;
- b=TmmTXQLAX2o4nhlWuZRdKiUowLaPhxYl/upwK99aixeLgbBHLiEXpzheWMjJ5vA6mq
- izLqGhkSfheAQlHV6OCGryUV6p/xjGW/bTVs5BYsLp5K2TdYCp7wUNKC+WI++qbwMA3X
- 8/D9gG6NDnSv/3+SBy8N/Ntek+c+iVvoJlnwUOfnnFmJ9drG2jcsi5D2B6OVmevPgcxT
- HjFwAD4Wyjs7Z891/FPaVLmg69k26QC56bj/DetCzQGS8CLhajkGo35tzvOPAPew0MC8
- kOdydxh9MIBEfwb2qUZhTBn6ljJEY7lTR1XdXiHQYiNjfe1N+49UOX+BUQEqHxUoO4vr
- TUoQ==
-X-Gm-Message-State: APjAAAU1a+4fI+S/sGCfq5cYKiiGdnpxYQ4aZoxOBF3UtMkg18UdLC3/
- EujgyRjaVi6+x+bWv98lPbKkcp0DkSC+I0qlAJgzYiCTy07hj40o/VBLbcc/5JCub2aHar/BX/3
- huOFESg2AQW9I
-X-Received: by 2002:a05:600c:248:: with SMTP id 8mr300045wmj.175.1579198932405; 
- Thu, 16 Jan 2020 10:22:12 -0800 (PST)
-X-Received: by 2002:a05:600c:248:: with SMTP id 8mr300030wmj.175.1579198932228; 
- Thu, 16 Jan 2020 10:22:12 -0800 (PST)
-Received: from [10.101.1.81] ([176.12.107.132])
- by smtp.gmail.com with ESMTPSA id 2sm29598142wrq.31.2020.01.16.10.22.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Jan 2020 10:22:11 -0800 (PST)
-Subject: Re: [PATCH v3 18/86] arm:kzm: drop RAM size fixup
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-References: <87sgkgv6dh.wl-Peter.Chubb@data61.csiro.au>
- <1579195564-95459-1-git-send-email-imammedo@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <dc8d8594-0bf8-e6c2-9ce8-94bf5361bca3@redhat.com>
-Date: Thu, 16 Jan 2020 19:22:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1isGqw-0006qE-EE; Thu, 16 Jan 2020 20:55:14 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 3BDB247A1078ECE07340;
+ Fri, 17 Jan 2020 09:55:09 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server id 14.3.439.0; Fri, 17 Jan 2020
+ 09:55:00 +0800
+Subject: Re: [PATCH 2/2] arm/virt/acpi: remove _ADR from devices identified by
+ _HID
+To: Igor Mammedov <imammedo@redhat.com>
+References: <20191219064759.35053-1-guoheyi@huawei.com>
+ <20191219064759.35053-3-guoheyi@huawei.com>
+ <20200105072504-mutt-send-email-mst@kernel.org>
+ <20200105074308-mutt-send-email-mst@kernel.org>
+ <a4992b63-e8e7-7f54-341e-f7dd3d7e8880@huawei.com>
+ <20200116142508.1d82af31@redhat.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <ebbd5d5b-473d-149f-7937-b41c0e80c77d@huawei.com>
+Date: Fri, 17 Jan 2020 09:54:58 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <1579195564-95459-1-git-send-email-imammedo@redhat.com>
-Content-Language: en-US
-X-MC-Unique: gpEisMlOO8m-JwLqwylHhw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20200116142508.1d82af31@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 45.249.212.191
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,75 +90,90 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter.Chubb@data61.csiro.au, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- peter.chubb@nicta.com.au
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, Corey
+ Minyard <cminyard@mvista.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RdNfQF0DS5gt
+X-TUID: kFkXKEwtTpOw
 
-On 1/16/20 6:26 PM, Igor Mammedov wrote:
-> If the user provided too large a RAM size, the code used to
-> complain and trim it to the max size.  Now tht RAM is allocated by
-> generic code, that's no longer possible, so generate an error and
-> exit instead.
->=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> v3:
->   * rephrase commit message in nicer way
->     ("Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au=
->)
->   * reword error message and use size_to_str() to pretty print suggested =
-size
->     ("Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au=
->)
->=20
-> CC: peter.chubb@nicta.com.au
-> CC: peter.maydell@linaro.org
-> CC: qemu-arm@nongnu.org
-> ---
->   hw/arm/kzm.c | 9 +++++----
->   1 file changed, 5 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
-> index 1d5ef28..94cbac1 100644
-> --- a/hw/arm/kzm.c
-> +++ b/hw/arm/kzm.c
-> @@ -25,6 +25,7 @@
->   #include "hw/char/serial.h"
->   #include "sysemu/qtest.h"
->   #include "sysemu/sysemu.h"
-> +#include "qemu/cutils.h"
->  =20
->   /* Memory map for Kzm Emulation Baseboard:
->    * 0x00000000-0x7fffffff See i.MX31 SOC for support
-> @@ -78,10 +79,10 @@ static void kzm_init(MachineState *machine)
->  =20
->       /* Check the amount of memory is compatible with the SOC */
->       if (machine->ram_size > (FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1_S=
-IZE)) {
-> -        warn_report("RAM size " RAM_ADDR_FMT " above max supported, "
-> -                    "reduced to %x", machine->ram_size,
-> -                    FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1_SIZE);
-> -        machine->ram_size =3D FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1_S=
-IZE;
-> +        char *sz =3D size_to_str(FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM=
-1_SIZE);
-> +        error_report("RAM size more than %s is not supported", sz);
 
-Yay! Can you use this pattern the other patches too?
+=E5=9C=A8 2020/1/16 21:25, Igor Mammedov =E5=86=99=E9=81=93:
+> On Thu, 16 Jan 2020 19:56:19 +0800
+> Guoheyi <guoheyi@huawei.com> wrote:
+>
+>> =E5=9C=A8 2020/1/5 20:53, Michael S. Tsirkin =E5=86=99=E9=81=93:
+>>> On Sun, Jan 05, 2020 at 07:34:01AM -0500, Michael S. Tsirkin wrote:
+>>>> On Thu, Dec 19, 2019 at 02:47:59PM +0800, Heyi Guo wrote:
+>>>>> According to ACPI spec, _ADR should be used for device which is on =
+a
+>>>>> bus that has a standard enumeration algorithm. It does not make sen=
+se
+>>>>> to have a _ADR object for devices which already have _HID and will =
+be
+>>>>> enumerated by OSPM.
+>>>>>
+>>>>> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+>>>> Are you sure? I would think this depends on the ID and the device
+>>>> really. E.g. PCI devices all are expected to have _ADR and some of t=
+hem
+>>>> have a _HID.
+>>> To clarify I am not commenting on patches.
+>>> The spec says this:
+>>> 	6.1.5 _HID (Hardware ID)
+>>>
+>>> 	This object is used to supply OSPM with the device=E2=80=99s PNP ID =
+or ACPI ID. 1
+>>>
+>>> 	When describing a platform, use of any _HID objects is optional. How=
+ever, a _HID object must be
+>>>
+>>> 	used to describe any device that will be enumerated by OSPM. OSPM on=
+ly enumerates a device
+>>>
+>>> 	when no bus enumerator can detect the device ID. For example, device=
+s on an ISA bus are
+>>>
+>>> 	enumerated by OSPM. Use the _ADR object to describe devices enumerat=
+ed by bus enumerators
+>>>
+>>> 	other than OSPM.
+>>>
+>>>
+>>> Note: "detect the device ID" not "enumerate the device" which I think
+>>> means there's a driver matching this vendor/device ID.
+>>>
+>>> So it seems fine to have _ADR so device is enumerated, and still have
+>>> _HID e.g. so ACPI driver can be loaded as fallback if there's
+>>> no bus driver.
+>>>
+>>>
+>>> Note I am not saying the patch itself is not correct.
+>>> Maybe these devices are not on any standard bus and that
+>>> is why they should not have _ADR? I have not looked.
+>>>
+>>> I am just saying that spec does not seem to imply _HID and _ADR
+>>> can't coexist.
+>> More reading on the spec, I found a statement as below
+>> (https://uefi.org/sites/default/files/resources/ACPI_6_3_May16.pdf,
+>> section 6.1, on top of page 343):
+> I'd replace 'It does not make sense ...' sentence with pointer to spec
+> and quote below in commit message.
 
-You might want to add:
+Sure; actually I hadn't found this statement in the spec when making the=20
+patch :)
 
-#define FSL_IMX31_SDRAM_SIZE_MAX \
-   (FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1_SIZE)
+Thanks,
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Heyi
 
-> +        g_free(sz);
-> +        exit(EXIT_FAILURE);
->       }
->  =20
->       memory_region_allocate_system_memory(&s->ram, NULL, "kzm.ram",
->=20
+
+>
+>> A device object must contain either an _HID object or an _ADR object,
+>> but should not contain both
+> [...]
+>
+>
+> .
 

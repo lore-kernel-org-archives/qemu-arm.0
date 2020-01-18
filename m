@@ -1,121 +1,123 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp239742lff;
-        Sat, 18 Jan 2020 01:06:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyYYBa2Na61K9uL+sUeur30nS7toCc+p8kG2nURdry1pYGBkBbF1A3s4Gmo2BvhvOA17M1p
-X-Received: by 2002:a17:906:4d43:: with SMTP id b3mr11397657ejv.109.1579338401490;
-        Sat, 18 Jan 2020 01:06:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579338401; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp242500lff;
+        Sat, 18 Jan 2020 01:10:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzVkF1/bCNyvRZ9HPyyMqqdw4gja923JYQGSDQL6faK7Q1+ZrFaWXgU+fXCW3jDP8mFyPLc
+X-Received: by 2002:ae9:f80d:: with SMTP id x13mr37437124qkh.226.1579338611104;
+        Sat, 18 Jan 2020 01:10:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579338611; cv=none;
         d=google.com; s=arc-20160816;
-        b=zsLZH7MRCIzYQCfHclki6K2Ct/fgrur8JCY18AyBu8HvV2bhib9QdHU9OLVkntIKu/
-         1vBgRHUT+98TtX7Zoo8wwjMsAMdMJ7Hnl6X02bqub3P/k1/tdjgqxR8e3EA83ObIjdE3
-         Be4M7XzoxY1ak1nSvYTK5qbHHBHo2ksGXVjXLgpssLpv4HNoAPoohOKMLzWyF9NMdByJ
-         K/9aSWrKSbXnr5rJ47VBSp3XjNq34cFdRe6tpAVz9quyNvqX23VdYIkSn7FI7nYP6yi1
-         TU432bcRrUQEzG5C4W5GZAPR7pSlahxQZHuS8btkCmLtxLuyxMZ976sfV0eFxyM2sKGw
-         Af6g==
+        b=cLyEVhwlaIZENgSyK0YnfVeYtR52DVvMQOeI4eErV06Qu2eFPy7iW8Fyvh5zKeQlIT
+         BWIVt9QJS5Y6UnEiIZQN9U7VmwYLeSpk0uzyM7eFsCMjA8ZLtBqKAahRbh4joNoHxJAV
+         8RbbCS6/MEmHXHVRzLzey4OOkuSByvpBIs1lB45Wyp03w+6qp7zUDhzMCuRIUyRn/oBY
+         9wKrXgNAdXKbq2PCnSDc04CKJAuYl9Bqayi0FoBDosvu6ZCj4Twqul2zn8Rw0dpgS1XX
+         I9I8OmFORdhO1O46tnMWH6QCM8G5ZHxdUZB7hNjlp5BQNNpcPuWOjvdnmaS7Qq2R9o1Y
+         QmIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=P9grBksCdiZbl/XMAPOh0nj+GwsDnMnJJzNB9IiKqeM=;
-        b=e8BYNsFqpp3x8fROmXXVJ8DjfvgBcdeljdG4sA/pHdU7Nov9rAPuv/F9z0vjZ99T7Y
-         LkqV99CUWvgp9E39Um4JXKVjoTZk/cv5Ay+2KNVJH8YNX5iAUoiipb6R5j8USTHHZL6t
-         nw2mvALHCxoNnUbLCtnpg+w6LetIXvUJuY0QrBuJ42v7Wu2rHrs/nQKRxWahLjRA1qJ1
-         /6q3C8abvl0WZebSBjW+aKKBOpzDfrLmc8yskBd8oKBd9Zy7OWtk/fCQyCZ70PSL6OF8
-         1NlCFuhfmu6RJMDxb14UN6rbRwIN2j0Y6bpCD8Byg2uhKf3uUQk+eienKP3RpydQjcYF
-         m/sg==
+        bh=nxwM+ygsbmPLVuVMHFiKlUPZjvSHJyaiMS81XNiGRdo=;
+        b=z0Yp3cRW6n8N7d9pScmNfA6QVlzHqzDPqyAl2J1eHqk26T9pixdZn1JSMbBTj7U18v
+         H4qIRat+cHpiaEh1jhPONxc2iI94unaIvsHt8ueIqJGUvYkrTaeilOGjNWLZArXzO3xe
+         5psKeeCKUkKiDX1zELa9/4f9BdmKAr2ARxY5SfYzc2v4bnx8ts9wGl0v+TUivjTgUBmc
+         JduHpiokfSDH62EVMLEzljWTQ2DL68fuAz61ZQoz7zBIYPh5qUIN4bb8Oxp9J2c7vIGw
+         e8p60Xh7djVJ/NixWFNmE+HjoJMhz18FIA886t83nDIRwzDAFoSnWRy50cmaVGjV3i2x
+         vNxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AOsNvZ0y;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KerHwAdS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9si18734235ejd.276.2020.01.18.01.06.41
+        by mx.google.com with ESMTPS id 145si17301137qkf.352.2020.01.18.01.10.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Jan 2020 01:06:41 -0800 (PST)
+        Sat, 18 Jan 2020 01:10:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AOsNvZ0y;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KerHwAdS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38438 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38456 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isk40-00054C-8W
-	for alex.bennee@linaro.org; Sat, 18 Jan 2020 04:06:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42295)
+	id 1isk7O-0006o9-IU
+	for alex.bennee@linaro.org; Sat, 18 Jan 2020 04:10:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42654)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1isk3q-00053v-OI
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 04:06:31 -0500
+ (envelope-from <philmd@redhat.com>) id 1isk7G-0006jv-Iw
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 04:10:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1isk3o-0002bb-Sz
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 04:06:29 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:24528
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1isk7F-0004el-2X
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 04:10:02 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:54671
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isk3o-0002af-Oz
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 04:06:28 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isk7E-0004ea-V1
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 04:10:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579338387;
+ s=mimecast20190719; t=1579338600;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=P9grBksCdiZbl/XMAPOh0nj+GwsDnMnJJzNB9IiKqeM=;
- b=AOsNvZ0ykDkeP5mYtE25bqoBliV10EEpFNbKkLhQG9dUMJnA017ODl8yEfzmvqt7+zmvYT
- 0k3vdv1NdstR8QhaU+lXF2EaCImkSGRE+W9+0dXKdBwqlBOtMsqtHVO8qssNl5aiE2iz4i
- 9ExM4q6Js2Bu4FyuumUQSmHCgBbl5+M=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-18-gvxKVg5HP7yYtLJh3f93fg-1; Sat, 18 Jan 2020 04:06:26 -0500
-Received: by mail-wm1-f70.google.com with SMTP id h130so2833779wme.7
- for <qemu-arm@nongnu.org>; Sat, 18 Jan 2020 01:06:26 -0800 (PST)
+ bh=nxwM+ygsbmPLVuVMHFiKlUPZjvSHJyaiMS81XNiGRdo=;
+ b=KerHwAdSFgOoCYJFi5vxlFOybc6HeyQUxHM72B9R1rBbHpy6HbrAOPPZfHNUsddqxIouC4
+ T3QEQARLnjb/Xcnos56jBx+GiJ+BeSqIZAl2mZu6XYwa1bKqGpxE+o+ifO8zFdWSIYXaly
+ NX98YCnk8iGGrwWEGdYYSe/x0RVWnRw=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-63-gFRP13z4OPKnqOoqNNap3g-1; Sat, 18 Jan 2020 04:09:57 -0500
+Received: by mail-wr1-f72.google.com with SMTP id y7so11604810wrm.3
+ for <qemu-arm@nongnu.org>; Sat, 18 Jan 2020 01:09:57 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=GcT0DegigFwiZ69V42qbjHs3PQy1tdSqLiTo7CzqPGk=;
- b=egOGeCsQ6E8oylkvjDCCdNL8IqSk636kHVXGc9vlJI58Mn57Y0Q7XSliQmYQIakF9Z
- odwN7ceg3TZQpa9M2N1ldOAS7z4DxQGyTlIHR7OGKOqH6FoBen5FR4vkhksijdiFSWMH
- bXw9DMUISD/G2ZpmWaJOQDJ62PSitGFyjw4/qdM9mKj8gEljIWNmslIxoX7yo0cWbHR6
- lPiTt4Ybhet8/5n+VWFsFSYwEbjkF0cMxjl36ZK56DSZlYulKwPfPKS2mOmeioLndKAc
- wwqQjoZvicR8BSAiDvddlzoDIlK/T34ES5VK5FEyG7CeTdTOToX/ss9c79X4XKaGdCfv
- rjlw==
-X-Gm-Message-State: APjAAAWPJs96qtaPJtFGHWMUrLINfsUERWFCf4vxBAiLnZMoaiz0eeL+
- BsOFJer7PFQezy/f1vJG3GuQyNHKCwgB4xgGkGB73y4gWEId06qvNcsziSOkqDOJB5MLxF/Sm7o
- BAWjMg8/Cnf98
-X-Received: by 2002:adf:f604:: with SMTP id t4mr7020019wrp.33.1579338385056;
- Sat, 18 Jan 2020 01:06:25 -0800 (PST)
-X-Received: by 2002:adf:f604:: with SMTP id t4mr7019991wrp.33.1579338384773;
- Sat, 18 Jan 2020 01:06:24 -0800 (PST)
+ bh=YR/ze6cbF7opX5cNd+rfmrTw6/hZTLCkg5OIhEZRAvw=;
+ b=V6TiaPM+yiybVpJWJuB0+GrGfhXx2ugcwhD8X6FsXcpmc+D0jux83IrQxIcCeYB3La
+ X9NjROuF2Xug07E8wglCsjZcWIUdfnOz5YVtG9DMT50rzhrzApkSK95JZXIpNWuO1AG5
+ ihHOp/NQItMlVBmiDD7gwO/vdKChRCHeyY7kvETjofoMiigXzEYjL6/wWvQX7shTd+Ki
+ iTvDNhN1jbQn4rbZroO5fPygCtYC7lBBHVSk8LoueKldl5uLgeaTwAp5ZTjW8wvwbzcG
+ yF5fJ6LIKXalj5ZiMcW9t0uE4fikebZQ/XCOaxB0lsoTzQMR2n9ZdK0Bo2iNy5OMMhQz
+ Lv+A==
+X-Gm-Message-State: APjAAAW9OG665X+0q4Zq96qFGQ9v8pMk/ICZHrWq3n04g4q8JnLa4f6v
+ rm8Xpb5xFjwHidwRcdlb+L/bEs0AaaAWfGhUnvY5KpvKtDRQWnVNmbE1oV22YxRCKiBGWuyKugx
+ /a5bi38kMmGx9
+X-Received: by 2002:a05:6000:118e:: with SMTP id
+ g14mr7916654wrx.39.1579338595637; 
+ Sat, 18 Jan 2020 01:09:55 -0800 (PST)
+X-Received: by 2002:a05:6000:118e:: with SMTP id
+ g14mr7916634wrx.39.1579338595346; 
+ Sat, 18 Jan 2020 01:09:55 -0800 (PST)
 Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
  [83.57.172.113])
- by smtp.gmail.com with ESMTPSA id h2sm38466419wrv.66.2020.01.18.01.06.23
+ by smtp.gmail.com with ESMTPSA id r5sm37145399wrt.43.2020.01.18.01.09.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Jan 2020 01:06:23 -0800 (PST)
-Subject: Re: [PATCH v3 06/17] hw/arm/allwinner: add CPU Configuration module
+ Sat, 18 Jan 2020 01:09:54 -0800 (PST)
+Subject: Re: [PATCH v3 10/17] hw/arm/allwinner-h3: add Boot ROM support
 To: Niek Linnenbank <nieklinnenbank@gmail.com>
 References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-7-nieklinnenbank@gmail.com>
- <8bbf88b2-867a-c95d-a3ae-e819f7dd08ac@redhat.com>
- <CAPan3Wo3Li4XZJqHhhk5fnY_PnzGZ8YwUwCud8Ge4Z_+BOwW1w@mail.gmail.com>
+ <20200108200020.4745-11-nieklinnenbank@gmail.com>
+ <9c878f16-b18c-cc1a-9e82-40dbdd31b823@redhat.com>
+ <CAPan3WpNxGRfixQp5CwCwTU_boCq4h-BdJgD=KJEhRrGt7S7wg@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <5760dae5-f7cc-5736-7275-e6461f985dbd@redhat.com>
-Date: Sat, 18 Jan 2020 10:06:23 +0100
+Message-ID: <316c94b7-fea2-f44e-6d31-10fb41b09be3@redhat.com>
+Date: Sat, 18 Jan 2020 10:09:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <CAPan3Wo3Li4XZJqHhhk5fnY_PnzGZ8YwUwCud8Ge4Z_+BOwW1w@mail.gmail.com>
+In-Reply-To: <CAPan3WpNxGRfixQp5CwCwTU_boCq4h-BdJgD=KJEhRrGt7S7wg@mail.gmail.com>
 Content-Language: en-US
-X-MC-Unique: gvxKVg5HP7yYtLJh3f93fg-1
+X-MC-Unique: gFRP13z4OPKnqOoqNNap3g-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -131,80 +133,120 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GNfqeghGxGzK
+X-TUID: fahaGdy8/ktt
 
-On 1/15/20 12:04 AM, Niek Linnenbank wrote:
-> On Tue, Jan 14, 2020 at 12:14 AM Philippe Mathieu-Daud=C3=A9=20
+On 1/15/20 12:10 AM, Niek Linnenbank wrote:
+> On Tue, Jan 14, 2020 at 12:28 AM Philippe Mathieu-Daud=C3=A9=20
 > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
 >=20
 >     On 1/8/20 9:00 PM, Niek Linnenbank wrote:
->      > Various Allwinner System on Chip designs contain multiple processo=
-rs
->      > that can be configured and reset using the generic CPU Configurati=
-on
->      > module interface. This commit adds support for the Allwinner CPU
->      > configuration interface which emulates the following features:
+>      > A real Allwinner H3 SoC contains a Boot ROM which is the
+>      > first code that runs right after the SoC is powered on.
+>      > The Boot ROM is responsible for loading user code (e.g. a bootload=
+er)
+>      > from any of the supported external devices and writing the downloa=
+ded
+>      > code to internal SRAM. After loading the SoC begins executing the
+>     code
+>      > written to SRAM. This commits adds emulation of the Boot ROM firmw=
+are
+>      > setup functionality by loading user code from SD card.
 >      >
->      >=C2=A0 =C2=A0* CPU reset
->      >=C2=A0 =C2=A0* CPU status
->      >=C2=A0 =C2=A0* Shared 64-bit timer
+>      > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com
+>     <mailto:nieklinnenbank@gmail.com>>
+>      > ---
+>      >=C2=A0 =C2=A0include/hw/arm/allwinner-h3.h | 23 +++++++++++++++++++=
+++++
+>      >=C2=A0 =C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0| 28 ++++++++++++++++++++++++++++
+>      >=C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0|=C2=A0 3 +++
+>      >=C2=A0 =C2=A03 files changed, 54 insertions(+)
 >      >
-[...]
->      > +=C2=A0 =C2=A0 case REG_CPU0_CTRL:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0/* CPU#0 Control */
->      > +=C2=A0 =C2=A0 case REG_CPU1_CTRL:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0/* CPU#1 Control */
->      > +=C2=A0 =C2=A0 case REG_CPU2_CTRL:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0/* CPU#2 Control */
->      > +=C2=A0 =C2=A0 case REG_CPU3_CTRL:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0/* CPU#3 Control */
->      > +=C2=A0 =C2=A0 case REG_CPU0_STATUS:=C2=A0 =C2=A0 =C2=A0 =C2=A0/* =
-CPU#0 Status */
->      > +=C2=A0 =C2=A0 case REG_CPU1_STATUS:=C2=A0 =C2=A0 =C2=A0 =C2=A0/* =
-CPU#1 Status */
->      > +=C2=A0 =C2=A0 case REG_CPU2_STATUS:=C2=A0 =C2=A0 =C2=A0 =C2=A0/* =
-CPU#2 Status */
->      > +=C2=A0 =C2=A0 case REG_CPU3_STATUS:=C2=A0 =C2=A0 =C2=A0 =C2=A0/* =
-CPU#3 Status */
->      > +=C2=A0 =C2=A0 case REG_CLK_GATING:=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* =
-CPU Clock Gating */
->      > +=C2=A0 =C2=A0 case REG_GEN_CTRL:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 /* General Control */
->      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s->gen_ctrl =3D val;
->      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;
->      > +=C2=A0 =C2=A0 case REG_SUPER_STANDBY:=C2=A0 =C2=A0 =C2=A0/* Super=
- Standby Flag */
->      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s->super_standby =3D val;
->      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;
->      > +=C2=A0 =C2=A0 case REG_ENTRY_ADDR:=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* =
-Reset Entry Address */
->      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s->entry_addr =3D val;
->      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;
->      > +=C2=A0 =C2=A0 case REG_DBG_EXTERN:=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* =
-Debug External */
->      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;
->      > +=C2=A0 =C2=A0 case REG_CNT64_CTRL:=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* =
-64-bit Counter Control */
->      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s->counter_ctrl =3D val;
->      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;
->      > +=C2=A0 =C2=A0 case REG_CNT64_LOW:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0/* 64-bit Counter Low */
->      > +=C2=A0 =C2=A0 case REG_CNT64_HIGH:=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* =
-64-bit Counter High */
+>      > diff --git a/include/hw/arm/allwinner-h3.h
+>     b/include/hw/arm/allwinner-h3.h
+>      > index 5d74cca28e..4b66227ac4 100644
+>      > --- a/include/hw/arm/allwinner-h3.h
+>      > +++ b/include/hw/arm/allwinner-h3.h
+>      > @@ -50,6 +50,7 @@
+>      >=C2=A0 =C2=A0#include "hw/sd/allwinner-sdhost.h"
+>      >=C2=A0 =C2=A0#include "hw/net/allwinner-sun8i-emac.h"
+>      >=C2=A0 =C2=A0#include "target/arm/cpu.h"
+>      > +#include "sysemu/block-backend.h"
+>      >
+>      >=C2=A0 =C2=A0/**
+>      >=C2=A0 =C2=A0 * Allwinner H3 device list
+>      > @@ -130,4 +131,26 @@ typedef struct AwH3State {
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0MemoryRegion sram_c;
+>      >=C2=A0 =C2=A0} AwH3State;
+>      >
+>      > +/**
+>      > + * Emulate Boot ROM firmware setup functionality.
+>      > + *
+>      > + * A real Allwinner H3 SoC contains a Boot ROM
+>      > + * which is the first code that runs right after
+>      > + * the SoC is powered on. The Boot ROM is responsible
+>      > + * for loading user code (e.g. a bootloader) from any
+>      > + * of the supported external devices and writing the
+>      > + * downloaded code to internal SRAM. After loading the SoC
+>      > + * begins executing the code written to SRAM.
+>      > + *
+>      > + * This function emulates the Boot ROM by copying 32 KiB
+>      > + * of data from the given block device and writes it to
+>      > + * the start of the first internal SRAM memory.
+>      > + *
+>      > + * @s: Allwinner H3 state object pointer
+>      > + * @blk: Block backend device object pointer
+>      > + * @errp: Error object pointer for raising errors
+>      > + */
+>      > +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk,
+>      > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Error **errp);
+>      > +
+>      >=C2=A0 =C2=A0#endif /* HW_ARM_ALLWINNER_H3_H */
+>      > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+>      > index e692432b4e..e7b768ad5b 100644
+>      > --- a/hw/arm/allwinner-h3.c
+>      > +++ b/hw/arm/allwinner-h3.c
+>      > @@ -27,6 +27,7 @@
+>      >=C2=A0 =C2=A0#include "hw/char/serial.h"
+>      >=C2=A0 =C2=A0#include "hw/misc/unimp.h"
+>      >=C2=A0 =C2=A0#include "hw/usb/hcd-ehci.h"
+>      > +#include "hw/loader.h"
+>      >=C2=A0 =C2=A0#include "sysemu/sysemu.h"
+>      >=C2=A0 =C2=A0#include "hw/arm/allwinner-h3.h"
+>      >
+>      > @@ -168,6 +169,33 @@ enum {
+>      >=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_GIC_NUM_SPI=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0=3D 128
+>      >=C2=A0 =C2=A0};
+>      >
+>      > +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk,
+>     Error **errp)
+>      > +{
+>      > +=C2=A0 =C2=A0 uint8_t *buffer;
+>      > +=C2=A0 =C2=A0 int64_t rom_size =3D 32 * KiB;
 >=20
->     You forgot to set these. Maybe you can add a int64_t cnt64_diff, set =
-it
->     here to the difference with qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), an=
-d
->     in the read() function return cnt64_diff +
->     qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL).
+>     Why restrict to 32K? The A1 SRAM is 64K.
 >=20
-> OK I'll need to look into that. Currently this timer is not used by=20
-> Linux, NetBSD or U-Boot as far
-> as I know. But since it is there, it should be correct indeed.
+>=20
+> The reason is that the actual Boot ROM on the H3 also uses 32K:
+> https://linux-sunxi.org/BROM
+>=20
+> See the 'U-Boot SPL Limitations' table at the end of the page.
+>=20
+> You can see the comment in the table there regarding the 32 KiB:
+>  =C2=A0 "Sizes larger than 32 KiB are rejected by the BROM. Exactly 32 Ki=
+B is=20
+> fine, as verified by writing a special pattern at the end of the SPL and=
+=20
+> checking it in the SRAM."
+> Probably it would not harm to increase it to the full size of the SRAM,=
+=20
+> but I tried to model
+> the behavior as close to the real hardware as possible.
 
-You might reduce this patch by simply using LOG_UNIMP for these=20
-registers. Than add the patch when you find some use.
-
-We are more confident when reviewing code when we have a way to test it :)
+OK, then please document this difference in the commit description -=20
+such "While the A1 SRAM is 64K, we limit to 32K because ..." - and add a=20
+reference to https://linux-sunxi.org/BROM#U-Boot_SPL_limitations
 

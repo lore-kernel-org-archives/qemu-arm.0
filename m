@@ -1,72 +1,72 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp742570lff;
-        Sat, 18 Jan 2020 11:16:27 -0800 (PST)
-X-Received: by 2002:a7b:cc97:: with SMTP id p23mr10909737wma.89.1579374987232;
-        Sat, 18 Jan 2020 11:16:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579374987; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp742590lff;
+        Sat, 18 Jan 2020 11:16:28 -0800 (PST)
+X-Received: by 2002:a1c:1f56:: with SMTP id f83mr10856868wmf.93.1579374988765;
+        Sat, 18 Jan 2020 11:16:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579374988; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZUDlb49XQtqj6vANI2zu5W69SjpsHvQxFjBomEohcrW+fPtoEEa1TFxZVpzBPJkRzV
-         hwadVoHC+ieh2LZxnR7IlJXM3H6jRJZ3LWfWUzC0pjXV89OztZgLdhrB5v2h1liQ5Sbr
-         bSBY2KaiaJs0EtHZiCNwvIT4kdHVBYmxE85iJAmDPSxvcB9Jaei6ZaSxy4Yq2ohGr6L5
-         2MLkX17Vf81F9grGeuEgexeUWwK9BZ3mSGjrWh9mQgjvxoT+nOLxWAhILwDUYkxcq0DD
-         PRyVSUoymBF1IqAe/CESJY+tRPFTGrskIkiohSczduqGOnFlCY7LoLhNf/zNJXlhfrK3
-         v8tA==
+        b=XHG0aH0V04+LTed7a3tFKbd3T0pKxKbuHvLal4ZquW5Q7VMrLV9cDTGkOqU4udvVd+
+         oEfrfiCeMFjIZvGM2e6lbXW0r0eYJtBm4sqH/SQlKskmY3gbBb3KZm/ecoEf4A1GaWUP
+         aGxpeSH/6ByZvfWMSq92NurG6aMeRDVGA/xQqgfgN3sHRTw79Le8WE5k5abWRf1yVW2S
+         CRKb7fS03423BUeDKDuxV6bW2FlxjjbiQzj/0tEfTFZQq48jfJBbzhlajYq1nLaFyhaY
+         +zFE+ptoHsLkL5F1SCtV28gxjIJG/HbyLGeQTO64YSHRBqAu1N+DMMUH2bpSodD49AsK
+         ON9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=K+cZ6I/QpgXaxA05OKDA44Z96Grs/O31aTUTE91bprM=;
-        b=xfXzqQEeeuhrqp1mIjUm2vFQSXaek40FWmOt+g9xibiTcOtHqP/cW+VDj4WwIlcepo
-         cvg1bI+Y7gOIwwT/cs55CyF2VsKOn/o2RllCKH56+6Y0A0QWXQkZeN5ZOGqrzKEidd38
-         5rQ9cIGZa31ZbcgLz8Dbh8SqESwzjAq3+xWdeeGtBRYPPIIXPa2nQk2u/qoiUUH7E7nG
-         rZ5sjOyIc86gNnSeskJZsLEFsRlaAGebMCbHHKqeOC4eZjK7FyVxlE/kuEq5BK5C5qPH
-         deaRXvQs37K8FFMOyv72HwuQLSPa12pIyJHdpInMDOtd5wB/WrMM4n+f5YRGkcgHDNb7
-         mOBw==
+        bh=vxrD2JWpr3rTdsCECp/XxWuqHq2ybHJ1OCxK1G7l1i0=;
+        b=Y5i7yHsF84P37vj4IPmdKRyamPwNEBNoRPQHfKWTvetaUQkjMMB6ceO3kLyOD3YAn0
+         3XxQ+Boo8P22eX30STVzWeXJa9cQmYGqqymsfXAouxM3XnNGS3ymvNFMiRAtn7hT8NX/
+         /WIj9yKQwgbMwnFJu2Jj5Pgu7t9Xr5w8+fXOFIQyEipttcHEF6lYxPXfzFxChAFltYhe
+         agYCzUUOcLZyMZVcOKKtZtCz93e0Gv96MEUiyJjqe/st8Do2JTTIaz+xU4Mzn/IDv6Ma
+         Hy5Mvicm5Bhj9E6geOnBXdDswZnKvomR6yq2NtdcB9nhOzbfLj/mWsBhtu3gO27yhFue
+         MNWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fan+f77n;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fopJ2RMd;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g14sor6159750wmk.19.2020.01.18.11.16.27
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l9sor13164666wrq.58.2020.01.18.11.16.28
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 18 Jan 2020 11:16:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Sat, 18 Jan 2020 11:16:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fan+f77n;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fopJ2RMd;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=K+cZ6I/QpgXaxA05OKDA44Z96Grs/O31aTUTE91bprM=;
-        b=Fan+f77nzTO2u4vl+CbNzzt6b8TfqkQkLOn49CElsLYfX3g0Q1D3GL4hkCgBsKJCz+
-         dKRXP570N+OmEUOlOoSitVlsdwPBk2HYxUrFa+KoNk8nA3SOTeSPmW7osXYopPja2fXr
-         pM48WxWwKWrSL+1juokIsR5GZNkzfRdcrpb84mGE1sC3U5GA0fJOCd2iai6/g0d9LhKS
-         skbX9QCHPcJ9bkuO4EdC+lCZS2M/2+mRQQn+vtBkOf87AOSo7Y1Gza4VNnyCvFJR7qss
-         hFlc44tlIND9u7J4xBqL5ZJRbI1pFxzWnyDrQA9MaISV3vLMI+fmDXFBzWQ/3pUUuhXX
-         k+dA==
+        bh=vxrD2JWpr3rTdsCECp/XxWuqHq2ybHJ1OCxK1G7l1i0=;
+        b=fopJ2RMd4xZA+wdP2LQ0A4+gSyiffnivy43ZXTloTRSgdIKG59gtwW06QiwMtnlUmq
+         cI9AZv7GZfDVKSs/7JgKvLpto0dkmPiPt9WOgL96gkiPnqpfK26W7Z09iHExhvsOWZ4T
+         umOli1/tHHIJ9DuaQOopk8gDkXOWm/7iIDM1AydGmrSg4lltm5HPsF7Zowwdr4hQ4AW2
+         cVfOwhsGBNcbqZMExllNs9qnD5yNcsl1/Zt8MXQFJz4aEbDCib4r1M60ctiIVZwRN3xJ
+         W7tCydiv/Mjc98ErcKn6WMt9ixC3zbUIU2WxvajPpgAq02cbHhXhncD73wXMP1V/ldGx
+         +Ihw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=K+cZ6I/QpgXaxA05OKDA44Z96Grs/O31aTUTE91bprM=;
-        b=LftzQMQAHSwD/CcO4QGsLMO0/1SZAq1rlAh4v/6GrWU0iScVXCnSqm8/QoqlkXKIic
-         WIcCzorqZ/bTVI2WVlFKg2SJ3PpclRGrA+xWUV0gES0uN8iIyxmVT+jkbzvwTexs9r2K
-         JbQd+dS6BLzvxutFc3hmgluNEEiOaGAj86ak9j042fCNU9UDK+0xLswlxB4GVgkrmdnB
-         FgnjEHV2R2zE98lF5c3WVcGdnKMjRvlisx+p3Hd+mDoZqPiUU7LIC48tXaJlHkcxng4i
-         OaS0Oak5bPa+JcQrYZChLjMwYyHaU8BlkndgDSWpmifoWT9KMwFGg2eBl/fElicQMj+6
-         Lhbg==
-X-Gm-Message-State: APjAAAVELHNUcr1dL3u5L24Kx03XC8k9hCAphVSedez6NapTIFOuB+b1
-	KOi4g7neb61GNWo6jIHMCgw=
-X-Google-Smtp-Source: APXvYqyoSRprmjZR7Gibuqtr+8P7ZS5CeGu8n/nSb06P6XoKX20MrnbivQMxnNp5PJMm4dhIkEK2HQ==
-X-Received: by 2002:a05:600c:2959:: with SMTP id n25mr7665791wmd.185.1579374987022;
-        Sat, 18 Jan 2020 11:16:27 -0800 (PST)
+        bh=vxrD2JWpr3rTdsCECp/XxWuqHq2ybHJ1OCxK1G7l1i0=;
+        b=U7v0lKwQsOpQj3pqTMAuD/Gq8YvPVE3Fe+WSlDuTx7Gw/OyqKK+oVkJsH11RS7FiKC
+         M7KC+gYVCvHpZ9PJ5xFdVWFCpup7sHpGdutDGhcpytZCS+MdGdGNhDmtHvZqVO5EZod4
+         8vukffYgJly/vhF1Ws905T5t2K7h7lylH9CA42ks/bn7uZqJXaCFh4T199QAZocTl/yS
+         8Iq1xgbQh2aBLAjhKRS5F950DlPT6kHGTiFXydVdpbnXEvX8ymeD9w/s6AFxKMtqxhjc
+         wFFyF3/LfURPwqMv7HhsltHUoNe1M7KD+knGwneggRh2CPV5b/BdW1G8LIK+FCpdikul
+         wojg==
+X-Gm-Message-State: APjAAAUV4cz7Ag4py05jmfPdRto9KD/tCgRnwh1MiHpW9Xc3H5UQX1FE
+	+sWS/P7b3plbzXK8Kfu0876aqImg
+X-Google-Smtp-Source: APXvYqzgr85uVMKa56MUfTDgG9FJNJZKYbzwpuDOJELm6p0HEiDkFNMbN3UF3NCanvB0u52zzNYASQ==
+X-Received: by 2002:adf:f244:: with SMTP id b4mr9448075wrp.88.1579374988476;
+        Sat, 18 Jan 2020 11:16:28 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from x1w.redhat.com (113.red-83-57-172.dynamicip.rima-tde.net. [83.57.172.113])
-        by smtp.gmail.com with ESMTPSA id z11sm41339690wrt.82.2020.01.18.11.16.25
+        by smtp.gmail.com with ESMTPSA id z11sm41339690wrt.82.2020.01.18.11.16.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Jan 2020 11:16:26 -0800 (PST)
+        Sat, 18 Jan 2020 11:16:27 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
@@ -79,9 +79,9 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 1/4] Acceptance tests: Extract _console_interaction()
-Date: Sat, 18 Jan 2020 20:16:20 +0100
-Message-Id: <20200118191623.32549-2-f4bug@amsat.org>
+Subject: [PATCH 2/4] Acceptance tests: Add interrupt_interactive_console_until_pattern()
+Date: Sat, 18 Jan 2020 20:16:21 +0100
+Message-Id: <20200118191623.32549-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200118191623.32549-1-f4bug@amsat.org>
 References: <20200118191623.32549-1-f4bug@amsat.org>
@@ -89,75 +89,71 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: 7PjrMo5le8/f
+X-TUID: zjGBiSz3pGo7
 
-Since we are going to re-use the code shared between
-wait_for_console_pattern() and exec_command_and_wait_for_pattern(),
-extract the common part into a local function.
+We need a function to interrupt interactive consoles.
+
+Example: Interrupt U-Boot to set different environment values.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- tests/acceptance/avocado_qemu/__init__.py | 31 +++++++++++++----------
- 1 file changed, 17 insertions(+), 14 deletions(-)
+ tests/acceptance/avocado_qemu/__init__.py | 32 +++++++++++++++++++++--
+ 1 file changed, 30 insertions(+), 2 deletions(-)
 
 diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance/avocado_qemu/__init__.py
-index 6618ea67c1..0a50fcf2be 100644
+index 0a50fcf2be..d4358eb431 100644
 --- a/tests/acceptance/avocado_qemu/__init__.py
 +++ b/tests/acceptance/avocado_qemu/__init__.py
-@@ -55,19 +55,14 @@ def pick_default_qemu_bin(arch=None):
-         return qemu_bin_from_src_dir_path
+@@ -56,13 +56,15 @@ def pick_default_qemu_bin(arch=None):
  
  
--def wait_for_console_pattern(test, success_message, failure_message=None):
--    """
--    Waits for messages to appear on the console, while logging the content
--
--    :param test: an Avocado test containing a VM that will have its console
--                 read and probed for a success or failure message
--    :type test: :class:`avocado_qemu.Test`
--    :param success_message: if this message appears, test succeeds
--    :param failure_message: if this message appears, test fails
--    """
-+def _console_interaction(test, success_message, failure_message,
-+                         send_string):
+ def _console_interaction(test, success_message, failure_message,
+-                         send_string):
++                         send_string, keep_sending=False):
++    assert not keep_sending or send_string
      console = test.vm.console_socket.makefile()
      console_logger = logging.getLogger('console')
      while True:
-+        if send_string:
-+            test.vm.console_socket.sendall(send_string.encode())
-+            send_string = None # send only once
+         if send_string:
+             test.vm.console_socket.sendall(send_string.encode())
+-            send_string = None # send only once
++            if not keep_sending:
++                send_string = None # send only once
          msg = console.readline().strip()
          if not msg:
              continue
-@@ -79,6 +74,17 @@ def wait_for_console_pattern(test, success_message, failure_message=None):
+@@ -74,6 +76,32 @@ def _console_interaction(test, success_message, failure_message,
              fail = 'Failure message found in console: %s' % failure_message
              test.fail(fail)
  
-+def wait_for_console_pattern(test, success_message, failure_message=None):
++def interrupt_interactive_console_until_pattern(test, success_message,
++                                                failure_message=None,
++                                                interrupt_string='\r'):
 +    """
-+    Waits for messages to appear on the console, while logging the content
++    Keep sending a string to interrupt a console prompt, while logging the
++    console output. Typical use case is to break a boot loader prompt, such:
++
++        Press a key within 5 seconds to interrupt boot process.
++        5
++        4
++        3
++        2
++        1
++        Booting default image...
 +
 +    :param test: an Avocado test containing a VM that will have its console
 +                 read and probed for a success or failure message
 +    :type test: :class:`avocado_qemu.Test`
 +    :param success_message: if this message appears, test succeeds
 +    :param failure_message: if this message appears, test fails
++    :param interrupt_string: a string to send to the console before trying
++                             to read a new line
 +    """
-+    _console_interaction(test, success_message, failure_message, None)
- 
- def exec_command_and_wait_for_pattern(test, command,
-                                       success_message, failure_message=None):
-@@ -94,10 +100,7 @@ def exec_command_and_wait_for_pattern(test, command,
-     :param success_message: if this message appears, test succeeds
-     :param failure_message: if this message appears, test fails
++    _console_interaction(test, success_message, failure_message,
++                         interrupt_string, True)
++
+ def wait_for_console_pattern(test, success_message, failure_message=None):
      """
--    command += '\r'
--    test.vm.console_socket.sendall(command.encode())
--    wait_for_console_pattern(test, success_message, failure_message)
--
-+    _console_interaction(test, success_message, failure_message, command + '\r')
- 
- class Test(avocado.Test):
-     def _get_unique_tag_val(self, tag_name):
+     Waits for messages to appear on the console, while logging the content
 -- 
 2.21.1

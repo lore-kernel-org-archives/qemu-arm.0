@@ -1,103 +1,100 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp774692lff;
-        Sat, 18 Jan 2020 12:02:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxlUd5fBZlOdiL0+S9+7C/Yzr/ivkMwAu8La+0cAx5KH2c0pKJwMza2Hu923lLIighVyTiV
-X-Received: by 2002:a17:906:bb0c:: with SMTP id jz12mr13742793ejb.298.1579377765575;
-        Sat, 18 Jan 2020 12:02:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579377765; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp862748lff;
+        Sat, 18 Jan 2020 14:17:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyQN9gU5K/lMk20mNK6KK+xnYYH2mXVgRQCi1TccHx+JAaTRCUVvn+BEATfb/wk+QwAb8KT
+X-Received: by 2002:ac8:220c:: with SMTP id o12mr13900964qto.134.1579385874337;
+        Sat, 18 Jan 2020 14:17:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579385874; cv=none;
         d=google.com; s=arc-20160816;
-        b=dQawHGgG2h/G0e8R/Jqg4iiNMkn80u7gqMyPBPqvjQivhPfJQ+4FgNTgjkuCrMsOan
-         XoPHnk8RxdW7VSw93NMj+BrHSpMDpFpvGoKdv0APZnlNQfRUmoFJ+Tbr6Ff2DEtDsXrj
-         wAWJnAFWRltKML9QFw4vUbWR25HzjrlkEVuHMUh5YwGf7QDTi93n8SvD7DgYkQYMrubl
-         /0ReCq7rh8aa0eENwQKenC3cDsnx1WPBSJrrZlEjYANL7YwiH9dBqOItZSOjGJWBw9nA
-         mk1YcKgJDBtTlJVs5jCHT23PUvN4eiU+ybGX21c2zLT1i3Zvf0O3yyDFdEGJD7wMzWqp
-         Wn7Q==
+        b=qhot8+t2oJHf+rLhNc2trUhhNTLPnQahjJad/frZ56dvOw6FRdEvV4rLacKVPY+C16
+         OZapmdzFuCF0m1Ofg8/bEKqOdtDIVX3pXgzaRX7gj41Exkdp5Bm2WFyEmV4Hxow8DN32
+         8tVVWYOyyz559zljEiLiVqLSnT98+GHKpj1HGzcWFr0poQJvyFXGDemicjrcLMeyrg0J
+         be1D6/JsZ2ZOwRvC6+7Wl6p4b7H1qkjOyhHiCT57Q8bTlCAeuR96UrRfOrI2RBjQdrZk
+         oq/CiAlwSu6ervbQ2vXE7g9/thUpQ23SbpEO5+o3cqqESzgdeBStDJxlgeIfEWV/lq2n
+         COCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=wguOEihUd+VI4+Vn19DhpQntYTdCBaRAm/KrPXqPGF8=;
-        b=nOmJLZWDzyfcgEWEYeKTMRBiIIRil5TJd09bXa1lh0HrmAWsEZCHl736x7R87XWAUM
-         iPs1iBu4l2BT+r6iQ+KGxKpma6bKhhPQCeIPV1eS7jEjSy6o2YpD7P1s6lboxlL9fGhV
-         3ySqcjgVSc6Xz4+pbXB+5zA8Lonvb872pcs6p6vYceoADFLM8M9oeWvOFIdXK9k4lcCK
-         pC+hXIa0RqUUnz1cNTRA03QavVkWQiqOFYvKIyr2rA0Q8HUl0d6TG9/JER+tyhUrEWG3
-         NmAh2nhE3zlb8RNH8pdBfB0yYXWYyU1s4JeW7kOaDkUUA+TG2GMMgAlkQjnU+wS+ZJ/1
-         S4fA==
+        bh=LwHgfidZ+zRbXHrlEI9nla79xjadEOrUICmgJs99C2w=;
+        b=p9flfVYKl7vZNKotUfXbYytfXY8iY/Q/bQXl+Q8JM4Np9xzBVanWnSlp+QhEF9gn3j
+         Hsnerb/liVTSE3V2G5F1M2pow7ssgPLLfKyam1sIVV8ZERrlZwAahTYU7cML5hkPsVTV
+         6jfOCTnqDytmjLu/jjQ7pxTk5NLHhUX8HJhYwLvhniYzLARtml9GK0QAisjcDIRRdUpU
+         owH7ZSPiGHyafs8PT6EXRqB7jpEWQgp6Du1nK+2peXexaP9eBVlLd69WNGaTTMUuUJ4m
+         oObW36NeJwiFS4r2xcMSMbV1Q7OAKDCOKFU5JezVOU6GZZz1KjQx9fGk5zOnywk8t43U
+         OQ2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CDtL90A9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FZvFFaOp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h4si5110035edn.602.2020.01.18.12.02.45
+        by mx.google.com with ESMTPS id a141si17006147qkg.122.2020.01.18.14.17.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Jan 2020 12:02:45 -0800 (PST)
+        Sat, 18 Jan 2020 14:17:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CDtL90A9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FZvFFaOp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44536 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45308 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isuIu-0006L2-40
-	for alex.bennee@linaro.org; Sat, 18 Jan 2020 15:02:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54438)
+	id 1iswPh-0002rj-Lg
+	for alex.bennee@linaro.org; Sat, 18 Jan 2020 17:17:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36364)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1isuIX-0006Hi-N7
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 15:02:22 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iswPY-0002pF-JY
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 17:17:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1isuIV-00084g-Re
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 15:02:21 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:42053)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iswPX-0005Lk-2Y
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 17:17:44 -0500
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:40580)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1isuIV-00081a-LO
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 15:02:19 -0500
-Received: by mail-oi1-x241.google.com with SMTP id 18so25321963oin.9
- for <qemu-arm@nongnu.org>; Sat, 18 Jan 2020 12:02:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1iswPT-0005Jx-Ed; Sat, 18 Jan 2020 17:17:39 -0500
+Received: by mail-il1-x144.google.com with SMTP id c4so24329658ilo.7;
+ Sat, 18 Jan 2020 14:17:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wguOEihUd+VI4+Vn19DhpQntYTdCBaRAm/KrPXqPGF8=;
- b=CDtL90A9z7Nza0eqxTD4PMXXVVu/U8oTfgIteMallKEWYzHRRmfDDPH3nwtUg0Y0uV
- dOFhKZqbIWCxj5unRAkIlDevAtviacQnfnI4KMDj55IedUlG3phUkY2xeCraeSl1GenY
- 7nDTrWnoozAk0jVjQCmh6bFFUMb5saA3vZJu4yPe67kyTGptdsNy3/3SoBVJojiAhl/3
- FzSIfdusNj9WOq2H8uSjlS06iiPhFIw9OVPBcgpdsosaaI0ocb+ddD58w+jMb3C9b2yo
- JmcYVtNudug1r7zeEtTFsmNf6CF9cQw88TWYkqGK6J2jccmcmte8L6sELv1MlzWOIoSe
- 2A2w==
+ :cc; bh=LwHgfidZ+zRbXHrlEI9nla79xjadEOrUICmgJs99C2w=;
+ b=FZvFFaOp7g9FLDsUzuMB/KuUMh7WqymayODsGjNPnoNu8jde+o/sF+I7FwOeHAlkFm
+ 0+afptGK8UFxaaGfPDBboEYqqkikU2qU9jhbywuPgVAtr+Q9EHHUeaXLcpKSe1/WMWwR
+ WW8L8z3z3fNbE2KNeHGpibiy3Utsn2wRNGRYODU9TFaYKLpM5Y0FQNsInM1vLFN3ZBZq
+ FvHufnAaFDbTgGkJ9787r+DYV5zsi4gvKZgSEFnp/02nK0DSr0Af3RjJ0oCNntK8aKRd
+ 2CwmiZ+vT6C01g0AlG09m6XOWph1bbEGLghmPh8iPhtcA9mwi/x3VwWVmB6wm+oEYfUT
+ frJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=wguOEihUd+VI4+Vn19DhpQntYTdCBaRAm/KrPXqPGF8=;
- b=T5bXOSU10+Z6KFBnCXfGKCWia2zBbgIQoeNkcpToeTtcxr9prbpU4+Kfw+R74rDX4f
- cWH3112gI9lABshaWd9GTacFM/n3fVEmN5ZacqbzVZNtua8ASyb33JWRNC0DWB/Tn6XF
- ktZS+8PlXarryTEB6zZmXVBZn7a69vT37OrbeqDzJWMEMm73blsY5HaHs75y5fqcoxSr
- cHBRJlmxCmJ9aTJ+/i0ovR4/ykkhmRN8pdJFPnX8EqkxZQzRTMGdkfaF+wDp8hgjf/Xq
- W04EjsgLYvmpLat5TJ7NwamYEzlo70mki9tWI/kD5cCJVk+I4KvWPH6teF4fcQ99QKYk
- D8ug==
-X-Gm-Message-State: APjAAAUJBLpquvhtg+VxwjJIp6uGKtaP69ba8iGe79GbQctBcDrvH5ty
- +cT/Sb9Ab+Y81TYVrzq4/griPO3Zxz8brF1eDjg43w==
-X-Received: by 2002:aca:f484:: with SMTP id s126mr7758304oih.48.1579377737376; 
- Sat, 18 Jan 2020 12:02:17 -0800 (PST)
+ bh=LwHgfidZ+zRbXHrlEI9nla79xjadEOrUICmgJs99C2w=;
+ b=Fv+N2H+VhnKQpiNPP5PjWrnAgZ38UPpvgXHOtuduArGugIRMfpvC8Zfwr+0bEjNyS8
+ n+XLnhJpYFJ5Wb/4nRBxuVWo5gjGFHqHyoAc00T3IPfDy8gXYaVxRU1Dno02eTExG6gV
+ mkJrPJ05U4PveWINCWbKoP3h+P1BNfj6ytE2wqVnoUSnXc9Zz4dUXpDIQlS6/ErpnTvc
+ sbueSqjPa84UVm57Wn+GHLQorllVfM3W77c/1cWNKeJxxCgDxGn8uzk+nhFCbOl5eACF
+ 0SIA55To5J3CaiKoUrHsElyYTAXLKzgGrTTNcuEjNOYuO0vY8qi3wvN11VylXzxZWADT
+ v2pg==
+X-Gm-Message-State: APjAAAXPJG2Ip6o4DRtYD3gLfo1lv7cd7Z0JmM1Gspi4WSpADsE3B06x
+ ztyc2Ri7zNfeOfwJEKH14Wg9UAwTpjUWwwERIgM=
+X-Received: by 2002:a92:a103:: with SMTP id v3mr4657039ili.265.1579385858514; 
+ Sat, 18 Jan 2020 14:17:38 -0800 (PST)
 MIME-Version: 1.0
-References: <20200110203942.5745-1-linux@roeck-us.net>
- <20200110203942.5745-7-linux@roeck-us.net>
- <CAFEAcA_v98GcR06PWfm+=VnteQN_Q7iKK4wobAg6NrVSP1AyDg@mail.gmail.com>
- <20200117182939.GC13396@roeck-us.net>
- <CAFEAcA9zWeW1k-K7qVzCSOA70BmOCa9onT2z_QUQK-=0AJ+NjQ@mail.gmail.com>
- <7a9967c6-a370-9137-10fd-095113dd9852@roeck-us.net>
-In-Reply-To: <7a9967c6-a370-9137-10fd-095113dd9852@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 18 Jan 2020 20:02:06 +0000
-Message-ID: <CAFEAcA99CgreMMeTH+nmnY+6OU2xY3A-db6MfBuU8i_MCA+y3w@mail.gmail.com>
-Subject: Re: [PATCH 6/6] hw/arm/exynos4210: Connect serial port DMA busy
- signals with pl330
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
+References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
+ <20200108200020.4745-7-nieklinnenbank@gmail.com>
+ <8bbf88b2-867a-c95d-a3ae-e819f7dd08ac@redhat.com>
+ <CAPan3Wo3Li4XZJqHhhk5fnY_PnzGZ8YwUwCud8Ge4Z_+BOwW1w@mail.gmail.com>
+ <5760dae5-f7cc-5736-7275-e6461f985dbd@redhat.com>
+In-Reply-To: <5760dae5-f7cc-5736-7275-e6461f985dbd@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Sat, 18 Jan 2020 23:17:27 +0100
+Message-ID: <CAPan3WpLzg0yzkgj29t3QdFczNsFwqubMUa1_xnqrO2RJMgxaA@mail.gmail.com>
+Subject: Re: [PATCH v3 06/17] hw/arm/allwinner: add CPU Configuration module
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="0000000000000f646a059c716d30"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+X-Received-From: 2607:f8b0:4864:20::144
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,31 +106,189 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +MeJgoyQGRn5
+X-TUID: GkMa3iOtiB39
 
-On Sat, 18 Jan 2020 at 15:08, Guenter Roeck <linux@roeck-us.net> wrote:
-> Do only the pointers have to be in Exynos4210State, or the entire
-> data structures ? In the armsse code it looks like it is the complete
-> data structures.
+--0000000000000f646a059c716d30
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Either works. Embedding the entire data structure is the more
-"modern" approach, but we don't generally go to the effort of
-converting from the older style to the newer.
+On Sat, Jan 18, 2020 at 10:06 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
+.com>
+wrote:
 
-> Also, it seems to me that this means that not only pl330 and uart states
-> are affected, but everything created with qdev_create(). If so, the entire
-> file needs a serious rework, not just its pl330 / uart initialization.
-> Am I missing something ?
+> On 1/15/20 12:04 AM, Niek Linnenbank wrote:
+> > On Tue, Jan 14, 2020 at 12:14 AM Philippe Mathieu-Daud=C3=A9
+> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
+> >
+> >     On 1/8/20 9:00 PM, Niek Linnenbank wrote:
+> >      > Various Allwinner System on Chip designs contain multiple
+> processors
+> >      > that can be configured and reset using the generic CPU
+> Configuration
+> >      > module interface. This commit adds support for the Allwinner CPU
+> >      > configuration interface which emulates the following features:
+> >      >
+> >      >   * CPU reset
+> >      >   * CPU status
+> >      >   * Shared 64-bit timer
+> >      >
+> [...]
+> >      > +    case REG_CPU0_CTRL:         /* CPU#0 Control */
+> >      > +    case REG_CPU1_CTRL:         /* CPU#1 Control */
+> >      > +    case REG_CPU2_CTRL:         /* CPU#2 Control */
+> >      > +    case REG_CPU3_CTRL:         /* CPU#3 Control */
+> >      > +    case REG_CPU0_STATUS:       /* CPU#0 Status */
+> >      > +    case REG_CPU1_STATUS:       /* CPU#1 Status */
+> >      > +    case REG_CPU2_STATUS:       /* CPU#2 Status */
+> >      > +    case REG_CPU3_STATUS:       /* CPU#3 Status */
+> >      > +    case REG_CLK_GATING:        /* CPU Clock Gating */
+> >      > +    case REG_GEN_CTRL:          /* General Control */
+> >      > +        s->gen_ctrl =3D val;
+> >      > +        break;
+> >      > +    case REG_SUPER_STANDBY:     /* Super Standby Flag */
+> >      > +        s->super_standby =3D val;
+> >      > +        break;
+> >      > +    case REG_ENTRY_ADDR:        /* Reset Entry Address */
+> >      > +        s->entry_addr =3D val;
+> >      > +        break;
+> >      > +    case REG_DBG_EXTERN:        /* Debug External */
+> >      > +        break;
+> >      > +    case REG_CNT64_CTRL:        /* 64-bit Counter Control */
+> >      > +        s->counter_ctrl =3D val;
+> >      > +        break;
+> >      > +    case REG_CNT64_LOW:         /* 64-bit Counter Low */
+> >      > +    case REG_CNT64_HIGH:        /* 64-bit Counter High */
+> >
+> >     You forgot to set these. Maybe you can add a int64_t cnt64_diff, se=
+t
+> it
+> >     here to the difference with qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
+> and
+> >     in the read() function return cnt64_diff +
+> >     qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL).
+> >
+> > OK I'll need to look into that. Currently this timer is not used by
+> > Linux, NetBSD or U-Boot as far
+> > as I know. But since it is there, it should be correct indeed.
+>
+> You might reduce this patch by simply using LOG_UNIMP for these
+> registers. Than add the patch when you find some use.
+>
+> We are more confident when reviewing code when we have a way to test it :=
+)
+>
+>
+True indeed. I'll just remove the 64-bit counter from this patch. Thanks!
 
-Yeah, all that stuff is broken, but don't feel you need to fix it.
-You just brought the pl330 pointers to my attention specifically
-by declaring locals in this patch, at which point it's just
-as easy to put those pointers in the state struct where they
-should be.
+Regards,
+Niek
 
-thanks
--- PMM
+
+--=20
+Niek Linnenbank
+
+--0000000000000f646a059c716d30
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Sat, Jan 18, 2020 at 10:06 AM Phil=
+ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
+hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex">On 1/15/20 12:04 AM, Niek Linnenbank wrote:<br>
+&gt; On Tue, Jan 14, 2020 at 12:14 AM Philippe Mathieu-Daud=C3=A9 <br>
+&gt; &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redh=
+at.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.com" target=3D"_blank=
+">philmd@redhat.com</a>&gt;&gt; wrote:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0On 1/8/20 9:00 PM, Niek Linnenbank wrote:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Various Allwinner System on Chip designs cont=
+ain multiple processors<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; that can be configured and reset using the ge=
+neric CPU Configuration<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; module interface. This commit adds support fo=
+r the Allwinner CPU<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; configuration interface which emulates the fo=
+llowing features:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* CPU reset<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* CPU status<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0* Shared 64-bit timer<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+[...]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CPU0_CTRL:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0/* CPU#0 Control */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CPU1_CTRL:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0/* CPU#1 Control */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CPU2_CTRL:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0/* CPU#2 Control */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CPU3_CTRL:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0/* CPU#3 Control */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CPU0_STATUS:=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0/* CPU#0 Status */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CPU1_STATUS:=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0/* CPU#1 Status */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CPU2_STATUS:=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0/* CPU#2 Status */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CPU3_STATUS:=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0/* CPU#3 Status */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CLK_GATING:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 /* CPU Clock Gating */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_GEN_CTRL:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* General Control */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;gen_ctrl =
+=3D val;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_SUPER_STANDBY:=C2=A0 =
+=C2=A0 =C2=A0/* Super Standby Flag */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;super_stan=
+dby =3D val;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_ENTRY_ADDR:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 /* Reset Entry Address */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;entry_addr=
+ =3D val;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_DBG_EXTERN:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 /* Debug External */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CNT64_CTRL:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 /* 64-bit Counter Control */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;counter_ct=
+rl =3D val;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CNT64_LOW:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0/* 64-bit Counter Low */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_CNT64_HIGH:=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 /* 64-bit Counter High */<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0You forgot to set these. Maybe you can add a int64_=
+t cnt64_diff, set it<br>
+&gt;=C2=A0 =C2=A0 =C2=A0here to the difference with qemu_clock_get_ns(QEMU_=
+CLOCK_VIRTUAL), and<br>
+&gt;=C2=A0 =C2=A0 =C2=A0in the read() function return cnt64_diff +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL).<br>
+&gt; <br>
+&gt; OK I&#39;ll need to look into that. Currently this timer is not used b=
+y <br>
+&gt; Linux, NetBSD or U-Boot as far<br>
+&gt; as I know. But since it is there, it should be correct indeed.<br>
+<br>
+You might reduce this patch by simply using LOG_UNIMP for these <br>
+registers. Than add the patch when you find some use.<br>
+<br>
+We are more confident when reviewing code when we have a way to test it :)<=
+br>
+<br>
+</blockquote></div><div><br></div><div>True indeed. I&#39;ll just remove th=
+e 64-bit counter from this patch. Thanks!</div><div><br></div><div>Regards,=
+</div><div>Niek<br></div><div><br></div><br>-- <br><div dir=3D"ltr" class=
+=3D"gmail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></d=
+iv></div></div>
+
+--0000000000000f646a059c716d30--

@@ -1,99 +1,99 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp893077lff;
-        Sat, 18 Jan 2020 15:04:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqww6xbf/CYdbHf6HOI9NPUlz0R6JGkm/w8Vzzm2Gpkecy3cOwx/N45iA8W4PIqcmowhP7eK
-X-Received: by 2002:aed:36e5:: with SMTP id f92mr14073830qtb.354.1579388678382;
-        Sat, 18 Jan 2020 15:04:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579388678; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp911482lff;
+        Sat, 18 Jan 2020 15:29:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwp1A57EMivm1fi/NuEuOb7dxajTAPvLzbrnDMb0WYj6ShZlw8YjovoiJ1yuC1ooQUtbnjd
+X-Received: by 2002:a05:6214:13a8:: with SMTP id h8mr13691785qvz.41.1579390163739;
+        Sat, 18 Jan 2020 15:29:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579390163; cv=none;
         d=google.com; s=arc-20160816;
-        b=wgpYkI0NiWGwhbVrag9ApOHfSWXvkTMVmlHJdcVEaOG7koobXHng3V7lCGEdPBdKPv
-         0+L687biIFFLlpuMVmeIlNm4dpyJl6/BFmV6WZWJsytMOA1GcaMb/I3JbXwBqC5BsNBR
-         o4CeMNctQjixy0gGmitFG+Ky3SQCgwrm6xsEIBITWaQ5pRFh0HRW1pfRQeB/mAakkiVF
-         98PGsZFRqWZ5EbFuAYDCggc6vFO2/B3igJdgYrbQMJ7FelsIVQrCKzGP42ZnMyl1SR4N
-         Vh121ivO8zgARFaJEMeKLBUL6hgmmbzX/49vHqDWwlQwIYMHElGWGINtilVLxO6fJr4n
-         t7YA==
+        b=qDeZKRscMp6YObAkMwNyx09uqaLY1T+xI1k1v5iyML80WSdSlSqju5Pd4ig8+o2Xi+
+         7g7MF2LPgQZA1IBg83mtmRWJNzN5PMmC9486altqGqsVDCtao63W49likVgT2+1+O4CU
+         bD+a0HD7CGX59MPi5fNweMr0rU8dRNMUHeycbVYH4ShUFJVSshg6uhb2lqxB2sZOMai6
+         0jN6nSAc7UxpG12OqqsfWPWtSY3Ka38JBjs7x3k1n8YU5rrRV1febjhERFqNRH6DTb+W
+         TNq1OYuZi9akOMtfbhX77jT2tAzjsCHeUfOsfU9Y8VNcYHvbDviz7hg9c/FuswUy8Mdm
+         f/0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=bAuxKRd+MEfvHonNVyrC8gyyQ28KNWr8dj+5bsmwGjE=;
-        b=adOr4di9XYDgRFTzBimLqNEeCNei1hKtLCeLQ1ymqLcl68WmPmB2NopqFPeyh2qr3w
-         O4P9lfyEr00/eoGllNzLk56bzGngf1eCzhhg8HSx6ydbTSB2JPXaZGR7muxjzvgJGGyz
-         Iuti1NjP5v2xCbcGBSX6QCwS1LeZ0f5Smf16txyL0dSZQsAKZi8eefdobH2BCR0HAfHO
-         yASu5P8tDNsX/8jg1JQ8DiqL6ugOh39L8xU8zMxXQIOZOpFUfyDxdCeF6VUocTOM4dC2
-         YtP9VJGszfajv++bFAbiO85bvbP6PBO0noA+3W4Ks+0XknEl2jwvLH3LKRcNONXCYWgn
-         X+Dg==
+        bh=Zw3S/Be/mVikt/giv2OItRvu2uInDpVhbCy9MsAMSi0=;
+        b=03OFD54T3bp0Wn0U2YdwGaQCLe0gGJiG63Fj0I+x6FrlVgi1vmGdqFj8Nqlsyl482T
+         g7MekIu25lYHQgzta9mmZbuttPyDaMGhnHSfrEuMSw+saeQ01OsN191VnZgC1N12HEJb
+         A4Uextxm15p2nzVHu6ITK3Leues/hGAN09piusGDePMEZs8BBgJCISDHHyTZ//tV/u5f
+         0ofVWsfB4Yckn+b2xGvuGyNAMNuR2jI/NpBH0f5n3DMcqm68mH6otyoBuGQWOtaimUzy
+         sWLapSe1EJO7pXyV0czjEdfqa5N8NOMpVWLkaiy4obQJj7N8olmxUH/ZBCjOBPjXdtit
+         sl0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nNJdoK8z;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g8Kw9nfb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16si17630012qvw.20.2020.01.18.15.04.38
+        by mx.google.com with ESMTPS id k10si16577057qvu.136.2020.01.18.15.29.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Jan 2020 15:04:38 -0800 (PST)
+        Sat, 18 Jan 2020 15:29:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nNJdoK8z;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g8Kw9nfb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45638 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isx8v-0001Kn-P5
-	for alex.bennee@linaro.org; Sat, 18 Jan 2020 18:04:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39825)
+	id 1isxWt-0008Pj-4J
+	for alex.bennee@linaro.org; Sat, 18 Jan 2020 18:29:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41705)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1isx8l-0001HT-Ds
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 18:04:29 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1isxWi-0008Ma-1j
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 18:29:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1isx8j-0007cZ-48
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 18:04:27 -0500
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:46314)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1isxWg-0007hi-Dn
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 18:29:11 -0500
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:43034)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1isx8e-0007Wx-Oe; Sat, 18 Jan 2020 18:04:21 -0500
-Received: by mail-il1-x141.google.com with SMTP id t17so24331032ilm.13;
- Sat, 18 Jan 2020 15:04:20 -0800 (PST)
+ id 1isxWc-0007X3-Hn; Sat, 18 Jan 2020 18:29:06 -0500
+Received: by mail-il1-x143.google.com with SMTP id v69so24357347ili.10;
+ Sat, 18 Jan 2020 15:29:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bAuxKRd+MEfvHonNVyrC8gyyQ28KNWr8dj+5bsmwGjE=;
- b=nNJdoK8z1wb2bgulAUn4wyU8CcyL5xj34pqR0l+bWXea9g2OGaZKluvnQGCrAPozXs
- yq2H+IBXGlqeqKC/Zh1fgwTVKhzvZa4Z9grugxn8yh5mAQ3eRKr489R0rN4OhuoNHCoX
- 2AduMN+3D9J6L/QR950H3MkMuS8uVhlr9g3LfDDy1deihXLTpcrs6NCkYSeOEYBgxJKg
- Vlyj9i2ODj5qNDfIGidDwKncw4AhKioy//Z0HKcdSZURwuGJPUzYTAJUico49hCqLASh
- 1cQWZABByFPVzrAv4ZyGUtkHkoKpra7IpV2ERVt6JPrgIJ8wIr2csQRlhS1bz3utHrf2
- Ep/Q==
+ :cc; bh=Zw3S/Be/mVikt/giv2OItRvu2uInDpVhbCy9MsAMSi0=;
+ b=g8Kw9nfbYpvuzL4FiZwgpm2eUBOgzD2A1k9wt227ZbYz1rQ0b9bkZgLdATuTRk5mfW
+ S08dUAxXazljkmdEouQv4C0jJLWe7x7ZpBFMJnPjP8bUYmtDMS/QKc0vh1Xq+T1Jw+55
+ C7SSvv/uA0yN1Y28IjqDrIhtnSmFEPIDHsFCzYB+aAlzK2c7WVCgt4dhyWcwXz2JQCS/
+ bDpPSipPcsXkDbqun/FP+40ayCBwoaHb74ITaCOfjExBWg7THwk3WPlO7k37TDa/bd+y
+ 233ALH434xwEGUgOMmqv9NyNhHnECYl2TQIob7/9/zQk7pAL8hkZMqaR+oKkdzqBkwOD
+ qSOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=bAuxKRd+MEfvHonNVyrC8gyyQ28KNWr8dj+5bsmwGjE=;
- b=rEnersgmvWxUjQi9WchZ6HClwZSBkKOuikbwwFZ5EKE9r0itb194toknJoKZ2haMnD
- Mxd122obmHTaRA3YU33J+0vDn21Qh83FuUFqx8S7bU3vifx4cdbH/v+dfTFf/smg5Gbp
- MgWvSShN/U/1dTVwfSvVqh+FCqZcxDAc5R+LNW6OWFxPSF4dKsVebfOEKXjBHD1NfChj
- X3FnXO7EhHPwSVjAUu1GXLBXD12NHTUrzE61e6NcaYf7I7ROJ9W4ZXmAFaNvM0axshpt
- 7hc+oWH1dfQNSsriRFRBz/7add+dAGuY9NtIFjIwLGjr5MSCFm0lN1h+wvRciYFzKqML
- oDTQ==
-X-Gm-Message-State: APjAAAUepgTl1S1oAbJeDq7BFEwxiSXSLB+T4epfcS8B0ytCfd0GnDBw
- 1VH8dOrOgIAr7HkoYSELB7238M946AK9PNyNoGk=
-X-Received: by 2002:a92:c647:: with SMTP id 7mr4819374ill.28.1579388659289;
- Sat, 18 Jan 2020 15:04:19 -0800 (PST)
+ bh=Zw3S/Be/mVikt/giv2OItRvu2uInDpVhbCy9MsAMSi0=;
+ b=ICwfjygYUP0h5qxnjl+jl22fxU3vXLBGDSJdrBlKu1J4HkXXIarPUmykTB+PUnTYHg
+ NA370Ul0mwU3E3tFJcY14ueMi9hmVJHttQjIjGDiHG7x6zZQKpdHBr5K2T4NwMosjf2a
+ e3iQl+CiAGEzi9GwvQYiiMcuto1r0uuF9uZJFxRDwvw6bFlcaplf2Np+LWQbCook+LcI
+ 5b80O/hi+CARNEQ5IqUuGQ9W/4nihqoIUKuEDqbThP0b9iNUbHHCnlKxwrYvHs/Z4lWt
+ ZpuHsrY9vdBaHU5NCGWyLPsP6SW1LCsaTwM54micjeXa4bvy9qI0nRbm8lXWO8v6r2Lk
+ RlJw==
+X-Gm-Message-State: APjAAAWFIn+MMJkBbhopaK7lni1zLmuPf8EAOVxwPw3g3erUAT6VkmqL
+ QAkZw5tuSdvDDFPismvGKLe8Bmx1u7IaxT31hXs=
+X-Received: by 2002:a92:af08:: with SMTP id n8mr4581175ili.217.1579390145788; 
+ Sat, 18 Jan 2020 15:29:05 -0800 (PST)
 MIME-Version: 1.0
 References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-14-nieklinnenbank@gmail.com>
- <5b20d022-f3f8-4913-b157-73f42808a4c0@redhat.com>
-In-Reply-To: <5b20d022-f3f8-4913-b157-73f42808a4c0@redhat.com>
+ <20200108200020.4745-4-nieklinnenbank@gmail.com>
+ <CAPan3Woz1KdHpPA87ZfgzF+GE=RGOFDGdpDD3aMVkuUJwNSQNA@mail.gmail.com>
+ <6dda3ab6-f537-8864-55ef-20d5d523f416@redhat.com>
+In-Reply-To: <6dda3ab6-f537-8864-55ef-20d5d523f416@redhat.com>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sun, 19 Jan 2020 00:04:08 +0100
-Message-ID: <CAPan3Wq854B3K7S4Cdk4A9smpmQdtf+dybs4Z-RxzXHAFAU7Vw@mail.gmail.com>
-Subject: Re: [PATCH v3 13/17] tests/boot_linux_console: Add a quick test for
- the OrangePi PC board
+Date: Sun, 19 Jan 2020 00:28:54 +0100
+Message-ID: <CAPan3WpJjA1c08qbWBm7pvkvdmBV5mouCNwT9A5NSX96gBSiPQ@mail.gmail.com>
+Subject: Re: [PATCH v3 03/17] hw/arm/allwinner-h3: add Clock Control Unit
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000ffd7d0059c721374"
+Content-Type: multipart/alternative; boundary="0000000000009a008a059c726cb4"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::141
+X-Received-From: 2607:f8b0:4864:20::143
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,292 +105,276 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ QEMU Developers <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8LdZyvO1KpCN
+X-TUID: e4KROYBpyhud
 
---000000000000ffd7d0059c721374
+--0000000000009a008a059c726cb4
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Sat, Jan 18, 2020 at 12:22 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-.com>
+Hi Philippe,
+
+On Sat, Jan 18, 2020 at 4:37 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
 wrote:
 
-> On 1/8/20 9:00 PM, Niek Linnenbank wrote:
-> > From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >
-> > This test boots a Linux kernel on a OrangePi PC board and verify
-> > the serial output is working.
-> >
-> > The kernel image and DeviceTree blob are built by the Armbian
-> > project (based on Debian):
-> > https://www.armbian.com/orange-pi-pc/
-> >
-> > If ARM is a target being built, "make check-acceptance" will
-> > automatically include this test by the use of the "arch:arm" tags.
-> >
-> > Alternatively, this test can be run using:
-> >
-> >    $ make check-venv
-> >    $ ./tests/venv/bin/avocado --show=3Dconsole,app run -t
-> machine:orangepi-pc tests/acceptance/boot_linux_console.py
-> >    JOB ID     : 2e4d15eceb13c33672af406f08171e6e9de1414a
-> >    JOB LOG    : ~/job-results/job-2019-12-17T05.46-2e4d15e/job.log
-> >    (1/1)
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
-:
-> >    console: Uncompressing Linux... done, booting the kernel.
-> >    console: Booting Linux on physical CPU 0x0
-> >    console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version
-> 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET
-> 2019
-> >    console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7),
-> cr=3D50c5387d
-> >    console: CPU: div instructions available: patching division code
-> >    console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing
-> instruction cache
-> >    console: OF: fdt: Machine model: Xunlong Orange Pi PC
-> >    console: Memory policy: Data cache writealloc
-> >    console: OF: reserved mem: failed to allocate memory for node
-> 'cma@4a000000'
-> >    console: cma: Failed to reserve 128 MiB
-> >    console: psci: probing for conduit method from DT.
-> >    console: psci: PSCIv0.2 detected in firmware.
-> >    console: psci: Using standard PSCI v0.2 function IDs
-> >    console: psci: Trusted OS migration not required
-> >    console: random: get_random_bytes called from start_kernel+0x8d/0x3c=
-2
-> with crng_init=3D0
-> >    console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r8192 d24308
-> u73728
-> >    console: Built 1 zonelists, mobility grouping on.  Total pages: 3248=
-0
-> >    console: Kernel command line: printk.time=3D0 console=3DttyS0,115200
-> >    PASS (8.59 s)
-> >    JOB TIME   : 8.81 s
-> >
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> > [NL: rename in commit message Raspbian to Armbian]
-> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > ---
-> >   tests/acceptance/boot_linux_console.py | 26 +++++++++++++++++++++++++=
-+
-> >   1 file changed, 26 insertions(+)
-> >
-> > diff --git a/tests/acceptance/boot_linux_console.py
-> b/tests/acceptance/boot_linux_console.py
-> > index 9c6aa2040a..b58308d724 100644
-> > --- a/tests/acceptance/boot_linux_console.py
-> > +++ b/tests/acceptance/boot_linux_console.py
-> > @@ -400,6 +400,32 @@ class BootLinuxConsole(Test):
-> >           self.wait_for_console_pattern('Boot successful.')
-> >           # TODO user command, for now the uart is stuck
-> >
-> > +    def test_arm_orangepi(self):
-> > +        """
-> > +        :avocado: tags=3Darch:arm
-> > +        :avocado: tags=3Dmachine:orangepi-pc
-> > +        """
-> > +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
-> > +
->  'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
-> > +        deb_hash =3D '1334c29c44d984ffa05ed10de8c3361f33d78315'
-> > +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
-> > +        kernel_path =3D self.extract_from_deb(deb_path,
-> > +
-> '/boot/vmlinuz-4.20.7-sunxi')
-> > +        dtb_path =3D
-> '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
-> > +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
-> > +
-> > +        self.vm.set_machine('orangepi-pc')
+> Hi Niek,
 >
-> Please remove the vm.set_machine() calls.
+> On 1/13/20 8:18 PM, Niek Linnenbank wrote:
+> > Hi,
+> >
+> > Just a friendly reminder for review of this patch and the others in thi=
+s
+> > series
+> > that don't yet have a reviewed-by tag :-)
 >
-
-OK, I'll also remove them vm.set_machine() calls in the other 3 patches.
+> You are right to ping the list after a week.
+>
+> Cc'ing Damien for this particular patch, he might have good advises.
+>
+>
+> Looking at the stats from your cover:
+>
+>   include/hw/arm/allwinner-h3.h          | 164 +++++
+>   include/hw/misc/allwinner-cpucfg.h     |  54 ++
+>   include/hw/misc/allwinner-h3-ccu.h     |  67 ++
+>   include/hw/misc/allwinner-h3-dramc.h   | 107 +++
+>   include/hw/misc/allwinner-h3-sysctrl.h |  68 ++
+>   include/hw/net/allwinner-sun8i-emac.h  | 103 +++
+>   include/hw/rtc/allwinner-rtc.h         | 129 ++++
+>   include/hw/sd/allwinner-sdhost.h       | 136 ++++
+>   hw/arm/allwinner-h3.c                  | 477 ++++++++++++++
+>   hw/arm/orangepi.c                      | 125 ++++
+>   hw/misc/allwinner-cpucfg.c             | 282 ++++++++
+>   hw/misc/allwinner-h3-ccu.c             | 243 +++++++
+>   hw/misc/allwinner-h3-dramc.c           | 358 ++++++++++
+>   hw/misc/allwinner-h3-sysctrl.c         | 140 ++++
+>   hw/misc/allwinner-sid.c                | 170 +++++
+>   hw/net/allwinner-sun8i-emac.c          | 871 +++++++++++++++++++++++++
+>   hw/rtc/allwinner-rtc.c                 | 386 +++++++++++
+>   hw/sd/allwinner-sdhost.c               | 848 ++++++++++++++++++++++++
+>
+>   39 files changed, 5267 insertions(+), 2 deletions(-)
+>
+> This is a LOT of code to process, keep in mind your series touches
+> different subsystems with different maintainers. It is hard to know all
+> of them in details.
+>
+> Yes, true indeed. I'll be patient and wait for more feedback when it come=
+s.
 
 
+> Since your SoC is in the same family than the A10, I've Cc'ed Beniamino
+> Galvani. You should Cc him in your v4, hopefully he can help reviewing.
 >
-> > +        self.vm.set_console()
-> > +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
-> > +                               'console=3DttyS0,115200n8 '
-> > +                               'earlycon=3Duart,mmio32,0x1c28000')
-> > +        self.vm.add_args('-kernel', kernel_path,
-> > +                         '-dtb', dtb_path,
-> > +                         '-append', kernel_command_line)
-> > +        self.vm.launch()
-> > +        console_pattern =3D 'Kernel command line: %s' %
-> kernel_command_line
-> > +        self.wait_for_console_pattern(console_pattern)
-> > +
-> >       def test_s390x_s390_ccw_virtio(self):
-> >           """
-> >           :avocado: tags=3Darch:s390x
+> OK good idea. I'll add Beniamino in CC for v4!
+
+
+> Regarding the System Control Unit and SDRAM Controller, as I don't know
+> this SoC so I have to digest the whole datasheet, so it takes me time,
+> bare with me (I'm using my hobby time to review your work).
+>
+> Yes the SDRAM controller is something that needs a good read to understan=
+d
+it,
+especially also in the U-Boot sources which is using it. No hurry there, I
+very much
+appreciate all the time you already took for reviewing this series. It
+encourages me
+to continue with it as well. I'm also doing this work in my hobby time.
+
+
+> The last patch I plan to review in your series is the SD/MMC one:
+>   10 files changed, 1053 insertions(+), 2 deletions(-)
+>
+> It is 1/5th of your series in a single patch, each time I try to look at
+> it I get scared. Anyway today I could test NetBSD booting from a SD card
+> so I am more confident.
+>
+>
+Thanks for testing that Philippe! Yes the SD/MMC host device is indeed
+relatively large compared to the other patches.
+
+
+> Anyway, don't forget this comment from the New Contribution page:
+> https://wiki.qemu.org/Contribute/SubmitAPatch#Return_the_favor
+>
+>    Peer review only works if everyone chips in a bit of review time.
+>    If everyone submitted more patches than they reviewed, we would
+>    have a patch backlog. A good goal is to try to review at least
+>    as many patches from others as what you submit.
+>
+> With the quality of your patches, even if this is your first
+> contribution, it is obvious you now understand various part of QEMU.
+> Don't be shy to look at other patches on the list and help the
+> community, as the reviewed authors might review you back :)
+>
+> Thanks for reminding about that. You are right, indeed I should start
+reviewing
+other patches as well to return the favor and help others.
+
+Regards,
+Niek
+
+That said, your series is almost there!
+
+Regards,
+>
+> Phil.
+>
 > >
+> > Regards,
+> > Niek
 >
 >
 
 --=20
 Niek Linnenbank
 
---000000000000ffd7d0059c721374
+--0000000000009a008a059c726cb4
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Sat, Jan 18, 2020 at 12:22 PM Phil=
-ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
-hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">On 1/8/20 9:00 PM, Niek Linnenbank wrote:<br>
-&gt; From: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.or=
-g" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
-&gt; <br>
-&gt; This test boots a Linux kernel on a OrangePi PC board and verify<br>
-&gt; the serial output is working.<br>
-&gt; <br>
-&gt; The kernel image and DeviceTree blob are built by the Armbian<br>
-&gt; project (based on Debian):<br>
-&gt; <a href=3D"https://www.armbian.com/orange-pi-pc/" rel=3D"noreferrer" t=
-arget=3D"_blank">https://www.armbian.com/orange-pi-pc/</a><br>
-&gt; <br>
-&gt; If ARM is a target being built, &quot;make check-acceptance&quot; will=
-<br>
-&gt; automatically include this test by the use of the &quot;arch:arm&quot;=
- tags.<br>
-&gt; <br>
-&gt; Alternatively, this test can be run using:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 $ make check-venv<br>
-&gt;=C2=A0 =C2=A0 $ ./tests/venv/bin/avocado --show=3Dconsole,app run -t ma=
-chine:orangepi-pc tests/acceptance/boot_linux_console.py<br>
-&gt;=C2=A0 =C2=A0 JOB ID=C2=A0 =C2=A0 =C2=A0: 2e4d15eceb13c33672af406f08171=
-e6e9de1414a<br>
-&gt;=C2=A0 =C2=A0 JOB LOG=C2=A0 =C2=A0 : ~/job-results/job-2019-12-17T05.46=
--2e4d15e/job.log<br>
-&gt;=C2=A0 =C2=A0 (1/1) tests/acceptance/boot_linux_console.py:BootLinuxCon=
-sole.test_arm_orangepi:<br>
-&gt;=C2=A0 =C2=A0 console: Uncompressing Linux... done, booting the kernel.=
-<br>
-&gt;=C2=A0 =C2=A0 console: Booting Linux on physical CPU 0x0<br>
-&gt;=C2=A0 =C2=A0 console: Linux version 4.20.7-sunxi (<a href=3D"mailto:ro=
-ot@armbian.com" target=3D"_blank">root@armbian.com</a>) (gcc version 7.2.1 =
-20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019<br=
->
-&gt;=C2=A0 =C2=A0 console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv=
-7), cr=3D50c5387d<br>
-&gt;=C2=A0 =C2=A0 console: CPU: div instructions available: patching divisi=
-on code<br>
-&gt;=C2=A0 =C2=A0 console: CPU: PIPT / VIPT nonaliasing data cache, VIPT al=
-iasing instruction cache<br>
-&gt;=C2=A0 =C2=A0 console: OF: fdt: Machine model: Xunlong Orange Pi PC<br>
-&gt;=C2=A0 =C2=A0 console: Memory policy: Data cache writealloc<br>
-&gt;=C2=A0 =C2=A0 console: OF: reserved mem: failed to allocate memory for =
-node &#39;cma@4a000000&#39;<br>
-&gt;=C2=A0 =C2=A0 console: cma: Failed to reserve 128 MiB<br>
-&gt;=C2=A0 =C2=A0 console: psci: probing for conduit method from DT.<br>
-&gt;=C2=A0 =C2=A0 console: psci: PSCIv0.2 detected in firmware.<br>
-&gt;=C2=A0 =C2=A0 console: psci: Using standard PSCI v0.2 function IDs<br>
-&gt;=C2=A0 =C2=A0 console: psci: Trusted OS migration not required<br>
-&gt;=C2=A0 =C2=A0 console: random: get_random_bytes called from start_kerne=
-l+0x8d/0x3c2 with crng_init=3D0<br>
-&gt;=C2=A0 =C2=A0 console: percpu: Embedded 18 pages/cpu @(ptrval) s41228 r=
-8192 d24308 u73728<br>
-&gt;=C2=A0 =C2=A0 console: Built 1 zonelists, mobility grouping on.=C2=A0 T=
-otal pages: 32480<br>
-&gt;=C2=A0 =C2=A0 console: Kernel command line: printk.time=3D0 console=3Dt=
-tyS0,115200<br>
-&gt;=C2=A0 =C2=A0 PASS (8.59 s)<br>
-&gt;=C2=A0 =C2=A0 JOB TIME=C2=A0 =C2=A0: 8.81 s<br>
-&gt; <br>
-&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug=
-@amsat.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
-&gt; [NL: rename in commit message Raspbian to Armbian]<br>
-&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
-ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0tests/acceptance/boot_linux_console.py | 26 ++++++++++++++=
-++++++++++++<br>
-&gt;=C2=A0 =C2=A01 file changed, 26 insertions(+)<br>
-&gt; <br>
-&gt; diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance=
-/boot_linux_console.py<br>
-&gt; index 9c6aa2040a..b58308d724 100644<br>
-&gt; --- a/tests/acceptance/boot_linux_console.py<br>
-&gt; +++ b/tests/acceptance/boot_linux_console.py<br>
-&gt; @@ -400,6 +400,32 @@ class BootLinuxConsole(Test):<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0self.wait_for_console_pattern(=
-&#39;Boot successful.&#39;)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0# TODO user command, for now t=
-he uart is stuck<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 def test_arm_orangepi(self):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Darch:arm<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:orangepi-pc<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.=
-armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https://apt.=
-armbian.com/pool/main/l/</a>&#39;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-&#39;linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb&#39;)<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;1334c29c44d984ffa05ed10=
-de8c3361f33d78315&#39;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_url, as=
-set_hash=3Ddeb_hash)<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_deb(deb=
-_path,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 &#39;/boot/vmlinuz-4.20.7-sunxi&#39;)<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-de=
-v-sunxi/sun8i-h3-orangepi-pc.dtb&#39;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(deb_pa=
-th, dtb_path)<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_machine(&#39;orangepi-pc&#39;=
-)<br>
-<br>
-Please remove the vm.set_machine() calls.<br></blockquote><div><br></div><d=
-iv>OK, I&#39;ll also remove them vm.set_machine() calls in the other 3 patc=
-hes.<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"m=
+<div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Sat, Jan 18, 2020 at 4:37 PM Phili=
+ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
+at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
 argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">
+:1ex">Hi Niek,<br>
 <br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_console()<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_command_line =3D (self.KERNEL_COMM=
-ON_COMMAND_LINE +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;console=3DttyS0,115200n8 &#3=
-9;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;earlycon=3Duart,mmio32,0x1c2=
-8000&#39;)<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.add_args(&#39;-kernel&#39;, kerne=
-l_path,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0&#39;-dtb&#39;, dtb_path,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0&#39;-append&#39;, kernel_command_line)<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.launch()<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 console_pattern =3D &#39;Kernel command l=
-ine: %s&#39; % kernel_command_line<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(console_pat=
-tern)<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0def test_s390x_s390_ccw_virtio(self):<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0:avocado: tags=3Darch:s390x<br=
->
+On 1/13/20 8:18 PM, Niek Linnenbank wrote:<br>
+&gt; Hi,<br>
 &gt; <br>
+&gt; Just a friendly reminder for review of this patch and the others in th=
+is <br>
+&gt; series<br>
+&gt; that don&#39;t yet have a reviewed-by tag :-)<br>
+<br>
+You are right to ping the list after a week.<br>
+<br>
+Cc&#39;ing Damien for this particular patch, he might have good advises.<br=
+>
+<br>
+<br>
+Looking at the stats from your cover:<br>
+<br>
+=C2=A0 include/hw/arm/allwinner-h3.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 16=
+4 +++++<br>
+=C2=A0 include/hw/misc/allwinner-cpucfg.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 54 ++<=
+br>
+=C2=A0 include/hw/misc/allwinner-h3-ccu.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 67 ++<=
+br>
+=C2=A0 include/hw/misc/allwinner-h3-dramc.h=C2=A0 =C2=A0| 107 +++<br>
+=C2=A0 include/hw/misc/allwinner-h3-sysctrl.h |=C2=A0 68 ++<br>
+=C2=A0 include/hw/net/allwinner-sun8i-emac.h=C2=A0 | 103 +++<br>
+=C2=A0 include/hw/rtc/allwinner-rtc.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 12=
+9 ++++<br>
+=C2=A0 include/hw/sd/allwinner-sdhost.h=C2=A0 =C2=A0 =C2=A0 =C2=A0| 136 +++=
++<br>
+=C2=A0 hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 | 477 ++++++++++++++<br>
+=C2=A0 hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 125 ++++<br>
+=C2=A0 hw/misc/allwinner-cpucfg.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0| 282 ++++++++<br>
+=C2=A0 hw/misc/allwinner-h3-ccu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0| 243 +++++++<br>
+=C2=A0 hw/misc/allwinner-h3-dramc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0| 358 ++++++++++<br>
+=C2=A0 hw/misc/allwinner-h3-sysctrl.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 14=
+0 ++++<br>
+=C2=A0 hw/misc/allwinner-sid.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 | 170 +++++<br>
+=C2=A0 hw/net/allwinner-sun8i-emac.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 87=
+1 +++++++++++++++++++++++++<br>
+=C2=A0 hw/rtc/allwinner-rtc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0| 386 +++++++++++<br>
+=C2=A0 hw/sd/allwinner-sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0| 848 ++++++++++++++++++++++++<br>
+<br>
+=C2=A0 39 files changed, 5267 insertions(+), 2 deletions(-)<br>
+<br>
+This is a LOT of code to process, keep in mind your series touches <br>
+different subsystems with different maintainers. It is hard to know all <br=
+>
+of them in details.<br>
+<br></blockquote><div>Yes, true indeed. I&#39;ll be patient and wait for mo=
+re feedback when it comes.</div><div>=C2=A0</div><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex">
+Since your SoC is in the same family than the A10, I&#39;ve Cc&#39;ed Benia=
+mino <br>
+Galvani. You should Cc him in your v4, hopefully he can help reviewing.<br>
+<br></blockquote><div>OK good idea. I&#39;ll add Beniamino in CC for v4!<br=
+></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0=
+px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+Regarding the System Control Unit and SDRAM Controller, as I don&#39;t know=
+ <br>
+this SoC so I have to digest the whole datasheet, so it takes me time, <br>
+bare with me (I&#39;m using my hobby time to review your work).<br>
+<br></blockquote><div>Yes the SDRAM controller is something that needs a go=
+od read to understand it,</div><div>especially also in the U-Boot sources w=
+hich is using it. No hurry there, I very much</div><div>appreciate all the =
+time you already took for reviewing this series. It encourages me</div><div=
+>to continue with it as well. I&#39;m also doing this work in my hobby time=
+.<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
+x">
+The last patch I plan to review in your series is the SD/MMC one:<br>
+=C2=A0 10 files changed, 1053 insertions(+), 2 deletions(-)<br>
+<br>
+It is 1/5th of your series in a single patch, each time I try to look at <b=
+r>
+it I get scared. Anyway today I could test NetBSD booting from a SD card <b=
+r>
+so I am more confident.<br>
+<br></blockquote><div><br></div><div>Thanks for testing that Philippe! Yes =
+the SD/MMC host device is indeed</div><div>relatively large compared to the=
+ other patches.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
+ng-left:1ex">
+Anyway, don&#39;t forget this comment from the New Contribution page:<br>
+<a href=3D"https://wiki.qemu.org/Contribute/SubmitAPatch#Return_the_favor" =
+rel=3D"noreferrer" target=3D"_blank">https://wiki.qemu.org/Contribute/Submi=
+tAPatch#Return_the_favor</a><br>
+<br>
+=C2=A0 =C2=A0Peer review only works if everyone chips in a bit of review ti=
+me.<br>
+=C2=A0 =C2=A0If everyone submitted more patches than they reviewed, we woul=
+d<br>
+=C2=A0 =C2=A0have a patch backlog. A good goal is to try to review at least=
+<br>
+=C2=A0 =C2=A0as many patches from others as what you submit.<br>
+<br>
+With the quality of your patches, even if this is your first <br>
+contribution, it is obvious you now understand various part of QEMU.<br>
+Don&#39;t be shy to look at other patches on the list and help the <br>
+community, as the reviewed authors might review you back :)<br>
+<br></blockquote><div>Thanks for reminding about that. You are right, indee=
+d I should start reviewing</div><div>other patches as well to return the fa=
+vor and help others.<br></div><div><br></div><div>Regards,</div><div>Niek<b=
+r></div><div><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+That said, your series is almost there!</blockquote><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,=
+204,204);padding-left:1ex">
+Regards,<br>
+<br>
+Phil.<br>
+<br>
+&gt; <br>
+&gt; Regards,<br>
+&gt; Niek<br>
 <br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
 div></div>
 
---000000000000ffd7d0059c721374--
+--0000000000009a008a059c726cb4--

@@ -1,101 +1,100 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp10176463lff;
-        Fri, 17 Jan 2020 10:45:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwevZn4bVp0Bascc1mc+I6lFXSR0c48wyaDwbWSpoyJIbs/+c3Tt6d4wuqifczijllbTXhk
-X-Received: by 2002:a05:6214:13ef:: with SMTP id ch15mr9184592qvb.183.1579286709273;
-        Fri, 17 Jan 2020 10:45:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579286709; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp231662lff;
+        Sat, 18 Jan 2020 00:55:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw9MwszFn3iQqevCfnWZqUCkwgMthy1OSPFXwGmW1i4OnGXAwcWEYGw7elgv+0wXGofC7LL
+X-Received: by 2002:a37:bf82:: with SMTP id p124mr42435700qkf.337.1579337744505;
+        Sat, 18 Jan 2020 00:55:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579337744; cv=none;
         d=google.com; s=arc-20160816;
-        b=lvvhqrayyPmALEPIFtKdnn8EtRpcNv9bLEIW6zv/OzbNQOe9+6EaijSKcG7vqd9nxc
-         cr7ej6EJxw9l+4ksSyppvhwq/BmjJVsDmMw+QZVxgOnl1IR2Qrhnj7N7Luz0HmKcJHRQ
-         BZMwc1eVk07/daRe1rYfah4QmVsX0a5gyLKSb7990ukg2CzVwVVVbHExnzRf9S3AWeMb
-         r9a7SDyj20jfEsRqYPNueEBNicJ4vLkzGkFxDAz/hhsDAzZvIhtyoKR50T1Bjg0EZZ0d
-         2afJBZbROr4hOeYsN/ffljTGbyOMJlImwHAyTFhySAKTk423b24M1IkARIa2hlgyiVNP
-         S0+Q==
+        b=V7R4aQjEz/bx9kMWRNBB64zZfWzXNU/W6XZCiOrzVtjs30PncsdThcvcP6qunh9xuH
+         EiJ/4OXWgz0zGsRZIKE7RAezRt8Mgu8azGPnmgLtXxZN/NFFob2J8OElTNWABgEYGwIj
+         MTlEdAsxYsHy2kxNIumZU8piV8fNv/+t1WCbpDF4Q/1xnoxXemMR/EQVfuKR8Stjqt9+
+         2zIerHwM+0IyR3HZFJG9Go+NWiz4tkqTFwbBnEFlh1X7eTl0QSSDKC5v/pcXWwTpzbul
+         OGBUVMRRl6fBUm5WeSrjhNYCew1J+tnyHwhFwFqdQVaVg7fHiKs919+fcJJXFamwMl40
+         OV3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=/FVu51Op0a4Se1tMHsJ70/J8wXfsAdBp/IiqnssJyqc=;
-        b=v2zYhn6sNKcWSrk9lqJPBkd/zc+vRgvTjSBDd60pOHKa/2oerRFw0M0QZwQdlbopVV
-         5VsQDcf2ZrF2A9L2W6Ong0QJrPcNX/35T9YYo262MuPZwYCQypMA9xhbvsvgs9wSZzcL
-         Z9q3IGeAvoUpv8ECCnu3P47amWGWK07WuhWwALLInhXnF8tFs36iPOtPGZeG86oYEtox
-         pm7B/2TEY+fn+rK4RHwAva74QtPGvTj7k0Hdfnx6zi9vuhu/QTrkGtokUe/pFfurjCg7
-         kbrBrcHdEwcx+8DjNPjpC/sYuYOBHpdKTU9aXUAyxQuwvPRNT3rUTlpCOm6vWuLNtV0d
-         5mYg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=hcjD+947rr9x3Ne9+kW4YqPHncxLHv1q3z6kYRQFX0A=;
+        b=NYaBhshT1jkEHxrCmKWQBABTQUbp6BSUQLZjUPm1mm/PrC/Q0MZN/yogohroYZNTcx
+         L6W68Ew4XouKBkJ7sQQcwO0UtuNgirLmBry5VcqftyEQYviZhTHpNEe/4Es71XBqJIZR
+         QY3Npgc2Y4AiQ6vUXrZjoswskcSVDRgEjiuCdI3Vc1MiPZUaBXdG4zyo3hzM49lzrq1U
+         Dn/AFFLcobdAinGbxqyoa6Nj9JnK/7WupjCbTDh9eecb1h1MZJ1n04s/v0q4dkg8/HY1
+         l+3PaI/PmGiazh39GcHw/0ARa0bKFMywbslF6l9YTCNOnW123XT2eIir6PLb0Y6UqN8N
+         pzcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cs3PsVox;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D+CMENzO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v38si14966268qtj.318.2020.01.17.10.45.09
+        by mx.google.com with ESMTPS id n31si17302757qta.133.2020.01.18.00.55.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2020 10:45:09 -0800 (PST)
+        Sat, 18 Jan 2020 00:55:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cs3PsVox;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D+CMENzO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33494 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38362 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isWcG-00069o-LA
-	for alex.bennee@linaro.org; Fri, 17 Jan 2020 13:45:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35229)
+	id 1isjtP-0000PE-Po
+	for alex.bennee@linaro.org; Sat, 18 Jan 2020 03:55:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41464)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1isWc4-00067F-Cq
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 13:44:57 -0500
+ (envelope-from <philmd@redhat.com>) id 1isjtC-0000LZ-M1
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 03:55:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1isWc3-0005GA-1c
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 13:44:56 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:37221)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1isWc2-0005FP-RM
- for qemu-arm@nongnu.org; Fri, 17 Jan 2020 13:44:54 -0500
-Received: by mail-oi1-x241.google.com with SMTP id z64so23106583oia.4
- for <qemu-arm@nongnu.org>; Fri, 17 Jan 2020 10:44:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/FVu51Op0a4Se1tMHsJ70/J8wXfsAdBp/IiqnssJyqc=;
- b=Cs3PsVoxYYQsENmDo9UOkMI/ZNgz6f5OcB9nmuXffFthNeaChMEd5Ek6ToISEtFav1
- Ynzet14+BMSjY+7t7z/mN//N09+TLFF6Wef+An5hP6JZBFvdGFxn5Yp+c6p2YkXhWf4f
- vqpZ68DVrmnYkczBs9j3Z7CY/DWUVYMkdwX6iAVG2/cxa/dXZrhQQ3pp6aD8Jk1ungW7
- BB5BL9Pk98umL7n3u1uAtXV/DDWAN54C811+nOVKvro9m6gf0h+gEG4hI6IIGMR6EL8G
- wwQG5sdq/3de0LrZkX6ebgkWohhKpBHOk4gvPwuEjhlxddI2/HVTVA4EBOeuTfwjoaAf
- D9mA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/FVu51Op0a4Se1tMHsJ70/J8wXfsAdBp/IiqnssJyqc=;
- b=On0zaq+lKLlyQ0iYxR7Q7bmCSp+3Qv5EZH3Ph5u8Cs73neyuwCXzvWdH0RPxN7zIHl
- cr3lgznT5wq4nEQ5hWRVFYm31ZYl+nwW9omgvUcrQhlOmjAq8hhQw6yL3hK/rRm/rNaM
- 6DNcYWrqYprAlRTjCOB/K/D9YlRy1fjIKwrRm1Xrs1mMhAe/z0V59hFMl2DVLm+nIw3o
- zBS+o5ddgR56TJewiPGSC15ioaV01TFN5dolVlHjQW/2ujNjjxahr73v3YvGC4F/eBQh
- wKSO7cMCVTY1i1GqoZwGRaAXXQsxReiASDgG0Ey0rA+ahyJ8qMQCJP/lkv1Oahyq471e
- m5BA==
-X-Gm-Message-State: APjAAAUSPAIXIbFKPvwP9O7dVBDkrO/GIqns7NbwzBKaUigOEny6GC/4
- jOk+LFd7gAjupBjepOAC/pB6wpUlZl/CXJxnVQ+ngA==
-X-Received: by 2002:aca:f484:: with SMTP id s126mr4301199oih.48.1579286693769; 
- Fri, 17 Jan 2020 10:44:53 -0800 (PST)
+ (envelope-from <philmd@redhat.com>) id 1isjtB-0004Qc-C2
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 03:55:30 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:40122
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isjtB-0004Pz-8k
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 03:55:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579337728;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hcjD+947rr9x3Ne9+kW4YqPHncxLHv1q3z6kYRQFX0A=;
+ b=D+CMENzOIennl2Idq2FFhpRVjlAsE1CKkoHvl0dd5K26kD5nKoA2SZTJD491s4m5NffN0+
+ nFA/prUqNJVHKVfWw21g832+lh2fVZKuKSiljSEpr1tlBDWAhwTyqwEYgtMijEiBCUxyEz
+ CjViC6JMma4XaaTAZH86n58vZOxpeYE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-286-EphSVMscMYS2mmEM8Toa9g-1; Sat, 18 Jan 2020 03:55:25 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 60A5D100550E;
+ Sat, 18 Jan 2020 08:55:24 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-59.brq.redhat.com [10.40.204.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B1BFE5C1B2;
+ Sat, 18 Jan 2020 08:55:22 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 2/2] MAINTAINERS: Move the OMAP section inside the ARM
+ Machines one
+Date: Sat, 18 Jan 2020 09:55:09 +0100
+Message-Id: <20200118085509.30182-3-philmd@redhat.com>
+In-Reply-To: <20200118085509.30182-1-philmd@redhat.com>
+References: <20200118085509.30182-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20200110203942.5745-1-linux@roeck-us.net>
- <20200110203942.5745-7-linux@roeck-us.net>
- <CAFEAcA_v98GcR06PWfm+=VnteQN_Q7iKK4wobAg6NrVSP1AyDg@mail.gmail.com>
- <20200117182939.GC13396@roeck-us.net>
-In-Reply-To: <20200117182939.GC13396@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Jan 2020 18:44:42 +0000
-Message-ID: <CAFEAcA9zWeW1k-K7qVzCSOA70BmOCa9onT2z_QUQK-=0AJ+NjQ@mail.gmail.com>
-Subject: Re: [PATCH 6/6] hw/arm/exynos4210: Connect serial port DMA busy
- signals with pl330
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: EphSVMscMYS2mmEM8Toa9g-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,56 +106,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KOUmb921LVcQ
+X-TUID: 5hmnkIjQNJHm
 
-On Fri, 17 Jan 2020 at 18:29, Guenter Roeck <linux@roeck-us.net> wrote:
->
-> On Fri, Jan 17, 2020 at 01:48:06PM +0000, Peter Maydell wrote:
-> > On Fri, 10 Jan 2020 at 20:39, Guenter Roeck <linux@roeck-us.net> wrote:
-> > >
-> > > The Exynos4210 serial driver uses an interrupt line to signal if receive
-> > > data is available. Connect that interrupt with the DMA controller's
-> > > 'peripheral busy' gpio pin.
+Add the Siemens SX1 (OMAP310) machines with the other ARM machines.
 
-> > Rather than having the uart and pl330 pointers be locals,
-> > they should be fields in Exynos4210State. (Otherwise technically
-> > we leak them, though this is unnoticeable in practice because there's
-> > no way to destroy an Exynos4210State.)
-> >
-> Out of curiosity: Is that a new leak because they are now tied together,
-> or is it an existing leak ? I don't find many DeviceState entries
-> in xxxState structures, so find it difficult to determine if/when/why
-> there is such a leak.
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ MAINTAINERS | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-Yes, it's an existing leak, though it's more of a conceptual leak
-than one that valgrind would actually complain about. (The object
-isn't totally unreachable because there will be references to it
-in the QOM tree. Keeping track of your child objects only becomes
-really important if the device is hot-pluggable, because if you
-can hot-unplug the device you get a real leak if it hasn't cleaned
-up its child objects.)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 52fbc18566..e2c148d8d8 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -560,6 +560,13 @@ F: include/hw/arm/digic.h
+ F: hw/*/digic*
+ F: include/hw/*/digic*
+=20
++OMAP
++M: Peter Maydell <peter.maydell@linaro.org>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/*/omap*
++F: include/hw/arm/omap.h
++
+ Gumstix
+ M: Peter Maydell <peter.maydell@linaro.org>
+ R: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+@@ -1404,13 +1411,6 @@ F: include/hw/block/fdc.h
+ F: tests/qtest/fdc-test.c
+ T: git https://github.com/jnsnow/qemu.git ide
+=20
+-OMAP
+-M: Peter Maydell <peter.maydell@linaro.org>
+-L: qemu-arm@nongnu.org
+-S: Maintained
+-F: hw/*/omap*
+-F: include/hw/arm/omap.h
+-
+ IPack
+ M: Alberto Garcia <berto@igalia.com>
+ S: Odd Fixes
+--=20
+2.21.1
 
-Aside: I think this code is written this way because although it's
-a container device it has been incorrectly written against
-the pattern of a board model. Originally board models did not
-have any "this is the board" struct that they could keep things
-in, so the only way to write board model code that created,
-configured and wired up devices was to have it do it in a
-way that didn't keep track of the things it created once the
-board init function returned. This code is part of an SoC
-"container" device, so it does have a state struct that it
-could use to hold either embedded device structs or simply
-pointers to device objects, but the code is written like the old
-board-model code. (These days even board models have a suitable
-state struct they can use.)
-
-include/hw/arm/armsse.h is an example of a device state struct
-with a lot of embedded device state structs in it. (Not all device
-state structs have names ending "State".)
-
-thanks
--- PMM

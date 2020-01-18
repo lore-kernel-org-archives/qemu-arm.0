@@ -1,98 +1,97 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp620209lff;
-        Sat, 18 Jan 2020 08:43:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx2R5Xgd3rVCED4B7X6mH7LDkr3+aQrymIFckIWzwJKggPA8tbTAm7uW2RZPtiEdwAPFce7
-X-Received: by 2002:a0c:f8ce:: with SMTP id h14mr12922347qvo.91.1579365788712;
-        Sat, 18 Jan 2020 08:43:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579365788; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp620389lff;
+        Sat, 18 Jan 2020 08:43:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzzhiYhSdTO4OCB6nLFFwgJuv/1/fvVQgv9d8qMCMyy8MBcxhZFwP51J2FUzbY2E4zn9Nkb
+X-Received: by 2002:ac8:4693:: with SMTP id g19mr13202742qto.295.1579365804641;
+        Sat, 18 Jan 2020 08:43:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579365804; cv=none;
         d=google.com; s=arc-20160816;
-        b=xRmQMqhlh8LYi7oqXvIOarZtiOEtqRhGwKTSnp4xkBdLAj4iCc1+kVG4Isan5IV6Xl
-         5VS16VItaYK+ubOlnI5pkLEtsCUPl8ozW/wSmTj7CWCsTJlbFWQG8ns6s/9N2o8kvMxk
-         QXCCOkZSPm/K3HhJs0wjQ79EEH/anVS+F1SwXdayRgASOMMhJLlBCuhWXw2A4nrZDaH6
-         Y1tW84ui4yxeQO87aR+kQzZfFWOsCl059gi1Wr4vQve2y84P39QFSzotdgvAhqAGQSAQ
-         5O46t9jB1ekFhb8pByzBHevPhqL4uUqXvephRYxZzIeDrR+3GLSUKO8CaAm0GcAv9Y0l
-         pYwA==
+        b=oVA6niSa6WD8RlCpDgmz9RRZHDLiw45yIYP+nBBBd/vBVtUFXf2yD+iLP9B1EDPmCC
+         tsS13idbc+IWnuKUioxnjM5/yjfTFYdQc+CeYehpmLR3CXWwRoSeE6yq15hBy68rn3/i
+         MG56zIIH6FWVU3BDVqJd0IdixDtkUXoQsBUi4NmUlZimEpYU9dEXDjTXnr6ZHXVRcrzF
+         JxjTD90XZnfjimZz64U8OUEeOM7qPHsCCGkm9OzUW8vHA1A7Vi2hKNUpLe7N8j9Gqte9
+         JIn6rprns4MJckYKKow11ni6+daXUj0m51OaHOz8MHPYQ1V4d1igd4FkbP479Wspjh0+
+         tTZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=39fHTiyX/0J89e65TbMGqFwEY3KsN+AI+pGbkAukXfQ=;
-        b=iOAlF+qdSm8TWKxjWaYR7aKNUX58uPZu4+b0pa8MedIjjdVBkzF7LEDRUshpU8PLue
-         GbeS7r6Hq0sTdZy0W0XYe2IQsZAuFeRTjjRKwu7+onT4AlKwO5S+QefBcNvM3zUHxK/y
-         tQwuy7YxDMABeMnf+JJxwxk1r+1CZybZWhEBCqunqiYXRdb8Caf0kPM5QHzC9IughpWQ
-         heG2uTnj46uaSyl3fvjYCJEZcAdbCAdIiN8RW3a4huhPE4GY/X9ZsrC6LE2Por3069AQ
-         Mv32R88+nfVp9Daam1dkrovc74oyNVCpf2K4wwDmruaCglpjWq1XD7PPCnMrkEmh/f4G
-         +aaQ==
+        bh=vU+VqIHGN1BijkfK3vPdPlxjr39cqTq4olg29px/6oo=;
+        b=utEUQjiQPNo8ytCA0tQtAKdVeP8z6rNI3zfmN5f86tcjnKBc7O9eP4SvPXWhfCiZ3Z
+         Oo+Bk0N+n2/k5AXmMhCE92QEo1ZBR9UQXgS04AGuDH+myM1ssVm+dHqJnQ6og0w1W/3t
+         u6XNVJCBSB8PWnJrbVrMcuZn5ylvDU0lJhGK+mHRqJsoMCGvKBOqEXKXXzHugtyl7B9r
+         XFfgulQeQJyhqh0fk1t7fcvKYVEWKTPx9A7VsVAK7LiJ0yO6GRoIti7Bi9pMi6GOjUWz
+         LgiDeQkfL0TMtBB8UPglb34Q364RgCfNK2O0fu9VWstG3VcTvOCzxM8Xqphqio6v8X4h
+         QE7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sFW2aYdU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="uPz//ZtF";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h7si16546977qkj.164.2020.01.18.08.43.08
+        by mx.google.com with ESMTPS id p11si16543836qtc.78.2020.01.18.08.43.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Jan 2020 08:43:08 -0800 (PST)
+        Sat, 18 Jan 2020 08:43:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sFW2aYdU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="uPz//ZtF";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42546 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isrBj-0004TY-L7
-	for alex.bennee@linaro.org; Sat, 18 Jan 2020 11:43:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36117)
+	id 1isrBz-0004rv-K6
+	for alex.bennee@linaro.org; Sat, 18 Jan 2020 11:43:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36131)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1isrBI-00041Z-VW
+ (envelope-from <groeck7@gmail.com>) id 1isrBJ-00042w-MJ
  for qemu-arm@nongnu.org; Sat, 18 Jan 2020 11:42:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1isrBH-0002A9-9p
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 11:42:40 -0500
-Received: from mail-yb1-xb44.google.com ([2607:f8b0:4864:20::b44]:42605)
+ (envelope-from <groeck7@gmail.com>) id 1isrBI-0002B7-LT
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 11:42:41 -0500
+Received: from mail-yb1-xb41.google.com ([2607:f8b0:4864:20::b41]:40115)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1isrBH-00029f-5K; Sat, 18 Jan 2020 11:42:39 -0500
-Received: by mail-yb1-xb44.google.com with SMTP id c8so7090633ybk.9;
- Sat, 18 Jan 2020 08:42:39 -0800 (PST)
+ id 1isrBI-0002Ao-HV; Sat, 18 Jan 2020 11:42:40 -0500
+Received: by mail-yb1-xb41.google.com with SMTP id l197so6015446ybf.7;
+ Sat, 18 Jan 2020 08:42:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=39fHTiyX/0J89e65TbMGqFwEY3KsN+AI+pGbkAukXfQ=;
- b=sFW2aYdUhMxuwFY398GTHxnAGKRiloK0WdK7yhT1Ud4dvdX0MkA3K5aQ3zpd4DxBip
- lXadXpH50VRKPmkXU3W8xCyqtOAfi8j2PzEfYqXBNE8c8igc8OivYIiNQdiV7XKn0yzG
- c1vbROh662Yncu5w1mGAOS4Ft/X+NrSXTuFdgscNLPyqJVlJIHN1BJXVylaOqcMnhx03
- MymKSlcqIB7yV8Bn3q0QMZFDAWnppnJ/I6J7PucZ8QoH0MiKvmV2gUvS5jheflmCmPOw
- qb1LFGbWNDgIwLVERBly0ITYJjRHh85tSZgF6QsO4NouK3TAhkWQiZwBKQQhe3LhRSdA
- 2Vzg==
+ bh=vU+VqIHGN1BijkfK3vPdPlxjr39cqTq4olg29px/6oo=;
+ b=uPz//ZtFoeXIRURh/9ksxf+hkfCDupjqzy4v7RMYejungSB8UGniLRo0oUwKrbhS1o
+ yVZL+p2z32a/UtiggylKrVWXE4Z01CVCFPvi5ww4nailqxfRUH5enIzXWvkLyIkwsja3
+ 69zS4IdOpzygUEuLtiQGGvmHvON8ovi6SplW0/ZY9tO02oji32TBBkXXL7qc/RiauLdP
+ /QKKwTBoW8+Ln+ohvsbfoBYCz3EsZaQf5q2PzEei4WOReaPcGMVl2v9kMBKRs9v7Hl2Y
+ xX9mqGJVaZIbyJt/7OG0MnpZohvfYaCKBtRKIkjDTVpFJNwOwR61p1p9dSeQCJ86+2wX
+ 5xpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references;
- bh=39fHTiyX/0J89e65TbMGqFwEY3KsN+AI+pGbkAukXfQ=;
- b=LUOFcdunGT+xMoLV+V7Lh8oOv7umZb9ggCGkaOB4VPjKNNsAqpOmtW/oQOofrrW7Tx
- 7VFpf6qb5yfBpMAs8o2TQbtLQpsgVlF4LKoJExic73d8pyvhQ2FNBQlbIEkuuXKrNhJw
- M8AbN9AkBS9V8gC4BNhncNs9LjrYiQ93NFjHTpOgXOenU+Q7mhpFRblJgQULYn5bMkgj
- Gg06XIte1E4HcEwb762xFu82NvbWGRXJzCruCQvDNDn06vAs681ZP2fkSblMwWTYxU15
- yl0CtXmbVwkoIxZ2LAML/1QSCqNw9yDMSqJiMdGlC8IerqUkFUnyW66OzURAyIUv/MXQ
- 1kjA==
-X-Gm-Message-State: APjAAAVdjV2K1sSWopSCji9Bn5XgghKIUqGR1ERYFlGG70sU6Idj7ESK
- nQTqGKuNHsgkLIg4yEdGLgk=
-X-Received: by 2002:a25:c5d1:: with SMTP id
- v200mr32497273ybe.450.1579365758481; 
- Sat, 18 Jan 2020 08:42:38 -0800 (PST)
+ bh=vU+VqIHGN1BijkfK3vPdPlxjr39cqTq4olg29px/6oo=;
+ b=XlcYGjs+351/PhjLztbrBYNd3gonKLMd/dNRkjtqafLAYDW4IygVXUM4eEL2WDCD88
+ xeRt1ryItsR4NDXvB8531hm+J0XRnnqLeFwByvYRn4WH2KrAlRPVcN8qniGv/IEoVDon
+ e1IqS1ycS8smSdNBSIE+GUFaskE2+TRB/wy8/8uPlF4duln52UN4ql4bvOuG1tArhMPw
+ hBPgPQncg0TeC3cx8oTD1du8xXmVIRKiju8OLxX+/qpOP4mVU8HClIALsHOGRqVN7FZK
+ NlZKTCIUrQ52uxcP9Y4jEgUF+yxXvSqVTG6t9EsJekMcbhLaYugtLbNJoWAgLjSahcNZ
+ pWjw==
+X-Gm-Message-State: APjAAAXBupivMl9WV/vn3NYPHeSpOHKeb5Lc0I7GY9bkli208G39CTaT
+ NtGx7CpOdjMUo4GXk+ZKjlE=
+X-Received: by 2002:a25:5944:: with SMTP id n65mr5248639ybb.291.1579365760077; 
+ Sat, 18 Jan 2020 08:42:40 -0800 (PST)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id g190sm12790274ywf.41.2020.01.18.08.42.37
+ by smtp.gmail.com with ESMTPSA id a128sm13431651ywh.60.2020.01.18.08.42.39
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 18 Jan 2020 08:42:38 -0800 (PST)
+ Sat, 18 Jan 2020 08:42:39 -0800 (PST)
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 3/7] hw/char/exynos4210_uart: Convert to support tracing
-Date: Sat, 18 Jan 2020 08:42:25 -0800
-Message-Id: <20200118164229.22539-4-linux@roeck-us.net>
+Subject: [PATCH v2 4/7] hw/char/exynos4210_uart: Implement post_load function
+Date: Sat, 18 Jan 2020 08:42:26 -0800
+Message-Id: <20200118164229.22539-5-linux@roeck-us.net>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200118164229.22539-1-linux@roeck-us.net>
 References: <20200118164229.22539-1-linux@roeck-us.net>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::b44
+X-Received-From: 2607:f8b0:4864:20::b41
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,273 +107,45 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nuqYMSvFJ1MP
+X-TUID: ljlAWzq0W3dY
 
-Replace debug code with tracing to aid debugging.
+After restoring a VM, serial parameters need to be updated to reflect
+restored register values. Implement a post_load function to handle this
+situation.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
-v2: Added Reviewed-by: tag
+v4: Additional patch to implement post-load functionality
+    in exynos uart driver. Required for next patch in series.
 
- hw/char/exynos4210_uart.c | 96 ++++++++++++---------------------------
- hw/char/trace-events      | 17 +++++++
- 2 files changed, 47 insertions(+), 66 deletions(-)
+ hw/char/exynos4210_uart.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
-index d6b6b62366..fb7a3ebd09 100644
+index fb7a3ebd09..5d48701b6d 100644
 --- a/hw/char/exynos4210_uart.c
 +++ b/hw/char/exynos4210_uart.c
-@@ -31,45 +31,7 @@
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
- 
--#undef DEBUG_UART
--#undef DEBUG_UART_EXTEND
--#undef DEBUG_IRQ
--#undef DEBUG_Rx_DATA
--#undef DEBUG_Tx_DATA
--
--#define DEBUG_UART            0
--#define DEBUG_UART_EXTEND     0
--#define DEBUG_IRQ             0
--#define DEBUG_Rx_DATA         0
--#define DEBUG_Tx_DATA         0
--
--#if DEBUG_UART
--#define  PRINT_DEBUG(fmt, args...)  \
--        do { \
--            fprintf(stderr, "  [%s:%d]   "fmt, __func__, __LINE__, ##args); \
--        } while (0)
--
--#if DEBUG_UART_EXTEND
--#define  PRINT_DEBUG_EXTEND(fmt, args...) \
--        do { \
--            fprintf(stderr, "  [%s:%d]   "fmt, __func__, __LINE__, ##args); \
--        } while (0)
--#else
--#define  PRINT_DEBUG_EXTEND(fmt, args...) \
--        do {} while (0)
--#endif /* EXTEND */
--
--#else
--#define  PRINT_DEBUG(fmt, args...)  \
--        do {} while (0)
--#define  PRINT_DEBUG_EXTEND(fmt, args...) \
--        do {} while (0)
--#endif
--
--#define  PRINT_ERROR(fmt, args...) \
--        do { \
--            fprintf(stderr, "  [%s:%d]   "fmt, __func__, __LINE__, ##args); \
--        } while (0)
-+#include "trace.h"
- 
- /*
-  *  Offsets for UART registers relative to SFR base address
-@@ -193,8 +155,7 @@ typedef struct Exynos4210UartState {
- } Exynos4210UartState;
- 
- 
--#if DEBUG_UART
--/* Used only for debugging inside PRINT_DEBUG_... macros */
-+/* Used only for tracing */
- static const char *exynos4210_uart_regname(hwaddr  offset)
- {
- 
-@@ -208,7 +169,6 @@ static const char *exynos4210_uart_regname(hwaddr  offset)
- 
-     return NULL;
- }
--#endif
- 
- 
- static void fifo_store(Exynos4210UartFIFO *q, uint8_t ch)
-@@ -271,7 +231,7 @@ static uint32_t exynos4210_uart_Tx_FIFO_trigger_level(const Exynos4210UartState
-         break;
-     default:
-         level = 0;
--        PRINT_ERROR("Wrong UART channel number: %d\n", s->channel);
-+        trace_exynos_uart_channel_error(s->channel);
-     }
- 
-     return level;
-@@ -297,14 +257,10 @@ static void exynos4210_uart_update_irq(Exynos4210UartState *s)
- 
-     if (s->reg[I_(UINTP)]) {
-         qemu_irq_raise(s->irq);
--
--#if DEBUG_IRQ
--        fprintf(stderr, "UART%d: IRQ has been raised: %08x\n",
--                s->channel, s->reg[I_(UINTP)]);
--#endif
--
-+        trace_exynos_uart_irq_raised(s->channel, s->reg[I_(UINTP)]);
-     } else {
-         qemu_irq_lower(s->irq);
-+        trace_exynos_uart_irq_lowered(s->channel);
-     }
+@@ -522,10 +522,20 @@ static void exynos4210_uart_reset(DeviceState *dev)
+     trace_exynos_uart_rxsize(s->channel, s->rx.size);
  }
  
-@@ -348,7 +304,7 @@ static void exynos4210_uart_update_parameters(Exynos4210UartState *s)
- 
-     qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
- 
--    PRINT_DEBUG("UART%d: speed: %d, parity: %c, data: %d, stop: %d\n",
-+    trace_exynos_uart_update_params(
-                 s->channel, speed, parity, data_bits, stop_bits);
- }
- 
-@@ -358,8 +314,8 @@ static void exynos4210_uart_write(void *opaque, hwaddr offset,
-     Exynos4210UartState *s = (Exynos4210UartState *)opaque;
-     uint8_t ch;
- 
--    PRINT_DEBUG_EXTEND("UART%d: <0x%04x> %s <- 0x%08llx\n", s->channel,
--        offset, exynos4210_uart_regname(offset), (long long unsigned int)val);
-+    trace_exynos_uart_write(s->channel, offset,
-+                            exynos4210_uart_regname(offset), val);
- 
-     switch (offset) {
-     case ULCON:
-@@ -373,12 +329,12 @@ static void exynos4210_uart_write(void *opaque, hwaddr offset,
-         if (val & UFCON_Rx_FIFO_RESET) {
-             fifo_reset(&s->rx);
-             s->reg[I_(UFCON)] &= ~UFCON_Rx_FIFO_RESET;
--            PRINT_DEBUG("UART%d: Rx FIFO Reset\n", s->channel);
-+            trace_exynos_uart_rx_fifo_reset(s->channel);
-         }
-         if (val & UFCON_Tx_FIFO_RESET) {
-             fifo_reset(&s->tx);
-             s->reg[I_(UFCON)] &= ~UFCON_Tx_FIFO_RESET;
--            PRINT_DEBUG("UART%d: Tx FIFO Reset\n", s->channel);
-+            trace_exynos_uart_tx_fifo_reset(s->channel);
-         }
-         break;
- 
-@@ -390,9 +346,7 @@ static void exynos4210_uart_write(void *opaque, hwaddr offset,
-             /* XXX this blocks entire thread. Rewrite to use
-              * qemu_chr_fe_write and background I/O callbacks */
-             qemu_chr_fe_write_all(&s->chr, &ch, 1);
--#if DEBUG_Tx_DATA
--            fprintf(stderr, "%c", ch);
--#endif
-+            trace_exynos_uart_tx(s->channel, ch);
-             s->reg[I_(UTRSTAT)] |= UTRSTAT_TRANSMITTER_EMPTY |
-                     UTRSTAT_Tx_BUFFER_EMPTY;
-             s->reg[I_(UINTSP)]  |= UINTSP_TXD;
-@@ -403,8 +357,7 @@ static void exynos4210_uart_write(void *opaque, hwaddr offset,
-     case UINTP:
-         s->reg[I_(UINTP)] &= ~val;
-         s->reg[I_(UINTSP)] &= ~val;
--        PRINT_DEBUG("UART%d: UINTP [%04x] have been cleared: %08x\n",
--                    s->channel, offset, s->reg[I_(UINTP)]);
-+        trace_exynos_uart_intclr(s->channel, s->reg[I_(UINTP)]);
-         exynos4210_uart_update_irq(s);
-         break;
-     case UTRSTAT:
-@@ -412,7 +365,7 @@ static void exynos4210_uart_write(void *opaque, hwaddr offset,
-     case UFSTAT:
-     case UMSTAT:
-     case URXH:
--        PRINT_DEBUG("UART%d: Trying to write into RO register: %s [%04x]\n",
-+        trace_exynos_uart_ro_write(
-                     s->channel, exynos4210_uart_regname(offset), offset);
-         break;
-     case UINTSP:
-@@ -439,6 +392,8 @@ static uint64_t exynos4210_uart_read(void *opaque, hwaddr offset,
-     case UERSTAT: /* Read Only */
-         res = s->reg[I_(UERSTAT)];
-         s->reg[I_(UERSTAT)] = 0;
-+        trace_exynos_uart_read(s->channel, offset,
-+                               exynos4210_uart_regname(offset), res);
-         return res;
-     case UFSTAT: /* Read Only */
-         s->reg[I_(UFSTAT)] = fifo_elements_number(&s->rx) & 0xff;
-@@ -446,20 +401,22 @@ static uint64_t exynos4210_uart_read(void *opaque, hwaddr offset,
-             s->reg[I_(UFSTAT)] |= UFSTAT_Rx_FIFO_FULL;
-             s->reg[I_(UFSTAT)] &= ~0xff;
-         }
-+        trace_exynos_uart_read(s->channel, offset,
-+                               exynos4210_uart_regname(offset),
-+                               s->reg[I_(UFSTAT)]);
-         return s->reg[I_(UFSTAT)];
-     case URXH:
-         if (s->reg[I_(UFCON)] & UFCON_FIFO_ENABLE) {
-             if (fifo_elements_number(&s->rx)) {
-                 res = fifo_retrieve(&s->rx);
--#if DEBUG_Rx_DATA
--                fprintf(stderr, "%c", res);
--#endif
-+                trace_exynos_uart_rx(s->channel, res);
-                 if (!fifo_elements_number(&s->rx)) {
-                     s->reg[I_(UTRSTAT)] &= ~UTRSTAT_Rx_BUFFER_DATA_READY;
-                 } else {
-                     s->reg[I_(UTRSTAT)] |= UTRSTAT_Rx_BUFFER_DATA_READY;
-                 }
-             } else {
-+                trace_exynos_uart_rx_error(s->channel);
-                 s->reg[I_(UINTSP)] |= UINTSP_ERROR;
-                 exynos4210_uart_update_irq(s);
-                 res = 0;
-@@ -468,15 +425,22 @@ static uint64_t exynos4210_uart_read(void *opaque, hwaddr offset,
-             s->reg[I_(UTRSTAT)] &= ~UTRSTAT_Rx_BUFFER_DATA_READY;
-             res = s->reg[I_(URXH)];
-         }
-+        trace_exynos_uart_read(s->channel, offset,
-+                               exynos4210_uart_regname(offset), res);
-         return res;
-     case UTXH:
--        PRINT_DEBUG("UART%d: Trying to read from WO register: %s [%04x]\n",
--                    s->channel, exynos4210_uart_regname(offset), offset);
-+        trace_exynos_uart_wo_read(s->channel, exynos4210_uart_regname(offset),
-+                                  offset);
-         break;
-     default:
-+        trace_exynos_uart_read(s->channel, offset,
-+                               exynos4210_uart_regname(offset),
-+                               s->reg[I_(offset)]);
-         return s->reg[I_(offset)];
-     }
- 
-+    trace_exynos_uart_read(s->channel, offset, exynos4210_uart_regname(offset),
-+                           0);
-     return 0;
- }
- 
-@@ -555,7 +519,7 @@ static void exynos4210_uart_reset(DeviceState *dev)
-     fifo_reset(&s->rx);
-     fifo_reset(&s->tx);
- 
--    PRINT_DEBUG("UART%d: Rx FIFO size: %d\n", s->channel, s->rx.size);
-+    trace_exynos_uart_rxsize(s->channel, s->rx.size);
- }
- 
- static const VMStateDescription vmstate_exynos4210_uart_fifo = {
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 2ce7f2f998..ba28b45b53 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -77,3 +77,20 @@ cmsdk_apb_uart_set_params(int speed) "CMSDK APB UART: params set to %d 8N1"
- # nrf51_uart.c
- nrf51_uart_read(uint64_t addr, uint64_t r, unsigned int size) "addr 0x%" PRIx64 " value 0x%" PRIx64 " size %u"
- nrf51_uart_write(uint64_t addr, uint64_t value, unsigned int size) "addr 0x%" PRIx64 " value 0x%" PRIx64 " size %u"
++static int exynos4210_uart_post_load(void *opaque, int version_id)
++{
++    Exynos4210UartState *s = (Exynos4210UartState *)opaque;
 +
-+# exynos4210_uart.c
-+exynos_uart_irq_raised(uint32_t channel, uint32_t reg) "UART%d: IRQ raised: 0x%08"PRIx32
-+exynos_uart_irq_lowered(uint32_t channel) "UART%d: IRQ lowered"
-+exynos_uart_update_params(uint32_t channel, int speed, uint8_t parity, int data, int stop) "UART%d: speed: %d, parity: %c, data bits: %d, stop bits: %d"
-+exynos_uart_write(uint32_t channel, uint32_t offset, const char *name, uint64_t val) "UART%d: <0x%04x> %s <- 0x%" PRIx64
-+exynos_uart_read(uint32_t channel, uint32_t offset, const char *name, uint64_t val) "UART%d: <0x%04x> %s -> 0x%" PRIx64
-+exynos_uart_rx_fifo_reset(uint32_t channel) "UART%d: Rx FIFO Reset"
-+exynos_uart_tx_fifo_reset(uint32_t channel) "UART%d: Tx FIFO Reset"
-+exynos_uart_tx(uint32_t channel, uint8_t ch) "UART%d: Tx 0x%02"PRIx32
-+exynos_uart_intclr(uint32_t channel, uint32_t reg) "UART%d: interrupts cleared: 0x%08"PRIx32
-+exynos_uart_ro_write(uint32_t channel, const char *name, uint32_t reg) "UART%d: Trying to write into RO register: %s [0x%04"PRIx32"]"
-+exynos_uart_rx(uint32_t channel, uint8_t ch) "UART%d: Rx 0x%02"PRIx32
-+exynos_uart_rx_error(uint32_t channel) "UART%d: Rx error"
-+exynos_uart_wo_read(uint32_t channel, const char *name, uint32_t reg) "UART%d: Trying to read from WO register: %s [0x%04"PRIx32"]"
-+exynos_uart_rxsize(uint32_t channel, uint32_t size) "UART%d: Rx FIFO size: %d"
-+exynos_uart_channel_error(uint32_t channel) "Wrong UART channel number: %d"
++    exynos4210_uart_update_parameters(s);
++
++    return 0;
++}
++
+ static const VMStateDescription vmstate_exynos4210_uart_fifo = {
+     .name = "exynos4210.uart.fifo",
+     .version_id = 1,
+     .minimum_version_id = 1,
++    .post_load = exynos4210_uart_post_load,
+     .fields = (VMStateField[]) {
+         VMSTATE_UINT32(sp, Exynos4210UartFIFO),
+         VMSTATE_UINT32(rp, Exynos4210UartFIFO),
 -- 
 2.17.1
 

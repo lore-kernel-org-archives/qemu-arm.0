@@ -1,107 +1,123 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp447575lff;
-        Sat, 18 Jan 2020 05:31:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwI2QrWU2esd4/U7NufTOCWzI+rGRHVm1jojJ7frLqPOvTIaueQHKDRQF9Vzyu+4UmWGffJ
-X-Received: by 2002:ac8:685:: with SMTP id f5mr11901374qth.199.1579354262845;
-        Sat, 18 Jan 2020 05:31:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579354262; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp483323lff;
+        Sat, 18 Jan 2020 06:10:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwQkSEtA5A7PSSAdDaz2Cq/vUdVxqmobSOd/XkF+vfZX8Q4W65LQu8OI3ptw/b1v6ROGXom
+X-Received: by 2002:a37:e109:: with SMTP id c9mr39984043qkm.366.1579356643114;
+        Sat, 18 Jan 2020 06:10:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579356643; cv=none;
         d=google.com; s=arc-20160816;
-        b=GOD7TgYxgU4LScmS2+LPBomUzjbiCBXUJZKlyRqvrGJRMxYe2sFAOMRukevE01Pgfw
-         nweHaN5x1fMxI+fn/2SbDyh8nEyx6kXVC6ebN9WGy8xcr1OxAz/DLJkjtzsartgQk8pK
-         ZvJ8gmTx87PP67+agb/7KMyUvKZapjTvxw5eMaUaz02bvduQpzq9KB1FUsVDnRwFDdbo
-         bgDHGaH5HblvCuUVX81nXpij/pWnhvINKlx1V5RfQlWK23xqzgkfHZK49J22xs/lpOl1
-         ecKwR2ZmyXbOa4kV4Zc87Ifeq9m+MAZqxn/063+8s3guvInEMoRjt7a8YuveW2I3TBcL
-         qDxQ==
+        b=UIifAI45hyf73oQrsXltKBXFuE5rSt1jfM/Iv4m6IG/333wp4hboIx0VLVErxfvMJF
+         0LU7OxdTH4TJF/Tdfd/FvwifiQjB1oSDj84VU+k3fG1Ku2qA41BPU7PvnU7Exjayu/Qo
+         SHhqHFgz+1bFHZs4758fUeBAZRMR1urfI1C/a/s4Bs1U102uVc4dhA9xYBApDKDPlJh4
+         shNlX96BDv836+ddxHsksMF4q/e16JQq7W9gpmv9V4h89UTM1LcWeKhorJK6qNxZrKzm
+         KAldJXdbak54aeASCE8y9aMbU2ma61HYgLuZP4QDfNtuoZ+3utt6predDe0dJmP5dsii
+         JtFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=Lf+UtRNOGS38Pwon3ps7Xnso3KHgL4d4xeGT+ZIesCc=;
-        b=mteUYS1ihJZmCsXSNIp4XMbSRkQUc2grCIJVNbXa5fOHC04hmbWNyrkkMBZRMCp5Bv
-         LKHLLHiNQK9hTyUR51z5252sWV+N+AFeJiiVBvf9ni/7DL+YpbnKi7k3SYFlyanzsWqr
-         h5Uh/YefjN40R8p1in6Uls5LV8msnforh2tKYGmaPiETOSr7rMuWh0GXDykW67xvi6Ut
-         8VMUE+iJ/uAGkRur/tfFQ138F8iqQGUBJB/ezM3fj1AHbypffQ5WqA0xAzLXcAAVMJXA
-         tHcqaSF6tZu2HgbY+iKpgaXGErFSRmbHORd5Ih5yX+RQibCAWerWz96V3ngLXXe2qaFP
-         LnUw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Iu7vbZou4Mkqkj+xWBLbpLkoGfA0UBUnIAfcX2ZZffA=;
+        b=s/2X45IEAyru2GltaV8kfivkIR+BbHylY9BkEaH+BwiCdvbY6/Yo8zSy2tsI5HzTGl
+         Ua47sqnjzrgszoulVy1LVHJIqdkgAKhvcUyZSBRTJyrTHIyOotpjEpjfcs6pgHLMUFUX
+         7jBDqKNpFnMwo8hF7TyHDBTviQRYQB4Zbs1+NUuGKy8yLXEtLsU3Q/Bhr3Gf+/FBlLBF
+         IDno60WiSqXb0otZdnabxuFFUZxXDu7SzmWV9rUYdTfUj7zOabONrJMk7z3jp+RRF7fN
+         +1+MmV11okkXmB1LyEz4paRayKpDlYXYaLEXZtn7+nmzheR4K54zklsJj55k7bOfGBRX
+         /I+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HP42IC1u;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D6zo+p95;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i7si17269921qkh.186.2020.01.18.05.31.02
+        by mx.google.com with ESMTPS id i11si16658374qvm.158.2020.01.18.06.10.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Jan 2020 05:31:02 -0800 (PST)
+        Sat, 18 Jan 2020 06:10:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HP42IC1u;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D6zo+p95;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40310 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40671 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isoBq-000724-7m
-	for alex.bennee@linaro.org; Sat, 18 Jan 2020 08:31:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42005)
+	id 1isooE-0005P5-Ar
+	for alex.bennee@linaro.org; Sat, 18 Jan 2020 09:10:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45559)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1isoBh-00071c-Jl
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 08:30:54 -0500
+ (envelope-from <philmd@redhat.com>) id 1isolq-0002AW-9b
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 09:08:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1isoBg-0001XN-BM
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 08:30:53 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:29400
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1isoll-0008WI-89
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 09:08:14 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59769
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1isoBg-0001X8-8A
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 08:30:52 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isoll-0008Vu-4o
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 09:08:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579354251;
+ s=mimecast20190719; t=1579356488;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Lf+UtRNOGS38Pwon3ps7Xnso3KHgL4d4xeGT+ZIesCc=;
- b=HP42IC1uPxI3dq1tpqG4KnOV7ulqtIcuAGKJPrM6NeI+pkPowMWkKUv/B6W8R5nPC57obe
- 9DotAxR3CFLXmzsZaJ0E+xVMf2NnRa5NG5EJvlFFTW0JPuSMIQGQEfZfGEaDH1kFprdwt2
- Mcl1L3UGWDgVsd+2ECmR/MfW0kvEod0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-141-89VRmMybMbWWCryUOPm8Yg-1; Sat, 18 Jan 2020 08:30:50 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33C51107ACC4;
- Sat, 18 Jan 2020 13:30:49 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-131.ams2.redhat.com
- [10.36.116.131])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9990384BC9;
- Sat, 18 Jan 2020 13:30:46 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 2611F1138600; Sat, 18 Jan 2020 14:30:45 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ bh=Iu7vbZou4Mkqkj+xWBLbpLkoGfA0UBUnIAfcX2ZZffA=;
+ b=D6zo+p95EQr39nyRF8vOdPTSDGXVEj2ktk2S32asAN6WgpCkk0RQAcWdi952QRg8rTOtPo
+ a2DOKNxYQzJV0xoJrEYn3RCkPf+P1X7UOr42lQzSJx5Brmg9j+2oHUZ24XQy3B3VZptX+1
+ rfS39bSjDmtA3lFcCrll0Y5/Tgb47Ao=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-307-JHg9TEMgOqmsojyX8m43CQ-1; Sat, 18 Jan 2020 09:08:07 -0500
+Received: by mail-wr1-f71.google.com with SMTP id f10so11848855wro.14
+ for <qemu-arm@nongnu.org>; Sat, 18 Jan 2020 06:08:07 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9o3S4O25WsiD4zcH7WvaRM+9ICaD1wM7brIRiW5nnkk=;
+ b=IXZQ1u2cmyPUZgd1549Qw/X/GGzZcuXw8OZAYpv7ox7l1QggXkHr9d/UOT/Qh76iwW
+ lUFm7s9FpSPOkYipZNGiHe6FbdK5aPSZo5kXHSX5/Zm2rG4YS1pO63OOKJXzM6tOuP/K
+ zHtpW93jLixeLF0/SeMbGyflXfh8rP5+HVrLvOGiRCoblh1VpttUDtXtPeSlelZJQkpU
+ xq9xftB9YNEjG9eJ2kCVevRTOWj8qHvJsz9gP5DYyjh4YVfOwgJxOoflLWC7D8PBopNm
+ vF7x8mQv+NoyoPK2m4Z4W+HCMkEdf2psnAucQx59zFM1ZAdxir5W7SJ8skjnKuWEOhhb
+ 88PQ==
+X-Gm-Message-State: APjAAAUxurAtL1UUxZ9KstODeKvqhr6nnxYO58Z6mPi7OKiMhnYsSCGw
+ UkYJKWB+eDCWdfLMb3jti55K4JTwF25cF7vdJlf+OF4PgxZY8AxhVpKSIUlL2O6ZiTWqzLT7Q/x
+ 0jX5G82GHWPZ7
+X-Received: by 2002:a05:600c:d7:: with SMTP id
+ u23mr9989780wmm.145.1579356485922; 
+ Sat, 18 Jan 2020 06:08:05 -0800 (PST)
+X-Received: by 2002:a05:600c:d7:: with SMTP id
+ u23mr9989751wmm.145.1579356485643; 
+ Sat, 18 Jan 2020 06:08:05 -0800 (PST)
+Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
+ [83.57.172.113])
+ by smtp.gmail.com with ESMTPSA id g21sm3731471wmh.17.2020.01.18.06.08.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 18 Jan 2020 06:08:05 -0800 (PST)
 Subject: Re: [PATCH v2 2/2] MAINTAINERS: Move the OMAP section inside the ARM
  Machines one
+To: Markus Armbruster <armbru@redhat.com>
 References: <20200118085509.30182-1-philmd@redhat.com>
  <20200118085509.30182-3-philmd@redhat.com>
-Date: Sat, 18 Jan 2020 14:30:45 +0100
-In-Reply-To: <20200118085509.30182-3-philmd@redhat.com> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Sat, 18 Jan 2020 09:55:09
- +0100")
-Message-ID: <87pnfgq4ca.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ <87pnfgq4ca.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <ed3f9476-212e-18b3-7fe8-2242eef63515@redhat.com>
+Date: Sat, 18 Jan 2020 15:08:03 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: 89VRmMybMbWWCryUOPm8Yg-1
+In-Reply-To: <87pnfgq4ca.fsf@dusky.pond.sub.org>
+Content-Language: en-US
+X-MC-Unique: JHg9TEMgOqmsojyX8m43CQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,50 +133,58 @@ Cc: Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NPwxAi05az9V
+X-TUID: XN67+qaiGJOH
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+On 1/18/20 2:30 PM, Markus Armbruster wrote:
+> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+>=20
+>> Add the Siemens SX1 (OMAP310) machines with the other ARM machines.
+>>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> ---
+>>   MAINTAINERS | 14 +++++++-------
+>>   1 file changed, 7 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 52fbc18566..e2c148d8d8 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -560,6 +560,13 @@ F: include/hw/arm/digic.h
+>>   F: hw/*/digic*
+>>   F: include/hw/*/digic*
+>>  =20
+>> +OMAP
+>> +M: Peter Maydell <peter.maydell@linaro.org>
+>> +L: qemu-arm@nongnu.org
+>> +S: Maintained
+>> +F: hw/*/omap*
+>> +F: include/hw/arm/omap.h
+>> +
+>>   Gumstix
+>>   M: Peter Maydell <peter.maydell@linaro.org>
+>>   R: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> @@ -1404,13 +1411,6 @@ F: include/hw/block/fdc.h
+>>   F: tests/qtest/fdc-test.c
+>>   T: git https://github.com/jnsnow/qemu.git ide
+>>  =20
+>> -OMAP
+>> -M: Peter Maydell <peter.maydell@linaro.org>
+>> -L: qemu-arm@nongnu.org
+>> -S: Maintained
+>> -F: hw/*/omap*
+>> -F: include/hw/arm/omap.h
+>> -
+>>   IPack
+>>   M: Alberto Garcia <berto@igalia.com>
+>>   S: Odd Fixes
+>=20
+> Commit message says "add", patch seems to merely move an existing
+> entry.  What am I missing?
 
-> Add the Siemens SX1 (OMAP310) machines with the other ARM machines.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  MAINTAINERS | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 52fbc18566..e2c148d8d8 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -560,6 +560,13 @@ F: include/hw/arm/digic.h
->  F: hw/*/digic*
->  F: include/hw/*/digic*
-> =20
-> +OMAP
-> +M: Peter Maydell <peter.maydell@linaro.org>
-> +L: qemu-arm@nongnu.org
-> +S: Maintained
-> +F: hw/*/omap*
-> +F: include/hw/arm/omap.h
-> +
->  Gumstix
->  M: Peter Maydell <peter.maydell@linaro.org>
->  R: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> @@ -1404,13 +1411,6 @@ F: include/hw/block/fdc.h
->  F: tests/qtest/fdc-test.c
->  T: git https://github.com/jnsnow/qemu.git ide
-> =20
-> -OMAP
-> -M: Peter Maydell <peter.maydell@linaro.org>
-> -L: qemu-arm@nongnu.org
-> -S: Maintained
-> -F: hw/*/omap*
-> -F: include/hw/arm/omap.h
-> -
->  IPack
->  M: Alberto Garcia <berto@igalia.com>
->  S: Odd Fixes
+Ah yes indeed. Peter, can you modify s/Add/Move/ in the description or=20
+do you prefer a respin?
 
-Commit message says "add", patch seems to merely move an existing
-entry.  What am I missing?
+Thanks,
+
+Phil.
 

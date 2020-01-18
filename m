@@ -1,762 +1,803 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp875854lff;
-        Sat, 18 Jan 2020 14:38:16 -0800 (PST)
-X-Received: by 2002:a92:8c54:: with SMTP id o81mr4693134ild.163.1579387096660;
-        Sat, 18 Jan 2020 14:38:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579387096; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp885102lff;
+        Sat, 18 Jan 2020 14:52:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzhx6z74tmTk5KFPtNQLKwGxuic2j9dN1BN+UqDjZ3mcFJNR2wsYt9HCKbLKhZOxIq3wVBi
+X-Received: by 2002:a50:f982:: with SMTP id q2mr10572940edn.55.1579387973901;
+        Sat, 18 Jan 2020 14:52:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579387973; cv=none;
         d=google.com; s=arc-20160816;
-        b=RLpOiUjfQqj9W2Yif0ZKie7ovW4xHxjIsXEnKbr36UdqyFYlNcGN1MdWwlrtB/qPWM
-         F1JHhxD0EKJei2oNT7jlgfz8b/Gsjqg9CZN3irBQ47QwlICBVmwxTP1uplDDr7OOmLh6
-         pi9o5PtJwikicGDbHNfK6vFuhBzoJr3lvnic/NwOGyEw1ao2ks28QODj+V+9cqaQM3CS
-         HvqQR2AYaimVmoESba470+VWiexpfljvbf4PxAj/oWfDkX7rRBJGS37BEsRySFLkJX6H
-         u+hN1St2wC4LkGIYKEC0poMtJIRez2Q43i2V4RxOYYsuBLCCjLKIe9MHrvo13yTLNC5u
-         7+GA==
+        b=IKJZfa6Pv3yUXCiFkI2EFT7SY0cM+IlOBSiML3kZYue+3bEkMcj8JB4cvzz1+9nnHH
+         7GyvzNmIuXrACcdYu9yRjzl0B9Slxmw8ma+/e7C4kfLvyZjNlb6RL8CFeAQSYucWertS
+         4SzmMf0tR+lxqBtd/9ZmUIP6W3yv7PvLeqTo1H7M+Ohx1ZJ8fmmXELoiW4+01ZccloJ7
+         NR/s+W3M6gLMTtEniqIkVb26oBPkld40JPMFtIz38/TCzhOtPd4JHrmKa7BDlM/YwU0q
+         Y1Lz7ax557ERfU2LDFpbM1lMj5R82yTXuVRcB9a2RapGgGiUF+jor0MK2CF61KD7jyE8
+         4r8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=hRcd/nm1DDXCy0mM6v2vSKirTIojgRih8LH3c3wiVto=;
-        b=mcppNuQs6/KRf0PZquxAD9rpaNndsE4qfsXqFoSASo4Du2iPdtdWONGpfjKBIntP7X
-         Q3NUK0+cZORLGNDrnzJoh8nrlUEBN7w0RpuEIbrapKk4qg3YUhKBwSJCZmCMX+M8t9ya
-         +6zeyTXaVOi/axgOMW+YhVfDaLuSutv2vMEo2ClR1AeF9vY/TMF8Y935PnFwVj8s1vUO
-         oo5WXXfi5k8I5e0VefPgEgKmPpO9ySf+Sg4joH01ZrslNdHc1qwsGFNi0YXLV4khC5BZ
-         or31pdtQyK0f1mIDDpgFJozIRLNLFOlbEHBv1ZPzSY/4fIxN9t718sD34ovzgkV+NVqS
-         oTCQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=+QRlbAbgoDTWc6TJp7OSzCZ0jnqrg6c9PW2TD15g8OU=;
+        b=G9O4oe4xrfXLVvaLRyHj+UDDDroSTaM9nLavhKN9aXN7wf2SZ+pGnL5rJ1F6Ua2AZl
+         hQhhrH9KTPok9Dhx8Yekl9Ck/sWTSUZsXGbqv27AoXMZJYeKafWl+Mm4sSaTgFsOauGK
+         oamWnYaUBDFZ3uOXtx0bMiV5m7j5J1A1ncqaHedNgggyV+dxfjIs7yXKtm5QD+MHSIgR
+         Ln4Fllnjhz+EOHUXzPnc5t3k+Ut63XTRVfrIHcFJSL7tuOECckl2yrE94VVikyJFWXgt
+         yrUH1pMQaef+Hj1BblJcyn9690qQljX62hD+9TxzREOs9AXmmkxaj9zLb6rbxEWTNYgA
+         4SFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E2B5nIy1;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id h10sor19980771ilq.114.2020.01.18.14.38.16
-        (Google Transport Security);
-        Sat, 18 Jan 2020 14:38:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qZGNHnkR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ce12si6312823edb.603.2020.01.18.14.52.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 18 Jan 2020 14:52:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E2B5nIy1;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=hRcd/nm1DDXCy0mM6v2vSKirTIojgRih8LH3c3wiVto=;
-        b=E2B5nIy1zyU1n4iqUmP/7tTG2NV2UUQMjP+9dDgg3hkXSeRk6UiDBK3M+oHddCzFwG
-         puFYic+S6zlvGmrBsdwpU5sKGbF2vTlNkO8dXES1UcjRDcXsITOYftXb1urq7xhXwIPl
-         R7xaqWsBr6q27UyXugtnLcSh3WIkCNXrxuXYN2JVKgVV+eQ3fQiPbkoiQdJlx6nYPGjf
-         z0L0jnOCPQbWxFBUqEUQCewJCYbgIAU6C9UmozuOzQQTZm2aXTbd7y3ZnjGMNsLSadDc
-         kA3V3IpbEsy87u8O3sJo6Pz/sXPqHB05KaNZi9YMYU/XwNG478b22ibbcESBlDc/wkG2
-         RJnQ==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qZGNHnkR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45550 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iswxY-000634-NU
+	for alex.bennee@linaro.org; Sat, 18 Jan 2020 17:52:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38630)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iswxG-0005zo-Hi
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 17:52:38 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1iswxD-0007Qd-Rb
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 17:52:34 -0500
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b]:43069)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1iswx7-0007LM-VG; Sat, 18 Jan 2020 17:52:26 -0500
+Received: by mail-io1-xd2b.google.com with SMTP id n21so29829361ioo.10;
+ Sat, 18 Jan 2020 14:52:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=+QRlbAbgoDTWc6TJp7OSzCZ0jnqrg6c9PW2TD15g8OU=;
+ b=qZGNHnkRdmntptQsKYD8+a1EdUOEZJNOuPD9xy6RwSR47jjrTh+R/7rJP9iXFAIo5L
+ 7CrHZ1J95FXJih7zPfUbp29fGoKNzaMtRnwwSJQMVIpyuG7QSVaIR33ZrJ1+IGPxAnNv
+ vSXI1TPFXCqjNZ5LMV7RRGPmjrTUiEPUrm0TaRapv9AcGCOd839HD4F8fqAaP21ThzPs
+ Clpwk5HTi0kGhdVspcQStBumnUQB+3PUSXtcnGlXRGZWw3OrX5hfJeGyfNNhcByY7Sg1
+ Z2apfcaDmg6Vzz2nbkEBQu5oMlWaEY6b1rSXMFk+OtB8BbmQo/mc9dFc8Pa06rBeNsiU
+ O73w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=hRcd/nm1DDXCy0mM6v2vSKirTIojgRih8LH3c3wiVto=;
-        b=iAs391Vnd8Ros59Kem5biGRlj5biur909JgqZjpWkoPzW91yH7g7q7QvMnQkWmlJti
-         gr3/U2lqnu2jYCNCCJ8lYEqYNDT2uDYXI1VVEdMmhCAbLAmEXGQeqGtKRxCArEamhIu+
-         K0foqg5nTg/X1OlzgkFJ1QJWSzZOy2FA1wK80lWa9alymcn776cWTMoXrIDdRAwCm89W
-         +cLkJ4m3P7pBpju0FbeYPY74nQy/AfU+ZR3IEzoUJ8wB5Pq8sEkl27bFMbeS4zBV6HfJ
-         VjghulRMh3ctaRMKGWn3l36UkiMXtMFdPLTBk5pAW7LRyoLM16l70Z2rxPvt28eizs5l
-         qW4Q==
-X-Gm-Message-State: APjAAAWT48RqiHMxP403qCZ19U/OADOpXiQknwBpzR/52jopjx/YqCrX
-	k32H6jMl8Bg10iCph4Jh2lZuOMOHxwXp3FcJ2SE=
-X-Google-Smtp-Source: APXvYqzAWqN00LfwIByfJra637idfqA5aLbwTcLEGavZVU0r8rpA8DbcYzmGRbf7mnoqILBhYFzYQHKHdnxh9mRGsV4=
-X-Received: by 2002:a92:7509:: with SMTP id q9mr4472042ilc.67.1579387096216;
- Sat, 18 Jan 2020 14:38:16 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+QRlbAbgoDTWc6TJp7OSzCZ0jnqrg6c9PW2TD15g8OU=;
+ b=ofZHXHA1/JH/m69ZmoTpd6crsF7vxl1+nkm0uvkA6PxxbxYBdfrSZZap7QIcbZCbR1
+ FyC8uz2jDOeTmp2zqOmT6XtiulUv2frqGOvzf3ss2XJhpz9GqksAyFOoQr6j5f2F/GmE
+ huREyPvkXFeFDyzSCb7HFLU3CEb33ZwEiiOYwyptJSHcBmtA2/vFGTGyW7zdny6l7qJD
+ 9hzHvMWQ76FG3ja5H3y5kaFxtR27NPfgPXX8Hv0bvvsy2P3Z6fNdLKufLnYm5YnZg1ER
+ W0wtnw9iz2+NX5vQpILz1NqGCfTLX9nFBH/9vfMRY0iw4K1EzHkZ2O51BDmzLYaoBXsf
+ WS0A==
+X-Gm-Message-State: APjAAAXOcdla5RJS3LWiQJ3Geh8rPMtV8wE7Ajkqd0SCgKp+Vi7QV4EP
+ MSx1F9HeSdDAFRwJzsKXubk3pYbFm9fI9T0TDmg=
+X-Received: by 2002:a6b:6f01:: with SMTP id k1mr36587827ioc.28.1579387945075; 
+ Sat, 18 Jan 2020 14:52:25 -0800 (PST)
 MIME-Version: 1.0
 References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-18-nieklinnenbank@gmail.com> <15d377a2-9d40-6195-5bfb-64e69037cd64@redhat.com>
-In-Reply-To: <15d377a2-9d40-6195-5bfb-64e69037cd64@redhat.com>
+ <20200108200020.4745-13-nieklinnenbank@gmail.com>
+ <cca7b552-ed09-fdc4-e80e-fc172e30e9bf@redhat.com>
+ <CAPan3Wqso11h47mGdWxbDFE7dPL7wzNGCM6XVB-12SAZhJ0mqA@mail.gmail.com>
+ <CAPan3WrkQVb7VhJRYZET_BjEWEOYow-28ft2+4=G-9SNUDm6WA@mail.gmail.com>
+ <128940fd-eda9-8151-eb4f-4d29c2c1d72a@redhat.com>
+In-Reply-To: <128940fd-eda9-8151-eb4f-4d29c2c1d72a@redhat.com>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sat, 18 Jan 2020 23:38:05 +0100
-Message-ID: <CAPan3WrbuKWNvnXaDbCrc4cjHh1bGTfSU39jvM46GP26nhGrMw@mail.gmail.com>
-Subject: Re: [PATCH v3 17/17] docs: add Orange Pi PC document
+Date: Sat, 18 Jan 2020 23:52:14 +0100
+Message-ID: <CAPan3WqDvperv=rVtdmMHaWKk=vZNjtXKb2n2kniD-+O1jEg=w@mail.gmail.com>
+Subject: Re: [PATCH v3 12/17] hw/arm/allwinner: add RTC device support
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000d53bc8059c71b696"
-X-TUID: GFK/Tff/ASvu
+Content-Type: multipart/alternative; boundary="0000000000006dc74b059c71e9ec"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::d2b
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yheyUM/jantb
 
---000000000000d53bc8059c71b696
+--0000000000006dc74b059c71e9ec
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Hi Philippe,
 
-On Sat, Jan 18, 2020 at 10:38 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-.com>
+On Sat, Jan 18, 2020 at 4:05 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
 wrote:
 
-> On 1/8/20 9:00 PM, Niek Linnenbank wrote:
-> > The Xunlong Orange Pi PC machine is a functional ARM machine
-> > based on the Allwinner H3 System-on-Chip. It supports mainline
-> > Linux, U-Boot, NetBSD and is covered by acceptance tests.
+> Hi Niek,
+>
+> On 1/14/20 11:57 PM, Niek Linnenbank wrote:
+> > On Tue, Jan 14, 2020 at 11:52 PM Niek Linnenbank
+> > <nieklinnenbank@gmail.com <mailto:nieklinnenbank@gmail.com>> wrote:
 > >
-> > This commit adds a documentation text file with a description
-> > of the machine and instructions for the user.
+> >     Hi Philippe,
 > >
-> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > ---
-> >   docs/orangepi.rst | 200 +++++++++++++++++++++++++++++++++++++++++++++=
-+
-> >   MAINTAINERS       |   1 +
-> >   2 files changed, 201 insertions(+)
-> >   create mode 100644 docs/orangepi.rst
+> >     On Mon, Jan 13, 2020 at 11:57 PM Philippe Mathieu-Daud=C3=A9
+> >     <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
 > >
-> > diff --git a/docs/orangepi.rst b/docs/orangepi.rst
-> > new file mode 100644
-> > index 0000000000..5ac2a7b7cc
-> > --- /dev/null
-> > +++ b/docs/orangepi.rst
-> > @@ -0,0 +1,200 @@
-> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D
-> > +Orange Pi PC Machine Type
-> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D
-> > +
-> > +The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
-> > +based embedded computer with mainline support in both U-Boot
-> > +and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
-> > +512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
-> > +various other I/O.
-> > +
-> > +Supported devices
-> > +-----------------
-> > +
-> > +The Orange Pi PC machine type supports the following devices:
->
-> Maybe drop "type"?
->
-> > +
-> > + * SMP (Quad Core Cortex A7)
-> > + * Generic Interrupt Controller configuration
-> > + * SRAM mappings
-> > + * SDRAM controller
-> > + * Real Time Clock
-> > + * Timer device (re-used from Allwinner A10)
-> > + * UART
-> > + * SD/MMC storage controller
-> > + * EMAC ethernet connectivity
->
-> Drop "connectivity"?
->
-> > + * USB 2.0 interfaces
-> > + * Clock Control Unit
-> > + * System Control module
-> > + * Security Identifier device
-> > +
-> > +Limitations
-> > +-----------
-> > +
-> > +Currently, Orange Pi PC does *not* support the following features:
-> > +
-> > +- Graphical output via HDMI, GPU and/or the Display Engine
-> > +- Audio output
-> > +- Hardware Watchdog
-> > +
-> > +Also see the 'unimplemented' array in the Allwinner H3 SoC module
-> > +for a complete list of unimplemented I/O devices:
-> > +  ./hw/arm/allwinner-h3.c
-> > +
-> > +Using the Orange Pi PC machine type
-> > +-----------------------------------
-> > +
-> > +Boot options
-> > +~~~~~~~~~~~~
-> > +
-> > +The Orange Pi PC machine can start using the standard -kernel
-> functionality
-> > +for loading a Linux kernel or ELF executable. Additionally, the Orange
-> Pi PC
-> > +machine can also emulate the BootROM which is present on an actual
-> Allwinner H3
-> > +based SoC, which loads the bootloader from SD card, specified via the
-> -sd argument
->
-> "from a SD card"?
->
-> > +to qemu-system-arm.
-> > +
-> > +Running mainline Linux
-> > +~~~~~~~~~~~~~~~~~~~~~~
-> > +
-> > +Recently released mainline Linux kernels from 4.19 up to latest master
->
-> Drop "Recently released mainline" or only use "Mainline"?
->
-> Thanks, I'll correct all comments above.
-
-
-> > +are known to work. To build a Linux mainline kernel that can be booted
-> > +by the Orange Pi PC machine, simply configure the kernel using the
-> > +sunxi_defconfig configuration:
-> > +
-> > +  $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper
-> > +  $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make sunxi_defconfig
-> > +
-> > +To be able to use USB storage, you need to manually enable the
-> corresponding
-> > +configuration item. Start the kconfig configuration tool:
-> > +
-> > +  $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make menuconfig
-> > +
-> > +Navigate to the following item, enable it and save your configuration:
-> > +
-> > +  Device Drivers > USB support > USB Mass Storage support
->
-> Isn't it simpler to run 'echo CONFIG_USB_STORAGE=3Dy >> .config && make
-> oldconfig'?
->
-
-Yes true, that is also a way to enable it. I just wrote it down like this
-since using menuconfig
-or xconfig is usually the way people are familiar with.
-
-
->
-> > +
-> > +Build the Linux kernel with:
-> > +
-> > +  $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make -j5
->
-> I'm not sure about recommending "-j5" in the doc, not all user have >=3D4
-> SMP system. Maybe we don't care.
->
-
-Thanks, I'll remove the -j5.
-
-
->
-> > +
-> > +To boot the newly build linux kernel in QEMU with the Orange Pi PC
-> machine, use:
-> > +
-> > +  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-> > +      -kernel /path/to/linux/arch/arm/boot/zImage \
-> > +      -append 'console=3DttyS0,115200' \
-> > +      -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb
-> > +
-> > +Orange Pi PC images
-> > +~~~~~~~~~~~~~~~~~~~
-> > +
-> > +Note that the mainline kernel does not have a root filesystem. You may
-> provide it
-> > +with an official Orange Pi PC image from the official website:
-> > +
-> > +  http://www.orangepi.org/downloadresources/
-> > +
-> > +Another possibility is to run an Armbian image for Orange Pi PC which
-> > +can be downloaded from:
-> > +
-> > +   https://www.armbian.com/orange-pi-pc/
-> > +
-> > +Alternatively, you can also choose to build you own image with buildro=
-ot
-> > +using the orangepi_pc_defconfig. Also see https://buildroot.org for
-> more information.
-> > +
-> > +You can choose to attach the selected image either as an SD card or as
-> USB mass storage.
-> > +For example, to boot using the Orange Pi PC Debian image on SD card,
-> simply add the -sd
-> > +argument and provide the proper root=3D kernel parameter:
-> > +
-> > +  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-> > +      -kernel /path/to/linux/arch/arm/boot/zImage \
-> > +      -append 'console=3DttyS0,115200 root=3D/dev/mmcblk0p2' \
-> > +      -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb \
-> > +      -sd OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img
-> > +
-> > +To attach the image as an USB mass storage device to the machine,
-> > +simply append to the command:
-> > +
-> > +  -drive if=3Dnone,id=3Dstick,file=3Dmyimage.img \
-> > +  -device usb-storage,bus=3Dusb-bus.0,drive=3Dstick
-> > +
-> > +Instead of providing a custom Linux kernel via the -kernel command you
-> may also
-> > +choose to let the Orange Pi PC machine load the bootloader from SD
-> card, just like
-> > +a real board would do using the BootROM. Simply pass the selected imag=
-e
-> via the -sd
-> > +argument and remove the -kernel, -append, -dbt and -initrd arguments:
-> > +
-> > +  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-> > +       -sd Armbian_19.11.3_Orangepipc_buster_current_5.3.9.img
-> > +
-> > +Note that both the official Orange Pi PC images and Armbian images sta=
-rt
-> > +a lot of userland programs via systemd. Depending on the host hardware
-> and OS,
-> > +they may be slow to emulate, especially due to emulating the 4 cores.
-> > +To help reduce the performance slow down due to emulating the 4 cores,
-> you can
-> > +give the following kernel parameters (or via -append):
-> > +
-> > +  =3D> setenv extraargs 'systemd.default_timeout_start_sec=3D9000
-> loglevel=3D7 nosmp console=3DttyS0,115200'
-> > +
-> > +Running U-Boot
-> > +~~~~~~~~~~~~~~
-> > +
-> > +U-Boot mainline can be build and configured using the
-> orangepi_pc_defconfig
-> > +using similar commands as describe above for Linux. Note that it is
-> recommended
-> > +for development/testing to select the following configuration setting
-> in U-Boot:
-> > +
-> > +  Device Tree Control > Provider for DTB for DT Control > Embedded DTB
-> > +
-> > +To start U-Boot using the Orange Pi PC machine, provide the
-> > +u-boot binary to the -kernel argument:
-> > +
-> > +  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-> > +      -kernel /path/to/uboot/u-boot -sd disk.img
-> > +
-> > +Use the following U-boot commands to load and boot a Linux kernel from
-> SD card:
-> > +
-> > +  -> setenv bootargs console=3DttyS0,115200
-> > +  -> ext2load mmc 0 0x42000000 zImage
-> > +  -> ext2load mmc 0 0x43000000 sun8i-h3-orangepi-pc.dtb
-> > +  -> bootz 0x42000000 - 0x43000000
-> > +
-> > +Running NetBSD
-> > +~~~~~~~~~~~~~~
-> > +
-> > +The NetBSD operating system also includes support for Allwinner H3
-> based boards,
-> > +including the Orange Pi PC. NetBSD 9.0 is known to work best for the
-> Orange Pi PC
-> > +board and provides a fully working system with serial console,
-> networking and storage.
-> > +
-> > +Currently NetBSD 9.0 is in testing, but release candidate 1 can be
-> started
-> > +successfully on the Orange Pi PC machine. Get the 'evbarm-earmv7hf'
-> based image from:
-> > +
-> > +
-> https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0_RC1/evbarm-earmv7hf/binary/g=
-zimg/armv7.img.gz
-> > +
-> > +The image requires manually installing U-Boot in the image. Build
-> U-Boot with
-> > +the orangepi_pc_defconfig configuration as described in the previous
-> section.
-> > +Next, unzip the NetBSD image and write the U-Boot binary including SPL
-> using:
-> > +
-> > +  $ gunzip armv7.img.gz
-> > +  $ dd if=3D/path/to/u-boot-sunxi-with-spl.bin of=3Darmv7.img bs=3D102=
-4
-> seek=3D8 conv=3Dnotrunc
-> > +
-> > +Start the machine using the following command:
-> > +
-> > +  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-> > +        -sd armv7.img
-> > +
-> > +At the U-Boot stage, interrupt the automatic boot process by pressing =
-a
-> key
-> > +and set the following environment variables before booting:
-> > +
-> > +  =3D> setenv bootargs root=3Dld0a
-> > +  =3D> setenv kernel netbsd-GENERIC.ub
-> > +  =3D> setenv fdtfile dtb/sun8i-h3-orangepi-pc.dtb
-> > +  =3D> setenv bootcmd 'fatload mmc 0:1 ${kernel_addr_r} ${kernel};
-> fatload mmc 0:1 ${fdt_addr_r} ${fdtfile}; fdt addr ${fdt_addr_r}; bootm
-> ${kernel_addr_r} - ${fdt_addr_r}'
-> > +
-> > +Optionally you may save the environment variables to SD card with
-> 'saveenv'.
-> > +To continue booting simply give the 'boot' command and NetBSD boots.
-> > +
-> > +Orange Pi PC acceptance tests
-> > +-----------------------------
-> > +
-> > +The Orange Pi PC machine has several acceptance tests included.
-> > +To run the whole set of tests, build QEMU from source and simply
-> > +provide the following command:
-> > +
-> > +  $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado --show=3Dapp,console run=
- \
-> > +     -t machine:orangepi-pc tests/acceptance/boot_linux_console.py
-> > +
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 6e1b92b5fa..b52ac2fb9e 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -488,6 +488,7 @@ S: Maintained
-> >   F: hw/*/allwinner-h3*
-> >   F: include/hw/*/allwinner-h3*
-> >   F: hw/arm/orangepi.c
-> > +F: docs/orangepi.rst
+> >         On 1/8/20 9:00 PM, Niek Linnenbank wrote:
+> >          > Allwinner System-on-Chips usually contain a Real Time Clock
+> (RTC)
+> >          > for non-volatile system date and time keeping. This commit
+> >         adds a generic
+> >          > Allwinner RTC device that supports the RTC devices found in
+> >         Allwinner SoC
+> >          > family sun4i (A10), sun7i (A20) and sun6i and newer (A31,
+> >         H2+, H3, etc).
+> [...]
+> >          > +static uint64_t allwinner_rtc_read(void *opaque, hwaddr
+> offset,
+> >          > +                                   unsigned size)
+> >          > +{
+> >          > +    AwRtcState *s =3D AW_RTC(opaque);
+> >          > +    const AwRtcClass *c =3D AW_RTC_GET_CLASS(s);
+> >          > +    uint64_t val =3D 0;
+> >          > +
+> >          > +    if (offset >=3D AW_RTC_REGS_MAXADDR) {
+> >          > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds
+> >         offset 0x%04x\n",
+> >          > +                      __func__, (uint32_t)offset);
+> >          > +        return 0;
+> >          > +    }
+> >          > +
+> >          > +    if (!c->regmap[offset]) {
+> >          > +            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid
+> >         register 0x%04x\n",
+> >          > +                          __func__, (uint32_t)offset);
+> >          > +        return 0;
+> >          > +    }
+> >          > +
+> >          > +    switch (c->regmap[offset]) {
+> >          > +    case REG_LOSC:       /* Low Oscillator Control */
+> >          > +        val =3D s->regs[REG_LOSC];
+> >          > +        s->regs[REG_LOSC] &=3D ~(REG_LOSC_YMD | REG_LOSC_HM=
+S);
+> >          > +        break;
+> >          > +    case REG_YYMMDD:     /* RTC Year-Month-Day */
+> >          > +    case REG_HHMMSS:     /* RTC Hour-Minute-Second */
+> >          > +    case REG_GP0:        /* General Purpose Register 0 */
+> >          > +    case REG_GP1:        /* General Purpose Register 1 */
+> >          > +    case REG_GP2:        /* General Purpose Register 2 */
+> >          > +    case REG_GP3:        /* General Purpose Register 3 */
+> >          > +        val =3D s->regs[c->regmap[offset]];
+> >          > +        break;
+> >          > +    default:
+> >          > +        if (!c->read(s, offset)) {
+> >          > +            qemu_log_mask(LOG_UNIMP, "%s: unimplemented
+> >         register 0x%04x\n",
+> >          > +                          __func__, (uint32_t)offset);
+> >          > +        }
+> >          > +        val =3D s->regs[c->regmap[offset]];
+> >          > +        break;
+> >          > +    }
+> >          > +
+> >          > +    trace_allwinner_rtc_read(offset, val);
+> >          > +    return val;
+> >          > +}
+> >          > +
+> >          > +static void allwinner_rtc_write(void *opaque, hwaddr offset=
+,
+> >          > +                                uint64_t val, unsigned size=
+)
+> >          > +{
+> >          > +    AwRtcState *s =3D AW_RTC(opaque);
+> >          > +    const AwRtcClass *c =3D AW_RTC_GET_CLASS(s);
+> >          > +
+> >          > +    if (offset >=3D AW_RTC_REGS_MAXADDR) {
+> >          > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds
+> >         offset 0x%04x\n",
+> >          > +                      __func__, (uint32_t)offset);
+> >          > +        return;
+> >          > +    }
+> >          > +
+> >          > +    if (!c->regmap[offset]) {
+> >          > +            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid
+> >         register 0x%04x\n",
+> >          > +                          __func__, (uint32_t)offset);
+> >          > +        return;
+> >          > +    }
+> >          > +
+> >          > +    trace_allwinner_rtc_write(offset, val);
+> >          > +
+> >          > +    switch (c->regmap[offset]) {
+> >          > +    case REG_YYMMDD:     /* RTC Year-Month-Day */
+> >          > +        s->regs[REG_YYMMDD] =3D val;
+> >          > +        s->regs[REG_LOSC]  |=3D REG_LOSC_YMD;
+> >          > +        break;
+> >          > +    case REG_HHMMSS:     /* RTC Hour-Minute-Second */
+> >          > +        s->regs[REG_HHMMSS] =3D val;
+> >          > +        s->regs[REG_LOSC]  |=3D REG_LOSC_HMS;
+> >          > +        break;
+> >          > +    case REG_GP0:        /* General Purpose Register 0 */
+> >          > +    case REG_GP1:        /* General Purpose Register 1 */
+> >          > +    case REG_GP2:        /* General Purpose Register 2 */
+> >          > +    case REG_GP3:        /* General Purpose Register 3 */
+> >          > +        s->regs[c->regmap[offset]] =3D val;
+> >          > +        break;
+> >          > +    default:
+> >          > +        if (!c->write(s, offset, val)) {
+> >          > +            qemu_log_mask(LOG_UNIMP, "%s: unimplemented
+> >         register 0x%04x\n",
+> >          > +                          __func__, (uint32_t)offset);
+> >          > +        }
+> >          > +        break;
+> >          > +    }
+> >          > +}
+> >          > +
+> >          > +static const MemoryRegionOps allwinner_rtc_ops =3D {
+> >          > +    .read =3D allwinner_rtc_read,
+> >          > +    .write =3D allwinner_rtc_write,
+> >          > +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> >          > +    .valid =3D {
+> >          > +        .min_access_size =3D 4,
+> >          > +        .max_access_size =3D 4,
+> >          > +    },
+> >          > +    .impl.min_access_size =3D 4,
+> >          > +};
+> >          > +
+> >          > +static void allwinner_rtc_reset(DeviceState *dev)
+> >          > +{
+> >          > +    AwRtcState *s =3D AW_RTC(dev);
+> >          > +    const AwRtcClass *c =3D AW_RTC_GET_CLASS(dev);
+> >          > +    struct tm now;
+> >          > +
+> >          > +    /* Clear registers */
+> >          > +    memset(s->regs, 0, sizeof(s->regs));
+> >          > +
+> >          > +    /* Get current datetime */
+> >          > +    qemu_get_timedate(&now, 0);
+> >          > +
+> >          > +    /* Set RTC with current datetime */
+> >          > +    s->regs[REG_YYMMDD] =3D  ((now.tm_year - c->year_offset=
+)
+> >         << 16) |
+> >          > +                           ((now.tm_mon + 1) << 8) |
+> >          > +                             now.tm_mday;
+> >          > +    s->regs[REG_HHMMSS] =3D (((now.tm_wday + 6) % 7) << 29)=
+ |
+> >          > +                              (now.tm_hour << 16) |
+> >          > +                              (now.tm_min << 8) |
+> >          > +                               now.tm_sec;
 > >
-> >   ARM PrimeCell and CMSDK devices
-> >   M: Peter Maydell <peter.maydell@linaro.org>
+> >         This doesn't look correct.
 > >
+> >           From H3 Datasheet (Rev1.2):
+> >             4.8.3.4. RTC YY-MM-DD Register (Default Value: 0x00000000)
+> >             4.8.3.5. RTC HH-MM-SS Register (Default Value: 0x00000000)
+> >
+> >
+> >     I don't yet fully understand what you mean. Could you please explai=
+n
+> >     a bit more what should be changed?
+>
+> I was thinking about:
+>
+> - Start a VM on Monday at 12:34
+>
+> - Pause the VM on Tuesday at 12:34
+>    rtc_time=3DTuesday,12:34
+>
+> - [Eventually savevm/migrate/loadvm]
+>    rtc_time=3DTuesday,12:34
+>
+> - Resume the VM on Wednesday 12:34
+>    (time should be Tuesday at 12:34)
+>    so rtc_time=3DTuesday,12:34
+>
+> - Check time on Thursday at 12:33
+>    (time should be Wednesday at 12:33)
+>    rtc_time=3DWednesday,12:34
+>
+> - Reset the VM on Thursday at 12:34
+>    (time was Wednesday at 12:34)
+>
+> - Check time on Thursday at 12:35
+>    (time should be Wednesday at 12:35)
+>
+> However due to reset() calling qemu_get_timedate(), the rtc_time will be
+> Thursday at 12:35 instead of Wednesday.
 >
 >
+Ah now I see what you mean. So indeed this means that the RTC date & time
+is currently
+not persistent in the emulated device, while on hardware it is.
+
+
+> I don't know how the hardware keep these 2*32-bit safe when powered off.
+>
+> Laurent Vivier posted a patch where he uses a block backend for his
+> machine NVRAM (used by RTC). This seems to me the clever way to do this:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg666837.html
+>
+> I'd use a block of 8 bytes for your RTC.
+> If we start a machine without rtc block backend, the 2*32-bit are
+> initialized as zero as the datasheet. If we provide a block, the machine
+> will power-on from that stored time.
+>
+> You might want to look at the global -rtc command line option:
+>
+>    -rtc
+>    [base=3Dutc|localtime|datetime][,clock=3Dhost|rt|vm][,driftfix=3Dnone|=
+slew]
+>          Specify base as "utc" or "localtime" to let the RTC start
+>          at the current UTC or local time, respectively. "localtime"
+>          is required for correct date in MS-DOS or Windows. To start
+>          at a specific point in time, provide datetime in the format
+>          "2006-06-17T16:01:21" or "2006-06-17". The default base is
+>          UTC.
+>
+> But it might be specific to the MC146818 RTC.
+>
+
+Thanks for these suggestions. I'll need to look into it. I don't think I'll
+have this ready
+in the v4 update. Meanwhile I'll add it as a limitation in the cover letter=
+.
+
 Regards,
 Niek
+
+>
+> >     For filling the YYMMDD and HHMMSS register fields, I simply looked
+> >     at the 4.8.3.4 and 4.8.3.5 sections
+> >     and filled it with the time retrieved from qemu_get_timedate. The
+> >     shifts are done so the values are set in the proper bits.
+> >     If I read it with the hwclock -r command under Linux, this reads ou=
+t
+> OK.
+> >     On NetBSD, this works as well, except for the base year mismatch
+> >     which I explained above.
+> >
+> >
+> >         I'm not sure what is the proper to model this, maybe set this
+> >         value in
+> >         init()? If we suspend a machine, migrate it, and resume it, wha=
+t
+> >         RTC are
+> >         we expecting?
+> >
+> > I forgot to reply on this one.
+> >
+> > I have not used migration very often, but I did manage to test it a
+> > couple of times
+> > using the 'migrate' command on the Qemu monitor console before I
+> > submitted each
+> > new version of the patch series. My expectation would be that the RTC
+> > time is suspended
+> > along with all the other state of the machine such as memory, I/O
+> > devices etc. So that would mean
+> > the time is 'frozen' until resumed. I think that is what we currently
+> > have here.
+> >
+> > Do you think that is correct or should it work differently?
+>
+> Yes, this is the behavior I'd expect. Maybe other would disagree.
+>
+>
 
 --=20
 Niek Linnenbank
 
---000000000000d53bc8059c71b696
+--0000000000006dc74b059c71e9ec
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Sat, Jan 18, 2020 at 10:38 AM Phil=
-ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
-hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">On 1/8/20 9:00 PM, Niek Linnenbank wrote:<br>
-&gt; The Xunlong Orange Pi PC machine is a functional ARM machine<br>
-&gt; based on the Allwinner H3 System-on-Chip. It supports mainline<br>
-&gt; Linux, U-Boot, NetBSD and is covered by acceptance tests.<br>
+<div dir=3D"ltr" class=3D"gmail_attr">On Sat, Jan 18, 2020 at 4:05 PM Phili=
+ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
+at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">Hi Niek,<br>
+<br>
+On 1/14/20 11:57 PM, Niek Linnenbank wrote:<br>
+&gt; On Tue, Jan 14, 2020 at 11:52 PM Niek Linnenbank <br>
+&gt; &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_blank">niek=
+linnenbank@gmail.com</a> &lt;mailto:<a href=3D"mailto:nieklinnenbank@gmail.=
+com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;&gt; wrote:<br>
 &gt; <br>
-&gt; This commit adds a documentation text file with a description<br>
-&gt; of the machine and instructions for the user.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0Hi Philippe,<br>
 &gt; <br>
-&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
-ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0docs/orangepi.rst | 200 ++++++++++++++++++++++++++++++++++=
-++++++++++++<br>
-&gt;=C2=A0 =C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br=
->
-&gt;=C2=A0 =C2=A02 files changed, 201 insertions(+)<br>
-&gt;=C2=A0 =C2=A0create mode 100644 docs/orangepi.rst<br>
+&gt;=C2=A0 =C2=A0 =C2=A0On Mon, Jan 13, 2020 at 11:57 PM Philippe Mathieu-D=
+aud=C3=A9<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;<a href=3D"mailto:philmd@redhat.com" target=3D"=
+_blank">philmd@redhat.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.co=
+m" target=3D"_blank">philmd@redhat.com</a>&gt;&gt; wrote:<br>
 &gt; <br>
-&gt; diff --git a/docs/orangepi.rst b/docs/orangepi.rst<br>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..5ac2a7b7cc<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/docs/orangepi.rst<br>
-&gt; @@ -0,0 +1,200 @@<br>
-&gt; +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D<br>
-&gt; +Orange Pi PC Machine Type<br>
-&gt; +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D<br>
-&gt; +<br>
-&gt; +The Xunlong Orange Pi PC is an Allwinner H3 System on Chip<br>
-&gt; +based embedded computer with mainline support in both U-Boot<br>
-&gt; +and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,<br>
-&gt; +512MB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and<br>
-&gt; +various other I/O.<br>
-&gt; +<br>
-&gt; +Supported devices<br>
-&gt; +-----------------<br>
-&gt; +<br>
-&gt; +The Orange Pi PC machine type supports the following devices:<br>
-<br>
-Maybe drop &quot;type&quot;?<br>
-<br>
-&gt; +<br>
-&gt; + * SMP (Quad Core Cortex A7)<br>
-&gt; + * Generic Interrupt Controller configuration<br>
-&gt; + * SRAM mappings<br>
-&gt; + * SDRAM controller<br>
-&gt; + * Real Time Clock<br>
-&gt; + * Timer device (re-used from Allwinner A10)<br>
-&gt; + * UART<br>
-&gt; + * SD/MMC storage controller<br>
-&gt; + * EMAC ethernet connectivity<br>
-<br>
-Drop &quot;connectivity&quot;?<br>
-<br>
-&gt; + * USB 2.0 interfaces<br>
-&gt; + * Clock Control Unit<br>
-&gt; + * System Control module<br>
-&gt; + * Security Identifier device<br>
-&gt; +<br>
-&gt; +Limitations<br>
-&gt; +-----------<br>
-&gt; +<br>
-&gt; +Currently, Orange Pi PC does *not* support the following features:<br=
->
-&gt; +<br>
-&gt; +- Graphical output via HDMI, GPU and/or the Display Engine<br>
-&gt; +- Audio output<br>
-&gt; +- Hardware Watchdog<br>
-&gt; +<br>
-&gt; +Also see the &#39;unimplemented&#39; array in the Allwinner H3 SoC mo=
-dule<br>
-&gt; +for a complete list of unimplemented I/O devices:<br>
-&gt; +=C2=A0 ./hw/arm/allwinner-h3.c<br>
-&gt; +<br>
-&gt; +Using the Orange Pi PC machine type<br>
-&gt; +-----------------------------------<br>
-&gt; +<br>
-&gt; +Boot options<br>
-&gt; +~~~~~~~~~~~~<br>
-&gt; +<br>
-&gt; +The Orange Pi PC machine can start using the standard -kernel functio=
-nality<br>
-&gt; +for loading a Linux kernel or ELF executable. Additionally, the Orang=
-e Pi PC<br>
-&gt; +machine can also emulate the BootROM which is present on an actual Al=
-lwinner H3<br>
-&gt; +based SoC, which loads the bootloader from SD card, specified via the=
- -sd argument<br>
-<br>
-&quot;from a SD card&quot;?<br>
-<br>
-&gt; +to qemu-system-arm.<br>
-&gt; +<br>
-&gt; +Running mainline Linux<br>
-&gt; +~~~~~~~~~~~~~~~~~~~~~~<br>
-&gt; +<br>
-&gt; +Recently released mainline Linux kernels from 4.19 up to latest maste=
-r<br>
-<br>
-Drop &quot;Recently released mainline&quot; or only use &quot;Mainline&quot=
-;?<br>
-<br></blockquote><div>Thanks, I&#39;ll correct all comments above.<br></div=
-><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
- 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-&gt; +are known to work. To build a Linux mainline kernel that can be boote=
-d<br>
-&gt; +by the Orange Pi PC machine, simply configure the kernel using the<br=
->
-&gt; +sunxi_defconfig configuration:<br>
-&gt; +<br>
-&gt; +=C2=A0 $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper<=
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0On 1/8/20 9:00 PM, Niek Linnenbank wr=
+ote:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Allwinner System-on-Chips usual=
+ly contain a Real Time Clock (RTC)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; for non-volatile system date an=
+d time keeping. This commit<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0adds a generic<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Allwinner RTC device that suppo=
+rts the RTC devices found in<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Allwinner SoC<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; family sun4i (A10), sun7i (A20)=
+ and sun6i and newer (A31,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0H2+, H3, etc).<br>
+[...]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +static uint64_t allwinner_rtc_=
+read(void *opaque, hwaddr offset,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0unsigned size)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 AwRtcState *s =
+=3D AW_RTC(opaque);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 const AwRtcClass=
+ *c =3D AW_RTC_GET_CLASS(s);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 uint64_t val =3D=
+ 0;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (offset &gt;=
+=3D AW_RTC_REGS_MAXADDR) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qe=
+mu_log_mask(LOG_GUEST_ERROR, &quot;%s: out-of-bounds<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset 0x%04x\n&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (uint32_t)offset=
+);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 re=
+turn 0;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (!c-&gt;regma=
+p[offset]) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: invalid<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0register 0x%04x\n&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (u=
+int32_t)offset);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 re=
+turn 0;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 switch (c-&gt;re=
+gmap[offset]) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_LOSC:=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Low Oscillator Control */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 va=
+l =3D s-&gt;regs[REG_LOSC];<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-=
+&gt;regs[REG_LOSC] &amp;=3D ~(REG_LOSC_YMD | REG_LOSC_HMS);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 br=
+eak;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_YYMMDD:=
+=C2=A0 =C2=A0 =C2=A0/* RTC Year-Month-Day */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_HHMMSS:=
+=C2=A0 =C2=A0 =C2=A0/* RTC Hour-Minute-Second */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_GP0:=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* General Purpose Register 0 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_GP1:=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* General Purpose Register 1 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_GP2:=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* General Purpose Register 2 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_GP3:=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* General Purpose Register 3 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 va=
+l =3D s-&gt;regs[c-&gt;regmap[offset]];<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 br=
+eak;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 default:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if=
+ (!c-&gt;read(s, offset)) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: unimplemented<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0register 0x%04x\n&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (u=
+int32_t)offset);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<=
 br>
-&gt; +=C2=A0 $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make sunxi_def=
-config<br>
-&gt; +<br>
-&gt; +To be able to use USB storage, you need to manually enable the corres=
-ponding<br>
-&gt; +configuration item. Start the kconfig configuration tool:<br>
-&gt; +<br>
-&gt; +=C2=A0 $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make menuconfi=
-g<br>
-&gt; +<br>
-&gt; +Navigate to the following item, enable it and save your configuration=
-:<br>
-&gt; +<br>
-&gt; +=C2=A0 Device Drivers &gt; USB support &gt; USB Mass Storage support<=
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 va=
+l =3D s-&gt;regs[c-&gt;regmap[offset]];<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 br=
+eak;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 trace_allwinner_=
+rtc_read(offset, val);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 return val;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +static void allwinner_rtc_writ=
+e(void *opaque, hwaddr offset,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 uint64_t val, unsigned size)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 AwRtcState *s =
+=3D AW_RTC(opaque);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 const AwRtcClass=
+ *c =3D AW_RTC_GET_CLASS(s);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (offset &gt;=
+=3D AW_RTC_REGS_MAXADDR) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qe=
+mu_log_mask(LOG_GUEST_ERROR, &quot;%s: out-of-bounds<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset 0x%04x\n&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (uint32_t)offset=
+);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 re=
+turn;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (!c-&gt;regma=
+p[offset]) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: invalid<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0register 0x%04x\n&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (u=
+int32_t)offset);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 re=
+turn;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 trace_allwinner_=
+rtc_write(offset, val);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 switch (c-&gt;re=
+gmap[offset]) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_YYMMDD:=
+=C2=A0 =C2=A0 =C2=A0/* RTC Year-Month-Day */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-=
+&gt;regs[REG_YYMMDD] =3D val;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-=
+&gt;regs[REG_LOSC]=C2=A0 |=3D REG_LOSC_YMD;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 br=
+eak;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_HHMMSS:=
+=C2=A0 =C2=A0 =C2=A0/* RTC Hour-Minute-Second */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-=
+&gt;regs[REG_HHMMSS] =3D val;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-=
+&gt;regs[REG_LOSC]=C2=A0 |=3D REG_LOSC_HMS;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 br=
+eak;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_GP0:=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* General Purpose Register 0 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_GP1:=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* General Purpose Register 1 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_GP2:=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* General Purpose Register 2 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 case REG_GP3:=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* General Purpose Register 3 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-=
+&gt;regs[c-&gt;regmap[offset]] =3D val;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 br=
+eak;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 default:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if=
+ (!c-&gt;write(s, offset, val)) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: unimplemented<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0register 0x%04x\n&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (u=
+int32_t)offset);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<=
 br>
-<br>
-Isn&#39;t it simpler to run &#39;echo CONFIG_USB_STORAGE=3Dy &gt;&gt; .conf=
-ig &amp;&amp; make <br>
-oldconfig&#39;?<br></blockquote><div><br></div><div>Yes true, that is also =
-a way to enable it. I just wrote it down like this since using menuconfig</=
-div><div>or xconfig is usually the way people are familiar with.<br></div><=
-div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0=
-px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +<br>
-&gt; +Build the Linux kernel with:<br>
-&gt; +<br>
-&gt; +=C2=A0 $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make -j5<br>
-<br>
-I&#39;m not sure about recommending &quot;-j5&quot; in the doc, not all use=
-r have &gt;=3D4 <br>
-SMP system. Maybe we don&#39;t care.<br></blockquote><div><br></div><div>Th=
-anks, I&#39;ll remove the -j5.<br></div><div>=C2=A0</div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">
-<br>
-&gt; +<br>
-&gt; +To boot the newly build linux kernel in QEMU with the Orange Pi PC ma=
-chine, use:<br>
-&gt; +<br>
-&gt; +=C2=A0 $ qemu-system-arm -M orangepi-pc -nic user -nographic \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 -kernel /path/to/linux/arch/arm/boot/zImage \<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0 -append &#39;console=3DttyS0,115200&#39; \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-o=
-rangepi-pc.dtb<br>
-&gt; +<br>
-&gt; +Orange Pi PC images<br>
-&gt; +~~~~~~~~~~~~~~~~~~~<br>
-&gt; +<br>
-&gt; +Note that the mainline kernel does not have a root filesystem. You ma=
-y provide it<br>
-&gt; +with an official Orange Pi PC image from the official website:<br>
-&gt; +<br>
-&gt; +=C2=A0 <a href=3D"http://www.orangepi.org/downloadresources/" rel=3D"=
-noreferrer" target=3D"_blank">http://www.orangepi.org/downloadresources/</a=
-><br>
-&gt; +<br>
-&gt; +Another possibility is to run an Armbian image for Orange Pi PC which=
-<br>
-&gt; +can be downloaded from:<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0<a href=3D"https://www.armbian.com/orange-pi-pc/" rel=3D=
-"noreferrer" target=3D"_blank">https://www.armbian.com/orange-pi-pc/</a><br=
->
-&gt; +<br>
-&gt; +Alternatively, you can also choose to build you own image with buildr=
-oot<br>
-&gt; +using the orangepi_pc_defconfig. Also see <a href=3D"https://buildroo=
-t.org" rel=3D"noreferrer" target=3D"_blank">https://buildroot.org</a> for m=
-ore information.<br>
-&gt; +<br>
-&gt; +You can choose to attach the selected image either as an SD card or a=
-s USB mass storage.<br>
-&gt; +For example, to boot using the Orange Pi PC Debian image on SD card, =
-simply add the -sd<br>
-&gt; +argument and provide the proper root=3D kernel parameter:<br>
-&gt; +<br>
-&gt; +=C2=A0 $ qemu-system-arm -M orangepi-pc -nic user -nographic \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 -kernel /path/to/linux/arch/arm/boot/zImage \<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0 -append &#39;console=3DttyS0,115200 root=3D/dev/=
-mmcblk0p2&#39; \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-o=
-rangepi-pc.dtb \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 -sd OrangePi_pc_debian_stretch_server_linux5.3.5=
-_v1.0.img<br>
-&gt; +<br>
-&gt; +To attach the image as an USB mass storage device to the machine,<br>
-&gt; +simply append to the command:<br>
-&gt; +<br>
-&gt; +=C2=A0 -drive if=3Dnone,id=3Dstick,file=3Dmyimage.img \<br>
-&gt; +=C2=A0 -device usb-storage,bus=3Dusb-bus.0,drive=3Dstick<br>
-&gt; +<br>
-&gt; +Instead of providing a custom Linux kernel via the -kernel command yo=
-u may also<br>
-&gt; +choose to let the Orange Pi PC machine load the bootloader from SD ca=
-rd, just like<br>
-&gt; +a real board would do using the BootROM. Simply pass the selected ima=
-ge via the -sd<br>
-&gt; +argument and remove the -kernel, -append, -dbt and -initrd arguments:=
-<br>
-&gt; +<br>
-&gt; +=C2=A0 $ qemu-system-arm -M orangepi-pc -nic user -nographic \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0-sd Armbian_19.11.3_Orangepipc_buster_curr=
-ent_5.3.9.img<br>
-&gt; +<br>
-&gt; +Note that both the official Orange Pi PC images and Armbian images st=
-art<br>
-&gt; +a lot of userland programs via systemd. Depending on the host hardwar=
-e and OS,<br>
-&gt; +they may be slow to emulate, especially due to emulating the 4 cores.=
-<br>
-&gt; +To help reduce the performance slow down due to emulating the 4 cores=
-, you can<br>
-&gt; +give the following kernel parameters (or via -append):<br>
-&gt; +<br>
-&gt; +=C2=A0 =3D&gt; setenv extraargs &#39;systemd.default_timeout_start_se=
-c=3D9000 loglevel=3D7 nosmp console=3DttyS0,115200&#39;<br>
-&gt; +<br>
-&gt; +Running U-Boot<br>
-&gt; +~~~~~~~~~~~~~~<br>
-&gt; +<br>
-&gt; +U-Boot mainline can be build and configured using the orangepi_pc_def=
-config<br>
-&gt; +using similar commands as describe above for Linux. Note that it is r=
-ecommended<br>
-&gt; +for development/testing to select the following configuration setting=
- in U-Boot:<br>
-&gt; +<br>
-&gt; +=C2=A0 Device Tree Control &gt; Provider for DTB for DT Control &gt; =
-Embedded DTB<br>
-&gt; +<br>
-&gt; +To start U-Boot using the Orange Pi PC machine, provide the<br>
-&gt; +u-boot binary to the -kernel argument:<br>
-&gt; +<br>
-&gt; +=C2=A0 $ qemu-system-arm -M orangepi-pc -nic user -nographic \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 -kernel /path/to/uboot/u-boot -sd disk.img<br>
-&gt; +<br>
-&gt; +Use the following U-boot commands to load and boot a Linux kernel fro=
-m SD card:<br>
-&gt; +<br>
-&gt; +=C2=A0 -&gt; setenv bootargs console=3DttyS0,115200<br>
-&gt; +=C2=A0 -&gt; ext2load mmc 0 0x42000000 zImage<br>
-&gt; +=C2=A0 -&gt; ext2load mmc 0 0x43000000 sun8i-h3-orangepi-pc.dtb<br>
-&gt; +=C2=A0 -&gt; bootz 0x42000000 - 0x43000000<br>
-&gt; +<br>
-&gt; +Running NetBSD<br>
-&gt; +~~~~~~~~~~~~~~<br>
-&gt; +<br>
-&gt; +The NetBSD operating system also includes support for Allwinner H3 ba=
-sed boards,<br>
-&gt; +including the Orange Pi PC. NetBSD 9.0 is known to work best for the =
-Orange Pi PC<br>
-&gt; +board and provides a fully working system with serial console, networ=
-king and storage.<br>
-&gt; +<br>
-&gt; +Currently NetBSD 9.0 is in testing, but release candidate 1 can be st=
-arted<br>
-&gt; +successfully on the Orange Pi PC machine. Get the &#39;evbarm-earmv7h=
-f&#39; based image from:<br>
-&gt; +<br>
-&gt; +=C2=A0 <a href=3D"https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0_RC1/ev=
-barm-earmv7hf/binary/gzimg/armv7.img.gz" rel=3D"noreferrer" target=3D"_blan=
-k">https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0_RC1/evbarm-earmv7hf/binary/=
-gzimg/armv7.img.gz</a><br>
-&gt; +<br>
-&gt; +The image requires manually installing U-Boot in the image. Build U-B=
-oot with<br>
-&gt; +the orangepi_pc_defconfig configuration as described in the previous =
-section.<br>
-&gt; +Next, unzip the NetBSD image and write the U-Boot binary including SP=
-L using:<br>
-&gt; +<br>
-&gt; +=C2=A0 $ gunzip armv7.img.gz<br>
-&gt; +=C2=A0 $ dd if=3D/path/to/u-boot-sunxi-with-spl.bin of=3Darmv7.img bs=
-=3D1024 seek=3D8 conv=3Dnotrunc<br>
-&gt; +<br>
-&gt; +Start the machine using the following command:<br>
-&gt; +<br>
-&gt; +=C2=A0 $ qemu-system-arm -M orangepi-pc -nic user -nographic \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 -sd armv7.img<br>
-&gt; +<br>
-&gt; +At the U-Boot stage, interrupt the automatic boot process by pressing=
- a key<br>
-&gt; +and set the following environment variables before booting:<br>
-&gt; +<br>
-&gt; +=C2=A0 =3D&gt; setenv bootargs root=3Dld0a<br>
-&gt; +=C2=A0 =3D&gt; setenv kernel netbsd-GENERIC.ub<br>
-&gt; +=C2=A0 =3D&gt; setenv fdtfile dtb/sun8i-h3-orangepi-pc.dtb<br>
-&gt; +=C2=A0 =3D&gt; setenv bootcmd &#39;fatload mmc 0:1 ${kernel_addr_r} $=
-{kernel}; fatload mmc 0:1 ${fdt_addr_r} ${fdtfile}; fdt addr ${fdt_addr_r};=
- bootm ${kernel_addr_r} - ${fdt_addr_r}&#39;<br>
-&gt; +<br>
-&gt; +Optionally you may save the environment variables to SD card with &#3=
-9;saveenv&#39;.<br>
-&gt; +To continue booting simply give the &#39;boot&#39; command and NetBSD=
- boots.<br>
-&gt; +<br>
-&gt; +Orange Pi PC acceptance tests<br>
-&gt; +-----------------------------<br>
-&gt; +<br>
-&gt; +The Orange Pi PC machine has several acceptance tests included.<br>
-&gt; +To run the whole set of tests, build QEMU from source and simply<br>
-&gt; +provide the following command:<br>
-&gt; +<br>
-&gt; +=C2=A0 $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado --show=3Dapp,conso=
-le run \<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0-t machine:orangepi-pc tests/acceptance/boot_linu=
-x_console.py<br>
-&gt; +<br>
-&gt; diff --git a/MAINTAINERS b/MAINTAINERS<br>
-&gt; index 6e1b92b5fa..b52ac2fb9e 100644<br>
-&gt; --- a/MAINTAINERS<br>
-&gt; +++ b/MAINTAINERS<br>
-&gt; @@ -488,6 +488,7 @@ S: Maintained<br>
-&gt;=C2=A0 =C2=A0F: hw/*/allwinner-h3*<br>
-&gt;=C2=A0 =C2=A0F: include/hw/*/allwinner-h3*<br>
-&gt;=C2=A0 =C2=A0F: hw/arm/orangepi.c<br>
-&gt; +F: docs/orangepi.rst<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0ARM PrimeCell and CMSDK devices<br>
-&gt;=C2=A0 =C2=A0M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
-o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 br=
+eak;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +static const MemoryRegionOps a=
+llwinner_rtc_ops =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 .read =3D allwin=
+ner_rtc_read,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 .write =3D allwi=
+nner_rtc_write,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 .endianness =3D =
+DEVICE_NATIVE_ENDIAN,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 .valid =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .m=
+in_access_size =3D 4,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .m=
+ax_access_size =3D 4,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 .impl.min_access=
+_size =3D 4,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +};<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +static void allwinner_rtc_rese=
+t(DeviceState *dev)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 AwRtcState *s =
+=3D AW_RTC(dev);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 const AwRtcClass=
+ *c =3D AW_RTC_GET_CLASS(dev);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 struct tm now;<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* Clear registe=
+rs */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 memset(s-&gt;reg=
+s, 0, sizeof(s-&gt;regs));<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* Get current d=
+atetime */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 qemu_get_timedat=
+e(&amp;now, 0);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 /* Set RTC with =
+current datetime */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 s-&gt;regs[REG_Y=
+YMMDD] =3D=C2=A0 ((now.tm_year - c-&gt;year_offset)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&lt;&lt; 16) |<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0((now.=
+tm_mon + 1) &lt;&lt; 8) |<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0now.tm_mday;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 s-&gt;regs[REG_H=
+HMMSS] =3D (((now.tm_wday + 6) % 7) &lt;&lt; 29) |<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 (now.tm_hour &lt;&lt; 16) |<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 (now.tm_min &lt;&lt; 8) |<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0now.tm_sec;<br>
 &gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0This doesn&#39;t look correct.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0From H3 Datasheet (Rev1.2):<br=
+>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A04.8.3.4. RTC YY-MM-DD R=
+egister (Default Value: 0x00000000)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A04.8.3.5. RTC HH-MM-SS R=
+egister (Default Value: 0x00000000)<br>
+&gt; <br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0I don&#39;t yet fully understand what you mean. Cou=
+ld you please explain<br>
+&gt;=C2=A0 =C2=A0 =C2=A0a bit more what should be changed?<br>
 <br>
-</blockquote></div><div><br></div><div>Regards,</div><div>Niek<br></div><br=
->-- <br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Ni=
-ek Linnenbank<br><br></div></div></div></div>
+I was thinking about:<br>
+<br>
+- Start a VM on Monday at 12:34<br>
+<br>
+- Pause the VM on Tuesday at 12:34<br>
+=C2=A0 =C2=A0rtc_time=3DTuesday,12:34<br>
+<br>
+- [Eventually savevm/migrate/loadvm]<br>
+=C2=A0 =C2=A0rtc_time=3DTuesday,12:34<br>
+<br>
+- Resume the VM on Wednesday 12:34<br>
+=C2=A0 =C2=A0(time should be Tuesday at 12:34)<br>
+=C2=A0 =C2=A0so rtc_time=3DTuesday,12:34<br>
+<br>
+- Check time on Thursday at 12:33<br>
+=C2=A0 =C2=A0(time should be Wednesday at 12:33)<br>
+=C2=A0 =C2=A0rtc_time=3DWednesday,12:34<br>
+<br>
+- Reset the VM on Thursday at 12:34<br>
+=C2=A0 =C2=A0(time was Wednesday at 12:34)<br>
+<br>
+- Check time on Thursday at 12:35<br>
+=C2=A0 =C2=A0(time should be Wednesday at 12:35)<br>
+<br>
+However due to reset() calling qemu_get_timedate(), the rtc_time will be <b=
+r>
+Thursday at 12:35 instead of Wednesday.<br>
+<br></blockquote><div><br></div><div>Ah now I see what you mean. So indeed =
+this means that the RTC date &amp; time is currently</div><div> not persist=
+ent in the emulated device, while on hardware it is.<br></div><div>=C2=A0</=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
+der-left:1px solid rgb(204,204,204);padding-left:1ex">
+I don&#39;t know how the hardware keep these 2*32-bit safe when powered off=
+.<br>
+<br>
+Laurent Vivier posted a patch where he uses a block backend for his <br>
+machine NVRAM (used by RTC). This seems to me the clever way to do this:<br=
+>
+<a href=3D"https://www.mail-archive.com/qemu-devel@nongnu.org/msg666837.htm=
+l" rel=3D"noreferrer" target=3D"_blank">https://www.mail-archive.com/qemu-d=
+evel@nongnu.org/msg666837.html</a><br>
+<br>
+I&#39;d use a block of 8 bytes for your RTC.<br>
+If we start a machine without rtc block backend, the 2*32-bit are <br>
+initialized as zero as the datasheet. If we provide a block, the machine <b=
+r>
+will power-on from that stored time.<br>
+<br>
+You might want to look at the global -rtc command line option:<br>
+<br>
+=C2=A0 =C2=A0-rtc<br>
+=C2=A0 =C2=A0[base=3Dutc|localtime|datetime][,clock=3Dhost|rt|vm][,driftfix=
+=3Dnone|slew]<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Specify base as &quot;utc&quot; or &quot;=
+localtime&quot; to let the RTC start<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0at the current UTC or local time, respect=
+ively. &quot;localtime&quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0is required for correct date in MS-DOS or=
+ Windows. To start<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0at a specific point in time, provide date=
+time in the format<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;2006-06-17T16:01:21&quot; or &quot;=
+2006-06-17&quot;. The default base is<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0UTC.<br>
+<br>
+But it might be specific to the MC146818 RTC.<br></blockquote><div><br></di=
+v><div>Thanks for these suggestions. I&#39;ll need to look into it. I don&#=
+39;t think I&#39;ll have this ready</div><div>in the v4 update. Meanwhile I=
+&#39;ll add it as a limitation in the cover letter.<br></div><div>=C2=A0</d=
+iv><div>Regards,</div><div>Niek<br></div><blockquote class=3D"gmail_quote" =
+style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
+dding-left:1ex">
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0For filling the YYMMDD and HHMMSS register fields, =
+I simply looked<br>
+&gt;=C2=A0 =C2=A0 =C2=A0at the 4.8.3.4 and 4.8.3.5 sections<br>
+&gt;=C2=A0 =C2=A0 =C2=A0and filled it with the time retrieved from qemu_get=
+_timedate. The<br>
+&gt;=C2=A0 =C2=A0 =C2=A0shifts are done so the values are set in the proper=
+ bits.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0If I read it with the hwclock -r command under Linu=
+x, this reads out OK.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0On NetBSD, this works as well, except for the base =
+year mismatch<br>
+&gt;=C2=A0 =C2=A0 =C2=A0which I explained above.<br>
+&gt; <br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0I&#39;m not sure what is the proper t=
+o model this, maybe set this<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0value in<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0init()? If we suspend a machine, migr=
+ate it, and resume it, what<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0RTC are<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0we expecting?<br>
+&gt; <br>
+&gt; I forgot to reply on this one.<br>
+&gt; <br>
+&gt; I have not used migration very often, but I did manage to test it a <b=
+r>
+&gt; couple of times<br>
+&gt; using the &#39;migrate&#39; command on the Qemu monitor console before=
+ I <br>
+&gt; submitted each<br>
+&gt; new version of the patch series. My expectation would be that the RTC =
+<br>
+&gt; time is suspended<br>
+&gt; along with all the other state of the machine such as memory, I/O <br>
+&gt; devices etc. So that would mean<br>
+&gt; the time is &#39;frozen&#39; until resumed. I think that is what we cu=
+rrently <br>
+&gt; have here.<br>
+&gt; <br>
+&gt; Do you think that is correct or should it work differently?<br>
+<br>
+Yes, this is the behavior I&#39;d expect. Maybe other would disagree.<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
 
---000000000000d53bc8059c71b696--
+--0000000000006dc74b059c71e9ec--

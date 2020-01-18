@@ -1,217 +1,169 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp564926lff;
-        Sat, 18 Jan 2020 07:37:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwKQIOjTVW9ExL7EUfRDp/5yzI8HZoM5X7ViXUvJYTIKABKJRX6I0BzGQx2vo8fJ5IyI+9V
-X-Received: by 2002:a05:6214:1242:: with SMTP id q2mr13135552qvv.178.1579361874171;
-        Sat, 18 Jan 2020 07:37:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579361874; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp566198lff;
+        Sat, 18 Jan 2020 07:39:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwQQY1tHyHrCFziqPAK0BGToD94qQ5efmIrn2bkgxJKt9hBBgahqrOsFV0Ha7ld0FSKvwPL
+X-Received: by 2002:aa7:d80d:: with SMTP id v13mr9746989edq.8.1579361965435;
+        Sat, 18 Jan 2020 07:39:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579361965; cv=none;
         d=google.com; s=arc-20160816;
-        b=SLTUWSYN/kW8mNa8TnH4GKi8Bjx8Kw9fgzmAqU/1T8FQ4mZQ5f4vPqBohcgm/qqPit
-         5H2awWJ/QZgDR5Ollcyfkh57Ey2jQOlMAud9vXnv1W/HgKRG3Z+yWl1ql7zjhBguyZvP
-         BEP05dZtdX2uJS4umPZXDm7uum3R7RORZ3d1hfRZurgZZH9u7VWDRru1vWuKx6lVUu31
-         GSQjG+AvRSQ7DuLG8r3jlr2Kw0yWL01EkN7Xs+zlKXqZyJTIBpGZsYv5+e8XwB6kSKu3
-         KrJmIBBNAnQsiXReHBTBFQEktHlIEHDc45jSLa7gvcFl4VSahUf9nJ+ZteSrWPzy+5g9
-         vF6w==
+        b=on0U593MX7i5Vpr6HejZ7h4dm72ffELfy2H1VzfdHAUV4YPxG7hXqRQ6T/wa+4O0f0
+         0jwLFheWzTKJmwtl1PLmUHiLTWFVNxbzr7LYkG6KwdJTKc/rZB7Fs7vkPx6K44vHoXJe
+         dEc6U4TmWbKWzhJjUPLICdj64R1asXZ8MXmpXhgrtPBWqmU/rg88mXxJRXYlURHsJuFn
+         Nu1AlpFgjKBlXy0leWx0gM2WYwq/kXwz5UXK6X8bAkllF0sGvdVYOQQ+Csc//MmwXMAh
+         LqjUxbNLmMkpzswncwJpVBBYxmpnAhhQVGD0aBpvqQr9sTzKu8P7A6pqWTs/SGznegRk
+         Re2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=kZOuSEl4iO6gE6XvSiUZetOAYHSqnjI0Y5AsWQWBUvE=;
-        b=GLbnBrN4c1W2TALi/R6EYCpfzhMRZc5NU7DuDRJhHhO3ySLBWRH2ie6NIICoGCsoUz
-         syrWX3bwEbI1DTDMXZfwHuLvoChezP+8XlNG3ngg/tDxX2P0Q2PJbeEyolWkRW5ruouD
-         vKf1aAWxTej0fu7iG8h8rPeUdzIjxqhf+o0c4+XsTmDQtE4X+OEM6UJUfx54JJY02GQz
-         8pB/bRZJTlHzM1ebkzgHPuYyBlWQhkixlkOJK53ovwJ+yvldO9l4cyMVPmdUoIWLJynN
-         1M1n5GM/0Flwp75rJ1/wywzWU2QSpkHXhilKwaL+23KYt9FdLNKKP6SyfDcTT9crmpxl
-         HkKA==
+        bh=KkAm8xMOu305hVVU8Iq9Llxt8o9rYmI6atVtTp/Bxyc=;
+        b=HVfA845nXhsneJGXh3V9f4TAjqXpUGHm8ZBVLy6bFcIrEjbkzOBALgXi3KmbqJK06Y
+         BSJRf5oLB7AnJHYFK2ebKdjsNAHbwy8PPtjhtaXXENSx3T3CsVkKIFFl/X/YJqZwXkAL
+         M0Eo3CObca91OC9pS89+pZuzx7eF1jRSSFSx4LujvxQ1WPPZBGy66LzLLk8feGq0O+3+
+         TLqWLoWefJLyPYhCQ77oTelFCOYKUm1FmmeNmHw2TT/6nG//qoBRzKtwXJ3obTwojAob
+         nS2txkKanNrau32qZpFjSye+nr4X6nWIEoCQPWT91mPuyo2eW0PAGqNSZQ5mUNyQwPyj
+         XNEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JPqPO7vx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CbojLROu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p15si17683901qkj.36.2020.01.18.07.37.53
+        by mx.google.com with ESMTPS id ce16si20661268edb.431.2020.01.18.07.39.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Jan 2020 07:37:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 18 Jan 2020 07:39:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JPqPO7vx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CbojLROu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41880 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41900 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1isqAb-0006uI-Ki
-	for alex.bennee@linaro.org; Sat, 18 Jan 2020 10:37:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57484)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1isqC4-0000J2-BF
+	for alex.bennee@linaro.org; Sat, 18 Jan 2020 10:39:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57722)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1isq9u-0006Ro-2u
- for qemu-devel@nongnu.org; Sat, 18 Jan 2020 10:37:11 -0500
+ (envelope-from <philmd@redhat.com>) id 1isqBv-0000IY-G9
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 10:39:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1isq9s-0007QN-5j
- for qemu-devel@nongnu.org; Sat, 18 Jan 2020 10:37:09 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:55906
+ (envelope-from <philmd@redhat.com>) id 1isqBu-0008MK-Er
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 10:39:15 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38369
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isq9s-0007PE-1I
- for qemu-devel@nongnu.org; Sat, 18 Jan 2020 10:37:08 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isqBu-0008Kh-Bq
+ for qemu-arm@nongnu.org; Sat, 18 Jan 2020 10:39:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579361826;
+ s=mimecast20190719; t=1579361953;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kZOuSEl4iO6gE6XvSiUZetOAYHSqnjI0Y5AsWQWBUvE=;
- b=JPqPO7vxyPkirtGGb8rtdW2kv9vpYRP6Og5ci4mc+L/kpdLHuqekhSKdtBh9Ypn7oUNGB9
- irKrt/dMg4iJh4FQ3elxb0Elc2O+1Yzp6Si7kOaZfd4Dye5hVYy91Mv0H54x5FVnQcvfVq
- HjSc0CsYCsc7/INa+Bv1AtwQ8oAXLNM=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-275-PR6YvoCvNbSC7RAk0Zv3Kg-1; Sat, 18 Jan 2020 10:37:05 -0500
-Received: by mail-wr1-f70.google.com with SMTP id z14so11962888wrs.4
- for <qemu-devel@nongnu.org>; Sat, 18 Jan 2020 07:37:05 -0800 (PST)
+ bh=KkAm8xMOu305hVVU8Iq9Llxt8o9rYmI6atVtTp/Bxyc=;
+ b=CbojLROuMi9jCfTL4sSyHU67QyyNqb9cKRD/ElgpaO0+ZnTF4xQAvE9fIEYd5U/r0BC+D/
+ F1L5ebA6v3jhKPuuDdmHccAy0l1JGaqaih3TX5j4txHR2L5E5I+f5Nn2fe8yNuTC4JxFsT
+ IDkR6DrZHpVp5NYkqh1JTKEGiwmmrps=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-197-f0aZBvWMPVelayIxCeomNw-1; Sat, 18 Jan 2020 10:39:12 -0500
+Received: by mail-wr1-f71.google.com with SMTP id z10so11771514wrt.21
+ for <qemu-arm@nongnu.org>; Sat, 18 Jan 2020 07:39:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=kZOuSEl4iO6gE6XvSiUZetOAYHSqnjI0Y5AsWQWBUvE=;
- b=FBKFe9hlMLhMVT7gTD+cSWGtGPkTvSGI6PVPB01L/ABG2j5m3MknxOiP0uE4EvHZBg
- APs7Xl7SuruYubmgzdvu7rv5aHw/xPG3doVB92mUDPJb4+yZywrHfES9vImOSX+7cmyR
- 5CkWJP41xQ2rsM0ArqCqr0hKdlMT4S4yyXpR2J/p77eOHDCWgfSTQNgahPOZtkbMAqV9
- 8UZJZtQo1fXNmMwA+TyNNekd40UZjbHjWWWAOd3XLd+ajBO7O8cOZ77IWloLx4zMZJIZ
- PaCDlaZxIs7/MaJvcZrRIgXOewoYQ8cXF+lbgHuJ68MM5G16d97AWXDRimEPZS+yLmc6
- 6atA==
-X-Gm-Message-State: APjAAAXzWfg7b9xZM//1chPr0mNjOFBQ/aLZdr4obaJ5M4zdg279YSWb
- ykQS3G2duWESnkYnVUpzk4FO9aezsCsnNeJ8p8S4mv/vfljT6uTJbMYWc/3115UQ1+NyYisQqYh
- +hOSK2MbVyaR2laY=
-X-Received: by 2002:adf:dfd2:: with SMTP id q18mr9386155wrn.152.1579361824243; 
- Sat, 18 Jan 2020 07:37:04 -0800 (PST)
-X-Received: by 2002:adf:dfd2:: with SMTP id q18mr9386134wrn.152.1579361823951; 
- Sat, 18 Jan 2020 07:37:03 -0800 (PST)
+ bh=KBhmithM/eVBvOeOZkqqwHiOAaxsa0FQBJXrl4Mnl/A=;
+ b=DX+qbFaOT+AeE/EMdeuh7ImTrUf2RMYT/EpxUG9WIT84Pd+FA2ck+XmEMob0FAIQPL
+ 42ALFtBEnReLLqVV7IQXlvuZIUA8EqpKdLXPa96uvHAxUGw0hGz3hu8/A3wWjYxAOPcC
+ crjAcYzf+YIk6yom9wS4HuG3qarjsz9Pselcgxh3oo4CAtyJS/UDoIuBhmuqNQ0YrQUB
+ 0UYXxCgx84zzS+6+uW2Txp8TyaWF6q00MZ8x37Q5Gu9cagudGE+FpxaLKTE2xnbSJp25
+ tPOngifNubebiQsBMLH+uh/TUYQYtVA15hey+5ehbwBXcvrzGY8p4CafOlb6jnGYctYm
+ fbKQ==
+X-Gm-Message-State: APjAAAXMFwjKGULiIZyXzN+io+UcaNAH1uQluJGJS1YOl6Vx5QU2S47s
+ qNZIQwU89QfCbiHBDFjX6NWi4YB2RcbPTA5GJ953QXYdpmBtIr3yHk2WYRvjolEaj2hyzCmH5Dk
+ FKkYDV0pcG5ZY
+X-Received: by 2002:adf:f78e:: with SMTP id q14mr8648501wrp.186.1579361951206; 
+ Sat, 18 Jan 2020 07:39:11 -0800 (PST)
+X-Received: by 2002:adf:f78e:: with SMTP id q14mr8648491wrp.186.1579361951025; 
+ Sat, 18 Jan 2020 07:39:11 -0800 (PST)
 Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
  [83.57.172.113])
- by smtp.gmail.com with ESMTPSA id z4sm14474137wma.2.2020.01.18.07.37.02
+ by smtp.gmail.com with ESMTPSA id x7sm38106032wrq.41.2020.01.18.07.39.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Jan 2020 07:37:03 -0800 (PST)
-Subject: Re: [PATCH v3 03/17] hw/arm/allwinner-h3: add Clock Control Unit
-To: Niek Linnenbank <nieklinnenbank@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Damien Hedde <damien.hedde@greensocs.com>
+ Sat, 18 Jan 2020 07:39:10 -0800 (PST)
+Subject: Re: [PATCH v3 08/17] hw/arm/allwinner: add SD/MMC host controller
+To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
 References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-4-nieklinnenbank@gmail.com>
- <CAPan3Woz1KdHpPA87ZfgzF+GE=RGOFDGdpDD3aMVkuUJwNSQNA@mail.gmail.com>
+ <20200108200020.4745-9-nieklinnenbank@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6dda3ab6-f537-8864-55ef-20d5d523f416@redhat.com>
-Date: Sat, 18 Jan 2020 16:37:02 +0100
+Message-ID: <6f25acc0-eb0b-085d-9479-144dca324dee@redhat.com>
+Date: Sat, 18 Jan 2020 16:39:09 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <CAPan3Woz1KdHpPA87ZfgzF+GE=RGOFDGdpDD3aMVkuUJwNSQNA@mail.gmail.com>
+In-Reply-To: <20200108200020.4745-9-nieklinnenbank@gmail.com>
 Content-Language: en-US
-X-MC-Unique: PR6YvoCvNbSC7RAk0Zv3Kg-1
+X-MC-Unique: f0aZBvWMPVelayIxCeomNw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Markus Armbruster <armbru@redhat.com>, Taylor Simpson <tsimpson@quicinc.com>,
- qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UzclgYtlYFYf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: U04ma118GD72
 
-Hi Niek,
+On 1/8/20 9:00 PM, Niek Linnenbank wrote:
+> The Allwinner System on Chip families sun4i and above contain
+> an integrated storage controller for Secure Digital (SD) and
+> Multi Media Card (MMC) interfaces. This commit adds support
+> for the Allwinner SD/MMC storage controller with the following
+> emulated features:
+>=20
+>   * DMA transfers
+>   * Direct FIFO I/O
+>   * Short/Long format command responses
+>   * Auto-Stop command (CMD12)
+>   * Insert & remove card detection
+>=20
+> The following boards are extended with the SD host controller:
+>=20
+>   * Cubieboard (hw/arm/cubieboard.c)
+>   * Orange Pi PC (hw/arm/orangepi.c)
+>=20
+> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> ---
+>   include/hw/arm/allwinner-a10.h   |   4 +-
+>   include/hw/arm/allwinner-h3.h    |   3 +
+>   include/hw/sd/allwinner-sdhost.h | 136 +++++
+>   hw/arm/allwinner-a10.c           |  10 +
+>   hw/arm/allwinner-h3.c            |  15 +-
+>   hw/arm/cubieboard.c              |  15 +
+>   hw/arm/orangepi.c                |  16 +
+>   hw/sd/allwinner-sdhost.c         | 848 +++++++++++++++++++++++++++++++
+>   hw/sd/Makefile.objs              |   1 +
+>   hw/sd/trace-events               |   7 +
+>   10 files changed, 1053 insertions(+), 2 deletions(-)
+>   create mode 100644 include/hw/sd/allwinner-sdhost.h
+>   create mode 100644 hw/sd/allwinner-sdhost.c
 
-On 1/13/20 8:18 PM, Niek Linnenbank wrote:
-> Hi,
-> 
-> Just a friendly reminder for review of this patch and the others in this 
-> series
-> that don't yet have a reviewed-by tag :-)
-
-You are right to ping the list after a week.
-
-Cc'ing Damien for this particular patch, he might have good advises.
-
-
-Looking at the stats from your cover:
-
-  include/hw/arm/allwinner-h3.h          | 164 +++++
-  include/hw/misc/allwinner-cpucfg.h     |  54 ++
-  include/hw/misc/allwinner-h3-ccu.h     |  67 ++
-  include/hw/misc/allwinner-h3-dramc.h   | 107 +++
-  include/hw/misc/allwinner-h3-sysctrl.h |  68 ++
-  include/hw/net/allwinner-sun8i-emac.h  | 103 +++
-  include/hw/rtc/allwinner-rtc.h         | 129 ++++
-  include/hw/sd/allwinner-sdhost.h       | 136 ++++
-  hw/arm/allwinner-h3.c                  | 477 ++++++++++++++
-  hw/arm/orangepi.c                      | 125 ++++
-  hw/misc/allwinner-cpucfg.c             | 282 ++++++++
-  hw/misc/allwinner-h3-ccu.c             | 243 +++++++
-  hw/misc/allwinner-h3-dramc.c           | 358 ++++++++++
-  hw/misc/allwinner-h3-sysctrl.c         | 140 ++++
-  hw/misc/allwinner-sid.c                | 170 +++++
-  hw/net/allwinner-sun8i-emac.c          | 871 +++++++++++++++++++++++++
-  hw/rtc/allwinner-rtc.c                 | 386 +++++++++++
-  hw/sd/allwinner-sdhost.c               | 848 ++++++++++++++++++++++++
-
-  39 files changed, 5267 insertions(+), 2 deletions(-)
-
-This is a LOT of code to process, keep in mind your series touches 
-different subsystems with different maintainers. It is hard to know all 
-of them in details.
-
-Since your SoC is in the same family than the A10, I've Cc'ed Beniamino 
-Galvani. You should Cc him in your v4, hopefully he can help reviewing.
-
-Regarding the System Control Unit and SDRAM Controller, as I don't know 
-this SoC so I have to digest the whole datasheet, so it takes me time, 
-bare with me (I'm using my hobby time to review your work).
-
-The last patch I plan to review in your series is the SD/MMC one:
-  10 files changed, 1053 insertions(+), 2 deletions(-)
-
-It is 1/5th of your series in a single patch, each time I try to look at 
-it I get scared. Anyway today I could test NetBSD booting from a SD card 
-so I am more confident.
-
-Anyway, don't forget this comment from the New Contribution page:
-https://wiki.qemu.org/Contribute/SubmitAPatch#Return_the_favor
-
-   Peer review only works if everyone chips in a bit of review time.
-   If everyone submitted more patches than they reviewed, we would
-   have a patch backlog. A good goal is to try to review at least
-   as many patches from others as what you submit.
-
-With the quality of your patches, even if this is your first 
-contribution, it is obvious you now understand various part of QEMU.
-Don't be shy to look at other patches on the list and help the 
-community, as the reviewed authors might review you back :)
-
-That said, your series is almost there!
-
-Regards,
-
-Phil.
-
-> 
-> Regards,
-> Niek
+So far:
+Tested-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 

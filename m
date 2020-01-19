@@ -1,286 +1,262 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp952304lff;
-        Sat, 18 Jan 2020 16:27:06 -0800 (PST)
-X-Received: by 2002:a92:1906:: with SMTP id 6mr5144618ilz.130.1579393625952;
-        Sat, 18 Jan 2020 16:27:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579393625; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp969793lff;
+        Sat, 18 Jan 2020 16:51:15 -0800 (PST)
+X-Received: by 2002:a7b:c19a:: with SMTP id y26mr12441249wmi.152.1579395075136;
+        Sat, 18 Jan 2020 16:51:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579395075; cv=none;
         d=google.com; s=arc-20160816;
-        b=jHfQHIHU/vEX0J9gH6gWNy5k2rMGxUlLsdAsO+KlRJyPD0FG0/9i1DV3TzZAf5irMz
-         ef9geK1rGQ1OMliOCbh7Hxlg3vZcoRkTGI4Q3KAP44c13aAvuiTrJMLleF0hmS/eXa5v
-         6TtoR98plvMUPkxTgMXXnquSNV/GzLsHNP6oca3EHSk+WybyxS5nu3S1aQx4+ucvn3AN
-         rpMvYEBkgAQ4u2cpbgl9pYUJoumTW6OJ2fNHlPyoNYmozySiwXAyqh0i9bWjhx9l98ku
-         dPqcfwebYj3zNOxfkOAkY6wXPZajpBrKrh2VlfDa7nVmiBDxm9vfy0KMA17Wf+Pgipyx
-         sa5Q==
+        b=e5z/VYS7z8DEVU8HmKWCLEeq9zx7dmr2OCFLtpxU1Hk0yRV5B84VKf6bjhO3xWE1f2
+         Ghn6FzFOffFCbf2I4pc+f+HmGyqzNb7M1UfJoLYArA8Jt9jtdXZ+gvsX8XGx09qhksV3
+         4ffSqeiYpqLjHH3vK/ok58Es1TUlAVEbOicN6ec74LgJyyhAcV87GQr9dTPabufCt3dt
+         RpBSRn0TfmM7R0UEuTxu21M/tnyobxTF+Dbi07S1wIwuJ8wp0//s0GeUYkNX1pu+qor2
+         ihXHIE+2/cKzACrxn+UC1Oioyp6u+s0Cx/rokaLqWWkAIVcHrDIf9wtLRJ29m6gTJ6nb
+         58fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=qaDTQE9Xs/M5JD5bz7OeKEUK7FrITUNeOBAznWlPD0s=;
-        b=jMFNmHgfjy8U60XK0Wt3ladXHp8xPe6Bn8GAUIppPMPh0w26BZz/0mlEAiDthzkpgK
-         33Fk5Co8SOYQsx0S1ZyGBej0qzsQv6mKAmF/6xduDjZ6CYsfDAeE3lfqtUpbdKKLVeBL
-         f3vAfnbh2TVNYLPFPrve6YD32Ryfymi3iO4a1/hA3qCZqQ4pR2Ng9rBO9v2xsKnla+pz
-         ixAq9r37t51qvn63TFavvTu1/oVn2siJT21RyNa4bNh4r+S8F8a/qbwro4lyXNXJjvea
-         Mmewpt/9HXf46iFVrueY+w+bRz6Tolhuhjd+gBwsz5VB24hVoBYQi0jneFV+OD7qDaQM
-         RwEg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=LX1m7MIq+SDVtXfwnSBLE6Hk9PkpWYM7XpDns9NSQoQ=;
+        b=Mm9J3ZMbCiNUmu2LenqTY5iWw+iRLVfphJxY/ljjzwsONBwV083keMPgAHlI2jCW/6
+         VU57v4dvc0ZK9YOAnaD6w+Sdnhl9OrZ8eIIaum0Xi4KFPejoECydZFU6p8juwOeQK37Z
+         D/eapM0V5wF8uYiuwxX4uqztZnIo+nYIT0hc51PMEmQl/B4rGrBHEvcdBpm20cyEgcsH
+         uhq3XsQhGe1XmbYdbHjr8VuImBVrhLT8oxJNuxveVJR+CjkeLhctkScD5piPfZ7W7nXN
+         Hw8cVNsL52bpaUVJ4hlQbwyiIEXouxTbwCvgbe2if12XkKGhToRSD9FwFu7hwWUfT1G4
+         ciuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OKNdJKCf;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HyUTqo+E;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q3sor28848939jaa.10.2020.01.18.16.27.05
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id z10sor6377496wmf.26.2020.01.18.16.51.14
         (Google Transport Security);
-        Sat, 18 Jan 2020 16:27:05 -0800 (PST)
+        Sat, 18 Jan 2020 16:51:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OKNdJKCf;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HyUTqo+E;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=qaDTQE9Xs/M5JD5bz7OeKEUK7FrITUNeOBAznWlPD0s=;
-        b=OKNdJKCfM6s/XO8q5AucRvbJfGh+/GfWv+DJowTMUxq9L8Jxc4MUGCctmdlBKacr+6
-         xzubt/7pcuj53HaslAkm5KBnO7tx99OndLQGJKCrD14VJbJyKLTHjbpUdxtmZV2TOvB2
-         9DGEXR9EKmz/kAczlVnf71OFeC9RuK2H0XfCOPfcnwSpjh4VBMycXzsXlo9ZLihf4AEi
-         zsS6HZCVphkBcz3e6CA/U5B4CwLdPSS4T9bUZoXZgarB9uAnvAp4Qkhx2E43j0YOUWsj
-         dP7wEwfoY+bOhDhpEDaFVU+AL4/m/JgE+KCISNpLDGAIrl6mAj7Tn1L7BheM35L9nTCY
-         WZ1w==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=LX1m7MIq+SDVtXfwnSBLE6Hk9PkpWYM7XpDns9NSQoQ=;
+        b=HyUTqo+EM+g8aNbZ3yzFsLFIZI8vWOYFmwi1L/XDJFKWV2g8CQDqoPewa9vnYvi/aT
+         QEFO5G3juRIYPggGoZJXiYQ6HuA9osSqD5WG97JotHwaYeJN7NbgHj4ZfKv7RZr7QjEq
+         iTESlt5T2jZjz3VzhqqgZUVfufPQVyEQ1u0+3h9Vxy34AxcaLCl9U3s8/1Q5k2hSFOy5
+         8Xo5lTt/LTLR6+7CdaXuVfiSIR4zY0/y7x+nj5LTQiTttg4PskW43QOvRYdKwq68rVtx
+         Nl3UcSAAaAsdbSbEcChhJ/gqaTenDOCCDxB7oLnE7k5oaELk+NiHVoVc3AFnIiQjsaVw
+         HVyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=qaDTQE9Xs/M5JD5bz7OeKEUK7FrITUNeOBAznWlPD0s=;
-        b=jf6rXhAof6ni0m44iGwDbqDTRG9kvEkw2BjNj0VKlljXvlEGTdOXQbTEvTCZH7NP4K
-         eYP7etGeY01Cw0pqzasu5raIoQXr7bDe4TfPbdJA6Luch1uUvKN7NS9Gko8Zm+PX2ZKB
-         4HdURai6VaxjuRVMIQKoHkB59YKWzY30n+O7plgh1/BWuys3ice5X5xVy+Isi+hKwS4Y
-         qIZ6h1DAd6lBeaOBDnveZvXTN9KMkHoHSrnMiK0qn4hcEnhhtdaH3ijQPl0o9z9TBRrO
-         jXHL9FgOK2jylkTNp/A0W8vxxIjy8EP/xsxUGaRbRHedyLWp3xMd7yZMs2rgqcDgHqZh
-         UpgA==
-X-Gm-Message-State: APjAAAVDwVGu5nvGHBKjZvQzwZE3sy/FgKq0M90nvjfZL20q6yLcEqN3
-	smQLe3KtoAPg6Wi+BYRnpc2/ezggxSXnm9Jetlw=
-X-Google-Smtp-Source: APXvYqwrjQ1Skzf7Yi8ID6NpJkv/K3tHsMWNd2V/dbHHtuLBpaj7i+pWnbplKmDRT7nvU1m5I1AaQXruf5LsBC4cfU8=
-X-Received: by 2002:a02:856a:: with SMTP id g97mr6430035jai.97.1579393625624;
- Sat, 18 Jan 2020 16:27:05 -0800 (PST)
-MIME-Version: 1.0
-References: <20200118191623.32549-1-f4bug@amsat.org> <20200118191623.32549-3-f4bug@amsat.org>
-In-Reply-To: <20200118191623.32549-3-f4bug@amsat.org>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=LX1m7MIq+SDVtXfwnSBLE6Hk9PkpWYM7XpDns9NSQoQ=;
+        b=Gxyd8rp0cFUjhIoMkZ+BxFHdbD2umWyuhF//KSckzbpPxEokniYw84cFqBZ8xWAqXN
+         +H5nSLBlZy6b9O+mIgezf1+qfJwhlLtaQEq65IZnxs/C1tSglv7dmI0TDLn+ZRwYj6vl
+         ioSbDWfO8tOND0iOak75ws5nZYb5BpfllqzRt7mx5YDPEyYM0K6b5KU+YhqsjXKjEPSs
+         hBWluNL+UT9nx4cms3jk/YJFHKRz0+NgM9IJ1O8sDkQ2rgyBERTw1L42btB34wDGGtOA
+         z2v7VcSBnIcLH+oCOntlMoihEJ1xKa9ggUO4IVTDpu9LegjYeNTMrQt7IkZtTbI3xBjj
+         UIvQ==
+X-Gm-Message-State: APjAAAU0xoA32P0HjGzjdMZPqpH/iZPzUpDHwtSHMvGtqZ9dZYv8Nx3Z
+	VqPsbHeSBM1gLDKKATAUnpg=
+X-Google-Smtp-Source: APXvYqzSi5w+VfiEpfBXtazMIa7+YBRJAywNtiQYzTdhvNQFVtcClGswgpUXlMoqAFuYTfPAjobedw==
+X-Received: by 2002:a1c:a404:: with SMTP id n4mr11486380wme.109.1579395073971;
+        Sat, 18 Jan 2020 16:51:13 -0800 (PST)
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
+        by smtp.gmail.com with ESMTPSA id h2sm41763568wrv.66.2020.01.18.16.51.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 18 Jan 2020 16:51:13 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sun, 19 Jan 2020 01:26:54 +0100
-Message-ID: <CAPan3WpecxTceifvgfpyrO=BHufU1v=2UrCXbfBGXAJx+Dm0pw@mail.gmail.com>
-Subject: Re: [PATCH 2/4] Acceptance tests: Add interrupt_interactive_console_until_pattern()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Cleber Rosa <crosa@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Eduardo Habkost <ehabkost@redhat.com>, Fam Zheng <fam@euphon.net>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Kamil Rytarowski <kamil@netbsd.org>
-Content-Type: multipart/alternative; boundary="000000000000041689059c733c3c"
-X-TUID: 0bmh8zTXiwCd
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	philmd@redhat.com,
+	b.galvani@gmail.com,
+	jasowang@redhat.com,
+	alex.bennee@linaro.org,
+	imammedo@redhat.com,
+	Niek Linnenbank <nieklinnenbank@gmail.com>
+Subject: [PATCH v4 00/20] Add Allwinner H3 SoC and Orange Pi PC Machine
+Date: Sun, 19 Jan 2020 01:50:42 +0100
+Message-Id: <20200119005102.3847-1-nieklinnenbank@gmail.com>
+X-Mailer: git-send-email 2.17.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: AdGLnQPrQhDb
 
---000000000000041689059c733c3c
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Dear QEMU developers,
 
-On Sat, Jan 18, 2020 at 8:16 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g>
-wrote:
+Hereby I would like to contribute the following set of patches to QEMU
+which add support for the Allwinner H3 System on Chip and the
+Orange Pi PC machine. The following features and devices are supported:
 
-> We need a function to interrupt interactive consoles.
->
-> Example: Interrupt U-Boot to set different environment values.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
-Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+ * SMP (Quad Core Cortex A7)
+ * Generic Interrupt Controller configuration
+ * SRAM mappings
+ * SDRAM controller
+ * Real Time Clock
+ * Timer device (re-used from Allwinner A10)
+ * UART
+ * SD/MMC storage controller
+ * EMAC ethernet connectivity
+ * USB 2.0 interfaces
+ * Clock Control Unit
+ * System Control module
+ * Security Identifier device
 
-> ---
->  tests/acceptance/avocado_qemu/__init__.py | 32 +++++++++++++++++++++--
->  1 file changed, 30 insertions(+), 2 deletions(-)
->
-> diff --git a/tests/acceptance/avocado_qemu/__init__.py
-> b/tests/acceptance/avocado_qemu/__init__.py
-> index 0a50fcf2be..d4358eb431 100644
-> --- a/tests/acceptance/avocado_qemu/__init__.py
-> +++ b/tests/acceptance/avocado_qemu/__init__.py
-> @@ -56,13 +56,15 @@ def pick_default_qemu_bin(arch=3DNone):
->
->
->  def _console_interaction(test, success_message, failure_message,
-> -                         send_string):
-> +                         send_string, keep_sending=3DFalse):
-> +    assert not keep_sending or send_string
->      console =3D test.vm.console_socket.makefile()
->      console_logger =3D logging.getLogger('console')
->      while True:
->          if send_string:
->              test.vm.console_socket.sendall(send_string.encode())
-> -            send_string =3D None # send only once
-> +            if not keep_sending:
-> +                send_string =3D None # send only once
->          msg =3D console.readline().strip()
->          if not msg:
->              continue
-> @@ -74,6 +76,32 @@ def _console_interaction(test, success_message,
-> failure_message,
->              fail =3D 'Failure message found in console: %s' %
-> failure_message
->              test.fail(fail)
->
-> +def interrupt_interactive_console_until_pattern(test, success_message,
-> +                                                failure_message=3DNone,
-> +                                                interrupt_string=3D'\r')=
-:
-> +    """
-> +    Keep sending a string to interrupt a console prompt, while logging t=
-he
-> +    console output. Typical use case is to break a boot loader prompt,
-> such:
-> +
-> +        Press a key within 5 seconds to interrupt boot process.
-> +        5
-> +        4
-> +        3
-> +        2
-> +        1
-> +        Booting default image...
-> +
-> +    :param test: an Avocado test containing a VM that will have its
-> console
-> +                 read and probed for a success or failure message
-> +    :type test: :class:`avocado_qemu.Test`
-> +    :param success_message: if this message appears, test succeeds
-> +    :param failure_message: if this message appears, test fails
-> +    :param interrupt_string: a string to send to the console before tryi=
-ng
-> +                             to read a new line
-> +    """
-> +    _console_interaction(test, success_message, failure_message,
-> +                         interrupt_string, True)
-> +
->  def wait_for_console_pattern(test, success_message, failure_message=3DNo=
-ne):
->      """
->      Waits for messages to appear on the console, while logging the conte=
-nt
-> --
-> 2.21.1
->
->
+Functionality related to graphical output such as HDMI, GPU,
+Display Engine and audio are not included. Recently released
+mainline Linux kernels (4.19 up to latest master), mainline U-Boot
+and NetBSD 9.0-RC1 are known to work.
 
---=20
+For full details on how to use the Orange Pi PC machine, see the file
+docs/orangepi.rst which is included as a patch in this series.
+
+The contents of this patch series is available on Github at:
+
+  https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v3
+
+The followings are currently known issues in this series:
+
+  - NetBSD 9.0-RC1 reads out year 2050 from RTC, while Linux works fine
+     -> This is due to difference in base year defined by the corresponding drivers
+  - RTC date & time is not persistent
+  - boot0 custom Allwinner bootloader not yet working
+  - Watchdog not yet implemented, affects U-Boot 'reset' and shutdown/reboot
+     -> This is part of the existing A10 timer that needs to be generalized first
+
+Looking forward to your review comments. I will do my best
+to update the patches where needed.
+
+===== CHANGELOG =====
+v4:
+ * docs/orangepi.rst: correct SDRAM size in board description: 512MB -> 1GiB
+ * hw/arm/orangepi.c: correct SDRAM size in commit message: 512MB -> 1GiB
+ * hw/arm/orangepi.c: set .nb_cpus in the orangepi_binfo struct static initialisation
+ * hw/arm/orangepi.c: remove .board_id from orangepi_binfo struct
+ * hw/arm/orangepi.c: move BIOS check to top of orangepi_init()
+ * hw/arm/orangepi.c: change clk1-freq argument 24000000 to 24 * 1000 * 1000 for readability
+ * hw/arm/orangepi.c: rephrase 1GiB check error message
+ * include/hw/arm/allwinner-h3.h: improved comments
+ * hw/arm/allwinner-h3.c: remove duplicate initialization and declaration of i variable
+ * hw/arm/allwinner-h3.c: use DEVICE(&s->cpus[i]) instead of qemu_get_cpu()
+ * hw/arm/allwinner-h3.c: use qdev API instead of object API in CPU initialization part
+ * hw/arm/allwinner-h3.c: add note that UARTs are connected to APB2_CLK, for future clocktree API
+ * hw/arm/allwinner-h3.c: extend commit message for Boot ROM with description for the 32KiB size
+ * hw/rtc/allwinner-rtc.c: correct usage of AwRtcClass->regmap_size for checking r/w offset
+ * hw/misc/allwinner-cpucfg.c: remove 64-bit counter, as it is unused by Linux/U-Boot/NetBSD
+ * hw/misc/allwinner-cpucfg.c: add CPU_EXCEPTION_LEVEL_ON_RESET constant
+ * hw/misc/allwinner-cpucfg.c: break instead of return after logging guest error, for tracing
+ * hw/misc/allwinner-cpucfg.c: reduce duplication in switch/case for REG_CPUX_RST_CTRL in write function
+ * include/hw/rtc/allwinner-rtc.h: increase AW_RTC_REGS_MAXADDR to 0x200
+ * include/hw/rtc/allwinner-rtc.h: change type of AwRtcClass->year_offset to int, to match struct tm
+ * tests/acceptance/boot_linux_console.py: remove calls to vm.set_machine()
+ * tests/acceptance/boot_linux_console.py: added NetBSD test by Philippe
+ * docs/orangepi.rst: removed some unneeded words/typos
+ * docs/orangepi.rst: remove usage of -j5 for calling make (not all users have >= 4 SMP cores)
+ * include/hw/*/allwinner*.h: moved #include "qemu/osdep.h" and unneeded #includes to .c file
+
+v3: https://lists.gnu.org/archive/html/qemu-devel/2020-01/msg01534.html
+    https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v3
+
+v2: https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg03265.html
+    https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v2
+
+v1: https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg00320.html
+    https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v1
+
+With kind regards,
+
 Niek Linnenbank
 
---000000000000041689059c733c3c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Niek Linnenbank (13):
+  hw/arm: add Allwinner H3 System-on-Chip
+  hw/arm: add Xunlong Orange Pi PC machine
+  hw/arm/allwinner-h3: add Clock Control Unit
+  hw/arm/allwinner-h3: add USB host controller
+  hw/arm/allwinner-h3: add System Control module
+  hw/arm/allwinner: add CPU Configuration module
+  hw/arm/allwinner: add Security Identifier device
+  hw/arm/allwinner: add SD/MMC host controller
+  hw/arm/allwinner-h3: add EMAC ethernet device
+  hw/arm/allwinner-h3: add Boot ROM support
+  hw/arm/allwinner-h3: add SDRAM controller device
+  hw/arm/allwinner: add RTC device support
+  docs: add Orange Pi PC document
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Sat, Jan 18, 2020 at 8:16 PM Phili=
-ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.o=
-rg</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
-n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-">We need a function to interrupt interactive consoles.<br>
-<br>
-Example: Interrupt U-Boot to set different environment values.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br></blockquote><div>Teste=
-d-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">niekl=
-innenbank@gmail.com</a>&gt; <br></div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">
----<br>
-=C2=A0tests/acceptance/avocado_qemu/__init__.py | 32 +++++++++++++++++++++-=
--<br>
-=C2=A01 file changed, 30 insertions(+), 2 deletions(-)<br>
-<br>
-diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance/a=
-vocado_qemu/__init__.py<br>
-index 0a50fcf2be..d4358eb431 100644<br>
---- a/tests/acceptance/avocado_qemu/__init__.py<br>
-+++ b/tests/acceptance/avocado_qemu/__init__.py<br>
-@@ -56,13 +56,15 @@ def pick_default_qemu_bin(arch=3DNone):<br>
-<br>
-<br>
-=C2=A0def _console_interaction(test, success_message, failure_message,<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0send_string):<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0send_string, keep_sending=3DFalse):<br>
-+=C2=A0 =C2=A0 assert not keep_sending or send_string<br>
-=C2=A0 =C2=A0 =C2=A0console =3D test.vm.console_socket.makefile()<br>
-=C2=A0 =C2=A0 =C2=A0console_logger =3D logging.getLogger(&#39;console&#39;)=
-<br>
-=C2=A0 =C2=A0 =C2=A0while True:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if send_string:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0test.vm.console_socket.send=
-all(send_string.encode())<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 send_string =3D None # send only=
- once<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if not keep_sending:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 send_string =3D No=
-ne # send only once<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0msg =3D console.readline().strip()<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if not msg:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0continue<br>
-@@ -74,6 +76,32 @@ def _console_interaction(test, success_message, failure_=
-message,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0fail =3D &#39;Failure messa=
-ge found in console: %s&#39; % failure_message<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0test.fail(fail)<br>
-<br>
-+def interrupt_interactive_console_until_pattern(test, success_message,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 failure_message=3DNone,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 interrupt_string=3D&#39;\r&#39;):<br>
-+=C2=A0 =C2=A0 &quot;&quot;&quot;<br>
-+=C2=A0 =C2=A0 Keep sending a string to interrupt a console prompt, while l=
-ogging the<br>
-+=C2=A0 =C2=A0 console output. Typical use case is to break a boot loader p=
-rompt, such:<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 Press a key within 5 seconds to interrupt boot=
- process.<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 5<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 4<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 3<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 2<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 1<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 Booting default image...<br>
-+<br>
-+=C2=A0 =C2=A0 :param test: an Avocado test containing a VM that will have =
-its console<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0read and pro=
-bed for a success or failure message<br>
-+=C2=A0 =C2=A0 :type test: :class:`avocado_qemu.Test`<br>
-+=C2=A0 =C2=A0 :param success_message: if this message appears, test succee=
-ds<br>
-+=C2=A0 =C2=A0 :param failure_message: if this message appears, test fails<=
-br>
-+=C2=A0 =C2=A0 :param interrupt_string: a string to send to the console bef=
-ore trying<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0to read a new line<br>
-+=C2=A0 =C2=A0 &quot;&quot;&quot;<br>
-+=C2=A0 =C2=A0 _console_interaction(test, success_message, failure_message,=
-<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0interrupt_string, True)<br>
-+<br>
-=C2=A0def wait_for_console_pattern(test, success_message, failure_message=
-=3DNone):<br>
-=C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot;<br>
-=C2=A0 =C2=A0 =C2=A0Waits for messages to appear on the console, while logg=
-ing the content<br>
--- <br>
-2.21.1<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+Philippe Mathieu-Daudé (7):
+  tests/boot_linux_console: Add a quick test for the OrangePi PC board
+  tests/boot_linux_console: Add initrd test for the Orange Pi PC board
+  tests/boot_linux_console: Add a SD card test for the OrangePi PC board
+  tests/boot_linux_console: Add a SLOW test booting Ubuntu on OrangePi
+    PC
+  Acceptance tests: Extract _console_interaction()
+  Acceptance tests: Add interrupt_interactive_console_until_pattern()
+  tests/boot_linux_console: Test booting NetBSD via U-Boot on OrangePi
+    PC
 
---000000000000041689059c733c3c--
+ docs/orangepi.rst                         | 199 +++++
+ default-configs/arm-softmmu.mak           |   1 +
+ hw/usb/hcd-ehci.h                         |   1 +
+ include/hw/arm/allwinner-a10.h            |   4 +
+ include/hw/arm/allwinner-h3.h             | 163 ++++
+ include/hw/misc/allwinner-cpucfg.h        |  52 ++
+ include/hw/misc/allwinner-h3-ccu.h        |  66 ++
+ include/hw/misc/allwinner-h3-dramc.h      | 106 +++
+ include/hw/misc/allwinner-h3-sysctrl.h    |  67 ++
+ include/hw/misc/allwinner-sid.h           |  60 ++
+ include/hw/net/allwinner-sun8i-emac.h     |  99 +++
+ include/hw/rtc/allwinner-rtc.h            | 128 ++++
+ include/hw/sd/allwinner-sdhost.h          | 135 ++++
+ hw/arm/allwinner-a10.c                    |  19 +
+ hw/arm/allwinner-h3.c                     | 476 ++++++++++++
+ hw/arm/cubieboard.c                       |  15 +
+ hw/arm/orangepi.c                         | 127 ++++
+ hw/misc/allwinner-cpucfg.c                | 269 +++++++
+ hw/misc/allwinner-h3-ccu.c                | 243 ++++++
+ hw/misc/allwinner-h3-dramc.c              | 358 +++++++++
+ hw/misc/allwinner-h3-sysctrl.c            | 140 ++++
+ hw/misc/allwinner-sid.c                   | 170 +++++
+ hw/net/allwinner-sun8i-emac.c             | 871 ++++++++++++++++++++++
+ hw/rtc/allwinner-rtc.c                    | 386 ++++++++++
+ hw/sd/allwinner-sdhost.c                  | 848 +++++++++++++++++++++
+ hw/usb/hcd-ehci-sysbus.c                  |  17 +
+ MAINTAINERS                               |   9 +
+ hw/arm/Kconfig                            |   9 +
+ hw/arm/Makefile.objs                      |   1 +
+ hw/misc/Makefile.objs                     |   5 +
+ hw/misc/trace-events                      |  19 +
+ hw/net/Kconfig                            |   3 +
+ hw/net/Makefile.objs                      |   1 +
+ hw/net/trace-events                       |  10 +
+ hw/rtc/Makefile.objs                      |   1 +
+ hw/rtc/trace-events                       |   4 +
+ hw/sd/Makefile.objs                       |   1 +
+ hw/sd/trace-events                        |   7 +
+ tests/acceptance/avocado_qemu/__init__.py |  59 +-
+ tests/acceptance/boot_linux_console.py    | 210 ++++++
+ 40 files changed, 5345 insertions(+), 14 deletions(-)
+ create mode 100644 docs/orangepi.rst
+ create mode 100644 include/hw/arm/allwinner-h3.h
+ create mode 100644 include/hw/misc/allwinner-cpucfg.h
+ create mode 100644 include/hw/misc/allwinner-h3-ccu.h
+ create mode 100644 include/hw/misc/allwinner-h3-dramc.h
+ create mode 100644 include/hw/misc/allwinner-h3-sysctrl.h
+ create mode 100644 include/hw/misc/allwinner-sid.h
+ create mode 100644 include/hw/net/allwinner-sun8i-emac.h
+ create mode 100644 include/hw/rtc/allwinner-rtc.h
+ create mode 100644 include/hw/sd/allwinner-sdhost.h
+ create mode 100644 hw/arm/allwinner-h3.c
+ create mode 100644 hw/arm/orangepi.c
+ create mode 100644 hw/misc/allwinner-cpucfg.c
+ create mode 100644 hw/misc/allwinner-h3-ccu.c
+ create mode 100644 hw/misc/allwinner-h3-dramc.c
+ create mode 100644 hw/misc/allwinner-h3-sysctrl.c
+ create mode 100644 hw/misc/allwinner-sid.c
+ create mode 100644 hw/net/allwinner-sun8i-emac.c
+ create mode 100644 hw/rtc/allwinner-rtc.c
+ create mode 100644 hw/sd/allwinner-sdhost.c
+
+-- 
+2.17.1

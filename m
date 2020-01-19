@@ -1,70 +1,70 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp969899lff;
-        Sat, 18 Jan 2020 16:51:23 -0800 (PST)
-X-Received: by 2002:a1c:f008:: with SMTP id a8mr11632058wmb.81.1579395082970;
-        Sat, 18 Jan 2020 16:51:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579395082; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp969827lff;
+        Sat, 18 Jan 2020 16:51:17 -0800 (PST)
+X-Received: by 2002:a1c:b456:: with SMTP id d83mr12093835wmf.172.1579395077559;
+        Sat, 18 Jan 2020 16:51:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579395077; cv=none;
         d=google.com; s=arc-20160816;
-        b=YvQ0FZj/8ZFbIlqhkEXrw0YLV773oTBWqvrew/YDtpud12Akh4FI+Yv0M4JnWDaO/0
-         uBa/osj/avAaTW/P390Zzo3t0llS6kcPJ8dR11Sh/tKvyzk+sg01CaPKXbO49avGqoMn
-         /akAGNS1Mb1lsU4zHPPpwtFV4KGRzzudNY0ELyRNGYoukjy9RBBF2e1cJHPOYC/pGJi6
-         ZXhR/MiLHzH9OM39Wr8uMS/f4rATxpy2D20/rRZ0qUJMUVU6Yu0LWEcPb25yYhKktemG
-         svZkz4P1kJezZAT8Ceu5P04ljfyWF2/2GJz2bAinL3EV5uWxEBKUuvvaEF94y6dvy8KJ
-         F9MQ==
+        b=qKP/67Mi7mggeUvtzexZUUCBFJZmdIXVr8XKAdAApz8mASiEpdV8pABXPRbI7QdcSW
+         q3IEeRuA3fO4xx2ZGF1eXrZNpGgelD6fgVo56u8HXAcqQyfaWyA+FzcvTaO+RgAwv7dX
+         Rb7n0SkCH1CA2mZ2B3tUE+JuJiNYrpfrv6wp9qJBQyu+aeu3KsBV2+pRoxmOFEELycxT
+         NS+95McLNQjzzcfXX4xvWonohVCz35uwuA2fkKT7c8E35w7TEvMvajnu66rpKFJRjrUD
+         Yj1y+irwygpPmQPdWvQyv2HRQiEDsa7s0A01SLpofz7F32IAYraTR5B3Kxb3HvFI1n5u
+         pBgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=G999Gq0fdq01jCg9kAdMJxYO34Fu4j9UBCr1xo3cI5k=;
-        b=k08qp1yoUo6hfhGVo0M1V7NMibqtVYd7XbJsahAyejn6WxQbAMAq/9dycIkXECyyC0
-         vkGRjmYl33iep4yblndZ3dm/fSmy+QT7CXL9kRDApc2b+jsKeuA1HNs5p3zH8Yt0v4qq
-         dj6YFRkjkPdmNexPUuGWnFbG10H3+lAHo/1LLXDwg78iK31Vv2xmvJCOGuyAoVIxwFZM
-         DMp8CLKUEMfOQSLK9R+Vtzd6dM/1KJjlVJd5s/YGBWYxmSrkqrGFcSApwHxVJFBf2Oks
-         1YP8Or+6D0ESFgk1nC1buVqF7EN3dOctxcVrYy3C6J9YGYWuKBIQq1AA19QY53OTrtzM
-         QeXw==
+        bh=bKdYQLut7TY9Y2nQP8UWBqYM24fNyCpJNF5tfQZW1hg=;
+        b=x9KDSg359WrjOZqhTbgqiXAFECbEFiSAKThKm0YKNJZXL4TK/f3anDWqKsJskCZsim
+         +fQ7YjCKkX0cFxWBLYYeNdPD1zagx3MOBSSDV4Ukz1Z6QSx0/zeFlH1uSdtePUZB9Thm
+         vpcN2BzLHqdTu4sEg2GPA4XN7BzNqi+1FVBNnBoBkmmw6UsSz8KTUQq4/YXLzzPGirKC
+         9ZZA39SXhKzqabKuldJgZ61eUkQ/7iFq5nBCgZA6MsJMVVYhWO/1ByzImXRu8ZFcKHM7
+         5wpgmj3w8JF9vYkfCtGbjseJbbs/he7TgRZPUeX+Nf64e1VxpiDBMIxiq+oMpjRc0hvh
+         qqTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OAs9A+bW;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uy9tvM2v;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id n15sor6445958wmc.21.2020.01.18.16.51.22
+        by mx.google.com with SMTPS id l11sor13162225wrr.36.2020.01.18.16.51.17
         (Google Transport Security);
-        Sat, 18 Jan 2020 16:51:22 -0800 (PST)
+        Sat, 18 Jan 2020 16:51:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OAs9A+bW;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uy9tvM2v;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=G999Gq0fdq01jCg9kAdMJxYO34Fu4j9UBCr1xo3cI5k=;
-        b=OAs9A+bWJGTVAOqCUTsgDiAzmf9ZQR153PZppMVhV8aXPUquJrZtLaaADtSsp8hRGq
-         EenQcMmMeHRtivQ7ueH9mvwNU3ZET2i/tKV12jYWaFU/yZkwK9kARKMLgwo/xbCpFI/A
-         kZC9/mOCpXY0ZYviIWdLPpiAOOaTFnuga1C9s18SymQZD+u9oF1vYcksN4yPWXmqf7I+
-         ldOoHAbIbQjCz8LHncd/hwYrsjaK0p/yKUdAonoZNoAMqz+At/Gh7OBq3bYJRALWtC8/
-         XcRxhiWwsZHykw6CzLKT0W3ZrSUiUQdpzH4Vp3DmCR5KxN0OtcAulG1/WlAC3suopk1F
-         E+SQ==
+        bh=bKdYQLut7TY9Y2nQP8UWBqYM24fNyCpJNF5tfQZW1hg=;
+        b=uy9tvM2vhSqa0ye7h8j1AJB3bqeNUM3WwnpOwLLMAGydbVfOJqntE7BX7G4BVvKIDg
+         YsXI9PEhy1c+OJadsfvFVmssKxTGJq/nFwM8lYYwALMheUZKsgo+T/Uc9POVhGYisqtZ
+         UbbSqnp8KB0Ky4sciCmb8Y8xnS+uIaPA5zKhjejn9nlcF6k5qMq5LMVfbjNbMNMfI4Bl
+         3TaY018UN+SbzcMZ1RsP859PdlcVt1xVPZ8YMaXzYUFf6Ij2pIhnP5lgiTO5MBhkTSkq
+         TTd4DfZcZYcpfcxGI5imH54b7UobPs6I3UDpux3thg0RB1T5DFMGktqbKqUwj288ydd1
+         Gypg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=G999Gq0fdq01jCg9kAdMJxYO34Fu4j9UBCr1xo3cI5k=;
-        b=WElPROoThQPGl0z3Z32pOQ5x216NPntfzL2xwm/mJMDeuKitthc8AIceLwFYZyiBCk
-         MvifiMKQYrQvSRAjujpKb4lZsVw4CFC7zwmgn5j/TnUbcs8Q2CK3TGek7wFThT/qLBfK
-         amUw1XEzjKjh5a14nWhL6tuQf/Tmtb2wbS7gOWDZCbJX0tks5n31YWRMoDXoKt6qgBAB
-         83c0oZPmP/KZ/OM5y/aB5Gyl0MCG23OhjNFpKQOZcy9SnLfuzu4GoRop+F1I9H+lgFh0
-         DRPZRQ+4O9fYIj+Q0aaRH6urKlYYDWUBUwJaPkUjRVtL/FVxrfOq/dzL6kic3DaD1vUz
-         WQgA==
-X-Gm-Message-State: APjAAAUZwDgZ0fyhl5p6JYX4LsUbIpmKinfTw1jaK/GZddxSolLJHFt2
-	tajS5lvtyQLOYFzqUZmHmnE=
-X-Google-Smtp-Source: APXvYqzYDxCVT2pxd8F0m0NvTAR9nISPI1QY1+aeYXJggx8iFuKLxK9Q/EOjnd/9fRRvZQ/QmkHr3w==
-X-Received: by 2002:a1c:7203:: with SMTP id n3mr11810175wmc.119.1579395082611;
-        Sat, 18 Jan 2020 16:51:22 -0800 (PST)
+        bh=bKdYQLut7TY9Y2nQP8UWBqYM24fNyCpJNF5tfQZW1hg=;
+        b=CW01dvq6XVvAS7PYmhZ2TU0H9rFP509koPplB8s2eN7u4FYjlsxTXQ1EvbCKjXBT1s
+         uRP1RT+AxwyBm8PGx94Mkv8C1BQt5lpsWJ4yUBa6+56ckEtRKHJcOWjOM1aVOXpMWruo
+         vjRUY014LbmXM3FFbeAzK8UxvOhrgpb2uPjUOp3Ld0qoqETuIRCGJpPzZWEfoMUkFjOe
+         wNPRpoMez1YbdrLmHX09IH1qqbI49oRYIyZaIDuOueumdWwhzpU9oNhVUk2YfonYRdEQ
+         PmjsQJJijqBwEuaI8xksGNpvXsCc+C4F1pRZB/QuFIyuW4FQ4WVgK4uqiZ60LLBYKHsl
+         bPFw==
+X-Gm-Message-State: APjAAAWBrSW/GTrLb0BFZ68DdOzCVLagoFSZVENdo/UwH3MfaafJLzO0
+	mN/70CECv7wJEIFw1a8xaGg=
+X-Google-Smtp-Source: APXvYqwor7sMU/i28vPe/t5J8aWbTs6D0BxZtDlNs0/mgRgl2pVldaQZv5PLQoEq4uxYG9FhPkR7Fw==
+X-Received: by 2002:a5d:6a8e:: with SMTP id s14mr11157080wru.150.1579395077177;
+        Sat, 18 Jan 2020 16:51:17 -0800 (PST)
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
-        by smtp.gmail.com with ESMTPSA id h2sm41763568wrv.66.2020.01.18.16.51.21
+        by smtp.gmail.com with ESMTPSA id h2sm41763568wrv.66.2020.01.18.16.51.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Jan 2020 16:51:22 -0800 (PST)
+        Sat, 18 Jan 2020 16:51:16 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -75,136 +75,185 @@ Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	imammedo@redhat.com,
 	Niek Linnenbank <nieklinnenbank@gmail.com>
-Subject: [PATCH v4 10/20] hw/arm/allwinner-h3: add Boot ROM support
-Date: Sun, 19 Jan 2020 01:50:52 +0100
-Message-Id: <20200119005102.3847-11-nieklinnenbank@gmail.com>
+Subject: [PATCH v4 04/20] hw/arm/allwinner-h3: add USB host controller
+Date: Sun, 19 Jan 2020 01:50:46 +0100
+Message-Id: <20200119005102.3847-5-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200119005102.3847-1-nieklinnenbank@gmail.com>
 References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
-X-TUID: JzGW36tZjSGJ
+X-TUID: qrlybljuN5HL
 
-A real Allwinner H3 SoC contains a Boot ROM which is the
-first code that runs right after the SoC is powered on.
-The Boot ROM is responsible for loading user code (e.g. a bootloader)
-from any of the supported external devices and writing the downloaded
-code to internal SRAM. After loading the SoC begins executing the code
-written to SRAM.
-
-This commits adds emulation of the Boot ROM firmware setup functionality
-by loading user code from SD card in the A1 SRAM. While the A1 SRAM is
-64KiB, we limit the size to 32KiB because the real H3 Boot ROM also rejects
-sizes larger than 32KiB. For reference, this behaviour is documented
-by the Linux Sunxi project wiki at:
-
-  https://linux-sunxi.org/BROM#U-Boot_SPL_limitations
+The Allwinner H3 System on Chip contains multiple USB 2.0 bus
+connections which provide software access using the Enhanced
+Host Controller Interface (EHCI) and Open Host Controller
+Interface (OHCI) interfaces. This commit adds support for
+both interfaces in the Allwinner H3 System on Chip.
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/hw/arm/allwinner-h3.h | 23 +++++++++++++++++++++++
- hw/arm/allwinner-h3.c         | 28 ++++++++++++++++++++++++++++
- hw/arm/orangepi.c             |  5 +++++
- 3 files changed, 56 insertions(+)
+ hw/usb/hcd-ehci.h             |  1 +
+ include/hw/arm/allwinner-h3.h |  8 ++++++
+ hw/arm/allwinner-h3.c         | 52 ++++++++++++++++++++++++++++++++---
+ hw/usb/hcd-ehci-sysbus.c      | 17 ++++++++++++
+ 4 files changed, 74 insertions(+), 4 deletions(-)
 
+diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
+index 0298238f0b..edb59311c4 100644
+--- a/hw/usb/hcd-ehci.h
++++ b/hw/usb/hcd-ehci.h
+@@ -342,6 +342,7 @@ typedef struct EHCIPCIState {
+ #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
+ #define TYPE_PLATFORM_EHCI "platform-ehci-usb"
+ #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
++#define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
+ #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
+ #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
+ #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
 diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-index f9b9a02373..f5e16266cd 100644
+index abdc20871a..4f4dcbcd17 100644
 --- a/include/hw/arm/allwinner-h3.h
 +++ b/include/hw/arm/allwinner-h3.h
-@@ -46,6 +46,7 @@
- #include "hw/sd/allwinner-sdhost.h"
- #include "hw/net/allwinner-sun8i-emac.h"
- #include "target/arm/cpu.h"
-+#include "sysemu/block-backend.h"
- 
- /**
-  * Allwinner H3 device list
-@@ -129,4 +130,26 @@ typedef struct AwH3State {
-     MemoryRegion sram_c;
- } AwH3State;
- 
-+/**
-+ * Emulate Boot ROM firmware setup functionality.
-+ *
-+ * A real Allwinner H3 SoC contains a Boot ROM
-+ * which is the first code that runs right after
-+ * the SoC is powered on. The Boot ROM is responsible
-+ * for loading user code (e.g. a bootloader) from any
-+ * of the supported external devices and writing the
-+ * downloaded code to internal SRAM. After loading the SoC
-+ * begins executing the code written to SRAM.
-+ *
-+ * This function emulates the Boot ROM by copying 32 KiB
-+ * of data from the given block device and writes it to
-+ * the start of the first internal SRAM memory.
-+ *
-+ * @s: Allwinner H3 state object pointer
-+ * @blk: Block backend device object pointer
-+ * @errp: Error object pointer for raising errors
-+ */
-+void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk,
-+                                Error **errp);
-+
- #endif /* HW_ARM_ALLWINNER_H3_H */
+@@ -56,6 +56,14 @@ enum {
+     AW_H3_SRAM_A1,
+     AW_H3_SRAM_A2,
+     AW_H3_SRAM_C,
++    AW_H3_EHCI0,
++    AW_H3_OHCI0,
++    AW_H3_EHCI1,
++    AW_H3_OHCI1,
++    AW_H3_EHCI2,
++    AW_H3_OHCI2,
++    AW_H3_EHCI3,
++    AW_H3_OHCI3,
+     AW_H3_CCU,
+     AW_H3_PIT,
+     AW_H3_UART0,
 diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index 1085223812..3d0470825a 100644
+index 8df8e3e05e..f360625ee9 100644
 --- a/hw/arm/allwinner-h3.c
 +++ b/hw/arm/allwinner-h3.c
-@@ -29,6 +29,7 @@
+@@ -28,6 +28,7 @@
+ #include "hw/sysbus.h"
  #include "hw/char/serial.h"
  #include "hw/misc/unimp.h"
- #include "hw/usb/hcd-ehci.h"
-+#include "hw/loader.h"
++#include "hw/usb/hcd-ehci.h"
  #include "sysemu/sysemu.h"
  #include "hw/arm/allwinner-h3.h"
  
-@@ -170,6 +171,33 @@ enum {
-     AW_H3_GIC_NUM_SPI       = 128
+@@ -36,6 +37,14 @@ const hwaddr allwinner_h3_memmap[] = {
+     [AW_H3_SRAM_A1]    = 0x00000000,
+     [AW_H3_SRAM_A2]    = 0x00044000,
+     [AW_H3_SRAM_C]     = 0x00010000,
++    [AW_H3_EHCI0]      = 0x01c1a000,
++    [AW_H3_OHCI0]      = 0x01c1a400,
++    [AW_H3_EHCI1]      = 0x01c1b000,
++    [AW_H3_OHCI1]      = 0x01c1b400,
++    [AW_H3_EHCI2]      = 0x01c1c000,
++    [AW_H3_OHCI2]      = 0x01c1c400,
++    [AW_H3_EHCI3]      = 0x01c1d000,
++    [AW_H3_OHCI3]      = 0x01c1d400,
+     [AW_H3_CCU]        = 0x01c20000,
+     [AW_H3_PIT]        = 0x01c20c00,
+     [AW_H3_UART0]      = 0x01c28000,
+@@ -73,10 +82,10 @@ struct AwH3Unimplemented {
+     { "msgbox",    0x01c17000, 4 * KiB },
+     { "spinlock",  0x01c18000, 4 * KiB },
+     { "usb0-otg",  0x01c19000, 4 * KiB },
+-    { "usb0",      0x01c1a000, 4 * KiB },
+-    { "usb1",      0x01c1b000, 4 * KiB },
+-    { "usb2",      0x01c1c000, 4 * KiB },
+-    { "usb3",      0x01c1d000, 4 * KiB },
++    { "usb0-phy",  0x01c1a000, 4 * KiB },
++    { "usb1-phy",  0x01c1b000, 4 * KiB },
++    { "usb2-phy",  0x01c1c000, 4 * KiB },
++    { "usb3-phy",  0x01c1d000, 4 * KiB },
+     { "smc",       0x01c1e000, 4 * KiB },
+     { "pio",       0x01c20800, 1 * KiB },
+     { "owa",       0x01c21000, 1 * KiB },
+@@ -144,6 +153,14 @@ enum {
+     AW_H3_GIC_SPI_UART3     =  3,
+     AW_H3_GIC_SPI_TIMER0    = 18,
+     AW_H3_GIC_SPI_TIMER1    = 19,
++    AW_H3_GIC_SPI_EHCI0     = 72,
++    AW_H3_GIC_SPI_OHCI0     = 73,
++    AW_H3_GIC_SPI_EHCI1     = 74,
++    AW_H3_GIC_SPI_OHCI1     = 75,
++    AW_H3_GIC_SPI_EHCI2     = 76,
++    AW_H3_GIC_SPI_OHCI2     = 77,
++    AW_H3_GIC_SPI_EHCI3     = 78,
++    AW_H3_GIC_SPI_OHCI3     = 79,
  };
  
-+void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk, Error **errp)
+ /* Allwinner H3 general constants */
+@@ -284,6 +301,33 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+     qdev_init_nofail(DEVICE(&s->ccu));
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_H3_CCU]);
+ 
++    /* Universal Serial Bus */
++    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_EHCI0));
++    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI1],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_EHCI1));
++    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI2],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_EHCI2));
++    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI3],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_EHCI3));
++
++    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI0],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_OHCI0));
++    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI1],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_OHCI1));
++    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI2],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_OHCI2));
++    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI3],
++                         qdev_get_gpio_in(DEVICE(&s->gic),
++                                          AW_H3_GIC_SPI_OHCI3));
++
+     /* UART0. For future clocktree API: All UARTS are connected to APB2_CLK. */
+     serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART0], 2,
+                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART0),
+diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
+index 020211fd10..174c3446ef 100644
+--- a/hw/usb/hcd-ehci-sysbus.c
++++ b/hw/usb/hcd-ehci-sysbus.c
+@@ -145,6 +145,22 @@ static const TypeInfo ehci_exynos4210_type_info = {
+     .class_init    = ehci_exynos4210_class_init,
+ };
+ 
++static void ehci_aw_h3_class_init(ObjectClass *oc, void *data)
 +{
-+    uint8_t *buffer;
-+    int64_t rom_size = 32 * KiB;
++    SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
++    DeviceClass *dc = DEVICE_CLASS(oc);
 +
-+    int64_t blk_size = blk_getlength(blk);
-+    if (blk_size <= 0) {
-+        error_setg(errp, "%s: failed to get BlockBackend size", __func__);
-+        return;
-+    }
-+
-+    if (rom_size > blk_size) {
-+        rom_size = blk_size;
-+    }
-+
-+    buffer = g_new0(uint8_t, rom_size);
-+    if (blk_pread(blk, 8 * KiB, buffer, rom_size) < 0) {
-+        error_setg(errp, "%s: failed to read BlockBackend data", __func__);
-+        return;
-+    }
-+
-+    rom_add_blob("allwinner-h3.bootrom", buffer, rom_size,
-+                  rom_size, s->memmap[AW_H3_SRAM_A1],
-+                  NULL, NULL, NULL, NULL, false);
-+    g_free(buffer);
++    sec->capsbase = 0x0;
++    sec->opregbase = 0x10;
++    set_bit(DEVICE_CATEGORY_USB, dc->categories);
 +}
 +
- static void allwinner_h3_init(Object *obj)
++static const TypeInfo ehci_aw_h3_type_info = {
++    .name          = TYPE_AW_H3_EHCI,
++    .parent        = TYPE_SYS_BUS_EHCI,
++    .class_init    = ehci_aw_h3_class_init,
++};
++
+ static void ehci_tegra2_class_init(ObjectClass *oc, void *data)
  {
-     AwH3State *s = AW_H3(obj);
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-index 25bf85f8fc..9d4c79885e 100644
---- a/hw/arm/orangepi.c
-+++ b/hw/arm/orangepi.c
-@@ -95,6 +95,11 @@ static void orangepi_init(MachineState *machine)
-     memory_region_add_subregion(get_system_memory(), s->h3->memmap[AW_H3_SDRAM],
-                                 &s->sdram);
- 
-+    /* Load target kernel or start using BootROM */
-+    if (!machine->kernel_filename && blk_is_available(blk)) {
-+        /* Use Boot ROM to copy data from SD card to SRAM */
-+        allwinner_h3_bootrom_setup(s->h3, blk, &error_fatal);
-+    }
-     orangepi_binfo.loader_start = s->h3->memmap[AW_H3_SDRAM];
-     orangepi_binfo.ram_size = machine->ram_size;
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
+     SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
+@@ -267,6 +283,7 @@ static void ehci_sysbus_register_types(void)
+     type_register_static(&ehci_platform_type_info);
+     type_register_static(&ehci_xlnx_type_info);
+     type_register_static(&ehci_exynos4210_type_info);
++    type_register_static(&ehci_aw_h3_type_info);
+     type_register_static(&ehci_tegra2_type_info);
+     type_register_static(&ehci_ppc4xx_type_info);
+     type_register_static(&ehci_fusbh200_type_info);
 -- 
 2.17.1

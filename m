@@ -1,175 +1,221 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp759034lff;
-        Sat, 18 Jan 2020 11:39:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxOpa5CCpsHB2v8EjetuZ0PaG4609ZEE+XHH+/CdWKSe2eXLW4YUxCzLrPw33HoiysJy4BY
-X-Received: by 2002:a17:906:6bd5:: with SMTP id t21mr13897523ejs.110.1579376355705;
-        Sat, 18 Jan 2020 11:39:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579376355; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp953502lff;
+        Sat, 18 Jan 2020 16:28:44 -0800 (PST)
+X-Received: by 2002:a92:cacb:: with SMTP id m11mr5261950ilq.133.1579393723897;
+        Sat, 18 Jan 2020 16:28:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579393723; cv=none;
         d=google.com; s=arc-20160816;
-        b=AiTC+7biRUM7aCAqPxZkydF7n2pMWZcT+gOc1u/8vK+7c9fM/suKZA6OZXZgXQ3oi6
-         Tlz9hGQi62U2j0HXzgnrKz0Q+XQoZMzgd/okprE914Lyd9Z5o7rOaU3m3/aG20jKg6L3
-         s3/9lbv9MUO/qwzrMpQhzvTBdnJ2DlYG1paLsoo4vWnGqIITsMvi/kVtAJc2yhH8G4+S
-         c4hGTklgDHtT1JjKddqvJiAKsowayY7LK8JyYtywy54+H924uWNl6nqfMtnwh5DLStAb
-         TwopOWW3iM+J3Kc+xLjAFqaDu0XCSIsdnfj/niMM6snuMg4T0VvbKn/prEhM6L46gjqY
-         7+jQ==
+        b=GOh1qsjn7SakScggX8tPQqCKFdhUWQpkxgdkvc3XKmNnJL9WE/NW83bINFazoAg6YO
+         QTnY+Cl1OtANn+somL00GW6FVGRCVsfETYH8EZWh7qSKiRf5W+iLUU0/GvLf2x/ertzA
+         +Or5f8VnEZHoT1P2jSiW/UUO6ESLT+cbP3NT978fCJV1T4sAk3s6mf1Mx8QtOX1k0b9l
+         NlqJIPy1kiZItV/M9mPalciXglrpqgvbSJY/GDtCSs2X2YFKao7zA5DAhk3G6r4xtyD/
+         4TxAyUN3uc0E0CCipgMtXA3LB/EIYD8qW3cl260XevjnDiqW0BAch8Clk0EOsLhzCuaN
+         hdLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=4Yt0cLPEtWQSPHouvmP/tZdV+Nm8YIxHarzWfnOxaVo=;
-        b=GfqWEgz4b3gKTSrIOlOSsVx8lgPhSLXV+ye3SuNX9VW0F0oEIPop8E40H+0yTUEcyP
-         xwwld+490MdsDzT4RKPaJn185HPbuFYaZE8rW+QWxI+dDRBaXX+hUg0Ad9HO6u0XCFpX
-         3FKIoVU45+Rz2oL4N/vdvgT4mPBnxKwi1R1lsk18a8DDr4fGSdIQCZVzzf28BUZwULHd
-         Uj4IJHbu4iTN6/7+04PuAPhyjyyoU9NWY9O9G8kWq5+7e7XirUo98vGCtELY1TBAB1x4
-         0b3ionMtL44EGICmjTvMjTz76nI0///hYkmKm+aTvdXH2tQLeS7VkbIrjyZafeKVOAOQ
-         719Q==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=t4byTpjm4sHf6eSOBjyzkUGuebvhsAwzimOh0Kkin2g=;
+        b=KtRB8IJTb6jQlcxSD8Wx0nXMh4jZQI4nuhdruB0v/BYz2g7UqyZessibtwDibWBzaK
+         EUfMtCizmKOmFCpTAk7JRwPCU54JdXzQ8KTq5n0tksGxnrufYEdcQXU4gogFGrwxaWyQ
+         0ujbmfXfastY8AKioJoTSw/4ntDSmJU/katNXgHHyh7Ns6DgAyqDzZI1JUnMGQM4ULeQ
+         C6fiQm2+m1Fwtu5WkNwcVtuAEtdnbVWRaKy7jodQcvsETp8ol4S7ObNzjqmnoKpNd6i9
+         UgGtUMWFo+wnnC7nZD5d4omQHvasMQ9Xz9rX19KV4InZBhYFTl7jPKJS6YFI4rx+cFw0
+         +/HA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="bjl/JYVY";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b23si18864728eju.283.2020.01.18.11.39.15
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M6HURLjJ;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id c70sor20260576ilg.84.2020.01.18.16.28.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Jan 2020 11:39:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 18 Jan 2020 16:28:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="bjl/JYVY";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44274 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1istwA-0001nR-DL
-	for alex.bennee@linaro.org; Sat, 18 Jan 2020 14:39:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50539)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1isthw-00025t-Fu
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 14:24:34 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1istht-0001pj-VG
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 14:24:32 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:27195
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1istht-0001pG-S2
- for qemu-arm@nongnu.org; Sat, 18 Jan 2020 14:24:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579375469;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4Yt0cLPEtWQSPHouvmP/tZdV+Nm8YIxHarzWfnOxaVo=;
- b=bjl/JYVYkfEwtsqjSkUHk+n0NFnF+yBnmRCt9ince3fy6MAtQTcEoxDp/9PKU0Vh93lubw
- pAm6lCWjix8HUm6Amqg4EqpszbXnIxWsSOL5SNtQ+B3fbAtpKgpIJJ5TPHm2qGfQtkywBA
- n5T4RF7mbSdKjpL9l7j46I5xiW2i2xc=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-164-SCURoSBXPum3-hmeNoZgQg-1; Sat, 18 Jan 2020 14:24:26 -0500
-Received: by mail-wr1-f69.google.com with SMTP id h30so12020347wrh.5
- for <qemu-arm@nongnu.org>; Sat, 18 Jan 2020 11:24:25 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M6HURLjJ;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=t4byTpjm4sHf6eSOBjyzkUGuebvhsAwzimOh0Kkin2g=;
+        b=M6HURLjJN5XwqvWYCp1cbT3HEINlfQ3JcVMRbKbx6Hcpbb1zBqbzBNkxEK7bdJ6sqx
+         /j9gLgr1UHKlqivWkDokGvFK7T28Nh6XVMWDGkYBXwiJ6RjzeL/aVvoVtOgmt+C5D3Xu
+         J5bFZJERFUqtQ8/sW3KOiFqp0XW3hpx+GSgJUs6+mJw1QvjrIdeo+SEzAECq1oX+MmQy
+         zCC6cB0HL00GUOalC5Tgniqw90TZGPxeNxuXM5IYGRLz2kr2D0y5WgJ1v9LQWc7rAEGa
+         WOpE9Hr4SIYXaNsI513EHySelZIBVbI91FbCrnW+pHSszUkTufMzeoEHpxk9X84HYBQv
+         THeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=HVQGz5YSjkxifvvhIhHWjfL482L8+9+PoGYqgiTx25Q=;
- b=qS9IP6kaZVFr440iZ5iM3YiAMaKER9040rvEx+0pNJaIGd/Zmf/zKChlOFQ9VdXrH+
- I6LN8olEuz6ckUjKY1aMU+mT3TbkJ+4GWszghxFqj/ypFJ6BCSMULvHKh13Zjy9fUQ/0
- 2osIvQwqW2Er5pzKR4wYElXl4jK8Nvtmip8rwGfIgibSsAi8dVf2B6G1G3n48E10RLIt
- z/A/IU4ksvrJxWfmD9mDPghqq/h/RVlruzDOkIepRq1V1SdlMiVW+M5NrkL1dTqmIILT
- ow+RweSbQhPTpr9txfNJaMHfv1go3/ZRFdBFKTtwd/YFGdGe1/riMOB4lgkNl8UhRSzo
- BXwQ==
-X-Gm-Message-State: APjAAAWbhT7vRL88Uzi88MtPcvrIAZYSVc1wRxogeYTmiFcAxN8XFoIZ
- aK99XDLdbFsvW/k95ZEhOvSlfkiQgFZ/YOaHDQj/msvDCt3aGRMdam7xx8oZxXAuZRbQ6ZTrZND
- qCNr/j/hXBQ7w
-X-Received: by 2002:a05:600c:22c8:: with SMTP id
- 8mr11144081wmg.178.1579375464908; 
- Sat, 18 Jan 2020 11:24:24 -0800 (PST)
-X-Received: by 2002:a05:600c:22c8:: with SMTP id
- 8mr11144060wmg.178.1579375464682; 
- Sat, 18 Jan 2020 11:24:24 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:e0d6:d2cd:810b:30a9?
- ([2001:b07:6468:f312:e0d6:d2cd:810b:30a9])
- by smtp.gmail.com with ESMTPSA id h17sm41015708wrs.18.2020.01.18.11.24.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Jan 2020 11:24:24 -0800 (PST)
-Subject: Re: [PATCH 0/6] Fix more GCC9 -O3 warnings
-To: Markus Armbruster <armbru@redhat.com>,
- "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
-References: <20191217173252.4672-1-philmd@redhat.com>
- <84fthiaahd.wl-Peter.Chubb@data61.csiro.au>
- <87a77q9njk.fsf@dusky.pond.sub.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <97c34bbd-79d2-070e-a35e-4fdf68b2e291@redhat.com>
-Date: Sat, 18 Jan 2020 20:24:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=t4byTpjm4sHf6eSOBjyzkUGuebvhsAwzimOh0Kkin2g=;
+        b=bzRVJEDufpqayH4m1o0BwlPmeT6o843/GwShsvB/Tpq6mdext+steR0Z/Nhp9eCsQ6
+         AItmLtnkeyLW+H5wiwWPVvPi2AgWlRWUn6LXZk7etVzfwhweRJ5tUV8mTHRrIFI+I2Uc
+         VlxKzsytD8jBKRt/jGOX5uY13vFcAwVlOjqErpt/r09bJPVztiB1vrumXX1sML0q5KlI
+         lO/or6c5vYIivsiog7TBpTiHXvFN3xx+ENa+g/U4TxqhvWzQhkt+08l5i7o9wF/cZY5Q
+         ZHw18cod6PuuSB9nJwq5stEEgbQGqUlnOhWEsmuJl8DS4k1sPV57D1P7O63eFXi35pJ7
+         L9UQ==
+X-Gm-Message-State: APjAAAVUkSxdLGyvuYAn9T1n2uKk5Y4S8wgfTqK+DpUkKOoIFdWVw0JD
+	pcaZWRbOaov8Of2lif07WUv7a3y9OMOzxgz5nrQJhXLVQRA=
+X-Google-Smtp-Source: APXvYqy70krxw19VvffgEz5GndoWPxCtESgKRna6UNsYqE+J4vXjZPiuQfz8eaj9Zh8W5msI16tIb6IRjREkpG+ETyc=
+X-Received: by 2002:a92:a103:: with SMTP id v3mr4971804ili.265.1579393723499;
+ Sat, 18 Jan 2020 16:28:43 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <87a77q9njk.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-MC-Unique: SCURoSBXPum3-hmeNoZgQg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20200118191623.32549-1-f4bug@amsat.org> <20200118191623.32549-5-f4bug@amsat.org>
+In-Reply-To: <20200118191623.32549-5-f4bug@amsat.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Sun, 19 Jan 2020 01:28:32 +0100
+Message-ID: <CAPan3WpLXi+23k7JDidmGRefz-rwxwaJmh-rRXO125zh422zpw@mail.gmail.com>
+Subject: Re: [PATCH 4/4] .travis.yml: Allow untrusted code and large files
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Cleber Rosa <crosa@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Eduardo Habkost <ehabkost@redhat.com>, Fam Zheng <fam@euphon.net>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	Kamil Rytarowski <kamil@netbsd.org>
+Content-Type: multipart/alternative; boundary="000000000000da63e3059c734151"
+X-TUID: /kHmd8AZph3J
+
+--000000000000da63e3059c734151
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Hannes Reinecke <hare@suse.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>, Gerd Hoffmann <kraxel@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 99nTD6VH6xxi
 
-On 18/12/19 07:05, Markus Armbruster wrote:
-> "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
-> writes:
->=20
->>>>>>> "Philippe" =3D=3D Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> w=
-rites:
->>
->> Philippe> Fix some trivial warnings when building with -O3.
->>
->> For compatibility with lint and other older checkers, it'd be good to ke=
-ep
->> this as /* FALLTHROUGH */ (which gcc should accept according to its
->> manual).
->=20
-> We have hundreds of /* fall through */ comments already.
->=20
->> Fixing the comments' placement is a different matter, and should be
->> done.  Seems to me that until gcc started warning for this, noone had
->> actually run a checker, and the comments were just for human info.
->>
->> Peter C
->=20
+Hi Philippe,
 
-Queued, thanks.
+For some reason, I can't apply this patch with git am:
 
-Paolo
+Applying: .travis.yml: Allow untrusted code and large files
+error: patch failed: .travis.yml:260
+error: .travis.yml: patch does not apply
+Patch failed at 0001 .travis.yml: Allow untrusted code and large files
+Use 'git am --show-current-patch' to see the failed patch
 
+I didn't change the .travis.yml file. I'm using latest master from commit
+7fb38daf256bd1bcbcb5ea556422283d0d55a1b1
+
+Regards,
+Niek
+
+On Sat, Jan 18, 2020 at 8:16 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
+
+> As Travis CI runs our tests in a disposable environment, we don't
+> care much if the binaries are trusted. The more we test the better.
+>
+> Also, as of this commmit, the smallest available announced [1] is
+> "approx 18GB", plenty of space to run our acceptance tests.
+>
+> Enable the proper environment variables to allow Avocado download
+> from untrusted sources, and to download large files.
+>
+> Note: As of this commit, all our tests "Ran for 17 min 7 sec"
+> before succeeding, see [2].
+>
+> [1]
+> https://docs.travis-ci.com/user/reference/overview/#virtualisation-enviro=
+nment-vs-operating-system
+> [2] https://travis-ci.org/philmd/qemu/jobs/638823612#L3817
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  .travis.yml | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/.travis.yml b/.travis.yml
+> index 638fba4799..b8b9df65a6 100644
+> --- a/.travis.yml
+> +++ b/.travis.yml
+> @@ -260,6 +260,8 @@ matrix:
+>
+>      # Acceptance (Functional) tests
+>      - env:
+> +        - AVOCADO_ALLOW_LARGE_STORAGE=3D"yes"
+> +        - AVOCADO_ALLOW_UNTRUSTED_CODE=3D"sure"
+>          - CONFIG=3D"--python=3D/usr/bin/python3
+> --target-list=3Dx86_64-softmmu,mips-softmmu,mips64el-softmmu,aarch64-soft=
+mmu,arm-softmmu,s390x-softmmu,alpha-softmmu,ppc-softmmu,ppc64-softmmu,m68k-=
+softmmu,sparc-softmmu"
+>          - TEST_CMD=3D"make check-acceptance"
+>        after_failure:
+> --
+> 2.21.1
+>
+>
+
+--=20
+Niek Linnenbank
+
+--000000000000da63e3059c734151
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div>For some reason=
+, I can&#39;t apply this patch with git am:</div><div><br></div><div>Applyi=
+ng: .travis.yml: Allow untrusted code and large files<br>error: patch faile=
+d: .travis.yml:260<br>error: .travis.yml: patch does not apply<br>Patch fai=
+led at 0001 .travis.yml: Allow untrusted code and large files<br>Use &#39;g=
+it am --show-current-patch&#39; to see the failed patch<br></div><div><br><=
+/div><div>I didn&#39;t change the .travis.yml file. I&#39;m using latest ma=
+ster from commit 7fb38daf256bd1bcbcb5ea556422283d0d55a1b1</div><div><br></d=
+iv><div>Regards,</div><div>Niek<br></div><div><br></div><div class=3D"gmail=
+_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sat, Jan 18, 2020 at 8:16 =
+PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug=
+@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">As Travis CI runs our tests in a disposable environment, we don&=
+#39;t<br>
+care much if the binaries are trusted. The more we test the better.<br>
+<br>
+Also, as of this commmit, the smallest available announced [1] is<br>
+&quot;approx 18GB&quot;, plenty of space to run our acceptance tests.<br>
+<br>
+Enable the proper environment variables to allow Avocado download<br>
+from untrusted sources, and to download large files.<br>
+<br>
+Note: As of this commit, all our tests &quot;Ran for 17 min 7 sec&quot;<br>
+before succeeding, see [2].<br>
+<br>
+[1] <a href=3D"https://docs.travis-ci.com/user/reference/overview/#virtuali=
+sation-environment-vs-operating-system" rel=3D"noreferrer" target=3D"_blank=
+">https://docs.travis-ci.com/user/reference/overview/#virtualisation-enviro=
+nment-vs-operating-system</a><br>
+[2] <a href=3D"https://travis-ci.org/philmd/qemu/jobs/638823612#L3817" rel=
+=3D"noreferrer" target=3D"_blank">https://travis-ci.org/philmd/qemu/jobs/63=
+8823612#L3817</a><br>
+<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+---<br>
+=C2=A0.travis.yml | 2 ++<br>
+=C2=A01 file changed, 2 insertions(+)<br>
+<br>
+diff --git a/.travis.yml b/.travis.yml<br>
+index 638fba4799..b8b9df65a6 100644<br>
+--- a/.travis.yml<br>
++++ b/.travis.yml<br>
+@@ -260,6 +260,8 @@ matrix:<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0# Acceptance (Functional) tests<br>
+=C2=A0 =C2=A0 =C2=A0- env:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 - AVOCADO_ALLOW_LARGE_STORAGE=3D&quot;yes&quot=
+;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 - AVOCADO_ALLOW_UNTRUSTED_CODE=3D&quot;sure&qu=
+ot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- CONFIG=3D&quot;--python=3D/usr/bin/pyth=
+on3 --target-list=3Dx86_64-softmmu,mips-softmmu,mips64el-softmmu,aarch64-so=
+ftmmu,arm-softmmu,s390x-softmmu,alpha-softmmu,ppc-softmmu,ppc64-softmmu,m68=
+k-softmmu,sparc-softmmu&quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- TEST_CMD=3D&quot;make check-acceptance&=
+quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0after_failure:<br>
+-- <br>
+2.21.1<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--000000000000da63e3059c734151--

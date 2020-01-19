@@ -1,221 +1,174 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp953502lff;
-        Sat, 18 Jan 2020 16:28:44 -0800 (PST)
-X-Received: by 2002:a92:cacb:: with SMTP id m11mr5261950ilq.133.1579393723897;
-        Sat, 18 Jan 2020 16:28:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579393723; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1374550lff;
+        Sun, 19 Jan 2020 02:49:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwtm34NmfyVRnMgkMetAdnN7TzJ5ZyQyp8dDNCNeGp2x5YqWJ3RkqzzbjNVS6vmgItsIvW7
+X-Received: by 2002:aa7:cd59:: with SMTP id v25mr12976317edw.137.1579430990346;
+        Sun, 19 Jan 2020 02:49:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579430990; cv=none;
         d=google.com; s=arc-20160816;
-        b=GOh1qsjn7SakScggX8tPQqCKFdhUWQpkxgdkvc3XKmNnJL9WE/NW83bINFazoAg6YO
-         QTnY+Cl1OtANn+somL00GW6FVGRCVsfETYH8EZWh7qSKiRf5W+iLUU0/GvLf2x/ertzA
-         +Or5f8VnEZHoT1P2jSiW/UUO6ESLT+cbP3NT978fCJV1T4sAk3s6mf1Mx8QtOX1k0b9l
-         NlqJIPy1kiZItV/M9mPalciXglrpqgvbSJY/GDtCSs2X2YFKao7zA5DAhk3G6r4xtyD/
-         4TxAyUN3uc0E0CCipgMtXA3LB/EIYD8qW3cl260XevjnDiqW0BAch8Clk0EOsLhzCuaN
-         hdLw==
+        b=bvuHU6SmBgJkyX8phiInvsiCQ8JdRlTjHQzQlkBvwWVT2bEOQk4gK8CeU4M6FRK+Yp
+         3sFVtSWrbYPkAEV8MWAQMhGdQclkhd5IaptNqdFLzO5bBzMcjisIXgxoQUJiQnsMCqKi
+         RYlKV4UigBPqNR6xgPS5eZOcD5ew4G+dxruk8skrs2ry0hOcr174nWr7D8/3C7nSL1IM
+         uHtFYVqSukl7Yh91soWr5VVySIi5v8rhTGriRgjuQqp58GT3owqHGLvxWAreTA+20N8U
+         TH6e4BezraOYu3YA0axH8M2qLaCXzd6HLP+pvVhdAViwwl/iUBjZR04bvEkc+bpjHFvi
+         uvLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=t4byTpjm4sHf6eSOBjyzkUGuebvhsAwzimOh0Kkin2g=;
-        b=KtRB8IJTb6jQlcxSD8Wx0nXMh4jZQI4nuhdruB0v/BYz2g7UqyZessibtwDibWBzaK
-         EUfMtCizmKOmFCpTAk7JRwPCU54JdXzQ8KTq5n0tksGxnrufYEdcQXU4gogFGrwxaWyQ
-         0ujbmfXfastY8AKioJoTSw/4ntDSmJU/katNXgHHyh7Ns6DgAyqDzZI1JUnMGQM4ULeQ
-         C6fiQm2+m1Fwtu5WkNwcVtuAEtdnbVWRaKy7jodQcvsETp8ol4S7ObNzjqmnoKpNd6i9
-         UgGtUMWFo+wnnC7nZD5d4omQHvasMQ9Xz9rX19KV4InZBhYFTl7jPKJS6YFI4rx+cFw0
-         +/HA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=uZ4I75RjV0r5tZOlYSAMMyFlzeFc+kY+0C6NuGWHp8M=;
+        b=DPAQB1MiABULbqPZAGfwzVjOgytV0y6xrhmkgUl0cix6C6DY+WtSD+QPMhU4A1+lNc
+         fhFmJ3My4SrrXsxWvzOqmSxxFCvpobot5ZefhZEB+XfDP/rPJk1MxeMR8w4olm2HUE+e
+         ke7OlUaPV+Ou7GUh6t6DZL+XghsJL344htnwrhSadkgS53TuqTXUG1gCywvrv6J3AbV3
+         ytB8PlSy7KY9RlvD2bOe9XbMQRXM8qUsIXRvcoLiqtsm0p618joVQl6CggT6+pUuj6rQ
+         RNijyZm3gp6xCLpJDkhqKcboKrmouTwtxZg2TmZk3guiqyfzwGhpgCOJ2x/Cveu6GkId
+         7Aww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M6HURLjJ;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id c70sor20260576ilg.84.2020.01.18.16.28.43
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j4si19970232edy.247.2020.01.19.02.49.50
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 18 Jan 2020 16:28:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 19 Jan 2020 02:49:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M6HURLjJ;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=t4byTpjm4sHf6eSOBjyzkUGuebvhsAwzimOh0Kkin2g=;
-        b=M6HURLjJN5XwqvWYCp1cbT3HEINlfQ3JcVMRbKbx6Hcpbb1zBqbzBNkxEK7bdJ6sqx
-         /j9gLgr1UHKlqivWkDokGvFK7T28Nh6XVMWDGkYBXwiJ6RjzeL/aVvoVtOgmt+C5D3Xu
-         J5bFZJERFUqtQ8/sW3KOiFqp0XW3hpx+GSgJUs6+mJw1QvjrIdeo+SEzAECq1oX+MmQy
-         zCC6cB0HL00GUOalC5Tgniqw90TZGPxeNxuXM5IYGRLz2kr2D0y5WgJ1v9LQWc7rAEGa
-         WOpE9Hr4SIYXaNsI513EHySelZIBVbI91FbCrnW+pHSszUkTufMzeoEHpxk9X84HYBQv
-         THeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=t4byTpjm4sHf6eSOBjyzkUGuebvhsAwzimOh0Kkin2g=;
-        b=bzRVJEDufpqayH4m1o0BwlPmeT6o843/GwShsvB/Tpq6mdext+steR0Z/Nhp9eCsQ6
-         AItmLtnkeyLW+H5wiwWPVvPi2AgWlRWUn6LXZk7etVzfwhweRJ5tUV8mTHRrIFI+I2Uc
-         VlxKzsytD8jBKRt/jGOX5uY13vFcAwVlOjqErpt/r09bJPVztiB1vrumXX1sML0q5KlI
-         lO/or6c5vYIivsiog7TBpTiHXvFN3xx+ENa+g/U4TxqhvWzQhkt+08l5i7o9wF/cZY5Q
-         ZHw18cod6PuuSB9nJwq5stEEgbQGqUlnOhWEsmuJl8DS4k1sPV57D1P7O63eFXi35pJ7
-         L9UQ==
-X-Gm-Message-State: APjAAAVUkSxdLGyvuYAn9T1n2uKk5Y4S8wgfTqK+DpUkKOoIFdWVw0JD
-	pcaZWRbOaov8Of2lif07WUv7a3y9OMOzxgz5nrQJhXLVQRA=
-X-Google-Smtp-Source: APXvYqy70krxw19VvffgEz5GndoWPxCtESgKRna6UNsYqE+J4vXjZPiuQfz8eaj9Zh8W5msI16tIb6IRjREkpG+ETyc=
-X-Received: by 2002:a92:a103:: with SMTP id v3mr4971804ili.265.1579393723499;
- Sat, 18 Jan 2020 16:28:43 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49132 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1it89N-0000i2-6w
+	for alex.bennee@linaro.org; Sun, 19 Jan 2020 05:49:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51727)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <zhukeqian1@huawei.com>) id 1it89B-0000hv-VE
+ for qemu-arm@nongnu.org; Sun, 19 Jan 2020 05:49:39 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <zhukeqian1@huawei.com>) id 1it899-0004X2-VK
+ for qemu-arm@nongnu.org; Sun, 19 Jan 2020 05:49:37 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2687 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
+ id 1it899-0004JR-Kq; Sun, 19 Jan 2020 05:49:35 -0500
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 02CC9994C8FC5C0F5679;
+ Sun, 19 Jan 2020 18:49:24 +0800 (CST)
+Received: from [127.0.0.1] (10.173.221.230) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0;
+ Sun, 19 Jan 2020 18:49:17 +0800
+Subject: Re: [PATCH v2] hw/arm: Adjust some coding styles about memory hotplug
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200117063822.57918-1-zhukeqian1@huawei.com>
+ <CAFEAcA_Cji9poXhv1=cje3r2uwz+X_iYo8TmTxP_wP1CRV-b9g@mail.gmail.com>
+From: zhukeqian <zhukeqian1@huawei.com>
+Message-ID: <d7586e9c-2bad-c679-3c6a-66e07a3c6d2d@huawei.com>
+Date: Sun, 19 Jan 2020 18:49:16 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-References: <20200118191623.32549-1-f4bug@amsat.org> <20200118191623.32549-5-f4bug@amsat.org>
-In-Reply-To: <20200118191623.32549-5-f4bug@amsat.org>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sun, 19 Jan 2020 01:28:32 +0100
-Message-ID: <CAPan3WpLXi+23k7JDidmGRefz-rwxwaJmh-rRXO125zh422zpw@mail.gmail.com>
-Subject: Re: [PATCH 4/4] .travis.yml: Allow untrusted code and large files
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Cleber Rosa <crosa@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Eduardo Habkost <ehabkost@redhat.com>, Fam Zheng <fam@euphon.net>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Kamil Rytarowski <kamil@netbsd.org>
-Content-Type: multipart/alternative; boundary="000000000000da63e3059c734151"
-X-TUID: /kHmd8AZph3J
+In-Reply-To: <CAFEAcA_Cji9poXhv1=cje3r2uwz+X_iYo8TmTxP_wP1CRV-b9g@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.221.230]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.190
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm <qemu-arm@nongnu.org>, wanghaibin.wang@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: z/QgnnZeOxGv
 
---000000000000da63e3059c734151
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hi Philippe,
+On 2020/1/17 19:07, Peter Maydell wrote:
+> On Fri, 17 Jan 2020 at 06:41, Keqian Zhu <zhukeqian1@huawei.com> wrote:
+>>
+>> From: zhukeqian <zhukeqian1@huawei.com>
+>>
+>> There is extra indent in ACPI GED plug cb. And we can use
+>> existing helper function to trigger hotplug handler plug.
+>>
+>> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+>> ---
+>>
+>> v1->v2:
+>>  - Add Igor's R-b
+>>
+>> Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+>> Cc: Igor Mammedov <imammedo@redhat.com>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  hw/acpi/generic_event_device.c | 2 +-
+>>  hw/arm/virt.c                  | 6 +++---
+>>  2 files changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+>> index 9cee90cc70..55eb29d80a 100644
+>> --- a/hw/acpi/generic_event_device.c
+>> +++ b/hw/acpi/generic_event_device.c
+>> @@ -175,7 +175,7 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+>>      AcpiGedState *s = ACPI_GED(hotplug_dev);
+>>
+>>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>> -            acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
+>> +        acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
+>>      } else {
+>>          error_setg(errp, "virt: device plug request for unsupported device"
+>>                     " type: %s", object_get_typename(OBJECT(dev)));
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 39ab5f47e0..656b0081c2 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -1934,7 +1934,6 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+>>  static void virt_memory_plug(HotplugHandler *hotplug_dev,
+>>                               DeviceState *dev, Error **errp)
+>>  {
+>> -    HotplugHandlerClass *hhc;
+>>      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+>>      Error *local_err = NULL;
+>>
+>> @@ -1943,8 +1942,9 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
+>>          goto out;
+>>      }
+>>
+>> -    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
+>> -    hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &error_abort);
+>> +    hotplug_handler_plug(HOTPLUG_HANDLER(vms->acpi_dev),
+>> +                         dev, &error_abort);
+>> +
+>>  out:
+>>      error_propagate(errp, local_err);
+>>  }
+> 
+> These two changes are unrelated (one is just a whitespace
+> fixup, and it's in an entirely different file to the other
+> one, which is making an actual code change). I think they
+> should not be in the same patch.
+> 
+> thanks
+> -- PMM
+> 
+Ok, I will reform this patch.
 
-For some reason, I can't apply this patch with git am:
+Thanks,
+Keqian
+> .
+> 
 
-Applying: .travis.yml: Allow untrusted code and large files
-error: patch failed: .travis.yml:260
-error: .travis.yml: patch does not apply
-Patch failed at 0001 .travis.yml: Allow untrusted code and large files
-Use 'git am --show-current-patch' to see the failed patch
-
-I didn't change the .travis.yml file. I'm using latest master from commit
-7fb38daf256bd1bcbcb5ea556422283d0d55a1b1
-
-Regards,
-Niek
-
-On Sat, Jan 18, 2020 at 8:16 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g>
-wrote:
-
-> As Travis CI runs our tests in a disposable environment, we don't
-> care much if the binaries are trusted. The more we test the better.
->
-> Also, as of this commmit, the smallest available announced [1] is
-> "approx 18GB", plenty of space to run our acceptance tests.
->
-> Enable the proper environment variables to allow Avocado download
-> from untrusted sources, and to download large files.
->
-> Note: As of this commit, all our tests "Ran for 17 min 7 sec"
-> before succeeding, see [2].
->
-> [1]
-> https://docs.travis-ci.com/user/reference/overview/#virtualisation-enviro=
-nment-vs-operating-system
-> [2] https://travis-ci.org/philmd/qemu/jobs/638823612#L3817
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  .travis.yml | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/.travis.yml b/.travis.yml
-> index 638fba4799..b8b9df65a6 100644
-> --- a/.travis.yml
-> +++ b/.travis.yml
-> @@ -260,6 +260,8 @@ matrix:
->
->      # Acceptance (Functional) tests
->      - env:
-> +        - AVOCADO_ALLOW_LARGE_STORAGE=3D"yes"
-> +        - AVOCADO_ALLOW_UNTRUSTED_CODE=3D"sure"
->          - CONFIG=3D"--python=3D/usr/bin/python3
-> --target-list=3Dx86_64-softmmu,mips-softmmu,mips64el-softmmu,aarch64-soft=
-mmu,arm-softmmu,s390x-softmmu,alpha-softmmu,ppc-softmmu,ppc64-softmmu,m68k-=
-softmmu,sparc-softmmu"
->          - TEST_CMD=3D"make check-acceptance"
->        after_failure:
-> --
-> 2.21.1
->
->
-
---=20
-Niek Linnenbank
-
---000000000000da63e3059c734151
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div>For some reason=
-, I can&#39;t apply this patch with git am:</div><div><br></div><div>Applyi=
-ng: .travis.yml: Allow untrusted code and large files<br>error: patch faile=
-d: .travis.yml:260<br>error: .travis.yml: patch does not apply<br>Patch fai=
-led at 0001 .travis.yml: Allow untrusted code and large files<br>Use &#39;g=
-it am --show-current-patch&#39; to see the failed patch<br></div><div><br><=
-/div><div>I didn&#39;t change the .travis.yml file. I&#39;m using latest ma=
-ster from commit 7fb38daf256bd1bcbcb5ea556422283d0d55a1b1</div><div><br></d=
-iv><div>Regards,</div><div>Niek<br></div><div><br></div><div class=3D"gmail=
-_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sat, Jan 18, 2020 at 8:16 =
-PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug=
-@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">As Travis CI runs our tests in a disposable environment, we don&=
-#39;t<br>
-care much if the binaries are trusted. The more we test the better.<br>
-<br>
-Also, as of this commmit, the smallest available announced [1] is<br>
-&quot;approx 18GB&quot;, plenty of space to run our acceptance tests.<br>
-<br>
-Enable the proper environment variables to allow Avocado download<br>
-from untrusted sources, and to download large files.<br>
-<br>
-Note: As of this commit, all our tests &quot;Ran for 17 min 7 sec&quot;<br>
-before succeeding, see [2].<br>
-<br>
-[1] <a href=3D"https://docs.travis-ci.com/user/reference/overview/#virtuali=
-sation-environment-vs-operating-system" rel=3D"noreferrer" target=3D"_blank=
-">https://docs.travis-ci.com/user/reference/overview/#virtualisation-enviro=
-nment-vs-operating-system</a><br>
-[2] <a href=3D"https://travis-ci.org/philmd/qemu/jobs/638823612#L3817" rel=
-=3D"noreferrer" target=3D"_blank">https://travis-ci.org/philmd/qemu/jobs/63=
-8823612#L3817</a><br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
----<br>
-=C2=A0.travis.yml | 2 ++<br>
-=C2=A01 file changed, 2 insertions(+)<br>
-<br>
-diff --git a/.travis.yml b/.travis.yml<br>
-index 638fba4799..b8b9df65a6 100644<br>
---- a/.travis.yml<br>
-+++ b/.travis.yml<br>
-@@ -260,6 +260,8 @@ matrix:<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0# Acceptance (Functional) tests<br>
-=C2=A0 =C2=A0 =C2=A0- env:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 - AVOCADO_ALLOW_LARGE_STORAGE=3D&quot;yes&quot=
-;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 - AVOCADO_ALLOW_UNTRUSTED_CODE=3D&quot;sure&qu=
-ot;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- CONFIG=3D&quot;--python=3D/usr/bin/pyth=
-on3 --target-list=3Dx86_64-softmmu,mips-softmmu,mips64el-softmmu,aarch64-so=
-ftmmu,arm-softmmu,s390x-softmmu,alpha-softmmu,ppc-softmmu,ppc64-softmmu,m68=
-k-softmmu,sparc-softmmu&quot;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- TEST_CMD=3D&quot;make check-acceptance&=
-quot;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0after_failure:<br>
--- <br>
-2.21.1<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---000000000000da63e3059c734151--

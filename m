@@ -1,71 +1,70 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp970016lff;
-        Sat, 18 Jan 2020 16:51:31 -0800 (PST)
-X-Received: by 2002:a7b:c5cd:: with SMTP id n13mr11837221wmk.172.1579395091146;
-        Sat, 18 Jan 2020 16:51:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579395091; cv=none;
+Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp970037lff;
+        Sat, 18 Jan 2020 16:51:32 -0800 (PST)
+X-Received: by 2002:a1c:66d6:: with SMTP id a205mr12202569wmc.171.1579395092248;
+        Sat, 18 Jan 2020 16:51:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579395092; cv=none;
         d=google.com; s=arc-20160816;
-        b=wlc0hPGTSxuq5byP34L/m8PGLgQGpmtoErdKq0NWbQJ01Os78R7kYxoyYUziXkoOJz
-         fPiu3u5mqdjTmpPytUuN750f2qO0h3L+R++MqzCAaYHnzH3rPwiLDLeo0HU+ZgA6doDn
-         0P+/kxNJGAjPSTSW0x2lwXhU9YVd7muS0AEfn2jgFnw0EXPoA0qiXWbuX0dmhRSL67+f
-         s0ZOh01DIAQ1ImxlD1jact0sZnnUFrUs1uS0jNsc3u/KetFN3vFTH8xI2vaVkQuz5jcp
-         57LmJIEaQJ/a1DnX6PEjrfV4pa9Y0w+Ic3usvjcGUJbavTiY5pHQoSdWp3M8k2p656oK
-         Vf0w==
+        b=TDmn/qwvBL23rTuS6lq8RV/9kgwpPmKKi2PRYFUZCqws4YMuFhyKeiS9FXqsYpH76V
+         8h90QcKscr5ngNcCLoxUEVFUDe+BSks1LMxqxdbsQcnuwWztgfdHoyES6SAB2d5M53dN
+         qe/Yg35/P10HlptjggCHAIRe20ZQTLxy4kl+oHD/v8Akm2pCLsNbpuOLlh5qkEviyZyM
+         C7PKNmnGY2BWxeAfNNbsXdKPe22EcHSHXKiBBXjPBhHboF/xP8v2Mf3xJedBzrA79edh
+         geZKhoFAjv7GYKMsUTFbWvXg59TI1LXbAEZFbkThWFUzp5JhG44TgfLCP4SakRh7RwZ0
+         vLJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ib1KKasC+2A1O5V3Yud3LwKZ+/ygnXDjriPxFl86R7M=;
-        b=PfLOOxCFKesO+W9Lt6y83zu8txX8YyJyBXB767RXr7SRj8NRM27zHI507j+liOO1JN
-         11xOHnAICkb89PNOhlrVkAbu4W0ONA59oY60hElcSmMPFkMr7zFFpV49dToE5WIgdmQ7
-         jcvYnnBxoZ+4fSW/uXJnMgfSSW+rwhq24i6PzEl7qfsqZr1w24ivhK3sismaVfWNMvPA
-         +pnCnwU5pRfEWMMUEwuXwAWeMA2T3kslKAUJKHfXwHWDpPFLdBGm9py+T1JtGoJpd/Yy
-         i0a1B1YgQEYuOkaRDkIZT0C7AE09QBSzNAsuMWcKmIWisj2vIAjQYAsFPlDvqOXD2Pwc
-         c26g==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=pdl/uNvO7egscf35xl4ajBsKhu2xXqtaLGKPbzOUV5s=;
+        b=pb7j42GVSJLBui47io4o9RA5CRwqUq300dIER5Xcm6mJ1BarnGyeJ101cY2ndpDfkQ
+         y7A+Jg89zPmnH7MUUUiiEuRlLwCS5T6pTB8eJvCgxtPAKFgkiTWaAixwX3PMrTLpGbf8
+         rohFh80b/fGqmkzMAGuj9QtSKaZHN+wkN4Oe5nSasZ5/y+E+0VU/6Rm+vhUfNiFRzDqX
+         2PHoH2m1J7rK6p13um11x6jY9XGOObLqw6go/dlqEuuiX07hd7KcuHEQHtiAmTWOHLmJ
+         Nqd34lmxGquq69hHG2IMH5TF4bmGoP847rpDFeaxCtxhcsa9iWBdSbXMGNBn53oe3SZz
+         6Msw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=u5UPEGme;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ele+nnXq;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x14sor13293076wrr.45.2020.01.18.16.51.31
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id g7sor6326769wmk.28.2020.01.18.16.51.32
         (Google Transport Security);
-        Sat, 18 Jan 2020 16:51:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sat, 18 Jan 2020 16:51:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=u5UPEGme;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ele+nnXq;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=ib1KKasC+2A1O5V3Yud3LwKZ+/ygnXDjriPxFl86R7M=;
-        b=u5UPEGme0zw0UDut+wh4wyc+7/qyeCWffRTBZG4iVgKEJVoXiGBsZaqxAoY2cpQe8I
-         s9/nZLrYfI4AUSHXZngzsxs8+TjzgKdVxuveeXLqMsTmfP5mwifyLgqaBCD6PVOjeCGG
-         XuoKYhdAVi8AEti8mRfvCxilbpgOirILXUbwKi2f/02zir5Jtsl0v3kP5xtE4rouM3Lr
-         EDmgjxAc484QsrQOT/Rc/EYOuYtZdZYWS3e4zIi5rihDU1b/9xjluCEdS3OXJOLuhIIJ
-         J8ngc3+ok56V48dvv7OHWm/u3AerN2ogET59eAgGsOnwUD3OALpFvb7VBXTfyVFz+a6s
-         GwZQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=pdl/uNvO7egscf35xl4ajBsKhu2xXqtaLGKPbzOUV5s=;
+        b=ele+nnXqaJxFJrrSkR935m3AiSU46CSK59cWO8V9qHmSJpWkw5V/xz798SDEQkpfnj
+         7xg5b2ceBUQ7flMvrsmwB+9Tgv2qA+0tzDJ5pRRr4pkiyipASPaZEIdCjah1I6dFuYMd
+         jpq8YAnFjGYPe9ex1ENI9m1gvZNGyCjYUnqbhI8jJdwhLlfXrk6kaMZuEKdSisTlENMb
+         T5Ig0WmW7wiKDTp8AWX1lRzewMGa7+6SUbM/hvogrKMhGOktaJ/wMzpBz9FfWTRcwfE1
+         UH5juPvrzlflUxFL7NSlmH2FQXLnz9/bhsDhKyzx71JoeF4Dw6fSVWrJ/4qeaWpWOa1N
+         k7bA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=ib1KKasC+2A1O5V3Yud3LwKZ+/ygnXDjriPxFl86R7M=;
-        b=Qil+wZ7pCGGgBl0uXyCcLwUcKkBHSOZh062Qc/lvsXa6d6z7irkjPDOGJ4Vvf5Py73
-         Mm5l/Hp6vUYyGdO211iyCNe0Rr15yg1CVFUeRyAJ83Z9Ss7T6PWSSwZXMUIQUyWZXMBk
-         phHE4trh5M+o190gWCAqUwCsjJvd1isELTojoM+m1br4aMavlIwqt0XjX2f90r1GO3DX
-         n7MIw39p5u4lqyFNECghgXuRcFCrXol1qsnMa21XPTE6ErKRXnb7RmMjz+SR2hrfFUaJ
-         JIUmx+b4FBaTN52CI/0DqFMlaolhQboUuHpv7pSJfKkPrBWAlIFmPjc+hrq61Rzv0nak
-         GhZA==
-X-Gm-Message-State: APjAAAUAqOQlMqQIYKF+FYct72soSGr1KY65/erj4Uvd9pcsHmV1xQak
-	bJz3l4gGc9VPbzGye4AOfqM=
-X-Google-Smtp-Source: APXvYqzJYGgFbIhgR8T+zgf//DXHTCGxtsmNDIUtz7Yg9Oqax/0tWBEwLof0ZvmeyrWDK0XMi2V5+A==
-X-Received: by 2002:a5d:540f:: with SMTP id g15mr10420325wrv.86.1579395090704;
-        Sat, 18 Jan 2020 16:51:30 -0800 (PST)
+         :references;
+        bh=pdl/uNvO7egscf35xl4ajBsKhu2xXqtaLGKPbzOUV5s=;
+        b=TfMsDX3IT1u9UUYS/Pq97G6cEfDRmMWD47fBA4yJija0P+vhFMkcnlYpwviLj3kffV
+         1VIlctr9V5bS3h1/vL7/RDPFp0rXCMyhHnogzLvwN42Kh8HOhTOnoNdFYI5H7RMY0YVW
+         JHH2+IqEOGS9zDO9Ij1ogqZZ3F56vkI/tAK5l7fLpZhoW1Z8gKu23bke+NMb8wNWdrgm
+         XcFcIZ4lzs5PO0W9QVGrIQWEFc4TjkrhNThO3y37LGXZgqLrJ+QkY/7zghiyA82lCHmC
+         a/01pO0cl7odwxL6I6h7m7jI4pHDz0uUsBsMLJqIqkzOYfOXCSmNp4+3VTEop/EZ5Thu
+         PMRw==
+X-Gm-Message-State: APjAAAXQU5eiRUOvmVr4de5j5UCZuRyt0+BXg+FDQj4pBXyHyLRVM41v
+	H9AwNZ4s9b4ZmbisOIZ97sU=
+X-Google-Smtp-Source: APXvYqwcBpMHesEn4WkoTkDJ3x68ULqghU6FE2DW6AQndWj5JJqFISrx25N7hr6KBNYTEvT7Td+XgA==
+X-Received: by 2002:a7b:c392:: with SMTP id s18mr11810942wmj.169.1579395091715;
+        Sat, 18 Jan 2020 16:51:31 -0800 (PST)
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
-        by smtp.gmail.com with ESMTPSA id h2sm41763568wrv.66.2020.01.18.16.51.29
+        by smtp.gmail.com with ESMTPSA id h2sm41763568wrv.66.2020.01.18.16.51.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Jan 2020 16:51:29 -0800 (PST)
+        Sat, 18 Jan 2020 16:51:31 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -75,174 +74,245 @@ Cc: qemu-arm@nongnu.org,
 	jasowang@redhat.com,
 	alex.bennee@linaro.org,
 	imammedo@redhat.com,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Niek Linnenbank <nieklinnenbank@gmail.com>
-Subject: [PATCH v4 19/20] tests/boot_linux_console: Test booting NetBSD via U-Boot on OrangePi PC
-Date: Sun, 19 Jan 2020 01:51:01 +0100
-Message-Id: <20200119005102.3847-20-nieklinnenbank@gmail.com>
+Subject: [PATCH v4 20/20] docs: add Orange Pi PC document
+Date: Sun, 19 Jan 2020 01:51:02 +0100
+Message-Id: <20200119005102.3847-21-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200119005102.3847-1-nieklinnenbank@gmail.com>
 References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: jVg2SXp9AEIm
+X-TUID: mbsVQPx3xr+F
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+The Xunlong Orange Pi PC machine is a functional ARM machine
+based on the Allwinner H3 System-on-Chip. It supports mainline
+Linux, U-Boot, NetBSD and is covered by acceptance tests.
 
-This test boots U-Boot then NetBSD (stored on a SD card) on
-a OrangePi PC board.
+This commit adds a documentation text file with a description
+of the machine and instructions for the user.
 
-As it requires ~1.3GB of storage, it is disabled by default.
-
-U-Boot is built by the Debian project [1], and the SD card image
-is provided by the NetBSD organization [2].
-
-Once the compressed SD card image is downloaded (304MB) and
-extracted, this test is fast:
-
-  $ AVOCADO_ALLOW_LARGE_STORAGE=yes \
-    avocado --show=app,console run -t machine:orangepi-pc \
-      tests/acceptance/boot_linux_console.py
-  console: U-Boot SPL 2020.01+dfsg-1 (Jan 08 2020 - 08:19:44 +0000)
-  console: DRAM: 1024 MiB
-  console: U-Boot 2020.01+dfsg-1 (Jan 08 2020 - 08:19:44 +0000) Allwinner Technology
-  console: CPU:   Allwinner H3 (SUN8I 0000)
-  console: scanning bus usb@1c1b000 for devices... 1 USB Device(s) found
-  console: scanning bus usb@1c1d000 for devices... 1 USB Device(s) found
-  console: scanning usb for storage devices... 0 Storage Device(s) found
-  console: Hit any key to stop autoboot:  0
-  console: => setenv bootargs root=ld0a
-  console: => setenv kernel netbsd-GENERIC.ub
-  console: => setenv fdtfile dtb/sun8i-h3-orangepi-pc.dtb
-  console: => boot
-  console: ## Booting kernel from Legacy Image at 42000000 ...
-  console: Image Name:   NetBSD/earmv7hf 9.0_RC1
-  console: Image Type:   ARM Linux Kernel Image (no loading done) (uncompressed)
-  console: XIP Kernel Image (no loading done)
-  console: Loading Device Tree to 49ff6000, end 49fffe01 ... OK
-  console: Starting kernel ...
-  console: [   1.0000000] NetBSD/evbarm (fdt) booting ...
-  console: [   1.0000000] NetBSD 9.0_RC1 (GENERIC) #0: Wed Nov 27 16:14:52 UTC 2019
-  console: [   1.0000000] simplebus0 at armfdt0: Xunlong Orange Pi PC
-  console: [   1.0000000] cpu0 at cpus0: Cortex-A7 r0p5 (Cortex V7A core)
-  console: [   1.0000000] cpu0: DC enabled IC enabled WB enabled LABT branch prediction enabled
-  console: [   1.0000000] cpu0: 32KB/64B 2-way L1 VIPT Instruction cache
-  console: [   1.0000000] cpu0: 32KB/64B 2-way write-back-locking-C L1 PIPT Data cache
-  console: [   1.0000000] cpu0: 2304KB/64B 16-way write-through L2 PIPT Unified cache
-  console: [   1.0000000] vfp0 at cpu0: NEON MPE (VFP 3.0+), rounding, NaN propagation, denormals
-  ...
-  console: [   2.8171937] sdmmc0: SD card status: 4-bit, C0
-  console: [   2.8234040] ld0 at sdmmc0: <0xaa:0x5859:QEMU!:0x01:0xdeadbeef:0x062>
-  console: [   2.8743967] ld0: 1290 MB, 655 cyl, 64 head, 63 sec, 512 bytes/sect x 2642944 sectors
-  console: [   3.1588850] ld0: 4-bit width, High-Speed/SDR25, 50.000 MHz
-  console: [   4.9942260] WARNING: 4 errors while detecting hardware; check system log.
-  console: [   5.0142912] boot device: ld0
-  console: [   5.0551260] root on ld0a dumps on ld0b
-  console: [   5.2175484] root file system type: ffs
-  console: [   5.2858559] kern.module.path=/stand/evbarm/9.0/modules
-  console: Tue Jan 18 18:15:15 UTC 2050
-  console: Starting root file system check:
-  PASS (35.96 s)
-  RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
-  JOB TIME   : 36.09 s
-
-Note, this test only took ~65 seconds to run on Travis-CI, see: [3].
-
-This test is based on a description from Niek Linnenbank from [4].
-
-[1] https://wiki.debian.org/InstallingDebianOn/Allwinner#Creating_a_bootable_SD_Card_with_u-boot
-[2] https://wiki.netbsd.org/ports/evbarm/allwinner/
-[3] https://travis-ci.org/philmd/qemu/jobs/638823612#L3778
-[4] https://www.mail-archive.com/qemu-devel@nongnu.org/msg669347.html
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 ---
- tests/acceptance/boot_linux_console.py | 63 ++++++++++++++++++++++++++
- 1 file changed, 63 insertions(+)
+ docs/orangepi.rst | 199 ++++++++++++++++++++++++++++++++++++++++++++++
+ MAINTAINERS       |   1 +
+ 2 files changed, 200 insertions(+)
+ create mode 100644 docs/orangepi.rst
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 399d5062db..b883d7778f 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -16,6 +16,7 @@ import shutil
- from avocado import skipUnless
- from avocado_qemu import Test
- from avocado_qemu import exec_command_and_wait_for_pattern
-+from avocado_qemu import interrupt_interactive_console_until_pattern
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import process
- from avocado.utils import archive
-@@ -632,6 +633,68 @@ class BootLinuxConsole(Test):
-                                       'to <orangepipc>')
-         self.wait_for_console_pattern('Starting Load Kernel Modules...')
+diff --git a/docs/orangepi.rst b/docs/orangepi.rst
+new file mode 100644
+index 0000000000..dbca9abe80
+--- /dev/null
++++ b/docs/orangepi.rst
+@@ -0,0 +1,199 @@
++=========================
++Orange Pi PC Machine Type
++=========================
++
++The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
++based embedded computer with mainline support in both U-Boot
++and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
++1GiB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
++various other I/O.
++
++Supported devices
++-----------------
++
++The Orange Pi PC machine supports the following devices:
++
++ * SMP (Quad Core Cortex A7)
++ * Generic Interrupt Controller configuration
++ * SRAM mappings
++ * SDRAM controller
++ * Real Time Clock
++ * Timer device (re-used from Allwinner A10)
++ * UART
++ * SD/MMC storage controller
++ * EMAC ethernet
++ * USB 2.0 interfaces
++ * Clock Control Unit
++ * System Control module
++ * Security Identifier device
++
++Limitations
++-----------
++
++Currently, Orange Pi PC does *not* support the following features:
++
++- Graphical output via HDMI, GPU and/or the Display Engine
++- Audio output
++- Hardware Watchdog
++
++Also see the 'unimplemented' array in the Allwinner H3 SoC module
++for a complete list of unimplemented I/O devices:
++  ./hw/arm/allwinner-h3.c
++
++Using the Orange Pi PC machine type
++-----------------------------------
++
++Boot options
++~~~~~~~~~~~~
++
++The Orange Pi PC machine can start using the standard -kernel functionality
++for loading a Linux kernel or ELF executable. Additionally, the Orange Pi PC
++machine can also emulate the BootROM which is present on an actual Allwinner H3
++based SoC, which loads the bootloader from a SD card, specified via the -sd argument
++to qemu-system-arm.
++
++Running mainline Linux
++~~~~~~~~~~~~~~~~~~~~~~
++
++Mainline Linux kernels from 4.19 up to latest master are known to work.
++To build a Linux mainline kernel that can be booted by the Orange Pi PC machine,
++simply configure the kernel using the sunxi_defconfig configuration:
++
++  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make mrproper
++  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make sunxi_defconfig
++
++To be able to use USB storage, you need to manually enable the corresponding
++configuration item. Start the kconfig configuration tool:
++
++  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make menuconfig
++
++Navigate to the following item, enable it and save your configuration:
++
++  Device Drivers > USB support > USB Mass Storage support
++
++Build the Linux kernel with:
++
++  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make
++
++To boot the newly build linux kernel in QEMU with the Orange Pi PC machine, use:
++
++  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
++      -kernel /path/to/linux/arch/arm/boot/zImage \
++      -append 'console=ttyS0,115200' \
++      -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb
++
++Orange Pi PC images
++~~~~~~~~~~~~~~~~~~~
++
++Note that the mainline kernel does not have a root filesystem. You may provide it
++with an official Orange Pi PC image from the official website:
++
++  http://www.orangepi.org/downloadresources/
++
++Another possibility is to run an Armbian image for Orange Pi PC which
++can be downloaded from:
++
++   https://www.armbian.com/orange-pi-pc/
++
++Alternatively, you can also choose to build you own image with buildroot
++using the orangepi_pc_defconfig. Also see https://buildroot.org for more information.
++
++You can choose to attach the selected image either as an SD card or as USB mass storage.
++For example, to boot using the Orange Pi PC Debian image on SD card, simply add the -sd
++argument and provide the proper root= kernel parameter:
++
++  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
++      -kernel /path/to/linux/arch/arm/boot/zImage \
++      -append 'console=ttyS0,115200 root=/dev/mmcblk0p2' \
++      -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb \
++      -sd OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img
++
++To attach the image as an USB mass storage device to the machine,
++simply append to the command:
++
++  -drive if=none,id=stick,file=myimage.img \
++  -device usb-storage,bus=usb-bus.0,drive=stick
++
++Instead of providing a custom Linux kernel via the -kernel command you may also
++choose to let the Orange Pi PC machine load the bootloader from SD card, just like
++a real board would do using the BootROM. Simply pass the selected image via the -sd
++argument and remove the -kernel, -append, -dbt and -initrd arguments:
++
++  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
++       -sd Armbian_19.11.3_Orangepipc_buster_current_5.3.9.img
++
++Note that both the official Orange Pi PC images and Armbian images start
++a lot of userland programs via systemd. Depending on the host hardware and OS,
++they may be slow to emulate, especially due to emulating the 4 cores.
++To help reduce the performance slow down due to emulating the 4 cores, you can
++give the following kernel parameters (or via -append):
++
++  => setenv extraargs 'systemd.default_timeout_start_sec=9000 loglevel=7 nosmp console=ttyS0,115200'
++
++Running U-Boot
++~~~~~~~~~~~~~~
++
++U-Boot mainline can be build and configured using the orangepi_pc_defconfig
++using similar commands as describe above for Linux. Note that it is recommended
++for development/testing to select the following configuration setting in U-Boot:
++
++  Device Tree Control > Provider for DTB for DT Control > Embedded DTB
++
++To start U-Boot using the Orange Pi PC machine, provide the
++u-boot binary to the -kernel argument:
++
++  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
++      -kernel /path/to/uboot/u-boot -sd disk.img
++
++Use the following U-boot commands to load and boot a Linux kernel from SD card:
++
++  -> setenv bootargs console=ttyS0,115200
++  -> ext2load mmc 0 0x42000000 zImage
++  -> ext2load mmc 0 0x43000000 sun8i-h3-orangepi-pc.dtb
++  -> bootz 0x42000000 - 0x43000000
++
++Running NetBSD
++~~~~~~~~~~~~~~
++
++The NetBSD operating system also includes support for Allwinner H3 based boards,
++including the Orange Pi PC. NetBSD 9.0 is known to work best for the Orange Pi PC
++board and provides a fully working system with serial console, networking and storage.
++
++Currently NetBSD 9.0 is in testing, but release candidate 1 can be started
++successfully on the Orange Pi PC machine. Get the 'evbarm-earmv7hf' based image from:
++
++  https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0_RC1/evbarm-earmv7hf/binary/gzimg/armv7.img.gz
++
++The image requires manually installing U-Boot in the image. Build U-Boot with
++the orangepi_pc_defconfig configuration as described in the previous section.
++Next, unzip the NetBSD image and write the U-Boot binary including SPL using:
++
++  $ gunzip armv7.img.gz
++  $ dd if=/path/to/u-boot-sunxi-with-spl.bin of=armv7.img bs=1024 seek=8 conv=notrunc
++
++Start the machine using the following command:
++
++  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
++        -sd armv7.img
++
++At the U-Boot stage, interrupt the automatic boot process by pressing a key
++and set the following environment variables before booting:
++
++  => setenv bootargs root=ld0a
++  => setenv kernel netbsd-GENERIC.ub
++  => setenv fdtfile dtb/sun8i-h3-orangepi-pc.dtb
++  => setenv bootcmd 'fatload mmc 0:1 ${kernel_addr_r} ${kernel}; fatload mmc 0:1 ${fdt_addr_r} ${fdtfile}; fdt addr ${fdt_addr_r}; bootm ${kernel_addr_r} - ${fdt_addr_r}'
++
++Optionally you may save the environment variables to SD card with 'saveenv'.
++To continue booting simply give the 'boot' command and NetBSD boots.
++
++Orange Pi PC acceptance tests
++-----------------------------
++
++The Orange Pi PC machine has several acceptance tests included.
++To run the whole set of tests, build QEMU from source and simply
++provide the following command:
++
++  $ AVOCADO_ALLOW_LARGE_STORAGE=yes avocado --show=app,console run \
++     -t machine:orangepi-pc tests/acceptance/boot_linux_console.py
++
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e99797eec9..8b7096070c 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -488,6 +488,7 @@ S: Maintained
+ F: hw/*/allwinner-h3*
+ F: include/hw/*/allwinner-h3*
+ F: hw/arm/orangepi.c
++F: docs/orangepi.rst
  
-+    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
-+    def test_arm_orangepi_uboot_netbsd9(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:orangepi-pc
-+        """
-+        # This test download a 304MB compressed image and expand it to 1.3GB...
-+        deb_url = ('http://snapshot.debian.org/archive/debian/'
-+                   '20200108T145233Z/pool/main/u/u-boot/'
-+                   'u-boot-sunxi_2020.01%2Bdfsg-1_armhf.deb')
-+        deb_hash = 'f67f404a80753ca3d1258f13e38f2b060e13db99'
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        # We use the common OrangePi PC 'plus' build of U-Boot for our secondary
-+        # program loader (SPL). We will then set the path to the more specific
-+        # OrangePi "PC" device tree blob with 'setenv fdtfile' in U-Boot prompt,
-+        # before to boot NetBSD.
-+        uboot_path = '/usr/lib/u-boot/orangepi_plus/u-boot-sunxi-with-spl.bin'
-+        uboot_path = self.extract_from_deb(deb_path, uboot_path)
-+        image_url = ('https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0_RC1/'
-+                     'evbarm-earmv7hf/binary/gzimg/armv7.img.gz')
-+        image_hash = '7f58d5c36600430a8bcebe7e999a8945a2be4d1f'
-+        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash)
-+        image_path = os.path.join(self.workdir, 'armv7.img')
-+        image_drive_args = 'if=sd,format=raw,snapshot=on,file=' + image_path
-+        archive.gzip_uncompress(image_path_gz, image_path)
-+
-+        # dd if=u-boot-sunxi-with-spl.bin of=armv7.img bs=1K seek=8 conv=notrunc
-+        with open(uboot_path, 'rb') as f_in:
-+            with open(image_path, 'r+b') as f_out:
-+                f_out.seek(8 * 1024)
-+                shutil.copyfileobj(f_in, f_out)
-+
-+        self.vm.set_console()
-+        self.vm.add_args('-nic', 'user',
-+                         '-drive', image_drive_args,
-+                         '-no-reboot')
-+        self.vm.launch()
-+        wait_for_console_pattern(self, 'U-Boot 2020.01+dfsg-1')
-+        interrupt_interactive_console_until_pattern(self,
-+                                       'Hit any key to stop autoboot:',
-+                                       'switch to partitions #0, OK')
-+
-+        exec_command_and_wait_for_pattern(self, '', '=>')
-+        cmd = 'setenv bootargs root=ld0a'
-+        exec_command_and_wait_for_pattern(self, cmd, '=>')
-+        cmd = 'setenv kernel netbsd-GENERIC.ub'
-+        exec_command_and_wait_for_pattern(self, cmd, '=>')
-+        cmd = 'setenv fdtfile dtb/sun8i-h3-orangepi-pc.dtb'
-+        exec_command_and_wait_for_pattern(self, cmd, '=>')
-+        cmd = ("setenv bootcmd 'fatload mmc 0:1 ${kernel_addr_r} ${kernel}; "
-+               "fatload mmc 0:1 ${fdt_addr_r} ${fdtfile}; "
-+               "fdt addr ${fdt_addr_r}; "
-+               "bootm ${kernel_addr_r} - ${fdt_addr_r}'")
-+        exec_command_and_wait_for_pattern(self, cmd, '=>')
-+
-+        exec_command_and_wait_for_pattern(self, 'boot',
-+                                          'Booting kernel from Legacy Image')
-+        wait_for_console_pattern(self, 'Starting kernel ...')
-+        wait_for_console_pattern(self, 'NetBSD 9.0_RC1 (GENERIC)')
-+        # Wait for user-space
-+        wait_for_console_pattern(self, 'Starting root file system check')
-+
-     def test_s390x_s390_ccw_virtio(self):
-         """
-         :avocado: tags=arch:s390x
+ ARM PrimeCell and CMSDK devices
+ M: Peter Maydell <peter.maydell@linaro.org>
 -- 
 2.17.1

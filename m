@@ -1,427 +1,507 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp338738lfp;
-        Mon, 20 Jan 2020 07:35:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyhqIzpXXXN4qrl0GIEYry0RcnWcwKbtfjxdd8KOcw7oPSrd+DWrMMywG5yiC0vw1QP0Hs0
-X-Received: by 2002:ac8:43c1:: with SMTP id w1mr20589296qtn.156.1579534504405;
-        Mon, 20 Jan 2020 07:35:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579534504; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp491836lfp;
+        Mon, 20 Jan 2020 09:59:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyTd3lIJunq6PfsHn9q2gJ9R3xij0ersI5P3aSW6lNnL75Igl7a5S/5GYRkhpFV9xKyQ5AV
+X-Received: by 2002:a37:a9d1:: with SMTP id s200mr761257qke.110.1579543183752;
+        Mon, 20 Jan 2020 09:59:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579543183; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ysuv2yeAXXYsxQT23Jt8d8/o6RPQVDL545h2M7um68GGc/t8WZIh2cA6hKYIbDwd+7
-         d7zLx4P5V55l76GCtTYkQlziaAxOh/FIGMJDEhPQHPE7jXfY4K8QnnklGX7HzQ/QkhUb
-         KElUEUuJZ6X47skDbL4qdmo3tPjzeEj5Cx4hX6LFK2doVyPMI5zC1STIIWNOqczvI81q
-         KET9c3adAyfz3ZGciuqDPI534Ybe+QjFg0gV6dxDzfytaapasBhCUM+Cbjlxh2KZ1icH
-         B0AGE6uROnmdwZ0vUxDGAZLQ1rIEznP1ZwhBZ1WOoJ4MPSm4gPKnvbPLdyrKs73d9B3W
-         3H+w==
+        b=wsevzWROydhsqFnCDMdQxCtnOcIT4e6/Fp3CUBLq2cYP+kSOtLy0gf0zZMYp6eXP5n
+         QkxqHU4KfTMdd0SwJyWn9uXrWBoMifQxgk2wUd4LnXPdLF5V+1XRwBi4ALC5GfNQjb0F
+         rF72INeYNagQG06KRKLRujS+8oAyRE+j7OiSasXiwrpub67Y6uALPXE32XR1R4yK2cHU
+         NWZPmtsIr7YiV8AQ1SJb7ujWinebrlsfNSJNXoxy4jkbuBAvgBWkvX7aIHkdYHhdevGo
+         NDVHl1Eg0xbPXzp2E3mshsjH0wJWY2Eg4Zq25C//PEeq7RePRhoVwbWcJO/t3cJ6e1z1
+         lHvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=RqQVR1KmV9jCxVUupn3m3ePLrIKEMNgUXQaKUxWShmU=;
-        b=in7etSMsXNsUl3qN22vZcUdw2SYISJRxOUMFXV7SyCaMESUMulN3O3+F8nPkPttLsA
-         Fq3BXEAcuuLjo6iDW6YIajcbsFP3PPVkibYrTKQAgq7oNRhXuxrAicGkeZ4aTGfz8xwA
-         LUdfvo3MKlPoOeU7vvaKHQACZgdP+WITTv/F2fNYtjSyuBPYzy0NTJ7pDQhC5735FxNV
-         ga751we8Ie8o+n+A0VJajsgEouupqp6wvLdl2AkjhQNLos9Bdj4v8SVHu+UQveT1PArQ
-         EGGX3BcpEVON430hney84qTMUZdmsECL3g+ajDYBvdwAfqnMFye9ZyY8sjP1jXCXeUIi
-         8BHw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=Op9ydsNRcWiKueoq7b4dilJAl0nR2m8qaWQKZ+n+EX0=;
+        b=aRZiQoOcUW/gY0PQY3UWe/3WbHYAesurTduEberWpYhr2+blAs4AJDAbL6jkUC5FOU
+         VvVMucdgN5C0fo3DNyk9Ook/bVu0g1zjOf2jQC6fHg7/BPi3aoDB7wvvLyPrlqfEvXWC
+         dMetXtJC7xHxCDiVWvi43G7zOIc7YYSVW/8jwHtZLEZXg3zvmD+C6NAlY0Z3fW1n9om6
+         GrSi8TV6HPt4Hqr+R6XTjWOg/ZXcWTTKdJGjiIgfr9FmkxOv1lLwLH8Out5qKciEOofW
+         abs8IThmWqGS38lph4I6lbXweO6u4PDgagRvx2nqnHbUQOFL+fHtesW9eZysZ61NGP5t
+         8w/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=MOj8oDcg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dc4si19667467qvb.164.2020.01.20.07.35.04
+        by mx.google.com with ESMTPS id b1si19727198qkl.242.2020.01.20.09.59.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 07:35:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Jan 2020 09:59:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38720 helo=lists1p.gnu.org)
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=MOj8oDcg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42272 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itZ4x-0007x6-QX
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 10:35:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50641)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1itbKw-0004uB-Oi
+	for alex.bennee@linaro.org; Mon, 20 Jan 2020 12:59:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53639)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1itZ40-00077g-2Q
- for qemu-devel@nongnu.org; Mon, 20 Jan 2020 10:34:08 -0500
+ (envelope-from <cminyard@mvista.com>) id 1itbKf-0004qE-62
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 12:59:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1itZ3v-0000b1-IH
- for qemu-devel@nongnu.org; Mon, 20 Jan 2020 10:34:03 -0500
-Received: from 2.mo2.mail-out.ovh.net ([188.165.53.149]:41390)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1itZ3v-0000aE-BL
- for qemu-devel@nongnu.org; Mon, 20 Jan 2020 10:33:59 -0500
-Received: from player699.ha.ovh.net (unknown [10.109.143.3])
- by mo2.mail-out.ovh.net (Postfix) with ESMTP id CD9FF1BEF27
- for <qemu-devel@nongnu.org>; Mon, 20 Jan 2020 16:33:56 +0100 (CET)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player699.ha.ovh.net (Postfix) with ESMTPSA id 467F2E6636D9;
- Mon, 20 Jan 2020 15:33:50 +0000 (UTC)
-Subject: Re: [PATCH v3 07/84] hw/arm/aspeed: actually check RAM size
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-References: <83481ccb-38e4-d0a2-18b5-66fcd7248521@kaod.org>
- <1579530112-80542-1-git-send-email-imammedo@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <e124b5be-42ec-03c2-10ee-874b966a3e67@kaod.org>
-Date: Mon, 20 Jan 2020 16:33:46 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (envelope-from <cminyard@mvista.com>) id 1itbKc-00007E-NP
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 12:59:24 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:39592)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <cminyard@mvista.com>) id 1itbKc-00006G-H0
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 12:59:22 -0500
+Received: by mail-ot1-x341.google.com with SMTP id 77so530204oty.6
+ for <qemu-arm@nongnu.org>; Mon, 20 Jan 2020 09:59:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mvista-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=Op9ydsNRcWiKueoq7b4dilJAl0nR2m8qaWQKZ+n+EX0=;
+ b=MOj8oDcggb/+grfV2QEm5XrrlnCbm5ohjlPeeMuwBDPwXUnrg4+fGjhoyf370/uQ07
+ 8yzHkLU89uWxBtH+BYqPg04kWkgKg10dEFB7gMzp769IKqQTgiXbLfVuET7K0hRIzjcO
+ acmj6BIH+lZXrGad2+qUZLCL2kkKGxnN2y/XkUJLGHRkNCKQTzyjjhvdwGY31eHV0ow8
+ QaGRn+j9edrhZD2ZggQQdYZdcoTBI6HSCO2hN+tiLwWu8KDM7AdinZUiLWT38wWBdrp7
+ o4+OOF2zz1DfglfqVlYzeAKN0v18+6dBWXbxrxerUfmcTxGnZjvAPl4rvYwTBxKgPvH9
+ wO5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding:in-reply-to:user-agent;
+ bh=Op9ydsNRcWiKueoq7b4dilJAl0nR2m8qaWQKZ+n+EX0=;
+ b=OqGNq/ykwt87bfjVvgO2gnelecdzkQ/GgZPItDRwTe1DF0FsfgjRQjL/8XG4s0+iqJ
+ gXR22C9kf7rmKbXf/v4scl0EsbQZlvkeyYlHl99HCe9rCicX7R9GFKgkY9kaNwhexreS
+ fiuEwlzLORkiwbgA/vDhcvzAyBsn8PIHv8IRAgqFGgccdnHTnv5ktQoMCGpRBrxjb9IN
+ VFiO2yvu0lWdAHb2TQkzJoNweFhMHdk5YSJyRoPavMo1FIF9U5xTzZ5T8hSS9aDqfzyt
+ 7ZElXAvVFeUW2urKxMmg4iedpBUPcwyxzGrmekW2+M561DmCAx9KxTz5oLEb+8BuHfCp
+ o1rg==
+X-Gm-Message-State: APjAAAUlITXRSbc60KKkWmGKJv1nYuX9/E36kancxqUZyOZM8XmI8S16
+ idVsyzgOY8tlC4RTxdKbOExF/g==
+X-Received: by 2002:a05:6830:c2:: with SMTP id x2mr550892oto.8.1579543160629; 
+ Mon, 20 Jan 2020 09:59:20 -0800 (PST)
+Received: from minyard.net ([2001:470:b8f6:1b:6c1f:8027:c90c:8608])
+ by smtp.gmail.com with ESMTPSA id n25sm11091825oic.6.2020.01.20.09.59.19
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 20 Jan 2020 09:59:19 -0800 (PST)
+Date: Mon, 20 Jan 2020 11:59:18 -0600
+From: Corey Minyard <cminyard@mvista.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH v3 07/17] hw/arm/allwinner: add Security Identifier device
+Message-ID: <20200120175918.GA2949@minyard.net>
+References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
+ <20200108200020.4745-8-nieklinnenbank@gmail.com>
+ <8be03fbb-74f2-e688-76b1-ab504f25f8e4@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1579530112-80542-1-git-send-email-imammedo@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 14439666306392361904
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrudeigddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieelledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 188.165.53.149
-X-BeenThere: qemu-devel@nongnu.org
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <8be03fbb-74f2-e688-76b1-ab504f25f8e4@redhat.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: andrew@aj.id.au, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- joel@jms.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f1ItzmeUvu3M
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: cminyard@mvista.com
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Yury Kotov <yury-kotov@yandex-team.ru>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3dCJWJCJ/Jr+
 
-On 1/20/20 3:21 PM, Igor Mammedov wrote:
-> It's supposed that SOC will check if "-m" provided
-> RAM size is valid by setting "ram-size" property and
-> then board would read back valid (possibly corrected
-> value) to map RAM MemoryReging with valid size.
-> It isn't doing so, since check is called only
-> indirectly from
->   aspeed_sdmc_reset()->asc->compute_conf()
-> or much later when guest writes to configuration
-> register.
->=20
-> So depending on "-m" value QEMU end-ups with a warning
-> and an invalid MemoryRegion size allocated and mapped.
-> (examples:
->  -M ast2500-evb -m 1M
->     0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-contain=
-er
->       0000000080000000-00000000800fffff (prio 0, ram): ram
->       0000000080100000-00000000bfffffff (prio 0, i/o): max_ram
->  -M ast2500-evb -m 3G
->     0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-contain=
-er
->       0000000080000000-000000013fffffff (prio 0, ram): ram
->       [DETECTED OVERFLOW!] 0000000140000000-00000000bfffffff (prio 0, i=
-/o): max_ram
-> )
-> On top of that sdmc falls back and reports to guest
-> "default" size, it thinks machine should have.
->=20
-> This patch makes ram-size check actually work and
-> changes behavior from a warning later on during
-> machine reset to error_fatal at the moment SOC.ram-size
-> is set so user will have to fix RAM size on CLI
-> to start machine.
->=20
-> It also gets out of the way mutable ram-size logic,
-> so we could consolidate RAM allocation logic around
-> pre-allocated hostmem backend (supplied by user or
-> auto created by generic machine code depending on
-> supplied -m/mem-path/mem-prealloc options.
->=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+On Sat, Jan 18, 2020 at 04:25:08PM +0100, Philippe Mathieu-Daudé wrote:
+> Cc'ing Corey/David for good advices about using UUID.
 
-LGTM, some comments below.
+Is there any reason you didn't use the built-in qemu UUID for this?  It
+would simplify things in general.
 
-> ---
-> v3:
->   * replace
->      [PATCH v2 07/86] arm:aspeed: convert valid RAM sizes to data
->      [PATCH v2 08/86] arm:aspeed: actually check RAM size
->     with a simplified variant that adds ram_size check to sdmc.ram-size
->     property
->=20
-> CC: clg@kaod.org
-> CC: peter.maydell@linaro.org
-> CC: andrew@aj.id.au
-> CC: joel@jms.id.au
-> CC: qemu-arm@nongnu.org
->=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
->  include/hw/misc/aspeed_sdmc.h |  1 +
->  hw/arm/aspeed.c               | 13 +++-----
->  hw/misc/aspeed_sdmc.c         | 77 +++++++++++++++++++++++++++++++++++=
---------
->  3 files changed, 70 insertions(+), 21 deletions(-)
->=20
-> diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdm=
-c.h
-> index 5dbde59..cea1e67 100644
-> --- a/include/hw/misc/aspeed_sdmc.h
-> +++ b/include/hw/misc/aspeed_sdmc.h
-> @@ -40,6 +40,7 @@ typedef struct AspeedSDMCClass {
->      SysBusDeviceClass parent_class;
-> =20
->      uint64_t max_ram_size;
-> +    const uint64_t *valid_ram_sizes;
->      uint32_t (*compute_conf)(AspeedSDMCState *s, uint32_t data);
->      void (*write)(AspeedSDMCState *s, uint32_t reg, uint32_t data);
->  } AspeedSDMCClass;
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index cc06af4..c8573e5 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -191,8 +191,12 @@ static void aspeed_machine_init(MachineState *mach=
-ine)
-> =20
->      sc =3D ASPEED_SOC_GET_CLASS(&bmc->soc);
-> =20
-> +    /*
-> +     * This will error out if isize is not supported by memory control=
-ler.
-> +     */
->      object_property_set_uint(OBJECT(&bmc->soc), ram_size, "ram-size",
-> -                             &error_abort);
-> +                             &error_fatal);
-> +
->      object_property_set_int(OBJECT(&bmc->soc), amc->hw_strap1, "hw-str=
-ap1",
->                              &error_abort);
->      object_property_set_int(OBJECT(&bmc->soc), amc->hw_strap2, "hw-str=
-ap2",
-> @@ -215,13 +219,6 @@ static void aspeed_machine_init(MachineState *mach=
-ine)
->      object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
->                               &error_abort);
-> =20
-> -    /*
-> -     * Allocate RAM after the memory controller has checked the size
-> -     * was valid. If not, a default value is used.
-> -     */
-> -    ram_size =3D object_property_get_uint(OBJECT(&bmc->soc), "ram-size=
-",
-> -                                        &error_abort);
-> -
->      memory_region_allocate_system_memory(&bmc->ram, NULL, "ram", ram_s=
-ize);
->      memory_region_add_subregion(&bmc->ram_container, 0, &bmc->ram);
->      memory_region_add_subregion(get_system_memory(),
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index 2df3244..b36b362 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -17,6 +17,9 @@
->  #include "migration/vmstate.h"
->  #include "qapi/error.h"
->  #include "trace.h"
-> +#include "qemu/units.h"
-> +#include "qemu/cutils.h"
-> +#include "qapi/visitor.h"
-> =20
->  /* Protection Key Register */
->  #define R_PROT            (0x00 / 4)
-> @@ -163,10 +166,7 @@ static int ast2400_rambits(AspeedSDMCState *s)
->          break;
->      }
+Also, in case no one else say, you have tabs in your code that you need
+to get rid of.
 
-Now that the ramsizes are being checked, I think we can add in the defaul=
-t
-statement :
+-corey
 
-	g_assert_not_reached();
-
-
-> =20
-> -    /* use a common default */
-> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 256M",
-> -                s->ram_size);
-> -    s->ram_size =3D 256 << 20;
-> +    assert(0);
->      return ASPEED_SDMC_DRAM_256MB;
-
-
-and skip the default return value.
-
-A part from that,
-
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
->  }
-> =20
-> @@ -185,10 +185,7 @@ static int ast2500_rambits(AspeedSDMCState *s)
->          break;
->      }
-> =20
-> -    /* use a common default */
-> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 512M",
-> -                s->ram_size);
-> -    s->ram_size =3D 512 << 20;
-> +    assert(0);
->      return ASPEED_SDMC_AST2500_512MB;
->  }
-> =20
-> @@ -207,10 +204,7 @@ static int ast2600_rambits(AspeedSDMCState *s)
->          break;
->      }
-> =20
-> -    /* use a common default */
-> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 1024M",
-> -                s->ram_size);
-> -    s->ram_size =3D 1024 << 20;
-> +    assert(0);
->      return ASPEED_SDMC_AST2600_1024MB;
->  }
-> =20
-> @@ -225,6 +219,51 @@ static void aspeed_sdmc_reset(DeviceState *dev)
->      s->regs[R_CONF] =3D asc->compute_conf(s, 0);
->  }
-> =20
-> +static void aspeed_sdmc_get_ram_size(Object *obj, Visitor *v, const ch=
-ar *name,
-> +                                     void *opaque, Error **errp)
-> +{
-> +    AspeedSDMCState *s =3D ASPEED_SDMC(obj);
-> +    int64_t value =3D s->ram_size;
-> +
-> +    visit_type_int(v, name, &value, errp);
-> +}
-> +
-> +static void aspeed_sdmc_set_ram_size(Object *obj, Visitor *v, const ch=
-ar *name,
-> +                                     void *opaque, Error **errp)
-> +{
-> +    int i;
-> +    char *sz;
-> +    int64_t value;
-> +    Error *local_err =3D NULL;
-> +    AspeedSDMCState *s =3D ASPEED_SDMC(obj);
-> +    AspeedSDMCClass *asc =3D ASPEED_SDMC_GET_CLASS(s);
-> +
-> +    visit_type_int(v, name, &value, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
-> +
-> +    for (i =3D 0; asc->valid_ram_sizes[i]; i++) {
-> +        if (value =3D=3D asc->valid_ram_sizes[i]) {
-> +            s->ram_size =3D value;
-> +            return;
-> +        }
-> +    }
-> +
-> +    sz =3D size_to_str(value);
-> +    error_setg(&local_err, "Invalid RAM size %s", sz);
-> +    g_free(sz);
-> +    error_propagate(errp, local_err);
-> +}
-> +
-> +static void aspeed_sdmc_initfn(Object *obj)
-> +{
-> +    object_property_add(obj, "ram-size", "int",
-> +                        aspeed_sdmc_get_ram_size, aspeed_sdmc_set_ram_=
-size,
-> +                        NULL, NULL, NULL);
-> +}
-> +
->  static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
->  {
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-> @@ -249,7 +288,6 @@ static const VMStateDescription vmstate_aspeed_sdmc=
- =3D {
->  };
-> =20
->  static Property aspeed_sdmc_properties[] =3D {
-> -    DEFINE_PROP_UINT64("ram-size", AspeedSDMCState, ram_size, 0),
->      DEFINE_PROP_UINT64("max-ram-size", AspeedSDMCState, max_ram_size, =
-0),
->      DEFINE_PROP_END_OF_LIST(),
->  };
-> @@ -268,6 +306,7 @@ static const TypeInfo aspeed_sdmc_info =3D {
->      .name =3D TYPE_ASPEED_SDMC,
->      .parent =3D TYPE_SYS_BUS_DEVICE,
->      .instance_size =3D sizeof(AspeedSDMCState),
-> +    .instance_init =3D aspeed_sdmc_initfn,
->      .class_init =3D aspeed_sdmc_class_init,
->      .class_size =3D sizeof(AspeedSDMCClass),
->      .abstract   =3D true,
-> @@ -298,6 +337,9 @@ static void aspeed_2400_sdmc_write(AspeedSDMCState =
-*s, uint32_t reg,
->      s->regs[reg] =3D data;
->  }
-> =20
-> +static const uint64_t
-> +aspeed_2400_ram_sizes[] =3D { 64 * MiB, 128 * MiB, 256 * MiB, 512 * Mi=
-B, 0};
-> +
->  static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data=
-)
->  {
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> @@ -307,6 +349,7 @@ static void aspeed_2400_sdmc_class_init(ObjectClass=
- *klass, void *data)
->      asc->max_ram_size =3D 512 << 20;
->      asc->compute_conf =3D aspeed_2400_sdmc_compute_conf;
->      asc->write =3D aspeed_2400_sdmc_write;
-> +    asc->valid_ram_sizes =3D aspeed_2400_ram_sizes;
->  }
-> =20
->  static const TypeInfo aspeed_2400_sdmc_info =3D {
-> @@ -351,6 +394,9 @@ static void aspeed_2500_sdmc_write(AspeedSDMCState =
-*s, uint32_t reg,
->      s->regs[reg] =3D data;
->  }
-> =20
-> +static const uint64_t
-> +aspeed_2500_ram_sizes[] =3D { 128 * MiB, 256 * MiB, 512 * MiB, 1024 * =
-MiB, 0};
-> +
->  static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data=
-)
->  {
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> @@ -360,6 +406,7 @@ static void aspeed_2500_sdmc_class_init(ObjectClass=
- *klass, void *data)
->      asc->max_ram_size =3D 1024 << 20;
->      asc->compute_conf =3D aspeed_2500_sdmc_compute_conf;
->      asc->write =3D aspeed_2500_sdmc_write;
-> +    asc->valid_ram_sizes =3D aspeed_2500_ram_sizes;
->  }
-> =20
->  static const TypeInfo aspeed_2500_sdmc_info =3D {
-> @@ -404,6 +451,9 @@ static void aspeed_2600_sdmc_write(AspeedSDMCState =
-*s, uint32_t reg,
->      s->regs[reg] =3D data;
->  }
-> =20
-> +static const uint64_t
-> +aspeed_2600_ram_sizes[] =3D { 256 * MiB, 512 * MiB, 1024 * MiB, 2048 *=
- MiB, 0};
-> +
->  static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data=
-)
->  {
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> @@ -413,6 +463,7 @@ static void aspeed_2600_sdmc_class_init(ObjectClass=
- *klass, void *data)
->      asc->max_ram_size =3D 2048 << 20;
->      asc->compute_conf =3D aspeed_2600_sdmc_compute_conf;
->      asc->write =3D aspeed_2600_sdmc_write;
-> +    asc->valid_ram_sizes =3D aspeed_2600_ram_sizes;
->  }
-> =20
->  static const TypeInfo aspeed_2600_sdmc_info =3D {
->=20
-
+> 
+> On 1/8/20 9:00 PM, Niek Linnenbank wrote:
+> > The Security Identifier device found in various Allwinner System on Chip
+> > designs gives applications a per-board unique identifier. This commit
+> > adds support for the Allwinner Security Identifier using a 128-bit
+> > UUID value as input.
+> > 
+> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> > ---
+> >   include/hw/arm/allwinner-h3.h   |   3 +
+> >   include/hw/misc/allwinner-sid.h |  61 ++++++++++++
+> >   hw/arm/allwinner-h3.c           |  11 ++-
+> >   hw/arm/orangepi.c               |   4 +
+> >   hw/misc/allwinner-sid.c         | 170 ++++++++++++++++++++++++++++++++
+> >   hw/misc/Makefile.objs           |   1 +
+> >   hw/misc/trace-events            |   4 +
+> >   7 files changed, 253 insertions(+), 1 deletion(-)
+> >   create mode 100644 include/hw/misc/allwinner-sid.h
+> >   create mode 100644 hw/misc/allwinner-sid.c
+> > 
+> > diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
+> > index 5a25a92eae..9ed365507c 100644
+> > --- a/include/hw/arm/allwinner-h3.h
+> > +++ b/include/hw/arm/allwinner-h3.h
+> > @@ -46,6 +46,7 @@
+> >   #include "hw/misc/allwinner-h3-ccu.h"
+> >   #include "hw/misc/allwinner-cpucfg.h"
+> >   #include "hw/misc/allwinner-h3-sysctrl.h"
+> > +#include "hw/misc/allwinner-sid.h"
+> >   #include "target/arm/cpu.h"
+> >   /**
+> > @@ -63,6 +64,7 @@ enum {
+> >       AW_H3_SRAM_A2,
+> >       AW_H3_SRAM_C,
+> >       AW_H3_SYSCTRL,
+> > +    AW_H3_SID,
+> >       AW_H3_EHCI0,
+> >       AW_H3_OHCI0,
+> >       AW_H3_EHCI1,
+> > @@ -115,6 +117,7 @@ typedef struct AwH3State {
+> >       AwH3ClockCtlState ccu;
+> >       AwCpuCfgState cpucfg;
+> >       AwH3SysCtrlState sysctrl;
+> > +    AwSidState sid;
+> >       GICState gic;
+> >       MemoryRegion sram_a1;
+> >       MemoryRegion sram_a2;
+> > diff --git a/include/hw/misc/allwinner-sid.h b/include/hw/misc/allwinner-sid.h
+> > new file mode 100644
+> > index 0000000000..41189967e2
+> > --- /dev/null
+> > +++ b/include/hw/misc/allwinner-sid.h
+> > @@ -0,0 +1,61 @@
+> > +/*
+> > + * Allwinner Security ID emulation
+> > + *
+> > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
+> > + *
+> > + * This program is free software: you can redistribute it and/or modify
+> > + * it under the terms of the GNU General Public License as published by
+> > + * the Free Software Foundation, either version 2 of the License, or
+> > + * (at your option) any later version.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + *
+> > + * You should have received a copy of the GNU General Public License
+> > + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+> > + */
+> > +
+> > +#ifndef HW_MISC_ALLWINNER_SID_H
+> > +#define HW_MISC_ALLWINNER_SID_H
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "qom/object.h"
+> > +#include "hw/sysbus.h"
+> > +#include "qemu/uuid.h"
+> > +
+> > +/**
+> > + * Object model
+> > + * @{
+> > + */
+> > +
+> > +#define TYPE_AW_SID    "allwinner-sid"
+> > +#define AW_SID(obj) \
+> > +    OBJECT_CHECK(AwSidState, (obj), TYPE_AW_SID)
+> > +
+> > +/** @} */
+> > +
+> > +/**
+> > + * Allwinner Security ID object instance state
+> > + */
+> > +typedef struct AwSidState {
+> > +    /*< private >*/
+> > +    SysBusDevice parent_obj;
+> > +    /*< public >*/
+> > +
+> > +    /** Maps I/O registers in physical memory */
+> > +    MemoryRegion iomem;
+> > +
+> > +    /** Control register defines how and what to read */
+> > +    uint32_t control;
+> > +
+> > +    /** RdKey register contains the data retrieved by the device */
+> > +    uint32_t rdkey;
+> > +
+> > +    /** Stores the emulated device identifier */
+> > +    QemuUUID identifier;
+> > +
+> > +} AwSidState;
+> > +
+> > +#endif /* HW_MISC_ALLWINNER_SID_H */
+> > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> > index e9ad6d23df..af7317e86a 100644
+> > --- a/hw/arm/allwinner-h3.c
+> > +++ b/hw/arm/allwinner-h3.c
+> > @@ -36,6 +36,7 @@ const hwaddr allwinner_h3_memmap[] = {
+> >       [AW_H3_SRAM_A2]    = 0x00044000,
+> >       [AW_H3_SRAM_C]     = 0x00010000,
+> >       [AW_H3_SYSCTRL]    = 0x01c00000,
+> > +    [AW_H3_SID]        = 0x01c14000,
+> >       [AW_H3_EHCI0]      = 0x01c1a000,
+> >       [AW_H3_OHCI0]      = 0x01c1a400,
+> >       [AW_H3_EHCI1]      = 0x01c1b000,
+> > @@ -76,7 +77,6 @@ struct AwH3Unimplemented {
+> >       { "mmc0",      0x01c0f000, 4 * KiB },
+> >       { "mmc1",      0x01c10000, 4 * KiB },
+> >       { "mmc2",      0x01c11000, 4 * KiB },
+> > -    { "sid",       0x01c14000, 1 * KiB },
+> >       { "crypto",    0x01c15000, 4 * KiB },
+> >       { "msgbox",    0x01c17000, 4 * KiB },
+> >       { "spinlock",  0x01c18000, 4 * KiB },
+> > @@ -196,6 +196,11 @@ static void allwinner_h3_init(Object *obj)
+> >       sysbus_init_child_obj(obj, "cpucfg", &s->cpucfg, sizeof(s->cpucfg),
+> >                             TYPE_AW_CPUCFG);
+> > +
+> > +    sysbus_init_child_obj(obj, "sid", &s->sid, sizeof(s->sid),
+> > +                          TYPE_AW_SID);
+> > +    object_property_add_alias(obj, "identifier", OBJECT(&s->sid),
+> > +                              "identifier", &error_abort);
+> >   }
+> >   static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+> > @@ -316,6 +321,10 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+> >       qdev_init_nofail(DEVICE(&s->cpucfg));
+> >       sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0, s->memmap[AW_H3_CPUCFG]);
+> > +    /* Security Identifier */
+> > +    qdev_init_nofail(DEVICE(&s->sid));
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0, s->memmap[AW_H3_SID]);
+> > +
+> >       /* Universal Serial Bus */
+> >       sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
+> >                            qdev_get_gpio_in(DEVICE(&s->gic),
+> > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+> > index 051184f14f..a7f870c88b 100644
+> > --- a/hw/arm/orangepi.c
+> > +++ b/hw/arm/orangepi.c
+> > @@ -54,6 +54,10 @@ static void orangepi_init(MachineState *machine)
+> >       object_property_set_int(OBJECT(s->h3), 24000000, "clk1-freq",
+> >                               &error_abort);
+> > +    /* Setup SID properties */
+> > +    qdev_prop_set_string(DEVICE(s->h3), "identifier",
+> > +                         "8100c002-0001-0002-0003-000044556677");
+> > +
+> >       /* Mark H3 object realized */
+> >       object_property_set_bool(OBJECT(s->h3), true, "realized", &error_abort);
+> > diff --git a/hw/misc/allwinner-sid.c b/hw/misc/allwinner-sid.c
+> > new file mode 100644
+> > index 0000000000..954de935bc
+> > --- /dev/null
+> > +++ b/hw/misc/allwinner-sid.c
+> > @@ -0,0 +1,170 @@
+> > +/*
+> > + * Allwinner Security ID emulation
+> > + *
+> > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
+> > + *
+> > + * This program is free software: you can redistribute it and/or modify
+> > + * it under the terms of the GNU General Public License as published by
+> > + * the Free Software Foundation, either version 2 of the License, or
+> > + * (at your option) any later version.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + *
+> > + * You should have received a copy of the GNU General Public License
+> > + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "qemu/units.h"
+> > +#include "hw/sysbus.h"
+> > +#include "migration/vmstate.h"
+> > +#include "qemu/log.h"
+> > +#include "qemu/module.h"
+> > +#include "qemu/guest-random.h"
+> > +#include "qapi/error.h"
+> > +#include "hw/qdev-properties.h"
+> > +#include "hw/misc/allwinner-sid.h"
+> > +#include "trace.h"
+> > +
+> > +/* SID register offsets */
+> > +enum {
+> > +    REG_PRCTL = 0x40,   /* Control */
+> > +    REG_RDKEY = 0x60,   /* Read Key */
+> > +};
+> > +
+> > +/* SID register flags */
+> > +enum {
+> > +    REG_PRCTL_WRITE   = 0x0002, /* Unknown write flag */
+> > +    REG_PRCTL_OP_LOCK = 0xAC00, /* Lock operation */
+> > +};
+> > +
+> > +static uint64_t allwinner_sid_read(void *opaque, hwaddr offset,
+> > +                                   unsigned size)
+> > +{
+> > +    const AwSidState *s = AW_SID(opaque);
+> > +    uint64_t val = 0;
+> > +
+> > +    switch (offset) {
+> > +    case REG_PRCTL:    /* Control */
+> > +        val = s->control;
+> > +        break;
+> > +    case REG_RDKEY:    /* Read Key */
+> > +        val = s->rdkey;
+> > +        break;
+> > +    default:
+> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
+> > +                      __func__, (uint32_t)offset);
+> > +        return 0;
+> > +    }
+> > +
+> > +    trace_allwinner_sid_read(offset, val, size);
+> > +
+> > +    return val;
+> > +}
+> > +
+> > +static void allwinner_sid_write(void *opaque, hwaddr offset,
+> > +                                uint64_t val, unsigned size)
+> > +{
+> > +    AwSidState *s = AW_SID(opaque);
+> > +
+> > +    trace_allwinner_sid_write(offset, val, size);
+> > +
+> > +    switch (offset) {
+> > +    case REG_PRCTL:    /* Control */
+> > +        s->control = val;
+> > +
+> > +        if ((s->control & REG_PRCTL_OP_LOCK) &&
+> > +            (s->control & REG_PRCTL_WRITE)) {
+> > +            uint32_t id = s->control >> 16;
+> > +
+> > +            if (id < sizeof(QemuUUID)) {
+> > +                s->rdkey = (s->identifier.data[id]) |
+> > +                           (s->identifier.data[id + 1] << 8) |
+> > +                           (s->identifier.data[id + 2] << 16) |
+> > +                           (s->identifier.data[id + 3] << 24);
+> > +            }
+> > +        }
+> > +        s->control &= ~REG_PRCTL_WRITE;
+> > +        break;
+> > +    case REG_RDKEY:    /* Read Key */
+> > +        break;
+> > +    default:
+> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
+> > +                      __func__, (uint32_t)offset);
+> > +        break;
+> > +    }
+> > +}
+> > +
+> > +static const MemoryRegionOps allwinner_sid_ops = {
+> > +    .read = allwinner_sid_read,
+> > +    .write = allwinner_sid_write,
+> > +    .endianness = DEVICE_NATIVE_ENDIAN,
+> > +    .valid = {
+> > +        .min_access_size = 4,
+> > +        .max_access_size = 4,
+> > +    },
+> > +    .impl.min_access_size = 4,
+> > +};
+> > +
+> > +static void allwinner_sid_reset(DeviceState *dev)
+> > +{
+> > +    AwSidState *s = AW_SID(dev);
+> > +
+> > +    /* Set default values for registers */
+> > +    s->control = 0;
+> > +    s->rdkey = 0;
+> > +}
+> > +
+> > +static void allwinner_sid_init(Object *obj)
+> > +{
+> > +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> > +    AwSidState *s = AW_SID(obj);
+> > +
+> > +    /* Memory mapping */
+> > +    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_sid_ops, s,
+> > +                           TYPE_AW_SID, 1 * KiB);
+> > +    sysbus_init_mmio(sbd, &s->iomem);
+> > +}
+> > +
+> > +static Property allwinner_sid_properties[] = {
+> > +    DEFINE_PROP_UUID_NODEFAULT("identifier", AwSidState, identifier),
+> > +    DEFINE_PROP_END_OF_LIST()
+> > +};
+> > +
+> > +static const VMStateDescription allwinner_sid_vmstate = {
+> > +    .name = "allwinner-sid",
+> > +    .version_id = 1,
+> > +    .minimum_version_id = 1,
+> > +    .fields = (VMStateField[]) {
+> > +        VMSTATE_UINT32(control, AwSidState),
+> > +        VMSTATE_UINT32(rdkey, AwSidState),
+> > +        VMSTATE_END_OF_LIST()
+> > +    }
+> > +};
+> > +
+> > +static void allwinner_sid_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    DeviceClass *dc = DEVICE_CLASS(klass);
+> > +
+> > +    dc->reset = allwinner_sid_reset;
+> > +    dc->vmsd = &allwinner_sid_vmstate;
+> > +    dc->props = allwinner_sid_properties;
+> > +}
+> > +
+> > +static const TypeInfo allwinner_sid_info = {
+> > +    .name          = TYPE_AW_SID,
+> > +    .parent        = TYPE_SYS_BUS_DEVICE,
+> > +    .instance_init = allwinner_sid_init,
+> > +    .instance_size = sizeof(AwSidState),
+> > +    .class_init    = allwinner_sid_class_init,
+> > +};
+> > +
+> > +static void allwinner_sid_register(void)
+> > +{
+> > +    type_register_static(&allwinner_sid_info);
+> > +}
+> > +
+> > +type_init(allwinner_sid_register)
+> > diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> > index 12c2c306b5..59500d5681 100644
+> > --- a/hw/misc/Makefile.objs
+> > +++ b/hw/misc/Makefile.objs
+> > @@ -31,6 +31,7 @@ common-obj-$(CONFIG_IVSHMEM_DEVICE) += ivshmem.o
+> >   common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-ccu.o
+> >   obj-$(CONFIG_ALLWINNER_H3) += allwinner-cpucfg.o
+> >   common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-sysctrl.o
+> > +common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-sid.o
+> >   common-obj-$(CONFIG_REALVIEW) += arm_sysctl.o
+> >   common-obj-$(CONFIG_NSERIES) += cbus.o
+> >   common-obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o
+> > diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> > index d3e0952429..67d8bf493c 100644
+> > --- a/hw/misc/trace-events
+> > +++ b/hw/misc/trace-events
+> > @@ -5,6 +5,10 @@ allwinner_cpucfg_cpu_reset(uint8_t cpu_id, uint32_t reset_addr) "id %u, reset_ad
+> >   allwinner_cpucfg_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+> >   allwinner_cpucfg_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+> > +# allwinner-sid.c
+> > +allwinner_sid_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+> > +allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+> > +
+> >   # eccmemctl.c
+> >   ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
+> >   ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
+> > 
+> 

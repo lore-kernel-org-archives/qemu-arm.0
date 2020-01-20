@@ -1,149 +1,372 @@
-Received: by 2002:a19:c345:0:0:0:0:0 with SMTP id t66csp1498047lff;
-        Sun, 19 Jan 2020 05:32:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxdIdSQ23OqKoXo3U1h71FUg34Qu4Tz4fZpNSejlog0l8A9I+dSDKge4j5wlzLzMzyKDaz9
-X-Received: by 2002:a05:6214:13a8:: with SMTP id h8mr15796652qvz.41.1579440755541;
-        Sun, 19 Jan 2020 05:32:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579440755; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp17962lfp;
+        Mon, 20 Jan 2020 02:18:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzoH6+/ctjQ53VF57tXmMEUemtL0154qNvXE+pIH0uXmQWBqnES+ztdfL7ZABZsmd7Z7Hfe
+X-Received: by 2002:a25:9309:: with SMTP id f9mr41927695ybo.43.1579515522508;
+        Mon, 20 Jan 2020 02:18:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579515522; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vqb/WUfHsq0H6yei0SpoxTtr0oZSoynBLVLQeN7ovdOhLud1rt8Sd0Sy6GGtqAhxRJ
-         VCXZ+RiY/hqCEY3XOIsG/HsLkebPqRAuJ1AVpKY/zvcaf5WPry7g+Xk1+8MVUFJJoM32
-         LcVfJsaEQu24r8mcTWa4/1qw6xaDxoNyfOWQDsR0o3TCOOsP001b7CFLNDuIra7RCdSI
-         6gvi3vUI1t6wXn+e+jTR65dGeSXUQF2yuDubtt58ngyHb77D6n6ixzqETa88cLpKyfVA
-         99EYvp0O+1OzYaj981BA209Zxs4P4atMdoYCaSMjqWKa6vSFMb8/u1f2u6qFMip2ERZY
-         TmgA==
+        b=jIumuMTpPS7tkEawjrYg/T0T7k7zVF1spi/qMtYu2ZtjgcNrJgXlm5kEbogM1+n8yk
+         7w3p9e4cmaXPS6yhTZN3Ieu6DO80A/4CL1O/wU6uoYyAsvXTEkqZzqZyfA+WfnsRPk/X
+         llo8YousqcJXHHtMV8od3PR+7UL4bh2yca/I9I/3y/fTcmC7YwzYMCUFunV2xJAkpP9C
+         LYhjdZXZBNU3BACZaCtS/YBnl728W8teO71sv9sSAf3UswH0m+jfR0NyhqUDKzdCYzBD
+         gmVMINgvtyUjNGKI99UpBCdX9hqkpnjTuPxFcW3bd3v4tr6AujgR5rRv+ZOPvS4wAwbo
+         iGEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:message-id:date:subject:to:from;
-        bh=ZgBR79GdAyaZMsxf6BrV3Gp0LGtKD+H1KOvyBYeWCVs=;
-        b=pFuMSHg5zF4GDlPLyr7cHKi3dmPx+KDwby9XydiJmZbD31L3xlCyPAAamBmtwi2444
-         3rP+7B1HHHRliLL17oigqGlsKd0ei67Jk0zoveqwkhw4wmTUS6w0jCS92z5Mq29Qwo/U
-         xrs1M5DxRDZNO9moS/lIcHa04brDWBNzV9sw8/LURVNQ4jqpROKX2cU5vpo0cbg+Zg12
-         JDBdf+vjN3vgL8mGQvL4bFP0++eZrqiiGj+fijQZRpPEhH84RkeqwzN74y8ASIQnhnFC
-         Z25boY5RaM6weSeMJww3Sz1ARMCZcrVDmt+HjqLSSV7bi4F8Ui+lCKp3Zm6BaUSvp19X
-         ISrA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=9+DILeRgdjz5rTMxsXsTACh5c/3flqmx//VXm9Prbcg=;
+        b=0gCBPKplhKSn2Vi7xE/ShRY7+QwI02VdKPC44+HaeFk6XCQpb35HMMgHH04BT3hRhB
+         fj319olpcBIds86TCwU2pXmxSXqOBYlp5UUxoSCAQ5eAmzj/pf0I5+0UTjqx4/kx+QjB
+         +4zTqbKhJvogFH+XRe2UmZH9GQFBdLeevg7i07cSk8SAkH124QKK9gy+YMO2SgtcHL6m
+         KZgY+zYHfWrRhhrXCQP6IsvU9niRf522aFVOf1FVFCRh3ceJGUHRdcEzvmVm/iHV3/g7
+         SgHYEopvVYG0usPcY+IilIopqkGowIx/z8EW6+Wv9EL4F3kPUP1USTxJe/JwCnhi/9lk
+         FnJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id df10si17821311qvb.155.2020.01.19.05.32.35;
-        Sun, 19 Jan 2020 05:32:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L4+toMLA;
+       spf=pass (google.com: domain of drjones@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by mx.google.com with ESMTPS id x62si19896827ywf.414.2020.01.20.02.18.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 20 Jan 2020 02:18:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id DFCBF4AEB3;
-	Sun, 19 Jan 2020 08:32:34 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -1.502
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
-	SPF_HELO_PASS=-0.001] autolearn=no
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ux7mLXMINdx8; Sun, 19 Jan 2020 08:32:33 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id B26484ACFA;
-	Sun, 19 Jan 2020 08:32:33 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 997BA4ACFA
- for <kvmarm@lists.cs.columbia.edu>; Sun, 19 Jan 2020 08:32:32 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E5w4vXv+UKpW for <kvmarm@lists.cs.columbia.edu>;
- Sun, 19 Jan 2020 08:32:31 -0500 (EST)
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id D2B964ACE6
- for <kvmarm@lists.cs.columbia.edu>; Sun, 19 Jan 2020 08:32:30 -0500 (EST)
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 0BB7FE69CDB940A01276;
- Sun, 19 Jan 2020 21:32:27 +0800 (CST)
-Received: from DESKTOP-8RFUVS3.china.huawei.com (10.173.222.27) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.439.0; Sun, 19 Jan 2020 21:32:17 +0800
-From: Zenghui Yu <yuzenghui@huawei.com>
-To: <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [PATCH] hw/intc/arm_gicv3_kvm: Stop wrongly programming
- GICR_PENDBASER.PTZ bit
-Date: Sun, 19 Jan 2020 21:30:51 +0800
-Message-ID: <20200119133051.642-1-yuzenghui@huawei.com>
-X-Mailer: git-send-email 2.23.0.windows.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L4+toMLA;
+       spf=pass (google.com: domain of drjones@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1579515521;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=9+DILeRgdjz5rTMxsXsTACh5c/3flqmx//VXm9Prbcg=;
+	b=L4+toMLAUplzpzXOssb1ABE0vM6tnWhsKNhcJLpMtZUIQj67gn+Q4OWw5IWteKZ/NPDAKt
+	T3ULedXsjrmGSGeIfMg2S2FcPg/Xle/J4uYpGGl5qz7Y8OAb32grjbtx4bammt8N456pR7
+	Ixst8A2/16sWQuwW0HhSZ6j70d1xp6s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-162-2Zac0TpxMUmhMEcn18bU1A-1; Mon, 20 Jan 2020 05:18:38 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6CF33DB61;
+	Mon, 20 Jan 2020 10:18:37 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EFF4A60BF7;
+	Mon, 20 Jan 2020 10:18:32 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	Dave.Martin@arm.com,
+	eric.auger@redhat.com
+Subject: [PATCH REPOST v3] target/arm/arch_dump: Add SVE notes
+Date: Mon, 20 Jan 2020 11:18:32 +0100
+Message-Id: <20200120101832.18781-1-drjones@redhat.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.173.222.27]
-X-CFilter-Loop: Reflected
-Cc: maz@kernel.org, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: G3BqE930x6p1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: 2Zac0TpxMUmhMEcn18bU1A-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 0/NTG0Pid91O
 
-If LPIs are disabled, KVM will just ignore the GICR_PENDBASER.PTZ bit when
-restoring GICR_CTLR.  Setting PTZ here makes littlt sense in "reduce GIC
-initialization time".
+When dumping a guest with dump-guest-memory also dump the SVE
+registers if they are in use.
 
-And what's worse, PTZ is generally programmed by guest to indicate to the
-Redistributor whether the LPI Pending table is zero when enabling LPIs.
-If migration is triggered when the PTZ has just been cleared by guest (and
-before enabling LPIs), we will see PTZ==1 on the destination side, which
-is not as expected.  Let's just drop this hackish userspace behavior.
-
-Also take this chance to refine the comment a bit.
-
-Fixes: 367b9f527bec ("hw/intc/arm_gicv3_kvm: Implement get/put functions")
-Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/intc/arm_gicv3_kvm.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+ include/elf.h          |   2 +
+ target/arm/arch_dump.c | 124 ++++++++++++++++++++++++++++++++++++++++-
+ target/arm/cpu.h       |  25 +++++++++
+ target/arm/kvm64.c     |  24 --------
+ 4 files changed, 149 insertions(+), 26 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 9c7f4ab871..49304ca589 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -336,7 +336,10 @@ static void kvm_arm_gicv3_put(GICv3State *s)
-     kvm_gicd_access(s, GICD_CTLR, &reg, true);
- 
-     if (redist_typer & GICR_TYPER_PLPIS) {
--        /* Set base addresses before LPIs are enabled by GICR_CTLR write */
-+        /*
-+         * Restore base addresses before LPIs are potentially enabled by
-+         * GICR_CTLR write
-+         */
-         for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
-             GICv3CPUState *c = &s->cpu[ncpu];
- 
-@@ -347,12 +350,6 @@ static void kvm_arm_gicv3_put(GICv3State *s)
-             kvm_gicr_access(s, GICR_PROPBASER + 4, ncpu, &regh, true);
- 
-             reg64 = c->gicr_pendbaser;
--            if (!(c->gicr_ctlr & GICR_CTLR_ENABLE_LPIS)) {
--                /* Setting PTZ is advised if LPIs are disabled, to reduce
--                 * GIC initialization time.
--                 */
--                reg64 |= GICR_PENDBASER_PTZ;
--            }
-             regl = (uint32_t)reg64;
-             kvm_gicr_access(s, GICR_PENDBASER, ncpu, &regl, true);
-             regh = (uint32_t)(reg64 >> 32);
--- 
-2.19.1
-
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+diff --git a/include/elf.h b/include/elf.h
+index 3501e0c8d03a..a7c357af74ca 100644
+--- a/include/elf.h
++++ b/include/elf.h
+@@ -1650,6 +1650,8 @@ typedef struct elf64_shdr {
+ #define NT_ARM_HW_BREAK 0x402           /* ARM hardware breakpoint registe=
+rs */
+ #define NT_ARM_HW_WATCH 0x403           /* ARM hardware watchpoint registe=
+rs */
+ #define NT_ARM_SYSTEM_CALL      0x404   /* ARM system call number */
++#define NT_ARM_SVE=090x405=09=09/* ARM Scalable Vector Extension
++=09=09=09=09=09   registers */
+=20
+ /*
+  * Physical entry point into the kernel.
+diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
+index 26a2c098687c..2345dec3c2c2 100644
+--- a/target/arm/arch_dump.c
++++ b/target/arm/arch_dump.c
+@@ -62,12 +62,23 @@ struct aarch64_user_vfp_state {
+=20
+ QEMU_BUILD_BUG_ON(sizeof(struct aarch64_user_vfp_state) !=3D 528);
+=20
++/* struct user_sve_header from arch/arm64/include/uapi/asm/ptrace.h */
++struct aarch64_user_sve_header {
++    uint32_t size;
++    uint32_t max_size;
++    uint16_t vl;
++    uint16_t max_vl;
++    uint16_t flags;
++    uint16_t reserved;
++} QEMU_PACKED;
++
+ struct aarch64_note {
+     Elf64_Nhdr hdr;
+     char name[8]; /* align_up(sizeof("CORE"), 4) */
+     union {
+         struct aarch64_elf_prstatus prstatus;
+         struct aarch64_user_vfp_state vfp;
++        struct aarch64_user_sve_header sve;
+     };
+ } QEMU_PACKED;
+=20
+@@ -76,6 +87,8 @@ struct aarch64_note {
+             (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_elf_prstatus=
+))
+ #define AARCH64_PRFPREG_NOTE_SIZE \
+             (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_user_vfp_sta=
+te))
++#define AARCH64_SVE_NOTE_SIZE(env) \
++            (AARCH64_NOTE_HEADER_SIZE + sve_size(env))
+=20
+ static void aarch64_note_init(struct aarch64_note *note, DumpState *s,
+                               const char *name, Elf64_Word namesz,
+@@ -128,11 +141,102 @@ static int aarch64_write_elf64_prfpreg(WriteCoreDump=
+Function f,
+     return 0;
+ }
+=20
++#ifdef TARGET_AARCH64
++static off_t sve_zreg_offset(uint32_t vq, int n)
++{
++    off_t off =3D sizeof(struct aarch64_user_sve_header);
++    return ROUND_UP(off, 16) + vq * 16 * n;
++}
++
++static off_t sve_preg_offset(uint32_t vq, int n)
++{
++    return sve_zreg_offset(vq, 32) + vq * 16 / 8 * n;
++}
++
++static off_t sve_fpsr_offset(uint32_t vq)
++{
++    off_t off =3D sve_preg_offset(vq, 17);
++    return ROUND_UP(off, 16);
++}
++
++static off_t sve_fpcr_offset(uint32_t vq)
++{
++    return sve_fpsr_offset(vq) + sizeof(uint32_t);
++}
++
++static uint32_t sve_current_vq(CPUARMState *env)
++{
++    return sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
++}
++
++static size_t sve_size_vq(uint32_t vq)
++{
++    off_t off =3D sve_fpcr_offset(vq) + sizeof(uint32_t);
++    return ROUND_UP(off, 16);
++}
++
++static size_t sve_size(CPUARMState *env)
++{
++    return sve_size_vq(sve_current_vq(env));
++}
++
++static int aarch64_write_elf64_sve(WriteCoreDumpFunction f,
++                                   CPUARMState *env, int cpuid,
++                                   DumpState *s)
++{
++    struct aarch64_note *note;
++    ARMCPU *cpu =3D env_archcpu(env);
++    uint32_t vq =3D sve_current_vq(env);
++    uint64_t tmp[ARM_MAX_VQ * 2], *r;
++    uint32_t fpr;
++    uint8_t *buf;
++    int ret, i;
++
++    note =3D g_malloc0(AARCH64_SVE_NOTE_SIZE(env));
++    buf =3D (uint8_t *)&note->sve;
++
++    aarch64_note_init(note, s, "LINUX", 6, NT_ARM_SVE, sve_size_vq(vq));
++
++    note->sve.size =3D cpu_to_dump32(s, sve_size_vq(vq));
++    note->sve.max_size =3D cpu_to_dump32(s, sve_size_vq(cpu->sve_max_vq));
++    note->sve.vl =3D cpu_to_dump16(s, vq * 16);
++    note->sve.max_vl =3D cpu_to_dump16(s, cpu->sve_max_vq * 16);
++    note->sve.flags =3D cpu_to_dump16(s, 1);
++
++    for (i =3D 0; i < 32; ++i) {
++        r =3D sve_bswap64(tmp, &env->vfp.zregs[i].d[0], vq * 2);
++        memcpy(&buf[sve_zreg_offset(vq, i)], r, vq * 16);
++    }
++
++    for (i =3D 0; i < 17; ++i) {
++        r =3D sve_bswap64(tmp, r =3D &env->vfp.pregs[i].p[0],
++                        DIV_ROUND_UP(vq * 2, 8));
++        memcpy(&buf[sve_preg_offset(vq, i)], r, vq * 16 / 8);
++    }
++
++    fpr =3D cpu_to_dump32(s, vfp_get_fpsr(env));
++    memcpy(&buf[sve_fpsr_offset(vq)], &fpr, sizeof(uint32_t));
++
++    fpr =3D cpu_to_dump32(s, vfp_get_fpcr(env));
++    memcpy(&buf[sve_fpcr_offset(vq)], &fpr, sizeof(uint32_t));
++
++    ret =3D f(note, AARCH64_SVE_NOTE_SIZE(env), s);
++    g_free(note);
++
++    if (ret < 0) {
++        return -1;
++    }
++
++    return 0;
++}
++#endif
++
+ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+                              int cpuid, void *opaque)
+ {
+     struct aarch64_note note;
+-    CPUARMState *env =3D &ARM_CPU(cs)->env;
++    ARMCPU *cpu =3D ARM_CPU(cs);
++    CPUARMState *env =3D &cpu->env;
+     DumpState *s =3D opaque;
+     uint64_t pstate, sp;
+     int ret, i;
+@@ -163,7 +267,18 @@ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, =
+CPUState *cs,
+         return -1;
+     }
+=20
+-    return aarch64_write_elf64_prfpreg(f, env, cpuid, s);
++    ret =3D aarch64_write_elf64_prfpreg(f, env, cpuid, s);
++    if (ret) {
++        return ret;
++    }
++
++#ifdef TARGET_AARCH64
++    if (cpu_isar_feature(aa64_sve, cpu)) {
++        ret =3D aarch64_write_elf64_sve(f, env, cpuid, s);
++    }
++#endif
++
++    return ret;
+ }
+=20
+ /* struct pt_regs from arch/arm/include/asm/ptrace.h */
+@@ -335,6 +450,11 @@ ssize_t cpu_get_note_size(int class, int machine, int =
+nr_cpus)
+     if (class =3D=3D ELFCLASS64) {
+         note_size =3D AARCH64_PRSTATUS_NOTE_SIZE;
+         note_size +=3D AARCH64_PRFPREG_NOTE_SIZE;
++#ifdef TARGET_AARCH64
++        if (cpu_isar_feature(aa64_sve, cpu)) {
++            note_size +=3D AARCH64_SVE_NOTE_SIZE(env);
++        }
++#endif
+     } else {
+         note_size =3D ARM_PRSTATUS_NOTE_SIZE;
+         if (arm_feature(env, ARM_FEATURE_VFP)) {
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 40f2c45e17e3..c1aedbeac0db 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -980,6 +980,31 @@ void aarch64_sve_narrow_vq(CPUARMState *env, unsigned =
+vq);
+ void aarch64_sve_change_el(CPUARMState *env, int old_el,
+                            int new_el, bool el0_a64);
+ void aarch64_add_sve_properties(Object *obj);
++
++/*
++ * SVE registers are encoded in KVM's memory in an endianness-invariant fo=
+rmat.
++ * The byte at offset i from the start of the in-memory representation con=
+tains
++ * the bits [(7 + 8 * i) : (8 * i)] of the register value. As this means t=
+he
++ * lowest offsets are stored in the lowest memory addresses, then that nea=
+rly
++ * matches QEMU's representation, which is to use an array of host-endian
++ * uint64_t's, where the lower offsets are at the lower indices. To comple=
+te
++ * the translation we just need to byte swap the uint64_t's on big-endian =
+hosts.
++ */
++static inline uint64_t *sve_bswap64(uint64_t *dst, uint64_t *src, int nr)
++{
++#ifdef HOST_WORDS_BIGENDIAN
++    int i;
++
++    for (i =3D 0; i < nr; ++i) {
++        dst[i] =3D bswap64(src[i]);
++    }
++
++    return dst;
++#else
++    return src;
++#endif
++}
++
+ #else
+ static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { =
+}
+ static inline void aarch64_sve_change_el(CPUARMState *env, int o,
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 876184b8fe4d..e2da756e65ed 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -876,30 +876,6 @@ static int kvm_arch_put_fpsimd(CPUState *cs)
+     return 0;
+ }
+=20
+-/*
+- * SVE registers are encoded in KVM's memory in an endianness-invariant fo=
+rmat.
+- * The byte at offset i from the start of the in-memory representation con=
+tains
+- * the bits [(7 + 8 * i) : (8 * i)] of the register value. As this means t=
+he
+- * lowest offsets are stored in the lowest memory addresses, then that nea=
+rly
+- * matches QEMU's representation, which is to use an array of host-endian
+- * uint64_t's, where the lower offsets are at the lower indices. To comple=
+te
+- * the translation we just need to byte swap the uint64_t's on big-endian =
+hosts.
+- */
+-static uint64_t *sve_bswap64(uint64_t *dst, uint64_t *src, int nr)
+-{
+-#ifdef HOST_WORDS_BIGENDIAN
+-    int i;
+-
+-    for (i =3D 0; i < nr; ++i) {
+-        dst[i] =3D bswap64(src[i]);
+-    }
+-
+-    return dst;
+-#else
+-    return src;
+-#endif
+-}
+-
+ /*
+  * KVM SVE registers come in slices where ZREGs have a slice size of 2048 =
+bits
+  * and PREGS and the FFR have a slice size of 256 bits. However we simply =
+hard
+--=20
+2.21.1

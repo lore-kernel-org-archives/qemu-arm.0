@@ -1,110 +1,83 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp315509lfp;
-        Mon, 20 Jan 2020 07:13:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyah0qp4xOyOVvg6QGa/zaHHJWsyr+f3koTrqTMfqcvBSVqqDkcOW6nSlPkUkuJcG/avQFc
-X-Received: by 2002:a17:906:728b:: with SMTP id b11mr21306335ejl.126.1579533233017;
-        Mon, 20 Jan 2020 07:13:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579533233; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp338738lfp;
+        Mon, 20 Jan 2020 07:35:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyhqIzpXXXN4qrl0GIEYry0RcnWcwKbtfjxdd8KOcw7oPSrd+DWrMMywG5yiC0vw1QP0Hs0
+X-Received: by 2002:ac8:43c1:: with SMTP id w1mr20589296qtn.156.1579534504405;
+        Mon, 20 Jan 2020 07:35:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579534504; cv=none;
         d=google.com; s=arc-20160816;
-        b=KGLJk02mWxWYPvSV9M0qYFqemUDh/wafee01ZHTk/g6o+YePrjGPUApQUfWIdNNRym
-         w6b9V3gdTgRj/t6UVWshvaGXtAD4y/h/o9O6s5hCr6TblnCEPCZzGudiRBKNjHlED+Xz
-         qrMgf00EfleM8LgxUlXBKWIti20JtII8uNvpWAZ0uDt7tYlCBjognrDYRQg39nTiXmdj
-         cGc8kwqe0Hv/mqdaxgyPfEshGFkxEI4lV3EMFypNjKKZ09rz7tnsVT6E3yHuS5RWa66w
-         N1XLj8tqQypv4N3pZGi2t68dK5TPZSvayFTNn/Wfu/kmMH97i9Vf+oWh/cXMp34146Td
-         PHpA==
+        b=Ysuv2yeAXXYsxQT23Jt8d8/o6RPQVDL545h2M7um68GGc/t8WZIh2cA6hKYIbDwd+7
+         d7zLx4P5V55l76GCtTYkQlziaAxOh/FIGMJDEhPQHPE7jXfY4K8QnnklGX7HzQ/QkhUb
+         KElUEUuJZ6X47skDbL4qdmo3tPjzeEj5Cx4hX6LFK2doVyPMI5zC1STIIWNOqczvI81q
+         KET9c3adAyfz3ZGciuqDPI534Ybe+QjFg0gV6dxDzfytaapasBhCUM+Cbjlxh2KZ1icH
+         B0AGE6uROnmdwZ0vUxDGAZLQ1rIEznP1ZwhBZ1WOoJ4MPSm4gPKnvbPLdyrKs73d9B3W
+         3H+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=7wmGLD3FxzDo4Qx/leRHIRfy/hhT4P6n4YaMsQ4AyN0=;
-        b=ehIqBqutMJ5zaFX/BwtMmKfxdW5JISQ5XvKoWhXjtVTu8VPHUE4FDiJL00H1uWPmiz
-         9RmizycKjiOisTAxJOaf9arPu0EJli5LNXmoyq5eKz5gcrX3efRyi1IIQyXo+UVZNlP7
-         FOXLgJzAxQFRAp3cCV9tHXax44nC/cPolDv392EFnGR/z8MesZ0BfblUBXn/6TrVWzqi
-         oFnzjnYE76yK1VzchL168lZR/BYLhVE7aiOU7LA00Ky48SXcxLjuqdPZ4D2lU8NN76ET
-         69mQ4kFO8dCWM9t1nu6JAabvowQwrTX6oqgt44pJRxoU5vXevqHaiMhNYhZ5JvJWbzYw
-         VACQ==
+         :message-id:from:references:to:subject;
+        bh=RqQVR1KmV9jCxVUupn3m3ePLrIKEMNgUXQaKUxWShmU=;
+        b=in7etSMsXNsUl3qN22vZcUdw2SYISJRxOUMFXV7SyCaMESUMulN3O3+F8nPkPttLsA
+         Fq3BXEAcuuLjo6iDW6YIajcbsFP3PPVkibYrTKQAgq7oNRhXuxrAicGkeZ4aTGfz8xwA
+         LUdfvo3MKlPoOeU7vvaKHQACZgdP+WITTv/F2fNYtjSyuBPYzy0NTJ7pDQhC5735FxNV
+         ga751we8Ie8o+n+A0VJajsgEouupqp6wvLdl2AkjhQNLos9Bdj4v8SVHu+UQveT1PArQ
+         EGGX3BcpEVON430hney84qTMUZdmsECL3g+ajDYBvdwAfqnMFye9ZyY8sjP1jXCXeUIi
+         8BHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gakwTrm6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8si22904126edx.311.2020.01.20.07.13.52
+        by mx.google.com with ESMTPS id dc4si19667467qvb.164.2020.01.20.07.35.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 07:13:53 -0800 (PST)
+        Mon, 20 Jan 2020 07:35:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gakwTrm6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38422 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38720 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itYkR-0001v2-E4
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 10:13:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47461)
+	id 1itZ4x-0007x6-QX
+	for alex.bennee@linaro.org; Mon, 20 Jan 2020 10:35:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50641)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1itYiT-0000EM-NP
- for qemu-devel@nongnu.org; Mon, 20 Jan 2020 10:11:50 -0500
+ (envelope-from <clg@kaod.org>) id 1itZ40-00077g-2Q
+ for qemu-devel@nongnu.org; Mon, 20 Jan 2020 10:34:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1itYiS-0008L1-7B
- for qemu-devel@nongnu.org; Mon, 20 Jan 2020 10:11:49 -0500
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:41980)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1itYiR-0008KW-VX; Mon, 20 Jan 2020 10:11:48 -0500
-Received: by mail-pg1-x543.google.com with SMTP id x8so15682117pgk.8;
- Mon, 20 Jan 2020 07:11:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=7wmGLD3FxzDo4Qx/leRHIRfy/hhT4P6n4YaMsQ4AyN0=;
- b=gakwTrm6YofyPH/0EjTZtzRtzAQVDPCnBBbuqh4/L/lpF4X4i4nt+Zf3sPCUNk7APd
- 3VJPRYk1cFjMOUKQQJUj4BXJEX8hkmT2sq0FhkmNGzVNaLxhs+jKgTx59NO/5UQL4QtM
- I0KgOYGMARZUXo5PUIfZ7PQkn3z489LlJ+8UuLm8OEtILOcRNX7KDJqrwkOUG23r1Dbj
- lw7Z+DoupzTJVQXPxqnBYU84Dw1yNqcJJsZpt96cjhDMrF/duFKZ02WO6MSIhqDoLK8/
- Z4+pWiozTSFROY1eb7GWt8dPKSVpPZ20TOZx8mf4TNVhDehXZ8K1cOwPvr2b9T8ti4wX
- iPxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7wmGLD3FxzDo4Qx/leRHIRfy/hhT4P6n4YaMsQ4AyN0=;
- b=MFkmHIaiA33OEH+SGkU7VuRmy78xifN6ywpw8VQesdvw2bDNRLDKeNAlCI5h5NvVPG
- O3BXT/070/B3EonHsW/XL86tWQ/cURT3QaVFJ3UEIVHm2FLnLcf1NJHMqVbIFJaq/zG9
- 9Q9vIPDR5I8pmVoDT2CyOGoOE/PlGH5DZXO+4Z35oanH00lVHrQx4cc31JHt0JfGL92q
- 1Da1hLPfEOwKJE7ohKasslSadlS4weOOmN5izNSj/R/wVnXbxBJEzyRsPerSevHo9L7W
- WvaxL1WR1fCpkJqZWRblohrFP8vS5m+kH2HLTozY0PF4pgH17w9PopzvSJ6WaBxgUF0R
- PwWw==
-X-Gm-Message-State: APjAAAUUm38npFF2n/crhzvwii0QJcDtEW4danJJjkNXfK+TThVOnmWd
- YLGGgT9jreoT6MWjupuae1gfhJsA
-X-Received: by 2002:aa7:8096:: with SMTP id v22mr17570821pff.240.1579533106552; 
- Mon, 20 Jan 2020 07:11:46 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- a2sm37978328pgv.64.2020.01.20.07.11.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Jan 2020 07:11:45 -0800 (PST)
-Subject: Re: [PATCH v2 2/7] hw/arm/exynos4210: Fix DMA initialization
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200118164229.22539-1-linux@roeck-us.net>
- <20200118164229.22539-3-linux@roeck-us.net>
- <CAFEAcA8yH8deTL6PrX42Lh_TbR=gx4QbukuKUOo1XgLod=2ZXg@mail.gmail.com>
- <526c74cf-bbaf-2c79-08ec-9472288aaa59@roeck-us.net>
- <CAFEAcA8j=RnrBcoJzpYJZcLUgyq4N-o7TVKhutoDR27idUu-1g@mail.gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <aae690a7-d580-e08c-c8cb-5aa6b30e5c2c@roeck-us.net>
-Date: Mon, 20 Jan 2020 07:11:44 -0800
+ (envelope-from <clg@kaod.org>) id 1itZ3v-0000b1-IH
+ for qemu-devel@nongnu.org; Mon, 20 Jan 2020 10:34:03 -0500
+Received: from 2.mo2.mail-out.ovh.net ([188.165.53.149]:41390)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1itZ3v-0000aE-BL
+ for qemu-devel@nongnu.org; Mon, 20 Jan 2020 10:33:59 -0500
+Received: from player699.ha.ovh.net (unknown [10.109.143.3])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTP id CD9FF1BEF27
+ for <qemu-devel@nongnu.org>; Mon, 20 Jan 2020 16:33:56 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player699.ha.ovh.net (Postfix) with ESMTPSA id 467F2E6636D9;
+ Mon, 20 Jan 2020 15:33:50 +0000 (UTC)
+Subject: Re: [PATCH v3 07/84] hw/arm/aspeed: actually check RAM size
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <83481ccb-38e4-d0a2-18b5-66fcd7248521@kaod.org>
+ <1579530112-80542-1-git-send-email-imammedo@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <e124b5be-42ec-03c2-10ee-874b966a3e67@kaod.org>
+Date: Mon, 20 Jan 2020 16:33:46 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8j=RnrBcoJzpYJZcLUgyq4N-o7TVKhutoDR27idUu-1g@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <1579530112-80542-1-git-send-email-imammedo@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::543
+X-Ovh-Tracer-Id: 14439666306392361904
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrudeigddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieelledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 188.165.53.149
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,35 +89,339 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: andrew@aj.id.au, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ joel@jms.id.au
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9qqLvAdgewbe
+X-TUID: f1ItzmeUvu3M
 
-On 1/20/20 6:46 AM, Peter Maydell wrote:
-> On Mon, 20 Jan 2020 at 14:30, Guenter Roeck <linux@roeck-us.net> wrote:
->>
->> On 1/20/20 5:35 AM, Peter Maydell wrote:
->>> As the comment in or-irq.h notes, we can safely simply bump the
->>> #define value without breaking anything if you need more input
->>> OR lines than 32.
->>>
->>
->> Yes, I noticed the comment, and I did that initially, but then
->> I noticed the complexity of actually doing it in the code
->> increasing it from 16 to 32, and decided I better leave it alone.
-> 
-> Yeah, the conversion from 16 to 32 was hairy because our
-> initial implementation made the migration-compatibility
-> awkward. When I wrote that conversion I was careful to
-> avoid creating a similar problem for my future self if
-> I needed to bump the value again :-)
-> 
+On 1/20/20 3:21 PM, Igor Mammedov wrote:
+> It's supposed that SOC will check if "-m" provided
+> RAM size is valid by setting "ram-size" property and
+> then board would read back valid (possibly corrected
+> value) to map RAM MemoryReging with valid size.
+> It isn't doing so, since check is called only
+> indirectly from
+>   aspeed_sdmc_reset()->asc->compute_conf()
+> or much later when guest writes to configuration
+> register.
+>=20
+> So depending on "-m" value QEMU end-ups with a warning
+> and an invalid MemoryRegion size allocated and mapped.
+> (examples:
+>  -M ast2500-evb -m 1M
+>     0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-contain=
+er
+>       0000000080000000-00000000800fffff (prio 0, ram): ram
+>       0000000080100000-00000000bfffffff (prio 0, i/o): max_ram
+>  -M ast2500-evb -m 3G
+>     0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-contain=
+er
+>       0000000080000000-000000013fffffff (prio 0, ram): ram
+>       [DETECTED OVERFLOW!] 0000000140000000-00000000bfffffff (prio 0, i=
+/o): max_ram
+> )
+> On top of that sdmc falls back and reports to guest
+> "default" size, it thinks machine should have.
+>=20
+> This patch makes ram-size check actually work and
+> changes behavior from a warning later on during
+> machine reset to error_fatal at the moment SOC.ram-size
+> is set so user will have to fix RAM size on CLI
+> to start machine.
+>=20
+> It also gets out of the way mutable ram-size logic,
+> so we could consolidate RAM allocation logic around
+> pre-allocated hostmem backend (supplied by user or
+> auto created by generic machine code depending on
+> supplied -m/mem-path/mem-prealloc options.
+>=20
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 
-Ok, with that in mind I'll add a patch increasing the limit.
-I'll set it to 48. Then we can discuss if the new limit is
-sufficient/acceptable ;-).
+LGTM, some comments below.
+
+> ---
+> v3:
+>   * replace
+>      [PATCH v2 07/86] arm:aspeed: convert valid RAM sizes to data
+>      [PATCH v2 08/86] arm:aspeed: actually check RAM size
+>     with a simplified variant that adds ram_size check to sdmc.ram-size
+>     property
+>=20
+> CC: clg@kaod.org
+> CC: peter.maydell@linaro.org
+> CC: andrew@aj.id.au
+> CC: joel@jms.id.au
+> CC: qemu-arm@nongnu.org
+>=20
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  include/hw/misc/aspeed_sdmc.h |  1 +
+>  hw/arm/aspeed.c               | 13 +++-----
+>  hw/misc/aspeed_sdmc.c         | 77 +++++++++++++++++++++++++++++++++++=
+--------
+>  3 files changed, 70 insertions(+), 21 deletions(-)
+>=20
+> diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdm=
+c.h
+> index 5dbde59..cea1e67 100644
+> --- a/include/hw/misc/aspeed_sdmc.h
+> +++ b/include/hw/misc/aspeed_sdmc.h
+> @@ -40,6 +40,7 @@ typedef struct AspeedSDMCClass {
+>      SysBusDeviceClass parent_class;
+> =20
+>      uint64_t max_ram_size;
+> +    const uint64_t *valid_ram_sizes;
+>      uint32_t (*compute_conf)(AspeedSDMCState *s, uint32_t data);
+>      void (*write)(AspeedSDMCState *s, uint32_t reg, uint32_t data);
+>  } AspeedSDMCClass;
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index cc06af4..c8573e5 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -191,8 +191,12 @@ static void aspeed_machine_init(MachineState *mach=
+ine)
+> =20
+>      sc =3D ASPEED_SOC_GET_CLASS(&bmc->soc);
+> =20
+> +    /*
+> +     * This will error out if isize is not supported by memory control=
+ler.
+> +     */
+>      object_property_set_uint(OBJECT(&bmc->soc), ram_size, "ram-size",
+> -                             &error_abort);
+> +                             &error_fatal);
+> +
+>      object_property_set_int(OBJECT(&bmc->soc), amc->hw_strap1, "hw-str=
+ap1",
+>                              &error_abort);
+>      object_property_set_int(OBJECT(&bmc->soc), amc->hw_strap2, "hw-str=
+ap2",
+> @@ -215,13 +219,6 @@ static void aspeed_machine_init(MachineState *mach=
+ine)
+>      object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
+>                               &error_abort);
+> =20
+> -    /*
+> -     * Allocate RAM after the memory controller has checked the size
+> -     * was valid. If not, a default value is used.
+> -     */
+> -    ram_size =3D object_property_get_uint(OBJECT(&bmc->soc), "ram-size=
+",
+> -                                        &error_abort);
+> -
+>      memory_region_allocate_system_memory(&bmc->ram, NULL, "ram", ram_s=
+ize);
+>      memory_region_add_subregion(&bmc->ram_container, 0, &bmc->ram);
+>      memory_region_add_subregion(get_system_memory(),
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> index 2df3244..b36b362 100644
+> --- a/hw/misc/aspeed_sdmc.c
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -17,6 +17,9 @@
+>  #include "migration/vmstate.h"
+>  #include "qapi/error.h"
+>  #include "trace.h"
+> +#include "qemu/units.h"
+> +#include "qemu/cutils.h"
+> +#include "qapi/visitor.h"
+> =20
+>  /* Protection Key Register */
+>  #define R_PROT            (0x00 / 4)
+> @@ -163,10 +166,7 @@ static int ast2400_rambits(AspeedSDMCState *s)
+>          break;
+>      }
+
+Now that the ramsizes are being checked, I think we can add in the defaul=
+t
+statement :
+
+	g_assert_not_reached();
+
+
+> =20
+> -    /* use a common default */
+> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 256M",
+> -                s->ram_size);
+> -    s->ram_size =3D 256 << 20;
+> +    assert(0);
+>      return ASPEED_SDMC_DRAM_256MB;
+
+
+and skip the default return value.
+
+A part from that,
+
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
 Thanks,
-Guenter
+
+C.
+
+>  }
+> =20
+> @@ -185,10 +185,7 @@ static int ast2500_rambits(AspeedSDMCState *s)
+>          break;
+>      }
+> =20
+> -    /* use a common default */
+> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 512M",
+> -                s->ram_size);
+> -    s->ram_size =3D 512 << 20;
+> +    assert(0);
+>      return ASPEED_SDMC_AST2500_512MB;
+>  }
+> =20
+> @@ -207,10 +204,7 @@ static int ast2600_rambits(AspeedSDMCState *s)
+>          break;
+>      }
+> =20
+> -    /* use a common default */
+> -    warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 1024M",
+> -                s->ram_size);
+> -    s->ram_size =3D 1024 << 20;
+> +    assert(0);
+>      return ASPEED_SDMC_AST2600_1024MB;
+>  }
+> =20
+> @@ -225,6 +219,51 @@ static void aspeed_sdmc_reset(DeviceState *dev)
+>      s->regs[R_CONF] =3D asc->compute_conf(s, 0);
+>  }
+> =20
+> +static void aspeed_sdmc_get_ram_size(Object *obj, Visitor *v, const ch=
+ar *name,
+> +                                     void *opaque, Error **errp)
+> +{
+> +    AspeedSDMCState *s =3D ASPEED_SDMC(obj);
+> +    int64_t value =3D s->ram_size;
+> +
+> +    visit_type_int(v, name, &value, errp);
+> +}
+> +
+> +static void aspeed_sdmc_set_ram_size(Object *obj, Visitor *v, const ch=
+ar *name,
+> +                                     void *opaque, Error **errp)
+> +{
+> +    int i;
+> +    char *sz;
+> +    int64_t value;
+> +    Error *local_err =3D NULL;
+> +    AspeedSDMCState *s =3D ASPEED_SDMC(obj);
+> +    AspeedSDMCClass *asc =3D ASPEED_SDMC_GET_CLASS(s);
+> +
+> +    visit_type_int(v, name, &value, &local_err);
+> +    if (local_err) {
+> +        error_propagate(errp, local_err);
+> +        return;
+> +    }
+> +
+> +    for (i =3D 0; asc->valid_ram_sizes[i]; i++) {
+> +        if (value =3D=3D asc->valid_ram_sizes[i]) {
+> +            s->ram_size =3D value;
+> +            return;
+> +        }
+> +    }
+> +
+> +    sz =3D size_to_str(value);
+> +    error_setg(&local_err, "Invalid RAM size %s", sz);
+> +    g_free(sz);
+> +    error_propagate(errp, local_err);
+> +}
+> +
+> +static void aspeed_sdmc_initfn(Object *obj)
+> +{
+> +    object_property_add(obj, "ram-size", "int",
+> +                        aspeed_sdmc_get_ram_size, aspeed_sdmc_set_ram_=
+size,
+> +                        NULL, NULL, NULL);
+> +}
+> +
+>  static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
+>  {
+>      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+> @@ -249,7 +288,6 @@ static const VMStateDescription vmstate_aspeed_sdmc=
+ =3D {
+>  };
+> =20
+>  static Property aspeed_sdmc_properties[] =3D {
+> -    DEFINE_PROP_UINT64("ram-size", AspeedSDMCState, ram_size, 0),
+>      DEFINE_PROP_UINT64("max-ram-size", AspeedSDMCState, max_ram_size, =
+0),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+> @@ -268,6 +306,7 @@ static const TypeInfo aspeed_sdmc_info =3D {
+>      .name =3D TYPE_ASPEED_SDMC,
+>      .parent =3D TYPE_SYS_BUS_DEVICE,
+>      .instance_size =3D sizeof(AspeedSDMCState),
+> +    .instance_init =3D aspeed_sdmc_initfn,
+>      .class_init =3D aspeed_sdmc_class_init,
+>      .class_size =3D sizeof(AspeedSDMCClass),
+>      .abstract   =3D true,
+> @@ -298,6 +337,9 @@ static void aspeed_2400_sdmc_write(AspeedSDMCState =
+*s, uint32_t reg,
+>      s->regs[reg] =3D data;
+>  }
+> =20
+> +static const uint64_t
+> +aspeed_2400_ram_sizes[] =3D { 64 * MiB, 128 * MiB, 256 * MiB, 512 * Mi=
+B, 0};
+> +
+>  static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data=
+)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+> @@ -307,6 +349,7 @@ static void aspeed_2400_sdmc_class_init(ObjectClass=
+ *klass, void *data)
+>      asc->max_ram_size =3D 512 << 20;
+>      asc->compute_conf =3D aspeed_2400_sdmc_compute_conf;
+>      asc->write =3D aspeed_2400_sdmc_write;
+> +    asc->valid_ram_sizes =3D aspeed_2400_ram_sizes;
+>  }
+> =20
+>  static const TypeInfo aspeed_2400_sdmc_info =3D {
+> @@ -351,6 +394,9 @@ static void aspeed_2500_sdmc_write(AspeedSDMCState =
+*s, uint32_t reg,
+>      s->regs[reg] =3D data;
+>  }
+> =20
+> +static const uint64_t
+> +aspeed_2500_ram_sizes[] =3D { 128 * MiB, 256 * MiB, 512 * MiB, 1024 * =
+MiB, 0};
+> +
+>  static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data=
+)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+> @@ -360,6 +406,7 @@ static void aspeed_2500_sdmc_class_init(ObjectClass=
+ *klass, void *data)
+>      asc->max_ram_size =3D 1024 << 20;
+>      asc->compute_conf =3D aspeed_2500_sdmc_compute_conf;
+>      asc->write =3D aspeed_2500_sdmc_write;
+> +    asc->valid_ram_sizes =3D aspeed_2500_ram_sizes;
+>  }
+> =20
+>  static const TypeInfo aspeed_2500_sdmc_info =3D {
+> @@ -404,6 +451,9 @@ static void aspeed_2600_sdmc_write(AspeedSDMCState =
+*s, uint32_t reg,
+>      s->regs[reg] =3D data;
+>  }
+> =20
+> +static const uint64_t
+> +aspeed_2600_ram_sizes[] =3D { 256 * MiB, 512 * MiB, 1024 * MiB, 2048 *=
+ MiB, 0};
+> +
+>  static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data=
+)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+> @@ -413,6 +463,7 @@ static void aspeed_2600_sdmc_class_init(ObjectClass=
+ *klass, void *data)
+>      asc->max_ram_size =3D 2048 << 20;
+>      asc->compute_conf =3D aspeed_2600_sdmc_compute_conf;
+>      asc->write =3D aspeed_2600_sdmc_write;
+> +    asc->valid_ram_sizes =3D aspeed_2600_ram_sizes;
+>  }
+> =20
+>  static const TypeInfo aspeed_2600_sdmc_info =3D {
+>=20
+

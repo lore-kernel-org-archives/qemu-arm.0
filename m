@@ -1,93 +1,94 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp12158lfp;
-        Mon, 20 Jan 2020 02:11:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwvoBgyUBlM8TFeRHzN/gUsIlFKyYF7OOOjXOLshqrhcuvvR1kjAaukLugXCv8a+EEyytsA
-X-Received: by 2002:a37:4ac6:: with SMTP id x189mr49109648qka.219.1579515106572;
-        Mon, 20 Jan 2020 02:11:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579515106; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp12240lfp;
+        Mon, 20 Jan 2020 02:11:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxs/9m/cgAqoA6RhKFZdcCzZoACorgyCoZlUQpPTb0m9qogSYKb5MJCJHuhdFOGe0F4EDbS
+X-Received: by 2002:a37:4792:: with SMTP id u140mr47551291qka.100.1579515112814;
+        Mon, 20 Jan 2020 02:11:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579515112; cv=none;
         d=google.com; s=arc-20160816;
-        b=wQtD7xxz969kc6cYF8F7YYjTAU1+RIGQOBGSfvjg1kRaU62OLKocT2tljyiySNuh4M
-         codDwe2WLCr7DtT8waNdEuOcl+TmxQe80bQib7o1vgB7hwDcVuSjodBUCxIhCZ9RPit5
-         FmeNuW9daC0HQCvM7tVAWqBxhoig6oDJ5cjX8Y5HPTrWNbZyijO7xZNmaiycCRVg/z3x
-         ktOtPF6qrVdrcy+ovY/iypn7e3UVco4eVcr3kqzoG9lu2+GCNjwYfFeOty8aT009F3v0
-         pmrsXFPWY0uQ/66qZKmLrmZeIIgAbBna64OVEv2R4H55McKXH4RYaahw6U372NhZuC8H
-         liHQ==
+        b=gzuZgXL9pM1PKy6NTZGkEe+LaRxvavOwaJ2Ugv0mO/Hr3s3f52MP+LEdZgBJQM99MP
+         WH/bpc+MHuxouBhwflssYQxlTe3Jnvh+680vScnh+9Es1ckK8AoWv8VZjCBchJJJZAE3
+         vs7v1blbwdB0DhwxW1C6go5Cmc65IACZzzu4BRf4if/lotXvClhi+41J0qMTJwD0dL8B
+         NAMYbsVf3oKt4UKWWefmJGivQt7fSR30FE7YutrLS20WKs6gZXEAAC35yr+x+R7v9vZu
+         tmrgfeaG0z3WTyk4wZegUZFZH3pZ/d4s6FXbQSW/DoyiUb3eL90PRYXY5HM5SzYsniyG
+         OHng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=qx8CU4vUpbk6cZv/6f0WoXQNz8mtd0dvMgB8MqypsPQ=;
-        b=iGKC7mt0SIjenBmzYHQUQUCQv0MjmnP1PVMu2BKCQhINITvlWUYJw9+928UJ/+cm0t
-         JNHGTS01eBu45WbsaDJJdq1cWXFmrH94ZK1r4PmVNiiyFi0a0UB9rMEQKblVjuY5gxQ4
-         eWEqttMquqoXN63nKjeuZH7xPoyQGW3ZM3UEwKvJ5OIzDMsE5VTij+bPVnQkVOHMUX9a
-         8kJnVWvYc3ETO78XRDOhJTiCehudNquCXRhKjoNIlIzV4gQ9vASIOW/GjlmtTWIkhePM
-         BGm4pi8lzKXoLXjTU0YSiE6JS1glJrZHxc9VvsewoyPnP6IvCg/jmtN5G8arOvBqVGvt
-         o9GA==
+        bh=5JK0SPejtfnhDv2PZmh14HOx+dBSg1c8oIKDy0lXZ34=;
+        b=R9j1oqT7nkV7PY0CCQQ8jWqoue/OIazgPflItogXmVEPLQt8GoqiXWzp6+Irv4SSAI
+         sTHRXTpgQZ+WriJyicWVmJCGXb83UvBze+spW4a0EV6L8QxdCaGCJytUIoV8xUUticmB
+         HwLFtB3IzkTDjdIVg3m0/RvOlJbdQTNxwhHLSGEzDrq4ktdAOf3sgF7ZRnzGQlGsFgJr
+         bag0aZewUxO8vVozZg37Z0GH+Z27ZAd/8/41FR34IqVGZykK30M0E7/riirj5pIO1aFM
+         ukseRJpZsN3iPDf6OU9wKp4wiWjkThNX4xFYJQmkqu1sbfsYhHZ7WQstxvi3XLRjsdkW
+         JyXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="R/3Axwck";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T63F3fOg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e15si19760271qkl.365.2020.01.20.02.11.46
+        by mx.google.com with ESMTPS id bk17si17923628qvb.219.2020.01.20.02.11.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 02:11:46 -0800 (PST)
+        Mon, 20 Jan 2020 02:11:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="R/3Axwck";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T63F3fOg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33136 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33138 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itU25-0006Zl-L4
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 05:11:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34041)
+	id 1itU2B-0006iu-Ko
+	for alex.bennee@linaro.org; Mon, 20 Jan 2020 05:11:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33957)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1itU16-0005Wu-Av
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:46 -0500
+ (envelope-from <drjones@redhat.com>) id 1itU10-0005Om-12
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1itU14-00037o-DU
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:44 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:25567
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <drjones@redhat.com>) id 1itU0w-0002zd-46
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:37 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:45171
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1itU14-00037O-8J
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:42 -0500
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1itU0w-0002zR-0E
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579515041;
+ s=mimecast20190719; t=1579515033;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qx8CU4vUpbk6cZv/6f0WoXQNz8mtd0dvMgB8MqypsPQ=;
- b=R/3Axwck6BrIaYjVArejqjk4694OFfd6UPlJLjBmOyayM0WqV/OwYIsvFE2etthtwm8+r6
- 4RqotKyWDjThFV04LM8Td2phNVyRilnjTO6PHQFw7tDxIkgzRvJrHK+VkR3qkbEm9B84JT
- dJjEQksDa7DII2ECi9EtGBJR5Q1f7go=
+ bh=5JK0SPejtfnhDv2PZmh14HOx+dBSg1c8oIKDy0lXZ34=;
+ b=T63F3fOggoWKldbIOZ0fWrE7T+L2AxzMrusD/DDv0P4hd+NMDeWODWzqaYofh+uWxst30e
+ baL6yHov9Kdoe5aysTYQ0ZOskyJXITyxG9ZczjNOvyNFmcDn2qKAjiPvDIwiWtR4fgm/kd
+ JPiDl9q+N3BHesuZZpv4u1kUpMa2mwc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-8-NEuF5oTWMJqWukTCWBKefA-1; Mon, 20 Jan 2020 05:10:38 -0500
+ us-mta-210-2FuIHtcgPqWv671Nk2Qayg-1; Mon, 20 Jan 2020 05:10:30 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3C7BC800D48;
- Mon, 20 Jan 2020 10:10:37 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E25E9800D48;
+ Mon, 20 Jan 2020 10:10:28 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7365248;
- Mon, 20 Jan 2020 10:10:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 24C3C48;
+ Mon, 20 Jan 2020 10:10:26 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [RFC PATCH v3 5/6] target/arm/kvm: Implement virtual time adjustment
-Date: Mon, 20 Jan 2020 11:10:22 +0100
-Message-Id: <20200120101023.16030-6-drjones@redhat.com>
+Subject: [RFC PATCH v3 1/6] target/arm/kvm: trivial: Clean up header
+ documentation
+Date: Mon, 20 Jan 2020 11:10:18 +0100
+Message-Id: <20200120101023.16030-2-drjones@redhat.com>
 In-Reply-To: <20200120101023.16030-1-drjones@redhat.com>
 References: <20200120101023.16030-1-drjones@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: NEuF5oTWMJqWukTCWBKefA-1
+X-MC-Unique: 2FuIHtcgPqWv671Nk2Qayg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
@@ -110,312 +111,176 @@ Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org,
  richard.henderson@linaro.org, guoheyi@huawei.com, msys.mizuma@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 67zAOwbYw6ks
+X-TUID: K0ndrh1AYA+A
 
-When a VM is stopped (such as when it's paused) guest virtual time
-should stop counting. Otherwise, when the VM is resumed it will
-experience time jumps and its kernel may report soft lockups. Not
-counting virtual time while the VM is stopped has the side effect
-of making the guest's time appear to lag when compared with real
-time, and even with time derived from the physical counter. For
-this reason, this change, which is enabled by default, comes with
-a KVM CPU feature allowing it to be disabled, restoring legacy
-behavior.
-
-This patch only provides the implementation of the virtual time
-adjustment. A subsequent patch will provide the CPU property
-allowing the change to be enabled and disabled.
-
-Reported-by: Bijan Mottahedeh <bijan.mottahedeh@oracle.com>
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- target/arm/cpu.h     |  7 ++++
- target/arm/kvm.c     | 92 ++++++++++++++++++++++++++++++++++++++++++++
- target/arm/kvm32.c   |  3 ++
- target/arm/kvm64.c   |  3 ++
- target/arm/kvm_arm.h | 38 ++++++++++++++++++
- target/arm/machine.c |  7 ++++
- 6 files changed, 150 insertions(+)
+ target/arm/kvm_arm.h | 46 ++++++++++++++++++++++++++------------------
+ 1 file changed, 27 insertions(+), 19 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 40f2c45e17e3..2e6477c92c9c 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -821,6 +821,13 @@ struct ARMCPU {
-     /* KVM init features for this CPU */
-     uint32_t kvm_init_features[7];
-=20
-+    /* KVM CPU state */
-+
-+    /* KVM virtual time adjustment */
-+    bool kvm_adjvtime;
-+    bool kvm_vtime_dirty;
-+    uint64_t kvm_vtime;
-+
-     /* Uniprocessor system with MP extensions */
-     bool mp_is_up;
-=20
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b87b59a02ad8..91e38def6b29 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -359,6 +359,22 @@ static int compare_u64(const void *a, const void *b)
-     return 0;
- }
-=20
-+/*
-+ * cpreg_values are sorted in ascending order by KVM register ID
-+ * (see kvm_arm_init_cpreg_list). This allows us to cheaply find
-+ * the storage for a KVM register by ID with a binary search.
-+ */
-+static uint64_t *kvm_arm_get_cpreg_ptr(ARMCPU *cpu, uint64_t regidx)
-+{
-+    uint64_t *res;
-+
-+    res =3D bsearch(&regidx, cpu->cpreg_indexes, cpu->cpreg_array_len,
-+                  sizeof(uint64_t), compare_u64);
-+    assert(res);
-+
-+    return &cpu->cpreg_values[res - cpu->cpreg_indexes];
-+}
-+
- /* Initialize the ARMCPU cpreg list according to the kernel's
-  * definition of what CPU registers it knows about (and throw away
-  * the previous TCG-created cpreg list).
-@@ -512,6 +528,23 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
-     return ok;
- }
-=20
-+void kvm_arm_cpu_pre_save(ARMCPU *cpu)
-+{
-+    /* KVM virtual time adjustment */
-+    if (cpu->kvm_vtime_dirty) {
-+        *kvm_arm_get_cpreg_ptr(cpu, KVM_REG_ARM_TIMER_CNT) =3D cpu->kvm_vt=
-ime;
-+    }
-+}
-+
-+void kvm_arm_cpu_post_load(ARMCPU *cpu)
-+{
-+    /* KVM virtual time adjustment */
-+    if (cpu->kvm_adjvtime) {
-+        cpu->kvm_vtime =3D *kvm_arm_get_cpreg_ptr(cpu, KVM_REG_ARM_TIMER_C=
-NT);
-+        cpu->kvm_vtime_dirty =3D true;
-+    }
-+}
-+
- void kvm_arm_reset_vcpu(ARMCPU *cpu)
- {
-     int ret;
-@@ -579,6 +612,50 @@ int kvm_arm_sync_mpstate_to_qemu(ARMCPU *cpu)
-     return 0;
- }
-=20
-+void kvm_arm_get_virtual_time(CPUState *cs)
-+{
-+    ARMCPU *cpu =3D ARM_CPU(cs);
-+    struct kvm_one_reg reg =3D {
-+        .id =3D KVM_REG_ARM_TIMER_CNT,
-+        .addr =3D (uintptr_t)&cpu->kvm_vtime,
-+    };
-+    int ret;
-+
-+    if (cpu->kvm_vtime_dirty) {
-+        return;
-+    }
-+
-+    ret =3D kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    if (ret) {
-+        error_report("Failed to get KVM_REG_ARM_TIMER_CNT");
-+        abort();
-+    }
-+
-+    cpu->kvm_vtime_dirty =3D true;
-+}
-+
-+void kvm_arm_put_virtual_time(CPUState *cs)
-+{
-+    ARMCPU *cpu =3D ARM_CPU(cs);
-+    struct kvm_one_reg reg =3D {
-+        .id =3D KVM_REG_ARM_TIMER_CNT,
-+        .addr =3D (uintptr_t)&cpu->kvm_vtime,
-+    };
-+    int ret;
-+
-+    if (!cpu->kvm_vtime_dirty) {
-+        return;
-+    }
-+
-+    ret =3D kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    if (ret) {
-+        error_report("Failed to set KVM_REG_ARM_TIMER_CNT");
-+        abort();
-+    }
-+
-+    cpu->kvm_vtime_dirty =3D false;
-+}
-+
- int kvm_put_vcpu_events(ARMCPU *cpu)
- {
-     CPUARMState *env =3D &cpu->env;
-@@ -690,6 +767,21 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_=
-run *run)
-     return MEMTXATTRS_UNSPECIFIED;
- }
-=20
-+void kvm_arm_vm_state_change(void *opaque, int running, RunState state)
-+{
-+    CPUState *cs =3D opaque;
-+    ARMCPU *cpu =3D ARM_CPU(cs);
-+
-+    if (running) {
-+        if (cpu->kvm_adjvtime) {
-+            kvm_arm_put_virtual_time(cs);
-+        }
-+    } else {
-+        if (cpu->kvm_adjvtime) {
-+            kvm_arm_get_virtual_time(cs);
-+        }
-+    }
-+}
-=20
- int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
- {
-diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-index 32bf8d6757c4..3a8b437eef0b 100644
---- a/target/arm/kvm32.c
-+++ b/target/arm/kvm32.c
-@@ -16,6 +16,7 @@
- #include "qemu-common.h"
- #include "cpu.h"
- #include "qemu/timer.h"
-+#include "sysemu/runstate.h"
- #include "sysemu/kvm.h"
- #include "kvm_arm.h"
- #include "internals.h"
-@@ -198,6 +199,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         return -EINVAL;
-     }
-=20
-+    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cs);
-+
-     /* Determine init features for this CPU */
-     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
-     if (cpu->start_powered_off) {
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 5cafcb7d36dd..e486eaf1f944 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -23,6 +23,7 @@
- #include "qemu/host-utils.h"
- #include "qemu/main-loop.h"
- #include "exec/gdbstub.h"
-+#include "sysemu/runstate.h"
- #include "sysemu/kvm.h"
- #include "sysemu/kvm_int.h"
- #include "kvm_arm.h"
-@@ -735,6 +736,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         return -EINVAL;
-     }
-=20
-+    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cs);
-+
-     /* Determine init features for this CPU */
-     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
-     if (cpu->start_powered_off) {
 diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index b48a9c95573b..01a9a1827851 100644
+index 8e14d400e8ab..b48a9c95573b 100644
 --- a/target/arm/kvm_arm.h
 +++ b/target/arm/kvm_arm.h
-@@ -127,6 +127,23 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level);
-  */
- bool write_kvmstate_to_list(ARMCPU *cpu);
+@@ -28,9 +28,9 @@
+ int kvm_arm_vcpu_init(CPUState *cs);
 =20
-+/**
-+ * kvm_arm_cpu_pre_save:
-+ * @cpu: ARMCPU
-+ *
-+ * Called after write_kvmstate_to_list() from cpu_pre_save() to update
-+ * the cpreg list with KVM CPU state.
-+ */
-+void kvm_arm_cpu_pre_save(ARMCPU *cpu);
-+
-+/**
-+ * kvm_arm_cpu_post_load:
-+ * @cpu: ARMCPU
-+ *
-+ * Called from cpu_post_load() to update KVM CPU state from the cpreg list=
-.
-+ */
-+void kvm_arm_cpu_post_load(ARMCPU *cpu);
-+
  /**
-  * kvm_arm_reset_vcpu:
+- * kvm_arm_vcpu_finalize
++ * kvm_arm_vcpu_finalize:
+  * @cs: CPUState
+- * @feature: int
++ * @feature: feature to finalize
+  *
+  * Finalizes the configuration of the specified VCPU feature by
+  * invoking the KVM_ARM_VCPU_FINALIZE ioctl. Features requiring
+@@ -75,8 +75,8 @@ void kvm_arm_register_device(MemoryRegion *mr, uint64_t d=
+evid, uint64_t group,
+ int kvm_arm_init_cpreg_list(ARMCPU *cpu);
+=20
+ /**
+- * kvm_arm_reg_syncs_via_cpreg_list
+- * regidx: KVM register index
++ * kvm_arm_reg_syncs_via_cpreg_list:
++ * @regidx: KVM register index
+  *
+  * Return true if this KVM register should be synchronized via the
+  * cpreg list of arbitrary system registers, false if it is synchronized
+@@ -85,8 +85,8 @@ int kvm_arm_init_cpreg_list(ARMCPU *cpu);
+ bool kvm_arm_reg_syncs_via_cpreg_list(uint64_t regidx);
+=20
+ /**
+- * kvm_arm_cpreg_level
+- * regidx: KVM register index
++ * kvm_arm_cpreg_level:
++ * @regidx: KVM register index
+  *
+  * Return the level of this coprocessor/system register.  Return value is
+  * either KVM_PUT_RUNTIME_STATE, KVM_PUT_RESET_STATE, or KVM_PUT_FULL_STAT=
+E.
+@@ -148,6 +148,8 @@ void kvm_arm_init_serror_injection(CPUState *cs);
   * @cpu: ARMCPU
-@@ -292,6 +309,24 @@ int kvm_arm_sync_mpstate_to_kvm(ARMCPU *cpu);
+  *
+  * Get VCPU related state from kvm.
++ *
++ * Returns: 0 if success else < 0 error code
+  */
+ int kvm_get_vcpu_events(ARMCPU *cpu);
+=20
+@@ -156,6 +158,8 @@ int kvm_get_vcpu_events(ARMCPU *cpu);
+  * @cpu: ARMCPU
+  *
+  * Put VCPU related state to kvm.
++ *
++ * Returns: 0 if success else < 0 error code
+  */
+ int kvm_put_vcpu_events(ARMCPU *cpu);
+=20
+@@ -205,10 +209,12 @@ typedef struct ARMHostCPUFeatures {
+=20
+ /**
+  * kvm_arm_get_host_cpu_features:
+- * @ahcc: ARMHostCPUClass to fill in
++ * @ahcf: ARMHostCPUClass to fill in
+  *
+  * Probe the capabilities of the host kernel's preferred CPU and fill
+  * in the ARMHostCPUClass struct accordingly.
++ *
++ * Returns true on success and false otherwise.
+  */
+ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf);
+=20
+@@ -242,7 +248,7 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+ bool kvm_arm_aarch32_supported(CPUState *cs);
+=20
+ /**
+- * bool kvm_arm_pmu_supported:
++ * kvm_arm_pmu_supported:
+  * @cs: CPUState
+  *
+  * Returns: true if the KVM VCPU can enable its PMU
+@@ -251,7 +257,7 @@ bool kvm_arm_aarch32_supported(CPUState *cs);
+ bool kvm_arm_pmu_supported(CPUState *cs);
+=20
+ /**
+- * bool kvm_arm_sve_supported:
++ * kvm_arm_sve_supported:
+  * @cs: CPUState
+  *
+  * Returns true if the KVM VCPU can enable SVE and false otherwise.
+@@ -259,26 +265,30 @@ bool kvm_arm_pmu_supported(CPUState *cs);
+ bool kvm_arm_sve_supported(CPUState *cs);
+=20
+ /**
+- * kvm_arm_get_max_vm_ipa_size - Returns the number of bits in the
+- * IPA address space supported by KVM
+- *
++ * kvm_arm_get_max_vm_ipa_size:
+  * @ms: Machine state handle
++ *
++ * Returns the number of bits in the IPA address space supported by KVM
+  */
+ int kvm_arm_get_max_vm_ipa_size(MachineState *ms);
+=20
+ /**
+- * kvm_arm_sync_mpstate_to_kvm
++ * kvm_arm_sync_mpstate_to_kvm:
+  * @cpu: ARMCPU
+  *
+  * If supported set the KVM MP_STATE based on QEMU's model.
++ *
++ * Returns 0 on success and -1 on failure.
+  */
+ int kvm_arm_sync_mpstate_to_kvm(ARMCPU *cpu);
+=20
+ /**
+- * kvm_arm_sync_mpstate_to_qemu
++ * kvm_arm_sync_mpstate_to_qemu:
+  * @cpu: ARMCPU
+  *
+  * If supported get the MP_STATE from KVM and store in QEMU's model.
++ *
++ * Returns 0 on success and aborts on failure.
   */
  int kvm_arm_sync_mpstate_to_qemu(ARMCPU *cpu);
 =20
-+/**
-+ * kvm_arm_get_virtual_time:
-+ * @cs: CPUState
-+ *
-+ * Gets the VCPU's virtual counter and stores it in the KVM CPU state.
-+ */
-+void kvm_arm_get_virtual_time(CPUState *cs);
-+
-+/**
-+ * kvm_arm_put_virtual_time:
-+ * @cs: CPUState
-+ *
-+ * Sets the VCPU's virtual counter to the value stored in the KVM CPU stat=
-e.
-+ */
-+void kvm_arm_put_virtual_time(CPUState *cs);
-+
-+void kvm_arm_vm_state_change(void *opaque, int running, RunState state);
-+
- int kvm_arm_vgic_probe(void);
+@@ -292,7 +302,8 @@ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int =
+level);
 =20
- void kvm_arm_pmu_set_irq(CPUState *cs, int irq);
-@@ -339,6 +374,9 @@ static inline void kvm_arm_pmu_set_irq(CPUState *cs, in=
-t irq) {}
- static inline void kvm_arm_pmu_init(CPUState *cs) {}
+ static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+ {
+-    /* This should never actually be called in the "not KVM" case,
++    /*
++     * This should never actually be called in the "not KVM" case,
+      * but set up the fields to indicate an error anyway.
+      */
+     cpu->kvm_target =3D QEMU_KVM_ARM_TARGET_NONE;
+@@ -377,23 +388,20 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_de=
+bug_exit_arch *debug_exit);
+  *
+  * Return: TRUE if any hardware breakpoints in use.
+  */
+-
+ bool kvm_arm_hw_debug_active(CPUState *cs);
 =20
- static inline void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map) {=
-}
-+
-+static inline void kvm_arm_get_virtual_time(CPUState *cs) {}
-+static inline void kvm_arm_put_virtual_time(CPUState *cs) {}
- #endif
+ /**
+  * kvm_arm_copy_hw_debug_data:
+- *
+  * @ptr: kvm_guest_debug_arch structure
+  *
+  * Copy the architecture specific debug registers into the
+  * kvm_guest_debug ioctl structure.
+  */
+ struct kvm_guest_debug_arch;
+-
+ void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
 =20
- static inline const char *gic_class_name(void)
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index eb28b2381bb5..241890ac8cf7 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -642,6 +642,12 @@ static int cpu_pre_save(void *opaque)
-             /* This should never fail */
-             abort();
-         }
-+
-+        /*
-+         * kvm_arm_cpu_pre_save() must be called after
-+         * write_kvmstate_to_list()
-+         */
-+        kvm_arm_cpu_pre_save(cpu);
-     } else {
-         if (!write_cpustate_to_list(cpu, false)) {
-             /* This should never fail. */
-@@ -744,6 +750,7 @@ static int cpu_post_load(void *opaque, int version_id)
-          * we're using it.
-          */
-         write_list_to_cpustate(cpu);
-+        kvm_arm_cpu_post_load(cpu);
-     } else {
-         if (!write_list_to_cpustate(cpu)) {
-             return -1;
+ /**
+- * its_class_name
++ * its_class_name:
+  *
+  * Return the ITS class name to use depending on whether KVM acceleration
+  * and KVM CAP_SIGNAL_MSI are supported
 --=20
 2.21.1
 

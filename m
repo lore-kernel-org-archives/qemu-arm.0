@@ -1,99 +1,102 @@
-Received: by 2002:a0c:cd0f:0:0:0:0:0 with SMTP id b15csp2904040qvm;
-        Mon, 20 Jan 2020 05:42:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz4C1tXrDLN7Etqei+EQYtZhCtJAgl1KZmE11pSAISO/OIfcJ9Ax3zgzJhvnoXbZQoSfJcX
-X-Received: by 2002:a17:906:a950:: with SMTP id hh16mr20643459ejb.75.1579527774412;
-        Mon, 20 Jan 2020 05:42:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579527774; cv=none;
+Received: by 2002:a0c:cd0f:0:0:0:0:0 with SMTP id b15csp2906871qvm;
+        Mon, 20 Jan 2020 05:46:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyspYG8+rMrZTpLaN4xmJD1fenwDs6ru3rYYiQB1Uah+49S9xLeXxL79pbOW0XXl4bHfkzB
+X-Received: by 2002:a05:620a:1522:: with SMTP id n2mr46899436qkk.108.1579527963990;
+        Mon, 20 Jan 2020 05:46:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579527963; cv=none;
         d=google.com; s=arc-20160816;
-        b=RQIyVq3/GLrDZMYADEpPx3tpbR/Q+y6C3jfVXp7fUCcYT9dWjrB14hkAcA9emmnqei
-         v84L25r7FqYN4syovcjUdhfeLiNqFypltQ8CDRV4MAp6aj8KwF/t7lFCVxFfxiaC61ot
-         iKxwHHsgpGSxHimMU4boq1unVK/ZaqHrabm9By5jZJzxHNtVsOTl7Hvcoa1v6l1cs9lj
-         zQ/TBFNGEJDNuQ1CXwWL1R/FV0CTlKSWhZ5/WSaZyusx6i0coqNZGXvSgdXu+7GV17d4
-         C5TjtFpmoTGIUqTFOPHzeQyjKlwRsNOFUB+RpfoooE48RmiP3ojVGZl2vZVlMe81uAkX
-         nFbw==
+        b=CJU8oTcTH+lmmXX4aLLMT+nufQPS1cXm0Nbvy0GXCF0iy4fgK4l+q2uHp6EF38JuK6
+         zEDf6fPOc2NjqnAiOBIKBGqmrzqbrbRGpPBBJCy6jKDyvJ+UnmgWxhgGTkc4u5BBVbDB
+         9RazNLD0L2jlKH2rnD/b5tLRdVdZ15apnJQfVWT2Q9dOPk7WUdlA3D1G0fYM9f2X35JK
+         /1Ux+6Rm/efudU9d9IGazJ49eIWuapbFXPtYctKfkAvFSWBMMcWsR56t2bNY3Mxuf40E
+         DRx0qNRQh5OT+DUIfyD/FLXWZYsCYAPVscE4P9FgYsxtH2k7TqIjqCRD00bi1gOi4rXp
+         F3HA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kdNEsOiVaIODjv6dgkstvRzqdNiV8ZCDhWNk6pNFEro=;
-        b=QGiM9Nw3VlXMUQzfx4kUpS+uPZlZPoSGXeHqJ5CGs819vJAgzU+kRwx4ogZ/I0p+al
-         /b57gfXjQG1bVEYQaQoVRyOWoAkkQniZ/Lz6FFigJUeW76e+2p2Y0Uua7cNPBJ4R9G3s
-         /rHkifEqleaPZvPhSfN06/rGv//uRUJRFfs5Og+IpTISdmVIN9ClNtQtRmxRLmodJydJ
-         +D981lfKCrAYIqadztuqg7/956WUHdGRr3C2twOsqTUbor+2No1z4A3ncQYNyvCmIcqN
-         abCwuMk53R+oy+bDG6nTDJLzvNrZnjs8+VvNHLOXR+nD4Q9r6SXvrsO0Pvy77THytmIS
-         AO2A==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=oN8F9afqLuIFryMw+qq858SrYas53Kd5xSSXy4jkxUI=;
+        b=wHQJUkwcxEvAeHDgalNsrsmyUoxPUMGW3Db+R9IqMWG4vwfF3L+HUovKxsZMAUwRoU
+         I53+1KfSFxkPov+ONSNgvf/7cJXNixh91tnTVxmPJbn3t1K3nisxJk8j1PKGSKDQ7DXF
+         CmqX6QVOSWHjwMEWz8KTxsAY4p0sFqqRhBL+5ZXWG5aMooutc/7xuMvucDYcHSPB2S4W
+         gc6Aefm94fsTUzKDUGKRoJbQkFdinNyMsvQ06rNqEzS7XNRiFHhWIxTViKw/quUGHqCU
+         gww3LYRRQxDZDrSA1n93fOPfDtMvLUgRN4CUIWolblQ7P12WxYnLn+7amPj6QZRtsjPw
+         VWhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XrXyBbfD;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MQLtTkTU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q15si22305295edc.332.2020.01.20.05.42.54
+        by mx.google.com with ESMTPS id c74si20209571qkb.187.2020.01.20.05.46.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 05:42:54 -0800 (PST)
+        Mon, 20 Jan 2020 05:46:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XrXyBbfD;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MQLtTkTU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36730 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itXKP-00016V-5X
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 08:42:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35252)
+	id 1itXNT-0003IC-DG
+	for alex.bennee@linaro.org; Mon, 20 Jan 2020 08:46:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35588)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1itXJn-0000EK-Rx
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 08:42:16 -0500
+ (envelope-from <drjones@redhat.com>) id 1itXN9-0003Hg-3y
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 08:45:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1itXJm-0002Eu-K8
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 08:42:15 -0500
-Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941]:38045)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1itXJm-0002EP-GI
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 08:42:14 -0500
-Received: by mail-ua1-x941.google.com with SMTP id c7so11470227uaf.5
- for <qemu-arm@nongnu.org>; Mon, 20 Jan 2020 05:42:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kdNEsOiVaIODjv6dgkstvRzqdNiV8ZCDhWNk6pNFEro=;
- b=XrXyBbfDBJEPfmFTbgFFEgHOKg+Pq9bdOvewvjb6SyiMeF+KxuiUDaWFXZQNzKXEjO
- KPNFrEaeF8FBZNCvgtO6CIiMYlBJKQ6L//66uj2hDxIkDvVJZ9uGLVBLXUzIH4n+MdYI
- Kb+q3SfpAAtbsNptWwYpkVpBOC21Rr0d7ae/bxuEIlXA/BbMcqYuONdD9LoiE429hj5T
- nXDWxW7IWbM1FrIGnPrNdsQOL20VH5ABMEWc+iW3YB+ZbHzFouLIv5HCJnrw8zRWf0yh
- unK+H4W2AFu8URlyvd47Xu/EOcvIIME61vMG/AKRmyMIfWtsZBri4naQkatA11M8JQk5
- kmGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kdNEsOiVaIODjv6dgkstvRzqdNiV8ZCDhWNk6pNFEro=;
- b=YXQ10VVrClYhwavQMkaZ1I8zQeGCy8gTNKgdjgeoQx1PJz/yHVIQEzEl23iBDxT/+H
- IeXj07S2tAjyiYmg8nm3TUm/fBNdr9cheUE2uHvu7H9pcRaG9Zl1ckGSSFhoetohymIe
- Hm8NQTcwBoQSpPtwY2XcWGprozUQstgvgEVAhD6T9SfDlgwsH4ShuHmhTHKWZfPYfSOY
- S4ebeaUUMFA6YVjxgVQ2ND34szpKiNoNSQhWelNvqJD5FDXND6eLRHTMgBJwP8FWvERf
- V1btz3yonSNqYxG9kcFxVpTAz1R/KNGK12kMIh6NYdzr/Pq+SvagKZRWeItVEEBKxylo
- zR8A==
-X-Gm-Message-State: APjAAAW+bX0l6qNnp0FVtuD0xLZSGUzb1sPnqMfOc2EBEC6JYajRcQth
- 7XtPXqPGZ29q0atNOqnh6jXpO0A0lVrhC953YSWJ1o/frhQ=
-X-Received: by 2002:a05:6830:13da:: with SMTP id
- e26mr15109614otq.97.1579527338736; 
- Mon, 20 Jan 2020 05:35:38 -0800 (PST)
+ (envelope-from <drjones@redhat.com>) id 1itXN7-0004qK-Ah
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 08:45:42 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:22416
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1itXN6-0004oe-Bq
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 08:45:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579527939;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oN8F9afqLuIFryMw+qq858SrYas53Kd5xSSXy4jkxUI=;
+ b=MQLtTkTU2zlPChBQ94HJe1wWWG0dd/d7PtDEviFsb8hmjQjetvD5njhHshh1nIC1Tf3wW5
+ Bw62VsBpr9tqdU8zfkeWYwt19coSlWjz7k5x0jBW9+byEUazZdFRvyx+QXr/H/mgPt7NPH
+ +XJhg/CI+xpVS6jqR1J5uxkRvmx5PSM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-263-7w2UE76kPqioDqnFuNQZaw-1; Mon, 20 Jan 2020 08:45:36 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 82434100551A;
+ Mon, 20 Jan 2020 13:45:34 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CBBD87DB5D;
+ Mon, 20 Jan 2020 13:45:32 +0000 (UTC)
+Date: Mon, 20 Jan 2020 14:45:30 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [RFC PATCH v2 0/5] target/arm/kvm: Adjust virtual time
+Message-ID: <20200120134530.4w2om4smyyrzsurw@kamzik.brq.redhat.com>
+References: <20191212173320.11610-1-drjones@redhat.com>
+ <CAFEAcA9FprSotg11rS0fM94QiciysZ6kgKhyU4eQfZg7YYaL5Q@mail.gmail.com>
+ <CAFEAcA_oF2MX5PGNtp2YZeNRHB5vHM8NbMqQs2=2sAw1PnqfBw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20200118164229.22539-1-linux@roeck-us.net>
- <20200118164229.22539-3-linux@roeck-us.net>
-In-Reply-To: <20200118164229.22539-3-linux@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Jan 2020 13:35:27 +0000
-Message-ID: <CAFEAcA8yH8deTL6PrX42Lh_TbR=gx4QbukuKUOo1XgLod=2ZXg@mail.gmail.com>
-Subject: Re: [PATCH v2 2/7] hw/arm/exynos4210: Fix DMA initialization
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::941
+In-Reply-To: <CAFEAcA_oF2MX5PGNtp2YZeNRHB5vHM8NbMqQs2=2sAw1PnqfBw@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: 7w2UE76kPqioDqnFuNQZaw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,44 +108,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: bijan.mottahedeh@oracle.com, Marc Zyngier <maz@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Heyi Guo <guoheyi@huawei.com>, msys.mizuma@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GuiK9xW3bt/H
+X-TUID: 4sssTrTyGAPz
 
-On Sat, 18 Jan 2020 at 16:42, Guenter Roeck <linux@roeck-us.net> wrote:
+On Mon, Dec 16, 2019 at 03:44:05PM +0000, Peter Maydell wrote:
+> On Mon, 16 Dec 2019 at 15:33, Peter Maydell <peter.maydell@linaro.org> wr=
+ote:
+> > So, to be clear, you mean that:
+> >
+> > (1) the kernel headers say:
+> >
+> > /* EL0 Virtual Timer Registers */
+> > #define KVM_REG_ARM_TIMER_CTL           ARM64_SYS_REG(3, 3, 14, 3, 1)
+> > #define KVM_REG_ARM_TIMER_CNT           ARM64_SYS_REG(3, 3, 14, 3, 2)
+> > #define KVM_REG_ARM_TIMER_CVAL          ARM64_SYS_REG(3, 3, 14, 0, 2)
+> >
+> > (2) some of the RHSes of these are wrong
+> >
+> > (3) but the kernel internally is using the same 'wrong' value, so
+> > userspace also needs to use that value, ie trust the #defined name
+> > rather than manufacturing one ?
+> >
+> > That's awkward. I think it would be worth at least having a kernel
+> > patch to add a comment clearly documenting this bug.
+> >
+> > (This error seems to only be in the 64-bit ABI, not 32-bit.)
+> >
+> > QEMU does assume that the kernel's ID register values match
+> > the hardware for sysregs in some ways -- we use this when we
+> > construct our mapping from KVM register IDs as returned by
+> > KVM_GET_REG_LIST to QEMU cpreg definitions and thus CPUState
+> > struct fields. I *think* that in this case the only visible
+> > effect will be that gdbstub will show you the CNT value
+> > if you ask it to print the value of the CVAL sysreg.
+>=20
+> ...perhaps we should work around this kernel bug in the
+> kvm_to_cpreg_id() and cpreg_to_kvm_id() functions. (Need
+> to think through/test whether that would break migration.)
 >
-> First parameter to exynos4210_get_irq() is not the SPI port number,
-> but the interrupt group number. Interrupt groups are 20 for mdma
-> and 21 for pdma. Interrupts are not inverted. Controllers support 32
-> events (pdma) or 31 events (mdma). Events must all be routed to a single
-> interrupt line. Set other parameters as documented in Exynos4210 datasheet,
-> section 8 (DMA controller).
->
-> Reduce the number of DMA events to 30 for both pdma and mdma. QEMU's OR
-> interrupt gates are currently limited to less than 32, and we would need
-> 33 gates to support 32 event interrupts plus the abort interrupt.
-> Operationally this should not make a difference since they are all
-> routed to a single interrupt line anyway.
->
-> Fixes: 59520dc65e ("hw/arm/exynos4210: Add DMA support for the Exynos4210")
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
-> v2: Use interrupt combiner instead of connecting all events to a
->     single interrupt. Limit number of events per DMA channel
->     to 31 to meet qemu interrupt combiner limitations.
->     [Not sure if "assert(s->num_lines < MAX_OR_LINES);" should be
->      "assert(s->num_lines <= MAX_OR_LINES);"]
 
-Yes, that looks like a bug in or-irq.c -- it should be using <=,
-so 32 is permissible.
+I just did some grepping for this too and, while it's easy to get
+lost, I think I've confirmed what you state, that the only visible
+effect is in gdb. I'll try to test this, but I think the workaround
+in kvm_to_cpreg_id and cpreg_to_kvm_id is a probably a good idea,
+because
 
-As the comment in or-irq.h notes, we can safely simply bump the
-#define value without breaking anything if you need more input
-OR lines than 32.
+   1) new qemu will be corrected
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+   2) migrate old qemu to new qemu (with same machine type)
 
-thanks
--- PMM
+      gdb cnt and cval swapped until first kvmstate sync
+
+      (maybe too small a window of brokenness to notice/care?)
+
+   3) migrate new qemu to old qemu (with same machine type)
+
+      gdb cnt and cval correct until first kvmstate sync
+
+      (old machine type keeps its old bug - except for same small
+       window as for (2))
+
+Thanks,
+drew
+

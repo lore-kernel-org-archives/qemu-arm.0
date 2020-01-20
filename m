@@ -1,103 +1,95 @@
-Received: by 2002:a0c:cd0f:0:0:0:0:0 with SMTP id b15csp2722379qvm;
-        Mon, 20 Jan 2020 02:31:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwhnkwMlWzthKj2/Co6iDCTsNS09wruQPDjtYRL2w2y3EW2hxpl4prmmDjJuUCfiu5Hu/c4
-X-Received: by 2002:ac8:3364:: with SMTP id u33mr19973139qta.267.1579516300070;
-        Mon, 20 Jan 2020 02:31:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579516300; cv=none;
+Received: by 2002:a0c:cd0f:0:0:0:0:0 with SMTP id b15csp2724844qvm;
+        Mon, 20 Jan 2020 02:34:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx8yuTYJF6pkb24Aix2BTpKfd4nvuWWHcMkbObrLuS698iKPb7cxUEqIl9CPA88N9zTskaj
+X-Received: by 2002:ac8:5353:: with SMTP id d19mr19485455qto.313.1579516461437;
+        Mon, 20 Jan 2020 02:34:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579516461; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z5V+1kJJqPpiMv91KBaMgOD+G/2Fz/wIAO0v7kZN03qNn2du77MySST4qgiNs39EUc
-         usITu5b0mEMC1pmBppcpNJt7nKcrQmZfYC4vyi7sFrpQQcZnYcJaKInHQr5oX7NT3ddQ
-         GT27a1KQcsGhc9nqkGcectLK4WY32DIZ9sC8LckpOmj8pRrU/Wgd4HHexxk5eoWinslr
-         28mR0sujaYL5Zzp3PgtkZfBZAGc2CmeflsqismzmdYRJVs9MTDyokODK0QAyUQqvj2pX
-         YhZtX7EipD69E99FWdd7w8qqTO/bcddWigOSEowA7wiDhqDc1g2ERwA8SlUxs2PlV/gi
-         XjMw==
+        b=JOwq61Z04NCXm7EKEuTE5amvijd59wjNS5UPK4SZJAcShl6S1CMoy+oLsqOsmOzsgd
+         0QK/2+9UqhHywfvkN2rFitoyZM4zbmB/YUXM/+cRLC0csT+iSvWzkRvslGl+u8dmih3J
+         SJsuMHDJkKi1Vw/IneqblItih1CQC2pIZWbaLsYD0CLqQP8Ccd26gUXc7aj13/EMPieh
+         dYTF7drgcvSI5EORbIA0hmzCnmONZ2qcwaXRjXC0AvgRtxbUrxWkZqgxK1uybCc7iU6m
+         bSdkPK6KDLQLy/HSBadwL9K1KW62FyGu93345AhFGQ0NDwz0ChgS7e3HF4Ssct6BKNx8
+         pglQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=XBelWxvArASSPZtYigkQBYN0VtHAWrUo/XWfxW3mvEQ=;
-        b=d+XTDnsArMAlNEB9/dlKf8mZM/tIMLSGB+F0LGamznbVH7sl1pmLBveOScQ/35xRjS
-         ZmrXAGWfkI49rYvZs+qqcQkId8Lt5JO4xpDG25qsRD8B4ka1NTc5IWWoBW5TLVsXyFUb
-         +2rlVvgD+DwDMn2KyumnbxBaQDtaeYc08Xl02rmSbtE8KURwariAXT06lCKFCSe5TAnm
-         5iHkdz16Y44wsVTX6Qt1agb4S5pYcqUDrGdTtQBjwqKe+UcVRi2oLcWKERO4F2OPzsRt
-         HbZyNeHdSi95V7MadjDfYCCy+xOhI9jqwAyRDzniqQBkjy+qSn92VGXrXA3nNSdmjWGi
-         ThsQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=wmVetT6Wmd1qdK97OqNgXmPvOKikUGYsOBMzDsWtpng=;
+        b=pkE7duWQzQp7ZDyTZtFAzwNcbIfy55yuIsUGjk4D+vi/Gv9mxauFQFQrdUPQslg1gj
+         f0WNNNee8l1lIqP/bTeVxdu0FCP5qF0SA1ZoeQ+xgXqBXkHIl4sgwzJVYb3xGmokAgt+
+         xKHK0LMLrwO/ZhAD+P1+oP5OLvsLPu690/FdWbiLDJoJHSLDQ/YLBpQLC4pqsXTd/LUV
+         LUgFx6r5BnzVQZ7tKfwmmeE3eeZxF7/4hLtsRDxIaZDdm0N0IIKGGS8b6L8EKHAulViX
+         v3zoMsKJHCDAyh3DwQeUnyyTtK9J5muVg4ohBN084+e+Oueed/W8Ml7iPqQfCc/pZMqV
+         wvEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fNQU/Kz5";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UhIyEODR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h12si11915243qkk.130.2020.01.20.02.31.40
+        by mx.google.com with ESMTPS id v45si19050765qta.205.2020.01.20.02.34.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 02:31:40 -0800 (PST)
+        Mon, 20 Jan 2020 02:34:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fNQU/Kz5";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UhIyEODR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33420 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33476 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itULL-0000nn-Al
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 05:31:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36568)
+	id 1itUNw-0003hH-7R
+	for alex.bennee@linaro.org; Mon, 20 Jan 2020 05:34:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36926)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1itUL0-0000lQ-PA
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:31:19 -0500
+ (envelope-from <quintela@redhat.com>) id 1itUNa-0003b0-L8
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:34:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1itUKz-0008KW-OC
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:31:18 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:45093
+ (envelope-from <quintela@redhat.com>) id 1itUNW-0001F2-NB
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:33:58 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:47404
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1itUKz-0008J5-K4
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:31:17 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1itUNW-0001EV-Ik
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:33:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579516277;
+ s=mimecast20190719; t=1579516434;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XBelWxvArASSPZtYigkQBYN0VtHAWrUo/XWfxW3mvEQ=;
- b=fNQU/Kz5H76dwARsvw1sbNeA5PDN4epINuLSezNSlfkK/h72v7JrRzceSUKCPAPi2CrqrC
- W3WL1oTdkSUAcRYgafSzQQBT4EnZ7dxjry4W4Wmmomz+fEMLrymsdniowAWKqyyPZiwa6o
- nxmFGOpNOBKwSr1kycQNI1Mj/KB7bZ4=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=wmVetT6Wmd1qdK97OqNgXmPvOKikUGYsOBMzDsWtpng=;
+ b=UhIyEODRGJsAoEKG3HLAUa0lDVd4wQPzSROz+rIcOt5Ib9yRiQsILaiyw4/IrRE7/n/ZbB
+ 6Ujs/4GWoFz01lUh5VjKrzhHy/xSL9gJ5MktOoMwGnjbVl6f0KbxaOAPhymyfJdFSA5blZ
+ /SICvyUx14OcEVYLyLgrgSwM4Sif+ZI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-113-5kdIwiKGNAyvIl_RWCjz_g-1; Mon, 20 Jan 2020 05:31:11 -0500
+ us-mta-162-YkgNYRasP5i4PR72-XoDyw-1; Mon, 20 Jan 2020 05:33:52 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8BBE6800D48;
- Mon, 20 Jan 2020 10:31:09 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A3712860E5;
- Mon, 20 Jan 2020 10:31:06 +0000 (UTC)
-Date: Mon, 20 Jan 2020 11:31:04 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC PATCH v2 5/5] target/arm/cpu: Add the kvm-no-adjvtime CPU
- property
-Message-ID: <20200120103104.quc4r6577c6rrpux@kamzik.brq.redhat.com>
-References: <20191212173320.11610-1-drjones@redhat.com>
- <20191212173320.11610-6-drjones@redhat.com>
- <CAFEAcA8=FcrT8dRMDzxu14J-gv5LEDuNBNpD5yo9j3waV7u8iw@mail.gmail.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C1E58800D48;
+ Mon, 20 Jan 2020 10:33:50 +0000 (UTC)
+Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0F4C8860E5;
+ Mon, 20 Jan 2020 10:33:40 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 00/29] Migration pull patches
+Date: Mon, 20 Jan 2020 11:33:11 +0100
+Message-Id: <20200120103340.25118-1-quintela@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8=FcrT8dRMDzxu14J-gv5LEDuNBNpD5yo9j3waV7u8iw@mail.gmail.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: 5kdIwiKGNAyvIl_RWCjz_g-1
+X-MC-Unique: YkgNYRasP5i4PR72-XoDyw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,31 +101,146 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: bijan.mottahedeh@oracle.com, Marc Zyngier <maz@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Heyi Guo <guoheyi@huawei.com>, msys.mizuma@gmail.com
+Cc: Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
+ Jason Wang <jasowang@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xf0hHh2XHfy/
+X-TUID: TwxehMN8f34J
 
-On Mon, Dec 16, 2019 at 03:06:57PM +0000, Peter Maydell wrote:
-> Incidentally, if I understand things correctly, for TCG the
-> behaviour is (and has always been) that VM-stopped time is
-> not counted, because we run the emulated versions of these counters
-> off QEMU_CLOCK_VIRTUAL. So having the KVM default be the same as
-> the TCG default is nicely consistent.
+The following changes since commit 7fb38daf256bd1bcbcb5ea556422283d0d55a1b1=
+:
 
-It's correct that the vtimer has always been this way for TCG.
-However TCG and KVM still won't be the same with the adjvtime
-patches. The reason is that TCG also bases the ptimer off
-QEMU_CLOCK_VIRTUAL. This means on TCG ptimer =3D=3D vtimer and
-both will lag a clocksource outside the VM.
+  Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20200=
+117-1' into staging (2020-01-17 17:27:20 +0000)
 
-I'm not sure if TCG people want to change that to match KVM.
-If so, then I guess the ptimer should be based off=20
-QEMU_CLOCK_REALTIME.
+are available in the Git repository at:
 
-Thanks,
-drew
+  https://github.com/juanquintela/qemu.git tags/migration-pull-pull-request
+
+for you to fetch changes up to ddac5cb2d95774cd019bfaf93c54ffd921095fea:
+
+  multifd: Be consistent about using uint64_t (2020-01-20 09:17:07 +0100)
+
+----------------------------------------------------------------
+Migration pull request (take 5)
+
+Making history short:
+
+* having your machine named x32 to really be a 32bit guest helps for
+  testing 32bits
+* disabling CONFIG_XEN on i686 makes rdma_addr_t be a 32bit value
+
+After this, and patch sent on Friday, I got this pull request to:
+* compile on x86_64
+* pass tests on x86_64
+* compile on i686
+* pass tests on i686 (with rdma_dma_t 32 bits)
+* cross-compile for windows 32bits
+* cross-compile for windows 64bits
+
+Please apply, Juan.
+
+----------------------------------------------------------------
+
+Alexey Romko (1):
+  Bug #1829242 correction.
+
+Daniel Henrique Barboza (1):
+  ram.c: remove unneeded labels
+
+Dr. David Alan Gilbert (1):
+  migration: Rate limit inside host pages
+
+Eric Auger (1):
+  migration: Support QLIST migration
+
+Fangrui Song (1):
+  migration: Fix incorrect integer->float conversion caught by clang
+
+Jiahui Cen (2):
+  migration/multifd: fix nullptr access in terminating multifd threads
+  migration/multifd: fix destroyed mutex access in terminating multifd
+    threads
+
+Juan Quintela (5):
+  multifd: Initialize local variable
+  migration-test: Add migration multifd test
+  migration: Make sure that we don't call write() in case of error
+  migration-test: introduce functions to handle string parameters
+  multifd: Be consistent about using uint64_t
+
+Laurent Vivier (1):
+  runstate: ignore finishmigrate -> prelaunch transition
+
+Marc-Andr=C3=A9 Lureau (1):
+  misc: use QEMU_IS_ALIGNED
+
+Peter Xu (3):
+  migration: Define VMSTATE_INSTANCE_ID_ANY
+  migration: Change SaveStateEntry.instance_id into uint32_t
+  apic: Use 32bit APIC ID for migration instance ID
+
+Scott Cheloha (2):
+  migration: add savevm_state_handler_remove()
+  migration: savevm_state_handler_insert: constant-time element
+    insertion
+
+Wei Yang (8):
+  migration/postcopy: reduce memset when it is zero page and
+    matches_target_page_size
+  migration/postcopy: wait for decompress thread in precopy
+  migration/postcopy: count target page number to decide the
+    place_needed
+  migration/postcopy: set all_zero to true on the first target page
+  migration/postcopy: enable random order target page arrival
+  migration/postcopy: enable compress during postcopy
+  migration/multifd: clean pages after filling packet
+  migration/multifd: not use multifd during postcopy
+
+Yury Kotov (2):
+  migration: Fix the re-run check of the migrate-incoming command
+  migration/ram: Yield periodically to the main loop
+
+ backends/dbus-vmstate.c      |   3 +-
+ exec.c                       |   4 +-
+ hw/arm/stellaris.c           |   2 +-
+ hw/core/qdev.c               |   3 +-
+ hw/display/ads7846.c         |   2 +-
+ hw/i2c/core.c                |   2 +-
+ hw/input/stellaris_input.c   |   3 +-
+ hw/intc/apic_common.c        |   7 +-
+ hw/misc/max111x.c            |   3 +-
+ hw/net/eepro100.c            |   3 +-
+ hw/pci/pci.c                 |   2 +-
+ hw/ppc/spapr.c               |   2 +-
+ hw/timer/arm_timer.c         |   2 +-
+ hw/tpm/tpm_emulator.c        |   3 +-
+ include/migration/register.h |   2 +-
+ include/migration/vmstate.h  |  25 ++++-
+ include/qemu/queue.h         |  39 +++++++
+ migration/migration.c        |  72 ++++++-------
+ migration/migration.h        |   1 +
+ migration/ram.c              | 196 +++++++++++++++++++++++++----------
+ migration/savevm.c           |  61 ++++++++---
+ migration/trace-events       |   9 +-
+ migration/vmstate-types.c    |  70 +++++++++++++
+ stubs/vmstate.c              |   2 +-
+ tests/qtest/migration-test.c |  93 +++++++++++++++++
+ tests/test-vmstate.c         | 170 ++++++++++++++++++++++++++++++
+ vl.c                         |  10 +-
+ 27 files changed, 659 insertions(+), 132 deletions(-)
+
+--=20
+2.24.1
 

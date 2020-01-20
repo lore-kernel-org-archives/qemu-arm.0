@@ -1,249 +1,224 @@
-Received: by 2002:a0c:cd0f:0:0:0:0:0 with SMTP id b15csp2733411qvm;
-        Mon, 20 Jan 2020 02:45:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwJTmk3gZdhCJn+7cNxHzQBS1Ctl2YxayAt+gT8RDB7Sw4XC0eLEftlg40QAQrXGVaGilks
-X-Received: by 2002:a37:6294:: with SMTP id w142mr45724821qkb.284.1579517110655;
-        Mon, 20 Jan 2020 02:45:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579517110; cv=none;
+Received: by 2002:a0c:cd0f:0:0:0:0:0 with SMTP id b15csp2733979qvm;
+        Mon, 20 Jan 2020 02:45:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy8gbMOc+Vtyfx8x6PEixIQal4YnGtZVeFtOWoe8lYGaCy26fETJVAUE6VPKCpESTube5nm
+X-Received: by 2002:a05:620a:2094:: with SMTP id e20mr44878679qka.315.1579517155471;
+        Mon, 20 Jan 2020 02:45:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579517155; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZVie87uHuKVHwA1RJKm1a7+zUHC6q5nxLNs2zYlQANM/GdNg6lOhVUpxrZtZgt2CLq
-         vdxBqBQ2/x1IdDyRTafPKyvVehUEHMdkilVIogEDA3zNxKRR5oEMQRaGBUYAqKGnV5v7
-         kYUe5uPQ7WdD5iEJ2NU5ytcGZt4Pj3OBcUdqptYs0t3KYy5m0WAQiS7Wxrhts5cJMJvR
-         Az3VEyukkG4zBxXVhdvsHu4yrLM+BiH+3f+HAuREplQzch0apcoObjymFiZs/b+Qwz2n
-         P55rDJmb1jUlRulZNS64rkAbyxEbGwbtjm/lJDYmR1FzWjmN+F+qv4hBtItuJDy/j07p
-         Ka+w==
+        b=pjENHrYp+QMyQEZtWNw8hj406sbJOb7KcP4PUNWbw1da+cPN7AU3I589eKrc5sDnXS
+         ovs30toHVZe8fn1S4/LECiUckbKVlquCIGrUHMthPT+VWLbVy99GksY13m5XsphyeyrA
+         srOEn1/QABFk3PPqsNr3Nnmb4qlRyfUM7LOJzyHH+Y6oY9lVQfDUu4Ocj2jDefDzmSQc
+         cqvLvLUhUhqqgSZEli2HAQbZKIMsW1Ki2XlYu3bUE8eDwW/GWz+b69pay8CmSnBPHuUG
+         yc5N0mE0Pmv/KW6XcjIULvXsX0pbw3v9i/3bn63/vhguSSXeS37gVuU5Ex8BZmXqiGwn
+         CJIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Yr1WVaAouDj40R39IdfVYwIhtLx/Le0jqD+NYulh5As=;
-        b=XVd23CFb0zLMVrr2xpLIuuP9Q248pay/QzG8u/6dFTEy2VhTX0dv1mLKHzfGU8PJzk
-         MRAvFL/q/Vw0ay7zWOVaVh6xKZAXh0eKytyB07dHs+7slXfXV7SvikWskRJ1xGbkVCwZ
-         yL6LBAaQ5hmzC3Z1c6C76ebv3OrR+FnEEfl5hBhIIqbL2IdB4ye1R1kGd4n0gUD7igp6
-         4+MJwy58uU/Y7qzx1bnBvx/njw/qQjKr6mgySFjf9WtoGR27UiDF6yGkChlopmRyA0jt
-         OheK1hCrm6hrAwepUFqY/Ev3HWfn5AVrjHc2LyYF8TGygAgPXY9aTUqdBnIAnTV3Sbbn
-         3PlA==
+        bh=1X5yO7SYwJyW5YJ1Ti/f3xeheBlw3XFdVPw3SMbN8dw=;
+        b=s1pFgJyPf19UGEi/CExp++7k2VHGMiBtl9PxitXmxLpOOy/imZ7FEjocu6y3ZIQ+wi
+         4hxHF982wmuGubdos/VKFXpgzhs9tu9MaiZDA6kS5oY63I+DYyo5sPJ0CKdjDTu8Womk
+         Utncam4H3PAR84rspmIpVTYBZOOyIb6i6+tCH8YadKy612Ch4+cvLriWrl8Id4ys1e3K
+         GR0qTo1TSta2MgANXUBmzuUEh7Z8GdIreFv7STJ81KvK+slENOYGPsz+KwkBc9aaOm9h
+         ds18m329PCRIYZAPNQezdbs9cZdA84ID3RoYKksJW2eqPSPhXv8OnJL8d2MXjvwUhKB5
+         +I7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S6dA80JP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bqB36ZMQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bx14si20359250qvb.176.2020.01.20.02.45.10
+        by mx.google.com with ESMTPS id m94si20473090qtd.295.2020.01.20.02.45.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 02:45:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Jan 2020 02:45:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S6dA80JP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bqB36ZMQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33814 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33824 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itUYP-0001bn-Ef
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 05:45:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38004)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1itUZ8-0001st-Jq
+	for alex.bennee@linaro.org; Mon, 20 Jan 2020 05:45:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37261)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1itUQI-0006uu-2M
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:36:50 -0500
+ (envelope-from <quintela@redhat.com>) id 1itUOI-0004TJ-8c
+ for qemu-devel@nongnu.org; Mon, 20 Jan 2020 05:34:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1itUQD-0002t3-Vx
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:36:45 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:40084
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <quintela@redhat.com>) id 1itUOE-0001lR-Bu
+ for qemu-devel@nongnu.org; Mon, 20 Jan 2020 05:34:42 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:48352
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1itUQD-0002sh-Sc
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:36:41 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1itUOE-0001kY-82
+ for qemu-devel@nongnu.org; Mon, 20 Jan 2020 05:34:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579516601;
+ s=mimecast20190719; t=1579516476;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Yr1WVaAouDj40R39IdfVYwIhtLx/Le0jqD+NYulh5As=;
- b=S6dA80JPHaRmIUWKt+z20laCQNKwLbP8MVHDLFnQPxBBxZl/EqLqumU4qHGPzRFto1PTjc
- hhtc09kHP12XWv7aO+QysjFMVLszupGMEpyFlQgele79iKBAbA/b02TfB2PuZC/VsHpn+y
- Uunu8zKr0hNE8DuXQV9aFsj90fCBTvA=
+ bh=1X5yO7SYwJyW5YJ1Ti/f3xeheBlw3XFdVPw3SMbN8dw=;
+ b=bqB36ZMQSXR7qFb6/8C/YUvGurd5OvgvzKE6+bmxpVLH1NIORTwO2li9bGpF9U9VQ66DpC
+ qxVRM1rX6KHDRIlm9QLi4qbzu9kJd0GON2tNyDYuaYN2HF73Qj3Kwp3EwpzcvczUkqHKOf
+ lZt0hBRbBpTX9BlVHI9ibDUG2wYzYZc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-226-yL0risH0Mqivszhl5q07qw-1; Mon, 20 Jan 2020 05:36:38 -0500
+ us-mta-85-UvFtvpPdOd-8dNj7yvfQFA-1; Mon, 20 Jan 2020 05:34:35 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4A2F9190D37F;
- Mon, 20 Jan 2020 10:36:36 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3148D1005510;
+ Mon, 20 Jan 2020 10:34:33 +0000 (UTC)
 Received: from secure.mitica (ovpn-116-207.ams2.redhat.com [10.36.116.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C81711BC6D;
- Mon, 20 Jan 2020 10:36:31 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C6B59860E5;
+ Mon, 20 Jan 2020 10:34:23 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 19/29] migration/postcopy: enable compress during postcopy
-Date: Mon, 20 Jan 2020 11:33:30 +0100
-Message-Id: <20200120103340.25118-20-quintela@redhat.com>
+Subject: [PULL 06/29] ram.c: remove unneeded labels
+Date: Mon, 20 Jan 2020 11:33:17 +0100
+Message-Id: <20200120103340.25118-7-quintela@redhat.com>
 In-Reply-To: <20200120103340.25118-1-quintela@redhat.com>
 References: <20200120103340.25118-1-quintela@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: yL0risH0Mqivszhl5q07qw-1
+X-MC-Unique: UvFtvpPdOd-8dNj7yvfQFA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
  Thomas Huth <thuth@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
  Jason Wang <jasowang@redhat.com>, Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
- David Gibson <david@gibson.dropbear.id.au>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Andrzej Zaborowski <balrogg@gmail.com>,
- Stefan Berger <stefanb@linux.ibm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2zp3NZh+9vle
+ Richard Henderson <rth@twiddle.net>, Stefan Berger <stefanb@linux.ibm.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MzSlkUR3oRvp
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
 
-postcopy requires to place a whole host page, while migration thread
-migrate memory in target page size. This makes postcopy need to collect
-all target pages in one host page before placing via userfaultfd.
+ram_save_queue_pages() has an 'err' label that can be replaced by
+'return -1' instead.
 
-To enable compress during postcopy, there are two problems to solve:
+Same thing with ram_discard_range(), and in this case we can also
+get rid of the 'ret' variable and return either '-1' on error
+or the result of ram_block_discard_range().
 
-    1. Random order for target page arrival
-    2. Target pages in one host page arrives without interrupt by target
-       page from other host page
-
-The first one is handled by previous cleanup patch.
-
-This patch handles the second one by:
-
-    1. Flush compress thread for each host page
-    2. Wait for decompress thread for before placing host page
-
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+CC: Juan Quintela <quintela@redhat.com>
+CC: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/migration.c | 11 -----------
- migration/ram.c       | 28 +++++++++++++++++++++++++++-
- 2 files changed, 27 insertions(+), 12 deletions(-)
+ migration/ram.c | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index e55edee606..990bff00c0 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -1005,17 +1005,6 @@ static bool migrate_caps_check(bool *cap_list,
- #endif
-=20
-     if (cap_list[MIGRATION_CAPABILITY_POSTCOPY_RAM]) {
--        if (cap_list[MIGRATION_CAPABILITY_COMPRESS]) {
--            /* The decompression threads asynchronously write into RAM
--             * rather than use the atomic copies needed to avoid
--             * userfaulting.  It should be possible to fix the decompressi=
-on
--             * threads for compatibility in future.
--             */
--            error_setg(errp, "Postcopy is not currently compatible "
--                       "with compression");
--            return false;
--        }
--
-         /* This check is reasonably expensive, so only when it's being
-          * set the first time, also it's only the destination that needs
-          * special support.
 diff --git a/migration/ram.c b/migration/ram.c
-index a7414170e5..5f20c3d15d 100644
+index f946282adb..17cd8d524b 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -3469,6 +3469,14 @@ static int ram_save_iterate(QEMUFile *f, void *opaqu=
-e)
-=20
-             rs->target_page_count +=3D pages;
-=20
-+            /*
-+             * During postcopy, it is necessary to make sure one whole hos=
-t
-+             * page is sent in one chunk.
-+             */
-+            if (migrate_postcopy_ram()) {
-+                flush_compressed_data(rs);
-+            }
-+
-             /*
-              * we want to check in the 1st loop, just in case it was the 1=
-st
-              * time and we had to sync the dirty bitmap.
-@@ -4061,6 +4069,7 @@ static int ram_load_postcopy(QEMUFile *f)
-         void *place_source =3D NULL;
-         RAMBlock *block =3D NULL;
-         uint8_t ch;
-+        int len;
-=20
-         addr =3D qemu_get_be64(f);
-=20
-@@ -4078,7 +4087,8 @@ static int ram_load_postcopy(QEMUFile *f)
-=20
-         trace_ram_load_postcopy_loop((uint64_t)addr, flags);
-         place_needed =3D false;
--        if (flags & (RAM_SAVE_FLAG_ZERO | RAM_SAVE_FLAG_PAGE)) {
-+        if (flags & (RAM_SAVE_FLAG_ZERO | RAM_SAVE_FLAG_PAGE |
-+                     RAM_SAVE_FLAG_COMPRESS_PAGE)) {
-             block =3D ram_block_from_stream(f, flags);
-=20
-             host =3D host_from_ram_block_offset(block, addr);
-@@ -4161,6 +4171,17 @@ static int ram_load_postcopy(QEMUFile *f)
-                                          TARGET_PAGE_SIZE);
-             }
-             break;
-+        case RAM_SAVE_FLAG_COMPRESS_PAGE:
-+            all_zero =3D false;
-+            len =3D qemu_get_be32(f);
-+            if (len < 0 || len > compressBound(TARGET_PAGE_SIZE)) {
-+                error_report("Invalid compressed data length: %d", len);
-+                ret =3D -EINVAL;
-+                break;
-+            }
-+            decompress_data_with_multi_threads(f, page_buffer, len);
-+            break;
-+
-         case RAM_SAVE_FLAG_EOS:
-             /* normal exit */
-             multifd_recv_sync_main();
-@@ -4172,6 +4193,11 @@ static int ram_load_postcopy(QEMUFile *f)
-             break;
+@@ -2459,7 +2459,7 @@ int ram_save_queue_pages(const char *rbname, ram_addr=
+_t start, ram_addr_t len)
+              * it's the 1st request.
+              */
+             error_report("ram_save_queue_pages no previous block");
+-            goto err;
++            return -1;
          }
+     } else {
+         ramblock =3D qemu_ram_block_by_name(rbname);
+@@ -2467,7 +2467,7 @@ int ram_save_queue_pages(const char *rbname, ram_addr=
+_t start, ram_addr_t len)
+         if (!ramblock) {
+             /* We shouldn't be asked for a non-existent RAMBlock */
+             error_report("ram_save_queue_pages no block '%s'", rbname);
+-            goto err;
++            return -1;
+         }
+         rs->last_req_rb =3D ramblock;
+     }
+@@ -2476,7 +2476,7 @@ int ram_save_queue_pages(const char *rbname, ram_addr=
+_t start, ram_addr_t len)
+         error_report("%s request overrun start=3D" RAM_ADDR_FMT " len=3D"
+                      RAM_ADDR_FMT " blocklen=3D" RAM_ADDR_FMT,
+                      __func__, start, len, ramblock->used_length);
+-        goto err;
++        return -1;
+     }
 =20
-+        /* Got the whole host page, wait for decompress before placing. */
-+        if (place_needed) {
-+            ret |=3D wait_for_decompress_done();
-+        }
-+
-         /* Detect for any possible file errors */
-         if (!ret && qemu_file_get_error(f)) {
-             ret =3D qemu_file_get_error(f);
+     struct RAMSrcPageRequest *new_entry =3D
+@@ -2492,9 +2492,6 @@ int ram_save_queue_pages(const char *rbname, ram_addr=
+_t start, ram_addr_t len)
+     qemu_mutex_unlock(&rs->src_page_req_mutex);
+=20
+     return 0;
+-
+-err:
+-    return -1;
+ }
+=20
+ static bool save_page_use_compression(RAMState *rs)
+@@ -3097,8 +3094,6 @@ int ram_postcopy_send_discard_bitmap(MigrationState *=
+ms)
+  */
+ int ram_discard_range(const char *rbname, uint64_t start, size_t length)
+ {
+-    int ret =3D -1;
+-
+     trace_ram_discard_range(rbname, start, length);
+=20
+     RCU_READ_LOCK_GUARD();
+@@ -3106,7 +3101,7 @@ int ram_discard_range(const char *rbname, uint64_t st=
+art, size_t length)
+=20
+     if (!rb) {
+         error_report("ram_discard_range: Failed to find block '%s'", rbnam=
+e);
+-        goto err;
++        return -1;
+     }
+=20
+     /*
+@@ -3118,10 +3113,7 @@ int ram_discard_range(const char *rbname, uint64_t s=
+tart, size_t length)
+                      length >> qemu_target_page_bits());
+     }
+=20
+-    ret =3D ram_block_discard_range(rb, start, length);
+-
+-err:
+-    return ret;
++    return ram_block_discard_range(rb, start, length);
+ }
+=20
+ /*
 --=20
 2.24.1
 

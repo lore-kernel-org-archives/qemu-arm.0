@@ -1,101 +1,101 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp11563lfp;
-        Mon, 20 Jan 2020 02:11:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzikfksKYiBCP5J9HIRijLhWJmkROxdM1syJf0F++NDkhljUKha6RbIuFlHLpGgbAhpOYpo
-X-Received: by 2002:a05:620a:13da:: with SMTP id g26mr51781337qkl.410.1579515069703;
-        Mon, 20 Jan 2020 02:11:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579515069; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp11645lfp;
+        Mon, 20 Jan 2020 02:11:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzRC8Qm/EKEtl4M0AjHZGoW3UZgn6QPnAYilltuiY4EQ3w3EFnLNzKXCQ+OAR7arVd2iWqm
+X-Received: by 2002:ac8:6909:: with SMTP id e9mr19845207qtr.339.1579515074387;
+        Mon, 20 Jan 2020 02:11:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579515074; cv=none;
         d=google.com; s=arc-20160816;
-        b=BRlVq5uedD2n0xiHOsJTqPuC4bKQn2N2ekGW3t0Mela7h6i/jCV2oKTw0CUOrvWgVb
-         eLCBW/+xE7sDvCbbAVxnx1/oda0EHzEyoJvNpN0RUbhx9RBBVJZTCRqtYq3SnFkLT2l6
-         imWTRz7Bb/SRbMz0Rrs3qra0MefcFxx/35NGBT+dLRHnMJDHc9/NDvtWt/whbw95WQRB
-         WHNs0eHszKS6QTHkSFTaFHFf4sEUf2BWXaIWyEagdzet6LVj/yEORF1qeExSfJysJhpY
-         ftQqH5xqUSqHbKJTy+HAoFfTkfZ8Am1iYGJkIGZtNOXCjQMkSWnARQJMGgXeXT25gUOP
-         H4wQ==
+        b=AbUeUIevMX8H9LX8jWHZXJt5/cgdc9OMDWSAo2GckDsEsAiMmRhvhLlbAazaq0lkpM
+         oKDWjJmeXRD70wCRtRjHp2J0EjevmUDI7y0NPmgZObXiNdbaPUjNVaZXgpaqPAFyc72R
+         ssFA7UEXqFhhLAnzLzKhOkBu/vC/F0oKchf8CzeT9e0qw7gRzSZDyGHcGKuAfauPdmc+
+         HvusmNR+pGf9r2oJsjyF+Coz/+l4UpZBAcBEPJCMsvuz6L1jr4K/9bnovKGJy+BJEB0t
+         qSg6JFI7H9cCl5bRsUmPQgnGz9QDV1pzr8tn6kwR60I8p+a1Viz4xTqMh3xMFXGKHzsl
+         sT7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=F/+XJ49Tu7dfw8704LCB/a5N8PyvmwGwcwpzwkOaIEw=;
-        b=wus1JzlUO4viLdRqppz6WChQhbnew0SpR4b2a+HxMbFNFVkABK47KxUo5L1RBWSEnR
-         j+43d+rN6Ok/nxpo2aUYO/dgWzKFJ1OxsPGTcyBQ1MX/tQW2n7UAQF/G6xJLv9bRFEQD
-         2SZdaBVJmuIBdUnSxHzs6rGTT61wTCV6Dchf7bVRdVV/ZatgTGFfZtXKh78b8GtPsVxm
-         KqnARUOh2mJMg+p+6E9tT184Xy71pHgbMcMLZw1OP1CfNt4+CcD+XW7DjnqJjKdw+eTB
-         DjZKpiiBc8BwhvLDne0QG14DZIrjBn+9fhm2dajvTyDV1qL9hDjCe7d2Gchu1r3bVZ42
-         NScA==
+        bh=InD8eLFdEd7P2dOOJgZ5WOfz83jfIZ31XEZBRwEDSHw=;
+        b=Y3JksqjJ1QaPO0u54FVIqhynDT+slTw7wMbr1wlsx+Vr9ZrKUEuub/UsRtu3xZ5K/A
+         qD/u3D7FQtGfJAbHQ/+7GDXRebr4R7ZbnzzRsJkYu9swwFaBmlzMuP44DW8FpUjiKEAc
+         4Ifzuc5onDo/NTyEzpUFUD+NHPnxK0YKqhFEjp+D6SmVmtUhDNET9Xcolr6x0kN6sPz3
+         LdNht7P4CQ7Y8oiAbEiEWuRkOvXswicQkaJG+Z7KrQ75sx8ppE1AdPC8lyhJldeRStXc
+         h5alVVn0z6Fo7iOu+ShNUHhmYTGRhh3AIcl7ZLSUG8nc35ZMVqzgYoh9go3YsSi7/vZh
+         6D8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="YVn/wPA6";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Tk/EfL/0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z68si20688128qkc.141.2020.01.20.02.11.09
+        by mx.google.com with ESMTPS id z16si19939655qtu.200.2020.01.20.02.11.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 02:11:09 -0800 (PST)
+        Mon, 20 Jan 2020 02:11:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="YVn/wPA6";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Tk/EfL/0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33122 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33124 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itU1U-0005i2-JW
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 05:11:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33989)
+	id 1itU1Z-0005x7-M2
+	for alex.bennee@linaro.org; Mon, 20 Jan 2020 05:11:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33999)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1itU13-0005Sl-Ok
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:46 -0500
+ (envelope-from <drjones@redhat.com>) id 1itU14-0005Te-8I
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1itU0y-000341-W5
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:41 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:45561
+ (envelope-from <drjones@redhat.com>) id 1itU12-00036g-VM
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:42 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:23318
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1itU0y-00033n-S2
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:36 -0500
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1itU12-00036Q-RF
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 05:10:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579515036;
+ s=mimecast20190719; t=1579515040;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=F/+XJ49Tu7dfw8704LCB/a5N8PyvmwGwcwpzwkOaIEw=;
- b=YVn/wPA6QvL3TqP04tfwXLc5T5Zyztiz1X/AyuWe4hM50Hesoxbabz9wnvnHWLtr0NfRYy
- RDcW/7rPXACbCZRMvEb37SJIsCQl8bDpeYkF7/fp3rbXxxHysGcHsba/V1hFZ8t5/W650T
- yDIWIfmtFdsXBirGlo6X7NOXFTnmRf8=
+ bh=InD8eLFdEd7P2dOOJgZ5WOfz83jfIZ31XEZBRwEDSHw=;
+ b=Tk/EfL/0lD0A87EfKSFUlgKmaaAm0Egf+bvGiWd37WA2JiDmbh3MbhWjnDSReh7vdk6ViD
+ 6BR5Zb9ntbBnuCHtE9x+tdUqlFSbg9eA4dwJZuCw9+NCZK28UyPOk/QJuydUf2WWKpDNsF
+ iPu1hk/nMzFM2upsEh7n98zzCQfgEYs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-239-RQQpDBMSPtyfaDebCJnTtw-1; Mon, 20 Jan 2020 05:10:32 -0500
+ us-mta-76-I3PRj7aCPx67PR4fHhsE_w-1; Mon, 20 Jan 2020 05:10:36 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 050C0A0CBF;
- Mon, 20 Jan 2020 10:10:31 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 29449107ACCA;
+ Mon, 20 Jan 2020 10:10:35 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 379BF87EDF;
- Mon, 20 Jan 2020 10:10:29 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 602B98BE01;
+ Mon, 20 Jan 2020 10:10:33 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [RFC PATCH v3 2/6] hw/arm/virt: Add missing 5.0 options call to 4.2
- options
-Date: Mon, 20 Jan 2020 11:10:19 +0100
-Message-Id: <20200120101023.16030-3-drjones@redhat.com>
+Subject: [RFC PATCH v3 4/6] tests/arm-cpu-features: Check feature default
+ values
+Date: Mon, 20 Jan 2020 11:10:21 +0100
+Message-Id: <20200120101023.16030-5-drjones@redhat.com>
 In-Reply-To: <20200120101023.16030-1-drjones@redhat.com>
 References: <20200120101023.16030-1-drjones@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: RQQpDBMSPtyfaDebCJnTtw-1
+X-MC-Unique: I3PRj7aCPx67PR4fHhsE_w-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,25 +111,87 @@ Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org,
  richard.henderson@linaro.org, guoheyi@huawei.com, msys.mizuma@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Sq/lruAAnggN
+X-TUID: pM4STRvr+Ymi
+
+If we know what the default value should be then we can test for
+that as well as the feature existence.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/arm/virt.c | 1 +
- 1 file changed, 1 insertion(+)
+ tests/qtest/arm-cpu-features.c | 37 +++++++++++++++++++++++++---------
+ 1 file changed, 28 insertions(+), 9 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 39ab5f47e0bd..27ca26b05e27 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2153,6 +2153,7 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.=
+c
+index bef3ed24b604..a039e3c8d724 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -159,6 +159,25 @@ static bool resp_get_feature(QDict *resp, const char *=
+feature)
+     qobject_unref(_resp);                                              \
+ })
 =20
- static void virt_machine_4_2_options(MachineClass *mc)
++#define assert_feature(qts, cpu_type, feature, expected_value)         \
++({                                                                     \
++    QDict *_resp, *_props;                                             \
++                                                                       \
++    _resp =3D do_query_no_props(qts, cpu_type);                          \
++    g_assert(_resp);                                                   \
++    g_assert(resp_has_props(_resp));                                   \
++    _props =3D resp_get_props(_resp);                                    \
++    g_assert(qdict_get(_props, feature));                              \
++    g_assert(qdict_get_bool(_props, feature) =3D=3D (expected_value));    =
+ \
++    qobject_unref(_resp);                                              \
++})
++
++#define assert_has_feature_enabled(qts, cpu_type, feature)             \
++    assert_feature(qts, cpu_type, feature, true)
++
++#define assert_has_feature_disabled(qts, cpu_type, feature)            \
++    assert_feature(qts, cpu_type, feature, false)
++
+ static void assert_type_full(QTestState *qts)
  {
-+    virt_machine_5_0_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
- }
- DEFINE_VIRT_MACHINE(4, 2)
+     const char *error;
+@@ -405,16 +424,16 @@ static void test_query_cpu_model_expansion(const void=
+ *data)
+     assert_error(qts, "host", "The CPU type 'host' requires KVM", NULL);
+=20
+     /* Test expected feature presence/absence for some cpu types */
+-    assert_has_feature(qts, "max", "pmu");
+-    assert_has_feature(qts, "cortex-a15", "pmu");
++    assert_has_feature_enabled(qts, "max", "pmu");
++    assert_has_feature_enabled(qts, "cortex-a15", "pmu");
+     assert_has_not_feature(qts, "cortex-a15", "aarch64");
+=20
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+-        assert_has_feature(qts, "max", "aarch64");
+-        assert_has_feature(qts, "max", "sve");
+-        assert_has_feature(qts, "max", "sve128");
+-        assert_has_feature(qts, "cortex-a57", "pmu");
+-        assert_has_feature(qts, "cortex-a57", "aarch64");
++        assert_has_feature_enabled(qts, "max", "aarch64");
++        assert_has_feature_enabled(qts, "max", "sve");
++        assert_has_feature_enabled(qts, "max", "sve128");
++        assert_has_feature_enabled(qts, "cortex-a57", "pmu");
++        assert_has_feature_enabled(qts, "cortex-a57", "aarch64");
+=20
+         sve_tests_default(qts, "max");
+=20
+@@ -451,8 +470,8 @@ static void test_query_cpu_model_expansion_kvm(const vo=
+id *data)
+         QDict *resp;
+         char *error;
+=20
+-        assert_has_feature(qts, "host", "aarch64");
+-        assert_has_feature(qts, "host", "pmu");
++        assert_has_feature_enabled(qts, "host", "aarch64");
++        assert_has_feature_enabled(qts, "host", "pmu");
+=20
+         assert_error(qts, "cortex-a15",
+             "We cannot guarantee the CPU type 'cortex-a15' works "
 --=20
 2.21.1
 

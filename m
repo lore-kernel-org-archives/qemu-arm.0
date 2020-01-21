@@ -1,112 +1,111 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1334430lfp;
-        Tue, 21 Jan 2020 03:09:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzFiF2pzRBzrkeMpWgwP/RASVsuFEvXDc3NSYz1zCsr9wsqvm/bdzfhqwGVxnZ7IaKmrgDP
-X-Received: by 2002:aa7:c591:: with SMTP id g17mr3312172edq.341.1579604984159;
-        Tue, 21 Jan 2020 03:09:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579604984; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1334941lfp;
+        Tue, 21 Jan 2020 03:10:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwCnpbQw7ME9+FpbjBWvHC6pS1bzxIBR2eIoYmSNtUnga2ZKsy3TocZvpf7LMHc8E4HW/p5
+X-Received: by 2002:a17:907:212f:: with SMTP id qo15mr3797238ejb.245.1579605014040;
+        Tue, 21 Jan 2020 03:10:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579605014; cv=none;
         d=google.com; s=arc-20160816;
-        b=mOoY4t4enrg6lZTJGKItHl3Kes3t7WXo8GJd0iRk1IchIou+jOQx3ffpqzGHAjWwrP
-         U+mNt3Cy0yzJgTfJ8rOpSCddR1B/tpc1XuFSB/PsCZVJ+ie+yhn4FeV638Kz1JMo4Noq
-         IwxdvlITqbXhsTgfnCo908j6XEKoolaKAA/y34QKvUL2Y9CSTCO3FpACmjQ3D/Rytg7u
-         +8uxwlpkt39siHLyMweozuyJCdMuQ6YbESzvhs7TgTXmjOkoFckB93AplqCV4PdyXOSU
-         QeTzMFzoWdCTi6vfMsH9en2Vam9TZ0ur07muGfO4yikb7RyvGpp1BTjT91QEeJD8lnIr
-         xeTA==
+        b=cTVJRZ9Ok2K64KDvUBqSE1Ak/UCKBIsHbBQWvliFTJ4w/kgB95W8jZOXNHsNx6oKgJ
+         IfLS5NfDJJ34EWI6n+zy/IWynDZayvvlD2Q0Jem3vvanUndIFeFYG3idAzsf21y25hiE
+         uMrweqQTxImRTSB1QeR7COkuBasXrvEb3XwXD+27hIsTRI3P7B01EdWktgR6+5JD8WzM
+         b5YB+zcg0Ig8zKfK298ZuE95tb7sb/0u5zVOnWWlKAHOQQ5HFv4ynzJaTqzWZoJG+vzl
+         zdr4WMXOsjTOvqQBvHaK87X88ITMgaBmnB0DKz5STWr9K8wT4ivmyPs9i7XkqL22zs96
+         lcZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xXEz7PhStQkERVMKiqaV7Qb0h7hoBdcqu+yYcMWd3AI=;
-        b=bSW2Owm+uSq7R87kpjW9/51eDgdZQPHbczEb96vLm54lZylWUqAmRQj2vyp/36mG4Q
-         1dfM77kwIBaLkeiFNxdbV6usCoZKAkKWrm/LJdMXKqLkOpOYQjoT9LU0uGO8xkg6oi/e
-         ZTjwEtd15j4Kx904P4daBu+Ljvng/Yd8/bF/XJFyOINbUzuI+LGcL9198nMKTyoncLex
-         EnUFWTvcEQ5nkDGgsRQ69hd+Vi6aV8/JdNnw658ISmT4Dhvn608r9am6+IJJbZkzAjfs
-         7aLNkLlJQCtWn/WBsLZhKgoWsVUXSkgX5vWe7BBZfdEb+SYXKbzRossIA1HOnwIyfM5U
-         StqA==
+        bh=Ea1a/sRDFxUcqC42bdgwDPTcMkjiHzUbs2lKdEFCTMo=;
+        b=n3Wn07CuyaZtX0MbyUIk3Fd8IEjC7l4yHzTcL3n8sN4ploiKFyzwWpHIfwhr5A7Lpx
+         3OvV2Z+lXb2p0y+CnXhOnJM9pRRgq3/oUDw3AXRQL+yMKItrd4LXhP8ytJzn0I5WfaPP
+         /tF9uGqBArzqlRnzTERAMQe6sw3wm/otInQg0y1t04UHZRJSkaMS9hx/ha/E8JfGQmg8
+         aZB3r0dfuBQQzQardxlGjum1z/ZirjeusY9pR33fbcFqw6YC5HJyVRT0FSzax9QfZGDc
+         NHZHp02i7nQeVR04hPzV3GPkkuafQLrH8ImYdHWLy0i/EgHIjTV1h5ZWjF1CmcTLPtdp
+         qLig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SvYTNB+x;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=G+LJDLSN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f8si28184443edk.350.2020.01.21.03.09.44
+        by mx.google.com with ESMTPS id y26si24257832edt.22.2020.01.21.03.10.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jan 2020 03:09:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Jan 2020 03:10:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SvYTNB+x;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=G+LJDLSN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51812 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51820 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itrPi-00010k-NQ
-	for alex.bennee@linaro.org; Tue, 21 Jan 2020 06:09:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40635)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1itrQC-0002Fj-DY
+	for alex.bennee@linaro.org; Tue, 21 Jan 2020 06:10:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40459)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1itrLe-00044N-KM
- for qemu-devel@nongnu.org; Tue, 21 Jan 2020 06:05:35 -0500
+ (envelope-from <philmd@redhat.com>) id 1itrL7-0003TO-OA
+ for qemu-arm@nongnu.org; Tue, 21 Jan 2020 06:04:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1itrLa-0002vK-0l
- for qemu-devel@nongnu.org; Tue, 21 Jan 2020 06:05:30 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:55445
+ (envelope-from <philmd@redhat.com>) id 1itrL6-0002be-HW
+ for qemu-arm@nongnu.org; Tue, 21 Jan 2020 06:04:57 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:42399
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1itrLZ-0002v1-SL
- for qemu-devel@nongnu.org; Tue, 21 Jan 2020 06:05:25 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1itrL6-0002bH-Cs
+ for qemu-arm@nongnu.org; Tue, 21 Jan 2020 06:04:56 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579604725;
+ s=mimecast20190719; t=1579604696;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xXEz7PhStQkERVMKiqaV7Qb0h7hoBdcqu+yYcMWd3AI=;
- b=SvYTNB+xFc3bY8irYanOOqqf93prNKz4Cb+71gaEpOk/wqZxYCbnJn6/1yDkfU3+A91fTk
- ygg83djv5WvuWVtGZeQZkWKtGYNJcjaKNcIxbebn/FEDgUKuvs96XhrPZzJ3oYNqvQGPbJ
- BS+ckoPLydyabcQL+Yn0VfE+8MlwfFM=
+ bh=Ea1a/sRDFxUcqC42bdgwDPTcMkjiHzUbs2lKdEFCTMo=;
+ b=G+LJDLSNRLj7ZROSq7MttakiRrldUXmybCFa9lO7pQBSMIOsCWO+TtYdz/99FpOxStHAus
+ TmnA8k3gOFvyjRR/JcnYWzXO6GiP31CABuWmxeCwVNS8xfTcEh2MbR4ipHWwlW6OtVoTtL
+ QOUpFo1y60VazqfHcTr/nZ0vqs54jlc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-94-_7zYfEwQPzuFedrPlu-uRQ-1; Tue, 21 Jan 2020 06:05:23 -0500
+ us-mta-27-0FJY1TuUOrOL2stsHOrGTw-1; Tue, 21 Jan 2020 06:04:54 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8D131107ACC4;
- Tue, 21 Jan 2020 11:05:21 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2F968DBA5;
+ Tue, 21 Jan 2020 11:04:53 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-205-38.brq.redhat.com [10.40.205.38])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0FF2E811F8;
- Tue, 21 Jan 2020 11:05:13 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 96C1C811F8;
+ Tue, 21 Jan 2020 11:04:46 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 08/10] accel: Introduce the current_accel() wrapper
-Date: Tue, 21 Jan 2020 12:03:47 +0100
-Message-Id: <20200121110349.25842-9-philmd@redhat.com>
+Subject: [PATCH v2 05/10] target/s390x: Remove duplicated ifdef macro
+Date: Tue, 21 Jan 2020 12:03:44 +0100
+Message-Id: <20200121110349.25842-6-philmd@redhat.com>
 In-Reply-To: <20200121110349.25842-1-philmd@redhat.com>
 References: <20200121110349.25842-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: _7zYfEwQPzuFedrPlu-uRQ-1
+X-MC-Unique: 0FJY1TuUOrOL2stsHOrGTw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair.francis@wdc.com>, Cornelia Huck <cohuck@redhat.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Like Xu <like.xu@linux.intel.com>,
  David Hildenbrand <david@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
  Markus Armbruster <armbru@redhat.com>, qemu-s390x@nongnu.org,
@@ -114,53 +113,63 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PSP3TOHuvq/Y
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EJNsrL04ZiDo
 
-The accel/ code only access the MachineState::accel field.
-As we simply want to access the accelerator, not the machine,
-add a current_accel() wrapper.
+Commit ae71ed8610 replaced the use of global max_cpus variable
+with a machine property, but introduced a unnecessary ifdef, as
+this block is already in the 'not CONFIG_USER_ONLY' branch part:
 
-Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+   86 #if defined(CONFIG_USER_ONLY)
+   87
+  ...
+  106 #else /* !CONFIG_USER_ONLY */
+  107
+  ...
+  292 static void do_ext_interrupt(CPUS390XState *env)
+  293 {
+  ...
+  313 #ifndef CONFIG_USER_ONLY
+  314         MachineState *ms =3D MACHINE(qdev_get_machine());
+  315         unsigned int max_cpus =3D ms->smp.max_cpus;
+  316 #endif
+
+To ease code review, remove the duplicated preprocessor macro,
+and move the declarations at the beginning of the statement.
+
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
-v2: Reworded description using 'wrapper'
+v2: New patch
+Cc: Like Xu <like.xu@linux.intel.com>
 ---
- include/sysemu/accel.h | 2 ++
- accel/accel.c          | 5 +++++
- 2 files changed, 7 insertions(+)
+ target/s390x/excp_helper.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/include/sysemu/accel.h b/include/sysemu/accel.h
-index d4c1429711..47e5788530 100644
---- a/include/sysemu/accel.h
-+++ b/include/sysemu/accel.h
-@@ -70,4 +70,6 @@ int accel_init_machine(AccelState *accel, MachineState *m=
-s);
- /* Called just before os_setup_post (ie just before drop OS privs) */
- void accel_setup_post(MachineState *ms);
+diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+index e70c20d363..1e9d6f20c1 100644
+--- a/target/s390x/excp_helper.c
++++ b/target/s390x/excp_helper.c
+@@ -305,15 +305,14 @@ static void do_ext_interrupt(CPUS390XState *env)
 =20
-+AccelState *current_accel(void);
+     if ((env->pending_int & INTERRUPT_EMERGENCY_SIGNAL) &&
+         (env->cregs[0] & CR0_EMERGENCY_SIGNAL_SC)) {
++        MachineState *ms =3D MACHINE(qdev_get_machine());
++        unsigned int max_cpus =3D ms->smp.max_cpus;
 +
- #endif
-diff --git a/accel/accel.c b/accel/accel.c
-index 1c5c3a6abb..cb555e3b06 100644
---- a/accel/accel.c
-+++ b/accel/accel.c
-@@ -63,6 +63,11 @@ int accel_init_machine(AccelState *accel, MachineState *=
-ms)
-     return ret;
- }
-=20
-+AccelState *current_accel(void)
-+{
-+    return current_machine->accelerator;
-+}
-+
- void accel_setup_post(MachineState *ms)
- {
-     AccelState *accel =3D ms->accelerator;
+         lowcore->ext_int_code =3D cpu_to_be16(EXT_EMERGENCY);
+         cpu_addr =3D find_first_bit(env->emergency_signals, S390_MAX_CPUS)=
+;
+         g_assert(cpu_addr < S390_MAX_CPUS);
+         lowcore->cpu_addr =3D cpu_to_be16(cpu_addr);
+         clear_bit(cpu_addr, env->emergency_signals);
+-#ifndef CONFIG_USER_ONLY
+-        MachineState *ms =3D MACHINE(qdev_get_machine());
+-        unsigned int max_cpus =3D ms->smp.max_cpus;
+-#endif
+         if (bitmap_empty(env->emergency_signals, max_cpus)) {
+             env->pending_int &=3D ~INTERRUPT_EMERGENCY_SIGNAL;
+         }
 --=20
 2.21.1
 

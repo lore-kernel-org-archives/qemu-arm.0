@@ -1,81 +1,115 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp988185lfp;
-        Mon, 20 Jan 2020 19:49:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxX0WkBH9Z9wedUxAKidenqLVqmVuDzKmBzx5/l3XIya7vvev6emwPpI0kuNWGmVTxbVsYm
-X-Received: by 2002:a05:6214:bc3:: with SMTP id ff3mr2810348qvb.155.1579578541738;
-        Mon, 20 Jan 2020 19:49:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579578541; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1010583lfp;
+        Mon, 20 Jan 2020 20:21:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy8f1yYwGeNzwmNK4IgHsy7kFGZY/uA+z713c8btYiIR0mVamQjw+zZPT4XqPZokl2AiYgm
+X-Received: by 2002:a17:906:52cb:: with SMTP id w11mr2608224ejn.59.1579580464478;
+        Mon, 20 Jan 2020 20:21:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579580464; cv=none;
         d=google.com; s=arc-20160816;
-        b=weCVpuTN1ZoaPuS9D2n88aKAq6nSI6ALY46EKyABb51o9nIQ/iN7kcruHqde96EExO
-         jm8bAknebVMrYFTSHBLgLlZaLmdbv4pCobxKov0E4/tF4/9S2EuS+ktB9ltMmsJVecQg
-         smWsWskNaB8XtHLDMrWCdcZx3ekl0pcHu3k2dSq8lnL3OluKoeKlIAe7pUQhEvSfyQgL
-         PIn9UPP2ssObV7/IBvlewjXtn2v05PRBs/2+mQ/JB46zsYg8gFyLG63xWyc4Trj7jW1d
-         3H8zft7yNw21TcaQ2bOUWVNccIfmZ3X0YPhWBjHV556rN+iFRseg4gjPAb7CuWXbzmKX
-         lfIw==
+        b=JQt70KgvXiCUrjZgd0L1kwESJKbnXFVZ3fJlfvMKIhTbeVB2AFrvOQIOubzSI6VLon
+         8hmizfuTSuz3tVB6I5o1qTyG6kgG0XQG9pxB4VUkBhyNuGNPQIv89e+temyaH10fOgCI
+         tC/7Fdl54aKZBB9WZtY8rxQFzAALdNquBHm+wvRm1kieYvIS1HrwLjSMT+VaVaYY4HDw
+         1Y5Dt1BwP+lBNRhdq0Y8BISbCwGLTjt6kjyD+PSZNOXRmMVbzlCxqbEL+mJRTbvI/TlQ
+         eVGlEiCzs7pwyF67MYgwa9QhsxD3dSHWvwhv3NdhQaxbGrZGBzCzgHstX3kQMRbQKMkZ
+         oYIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=y9KcScqgkHBgRuD0KfsqqxYLtKIhjeF8+9JB3noN9bA=;
-        b=s1kxLx14rQwYuYOytWO5qJXuq+YQrteYbLNmas0hD5Yv3Ol7Zi2YE0bdLY5cZiqdnh
-         3ECLmGu2JppGWluEp9tzoaSEBTJ3AuLhU191PvnV7NhHUwL/UIdp6j8YZ1ch8WU0Uu/f
-         LEMlFxco36P6iz0cBEpQlMj5kqov4SUVhwUVkRKWJkgDR1cbjVKFiV4vpiZzVBussfxy
-         9yDIdc/hdWt/X0MpB5GvVg22wfciH5GT+6sjxSw7CCMaLUh8owT72Q8flMCuMqxYsNv1
-         E/xtjKpD8U1ERKr7E+rUXDmrk6EiegcmWMMZe1iwu7l8TU6Dr6YXz8/xxQRov1bbP7YV
-         u/VA==
+         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
+         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
+         :dkim-signature;
+        bh=VBrbv77ECOPhybIGyD94COf/XRVeLbz9ixNwM2zHyKo=;
+        b=r9/z8Yi3Qjzh3qyHgqebhZWTvDEbogqGb/GbL6Zy1W2aDafRN5vDg16upVCSQ595SF
+         1g+OumLgqmxUs+BsJESA5eAmMX3vAKODTV03Czr2jrGkmrT2rMWlxKRPKUItzO/W3Zed
+         a526x/So0WjSu9hnRtCyK0+iZGG9iN7BzrDPr1pdc7ET1WsglP97JAPsFMgeh6WExYW0
+         gFTpC3McHG1rDqoEEODFkmpBin9a0aMueM1zCYz55O4zSk0/qRUK+Pwyb9uqrNoXjabw
+         1w1WZK9bdVLc1xUvMTPdSfmtWkzx3LkwFiT3G2DbaMeBgnZNcGK/pP0YdTIm2D44zprb
+         fMDw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@aj.id.au header.s=fm1 header.b=GOMa7viZ;
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=MKMEv4Bm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v25si13866372qta.106.2020.01.20.19.49.01
+        by mx.google.com with ESMTPS id b16si22520828ejq.470.2020.01.20.20.21.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 19:49:01 -0800 (PST)
+        Mon, 20 Jan 2020 20:21:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@aj.id.au header.s=fm1 header.b=GOMa7viZ;
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=MKMEv4Bm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47806 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itkXE-00078h-TM
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 22:49:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55926)
+	id 1itl2F-0007Ql-IC
+	for alex.bennee@linaro.org; Mon, 20 Jan 2020 23:21:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58969)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1itkX2-00075m-Nu
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 22:48:49 -0500
+ (envelope-from <andrew@aj.id.au>) id 1itl25-0007Oo-7E
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 23:20:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1itkX1-0000lS-C2
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 22:48:48 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:38382 helo=huawei.com)
+ (envelope-from <andrew@aj.id.au>) id 1itl24-0001zn-3X
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 23:20:53 -0500
+Received: from out3-smtp.messagingengine.com ([66.111.4.27]:50027)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1itkX1-0000gv-1A; Mon, 20 Jan 2020 22:48:47 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 4110858C8C31749A7AB5;
- Tue, 21 Jan 2020 11:48:39 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.439.0; Tue, 21 Jan 2020
- 11:48:29 +0800
-Subject: Re: [PATCH 1/2] arm/virt/acpi: remove meaningless sub device "PR0"
- from PCI0
-To: Igor Mammedov <imammedo@redhat.com>, Julia Suvorova <jusual@redhat.com>
-References: <20191219064759.35053-1-guoheyi@huawei.com>
- <20191219064759.35053-2-guoheyi@huawei.com>
- <20200113133702.1dea867b@redhat.com>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <613eaf96-c49d-11ac-1204-8c762a8295cc@huawei.com>
-Date: Tue, 21 Jan 2020 11:48:28 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <20200113133702.1dea867b@redhat.com>
-Content-Type: text/plain; charset="gbk"; format=flowed
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.71) (envelope-from <andrew@aj.id.au>)
+ id 1itl23-0001yU-Kf; Mon, 20 Jan 2020 23:20:52 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id ADF792205E;
+ Mon, 20 Jan 2020 23:20:49 -0500 (EST)
+Received: from imap2 ([10.202.2.52])
+ by compute4.internal (MEProxy); Mon, 20 Jan 2020 23:20:49 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type; s=fm1; bh=VBrbv77ECOPhybIGyD94COf/XRVeLbz
+ 9ixNwM2zHyKo=; b=GOMa7viZ2vx01W5FbOYki/Gij3d5eS5xbFDAzbjdZ44bd4g
+ x9sgBB1tIWA9VPNXtxnYAgpXmR/U/xd29UPTCoikmGbCX7P5JosGxWqJWwO2sGys
+ AkCNpoPRwmYdYUKn5HL8yphVJISNFtUY87o9I9VzeDT6ItPTqGp3FVnmG7Lson54
+ KzRrMR9UPChdFcQWrz8U23NWFDj8aD72gEJ8pWOiAnqHE+QNbO+IOt97IjLmq5Js
+ vFM9CJ2iAOEs+u6L+Nj89nix+EmmAH2fli3ij9A9MPtNhRSfDcl7zIrKGC+VTr9b
+ NVD+l/3dGB96917HB6BbKi+AwiSjA2arf9hxzQg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=VBrbv7
+ 7ECOPhybIGyD94COf/XRVeLbz9ixNwM2zHyKo=; b=MKMEv4Bm9KcPsIwbl29Ut3
+ 3T1vRJjcaZCMdh8sEhcqBDqWXN0vTZbk4vuF2T9vwFqbziBJwJJ907cgejfeTKw8
+ opBTGCThyKE4anDBYgoKytGQYdWlk8MWCZM+ltYw3/IYUa1EIrdXsTHi2DS26T+l
+ 3sisCeML9mNXZx3ScERiFgTF5PN3w5XT+Tp/g84lgT3wZe1gIwqzEmfNKAMWmy9R
+ OyzrXPpuoCFCVbfmhDuUVCCdmypkp9VIoXwMNQCF0o5Swyf4P2AmY0zCA9G24Rsh
+ IIa+bAJ7X+Kj3tRHRWnV+Qb5KQWuy+83YtWKSOZ+xamD8JYT8m+4P2ZPNImQW+Iw
+ ==
+X-ME-Sender: <xms:IHwmXsoG6vmlFbtWWfuJTLcQg4OHm3onwHhVuSVpt3ZmL0pHO4X8kQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedugedrudejgdeijecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpedftehnughr
+ vgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucevlhhush
+ htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghj
+ rdhiugdrrghu
+X-ME-Proxy: <xmx:IXwmXubJeDNjSzP7hqA3GwzjaJ3KJXlB0deUZkDviG5B5vIdeiBNqQ>
+ <xmx:IXwmXpwaCQT-xl2cmpZWp-wWT89kMjMbLpG7zX7i8siWN06a5HFEgg>
+ <xmx:IXwmXlCyJrJFMuhcIM6foYjaWi1PSc-HnJSabdAiLD5vKZlQocffBg>
+ <xmx:IXwmXpTGKO5UqIwEkKsffNOEMgogh4rJiGTEFduder48SpQdMgXfrA>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id D9FF5E00A2; Mon, 20 Jan 2020 23:20:48 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.1.7-754-g09d1619-fmstable-20200113v1
+Mime-Version: 1.0
+Message-Id: <bd9b60c0-6785-4499-a454-a97940177cee@www.fastmail.com>
+In-Reply-To: <20200121013302.43839-2-joel@jms.id.au>
+References: <20200121013302.43839-1-joel@jms.id.au>
+ <20200121013302.43839-2-joel@jms.id.au>
+Date: Tue, 21 Jan 2020 14:50:27 +1030
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: "Joel Stanley" <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ "Peter Maydell" <peter.maydell@linaro.org>
+Subject: Re: [PATCH 1/2] aspeed/scu: Create separate write callbacks
+Content-Type: text/plain
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
+X-Received-From: 66.111.4.27
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,102 +121,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org, Shannon
- Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i0VTe0jElfFj
+X-TUID: 15R6TiVRBirJ
 
-Hi Julia,
 
-Could you provide some comments or advice?
 
-Thanks,
+On Tue, 21 Jan 2020, at 12:03, Joel Stanley wrote:
+> This splits the common write callback into separate ast2400 and ast2500
+> implementations. This makes it clearer when implementing differing
+> behaviour.
+> 
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
 
-Heyi
-
-=D4=DA 2020/1/13 20:37, Igor Mammedov =D0=B4=B5=C0:
-> On Thu, 19 Dec 2019 14:47:58 +0800
-> Heyi Guo <guoheyi@huawei.com> wrote:
->
->> The sub device "PR0" under PCI0 in ACPI/DSDT does not make any sense,
->> so simply remote it.
-> Could you make commit message more concrete so it would say
-> why it doesn't make any sense.
->
-> It seems to be there to describe root port,
-> I'd rather have PCI folk ack if it's ok to remove it.
->
->> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
->>
->> ---
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: "Michael S. Tsirkin" <mst@redhat.com>
->> Cc: Igor Mammedov <imammedo@redhat.com>
->> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
->> Cc: qemu-arm@nongnu.org
->> Cc: qemu-devel@nongnu.org
->> ---
->>   hw/arm/virt-acpi-build.c          |   4 ----
->>   tests/data/acpi/virt/DSDT         | Bin 18462 -> 18449 bytes
->>   tests/data/acpi/virt/DSDT.memhp   | Bin 19799 -> 19786 bytes
->>   tests/data/acpi/virt/DSDT.numamem | Bin 18462 -> 18449 bytes
->>   4 files changed, 4 deletions(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index bd5f771e9b..9f4c7d1889 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -317,10 +317,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const M=
-emMapEntry *memmap,
->>       aml_append(method, aml_return(buf));
->>       aml_append(dev, method);
->>  =20
->> -    Aml *dev_rp0 =3D aml_device("%s", "RP0");
->> -    aml_append(dev_rp0, aml_name_decl("_ADR", aml_int(0)));
->> -    aml_append(dev, dev_rp0);
->> -
->>       Aml *dev_res0 =3D aml_device("%s", "RES0");
->>       aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")=
-));
->>       crs =3D aml_resource_template();
->> diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
->> index d0f3afeb134fdf1c11f64cd06dbcdd30be603b80..b5895cb22446860a0b9be3=
-d32ec856feb388be4c 100644
->> GIT binary patch
->> delta 39
->> vcmbO?fpOvlMlP3Nmk>b@1_q`B6S<_Bdg?Z+cXBfI+}XT|v(|R9jr$`2@RSW)
->>
->> delta 50
->> zcmbO@fpOjhMlP3Nmk>D*1_q{tiCof5o%I{lJ2{y;?{412S!>J19TZ>?&k^tF5;R%I
->> G{V4!>hYx%J
->>
->> diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/DS=
-DT.memhp
->> index 41ccc6431b917252bcbaac86c33b340c796be5ce..69ad844f65d047973a3e55=
-198beecd45a35b8fce 100644
->> GIT binary patch
->> delta 40
->> wcmcaUi}BPfMlP3Nmk=3D*s1_q}3iCof5t(P{ccXBfI+}XT|v(|RAjk`1(02g)*ivR!s
->>
->> delta 51
->> zcmX>#i}Cs_MlP3NmymE@1_mbiiCof5O_w*ScXBdy-rc;3v(}c2J1D>)o+IATC1|sb
->> HyBr$;t7;Fc
->>
->> diff --git a/tests/data/acpi/virt/DSDT.numamem b/tests/data/acpi/virt/=
-DSDT.numamem
->> index d0f3afeb134fdf1c11f64cd06dbcdd30be603b80..b5895cb22446860a0b9be3=
-d32ec856feb388be4c 100644
->> GIT binary patch
->> delta 39
->> vcmbO?fpOvlMlP3Nmk>b@1_q`B6S<_Bdg?Z+cXBfI+}XT|v(|R9jr$`2@RSW)
->>
->> delta 50
->> zcmbO@fpOjhMlP3Nmk>D*1_q{tiCof5o%I{lJ2{y;?{412S!>J19TZ>?&k^tF5;R%I
->> G{V4!>hYx%J
->>
->
-> .
-
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>

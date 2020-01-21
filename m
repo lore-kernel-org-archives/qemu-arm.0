@@ -1,224 +1,251 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp815694lfp;
-        Mon, 20 Jan 2020 15:58:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzVz8RTTyJzJ8hADZG2FmJOQhfTlboQwuwth7XpBvA8grfhPTAZxhk6p4IrvsieB5tjBQFP
-X-Received: by 2002:aa7:c915:: with SMTP id b21mr1593154edt.174.1579564728765;
-        Mon, 20 Jan 2020 15:58:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579564728; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp894196lfp;
+        Mon, 20 Jan 2020 17:33:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxUz4n8WIni1Y1HYCFT+so9TPdV1i3vb3fEq0YmCUza3ZNcy0PHb/MB7mhgWJXQdqHXH5NQ
+X-Received: by 2002:a05:6402:1592:: with SMTP id c18mr1752067edv.333.1579570421650;
+        Mon, 20 Jan 2020 17:33:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579570421; cv=none;
         d=google.com; s=arc-20160816;
-        b=nvpgp2uyMQKmkPW+mhJqSnWyOKg3Wp2mBPgxX5ozeS2giR0L8wEWbuAg4/TdmUHf96
-         eXyL39jEHwwysRsp34PoStzhxpR2h89m+9q1dFhZSv5TPDz7zvybzpuR5aNqWRMLkYBA
-         GS3NkKkkyKBi5zK+TIbUIMkysMrT8d7d8mPXRkXaxePidd8udzhlbYYIx+i+8YTiBeid
-         ivq2wsVG9z0VQi3HRc8GC1gV1dBqOoeirRAliR7fla7vzOHw4TFy/CSu+BIhTt83yz5r
-         yhChOD7sQMWcJOiz7kokBoyqoAdV/1EN0tn/hXUsFfJ2Q7Pwge4OmhiSullI6v9P0h0n
-         CSOA==
+        b=pBlXXjwA3TeTqWEhxSvoB1MGMBc2tMZES27tFCLWAubbFbqYt26cg0OVGDVFenHl4q
+         JdRPvNB10b9kp8XhOZKmioam350lFYRKCcFV9tveyXi+y1cdPaNQC1j+LZyUibVP2vW4
+         +lJq+UxCTNrXvfyVweLJ5NMMgW5aYUdo8Lx3gqxBqN1ZUrOpuye3XsrPc6TuDg/KQh8u
+         Tj73q7kxPwi6thgmlq4D8noKDMkBlkA2zzRSoKnVqEtxd4ovGd5YtO1yKlOiEu7IPsg8
+         40MZs5LrsYPQcPBULUySz7lHoD2l2IhHQZUFswe+272PqLe64xSZg9uKe80Svlnahxd4
+         a3Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=HmU95xX8aiHgv582n9n1gFgP0RnyUSIOGgAammjQwq4=;
-        b=mLvBkwwHLn0k0XzLI+QkT+ST3PCRs9heakNcFb3LKzRuebzdmbAkv8BGGt7gx0Da5G
-         kEPbG8RE2uBCe8jJzRQZfa6uLjkQwLaPEZBIY5l0GVxGdqYGa/vWMD4augZ4OnuZlSPh
-         SXgOywImOPkgfo+j3G/qMbfLJ1C0A3QZt7BEAnppKv6QLO+cUyKvIwiVVnxSgqmH2mIW
-         J7TnxAN1HzUBPDzSLXIYYRFtzP4c48oYnwixn9czzkpSalz9yCKSvrsI8QyxeUwzKSNe
-         Pga14gibs6Q/Zfx6dE5btpKCYRnZm3zoR/CRtWbd5RYICAwEK70DydKaSegEsCBRhHIu
-         4WeQ==
+        bh=hz3HUbbfMk3eAwn1j26oE45C8lSGBMv3GzNn4Rl2XPs=;
+        b=vrmOU3B4GX9NYkDcvQQFFZZ4i0WNlov/4uSLFxqmETGW2rOf61GuHYPK+w7yI67EFM
+         RiKcThTTrK5CD1AqXK4AuvGIvqzvnnPERqukg3R8nCN6w1UT3jzjB9zQ3fZ+xwyLXVKX
+         RlrxDQ7wfvVjn9RXujOK8Vu5NNIR85RAucMESyCWVzE+UAgyIF3/xXTOVMe8ni3E3/2J
+         SdaD9uTPRr81smzN6d6DIKUqMOoMPiXgrUHDs8ycHC6OLkKAcff1mmY66t4gwBzrCxW8
+         6mG2+PQLSh42NZl86H/ZYnufuHf68V7kSYUCXKSbK8f9Q4ZLadMXSPAF+JM7YZnMMZ2Z
+         gZnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mlUzk62W;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KDo2PLRR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e4si22128012ejc.262.2020.01.20.15.58.48
+        by mx.google.com with ESMTPS id pj3si23760747ejb.432.2020.01.20.17.33.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 15:58:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Jan 2020 17:33:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mlUzk62W;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46030 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KDo2PLRR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46726 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itgwR-00015j-I3
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 18:58:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35804)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1itiQG-0007Sy-Gi
+	for alex.bennee@linaro.org; Mon, 20 Jan 2020 20:33:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43684)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1itgq4-0000tX-Js
- for qemu-devel@nongnu.org; Mon, 20 Jan 2020 18:52:13 -0500
+ (envelope-from <joel.stan@gmail.com>) id 1itiPt-0007Qv-Fb
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 20:33:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1itgq3-0007Yt-8J
- for qemu-devel@nongnu.org; Mon, 20 Jan 2020 18:52:12 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52653)
+ (envelope-from <joel.stan@gmail.com>) id 1itiPs-0000ZV-5Q
+ for qemu-arm@nongnu.org; Mon, 20 Jan 2020 20:33:17 -0500
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:51575)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1itgq3-0007YW-2G; Mon, 20 Jan 2020 18:52:11 -0500
-Received: by mail-wm1-x341.google.com with SMTP id p9so1122398wmc.2;
- Mon, 20 Jan 2020 15:52:11 -0800 (PST)
+ (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
+ id 1itiPs-0000Z4-08; Mon, 20 Jan 2020 20:33:16 -0500
+Received: by mail-pj1-x1041.google.com with SMTP id d15so557383pjw.1;
+ Mon, 20 Jan 2020 17:33:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=HmU95xX8aiHgv582n9n1gFgP0RnyUSIOGgAammjQwq4=;
- b=mlUzk62WQoMQEbBYRE/ABkDc5CQXIEkYrOaWG4g8743z0u/9C6YQGlQEcHBvIBLvGa
- ctWfebxGlSn2s1qs+SQrzxhyLWMP/yyGUc3nxO28IWc1TQCU/ypHEs6WZlZ91Q/SVIIk
- BLmOsCOuF5HuIg+YiB9PH3JtILgKNabEltxaYKJZfF9DB3TMImb0dQ6HJwtKh0EnKQu2
- 9hHK3J86JMPenrtJ2269jwERK28sE3ay7UB35Kvtp0sJ5spQM66A1ITuCV8KQ/CJOc0y
- cdv/qeyfrxO4VG+bIc5WbVRNfCNrPm01+MK2+kBP1/ujyUswgJ7wClfATCvjb3Flw22w
- K0SA==
+ bh=hz3HUbbfMk3eAwn1j26oE45C8lSGBMv3GzNn4Rl2XPs=;
+ b=KDo2PLRR6CoHHZ7kQnMt3AOKVNFG1Urt4xg2A6HPzB0fAWiuG9ylMV9OyT5LtyzmFK
+ ExaYiPTclsZj2mSkqGojyTiuta/PpE5Q5gIHYBKgSKUgJ1I42d+GPXNlwBnjWS/WSdpW
+ 1ZFnQ/pOD8a4p7i8OSbU2tIp0H6/3aFtWXYDsR5FGzi9yuQeS+tewDA+YV22HJ5fvCJ0
+ 5TbSEeagN1UEN9/EmmvcB297TLMRV2hoxLDSjzQ6GkN0qYt66x1U95mTHxq4ceBoqWmF
+ fZAWfZhva6dbeY+ebF4iy4DD2EpH6YXmagpL7dktTBuk2ImG513l87R64k/VJZ1O2++r
+ m0Bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=HmU95xX8aiHgv582n9n1gFgP0RnyUSIOGgAammjQwq4=;
- b=Z6ej/JuB6KjlnlGC/valabA1HgGz732pkWnZozwF49kroAZ9WfnUibxsSi8TaRg6hH
- YSeTS6DyzN6+3gS0O+WkrrIpnEse6eaijWBSW3ozkjvo88cwEI8tT4yB7FxkNaagXSLk
- Eoj11VJ4hbuKeDgZ79RdqttoICK3cDmfzGWVlW6rf2CP7ecEvoz4gSJXTBmTWuk/L+B3
- dJ3nLkFRBPZbXycFaooQw5NLEilTnETtYN7dIOq/XoXOwx/wzN2767cWsOhr1zkVAuOQ
- ESXcd6Zb681SEYKxnU6AoJjazD2qksOyHxeliLsraYz11Xvg1NK/nweF/Qmw+GIgM0Sg
- Ts/w==
-X-Gm-Message-State: APjAAAX7Ieh912coLqYmArVKBZQrsUwQHv1UKnx3i3mfNVifr+skvYBx
- dNLhdUgRbcDVFOU7BmlF+vhpsKV+
-X-Received: by 2002:a7b:c74c:: with SMTP id w12mr1155175wmk.1.1579564329908;
- Mon, 20 Jan 2020 15:52:09 -0800 (PST)
-Received: from x1w.redhat.com (113.red-83-57-172.dynamicip.rima-tde.net.
- [83.57.172.113])
- by smtp.gmail.com with ESMTPSA id d8sm48655269wrx.71.2020.01.20.15.52.08
+ bh=hz3HUbbfMk3eAwn1j26oE45C8lSGBMv3GzNn4Rl2XPs=;
+ b=KeIMgX4xe7I2oxHyeZKzr8FQ73EkYzLU2bs10i/ZKC9Wx2VHvkWbn3hQ8XDX3p7B/1
+ PDFz398TbZR3Lp2J4cW8WfA0tbaFYylwtz7Mjo4a84KJwCWc0hdNnduL2j0Opev8XWiK
+ snWpD3B2qlu9o1lGsi1UkohM34XC0kfWSiaRIm8WQP61hFSsj4G6gY6bMjEDW49DFTTk
+ +HfTU7ag9BQymRfzWCjUEUbDGUrUrwrJCKZnyyXml+vkFd4mXFnGo6a3N4xX4PppmuGe
+ iHmoSMC2+ARNauRKA0VvFNg3b7rtlSHp65z3zi+X9K3IzbFG9SNReg1smdbYsnbdfo7B
+ Kq7g==
+X-Gm-Message-State: APjAAAVcagwZ/cbVT1h64oEdd6nOOELOhw9KUeq1yxf9fqkHHSDmub5u
+ u2aonBMBig4zBioERJ8LdfT8EFgX
+X-Received: by 2002:a17:902:6ac7:: with SMTP id
+ i7mr2761421plt.66.1579570393890; 
+ Mon, 20 Jan 2020 17:33:13 -0800 (PST)
+Received: from voyager.ibm.com ([36.255.48.244])
+ by smtp.gmail.com with ESMTPSA id x132sm40628397pfc.148.2020.01.20.17.33.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Jan 2020 15:52:09 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 5/7] tests/boot_linux_console: Test booting U-Boot on the
- Raspberry Pi 2
-Date: Tue, 21 Jan 2020 00:51:57 +0100
-Message-Id: <20200120235159.18510-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200120235159.18510-1-f4bug@amsat.org>
-References: <20200120235159.18510-1-f4bug@amsat.org>
+ Mon, 20 Jan 2020 17:33:13 -0800 (PST)
+From: Joel Stanley <joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 1/2] aspeed/scu: Create separate write callbacks
+Date: Tue, 21 Jan 2020 12:03:01 +1030
+Message-Id: <20200121013302.43839-2-joel@jms.id.au>
+X-Mailer: git-send-email 2.24.1
+In-Reply-To: <20200121013302.43839-1-joel@jms.id.au>
+References: <20200121013302.43839-1-joel@jms.id.au>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::1041
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Laurent Bonnans <laurent.bonnans@here.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4YBXiJicUy74
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LvrkJHm6j/FG
 
-This test runs U-Boot on the Raspberry Pi 2.
-It is very simple and fast:
+This splits the common write callback into separate ast2400 and ast2500
+implementations. This makes it clearer when implementing differing
+behaviour.
 
-  $ avocado --show=app,console run -t raspi2 -t u-boot tests/acceptance/
-  JOB LOG    : avocado/job-results/job-2020-01-20T23.40-2424777/job.log
-   (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_raspi2_uboot:
-  console: MMC:   sdhci@7e300000: 0
-  console: Loading Environment from FAT... Card did not respond to voltage select!
-  console: In:    serial
-  console: Out:   vidconsole
-  console: Err:   vidconsole
-  console: Net:   No ethernet found.
-  console: starting USB...
-  console: USB0:   Port not available.
-  console: Hit any key to stop autoboot:  0
-  console: U-Boot>
-  console: U-Boot> bdinfo
-  console: arch_number = 0x00000000
-  console: boot_params = 0x00000100
-  console: DRAM bank   = 0x00000000
-  console: -> start    = 0x00000000
-  console: -> size     = 0x3c000000
-  console: baudrate    = 115200 bps
-  console: TLB addr    = 0x3bff0000
-  console: relocaddr   = 0x3bf64000
-  console: reloc off   = 0x3bf5c000
-  console: irq_sp      = 0x3bb5fec0
-  console: sp start    = 0x3bb5feb0
-  console: Early malloc usage: 2a4 / 400
-  console: fdt_blob    = 0x3bfbdfb0
-  console: U-Boot> version
-  console: U-Boot 2019.01+dfsg-7 (May 14 2019 - 02:07:44 +0000)
-  console: gcc (Debian 8.3.0-7) 8.3.0
-  console: GNU ld (GNU Binutils for Debian) 2.31.1
-  console: U-Boot> reset
-  console: resetting ...
-  PASS (0.46 s)
-
-U-Boot is built by the Debian project, see:
-https://wiki.debian.org/InstallingDebianOn/Allwinner#Creating_a_bootable_SD_Card_with_u-boot
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
- tests/acceptance/boot_linux_console.py | 28 ++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ hw/misc/aspeed_scu.c | 80 +++++++++++++++++++++++++++++++-------------
+ 1 file changed, 57 insertions(+), 23 deletions(-)
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index e40b84651b..682b801b4f 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -16,6 +16,7 @@ import shutil
- from avocado import skipUnless
- from avocado_qemu import Test
- from avocado_qemu import exec_command_and_wait_for_pattern
-+from avocado_qemu import interrupt_interactive_console_until_pattern
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import process
- from avocado.utils import archive
-@@ -485,6 +486,33 @@ class BootLinuxConsole(Test):
-         exec_command_and_wait_for_pattern(self, 'reboot',
-                                                 'reboot: Restarting system')
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index f62fa25e3474..7108cad8c6a7 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -232,8 +232,47 @@ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
+     return s->regs[reg];
+ }
  
-+    def test_arm_raspi2_uboot(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:raspi2
-+        :avocado: tags=u-boot
-+        """
-+        deb_url = ('https://snapshot.debian.org/archive/debian/'
-+                   '20190514T084354Z/pool/main/u/u-boot/'
-+                   'u-boot-rpi_2019.01%2Bdfsg-7_armhf.deb')
-+        deb_hash = 'ad858cf3afe623b6c3fa2e20dcdd1768fcb9ae83'
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        uboot_path = '/usr/lib/u-boot/rpi_2/uboot.elf'
-+        uboot_path = self.extract_from_deb(deb_path, uboot_path)
+-static void aspeed_scu_write(void *opaque, hwaddr offset, uint64_t data,
+-                             unsigned size)
++static void aspeed_ast2400_scu_write(void *opaque, hwaddr offset,
++                                     uint64_t data, unsigned size)
++{
++    AspeedSCUState *s = ASPEED_SCU(opaque);
++    int reg = TO_REG(offset);
 +
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', uboot_path,
-+                         # VideoCore starts CPU with only 1 core enabled
-+                         '-global', 'bcm2836.enabled-cpus=1',
-+                         '-no-reboot')
-+        self.vm.launch()
-+        interrupt_interactive_console_until_pattern(self,
-+                                       'Hit any key to stop autoboot:',
-+                                       'Config file not found')
-+        exec_command_and_wait_for_pattern(self, 'bdinfo', 'U-Boot')
-+        exec_command_and_wait_for_pattern(self, 'version', 'U-Boot')
-+        exec_command_and_wait_for_pattern(self, 'reset', 'resetting ...')
++    if (reg >= ASPEED_SCU_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++        return;
++    }
 +
-     def test_s390x_s390_ccw_virtio(self):
-         """
-         :avocado: tags=arch:s390x
++    if (reg > PROT_KEY && reg < CPU2_BASE_SEG1 &&
++            !s->regs[PROT_KEY]) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__);
++    }
++
++    trace_aspeed_scu_write(offset, size, data);
++
++    switch (reg) {
++    case PROT_KEY:
++        s->regs[reg] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
++        return;
++    case SILICON_REV:
++    case FREQ_CNTR_EVAL:
++    case VGA_SCRATCH1 ... VGA_SCRATCH8:
++    case RNG_DATA:
++    case FREE_CNTR4:
++    case FREE_CNTR4_EXT:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Write to read-only offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++        return;
++    }
++
++    s->regs[reg] = data;
++}
++
++static void aspeed_ast2500_scu_write(void *opaque, hwaddr offset,
++                                     uint64_t data, unsigned size)
+ {
+     AspeedSCUState *s = ASPEED_SCU(opaque);
+     int reg = TO_REG(offset);
+@@ -257,25 +296,11 @@ static void aspeed_scu_write(void *opaque, hwaddr offset, uint64_t data,
+     case PROT_KEY:
+         s->regs[reg] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
+         return;
+-    case CLK_SEL:
+-        s->regs[reg] = data;
+-        break;
+     case HW_STRAP1:
+-        if (ASPEED_IS_AST2500(s->regs[SILICON_REV])) {
+-            s->regs[HW_STRAP1] |= data;
+-            return;
+-        }
+-        /* Jump to assignment below */
+-        break;
++        s->regs[HW_STRAP1] |= data;
++        return;
+     case SILICON_REV:
+-        if (ASPEED_IS_AST2500(s->regs[SILICON_REV])) {
+-            s->regs[HW_STRAP1] &= ~data;
+-        } else {
+-            qemu_log_mask(LOG_GUEST_ERROR,
+-                          "%s: Write to read-only offset 0x%" HWADDR_PRIx "\n",
+-                          __func__, offset);
+-        }
+-        /* Avoid assignment below, we've handled everything */
++        s->regs[HW_STRAP1] &= ~data;
+         return;
+     case FREQ_CNTR_EVAL:
+     case VGA_SCRATCH1 ... VGA_SCRATCH8:
+@@ -291,9 +316,18 @@ static void aspeed_scu_write(void *opaque, hwaddr offset, uint64_t data,
+     s->regs[reg] = data;
+ }
+ 
+-static const MemoryRegionOps aspeed_scu_ops = {
++static const MemoryRegionOps aspeed_ast2400_scu_ops = {
++    .read = aspeed_scu_read,
++    .write = aspeed_ast2400_scu_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++    .valid.unaligned = false,
++};
++
++static const MemoryRegionOps aspeed_ast2500_scu_ops = {
+     .read = aspeed_scu_read,
+-    .write = aspeed_scu_write,
++    .write = aspeed_ast2500_scu_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid.min_access_size = 4,
+     .valid.max_access_size = 4,
+@@ -469,7 +503,7 @@ static void aspeed_2400_scu_class_init(ObjectClass *klass, void *data)
+     asc->calc_hpll = aspeed_2400_scu_calc_hpll;
+     asc->apb_divider = 2;
+     asc->nr_regs = ASPEED_SCU_NR_REGS;
+-    asc->ops = &aspeed_scu_ops;
++    asc->ops = &aspeed_ast2400_scu_ops;
+ }
+ 
+ static const TypeInfo aspeed_2400_scu_info = {
+@@ -489,7 +523,7 @@ static void aspeed_2500_scu_class_init(ObjectClass *klass, void *data)
+     asc->calc_hpll = aspeed_2500_scu_calc_hpll;
+     asc->apb_divider = 4;
+     asc->nr_regs = ASPEED_SCU_NR_REGS;
+-    asc->ops = &aspeed_scu_ops;
++    asc->ops = &aspeed_ast2500_scu_ops;
+ }
+ 
+ static const TypeInfo aspeed_2500_scu_info = {
 -- 
-2.21.1
+2.24.1
 

@@ -1,115 +1,119 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1012949lfp;
-        Mon, 20 Jan 2020 20:24:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxT1f6En3k8+1VoZ1+i52uZbAyS5BkkZDfWo0rnyW5XGQpidlMndXiS5Mp6SQ8/ffSIz5fk
-X-Received: by 2002:a17:906:b88c:: with SMTP id hb12mr2618464ejb.150.1579580692430;
-        Mon, 20 Jan 2020 20:24:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579580692; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1105460lfp;
+        Mon, 20 Jan 2020 22:35:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwm2XZLXSsmP7K43MHw3pel5jsjiicadajAqyyygEF6HYY/ehxheCTd7xpoBPCt8oAbbOly
+X-Received: by 2002:ac8:3198:: with SMTP id h24mr2999176qte.291.1579588531646;
+        Mon, 20 Jan 2020 22:35:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579588531; cv=none;
         d=google.com; s=arc-20160816;
-        b=TnPuDSp7c/XoLx+qCjmkDuBkFZA+6TrcwrR0zvmFMkYMUlTSjEyUk8elSjyYt9Zixg
-         56DdNP7HckMwdcOdFG9XFowZbePGDdpjZaV3GkR0mtydkUNydxMA02piS09aSBuQUkmT
-         8sncsXkbVVo2n3qy5mKIw/HVF+K3x/pEJcJ4ZN0ESxkdX38FKtGh5Y7piW7AnksLaK9a
-         aTFINLdN7D2ILJpSKTTjWDy4IeoraZc9rb4Ney1YDC1XnbUyNik3athI5nF870YNpRHd
-         aZJJSJPe6AmRd7uhQJaM4LUk5msr/kfTFkpSyYmVkl5CW5nqJAHffQqFjJw5CQMSp5/Q
-         lAaA==
+        b=UUiRiQsq8bzszDboAYLch4g8dcGh/VeIhWUJJ5BgoFMZM8JzB+JGATj7+aEWXrEcr4
+         QR6my791Rg+aYJVQKdOZ4xoO+nwYFNprpS6SA+f8ge+yV1SaRAXf4Uz49h1sutnvezrq
+         tdopQPBtFQ8bAeajaookh+asahqVw1DJeUFOMUHP1MtcZxKVIn3aOVMW3zKcWliMZziV
+         Xdj8fJ8yA/1qJzQ9O+jUhOgTaubWLHzZLEojNSD7Ou1IF2wlOQO5Eac6dFJBpWqiaTBh
+         GNzM7ClfQ2CVRELKm/DKzYJAq0QjR4mzQtZUIGgh6s3r18YFj0YaBI1CxNygerTF0Vh7
+         T6tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
-         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
-         :dkim-signature;
-        bh=+ql6XpaYv26lkBKja4dJPr0iK4DSRdQqdM4NAxVmIOE=;
-        b=BRkSHfhfIHLObejK0IA//REUJF0orPYYi0fIaC7bjlwasPVAFWxzrqiG0hzWDqalUC
-         bKPkEHAM92rP1fve215fDqqVDtqBV5PNRV/VT5e/ETB05EeaBclpIjRAUrU3KaKkwcd2
-         Js8UtSevJ6L2uYV49bpdWsUjHzqM/fb9clNLAr8QW/bLwECYPDY+JqXjUgXqF5re9Rxr
-         9pKWtw9bNpc6UrE0+bKv/yX3G8QN/2FvFqMHOOY1ffrvS8Jed0LNsMtC5CEjQbdtcIh8
-         MJS37o8hYM8+xZePsuZDKLzbchIzGD8OtzUpdCSrkdX9zLn5bHEbT2SX0Swvh4SAUNNa
-         vEog==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=4OUvEKKlROGtujXMnDJksWS4Q2yXG8c0+NRjLFjnsrc=;
+        b=KSJotFik24Ppvmv+f+XqRAEoSzey0iYb1mz9KRR8CDVKCbQJF6iV25SwJprRaYGhhu
+         bQ/6ltfE1Wc6dTWaQZMpqbj4+PAgmlAuSu1eGWQ8vPvK6odZU8WR9eoguuZvAkljtljG
+         6FkaLJloneQ+RcFTwU5pya9pJl6KRC6NeCET8GUx17yDAiK42Mi/JiHAYh2SmCUp1/Lw
+         9uC+wP1XqkDbEY0oMHtb5OvkPKUCVn/6jzeagtLao8+oS3m05amjb0YXYzTBwf00Np1b
+         HKf9k3VN39xtQtZ/nuvjfq/nXL8pSiQy2buyrljvKA1p8agyBAfalolL3kNmBDnXWpHQ
+         Bwlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@aj.id.au header.s=fm1 header.b=GnnU2suy;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=Z68zi0Ud;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NhUB0Dm6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9si23290823ejz.422.2020.01.20.20.24.52
+        by mx.google.com with ESMTPS id e128si22236166qkf.115.2020.01.20.22.35.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2020 20:24:52 -0800 (PST)
+        Mon, 20 Jan 2020 22:35:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aj.id.au header.s=fm1 header.b=GnnU2suy;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=Z68zi0Ud;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48078 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NhUB0Dm6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49092 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itl5v-0000EQ-Eb
-	for alex.bennee@linaro.org; Mon, 20 Jan 2020 23:24:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59282)
+	id 1itn8M-00086t-R6
+	for alex.bennee@linaro.org; Tue, 21 Jan 2020 01:35:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43427)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1itl5n-0000EJ-Fu
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 23:24:44 -0500
+ (envelope-from <mst@redhat.com>) id 1itn86-00086e-0Q
+ for qemu-arm@nongnu.org; Tue, 21 Jan 2020 01:35:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1itl5m-0004OW-CT
- for qemu-arm@nongnu.org; Mon, 20 Jan 2020 23:24:43 -0500
-Received: from out3-smtp.messagingengine.com ([66.111.4.27]:58449)
+ (envelope-from <mst@redhat.com>) id 1itn83-0007kt-AV
+ for qemu-arm@nongnu.org; Tue, 21 Jan 2020 01:35:13 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:46183
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1itl5m-0004OF-8b; Mon, 20 Jan 2020 23:24:42 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 00F3321B7C;
- Mon, 20 Jan 2020 23:24:42 -0500 (EST)
-Received: from imap2 ([10.202.2.52])
- by compute4.internal (MEProxy); Mon, 20 Jan 2020 23:24:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type; s=fm1; bh=+ql6XpaYv26lkBKja4dJPr0iK4DSRdQ
- qdM4NAxVmIOE=; b=GnnU2suygUo+36JMN6ZNnAISDWZQe9hHQtGF1T92EhFMA2t
- 74Io03QPTKxqOFptH4sUUdO4i2Jv0vOUBPDpDka8P4XCFpY0mbGqJEtrxr8ZXB54
- HFbeRdgDct9QKwM85K5plL1hKk6/L/knV6VqePMSkfq1IgHCG43IgaKCw1hbMFKh
- xxCvo1fQDy3fALwzWB4dylStzqOu4IwBvZWGF2kGBjGavcBaOoD+a1x8o/fP0zIs
- VSI53e7s1hST2z8B+iLGSvFWGAuRW3Qy4L1HBms3RZTN/3o2Jf9RqN3AJvDDB5zp
- x6VsjVV9O8lvV15QXa3L+ymur05AtL5pYJq0OGw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=+ql6Xp
- aYv26lkBKja4dJPr0iK4DSRdQqdM4NAxVmIOE=; b=Z68zi0UdI2khSOAl7cFdLj
- 2qeRsM/63BJaYNBs6ULIQn6w1oxgAaKVZQXBhdBqbXcEz9JN8IynsO7nNIx3EZVQ
- qcoP3K2lYC/JKN9oZMtlOZ+0mQjglAFJg7SEcl3wGvGWYjpLWLrrkdzjokEHK19w
- STKXW5q0yXM4c2exrsb1JBvKLBVE9aoVYIFcRot3jvMQoJUGc8VcVHK6nIuqdORX
- rkYJYN4szI+nJg+qPcb/LfbcYZFxHHazp6e2QRTxoBmwwRTund1Le4WqAH+pZ39+
- U3oUCp2PRPT6OUo/CUNOYd+pn2VTe/dFJCDmLd5eFP4/UdZO45dC25QsJ/sTByEw
- ==
-X-ME-Sender: <xms:CX0mXtR6luiqxHj-Yyjgi1y8FKsZQsWIvKIRyjGsKH2N40iWpQCxXA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedugedrudejgdeikecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpedftehnughr
- vgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucevlhhush
- htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghj
- rdhiugdrrghu
-X-ME-Proxy: <xmx:CX0mXm5Fblin7a5qHdOEOBtvsWIZDDbnoirgUPZBQ3Dwkzc40PRmQA>
- <xmx:CX0mXqxtj4zQymi-AVkNqI6UDWGcpyhCQ1S2W5w5dF9_p41OoCZyNg>
- <xmx:CX0mXtT6WFvVn2NV3cXIkJhOevl9M-UtBwd16wYEv5rnVOY7yybCxw>
- <xmx:CX0mXtT1ZvHaCvGIXNV7A_h74wijFbVAWSDE71egmqLxZiXHNawqHQ>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 69173E00A2; Mon, 20 Jan 2020 23:24:41 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.1.7-754-g09d1619-fmstable-20200113v1
-Mime-Version: 1.0
-Message-Id: <d6dc47da-2e84-4be8-b299-1cc092266f33@www.fastmail.com>
-In-Reply-To: <20200121013302.43839-3-joel@jms.id.au>
-References: <20200121013302.43839-1-joel@jms.id.au>
- <20200121013302.43839-3-joel@jms.id.au>
-Date: Tue, 21 Jan 2020 14:53:54 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Joel Stanley" <joel@jms.id.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "Peter Maydell" <peter.maydell@linaro.org>
-Subject: Re: [PATCH 2/2] aspeed/scu: Implement chip ID register
-Content-Type: text/plain
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1itn83-0007kQ-4o
+ for qemu-arm@nongnu.org; Tue, 21 Jan 2020 01:35:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579588510;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4OUvEKKlROGtujXMnDJksWS4Q2yXG8c0+NRjLFjnsrc=;
+ b=NhUB0Dm6jmTMZh+k4bvrh/se1EqN+RdYPB46MnVuM2auPBySGDlphS+P7B2t+yTxXsDKjE
+ yQVpduU15XfEWAUv1bQ/2OGYz6kgcTdVLbEcMLs3HqowJIGl43gXZ1dDZPOPk/ztWYysAS
+ R711eJqZ1CDcxHOusX36EszE1aMaDuc=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-430-Wnf6aCGrMpqxcJiL_MkGgA-1; Tue, 21 Jan 2020 01:35:09 -0500
+Received: by mail-qv1-f72.google.com with SMTP id d7so976105qvq.12
+ for <qemu-arm@nongnu.org>; Mon, 20 Jan 2020 22:35:09 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=+bCOxOtxPTd6B2o3yuNHhUE10cJLKnqqqRdS8U7GWlU=;
+ b=OJl+w3wzxDA1ce+zw1qQcSnx54ATC4X106ul9ctKM7QM//v7HtH1+zvsdBanXU2p+m
+ q0KONvC1NxCCCts75J8mucEFBQ6Z/KL4aTcIdTCmL52rqwrHlJigqfLtAj6oCOSy0QpM
+ u+Dvq6yOI8d10dVs3pOEvJct1kEi3cKG79QqZsVhUfWIke0Y5cyyqay16ByZ4rnuvndO
+ yOzUpsnopEoc2uh8Glc1dbXHF9+Z6X/KCogR25wk+8bVB/A+SbAXOwGmhvMEZJYH4PU0
+ INesXJgDASEZhEK7wSLezq+U9wMWnQRYcTjxdYFX1YfoEpJlWfOqn/GWLWKk+ZIYqgWP
+ /mMA==
+X-Gm-Message-State: APjAAAWMezsQBP2qynuGgpdYzU+m7AtPg8lNMzbo605iJpEzwBTndvBr
+ pdnj5S/gTbJdiw2XUORN4Tu+zzh+dbm9UtBbEFDKk6m3AYS83BWYKaQBA15yo7vSZdNi0dRt7qb
+ TnXsUuEhoAm0u
+X-Received: by 2002:a05:620a:910:: with SMTP id
+ v16mr3222716qkv.194.1579588508771; 
+ Mon, 20 Jan 2020 22:35:08 -0800 (PST)
+X-Received: by 2002:a05:620a:910:: with SMTP id
+ v16mr3222704qkv.194.1579588508473; 
+ Mon, 20 Jan 2020 22:35:08 -0800 (PST)
+Received: from redhat.com (bzq-79-179-85-180.red.bezeqint.net. [79.179.85.180])
+ by smtp.gmail.com with ESMTPSA id e3sm18728863qtb.65.2020.01.20.22.35.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Jan 2020 22:35:07 -0800 (PST)
+Date: Tue, 21 Jan 2020 01:35:01 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: Re: [PATCH 1/2] arm/virt/acpi: remove meaningless sub device "PR0"
+ from PCI0
+Message-ID: <20200121005533-mutt-send-email-mst@kernel.org>
+References: <20191219064759.35053-1-guoheyi@huawei.com>
+ <20191219064759.35053-2-guoheyi@huawei.com>
+ <20200113133702.1dea867b@redhat.com>
+MIME-Version: 1.0
+In-Reply-To: <20200113133702.1dea867b@redhat.com>
+X-MC-Unique: Wnf6aCGrMpqxcJiL_MkGgA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 66.111.4.27
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -121,86 +125,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Julia Suvorova <jusual@redhat.com>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Heyi Guo <guoheyi@huawei.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QFaI8IrLPimJ
+X-TUID: qtHUqLG19R9q
+
+On Mon, Jan 13, 2020 at 01:37:02PM +0100, Igor Mammedov wrote:
+> On Thu, 19 Dec 2019 14:47:58 +0800
+> Heyi Guo <guoheyi@huawei.com> wrote:
+>=20
+> > The sub device "PR0" under PCI0 in ACPI/DSDT does not make any sense,
+> > so simply remote it.
+> Could you make commit message more concrete so it would say
+> why it doesn't make any sense.
+>=20
+> It seems to be there to describe root port,
+> I'd rather have PCI folk ack if it's ok to remove it.
+
+An empty device like this doesn't really do anything useful I think.
+commit log needs to be fixed up though.
 
 
+> >=20
+> > Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+> >=20
+> > ---
+> > Cc: Peter Maydell <peter.maydell@linaro.org>
+> > Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> > Cc: Igor Mammedov <imammedo@redhat.com>
+> > Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> > Cc: qemu-arm@nongnu.org
+> > Cc: qemu-devel@nongnu.org
+> > ---
+> >  hw/arm/virt-acpi-build.c          |   4 ----
+> >  tests/data/acpi/virt/DSDT         | Bin 18462 -> 18449 bytes
+> >  tests/data/acpi/virt/DSDT.memhp   | Bin 19799 -> 19786 bytes
+> >  tests/data/acpi/virt/DSDT.numamem | Bin 18462 -> 18449 bytes
+> >  4 files changed, 4 deletions(-)
+> >=20
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index bd5f771e9b..9f4c7d1889 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -317,10 +317,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const Me=
+mMapEntry *memmap,
+> >      aml_append(method, aml_return(buf));
+> >      aml_append(dev, method);
+> > =20
+> > -    Aml *dev_rp0 =3D aml_device("%s", "RP0");
+> > -    aml_append(dev_rp0, aml_name_decl("_ADR", aml_int(0)));
+> > -    aml_append(dev, dev_rp0);
+> > -
+> >      Aml *dev_res0 =3D aml_device("%s", "RES0");
+> >      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")))=
+;
+> >      crs =3D aml_resource_template();
+> > diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
+> > index d0f3afeb134fdf1c11f64cd06dbcdd30be603b80..b5895cb22446860a0b9be3d=
+32ec856feb388be4c 100644
+> > GIT binary patch
+> > delta 39
+> > vcmbO?fpOvlMlP3Nmk>b@1_q`B6S<_Bdg?Z+cXBfI+}XT|v(|R9jr$`2@RSW) =20
+> >=20
+> > delta 50
+> > zcmbO@fpOjhMlP3Nmk>D*1_q{tiCof5o%I{lJ2{y;?{412S!>J19TZ>?&k^tF5;R%I =20
+> > G{V4!>hYx%J =20
+> >=20
+> > diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/DSD=
+T.memhp
+> > index 41ccc6431b917252bcbaac86c33b340c796be5ce..69ad844f65d047973a3e551=
+98beecd45a35b8fce 100644
+> > GIT binary patch
+> > delta 40
+> > wcmcaUi}BPfMlP3Nmk=3D*s1_q}3iCof5t(P{ccXBfI+}XT|v(|RAjk`1(02g)*ivR!s
+> >=20
+> > delta 51
+> > zcmX>#i}Cs_MlP3NmymE@1_mbiiCof5O_w*ScXBdy-rc;3v(}c2J1D>)o+IATC1|sb =20
+> > HyBr$;t7;Fc
+> >=20
+> > diff --git a/tests/data/acpi/virt/DSDT.numamem b/tests/data/acpi/virt/D=
+SDT.numamem
+> > index d0f3afeb134fdf1c11f64cd06dbcdd30be603b80..b5895cb22446860a0b9be3d=
+32ec856feb388be4c 100644
+> > GIT binary patch
+> > delta 39
+> > vcmbO?fpOvlMlP3Nmk>b@1_q`B6S<_Bdg?Z+cXBfI+}XT|v(|R9jr$`2@RSW) =20
+> >=20
+> > delta 50
+> > zcmbO@fpOjhMlP3Nmk>D*1_q{tiCof5o%I{lJ2{y;?{412S!>J19TZ>?&k^tF5;R%I =20
+> > G{V4!>hYx%J =20
+> >=20
 
-On Tue, 21 Jan 2020, at 12:03, Joel Stanley wrote:
-> This returns a fixed but non-zero value for the chip id.
-> 
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-
-Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
-> ---
->  hw/misc/aspeed_scu.c | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 7108cad8c6a7..19d1780a40da 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -77,6 +77,8 @@
->  #define CPU2_BASE_SEG4       TO_REG(0x110)
->  #define CPU2_BASE_SEG5       TO_REG(0x114)
->  #define CPU2_CACHE_CTRL      TO_REG(0x118)
-> +#define CHIP_ID0             TO_REG(0x150)
-> +#define CHIP_ID1             TO_REG(0x154)
->  #define UART_HPLL_CLK        TO_REG(0x160)
->  #define PCIE_CTRL            TO_REG(0x180)
->  #define BMC_MMIO_CTRL        TO_REG(0x184)
-> @@ -115,6 +117,8 @@
->  #define AST2600_HW_STRAP2_PROT    TO_REG(0x518)
->  #define AST2600_RNG_CTRL          TO_REG(0x524)
->  #define AST2600_RNG_DATA          TO_REG(0x540)
-> +#define AST2600_CHIP_ID0          TO_REG(0x5B0)
-> +#define AST2600_CHIP_ID1          TO_REG(0x5B4)
->  
->  #define AST2600_CLK TO_REG(0x40)
->  
-> @@ -182,6 +186,8 @@ static const uint32_t 
-> ast2500_a1_resets[ASPEED_SCU_NR_REGS] = {
->       [CPU2_BASE_SEG1]  = 0x80000000U,
->       [CPU2_BASE_SEG4]  = 0x1E600000U,
->       [CPU2_BASE_SEG5]  = 0xC0000000U,
-> +     [CHIP_ID0]        = 0x1234ABCDU,
-> +     [CHIP_ID1]        = 0x88884444U,
->       [UART_HPLL_CLK]   = 0x00001903U,
->       [PCIE_CTRL]       = 0x0000007BU,
->       [BMC_DEV_ID]      = 0x00002402U
-> @@ -307,6 +313,8 @@ static void aspeed_ast2500_scu_write(void *opaque, 
-> hwaddr offset,
->      case RNG_DATA:
->      case FREE_CNTR4:
->      case FREE_CNTR4_EXT:
-> +    case CHIP_ID0:
-> +    case CHIP_ID1:
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "%s: Write to read-only offset 0x%" HWADDR_PRIx 
-> "\n",
->                        __func__, offset);
-> @@ -620,6 +628,8 @@ static void aspeed_ast2600_scu_write(void *opaque, 
-> hwaddr offset,
->      case AST2600_RNG_DATA:
->      case AST2600_SILICON_REV:
->      case AST2600_SILICON_REV2:
-> +    case AST2600_CHIP_ID0:
-> +    case AST2600_CHIP_ID1:
->          /* Add read only registers here */
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "%s: Write to read-only offset 0x%" HWADDR_PRIx 
-> "\n",
-> @@ -648,6 +658,9 @@ static const uint32_t 
-> ast2600_a0_resets[ASPEED_AST2600_SCU_NR_REGS] = {
->      [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
->      [AST2600_SDRAM_HANDSHAKE]   = 0x00000040,  /* SoC completed DRAM 
-> init */
->      [AST2600_HPLL_PARAM]        = 0x1000405F,
-> +    [AST2600_CHIP_ID0]          = 0x1234ABCD,
-> +    [AST2600_CHIP_ID1]          = 0x88884444,
-
-Probably should add the explicit trailing 'U' to the constants at some point.
-
-Reviewed-by: Andrew Jeffery <andrew@aj.id.au>

@@ -1,95 +1,94 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1549188lfp;
-        Tue, 21 Jan 2020 06:32:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzU7LVjYD0Te+oiNtT0kqca9kdpl4V+8HI2VBKHtKqwHqchhOpE/JL1EPDa4QZeh0CSZ05J
-X-Received: by 2002:aa7:d34d:: with SMTP id m13mr4261962edr.140.1579617148444;
-        Tue, 21 Jan 2020 06:32:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579617148; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1552531lfp;
+        Tue, 21 Jan 2020 06:35:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwSqbtAWBhajM3YDmdHfv1tj474hbcAmoYVqnkz6Tylkpwie7C4I34Dd6k2nLn+ETKe4A03
+X-Received: by 2002:ae9:e206:: with SMTP id c6mr4839240qkc.105.1579617306319;
+        Tue, 21 Jan 2020 06:35:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579617306; cv=none;
         d=google.com; s=arc-20160816;
-        b=UoH4+AQtu5MbqbG6TmTC3Q1umYj6Egnsc/rx6drA1R6CwYXE0OA72u5KXWw+snVTuV
-         pcF2U3Dm+XFnyvOjm8z+xkoPku0j+2+CGtChjMe5DNhyVGxjGhd1PdgSQHaVWUJDlU3d
-         Fl2Ttar910TweLPtzRQqhL4rWz90ulV0GVnX/W1mpL+t3O7qR+tH1/7Oukbur6O5zxAK
-         hgQSUAbtVmrRj6TZXoB3qC/NE+a1AhESrLZDeFiLFWjyFwel5XU/LsmtVTtGfZdg66U2
-         LJpXyb1gR4G/yprUJN1SZT17ngWiy0jm4EdyrZfCsf5w6wzYqQAWBRl82jd4ge1XB+uC
-         Uxdw==
+        b=pltRyATmIxL1iWP6+BhAjBRJ0c7N0Sq6T+ApqsqfOtUBy0fXw/10z1Yx7PeuEOjw7d
+         U0ch+qp//UNQ3i91ye5x0FHDVz/t+m3q+lTIqP7NkIZPbBswkRVAT/F7xwKJzb2Z4oK1
+         t+wX1NHOHbR7Pfr2Zew4b4rTYp9DuSCblxC4+i0/hXECgknKhjOkIxxElOj4Hh1H3xWT
+         RkHRPAuQdE9adh2I61RmbuMb7FulU/XopFkaIUdsHHHaWexuW6VO1sxnh/8zWoX8wzP2
+         WE+LLeIuvywL1c0/t9yU1JA+7+iaZnWwZKAS94Ln0/SmNP9S9gy3cFAKHV7ehX1Tcby2
+         C6rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:organization:references:in-reply-to:message-id:subject
          :to:from:date:dkim-signature;
-        bh=DAPsVAjugB5XRyo7HdUV1TWGHRy9A5yyrBvF5QYgqCs=;
-        b=gEPxys2mde6jDKULFcJc+JacffGtMmLSqY2AtRUde9mt1gZ1+UFG7LlIsqRQQnCjsu
-         U/Du4OoDY4Mnr9Z5LKnmfHkESCH02Dkh/Q8AWdp0E4U4exaI78WLGJnqUBV898Na2uxu
-         ccd1tRGrxezBvsU2sIN+wQrL5uJ0kV+jNFUHWz/1uKzDXskq/dkb06aVwA+L1Nz1FP3F
-         85rbz/hGZBJUPCVfBAnbSoWJhZqQ2nrMFeMnT8AkNSeirfASUx51E9FCXuv4wjiGyOkw
-         YD5KzbhaamiT1QNoJJFEXGokjpydo5w7jO3ZHRYt7y0sUw+G5EATXOLH1eTtD+NVqKzz
-         eOqA==
+        bh=c15pK4ujm6hBaqsGSqfq6xH4gGQtafWdSPYDDOHuoiw=;
+        b=Hqhehq331Obg6K0U6g/4H0v2SX9BLTg4lknfVAnkbi9upxwZCp5Pzy2Jmdwl+i0ucY
+         w/eh4CLgzmylL4jvWAG5fgYxEuy+agOiJvYFwVPshZyAyjz8GpRedw/ay0aTEvL7VJC0
+         GXq/kAGsQ6Jysl6rbHNMfFbRMFwDmcV3DgBHwOjNN++2JQenU1nz8Cn5QdzBQB/rrhxV
+         Y2fxkkQkpRx519QGi0Tk73sDZq3f7nW/Ztg46FXWQQTYzHvGiFv3+3Y2E6JylvrFzGr3
+         I3LnA/IeHxUpbNPD8c+41ddsgMm0tzfD+9NfhSbaZ1IVYKulDG2wq9UogsF6pmMDQYSo
+         Hohg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g+l3ODnG;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=STNZab2s;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9si24749845edn.351.2020.01.21.06.32.28
+        by mx.google.com with ESMTPS id 71si23236207qtc.192.2020.01.21.06.35.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jan 2020 06:32:28 -0800 (PST)
+        Tue, 21 Jan 2020 06:35:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g+l3ODnG;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=STNZab2s;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55326 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55404 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ituZv-0005e0-CE
-	for alex.bennee@linaro.org; Tue, 21 Jan 2020 09:32:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38200)
+	id 1itucT-00006o-Ed
+	for alex.bennee@linaro.org; Tue, 21 Jan 2020 09:35:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40255)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1ittzO-00046E-0G
- for qemu-devel@nongnu.org; Tue, 21 Jan 2020 08:54:43 -0500
+ (envelope-from <cohuck@redhat.com>) id 1ituB3-0000rv-C3
+ for qemu-devel@nongnu.org; Tue, 21 Jan 2020 09:06:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1ittzM-0002hR-Ry
- for qemu-devel@nongnu.org; Tue, 21 Jan 2020 08:54:41 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:58585
+ (envelope-from <cohuck@redhat.com>) id 1ituAz-0008WQ-6P
+ for qemu-devel@nongnu.org; Tue, 21 Jan 2020 09:06:45 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:59217
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1ittzM-0002gr-NL
- for qemu-devel@nongnu.org; Tue, 21 Jan 2020 08:54:40 -0500
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1ituAz-0008Vt-1S
+ for qemu-devel@nongnu.org; Tue, 21 Jan 2020 09:06:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579614880;
+ s=mimecast20190719; t=1579615600;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DAPsVAjugB5XRyo7HdUV1TWGHRy9A5yyrBvF5QYgqCs=;
- b=g+l3ODnGt1wibaWHCaRwP2MsaH6IL5hsSY7yHJ5Hl3/zHnWAoce+Ct+OSkW3xFcJB4W0n+
- eW+xvVdIkkaWqqd+fgY7EP77JaqTD+cumLsKsFDJIPRmOGqGsGJPL5xF6YEhpMyi8ImkFw
- t3tKPxdOmUy2znUq7EPlsW44xaLxvvo=
+ bh=c15pK4ujm6hBaqsGSqfq6xH4gGQtafWdSPYDDOHuoiw=;
+ b=STNZab2spVYfKvVW4kA2lyEu2tv6nVePaTdSTXN2xRGZLFBJh3Ce4bAmG4T3nH4xdLyTQM
+ Vye7xj8bz1t7bgwM33Z0z4pn2/UEdV9zX0Cn0k0VD2U+NMXVb+phnR7a5eVnxJmlWrIT/p
+ 14lRJGoi9G3+tl5iYJ2cMB3EW+hIMP8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-40-Nk3LPpWsM46f4eiwjZPVDg-1; Tue, 21 Jan 2020 08:54:39 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-228--ugODxVUPJOaJe8zucGimg-1; Tue, 21 Jan 2020 09:06:34 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B9FC5107ACC4;
- Tue, 21 Jan 2020 13:54:37 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BBA5C802B7F;
+ Tue, 21 Jan 2020 14:06:32 +0000 (UTC)
 Received: from gondolin (dhcp-192-195.str.redhat.com [10.33.192.195])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B470F60BE0;
- Tue, 21 Jan 2020 13:54:30 +0000 (UTC)
-Date: Tue, 21 Jan 2020 14:54:28 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E453A5C290;
+ Tue, 21 Jan 2020 14:06:25 +0000 (UTC)
+Date: Tue, 21 Jan 2020 15:06:23 +0100
 From: Cornelia Huck <cohuck@redhat.com>
 To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: [PATCH v2 06/10] qom/object: Display more helpful message when
- a parent is missing
-Message-ID: <20200121145428.56e2f962.cohuck@redhat.com>
-In-Reply-To: <20200121110349.25842-7-philmd@redhat.com>
+Subject: Re: [PATCH v2 10/10] accel/tcg: Sanitize include path
+Message-ID: <20200121150623.09441553.cohuck@redhat.com>
+In-Reply-To: <20200121110349.25842-11-philmd@redhat.com>
 References: <20200121110349.25842-1-philmd@redhat.com>
- <20200121110349.25842-7-philmd@redhat.com>
+ <20200121110349.25842-11-philmd@redhat.com>
 Organization: Red Hat GmbH
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: Nk3LPpWsM46f4eiwjZPVDg-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: -ugODxVUPJOaJe8zucGimg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
@@ -109,7 +108,6 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Like Xu <like.xu@linux.intel.com>,
  David Hildenbrand <david@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
  qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
@@ -118,49 +116,39 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Bo/FFZQeTk15
+X-TUID: cz807M3BHQgD
 
-On Tue, 21 Jan 2020 12:03:45 +0100
+On Tue, 21 Jan 2020 12:03:49 +0100
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-> QEMU object model is scarse in documentation. Some calls are
-> recursive, and it might be hard to figure out even trivial issues.
->=20
-> We can avoid developers to waste time in a debugging session by
-> displaying a simple error message.
->=20
-> This commit is also similar to e02bdf1cecd2 ("Display more helpful
-> message when an object type is missing").
+> Commit af0440ae852 moved the qemu_tcg_configure() function,
+> but introduced extraneous 'include/' in the includes path.
+> As it is not necessary, remove it.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
 > v2: New patch
 > ---
->  qom/object.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
+>  accel/tcg/tcg-all.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 >=20
-> diff --git a/qom/object.c b/qom/object.c
-> index 0d971ca897..bc13a55094 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -173,7 +173,11 @@ static TypeImpl *type_get_parent(TypeImpl *type)
->  {
->      if (!type->parent_type && type->parent) {
->          type->parent_type =3D type_get_by_name(type->parent);
-> -        g_assert(type->parent_type !=3D NULL);
-> +        if (!type->parent_type) {
-> +            fprintf(stderr, "Object '%s' missing its parent '%s'\n",
-
-Maybe s/missing/is missing/ ?
-
-Anyway, a real improvement :)
-
-> +                    type->name, type->parent);
-> +            abort();
-> +        }
->      }
+> diff --git a/accel/tcg/tcg-all.c b/accel/tcg/tcg-all.c
+> index 1802ce02f6..acfdcfdf59 100644
+> --- a/accel/tcg/tcg-all.c
+> +++ b/accel/tcg/tcg-all.c
+> @@ -31,9 +31,9 @@
+>  #include "sysemu/cpus.h"
+>  #include "qemu/main-loop.h"
+>  #include "tcg/tcg.h"
+> -#include "include/qapi/error.h"
+> -#include "include/qemu/error-report.h"
+> -#include "include/hw/boards.h"
+> +#include "qapi/error.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/boards.h"
+>  #include "qapi/qapi-builtin-visit.h"
 > =20
->      return type->parent_type;
+>  typedef struct TCGState {
 
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 

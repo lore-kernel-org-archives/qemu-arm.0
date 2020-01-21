@@ -1,193 +1,154 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1315497lfp;
-        Tue, 21 Jan 2020 02:50:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwwKao/A3FpdGPHmxieBGRLuulu1BvfDyxOWPcNBSp21H+RTI4q5SaHvr6fDxeT+2YbxNgl
-X-Received: by 2002:ac8:5395:: with SMTP id x21mr3753305qtp.64.1579603806635;
-        Tue, 21 Jan 2020 02:50:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579603806; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1516359lfp;
+        Tue, 21 Jan 2020 06:06:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwf5LmE14qVOr9KS21s3CaSI1llGIYfmATxc3EAHv38ITQPyHtK+L2TIzPRrJ6Kd5e7N9Sg
+X-Received: by 2002:a37:674d:: with SMTP id b74mr4677109qkc.396.1579615567694;
+        Tue, 21 Jan 2020 06:06:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579615567; cv=none;
         d=google.com; s=arc-20160816;
-        b=o4SMrfih85IDtBLqhnAVHX44pRE38z92IGNXgV4ur9Kr/Q7VuJr6fw+xIxJ9uFTh1/
-         sFLdrINFdeCpVOM7F5Edw3AgE9F+8VIKJZo2ni3WcSkHnVmKf1bNBmcnK+14izRPyg6J
-         GsFkeSuBYiBLACu1Wfu9ibYMBGOaFxI42OLKzCYA6bJXZann1EJ7wpc9J+Ba3mPKddzb
-         +bTvmS7AbTTfhvJP+Jmga44iPKqAhxq33lH8q7SjxzJ1lLirnWnoh7RaxgfzFWm5joEb
-         l+8sNneppta4oxACJ9BKgOnJc+GSEiz7RfRVr/d83dc8T8b4hlTiQckzi5+uqWkCt69Y
-         l4ww==
+        b=fy5vB4WUAExV216TxfsAt8d0gnrB+ylECh7P8MyrqY+fbG2GpfpdeOf0M+q5UjhZnQ
+         S8POidvrfHG0FSXNBdmhCcCZONxU+LHgL3uk3pnGfhcieIAGA7juqFmxrG943BHpoFZg
+         cGv30kJlxQWSzvMjA2oCAlRVpAElwbjKCcg75YWz4spPYyvkb/8HCjLLPvzJdTLQxVPz
+         RRTM6NwYC7B9FjN1oPLGXfe8Ws0hNIi+3Y/PmOgEJttxZYyVo8+B6fytPopJgJqP1Y4a
+         n1Or0/kqLC/3PKKVKnd08b3rjjStW2HlUV59N5vbKSd1jx2JArUtkvUqAU7RMW2zMC3X
+         VeLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=FSa46ZYyGmie/bVkHIG0X5JHtwyUvx9RKZ7BbDRX9ZM=;
-        b=l/h5PijEn0f+fsfMK4whZVEMcIYuQMvePGsapM3ZZGsV/aCnEz6yp/FVYC3uZpr9zz
-         UkKbft6Tk4lJq7WQf50C0ngiOgyLi9UwhPDBfapRIiNymy/keHbk46jx1HnRKfwPwfA/
-         5D6k+xyojGxXO9AT5f13J4ANecWUdywfRviOtvoiE1xj0qPSaevkZyCUHgPimV8HIWg5
-         E+hYp7keY3dAfPs96SspdB3ETo3CJkaV00kgsACc83amHVyTK1gAeU/dM0KeeHcJmkJU
-         OJ3NGuYs4rnBjQYK1kplEeAqGpQTRAx86eD1dksNp1PJSXxS1uvpT7qDalwC6+WZbrup
-         b5vQ==
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=G5TpN+Qc+FtvApbEYrJbCTF5+CFEz1LtSV4Do/2wUEo=;
+        b=fXPBayKQi5I7yYz52jWuNa3u7ISjiPp4enY+5cjoW5Rtca6xgbuLY3SgtNgd8l+j9Y
+         fcRAWHYdXEdqWR/mXzOEiaXeGXvArtfRYwGXZRcHo5DKAKAcQPOHLbIq2TUy/ssaiDl1
+         jlM+yDOLIQ0hAaX9v+xFg5p+QsKoqlj5FR+YGXhON9yvgKdsmdCDKHgbKk+9+HJBGi9H
+         GcWXTKMSag4TS+7X1S1Bqh/2S3LTBPiyBhNi/DCqUo7lxmccZykLxnWF1p6hvK/cEo0o
+         LyI0nsvjjwv3vQ4ddgzC5/2s6+OUmcACxYnisEK+qZhUzHs3mmdlVYla1u1QcmPESXLO
+         Iahw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VATGgSvU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ai8ncjZt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b17si22035387qka.261.2020.01.21.02.50.06
+        by mx.google.com with ESMTPS id w1si22390081qvi.199.2020.01.21.06.06.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jan 2020 02:50:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Jan 2020 06:06:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VATGgSvU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ai8ncjZt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51364 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54592 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itr6j-0006X0-L5
-	for alex.bennee@linaro.org; Tue, 21 Jan 2020 05:50:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37822)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ituAQ-0007fJ-Pu
+	for alex.bennee@linaro.org; Tue, 21 Jan 2020 09:06:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37931)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1itr6N-0006UG-AP
- for qemu-arm@nongnu.org; Tue, 21 Jan 2020 05:49:44 -0500
+ (envelope-from <cohuck@redhat.com>) id 1ittxs-0002Dz-Ak
+ for qemu-devel@nongnu.org; Tue, 21 Jan 2020 08:53:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1itr6M-0000sg-38
- for qemu-arm@nongnu.org; Tue, 21 Jan 2020 05:49:43 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:32179
+ (envelope-from <cohuck@redhat.com>) id 1ittxo-0001hP-J0
+ for qemu-devel@nongnu.org; Tue, 21 Jan 2020 08:53:08 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48782
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1itr6M-0000sS-09
- for qemu-arm@nongnu.org; Tue, 21 Jan 2020 05:49:42 -0500
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1ittxo-0001h7-EZ
+ for qemu-devel@nongnu.org; Tue, 21 Jan 2020 08:53:04 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579603781;
+ s=mimecast20190719; t=1579614783;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=FSa46ZYyGmie/bVkHIG0X5JHtwyUvx9RKZ7BbDRX9ZM=;
- b=VATGgSvUERnbqgDSttLSq+kB548setE6/ZHfwNCIF5rcPATRQr+34O/yxxtdqOOcCfvlUY
- LjBtaZw1Vq9PaqavIZ8TzF0bLob9hSTGleA1c2N+UG/90QPdodfSr5ZUIlWzls4f/SpMh3
- +5fSPkJLPh/azoE7s7gOVoZwgvLjh7Q=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-67-w-sv1FULNf2jS5_dMAWU7w-1; Tue, 21 Jan 2020 05:49:38 -0500
-Received: by mail-wm1-f70.google.com with SMTP id t16so460179wmt.4
- for <qemu-arm@nongnu.org>; Tue, 21 Jan 2020 02:49:38 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=IDMnGMJ6Cs/whFH4XpRx3WeUmxqpk22bAwxooOpZMug=;
- b=km77+Ga/dNFq9oo3eOMWrcE4wNF6vGmCDbuKPq5IFI7iN5HpDnOJRvvx+ELVsDiiz8
- TI1/NT05P/Ltg04SlHFdi8VptQjS6+54tdL0hgzQhDXigMUDHGuoo/vTqacxDAq7F/hA
- cuoCG2fmg6cVUunHR9Q+eMrxfluUnC3+w0ZBK2VY06AxwS+xFEDnZPn8SYNbFZYuB0ra
- oikwdpC65tIz/3S0Lw+iO8n+u1+keSxpYjxS6g/ewTBhh1taTS52jv8JucaYABogFntQ
- aqEDECIAuVTYtF8e09cX4gi3W5DaZTjI5sFrbibf/7riHwr3rODKNA0xMqDuClizRprZ
- +tcg==
-X-Gm-Message-State: APjAAAUk3c/F1lMs/N2kHsg9/0/5yLkNA22u/CxECdfbAzhmohcJo5HD
- eCdW5ytsallUn1Huqj+wD16c533lyUY9yIxifdd9h2sd/BO/uGTnV16V7+ewtEARi1R9lY1fiFX
- cZPplRo/0xJir
-X-Received: by 2002:a1c:23d7:: with SMTP id j206mr3830839wmj.39.1579603777205; 
- Tue, 21 Jan 2020 02:49:37 -0800 (PST)
-X-Received: by 2002:a1c:23d7:: with SMTP id j206mr3830811wmj.39.1579603776906; 
- Tue, 21 Jan 2020 02:49:36 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:b509:fc01:ee8a:ca8a?
- ([2001:b07:6468:f312:b509:fc01:ee8a:ca8a])
- by smtp.gmail.com with ESMTPSA id k7sm3243589wmi.19.2020.01.21.02.49.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Jan 2020 02:49:36 -0800 (PST)
-Subject: Re: [PATCH 0/6] Fix more GCC9 -O3 warnings
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
-References: <20191217173252.4672-1-philmd@redhat.com>
- <84fthiaahd.wl-Peter.Chubb@data61.csiro.au>
- <87a77q9njk.fsf@dusky.pond.sub.org>
- <97c34bbd-79d2-070e-a35e-4fdf68b2e291@redhat.com>
- <db49a831-df35-c209-5db5-0631a5ef2497@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <12b8431d-3d29-cdbe-b952-eac23c35be0a@redhat.com>
-Date: Tue, 21 Jan 2020 11:49:35 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ bh=G5TpN+Qc+FtvApbEYrJbCTF5+CFEz1LtSV4Do/2wUEo=;
+ b=ai8ncjZtstaAaMOKIPkqNG5iwvGAQcQpp/gR5FTJwcIt5exDcBD7D0+0ZwjoiStz4aD/Hg
+ GqUCDjcC6c52SEMmzRwypqBTC9krG9WHj3HQl8ivqqRpWL+y873ttcSmjHGoG4g+RdLPTg
+ mlDTk1+hvwo4TJ9b9s0OJLAvA8PZypU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-408--CJ5YUX5PhqESYvqlXw5Bg-1; Tue, 21 Jan 2020 08:53:03 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 772F4108442E;
+ Tue, 21 Jan 2020 13:53:01 +0000 (UTC)
+Received: from gondolin (dhcp-192-195.str.redhat.com [10.33.192.195])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6D6E75DA76;
+ Tue, 21 Jan 2020 13:52:53 +0000 (UTC)
+Date: Tue, 21 Jan 2020 14:52:51 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Subject: Re: [PATCH v2 05/10] target/s390x: Remove duplicated ifdef macro
+Message-ID: <20200121145251.39ceabe2.cohuck@redhat.com>
+In-Reply-To: <20200121110349.25842-6-philmd@redhat.com>
+References: <20200121110349.25842-1-philmd@redhat.com>
+ <20200121110349.25842-6-philmd@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <db49a831-df35-c209-5db5-0631a5ef2497@redhat.com>
-Content-Language: en-US
-X-MC-Unique: w-sv1FULNf2jS5_dMAWU7w-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: -CJ5YUX5PhqESYvqlXw5Bg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Hannes Reinecke <hare@suse.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>, Gerd Hoffmann <kraxel@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N5cWTkMG0FqS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Like Xu <like.xu@linux.intel.com>,
+ David Hildenbrand <david@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: p9AEQL4WA+xo
 
-On 20/01/20 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi Paolo,
->=20
-> On 1/18/20 8:24 PM, Paolo Bonzini wrote:
->> On 18/12/19 07:05, Markus Armbruster wrote:
->>> "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
->>> writes:
->>>
->>>>>>>>> "Philippe" =3D=3D Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>=
- writes:
->>>>
->>>> Philippe> Fix some trivial warnings when building with -O3.
->>>>
->>>> For compatibility with lint and other older checkers, it'd be good
->>>> to keep
->>>> this as /* FALLTHROUGH */ (which gcc should accept according to its
->>>> manual).
->>>
->>> We have hundreds of /* fall through */ comments already.
->>>
->>>> Fixing the comments' placement is a different matter, and should be
->>>> done.=C2=A0 Seems to me that until gcc started warning for this, noone=
- had
->>>> actually run a checker, and the comments were just for human info.
->>>>
->>>> Peter C
->>>
->>
->> Queued, thanks.
->=20
-> Thanks, but I sent a v2 (20191218192526.13845-1-philmd@redhat.com) with:
->=20
-> - addressed Thomas and Aleksandar comments
-> - dropped 'hw/scsi/megasas: Silent GCC9 duplicated-cond warning'
-> - dropped 'qemu-io-cmds: Silent GCC9 format-overflow warning'
->=20
-> See:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg666280.html
->=20
-> Can you queue it instead?
+On Tue, 21 Jan 2020 12:03:44 +0100
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-Yes, I replaced it.
+> Commit ae71ed8610 replaced the use of global max_cpus variable
+> with a machine property, but introduced a unnecessary ifdef, as
+> this block is already in the 'not CONFIG_USER_ONLY' branch part:
+>=20
+>    86 #if defined(CONFIG_USER_ONLY)
+>    87
+>   ...
+>   106 #else /* !CONFIG_USER_ONLY */
+>   107
+>   ...
+>   292 static void do_ext_interrupt(CPUS390XState *env)
+>   293 {
+>   ...
+>   313 #ifndef CONFIG_USER_ONLY
+>   314         MachineState *ms =3D MACHINE(qdev_get_machine());
+>   315         unsigned int max_cpus =3D ms->smp.max_cpus;
+>   316 #endif
+>=20
+> To ease code review, remove the duplicated preprocessor macro,
+> and move the declarations at the beginning of the statement.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> v2: New patch
+> Cc: Like Xu <like.xu@linux.intel.com>
+> ---
+>  target/s390x/excp_helper.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
 
-Paolo
+Thanks, applied.
 

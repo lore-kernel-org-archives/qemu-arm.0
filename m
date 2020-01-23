@@ -1,331 +1,147 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp813476lfp;
-        Thu, 23 Jan 2020 07:48:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwixY/255srp+Iv5XDr8LMkYfoNURvOe6rsIS72klv59pwnFKKqlj7MRcT85mbEl0+PiPQU
-X-Received: by 2002:a9d:4d0f:: with SMTP id n15mr7392134otf.239.1579794506556;
-        Thu, 23 Jan 2020 07:48:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579794506; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp922368lfp;
+        Thu, 23 Jan 2020 09:25:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqykOrQDWzIIo2LGO03caHYlZHcYwrl7EnbkqNmLTB4oADH2vXo7d/7RaAoOaxluTdZncBts
+X-Received: by 2002:a05:620a:661:: with SMTP id a1mr17586630qkh.408.1579800346164;
+        Thu, 23 Jan 2020 09:25:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579800346; cv=none;
         d=google.com; s=arc-20160816;
-        b=qG1bqab6ASyK/c2r231kvuJcbPvFfF6K3CvIk47/3PO2GlhStzCe5oxpI5JBbEPkCA
-         TKof5M/cs9QWEM5tt7BnGB4+4jyFZqPWPcSx9PErNB6qSFTN/AQ7w6ee0EdWieVgTctc
-         DihbBG9M9GjkNZYqVgTGtW4fb8ok786qVBVjJTKOWRdQwH8Gs2DMN9Oh8GvA+/NNB3No
-         DNA3T1EvIHMq8c+xS5DG7+Kp5KLqZQbNvBe/DcVZwGELemxhLRbdB9eTzSoTq5EVe+Fu
-         pUfht7BC/E1BAQtcNHuAQG9A6cJvr5TtSY05IXN6aWe7gZgtQdT0xcIm6LsfxxfcqEBe
-         N7bw==
+        b=bJaVA4qdFqE33X2YyelTbEp0hXVVimzduxjrJ7Vjj4oyEKvKm++53OHgv7dvksP1Mc
+         1T8JF/Rzuw4mzr/88kD8Yhy92I5Zs6qX+F1UZo0EmnZmTeGbO+7NdIrn1bdqZWWSfhCA
+         2x4MYIJB17HeIoviJQMQoxTOEDmCNhBfOf4syGliWaGWzaelFl84b42vsdiXNexe8V4Y
+         bejWzLmEhgvraWssE6pwN38LKoORy/IQzm4MPcQ1d0fJ7ANZTFLu6nCezp3tr4wipYqS
+         ElP9up5QS45nkvwNq9EVX1HgpUxIx+t6pAbe2eqYgRdd/wfhYXBBzBb1Ds+Mnd/H4I1i
+         P9Fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=H55UGcj9JNEhuKBOPdJUGxTRwPeyv/2LSIFTHjTEnp8=;
-        b=fEIu8pbDbFZo3i8c3GE5zWAAWhjCSonV0eBOohjhgvifWPUueHFvWDrJrhpgO7Iq8r
-         enLjZQq/Hjcdc+0/TsZzj2xEr32pFgInSNTa12xUvey1KYjfOYNolelJDji8ptlhjZBJ
-         qWSqIK3+QAOKlRmXKn/A7ODz6C1VZ8KAexyDiwoNhE7vMVIRVQ1NnQT7kdv3UbO8iA/i
-         BL0oSILQSKKfUKBaXGMiL3HzmHS9QtuiBLB6vswHhtoRFmNJnDH4LBcOtKNIbavhrovy
-         uzaIM9hGRXlM+8P8W0hQeGOYLLFuVN2uYEGpgSIpG3fJUTjiAbCMxwpQop9G87SL1lHl
-         IxLA==
+        bh=BGSUZ0K3tTXM+Hr2iD1GyUIPRP5aM7N3qL9xhCmhXVU=;
+        b=ifogc1zuNM5X8KCkfj2uN2OZKB2OdzJ1pj3SwwyNtKYi7grIxZt6t5MY766bJKMa2e
+         oALw/osz6Lh6+gxT7c9reC9uLl8ehx4te7XjLmYCzqHCNam1qqAgWWyFTv9hiZwcC+Bf
+         EhDE1RkzfBfIdEvavRcdnrjbGTqt49ZUVnvswIb0mfLu39uocagjeTFcUOMSWai0xG4P
+         dZ1ZlOGNGw/3sJkSmMT9dx+26pqUAgVECf27qdGMWnH1cBvIblUTMTVijK+piWyuwdct
+         dY3DYAlZnF3j/YcSpwJVfw7J6FViV6uhj9uF/HUWXgvn1GdaGnc5tmLAAdhbCc0CmJKp
+         elAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="J+6BF/oD";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b10si1404874otp.124.2020.01.23.07.48.26;
-        Thu, 23 Jan 2020 07:48:26 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=cjAOZDaG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q57si1798956qtq.290.2020.01.23.09.25.45
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Jan 2020 09:25:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="J+6BF/oD";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726885AbgAWPsZ (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 23 Jan 2020 10:48:25 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:45180 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1726231AbgAWPsZ (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 23 Jan 2020 10:48:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1579794502;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=H55UGcj9JNEhuKBOPdJUGxTRwPeyv/2LSIFTHjTEnp8=;
-        b=J+6BF/oDEcYNJXt+ltg4u4MAgI/ZnbPAhl/MnWlyf2EdoWdk0AnEhnISNQt9E8XzgNw3/D
-        9RjGygcl3WRMBxh1AsAFUDTIF5gdKK2IrCJ7f8xx7pYUd9qQ1zfXeVaNB2ifcTuMIDTjq2
-        HAv7hi9fHpeRYuBbxg0mXupxeWOX44A=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-315-EnG-gdkCM4KtqWBMWSvXdw-1; Thu, 23 Jan 2020 10:48:20 -0500
-X-MC-Unique: EnG-gdkCM4KtqWBMWSvXdw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D923E1005512;
-        Thu, 23 Jan 2020 15:48:17 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 974FA5D9E2;
-        Thu, 23 Jan 2020 15:48:10 +0000 (UTC)
-Date:   Thu, 23 Jan 2020 16:48:08 +0100
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <mtosatti@redhat.com>, <xuwei5@huawei.com>,
-        <jonathan.cameron@huawei.com>, <james.morse@arm.com>,
-        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
-        <linuxarm@huawei.com>
-Subject: Re: [PATCH v22 4/9] ACPI: Build Hardware Error Source Table
-Message-ID: <20200123164808.38af0491@redhat.com>
-In-Reply-To: <1578483143-14905-5-git-send-email-gengdongjiu@huawei.com>
-References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
-        <1578483143-14905-5-git-send-email-gengdongjiu@huawei.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=cjAOZDaG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33378 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iugEi-0007ds-UD
+	for alex.bennee@linaro.org; Thu, 23 Jan 2020 12:25:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39611)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1iudtp-000259-Q2
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 09:56:06 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1iudto-00063F-QG
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 09:56:01 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:41589)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iudto-00061p-Ke
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 09:56:00 -0500
+Received: by mail-oi1-x241.google.com with SMTP id i1so3122671oie.8
+ for <qemu-arm@nongnu.org>; Thu, 23 Jan 2020 06:56:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=BGSUZ0K3tTXM+Hr2iD1GyUIPRP5aM7N3qL9xhCmhXVU=;
+ b=cjAOZDaGsgpUTC9UWZvIxEmgdPZnJrqWTSvsi65TaSL430wSwYGyx6kGFthxh1FoXS
+ zvkH5l7StTl4lAjZ9IvOGi/dFZ19Wn9hdZKuMkJZ7tF7YE/olOmHajXYpr4aIuZZJgpe
+ Sei8HwOvcFv8p3OsmXuxPL2P/ncziAiKUpqgpL/RkN3nve1IQk4KPYl2ag0wPtDEPQTj
+ +OdzBK9TmyZe0qnxdx0Fs2YYpz+lUJbYT7T3yc9uRyPM/s7ZgvXhG3u8v9eJQDBkRoL3
+ Wj4qsEh5mC4jmxeYIEKJ80sW0vNRI/PgCstpw2s2s+1S31h0jsnpBhPMFs6AXNxqjrPT
+ x0lg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=BGSUZ0K3tTXM+Hr2iD1GyUIPRP5aM7N3qL9xhCmhXVU=;
+ b=JCb07vbLo3S609EvZEpoAkzj9bdJifW9/pjAOo41q/mavMLScxKndCcgV14JxEdkia
+ Gc3gRz911Y55Hqr8IiuRclYSz2cQIHwCiSjeIInj9vTGegX2SFTroUWFVpvl9GuQsef7
+ DUk0wI9hR58o5L5gI9BfAfMYdsvCwiYaOwF9C/3EY+9ooYkD+s5rNqajyjC9Ibcq0r/5
+ d8b9/B9cky7J5j4C4+vmw0H7Kob4VLeWyhxVYvtbjBYl9dZ+obXZNi4BccUt/8ION4j9
+ VUKj5VFd62JxexzWQ+wzuVKR3zhPrinWc5ynQ1UBAiWtztR/FhrHJ+uWjTv2vQ3S2dPV
+ IEDg==
+X-Gm-Message-State: APjAAAVOa+eE6THDxMja5XtXk/FlwYVfeEP48Aa0xbaoKe13+rD0Fu86
+ JzlAaVQbXst8YDTTDKR38EOG3k3fe2Ffu/b+792rLg==
+X-Received: by 2002:aca:f484:: with SMTP id s126mr10361435oih.48.1579791359784; 
+ Thu, 23 Jan 2020 06:55:59 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: tOIDfQ4iu5yg
+References: <20200120185928.25115-1-philmd@redhat.com>
+ <20200120185928.25115-3-philmd@redhat.com>
+In-Reply-To: <20200120185928.25115-3-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Jan 2020 14:55:49 +0000
+Message-ID: <CAFEAcA8-aM=B6G-Zin-yEJycf6v1Brhxkn8it30jPDqrKkyWgA@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] MAINTAINERS: Add an entry for the Siemens SX1
+ (OMAP310) machines
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WM546/XZp1M0
 
-On Wed, 8 Jan 2020 19:32:18 +0800
-Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-
-> This patch builds Hardware Error Source Table(HEST) via fw_cfg blobs.
-> Now it only supports ARMv8 SEA, a type of Generic Hardware Error
-> Source version 2(GHESv2) error source. Afterwards, we can extend
-> the supported types if needed. For the CPER section, currently it
-> is memory section because kernel mainly wants userspace to handle
-> the memory errors.
-> 
-> This patch follows the spec ACPI 6.2 to build the Hardware Error
-> Source table. For more detailed information, please refer to
-> document: docs/specs/acpi_hest_ghes.rst
-> 
-> build_append_ghes_notify() will help to add Hardware Error Notification
-> to ACPI tables without using packed C structures and avoid endianness
-> issues as API doesn't need explicit conversion.
-> 
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
-
-
-Overall it looks fine to me, see couple nits below
-
-
+On Mon, 20 Jan 2020 at 19:00, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> Add the Siemens SX1 (OMAP310) cellphones with the other ARM machines.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  hw/acpi/ghes.c           | 118 ++++++++++++++++++++++++++++++++++++++++++++++-
->  hw/arm/virt-acpi-build.c |   2 +
->  include/hw/acpi/ghes.h   |  40 ++++++++++++++++
->  3 files changed, 159 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index b7fdbbb..9d37798 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -34,9 +34,42 @@
->  
->  /* The max size in bytes for one error block */
->  #define ACPI_GHES_MAX_RAW_DATA_LENGTH       0x400
-> -
->  /* Now only support ARMv8 SEA notification type error source */
->  #define ACPI_GHES_ERROR_SOURCE_COUNT        1
-> +/* Generic Hardware Error Source version 2 */
-> +#define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
-> +/* Address offset in Generic Address Structure(GAS) */
-> +#define GAS_ADDR_OFFSET 4
-> +
-> +/*
-> + * Hardware Error Notification
-> + * ACPI 4.0: 17.3.2.7 Hardware Error Notification
-> + * Composes dummy Hardware Error Notification descriptor of specified type
-> + */
-> +static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
-> +{
-> +    /* Type */
-> +    build_append_int_noprefix(table, type, 1);
-> +    /*
-> +     * Length:
-> +     * Total length of the structure in bytes
-> +     */
-> +    build_append_int_noprefix(table, 28, 1);
-> +    /* Configuration Write Enable */
-> +    build_append_int_noprefix(table, 0, 2);
-> +    /* Poll Interval */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Vector */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Switch To Polling Threshold Value */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Switch To Polling Threshold Window */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Error Threshold Value */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Error Threshold Window */
-> +    build_append_int_noprefix(table, 0, 4);
-> +}
->  
->  /*
->   * Build table for the hardware error fw_cfg blob.
-> @@ -92,3 +125,86 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
->      bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_FILE,
->          0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
->  }
-> +
-> +/* Build Generic Hardware Error Source version 2 (GHESv2) */
-> +static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-> +{
-> +    uint64_t address_offset;
-> +    /*
-> +     * Type:
-> +     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
-> +     */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
-> +    /* Source Id */
-> +    build_append_int_noprefix(table_data, source_id, 2);
-> +    /* Related Source Id */
-> +    build_append_int_noprefix(table_data, 0xffff, 2);
-> +    /* Flags */
-> +    build_append_int_noprefix(table_data, 0, 1);
-> +    /* Enabled */
-> +    build_append_int_noprefix(table_data, 1, 1);
-> +
-> +    /* Number of Records To Pre-allocate */
-> +    build_append_int_noprefix(table_data, 1, 4);
-> +    /* Max Sections Per Record */
-> +    build_append_int_noprefix(table_data, 1, 4);
-> +    /* Max Raw Data Length */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-> +
-> +    address_offset = table_data->len;
-> +    /* Error Status Address */
-> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-> +                     4 /* QWord access */, 0);
-> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> +        address_offset + GAS_ADDR_OFFSET,
-> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
-> +
-> +    /*
-> +     * Notification Structure
-> +     * Now only enable ARMv8 SEA notification type
-> +     */
-> +    build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
-> +
-> +    /* Error Status Block Length */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-> +
-> +    /*
-> +     * Read Ack Register
-> +     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
-> +     * version 2 (GHESv2 - Type 10)
-> +     */
-> +    address_offset = table_data->len;
-> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-> +                     4 /* QWord access */, 0);
-> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> +        address_offset + GAS_ADDR_OFFSET,
-> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
-> +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t));
-> +
-> +    /*
-> +     * Read Ack Preserve
-> +     * We only provide the first bit in Read Ack Register to OSPM to write
-> +     * while the other bits are preserved.
-> +     */
-> +    build_append_int_noprefix(table_data, ~0x1ULL, 8);
-> +    /* Read Ack Write */
-> +    build_append_int_noprefix(table_data, 0x1, 8);
-> +}
-> +
-> +/* Build Hardware Error Source Table */
-> +void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
-                                             ^^^^^^^^ it seems to be unused, so why it's here?
+>  MAINTAINERS | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 52fbc18566..27fbe1abb4 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -560,6 +560,12 @@ F: include/hw/arm/digic.h
+>  F: hw/*/digic*
+>  F: include/hw/*/digic*
+>
+> +Siemens SX1 (OMAP310)
+> +M: Peter Maydell <peter.maydell@linaro.org>
+> +L: qemu-arm@nongnu.org
+> +S: Maintained
+> +F: hw/arm/omap_sx1.c
 
-> +                          BIOSLinker *linker)
-> +{
-> +    uint64_t hest_start = table_data->len;
-> +
-> +    /* Hardware Error Source Table header*/
-> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> +
-> +    /* Error Source Count */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
-> +
-> +    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
-> +
-> +    build_header(linker, table_data, (void *)(table_data->data + hest_start),
-> +        "HEST", table_data->len - hest_start, 1, NULL, "");
-> +}
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 6819fcf..837bbf9 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -834,6 +834,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      if (vms->ras) {
->          acpi_add_table(table_offsets, tables_blob);
->          build_ghes_error_table(tables->hardware_errors, tables->linker);
-> +        acpi_build_hest(tables_blob, tables->hardware_errors,
-> +                             tables->linker);
+At least as far as I'm concerned this is 'Odd Fixes'
+status at best. I don't even have any test images
+for it.
 
-not aligned properly
-
-you can use ./scripts/checkpatch.pl to see if there is style errors
-
-
->      }
->  
->      if (ms->numa_state->num_nodes > 0) {
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> index 3dbda3f..09a7f86 100644
-> --- a/include/hw/acpi/ghes.h
-> +++ b/include/hw/acpi/ghes.h
-> @@ -22,5 +22,45 @@
->  #ifndef ACPI_GHES_H
->  #define ACPI_GHES_H
->  
-> +/*
-> + * Values for Hardware Error Notification Type field
-> + */
-> +enum AcpiGhesNotifyType {
-> +    /* Polled */
-> +    ACPI_GHES_NOTIFY_POLLED = 0,
-> +    /* External Interrupt */
-> +    ACPI_GHES_NOTIFY_EXTERNAL = 1,
-> +    /* Local Interrupt */
-> +    ACPI_GHES_NOTIFY_LOCAL = 2,
-> +    /* SCI */
-> +    ACPI_GHES_NOTIFY_SCI = 3,
-> +    /* NMI */
-> +    ACPI_GHES_NOTIFY_NMI = 4,
-> +    /* CMCI, ACPI 5.0: 18.3.2.7, Table 18-290 */
-> +    ACPI_GHES_NOTIFY_CMCI = 5,
-> +    /* MCE, ACPI 5.0: 18.3.2.7, Table 18-290 */
-> +    ACPI_GHES_NOTIFY_MCE = 6,
-> +    /* GPIO-Signal, ACPI 6.0: 18.3.2.7, Table 18-332 */
-> +    ACPI_GHES_NOTIFY_GPIO = 7,
-> +    /* ARMv8 SEA, ACPI 6.1: 18.3.2.9, Table 18-345 */
-> +    ACPI_GHES_NOTIFY_SEA = 8,
-> +    /* ARMv8 SEI, ACPI 6.1: 18.3.2.9, Table 18-345 */
-> +    ACPI_GHES_NOTIFY_SEI = 9,
-> +    /* External Interrupt - GSIV, ACPI 6.1: 18.3.2.9, Table 18-345 */
-> +    ACPI_GHES_NOTIFY_GSIV = 10,
-> +    /* Software Delegated Exception, ACPI 6.2: 18.3.2.9, Table 18-383 */
-> +    ACPI_GHES_NOTIFY_SDEI = 11,
-> +    /* 12 and greater are reserved */
-> +    ACPI_GHES_NOTIFY_RESERVED = 12
-> +};
-> +
-> +enum {
-> +    ACPI_HEST_SRC_ID_SEA = 0,
-> +    /* future ids go here */
-> +    ACPI_HEST_SRC_ID_RESERVED,
-> +};
-> +
->  void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
-> +void acpi_build_hest(GArray *table_data, GArray *hardware_error,
-> +                          BIOSLinker *linker);
->  #endif
+thanks
+-- PMM

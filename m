@@ -1,105 +1,180 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1047520lfp;
-        Thu, 23 Jan 2020 11:23:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzLdmyJZVoZAMXdEI8CczOXLAeVTkjKLj4c8ZPGnY6ss+tHmcTg70DbldT/qalJniTz7/j5
-X-Received: by 2002:ac8:5448:: with SMTP id d8mr17525657qtq.205.1579807421192;
-        Thu, 23 Jan 2020 11:23:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579807421; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1218328lfp;
+        Thu, 23 Jan 2020 14:23:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwIhMWxRJFTyileRMSliCMsMUuw5TytZoNECdEsbi2Etmr3VhHcsX82XPmRNB7lAW+FRFmX
+X-Received: by 2002:a05:6214:983:: with SMTP id dt3mr18980211qvb.145.1579818228618;
+        Thu, 23 Jan 2020 14:23:48 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1579818228; cv=pass;
         d=google.com; s=arc-20160816;
-        b=PDKiIXdsSEOJZW9fz4u7IFnkXd41PwIjtgjC/AoqRTLJPPNiBPcPdzPkH9xuahna1s
-         nF/5DZyRmBILkGfD53FNYOlsSsdWJKtmlAd6A/0X9QTkgOlAsA86rO8TlIcG1PJyJqD9
-         GtDUZxsBKGh1JbFWKDxo9MJHng9nnxvw3vo/FE+dd/Ap+gKQwFnkHbQRNucmfsARNHcY
-         vNFTO4POizyBoOTWnZiGUz7BDhji3TiXvcbcUxrUMdya8hL27HuhIU5+Zrv+n/7p/pzY
-         pM7W1PmXoqwEwAst5gf/OUzOpor2q1jEDjovUZLa1WarGjaMauFPG0AcSUGaSm85ihrV
-         lMyw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=cjk0vJwX/JR9tDsrlg0OIme1PQf5efK28MIIC1+5DSU35lWz9g2P4wnDX34H89eI/z
+         3qp1gkeW5OkVoc+5SNcSv9mmVf36Ot0HOhYHtuww68CVRrE7hbO72075O3oeiv9Tcerw
+         D8NOu530/WlSdBtJntMlzs+0ExJrfzCqQOq+WXYpV27gR4+cIdwogmUjH/FYL3dSHYpZ
+         IMZgQGnIMOCA9FR7QTNO/l1n0BqbKCy2Hl6G4/KVbFZG1Nl4Zkm2DpApyPuHsfPH/0L+
+         9C9D2bWrjffUEd/jLTvtPkMj0r6FZaoJsv3Xt5/YcwJC2F+DYJRiGZ5fg3CG71hHnweQ
+         uYxw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=DX9XPLUMx26HScqd/BBt+1dKos1BhNzRsteN/4RmO2g=;
-        b=bpeBZEQPSlQcSHJas4BPk0rCY9XzmPLwwPM3+anAoxni/YsnaGkSa52bFnKwJIidnf
-         9miM4hPdjUdLmFIKyN4nTbgedbct1mGtfUfieOldoJM9BadD8WQbqVdN/3vAxi0yr73l
-         XsdQ8ksV8HFBJ4PmAI8kGPXQpwLXMiVZhKrlIKZQGLiz7/I0c/Qh5ycREXhqf6itFOS2
-         zlPSAuYdi+eZjDvOdJog/6BCF5ZsjHzW0dH9IZLNFqnQ0G3fjoNGHdwWX7+KnGP+9hBW
-         a4TpNagJ9Q/BYC26KPJniOSBniNPP4AdvK4nOMQSZikbbaCAdJymlCvpnT3V/KePAmgq
-         220w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FNIIwcC3;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:to:from:dkim-signature:ironport-phdr
+         :ironport-sdr:dkim-signature;
+        bh=5/1aDiNnyfyNKKdk+tBGP31D24zHTVGXC7CsKcHQRtI=;
+        b=UPJTJqxYVnhQ+N8V7adiqW97ni1l1yjWO68eQ+yEK3Y2Kq4qIv1XHiVftN9WOyZpFW
+         rFDXsdPeeB7XOWe868C4Zu4Vyl9/bbQRUd/gwMcXgIf6vXGy7YMP0aVQS6/OiLt+6VxL
+         py6X6pKmBx448MqF206JddzHi2pKPZHcHEU/WX7SquxwF6rliZiHVC+/6uaFnjFyrM1/
+         tpBTUW4pIdETZc+nUdAsPAkx4HNfRIB71t8btDL3S7oqRQqKjTJ24q8oyiuO6q1im7Pn
+         9oI68LLQj735x7/0L855C9KdolWbzHzl8uAXL117LyToDwsCUjl+1Nxi3krQeloOx66I
+         JhMQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=i08BznKI;
+       dkim=pass header.i=@CSIROAU.onmicrosoft.com header.s=selector1-CSIROAU-onmicrosoft-com header.b=iHQgt+gg;
+       arc=pass (i=1 spf=pass spfdomain=data61.csiro.au dkim=pass dkdomain=data61.csiro.au dmarc=pass fromdomain=data61.csiro.au);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o22si2171787qtm.314.2020.01.23.11.23.41
+        by mx.google.com with ESMTPS id l14si2938677qkl.1.2020.01.23.14.23.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jan 2020 11:23:41 -0800 (PST)
+        Thu, 23 Jan 2020 14:23:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FNIIwcC3;
+       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=i08BznKI;
+       dkim=pass header.i=@CSIROAU.onmicrosoft.com header.s=selector1-CSIROAU-onmicrosoft-com header.b=iHQgt+gg;
+       arc=pass (i=1 spf=pass spfdomain=data61.csiro.au dkim=pass dkdomain=data61.csiro.au dmarc=pass fromdomain=data61.csiro.au);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35628 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iui4q-0004Ah-2O
-	for alex.bennee@linaro.org; Thu, 23 Jan 2020 14:23:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44860)
+	id 1iuktA-0007Tl-1I
+	for alex.bennee@linaro.org; Thu, 23 Jan 2020 17:23:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41282)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1iufnM-0006UV-VU
- for qemu-arm@nongnu.org; Thu, 23 Jan 2020 11:57:29 -0500
+ (envelope-from <prvs=284a180dc=Peter.Chubb@data61.csiro.au>)
+ id 1iukt0-0007RO-Bo
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 17:23:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1iufnL-0006bk-0S
- for qemu-arm@nongnu.org; Thu, 23 Jan 2020 11:57:28 -0500
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:43257)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1iufnJ-0006Za-7i; Thu, 23 Jan 2020 11:57:25 -0500
-Received: by mail-pg1-x543.google.com with SMTP id u131so1652509pgc.10;
- Thu, 23 Jan 2020 08:57:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=DX9XPLUMx26HScqd/BBt+1dKos1BhNzRsteN/4RmO2g=;
- b=FNIIwcC37Uv5CUhA8kKyYV+ee7VZXuIPixuIFl7WWel/TvADRoQtojyOccW1bllX3N
- c5NXOnlm4NOq+0+ytxL/oRtomMh3LTbFuwikiv9sDUUT2OaT4j8ALPQVV8jh/kj8YvDN
- m3QdetRNsz31lgCzLhZu71t06UTLww2msQ/N7nQYRmvcz15ewZF990Zc9NJf/quDwqjJ
- kYiLdAq60tqtus3h73VyOBhLAcGfCyT3tGI2ixIhBEqLEvr5ltlu3bB8bn8wxXCUCCcd
- BXmlBv0oyxt3j+JA6HJd/T/mIoiRBs89ekcP9CbsLbuRT2kboA+7WX9VIRq8xjHdiZhU
- qDLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=DX9XPLUMx26HScqd/BBt+1dKos1BhNzRsteN/4RmO2g=;
- b=Pxo7uU4DaKBkavY6IxgN9mBPN5mIT6KZIgM2XORq85h2RRoIWWx+oCw9gY4wCt+4lG
- hGsEImn6YkarndmJ+HoCRcqpp7Qvep4+69tmXxwbSTKg632GroMOVQRbEbVLBsNflDAv
- CbDMaXQ/vxsNLVb1r7FcS2d3WJTJemEeFgTdXaCvzttd+EuR67vR22JdreEUuw2xCTVP
- OJAB7Aq9TAdk6g3saUxJwkh2U3oLLE1+Pp5Z5pQ4gWxU57oo0A1Vd1XKnvJez2NBbPtq
- cF7pvv+dz56RQ1vCe+SJ1EtA2ta9lsUmK6bPFFWnpBiQS7TDP9vVI9SsubY0qg2O801k
- Vxog==
-X-Gm-Message-State: APjAAAUGtU8yrSqXPtshh5cULzqdXwE0D3HDpAC0ryNVuHZcYI5k5mTa
- OCiyPHoQw+X8wVPo/rXit3I=
-X-Received: by 2002:a65:4047:: with SMTP id h7mr4970926pgp.60.1579798644055;
- Thu, 23 Jan 2020 08:57:24 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id p17sm3212163pfn.31.2020.01.23.08.57.20
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 23 Jan 2020 08:57:21 -0800 (PST)
-Date: Thu, 23 Jan 2020 08:57:20 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v3 1/8] dma/pl330: Convert to support tracing
-Message-ID: <20200123165720.GA4805@roeck-us.net>
-References: <20200123052540.6132-1-linux@roeck-us.net>
- <20200123052540.6132-2-linux@roeck-us.net>
- <CAFEAcA-SPUPEcV4Uw9=8-5EJmLztVorV++ypFp=vYxasncBrZw@mail.gmail.com>
- <CAFEAcA9p7Foko17jTB_GSGLnaQwpJTcf0-qTrJkVWje1jOpq-g@mail.gmail.com>
+ (envelope-from <prvs=284a180dc=Peter.Chubb@data61.csiro.au>)
+ id 1iuksz-0000ZT-9V
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 17:23:38 -0500
+Received: from act-mtaout2.csiro.au ([2405:b000:e00:257::7:38]:31526)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71)
+ (envelope-from <prvs=284a180dc=Peter.Chubb@data61.csiro.au>)
+ id 1iuksu-0000Ry-Qp; Thu, 23 Jan 2020 17:23:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=data61.csiro.au; i=@data61.csiro.au; q=dns/txt;
+ s=dkim; t=1579818212; x=1611354212;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=tYdoDcdCsoZBk/rNmNfPsl03Ec2TC8cS5tFBud7PxeI=;
+ b=i08BznKIzShtba/dcY2aYMmCV5EndwzLcDwDa9mbXML00Z/redYMePcr
+ toHS6vj09NUnMHmaBTWRCLx9yST0SANesoRhWWoe3sLzwDTSxou66cKZs
+ 6sOUbCII7ip1wz3UQVJYnadoncmGoCBz0UhvbA3o/y1phH9KqvwBrgG/3 A=;
+IronPort-SDR: hbzQaXWjRsDhjlB9sEhNez+vJrujh9XhPRIUTNVQM9QlND6Kpm5zuN3n1FpZU5NZPzzjR6iyRg
+ sNIhN2XC1EUg==
+X-SBRS: 4.0
+IronPort-PHdr: =?us-ascii?q?9a23=3AhX6DkRVfw21GiVKpAzEdi7eBsfjV8LGuZFwc94?=
+ =?us-ascii?q?YnhrRSc6+q45XlOgnF6O5wiEPSAt2J8OpK3uzRta2oGXcN55qMqjgjSNRNTF?=
+ =?us-ascii?q?dE7KdehAk8GIiAAEz/IuTtankCEdhPThlO/2yxO2BZEdr3OQSUqWaz9zlUEw?=
+ =?us-ascii?q?isfQc=3D?=
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A+EEAQCTHCpejACwBSSwhIATAJKcgDR?=
+ =?us-ascii?q?lHAEBAQEBBwEBEQEEBAEBgWoEAQELAYFTUF4TeAQ1CodOA4sPnUADVAkBAQE?=
+ =?us-ascii?q?NAR8OAgEBAoECgzwCgh8kNwYOAgMBAQsBAQUBAQEBAQUEAgIQAQEBJoVnDIN?=
+ =?us-ascii?q?OcAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEFAoEHBT4?=
+ =?us-ascii?q?CAQMSFRMGAQE3AQ8CAQgOKBAQIiUCBA4FIoMEAYJKAy0BAQICojYCgTmIYAE?=
+ =?us-ascii?q?BgXMzgn8BAQV3hBcYggwJCQGBLgGMFoIaEoE1gl0+hEmFbq9YBwECgjmHQI5?=
+ =?us-ascii?q?0G4I3mECXQI4OhBgCBAIEBQIOAQEFgWgigVodT4NACUcYDYgBGoITgUaKU3Q?=
+ =?us-ascii?q?CgSeLCwGBDwEB?=
+X-IPAS-Result: =?us-ascii?q?A+EEAQCTHCpejACwBSSwhIATAJKcgDRlHAEBAQEBBwEBE?=
+ =?us-ascii?q?QEEBAEBgWoEAQELAYFTUF4TeAQ1CodOA4sPnUADVAkBAQENAR8OAgEBAoECg?=
+ =?us-ascii?q?zwCgh8kNwYOAgMBAQsBAQUBAQEBAQUEAgIQAQEBJoVnDINOcAEBAQEBAQEBA?=
+ =?us-ascii?q?QEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEFAoEHBT4CAQMSFRMGAQE3A?=
+ =?us-ascii?q?Q8CAQgOKBAQIiUCBA4FIoMEAYJKAy0BAQICojYCgTmIYAEBgXMzgn8BAQV3h?=
+ =?us-ascii?q?BcYggwJCQGBLgGMFoIaEoE1gl0+hEmFbq9YBwECgjmHQI50G4I3mECXQI4Oh?=
+ =?us-ascii?q?BgCBAIEBQIOAQEFgWgigVodT4NACUcYDYgBGoITgUaKU3QCgSeLCwGBDwEB?=
+Received: from exch4-cdc.nexus.csiro.au ([IPv6:2405:b000:601:13::247:34])
+ by act-ironport-int.csiro.au with ESMTP/TLS/ECDHE-RSA-AES256-SHA384;
+ 24 Jan 2020 09:23:22 +1100
+Received: from exch1-cdc.nexus.csiro.au (2405:b000:601:13::247:31) by
+ exch4-cdc.nexus.csiro.au (2405:b000:601:13::247:34) with Microsoft SMTP
+ Server (TLS) id 15.0.1497.2; Fri, 24 Jan 2020 09:23:21 +1100
+Received: from ExEdge1.csiro.au (150.229.7.34) by exch1-cdc.nexus.csiro.au
+ (152.83.247.31) with Microsoft SMTP Server (TLS) id 15.0.1497.2 via Frontend
+ Transport; Fri, 24 Jan 2020 09:23:21 +1100
+Received: from AUS01-ME1-obe.outbound.protection.outlook.com (104.47.116.58)
+ by ExEdge1.csiro.au (150.229.7.34) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Jan 2020 09:23:16 +1100
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=MkcYpVBg1NKCwTgBhtApiJBFNsdqTjEvWakatQO2+bbCbIS2z9pIi3crmEGZ3Wto54LrL3qeYBJSTHa65jcgMK6e6UjwiyPqCqmfVMMGWapyjcDOs/OunPyxA+zz0Ou8hofVfSYM9cN6lsiR/GNr5gzXPV3ua+Gm4S2RYGBxmGRyIuyBDrGF5b6Z63COV2ova7ggPm1KbZig8GIARLrbYZkUSFm5g84W1gVmzwaMMCVhlvrO9Lu7FWibYjn/op3LbGp0oJt27foUBK1doDxy0U/2ytIGYGWaVMoNHYUBWCGkiWo8eY4M5VwFOrI/Ypq4lUmgW0R+/Hs7BMsB5eOAaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5/1aDiNnyfyNKKdk+tBGP31D24zHTVGXC7CsKcHQRtI=;
+ b=ITwEjpLcpv8Y30LcHFEth+YGVwUDGArX+Rq8y7PnCWXFy2QdWjAFJzmJDrwTUv61AYZulowgNQVQnWjlsCh77oAqKFIds3/dm61f7RbZlgmlSQhkpEKfKq91+gueh6xSVLIU+SO5VdAxspuH3j8e38PmEzcg4XOZMAWc81JBO3Jv8lEWFkf6YVdemx8MYcwaGi1mGONVj5ca+sb9KdzURQ6P15jxrrOuyMDG9J+FgoX3VX3dPwSQel9juPEkRywWblDIZ8lbQ1PbtPSqaLVUj3haq/7lCo6AeKcnCKMPpvbJt5/E8r0ek2ycsVzjx7JYv5MtouJbV4/ECApISlMp3w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=data61.csiro.au; dmarc=pass action=none
+ header.from=data61.csiro.au; dkim=pass header.d=data61.csiro.au; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=CSIROAU.onmicrosoft.com; s=selector1-CSIROAU-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5/1aDiNnyfyNKKdk+tBGP31D24zHTVGXC7CsKcHQRtI=;
+ b=iHQgt+ggxOADbSdA2taQO1sqIi4cY+bDFQpHxVJP0A6cMK5DhBxDrcU/2Xnh3TVm5HjM55twEL3flB+KyBtNFurzs00El3X5LN0O2wjC1q1lwSAiiPXWMv8XteDv6urVA8rxZKrE/4edhmbGrxxD7DrbQL5YtvCKh5KIyYlZALI=
+Received: from SYCPR01MB5101.ausprd01.prod.outlook.com (20.178.184.208) by
+ SYCPR01MB3950.ausprd01.prod.outlook.com (20.177.143.10) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2644.24; Thu, 23 Jan 2020 22:23:20 +0000
+Received: from SYCPR01MB5101.ausprd01.prod.outlook.com
+ ([fe80::413c:1062:c76:11e9]) by SYCPR01MB5101.ausprd01.prod.outlook.com
+ ([fe80::413c:1062:c76:11e9%6]) with mapi id 15.20.2644.028; Thu, 23 Jan 2020
+ 22:23:20 +0000
+From: "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: Re: [PATCH REPOST v3 16/80] arm/kzm: drop RAM size fixup
+Thread-Topic: [PATCH REPOST v3 16/80] arm/kzm: drop RAM size fixup
+Thread-Index: AQHV0eIaZNsiC0tAMkmTgShAgbpGh6f406gA
+Date: Thu, 23 Jan 2020 22:23:20 +0000
+Message-ID: <84zhedx161.wl-Peter.Chubb@data61.csiro.au>
+References: <1579779525-20065-1-git-send-email-imammedo@redhat.com>
+ <1579779525-20065-17-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1579779525-20065-17-git-send-email-imammedo@redhat.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Peter.Chubb@data61.csiro.au; 
+x-originating-ip: [221.199.209.40]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 7d6a37fe-a005-4859-9e61-08d7a052da17
+x-ms-traffictypediagnostic: SYCPR01MB3950:
+x-microsoft-antispam-prvs: <SYCPR01MB3950E10EE50ECDFE2A4C4F08BB0F0@SYCPR01MB3950.ausprd01.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:425;
+x-forefront-prvs: 029174C036
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(4636009)(366004)(39850400004)(396003)(136003)(346002)(376002)(199004)(189003)(316002)(54906003)(6486002)(86362001)(5660300002)(4744005)(478600001)(6512007)(2906002)(966005)(26005)(2616005)(6506007)(8936002)(4326008)(8676002)(81166006)(66556008)(66476007)(6916009)(64756008)(186003)(71200400001)(76116006)(66446008)(66946007)(81156014);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:SYCPR01MB3950;
+ H:SYCPR01MB5101.ausprd01.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 6urm8GCUDaFfQlpWnrsW2wglGrDbbb926iXXfSd3/317DuPeS4yoQmJOgJujlQ8DtZ+1u3hQPvkkmeSB52XtVTTFoMzNTI6MkzYB0jbNYX0vgConpj2kUG3rqo/4pWMB/CMsNQHQXSoS6eWKDGV9BFmFWHRhuHB7eUY9cYivHLB0DfLYrMgFF0gFq1BQ13LzHLjXxU2Qe7Cjdnf70TW+F8jIlJGPWk+q/IjS2CIWbgzEhaVPX+s8oKpzv/Od2B4ICK9ev5c6Lz8RpuMY4o32L0uKcy79xLaPGEh8yvKnA+sIDeH9H5aqMUQYkRxd/JDfzVlA6JnJASsJzhd9aWr/hMIj4yhW2wG3HFbglph54QJKWx55uxcwfgSP9JPCU5Ig8hDyITi/pB6JOywmIoGJ5tqT3VzYYG0Hx2D/Y4UI4bGAwKYkFxTe+ITAAccX3FbrikMFA2XtaftUorR4s2vxtqnRVnx2S3zyl1eTDwwRyAM=
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <E7643C225687384598AF762A2CA3CF8A@ausprd01.prod.outlook.com>
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9p7Foko17jTB_GSGLnaQwpJTcf0-qTrJkVWje1jOpq-g@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7d6a37fe-a005-4859-9e61-08d7a052da17
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jan 2020 22:23:20.1318 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 0fe05593-19ac-4f98-adbf-0375fce7f160
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Ov6o4+Sih3JDo4eX2ThZpM24WgGOft1VgYEfV5h3lax4kv300w3HEtMXpYe0fZ2o
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SYCPR01MB3950
+X-OriginatorOrg: data61.csiro.au
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::543
+X-Received-From: 2405:b000:e00:257::7:38
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,44 +186,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "peter.chubb@nicta.com.au" <peter.chubb@nicta.com.au>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l0ImAraAbOoE
+X-TUID: R1/YsOpjunZB
 
-On Thu, Jan 23, 2020 at 04:23:59PM +0000, Peter Maydell wrote:
-> On Thu, 23 Jan 2020 at 15:51, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >
-> > On Thu, 23 Jan 2020 at 05:25, Guenter Roeck <linux@roeck-us.net> wrote:
-> > >
-> > > Replace debug logging code with tracing.
-> > >
-> > > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> > > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> >
-> > This turns out not to compile on OSX, which is a bit
-> > stricter about format strings:
-> >
-> > These two:
-> >
-> > > +pl330_dmald(uint32_t chan, uint32_t addr, uint32_t size, uint32_t num, uint32_t ch) "channel:%"PRId8" address:0x%08"PRIx32" size:0x%"PRIx32" num:%"PRId32"%c"
-> >
-> > > +pl330_dmast(uint32_t chn, uint32_t addr, uint32_t sz, uint32_t num, uint32_t c) "channel:%"PRId8" address:0x%08"PRIx32" size:0x%"PRIx32" num:%"PRId32" %c"
-> >
-> > both provoke
-> >  error: format specifies type 'char' but the argument has type
-> > 'uint32_t' (aka 'unsigned int') [-Werror,-Wformat]
-> >
-> > because of the last argument.
-> >
-> > Easy fix would seem to be to change 'uint32_t ch' to 'char ch'
-> > (the argument is always a literal constant 'Y' or 'N').
-> 
-> The 'chan'/'chn' argument is wrong too -- should be uint8_t
-> to match the format string and the type of PL330Chan::tag.
-> I'll just fix up the pullreq rather than forcing a respin.
 
-Thanks, and sorry for the trouble.
+Igor> If the user provided too large a RAM size, the code used to
+Igor> complain and trim it to the max size.  Now tht RAM is allocated by
+Igor> generic code, that's no longer possible, so generate an error and
+Igor> exit instead.
 
-Guenter
+You can add my 'reviewed-by' to this. There's one really minor typo in
+the comment (tht->that) that you may wish to fix before the final
+commit.
+
+
+Reviewed-by: Peter Chubb <peter.chubb@data61.csiro.au>
+
+--=20
+Dr Peter Chubb         Tel: +61 2 9490 5852      http://ts.data61.csiro.au/
+Trustworthy Systems Group                                    CSIRO's Data61=

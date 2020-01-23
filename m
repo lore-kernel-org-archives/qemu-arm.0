@@ -1,101 +1,94 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1706231lfp;
-        Tue, 21 Jan 2020 08:48:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxjzvIKrAeWYHHS5VNdILTwJ0nzn7Db0Xvq4be2oog89ovYL6BiRGDIu9EBRIMF4rUKVGt2
-X-Received: by 2002:ac8:709a:: with SMTP id y26mr5384115qto.304.1579625318728;
-        Tue, 21 Jan 2020 08:48:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579625318; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp237356lfp;
+        Wed, 22 Jan 2020 21:26:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxUT7hBtoFoHZs29l5wOxvyul7dfBZaLtwajMaP49rKHBAxHv8owPzEse+SFQj7CCSjiODc
+X-Received: by 2002:a17:906:14d5:: with SMTP id y21mr5434149ejc.212.1579757170482;
+        Wed, 22 Jan 2020 21:26:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579757170; cv=none;
         d=google.com; s=arc-20160816;
-        b=R6B6p/XS4SewTUFf5jEJQqJkh2Tc2nbWx7m9e4VvFDkO7vY75I5khsRb0ZXQ1IuFls
-         ClNTCbXqA5JlnQg+pwKOS/w602upACXVisvVWh8xsOhZPk2yXAp8lla8N4Tscq9CD1hY
-         rcck0O+oFVxIxHgWT0giyUMCC+Oa4OIruJs2TR4BRtXOrzHws8w+65kspkr4bptWImUh
-         oVJ1lhU4vObqD1XKX947jWM6xJE/Ii6OE0cxejT3PkmZslAnjjRgdCZHZbdttcbKvPA9
-         ieYY5SJ6tU2C8uLrMxbaaV8vw0Tk8MZyWMdZCg3TbGJL2sFPH8jKVjS6ymdzeObNQBQx
-         6zpw==
+        b=STCIOSP6WxbojL0luIyUbpVJuey61f4ENsTdjIfA9u0WgQWDdm0bugceCKlDGtq6d4
+         7XWs55f74waMK0Ax6oDc1sNhh+LjuUFaODvPN51+LKM6fqjoaapCLwkf/4FkKx2IUW8I
+         MlVLStwAG96u7UZ5nHujl8mdaw/aKcC0ppK09c2mtMMj7bGECA3TqxtzLvOaUTVPzJmf
+         xoSCaza3wU69EkrmeOAvGeAFW+4AKBG/rvpkZdpxbqSu2lJwzhNWHv/4A7ShaGZPeRwY
+         YuyTw3UxVgDX196/3iYaGEsZ+cTIV4dfsknMTBBKxwfREU0cYmbPRaev6pWpmH2xaZac
+         IVyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=UhoYieZ1CB710QG4EYP4qL/+hrUgwv/TvGef9XhMmo8=;
-        b=uRYSTKPLxjG9zQ+5mquHV9Q8Vqe2ypgJj4CDu5EkOdzZATA8dVVugKntSU2CUBOdjd
-         z5Jbr2u4eW/sG1M5Em5pWyAJCM9MeUOrHUdxvA7tITVkrvCuaqNgEXflL9GBwz/pQhey
-         vSzHvv7OSX0F4VGJ0nYWlpdwQK3TzuO4SgHMo5oUVHEqviKsXkjoBBCP5yQ5QoNmNEJQ
-         AkvBcErM5CpfncFubgdElTAfO7PH/Mk55CWCV2YxCxLoVLa5rkikmgJ+89o7VVPt5Kmr
-         Sw8x+mL3GD6ciOW4IshOBs/mwIa9xwM48ED/LMac3nYRlhWxzD/tvwnTDbEH0wvFAu4I
-         /GsA==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=2duhfw96sX4LBq6GDO3w2q/itW+l/UJOYIKKmbqgxFI=;
+        b=h1UXceOzyy6ugxsgdyY3VH4iigGXtY/t2313xUYPYT77Ne8vLlJoYN2qPAJ7Jfn0Rw
+         oKS52OClkzI/XW1BR66qhUQFDBoR29U5+3U7AzeiBWjfFId50VhMdCGJyZeuU8XLCOET
+         u/fL8A/UbPv77H4XPbEDHT/b/4X0fPuMfsgKWtKTnXdKxvibuDWW52bgNpMMHxODIYsy
+         vBJ3Z9/ix4PH6f6//PoV+YFqWyJzqclG7dYGoNijAhxYWd2vrR59w7DlMl+vFcoZbsij
+         PYL4znacuobgXB7Y9uQrMnOH9Mm6ILMnEkiLcK7oTbrCtwcM9hwjs2+UEANjjSyK5IJc
+         W7dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IePxPLdX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XbIELcrU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r186si22350821qkb.216.2020.01.21.08.48.38
+        by mx.google.com with ESMTPS id 17si504078edv.553.2020.01.22.21.26.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jan 2020 08:48:38 -0800 (PST)
+        Wed, 22 Jan 2020 21:26:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IePxPLdX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58108 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XbIELcrU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51138 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1itwhh-0000Nu-MQ
-	for alex.bennee@linaro.org; Tue, 21 Jan 2020 11:48:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39953)
+	id 1iuV0L-0004cJ-8o
+	for alex.bennee@linaro.org; Thu, 23 Jan 2020 00:26:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42071)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1itweY-0005Y8-Jq
- for qemu-arm@nongnu.org; Tue, 21 Jan 2020 11:45:24 -0500
+ (envelope-from <groeck7@gmail.com>) id 1iuUzz-0004Z5-Bp
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 00:25:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1itweU-0005OS-Vm
- for qemu-arm@nongnu.org; Tue, 21 Jan 2020 11:45:22 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:22337
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1itweU-0005Nz-Rm
- for qemu-arm@nongnu.org; Tue, 21 Jan 2020 11:45:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579625118;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UhoYieZ1CB710QG4EYP4qL/+hrUgwv/TvGef9XhMmo8=;
- b=IePxPLdX8sx2Gx6/eElpIBCQ9eR86JmxPIXouZLMU+v9hYuTf8aIbvq/t+WcoqqZcPwYJW
- Bjnev9SNAkBPy8aPNHrN9oRtZh4IeK1tqQGev+S9fzQlgpW5nLLqSIQpwyigeY1AZbBCuq
- d4kgvYojMmVIWUDFyhnMLInkIUnuU0Y=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-389-uGmz-fx1OUOjDm2QL80t4w-1; Tue, 21 Jan 2020 11:45:15 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 56B8C107B27E;
- Tue, 21 Jan 2020 16:45:12 +0000 (UTC)
-Received: from gondolin (dhcp-192-195.str.redhat.com [10.33.192.195])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 48FC460FC5;
- Tue, 21 Jan 2020 16:45:03 +0000 (UTC)
-Date: Tue, 21 Jan 2020 17:45:01 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: [PATCH v2 05/10] target/s390x: Remove duplicated ifdef macro
-Message-ID: <20200121174501.7b7a5401.cohuck@redhat.com>
-In-Reply-To: <20200121110349.25842-6-philmd@redhat.com>
-References: <20200121110349.25842-1-philmd@redhat.com>
- <20200121110349.25842-6-philmd@redhat.com>
-Organization: Red Hat GmbH
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: uGmz-fx1OUOjDm2QL80t4w-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+ (envelope-from <groeck7@gmail.com>) id 1iuUzy-0001jd-Bk
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 00:25:47 -0500
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:37087)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1iuUzy-0001iq-4c; Thu, 23 Jan 2020 00:25:46 -0500
+Received: by mail-pf1-x444.google.com with SMTP id p14so978577pfn.4;
+ Wed, 22 Jan 2020 21:25:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id;
+ bh=2duhfw96sX4LBq6GDO3w2q/itW+l/UJOYIKKmbqgxFI=;
+ b=XbIELcrUceOkmOeYXmEhPNhiHGDWMhs/oW2NBlUPu//SIjWE+M48kdvIQsUl0CGriS
+ I1QszDNHaJ8CL7mAYHHJKf6xeZAw6/Zhp+LGCnYoECl/+vv1AN7vNkoBdgJMng5VkODm
+ 2s2DmNhkVRZYmIeeG7bVftPV3Q+CQha/XGarebg7JVhDCV56QfpOFRxsNhp4T81nNKOb
+ izBqwa/y7q/JYqJXs+S+XCKbrWfSbXsw7llakl0zv5lJYq5ep1gIxyRh/Z9GiVt7bxYv
+ zjjR1IVj6GgkgTEqQg7ODxxoI0G/EebY6B4/eKqBcpg+lOYGhMMoLOiz8docz+Qgr9kc
+ Sn8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+ bh=2duhfw96sX4LBq6GDO3w2q/itW+l/UJOYIKKmbqgxFI=;
+ b=FT6Wtbj6Jp0cJlKysu/+zEl75qqw2ZScWmvagv9FybBT7g+wRbdUfg4v8BvAN5OEvZ
+ D1wKuigl7EszxDiPSb7VHnRS9NowpiGpJNJ6FgGT2Yj264FQs4vWlKHm7uwa7L58+X2o
+ 7DVU5B9WhBnn1Ae71cNpzsHsYDo/Y7N+rEzfmgzdWszhHZNyVe+fBThsUcDAN96NMk9d
+ F3wA58K7ocHIneCt8BYn1aJVb3c7d8jymuUJ2E8okUQrrAXj6FwdwLjTHnyUKIa++ZbF
+ i78Y4wht3O+F6RztiS1ozf1lU8WYIHjiwGp76UMFrG8YZcq6GP62boyVfCaAaeHe0W4/
+ nXbw==
+X-Gm-Message-State: APjAAAXUVJLdDMGPvMwNLCC6S+eh7z4XSliNn0o1DGoOJbPmfBITpljO
+ xU9XUugiUaRvdPrdxfwlVBQ=
+X-Received: by 2002:a63:ed48:: with SMTP id m8mr2059270pgk.399.1579757143993; 
+ Wed, 22 Jan 2020 21:25:43 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id k16sm763630pje.18.2020.01.22.21.25.42
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 22 Jan 2020 21:25:43 -0800 (PST)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 0/8] Fix Exynos4210 DMA support
+Date: Wed, 22 Jan 2020 21:25:32 -0800
+Message-Id: <20200123052540.6132-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::444
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,50 +100,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Like Xu <like.xu@linux.intel.com>,
- David Hildenbrand <david@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v3qDMGB05NIF
+X-TUID: EqQ3IO8+D6ut
 
-On Tue, 21 Jan 2020 12:03:44 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+Commit 59520dc65e ("hw/arm/exynos4210: Add DMA support for the Exynos4210")
+introduced DMA support for Exynos4210. Unfortunately, it never really
+worked. DMA interrupt line and polarity was wrong, and the serial port
+needs extra code to support DMA. This patch series fixes the problem.
 
-> Commit ae71ed8610 replaced the use of global max_cpus variable
-> with a machine property, but introduced a unnecessary ifdef, as
-> this block is already in the 'not CONFIG_USER_ONLY' branch part:
->=20
->    86 #if defined(CONFIG_USER_ONLY)
->    87
->   ...
->   106 #else /* !CONFIG_USER_ONLY */
->   107
->   ...
->   292 static void do_ext_interrupt(CPUS390XState *env)
->   293 {
->   ...
->   313 #ifndef CONFIG_USER_ONLY
->   314         MachineState *ms =3D MACHINE(qdev_get_machine());
->   315         unsigned int max_cpus =3D ms->smp.max_cpus;
->   316 #endif
->=20
-> To ease code review, remove the duplicated preprocessor macro,
-> and move the declarations at the beginning of the statement.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v2: New patch
-> Cc: Like Xu <like.xu@linux.intel.com>
-> ---
->  target/s390x/excp_helper.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
+The series also converts pl330 and exynos4210_uart code to support tracing.
+While not strictly necessary, this was very useful for debugging,
+and it seemed too valuable to drop it from the final series. Similar,
+improved support for receive FIFO handling is not strictly necessary
+to fix DMA handling, but I initially thought that it was and added the
+code. Like tracing support it seemed too valuable to drop it.
 
-I case this goes via the misc tree:
+The series was tested with qemu's smdkc210 and nuri emulations and with
+exynos4210-smdkv310.dtb. Without the series, the emulation does not react
+to serial line input, and serial line output stalls when using DMA. With
+this series in place, serial line input is handled correctly, serial
+output does not stall, and DMA interrupts are observed and handled.
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-
+v3: Increased number of or-irq-lines to 48 to support the full number
+    of lines needed. Simplifications in handling UCON register when
+    handling receive timeouts. Don't save timer state in VMSTATE.
+    Added Reviewed-by: tags as received.
+v2: Addressed all feedback comments but one (see last patch of series).
+    Please see individual patches for details.

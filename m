@@ -1,179 +1,145 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp945617lfp;
-        Thu, 23 Jan 2020 09:48:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxi0wN6QVCErB1ZrpFXAhvXkDluP7qDETyTSkJm23FoQJKhZAOnLsNBWjbgCq8BF0/YGaFG
-X-Received: by 2002:aed:2b02:: with SMTP id p2mr17507390qtd.225.1579801691142;
-        Thu, 23 Jan 2020 09:48:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579801691; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp952611lfp;
+        Thu, 23 Jan 2020 09:55:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyPhZaKH1L7kkX28RzDgNKfdi3eg3jIERIRX8apuAM13G31GinG55grL89xh75H9fMS6Pec
+X-Received: by 2002:a81:4ec2:: with SMTP id c185mr11670291ywb.423.1579802114197;
+        Thu, 23 Jan 2020 09:55:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579802114; cv=none;
         d=google.com; s=arc-20160816;
-        b=CpjKol08gbNjv/KMfECChuyo/4uUYqswhYxyZuPruHBdq6M5DD9TFRuLHv8pDpjc1x
-         M67JlLpY8PEPNNBNCS7k2rPEK3EQFaqMB8ZoCLiKNWA6YZMOFPTj+GoDhnlwsBWidqnd
-         2pBNY9clj6+XN9qsY12inNv753qs22SVm2Ty+4WnOfkT1DtAOAFSEfdNdX9af5hKLBGU
-         EvwJmIQSn6rn4Vn3ZeMR0ox5ITGvt81rZqL5ox6KZf/dknoBwLL/tNuCDvcgSwAnebUU
-         lAQkbtMHSHZk094Uj8QEsdBpCpXeCAQolP8HNzqd6Fjfs/NwXVCmJo3DLkq0m2F0xpfL
-         3/9w==
+        b=ojQxKd0ITSBN9PC/lsaaLBR7APHHjSQhfTt25MvcoMasZ1NpomKXrga3FeEEuX50WJ
+         1e/C8RdZwupT3AlZCSynCN8ALwf50YX9MheerjDdDAA5vfFreSpxT75r5t45XyWLY2JJ
+         +cfc4FzM1TC23lFjdUEk8kNSs1MxPLfE7TEx7SIpEVHTlsk3n3jrbg7GSMQGbs0GGbrL
+         QnCwSQMAuXrS8NwgdJJfVUzpOkMvrdSjih6P/hqZcmLjBsxlseNzJm8j+1ybdBxDV9b7
+         5QBHKQ/32Hwg2Azzb14A1g2+68xqiT0G+jCpxlnHxCPllp6Hfa778T6BIMwgRLBm90gy
+         FISw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=kFixVKejGKV1lPMIOJMNLN4pBeIgmrEj0dpbcqCDYuE=;
-        b=0acml3LX46twEPB+euMXneE10p+ajo42CbcwxSJ+64bo1PXFvhRe3zFPpxZ40cGK2a
-         pG8ULbtUBHSJoa7sbSrfhSNu35xNn+PteSgDmhwP4FW1orLdw6wxyKEkrlyYS/7mvjjB
-         VN2pWl47j3clG9S6YUasVs7JlCquHKuzPqodP+J4vEqehnj4/M3T2eYX5rFL584Kz9O+
-         PJ3hqBua9bAiH1g7pBMoqzJcA5+7LAVrr41I4oSYFF5Sx8/VZ43oGayBZZjm5SR43HIG
-         IhCgBRyfy3+QbMMy7ihR/W8ksCeF0CAFjFLUjIPxROrYFDY/6+vHpFYztahPzT8jmvkR
-         224A==
+        bh=CsA7brPv5IiayWjJ564yZ0Wwt41HKNVlotkuFX3f/6o=;
+        b=Vs+KkPNUYBxQkSwVufoVtmrivrESev9x0LqKxhYjqXb/ijQ5hlMjfynlrYKpLohD8P
+         lDFmVC8Ps/3aY6MP2I91SueQjzFPsGkG/xQhGLBLY8r5yHIxQXR/NMLb5wqdfEHST7L1
+         aDsbAvTJI30fU08BWmOEs1xL01aA7fo+KHdofY0IqYJYwddtWwJwXhNz9feKFLFfWuaN
+         69oe6qD02o1vV+JlmXCtyqrgDP5Z0qdO4YEJdH36Ws1bvEl3NHR7M3A4Eng98Q0j/tsQ
+         at6hke8Y3udVWSruU0Nswfjf3G8/rkiVYTcFIlv32eRZbEYVvDhjwGMuFVuVsejd9gcK
+         R8Yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AduBdj5I;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q44si1876722qtb.369.2020.01.23.09.48.10
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H8VPBNLl;
+       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by mx.google.com with ESMTPS id g184si1624816ywc.35.2020.01.23.09.55.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jan 2020 09:48:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 23 Jan 2020 09:55:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AduBdj5I;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33932 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iugaP-0002G0-MD
-	for alex.bennee@linaro.org; Thu, 23 Jan 2020 12:48:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34016)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1iudXe-0003tX-T5
- for qemu-devel@nongnu.org; Thu, 23 Jan 2020 09:33:08 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1iudXd-0004fx-I4
- for qemu-devel@nongnu.org; Thu, 23 Jan 2020 09:33:06 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:35088
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iudXd-0004fc-EP
- for qemu-devel@nongnu.org; Thu, 23 Jan 2020 09:33:05 -0500
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H8VPBNLl;
+       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579789984;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kFixVKejGKV1lPMIOJMNLN4pBeIgmrEj0dpbcqCDYuE=;
- b=AduBdj5ItYxre/rCT28mLFlGOp0KH/8HJWtiY9wzxlCbaJhUnbCp3Jw6d5o58V94iBW2fD
- Q33Tc36jOZN+EwFT0ZXWhLBw0pnwVwVBYdrmjiVfqPW0LpmkKV0DQip86CKdMsR7sIPqqG
- m6WioraqU6vMUvBwugdVmELw4z+OsvY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-357-st08lnKqPNWdVtKyJyL_mw-1; Thu, 23 Jan 2020 09:33:00 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F1352DB23;
- Thu, 23 Jan 2020 14:32:58 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CAA271001DC0;
- Thu, 23 Jan 2020 14:32:57 +0000 (UTC)
-Date: Thu, 23 Jan 2020 15:32:56 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: Re: [PATCH REPOST v3 13/80] arm/imx25_pdk: drop RAM size fixup
-Message-ID: <20200123153256.43256f57@redhat.com>
-In-Reply-To: <20200123123907.qa2fyg2iqlzyemmb@kamzik.brq.redhat.com>
-References: <1579779525-20065-1-git-send-email-imammedo@redhat.com>
- <1579779525-20065-14-git-send-email-imammedo@redhat.com>
- <20200123123907.qa2fyg2iqlzyemmb@kamzik.brq.redhat.com>
+	s=mimecast20190719; t=1579802113;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=CsA7brPv5IiayWjJ564yZ0Wwt41HKNVlotkuFX3f/6o=;
+	b=H8VPBNLlq8OqQdpSgn5D8ilLigkByPPSQ6bVKqR4vzDa9YAvmtcL8WtaTYkAM0D68p3c/i
+	A6I2Hlh8e1vclQg8SQYpAs4u31DoAtt4dz3F/SIUROnMd5yf/gldzkKbtU+AbqBktMVsh8
+	X9MUsza/wwDhs1JTYwIAQh28Kg7KzyU=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-330-xyLPEDhQOYW4NHpr_06nKg-1; Thu, 23 Jan 2020 12:55:11 -0500
+Received: by mail-wm1-f72.google.com with SMTP id b133so1486702wmb.2
+        for <alex.bennee@linaro.org>; Thu, 23 Jan 2020 09:55:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=0fl68LNmJbFTI1O/WBJWI+YervOar9TZo3leS9OrhI8=;
+        b=bFPYct4Q5g35+TlFjTTdqyDnpLLJq9Jh8jgA+DrlQu74tL0o0vIqt7NdDhZ7uwwT9s
+         F3tRGB8PqQuEjKJWfo0Np705UQ+9GvvAHTF4yguRiGuAlLskH7PkMJY0vaEvyHM0duIq
+         JTuT+OyBAUq405j4oU+5CkOh4SNHZXP0S68cjZUtdVEUmnube7A5YCNZAotYGbpqSY6u
+         ezb9iGQC7ZcgS1uz/xn/3olEbxsjdNXeGIJBrPgZJ5VEt0Q7lQo48JqxDwTUKeeMMuGp
+         J+1H2MJL1U6klkYICq+j5TXf7/UynFkYGh37isRnOhvq2uvPJcuVKRwt7Hc/vw3kz96G
+         ueqA==
+X-Gm-Message-State: APjAAAWAnmz9WWVgBqaAYJZR7NLDwPD3u7dj58T2sVE6qVJGb0A/33sw
+	yZ0YGpWhU42njQPhKkKfHbyNbDtc/ETkbA1Bz28fs3dp5vbZ7shLfl+zpEmmr2WYJNtN6TIvFlw
+	lFQ1fsHzJbL7QRjzD
+X-Received: by 2002:a05:600c:228f:: with SMTP id 15mr5568228wmf.56.1579802110479;
+        Thu, 23 Jan 2020 09:55:10 -0800 (PST)
+X-Received: by 2002:a05:600c:228f:: with SMTP id 15mr5568205wmf.56.1579802110302;
+        Thu, 23 Jan 2020 09:55:10 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net. [83.57.172.113])
+        by smtp.gmail.com with ESMTPSA id u18sm3960739wrt.26.2020.01.23.09.55.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 23 Jan 2020 09:55:09 -0800 (PST)
+Subject: Re: [PATCH 0/6] Fix more GCC9 -O3 warnings
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
+ Peter Maydell <peter.maydell@linaro.org>, Hannes Reinecke <hare@suse.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Max Reitz <mreitz@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Peter Chubb <peter.chubb@nicta.com.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, Kevin Wolf <kwolf@redhat.com>,
+ =?UTF-8?B?S8WRdsOhZ8OzLCBab2x0w6Fu?= <dirty.ice.hu@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org
+References: <20191217173252.4672-1-philmd@redhat.com>
+ <6a8266c6-7c6d-3139-249f-2dd46c98e02f@redhat.com> <87blquza17.fsf@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <47e28e48-362a-39ea-ee58-9bbe7d222394@redhat.com>
+Date: Thu, 23 Jan 2020 18:55:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: st08lnKqPNWdVtKyJyL_mw-1
+In-Reply-To: <87blquza17.fsf@linaro.org>
+Content-Language: en-US
+X-MC-Unique: xyLPEDhQOYW4NHpr_06nKg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- jcd@tribudubois.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U3PvthKQaAUd
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 9a55Zo2/BlnM
 
-On Thu, 23 Jan 2020 13:39:07 +0100
-Andrew Jones <drjones@redhat.com> wrote:
+On 1/23/20 12:28 PM, Alex Benn=C3=A9e wrote:
+> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+>=20
+>> On 12/17/19 6:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> Fix some trivial warnings when building with -O3.
+>>> Philippe Mathieu-Daud=C3=A9 (6):
+>>>     audio/audio: Add missing fall through comment
+>>>     hw/display/tcx: Add missing fall through comments
+>>>     hw/net/imx_fec: Rewrite fall through comments
+>>>     hw/timer/aspeed_timer: Add a fall through comment
+>>>     hw/scsi/megasas: Silent GCC9 duplicated-cond warning
+>>>     qemu-io-cmds: Silent GCC9 format-overflow warning
+>>
+>> Sorry, this series failed because I used this tag in the first patch:
+>>
+>> Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>
+>>
+>> Then git-send-email was happy with --dry-run, but then failed:
+>> (body) Adding cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail=
+.com> from line
+>> 'Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>'
+>> 5.1.1 <K  v  g  >: Recipient address rejected: User unknown in local
+>> recipient table
+>>
+>> Note to self, enclose utf-8 names, as:
+>> Cc: "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com>
+>=20
+> I never have to with my tags:
+>=20
+> Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>=20
+> Is it possible to be more even utf-8? Sounds like a bug in the git tools
+> to me.
 
-> On Thu, Jan 23, 2020 at 12:37:38PM +0100, Igor Mammedov wrote:
-> > If user provided non-sense RAM size, board will complain and
-> > continue running with max RAM size supported.
-> > Also RAM is going to be allocated by generic code, so it won't be
-> > possible for board to fix things up for user.
-> > 
-> > Make it error message and exit to force user fix CLI,
-> > instead of accepting non-sense CLI values.
-> > 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> > CC: drjones@redhat.com
-> > CC: jcd@tribudubois.net
-> > CC: peter.maydell@linaro.org
-> > CC: qemu-arm@nongnu.org
-> > ---
-> >  hw/arm/imx25_pdk.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
-> > index c76fc2b..a2b7b35 100644
-> > --- a/hw/arm/imx25_pdk.c
-> > +++ b/hw/arm/imx25_pdk.c
-> > @@ -78,10 +78,10 @@ static void imx25_pdk_init(MachineState *machine)
-> >  
-> >      /* We need to initialize our memory */
-> >      if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE)) {
-> > -        warn_report("RAM size " RAM_ADDR_FMT " above max supported, "
-> > +        error_report("RAM size " RAM_ADDR_FMT " above max supported, "
-> >                      "reduced to %x", machine->ram_size,
-> >                      FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE);
-> > -        machine->ram_size = FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE;
-> > +        exit(EXIT_FAILURE);
-> >      }
-> >  
-> >      memory_region_allocate_system_memory(&s->ram, NULL, "imx25.ram",
-> > -- 
-> > 2.7.4
-> >  
-> 
-> This would break existing command lines that are happily using the max ram
-> size, which is only 512 MB. Yes, those command lines are wrong, but I'm
-> not sure we want to flip the warn to an error without machine type
-> versioning - which this board doesn't have.
-
-We typically don't do machine type versioning for CLI changes
-and in this case it would be plain user error in providing
-invalid CLI, so it should be fixed on user's side and not
-worked around by QEMU.
-
-It was fine before when board was allocating RAM on its own,
-but with RAM initialization moved to generic code it won't be
-possible. Hence fixup dropped and warning is converted to error
-to let user know that their CLI should be fixed.
- 
-Board description [1] says that it supports up to 512Mb of RAM max.
-1) https://www.nxp.com/design/development-boards/i.mx-evaluation-and-development-boards/i.mx25-product-development-kit:IMX25PDK
-
-
-> Thanks,
-> drew 
-
+The problem is the comma.
+What do you mean by "more UTF-8"?

@@ -1,125 +1,174 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp729720lfp;
-        Thu, 23 Jan 2020 06:34:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxoaWDCICD8i4VYHzuEBqFAyU/Bs5zpigkWt19YLQgCmdi59QrAb0SuHEVn57k53VnQx/i0
-X-Received: by 2002:a37:48c4:: with SMTP id v187mr16241606qka.198.1579790078826;
-        Thu, 23 Jan 2020 06:34:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579790078; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp733530lfp;
+        Thu, 23 Jan 2020 06:37:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxrlyK5B5P+z21Zn+SUo+qsdEb8cIHgq8OIdL3g5DWw1xeWP0HEVnUw+gH4qO5vEN9fnyld
+X-Received: by 2002:a37:9ce:: with SMTP id 197mr3599014qkj.194.1579790278825;
+        Thu, 23 Jan 2020 06:37:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579790278; cv=none;
         d=google.com; s=arc-20160816;
-        b=kMX3tM4lfEdZWDW6ETGc7AQGWSxwhmMKS5ZY3FtjbEoK6jEwI88DSEqdEP66DFHOCc
-         0anWQQqNmFGuA6yuowSqlmHUIJ4GYpxzLQQRziubrM599vqjPz9Fp3bjgkwqUweNzo7U
-         hkWxbzkaf3O3s7bH8OCh61gVNr4wmyPPvT8+dHfkA/QRkgCeF7rQ9dG5iyaJ5w/w8rqf
-         4wKpX3sS0qDK5x4rk9W/7Uxk3HhWL4IDIw0i9psuE4xJaMVs9288vZ1PziBF5n7YADEu
-         DysQ+bw0XO1nL/UdEZG29Z6gDlEz8KDdwtQUsO2vEQZ0R6oU5IltEHtHcJQcAivAas89
-         DmvA==
+        b=g/2VwiBfEG5lcgmAp4/r7ufpzfJH+InHvmE/jRpLW+SghN6IPGDu2sg4hAR6eke+ET
+         avwWhHhpFpMyzIovDNj3Xbup1euFVNXahVTCxh8bYrq0mzL6TElcPhEo6EF2nIhbuILn
+         AQr+PjHzNwBkzsaF9xP6wqvCTC7xpllUT59USup0dMwLQuxdWwySWxbvkSp3NckJRL/K
+         wJsAZn/n7DngOth8+xJfxruXpdJ7ThbX8RXQlvRN/1Hfg/PKA7gXp4Ta2tPWKnM9fNSp
+         jK5lPhWkbKbLrYHq+kFW05Lf132sMx832U4YORz/DiNd6JmSC3YEVp3EVotshQEd+WQt
+         hewA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=x1zPMPRwH8V1NuBAfOtzpPIFwMe/8BZ49osDpSQatNM=;
-        b=meKkncAwNMJsgCcPNYXzC8n5NuSY/I3RXE9buDVK0LOTHqcw3JYk30PARQ9NOhG10J
-         ZpGfVXE0QzljqXtCkhO0s++WuN3UwYEvDT3tSAzGnB5yx5QaVi9ba3Abt5sS47OJ+WUK
-         Y9ZsJvmV92lmbHAlju+W+yJaSerGPWpFiuS45qW+xWGYpzw9lcgcczY+usgL2G1RKetS
-         oP8vLrOkfOVnpIRzk5sE7/c7ZPmgc+O5J4DWRp60t1zgCFFIK4PkRr8rSyZfS8lZBcBt
-         0LIpqEeq2UxIYgG5dZW8ngTdUmRfkWTECf//pFw56rqOJ+QR3hAzhoamjHDpcGnmP2nQ
-         ms4Q==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=qIe36dpDykNzGzkerVyZLI/wog/PwFLVBaR/9cyGChA=;
+        b=UOmsjeRt2OVjc74R/DyJW7a50mg2EuzeL9+8/tmq8XcUOD32iE/p38nNiUnMdi6etD
+         FBwLvCVN6YqVY8t6kYcxshGTchDVhAg8pRhmUd6p3SeqmelKDgs3SuG3FOMxfS5VqK9D
+         f4v1zj2RX2HVuN8eQXgofRpgxYDtE4bpMPMvA/isOi87ecRc+KUYdn204DzsmhwzCVQ2
+         bdNgfJ6cS2OP3eH8Eqb/55KtOBjB360ffAjWYPRMgFg5JtthQMyWnwktqZFH/T1PI7kT
+         iO2C0TGjDnSQfztSi30m+ymfhCGcas0KFoz66kIURa6QwjICS9c0ZdWk8rkSSQW5rKOV
+         ZiPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="KgS9T9d/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="JRJ/cx59";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j74si1701206qke.111.2020.01.23.06.34.38
+        by mx.google.com with ESMTPS id k123si1592137qkd.229.2020.01.23.06.37.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jan 2020 06:34:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Jan 2020 06:37:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="KgS9T9d/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58152 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="JRJ/cx59";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58204 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iudZ7-0004cV-HH
-	for alex.bennee@linaro.org; Thu, 23 Jan 2020 09:34:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43561)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iudcL-0000hv-NN
+	for alex.bennee@linaro.org; Thu, 23 Jan 2020 09:37:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44398)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <joel.stan@gmail.com>) id 1iubHx-0004S8-BX
- for qemu-arm@nongnu.org; Thu, 23 Jan 2020 07:08:46 -0500
+ (envelope-from <drjones@redhat.com>) id 1iucM9-0008Nr-NK
+ for qemu-devel@nongnu.org; Thu, 23 Jan 2020 08:17:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1iubHv-0003mF-4X
- for qemu-arm@nongnu.org; Thu, 23 Jan 2020 07:08:45 -0500
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:34234)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1iubHr-0003ju-U7; Thu, 23 Jan 2020 07:08:40 -0500
-Received: by mail-qk1-x741.google.com with SMTP id d10so3157571qke.1;
- Thu, 23 Jan 2020 04:08:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=x1zPMPRwH8V1NuBAfOtzpPIFwMe/8BZ49osDpSQatNM=;
- b=KgS9T9d/GluJ10UYL+oo5SyszfczX1DhWYTHmnoORj1vZG7ic5EWgKq69S2tT4ccMK
- L4LaKxfWnCr+lghuE56yGl2oH6jnhiekEF0wLNmbxl3MV9EYIJjHF8MPHzwLuE+n8smC
- +9Nh7sGNHTOmvOMyK4by8Cssddje3XudMm4vs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=x1zPMPRwH8V1NuBAfOtzpPIFwMe/8BZ49osDpSQatNM=;
- b=fb4JhPB5g/B/5GEUQt0vHaE0f6aWlwn6Z2laMLQYYPuwbNXPShIYxx2iYIxGxoBbBJ
- nqJ881p2RTEC5hKfJ07shanMYH086rE99nauJP6dE5YBxEeO3COp14uRRbSXMJs/WeR2
- ebGd6zPVKepFPYHnnDiVcehbjqGQUaao35D/3RVunzue5pUbwIX0vEOlunOnY56Yz6h0
- SCf40NkDJG38Zy69jEkFqZmH/Yps0R0+ivTCdZBnQrDOBzZNRZx2YE/o7dnYDGm7VXMK
- oAMObRewoeJLCEQ3YXA2LZ8zRefGqX6tWrr+kBQt8IEeHTKMLRi8+dEGzp+aOBGgBm+v
- KSqw==
-X-Gm-Message-State: APjAAAVDapHJFkSP9quCPyyi4hgq4VUvl+5I8cmBKTTIc4/3OPHa3wvj
- YdYCW9eGnn81jTXl37W6I+dpRKH4sg72uYxkjnc=
-X-Received: by 2002:ae9:e702:: with SMTP id m2mr15282686qka.208.1579781317185; 
- Thu, 23 Jan 2020 04:08:37 -0800 (PST)
-MIME-Version: 1.0
-References: <1579779525-20065-1-git-send-email-imammedo@redhat.com>
- <1579779525-20065-9-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1579779525-20065-9-git-send-email-imammedo@redhat.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Thu, 23 Jan 2020 12:08:25 +0000
-Message-ID: <CACPK8XfpFrpRgP6LyWv8AxJdjYTGLGRfzgDNxommBLNfV3mtHQ@mail.gmail.com>
-Subject: Re: [PATCH REPOST v3 08/80] arm/aspeed: use memdev for RAM
+ (envelope-from <drjones@redhat.com>) id 1iucM8-0001Ty-Fd
+ for qemu-devel@nongnu.org; Thu, 23 Jan 2020 08:17:09 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:31458
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iucM8-0001TZ-C6
+ for qemu-devel@nongnu.org; Thu, 23 Jan 2020 08:17:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579785428;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qIe36dpDykNzGzkerVyZLI/wog/PwFLVBaR/9cyGChA=;
+ b=JRJ/cx59YUACgC5zgNRcB6sJ2an4fuSy6lHiCSaC7rDe0oueNnPfb+DmjS4VQyztAvX7FH
+ aNsT3LAvRLPcOHocNM2WpWiL4eL4bOzRLQhih3BlRCi/kFNQwcwRdpbjQooQps+1rTqbKf
+ 3FR0M/4VcN3oSMGBgGz2dzQCBqXZfrc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-337-GCejRvX4N5iEFdqrCpfgpw-1; Thu, 23 Jan 2020 08:17:06 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 35726800D4C;
+ Thu, 23 Jan 2020 13:17:05 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3BA5960C85;
+ Thu, 23 Jan 2020 13:17:04 +0000 (UTC)
+Date: Thu, 23 Jan 2020 14:17:01 +0100
+From: Andrew Jones <drjones@redhat.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Subject: Re: [PATCH REPOST v3 31/80] arm/virt: use memdev for RAM
+Message-ID: <20200123131701.46h2lofbsujkkhj6@kamzik.brq.redhat.com>
+References: <1579779525-20065-1-git-send-email-imammedo@redhat.com>
+ <1579779525-20065-32-git-send-email-imammedo@redhat.com>
+MIME-Version: 1.0
+In-Reply-To: <1579779525-20065-32-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: GCejRvX4N5iEFdqrCpfgpw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::741
-X-BeenThere: qemu-arm@nongnu.org
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8BozLAYaAVUb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UXEAta+kx5sS
 
-On Thu, 23 Jan 2020 at 11:41, Igor Mammedov <imammedo@redhat.com> wrote:
->
-> memory_region_allocate_system_memory() API is going away, so
-> replace it with memdev allocated MemoryRegion. The later is
-> initialized by generic code, so board only needs to opt in
-> to memdev scheme by providing
+On Thu, Jan 23, 2020 at 12:37:56PM +0100, Igor Mammedov wrote:
+> memory_region_allocate_system_memory() API is going away,
+> so replace it with memdev allocated MemoryRegion.
+> The later is initialized by generic code, so board only
+> needs to opt in to memdev scheme by providing
 >   MachineClass::default_ram_id
-> and using MachineState::ram instead of manually initializing
-> RAM memory region.
->
+> and then map memory region provided by
+>   MachineState::ram_memdev
+>=20
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> ---
+> CC: peter.maydell@linaro.org
+> CC: qemu-arm@nongnu.org
+> CC: drjones@redhat.com
+> ---
+>  hw/arm/virt.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 39ab5f4..e2fbca3 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1512,7 +1512,6 @@ static void machvirt_init(MachineState *machine)
+>      MemoryRegion *sysmem =3D get_system_memory();
+>      MemoryRegion *secure_sysmem =3D NULL;
+>      int n, virt_max_cpus;
+> -    MemoryRegion *ram =3D g_new(MemoryRegion, 1);
+>      bool firmware_loaded;
+>      bool aarch64 =3D true;
+>      bool has_ged =3D !vmc->no_ged;
+> @@ -1701,9 +1700,8 @@ static void machvirt_init(MachineState *machine)
+>          }
+>      }
+> =20
+> -    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
+> -                                         machine->ram_size);
+> -    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram)=
+;
+> +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
+> +                                machine->ram);
+>      if (machine->device_memory) {
+>          memory_region_add_subregion(sysmem, machine->device_memory->base=
+,
+>                                      &machine->device_memory->mr);
+> @@ -2053,6 +2051,7 @@ static void virt_machine_class_init(ObjectClass *oc=
+, void *data)
+>      hc->unplug_request =3D virt_machine_device_unplug_request_cb;
+>      mc->numa_mem_supported =3D true;
+>      mc->auto_enable_numa_with_memhp =3D true;
+> +    mc->default_ram_id =3D "mach-virt.ram";
+>  }
+> =20
+>  static void virt_instance_init(Object *obj)
+> --=20
+> 2.7.4
+>
 
-Acked-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+

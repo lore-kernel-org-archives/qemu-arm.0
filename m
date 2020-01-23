@@ -1,117 +1,118 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp747370lfp;
-        Thu, 23 Jan 2020 06:50:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwKX9kimUQTl9dht9lIHgt4bMBRaxhoWEI5jx+jGN5H/+47YFG22L+fUoT0qhqYdLcOcjxV
-X-Received: by 2002:a37:e10f:: with SMTP id c15mr16372208qkm.331.1579791018756;
-        Thu, 23 Jan 2020 06:50:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579791018; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp749409lfp;
+        Thu, 23 Jan 2020 06:52:17 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzmhnZPAtOiqCO+0s37xBViI3pxCk7ZOBfhJq7ctlNvT+E9r8vxCeNXl5oOjoimQn1BPugz
+X-Received: by 2002:a37:4ac6:: with SMTP id x189mr15954534qka.219.1579791137095;
+        Thu, 23 Jan 2020 06:52:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579791137; cv=none;
         d=google.com; s=arc-20160816;
-        b=uZPxOJxzENdU15GhZO9f4R/FNUWRvF43zrcOw/Zu6EqNR5rut87QMHp9ZzxdDl9lzh
-         jiUZ6FirbGy9wHyZrOGksyw27T6Pa9cIE1Js023wWCbNY7CcwV7DxtotF1ciVflQT2VO
-         E/GMH8D0gB39SCyTjg7MQdsY02Qj137QKWRTj2EeK2OLI1dSzqKUGR7iH+eWbUSAXaIs
-         J7RdrC18ezBWaqMCu1q+Yxj2ofteUTih678XaD8JzpGix8f0nmIDI9FZomGUykb8Ey5R
-         ZXOpKbduJ8g+h1xF/cifq+qa/E960H1CutGK+HsPJvZghBQWYvNy2Vso/5CKC41XI7hi
-         xnDg==
+        b=hpUA+oZvklqTPsjeyZw03b5YWpXNFIDUWvJHtIhaFMG8sSCcDtyTBrl/XeJtIZvXg3
+         BVIGcD5QTxANK57l+NHfpzRn4mczYQnm7Oe8Mr7aQUg7RygmCHIS/lz8KZsTiWFsOsnN
+         b0PQqoNJw8SEZJKssd1sGhGyKSv9McGTc0Xubyk8qOJHGt/C5kiJdzGUZQZZRqzYXTcv
+         ECDfF3QDMW1996H40XMaU0d4y6wrWuH3ExQtkWLUuBzoDnLAjlLPpfNs/UQpt9jVUFmx
+         wspPNGRdScd+h3OR6VbgF+Zl1U7M+LyS1xl/a3C5Q2oTm+StmG2wBEFwI996GkFOiTjO
+         ZCRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=m9UPhOnRabdsdLcNcK3PP/8xogz+cYcmH6Xcd3AlmBc=;
-        b=Wui47+It6e65ByzdxYfsN4zIXs2fsqBg6d7uu7rufN26DUFdg73Yyovn662arx9EPp
-         qLAu+STgccpgPEWpIuHtZxKUMaoImOEPrF2mki1XnXSokJ1U1usZ8p4/P/oJPWNs5BN9
-         OQxaYFP3mwPwMgSPGZex/4J6ISzmbnmJ2EpNrQOnnhotDD83Wp/rPVNzN/7JsLaB5oUT
-         tFYZP1JbbLmdkFaVbzP88qRzpjINNtIQcmStqbadGfArszoF3ZVvxz/PdEPgq9sjdBIx
-         wfe3nMd9h7XBjfjImcfPa5+aQ1WXYStDvDj9yZvSTrUpxRRH+yEXnmaasoCBqnX2+GK5
-         mH+Q==
+        bh=au7BVE8WeRy8UHf2lTLW9pfzIvPH5z19LCguWIxQtnA=;
+        b=RWpRiY1u5pMkcpJhcyv0oytV34qBgWYQgWEofXOrkhM0PNQfJqtd1SgVjAfPRCDcL/
+         5WfzYzIAgPxPB58FHioJOiZ70gONSghUtctdE0lLh0p4CqUcFzZwGeqkhQw3TkERwa8b
+         ORoqsJL0S1Z9Mxt1S78n+jjbMFrjj+MmdkeZypfOVeDyd69Q/wv/gBr8Ghb0jmTAtHT8
+         ufz9oxAzO2QqSMC/wGBifa1F1GHWcnBKPN02fnYjSFDGR3A0ibE4wYK2ne8PNv3kJVl1
+         c8iAJVKvV9Z/ymQS7sA8/FwX+GGLadbhMFyjKFWrjjOijWNonCq4zBnSWB43kHv0SS8Q
+         lmZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ryctocrh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dNYzoBHw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dl5si1411039qvb.113.2020.01.23.06.50.18
+        by mx.google.com with ESMTPS id e15si1557390qkl.365.2020.01.23.06.52.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jan 2020 06:50:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Jan 2020 06:52:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ryctocrh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dNYzoBHw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58446 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58495 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iudoH-0001BM-BI
-	for alex.bennee@linaro.org; Thu, 23 Jan 2020 09:50:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38961)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iudqC-0003Fa-HB
+	for alex.bennee@linaro.org; Thu, 23 Jan 2020 09:52:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40830)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iuc6M-0003vX-Ui
- for qemu-arm@nongnu.org; Thu, 23 Jan 2020 08:00:52 -0500
+ (envelope-from <drjones@redhat.com>) id 1iucCa-0002gH-3T
+ for qemu-devel@nongnu.org; Thu, 23 Jan 2020 08:07:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iuc6L-0007Bd-LW
- for qemu-arm@nongnu.org; Thu, 23 Jan 2020 08:00:50 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:26928
+ (envelope-from <drjones@redhat.com>) id 1iucCY-0004lZ-P6
+ for qemu-devel@nongnu.org; Thu, 23 Jan 2020 08:07:15 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:29396
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iuc6L-0007AV-Hh
- for qemu-arm@nongnu.org; Thu, 23 Jan 2020 08:00:49 -0500
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iucCX-0004js-76
+ for qemu-devel@nongnu.org; Thu, 23 Jan 2020 08:07:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579784449;
+ s=mimecast20190719; t=1579784832;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=m9UPhOnRabdsdLcNcK3PP/8xogz+cYcmH6Xcd3AlmBc=;
- b=RyctocrhRUzMMO0SBqMBcITQrOIVQwkzeMdchv9LJ5VVZSDfD7Lyy+N5V1oCf/lxeiCfoi
- DwburwEYgHFsZgLguqG7cRukSep3PJ5x2BGObT0xHpaO6//bQ0mBvoobYUXsLJo8eeeuOp
- cljjUeT1FpLeNy4MvapyFaHr+zFalno=
+ bh=au7BVE8WeRy8UHf2lTLW9pfzIvPH5z19LCguWIxQtnA=;
+ b=dNYzoBHw+3W8RdjOsnbHlhGhBe5OuvCwH7SBwQszHNjtwJW5P7rXiu82FlvZ9COga8vesd
+ rJTGF9NREsTsqXD0m8nQk+ciRVaF+thS8ee8rlBXER9PGSH8LSHx8/rhOgzKuoPehRNBcq
+ tZsexS4eIIq58L7gtz7bbngnp5Xi6G4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-205-5oOSJUz-PGuKv4lhWUb0lw-1; Thu, 23 Jan 2020 08:00:45 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-100-zfjjKp2LOlWD2SkZee1x7A-1; Thu, 23 Jan 2020 08:07:08 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 09C9A800D4E;
- Thu, 23 Jan 2020 13:00:44 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B9993801E6C;
+ Thu, 23 Jan 2020 13:07:07 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 113AF60E3E;
- Thu, 23 Jan 2020 13:00:42 +0000 (UTC)
-Date: Thu, 23 Jan 2020 14:00:40 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9D2AC86C54;
+ Thu, 23 Jan 2020 13:07:06 +0000 (UTC)
+Date: Thu, 23 Jan 2020 14:07:04 +0100
 From: Andrew Jones <drjones@redhat.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Subject: Re: [PATCH REPOST v3 21/80] arm/mps2: use memdev for RAM
-Message-ID: <20200123130040.fa5pjoplcmz6nus6@kamzik.brq.redhat.com>
+Subject: Re: [PATCH REPOST v3 22/80] arm/musicpal: use memdev for RAM
+Message-ID: <20200123130704.mweotsgj5532b3df@kamzik.brq.redhat.com>
 References: <1579779525-20065-1-git-send-email-imammedo@redhat.com>
- <1579779525-20065-22-git-send-email-imammedo@redhat.com>
+ <1579779525-20065-23-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1579779525-20065-22-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: 5oOSJUz-PGuKv4lhWUb0lw-1
+In-Reply-To: <1579779525-20065-23-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: zfjjKp2LOlWD2SkZee1x7A-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uc6qg7I+BDGX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, jan.kiszka@web.de,
+ qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XmHQUVNXv2ET
 
-On Thu, Jan 23, 2020 at 12:37:46PM +0100, Igor Mammedov wrote:
+On Thu, Jan 23, 2020 at 12:37:47PM +0100, Igor Mammedov wrote:
 > memory_region_allocate_system_memory() API is going away, so
 > replace it with memdev allocated MemoryRegion. The later is
 > initialized by generic code, so board only needs to opt in
@@ -131,14 +132,16 @@ On Thu, Jan 23, 2020 at 12:37:46PM +0100, Igor Mammedov wrote:
 >     (Philippe Mathieu-Daud=E9 <philmd@redhat.com>)
 >=20
 > CC: drjones@redhat.com
+> CC: jan.kiszka@web.de
 > CC: peter.maydell@linaro.org
 > CC: qemu-arm@nongnu.org
 > ---
->  hw/arm/mps2.c | 15 +++++++++++----
->  1 file changed, 11 insertions(+), 4 deletions(-)
+>  hw/arm/musicpal.c | 18 +++++++++++++-----
+>  1 file changed, 13 insertions(+), 5 deletions(-)
+>
 
-I don't know anything about mps2, but I promised Igor to put
+I don't know anything about musicpal, but I promised Igor to put
 another pair of eyes on his changes. Looks fine to me.
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Andrew Jones <drjones@redhat.com>=20
 

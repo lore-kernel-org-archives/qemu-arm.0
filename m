@@ -1,118 +1,118 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp705070lfp;
-        Thu, 23 Jan 2020 06:13:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwiLU/p726TO2aX5TDRfm2B6P8kmaD4EryeKbqOjn7rNAMumDjCtpwY5y7TebzGgtH1H1pn
-X-Received: by 2002:ac8:704e:: with SMTP id y14mr16247144qtm.279.1579788808855;
-        Thu, 23 Jan 2020 06:13:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579788808; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp716085lfp;
+        Thu, 23 Jan 2020 06:22:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw6/j6PULZKxsjtznnKcJVhBg1nx01nmBb6CJD9l2rxJ6AQdDE1M3lBCJiW3NO8iyc6iWR6
+X-Received: by 2002:ac8:1496:: with SMTP id l22mr16465590qtj.38.1579789359666;
+        Thu, 23 Jan 2020 06:22:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579789359; cv=none;
         d=google.com; s=arc-20160816;
-        b=XiPimd2ghcknPmYt5c/W6WXspRgOJ5fytBSE7tSujiP0Bh0uijxT19YLrBoZoB7GDk
-         N/y8oKZajunIZFOYdqWjEamUGA93IdGTz4BE82Yfl2hzAAwtjXJY+nTnJgOu4pJXX77I
-         2v4lLfyfh5oLO3n7ZIadxHR378Npw+xlLQtOasCspak3/gfCmUrFoZeF8T7QfVVJvIaN
-         r7hp8BxLCjIIOdyE84ls3kf0Vz4sthxo75P2g5OLqEU5fH0iVzAAoUTtOTJx+h3XIRGr
-         xHCqbei9i+lQVKBJNgUg0R7u2++LLGznll/KL6VMr5uJoJWIKodIBrnJF7AsehbDn+Ix
-         Jbwg==
+        b=0lOVJNSd58HReFXHTkADV9NBy0BDNRPyDKBlzNbFFQyq01sCQUmu3h0FGKFvymX23p
+         ieScY36b5GDnge4rtHz1ke6vgqEcVTDJgUB90LJsRMyULfPFzT7EZn7Yg5xINvAYwDUg
+         mNc5mvKdbzhopdFzI+QUGeQvlhxk4JQDZSsw0VtI+UNGpBxWenKqJnNcUtcaxvOFL4Ib
+         D1i7x+HZBcc3oAeXvLBhnLzFNxOWP6Dpwo5T9BHzXUiqkrND6l0lMMtrT+xrE9yD54ov
+         rVyvYteizG4X7a58PvNrBxN8g42fOqVi1B7O+yj7zAvYgX5JwLfFHtiAwEs0sD3pR+sa
+         HUFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=CeuFK25U9RHqFoRab+T9Ogkit/2+wkjDCN/atYUZSmM=;
-        b=mX8oS/6tWiMzq2N6P0mRgzZXX27yPhxmT2cXT0QLLn9X5c35etQZfgVuhwiKoNFBS/
-         6zdOaljpib07kPLmftj32ULBnJg5erO7AuZfl9TuwRRlZMsDQxroZpRQZd2mT7PmK5mK
-         kTo7WiCRLhnInXMwIuGlg6lVt/+IggpVn7wCwt0oK8emv0mNCCkKKaR+rhk81QIHl7ZO
-         VczTxgj2kH4XzuWsLyypttQSxWy1v8o7WeVe8V9SDhE4+32LyncpoimhF71g70EaAZSr
-         9SyB45N7RJdBjs0U0BLDTddXkQt2ZPA/krhyIoosizbshItdwow8d5AYsIuDQ8LTChMw
-         IPJQ==
+        bh=ddyN+QWpksXKSfxyuElhlYq/7MuNqPYA5dbPgrAa/h0=;
+        b=w9DTdtQ6a9W7Gt70otr2B3gKau/H0ZG34jtIsn8Ml2Qxnwz46d5AE1eCYqPoPE+aQ8
+         c4LQnX3VPn3O0DwzQuE7rnuClkJIbN6o9kScInfm0IiNqS8YeGFQN35Zx24dgyBEvNMY
+         1eQckY8d4rVbFuMAKOWd288zhR+QfI5O7MMrObt40AXgQT4cN0oTnTGFJsFfIKSgzpPj
+         4Zdue1HTZ7SfVPwDiQjVlHl06mDP+EQ8IfJJcavIALgCJgY2e0SgH2xYWGKyMGhuEsE6
+         cVRyDXqcpXu09NBE7jY1EzY3kbIYbR/tVI7rMcYMHA4Kny1d1o5jNc7fpWMiD+iFg331
+         xgqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EW7trAUz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TrSnU8P9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p8si532144qtq.104.2020.01.23.06.13.28
+        by mx.google.com with ESMTPS id i6si1625265qkc.126.2020.01.23.06.22.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Jan 2020 06:13:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Jan 2020 06:22:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EW7trAUz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TrSnU8P9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57766 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iudEd-0002bH-Oa
-	for alex.bennee@linaro.org; Thu, 23 Jan 2020 09:13:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54073)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iudNW-0006Fi-H7
+	for alex.bennee@linaro.org; Thu, 23 Jan 2020 09:22:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60970)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iubn0-0003ou-6C
- for qemu-devel@nongnu.org; Thu, 23 Jan 2020 07:40:52 -0500
+ (envelope-from <drjones@redhat.com>) id 1iubxr-0000SX-LY
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 07:52:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iubmy-0002GJ-Ot
- for qemu-devel@nongnu.org; Thu, 23 Jan 2020 07:40:50 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45354
+ (envelope-from <drjones@redhat.com>) id 1iubxq-000614-II
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 07:52:03 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23071
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iubmy-0002Ev-Kd
- for qemu-devel@nongnu.org; Thu, 23 Jan 2020 07:40:48 -0500
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iubxq-0005zY-Do
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 07:52:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579783248;
+ s=mimecast20190719; t=1579783921;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CeuFK25U9RHqFoRab+T9Ogkit/2+wkjDCN/atYUZSmM=;
- b=EW7trAUzHUJVIpXuU4IAAf7X8S6Ct/hTVkeSOyC4UrEWiJ1X/GULgSz5I3c8qQrONGNswL
- Iy8SGXsLVuQffHPkQ0HNpFFDtzJBHghU1PL4+BmP1oXMOEUZY5HsYF8G2H37NkiZ8Sog3h
- mepdU6XkHYUwQcXbIrgGwA8w5leu770=
+ bh=ddyN+QWpksXKSfxyuElhlYq/7MuNqPYA5dbPgrAa/h0=;
+ b=TrSnU8P9Ys79GMUSR0k0KZI1dhwUSpIFKzpdqkZNc6TDDqlbmLjyaTkIY17JMDvsoasjIt
+ uv7iblCJ5HplC/4lJY2QbijCNDRQFzw2HsbdEEkO51dNxWWz7EqAmAhR6SnxchZJ2ri1F3
+ iuhzm1FcmYasXH1Q0dLa1vmVFa2oxLo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-257-gOUWXMsZM1iSXuVPe9pGBQ-1; Thu, 23 Jan 2020 07:40:44 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-80-MBzRGOpvN9WIpiljGcresA-1; Thu, 23 Jan 2020 07:51:58 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C3A03DB2D;
- Thu, 23 Jan 2020 12:40:42 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D55BA0CBF;
+ Thu, 23 Jan 2020 12:51:57 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 90A4B5C290;
- Thu, 23 Jan 2020 12:40:41 +0000 (UTC)
-Date: Thu, 23 Jan 2020 13:40:39 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0F08860C85;
+ Thu, 23 Jan 2020 12:51:55 +0000 (UTC)
+Date: Thu, 23 Jan 2020 13:51:53 +0100
 From: Andrew Jones <drjones@redhat.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Subject: Re: [PATCH REPOST v3 15/80] arm/integratorcp: use memdev for RAM
-Message-ID: <20200123124039.iz3pkwh6lm4mnatw@kamzik.brq.redhat.com>
+Subject: Re: [PATCH REPOST v3 19/80] arm/mcimx7d-sabre: use memdev for RAM
+Message-ID: <20200123125153.w7ud6fks7ejqiafk@kamzik.brq.redhat.com>
 References: <1579779525-20065-1-git-send-email-imammedo@redhat.com>
- <1579779525-20065-16-git-send-email-imammedo@redhat.com>
+ <1579779525-20065-20-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1579779525-20065-16-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: gOUWXMsZM1iSXuVPe9pGBQ-1
+In-Reply-To: <1579779525-20065-20-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: MBzRGOpvN9WIpiljGcresA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, peter.chubb@nicta.com.au,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: andrew.smirnov@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Onnh2tmuVI1p
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bJlgxg645Pol
 
-On Thu, Jan 23, 2020 at 12:37:40PM +0100, Igor Mammedov wrote:
+On Thu, Jan 23, 2020 at 12:37:44PM +0100, Igor Mammedov wrote:
 > memory_region_allocate_system_memory() API is going away, so
 > replace it with memdev allocated MemoryRegion. The later is
 > initialized by generic code, so board only needs to opt in
@@ -121,19 +121,23 @@ On Thu, Jan 23, 2020 at 12:37:40PM +0100, Igor Mammedov wrote:
 > and using MachineState::ram instead of manually initializing
 > RAM memory region.
 >=20
+> PS:
+>  remove no longer needed MCIMX7Sabre
+>=20
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > ---
 > CC: drjones@redhat.com
-> CC: peter.chubb@nicta.com.au
+> CC: andrew.smirnov@gmail.com
 > CC: peter.maydell@linaro.org
 > CC: qemu-arm@nongnu.org
 > ---
->  hw/arm/integratorcp.c | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
+>  hw/arm/mcimx7d-sabre.c | 25 +++++++++----------------
+>  1 file changed, 9 insertions(+), 16 deletions(-)
 >
 
-I don't know anything about integratorcp, but I promised Igor to put
+I don't know anything about mcimx7d-sabre, but I promised Igor to put
 another pair of eyes on his changes. Looks fine to me.
 
 Reviewed-by: Andrew Jones <drjones@redhat.com>
+=20
 

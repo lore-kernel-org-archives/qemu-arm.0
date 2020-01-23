@@ -1,213 +1,364 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2932693lfp;
-        Wed, 22 Jan 2020 07:30:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxeGiODSkOXkNAXANrxNYKtFpbdTz2iZY06k2KzDnAEQnPMgR4CJ4A4TVB1n3FkMRPERO3M
-X-Received: by 2002:a9d:6398:: with SMTP id w24mr7618263otk.15.1579707039316;
-        Wed, 22 Jan 2020 07:30:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579707039; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp776183lfp;
+        Thu, 23 Jan 2020 07:15:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxa7Dim9Wsab6Itqj4/qRhl43QjJeNn2cClSosYyIuPCwdhSo9megLgT7/3hVI0NPDkDXMg
+X-Received: by 2002:a9d:7b51:: with SMTP id f17mr11599584oto.302.1579792508898;
+        Thu, 23 Jan 2020 07:15:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579792508; cv=none;
         d=google.com; s=arc-20160816;
-        b=o2dVId0m/clKEFPqdxWpWhz9Tayh2n+nbvPR4DVePHu16WY65C6maQ785Yb5miFhrO
-         wSE9hJP2lCGcGF9akSEdXeFOKLjwZXImR4pDYhJF/hSsE2pU8wpEE924D3/825Fn7dwk
-         bVCz3cluxCwr+IfS1sqKgo7WqKQJI2Y8sklZ4x9KXgYZGhIbd8b906jRNTRaceAonpiH
-         mMMIA0FiMjm10SmS3/mKQm3qrfQzIMlBn2egXT0iZ+NjNuMXj9swGJCRY2Yjxh6GgVg/
-         fclcMw+FfwN3bKt9s7rPfgctTjXs8Ock7mUQ0RZYtEKw1uIKqXU9QSm1TE8Yfsb7i3D1
-         TxLQ==
+        b=0AxNgeqJToC5JK4DHW4ihp0EbxnBt9GTmUver/6X6F0pF0d8qNI5AVo148LQ+GTsTc
+         NtX1OCpk+bieKj4uBRRoNm7j+wcNlATd1nBbFdzqfxbbBbm0TsNPsCtNfMSXJQP55uBD
+         TD6wZbaffilycBhhlGsUfhglI1f26yZ5ZoS8r1JwSQBgkvMuk1moRKS1GyzawTgpfR1F
+         o4y73goFMiZOtUrwGGLrwIQH2spobkOKVQOypMlbdG7vyu0rOLp5ahDGrPMrhRypOQ5o
+         2nINZxre4Ph6c5bAaEw+j3StiNOk5/KrFske28LHMa9hkDi2AGJ0gGNGnhZ1iHV/IBGz
+         o3LQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=h/6ZeOR37m7weRbLLvD8pcGAST9cXk6ol/z2idYwvls=;
-        b=BOCgRpR/JI5qhGP2+9AIWcQFpc8Sw78nQHYJno1h4Az/9OtHdJpvYwQTXeu2eNv/7f
-         tPz4C1qC6Kpc8jKC+AYFNq74SrHfr6jK+KrOfTFRsTkW1yc76NgSiXsNZ1tj1oITHH32
-         bPDmSVYsl74+IkOh6gzhHkE01oGD0Vu6u1C/6AH2PesbKf7r7rkV4iAzj8mSft4Qor4l
-         pcVEMp9VoNo37mrbFU1QjaGtmcq/AWYcppkEU3CLlg+VrvITu02agd3RAo747gQj8eI8
-         C6Xa0oHODwCTJbWK1ozchsNRSoyNUJy/TpIHAcE+BNiewZZKO9NlalNhOjUM+3ODOOHp
-         4LFg==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=zHxKV5delk2SSk0YuUAQlRrTMWrEa6kG/0h6v9KRSsk=;
+        b=ZHn0ONqecQnTQGZejVIW5wHpBnju0bZ/jB+7WbugxWeMZ95mjvGjvhTBa3zT2MJZmX
+         IxtJqFfnYgghW+v8vtZRisQYvn6M2PpM39t5M3CKA0guFKByNh5Si9x4XNq8QDkvLbj/
+         P8fYWtIVKn6wEG5/dwIAEckUgryP2/lbrSOXGpTni3KlRiLwfp2GCOnPNRtlBxmKwvXJ
+         2+543qeNyHJHKEtlSqZXNzusQBZYGVO+5BOeFyZ25/J3BqqXGL6HXGDE1DXy07Ps1Ffo
+         kgo9RQYRRYv9KpyGCrDnMJbIbT+hAP2V4igALNMfMX2AvO4Q5JIcAgOzLlx/jAasSyRm
+         nJHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NmKRgbm7;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id m85si21392423oig.158.2020.01.22.07.30.39;
-        Wed, 22 Jan 2020 07:30:39 -0800 (PST)
+        by mx.google.com with ESMTP id w4si1245144otl.214.2020.01.23.07.15.08;
+        Thu, 23 Jan 2020 07:15:08 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NmKRgbm7;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726005AbgAVPai (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Wed, 22 Jan 2020 10:30:38 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:58540 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1725802AbgAVPai (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 22 Jan 2020 10:30:38 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 59C2A38D4F1D3B71379D;
-        Wed, 22 Jan 2020 23:30:33 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.439.0; Wed, 22 Jan 2020
- 23:30:22 +0800
-Subject: Re: [PATCH v22 8/9] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
-To:     Peter Maydell <peter.maydell@linaro.org>
-CC:     Fam Zheng <fam@euphon.net>, Eduardo Habkost <ehabkost@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Jonathan Cameron <jonathan.cameron@huawei.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        Linuxarm <linuxarm@huawei.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Zheng Xiang <zhengxiang9@huawei.com>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        James Morse <james.morse@arm.com>,
-        "xuwei (O)" <xuwei5@huawei.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Richard Henderson <rth@twiddle.net>
+        id S1727278AbgAWPPH (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Thu, 23 Jan 2020 10:15:07 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:43986 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1726232AbgAWPPH (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 23 Jan 2020 10:15:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1579792505;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=zHxKV5delk2SSk0YuUAQlRrTMWrEa6kG/0h6v9KRSsk=;
+        b=NmKRgbm7HqkUXFU4Dj2ql5nDEhC87bpI08sRx/scC3SpkqETY/zayve4EsHr2cUPOA/U+j
+        vkzO/RarGt3aRCFM61AzIBRSaLD6E/hn6x84htO7YPjVr6sOn/q9xcP5Fe4L1Q1ZZYdtnN
+        7KNFbFs9uM1qbMZvBNeHmrKR5iqLYN4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-338-F4Nr1m3AOiS65u8fRdpwgw-1; Thu, 23 Jan 2020 10:15:01 -0500
+X-MC-Unique: F4Nr1m3AOiS65u8fRdpwgw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 144429496D;
+        Thu, 23 Jan 2020 15:14:59 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 45D485C1B2;
+        Thu, 23 Jan 2020 15:14:52 +0000 (UTC)
+Date:   Thu, 23 Jan 2020 16:14:51 +0100
+From:   Igor Mammedov <imammedo@redhat.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <mtosatti@redhat.com>, <xuwei5@huawei.com>,
+        <jonathan.cameron@huawei.com>, <james.morse@arm.com>,
+        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
+        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
+        <linuxarm@huawei.com>
+Subject: Re: [PATCH v22 3/9] ACPI: Build related register address fields via
+ hardware error fw_cfg blob
+Message-ID: <20200123161451.07c4a291@redhat.com>
+In-Reply-To: <1578483143-14905-4-git-send-email-gengdongjiu@huawei.com>
 References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
- <1578483143-14905-9-git-send-email-gengdongjiu@huawei.com>
- <CAFEAcA_=PgkrWjwPxD89fCi85XPpcTHssXkSmE04Ctoj7AX0kA@mail.gmail.com>
- <c89db331-cb94-8e0b-edf8-25bfb64f826d@huawei.com>
- <CAFEAcA_Qs3p=iEU+D5iqjyZYpPQO0D16AWvjp0wcvbvRNdGAGg@mail.gmail.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <a6030ba3-c82b-af4c-950c-4e15c315ad41@huawei.com>
-Date:   Wed, 22 Jan 2020 23:30:13 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+        <1578483143-14905-4-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_Qs3p=iEU+D5iqjyZYpPQO0D16AWvjp0wcvbvRNdGAGg@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 0NIdYyFcl/i1
+X-TUID: BmAvWaSky9Jr
 
-On 2020/1/20 20:15, Peter Maydell wrote:
-> On Fri, 17 Jan 2020 at 10:05, gengdongjiu <gengdongjiu@huawei.com> wrote:
->>
->> On 2020/1/17 0:28, Peter Maydell wrote:
->>> On Wed, 8 Jan 2020 at 11:33, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
->>>
->>>> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->>>> +{
->>>> +    ram_addr_t ram_addr;
->>>> +    hwaddr paddr;
->>>> +
->>>> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
->>>> +
->>>> +    if (acpi_enabled && addr &&
->>>> +            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
->>>> +        ram_addr = qemu_ram_addr_from_host(addr);
->>>> +        if (ram_addr != RAM_ADDR_INVALID &&
->>>> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
->>>> +            kvm_hwpoison_page_add(ram_addr);
->>>> +            /*
->>>> +             * Asynchronous signal will be masked by main thread, so
->>>> +             * only handle synchronous signal.
->>>> +             */
->>>
->>> I don't understand this comment. (I think we've had discussions
->>> about it before, but it's still not clear to me.)
->>>
->>> This function (kvm_arch_on_sigbus_vcpu()) will be called in two contexts:
->>>
->>> (1) in the vcpu thread:
->>>   * the real SIGBUS handler sigbus_handler() sets a flag and arranges
->>>     for an immediate vcpu exit
->>>   * the vcpu thread reads the flag on exit from KVM_RUN and
->>>     calls kvm_arch_on_sigbus_vcpu() directly
->>>   * the error could be MCEERR_AR or MCEERR_AOFor the vcpu thread, the error can be MCEERR_AR or MCEERR_AO,
->> but kernel/KVM usually uses MCEERR_AR(action required) instead of MCEERR_AO, because it needs do action immediately. For MCEERR_AO error, the action is optional and the error can be ignored.
->> At least I do not find Linux kernel/KVM deliver MCEERR_AO in the vcpu threads.
->>
->>> (2) MCE errors on other threads:
->>>   * here SIGBUS is blocked, so MCEERR_AR (action-required)
->>>     errors will cause the kernel to just kill the QEMU process
->>>   * MCEERR_AO errors will be handled via the iothread's use
->>>     of signalfd(), so kvm_on_sigbus() will get called from
->>>     the main thread, and it will call kvm_arch_on_sigbus_vcpu()
->>>   * in this case the passed in CPUState will (arbitrarily) be that
->>>     for the first vCPU
->>
->> For the MCE errors on other threads, it can only handle MCEERR_AO. If it is MCEERR_AR, the QEMU will assert and exit[2].
->>
->> Case1: Other APP indeed can send MCEERR_AO to QEMU， QEMU handle it via the iothread's use of signalfd() through above path.
->> Case2: But if the MCEERR_AO is delivered by kernel, I see QEMU ignore it because SIGBUS is masked in main thread[3], for this case, I do not see QEMU handle it via signalfd() for MCEERR_AO errors from my test.
-> 
-> SIGBUS is blocked in the main thread because we use signalfd().
-> The function sigfd_handler() should be called and it will then
-> manually invoke the correct function for the signal.
-> 
->> For Case1，I think we should not let guest know it, because it is not triggered by guest. only other APP send SIGBUS to tell QEMU do somethings.
-> 
-> I don't understand what you mean here by "other app" or
-> "guest" triggering of MCEERR. I thought that an MCEERR meant
-> "the hardware has detected that there is a problem with the
-> RAM". If there's a problem with the RAM and it's the RAM that's
-> being used as guest RAM, we need to tell the guest, surely ?
+On Wed, 8 Jan 2020 19:32:17 +0800
+Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 
-  sure, If the error is guest RAM, we need to test the guest.
-  I mean if the RAM that is being used as QEMU RAM(not guest RAM), we should not tell the guest.
-  OR if another user space manually send SIGBUS to qemu, such as using "kill -s SIGBUS xxx" commands, we should not tell the guest.
+> This patch builds error_block_address and read_ack_register fields
+> in hardware errors table , the error_block_address points to Generic
+> Error Status Block(GESB) via bios_linker. The max size for one GESB
+> is 0x1000 in bytes, For more detailed information, please refer to
 
-> 
->> For Case2，it does not call call kvm_arch_on_sigbus_vcpu().
-> 
-> It should do. The code you quote calls that function
-> for that case:
-  According to our analysis, I also think it should call the function for that case.
-  But from my test, I see  kvm_arch_on_sigbus_vcpu() is not called when KVM/Kernel delivers SIGBUS to QEMU main thread.
-  So I am also confused. I haven't even dig into the reason yet.
+s/0x1000/4Kb/
 
- If anyone has done the test or knows the reason, welcome comments.
+> document: docs/specs/acpi_hest_ghes.rst
+> 
+> Now we only support one Error source, if necessary, we can extend to
+> support more.
+> 
+> Suggested-by: Laszlo Ersek <lersek@redhat.com>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> ---
+>  default-configs/arm-softmmu.mak |  1 +
+>  hw/acpi/Kconfig                 |  4 ++
+>  hw/acpi/Makefile.objs           |  1 +
+>  hw/acpi/aml-build.c             |  2 +
+>  hw/acpi/ghes.c                  | 94 +++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/virt-acpi-build.c        |  6 +++
+>  include/hw/acpi/aml-build.h     |  1 +
+>  include/hw/acpi/ghes.h          | 26 ++++++++++++
+>  8 files changed, 135 insertions(+)
+>  create mode 100644 hw/acpi/ghes.c
+>  create mode 100644 include/hw/acpi/ghes.h
+> 
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 1f2e0e7..5722f31 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -40,3 +40,4 @@ CONFIG_FSL_IMX25=y
+>  CONFIG_FSL_IMX7=y
+>  CONFIG_FSL_IMX6UL=y
+>  CONFIG_SEMIHOSTING=y
+> +CONFIG_ACPI_APEI=y
+> diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+> index 12e3f1e..ed8c34d 100644
+> --- a/hw/acpi/Kconfig
+> +++ b/hw/acpi/Kconfig
+> @@ -23,6 +23,10 @@ config ACPI_NVDIMM
+>      bool
+>      depends on ACPI
+>  
+> +config ACPI_APEI
+> +    bool
+> +    depends on ACPI
+> +
+>  config ACPI_PCI
+>      bool
+>      depends on ACPI && PCI
+> diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+> index 9925305..7b5db4b 100644
+> --- a/hw/acpi/Makefile.objs
+> +++ b/hw/acpi/Makefile.objs
+> @@ -5,6 +5,7 @@ common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu_hotplug.o
+>  common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) += memory_hotplug.o
+>  common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
+>  common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
+> +common-obj-$(CONFIG_ACPI_APEI) += ghes.o
+>  common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
+>  common-obj-$(CONFIG_ACPI_HW_REDUCED) += generic_event_device.o
+>  common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 2c3702b..3681ec6 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -1578,6 +1578,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
+>      tables->table_data = g_array_new(false, true /* clear */, 1);
+>      tables->tcpalog = g_array_new(false, true /* clear */, 1);
+>      tables->vmgenid = g_array_new(false, true /* clear */, 1);
+> +    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
+>      tables->linker = bios_linker_loader_init();
+>  }
+>  
+> @@ -1588,6 +1589,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
+>      g_array_free(tables->table_data, true);
+>      g_array_free(tables->tcpalog, mfre);
+>      g_array_free(tables->vmgenid, mfre);
+> +    g_array_free(tables->hardware_errors, mfre);
+>  }
+>  
+>  /*
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> new file mode 100644
+> index 0000000..b7fdbbb
+> --- /dev/null
+> +++ b/hw/acpi/ghes.c
+> @@ -0,0 +1,94 @@
+> +/*
+> + * Support for generating APEI tables and recording CPER for Guests
+> + *
+> + * Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
+s/2019/2020/
+
+the same for other places that add this string within this series
+
+> + *
+> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> +
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> +
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/acpi/acpi.h"
+> +#include "hw/acpi/ghes.h"
+> +#include "hw/acpi/aml-build.h"
+> +#include "hw/nvram/fw_cfg.h"
+> +#include "sysemu/sysemu.h"
+> +#include "qemu/error-report.h"
+> +
+> +#include "hw/acpi/bios-linker-loader.h"
+> +
+> +#define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
+> +#define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
+> +
+> +/* The max size in bytes for one error block */
+> +#define ACPI_GHES_MAX_RAW_DATA_LENGTH       0x400
+
+using 1 * KiB would make it more readable
 
 
-> 
->> [1]:
->> /* Called synchronously (via signalfd) in main thread.  */
->> int kvm_on_sigbus(int code, void *addr)
->> {
->> #ifdef KVM_HAVE_MCE_INJECTION
->>     /* Action required MCE kills the process if SIGBUS is blocked.  Because
->>      * that's what happens in the I/O thread, where we handle MCE via signalfd,
->>      * we can only get action optional here.
->>      */
->> [2]: assert(code != BUS_MCEERR_AR);
->>     kvm_arch_on_sigbus_vcpu(first_cpu, code, addr);
->>     return 0;
->> #else
->>     return 1;
->> #endif
->> }
-> 
-> 
->> Above all, from my test, for MCEERR_AO error which is triggered by guest, it not call
-> kvm_arch_on_sigbus_vcpu().
-> 
-> I'm not sure what you mean by "triggered by guest". I assume that
-> exactly what kind of errors the kernel can report and when will
-> depend to some extent on the underlying hardware/firmware
-> implementation of reporting of memory errors, but in principle
-> the ABI allows the kernel to send SIGBUS_(BUS_MCEERR_AO) to the
-> main thread, the signal should be handled by signalfd, our code
-> for working with multiple fds should mean that the main thread
-> calls sigfd_handler() to deal with reading bytes from the signalfd
-> fd, and that function should then call sigbus_handler(), which
-> calls kvm_on_sigbus(), which calls kvm_arch_on_sigbus_vcpu().
-> If something in that code path is not working then we need to
-> find out what it is.
+> +
+> +/* Now only support ARMv8 SEA notification type error source */
+> +#define ACPI_GHES_ERROR_SOURCE_COUNT        1
+> +
+> +/*
+> + * Build table for the hardware error fw_cfg blob.
+> + * Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fw_cfg blobs.
+> + * See docs/specs/acpi_hest_ghes.rst for blobs format.
+> + */
+> +void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
+> +{
+> +    int i, error_status_block_offset;
+> +
+> +    /* Build error_block_address */
+> +    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
+> +        build_append_int_noprefix(hardware_errors, 0, sizeof(uint64_t));
+> +    }
+> +
+> +    /* Build read_ack_register */
+> +    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
+> +        /*
+> +         * Initialize the value of read_ack_register to 1, so GHES can be
+> +         * writeable after (re)boot.
+> +         * ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
+> +         * (GHESv2 - Type 10)
+> +         */
+> +        build_append_int_noprefix(hardware_errors, 1, sizeof(uint64_t));
+> +    }
+> +
+> +    /* Generic Error Status Block offset in the hardware error fw_cfg blob */
+> +    error_status_block_offset = hardware_errors->len;
+> +
+> +    /* Reserve space for Error Status Data Block */
+> +    acpi_data_push(hardware_errors,
+> +        ACPI_GHES_MAX_RAW_DATA_LENGTH * ACPI_GHES_ERROR_SOURCE_COUNT);
+> +
+> +    /* Tell guest firmware to place hardware_errors blob into RAM */
+> +    bios_linker_loader_alloc(linker, ACPI_GHES_ERRORS_FW_CFG_FILE,
+> +                             hardware_errors, 1, false);
+                                                ^^
+/*                                                                               
+ * bios_linker_loader_alloc: ask guest to load file into guest memory.           
+[...]
+ * @alloc_align: required minimal alignment in bytes. Must be a power of 2.      
+                                                                                                          Maybe use 8 here to make 64bit addresses naturally aligned?
 
-  I agree with you, we need to check why it does not call sigbus_handler() for the SIGBUS delivered by kernel/KVM.
-  But I think it can  put it in another series, this series we only handle the SIGBUS_(BUS_MCEERR_AR), whether do you think it is OK?
-  Of course I will update the comments that you ever mentioned.
-
-  By the way, If using "kill -s SIGBUS xxx" command to send SIGBUS to QEMU main thread, it indeed will be handled by signalfd.
-
-> 
-> thanks
-> -- PMM
-> .
-> 
+> +
+> +    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
+> +        /*
+> +         * Tell firmware to patch error_block_address entries to point to
+> +         * corresponding "Generic Error Status Block"
+> +         */
+> +        bios_linker_loader_add_pointer(linker,
+> +            ACPI_GHES_ERRORS_FW_CFG_FILE, sizeof(uint64_t) * i,
+> +            sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
+> +            error_status_block_offset + i * ACPI_GHES_MAX_RAW_DATA_LENGTH);
+> +    }
+> +
+> +    /*
+> +     * tell firmware to write hardware_errors GPA into
+> +     * hardware_errors_addr fw_cfg, once the former has been initialized.
+> +     */
+> +    bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_FILE,
+> +        0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
+> +}
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index bd5f771..6819fcf 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -48,6 +48,7 @@
+>  #include "sysemu/reset.h"
+>  #include "kvm_arm.h"
+>  #include "migration/vmstate.h"
+> +#include "hw/acpi/ghes.h"
+>  
+>  #define ARM_SPI_BASE 32
+>  
+> @@ -830,6 +831,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_spcr(tables_blob, tables->linker, vms);
+>  
+> +    if (vms->ras) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        build_ghes_error_table(tables->hardware_errors, tables->linker);
+> +    }
+> +
+>      if (ms->numa_state->num_nodes > 0) {
+>          acpi_add_table(table_offsets, tables_blob);
+>          build_srat(tables_blob, tables->linker, vms);
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index de4a406..8f13620 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -220,6 +220,7 @@ struct AcpiBuildTables {
+>      GArray *rsdp;
+>      GArray *tcpalog;
+>      GArray *vmgenid;
+> +    GArray *hardware_errors;
+>      BIOSLinker *linker;
+>  } AcpiBuildTables;
+>  
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> new file mode 100644
+> index 0000000..3dbda3f
+> --- /dev/null
+> +++ b/include/hw/acpi/ghes.h
+> @@ -0,0 +1,26 @@
+> +/*
+> + * Support for generating APEI tables and recording CPER for Guests
+> + *
+> + * Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
+> + *
+> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> +
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> +
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef ACPI_GHES_H
+> +#define ACPI_GHES_H
+> +
+> +void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
+> +#endif

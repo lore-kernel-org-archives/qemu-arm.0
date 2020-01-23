@@ -1,154 +1,254 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp239222lfp;
-        Wed, 22 Jan 2020 21:28:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqySBhVf3Oi4X2s8B/ZDyKR7onYq1ljRgrfiWfGPSJtoK5uV+anQKCUFdtXcMMlBvkVvgVBP
-X-Received: by 2002:a50:e607:: with SMTP id y7mr5625770edm.213.1579757331986;
-        Wed, 22 Jan 2020 21:28:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579757331; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp239352lfp;
+        Wed, 22 Jan 2020 21:29:01 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwCpwIRQyy/9BJk5Iz4n2pIJOUDyXJZmG3i1GV5gnlCqGTfgck73H/69PmZCL86cNz2QUkt
+X-Received: by 2002:a17:906:25d4:: with SMTP id n20mr5290056ejb.98.1579757341718;
+        Wed, 22 Jan 2020 21:29:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579757341; cv=none;
         d=google.com; s=arc-20160816;
-        b=XN6L4wpTK7SuG/XuPl0aRBx7vEz7Co8GIqW1lg9dC18Og52e6z+/t0cn4NAsXW7G2A
-         1B0tyWDqcxyZuqhH/PO1F+jPctFa9nYKAhhCRGaeIRtVNXBPheFVtzBUmaj3Z9zdaF3o
-         lg1Qi5qdPchG3G0TPz+4DIlBDqT82LaRPoPJn/CVh9iQDVH/0Xwj0NaAg2oRj7U1IcPq
-         9PWRvfENs2+FQHCGtUkUT7sTN/90PvushGZUlHVn55ATR0oNp1JDDkOAX6uN82NPmTzH
-         KTcTDikSiZ456HscpxSkTGCn4RZ+6HikQvYAtBQpiqA4OtyZuZPnQ+Ooh6yB1H8qnXxK
-         YqzQ==
+        b=sXOsCcf9Tny7ir4MnFRqtSV8Nh3H0mwzgWyL/51aNGD+qAcWrT+5jWGsQCa2P4Ul8G
+         j9jGAUgbefAYlyUcYNgTndwQ/ZrwbFlgq5HES4L2QlStFuKfnUd0WXJotQHKK74pgEjM
+         Kilk3Jq5IbWfUmXU/0iCcTuQuFrACtaKez8EdSuHbcRoRGswAmq61DoX/xeg82pIdKp6
+         93qSXq4UjCdTyZWPb1Ko+VtX1u5JW1B2SGhVKkRb2IfGz3xXodq37MQbjjpIp6tUZw5F
+         wjw5XDhe9eyZ2XxDkglaTQ0e2cNfP9Q4JffPbHdgPvKmsT90ywEdIlQSTjVj6uENfmuO
+         umIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=EE9FLYTtkS2cjxl4sIaS2Sb8cPUkAts34EXvkmAm2f0=;
-        b=eZbiFXTRYUkd4UroLXBKj4kqQeyHH61jJzEi+zj+fEKOsIktuZjELIMRvbNCWLOWeH
-         SNWJUJKF8QREjudr07vkATZzfJkcpa3y9HrM4ZW3mMICkWwxzXg2CpmTiTXV91gbeBXs
-         podPsRmPvPaypSsRCb5L52jT6kRoOZt/3mCEycph7f4hOeAO0IcbK/ERLrAGWnSZvn34
-         Slw7R3Taiqnga6ZD063hbnp7Xu2zPa58QCfLzMwcCh1vbWfAep3C8otEb1jwx6rV5rAX
-         o7kH6ZFJwyIVVTf8vDY81ffM5R5PKZIEeCWYAYRmkISo2TirrO3xbrokVHGkr00ez9nT
-         9Gtw==
+        bh=0/99IwBEwzLpC/GNQFCS4xwCpjCZFU1wso8ttuVUOs4=;
+        b=WtUyJHxVbiEw/ua60h4Mv2Q1uhESDprK/0lYxomXG/ppffFXEgzaQBuE/YQffEMffS
+         0PJf27+lRsDZL88jBM9xpu8WC7RLudP20EZe0m2TYMU9gov7xdxw5FsUMWWydPp18xMa
+         ZHwoW3f0w+tSst6FwBqxjG8IZS3nDWZajnwQZXnbJTWRmd4IilOCYcpfqCVUlU+vxWsD
+         9xpoTO2pKu2BiEtILtfoNX93FV2d+XAMTj5dmT8cP/MvIE7wyTVJaxd13ac4FHpV8mFS
+         sC05Amv0D3eI28JdeP8srD1LbEC2j88fPl3NOJaG1Fg41S4F61oty9bCvYqZDruaRHmz
+         TmGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cQqWiAFt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hg5mAbrm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s8si484774edq.162.2020.01.22.21.28.51
+        by mx.google.com with ESMTPS id fi3si28626233ejb.82.2020.01.22.21.29.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jan 2020 21:28:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Jan 2020 21:29:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cQqWiAFt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51168 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hg5mAbrm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51180 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iuV2w-00088J-SA
-	for alex.bennee@linaro.org; Thu, 23 Jan 2020 00:28:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42236)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iuV36-0000Rd-KK
+	for alex.bennee@linaro.org; Thu, 23 Jan 2020 00:29:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42136)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1iuV0D-0004qQ-NN
- for qemu-devel@nongnu.org; Thu, 23 Jan 2020 00:26:03 -0500
+ (envelope-from <groeck7@gmail.com>) id 1iuV04-0004fa-Go
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 00:25:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1iuV0B-0001pw-MU
- for qemu-devel@nongnu.org; Thu, 23 Jan 2020 00:26:01 -0500
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:42246)
+ (envelope-from <groeck7@gmail.com>) id 1iuV03-0001lU-33
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2020 00:25:52 -0500
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:55732)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1iuV07-0001n3-HM; Thu, 23 Jan 2020 00:25:55 -0500
-Received: by mail-pf1-x441.google.com with SMTP id 4so967897pfz.9;
- Wed, 22 Jan 2020 21:25:55 -0800 (PST)
+ id 1iuV02-0001l9-Td; Thu, 23 Jan 2020 00:25:51 -0500
+Received: by mail-pj1-x1043.google.com with SMTP id d5so648232pjz.5;
+ Wed, 22 Jan 2020 21:25:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=EE9FLYTtkS2cjxl4sIaS2Sb8cPUkAts34EXvkmAm2f0=;
- b=cQqWiAFtmbtlEoBR2IEJ1ZSEKlIRW2Pf1WOpTgVWzhuC2Rq0WusFiCIV143SD5uNBI
- s7sJ+2Sd2Xxu7Z0AEjd80hjD1SVzXAVyqzKBHe0cc+CDQKNA9hKlE5WOFo9Vw82nPvLf
- dn5eOYSzbtjhSTLYydjnAoQJfRG4A6lchLxO0oDvbBeuir/dZf50T3JbfBofxDjJedxb
- ZwgSDjlIqdSeNn/pCuA9gMRPcWjz87zuOiXY5JcaMYAkVayMCYX21FITrMmQmViYruGQ
- cS8KBVPovmMIkyOgF4hNtDFOPy/mWU0PBi5wsvfG4XiN+5MRhUGVSFYnfvNOlo/Y5i/E
- RUNA==
+ bh=0/99IwBEwzLpC/GNQFCS4xwCpjCZFU1wso8ttuVUOs4=;
+ b=Hg5mAbrmj9+eRiWzunQ4BPani/1BitaBGYs3P/4aSCi7O+8qK3Zw8sNIsvaak5g8D/
+ aWgeKreCMHpcXxoX5TOY2oSomahbreOUTMAztBsZEO9LHK30X5oDgmdyYln1oRBZ8ZkG
+ y+DCVw/z5gYGWrltxYXJFkGFx7aHKD3QrpCpdn8t+I9WPmOYQZR8IZPBEfLN+/ntRsiN
+ 0ZJy+U9brbGPKO62DO/zbMgjeGysJR510uy+AKH8o7ZLcKvZFe79F40MbJIQsMh0/VgX
+ su7BrCZsFicOc388+Vc/Etdrh1vFqmVtXVwkxnPRGxfDcHOg9nNCtMtvYWpX1dzdWlXH
+ 3pPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references;
- bh=EE9FLYTtkS2cjxl4sIaS2Sb8cPUkAts34EXvkmAm2f0=;
- b=FvszVJd1xOlMDmVvLRr9xnoOI8ypzBqWknTOSO52/Mx3jCzW/TrvTUfx13TWljx3Zz
- nvmKnz/FQNDSaUiD23NMpBpjhXMHlcD+3GLsTokoCHn/o9lTu6SUto0ua9jU7/0nbFS5
- lw5k4957NWJtrXq19YU4bvKYW878+cBOWwBn+pCTqverLtpnwnAzcpa00cuUSxHdhPY5
- r4csLpWLkPs/kvUnMufrY49ZLVFVyQyFVVT/n05UTVBOSkGMyxvVt209viZBsGGCa4vy
- CdqUgCV6YMiQvZIEzj1oxeGGdfMl4UqdTUNw0+Fjyfod9Fyz+NVf0/2UzEvNn9j52gX7
- JeeQ==
-X-Gm-Message-State: APjAAAUVqtGa9C8IwBFIs1sJoPmuuUnhW7s4huiGENO92NFXS4uh+XcP
- 2bXE7GCxl12lTUpUQvTJaZk=
-X-Received: by 2002:a63:3f47:: with SMTP id m68mr2068459pga.411.1579757154683; 
- Wed, 22 Jan 2020 21:25:54 -0800 (PST)
+ bh=0/99IwBEwzLpC/GNQFCS4xwCpjCZFU1wso8ttuVUOs4=;
+ b=hIh+YpNsehBR4bKna/E3NXxJFEmIT39jEPQEWIiavtc+Upf1AX53DrN4TrL3G6x8G0
+ eN/QP/t4LiSc5CWeZ7mtwuhsRqFEdF49iRu3qx0hqtagn5mMDGF80aCkBEtqCPes3ZSY
+ ozJIjTpOPQcnphLD8TeDxiXpsTcIs/YVCiKeiKW42yuA62Y3MTjF79jugqNK/sct84gX
+ Go3m6a+nQkBT7QlJyECNII/g1dax6sFAr8pchgSQ0OQRLUyF/NYm9tCC8E2DqNkOm014
+ EPFTdU4dvducfXBaefeX9HPAsTRYfOlkJP//QOK4P0vw51YyeZSxkxq6CbM0ksim4zkn
+ 9JgQ==
+X-Gm-Message-State: APjAAAUD36UsJodd5rQa2MSGqRTz9pJO6fHDhYNK0k9E6bK50dRK5Vkg
+ Wg9oABHjIkBwUSKMbFxSVd+GofsI
+X-Received: by 2002:a17:90a:ac0e:: with SMTP id
+ o14mr2615666pjq.11.1579757149935; 
+ Wed, 22 Jan 2020 21:25:49 -0800 (PST)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id 100sm768803pjo.17.2020.01.22.21.25.53
+ by smtp.gmail.com with ESMTPSA id a10sm867802pgm.81.2020.01.22.21.25.49
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 22 Jan 2020 21:25:53 -0800 (PST)
+ Wed, 22 Jan 2020 21:25:49 -0800 (PST)
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 5/8] hw/char/exynos4210_uart: Implement post_load function
-Date: Wed, 22 Jan 2020 21:25:37 -0800
-Message-Id: <20200123052540.6132-6-linux@roeck-us.net>
+Subject: [PATCH v3 3/8] hw/arm/exynos4210: Fix DMA initialization
+Date: Wed, 22 Jan 2020 21:25:35 -0800
+Message-Id: <20200123052540.6132-4-linux@roeck-us.net>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200123052540.6132-1-linux@roeck-us.net>
 References: <20200123052540.6132-1-linux@roeck-us.net>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::1043
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gUYZRE8vc6ID
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Hz2xA/G1uLk+
 
-After restoring a VM, serial parameters need to be updated to reflect
-restored register values. Implement a post_load function to handle this
-situation.
+First parameter to exynos4210_get_irq() is not the SPI port number,
+but the interrupt group number. Interrupt groups are 20 for mdma
+and 21 for pdma. Interrupts are not inverted. Controllers support 32
+events (pdma) or 31 events (mdma). Events must all be routed to a single
+interrupt line. Set other parameters as documented in Exynos4210 datasheet,
+section 8 (DMA controller).
 
+Fixes: 59520dc65e ("hw/arm/exynos4210: Add DMA support for the Exynos4210")
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
-v3: Added Reviewed-by: tag.
+v3: Back to 32+1 interrupts for pdma and 31+1 for mdma
 
-v2: Additional patch to implement post-load functionality
-    in exynos uart driver. Required for next patch in series.
+v2: Use interrupt combiner instead of connecting all events to a
+    single interrupt. Limit number of events per DMA channel
+    to 31 to meet qemu interrupt combiner limitations.
+    [Not sure if "assert(s->num_lines < MAX_OR_LINES);" should be
+     "assert(s->num_lines <= MAX_OR_LINES);"]
+    Introduce exynos4210_init() to handle interrupt combiner
+    initialization.
 
- hw/char/exynos4210_uart.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ hw/arm/exynos4210.c         | 51 +++++++++++++++++++++++++++++++------
+ include/hw/arm/exynos4210.h |  4 +++
+ 2 files changed, 47 insertions(+), 8 deletions(-)
 
-diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
-index fb7a3ebd09..5d48701b6d 100644
---- a/hw/char/exynos4210_uart.c
-+++ b/hw/char/exynos4210_uart.c
-@@ -522,10 +522,20 @@ static void exynos4210_uart_reset(DeviceState *dev)
-     trace_exynos_uart_rxsize(s->channel, s->rx.size);
+diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+index 77fbe1baab..7701a3fa8b 100644
+--- a/hw/arm/exynos4210.c
++++ b/hw/arm/exynos4210.c
+@@ -166,17 +166,36 @@ static uint64_t exynos4210_calc_affinity(int cpu)
+     return (0x9 << ARM_AFF1_SHIFT) | cpu;
  }
  
-+static int exynos4210_uart_post_load(void *opaque, int version_id)
-+{
-+    Exynos4210UartState *s = (Exynos4210UartState *)opaque;
+-static void pl330_create(uint32_t base, qemu_irq irq, int nreq)
++static void pl330_create(uint32_t base, qemu_or_irq *orgate, qemu_irq irq,
++                         int nreq, int nevents, int width)
+ {
+     SysBusDevice *busdev;
+     DeviceState *dev;
++    int i;
+ 
+     dev = qdev_create(NULL, "pl330");
++    qdev_prop_set_uint8(dev, "num_events", nevents);
++    qdev_prop_set_uint8(dev, "num_chnls",  8);
+     qdev_prop_set_uint8(dev, "num_periph_req",  nreq);
 +
-+    exynos4210_uart_update_parameters(s);
++    qdev_prop_set_uint8(dev, "wr_cap", 4);
++    qdev_prop_set_uint8(dev, "wr_q_dep", 8);
++    qdev_prop_set_uint8(dev, "rd_cap", 4);
++    qdev_prop_set_uint8(dev, "rd_q_dep", 8);
++    qdev_prop_set_uint8(dev, "data_width", width);
++    qdev_prop_set_uint16(dev, "data_buffer_dep", width);
+     qdev_init_nofail(dev);
+     busdev = SYS_BUS_DEVICE(dev);
+     sysbus_mmio_map(busdev, 0, base);
+-    sysbus_connect_irq(busdev, 0, irq);
 +
-+    return 0;
++    object_property_set_int(OBJECT(orgate), nevents + 1, "num-lines",
++                            &error_abort);
++    object_property_set_bool(OBJECT(orgate), true, "realized", &error_abort);
++
++    for (i = 0; i < nevents + 1; i++) {
++        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(DEVICE(orgate), i));
++    }
++    qdev_connect_gpio_out(DEVICE(orgate), 0, irq);
+ }
+ 
+ static void exynos4210_realize(DeviceState *socdev, Error **errp)
+@@ -431,12 +450,27 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
+             s->irq_table[exynos4210_get_irq(28, 3)]);
+ 
+     /*** DMA controllers ***/
+-    pl330_create(EXYNOS4210_PL330_BASE0_ADDR,
+-                 qemu_irq_invert(s->irq_table[exynos4210_get_irq(35, 1)]), 32);
+-    pl330_create(EXYNOS4210_PL330_BASE1_ADDR,
+-                 qemu_irq_invert(s->irq_table[exynos4210_get_irq(36, 1)]), 32);
+-    pl330_create(EXYNOS4210_PL330_BASE2_ADDR,
+-                 qemu_irq_invert(s->irq_table[exynos4210_get_irq(34, 1)]), 1);
++    pl330_create(EXYNOS4210_PL330_BASE0_ADDR, &s->pl330_irq_orgate[0],
++                 s->irq_table[exynos4210_get_irq(21, 0)], 32, 32, 32);
++    pl330_create(EXYNOS4210_PL330_BASE1_ADDR, &s->pl330_irq_orgate[1],
++                 s->irq_table[exynos4210_get_irq(21, 1)], 32, 32, 32);
++    pl330_create(EXYNOS4210_PL330_BASE2_ADDR, &s->pl330_irq_orgate[2],
++                 s->irq_table[exynos4210_get_irq(20, 1)], 1, 31, 64);
 +}
 +
- static const VMStateDescription vmstate_exynos4210_uart_fifo = {
-     .name = "exynos4210.uart.fifo",
-     .version_id = 1,
-     .minimum_version_id = 1,
-+    .post_load = exynos4210_uart_post_load,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(sp, Exynos4210UartFIFO),
-         VMSTATE_UINT32(rp, Exynos4210UartFIFO),
++static void exynos4210_init(Object *obj)
++{
++    Exynos4210State *s = EXYNOS4210_SOC(obj);
++    int i;
++
++    for (i = 0; i < ARRAY_SIZE(s->pl330_irq_orgate); i++) {
++        char *name = g_strdup_printf("pl330-irq-orgate%d", i);
++        qemu_or_irq *orgate = &s->pl330_irq_orgate[i];
++
++        object_initialize_child(obj, name, orgate, sizeof(*orgate),
++                                TYPE_OR_IRQ, &error_abort, NULL);
++        g_free(name);
++    }
+ }
+ 
+ static void exynos4210_class_init(ObjectClass *klass, void *data)
+@@ -450,6 +484,7 @@ static const TypeInfo exynos4210_info = {
+     .name = TYPE_EXYNOS4210_SOC,
+     .parent = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(Exynos4210State),
++    .instance_init = exynos4210_init,
+     .class_init = exynos4210_class_init,
+ };
+ 
+diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
+index f0f23b0e9b..55260394af 100644
+--- a/include/hw/arm/exynos4210.h
++++ b/include/hw/arm/exynos4210.h
+@@ -24,6 +24,7 @@
+ #ifndef EXYNOS4210_H
+ #define EXYNOS4210_H
+ 
++#include "hw/or-irq.h"
+ #include "hw/sysbus.h"
+ #include "target/arm/cpu-qom.h"
+ 
+@@ -74,6 +75,8 @@
+ 
+ #define EXYNOS4210_I2C_NUMBER               9
+ 
++#define EXYNOS4210_NUM_DMA      3
++
+ typedef struct Exynos4210Irq {
+     qemu_irq int_combiner_irq[EXYNOS4210_MAX_INT_COMBINER_IN_IRQ];
+     qemu_irq ext_combiner_irq[EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ];
+@@ -97,6 +100,7 @@ typedef struct Exynos4210State {
+     MemoryRegion boot_secondary;
+     MemoryRegion bootreg_mem;
+     I2CBus *i2c_if[EXYNOS4210_I2C_NUMBER];
++    qemu_or_irq pl330_irq_orgate[EXYNOS4210_NUM_DMA];
+ } Exynos4210State;
+ 
+ #define TYPE_EXYNOS4210_SOC "exynos4210"
 -- 
 2.17.1
 

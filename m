@@ -1,137 +1,205 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp261827lfp;
-        Fri, 24 Jan 2020 00:11:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqws/8HK0CZCD316BOikfFZDbYu6DpXk0foPF/bxw3vVhnwqFaW4Dv/I6A6mos3uDGzkI7/o
-X-Received: by 2002:a37:6352:: with SMTP id x79mr1450731qkb.349.1579853470785;
-        Fri, 24 Jan 2020 00:11:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579853470; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp667267lfp;
+        Fri, 24 Jan 2020 07:03:08 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyJHYwoSasMNUtu2Ja01XCl4P+KQ7O0GLhXBL1kWwfEIizgO3d42CNgCLc4LrXtCBWlIwyg
+X-Received: by 2002:aed:34c1:: with SMTP id x59mr2310253qtd.236.1579878188052;
+        Fri, 24 Jan 2020 07:03:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579878188; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vsvb/ZsH9dMOXXbW8RPiYvKnvFEUa8DXA10grhPFTJXP8N8nJRWQBjLeRMNHU8fRAZ
-         2OvctqSdE1tPgCYy9v/qV1qX8gkTXvJUwlH1Hu4ngrlWu0XMwh14DAdhimN6A521GEZA
-         VNsmrknzJ0bHLay0OWmdZi0pCUP+Qv7kj/MR27fq7WBX//X6pFZYSAHyRCPScXs0YlhP
-         Gv4SD9ICCNThISW+f6Sz8UpJhBuYdvYModNJIWygdxkGVVJrg2clUPH8GhGOyAajq1WW
-         rsW+NoJp0SPCJ5GpjErhQdfGeHlmUl4sGHaATeQp0YFs3ZuDHMzCQZu3mr1A3cyzhuIU
-         RYMg==
+        b=Rt/MisqyBX/Tlfc2hYf2252PmQNoJVG6BM6qGoKQqdBVflsDFKb2DA9eDoLF9j3+/N
+         KtfHLLrWnUGlYD3w0XLuLmBjPchiibqrHzgmFSHykNGVYyRJjC19MtUz+LWxkn0gQVw8
+         Ptnpgp7BMO9gcN0XF6ACoBU4km0Q+DRy2e/z5A6Oh/RUJFsNoC9TswvI3jSrc/ItWQSr
+         1LP6ESWPXkpiWndwD05idrMwKFD451hrN0Vua0prVokP0hzU2kKQguYCtAdS0YkG7kKS
+         jMdeYpF3gjrfD+tSY9soRrPrHv+pvXfI7/+MST8SqV79SQJ8KOLeHmIkOoZWKSAWUzur
+         lv5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=0Hx2u7UNLH2pgiFS6pXQKRZudiTLlIYjal3qOzorjd8=;
-        b=HPj1Q1/h7PvEX0acZHTU5Acmi0VY9j0AwuoQ+xiQyxDJqP8VLhluVTxWHUiObYPuOE
-         8NRJLt1AQ96seRmROL7RZMdd8VrHiThKGw4XIVyEPgZuNcasXeItZU2A637k5vHth0NR
-         5tlwPQPPI3hYvnZRH5nABPYwE98CzD2YniD9xyXF8zrvM0zUyX54c7qNIZ+PHWeHNzNK
-         e3npx7chlAiP3XxGdAdmbyYi8Aq36ThYsaWf3GnvXUGfzj0aALJGu6uS3QPr2TGaF3Yb
-         xFucaG+p2dqZICfRXtZMNGvq3V21ktknFDTw2O5QsUxOsTT9V/KpaPW1Wb1T0+9/Vwz8
-         frbw==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=i4imMHs7S+68SB09X0kEqcnW5AjuoMyzfNwLYVAsqUQ=;
+        b=SVtAit2YPTGo+nfCY4PMiKyHjunssXqmYQoQ/LK1fF6dcnxRAW2xxOHWIlm8gI5DDF
+         U0inu2xpoOuOGaYKrtGdHCc5hNXqf8+ghrqVxqbScoHlzqDvK6f1PSWJkI0Cc94twpqk
+         ZbDFUjWbAGdR/N8mGk5uA6Fhimz/5uWYNUxsa/DIwggmQsyr2e17FDMYzInOQxkRGnm/
+         WWAPFLEM8SfLrnVRXIObV6QmiuCCjBmZ/0PLoUHYD2DvbqBT2bncgvCT7vtaNC/OlYev
+         wQSVD711i+nVs2zF2dGCdNWkcmebQfBGppR6lcLMG2RSwct9Q4sC+QYtDBrWTYrdqZGi
+         AEGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=grYZ2Ykl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c131si3541176qkg.58.2020.01.24.00.11.10
+        by mx.google.com with ESMTPS id g12si3632458qvq.8.2020.01.24.07.03.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jan 2020 00:11:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Jan 2020 07:03:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=grYZ2Ykl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38570 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43442 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iuu3a-0002Ie-6P
-	for alex.bennee@linaro.org; Fri, 24 Jan 2020 03:11:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49147)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iv0UF-00059e-HU
+	for alex.bennee@linaro.org; Fri, 24 Jan 2020 10:03:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49274)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1iuu3R-0002IJ-U3
- for qemu-arm@nongnu.org; Fri, 24 Jan 2020 03:11:02 -0500
+ (envelope-from <salil.mehta@huawei.com>) id 1iv0TS-0004kH-6f
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2020 10:02:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1iuu3P-00082U-ES
- for qemu-arm@nongnu.org; Fri, 24 Jan 2020 03:11:00 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42982
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <salil.mehta@huawei.com>) id 1iv0TQ-0005Hx-Ub
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2020 10:02:18 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2064 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iuu3O-00080A-Ta
- for qemu-arm@nongnu.org; Fri, 24 Jan 2020 03:10:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579853458;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0Hx2u7UNLH2pgiFS6pXQKRZudiTLlIYjal3qOzorjd8=;
- b=grYZ2Ykl31qIIlCXML6kr2o69s8+P5Jh+zPO363qSpmQAHlaQVhKbwtslN9QqUCpLcYya+
- 5z4ZY4fX+thb9nKzskRs3fMhMb6Jj9w7JZqKU1cG7nLLZQMvLmYWNR4W9XDf1DhxhQDgfr
- HbcP1re7MGQjRSnIgE0xchOVDnTT4/Y=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-203-meIjkUDwMravl6EhFMqRog-1; Fri, 24 Jan 2020 03:10:56 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 05A1318A6EC2;
- Fri, 24 Jan 2020 08:10:55 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A4DB010016EB;
- Fri, 24 Jan 2020 08:10:53 +0000 (UTC)
-Date: Fri, 24 Jan 2020 09:10:51 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
-Subject: Re: [PATCH REPOST v3 16/80] arm/kzm: drop RAM size fixup
-Message-ID: <20200124091051.566db9b5@redhat.com>
-In-Reply-To: <84zhedx161.wl-Peter.Chubb@data61.csiro.au>
-References: <1579779525-20065-1-git-send-email-imammedo@redhat.com>
- <1579779525-20065-17-git-send-email-imammedo@redhat.com>
- <84zhedx161.wl-Peter.Chubb@data61.csiro.au>
+ (Exim 4.71) (envelope-from <salil.mehta@huawei.com>)
+ id 1iv0TO-0005ET-4Q; Fri, 24 Jan 2020 10:02:14 -0500
+Received: from lhreml707-cah.china.huawei.com (unknown [172.18.7.106])
+ by Forcepoint Email with ESMTP id 47B7F6D3AF6BD62E247B;
+ Fri, 24 Jan 2020 15:02:11 +0000 (GMT)
+Received: from lhreml701-chm.china.huawei.com (10.201.108.50) by
+ lhreml707-cah.china.huawei.com (10.201.108.48) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Fri, 24 Jan 2020 15:02:10 +0000
+Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
+ lhreml701-chm.china.huawei.com (10.201.108.50) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1713.5; Fri, 24 Jan 2020 15:02:10 +0000
+Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
+ lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1713.004; 
+ Fri, 24 Jan 2020 15:02:10 +0000
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: RE: [Question] Regarding containers "unattached/peripheral/anonymous"
+ - their relation with hot(un)plug of devices
+Thread-Topic: [Question] Regarding containers
+ "unattached/peripheral/anonymous" - their relation with hot(un)plug of
+ devices
+Thread-Index: AdXSpuyfn6DVS59zTi+rGkiX0i4oLAAFtBwAAADWJeA=
+Date: Fri, 24 Jan 2020 15:02:10 +0000
+Message-ID: <77dbc712482545078986adcd72567630@huawei.com>
+References: <70446b6cbf5442488a40fe809f38c3c8@huawei.com>
+ <20200124145404.1d15209e@redhat.com>
+In-Reply-To: <20200124145404.1d15209e@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.226.53]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: meIjkUDwMravl6EhFMqRog-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 185.176.76.210
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "peter.chubb@nicta.com.au" <peter.chubb@nicta.com.au>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ucYuA6y3RgKz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "mst@redhat.com" <mst@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, pbonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: N4DtOae3SNHD
 
-On Thu, 23 Jan 2020 22:23:20 +0000
-"Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au> wrote:
+> From: Igor Mammedov [mailto:imammedo@redhat.com]
+> Sent: Friday, January 24, 2020 1:54 PM
+> To: Salil Mehta <salil.mehta@huawei.com>
+>=20
+> On Fri, 24 Jan 2020 11:20:15 +0000
+> Salil Mehta <salil.mehta@huawei.com> wrote:
+>=20
+> > Hello,
+> > I am working on vCPU Hotplug feature for ARM64 and I am in mid of under=
+standing
+> > some aspect of device_add/device_del interface of the QEMU.
+> >
+> > Observations:
+> > 1. Any object initialised by qmp_device_add() gets into /machine/unatta=
+ched
+> > container. I traced the flow to code leg inside  device_set_realized()
+> > 2. I could see the reverse qmp_device_del() expects the device to be in
+> > /machine/peripheral container.
+> > 3. I could see any object initially added to unattached container did n=
+ot had
+> > their parents until object_add_property_child() was called further in t=
+he leg.
+> > which effectively meant a new property was created and property table
+> > populated and child was parented.
+> > 4. Generally, container  /machine/peripheral was being used wherever
+> > DEVICE(dev)->id was present and non-null.
+> >
+> > Question:
+> > 1. Wanted to confirm my understanding about the use of having separate
+> > containers like unattached, peripheral and anonymous.
+>=20
+> > 2. At init time all the vcpus goes under *unattached* container. Now,
+> > qmp_device_del() cannot be used to unplug them. I am wondering
+>=20
+> device is put into 'unattached' in case it wasn't assigned a parent.
+> Usually it happens when board creates device directly.
 
-> Igor> If the user provided too large a RAM size, the code used to
-> Igor> complain and trim it to the max size.  Now tht RAM is allocated by
-> Igor> generic code, that's no longer possible, so generate an error and
-> Igor> exit instead.  
-> 
-> You can add my 'reviewed-by' to this. There's one really minor typo in
-> the comment (tht->that) that you may wish to fix before the final
-> commit.
 
-Thanks,
-will do it in v4
+Sure, but if we decide that certain number(N) of vcpus are hotplugabble
+and certain subset of N (say 'n' < 'N') should be allowed to be present
+or cold-plugged at the init time then I wonder which of the following
+is correct approach:
 
-(considering that there are already fixes to
-the current version, I'll rebase and repost)
-> 
-> Reviewed-by: Peter Chubb <peter.chubb@data61.csiro.au>
-> 
+1. Bring all of N vcpus at boot time under "peripheral" container
+                                   OR
+2. Just bring subset 'n' of 'N' under "peripheral" container and rest
+    under "unattached" container? And later as and when rest of the
+    vcpus are hotplugged they should be transferred from "unattached"
+    container to "peripheral" container?
+
+
+> >    if all the hotplug devices need to go under the *peripheral* contain=
+er while
+> > they are hotplugged and during object init time as well?
+>=20
+> theoretically device_del may use QOM path (the later users can get with
+> query-hotpluggable-cpus),
+> but I think it's mostly debugging feature.
+
+
+Sure.
+
+
+> users are supposed to specify 'id' during -device/device_add if they are =
+going
+> to manage that device.
+> afterwards (like unplugging it). Then they could use that 'id' in other c=
+ommands
+> (including device_del)
+>=20
+> So 'id'-ed devices end up in 'peripheral' container.
+
+
+Sure, what if hotplugged device is removed and then added again? It looks=20
+qmp_device_add() interface will again end up calling the device_set_realize=
+d()
+which eventually would put hotplugged devices under "unattached" container?
+
+
+> > 3. I could not see any device being place under *anonymous* container d=
+uring
+> init time. What is the use of this container?
+>=20
+> if I recall it right, devices created with help of device_add but without=
+ 'id'
+> go to this container
+
+
+Any examples on top of your head where such an interface might be of use?
+
+
+Many thanks
+Salil.
+
 

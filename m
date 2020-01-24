@@ -1,219 +1,115 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp805027lfp;
-        Fri, 24 Jan 2020 09:03:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzrb3kgtfjYlAiGjsklO4KsfWRvpHooryYXDif1t2hkdK6owk8t04EMqd9Ylsuvjw2DuSHQ
-X-Received: by 2002:a0d:e155:: with SMTP id k82mr2743704ywe.168.1579885418182;
-        Fri, 24 Jan 2020 09:03:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579885418; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp836136lfp;
+        Fri, 24 Jan 2020 09:29:58 -0800 (PST)
+X-Received: by 2002:a5d:4807:: with SMTP id l7mr5695431wrq.64.1579886997973;
+        Fri, 24 Jan 2020 09:29:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579886997; cv=none;
         d=google.com; s=arc-20160816;
-        b=J1FwqamIuRk544n6CkyiRz2D8LWdknkObysQLYgPegdCWhmX0h143UiL2L7gSOYGhn
-         9+MkLJ8c3FwYaYl7di2fDxo2UUYM5RK3fCHpaw0Sl/l/9P9thnttZqGaEzNA5HDOfOFU
-         5WntKjfcpaUTVmo4I0j1DB5dbDjLVsLh/xdlGhzZb2HMVT+nsiWwqJVbOKmGd0i6sUUP
-         NtiHM7oe0MTKU3mkSM1hw1XZkz/82w+WxKUJOLwWxw2Yp/zsdCEImTYMm9mp012Wxy7o
-         DGg/A60I3yBvBZtrO7ECTD7f7qs4jA0hmH9HXaRgvQCN2XNMHZh0nFwa1+z53MQrm2T8
-         JWEg==
+        b=mLwCN9p0nTsyEViVjo+/jPwsj1EfMfKhJWeaO/ivorUs2IvROsxaCRlWWhfMzZBf3Y
+         LdtwB6Z9H5tZ5rupsafTfOBQSvMqzE54UB7+qacNmPvtjdd1K3TwWDup83eLiljhu6W+
+         h9zpolQWIK3TQCSdylB/hJoEUY3HTjGL8pPX7j5yy4w37NgkawllGibXwUv9KUW4Vi0F
+         vKfj4Q/V88r6cEeRzCI/3hzqq4RL7JKsENiHNPEZRPhSWue2x6W2h7btSuu9EHk2FWxI
+         RVE5esItziD+D573k918DxwOlDz1EHldftWEPxb+1RUiIxnYjr3RXswT/xQVAmHizk4T
+         1AFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=FTYl70o+JimXVFPX1d2Y2jssmIvhMUEHIlNkds+E2rM=;
-        b=Xdb8LGvZf/YPDRggVKITO5Fv/32ha0MMCxs3k08ykqPS+7NCqB4lqc74TOE+tNgBWg
-         AJPXj9sAF374lsbA8/AaCLXkTCamciHDNhk8W5WSRWEQankyeLHZTNAgCU9svmPqoBhk
-         h9Dns5j5NaXUUOSfnde5n1kYQ4odY89r2ub9sOaxsVv+Q57vVVxEIkwDxGzXkyv1VH1G
-         KXIZpWdAAv3kjKr4M9WndKHcTLP2NSZFL0NB6FxLXBuvkOqvqxlmEsaeL9oWBBjodYum
-         u+5CWNXNqWl4yTq8MXlfSSBMstbVwLBrjI0w2293yfqzBc0M2oZC61SU0mcertfgomf8
-         ns1Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=tb/hBOQ/Z9evM7DGTBEiJ196hd0t4e21Je7XZaNWrmU=;
+        b=W6LPNCus0DQBa4I2muEns//mpzwN7kjH/y2kfTeSu8tuoFFDO1W+NTw0HmStbq+sIa
+         nMlms8Ww3VtbuxMdZFuaQFZG4t5HvvqTcAw3jK6kqjp2E+IYWozNNUbIHsvPelXsAIWD
+         oOe+G4Lr9b+Us0KPKhzYRsMzmvtdcIVusUS/QDTaPUHl0c0QRP5CauaL1Ix82NqXA8Ep
+         ds7k2ZmQWL3FWo4mnFrkigTZZaLegq4hsDqapY1RiToZO+YH2xYATrWPqNuSYw0KE3Xm
+         1eVY2Eb/TptwtriZaCNZlIun9G/5OYQNN23AYlrGTXhwQ48ErNmHvVLPzLlzgheeEPtc
+         7IFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ra0GCArg;
-       spf=pass (google.com: domain of thuth@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
-        by mx.google.com with ESMTPS id i191si3128084ywe.263.2020.01.24.09.03.37
+       dkim=pass header.i=@linaro.org header.s=google header.b=iKF4oxnW;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id q3sor5913262wmd.1.2020.01.24.09.29.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Jan 2020 09:03:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+        (Google Transport Security);
+        Fri, 24 Jan 2020 09:29:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ra0GCArg;
-       spf=pass (google.com: domain of thuth@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1579885417;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=FTYl70o+JimXVFPX1d2Y2jssmIvhMUEHIlNkds+E2rM=;
-	b=Ra0GCArgxLvWCixl9WSdfkoQ5V3ZOSJLmN1BhlOzmObePjpHSAbseq2c6WvNpqK8yIyhBp
-	odkxZBeDcNIzcwpNmffNxbb1+nM51WHmimrSLfsrlXpb9chYmL084fY+/3qoULGEjrmbBN
-	pS8e3lJPvzyoKaiLDBWQYJMAICvubMM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-328-CugZ2v7yP7WcpAAr9uxs0g-1; Fri, 24 Jan 2020 12:03:35 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E56431083E7A;
-	Fri, 24 Jan 2020 17:03:33 +0000 (UTC)
-Received: from thuth.com (ovpn-116-156.ams2.redhat.com [10.36.116.156])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 797C584D87;
-	Fri, 24 Jan 2020 17:03:29 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Cleber Rosa <crosa@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-ppc@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH] tests/acceptance: Add boot tests for some of the QEMU advent calendar images
-Date: Fri, 24 Jan 2020 18:03:25 +0100
-Message-Id: <20200124170325.30072-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: CugZ2v7yP7WcpAAr9uxs0g-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-TUID: lKOoZqhucYSc
+       dkim=pass header.i=@linaro.org header.s=google header.b=iKF4oxnW;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=tb/hBOQ/Z9evM7DGTBEiJ196hd0t4e21Je7XZaNWrmU=;
+        b=iKF4oxnWP84MlYolKGatOyonemJkmGoaSaAr03QZ+jEFV/fPGwHDv3joyiKk8BtchE
+         MXq0aHW0nRB3CkrWaTO0CHfJ1m9GqwjyskLYnW+ZTiLRw4v1579ch1aVjpMjH0NH+pI3
+         M0i78E8p7kTSi1yar2CRqdKMI2ldgtejlHSuoZjrTboG4c3uuTTo5mfge4tiXXDIuDZ7
+         nzxa3i1nSmmtD24cDUDAQzHd7cZOQaOcKDBtT0jmRJMkBAC43XCGDsLISaY2IpURuWtP
+         VNrnD/zFHFBlfGI+l5pZWe/vpncXg+5n7iGbY0joVERzrNJ357VwbwE12QTSZEP6l1NV
+         gqMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=tb/hBOQ/Z9evM7DGTBEiJ196hd0t4e21Je7XZaNWrmU=;
+        b=ZQreDwdSFOYH7jAO62iI3dE/NunrofJnhMoZmJhJf639n6eQeXmQNesm0xywbQPX/9
+         F8FbgXPQhC8A3lok2TDw/mRHrkbXkurv3T+M21J9PZfRB0M6kJLcPbw13b5GXNuZwmDa
+         qem3VXus96DbmkRxNSLKk8wUhYWCGtpTEgLr8x/h8l9F6ZODwUNrKKDKu/DDNw8xo2Dx
+         kLTo0LKlt7kVo1XaQbdcEhPXBh4woyxDCJBbsLLCdtcRW3de2JLULh6LP6DQy4EvOJeS
+         Vqc35OoiNkjatnI9TxK90hF+RnsbCCaAdm/DDrI2lBzjGNyM1QmknMzr0iqFgD+faM3i
+         z2Jw==
+X-Gm-Message-State: APjAAAUmcZFiLeYueAbwPQyDN1POIvGMiIIfRhdioW/gwI845TGxIApj
+	usGBsWmkxQLoAJj0cGwktLWpjU0hijn81YhO
+X-Google-Smtp-Source: APXvYqzprLQgzsPoOViMeaJTy2NsMFrgToy5Mi9igaT59v6tbvyEN1q4wMHhg2cSALLFQJvdkTBpEQ==
+X-Received: by 2002:a1c:b603:: with SMTP id g3mr246049wmf.133.1579886997665;
+        Fri, 24 Jan 2020 09:29:57 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+        by smtp.gmail.com with ESMTPSA id x11sm7501504wmg.46.2020.01.24.09.29.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Jan 2020 09:29:57 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] target/arm/arm-semi: Don't let the guest close stdin/stdout/stderr
+Date: Fri, 24 Jan 2020 17:29:54 +0000
+Message-Id: <20200124172954.28481-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TUID: yLOSB3nrFWgG
 
-The 2018 edition of the QEMU advent calendar 2018 featured Linux images
-for various non-x86 machines. We can use them for a boot tests in our
-acceptance test suite.
+The guest can use the semihosting API to open a handle
+corresponding to QEMU's own stdin, stdout, or stderr.
+When the guest closes this handle, we should not
+close the underlying host stdin/stdout/stderr
+the way we would do if the handle corresponded to
+a host fd we'd opened on behalf of the guest in SYS_OPEN.
 
-Let's also make sure that we build the corresponding machines in Travis,
-and while we're there, drop the superfluous --python parameter (python3
-is now the only supported version anyway).
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- .travis.yml                            |  2 +-
- tests/acceptance/boot_linux_console.py | 96 ++++++++++++++++++++++++++
- 2 files changed, 97 insertions(+), 1 deletion(-)
+ target/arm/arm-semi.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/.travis.yml b/.travis.yml
-index 6c1038a0f1..73ca12c921 100644
---- a/.travis.yml
-+++ b/.travis.yml
-@@ -268,7 +268,7 @@ matrix:
-=20
-     # Acceptance (Functional) tests
-     - env:
--        - CONFIG=3D"--python=3D/usr/bin/python3 --target-list=3Dx86_64-sof=
-tmmu,mips-softmmu,mips64el-softmmu,aarch64-softmmu,arm-softmmu,s390x-softmm=
-u,alpha-softmmu,ppc-softmmu,ppc64-softmmu,m68k-softmmu,sparc-softmmu"
-+        - CONFIG=3D"--target-list=3Daarch64-softmmu,alpha-softmmu,arm-soft=
-mmu,m68k-softmmu,microblaze-softmmu,mips-softmmu,mips64el-softmmu,nios2-sof=
-tmmu,or1k-softmmu,ppc-softmmu,ppc64-softmmu,s390x-softmmu,sparc-softmmu,x86=
-_64-softmmu,xtensa-softmmu"
-         - TEST_CMD=3D"make check-acceptance"
-       after_script:
-         - python3 -c 'import json; r =3D json.load(open("tests/results/lat=
-est/results.json")); [print(t["logfile"]) for t in r["tests"] if t["status"=
-] not in ("PASS", "SKIP")]' | xargs cat
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot=
-_linux_console.py
-index e03add2989..f7ac2a3a59 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -584,3 +584,99 @@ class BootLinuxConsole(Test):
-         self.wait_for_console_pattern(console_pattern)
-         console_pattern =3D 'No filesystem could mount root'
-         self.wait_for_console_pattern(console_pattern)
-+
-+    def do_test_advcal_2018(self, day, tar_hash, kernel_name):
-+        tar_url =3D ('https://www.qemu-advent-calendar.org'
-+                   '/2018/download/day' + day + '.tar.xz')
-+        file_path =3D self.fetch_asset(tar_url, asset_hash=3Dtar_hash)
-+        archive.extract(file_path, self.workdir)
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel',
-+                         self.workdir + '/day' + day + '/' + kernel_name)
-+        self.vm.launch()
-+        self.wait_for_console_pattern('QEMU advent calendar')
-+
-+    def test_arm_vexpressa9(self):
-+        """
-+        :avocado: tags=3Darch:arm
-+        :avocado: tags=3Dmachine:vexpress-a9
-+        """
-+        tar_hash =3D '32b7677ce8b6f1471fb0059865f451169934245b'
-+        self.vm.add_args('-dtb', self.workdir + '/day16/vexpress-v2p-ca9.d=
-tb')
-+        self.do_test_advcal_2018('16', tar_hash, 'winter.zImage')
-+
-+    def test_m68k_mcf5208evb(self):
-+        """
-+        :avocado: tags=3Darch:m68k
-+        :avocado: tags=3Dmachine:mcf5208evb
-+        """
-+        tar_hash =3D 'ac688fd00561a2b6ce1359f9ff6aa2b98c9a570c'
-+        self.do_test_advcal_2018('07', tar_hash, 'sanity-clause.elf')
-+
-+    def test_microblaze_s3adsp1800(self):
-+        """
-+        :avocado: tags=3Darch:microblaze
-+        :avocado: tags=3Dmachine:petalogix-s3adsp1800
-+        """
-+        tar_hash =3D '08bf3e3bfb6b6c7ce1e54ab65d54e189f2caf13f'
-+        self.do_test_advcal_2018('17', tar_hash, 'ballerina.bin')
-+
-+    def test_or1k_sim(self):
-+        """
-+        :avocado: tags=3Darch:or1k
-+        :avocado: tags=3Dmachine:or1k-sim
-+        """
-+        tar_hash =3D '20334cdaf386108c530ff0badaecc955693027dd'
-+        self.do_test_advcal_2018('20', tar_hash, 'vmlinux')
-+
-+    def test_nios2_10m50(self):
-+        """
-+        :avocado: tags=3Darch:nios2
-+        :avocado: tags=3Dmachine:10m50-ghrd
-+        """
-+        tar_hash =3D 'e4251141726c412ac0407c5a6bceefbbff018918'
-+        self.do_test_advcal_2018('14', tar_hash, 'vmlinux.elf')
-+
-+    def test_ppc64_e500(self):
-+        """
-+        :avocado: tags=3Darch:ppc64
-+        :avocado: tags=3Dmachine:ppce500
-+        """
-+        tar_hash =3D '6951d86d644b302898da2fd701739c9406527fe1'
-+        self.vm.add_args('-cpu', 'e5500')
-+        self.do_test_advcal_2018('19', tar_hash, 'uImage')
-+
-+    def test_ppc_g3beige(self):
-+        """
-+        :avocado: tags=3Darch:ppc
-+        :avocado: tags=3Dmachine:g3beige
-+        """
-+        tar_hash =3D 'e0b872a5eb8fdc5bed19bd43ffe863900ebcedfc'
-+        self.vm.add_args('-M', 'graphics=3Doff')
-+        self.do_test_advcal_2018('15', tar_hash, 'invaders.elf')
-+
-+    def test_ppc_mac99(self):
-+        """
-+        :avocado: tags=3Darch:ppc
-+        :avocado: tags=3Dmachine:mac99
-+        """
-+        tar_hash =3D 'e0b872a5eb8fdc5bed19bd43ffe863900ebcedfc'
-+        self.vm.add_args('-M', 'graphics=3Doff')
-+        self.do_test_advcal_2018('15', tar_hash, 'invaders.elf')
-+
-+    def test_sparc_ss20(self):
-+        """
-+        :avocado: tags=3Darch:sparc
-+        :avocado: tags=3Dmachine:SS-20
-+        """
-+        tar_hash =3D 'b18550d5d61c7615d989a06edace051017726a9f'
-+        self.do_test_advcal_2018('11', tar_hash, 'zImage.elf')
-+
-+    def test_xtensa_lx60(self):
-+        """
-+        :avocado: tags=3Darch:xtensa
-+        :avocado: tags=3Dmachine:lx60
-+        """
-+        tar_hash =3D '49e88d9933742f0164b60839886c9739cb7a0d34'
-+        self.vm.add_args('-cpu', 'dc233c')
-+        self.do_test_advcal_2018('02', tar_hash, 'santas-sleigh-ride.elf')
---=20
-2.18.1
+diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
+index 788fe61b51a..8718fd01948 100644
+--- a/target/arm/arm-semi.c
++++ b/target/arm/arm-semi.c
+@@ -403,6 +403,15 @@ static uint32_t host_closefn(ARMCPU *cpu, GuestFD *gf)
+ {
+     CPUARMState *env = &cpu->env;
+ 
++    /*
++     * Only close the underlying host fd if it's one we opened on behalf
++     * of the guest in SYS_OPEN.
++     */
++    if (gf->hostfd == STDIN_FILENO ||
++        gf->hostfd == STDOUT_FILENO ||
++        gf->hostfd == STDERR_FILENO) {
++        return 0;
++    }
+     return set_swi_errno(env, close(gf->hostfd));
+ }
+ 
+-- 
+2.20.1

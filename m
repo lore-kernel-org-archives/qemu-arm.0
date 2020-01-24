@@ -1,128 +1,120 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp913847lfp;
-        Fri, 24 Jan 2020 10:45:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzMBZtCcmwu8NnonToRR5eBKMQvuIZhPFiOuEjk1F7AD2JVe1+tRSoBB/zI7fQwy5q9gYv3
-X-Received: by 2002:a62:5547:: with SMTP id j68mr4672924pfb.6.1579891534756;
-        Fri, 24 Jan 2020 10:45:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579891534; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp945472lfp;
+        Fri, 24 Jan 2020 11:14:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyrN9qva9KsNIwtAJ0C+63f6S0688Y9Mo4RmgXjnD8iQcga1EQqNoeZV0b2jlWHwtj9cfKL
+X-Received: by 2002:a05:6e02:5cb:: with SMTP id l11mr4348007ils.307.1579893272472;
+        Fri, 24 Jan 2020 11:14:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579893272; cv=none;
         d=google.com; s=arc-20160816;
-        b=e4mzimw1D4Amx7H4PznlYgkUs7zv4+tCP8yw4wo/w+BFxTHBPlTMxmcT0CiXsVFaSD
-         1syBCihs4iISQt10g+7xwCoOjPdLRzltlZURmmitP4C5Erj/ib4nEiwVPjG+T0fkkzZZ
-         7txsEBMIFllsZGVc7yWLLErEtD+4yGc6Gg7VsNpTHLsehY2UUQND5uPW4t3NdeqhOWHJ
-         FdO4igySCgceVID9omofdFpPd/xVFa7VbQkdcMLsybye8HjmQgzmUqsqFCFL6Phprenk
-         prMODm2fvbcMEaFRbnLQMHieFromzb5zkNQW8dixcWbTPHjGRv1fQ7f5p/wBowrEmohZ
-         EPpw==
+        b=lHPgZhPq7Cjdl/S0935QMPuR8sXMFpeTlSmqyOkeFVKNU/CptKJNWktWupqhqxNOu4
+         MeXbhERjnxGazrvobfDSpuRemc+szUB3JOAa3s/djpEKk0Ot/FNGxc6qN5A8OKYEK+Xw
+         lp4brJK3eaheDIYjrZxqjZ8aSo5loFO/1je54elPKcKeMuDhrivELbhpDvJ+WFDDO98O
+         aZidPqXH2K9dtq/297MwtG4yuLWbby5A/VBsewGT4XXys9F8yX17BTR1keFH8vg1veAC
+         kJN0JYuq6GwgkQLxRG2aTupZuTXAIBVW1OTsA+TUXsc5zaSsqSBPH9mAnRtr7Ouwf/MI
+         zPLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=12F2/VJhlgfWEy5HAAtmpr+ah+2AtwrOddo6r2dwOtU=;
-        b=Gr6dVRJbmBbYWREpq9ODXXrU0lOCTOL7YvYaS3lKVXr7Cc3uRmsd1EKHWgadfx/bE7
-         vt6Sly9wgojxxFf9xPecGnt9qeUHDeuuOko8abho46gZ85hHUle+JnZ/iKRmQtwOMZVJ
-         WsOZfH2/Vp12C58JoT+JXH+I8RHAnrOoFoxEXXzO2xap0CrjcZO+p5Ot55NB9/UprFtn
-         27LNfQvY+NhjE6C80oKvO45OgP+L/WahI0nt6onF3gL4R5/WLEeAPP/Q3YkUcdOHZkUk
-         4zZumYhCr2ZxqT51C0vPkknTC7RHzOnN1sZEsQ729+d9tq38pY2Sz1CKu3cwXV7L8O6Y
-         ZQtQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=aphHIKS+HxyX89TcvbfoeV/688kxWJiT89qFcIyE/nw=;
+        b=Sec7hGataJ1uICQHZeaPwdqXzRVw8N58vmr2wv7LOUAMjNHUPZMx7fpGSaBVVUA5Vp
+         fqpxYEz2/eOysWeTn5A1MquwH1I7lzWmayzn7l50yVLGGvTsoXKcX3jRWS2OFeVpp31V
+         dHs9xZUXcf/XjzWrzA8Fa2FRW96vI+ZxzlmFO9WcRLpL4qsZysQEsiP64HJB2eSqT/AS
+         32GCwV91VBk3eHS8S4fU8Xi2K/DVC1n191Pkl/13VDDPDDmkbm5u57lmuJwdtEOA44ly
+         dztQ+pwbXXvLAnHAiojml/8tkJghYlBuEK4Vn1qqVnOYk7ZshiyGNRALQDSYjsNr2JC/
+         p7kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=ClxRbHxF;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=ClxRbHxF;
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Return-Path: <keithp@keithp.com>
-Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id m18si270633pjn.39.2020.01.24.10.45.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Jan 2020 10:45:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=izZqo4r9;
+       spf=pass (google.com: domain of liam.merwick@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=liam.merwick@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <liam.merwick@oracle.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
+        by mx.google.com with ESMTPS id g9si5041739jaq.65.2020.01.24.11.14.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 24 Jan 2020 11:14:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of liam.merwick@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=ClxRbHxF;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=ClxRbHxF;
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id 7D0F33F2A7A5;
-	Fri, 24 Jan 2020 10:45:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1579891533; bh=RshqEZGatXEqsXZKYTF1ApW75pjoemfPpkTV4FQT3yQ=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=ClxRbHxFgxIAQEg+hZLw/L7fGTCRME5qNQLi6ulM1QGdWJMl31SSlZlPyNv41wLYC
-	 rmAGHoJJTYADxGoXO1yAwBYqR9hBwBe7VV/WwQGrClf+ZjXOZCbhuLrTCRL2ahcw+k
-	 VR4I3KbHK5f3l4lNv6C4W0e557/QrqhyV2MxM1rJ3ghrSodXhEjQ72+/pgHK8cJ010
-	 Y9wSo0HczEINJybEKQmuHhGpn8KWunNpSLOw0kpEcIk2jfL4sGPM1r1AJPe8SFAbVJ
-	 OLPymYgK5Zjiswzyf/O09RCepM+np/a/Zk7kUAfI1AZLh+tEOpdidxgX/WHlZRn5tw
-	 XQsc7l11HzDVQ==
-X-Virus-Scanned: Debian amavisd-new at keithp.com
-Received: from elaine.keithp.com ([127.0.0.1])
-	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id L2qj3kusRI9n; Fri, 24 Jan 2020 10:45:33 -0800 (PST)
-Received: from keithp.com (koto.keithp.com [10.0.0.2])
-	by elaine.keithp.com (Postfix) with ESMTPSA id 153B63F2A683;
-	Fri, 24 Jan 2020 10:45:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1579891533; bh=RshqEZGatXEqsXZKYTF1ApW75pjoemfPpkTV4FQT3yQ=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=ClxRbHxFgxIAQEg+hZLw/L7fGTCRME5qNQLi6ulM1QGdWJMl31SSlZlPyNv41wLYC
-	 rmAGHoJJTYADxGoXO1yAwBYqR9hBwBe7VV/WwQGrClf+ZjXOZCbhuLrTCRL2ahcw+k
-	 VR4I3KbHK5f3l4lNv6C4W0e557/QrqhyV2MxM1rJ3ghrSodXhEjQ72+/pgHK8cJ010
-	 Y9wSo0HczEINJybEKQmuHhGpn8KWunNpSLOw0kpEcIk2jfL4sGPM1r1AJPe8SFAbVJ
-	 OLPymYgK5Zjiswzyf/O09RCepM+np/a/Zk7kUAfI1AZLh+tEOpdidxgX/WHlZRn5tw
-	 XQsc7l11HzDVQ==
-Received: by keithp.com (Postfix, from userid 1000)
-	id EC5181582165; Fri, 24 Jan 2020 10:45:32 -0800 (PST)
-From: "Keith Packard" <keithp@keithp.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>, "open list\:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: Re: [PULL v2 11/14] semihosting: add qemu_semihosting_console_inc for SYS_READC
-In-Reply-To: <CAFEAcA-os-6iWZ-ucM-VUECyf8sn-xoANHCqJqtSyuttgZY23A@mail.gmail.com>
-References: <20200109141858.14376-1-alex.bennee@linaro.org> <20200109141858.14376-12-alex.bennee@linaro.org> <CAFEAcA-os-6iWZ-ucM-VUECyf8sn-xoANHCqJqtSyuttgZY23A@mail.gmail.com>
-Date: Fri, 24 Jan 2020 10:45:32 -0800
-Message-ID: <87wo9gy9pv.fsf@keithp.org>
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=izZqo4r9;
+       spf=pass (google.com: domain of liam.merwick@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=liam.merwick@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+	by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00OJDITf091426;
+	Fri, 24 Jan 2020 19:14:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2019-08-05;
+ bh=aphHIKS+HxyX89TcvbfoeV/688kxWJiT89qFcIyE/nw=;
+ b=izZqo4r93PTQkDv2ZuL+TUkT4sLZhxtvaavGqaOt/gyChpLQTFCesVZl9zah/AMVlNDo
+ o9ldNVaFu8z6SxLrNL+YxG1Q2pxSvXZXIQiAusoAyzEybWMeW8hJBQxC9ukjp5v2kWs0
+ 9LIpJXuVfIohrrQarxP7rba9JxtZaQAMTEJGqjV+mUYYqYrxPRImXZDRv4umeJOyRsY3
+ 4A836SzKxkd8Pwz132h8MJlQ40ukScuxAAdNAoKAe9zxUx26jrfNw7IEMk0H4wY6oCzL
+ EBANz7fBHnLitR/XB5AtK4Y2jacjy87wFMlh0fMHLCbLJFv3Ycsk+0nGYOEmcFdE8aEr JQ== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+	by aserp2120.oracle.com with ESMTP id 2xksyqtvhx-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 24 Jan 2020 19:14:30 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+	by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00OJEFXU175378;
+	Fri, 24 Jan 2020 19:14:30 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+	by aserp3030.oracle.com with ESMTP id 2xqmufn5jr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 24 Jan 2020 19:14:29 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+	by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 00OJE7GU015287;
+	Fri, 24 Jan 2020 19:14:08 GMT
+Received: from [10.175.179.249] (/10.175.179.249)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Fri, 24 Jan 2020 11:14:07 -0800
+Subject: Re: [PATCH] tests/acceptance: Add boot tests for some of the QEMU
+ advent calendar images
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+        Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
+        qemu-ppc@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+        =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+        liam.merwick@oracle.com
+References: <20200124170325.30072-1-thuth@redhat.com>
+From: Liam Merwick <liam.merwick@oracle.com>
+Message-ID: <59b4d74b-c09e-3c8a-e4ab-015ec405f545@oracle.com>
+Date: Fri, 24 Jan 2020 19:14:02 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
-X-TUID: izqYP7su1GV8
+In-Reply-To: <20200124170325.30072-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9510 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1911140001 definitions=main-2001240157
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9510 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
+ definitions=main-2001240157
+X-TUID: nGxppbtjUJYS
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+On 24/01/2020 17:03, Thomas Huth wrote:
+> The 2018 edition of the QEMU advent calendar 2018 featured Linux images
+> for various non-x86 machines. We can use them for a boot tests in our
+> acceptance test suite.
+> 
+> Let's also make sure that we build the corresponding machines in Travis,
+> and while we're there, drop the superfluous --python parameter (python3
+> is now the only supported version anyway).
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Peter Maydell <peter.maydell@linaro.org> writes:
 
-> I'm not sure what we should do with EOF, but presumably
-> we should handle it in some way.
+Reviewed-by: Liam Merwick <liam.merwick@oracle.com>
 
-There's no correct answer here, which is why the current implementation
-just ignores it. Here are a couple of options:
 
- 1. Just return whatever getchar() provides; if it returns EOF, we'll
-    pass that on to the application. Semihost-aware applications may
-    learn about this 'special' value.
-
- 2. Return some ASCII control code (0x04?) in an attempt to tell the
-    application what has happened.
-
- 3. Block forever. This would at least keep the application from
-    spinning.
-
-=2D-=20
-=2Dkeith
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl4rO0wACgkQ2yIaaQAA
-ABEocRAAl5ata2RuyXtE96rNi+RSDz3OVEoWNGGDvOscNx+F+pAmVBaoYueQtCt5
-rcwaccib5RPFPhktjQVxVRUtFj1jcQ/M7EEF0U7Rtho9RcV2O203aYBq3aQ8qPer
-tU7DvfSDZ6OiGAwTXk0QhClPOEZYlcLYWzrGyyjqbI2yvuI3Fcsy+7ZrDHpY7lvQ
-sonX66rYqdg6xVZ1LjgMDZzqv32Q95B+3BWMrkhMF2Yp3ksTTrb8L/21Oq+hwr1N
-Zw7vso6anQ3JtxKbHaezuwNLpa+jdWQ2eiX+rC3vDbCi/3ehRY1w5BDrsYXv/EGc
-AtFT9QydrnoXsjDxrVORO1pWZVFCGwOKR5dFk++59bzP/T2VxKW1wokb881QCJf2
-k0Q+SbtA+w5jfrDWZKH4TP5lGpQgk4VtGH98tRaOrEYmy5tjTP7xE3GEu5ILxo7U
-UTjzpFmSLRDnDegCXaLsuJ5/jdBZNo7sXwIn0uwgN+655VclHZLAtuEnAc6ZkNd6
-SyB+D+MV7IxuXD6AwRk20HVgBPxzguMOfnt0xvCUOT57IgBD4P7sUUBBYTZ7XAwt
-R6oTnjpi3vOIfas/CBcAXHkySTJtQSZO1G9gdPqAgtrmpEycvMDtLKxldTnPk565
-w+SY4tdaEDGWVZHK6nN6LvFsKs2U8UkjRMZ6ox8uoxJkPUV4RTo=
-=N2Tb
------END PGP SIGNATURE-----
---=-=-=--
+> ---
+>   .travis.yml                            |  2 +-
+>   tests/acceptance/boot_linux_console.py | 96 ++++++++++++++++++++++++++
+>   2 files changed, 97 insertions(+), 1 deletion(-)
+> 

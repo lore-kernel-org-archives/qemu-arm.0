@@ -1,115 +1,128 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp836136lfp;
-        Fri, 24 Jan 2020 09:29:58 -0800 (PST)
-X-Received: by 2002:a5d:4807:: with SMTP id l7mr5695431wrq.64.1579886997973;
-        Fri, 24 Jan 2020 09:29:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579886997; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp913847lfp;
+        Fri, 24 Jan 2020 10:45:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzMBZtCcmwu8NnonToRR5eBKMQvuIZhPFiOuEjk1F7AD2JVe1+tRSoBB/zI7fQwy5q9gYv3
+X-Received: by 2002:a62:5547:: with SMTP id j68mr4672924pfb.6.1579891534756;
+        Fri, 24 Jan 2020 10:45:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579891534; cv=none;
         d=google.com; s=arc-20160816;
-        b=mLwCN9p0nTsyEViVjo+/jPwsj1EfMfKhJWeaO/ivorUs2IvROsxaCRlWWhfMzZBf3Y
-         LdtwB6Z9H5tZ5rupsafTfOBQSvMqzE54UB7+qacNmPvtjdd1K3TwWDup83eLiljhu6W+
-         h9zpolQWIK3TQCSdylB/hJoEUY3HTjGL8pPX7j5yy4w37NgkawllGibXwUv9KUW4Vi0F
-         vKfj4Q/V88r6cEeRzCI/3hzqq4RL7JKsENiHNPEZRPhSWue2x6W2h7btSuu9EHk2FWxI
-         RVE5esItziD+D573k918DxwOlDz1EHldftWEPxb+1RUiIxnYjr3RXswT/xQVAmHizk4T
-         1AFg==
+        b=e4mzimw1D4Amx7H4PznlYgkUs7zv4+tCP8yw4wo/w+BFxTHBPlTMxmcT0CiXsVFaSD
+         1syBCihs4iISQt10g+7xwCoOjPdLRzltlZURmmitP4C5Erj/ib4nEiwVPjG+T0fkkzZZ
+         7txsEBMIFllsZGVc7yWLLErEtD+4yGc6Gg7VsNpTHLsehY2UUQND5uPW4t3NdeqhOWHJ
+         FdO4igySCgceVID9omofdFpPd/xVFa7VbQkdcMLsybye8HjmQgzmUqsqFCFL6Phprenk
+         prMODm2fvbcMEaFRbnLQMHieFromzb5zkNQW8dixcWbTPHjGRv1fQ7f5p/wBowrEmohZ
+         EPpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=tb/hBOQ/Z9evM7DGTBEiJ196hd0t4e21Je7XZaNWrmU=;
-        b=W6LPNCus0DQBa4I2muEns//mpzwN7kjH/y2kfTeSu8tuoFFDO1W+NTw0HmStbq+sIa
-         nMlms8Ww3VtbuxMdZFuaQFZG4t5HvvqTcAw3jK6kqjp2E+IYWozNNUbIHsvPelXsAIWD
-         oOe+G4Lr9b+Us0KPKhzYRsMzmvtdcIVusUS/QDTaPUHl0c0QRP5CauaL1Ix82NqXA8Ep
-         ds7k2ZmQWL3FWo4mnFrkigTZZaLegq4hsDqapY1RiToZO+YH2xYATrWPqNuSYw0KE3Xm
-         1eVY2Eb/TptwtriZaCNZlIun9G/5OYQNN23AYlrGTXhwQ48ErNmHvVLPzLlzgheeEPtc
-         7IFA==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=12F2/VJhlgfWEy5HAAtmpr+ah+2AtwrOddo6r2dwOtU=;
+        b=Gr6dVRJbmBbYWREpq9ODXXrU0lOCTOL7YvYaS3lKVXr7Cc3uRmsd1EKHWgadfx/bE7
+         vt6Sly9wgojxxFf9xPecGnt9qeUHDeuuOko8abho46gZ85hHUle+JnZ/iKRmQtwOMZVJ
+         WsOZfH2/Vp12C58JoT+JXH+I8RHAnrOoFoxEXXzO2xap0CrjcZO+p5Ot55NB9/UprFtn
+         27LNfQvY+NhjE6C80oKvO45OgP+L/WahI0nt6onF3gL4R5/WLEeAPP/Q3YkUcdOHZkUk
+         4zZumYhCr2ZxqT51C0vPkknTC7RHzOnN1sZEsQ729+d9tq38pY2Sz1CKu3cwXV7L8O6Y
+         ZQtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iKF4oxnW;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q3sor5913262wmd.1.2020.01.24.09.29.57
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 24 Jan 2020 09:29:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iKF4oxnW;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tb/hBOQ/Z9evM7DGTBEiJ196hd0t4e21Je7XZaNWrmU=;
-        b=iKF4oxnWP84MlYolKGatOyonemJkmGoaSaAr03QZ+jEFV/fPGwHDv3joyiKk8BtchE
-         MXq0aHW0nRB3CkrWaTO0CHfJ1m9GqwjyskLYnW+ZTiLRw4v1579ch1aVjpMjH0NH+pI3
-         M0i78E8p7kTSi1yar2CRqdKMI2ldgtejlHSuoZjrTboG4c3uuTTo5mfge4tiXXDIuDZ7
-         nzxa3i1nSmmtD24cDUDAQzHd7cZOQaOcKDBtT0jmRJMkBAC43XCGDsLISaY2IpURuWtP
-         VNrnD/zFHFBlfGI+l5pZWe/vpncXg+5n7iGbY0joVERzrNJ357VwbwE12QTSZEP6l1NV
-         gqMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tb/hBOQ/Z9evM7DGTBEiJ196hd0t4e21Je7XZaNWrmU=;
-        b=ZQreDwdSFOYH7jAO62iI3dE/NunrofJnhMoZmJhJf639n6eQeXmQNesm0xywbQPX/9
-         F8FbgXPQhC8A3lok2TDw/mRHrkbXkurv3T+M21J9PZfRB0M6kJLcPbw13b5GXNuZwmDa
-         qem3VXus96DbmkRxNSLKk8wUhYWCGtpTEgLr8x/h8l9F6ZODwUNrKKDKu/DDNw8xo2Dx
-         kLTo0LKlt7kVo1XaQbdcEhPXBh4woyxDCJBbsLLCdtcRW3de2JLULh6LP6DQy4EvOJeS
-         Vqc35OoiNkjatnI9TxK90hF+RnsbCCaAdm/DDrI2lBzjGNyM1QmknMzr0iqFgD+faM3i
-         z2Jw==
-X-Gm-Message-State: APjAAAUmcZFiLeYueAbwPQyDN1POIvGMiIIfRhdioW/gwI845TGxIApj
-	usGBsWmkxQLoAJj0cGwktLWpjU0hijn81YhO
-X-Google-Smtp-Source: APXvYqzprLQgzsPoOViMeaJTy2NsMFrgToy5Mi9igaT59v6tbvyEN1q4wMHhg2cSALLFQJvdkTBpEQ==
-X-Received: by 2002:a1c:b603:: with SMTP id g3mr246049wmf.133.1579886997665;
-        Fri, 24 Jan 2020 09:29:57 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id x11sm7501504wmg.46.2020.01.24.09.29.56
+       dkim=pass header.i=@keithp.com header.s=mail header.b=ClxRbHxF;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=ClxRbHxF;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Return-Path: <keithp@keithp.com>
+Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
+        by mx.google.com with ESMTPS id m18si270633pjn.39.2020.01.24.10.45.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Jan 2020 09:29:57 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH] target/arm/arm-semi: Don't let the guest close stdin/stdout/stderr
-Date: Fri, 24 Jan 2020 17:29:54 +0000
-Message-Id: <20200124172954.28481-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+        Fri, 24 Jan 2020 10:45:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=ClxRbHxF;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=ClxRbHxF;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Received: from localhost (localhost [127.0.0.1])
+	by elaine.keithp.com (Postfix) with ESMTP id 7D0F33F2A7A5;
+	Fri, 24 Jan 2020 10:45:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1579891533; bh=RshqEZGatXEqsXZKYTF1ApW75pjoemfPpkTV4FQT3yQ=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=ClxRbHxFgxIAQEg+hZLw/L7fGTCRME5qNQLi6ulM1QGdWJMl31SSlZlPyNv41wLYC
+	 rmAGHoJJTYADxGoXO1yAwBYqR9hBwBe7VV/WwQGrClf+ZjXOZCbhuLrTCRL2ahcw+k
+	 VR4I3KbHK5f3l4lNv6C4W0e557/QrqhyV2MxM1rJ3ghrSodXhEjQ72+/pgHK8cJ010
+	 Y9wSo0HczEINJybEKQmuHhGpn8KWunNpSLOw0kpEcIk2jfL4sGPM1r1AJPe8SFAbVJ
+	 OLPymYgK5Zjiswzyf/O09RCepM+np/a/Zk7kUAfI1AZLh+tEOpdidxgX/WHlZRn5tw
+	 XQsc7l11HzDVQ==
+X-Virus-Scanned: Debian amavisd-new at keithp.com
+Received: from elaine.keithp.com ([127.0.0.1])
+	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id L2qj3kusRI9n; Fri, 24 Jan 2020 10:45:33 -0800 (PST)
+Received: from keithp.com (koto.keithp.com [10.0.0.2])
+	by elaine.keithp.com (Postfix) with ESMTPSA id 153B63F2A683;
+	Fri, 24 Jan 2020 10:45:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1579891533; bh=RshqEZGatXEqsXZKYTF1ApW75pjoemfPpkTV4FQT3yQ=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=ClxRbHxFgxIAQEg+hZLw/L7fGTCRME5qNQLi6ulM1QGdWJMl31SSlZlPyNv41wLYC
+	 rmAGHoJJTYADxGoXO1yAwBYqR9hBwBe7VV/WwQGrClf+ZjXOZCbhuLrTCRL2ahcw+k
+	 VR4I3KbHK5f3l4lNv6C4W0e557/QrqhyV2MxM1rJ3ghrSodXhEjQ72+/pgHK8cJ010
+	 Y9wSo0HczEINJybEKQmuHhGpn8KWunNpSLOw0kpEcIk2jfL4sGPM1r1AJPe8SFAbVJ
+	 OLPymYgK5Zjiswzyf/O09RCepM+np/a/Zk7kUAfI1AZLh+tEOpdidxgX/WHlZRn5tw
+	 XQsc7l11HzDVQ==
+Received: by keithp.com (Postfix, from userid 1000)
+	id EC5181582165; Fri, 24 Jan 2020 10:45:32 -0800 (PST)
+From: "Keith Packard" <keithp@keithp.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>, "open list\:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Subject: Re: [PULL v2 11/14] semihosting: add qemu_semihosting_console_inc for SYS_READC
+In-Reply-To: <CAFEAcA-os-6iWZ-ucM-VUECyf8sn-xoANHCqJqtSyuttgZY23A@mail.gmail.com>
+References: <20200109141858.14376-1-alex.bennee@linaro.org> <20200109141858.14376-12-alex.bennee@linaro.org> <CAFEAcA-os-6iWZ-ucM-VUECyf8sn-xoANHCqJqtSyuttgZY23A@mail.gmail.com>
+Date: Fri, 24 Jan 2020 10:45:32 -0800
+Message-ID: <87wo9gy9pv.fsf@keithp.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: yLOSB3nrFWgG
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+X-TUID: izqYP7su1GV8
 
-The guest can use the semihosting API to open a handle
-corresponding to QEMU's own stdin, stdout, or stderr.
-When the guest closes this handle, we should not
-close the underlying host stdin/stdout/stderr
-the way we would do if the handle corresponded to
-a host fd we'd opened on behalf of the guest in SYS_OPEN.
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/arm-semi.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index 788fe61b51a..8718fd01948 100644
---- a/target/arm/arm-semi.c
-+++ b/target/arm/arm-semi.c
-@@ -403,6 +403,15 @@ static uint32_t host_closefn(ARMCPU *cpu, GuestFD *gf)
- {
-     CPUARMState *env = &cpu->env;
- 
-+    /*
-+     * Only close the underlying host fd if it's one we opened on behalf
-+     * of the guest in SYS_OPEN.
-+     */
-+    if (gf->hostfd == STDIN_FILENO ||
-+        gf->hostfd == STDOUT_FILENO ||
-+        gf->hostfd == STDERR_FILENO) {
-+        return 0;
-+    }
-     return set_swi_errno(env, close(gf->hostfd));
- }
- 
--- 
-2.20.1
+> I'm not sure what we should do with EOF, but presumably
+> we should handle it in some way.
+
+There's no correct answer here, which is why the current implementation
+just ignores it. Here are a couple of options:
+
+ 1. Just return whatever getchar() provides; if it returns EOF, we'll
+    pass that on to the application. Semihost-aware applications may
+    learn about this 'special' value.
+
+ 2. Return some ASCII control code (0x04?) in an attempt to tell the
+    application what has happened.
+
+ 3. Block forever. This would at least keep the application from
+    spinning.
+
+=2D-=20
+=2Dkeith
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl4rO0wACgkQ2yIaaQAA
+ABEocRAAl5ata2RuyXtE96rNi+RSDz3OVEoWNGGDvOscNx+F+pAmVBaoYueQtCt5
+rcwaccib5RPFPhktjQVxVRUtFj1jcQ/M7EEF0U7Rtho9RcV2O203aYBq3aQ8qPer
+tU7DvfSDZ6OiGAwTXk0QhClPOEZYlcLYWzrGyyjqbI2yvuI3Fcsy+7ZrDHpY7lvQ
+sonX66rYqdg6xVZ1LjgMDZzqv32Q95B+3BWMrkhMF2Yp3ksTTrb8L/21Oq+hwr1N
+Zw7vso6anQ3JtxKbHaezuwNLpa+jdWQ2eiX+rC3vDbCi/3ehRY1w5BDrsYXv/EGc
+AtFT9QydrnoXsjDxrVORO1pWZVFCGwOKR5dFk++59bzP/T2VxKW1wokb881QCJf2
+k0Q+SbtA+w5jfrDWZKH4TP5lGpQgk4VtGH98tRaOrEYmy5tjTP7xE3GEu5ILxo7U
+UTjzpFmSLRDnDegCXaLsuJ5/jdBZNo7sXwIn0uwgN+655VclHZLAtuEnAc6ZkNd6
+SyB+D+MV7IxuXD6AwRk20HVgBPxzguMOfnt0xvCUOT57IgBD4P7sUUBBYTZ7XAwt
+R6oTnjpi3vOIfas/CBcAXHkySTJtQSZO1G9gdPqAgtrmpEycvMDtLKxldTnPk565
+w+SY4tdaEDGWVZHK6nN6LvFsKs2U8UkjRMZ6ox8uoxJkPUV4RTo=
+=N2Tb
+-----END PGP SIGNATURE-----
+--=-=-=--

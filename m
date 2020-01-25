@@ -1,95 +1,101 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp912943lfp;
-        Fri, 24 Jan 2020 10:44:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzGxTA3q1lIkkSXXDlYydw0ffVtHB7tspDhsRM+fR35f3J/xT1ynjQno1i5FH+AQRl0GJgY
-X-Received: by 2002:a05:620a:14a2:: with SMTP id x2mr4200340qkj.36.1579891479965;
-        Fri, 24 Jan 2020 10:44:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579891479; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1967868lfp;
+        Sat, 25 Jan 2020 09:21:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxODm5pjaDL37zpwGZUnnLS7GlwwGUr1gjOZblgyfwZtDjHWCoejb8VZoiLYZxg0oLKW66a
+X-Received: by 2002:ac8:4513:: with SMTP id q19mr8269321qtn.253.1579972892627;
+        Sat, 25 Jan 2020 09:21:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579972892; cv=none;
         d=google.com; s=arc-20160816;
-        b=SS4kV1m90p6iHL8zruYzTOwoJjPX0NvTno4fq++AL5QxfP9Xe0vDRnOmZgMIuN/1pO
-         teSIVrcS8r+p+MjJeKJ46hTunDEjFiPvjncO6ESiqz1ZROKHjvIS5/u7S+v7M+0jzZeU
-         rfk2ba8b/m/yQjMKutgfEXzX/699aTkN0lHCMtbBGLf4Q8paGtXUZo/CoEQpBdtlufff
-         6GDksQjaDwEksMB8sCiaRz4+o0FOOBL/Vx4tQi+W/MlbdaZcy2Zf5KFfF6AR6j4PVOz3
-         yWdrgchNP3ETdClzjkt8mInujVJMx3nTEHVvqu2pMvSfbcrRUlhmDuO1fOS4Dkvp8WWP
-         d0uA==
+        b=ObC3n5QyTjo3N7PgIq7ryd5OEt/c4F5f4NWCZJP1/olOthcTRXPYpMZW8EAeOYnr+V
+         deDKBmbC+YvAKTv3saQzxRZEQKLHMD93c4KXXChVpnbw9CNXogk5Zdgp3xLCEbGqlDvH
+         go+NyamijX3uL/9OnUHokQtjaHzHCdbszW6hy6oS04EtDSRFkgRToX2djUOvDs9iRYyB
+         sr4T9HPgfPl8RKS+sPKGswVkWgcCQHOjsvXFNhs+2COARfG6KOj/IL6feeRypAcv+R+4
+         ntXG4VZE5kzaAcUDrxhlgCuMvVCXVLAEZHk0dTcJ/+L5YH0govscb3DhV5jpUIjA7Znt
+         S6Qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=179+1oyUIzK0qJXBb3q+LCYEpLYnaEHLH7fii/t33TE=;
-        b=Kg/BJs0+tSk1+zAqkD9q6STiwZWNKo8sUZAE0Q7GVUwD/EUOmMdIJ/pxYfbJUsuHNn
-         bAddzLiCTGW1bmzqrLDKnAGcdjRHOoCeBxtzs6MCvUG3VcbRkWWGN2SYuvQ4H8f+qbcY
-         p1TWyrOjU5YfU8AxLICT+yEn2WSDqQVU6GNwC4i4dWZDgcWaH58+pEH4NLhEWkhp+QqE
-         TrQweqOAXg+m4AzWZstfGSGSXex2sQwG4ck93za2j6QN4R4PtjBGEU0MxVbrHzlxZVmt
-         Jc+ycSK7+iCyFiSV7qfMhNd7vnbh8T57zQxTiO5casyNTTjESYlYt4jitndr9U9Jac7h
-         FjDg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=pNgLxLk2625oZeDAzOkowJF+BXrSL1Vo5ZqvHzz8lgE=;
+        b=m2ydBJUBdFzsvmAh5lxDgixXp3z8+tBvUZ42NU+zU6ZnyBS1PIxB8foFnP/x7Puuur
+         z6bM8TFaTcy8Jxe0b63y9TqWwswudBtNIEk95xHWkypyvSmrrArViAb0wE61PQAq0iDn
+         D7Pz2xVn5NgQ+WdMsiwwX8ZCo6LQ1xSqG/SN3lnAhzzGs3Ya4Qw13ywu1U7+nzkG016g
+         gukEljgaSvVefCHKadjA18DP/67erbQRyaeyGbc6YANnoYxXHTs/Rz8w0n7v/0A+OaYL
+         SEjQQ2PvtEsHXdjH1xCxiEJDv4OeQzeURK4sSgdsyvjkYYSaf0rIyFTMwZUQV67/mIly
+         SpFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AHwr8cgy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8si4305141qth.81.2020.01.24.10.44.39
+        by mx.google.com with ESMTPS id c39si6710434qtb.52.2020.01.25.09.21.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jan 2020 10:44:39 -0800 (PST)
+        Sat, 25 Jan 2020 09:21:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46428 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AHwr8cgy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55694 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iv3wd-0005xh-Cy
-	for alex.bennee@linaro.org; Fri, 24 Jan 2020 13:44:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44772)
+	id 1ivP7j-0007xq-Vq
+	for alex.bennee@linaro.org; Sat, 25 Jan 2020 12:21:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37902)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <salil.mehta@huawei.com>) id 1iv3wO-0005xV-5y
- for qemu-arm@nongnu.org; Fri, 24 Jan 2020 13:44:26 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1ivP7J-0007v6-EY
+ for qemu-arm@nongnu.org; Sat, 25 Jan 2020 12:21:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <salil.mehta@huawei.com>) id 1iv3wM-0003yT-1i
- for qemu-arm@nongnu.org; Fri, 24 Jan 2020 13:44:24 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2065 helo=huawei.com)
+ (envelope-from <eric.auger@redhat.com>) id 1ivP7I-0004uu-2q
+ for qemu-arm@nongnu.org; Sat, 25 Jan 2020 12:21:05 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:27910
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <salil.mehta@huawei.com>)
- id 1iv3wL-0003wL-P7; Fri, 24 Jan 2020 13:44:22 -0500
-Received: from LHREML712-CAH.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id AB62C1C6AB996B753434;
- Fri, 24 Jan 2020 18:44:17 +0000 (GMT)
-Received: from lhreml706-chm.china.huawei.com (10.201.108.55) by
- LHREML712-CAH.china.huawei.com (10.201.108.35) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Fri, 24 Jan 2020 18:44:17 +0000
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- lhreml706-chm.china.huawei.com (10.201.108.55) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Fri, 24 Jan 2020 18:44:16 +0000
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1713.004; 
- Fri, 24 Jan 2020 18:44:16 +0000
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: RE: [Question] Regarding containers "unattached/peripheral/anonymous"
- - their relation with hot(un)plug of devices
-Thread-Topic: [Question] Regarding containers
- "unattached/peripheral/anonymous" - their relation with hot(un)plug of
- devices
-Thread-Index: AdXSpuyfn6DVS59zTi+rGkiX0i4oLAAFtBwAAADWJeAAA8wjgAACyCnA
-Date: Fri, 24 Jan 2020 18:44:16 +0000
-Message-ID: <b8fccc99d7344b2485c0db76886af9c8@huawei.com>
-References: <70446b6cbf5442488a40fe809f38c3c8@huawei.com>
- <20200124145404.1d15209e@redhat.com>
- <77dbc712482545078986adcd72567630@huawei.com>
- <20200124170645.3d794ac6@redhat.com>
-In-Reply-To: <20200124170645.3d794ac6@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.226.53]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1ivP7H-0004uM-UY
+ for qemu-arm@nongnu.org; Sat, 25 Jan 2020 12:21:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579972863;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pNgLxLk2625oZeDAzOkowJF+BXrSL1Vo5ZqvHzz8lgE=;
+ b=AHwr8cgydRHJNDg1Yo6YsaaR7aXHRkqtPHubrY3A435dc6rEFM5TvaLIiGJuC0tlfeJF+T
+ yr80UmHUGsRWrC8vMSTPj69Q+OvSxy+5LYA7PSolOUtaHSiYyDf6jqcZBXCh8MMqCR6J2P
+ hgG7aHrEA2amDvxQbuHYEvcsDJw7nZs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-157-CmFQjkZrN8G9KLuyc-Sawg-1; Sat, 25 Jan 2020 12:21:02 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D328713E9;
+ Sat, 25 Jan 2020 17:21:00 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 506E886E19;
+ Sat, 25 Jan 2020 17:20:54 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, jean-philippe@linaro.org,
+ dgilbert@redhat.com, quintela@redhat.com, mst@redhat.com, peterx@redhat.com
+Subject: [PATCH v13 05/10] virtio-iommu: Implement translate
+Date: Sat, 25 Jan 2020 18:19:50 +0100
+Message-Id: <20200125171955.12825-6-eric.auger@redhat.com>
+In-Reply-To: <20200125171955.12825-1-eric.auger@redhat.com>
+References: <20200125171955.12825-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: CmFQjkZrN8G9KLuyc-Sawg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -101,263 +107,142 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "mst@redhat.com" <mst@redhat.com>, Marc Zyngier <maz@kernel.org>,
- Will Deacon <will.deacon@arm.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, pbonzini <pbonzini@redhat.com>
+Cc: kevin.tian@intel.com, bharatb.linux@gmail.com, tnowicki@marvell.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IlJFFGVIXeb3
+X-TUID: RIfZqqrPvH66
 
-> From: Igor Mammedov [mailto:imammedo@redhat.com]
-> Sent: Friday, January 24, 2020 4:07 PM
->=20
-> On Fri, 24 Jan 2020 15:02:10 +0000
-> Salil Mehta <salil.mehta@huawei.com> wrote:
->=20
-> > > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > > Sent: Friday, January 24, 2020 1:54 PM
-> > > To: Salil Mehta <salil.mehta@huawei.com>
-> > >
-> > > On Fri, 24 Jan 2020 11:20:15 +0000
-> > > Salil Mehta <salil.mehta@huawei.com> wrote:
-> > >
-> > > > Hello,
-> > > > I am working on vCPU Hotplug feature for ARM64 and I am in mid of u=
-nderstanding
-> > > > some aspect of device_add/device_del interface of the QEMU.
-> > > >
-> > > > Observations:
-> > > > 1. Any object initialised by qmp_device_add() gets into /machine/un=
-attached
-> > > > container. I traced the flow to code leg inside  device_set_realize=
-d()
-> > > > 2. I could see the reverse qmp_device_del() expects the device to b=
-e in
-> > > > /machine/peripheral container.
-> > > > 3. I could see any object initially added to unattached container d=
-id not had
-> > > > their parents until object_add_property_child() was called further =
-in the leg.
-> > > > which effectively meant a new property was created and property tab=
-le
-> > > > populated and child was parented.
-> > > > 4. Generally, container  /machine/peripheral was being used whereve=
-r
-> > > > DEVICE(dev)->id was present and non-null.
-> > > >
-> > > > Question:
-> > > > 1. Wanted to confirm my understanding about the use of having separ=
-ate
-> > > > containers like unattached, peripheral and anonymous.
-> > >
-> > > > 2. At init time all the vcpus goes under *unattached* container. No=
-w,
-> > > > qmp_device_del() cannot be used to unplug them. I am wondering
-> > >
-> > > device is put into 'unattached' in case it wasn't assigned a parent.
-> > > Usually it happens when board creates device directly.
-> >
-> >
-> > Sure, but if we decide that certain number(N) of vcpus are hotplugabble
-> > and certain subset of N (say 'n' < 'N') should be allowed to be present
-> > or cold-plugged at the init time then I wonder which of the following
-> > is correct approach:
-> >
-> > 1. Bring all of N vcpus at boot time under "peripheral" container
-> >                                    OR
-> > 2. Just bring subset 'n' of 'N' under "peripheral" container and rest
-> >     under "unattached" container? And later as and when rest of the
-> >     vcpus are hotplugged they should be transferred from "unattached"
-> >     container to "peripheral" container?
->=20
-> issue with that is that to put device into "peripheral" container,
-> 'the user' must provide 'id'. (currently QEMU isn't able to do it on its =
-own
-> [1])
->=20
-> But it doesn't mean that cold-plugged CPUs can't be unpluged.
-> What current users could do is start QEMU like this (simplified version):
->=20
->  $QEMU -smp 1,maxcpus=3DN -device foo-cpu-type,id=3DCPU00 -device
-> foo-cpu-type,id=3DCPU01 ...
->=20
-> i.e. 1st CPU is not manageable due to lack if 'id' and is created by boar=
-d code,
-> the rest have 'id' and could be managed.
+This patch implements the translate callback
 
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-I understand, that we can somehow assign ids from the QMP interface but
-above will not push vcpus into "peripheral" container. They will appear
-in "unattached" container but with specified names and as-far-as I can
-see in the code 'device_del' can only delete objects/devices from the
-'peripheral' container?
+---
 
-Plus, having those many ids specified for over large number of vcpus
-does not looks very practical solution. We need interface like auto
-Generation of ids even at the boot time. I could see from the link you
-have shared that it is already being used by ID_BLOCK subsystem. Can we
-create a new subsystem for cpus under this and do the auto Generation
-of vcpu ids as well?
+v11 -> v12:
+- Added Jean's R-b
+- s/qemu_log_mask/error_report_once
 
+v10 -> v11:
+- take into account the new value struct and use
+  g_tree_lookup_extended
+- switched to error_report_once
 
-> Question is:
->   why you are looking into 'what container' is used for CPUs?
+v6 -> v7:
+- implemented bypass-mode
 
+v5 -> v6:
+- replace error_report by qemu_log_mask
 
-Idea is to be able to use 'device_del' interface to unplug vcpus
-both for the cold-plugged and hot-plugged cases using the standard
-'device_add' interface.
+v4 -> v5:
+- check the device domain is not NULL
+- s/printf/error_report
+- set flags to IOMMU_NONE in case of all translation faults
+---
+ hw/virtio/trace-events   |  1 +
+ hw/virtio/virtio-iommu.c | 60 +++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 60 insertions(+), 1 deletion(-)
 
-Plus, there is another unique requirement specifically for realizing
-vcpu hotplug for ARM64.
+diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+index 22162d6583..095aa8b509 100644
+--- a/hw/virtio/trace-events
++++ b/hw/virtio/trace-events
+@@ -71,3 +71,4 @@ virtio_iommu_get_endpoint(uint32_t ep_id) "Alloc endpoint=
+=3D%d"
+ virtio_iommu_put_endpoint(uint32_t ep_id) "Free endpoint=3D%d"
+ virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=3D%d"
+ virtio_iommu_put_domain(uint32_t domain_id) "Free domain=3D%d"
++virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint32_=
+t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=3D%d"
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index e1e0c69473..cc0715284f 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -477,19 +477,77 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemo=
+ryRegion *mr, hwaddr addr,
+                                             int iommu_idx)
+ {
+     IOMMUDevice *sdev =3D container_of(mr, IOMMUDevice, iommu_mr);
++    VirtIOIOMMUInterval interval, *mapping_key;
++    VirtIOIOMMUMapping *mapping_value;
++    VirtIOIOMMU *s =3D sdev->viommu;
++    VirtIOIOMMUEndpoint *ep;
++    bool bypass_allowed;
+     uint32_t sid;
++    bool found;
++
++    interval.low =3D addr;
++    interval.high =3D addr + 1;
+=20
+     IOMMUTLBEntry entry =3D {
+         .target_as =3D &address_space_memory,
+         .iova =3D addr,
+         .translated_addr =3D addr,
+-        .addr_mask =3D ~(hwaddr)0,
++        .addr_mask =3D (1 << ctz32(s->config.page_size_mask)) - 1,
+         .perm =3D IOMMU_NONE,
+     };
+=20
++    bypass_allowed =3D virtio_vdev_has_feature(&s->parent_obj,
++                                             VIRTIO_IOMMU_F_BYPASS);
++
+     sid =3D virtio_iommu_get_bdf(sdev);
+=20
+     trace_virtio_iommu_translate(mr->parent_obj.name, sid, addr, flag);
++    qemu_mutex_lock(&s->mutex);
++
++    ep =3D g_tree_lookup(s->endpoints, GUINT_TO_POINTER(sid));
++    if (!ep) {
++        if (!bypass_allowed) {
++            error_report_once("%s sid=3D%d is not known!!", __func__, sid)=
+;
++        } else {
++            entry.perm =3D flag;
++        }
++        goto unlock;
++    }
++
++    if (!ep->domain) {
++        if (!bypass_allowed) {
++            error_report_once("%s %02x:%02x.%01x not attached to any domai=
+n",
++                              __func__, PCI_BUS_NUM(sid),
++                              PCI_SLOT(sid), PCI_FUNC(sid));
++        } else {
++            entry.perm =3D flag;
++        }
++        goto unlock;
++    }
++
++    found =3D g_tree_lookup_extended(ep->domain->mappings, (gpointer)(&int=
+erval),
++                                   (void **)&mapping_key,
++                                   (void **)&mapping_value);
++    if (!found) {
++        error_report_once("%s no mapping for 0x%"PRIx64" for sid=3D%d",
++                          __func__, addr, sid);
++        goto unlock;
++    }
++
++    if (((flag & IOMMU_RO) &&
++            !(mapping_value->flags & VIRTIO_IOMMU_MAP_F_READ)) ||
++        ((flag & IOMMU_WO) &&
++            !(mapping_value->flags & VIRTIO_IOMMU_MAP_F_WRITE))) {
++        error_report_once("%s permission error on 0x%"PRIx64"(%d): allowed=
+=3D%d",
++                          __func__, addr, flag, mapping_value->flags);
++        goto unlock;
++    }
++    entry.translated_addr =3D addr - mapping_key->low + mapping_value->phy=
+s_addr;
++    entry.perm =3D flag;
++    trace_virtio_iommu_translate_out(addr, entry.translated_addr, sid);
++
++unlock:
++    qemu_mutex_unlock(&s->mutex);
+     return entry;
+ }
+=20
+--=20
+2.20.1
 
-Summary:
-Right now ARM architecture does not allows reinitializing the GIC
-after VM has booted. Therefore, we are planning to pre-size the GIC
-interfaces at init time by initializing all of the possible vcpus
-and keep them in 'realized' but 'unavailable' state to the Guest
-VM. They shall be made available as-and-when vcpus are hot-plugged
-later-on. Therefore, current efforts are to be able to plug and
-unplug from the qemu QOM without destroying the existing state of
-the devices/objects representing vcpus. These all possible vcpus
-shall be created once at the boot time of the VM. The vcpus which
-are not available to the Guest VM can be Parked.=20
-
-Once the vcpus are hot-(un)plug'ged only the (pre-)plug/unplug(-request)
-interfaces are used to convey this even information to the Guest
-VM.
-
-I have tested this solution and it works but I wanted to make sure
-that I am not doing anything which breaks any of the existing Qemu
-QOM interfaces and basic fundamental idea behind being able to attach
-and detach from the Qemu QOM is okay?
-
-Any suggestion are welcome in this regard?
-
-
-NOTE: I plan to share the patches with the community which includes
-both the changes of the Linux Kernel and the QEMU in near future.
-
-
-
-> 1) here is what I could find on IDs topic
->    https://lists.gnu.org/archive/html/qemu-block/2015-09/msg00011.html
->=20
-> > > >    if all the hotplug devices need to go under the *peripheral* con=
-tainer while
-> > > > they are hotplugged and during object init time as well?
-> > >
-> > > theoretically device_del may use QOM path (the later users can get wi=
-th
-> > > query-hotpluggable-cpus),
-> > > but I think it's mostly debugging feature.
-> >
-> >
-> > Sure.
-> >
-> >
-> > > users are supposed to specify 'id' during -device/device_add if they =
-are going
-> > > to manage that device.
-> > > afterwards (like unplugging it). Then they could use that 'id' in oth=
-er commands
-> > > (including device_del)
-> > >
-> > > So 'id'-ed devices end up in 'peripheral' container.
-> >
-> >
-> > Sure, what if hotplugged device is removed and then added again? It loo=
-ks
-> > qmp_device_add() interface will again end up calling the device_set_rea=
-lized()
-> > which eventually would put hotplugged devices under "unattached" contai=
-ner?
->=20
-> it won't, see call chain:
->=20
->   qmp_device_add()
->       -> qdev_device_add()
->           -> qdev_set_id()
-
-Ok, sure. I did see the qdev_set_id() interface. Infact, earlier I was actu=
-ally
-trying to play with it by making it more generic and adding even the 'unatt=
-ached'
-container handling to it(which is missing right now) and calling it inside =
-the
-device_set_realized()  instead of below code:
-
-        if (!obj->parent) {
-            gchar *name =3D g_strdup_printf("device[%d]", unattached_count+=
-+);
-
-            object_property_add_child(container_get(qdev_get_machine(),
-                                                    "/unattached"),
-                                      name, obj, &error_abort);
-            unattached_parent =3D true;
-            g_free(name);
-        }
-
-Idea of above dabbling was to have common interface for 'unattached' contai=
-ner
-and call it from virt.c from machvirt_init() where possible vcpus are being
-created. Force them to be located either inside 'unttached' or 'peripheral'
-container akin to the example you had given.
-
-If we look at qdev_device_add() function, after setting dev->id using
-qdev_set_id() (which would also result in parenting of an object under
-'peripheral' container), it calls the function to 'realize' the device/obje=
-ct
-which would end up in hitting above shared code excerpt and now because
-it will have the parent already set, the object won't go into 'unattached'
-container.
-
-Currently, later cannot be controlled for the cold-lugged vcpus. Therefore,
-before this discussion my initial thought process was to either make
-qdev_set_id() universal (i.e. include handling for all type of containers
-unattached/peripheral/anonymous in qdev_set_id()). Then call it from
-machvirt_init() just before the vcpus have been 'realized' so that
-cold-plugged cpus could get into 'peripheral' container. This would help
-in hot-unplugging using the standard 'device_del' interface.
-
-Earlier, I was not sure if there was any special significance to the
-'unattached' container - which by the discussion it looks there is not
-any and we could actually choose to place all of the cold-plugged vpus
-as well in the 'peripheral' container. Please correct me here if I
-have mis-understood anything here?
-
-Now, assuming we are allowed to push all of the vcpus in the 'peripheral'
-container then I could simply call unmodified qdev_set_id() just before
-the 'realization' of the cold-plugged vcpus. And maybe we could generate
-the cpus-ids using auto generate function which has been mentioned in the
-link you shared and just like it is being done for the block devices.
-
-Thoughts?
-
-
-> > > > 3. I could not see any device being place under *anonymous* contain=
-er during
-> > > init time. What is the use of this container?
-> > >
-> > > if I recall it right, devices created with help of device_add but wit=
-hout
-> 'id'
-> > > go to this container
-> >
-> >
-> > Any examples on top of your head where such an interface might be of us=
-e?
->=20
-> ex:
-> one could use -device/device_add without any ids if such devices aren't p=
-lanned
-> to be unplugged during runtime or for unpluggable devices
-
-Ok. Thanks!
-
-
-Best Regards
-Salil

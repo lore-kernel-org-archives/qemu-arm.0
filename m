@@ -1,127 +1,130 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp522452lfp;
-        Fri, 24 Jan 2020 04:58:52 -0800 (PST)
-X-Received: by 2002:aca:d6c4:: with SMTP id n187mr1897778oig.29.1579870732212;
-        Fri, 24 Jan 2020 04:58:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579870732; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3830879lfp;
+        Mon, 27 Jan 2020 06:41:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxqn2QKdpmfQSlPGQ4LBNrQlcXG4R52WtRnGTEoVPYMKkSUUJZ0lqV+Yn+7MYC9s5DTe+aQ
+X-Received: by 2002:a17:906:7806:: with SMTP id u6mr14071046ejm.200.1580136104746;
+        Mon, 27 Jan 2020 06:41:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580136104; cv=none;
         d=google.com; s=arc-20160816;
-        b=LIC88+UGHJV7rHs0KptF+gYpZbodIIU40ZZoHsD0hIvRyRCFhCpbTC3PI+83hH3gF+
-         A2HhXWc0/ORX+hkQuSECTXAn9TqzqYiDXyrKApVDDwCWFOW9+WS6nRNKrkbrQuq9x9Ys
-         vX2Klce/3Am61u5bot8AjmyHsDgp7D+1WsN+qFOtCCJS916iuIqbxi4BcRKQdSJpuJ7o
-         2VxHdRqAVL2edZVSvAicpYKrWyU3ilIiXcLfUhnbY+UAHJkjFGi//EHXBxERgbjj3dcg
-         +PT6BSww2FAhIZGxnVkLgNFYmRmPO6e8U8XIR0tZceikuuW2khEkUryGfS9eDufz5vTb
-         NO0w==
+        b=OhWcqyXst3qlmbPJnKBoZfU5diPL3NvJM7RQq8VyTpcpbfzbOQR3pPe8ltkRvMOOX1
+         ysGTrB+HOZhkIIfFu52AaaT4IsHZxy7uo27l0MgrH6kD+OnzIDwqcg5QWqlq29oYNoMf
+         xu2NnIcVvGCXEgrNfPLfpvaPSviVQXC3yzTGHShHyqEHuko21E3vVLbmCw41jIE8FIOq
+         aSyxBYD3OnN5wp9xFFdhNNwimKJ3fQmAFfqFAh1okwFX9cmsobiNtc2ybRlvm7IPjZAh
+         tQPnCkeqxN0drd49Mox+nNqscK69u4cXIwUSidaEm8c0aEt89KQyUjiKioKZ7XvsqEGE
+         rIeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=yP7QfpEU56++xnOHFKaFalevPO1YD+HjvVgBb9MUpRQ=;
-        b=qlgN4SVpoz9iOiYywm0uSNO9J9mtr6gy1ERjjxCxG8tyoWQs6A5TR7GznpUhUx14pB
-         iH+0X2WD+wHtaDQO5Xl04CWvpohmHPbPdIYOfzoszzXSCW2Yvz5G/EKjp0wYiRGR7+W+
-         f9qhUu3Ob13qBxbyFP266WCqAMj/HScvyD8K8BPhVKuupydmLXVeDsveVZxbv/phWq2o
-         2coj6fhJJUfInt9u9Br4JD3jrkPrd4v3eQ1yPAxBd8aMsKjkab685lC4NWkvP5i/ioO5
-         NcTYOkhoZdCGzzVGDmtj8Hkk9VUcY3mBbLlrOqlE749mFdJHj62Z/4K5ADnemmwaELbZ
-         816Q==
+        h=content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=jxMld//p9nIoSEIK1/s/JmrCXmNJEodd+FZJ21SJ4XI=;
+        b=ZKRwnevgANdPSDZatNzS7uCyXfmGmxPMYJIUxJsNKsp+dx6Kg0c6m05B49CcmLujPT
+         OXM8HqN3hNg2RsWRjUoJIKVWxAnmlvRQz7k0F7rmkwJheBWyBCrxorumTP+vwQDBm/2Q
+         qCfctm5VzvLdK/eYWtoWefFL0SFuqO3Q1vaWO6lDtOwvooam73QNY7duonkS+oDg2Rqh
+         v7mTQEqaOYnUcSizNJVb8E1ftcL0Kosj5Qss3PDPS1wPo5zZ01YpIn7/RqcTEQWK7OIf
+         DLvnV5+ptlg3m9x0dyQjHquH4EYhjjGwxN2yDMe8jkxlsYRCELPAu94FL7nm/aQGl+bp
+         IKiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UL8Ko1a4;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m5sor2849861oif.109.2020.01.24.04.58.52
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=frZv65WA;
+       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id g3si7956163edu.96.2020.01.27.06.41.44
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 24 Jan 2020 04:58:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 27 Jan 2020 06:41:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UL8Ko1a4;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=yP7QfpEU56++xnOHFKaFalevPO1YD+HjvVgBb9MUpRQ=;
-        b=UL8Ko1a4UWgJ28hHas9TUNXZOwqkzBdeB31mJ3+JCQUl4kO5UzN4PL6biEXH6KIPKv
-         0OuFxDFKxgZ0YbS3PApf+Et1wMZafhgQAPP43v3d9Ap3WbiGwIetW7wwSO87X1RpX522
-         FYbdCgo8FlLbv6PVARLg82/ZBmmPSzca8Cs21zZ49OEqNIZOeOYMtmLz95aER6IgAIDm
-         6Mq4Vu2xTNvG47/Gw2YgN+3+thvARdRdUuJdAI4eQXBSKYojxu6JVHaqYHmdzjQDhZ9x
-         LCqBf6jcG7GR5Gx95SABNcZKGiYuKlq0CnJMvEGVKzH75sJP48XCHUWNL++aIu5SGsB2
-         BSlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=yP7QfpEU56++xnOHFKaFalevPO1YD+HjvVgBb9MUpRQ=;
-        b=A5r8i8UZdHL3oJNsVF99UQkW5QvqAqvks3CwAS2AD609OCubPPA5cJJoUCk64+6dhN
-         FQ6MrIW77wqzfx5RAASpD9IUMiqJMwjx+gQ2OcONVbIwNOorHSn1bI1XiXYUFBs8alqM
-         ASikMA1XqWgNbgwFMdgxlI7cvXRqb8Pi9OqYYE7E6qPXLzjOF9nb5B6PkvJF6/Gkezlt
-         YsRlQzLeBaj91GWaXJkk7vqdt0ecmVkKVYjZ4LL+f0YTrw6UK2/LBsMXA9fVWS8cVdnZ
-         oqPejILqVL5PPxrGw6fQo+Ymuu1VLyxIeGDjxloNV4rkdANJS7WaRbwoBF+xmOlWv7MD
-         YYFg==
-X-Gm-Message-State: APjAAAXZsmkXYHpQ23yWIn4nqGtAeDwMc5n7twy+YmLCnGNJAW4AfT5u
-	x3MVVU5RrlsV6HoAYZwrUQ57iCjtJsUMs0gxtGZKUuce0VnbNg==
-X-Google-Smtp-Source: APXvYqwodPgS+HQq5M1jDaTFVhF5wLpX1q/kLblH3tZm4gMFplIymd168LH9Z/R4fWbdtB/luuoHMrSPHW68dYsRNAs=
-X-Received: by 2002:aca:570d:: with SMTP id l13mr1861985oib.146.1579870731489;
- Fri, 24 Jan 2020 04:58:51 -0800 (PST)
-MIME-Version: 1.0
-References: <20200109141858.14376-1-alex.bennee@linaro.org> <20200109141858.14376-12-alex.bennee@linaro.org>
-In-Reply-To: <20200109141858.14376-12-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Jan 2020 12:58:40 +0000
-Message-ID: <CAFEAcA-os-6iWZ-ucM-VUECyf8sn-xoANHCqJqtSyuttgZY23A@mail.gmail.com>
-Subject: Re: [PULL v2 11/14] semihosting: add qemu_semihosting_console_inc for SYS_READC
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Keith Packard <keithp@keithp.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
-	Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>, 
-	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=frZv65WA;
+       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1580136103;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=jxMld//p9nIoSEIK1/s/JmrCXmNJEodd+FZJ21SJ4XI=;
+	b=frZv65WAyAcL/uHFGuEfBGAKmHURKedfa89BOnqc/nwT9u/xCQsF+vxUuweNIfEgaw2VZA
+	Kl1/Dg46ifRQH7yIZE2g1hqinzs6iqlkAsNm+C/SQbkwVvEhhZvwosXci9NfU2OzKcLSr/
+	KMysrTZRh4IUzLxpv7ixUi7EaTI3rIM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-317-c9gyecCIPpax7YppQWCKfw-1; Mon, 27 Jan 2020 09:41:38 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 486F818FF663;
+	Mon, 27 Jan 2020 14:41:37 +0000 (UTC)
+Received: from thuth.com (ovpn-117-94.ams2.redhat.com [10.36.117.94])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CCDB460BF4;
+	Mon, 27 Jan 2020 14:41:31 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Cleber Rosa <crosa@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Antony Pavlov <antonynpavlov@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [PATCH] tests/acceptance: Add a test for the canon-a1100 machine
+Date: Mon, 27 Jan 2020 15:41:26 +0100
+Message-Id: <20200127144126.15515-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: c9gyecCIPpax7YppQWCKfw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Wshk3JYEBrYx
+X-TUID: gUgXAhUG6CdQ
 
-On Thu, 9 Jan 2020 at 14:19, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> From: Keith Packard <keithp@keithp.com>
->
-> Provides a blocking call to read a character from the console using
-> semihosting.chardev, if specified. This takes some careful command
-> line options to use stdio successfully as the serial ports, monitor
-> and semihost all want to use stdio. Here's a sample set of command
-> line options which share stdio between semihost, monitor and serial
-> ports:
+The canon-a1100 machine can be used with the Barebox firmware. The
+QEMU Advent Calendar 2018 features a pre-compiled image which we
+can use for testing.
 
-Hi; Coverity has some complaints about this code, and
-specifically the use of getchar():
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/acceptance/machine_arm_canon-a1100.py | 33 +++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+ create mode 100644 tests/acceptance/machine_arm_canon-a1100.py
 
-> +/*
-> + * For linux-user we can safely block. However as we want to return as
-> + * soon as a character is read we need to tweak the termio to disable
-> + * line buffering. We restore the old mode afterwards in case the
-> + * program is expecting more normal behaviour. This is slow but
-> + * nothing using semihosting console reading is expecting to be fast.
-> + */
-> +target_ulong qemu_semihosting_console_inc(CPUArchState *env)
-> +{
-> +    uint8_t c;
-> +    struct termios old_tio, new_tio;
-> +
-> +    /* Disable line-buffering and echo */
-> +    tcgetattr(STDIN_FILENO, &old_tio);
-> +    new_tio =3D old_tio;
-> +    new_tio.c_lflag &=3D (~ICANON & ~ECHO);
-> +    tcsetattr(STDIN_FILENO, TCSANOW, &new_tio);
-> +
-> +    c =3D getchar();
-
-CID 1412794 points out that this assigns the result
-of getchar() to a uint8_t, which drops the distinction
-between EOF and a legitimate byte.
-CID 1412795 is then kind of a run-on error from that,
-complaining that the int result from getchar() is
-truncated before returning it.
-
-I'm not sure what we should do with EOF, but presumably
-we should handle it in some way.
-
-thanks
--- PMM
+diff --git a/tests/acceptance/machine_arm_canon-a1100.py b/tests/acceptance=
+/machine_arm_canon-a1100.py
+new file mode 100644
+index 0000000000..3888168451
+--- /dev/null
++++ b/tests/acceptance/machine_arm_canon-a1100.py
+@@ -0,0 +1,33 @@
++# Functional test that boots the canon-a1100 machine with firmware
++#
++# Copyright (c) 2020 Red Hat, Inc.
++#
++# Author:
++#  Thomas Huth <thuth@redhat.com>
++#
++# This work is licensed under the terms of the GNU GPL, version 2 or
++# later.  See the COPYING file in the top-level directory.
++
++from avocado_qemu import Test
++from avocado_qemu import wait_for_console_pattern
++from avocado.utils import archive
++
++class CanonA1100Machine(Test):
++
++    timeout =3D 90
++
++    def test_arm_canona1100(self):
++        """
++        :avocado: tags=3Darch:arm
++        :avocado: tags=3Dmachine:canon-a1100
++        """
++        tar_url =3D ('https://www.qemu-advent-calendar.org'
++                   '/2018/download/day18.tar.xz')
++        tar_hash =3D '068b5fc4242b29381acee94713509f8a876e9db6'
++        file_path =3D self.fetch_asset(tar_url, asset_hash=3Dtar_hash)
++        archive.extract(file_path, self.workdir)
++        self.vm.set_console()
++        self.vm.add_args('-bios',
++                         self.workdir + '/day18/barebox.canon-a1100.bin')
++        self.vm.launch()
++        wait_for_console_pattern(self, 'running /env/bin/init')
+--=20
+2.18.1

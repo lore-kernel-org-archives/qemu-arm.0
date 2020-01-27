@@ -1,166 +1,149 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1051411lfp;
-        Fri, 24 Jan 2020 13:00:17 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwIGO9MEben9J+N3XExBeeH7IzSMAJICYAAZeoctAxME/Ayj+i1KVl92LnS597ZGRYuv7hd
-X-Received: by 2002:a37:6313:: with SMTP id x19mr4625859qkb.443.1579899617342;
-        Fri, 24 Jan 2020 13:00:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579899617; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3744208lfp;
+        Mon, 27 Jan 2020 05:22:15 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwHF8JzIxGVoCClbG4DilwCbrYynupVFqYSpnVQsPB9AVNsY0cfH3wp1HsK7arF1lb2R1kw
+X-Received: by 2002:a17:906:4b4b:: with SMTP id j11mr12022208ejv.145.1580131335720;
+        Mon, 27 Jan 2020 05:22:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580131335; cv=none;
         d=google.com; s=arc-20160816;
-        b=U40ldlOUl1RwLpKKw+xRtAg+YZdVSwIQc6YTuqN8E93zK1zuLE5cBJkXksK0OSDCuC
-         O1QJanpte+rqpdTWnfh39EwUCSukXYbMoiPMvYTzuzWC4itoRgJTducPzxwjKbIAaTxB
-         gsyNIwOJUgJRA+pIS/zOIdprT308xnVJh86tKMhv87dG64MOyuT9p5zZrVKRrLX8qboB
-         AI9bYBQ43LDxB4zCMwtsBmyjvLnILAQBJL7CFgEN0t1gkRB2JN/bMZfkgqKrrF3W+VQ5
-         oY3DIGWwmK65gB43Z1Hzs+pgHZC7tJLSaHl18s4P+1T0rl5uZjsF563sE9+03FyEaQVl
-         3rGA==
+        b=pIF08VQUEEJa87Q08JhnzUrlLbDcEyO/nRh2/gkvvdfdITMGCULVXyClOO/qMM+qv0
+         LO0NuzjL098xNAsidxijDQpa7QopOjtEQ+79XkcZdSq70UDvFtrmN1Fein5eOS+9ldng
+         +AnuEQoYTv8HTfdLpaynFifreCjxK5yZjB4KsM2KSzG8hTckx4i8hnkEDJo/j7VH+Mb4
+         AZZgfIDWFmN0r29s5exQ40lG5lJd2toKOB0eiSUJIdfS3/HU6bkTAclwDg0tO9AOav97
+         hxNRKL2q7TC1eVvLR1dIaf6HNbRwqeq2icmwadoic9wdWm5zPMyrrEdtpvIXJHr1X/PR
+         YdqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:feedback-id
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=nvLSajf7VeF8a/esJ1gtMK1lnzR41dh9lcqpXL8on/w=;
-        b=EPee744x8AOpZGoLpU3gYsObZ9i4Xz09p0q4b8tQquLd6QOjL5ve6vQ2wY4e3B+CsD
-         bJj4dAYk95xpOlIMGstJFP9AJEG6/+sL/I5J0NCIaEhG72ykFfjNs/20hx3bMlD5D1qO
-         hfEnd4vtBEdMbJZTnJKAHTK4Frekxewfmqun69odVrKivIN7id97dpcBtlH4Af7/nuwb
-         TULhkYBr0Tjk/+me1twZB2iCSSqtJhLy14m9DkW1yiXyaZdIA/7W05UhD8+ISrO1vwom
-         tbFM07nmCKuwzu+cKFDbL3rUA7C1b76CiKGmCCneSQwleaHi6utr6pb/TvbiX1T99YMc
-         Acpg==
+        bh=aB9kUk5ctG0RxgHEX2uURz1zw1nvRkSkcTM8skY9h0s=;
+        b=NKKYw0gQDBxAI+p3PJ02yG/JTHV1eGopDHxpl+Oaxug1Khy7U1/0LbJGjPcfld8PfR
+         GHMIhwktM5NCEQmlMaldOTFivPKSb13FGuF0F1w2iiG1Xiaforem090Cjt1RXAyONr8P
+         J6mE72GQo0yjFP5NS32aGoxlmAIEdrRTYgcone1KmuYK7YeaexU+BOi3SBKMxqHDYT1s
+         DXxNB14R1sBnX+G8jYGJnyV/aqwFF7mWAXRBH2YJIQaY1K4e4T33+zaHY0lEvQivrHQ8
+         fbi/nUOqBVMw5rKzVQ2/KYLg/GqGZJvIK3oz0Cq/DMFjZcQqa7t/CqR+kGd2/qETigU8
+         mHNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@megamailservers.eu header.s=maildub header.b=eT1I9sn5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10si4950978qvk.69.2020.01.24.13.00.17
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="TK/0jhJk";
+       spf=pass (google.com: domain of wainersm@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=wainersm@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <wainersm@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id l12si539988ejz.412.2020.01.27.05.22.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jan 2020 13:00:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 27 Jan 2020 05:22:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of wainersm@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@megamailservers.eu header.s=maildub header.b=eT1I9sn5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48028 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iv63s-0000LC-Nf
-	for alex.bennee@linaro.org; Fri, 24 Jan 2020 16:00:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33526)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <rsta2@o2online.de>) id 1iv4oX-0000hr-Ir
- for qemu-arm@nongnu.org; Fri, 24 Jan 2020 14:40:22 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rsta2@o2online.de>) id 1iv4oW-0007DI-Cq
- for qemu-arm@nongnu.org; Fri, 24 Jan 2020 14:40:21 -0500
-Received: from mail1435c50.megamailservers.eu ([91.136.14.35]:47996
- helo=mail263c50.megamailservers.eu)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <rsta2@o2online.de>)
- id 1iv4oV-0007BJ-Ly; Fri, 24 Jan 2020 14:40:20 -0500
-X-Authenticated-User: 017626146082@o2online.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=megamailservers.eu;
- s=maildub; t=1579888529;
- bh=msyG0+vgYVYZwtyOlvLTdyb7wfWrEyYcTNuAHZIeYUw=;
- h=From:To:Cc:Subject:Date:From;
- b=eT1I9sn5WbSdZ1/3B7nj+TUuJIwzNnC12NXg/fcKIMIn/UqnlZ5OAoexvzKOSIJsf
- OBu3CMrh5xEkhMpasm043sAUhpw1lGxFhWVpXztigEOMepV7SBtuv5nk8V/5aWFBxc
- /Kn+zsgwvn8yZJfDGSgAxSqJJhyjfzJoUQYNh8H0=
-Feedback-ID: rsta2@o2online.
-Received: from desktop2.localnet (178-21-1-177.ilmprovider.net [178.21.1.177])
- (authenticated bits=0)
- by mail263c50.megamailservers.eu (8.14.9/8.13.1) with ESMTP id 00OHtQO8027697
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 24 Jan 2020 17:55:28 +0000
-From: Rene Stange <rsta2@o2online.de>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] bcm2835_dma: Fix TD mode
-Date: Fri, 24 Jan 2020 18:55:25 +0100
-Message-ID: <5099495.CBsx362VbF@desktop2>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="TK/0jhJk";
+       spf=pass (google.com: domain of wainersm@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=wainersm@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1580131334;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=aB9kUk5ctG0RxgHEX2uURz1zw1nvRkSkcTM8skY9h0s=;
+	b=TK/0jhJkcibFCo9t0efU5kb8uZft5jvc+q3IStBAGAjr/bF61WUrA3CPVesQ5QTrOeTQIY
+	Pcl7i16qzeNj+mDRN1yCv6V52oGLSf6ptzOR9chZtPf+Qmx3HLbXCrHqr6D5TqLQ5pZTiQ
+	IcUcCUvGMu/F3k34wpn1amOIbrjH/PI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-253-esrO01dtNrCh4ZK5_SzEQA-1; Mon, 27 Jan 2020 08:22:11 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9F64B13E2;
+	Mon, 27 Jan 2020 13:22:09 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-27.gru2.redhat.com [10.97.116.27])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4226360BF4;
+	Mon, 27 Jan 2020 13:22:06 +0000 (UTC)
+Subject: Re: [PATCH] tests/acceptance: Add boot tests for some of the QEMU
+ advent calendar images
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Cleber Rosa <crosa@redhat.com>
+References: <20200124170325.30072-1-thuth@redhat.com>
+ <8f085a1a-b9df-29d4-db51-eb345a44a971@redhat.com>
+ <1f564925-2ee1-ab17-a946-f9bcd656926f@redhat.com>
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-ID: <37b98a5d-8e96-9961-a230-4ee47d0c3169@redhat.com>
+Date: Mon, 27 Jan 2020 11:22:05 -0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-CTCH-RefID: str=0001.0A0B0204.5E2B2F91.0003, ss=1, re=0.000, recu=0.000,
- reip=0.000, cl=1, cld=1, fgs=0
-X-CTCH-VOD: Unknown
-X-CTCH-Spam: Unknown
-X-CTCH-Score: 0.000
-X-CTCH-Rules: 
-X-CTCH-Flags: 0
-X-CTCH-ScoreCust: 0.000
-X-CSC: 0
-X-CHA: v=2.3 cv=II989TnG c=1 sm=1 tr=0 a=oFQkuSNlBNCQRuITVo1IXg==:117
- a=oFQkuSNlBNCQRuITVo1IXg==:17 a=kj9zAlcOel0A:10 a=KlKTeOmF2TGtJzamOh8A:9
- a=CjuIK1q_8ugA:10
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
- timestamps) [generic]
-X-Received-From: 91.136.14.35
-X-Mailman-Approved-At: Fri, 24 Jan 2020 16:00:01 -0500
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Philippe =?ISO-8859-1?Q?Mathieu=2DDaud=E9?= <philmd@redhat.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fX0Tt24cu2dT
-
-TD (two dimensions) DMA mode did not work, because the xlen variable has
-not been re-initialized before each additional ylen run through in
-bcm2835_dma_update(). Furthermore ylen has to be increased by one after
-reading it from the TXFR_LEN register, because a value of zero has to
-result in one run through of the ylen loop. Both issues have been fixed.
-
-Signed-off-by: Rene Stange <rsta2@o2online.de>
----
- hw/dma/bcm2835_dma.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
-index 1e458d7fba..0881c9506e 100644
---- a/hw/dma/bcm2835_dma.c
-+++ b/hw/dma/bcm2835_dma.c
-@@ -54,7 +54,7 @@
- static void bcm2835_dma_update(BCM2835DMAState *s, unsigned c)
- {
-     BCM2835DMAChan *ch = &s->chan[c];
--    uint32_t data, xlen, ylen;
-+    uint32_t data, xlen, xlen_td, ylen;
-     int16_t dst_stride, src_stride;
- 
-     if (!(s->enable & (1 << c))) {
-@@ -72,13 +72,13 @@ static void bcm2835_dma_update(BCM2835DMAState *s, unsigned c)
- 
-         if (ch->ti & BCM2708_DMA_TDMODE) {
-             /* 2D transfer mode */
--            ylen = (ch->txfr_len >> 16) & 0x3fff;
--            xlen = ch->txfr_len & 0xffff;
-+            ylen = ((ch->txfr_len >> 16) & 0x3fff) + 1;
-+            xlen_td = xlen = ch->txfr_len & 0xffff;
-             dst_stride = ch->stride >> 16;
-             src_stride = ch->stride & 0xffff;
-         } else {
-             ylen = 1;
--            xlen = ch->txfr_len;
-+            xlen_td = xlen = ch->txfr_len;
-             dst_stride = 0;
-             src_stride = 0;
-         }
-@@ -117,6 +117,7 @@ static void bcm2835_dma_update(BCM2835DMAState *s, unsigned c)
-             if (--ylen != 0) {
-                 ch->source_ad += src_stride;
-                 ch->dest_ad += dst_stride;
-+                xlen = xlen_td;
-             }
-         }
-         ch->cs |= BCM2708_DMA_END;
--- 
-2.16.4
+In-Reply-To: <1f564925-2ee1-ab17-a946-f9bcd656926f@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: esrO01dtNrCh4ZK5_SzEQA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-TUID: KaK72wOxOwDS
 
 
+On 1/25/20 2:43 PM, Thomas Huth wrote:
+> On 24/01/2020 22.28, Wainer dos Santos Moschetta wrote:
+>> On 1/24/20 3:03 PM, Thomas Huth wrote:
+>>> The 2018 edition of the QEMU advent calendar 2018 featured Linux images
+>>> for various non-x86 machines. We can use them for a boot tests in our
+>>> acceptance test suite.
+>>>
+>>> Let's also make sure that we build the corresponding machines in Travis=
+,
+>>> and while we're there, drop the superfluous --python parameter (python3
+>>> is now the only supported version anyway).
+>> Yes, please, removal of --python was in my wish list.
+>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>  =C2=A0 .travis.yml=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 2 +-
+>>>  =C2=A0 tests/acceptance/boot_linux_console.py | 96 +++++++++++++++++++=
++++++++
+>>>  =C2=A0 2 files changed, 97 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/.travis.yml b/.travis.yml
+>>> index 6c1038a0f1..73ca12c921 100644
+>>> --- a/.travis.yml
+>>> +++ b/.travis.yml
+>>> @@ -268,7 +268,7 @@ matrix:
+>>>  =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 # Acceptance (Functional) tests
+>>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - env:
+>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - CONFIG=3D"--python=3D/usr=
+/bin/python3
+>>> --target-list=3Dx86_64-softmmu,mips-softmmu,mips64el-softmmu,aarch64-so=
+ftmmu,arm-softmmu,s390x-softmmu,alpha-softmmu,ppc-softmmu,ppc64-softmmu,m68=
+k-softmmu,sparc-softmmu"
+>>>
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -
+>>> CONFIG=3D"--target-list=3Daarch64-softmmu,alpha-softmmu,arm-softmmu,m68=
+k-softmmu,microblaze-softmmu,mips-softmmu,mips64el-softmmu,nios2-softmmu,or=
+1k-softmmu,ppc-softmmu,ppc64-softmmu,s390x-softmmu,sparc-softmmu,x86_64-sof=
+tmmu,xtensa-softmmu"
+>>>
+>>
+>> Perhaps use MAIN_SOFTMMU_TARGETS in only append the other targets, like:
+>>
+>> --target-list=3D${MAIN_SOFTMMU_TARGETS},alpha-softmmu,sparc-softmmu,....
+> Not sure ... while it is a nice way to shorten the line here, it adds a
+> dependecy to that variable ... and MAIN_SOFTMMU_TARGETS has been changed
+> a couple of times during the course of time, so we might risk to lose
+> some testing coverage here in case someone removes a target from
+> MAIN_SOFTMMU_TARGETS but forgets to add it here again...? I think we
+> should better use the explicit list here instead.
 
+Your reasoning makes sense to me. Feel free to ignore my suggestion.
 
+Thanks,
+
+Wainer
+
+>
+>   Thomas
+>
+>

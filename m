@@ -1,157 +1,187 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3896284lfp;
-        Mon, 27 Jan 2020 07:41:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqywbCzoA3xt+XLqc16BpAAbcsmHPoTDKJl2S9mlojPIfn5u6hvjQEHMvy8CoiJ2at+yyRUa
-X-Received: by 2002:a17:906:cb94:: with SMTP id mf20mr14136769ejb.252.1580139705840;
-        Mon, 27 Jan 2020 07:41:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580139705; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3918504lfp;
+        Mon, 27 Jan 2020 08:04:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqykEN0iU7kKpEl6VD6mqXIgq+byucZc67OVh+1rzYpYM0+V04GXSb2jvlv2S/SjZI356r84
+X-Received: by 2002:ae9:e007:: with SMTP id m7mr11007887qkk.215.1580141044169;
+        Mon, 27 Jan 2020 08:04:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580141044; cv=none;
         d=google.com; s=arc-20160816;
-        b=VLyCGRdV675lB82Wv1fer+B04mi5ra/jH0gc6DchCMwgoHMiUM/oDEdVJkoy1rMa2M
-         MJsH8crMVNkoR8RXkEqokmfbb+Gj1d9FOjqIaFGSWImlzx7kFD51FMcTfQzOvWbdErzR
-         ugYrOi4GjyT5gcUuBhANBzXJewGe1VrbDDqxxJ6bue4l81t4uxZ9qgVW60QHJZoobkGg
-         bHPAxrsgd00yXxDgrf5UXwAVT66xt5tbMEppI85gpfEpZXTJRFOZ0PugS6haGJg83gu1
-         E5ZOsS3WfSw2DPtDxrp/7iT9awS2PdHfU1RRbF9CcrtKXHhpMPUqyqzHxBtz1DGXQFlr
-         ymqg==
+        b=sNMRlditq1NBdTgbfLU6oT3l46w9A0nfhv5r1dhdDRj97c2/ctyhJYGSjUZQJyRh4H
+         PexvekuehhQJjoPjI/K6jvmAZidaphSG99XfGyuJnbSiXHAt5fM8YogVPPOTR16U0M6F
+         YPK2yA5uO76vCeWwLJMfiE3sPe4Hbg0aEF5Hu5JhMieDvxT1gP02IJ9DqD6/3ObSlgDU
+         i0EMSHSGQf9QwpzCExb8AJzKYjvT6dVwTGmDtgHcYqTFclEQEPwZDZCfdk/CpKAnx6+X
+         EK+6ga9OjaPJi8ZY0aiKIcL8n75srohdmQ9gY8Vryhm6VvqZSgzJI9jGApWVyWQYt3fn
+         8bBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=DVzUni7ewIwP6z9v8ncO3zA63kArbnByKNOo8Y5gsR0=;
-        b=CMoFgn8wkPAMZcGTeor8v6u3HStz87BuRiiKO8XRPnpIU1um0IuH87dGPQH1LNyIm8
-         0xpk8JhBqK8sW22W9GBGf1sTjRr+9xDHMBWHwF8ohjcIG6Y0y84qUkVHpZWhm8bSlP0n
-         +NxYSN1rp0jv+UBrvCsyp+2kDrhNLYjU3yh1Y3Pe4wtGhcZPrc12PpaZJz4Ir6dL+9h/
-         PGnFLW55DkRfJoBGjYF/G8AX9CQAf6JUUj74Axg+H9ivGMtjKHj1+Zm1ASJOaxAG4Xp8
-         02yoDocKVaFzTTCH8tDlddYXQslfmH4rjGtAdIVz9dgddGxK9jld+46HE7/bMA46JT1b
-         J9Ag==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=loIpsZIkwosFCXAjDjlBPhzh2PKJrGEFPIMU+fqO9jc=;
+        b=LZd09n+LXh1FhSt0IyFLTsCHtsw2eod8//DtVO1dNBUYeSjQDIU+Cld0ev7aACHSIq
+         j6DE5qYCTqZfY6JUXL0O69ZiEPGAnR51V+ctNuHGoWjN5h4fP8gevjeNc/+5AeKvko56
+         jLhOmDsFpw5GgFllW9bRFtBcJt5B5AwmHgZrXNPbPKzj53a95KXCx0JZ4HHTXcCFNKOa
+         4n4UUy53dMC76rFl4EKISWQbhRXO/BC31EGDd4C2W+VR+JKhaxtYB4mslsw75NsPvG34
+         u003cQKroCJhou7tqHO/lIFHMproKRf73Lskoy4Gmt6Sl+CYgwuKjYJ5fmkbs0VZTK+9
+         SsDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OEJGDXS8;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NXlAiIsv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id cx15si4557846edb.566.2020.01.27.07.41.45
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q18si9254650qvo.104.2020.01.27.08.04.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Jan 2020 07:41:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 27 Jan 2020 08:04:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OEJGDXS8;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NXlAiIsv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47300 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iw6rr-0000gV-Kv
+	for alex.bennee@linaro.org; Mon, 27 Jan 2020 11:04:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55231)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <thuth@redhat.com>) id 1iw6r5-00009w-3W
+ for qemu-devel@nongnu.org; Mon, 27 Jan 2020 11:03:16 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <thuth@redhat.com>) id 1iw6r2-0008R1-Sx
+ for qemu-devel@nongnu.org; Mon, 27 Jan 2020 11:03:13 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28881
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iw6r2-0008QN-Ju
+ for qemu-devel@nongnu.org; Mon, 27 Jan 2020 11:03:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1580139704;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DVzUni7ewIwP6z9v8ncO3zA63kArbnByKNOo8Y5gsR0=;
-	b=OEJGDXS8PM+cJ6HBEfHhoHjRN/dkyxcYqddsIsc4lZspbKSjsyJi0O/9ej8+xNvF9B5bIw
-	IzN7s4PFrEJrF/bJsMbjTeCW5S/OCG8IgV3gRmNJwElJ1OAcng0ZIZ52Dhy2q1xStQcho3
-	wwpxil53NIJbMn2ebcxSvOkA8hqn/DI=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-353-JsvoNANeNuiCKD0NzjrEdw-1; Mon, 27 Jan 2020 10:41:43 -0500
-Received: by mail-wr1-f71.google.com with SMTP id z14so6295943wrs.4
-        for <alex.bennee@linaro.org>; Mon, 27 Jan 2020 07:41:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=zoUCgX8RIaPawpw4BUvJkUrNzheaDIFrA6A+bw72NYQ=;
-        b=B22zJgMLyefqzWkdTB+lOrCjghtqd2wn6qlPDCDG8iylwOlTUAGZ8cY65yCJx8tNfA
-         xzSvUdM0FnzVAOT8RWzNTuihZKuu25oTf3ej5eCKHT8jXtNM9itOyC+HHv6rRMMifpl1
-         Ykn3H0uN/HuHQD/IGCNsReQs7BL7Zv9BWDEK2vdHFmzU2WbWsA2MCeSDawFbFK+GDyxI
-         CbDz5hd6uxWOIXC/ethHJ1Vlt/tlFLkJwYu8+Bf1z+xnt2DZWcoZ4vzJy9g5P0YXk6AU
-         S0zVQuupWLm0bn5Q50j3htFnMTjunstqh0mnS1a8UCTyMEjFOkucf60YTCgcj8KcNM2Q
-         Yf7A==
-X-Gm-Message-State: APjAAAV09wO1Yqs57PKWr1PYka3lGoiEHVF1qpl8LmuyLsq80vAZZZv0
-	AgjNMw3A7JO1bPX9jeLsWqWVEBfwEIHbutO5LInXHoYICZwAxrksrTrDPOzEAFuYPA9jMgwLZE5
-	jqkyr2B1bNpFNRoDU
-X-Received: by 2002:a1c:1f51:: with SMTP id f78mr14331084wmf.60.1580139701581;
-        Mon, 27 Jan 2020 07:41:41 -0800 (PST)
-X-Received: by 2002:a1c:1f51:: with SMTP id f78mr14331058wmf.60.1580139701322;
-        Mon, 27 Jan 2020 07:41:41 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net. [83.57.172.113])
-        by smtp.gmail.com with ESMTPSA id d12sm21092269wrp.62.2020.01.27.07.41.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Jan 2020 07:41:40 -0800 (PST)
-Subject: Re: [PATCH] tests/acceptance: Add a test for the canon-a1100 machine
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- Antony Pavlov <antonynpavlov@gmail.com>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20200127144126.15515-1-thuth@redhat.com>
- <cd60a444-620e-3366-09e8-e9c8d72894ad@redhat.com>
- <c4976fd4-f1f0-c48b-aad4-4414564f8258@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <05f7e133-8ad3-8627-79a1-a046e6d42d16@redhat.com>
-Date: Mon, 27 Jan 2020 16:41:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ s=mimecast20190719; t=1580140991;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=loIpsZIkwosFCXAjDjlBPhzh2PKJrGEFPIMU+fqO9jc=;
+ b=NXlAiIsvEzIVMF/nH2AKEHnkN6BYI3Q6FiLuewWPfcFmBYFmlhmKgW9RoGkiFfdzLs8khg
+ +saYblWPBMKyPQwY82Jd2n7hjY8PdE7X8J/9Ai2aaJmotxGqJZjzJXxS/ZLgXDdLFCbfKS
+ URmUeGsArD17eExYtZNVz4uzQIuo/wo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-407-EZ0tzpAFNAWQ0Rv-WKNBPA-1; Mon, 27 Jan 2020 11:03:08 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E10D81083E98;
+ Mon, 27 Jan 2020 16:03:06 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-94.ams2.redhat.com [10.36.117.94])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A8E5C19C58;
+ Mon, 27 Jan 2020 16:03:01 +0000 (UTC)
+Subject: Re: [PATCH v4 5/7] tests/boot_linux_console: Test booting U-Boot on
+ the Raspberry Pi 2
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200120235159.18510-1-f4bug@amsat.org>
+ <20200120235159.18510-6-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <d432f2d7-f238-0503-a242-373be81b7622@redhat.com>
+Date: Mon, 27 Jan 2020 17:02:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <c4976fd4-f1f0-c48b-aad4-4414564f8258@redhat.com>
+In-Reply-To: <20200120235159.18510-6-f4bug@amsat.org>
 Content-Language: en-US
-X-MC-Unique: JsvoNANeNuiCKD0NzjrEdw-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: EZ0tzpAFNAWQ0Rv-WKNBPA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: YAf+8Qfg02CG
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Laurent Bonnans <laurent.bonnans@here.com>,
+ Cheng Xiang <ext-cheng.xiang@here.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ukEMT452/pLQ
 
-On 1/27/20 4:39 PM, Thomas Huth wrote:
-> On 27/01/2020 16.18, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 1/27/20 3:41 PM, Thomas Huth wrote:
->>> The canon-a1100 machine can be used with the Barebox firmware. The
->>> QEMU Advent Calendar 2018 features a pre-compiled image which we
->>> can use for testing.
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  =C2=A0 tests/acceptance/machine_arm_canon-a1100.py | 33 ++++++++++++++=
-+++++++
->>>  =C2=A0 1 file changed, 33 insertions(+)
->>>  =C2=A0 create mode 100644 tests/acceptance/machine_arm_canon-a1100.py
->>>
->>> diff --git a/tests/acceptance/machine_arm_canon-a1100.py
->>> b/tests/acceptance/machine_arm_canon-a1100.py
->>> new file mode 100644
->>> index 0000000000..3888168451
->>> --- /dev/null
->>> +++ b/tests/acceptance/machine_arm_canon-a1100.py
->>> @@ -0,0 +1,33 @@
->>> +# Functional test that boots the canon-a1100 machine with firmware
->>> +#
->>> +# Copyright (c) 2020 Red Hat, Inc.
->>> +#
->>> +# Author:
->>> +#=C2=A0 Thomas Huth <thuth@redhat.com>
->>> +#
->>> +# This work is licensed under the terms of the GNU GPL, version 2 or
->>> +# later.=C2=A0 See the COPYING file in the top-level directory.
->>> +
->>> +from avocado_qemu import Test
->>> +from avocado_qemu import wait_for_console_pattern
->>> +from avocado.utils import archive
->>> +
->>> +class CanonA1100Machine(Test):
->>> +
->>> +=C2=A0=C2=A0=C2=A0 timeout =3D 90
->>> +
->>> +=C2=A0=C2=A0=C2=A0 def test_arm_canona1100(self):
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Darch:arm
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dmachine:ca=
-non-a1100
->>
->> To the maintainer taking this, please add:
->>
->>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: =
-tags=3Dpflash_cfi02
+On 21/01/2020 00.51, Philippe Mathieu-Daud=C3=A9 wrote:
+> This test runs U-Boot on the Raspberry Pi 2.
+> It is very simple and fast:
 >=20
-> Should there be a "device:" between the "=3D" and the device name? At
-> least I can see some other files using "device:" for similar tags...
+>   $ avocado --show=3Dapp,console run -t raspi2 -t u-boot tests/acceptance=
+/
+>   JOB LOG    : avocado/job-results/job-2020-01-20T23.40-2424777/job.log
+>    (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm=
+_raspi2_uboot:
+>   console: MMC:   sdhci@7e300000: 0
+>   console: Loading Environment from FAT... Card did not respond to voltag=
+e select!
+>   console: In:    serial
+>   console: Out:   vidconsole
+>   console: Err:   vidconsole
+>   console: Net:   No ethernet found.
+>   console: starting USB...
+>   console: USB0:   Port not available.
+>   console: Hit any key to stop autoboot:  0
+>   console: U-Boot>
+>   console: U-Boot> bdinfo
+>   console: arch_number =3D 0x00000000
+>   console: boot_params =3D 0x00000100
+>   console: DRAM bank   =3D 0x00000000
+>   console: -> start    =3D 0x00000000
+>   console: -> size     =3D 0x3c000000
+>   console: baudrate    =3D 115200 bps
+>   console: TLB addr    =3D 0x3bff0000
+>   console: relocaddr   =3D 0x3bf64000
+>   console: reloc off   =3D 0x3bf5c000
+>   console: irq_sp      =3D 0x3bb5fec0
+>   console: sp start    =3D 0x3bb5feb0
+>   console: Early malloc usage: 2a4 / 400
+>   console: fdt_blob    =3D 0x3bfbdfb0
+>   console: U-Boot> version
+>   console: U-Boot 2019.01+dfsg-7 (May 14 2019 - 02:07:44 +0000)
+>   console: gcc (Debian 8.3.0-7) 8.3.0
+>   console: GNU ld (GNU Binutils for Debian) 2.31.1
+>   console: U-Boot> reset
+>   console: resetting ...
+>   PASS (0.46 s)
+>=20
+> U-Boot is built by the Debian project, see:
+> https://wiki.debian.org/InstallingDebianOn/Allwinner#Creating_a_bootable_=
+SD_Card_with_u-boot
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  tests/acceptance/boot_linux_console.py | 28 ++++++++++++++++++++++++++
+>  1 file changed, 28 insertions(+)
+>=20
+> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
+ot_linux_console.py
+> index e40b84651b..682b801b4f 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
 
-Ah yes you are right, it is clearer.
+The file is called boot_*linux*_console.py ... so shouldn't tests that
+don't use Linux rather go into another file instead?
+Either machine_arm_raspi.py or maybe a boot_firmware_console.py file?
+
+ Thomas
+

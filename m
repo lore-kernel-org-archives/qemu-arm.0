@@ -1,105 +1,103 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp569996lfp;
-        Tue, 28 Jan 2020 06:53:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzUV5xQP9Kjf9TkMoY4VQM3oynEYwRfQVunp5YQBPhWarxcIitxodX1bbSMhXKE8LD7/VKZ
-X-Received: by 2002:ac8:6650:: with SMTP id j16mr21529033qtp.294.1580223183203;
-        Tue, 28 Jan 2020 06:53:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580223183; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp617031lfp;
+        Tue, 28 Jan 2020 07:29:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz7Wv5k1miF2dxYfJ2fTR8q1llhZ5ohsXef459jFjhaM93PHRLVkT04C6cH+2O5BMcyod+o
+X-Received: by 2002:a05:6214:1745:: with SMTP id dc5mr21995056qvb.230.1580225396852;
+        Tue, 28 Jan 2020 07:29:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580225396; cv=none;
         d=google.com; s=arc-20160816;
-        b=MS6XPbSZhKoscuGVUSiBWYlgwgZy35ehBZb4WHKMCfZ0bJQTGfQVn91Er1yCpFSwGu
-         RFHS5I2atPYX2vkQogDzoRgmv76sNJ46W/DQGJImFX9Zp95hkC0HieFW0RSKdMZCax6M
-         n7P1OTg9U0lMy7sJD778FiREuiw99UCLO78YUvV1JfKvm9EBt1O4q+okShdmmOMjXfIy
-         KBnVQdmHK9vpIaSyFSQCSxpuwwvFN10NXCP2HBeP45qZ00pH6Cvo+wzxON8ahsfF8hTS
-         8DNor0cfsq0uZknYFyE+v3pj2mtwbJIGCxwK+d4fxvY279AWoBVye1qso8IBozpiXX/u
-         Yw2w==
+        b=wNGBHGC2Iy93LXueTYRTaaj38WHCYLET7jZ6k0bw2sysrZkAUBW+OMLjhA9nrxZtaF
+         dFmmUI7hMzEgKWI7dN1IV74x1BrxjEj2E5EogjFx8Sg9Nizsn7gEQ6nd04cvjVJx4PKc
+         kpJqDdU/E1N2LPChazdKQljCrXJ+7ZOZmp47mbfAbPslDTv0pZ7nU7u9kw9hCaXyI/Dn
+         DkYC03ybA1MpmAeOGHQ7Uo2NssHyY4cw6SlHWKSK7QqRYGwR0/JtcmzeU46P1gwtvwr6
+         p+e9OChH6CqGgiRexb9UFLDm+mq88BtO4wTq/Hdu17W1i6AqSdZj4NbtnGDQBQu5CxTN
+         ndrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=jisgTqoiIeYdI9XWTMHR7KHX/ootxERlJOALA/CTLmQ=;
-        b=lwyWPeGnO3/ize/SonYBgOUIJ2w/U5gy4UnzWrNAI/EC5+RATIdgps6A8/QUxkFJvh
-         gFiOnnhKi/ln4hok3TXXUuFucQoe+sbDaUxcDaJJIouAOtDhrVYVffZ9NLn9HRLyRBJv
-         YKqvq6dUcmMKJnpDcmo250abH1Kcguoll955Cm9L9MBwTcILNb+Va7WrJivRSfE8MgI+
-         EBuN5kI+R+5z7W49Udmcx4haGWkYXYOk9P0zSBo7f8/pxJqRaIIqsN95w8aCezpHbKqh
-         HZCrKY8gvd6EnbHjPSRJ9HZtWO56AyjpfPaQUXRy/y9VmUaqpbIs7EUnlrTCgc+suNfE
-         RGcA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=qszdijBA+Sr3knp3xlx4nc7EJz5wv7Zo8TLSCoWED58=;
+        b=PTfihiLwl/LwWmDpVyUUz9OxzxWnJJw71X87H6nIV+UPlX6k5mjeB0UpA7UNt9ZLCD
+         I+ltw97Z0Xfvi4Ka6IJqXvrSnffdGUTZ/rmLokNbr2aY08Nv2ZR3fMp0XANnyK/s+KWG
+         9Rm4PqX7esgAYK3uaGqvst0Rii0P7X3DvYubfjFEleGRCYaMSbdoQlNMjqK11ULMigdX
+         9QVF00CgZQf7G3ZYWpbES3q3UGv73pCTdWfI+4WWdwhOiqPGGkqYl0HT2nLuA7oDBrIw
+         m8CIYZqui+Wf6AL6MxzOtMIZsAbhlk6xAvdDzSmzr2soqivRtI1lrUmrz0YwaUH/ymgN
+         chPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFnhoejI;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GI0v3MNG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10si12094128qvm.54.2020.01.28.06.53.03
+        by mx.google.com with ESMTPS id a15si9293770qvf.158.2020.01.28.07.29.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2020 06:53:03 -0800 (PST)
+        Tue, 28 Jan 2020 07:29:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFnhoejI;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GI0v3MNG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60190 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwSEg-0000HA-Jr
-	for alex.bennee@linaro.org; Tue, 28 Jan 2020 09:53:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56128)
+	id 1iwSoO-0002Ar-Ae
+	for alex.bennee@linaro.org; Tue, 28 Jan 2020 10:29:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35710)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iwSEX-0000Dj-CF
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 09:52:54 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iwSoF-0002AO-Qj
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 10:29:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iwSEV-0002We-H1
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 09:52:52 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:57513
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1iwSoD-0001Wz-Rl
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 10:29:46 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45361
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iwSEV-0002W4-9g
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 09:52:51 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1iwSoD-0001Vv-Nr
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 10:29:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580223170;
+ s=mimecast20190719; t=1580225384;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jisgTqoiIeYdI9XWTMHR7KHX/ootxERlJOALA/CTLmQ=;
- b=FFnhoejIr7sg2SL4sk7q6/XloCxuEHkRyJsse8fpPhPtKpfGD7DI3SQ7cgck9UXUmQjFu6
- jml1mZz8YFax/6i8uiH8asMsTBXD/VwLxc05MOFNu5ZY0WK9c51kFS2QdBGtJiOnp88PMM
- D0wlIOKtKOwaSCUFJtR4dNrlQXJQKMg=
+ bh=qszdijBA+Sr3knp3xlx4nc7EJz5wv7Zo8TLSCoWED58=;
+ b=GI0v3MNGncKnAsgh97uP8KpjBMTsVVqik+DdYjnrfMJ3PhLLchL8vvnl3NajxF+jYFxqKY
+ vTYSfroEcRBLpe//JIvOqJTnODt1ICkIBB7V1olQp0XxmnSjKfA+hX8WyErulhOXWT7R6U
+ aB367JrTWs9BE4gAKegx12FMT2sotIQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-101-gx05bWyCMrawtzO1hm1vLw-1; Tue, 28 Jan 2020 09:52:48 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-65-qcGKa7nlNnOn7sbjlDgKwA-1; Tue, 28 Jan 2020 10:29:27 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6DC2213E8;
- Tue, 28 Jan 2020 14:52:47 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A94489D26;
- Tue, 28 Jan 2020 14:52:43 +0000 (UTC)
-Date: Tue, 28 Jan 2020 15:52:41 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Subject: Re: [question] hw/arm/virt: about the default gic-version in
- accelerated mode
-Message-ID: <20200128145241.spz2anwhdlqly6ud@kamzik.brq.redhat.com>
-References: <df1d6ae5-b734-ef64-4ef9-c661e8f797e8@redhat.com>
- <CAFEAcA8hib-3YWuS-MajjvokOFCGKUHeuz+XQTBYf8LBz+PuFQ@mail.gmail.com>
- <20200128122915.ehzgj5kpmsw5azap@kamzik.brq.redhat.com>
- <e0b73504-b37a-cc57-3c3f-b9872dd1e16c@redhat.com>
- <20200128124143.cmbl3po2uvhsgd23@kamzik.brq.redhat.com>
- <79e4dc6e-1136-039d-8212-738111c738d9@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D41613EB;
+ Tue, 28 Jan 2020 15:29:25 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0FB2719E9C;
+ Tue, 28 Jan 2020 15:29:16 +0000 (UTC)
+Subject: Re: [PATCH v2 0/7] ARM virt: Add NVDIMM support
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, imammedo@redhat.com
+References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <7b338b7c-fd47-930b-53d5-894711c69941@redhat.com>
+Date: Tue, 28 Jan 2020 16:29:13 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <79e4dc6e-1136-039d-8212-738111c738d9@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: gx05bWyCMrawtzO1hm1vLw-1
+In-Reply-To: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: qcGKa7nlNnOn7sbjlDgKwA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,78 +109,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- qemu list <qemu-devel@nongnu.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
+ linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
+ lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xowZlaynInkO
+X-TUID: tHboX/hpZsd4
 
-On Tue, Jan 28, 2020 at 02:53:25PM +0100, Auger Eric wrote:
-> Hi,
->=20
-> On 1/28/20 1:41 PM, Andrew Jones wrote:
-> > On Tue, Jan 28, 2020 at 01:34:06PM +0100, Auger Eric wrote:
-> >> Hi Drew,
-> >>
-> >> On 1/28/20 1:29 PM, Andrew Jones wrote:
-> >>> On Tue, Jan 28, 2020 at 10:52:50AM +0000, Peter Maydell wrote:
-> >>>> On Tue, 28 Jan 2020 at 10:47, Auger Eric <eric.auger@redhat.com> wro=
-te:
-> >>>>> When arm virt machine is run in accelerated mode with "-cpu host
-> >>>>> -machine virt", the default gic version is 2.
-> >>>>>
-> >>>>> I understand the rationale with TCG where we don't have MSI ITS
-> >>>>> emulation along with GICv3 so we need to choose GICv2 to get GICv2M
-> >>>>> functionality.
-> >>>>>
-> >>>>> However in KVM mode, I would have expected to see the host GIC prob=
-ed to
-> >>>>> set the same version on guest. Indeed most of our HW now have GICv3
-> >>>>> without GICv2 compat mode so our default values lead to weird trace=
-s:
-> >>>>>
-> >>>>> "
-> >>>>> qemu-system-aarch64: PMU: KVM_SET_DEVICE_ATTR: Invalid argument
-> >>>>> qemu-system-aarch64: failed to set irq for PMU
-> >>>>> "
-> >>>>>
-> >>>>> I would like to propose a patch to improve those errors and also su=
-ggest
-> >>>>> a hint. But I also wanted to know whether you would accept to chang=
-e the
-> >>>>> default value with KVM and choose the host version instead of 2. Fo=
-r TCG
-> >>>>> we would keep v2.
-> >>>>
-> >>>> As with the -cpu option, the default is there for command
-> >>>> line backward compatibility primarily. Even if we had
-> >>>> better support for MSI ITS emulation we'd still leave
-> >>>> the default at GICv2.
-> >>>>
-> >>>> If you want "do the best you can, regardless of accelerator"
-> >>>> that is "-cpu max -machine gic-version=3Dmax".
-> >>>>
-> >>>
-> >>> There is a case where we can probe without breaking backward
-> >>> compatibility. That case is kvm-enabled and no gic-version
-> >>> specified. The reason it would be safe to probe the GIC version
-> >>> is because unless the host was a gicv2 host, then that command
-> >>> line wouldn't have worked anyway.
-> >> Except if the host GICv3 has a GICv2 compat (which is pretty unlikely)=
-?
-> >=20
-> > Is there a way to probe that? If so, and the setting up of gicv2 on
-> > a gicv3 host with the gicv2-compat is the same as setting up gicv2,
-> > then we can just choose gicv2 to keep the command line compatibility.
-> I think that if the host GICv3 is GICv2 compatible then you can create
-> both a KVM_DEV_TYPE_ARM_VGIC_V2 device and a KVM_DEV_TYPE_ARM_VGIC_V3
-> device. Otherwise you can only create a KVM_DEV_TYPE_ARM_VGIC_V3 KVM devi=
-ce.
+Hi Shameer,
 
-So it should be backward compatible to switch to probing. Just try gicv2
-first. If it works, then use it.
+On 1/17/20 6:45 PM, Shameer Kolothum wrote:
+> This series adds NVDIMM support to arm/virt platform.
+> The series reuses some of the patches posted by Eric
+> in his earlier attempt here[1].
+> 
+> Patch #1 is a fix to the Guest reboot issue on NVDIMM
+> hot add case described here[2] and patch #2 is another
+> fix to the nvdimm aml issue discussed here[3].
+> 
+> I have done a basic sanity testing of NVDIMM deviecs
+> with Guest booting with both ACPI and DT. Further testing
+> is always welcome.
+> 
+> Please let me know your feedback.
 
-Thanks,
-drew
+
+With this version, I do not get the former spurious warning reported on v1.
+
+I can see the nvdimm device topology using ndctl. So it looks fine to me.
+
+Unfortunately we cannot test with DAX as kernel dependencies are not yet
+resolved yet but this is an independent problem.
+
+Thanks
+
+Eric
+> 
+> Thanks,
+> Shameer
+> 
+> [1] https://patchwork.kernel.org/cover/10830777/
+> [2] https://patchwork.kernel.org/patch/11154757/
+> [3] https://patchwork.kernel.org/cover/11174959/
+> 
+> v1 --> v2
+>  -Reworked patch #1 and now fix is inside qemu_ram_resize().
+>  -Added patch #2 to fix the nvdim aml issue.
+>  -Dropped support to DT cold plug.
+>  -Updated test_acpi_virt_tcg_memhp() with pc-dimm and nvdimms(patch #7)
+> 
+> Kwangwoo Lee (2):
+>   nvdimm: Use configurable ACPI IO base and size
+>   hw/arm/virt: Add nvdimm hot-plug infrastructure
+> 
+> Shameer Kolothum (5):
+>   exec: Fix for qemu_ram_resize() callback
+>   hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM output  buffer  length
+>   hw/arm/virt: Add nvdimm hotplug support
+>   tests: Update ACPI tables list for upcoming arm/virt test changes
+>   tests/bios-tables-test: Update arm/virt memhp test
+> 
+>  docs/specs/acpi_hw_reduced_hotplug.rst      |  1 +
+>  exec.c                                      | 36 +++++++----
+>  hw/acpi/generic_event_device.c              | 13 ++++
+>  hw/acpi/nvdimm.c                            | 68 +++++++++++++++++----
+>  hw/arm/Kconfig                              |  1 +
+>  hw/arm/virt-acpi-build.c                    |  6 ++
+>  hw/arm/virt.c                               | 35 +++++++++--
+>  hw/i386/acpi-build.c                        |  6 ++
+>  hw/i386/acpi-build.h                        |  3 +
+>  hw/i386/pc_piix.c                           |  2 +
+>  hw/i386/pc_q35.c                            |  2 +
+>  hw/mem/Kconfig                              |  2 +-
+>  include/exec/ram_addr.h                     |  5 +-
+>  include/hw/acpi/generic_event_device.h      |  1 +
+>  include/hw/arm/virt.h                       |  1 +
+>  include/hw/mem/nvdimm.h                     |  3 +
+>  tests/data/acpi/virt/NFIT.memhp             |  0
+>  tests/data/acpi/virt/SSDT.memhp             |  0
+>  tests/qtest/bios-tables-test-allowed-diff.h |  5 ++
+>  tests/qtest/bios-tables-test.c              |  9 ++-
+>  20 files changed, 163 insertions(+), 36 deletions(-)
+>  create mode 100644 tests/data/acpi/virt/NFIT.memhp
+>  create mode 100644 tests/data/acpi/virt/SSDT.memhp
+> 
 

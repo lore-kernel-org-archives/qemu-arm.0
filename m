@@ -1,102 +1,101 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp245685lfp;
-        Tue, 28 Jan 2020 01:25:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwv5cptz8G5fgMYl2LbtyK8GNqcaEQshFbpnRWt+JoH629qLPRGlClUvqRgHBgBw0YfdB1G
-X-Received: by 2002:ac8:1b18:: with SMTP id y24mr11806910qtj.158.1580203527333;
-        Tue, 28 Jan 2020 01:25:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580203527; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp314968lfp;
+        Tue, 28 Jan 2020 02:47:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxo3BlpPlVcBPoh4nn1cOn4LdlUlvHkM5anYcJIq+A7sJYwpisYXZy9CvU79OLoIJSHCWt9
+X-Received: by 2002:ac8:5388:: with SMTP id x8mr5300701qtp.199.1580208452596;
+        Tue, 28 Jan 2020 02:47:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580208452; cv=none;
         d=google.com; s=arc-20160816;
-        b=DUtIJXFeE/2iWc4sI6bDW3woUx6O1JXWwhhglFORZR4FKsjBqxFDVsEc5FDO19eeRi
-         umhADgOBJjDsI4LevBSnmIYDxtKz87n+q7Y3tx5TxUmmicldVk7rPaIutelzdFgLZnLn
-         SOUAW12v7IDKDuVA5p36YNyB/5izfvlbN8WFmLhSw3DWWDGbWfQbJiaa2jBbWGvQ8PKG
-         zBDbpLqo/D3BjSXuaSeWiEF9dXhVoJHh0++SBuHUHiRt2RRN6zO4sJvIUg4CZF4JNN6w
-         10+jbnujdZ9irtrSFzh4OoOEtDlK/2j0GOXho15TvarhibH9f8sJynzKccf2Hutk/pKn
-         L8Lg==
+        b=L/nfqDFbJkpMFs9SFMWmESJIvmrg3sgzyx9i+j+o/Yvsl0EKDwQ2+sAolBR8t8hF1P
+         a3Ug+NtdrtaVABYnQ7bMsWVqdPAkXrQFBlEO7AVD3zHi4oszHJ7S4JP0LYUCObsjVEMc
+         fSnrhTPPgm2erfsCHQN48S4+sYw28ioAZGeH+kKFigp1rkZ7/+VTASjRFKUEGypWhi/x
+         KCDsz6d98WzQUqnZI1CO+VVqcz4DfMOeuojp0vGebOjMwJHtxJIPDcG359IKn8ANEKQG
+         c1dOv29zBl77A+qncYTRomlvvMPP4NTmmbdtfSveeLAjCpi1/cbWAn29CyTh13X5rTOL
+         o21g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:message-id
-         :references:in-reply-to:subject:to:from:date
-         :content-transfer-encoding:mime-version:dkim-signature;
-        bh=Xi/azRWXw85zhWE6ajLRlG5UrZIsXRgo5Maj/Z/1+oQ=;
-        b=GItR4jttQXKf1NpaBO0l4LZ80AGZSF3V50VQehYcb3AGT+/w9OrsFxiOFB/JXPb1Ze
-         BIcrwADGL6fzRNmhvaP1jkL+F1ZBBHuVyg93BrV5AfbO+DpLpztLROnNYRsqzVccEbNF
-         mliLH4e9LCCRVQWMb0A4F8CjWn5Zd2ot0szQLV+WIJt7I63+x72U/jDBID8C/hO1SXW3
-         ff4IeqeDDsGq1DfUgdl6ntVDm95qHn3Jx5HDWcMSGFQaXSqEs+CeD5ES9b0XykuIMxDy
-         cmUD8Eo4BbcLfKSu4s5VsOBl9bQi67ZIWKC99o2TAmaKc4EiIV1EnRoMFzQ10eIoPbKY
-         Fl1w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:mime-version:user-agent:date:message-id:subject
+         :from:to:dkim-signature;
+        bh=z43FRblCwedOjRZvSZiB/yhTk6UmQiFMUw8swuZX8Wo=;
+        b=Rh5ndfmcAlCgy2wGuZKys0JlSETLuYHPGWdj4bRw+BtB6q9FTTK89QkxEXtF2BRx2I
+         xkIeiU9knjajdXKsc+d5IK33wP5rFNkKx5wQl6J/KHeyUm++lNZIriOD/0I9/y5Hldq8
+         9Pxx6rf9mjtE97Fjzxx4eyjwjUzuTumP4HmREf1ThgxUAh4bmLmAo4oKbu8oszzP4lL/
+         NVFubdc1nY/5ZZdGIC9VVU0pdAvTrtpo2W1FQEdbGjHQ3vC3ZszerJ7GT/+PenwL1FZ9
+         a9kcDQn95gfF8HWXk95YMa3MafkBVC4vHxv6a2j+8pzNx/TZLiA5tqxf3YVc/JGeZHxh
+         Bjzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=HiEClKD2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FJYjNrud;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q197si13049311qke.33.2020.01.28.01.25.27
+        by mx.google.com with ESMTPS id v19si11753261qkf.212.2020.01.28.02.47.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2020 01:25:27 -0800 (PST)
+        Tue, 28 Jan 2020 02:47:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=HiEClKD2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FJYjNrud;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:55880 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwN7e-0003ZT-NY
-	for alex.bennee@linaro.org; Tue, 28 Jan 2020 04:25:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60705)
+	id 1iwOP6-00073p-1S
+	for alex.bennee@linaro.org; Tue, 28 Jan 2020 05:47:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51224)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <maz@kernel.org>) id 1iwN7P-0003Us-RL
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 04:25:17 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iwOOt-00072Y-Rn
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 05:47:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <maz@kernel.org>) id 1iwN7N-00023a-RB
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 04:25:11 -0500
-Received: from mail.kernel.org ([198.145.29.99]:48660)
+ (envelope-from <eric.auger@redhat.com>) id 1iwOOs-0001JB-Bp
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 05:47:19 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:32472
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <maz@kernel.org>)
- id 1iwN7N-00020M-Ht; Tue, 28 Jan 2020 04:25:09 -0500
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1iwOOs-0001IT-87
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 05:47:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580208437;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=z43FRblCwedOjRZvSZiB/yhTk6UmQiFMUw8swuZX8Wo=;
+ b=FJYjNrudIruZNQwd8Q4/giTiJqbqr5g2cmF/Yi3XZtHF6Y41PIktGKQ4oNmd2EdUQdF3Er
+ Yc6qKfq2YtQevj1BEu8AGw9MhdcEQDQzQT5AoD04tJGmWx/Jvp5S36tJ5kJ1SyE/3Nos97
+ Yk4ucHeEzBOaUQjC0x5I02RWdmISTOo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-301-2W3dnW85NyWrDNwJwjlzmQ-1; Tue, 28 Jan 2020 05:47:15 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id AAB2A24684;
- Tue, 28 Jan 2020 09:25:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1580203507;
- bh=GV78bYrwP32wEq1gerhdBeVdMGIQi/GctwQCHPZiYQ4=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=HiEClKD2Uj+3Wgwgnvxn0o/bf+Outk437IeVNHBGUUKbXhiaKuiehxsyuDo6+Elje
- bz8f2Av9fy1IYf8V2NYF7JuVycvjaV4G2kB/lLXslpFfk7A0XgKGsXyEn2YXoB+p+B
- uUTR41haDB060w/1dwYk7IXQXimGQ9u8ESF2LQ1c=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1iwN7J-001mJQ-TZ; Tue, 28 Jan 2020 09:25:06 +0000
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9181813E1;
+ Tue, 28 Jan 2020 10:47:14 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7E0AE1001B08;
+ Tue, 28 Jan 2020 10:47:12 +0000 (UTC)
+To: qemu list <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+From: Auger Eric <eric.auger@redhat.com>
+Subject: [question] hw/arm/virt: about the default gic-version in accelerated
+ mode
+Message-ID: <df1d6ae5-b734-ef64-4ef9-c661e8f797e8@redhat.com>
+Date: Tue, 28 Jan 2020 11:47:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: 2W3dnW85NyWrDNwJwjlzmQ-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Date: Tue, 28 Jan 2020 09:25:05 +0000
-From: Marc Zyngier <maz@kernel.org>
-To: Auger Eric <eric.auger@redhat.com>
-Subject: Re: [RFC PATCH] hw/arm/virt: Support NMI injection
-In-Reply-To: <1b718429-c74e-fbac-84b8-379f3291db40@redhat.com>
-References: <20191219040612.28431-1-gshan@redhat.com>
- <d972631d-7db7-b6d5-61b8-244ae2c85882@redhat.com>
- <1b718429-c74e-fbac-84b8-379f3291db40@redhat.com>
-Message-ID: <ff78ed012e7b8fbd656e7e4b477ee0a4@kernel.org>
-X-Sender: maz@kernel.org
-User-Agent: Roundcube Webmail/1.3.8
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: eric.auger@redhat.com, gshan@redhat.com, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
- aik@ozlabs.ru, qemu-devel@nongnu.org, shan.gavin@gmail.com,
- pbonzini@redhat.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 198.145.29.99
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,121 +107,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, Gavin Shan <gshan@redhat.com>,
- jthierry@redhat.com, aik@ozlabs.ru, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- shan.gavin@gmail.com, pbonzini@redhat.com
+Cc: Andrew Jones <drjones@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RGWij81tom2n
+X-TUID: RTYTgEdPsdDf
 
-Gavin, Eric,
+Hi Peter,
 
-On 2020-01-28 08:05, Auger Eric wrote:
-> Hi,
-> 
-> On 1/28/20 7:48 AM, Gavin Shan wrote:
->> [including more folks into the discussion]
->> 
->>> On Fri, 17 Jan 2020 at 14:00, Peter Maydell 
->>> <peter.maydell@linaro.org>
->>> wrote:
->>>> On Thu, 19 Dec 2019 at 04:06, Gavin Shan <gshan@redhat.com> wrote:
->>>>> This supports NMI injection for virtual machine and currently it's 
->>>>> only
->>>>> supported on GICv3 controller, which is emulated by qemu or host
->>>>> kernel.
->>>>> The design is highlighted as below:
->>>>> 
->>>>> * The NMI is identified by its priority (0x20). In the guest 
->>>>> (linux)
->>>>> kernel, the GICC_PMR is set to 0x80, to block all interrupts except
->>>>> the NMIs when the external interrupt is disabled. It means the FIQ
->>>>> and IRQ bit in PSTATE isn't touched when the functionality (NMI) is
->>>>> functional.
->>>>> * LPIs aren't considered as NMIs because of their nature. It means 
->>>>> NMI
->>>>> is either SPI or PPI. Besides, the NMIs are injected in round-robin
->>>>> fashion is there are multiple NMIs existing.
->>>>> * When the GICv3 controller is emulated by qemu, the interrupt 
->>>>> states
->>>>> (e.g. enabled, priority) is fetched from the corresponding data 
->>>>> struct
->>>>> directly. However, we have to pause all CPUs to fetch the interrupt
->>>>> states from host in advance if the GICv3 controller is emulated by
->>>>> host.
->>>>> 
->>>>> The testing scenario is to tweak guest (linux) kernel where the
->>>>> pl011 SPI
->>>>> can be enabled as NMI by request_nmi(). Check "/proc/interrupts"
->>>>> after injecting
->>>>> several NMIs, to see if the interrupt count is increased or not. 
->>>>> The
->>>>> result
->>>>> is just as expected.
->>>>> 
->>> 
->>> So, QEMU is trying to emulate actual hardware. None of this
->>> looks to me like what GICv3 hardware does... If you want to
->>> have the virt board send an interrupt, do it the usual way
->>> by wiring up a qemu_irq from some device to the GIC, please.
->>> (More generally, there is no concept of an "NMI" in the GIC;
->>> there are just interrupts at varying possible guest-programmable
->>> priority levels.)
->>> 
->> 
->> Peter, I missed to read your reply in time and apologies for late 
->> response.
->> 
->> Yes, there is no concept of "NMI" in the GIC from hardware 
->> perspective.
->> However, NMI has been supported from the software by kernel commit
->> bc3c03ccb4641 ("arm64: Enable the support of pseudo-NMIs"). The NMIs
->> have higher priority than normal ones. NMIs are deliverable after
->> local_irq_disable() because the SYS_ICC_PMR_EL1 is tweaked so that
->> normal interrupts are masked only.
+When arm virt machine is run in accelerated mode with "-cpu host
+-machine virt", the default gic version is 2.
 
-And none of that is an NMI. This is a completely SW-defined mechanism,
-and you can't rely on this to inject something that would behave as
-a NMI in in a guest. I thought the "pseudo" prefix would give it away 
-:-(.
+I understand the rationale with TCG where we don't have MSI ITS
+emulation along with GICv3 so we need to choose GICv2 to get GICv2M
+functionality.
 
->> 
->> It's unclear about the purpose of "nmi" QMP/HMP command. It's why I
->> put a RFC tag. The command has been supported by multiple architects
->> including x86/ppc. However, they are having different behaviors. The
->> system will be restarted on ppc with this command, but a NMI is 
->> injected
->> through LAPIC on x86. So I'm not sure what architect (system reset on
->> ppc or injecting NMI on x86) aarch64 should follow.
+However in KVM mode, I would have expected to see the host GIC probed to
+set the same version on guest. Indeed most of our HW now have GICv3
+without GICv2 compat mode so our default values lead to weird traces:
 
-The x86 NMI has no equivalent on ARM, full stop. And the only thing that
-the ARM implementation should follow is the letter of the architecture,
-without added concepts.
+"
+qemu-system-aarch64: PMU: KVM_SET_DEVICE_ATTR: Invalid argument
+qemu-system-aarch64: failed to set irq for PMU
+"
 
-> arm_pmu driver was reworked to use pseudo-NMIs. I don't know the exact
-> status of this work though
-> (https://patchwork.kernel.org/cover/11047407/). So we cannot use any
-> random NMI for guest injection.
-> 
-> I wonder whether we should implement the KVM_NMI vcpu ioctl once we 
-> have
-> agreed on which behavior is expected upon NMI injection. However the
-> kernel doc says this ioctl only is well defined if "KVM_CREATE_IRQCHIP
-> has not been called" (?).
+I would like to propose a patch to improve those errors and also suggest
+a hint. But I also wanted to know whether you would accept to change the
+default value with KVM and choose the host version instead of 2. For TCG
+we would keep v2.
 
-But what architectural concept would you map your KVM_NMI to? The number
-of things you can do is pretty limited:
+Thanks
 
-- Reset: we already have this
-- Interrupt: you don't get to decide the priority or the group
-- SError: Pretty much fatal in all cases
+Eric
 
-You *could* try something like SDEI [1], but that's a pretty terrible
-interface too.
-
-         M.
-
-[1] 
-https://static.docs.arm.com/den0054/a/ARM_DEN0054A_Software_Delegated_Exception_Interface.pdf
--- 
-Jazz is not dead. It just smells funny...

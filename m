@@ -1,278 +1,188 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp556379lfp;
-        Tue, 28 Jan 2020 06:41:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx0zEXN7IPfRT1QGVVOZRD6W2wedl+EDRIvgu/CgyU3fvAVr050lthgIzGT53eHtu+cL/F4
-X-Received: by 2002:aca:d610:: with SMTP id n16mr3057300oig.108.1580222487994;
-        Tue, 28 Jan 2020 06:41:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580222487; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp569996lfp;
+        Tue, 28 Jan 2020 06:53:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzUV5xQP9Kjf9TkMoY4VQM3oynEYwRfQVunp5YQBPhWarxcIitxodX1bbSMhXKE8LD7/VKZ
+X-Received: by 2002:ac8:6650:: with SMTP id j16mr21529033qtp.294.1580223183203;
+        Tue, 28 Jan 2020 06:53:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580223183; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZLKEz+P/q8EmKNuiveiaRAtuIaDLl4XP7GBMMfdgzaHQJ7Aexw+d1YdG9Gf0+Wnfzb
-         ylRD69lT+HHpKApQlwM+Aex/XknZO2D7Mu5jnwhtEkbPi/wfNrYX/ngp2CpU+LS0wPAI
-         u18FkSGoiH4tnA151fBSQHzxpxkXGQvNcty/p+VC7m0SsrZRlMykYKvdvryoKPsKt7EB
-         YzEWg34vaXAfd3HCzzK4rVP44SfZiy153INN9rHwz5BAcKX0WFiQHXWRc8GTKax8XMNu
-         tZNeuKxHpcjhVrKtEJ+XLmxX9zQ3TuKyLRoj40KTeg8Viuark6h54BOegURz7gyrk6QJ
-         +rPQ==
+        b=MS6XPbSZhKoscuGVUSiBWYlgwgZy35ehBZb4WHKMCfZ0bJQTGfQVn91Er1yCpFSwGu
+         RFHS5I2atPYX2vkQogDzoRgmv76sNJ46W/DQGJImFX9Zp95hkC0HieFW0RSKdMZCax6M
+         n7P1OTg9U0lMy7sJD778FiREuiw99UCLO78YUvV1JfKvm9EBt1O4q+okShdmmOMjXfIy
+         KBnVQdmHK9vpIaSyFSQCSxpuwwvFN10NXCP2HBeP45qZ00pH6Cvo+wzxON8ahsfF8hTS
+         8DNor0cfsq0uZknYFyE+v3pj2mtwbJIGCxwK+d4fxvY279AWoBVye1qso8IBozpiXX/u
+         Yw2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=YCe3+L7di9I3yalYd5A8ayFZkGHdC0vR0KLagp0ado8=;
-        b=cFdZ4jbhbD4n08D5z4DbK78GUuw6vzmi6QhSTsFobeNAbGVR7A1FjIX9xJl+1fOyBL
-         4eXGyI9wZw38Z5ustmVHSG32QXcthVkHusN8zErD5H30hNeFQA9xM4md5E38ppHiAbjh
-         zZlp8G7BjSMh5KXNoBW7hHEi8wT08l+j72+KTvBeK5Ri6n6IB4AE7f2FNdizUX6Pu+lh
-         5eX8P6t8EFKtP0/SApG3Gnp/kwg+SPsAg9+El3PJdWGP87dVH5/g5Snh4PBnNAB08gJd
-         5tqEVmh4GNiLUaQGvXwGp4vFMM8n6GXQA/K8vemKZoqwor5+ngfF+3zT+bCH+3P4D4j9
-         UbYg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=jisgTqoiIeYdI9XWTMHR7KHX/ootxERlJOALA/CTLmQ=;
+        b=lwyWPeGnO3/ize/SonYBgOUIJ2w/U5gy4UnzWrNAI/EC5+RATIdgps6A8/QUxkFJvh
+         gFiOnnhKi/ln4hok3TXXUuFucQoe+sbDaUxcDaJJIouAOtDhrVYVffZ9NLn9HRLyRBJv
+         YKqvq6dUcmMKJnpDcmo250abH1Kcguoll955Cm9L9MBwTcILNb+Va7WrJivRSfE8MgI+
+         EBuN5kI+R+5z7W49Udmcx4haGWkYXYOk9P0zSBo7f8/pxJqRaIIqsN95w8aCezpHbKqh
+         HZCrKY8gvd6EnbHjPSRJ9HZtWO56AyjpfPaQUXRy/y9VmUaqpbIs7EUnlrTCgc+suNfE
+         RGcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V7Mu2MaM;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFnhoejI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id t12si8777052otm.224.2020.01.28.06.41.27;
-        Tue, 28 Jan 2020 06:41:27 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t10si12094128qvm.54.2020.01.28.06.53.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 28 Jan 2020 06:53:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V7Mu2MaM;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFnhoejI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730504AbgA1Ol0 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 28 Jan 2020 09:41:26 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:60384 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1730395AbgA1OlX (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Tue, 28 Jan 2020 09:41:23 -0500
+Received: from localhost ([::1]:60190 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iwSEg-0000HA-Jr
+	for alex.bennee@linaro.org; Tue, 28 Jan 2020 09:53:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56128)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <drjones@redhat.com>) id 1iwSEX-0000Dj-CF
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 09:52:54 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <drjones@redhat.com>) id 1iwSEV-0002We-H1
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 09:52:52 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:57513
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iwSEV-0002W4-9g
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 09:52:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1580222481;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=YCe3+L7di9I3yalYd5A8ayFZkGHdC0vR0KLagp0ado8=;
-        b=V7Mu2MaM3B1f2xjl9GCerubEcysRjShA1doS74i3IIY40AphRhCyIzb3uny6i9Oe0sjCPf
-        B6aF4AzvrH+JeGo8FkmAkGrg2TbPJS5+QJKLRI7Mhz8pjtWoo4/9tHaVAoA2QiuKwhsSDy
-        KuJC1cK/e0b87lN9iJSsSsH2TuQY7k4=
+ s=mimecast20190719; t=1580223170;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=jisgTqoiIeYdI9XWTMHR7KHX/ootxERlJOALA/CTLmQ=;
+ b=FFnhoejIr7sg2SL4sk7q6/XloCxuEHkRyJsse8fpPhPtKpfGD7DI3SQ7cgck9UXUmQjFu6
+ jml1mZz8YFax/6i8uiH8asMsTBXD/VwLxc05MOFNu5ZY0WK9c51kFS2QdBGtJiOnp88PMM
+ D0wlIOKtKOwaSCUFJtR4dNrlQXJQKMg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-239-CC3YDS7aOpCiWWUZbRp6UQ-1; Tue, 28 Jan 2020 09:41:20 -0500
-X-MC-Unique: CC3YDS7aOpCiWWUZbRp6UQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B68F100726D;
-        Tue, 28 Jan 2020 14:41:18 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 7398310098FB;
-        Tue, 28 Jan 2020 14:41:12 +0000 (UTC)
-Date:   Tue, 28 Jan 2020 15:41:10 +0100
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <mtosatti@redhat.com>, <xuwei5@huawei.com>,
-        <jonathan.cameron@huawei.com>, <james.morse@arm.com>,
-        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, zhengxiang9@huawei.com, linuxarm@huawei.com
-Subject: Re: [PATCH v22 5/9] ACPI: Record the Generic Error Status Block
- address
-Message-ID: <20200128154110.04baa5bc@redhat.com>
-In-Reply-To: <1578483143-14905-6-git-send-email-gengdongjiu@huawei.com>
-References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
- <1578483143-14905-6-git-send-email-gengdongjiu@huawei.com>
+ us-mta-101-gx05bWyCMrawtzO1hm1vLw-1; Tue, 28 Jan 2020 09:52:48 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6DC2213E8;
+ Tue, 28 Jan 2020 14:52:47 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A94489D26;
+ Tue, 28 Jan 2020 14:52:43 +0000 (UTC)
+Date: Tue, 28 Jan 2020 15:52:41 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Subject: Re: [question] hw/arm/virt: about the default gic-version in
+ accelerated mode
+Message-ID: <20200128145241.spz2anwhdlqly6ud@kamzik.brq.redhat.com>
+References: <df1d6ae5-b734-ef64-4ef9-c661e8f797e8@redhat.com>
+ <CAFEAcA8hib-3YWuS-MajjvokOFCGKUHeuz+XQTBYf8LBz+PuFQ@mail.gmail.com>
+ <20200128122915.ehzgj5kpmsw5azap@kamzik.brq.redhat.com>
+ <e0b73504-b37a-cc57-3c3f-b9872dd1e16c@redhat.com>
+ <20200128124143.cmbl3po2uvhsgd23@kamzik.brq.redhat.com>
+ <79e4dc6e-1136-039d-8212-738111c738d9@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: aOvxxu285I+/
+In-Reply-To: <79e4dc6e-1136-039d-8212-738111c738d9@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: gx05bWyCMrawtzO1hm1vLw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu list <qemu-devel@nongnu.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xowZlaynInkO
 
-On Wed, 8 Jan 2020 19:32:19 +0800
-Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+On Tue, Jan 28, 2020 at 02:53:25PM +0100, Auger Eric wrote:
+> Hi,
+>=20
+> On 1/28/20 1:41 PM, Andrew Jones wrote:
+> > On Tue, Jan 28, 2020 at 01:34:06PM +0100, Auger Eric wrote:
+> >> Hi Drew,
+> >>
+> >> On 1/28/20 1:29 PM, Andrew Jones wrote:
+> >>> On Tue, Jan 28, 2020 at 10:52:50AM +0000, Peter Maydell wrote:
+> >>>> On Tue, 28 Jan 2020 at 10:47, Auger Eric <eric.auger@redhat.com> wro=
+te:
+> >>>>> When arm virt machine is run in accelerated mode with "-cpu host
+> >>>>> -machine virt", the default gic version is 2.
+> >>>>>
+> >>>>> I understand the rationale with TCG where we don't have MSI ITS
+> >>>>> emulation along with GICv3 so we need to choose GICv2 to get GICv2M
+> >>>>> functionality.
+> >>>>>
+> >>>>> However in KVM mode, I would have expected to see the host GIC prob=
+ed to
+> >>>>> set the same version on guest. Indeed most of our HW now have GICv3
+> >>>>> without GICv2 compat mode so our default values lead to weird trace=
+s:
+> >>>>>
+> >>>>> "
+> >>>>> qemu-system-aarch64: PMU: KVM_SET_DEVICE_ATTR: Invalid argument
+> >>>>> qemu-system-aarch64: failed to set irq for PMU
+> >>>>> "
+> >>>>>
+> >>>>> I would like to propose a patch to improve those errors and also su=
+ggest
+> >>>>> a hint. But I also wanted to know whether you would accept to chang=
+e the
+> >>>>> default value with KVM and choose the host version instead of 2. Fo=
+r TCG
+> >>>>> we would keep v2.
+> >>>>
+> >>>> As with the -cpu option, the default is there for command
+> >>>> line backward compatibility primarily. Even if we had
+> >>>> better support for MSI ITS emulation we'd still leave
+> >>>> the default at GICv2.
+> >>>>
+> >>>> If you want "do the best you can, regardless of accelerator"
+> >>>> that is "-cpu max -machine gic-version=3Dmax".
+> >>>>
+> >>>
+> >>> There is a case where we can probe without breaking backward
+> >>> compatibility. That case is kvm-enabled and no gic-version
+> >>> specified. The reason it would be safe to probe the GIC version
+> >>> is because unless the host was a gicv2 host, then that command
+> >>> line wouldn't have worked anyway.
+> >> Except if the host GICv3 has a GICv2 compat (which is pretty unlikely)=
+?
+> >=20
+> > Is there a way to probe that? If so, and the setting up of gicv2 on
+> > a gicv3 host with the gicv2-compat is the same as setting up gicv2,
+> > then we can just choose gicv2 to keep the command line compatibility.
+> I think that if the host GICv3 is GICv2 compatible then you can create
+> both a KVM_DEV_TYPE_ARM_VGIC_V2 device and a KVM_DEV_TYPE_ARM_VGIC_V3
+> device. Otherwise you can only create a KVM_DEV_TYPE_ARM_VGIC_V3 KVM devi=
+ce.
 
-in addition to comments of others:
+So it should be backward compatible to switch to probing. Just try gicv2
+first. If it works, then use it.
 
-> Record the GHEB address via fw_cfg file, when recording
-> a error to CPER, it will use this address to find out
-> Generic Error Data Entries and write the error.
-> 
-> Make the HEST GHES to a GED device.
+Thanks,
+drew
 
-It's hard to parse this even kno
-Pls rephrase/make commit message more verbose,
-so it would describe why and what patch is supposed to do
-
-
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> ---
->  hw/acpi/generic_event_device.c         | 15 ++++++++++++++-
->  hw/acpi/ghes.c                         | 16 ++++++++++++++++
->  hw/arm/virt-acpi-build.c               | 13 ++++++++++++-
->  include/hw/acpi/generic_event_device.h |  2 ++
->  include/hw/acpi/ghes.h                 |  6 ++++++
->  5 files changed, 50 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> index 9cee90c..9bf37e4 100644
-> --- a/hw/acpi/generic_event_device.c
-> +++ b/hw/acpi/generic_event_device.c
-> @@ -234,12 +234,25 @@ static const VMStateDescription vmstate_ged_state = {
->      }
->  };
->  
-> +static const VMStateDescription vmstate_ghes_state = {
-> +    .name = "acpi-ghes-state",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields      = (VMStateField[]) {
-> +        VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static const VMStateDescription vmstate_acpi_ged = {
->      .name = "acpi-ged",
->      .version_id = 1,
->      .minimum_version_id = 1,
->      .fields = (VMStateField[]) {
-> -        VMSTATE_STRUCT(ged_state, AcpiGedState, 1, vmstate_ged_state, GEDState),
-> +        VMSTATE_STRUCT(ged_state, AcpiGedState, 1,
-> +                       vmstate_ged_state, GEDState),
-> +        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
-> +                       vmstate_ghes_state, AcpiGhesState),
->          VMSTATE_END_OF_LIST(),
->      },
->      .subsections = (const VMStateDescription * []) {
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index 9d37798..68f4abf 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -23,6 +23,7 @@
->  #include "hw/acpi/acpi.h"
->  #include "hw/acpi/ghes.h"
->  #include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/generic_event_device.h"
->  #include "hw/nvram/fw_cfg.h"
->  #include "sysemu/sysemu.h"
->  #include "qemu/error-report.h"
-> @@ -208,3 +209,18 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
->      build_header(linker, table_data, (void *)(table_data->data + hest_start),
->          "HEST", table_data->len - hest_start, 1, NULL, "");
->  }
-> +
-> +void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
-> +                            GArray *hardware_error)
-
-not aligned properly
-
-> +{
-> +    size_t size = 2 * sizeof(uint64_t) + ACPI_GHES_MAX_RAW_DATA_LENGTH;
-> +    size_t request_block_size = ACPI_GHES_ERROR_SOURCE_COUNT * size;
-> +
-> +    /* Create a read-only fw_cfg file for GHES */
-> +    fw_cfg_add_file(s, ACPI_GHES_ERRORS_FW_CFG_FILE, hardware_error->data,
-> +                    request_block_size);
-> +
-> +    /* Create a read-write fw_cfg file for Address */
-> +    fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
-> +        NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
-> +}
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 837bbf9..c8aa94d 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -797,6 +797,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      unsigned dsdt, xsdt;
->      GArray *tables_blob = tables->table_data;
->      MachineState *ms = MACHINE(vms);
-> +    AcpiGedState *acpi_ged_state;
->  
->      table_offsets = g_array_new(false, true /* clear */,
->                                          sizeof(uint32_t));
-> @@ -831,7 +832,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      acpi_add_table(table_offsets, tables_blob);
->      build_spcr(tables_blob, tables->linker, vms);
->  
-> -    if (vms->ras) {
-> +    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-> +                                                       NULL));
-> +    if (acpi_ged_state &&  vms->ras) {
-
-there is vms->acpi_dev which is GED, so you don't need to look it up
-
-suggest:
- if (ras) {
-    assert(ged)
-    do other fun stuff ...
- }
-
->          acpi_add_table(table_offsets, tables_blob);
->          build_ghes_error_table(tables->hardware_errors, tables->linker);
->          acpi_build_hest(tables_blob, tables->hardware_errors,
-> @@ -925,6 +928,7 @@ void virt_acpi_setup(VirtMachineState *vms)
->  {
->      AcpiBuildTables tables;
->      AcpiBuildState *build_state;
-> +    AcpiGedState *acpi_ged_state;
->  
->      if (!vms->fw_cfg) {
->          trace_virt_acpi_setup();
-> @@ -955,6 +959,13 @@ void virt_acpi_setup(VirtMachineState *vms)
->      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
->                      acpi_data_len(tables.tcpalog));
->  
-> +    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-> +                                                       NULL));
-> +    if (acpi_ged_state && vms->ras) {
-
-ditto
-
-> +        acpi_ghes_add_fw_cfg(&acpi_ged_state->ghes_state,
-> +                             vms->fw_cfg, tables.hardware_errors);
-> +    }
-> +
->      build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
->                                               build_state, tables.rsdp,
->                                               ACPI_BUILD_RSDP_FILE, 0);
-> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-> index d157eac..037d2b5 100644
-> --- a/include/hw/acpi/generic_event_device.h
-> +++ b/include/hw/acpi/generic_event_device.h
-> @@ -61,6 +61,7 @@
->  
->  #include "hw/sysbus.h"
->  #include "hw/acpi/memory_hotplug.h"
-> +#include "hw/acpi/ghes.h"
->  
->  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
->  
-> @@ -95,6 +96,7 @@ typedef struct AcpiGedState {
->      GEDState ged_state;
->      uint32_t ged_event_bitmap;
->      qemu_irq irq;
-> +    AcpiGhesState ghes_state;
->  } AcpiGedState;
->  
->  void build_ged_aml(Aml *table, const char* name, HotplugHandler *hotplug_dev,
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> index 09a7f86..a6761e6 100644
-> --- a/include/hw/acpi/ghes.h
-> +++ b/include/hw/acpi/ghes.h
-> @@ -60,7 +60,13 @@ enum {
->      ACPI_HEST_SRC_ID_RESERVED,
->  };
->  
-> +typedef struct AcpiGhesState {
-> +    uint64_t ghes_addr_le;
-> +} AcpiGhesState;
-> +
->  void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
->  void acpi_build_hest(GArray *table_data, GArray *hardware_error,
->                            BIOSLinker *linker);
-> +void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
-> +                          GArray *hardware_errors);
->  #endif

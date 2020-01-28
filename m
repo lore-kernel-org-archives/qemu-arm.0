@@ -1,158 +1,120 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp330837lfp;
-        Tue, 28 Jan 2020 03:05:13 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxaUW3cKHpn6NJSJjmqybyzZbsCKmmZwX3NOXwaJw0G82XLLtcxLA0lwpjVjlRsjaO9TwDc
-X-Received: by 2002:ae9:c318:: with SMTP id n24mr22334675qkg.38.1580209512985;
-        Tue, 28 Jan 2020 03:05:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580209512; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp398074lfp;
+        Tue, 28 Jan 2020 04:16:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwwnI8+xSAra24bU6LJqE5NGU+35mTQlYT3OmLdfaAOPkxz+m2TTKP3072SPZ6Y6pgimgIY
+X-Received: by 2002:a17:906:9246:: with SMTP id c6mr2863264ejx.226.1580213806563;
+        Tue, 28 Jan 2020 04:16:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580213806; cv=none;
         d=google.com; s=arc-20160816;
-        b=o/Z5eOHrfXjsST6vnJKP2VduHN0JI/kQ+gf2mHU1uEUbzOO3yOSMn5nBDvxqMchoVd
-         bqe6FWxXffMUC2b5i0qMvFb1mUKEEUeEjWnVDdzWcB25S5p11G5Ggnf9wbkV0bN58gIJ
-         M0mbyyQFuoBPFndqLnZVWFJH7eDELAUX7FQ+zetpHPvXtqXyRDxTvSYRQPT6QaoIBIF+
-         NLZM6hF+2bwJ1modwxt7PttPGF3u2DAj7KLV3gF9X7Y8XTaEzz76bWaACa5CIeDdl2WB
-         5mjHaaxtiFyumInJlmfK8eWzIgEe/pJeklN025sXL7CGMH60OuQtGS2ZRJYnub+OjIAa
-         ipNQ==
+        b=krm/gJzauVXWTIOxMW2nI2+5MWWxr/gn3hBcdTZmnWkQign8fJjSQTtEVnWZ3fl3bu
+         JDQVOp9akieZta/ENp/IwNEYlz8tvLm0JXefdzabrVjB0tvKM3LQGnwrb4mhndKl+TL+
+         5drzFjkPZycCZurw2eAneFkkfH9RBc6f613d9jUWz7mSDJ6Mv4cA78YWu28sLsBPrawC
+         VGfS4CD4KzZPr7SZ773imhkblcU314+8oInvOrzg5MXMgTNgKgQd/Q5wP29YWlN3//GO
+         WBvoD9ANbjxef/+4pcZvbwYsNuESmUFy8kmmFNUWItIpDAI4HiDUvV5IkZltOm560jB+
+         AItA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=DJ+VCy4rnTO6BuAnbNBUZGY24Dg/TkhmEZUDFGMhbyA=;
-        b=Yov6BlE4VI2QHL0rSsdSbM3oX3P931dnw+WWOCnC2lymCORCP5MWIK2MkuzPtq/rYJ
-         EX9JWxSr0XR+ej1wlncNknlsmOf9aI5P/ass95cLGCU7+WuB31Fc8vCfEjhva+n5nyZ/
-         fAcUpaGMcuxlygG7Ilm0a6lChWc/acqTPGQY5BLYb+JYoya9VZ2xqOC84JmqSGSF/6Yl
-         ea7+zklLusGsdQoNicx2CUYWcYJzOrpy4T7jN9ywzWpTt2csG31/coVCLvkHCu31/R9p
-         rFa3pb2dPbVIGl6topJt8IEpHGgrzk3hU5dOIVoEhdKueoUCpf5ne8cGwzNpMnaRRhBQ
-         /crA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=q6gUrwN2AZjCBQs0Mq9KS9CzBrHVLDSRXxFIuYn4DZo=;
+        b=XQJHsaTetoqw5fkCGaUZ6TVCKOkj5poKYUECHOh28p91Lil1m6+BzEVrq7JmNKw3Ln
+         kBuC6RUcOQpJMMmt4tya/enMwbBX/e97IhvVYDw2N7O/MQzWXzOzcVwS8zD0vaq823UJ
+         8TsUVNhbP6nnNnch3lV/R/BRS12xRHpXFvLLbqUoB8V29znJNde/NTq/Esh/EhSK1j7P
+         smlVQZ1/28gJsDs3pGxn98T8NqWMq1kCpwIRXcfHMvB0ZmfJNemPk/crROZkHbQACJvJ
+         BxowKDNGP9ouaXnygw7bCKK1gcc0BsWY707gia6ddCFQfdGkPnMEmt8zwKyRwZATgY47
+         ojTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@oracle.com header.s=corp-2019-08-05 header.b=ra1pIZ+E;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7si10386631qth.127.2020.01.28.03.05.12
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Nf5TY6W2;
+       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id w7si1374735ejq.528.2020.01.28.04.16.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2020 03:05:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Jan 2020 04:16:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@oracle.com header.s=corp-2019-08-05 header.b=ra1pIZ+E;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:57230 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwOgC-0004aS-AR
-	for alex.bennee@linaro.org; Tue, 28 Jan 2020 06:05:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55364)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <liam.merwick@oracle.com>) id 1iwOeu-0002pM-JQ
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 06:03:53 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <liam.merwick@oracle.com>) id 1iwOet-0003ja-NA
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 06:03:52 -0500
-Received: from aserp2120.oracle.com ([141.146.126.78]:46448)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <liam.merwick@oracle.com>)
- id 1iwOet-0003jQ-HN; Tue, 28 Jan 2020 06:03:51 -0500
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00SAxIWG116083;
- Tue, 28 Jan 2020 11:03:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=corp-2019-08-05;
- bh=DYh0RIFuVSZpob2NSOUwbR0dZjvLnDjhfJ8y8tcSRaw=;
- b=ra1pIZ+EfY/9Ia+i7P4FP+K3yIDdM9Dg2uR9D7U9QkdleJnEPouvQdS3XJ6PReGo8yzP
- wqCLufL0DqkttXomhM7vlhNkKwh16Nt/1UZBIuN7of5ygqFRNEpI8GQS7c59XD5jErnN
- DIbng7ex+PnjfD9Ay10uRlWYHx6KvJQWCQJZl3EY56KedoDVDTnFAJ3eQSFeYLtGnm2/
- R/l4CPEyk0imQJw5C3eXYk16Lf+V8Ta0v+c+TK2R9hqNqJKP1z/9Gnp6X5R1ABsXmb9E
- lzkmKBEmFgZelMthLytJG53T8xfKSml2XA6KERwusvubTgIhQE2U2dmtXZdpxkguu4O3 iQ== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 2xrdmqdh06-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 28 Jan 2020 11:03:10 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00SAxM6S066892;
- Tue, 28 Jan 2020 11:01:09 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 2xry70f6x0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 28 Jan 2020 11:01:09 +0000
-Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 00SB170B026049;
- Tue, 28 Jan 2020 11:01:07 GMT
-Received: from [10.175.203.109] (/10.175.203.109)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 28 Jan 2020 03:01:06 -0800
-Subject: Re: [PATCH v4 2/7] Acceptance tests: Extract _console_interaction()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200120235159.18510-1-f4bug@amsat.org>
- <20200120235159.18510-3-f4bug@amsat.org>
-From: Liam Merwick <liam.merwick@oracle.com>
-Message-ID: <3b9b2028-1562-1fe2-65d8-bc038f60573c@oracle.com>
-Date: Tue, 28 Jan 2020 11:01:03 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
-MIME-Version: 1.0
-In-Reply-To: <20200120235159.18510-3-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9513
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-2001280089
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9513
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-2001280089
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by aserp2120.oracle.com id
- 00SAxIWG116083
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 141.146.126.78
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Nf5TY6W2;
+       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1580213805;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+	bh=q6gUrwN2AZjCBQs0Mq9KS9CzBrHVLDSRXxFIuYn4DZo=;
+	b=Nf5TY6W2UhNyxlMjKLkv83BazBoVQN70GGAiqJQvNnaPGVo9kfzDzs10Vm63F8Wpob7JEj
+	/QQ7J9RgjtLkHPkKEmT/bxX/3c8elT/xrUpyFNhzDVezy4/NRdaWiKl7+VuITPb3nLQrYg
+	1JfdDy9lWqD4pN4Yw5LB1K+6zWUW/4M=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-301-HXVbC5CMMmimxHD9cMPX7Q-1; Tue, 28 Jan 2020 07:16:44 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AB450800EBB;
+	Tue, 28 Jan 2020 12:16:42 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-147.ams2.redhat.com [10.36.117.147])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3254319C58;
+	Tue, 28 Jan 2020 12:16:34 +0000 (UTC)
+Subject: Re: [PATCH] tests/acceptance: Add a test for the canon-a1100 machine
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, liam.merwick@oracle.com,
- Alistair Francis <alistair@alistair23.me>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Laurent Bonnans <laurent.bonnans@here.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iaFzOyxt6N5A
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>,
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+References: <20200127144126.15515-1-thuth@redhat.com>
+ <cd60a444-620e-3366-09e8-e9c8d72894ad@redhat.com>
+ <c4976fd4-f1f0-c48b-aad4-4414564f8258@redhat.com>
+ <05f7e133-8ad3-8627-79a1-a046e6d42d16@redhat.com>
+ <2a303987-ad19-538b-98ce-a2cb83d8fade@redhat.com>
+ <9856cc15-2365-4609-5af9-f6582cb20ed8@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <6b5cba1d-4aba-cd59-74a8-880a8d800a35@redhat.com>
+Date: Tue, 28 Jan 2020 13:16:33 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
+MIME-Version: 1.0
+In-Reply-To: <9856cc15-2365-4609-5af9-f6582cb20ed8@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: HXVbC5CMMmimxHD9cMPX7Q-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Bb0Mds3Bve45
 
-On 20/01/2020 23:51, Philippe Mathieu-Daud=C3=A9 wrote:
-> Since we are going to re-use the code shared between
-> wait_for_console_pattern() and exec_command_and_wait_for_pattern(),
-> extract the common part into a local function.
+On 27/01/2020 21.56, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hey Wainer,
 >=20
-> Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> On 1/27/20 6:45 PM, Wainer dos Santos Moschetta wrote:
+>> On 1/27/20 1:41 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> On 1/27/20 4:39 PM, Thomas Huth wrote:
+>>>> On 27/01/2020 16.18, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>> On 1/27/20 3:41 PM, Thomas Huth wrote:
+>>>>>> The canon-a1100 machine can be used with the Barebox firmware. The
+>>>>>> QEMU Advent Calendar 2018 features a pre-compiled image which we
+>>>>>> can use for testing.
+>>>>>>
+>>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>>>> ---
+>>>>>> =C2=A0=C2=A0 tests/acceptance/machine_arm_canon-a1100.py | 33
+>>>>>> +++++++++++++++++++++
+>>
+>>
+>> What is the reason for not adding this case in boot_linux_console suite?
+>=20
+> Because there are too many tests in this file and it became hardly
+> maintainable. Also it is easier to add a 'F:' entry in the MAINTAINERS
+> file to each machine section.
 
-Reviewed-by: Liam Merwick <liam.merwick@oracle.com>
-Tested-by: Liam Merwick <liam.merwick@oracle.com>
+Additionally, this is not a test with a Linux kernel, it uses the
+Barebox firmware instead. So boot_*linux*_console.py sounds like the
+wrong place for this test.
 
-> ---
->   tests/acceptance/avocado_qemu/__init__.py | 31 +++++++++++++---------=
--
->   1 file changed, 17 insertions(+), 14 deletions(-)
+ Thomas

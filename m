@@ -1,69 +1,69 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp304585lfp;
-        Tue, 28 Jan 2020 02:35:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwXD3CeaRMvpdvMVcbTGzuw+wkJH/nsUz6dWYhtXNAp3XT0dCVkBoEFSgR+1qzk/ZPjIwkM
-X-Received: by 2002:a54:4010:: with SMTP id x16mr2455793oie.174.1580207727792;
-        Tue, 28 Jan 2020 02:35:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580207727; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp304847lfp;
+        Tue, 28 Jan 2020 02:35:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz4KQ4Vxd3lkNr5/CHIsUQ9zLGDSUckSlNT/YHzKtiEs56wB4iSIDdx5++PD/nyBICT9jw0
+X-Received: by 2002:a05:6830:18d4:: with SMTP id v20mr16173336ote.29.1580207742838;
+        Tue, 28 Jan 2020 02:35:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580207742; cv=none;
         d=google.com; s=arc-20160816;
-        b=fkVSKg+FMsehvtvEAJv2h1TWRAC6lyrBfT2YkgIekVtOZm7Ieyaekofyw+emTphoNl
-         D3wcNn1opmKeUZKXHWZtf0lcGHlosQRX5mnibcODwPoRH8nsaa6SZXVwUdG7LC107F8u
-         EmUlSedzEF41MRGIrP8XPG4y5WLaw9ue/XPrt+i5rBkYBmpFLXqx7M2cvqWgorNJ1J2Z
-         p698mqiPkxlQpi2dHkKu40IpXFYuK0VTz6aQKwZQ8Js3emmG1PEzQks7hIvtLQNp2Af3
-         H13neU3ARSBHSAjI/qfDl6ad70BjN6J1azyxPCR0FevX3eoLJLpGWbslCvZlHw1km7Yw
-         KvLw==
+        b=p5t1+sOEsrHfpICX7loLFZNotjwhoGSTERYFnhw81VoHBDarY72oV1Opsz/9rdhXvd
+         uXpnKBfiMockAkzWfIIDuJok/PspFNP1ldC+VVCnAMvvjGoxiADCqMaRQ+qzY304Hp5P
+         ruYeFcPpHNb7+X+G1cuooOWsvvKQambxB6oeXTDWN9Q+Zk/X3e+A1IOJ/+otU7TR2LWR
+         GNWwWTi/ddeMYaMBYjG5ydeBd5wyPbVh9PzulQWaUkHGu7X5tKh9PMX1gwr4IOEsZvj0
+         vdNmBsF1yOoqgawTz3TvaXmbNMm+u2HeLoFy47eYKVcNxrr8IzdSfm9JQLjOdsCI1Zmg
+         iu+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=hksWhfx/qjqLBl2kwSG6HIa1DnV2Yh8CnWY4dayzAHc=;
-        b=mzn5gAh9kp+7mwaGi1chyaA5uVwn1ZcSo40+pWbhn8KAKx/68hTL2T+PadvUaVf8zW
-         VfvY51mojBTaEI885PX1zjL46NqZCBkec9Rmam4MkasDkpGtQiQRBQ1Vee0yNqUsykq/
-         6t3NLxfikOigqmagdue4XbGjQQgrbLx1IkktB2sm3Dw55Uq5QgTbHWE+WzB/JnXmEEx/
-         8z9wMO501805BEh+dBY37ojgLX28eHby+U6flfZF54x6Qz0l+x1u1o4ZjUSvUwqwrzX4
-         On/PCx9KVeA3UXDQcEFbl9QDlS4rxzE+RwAhvjU6pHsckUjeNesAF3B3Hi1jKUsIIU5K
-         sdUA==
+        bh=zRIDXBcFA1npKL3bY9kDF0a2tZ99w/hj73UnpskP22g=;
+        b=GzEQYYNEqfEGwqqqAFm3tV+X15U6Nikh2YQj1xkuTGEA/ciWtYS72niMMziaU6n2IR
+         C/6qbexfPjcrsA2OV1l+g5Mpypuz02UQnTy1S1a9qHIGnSmIfzhN32OdZmqkOXfw1ITd
+         mG5MiXcvCd4cj0pfFdOZB6JFxiJttUcEXaJIYFOYTzPv61cw/z8N4ZBuTd6EE2dbb52V
+         U9lJB7TNZCvGi9J5gTTWgzc2cneNA1HJppRkK8088ze7d9FwQ2r2KVrUH1AF4PR+0ZaT
+         lXBFnl88tmzKKQ9thC/sIQL3QQqiSI/TlLZIbR6VjgaalJKTK0hxbJ3Erw7EMitfIy2+
+         Dm+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KAxGI6RO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NncEcveZ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a10si5035526oia.232.2020.01.28.02.35.27;
-        Tue, 28 Jan 2020 02:35:27 -0800 (PST)
+        by mx.google.com with ESMTP id a10si5035526oia.232.2020.01.28.02.35.42;
+        Tue, 28 Jan 2020 02:35:42 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KAxGI6RO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NncEcveZ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726066AbgA1Kf0 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 28 Jan 2020 05:35:26 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23687 "EHLO
+        id S1726141AbgA1Kfl (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 28 Jan 2020 05:35:41 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20985 "EHLO
         us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726090AbgA1Kf0 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 28 Jan 2020 05:35:26 -0500
+        with ESMTP id S1725965AbgA1Kfl (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 28 Jan 2020 05:35:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1580207725;
+        s=mimecast20190719; t=1580207740;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=hksWhfx/qjqLBl2kwSG6HIa1DnV2Yh8CnWY4dayzAHc=;
-        b=KAxGI6ROO/L68XdlNESrogr807MaG0fNXdZcxfzCOcSt2IhD9f7T5xu71oQ4lzSknGXbXG
-        XBE3bX1TTVbvtCVjXA+8n+mlZnrKXMz0Rs35Sdc8S/sVKCgXelZ+rn7C8WHp9hq7UAho9b
-        rDeN7phtd1G+vYn836oZOkSk+Y3p7jc=
+        bh=zRIDXBcFA1npKL3bY9kDF0a2tZ99w/hj73UnpskP22g=;
+        b=NncEcveZ5rQ2pVAGg+JLS5BCNnelm7wULgNKz7JGRAreCpN46ieSu9DsJb8bHw4xqX4FZ6
+        sAmHvotCqkXntOLASEC84jg2mPLBeVsTZuAKe4A3PBNi7CBnktOQDESak04PojZT6VZNHs
+        aFzg7tYZ1ddUio6CBDa02oCJGJyY4Jw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-221-CymzZg9NPg-7tVbWGeDa5g-1; Tue, 28 Jan 2020 05:35:23 -0500
-X-MC-Unique: CymzZg9NPg-7tVbWGeDa5g-1
+ us-mta-130-BSGEQTgFPAW1HAu62B4BsA-1; Tue, 28 Jan 2020 05:35:38 -0500
+X-MC-Unique: BSGEQTgFPAW1HAu62B4BsA-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2CBB3DB60;
-        Tue, 28 Jan 2020 10:35:22 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 517108017CC;
+        Tue, 28 Jan 2020 10:35:37 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id D1BFF1001B08;
-        Tue, 28 Jan 2020 10:35:16 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id C03F41001B08;
+        Tue, 28 Jan 2020 10:35:31 +0000 (UTC)
 From:   Eric Auger <eric.auger@redhat.com>
 To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
         kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
@@ -71,9 +71,9 @@ To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
 Cc:     drjones@redhat.com, andre.przywara@arm.com,
         peter.maydell@linaro.org, yuzenghui@huawei.com,
         alexandru.elisei@arm.com, thuth@redhat.com
-Subject: [kvm-unit-tests PATCH v3 02/14] arm: gic: Provide per-IRQ helper functions
-Date:   Tue, 28 Jan 2020 11:34:47 +0100
-Message-Id: <20200128103459.19413-3-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH v3 04/14] arm/arm64: gicv3: Add some re-distributor defines
+Date:   Tue, 28 Jan 2020 11:34:49 +0100
+Message-Id: <20200128103459.19413-5-eric.auger@redhat.com>
 In-Reply-To: <20200128103459.19413-1-eric.auger@redhat.com>
 References: <20200128103459.19413-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -83,165 +83,38 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ncn6AEagnA8S
+X-TUID: 01zC8f9wf68h
 
-From: Andre Przywara <andre.przywara@arm.com>
+PROPBASER, PENDBASE and GICR_CTRL will be used for LPI management.
 
-A common theme when accessing per-IRQ parameters in the GIC distributor
-is to set fields of a certain bit width in a range of MMIO registers.
-Examples are the enabled status (one bit per IRQ), the level/edge
-configuration (2 bits per IRQ) or the priority (8 bits per IRQ).
-
-Add a generic helper function which is able to mask and set the
-respective number of bits, given the IRQ number and the MMIO offset.
-Provide wrappers using this function to easily allow configuring an IRQ.
-
-For now assume that private IRQ numbers always refer to the current CPU.
-In a GICv2 accessing the "other" private IRQs is not easily doable (the
-registers are banked per CPU on the same MMIO address), so we impose the
-same limitation on GICv3, even though those registers are not banked
-there anymore.
-
-Signed-off-by: Andre Przywara <andre.przywara@arm.com>
-
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
-
-initialize reg
----
- lib/arm/asm/gic-v3.h |  2 +
- lib/arm/asm/gic.h    |  8 ++++
- lib/arm/gic.c        | 90 ++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 100 insertions(+)
+ lib/arm/asm/gic-v3.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
-index 0dc838b..6beeab6 100644
+index 6beeab6..ffb2e26 100644
 --- a/lib/arm/asm/gic-v3.h
 +++ b/lib/arm/asm/gic-v3.h
-@@ -23,6 +23,8 @@
+@@ -18,6 +18,7 @@
+  * We expect to be run in Non-secure mode, thus we define the
+  * group1 enable bits with respect to that view.
+  */
++#define GICD_CTLR			0x0000
+ #define GICD_CTLR_RWP			(1U << 31)
+ #define GICD_CTLR_ARE_NS		(1U << 4)
  #define GICD_CTLR_ENABLE_G1A		(1U << 1)
- #define GICD_CTLR_ENABLE_G1		(1U << 0)
+@@ -36,6 +37,11 @@
+ #define GICR_ICENABLER0			GICD_ICENABLER
+ #define GICR_IPRIORITYR0		GICD_IPRIORITYR
 =20
-+#define GICD_IROUTER			0x6000
++#define GICR_PROPBASER                  0x0070
++#define GICR_PENDBASER                  0x0078
++#define GICR_CTLR			GICD_CTLR
++#define GICR_CTLR_ENABLE_LPIS		(1UL << 0)
 +
- /* Re-Distributor registers, offsets from RD_base */
- #define GICR_TYPER			0x0008
-=20
-diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
-index 09826fd..21cdb58 100644
---- a/lib/arm/asm/gic.h
-+++ b/lib/arm/asm/gic.h
-@@ -74,5 +74,13 @@ extern void gic_write_eoir(u32 irqstat);
- extern void gic_ipi_send_single(int irq, int cpu);
- extern void gic_ipi_send_mask(int irq, const cpumask_t *dest);
-=20
-+void gic_set_irq_bit(int irq, int offset);
-+void gic_enable_irq(int irq);
-+void gic_disable_irq(int irq);
-+void gic_set_irq_priority(int irq, u8 prio);
-+void gic_set_irq_target(int irq, int cpu);
-+void gic_set_irq_group(int irq, int group);
-+int gic_get_irq_group(int irq);
-+
- #endif /* !__ASSEMBLY__ */
- #endif /* _ASMARM_GIC_H_ */
-diff --git a/lib/arm/gic.c b/lib/arm/gic.c
-index 9430116..aa9cb86 100644
---- a/lib/arm/gic.c
-+++ b/lib/arm/gic.c
-@@ -146,3 +146,93 @@ void gic_ipi_send_mask(int irq, const cpumask_t *des=
-t)
- 	assert(gic_common_ops && gic_common_ops->ipi_send_mask);
- 	gic_common_ops->ipi_send_mask(irq, dest);
- }
-+
-+enum gic_bit_access {
-+	ACCESS_READ,
-+	ACCESS_SET,
-+	ACCESS_RMW
-+};
-+
-+static u8 gic_masked_irq_bits(int irq, int offset, int bits, u8 value,
-+			      enum gic_bit_access access)
-+{
-+	void *base;
-+	int split =3D 32 / bits;
-+	int shift =3D (irq % split) * bits;
-+	u32 reg =3D 0, mask =3D ((1U << bits) - 1) << shift;
-+
-+	switch (gic_version()) {
-+	case 2:
-+		base =3D gicv2_dist_base();
-+		break;
-+	case 3:
-+		if (irq < 32)
-+			base =3D gicv3_sgi_base();
-+		else
-+			base =3D gicv3_dist_base();
-+		break;
-+	default:
-+		return 0;
-+	}
-+	base +=3D offset + (irq / split) * 4;
-+
-+	switch (access) {
-+	case ACCESS_READ:
-+		return (readl(base) & mask) >> shift;
-+	case ACCESS_SET:
-+		reg =3D 0;
-+		break;
-+	case ACCESS_RMW:
-+		reg =3D readl(base) & ~mask;
-+		break;
-+	}
-+
-+	writel(reg | ((u32)value << shift), base);
-+
-+	return 0;
-+}
-+
-+void gic_set_irq_bit(int irq, int offset)
-+{
-+	gic_masked_irq_bits(irq, offset, 1, 1, ACCESS_SET);
-+}
-+
-+void gic_enable_irq(int irq)
-+{
-+	gic_set_irq_bit(irq, GICD_ISENABLER);
-+}
-+
-+void gic_disable_irq(int irq)
-+{
-+	gic_set_irq_bit(irq, GICD_ICENABLER);
-+}
-+
-+void gic_set_irq_priority(int irq, u8 prio)
-+{
-+	gic_masked_irq_bits(irq, GICD_IPRIORITYR, 8, prio, ACCESS_RMW);
-+}
-+
-+void gic_set_irq_target(int irq, int cpu)
-+{
-+	if (irq < 32)
-+		return;
-+
-+	if (gic_version() =3D=3D 2) {
-+		gic_masked_irq_bits(irq, GICD_ITARGETSR, 8, 1U << cpu,
-+				    ACCESS_RMW);
-+
-+		return;
-+	}
-+
-+	writeq(cpus[cpu], gicv3_dist_base() + GICD_IROUTER + irq * 8);
-+}
-+
-+void gic_set_irq_group(int irq, int group)
-+{
-+	gic_masked_irq_bits(irq, GICD_IGROUPR, 1, group, ACCESS_RMW);
-+}
-+
-+int gic_get_irq_group(int irq)
-+{
-+	return gic_masked_irq_bits(irq, GICD_IGROUPR, 1, 0, ACCESS_READ);
-+}
+ #define ICC_SGI1R_AFFINITY_1_SHIFT	16
+ #define ICC_SGI1R_AFFINITY_2_SHIFT	32
+ #define ICC_SGI1R_AFFINITY_3_SHIFT	48
 --=20
 2.20.1

@@ -1,101 +1,103 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp120202lfp;
-        Mon, 27 Jan 2020 22:49:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxSCK9N7RMWbrd4OqulZREOOSlOP1P68/gSxohYxL9tzbzcmHawuiBu6TZ5ai2KZ1sn6AZF
-X-Received: by 2002:ad4:55ec:: with SMTP id bu12mr21135948qvb.107.1580194141603;
-        Mon, 27 Jan 2020 22:49:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580194141; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp179947lfp;
+        Tue, 28 Jan 2020 00:06:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyVn4pkw+8ysSaQGLwmGuXrsCSfw9eMG84X99JyX5VYexoOfkJI4S30FeXYosXTeseVUzCn
+X-Received: by 2002:a37:85c4:: with SMTP id h187mr21510124qkd.223.1580198765682;
+        Tue, 28 Jan 2020 00:06:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580198765; cv=none;
         d=google.com; s=arc-20160816;
-        b=p+jfMMihsnvOT3bIj5jqT8sY03dKS0yNsiitpMflDIGC3u7eObAoExRdSoeh9rcafD
-         hjelEQTm8fsWZWS5KMBd9iiORI1fFC5/Ecei1T8I5bYhnm6oVymTrY7fb0bTr3N3liLc
-         dOU6MMwfDramTsFMmtHsTR9uQap/58DbH1Bd/UiELkNhY+20VppSBT7q2iZAShgP2Vrc
-         rpRdgOrvzjANHXUcWWqZSAavCKsc1Xb1mTsrh8iIgXmWs+1pITfiZB7yGFnQ61FPwC8d
-         Rq5ByBp+J/PURMOsz21wkgMJrE8tjtRD9y/I194PvdkZE6H6tcEmODWwJlaGyvOpQ3U8
-         Tl+A==
+        b=Rv9+J1glS1vJlz/BjGfl+qsg3UNoHrU+bB6NaH3KfOdy2n6w8lgEhpgCN48v/YPYvV
+         Y6jpkugoaSHcj0D794UC6UMBuo6EHO1kUH/3aas/ynMkTX6yy7hH8E0SAUpYN+VJZhBt
+         7QFB5toiaFqGC7v14XuZL8Z3/+Ax3694hbXg83TC2HBhchsa0vVoqN+h/Ftvuo6Dq5A9
+         U+kFk97BOurCdz4RpvHTmyo36wH8fuFM1VDadOZyYsLOW+QQyFR/rZbD0EqW4ZyshMaM
+         EMCg3YE7OUE1YQZ9YAXDYbUOn4YDLoAy1Cz3gmbuTxnpEAg97W01+EkKRKO4WKw7/Erx
+         WGJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=qiR8c2SnZd4lTxYa17yVHPAFb7s96wnrb03L/DW2qME=;
-        b=1KRrqbh8lsxzp0CbMskHezapmKG0LNV6mYClEiQME03Q4HpzVmOuaSdEg+4swOLNSz
-         03Z//5jcSEjxilmIUmf6251RniV33OfhLS9Uw33D/UZZPM5kKI7S3pEWt7y20mJGuhpT
-         lVO0eqKtuJIp3sr8QqB8DKwm17eQpCHff64yEOr+73dRIXpdtrym8zX1dfLQePonZwIi
-         X9IPiBf5lLQldgOIPLJ8YTxrLHRdz1khbyiGMdPj5ccYuwI+ymtF7PhDT+aywz6TMYKn
-         8c8yITsdui7d4ovhaeMsmqF+X6O4NsKpI6Y2ypfibNWAxOh/S6b2bYVve3dVc8MAb039
-         s13g==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=qVN+wz2rKSaekie9WMPkUV/atoAqPHGM30VGYh6kWNw=;
+        b=HMGvvOCJspGg5Zzc+zx++xadY1rlxnB6qY6lMPrQSNW77DN/uEuTliqQ8ZuwYFp2mR
+         CPe4a28br+HQElAzVxdrZAcvPtt8gFfwxpsgA/OMynl5b0DcCD46ag6RZfpxdx+L23rR
+         0vIgvcR44kLuaQYx29aSaarA08hjNGFM7SZlA0mB/yHs/gPV9It35hFv+EPk7BjhtkWI
+         hE/2TU3RpfoNLEMgaIZJBuUlPoN39i/wF9XTYhoEVvlPDrqNFYYrlQqWSUJd3F2rH9Ty
+         xmLCaklLbxsAz2z5EuA73Y0Os9jy5jX2El+bJLyy0rCBtXRPPpnXW+pmyhwNgMtTR8l4
+         j83A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="g/25Tote";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="HPj2+km/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o68si12044215qvo.83.2020.01.27.22.49.01
+        by mx.google.com with ESMTPS id q38si8791774qtf.293.2020.01.28.00.06.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2020 22:49:01 -0800 (PST)
+        Tue, 28 Jan 2020 00:06:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="g/25Tote";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="HPj2+km/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54640 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55168 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwKgH-0007gm-1H
-	for alex.bennee@linaro.org; Tue, 28 Jan 2020 01:49:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56821)
+	id 1iwLsr-0002cY-5E
+	for alex.bennee@linaro.org; Tue, 28 Jan 2020 03:06:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44238)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1iwKg4-0007gE-UW
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 01:48:50 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iwLsi-0002bz-3v
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 03:05:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1iwKg2-00028U-Hk
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 01:48:47 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25273
+ (envelope-from <eric.auger@redhat.com>) id 1iwLsg-00029N-NF
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 03:05:55 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:53639
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1iwKg2-00026A-Dd
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 01:48:46 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1iwLsg-000293-K3
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 03:05:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580194125;
+ s=mimecast20190719; t=1580198753;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qiR8c2SnZd4lTxYa17yVHPAFb7s96wnrb03L/DW2qME=;
- b=g/25Totery1lqRm6DKIEVjGNQsUvBNWElou+SjS3iWoHRDFlv6q7pKI83F4+ZD6up0XEVi
- ogRdJHhEe858URzOX6JJ8pH+jg38UuuNl6XlxqaWqp0qmcrkGmET/Nqn7f2jlnH2oEfG6U
- 8TuWfDSqA/h1GuLo1Qs3QQziBzIZ8eg=
+ bh=qVN+wz2rKSaekie9WMPkUV/atoAqPHGM30VGYh6kWNw=;
+ b=HPj2+km/PPnzONSQJIVs1HNvloMPbzsaB9h6hCYTsoLAs9lLkIkPv5ql4gPJmwN3aJKkv+
+ shDoMkISrTue7c9AqgQTysaenie2T3yK4UH1NaliM7RVyqjKp70xhW5UQ7MNHrbOsQqtGf
+ 3PveI7PudV4zT6oXeylWeDrXzWMr+5E=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-408-YQ86la4EOmKZjwq4m748Vw-1; Tue, 28 Jan 2020 01:48:43 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-179-iKdxFYU5MUW9eyNfP_UyGg-1; Tue, 28 Jan 2020 03:05:49 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 530B68017CC;
- Tue, 28 Jan 2020 06:48:42 +0000 (UTC)
-Received: from localhost.localdomain (vpn2-54-77.bne.redhat.com [10.64.54.77])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0120410027A1;
- Tue, 28 Jan 2020 06:48:34 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2878B100550E;
+ Tue, 28 Jan 2020 08:05:48 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id ECFB185747;
+ Tue, 28 Jan 2020 08:05:43 +0000 (UTC)
 Subject: Re: [RFC PATCH] hw/arm/virt: Support NMI injection
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
 References: <20191219040612.28431-1-gshan@redhat.com>
-Message-ID: <d972631d-7db7-b6d5-61b8-244ae2c85882@redhat.com>
-Date: Tue, 28 Jan 2020 17:48:32 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ <d972631d-7db7-b6d5-61b8-244ae2c85882@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <1b718429-c74e-fbac-84b8-379f3291db40@redhat.com>
+Date: Tue, 28 Jan 2020 09:05:41 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20191219040612.28431-1-gshan@redhat.com>
+In-Reply-To: <d972631d-7db7-b6d5-61b8-244ae2c85882@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: YQ86la4EOmKZjwq4m748Vw-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: iKdxFYU5MUW9eyNfP_UyGg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,65 +110,89 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
- aik@ozlabs.ru, maz@kernel.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
- shan.gavin@gmail.com, pbonzini@redhat.com
+ aik@ozlabs.ru, maz@kernel.org, qemu-devel@nongnu.org, shan.gavin@gmail.com,
+ pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k4VthXJfJEll
+X-TUID: 3sq9kteORNgc
 
-[including more folks into the discussion]
+Hi,
 
-> On Fri, 17 Jan 2020 at 14:00, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On Thu, 19 Dec 2019 at 04:06, Gavin Shan <gshan@redhat.com> wrote:
->>> This supports NMI injection for virtual machine and currently it's only
->>> supported on GICv3 controller, which is emulated by qemu or host kernel.
->>> The design is highlighted as below:
->>>
->>> * The NMI is identified by its priority (0x20). In the guest (linux)
->>> kernel, the GICC_PMR is set to 0x80, to block all interrupts except
->>> the NMIs when the external interrupt is disabled. It means the FIQ
->>> and IRQ bit in PSTATE isn't touched when the functionality (NMI) is
->>> functional.
->>> * LPIs aren't considered as NMIs because of their nature. It means NMI
->>> is either SPI or PPI. Besides, the NMIs are injected in round-robin
->>> fashion is there are multiple NMIs existing.
->>> * When the GICv3 controller is emulated by qemu, the interrupt states
->>> (e.g. enabled, priority) is fetched from the corresponding data struct
->>> directly. However, we have to pause all CPUs to fetch the interrupt
->>> states from host in advance if the GICv3 controller is emulated by
->>> host.
->>>
->>> The testing scenario is to tweak guest (linux) kernel where the pl011 SPI
->>> can be enabled as NMI by request_nmi(). Check "/proc/interrupts" after injecting
->>> several NMIs, to see if the interrupt count is increased or not. The result
->>> is just as expected.
->>>
->
-> So, QEMU is trying to emulate actual hardware. None of this
-> looks to me like what GICv3 hardware does... If you want to
-> have the virt board send an interrupt, do it the usual way
-> by wiring up a qemu_irq from some device to the GIC, please.
-> (More generally, there is no concept of an "NMI" in the GIC;
-> there are just interrupts at varying possible guest-programmable
-> priority levels.)
->
+On 1/28/20 7:48 AM, Gavin Shan wrote:
+> [including more folks into the discussion]
+> 
+>> On Fri, 17 Jan 2020 at 14:00, Peter Maydell <peter.maydell@linaro.org>
+>> wrote:
+>>> On Thu, 19 Dec 2019 at 04:06, Gavin Shan <gshan@redhat.com> wrote:
+>>>> This supports NMI injection for virtual machine and currently it's only
+>>>> supported on GICv3 controller, which is emulated by qemu or host
+>>>> kernel.
+>>>> The design is highlighted as below:
+>>>>
+>>>> * The NMI is identified by its priority (0x20). In the guest (linux)
+>>>> kernel, the GICC_PMR is set to 0x80, to block all interrupts except
+>>>> the NMIs when the external interrupt is disabled. It means the FIQ
+>>>> and IRQ bit in PSTATE isn't touched when the functionality (NMI) is
+>>>> functional.
+>>>> * LPIs aren't considered as NMIs because of their nature. It means NMI
+>>>> is either SPI or PPI. Besides, the NMIs are injected in round-robin
+>>>> fashion is there are multiple NMIs existing.
+>>>> * When the GICv3 controller is emulated by qemu, the interrupt states
+>>>> (e.g. enabled, priority) is fetched from the corresponding data struct
+>>>> directly. However, we have to pause all CPUs to fetch the interrupt
+>>>> states from host in advance if the GICv3 controller is emulated by
+>>>> host.
+>>>>
+>>>> The testing scenario is to tweak guest (linux) kernel where the
+>>>> pl011 SPI
+>>>> can be enabled as NMI by request_nmi(). Check "/proc/interrupts"
+>>>> after injecting
+>>>> several NMIs, to see if the interrupt count is increased or not. The
+>>>> result
+>>>> is just as expected.
+>>>>
+>>
+>> So, QEMU is trying to emulate actual hardware. None of this
+>> looks to me like what GICv3 hardware does... If you want to
+>> have the virt board send an interrupt, do it the usual way
+>> by wiring up a qemu_irq from some device to the GIC, please.
+>> (More generally, there is no concept of an "NMI" in the GIC;
+>> there are just interrupts at varying possible guest-programmable
+>> priority levels.)
+>>
+> 
+> Peter, I missed to read your reply in time and apologies for late response.
+> 
+> Yes, there is no concept of "NMI" in the GIC from hardware perspective.
+> However, NMI has been supported from the software by kernel commit
+> bc3c03ccb4641 ("arm64: Enable the support of pseudo-NMIs"). The NMIs
+> have higher priority than normal ones. NMIs are deliverable after
+> local_irq_disable() because the SYS_ICC_PMR_EL1 is tweaked so that
+> normal interrupts are masked only.
+> 
+> It's unclear about the purpose of "nmi" QMP/HMP command. It's why I
+> put a RFC tag. The command has been supported by multiple architects
+> including x86/ppc. However, they are having different behaviors. The
+> system will be restarted on ppc with this command, but a NMI is injected
+> through LAPIC on x86. So I'm not sure what architect (system reset on
+> ppc or injecting NMI on x86) aarch64 should follow.
 
-Peter, I missed to read your reply in time and apologies for late response.
+arm_pmu driver was reworked to use pseudo-NMIs. I don't know the exact
+status of this work though
+(https://patchwork.kernel.org/cover/11047407/). So we cannot use any
+random NMI for guest injection.
 
-Yes, there is no concept of "NMI" in the GIC from hardware perspective.
-However, NMI has been supported from the software by kernel commit
-bc3c03ccb4641 ("arm64: Enable the support of pseudo-NMIs"). The NMIs
-have higher priority than normal ones. NMIs are deliverable after
-local_irq_disable() because the SYS_ICC_PMR_EL1 is tweaked so that
-normal interrupts are masked only.
+I wonder whether we should implement the KVM_NMI vcpu ioctl once we have
+agreed on which behavior is expected upon NMI injection. However the
+kernel doc says this ioctl only is well defined if "KVM_CREATE_IRQCHIP
+has not been called" (?).
 
-It's unclear about the purpose of "nmi" QMP/HMP command. It's why I
-put a RFC tag. The command has been supported by multiple architects
-including x86/ppc. However, they are having different behaviors. The
-system will be restarted on ppc with this command, but a NMI is injected
-through LAPIC on x86. So I'm not sure what architect (system reset on
-ppc or injecting NMI on x86) aarch64 should follow.
+Thanks
 
-Thanks,
-Gavin
+Eric
+> 
+> Thanks,
+> Gavin
+> 
+> 
 

@@ -1,133 +1,141 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp324283lfp;
-        Tue, 28 Jan 2020 02:59:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx7+tOOksyS0r1p9ANt/LzTGDQKlAz5Z+W0rbJYXx+fdHVD26HJgO35/dd6qPdgW+epQz/1
-X-Received: by 2002:ac8:7243:: with SMTP id l3mr7769993qtp.139.1580209166429;
-        Tue, 28 Jan 2020 02:59:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580209166; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp341918lfp;
+        Tue, 28 Jan 2020 03:15:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzL3duSNF1EjQxEG/mVGgO/ClTYcky6q39NIU+JTTUnVgk/9N5yiR+8zqnkQ567QepJz2Up
+X-Received: by 2002:a05:620a:147c:: with SMTP id j28mr19683010qkl.13.1580210136984;
+        Tue, 28 Jan 2020 03:15:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580210136; cv=none;
         d=google.com; s=arc-20160816;
-        b=J2PrY2DzsPUMsUlbXooJZuDxyJ5JnhDVJOpbEsVF8WLC4u0foQawOcv8XyqYlxi07A
-         79ME94e203/j4duuXGgymJTm+359WZg+cMryk6+cJBtXBSeFruQVpH+LZcBbVdQp46Jq
-         BYW0IThwy6TWAnKUQKCeQggrOCS9z9nZF9wFJ5tCl5ygzQjg70DpHQxoooK/phjgKsrO
-         GL8PVU1gzj0/S87jMd1jwA8UEnB0NDsHLQKBmlzhrqa1Xzo5nBxYevcoodmegCJ6go6U
-         uJRNeca3PmJXznzCFVPfsQbHJqV33DKHiAl1ajdn8AdRypEj6jFgRZgs9LY/LAfR7kz6
-         s6Sg==
+        b=PvaRoO5HMSV5XB7yRGw4S3bY+x/O2EqjnUWriLbI7an8VNGDsq7tSCzNNuGv51HOkT
+         vYpvPN9IONgqVk6ft4CxswUa1FxNG+23ZBl8QSoAlmUHmkcmwZQEjjuN4z3da/VQDelU
+         TSHmvDCr9gsA4ZVrYKL+gXpdKAMNHwmphrfjhusrGEwaLjB8KIdblntuhQHpa/+qjCzU
+         rjilhBqjVumZhR7u04x3uKc2wRvCirvnPuW9Ak6L7shAUHw2zFNPB2T13MduXlTlfMD4
+         qupwZ0uxnSvudSIIYZb0zGCarVw/KehteS/uRWk7R05LT+pP5T2bMOLtoFis3JJ81wPO
+         9q+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=pf7eaZKLcykzv5YZVmlfAWZvxYouEa7qWG2IX0om23c=;
-        b=Wt4h6i0IfTUgDHz/Y8NLyhwpTVBIt/NvY0urggH20ifjWwLvnRB+LDe0yZwhqt1wrR
-         cE3eiU8HA1dLsYJPRHnqeS70dfIKNIlCcWeIwCbNhduNAQhjiXHhOOHvtbofmtZadbci
-         TcW0/18WQTxEzjFMCtGFGVoEru+QYE63xO3QT/R2J/60L/vXYOoNrWHAF/ZG6dL7psNN
-         3tTy6YMDxaAb6BngowVZ9ZKXJCJ4cIjmUcclubR1v6OP2SSUuZHlRWzppQCvsgy38v4G
-         +NCOgbZ23pAy7vpB86/iVyklEjn2a/0RmT9HSGTDlE1RcYChZQTNw9R+e2Ajaw6XKE0y
-         8HDA==
+         :list-unsubscribe:list-id:precedence:user-agent:message-id
+         :references:in-reply-to:subject:to:from:date
+         :content-transfer-encoding:mime-version:dkim-signature;
+        bh=MgjPPEe4w+8YN9/OErB9q8x9UKTbX3Ki8yk2R7EFgBI=;
+        b=tZQ2r8WXLr9/+5pnTRciT/72rkpsN3aTxbzVjo8yXkxglAudT0YQ11v0uxUcsrAOiX
+         3LMMq07emmBoK/1AtBzBazzMCdqeRnyO21HW/CRfXHRoflufmDKYrtMR+8LLWANwqa1+
+         IpuRyt1/ww/1xdXTChzVVnT7wSE8s+Ro6ICiBP/MpTS2RACnhgNWxrBle10mi1s5Qn1o
+         jYb7X4Jlu+T3LH74gMyorZV77BUtA9d5diQO137Q663h1QSp5T+FzlKYDRBYOv864sh9
+         2JSSuO1TRvdzU96TNpvEGgHlODvoE+Xaa+ef2kJmPvco3Dij5M7qe9oYvsXDWmiM2yc+
+         E/Pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="u/7fV+kE";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@kernel.org header.s=default header.b=HND4zrJo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v25si12052520qta.106.2020.01.28.02.59.26
+        by mx.google.com with ESMTPS id d24si12923145qka.252.2020.01.28.03.15.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2020 02:59:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Jan 2020 03:15:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="u/7fV+kE";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57032 helo=lists1p.gnu.org)
+       dkim=fail header.i=@kernel.org header.s=default header.b=HND4zrJo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:57364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwOab-0004sR-TR
-	for alex.bennee@linaro.org; Tue, 28 Jan 2020 05:59:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54177)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iwOqG-00043Q-E1
+	for alex.bennee@linaro.org; Tue, 28 Jan 2020 06:15:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57923)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iwOaS-0004mM-8C
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 05:59:17 -0500
+ (envelope-from <maz@kernel.org>) id 1iwOoW-0002Tz-IX
+ for qemu-devel@nongnu.org; Tue, 28 Jan 2020 06:13:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iwOaR-0000qh-CI
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 05:59:16 -0500
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:39940)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iwOaR-0000qD-6b
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 05:59:15 -0500
-Received: by mail-oi1-x243.google.com with SMTP id a142so8291181oii.7
- for <qemu-arm@nongnu.org>; Tue, 28 Jan 2020 02:59:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pf7eaZKLcykzv5YZVmlfAWZvxYouEa7qWG2IX0om23c=;
- b=u/7fV+kEc4082Xu/zXeBLxbhysD+bJv4HsWcQ2+Fn2havJmtvFrLBcGtEn2M/7dBPl
- 6W25JVEHawF9/KsmriQyjzuPAAS2edFOkO4rzAH5BdLtVm/F7pdOZVNkhr9IxjuYo4xp
- lCQmV3G+vDxdFoQy1btFrTpmms6LILufC9MZ94lOZZ42ljR9vdjbuOw3N8xwGldSEty6
- lT5zlr/ce3vPb0kuKD+CRiwE8R4mDmZoYroiUf2hRjEVBcj1lByoEcBORnEsSjo2oaMN
- pjVWQ8OOtFk1UfyFuv7LWDZ91lznED9NX+weWsB0/4FXRlM89VsF3OJurOZ5qi6SeGpN
- 266A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=pf7eaZKLcykzv5YZVmlfAWZvxYouEa7qWG2IX0om23c=;
- b=JSwA2Y1hdAEWfERH3we7xydL+GM3oQjoAXIJWI1PHiB78Q8zdqwz1PFs0X1ZwUGtEB
- pY+eQDJrNt8Mjh1ZZ4KDuTCrWLnIBvs0y5TLhXJK3w9u8blJ5Zqd9jqz2cDdIaT0qkvq
- TJn4BGAMQ5oKdcPwxWNX5hWgGwTEuCBY+dEpmRlNvkDnEP7aaM9S2wrg/YpVSJQWy6YG
- ccfk2177QhrbUlhCV3YKVSKDNNm6m2ufsfGffI2HHQhQ4ZHqj4b8B6LaGvWnbbCWbY2r
- U0COaj+FqmGp2WXutaYIKbkyfeX0AvYYJjPK1DSaBFUIAtisBR85sDGngMnLMFC6o/FE
- NtWA==
-X-Gm-Message-State: APjAAAXufL1IMH5BGNO0NMF0SBjE/G7+uU25/0zU8ilSHo+5uN1JXEwa
- 0v3sjMhV835SlS5cskxckJTcbo57yXWu9FST7FBEpg==
-X-Received: by 2002:aca:3182:: with SMTP id x124mr2461998oix.170.1580209154191; 
- Tue, 28 Jan 2020 02:59:14 -0800 (PST)
+ (envelope-from <maz@kernel.org>) id 1iwOoV-0004Hp-Hp
+ for qemu-devel@nongnu.org; Tue, 28 Jan 2020 06:13:48 -0500
+Received: from mail.kernel.org ([198.145.29.99]:53228)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <maz@kernel.org>)
+ id 1iwOoT-0004G2-BJ; Tue, 28 Jan 2020 06:13:45 -0500
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 29DF821739;
+ Tue, 28 Jan 2020 11:13:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1580210024;
+ bh=M+CDq/a4jwD0PmQTrnO8ciZK2J5DAAtG91pLWGSuqUc=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=HND4zrJoUI5Fs2HHJbyJkEF2kn6rn4d9oLFnHse11yGmuLVd8js9MCrFi0hzky5hI
+ bzTRwQiqvWo1TYiv/5M65Ab5HuKN/zcw08EsdS0niLgWF5bOmLokRDPMXtG3/Zk986
+ kNXXUtoAeXfnH2Ks4IeUNPm5dUMmROjp31xUht1M=
+Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
+ by disco-boy.misterjones.org with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <maz@kernel.org>)
+ id 1iwOoQ-001nok-EY; Tue, 28 Jan 2020 11:13:42 +0000
 MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Tue, 28 Jan 2020 11:13:42 +0000
+From: Marc Zyngier <maz@kernel.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [RFC PATCH] hw/arm/virt: Support NMI injection
+In-Reply-To: <CAFEAcA92URHhhm8TiGqijig_jM1=94PZz5Ptmfg1JrWSP7mSHQ@mail.gmail.com>
 References: <20191219040612.28431-1-gshan@redhat.com>
  <d972631d-7db7-b6d5-61b8-244ae2c85882@redhat.com>
  <1b718429-c74e-fbac-84b8-379f3291db40@redhat.com>
  <ff78ed012e7b8fbd656e7e4b477ee0a4@kernel.org>
  <3ae0557c-c289-8a23-d62f-3dc2a12c0623@redhat.com>
-In-Reply-To: <3ae0557c-c289-8a23-d62f-3dc2a12c0623@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Jan 2020 10:59:03 +0000
-Message-ID: <CAFEAcA92URHhhm8TiGqijig_jM1=94PZz5Ptmfg1JrWSP7mSHQ@mail.gmail.com>
-Subject: Re: [RFC PATCH] hw/arm/virt: Support NMI injection
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-X-BeenThere: qemu-arm@nongnu.org
+ <CAFEAcA92URHhhm8TiGqijig_jM1=94PZz5Ptmfg1JrWSP7mSHQ@mail.gmail.com>
+Message-ID: <97bd5cbfec30624aead987a0fd1c4ac6@kernel.org>
+X-Sender: maz@kernel.org
+User-Agent: Roundcube Webmail/1.3.8
+X-SA-Exim-Connect-IP: 51.254.78.96
+X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, eric.auger@redhat.com,
+ drjones@redhat.com, gshan@redhat.com, jthierry@redhat.com, aik@ozlabs.ru,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, shan.gavin@gmail.com,
+ pbonzini@redhat.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 198.145.29.99
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jones <drjones@redhat.com>, Gavin Shan <gshan@redhat.com>,
  jthierry@redhat.com, Alexey Kardashevskiy <aik@ozlabs.ru>,
- Marc Zyngier <maz@kernel.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Auger Eric <eric.auger@redhat.com>,
  qemu-arm <qemu-arm@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vwnRMnWb/tvq
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HR29mbisvmF7
 
-On Tue, 28 Jan 2020 at 10:56, Auger Eric <eric.auger@redhat.com> wrote:
-> On 1/28/20 10:25 AM, Marc Zyngier wrote:
-> > You *could* try something like SDEI [1], but that's a pretty terrible
-> > interface too.
->
-> Thank you for the pointer.
+On 2020-01-28 10:59, Peter Maydell wrote:
+> On Tue, 28 Jan 2020 at 10:56, Auger Eric <eric.auger@redhat.com> wrote:
+>> On 1/28/20 10:25 AM, Marc Zyngier wrote:
+>> > You *could* try something like SDEI [1], but that's a pretty terrible
+>> > interface too.
+>> 
+>> Thank you for the pointer.
+> 
+> There was a patchset recently that had an SDEI implementation,
+> but I would strongly prefer not to have QEMU itself take
+> on the job of firmware API implementation, and the facilities
+> provided are somewhere between awkward and impossible to
+> implement from within a guest firmware blob :-/
 
-There was a patchset recently that had an SDEI implementation,
-but I would strongly prefer not to have QEMU itself take
-on the job of firmware API implementation, and the facilities
-provided are somewhere between awkward and impossible to
-implement from within a guest firmware blob :-/
+Hey, I said it was terrible! ;-)
 
-thanks
--- PMM
+         M.
+-- 
+Jazz is not dead. It just smells funny...

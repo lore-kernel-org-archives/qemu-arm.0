@@ -1,123 +1,220 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp197278lfp;
-        Tue, 28 Jan 2020 00:24:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyLGn7Rix65gecEpMoU9Mec3yE0EAjmHgPt1SVDQQ+qlm8lMe/7SFNn5Qfo09cuRe0bVvZ6
-X-Received: by 2002:a05:620a:6cc:: with SMTP id 12mr21789733qky.307.1580199889355;
-        Tue, 28 Jan 2020 00:24:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580199889; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp304519lfp;
+        Tue, 28 Jan 2020 02:35:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxGkm7mfX4hk9vBiN9J3IBWtJtu8aJM+Auev0wFPk+glycR+TuYXqRCxVi6q0UbrSNcYTS5
+X-Received: by 2002:a37:4d10:: with SMTP id a16mr21606981qkb.325.1580207724409;
+        Tue, 28 Jan 2020 02:35:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580207724; cv=none;
         d=google.com; s=arc-20160816;
-        b=omH5rRCU9bpIxijITpRhVb8whsvm0CXOAMeZW7MoM8k9lrQm6i7IiVaTd9yfh6gmKz
-         wH4jZOo/TopLCo0KO7BXgp3ioShlik8XeumwKb+ic2a20tKbrzPJej4OvmblUsfGCmHY
-         7919E83xBsA9oCfBLs9ho5QiDbp7VovRbGTGLX3xn2MkB1v1CasD4108+oqCT/tVHyHB
-         cvP3vtKSOvYrULyYJritCKUR0I0ZwV/EX5DKZeZ6LNXEfldePiwhwuRaKTvzy1zlaM2J
-         osUb+B93RCnolOCFGEbuC+iGMT2qLNfec+TXx9exe0LHRoAzMVtxT9iO2Wb41YHUPo3O
-         flyA==
+        b=Za9AfEMHzzIkLDZl7jhyTl/gtAArn+9dmX/BkH3DEV6djsrbJYwqBGrwEOm53b8qTi
+         Wla5OpL+SALu2AO2/Q3NnrGcnbl7AGQtK1js32QxGgXcidbRhSr6BA/LeWIwq4fph9If
+         Z3KDtXptLh+gInsTsJIq4dw3gU5xHsosq4TWc+4yw3cD9OGhPl3t+sOB27oZBJQhQv0z
+         DQtt+yn8gZNMTxI1A+xQjqIa03ojWXAAcM+zN0voiwfCTTHDT8qAfDYtUdD0YVOnhcS5
+         QXicEHXFxKrFq4rURA3zr31HvQghO36iDWmhp4946pdNrS2QLnZZMQyQZe4B8VxQYwsr
+         6hfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=VbMZ1PVA2JQRa7jPzZgJQp6E7BVS/1mjrlQ6mX+fVF4=;
-        b=ydTGG3rUhQ8Yf6AmzS0/DxGoItsPje98MZjLrHPGNE0KBinqVWzepz7+2ljadjnGo4
-         /d4v543+Y3nwITytnG72vdjmb11xOdEoTZ2ebvjOlMbzP4VVUX9aJnWTTIm1+yFn38M1
-         JCy1RbbnKqEfUthp+Nnpo+ctOrNQdArHfwd1t/2Ifkp+0cJB90UjjLdoHefDx2qkiGGB
-         MCMPGdWv3XCTjMmoRLvR8s38iHlcUsXWKqYwHdvcy6wV7Su6cxRzVqoIUsxZuoYU9LtD
-         xpRNqmXX9qOLsDDoHx2P4N2wdjyzhRqCUpsJbwAB030UwhmhzcpOq+Ch26arggrqzHwf
-         Z3KQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=FpK3og+wS6rJtmxYrcyP5ZOnh+Pty6yLJPAHr18EMWY=;
+        b=sIC8YtZHan/4FKBGwvo23zUzDuGO6UDZsfQg0zIVl7iJ6BRitjQSTAVP3uhMkVA9UY
+         RFY1v92vplJANnM3tSUP2rYeMaETUeyp82F2d/h5vPe4gX8zs86k00pBK6qR9kndgkd6
+         yeiZtZWpOrp7TDXPy/1V9NpG5LbJtFnWuP3hTb3T56l7pf8qiRHDrxDi9SdDkWav88OP
+         zrZ2iEt3sKlGlCTVx3+wJuCAXdhIFyaa0MGiltPB5LxG1MWrHs02t0jAY7uw+zlzzsJ3
+         U8bzMwqoUPb+OJz9LaHAnjerhYapZ8vXTt22FSN01jgMMketds6UZutlcaGYjnX/Xtuq
+         jDrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u35si11427257qtd.394.2020.01.28.00.24.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2020 00:24:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=EHoDCcBO;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id f10si6664868qtm.88.2020.01.28.02.35.24;
+        Tue, 28 Jan 2020 02:35:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55310 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwMAy-0007nE-QY
-	for alex.bennee@linaro.org; Tue, 28 Jan 2020 03:24:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48268)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iwMAr-0007n1-PR
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 03:24:42 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iwMAq-0007Op-Ie
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 03:24:41 -0500
-Received: from 9.mo173.mail-out.ovh.net ([46.105.72.44]:35811)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iwMAq-0007MT-CS
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 03:24:40 -0500
-Received: from player692.ha.ovh.net (unknown [10.110.208.202])
- by mo173.mail-out.ovh.net (Postfix) with ESMTP id 3B28612DF6A
- for <qemu-arm@nongnu.org>; Tue, 28 Jan 2020 09:24:37 +0100 (CET)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player692.ha.ovh.net (Postfix) with ESMTPSA id 03B71E9186F7;
- Tue, 28 Jan 2020 08:24:28 +0000 (UTC)
-Subject: Re: [PATCH v3 1/5] hw/sd: Configure number of slots exposed by the
- ASPEED SDHCI model
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200114103433.30534-1-clg@kaod.org>
- <20200114103433.30534-2-clg@kaod.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <149987eb-a657-b7e0-7ca8-198281ed1713@kaod.org>
-Date: Tue, 28 Jan 2020 09:24:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=EHoDCcBO;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 12B804A528;
+	Tue, 28 Jan 2020 05:35:24 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 55hnsiws4JQb; Tue, 28 Jan 2020 05:35:22 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id D773C4A59D;
+	Tue, 28 Jan 2020 05:35:22 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id CF7F14A59D
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 28 Jan 2020 05:35:20 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3Tcxs3L9WQSU for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 28 Jan 2020 05:35:19 -0500 (EST)
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [207.211.31.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 836094A528
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 28 Jan 2020 05:35:19 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580207719;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=fkt49j2omiFhxKeCwkMFncGz7jKFhFRQ1Z0P3fqpgS4=;
+ b=EHoDCcBOzXkOs9cwcALC3twg4YWBgJZe/MlBx1NsfsKCoPmpR1nbmt1SvglNTrL9CHwPIN
+ bKCwV4dgJ/RuzvTmKELZmdFs8h1eLlxbP0rrCfQR1EHqkIME4qeZCUXAU/JzVmy9G2mlR/
+ qG7960TnKgNOLxAqwNWOBRTeq+FPbPE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-171-iOkdwkQ5PaOa_EbpL-qEKQ-1; Tue, 28 Jan 2020 05:35:12 -0500
+X-MC-Unique: iOkdwkQ5PaOa_EbpL-qEKQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 357E618C43C0;
+ Tue, 28 Jan 2020 10:35:10 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AD6381001B08;
+ Tue, 28 Jan 2020 10:35:01 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+ kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: [kvm-unit-tests PATCH v3 00/14] arm/arm64: Add ITS tests
+Date: Tue, 28 Jan 2020 11:34:45 +0100
+Message-Id: <20200128103459.19413-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200114103433.30534-2-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 17277215546196396864
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrfeefgdduudejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheiledvrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.72.44
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Cc: andre.przywara@arm.com, thuth@redhat.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cDZngYDsyrFZ
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: kNXEr8qrlZwB
 
-Hello Peter, 
+This series is a revival of an RFC series sent in Dec 2016 [1].
+Given the amount of code and the lack of traction at that time,
+I haven't respinned until now. However a recent bug found related
+to the ITS migration convinced me that this work may deserve to be
+respinned and enhanced.
 
-[ ... ]
+Tests exercise main ITS commands and also test migration.
+With the migration framework, we are able to trigger the
+migration from guest and that is very practical actually.
 
-> +static Property aspeed_sdhci_properties[] = {
-> +    DEFINE_PROP_UINT8("num-slots", AspeedSDHCIState, num_slots, 0),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
->  static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(classp);
-> @@ -181,6 +187,7 @@ static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
->      dc->realize = aspeed_sdhci_realize;
->      dc->reset = aspeed_sdhci_reset;
->      dc->vmsd = &vmstate_aspeed_sdhci;
-> +    dc->props = aspeed_sdhci_properties;
+What is particular with the ITS programming is that most of
+the commands are passed through queues and there is real error
+handling. Invalid commands are just ignored and that is not
+really tester friendly.
 
-This will require a change to use device_class_set_props(). 
+This series includes Andre's patch: "arm: gic: Provide
+per-IRQ helper functions" [2]
 
-Do you want a resend ?  
+test_migrate_unmapped_collection is currently failing with
+upstream kernel. See [3].
 
-Thanks,
+The series can be fount at:
+https://github.com/eauger/kut/tree/its-v3
 
-C.
+Best Regards
+
+Eric
+
+History:
+v2 -> v3:
+- fix 32b compilation
+- take into account Drew's comments (see individual diff logs)
+
+v1 -> v2:
+- took into account Zenghui's comments
+- collect R-b's from Thomas
+
+References:
+[1] [kvm-unit-tests RFC 00/15] arm/arm64: add ITS framework
+    https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg00575.html
+
+[2] [kvm-unit-tests PATCH 00/17] arm: gic: Test SPIs and interrupt groups
+    https://patchwork.kernel.org/cover/11234975/
+
+[3] [PATCH] KVM: arm/arm64: vgic-its: Fix restoration of unmapped
+    collections (https://lkml.org/lkml/2019/12/13/205)
+
+Execution:
+x For ITS migration testing use:
+  ./run_tests.sh -g migration (block on TCG)
+
+x For other ITS tests:
+  ./run_tests.sh -g its
+
+x non migration tests can be launched invidually. For instance:
+  ./arm-run arm/gic.flat -smp 8 -append 'its-trigger'
+
+
+Andre Przywara (1):
+  arm: gic: Provide per-IRQ helper functions
+
+Eric Auger (13):
+  libcflat: Add other size defines
+  arm/arm64: gic: Introduce setup_irq() helper
+  arm/arm64: gicv3: Add some re-distributor defines
+  arm/arm64: ITS: Introspection tests
+  arm/arm64: gicv3: Set the LPI config and pending tables
+  arm/arm64: gicv3: Enable/Disable LPIs at re-distributor level
+  arm/arm64: ITS: its_enable_defaults
+  arm/arm64: ITS: Device and collection Initialization
+  arm/arm64: ITS: commands
+  arm/arm64: ITS: INT functional tests
+  arm/run: Allow Migration tests
+  arm/arm64: ITS: migration tests
+  arm/arm64: ITS: pending table migration test
+
+ arm/Makefile.arm64         |   1 +
+ arm/Makefile.common        |   2 +-
+ arm/gic.c                  | 488 +++++++++++++++++++++++++++++++++++--
+ arm/run                    |   2 +-
+ arm/unittests.cfg          |  38 +++
+ lib/arm/asm/gic-v3-its.h   | 167 +++++++++++++
+ lib/arm/asm/gic-v3.h       |  25 ++
+ lib/arm/asm/gic.h          |   8 +
+ lib/arm/gic-v3-its-cmd.c   | 454 ++++++++++++++++++++++++++++++++++
+ lib/arm/gic-v3-its.c       | 243 ++++++++++++++++++
+ lib/arm/gic-v3.c           |  81 ++++++
+ lib/arm/gic.c              | 120 ++++++++-
+ lib/arm/io.c               |  28 +++
+ lib/arm64/asm/gic-v3-its.h |   1 +
+ lib/libcflat.h             |   3 +
+ 15 files changed, 1633 insertions(+), 28 deletions(-)
+ create mode 100644 lib/arm/asm/gic-v3-its.h
+ create mode 100644 lib/arm/gic-v3-its-cmd.c
+ create mode 100644 lib/arm/gic-v3-its.c
+ create mode 100644 lib/arm64/asm/gic-v3-its.h
+
+-- 
+2.20.1
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

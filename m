@@ -1,69 +1,69 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp305689lfp;
-        Tue, 28 Jan 2020 02:36:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqztmuEwPJA5k9ArvPUqgWnQF6Nn108xkz2c2/v2U/HT9xWrOEztAyiL4dF5XUAi/QRIuDfI
-X-Received: by 2002:aca:2118:: with SMTP id 24mr2392376oiz.28.1580207796472;
-        Tue, 28 Jan 2020 02:36:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580207796; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp305798lfp;
+        Tue, 28 Jan 2020 02:36:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwrk1H8YXkjdBfuvHpmv5fpsERn4rUts9FJqgqOsN/3PpmLx/T7+RvpLhiz+kVwsjP7wAiq
+X-Received: by 2002:a9d:222f:: with SMTP id o44mr15626365ota.51.1580207803500;
+        Tue, 28 Jan 2020 02:36:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580207803; cv=none;
         d=google.com; s=arc-20160816;
-        b=BeGU3a3hijtHL6SPBsKukW7ad8eynT/zrc5XdQb8ltFWtS98bE6lzDhqwNhf1CDLVV
-         7J3wNFR4A4CnhmCXLuneyPa82zVYlWrSfsG+ZLIFIQ6JR5E4cid0aGUsvi04sRvecEHZ
-         L0G+lzos863DdgdaZRNiFfj9RyajR7mqRSErK6JF+NrHkxV/d8HV2nydFL6qmZwKUISL
-         itHMBjDZDijgekxbBBWs6v0UtqHCOdU5uy1ZM4ynkqGMq+EBS1b5FUZuqF8dhnemuLRc
-         ZeJuT1WY0aMyCMx8D00VDPTwkcoKWBTyuybqgw81/zJgtWrwNNOAXPQhUawyJfPBVlED
-         uKqw==
+        b=r0z6VL2MFDTw3AOt3dwVKVBqRi02Hx0BOWUOVru/wSzonegQfWsdA5rVrX1eSZ1ssn
+         h/9+5m5Q8Yv7N2t91AcQqd5F9I2u1Pzf7PDaZiKJ10h5fEdyZZdxOGJW5w/NNBBxX6+/
+         LthIH+fgN8Gx9KqwAs1YkoLhxzxnSsRzcffpD68NF+PwM9qH9G9Z+iezte9EgD0hiQWA
+         h41TGHkepKhdga8ZZJySSBe4njBTkzONXkEqQbRwuuOhbi8QxFE/XeI+kh6Bq5Z6iz43
+         a2XyzGv7WVDq1MRJWp3PmAwsrspbHPnlXDPQNFhTdS/1sZ5WUbgUVkaZ/H5RLpp9o3/d
+         roAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=AMnFoycaRqVR3q3J7wrgsZqqrGsLu5esjXYok9mZrus=;
-        b=eRwoDryeZGvjNMfKaFY6VEu2JD0X8aghv+xk0QgE6E4yncXp33m9PBHaRStM5owfM7
-         z94t3weZlbjUM8D/iOz45ogseREheA7SGb8C7s25i18M3AWVq1l/XRYeQM2MC0OH55kq
-         EZzTp5XWZklJkEYEmdTKYi/4ZajVYLLb0xZbg6H1MHcy9ImkP1X/LvbPZPTBuLoaGARe
-         EyrFwZR2OdqzHma8+CxI4ty8IKIPdIChn7g9eTznRGGWqEbOz2cshNyCQPZzyNkBqoWu
-         f3BcbbyPX6vcvn/0/xWlq1t3NePU9brVbw/MlUhEH/fS/nj5YXEcFg+UntWf2cIgrh6B
-         xRCg==
+        bh=S7IyFp9yNNPGRardzvjsfdUtfgsnLQUlfdwQx3hiSAI=;
+        b=jqyghuP0GzXov4DaYvlTZT65C2KBD8zbVXiwpIvdDvRFutOp10ygvd8KwhamGrQNwl
+         mwDtDcJ2ek3z6Xuo20ngQaavLwMnYS0x6s0+dW9SNhD+qNnJ06NAi8ZgeLYBwMnPQ6Eq
+         1h9mzGNsGqISGpTlj9XueswxrRDKGLFcmkp4peZWvgpIsfiB+aUM2++7rLPGRmXgeuyI
+         XHQ4gwY6glRW23KArga/SLdqbJTU+E59b/BZvV8lbZUyGMpQxrQ4642ShRpX9uxO8qhh
+         HF1EtaXNJkqECWoKoe4px/gd5wYOWA9eiw4MbqnJiMRKiMRzk+c2qM+E3sINmkLpBKYD
+         kWNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TZpmxGlt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A6gwW4gE;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id s6si3478540otq.115.2020.01.28.02.36.36;
-        Tue, 28 Jan 2020 02:36:36 -0800 (PST)
+        by mx.google.com with ESMTP id s6si3478540otq.115.2020.01.28.02.36.43;
+        Tue, 28 Jan 2020 02:36:43 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TZpmxGlt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A6gwW4gE;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726333AbgA1Kgf (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 28 Jan 2020 05:36:35 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:24747 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1726072AbgA1Kgf (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 28 Jan 2020 05:36:35 -0500
+        id S1726114AbgA1Kgm (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 28 Jan 2020 05:36:42 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:36309 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1726007AbgA1Kgm (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Tue, 28 Jan 2020 05:36:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1580207792;
+        s=mimecast20190719; t=1580207800;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=AMnFoycaRqVR3q3J7wrgsZqqrGsLu5esjXYok9mZrus=;
-        b=TZpmxGltZt4HxLtBuMjN5qrT3eOxMsIB56eLvj+xSJhe1Gkghays+uUFkC7I/7wjIeFCRu
-        3pF50oQXRzuWqdd8CW79lHwl2VU8Uao+/ucsGNKlbFhHHBIDLoE4kReOKNywhULp3fmsNo
-        eaFhTQbgv8OMSso7QvpSTij76yBJI+8=
+        bh=S7IyFp9yNNPGRardzvjsfdUtfgsnLQUlfdwQx3hiSAI=;
+        b=A6gwW4gEb+E408Db6/Uh0kcFo7feWYo12Hf4JoWYIvHeCC9DPiUl34AoDkbzHidhLlu2hO
+        sQ+jZNpPNZdZByR8o6Mn0IIWzkX7t6G0hgjdrMqohRw17WMlCiGHJrxlX4Z2HE62oMfccr
+        2WGYK2QZ0nl6qOjrQhAIcE8tXe3RKc0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-9-U2jGCtRmO8iAIYcIG8p_xg-1; Tue, 28 Jan 2020 05:36:30 -0500
-X-MC-Unique: U2jGCtRmO8iAIYcIG8p_xg-1
+ us-mta-128-9opVXubhMyK7jMA7Su5sZg-1; Tue, 28 Jan 2020 05:36:39 -0500
+X-MC-Unique: 9opVXubhMyK7jMA7Su5sZg-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A0EED107ACC5;
-        Tue, 28 Jan 2020 10:36:28 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A6CD3800D50;
+        Tue, 28 Jan 2020 10:36:37 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id AD7B01001B30;
-        Tue, 28 Jan 2020 10:36:22 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 694E31001B30;
+        Tue, 28 Jan 2020 10:36:29 +0000 (UTC)
 From:   Eric Auger <eric.auger@redhat.com>
 To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
         kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
@@ -71,9 +71,9 @@ To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
 Cc:     drjones@redhat.com, andre.przywara@arm.com,
         peter.maydell@linaro.org, yuzenghui@huawei.com,
         alexandru.elisei@arm.com, thuth@redhat.com
-Subject: [kvm-unit-tests PATCH v3 10/14] arm/arm64: ITS: commands
-Date:   Tue, 28 Jan 2020 11:34:55 +0100
-Message-Id: <20200128103459.19413-11-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH v3 11/14] arm/arm64: ITS: INT functional tests
+Date:   Tue, 28 Jan 2020 11:34:56 +0100
+Message-Id: <20200128103459.19413-12-eric.auger@redhat.com>
 In-Reply-To: <20200128103459.19413-1-eric.auger@redhat.com>
 References: <20200128103459.19413-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -83,570 +83,317 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: UN/QtQwrTS/U
+X-TUID: 3xkA5yMV3fGc
 
-Implement main ITS commands. The code is largely inherited from
-the ITS driver.
+Triggers LPIs through the INT command.
+
+the test checks the LPI hits the right CPU and triggers
+the right LPI intid, ie. the translation is correct.
+
+Updates to the config table also are tested, along with inv
+and invall commands.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
 v2 -> v3:
-- do not use report() anymore
-- assert if cmd_write exceeds the queue capacity
-
-v1 -> v2:
-- removed its_print_cmd_state
+- add comments
+- keep the report_skip in case there aren't 4 vcpus to be able to
+  run other tests in the its category.
+- fix the prefix pop
+- move its_event and its_stats to arm/gic.c
 ---
- arm/Makefile.arm64       |   2 +-
- lib/arm/asm/gic-v3-its.h |  38 +++-
- lib/arm/gic-v3-its-cmd.c | 454 +++++++++++++++++++++++++++++++++++++++
- 3 files changed, 492 insertions(+), 2 deletions(-)
- create mode 100644 lib/arm/gic-v3-its-cmd.c
+ arm/gic.c         | 228 +++++++++++++++++++++++++++++++++++++++++++---
+ arm/unittests.cfg |   7 ++
+ 2 files changed, 224 insertions(+), 11 deletions(-)
 
-diff --git a/arm/Makefile.arm64 b/arm/Makefile.arm64
-index 2571ffb..d12aea5 100644
---- a/arm/Makefile.arm64
-+++ b/arm/Makefile.arm64
-@@ -19,7 +19,7 @@ endef
- cstart.o =3D $(TEST_DIR)/cstart64.o
- cflatobjs +=3D lib/arm64/processor.o
- cflatobjs +=3D lib/arm64/spinlock.o
--cflatobjs +=3D lib/arm/gic-v3-its.o
-+cflatobjs +=3D lib/arm/gic-v3-its.o lib/arm/gic-v3-its-cmd.o
+diff --git a/arm/gic.c b/arm/gic.c
+index 4d7dd03..50104b1 100644
+--- a/arm/gic.c
++++ b/arm/gic.c
+@@ -160,6 +160,87 @@ static void ipi_handler(struct pt_regs *regs __unuse=
+d)
+ 	}
+ }
 =20
- OBJDIRS +=3D lib/arm64
-=20
-diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-index acd97a9..0e5c5b6 100644
---- a/lib/arm/asm/gic-v3-its.h
-+++ b/lib/arm/asm/gic-v3-its.h
-@@ -45,6 +45,8 @@ struct its_collection {
- 	u16 col_id;
- };
-=20
-+struct its_cmd_block;
++static void setup_irq(handler_t handler)
++{
++	gic_enable_defaults();
++#ifdef __arm__
++	install_exception_handler(EXCPTN_IRQ, handler);
++#else
++	install_irq_handler(EL1H_IRQ, handler);
++#endif
++	local_irq_enable();
++}
 +
- struct its_data {
- 	void *base;
- 	struct its_typer typer;
-@@ -107,6 +109,24 @@ extern struct its_data its_data;
- #define GITS_BASER_TYPE_DEVICE		1
- #define GITS_BASER_TYPE_COLLECTION	4
-=20
-+/*
-+ * ITS commands
-+ */
-+#define GITS_CMD_MAPD                   0x08
-+#define GITS_CMD_MAPC                   0x09
-+#define GITS_CMD_MAPTI                  0x0a
-+/* older GIC documentation used MAPVI for this command */
-+#define GITS_CMD_MAPVI                  GITS_CMD_MAPTI
-+#define GITS_CMD_MAPI                   0x0b
-+#define GITS_CMD_MOVI                   0x01
-+#define GITS_CMD_DISCARD                0x0f
-+#define GITS_CMD_INV                    0x0c
-+#define GITS_CMD_MOVALL                 0x0e
-+#define GITS_CMD_INVALL                 0x0d
-+#define GITS_CMD_INT                    0x03
-+#define GITS_CMD_CLEAR                  0x04
-+#define GITS_CMD_SYNC                   0x05
-+
- struct its_cmd_block {
- 	u64 raw_cmd[4];
- };
-@@ -119,11 +139,27 @@ extern void its_enable_defaults(void);
- extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
- extern struct its_collection *its_create_collection(u32 col_id, u32 targ=
-et_pe);
-=20
-+extern void its_send_mapd(struct its_device *dev, int valid);
-+extern void its_send_mapc(struct its_collection *col, int valid);
-+extern void its_send_mapti(struct its_device *dev, u32 irq_id,
-+			   u32 event_id, struct its_collection *col);
-+extern void its_send_int(struct its_device *dev, u32 event_id);
-+extern void its_send_inv(struct its_device *dev, u32 event_id);
-+extern void its_send_discard(struct its_device *dev, u32 event_id);
-+extern void its_send_clear(struct its_device *dev, u32 event_id);
-+extern void its_send_invall(struct its_collection *col);
-+extern void its_send_movi(struct its_device *dev,
-+			  struct its_collection *col, u32 id);
-+extern void its_send_sync(struct its_collection *col);
-+
-+#define ITS_FLAGS_CMDQ_NEEDS_FLUSHING           (1ULL << 0)
-+#define ITS_FLAGS_WORKAROUND_CAVIUM_22375       (1ULL << 1)
-+#define ITS_FLAGS_WORKAROUND_CAVIUM_23144       (1ULL << 2)
-+
- #else /* __arm__ */
-=20
- static inline void its_init(void) {}
-=20
- #endif
--
- #endif /* !__ASSEMBLY__ */
- #endif /* _ASMARM_GIC_V3_ITS_H_ */
-diff --git a/lib/arm/gic-v3-its-cmd.c b/lib/arm/gic-v3-its-cmd.c
-new file mode 100644
-index 0000000..fb4364c
---- /dev/null
-+++ b/lib/arm/gic-v3-its-cmd.c
-@@ -0,0 +1,454 @@
-+/*
-+ * Copyright (C) 2020, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
-+ *
-+ * Most of the code is copy-pasted from:
-+ * drivers/irqchip/irq-gic-v3-its.c
-+ * This work is licensed under the terms of the GNU LGPL, version 2.
-+ */
-+#include <asm/io.h>
-+#include <asm/gic.h>
-+#include <asm/gic-v3-its.h>
-+
-+#define ITS_ITT_ALIGN           SZ_256
-+
-+static const char * const its_cmd_string[] =3D {
-+	[GITS_CMD_MAPD]		=3D "MAPD",
-+	[GITS_CMD_MAPC]		=3D "MAPC",
-+	[GITS_CMD_MAPTI]	=3D "MAPTI",
-+	[GITS_CMD_MAPI]		=3D "MAPI",
-+	[GITS_CMD_MOVI]		=3D "MOVI",
-+	[GITS_CMD_DISCARD]	=3D "DISCARD",
-+	[GITS_CMD_INV]		=3D "INV",
-+	[GITS_CMD_MOVALL]	=3D "MOVALL",
-+	[GITS_CMD_INVALL]	=3D "INVALL",
-+	[GITS_CMD_INT]		=3D "INT",
-+	[GITS_CMD_CLEAR]	=3D "CLEAR",
-+	[GITS_CMD_SYNC]		=3D "SYNC",
++#if defined(__aarch64__)
++struct its_event {
++	int cpu_id;
++	int lpi_id;
 +};
 +
-+struct its_cmd_desc {
-+	union {
-+		struct {
-+			struct its_device *dev;
-+			u32 event_id;
-+		} its_inv_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			u32 event_id;
-+		} its_int_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			bool valid;
-+		} its_mapd_cmd;
-+
-+		struct {
-+			struct its_collection *col;
-+			bool valid;
-+		} its_mapc_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			u32 phys_id;
-+			u32 event_id;
-+			u32 col_id;
-+		} its_mapti_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			struct its_collection *col;
-+			u32 event_id;
-+		} its_movi_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			u32 event_id;
-+		} its_discard_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			u32 event_id;
-+		} its_clear_cmd;
-+
-+		struct {
-+			struct its_collection *col;
-+		} its_invall_cmd;
-+
-+		struct {
-+			struct its_collection *col;
-+		} its_sync_cmd;
-+	};
++struct its_stats {
++	struct its_event expected;
++	struct its_event observed;
 +};
 +
-+typedef void (*its_cmd_builder_t)(struct its_cmd_block *,
-+				  struct its_cmd_desc *);
++static struct its_stats lpi_stats;
 +
-+/* ITS COMMANDS */
-+
-+static void its_encode_cmd(struct its_cmd_block *cmd, u8 cmd_nr)
++static void lpi_handler(struct pt_regs *regs __unused)
 +{
-+	cmd->raw_cmd[0] &=3D ~0xffUL;
-+	cmd->raw_cmd[0] |=3D cmd_nr;
++	u32 irqstat =3D gic_read_iar();
++	int irqnr =3D gic_iar_irqnr(irqstat);
++
++	gic_write_eoir(irqstat);
++	if (irqnr < 8192)
++		report(false, "Unexpected non LPI interrupt received");
++	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
++	lpi_stats.observed.cpu_id =3D smp_processor_id();
++	lpi_stats.observed.lpi_id =3D irqnr;
++	smp_wmb(); /* pairs with rmb in check_lpi_stats */
 +}
 +
-+static void its_encode_devid(struct its_cmd_block *cmd, u32 devid)
++static void lpi_stats_expect(int exp_cpu_id, int exp_lpi_id)
 +{
-+	cmd->raw_cmd[0] &=3D BIT_ULL(32) - 1;
-+	cmd->raw_cmd[0] |=3D ((u64)devid) << 32;
++	lpi_stats.expected.cpu_id =3D exp_cpu_id;
++	lpi_stats.expected.lpi_id =3D exp_lpi_id;
++	lpi_stats.observed.cpu_id =3D -1;
++	lpi_stats.observed.lpi_id =3D -1;
++	smp_wmb(); /* pairs with rmb in handler */
 +}
 +
-+static void its_encode_event_id(struct its_cmd_block *cmd, u32 id)
++static void check_lpi_stats(void)
 +{
-+	cmd->raw_cmd[1] &=3D ~0xffffffffUL;
-+	cmd->raw_cmd[1] |=3D id;
-+}
-+
-+static void its_encode_phys_id(struct its_cmd_block *cmd, u32 phys_id)
-+{
-+	cmd->raw_cmd[1] &=3D 0xffffffffUL;
-+	cmd->raw_cmd[1] |=3D ((u64)phys_id) << 32;
-+}
-+
-+static void its_encode_size(struct its_cmd_block *cmd, u8 size)
-+{
-+	cmd->raw_cmd[1] &=3D ~0x1fUL;
-+	cmd->raw_cmd[1] |=3D size & 0x1f;
-+}
-+
-+static void its_encode_itt(struct its_cmd_block *cmd, u64 itt_addr)
-+{
-+	cmd->raw_cmd[2] &=3D ~0xffffffffffffUL;
-+	cmd->raw_cmd[2] |=3D itt_addr & 0xffffffffff00UL;
-+}
-+
-+static void its_encode_valid(struct its_cmd_block *cmd, int valid)
-+{
-+	cmd->raw_cmd[2] &=3D ~(1UL << 63);
-+	cmd->raw_cmd[2] |=3D ((u64)!!valid) << 63;
-+}
-+
-+static void its_encode_target(struct its_cmd_block *cmd, u64 target_addr=
-)
-+{
-+	cmd->raw_cmd[2] &=3D ~(0xfffffffffUL << 16);
-+	cmd->raw_cmd[2] |=3D (target_addr & (0xffffffffUL << 16));
-+}
-+
-+static void its_encode_collection(struct its_cmd_block *cmd, u16 col)
-+{
-+	cmd->raw_cmd[2] &=3D ~0xffffUL;
-+	cmd->raw_cmd[2] |=3D col;
-+}
-+
-+static inline void its_fixup_cmd(struct its_cmd_block *cmd)
-+{
-+	/* Let's fixup BE commands */
-+	cmd->raw_cmd[0] =3D cpu_to_le64(cmd->raw_cmd[0]);
-+	cmd->raw_cmd[1] =3D cpu_to_le64(cmd->raw_cmd[1]);
-+	cmd->raw_cmd[2] =3D cpu_to_le64(cmd->raw_cmd[2]);
-+	cmd->raw_cmd[3] =3D cpu_to_le64(cmd->raw_cmd[3]);
-+}
-+
-+static u64 its_cmd_ptr_to_offset(struct its_cmd_block *ptr)
-+{
-+	return (ptr - its_data.cmd_base) * sizeof(*ptr);
-+}
-+
-+static struct its_cmd_block *its_post_commands(void)
-+{
-+	u64 wr =3D its_cmd_ptr_to_offset(its_data.cmd_write);
-+
-+	writeq(wr, its_data.base + GITS_CWRITER);
-+	return its_data.cmd_write;
-+}
-+
-+
-+static struct its_cmd_block *its_allocate_entry(void)
-+{
-+	struct its_cmd_block *cmd;
-+
-+	assert((u64)its_data.cmd_write < (u64)its_data.cmd_base + SZ_64K);
-+	cmd =3D its_data.cmd_write++;
-+	return cmd;
-+}
-+
-+static void its_wait_for_range_completion(struct its_cmd_block *from,
-+					  struct its_cmd_block *to)
-+{
-+	u64 rd_idx, from_idx, to_idx;
-+	u32 count =3D 1000000;    /* 1s! */
-+
-+	from_idx =3D its_cmd_ptr_to_offset(from);
-+	to_idx =3D its_cmd_ptr_to_offset(to);
-+	while (1) {
-+		rd_idx =3D readq(its_data.base + GITS_CREADR);
-+		if (rd_idx >=3D to_idx || rd_idx < from_idx)
-+			break;
-+
-+		count--;
-+		if (!count) {
-+			unsigned int cmd_id =3D from->raw_cmd[0] & 0xFF;
-+
-+			assert_msg(false, "%s timeout!",
-+			       cmd_id <=3D 0xF ? its_cmd_string[cmd_id] :
-+			       "Unexpected");
-+			return;
++	mdelay(100);
++	smp_rmb(); /* pairs with wmb in lpi_handler */
++	if ((lpi_stats.observed.cpu_id !=3D lpi_stats.expected.cpu_id) ||
++	    (lpi_stats.observed.lpi_id !=3D lpi_stats.expected.lpi_id)) {
++		if (lpi_stats.observed.cpu_id =3D=3D -1 &&
++		    lpi_stats.observed.lpi_id =3D=3D -1) {
++			report(false,
++			       "No LPI received whereas (cpuid=3D%d, intid=3D%d) "
++			       "was expected", lpi_stats.expected.cpu_id,
++			       lpi_stats.expected.lpi_id);
++		} else {
++			report(false, "Unexpected LPI (cpuid=3D%d, intid=3D%d)",
++			       lpi_stats.observed.cpu_id,
++			       lpi_stats.observed.lpi_id);
 +		}
-+		cpu_relax();
-+		udelay(1);
++	} else if (lpi_stats.expected.lpi_id !=3D -1) {
++		report(true, "LPI %d on CPU %d", lpi_stats.observed.lpi_id,
++		       lpi_stats.observed.cpu_id);
++	} else {
++		report(true, "no LPI received, as expected");
 +	}
 +}
 +
-+static void its_send_single_command(its_cmd_builder_t builder,
-+				    struct its_cmd_desc *desc)
++static void secondary_lpi_test(void)
 +{
-+	struct its_cmd_block *cmd, *next_cmd;
++	setup_irq(lpi_handler);
++	cpumask_set_cpu(smp_processor_id(), &ready);
++	while (1)
++		wfi();
++}
++#endif
 +
-+	cmd =3D its_allocate_entry();
-+	builder(cmd, desc);
-+	next_cmd =3D its_post_commands();
+ static void gicv2_ipi_send_self(void)
+ {
+ 	writel(2 << 24 | IPI_IRQ, gicv2_dist_base() + GICD_SGIR);
+@@ -217,17 +298,6 @@ static void ipi_test_smp(void)
+ 	report_prefix_pop();
+ }
+=20
+-static void setup_irq(handler_t handler)
+-{
+-	gic_enable_defaults();
+-#ifdef __arm__
+-	install_exception_handler(EXCPTN_IRQ, handler);
+-#else
+-	install_irq_handler(EL1H_IRQ, handler);
+-#endif
+-	local_irq_enable();
+-}
+-
+ static void ipi_send(void)
+ {
+ 	setup_irq(ipi_handler);
+@@ -522,6 +592,7 @@ static void gic_test_mmio(void)
+ #if defined(__arm__)
+=20
+ static void test_its_introspection(void) {}
++static void test_its_trigger(void) {}
+=20
+ #else /* __arch64__ */
+=20
+@@ -561,6 +632,137 @@ static void test_its_introspection(void)
+ 	report_info("collection baser entry_size =3D 0x%x", coll_baser->esz);
+ }
+=20
++static bool its_prerequisites(int nb_cpus)
++{
++	int cpu;
 +
-+	its_wait_for_range_completion(cmd, next_cmd);
++	if (!gicv3_its_base()) {
++		report_skip("No ITS, skip ...");
++		return true;
++	}
++
++	if (nr_cpus < 4) {
++		report_skip("Test requires at least %d vcpus", nb_cpus);
++		return true;
++	}
++
++	stats_reset();
++
++	setup_irq(lpi_handler);
++
++	for_each_present_cpu(cpu) {
++		if (cpu =3D=3D 0)
++			continue;
++		smp_boot_secondary(cpu, secondary_lpi_test);
++	}
++	wait_on_ready();
++
++	its_enable_defaults();
++
++	lpi_stats_expect(-1, -1);
++	check_lpi_stats();
++
++	return false;
 +}
 +
-+
-+static void its_build_mapd_cmd(struct its_cmd_block *cmd,
-+			       struct its_cmd_desc *desc)
++static void test_its_trigger(void)
 +{
-+	unsigned long itt_addr;
-+	u8 size =3D 12; /* 4096 eventids */
++	struct its_collection *col3, *col2;
++	struct its_device *dev2, *dev7;
 +
-+	itt_addr =3D (unsigned long)desc->its_mapd_cmd.dev->itt;
-+	itt_addr =3D ALIGN(itt_addr, ITS_ITT_ALIGN);
++	if (its_prerequisites(4))
++		return;
 +
-+	its_encode_cmd(cmd, GITS_CMD_MAPD);
-+	its_encode_devid(cmd, desc->its_mapd_cmd.dev->device_id);
-+	its_encode_size(cmd, size - 1);
-+	its_encode_itt(cmd, itt_addr);
-+	its_encode_valid(cmd, desc->its_mapd_cmd.valid);
++	dev2 =3D its_create_device(2 /* dev id */, 8 /* nb_ites */);
++	dev7 =3D its_create_device(7 /* dev id */, 8 /* nb_ites */);
 +
-+	its_fixup_cmd(cmd);
-+	printf("ITS: MAPD devid=3D%d size =3D 0x%x itt=3D0x%lx valid=3D%d\n",
-+		desc->its_mapd_cmd.dev->device_id,
-+		size, itt_addr, desc->its_mapd_cmd.valid);
++	col3 =3D its_create_collection(3 /* col id */, 3/* target PE */);
++	col2 =3D its_create_collection(2 /* col id */, 2/* target PE */);
 +
++	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
++	gicv3_lpi_set_config(8196, LPI_PROP_DEFAULT);
++
++	its_send_invall(col2);
++	its_send_invall(col3);
++
++	report_prefix_push("int");
++	/*
++	 * dev=3D2, eventid=3D20  -> lpi=3D 8195, col=3D3
++	 * dev=3D7, eventid=3D255 -> lpi=3D 8196, col=3D2
++	 * Trigger dev2, eventid=3D20 and dev7, eventid=3D255
++	 * Check both LPIs hit
++	 */
++
++	its_send_mapd(dev2, true);
++	its_send_mapd(dev7, true);
++
++	its_send_mapc(col3, true);
++	its_send_mapc(col2, true);
++
++	its_send_mapti(dev2, 8195 /* lpi id */,
++		       20 /* event id */, col3);
++	its_send_mapti(dev7, 8196 /* lpi id */,
++		       255 /* event id */, col2);
++
++	lpi_stats_expect(3, 8195);
++	its_send_int(dev2, 20);
++	check_lpi_stats();
++
++	lpi_stats_expect(2, 8196);
++	its_send_int(dev7, 255);
++	check_lpi_stats();
++
++	report_prefix_pop();
++
++	report_prefix_push("inv/invall");
++
++	/*
++	 * disable 8195, check dev2/eventid=3D20 does not trigger the
++	 * corresponding LPI
++	 */
++	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT & ~0x1);
++	its_send_inv(dev2, 20);
++
++	lpi_stats_expect(-1, -1);
++	its_send_int(dev2, 20);
++	check_lpi_stats();
++
++	/*
++	 * re-enable the LPI but willingly do not call invall
++	 * so the change in config is not taken into account.
++	 * The LPI should not hit
++	 */
++	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
++	lpi_stats_expect(-1, -1);
++	its_send_int(dev2, 20);
++	check_lpi_stats();
++
++	/* Now call the invall and check the LPI hits */
++	its_send_invall(col3);
++	lpi_stats_expect(3, 8195);
++	its_send_int(dev2, 20);
++	check_lpi_stats();
++
++	report_prefix_pop();
++	/*
++	 * Unmap device 2 and check the eventid 20 formerly
++	 * attached to it does not hit anymore
++	 */
++	report_prefix_push("mapd valid=3Dfalse");
++	its_send_mapd(dev2, false);
++	lpi_stats_expect(-1, -1);
++	its_send_int(dev2, 20);
++	check_lpi_stats();
++	report_prefix_pop();
++
++	/* Unmap the collection this time and check no LPI does hit */
++	report_prefix_push("mapc valid=3Dfalse");
++	its_send_mapc(col2, false);
++	lpi_stats_expect(-1, -1);
++	its_send_int(dev7, 255);
++	check_lpi_stats();
++	report_prefix_pop();
 +}
+ #endif
+=20
+ int main(int argc, char **argv)
+@@ -594,6 +796,10 @@ int main(int argc, char **argv)
+ 		report_prefix_push(argv[1]);
+ 		gic_test_mmio();
+ 		report_prefix_pop();
++	} else if (!strcmp(argv[1], "its-trigger")) {
++		report_prefix_push(argv[1]);
++		test_its_trigger();
++		report_prefix_pop();
+ 	} else if (strcmp(argv[1], "its-introspection") =3D=3D 0) {
+ 		report_prefix_push(argv[1]);
+ 		test_its_introspection();
+diff --git a/arm/unittests.cfg b/arm/unittests.cfg
+index ba2b31b..bfafec5 100644
+--- a/arm/unittests.cfg
++++ b/arm/unittests.cfg
+@@ -129,6 +129,13 @@ extra_params =3D -machine gic-version=3D3 -append 'i=
+ts-introspection'
+ groups =3D its
+ arch =3D arm64
+=20
++[its-trigger]
++file =3D gic.flat
++smp =3D $MAX_SMP
++extra_params =3D -machine gic-version=3D3 -append 'its-trigger'
++groups =3D its
++arch =3D arm64
 +
-+static void its_build_mapc_cmd(struct its_cmd_block *cmd,
-+			       struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_MAPC);
-+	its_encode_collection(cmd, desc->its_mapc_cmd.col->col_id);
-+	its_encode_target(cmd, desc->its_mapc_cmd.col->target_address);
-+	its_encode_valid(cmd, desc->its_mapc_cmd.valid);
-+
-+	its_fixup_cmd(cmd);
-+	report_info("MAPC col_id=3D%d target_addr =3D 0x%lx valid=3D%d",
-+		    desc->its_mapc_cmd.col->col_id,
-+		    desc->its_mapc_cmd.col->target_address,
-+		    desc->its_mapc_cmd.valid);
-+}
-+
-+static void its_build_mapti_cmd(struct its_cmd_block *cmd,
-+				struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_MAPTI);
-+	its_encode_devid(cmd, desc->its_mapti_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_mapti_cmd.event_id);
-+	its_encode_phys_id(cmd, desc->its_mapti_cmd.phys_id);
-+	its_encode_collection(cmd, desc->its_mapti_cmd.col_id);
-+
-+	its_fixup_cmd(cmd);
-+	report_info("MAPTI dev_id=3D%d event_id=3D%d -> phys_id=3D%d, col_id=3D=
-%d",
-+		    desc->its_mapti_cmd.dev->device_id,
-+		    desc->its_mapti_cmd.event_id,
-+		    desc->its_mapti_cmd.phys_id,
-+		    desc->its_mapti_cmd.col_id);
-+}
-+
-+static void its_build_invall_cmd(struct its_cmd_block *cmd,
-+			      struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_INVALL);
-+	its_encode_collection(cmd, desc->its_invall_cmd.col->col_id);
-+
-+	its_fixup_cmd(cmd);
-+	report_info("INVALL col_id=3D%d", desc->its_invall_cmd.col->col_id);
-+}
-+
-+static void its_build_clear_cmd(struct its_cmd_block *cmd,
-+				struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_CLEAR);
-+	its_encode_devid(cmd, desc->its_clear_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_clear_cmd.event_id);
-+
-+	its_fixup_cmd(cmd);
-+	report_info("CLEAR col_id=3D%d", desc->its_invall_cmd.col->col_id);
-+}
-+
-+static void its_build_discard_cmd(struct its_cmd_block *cmd,
-+				  struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_DISCARD);
-+	its_encode_devid(cmd, desc->its_discard_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_discard_cmd.event_id);
-+
-+	its_fixup_cmd(cmd);
-+	report_info("DISCARD col_id=3D%d", desc->its_invall_cmd.col->col_id);
-+}
-+
-+static void its_build_inv_cmd(struct its_cmd_block *cmd,
-+			      struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_INV);
-+	its_encode_devid(cmd, desc->its_inv_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_inv_cmd.event_id);
-+
-+	its_fixup_cmd(cmd);
-+	report_info("INV dev_id=3D%d event_id=3D%d",
-+		    desc->its_inv_cmd.dev->device_id,
-+		    desc->its_inv_cmd.event_id);
-+}
-+
-+static void its_build_int_cmd(struct its_cmd_block *cmd,
-+			      struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_INT);
-+	its_encode_devid(cmd, desc->its_int_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_int_cmd.event_id);
-+
-+	its_fixup_cmd(cmd);
-+	report_info("INT dev_id=3D%d event_id=3D%d",
-+		    desc->its_int_cmd.dev->device_id,
-+		    desc->its_int_cmd.event_id);
-+}
-+
-+static void its_build_sync_cmd(struct its_cmd_block *cmd,
-+			       struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_SYNC);
-+	its_encode_target(cmd, desc->its_sync_cmd.col->target_address);
-+	its_fixup_cmd(cmd);
-+	report_info("SYNC target_addr =3D 0x%lx",
-+		    desc->its_sync_cmd.col->target_address);
-+}
-+
-+static void its_build_movi_cmd(struct its_cmd_block *cmd,
-+			       struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_MOVI);
-+	its_encode_devid(cmd, desc->its_movi_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_movi_cmd.event_id);
-+	its_encode_collection(cmd, desc->its_movi_cmd.col->col_id);
-+
-+	its_fixup_cmd(cmd);
-+	report_info("MOVI dev_id=3D%d event_id =3D %d col_id=3D%d",
-+		    desc->its_movi_cmd.dev->device_id,
-+		    desc->its_movi_cmd.event_id,
-+		    desc->its_movi_cmd.col->col_id);
-+}
-+
-+void its_send_mapd(struct its_device *dev, int valid)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_mapd_cmd.dev =3D dev;
-+	desc.its_mapd_cmd.valid =3D !!valid;
-+
-+	its_send_single_command(its_build_mapd_cmd, &desc);
-+}
-+
-+void its_send_mapc(struct its_collection *col, int valid)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_mapc_cmd.col =3D col;
-+	desc.its_mapc_cmd.valid =3D !!valid;
-+
-+	its_send_single_command(its_build_mapc_cmd, &desc);
-+}
-+
-+void its_send_mapti(struct its_device *dev, u32 irq_id,
-+		    u32 event_id, struct its_collection *col)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_mapti_cmd.dev =3D dev;
-+	desc.its_mapti_cmd.phys_id =3D irq_id;
-+	desc.its_mapti_cmd.event_id =3D event_id;
-+	desc.its_mapti_cmd.col_id =3D col->col_id;
-+
-+	its_send_single_command(its_build_mapti_cmd, &desc);
-+}
-+
-+void its_send_int(struct its_device *dev, u32 event_id)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_int_cmd.dev =3D dev;
-+	desc.its_int_cmd.event_id =3D event_id;
-+
-+	its_send_single_command(its_build_int_cmd, &desc);
-+}
-+
-+void its_send_movi(struct its_device *dev,
-+		   struct its_collection *col, u32 id)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_movi_cmd.dev =3D dev;
-+	desc.its_movi_cmd.col =3D col;
-+	desc.its_movi_cmd.event_id =3D id;
-+
-+	its_send_single_command(its_build_movi_cmd, &desc);
-+}
-+
-+void its_send_invall(struct its_collection *col)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_invall_cmd.col =3D col;
-+
-+	its_send_single_command(its_build_invall_cmd, &desc);
-+}
-+
-+void its_send_inv(struct its_device *dev, u32 event_id)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_inv_cmd.dev =3D dev;
-+	desc.its_inv_cmd.event_id =3D event_id;
-+
-+	its_send_single_command(its_build_inv_cmd, &desc);
-+}
-+
-+void its_send_discard(struct its_device *dev, u32 event_id)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_discard_cmd.dev =3D dev;
-+	desc.its_discard_cmd.event_id =3D event_id;
-+
-+	its_send_single_command(its_build_discard_cmd, &desc);
-+}
-+
-+void its_send_clear(struct its_device *dev, u32 event_id)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_clear_cmd.dev =3D dev;
-+	desc.its_clear_cmd.event_id =3D event_id;
-+
-+	its_send_single_command(its_build_clear_cmd, &desc);
-+}
-+
-+void its_send_sync(struct its_collection *col)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_sync_cmd.col =3D col;
-+
-+	its_send_single_command(its_build_sync_cmd, &desc);
-+}
-+
+ # Test PSCI emulation
+ [psci]
+ file =3D psci.flat
 --=20
 2.20.1

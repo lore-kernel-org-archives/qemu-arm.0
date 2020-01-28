@@ -1,185 +1,150 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp497399lfp;
-        Tue, 28 Jan 2020 05:54:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxWl/0X3lEtULcT9+2Y4u+yuYUEEj6U09KDnc1Ypa8sLBU5uum7g0NQjt6hx5hBdeWONLry
-X-Received: by 2002:a37:a30a:: with SMTP id m10mr21619314qke.56.1580219660602;
-        Tue, 28 Jan 2020 05:54:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580219660; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp506035lfp;
+        Tue, 28 Jan 2020 06:01:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzuwIWJYT4n0kidNm2r46y4IlXLVjCNnQVUzXlz8nqH6BAPVSIThdoTzPUR6ze9KAFc8w16
+X-Received: by 2002:a81:34c6:: with SMTP id b189mr17061064ywa.106.1580220116855;
+        Tue, 28 Jan 2020 06:01:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580220116; cv=none;
         d=google.com; s=arc-20160816;
-        b=j1L/6VYhkxL6w64t6Xi8zoz2Uqox4p84sXM+HWVTJJTPVFiAwJJsRERIChxGnmZIgs
-         L+zeKGb0NB3zihmUp8AYCyVDIVOBw9XOqhzRYlepbgseEUBFI4szZzhjt1NRrinxKBYe
-         /7LlhPYlTxERql1rf05a5EcDoiGjsQWx6up0NJBKnxYtEYVSvcmagxSs2cMy8YARW7lv
-         4qheae0kXpA6IQjnMb/e+ZnCwqVMbHGfAcCgqT2GBsEgr5Wz3nqP3ky8fLUePllZnIlc
-         4+GDnVH7oziVsqagTxceJwKk+9jmKtzYNBsJOOk4L3UfixiFG1369hH6NDAnpoDvaVde
-         tYMQ==
+        b=Hr2JOkLQjmvK7xpqoOvAy+lwBGfxyon33ciaMglZ2Ta/eh+mnaROqvtBTTjElTZxRI
+         MgFCM7It/OqN3Y3K/KDm/IEX9Vq4vWAoNsEJAE2go8xa4/jRh3z9TSlXFFAxf3H/9U29
+         yOUfpBNEpGYRlKId9dGg3w927PSzyzkalMrwrjG4Ym9/oLfFKMhIVMQJYu+zWyXU/UMV
+         /uM9H1lQww34+ENaW/WADPoI/AxL+jleHwpsavHZi+wGkudyVZc9XX1p5YZksTsUzzVf
+         8e9GBfxZElnYUZhXxVwk2ejsfQQjVmIyKb5DMy+UBz6jSlsZi2tT9X4zKffYVb3XNvS8
+         3GUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ZGes1y/lHnSO1YVFn+bnS9SeDLmoV+B2H1XAU0fwmQc=;
-        b=QjrycPSe444DOXz8T106szbhfm9F48awkVMk/bqX3CQ7hvcC0AARmbay3eMygTx04F
-         tzwTBBiNSOBFY8ui8UtenZFIgyZRZJJbX/Suc0iFboqL45kPX8m8y0lOxBM2Pe4c0le0
-         no4C41wxhZrhhDEXNQT12NDw0soC7hBakOx5NMSeQB745kzD5GzKnB64r8EA5ZkPT0hA
-         2CqEV/QZqgbC31zMp0ooDF1pndYXmScFu6I1l7JHhGF2ywFKsEL3jaAtAND/3/mWL5/b
-         BRYqko0LAfbpjvRx5NO6/tSs35vkIDcTEdWrzMFGe5zTyoEfzVvAftFUCjYLpio/L1ov
-         Ahmw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=KXg/X3vLFRTWY3nsE39OIA4RzJ5gQ0H3jrsDYrJ6ngs=;
+        b=Rgy2wAWyIsiuoUumHvxEXUjj7974He0Y8pUNI/Jo9L4c284ESq3izqRXvPqSFintcV
+         GUzqnuU6YiB5Sg8UDbWw7aimgIei/ld/cn1qY1Nv4IF+RuxDclKkG4TGU60T7dLcdJLA
+         zFXajpgEBK5E+L/f3W/crt/z5a6qDkLtT3nVKZn6h2hNut2lGXKuWhpphfzxMnCdTjbI
+         Hql0n3ya84WtxbWaMrMS6hkcylo8cpM3eIq48fVv00T42aVSpGiVwiaCRSIOGEMus0v7
+         bBoGnr7gYuLy45b2eSSlRY/YIpEvmNqksnMFd2ydmDg7pu0B+GRBzxcxh97slOvhEhO1
+         urbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UfXma7Tt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MAW5JlG+;
+       spf=pass (google.com: domain of wainersm@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=wainersm@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e20si13267138qtp.309.2020.01.28.05.54.20
+Return-Path: <wainersm@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by mx.google.com with ESMTPS id p142si9965485ybg.462.2020.01.28.06.01.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2020 05:54:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Jan 2020 06:01:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of wainersm@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UfXma7Tt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MAW5JlG+;
+       spf=pass (google.com: domain of wainersm@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=wainersm@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59528 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwRJr-0005od-41
-	for alex.bennee@linaro.org; Tue, 28 Jan 2020 08:54:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39986)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iwRJA-0005KS-UK
- for qemu-devel@nongnu.org; Tue, 28 Jan 2020 08:53:38 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iwRJ9-0001TM-85
- for qemu-devel@nongnu.org; Tue, 28 Jan 2020 08:53:36 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:59893
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iwRJ9-0001Sx-4G
- for qemu-devel@nongnu.org; Tue, 28 Jan 2020 08:53:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580219614;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZGes1y/lHnSO1YVFn+bnS9SeDLmoV+B2H1XAU0fwmQc=;
- b=UfXma7Tt+vXHbw25gKoEdTrEs1kS7alXMIlipnLriCw+DpM311sdXbdGxG1Wa+jPSVe9JE
- lR09IK2d4ZGbena895n+vVjO19mRN+/qbb8tVOvOP0JkRNWU923/iQoI9Uw7sWQzyRwfMH
- GgpcFSyO9aFAcqv8o6V68WL0xRhBtJY=
+	s=mimecast20190719; t=1580220116;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KXg/X3vLFRTWY3nsE39OIA4RzJ5gQ0H3jrsDYrJ6ngs=;
+	b=MAW5JlG+mD1iI2EBDRxjuk8Rahn7DEHIrffxqRPP5NKO+mF9tFuu0CtLBrSnvxWdvXMsp0
+	EHhgwoyvlLj+uam1H9kFaUjWPQUU8ewMSW9iufINVHsM3YgDsPMjFSGQWxTCh6uImBqZEV
+	A5ErAyOo3846mx3hJ2ESh3pcQRiutdw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-175-tsuBPZFQOROyCrQLfoMA1g-1; Tue, 28 Jan 2020 08:53:33 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E3F9985EE6D;
- Tue, 28 Jan 2020 13:53:31 +0000 (UTC)
-Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7B48E8702F;
- Tue, 28 Jan 2020 13:53:29 +0000 (UTC)
-Subject: Re: [question] hw/arm/virt: about the default gic-version in
- accelerated mode
-To: Andrew Jones <drjones@redhat.com>
-References: <df1d6ae5-b734-ef64-4ef9-c661e8f797e8@redhat.com>
- <CAFEAcA8hib-3YWuS-MajjvokOFCGKUHeuz+XQTBYf8LBz+PuFQ@mail.gmail.com>
- <20200128122915.ehzgj5kpmsw5azap@kamzik.brq.redhat.com>
- <e0b73504-b37a-cc57-3c3f-b9872dd1e16c@redhat.com>
- <20200128124143.cmbl3po2uvhsgd23@kamzik.brq.redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <79e4dc6e-1136-039d-8212-738111c738d9@redhat.com>
-Date: Tue, 28 Jan 2020 14:53:25 +0100
+ us-mta-250-yhb9YR8hPGyA8omKbpKG5Q-1; Tue, 28 Jan 2020 09:01:48 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A9E4B10071F9;
+	Tue, 28 Jan 2020 14:01:46 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-65.gru2.redhat.com [10.97.116.65])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 92FFB1001281;
+	Tue, 28 Jan 2020 14:01:40 +0000 (UTC)
+Subject: Re: [PATCH] tests/acceptance: Add a test for the canon-a1100 machine
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>,
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+References: <20200127144126.15515-1-thuth@redhat.com>
+ <cd60a444-620e-3366-09e8-e9c8d72894ad@redhat.com>
+ <c4976fd4-f1f0-c48b-aad4-4414564f8258@redhat.com>
+ <05f7e133-8ad3-8627-79a1-a046e6d42d16@redhat.com>
+ <2a303987-ad19-538b-98ce-a2cb83d8fade@redhat.com>
+ <9856cc15-2365-4609-5af9-f6582cb20ed8@redhat.com>
+ <6b5cba1d-4aba-cd59-74a8-880a8d800a35@redhat.com>
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-ID: <766805d9-0dbc-eda1-4157-1feb33fc9ea5@redhat.com>
+Date: Tue, 28 Jan 2020 12:01:38 -0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200128124143.cmbl3po2uvhsgd23@kamzik.brq.redhat.com>
+In-Reply-To: <6b5cba1d-4aba-cd59-74a8-880a8d800a35@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: tsuBPZFQOROyCrQLfoMA1g-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: yhb9YR8hPGyA8omKbpKG5Q-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- qemu list <qemu-devel@nongnu.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YvhP6E8Imup4
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-TUID: CB9S8/zLAIrC
 
-Hi,
 
-On 1/28/20 1:41 PM, Andrew Jones wrote:
-> On Tue, Jan 28, 2020 at 01:34:06PM +0100, Auger Eric wrote:
->> Hi Drew,
+On 1/28/20 10:16 AM, Thomas Huth wrote:
+> On 27/01/2020 21.56, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Hey Wainer,
 >>
->> On 1/28/20 1:29 PM, Andrew Jones wrote:
->>> On Tue, Jan 28, 2020 at 10:52:50AM +0000, Peter Maydell wrote:
->>>> On Tue, 28 Jan 2020 at 10:47, Auger Eric <eric.auger@redhat.com> wrote:
->>>>> When arm virt machine is run in accelerated mode with "-cpu host
->>>>> -machine virt", the default gic version is 2.
->>>>>
->>>>> I understand the rationale with TCG where we don't have MSI ITS
->>>>> emulation along with GICv3 so we need to choose GICv2 to get GICv2M
->>>>> functionality.
->>>>>
->>>>> However in KVM mode, I would have expected to see the host GIC probed to
->>>>> set the same version on guest. Indeed most of our HW now have GICv3
->>>>> without GICv2 compat mode so our default values lead to weird traces:
->>>>>
->>>>> "
->>>>> qemu-system-aarch64: PMU: KVM_SET_DEVICE_ATTR: Invalid argument
->>>>> qemu-system-aarch64: failed to set irq for PMU
->>>>> "
->>>>>
->>>>> I would like to propose a patch to improve those errors and also suggest
->>>>> a hint. But I also wanted to know whether you would accept to change the
->>>>> default value with KVM and choose the host version instead of 2. For TCG
->>>>> we would keep v2.
->>>>
->>>> As with the -cpu option, the default is there for command
->>>> line backward compatibility primarily. Even if we had
->>>> better support for MSI ITS emulation we'd still leave
->>>> the default at GICv2.
->>>>
->>>> If you want "do the best you can, regardless of accelerator"
->>>> that is "-cpu max -machine gic-version=max".
->>>>
+>> On 1/27/20 6:45 PM, Wainer dos Santos Moschetta wrote:
+>>> On 1/27/20 1:41 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> On 1/27/20 4:39 PM, Thomas Huth wrote:
+>>>>> On 27/01/2020 16.18, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>>> On 1/27/20 3:41 PM, Thomas Huth wrote:
+>>>>>>> The canon-a1100 machine can be used with the Barebox firmware. The
+>>>>>>> QEMU Advent Calendar 2018 features a pre-compiled image which we
+>>>>>>> can use for testing.
+>>>>>>>
+>>>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>>>>> ---
+>>>>>>>  =C2=A0=C2=A0 tests/acceptance/machine_arm_canon-a1100.py | 33
+>>>>>>> +++++++++++++++++++++
 >>>
->>> There is a case where we can probe without breaking backward
->>> compatibility. That case is kvm-enabled and no gic-version
->>> specified. The reason it would be safe to probe the GIC version
->>> is because unless the host was a gicv2 host, then that command
->>> line wouldn't have worked anyway.
->> Except if the host GICv3 has a GICv2 compat (which is pretty unlikely)?
-> 
-> Is there a way to probe that? If so, and the setting up of gicv2 on
-> a gicv3 host with the gicv2-compat is the same as setting up gicv2,
-> then we can just choose gicv2 to keep the command line compatibility.
-I think that if the host GICv3 is GICv2 compatible then you can create
-both a KVM_DEV_TYPE_ARM_VGIC_V2 device and a KVM_DEV_TYPE_ARM_VGIC_V3
-device. Otherwise you can only create a KVM_DEV_TYPE_ARM_VGIC_V3 KVM device.
+>>> What is the reason for not adding this case in boot_linux_console suite=
+?
+>> Because there are too many tests in this file and it became hardly
+>> maintainable. Also it is easier to add a 'F:' entry in the MAINTAINERS
+>> file to each machine section.
 
-Thanks
 
-Eric
+Maybe it reached an inflection point and deserves to be split among=20
+files and directories...
 
-> 
-> Thanks,
-> drew
-> 
-> 
 
+> Additionally, this is not a test with a Linux kernel, it uses the
+> Barebox firmware instead. So boot_*linux*_console.py sounds like the
+> wrong place for this test.
+
+OK, makes complete sense.
+
+One last comment about this new file. To not look like boring I let=20
+pylint say that for me :) :
+
+[wainersm@localhost qemu]$ pylint-3=20
+tests/acceptance/machine_arm_canon-a1100.py
+************* Module machine_arm_canon-a1100
+tests/acceptance/machine_arm_canon-a1100.py:1:0: C0103: Module name=20
+"machine_arm_canon-a1100" doesn't conform to snake_case naming style=20
+(invalid-name)
+
+With that fix:
+
+Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+
+Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+
+Thanks,
+
+Wainer
+
+
+>
+>   Thomas

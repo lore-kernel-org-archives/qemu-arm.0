@@ -1,115 +1,116 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp879700lfp;
-        Tue, 28 Jan 2020 11:45:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzPdpi2enGtIPZ8Dx7y3B0ceoZmkzmuok/7TsOgfpBmFkWHikOaku5VtSix0dFIsQesUnaa
-X-Received: by 2002:a37:6650:: with SMTP id a77mr23687175qkc.467.1580240755089;
-        Tue, 28 Jan 2020 11:45:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580240755; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp890939lfp;
+        Tue, 28 Jan 2020 11:59:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxu8gFWBc9ombnnqjeiCBOTdLYRwJLTG91b+Gm9x2l6Re0Hx1r4A2GZWRvQo64YCMogKong
+X-Received: by 2002:a05:620a:14bc:: with SMTP id x28mr24108292qkj.494.1580241541991;
+        Tue, 28 Jan 2020 11:59:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580241541; cv=none;
         d=google.com; s=arc-20160816;
-        b=M5u9M6KTxk9RJppIu/3V8EZzvzoRS9cre0UjcDsn1dQaONFFnvTUZ8J9VKp+BPr4C4
-         cxqgY6bkfgpAynU1ndp3naEbdmDn6U+xnFTq8u122kGOH+nlPofrtZIE4AvzgjHvJRjM
-         IgtTyh2bf1BdmoVBV74yRcgC0UeV15wgFUzVUQib6riScfeMBcfvOuTYOP1xMa51nGMn
-         vulqWNxIAarXsE2z4avyN5zAbQ//Iv76UGVcRuDCFc8uRu48/Mpb/+0RkCfR7NhKm8zJ
-         w5yVjGEb1ArEep+GemG0PHgpyhFC6NsnOudZhTNVo+WImA1NZBjNpsCVsEMQKJePxCly
-         g3vw==
+        b=uqPGTHZOFnAyA6CVg4qiKOkQBrA7r+74MJamEoPHRDHNSLB1ybDTNm6NjW+3lw0yoU
+         jKBSm4MSWxXELDLOmAg4xtW+9xd4feBF96m/awSHQ4qOYsYI91+oqTG/7UY8ECHfMmZO
+         u6j0/cZwajBWiJRNB91qWIOMfj43m5LPy0vgkeX7x25XmkoHV3fHT8VM3j2GF4MGIkje
+         +ozTE9ucDsNkc9LZoFz+0QFwtESdaeWAoCy/Kcyp5QP4bSJZiDC5RH00uxqdcuyo+n5J
+         2hlrxP+9FYXKMgLOf/aBi0+4tb4hr2xbdqchzyIOfbY2ugXPpzIq9t73PQVbGnkUKdYW
+         eEIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ApMCLCUecuLQYrSqhZdYr0V7EpBvuK4XPA+hsGVgjZE=;
-        b=1GiTZkK1MfFYFFU3fsRmI882V2WucDe+swdoteMeD4JB8fF2oRCYfrah4yxRNvq+Zz
-         LcaewFWrjqyVAgMNVlz0FphV91XPFfyNqsCKYHKYqRyTnuBm2luyOMhywOLPhO8taeZx
-         y3JBDt4xj1SQYAwEJTQUyfdAJgy/rCC1ld7RDe3YHC3MMEVRiV+Nd2kpAG0wtfKNKUuK
-         pc44PZuujMgyv4RFs4pipU06xnJnY5mOxnj1oTHKfoOF+jdJqM074R4NYi/H0Vo6Vn9A
-         qTcib1fxpeb1III46OILz1CY06a+VVmTCU4dGD19vm36+jBZUITSD4u7hgsaTNS7yoG+
-         hRsA==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=S3rVANDsaJLgqnf1ewTXKAj9UD5/QH9ZelIpYSFIlYA=;
+        b=HGM01RMkaY0PknkMDyngSEV8DlhLKYz+hbGpLTXLjEoHEdqcz18OkMc1HM206+oFH8
+         iAV6b/gyOH1nCg56Ic2AzPzdGeLHGtWBTEqiq/7lWchPECtgSnz+Zup6gXyQGUTLpv9i
+         DDqd18xH/KC3LIYlZB+OhgbmHfMCZB0HQfM8i3kaj6DvOLkZH9Gp2uA++OHPicBRzIi6
+         mEOloXmnIW3s/LSSj6A7KZu5h+dUg9pXGfFeC8OZcNUdkNAU1BjT3bOQm9T6rrNh6KHH
+         5RLkfC8zTuDOtrYN+k4D3ZvkRiE7pLSt6vtCdFawkkPnmGqhhN188UggKT+hgevtHJfi
+         eLIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LfO6m1+S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XimOVjcf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w10si12712636qtb.194.2020.01.28.11.45.54
+        by mx.google.com with ESMTPS id d28si11934200qka.31.2020.01.28.11.59.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2020 11:45:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Jan 2020 11:59:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LfO6m1+S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XimOVjcf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36723 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwWo6-0003uj-GI
-	for alex.bennee@linaro.org; Tue, 28 Jan 2020 14:45:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57067)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iwX0m-0008NW-Dk
+	for alex.bennee@linaro.org; Tue, 28 Jan 2020 14:59:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54191)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wainersm@redhat.com>) id 1iwWd1-0000Vs-QL
- for qemu-devel@nongnu.org; Tue, 28 Jan 2020 14:34:29 -0500
+ (envelope-from <wainersm@redhat.com>) id 1iwX0d-0008Lb-1b
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 14:58:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <wainersm@redhat.com>) id 1iwWd0-0001ej-4o
- for qemu-devel@nongnu.org; Tue, 28 Jan 2020 14:34:27 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:55632
+ (envelope-from <wainersm@redhat.com>) id 1iwX0a-00012G-Pu
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 14:58:49 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56720
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1iwWcz-0001e3-WF
- for qemu-devel@nongnu.org; Tue, 28 Jan 2020 14:34:26 -0500
+ (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1iwX0a-0000xm-F8
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2020 14:58:48 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580240065;
+ s=mimecast20190719; t=1580241527;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ApMCLCUecuLQYrSqhZdYr0V7EpBvuK4XPA+hsGVgjZE=;
- b=LfO6m1+Sgbp1Mf87Dnc9X9BJztbP38MPXVKJqNMJHEj0+TQNr6oUD6MZWyy1t2FaRfgVI4
- /TBGO4XY3WWeNvdP4K1yjKY1MjyhbdaI48S2Ssa+3slVu1e6XRQgYBC2pU0mLuOvLL7oin
- nxVJ9hJgRwt/hnOF2y/ahlaBPwNC8wk=
+ bh=S3rVANDsaJLgqnf1ewTXKAj9UD5/QH9ZelIpYSFIlYA=;
+ b=XimOVjcfTEj3yUXQkd2VlHTkp3W/4mLn160ciSjjSgmdkeiONjiz9lStMUXFClJR9MM9xg
+ Bjcs2CtYE4Oc2TDs9sqbVDvEYgboNnIFqxv5mpdVWcpI2CE4GMfP0/FpHFQPHc3YKzSI+u
+ Uf+rjh1HF6yhj8zIlI55v7mLMJYW5Mw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-401-Sg8MMwr5MX-eCkP92xqtzg-1; Tue, 28 Jan 2020 14:34:24 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-8-AlTXG6vjOHGVveTIPU_b1Q-1; Tue, 28 Jan 2020 14:58:46 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 662381800D41;
- Tue, 28 Jan 2020 19:34:22 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53CC018B5F6A;
+ Tue, 28 Jan 2020 19:58:44 +0000 (UTC)
 Received: from localhost.localdomain (ovpn-116-65.gru2.redhat.com
  [10.97.116.65])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 383F95DA81;
- Tue, 28 Jan 2020 19:34:14 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 125238EA09;
+ Tue, 28 Jan 2020 19:58:33 +0000 (UTC)
 Subject: Re: [PATCH v4 2/7] Acceptance tests: Extract _console_interaction()
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200120235159.18510-1-f4bug@amsat.org>
  <20200120235159.18510-3-f4bug@amsat.org>
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Message-ID: <b760f6f2-e3f1-45c6-eb23-79e630a3c700@redhat.com>
-Date: Tue, 28 Jan 2020 17:34:12 -0200
+ <b760f6f2-e3f1-45c6-eb23-79e630a3c700@redhat.com>
+Message-ID: <5ebfe6ab-2414-1cf8-99dd-c121ae8845ba@redhat.com>
+Date: Tue, 28 Jan 2020 17:58:31 -0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200120235159.18510-3-f4bug@amsat.org>
+In-Reply-To: <b760f6f2-e3f1-45c6-eb23-79e630a3c700@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: Sg8MMwr5MX-eCkP92xqtzg-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: AlTXG6vjOHGVveTIPU_b1Q-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
@@ -118,101 +119,139 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Cleber Rosa <crosa@redhat.com>, Laurent Bonnans <laurent.bonnans@here.com>,
  Cheng Xiang <ext-cheng.xiang@here.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vyGsXsnSfPH9
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yG/D+vuW9H6H
 
 
-On 1/20/20 9:51 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Since we are going to re-use the code shared between
-> wait_for_console_pattern() and exec_command_and_wait_for_pattern(),
-> extract the common part into a local function.
+On 1/28/20 5:34 PM, Wainer dos Santos Moschetta wrote:
 >
-> Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->   tests/acceptance/avocado_qemu/__init__.py | 31 +++++++++++++----------
->   1 file changed, 17 insertions(+), 14 deletions(-)
+> On 1/20/20 9:51 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Since we are going to re-use the code shared between
+>> wait_for_console_pattern() and exec_command_and_wait_for_pattern(),
+>> extract the common part into a local function.
+>>
+>> Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> ---
+>> =C2=A0 tests/acceptance/avocado_qemu/__init__.py | 31 +++++++++++++-----=
+-----
+>> =C2=A0 1 file changed, 17 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/tests/acceptance/avocado_qemu/__init__.py=20
+>> b/tests/acceptance/avocado_qemu/__init__.py
+>> index 6618ea67c1..0a50fcf2be 100644
+>> --- a/tests/acceptance/avocado_qemu/__init__.py
+>> +++ b/tests/acceptance/avocado_qemu/__init__.py
+>> @@ -55,19 +55,14 @@ def pick_default_qemu_bin(arch=3DNone):
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return qemu_bin_f=
+rom_src_dir_path
+>> =C2=A0 =C2=A0 -def wait_for_console_pattern(test, success_message,=20
+>> failure_message=3DNone):
+>> -=C2=A0=C2=A0=C2=A0 """
+>> -=C2=A0=C2=A0=C2=A0 Waits for messages to appear on the console, while l=
+ogging the=20
+>> content
+>> -
+>> -=C2=A0=C2=A0=C2=A0 :param test: an Avocado test containing a VM that wi=
+ll have its=20
+>> console
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 read and probed for a success or failure messag=
+e
+>> -=C2=A0=C2=A0=C2=A0 :type test: :class:`avocado_qemu.Test`
+>> -=C2=A0=C2=A0=C2=A0 :param success_message: if this message appears, tes=
+t succeeds
+>> -=C2=A0=C2=A0=C2=A0 :param failure_message: if this message appears, tes=
+t fails
+>> -=C2=A0=C2=A0=C2=A0 """
+>> +def _console_interaction(test, success_message, failure_message,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ send_string):
 >
-> diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance=
-/avocado_qemu/__init__.py
-> index 6618ea67c1..0a50fcf2be 100644
-> --- a/tests/acceptance/avocado_qemu/__init__.py
-> +++ b/tests/acceptance/avocado_qemu/__init__.py
-> @@ -55,19 +55,14 @@ def pick_default_qemu_bin(arch=3DNone):
->           return qemu_bin_from_src_dir_path
->  =20
->  =20
-> -def wait_for_console_pattern(test, success_message, failure_message=3DNo=
-ne):
-> -    """
-> -    Waits for messages to appear on the console, while logging the conte=
-nt
-> -
-> -    :param test: an Avocado test containing a VM that will have its cons=
-ole
-> -                 read and probed for a success or failure message
-> -    :type test: :class:`avocado_qemu.Test`
-> -    :param success_message: if this message appears, test succeeds
-> -    :param failure_message: if this message appears, test fails
-> -    """
-> +def _console_interaction(test, success_message, failure_message,
-> +                         send_string):
+>
+> Why not just add send_string as a parameter? Like:
+>
+> def wait_for_console_pattern(test, success_message,=20
+> failure_message=3DNone, send_msg=3DNone)
+>
+>
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 console =3D test.vm.console_socket.makefi=
+le()
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 console_logger =3D logging.getLogger('con=
+sole')
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 while True:
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if send_string:
+>> + test.vm.console_socket.sendall(send_string.encode())
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 send=
+_string =3D None # send only once
+>
+> If it is going to send the message once, then put it before the loop.
+
+OK, now that I read the next patch in this series (patch 03), I=20
+understood what you trying to accomplish here. So disregard my comments.
+
+Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
 
 
-Why not just add send_string as a parameter? Like:
-
-def wait_for_console_pattern(test, success_message,=20
-failure_message=3DNone, send_msg=3DNone)
-
-
->       console =3D test.vm.console_socket.makefile()
->       console_logger =3D logging.getLogger('console')
->       while True:
-> +        if send_string:
-> +            test.vm.console_socket.sendall(send_string.encode())
-> +            send_string =3D None # send only once
-
-If it is going to send the message once, then put it before the loop.
-
->           msg =3D console.readline().strip()
->           if not msg:
->               continue
-> @@ -79,6 +74,17 @@ def wait_for_console_pattern(test, success_message, fa=
-ilure_message=3DNone):
->               fail =3D 'Failure message found in console: %s' % failure_m=
-essage
->               test.fail(fail)
->  =20
-> +def wait_for_console_pattern(test, success_message, failure_message=3DNo=
-ne):
-> +    """
-> +    Waits for messages to appear on the console, while logging the conte=
-nt
-> +
-> +    :param test: an Avocado test containing a VM that will have its cons=
-ole
-> +                 read and probed for a success or failure message
-> +    :type test: :class:`avocado_qemu.Test`
-> +    :param success_message: if this message appears, test succeeds
-> +    :param failure_message: if this message appears, test fails
-> +    """
-> +    _console_interaction(test, success_message, failure_message, None)
->  =20
->   def exec_command_and_wait_for_pattern(test, command,
->                                         success_message, failure_message=
-=3DNone):
-> @@ -94,10 +100,7 @@ def exec_command_and_wait_for_pattern(test, command,
->       :param success_message: if this message appears, test succeeds
->       :param failure_message: if this message appears, test fails
->       """
-> -    command +=3D '\r'
-> -    test.vm.console_socket.sendall(command.encode())
-> -    wait_for_console_pattern(test, success_message, failure_message)
-> -
-> +    _console_interaction(test, success_message, failure_message, command=
- + '\r')
->  =20
->   class Test(avocado.Test):
->       def _get_unique_tag_val(self, tag_name):
+>
+>
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 msg =3D console.r=
+eadline().strip()
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if not msg:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 continue
+>> @@ -79,6 +74,17 @@ def wait_for_console_pattern(test,=20
+>> success_message, failure_message=3DNone):
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 fail =3D 'Failure message found in console: %s' %=20
+>> failure_message
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 test.fail(fail)
+>> =C2=A0 +def wait_for_console_pattern(test, success_message,=20
+>> failure_message=3DNone):
+>> +=C2=A0=C2=A0=C2=A0 """
+>> +=C2=A0=C2=A0=C2=A0 Waits for messages to appear on the console, while l=
+ogging the=20
+>> content
+>> +
+>> +=C2=A0=C2=A0=C2=A0 :param test: an Avocado test containing a VM that wi=
+ll have its=20
+>> console
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 read and probed for a success or failure messag=
+e
+>> +=C2=A0=C2=A0=C2=A0 :type test: :class:`avocado_qemu.Test`
+>> +=C2=A0=C2=A0=C2=A0 :param success_message: if this message appears, tes=
+t succeeds
+>> +=C2=A0=C2=A0=C2=A0 :param failure_message: if this message appears, tes=
+t fails
+>> +=C2=A0=C2=A0=C2=A0 """
+>> +=C2=A0=C2=A0=C2=A0 _console_interaction(test, success_message, failure_=
+message, None)
+>> =C2=A0 =C2=A0 def exec_command_and_wait_for_pattern(test, command,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 success_message,=20
+>> failure_message=3DNone):
+>> @@ -94,10 +100,7 @@ def exec_command_and_wait_for_pattern(test, command,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :param success_message: if this message a=
+ppears, test succeeds
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :param failure_message: if this message a=
+ppears, test fails
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
+>> -=C2=A0=C2=A0=C2=A0 command +=3D '\r'
+>> -=C2=A0=C2=A0=C2=A0 test.vm.console_socket.sendall(command.encode())
+>> -=C2=A0=C2=A0=C2=A0 wait_for_console_pattern(test, success_message, fail=
+ure_message)
+>> -
+>> +=C2=A0=C2=A0=C2=A0 _console_interaction(test, success_message, failure_=
+message,=20
+>> command + '\r')
+>> =C2=A0 =C2=A0 class Test(avocado.Test):
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 def _get_unique_tag_val(self, tag_name):
+>
+>
 

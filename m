@@ -1,165 +1,161 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp559249lfp;
-        Wed, 29 Jan 2020 05:20:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyVRGLopmDlpM0BYd0WGdLsN0Hi/SXa2NxRxYNC7kTqdnPAO8CCOvXXwr3MhJ6a+cwI/0I0
-X-Received: by 2002:aa7:d505:: with SMTP id y5mr8081700edq.370.1580304009903;
-        Wed, 29 Jan 2020 05:20:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580304009; cv=none;
+Received: by 2002:a05:6214:603:0:0:0:0 with SMTP id z3csp1246339qvw;
+        Wed, 29 Jan 2020 12:25:15 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwyvOQirfiNQv0usG2HEZeZ3mRW0Xd9rUsK9uNrSntc/4B6gnv1Nu/+aBRUesA7Vvuo8HgA
+X-Received: by 2002:ac8:3aa6:: with SMTP id x35mr1124142qte.38.1580329515692;
+        Wed, 29 Jan 2020 12:25:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580329515; cv=none;
         d=google.com; s=arc-20160816;
-        b=0cOGD0emML1jrEYaxZPxI/hYvZnBxctgo+CrzwNdGdSqD2DB2FnghLWtKre4hZ3kmp
-         fVqnlnb7Am9ADB5qERi3ErdmE2v1VHJgG36fwtNrZNsl4yEskn+cpnwb4cOBjLowkPvZ
-         USiLsgkxaq52uPdR4rnewmWwGRYqgxAmrMZNlKilUX3sV6H5zvu2cKOnRsNuTZzdXd8I
-         ASjLunVQ9fmu1q32kq60475D5i79dNWIUQrZg8yYr6gVpZDjYFKK4D0kimtyaInP76YI
-         rDtOEl8OOuKZofwdSMmbrzaIQhS14fJsx9mtbKhzJY4typaH+6Udy0YnVQL58/u9SzZj
-         Pm1g==
+        b=tHNTWRtLhdAXJx1JP7meCeM7OPKO3PwmXkm0S2Oz7B7dE6qfQi+MjwSmUwdyMQQYP9
+         rtWQYozSZFYKqOA1wHHx6Yepa/5T2TSKFZw68MQcJ7VNq2CdAbwFokAERwrlEQTh80F6
+         LXakla3EMfb5wOdDxUJyfAtWhFdGFFsGu0aITzIk+nEDhHuOyXCEl420GUqTz2W4Wcyj
+         A1qBFSxr2QrwKvv7RYDT7vPbPCHB8rImpC95mdlZVe/oZdbA6s1/wTBK+fwjhrI34xjB
+         42mFMW3uj83WdaIgcYA59qEx8uSURQkQUjs3PR34svz4HAgt+0MPPb3XzRhwjUv5ACJv
+         5Ziw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:message-id:date:subject:cc:to:from
+        h=sender:errors-to:content-transfer-encoding:mime-version
+         :list-subscribe:list-help:list-post:list-archive:list-unsubscribe
+         :list-id:precedence:cc:message-id:date:subject:to:from
          :dkim-signature;
-        bh=KmeI+7oXvqzalvY4bsXXeKKa/FeDHGMNqU98zZjgdbY=;
-        b=VDtLlTJ0XTF1haqRS0d68oaoWkJ6Dm6WKdH1e9F5/EeueGechmcQ7ealuPqFYJDCn0
-         mVHOoER/Ye+n7xU/LYEU8+xrI19QWQI4LKDO5qEPq4bnZbdFvh8ACcOeASJnYg9tnNO7
-         CYBAsBxGBG4c7+Cm6VyoPko6RV4wAQeNqAPAy2FzGsss49BAYrKn3XQ8NbAK+JsQ5w60
-         wSLuviNrZZDjU4tmNX1KcASRTnABgrUmNxPnRt7YK2oJzdjRQKftuqRUHqfFZ6Pfv3qH
-         dP+JeOAoYp8Mwl6xE/I7K1dE8jen+aGUr/x0+JAAyJ3wRpQsXfLUh02GpCFg8vHwN5HR
-         NfrA==
+        bh=wXVpdEdcWcoII1+6gP3WpIFgE7Gyp0qTktvv3phk2ak=;
+        b=A6qAC2kBSwIc7Sp7TqZ/N1CkEFjmC6c10qMMHAi7TCtZteLQl5cfY0LfZPLboxCRyE
+         V3UL3FGd+lJttwI0EBNvVCVVG0DxYlscEo7c5koHJca2yfqkfhngu8v1kJYHgUx3C3ep
+         C84QXWybMQYqfdIQZsA0ar/pW9WeC5kjBsBRWjSBZWUArAphJW5XWLIQqnP79jjKIIR2
+         PVR3hBczEeVMYvFyJ98+ryy/EpLFUxnAdIp399C1jMf17byagpk7MnQUxrNjeTXwTsJy
+         5xIQFhFMVYMM4lnr1AK7g/GBhF9Py5TDigte9K/qZsCwDERUV95jo9cr1o9+qu46Oa0h
+         fRZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WTtSe+Zl;
-       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id g22si1010897edp.187.2020.01.29.05.20.09
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 29 Jan 2020 05:20:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=iPBw6Phm;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id 78si2397509qkj.181.2020.01.29.12.25.15;
+        Wed, 29 Jan 2020 12:25:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WTtSe+Zl;
-       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1580304008;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=KmeI+7oXvqzalvY4bsXXeKKa/FeDHGMNqU98zZjgdbY=;
-	b=WTtSe+ZlLvipCi2Avp7g//nMPLJnpyyAPkHVFRK1XO5QKC7/+H0iCeKThFn6RXCRcBenJZ
-	oxypgn9+ivGX78W8kxqftp/hWugpTwjpBYiQ4n6Pl/wt1z1NtE1OrUThmF5MtHKR34lEll
-	MbDryeInXlkU5Rc5S79tTBgUlW4txuA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-257-LD7z4yD7P4SWLyxDKyGWvQ-1; Wed, 29 Jan 2020 08:19:29 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 26E9518C43C3;
-	Wed, 29 Jan 2020 13:19:28 +0000 (UTC)
-Received: from thuth.com (ovpn-116-210.ams2.redhat.com [10.36.116.210])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9184D5DA66;
-	Wed, 29 Jan 2020 13:19:23 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=iPBw6Phm;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5DFD84A4A0;
+	Wed, 29 Jan 2020 15:25:15 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yj9pmbB8XGlE; Wed, 29 Jan 2020 15:25:14 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 541364A800;
+	Wed, 29 Jan 2020 15:25:14 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 1A5314A800
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 29 Jan 2020 15:25:13 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id A3imO7SSI9ca for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 29 Jan 2020 15:25:11 -0500 (EST)
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 271204A4A0
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 29 Jan 2020 15:25:11 -0500 (EST)
+Received: by mail-wr1-f65.google.com with SMTP id w15so1081442wru.4
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 29 Jan 2020 12:25:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=5PiI2JpLPXOD+rhRs9PjT8IxzU7v7C1XqbI6jKm2tH8=;
+ b=iPBw6PhmDE72adZ8akd4XeUE8dJvenckql6hJ+U+FpzRpIw0sYb0RBMJe3Ea/dUkoX
+ oV2abATZvmbcgmr8k/CJf+d3bn+9UvQik1a4oUu/QxQlZUrpmswocbQrt1yGdgQSwhQ3
+ GMdxhiP66sQ2/uHRYyDYcilnRYlUBHdHZtVOCPwsO66wXE+ofbThdUG2ycH61acP87WJ
+ AHEZPHL6ZJKi485xpU+YLrJz+T1xMS14TCBntcMs67ZQ9ySsWDb4TRc5FYlGoatscVrG
+ VR4uik1p8XcWMQr9h9SLQepvSVOfKi90BsLJIgZNKKBwvygaLKE9CS6HotvVL7YXa9Ry
+ Y7lQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=5PiI2JpLPXOD+rhRs9PjT8IxzU7v7C1XqbI6jKm2tH8=;
+ b=hH+Ex43kmLshkijAdbdNP51NGrditgFmtw79Zl95fjyI2H2bH6T8Azg+fDt1p19ayE
+ 4cLj+ZKz0CZtV0j+t+mdCoeGV/NvFbvBpWQKJEWAQICvnQvX36dP3nBEslKNFvFAABXm
+ VNFlJAyRglC0iZUuM+EYvAjsN3BZPo4wFxusSdLmsM80AcOmUcY7TiAzE8QC3yzbrUbU
+ RouBSMbTUeGu7ZcdnzQP1gcIe/TBalXWA/ZsHYyzCjX+SJs1cxDJ6IftjFnogYiIrI26
+ eSd08mANEWmtoK8RDfFHvy4DXAIuZiauCt0WsEW9VO/brqS/U3zHQO7KOVQUNad9D6sT
+ Q/Dw==
+X-Gm-Message-State: APjAAAUtbMmRaLGv4PBodVQnNW/WmuabJGgS6GrEkS46zvEzJRvMnQ14
+ 4Qx+UN3M7K25bXD5fPawwoOFQg==
+X-Received: by 2002:adf:ed83:: with SMTP id c3mr604190wro.51.1580329510061;
+ Wed, 29 Jan 2020 12:25:10 -0800 (PST)
+Received: from moi-limbo-9350.home
+ (host86-131-78-194.range86-131.btcentralplus.com. [86.131.78.194])
+ by smtp.gmail.com with ESMTPSA id h2sm4377518wrt.45.2020.01.29.12.25.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Jan 2020 12:25:09 -0800 (PST)
+From: Beata Michalska <beata.michalska@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Cleber Rosa <crosa@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Subject: [RFC PATCH] tests/acceptance: Add a test for the N800 and N810 arm machines
-Date: Wed, 29 Jan 2020 14:19:20 +0100
-Message-Id: <20200129131920.22302-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: LD7z4yD7P4SWLyxDKyGWvQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 5dYCrtshEaUs
+Subject: [PATCH v2 0/2] target/arm: kvm: Support for KVM DABT without valid ISS
+Date: Wed, 29 Jan 2020 20:24:39 +0000
+Message-Id: <20200129202441.12745-1-beata.michalska@linaro.org>
+Cc: qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: 7OY8R30ATult
 
-Old kernels from the Meego project can be used to check that Linux
-is at least starting on these machines.
+Some of the ARMv7 & ARMv8 load/store instructions might trigger a data abort
+exception with no valid ISS info to be decoded. The lack of decode info
+makes it at least tricky to emulate the instruction which is one of the
+(many) reasons why KVM will not even try to do so.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- The serial console is written to the second UART, so this needs Phil's
- "Allow to use other serial consoles than default" patch as a prerequisite:
- Based-on: <20200120235159.18510-5-f4bug@amsat.org>
+So far, if a guest made an attempt to access memory outside the memory slot,
+KVM reported vague ENOSYS. As a result QEMU exited with no useful information
+being provided or even a clue on what has just happened.
 
- MAINTAINERS                          |  1 +
- tests/acceptance/machine_arm_n8x0.py | 49 ++++++++++++++++++++++++++++
- 2 files changed, 50 insertions(+)
- create mode 100644 tests/acceptance/machine_arm_n8x0.py
+ARM KVM introduced support for notifying guest of an attempt to execute
+an instruction that resulted in dabt with no valid ISS decoding info.
+This still leaves QEMU to handle the case, but at least now, it can enable
+further debugging of the encountered issue by being more verbose
+in a (hopefully) useful way.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ddf6fe0794..560507e821 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -672,6 +672,7 @@ F: hw/rtc/twl92230.c
- F: include/hw/display/blizzard.h
- F: include/hw/input/tsc2xxx.h
- F: include/hw/misc/cbus.h
-+F: tests/acceptance/machine_arm_n8x0.py
-=20
- Palm
- M: Andrzej Zaborowski <balrogg@gmail.com>
-diff --git a/tests/acceptance/machine_arm_n8x0.py b/tests/acceptance/machin=
-e_arm_n8x0.py
-new file mode 100644
-index 0000000000..e5741f2d8d
---- /dev/null
-+++ b/tests/acceptance/machine_arm_n8x0.py
-@@ -0,0 +1,49 @@
-+# Functional test that boots a Linux kernel and checks the console
-+#
-+# Copyright (c) 2020 Red Hat, Inc.
-+#
-+# Author:
-+#  Thomas Huth <thuth@redhat.com>
-+#
-+# This work is licensed under the terms of the GNU GPL, version 2 or
-+# later.  See the COPYING file in the top-level directory.
-+
-+import os
-+
-+from avocado import skipUnless
-+from avocado_qemu import Test
-+from avocado_qemu import wait_for_console_pattern
-+
-+class N8x0Machine(Test):
-+    """Boots the Linux kernel and checks that the console is operational""=
-"
-+
-+    timeout =3D 90
-+
-+    def __do_test_n8x0(self):
-+        kernel_url =3D ('http://stskeeps.subnetmask.net/meego-n8x0/'
-+                      'meego-arm-n8x0-1.0.80.20100712.1431-'
-+                      'vmlinuz-2.6.35~rc4-129.1-n8x0')
-+        kernel_hash =3D 'e9d5ab8d7548923a0061b6fbf601465e479ed269'
-+        kernel_path =3D self.fetch_asset(kernel_url, asset_hash=3Dkernel_h=
-ash)
-+
-+        self.vm.set_console(console_index=3D1)
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-append', 'printk.time=3D0 console=3DttyS1')
-+        self.vm.launch()
-+        wait_for_console_pattern(self, 'TSC2005 driver initializing')
-+
-+    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code=
-')
-+    def test_n800(self):
-+        """
-+        :avocado: tags=3Darch:arm
-+        :avocado: tags=3Dmachine:n800
-+        """
-+        self.__do_test_n8x0()
-+
-+    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code=
-')
-+    def test_n810(self):
-+        """
-+        :avocado: tags=3Darch:arm
-+        :avocado: tags=3Dmachine:n810
-+        """
-+        self.__do_test_n8x0()
---=20
-2.18.1
+v2:
+- Improving/re-phrasing messaging
+- Dropping messing around with forced sync (@see [PATCH v2 1/2])
+  and PC alignment
+
+
+Beata Michalska (2):
+  target/arm: kvm: Inject events at the last stage of sync
+  target/arm: kvm: Handle DABT with no valid ISS
+
+ target/arm/cpu.h     |  2 ++
+ target/arm/kvm.c     | 96 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/kvm32.c   | 23 +++++++------
+ target/arm/kvm64.c   | 23 +++++++------
+ target/arm/kvm_arm.h | 19 +++++++++++
+ 5 files changed, 143 insertions(+), 20 deletions(-)
+
+-- 
+2.7.4
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

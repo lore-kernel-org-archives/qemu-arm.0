@@ -1,44 +1,44 @@
-Received: by 2002:a05:6214:603:0:0:0:0 with SMTP id z3csp1246339qvw;
-        Wed, 29 Jan 2020 12:25:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwyvOQirfiNQv0usG2HEZeZ3mRW0Xd9rUsK9uNrSntc/4B6gnv1Nu/+aBRUesA7Vvuo8HgA
-X-Received: by 2002:ac8:3aa6:: with SMTP id x35mr1124142qte.38.1580329515692;
-        Wed, 29 Jan 2020 12:25:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580329515; cv=none;
+Received: by 2002:a05:6214:603:0:0:0:0 with SMTP id z3csp1246443qvw;
+        Wed, 29 Jan 2020 12:25:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwNmoCA01NqDLGqhR6tY+N4HIElECpOoKW8OvfVwS+JrcngUHL+fz3Qp9KgFIV7IsxKmnd/
+X-Received: by 2002:ac8:349d:: with SMTP id w29mr1067552qtb.386.1580329522728;
+        Wed, 29 Jan 2020 12:25:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580329522; cv=none;
         d=google.com; s=arc-20160816;
-        b=tHNTWRtLhdAXJx1JP7meCeM7OPKO3PwmXkm0S2Oz7B7dE6qfQi+MjwSmUwdyMQQYP9
-         rtWQYozSZFYKqOA1wHHx6Yepa/5T2TSKFZw68MQcJ7VNq2CdAbwFokAERwrlEQTh80F6
-         LXakla3EMfb5wOdDxUJyfAtWhFdGFFsGu0aITzIk+nEDhHuOyXCEl420GUqTz2W4Wcyj
-         A1qBFSxr2QrwKvv7RYDT7vPbPCHB8rImpC95mdlZVe/oZdbA6s1/wTBK+fwjhrI34xjB
-         42mFMW3uj83WdaIgcYA59qEx8uSURQkQUjs3PR34svz4HAgt+0MPPb3XzRhwjUv5ACJv
-         5Ziw==
+        b=qBsDGd5rXcngAoeOvB0AZMqUuhGgPcjQDmcRUTmabB5158bM6qh0Big2QqR2mRpaa5
+         tPXqETtXPYLNXtNgmKKXMuDmkZzJuAeALJuCjGAcwhjadzqCTPgS3LeOmeoQ9pXWyAqT
+         se5+sUm/vOj4BrVpbFyis3JI1fwqkUxpmpyK9cNndtkTHvxiCYrYYDuY20fRvqKTQD7u
+         hGYpiG7wEjS3yAmZY3R4gzYbhWx+8/ey0BT98K8IsC8GgjtkVnNIVZ6+cXsNawANb8pT
+         aS0RGgbjb81R6gQ2I41f1Ys8ARlU+T0qDR2EpwBvEaL928eCm8FoXy6MWQm1hQDzaAyh
+         BPHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:mime-version
          :list-subscribe:list-help:list-post:list-archive:list-unsubscribe
-         :list-id:precedence:cc:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=wXVpdEdcWcoII1+6gP3WpIFgE7Gyp0qTktvv3phk2ak=;
-        b=A6qAC2kBSwIc7Sp7TqZ/N1CkEFjmC6c10qMMHAi7TCtZteLQl5cfY0LfZPLboxCRyE
-         V3UL3FGd+lJttwI0EBNvVCVVG0DxYlscEo7c5koHJca2yfqkfhngu8v1kJYHgUx3C3ep
-         C84QXWybMQYqfdIQZsA0ar/pW9WeC5kjBsBRWjSBZWUArAphJW5XWLIQqnP79jjKIIR2
-         PVR3hBczEeVMYvFyJ98+ryy/EpLFUxnAdIp399C1jMf17byagpk7MnQUxrNjeTXwTsJy
-         5xIQFhFMVYMM4lnr1AK7g/GBhF9Py5TDigte9K/qZsCwDERUV95jo9cr1o9+qu46Oa0h
-         fRZg==
+         :list-id:precedence:cc:references:in-reply-to:message-id:date
+         :subject:to:from:dkim-signature;
+        bh=5pshgpFkcXkNyRsN/flEVExat4SbVi8GYf9Qs9/obkM=;
+        b=Cw5olEn+d7/ROLJCDRRvz1/nna7Hu8eJNbTM1PA5VsIv8GWAkL/EazKK8VaKz8fNHv
+         Rcyd8U2VYBP+XBGTUVdsgqzCTqrnK/9Q/id9q4oc8EaY/hsgrDernybiGbTmUGbF0/pJ
+         LAdKjP00Ey+L3d3scUsgbypOaXvITy/if3NOZ3WHaffeaKgVMMeyPCjBvp7Qmlw8LpuZ
+         W6rFZTBF0kSDKz5RPBnhu4NGg5k41iVUXs9ARp3oTI7/NFubBIPXRwkU6UjBcQFwbrLe
+         1/AnC543mDG/a8B9dOUy4NS5XT27XP/UPCATyp2PpgfiBqDimBkMRbMzKm7JcDkFPCyi
+         9MVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=iPBw6Phm;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=hmZ6qyaI;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id 78si2397509qkj.181.2020.01.29.12.25.15;
-        Wed, 29 Jan 2020 12:25:15 -0800 (PST)
+        by mx.google.com with ESMTP id o8si1906979qtp.345.2020.01.29.12.25.22;
+        Wed, 29 Jan 2020 12:25:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=iPBw6Phm;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=hmZ6qyaI;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5DFD84A4A0;
-	Wed, 29 Jan 2020 15:25:15 -0500 (EST)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 6B5214A4A0;
+	Wed, 29 Jan 2020 15:25:22 -0500 (EST)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.909
@@ -50,57 +50,61 @@ Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
 	(fail, message has been altered) header.i=@linaro.org
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yj9pmbB8XGlE; Wed, 29 Jan 2020 15:25:14 -0500 (EST)
+	with ESMTP id 5lXsBUq14gWP; Wed, 29 Jan 2020 15:25:21 -0500 (EST)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 541364A800;
-	Wed, 29 Jan 2020 15:25:14 -0500 (EST)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 78B114A800;
+	Wed, 29 Jan 2020 15:25:21 -0500 (EST)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 1A5314A800
- for <kvmarm@lists.cs.columbia.edu>; Wed, 29 Jan 2020 15:25:13 -0500 (EST)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 6737C4A959
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 29 Jan 2020 15:25:19 -0500 (EST)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A3imO7SSI9ca for <kvmarm@lists.cs.columbia.edu>;
- Wed, 29 Jan 2020 15:25:11 -0500 (EST)
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 271204A4A0
- for <kvmarm@lists.cs.columbia.edu>; Wed, 29 Jan 2020 15:25:11 -0500 (EST)
-Received: by mail-wr1-f65.google.com with SMTP id w15so1081442wru.4
- for <kvmarm@lists.cs.columbia.edu>; Wed, 29 Jan 2020 12:25:11 -0800 (PST)
+ with ESMTP id RITC3cYkOsNl for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 29 Jan 2020 15:25:18 -0500 (EST)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 66FED4A4FC
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 29 Jan 2020 15:25:18 -0500 (EST)
+Received: by mail-wr1-f68.google.com with SMTP id d16so1029535wre.10
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 29 Jan 2020 12:25:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=5PiI2JpLPXOD+rhRs9PjT8IxzU7v7C1XqbI6jKm2tH8=;
- b=iPBw6PhmDE72adZ8akd4XeUE8dJvenckql6hJ+U+FpzRpIw0sYb0RBMJe3Ea/dUkoX
- oV2abATZvmbcgmr8k/CJf+d3bn+9UvQik1a4oUu/QxQlZUrpmswocbQrt1yGdgQSwhQ3
- GMdxhiP66sQ2/uHRYyDYcilnRYlUBHdHZtVOCPwsO66wXE+ofbThdUG2ycH61acP87WJ
- AHEZPHL6ZJKi485xpU+YLrJz+T1xMS14TCBntcMs67ZQ9ySsWDb4TRc5FYlGoatscVrG
- VR4uik1p8XcWMQr9h9SLQepvSVOfKi90BsLJIgZNKKBwvygaLKE9CS6HotvVL7YXa9Ry
- Y7lQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=+tZ0YBqhVEsxFXOR05MPD9ATHbI+tc6ggHRmtxE2t3s=;
+ b=hmZ6qyaI6/s1G9fnfQJcUMPDpFu9Z3QQVzkxagMyyHwmFeewG3Pom3ubikvAIRvOBU
+ VJBypdw++F73MZW0g1YdJR0bfVSWuO4AVnfKlAgdVI34ILKKBKySNiMaLQI/qLUoDIbi
+ DgYv3OLEP4Vl3hNRWoYwKTcSl7BDaIuxkZCiw2/4knZX2Bz3RUP6PauRghFz28offnot
+ oeuqe1k6Feq8WxWs3IT2hh2kDDJsKce6HlMVZ5+18n43TalBEpQ8OKRrrUgJIEIY0xmj
+ 08MmPAG4ZH4tTTkxkIdhRy///qnucEDZuhyOzGPGR3c+SGxXMEGI3ZENZTHXDwZOuzFH
+ 36RA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=5PiI2JpLPXOD+rhRs9PjT8IxzU7v7C1XqbI6jKm2tH8=;
- b=hH+Ex43kmLshkijAdbdNP51NGrditgFmtw79Zl95fjyI2H2bH6T8Azg+fDt1p19ayE
- 4cLj+ZKz0CZtV0j+t+mdCoeGV/NvFbvBpWQKJEWAQICvnQvX36dP3nBEslKNFvFAABXm
- VNFlJAyRglC0iZUuM+EYvAjsN3BZPo4wFxusSdLmsM80AcOmUcY7TiAzE8QC3yzbrUbU
- RouBSMbTUeGu7ZcdnzQP1gcIe/TBalXWA/ZsHYyzCjX+SJs1cxDJ6IftjFnogYiIrI26
- eSd08mANEWmtoK8RDfFHvy4DXAIuZiauCt0WsEW9VO/brqS/U3zHQO7KOVQUNad9D6sT
- Q/Dw==
-X-Gm-Message-State: APjAAAUtbMmRaLGv4PBodVQnNW/WmuabJGgS6GrEkS46zvEzJRvMnQ14
- 4Qx+UN3M7K25bXD5fPawwoOFQg==
-X-Received: by 2002:adf:ed83:: with SMTP id c3mr604190wro.51.1580329510061;
- Wed, 29 Jan 2020 12:25:10 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=+tZ0YBqhVEsxFXOR05MPD9ATHbI+tc6ggHRmtxE2t3s=;
+ b=rzxqLRNi5uINQF1W0cIii2wJK5MpGhZMckqViufeeEExQr9NroSJfnGzouSmbMwSwU
+ /Cd4zq2Kq+2LpNDpnfBGw41wtqU4tA214WgyaCgWHVB63OQq2aortCOicbc+ptMq5s5T
+ Eb090SKZjWM0Qk96WAoKd6a2Y6EHiNpp2WOSXLpSFD8V+DjQzlZkqwoqFrdZsWPv4Xzt
+ 51FVt2/Do1bVKOce4VmojrC07GUKPvmFY6U0WDe9iJDBPm7OPHbtOuA08chPPEZSy95G
+ Qh9vSYj+LN1/p9hBYZdXEBQpuzz980weJ4KtoxwmcQ6kZN/O6aM4c/N+OwigDoDG4CnN
+ rlfw==
+X-Gm-Message-State: APjAAAU7VSzofJwIpjf2livpN3mBy3/9hlCL4dSORih39X33+91KkCMM
+ dmcC8QdTxg7yM/fm3vACDXQkdw==
+X-Received: by 2002:adf:f18b:: with SMTP id h11mr711078wro.56.1580329517572;
+ Wed, 29 Jan 2020 12:25:17 -0800 (PST)
 Received: from moi-limbo-9350.home
  (host86-131-78-194.range86-131.btcentralplus.com. [86.131.78.194])
- by smtp.gmail.com with ESMTPSA id h2sm4377518wrt.45.2020.01.29.12.25.09
+ by smtp.gmail.com with ESMTPSA id h2sm4377518wrt.45.2020.01.29.12.25.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jan 2020 12:25:09 -0800 (PST)
+ Wed, 29 Jan 2020 12:25:17 -0800 (PST)
 From: Beata Michalska <beata.michalska@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 0/2] target/arm: kvm: Support for KVM DABT without valid ISS
-Date: Wed, 29 Jan 2020 20:24:39 +0000
-Message-Id: <20200129202441.12745-1-beata.michalska@linaro.org>
+Subject: [PATCH v2 1/2] target/arm: kvm: Inject events at the last stage of
+ sync
+Date: Wed, 29 Jan 2020 20:24:40 +0000
+Message-Id: <20200129202441.12745-2-beata.michalska@linaro.org>
+In-Reply-To: <20200129202441.12745-1-beata.michalska@linaro.org>
+References: <20200129202441.12745-1-beata.michalska@linaro.org>
 Cc: qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com
 X-BeenThere: kvmarm@lists.cs.columbia.edu
 X-Mailman-Version: 2.1.14
@@ -118,40 +122,120 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 7OY8R30ATult
+X-TUID: b8UACFppmZT0
 
-Some of the ARMv7 & ARMv8 load/store instructions might trigger a data abort
-exception with no valid ISS info to be decoded. The lack of decode info
-makes it at least tricky to emulate the instruction which is one of the
-(many) reasons why KVM will not even try to do so.
+KVM_SET_VCPU_EVENTS might actually lead to vcpu registers being modified.
+As such this should be the last step of sync to avoid potential overwriting
+of whatever changes KVM might have done.
 
-So far, if a guest made an attempt to access memory outside the memory slot,
-KVM reported vague ENOSYS. As a result QEMU exited with no useful information
-being provided or even a clue on what has just happened.
+Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+---
+ target/arm/kvm32.c | 20 ++++++++++----------
+ target/arm/kvm64.c | 20 ++++++++++----------
+ 2 files changed, 20 insertions(+), 20 deletions(-)
 
-ARM KVM introduced support for notifying guest of an attempt to execute
-an instruction that resulted in dabt with no valid ISS decoding info.
-This still leaves QEMU to handle the case, but at least now, it can enable
-further debugging of the encountered issue by being more verbose
-in a (hopefully) useful way.
-
-v2:
-- Improving/re-phrasing messaging
-- Dropping messing around with forced sync (@see [PATCH v2 1/2])
-  and PC alignment
-
-
-Beata Michalska (2):
-  target/arm: kvm: Inject events at the last stage of sync
-  target/arm: kvm: Handle DABT with no valid ISS
-
- target/arm/cpu.h     |  2 ++
- target/arm/kvm.c     | 96 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/kvm32.c   | 23 +++++++------
- target/arm/kvm64.c   | 23 +++++++------
- target/arm/kvm_arm.h | 19 +++++++++++
- 5 files changed, 143 insertions(+), 20 deletions(-)
-
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index 32bf8d6..cf2b47f 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -386,17 +386,17 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+         return ret;
+     }
+ 
+-    ret = kvm_put_vcpu_events(cpu);
+-    if (ret) {
+-        return ret;
+-    }
+-
+     write_cpustate_to_list(cpu, true);
+ 
+     if (!write_list_to_kvmstate(cpu, level)) {
+         return EINVAL;
+     }
+ 
++    ret = kvm_put_vcpu_events(cpu);
++    if (ret) {
++        return ret;
++    }
++
+     kvm_arm_sync_mpstate_to_kvm(cpu);
+ 
+     return ret;
+@@ -462,11 +462,6 @@ int kvm_arch_get_registers(CPUState *cs)
+     }
+     vfp_set_fpscr(env, fpscr);
+ 
+-    ret = kvm_get_vcpu_events(cpu);
+-    if (ret) {
+-        return ret;
+-    }
+-
+     if (!write_kvmstate_to_list(cpu)) {
+         return EINVAL;
+     }
+@@ -475,6 +470,11 @@ int kvm_arch_get_registers(CPUState *cs)
+      */
+     write_list_to_cpustate(cpu);
+ 
++    ret = kvm_get_vcpu_events(cpu);
++    if (ret) {
++        return ret;
++    }
++
+     kvm_arm_sync_mpstate_to_qemu(cpu);
+ 
+     return 0;
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 6344113..d06fd32 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -1043,17 +1043,17 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+         return ret;
+     }
+ 
+-    ret = kvm_put_vcpu_events(cpu);
+-    if (ret) {
+-        return ret;
+-    }
+-
+     write_cpustate_to_list(cpu, true);
+ 
+     if (!write_list_to_kvmstate(cpu, level)) {
+         return -EINVAL;
+     }
+ 
++    ret = kvm_put_vcpu_events(cpu);
++    if (ret) {
++        return ret;
++    }
++
+     kvm_arm_sync_mpstate_to_kvm(cpu);
+ 
+     return ret;
+@@ -1251,11 +1251,6 @@ int kvm_arch_get_registers(CPUState *cs)
+     }
+     vfp_set_fpcr(env, fpr);
+ 
+-    ret = kvm_get_vcpu_events(cpu);
+-    if (ret) {
+-        return ret;
+-    }
+-
+     if (!write_kvmstate_to_list(cpu)) {
+         return -EINVAL;
+     }
+@@ -1264,6 +1259,11 @@ int kvm_arch_get_registers(CPUState *cs)
+      */
+     write_list_to_cpustate(cpu);
+ 
++    ret = kvm_get_vcpu_events(cpu);
++    if (ret) {
++        return ret;
++    }
++
+     kvm_arm_sync_mpstate_to_qemu(cpu);
+ 
+     /* TODO: other registers */
 -- 
 2.7.4
 

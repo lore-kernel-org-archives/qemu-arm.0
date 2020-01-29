@@ -1,88 +1,86 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp410707lfp;
-        Wed, 29 Jan 2020 02:44:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwpcE2lVPNYz1pbl6c9RDGWI0RnzT0FhFunEFhKPXeWweFifvEvZ2pmp39DSLnsI+fmRDqv
-X-Received: by 2002:ac8:7501:: with SMTP id u1mr26478255qtq.149.1580294669047;
-        Wed, 29 Jan 2020 02:44:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580294668; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp504738lfp;
+        Wed, 29 Jan 2020 04:25:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwuVHrjZ1XAo0fEXSomeovQpltW81Ql885Ggo5fB02FhXM0S7yVtVX9THQJ2E3MN5gUlEBV
+X-Received: by 2002:aed:2783:: with SMTP id a3mr11563800qtd.284.1580300724151;
+        Wed, 29 Jan 2020 04:25:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580300724; cv=none;
         d=google.com; s=arc-20160816;
-        b=VIhVPjErrLsR4NxleQUELRSQxOX9cPQlzPbm3cmW5jQbMy16XBeQ+kW2Sc40en7XGt
-         93jj2OAxxgYJgClf1SIOISVmURuptIpmJvLPfbHDclvclOATXerbRvcahnX8wxPrJJvi
-         I0lSpu7YhAqocQfufQidPNnpyGe6olRqoKXt0CKWOEacLY3G/O/u7XOv+78H1wTk5H9j
-         48pd8bhWtPLHS/IlVMu4Pya1DZ/++l977tIshpRIw9EhJx/1okcjK4Uvg6az65f3wpBK
-         aNwOD781EBcU9BnDUiqQbaDqDbi31R+5qlEJYXfBFAXdTfvYDOY99hVX+vJkZoUF08gh
-         P6JQ==
+        b=CWKIxafnJ8fJeC+j46tfml36GM/WVYDu6SWlEYzgp4s/hcw/7XZ+rbgnCx5FxEBeq0
+         ljr4hjCaGMFGut2PuykpXPz5csePhy/ahI2TzmISTqhhELTUfmsyTyz+RBG8hgrlB3V1
+         92tZv2vbyXDy7ouJVetCMU0uoPSu+ihkpXRUpTDxlvctzPj+Rbv0ozCgZYqyynTAUcCF
+         zS6QP/9vK1U9f8x5dQnCTamOKftKa2K9sXveMhkTlof0CGXqNs5fUE3GMR/3wlrXRlGY
+         EEaQf4pmBfSYMj0mzbn2vqzSgPvF5izNqQ7XVAo1QTElRXDmFeGuhCoXaSQNHmWFPw20
+         BmhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic
          :subject:to:from;
-        bh=TxY7eHwDd8ZRfbOxnmyWFcvuVNz/IQ2R71CNy8TGYeA=;
-        b=Dn1uqP/UzX6JEFcmnkJZSxmGzM2N2IL54U0xczuTBrrDsQo3B92VZ3HvIiF65Vd80H
-         ozIg5hJBHGYi6rVQ03aIWpj0Ruh5aBuBtmSuDsHY/b+yV30P5dnmzpfzpSRhlf68LQQw
-         ZZE51t+ULbSznsV+R5WjKAeEo9F1nsLYwwqS1w+jFrCVuEUHLVRoTIbDtjxYcaV1T1cc
-         pFLho2AGJu2P/M9H6YkiocU0CgifezCf12mEi1r0idi4J1s2eI0votg97+Z2k/xEb+HL
-         AKrVVpVUr2afRBr2LswBZlklRuDbgVy8CJaK9o82aGv9OnnDcy4Spv1mJ4dhVepxyXEb
-         jRSg==
+        bh=xHjK/h8MwdGiZTiO87i9nz0mSp7iZrkbOv2EaBajlAA=;
+        b=w2RJ+8eo9yhkboQfeuSkwjtYAGghjOxh2RuK6DkLGfE9rmOzycl1Fg2CBvw8gSyBI1
+         MOr6SVxVAw1ZDACdGsenzZHw9xD44ZtDehnEA85S+ZxR5b4ZzPzJn4g4yBpk+jqvzGsS
+         3gxcLk5ne92x7mYZ/F6s/lzIjfHS5ITCdnBgv4zmVBHTJWWYV9xI9Lqljx+fNZ/ZQxRq
+         BaKC7z6XAJCDYBYm3iHFc2rvgIh5K3FcR3huQyYINeQiW+ZYNUQiM5i0/lAVo25hfXsJ
+         FaQ7Ajg8KgU1w9eUDEO3AtsBEYWZIF4r4PptmcdITjubxwiq+dxJ5WDvH3iwRjSfh74D
+         PXoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l19si1365766qvt.203.2020.01.29.02.44.28
+        by mx.google.com with ESMTPS id x3si1017534qto.240.2020.01.29.04.25.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jan 2020 02:44:28 -0800 (PST)
+        Wed, 29 Jan 2020 04:25:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44108 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwkpg-0005wS-Bi
-	for alex.bennee@linaro.org; Wed, 29 Jan 2020 05:44:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49342)
+	id 1iwmPL-0005YL-DI
+	for alex.bennee@linaro.org; Wed, 29 Jan 2020 07:25:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58537)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iwkpY-0005sJ-DX
- for qemu-arm@nongnu.org; Wed, 29 Jan 2020 05:44:22 -0500
+ (envelope-from <salil.mehta@huawei.com>) id 1iwmNU-0002Pl-Eu
+ for qemu-arm@nongnu.org; Wed, 29 Jan 2020 07:23:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iwkpX-0002OE-13
- for qemu-arm@nongnu.org; Wed, 29 Jan 2020 05:44:20 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2067 helo=huawei.com)
+ (envelope-from <salil.mehta@huawei.com>) id 1iwmNS-0003Qb-RU
+ for qemu-arm@nongnu.org; Wed, 29 Jan 2020 07:23:28 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2069 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iwkpW-0002O3-QP; Wed, 29 Jan 2020 05:44:18 -0500
-Received: from lhreml707-cah.china.huawei.com (unknown [172.18.7.108])
- by Forcepoint Email with ESMTP id 075591C4EC060FD8C653;
- Wed, 29 Jan 2020 10:44:17 +0000 (GMT)
-Received: from lhreml708-chm.china.huawei.com (10.201.108.57) by
- lhreml707-cah.china.huawei.com (10.201.108.48) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Wed, 29 Jan 2020 10:44:16 +0000
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml708-chm.china.huawei.com (10.201.108.57) with Microsoft SMTP Server
+ (Exim 4.71) (envelope-from <salil.mehta@huawei.com>)
+ id 1iwmNS-0003MZ-KV; Wed, 29 Jan 2020 07:23:26 -0500
+Received: from LHREML712-CAH.china.huawei.com (unknown [172.18.7.106])
+ by Forcepoint Email with ESMTP id 37468B91853492B7E997;
+ Wed, 29 Jan 2020 12:23:23 +0000 (GMT)
+Received: from lhreml706-chm.china.huawei.com (10.201.108.55) by
+ LHREML712-CAH.china.huawei.com (10.201.108.35) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Wed, 29 Jan 2020 12:23:23 +0000
+Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
+ lhreml706-chm.china.huawei.com (10.201.108.55) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Wed, 29 Jan 2020 10:44:16 +0000
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1713.004; Wed, 29 Jan 2020 10:44:16 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Auger Eric <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "imammedo@redhat.com" <imammedo@redhat.com>
-Subject: RE: [PATCH v2 0/7] ARM virt: Add NVDIMM support
-Thread-Topic: [PATCH v2 0/7] ARM virt: Add NVDIMM support
-Thread-Index: AQHVzV42yTrHPe4JeEKQykfFHPYCE6gARKaAgAFB8XA=
-Date: Wed, 29 Jan 2020 10:44:16 +0000
-Message-ID: <c0528fddc5424471969a7d41e02cce2b@huawei.com>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <7b338b7c-fd47-930b-53d5-894711c69941@redhat.com>
-In-Reply-To: <7b338b7c-fd47-930b-53d5-894711c69941@redhat.com>
-Accept-Language: en-GB, en-US
+ 15.1.1713.5; Wed, 29 Jan 2020 12:23:22 +0000
+Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
+ lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1713.004; 
+ Wed, 29 Jan 2020 12:23:22 +0000
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Salil Mehta <salil.mehta@huawei.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: RE: [Question] Regarding presence of duplicate ACPI CPU entries at
+ two	nodes \\_SB.CXXX and \\_SB.CPUS.CXXX  of namespace
+Thread-Topic: [Question] Regarding presence of duplicate ACPI CPU entries at
+ two	nodes \\_SB.CXXX and \\_SB.CPUS.CXXX  of namespace
+Thread-Index: AQHV1p7lAR0wNvQnjUiflhxrwArEnA==
+Date: Wed, 29 Jan 2020 12:23:22 +0000
+Message-ID: <ff644207a4fb4bfb84df4bcecc7b044b@huawei.com>
+References: <590fb35353de473d9c689caead95c659@huawei.com>
+In-Reply-To: <590fb35353de473d9c689caead95c659@huawei.com>
+Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
+x-originating-ip: [10.202.227.103]
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
@@ -102,114 +100,168 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
+ "drjones@redhat.com" <drjones@redhat.com>,
+ "sameo@linux.intel.com" <sameo@linux.intel.com>,
  "mst@redhat.com" <mst@redhat.com>, Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "xuwei \(O\)" <xuwei5@huawei.com>, "lersek@redhat.com" <lersek@redhat.com>
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, pbonzini <pbonzini@redhat.com>,
+ "lersek@redhat.com" <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8vObfg0FZpkC
+X-TUID: nLuWj8bj0Tgc
 
-Hi Eric,
+Please ignore this!
 
-> -----Original Message-----
-> From: Auger Eric [mailto:eric.auger@redhat.com]
-> Sent: 28 January 2020 15:29
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
-> qemu-devel@nongnu.org; qemu-arm@nongnu.org; imammedo@redhat.com
-> Cc: peter.maydell@linaro.org; shannon.zhaosl@gmail.com; mst@redhat.com;
-> xiaoguangrong.eric@gmail.com; xuwei (O) <xuwei5@huawei.com>;
-> lersek@redhat.com; Linuxarm <linuxarm@huawei.com>
-> Subject: Re: [PATCH v2 0/7] ARM virt: Add NVDIMM support
+
+> From: Linuxarm [mailto:linuxarm-bounces@huawei.com] On Behalf Of Salil Me=
+hta
+> Sent: Wednesday, January 29, 2020 11:51 AM
+> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+> Cc: peter.maydell@linaro.org; drjones@redhat.com; sameo@linux.intel.com;
+> mst@redhat.com; Linuxarm <linuxarm@huawei.com>; eric.auger@redhat.com;
+> pbonzini <pbonzini@redhat.com>; Igor Mammedov <imammedo@redhat.com>;
+> lersek@redhat.com
+> Subject: [Question] Regarding presence of duplicate ACPI CPU entries at t=
+wo nodes
+> \\_SB.CXXX and \\_SB.CPUS.CXXX of namespace
 >=20
-> Hi Shameer,
+> Hello,
 >=20
-> On 1/17/20 6:45 PM, Shameer Kolothum wrote:
-> > This series adds NVDIMM support to arm/virt platform.
-> > The series reuses some of the patches posted by Eric
-> > in his earlier attempt here[1].
-> >
-> > Patch #1 is a fix to the Guest reboot issue on NVDIMM
-> > hot add case described here[2] and patch #2 is another
-> > fix to the nvdimm aml issue discussed here[3].
-> >
-> > I have done a basic sanity testing of NVDIMM deviecs
-> > with Guest booting with both ACPI and DT. Further testing
-> > is always welcome.
-> >
-> > Please let me know your feedback.
+> Observation:
+> If we launch Linux Guest VM using QEMU(running on any type host. I am usi=
+ng x86)
+> with
+> CPU based on any ARM64 architecture then I could see QEMU populating ACPI=
+ nodes
+> related to same CPU at 2 places of the ACPI namespace:
+> 1. \\_SB.CXXX
+> 2. \\_SB.CPUS.CXXX
+>=20
+> Above results in Guest VM showing duplicate CPU entries in the sysfs for =
+the
+> same CPUS.
+> I could make out the entries under \\_SB.CPUS.XXX are part of the contain=
+er.
+>=20
+> estuary:/$ ls -al /sys/bus/acpi/devices/
+>=20
+> Observation 1: (belongs to \\_SB.C00X)
+> ACPI0007:00 -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0007:00
+> ACPI0007:01 -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0007:01
+> ACPI0007:02 -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0007:02
+> ACPI0007:03 -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0007:03
+> ACPI0007:04 -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0007:04
+> ACPI0007:05 -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0007:05
+>=20
+> Observation 2: (belongs to \\_SB.CPUS.C00X and under container ACPI0010:0=
+0 part
+> of \\_SB.CPUS)
+> ACPI0007:06
+> -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0010:00/ACPI0007:06
+> ACPI0007:07
+> -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0010:00/ACPI0007:07
+> ACPI0007:08
+> -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0010:00/ACPI0007:08
+> ACPI0007:09
+> -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0010:00/ACPI0007:09
+> ACPI0007:0a
+> -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0010:00/ACPI0007:0a
+> ACPI0007:0b
+> -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0010:00/ACPI0007:0b
+> ACPI0010:00 -> ../../../devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0010:00
 >=20
 >=20
-> With this version, I do not get the former spurious warning reported on v=
-1.
+> estuary:/$ cat /sys/bus/acpi/devices/ACPI0010\:00/path
+> \_SB_.CPUS
 >=20
-> I can see the nvdimm device topology using ndctl. So it looks fine to me.
-
-Thanks for giving it a spin and confirming.=20
-
-> Unfortunately we cannot test with DAX as kernel dependencies are not yet
-> resolved yet but this is an independent problem.
-
-True. I did previously test DAX with "arm64/mm: Enable memory hot remove"
-Patch series and that seems to work fine.
-
-Cheers,
-Shameer
-
-
-=20
-> Thanks
+> estuary:/$ cat /sys/bus/acpi/devices/ACPI0007\:00/uid
+> 0
+> estuary:/$ cat /sys/bus/acpi/devices/ACPI0007\:00/path
+> \_SB_.C000
 >=20
-> Eric
-> >
-> > Thanks,
-> > Shameer
-> >
-> > [1] https://patchwork.kernel.org/cover/10830777/
-> > [2] https://patchwork.kernel.org/patch/11154757/
-> > [3] https://patchwork.kernel.org/cover/11174959/
-> >
-> > v1 --> v2
-> >  -Reworked patch #1 and now fix is inside qemu_ram_resize().
-> >  -Added patch #2 to fix the nvdim aml issue.
-> >  -Dropped support to DT cold plug.
-> >  -Updated test_acpi_virt_tcg_memhp() with pc-dimm and nvdimms(patch
-> #7)
-> >
-> > Kwangwoo Lee (2):
-> >   nvdimm: Use configurable ACPI IO base and size
-> >   hw/arm/virt: Add nvdimm hot-plug infrastructure
-> >
-> > Shameer Kolothum (5):
-> >   exec: Fix for qemu_ram_resize() callback
-> >   hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM output  buffer  length
-> >   hw/arm/virt: Add nvdimm hotplug support
-> >   tests: Update ACPI tables list for upcoming arm/virt test changes
-> >   tests/bios-tables-test: Update arm/virt memhp test
-> >
-> >  docs/specs/acpi_hw_reduced_hotplug.rst      |  1 +
-> >  exec.c                                      | 36 +++++++----
-> >  hw/acpi/generic_event_device.c              | 13 ++++
-> >  hw/acpi/nvdimm.c                            | 68
-> +++++++++++++++++----
-> >  hw/arm/Kconfig                              |  1 +
-> >  hw/arm/virt-acpi-build.c                    |  6 ++
-> >  hw/arm/virt.c                               | 35 +++++++++--
-> >  hw/i386/acpi-build.c                        |  6 ++
-> >  hw/i386/acpi-build.h                        |  3 +
-> >  hw/i386/pc_piix.c                           |  2 +
-> >  hw/i386/pc_q35.c                            |  2 +
-> >  hw/mem/Kconfig                              |  2 +-
-> >  include/exec/ram_addr.h                     |  5 +-
-> >  include/hw/acpi/generic_event_device.h      |  1 +
-> >  include/hw/arm/virt.h                       |  1 +
-> >  include/hw/mem/nvdimm.h                     |  3 +
-> >  tests/data/acpi/virt/NFIT.memhp             |  0
-> >  tests/data/acpi/virt/SSDT.memhp             |  0
-> >  tests/qtest/bios-tables-test-allowed-diff.h |  5 ++
-> >  tests/qtest/bios-tables-test.c              |  9 ++-
-> >  20 files changed, 163 insertions(+), 36 deletions(-)
-> >  create mode 100644 tests/data/acpi/virt/NFIT.memhp
-> >  create mode 100644 tests/data/acpi/virt/SSDT.memhp
-> >
-
+> estuary:/$ cat /sys/bus/acpi/devices/ACPI0007\:06/uid
+> 0
+> estuary:/$ cat /sys/bus/acpi/devices/ACPI0007\:06/path
+> \_SB_.CPUS.C000
+>=20
+>=20
+>=20
+> QEMU Code Excerpt:
+> I could trace with in QEMU AML code, the CPUS are being appended at 2 pla=
+ces:
+>=20
+>=20
+> Code 1. File: hw/arm/virt-acpi-build.c (Cause of Observation 1 i.e. \\_SB=
+.CXXX )
+>=20
+> static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
+> {
+>     uint16_t i;
+>=20
+>     for (i =3D 0; i < smp_cpus; i++) { --->{should be possible cpus anywa=
+ys}
+>         Aml *dev =3D aml_device("C%.03X", i);
+>         aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
+>         aml_append(dev, aml_name_decl("_UID", aml_int(i)));
+>         aml_append(scope, dev);
+>     }
+> }
+>=20
+>=20
+> Code 2. File: hw/acpi/cpu.c (Cause of Observation 2 i.e. \\_SB.CPUS.CXXX)
+>=20
+> void build_cpus_aml(..)
+> {
+> [...]
+>   cpus_dev =3D aml_device("\\_SB.CPUS");
+>   {
+>     [...]
+>             /* build Processor object for each processor */
+>         for (i =3D 0; i < arch_ids->len; i++) {
+>             Aml *dev;
+>             Aml *uid =3D aml_int(i);
+>             GArray *madt_buf =3D g_array_new(0, 1, 1);
+>             int arch_id =3D arch_ids->cpus[i].arch_id;
+>=20
+>             if (opts.acpi_1_compatible && arch_id < 255) {
+>                 dev =3D aml_processor(i, 0, 0, CPU_NAME_FMT, i);
+>             } else {
+>                 dev =3D aml_device(CPU_NAME_FMT, i);
+>                 aml_append(dev, aml_name_decl("_HID",
+> aml_string("ACPI0007")));
+>                 aml_append(dev, aml_name_decl("_UID", uid));
+>             }
+>     [...]
+>   }
+> [...]
+> }
+>=20
+>=20
+>=20
+> Questions:
+> Q1. I could not understand the purpose of keeping acpi_dsdt_add_cpus() af=
+ter
+> the code 2.
+>      was introduced as part of the below change and which is already addi=
+ng CPUS
+> related
+>      AML to \\_SB.CPUS namespace?
+>=20
+> acpi: cpuhp: add CPU devices AML with _STA method
+> commit 5e1b5d93887b52eede156f846b6c4c5c8bbcfcdb
+>=20
+> Q2. Do we really require CPUs being added by acpi_dsdt_add_cpus() in \\_S=
+B.CXXX
+>      Namespace OR is it a stray code left?
+>=20
+>=20
+>=20
+> Please help to correct if there is a gap in my understanding here and ple=
+ase
+> forgive me if I have terribly missed out something very basic here.
+>=20
+> Many thanks!
+>=20
+> Best Regards
+> Salil
+>=20

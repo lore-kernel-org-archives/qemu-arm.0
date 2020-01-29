@@ -1,215 +1,202 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp916315lfp;
-        Tue, 28 Jan 2020 12:23:51 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxR4GIk7FYSd9Fbov2utLYPV1TEQuziOR/yGz94/yhjvn/3Ymqa9BvsgblpNvJSsTn8qt11
-X-Received: by 2002:ac8:9b:: with SMTP id c27mr17700342qtg.348.1580243030895;
-        Tue, 28 Jan 2020 12:23:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580243030; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp283910lfp;
+        Wed, 29 Jan 2020 00:08:16 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz2XpcT83DmMzZE8dOJoczpmDrdDI14rgR0cDRSp2LEj3V2EflrfdK10VFrytMw7pnm/5Mv
+X-Received: by 2002:a05:6808:643:: with SMTP id z3mr5684030oih.19.1580285296254;
+        Wed, 29 Jan 2020 00:08:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580285296; cv=none;
         d=google.com; s=arc-20160816;
-        b=rFFgeWecve6G2Y+aOkreqE36fADdMyf4MZdQcljWL2uszMtXnX7HrEWKXKA6CUZcIE
-         rdGauIx1fFQI1Nj+5yEZktA78cXIRh5FmFn9SC6K4lApjEKLMBZnu95TQ5vi1Q/wpYpl
-         p+1m8qd2nKeYOVH3bj4sQZVVThUXfsRfeLUWE2TiPaUcTzn7mx6iisIcyCWwMj28lqS6
-         spePWDZmfJAjrhlBAXcsY3Pyt30Nvf4hoYgFZXLM+IPuG9N6K3IsD1Rj5H3uEbLhXbD9
-         zJSRmtKhH2bEPInZYM+6Rsv6pkiRNPWfau7yEn6bQLOhCpznhv65oeRZFC2sXo/uW3gr
-         +d6g==
+        b=jeiZLA9qsFxdNq6RsEOija7nVwOyb+hbAbJ3FhOZ6HigknifyoopIWaYyxgSaPPqnZ
+         GiJnpeGq93i5AwLHxIBVW4ujGowEoMl5EXFdQ3vupcDZ+in1E/89pUwHCw8cI/UEkKN0
+         Q1Kjq/3buKwpne0kgez7kLaOBpSMGFlRY5CBBIyILPHteO87DJMBtpYNFTFSme0losCq
+         uLPNgxMv9K/ZbdobQGYJsVkBARqCl/5O/qSwH+2Iwy1dlFL56K5JdZrWXYeufkEDr32+
+         e1rqPjmPc4r/wUGJpABp8c9Axt1SU0pVvjI+cqO8oj8+a5wv+enYXKAIlj2WA3MbFFcq
+         0RMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+        h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=qgVxJ0FiX0XFhW50/G5ckJdu9IU+U+OKfSKSSF8FeBM=;
-        b=v5h+xA4ETi5k1xtkTvTYdgTCG6VZu5M40yMV+IsLI2hcXQg+2tjtZV9B83xP6Mzgnt
-         zyc8nJ6VHtfSNbY+5dRmxFRs737brLBsb2AZ5Fx1FEFvyouVNaBCF7lVnzbQCW9SsMve
-         x7+g/d651/3wuc9GDi71XQqJuIChbfrQ2I0eLDXdKEsiFyDJTOqJekmayGkakJ0XNn1a
-         HGKfBeEzgVjqNO5lfNVcNUfebDoTfbtLr5CyHwX/n3oZgZumNfPUqe25/laU3PTqnBqZ
-         g1yIX7oHz04+tIYl9tYWFTSmq5Fn2SHRj8dTVoQp1R1WC5Ay1hhkIpQne/lQloF7/14m
-         EHQw==
+         :message-id:openpgp:from:references:cc:to:subject:dkim-signature;
+        bh=6B1BQTixM1hGZ6QDPNmwN5NO9M03YJBxtfjfLjgPORU=;
+        b=grdDS9MdU813oiFtlX6ocTqrVUOWPOkyWEKhybKsf2eheBbUulvVXS9muoQZeSvaNt
+         dFLnbuD8ADBpg3jFNBl4CdyDI5FxUuUB5ZZfE6lf1qZYlSpXo/qPqGvDG/9qNeOek//k
+         rVetKEaK0Q7l//W0BWLpXQoPi9UWG88a9zzwMiQ68BB2AtCExOkbLb4mRzZRZCPj+Qz0
+         L5/Ofku0czynw7ByauRMzuKtfduk80QVxg6khHahBVgzIBEkRwD/EAwS08wtX0ZCJECn
+         bP2aUfVACsmxh+SyERlZYO1yznxpAcGHDg8yk1/+t7V6riqYSayFojWVa+9R2QodxAu8
+         CDZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YE0Cr+9i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IM5cepCX;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k14si13305909qkj.177.2020.01.28.12.23.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2020 12:23:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id e25si826863otk.62.2020.01.29.00.08.16;
+        Wed, 29 Jan 2020 00:08:16 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YE0Cr+9i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IM5cepCX;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37316 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwXOo-00041O-Ah
-	for alex.bennee@linaro.org; Tue, 28 Jan 2020 15:23:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40032)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wainersm@redhat.com>) id 1iwXOg-00041B-F5
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 15:23:43 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <wainersm@redhat.com>) id 1iwXOe-0002fg-RD
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 15:23:42 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:59366
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1iwXOe-0002d3-N9
- for qemu-arm@nongnu.org; Tue, 28 Jan 2020 15:23:40 -0500
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726262AbgA2IIP (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 29 Jan 2020 03:08:15 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46750 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1726128AbgA2IIP (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 29 Jan 2020 03:08:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580243020;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qgVxJ0FiX0XFhW50/G5ckJdu9IU+U+OKfSKSSF8FeBM=;
- b=YE0Cr+9iMFO5nKWhauMV4ty5+qby211/IpIgXWMY2jG/Ru3EfSQUWQapuZYQZz17MkGIFK
- NrTP3vjRd+8dl+KvSXzdvo7xlsviiyy9sxX6sKkMvV/P0mf7F7RBm/cKn9PDfH4G+y/N8X
- E4FnwhMMZ0t20He4eLBMcaGKTRf95SU=
+        s=mimecast20190719; t=1580285293;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+        bh=6B1BQTixM1hGZ6QDPNmwN5NO9M03YJBxtfjfLjgPORU=;
+        b=IM5cepCXXlBpC+bjopM1+tF0UFR16ucNZDYW5rR8v0PMxdislUJ/TdzmsLjn7Etjs7daYL
+        K5vv3vPLzEYyTsmfOiRsfnT69vIsEEF6sNVGsrfIJkaimQpp8eXpgUTegtlKedgGiOdrsc
+        Fn86xMTSRyzlCcet/6LGvGi9bvCnV1w=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-82-Lv8HEl7HNcWztAszEFqaUQ-1; Tue, 28 Jan 2020 15:23:34 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C6228800D41;
- Tue, 28 Jan 2020 20:23:32 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-65.gru2.redhat.com
- [10.97.116.65])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6CFB45C219;
- Tue, 28 Jan 2020 20:23:20 +0000 (UTC)
-Subject: Re: [PATCH v4 7/7] tests/boot_linux_console: Tag Emcraft Smartfusion2
- as running 'u-boot'
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, qemu-devel@nongnu.org
-References: <20200120235159.18510-1-f4bug@amsat.org>
- <20200120235159.18510-8-f4bug@amsat.org>
- <addb50ef-b6cd-fec1-2266-f062cae65090@redhat.com>
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Message-ID: <0debd0ec-16e4-2d96-c634-26bdb6db6215@redhat.com>
-Date: Tue, 28 Jan 2020 18:23:18 -0200
+ us-mta-276-ulYYoQhVNkGxvnZqYnfM7w-1; Wed, 29 Jan 2020 03:08:04 -0500
+X-MC-Unique: ulYYoQhVNkGxvnZqYnfM7w-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 09ACD18A6EC1;
+        Wed, 29 Jan 2020 08:08:02 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-210.ams2.redhat.com [10.36.116.210])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 0EB6460C05;
+        Wed, 29 Jan 2020 08:07:55 +0000 (UTC)
+Subject: Re: [kvm-unit-tests PATCH v3 12/14] arm/run: Allow Migration tests
+To:     Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+        maz@kernel.org, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     drjones@redhat.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org, yuzenghui@huawei.com,
+        alexandru.elisei@arm.com
+References: <20200128103459.19413-1-eric.auger@redhat.com>
+ <20200128103459.19413-13-eric.auger@redhat.com>
+From:   Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <3962373a-0e03-5ab9-30cc-3b385fc55702@redhat.com>
+Date:   Wed, 29 Jan 2020 09:07:54 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <addb50ef-b6cd-fec1-2266-f062cae65090@redhat.com>
+In-Reply-To: <20200128103459.19413-13-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: Lv8HEl7HNcWztAszEFqaUQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Laurent Bonnans <laurent.bonnans@here.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bQpAWIXf7dhh
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: d+2tyF2aQMKw
 
+On 28/01/2020 11.34, Eric Auger wrote:
+> Let's link getchar.o to use puts and getchar from the
+> tests.
+>=20
+> Then allow tests belonging to the migration group to
+> trigger the migration from the test code by putting
+> "migrate" into the uart. Then the code can wait for the
+> migration completion by using getchar().
+>=20
+> The __getchar implement is minimalist as it just reads the
+> data register. It is just meant to read the single character
+> emitted at the end of the migration by the runner script.
+>=20
+> It is not meant to read more data (FIFOs are not enabled).
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>=20
+> ---
+>=20
+> v2 -> v3:
+> - take the lock
+> - assert if more than 16 chars
+> - removed Thomas' R-b
+> ---
+>  arm/Makefile.common |  2 +-
+>  arm/run             |  2 +-
+>  lib/arm/io.c        | 28 ++++++++++++++++++++++++++++
+>  3 files changed, 30 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/arm/Makefile.common b/arm/Makefile.common
+> index b8988f2..a123e85 100644
+> --- a/arm/Makefile.common
+> +++ b/arm/Makefile.common
+> @@ -32,7 +32,7 @@ CFLAGS +=3D -I $(SRCDIR)/lib -I $(SRCDIR)/lib/libfdt =
+-I lib
+>  asm-offsets =3D lib/$(ARCH)/asm-offsets.h
+>  include $(SRCDIR)/scripts/asm-offsets.mak
+> =20
+> -cflatobjs +=3D lib/util.o
+> +cflatobjs +=3D lib/util.o lib/getchar.o
+>  cflatobjs +=3D lib/alloc_phys.o
+>  cflatobjs +=3D lib/alloc_page.o
+>  cflatobjs +=3D lib/vmalloc.o
+> diff --git a/arm/run b/arm/run
+> index 277db9b..a390ca5 100755
+> --- a/arm/run
+> +++ b/arm/run
+> @@ -61,6 +61,6 @@ fi
+>  M+=3D",accel=3D$ACCEL"
+>  command=3D"$qemu -nodefaults $M -cpu $processor $chr_testdev $pci_test=
+dev"
+>  command+=3D" -display none -serial stdio -kernel"
+> -command=3D"$(timeout_cmd) $command"
+> +command=3D"$(migration_cmd) $(timeout_cmd) $command"
+> =20
+>  run_qemu $command "$@"
+> diff --git a/lib/arm/io.c b/lib/arm/io.c
+> index 99fd315..d8e7745 100644
+> --- a/lib/arm/io.c
+> +++ b/lib/arm/io.c
+> @@ -87,6 +87,34 @@ void puts(const char *s)
+>  	spin_unlock(&uart_lock);
+>  }
+> =20
+> +static int ____getchar(void)
 
-On 1/27/20 2:05 PM, Thomas Huth wrote:
-> On 21/01/2020 00.51, Philippe Mathieu-Daud=C3=A9 wrote:
->> Avocado tags are handy to automatically select tests matching
->> the tags. Since this test also runs U-Boot, tag it.
->>
->> We can run all the tests using U-Boot as once with:
->>
->>    $ avocado --show=3Dapp run -t u-boot tests/acceptance/
->>    JOB LOG    : avocado/job-results/job-2020-01-21T00.16-ee9344e/job.log
->>     (1/3) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_a=
-rm_emcraft_sf2: PASS (16.59 s)
->>     (2/3) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_a=
-rm_raspi2_uboot: PASS (0.47 s)
->>     (3/3) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_a=
-arch64_raspi3_uboot: PASS (2.43 s)
->>    RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT =
-0 | CANCEL 0
->>    JOB TIME   : 19.78 s
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->>   tests/acceptance/boot_linux_console.py | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/b=
-oot_linux_console.py
->> index 22b360118d..4a4cf9d0ea 100644
->> --- a/tests/acceptance/boot_linux_console.py
->> +++ b/tests/acceptance/boot_linux_console.py
->> @@ -305,6 +305,7 @@ class BootLinuxConsole(Test):
->>           :avocado: tags=3Darch:arm
->>           :avocado: tags=3Dmachine:emcraft-sf2
->>           :avocado: tags=3Dendian:little
->> +        :avocado: tags=3Du-boot
->>           """
->>           uboot_url =3D ('https://raw.githubusercontent.com/'
->>                        'Subbaraya-Sundeep/qemu-test-binaries/'
->>
-> We should maybe move that test to another file, too, since it is not
-> using Linux. Or should we maybe rename boot_linux_console.py to simply
-> boot_console.py ?
+Three underscores? ... that's quite a lot already. I'd maybe rather name
+the function "do_getchar" or something similar instead. Or simply merge
+the code into the __getchar function below - it's just three lines.
 
-Thinking aloud: maybe create a directory 'boot' (or 'boot_tests') and=20
-group tests in files according to the 'arch' tag.
+> +{
+> +	int c;
+> +
+> +	spin_lock(&uart_lock);
+> +	c =3D readb(uart0_base);
+> +	spin_unlock(&uart_lock);
+> +
+> +	return c ? : -1;
 
-Example:
+Just a matter of taste, but I prefer the elvis operator without space in
+between.
 
-[wainersm@localhost boot]$ tree
-.
-=E2=94=94=E2=94=80=E2=94=80 arm.py
+> +}
+> +
+> +/*
+> + * Minimalist implementation for migration completion detection.
+> + * Without FIFOs enabled on the QEMU UART device we just read
+> + * the data register: we cannot read more than 16 characters.
 
-0 directories, 1 file
-[wainersm@localhost boot]$ cat arm.py
-from avocado_qemu import Test
+Where are the 16 bytes buffered if FIFOs are disabled?
 
-class BootArmTest(Test):
- =C2=A0=C2=A0=C2=A0 """
- =C2=A0=C2=A0=C2=A0 :avocado: tags=3Darch:arm
- =C2=A0=C2=A0=C2=A0 """
- =C2=A0=C2=A0=C2=A0 def test_linux_virt()
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dmachine:virt
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dlinux-boot
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 # Test here
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pass
+> + */
+> +int __getchar(void)
+> +{
+> +	int c =3D ____getchar();
+> +	static int count;
+> +
+> +	if (c !=3D -1)
+> +		++count;
+> +
+> +	assert(count < 16);
+> +
+> +	return c;
+> +}
 
- =C2=A0=C2=A0=C2=A0 def test_uboot_emcraft_sf2()
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dmachine:emcraf=
-t-sf2
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dendian:little
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Du-boot
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 # Test here
- =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pass
---------------
+The above comments were only nits ... feel free to ignore them if you
+don't want to respin the series just because of this.
 
-
-Back to this patch...
-
-Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-
-
->
->   Thomas
->
->
-
+ Thomas

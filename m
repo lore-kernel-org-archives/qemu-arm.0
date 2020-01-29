@@ -1,84 +1,83 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp403634lfp;
-        Wed, 29 Jan 2020 02:36:13 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzH7EFSLoL9yEz23g2pakKXvx77ws8snGy6Scqn9DV4+LwtDVD9HvYRE6PFqohoqLafyKAB
-X-Received: by 2002:a05:620a:1497:: with SMTP id w23mr19356284qkj.472.1580294173191;
-        Wed, 29 Jan 2020 02:36:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580294173; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp410707lfp;
+        Wed, 29 Jan 2020 02:44:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwpcE2lVPNYz1pbl6c9RDGWI0RnzT0FhFunEFhKPXeWweFifvEvZ2pmp39DSLnsI+fmRDqv
+X-Received: by 2002:ac8:7501:: with SMTP id u1mr26478255qtq.149.1580294669047;
+        Wed, 29 Jan 2020 02:44:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580294668; cv=none;
         d=google.com; s=arc-20160816;
-        b=QQw2QX1d1P8Tng18tgg56zeaMyLqgPpuBbXHkiJskXT5vbRJZ9wzVjKfSgd4uznjX6
-         V81cpiW4Vb6kEltB2K/4cTB+jBdYRrgDgwLmw/aYbhN7pbZEOI9nbWteZorGnWuiJ0CY
-         gCWm4y39UVqSgsAfDMdX/jLaoplXFdqc5fveKm+icmPqqPda1XkQ8NHnFN2GYKVUGaA4
-         vkT+GNxFXRFMUmVYgDTt6Wznc6vb5QrgRZygUrgoHjQC2xMYoTDsoMZcjyQA/hWxR3F+
-         +ka0wytqqR+52fHbjVb6emEuJANoW/VfFMQLTurFyEz3Vw08dkNxT3ZbayQM1ztGFiIz
-         WSBQ==
+        b=VIhVPjErrLsR4NxleQUELRSQxOX9cPQlzPbm3cmW5jQbMy16XBeQ+kW2Sc40en7XGt
+         93jj2OAxxgYJgClf1SIOISVmURuptIpmJvLPfbHDclvclOATXerbRvcahnX8wxPrJJvi
+         I0lSpu7YhAqocQfufQidPNnpyGe6olRqoKXt0CKWOEacLY3G/O/u7XOv+78H1wTk5H9j
+         48pd8bhWtPLHS/IlVMu4Pya1DZ/++l977tIshpRIw9EhJx/1okcjK4Uvg6az65f3wpBK
+         aNwOD781EBcU9BnDUiqQbaDqDbi31R+5qlEJYXfBFAXdTfvYDOY99hVX+vJkZoUF08gh
+         P6JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic
          :subject:to:from;
-        bh=YytYKXeTONucTDrOlM3mgJOOe54dCCuBr4sQ4vomz+Y=;
-        b=KBHWubuEr1wlT49uE7m3jYrsQ5smA6jyVDg8ORB9aG7J3BuYWxeWR/j5P+lEx4pgi6
-         ME4lmZRUMTzYwEtZtcSPE5QDfKoclofZZCuUNKWaVAd9fwVDPhpVsS+Jg9J7RtVytUB3
-         qGY9xwnWfNDUUB3TaK6zZSZMaeMfzV2/+17W6dIKft3U5weMo4saUXuPBrnVf/MQRi+n
-         V4AN6LIj7nHv7Hnu+5bjQgDiiucnQY1l9ueAWgU128QU0RWDdCa34EKGRvw1h8VnE/uS
-         kpYWe7FraYOkXALE0R4GHd2OD4vR9EwEbBmcX5wlymnLE/MnJqlTSL4XE+bQR51peCBF
-         9CFg==
+        bh=TxY7eHwDd8ZRfbOxnmyWFcvuVNz/IQ2R71CNy8TGYeA=;
+        b=Dn1uqP/UzX6JEFcmnkJZSxmGzM2N2IL54U0xczuTBrrDsQo3B92VZ3HvIiF65Vd80H
+         ozIg5hJBHGYi6rVQ03aIWpj0Ruh5aBuBtmSuDsHY/b+yV30P5dnmzpfzpSRhlf68LQQw
+         ZZE51t+ULbSznsV+R5WjKAeEo9F1nsLYwwqS1w+jFrCVuEUHLVRoTIbDtjxYcaV1T1cc
+         pFLho2AGJu2P/M9H6YkiocU0CgifezCf12mEi1r0idi4J1s2eI0votg97+Z2k/xEb+HL
+         AKrVVpVUr2afRBr2LswBZlklRuDbgVy8CJaK9o82aGv9OnnDcy4Spv1mJ4dhVepxyXEb
+         jRSg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t66si1121392qkd.281.2020.01.29.02.36.13
+        by mx.google.com with ESMTPS id l19si1365766qvt.203.2020.01.29.02.44.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jan 2020 02:36:13 -0800 (PST)
+        Wed, 29 Jan 2020 02:44:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44028 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44108 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iwkhg-0001b9-LK
-	for alex.bennee@linaro.org; Wed, 29 Jan 2020 05:36:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47236)
+	id 1iwkpg-0005wS-Bi
+	for alex.bennee@linaro.org; Wed, 29 Jan 2020 05:44:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49342)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iwkhR-0001b0-R6
- for qemu-arm@nongnu.org; Wed, 29 Jan 2020 05:35:58 -0500
+ id 1iwkpY-0005sJ-DX
+ for qemu-arm@nongnu.org; Wed, 29 Jan 2020 05:44:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iwkhQ-0004mA-5i
- for qemu-arm@nongnu.org; Wed, 29 Jan 2020 05:35:57 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2066 helo=huawei.com)
+ id 1iwkpX-0002OE-13
+ for qemu-arm@nongnu.org; Wed, 29 Jan 2020 05:44:20 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2067 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iwkhP-0004Y7-Vt; Wed, 29 Jan 2020 05:35:56 -0500
-Received: from LHREML714-CAH.china.huawei.com (unknown [172.18.7.108])
- by Forcepoint Email with ESMTP id 8A3F61A824328CE5C8EF;
- Wed, 29 Jan 2020 10:35:49 +0000 (GMT)
-Received: from lhreml702-chm.china.huawei.com (10.201.108.51) by
- LHREML714-CAH.china.huawei.com (10.201.108.37) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Wed, 29 Jan 2020 10:35:48 +0000
+ id 1iwkpW-0002O3-QP; Wed, 29 Jan 2020 05:44:18 -0500
+Received: from lhreml707-cah.china.huawei.com (unknown [172.18.7.108])
+ by Forcepoint Email with ESMTP id 075591C4EC060FD8C653;
+ Wed, 29 Jan 2020 10:44:17 +0000 (GMT)
+Received: from lhreml708-chm.china.huawei.com (10.201.108.57) by
+ lhreml707-cah.china.huawei.com (10.201.108.48) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Wed, 29 Jan 2020 10:44:16 +0000
 Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml702-chm.china.huawei.com (10.201.108.51) with Microsoft SMTP Server
+ lhreml708-chm.china.huawei.com (10.201.108.57) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Wed, 29 Jan 2020 10:35:48 +0000
+ 15.1.1713.5; Wed, 29 Jan 2020 10:44:16 +0000
 Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
  lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1713.004; Wed, 29 Jan 2020 10:35:48 +0000
+ 15.01.1713.004; Wed, 29 Jan 2020 10:44:16 +0000
 From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
 To: Auger Eric <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
  <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
  "imammedo@redhat.com" <imammedo@redhat.com>
-Subject: RE: [PATCH v2 7/7] tests/bios-tables-test: Update arm/virt memhp test
-Thread-Topic: [PATCH v2 7/7] tests/bios-tables-test: Update arm/virt memhp test
-Thread-Index: AQHVzV5G+cQh10jGFkuymacLK0srHqgAVXcAgAEtZFA=
-Date: Wed, 29 Jan 2020 10:35:48 +0000
-Message-ID: <77db9c11b6f248208ce50bb6a267bf16@huawei.com>
+Subject: RE: [PATCH v2 0/7] ARM virt: Add NVDIMM support
+Thread-Topic: [PATCH v2 0/7] ARM virt: Add NVDIMM support
+Thread-Index: AQHVzV42yTrHPe4JeEKQykfFHPYCE6gARKaAgAFB8XA=
+Date: Wed, 29 Jan 2020 10:44:16 +0000
+Message-ID: <c0528fddc5424471969a7d41e02cce2b@huawei.com>
 References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <20200117174522.22044-8-shameerali.kolothum.thodi@huawei.com>
- <6cdba6ae-928d-696b-19b2-f4f81f341f3a@redhat.com>
-In-Reply-To: <6cdba6ae-928d-696b-19b2-f4f81f341f3a@redhat.com>
+ <7b338b7c-fd47-930b-53d5-894711c69941@redhat.com>
+In-Reply-To: <7b338b7c-fd47-930b-53d5-894711c69941@redhat.com>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -105,97 +104,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
  "mst@redhat.com" <mst@redhat.com>, Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>, "xuwei
- \(O\)" <xuwei5@huawei.com>, "lersek@redhat.com" <lersek@redhat.com>
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "xuwei \(O\)" <xuwei5@huawei.com>, "lersek@redhat.com" <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pv2Es4j2sTkO
+X-TUID: 8vObfg0FZpkC
 
 Hi Eric,
 
 > -----Original Message-----
-> From: Qemu-devel
-> [mailto:qemu-devel-bounces+shameerali.kolothum.thodi=3Dhuawei.com@nongn
-> u.org] On Behalf Of Auger Eric
-> Sent: 28 January 2020 16:29
+> From: Auger Eric [mailto:eric.auger@redhat.com]
+> Sent: 28 January 2020 15:29
 > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
 > qemu-devel@nongnu.org; qemu-arm@nongnu.org; imammedo@redhat.com
-> Cc: peter.maydell@linaro.org; xiaoguangrong.eric@gmail.com;
-> mst@redhat.com; Linuxarm <linuxarm@huawei.com>; xuwei (O)
-> <xuwei5@huawei.com>; shannon.zhaosl@gmail.com; lersek@redhat.com
-> Subject: Re: [PATCH v2 7/7] tests/bios-tables-test: Update arm/virt memhp
-> test
+> Cc: peter.maydell@linaro.org; shannon.zhaosl@gmail.com; mst@redhat.com;
+> xiaoguangrong.eric@gmail.com; xuwei (O) <xuwei5@huawei.com>;
+> lersek@redhat.com; Linuxarm <linuxarm@huawei.com>
+> Subject: Re: [PATCH v2 0/7] ARM virt: Add NVDIMM support
 >=20
 > Hi Shameer,
 >=20
 > On 1/17/20 6:45 PM, Shameer Kolothum wrote:
-> > Since we now have both pc-dimm and nvdimm support, update
-> > test_acpi_virt_tcg_memhp() to include those.
+> > This series adds NVDIMM support to arm/virt platform.
+> > The series reuses some of the patches posted by Eric
+> > in his earlier attempt here[1].
 > >
-> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > ---
-> >  tests/data/acpi/virt/NFIT.memhp | 0
-> >  tests/data/acpi/virt/SSDT.memhp | 0
-> Is it normal to have those 2 above void files? I lost track about the
-> process.
+> > Patch #1 is a fix to the Guest reboot issue on NVDIMM
+> > hot add case described here[2] and patch #2 is another
+> > fix to the nvdimm aml issue discussed here[3].
+> >
+> > I have done a basic sanity testing of NVDIMM deviecs
+> > with Guest booting with both ACPI and DT. Further testing
+> > is always welcome.
+> >
+> > Please let me know your feedback.
+>=20
+>=20
+> With this version, I do not get the former spurious warning reported on v=
+1.
+>=20
+> I can see the nvdimm device topology using ndctl. So it looks fine to me.
 
-I guess so :). From tests/qtest/bios-tables-test.c,
+Thanks for giving it a spin and confirming.=20
 
-/*
- * How to add or update the tests:
- * Contributor:
- * 1. add empty files for new tables, if any, under tests/data/acpi
- * 2. list any changed files in tests/bios-tables-test-allowed-diff.h
- * 3. commit the above *before* making changes that affect the tables
- ...
+> Unfortunately we cannot test with DAX as kernel dependencies are not yet
+> resolved yet but this is an independent problem.
 
-After reading that again, I am not sure those empty files can be in this
-Patch or not. I can move it to 6/7.
+True. I did previously test DAX with "arm64/mm: Enable memory hot remove"
+Patch series and that seems to work fine.
 
-> >  tests/qtest/bios-tables-test.c  | 9 +++++++--
-> >  3 files changed, 7 insertions(+), 2 deletions(-)
+Cheers,
+Shameer
+
+
+=20
+> Thanks
+>=20
+> Eric
+> >
+> > Thanks,
+> > Shameer
+> >
+> > [1] https://patchwork.kernel.org/cover/10830777/
+> > [2] https://patchwork.kernel.org/patch/11154757/
+> > [3] https://patchwork.kernel.org/cover/11174959/
+> >
+> > v1 --> v2
+> >  -Reworked patch #1 and now fix is inside qemu_ram_resize().
+> >  -Added patch #2 to fix the nvdim aml issue.
+> >  -Dropped support to DT cold plug.
+> >  -Updated test_acpi_virt_tcg_memhp() with pc-dimm and nvdimms(patch
+> #7)
+> >
+> > Kwangwoo Lee (2):
+> >   nvdimm: Use configurable ACPI IO base and size
+> >   hw/arm/virt: Add nvdimm hot-plug infrastructure
+> >
+> > Shameer Kolothum (5):
+> >   exec: Fix for qemu_ram_resize() callback
+> >   hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM output  buffer  length
+> >   hw/arm/virt: Add nvdimm hotplug support
+> >   tests: Update ACPI tables list for upcoming arm/virt test changes
+> >   tests/bios-tables-test: Update arm/virt memhp test
+> >
+> >  docs/specs/acpi_hw_reduced_hotplug.rst      |  1 +
+> >  exec.c                                      | 36 +++++++----
+> >  hw/acpi/generic_event_device.c              | 13 ++++
+> >  hw/acpi/nvdimm.c                            | 68
+> +++++++++++++++++----
+> >  hw/arm/Kconfig                              |  1 +
+> >  hw/arm/virt-acpi-build.c                    |  6 ++
+> >  hw/arm/virt.c                               | 35 +++++++++--
+> >  hw/i386/acpi-build.c                        |  6 ++
+> >  hw/i386/acpi-build.h                        |  3 +
+> >  hw/i386/pc_piix.c                           |  2 +
+> >  hw/i386/pc_q35.c                            |  2 +
+> >  hw/mem/Kconfig                              |  2 +-
+> >  include/exec/ram_addr.h                     |  5 +-
+> >  include/hw/acpi/generic_event_device.h      |  1 +
+> >  include/hw/arm/virt.h                       |  1 +
+> >  include/hw/mem/nvdimm.h                     |  3 +
+> >  tests/data/acpi/virt/NFIT.memhp             |  0
+> >  tests/data/acpi/virt/SSDT.memhp             |  0
+> >  tests/qtest/bios-tables-test-allowed-diff.h |  5 ++
+> >  tests/qtest/bios-tables-test.c              |  9 ++-
+> >  20 files changed, 163 insertions(+), 36 deletions(-)
 > >  create mode 100644 tests/data/acpi/virt/NFIT.memhp
 > >  create mode 100644 tests/data/acpi/virt/SSDT.memhp
 > >
-> > diff --git a/tests/data/acpi/virt/NFIT.memhp
-> b/tests/data/acpi/virt/NFIT.memhp
-> > new file mode 100644
-> > index 0000000000..e69de29bb2
-> > diff --git a/tests/data/acpi/virt/SSDT.memhp
-> b/tests/data/acpi/virt/SSDT.memhp
-> > new file mode 100644
-> > index 0000000000..e69de29bb2
-> > diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-t=
-est.c
-> > index f1ac2d7e96..695d2e7fac 100644
-> > --- a/tests/qtest/bios-tables-test.c
-> > +++ b/tests/qtest/bios-tables-test.c
-> > @@ -913,12 +913,17 @@ static void test_acpi_virt_tcg_memhp(void)
-> >      };
-> >
-> >      data.variant =3D ".memhp";
-> > -    test_acpi_one(" -cpu cortex-a57"
-> > +    test_acpi_one(" -machine nvdimm=3Don"
-> nit: maybe keep the same order as before ...
-> > +                  " -cpu cortex-a57"
-> >                    " -m 256M,slots=3D3,maxmem=3D1G"
-> and simply add ,nvdimm=3Don to above line.
-> >                    " -object memory-backend-ram,id=3Dram0,size=3D128M"
-> >                    " -object memory-backend-ram,id=3Dram1,size=3D128M"
-> >                    " -numa node,memdev=3Dram0 -numa
-> node,memdev=3Dram1"
-> > -                  " -numa dist,src=3D0,dst=3D1,val=3D21",
-> > +                  " -numa dist,src=3D0,dst=3D1,val=3D21"
-> > +                  " -object memory-backend-ram,id=3Dram2,size=3D128M"
-> > +                  " -object memory-backend-ram,id=3Dnvm0,size=3D128M"
-> > +                  " -device pc-dimm,id=3Ddimm0,memdev=3Dram2,node=3D0"
-> > +                  " -device nvdimm,id=3Ddimm1,memdev=3Dnvm0,node=3D1",
-> >                    &data);
-> >
-> >      free_test_data(&data);
-> >
 
-Ok. Noted.
-
-Thanks,
-Shameer

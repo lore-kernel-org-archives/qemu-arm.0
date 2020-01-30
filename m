@@ -1,302 +1,131 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1749087lfp;
-        Thu, 30 Jan 2020 03:26:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwJVM0NQHw+s+OsK8EpMla502+GeMB5HOxEyA1QtkBpfjxTd9u/teJTMNBpBvaQUh8Vx/78
-X-Received: by 2002:aca:72cd:: with SMTP id p196mr2370310oic.99.1580383591375;
-        Thu, 30 Jan 2020 03:26:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580383591; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1904331lfp;
+        Thu, 30 Jan 2020 05:41:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyf4TMvq22ihnJ7rqDLGWGRUMCrXOdBV07qmRfKrjxWNXwGv5g+XKF8vzpmaZl1+GbBnfUH
+X-Received: by 2002:ae9:efc5:: with SMTP id d188mr5220844qkg.178.1580391714551;
+        Thu, 30 Jan 2020 05:41:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580391714; cv=none;
         d=google.com; s=arc-20160816;
-        b=p1aTUxUtcabo/h/Xl5roxU+7qu8x33A40AARX/4BDZRX1K3h9KDyZ7OFVo7am8fOcU
-         9X7TNfk3xEYzKH4M7ZX8uqrxUD9Zd0OhPK9+vz2cZ6N08l92Q9P4nmLk5LGtIriCV5+I
-         dMHE/4O9Fr4MYjvvTZgLkarloyxtjl9Y1vx3crvAGA46mIWQ3/QgFVV0p8KkFYtfdjkK
-         Q+V/z30HTItu8lEKkK/u1K5V5VKgw4NoUQaTNEkHUo8Ow0NJpu8vaZHIy0HgfX0FObrN
-         K05TQSrr5HcPDO+UYDr6nu4jN/GkStcCaFP1yW4eCF6hNw+WdpwtPaKpdtxGjfpYTcK1
-         2YKA==
+        b=Z2bjM4neJrTnfYc7+4luiN8k/iAF/OVJa5FcUfEsmKnQFPtSEVg79gJK0QAfug1E7i
+         qq5knijh8T6UzMbLU8QL1qOR0vYTuQXIe10gURFcUPziBjYN8LfrRurIpa7GwD7KvpY2
+         jrdkefQQ6OHNbYwsUnJmQDX0RfS/LzSv/gPZpEFg/2wUEjto1hhKGg0QpqgNCCELlLKF
+         5P85jInk3FqnJ4d/3UtP9D+S37JCuButvknFx2EqKBW9gLH76HF3Near7rxh1xuA/IlR
+         KE/UGD8f54WNwQ/hbb2oX4HCNqiWum7ZJylvMjzqAT87siY/iSLa6l+7kfVL2Ax6qky6
+         xm/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=9SlPk4NmjjNnpZB612uFFc7ZwjsKN9cXzlux9cD7IFw=;
-        b=dUMZLP5AYmVRHy0XLntHJ0ufjcyP/AWbHL1aGTx1JNv4WfaSSsHMvlmmSc6wfEW2DW
-         17XuVUdmqvfVP3X/eAz/A5KfUmxQAzOP8moEPqS0WbTTIvWuV808hROHeaO1yuwFrz6T
-         /nQT6z22o6RdNalRxhwV/vSHptrWb2ccuDyX1Jh6Ytj/kV1VCJfkpbg+utpcSSfugZvp
-         uemJXFMIWcVctM3h0qws1T1RzNCJttWCsEVQIhMPTcl0LvmPMdr0GVmry+j3FrYR+4T7
-         k8z+Wpy0HMSLDFzsBQgY3Z/3S1ULbwvjZvXVd3udCwmPRth5YUE5gIVUqr19Iw9Fknb7
-         +Rtg==
+        bh=ut6Se2R8QN544z+VLTdjev2SS9Vm3bNo+oL5Ci2TgM8=;
+        b=DVgL+cYQfoOvzbyxCm724lhDQd96HX3TjtPbfO9FoUvUF5dXmyu96FQMGZq7MQA8i7
+         +KIb615T+w8FNmvRnxczrP6Yumv4WipqXoiK1MJwZVaNyCiu/dQNIJbAFPVauqJCeOcm
+         5G5HGF7+OUkXtrtk5Hxydq6+jT8JiYBir9hP6ksPnb5jJq2DR//bgXkpLQsqqB3S5hdb
+         X/tvg8swJ9s9Y1+0zCbEJnogLnPNRVj1C7f3D4/GHLKIWW+QyxANuuaqSNIA+oKusKyp
+         DqOpI18EZaqWS+pFbVHPQyn6PfNEF491Q+rdlaMVF2+5kHDH4vROnWgs47OIZmVHNaq0
+         91gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fo+2Cvgj;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b10si2753553otp.124.2020.01.30.03.26.31;
-        Thu, 30 Jan 2020 03:26:31 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=joTB+Zoo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n14si3668243qkh.314.2020.01.30.05.41.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Jan 2020 05:41:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fo+2Cvgj;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727189AbgA3L0a (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 30 Jan 2020 06:26:30 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48751 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726959AbgA3L0a (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 30 Jan 2020 06:26:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1580383588;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=9SlPk4NmjjNnpZB612uFFc7ZwjsKN9cXzlux9cD7IFw=;
-        b=fo+2Cvgj7sV8gDo3LtxTU0nrRvDrG4JK6k+EiZRh55H0mdy4u/GG1G9irDm4ZbRpz+XQyT
-        JQSpccZgJ1YI25vSNOoM8+Q/H4B8NOcTKAsXhFI2um+wQooh8kVQVUnCRH4+XYdiEO07GK
-        FsoWq3N6NOFOmB5IOeg0h0rO214qCTU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-6-GbVGC-FgOV6xUg9HOdVxVQ-1; Thu, 30 Jan 2020 06:26:24 -0500
-X-MC-Unique: GbVGC-FgOV6xUg9HOdVxVQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0801DDB6E;
-        Thu, 30 Jan 2020 11:26:23 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 86D131000322;
-        Thu, 30 Jan 2020 11:26:15 +0000 (UTC)
-From:   Eric Auger <eric.auger@redhat.com>
-To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andrew.murray@arm.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, alexandru.elisei@arm.com
-Subject: [kvm-unit-tests PATCH v2 9/9] arm: pmu: Test overflow interrupts
-Date:   Thu, 30 Jan 2020 12:25:10 +0100
-Message-Id: <20200130112510.15154-10-eric.auger@redhat.com>
-In-Reply-To: <20200130112510.15154-1-eric.auger@redhat.com>
-References: <20200130112510.15154-1-eric.auger@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=joTB+Zoo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60908 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ixA4w-0006dA-0M
+	for alex.bennee@linaro.org; Thu, 30 Jan 2020 08:41:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49066)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1ixA4C-0005xc-Qo
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2020 08:41:09 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1ixA4B-0003XH-Ka
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2020 08:41:08 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:32887)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1ixA4B-0003Vp-Dv
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2020 08:41:07 -0500
+Received: by mail-oi1-x242.google.com with SMTP id q81so3555415oig.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Jan 2020 05:41:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=ut6Se2R8QN544z+VLTdjev2SS9Vm3bNo+oL5Ci2TgM8=;
+ b=joTB+ZooBZUxaooP5gpi1099q/YM2UxHrRs+5C2MPudTBxP37fBW2fpJNIaQF2dDNB
+ qW+6DgK2+LrfrCh91+qz2SluoryYniBWWr9H7VMfTwkjU5ihRifAR8PV0hcd/d/w9doH
+ 4ab03DSZ1MiI++2Tvzd1M6M/pumW3j2kOuLX/I/5yzsQLsqCVB+NqrSmaliIL1evJzdi
+ tz2rZAVgUvR1nQ4FoSPqtXIyh/X7Pjh1KcfBnFNetpkQ2DiZG/h84h77hTR+hqKmEuN8
+ WbYCZ0MSO7UABpFgTUUgqep6p9t4gCS/Wpj51YyXOjCaR9FGNP/tZ1QEE77RAfwiVkIv
+ UfbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=ut6Se2R8QN544z+VLTdjev2SS9Vm3bNo+oL5Ci2TgM8=;
+ b=ck/4MPIR2BTe03kPoaRD3V6Mz6LhiKAxUAf/EXHe8yyaRQQgH2yIxK1Mqva9WLIPq6
+ UlxQ5Fk4Z+otAV++Nvb4MdAPf1Q3eKULt8cKGkUaYT9pAbtfAQy4tKgDy2HvSfo+LHap
+ gOUqiS6ym5hQibjQlPT0SUBYxgdXlRzApzVRJr/Nel/wY+ZNzGEiTYCgDjyud0SLJ2ML
+ KBRggCM9Vwn1ukR94Qmf6GWpNzm+BlkW2LtBwk7y/hLzP1ekmmNi1LWdxFv0ZvF603gn
+ 8KpFfKF7gBrBo6pxWQ7fW5feef7y/obh6JBduCWrf+TB6m3jt7zQwm1Tdx7Y1qtSGxnM
+ XdZA==
+X-Gm-Message-State: APjAAAVAII8Ko7Q0TzxsOP1e6D8Oh3/PE5g3akYCTBcXvwkkPHtQPPXL
+ eryiGa5+aHKQ0VhNVrRISJz+H8eyZ0/uokLvdieZcQ==
+X-Received: by 2002:aca:b2c5:: with SMTP id b188mr2874648oif.163.1580391666479; 
+ Thu, 30 Jan 2020 05:41:06 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+References: <20200114103433.30534-1-clg@kaod.org>
+In-Reply-To: <20200114103433.30534-1-clg@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Jan 2020 13:40:55 +0000
+Message-ID: <CAFEAcA_M=xmh7CNT0RjQoORTBcF3LKt7o__J4HCOAC_KG4t6nQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/5] aspeed: extensions and fixes
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: aTGadNRnSED7
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y8H3413f2Id+
 
-Test overflows for MEM_ACCESS and SW_INCR events. Also tests
-overflows with 64-bit events.
+On Tue, 14 Jan 2020 at 10:34, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> Hi,
+>
+> Here is a short series adding :
+>
+>  - a new eMMC controller model for the AST2600 SoC (Andrew)
+>  - accessors to control the led state of the pca9552 device (Joel)
+>  - a 'execute-in-place' property to boot directly from CE0
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
----
 
-v1 -> v2:
-- inline setup_irq() code
----
- arm/pmu.c         | 137 ++++++++++++++++++++++++++++++++++++++++++++++
- arm/unittests.cfg |   6 ++
- 2 files changed, 143 insertions(+)
+Applied to target-arm.next, thanks (I fixed up patch 1 to
+use device_class_set_props()).
 
-diff --git a/arm/pmu.c b/arm/pmu.c
-index fa77ab3..ada28a4 100644
---- a/arm/pmu.c
-+++ b/arm/pmu.c
-@@ -45,6 +45,11 @@ struct pmu {
- 	uint32_t pmcr_ro;
- };
-=20
-+struct pmu_stats {
-+	unsigned long bitmap;
-+	uint32_t interrupts[32];
-+};
-+
- static struct pmu pmu;
-=20
- #if defined(__arm__)
-@@ -116,6 +121,7 @@ static void test_mem_access(void) {}
- static void test_chained_counters(void) {}
- static void test_chained_sw_incr(void) {}
- static void test_chain_promotion(void) {}
-+static void test_overflow_interrupt(void) {}
-=20
- #elif defined(__aarch64__)
- #define ID_AA64DFR0_PERFMON_SHIFT 8
-@@ -261,6 +267,44 @@ asm volatile(
- 	: "x9", "x10", "cc");
- }
-=20
-+static struct pmu_stats pmu_stats;
-+
-+static void irq_handler(struct pt_regs *regs)
-+{
-+	uint32_t irqstat, irqnr;
-+
-+	irqstat =3D gic_read_iar();
-+	irqnr =3D gic_iar_irqnr(irqstat);
-+	gic_write_eoir(irqstat);
-+
-+	if (irqnr =3D=3D 23) {
-+		unsigned long overflows =3D read_sysreg(pmovsclr_el0);
-+		int i;
-+
-+		report_info("--> PMU overflow interrupt %d (counter bitmask 0x%lx)",
-+			    irqnr, overflows);
-+		for (i =3D 0; i < 32; i++) {
-+			if (test_and_clear_bit(i, &overflows)) {
-+				pmu_stats.interrupts[i]++;
-+				pmu_stats.bitmap |=3D 1 << i;
-+			}
-+		}
-+		write_sysreg(0xFFFFFFFF, pmovsclr_el0);
-+	} else {
-+		report_info("Unexpected interrupt: %d\n", irqnr);
-+	}
-+}
-+
-+static void pmu_reset_stats(void)
-+{
-+	int i;
-+
-+	for (i =3D 0; i < 32; i++)
-+		pmu_stats.interrupts[i] =3D 0;
-+
-+	pmu_stats.bitmap =3D 0;
-+}
-+
- static void pmu_reset(void)
- {
- 	/* reset all counters, counting disabled at PMCR level*/
-@@ -271,6 +315,7 @@ static void pmu_reset(void)
- 	write_sysreg(0xFFFFFFFF, pmovsclr_el0);
- 	/* disable overflow interrupts on all counters */
- 	write_sysreg(0xFFFFFFFF, pmintenclr_el1);
-+	pmu_reset_stats();
- 	isb();
- }
-=20
-@@ -713,6 +758,95 @@ static void test_chain_promotion(void)
- 			read_sysreg(pmovsclr_el0));
- }
-=20
-+static bool expect_interrupts(uint32_t bitmap)
-+{
-+	int i;
-+
-+	if (pmu_stats.bitmap ^ bitmap)
-+		return false;
-+
-+	for (i =3D 0; i < 32; i++) {
-+		if (test_and_clear_bit(i, &pmu_stats.bitmap))
-+			if (pmu_stats.interrupts[i] !=3D 1)
-+				return false;
-+	}
-+	return true;
-+}
-+
-+static void test_overflow_interrupt(void)
-+{
-+	uint32_t events[] =3D { 0x13 /* MEM_ACCESS */, 0x00 /* SW_INCR */};
-+	void *addr =3D malloc(PAGE_SIZE);
-+	int i;
-+
-+	if (!satisfy_prerequisites(events, ARRAY_SIZE(events)))
-+		return;
-+
-+	gic_enable_defaults();
-+	install_irq_handler(EL1H_IRQ, irq_handler);
-+	local_irq_enable();
-+	gic_enable_irq(23);
-+
-+	pmu_reset();
-+
-+	write_regn(pmevtyper, 0, events[0] | PMEVTYPER_EXCLUDE_EL0);
-+	write_regn(pmevtyper, 1, events[1] | PMEVTYPER_EXCLUDE_EL0);
-+	write_sysreg_s(0x3, PMCNTENSET_EL0);
-+	write_regn(pmevcntr, 0, 0xFFFFFFF0);
-+	write_regn(pmevcntr, 1, 0xFFFFFFF0);
-+	isb();
-+
-+	/* interrupts are disabled */
-+
-+	mem_access_loop(addr, 200, pmu.pmcr_ro | PMU_PMCR_E);
-+	report(expect_interrupts(0), "no overflow interrupt received");
-+
-+	set_pmcr(pmu.pmcr_ro | PMU_PMCR_E);
-+	for (i =3D 0; i < 100; i++)
-+		write_sysreg(0x2, pmswinc_el0);
-+
-+	set_pmcr(pmu.pmcr_ro);
-+	report(expect_interrupts(0), "no overflow interrupt received");
-+
-+	/* enable interrupts */
-+
-+	pmu_reset_stats();
-+
-+	write_regn(pmevcntr, 0, 0xFFFFFFF0);
-+	write_regn(pmevcntr, 1, 0xFFFFFFF0);
-+	write_sysreg(0xFFFFFFFF, pmintenset_el1);
-+	isb();
-+
-+	mem_access_loop(addr, 200, pmu.pmcr_ro | PMU_PMCR_E);
-+	for (i =3D 0; i < 100; i++)
-+		write_sysreg(0x3, pmswinc_el0);
-+
-+	mem_access_loop(addr, 200, pmu.pmcr_ro);
-+	report_info("overflow=3D0x%lx", read_sysreg(pmovsclr_el0));
-+	report(expect_interrupts(0x3),
-+		"overflow interrupts expected on #0 and #1");
-+
-+	/* promote to 64-b */
-+
-+	pmu_reset_stats();
-+
-+	events[1] =3D 0x1E /* CHAIN */;
-+	write_regn(pmevtyper, 1, events[1] | PMEVTYPER_EXCLUDE_EL0);
-+	write_regn(pmevcntr, 0, 0xFFFFFFF0);
-+	isb();
-+	mem_access_loop(addr, 200, pmu.pmcr_ro | PMU_PMCR_E);
-+	report(expect_interrupts(0),
-+		"no overflow interrupt expected on 32b boundary");
-+
-+	/* overflow on odd counter */
-+	pmu_reset_stats();
-+	write_regn(pmevcntr, 0, 0xFFFFFFF0);
-+	write_regn(pmevcntr, 1, 0xFFFFFFFF);
-+	isb();
-+	mem_access_loop(addr, 400, pmu.pmcr_ro | PMU_PMCR_E);
-+	report(expect_interrupts(0x2),
-+		"expect overflow interrupt on odd counter");
-+}
- #endif
-=20
- /*
-@@ -921,6 +1055,9 @@ int main(int argc, char *argv[])
- 	} else if (strcmp(argv[1], "chain-promotion") =3D=3D 0) {
- 		report_prefix_push(argv[1]);
- 		test_chain_promotion();
-+	} else if (strcmp(argv[1], "overflow-interrupt") =3D=3D 0) {
-+		report_prefix_push(argv[1]);
-+		test_overflow_interrupt();
- 	} else {
- 		report_abort("Unknown sub-test '%s'", argv[1]);
- 	}
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index eb6e87e..1d1bc27 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -108,6 +108,12 @@ groups =3D pmu
- arch =3D arm64
- extra_params =3D -append 'chain-promotion'
-=20
-+[overflow-interrupt]
-+file =3D pmu.flat
-+groups =3D pmu
-+arch =3D arm64
-+extra_params =3D -append 'overflow-interrupt'
-+
- # Test PMU support (TCG) with -icount IPC=3D1
- #[pmu-tcg-icount-1]
- #file =3D pmu.flat
---=20
-2.20.1
+-- PMM

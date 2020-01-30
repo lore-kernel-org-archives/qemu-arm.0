@@ -1,78 +1,78 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1748207lfp;
-        Thu, 30 Jan 2020 03:25:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw3eU7tVhnlpLInZEQ+SrKvn5XSvMOO74Joqpc5Vz6LDLJvEz3E2OoBfd2f8YGQi9Gz7F0Q
-X-Received: by 2002:a54:4791:: with SMTP id o17mr2418597oic.70.1580383538422;
-        Thu, 30 Jan 2020 03:25:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580383538; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1748339lfp;
+        Thu, 30 Jan 2020 03:25:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwWJvwEPBPCmXo7UvIYMLlWTxqlM0bhFEJyfdIsll8XyjYmQ87mlo1cN7DjlWS8Eg3WYefc
+X-Received: by 2002:aca:ad11:: with SMTP id w17mr2586751oie.85.1580383546381;
+        Thu, 30 Jan 2020 03:25:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580383546; cv=none;
         d=google.com; s=arc-20160816;
-        b=U40IYk3M98hQ73XwJrD8HFrd7SwKhswFNB5qK6VwOzid3SI697YjOJNGDMzyawP9mS
-         Rr8B6jMaMxCvyY2lbca8e8T6ZNLiZiLVf36zCTpy20hdmU5uCGc4/D/gAAGGnXewi1lW
-         cYiwocOyRYkgtWKS2nfMwSL7gahcyA5h1wB6EhsB/kygPUTkENI0VrGyxnqjNRiBa3hy
-         eZs8abMUr1Et5bCWO2orMPcg/xFA4cdvyleQuWilhdbNvaaQ2p0g3GNZj8HM2kyhogqd
-         +czQB/LIFg9NiyFn53HnxKsqr/6LbGaCeWmtEOh287lF09QJHvFfsOvvBAgS5PSRMPjr
-         wqpg==
+        b=DWPd7bImkoejZNMjo1NFc8JSZoE5gzeQxRNktUTc/4TWvW2bdAF9MUCyhnQoi6eVY5
+         bY4DCPy02aGFQKTOjiSsQEUC+heh4z9HwAst8ZzEMg+5SPLt3BRTGOhvLgxWnIqXVSy2
+         sD55f6uMxrSAeNVQl5MgjMmXdshML5hTrsWGOeQPOCsbe7eFsLKQBRUNNBn3GIErPlIZ
+         5Rz6wg9quVYmLEa/2rqovKp7qc5YjYCpaIGIfgUirErg5O+kAllxS03+CIBGvxLPlmYg
+         xP9uSUQyI0Avv5r4zhj4W7BnbpZJOVb9ln2Zpnbj9ZhNvVaEAzOWn3sjjzFeSjXztsV2
+         eoSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=UXlYDyzqTLtrcUrTm0BlWqi6aN682MJ2N066VEjbccE=;
-        b=rRELyO+YOf0itLtkx0NwXWvjMm0m3WtP4yKsv6DUe4Qxbi1jua6ajB15/E+9kBuqrM
-         TaIwEQy9iin55vzQrK7a0yg9cUjepxPi7Km+CNqbAsKk1bxYxV7/tNcMmHT50vyyLuvF
-         tOKlZzTNHmL4UvIwcY4osODuDwREHiqFQxnkNNFciEawzRN7XQJxnTNBSlVSnj2F+5DR
-         kjW1URJe2BL9+RShIL0XGY/dyfLFnwX1CJTKfIuA5z6FVYYRyAXWVQxsonHS7ITro6CP
-         IhZ4w6veQId14f9IjMh8Tg6QcNXB5dI9jVZScqMKa0TaloyZNKdaqJ577rtP8V9mjQL6
-         tyvg==
+        bh=Dznikfzn+n4WX4926tiKNygB6iX1YlaEs/0YdUiJxdA=;
+        b=DRXA1b6LcR1pBZcVMvS485ip25wSP26aS5LV/t5cX4v7KUVrV42ri9Fa4ySngO1m3Y
+         4Ao4sod/2NlpMkTcKb7R4T44eqeC8pSlRkPGFED4e22yLuu60PZTD6thB+xmBoncEJ7B
+         zmgNf2o4xKkCRrA2WVdD8M41/TDSMhv+rFrVxh5TlmeT8x06aSGozna3wSQGQCXjNT10
+         1+em/pxE8bbToqQbBJIGMVYd0SDhb+qHIJZ9kSHVOLVzAW0TzFsB+USTCfOd3rZs7YV5
+         PZo1jnHhv5BMfPaUch10WMyaD4b7HAizxFtbXv1l8mavbXQgoSwtP4Mu+91HFUXc3uGP
+         NC1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y6NpkPLh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bQ6n/yX0";
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 7si1361627oix.49.2020.01.30.03.25.38;
-        Thu, 30 Jan 2020 03:25:38 -0800 (PST)
+        by mx.google.com with ESMTP id 7si1361627oix.49.2020.01.30.03.25.46;
+        Thu, 30 Jan 2020 03:25:46 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y6NpkPLh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bQ6n/yX0";
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727124AbgA3LZh (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 30 Jan 2020 06:25:37 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38631 "EHLO
+        id S1727154AbgA3LZp (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 30 Jan 2020 06:25:45 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21226 "EHLO
         us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726902AbgA3LZh (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 30 Jan 2020 06:25:37 -0500
+        with ESMTP id S1726902AbgA3LZp (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 30 Jan 2020 06:25:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1580383536;
+        s=mimecast20190719; t=1580383544;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=UXlYDyzqTLtrcUrTm0BlWqi6aN682MJ2N066VEjbccE=;
-        b=Y6NpkPLh44VghM81afI3jXtGZHWbdtA1/2hIgFidB1eJn+Ka2dCGBH9rXSCJ0zaBncwG1b
-        rP6mZpZR3OKNs9sePy/UxKCvWKqluStkBXvxmpQvcsDGUWjG4ZpfgG57bar1vYQewLWgDN
-        uJ4zxTjqi/uywGCxEQtSujJhU16auAQ=
+        bh=Dznikfzn+n4WX4926tiKNygB6iX1YlaEs/0YdUiJxdA=;
+        b=bQ6n/yX0Ri0wNGJxHqdrMBuGPmEWXaNgU84JyBbr49XeshDA6KPValmP3LBwVuacsW/p1L
+        1GW6X+MweORBrdfnFrtq2pFc4zDSnw0QymhH2T9Bflcuta/otENqmSGlTD41PHGRrZYipz
+        9GfPS16oRPqEcUpk6bj0DGTea4B9HJU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-389-xymuaHqZNVaOnRaHgqujGg-1; Thu, 30 Jan 2020 06:25:34 -0500
-X-MC-Unique: xymuaHqZNVaOnRaHgqujGg-1
+ us-mta-12-_Y_XUO7FPfSKxTMMMmJhiA-1; Thu, 30 Jan 2020 06:25:42 -0500
+X-MC-Unique: _Y_XUO7FPfSKxTMMMmJhiA-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1D6CF1005510;
-        Thu, 30 Jan 2020 11:25:33 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2C1FC18B9FC3;
+        Thu, 30 Jan 2020 11:25:41 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id ECB171001B05;
-        Thu, 30 Jan 2020 11:25:27 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id D3C441036B20;
+        Thu, 30 Jan 2020 11:25:33 +0000 (UTC)
 From:   Eric Auger <eric.auger@redhat.com>
 To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
         kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
         qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc:     drjones@redhat.com, andrew.murray@arm.com, andre.przywara@arm.com,
         peter.maydell@linaro.org, alexandru.elisei@arm.com
-Subject: [kvm-unit-tests PATCH v2 2/9] arm: pmu: Let pmu tests take a sub-test parameter
-Date:   Thu, 30 Jan 2020 12:25:03 +0100
-Message-Id: <20200130112510.15154-3-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH v2 3/9] arm: pmu: Add a pmu struct
+Date:   Thu, 30 Jan 2020 12:25:04 +0100
+Message-Id: <20200130112510.15154-4-eric.auger@redhat.com>
 In-Reply-To: <20200130112510.15154-1-eric.auger@redhat.com>
 References: <20200130112510.15154-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -82,89 +82,71 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Ayb/Y5/r7r7V
+X-TUID: cCz1LZa9DKZX
 
-As we intend to introduce more PMU tests, let's add
-a sub-test parameter that will allow to categorize
-them. Existing tests are in the cycle-counter category.
+This struct aims at storing information potentially used by
+all tests such as the pmu version, the read-only part of the
+PMCR, the number of implemented event counters, ...
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- arm/pmu.c         | 24 +++++++++++++++---------
- arm/unittests.cfg |  7 ++++---
- 2 files changed, 19 insertions(+), 12 deletions(-)
+ arm/pmu.c | 30 +++++++++++++++++++++++++-----
+ 1 file changed, 25 insertions(+), 5 deletions(-)
 
 diff --git a/arm/pmu.c b/arm/pmu.c
-index d5a03a6..e5e012d 100644
+index e5e012d..d24857e 100644
 --- a/arm/pmu.c
 +++ b/arm/pmu.c
-@@ -287,22 +287,28 @@ int main(int argc, char *argv[])
- {
- 	int cpi =3D 0;
+@@ -33,7 +33,14 @@
 =20
--	if (argc > 1)
--		cpi =3D atol(argv[1]);
--
- 	if (!pmu_probe()) {
- 		printf("No PMU found, test skipped...\n");
- 		return report_summary();
- 	}
+ #define NR_SAMPLES 10
 =20
-+	if (argc < 2)
-+		report_abort("no test specified");
+-static unsigned int pmu_version;
++struct pmu {
++	unsigned int version;
++	unsigned int nb_implemented_counters;
++	uint32_t pmcr_ro;
++};
 +
- 	report_prefix_push("pmu");
-=20
--	report(check_pmcr(), "Control register");
--	report(check_cycles_increase(),
--	       "Monotonically increasing cycle count");
--	report(check_cpi(cpi), "Cycle/instruction ratio");
--
--	pmccntr64_test();
-+	if (strcmp(argv[1], "cycle-counter") =3D=3D 0) {
-+		report_prefix_push(argv[1]);
-+		if (argc > 2)
-+			cpi =3D atol(argv[2]);
-+		report(check_pmcr(), "Control register");
-+		report(check_cycles_increase(),
-+		       "Monotonically increasing cycle count");
-+		report(check_cpi(cpi), "Cycle/instruction ratio");
-+		pmccntr64_test();
-+	} else {
-+		report_abort("Unknown sub-test '%s'", argv[1]);
-+	}
-=20
- 	return report_summary();
++static struct pmu pmu;
++
+ #if defined(__arm__)
+ #define ID_DFR0_PERFMON_SHIFT 24
+ #define ID_DFR0_PERFMON_MASK  0xf
+@@ -265,7 +272,7 @@ static bool check_cpi(int cpi)
+ static void pmccntr64_test(void)
+ {
+ #ifdef __arm__
+-	if (pmu_version =3D=3D 0x3) {
++	if (pmu.version =3D=3D 0x3) {
+ 		if (ERRATA(9e3f7a296940)) {
+ 			write_sysreg(0xdead, PMCCNTR64);
+ 			report(read_sysreg(PMCCNTR64) =3D=3D 0xdead, "pmccntr64");
+@@ -278,9 +285,22 @@ static void pmccntr64_test(void)
+ /* Return FALSE if no PMU found, otherwise return TRUE */
+ static bool pmu_probe(void)
+ {
+-	pmu_version =3D get_pmu_version();
+-	report_info("PMU version: %d", pmu_version);
+-	return pmu_version !=3D 0 && pmu_version !=3D 0xf;
++	uint32_t pmcr;
++
++	pmu.version =3D get_pmu_version();
++	report_info("PMU version: %d", pmu.version);
++
++	if (pmu.version =3D=3D 0 || pmu.version =3D=3D 0xF)
++		return false;
++
++	pmcr =3D get_pmcr();
++	pmu.pmcr_ro =3D pmcr & 0xFFFFFF80;
++	pmu.nb_implemented_counters =3D
++		(pmcr >> PMU_PMCR_N_SHIFT) & PMU_PMCR_N_MASK;
++	report_info("Implements %d event counters",
++		    pmu.nb_implemented_counters);
++
++	return true;
  }
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index daeb5a0..79f0d7a 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -61,21 +61,22 @@ file =3D pci-test.flat
- groups =3D pci
 =20
- # Test PMU support
--[pmu]
-+[pmu-cycle-counter]
- file =3D pmu.flat
- groups =3D pmu
-+extra_params =3D -append 'cycle-counter 0'
-=20
- # Test PMU support (TCG) with -icount IPC=3D1
- #[pmu-tcg-icount-1]
- #file =3D pmu.flat
--#extra_params =3D -icount 0 -append '1'
-+#extra_params =3D -icount 0 -append 'cycle-counter 1'
- #groups =3D pmu
- #accel =3D tcg
-=20
- # Test PMU support (TCG) with -icount IPC=3D256
- #[pmu-tcg-icount-256]
- #file =3D pmu.flat
--#extra_params =3D -icount 8 -append '256'
-+#extra_params =3D -icount 8 -append 'cycle-counter 256'
- #groups =3D pmu
- #accel =3D tcg
-=20
+ int main(int argc, char *argv[])
 --=20
 2.20.1

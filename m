@@ -1,103 +1,148 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp910188lfp;
-        Fri, 31 Jan 2020 09:36:55 -0800 (PST)
-X-Received: by 2002:a9d:68da:: with SMTP id i26mr8647792oto.65.1580492215592;
-        Fri, 31 Jan 2020 09:36:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580492215; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1218236lfp;
+        Fri, 31 Jan 2020 15:25:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzjXXMF/Edg2mgCOsMRwuIt7Gv2fTKgQH1ic++wRX2ABx2X+ZP9pfOCY87bRPVnPW1umfDM
+X-Received: by 2002:a37:d0c:: with SMTP id 12mr13358584qkn.464.1580513144427;
+        Fri, 31 Jan 2020 15:25:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580513144; cv=none;
         d=google.com; s=arc-20160816;
-        b=CfcIq09IlJr0rYEP4ZsTzNIhHHLvJQTFGLser6Z/YvShWqXW7tsaAlDKb22nQmF4sQ
-         2E3bnfDZqzK2NUbudhvEr4wmO84iYDgvFFivEXYQb4FIFOpIqT6dO8+euxKviDUPSQzf
-         Q9ZGBxkqRbzHApHTroCcL+Z4fLaMBfqLDTvgWJ1GhyB/KSuFqJUAH5QsjwHHlQz0SX4w
-         wFmhB+JhHHlpd5qpv5LH+vu2XlqITPk7QqVciQSyg/f8gdEYQ15KALFo0gk3q1Y2wE5J
-         CthEUHRuGLuErhLE74OAbSpJQY+bTVCec86hfxuJZEkHM7GbfD5DGrQuXV6RzQQ4GWQL
-         l/pA==
+        b=FYXimMpIWBwmnxl9AUSNIaVg3GC+78FBnlI4K0eH6UQ+MoWIEPylTe9SyISHzQAVkl
+         jwUhSWlqHYxznzH2gO7wTEFOvnm4yIAiZrUsVHnFDW8EhlGcUz0m2/rroD7UeBIYc7bJ
+         Ajz3v95coiXeQ99JrmHRIBvvpvr26r7f9p0vkCKzUEtQnIDbRfldhSgU3BCm0B1LniKs
+         L/ejJSg3A/Be9bGdlqXmSCTisjBrql7MJl0EvuHUq19JmxWa3lD2jG46/XtS9sbBKdf6
+         hdrt4hpqxjQinJ6y0LSAkfVLfaP4BeP85UsHDEpdAtl7yLkc9oeEmIYC9bC29ULI/KyN
+         FeiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=MwQf5wKkqC3KOw72XmYMlxq7E2cPK4kiOzIVY+cdHzw=;
-        b=coBqVvdSfkgWAXKE4RYv5B4O0V8hNCvX1WfiGl8QiXMpz1sfs/eRVavMjq/dErzhwi
-         uUCSEmkW7S6GpOpwox3Vvdovszez7SQr9t9Cnwj42vvICD8esPxjIIO7QBjQoYckRd1B
-         JAQugSe53MoHEGyfR5JpJWsdFOOROf9JWTu8pKjTYRgMcavkmdI943FRDVvoX16cplv2
-         JjxQZmy2GpOuwkJhYIgnr/FreYyF5nlgGqDH6wOtDMgvLzsN4sS0Je8ejzcCNpglHjAS
-         gwDe8xf8bM5rMqkQ1MUDovNY1Bnikh6BDauLypLLf9IKh9FySgGc0DN1Sn2Itgkm6K6i
-         hCaA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=PdPa7rRqpFIG356Bcv+JT8SG6O9NZ8A7i8enSnTCO9g=;
+        b=jftd8DFm97dB1Ilj83G8QZVrfXCVpSLXcDWh9wLLoHn+lSdJ58jvu4t9GX+DtmWbrn
+         MxhgeN7d8xbpoe6/Am4Fx74OBIWVoAd5bA0Fl+w3UBx4qaqJMpqWhwDbWhC0Mo0UWhMP
+         ZOcNoyWZHn7vomA2BM+a7bLxw2q9Qr1e6Tm9xU/6T6dboST9cPnnAi9w1oxNkCQuiGhh
+         zBG1PZTSQRtGmjRb6iGQWDXq/9qy8n7cFaPzwR+GUAoOegjALdKe4FQdasRbY9APrWNL
+         Q1bfAfxps9gn2rcRFd7i/MaToG6kV6nQYCEUAg+yAtj7b9C2oFlq9dJozYU6RJN3zcs3
+         Z9ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CEIyvjN+;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t17sor4938375otp.86.2020.01.31.09.36.55
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=azCJRsxa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l15si7915963qkk.284.2020.01.31.15.25.44
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 31 Jan 2020 09:36:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 31 Jan 2020 15:25:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CEIyvjN+;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=MwQf5wKkqC3KOw72XmYMlxq7E2cPK4kiOzIVY+cdHzw=;
-        b=CEIyvjN+UEAPsXxwBS3yFt/laAeUK4sbYeeUvDFmSgLExP4Lmr1tA4o48bEZ5QriWZ
-         Ni5CsntzAMvOJmptTeQ0761PFw+407EGaoeiFsrsIBgBxt50Fuxljb0RMrIPSwD0foE+
-         qXOIpY7lbtwu2jT8SYndsVmsu2zkbY0rNwThYQBZFSZvoH/LQyLGQPZLkZccgcNXbqvm
-         95PPLo+Mo7qs8ckj8Rx5369G+4JIm8Q1bvG5fw4EYFdoXeFk+sYXMr7OjkPO69tmpniv
-         oKVe4nYbnPRhbOr7tjyuePZjvkLQlHL7dQkojszXXdw3/K7cGJXGeZ2EAphynCSMRn1p
-         fKIg==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=azCJRsxa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:60812 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ixffS-00061F-RK
+	for alex.bennee@linaro.org; Fri, 31 Jan 2020 18:25:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48822)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ixfeT-0005Bo-MX
+ for qemu-devel@nongnu.org; Fri, 31 Jan 2020 18:24:42 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ixfeS-0008W7-Kt
+ for qemu-devel@nongnu.org; Fri, 31 Jan 2020 18:24:41 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:33575)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ixfeS-0008UO-F3; Fri, 31 Jan 2020 18:24:40 -0500
+Received: by mail-wm1-x343.google.com with SMTP id m10so9870983wmc.0;
+ Fri, 31 Jan 2020 15:24:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PdPa7rRqpFIG356Bcv+JT8SG6O9NZ8A7i8enSnTCO9g=;
+ b=azCJRsxaRRs9aJsqU2l3usJtfQje6uHXTSQ8F7Cle6EyOG9vG+m8VJXbbJsJfPuWgM
+ ywS/DpdFXkhW6tv6jhs56y+JVpM/SiYmWXx70biADK+mc/6jhjFDDmzuqx6MNUsY2+GW
+ hUVs0iVESIAl8vzzRDYm70YnnmvQvujaQQ1rMQcs/T/OHGjMl72Oygp0ZsEH3BRQFYZX
+ RnarQvuboYXwXyJulb0hytehzqct8sSgov3khGkJ4A0ZUGWNa9UH0AMZrtNW6sw1UQYe
+ MuY8FMEOuLi/1W647Ry8iKIdX6gWddoIP3mgkMVbnc9VMqbCbtAEI6PsqQrAeGPc0jOc
+ hwnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=MwQf5wKkqC3KOw72XmYMlxq7E2cPK4kiOzIVY+cdHzw=;
-        b=Mzce/0Njx6DUAh7B+w6UCsskPiTCWbalRMx1ZlzapvR8Vj+OuNfnrZpr3QcX9NS8ph
-         Ane6xNe9K4kj6J9PFkQzejWTQemvDAhV/qemV9bWxM3JjSN3EY2TldyCHJSsU1lWyfJj
-         nFi9ZVYyx+cRcqsi+NUvOpmWFZZqFeWSRlxHfsPe1KV5/rptx9aX9SyE/Zvun+0JCWdi
-         8WMuKy1qNfNwAP/CmonJ1HCmyB9VqXJ3VFYZSHZ/76ZLqwvS3BKnoRAMpL0LGu7DdJuk
-         f8PP2HBwGlvFThVyT1u+3F8OWmhd3bXzUVv3Cibv67tATUgqQ5OBgYGPJaz5Wvcx4HEr
-         WCHA==
-X-Gm-Message-State: APjAAAXQ0qJ0DRgosor3QrbVXKdsZLw7RyTMz2wirMiLLdxr/TCDMwYz
-	ZCXsqUBU9+9rfoFIb7uWkUGfyTPgS48tAAYHbQR9M6+M
-X-Google-Smtp-Source: APXvYqzH8zJ5o4thc7JBUmbJZcxzhmAT5AWeP4jPytYUoqO1FmoQvkhMSRfFzFvpk2/wDnaU/akRvoSoh4bt/0ad79M=
-X-Received: by 2002:a05:6830:4a4:: with SMTP id l4mr8446213otd.91.1580492215139;
- Fri, 31 Jan 2020 09:36:55 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=PdPa7rRqpFIG356Bcv+JT8SG6O9NZ8A7i8enSnTCO9g=;
+ b=XNg7cRfn/6U+ATLEQwtiUAKAwDz+cDVBCPCf+LOFLSnq3BMWxKKbKzbF0wpi+fMRRW
+ w+61whdZjHX1VyrOMI12A4Gz3i5re2GLglw5ImwTo8+xO9oTECQI+cA+IpOm4iaR2SKN
+ juoNfwZCch6jFn50Pg+LDZV8VLKFE0KN3mCd1LeD9t0/TAGxnVjfUuqNdEZiurIDWywg
+ gEGHrBlS1xbapN135Lcg2iwoUYB6ebq1D5e4da7Y3/xCtLo0BsfMueaZphCb0KeA6nCK
+ B2Yl9FtsQXVTcTlhx1rmQRR2zLeEqp5aFJbIrlqapZR4TaNFs5dLjkNkHJ96DqAqUvIw
+ YyFg==
+X-Gm-Message-State: APjAAAXqxCXKYCrvqegCMze0duHuYoBBtGiDWCvxn/c1wKfabpv0F9Fx
+ +gNt2V19wvN1k4Y5ECHn37GnjVGf
+X-Received: by 2002:a7b:cf01:: with SMTP id l1mr14230696wmg.86.1580513078976; 
+ Fri, 31 Jan 2020 15:24:38 -0800 (PST)
+Received: from x1w.redhat.com (113.red-83-57-172.dynamicip.rima-tde.net.
+ [83.57.172.113])
+ by smtp.gmail.com with ESMTPSA id c74sm9265172wmd.26.2020.01.31.15.24.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 31 Jan 2020 15:24:38 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/1] tests/acceptance: Count Raspberry Pi logos displayed on
+ framebuffer
+Date: Sat,  1 Feb 2020 00:24:35 +0100
+Message-Id: <20200131232436.23548-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-References: <20200131153439.26027-1-alex.bennee@linaro.org> <86de4318-8937-c228-973e-f88b41248d03@redhat.com>
-In-Reply-To: <86de4318-8937-c228-973e-f88b41248d03@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 31 Jan 2020 17:36:44 +0000
-Message-ID: <CAFEAcA8KAuKfb07xf=zs6bY-T2zQzRbifW5wdg1kEcBb+zPGGw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: fix TCG leak for fcvt half->double
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: sKa/rMHjR3WQ
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::343
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: efwRdgZ+CYQe
 
-On Fri, 31 Jan 2020 at 16:50, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> On 1/31/20 4:34 PM, Alex Benn=C3=A9e wrote:
-> > When support for the AHP flag was added we inexplicably only freed the
-> > new temps in one of the two legs. Move those tcg_temp_free to the same
-> > level as the allocation to fix that leak.
->
-> Probably too much code refactoring :/
->
-> >
-> > Fixes: 486624fcd3eac
->
-> Maybe:
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
->
-> > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+This is a simple Avocado test that use OpenCV to find the
+4 Raspberry Pi logo on the framebuffer screen dump.
 
-Thanks; applied to master as that will let me apply the
-tracing pullreq without having to suppress or ignore the
-warning.
+The resulting match can be visualised at:
+https://pasteboard.co/ISzNHtx.png
 
--- PMM
+It is very fast, around 11 seconds on my laptop.
+
+The test probably won't stay in boot_linux_console.py but will
+go into tests/acceptance/machine_arm_raspi.py, but I wanted to
+show this test could work to test SMP CPUs.
+
+Similar test: "integratorcp: Verify Tux is displayed on framebuffer"
+https://lists.gnu.org/archive/html/qemu-devel/2020-01/msg08103.html
+
+Philippe Mathieu-Daudé (1):
+  tests/acceptance: Count Raspberry Pi logos displayed on framebuffer
+
+ tests/acceptance/boot_linux_console.py | 62 ++++++++++++++++++++++++++
+ 1 file changed, 62 insertions(+)
+
+-- 
+2.21.1
+

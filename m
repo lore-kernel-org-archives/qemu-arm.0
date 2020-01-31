@@ -1,119 +1,95 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4123090lfp;
-        Mon, 3 Feb 2020 08:08:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzaU8A1GjLPq5Ox7N5DhED9CVFgzTbXjkx5ZHcxKlHmhWl/tzCpHNQxlutVOGjfqZ47dLMi
-X-Received: by 2002:a05:6214:17cd:: with SMTP id cu13mr22638320qvb.192.1580746137440;
-        Mon, 03 Feb 2020 08:08:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580746137; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp756028lfp;
+        Fri, 31 Jan 2020 07:22:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwnj/qxROP3CLTSKhG3IeYxu1YZOHSy4vZTHz1IKwXVOtAbdDFnVoot1ldX1KSyy/0oGqXe
+X-Received: by 2002:ac8:1205:: with SMTP id x5mr11049018qti.238.1580484164652;
+        Fri, 31 Jan 2020 07:22:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580484164; cv=none;
         d=google.com; s=arc-20160816;
-        b=foN5rBkPX1KasAA8xjf3NxRHNXfVpO7pNhW2gCz0A+HgApozY3Fiol/ssrjstUlmDN
-         XJ7szTvPCvO1sImqY2okrN2aWZJa9x66+FlEggSYKiSOZBtlRbLUPp0AfZginr1ajv2s
-         bsuBSVwEkZ2ztkuyObgmuASjO9lPsrsCjRtmOTUbOewWbu4RfrTVOmYKdgs91lonDDYS
-         uIoFDqBZfuKQHT7L7Q+14oDvW1f/U3sY+AR1kictiLO84bSkupOzH56r96k/3jeBjaH2
-         AdMbBBN3AesuazHhBgU9Dq1+EQElmD9lNnh4AQI1KLjzBlI1uxn2Wilm5+7BePuD9RzA
-         Ts0Q==
+        b=TPfTt175IlZ1KPufIkhrzxJf2DmP9L8aD3Im37GQXQxuhX65khvxf5h2EOw15Qi74N
+         /Ev01fXlET46V0xJtQQgczJUZv3jP5VFulz1rK1wdufEfiucxTiMIpb7kGyBU80aAn5T
+         il3a4s1J5opbMb93rO+f6vB0ZtUicfKmsFgcZbb9LWO4tHy2LI5UyaJLGYpk0ZmjuF5M
+         /PgI5Cl3/SujuoZj86CiHxAfv/PgcTOBd9boonaWX8vNEfkje7yEae7Pz+pOTmH1zi0+
+         WzeUsdwgRY6yHq3+GQWtXixfipw/5zcyAP0Ltdi7KGrJt/Wo4i4sys5g8ma6kp4Hj81L
+         7fdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=QRiVg9JWxyuSYYX1hq/kXf+nP/mO4Z4DN9flepn/J7k=;
-        b=JbS/Pa9v/cuU6NPewdzDqDIr4cWpFKA5bh0rkblftl1o97hxeLylILBAYFGatfXDR/
-         UTMXDBr9/F7dJkpWCxgZ7UnWk3yN5E9mXHxbjCG79WjIsla3pYE+eHzXA5ywuUMsgvSm
-         r53anxBAFzbeSj4Z2WmCLOkxz2H3C3VUEi0P5p2zZUQ39ZwHPz3HYIMuoSZEeAHeW5N/
-         tkkSiiEo9BR8pICT0pk7iVLbXSTfePHMPiYYsWC9olXUFLR2VHVaCKVM0p9hqcFcPqQV
-         f2esBfQu1Pe3b66fKD4TDpQPLL5KUczqnJ2UsmHiAQzCCQ8nxGLmUW3c5SRNTto8YvtT
-         96fw==
+         :references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=UfyH5nJ+NIfsObnBZjvRjm5eE82w8cQH6pIlZBQxQY8=;
+        b=Wq4Z3D8c0sMmHO/rSeHx+O41ujVb7zTbX3bi0WTHRhSBH7p2/V/t25ErjONIbeyD3h
+         9g7YyceAUJze6NtxYWtFwyLdEE29+XhZaw9MhZyuBkstCm5EV5y14VAF2UKGGOesoy++
+         q8YT9UGMPTVOB8ughS4YGIhGeIAu5tdU9vmWEWYJ2Kv5keuVGygtONj9vze6cu3DH7D3
+         jN5apHkjaK3bf5UGqtuou6I3Wb/S7avB4yiWBS175HBu1rcnFDAX5atCo4gNE2jvchxW
+         ahq4H5KRL5cIH4Mwtrkuo+mhtYAQR3i85LDqDc6OnRHWpQZmjGMUmgkHnjbzfNp0sjb5
+         1phA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YATQE5ja;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ChXABUpB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 18si11297602qkg.23.2020.02.03.08.08.57
+        by mx.google.com with ESMTPS id n14si6316135qkk.301.2020.01.31.07.22.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 08:08:57 -0800 (PST)
+        Fri, 31 Jan 2020 07:22:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YATQE5ja;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ChXABUpB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44060 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54648 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyeHQ-0003wq-Ri
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 11:08:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41703)
+	id 1ixY84-0000DG-3h
+	for alex.bennee@linaro.org; Fri, 31 Jan 2020 10:22:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39202)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iyeGg-0003LM-GE
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 11:08:12 -0500
+ (envelope-from <imammedo@redhat.com>) id 1ixXyH-0004Is-Tn
+ for qemu-devel@nongnu.org; Fri, 31 Jan 2020 10:12:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iyeGe-0002QF-DI
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 11:08:09 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42144
+ (envelope-from <imammedo@redhat.com>) id 1ixXyG-000416-SI
+ for qemu-devel@nongnu.org; Fri, 31 Jan 2020 10:12:37 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20491
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iyeGe-0002Oq-8p
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 11:08:08 -0500
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1ixXyG-00040P-OZ
+ for qemu-devel@nongnu.org; Fri, 31 Jan 2020 10:12:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580746087;
+ s=mimecast20190719; t=1580483556;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QRiVg9JWxyuSYYX1hq/kXf+nP/mO4Z4DN9flepn/J7k=;
- b=YATQE5jaLLZcvk6oqpJ1s2zwPquzeE82OE7nzBOB8mju6H/Bmz9MmJxQ9K3q84YyFuilRH
- zh1vVKUsZUn6CxZsbzAgBu6ydcJN8tQ2VxTxBj6tJpnMcOdeiHGTvQlCTyLkON5/Ui1dxt
- 0zSDUHKgkTvCy4ulzNgUgZj3yTjQqZk=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-15-mrLx_hKHPfu9XYrJf7bYWg-1; Mon, 03 Feb 2020 11:08:05 -0500
-Received: by mail-wr1-f71.google.com with SMTP id u8so7492252wrp.10
- for <qemu-devel@nongnu.org>; Mon, 03 Feb 2020 08:08:04 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=EcdA3xLgoEZ6hYGiSKiEGv8kVnkfLQhBGi5qQkd4q0Q=;
- b=hssEalqcht2+ct/NBiB51OZsTmKIFmvkO9jLxH5vYVQpDqUtg5i93DtUrMGpZWWk80
- v6rL5pB+6ZYSOr3rtXKWieDyqpNVxGglBvORT/gjq8EJNxfLLRDKUiGu+KUZyJAR8+jD
- EW2vWHBmHSVYvHxshSCO3xeesubL5IO+PBQz2GVcXYfw7ccdOL/ziiTraBC4fVUQ+Cje
- Vp2zMvkekI/lW/01xilvAJGL8BoEYeqMZiSpkj4/COBDrvkT0UbosoCMTb8Qqul8Nz/m
- CAzdlBzVhLHv66FLsMSBwHQuxjLUvaU+IYcvRngu7BwATX2B20yyDEzkaOo3vF5vfIo9
- ZFgg==
-X-Gm-Message-State: APjAAAUItas0W0S8jM8vaLNhXbyKRt/48dtrWMzIMLz78sEEJBfJKYV5
- dhGxaA5LRLPb+z5S+oRuZEbel8CPNWlxu/Krav64SSkxSZSrXuN/xJ+UPLT5VrLNbeRnit0xF4G
- 7NOPUvoECPdUr8X0=
-X-Received: by 2002:adf:cd11:: with SMTP id w17mr16054841wrm.66.1580746083220; 
- Mon, 03 Feb 2020 08:08:03 -0800 (PST)
-X-Received: by 2002:adf:cd11:: with SMTP id w17mr16054816wrm.66.1580746082954; 
- Mon, 03 Feb 2020 08:08:02 -0800 (PST)
-Received: from [192.168.1.35] (162.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.162])
- by smtp.gmail.com with ESMTPSA id y7sm23990771wrr.56.2020.02.03.08.08.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Feb 2020 08:08:02 -0800 (PST)
-Subject: Re: [PATCH 1/1] tests/acceptance: Count Raspberry Pi logos displayed
- on framebuffer
-To: Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200131232436.23548-1-f4bug@amsat.org>
- <20200131232436.23548-2-f4bug@amsat.org>
- <ad5d50ff-acc8-247f-74d9-7854605baaca@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <3ba16ccb-108b-8721-2e04-b00630bcb7d5@redhat.com>
-Date: Mon, 3 Feb 2020 17:08:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <ad5d50ff-acc8-247f-74d9-7854605baaca@redhat.com>
-Content-Language: en-US
-X-MC-Unique: mrLx_hKHPfu9XYrJf7bYWg-1
+ bh=UfyH5nJ+NIfsObnBZjvRjm5eE82w8cQH6pIlZBQxQY8=;
+ b=ChXABUpBHyJqTnYfpcok2M3O6xviCVDKubbdZ5u27dM20n3kcDVFF97AOmePTFObaeIv6Z
+ GzjAbUepJe6AjMhcda1R5glzy1eeFgyBkWlor5sdOtlc0GiU6x2dYYm43c26/LzFO/9nnU
+ KDuRjDJtcfv8w8V6yFdrrEs01mmzDrs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-29-gfMpT-SoN_6FUicEP8hooA-1; Fri, 31 Jan 2020 10:12:29 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 11C6B8010CB;
+ Fri, 31 Jan 2020 15:12:28 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+ (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B928886C4B;
+ Fri, 31 Jan 2020 15:12:26 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v4 15/80] arm/imx25_pdk: drop RAM size fixup
+Date: Fri, 31 Jan 2020 16:08:45 +0100
+Message-Id: <1580483390-131164-16-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1580483390-131164-1-git-send-email-imammedo@redhat.com>
+References: <1580483390-131164-1-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: gfMpT-SoN_6FUicEP8hooA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -129,219 +105,49 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Cleber Rosa <crosa@redhat.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
+ jcd@tribudubois.net
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: On6Ub7dhtneo
+X-TUID: 1eMqUUl1KAW9
 
-On 2/3/20 3:21 PM, Wainer dos Santos Moschetta wrote:
-> On 1/31/20 9:24 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->> Add a test that verifies that each core properly displays the
->> Raspberry Pi logo on the framebuffer device.
->>
->> We simply follow the OpenCV "Template Matching with Multiple Objects"
->> tutorial, replacing Lionel Messi by a raspberrry:
->> https://docs.opencv.org/4.2.0/d4/dc6/tutorial_py_template_matching.html
->>
->> When OpenCV and NumPy are installed, this test can be run using:
->>
->> =C2=A0=C2=A0 $ avocado --show=3Dapp,framebuffer run -t device:bcm2835-fb=
+If user provided non-sense RAM size, board will complain and
+continue running with max RAM size supported.
+Also RAM is going to be allocated by generic code, so it won't be
+possible for board to fix things up for user.
+
+Make it error message and exit to force user fix CLI,
+instead of accepting non-sense CLI values.
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+---
+CC: jcd@tribudubois.net
+CC: peter.maydell@linaro.org
+CC: qemu-arm@nongnu.org
+CC: philmd@redhat.com
+---
+ hw/arm/imx25_pdk.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
+index c76fc2b..a2b7b35 100644
+--- a/hw/arm/imx25_pdk.c
++++ b/hw/arm/imx25_pdk.c
+@@ -78,10 +78,10 @@ static void imx25_pdk_init(MachineState *machine)
 =20
->> tests/acceptance/
->> =C2=A0=C2=A0 JOB ID=C2=A0=C2=A0=C2=A0=C2=A0 : 9bbbc54c0a6fa180348d0b5305=
-507f76852b4da2
->> =C2=A0=C2=A0 JOB LOG=C2=A0=C2=A0=C2=A0 : avocado/job-results/job-2020-01=
--31T23.48-9bbbc54/job.log
->> =C2=A0=C2=A0=C2=A0 (1/1)=20
->> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_raspi2_=
-framebuffer_logo:=20
->>
->> =C2=A0=C2=A0 framebuffer: found raspberry at position (x, y) =3D (0, 0)
->> =C2=A0=C2=A0 framebuffer: found raspberry at position (x, y) =3D (71, 0)
->> =C2=A0=C2=A0 framebuffer: found raspberry at position (x, y) =3D (142, 0=
-)
->> =C2=A0=C2=A0 framebuffer: found raspberry at position (x, y) =3D (213, 0=
-)
->> =C2=A0=C2=A0 PASS (11.06 s)
->> =C2=A0=C2=A0 RESULTS=C2=A0=C2=A0=C2=A0 : PASS 1 | ERROR 0 | FAIL 0 | SKI=
-P 0 | WARN 0 |=20
->> INTERRUPT 0 | CANCEL 0
->> =C2=A0=C2=A0 JOB TIME=C2=A0=C2=A0 : 11.39 s
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->> The resulting match can be visualised at=20
->> https://pasteboard.co/ISzNHtx.png
->> ---
->> =C2=A0 tests/acceptance/boot_linux_console.py | 62 +++++++++++++++++++++=
-+++++
->> =C2=A0 1 file changed, 62 insertions(+)
->>
->> diff --git a/tests/acceptance/boot_linux_console.py=20
->> b/tests/acceptance/boot_linux_console.py
->> index e40b84651b..4e69a83a12 100644
->> --- a/tests/acceptance/boot_linux_console.py
->> +++ b/tests/acceptance/boot_linux_console.py
->> @@ -12,6 +12,7 @@ import os
->> =C2=A0 import lzma
->> =C2=A0 import gzip
->> =C2=A0 import shutil
->> +import logging
->> =C2=A0 from avocado import skipUnless
->> =C2=A0 from avocado_qemu import Test
->> @@ -21,6 +22,19 @@ from avocado.utils import process
->> =C2=A0 from avocado.utils import archive
->> +NUMPY_AVAILABLE =3D True
->> +try:
->> +=C2=A0=C2=A0=C2=A0 import numpy as np
->> +except ImportError:
->> +=C2=A0=C2=A0=C2=A0 NUMPY_AVAILABLE =3D False
->> +
->> +CV2_AVAILABLE =3D True
->> +try:
->> +=C2=A0=C2=A0=C2=A0 import cv2
->> +except ImportError:
->> +=C2=A0=C2=A0=C2=A0 CV2_AVAILABLE =3D False
->> +
->> +
->=20
->=20
-> Those Python packages are only needed by this new test case, and the=20
-> test is likely to be moved to a separate file soon. So I suggest to put=
+     /* We need to initialize our memory */
+     if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE=
+)) {
+-        warn_report("RAM size " RAM_ADDR_FMT " above max supported, "
++        error_report("RAM size " RAM_ADDR_FMT " above max supported, "
+                     "reduced to %x", machine->ram_size,
+                     FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE);
+-        machine->ram_size =3D FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZ=
+E;
++        exit(EXIT_FAILURE);
+     }
 =20
-> those availability checks inside the test method, so easing the future=20
-> removal. And use self.cancel() to cancel the test (if the case).
-
-Yes I'll move (actually the series is ready, I'll add this on top).
-
->=20
->=20
->> =C2=A0 class BootLinuxConsole(Test):
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Boots a Linux kernel and checks that the =
-console is operational=20
->> and the
->> @@ -360,6 +374,54 @@ class BootLinuxConsole(Test):
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.do_test_arm_=
-raspi2(0)
->> +=C2=A0=C2=A0=C2=A0 @skipUnless(NUMPY_AVAILABLE, 'Python NumPy not insta=
-lled')
->> +=C2=A0=C2=A0=C2=A0 @skipUnless(CV2_AVAILABLE, 'Python OpenCV not instal=
-led')
->> +=C2=A0=C2=A0=C2=A0 def test_arm_raspi2_framebuffer_logo(self):
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Darch:arm
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Dmachine:ras=
-pi2
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3Ddevice:bcm2=
-835-fb
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 screendump_path =3D os.path.=
-join(self.workdir, 'screendump.pbm')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rpilogo_url =3D ('https://gi=
-thub.com/raspberrypi/linux/raw/'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'raspberryp=
-i-kernel_1.20190517-1/'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'drivers/vi=
-deo/logo/logo_linux_clut224.ppm')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rpilogo_hash =3D 'fff3cc20c6=
-030acce0953147f9baac43f44ed6b0'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rpilogo_path =3D self.fetch_=
-asset(rpilogo_url,=20
->> asset_hash=3Drpilogo_hash)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_url =3D ('http://archive=
-.raspberrypi.org/debian/'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'pool/main/r/raspberrypi-firmware/'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'raspberrypi-kernel_1.20190215-1_ar=
-mhf.deb')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_hash =3D 'cd284220b32128=
-c5084037553db3c482426f3972'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deb_path =3D self.fetch_asse=
-t(deb_url, asset_hash=3Ddeb_hash)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_path =3D self.extract=
-_from_deb(deb_path,=20
->> '/boot/kernel7.img')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dtb_path =3D self.extract_fr=
-om_deb(deb_path,=20
->> '/boot/bcm2709-rpi-2-b.dtb')
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.set_console()
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kernel_command_line =3D (sel=
-f.KERNEL_COMMON_COMMAND_LINE +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 'earlycon=3Dpl011,0x3f201000=20
->> console=3DttyAMA0')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.add_args('-kernel', =
-kernel_path,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-dtb', dtb_path,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- '-append', kernel_command_line)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.launch()
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 framebuffer_ready =3D 'Conso=
-le: switching to colour frame=20
->> buffer device'
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 wait_for_console_pattern(sel=
-f, framebuffer_ready)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.command('human-monit=
-or-command', command_line=3D'stop')
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.vm.command('human-monit=
-or-command',
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 comma=
-nd_line=3D'screendump %s' % screendump_path)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 logger =3D logging.getLogger=
-('framebuffer')
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cpu_cores_count =3D 4
->=20
->=20
-> Won't this fail if host cpu cores are less than 4?
-
-This count the TCG vCPU guest emulated by QEMU, and are not related to=20
-the host cores.
-
-I.E. you can run this test on a single-core powerpc host cpu, QEMU will=20
-instantiate 4 virtual cores for the raspberry pi.
-
-Also, the Raspberry Pi 2/3 machines are forced to 4 cores, because they=20
-only run a certain type of system-on-chip which has 4 cores built-in.
-
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 match_threshold =3D 0.95
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 screendump_bgr =3D cv2.imrea=
-d(screendump_path, cv2.IMREAD_COLOR)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rpilogo_bgr =3D cv2.imread(r=
-pilogo_path, cv2.IMREAD_COLOR)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 result =3D cv2.matchTemplate=
-(screendump_bgr, rpilogo_bgr,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cv2.TM_CCOEFF_=
-NORMED)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 loc =3D np.where(result >=3D=
- match_threshold)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rpilogo_count =3D 0
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for rpilogo_count, pt in enu=
-merate(zip(*loc[::-1]), start=3D1):
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 logg=
-er.debug('found raspberry at position (x, y) =3D %s', pt)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 self.assertGreaterEqual(rpil=
-ogo_count, cpu_cores_count)
->> +
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 def test_arm_exynos4210_initrd(self):
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 """
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 :avocado: tags=3D=
-arch:arm
->=20
->=20
+     memory_region_allocate_system_memory(&s->ram, NULL, "imx25.ram",
+--=20
+2.7.4
 

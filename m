@@ -1,194 +1,179 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2508924lfp;
-        Thu, 30 Jan 2020 15:46:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyUWuLlaEQ+iKuZLZTSuGW/VytNT3uV5iK3YB01N80fep7iMOE7BcoL4cMovatQ6+6YaX8b
-X-Received: by 2002:a50:ed18:: with SMTP id j24mr6345923eds.124.1580428007689;
-        Thu, 30 Jan 2020 15:46:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580428007; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp47033lfp;
+        Thu, 30 Jan 2020 18:10:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqztfPCGPuOnBokUnFaplcvi6wRBsqkqGED5FXgeoxK/IRPdksm/A6uMJWeVY3bC5DRX0pPU
+X-Received: by 2002:a0c:f685:: with SMTP id p5mr8234492qvn.44.1580436656395;
+        Thu, 30 Jan 2020 18:10:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580436656; cv=none;
         d=google.com; s=arc-20160816;
-        b=JTmXQg+0ntoJHYpCY4/N/tT3xwMC2Lehz42FYdeGq7qrasP/9pTucDnjAqvHdSOk8H
-         GFVsV55OmtIPq/sgsj8tRU5njDrcU5PHufzPx3oJAYzzsZxQJ2zU6RFlwvJ6YVddlviN
-         wXT1hSM3FaT2FSoP5trBz63u4KCEXWWTwRf0tAUlFBW7TY8wV1jdOG6g+LwX4hVaLD9f
-         jZ9tSIrOuptezsjWkFv3/ZoykH/HKAZ1LlmXwaHZxTeKh3tzqkjWcMXIRVL2Z3/AjPhH
-         Vg7W2T8WqkgloTtgZUJU2U/aI4NaVEwJw9g58BS3yG8ABNsyMDEoobD8v5D4hl8GrM+F
-         JxWw==
+        b=bQCXc4uzkZmppulmW/ebDu3WrqWKsUXlW8D0DFZKnpiL4H4OIwQ7geCfhEb97LbPlh
+         FrVLMxpPEkzJKtIMEBNMjKGvIvHTeWxixCcWXL06AfmuwnI86JO8rP9GOIkgmkKYDQcz
+         2YPC0EfX7t2YtsLJwCZCVBTsMRWR3NI258/atgGrGoyq1QH4k3Wo0cmQYVLfy5yA66P8
+         Mfg2UaYOkNVeA88xGQMGdIT1vOBzJCIawYn5eHPdXeVwTpwK+7pTZMY/oZUQWfHycWwp
+         YSZEqjZtXsscuYiZ6x43lIeFY4/xpZJqmuJ38P7UC0Tc93PQMBvViFEcBdWSK3gtd4ph
+         Vspg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=E/1/fpM+uIvTTGLaInPwc2lQDzHE5KcORyzhWhPzClE=;
-        b=P+wrzaxM3+6lNGJkmM/5H30Y88FlSrefNYoOJ6pcFhUFV7KQc4iBYVCY6STlChc2PD
-         9a66rQWUZ03Rb3HxsnucVsIm0cZEfWkQdAn1qBG6LabkBXaowC94qyvPB6FFskZI0uf8
-         oaZtpU/9LfkUIgYGOnrCVT2m51qGz+kKTPKQb5pfZTEf7px8b1tMdCgfypEFB+rnd2iT
-         o2uA9CbKyhR0BHyNGcyHBkuVkuitpy8s+TRRKZzLOK9oV+IrcFMWtO3jhZ244WXyC4/B
-         gNOj/CL8gev2f2y2rAqktt9XRdMkRBeg4xWeT0rst8mRY6NRytvgwe2ah0ypQmj/WPi9
-         vJcw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=N6ayk/ft5wsmfKUBydtbk6VT0gvwHB29Ch32NVXJQJM=;
+        b=vh3yc2McfQbl4ZLGTfmB93S4AdynqGdR+lHwyFFr6A33hBW1IvEPnEsHUEjKyPV5ki
+         jHK8pAoZK93v+t4qBOc3VvkgJge5p8LktWc9DeOjXOuSW2mOUSR7PO+R6wm+WuwvFgim
+         Z3TdbyGxZ3MyLwAMCOrLt6piXz/a6L7Ou0VYIwn4tfUKqxII8nf09WKYe7v0UnSzOyiz
+         QhrEX/P0yFbhTzU2hxwJKfi1hmab+bZnRUSKGbDqGo6G1ahwVHOm2E7PCiCIgMjeUz4q
+         48GIfF7LUJ+K67STrhDsSv8m08zBIL6TQI1h3PmT7rOYRko4MVwbhgW025uj+1hiSUqw
+         /hUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dGAl9LD+;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id p14si3878848edr.17.2020.01.30.15.46.47
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VM7OMU8k;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p14si5228591qkh.103.2020.01.30.18.10.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Jan 2020 15:46:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Jan 2020 18:10:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dGAl9LD+;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VM7OMU8k;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47584 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ixLln-0002h2-S4
+	for alex.bennee@linaro.org; Thu, 30 Jan 2020 21:10:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50848)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1ixLle-0002eC-J2
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2020 21:10:48 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1ixLlc-0000mt-64
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2020 21:10:45 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:50520
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ixLlc-0000lR-1q
+ for qemu-arm@nongnu.org; Thu, 30 Jan 2020 21:10:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1580428006;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=E/1/fpM+uIvTTGLaInPwc2lQDzHE5KcORyzhWhPzClE=;
-	b=dGAl9LD+rJQDaaweNX/STkFFRHG7807PCBVddImyLBIstF2+wm9qJW50gu9uc20MmbTwoJ
-	RSQqmXTsp4qnoI9DOvOEsyOKcrLiHrBeWcX4wxEXqK+IoWFVAHx4YMWFAUrVV+gcby2U7q
-	yO+/bwkUDJ7oWTdn42Ga2QCiyqrJU7M=
+ s=mimecast20190719; t=1580436643;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=N6ayk/ft5wsmfKUBydtbk6VT0gvwHB29Ch32NVXJQJM=;
+ b=VM7OMU8kfvtVGWn3xWnwPT52Z/HfJ0uhPzbI/30lowp5xscnQ+QWkps3MY8B1Jq5U5Egs8
+ SjKKb8sqB4JD6jqaR0+cDTqA/LrHzA0Fy47mAFS7Topfj+/EeonJuGCFmrzeSMNtfbkW5s
+ C46gzoghnS5AJ/0Zb22f7j6c0VAZjXA=
 Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
  [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-313-uNx4ssIsN2-9MLx2EQGiMw-1; Thu, 30 Jan 2020 18:46:43 -0500
-Received: by mail-wm1-f72.google.com with SMTP id b133so1376263wmb.2
-        for <alex.bennee@linaro.org>; Thu, 30 Jan 2020 15:46:42 -0800 (PST)
+ us-mta-424-cstCIGOvNDW-wx-bpFL2vg-1; Thu, 30 Jan 2020 21:10:39 -0500
+Received: by mail-wm1-f72.google.com with SMTP id 7so2145057wmf.9
+ for <qemu-arm@nongnu.org>; Thu, 30 Jan 2020 18:10:39 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=dLEGO8KYRWQaQYVfnRG/qPNSgEXfE58ncEinyGY2FMY=;
-        b=aaD0YfJyRpN4gayMq/KfmWeYifukFcQHQqK6/ilPSF+920ElsDCl+27CXYZ6M60pKy
-         W01LYdQql9JiCeJkHMHUPDxoxyw9Qela6Tj7s5T0Lpxip37CSinq+p2e5U9Ir5RnTT3Q
-         bwk6DA7Jx5ncQq4Pu0lRkBEVQufTqOhpfRwhypVh13ypPvVW5L3GBNFiEjHWvHs3RjOj
-         5BCIvbDJviaMOMKtlP4IQ42smnumsYV7DIcp/Y6evGO8Ac6JmG5xgZZ6wgP427LbOfvn
-         +lwqX+01h6M75FgdYBID6btRs2SiGze2evPTV8dHkfguzqkwyLFnbir/vebfO0M2FE79
-         lh7Q==
-X-Gm-Message-State: APjAAAXEPSgTzEjAEWR53qv03Lo/KBUixWPEZZ6LDoC6sjZWpYlkNSpN
-	SZg2J7gDwEu8tIugLXz4Ngo076BwAuZumJrjYQdjqdHbDymacHR3G+Lgb3h8PGQzKzvv73CBFQB
-	vCjh9D9+tJ+rLxurR
-X-Received: by 2002:a5d:6a88:: with SMTP id s8mr8094144wru.173.1580428001385;
-        Thu, 30 Jan 2020 15:46:41 -0800 (PST)
-X-Received: by 2002:a5d:6a88:: with SMTP id s8mr8094123wru.173.1580428001129;
-        Thu, 30 Jan 2020 15:46:41 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net. [83.57.172.113])
-        by smtp.gmail.com with ESMTPSA id t9sm7884427wmj.28.2020.01.30.15.46.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Jan 2020 15:46:40 -0800 (PST)
-Subject: Re: [RFC PATCH] tests/acceptance: Add a test for the N800 and N810
- arm machines
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-References: <20200129131920.22302-1-thuth@redhat.com>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=sQ2XPoEyVrYXsnHP3S+Bx1jgnWR7qliXlQ6rATor0F8=;
+ b=k+pNrZfvNhuUX8muFd5smFdcMyu05qXMu6cgJ2wC1jcmzTyNhAoyj43Ov5dtaPXCnh
+ EIBWxeL4bvpI8zZNxIJiwODf80h023185Lxl1dBIApXEw0/GxkW18QaLRnKy60BRS5u9
+ B6UJotNAm0GYh8Phqb6UnwTHx3hGMDOI9Lhs87nS9lWh+GJHwAm7320wAix06Z4IE/q5
+ wcxlJOLvpPoTOlN6AJVRy5liGgp8pR2CM179OIvBy9Iaeq98JJ5RcVGb7WJsydzliWSQ
+ MsjZvcqPnHftu6TixcAzSqUxN8re00NuGghi6Uii6ppsoRuYCXhwdSrXLnzhp0a9M8I+
+ jBVg==
+X-Gm-Message-State: APjAAAU/6p9yyayPrXbgHPLfNKs1evCYH3kQji6lyGtkuflK0UMbMjJV
+ nqxq2hCxwryPwOpihMCunXEgkZK6jDQM25cFn1EfvKqC/lyDLAPjY03QfD5BOtJ9AEkCzbsfxO3
+ yxDdTrmGCTxsH
+X-Received: by 2002:a1c:80d4:: with SMTP id b203mr8938984wmd.102.1580436638022; 
+ Thu, 30 Jan 2020 18:10:38 -0800 (PST)
+X-Received: by 2002:a1c:80d4:: with SMTP id b203mr8938944wmd.102.1580436637597; 
+ Thu, 30 Jan 2020 18:10:37 -0800 (PST)
+Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
+ [83.57.172.113])
+ by smtp.gmail.com with ESMTPSA id z21sm8644614wml.5.2020.01.30.18.10.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Jan 2020 18:10:36 -0800 (PST)
+Subject: Re: [PATCH v4 7/7] tests/boot_linux_console: Tag Emcraft Smartfusion2
+ as running 'u-boot'
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200120235159.18510-1-f4bug@amsat.org>
+ <20200120235159.18510-8-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <647b2004-4b56-7322-72ba-abb0309938de@redhat.com>
-Date: Fri, 31 Jan 2020 00:46:36 +0100
+Message-ID: <851737e6-9afd-85a5-b9a8-49e506287cf8@redhat.com>
+Date: Fri, 31 Jan 2020 03:10:34 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200129131920.22302-1-thuth@redhat.com>
+In-Reply-To: <20200120235159.18510-8-f4bug@amsat.org>
 Content-Language: en-US
-X-MC-Unique: uNx4ssIsN2-9MLx2EQGiMw-1
+X-MC-Unique: cstCIGOvNDW-wx-bpFL2vg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-TUID: mlrP0A8328Iy
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Laurent Bonnans <laurent.bonnans@here.com>,
+ Cheng Xiang <ext-cheng.xiang@here.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1u3W2HPvTV5g
 
-On 1/29/20 2:19 PM, Thomas Huth wrote:
-> Old kernels from the Meego project can be used to check that Linux
-> is at least starting on these machines.
+On 1/21/20 12:51 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Avocado tags are handy to automatically select tests matching
+> the tags. Since this test also runs U-Boot, tag it.
 >=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> We can run all the tests using U-Boot as once with:
+>=20
+>    $ avocado --show=3Dapp run -t u-boot tests/acceptance/
+>    JOB LOG    : avocado/job-results/job-2020-01-21T00.16-ee9344e/job.log
+>     (1/3) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_ar=
+m_emcraft_sf2: PASS (16.59 s)
+>     (2/3) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_ar=
+m_raspi2_uboot: PASS (0.47 s)
+>     (3/3) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_aa=
+rch64_raspi3_uboot: PASS (2.43 s)
+>    RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0=
+ | CANCEL 0
+>    JOB TIME   : 19.78 s
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->   The serial console is written to the second UART, so this needs Phil's
->   "Allow to use other serial consoles than default" patch as a prerequisi=
-te:
->   Based-on: <20200120235159.18510-5-f4bug@amsat.org>
+>   tests/acceptance/boot_linux_console.py | 1 +
+>   1 file changed, 1 insertion(+)
 >=20
->   MAINTAINERS                          |  1 +
->   tests/acceptance/machine_arm_n8x0.py | 49 ++++++++++++++++++++++++++++
->   2 files changed, 50 insertions(+)
->   create mode 100644 tests/acceptance/machine_arm_n8x0.py
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index ddf6fe0794..560507e821 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -672,6 +672,7 @@ F: hw/rtc/twl92230.c
->   F: include/hw/display/blizzard.h
->   F: include/hw/input/tsc2xxx.h
->   F: include/hw/misc/cbus.h
-> +F: tests/acceptance/machine_arm_n8x0.py
->  =20
->   Palm
->   M: Andrzej Zaborowski <balrogg@gmail.com>
-> diff --git a/tests/acceptance/machine_arm_n8x0.py b/tests/acceptance/mach=
-ine_arm_n8x0.py
-> new file mode 100644
-> index 0000000000..e5741f2d8d
-> --- /dev/null
-> +++ b/tests/acceptance/machine_arm_n8x0.py
-> @@ -0,0 +1,49 @@
-> +# Functional test that boots a Linux kernel and checks the console
-> +#
-> +# Copyright (c) 2020 Red Hat, Inc.
-> +#
-> +# Author:
-> +#  Thomas Huth <thuth@redhat.com>
-> +#
-> +# This work is licensed under the terms of the GNU GPL, version 2 or
-> +# later.  See the COPYING file in the top-level directory.
-> +
-> +import os
-> +
-> +from avocado import skipUnless
-> +from avocado_qemu import Test
-> +from avocado_qemu import wait_for_console_pattern
-> +
-> +class N8x0Machine(Test):
-> +    """Boots the Linux kernel and checks that the console is operational=
-"""
-> +
-> +    timeout =3D 90
-> +
-> +    def __do_test_n8x0(self):
-> +        kernel_url =3D ('http://stskeeps.subnetmask.net/meego-n8x0/'
-> +                      'meego-arm-n8x0-1.0.80.20100712.1431-'
-> +                      'vmlinuz-2.6.35~rc4-129.1-n8x0')
-> +        kernel_hash =3D 'e9d5ab8d7548923a0061b6fbf601465e479ed269'
-> +        kernel_path =3D self.fetch_asset(kernel_url, asset_hash=3Dkernel=
-_hash)
-> +
-> +        self.vm.set_console(console_index=3D1)
-> +        self.vm.add_args('-kernel', kernel_path,
-> +                         '-append', 'printk.time=3D0 console=3DttyS1')
-> +        self.vm.launch()
-> +        wait_for_console_pattern(self, 'TSC2005 driver initializing')
-> +
-> +    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted co=
-de')
-> +    def test_n800(self):
-> +        """
-> +        :avocado: tags=3Darch:arm
-> +        :avocado: tags=3Dmachine:n800
-> +        """
-> +        self.__do_test_n8x0()
-> +
-> +    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted co=
-de')
-> +    def test_n810(self):
-> +        """
-> +        :avocado: tags=3Darch:arm
-> +        :avocado: tags=3Dmachine:n810
-> +        """
-> +        self.__do_test_n8x0()
+> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
+ot_linux_console.py
+> index 22b360118d..4a4cf9d0ea 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -305,6 +305,7 @@ class BootLinuxConsole(Test):
+>           :avocado: tags=3Darch:arm
+>           :avocado: tags=3Dmachine:emcraft-sf2
+>           :avocado: tags=3Dendian:little
+> +        :avocado: tags=3Du-boot
+>           """
+>           uboot_url =3D ('https://raw.githubusercontent.com/'
+>                        'Subbaraya-Sundeep/qemu-test-binaries/'
 >=20
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Thanks, applied to my python-next tree:
+https://gitlab.com/philmd/qemu/commits/python-next
+
